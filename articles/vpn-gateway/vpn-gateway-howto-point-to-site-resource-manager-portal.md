@@ -6,14 +6,14 @@ author: cherylmc
 tags: azure-resource-manager
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 5/21/2019
+ms.date: 6/18/2019
 ms.author: cherylmc
-ms.openlocfilehash: 6b66a9cf28faccf5ba22bc016297f1d53febe533
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 07bcf50a816c090ccef846909dff671486e514c4
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66157398"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203063"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>Konfigurace připojení typu Point-to-Site k virtuální síti s použitím nativního ověřování certifikátů Azure: portál Azure
 
@@ -98,7 +98,7 @@ Fond adres klienta je rozsah privátních IP adres, který zadáte. Klienti při
 2. Klikněte na tlačítko **Nakonfigurovat**, aby se otevřela stránka s konfigurací.
 
    ![Nakonfigurovat](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/configurenow.png)
-3. Na stránce konfigurace **Point-to-Site** přidejte do pole **Fond adres** rozsah privátních IP adres, který chcete použít. Klienti VPN dynamicky obdrží IP adresu z rozsahu, který zadáte. Kliknutím na **Uložit** ověřte a uložte nastavení.
+3. Na stránce konfigurace **Point-to-Site** přidejte do pole **Fond adres** rozsah privátních IP adres, který chcete použít. Klienti VPN dynamicky obdrží IP adresu z rozsahu, který zadáte. Maska podsítě minimální je 29 bit pro aktivní/pasivní vysoká dostupnost a 28 bit pro aktivní/aktivní konfigurace. Kliknutím na **Uložit** ověřte a uložte nastavení.
 
    ![Fond adres klienta](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/addresspool.png)
 

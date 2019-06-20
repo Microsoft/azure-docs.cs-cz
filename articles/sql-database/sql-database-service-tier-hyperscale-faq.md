@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 05/06/2019
-ms.openlocfilehash: 38d9ad007b67756bdca0c6f98267aa16ba38ee9d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 535ae91abc04b2fdcebb6a2083db95ec50f61798
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65791433"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275582"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Nejčastější dotazy týkající se databáze Azure SQL Hyperškálováním
 
@@ -79,7 +79,7 @@ Azure SQL Database Hyperškálovatelného úroveň je momentálně dostupná v o
 
 Ano. Další informace a omezení počtu databází Hyperškálovatelného v rámci logického serveru, najdete v článku [limity prostředků SQL Database pro databáze ve fondu a jeden na logickém serveru](sql-database-resource-limits-logical-server.md).
 
-### <a name="what-are-the-performance-characteristic-of-a-hyperscale-database"></a>Co jsou charakteristické výkonu databáze hyperškálovatelný systém
+### <a name="what-are-the-performance-characteristics-of-a-hyperscale-database"></a>Co jsou výkonové charakteristiky databáze hyperškálovatelný systém
 
 Architektura Hyperškálovatelného SQL Database poskytuje vysoký výkon a propustnost při současné podpoře velikosti velké databáze. 
 
@@ -94,7 +94,7 @@ Velkokapacitní SQL Database nabízí rychlou škálovatelnost podle potřeb va�
 
   S Hyperškálováním budete mít také možnost zřizování jeden nebo více dalších výpočetních uzlů, které můžete použít k obsluze žádostí o čtení. To znamená, že vám pomůže těchto dalších výpočetních uzlů jako jen pro čtení uzly přesměrování zpracování úlohy čtení od primární výpočetních prostředků. Kromě jen pro čtení, že tyto uzly slouží také jako hot standby je v případě převzetí přes z primárního serveru.
 
-  Zřizování každé z těchto dalších výpočetních uzlů můžete udělat v konstantním čase a je online operace. Můžete připojit k tyto uzly další výpočetní prostředky jen pro čtení tak, že nastavíte `ApplicationIntent` argument u připojovacího řetězce k `read_only`. Všechna připojení označené `read-only` se automaticky směrují na jednom z uzlů další výpočetní prostředky jen pro čtení.
+  Zřizování každé z těchto dalších výpočetních uzlů můžete udělat v konstantním čase a je online operace. Můžete připojit k tyto uzly další výpočetní prostředky jen pro čtení tak, že nastavíte `ApplicationIntent` argument u připojovacího řetězce k `readonly`. Všechna připojení označené `readonly` se automaticky směrují na jednom z uzlů další výpočetní prostředky jen pro čtení.
 
 ## <a name="deep-dive-questions"></a>Podrobné informace o dotazy
 
@@ -140,7 +140,7 @@ Ne.
 
 ### <a name="how-many-read-scale-replicas-are-supported"></a>Počet replik škálování pro čtení jsou podporované.
 
-Ve výchozím nastavení se databáze hyperškálovatelný systém vytvoří se jedna replika škálování pro čtení (dvě repliky celkem). Můžete škálovat počet replik jen pro čtení mezi 0 a 4 s využitím [webu Azure portal](https://portal.azure.com), [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current), [Powershell](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabase) nebo [rozhraní příkazového řádku](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update)...
+Ve výchozím nastavení se databáze hyperškálovatelný systém vytvoří se jedna replika škálování pro čtení (dvě repliky celkem). Můžete škálovat počet replik jen pro čtení mezi 0 a 4 s využitím [webu Azure portal](https://portal.azure.com), [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current), [Powershell](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabase) nebo [CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update).
 
 ### <a name="for-high-availability-do-i-need-to-provision-additional-compute-nodes"></a>Pro zajištění vysoké dostupnosti můžu potřebujete ke zřízení dalších výpočetních uzlů
 
@@ -361,7 +361,7 @@ Ve výchozím nastavení se nám vytvořit 2 repliky pro Hyperškálovatelného 
 
 ### <a name="how-do-i-connect-to-these-secondary-compute-nodes"></a>Jak připojit k těmto sekundární výpočetních uzlů
 
-Můžete připojit k tyto uzly další výpočetní prostředky jen pro čtení tak, že nastavíte `ApplicationIntent` argument u připojovacího řetězce k `read_only`. Všechna připojení označené `read-only` se automaticky směrují na jednom z uzlů další výpočetní prostředky jen pro čtení.  
+Můžete připojit k tyto uzly další výpočetní prostředky jen pro čtení tak, že nastavíte `ApplicationIntent` argument u připojovacího řetězce k `readonly`. Všechna připojení označené `readonly` se automaticky směrují na jednom z uzlů další výpočetní prostředky jen pro čtení.  
 
 ### <a name="can-i-create-a-dedicated-endpoint-for-the-read-scale-replica"></a>Můžete vytvořit vyhrazený koncový bod pro repliku škálování pro čtení
 

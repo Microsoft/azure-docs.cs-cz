@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b28d590390cd1a1ef1c6651e6943ac2a7fa0af29
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f4fd47ae4f1ebc50de916b537b165eba1c5efb11
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67075501"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205026"
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení Update Management v Azure
 
@@ -39,7 +39,7 @@ Následující diagram znázorňuje konceptuální zobrazení chování a toku d
 
 Správa aktualizací umožňuje nativně připojit počítače v několika předplatných ve stejném tenantovi.
 
-Až CVE vydání, trvá 2 – 3 hodiny pro opravu se zobrazí pro počítače s Linuxem pro posouzení.  Pro počítače s Windows trvá 12 až 15 hodin pro opravu zobrazení pro posouzení po byla uvolněna.
+Po vydání balíčku, trvá 2 – 3 hodiny pro opravu se zobrazí pro počítače s Linuxem pro posouzení. Pro počítače s Windows trvá 12 až 15 hodin pro opravu zobrazení pro posouzení po byla uvolněna.
 
 Po dokončení kontroly dodržování předpisů pro aktualizace do počítače agenta předává informace hromadné protokoly Azure monitoru. Na počítači s Windows se kontrola dodržování předpisů ve výchozím nastavení spouští každých 12 hodin.
 

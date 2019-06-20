@@ -11,12 +11,12 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 05/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 93fc9a4e9e44bd7e8db3d49fe390ebe273c45ce9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 638d7bfb0e396874415c1055c4b707a65caffa4e
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66239042"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67269299"
 ---
 # <a name="access-data-from-your-datastores"></a>Přístup k datům z vašich úložišť
 
@@ -59,7 +59,19 @@ ds = ws.get_default_datastore()
 
 ### <a name="register-your-own-datastore-with-the-workspace"></a>Zaregistrujte své vlastní úložiště dat s pracovním prostorem
 
-Pokud máte existující služby Azure Storage, můžete ho zaregistrovat jako úložiště dat ve svém pracovním prostoru.   Všechny metody registrace jsou na [ `Datastore` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) třídy a mít formulář register_azure_ *. 
+Pokud máte existující služby Azure Storage, můžete ho zaregistrovat jako úložiště dat ve svém pracovním prostoru. 
+
+<a name="store"></a>
+
+####  <a name="storage-guidance"></a>Pokynů pro Storage
+
+Doporučujeme, abyste úložiště objektů blob storage a blob. Storage úrovně standard a premium jsou k dispozici pro objekty BLOB. I když dražší, doporučujeme storage úrovně premium z důvodu rychlejší propustnost, které mohou zlepšit rychlost trénování spuštění particlularly trénování proti velké datové sady. Zobrazit [cenovou kalkulačku Azure](https://azure.microsoft.com/pricing/calculator/?service=machine-learning-service) pro účet úložiště, informace o nákladech.
+
+>[!NOTE]
+> Služba Azure Machine Learning podporuje jiné typy úložišť, které mohou být užitečné pro konkrétní scénáře. Například pokud potřebujete k trénování pomocí dat uložených v databázi, můžete použít AzureSQLDatabaseDatastore nebo AzurePostgreSqlDatastore. Zobrazit [Tato tabulka](#matrix) pro dostupné úložiště dat typů.
+
+#### <a name="register-your-datastore"></a>Zaregistrovat vaše úložiště dat
+Všechny metody registrace jsou na [ `Datastore` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) třídy a mít formulář register_azure_ *.
 
 Následující příklady ukazují registraci kontejneru objektů Blob v Azure nebo sdílené složky Azure jako datového úložiště.
 
@@ -178,6 +190,7 @@ ds.path('./bar').as_download()
 > [!NOTE]
 > Žádné `ds` nebo `ds.path` objektu se překládá na název proměnné prostředí ve formátu `"$AZUREML_DATAREFERENCE_XXXX"` jehož hodnota představuje cestu k připojení a stahování na cílové výpočetní prostředky. Cesta úložiště dat na cílové výpočetní nemusí být stejný jako cesta provedení pro cvičný skript.
 
+<a name="matrix"></a>
 ### <a name="training-compute-and-datastore-matrix"></a>Matice školení výpočetní výkon a úložiště dat
 
 Následující matice zobrazí funkce technologie přístup dostupných dat pro různé školení cílových výpočetních prostředí a úložiště dat scénáře. Další informace o [školení pro Azure Machine Learning compute cíle](how-to-set-up-training-targets.md#compute-targets-for-training).
@@ -194,7 +207,7 @@ Následující matice zobrazí funkce technologie přístup dostupných dat pro 
 | Azure DataLake Analytics       |neuvedeno                                           |neuvedeno                                           |[ML&nbsp;kanály](concept-ml-pipelines.md)             |neuvedeno                                                                         |
 
 > [!NOTE]
-> Můžou existovat scénáře, ve kterých vysoce iterativní velkých objemů dat procesy jsou spuštěny rychleji pomocí [`as_download()`] místo [`as_mount()`]; to může být ověřen experimentálně.
+> Můžou existovat scénáře, ve kterých vysoce iterativní velkých objemů dat procesy jsou spuštěny rychleji pomocí `as_download()` místo `as_mount()`; to může být ověřen experimentálně.
 
 ### <a name="examples"></a>Příklady 
 

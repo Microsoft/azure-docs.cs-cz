@@ -1,23 +1,17 @@
 ---
 title: Funkce šablon Resource Manageru | Dokumentace Microsoftu
 description: Popisuje funkce používané k načtení hodnoty, práci s řetězci a numerické hodnoty a načíst informace o nasazení šablony Azure Resource Manageru.
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-ms.assetid: 0644abe1-abaa-443d-820d-1966d7d26bfd
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 04/08/2019
 ms.author: tomfitz
-ms.openlocfilehash: 80f5c59f5a113bbe29d18bae41ba44adc338a4b7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 201fea91aba2a14720a7c28df5128f94e9e327fd
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67069283"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205430"
 ---
 # <a name="azure-resource-manager-template-functions"></a>Funkce šablon Azure Resource Manageru
 Tento článek popisuje všechny funkce, které můžete použít v šabloně Azure Resource Manageru. Informace o používání funkcí v šabloně najdete v tématu [syntaxe šablony](resource-group-authoring-templates.md#syntax).

@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/07/2019
+ms.date: 06/18/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 00501ec72dff99f93fa04944c5ab733fce38ce21
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9f5f9b3595074c26c80c824052727e962b01162a
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67074012"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275038"
 ---
 # <a name="understand-role-definitions-for-azure-resources"></a>Pochopení definic rolí pro prostředky Azure
 
@@ -52,7 +52,8 @@ Operace jsou určeny pomocí řetězce, které mají tento formát:
 | ------------------- | ------------------- |
 | `*` | Zástupný znak uděluje přístup ke všem operacím, které odpovídají řetězci. |
 | `read` | Povolí čtení (GET). |
-| `write` | Umožňuje zapisovat operací (PUT, POST a PATCH). |
+| `write` | Umožňuje zapisovat operace (PUT nebo PATCH). |
+| `action` | Umožňuje vlastní operace, jako je restartování virtuálních počítačů (POST). |
 | `delete` | Umožňuje odstranit operace (DELETE). |
 
 Tady je [Přispěvatel](built-in-roles.md#contributor) definice role ve formátu JSON. Zástupný znak (`*`) provozu `Actions` označuje, že objekt zabezpečení přiřazené k této roli mohou provádět všechny akce, nebo jinými slovy, všechno, co dokáže spravovat. To zahrnuje akce definované v budoucnu se přidá nové typy prostředků Azure. Operace v rámci `NotActions` jsou odečtena od `Actions`. V případě třídy [Přispěvatel](built-in-roles.md#contributor) role, `NotActions` odstraní tato role umožňuje spravovat přístup k prostředkům a také přiřazení přístupu k prostředkům.
@@ -79,7 +80,7 @@ Tady je [Přispěvatel](built-in-roles.md#contributor) definice role ve formátu
 }
 ```
 
-## <a name="management-and-data-operations-preview"></a>Operace správy a dat (Preview)
+## <a name="management-and-data-operations"></a>Operace správy a data
 
 Řízení přístupu na základě rolí pro operace správy je zadán v `Actions` a `NotActions` vlastnosti definice role. Tady je několik příkladů operací správy v Azure:
 
@@ -89,7 +90,7 @@ Tady je [Přispěvatel](built-in-roles.md#contributor) definice role ve formátu
 
 Přístup pro správu není zděděno k vašim datům. Toto oddělení brání role se zástupnými znaky (`*`) z mají stejně neomezený přístup k vašim datům. Například, pokud má uživatel [čtečky](built-in-roles.md#reader) role v rámci předplatného, pak mohou zobrazit účet úložiště, ale ve výchozím nastavení se nedá podívat na podkladová data.
 
-Řízení přístupu na základě rolí nebyla dříve, použít pro operace s daty. Autorizace pro operace s daty různorodé přes poskytovatele prostředků. Model pro autorizace stejné řízení přístupu na základě rolí používá pro operace správy rozšířilo a operace s daty (aktuálně ve verzi preview).
+Řízení přístupu na základě rolí nebyla dříve, použít pro operace s daty. Autorizace pro operace s daty různorodé přes poskytovatele prostředků. Model pro autorizace stejné řízení přístupu na základě rolí používá pro operace správy rozšířilo a operace s daty.
 
 Pro podporu operace s daty, byly přidány nové vlastnosti dat struktuře definice role. Operace s daty jsou určené v `DataActions` a `NotDataActions` vlastnosti. Přidáním těchto vlastností dat se udržuje oddělení mezi správou a data. To zabrání aktuální přiřazení rolí se zástupnými znaky (`*`) z náhle mají přístup k datům. Tady jsou některé operace s daty, které lze zadat v `DataActions` a `NotDataActions`:
 
@@ -169,11 +170,7 @@ Zobrazení a práce s operace s daty, musí mít správné verze prvků nástroj
 
 Zobrazení a použití operací s daty v rozhraní REST API, je nutné nastavit **verze api-version** parametr na následující verze nebo novější:
 
-- 2018-01-01-preview
-
-Na webu Azure portal také umožňuje uživatelům prohlížet a spravovat obsah front a objektů Blob v kontejnerech přes Azure AD ve verzi preview prostředí. Zobrazit a spravovat obsah kontejneru kliknutím fronty nebo objektu Blob **zkoumání dat pomocí Azure AD ve verzi preview** na účet úložiště – Přehled.
-
-![Prozkoumejte službu front a objektů Blob kontejnerů pomocí Azure AD ve verzi preview](./media/role-definitions/rbac-dataactions-browsing.png)
+- 2018-07-01
 
 ## <a name="actions"></a>Akce
 
@@ -195,7 +192,7 @@ Na webu Azure portal také umožňuje uživatelům prohlížet a spravovat obsah
 > Pokud uživatel je přiřazena role, který vylučuje operace v `NotActions`a je mu přiřazená druhá role, která uděluje přístup ke stejné operace má uživatel k provedení této operace. `NotActions` není odmítnout pravidlo – je jednoduše pohodlný způsob, jak vytvořit sadu povolených operací při určité operace je třeba vyloučit.
 >
 
-## <a name="dataactions-preview"></a>DataActions (Preview)
+## <a name="dataactions"></a>DataActions
 
 `DataActions` Oprávnění určuje datové operace, které povoluje roli mají být provedeny ke svým datům v rámci daného objektu. Například pokud uživatel má přístup k datům objektu blob do účtu úložiště najdete potom může číst objekty BLOB v rámci tohoto účtu úložiště. Tady je několik příkladů operace s daty, které lze použít v `DataActions`.
 
@@ -206,7 +203,7 @@ Na webu Azure portal také umožňuje uživatelům prohlížet a spravovat obsah
 | `Microsoft.Storage/storageAccounts/ queueServices/queues/messages/read` | Vrátí zprávu. |
 | `Microsoft.Storage/storageAccounts/ queueServices/queues/messages/*` | Vrátí zprávu nebo psaní nebo odstranění zprávy. |
 
-## <a name="notdataactions-preview"></a>NotDataActions (Preview)
+## <a name="notdataactions"></a>NotDataActions
 
 `NotDataActions` Oprávnění určuje datové operace, které jsou vyloučené z povolených `DataActions`. Udělení přístupu podle role (efektivní oprávnění) je vypočítána odečtením `NotDataActions` operací `DataActions` operace. Každý poskytovatel prostředků nabízí jeho odpovídající sadu rozhraní API pro splnění operace s daty.
 

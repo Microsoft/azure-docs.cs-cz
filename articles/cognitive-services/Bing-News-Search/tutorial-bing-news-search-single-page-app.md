@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Vytvoření webové jednostránkové aplikace – rozhraní API pro vyhledávání zpráv Bingu'
+title: 'Kurz: Vytvoření jednostránkovou webovou aplikaci pomocí rozhraní API pro vyhledávání zpráv Bingu'
 titlesuffix: Azure Cognitive Services
 description: Pomocí tohoto kurzu můžete vytvářet jednostránkovou webovou aplikaci, která může posílat vyhledávací dotazy do rozhraní API Bingu zpráv a zobrazení výsledků v rámci webové stránky.
 services: cognitive-services
@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: tutorial
-ms.date: 01/10/2019
+ms.date: 06/19/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 78a985180fb2b665aed75b39acfc4d39ccd04132
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 144ad8761b4d462012963e040b7699e38587831b
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65798561"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67272789"
 ---
 # <a name="tutorial-create-a-single-page-web-app"></a>Kurz: Vytvoření jednostránkové webové aplikace
 
@@ -271,7 +271,7 @@ function handleBingResponse() {
 
 Velká část kódu v obou předchozích funkcích je vyhrazená zpracování chyb. V následujících fázích můžou nastat chyby:
 
-|Fáze|Potenciální chyby|Čím se zpracuje|
+|Stage|Potenciální chyby|Čím se zpracuje|
 |-|-|-|
 |Vytváření javascriptového objektu požadavku|Neplatná adresa URL|Blok `try`/`catch`|
 |Provedení žádosti|Chyby sítě, přerušená připojení|Obslužné rutiny událostí `error` a `abort`|
@@ -315,7 +315,7 @@ function renderResults(items) {
 ```
 Rozhraní API Bingu pro vyhledávání zpráv vrátí až čtyři různé druhy souvisejících výsledků, každý ve vlastním objektu nejvyšší úrovně. Jsou to tyto:
 
-|Vztah|Popis|
+|Relace|Popis|
 |-|-|
 |`pivotSuggestions`|Dotazy, které nahradí pivotové slovo v původním vyhledávání jiným. Pokud třeba vyhledáváte „červené květiny“, pivotové slovo může být „červené“ a pivotový návrh může být „žluté květiny“.|
 |`queryExpansions`|Dotazy, které původní hledání zúží přidáním dalších výrazů. Pokud třeba vyhledáváte „Microsoft Surface“, rozšíření dotazu může být „Microsoft Surface Pro“.|
@@ -326,7 +326,7 @@ Jak jste už viděli v `renderSearchResults()`, vykreslujeme jenom návrhy `rela
 
 ## <a name="rendering-result-items"></a>Vykreslování položek výsledků
 
-V kódu JavaScriptu objekt `searchItemRenderers` obsahuje funkce *renderers:*, které generují kód HTML pro každý druh výsledku hledání.
+V kódu JavaScriptu objekt `searchItemRenderers` obsahuje funkce *renderers:* , které generují kód HTML pro každý druh výsledku hledání.
 
 ```javascript
 searchItemRenderers = {

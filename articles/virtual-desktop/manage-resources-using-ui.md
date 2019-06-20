@@ -7,14 +7,14 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: v-chjenk
-ms.openlocfilehash: 3635cd422e4c7a064d3317401b734f3bc6ccb6c6
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.openlocfilehash: 4db9e6eaf2d7f7630d3d412d5519d97f8beca3ad
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67136453"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67272833"
 ---
-# <a name="tutorial-deploy-a-management-tool"></a>Kurz: Nasaďte nástroj pro správu
+# <a name="tutorial-deploy-a-management-tool"></a>Kurz: Nasazení nástroje pro správu
 
 Nástroj pro správu poskytuje uživatelské rozhraní (UI) pro správu prostředků služby Microsoft Virtual Desktop Preview. V tomto kurzu se dozvíte, jak nasadit a připojit nástroj pro správu.
 
@@ -62,9 +62,29 @@ Tady je postup pro konfiguraci nástroje zadat parametry:
 - Použijte svoje přihlašovací údaje AAD se používá služba MFA zakázané, aby se přihlaste k Azure. Zobrazit [co je potřeba spustit šablonu Azure Resource Manageru](#what-you-need-to-run-the-azure-resource-manager-template).
 - Použijte jedinečný název aplikace, který se zaregistruje ve službě Azure Active Directory pro nástroj pro správu; například Apr3UX.
 
-## <a name="use-the-management-tool"></a>Použijte nástroj pro správu
+## <a name="provide-consent-for-the-management-tool"></a>Zadejte svůj souhlas pro nástroj pro správu
 
 Po GitHub Azure Resource Manageru šablony se dokončí, budete najít skupinu prostředků obsahující dvě aplikace služeb společně s jeden plán služby app service na webu Azure Portal.
+
+Před přihlášení a použijte nástroj pro správu budete potřebovat k poskytnutí souhlasu pro nové aplikace Azure Active Directory, která souvisí s nástroj pro správu. Tím, že poskytuje souhlasu, chcete povolit nástroj pro správu pro volání virtuální plochy Windows management jménem uživatele, kteří se přihlásí do nástroje.
+
+Chcete-li zjistit, který uživatel můžete použít k přihlášení k nástroji, přejděte na vaše [stránka nastavení uživatele Azure Active Directory](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/) a poznamenejte si hodnoty pro **uživatelé můžou udělit souhlas s aplikací, které přistupují k firemním datům jejich jménem**.
+
+- Pokud je hodnota nastavena na **Ano**, může přihlásit pomocí libovolného uživatelského účtu ve službě Azure Active Directory a poskytnout souhlas pouze pro tohoto uživatele. Ale pokud se přihlásíte na nástroj pro správu jako jiný uživatel později, musíte provést stejné souhlasu znovu.
+- Pokud je hodnota nastavena na **ne**, je nutné přihlášení pomocí globálního správce ve službě Azure Active Directory a poskytnout souhlas správce pro všechny uživatele v adresáři. Nebudete 
+
+
+Jakmile se rozhodnete, který uživatel bude používat k poskytování souhlas, postupujte podle těchto pokynů k poskytování vyjadřujete souhlas s nástroji:
+
+1. Přejděte na prostředky Azure, vyberte prostředek Azure App Service s názvem, který jste zadali v šabloně (například Apr3UX) a přejděte na adresu URL přidruženou. například <https://rdmimgmtweb-210520190304.azurewebsites.net>.
+2. Přihlaste se pomocí odpovídajícího účtu uživatele Azure Active Directory.
+3. Pokud jste ověření s globálním správcem, teď můžete vybrat zaškrtávací políčko k **souhlas jménem svojí organizace**. Vyberte **přijmout** poskytnout souhlas.
+
+To teď přejdete na nástroje pro správu.
+
+## <a name="use-the-management-tool"></a>Použijte nástroj pro správu
+
+Nástroj pro správu po zadání souhlasu pro organizaci nebo pro zadaného uživatele, dostanete v okamžiku.
 
 Postupujte podle těchto pokynů a spustí se nástroj pro:
 

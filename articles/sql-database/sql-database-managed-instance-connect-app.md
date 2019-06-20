@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 manager: craigg
 ms.date: 11/09/2018
-ms.openlocfilehash: 6cbfdc9e595ebdf682356990ec975dbd0514035d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5f4a1962f90d54001f315827c1243e929344e3d7
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66297095"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274016"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Připojení aplikace k Azure SQL Database Managed Instance
 
@@ -45,7 +45,7 @@ Existují dvě možnosti pro propojení virtuálních sítí:
 Možnost vytvoření partnerského vztahu je vhodnější než ten, protože partnerský vztah pomocí páteřní síti Microsoft tedy z hlediska připojení, není žádný rozdíl znatelný latence mezi virtuálními počítači v partnerské virtuální síti a ve stejné virtuální síti. Služba VNet peering je omezená na sítě ve stejné oblasti.  
 
 > [!IMPORTANT]
-> Scénář sítě VNet peering pro Managed Instance je omezená na sítě ve stejné oblasti kvůli [omezení partnerských vztahů virtuálních sítí globální](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints).
+> Scénář sítě VNet peering pro Managed Instance je omezená na sítě ve stejné oblasti kvůli [omezení partnerských vztahů virtuálních sítí globální](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints). Viz také odpovídající část [Azure virtuální sítě – nejčastější dotazy](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) , kde najdete další podrobnosti. 
 
 ## <a name="connect-an-on-premises-application"></a>Připojení místní aplikaci
 

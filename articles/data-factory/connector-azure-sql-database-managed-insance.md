@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: jingwang
-ms.openlocfilehash: e68b522d5a0fe7c359d83fc436aa7a1fd2159198
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9208ceeb760bba97c12b23a1b6e5bdff7efc9020
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67048590"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274819"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-managed-instance-by-using-azure-data-factory"></a>Kopírování dat do a z Azure SQL Database Managed Instance pomocí služby Azure Data Factory
 
@@ -33,7 +33,11 @@ Konkrétně tento konektor Azure SQL Database Managed Instance podporuje:
 - Jako zdroj načítání dat pomocí jazyka SQL nebo uloženou proceduru.
 - Jako jímka, připojení dat do cílové tabulky nebo volání uložené procedury s vlastní logikou během kopírování.
 
-SQL Server [s funkcí Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-2017) není nyní podporován. 
+>[!NOTE]
+>Azure SQL Database Managed Instance **[s funkcí Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=azuresqldb-mi-current)** není nyní podporován tímto konektorem. Chcete-li vyřešit, můžete použít [obecný konektor ODBC](connector-odbc.md) a ovladač ODBC systému SQL Server přes modul Integration Runtime. Postupujte podle [návod](https://docs.microsoft.com/sql/connect/odbc/using-always-encrypted-with-the-odbc-driver?view=azuresqldb-mi-current) konfigurací ODBC ovladač stahování a připojovací řetězec.
+
+>[!NOTE]
+>Ověření identity objektu zabezpečení a spravované služby se momentálně nepodporují tímto konektorem a plánem zajistit krátce po. Teď, chcete-li vyřešit můžete zvolit, že konektor Azure SQL Database a ručně zadejte adresu serveru spravované instance.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -57,7 +61,7 @@ Pro službu Azure SQL Database Managed Instance propojené se podporují násled
 | connectionString |Tato vlastnost určuje informace připojovací řetězec, který je nezbytný pro připojení do spravované instance pomocí ověřování SQL. Další informace najdete v tématu v následujících příkladech. <br/>Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory. Můžete také umístit hesla ve službě Azure Key Vault, a pokud se jedná o přijetí změn ověřování SQL `password` konfigurace z připojovacího řetězce. Podívejte se na příklad JSON pod tabulkou a [Store přihlašovacích údajů ve službě Azure Key Vault](store-credentials-in-key-vault.md) článku s dalšími podrobnostmi. |Ano. |
 | connectVia | To [prostředí integration runtime](concepts-integration-runtime.md) se používá pro připojení k úložišti. (Pokud spravované instance má veřejný koncový bod a umožňují pro přístup k ADF), můžete použít modul Integration Runtime nebo prostředí Azure Integration Runtime. Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. |Ano. |
 
-**Příklad 1: Použít ověřování SQL**
+**Příklad 1: Použít ověřování SQL** výchozí port je 1433. Pokud používáte spravované Instance SQL s veřejným koncovým bodem, explicitně zadejte port 3342.
 
 ```json
 {
@@ -67,7 +71,7 @@ Pro službu Azure SQL Database Managed Instance propojené se podporují násled
         "typeProperties": {
             "connectionString": {
                 "type": "SecureString",
-                "value": "Data Source=<servername:port>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;Password=<password>;"
+                "value": "Data Source=<hostname,port>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;Password=<password>;"
             }
         },
         "connectVia": {
@@ -78,7 +82,7 @@ Pro službu Azure SQL Database Managed Instance propojené se podporují násled
 }
 ```
 
-**Příklad 2: Použít ověřování SQL pomocí hesla ve službě Azure Key Vault**
+**Příklad 2: Použít ověřování SQL pomocí hesla ve službě Azure Key Vault** výchozí port je 1433. Pokud používáte spravované Instance SQL s veřejným koncovým bodem, explicitně zadejte port 3342.
 
 ```json
 {
@@ -88,7 +92,7 @@ Pro službu Azure SQL Database Managed Instance propojené se podporují násled
         "typeProperties": {
             "connectionString": {
                 "type": "SecureString",
-                "value": "Data Source=<servername>\\<instance name if using named instance>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;"
+                "value": "Data Source=<hostname,port>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;"
             },
             "password": { 
                 "type": "AzureKeyVaultSecret", 

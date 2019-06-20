@@ -10,12 +10,13 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 7157682d7952529f9dfa98e8bc8707df9cfe944f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: fasttrack-edit
+ms.openlocfilehash: b3e94bfdb513016015320dfcdf7db30981466303
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66509246"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67272073"
 ---
 # <a name="oauth-20-authorization-code-flow-in-azure-active-directory-b2c"></a>Tok autorizačního kódu OAuth 2.0 v Azure Active Directory B2C
 
@@ -116,7 +117,9 @@ error=access_denied
 | state |Viz úplný popis v předchozí tabulce. Pokud `state` parametr je zahrnutý v požadavku, stejnou hodnotu by se měla zobrazit v odpovědi. Aplikace by měla ověřte, že `state` hodnoty v požadavku a odpovědi jsou identické. |
 
 ## <a name="2-get-a-token"></a>2. Získání tokenu
-Teď, když jste získali autorizační kód, uplatněte `code` pro token určený prostředek odesláním požadavkům POST odeslaných `/token` koncového bodu. V Azure AD B2C je jediný zdroj, který můžete požádat o token pro vaši vlastní back endové webové aplikace API. Konvence, která slouží k vyžádání tokenu sami sobě je použít ID klienta aplikace jako obor:
+Teď, když jste získali autorizační kód, uplatněte `code` pro token určený prostředek odesláním požadavkům POST odeslaných `/token` koncového bodu. V Azure AD B2C, můžete [požádat o tokeny přístupu pro další rozhraní API](active-directory-b2c-access-tokens.md#request-a-token) obvyklým zadáním jejich počet rozsahů: v požadavku.
+
+Také můžete vyžádat přístupového tokenu pro vaše aplikace vlastní back endové webové rozhraní API podle konvence pomocí ID klienta aplikace jako požadovaný obor (což bude mít za následek přístupový token s tímto ID klienta jako "cílovou skupinu"):
 
 ```
 POST fabrikamb2c.onmicrosoft.com/oauth2/v2.0/token?p=b2c_1_sign_in HTTP/1.1

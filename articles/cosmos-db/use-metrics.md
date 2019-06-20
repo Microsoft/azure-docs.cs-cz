@@ -5,24 +5,48 @@ ms.service: cosmos-db
 author: kanshiG
 ms.author: sngun
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 06/18/2019
 ms.reviewer: sngun
-ms.openlocfilehash: b7633b75bbb6d37c68a562560a6459e35d03b810
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ef457fe8c21bc7e62f910a78913069df32bea1a3
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66242541"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275687"
 ---
 # <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>Monitorování a ladění s využitím metrik ve službě Azure Cosmos DB
 
-Azure Cosmos DB poskytuje metriky pro výkon, úložiště, konzistencí, dostupností a latencí. [Webu Azure portal](https://portal.azure.com) poskytuje souhrnný náhled na tyto metriky. Podrobnější metriky, jak Klientská sada SDK a [diagnostické protokoly](./logging.md) jsou k dispozici.
+Azure Cosmos DB poskytuje metriky pro výkon, úložiště, konzistencí, dostupností a latencí. Na webu Azure portal poskytuje souhrnný náhled na tyto metriky. Můžete také zobrazit metriky služby Azure Cosmos DB z rozhraní API služby Azure Monitor. Další informace o tom, jak zobrazit metriky ze služby Azure monitor, najdete v článku [získat metriky ze služby Azure Monitor](cosmos-db-azure-monitor-metrics.md) článku. 
 
 Tento článek vás provede běžné případy použití a použití metrik služby Azure Cosmos DB k analýze a ladění těchto problémů. Metriky shromažďovaných každých pět minut a uchovávají po dobu sedmi dní.
 
+## <a name="view-metrics-from-azure-portal"></a>Zobrazení metrik z webu Azure portal
+
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+
+1. Otevřít **metriky** podokně. Ve výchozím nastavení v podokně metriky se zobrazují úložiště, index, požadavek jednotky metriky pro všechny databáze ve vašem účtu Azure Cosmos. Můžete filtrovat tyto metriky na databázi, kontejner nebo oblast. Můžete také filtrovat na konkrétní časové intervaly metriky. Další informace o propustnosti, úložiště, dostupnosti, latence a konzistence metriky jsou k dispozici v samostatných kartách. 
+
+   ![Metriky výkonu služby cosmos DB na webu Azure portal](./media/use-metrics/performance-metrics.png)
+
+Tyto metriky jsou k dispozici **metriky** podokna: 
+
+* **Metriky propustnosti** – tato metrika zobrazuje počet požadavků využitý nebo se nezdařilo (kód odpověď 429), protože byla překročena kapacita propustnosti nebo úložiště zřízené pro kontejner.
+
+* **Metriky úložiště** – tato metrika uvádí velikost využití dat a indexu.
+
+* **Metriky dostupnosti** – tato metrika zobrazuje procento úspěšných požadavků za celkový počet požadavků za hodinu. Smlouvách SLA v Azure Cosmos DB je definována míra úspěšnosti.
+
+* **Metriky latence** – tato metrika zobrazuje prostřednictvím služby Azure Cosmos DB v oblasti, ve kterém je váš účet operační latence pro čtení a zápisu. Můžete vizualizovat latence napříč oblastmi geograficky replikovaného účtu. Tato metrika nepředstavuje vyřízení požadavku začátku do konce.
+
+* **Metriky konzistence** – tato metrika ukáže, jak konečnou konzistenci pro model pro zajištění konzistence zvolíte. Tato metrika pro účty ve více oblastech, také ukazuje latence replikace mezi oblastmi, které jste vybrali.
+
+* **Systémové metriky** – tato metrika zobrazuje, kolik žádostí o metadata jsou obsluhovány hlavním oddílu. Také pomáhá identifikovat omezené požadavky.
+
+Následující části popisují obvyklé scénáře, kde můžete použít metriky Azure Cosmos DB. 
+
 ## <a name="understand-how-many-requests-are-succeeding-or-causing-errors"></a>Porozumět, kolik požadavků jsou buď úspěšné nebo příčinou chyb
 
-Abyste mohli začít, přejděte k [webu Azure portal](https://portal.azure.com) a přejděte do **metriky** okno. V okně Najít **počet žádostí překračujících kapacitu za 1 minutu** grafu. Tento graf zobrazuje celkový počet minut pomocí minutu požadavků segmentované podle stavový kód. Další informace o stavových kódů HTTP najdete v tématu [stavové kódy HTTP pro službu Azure Cosmos DB](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb).
+Abyste mohli začít, přejděte k [webu Azure portal](https://portal.azure.com) a přejděte do **metriky** okno. V okně Najít ** počet žádostí překračujících kapacitu za 1 minutu grafu. Tento graf zobrazuje celkový počet minut pomocí minutu požadavků segmentované podle stavový kód. Další informace o stavových kódů HTTP najdete v tématu [stavové kódy HTTP pro službu Azure Cosmos DB](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb).
 
 Je nejběžnější stavový kód chyby 429 (frekvence omezení nebo omezení využití sítě). Tato chyba znamená, že požadavky na služby Azure Cosmos DB překračuje zřízenou propustnost. Nejběžnější řešením tohoto problému je [vertikálně navýšit kapacitu jednotky ru](./set-throughput.md) pro danou kolekci.
 
@@ -87,5 +111,6 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 Nyní jste zjistili, jak monitorovat a ladění problémů pomocí metrik na webu Azure Portal k dispozici. Chcete další informace týkající se vylepšení výkonu databáze najdete v následujících článcích:
 
+* Další informace o tom, jak zobrazit metriky ze služby Azure monitor, najdete v článku [získat metriky ze služby Azure Monitor](cosmos-db-azure-monitor-metrics.md) článku. 
 * [Testování pomocí služby Azure Cosmos DB výkonu a škálování](performance-testing.md)
 * [Tipy ke zvýšení výkonu pro službu Azure Cosmos DB](performance-tips.md)

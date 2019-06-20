@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-pawal
-ms.openlocfilehash: 973d38413fa39fec1c50b5e9770b6114fa2c4c3d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f58ff566ebb83ed6163637aa3899a925ed06242a
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66387518"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67269215"
 ---
 # <a name="translator-text-api-v30"></a>Translator Text API v3.0
 
@@ -154,6 +154,7 @@ Kód chyby je, chybu zařadit 6místným číselným číslo kombinování stavo
 | 400075| Kombinace jazyka párování a kategorii není platné.|
 | 400077| Byla překročena maximální požadavek velikost. Zobrazení [omezení počtu požadavků](../request-limits.md).|
 | 400079| Vlastní systém požadovaný pro překlad mezi z a do jazyka neexistuje.|
+| 400080| Přepis není podporována pro jazyk nebo skriptu.|
 | 401000| Požadavek není autorizovaný, protože jsou přihlašovací údaje chybí nebo je neplatný.|
 | 401015| "Zadané přihlašovací údaje jsou pro rozhraní API pro rozpoznávání řeči. Tato žádost vyžaduje přihlašovací údaje pro rozhraní Text API. Použijte prosím předplatné Translator Text API."|
 | 403000| Operace není povolena.|

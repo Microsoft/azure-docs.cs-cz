@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/03/2016
 ms.author: cephalin
 ms.openlocfilehash: d64e054313ed83f6e96f877da088d1d02e9c7cef
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62123582"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203796"
 ---
 [Plán služby App Service](../articles/app-service/overview-hosting-plans.md) určuje umístění, velikost a funkce farmy webových serverů, která je hostitelem vaší aplikace. Při hostování více aplikací můžete ušetřit peníze, pokud nakonfigurujete webové aplikace tak, aby sdílely jeden plán služby App Service.
 

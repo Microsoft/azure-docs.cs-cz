@@ -1,6 +1,6 @@
 ---
 title: Ukázky kódu pro Microsoft identity platform | Dokumentace Microsoftu
-description: Poskytuje index k dispozici Microsoft identity ukázky kódu platformy (koncového bodu V2), uspořádané podle scénáře.
+description: Poskytuje index k dispozici Microsoft identity ukázky kódu platformy (koncový bod verze 2.0), uspořádané podle scénáře.
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 327111182a4ad8958f2d852a88ba0608d8510c51
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 326b69bffa0cd5728b939a91cce4fab3f3a329f7
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67055908"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67272674"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Ukázky kódu pro platformy Microsoft identity (koncový bod v2.0)
 
@@ -34,18 +34,18 @@ Můžete použít Microsoft identity platform pro:
 - Přidat ověřování a autorizace do webových aplikací a webových rozhraní API.
 - Vyžadovat přístupový token pro přístup k chráněné webové rozhraní API.
 
-Tento článek stručně popisuje a poskytuje odkazy na ukázky pro koncový bod služby Microsoft identity platform. Tyto ukázky předvádějí, jak se to dělá, spolu s fragmenty kódu, které můžete použít ve svých aplikacích. Na stránce ukázky kódu najdete podrobný soubor Readme pro témata, která pomáhají s požadavky, instalace a nastavení. Existují komentáře v kódu vám pomůžou pochopit kritických oddílů.
+Tento článek stručně popisuje a poskytuje odkazy na ukázky pro koncový bod služby Microsoft identity platform. Tyto ukázky ukazují, jak se provádí a také poskytují fragmenty kódu, které můžete použít ve svých aplikacích. Na stránce ukázky kódu najdete podrobný soubor Readme pro témata, která pomáhají s požadavky, instalace a nastavení. Komentáře v kódu vám pomůže pochopit kritických oddílů.
 
 > [!NOTE]
-> Pokud vás zajímají ukázky v1.0, přečtěte si téma [ukázky kódu Azure AD (koncový bod verze 1.0)](sample-v1-code.md).
+> Pokud vás zajímá verze 1.0 ukázek, přečtěte si téma [ukázky kódu Azure AD (koncový bod verze 1.0)](sample-v1-code.md).
 
 Základní scénář pro každý typ vzorku najdete v tématu [typů aplikací pro koncový bod služby Microsoft identity platform](v2-app-types.md).
 
 Také můžete přispívat na ukázky na Githubu. Další informace o postupu [Microsoft Azure Active Directory ukázky a dokumentaci](https://github.com/Azure-Samples?page=3&query=active-directory).
 
-## <a name="single-page-applications-spa"></a>Jednostránkové aplikace (SPA)
+## <a name="single-page-applications"></a>Jednostránkové aplikace
 
-Tyto ukázky předvádějí, jak psát jednostránkovou aplikaci zabezpečené s platformou identity Microsoft. Tyto ukázky použijte jeden z typů MSAL.js:
+Tyto ukázky předvádějí, jak psát jednostránkovou aplikaci zabezpečené s platformou identity Microsoft. Tyto ukázky použijte jeden z typů MSAL.js.
 
 | Platforma | Popis | Odkaz |
 | -------- | --------------------- | -------- |
@@ -68,7 +68,7 @@ Následující ukázky ukazují webové aplikace, které se přihlásit uživate
 
 ## <a name="desktop-and-mobile-public-client-apps"></a>Desktop a mobile veřejné klientské aplikace.
 
-Následující ukázky ukazují veřejné klientské aplikace (desktop a mobilní aplikace), s přístupem k rozhraní Microsoft Graph API nebo vlastního webového rozhraní API jménem uživatele. Tyto klientské aplikace používají knihovny Microsoft Authentication (MSAL).
+Následující ukázky ukazují veřejné klientské aplikace (desktopové nebo mobilní aplikace), s přístupem k rozhraní Microsoft Graph API nebo vlastního webového rozhraní API jménem uživatele. Tyto klientské aplikace pomocí Microsoft Authentication Library (MSAL).
 
 | Klientská aplikace | Platforma | Tok/udělení | Volání Microsoft Graphu | Volání webového rozhraní API ASP.NET Core 2.0 |
 | ------------------ | -------- |  ----------| ---------- | ------------------------- |
@@ -90,7 +90,7 @@ Následující ukázky ukazují aplikaci, která má přístup k rozhraní Micro
 
 ## <a name="headless-applications"></a>Bezobslužného aplikací
 
-Následující příklad ukazuje veřejné klientské aplikace běžící na zařízeních bez webového prohlížeče. Aplikace může být nástroj příkazového řádku nebo běžet na systému Linux/Mac nebo IoT aplikaci. Ukázka funkce aplikace přístup k rozhraní Microsoft Graph API jménem uživatele, který přihlásí interaktivně na jiném zařízení (např. mobilní telefon). Tato klientská aplikace používá knihovny MicroSoft Authentication (MSAL).
+Následující příklad ukazuje veřejné klientské aplikace běžící na zařízeních bez webového prohlížeče. Nástroj příkazového řádku, aplikaci spuštěnou v prostředí Linux nebo Mac nebo IoT aplikace lze aplikaci. Ukázka funkce aplikace přístup k rozhraní Microsoft Graph API, jméno uživatele, který přihlásí interaktivně na jiném zařízení (např. mobilní telefon). Tato klientská aplikace používá Microsoft Authentication Library (MSAL).
 
 | Klientská aplikace | Platforma | Tok/udělení | Volání Microsoft Graphu |
 | ------------------ | -------- |  ----------| ---------- |
@@ -98,11 +98,11 @@ Následující příklad ukazuje veřejné klientské aplikace běžící na za�
 
 ## <a name="web-apis"></a>Webová rozhraní API
 
-Následující ukázky ukazuje, jak k ochraně webového rozhraní API s koncovým bodem Microsoft identity platform a jak volat podřízené rozhraní API z webové rozhraní API.
+Následující ukázky ukazují, jak k ochraně webového rozhraní API s koncovým bodem Microsoft identity platform a jak volat podřízené rozhraní API z webové rozhraní API.
 
 | Platforma | Ukázka |
 | -------- | ------------------- |
-| ![ASP.NET Core](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core 2.2 | ASP.NET Core webového rozhraní API (služba) z [dotnet-native-aspnetcore-v2](https://aka.ms/msidentity-aspnetcore-webapi-calls-msgraph)  |
+| ![ASP.NET Core](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core 2.2 | Webové rozhraní API (služba) technologie ASP.NET Core z [dotnet-native-aspnetcore-v2](https://aka.ms/msidentity-aspnetcore-webapi-calls-msgraph)  |
 | ![ASP.NET](media/sample-v2-code/logo_NET.png)</p>ASP.NET MVC | Webové rozhraní API (služba) [ms-identity-aspnet-webapi-prostřednictvím profilu onbehalfof](https://github.com/Azure-Samples/ms-identity-aspnet-webapi-onbehalfof) |
 
 ## <a name="other-microsoft-graph-samples"></a>Další ukázky Microsoft Graphu

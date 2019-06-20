@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9accb41cdb4d780bf137d6872cca022226f902e6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b0c9699bccbb539c9617fac2f3296483139e7188
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61443092"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203170"
 ---
 # <a name="configure-role-based-access-controls-in-the-remote-monitoring-solution-accelerator"></a>Konfigurace řízení přístupu na základě rolí v akcelerátoru řešení vzdáleného monitorování
 
@@ -91,11 +91,11 @@ Následující kroky popisují, jak přidat roli do aplikace v Azure Active Dire
 
 1. Najít **registrace aplikace** pro vaše řešení na webu Azure Portal. Název aplikace je název vašeho řešení vzdáleného monitorování. Na následujícím snímku obrazovky zobrazované názvy řešení a aplikace jsou **contoso-rm4**.
 
-    ![Registrace aplikací](media/iot-accelerators-remote-monitoring-rbac/appregistration2.png)
+    ![Registrace aplikací](media/iot-accelerators-remote-monitoring-rbac/app-registration-2.png)
 
 1. Vyberte svou aplikaci a pak klikněte na tlačítko **Manifest**. Zobrazí se dva existující [role aplikace](https://docs.microsoft.com/azure/architecture/multitenant-identity/app-roles) definované pro aplikaci:
 
-    ![Zobrazení manifestu](media/iot-accelerators-remote-monitoring-rbac/viewmanifest.png)
+    ![Zobrazení manifestu](media/iot-accelerators-remote-monitoring-rbac/view-manifest.png)
 
 1. Upravit manifest pro přidat roli s názvem **ManageDevices** jak je znázorněno v následujícím fragmentu kódu. Budete potřebovat jedinečný řetězec jako identifikátor GUID pro nové ID role. Můžete vygenerovat nový identifikátor GUID pomocí služby, jako [Online GUID Generator](https://www.guidgenerator.com/):
 

@@ -1,22 +1,22 @@
 ---
 title: Co je rozhraní API Bingu pro vyhledávání zpráv?
 titlesuffix: Azure Cognitive Services
-description: Další informace o použití rozhraní API pro vyhledávání zpráv Bingu pro vyhledávání na webu pro aktuální titulky v několika kategoriích, včetně titulky a sledování trendů témata.
+description: Další informace o použití rozhraní API pro vyhledávání zpráv Bingu pro vyhledávání na webu pro aktuální titulky v kategoriích, včetně titulky a sledování trendů témata.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: overview
-ms.date: 01/10/2019
+ms.date: 06/19/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: e02f81ef6bdf8bf4dc39b70cb7a2d9330660d1d6
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: d4d8c35869fbfc13220aba037a97aadd3cea01c2
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66390298"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67272716"
 ---
 # <a name="what-is-the-bing-news-search-api"></a>Co je rozhraní API Bingu pro vyhledávání zpráv?
 

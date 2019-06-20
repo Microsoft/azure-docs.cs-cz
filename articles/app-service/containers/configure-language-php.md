@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: cephalin
-ms.openlocfilehash: 637feb855c7816dfb26229c5a65a069260a58cd3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 279660d903b3b0e893c3ccddb89da7c6dc42fa09
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66003099"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205080"
 ---
 # <a name="configure-a-linux-php-app-for-azure-app-service"></a>Konfigurace aplikace v jazyce PHP Linuxem pro Azure App Service
 
@@ -167,7 +167,7 @@ Opětovné nasazení aplikace se změnami a restartujte ji. Pokud provádíte na
 
 Jako alternativu k použití *.htaccess*, můžete použít [ini_set()](https://www.php.net/manual/function.ini-set.php) ve vaší aplikaci přizpůsobit tyto jiné PHP_INI_SYSTEM direktivy.
 
-### <a name="customize-phpinisystem-directives"></a>Přizpůsobení PHP_INI_SYSTEM direktivy
+### <a name="customize-php_ini_system-directives"></a>Přizpůsobení PHP_INI_SYSTEM direktivy
 
 Přizpůsobení PHP_INI_SYSTEM direktivy (naleznete v tématu [php.ini direktivy](https://www.php.net/manual/ini.list.php)), nelze použít *.htaccess* přístup. Služba App Service poskytuje samostatným mechanismem pomocí `PHP_INI_SCAN_DIR` nastavení aplikace.
 

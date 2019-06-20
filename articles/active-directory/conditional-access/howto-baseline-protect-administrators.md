@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f8b7f281ad5ed8424110696544ffdb49e50ce59
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9b2ffd2949c2540265539a743cb41d8070d7ba2a
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112427"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204634"
 ---
 # <a name="baseline-policy-require-mfa-for-admins"></a>Základní zásady: Vyžadování MFA pro správce
 
@@ -71,6 +71,9 @@ Tuto zásadu povolit a chránit vaše správce:
 1. Nastavte **povolit zásady** k **použít zásady okamžitě**.
 1. Kliknutím na Přidat všechny uživatele vyloučení **uživatelé** > **vybrat vyloučené uživatele** a výběru uživatelů, které je třeba vyloučit. Klikněte na tlačítko **vyberte** pak **provádí**.
 1. Klikněte na tlačítko **Uložit**.
+
+> [!WARNING]
+> Došlo možnost **povolit zásady automaticky v budoucnu** kdy tato zásada byla ve verzi preview. Odebrali jsme tuto možnost, chcete-li minimalizovat dopad na uživatele i s náhlými. Pokud jste vybrali tuto možnost, že je k dispozici, **nepoužívat zásady** automaticky je teď vybrán. Pokud chce použít tyto zásady na směrný plán, najdete v článku, aby je výše uvedené kroky.
 
 ## <a name="next-steps"></a>Další postup
 

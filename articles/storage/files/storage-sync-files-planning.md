@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 2/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7cbb934b87440d23e65fce53d7da40c5ffbd3150
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bc9f8e29a744a3a40d17b3814c7124eb37c1543b
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65597074"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67269415"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Plánování nasazení Synchronizace souborů Azure
 Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě soubory Azure, při zachování flexibility, výkonu a kompatibility s místními souborového serveru. Azure File Sync transformuje serveru systému Windows na rychlou mezipaměť sdílené složky Azure. Můžete použít jakýkoli protokol dostupný ve Windows serveru pro přístup k datům místně, včetně SMB, NFS a FTPS. Můžete mít libovolný počet mezipamětí po celém světě potřebujete.
@@ -174,6 +174,15 @@ Odstranění duplicitních dat se nepodporuje u svazků s cloudem ovládání da
 
 **Windows Server 2012 R2 nebo starší verzí agenta**  
 U svazků, které nemají povolené vrstvení cloudu Azure File Sync podporuje Windows Server povoleným odstraněním duplicitních dat se na svazku.
+
+**Poznámky**
+- Pokud odstranění duplicitních dat je nainstalovaný před instalací agenta Azure File Sync, restartování se vyžaduje pro podporu funkce odstranění duplicitních dat a cloudové ovládání datových vrstev na stejném svazku.
+- Pokud je povolené odstraňování duplicitních dat na svazku po cloud ovládání datových vrstev je povoleno, počáteční úlohy optimalizace odstranění duplicitních dat optimalizuje soubory na svazku, které již nejsou vrstvené a může mít následující dopad na cloud ovládání datových vrstev na:
+    - Volné místo zásad bude pokračovat na úrovni souborů podle volného místa na svazku pomocí Heat mapě.
+    - Datum zásad se přeskočí ovládání datových vrstev na souborů, které mohly jinak nárok ovládání datových vrstev na kvůli přístupu k souborům úlohu optimalizace odstranění duplicit.
+- Pro probíhající úloh optimalizace odstranění duplicit, s datem zásad vrstvení cloudu se získat opožděná. odstranění duplicitních dat [MinimumFileAgeDays](https://docs.microsoft.com/powershell/module/deduplication/set-dedupvolume?view=win10-ps) nastavení, pokud soubor již nebude vrstvený. 
+    - Příklad: Pokud MinimumFileAgeDays nastavení je 7 dní a datum zásady vrstvení cloudu je 30 dní, budou zásady datum vrstvy soubory po 37 dnech.
+    - Poznámka: Jakmile je soubor vrstvené Azure File Sync, úlohy optimalizace odstranění duplicit soubor přeskočí.
 
 ### <a name="distributed-file-system-dfs"></a>Systém souborů DFS (DFS)
 Azure File Sync podporuje zprostředkovatel komunikace s objekty s obory názvů DFS (DFS-N) a replikace DFS (DFS-R).

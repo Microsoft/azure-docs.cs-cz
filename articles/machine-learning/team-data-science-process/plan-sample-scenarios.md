@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 6838f4db240a0712eece7a97bc2cfe99efb87215
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 130ab6ee8e59b157d1fbdd8769f14814445dea18
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61429674"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67202746"
 ---
 # <a name="scenarios-for-advanced-analytics-in-azure-machine-learning"></a>Scénáře pro pokročilé analýzy ve službě Azure Machine Learning
 Tento článek popisuje různé ukázkové zdroje dat a cílové scénáře, které mohou být zpracovány [vědecké zpracování týmových dat (TDSP)](overview.md). TDSP nabízí systematický přístup pro týmy spolupracovat na sestavování inteligentních aplikací. Scénáře uvedené tady ukazují možnosti dostupné v pracovním postupu zpracování dat, které se liší podle vlastností dat, zdrojová umístění a cíl úložiště v Azure.
@@ -239,7 +239,7 @@ Replikovat celou databázi systému SQL Server ve virtuálním počítači SQL s
 1. Počínaje nahraná datová sada jednoduchý tok s experiment Azure Machine Learning.
 
 ## <a name="decisiontree"></a>Rozhodovací strom pro výběr scénáře
-- - -
+---
 Následující diagram obsahuje souhrn scénáře popsané výše a pokročilé analýzy procesu a technologické volby, která můžete přejít k jednotlivé rozepsané scénáře. Všimněte si, že může trvat zpracování dat, průzkum, vytváření funkcí a vzorkování umístit do jednoho nebo více metoda/prostředí – ve zdroji, středně pokročilý, a/nebo cílové prostředí – a může pokračovat zavádět postupně, podle potřeby. Diagram pouze slouží jako ilustraci některé možné toků a neposkytuje kompletní výčet.
 
 ![Vzorové DS procesu návod scénáře][8]

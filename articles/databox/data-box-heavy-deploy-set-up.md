@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: tutorial
-ms.date: 05/24/2019
+ms.date: 06/19/2019
 ms.author: alkohli
-ms.openlocfilehash: f2f6b544b56977b3f1bfb6a4fb46a9f1e3bcc294
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: d4cdc9b6c31c62080fed5a8528577fef72c01c3f
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66427937"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67271719"
 ---
 # <a name="tutorial-cable-and-connect-to-your-azure-data-box-heavy-preview"></a>Kurz: Zapojení a připojte se k vaší Azure Data Box náročné (preview)
 
@@ -79,7 +79,7 @@ Proveďte následující kroky a zapojení kabeláže zařízení.
 Na jednom z uzlů zařízení proveďte následující kroky pro kabelové sítě.
 
 1. Připojte hostitelský počítač k portu pro správu 1 GB/s pomocí síťového kabelu RJ-45 kategorie CAT 6 (modré kabel na obrázku).
-2. Připojte alespoň jedno síťové rozhraní 40 GB/s (vhodnější než 1 GB/s) pro data pomocí kabelu Twinax QSFP + měděného (černé kabely na obrázku). Pokud pomocí přepínače 10 GB/s, pomocí kabelu Twinax SFP + měděného a QSFP + SFP + adaptér (adaptér podmínky) pro připojení 40 GB/s síťové rozhraní pro data.
+2. QSFP + kabelu (fiber nebo mědi) slouží k připojení alespoň jedno síťové rozhraní 40 GB/s (vhodnější než 1 GB/s) pro data. Pokud pomocí přepínače 10 GB/s, pomocí kabelu SFP + připojte 40 GB/s síťové rozhraní pro data s a QSFP + SFP + adaptér (adaptér podmínky).
 
     ![Data Box náročné porty zapojené](media/data-box-heavy-deploy-set-up/data-box-heavy-ports-cabled.png)
 

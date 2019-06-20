@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/24/2019
 ms.author: banders
-ms.openlocfilehash: 9ff9b6b5313026d2102b98659183fa97c6a5ef84
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2eb9f8e19be2a7b6220bc34bf4ce0c72c4ac0b4f
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64683990"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275070"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>Vysvětlení podmínky v souboru využití a poplatky za Azure
 
@@ -72,6 +72,7 @@ invoiceSection | MCA | See InvoiceSectionName.
 InvoiceSectionId | EA, MCA | Jedinečný identifikátor pro EA oddělení nebo MCA části faktury.
 InvoiceSectionName | EA, MCA | Název smlouvy EA oddělení nebo MCA části faktury.
 IsAzureCreditEligible | EA, MCA | Určuje, zda je příslušný poplatek nárok na používání kreditů Azure se budou hradit (hodnoty: Hodnota TRUE, False).
+IsEstimated | Vše | Určuje, zda fakturačního období uzavření nebo dokončení. Využití dat můžete změnit v průběhu fakturačního období, dokud se vygeneruje faktury. Tyto záznamy jsou označeny jako "odhadované".
 Location | EA, MCA | Umístění datového centra, ve kterém prostředek běží.
 meterCategory | Vše | Název kategorie klasifikace pro měřidla. Například *cloudových služeb* a *sítě*.
 ID měřiče | Vše | Jedinečný identifikátor pro měřidla.

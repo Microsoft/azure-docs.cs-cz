@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: oslake
 ms.author: moslake
-ms.reviewer: genemi,ayolubek, jrasnick
+ms.reviewer: genemi, ayolubek, jrasnick
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: 9704acee2ca8bad7437ae22ff5041e2253916dce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/19/2019
+ms.openlocfilehash: d15e629343e015af5f83e1d185c6a46fc48fa3c4
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66160807"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275200"
 ---
 # <a name="dns-alias-for-azure-sql-database"></a>Alias DNS pro službu Azure SQL Database
 
@@ -49,7 +49,7 @@ Později při přechodu na nový systém naživo v produkčním prostředí, mů
 
 ### <a name="cross-region-support"></a>Podpora mezi oblastmi
 
-Zotavení po havárii může posunout vaše databáze SQL server v jiné geografické oblasti. Pro systém než používal DNS alias, třeba najít a aktualizovat připojovací řetězce pro všechny klienty se můžete vyhnout. Místo toho můžete aktualizovat alias jako reference na nový server databáze SQL, který je teď hostitelem databáze.
+Zotavení po havárii může posunout vaše databáze SQL server v jiné geografické oblasti. Pro systém, který se používá DNS alias se můžete vyhnout se nutnosti najít a aktualizovat připojovací řetězce pro všechny klienty. Místo toho můžete aktualizovat alias jako reference na nový server databáze SQL, který je teď hostitelem databáze.
 
 ## <a name="properties-of-a-dns-alias"></a>Vlastnosti DNS alias
 
@@ -67,13 +67,6 @@ Následující vlastnosti se vztahují na každý alias DNS pro server SQL Datab
 Rutiny Powershellu a rozhraní REST API jsou k dispozici umožňují programově spravovat vaše aliasy DNS.
 
 ### <a name="rest-apis-for-managing-your-dns-aliases"></a>REST API pro správu vašich aliasy DNS
-
-<!-- TODO
-??2 "soon" in the following live sentence, is not the best situation.
-TODO update this subsection very soon after REST API docu goes live.
-Dev = Magda Bojarska
-Comment as of:  2018-01-26
--->
 
 V dokumentaci k rozhraní REST API je k dispozici v následujícím umístění na webu:
 
@@ -111,7 +104,7 @@ V současné době DNS alias má následující omezení:
 - *Zpoždění až 2 minut:* Trvá až 2 minut aliasu DNS pro aktualizace nebo odstranění.
   - Bez ohledu na krátké prodlevě alias okamžitě zastaví odkazující připojení klientů pro starší verze serveru.
 - *Vyhledávání DNS:* Prozatím pouze autoritativní způsob, jak zkontrolovat, co server dané DNS alias odkazuje na je pomocí provádí [vyhledávání DNS](https://docs.microsoft.com/windows-server/administration/windows-commands/nslookup).
-- *[Auditování tabulek není podporován](sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md):* DNS alias nelze použít na serveru Azure SQL Database, který má *auditování tabulek* na databázi povolená.
+- _Auditování tabulek není podporován:_ DNS alias nelze použít na serveru Azure SQL Database, který má *auditování tabulek* na databázi povolená.
   - Auditování tabulek je zastaralá.
   - Doporučujeme vám, že přejdete na [auditování objektů Blob](sql-database-auditing.md).
 

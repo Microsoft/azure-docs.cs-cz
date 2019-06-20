@@ -1,23 +1,17 @@
 ---
 title: Nasazení prostředků pomocí Azure CLI a šablon | Dokumentace Microsoftu
 description: Nasazení prostředků do Azure pomocí Azure Resource Manageru a Azure CLI. Prostředky jsou definovány v šabloně Resource Manageru.
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-ms.assetid: 493b7932-8d1e-4499-912c-26098282ec95
 ms.service: azure-resource-manager
-ms.devlang: azurecli
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 03/28/2019
 ms.author: tomfitz
-ms.openlocfilehash: 6cccae343e0a06af88c2e996c37910de72138c60
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 11d5b174dc21392df89def8e91847e8a0dd12562
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66475055"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206542"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>Nasazení prostředků pomocí šablon Resource Manageru a Azure CLI
 

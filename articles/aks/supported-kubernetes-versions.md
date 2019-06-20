@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/20/2019
 ms.author: saudas
-ms.openlocfilehash: 2d555908007f4e43a38b6d0eff909ef5050878ea
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b7910ee6f58c582b824cec834d92a24c0e184bfb
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67069678"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205278"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Podporované verze Kubernetes ve službě Azure Kubernetes Service (AKS)
 
@@ -52,9 +52,9 @@ To se označuje jako "N-3"-(N (nejnovější vydaná verze) - 3 (dílčí verze)
 
 Například, pokud představuje AKS *1.13.x* v současné době podpora se poskytuje pro tyto verze:
 
-Nový dílčí verze seznamu podporované verze
------------------        ----------------------
-1.13.x 1.12.a 1.12.b, 1.11.a, 1.11.b, 1.10.a, 1.10.b
+Nový dílčí verze    |    Seznam podporovaných verzí
+-----------------    |    ----------------------
+1.13.x               |    1.12.a, 1.12.b, 1.11.a, 1.11.b, 1.10.a, 1.10.b
 
 Kde "x" a ".a" a ".b" jsou reprezentativní oprava.
 
@@ -84,11 +84,15 @@ Pokud upstreamový Kubernetes uvolněn 1.12.3 a 1.11.6 a uvolní AKS ty oprava v
 ----------------------
 1.12.*2*, 1.12.*3*, 1.11.*5*, 1.11.*6*
 
+> [!NOTE]
+> Zákazníci by neměl připnout vytváření clusteru, CI nebo jiné automatizované úlohy pro konkrétní aktualizace. 
+
 ### <a name="communications"></a>Komunikace
 
 * U nových **menší** verze Kubernetes
-  * Všichni uživatelé budou upozorněni na novou verzi a verzi se odeberou.
-  * Zákazníci, kteří používají verzi **odeberou** budete upozorněni, ke kterým mají **60 dnů** upgradovat na podporovanou verzi (např. dílčí verze).
+  * Všichni uživatelé budou upozorněni veřejně na novou verzi a verzi se odeberou.
+  * Po vydání nové verze opravy nejstarší vydané verzi opravy se odebere ve stejnou dobu.
+  * Zákazníci mají **60 dnů** od veřejné oznámení data upgradovat na podporovanou verzi vedlejší verze.
 * U nových **opravy** verze Kubernetes
   * Všem uživatelům se zobrazí oznámení na novou verzi opravy se vydávají a upgradovat na nejnovější vydané verzi opravy.
   * Uživatelé mají **30 dnů** k upgradu na verzi novější, podporovaných opravy. Uživatelé mají **30 dnů** k upgradu na verzi podporovaná oprava než nejstarší se odebere.

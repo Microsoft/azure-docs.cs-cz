@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 02/22/2019
 ms.author: cynthn
-ms.openlocfilehash: 81dbd8082d5a7ab473cc0cbe5fcb6e564fbd750c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7210f80ab1a475c944390e56647177218c896221
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65951131"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67202917"
 ---
 # <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>Jak vytvořit Image virtuálních počítačů s Windows v Azure pomocí Packeru
 Každý virtuální počítač (VM) v Azure je vytvořený z image, která definuje Windows distribuce a verze operačního systému. Image můžete zahrnout předinstalované aplikace a konfigurace. Na webu Azure Marketplace obsahuje celou řadu imagí první a třetí strany pro nejběžnější operační systém a prostředí aplikace, nebo můžete vytvořit vlastní Image přizpůsobené vašim potřebám. Tento článek podrobně popisuje, jak používat open source nástroj [Packeru](https://www.packer.io/) k definování a vytvoření vlastních imagí v Azure.
@@ -35,7 +35,7 @@ Během procesu sestavování vytvoří Packeru dočasné prostředky Azure jako 
 Vytvořte skupinu prostředků s [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup). Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*:
 
 ```azurepowershell
-$rgName = "mypackerGroup"
+$rgName = "myResourceGroup"
 $location = "East US"
 New-AzResourceGroup -Name $rgName -Location $location
 ```
@@ -91,7 +91,7 @@ Vytvořte soubor s názvem *windows.json* a vložte následující obsah. Zadejt
     "tenant_id": "zzzzzzz-zzzz-zzzz-zzzz-zzzzzzzzzzzz",
     "subscription_id": "yyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyy",
 
-    "managed_image_resource_group_name": "myPackerGroup",
+    "managed_image_resource_group_name": "myResourceGroup",
     "managed_image_name": "myPackerImage",
 
     "os_type": "Windows",

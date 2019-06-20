@@ -9,16 +9,16 @@ ms.author: gwallace
 ms.date: 04/26/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 94912d5aa10ddd2e67c33bcbb416f007c85f105c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ce41ae73a0c55a2b5c27cbdce4d4c16853acf59e
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64574106"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273192"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Integrace správy zdrojového kódu ve službě Azure Automation
 
-Správy zdrojového kódu umožňuje udržovat vaše sady runbook ve vaší službě Automation jsou účet aktuální pomocí skriptů v úložišti Githubu nebo úložiště Azure zdrojového ovládacího prvku. Správy zdrojového kódu můžete snadno spolupracovat se svým týmem, sledovat změny a vrátit zpět na starší verze vašich sadách runbook. Například správy zdrojového kódu můžete synchronizovat různými větvemi ve správě zdrojového kódu pro účty služby Automation vývojové, testovací nebo produkční prostředí. To usnadňuje podporu kód, který byl testován ve vašem vývojovém prostředí účtu Automation v produkčním prostředí. Integrace správy zdrojového kódu pomocí automatizace podporuje jeden směr synchronizaci z svým úložištěm řízení zdrojů.
+Správy zdrojového kódu můžete aktualizovat své sady runbook ve vašem účtu Automation pomocí skriptů v Githubu nebo úložiště Azure úložiště řízení zdrojů. Správy zdrojového kódu můžete snadno spolupracovat se svým týmem, sledovat změny a vrátit zpět na starší verze vašich sadách runbook. Například správy zdrojového kódu můžete synchronizovat různými větvemi ve správě zdrojového kódu pro účty služby Automation vývojové, testovací nebo produkční prostředí. To usnadňuje podporu kód, který byl testován ve vašem vývojovém prostředí účtu Automation v produkčním prostředí. Integrace správy zdrojového kódu pomocí automatizace podporuje jeden směr synchronizaci z svým úložištěm řízení zdrojů.
 
 Azure Automation podporuje tři typy správy zdrojového kódu:
 

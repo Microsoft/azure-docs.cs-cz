@@ -8,13 +8,13 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
-ms.date: 05/13/2019
-ms.openlocfilehash: aa5d3a0555875571276fdf4046ad0e4dd1e69bbd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/19/2019
+ms.openlocfilehash: 490131d1743b366b5ac51a5a0fdac4b89ffe08f2
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65596944"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274173"
 ---
 # <a name="reference-for-trigger-and-action-types-in-workflow-definition-language-for-azure-logic-apps"></a>Referenční informace pro aktivační událost a akce typy v jazyka definice pracovního postupu pro Azure Logic Apps
 
@@ -2624,7 +2624,7 @@ Ale mají vypršení časového limitu žádosti o omezit, tak pro dlouhodobé a
 
 ### <a name="run-in-high-throughput-mode"></a>Spustit v režimu Vysoká propustnost
 
-Pro běh aplikace logiky jeden, počet akcí, které jsou spouštěny každých 5 minut, které má [výchozí limit](../logic-apps/logic-apps-limits-and-config.md#throughput-limits). Chcete-li tento limit zvýšit [maximální](../logic-apps/logic-apps-limits-and-config.md#throughput-limits) je to možné, můžete nastavit `operationOptions` vlastnost `OptimizedForHighThroughput`. Toto nastavení umístí do režimu "Vysoká propustnost" aplikace logiky. 
+Pro definici aplikace logiky jeden má počet akcí, které jsou spouštěny každých 5 minut [výchozí limit](../logic-apps/logic-apps-limits-and-config.md#throughput-limits). Chcete-li tento limit zvýšit [maximální](../logic-apps/logic-apps-limits-and-config.md#throughput-limits) je to možné, můžete nastavit `operationOptions` vlastnost `OptimizedForHighThroughput`. Toto nastavení umístí do režimu "Vysoká propustnost" aplikace logiky. 
 
 > [!NOTE]
 > Režim vysoké propustnosti je ve verzi preview. Můžete také distribuovat zatížení napříč více než jedné aplikace logiky podle potřeby.

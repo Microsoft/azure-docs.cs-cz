@@ -1,24 +1,17 @@
 ---
 title: Osobní údaje v Azure Resource Manageru | Dokumentace Microsoftu
 description: Další informace o správě osobních údajů operace Azure Resource Manageru.
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 05/14/2018
 ms.author: tomfitz
-ms.openlocfilehash: db4e1b8705b879fd5716763869462bafdf1f905c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cc8400a3b6d51bacd55d3c711700a1d07266f528
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66128457"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206282"
 ---
 # <a name="manage-personal-data-associated-with-azure-resource-manager"></a>Správa osobních údajů pomocí Azure Resource Manageru
 

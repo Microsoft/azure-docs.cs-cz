@@ -5,14 +5,14 @@ author: hrasheed-msft
 ms.reviewer: jasonh
 ms.author: hrasheed
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: tutorial
 ms.date: 04/18/2019
-ms.openlocfilehash: 37c9a11b806ff49fce27120d03f67182037dc693
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.openlocfilehash: 937cb9ba2d9ce63ba36805bc7a946e8ee6e18cf3
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64726880"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275446"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Kurz: Vytváření clusterů na vyžádání Apache Hadoop v HDInsight pomocí Azure Data Factory
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -252,7 +252,7 @@ V této části vytvoříte dvě propojené služby v rámci vaší datové tov�
 
     | Vlastnost | Hodnota |
     | --- | --- |
-    | Název | Zadejte `HDinisghtLinkedService`.|
+    | Name | Zadejte `HDInsightLinkedService`.|
     | Type | Vyberte **HDInsight na vyžádání**. |
     | Propojená služba Azure Storage | Vyberte `HDIStorageLinkedService`. |
     | Typ clusteru | Vyberte **hadoop** |

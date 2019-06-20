@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: jingwang
-ms.openlocfilehash: bd02a95f485f45c223fce4c24a72251481c2aa7e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 68d2f126ee32f61d13d170712bf58581101036e8
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66427892"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206077"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopírování dat do nebo z Azure SQL Data Warehouse pomocí Azure Data Factory 
 > [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, které používáte:"]
@@ -426,7 +426,7 @@ Pokud požadavky nejsou splněny, Azure Data Factory zkontroluje nastavení a au
     | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | Ověření klíče účtu, spravovanou identitu ověřování |
 
     >[!IMPORTANT]
-    >Pokud koncový bod služby virtuální sítě se nakonfigurují službě Azure Storage, je potřeba použít spravovanou identitu ověřování. Odkazovat na [dopadu koncové body služby virtuální sítě pomocí služby Azure storage](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)
+    >Pokud koncový bod služby virtuální sítě se nakonfigurují službě Azure Storage, je potřeba použít spravovanou identitu ověřování - najdete [dopadu koncové body služby virtuální sítě pomocí služby Azure storage](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). Další požadované konfigurace ve službě Data Factory z [objektů Blob v Azure – spravovaná identita ověřování](connector-azure-blob-storage.md#managed-identity) a [Azure Data Lake Storage Gen2 – spravovaná identita ověřování](connector-azure-data-lake-storage.md#managed-identity) části v uvedeném pořadí.
 
 2. **Formát zdrojových dat** je **Parquet**, **ORC**, nebo **oddělený text**, s následující konfigurací:
 
@@ -542,7 +542,7 @@ ErrorCode=FailedDbOperation, ......HadoopSqlException: Error converting data typ
 
 **Ostatní**
 
-Další problémy knonw PolyBase, najdete v tématu [řešení potíží s Azure SQL Data Warehouse PolyBase zatížení](../sql-data-warehouse/sql-data-warehouse-troubleshoot.md#polybase).
+Další známé problémy PolyBase, najdete v tématu [řešení potíží s Azure SQL Data Warehouse PolyBase zatížení](../sql-data-warehouse/sql-data-warehouse-troubleshoot.md#polybase).
 
 ### <a name="sql-data-warehouse-resource-class"></a>Třída prostředků SQL Data Warehouse
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: f5dfa34760bcef23bf54d65b35e3ad8f48cc2ee5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 49b6b49d908a7426e7cfd1bae5260ff399d9953b
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60831826"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273231"
 ---
 # <a name="application-gateway-components"></a>Součásti aplikace brány
 
@@ -26,7 +26,9 @@ IP adresa front-endu je IP adresa spojená s aplikační bránou. Můžete nakon
 
 ### <a name="static-versus-dynamic-public-ip-address"></a>Statické a dynamické veřejné IP adresy
 
-SKU v2 Azure Application Gateway podporuje obě statické interní a statické veřejné IP adresy, i když v1 SKU podporuje pouze statické interní IP adresy. Pokud po zastavení a spuštění služby application gateway můžete změnit virtuální adresy IP (VIP).
+Azure Application Gateway V2 SKU lze nakonfigurovat pro podporu obou statické interní IP adresa a statickou veřejnou IP adresu nebo pouze statickou veřejnou IP adresu. Nedá se nakonfigurovat pro podporu pouze statické interní IP adresu.
+
+V1 SKU je nakonfigurovat pro podporu statické interní IP adresa a dynamická veřejná IP adresa, pouze statické interní IP adresu, nebo jenom dynamické veřejné IP adresy. Dynamická IP adresa služby Application Gateway se nezmění na spuštění brány. Můžete změnit pouze při zastavení nebo spuštění brány. To nezmění na selhání systému, aktualizace hostitele Azure aktualizace atd. 
 
 Název DNS, který je přidružený k službě application gateway nemění přes životní cyklus brány. V důsledku toho by měl použít CNAME alias a přejděte na adresu DNS služby application gateway.
 

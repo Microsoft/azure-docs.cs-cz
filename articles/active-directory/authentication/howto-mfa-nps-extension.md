@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19bcac68084c4817e0dc0e67f31ab62244db5a2a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 97bad4d9cd599890dd5e26cbc77f81156c0f1070
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67113405"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204659"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Integrace vaší stávající infrastruktury NPS pomocí ověřování Azure Multi-Factor Authentication
 
@@ -225,7 +225,7 @@ Vyhledejte certifikát podepsaný svým držitelem vytvořený instalační prog
 
 Generované certifikáty podepsané svým držitelem *AzureMfaNpsExtnConfigSetup.ps1* skript také mají životnost platnosti dva roky. Při ověřování, zda je certifikát nainstalován, měli byste také zkontrolovat, že nevypršela platnost certifikátu.
 
--------------------------------------------------------------
+---
 
 ### <a name="how-can-i-verify-that-my-client-cert-is-associated-to-my-tenant-in-azure-active-directory"></a>Jak můžu ověřit, že moje klientský certifikát je přidružená k mému tenantovi v Azure Active Directory?
 
@@ -251,13 +251,13 @@ Po spuštění tohoto příkazu, přejděte k jednotce C, vyhledejte soubor a po
 
 Platné – a – dokud časová razítka, která jsou v čitelné formě, lze použít k filtrování zřejmé misfits Pokud příkaz vrátí více než jeden certifikát.
 
--------------------------------------------------------------
+---
 
 ### <a name="why-cant-i-sign-in"></a>Proč není se lze přihlásit?
 
 Zkontrolujte, jestli nevypršela platnost vašeho hesla. Rozšíření NPS nepodporuje změny hesel jako součást pracovního postupu přihlásit. Požádejte o další pomoc pracovníky IT vaší organizace.
 
--------------------------------------------------------------
+---
 
 ### <a name="why-are-my-requests-failing-with-adal-token-error"></a>Proč se Moje žádosti nedaří s Chyba tokenu ADAL?
 
@@ -268,19 +268,19 @@ Tato chyba mohla být způsobené jedním z několika důvodů. Tyto kroky použ
 3. Ověřte, zda je certifikát přidružený vašeho tenanta v Azure AD.
 4. Ověřte, že ze serveru, na kterém se spouští rozšíření, je přístupný web https://login.microsoftonline.com/.
 
--------------------------------------------------------------
+---
 
 ### <a name="why-does-authentication-fail-with-an-error-in-http-logs-stating-that-the-user-is-not-found"></a>Proč ověřování selže s chybou v protokolech HTTP s informacemi o tom, že uživatel není nalezen?
 
 Ověřte, že AD Connect je spuštěná a že uživatel je k dispozici ve Windows Active Directory a Azure Active Directory.
 
--------------------------------------------------------------
+---
 
 ### <a name="why-do-i-see-http-connect-errors-in-logs-with-all-my-authentications-failing"></a>Proč vidím HTTP chyby v protokolech, spojte se s Moje ověřování služeb při selhání?
 
 Ověřte, že ze serveru, na kterém se spouští rozšíření NPS, je přístupný web https://adnotifications.windowsazure.com.
 
--------------------------------------------------------------
+---
 
 ### <a name="why-is-authentication-not-working-despite-a-valid-certificate-being-present"></a>Proč ověřování nefunguje, bez ohledu na platného certifikátu byla vyžadována jeho přítomnost?
 

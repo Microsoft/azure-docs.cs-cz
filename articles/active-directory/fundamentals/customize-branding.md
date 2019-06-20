@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: lizross
 ms.reviewer: kexia
-ms.custom: it-pro, seodec18
+ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 277e7663c978e64ee1440e14583e884b768b3139
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bef3960e5c117a131b59a65196214c51e01bd3c8
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65441636"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204581"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Přidat branding vaší organizace Azure Active Directory přihlašovací stránky
 Pomocí loga vaší organizace a vlastní barevná schémata poskytují konzistentní vzhled a představu o přihlašovacích stránek služby Azure Active Directory (Azure AD). Vaše přihlašovací stránky se zobrazí při přihlášení uživatele k vaší organizaci webové aplikace, jako je Office 365, který používá Azure AD jako zprostředkovatele identity.
@@ -58,7 +58,7 @@ Vlastní značka se okamžitě nezobrazí vaši uživatelé, kteří přejdou do
 
         - **Úvodní nápis logo.** Vyberte verzi .png nebo .jpg logo se zobrazí na přihlašovací stránce poté, co uživatel zadá uživatelské jméno a na **Moje aplikace** stránky portálu.
             
-            Na obrázku nemůže být vyšší než 36 pixelů nebo větší než 245 pixelů. Doporučujeme použít průhledný obrázek, protože na pozadí se nemusí shodovat pozadí loga. Doporučujeme také Nepřidání výplně kolem obrázku nebo může mít logo vypadat malé.
+            Na obrázku nemůže být vyšší než 60 pixelů nebo větší než 280 pixelů. Doporučujeme použít průhledný obrázek, protože na pozadí se nemusí shodovat pozadí loga. Doporučujeme také Nepřidání výplně kolem obrázku nebo může mít logo vypadat malé.
 
         - **Pomocný parametr uživatelského jména.** Zadejte text nápovědy, který se uživatelům zobrazí, pokud zapomenou své uživatelské jméno. Tento text musí být v kódování Unicode, bez odkazů nebo kód a nemůže být delší než 64 znaků. Pokud hosté přihlásí do vaší aplikace, doporučujeme Nepřidání Tento pomocný parametr.
 

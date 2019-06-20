@@ -15,17 +15,17 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: e5cad797b633d43bcc9ead657a60fca8aa6679bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 425f4d9dbd6478af834bee6c88d0f13bdaa45b16
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60822384"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273684"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>Dostupnost a konzistence ve službě Event Hubs
 
 ## <a name="overview"></a>Přehled
-Služba Azure Event Hubs využívá [dělení modelu](event-hubs-features.md#partitions) ke zlepšení dostupnosti a paralelního zpracování v rámci jednoho centra událostí. Například pokud má čtyři oddíly centra událostí a jeden z těchto oddílů je přesunout z jednoho serveru na jiný v operaci Vyrovnávání zatížení, můžete stále odesílat a přijímat z tři další oddíly. Kromě toho s více oddílů vám umožní mít více souběžných čtenářů zpracování dat, zlepšení agregovanou propustnost. Vysvětlení důsledků vytváření oddílů a řazení v distribuovaném systému je důležitý aspekt návrhu řešení.
+Služba Azure Event Hubs využívá [dělení modelu](event-hubs-scalability.md#partitions) ke zlepšení dostupnosti a paralelního zpracování v rámci jednoho centra událostí. Například pokud má čtyři oddíly centra událostí a jeden z těchto oddílů je přesunout z jednoho serveru na jiný v operaci Vyrovnávání zatížení, můžete stále odesílat a přijímat z tři další oddíly. Kromě toho s více oddílů vám umožní mít více souběžných čtenářů zpracování dat, zlepšení agregovanou propustnost. Vysvětlení důsledků vytváření oddílů a řazení v distribuovaném systému je důležitý aspekt návrhu řešení.
 
 Pomoci s vysvětlením kompromis mezi řazení a dostupnosti, najdete v článku [věty](https://en.wikipedia.org/wiki/CAP_theorem), označovaný také jako věta Bureš společnosti. Tento článek popisuje tento věta možností volby mezi konzistencí, dostupností a tolerance oddílu. Uvádí, že pro systémy rozdělené podle sítě je vždycky kompromis mezi konzistencí a dostupností.
 

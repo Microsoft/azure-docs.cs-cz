@@ -10,12 +10,13 @@ ms.workload: identity
 ms.date: 08/04/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 27c91185bacea839ec73a3f4bd06f5df43bd4edf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 2c1bfd9e2659127ab77e9db661b54fde18a8d25c
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66509651"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205351"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Přístup k protokolům auditu Azure AD B2C
 
@@ -23,6 +24,9 @@ Azure Active Directory B2C (Azure AD B2C) vysílá protokoly auditu obsahující
 
 > [!IMPORTANT]
 > Protokoly auditu se zachovají jenom po dobu sedmi dní. Plán stažení a ukládat vaše protokoly pomocí jedné z metod je uvedeno níže, pokud budete potřebovat delší doba uchovávání informací.
+
+> [!NOTE]
+> Nelze zobrazit uživatelská přihlášení pro jednotlivé aplikace Azure AD B2C v části **uživatelé** část **Azure Active Directory** nebo **Azure AD B2C** oken. Přihlášení existuje zobrazí aktivity uživatelů, ale nemůže být korelována zpět do aplikace B2C, který uživatel přihlášený k. Protokoly auditu je nutné použít k tomu, jak je vysvětleno dále v tomto článku.
 
 ## <a name="overview-of-activities-available-in-the-b2c-category-of-audit-logs"></a>Přehled aktivit, které jsou k dispozici v kategorii B2C protokolů auditu
 **B2C** kategorie z protokolů auditu obsahuje následující typy aktivit:
@@ -41,6 +45,18 @@ Azure Active Directory B2C (Azure AD B2C) vysílá protokoly auditu obsahující
 
 ## <a name="example-activity"></a>Ukázkové aktivity
 Následující příklad ukazuje data zaznamenaná, když se uživatel přihlásí pomocí externího zprostředkovatele identity: ![Protokoly auditu – příklad](./media/active-directory-b2c-reference-audit-logs/audit-logs-example.png)
+
+Panel podrobností aktivity obsahuje následující důležité informace:
+
+|Section|Pole|Popis|
+|-------|-----|-----------|
+| Aktivita | Name | Jaké aktivity došlo. Například "vydání tokentu id_token pro aplikaci" (který končí přihlášení skutečné uživatele). |
+| Iniciátor (Actor) | ObjectId | **ID objektu** aplikace B2C, které se uživatel přihlašuje (Tento identifikátor se nezobrazuje na portálu Azure Portal, ale je třeba přístupná přes rozhraní Graph API). |
+| Iniciátor (Actor) | Spn | **ID aplikace** aplikace B2C, které se uživatel přihlašuje. |
+| Cíle | ObjectId | **ID objektu** uživatele, který se přihlašuje. |
+| Další podrobnosti | TenantId | **ID Tenanta** tenanta Azure AD B2C. |
+| Další podrobnosti | `PolicyId` | **ID zásad** toku uživatele. (zásady) se používá k přihlášení uživatele. |
+| Další podrobnosti | ApplicationId | **ID aplikace** aplikace B2C, které se uživatel přihlašuje. |
 
 ## <a name="accessing-audit-logs-through-the-azure-portal"></a>Přístup k protokolům auditu na webu Azure Portal
 1. Přejděte na [Azure Portal](https://portal.azure.com). Ujistěte se, že máte ve svém adresáři B2C.
@@ -62,6 +78,9 @@ Zobrazí se seznam aktivit přihlášení za posledních sedm dní.
 - Použití **rozsah** rozevírací seznam pro filtrování rozsah aktivit zobrazí
 - Pokud kliknete na konkrétní řádek v seznamu, kontextové pole na pravé straně se zobrazí další atributy, které jsou přidružená k aktivitě
 - Klikněte na **Stáhnout** stáhnete aktivity jako soubor csv
+
+> [!NOTE]
+> Můžete také naleznete v protokolech auditu tak, že přejdete na **Azure AD B2C** spíše než **Azure Active Directory** na panel Oblíbené položky na levé straně. V části **aktivity**, klikněte na **protokoly auditu**, kde najdete stejné protokoly s podobnými funkcemi filtrování.
 
 ## <a name="accessing-audit-logs-through-the-azure-ad-reporting-api"></a>Přístup k protokolům auditu prostřednictvím rozhraní API pro generování sestav Azure AD
 Protokoly auditu se publikují do stejné kanálu další aktivity pro Azure Active Directory, takže k nim může přistupovat prostřednictvím [Azure Active Directory API pro vytváření sestav](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-audit-reference).

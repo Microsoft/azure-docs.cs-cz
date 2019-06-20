@@ -11,12 +11,12 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 11819730e05e425066e1f060769e14d5290f877d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.openlocfilehash: 962cb2bedbbbcfd9c9087da9e35d1c25c91dcfc8
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65851982"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273867"
 ---
 # <a name="train-pytorch-models-with-azure-machine-learning-service"></a>Trénování modelů PyTorch službou Azure Machine Learning
 

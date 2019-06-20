@@ -4,12 +4,12 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 05/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 3a7cc1ac3940104993e6643e92da923ad1c6a14a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5054b552f4ca019125671903134bb080e0c9db4e
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66248965"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67277197"
 ---
 | Category | Úložiště dat | Podporované jako [aktivita kopírování](../articles/data-factory/copy-activity-overview.md) zdroje | Podporované jako [aktivita kopírování](../articles/data-factory/copy-activity-overview.md) jímky | Podporované prostředím [Azure IR](../articles/data-factory/concepts-integration-runtime.md#azure-integration-runtime) | Podporované [místním prostředím IR](../articles/data-factory/concepts-integration-runtime.md#self-hosted-integration-runtime) | Podporuje [toku dat](../articles/data-factory/concepts-data-flow-overview.md)
 |:--- |:--- |:--- |:--- |:--- |:--- |
@@ -19,12 +19,12 @@ ms.locfileid: "66248965"
 | &nbsp; |[Průzkumník dat Azure](../articles/data-factory/connector-azure-data-explorer.md) |✓ |✓ |✓ |✓ ||
 | &nbsp; |[Azure Data Lake Storage Gen1](../articles/data-factory/connector-azure-data-lake-store.md) |✓ |✓ |✓ |✓  |✓ <br> <small>Podporované formáty: Delimited Text, Parquet</small> |
 | &nbsp; |[Azure Data Lake Storage Gen2](../articles/data-factory/connector-azure-data-lake-storage.md) |✓ |✓ |✓ |✓  |✓ <br> <small>Podporované formáty: Delimited Text, Parquet</small> |
-| &nbsp; |[Azure Database pro MariaDB](../articles/data-factory/connector-azure-database-for-mariadb.md) |✓ | |✓ |✓  ||
+| &nbsp; |[Azure Database for MariaDB](../articles/data-factory/connector-azure-database-for-mariadb.md) |✓ | |✓ |✓  ||
 | &nbsp; |[Azure Database for MySQL](../articles/data-factory/connector-azure-database-for-mysql.md) |✓ | |✓ |✓  ||
 | &nbsp; |[Azure Database for PostgreSQL](../articles/data-factory/connector-azure-database-for-postgresql.md) |✓ | |✓ |✓  ||
 | &nbsp; |[Azure File Storage](../articles/data-factory/connector-azure-file-storage.md) |✓ |✓ |✓ |✓  ||
 | &nbsp; |[Azure SQL Database](../articles/data-factory/connector-azure-sql-database.md) |✓ |✓ |✓ |✓  |✓  |
-| &nbsp; |[Spravovaná Instance Azure SQL Database](../articles/data-factory/connector-azure-sql-database-managed-insance.md) | |✓ |✓ |✓  ||
+| &nbsp; |[Spravovaná Instance Azure SQL Database](../articles/data-factory/connector-azure-sql-database-managed-insance.md) |✓ |✓ |✓ |✓  ||
 | &nbsp; |[Azure SQL Data Warehouse](../articles/data-factory/connector-azure-sql-data-warehouse.md) |✓ |✓ |✓ |✓  |✓  |
 | &nbsp; |[Index Azure Search](../articles/data-factory/connector-azure-search.md) | |✓ |✓ |✓  ||
 | &nbsp; |[Azure Table Storage](../articles/data-factory/connector-azure-table-storage.md) |✓ |✓ |✓ |✓  ||
@@ -48,7 +48,7 @@ ms.locfileid: "66248965"
 | &nbsp; |[SAP Business Warehouse otevřete Centrum](../articles/data-factory/connector-sap-business-warehouse-open-hub.md) |✓ | | |✓  ||
 | &nbsp; |[SAP Business Warehouse prostřednictvím MDX](../articles/data-factory/connector-sap-business-warehouse.md) |✓ | | |✓  ||
 | &nbsp; |[SAP HANA](../articles/data-factory/connector-sap-hana.md) |✓ |✓ | |✓  ||
-| &nbsp; |[Tabulka SAP](../articles/data-factory/connector-sap-table.md) |✓ |✓ | |✓  ||
+| &nbsp; |[Tabulka SAP](../articles/data-factory/connector-sap-table.md) |✓ | | |✓  ||
 | &nbsp; |[Spark](../articles/data-factory/connector-spark.md) |✓ | |✓ |✓  ||
 | &nbsp; |[SQL Server](../articles/data-factory/connector-sql-server.md) |✓ |✓ |✓ |✓  ||
 | &nbsp; |[Sybase](../articles/data-factory/connector-sybase.md) |✓ | | |✓  ||

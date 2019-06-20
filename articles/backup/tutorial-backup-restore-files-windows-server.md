@@ -1,21 +1,19 @@
 ---
 title: Obnovení souborů z Azure do Windows Serveru
 description: Tento kurz podrobně popisuje obnovení položek z Azure do Windows Serveru.
-services: backup
-author: saurabhsensharma
-manager: shivamg
-keywords: windows server back up; restore files windows server; back up and disaster recovery
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: tutorial
 ms.date: 2/14/2018
-ms.author: saurse
+ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: b01811d9c933802263e975b23b5d40cd77303766
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 575ebfb62b3eed70f783bc68b7f06559e5632490
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60722867"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273969"
 ---
 # <a name="recover-files-from-azure-to-a-windows-server"></a>Obnovení souborů z Azure do Windows Serveru
 

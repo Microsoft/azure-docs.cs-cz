@@ -1,6 +1,6 @@
 ---
-title: Virtuální počítače generace 2 (preview) v Azure | Dokumentace Microsoftu
-description: Přehled Azure 2. generace virtuálních počítačů
+title: Podpora Azure pro virtuální počítače generace 2 (preview) | Dokumentace Microsoftu
+description: Přehled podpory Azure pro virtuální počítače generace 2
 services: virtual-machines-windows
 documentationcenter: ''
 author: laurenhughes
@@ -14,31 +14,31 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2019
 ms.author: lahugh
-ms.openlocfilehash: 1dcc0d3a652ccbf365a18ce734a54dc78515b1a7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d8991a6e3137953aae18b91f9cc19e81f0440c75
+ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66388368"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67151219"
 ---
-# <a name="generation-2-vms-preview-on-azure"></a>Virtuální počítače generace 2 (preview) v Azure
+# <a name="support-for-generation-2-vms-preview-on-azure"></a>Podpora generace 2 virtuální počítače (preview) v Azure
 
 > [!IMPORTANT]
-> Virtuální počítače generace 2 jsou aktuálně ve verzi public preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
-> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Podpora Azure pro virtuální počítače generace 2 je aktuálně ve verzi preview.
+> Tato verze preview je k dispozici bez smlouvu o úrovni služeb a se nedoporučuje pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
+> Další informace najdete v tématu [dodatečnými podmínkami použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Podpora pro 2. generace virtuálních počítačů (VM) je teď dostupná ve verzi public preview v Azure. Nelze změnit generaci virtuálního počítače po jeho vytvoření. Proto doporučujeme, abyste si na základě aspektů [tady](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v) i informace na této stránce před výběrem generace.
+Podpora pro 2. generace virtuálních počítačů (VM) je teď dostupná ve verzi preview v Azure. Nelze změnit generaci virtuálního počítače po jeho vytvoření, takže prostudujte si důležité informace na této stránce, než se rozhodnete generace. 
 
-2\. generace virtuálních počítačů podporu klíčových funkcí, které nejsou podporovány na virtuálních počítačích generace 1, jako například: zvýšili paměti, Intel® Software Guard rozšíření (SGX) a virtuální trvalé paměti (vPMEM). Virtuální počítače generace 2 mají také některé funkce, které zatím nejsou podporované v Azure. Další informace najdete v tématu [funkce a možnosti](#features-and-capabilities) oddílu.
+Virtuální počítače generace 2 podporují klíčové funkce, které nejsou podporované ve virtuálních počítačích generace 1. Tyto funkce patří větší paměť, rozšíření Guard Software Intel (Intel SGX) a virtualizované trvalé paměti (vPMEM). Virtuální počítače generace 2 mají také některé funkce, které zatím nejsou podporované v Azure. Další informace najdete v tématu [funkce a možnosti](#features-and-capabilities) oddílu.
 
-Virtuální počítače generace 2 pomocí nové vs architektury založené na režimu UEFI spouštění systémem BIOS architektura používány virtuálními počítači 1. generace. Ve srovnání s 1. generace virtuálních počítačů, virtuální počítače generace 2 může mít lepší časů spuštění a instalace. Přehled virtuálních počítačů 2. generace a některé hlavní rozdíly mezi 1 a generace 2 najdete v tématu [bych si měl vytvořit virtuální počítač generace 1 nebo 2 v Hyper-V?](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
+Místo architektury založené na systému BIOS používané generace 1 virtuální počítače, použijte virtuální počítače generace 2 nové architektuře spouštěcí rozhraní UEFI. Porovnání s virtuálními počítači 1. generace, virtuální počítače generace 2 může mít lepší časů spuštění a instalace. Přehled virtuálních počítačů 2. generace a některé rozdíly mezi 1 a generace 2 najdete v tématu [bych si měl vytvořit virtuální počítač generace 1 nebo 2 v Hyper-V?](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
 
 ## <a name="generation-2-vm-sizes"></a>Velikosti virtuálních počítačů 2. generace
 
-Virtuální počítače generace 1 podporuje všechny velikosti virtuálních počítačů v Azure. Azure nyní nabízí podporu 2. generace pro následující vybrané virtuální počítače řady ve verzi public preview:
+Virtuální počítače generace 1 podporuje všechny velikosti virtuálních počítačů v Azure. Azure nyní nabízí ve verzi preview 2. generace podporu pro následující vybrané virtuální počítače řady:
 
-* [Dsv2](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dsv2-series) a [Dsv3-series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dsv3-series-1)
+* [Dsv2-series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dsv2-series) a [Dsv3-series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dsv3-series-1)
 * [Esv3-series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#esv3-series)
 * [Fsv2-series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-compute#fsv2-series-1)
 * [Řady GS-series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#gs-series)
@@ -47,16 +47,16 @@ Virtuální počítače generace 1 podporuje všechny velikosti virtuálních po
 
 ## <a name="generation-2-vm-images-in-azure-marketplace"></a>Image virtuálních počítačů generace 2 na webu Azure Marketplace
 
-Virtuální počítače generace 2 podporují následující Image Azure Marketplace:
+Virtuální počítače generace 2 podporují následující Image Marketplace:
 
 * Windows Server 2019 Datacenter
 * Windows Server 2016 Datacenter
 * Windows Server 2012 R2 Datacenter
 * Windows Server 2012 Datacenter
 
-## <a name="on-premises-vs-azure-generation-2-vms"></a>Vs místní virtuální počítače Azure generace 2
+## <a name="on-premises-vs-azure-generation-2-vms"></a>Místní vs. Virtuální počítače Azure generace 2
 
-Azure aktuálně nepodporuje některé funkce, které on-premises Hyper-V podporuje pro virtuální počítače generace 2.
+Azure v současné době nepodporuje některé funkce, které on-premises Hyper-V podporuje pro virtuální počítače generace 2.
 
 | Funkce 2. generace                | On-premises Hyper-V | Azure |
 |-------------------------------------|---------------------|-------|
@@ -68,89 +68,85 @@ Azure aktuálně nepodporuje některé funkce, které on-premises Hyper-V podpor
 
 ## <a name="features-and-capabilities"></a>Funkce a možnosti
 
-### <a name="generation-1-vs-generation-2-features"></a>Funkce 2. generace 1. generace vs
+### <a name="generation-1-vs-generation-2-features"></a>Generace 1 a generace 2 funkce
 
 | Funkce | 1\. generace | 2\. generace |
 |---------|--------------|--------------|
 | Spouštění             | PCAT                      | UEFI                               |
 | Disk řadiče | IDE – integrované vývojové prostředí                       | SCSI                               |
-| Velikosti virtuálních počítačů         | K dispozici na všech velikostí virtuálních počítačů | Storage úrovně Premium podporované pouze virtuální počítače |
+| Velikost virtuálních počítačů         | Všechny velikosti virtuálních počítačů | Pouze virtuální počítače, které podporují službu premium storage |
 
-### <a name="generation-1-vs-generation-2-capabilities"></a>Možnosti 2. generace 1. generace vs
+### <a name="generation-1-vs-generation-2-capabilities"></a>Generace 1 a generace 2 možnosti
 
 | Schopnost | 1\. generace | 2\. generace |
 |------------|--------------|--------------|
 | Operační systém na disku > 2 TB                    | : x:.                        | :heavy_check_mark: |
-| Vlastní/Image/prohození disků operačního systému         | :heavy_check_mark:         | :heavy_check_mark: |
+| Vlastní/image/prohození disků operačního systému         | :heavy_check_mark:         | :heavy_check_mark: |
 | Škálovací sady virtuálních počítačů podpory | :heavy_check_mark:         | :heavy_check_mark: |
-| Azure Site Recovery a Backup                        | :heavy_check_mark:         | : x:.                |
-| Sdílená galerie obrázků              | :heavy_check_mark:         | : x:.                |
-| Azure Disk Encryption             | :heavy_check_mark:         | : x:.                |
+| Azure Site Recovery a backup                        | :heavy_check_mark:         | : x:.                |
+| Galerie sdílené bitové kopie              | :heavy_check_mark:         | : x:.                |
+| Azure disk encryption             | :heavy_check_mark:         | : x:.                |
 
 ## <a name="creating-a-generation-2-vm"></a>Vytváření 2. generace virtuálních počítačů
 
 ### <a name="marketplace-image"></a>Image z Marketplace
 
-Virtuální počítače generace 2 je vytvořit z image marketplace (která podporuje rozhraní UEFI) prostřednictvím webu Azure portal nebo rozhraní příkazového řádku Azure.
+Webu Azure portal nebo rozhraní příkazového řádku Azure můžete vytvořit generace 2 virtuální počítače z image Marketplace, který podporuje rozhraní UEFI.
 
-`windowsserver-gen2preview` Nabídka obsahuje jen pro Image 2. generace Windows. Tím se vyhnete záměně s ohledem na 1. generace a 2. generace imagí. Chcete-li vytvořit generace 2 virtuální počítače, vyberte **Imagí** z této nabídky a postupovat podle standardního procesu vytváření virtuálního počítače.
+`windowsserver-gen2preview` Nabídka obsahuje jen pro Image 2. generace Windows. Tento balení se vyhnete nejasnostem mezi generací 1 a generace 2 imagí. K vytvoření 2. generace virtuálních počítačů, vyberte **Imagí** z této nabídky a postupovat podle standardního procesu k vytvoření virtuálního počítače.
 
-V současné době následující generace Windows jsou publikovány 2 imagí v Tržišti Azure Marketplace:
+V současné době Marketplace nabízí následující Windows generace 2 imagí:
 
 * 2019-datacenter-gen2
 * 2016-datacenter-gen2
 * 2012-r2-datacenter-gen2
 * 2012-datacenter-gen2
 
-Jak jsme bude pokračovat v přidávání dalších imagí, které podporují 2. generace, naleznete v části Možnosti seznam podporovaných Tržiště imagí.
+Zobrazit [funkce a možnosti](#features-and-capabilities) najdete aktuální seznam podporovaných imagí Marketplace.
 
 ### <a name="managed-image-or-managed-disk"></a>Spravované image nebo spravovaný disk
 
-2 virtuální počítače můžete vytvořit ze spravované image nebo spravovaný disk stejným způsobem, jako byste vytvořili generace 1. generace virtuálních počítačů.
+Můžete vytvořit 2. generace virtuálního počítače ze spravované image nebo spravovaný disk stejným způsobem, jako byste vytvořili 1. generace virtuálních počítačů.
 
 ### <a name="virtual-machine-scale-sets"></a>Škálovací sady virtuálních počítačů
 
-Generace 2 virtuální počítače můžete vytvořit také pomocí škálovací sady virtuálních počítačů. Můžete vytvářet generaci 2 virtuálních počítačů pomocí škálovacích sad virtuálních počítačů Azure pomocí Azure CLI.
+Můžete také vytvořit generace 2 virtuální počítače pomocí škálovací sady virtuálních počítačů. V Azure CLI použijte škálování Azure nastaví vytvořit generace 2 virtuální počítače.
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
 * **Jsou generace 2 virtuální počítače k dispozici ve všech oblastech Azure?**  
-    Ano. ale ne všechny [velikosti virtuálních počítačů 2. generace](#generation-2-vm-sizes) jsou k dispozici v každé oblasti. Dostupnost generace 2 virtuální počítače je závislý na dostupnosti velikost virtuálního počítače.
+    Ano. Ale ne všechny [velikosti virtuálních počítačů 2. generace](#generation-2-vm-sizes) jsou k dispozici v každé oblasti. Dostupnost generace 2 virtuální počítač, na kterém závisí na dostupnost velikost virtuálního počítače.
 
 * **Je nějaký cena rozdíl mezi 1 a generace 2 virtuální počítače?**  
-    Není žádný rozdíl v cenách mezi 1. generace a virtuální počítače generace 2.
+   Ne.
 
 * **Jak můžu zvýšit velikost disku operačního systému?**  
-  Disky s operačním systémem větší než 2 TB se 2. generace virtuálních počítačů. Ve výchozím nastavení většina disků operačního systému jsou menší než 2 TB pro virtuální počítače generace 2, ale je možné zvýšit velikost disku na doporučenou maximálně 4 TB. Můžete zvýšit velikost disku operačního systému přes rozhraní příkazového řádku Azure nebo na webu Azure portal. Další informace o prostřednictvím kódu programu se zvětšující disky najdete v tématu [Změna velikosti disku](expand-os-disk.md).
+  Disky s operačním systémem větší než 2 TB se 2. generace virtuálních počítačů. Ve výchozím nastavení disky s operačním systémem byly menší než 2 TB pro virtuální počítače generace 2. Můžete zvýšit velikost disku, doporučená až 4 TB. Zvýšit velikost disku operačního systému pomocí rozhraní příkazového řádku Azure nebo na webu Azure portal. Informace o tom, jak prostřednictvím kódu programu rozbalte disky najdete v tématu [Změna velikosti disku](expand-os-disk.md).
 
-  Chcete-li zvýšit velikost disku operačního systému pomocí webu Azure portal:
+  Chcete-li zvýšit velikost disku operačního systému z webu Azure portal:
 
-  * Přejděte na stránku vlastností virtuálního počítače na portálu Azure portal.
-
-  * Vypnout a uvolnit pomocí virtuálních počítačů **Zastavit** tlačítko na webu Azure portal.
-
-  * V **disky** vyberte disk s operačním systémem, který chcete zvýšit.
-
-  * Vyberte **konfigurace** v **disky** oddílu a aktualizace **velikost** na požadovanou hodnotu.
-
-  * Přejděte zpět na stránku vlastností virtuálního počítače a **Start** virtuálního počítače.
+  1. Na webu Azure Portal přejděte na stránku vlastností virtuálního počítače.
+  1. Chcete-li vypnout a uvolnit virtuálního počítače, vyberte **Zastavit** tlačítko.
+  1. V **disky** vyberte disk s operačním systémem chcete zvětšit.
+  1. V **disky** vyberte **konfigurace**a aktualizovat **velikost** na hodnotu, kterou chcete.
+  1. Přejděte zpět na stránku vlastností virtuálního počítače a **Start** virtuálního počítače.
   
-  Může se zobrazit upozornění pro disky s operačním systémem větší než 2 TB. Upozornění se nevztahuje na virtuální počítače generace 2; velikost disku operačního systému větší než 4 TB ale **nedoporučuje.**
+  Může se zobrazit upozornění pro disky s operačním systémem větší než 2 TB. Upozornění se nevztahuje na virtuální počítače generace 2. Velikost disku operačního systému větší než 4 TB ale *nedoporučuje.*
 
-* **Virtuální počítače generace 2 podporují Akcelerovanými síťovými službami?**  
-    Ano, podpora virtuálních počítačů 2. generace [Akcelerovanými síťovými službami](../../virtual-network/create-vm-accelerated-networking-cli.md).
+* **Generace 2 virtuální počítače podporují akcelerované síťové služby nabízí?**  
+    Ano. Další informace najdete v tématu [vytvoření virtuálního počítače s akcelerovanými síťovými službami](../../virtual-network/create-vm-accelerated-networking-cli.md).
 
-* **Vhdx vyslané generace 2?**  
-    Ne, se podporuje jenom VHD na virtuálních počítačích 2. generace.
+* **Je VHDX podporovány na generace 2?**  
+    Ne, virtuální počítače generace 2 podporují jenom virtuální pevný disk.
 
-* **Virtuální počítače generace 2 podporují Ultra Solid stav jednotky SSD (Solid-State Drive)?**  
-    Ano, virtuální počítače generace 2 podporují Ultra SSD.
+* **Ultra diskové úložiště Azure podporují virtuální počítače generace 2?**  
+    Ano.
 
-* **Můžete migrovat z 1. generace do 2. generace virtuálních počítačů?**  
-    Ne, nemůžete změnit generaci virtuálního počítače po jeho vytvoření. Pokud je potřeba přepnout mezi generací virtuálních počítačů, musíte vytvořit nový virtuální počítač z jiné generace.
+* **Můžu migrovat virtuální počítač z 1. generace do 2. generace?**  
+    Ne, nelze změnit generaci virtuálního počítače po jeho vytvoření. Pokud je potřeba přepnout mezi generací virtuálních počítačů, vytvořte nový virtuální počítač z jiné generace.
 
 ## <a name="next-steps"></a>Další postup
 
 * Další informace o [2. generace virtuálních počítačů Hyper-v](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
 
-* Zjistěte, jak [Příprava virtuálního pevného disku](prepare-for-upload-vhd-image.md) nahrát z místního do Azure.
+* Zjistěte, jak [Příprava virtuálního pevného disku](prepare-for-upload-vhd-image.md) k odesílání z místních systémů do Azure.

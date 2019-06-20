@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 3/14/2019
-ms.openlocfilehash: d8aaf51c836a8e88c4e9b92798067167cd044e72
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f73fc58abfa6cde4133bd56858b7f26bf0c3d4a3
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60848076"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204819"
 ---
 # <a name="scale-elastic-pool-resources-in-azure-sql-database"></a>Škálování elastického fondu prostředků ve službě Azure SQL Database
 
@@ -44,7 +44,7 @@ Změna služby vrstvy nebo výpočty velikosti elastického fondu následuje vzo
 
 ### <a name="latency-of-changing-service-tier-or-rescaling-compute-size"></a>Latence Změna velikosti výpočetní služby vrstvě nebo změny měřítka
 
-Latence změnit úroveň služby nebo změnit velikost výpočetních izolovanou databázi nebo elastický fond je parametrizované následujícím způsobem:
+Odhadované latence změnit úroveň služby nebo změnit velikost výpočetních izolovanou databázi nebo elastický fond je parametrizované následujícím způsobem:
 
 |Úroveň služeb|Základní izolované databáze</br>Standard (S0-S1)|Základní elastického fondu</br>Standard (S2-S12), </br>Hyperškálovatelného </br>Elastický fond nebo izolovanou databázi pro obecné účely|Elastický fond nebo izolovanou databázi Premium nebo pro důležité obchodní informace|
 |:---|:---|:---|:---|

@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 433ae852-a833-44d3-a3c3-14cca33403a2
 ms.date: 01/27/2017
-ms.openlocfilehash: 1e75e0be5404ca7107d3f3201d248088b48da12c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 76a9ece9e925543e856136a798a60038316caad9
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067903"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203044"
 ---
 # <a name="create-custom-tracking-schemas-that-monitor-end-to-end-workflows-in-azure-logic-apps"></a>Vytvořit vlastní sledování schémata, které sledují pracovní postupy začátku do konce v Azure Logic Apps
 
@@ -56,22 +56,22 @@ Tento článek obsahuje vlastní kód, který můžete použít v jednotlivých 
 }
 ```
 
-| Vlastnost | Typ | Popis |
-| --- | --- | --- |
-| sourceType |   | Typ spuštění zdroje. Povolené hodnoty jsou **Microsoft.Logic/workflows** a **vlastní**. (Povinné) |
-| source |   | Pokud je typ zdrojového **Microsoft.Logic/workflows**, informace o zdroji je potřeba postupovat podle tohoto schématu. Pokud je typ zdrojového **vlastní**, schéma je JToken. (Povinné) |
-| systemId | String | ID logiku aplikace systému. (Povinné) |
-| runId | String | ID spuštění aplikace logiky (Povinné) |
-| operationName | String | Název operace (například akce nebo triggeru). (Povinné) |
-| repeatItemScopeName | String | Pokud je akce uvnitř opakujte název položky `foreach` / `until` smyčky. (Povinné) |
-| repeatItemIndex | Integer | Zda "action" je uvnitř `foreach` / `until` smyčky. Určuje index opakované položky. (Povinné) |
-| trackingId | String | ID sledování ke korelaci zprávy. (Volitelné) |
-| correlationId | String | ID korelace ke korelaci zprávy. (Volitelné) |
-| clientRequestId | String | Klienta můžete naplnit ho ke korelaci zprávy. (Volitelné) |
-| eventLevel |   | Úroveň události. (Povinné) |
-| eventTime |   | Čas události ve formátu RRRR-MM-DDTHH:MM:SS.00000Z UTC. (Povinné) |
-| recordType |   | Typ záznamu sledování. Povolená hodnota je **vlastní**. (Povinné) |
-| record |   | Vlastní typ záznamu. Povolený formát je JToken. (Povinné) |
+| Vlastnost | Požaduje se | Typ | Popis |
+| --- | --- | --- | --- |
+| sourceType | Ano |   | Typ spuštění zdroje. Povolené hodnoty jsou **Microsoft.Logic/workflows** a **vlastní**. |
+| source | Ano |   | Pokud je typ zdrojového **Microsoft.Logic/workflows**, informace o zdroji je potřeba postupovat podle tohoto schématu. Pokud je typ zdrojového **vlastní**, schéma je JToken. |
+| systemId | Ano | String | ID logiku aplikace systému. |
+| runId | Ano | String | ID spuštění aplikace logiky |
+| operationName | Ano | String | Název operace (například akce nebo triggeru). |
+| repeatItemScopeName | Ano | String | Pokud je akce uvnitř opakujte název položky `foreach` / `until` smyčky. |
+| repeatItemIndex | Ano | Integer | Zda "action" je uvnitř `foreach` / `until` smyčky. Určuje index opakované položky. |
+| trackingId | Ne | String | ID sledování ke korelaci zprávy. |
+| correlationId | Ne | String | ID korelace ke korelaci zprávy. |
+| clientRequestId | Ne | String | Klienta můžete naplnit ho ke korelaci zprávy. |
+| eventLevel | Ano |   | Úroveň události. |
+| eventTime | Ano |   | Čas události ve formátu RRRR-MM-DDTHH:MM:SS.00000Z UTC. |
+| recordType | Ano |   | Typ záznamu sledování. Povolená hodnota je **vlastní**. |
+| record | Ano |   | Vlastní typ záznamu. Povolený formát je JToken. |
 ||||
 
 ## <a name="b2b-protocol-tracking-schemas"></a>Schémata sledování B2B protokolu

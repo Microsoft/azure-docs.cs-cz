@@ -1,23 +1,17 @@
 ---
 title: Azure Resource Manageru šablony funkce – logické | Dokumentace Microsoftu
 description: Popisuje funkce pro použití v šabloně Azure Resource Manageru k určení logické hodnoty.
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-ms.assetid: ''
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 04/15/2019
 ms.author: tomfitz
-ms.openlocfilehash: 4684c38fe506ed912c6827f1e60b94b847024347
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: cf6874512557bc44efe978708c78e3d98db4110b
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65405657"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205458"
 ---
 # <a name="logical-functions-for-azure-resource-manager-templates"></a>Logické funkce pro šablony Azure Resource Manageru
 
@@ -39,9 +33,9 @@ Kontroluje, zda jsou splněny všechny hodnoty parametrů.
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |Boolean |První hodnota ke kontrole, jestli má hodnotu true. |
-| arg2 |Ano |Boolean |Druhá hodnota ke kontrole, jestli má hodnotu true. |
-| Další argumenty |Ne |Boolean |Další argumenty, které chcete zkontrolovat, zda jsou splněny. |
+| arg1 |Ano |boolean |První hodnota ke kontrole, jestli má hodnotu true. |
+| arg2 |Ano |boolean |Druhá hodnota ke kontrole, jestli má hodnotu true. |
+| Další argumenty |Ne |boolean |Další argumenty, které chcete zkontrolovat, zda jsou splněny. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -75,11 +69,11 @@ Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-sa
 
 Výstup z předchozího příkladu je:
 
-| Název | Typ | Value |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
-| andExampleOutput | Bool | False (Nepravda) |
+| andExampleOutput | Bool | False |
 | orExampleOutput | Bool | True |
-| notExampleOutput | Bool | False (Nepravda) |
+| notExampleOutput | Bool | False |
 
 ## <a name="bool"></a>bool
 
@@ -128,12 +122,12 @@ Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-sa
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Value |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | trueString | Bool | True |
-| falseString | Bool | False (Nepravda) |
+| falseString | Bool | False |
 | trueInt | Bool | True |
-| falseInt | Bool | False (Nepravda) |
+| falseInt | Bool | False |
 
 ## <a name="if"></a>if
 
@@ -145,7 +139,7 @@ Vrátí hodnotu podle toho, jestli je podmínka true nebo false.
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| condition |Ano |Boolean |Hodnota ke kontrole, jestli je true nebo false. |
+| Podmínka |Ano |boolean |Hodnota ke kontrole, jestli je true nebo false. |
 | trueValue |Ano | řetězec, int, objekt nebo pole |Hodnota má vrátit, pokud je podmínka pravdivá. |
 | falseValue |Ano | řetězec, int, objekt nebo pole |Hodnota má vrátit, pokud podmínka není splněna. |
 
@@ -186,7 +180,7 @@ Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-sa
 
 Výstup z předchozího příkladu je:
 
-| Název | Typ | Value |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | yesOutput | String | ano |
 | noOutput | String | ne |
@@ -196,7 +190,7 @@ Následující [Ukázková šablona](https://github.com/krnese/AzureDeploy/blob/
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "vmName": {
@@ -240,7 +234,7 @@ Následující [Ukázková šablona](https://github.com/krnese/AzureDeploy/blob/
 }
 ```
 
-## <a name="not"></a>ne
+## <a name="not"></a>Not
 
 `not(arg1)`
 
@@ -250,7 +244,7 @@ Logická hodnota se převede na opačnou hodnotu.
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |Boolean |Hodnota k převedení. |
+| arg1 |Ano |boolean |Hodnota k převedení. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -284,11 +278,11 @@ Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-sa
 
 Výstup z předchozího příkladu je:
 
-| Název | Typ | Value |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
-| andExampleOutput | Bool | False (Nepravda) |
+| andExampleOutput | Bool | False |
 | orExampleOutput | Bool | True |
-| notExampleOutput | Bool | False (Nepravda) |
+| notExampleOutput | Bool | False |
 
 Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json) používá **není** s [rovná](resource-group-template-functions-comparison.md#equals).
 
@@ -308,7 +302,7 @@ Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-sa
 
 Výstup z předchozího příkladu je:
 
-| Název | Typ | Value |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
 | checkNotEquals | Bool | True |
 
@@ -322,9 +316,9 @@ Kontroluje, zda je true kterákoli hodnota parametru.
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |Boolean |První hodnota ke kontrole, jestli má hodnotu true. |
-| arg2 |Ano |Boolean |Druhá hodnota ke kontrole, jestli má hodnotu true. |
-| Další argumenty |Ne |Boolean |Další argumenty, které chcete zkontrolovat, zda jsou splněny. |
+| arg1 |Ano |boolean |První hodnota ke kontrole, jestli má hodnotu true. |
+| arg2 |Ano |boolean |Druhá hodnota ke kontrole, jestli má hodnotu true. |
+| Další argumenty |Ne |boolean |Další argumenty, které chcete zkontrolovat, zda jsou splněny. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -358,11 +352,11 @@ Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-sa
 
 Výstup z předchozího příkladu je:
 
-| Název | Typ | Value |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
-| andExampleOutput | Bool | False (Nepravda) |
+| andExampleOutput | Bool | False |
 | orExampleOutput | Bool | True |
-| notExampleOutput | Bool | False (Nepravda) |
+| notExampleOutput | Bool | False |
 
 ## <a name="next-steps"></a>Další postup
 

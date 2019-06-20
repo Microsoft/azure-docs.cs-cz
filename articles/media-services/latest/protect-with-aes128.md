@@ -13,14 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/21/2019
 ms.author: juliako
-ms.openlocfilehash: c957a98cdb6c195f7ed9b41dabc66a32714f57e7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f7f68398cb473ca166d328ee15a92f3c848840f2
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65142514"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273299"
 ---
 # <a name="tutorial-use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>Kurz: Použití dynamického šifrování AES-128 a doručení klíče služby
+
+> [!NOTE]
+> I když v tomto kurzu použijete [sady .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) příklady, obecný postup je stejný pro [rozhraní REST API](https://docs.microsoft.com/rest/api/media/liveevents), [rozhraní příkazového řádku](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest), nebo jiné podporované [sady SDK](media-services-apis-overview.md#sdks) .
 
 Media Services můžete použít k zajištění HTTP Live Streaming (HLS), MPEG-DASH a Smooth Streaming, šifrují pomocí AES pomocí 128bitového šifrování klíčů. Služba Media Services také poskytuje službu doručení klíče, který poskytuje šifrovací klíče na oprávněné uživatele. Pokud chcete pro Media Services k dynamické šifrování vašeho videa, šifrovací klíč přidružit Lokátor streamování a také nakonfigurovat zásady obsahu klíčů. Přehrávač je žádost datového proudu, používá Media Services se zadaným klíčem k dynamické šifrování obsahu pomocí AES-128. K dešifrování streamu si přehrávač vyžádá klíč ze služby doručování klíčů. K tomu, aby služba zjistila, jestli má daný uživatel povolené získání klíče, vyhodnocuje zásadu symetrického klíče, kterou jste pro klíč určili.
 

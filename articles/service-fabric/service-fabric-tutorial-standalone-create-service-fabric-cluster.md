@@ -15,16 +15,16 @@ ms.workload: NA
 ms.date: 05/11/2018
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 1bcb7f9fadc79db0db17336f07f6d58302433c1f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f978087a935bcf6ac78760fee5842573eb3a326e
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60717964"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274118"
 ---
 # <a name="tutorial-install-and-create-service-fabric-cluster"></a>Kurz: Instalace a vytvoření clusteru Service Fabric
 
-Samostatné clustery Service Fabric nabízejí možnost volby vlastního prostředí a vytvoření clusteru v rámci přístupu Service Fabric „libovolný OS a libovolný cloud“. V této sérii kurzů vytvoříte samostatný cluster hostovaný na AWS a nainstalujete do něj aplikaci.
+Samostatné clustery Service Fabric nabízejí možnost volby vlastního prostředí a vytvoření clusteru v rámci přístupu Service Fabric „libovolný OS a libovolný cloud“. V této řadě kurzů vytvoření samostatného clusteru hostované na Azure nebo v AWS a instalovat aplikace do něj.
 
 Tento kurz je druhá část série. Tento kurz vás provede kroky vytvoření samostatného clusteru Service Fabric.
 
@@ -37,7 +37,7 @@ Ve druhé části této série se naučíte:
 
 ## <a name="download-the-service-fabric-for-windows-server-package"></a>Stažení balíčku Service Fabric pro Windows Server
 
-Service Fabric nabízí instalační balíček pro vytváření samostatných clusterů Service Fabric.  [Stáhněte instalační balíček](https://go.microsoft.com/fwlink/?LinkId=730690) do místního počítače.  Po úspěšném stažení ho prostřednictvím připojení RDP zkopírujte do své instance EC2 a vložte ho na plochu.
+Service Fabric nabízí instalační balíček pro vytváření samostatných clusterů Service Fabric.  [Stáhněte instalační balíček](https://go.microsoft.com/fwlink/?LinkId=730690) do místního počítače.  Jakmile byl úspěšně stažen zkopírovat připojení RDP k virtuálnímu počítači a vložte na ploše.
 
 Vyberte soubor ZIP, otevřete místní nabídku a vyberte **Extrahovat vše** > **Extrahovat**.  Při extrahování souborů se na ploše vygeneruje složka se stejným názvem jako soubor ZIP.
 

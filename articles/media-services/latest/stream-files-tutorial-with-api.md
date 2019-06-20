@@ -1,6 +1,6 @@
 ---
-title: Nahrávání, kódování a streamování pomocí služby Azure Media Services v3 pomocí .NET | Dokumentace Microsoftu
-description: Postupujte podle kroků v tomto kurzu k nahrání souboru a kódování videa a Streamovat obsah pomocí Media Services v3 pomocí rozhraní .NET.
+title: Nahrávání, kódování a streamování pomocí služby Azure Media Services v3 | Dokumentace Microsoftu
+description: Postupujte podle kroků v tomto kurzu k nahrání souboru a kódování videa a Streamovat obsah pomocí Media Services v3.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,18 +12,21 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/22/2019
 ms.author: juliako
-ms.openlocfilehash: 66ee2c110edfdbd0e33c69d45dee8040654d421a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 46a1add812d5721e36d8af030195c42542dc360c
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149150"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273240"
 ---
-# <a name="tutorial-upload-encode-and-stream-videos-using-net"></a>Kurz: Nahrávání, kódování a streamování videí pomocí .NET
+# <a name="tutorial-upload-encode-and-stream-videos"></a>Kurz: Nahrávání, kódování a streamování videí
+
+> [!NOTE]
+> I když v tomto kurzu použijete [sady .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) příklady, obecný postup je stejný pro [rozhraní REST API](https://docs.microsoft.com/rest/api/media/liveevents), [rozhraní příkazového řádku](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest), nebo jiné podporované [sady SDK](media-services-apis-overview.md#sdks) .
 
 Azure Media Services umožňuje kódování souborů médií do formátů, které můžete přehrát na širokou škálu prohlížečů a zařízení. Například můžete chtít svůj obsah streamovat ve formátu Apple HLS nebo MPEG DASH. Před streamováním je vhodné soubor digitálního média ve vysoké kvalitě zakódovat. Pokyny ke kódování najdete v tématu [Principy kódování](encoding-concept.md). V tomto kurzu se nahraje místní soubor videa a nahraný soubor se zakóduje. Můžete také zakódovat obsah, který zpřístupníte prostřednictvím adresy URL protokolu HTTPS. Další informace najdete v článku o [vytvoření vstupu úlohy z adresy URL protokolu HTTP(S)](job-input-from-http-how-to.md).
 
-![Přehrávání videa](./media/stream-files-tutorial-with-api/final-video.png)
+![Přehrát video](./media/stream-files-tutorial-with-api/final-video.png)
 
 V tomto kurzu získáte informace o následujících postupech:    
 
@@ -176,7 +179,7 @@ Tento příklad uvádí adresy URL, které můžete použít k přehrávání vi
 Tento článek používá k otestování streamu přehrávač Azure Media Player. 
 
 > [!NOTE]
-> Pokud se přehrávač hostuje na webu HTTPS, nezapomeňte adresu URL aktualizovat tak, aby obsahovala „https“. 
+> Pokud se přehrávač hostuje na webu HTTPS, nezapomeňte adresu URL aktualizovat tak, aby obsahovala „https“.
 
 1. Otevřete webový prohlížeč a přejděte na adresu [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/).
 2. Do pole **URL:** vložte jednu z hodnot adres URL pro streamování, které jste získali při spuštění aplikace. 

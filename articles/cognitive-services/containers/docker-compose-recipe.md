@@ -7,15 +7,15 @@ author: IEvan
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.topic: article
-ms.date: 06/12/2019
+ms.topic: conceptual
+ms.date: 06/19/2019
 ms.author: diberry
-ms.openlocfilehash: bd796a316dd806472254aa1cbf1e5a498df5ce43
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
-ms.translationtype: MT
+ms.openlocfilehash: 351c89d3dfbc066d7c94a9e6b99e399b07011043
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67207433"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67272928"
 ---
 # <a name="use-multiple-containers-in-a-private-network-with-docker-compose"></a>Použití více kontejnerů v privátní síti pomocí Docker Compose
 

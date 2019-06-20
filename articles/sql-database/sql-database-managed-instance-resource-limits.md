@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 manager: craigg
 ms.date: 06/13/2019
-ms.openlocfilehash: 15f64c7087ea4d24f271af67b251030a2196fa10
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 89df33f453217585e8f0b8ff13d06ee223474fae
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67070378"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67272238"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Přehled Azure SQL Database managed instance omezení prostředků
 
@@ -105,7 +105,7 @@ Následující tabulka ukazuje výchozí místní omezení pro podporované pře
 
 \* Při plánování vašeho nasazení, vezměte v úvahu, že kritické obchodní (BC) virtuální jádro (z důvodu přidání redundance) využívá 4 x větší kapacitu než virtuální jádro pro obecné účely (zásady skupiny). Ano, pro výpočty, 1 virtuální jádro GP = 1 vCore jednotky a 1 BC virtuální jádro = 4 jednotky na vCore. Zjednodušuje analýzy využití pro výchozí omezení, Shrňte jednotky vCore přes všechny podsítě v oblasti, kde spravované instance se nasazují a porovnávat výsledky s limity instancí jednotky pro typ vašeho předplatného. **Maximální počet jednotek vCore** omezení platí pro každé předplatné oblast. Neexistuje žádné omezení na jednotlivé podsítě s tím rozdílem, že součet všech virtuálních jader nasazených na více podsítí musí být menší nebo rovna hodnotě **maximální počet jednotek vCore**.
 
-** Větší podsítě a vCore omezení jsou k dispozici v následujících oblastech: Austrálie – východ, USA – východ, USA – východ 2, Severní Evropa, střed USA – Jih, jihovýchodní Asie, Velká Británie – Jih, západní Evropa, západní USA 2.
+\*\* Větší podsítě a vCore omezení jsou k dispozici v následujících oblastech: Austrálie – východ, USA – východ, USA – východ 2, Severní Evropa, střed USA – Jih, jihovýchodní Asie, Velká Británie – Jih, západní Evropa, západní USA 2.
 
 ## <a name="obtaining-a-larger-quota-for-sql-managed-instance"></a>Získání vyšší kvóty pro SQL spravovaná instance
 

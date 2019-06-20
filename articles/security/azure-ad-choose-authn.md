@@ -9,12 +9,12 @@ ms.date: 04/12/2018
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
-ms.openlocfilehash: cc41581232b331368b44fc7190eadb94516824c3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 35fb529be28fc985460421c185872c7e35603341
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67119313"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274276"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Vyberte metodu správné ověřování pro vaše řešení hybridní identity Azure Active Directory 
 
@@ -101,7 +101,7 @@ Podrobnosti o rozhodnutí otázky:
 * **Důležité informace o**. Synchronizace hodnot hash hesel v současné době není okamžitě vynucovat změny v místní účet stavy. V takovém případě má uživatel přístup ke cloudovým aplikacím, dokud se stav účtu uživatele se synchronizují do služby Azure AD. Organizace chtít, aby k překonání tohoto omezení spuštěním nový synchronizační cyklus po správci hromadné aktualizace stavů účtu místní uživatel. Příkladem je zakázání účtů.
 
 > [!NOTE]
-> Heslo vyprší a stavy uzamčený účet nejsou aktuálně synchronizované do Azure AD se službou Azure AD Connect. 
+> Heslo vyprší a stavy uzamčený účet nejsou aktuálně synchronizované do Azure AD se službou Azure AD Connect. Pokud změníte heslo uživatele a nastavit *musí uživatel změnit heslo při příštím přihlášení* příznak, hodnoty hash hesla nebudou synchronizovány do Azure AD se službou Azure AD Connect, dokud uživatel změnil heslo.
 
 Odkazovat na [implementace synchronizace hodnot hash hesel](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization) pro jednotlivé kroky nasazení.
 

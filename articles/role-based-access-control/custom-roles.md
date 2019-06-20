@@ -15,12 +15,12 @@ ms.date: 06/07/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d88462f705a89d02ab69700d0c15669deb44da98
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8b628086a67f1d76357fda4f753350b6411b8f15
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67058205"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273712"
 ---
 # <a name="custom-roles-for-azure-resources"></a>Vlastní role pro prostředky Azure
 
@@ -98,8 +98,8 @@ Vlastní role má následující vlastnosti.
 | `Description` | Ano | String | Popis vlastní role. Může obsahovat písmena, číslice, mezery a speciální znaky. Maximální počet znaků je 1024. |
 | `Actions` | Ano | Řetězec] | Pole řetězců, která určuje, které role umožňuje provádět operace správy. Další informace najdete v tématu [akce](role-definitions.md#actions). |
 | `NotActions` | Ne | Řetězec] | Pole řetězců, které určuje operace správy, které jsou vyloučené z povolených `Actions`. Další informace najdete v tématu [NotActions](role-definitions.md#notactions). |
-| `DataActions` | Ne | Řetězec] | Pole řetězců, který určuje datové operace, které povoluje roli mají být provedeny ke svým datům v rámci daného objektu. Další informace najdete v tématu [DataActions (Preview)](role-definitions.md#dataactions-preview). |
-| `NotDataActions` | Ne | Řetězec] | Pole řetězců, které určuje datové operace, které jsou vyloučené z povolených `DataActions`. Další informace najdete v tématu [NotDataActions (Preview)](role-definitions.md#notdataactions-preview). |
+| `DataActions` | Ne | Řetězec] | Pole řetězců, který určuje datové operace, které povoluje roli mají být provedeny ke svým datům v rámci daného objektu. Další informace najdete v tématu [DataActions](role-definitions.md#dataactions). |
+| `NotDataActions` | Ne | Řetězec] | Pole řetězců, které určuje datové operace, které jsou vyloučené z povolených `DataActions`. Další informace najdete v tématu [NotDataActions](role-definitions.md#notdataactions). |
 | `AssignableScopes` | Ano | Řetězec] | Pole řetězců, která určuje, že je k dispozici pro přiřazení vlastní role obory. Pro vlastní role, aktuálně nelze nastavit `AssignableScopes` na kořenového oboru (`"/"`) nebo obor skupiny správy. Další informace najdete v tématu [AssignableScopes](role-definitions.md#assignablescopes) a [uspořádání prostředků se skupinami pro správu Azure](../governance/management-groups/index.md#custom-rbac-role-definition-and-assignment). |
 
 ## <a name="who-can-create-delete-update-or-view-a-custom-role"></a>Kdo může vytvořit, odstranit, aktualizovat nebo zobrazit vlastní roli

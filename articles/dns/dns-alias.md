@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 6/7/2019
 ms.author: victorh
-ms.openlocfilehash: 0d52e84ba027f902cebf543ae019b5e4b53400b7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5dfc00b1193117c22ba1c763bb0e75d9c4712222
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059681"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275734"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Azure DNS alias Přehled záznamů
 
@@ -29,7 +29,7 @@ Sady záznamů alias je podporována pro následující typy záznamů v zóně 
 
 ## <a name="capabilities"></a>Možnosti
 
-- **Odkazovat na prostředek veřejné IP adresy ze serveru DNS A/AAAA sadu záznamů.** Můžete vytvořit sadu záznamů A/AAAA a nastavte ji alias záznamu sady tak, aby odkazoval na prostředek veřejné IP adresy. Sady záznamů DNS je automaticky, pokud veřejná IP adresa se změní nebo je odstranit. Nepropojená DNS záznamy, které odkazují na nesprávné IP adresy se jim vyhnout.
+- **Odkazovat na prostředek veřejné IP adresy ze serveru DNS A/AAAA sadu záznamů.** Můžete vytvořit sadu záznamů A/AAAA a nastavte ji alias záznamu sady tak, aby odkazoval na prostředek veřejné IP adresy. Záznam DNS, sadu změn automaticky Pokud se změní veřejná IP adresa nebo je odstranit. Nepropojená DNS záznamy, které odkazují na nesprávné IP adresy se jim vyhnout.
 
 - **Přejděte na profil Traffic Manageru ze sady záznamů DNS A/AAAA/CNAME.** Můžete vytvořit A/AAAA nebo záznam CNAME nastavit a nasměrovat ho na profil Traffic Manageru pomocí záznamů aliasů. Je užitečné zejména při je potřeba směrovat provoz na vrcholu zóny, protože tradiční záznamy CNAME se nepodporují pro vrcholu zóny. Řekněme například, je váš profil Traffic Manageru myprofile.trafficmanager.net a zónu DNS firmy je contoso.com. Můžete vytvořit alias záznamu sadu typů A/AAAA pro doménu contoso.com (vrcholu zóny) a přejděte na myprofile.trafficmanager.net.
 - **Přejděte na koncový bod Azure Content Delivery Network (CDN)** . To je užitečné při vytváření statických webů pomocí služby Azure storage a Azure CDN.

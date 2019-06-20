@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 29814cb8aef09a8ead30d6daa615554dd55135dd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2af076153725dc91caaf07b710acf21ebc143fb0
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60764366"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273671"
 ---
 # <a name="programming-guide-for-azure-event-hubs"></a>Průvodce programováním pro službu Azure Event Hubs
 Tento článek popisuje některé běžné situace při psaní kódu s využitím služby Azure Event Hubs. Předpokládá se předběžná znalost služby Event Hubs. Koncepční přehled služby Event Hubs naleznete v tématu [Přehled služby Event Hubs](event-hubs-what-is-event-hubs.md).
@@ -70,6 +70,9 @@ for (var i = 0; i < numMessagesToSend; i++)
 ```
 
 ## <a name="partition-key"></a>Klíč oddílu
+
+> [!NOTE]
+> Pokud nejste obeznámeni s oddíly, přečtěte si téma [v tomto článku](event-hubs-features.md#partitions). 
 
 Při odesílání dat události, můžete zadat hodnotu, která se po zahašování použije k vytvoření přiřazení k oddílu. Můžete zadat pomocí oddílu [PartitionSender.PartitionID](/dotnet/api/microsoft.azure.eventhubs.partitionsender.partitionid) vlastnost. Však rozhodnout a použít oddíly znamená možnost volby mezi dostupností a konzistencí. 
 

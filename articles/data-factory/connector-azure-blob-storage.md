@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: 1ff20322f1d4f6024d4f41037ca18c327a0cc21f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3be075b78d8388b7146a9a3180ca825fc6476108
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65233197"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206035"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-by-using-azure-data-factory"></a>Kopírování dat do nebo z úložiště objektů Blob v Azure pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, který používáte:"]
@@ -60,7 +60,10 @@ Konektor Azure Blob podporuje následující typy ověřování, přečtěte si 
 - [Spravovaných identit pro ověřování prostředků Azure](#managed-identity)
 
 >[!NOTE]
->HDInsights, Azure Machine Learning a Azure SQL Data Warehouse PolyBase zatížení podporují pouze ověření klíče účtu úložiště objektů Blob v Azure.
+>Při použití PolyBase k načtení dat do SQL Data Warehouse, pokud je váš zdroj nebo pracovní úložiště objektů Blob nakonfigurované s koncový bod virtuální sítě, musíte použít spravovanou identitu ověřování podle potřeby polybase a používat modul Integration Runtime s verzí 3.18 nebo vyšší. Zobrazit [spravovanou identitu ověřování](#managed-identity) části s požadavky na konfiguraci.
+
+>[!NOTE]
+>Azure Machine Learning a HDInsights aktivity podporují pouze ověření klíče účtu úložiště objektů Blob v Azure.
 
 ### <a name="account-key-authentication"></a>Ověření pomocí klíče účtu
 
@@ -272,6 +275,9 @@ Odkazovat na [ověření přístupu ke službě Azure Storage pomocí Azure Acti
 
     - **Jako zdroj**, do Access control (IAM), udělit alespoň **čtecí modul dat pro úložiště objektů Blob** role.
     - **Jako jímku**, do Access control (IAM), udělit alespoň **Přispěvatel dat objektu Blob úložiště** role.
+
+>[!IMPORTANT]
+>Pokud při použití spravované identity ověřování pro objekt Blob načtení dat z objektu Blob (jako zdrojový nebo jako pracovní) do služby SQL Data Warehouse pomocí PolyBase, ujistěte se, že je také postupovat podle kroků 1 a 2 v [návod](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage) na 1) zaregistrujte vaši službu SQL Database Server se službou Azure Active Directory (Azure AD) a 2) přiřazení role Přispěvatel dat objektu Blob Storage do databáze SQL serveru. Zbývající provádí služba Data Factory. Pokud vaše úložiště objektů Blob je nakonfigurované koncový bod Azure Virtual Network, použití PolyBase k načtení dat z něj, je potřeba použít spravovanou identitu ověřování podle potřeby polybase.
 
 Tyto vlastnosti jsou podporovány pro Azure Blob propojené služby storage:
 

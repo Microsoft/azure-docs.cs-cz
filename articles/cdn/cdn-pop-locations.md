@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/17/2019
 ms.author: magattus
-ms.openlocfilehash: 33682727b84713b515bb68d34aa5cf8b72ce44fa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 45ac1eb484d5e301a9090ea5a11165ba321b0aaa
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65862472"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274959"
 ---
 # <a name="azure-cdn-coverage-by-metro"></a>Azure CDN pokrytí Metro 
 > [!div class="op_single_selector"]
@@ -44,7 +44,7 @@ Tento článek uvádí aktuální metrem obsahující point-of-presence (POP) um
 | Afrika | Kapské město, Jihoafrická republika<br />Johannesburg, Jihoafrická republika | Johannesburg, Jihoafrická republika | Jižní Afrika |
 | Střední východ | Dubai, Spojené arabské emiráty | Maskat, Omán<br />Fujirah, Spojené arabské emiráty | Katar<br />Spojené arabské emiráty |
 | Indie | Čennaj, Indie<br />Hyderabad, Indie<br />Bombaj, Indie<br />Nové Dillí, Indie | Bengaluru (Bangalore), Indie<br />Čennaj, Indie<br />Bombaj, Indie<br />Nové Dillí, Indie<br /> | Indie |
-| Asie | Hongkong<br />Ósaka, Japonsko<br />Tokio, Japonsko<br />Kuala Lumpur, Malaysia<br />Manila, Filipíny<br />Singapur<br />Busan, Jižní Korea<br />Soul, Jižní Korea<br />Taipei, Tchaj-wan<br />Bangkok, Thajsko | Hongkong<br />Batam, Indonésie<br />Jakarta, Indonesia<br />Ósaka, Japonsko<br />Tokio, Japonsko<br />Singapur<br />Busan, Jižní Korea<br />Soul, Jižní Korea<br />Kao-Siung, Tchaj-wan | Hongkong<br />Indonésie<br />Izrael<br />Japonsko<br />Macau<br />Malajsie<br />Filipíny<br />Singapur<br />Jižní Korea<br />Tchaj-wan<br />Thajsko<br />Turecko<br />Vietnam |
+| Asie | Hongkong<br />Ósaka, Japonsko<br />Tokio, Japonsko<br />Kuala Lumpur, Malaysia<br />Manila, Filipíny<br />Singapur<br />Busan, Jižní Korea<br />Soul, Jižní Korea<br />Taipei, Tchaj-wan<br />Bangkok, Thajsko | Hongkong<br />Batam, Indonésie<br />Jakarta, Indonesia<br />Ósaka, Japonsko<br />Tokio, Japonsko<br />Singapur<br />Soul, Jižní Korea<br />Kao-Siung, Tchaj-wan | Hongkong<br />Indonésie<br />Izrael<br />Japonsko<br />Macau<br />Malajsie<br />Filipíny<br />Singapur<br />Jižní Korea<br />Tchaj-wan<br />Thajsko<br />Turecko<br />Vietnam |
 | Austrálie a Nový Zéland | Brisbane, Austrálie<br />Melbourne, Austrálie<br />Perth, Austrálie<br />Sydney, Austrálie<br />Auckland, Nový Zéland | Melbourne, Austrálie<br />Sydney, Austrálie<br />Auckland, Nový Zéland | Austrálie<br />Nový Zéland |
 
 

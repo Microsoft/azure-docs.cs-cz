@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 06/13/2019
 ms.author: raynew
-ms.openlocfilehash: a7dd5530c3941fe55e8a649f8adb217159823f5d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8df4f17c9afbf10c6507e505c6540c3f66a42309
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66492795"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275625"
 ---
 # <a name="delete-a-recovery-services-vault"></a>Odstranění trezoru služby Recovery Services
 
@@ -24,8 +24,8 @@ Tento článek popisuje, jak odstranit [Azure Backup](backup-overview.md) trezor
 
 Než začnete, je důležité pochopit, že nemůžete odstranit trezor služby Recovery Services se servery zaregistrované v ní nebo, který uchovává zálohovaná data.
 
-- Odstranit trezor služby bez výpadku, zrušení registrace serverů v ní, odebrání úložiště dat a pak odstraňte trezor.
-- Pokud se pokusíte odstranit trezor, stále se závislostmi, objeví se chybová zpráva. a budete muset ručně odebrat závislosti trezoru, včetně:
+- Řádně odstranění trezoru, zrušte registraci serverů, které obsahuje, odebrání úložiště dat a pak odstraňte trezor.
+- Pokud se pokusíte odstranit trezor, který má stále závislosti, vydává chybovou zprávu a budete muset ručně odebrat závislosti trezoru, včetně:
     - Zálohovaných položek
     - Chráněné servery
     - Zálohování serverů pro správu (Azure Backup Server, aplikace DPM) ![vyberte svůj trezor otevřete jeho řídicí panel](./media/backup-azure-delete-vault/backup-items-backup-infrastructure.png)
@@ -40,7 +40,7 @@ Než začnete, je důležité pochopit, že nemůžete odstranit trezor služby 
 
     ![Vyberte svůj trezor otevřete jeho řídicí panel](./media/backup-azure-delete-vault/contoso-bkpvault-settings.png)
 
-Pokud obdržíte chybu, odeberte [zálohování položek](#remove-backup-items), [servery infrastruktury](#remove-backup-infrastructure-servers), a [body obnovení](#remove-azure-backup-agent-recovery-points)a pak odstraňte trezor.
+Pokud obdržíte chybu, odeberte [zálohování položek](#remove-backup-items), [servery infrastruktury](#remove-azure-backup-management-servers), a [body obnovení](#remove-azure-backup-agent-recovery-points)a pak odstraňte trezor.
 
 ![odstranění trezoru chyba](./media/backup-azure-delete-vault/error.png)
 
@@ -52,7 +52,7 @@ Pokud obdržíte chybu, odeberte [zálohování položek](#remove-backup-items),
 1. Instalace chocolatey z [tady](https://chocolatey.org/) a k instalaci ARMClient spouštění následující příkaz:
 
    ` choco install armclient --source=https://chocolatey.org/api/v2/ `
-2. Přihlaste se k účtu Azure, spouštění následující příkaz
+2. Přihlaste se ke svému účtu Azure a spusťte tento příkaz:
 
     ` ARMClient.exe login [environment name] `
 
@@ -78,7 +78,7 @@ Další informace o příkazu ARMClient najdete na tomto [dokumentu](https://git
 
 ## <a name="remove-vault-items-and-delete-the-vault"></a>Odebrat položky trezor a odstranění trezoru
 
-Tato procedura poskytují několik příkladů, pro odebrání dat záloh a serverů infrastruktury. Poté, co všechno, co se odebere z trezoru, můžete ho odstranit.
+Tyto postupy obsahují příklady pro odebrání dat záloh a serverů infrastruktury. Poté, co všechno, co se odebere z trezoru, můžete ho odstranit.
 
 ### <a name="remove-backup-items"></a>Odebrat zálohované položky
 
@@ -109,7 +109,7 @@ Tento postup poskytuje příklad, který ukazuje, jak odstranit zálohovaná dat
       ![Odstranit data zálohy](./media/backup-azure-delete-vault/empty-items-list.png)
 
 
-### <a name="remove-backup-infrastructure-servers"></a>Odeberte servery infrastruktury zálohování
+### <a name="remove-azure-backup-management-servers"></a>Odeberte servery pro správu Azure Backup
 
 1. V nabídce řídicího panelu trezoru klikněte na tlačítko **infrastruktura zálohování**.
 2. Klikněte na tlačítko **servery pro správu zálohování** k zobrazení serverů.
@@ -117,15 +117,25 @@ Tento postup poskytuje příklad, který ukazuje, jak odstranit zálohovaná dat
     ![Vyberte svůj trezor otevřete jeho řídicí panel](./media/backup-azure-delete-vault/delete-backup-management-servers.png)
 
 3. Klikněte pravým tlačítkem na položku > **odstranit**.
-4. Pokud chcete ověřit, že úloha odstranění dokončena, zkontrolujte zprávy Azure ![Odstranit data zálohy](./media/backup-azure-delete-vault/messages.png).
-5. Po dokončení úlohy, služba odesílá zprávu: **byl zastaven proces zálohování a zálohování dat byl odstraněn**.
-6. Po odstranění položky v seznamu na **infrastruktura zálohování** nabídky, klikněte na tlačítko **aktualizovat** pro zobrazení položek v trezoru.
+4. Na **odstranit** nabídku, zadejte název serveru a klikněte na tlačítko **odstranit**.
+
+     ![Odstranit data zálohy](./media/backup-azure-delete-vault/delete-protected-server-dialog.png)
+5.  Volitelně zadejte důvod, proč odstraňujete data a přidejte komentáře.
+
+> [!NOTE]
+> Odebrat položky, v konzole pro správu serveru nebo v konzole MARS na chráněném serveru, ukončete ochranu a odstranit zálohy. Pokud zůstanou zálohované položky, se zobrazí následující chyba při pokusu o odstranění a zrušení registrace serveru:
+> 
+>![nepovedlo se odstranit](./media/backup-azure-delete-vault/deletion-failed.png)
+
+6. Pokud chcete ověřit, že úloha odstranění dokončena, zkontrolujte zprávy Azure ![Odstranit data zálohy](./media/backup-azure-delete-vault/messages.png).
+7. Po dokončení úlohy, služba odesílá zprávu: **byl zastaven proces zálohování a zálohování dat byl odstraněn**.
+8. Po odstranění položky v seznamu na **infrastruktura zálohování** nabídky, klikněte na tlačítko **aktualizovat** pro zobrazení položek v trezoru.
 
 
 ### <a name="remove-azure-backup-agent-recovery-points"></a>Odebrat body obnovení Azure Backup agent
 
 1. V nabídce řídicího panelu trezoru klikněte na tlačítko **infrastruktura zálohování**.
-2. Klikněte na tlačítko **servery pro správu zálohování** k zobrazení serverů infrastruktury.
+2. Klikněte na tlačítko **chráněné servery** k zobrazení serverů infrastruktury.
 
     ![Vyberte svůj trezor otevřete jeho řídicí panel](./media/backup-azure-delete-vault/identify-protected-servers.png)
 
@@ -141,11 +151,18 @@ Tento postup poskytuje příklad, který ukazuje, jak odstranit zálohovaná dat
 
     ![Odstranit vybraný server](./media/backup-azure-delete-vault/selected-protected-server-click-delete.png)
 
-6. Na **odstranit** nabídku, zadejte název položky a klikněte na tlačítko **odstranit**.
+6. Na **odstranit** nabídku, zadejte název serveru a klikněte na tlačítko **odstranit**.
 
      ![Odstranit data zálohy](./media/backup-azure-delete-vault/delete-protected-server-dialog.png)
 
 7. Volitelně zadejte důvod, proč odstraňujete data a přidejte komentáře.
+
+> [!NOTE]
+> Před odstraněním těchto server registrace, musí se odstranit zálohované položky přidružené k zálohování serveru pro správu nebo agenta Azure Backup serveru. Odebrat položky zálohování, přejděte na SC DPM, MABS nebo MARS konzoly pro správu na serveru podle potřeby a vyberte příslušné možnosti k zastavení ochrany a odstranění zálohy. Pokud jsou stále spojeny žádné zálohované položky, zobrazí se následující chyba:
+> 
+> 
+>![nepovedlo se odstranit](./media/backup-azure-delete-vault/deletion-failed.png)
+
 8. Pokud chcete ověřit, že úloha odstranění dokončena, zkontrolujte zprávy Azure ![Odstranit data zálohy](./media/backup-azure-delete-vault/messages.png).
 9. Po odstranění položky v seznamu na **infrastruktura zálohování** nabídky, klikněte na tlačítko **aktualizovat** pro zobrazení položek v trezoru.
 

@@ -1,25 +1,17 @@
 ---
 title: Funkce šablon Azure Resource Manageru – porovnání | Dokumentace Microsoftu
 description: Popisuje funkce pro použití v šabloně Azure Resource Manageru pro porovnání hodnot.
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
-ms.assetid: ''
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 09/05/2017
 ms.author: tomfitz
-ms.openlocfilehash: 6591a75577670f5bb50c1275af7e51e9b8328d50
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0eafadd4049baea58aa882b3421eaa6a684a3a38
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66128684"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205500"
 ---
 # <a name="comparison-functions-for-azure-resource-manager-templates"></a>Porovnání funkcí šablon Azure Resource Manageru
 
@@ -173,7 +165,7 @@ Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-sa
 
 Výstup z předchozího příkladu je:
 
-| Název | Typ | Hodnota |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
 | checkNotEquals | Bool | True |
 

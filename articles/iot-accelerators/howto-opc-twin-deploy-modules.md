@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: f0fc3722ee440b6f50b86f916afef7ddc5876eef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 41d544fd23d258393cc83ea09371332655223581
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66693410"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203928"
 ---
 # <a name="deploy-opc-twin-module-and-dependencies-from-scratch"></a>Nasazení modulu Dvojčete OPC a závislosti úplně od začátku
 
@@ -200,52 +200,6 @@ Nejjednodušší způsob, jak nasadit moduly pro zařízení brány Azure IoT Ed
    ```
 
    Parametr ID zařízení rozlišuje velká a malá písmena. ![AZ iot hub modul identity výstupu](https://docs.microsoft.com/azure/iot-edge/media/how-to-deploy-cli/list-modules.png)
-
-## <a name="run-and-debug-locally"></a>Spustit a ladit v místním prostředí
-
-Pro řešení potíží a ladění je vhodné spouštět hraniční moduly místně pomocí [simulátor vývoj IoT Edge](https://github.com/Azure/iotedgehubdev).  Poskytuje místní vývojové prostředí se simulátor pro vytváření, vývoji, testování, spouštění a ladění modulů Azure IoT Edge a řešení s použitím stejného bitů nebo kódu, které se používají v produkčním prostředí.
-
-### <a name="prerequisites"></a>Požadavky
-
-1. Nasazení Dvojčeti OPC [závislosti](howto-opc-twin-deploy-dependencies.md).
-
-2. Nainstalujte [Docker CE (18.02.0+)](https://www.docker.com/community-edition) na [Windows](https://docs.docker.com/docker-for-windows/install/), [macOS](https://docs.docker.com/docker-for-mac/install/) nebo [Linux](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce).
-
-3. Nainstalujte [Docker Compose (1.20.0+)](https://docs.docker.com/compose/install/#install-compose) (nutné jen **Linux**. Compose už součástí instalace Windows nebo macOS Docker CE)
-
-4. Nainstalujte [Pythonu (2.7 / 3.5+) a Pip](https://www.python.org/)
-
-5. Nainstalujte iotedgehubdev spuštěním následující příkaz, v terminálu
-
-   ```bash
-   pip install --upgrade iotedgehubdev
-   ```
-
-> [!NOTE]
-> Nainstalovat `iotedgehubdev` k **kořenové** v systému Linux nebo macOS (*nepoužívejte '--uživatele "možnost v příkazu 'pip install'* ).
-> Ujistěte se, že není žádný modul runtime Azure IoT Edge, který je spuštěn ve stejném počítači s iotedgehubdev, protože vyžadují stejné porty.
-
-### <a name="quickstart"></a>Rychlý start
-
-1. Postupujte podle pokynů a [vytvořit hraniční zařízení na portálu Azure portal](https://docs.microsoft.com/azure/iot-edge/how-to-register-device-portal).  Zkopírujte připojovací řetězec zařízení edge.
-
-2. Nastavení simulátoru pomocí připojovacího řetězce edge.
-
-    ```bash
-    iotedgehubdev setup -c <edge-device-connection-string>
-    ```
-
-3. Zkopírujte výše manifestu do `deployment.json` soubor ve stejné složce.  Spustit nasazení v simulátoru pomocí
-
-    ```bash
-    iotedgehubdev start -d deployment.json
-    ```
-
-4. Přestat používat simulátor
-
-   ```bash
-   iotedgehubdev stop
-   ```
 
 ## <a name="next-steps"></a>Další postup
 

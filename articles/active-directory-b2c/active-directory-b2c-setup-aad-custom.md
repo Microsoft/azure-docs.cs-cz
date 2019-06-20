@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8ade695f1930c11f2d2d7ab7e0430910bd6f8705
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4ae821dc9ae0d739526b91bad76bca544cad2fb0
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66508649"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203713"
 ---
 # <a name="set-up-sign-in-with-an-azure-active-directory-account-using-custom-policies-in-azure-active-directory-b2c"></a>Nastavit přihlašování pomocí účtu služby Azure Active Directory pomocí vlastních zásad v Azure Active Directory B2C 
 
@@ -132,7 +132,7 @@ Chcete-li získat token z koncového bodu Azure AD, musíte definovat protokoly,
 5. Nastavte hodnotu **METADAT** k `https://login.windows.net/your-AD-tenant-name.onmicrosoft.com/.well-known/openid-configuration`, kde `your-AD-tenant-name` je název tenanta Azure AD. Například `https://login.windows.net/fabrikam.onmicrosoft.com/.well-known/openid-configuration`.
 6. Otevřete prohlížeč a přejděte na **METADAT** adresu URL, kterou jste právě aktualizovali, hledejte pro **vystavitele** objektu, zkopírujte a vložte tuto hodnotu na hodnotu pro **ProviderName** v souboru XML.
 8. Nastavte **client_id** a **IdTokenAudience** do ID aplikace z registrace aplikace.
-9. V části **CryptograhicKeys**, aktualizujte hodnotu **StorageReferenceId** do klíče zásad, který jste definovali. Například, `ContosoAppSecret`.
+9. V části **CryptographicKeys**, aktualizujte hodnotu **StorageReferenceId** do klíče zásad, který jste definovali. Například, `ContosoAppSecret`.
 
 ### <a name="upload-the-extension-file-for-verification"></a>Nahrát soubor rozšíření pro ověřování
 

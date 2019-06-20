@@ -10,12 +10,13 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 85639e2648131f9475ad2ae77f31d43e64bf82e7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 0c855a3e0280e1fadf2362f2d8959beff2f5d00a
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66509205"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67271962"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Webové přihlášení s OpenID Connect v Azure Active Directory B2C
 
@@ -152,7 +153,9 @@ Po ověření tokenu ID, můžete začít relaci s uživatelem. Deklarace identi
 
 Pokud potřebujete spustit jenom toky uživatelů pro webové aplikace, můžete přeskočit několik částí. Tyto části platí pouze pro webové aplikace, které je potřeba provést ověřená volání do webového rozhraní API a jsou také chráněné službou Azure AD B2C.
 
-Uplatníte autorizační kód, který jste získali (s použitím `response_type=code+id_token`) o token u požadovaného prostředku odesláním `POST` požádat o `/token` koncového bodu. V současné době je jediný zdroj, který můžete požádat o token pro vaše aplikace vlastní back endové webové rozhraní API. Konvence pro požadování tokenu sami sobě je použít ID klienta aplikace jako obor:
+Uplatníte autorizační kód, který jste získali (s použitím `response_type=code+id_token`) o token u požadovaného prostředku odesláním `POST` požádat o `/token` koncového bodu. V Azure AD B2C, můžete [požádat o tokeny přístupu pro další rozhraní API](active-directory-b2c-access-tokens.md#request-a-token) obvyklým zadáním jejich počet rozsahů: v požadavku.
+
+Také můžete vyžádat přístupového tokenu pro vaše aplikace vlastní back endové webové rozhraní API podle konvence pomocí ID klienta aplikace jako požadovaný obor (což bude mít za následek přístupový token s tímto ID klienta jako "cílovou skupinu"):
 
 ```
 POST fabrikamb2c.onmicrosoft.com/oauth2/v2.0/token?p=b2c_1_sign_in HTTP/1.1

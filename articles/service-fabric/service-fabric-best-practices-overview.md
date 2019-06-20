@@ -12,20 +12,20 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/24/2019
+ms.date: 06/18/2019
 ms.author: pepogors
-ms.openlocfilehash: 051d6b1129724ce4e8a67bde4e56ebe61cd832f3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5fdbd3f15b11e4c3975ca29627d5984382bcf049
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65231383"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206790"
 ---
 # <a name="azure-service-fabric-application-and-cluster-best-practices"></a>Osvědčené postupy Azure aplikace Service Fabric a clusteru
 
-Ke správě aplikace Azure Service Fabric a clustery úspěšně, jsou operace, které důrazně doporučujeme že provést k optimalizaci spolehlivosti provozním prostředí. prosím provádět operace definované v tomto dokumentu a vyberte jednu z našich [Cluster Service Fabric pomocí Azure Ukázky šablon](https://github.com/Azure-Samples/service-fabric-cluster-templates) začít návrhu řešení pro výrobu nebo upravit stávající šablonu začlenit tyto postupy.
+Tento článek obsahuje odkazy na doporučené postupy pro správu aplikace Azure Service Fabric a clustery. Důrazně doporučujeme implementovat tyto postupy a optimalizovat spolehlivost vašeho produkčního prostředí. Použijte jednu z [šablony clusteru Service Fabric](https://github.com/Azure-Samples/service-fabric-cluster-templates) začít návrhu řešení pro výrobu nebo aktualizovat stávající šablonu začlenit tyto postupy.
 
-## <a name="security"></a>Zabezpečení 
+## <a name="security"></a>Zabezpečení
 
 * [Osvědčené postupy pro zabezpečení](service-fabric-best-practices-security.md)
 
@@ -52,11 +52,11 @@ Ke správě aplikace Azure Service Fabric a clustery úspěšně, jsou operace, 
 
 ## <a name="checklist"></a>Kontrolní seznam
 
-Po dokončení všechny výše uvedené oddíly, ujistěte se, integrované všech osvědčených postupů v seznamu úkolů připravenosti produkčního prostředí:
-* [Azure Service Fabric produkční připravenosti kontrolní seznam](https://docs.microsoft.com/azure/service-fabric/service-fabric-production-readiness-checklist)
+Po implementaci postupů uvedených v předchozích částech, ujistěte se, že jste integrovali osvědčené postupy v seznamu úkolů připravenosti produkčního prostředí:
+* [Kontrolní seznam připravenosti produkční Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-production-readiness-checklist)
 
 ## <a name="next-steps"></a>Další postup
 
 * Vytvoření clusteru na virtuální počítače nebo počítače se systémem Windows Server: [Vytvoření clusteru Service Fabric pro Windows Server](service-fabric-cluster-creation-for-windows-server.md)
 * Vytvoření clusteru na počítače s Linuxem nebo virtuální počítače: [Vytvoření clusteru s Linuxem](service-fabric-cluster-creation-via-portal.md)
-* Řešení potíží: [Průvodce odstraňováním potíží pro Service Fabric](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides)
+* Řešení potíží s Service Fabric: [Průvodce odstraňováním potíží](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides)

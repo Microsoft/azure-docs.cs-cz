@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: jingwang
-ms.openlocfilehash: 6425fdfe89ca2f4c47aaf0e5ffd1dac7767b5020
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 536d7a572eddc2cf75f6ce135c3cd4f4f2635416
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67057932"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203296"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Kopírování dat do nebo z Azure Data Lake Storage Gen2 pomocí Azure Data Factory
 
@@ -60,6 +60,9 @@ Azure Data Lake Storage Gen2 konektor podporuje následující typy ověřován�
 - [Ověřování instančních objektů](#service-principal-authentication)
 - [Spravovaných identit pro ověřování prostředků Azure](#managed-identity)
 
+>[!NOTE]
+>Při použití PolyBase k načtení dat do SQL Data Warehouse, pokud váš zdroj Data Lake Storage Gen2 je nakonfigurován se koncový bod virtuální sítě, je potřeba použít spravovanou identitu ověřování podle potřeby polybase. Zobrazit [spravovanou identitu ověřování](#managed-identity) části s požadavky na konfiguraci.
+
 ### <a name="account-key-authentication"></a>Ověření pomocí klíče účtu
 
 Pokud chcete použít ověřování pomocí klíče účtu úložiště, jsou podporovány následující vlastnosti:
@@ -103,10 +106,10 @@ Ověřování instančních objektů, postupujte podle těchto kroků.
     - Klíč aplikace
     - ID tenanta
 
-2. Udělení oprávnění objektu zabezpečení správné služby.
+2. Udělení oprávnění objektu zabezpečení správné služby. Další informace o tom, jak funguje oprávnění v Data Lake Storage Gen2 z [seznamy řízení přístupu na soubory a adresáře](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories)
 
-    - **Jako zdroj**: V Průzkumníku služby Azure Storage, přidělit nejméně **číst + provést** oprávnění k seznamu a zkopírujte soubory do složek a podsložek. Nebo můžete udělit **čtení** oprávnění zkopírovat jeden soubor. Můžete taky v řízení přístupu (IAM), udělit alespoň **čtecí modul dat pro úložiště objektů Blob** role.
-    - **Jako jímku**: V Průzkumníku služby Storage, přidělit nejméně **zapisovat + provést** oprávnění pro vytváření podřízených položek ve složce. Můžete taky v řízení přístupu (IAM), udělit alespoň **Přispěvatel dat objektu Blob úložiště** role.
+    - **Jako zdroj**: V Průzkumníku služby Storage, přidělit nejméně **Execute** oprávnění od zdrojového systému souborů, spolu s **čtení** oprávnění pro soubory, které chcete kopírovat. Můžete taky v řízení přístupu (IAM), udělit alespoň **čtecí modul dat pro úložiště objektů Blob** role.
+    - **Jako jímku**: V Průzkumníku služby Storage, přidělit nejméně **Execute** oprávnění od jímky systému souborů, spolu s **zápisu** oprávnění pro složku jímky. Můžete taky v řízení přístupu (IAM), udělit alespoň **Přispěvatel dat objektu Blob úložiště** role.
 
 >[!NOTE]
 >Do seznamu složek, počínaje na úrovni účtu, nebo chcete otestovat připojení, je nutné nastavit oprávnění instančního objektu k **účtu úložiště pomocí oprávnění "Čtenář dat objektu Blob úložiště" v IAM**. To platí při použití:
@@ -157,10 +160,10 @@ Použití spravované identity pro ověřování prostředků Azure, postupujte 
 
 1. [Získat informace o identitě spravované služby Data Factory](data-factory-service-identity.md#retrieve-managed-identity) tak, že zkopírujete hodnoty **ID aplikace identity služby** generované spolu se svým objektem pro vytváření.
 
-2. Udělení oprávnění správné spravovaná identita.
+2. Udělení oprávnění správné spravovaná identita. Další informace o tom, jak funguje oprávnění v Data Lake Storage Gen2 z [seznamy řízení přístupu na soubory a adresáře](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories).
 
-    - **Jako zdroj**: V Průzkumníku služby Storage, přidělit nejméně **číst + provést** oprávnění k seznamu a zkopírujte soubory do složek a podsložek. Nebo můžete udělit **čtení** oprávnění zkopírovat jeden soubor. Můžete taky v řízení přístupu (IAM), udělit alespoň **čtecí modul dat pro úložiště objektů Blob** role.
-    - **Jako jímku**: V Průzkumníku služby Storage, přidělit nejméně **zapisovat + provést** oprávnění pro vytváření podřízených položek ve složce. Můžete taky v řízení přístupu (IAM), udělit alespoň **Přispěvatel dat objektu Blob úložiště** role.
+    - **Jako zdroj**: V Průzkumníku služby Storage, přidělit nejméně **Execute** oprávnění od zdrojového systému souborů, spolu s **čtení** oprávnění pro soubory, které chcete kopírovat. Můžete taky v řízení přístupu (IAM), udělit alespoň **čtecí modul dat pro úložiště objektů Blob** role.
+    - **Jako jímku**: V Průzkumníku služby Storage, přidělit nejméně **Execute** oprávnění od jímky systému souborů, spolu s **zápisu** oprávnění pro složku jímky. Můžete taky v řízení přístupu (IAM), udělit alespoň **Přispěvatel dat objektu Blob úložiště** role.
 
 >[!NOTE]
 >Do seznamu složek, počínaje na úrovni účtu, nebo chcete otestovat připojení, je nutné nastavit oprávnění spravovanou identitu udělované **účtu úložiště pomocí oprávnění "Čtenář dat objektu Blob úložiště" v IAM**. To platí při použití:
@@ -169,7 +172,7 @@ Použití spravované identity pro ověřování prostředků Azure, postupujte 
 >Pokud máte obavy o udělení oprávnění na úrovni účtu, můžete přeskočit test připojení a vstupní cesta ručně během vytváření obsahu. Aktivita kopírování stále funguje jako spravovaná identita udělením s řádným oprávněním na soubory, které se mají zkopírovat.
 
 >[!IMPORTANT]
->Pokud používáte PolyBase k načítání dat z Data Lake Storage Gen2 do SQL Data Warehouse, při použití ověřování Data Lake Storage Gen2 spravovanou identitu, ujistěte se, že je také postupovat podle kroků 1 a 2 v [návod](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). Postupujte podle pokynů k registraci serveru služby SQL Database pomocí Azure Active Directory (Azure AD). Také přiřazení role Přispěvatel dat objektu Blob úložiště pomocí řízení přístupu na základě rolí k vašemu serveru služby SQL Database. O zbytek se postará službou Data Factory. Pokud vaše Data Lake Storage Gen2 je nakonfigurované použití PolyBase k načtení dat z něj koncový bod Azure Virtual Network, je potřeba použít spravovanou identitu ověřování.
+>Pokud při použití spravované identity ověřování pro Data Lake Storage Gen2 načtení dat z Data Lake Storage Gen2 do SQL Data Warehouse pomocí PolyBase, ujistěte se, že je také postupovat podle kroků 1 a 2 v [návod](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage) na 1) zaregistrujte SQL Databázový server se službou Azure Active Directory (Azure AD) a 2) přiřazení role Přispěvatel dat objektu Blob Storage do databáze SQL serveru. Zbývající provádí služba Data Factory. Pokud vaše Data Lake Storage Gen2 je nakonfigurovaný pomocí koncového bodu Azure Virtual Network, použití PolyBase k načtení dat z něj, je potřeba použít spravovanou identitu ověřování podle potřeby polybase.
 
 Tyto vlastnosti jsou podporovány pro propojenou službu:
 
@@ -502,7 +505,7 @@ Tato část popisuje výsledné chování název složky a cesta k souboru s fil
 
 | folderPath | fileName | recursive | Zdrojové složky struktury a filtrování výsledků (soubory v **tučné** načtením)|
 |:--- |:--- |:--- |:--- |
-| `Folder*` | (Prázdný, použijte výchozí) | false (nepravda) | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5.csv<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
+| `Folder*` | (Prázdný, použijte výchozí) | false | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5.csv<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
 | `Folder*` | (Prázdný, použijte výchozí) | true (pravda) | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File4.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
 | `Folder*` | `*.csv` | false (nepravda) | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5.csv<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
 | `Folder*` | `*.csv` | true (pravda) | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
@@ -517,8 +520,8 @@ Tato část popisuje výsledné chování pro různé kombinace hodnot rekurzivn
 | true (pravda) |flattenHierarchy | Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | Cíl složku1 se vytvoří s následující strukturou: <br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaným názvem File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaným názvem File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaným názvem soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaným názvem File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaným názvem File5 |
 | true (pravda) |mergeFiles | Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | Cíl složku1 se vytvoří s následující strukturou: <br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 File2 + soubor3 + File4 + File5 obsah jsou sloučeny do jednoho souboru s názvem automaticky vygenerovaný soubor. |
 | false (nepravda) |preserveHierarchy | Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | Cíl složku1 se vytvoří s následující strukturou: <br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/><br/>Není Subfolder1 s soubor3 File4 a File5 neexistoval. |
-| false (nepravda) |flattenHierarchy | Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | Cíl složku1 se vytvoří s následující strukturou: <br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaným názvem File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaným názvem File2<br/><br/>Není Subfolder1 s soubor3 File4 a File5 neexistoval. |
-| false (nepravda) |mergeFiles | Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | Cíl složku1 se vytvoří s následující strukturou: <br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 + File2 obsah jsou sloučeny do jednoho souboru s názvem automaticky vygenerovaný soubor. automaticky generovaným názvem File1<br/><br/>Není Subfolder1 s soubor3 File4 a File5 neexistoval. |
+| false |flattenHierarchy | Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | Cíl složku1 se vytvoří s následující strukturou: <br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaným názvem File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaným názvem File2<br/><br/>Není Subfolder1 s soubor3 File4 a File5 neexistoval. |
+| false |mergeFiles | Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | Cíl složku1 se vytvoří s následující strukturou: <br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 + File2 obsah jsou sloučeny do jednoho souboru s názvem automaticky vygenerovaný soubor. automaticky generovaným názvem File1<br/><br/>Není Subfolder1 s soubor3 File4 a File5 neexistoval. |
 
 ## <a name="preserve-acls-from-data-lake-storage-gen1"></a>Zachovat seznamy ACL v Data Lake Storage Gen1
 
