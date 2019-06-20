@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/31/2019
-ms.openlocfilehash: b29f3168b7ecc1ec8f783a7ce7a6dea83318fa14
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ba803c493fd85a7be7bc6c5922171678cc6e0df0
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66455707"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164452"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Vysvětlení vytvořené jako výstupy z Azure Stream Analytics
 
@@ -247,8 +247,7 @@ Následující tabulka popisuje vlastnosti pro vytvoření výstup Azure Cosmos 
 | Account ID | Název nebo identifikátor URI účtu služby Azure Cosmos DB koncového bodu. |
 | Klíč účtu | Sdílený přístupový klíč pro účet služby Azure Cosmos DB. |
 | Databáze | Název databáze Azure Cosmos DB. |
-| Vzor názvu kolekce | Název kolekce nebo vzor pro kolekce, který se má použít. <br />Formát názvu kolekce můžete vytvořit pomocí nepovinného tokenu {partition}, ve kterém oddíly začínají od 0. Dva příklady:  <br /><ul><li> _MyCollection_: Musí existovat jednu kolekci s názvem "Mojekolekce".</li>  <li> _MyCollection{partition}_ : Podle dělicí sloupec.</li></ul> Rozdělení sloupce kolekce je potřeba vytvořit: "MyCollection0," "MyCollection1", "MyCollection2," a tak dále. |
-| Klíč oddílu | Volitelné. Budete potřebovat jenom v případě, že používáte tokenu {partition} ve vaší vzor názvu kolekce.<br /> Klíč oddílu je název pole ve výstupních událostech používaný k určení klíče pro rozdělení výstupu do kolekcí.<br /> Výstup z jedné kolekce můžete použít libovolný sloupec libovolného výstup. Příkladem je PartitionId. |
+| Název kolekce | Název kolekce ve službě Azure Cosmos DB. Azure Cosmos DB neomezené kontejnery jsou doporučený postup pro dělení dat, jako Azure Cosmos DB automaticky škáluje oddíly na základě vašich úloh. |
 | ID dokumentu |Volitelné. Název pole ve výstupních událostech používaný k určení primárního klíče, na které insert nebo update jsou založené operace.
 
 ## <a name="azure-functions"></a>Azure Functions

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: a39d71e0f8b8072cab6a3af9a2f0913973f303ee
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fbdab724e737b9bc223672c41ee9dde51e6cd99c
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66235924"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165510"
 ---
 # <a name="manage-and-monitor-workload-importance-in-azure-sql-data-warehouse"></a>Správa a monitorování úloh význam ve službě Azure SQL Data Warehouse
 
@@ -72,4 +72,4 @@ GO
 - Další informace o důležitosti, naleznete v tématu [význam pracovního vytížení](sql-data-warehouse-workload-importance.md)
 
 > [!div class="nextstepaction"]
-> [Přejít na důležitosti úlohy konfigurace ](sql-data-warehouse-how-to-configure-workload-importance.md)
+> [Přejít na důležitosti úlohy konfigurace](sql-data-warehouse-how-to-configure-workload-importance.md)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: f4facdf8fc530c35ba02620f451a00a8da36d982
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: fcc26d0d42576e8d39407f2af5bafe6de24db19f
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66497115"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67154495"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Virtuální síť Azure, nejčastější dotazy (FAQ)
 
@@ -382,13 +382,17 @@ Koncové body služby přidat systémová trasa, která má přednost před tras
 Ke zpřístupnění služby Azure, skupiny zabezpečení sítě potřeba povolit odchozí připojení. Skupiny Nsg nejsou otevřené veškerý odchozí internetový provoz, by měly fungovat na provoz koncového bodu služby. Můžete také omezit odchozí provoz do služby IP adresy jenom pomocí značky služeb.  
  
 ### <a name="what-permissions-do-i-need-to-set-up-service-endpoints"></a>Jaká oprávnění potřebuji k nastavení koncových bodů služby?
-Koncové body služby může ve virtuální síti nezávisle konfigurovat uživatel s oprávněním k zápisu do virtuální sítě. Pokud chce uživatel svázat prostředky služeb Azure s virtuální sítí, musí mít pro přidávané podsítě oprávnění k **Microsoft.Network/JoinServicetoaSubnet**. Toto oprávnění je zahrnutá v roli správce integrovaná služba ve výchozím nastavení a může se upravit vytvořením vlastních rolí. Další informace o předdefinovaných rolích a přiřazení konkrétních oprávnění k [vlastní role](https://docs.microsoft.com/azure/role-based-access-control/custom-roles?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Koncové body služby může ve virtuální síti nezávisle konfigurovat uživatel s oprávněním k zápisu do virtuální sítě. Chcete-li svázat prostředky služeb Azure k virtuální síti, uživatel musí mít oprávnění **Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action** pro přidávané podsítě. Toto oprávnění je zahrnutá v roli správce integrovaná služba ve výchozím nastavení a může se upravit vytvořením vlastních rolí. Další informace o předdefinovaných rolích a přiřazení konkrétních oprávnění k [vlastní role](https://docs.microsoft.com/azure/role-based-access-control/custom-roles?toc=%2fazure%2fvirtual-network%2ftoc.json).
  
 
 ### <a name="can-i-filter-virtual-network-traffic-to-azure-services-allowing-only-specific-azure-service-resources-over-vnet-service-endpoints"></a>Mohu filtrovat provoz virtuální sítě do služeb Azure, umožňuje pouze prostředky konkrétních služeb azure, přes koncové body služby virtuální sítě? 
 
 Zásady koncového bodu služby virtuální sítě (VNet) umožňují filtrovat provoz do služeb Azure, což prostředky pouze konkrétních služeb Azure prostřednictvím koncových bodů služby virtuální sítě. Zásady koncového bodu poskytují podrobné řízení přístupu z provozu virtuální sítě do služeb Azure. Další informace o zásadách koncového bodu služby [tady](virtual-network-service-endpoint-policies-overview.md).
- 
+
+### <a name="does-azure-active-directory-azure-ad-support-vnet-service-endpoints"></a>Podporuje Azure Active Directory (Azure AD) koncových bodů služby virtuální sítě?
+
+Azure Active Directory (Azure AD) nenabízí nativní podporu koncových bodů služby. Úplný seznam služeb Azure podporuje koncové body služby virtuální sítě uvidíte [tady](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview). Všimněte si, že značka "Microsoft.AzureActiveDirectory" uvedených v části služba podporuje koncové body služby se používá pro podporu koncových bodů služby pro ADLS 1. generace. Pro ADLS 1. generace, integrace služby virtual network pro Azure Data Lake Storage Gen1 využívá zabezpečení koncového bodu služby virtuální sítě mezi virtuální sítí a Azure Active Directory (Azure AD) k vygenerování další zabezpečení deklarace identity v tokenu přístupu. Tyto deklarace identity pak slouží k ověření vaší virtuální sítě v účtu Data Lake Storage Gen1 a povolení přístupu. Další informace o [Azure Data Lake Store Gen 1 integrace virtuální sítě] (.. /data-Lake-Store/data-Lake-Store-Network-Security.MD?TOC=%2fazure%2fvirtual-Network%2ftoc.JSON
+
 ### <a name="are-there-any-limits-on-how-many-vnet-service-endpoints-i-can-set-up-from-my-vnet"></a>Existují nějaká omezení na tom, kolik koncových bodů služby virtuální sítě můžete nastavit z mé virtuální sítě?
 Neexistuje žádné omezení celkového počtu koncových bodů služby virtuální sítě ve virtuální síti. Pro prostředky služeb Azure (například účet služby Azure Storage) můžou služby vynucovat omezení počtu podsítí použitých k zabezpečení příslušného prostředku. Následující tabulka uvádí některé příklad omezení: 
 

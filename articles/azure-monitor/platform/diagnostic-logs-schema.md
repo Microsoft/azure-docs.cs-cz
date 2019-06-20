@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 10/11/2018
 ms.author: robb
 ms.subservice: logs
-ms.openlocfilehash: 21eec5ee2fef185a927f6a416732303765e02b1c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 468bcdb6aa688157196bb9cba8added623a857d3
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65789325"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67155307"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Podporované služby, schémat a kategorie pro diagnostické protokoly Azure
 
@@ -55,7 +55,7 @@ Schéma protokolů diagnostiky prostředků se liší podle kategorie prostředk
 | Azure Batch |[Protokolování diagnostiky služby Azure Batch](../../batch/batch-diagnostics.md) |
 | Azure Database for MySQL | [Azure Database for MySQL diagnostické protokoly](../../mysql/concepts-server-logs.md#diagnostic-logs) |
 | Azure Database for PostgreSQL | [Azure Database for PostgreSQL diagnostické protokoly](../../postgresql/concepts-server-logs.md#diagnostic-logs) |
-| Cognitive Services | Schéma není k dispozici. |
+| Cognitive Services | [Protokolování diagnostiky pro Azure Cognitive Services](../../cognitive-services/diagnostic-logging.md) |
 | Content Delivery Network | [Diagnostické protokoly Azure CDN](../../cdn/cdn-azure-diagnostic-logs.md) |
 | CosmosDB | [Azure Cosmos DB Logging](../../cosmos-db/logging.md) |
 | Data Factory | [Monitorovat datové továrny pomocí Azure monitoru](../../data-factory/monitor-using-azure-monitor.md) |
@@ -209,4 +209,3 @@ Schéma protokolů diagnostiky prostředků se liší podle kategorie prostředk
 * [Stream protokolů diagnostiky prostředků k **Event Hubs**](../../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md)
 * [Změnit nastavení diagnostiky prostředků pomocí REST API služby Azure Monitor](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)
 * [Analýza protokolů ze služby Azure storage s využitím Log Analytics](../../azure-monitor/platform/collect-azure-metrics-logs.md)
-

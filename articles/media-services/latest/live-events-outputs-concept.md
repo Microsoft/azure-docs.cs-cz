@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 06/12/2019
+ms.date: 06/13/2019
 ms.author: juliako
-ms.openlocfilehash: 49ab52f031e24ac77a534c86061fe831bbec39ce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 01e80748fbca856adfeaaef566093444c425ca6a
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67114672"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164593"
 ---
 # <a name="live-events-and-live-outputs"></a>Živé události a výstupy
 
@@ -27,20 +27,23 @@ Azure Media Services umožňuje doručovat živé události do vašich zákazní
 > [!TIP]
 > Pro zákazníky, kteří migrace z rozhraní API služby Media Services v2 **živá událost** nahradí entitu **kanál** ve v2 a **Live výstup** nahradí **Program**.
 
-
 ## <a name="live-events"></a>Živé události
 
 [Živé události](https://docs.microsoft.com/rest/api/media/liveevents) zodpovídají za ingestování a zpracování informačních kanálů živého videa. Při vytváření živé události se vytvoří vstupní koncový bod, který můžete použít k odesílání živého signálu ze vzdáleného kodéru. Vzdálený kodér pro kódování v reálném čase odešle informační kanál příspěvku do tohoto vstupního koncového bodu buď pomocí [RTMP](https://www.adobe.com/devnet/rtmp.html), nebo pomocí protokolu [Smooth Streaming](https://msdn.microsoft.com/library/ff469518.aspx) (fragmentovaný MP4). Pro technologii Smooth Streaming ingestování, jsou podporovaná schémata URL `http://` nebo `https://`. Protokol ingestování RTMP, jsou podporovaná schémata URL `rtmp://` nebo `rtmps://`. 
 
 ## <a name="live-event-types"></a>Live typy událostí
 
-A [živá událost](https://docs.microsoft.com/rest/api/media/liveevents) může být jeden ze dvou typů: Předávací tak pro živé kódování. 
+A [živá událost](https://docs.microsoft.com/rest/api/media/liveevents) může být jeden ze dvou typů: Předávací tak pro živé kódování. Typy mají nastavený během vytváření pomocí [LiveEventEncodingType](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencodingtype):
+
+* **LiveEventEncodingType.None** – místní kodér služby live Encoding odešle datový proud více přenosovými rychlostmi. Ingestované datové proudy prochází živá událost bez dalšího zpracování. 
+* **LiveEventEncodingType.Standard** – místní kodér služby live Encoding odešle datový proud s jednou přenosovou rychlostí živá událost a služba Media Services vytvoří různých datových proudů s přenosovou rychlostí. Pokud je příspěvek kanál 720p nebo vyšší rozlišení **Default720p** bude předvolbu kódování sada párů 6 rozlišení a přenosových rychlostí.
+* **LiveEventEncodingType.Premium1080p** – místní kodér služby live Encoding odešle datový proud s jednou přenosovou rychlostí živá událost a služba Media Services vytvoří různých datových proudů s přenosovou rychlostí. Přednastavení Default1080p Určuje výstupní sada párů rozlišení a přenosových rychlostí. 
 
 ### <a name="pass-through"></a>Průchod
 
 ![Průchozí](./media/live-streaming/pass-through.svg)
 
-Při použití předávané **živé události** se spoléháte na váš místní kodér pro kódování v reálném čase, že vygeneruje stream videa s několika přenosovými rychlostmi a odešle ho jako informační kanál příspěvku do živé události (pomocí protokolu RTMP nebo fragmentovaného MP4). Živá událost potom přenese příchozí streamy videa bez dalšího zpracování. Taková předávací živá událost je optimalizovaná pro dlouho běžící živé události nebo lineární živé streamování 24×365. Při vytváření tohoto typu živé události zadejte None (LiveEventEncodingType.None).
+Při použití předávané **živé události** se spoléháte na váš místní kodér pro kódování v reálném čase, že vygeneruje stream videa s několika přenosovými rychlostmi a odešle ho jako informační kanál příspěvku do živé události (pomocí protokolu RTMP nebo fragmentovaného MP4). Živá událost potom přenese příchozí streamy videa bez dalšího zpracování. Takové vytvoření předávací živé události je optimalizovaná pro dlouho běžící události v reálném čase nebo 24 × 365 lineární živé streamování. Při vytváření tohoto typu živé události zadejte None (LiveEventEncodingType.None).
 
 Můžete odeslat informační kanál příspěvku v rozlišeních do 4K a s obnovovací frekvencí 60 snímků za sekundu, s video kodekem buď H.264/AVC, nebo H.265/HEVC a se zvukovým kodekem AAC (AAC-LC, HE-AACv1 nebo HE-AACv2).  Další podrobnosti najdete v článku popisujícím [porovnání typů živých událostí](live-event-types-comparison.md).
 
@@ -84,16 +87,18 @@ Můžete použít buď nejednoduché adresy URL, nebo jednoduché adresy URL.
 
 * Není jednoduché adrese URL
 
-    Nejednoduché adresy URL představují v AMS verze 3 výchozí režim. Živou událost získáte potenciálně rychle, ale adresa URL ingestu je známá až při spuštění živé události. Pokud živou událost zastavíte nebo spustíte, adresa URL se změní. <br/>Nejednoduché adresy jsou užitečné v situacích, kdy koncový uživatel chce streamovat pomocí aplikace, která chce získat živou událost co nejdříve, a použití dynamické adresy URL ingestu nepředstavuje žádný problém.
+    Non jednoduché adrese URL je výchozí režim v Media Services v3. Živou událost získáte potenciálně rychle, ale adresa URL ingestu je známá až při spuštění živé události. Pokud živou událost zastavíte nebo spustíte, adresa URL se změní. <br/>Nejednoduché adresy jsou užitečné v situacích, kdy koncový uživatel chce streamovat pomocí aplikace, která chce získat živou událost co nejdříve, a použití dynamické adresy URL ingestu nepředstavuje žádný problém.
+    
+    Pokud klientská aplikace nemusí předběžně generovat adresu URL ingestování před živá událost se vytvoří, stačí nechat Media Services automaticky vygenerovat přístupový Token pro živou událost.
 * Jednoduché adrese URL
 
     Režim jednoduchých adres preferují velké mediální vysílače, které používají hardwarové kodéry vysílání a nechtějí znovu konfigurovat své kodéry při spuštění živé události. Chtějí předvídatelnou adresu URL ingestu, která se během doby nemění.
     
-    Chcete-li určit tento režim nastavíte `vanityUrl` k `true` v okamžiku vytvoření (výchozí hodnota je `false`). Je také potřeba předat přístupového tokenu (`LiveEventInput.accessToken`) v okamžiku vytvoření. Můžete zadat hodnotu tokenu, aby se zabránilo náhodné token v adrese URL. Přístupový token musí být platný řetězec identifikátoru GUID (s nebo bez pomlček). Po nastavení režimu nelze aktualizovat.
+    Chcete-li určit tento režim nastavíte `vanityUrl` k `true` v okamžiku vytvoření (výchozí hodnota je `false`). Je také potřeba předat přístupového tokenu (`LiveEventInput.accessToken`) v okamžiku vytvoření. Můžete zadat hodnotu tokenu, aby se zabránilo náhodné token v adrese URL. Přístupový token musí být platný řetězec identifikátoru GUID (s nebo bez pomlčky). Po nastavení režimu nelze aktualizovat.
 
     Přístupový token musí být jedinečný ve vašem datovém centru. Pokud vaše aplikace potřebuje používat jednoduché adrese URL, doporučujeme vždy vytváří nové instance identifikátoru GUID pro váš přístupový token (namísto opakovaného použití jakékoli existující identifikátor GUID). 
 
-    Pomocí následující rozhraní API můžete povolit jednoduché adrese URL a nastavit přístupový token platný identifikátor GUID (například `"accessToken": "1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`):
+    Pomocí následující rozhraní API můžete povolit jednoduché adrese URL a nastavit přístupový token platný identifikátor GUID (například `"accessToken": "1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`).  
     
     |Jazyk|Povolit jednoduché adrese URL|Nastavení přístupového tokenu|
     |---|---|---|
@@ -103,41 +108,41 @@ Můžete použít buď nejednoduché adresy URL, nebo jednoduché adresy URL.
     
 ### <a name="live-ingest-url-naming-rules"></a>Živé ingestování – pravidla pojmenování adresy URL
 
-Řetězec *random* dále je 128bitové šestnáctkové číslo (skládající se z 32 znaků 0-9 a-f).<br/>
-*Přístupový token* je nutné zadat pro pevnou adresu URL. Je nutné nastavit přístupový token řetězec je řetězec identifikátoru GUID platnou délku. <br/>
-*Název streamu* Určuje název datového proudu pro konkrétní připojení. Název hodnoty datového proudu je obvykle přidány za kodér, že používáte.
+* Řetězec *random* dále je 128bitové šestnáctkové číslo (skládající se z 32 znaků 0-9 a-f).
+* *přístupový token* – neplatný řetězec GUID jste nastavili při použití režimu jednoduché. Například, `"1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`.
+* *Název datového proudu* – Určuje název datového proudu pro konkrétní připojení. Název hodnoty datového proudu je obvykle přidány za kodér, který používáte. Můžete nakonfigurovat kodér služby live Encoding jakýkoli název, který slouží k popisu připojení, například: "video1_audio1", "video2_audio1", "datový proud stream".
 
 #### <a name="non-vanity-url"></a>Není jednoduché adrese URL
 
 ##### <a name="rtmp"></a>RTMP
 
-`rtmp://<random 128bit hex string>.channel.media.azure.net:1935/live/<access token>/<stream name>`<br/>
-`rtmp://<random 128bit hex string>.channel.media.azure.net:1936/live/<access token>/<stream name>`<br/>
-`rtmps://<random 128bit hex string>.channel.media.azure.net:2935/live/<access token>/<stream name>`<br/>
-`rtmps://<random 128bit hex string>.channel.media.azure.net:2936/live/<access token>/<stream name>`<br/>
+`rtmp://<random 128bit hex string>.channel.media.azure.net:1935/live/<auto-generated access token>/<stream name>`<br/>
+`rtmp://<random 128bit hex string>.channel.media.azure.net:1936/live/<auto-generated access token>/<stream name>`<br/>
+`rtmps://<random 128bit hex string>.channel.media.azure.net:2935/live/<auto-generated access token>/<stream name>`<br/>
+`rtmps://<random 128bit hex string>.channel.media.azure.net:2936/live/<auto-generated access token>/<stream name>`<br/>
 
 ##### <a name="smooth-streaming"></a>Technologie Smooth Streaming
 
-`http://<random 128bit hex string>.channel.media.azure.net/<access token>/ingest.isml/streams(<stream name>)`<br/>
-`https://<random 128bit hex string>.channel.media.azure.net/<access token>/ingest.isml/streams(<stream name>)`<br/>
+`http://<random 128bit hex string>.channel.media.azure.net/<auto-generated access token>/ingest.isml/streams(<stream name>)`<br/>
+`https://<random 128bit hex string>.channel.media.azure.net/<auto-generated access token>/ingest.isml/streams(<stream name>)`<br/>
 
 #### <a name="vanity-url"></a>Jednoduché adrese URL
 
 ##### <a name="rtmp"></a>RTMP
 
-`rtmp://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net:1935/live/<access token>/<stream name>`<br/>
-`rtmp://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net:1936/live/<access token>/<stream name>`<br/>
-`rtmps://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net:2935/live/<access token>/<stream name>`<br/>
-`rtmps://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net:2936/live/<access token>/<stream name>`<br/>
+`rtmp://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net:1935/live/<your access token>/<stream name>`<br/>
+`rtmp://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net:1936/live/<your access token>/<stream name>`<br/>
+`rtmps://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net:2935/live/<your access token>/<stream name>`<br/>
+`rtmps://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net:2936/live/<your access token>/<stream name>`<br/>
 
 ##### <a name="smooth-streaming"></a>Technologie Smooth Streaming
 
-`http://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net/<access token>/ingest.isml/streams(<stream name>)`<br/>
-`https://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net/<access token>/ingest.isml/streams(<stream name>)`<br/>
+`http://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net/<your access token>/ingest.isml/streams(<stream name>)`<br/>
+`https://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net/<your access token>/ingest.isml/streams(<stream name>)`<br/>
 
 ## <a name="live-event-preview-url"></a>Náhled adresy URL pro živé události
 
-Jakmile **živá událost** spustí příjem příspěvků datového kanálu, můžete použít svůj koncový bod ve verzi preview pro zobrazení náhledu a ověření, že vám posíláme živého datového proudu před dalším publikování. Po kontrole, že datový proud ve verzi preview je dobré, vám pomůže Livestream uvolněte živého datového proudu pro doručení prostřednictvím jednoho nebo více (předem vytvořené) **koncové body streamování**. Chcete-li to provést, vytvořte nový [Live výstup](https://docs.microsoft.com/rest/api/media/liveoutputs) na **živá událost**. 
+Jakmile **živá událost** spustí příjem příspěvků datového kanálu, můžete použít svůj koncový bod ve verzi preview pro zobrazení náhledu a ověření, že vám posíláme živého datového proudu před dalším publikování. Po kontrole, že datový proud ve verzi preview je dobré živá událost můžete zpřístupnit živého datového proudu pro doručení prostřednictvím jednoho nebo více (předem vytvořené) **koncové body streamování**. Chcete-li to provést, vytvořte nový [Live výstup](https://docs.microsoft.com/rest/api/media/liveoutputs) na **živá událost**. 
 
 > [!IMPORTANT]
 > Ujistěte se, že je video směřující do adresy URL náhledu před pokračováním!

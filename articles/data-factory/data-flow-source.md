@@ -3,16 +3,15 @@ title: Nastavit zdroj transformace ve funkci mapování toku dat služby Azure D
 description: Zjistěte, jak nastavit zdroj transformace v mapování se předávají Data.
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 5b53819c1d30f6cd62c5941d4b44d70a4996daad
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 86e30c465a605681519565261beec75d88ccd472
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67117885"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190807"
 ---
 # <a name="source-transformation-for-mapping-data-flow"></a>Transformace zdroje pro mapování toku dat 
 
@@ -124,6 +123,14 @@ Pokud je zdrojem v SQL Database nebo SQL Data Warehouse, máte další možnosti
 
 * **Dotaz:** Zadejte dotaz SQL pro zdroj. Toto nastavení potlačí všechny tabulky, kterou jste zvolili v datové sadě. Všimněte si, že **klauzule Order By** klauzule zde nejsou podporovány, ale můžete nastavit úplný příkaz SELECT FROM. Můžete také použít funkce uživatelem definovaná tabulka. **Vybrat * z udfGetData()** je UDF v SQL, která vrací tabulku. Tento dotaz vytvoří zdrojové tabulky, který používáte ve svém toku data.
 * **Velikost dávky**: Zadejte velikost dávky k bloku dat velkých objemů dat do operace čtení.
+* **Úroveň izolace**: Výchozí hodnota pro ADF mapování toků dat zdroje SQL je nepotvrzené čtení. Můžete změnit úroveň izolace na jednu z těchto hodnot:
+* Read Committed
+* Nepotvrzené čtení
+* Opakovatelné pro čtení
+* Serializovatelné
+* Žádné (Ignorovat úroveň izolace)
+
+![Úroveň izolace](media/data-flow/isolationlevel.png "úroveň izolace")
 
 > [!NOTE]
 > Operace se soubory spustit pouze v případě, že spuštění toku dat z kanálu (ladění kanálu nebo spustit provádění), která používá aktivitu spuštění toku dat v rámci kanálu. Operace se soubory *nejsou* spuštění v režimu ladění se předávají Data.

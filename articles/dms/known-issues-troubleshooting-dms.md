@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 05/22/2019
-ms.openlocfilehash: 5a7c6c4553f46e8a7308995e05d6c06c0eb10f27
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/18/2019
+ms.openlocfilehash: 1d639a8b1d5c7a5dd2b7bac7c5e020be7c8b1c50
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66002214"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190950"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>Řešení běžných problémů služby Azure Database Migration Service a chyb
 
@@ -59,6 +59,16 @@ Zobrazí se následující chyba při zastavování instancí služby Azure Data
 | Příčina         | Řešení |
 | ------------- | ------------- |
 | Tato chyba zobrazí, když instance služby, které vám při pokusu o zastavení obsahuje aktivity, které jsou pořád spuštěné nebo k dispozici v projektech pro migraci. <br><br><br><br><br><br> | Ujistěte se, že neexistují žádné aktivity spuštěné v instanci služby Azure Database Migration Service se snažíte zastavit. Můžete také odstranit aktivity nebo projekty před pokusem o zastavení služby. Následující kroky ukazují, jak odebrat projekty k vyčištění instance služby migrace tak, že odstraníte všechny spuštěné úlohy:<br>1. Install-Module -Name AzureRM.DataMigration <br>2. Login-AzureRmAccount <br>3. Select-AzureRmSubscription - SubscriptionName "<subName>" <br> 4. Remove-AzureRmDataMigrationProject -Name <projectName> -ResourceGroupName <rgName> -ServiceName <serviceName> -DeleteRunningTask |
+
+## <a name="error-when-attempting-to-start-azure-database-migration-service"></a>Chyba při pokusu o spuštění služby Azure Database Migration Service
+
+Zobrazí se následující chybu při spuštění instance služby Azure Database Migration Service:
+
+* **Chyba:** Začátek selhání služby. Chyba: {"errorDetail": "službu se nepovedlo spustit, kontaktujte prosím podporu Microsoftu.}
+
+| Příčina         | Řešení |
+| ------------- | ------------- |
+| Tato chyba zobrazí, když interně se nezdařilo předchozí instanci. K této chybě dochází zřídka a technický tým si je vědoma ho. <br> | Odstranění instance služby, nelze spustit a pak zřídit nový ho nahradit. |
 
 ## <a name="error-restoring-database-while-migrating-sql-to-azure-sql-db-managed-instance"></a>Chyba při obnovování databáze během migrace SQL ke službě Azure SQL DB mi
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: 18cd5a86cc2f52567c5f320719d1a9f21b377ed4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bc058cb3f27545b9e4ad8ef1062ca4d2fa4c9fa8
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60921267"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67155148"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Poradce při potížích aktivace virtuálního počítače Windows Azure
 
@@ -51,11 +51,9 @@ Obecně platí problémů s aktivací virtuálního počítače Azure dojít, po
 >
 >Pokud používáte ExpressRoute a vy musíte výchozí trasa publikování naleznete v tématu [virtuálního počítače Azure se pravděpodobně nezdaří aktivovat přes ExpressRoute](https://blogs.msdn.com/b/mast/archive/2015/12/01/azure-vm-may-fail-to-activate-over-expressroute.aspx).
 
-### <a name="step-1-configure-the-appropriate-kms-client-setup-key-for-windows-server-2016-and-windows-server-2012-r2"></a>Krok 1 konfigurace příslušný instalační klíč klienta služby správy KLÍČŮ (pro Windows Server 2016 a Windows Server 2012 R2)
+### <a name="step-1-configure-the-appropriate-kms-client-setup-key"></a>Krok 1 konfigurace příslušný instalační klíč klienta služby správy KLÍČŮ
 
-Pro virtuální počítač, který je vytvořen z vlastní image Windows serveru 2016 nebo Windows Server 2012 R2 je nutné nakonfigurovat příslušný instalační klíč klienta služby správy KLÍČŮ pro tento virtuální počítač.
-
-Tento krok se nevztahují na Windows 2012 nebo Windows 2008 R2. Používá funkci automatizace aktivace virtuálního počítače (AVMA), který je podporován pouze ve Windows serveru 2016 a Windows Server 2012 R2.
+Pro virtuální počítač, který je vytvořen z vlastní image musíte nakonfigurovat příslušný instalační klíč klienta služby správy KLÍČŮ pro daný virtuální počítač.
 
 1. Spustit **slmgr.vbs/dlv** příkazového řádku se zvýšenými oprávněními. Zkontrolujte popis hodnotu ve výstupu a určit, zda byl vytvořen z maloobchodního prodeje (RETAIL channel) nebo svazek (VOLUME_KMSCLIENT) licence média:
   

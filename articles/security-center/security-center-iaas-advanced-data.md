@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/29/2019
 ms.author: monhaber
-ms.openlocfilehash: e7420adfe1608df39ef72124817f1d6dadf07db8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 76e691df0a026802682b57ff78496f6b66d7ff79
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66400135"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67154830"
 ---
-# <a name="advanced-data-security-for-sql-servers-on-iaas"></a>Pokročilé datové zabezpečení serverů SQL Server na IaaS
-Pokročilé data zabezpečení pro servery SQL v Azure Virtual Machines je jednotný balíček pro pokročilé funkce zabezpečení SQL. Nyní zahrnuje funkce pro zpřístupnění a zmírnění potenciální ohrožení zabezpečení databáze a detekuje neobvyklé aktivity, které může znamenat hrozbu pro vaše databáze. 
+# <a name="advanced-data-security-for-sql-servers-on-azure-virtual-machines-public-preview"></a>Pokročilé data zabezpečení pro servery SQL Server na virtuálních počítačích Azure (Public Preview)
+Pokročilé data zabezpečení pro servery SQL v Azure Virtual Machines je jednotný balíček pro pokročilé funkce zabezpečení SQL. Aktuálně (ve verzi Public Preview) obsahuje funkce pro zpřístupnění a zmírnění potenciální ohrožení zabezpečení databáze a detekuje neobvyklé aktivity, které může znamenat hrozbu pro vaše databáze. 
 
 Toto zabezpečení nabízí pro virtuální počítače SQL serverech Azure je založeno na stejné základní technologii použitou v [rozšířené zabezpečení dat Azure SQL Database balíčku](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security).
 
@@ -36,7 +36,7 @@ Zabezpečení dat pokročilé poskytuje sadu pokročilé funkce zabezpečení SQ
 
 ## <a name="get-started-with-advanced-data-security-for-sql-on-azure-vms"></a>Začínáme s pokročilým zabezpečením dat pro SQL na virtuálních počítačích Azure
 
-Následující kroky vám pomůžou začít s pokročilým zabezpečením dat SQL na virtuálních počítačích Azure.
+Následující kroky vám pomůžou začít s pokročilým zabezpečením dat SQL v Azure virtuální počítače veřejné verzi Preview.
 
 ### <a name="set-up-advanced-data-security-for-sql-on-azure-vms"></a>Nastavení rozšířené zabezpečení dat pro SQL na virtuálních počítačích Azure
 
@@ -145,7 +145,7 @@ Zobrazíte výsledky posouzení ohrožení zabezpečení a sestavy přímo ze sl
 ## <a name="advanced-threat-protection-for-sql-servers-on-azure-vms-alerts"></a>Rozšířená ochrana před internetovými útoky pro servery SQL Server na virtuálních počítačích Azure výstrahy
 Výstrahy jsou generovány a potenciálně nebezpečné pokusy o přístup nebo zneužití servery SQL. Tyto události můžete spustit následující upozornění:
 
-### <a name="anomalous-access-pattern-alerts"></a>Neobvyklé přístup vzor výstrahy
+### <a name="anomalous-access-pattern-alerts-supported-in-public-preview"></a>Neobvyklé přístup vzor výstrahy (podporované ve verzi Public Preview)
 
 * **Přístup z neobvyklého umístění:** Tato výstraha se aktivuje, když dojde ke změně vzoru přístupu k systému SQL server, když někdo přihlásil k SQL serveru z neobvyklé geografické lokality. Možné příčiny:
      * Útočník nebo Bývalé zlými úmysly využívat přístup k serveru SQL Server.

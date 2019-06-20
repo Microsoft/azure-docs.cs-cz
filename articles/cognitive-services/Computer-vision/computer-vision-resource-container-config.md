@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 06/10/2019
+ms.date: 06/19/2019
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: 1fa6f04f28da2613f8b78e8885515ac40fa5961e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4613b576b444059d448cf1094284f2a68e6c31a8
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071303"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275152"
 ---
 # <a name="configure-recognize-text-docker-containers"></a>Konfigurace kontejnery Dockeru rozpoznání textu
 
@@ -79,7 +79,7 @@ Kontejnery pro počítačové zpracování obrazu nepoužívejte vstup nebo výs
 
 Syntaxe umístění hostitele připojení se liší v závislosti na operačním systému hostitele. Kromě toho [hostitelský počítač](computer-vision-how-to-install-containers.md#the-host-computer)na umístění připojení nemusí být přístupné z důvodu konfliktu mezi oprávnění používat účet služby Docker a hostiteli připojit umístění oprávnění. 
 
-|Nepovinné| Název | Typ dat | Popis |
+|Nepovinné| Name | Typ dat | Popis |
 |-------|------|-----------|-------------|
 |Nepovoleno| `Input` | String | Kontejnery pro zpracování obrazu počítače nepoužívejte toto.|
 |Nepovinné| `Output` | String | Cíl připojení výstupu. Výchozí hodnota je `/output`. Toto je umístění protokolů. To zahrnuje protokoly kontejneru. <br><br>Příklad:<br>`--mount type=bind,src=c:\output,target=/output`|

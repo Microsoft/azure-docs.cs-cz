@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 17778b3edf1845d85302a0bcdf72a1ebc3919cea
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66166085"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67174945"
 ---
 ## <a name="viewing-your-tags-in-the-usage-details"></a>Zobrazení značek v podrobnosti o použití
 Značky umístí na výpočty, síť a prostředky úložiště v modelu nasazení Resource Manager se doplní vaše podrobnosti o použití v [fakturačním portálu](https://account.windowsazure.com/).

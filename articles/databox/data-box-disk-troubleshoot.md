@@ -6,178 +6,94 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: article
-ms.date: 04/2/2019
+ms.date: 06/14/2019
 ms.author: alkohli
-ms.openlocfilehash: f9d01b56da2650be395878ce07e4aae73495061f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: f725f38a335972ae8e0a8b8402a99202caa54a70
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64939639"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147088"
 ---
-# <a name="troubleshoot-issues-in-azure-data-box-disk"></a>Řešení potíží v disku Azure Data Box
+# <a name="use-logs-to-troubleshoot-validation-issues-in-azure-data-box-disk"></a>Řešení potíží s problémy s ověřováním v Azure Data Box Disk pomocí protokolů
 
-V tomto článku se vztahuje na Microsoft Azure Data Box Disk a popisuje pracovních postupech, používat k řešení problémů, na které se zobrazí při nasazení tohoto řešení. 
+Tento článek se týká Microsoft Azure Data Box Disk. Tento článek popisuje, jak protokoly můžete použít k řešení potíží s problémy s ověřením, které je možné, uvidíte při nasazení tohoto řešení.
 
-Tento článek obsahuje následující oddíly:
+## <a name="validation-tool-log-files"></a>Soubory protokolu nástroje ověření
 
-- Stažení diagnostických protokolů
-- Dotazy na protokoly aktivit
-- Chyby odemykacího nástroje Data Box Disku
-- Chyby nástroje rozdělení/kopírování Data Box Disku
+Při ověřování dat na disky pomocí [nástroje pro ověření](data-box-disk-deploy-copy-data.md#validate-data), *error.xml* generováno do protokolu všechny chyby. Soubor protokolu je umístěný v `Drive:\DataBoxDiskImport\logs` složky jednotky. Při spuštění ověřování je k dispozici odkaz v protokolu chyb.
 
-## <a name="download-diagnostic-logs"></a>Stažení diagnostických protokolů
+<!--![Validation tool with link to error log](media/data-box-disk-troubleshoot/validation-tool-link-error-log.png)-->
 
-Pokud při procesu kopírování dat nedojde k žádným chybám, na portálu se objeví cesta ke složce, ve které najdete diagnostické protokoly. 
+Při spuštění více relací pro ověření, je generování jednoho protokolu chyb na relaci.
 
-Diagnostické protokoly mohou zahrnovat:
-- Protokoly chyb
-- Podrobné protokoly  
+- Tady je ukázka v protokolu chyb při načtení dat do `PageBlob` složka není 512 – bajtů zarovnána. Žádná data nahrát do PageBlob musí být 512 – bajtů zarovnána, například VHD nebo VHDX. Chyby v tomto souboru jsou v `<Errors>` a upozornění v `<Warnings>`.
 
-Chcete-li se dostat do příslušného umístění a zkopírovat si protokoly, přejděte na účet úložiště spojený s vaší objednávkou Data Box. 
-
-1.  Přejděte na **Obecné > Podrobnosti objednávky** a poznamenejte si účet úložiště přidružený k vaší objednávce.
- 
-
-2.  Přejděte na stránku **Všechny prostředky** a vyhledejte účet úložiště získaný v předchozím kroku. Vyberte a klikněte na účet úložiště.
-
-    ![Kopírování protokolů 1](./media/data-box-disk-troubleshoot/data-box-disk-copy-logs1.png)
-
-3.  Přejděte na **Blob service > Procházet objekty blob** a vyhledejte blob odpovídající účtu úložiště. Přejděte na **diagnosticslogcontainer > waies**. 
-
-    ![Kopírování protokolů 2](./media/data-box-disk-troubleshoot/data-box-disk-copy-logs2.png)
-
-    Měli byste vidět protokoly chyb i podrobné protokoly. Vyberte a klikněte na každý soubor a stáhněte si místní kopii.
-
-## <a name="query-activity-logs"></a>Dotazy na protokoly aktivit
-
-Protokoly aktivit můžete použít k vyhledání chyby při řešení potíží nebo k monitorování toho, jak uživatel ve vaší organizaci upravil prostředek. Na základě protokolů aktivit můžete zjistit:
-
-- Jaké operace byly provedeny s prostředky ve vašem předplatném.
-- Kdo operaci zahájil.
-- Kdy k operaci došlo.
-- Stav operace.
-- Hodnoty dalších vlastností, které vám mohou pomoci při zkoumání operace.
-
-Protokoly aktivit obsahují všechny operace zápisu (jako PUT, POST nebo DELETE) prováděné s vašimi prostředky, ale neobsahuje operace čtení (např. GET).
-
-Protokoly aktivit se uchovávají 90 dnů. Můžete se dotazovat na libovolný rozsah kalendářních dat, pokud počáteční datum neleží více než 90 dnů v minulosti. Můžete také filtrovat protokol s použitím některého z předdefinovaných dotazů ve službě Insights. Například můžete kliknout na chybu a pak na konkrétní selhání, abyste zjistili hlavní příčinu.
-
-## <a name="data-box-disk-unlock-tool-errors"></a>Chyby odemykacího nástroje Data Box Disku
-
-
-| Chybová zpráva / chování nástroje      | Doporučení                                                                                               |
-|-------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------|
-| Žádný<br><br>Odemykací nástroj Data Box Disku skončí s chybou.                                                                            | BitLocker není nainstalovaná. Ujistěte se, že na hostitelském počítači, na kterém běží odemykací nástroj Data Box Disku, je nainstalovaný nástroj BitLocker.                                                                            |
-| Aktuální rozhraní .NET Framework není podporováno. Podporovány jsou verze 4.5 a vyšší.<br><br>Nástroj skončí s chybovou zprávou.  | Rozhraní .NET 4.5 není nainstalováno. Na hostitelský počítač, na kterém běží odemykací nástroj Data Box Disku, nainstalujte rozhraní .NET 4.5 nebo novější.                                                                            |
-| Nepodařilo se odemknout nebo ověřit žádné svazky. Obraťte se na podporu Microsoftu.  <br><br>Nástroji se nepodařilo odemknout nebo ověřit žádnou uzamčenou jednotku. | Nástroji se s použitím zadaného klíče nepodařilo odemknout žádnou ze zamčených jednotek. O dalších krocích se poraďte s podporou Microsoftu.                                                |
-| Následující svazky jsou odemčené a ověřené. <br>Svazek písmena jednotek: E:<br>Nepodařilo se odemknout žádné svazky s použitím následujících klíčů: werwerqomnf, qwerwerqwdfda <br><br>Nástroj odemkl některé jednotky a zobrazil písmena úspěšných a neúspěšných jednotek.| Částečný úspěch. Nástroji se s použitím zadaného klíče nepodařilo odemknout některé ze zamčených jednotek. O dalších krocích se poraďte s podporou Microsoftu. |
-| Nepovedlo se najít zamčené svazky. Zkontrolujte, že je disk od Microsoftu správně připojený a zamčený.          | Nástroji se nepodařilo najít žádné zamčené jednotky. Buď jsou jednotky už odemčené, nebo nebyly nalezeny. Zkontrolujte, že jsou jednotky připojené a zamčené.                                                           |
-| Závažná chyba: Neplatný parametr<br>Název parametru: invalid_arg<br>POUŽITÍ:<br>DataBoxDiskUnlock /PassKeys:<seznam_klíčů_oddělený_středníky><br><br>Příklad: DataBoxDiskUnlock /PassKeys:passkey1;passkey2;passkey3<br>Příklad: DataBoxDiskUnlock /SystemCheck<br>Příklad: / Help DataBoxDiskUnlock<br><br>/ Klíčů:       Tento klíč získáte z objednávka disku Azure DataBox. Klíč vaše disky odemkne.<br>/ Help:           Tato možnost poskytuje nápovědy k rutině využití a příklady.<br>/ SystemCheck:    Tato možnost zkontroluje, pokud váš systém splňuje požadavky na spuštění nástroje.<br><br>Nástroj ukončíte stisknutím libovolné klávesy. | Byl zadán neplatný parametr. Pouze povolené parametry jsou /SystemCheck /PassKey a/Help.                                                                            |
-
-## <a name="data-box-disk-split-copy-tool-errors"></a>Chyby nástroje rozdělení/kopírování Data Box Disku
-
-|Chybová zpráva / upozornění  |Doporučení |
-|---------|---------|
-|[Informace o] Načtení hesla nástroje BitLocker pro svazek: m <br>[Chyba] Byla zachycena výjimka při načítání klíč Bitlockeru pro svazek m:<br> Sekvence neobsahuje žádné prvky.|Tato chyba je vyvolána, pokud je cílový Data Box Disk offline. <br> Používejte nástroj `diskmgmt.msc` na disky, které jsou online.|
-|[Chyba] Došlo k výjimce: Operace WMI se nezdařilo:<br> Method=UnlockWithNumericalPassword, ReturnValue=2150694965, <br>Win32Message=Formát poskytnutého hesla pro obnovení je neplatný. <br>Hesla pro obnovení nástroje BitLocker mají 48 číslic. <br>Zkontrolujte, jestli je heslo pro obnovení ve správném formátu, a pak to zkuste znovu.|Pomocí odemykacího nástroje Data Box Disku nejdřív disk odemkněte a pak zkuste příkaz znovu. Další informace najdete v článcích <li> [Odemknutí Data Box Disku pro klienty Windows](data-box-disk-deploy-set-up.md#unlock-disks-on-windows-client). </li><li> [Odemknutí Data Box Disku pro klienty Linux](data-box-disk-deploy-set-up.md#unlock-disks-on-linux-client). </li>|
-|[Chyba] Došlo k výjimce: DriveManifest.xml soubor existuje na cílové jednotce. <br> To signalizuje, že cílový disk mohl být připraven s jiným souborem deníku. <br>Pokud chcete přidat další data na stejnou jednotku, použijte předchozí soubor deníku. Pokud chcete odstranit existující data a znovu použít cílovou jednotku pro novou úlohu importu, odstraňte soubor DriveManifest.xml na jednotce. Spusťte tento příkaz znovu s novým souborem deníku.| Tato chyba se zobrazí, když se pokusíte použít stejnou sadu jednotek pro více relací importu. <br> Používejte jednu sadu jednotek jenom pro jednu relaci rozdělení a kopírování.|
-|[Chyba] Došlo k výjimce: Data importu CopySessionId – září test-1 odkazuje na předchozí relace kopírování a nesmí znovu použít pro novou relaci kopírování.|Tato chyba se zobrazí, když se pokusíte použít pro novou úlohu stejný název jako měla předchozí úspěšně dokončená úloha.<br> Přiřaďte nové úloze jedinečný název.|
-|[Info] Název cílového souboru nebo adresáře překračuje limit délky platný v systému souborů NTFS. |Tato zpráva je nahlášena, když byl cílový soubor přejmenován z důvodu příliš dlouhé cesty.<br> Toto chování můžete řídit úpravou možnosti disposition v souboru `config.json`.|
-|[Chyba] Došlo k výjimce: Chybný JSON řídicí sekvence. |Tato zpráva je nahlášena, když má soubor config.json neplatný formát. <br> Před uložením ověřte platnost souboru `config.json` pomocí nástroje [JSONlint](https://jsonlint.com/).|
-
-## <a name="deployment-issues-for-linux"></a>Problémy s nasazením pro Linux
-
-Tato část podrobně popisuje některé z hlavních problémů při používání klienta Linux pro kopírování dat ve během nasazení disku Data Box.
-
-### <a name="issue-drive-getting-mounted-as-read-only"></a>Problém: Jednotka získání připojit jako jen pro čtení
- 
-**Příčina** 
-
-To může být způsobeno systém souborů musí provést. 
-
-Jednotky pro čtení i zápis opakovanému připojení nebude fungovat s disků Data Box. Tento scénář není podporován s jednotkami dislocker dešifrovat. Vám může mít úspěšně znovu připojí zařízení, pomocí následujícího příkazu:
-
-    `# mount -o remount, rw /mnt/DataBoxDisk/mountVol1`
-
-I když opakovanému připojení bylo úspěšné, data nezachovají.
-
-**Řešení**
-
-Proveďte následující kroky v systému Linux:
-
-1. Nainstalujte `ntfsprogs` balíček pro nástroj ntfsfix.
-2. Odpojte přípojné body podle nástroj odemknout jednotku. Počet přípojné body se bude lišit u jednotek.
-
-    ```
-    unmount /mnt/DataBoxDisk/mountVol1
+    ```xml
+    <?xml version="1.0" encoding="utf-8"?>
+        <ErrorLog Version="2018-10-01">
+            <SessionId>session#1</SessionId>
+            <ItemType>PageBlob</ItemType>
+            <SourceDirectory>D:\Dataset\TestDirectory</SourceDirectory>
+            <Errors>
+                <Error Code="Not512Aligned">
+                    <Description>The file is not 512 bytes aligned.</Description>
+                    <List>
+                        <File Path="\Practice\myScript.ps1" />
+                    </List>
+                    <Count>1</Count>
+                </Error>
+            </Errors>
+            <Warnings />
+        </ErrorLog>
     ```
 
-3. Spustit `ntfsfix` na odpovídající cestě. Zvýrazněná čísla musí být stejná jako kroku 2.
+- Tady je ukázka v protokolu chyb, kdy název kontejneru není platný. Složky, která vytvoříte v rámci `BlockBlob`, `PageBlob`, nebo `AzureFile` složky na disku bude kontejner ve vašem účtu Azure Storage. Název kontejneru musí následovat [zásady vytváření názvů Azure](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions).
 
+    ```xml
+        <?xml version="1.0" encoding="utf-8"?>
+        <ErrorLog Version="2018-10-01">
+          <SessionId>bbsession</SessionId>
+          <ItemType>BlockBlob</ItemType>
+          <SourceDirectory>E:\BlockBlob</SourceDirectory>
+          <Errors>
+            <Error Code="InvalidShareContainerFormat">
+              <List>
+                <Container Name="Azu-reFile" />
+                <Container Name="bbcont ainer1" />
+              </List>
+              <Count>2</Count>
+            </Error>
+          </Errors>
+          <Warnings />
+    </ErrorLog>
     ```
-    ntfsfix /mnt/DataBoxDisk/bitlockerVol1/dislocker-file
-    ```
 
-4. Spuštěním následujícího příkazu odeberte režimu hibernace metadata, která může způsobit problém připojení.
+## <a name="validation-tool-errors"></a>Nástroj – chyby ověřování
 
-    ```
-    ntfs-3g -o remove_hiberfile /mnt/DataBoxDisk/bitlockerVol1/dislocker-file /mnt/DataBoxDisk/mountVol1
-    ```
+Chyby obsažené v *error.xml* s odpovídajícím doporučené akce, které jsou shrnuty v následující tabulce.
 
-5. Proveďte čistou odpojení.
+| Kód chyby| Popis                       | Doporučené akce               |
+|------------|--------------------------|-----------------------------------|
+| `None` | Data se úspěšně ověřila. | Nevyžaduje se žádná akce. |
+| `InvalidXmlCharsInPath` |Nelze vytvořit soubor manifestu, protože cesta k souboru obsahuje znaky, které nejsou platné. | Odeberte tyto znaky, aby bylo možné pokračovat.  |
+| `OpenFileForReadFailed`| Nepodařilo se zpracovat soubor. To může být způsobeno systému poškození přístup, problém nebo soubor.|Nelze přečíst soubor z důvodu chyby. Podrobnosti o chybě jsou ve výjimce. |
+| `Not512Aligned` | Tento soubor není v platném formátu PageBlob složky.| Pouze nahrávaných dat, která je 512 bajtů zarovnána `PageBlob` složky. Odebrat soubor ze složky PageBlob nebo přesuňte ho do složky, BlockBlob. Opakujte ověření.|
+| `InvalidBlobPath` | Cesta k souboru není namapován na platný objekt blob cestu v cloudu podle konvence pojmenování objektu Blob Azure.|Postupujte podle pokynů na Azure pojmenování přejmenovat cesta k souboru. |
+| `EnumerationError` | Nepodařilo se vytvořit výčet souborů pro ověření. |Může existovat několik důvodů, proč k této chybě. Nejpravděpodobnějším důvodem je přístup k souboru. |
+| `ShareSizeExceeded` | Tento soubor způsobila velikost sdílené složky Azure file překročí Azure limit 5 TB.|Omezit velikost dat ve sdílené složce tak, že vyhovuje [omezení velikosti objektu Azure](data-box-disk-limits.md#azure-object-size-limits). Opakujte ověření. |
+| `AzureFileSizeExceeded` | Velikost souboru přesahuje omezení velikosti souborů Azure.| Zmenšit velikost souboru nebo data tak, že vyhovuje [omezení velikosti objektu Azure](data-box-disk-limits.md#azure-object-size-limits). Opakujte ověření.|
+| `BlockBlobSizeExceeded` | Velikost souboru přesahuje omezení velikosti objektů Blob bloku Azure. | Zmenšit velikost souboru nebo data tak, že vyhovuje [omezení velikosti objektu Azure](data-box-disk-limits.md#azure-object-size-limits). Opakujte ověření. |
+| `ManagedDiskSizeExceeded` | Velikost souboru přesahuje omezení velikosti Azure Managed Disks. | Zmenšit velikost souboru nebo data tak, že vyhovuje [omezení velikosti objektu Azure](data-box-disk-limits.md#azure-object-size-limits). Opakujte ověření. |
+| `PageBlobSizeExceeded` | Velikost souboru přesahuje omezení velikosti Azure Managed Disks. | Zmenšit velikost souboru nebo data tak, že vyhovuje [omezení velikosti objektu Azure](data-box-disk-limits.md#azure-object-size-limits). Opakujte ověření. |
+| `InvalidShareContainerFormat`  |Názvy adresářů není v souladu s Azure zásady vytváření názvů pro kontejnery nebo sdílené složky.         |První složky vytvořené v rámci existující složky na disku bude kontejner ve vašem účtu úložiště. Tento název sdílené složky nebo kontejneru není v souladu s Azure zásady vytváření názvů. Přejmenujte soubor tak, že vyhovuje [zásady vytváření názvů Azure](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions). Opakujte ověření.   |
+| `InvalidBlobNameFormat` | Cesta k souboru není namapován na platný objekt blob cestu v cloudu podle konvence pojmenování objektu Blob Azure.|Přejmenujte soubor tak, že vyhovuje [zásady vytváření názvů Azure](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions). Opakujte ověření. |
+| `InvalidFileNameFormat` | Cesta k souboru není namapován na platnou cestu k souboru v cloudu podle konvence pojmenování souborů Azure. |Přejmenujte soubor tak, že vyhovuje [zásady vytváření názvů Azure](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions). Opakujte ověření. |
+| `InvalidDiskNameFormat` | Cesta k souboru nelze mapovat na název platný disk v cloudu podle zásady vytváření názvů Azure Managed Disks. |Přejmenujte soubor tak, že vyhovuje [zásady vytváření názvů Azure](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions). Opakujte ověření.       |
+| `NotPartOfFileShare` | Nelze nahrát soubory, protože cesta pro uložení není platný. Nahrajte soubory do složky ve službě soubory Azure.   | Odebrat soubory chybu a odeslání těchto souborů do vytvořených složky. Opakujte ověření. |
+| `NonVhdFileNotSupportedForManagedDisk` | Virtuálního pevného disku soubor nelze odeslat jako spravovaný disk. |Soubory – virtuální pevný disk odeberte, protože ty nejsou podporovány. Opakujte ověření. |
 
-    ```
-    ./DataBoxDiskUnlock_x86_64 /unmount
-    ```
-
-6. Proveďte čistou odemknutí a její připojení.
-7. Otestujte přípojný bod zápisu souboru.
-8. Odpojte Image a znovu připojit k ověření trvalost souborů.
-9. Pokračujte v kopírování dat.
- 
-### <a name="issue-error-with-data-not-persisting-after-copy"></a>Problém: Chyba s daty není uchování po kopírování
- 
-**Příčina** 
-
-Pokud zjistíte, že jednotka nemá data poté, co byla odpojit (v případě, že data byla zkopírována do ní), je možné znovu připojit jednotku pro čtení i zápis, po jednotky byl připojený jen pro čtení.
-
-**Řešení**
- 
-Pokud je to tento případ, podívat na řešení pro [jednotky získávání připojit jako jen pro čtení](#issue-drive-getting-mounted-as-read-only).
-
-Pokud, který nebyl tento případ, zkopírovat protokoly ze složky, která se má nástroj Data Box Disk odemknutí a [obraťte se na Microsoft Support](data-box-disk-contact-microsoft-support.md).
-
-## <a name="deployment-issues-for-windows"></a>Problémy při nasazení pro Windows
-
-Tato část podrobně popisuje některé z hlavních problémů, kterým čelí během nasazení disku Data Box při používání klienta Windows pro kopírování dat
-
-### <a name="issue-could-not-unlock-drive-from-bitlocker"></a>Problém: Nepovedlo se odemknout jednotku z nástroje BitLocker
- 
-**Příčina** 
-
-Použili jste heslo v dialogovém okně nástroje BitLocker a pokusu o odemknutí disku pomocí nástroje BitLocker odemknutí jednotky dialogu. To nebude fungovat. 
-
-**Řešení**
-
-Odemknout disků Data Box, budete muset použít nástroj Data Box Disk odemknutí a zadejte heslo z portálu Azure portal. Další informace najdete v části [kurzu: Rozbalit, připojení a odemknutí disku Azure Data Box](data-box-disk-deploy-set-up.md#connect-to-disks-and-get-the-passkey).
- 
-### <a name="issue-could-not-unlock-or-verify-some-volumes-contact-microsoft-support"></a>Problém: Nepodařilo se odemknout nebo ověřit některé svazky. Obraťte se na podporu Microsoftu.
- 
-**Příčina** 
-
-Může se zobrazit následující chyba v protokolu chyb a nejsou odemknout nebo ověřit některé svazky.
-
-`Exception System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Management.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.`
- 
-To znamená, že jsou pravděpodobně chybí odpovídající verzi prostředí Windows PowerShell na klientovi Windows.
-
-**Řešení**
-
-Můžete nainstalovat [v prostředí Windows PowerShell 5.0](https://www.microsoft.com/download/details.aspx?id=54616) a zkuste operaci zopakovat.
- 
-Pokud jste pořád nejste schopni odemknout svazky, zkopírovat protokoly ze složky, který má nástroj Data Box Disk odemknutí a [obraťte se na Microsoft Support](data-box-disk-contact-microsoft-support.md).
 
 ## <a name="next-steps"></a>Další postup
 
-- Přečtěte si, jak [spravovat Data Box Disk pomocí webu Azure Portal](data-box-portal-ui-admin.md).
+- Řešení potíží s [chyby při odesílání dat](data-box-disk-troubleshoot-upload.md).

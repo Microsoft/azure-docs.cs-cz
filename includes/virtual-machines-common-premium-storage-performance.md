@@ -9,11 +9,11 @@ ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 7a37c9d51541c279a6b820641b6eb46175aa8413
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "67113540"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67174978"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure premium storage: návrh pro vysoký výkon
 
@@ -220,7 +220,7 @@ Následující tabulka shrnuje rozpis nákladů tohoto scénáře pro Standard a
 | &nbsp; | **Standard** | **Premium** |
 | --- | --- | --- |
 | **Cena za virtuální počítač za měsíc** |$1,570.58 (standardní\_D14) |$1,003.66 (standardní\_DS13) |
-| **Ceny disků za měsíc** |1,638.40 (32 x 1 TB disky) |544\.34 (4 disky x P30) |
+| **Ceny disků za měsíc** |1,638.40 (32 x 1 TB disky) |544.34 (4 disky x P30) |
 | **Celkové náklady za měsíc** |$3,208.98 |$1,544.34 |
 
 *Distribuce Linuxu*  

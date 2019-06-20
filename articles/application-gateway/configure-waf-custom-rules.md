@@ -1,26 +1,26 @@
 ---
-title: Konfigurace vlastních pravidel brány Firewall webových aplikací pomocí Azure Powershellu
-description: Zjistěte, jak nakonfigurovat vlastní pravidla firewallu webových aplikací pomocí Azure Powershellu
+title: Konfigurace firewallu webových aplikací v2 vlastní pravidla pomocí Azure Powershellu
+description: Další informace o konfiguraci v2 vlastní pravidla firewallu webových aplikací pomocí Azure Powershellu
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 6/7/2019
+ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: f7215c4f35d36486b8dda483f34bc487cc16fc69
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f4d2fd7342e0efe95a1bc69e0dba77692053cf14
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66743060"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164749"
 ---
-# <a name="configure-web-application-firewall-with-a-custom-rule-using-azure-powershell"></a>Konfigurace firewallu webových aplikací pomocí vlastního pravidla pomocí Azure Powershellu
+# <a name="configure-web-application-firewall-v2--with-a-custom-rule-using-azure-powershell"></a>Konfigurace firewallu webových aplikací v2 pomocí vlastního pravidla pomocí Azure Powershellu
 
 <!--- If you make any changes to the PowerShell in this article, also make the change in the corresponding Sample file: azure-docs-powershell-samples/application-gateway/waf-rules/waf-custom-rules.ps1 --->
 
-Vlastní pravidla umožňují vytvořit vlastní pravidla vyhodnocen pro každý požadavek, který se předá prostřednictvím brány Firewall webových aplikací (WAF). Tato pravidla uchování vyšší prioritu než zbytek pravidla v sadách pravidel spravovaná. Vlastní pravidla mají akci (povoleného i blokovaného), podmínku shody a umožňují Úplné vlastní operátor.
+Vlastní pravidla umožňují vytvořit vlastní pravidla vyhodnocen pro každý požadavek, který prochází v2 Firewall webových aplikací (WAF). Tato pravidla uchování vyšší prioritu než zbytek pravidla v sadách pravidel spravovaná. Vlastní pravidla mají akci (povoleného i blokovaného), podmínku shody a umožňují Úplné vlastní operátor.
 
-Tento článek vytvoří waf služby Application Gateway, která používá vlastní pravidlo. Vlastní pravidlo blokuje provoz Pokud hlavička požadavku obsahuje uživatelský Agent *evilbot*.
+Tento článek vytvoří v2 waf služby Application Gateway, která používá vlastní pravidlo. Vlastní pravidlo blokuje provoz Pokud hlavička požadavku obsahuje uživatelský Agent *evilbot*.
 
 Další příklady vlastních pravidel najdete v tématu [vytvoření a použití pravidel brány firewall na vlastních webových aplikací](create-custom-waf-rules.md)
 

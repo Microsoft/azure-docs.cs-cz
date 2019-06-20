@@ -9,11 +9,11 @@ ms.date: 4/30/2019
 ms.author: shants
 ms.custom: include file
 ms.openlocfilehash: c2931fa410cf92755a5df5b7129dcf93de900930
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66155926"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67174987"
 ---
 Azure pravidelně aktualizuje svou platformu zlepšit spolehlivost, výkon a zabezpečení hostitelské infrastruktury pro virtuální počítače. Účelem těchto aktualizací se od použití dílčích oprav softwarové komponenty v hostitelském prostředí pro upgrade síťové součásti nebo vyřazení z provozu hardwaru. 
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: e7f292db06d4da9206aabd14a68e6acde867f92d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5b2618807a39f20de041a78204dcc40793b22843
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60821955"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275442"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Funkce a terminologii používané v Azure Event Hubs
 
@@ -152,38 +152,11 @@ Data události:
 
 Správa posunu je na vás.
 
-## <a name="scaling-with-event-hubs"></a>Škálování pomocí služby Event Hubs
-
-Existují dva faktory, které ovlivňují škálování pomocí služby Event Hubs.
-*   Jednotky propustnosti
-*   Oddíly
-
-### <a name="throughput-units"></a>Jednotky propustnosti
-
-Kapacita propustnosti je ve službě Event Hubs řízená prostřednictvím *jednotek propustnosti*. Jednotky propustnosti jsou předem zakoupené jednotky kapacity. Jeden propustnost vám umožní:
-
-* Příchozí data: Až 1 MB za sekundu nebo 1000 událostí za sekundu (podle toho, co nastane dřív).
-* Odchozí data: Až 2 MB za sekundu nebo 4096 událostí za sekundu.
-
-Nad rámec kapacity zakoupených jednotek propustnosti je příjem příchozích dat omezen a vrátí se výjimka [ServerBusyException](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception). Odchozí data nezpůsobují takové výjimky, ale jsou omezená na objem přenosu dat, který poskytují zakoupené jednotky propustnosti. Pokud se vám objevují výjimky související s frekvencí publikování nebo v budoucnu očekáváte větší objem odchozích dat, zkontrolujte, kolik jednotek propustnosti jste pro konkrétní obor názvů zakoupili. Jednotky propustnosti můžete spravovat na **škálování** okně oboru názvů na [webu Azure portal](https://portal.azure.com). Můžete také spravovat programově pomocí jednotek propustnosti [rozhraní API Event Hubs](event-hubs-api-overview.md).
-
-Jednotky propustnosti se kupují předem a se účtuje po hodinách. Zakoupené jednotky propustnosti se účtují minimálně za jednu hodinu. Propustnost až 20 jednotek pro obor názvů služby Event Hubs můžete zakoupit a jsou sdílené ve všech centrech event hubs v tomto oboru názvů.
-
-### <a name="partitions"></a>Oddíly
-
-Oddíly umožňují přizpůsobit pro příjem dat zpracování. Z důvodu modelu oddělených příjemců je pravidlo, které nabízí Služba Event Hubs s oddíly které můžete horizontální navýšení kapacity při zpracování událostí současně. Centra událostí můžete mít až 32 oddíly.
-
-Doporučujeme, abyste vyvážili jednotky propustnosti 1:1 a oddíly, abyste dosáhli optimálního škálování. Jednoho oddílu dovoluje zaručené příchozí a výchozí přenos maximálně jednu jednotku propustnosti. Přestože je možné dosáhnout vyšší propustnost na oddíl, není zaručeno, že výkon. To je důvod, proč důrazně doporučujeme, že počet oddílů v Centru událostí být větší než nebo rovna počtu jednotek propustnosti.
-
-Zadaný celkovou propustnost, kterou plánujete nutnosti, víte, že počet jednotek propustnosti, které vyžadujete a minimální počet oddílů, ale počet oddílů byste měli mít? Vyberte počet oddílů podle stupněm paralelismu příjmu dat, které chcete dosáhnout, jakož i vašim potřebám propustnosti budoucí. Neplatí žádné poplatky pro počet oddílů, které máte v rámci centra událostí.
-
-Podrobné informace o cenách služby Event Hubs najdete na stránce [Ceny služby Event Hubs](https://azure.microsoft.com/pricing/details/event-hubs/).
-
 ## <a name="next-steps"></a>Další postup
 
 Další informace o službě Event Hubs naleznete pod těmito odkazy:
 
-* Úvodní [kurz služby Event Hubs][Event Hubs tutorial]
+* Úvodní [Kurz služby Event Hubs][Event Hubs tutorial]
 * [Průvodce programováním pro službu Event Hubs](event-hubs-programming-guide.md)
 * [Dostupnost a konzistence ve službě Event Hubs](event-hubs-availability-and-consistency.md)
 * [Nejčastější dotazy k Event Hubs](event-hubs-faq.md)

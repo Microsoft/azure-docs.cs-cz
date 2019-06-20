@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: c44b39effdc6d8fcdc144915ec7b51489e3798cd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66145864"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67174972"
 ---
 Je důležité k zabezpečení vašich virtuálních počítačů (VM) pro aplikace, které spustíte. Zabezpečení vašich virtuálních počítačů může obsahovat jednu nebo více služeb Azure a funkce, které se týkají zabezpečený přístup k virtuálním počítačům a zabezpečené ukládání vašich dat. Tento článek obsahuje informace, které umožňuje zabezpečit svůj virtuální počítač a aplikací.
 

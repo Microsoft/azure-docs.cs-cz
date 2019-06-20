@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 03/05/2019
 ms.author: alkohli
 ms.openlocfilehash: aebb82690a7a49aba071ed64349d37d516208cca
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "67125611"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67175468"
 ---
 Postup resetování zařízení, budete muset bezpečně vymazat veškerá data na datový disk a spouštěcí disk vašeho zařízení. 
 

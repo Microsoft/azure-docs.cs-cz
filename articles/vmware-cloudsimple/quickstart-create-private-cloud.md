@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e1fc7809ad94d589483b87c638d027a39098164e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8a67cd2f82eb069555bda68e4cb04a6634e3b31d
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65209542"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164357"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Rychlý start – konfigurace prostředí privátního cloudu
 
@@ -33,7 +33,7 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 
 5. Na portálu CloudSimple zadejte název privátního cloudu
 6. Vyberte **umístění** z privátního cloudu
-7. Vyberte **typ uzlu** jste zakoupili v Azure.  Můžete použít [CS28 nebo CS36 možnost](cloudsimple-node.md#vmware-solution-by-cloudsimple-nodes-sku). Druhou možnost zahrnuje maximální kapacitu výpočetní a paměťové prostředky.
+7. Vyberte **typ uzlu** zřídit v Azure.  Můžete použít [CS28 nebo CS36 možnost](cloudsimple-node.md#vmware-solution-by-cloudsimple-nodes-sku). Druhou možnost zahrnuje maximální kapacitu výpočetní a paměťové prostředky.
 8. Zadejte **počet uzlů**.  Minimálně tři uzly jsou nutné k vytvoření privátního cloudu
 
     ![Vytvoření privátního cloudu – základní informace](media/create-private-cloud-basic-info.png)

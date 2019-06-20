@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.reviewer: vitalyg
 ms.author: cithomas
-ms.openlocfilehash: c94167929782a2deca7bba19924bfe67dd46bf29
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: 7a657f175307e019155e37538021c5aecf5bb068
+ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66388372"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67136898"
 ---
 # <a name="sampling-in-application-insights"></a>Vzorkování ve službě Application Insights
 
@@ -53,7 +53,7 @@ Pokud Adaptivní nebo pevná frekvence vzorkování se v operaci, je vzorkován�
 
 Adaptivní vzorkování je k dispozici pro Application Insights SDK pro ASP.NET v 2.0.0-beta3 nebo novější, 2.2.0-beta1 v Microsoft.ApplicationInsights.AspNetCore SDK nebo novější a je ve výchozím nastavení povolené.
 
-Adaptivní vzorkování ovlivňuje množství telemetrie odesílané z vaší aplikace webového serveru do koncového bodu služby Application Insights. Svazek se automaticky upraví zachovat v rámci zadané maximální rychlost přenosu provozu a je řízen pomocí nastavení `MaxTelemetryItemsPerSecond`. Pokud aplikace vytvoří malou telemetrických dat, například při ladění nebo z důvodu s nízkým využitím položky nebudou získat vzorkovány jako svazek je nižší než `MaxTelemetryItemsPerSecond`. Jako objem telemetrických dat zvyšuje vzorkovací frekvenci se upraví tak, aby dosáhnout cílového svazku.
+Adaptivní vzorkování ovlivňuje množství telemetrie odesílané z vaší aplikace webového serveru do koncového bodu služby Application Insights. Svazek se automaticky upraví zachovat v rámci zadané maximální rychlost přenosu provozu a je řízen pomocí nastavení `MaxTelemetryItemsPerSecond`. Pokud aplikace vytvoří malou telemetrických dat, například při ladění nebo z důvodu s nízkým využitím položky nebudou vyřadit pomocí vzorkování procesoru, dokud svazek je nižší než `MaxTelemetryItemsPerSecond`. Jako objem telemetrických dat zvyšuje vzorkovací frekvenci se upraví tak, aby dosáhnout cílového svazku.
 
 Pokud chcete dosáhnout cílového svazku, některé generované telemetrie se zahodí. Ale stejně jako jiné typy vzorkování algoritmus zachová položky souvisejícími telemetrickými daty. Například když se kontrola telemetrických dat ve službě Search, budete mít k vyhledání žádosti související s konkrétní výjimce položku.
 

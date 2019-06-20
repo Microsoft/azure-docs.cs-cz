@@ -2,37 +2,27 @@
 title: Blokování starší verze ověřování do Azure Active Directory (Azure AD) s podmíněným přístupem | Dokumentace Microsoftu
 description: Zjistěte, jak zlepšit tak stav zabezpečení zákonné zodpovědnosti organizací blokováním starší verze ověřování pomocí podmíněného přístupu Azure AD.
 services: active-directory
-keywords: Podmíněný přístup k aplikacím, podmíněný přístup s Azure AD, zabezpečený přístup k prostředkům společnosti, zásady podmíněného přístupu
-documentationcenter: ''
+ms.service: active-directory
+ms.subservice: conditional-access
+ms.topic: conceptual
+ms.date: 06/17/2019
+ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-editor: ''
-ms.subservice: conditional-access
-ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
-ms.service: active-directory
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: identity
-ms.date: 03/25/2019
-ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a638b501ea04db787ca366aa015850d94eb475ee
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9b2120466652db363206ec20c2303ad56670228c
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112705"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164789"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Postup: Blok starší verze ověřování do služby Azure AD s podmíněným přístupem   
 
 Azure Active Directory (Azure AD) a poskytovat uživatelům snadný přístup k vašim cloudovým aplikacím, podporuje množství různých ověřovacích protokolů včetně starší verze ověřování. Ale nepodporují starších verzí protokolů ověřování službou Multi-Factor Authentication (MFA). MFA je v mnoha prostředích běžné požadavky na krádež identity adres. 
 
-
 Pokud je vaše prostředí připravené na blok starší verze ověřování ke zlepšení ochrany vašeho tenanta, můžete pomocí podmíněného přístupu dosažení tohoto cíle. Tento článek vysvětluje, jak nakonfigurovat zásady podmíněného přístupu, které blokují starší verze ověřování pro vašeho tenanta.
-
-
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -40,8 +30,6 @@ Tento článek předpokládá, že máte zkušenosti s:
 
 - [Základní koncepty](overview.md) z podmíněného přístupu Azure AD 
 - [Osvědčené postupy](best-practices.md) ke konfiguraci zásad podmíněného přístupu na webu Azure Portal
-
-
 
 ## <a name="scenario-description"></a>Popis scénáře
 
@@ -57,12 +45,21 @@ Jak můžete zabránit aplikacím pomocí starší verze ověřování přístup
 
 Po dokončení první dvojúrovňové ověřování se vynucují zásady podmíněného přístupu. Proto podmíněného přístupu není určen jako první linií obrany řádku pro scénáře, jako jsou útoky s cílem odepření služeb (DoS), ale můžete využít signály z těchto událostí (například úroveň rizika přihlášení, umístění žádosti a tak dále) a zjistí přístup k.
 
-
-
-
 ## <a name="implementation"></a>Implementace
 
 Tato část vysvětluje postup konfigurace zásad podmíněného přístupu pro starší verze ověřování bloku. 
+
+### <a name="identify-legacy-authentication-use"></a>Identifikovat pomocí starší verze ověřování
+
+Předtím, než ve svém adresáři můžete zablokovat starší verze ověřování, musíte nejprve porozumět, pokud mají vaši uživatelé aplikace, které používají starší verze ověřování a o jejím dopadu na vaše celkové adresáře. Azure AD přihlášení protokoly je možné pochopit, pokud používáte starší verzi ověřování.
+
+1. Přejděte **webu Azure portal** > **Azure Active Directory** > **přihlášení**.
+1. Přidat sloupec klientskou aplikaci, pokud se zobrazí po kliknutí na **sloupce** > **klientskou aplikaci**.
+1. Filtrovat podle **klientskou aplikaci** > **ostatní klienti** a klikněte na tlačítko **použít**.
+
+Filtrování se pouze pokusí zobrazit přihlášení, které byly provedeny ve starší verzi ověřovacích protokolů. Kliknutím na jednotlivé jednotlivé pokusy o přihlášení se zobrazí další podrobnosti. **Klientskou aplikaci** pole **základní informace o** kartu označí, který starší verze ověřování protokol byl použit.
+
+Tyto protokoly budou indikovat, kteří uživatelé jsou stále v závislosti na tom starší verze ověřování a aplikace, které používají starší protokoly k podání žádostí o ověření. Pro uživatele, kteří se nezobrazují v těchto protokolech a potvrzena nelze pomocí starší verze ověřování implementujte zásady podmíněného přístupu pro pouze tito uživatelé.
 
 ### <a name="block-legacy-authentication"></a>Blokování starší verze ověřování 
 

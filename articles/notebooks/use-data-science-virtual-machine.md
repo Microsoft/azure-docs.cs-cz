@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2019
+ms.date: 06/13/2019
 ms.author: getroyer
-ms.openlocfilehash: ab3b742d50cc141420f9bffa1961a6e170b99d2a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: 9b762f1b3f1c17e15b051e72f5d2cf98bef446bf
+ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66234350"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67137759"
 ---
 # <a name="use-azure-data-science-virtual-machines"></a>Použijte virtuální počítače pro Azure datové vědy
 
@@ -56,6 +56,17 @@ Chcete-li zachovat parity cesty k souborům s **– Compute úrovně Free** úro
 ![Tlačítko vypnutí v poznámkových bloků Azure](media/shutdown.png)
 
 Při spuštění projektu na virtuálním počítači jsou připojené soubory na kořenovém adresáři serveru Jupyter (adresář ukazuje JupyterHub), nahradí výchozí soubory poznámkových bloků Azure. Když vypnete virtuální počítač pomocí **vypnutí** tlačítko v poznámkovém bloku uživatelského rozhraní, poznámkových bloků Azure obnoví výchozí soubory.
+
+![Tlačítko vypnutí v poznámkových bloků Azure](media/shutdown.png)
+
+## <a name="create-new-dsvm-users"></a>Vytvoření nových uživatelů DSVM
+
+Pokud DSVM sdílí více uživatelů, můžete se vyhnout blokování vzájemně vytvořením a použitím uživatel DSVM pro každého uživatele Poznámkový blok:
+
+1. Na [webu Azure Portal](https://portal.azure.com), přejděte ke svému virtuálnímu počítači.
+1. V části **podpora a řešení potíží** do levého okraje vyberte **resetovat heslo**.
+1. Zadejte nové uživatelské jméno a heslo a vyberte **aktualizace**. (Existující uživatelská jména nejsou ovlivněny.)
+1. Předchozí krok opakujte pro všechny další uživatele.
 
 ## <a name="next-steps"></a>Další postup
 

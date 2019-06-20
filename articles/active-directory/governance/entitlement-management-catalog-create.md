@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 04/19/2019
+ms.date: 05/29/2019
 ms.author: rolyon
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6d9220cd2162b4c8cb77c1e7abd0372052f5454
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a5988f4723f1ef73cf0767ef8ac1b9adf3c1435d
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64541612"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190246"
 ---
 # <a name="create-and-manage-a-catalog-in-azure-ad-entitlement-management-preview"></a>Vytvoření a správa katalog ve správě služby Azure AD oprávnění (Preview)
 
@@ -60,9 +60,9 @@ Katalog je kontejner, prostředků a přístup k balíčkům. Můžete vytvořit
 
 ## <a name="add-resources-to-a-catalog"></a>Přidat prostředky do katalogu
 
-Pokud chcete zahrnout prostředky v balíčku přístup, musí existovat prostředky v katalogu. Typy prostředků, které můžete přidat jsou skupiny, aplikace a weby SharePoint Online.
+Pokud chcete zahrnout prostředky v balíčku přístup, musí existovat prostředky v katalogu. Typy prostředků, které můžete přidat jsou skupiny, aplikace a weby SharePoint Online. Skupiny může být cloudu vytvořené skupiny Office 365 nebo Azure cloud vytvoří skupiny zabezpečení služby AD. Může se jednat o podnikových aplikací Azure AD, včetně aplikací SaaS a vlastním aplikacím Federovaná do služby Azure AD. Weby SharePoint Online nebo SharePoint Online kolekce webů, může být weby.
 
-**Požadované role:** Uživatel správce nebo vlastníka katalogu
+**Požadované role:** Zobrazit [požadované role, které chcete přidat prostředky do katalogu](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog)
 
 1. Na webu Azure Portal, klikněte na tlačítko **Azure Active Directory** a potom klikněte na tlačítko **zásady správného řízení identit**.
 
@@ -74,9 +74,7 @@ Pokud chcete zahrnout prostředky v balíčku přístup, musí existovat prostř
 
 1. Klikněte na typ prostředku: **Skupiny**, **aplikací**, nebo **Sharepointové weby**.
 
-    Pokud jste autorem katalogu, můžete přidat jakékoli skupiny Office 365 nebo skupiny zabezpečení Azure AD, které vlastníte do katalogu. Pokud je skupina, kterou chcete přiřadit uživatelům, ale není vlastníkem skupiny, musíte mít uživatele správce přidat tuto skupiny do katalogu.
-
-    Pokud jste autorem katalogu, můžete přidat jakékoli podniková aplikace Azure AD, které vlastníte, včetně aplikací SaaS a vlastním aplikací Federovaná do služby Azure AD, do katalogu. Pokud je aplikace, které chcete přiřadit uživatelům, ale není vlastníkem, musíte mít správce uživatelů, přidání aplikace do katalogu. Jakmile aplikace je součástí katalogu, vyberete některý z role aplikace, přístup k balíčku.
+    Pokud nevidíte prostředek, který chcete přidat nebo nemůžete přidat prostředek, ujistěte se, že máte požadované role adresáře Azure AD a role pro správu oprávnění. Můžete potřebovat mít někdo požadované role přidejte prostředek do katalogu. Další informace najdete v tématu [požadované role, které chcete přidat prostředky do katalogu](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog).
 
 1. Vyberte jeden nebo více prostředků typu, který chcete přidat do katalogu.
 
@@ -88,7 +86,7 @@ Pokud chcete zahrnout prostředky v balíčku přístup, musí existovat prostř
 
 Odebrat prostředky z katalogu. Zdroj lze odebrat pouze z katalogu Pokud se nepoužívá v žádném z balíčků přístup do katalogu.
 
-**Požadované role:** Uživatel správce nebo vlastníka katalogu
+**Požadované role:** Zobrazit [požadované role, které chcete přidat prostředky do katalogu](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog)
 
 1. Na webu Azure Portal, klikněte na tlačítko **Azure Active Directory** a potom klikněte na tlačítko **zásady správného řízení identit**.
 
@@ -99,22 +97,6 @@ Odebrat prostředky z katalogu. Zdroj lze odebrat pouze z katalogu Pokud se nepo
 1. Vyberte prostředky, které chcete odebrat.
 
 1. Klikněte na tlačítko **odebrat** (nebo klikněte na tlačítko se třemi tečkami ( **...** ) a potom klikněte na tlačítko **odebrat prostředek**).
-
-## <a name="add-catalog-owners-or-access-package-managers"></a>Přidat vlastníky katalogu nebo přístup ke správci balíčků
-
-Pokud chcete delegovat správu katalogu nebo balíčky přístup v katalogu, přidání vlastníků katalogu nebo přístup ke správci balíčků. Kdo vytvoří katalog se stane první Vlastník katalogu.
-
-**Požadované role:** Uživatel správce nebo vlastníka katalogu
-
-1. Na webu Azure Portal, klikněte na tlačítko **Azure Active Directory** a potom klikněte na tlačítko **zásady správného řízení identit**.
-
-1. V nabídce vlevo klikněte na tlačítko **katalogy** a pak otevřete katalogu, které chcete přidat oprávnění správce.
-
-1. V nabídce vlevo klikněte na tlačítko **role a správci**.
-
-1. Klikněte na tlačítko **přidat vlastníky** nebo **přidat přístup správců balíčků** vyberte členy pro tyto role.
-
-1. Klikněte na tlačítko **vyberte** pro přidání těchto členů.
 
 ## <a name="edit-a-catalog"></a>Upravit katalogu
 
@@ -148,4 +130,5 @@ Můžete odstranit katalog, ale pouze pokud nemá žádné balíčky přístup.
 
 ## <a name="next-steps"></a>Další postup
 
+- [Přidat katalog creator](entitlement-management-delegate.md#add-a-catalog-creator)
 - [Vytvoření a Správa balíčku přístup](entitlement-management-access-package-create.md)

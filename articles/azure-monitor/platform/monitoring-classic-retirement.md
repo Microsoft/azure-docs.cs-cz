@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 2/7/2019
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: d7c8c8e6931c3e677273fab17755031527aff978
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: MT
+ms.openlocfilehash: 2bd23d62a8be6b40458aef3bb4dc5342ebcb33c7
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67069361"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67154171"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Sjednocené upozorňování a monitorování ve službě Azure Monitor nahradí classic upozorňování a monitorování
 
@@ -67,7 +67,7 @@ Na konci dne. 2019 ve službě Azure Monitor:
 - Pravidla výstrah, které dál existovat v upozornění (klasická) nad rámec 2019. srpna bude i nadále spouštět a aktivují upozornění, ale nebudou k dispozici pro úpravy.
 - Od září 2019, pravidla výstrah ve službě classic monitoring a alerting, které se dají migrovat, bude automaticky přesunut microsoftem na ekvivalentní na nové platformě Azure monitor ve fázích pokrývající několik týdnů. Proces bude bezproblémové bez výpadku a bez ztráty monitorování pokrytí budou mít zákazníci.
 - Upozornění pravidla migrovány do nového oznámení platformy bude poskytovat monitorování pokrytí jako předtím, ale se aktivuje upozornění s datovými částmi nové. Všechny e-mailovou adresu, koncový bod webhooku nebo odkaz na aplikaci logiky přidružené klasické pravidlo upozornění přenesena při migraci, ale nemusí správně fungovat jako datová část oznámení se bude lišit v nové platformy.
-- Některé [classic pravidel upozornění, které se nedají migrovat automaticky](alerts-understand-migration.md#which-classic-alert-rules-can-be-migrated) a vyžadují ruční zásah uživatele bude pokračovat až do roku 2020 dne.
+- Některé [classic pravidel upozornění, které se nedají migrovat automaticky](alerts-understand-migration.md#which-classic-alert-rules-cannot-be-migrated) a vyžadují ruční zásah uživatele bude pokračovat až do roku 2020 dne.
 
 > [!IMPORTANT]
 > Microsoft Azure Monitor se vrátila ve fázích [nástroj pro migraci dobrovolně](alerts-using-migration-tool.md) classic pravidla výstrah k nové platformy brzy. A spusťte ho vynutí pro všechny klasické pravidla výstrah, které stále existuje a je možné migrovat, od září 2019. Zákazníci musí zajistit náročné datové části klasické pravidlo upozornění je přizpůsobena zpracovat nové datové části ze služby automation [Unified metrik a výstrah ve službě Application Insights](#unified-metrics-and-alerts-in-application-insights) nebo [Unified metriky a upozornění na jiné službě Azure prostředky](#unified-metrics-and-alerts-for-other-azure-resources), po migraci klasického pravidel upozornění. Další informace najdete v tématu [Příprava na migraci klasické pravidlo upozornění](alerts-prepare-migration.md)

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 87dd3680aae3e87f78ab2dbe70c44b2008706747
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66171993"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67175028"
 ---
 Při přidávání datové disky na virtuální počítač s Linuxem, chyby můžete narazit, pokud neexistuje disku na logické jednotce 0. Pokud přidáváte ručně pomocí disku `azure vm disk attach-new` příkaz a zadejte logickou jednotku (`--lun`) namísto povolení platformy Azure k určení příslušné logické jednotky, zajistíme, že disk již existuje nebo bude existovat na logické jednotce 0. 
 

@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 04/04/2019
 ms.author: danlep
-ms.openlocfilehash: 1e496002c869c5d2c072773d37ed5fd5d4a5841e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: MT
+ms.openlocfilehash: 96fdecc2e8ac78e295b7dd57d1236f52cf99679a
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60430784"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275664"
 ---
 # <a name="delete-container-images-in-azure-container-registry"></a>Odstranit Image kontejnerů ve službě Azure Container Registry
 
@@ -60,7 +60,7 @@ V privátním registru, jako je Azure Container Registry názvu image také zahr
 myregistry.azurecr.io/marketing/campaign10-18/web:v2
 ```
 
-Informace o obrázku označování osvědčené postupy, najdete v článku [označování Dockeru: Osvědčené postupy pro označování a správy verzí Image dockeru] [ tagging-best-practices] blogový příspěvek na webu MSDN.
+Informace o obrázku označování osvědčené postupy, najdete v článku [označování Dockeru: Osvědčené postupy pro označování a správy verzí Image dockeru][tagging-best-practices] blogový příspěvek na webu MSDN.
 
 ### <a name="layer"></a>Vrstva
 
@@ -106,10 +106,6 @@ $ az acr repository show-manifests --name myregistry --repository acr-helloworld
 ]
 ```
 
-Manifest popsaném se liší od manifest image můžete zobrazit na webu Azure Portal nebo pomocí [kontrolovat docker manifestu][docker-manifest-inspect]. V následující části "manifest digest" odkazuje na digest vygenerované pomocí operace push, ne *config.digest* v manifestu obrázků. Můžete o přijetí změn a odstranění imagí od **manifestu digest**, ne config.digest. Následující obrázek ukazuje dva druhy přehledu.
-
-![Ověřování algoritmem digest manifestu a config.digest na webu Azure Portal][manifest-digest]
-
 ### <a name="manifest-digest"></a>Manifest ověřování algoritmem digest
 
 Manifestů jsou označeny jedinečnou hodnotu hash SHA-256, nebo *manifestu digest*. Každá image – zda příznakem nebo ne--je identifikován jeho algoritmem digest. Hodnota ověřování algoritmem digest je jedinečný, i v případě, že data na úrovni image je stejné jako u jiného obrázku. Tento mechanismus je, co vám umožňuje opakovaně identicky tagged image nahrajete do registru. Například můžete opakovaně nabízet `myimage:latest` do registru bez chyb protože každé image je identifikován jeho jedinečné digest.
@@ -135,9 +131,9 @@ Obrazová data můžete odstranit z vašeho registru kontejneru několika způso
 
 ## <a name="delete-repository"></a>Odstranit úložiště
 
-Odstranit úložiště odstraní všechny Image v úložišti, včetně všech značek, jedinečné vrstvami a manifestů. Při odstranění úložiště, obnovování prostor úložiště využitý pomocí bitové kopie, které byly v tomto úložišti.
+Odstranit úložiště odstraní všechny Image v úložišti, včetně všech značek, jedinečné vrstvami a manifestů. Při odstranění úložiště, obnovování prostor úložiště využitý pomocí bitové kopie, které odkazují na jedinečné vrstvy v tomto úložišti.
 
-Následující rozhraní příkazového řádku Azure odstraní "acr-helloworld" úložiště a všechny značky a manifesty v rámci tohoto úložiště. Pokud vrstvy odkazuje odstraněné manifesty nejsou odkazovány ostatních imagí v registru, odstraní se také svá data na úrovni.
+Následující rozhraní příkazového řádku Azure odstraní "acr-helloworld" úložiště a všechny značky a manifesty v rámci tohoto úložiště. Pokud vrstvy odkazuje odstraněné manifesty nejsou odkazovány ostatních imagí v registru, svá data na úrovni je také odstranit, obnovování prostor úložiště.
 
 ```azurecli
  az acr repository delete --name myregistry --repository acr-helloworld
@@ -147,7 +143,7 @@ Následující rozhraní příkazového řádku Azure odstraní "acr-helloworld"
 
 Můžete odstranit jednotlivé Image z úložiště zadáním názvu úložiště a značky v operaci odstranění zopakovat. Když odstraníte podle značky, obnovíte prostor úložiště využitý tak všechny jedinečné vrstvy na obrázku (ne sdílí ostatních imagí v registru vrstvy).
 
-Chcete-li odstranit podle klíčových slov, použijte [az acr úložiště odstranit] [ az-acr-repository-delete] a zadejte název bitové kopie `--image` parametr. Odstraní se všechny vrstvy, které jsou jedinečné pro bitovou kopii a všechny ostatní značky, které jsou spojené s imagí.
+Chcete-li odstranit podle klíčových slov, použijte [az acr úložiště odstranit][az-acr-repository-delete] a zadejte název bitové kopie `--image` parametr. Odstraní se všechny vrstvy, které jsou jedinečné pro bitovou kopii a všechny ostatní značky, které jsou spojené s imagí.
 
 Odstraňuje se například "acr-helloworld:latest" image z registru "myregistry":
 
@@ -187,7 +183,7 @@ $ az acr repository show-manifests --name myregistry --repository acr-helloworld
 ]
 ```
 
-Dále určete digest, kterou chcete odstranit v [az acr úložiště odstranit] [ az-acr-repository-delete] příkazu. Příkaz má tento formát:
+Dále určete digest, kterou chcete odstranit v [az acr úložiště odstranit][az-acr-repository-delete] příkazu. Příkaz má tento formát:
 
 ```azurecli
 az acr repository delete --name <acrName> --image <repositoryName>@<digest>
@@ -203,7 +199,7 @@ Are you sure you want to continue? (y/n): y
 
 `acr-helloworld:v2` Bitová kopie je odstraněna z registru, jako jsou všechna data vrstvy jedinečný této bitové kopie. Pokud manifest je přidruženo více značek, odstraní se také všechny přidružené značky.
 
-### <a name="list-digests-by-timestamp"></a>Seznam přehledu pomocí časového razítka
+## <a name="delete-digests-by-timestamp"></a>Odstranit přehledu pomocí časového razítka
 
 K udržování velikosti úložiště nebo registru, můžete potřebovat odstranit pravidelně manifestu přehledu starší než ke konkrétnímu datu.
 
@@ -213,8 +209,6 @@ Následující příkaz rozhraní příkazového řádku Azure zobrazí seznam v
 az acr repository show-manifests --name <acrName> --repository <repositoryName> \
 --orderby time_asc -o tsv --query "[?timestamp < '2019-04-05'].[digest, timestamp]"
 ```
-
-### <a name="delete-digests-by-timestamp"></a>Odstranit přehledu pomocí časového razítka
 
 Po identifikaci zastaralé manifestu přehledu, můžete spustit následující skript Bash manifestu přehledu starší než zadané časové razítko odstranění. Vyžaduje Azure CLI a **xargs**. Ve výchozím nastavení že skript provádí žádná odstranění. Změnit `ENABLE_DELETE` hodnota, která se `true` Povolit odstranění image.
 
@@ -296,15 +290,13 @@ Jak je uvedeno v [manifestu digest](#manifest-digest) části doručením (push)
 
 Jak je vidět ve výstupu příkazu poslední krok v pořadí, je teď osamocený manifestu, jehož `"tags"` vlastnosti je prázdný seznam. Tento manifest stále existuje v registru, spolu s daty všechny jedinečné vrstvy, na kterou odkazuje. **Chcete-li například Odstranit osamocené obrázků a jejich data vrstev, je nutné odstranit podle manifestu digest**.
 
-### <a name="list-untagged-images"></a>Seznam neoznačených obrázků
+## <a name="delete-all-untagged-images"></a>Odstranit všechny neoznačených obrázků
 
 V úložišti pomocí následujícího příkazu rozhraní příkazového řádku Azure můžete vytvořit seznam všech neoznačených obrázků. Nahraďte `<acrName>` a `<repositoryName>` s hodnotami, které jsou vhodné pro vaše prostředí.
 
 ```azurecli
 az acr repository show-manifests --name <acrName> --repository <repositoryName> --query "[?tags[0]==null].digest"
 ```
-
-### <a name="delete-all-untagged-images"></a>Odstranit všechny neoznačených obrázků
 
 > [!WARNING]
 > Pomocí následujících ukázkových skriptech s rozmyslem – odstranit data obrázku je NEOPRAVITELNÁ. Pokud máte systémy, které o přijetí změn imagí v manifestu digest (na rozdíl od název image), byste neměli spouštět tyto skripty. Odstranění neoznačených obrázků zabrání těchto systémech stahování imagí z registru. Místo potažením manifestu, zvažte využití *jedinečné tagování* schéma, [osvědčený postup doporučuje][tagging-best-practices].
@@ -371,7 +363,7 @@ Další informace o službě storage image ve službě Azure Container Registry 
 <!-- LINKS - External -->
 [docker-manifest-inspect]: https://docs.docker.com/edge/engine/reference/commandline/manifest/#manifest-inspect
 [portal]: https://portal.azure.com
-[tagging-best-practices]: https://blogs.msdn.microsoft.com/stevelasker/2018/03/01/docker-tagging-best-practices-for-tagging-and-versioning-docker-images/
+[tagging-best-practices]: https://stevelasker.blog/2018/03/01/docker-tagging-best-practices-for-tagging-and-versioning-docker-images/
 
 <!-- LINKS - Internal -->
 [az-acr-repository-delete]: /cli/azure/acr/repository#az-acr-repository-delete

@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: 962e2b10136cf1cbab7cc5d3d06059922c363b15
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.date: 06/19/2019
+ms.openlocfilehash: 4d2ad1f8f824d561e6cdf384ab56126e40a5f061
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65410269"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275397"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>Rozšíření PostgreSQL v Azure Database for PostgreSQL – jeden Server
 PostgreSQL poskytuje schopnost rozšiřovat funkce vaší databáze pomocí rozšíření. Rozšíření umožňují sdružování více souvisejících objektů SQL společně v jednom balíčku, který může načíst nebo odstranit z databáze pomocí jediného příkazu. Po načtení v databázi, můžou rozšíření fungovat stejně jako integrované funkce. Další informace o rozšíření PostgreSQL, naleznete v tématu [balení souvisejících objektů do rozšíření](https://www.postgresql.org/docs/9.6/static/extend-extensions.html).
@@ -124,7 +124,7 @@ TimescaleDB je databáze časových řad, která je zabalena jako rozšíření 
 [Další informace o TimescaleDB](https://docs.timescale.com/latest), registrovaná ochranná známka společnosti [časový rámec, Inc.](https://www.timescale.com/)
 
 ### <a name="installing-timescaledb"></a>Instalace TimescaleDB
-K instalaci TimescaleDB, budete muset zahrnout do sdílené knihovny přednačtení serveru. Vyžaduje změnu sdílené knihovny přednačtení Postgres společnosti **restartování serveru** se projeví.
+K instalaci TimescaleDB, budete muset zahrnout do sdílené knihovny přednačtení serveru. Ke změně jeho Postgres `shared_preload_libraries` vyžaduje parametr **restartovat server** se projeví. Můžete změnit parametry s využitím [webu Azure portal](howto-configure-server-parameters-using-portal.md) nebo [rozhraní příkazového řádku Azure](howto-configure-server-parameters-using-cli.md).
 
 > [!NOTE]
 > TimescaleDB lze povolit – Azure Database for postgresql – verze 9.6 a 10
@@ -137,10 +137,7 @@ Použití [webu Azure portal](https://portal.azure.com/):
 
 3. Hledat `shared_preload_libraries` parametru.
 
-4. Zkopírujte a vložte následující hodnotu `shared_preload_libraries`
-   ```
-   timescaledb
-   ```
+4. Vyberte **TimescaleDB**.
 
 5. Vyberte **Uložit** zachovat vaše změny. Po uložení změn, dostanete oznámení. 
 
@@ -158,4 +155,4 @@ Nyní můžete vytvořit TimescaleDB hypertable [úplně od začátku](https://d
 
 
 ## <a name="next-steps"></a>Další postup
-Pokud se rozšíření, které byste chtěli používat, dejte nám vědět. Hlasovat pro požadavky na existující nebo vytvořte novou zpětnou vazbu a požadavků v našich [fóru pro zpětnou vazbu zákazníků](https://feedback.azure.com/forums/597976-azure-database-for-postgresql).
+Pokud se rozšíření, které byste chtěli používat, dejte nám vědět. Hlasovat pro požadavky na existující nebo vytvořte nové žádosti o zpětnou vazbu v našich [fóru pro zpětnou vazbu](https://feedback.azure.com/forums/597976-azure-database-for-postgresql).

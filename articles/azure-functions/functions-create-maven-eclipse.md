@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 123a24eb13de584d8e3b70d0d8b1173f583867c1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9dcc959e51aa42fd6ef3173dba2aec8d9970deb1
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61341411"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67154609"
 ---
 # <a name="create-your-first-function-with-java-and-eclipse"></a>Vytvoření první funkce pomocí Javy a Eclipse 
 
@@ -43,15 +43,15 @@ Důrazně doporučujeme také nainstalovat [nástrojů Azure Functions Core, ver
 
 ## <a name="create-a-functions-project"></a>Vytvoření projektu funkce
 
-1. V Eclipse, vyberte **souboru** nabídce pak vyberte **projektu**. 
-1. Otevřít **projektu v Javě** složky **nový projekt** okna a vyberte **projekt Maven s**a pak vyberte **Další**.
+1. V Eclipse, vyberte **souboru** nabídce pak vyberte **New -&gt; projekt Maven s**. 
 1. Přijměte výchozí hodnoty v **nový projekt Maven s** dialog a vyberte **Další**.
 1. Vyberte **přidat Archetype** a přidání položky [azure-functions-archetype](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype).
     - ID skupiny archetype: com.microsoft.azure
     - Archetype ID artefaktu: azure-functions-archetype
-    - Verze: Použijte nejnovější verzi z [centrální úložiště](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
+    - Verze: Použijte nejnovější verzi **1.22** z [centrální úložiště](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
     ![vytvoření Eclipse Maven](media/functions-create-first-java-eclipse/functions-create-eclipse.png)  
-1. Klikněte na tlačítko **OK** a zadejte podrobnosti pro aktuální projekt a nakonec **Dokončit**.
+1. Klikněte na tlačítko **OK** a potom klikněte na tlačítko **Další** zadejte hodnoty jako následujícím snímku (použijte prosím jiný appName jiné než **fabrikam. funkce 20170920120101928**), a Nakonec **Dokončit**.
+    ![Eclipse Maven create2](media/functions-create-first-java-eclipse/functions-create-eclipse2.png)  
 
 Maven přesune soubory projektu do nové složky s názvem _artifactId_. Generovaný kód v projektu je jednoduchý [aktivovanou protokolem HTTP](/azure/azure-functions/functions-bindings-http-webhook) funkce, která vypisuje text spouštěcí požadavku HTTP.
 
@@ -68,7 +68,7 @@ Ukončení modulu runtime v okně konzoly po dokončení testování vaší funk
 
 ### <a name="debug-the-function-in-eclipse"></a>Ladění funkce v prostředí Eclipse
 
-Ve vaší **spustit jako** konfigurační nastavení v předchozím kroku, změna `azure-functions:run` k `mvn azure-functions:run -DenableDebug` a spusťte aktualizovanou konfiguraci ke spuštění aplikace function app v režimu ladění.
+Ve vaší **spustit jako** konfigurační nastavení v předchozím kroku, změna `azure-functions:run` k `azure-functions:run -DenableDebug` a spusťte aktualizovanou konfiguraci ke spuštění aplikace function app v režimu ladění.
 
 Vyberte **spustit** nabídce a otevřete **ladění konfigurace**. Zvolte **Remote Java Application** a vytvořte novou. Zadejte název vaší konfigurace a vyplňte nastavení. Port by měl být konzistentní s otevřen hostitelem funkce, která ve výchozím nastavení je port pro ladění `5005`. Po dokončení instalace, klikněte na `Debug` pro spuštění ladění.
 

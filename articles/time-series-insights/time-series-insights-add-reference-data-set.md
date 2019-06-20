@@ -6,17 +6,17 @@ services: time-series-insights
 author: ashannon7
 ms.author: dpalled
 manager: cshankar
-ms.reviewer: jasonh, kfile, anshan
+ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: 62c3b35f80300a38213b089567c3f63a8a2ce8db
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: ab80279fae9dacdf7462b6c9d8208e0a56ca0877
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66235059"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164986"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Vytvoření referenční sady dat pro prostředí Time Series Insights pomocí webu Azure portal
 
@@ -36,7 +36,7 @@ Referenční data není připojený zpětně. Proto pouze aktuální a budoucí 
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-1. Vyhledejte existující prostředí Time Series Insights. Klikněte na tlačítko **všechny prostředky** v nabídce na levé straně webu Azure portal. Vyberte vaše prostředí Time Series Insights.
+1. Vyhledejte existující prostředí Time Series Insights. Vyberte **všechny prostředky** v nabídce na levé straně webu Azure portal. Vyberte vaše prostředí Time Series Insights.
 
 1. Vyberte **přehled** stránky. Vyhledejte **URL Průzkumníka Time Series Insights** a otevřete odkaz.  
 
@@ -76,7 +76,7 @@ Referenční data není připojený zpětně. Proto pouze aktuální a budoucí 
 
 1. Přejmenujte záhlaví sloupců v případě potřeby. Název klíčového sloupce je potřebné pro připojení k příslušné vlastnosti ve zdroji událostí. Ujistěte se, že referenční názvy klíčových sloupců dat se přesně shodovat název události k příchozí data, včetně rozlišování. Názvy neklíčových sloupců se používají k posílení příchozích dat s odpovídajícími hodnotami referenční data.
 
-1. Klikněte na tlačítko **přidejte řádek** nebo **přidat sloupec** přidat více hodnot dat odkaz, podle potřeby.
+1. Vyberte **přidejte řádek** nebo **přidat sloupec** přidat více hodnot dat odkaz, podle potřeby.
 
 1. Zadejte hodnotu do **filtrovat řádky...**  pole, které chcete zkontrolovat konkrétní řádky podle potřeby. Filtr je užitečné při data, ale není použita, když data nahrávají.
 

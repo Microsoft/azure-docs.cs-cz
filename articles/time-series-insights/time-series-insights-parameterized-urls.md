@@ -6,23 +6,23 @@ services: time-series-insights
 author: ashannon7
 ms.author: dpalled
 manager: cshankar
-ms.reviewer: v-mamcge, jasonh, kfile, anshan
+ms.reviewer: v-mamcge, jasonh, kfile
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: dfc04397b1d7e9f3256810cbe469067ae52c99bd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: df60429a8b3d6fbdc504a7605d1502b4e084d386
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66238976"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165302"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>Sdílení vlastního zobrazení pomocí parametrizovaných adres URL
 
 Sdílení vlastního zobrazení v Průzkumníku Time Series Insights, můžete prostřednictvím kódu programu vytvořit parametrizovanou adresu URL tohoto vlastního zobrazení.
 
-Průzkumník Time Series Insights podporuje parametry dotazů adresy URL, které určují zobrazení v prostředí přímo z adresy URL. Pouze pomocí adresy URL můžete například určit cílové prostředí, predikát vyhledávání a požadované časové období. Když uživatel klikne na přizpůsobenou adresu URL, v rozhraní se zobrazí přímý odkaz na příslušný prostředek na portálu Time Series Insights. Platí zde zásady přístupu k datům.
+Průzkumník Time Series Insights podporuje parametry dotazů adresy URL, které určují zobrazení v prostředí přímo z adresy URL. Pouze pomocí adresy URL můžete například určit cílové prostředí, predikát vyhledávání a požadované časové období. Když uživatel vybere na přizpůsobenou adresu URL, rozhraní obsahuje odkaz přímo na příslušný prostředek na portálu Time Series Insights. Platí zde zásady přístupu k datům.
 
 > [!TIP]
 > * Zobrazit bezplatnou [Time Series Insights ukázka](https://insights.timeseries.azure.com/samples).

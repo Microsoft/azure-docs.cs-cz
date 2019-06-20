@@ -1,18 +1,18 @@
 ---
-title: Nakonfigurovat zásady Apache Kafka v HDInsight s balíčkem Enterprise Security Package - Azure
-description: Zjistěte, jak nakonfigurovat zásady Apache Ranger pro systém Kafka v Azure HDInsight s balíčkem zabezpečení podniku.
+title: Kurz – nakonfigurovat zásady Apache Kafka v HDInsight s balíčkem Enterprise Security Package - Azure
+description: Kurz – zjistěte, jak nakonfigurovat zásady Apache Rangeru pro systém Kafka v Azure HDInsight s balíčkem Enterprise Security Package.
 ms.service: hdinsight
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
 ms.topic: tutorial
-ms.date: 01/14/2019
-ms.openlocfilehash: 6434f7cae3c3fa402efad00b2f6bfb0bc405f9e3
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 06/18/2019
+ms.openlocfilehash: 3a7d3a5d066db349bd3002b244d3a9f88777369b
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64730246"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274343"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Kurz: Nakonfigurovat zásady Apache Kafka v HDInsight s balíčkem Enterprise Security Package (Preview)
 
@@ -61,14 +61,14 @@ Vytvoření zásady Ranger pro uživatele **sales_user** a **marketing_user**.
 
    |**Nastavení**  |**Navrhovaná hodnota**  |
    |---------|---------|
-   |Název zásady  |  hdi sales* policy   |
+   |Název zásad  |  hdi sales* policy   |
    |Téma   |  sales* |
    |Vybrat uživatele  |  sales_user1 |
    |Oprávnění  | publish, consume, create (publikovat, využívat, vytvářet) |
 
    Následující zástupné znaky mohou být součástí názvu tématu:
 
-   * * zastupuje nula nebo více výskytů libovolných znaků.
+   * \* zastupuje nula nebo více výskytů libovolných znaků.
    * ? zastupuje jeden libovolný znak.
 
    ![Zásada vytvoření uživatelského rozhraní správce Apache Ranger](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy.png)   
@@ -82,7 +82,7 @@ Vytvoření zásady Ranger pro uživatele **sales_user** a **marketing_user**.
 
    |**Nastavení**  |**Navrhovaná hodnota**  |
    |---------|---------|
-   |Název zásady  |  hdi marketing policy   |
+   |Název zásad  |  hdi marketing policy   |
    |Téma   |  marketingspend |
    |Vybrat uživatele  |  marketing_user1 |
    |Oprávnění  | publish, consume, create (publikovat, využívat, vytvářet) |
@@ -117,7 +117,7 @@ K vytvoření dvou tématech `salesevents` a `marketingspend`:
    ```
 
    > [!Note]  
-   > Než budete pokračovat, možná budete muset nastavit své vývojové prostředí, pokud jste to ještě neudělali. Budete potřebovat komponenty, jako jsou sada Java JDK, Apache Maven a klient SSH s scp. Další podrobnosti najdete v tématu [instalační pokyny](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer).
+   > Než budete pokračovat, možná budete muset nastavit své vývojové prostředí, pokud jste to ještě neudělali. Budete potřebovat komponenty, jako jsou sada Java JDK, Apache Maven a klient SSH s scp. Další informace najdete v tématu [instalační pokyny](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer).
    
 1. Stáhněte si [příklady pro producenta a konzumenta Apache Kafka připojené k doméně](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer).
 

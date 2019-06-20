@@ -9,11 +9,11 @@ ms.date: 04/08/2019
 ms.author: alkohli
 ms.custom: include file
 ms.openlocfilehash: d28244d75da540948093c775ffc525a80e362526
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66115422"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67175224"
 ---
 FedEx UPS a DHL lze použít k odeslání balíčku do datacentra Azure. Pokud chcete použít dopravce než FedEx/DHL, obraťte se na tým Azure Data Box operací na adrese `adbops@microsoft.com`
 

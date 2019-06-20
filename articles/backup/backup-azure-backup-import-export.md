@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/17/2018
 ms.author: saurse
-ms.openlocfilehash: b6f0ce1939b2a78ca191d2feb0140506d130b9b0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e08b1d8f847536101d44db266be5cd34e3e6a74c
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60648255"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67155316"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Pracovní postup offline zálohování ve službě Azure Backup
 Azure Backup obsahuje několik předdefinovaných úspor, které ukládají náklady na síť a úložiště během počáteční úplné zálohování dat do Azure. Počáteční úplné zálohování obvykle přenos velkých objemů dat a vyžadují větší šířku pásma sítě, ve srovnání s následné zálohy, které přenášejí pouze rozdíly/přírůstková. Procesem offline předvyplnění Azure Backup můžete používat disky k odesílání dat offline zálohování do Azure.
@@ -76,7 +76,7 @@ Tato část popisuje pracovní postup offline zálohování tak, aby vaše data 
    Popis vstupy vypadá takto:
 
     * **Pracovní umístění**: Umístění dočasného úložiště, ke kterému je zapsán kopie prvotní zálohy. Pracovní umístění může být ve sdílené síťové složce nebo v místním počítači. Pokud počítač kopírování a zdrojový počítač se liší, doporučujeme, že zadáte úplná síťová cesta pracovního umístění.
-    * **Účet úložiště Azure Resource Manageru**: Název Typ účtu úložiště Resource Manageru v jakéhokoli předplatného Azure.
+    * **Účet úložiště Azure Resource Manageru**: Název Typ účtu úložiště Resource Manageru (obecné účely v1 nebo v2 pro obecné účely) v jakékoli předplatné.
     * **Azure Storage Container**: Název cílové objektů blob úložiště v účtu úložiště Azure, kterého se naimportuje data záloh, před zkopírováním do trezoru služby Recovery Services.
     * **ID předplatného Azure**: ID předplatného Azure, ve kterém se vytvoří účet služby Azure Storage.
     * **Název úlohy importu do Azure**: Jedinečný název, který Import úložiště Azure service a Azure Backup a sledovat přenosu dat odesílaných na discích do Azure. 

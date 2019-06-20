@@ -9,11 +9,11 @@ ms.date: 12/21/2018
 ms.author: cynthn;davberg
 ms.custom: include file
 ms.openlocfilehash: ca0c45b5d74140e0398595070df71da669caab53
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66160090"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67175006"
 ---
 Koncepce sady Azure Compute jednotek (ACU) poskytuje způsob porovnání výkonu (CPU) jednotlivých SKU v Azure. To vám umožní snadno zjistit, jaká jednotka SKU nejlépe vyhoví vašim požadavkům na výkon.  Jednotka ACU je aktuálně stanovená tak, že malý virtuální počítač (Standard_A1) má 100 ACU a ostatní jednotky SKU jsou pak ohodnoceny podle relativního výsledku standardního srovnávacího testu. 
 
@@ -24,7 +24,7 @@ Koncepce sady Azure Compute jednotek (ACU) poskytuje způsob porovnání výkonu
 
 <br>
 
-| Rodina SKU | ACU \ virtuální procesor | vCPU: Jádro |
+| Rodina SKU | ACU \ virtuální procesor | vCPU: Core |
 | --- | --- |---|
 | [A0](../articles/virtual-machines/windows/sizes-general.md) |50 | 1:1 |
 | [A1 – A4](../articles/virtual-machines/windows/sizes-general.md) |100 | 1:1 |

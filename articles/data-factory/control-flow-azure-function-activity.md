@@ -11,12 +11,12 @@ ms.date: 01/09/2019
 author: sharonlo101
 ms.author: shlo
 manager: craigg
-ms.openlocfilehash: 82786b8f01ce409179f4ddd37127679f9357cd0e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: dfdfb9e38f16d0077175587933b0800b87cc1931
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64727063"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67144118"
 ---
 # <a name="azure-function-activity-in-azure-data-factory"></a>Aktivita funkce Azure ve službě Azure Data Factory
 
@@ -64,6 +64,10 @@ Azure Functions vyprší po sekundách 230 bez ohledu `functionTimeout` nastaven
 
 Další informace o odolná služba Functions v [v tomto článku](../azure-functions/durable/durable-functions-overview.md). Aktivita funkce Azure můžete nastavit pro volání funkce trvalý, který vrátí odpověď se jiný identifikátor URI, například [v tomto příkladu](../azure-functions/durable/durable-functions-http-api.md#http-api-url-discovery). Protože `statusQueryGetUri` vrátí 202 stav protokolu HTTP při funkce běží, stav funkce můžete dotazovat pomocí aktivitu webu. Stačí nastavit aktivitu webu s `url` pole nastaveno `@activity('<AzureFunctionActivityName>').output.statusQueryGetUri`. Po dokončení funkce trvalý výstup funkce bude výstup aktivity webu.
 
+
+## <a name="sample"></a>Ukázka
+
+Můžete najít ukázky služby Data Factory, který používá funkci Azure Functions k extrahování obsahu souboru cíl [tady](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV2/UntarAzureFilesWithAzureFunction).
 
 ## <a name="next-steps"></a>Další postup
 

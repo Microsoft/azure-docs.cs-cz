@@ -8,16 +8,16 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 26a5876971749a1a63447ef813219dad8485781c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fd1416befb74a7299136ea497eccc8a06b7f0f6a
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65160167"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164872"
 ---
 # <a name="cloudsimple-node-quota-limits"></a>Limity kvót CloudSimple uzlu
 
-Čtyři uzly je výchozí množství dostupné ke koupi, pokud je vaše předplatné povolená pro CloudSimple služby.  Si koupíte některé [typ uzlu](cloudsimple-node.md) z webu Azure portal.  Minimálně tří uzlů se stejným SKU vyžadovaných pro vytvoření privátního cloudu.  Pokud jste zakoupili uzly, se zobrazí chyba při pokusu o zakoupení dalších uzlů.
+Čtyři uzly se výchozí množství dostupné ke zřizování, pokud je vaše předplatné povolená pro CloudSimple služby.  Můžete zřídit libovolné [typ uzlu](cloudsimple-node.md) z webu Azure portal.  Minimálně tří uzlů se stejným SKU vyžadovaných pro vytvoření privátního cloudu.  Pokud zřídíte uzly, se zobrazí chyba při pokusu o zřízení dalších uzlů.
 
 ## <a name="quota-increase"></a>Zvýšení kvóty
 
@@ -40,5 +40,5 @@ Taky se můžete obrátit na obchodního zástupce společnosti Microsoft [ azur
 
 ## <a name="next-steps"></a>Další postup
 
-* [Nákupní uzly](create-nodes.md)
+* [Zřízení uzly](create-nodes.md)
 * [Přehled CloudSimple uzly](cloudsimple-node.md)

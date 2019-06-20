@@ -9,11 +9,11 @@ ms.date: 02/12/2019
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: 124f5c01b7718f729094de1c02391946ff50cef4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66113760"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67175083"
 ---
 Místně redundantní úložiště (LRS) zajišťuje alespoň 99,999999999 % (11 nines) odolnosti objektů v průběhu daného roku. LRS poskytuje tento objekt odolnosti replikuje vaše data na jednotce škálování úložiště. Datové centrum, nachází v oblasti, ve kterém jste vytvořili účet úložiště hostuje jednotce škálování úložiště. Žádost o zápis do účtu úložiště LRS skončí úspěšně, až data se zapisují do všech replik. Každá replika se nachází v samostatných doménách selhání a upgradovacích doménách v jednotce škálování úložiště.
 

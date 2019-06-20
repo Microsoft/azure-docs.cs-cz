@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 27b09ea9cc7ce3cf2559304a26d0c04f3ea30b54
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66165454"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67174959"
 ---
 Kromě automaticky připojení klientů k primární replice, naslouchací proces lze přesměrovat úlohy jen pro čtení sekundární databáze. Toto použití může zlepšit výkon a škálovatelnost vaše celkové řešení. Další informace najdete v tématu [směrování ReadIntent k použití s Azure stálé naslouchacího procesu skupiny dostupnosti](https://go.microsoft.com/fwlink/?LinkId=522515).
 

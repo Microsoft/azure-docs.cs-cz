@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9144165a3ce593dce11b5e50ce5f0af9f0afa480
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0672f25b30bfb34a6ee99b0f4710d01cf0871300
+ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66237657"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67150329"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Plánování nasazení služby Soubory Azure
 
@@ -76,8 +76,23 @@ Pokud používáte sdílenou složkou Azure přístup k Azure File Sync, vždy p
 
 Služba soubory Azure nabízí dvě úrovně výkonu: standard a premium.
 
-* **Standardní sdílené složky** se zálohují na rotační pevných disků (HDD), které poskytují spolehlivý výkon vstupně-výstupních operací úloh, které jsou méně citlivé na variabilitu výkonu, jako je například pro obecné účely sdílené složky a prostředí pro vývoj/testování. Standardní sdílené složky jsou dostupné pouze v modelu s průběžnými platbami fakturace.
-* **Premium sdílené složky (preview)** se zálohují na discích SSD (Solid-State Drive), které poskytují konzistentní vysoký výkon a nízkou latencí v řádu milisekund pro většinu operací vstupně-výstupních operací pro maximum úlohy náročné na vstupně-výstupních operací. Díky tomu je vhodné pro celou řadu úloh, jako jsou databáze, hostování webové stránky, vývojová prostředí atd. Sdílené složky Premium jsou dostupné jenom v zřízené model fakturace. Premium sdílených složek pomocí modelu nasazení, která je oddělená od standardní sdílené složky.
+### <a name="standard-file-shares"></a>Standardní sdílené složky
+
+Standardní sdílené složky se zálohují na jednotky pevných disků (HDD). Standardní sdílené složky poskytují spolehlivý výkon vstupně-výstupních operací úloh, které jsou méně citlivé na variabilitu výkonu, jako je například pro obecné účely sdílené složky a prostředí pro vývoj/testování. Standardní sdílené složky jsou dostupné pouze v modelu s průběžnými platbami fakturace.
+
+Standardní sdílené složky maximálně 5 TiB velikosti jsou k dispozici jako nabídka všeobecné dostupnosti. Větší sdílené složky, které jsou všechny sdílené složky, který je větší než 5 TiB až do maximálního počtu 100 TB, které jsou aktuálně k dispozici jako nabídka verze preview.
+
+> [!IMPORTANT]
+> - Je potřeba vytvořit nový účet úložiště obecné účely (nelze rozšířit existující účty úložiště).
+> - Jsou k dispozici pouze při použití úložiště LRS.
+> - Chcete-li k dispozici ve třech oblastech: USA – západ 2, západní Evropa a jihovýchodní Asie oblasti.
+> - LRS na GRS převod účtu nebude možné na všechny nové účty úložiště vytvořené ve verzi Preview větší souborů sdílených složek je přijat předplatné.
+
+Pokud chcete připojit k verzi preview tyto větší velikosti sdílené složky souborů, odešlete to [formuláře](https://aka.ms/azurefilesatscalesurvey). 
+
+### <a name="premium-file-shares-preview"></a>Premium sdílené složky (preview)
+
+Premium sdílené složky (preview) jsou zajišťované disky SSD (Solid-State Drive). Sdílené složky Premium poskytují konzistentní vysoký výkon a nízkou latencí v řádu milisekund pro většinu operací vstupně-výstupních operací pro úlohy náročné na vstupně-výstupních operací. Díky tomu je vhodné pro celou řadu úloh, jako jsou databáze, hostování webové stránky, vývojová prostředí atd. Sdílené složky Premium jsou dostupné jenom v zřízené model fakturace. Premium sdílených složek pomocí modelu nasazení, která je oddělená od standardní sdílené složky.
 
 Azure Backup je dostupná pro sdílené složky premium a Azure Kubernetes Service podporuje sdílené složky premium ve verzi 1.13 a vyšší.
 
@@ -180,7 +195,7 @@ Mějte tyto body při rozhodování o možnosti replikace, kterou chcete použí
 
 ## <a name="data-growth-pattern"></a>Vzorek nárůstu dat
 
-V současné době maximální velikost pro sdílené složky Azure je 5 TB (100 TB pro premium sdílené složky, které jsou ve verzi public preview). Z důvodu tímto aktuálním omezením bránit musíte zvážit očekávaný nárůst dat při nasazování sdílené složky Azure.
+V současné době maximální velikost pro sdílené složky Azure je 5 TB (100 TB ve verzi preview). Z důvodu tímto aktuálním omezením bránit musíte zvážit očekávaný nárůst dat při nasazování sdílené složky Azure.
 
 Je možné pro synchronizaci více sdílených složek Azure na jeden souborový server Windows pomocí služby Azure File Sync. To umožňuje zajistit, že starší, velké sdílené složky, že máte v místním může být přenesena do Azure File Sync. Další informace najdete v tématu [plánování nasazení služby Azure File Sync](storage-files-planning.md).
 

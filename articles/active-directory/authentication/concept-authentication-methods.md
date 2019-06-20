@@ -1,22 +1,22 @@
 ---
 title: Metody ověřování – Azure Active Directory
-description: Jaké metody ověřování jsou k dispozici ve službě Azure AD pro vícefaktorové ověřování a samoobslužné resetování HESLA
+description: Dostupné metody ověřování ve službě Azure AD pro vícefaktorové ověřování a samoobslužné resetování HESLA
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 02/20/2019
+ms.date: 06/17/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0bcaf356108984baf473cdef8c18c5561343cd9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1322c919906dc2d0dd23de538fa2c1992fbe5da0
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66119370"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164832"
 ---
 # <a name="what-are-authentication-methods"></a>Co jsou metody ověřování?
 
@@ -180,7 +180,9 @@ Jakmile vyřeší všechny chyby, Správce pak může aktivovat každý klíč k
 
 Uživatelé mohou mít kombinaci až o pěti hardwarové tokeny OATH nebo ověřovací aplikace, jako je nakonfigurován pro použití v každém okamžiku aplikaci Microsoft Authenticator.
 
-## <a name="mobile-phone"></a>Mobilní telefon
+## <a name="phone-options"></a>Možnosti telefonu
+
+### <a name="mobile-phone"></a>Mobilní telefon
 
 Dvě možnosti jsou dostupné pro uživatele s mobilní telefony.
 
@@ -193,18 +195,18 @@ Pro vše správně fungovalo, musí být telefonní čísla ve formátu *+ Count
 >
 > Resetování hesla nepodporuje telefonní linky. Dokonce i ve formátu 12345 4255551234 + 1 X se odeberou rozšíření před uvedením volání.
 
-### <a name="text-message"></a>Textová zpráva
+#### <a name="text-message"></a>Textová zpráva
 
 Číslo mobilního telefonu s ověřovacím kódem se pošle zprávu SMS. Zadejte ověřovací kód, který je k dispozici v rozhraní přihlášení pokračujte.
 
-### <a name="phone-call"></a>Telefonní hovor
+#### <a name="phone-call"></a>Telefonní hovor
 
 Automatizovaný hlasový hovor provádí na telefonní číslo, které zadáte. Odpovědět na volání a stisknutím klávesy # na klávesnici telefonu provede ověření
 
 > [!IMPORTANT]
 > Počínaje březnem 2019 možnosti telefonního hovoru nebudou k dispozici uživatelům vícefaktorové ověřování a samoobslužné resetování HESLA v tenantech bezplatné a zkušební verze Azure AD. Zprávy SMS, nejsou ovlivněny tuto změnu. Telefonní hovor budou nadále dostupné uživatelům v placené tenantů Azure AD. Tato změna ovlivní jenom klienty bezplatné a zkušební verze Azure AD.
 
-## <a name="office-phone"></a>Telefon do kanceláře
+### <a name="office-phone"></a>Telefon do kanceláře
 
 Automatizovaný hlasový hovor provádí na telefonní číslo, které zadáte. Odpovězte volání a stiskem tlačítka # na klávesnici telefonu provede ověření.
 
@@ -219,6 +221,25 @@ Atribut telefonního office spravuje správce.
 > Musí být mezera mezi směrové číslo země a telefonní číslo.
 >
 > Resetování hesla nepodporuje telefonní linky. Dokonce i ve formátu 12345 4255551234 + 1 X se odeberou rozšíření před uvedením volání.
+
+### <a name="troubleshooting-phone-options"></a>Řešení potíží s Možnosti telefonu
+
+Běžné problémy související s metod ověřování pomocí telefonního čísla:
+
+* ID volajícího blokovaných na jednom zařízení
+   * Řešení potíží s zařízení
+* Nesprávné telefonní číslo, nesprávné směrové číslo země, telefonní číslo domů oproti telefonní číslo do zaměstnání
+   * Řešení potíží s objekt uživatele a nakonfigurovali metody ověřování. Zkontrolujte, jestli jsou registrovány správné telefonní čísla.
+* Zadán chybný kód PIN.
+   * Potvrďte, že uživatel použil správný kód PIN, které jsou zaregistrované v Azure MFA serveru.
+* Volání předané do hlasové pošty
+   * Ujistěte se, že uživatel má telefonu zapnutá a tato služba k dispozici v jejich oblasti nebo použijte alternativní metodu.
+* Uživatel je blokovaný
+   * Požádejte správce odblokování uživatele na webu Azure Portal.
+* Zařízení nemá předplatné služby SMS
+   * Požádejte uživatele změnit metody nebo aktivace serveru SMS na zařízení.
+* Chybný telekomunikačních poskytovatelů (žádný telefonní vstup zjistil, chybějící problémy tóny DTMF, ID volajícího blokovaných na různých zařízeních, nebo blokovaný SMS přes různá zařízení)
+   * Společnost Microsoft používá více telekomunikačních poskytovatelů směrovat telefonní hovory a SMS zpráv pro ověřování. Pokud se vám zobrazují všechny výše uvedené problémy mít uživatel pokus použít metodu alespoň 5krát během 5 minut a budete mít tento uživatel informace k dispozici při kontaktování oddělení podpory společnosti Microsoft.
 
 ## <a name="app-passwords"></a>Hesla aplikací
 

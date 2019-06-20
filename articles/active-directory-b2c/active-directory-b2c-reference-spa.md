@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a66fa70f6f5615257554e98e40e605d6a7e981fe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1d415686e4d8a10043df59aa6bf58a5ed4be0149
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66508964"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67154021"
 ---
 # <a name="single-page-sign-in-using-the-oauth-20-implicit-flow-in-azure-active-directory-b2c"></a>Jednostránková přihlášení pomocí implicitního toku OAuth 2.0 v Azure Active Directory B2C
 
-Řada moderních aplikací mají front-end jednostránkové aplikace, která primárně je napsána v jazyce JavaScript. Často je aplikace vytvořená pomocí architektury, jako jsou AngularJS, Ember.js nebo Durandal. Jednostránkové aplikace a jiných aplikací JavaScript především v prohlížeči máte některé další výzvy ověřování:
+Řada moderních aplikací mají front-end jednostránkové aplikace, která primárně je napsána v jazyce JavaScript. Často je aplikace vytvořená pomocí architektury, jako jsou Angular, React nebo Vue.js. Jednostránkové aplikace a jiných aplikací JavaScript především v prohlížeči máte některé další výzvy ověřování:
 
 - Vlastnosti zabezpečení těchto aplikací se liší od tradiční serverových webových aplikací.
 - Mnoho serverů autorizace a zprostředkovatelů identity nepodporují prostředků mezi zdroji (CORS) žádosti o sdílení.

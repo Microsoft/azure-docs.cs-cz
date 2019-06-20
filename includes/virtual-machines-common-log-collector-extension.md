@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 072864d565e2edbddd4b7df851ad0e30daf7e5fa
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "67120181"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67175031"
 ---
 Diagnostika potíží s cloudovou službou Microsoft Azure vyžaduje shromažďování souborů protokolu služby na virtuálních počítačích problémy vedly. AzureLogCollector rozšíření na vyžádání můžete provádět jednorázové shromažďování protokolů z jednoho nebo více cloudové služby virtuálních počítačů (z webové role a role pracovního procesu) a jeho přenosu shromážděných souborů do účtu služby Azure storage – vše bez vzdálené přihlášení k libovolné virtuálních počítačů.
 

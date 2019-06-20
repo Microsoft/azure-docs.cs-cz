@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: c918abdc635e7a4a831e367e159354bb752e95e6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: 6285348aa8067f356635dfff9ecd4eb34c431f0b
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66743109"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147698"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>Dynamicky škálovat prostředky databáze s minimálními výpadky
 
@@ -41,7 +41,7 @@ Azure SQL Database nabízí [nákupní model založený na DTU](sql-database-ser
 Můžete sestavit svoji první aplikaci na malou izolovanou databází s nízkými náklady za měsíc v rámci úrovně služeb Basic, Standard nebo obecné účely a potom změnit úroveň služby ručně nebo prostřednictvím kódu programu kdykoli do služby úrovně Premium nebo pro důležité obchodní informace pro splnění ne EDS vašeho řešení. Můžete upravit úroveň výkonu bez přerušení provozu aplikace a bez dopadu na vaše zákazníky. Dynamická škálovatelnost umožňuje databázím transparentně reagovat na rychle se měnící požadavky na prostředky a vy díky tomu platíte pouze za prostředky, které potřebujete, když je potřebujete.
 
 > [!NOTE]
-> Dynamická škálovatelnost se liší od automatického škálování. K automatickému škálování dochází, když se služba škáluje automaticky na základě kritérií, zatímco dynamická škálovatelnost umožňuje ruční škálování bez prostojů.
+> Dynamická škálovatelnost se liší od automatického škálování. Automatické škálování je, když služba škáluje automaticky v závislosti na kritériích, zatímco dynamická škálovatelnost umožňuje ruční škálování s minimálními výpadky.
 
 Izolovaná databáze Azure SQL Database podporuje ruční dynamickou škálovatelnost, nikoli automatické škálování. Pokud chcete *automatizovanější* prostředí, zvažte použití elastických fondů, které databázím umožňují sdílet prostředky ve fondu na základě potřeb jednotlivých databází.
 Existují však skripty, které můžou usnadnit automatizaci škálovatelnost pro izolovanou databázi SQL Azure. Příklad najdete v tématu [Monitorování a škálování izolované databáze SQL pomocí PowerShellu](scripts/sql-database-monitor-and-scale-database-powershell.md).

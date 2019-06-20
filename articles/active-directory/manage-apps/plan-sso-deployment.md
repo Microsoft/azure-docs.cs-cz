@@ -12,12 +12,12 @@ ms.date: 05/22/2019
 ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd8cebbd7c60715bc90412d9f53458edfee6c56d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e5278d504c43688bf064b869982938db52b1b1bf
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67108205"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164955"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>Plánování nasazení jednotné přihlašování
 
@@ -61,9 +61,9 @@ Existují dva základní způsoby, ve kterých můžete povolit uživatelům jed
 
 Používání služby Azure AD pro jednotné přihlašování pomocí hesla vyžaduje nasazení rozšíření prohlížeče, které se bezpečně načíst přihlašovací údaje a vyplňovat přihlášení. Definování mechanismus pro nasazení rozšíření ve velkém měřítku [podporovaných prohlížečích](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction). Vaše možnosti jsou:
 
-- [Zásady skupiny pro aplikaci Internet Explorer ](https://azure.microsoft.com/documentation/articles/active-directory-saas-ie-group-policy/)
-- [System Center Configuration Manager (SCCM) pro aplikaci Internet Explorer ](https://docs.microsoft.com/sccm/core/clients/deploy/deploy-clients-to-windows-computers)
-- [Uživatelské základě stažení a konfiguraci pro Chrome, Firefox, Microsoft Edge nebo Internet Exploreru ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
+- [Zásady skupiny pro aplikaci Internet Explorer](https://azure.microsoft.com/documentation/articles/active-directory-saas-ie-group-policy/)
+- [System Center Configuration Manager (SCCM) pro aplikaci Internet Explorer](https://docs.microsoft.com/sccm/core/clients/deploy/deploy-clients-to-windows-computers)
+- [Uživatelské základě stažení a konfiguraci pro Chrome, Firefox, Microsoft Edge nebo Internet Exploreru](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
 Další informace najdete v tématu [jak ke konfiguraci hesla jedním přihlášení](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-password-sso-non-gallery).
 

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: tamram
 ms.openlocfilehash: aff0ac5f2b761047a3e365e8e6702909a673e464
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66119650"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67174903"
 ---
 Teď, když jste se naučili základy používání služby Azure Table storage, použijte tyto odkazy na další informace o složitějších úlohách úložiště.
 

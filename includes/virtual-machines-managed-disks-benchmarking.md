@@ -9,11 +9,11 @@ ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 9c59b98fb615266c193f997c01c83922c18d4408
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66147911"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67174992"
 ---
 *Zahřívá se do mezipaměti*  
 Disk s použití mezipaměti u hostitele jen pro čtení se schopnost poskytovat vyšší vstupně-výstupních operací než limit na disku. Chcete-li získat tento maximálního výkonu při čtení z mezipaměti hostitele, nejprve je musí zahřívání mezipaměti tento disk. Tím se zajistí, že IOs pro čtení, že nástroj pro srovnávací testy, se bude řídit na čtení z mezipaměti svazku, ve skutečnosti přístupy do mezipaměti a nikoli disk přímo. Výsledek přístupy do mezipaměti v další vstupně-výstupních operací z jedné mezipaměti povolena disku.
@@ -62,7 +62,7 @@ Provedení kroků zahřívání mezipaměti
 
 1. Vytvořit dva specifikace přístup s hodnotami ukazuje následující příklad.
 
-   | Název | Velikost požadavku | Náhodné % | % Čtení |
+   | Name | Velikost požadavku | Náhodné % | % Čtení |
    | --- | --- | --- | --- |
    | RandomWrites\_1 MB |1 MB |100 |0 |
    | RandomReads\_1 MB |1 MB |100 |100 |
@@ -73,7 +73,7 @@ Provedení kroků zahřívání mezipaměti
    | Inicializovat Disk mezipaměti |CacheReads |RandomWrites\_1 MB |2 hodin |
 1. Spusťte test Iometer pro zahájení práce s disk mezipaměti s následujícími parametry. Použití tří pracovních vláken pro cílový svazek a hloubka fronty 128. Nastavení doby trvání "Doba běhu" testu do 2 hodin na kartě "Nastavení testu".
 
-   | Scénář | Cílový svazek | Název | Doba trvání |
+   | Scénář | Cílový svazek | Name | Doba trvání |
    | --- | --- | --- | --- |
    | Zahřívání Disk mezipaměti |CacheReads |RandomReads\_1 MB |2 hodin |
 

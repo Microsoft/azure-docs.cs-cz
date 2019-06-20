@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/04/2019
+ms.date: 06/17/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5c45071406c420546a90a71751045fea926804f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 235fe1fbe7febc193826cf09202365ee4a788194
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66513525"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164764"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Platforma identit Microsoft a tok autorizačního kódu OAuth 2.0
 
@@ -68,7 +68,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `client_id`   | Vyžaduje    | **ID aplikace (klient)** , který [webu Azure portal – registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) prostředí přiřazené vaší aplikaci.  |
 | `response_type` | Vyžaduje    | Musí zahrnovat `code` pro tok autorizačního kódu.       |
 | `redirect_uri`  | Vyžaduje | Redirect_uri vaší aplikace, kde můžete odesílat a přijímat aplikací pro žádosti o ověření. Musí odpovídat přesně jeden z redirect_uris, které jste zaregistrovali na portálu, s tím rozdílem, musí být kódování url. Pro nativní a mobilní aplikace, byste měli použít výchozí hodnotu `https://login.microsoftonline.com/common/oauth2/nativeclient`.   |
-| `scope`  | Vyžaduje    | Místo oddělený seznam [obory](v2-permissions-and-consent.md) , že má uživatel vyjádřit souhlas. |
+| `scope`  | Vyžaduje    | Místo oddělený seznam [obory](v2-permissions-and-consent.md) , že má uživatel vyjádřit souhlas.  Pro `/authorize` fáze požadavku, se může vztahovat na více zdrojů, umožňuje aplikaci vyžadovat souhlas pro několik webových rozhraní API, kterou chcete volat. |
 | `response_mode`   | Doporučené | Určuje metodu, která se má použít k odeslání výsledný token zpátky do vaší aplikace. Může být jedna z následujících akcí:<br/><br/>- `query`<br/>- `fragment`<br/>- `form_post`<br/><br/>`query` poskytuje kód jako parametru řetězce dotazu na váš identifikátor URI pro přesměrování. Pokud se požaduje token ID pomocí implicitního toku, nemůžete použít `query` podle [OpenID specifikace](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations). Pokud požadujete přesně takový kód, můžete použít `query`, `fragment`, nebo `form_post`. `form_post` provede příspěvek, který obsahuje kód, který váš identifikátor URI pro přesměrování. Další informace najdete v tématu [protokolu OpenID Connect](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code).  |
 | `state`                 | Doporučené | Hodnota v požadavku, která se také vrátit v odpovědi tokenu. Může být řetězec jakéhokoli obsahu, který chcete. Náhodně generované jedinečná hodnota se obvykle používá pro [prevence útoků proti padělání žádosti více webů](https://tools.ietf.org/html/rfc6749#section-10.12). Hodnota můžete kódovat také informace o stavu uživatele v aplikaci, než požadavek na ověření došlo k chybě, například stránky nebo zobrazení, které byly na. |
 | `prompt`  | Volitelné    | Určuje typ interakce s uživatelem, který je požadován. V tuto chvíli pouze platné hodnoty jsou `login`, `none`, a `consent`.<br/><br/>- `prompt=login` Vynutí uživatele k zadání přihlašovacích údajů tohoto požadavku negace jednotného přihlašování.<br/>- `prompt=none` je opakem – zajistí, že uživatel se nezobrazí se žádné interaktivní výzvu jakýmkoli způsobem. Pokud nemůže požadavek dokončit tiše prostřednictvím jednotného přihlašování, koncový bod Microsoft identity platform vrátí `interaction_required` chyby.<br/>- `prompt=consent` Dialogové okno souhlasu OAuth se aktivuje, až se uživatel přihlásí, s výzvou uživateli udělit oprávnění k aplikaci. |
@@ -154,7 +154,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `tenant`   | Vyžaduje   | `{tenant}` Hodnota v cestě požadavku je možné řídit, kdo se můžete přihlásit do aplikace. Povolené hodnoty jsou `common`, `organizations`, `consumers`a identifikátorů klienta. Další podrobnosti najdete v části [protokol Základy](active-directory-v2-protocols.md#endpoints).  |
 | `client_id` | Vyžaduje  | ID aplikace (klient), který [webu Azure portal – registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) stránky přiřazené vaší aplikaci. |
 | `grant_type` | Vyžaduje   | Musí být `authorization_code` pro tok autorizačního kódu.   |
-| `scope`      | Vyžaduje   | Seznam oborů oddělených mezerami. Požadovaný v této fáze obory musí být ekvivalentní, nebo jen některé obory požadovaný v první fáze. Pokud span obory zadané v této žádosti více prostředků serveru, koncový bod Microsoft identity platform vrátí token pro prostředek určený v rámci první. Podrobnější vysvětlení oborů, najdete v tématu [oprávnění, vyjádření souhlasu a obory](v2-permissions-and-consent.md). |
+| `scope`      | Vyžaduje   | Seznam oborů oddělených mezerami. Požadovaný v této fáze obory musí být ekvivalentní, nebo jen některé obory požadovaný v první fáze. Všechny obory musí být z jednoho prostředku, společně s rozsahy OIDC (`profile`, `openid`, `email`). Podrobnější vysvětlení oborů, najdete v tématu [oprávnění, vyjádření souhlasu a obory](v2-permissions-and-consent.md). |
 | `code`          | Vyžaduje  | Authorization_code, kterou jste získali v první fáze toku. |
 | `redirect_uri`  | Vyžaduje  | Stejné redirect_uri hodnota, která byla použita k získání authorization_code. |
 | `client_secret` | vyžaduje se pro webové aplikace | Tajný klíč aplikace, kterou jste vytvořili v portálu pro registraci aplikace pro vaši aplikaci. Tajný klíč aplikace byste neměli používat v nativní aplikaci, protože client_secrets nemůže být spolehlivě uložená na zařízeních. Vyžaduje se pro webové aplikace a webová rozhraní API, které se budou moct bezpečně uložit hodnotu client_secret na straně serveru.  Tajný kód klienta musí být kódovaná adresou URL před odesláním.  |

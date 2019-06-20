@@ -9,11 +9,11 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: d9825ea41937dc9436fe8b465b48b378e13407c1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66150260"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67174879"
 ---
 1. Na portálu v části **Všechny prostředky** klikněte na **+Přidat**.
 2. V **všechno, co** stránku vyhledávací pole, typ **bránu místní sítě**, pak klikněte na tlačítko se seznam prostředků. Kliknutím na **Brána místní sítě** otevřete stránku a potom kliknutím na **Vytvořit** otevřete stránku **Vytvořit bránu místní sítě**.

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: overview
-ms.date: 01/11/2019
+ms.date: 06/19/2019
 ms.author: scottwhi
-ms.openlocfilehash: 77f8e41b2271770e49c2e5c4d1591c213eaa257d
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: da1dd68b8e155e121f26f5599207691877fbf0ca
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66383420"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274165"
 ---
 # <a name="search-for-news-with-the-bing-news-search-api"></a>Hledání zpráv pomocí rozhraní API pro vyhledávání zpráv Bingu
 
@@ -51,7 +51,7 @@ Pokud chcete získat zprávy z konkrétní domény, použijte operátor dotazu [
 GET https://api.cognitive.microsoft.com/bing/v7.0/news/search?q=sailing+dinghies+site:contososailing.com&mkt=en-us HTTP/1.1
 ```
 
-Následující příklad ukazuje odpověď na předchozí dotaz. Jako součást [použití a zobrazit požadavky](../useanddisplayrequirements.md) pro vyhledávání Bingu, rozhraní API, je třeba zobrazit každý příspěvek v pořadí poskytnutém v odpovědi. Tento článek obsahuje clusterovaný článků, ale můžete určit, že existují související články a jejich zobrazení na vyžádání.
+Podle následující ukázky JSON ukázka odezvy na předchozí dotaz. Jako součást [použití a zobrazit požadavky](../useanddisplayrequirements.md) pro vyhledávání Bingu, rozhraní API, je třeba zobrazit každý příspěvek v pořadí poskytnutém v odpovědi. Tento článek obsahuje clusterovaný článků, ale můžete určit, že existují související články a jejich zobrazení na vyžádání.
 
 ```json
 {
@@ -107,7 +107,7 @@ Pokud Bing dokáže určit kategorii zpravodajského článku, obsahuje článek
 
 ## <a name="get-todays-top-news"></a>Získat dnešní hlavní zprávy
 
-Pokud chcete získat dnešní nejčtenější zpravodajské články, proveďte stejný požadavek jako pro získání obecných zpráv, ale nenastavujte `q`.
+Chcete-li získat dnešní hlavní vybrané články, můžete odeslat stejný požadavek obecné zprávy stejně jako dříve a ponechání `q` zrušit nastavení parametru.
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/news/search?q=&mkt=en-us HTTP/1.1
@@ -119,7 +119,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-Odpověď pro získání nejčtenějších zpráv je skoro stejná jako pro získání obecných zpráv. Odpověď `news` ale neobsahuje pole `totalEstimatedMatches`, protože existuje stanovený počet výsledků. Počet nejčtenějších zpravodajských článků se může lišit v závislosti na zpravodajském cyklu. Nezapomeňte uvést zdroj článku pomocí `provider`.
+Odpověď pro získání zpráv je téměř stejná jako ta, jak získat obecné zprávy. Odpověď `news` ale neobsahuje pole `totalEstimatedMatches`, protože existuje stanovený počet výsledků. Počet nejčtenějších zpravodajských článků se může lišit v závislosti na zpravodajském cyklu. Nezapomeňte použít `provider` pole atributu článku.
 
 ## <a name="get-news-by-category"></a>Dostávat informace o podle kategorie
 

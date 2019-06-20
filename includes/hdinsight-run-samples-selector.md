@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/25/2018
 ms.author: jasonh
 ms.openlocfilehash: 2366ac1b2cbb916afef7e1921ca201125b507585
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "67113837"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67175607"
 ---
 > [!div class="op_single_selector"]
 > * [Cluster s Linuxem](../articles/hdinsight/hadoop/apache-hadoop-run-samples-linux.md)

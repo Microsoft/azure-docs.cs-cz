@@ -9,11 +9,11 @@ ms.date: 09/15/2018
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: 3cfdca99c91dc54a711801d92aa0da91fb9703e4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66115525"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67175226"
 ---
 > [!IMPORTANT]
 > Klíč účtu úložiště je podobný kořenovému heslu vašeho účtu úložiště. Klíč účtu úložiště vždycky pečlivě chraňte. Nedávejte ho jiným uživatelům, nezakódovávejte ho ani ho neukládejte někam do souboru ve formátu prostého textu, který je přístupný ostatním uživatelům. Pokud se domníváte, že je klíč účtu ohrožený, vygenerujte ho znovu pomocí webu Azure Portal.

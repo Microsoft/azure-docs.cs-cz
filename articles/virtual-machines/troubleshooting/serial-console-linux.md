@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: a561d29f462d44eb6bc440bb6110430cc5c51688
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: 4fb2fd9503dad4113609b35dbe66496a03272f85
+ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66735241"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67137212"
 ---
 # <a name="azure-serial-console-for-linux"></a>Azure konzoly sériového portu pro Linux
 
-Konzole sériového portu na webu Azure Portal poskytuje přístup ke konzole založený na textu pro Linux virtual machines (VM) a instance virtuálního počítače škálovací sadě. Toto sériové připojení připojí k COM1 sériového portu virtuálního počítače nebo instanci virtuálního počítače škálovací sady, díky přístupu k němu nezávisle na stav sítě nebo operačního systému. Konzole sériového portu je přístupný pouze pomocí webu Azure portal a je povolený jenom pro uživatele, kteří mají roli přístup Přispěvatel nebo vyšší do škálovací sady virtuálního počítače nebo virtuálního počítače.
+Konzole sériového portu na webu Azure Portal poskytuje přístup ke konzole založený na textu pro Linux virtual machines (VM) a instance virtuálního počítače škálovací sadě. Toto sériové připojení připojí k ttys0 sériového portu virtuálního počítače nebo instanci virtuálního počítače škálovací sady, díky přístupu k němu nezávisle na stav sítě nebo operačního systému. Konzole sériového portu je přístupný pouze pomocí webu Azure portal a je povolený jenom pro uživatele, kteří mají roli přístup Přispěvatel nebo vyšší do škálovací sady virtuálního počítače nebo virtuálního počítače.
 
 Konzola sériového portu funguje stejným způsobem pro virtuální počítače a škálovací sady virtuálních počítačů instancí. V tomto dokumentu bude všech zmínky k virtuálním počítačům implicitně obsahovat instancí škálovací sady virtuálních počítačů, pokud není uvedeno jinak.
 
