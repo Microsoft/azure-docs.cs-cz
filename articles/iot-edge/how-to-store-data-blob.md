@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: b88bc8181cbfafa4ef81722d0eee12bae46ed79c
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
-ms.translationtype: HT
+ms.openlocfilehash: f70ca550f1688551abb94bb30ba4f76eb3c36404
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/20/2019
-ms.locfileid: "67293493"
+ms.locfileid: "67303965"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge-preview"></a>Store dat na hraničních zařízeních s Azure Blob Storage na hraničních zařízeních IoT (preview)
 
@@ -24,6 +24,9 @@ Poskytuje úložiště objektů Blob v Azure na hraničních zařízeních IoT [
 Tento modul se dodává s **deviceToCloudUpload** a **deviceAutoDelete** funkce.
 > [!NOTE]
 > Azure Blob Storage na hraničních zařízeních IoT je v [ve verzi public preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Sledovat video o stručný úvod
+> [!VIDEO https://www.youtube.com/embed/QhCYCvu3tiM]
 
 **deviceToCloudUpload** se dají konfigurovat funkce, které vám umožní automaticky nahrát data z vaší místní blob storage do Azure podporující přerušované připojení k Internetu. To vám umožní:
 
