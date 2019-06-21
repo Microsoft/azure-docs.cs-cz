@@ -27,7 +27,7 @@ K získání hodnot z prostředky, skupiny prostředků nebo předplatná, najde
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="deployment"></a>nasazení
+## <a name="deployment"></a>deployment
 `deployment()`
 
 Vrátí informace o aktuální operace nasazení.
@@ -161,7 +161,7 @@ Vrátí hodnotu parametru. Zadaný název parametru musí být definovaný v sek
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| Název parametru |Ano |string |Název parametru se vraťte. |
+| parameterName |Ano |string |Název parametru se vraťte. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
