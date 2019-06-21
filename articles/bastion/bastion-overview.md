@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: overview
 ms.date: 06/17/2019
 ms.author: cherylmc
-ms.openlocfilehash: cfd68bbacf4cf8171efdba7878ec8c06055a4997
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: d153c876366c8c747e06bf50a0ea26bcdcea10eb
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67191165"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303597"
 ---
 # <a name="what-is-azure-bastion-preview"></a>Co je Azure Bastionu? (Preview)
 
@@ -48,7 +48,7 @@ Vyzkoušet verzi public preview k dispozici jsou následující funkce:
 * **Vzdálená relace přes SSL a brány firewall procházení pro RDP/SSH:** Azure Bastionu používá klienta HTML5 na základě web, který je automaticky Streamovat do vašeho místního zařízení tak, aby získat relaci RDP/SSH přes protokol SSL na portu 443 umožňuje bezpečně procházení podnikové brány firewall.
 * **Na virtuálním počítači Azure potřeba žádná veřejná IP adresa:** Azure Bastionu otevře připojení RDP/SSH k virtuálnímu počítači Azure pomocí privátních IP na virtuálním počítači. Není nutné veřejnou IP adresu ve virtuálním počítači.
 * **Žádné zároveň museli namáhavě spravovat skupiny zabezpečení sítě:** Azure Bastionu je plně spravovaná platforma PaaS služby z Azure, která je Posílená interně, která zajišťuje že zabezpečené připojení RDP/SSH. Nemusíte použít žádné skupiny Nsg v podsíti Azure Bastionu. Vzhledem k tomu Azure Bastionu se připojí k vašim virtuálním počítačům přes privátní IP adresa, můžete vytvořit skupiny Nsg k povolení protokolu RDP nebo SSH z Azure Bastionu pouze. Tím zároveň museli namáhavě spravovat skupiny zabezpečení sítě pokaždé, když budete potřebovat pro zabezpečené připojení k vašim virtuálním počítačům.
-* **Znovu ochranu portu prohledávání:** Protože nemusíte vystavit vašich virtuálních počítačů do veřejného Internetu, virtuálních počítačů jsou chráněné proti podvodným a uživateli se zlými úmysly nacházejících se mimo virtuální síť skenováním portů.
+* **Ochrana proti skenování portu:** Protože nemusíte vystavit vašich virtuálních počítačů do veřejného Internetu, virtuálních počítačů jsou chráněné proti podvodným a uživateli se zlými úmysly nacházejících se mimo virtuální síť skenováním portů.
 * **Ochrana před zneužitím nultého dne. Posílení zabezpečení na jenom jednom místě:** Azure Bastionu je plně spravovaná platforma služba PaaS. Protože se nachází v hraniční síti vaší virtuální sítě, není nutné starat o posílení zabezpečení všech virtuálních počítačů ve vaší virtuální síti. Platforma Azure chrání před zneužitím nultého dne udržováním Bastionu Azure posílené a vždy aktuální za vás.
 
 ## <a name="faq"></a>Nejčastější dotazy

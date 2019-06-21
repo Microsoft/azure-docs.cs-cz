@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/24/2019
 ms.author: iainfou
-ms.openlocfilehash: 57eacca75d711c5125a2856a7b6219cd2ec5306b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 34f2d11cf4e1fb8e03d037be221e7b18ed4c5ad0
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66242038"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303333"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>Připojení přes SSH do Azure Kubernetes Service (AKS) uzlů clusteru za účelem údržby nebo řešení potíží
 
@@ -22,13 +22,13 @@ Tento článek ukazuje, jak vytvořit připojení SSH k uzlu AKS pomocí jejich 
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Tento článek předpokládá, že máte existující cluster AKS. Pokud potřebujete AKS cluster, najdete v tomto rychlém startu AKS [pomocí Azure CLI] [ aks-quickstart-cli] nebo [pomocí webu Azure portal][aks-quickstart-portal].
+Tento článek předpokládá, že máte existující cluster AKS. Pokud potřebujete AKS cluster, najdete v tomto rychlém startu AKS [pomocí Azure CLI][aks-quickstart-cli] or [using the Azure portal][aks-quickstart-portal].
 
 Také nutné mít Azure CLI verze 2.0.64 nebo později nainstalované a nakonfigurované. Spustit `az --version` k vyhledání verze. Pokud potřebujete instalaci nebo upgrade, naleznete v tématu [instalace Azure CLI][install-azure-cli].
 
 ## <a name="add-your-public-ssh-key"></a>Přidejte veřejný klíč SSH
 
-Ve výchozím nastavení klíče SSH jsou získali, nebo vygeneruje a potom přidat do uzlů při vytváření clusteru AKS. Pokud je třeba zadat různé klíče SSH než ty, které jste použili při vytváření clusteru AKS, přidejte veřejný klíč SSH do uzlů Linux AKS. V případě potřeby můžete vytvořit klíče SSH pomocí [macOS nebo Linux] [ ssh-nix] nebo [Windows][ssh-windows]. Pokud použijete k vytvoření páru klíčů PuTTY Obecné, uložte páru klíčů v OpenSSH formátu místo výchozí formát PuTTy privátního klíče (soubor .ppk).
+Ve výchozím nastavení klíče SSH jsou získali, nebo vygeneruje a potom přidat do uzlů při vytváření clusteru AKS. Pokud je třeba zadat různé klíče SSH než ty, které jste použili při vytváření clusteru AKS, přidejte veřejný klíč SSH do uzlů Linux AKS. V případě potřeby můžete vytvořit klíče SSH pomocí [macOS nebo Linux][ssh-nix] or [Windows][ssh-windows]. Pokud použijete k vytvoření páru klíčů PuTTY Obecné, uložte páru klíčů v OpenSSH formátu místo výchozí formát PuTTy privátního klíče (soubor .ppk).
 
 > [!NOTE]
 > Klíče můžete SSH aktuálně lze přidat pouze pro uzly s Linuxem pomocí Azure CLI. Pokud používáte uzly Windows serveru, pomocí klíčů SSH zadali při vytváření clusteru AKS a přejděte na krok v [získání adresy uzlů AKS](#get-the-aks-node-address). Nebo, [připojení k uzlům Windows serveru pomocí připojení vzdálené plochy protocol (RDP)][aks-windows-rdp].
@@ -42,13 +42,13 @@ Postup získání privátní IP adresy uzlů AKS se liší podle typu cluster AK
 
 Chcete-li přidat klíč SSH na Linux AKS uzlu, proveďte následující kroky:
 
-1. Získání názvu skupiny prostředků pro prostředky clusteru AKS pomocí [az aks zobrazit][az-aks-show]. Zadejte vlastní skupina základních prostředků a název clusteru AKS. Název clusteru je přiřazen do proměnné s názvem *CLUSTER_RESOURCE_GROUP*:
+1. Získání názvu skupiny prostředků pro prostředky clusteru AKS pomocí [az aks zobrazit][az-aks-show]. Název clusteru je přiřazen do proměnné s názvem *CLUSTER_RESOURCE_GROUP*. Nahraďte *myResourceGroup* s názvem vaší skupiny prostředků, ve kterém můžete clusteru AKS nachází:
 
     ```azurecli-interactive
     CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
     ```
 
-1. Seznam virtuálních počítačů pomocí AKS clusteru pro skupinu prostředků [az vm list] [ az-vm-list] příkazu. Tyto virtuální počítače jsou uzly AKS:
+1. Seznam virtuálních počítačů pomocí AKS clusteru pro skupinu prostředků [az vm list][az-vm-list] příkazu. Tyto virtuální počítače jsou uzly AKS:
 
     ```azurecli-interactive
     az vm list --resource-group $CLUSTER_RESOURCE_GROUP -o table
@@ -62,7 +62,7 @@ Chcete-li přidat klíč SSH na Linux AKS uzlu, proveďte následující kroky:
     aks-nodepool1-79590246-0  MC_myResourceGroupAKS_myAKSClusterRBAC_eastus  eastus
     ```
 
-1. Chcete-li přidat vaše klíče SSH k uzlu, použijte [az vm se aktualizace uživatele] [ az-vm-user-update] příkazu. Zadejte název skupiny prostředků a potom jeden z uzlů AKS, kterou jste získali v předchozím kroku. Ve výchozím nastavení, uživatelské jméno pro uzly AKS. je *azureuser*. Zadejte umístění vlastní SSH veřejné klíče umístění, jako třeba *~/.ssh/id_rsa.pub*, nebo vložte obsah veřejného klíče SSH:
+1. Chcete-li přidat vaše klíče SSH k uzlu, použijte [az vm se aktualizace uživatele][az-vm-user-update] příkazu. Zadejte název skupiny prostředků a potom jeden z uzlů AKS, kterou jste získali v předchozím kroku. Ve výchozím nastavení, uživatelské jméno pro uzly AKS. je *azureuser*. Zadejte umístění vlastní SSH veřejné klíče umístění, jako třeba *~/.ssh/id_rsa.pub*, nebo vložte obsah veřejného klíče SSH:
 
     ```azurecli-interactive
     az vm user update \
@@ -76,19 +76,19 @@ Chcete-li přidat klíč SSH na Linux AKS uzlu, proveďte následující kroky:
 
 Chcete-li přidat klíč SSH na Linux AKS uzel, který je součástí škálovací sady virtuálních počítačů, proveďte následující kroky:
 
-1. Získání názvu skupiny prostředků pro prostředky clusteru AKS pomocí [az aks zobrazit][az-aks-show]. Zadejte vlastní skupina základních prostředků a název clusteru AKS. Název clusteru je přiřazen do proměnné s názvem *CLUSTER_RESOURCE_GROUP*:
+1. Získání názvu skupiny prostředků pro prostředky clusteru AKS pomocí [az aks zobrazit][az-aks-show]. Název clusteru je přiřazen do proměnné s názvem *CLUSTER_RESOURCE_GROUP*. Nahraďte *myResourceGroup* s názvem vaší skupiny prostředků, ve kterém můžete clusteru AKS nachází:
 
     ```azurecli-interactive
     CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
     ```
 
-1. Potom získejte škálovací sady pro váš cluster AKS pomocí virtuálních počítačů [az vmss list] [ az-vmss-list] příkazu. Název virtuálního počítače škálovací sady je přiřazen do proměnné s názvem *SCALE_SET_NAME*:
+1. Potom získejte škálovací sady pro váš cluster AKS pomocí virtuálních počítačů [az vmss list][az-vmss-list] příkazu. Název virtuálního počítače škálovací sady je přiřazen do proměnné s názvem *SCALE_SET_NAME*:
 
     ```azurecli-interactive
     SCALE_SET_NAME=$(az vmss list --resource-group $CLUSTER_RESOURCE_GROUP --query [0].name -o tsv)
     ```
 
-1. Chcete-li přidat vaše klíče SSH k uzlům ve škálovací sadě virtuálního počítače, použijte [az vmss extension set] [ az-vmss-extension-set] příkazu. Skupina prostředků clusteru a název škálovací sady virtuálních počítačů jsou k dispozici ve výstupech předchozích příkazů. Ve výchozím nastavení, uživatelské jméno pro uzly AKS. je *azureuser*. V případě potřeby aktualizujte umístění vlastní SSH veřejné klíče umístění, jako například *~/.ssh/id_rsa.pub*:
+1. Chcete-li přidat vaše klíče SSH k uzlům ve škálovací sadě virtuálního počítače, použijte [az vmss extension set][az-vmss-extension-set] příkazu. Skupina prostředků clusteru a název škálovací sady virtuálních počítačů jsou k dispozici ve výstupech předchozích příkazů. Ve výchozím nastavení, uživatelské jméno pro uzly AKS. je *azureuser*. V případě potřeby aktualizujte umístění vlastní SSH veřejné klíče umístění, jako například *~/.ssh/id_rsa.pub*:
 
     ```azurecli-interactive
     az vmss extension set  \
@@ -100,7 +100,7 @@ Chcete-li přidat klíč SSH na Linux AKS uzel, který je součástí škálovac
         --protected-settings "{\"username\":\"azureuser\", \"ssh_key\":\"$(cat ~/.ssh/id_rsa.pub)\"}"
     ```
 
-1. Použít klíč SSH k uzlům pomocí [az vmss update-instances] [ az-vmss-update-instances] příkaz:
+1. Použít klíč SSH k uzlům pomocí [az vmss update-instances][az-vmss-update-instances] příkaz:
 
     ```azurecli-interactive
     az vmss update-instances --instance-ids '*' \
@@ -117,7 +117,7 @@ Uzlů AKS nejsou veřejně přístupný z Internetu. Pro připojení SSH k uzlů
 
 ### <a name="ssh-to-regular-aks-clusters"></a>SSH k pravidelné clusteru AKS
 
-Zobrazit uzel clusteru AKS pomocí privátní IP adresu [az vm list-ip-addresses] [ az-vm-list-ip-addresses] příkazu. Zadejte vlastní AKS clusteru název skupiny prostředků získané v předchozím [az-aks-show] [ az-aks-show] kroku:
+Zobrazit uzel clusteru AKS pomocí privátní IP adresu [az vm list-ip-addresses][az-vm-list-ip-addresses] command. Provide your own AKS cluster resource group name obtained in a previous [az-aks-show][az-aks-show] kroku:
 
 ```azurecli-interactive
 az vm list-ip-addresses --resource-group $CLUSTER_RESOURCE_GROUP -o table
@@ -172,7 +172,7 @@ Vytvořte připojení SSH k uzlu AKS, je spustit pod pomocné rutiny ve vašem c
     apt-get update && apt-get install openssh-client -y
     ```
 
-1. V novém okně terminálu, nejsou připojené do kontejneru, seznam podů v clusteru AKS pomocí [kubectl get pods] [ kubectl-get] příkazu. Spustí pod vytvořili v předchozím kroku s názvem *aks-ssh*, jak je znázorněno v následujícím příkladu:
+1. V novém okně terminálu, nejsou připojené do kontejneru, seznam podů v clusteru AKS pomocí [kubectl get pods][kubectl-get] příkazu. Spustí pod vytvořili v předchozím kroku s názvem *aks-ssh*, jak je znázorněno v následujícím příkladu:
 
     ```
     $ kubectl get pods
@@ -224,7 +224,7 @@ Až budete hotovi, `exit` relaci SSH a pak `exit` kontejneru interaktivní relac
 
 ## <a name="next-steps"></a>Další postup
 
-Pokud potřebujete další data pro řešení problémů, můžete [zobrazení protokolů kubelet] [ view-kubelet-logs] nebo [zobrazit protokoly hlavní uzel Kubernetes][view-master-logs].
+Pokud potřebujete další data pro řešení problémů, můžete [zobrazení protokolů kubelet][view-kubelet-logs] or [view the Kubernetes master node logs][view-master-logs].
 
 <!-- EXTERNAL LINKS -->
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get

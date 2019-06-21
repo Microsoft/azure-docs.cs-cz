@@ -9,12 +9,12 @@ ms.devlang: python
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: v-lilei
-ms.openlocfilehash: 75ff1f7a37522c295bff10fe22bbb995fea65d52
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 50a252ff93f7e2cc6e5c6100c6bce850e9e96baf
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/20/2019
-ms.locfileid: "67276038"
+ms.locfileid: "67295625"
 ---
 # <a name="python-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>Kurz k Pythonu: Volání rozhraní API služeb Cognitive Services v Azure Search indexování kanálu
 
@@ -465,73 +465,7 @@ Výsledky by měly vypadat podobně jako v následujícím příkladu. Na snímk
 Opakujte pro další pole: obsah, prostředí, keyPhrases a organizace v tomto cvičení. Prostřednictvím `$select` můžete pomocí seznamu hodnot oddělených čárkami vrátit více než jedno pole.
 
 V závislosti na složitosti a délce řetězce dotazu můžete použít operace GET nebo POST. Další informace najdete v článku o [dotazování pomocí rozhraní REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents).
-
-<a name="access-enriched-document"></a>
-
-## <a name="accessing-the-enriched-document"></a>Přístup k rozšířenému dokumentu
-
-Kognitivní hledání umožňuje zobrazit si strukturu rozšířeného dokumentu. Rozšířené dokumenty jsou dočasné struktury, které se vytvářejí během rozšiřování a po dokončení procesu se odstraňují.
-
-Pokud chcete zachytit snímek rozšířeného dokumentu vytvořeného během indexování, přidejte do indexu pole s názvem `enriched`. Indexer do tohoto pole automaticky vypíše řetězcovou reprezentaci všech rozšíření daného dokumentu.
-
-Pole `enriched` bude obsahovat řetězec, který je logickou reprezentací rozšířeného dokumentu uloženého v paměti ve formátu JSON.  Hodnota pole je ale platný dokument JSON. Uvozovky jsou uvozeny řídicími znaky, budete muset nahradit `\"` s `"` dokument jako zobrazit ve formátu JSON.  
-
-Pole `enriched` existuje kvůli ladění, aby vám pomohlo pochopit logický formát obsahu, proti kterému se vyhodnocují výrazy. Může to být užitečný nástroj, který vám pomůže pochopit a ladit sadu dovedností.
-
-K zachycení obsah bohatších možností dokumentu, opakujte předchozí cvičení a zahrnout `enriched` pole při vytváření indexu.
-
-> [!Tip]
-> Předtím, než tento postup opakujte, je nutné odstranit zdroj dat, index, indexer a dovednosti, které jste právě vytvořili. Další informace najdete v tématu [obnovit a znovu spusťte](#reset).
-
-```python
-# Create index with enriched field
-index_payload = {
-    "name": index_name,
-    "fields": [
-      {
-        "name": "id",
-        "type": "Edm.String",
-        "key": "true",
-        "searchable": "true",
-        "filterable": "false",
-        "facetable": "false",
-        "sortable": "true"
-      },
-      {
-        "name": "content",
-        "type": "Edm.String",
-        "sortable": "false",
-        "searchable": "true",
-        "filterable": "false",
-        "facetable": "false"
-      },
-      {
-        "name": "languageCode",
-        "type": "Edm.String",
-        "searchable": "true",
-        "filterable": "false",
-        "facetable": "false"
-      },
-      {
-        "name": "keyPhrases",
-        "type": "Collection(Edm.String)",
-        "searchable": "true",
-        "filterable": "false",
-        "facetable": "false"
-      },
-      {
-        "name": "organizations",
-        "type": "Collection(Edm.String)",
-        "searchable": "true",
-        "sortable": "false",
-        "filterable": "false",
-        "facetable": "false"
-      }
-   ]
-}
-```
-
-<a name="reset"></a>
+it <a name="reset"></a>
 
 ## <a name="reset-and-rerun"></a>Resetování a opětovné spuštění
 

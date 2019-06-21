@@ -4,14 +4,14 @@ description: Použití Azure Resource Manageru k přesunutí prostředků do nov
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 06/13/2019
+ms.date: 06/19/2019
 ms.author: tomfitz
-ms.openlocfilehash: bb7715a7eaa2cb499ed80b78130571f315ef0c95
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1cc2f3b1ee657706dba237c86552b1780bc9dd34
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67083526"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295445"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Přesunutí prostředků do nové skupiny prostředků nebo předplatného
 
@@ -89,14 +89,14 @@ Následující seznam obsahuje obecný přehled služby Azure, které lze přesu
 * Machine Learning – Machine Learning Studio webové služby je možné přesunout do skupiny prostředků ve stejném předplatném, ale jiné předplatné. Další prostředky služby Machine Learning je možné přesunout mezi předplatnými.
 * Managed Disks – spravované disky v zónách dostupnosti nelze přesunout do jiného předplatného
 * Media Services
-* Monitorování – zkontrolujte, že přesun do nového předplatného nepřekračuje [kvóty předplatných](../azure-subscription-service-limits.md#monitor-limits)
+* Monitorování – zkontrolujte, že přesun do nového předplatného nepřekračuje [kvóty předplatných](../azure-subscription-service-limits.md#azure-monitor-limits)
 * Notification Hubs
 * Operational Insights
 * Správa operací
 * Portálu řídicích panelů
 * Power BI – jak Power BI Embedded a Power BI pracovního prostoru kolekce
 * Veřejná IP adresa – základní veřejnou IP adresu SKU je možné přesunout. Standardní veřejné IP adresy skladové položky nelze přesunout.
-* Služby Recovery Services vault – zaregistrujte se do [ve verzi preview](#recovery-services-limitations).
+* Služby Recovery Services vault – viz [omezení](#recovery-services-limitations).
 * SAP HANA v Azure
 * Scheduler
 * Search – několik hledání prostředky nejde přesunout v různých oblastech v rámci jedné operace. Místo toho přesuňte je v samostatné operace.
@@ -104,7 +104,7 @@ Následující seznam obsahuje obecný přehled služby Azure, které lze přesu
 * Service Fabric
 * Service Fabric Mesh
 * Služba SignalR
-* Úložiště – účty úložiště v různých oblastech se nedají přesouvat v rámci jedné operace. Místo toho použijte samostatné operace pro každou oblast.
+* Úložiště
 * Úložiště (classic) – viz [omezení klasického nasazení](#classic-deployment-limitations)
 * Služba synchronizace úložiště
 * Stream Analytics – Stream Analytics úlohy nelze přesunout, při spuštění ve stavu.
