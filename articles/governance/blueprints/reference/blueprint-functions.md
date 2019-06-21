@@ -109,7 +109,7 @@ Některé příklady načítání dat z _myTemplateArtifact_ ukázky jsou:
 
 | Výraz | Type | Hodnota |
 |:---|:---|:---|
-|`[artifacts("myTemplateArtifact").outputs.myArray]` | Pole | \["first", "second"\] |
+|`[artifacts("myTemplateArtifact").outputs.myArray]` | Array | \["first", "second"\] |
 |`[artifacts("myTemplateArtifact").outputs.myArray[0]]` | String | "first" |
 |`[artifacts("myTemplateArtifact").outputs.myString]` | String | "Moje řetězcovou hodnotu" |
 |`[artifacts("myTemplateArtifact").outputs.myObject]` | Object | {"myproperty": "Moje value", "anotherProperty": true} |
@@ -126,7 +126,7 @@ Kombinuje více řetězcových hodnot a vrací spojený řetězec.
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| řetězec1 |Ano |string |První hodnota pro zřetězení. |
+| string1 |Ano |string |První hodnota pro zřetězení. |
 | Další argumenty |Ne |string |Další hodnoty v postupném pořadí pro zřetězení |
 
 ### <a name="return-value"></a>Návratová hodnota
@@ -151,7 +151,7 @@ Vrátí hodnotu parametru podrobného plánu. Zadaný název parametru musí bý
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| Název parametru |Ano |string |Název parametru se vraťte. |
+| parameterName |Ano |string |Název parametru se vraťte. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -200,7 +200,7 @@ Pak pomocí _principalIds_ jako argument pro `parameters()` v artefakt podrobné
 }
 ```
 
-## <a name="resourcegroup"></a>Skupina prostředků
+## <a name="resourcegroup"></a>resourceGroup
 
 `resourceGroup()`
 
