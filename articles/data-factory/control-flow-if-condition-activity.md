@@ -68,9 +68,9 @@ Vlastnost | Popis | Povolené hodnoty | Požaduje se
 -------- | ----------- | -------------- | --------
 name | Název aktivita podmínky if. | String | Ano
 type | Musí být nastaveno na **IfCondition** | String | Ano
-Výraz | Výraz, který se musí vyhodnotit na hodnotu true nebo false | Výraz s výsledkem typu boolean | Ano
-ifTrueActivities | Sadu aktivit, které jsou spouštěny, když je výraz vyhodnocen `true`. | Pole | Ano
-ifFalseActivities | Sadu aktivit, které jsou spouštěny, když je výraz vyhodnocen `false`. | Pole | Ano
+expression | Výraz, který se musí vyhodnotit na hodnotu true nebo false | Výraz s výsledkem typu boolean | Ano
+ifTrueActivities | Sadu aktivit, které jsou spouštěny, když je výraz vyhodnocen `true`. | Array | Ano
+ifFalseActivities | Sadu aktivit, které jsou spouštěny, když je výraz vyhodnocen `false`. | Array | Ano
 
 ## <a name="example"></a>Příklad:
 Kanál v tomto příkladu kopíruje data ze vstupní složky do výstupní složky. Výstupní složka je určená hodnota parametru kanálu: routeSelection. Pokud routeSelection hodnotu true, budou data zkopírována do outputPath1. A pokud je hodnota routeSelection false, data je zkopírován do outputPath2. 
