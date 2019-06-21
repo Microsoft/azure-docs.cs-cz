@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 05/07/2019
 ms.author: edjez
-ms.openlocfilehash: ebe7f9307fcfa39d6cb133203a4c17243ad390c5
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: b2054aa963991ffa2d92aabf1ce896031f2d87fc
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027135"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67296061"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>Funkce jsou informace o akce a kontextu
 
@@ -41,6 +41,12 @@ Personalizer neuloží, omezit nebo opravit, jaké funkce můžete odeslat akce 
 
 Personalizer podporuje funkce řetězec, číselných a logických typů.
 
+### <a name="how-choice-of-feature-type-affects-machine-learning-in-personalizer"></a>Jak ovlivňuje Machine Learning v Personalizer vybrat typ funkce
+
+* **Řetězce**: Pro typy řetězců vytvoří pro každou kombinaci klíč a hodnotu nový váhy v Personalizer modelu strojového učení. 
+* **Číselné**: V případě počet by měl proporcionálně ovlivňují výsledek individuálního nastavení, měli byste použít číselné hodnoty. To je velmi scénář závislé. V zjednodušený příklad například při přizpůsobení maloobchodní prostředí, NumberOfPetsOwned může být funkce, která jsou číselná chcete ovlivnit přizpůsobení výsledek dvakrát nebo třikrát co s 1 pet osobám s mazlíčci 2 nebo 3. Funkce, které jsou založeny na číselná jednotek, ale pokud není lineární – například věk, teplota nebo osoba vyska - význam jsou nejlépe kódovány jako řetězce a kvalitu funkce lze obvykle vylepšit použití rozsahů. Například věk může být zakódován jako "Age": "0-5", "Age": "6-10" atd.
+* **Logická** hodnoty odeslané s hodnotou "false" act, jako kdyby jejich nebyl odeslán vůbec.
+
 Funkce, které nejsou k dispozici vyloučeny z požadavku. Vyhněte se funkce s hodnotou null pro odesílání, protože ho budou zpracovány jako existující a s hodnotou "null" při cvičení modelu.
 
 ## <a name="categorize-features-with-namespaces"></a>Kategorizace funkce s obory názvů
@@ -50,7 +56,7 @@ Personalizer přijímá funkce, které jsou uspořádány do oborů názvů. Mů
 Následují příklady funkce obory názvů používané aplikacemi:
 
 * User_Profile_from_CRM
-* Time
+* Čas
 * Mobile_Device_Info
 * http_user_agent
 * VideoResolution
@@ -156,7 +162,7 @@ Neodesílat ve více než 50 akcí při hodnocení akce. Může se jednat stejn�
 
 Akce, které odesíláte do rozhraní API pořadí bude záviset na co se pokoušíte přizpůsobit.
 
-Zde je několik příkladů:
+Následuje několik příkladů:
 
 |Účel|Akce|
 |--|--|

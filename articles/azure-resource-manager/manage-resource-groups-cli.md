@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: af1d66d99379487bba42fe98e44414e63bcda81f
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
-ms.translationtype: HT
+ms.openlocfilehash: c50a96b2598b89d5072a9441162d198163156c8d
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205551"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67296272"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-cli"></a>Správa skupin prostředků Azure Resource Manageru pomocí rozhraní příkazového řádku Azure
 
@@ -139,7 +139,7 @@ az group export --name $resourceGroupName
 
 Tento skript zobrazí v konzole pro šablonu.  Zkopírujte JSON a uložte jako soubor.
 
-Další informace najdete v tématu [Export skupiny prostředků](./manage-resource-groups-portal.md#export-resource-groups-to-templates).
+Další informace najdete v tématu [export jednoho a víc prostředků šablony na webu Azure portal](./export-template-portal.md).
 
 ## <a name="manage-access-to-resource-groups"></a>Správa přístupu ke skupinám prostředků
 

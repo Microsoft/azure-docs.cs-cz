@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 06/13/2019
+ms.date: 06/19/2019
 ms.author: juliako
-ms.openlocfilehash: 01e80748fbca856adfeaaef566093444c425ca6a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
-ms.translationtype: HT
+ms.openlocfilehash: f26467a250314fa8a6fe401f4ec1d6a999b6bb4d
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164593"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67296213"
 ---
 # <a name="live-events-and-live-outputs"></a>Živé události a výstupy
 
@@ -29,7 +29,7 @@ Azure Media Services umožňuje doručovat živé události do vašich zákazní
 
 ## <a name="live-events"></a>Živé události
 
-[Živé události](https://docs.microsoft.com/rest/api/media/liveevents) zodpovídají za ingestování a zpracování informačních kanálů živého videa. Při vytváření živé události se vytvoří vstupní koncový bod, který můžete použít k odesílání živého signálu ze vzdáleného kodéru. Vzdálený kodér pro kódování v reálném čase odešle informační kanál příspěvku do tohoto vstupního koncového bodu buď pomocí [RTMP](https://www.adobe.com/devnet/rtmp.html), nebo pomocí protokolu [Smooth Streaming](https://msdn.microsoft.com/library/ff469518.aspx) (fragmentovaný MP4). Pro technologii Smooth Streaming ingestování, jsou podporovaná schémata URL `http://` nebo `https://`. Protokol ingestování RTMP, jsou podporovaná schémata URL `rtmp://` nebo `rtmps://`. 
+[Živé události](https://docs.microsoft.com/rest/api/media/liveevents) zodpovídají za ingestování a zpracování informačních kanálů živého videa. Při vytváření živá událost se vytvoří, můžete použít k odesílání živě signál z vzdálený kodér vstupní koncový bod primární a sekundární. Vzdáleném kodér služby live Encoding odešle informační kanál k příspěvek vstupní koncový bod buď pomocí [RTMP](https://www.adobe.com/devnet/rtmp.html) nebo [technologie Smooth Streaming](https://msdn.microsoft.com/library/ff469518.aspx) (fragmentovaný soubor MP4) vstupní protokol. Pro protokol ingestování RTMP, je možné odeslat obsah v nešifrované podobě (`rtmp://`) nebo bezpečně šifrován na lince (`rtmps://`). Pro technologii Smooth Streaming ingestování, jsou podporovaná schémata URL `http://` nebo `https://`.  
 
 ## <a name="live-event-types"></a>Live typy událostí
 

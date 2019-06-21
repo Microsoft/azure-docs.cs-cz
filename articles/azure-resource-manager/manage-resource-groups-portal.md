@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: jgao
-ms.openlocfilehash: 9d87a395d35cdaefb1764a516e96165a251484ab
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
-ms.translationtype: HT
+ms.openlocfilehash: bc3c1a05c64edea260bd177dd7eaefc003db5310
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206576"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67296291"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>Správa skupin prostředků Azure Resource Manageru pomocí webu Azure portal
 
@@ -106,14 +106,6 @@ Můžete provést značky u prostředků a skupin prostředků logicky tak uspo�
 ## <a name="export-resource-groups-to-templates"></a>Export skupiny prostředků do šablon
 
 Informace o exportování šablony najdete v tématu [export jednoho a víc prostředků šablony - Portal](export-template-portal.md).
-
-### <a name="fix-export-issues"></a>Oprava problémů s exportem
-
-Ne všechny typy prostředků podporují funkci exportu šablony. Zobrazí jenom export problémy při exportu ze skupiny prostředků, ne z historie nasazení. Pokud vaše poslední nasazení přesně reprezentuje aktuální stav skupiny prostředků, měli byste šablonu exportovat z historie nasazení, ne ze skupiny zdrojů. Exportujte jenom ze skupiny prostředků po provedení změny do skupiny prostředků, které nejsou definovány v jediné šabloně.
-
-K vyřešení problémů s exportem ručně přidáním chybějících prostředků zpět do šablony. Chybová zpráva obsahuje typy prostředků, které nelze exportovat. Vyhledejte tyto typy prostředků v [referenčních informacích k šablonám](/azure/templates/). Pokud například chcete ručně přidat bránu virtuální sítě, přečtěte si [referenční informace k šablonám o prostředku Microsoft.Network/virtualNetworkGateways](/azure/templates/microsoft.network/virtualnetworkgateways). Referenční dokumentace šablony vám ve formátu JSON, bude příslušný materiál přidán do šablony.
-
-Po získání formátu JSON pro prostředek, potřebujete získat hodnoty prostředků. Hodnoty prostředku můžete zobrazit pomocí operace GET v rozhraní REST API pro typ prostředku. Třeba, abyste získali hodnoty pro příslušnou bránu virtuální sítě, přečtěte si část [brány virtuální sítě – získání](/rest/api/network-gateway/virtualnetworkgateways/get).
 
 ## <a name="manage-access-to-resource-groups"></a>Správa přístupu ke skupinám prostředků
 

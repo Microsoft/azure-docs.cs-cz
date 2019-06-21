@@ -8,14 +8,14 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 05/21/2018
+ms.date: 06/20/2019
 tags: connectors
-ms.openlocfilehash: ea3e97db9ec560306788943d92a7670025f38bdc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d9c29837e99d327112e6a9d648a5c56cc35e8555
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60958586"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67296681"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-with-azure-logic-apps"></a>Vytvoření a Správa objektů BLOB v Azure blob storage s využitím Azure Logic Apps
 
@@ -30,12 +30,21 @@ Předpokládejme, že máte nástroj, který se aktualizuje na web Azure. který
 >
 > * Pokud už používáte API Management, můžete tuto službu pro tento scénář. Další informace najdete v tématu [jednoduché podnikové integrace architektury](https://aka.ms/aisarch).
 
-Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [rychlý start: Vytvořte svou první aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
-Technické informace specifické pro konektor najdete v tématu <a href="https://docs.microsoft.com/connectors/azureblobconnector/" target="blank">referenční informace ke konektorům Azure Blob Storage</a>.
+Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [rychlý start: Vytvořte svou první aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Technické informace specifické pro konektor najdete v tématu [referenční informace ke konektorům Azure Blob Storage](/connectors/azureblobconnector/).
+
+## <a name="limits"></a>Limits
+
+* Ve výchozím nastavení, může číst nebo zapisovat soubory, které jsou akce Azure Blob Storage *50 MB nebo méně*. Zpracovat soubory větší než 50 MB, ale až 1 024 MB, akce Azure Blob Storage podporují [bloků zpráv](../logic-apps/logic-apps-handle-large-messages.md). **Získat obsah objektu blob** akce implicitně používá dělením dat do bloků.
+
+* Triggery pro úložiště objektů Blob v Azure nepodporují dělením dat do bloků. Pokud se požaduje obsah souboru, aktivační události vyberte pouze soubory, které jsou 50 MB nebo méně. Pokud chcete získat soubory větší než 50 MB, postupujte podle tohoto vzoru:
+
+  * Pomocí aktivační událost Azure Blob Storage, který vrací vlastnosti souboru, například **když objekt blob se přidá nebo upraví (jen vlastnosti)** .
+
+  * Postupujte podle aktivační událost s Azure Blob Storage **získat obsah objektu blob** akce, která načte kompletní soubor a implicitně používá dělením dat do bloků.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Pokud nemáte předplatné Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrujte si bezplatný účet Azure</a>.
+* Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
 * [Účtu služby Azure storage a kontejner úložiště](../storage/blobs/storage-quickstart-blobs-portal.md)
 
@@ -47,13 +56,13 @@ Technické informace specifické pro konektor najdete v tématu <a href="https:/
 
 V Azure Logic Apps, musí začínat každá aplikace logiky [aktivační událost](../logic-apps/logic-apps-overview.md#logic-app-concepts), který se aktivuje při určité události nebo když je splněna konkrétní podmínka. Pokaždé, když se trigger aktivuje, modul Logic Apps vytvoří instanci aplikace logiky a spustí pracovní postup vaší aplikace.
 
-Tento příklad ukazuje, jak můžete začít pracovní postup aplikace logiky s **Azure Blob Storage – když se objekt blob se přidá nebo upraví (jen vlastnosti)** aktivační událost při získá přidání nebo aktualizaci ve vašem kontejneru úložiště objekt blob vlastnosti. 
+Tento příklad ukazuje, jak můžete začít pracovní postup aplikace logiky s **když objekt blob se přidá nebo upraví (jen vlastnosti)** aktivační událost při získá přidání nebo aktualizaci ve vašem kontejneru úložiště objekt blob vlastnosti.
 
-1. Webu Azure portal nebo Visual Studio vytvořte prázdné aplikace logiky, otevře se návrhář aplikace logiky. Tento příklad používá na webu Azure portal.
+1. V [webu Azure portal](https://portal.azure.com) nebo Visual Studio, vytvořit prázdné aplikace logiky, otevře se návrhář aplikace logiky. Tento příklad používá na webu Azure portal.
 
 2. Do vyhledávacího pole zadejte jako filtr "objektů blob v azure". Ze seznamu triggerů vyberte trigger, který chcete.
 
-   V tomto příkladu této aktivační události: **Azure Blob Storage – když se objekt blob se přidá nebo upraví (jen vlastnosti)**
+   V tomto příkladu této aktivační události: **Když se objekt blob se přidá nebo upraví (jen vlastnosti)**
 
    ![Výběr triggeru](./media/connectors-create-api-azureblobstorage/azure-blob-trigger.png)
 
@@ -79,22 +88,22 @@ Tento příklad ukazuje, jak můžete začít pracovní postup aplikace logiky s
 
 V Azure Logic Apps [akce](../logic-apps/logic-apps-overview.md#logic-app-concepts) je krok v pracovním postupu, který následuje aktivační události nebo jiné akce. V tomto příkladu aplikace logiky začíná [trigger opakování](../connectors/connectors-native-recurrence.md).
 
-1. Webu Azure portal nebo Visual Studio otevřete aplikaci logiky v návrháři aplikace logiky. Tento příklad používá na webu Azure portal.
+1. V [webu Azure portal](https://portal.azure.com) nebo Visual Studio, otevřete v návrháři aplikace logiky aplikace logiky. Tento příklad používá na webu Azure portal.
 
-2. V návrháři aplikace logiky podle triggeru nebo akce, zvolte **nový krok** > **přidat akci**.
+2. V návrháři aplikace logiky podle triggeru nebo akce, zvolte **nový krok**.
 
    ![Přidání akce](./media/connectors-create-api-azureblobstorage/add-action.png) 
 
-   Přidání akce mezi stávající kroky, najeďte myší na připojení šipku. 
-   Vyberte znaménko plus ( **+** ), který se zobrazí a klikněte na tlačítko **přidat akci**.
+   Přidání akce mezi stávající kroky, najeďte myší na připojení šipku. Vyberte znaménko plus ( **+** ), který se zobrazí a vyberte **přidat akci**.
 
 3. Do vyhledávacího pole zadejte jako filtr "objektů blob v azure". Ze seznamu akcí vyberte požadovanou akci.
 
-   Tento příklad používá tuto akci: **Azure Blob Storage – získat obsah objektu blob**
+   Tento příklad používá tuto akci: **Získat obsah objektu blob**
 
-   ![Vyberte akci](./media/connectors-create-api-azureblobstorage/azure-blob-action.png) 
+   ![Vyberte akci](./media/connectors-create-api-azureblobstorage/azure-blob-action.png)
 
-4. Pokud se zobrazí výzva k připojení podrobnosti [vytvořit připojení k Azure Blob Storage teď](#create-connection). Nebo pokud už připojení existuje, uveďte potřebné informace pro akci.
+4. Pokud se zobrazí výzva k připojení podrobnosti [vytvořit připojení k Azure Blob Storage teď](#create-connection).
+Nebo pokud už připojení existuje, uveďte potřebné informace pro akci.
 
    V tomto příkladu vyberte požadovaný soubor.
 
@@ -120,11 +129,6 @@ V tomto příkladu pouze získá obsah objektu blob. Chcete-li zobrazit obsah, p
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 
 Technické podrobnosti, jako jsou triggery, akce a omezení, jak je popsáno v konektoru Openapi (dříve Swagger) souboru, najdete v článku [konektoru referenční stránce](/connectors/azureblobconnector/).
-
-## <a name="get-support"></a>Získat podporu
-
-* Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Další postup
 
