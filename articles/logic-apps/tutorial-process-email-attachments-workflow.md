@@ -10,12 +10,12 @@ manager: carmonm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 05/07/2019
-ms.openlocfilehash: 4287efedfc35da762825c5562cf88e64987192f1
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: ee232b54bc4d65d6380a6f2a1d1c88ee7dcf53c3
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65414764"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67312665"
 ---
 # <a name="tutorial-automate-handling-emails-and-attachments-with-azure-logic-apps"></a>Kurz: Automatizovat zpracování e-mailů a jejich přílohy pomocí Azure Logic Apps
 
@@ -63,7 +63,7 @@ Příchozí e-maily a přílohy můžete ukládat jako objekty blob v [kontejner
    | **Předplatné** | <*název_předplatného_Azure*> | Název vašeho předplatného Azure |  
    | **Skupina prostředků** | LA-Tutorial-RG | Název [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md), který slouží k uspořádání a správě souvisejících prostředků <p>**Poznámka:** Skupina prostředků existuje v konkrétní oblasti. Položky z tohoto kurzu nemusí být k dispozici ve všech oblastech, snažte se nicméně používat stejnou oblast, kdykoli je to možné. |
    | **Název účtu úložiště** | attachmentstorageacct | Název účtu úložiště |
-   | **Umístění** | Západní USA | Oblast, kam se mají ukládat informace o vašem účtu úložiště |
+   | **Location** | Západní USA | Oblast, kam se mají ukládat informace o vašem účtu úložiště |
    | **Výkon** | Standard | Toto nastavení specifikuje podporované datové typy a média pro ukládání dat. Další informace najdete v tématu [Typy účtů úložiště](../storage/common/storage-introduction.md#types-of-storage-accounts). |
    | **Druh účtu** | Obecné účely | [Typ účtu úložiště](../storage/common/storage-introduction.md#types-of-storage-accounts) |
    | **Replikace** | Místně redundantní úložiště (LRS) | Toto nastavení určuje, jak se budou kopírovat, ukládat, spravovat a synchronizovat data. Zobrazit [místně redundantní úložiště (LRS): Redundanci dat s nízkými náklady pro službu Azure Storage](../storage/common/storage-redundancy-lrs.md). |
@@ -145,7 +145,7 @@ Teď pomocí připraveného fragmentu kódu a následujícího postupu vytvořte
 
    | Nastavení | Hodnota | Popis |
    | ------- | ----- | ----------- |
-   | **Název aplikace** | CleanTextFunctionApp | Globálně jedinečný a popisný název vaší aplikace funkcí |
+   | **Název aplikace** | <*název aplikace funkcí*> | Globálně jedinečný a popisný vaší aplikace funkcí název, který v tomto příkladu je "CleanTextFunctionApp", proto zadejte jiný název, jako je například "MyCleanTextFunctionApp" |
    | **Předplatné** | <*název_vašeho_předplatného_Azure*> | Stejné předplatné Azure, jaké jste používali dříve | 
    | **Skupina prostředků** | LA-Tutorial-RG | Stejná skupina prostředků Azure, jakou jste používali dříve |
    | **Plán hostování** | Plán Consumption | Toto nastavení určuje, jak se při běhu aplikace funkcí mají přidělovat a škálovat prostředky, například výpočetní výkon. Podívejte se na [porovnání plánů hostování](../azure-functions/functions-scale.md). | 
@@ -168,7 +168,7 @@ Teď pomocí připraveného fragmentu kódu a následujícího postupu vytvořte
 
    K Vytvoření aplikace funkcí můžete použít taky [Azure CLI](../azure-functions/functions-create-first-azure-function-azure-cli.md) nebo [šablony PowerShellu a Resource Manageru](../azure-resource-manager/resource-group-template-deploy.md).
 
-2. V části **Aplikace funkcí** rozbalte položku **CleanTextFunctionApp**a vyberte **Funkce**. Na panelu nástrojů funkcí zvolte **Nová funkce**.
+2. V části **aplikace Function App**rozbalte aplikace function app, což je "CleanTextFunctionApp" v tomto příkladu a vyberte **funkce**. Na panelu nástrojů funkcí zvolte **Nová funkce**.
 
    ![Vytvoření nové funkce](./media/tutorial-process-email-attachments-workflow/function-app-new-function.png)
 
@@ -210,7 +210,7 @@ Teď pomocí připraveného fragmentu kódu a následujícího postupu vytvořte
    }
    ```
 
-6. Jakmile budete hotoví, vyberte **Uložit**. Pokud chcete funkci otestovat, zvolte na pravé straně editoru pod ikonou šipky (**<**) možnost **Test**.
+6. Jakmile budete hotoví, vyberte **Uložit**. Pokud chcete funkci otestovat, zvolte na pravé straně editoru pod ikonou šipky ( **<** ) možnost **Test**.
 
    ![Otevření testovacího podokna](./media/tutorial-process-email-attachments-workflow/function-choose-test.png)
 
@@ -316,7 +316,7 @@ Teď přidejte podmínku, která vybere jenom e-maily s přílohami.
    ![Vyberte "Podmínku"](./media/tutorial-process-email-attachments-workflow/select-condition.png)
 
    1. Přejmenujte podmínku tak, aby její popis lépe vystihoval účel. 
-   V záhlaví podmínky, zvolte **symbol tří teček** (**...** ) tlačítko > **přejmenovat**.
+   V záhlaví podmínky, zvolte **symbol tří teček** ( **...** ) tlačítko > **přejmenovat**.
 
       ![Přejmenování podmínky](./media/tutorial-process-email-attachments-workflow/condition-rename.png)
 
@@ -399,7 +399,7 @@ Tento krok přidá do aplikace logiky funkci Azure, kterou jste předtím vytvo�
 
    ![Výběr akce v části „Zvolte funkci Azure“](./media/tutorial-process-email-attachments-workflow/add-action-azure-function.png)
 
-3. Vyberte svou aplikaci předtím vytvořili: **CleanTextFunctionApp**
+3. Vyberte svou aplikaci předtím vytvořili, což je "CleanTextFunctionApp" v tomto příkladu:
 
    ![Výběr aplikace funkcí Azure](./media/tutorial-process-email-attachments-workflow/add-action-select-azure-function-app.png)
 
@@ -626,7 +626,7 @@ V dalším kroku přidejte akci, která zajistí, aby aplikace logiky odeslala e
    ||||
 
    > [!NOTE]
-   > Pokud vyberete pole obsahující pole hodnot, například **Obsah**, což je pole obsahující přílohy, návrhář kolem akce odkazující na toto pole automaticky přidá smyčku For each. Aplikace logiky tak může provést příslušnou akci pro každou položku pole. Pokud chcete smyčku odebrat, odeberte pole pro dané pole hodnot, přesuňte odkazující akci mimo smyčku, vyberte v záhlaví smyčky symbol tří teček (**…**) a vyberte **Odstranit**.
+   > Pokud vyberete pole obsahující pole hodnot, například **Obsah**, což je pole obsahující přílohy, návrhář kolem akce odkazující na toto pole automaticky přidá smyčku For each. Aplikace logiky tak může provést příslušnou akci pro každou položku pole. Pokud chcete smyčku odebrat, odeberte pole pro dané pole hodnot, přesuňte odkazující akci mimo smyčku, vyberte v záhlaví smyčky symbol tří teček ( **…** ) a vyberte **Odstranit**.
 
 6. Uložte svou aplikaci logiky.
 

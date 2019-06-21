@@ -9,12 +9,12 @@ ms.subservice: immersive-reader
 ms.topic: quickstart
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 7074511d16d157d67a67a2c40383c9909a4942bd
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 77d95383c801038c256ccb2bf386ddf06048cf78
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296771"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67311810"
 ---
 # <a name="quickstart-create-a-web-app-that-launches-the-immersive-reader-c"></a>Rychlý start: Vytvoření webové aplikace, které spouští atraktivní Reader (C#)
 
@@ -27,7 +27,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 ## <a name="prerequisites"></a>Požadavky
 
 * [Visual Studio 2017](https://visualstudio.microsoft.com/downloads)
-* Klíč předplatného pro atraktivní čtecí zařízení. Získejte ji pomocí následujících [tyto pokyny](https://docs.microsoft.com/en-us/azure/cognitive-services/cognitive-services-apis-create-account).
+* Klíč předplatného pro atraktivní čtecí zařízení. Získejte ji pomocí následujících [tyto pokyny](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account).
 
 ## <a name="create-a-web-app-project"></a>Vytvoření projektu webové aplikace
 
@@ -39,7 +39,7 @@ Vytvoření nového projektu v sadě Visual Studio pomocí šablony webové apli
 
 ## <a name="acquire-an-access-token"></a>Získání přístupového tokenu
 
-Budete potřebovat předplatné key a koncového bodu pro tento další krok. Můžete najít tyto informace v https://azure.microsoft.com/try/cognitive-services/my-apis/.
+Budete potřebovat předplatné key a koncového bodu pro tento další krok. Váš klíč předplatného najdete na stránce klíče atraktivní čtečky prostředku na webu Azure Portal. Vyhledání vašeho koncového bodu na stránce Přehled.
 
 Klikněte pravým tlačítkem na projekt v _Průzkumníka řešení_ a zvolte **spravovat tajné klíče uživatelů**. Otevře se soubor s názvem _secrets.json_. Obsah tohoto souboru nahraďte následujícím kódem, včetně klíč předplatného a koncový bod, kde je to vhodné.
 
@@ -88,7 +88,7 @@ public class HomeController : Controller
         using (var client = new System.Net.Http.HttpClient())
         {
             client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", SubscriptionKey);
-            using (var response = await client.PostAsync($"{Endpoint}/issueToken", null))
+            using (var response = await client.PostAsync(Endpoint, null))
             {
                 return await response.Content.ReadAsStringAsync();
             }
@@ -110,7 +110,7 @@ Teď přidáme několik ukázkový obsah do téhle webové aplikace. Otevřít _
 <div class='immersive-reader-button' data-button-style='iconAndText' onclick='launchImmersiveReader()'></div>
 
 @section scripts {
-<script type='text/javascript' src='https://contentstorage.onenote.office.net/onenoteltir/immersivereadersdk/immersive-reader-sdk.1.0.0.js'></script>
+<script type='text/javascript' src='https://contentstorage.onenote.office.net/onenoteltir/immersivereadersdk/immersive-reader-sdk.0.0.1.js'></script>
 <script type='text/javascript' src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
 <script type='text/javascript'>
     function getImmersiveReaderTokenAsync() {
@@ -135,7 +135,7 @@ Teď přidáme několik ukázkový obsah do téhle webové aplikace. Otevřít _
         };
 
         const token = await getImmersiveReaderTokenAsync();
-        ImmersiveReader.launchAsync(token, null, content, { uiZIndex: 1000000 });
+        ImmersiveReader.launchAsync(token, content, { uiZIndex: 1000000 });
     }
 </script>
 }
@@ -151,7 +151,7 @@ V prohlížeči byste měli vidět:
 
 Když kliknete na tlačítko "Atraktivní čtečky", zobrazí se vám atraktivní čtecí modul spuštěn s obsahem na stránce.
 
-![Dokonalé čtečky](./media/quickstart-immersive-reader.png)
+![Asistivní čtečka](./media/quickstart-immersive-reader.png)
 
 ## <a name="next-steps"></a>Další postup
 

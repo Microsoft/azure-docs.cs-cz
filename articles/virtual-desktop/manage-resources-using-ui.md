@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: v-chjenk
-ms.openlocfilehash: 4db9e6eaf2d7f7630d3d412d5519d97f8beca3ad
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 275fec5fb696a7e1352bbddccd288863e984b796
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/20/2019
-ms.locfileid: "67272833"
+ms.locfileid: "67304551"
 ---
 # <a name="tutorial-deploy-a-management-tool"></a>Kurz: Nasazení nástroje pro správu
 
@@ -66,12 +66,16 @@ Tady je postup pro konfiguraci nástroje zadat parametry:
 
 Po GitHub Azure Resource Manageru šablony se dokončí, budete najít skupinu prostředků obsahující dvě aplikace služeb společně s jeden plán služby app service na webu Azure Portal.
 
-Před přihlášení a použijte nástroj pro správu budete potřebovat k poskytnutí souhlasu pro nové aplikace Azure Active Directory, která souvisí s nástroj pro správu. Tím, že poskytuje souhlasu, chcete povolit nástroj pro správu pro volání virtuální plochy Windows management jménem uživatele, kteří se přihlásí do nástroje.
+Bylo přihlásit a používat nástroj pro správu, bude nutné poskytnout souhlas pro novou aplikaci Azure Active Directory, která souvisí s nástroj pro správu. Tím, že poskytuje souhlasu, chcete povolit nástroj pro správu pro volání virtuální plochy Windows management jménem uživatele, který je podepsaný do nástroje.
 
-Chcete-li zjistit, který uživatel můžete použít k přihlášení k nástroji, přejděte na vaše [stránka nastavení uživatele Azure Active Directory](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/) a poznamenejte si hodnoty pro **uživatelé můžou udělit souhlas s aplikací, které přistupují k firemním datům jejich jménem**.
+![Snímek obrazovky znázorňující zadání při vyjadřujete souhlas s uživatelského rozhraní nástroje pro správu oprávnění.](media/management-ui-delegated-permissions.png)
 
-- Pokud je hodnota nastavena na **Ano**, může přihlásit pomocí libovolného uživatelského účtu ve službě Azure Active Directory a poskytnout souhlas pouze pro tohoto uživatele. Ale pokud se přihlásíte na nástroj pro správu jako jiný uživatel později, musíte provést stejné souhlasu znovu.
-- Pokud je hodnota nastavena na **ne**, je nutné přihlášení pomocí globálního správce ve službě Azure Active Directory a poskytnout souhlas správce pro všechny uživatele v adresáři. Nebudete 
+Chcete-li zjistit, který uživatel můžete použít k přihlášení k nástroji, přejděte na vaše [stránka nastavení uživatele Azure Active Directory](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/) a poznamenejte si hodnoty pro **uživatelé můžou udělit souhlas s aplikací, které přistupují k firemním datům jejich jménem** .
+
+![Snímek obrazovky zobrazující, pokud se uživatelé můžou udělit souhlas až po aplikace právě své uživatele.](media/management-ui-user-consent-allowed.png)
+
+- Pokud je hodnota nastavena na **Ano**, můžete přihlásit pomocí libovolného uživatelského účtu ve službě Azure Active Directory a poskytnout souhlas pouze pro tohoto uživatele. Nicméně pokud se nástroji pro správu jako jiný uživatel později, musíte provést stejné souhlasu znovu.
+- Pokud je hodnota nastavena na **ne**, musíte přihlásit jako globální správce ve službě Azure Active Directory a poskytnout souhlas správce pro všechny uživatele v adresáři. Žádní uživatelé se potýkají výzva k povolení spuštění.
 
 
 Jakmile se rozhodnete, který uživatel bude používat k poskytování souhlas, postupujte podle těchto pokynů k poskytování vyjadřujete souhlas s nástroji:
@@ -79,6 +83,8 @@ Jakmile se rozhodnete, který uživatel bude používat k poskytování souhlas,
 1. Přejděte na prostředky Azure, vyberte prostředek Azure App Service s názvem, který jste zadali v šabloně (například Apr3UX) a přejděte na adresu URL přidruženou. například <https://rdmimgmtweb-210520190304.azurewebsites.net>.
 2. Přihlaste se pomocí odpovídajícího účtu uživatele Azure Active Directory.
 3. Pokud jste ověření s globálním správcem, teď můžete vybrat zaškrtávací políčko k **souhlas jménem svojí organizace**. Vyberte **přijmout** poskytnout souhlas.
+   
+   ![Snímek obrazovky zobrazující stránku úplné souhlas, že uživatel nebo správce se zobrazí.](media/management-ui-consent-page.png)
 
 To teď přejdete na nástroje pro správu.
 

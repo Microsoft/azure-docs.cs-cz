@@ -126,7 +126,7 @@ Tyto položky by měly považovat za citlivá data a zadaný v konfiguraci chrá
 | type | CustomScriptForLinux | string |
 | typeHandlerVersion | 1.5 | int |
 | fileUris (např.) | https://github.com/MyProject/Archive/MyPythonScript.py | array |
-| commandToExecute (např.) | Python MyPythonScript.py \<Moje param1\> | string |
+| commandToExecute (např.) | python MyPythonScript.py \<Moje param1\> | string |
 | enableInternalDNSCheck | true (pravda) | boolean |
 | storageAccountName (např.) | examplestorageacct | string |
 | storageAccountKey (např.) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | string |

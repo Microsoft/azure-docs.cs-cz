@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Spusťte atraktivní Reader (Node.js)'
+title: 'Kurz: Spuštění Asistivní čtečky (Node.js)'
 titleSuffix: Azure Cognitive Services
 description: V tomto kurzu vytvoříte aplikaci Node.js, které spouští atraktivní čtečky.
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: a6300d0233f222f26dc018136038c9fe96ecca84
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 98b46636be321bfe87c08687600894d0c8ab54db
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296805"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67311709"
 ---
-# <a name="tutorial-launch-the-immersive-reader-nodejs"></a>Kurz: Spusťte atraktivní Reader (Node.js)
+# <a name="tutorial-launch-the-immersive-reader-nodejs"></a>Kurz: Spuštění Asistivní čtečky (Node.js)
 
 V [přehled](./overview.md), jste se dozvěděli o tom, co je atraktivní čtečky a způsob implementace osvědčené techniky zlepšit míru porozumění čtení pro jazyk inteligentních algoritmů, nově vznikající čtečky a studentům učení rozdíly. Tento kurz obsahuje postup pro vytvoření webové aplikace Node.js, která spustí atraktivní čtečky. V tomto kurzu se naučíte:
 
@@ -32,7 +32,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Klíč předplatného pro atraktivní čtecí zařízení. Získejte ji pomocí následujících [tyto pokyny](https://docs.microsoft.com/en-us/azure/cognitive-services/cognitive-services-apis-create-account).
+* Klíč předplatného pro atraktivní čtecí zařízení. Získejte ji pomocí následujících [tyto pokyny](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account).
 * [Node.js](https://nodejs.org/) a [Yarn](https://yarnpkg.com)
 * Integrované vývojové prostředí, jako [Visual Studio Code](https://code.visualstudio.com/)
 
@@ -56,7 +56,7 @@ yarn add dotenv
 
 ## <a name="acquire-an-access-token"></a>Získání přístupového tokenu
 
-Dále napište back-endového rozhraní API k načtení přístupového tokenu pomocí váš klíč předplatného. Budete potřebovat předplatné key a koncového bodu pro tento další krok. Můžete najít tyto informace v https://azure.microsoft.com/try/cognitive-services/my-apis/.
+Dále napište back-endového rozhraní API k načtení přístupového tokenu pomocí váš klíč předplatného. Budete potřebovat předplatné key a koncového bodu pro tento další krok. Váš klíč předplatného najdete na stránce klíče atraktivní čtečky prostředku na webu Azure Portal. Vyhledání vašeho koncového bodu na stránce Přehled.
 
 Jakmile budete mít klíč předplatného a koncového bodu, vytvořte nový soubor s názvem _.env_a vložte následující kód do ní nahrazení `{YOUR_SUBSCRIPTION_KEY}` a `{YOUR_ENDPOINT}` se váš klíč předplatného a koncový bod, v uvedeném pořadí.
 
@@ -88,7 +88,7 @@ router.get('/token', function(req, res, next) {
         'Ocp-Apim-Subscription-Key': process.env.SUBSCRIPTION_KEY,
         'content-type': 'application/x-www-form-urlencoded'
     },
-    url: process.env.ENDPOINT + '/issueToken'
+    url: process.env.ENDPOINT
   },
   function(err, resp, token) {
     return res.send(token);
@@ -103,7 +103,7 @@ Tento koncový bod rozhraní API by měl být zabezpečený za nějakou formu ov
 1. Otevřít _views\layout.pug_a přidejte následující kód `head` označit, než `body` značky. Tyto `script` načíst značky [atraktivní SDK čtečky](https://github.com/Microsoft/immersive-reader-sdk) a knihovnu jQuery.
 
     ```pug
-    script(src='https://contentstorage.onenote.office.net/onenoteltir/immersivereadersdk/immersive-reader-sdk.1.0.0.js')
+    script(src='https://contentstorage.onenote.office.net/onenoteltir/immersivereadersdk/immersive-reader-sdk.0.0.1.js')
     script(src='https://code.jquery.com/jquery-3.3.1.min.js')
     ```
 
@@ -130,7 +130,7 @@ Tento koncový bod rozhraní API by měl být zabezpečený za nějakou formu ov
             };
 
             // Third, launch the Immersive Reader
-            ImmersiveReader.launchAsync(token, null, content);
+            ImmersiveReader.launchAsync(token, content);
           }});
         }
     ```
@@ -174,7 +174,7 @@ Ve výchozím nastavení jazyk rozhraní atraktivní Reader odpovídá nastaven�
     const options = {
         uiLang: 'fr',
     }
-    ImmersiveReader.launchAsync(token, null, content, options);
+    ImmersiveReader.launchAsync(token, content, options);
     ```
 
 2. Přejděte do _http://localhost:3000_ . Při spuštění atraktivní čtečky rozhraní se nezobrazí ve francouzštině.

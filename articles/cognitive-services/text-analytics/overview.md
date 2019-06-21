@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: overview
 ms.date: 04/03/2019
 ms.author: aahi
-ms.openlocfilehash: 7d52585b51af09c430130141c3680b5630f7b95e
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: a4f1f75c85c99610ee75eb9fda51114b52bbfac3
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417289"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67304024"
 ---
 # <a name="what-is-text-analytics-api"></a>Co je API pro analýzu textu?
 
@@ -89,7 +89,18 @@ Všechny koncové body rozhraní API pro analýzu textu přijímají data v podo
 | Maximální velikost celého požadavku | 1 MB |
 | Maximální počet dokumentů v požadavku | 1 000 dokumentů |
 
-Omezení četnosti je 100 požadavků na druhý a 1 000 požadavků za minutu. Můžete odeslat velké množství dokumentů v jednom volání (až 1 000 dokumentů).
+Vaše omezení četnosti se bude lišit podle cenové úrovně.
+
+| Úroveň          | Počet požadavků za sekundu | Žádostí za minutu |
+|---------------|---------------------|---------------------|
+| Více služeb | 1000                | 1000                |
+| S0/F0         | 100                 | 300                 |
+| S1            | 200                 | 300                 |
+| S2            | 300                 | 300                 |
+| S3            | 500                 | 500                 |
+| S4            | 1000                | 1000                |
+
+Požadavky se měří zvlášť pro jednotlivé funkce pro analýzu textu. Například můžete odesílat maximální počet požadavků pro svou cenovou úroveň pro jednotlivé funkce ve stejnou dobu.      
 
 ## <a name="unicode-encoding"></a>Kódování Unicode
 

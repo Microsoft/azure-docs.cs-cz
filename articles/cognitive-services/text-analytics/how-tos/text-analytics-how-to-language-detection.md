@@ -9,14 +9,14 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 02/26/2019
 ms.author: aahi
-ms.openlocfilehash: 481f7a7589a58baac922001d230f95198ed45eb7
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 6f1e71b75aa68c8f4ea1fa8ed373da25dbb3c24b
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417946"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67304051"
 ---
-# <a name="example-how-to-detect-language-with-text-analytics"></a>Příklad: Jak detekovat jazyce s využitím rozhraní Text Analytics
+# <a name="example-how-to-detect-language-with-text-analytics"></a>Příklad: Rozpoznávání jazyka s využitím Analýzy textu
 
 [Rozpoznávání jazyka](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) funkce rozhraní API vyhodnotí textového vstupu a pro každý dokument a vrátí identifikátory jazyka se skóre označující sílu analýzy.
 
@@ -79,7 +79,7 @@ Podrobnosti o definici žádosti najdete v článku o [volání rozhraní API pr
 
 ## <a name="step-2-post-the-request"></a>Krok 2: Odeslat žádost
 
-Analýza se provede po přijetí žádosti. Služba přijme maximálně 100 žádostí za minutu. Každá žádost může mít maximální velikost 1 MB.
+Analýza se provede po přijetí žádosti. Najdete v článku [limity dat](../overview.md#data-limits) části v přehledu o velikosti a počtu požadavky můžete odesílat za minutu a sekundu.
 
 Nezapomeňte, že služba je bezstavová. Ve vašem účtu se neukládají žádná data. Výsledky se vrátí okamžitě v odpovědi.
 

@@ -10,12 +10,12 @@ ms.subservice: acoustics
 ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: michem
-ms.openlocfilehash: 48a1c4350b438761aa2e2d8c7e57a872c86ca292
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6b49a6b9e235414cd63eacdbad523bbda8646963
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61433336"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67304300"
 ---
 # <a name="project-acoustics-unreal-bake-tutorial"></a>Kurz Unreal která má označení vytvoření Akustika projektu
 Tento dokument popisuje proces odesílání Akustika která má označení vytvoření pomocí rozšíření Unreal editoru.
@@ -208,7 +208,7 @@ Po dokončení která má označení vytvoření, zkontrolujte, zda body voxels 
 Existují čtyři datové soubory, které vytvořil tento modul plug-in v různých fázích. Pouze jeden z nich je potřeba za běhu a je umístěn ve složce obsahu nebo Akustika vašeho projektu, která se automaticky přidá do vašeho projektu balení cesty. Ostatní tři ve složce Akustika Data a nejsou zabaleny.
 
 * **[Project]/Config/ProjectAcoustics.cfg**: Tento soubor uchovává data, která zadáte do polí v Uživatelském režimu Akustika. Umístění a název tohoto souboru nelze změnit. Existují jiné hodnoty uložené v tomto souboru, které mají vliv která má označení vytvoření, ale jsou určené pro pokročilé uživatele a neměl měnit.
-* **[Project]/Content/Acoustics/[LevelName]\_AcousticsData.ace**: Tento soubor je, co se vytvoří během simulace která má označení vytvoření a obsahuje vyhledávací data použít k vykreslení Akustika vaše Scéna modulem runtime. Umístění a název tohoto souboru lze změnit pomocí pole na **sondy** kartu.
+* **[Project]/Content/Acoustics/[LevelName]\_AcousticsData.ace**: Tento soubor je, co se vytvoří během simulace která má označení vytvoření a obsahuje vyhledávací data použít k vykreslení Akustika vaše Scéna modulem runtime. Umístění a název tohoto souboru lze změnit pomocí pole na **sondy** kartu. Pokud chcete přejmenujte tento soubor po jeho vytvoření, odstranění UAsset z projektu Unreal, přejmenujte soubor mimo Unreal v Průzkumníku souborů a znovu tento soubor importovat do Unreal k vytvoření nové UAsset. Přejmenování UAsset samostatně nebude fungovat.
 * **[Project]/Plugins/ProjectAcoustics/AcousticsData/[LevelName]\_AcousticsData.vox**: Tento soubor uchovává geometrie Akustika voxelized a vlastností materiálu. Vypočítán s použitím **Calculate** tlačítko **sondy** kartu. Umístění a název tohoto souboru lze změnit pomocí pole na **sondy** kartu.
 * **[Project]/Plugins/ProjectAcoustics/AcousticsData/[LevelName]\_AcousticsData\_config.xml**: Tento soubor uchovává vypočítán s použitím parametrů **Calculate** tlačítko **sondy** kartu. Umístění a název tohoto souboru lze změnit pomocí pole na **sondy** kartu.
 

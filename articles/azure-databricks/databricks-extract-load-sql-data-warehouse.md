@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 05/17/2019
-ms.openlocfilehash: a6a681ace95f9bab3c77e4a0f9982a2281c778b8
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.date: 06/20/2019
+ms.openlocfilehash: bc038c863e1afb9313964a6b11365d766e0e8691
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "65966444"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67310622"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Kurz: Extrakce, transformace a načítání dat pomocí Azure Databricks
 
@@ -123,8 +123,6 @@ V této části Vytvoření služby Azure Databricks s využitím webu Azure por
 
     * Zadejte název clusteru.
 
-    * Pro účely tohoto článku vytvořte cluster pomocí **5.1** modulu runtime.
-
     * Ujistěte se, že jste vybrali **po provedení \_\_ počet minut nečinnosti** zaškrtávací políčko. Pokud se nepoužívá clusteru, cluster ukončit poskytnou doba trvání (v minutách).
 
     * Vyberte **Vytvořit cluster**. Po spuštění clusteru můžete ke clusteru připojit poznámkové bloky a spouštět úlohy Spark.
@@ -150,6 +148,11 @@ V této části vytvoříte v pracovním prostoru Azure Databricks Poznámkový 
    **Konfigurace relace**
 
    ```scala
+   val appID = "<appID>"
+   val password = "<password>"
+   val fileSystemName = "<file-system-name>"
+   val tenantID = "<tenant-id>"
+
    spark.conf.set("fs.azure.account.auth.type", "OAuth")
    spark.conf.set("fs.azure.account.oauth.provider.type", "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider")
    spark.conf.set("fs.azure.account.oauth2.client.id", "<appID>")
@@ -163,23 +166,29 @@ V této části vytvoříte v pracovním prostoru Azure Databricks Poznámkový 
    **Konfigurace účtu**
 
    ```scala
-   spark.conf.set("fs.azure.account.auth.type.<storage-account-name>.dfs.core.windows.net", "OAuth")
-   spark.conf.set("fs.azure.account.oauth.provider.type.<storage-account-name>.dfs.core.windows.net", "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider")
-   spark.conf.set("fs.azure.account.oauth2.client.id.<storage-account-name>.dfs.core.windows.net", "<appID>")
-   spark.conf.set("fs.azure.account.oauth2.client.secret.<storage-account-name>.dfs.core.windows.net", "<password>")
-   spark.conf.set("fs.azure.account.oauth2.client.endpoint.<storage-account-name>.dfs.core.windows.net", "https://login.microsoftonline.com/<tenant-id>/oauth2/token")
+   val storageAccountName = "<storage-account-name>"
+   val appID = "<app-id>"
+   val password = "<password>"
+   val fileSystemName = "<file-system-name>"
+   val tenantID = "<tenant-id>"
+
+   spark.conf.set("fs.azure.account.auth.type." + storageAccountName + ".dfs.core.windows.net", "OAuth")
+   spark.conf.set("fs.azure.account.oauth.provider.type." + storageAccountName + ".dfs.core.windows.net", "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider")
+   spark.conf.set("fs.azure.account.oauth2.client.id." + storageAccountName + ".dfs.core.windows.net", "" + appID + "")
+   spark.conf.set("fs.azure.account.oauth2.client.secret." + storageAccountName + ".dfs.core.windows.net", "" + password + "")
+   spark.conf.set("fs.azure.account.oauth2.client.endpoint." + storageAccountName + ".dfs.core.windows.net", "https://login.microsoftonline.com/" + tenantID + "/oauth2/token")
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "true")
-   dbutils.fs.ls("abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/")
+   dbutils.fs.ls("abfss://" + fileSystemName  + "@" + storageAccountName + ".dfs.core.windows.net/")
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "false")
    ```
 
-6. V tomto bloku kódu, nahraďte `appID`, `password`, `tenant-id`, a `storage-account-name` zástupné hodnoty hodnotami, které jste shromáždili během dokončování požadavky v tomto kurzu v tomto bloku kódu. Nahraďte `file-system-name` hodnotu zástupného symbolu pomocí cokoli, co název chcete umožnit systému souborů.
+6. V tomto bloku kódu, nahraďte `<app-id>`, `<password>`, `<tenant-id>`, a `<storage-account-name>` zástupné hodnoty hodnotami, které jste shromáždili během dokončování požadavky v tomto kurzu v tomto bloku kódu. Nahraďte `<file-system-name>` hodnotu zástupného symbolu pomocí cokoli, co název chcete umožnit systému souborů.
 
-   * `appID`, A `password` pocházejí z aplikace, které jste zaregistrovali pomocí služby active directory při vytváření instančního objektu.
+   * `<app-id>`, A `<password>` pocházejí z aplikace, které jste zaregistrovali pomocí služby active directory při vytváření instančního objektu.
 
-   * `tenant-id` Je ze svého předplatného.
+   * `<tenant-id>` Je ze svého předplatného.
 
-   * `storage-account-name` Je název vašeho účtu úložiště Azure Data Lake Storage Gen2.
+   * `<storage-account-name>` Je název vašeho účtu úložiště Azure Data Lake Storage Gen2.
 
 7. Stisknutím klávesy **SHIFT + ENTER** klíče pro spuštění kódu v tomto bloku.
 
@@ -195,7 +204,7 @@ V buňce, stiskněte klávesu **SHIFT + ENTER** spuštění kódu.
 
 Teď do nové buňky pod tohohle, zadejte následující kód a nahraďte hodnoty, které se zobrazují v závorkách se stejnými hodnotami, které jste použili dříve:
 
-    dbutils.fs.cp("file:///tmp/small_radio_json.json", "abfss://<file-system>@<account-name>.dfs.core.windows.net/")
+    dbutils.fs.cp("file:///tmp/small_radio_json.json", "abfss://" + fileSystemName + "@" + storageAccount + ".dfs.core.windows.net/")
 
 V buňce, stiskněte klávesu **SHIFT + ENTER** spuštění kódu.
 
@@ -206,11 +215,6 @@ V buňce, stiskněte klávesu **SHIFT + ENTER** spuštění kódu.
    ```scala
    val df = spark.read.json("abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/small_radio_json.json")
    ```
-
-   * Nahradit `file-system-name` zástupnou hodnotu s názvem, který jste zadali systému souborů v Průzkumníku služby Storage.
-
-   * Nahradit `storage-account-name` zástupný symbol s názvem účtu úložiště.
-
 2. Stisknutím klávesy **SHIFT + ENTER** klíče pro spuštění kódu v tomto bloku.
 
 3. Spuštěním následujícího kódu zobrazíte obsah datového rámce:
@@ -357,14 +361,7 @@ Jak už bylo zmíněno dříve, konektor SQL Data Warehouse používá Azure Blo
        "spark.sql.parquet.writeLegacyFormat",
        "true")
 
-   renamedColumnsDF.write
-       .format("com.databricks.spark.sqldw")
-       .option("url", sqlDwUrlSmall) 
-       .option("dbtable", "SampleTable")
-       .option( "forward_spark_azure_storage_credentials","True")
-       .option("tempdir", tempDir)
-       .mode("overwrite")
-       .save()
+   renamedColumnsDF.write.format("com.databricks.spark.sqldw").option("url", sqlDwUrlSmall).option("dbtable", "SampleTable")       .option( "forward_spark_azure_storage_credentials","True").option("tempdir", tempDir).mode("overwrite").save()
    ```
 
    > [!NOTE]
