@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/07/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 83f202f087d51b7742a74cf5ee5db8bd5fee5385
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c5bbd19969349965ea20fa4cfc09e10119a9a86c
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67073724"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295753"
 ---
 # <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>Kontrolní seznam výkonu a škálovatelnosti Microsoft Azure Storage
 
@@ -109,7 +109,7 @@ Pokud se blíží se limit účty úložiště, které můžete použít v kombi
 Pokud vaše aplikace se blíží cíle škálovatelnosti pro jeden účet úložiště, vezměte v úvahu přijetím jedné z následujících postupů:  
 
 * Zvažte na zatížení, které způsobí, že vaše aplikace přístup nebo překročení cíle škálovatelnosti. Můžete ho jinak na použití menší šířku pásma nebo kapacity nebo méně transakce návrhu?
-* Pokud aplikace musí být delší než jeden z cílů škálovatelnosti, měli byste vytvořit více účtů úložiště a oddíl vašich aplikačních dat napříč více účtů úložiště. Pokud používáte tento vzor, je nutné navrhnout aplikaci tak, že můžete přidat další účty úložiště v budoucnosti pro vyrovnávání zatížení. V době psaní každé předplatné Azure může mít až 100 účtů úložiště.  Účty úložiště také mít žádné náklady než využití z hlediska uložených dat, transakcí provedených nebo přenesená data.
+* Pokud aplikace musí být delší než jeden z cílů škálovatelnosti, měli byste vytvořit více účtů úložiště a oddíl vašich aplikačních dat napříč více účtů úložiště. Pokud používáte tento vzor, je nutné navrhnout aplikaci tak, že můžete přidat další účty úložiště v budoucnosti pro vyrovnávání zatížení. V době psaní každé předplatné Azure, může mít až 250 účtů úložiště v jedné oblasti (nasazené pomocí modelu Azure Resource Manager).  Účty úložiště také mít žádné náklady než využití z hlediska uložených dat, transakcí provedených nebo přenesená data.
 * Pokud vaše aplikace narazí na šířku pásma cíle, vezměte v úvahu komprese dat v klientovi ke snížení šířky pásma potřebné k odesílání dat do služby storage.  I když to může snížit využití šířky pásma a zlepšit výkon sítě, můžete mít také některé negativní dopad.  By se měl vyhodnotit dopad na výkon této z důvodu požadavků na další zpracování pro kompresi a dekompresi dat v klientovi. Kromě toho ukládání komprimovaných dat může to ztížit k řešení potíží, protože může být obtížnější, chcete-li zobrazit uložená data pomocí standardních nástrojů.
 * Pokud vaše aplikace narazí na cíle škálovatelnosti, zajistěte, že používáte exponenciálního omezení rychlosti pro opakování (viz [opakování](#subheading14)).  Je lepší Ujistěte se, že nikdy přístup (s použitím jedné z výše uvedených metod) cíle škálovatelnosti, ale tím se zajistí, že vaše aplikace nebude právě i nadále pokoušet rychle, provádění omezování horší.  
 

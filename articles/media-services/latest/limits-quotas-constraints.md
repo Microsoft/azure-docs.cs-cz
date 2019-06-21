@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 05/16/2019
 ms.author: juliako
-ms.openlocfilehash: 1aa15a42893d867ae18c267e163e8df94af50723
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 709ed293dbb0550dc1bb43bf1e1e1cc50906cc31
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65824460"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67293447"
 ---
 # <a name="quotas-and-limitations-in-azure-media-services-v3"></a>Kvóty a omezení v Azure Media Services v3
 
@@ -44,6 +44,7 @@ Tento článek popisuje kvóty a omezení v Azure Media Services v3.
 | Transformuje na účtu Azure Media Services | 100 (fixní)|
 | Jedinečné lokátory streamování přidružené k prostředku najednou | 100<sup>(6)</sup> (fixní) |
 | Možnosti podle obsahu klíče zásad |30 | 
+| Klíče na jeden účet služby pro doručování licencí za měsíc pro každý typ DRM v Media Services|1 000 000|
 
 <sup>1</sup> maximální velikost podporovaná pro jeden objekt blob je aktuálně ve službě Azure Blob Storage až 5 TB. Další omezení platí v závislosti na velikosti virtuálních počítačů, které se používají ve službě Media Services. Omezení velikosti platí pro soubory, které nahrajete a také soubory, které se vygeneruje jako výsledek zpracování (kódování nebo analýza) Media Services. Pokud zdrojový soubor je větší než 260 GB, vaše úloha se pravděpodobně nezdaří. 
 

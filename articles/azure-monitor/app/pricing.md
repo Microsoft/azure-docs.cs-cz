@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 05/29/2019
 ms.author: dalek
-ms.openlocfilehash: ebcb0922335a2bdc5423ec4e4bfce7c1cd71c46a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 188911fa3fb872c8db1612406bf3d4e9b36d837b
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66357266"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303849"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Správa nákladů a využití pro službu Application Insights
 
@@ -30,7 +30,7 @@ Pokud máte dotazy týkající se ukázky cen pro službu Application Insights, 
 
 ## <a name="pricing-model"></a>Cenový model
 
-Ceny za [Azure Application Insights] [ start] se podle objemu dat přijatých. Každý prostředek Application Insights se účtuje jako samostatná služba a přispívá k vyúčtování předplatného Azure.
+Ceny za [Azure Application Insights][start] se podle objemu dat přijatých. Každý prostředek Application Insights se účtuje jako samostatná služba a přispívá k vyúčtování předplatného Azure.
 
 ### <a name="data-volume-details"></a>Podrobné informace o objemu dat
 
@@ -38,11 +38,12 @@ Ceny za [Azure Application Insights] [ start] se podle objemu dat přijatých. K
 * Poplatky za objem dat vaší aplikace jsou teď hlášeny na nové účtování počítat s názvem **Ingestování** od dubna 2018. Tento nový měřič je sdílen mezi technologií, jako jsou aplikace Insights a Log Analytics pro monitorování a v části název služby je aktuálně **Log Analytics**. 
 * [Live Metrics Stream](../../azure-monitor/app/live-stream.md) dat se nepočítá ceny účely.
 
-Aktuální ceny měny a oblasti, naleznete v tématu [ceny za Application Insights][pricing].
+> [!NOTE]
+> Všechny ceny zobrazené v snímky obrazovky v tomto článku jsou například pouze pro účely. Aktuální ceny měny a oblasti, naleznete v tématu [ceny za Application Insights][pricing].
 
 ### <a name="multi-step-web-tests"></a>Vícekrokové webové testy
 
-[Vícekrokové webové testy](../../azure-monitor/app/monitor-web-app-availability.md#multi-step-web-tests) účtovat další poplatky. Vícekrokové webové testy jsou webové testy, které provádějí posloupnost akcí.
+[Vícekrokové webové testy](../../azure-monitor/app/availability-multistep.md) účtovat další poplatky. Vícekrokové webové testy jsou webové testy, které provádějí posloupnost akcí.
 
 Neexistuje žádný samostatný poplatek za *odešlete zprávu ping testy* o jednu stránku. Telemetrie z testy a testy vícekrokového je účtované stejně jako další telemetrie z vaší aplikace.
 
@@ -53,7 +54,7 @@ Application Insights umožňuje snadno pochopit, jaké jsou náklady pravděpodo
 ![Výběr cenové](./media/pricing/pricing-001.png)
 
 A. Zkontrolujte objem dat za měsíc. To zahrnuje všechna data, které obdržel a uchovávají (po všech [vzorkování](../../azure-monitor/app/sampling.md)) ze serveru a klientské aplikace a z testů dostupnosti.  
-B. Samostatný poplatek za provedení [vícekrokové webové testy](../../azure-monitor/app/monitor-web-app-availability.md#multi-step-web-tests). (Nejsou obsaženy jednoduché dostupnost testů, které jsou součástí poplatku za objem dat.)  
+B. Samostatný poplatek za provedení [vícekrokové webové testy](../../azure-monitor/app/availability-multistep.md). (Nejsou obsaženy jednoduché dostupnost testů, které jsou součástí poplatku za objem dat.)  
 C. Zobrazit trendy objemu dat za poslední měsíc.  
 D. Povolení přijímání dat [vzorkování](../../azure-monitor/app/sampling.md).   
 E. Nastavte denní limit objemu dat.  

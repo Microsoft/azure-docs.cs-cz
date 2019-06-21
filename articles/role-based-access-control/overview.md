@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 06/12/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 7e670410b93439e23e1018f6646c5e0edc04b9bd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4a5352e96e522a8bd32c428957b3bbfd62c5fa9b
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67116417"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275937"
 ---
 # <a name="what-is-role-based-access-control-rbac-for-azure-resources"></a>Co je řízení přístupu na základě rolí (RBAC) pro prostředky Azure?
 
@@ -74,7 +74,7 @@ Azure obsahuje několik [předdefinovaných rolí](built-in-roles.md), které m�
 
 Zbývající předdefinované role umožňují správu konkrétních prostředků Azure. Role [Přispěvatel virtuálních počítačů](built-in-roles.md#virtual-machine-contributor) například uživateli umožňuje vytvářet a spravovat virtuální počítače. Pokud předdefinované role není splnili specifické požadavky vaší organizace, můžete vytvořit vlastní [vlastních rolí pro prostředky Azure](custom-roles.md).
 
-Azure zavádí datové operace (momentálně ve verzi Preview), které vám umožní udělit přístup k datům v rámci objektu. Pokud má uživatel například přístup ke čtení dat u účtu úložiště, bude moci číst objekty blob nebo zprávy v rámci daného účtu úložiště. Další informace najdete v tématu [pochopení definic rolí pro prostředky Azure](role-definitions.md).
+Azure má operace s daty, které vám umožní udělit přístup k datům v rámci objektu. Pokud má uživatel například přístup ke čtení dat u účtu úložiště, bude moci číst objekty blob nebo zprávy v rámci daného účtu úložiště. Další informace najdete v tématu [pochopení definic rolí pro prostředky Azure](role-definitions.md).
 
 ### <a name="scope"></a>Scope
 

@@ -9,12 +9,12 @@ ms.date: 04/18/2017
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 8bee0426f171b0fdb7793d18c352649928fdb2e8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2b3c2ed7f2914374ac94783511f2992ae5755967
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65907253"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67302342"
 ---
 # <a name="using-shared-access-signatures-sas"></a>Použití sdílených přístupových podpisů (SAS)
 
@@ -23,7 +23,10 @@ Sdílený přístupový podpis (SAS) poskytuje způsob, jak udělit omezený př
 Další příklady použití SAS nad rámec těch zde uvedený, naleznete v tématu [Začínáme se službou Azure Blob Storage v rozhraní .NET](https://azure.microsoft.com/documentation/samples/storage-blob-dotnet-getting-started/) a další ukázky, které jsou k dispozici v [vzorových kódů Azure](https://azure.microsoft.com/documentation/samples/?service=storage) knihovny. Stažení ukázkové aplikace a jejich spuštění nebo procházení kódu na Githubu.
 
 ## <a name="what-is-a-shared-access-signature"></a>Co je podpis sdíleného přístupu?
+
 Sdílený přístupový podpis poskytuje Delegovaný přístup k prostředkům ve vašem účtu úložiště. Pomocí SAS můžete udělit klientům přístup k prostředkům ve vašem účtu úložiště, aniž byste sdíleli své klíče účtu. Toto je zásadní aspekt používání sdílených přístupových podpisů v aplikacích – SAS představuje bezpečný způsob sdílení prostředků úložiště, aniž byste ohrozili své klíče účtu.
+
+[!INCLUDE [storage-recommend-azure-ad-include](../../../includes/storage-recommend-azure-ad-include.md)]
 
 [!INCLUDE [storage-account-key-note-include](../../../includes/storage-account-key-note-include.md)]
 
@@ -35,6 +38,7 @@ SAS nabízí detailní kontrolu nad tím typ přístupu, kterou můžete udělit
 * Protokol, přes který bude přijímat služby Azure Storage SAS. Tento nepovinný parametr slouží k omezení přístupu ke klientům pomocí protokolu HTTPS.
 
 ## <a name="when-should-you-use-a-shared-access-signature"></a>Kdy byste měli použít sdílený přístupový podpis?
+
 SAS můžete použít, pokud chcete poskytnout přístup k prostředkům ve vašem účtu úložiště do libovolného klienta, nikoli má přístupové klíče účtu úložiště. Váš účet úložiště obsahuje jak primární a sekundární přístupový klíč, které udělit přístup ke svému účtu pro správu a všechny prostředky v ní. Vystavení některý z těchto klíčů otevře svůj účet a možnost použití škodlivých aktivit nebo nedbalosti. Sdílené přístupové podpisy poskytnout bezpečné alternativu, která umožňuje klientům pro čtení, zápisu a odstraňování dat v účtu úložiště podle oprávnění, které jste jim explicitně udělili a bez nutnosti klíč účtu.
 
 Běžný scénář, kde je užitečné SAS je služba, kde uživatelé čtení a zápis svá vlastní data do účtu úložiště. Ve scénáři, kde účet úložiště ukládá data uživatelů existují dva způsoby typické návrhu:
@@ -56,12 +60,14 @@ Kromě toho budete muset použít SAS pro autorizaci přístupu k objektu zdroje
 * Při kopírování objektu blob do souboru nebo souboru do objektu blob, musíte použít SAS k autorizaci přístupu k objektu zdroje i v případě, že zdrojové a cílové objektů se nacházejí v rámci stejného účtu úložiště.
 
 ## <a name="types-of-shared-access-signatures"></a>Druhy sdílených přístupových podpisů
+
 Můžete vytvořit dva druhy sdílených přístupových podpisů:
 
 * **SAS služby.** SAS služby deleguje přístup k prostředku jen v jedné službě úložiště: službě Blob, Queue, Table nebo File. Zobrazit [vytváření SAS služby](https://msdn.microsoft.com/library/dn140255.aspx) a [příklady SAS služby](https://msdn.microsoft.com/library/dn140256.aspx) podrobné informace o vytváření token SAS služby.
 * **Account SAS.** SAS účtu delegáti přístup k prostředkům v jedné nebo více služeb úložiště. Všechny operace, které jsou k dispozici přes SAS služby jsou k dispozici prostřednictvím SAS účtu. Kromě toho s podpisem SAS účtu může delegovat přístup k operacím, které platí pro určitou službu, jako například **Get/Set vlastnosti služby** a **získat statistiky služby**. Můžete taky delegovat přístup k operacím čtení, zápis a odstranění pro kontejnery objektů blob, tabulky a sdílené složky, který se nedá vymezit přes SAS služby. Zobrazit [vytváření SAS účtu](https://msdn.microsoft.com/library/mt584140.aspx) podrobné informace o vytváření token SAS účtu.
 
 ## <a name="how-a-shared-access-signature-works"></a>Jak funguje sdíleného přístupového podpisu
+
 Sdílený přístupový podpis je podepsaný identifikátor URI, který odkazuje na jeden nebo více prostředků úložiště a zahrnuje token, který obsahuje speciální sadu parametrů dotazu. Token, který označuje, jak můžou být prostředky dostupné klienta. Jeden z parametrů dotazu, podpisu, je vytvořen z parametrů SAS a podepsán s klíčem účtu. Tento podpis používá Azure Storage k autorizaci přístupu k prostředku úložiště.
 
 Tady je příklad identifikátoru URI SAS, zobrazuje identifikátor URI a tokenu SAS:
@@ -73,9 +79,11 @@ SAS token je řetězec, můžete generovat *klienta* na straně (najdete v člá
 Když klient poskytuje jako součást požadavku na identifikátor URI SAS do služby Azure Storage, služba zkontroluje SAS parametry a podpis k ověření, že je platný pro ověření žádosti. Pokud službu ověřuje, že podpis je platný, pak je požadavek autorizován. Požadavek v opačném případě je odmítnuto. kód chyby 403 (zakázáno).
 
 ## <a name="shared-access-signature-parameters"></a>Sdílený přístupový podpis parametry
+
 SAS účtu a tokeny SAS služby zahrnují některé společné parametry a také provést několik parametrů, které se liší.
 
 ### <a name="parameters-common-to-account-sas-and-service-sas-tokens"></a>Parametry, které jsou společné pro SAS účtu a tokeny SAS služby
+
 * **Verze rozhraní API** volitelný parametr, který určuje verzi služby úložiště používat k provedení požadavku.
 * **Verze služby** povinný parametr, který určuje verzi služby úložiště používat k ověření požadavku.
 * **Čas spuštění.** Toto je doba, jakou SAS začne platit. Čas zahájení pro sdílený přístupový podpis je volitelný. Pokud čas spuštění je vynechán, sdíleného přístupového podpisu je hned platná. Počáteční čas musí být vyjádřena ve standardu UTC (Coordinated Universal Time), se speciální označení UTC ("Z"), třeba `1994-11-05T13:15:30Z`.
@@ -86,6 +94,7 @@ SAS účtu a tokeny SAS služby zahrnují některé společné parametry a také
 * **Podpis.** Podpis je vytvořen z ostatní parametry zadané jako součást tokenu a pak se zašifrují. Podpis se používá k autorizaci přístupu k prostředkům zadaným úložiště.
 
 ### <a name="parameters-for-a-service-sas-token"></a>Parametry pro token SAS služby
+
 * **Prostředek úložiště.** Prostředky úložiště, pro které můžete delegovat přístup se službou SAS patří:
   * Kontejnerům a objektům BLOB
   * Sdílené složky a soubory
@@ -93,6 +102,7 @@ SAS účtu a tokeny SAS služby zahrnují některé společné parametry a také
   * Tabulky a rozsahy tabulkové entity.
 
 ### <a name="parameters-for-an-account-sas-token"></a>Parametry pro token SAS účtu
+
 * **Službu nebo služby.** SAS účtu může delegovat přístup k jednomu nebo více služeb úložiště. Můžete například vytvořit SAS účtu, který deleguje přístup ke službě objektů Blob a souborů. Nebo můžete vytvořit SAS, že delegáty přístup na všechny čtyři služby (objekt Blob, fronty, tabulky a souboru).
 * **Typy prostředků úložiště.** Účet SAS se vztahuje na jeden nebo více tříd prostředky úložiště, nikoli konkrétní prostředek. Můžete vytvořit SAS pro delegování přístupu k účtu:
   * Rozhraní úrovně služeb API, která je volána před prostředek účtu úložiště. Mezi příklady patří **Get/Set vlastnosti služby**, **získat statistiky služby**, a **seznamu kontejnery/fronty/tabulek/složky**.
@@ -139,6 +149,7 @@ https://myaccount.blob.core.windows.net/?restype=service&comp=properties&sv=2015
 Vzhledem k tomu, že oprávnění jsou omezeny na úrovni služby, jsou přístupné operací s Tento SAS **získat vlastnosti služby Blob Service** (čtení) a **nastavit vlastnosti služby Blob Service** (zápis). Nicméně s jiný identifikátor URI prostředku, stejný token SAS možné využít také pro delegování přístupu k **získat statistiky služby Blob** (čtení).
 
 ## <a name="controlling-a-sas-with-a-stored-access-policy"></a>Řízení SAS s uložené zásady přístupu
+
 Sdílený přístupový podpis můžete provést jednu z těchto dvou tvarů:
 
 * **Ad hoc SAS:** Při vytváření ad hoc SAS, čas zahájení, čas vypršení platnosti a oprávnění pro SAS jsou všechny zadané v identifikátoru URI SAS (nebo předpokládané, a to v případě, pokud je vynechán čas zahájení). Tento typ SAS lze vytvořit jako SAS účtu nebo SAS služby.
@@ -158,12 +169,15 @@ Rozdíl mezi dvě různými formami je důležité pro jeden klíč scénář: o
 > Identifikátor URI sdíleného přístupového podpisu je přidružená ke klíči účet použitý k vytvoření podpisu a přidruženého uložené zásady přístupu (pokud existuje). Pokud není zadána žádná uložené zásady přístupu, chcete-li změnit klíč účtu je jediný způsob, jak odebrat sdílený přístupový podpis.
 
 ## <a name="authenticating-from-a-client-application-with-a-sas"></a>Ověřování z klientské aplikace pomocí SAS
+
 Klient, který je ve vlastnictví SAS pomocí SAS můžete autorizovat požadavek proti účtu úložiště, pro kterou, které nemají klíče účtu. SAS můžete zahrnout v připojovacím řetězci, nebo použít přímo z odpovídajícího konstruktoru nebo metody.
 
 ### <a name="using-a-sas-in-a-connection-string"></a>V připojovacím řetězci pomocí SAS
+
 [!INCLUDE [storage-use-sas-in-connection-string-include](../../../includes/storage-use-sas-in-connection-string-include.md)]
 
 ### <a name="using-a-sas-in-a-constructor-or-method"></a>Pomocí SAS v konstruktoru nebo – metoda
+
 Několik konstruktorů knihovny klienta služby Azure Storage a přetížení metody nabízejí parametr SAS, tak, aby schválíte žádost o službu pomocí SAS.
 
 Například tady identifikátor URI SAS slouží k vytvoření odkazu na objekt blob bloku. SAS poskytuje pověření, kterým jenom potřebné pro žádost. Odkaz na objekt blob bloku se pak použije pro operaci zápisu:
@@ -208,6 +222,7 @@ catch (StorageException e)
 ```
 
 ## <a name="best-practices-when-using-sas"></a>Osvědčené postupy při použití SAS
+
 Při použití sdílených přístupových podpisů v aplikacích, je třeba vědět dvě potenciální rizika:
 
 * Pokud je úniku SAS, můžete použít libovolný uživatel, který získá, což může ohrozit potenciálně účtu úložiště.
@@ -227,6 +242,7 @@ Toto riziko omezit, pomůže následující doporučení pro použití sdílený
 10. **Použití Storage Analytics pro monitorování vaší aplikace.** Protokolování a metriky můžete sledovat všechny nárůst selhání ověřování kvůli výpadku služby Zprostředkovatel SAS nebo nechtěnému odstranění uložených zásad přístupu. Zobrazit [Blog týmu Azure Storage](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/08/03/windows-azure-storage-logging-using-logs-to-track-storage-requests.aspx) pro další informace.
 
 ## <a name="sas-examples"></a>Příklady SAS
+
 Níže je několik příkladů oba typy sdíleného přístupového podpisu SAS účtu a SAS služby.
 
 Pokud chcete spustit tyto příklady jazyka C#, budete muset odkaz následující balíčky NuGet ve vašem projektu:
@@ -237,6 +253,7 @@ Pokud chcete spustit tyto příklady jazyka C#, budete muset odkaz následujíc�
 Další příklady, které ukazují, jak vytvořit a otestovat SAS najdete v tématu [vzorových kódů Azure pro ukládání](https://azure.microsoft.com/documentation/samples/?service=storage).
 
 ### <a name="example-create-and-use-an-account-sas"></a>Příklad: Vytvoření a použití SAS účtu
+
 Následující příklad kódu vytvoří účet SAS, který je platný pro objekt Blob a souborové služby a klient získá oprávnění číst, zapisovat a vypsat seznam oprávnění pro přístup k API na úrovni služby. Protokol HTTPS, proto musí být požadavek pomocí protokolu HTTPS omezuje podpisem SAS účtu.
 
 ```csharp
@@ -304,6 +321,7 @@ static void UseAccountSAS(string sasToken)
 ```
 
 ### <a name="example-create-a-stored-access-policy"></a>Příklad: Vytvořit uložené zásady přístupu
+
 Následující kód vytvoří v kontejneru uložené zásady přístupu. Zásady přístupu můžete použít k určení omezení pro SAS služby v kontejneru a jeho objektům BLOB.
 
 ```csharp
@@ -330,6 +348,7 @@ private static async Task CreateSharedAccessPolicyAsync(CloudBlobContainer conta
 ```
 
 ### <a name="example-create-a-service-sas-on-a-container"></a>Příklad: Vytvoření SAS služby v kontejneru
+
 Následující kód vytvoří SAS v kontejneru. Pokud je zadaný název existující zásady přístupu, této zásady souvisí s SAS. Pokud je k dispozici žádné uložené zásady přístupu, vytvoří kód ad hoc SAS ke kontejneru.
 
 ```csharp
@@ -373,6 +392,7 @@ private static string GetContainerSasUri(CloudBlobContainer container, string st
 ```
 
 ### <a name="example-create-a-service-sas-on-a-blob"></a>Příklad: Vytvoření SAS služby na objekt blob
+
 Následující kód vytvoří SAS objektu BLOB. Pokud je zadaný název existující zásady přístupu, této zásady souvisí s SAS. Pokud je k dispozici žádné uložené zásady přístupu, vytvoří kód ad hoc SAS u objektu blob.
 
 ```csharp
@@ -419,9 +439,11 @@ private static string GetBlobSasUri(CloudBlobContainer container, string blobNam
 ```
 
 ## <a name="conclusion"></a>Závěr
+
 Sdílené přístupové podpisy jsou užitečná omezená oprávnění k účtu úložiště na klienty, kteří by neměl mít klíč účtu. V důsledku toho jsou důležitou součástí model zabezpečení pro každou aplikaci pomocí služby Azure Storage. Pokud budete postupovat podle osvědčených postupů, které jsou tady uvedené, můžete SAS k zajištění větší flexibility, přístupu k prostředkům ve vašem účtu úložiště bez negativního vlivu zabezpečení vaší aplikace.
 
 ## <a name="next-steps"></a>Další kroky
+
 * [Správa anonymního přístupu pro čtení ke kontejnerům a objektům BLOB](../blobs/storage-manage-access-to-resources.md)
 * [Delegování přístupu se sdíleným přístupovým podpisem](https://msdn.microsoft.com/library/azure/ee395415.aspx)
 * [Úvod do tabulky a SAS fronty.](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx)

@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: bc85de0c8ec89ea88d2bae8e3f226da7d3163f53
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 607da7983cabe4c36c01171ba8d88c752b99ce3d
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64721090"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303815"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream: Monitorování a Diagnostika s latencí 1 sekundu
 
-Testovat srdce činnost do produkčního prostředí, živé webové aplikace pomocí Live Metrics Stream z [Application Insights](../../azure-monitor/app/app-insights-overview.md). Výběr a filtrování metriky a čítače výkonu ke sledování v reálném čase, bez narušení do vaší služby. Zkontrolujte trasování zásobníku z ukázky se nezdařilo žádosti a výjimky. Spolu s [Profiler](../../azure-monitor/app/profiler.md), [Snapshot debugger](../../azure-monitor/app/snapshot-debugger.md), a [testování výkonu](../../azure-monitor/app/monitor-web-app-availability.md#performance-tests), Live Metrics Stream poskytuje výkonné a neinvazivní diagnostický nástroj pro živé webové lokalita.
+Testovat srdce činnost do produkčního prostředí, živé webové aplikace pomocí Live Metrics Stream z [Application Insights](../../azure-monitor/app/app-insights-overview.md). Výběr a filtrování metriky a čítače výkonu ke sledování v reálném čase, bez narušení do vaší služby. Zkontrolujte trasování zásobníku z ukázky se nezdařilo žádosti a výjimky. Spolu s [Profiler](../../azure-monitor/app/profiler.md), [Snapshot debugger](../../azure-monitor/app/snapshot-debugger.md). Live Metrics Stream poskytuje výkonné a neinvazivní diagnostický nástroj pro živé webové stránky.
 
 Live Metrics Stream můžete:
 
@@ -192,15 +192,6 @@ Pokud znáte a důvěřujete všechny propojené servery, můžete zkusit vlastn
 >[!NOTE]
 >Důrazně doporučujeme, abyste nastavili ověřeného kanál před zadáním potenciálně citlivé informace, jako je ID zákazníka v podmínce filtru.
 >
-
-## <a name="generating-a-performance-test-load"></a>Generování zatížení test výkonu
-
-Pokud chcete sledovat účinek zvýšení zátěže, použijte okno Test výkonnosti. Simuluje žádosti z několika souběžných uživatelů. Je možné spustit buď "manuálních testů" (ping testy) jedné adresy URL, nebo ji můžete spustit [vícekrokový webový test výkonnosti](../../azure-monitor/app/monitor-web-app-availability.md#multi-step-web-tests) , který nahrajete (stejným způsobem jako test dostupnosti).
-
-> [!TIP]
-> Po vytvoření testu výkonnosti otevřete test a okno Live Stream v samostatném systému windows. Zobrazí se při spuštění testu výkonnosti zařazených do fronty a sledovat živý stream ve stejnou dobu.
->
-
 
 ## <a name="troubleshooting"></a>Řešení potíží
 

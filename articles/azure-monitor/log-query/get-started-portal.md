@@ -8,20 +8,20 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: bwren
-ms.openlocfilehash: af01ebdc72df096b45c4ca4e755b2ed3880bab65
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 17b5c0b459e70909d9f305beb8bf87b83f1cf65c
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66255263"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67296519"
 ---
-# <a name="get-started-with-azure-monitor-log-analytics"></a>Začínáme s Azure Monitor Log Analytics
+# <a name="get-started-with-log-analytics-in-azure-monitor"></a>Začínáme se službou Log Analytics ve službě Azure Monitor
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-V tomto kurzu se dozvíte, jak používat Azure Monitor Log Analytics na portálu Azure portal pro zápis dotazů na protokoly Azure monitoru. To se dozvíte, jak do:
+V tomto kurzu se dozvíte, jak používat službu Log Analytics na portálu Azure portal pro zápis dotazů na protokoly Azure monitoru. To se dozvíte, jak do:
 
-- Zápis jednoduchých dotazů
+- Můžete napsat jednoduchý dotaz Log Analytics
 - Pochopení schématu dat
 - Filtrace, řazení a seskupení výsledků
 - Použít časový rozsah
@@ -29,13 +29,22 @@ V tomto kurzu se dozvíte, jak používat Azure Monitor Log Analytics na portál
 - Uložit a načíst dotazy
 - Export a sdílet dotazy
 
+Kurz o psaní dotazů na protokoly, najdete v tématu [Začínáme s dotazy protokolu ve službě Azure Monitor](get-started-queries.md).<br>
+Podrobné informace o dotazech protokolu naleznete v tématu [přehled protokolu dotazů ve službě Azure Monitor](log-query-overview.md).
 
 ## <a name="meet-log-analytics"></a>Musí splňovat Log Analytics
 Log Analytics je webový nástroj pro zápis a spouštění dotazů na protokoly Azure monitoru. Otevřete ho tak, že vyberete **protokoly** v nabídce Azure Monitor. Spustí se nový prázdný dotaz.
 
 ![Domovská stránka](media/get-started-portal/homepage.png)
 
+## <a name="firewall-requirements"></a>Požadavky na bránu firewall
+Chcete-li používat službu Log Analytics, váš prohlížeč vyžaduje přístup k následující adresy. Pokud váš prohlížeč je přístup k portálu Azure přes bránu firewall, je třeba povolit přístup pro tyto adresy.
 
+| Uri | IP adresa | Porty |
+|:---|:---|:---|
+| portal.loganalytics.io | Dynamické | 80,443 |
+| api.loganalytics.io | Dynamické | 80,443 |
+| docs.loganalytics.io | Dynamické | 80,443 |
 
 ## <a name="basic-queries"></a>Základní dotazy
 Hledané termíny, rozpoznávejte trendy, analyzovat vzory a poskytují mnoho přehledy na základě vašich dat je možné dotazy. Začínáme s základní dotazy:
@@ -44,9 +53,9 @@ Hledané termíny, rozpoznávejte trendy, analyzovat vzory a poskytují mnoho p�
 Event | search "error"
 ```
 
-Tento dotaz vyhledá _události_ tabulky pro záznamy, které obsahují pojem "Chyba" v jakékoli vlastnosti.
+Tento dotaz vyhledá _události_ tabulky pro záznamy, které obsahují pojem _chyba_ v jakékoli vlastnosti.
 
-Dotazy můžete spustit buď pomocí názvu tabulky nebo **hledání** příkazu. Výše uvedený příklad začíná název tabulky _události_, která definuje obor dotazu. Znak svislé čáry (|) odděluje příkazy, takže výstup první z nich slouží jako vstup následující příkaz. Můžete přidat libovolný počet příkazů do jednoho dotazu.
+Dotazy můžete spustit buď pomocí názvu tabulky nebo [hledání](/kusto/query/searchoperator) příkazu. Výše uvedený příklad začíná název tabulky _události_, který načte všechny záznamy z tabulky událostí. Znak svislé čáry (|) odděluje příkazy, takže výstup první z nich slouží jako vstup následující příkaz. Můžete přidat libovolný počet příkazů do jednoho dotazu.
 
 Jiný způsob psaní tohoto stejného dotazu by byl:
 
@@ -54,18 +63,18 @@ Jiný způsob psaní tohoto stejného dotazu by byl:
 search in (Event) "error"
 ```
 
-V tomto příkladu **hledání** je vymezen _události_ tabulku a všechny záznamy v této tabulce jsou prohledány na termín "Chyba".
+V tomto příkladu **hledání** působí na _události_ tabulku a všechny záznamy v této tabulce jsou prohledány na termín _chyba_.
 
 ## <a name="running-a-query"></a>Spuštění dotazu
 Spusťte dotaz kliknutím **spustit** tlačítko nebo stisknutím klávesy **Shift + Enter**. Vezměte v úvahu následující informace, které určíte, kód, který se spustí a data, která je vrácena:
 
-- Konce řádků: Jediné přerušení umožňuje volbu dotazu. Více konce řádků ho rozdělit na samostatné dotazy.
+- Konce řádků: Jediné přerušení usnadňuje čtení dotazu. Více konce řádků ho rozdělit na samostatné dotazy.
 - Cursor: Umístěte kurzor někam uvnitř dotazu k jeho provedení. Aktuální dotaz se považuje za kód, dokud nenajde prázdný řádek.
 - Časový rozsah - časový rozsah _posledních 24 hodin_ ve výchozím nastavení. Pokud chcete použít jiný rozsah, použijte Výběr času nebo přidat explicitní čas filtr rozsahu do dotazu.
 
 
 ## <a name="understand-the-schema"></a>Vysvětlené schématu
-Schéma je kolekce tabulek vizuálně seskupené pod logických kategorií. Některé z kategorií jsou z monitorování řešení. _LogManagement_ kategorie obsahuje běžné data, jako jsou Windows a protokolu Syslog události, údaje o výkonu a prezenční signály klienta.
+Schéma je kolekce tabulek vizuálně seskupené pod logických kategorií. Některé z kategorií jsou z monitorování řešení. _LogManagement_ kategorie obsahuje běžné data, jako jsou Windows a protokolu Syslog události, údaje o výkonu a agent vysílat prezenční signál.
 
 ![Schéma](media/get-started-portal/schema.png)
 
@@ -181,7 +190,7 @@ Ikona Průzkumníka dotazů je v horní pravé oblasti. Vypíšou se všechny ul
 Log Analytics podporuje několik metod pro export:
 
 - Excel: Uložte výsledky do souboru .csv.
-- Power BI: Exportujte výsledky do power BI. Zobrazit [data protokolu Azure Monitor importovat do Power BI](../../azure-monitor/platform/powerbi.md) podrobnosti.
+- Power BI: Exportujte výsledky do Power BI. Zobrazit [data protokolu Azure Monitor importovat do Power BI](../../azure-monitor/platform/powerbi.md) podrobnosti.
 - Sdílejte odkaz: Samotný dotaz mohou být sdíleny jako odkaz, který lze potom odeslat a spustit další uživatelé, kteří mají přístup do stejného pracovního prostoru.
 
 ## <a name="next-steps"></a>Další postup

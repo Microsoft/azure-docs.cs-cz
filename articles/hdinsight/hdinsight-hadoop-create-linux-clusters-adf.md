@@ -1,18 +1,18 @@
 ---
 title: 'Kurz: Vytváření clusterů na vyžádání Apache Hadoop v Azure HDInsight pomocí Data Factory '
-description: Zjistěte, jak vytvářet clustery na vyžádání Apache Hadoop v HDInsight pomocí Azure Data Factory.
+description: Kurz – zjistěte, jak vytvářet clustery na vyžádání Apache Hadoop v HDInsight pomocí Azure Data Factory.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.author: hrasheed
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 04/18/2019
-ms.openlocfilehash: 937cb9ba2d9ce63ba36805bc7a946e8ee6e18cf3
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
-ms.translationtype: HT
+ms.openlocfilehash: 64f016ac0fa572cb8cf8504902108cffae267cec
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275446"
+ms.locfileid: "67293293"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Kurz: Vytváření clusterů na vyžádání Apache Hadoop v HDInsight pomocí Azure Data Factory
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -189,7 +189,7 @@ V tomto článku nakonfigurujete aktivitu Hive k vytvoření clusteru HDInsight 
 
     |Vlastnost  |Hodnota  |
     |---------|---------|
-    |Název | Zadejte název datové továrny. Tento název musí být globálně jedinečný.|
+    |Name | Zadejte název datové továrny. Tento název musí být globálně jedinečný.|
     |Předplatné | Vyberte své předplatné Azure. |
     |Skupina prostředků | Vyberte **použít existující** a pak vyberte skupinu prostředků, kterou jste vytvořili, pomocí Powershellového skriptu. |
     |Version | Ponechte **V2**. |

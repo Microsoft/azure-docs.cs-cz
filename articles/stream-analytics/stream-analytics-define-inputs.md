@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 1822bfe9f2d6d337db74ba94d43644b0b3567c71
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bfdebacb4de205fa42fe96ceb9970d2d109536e8
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66455620"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67296154"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Stream data jako vstup do Stream Analytics
 
@@ -38,7 +38,7 @@ Můžete použít [webu Azure portal](stream-analytics-quick-create-portal.md), 
 
 Azure Event Hubs poskytuje vysoce škálovatelné ingestors události publikování a odběru. V Centru událostí shromažďovat miliony událostí za sekundu můžete zpracovávat a analyzovat velké objemy dat vytvářené vašimi připojenými zařízeními a aplikacemi. Event Hubs a Stream Analytics společně, poskytují-ucelené řešení pro analýzu v reálném čase. Event Hubs umožňuje informační kanál událostí do Azure v reálném čase, a úlohy Stream Analytics dokáže zpracovat tyto události v reálném čase. Můžete například odeslat webové kliknutí, údajů snímačů přes nebo online protokolu událostí do služby Event Hubs. Potom můžete vytvořit úlohy Stream Analytics pro účely služby Event Hubs jako vstupní datové proudy v reálném čase filtrování, agregace a korelace.
 
-`EventEnqueuedUtcTime` časové razítko přijetí události v Centru událostí a je výchozí časové razítko události pocházející ze služby Event Hubs do služby Stream Analytics. Ke zpracování dat jako datový proud pomocí časového razítka v případě, že datová část, je nutné použít [TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) – klíčové slovo.
+`EventEnqueuedUtcTime` časové razítko přijetí události v Centru událostí a je výchozí časové razítko události pocházející ze služby Event Hubs do služby Stream Analytics. Ke zpracování dat jako datový proud pomocí časového razítka v případě, že datová část, je nutné použít [TIMESTAMP BY](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) – klíčové slovo.
 
 ### <a name="event-hubs-consumer-groups"></a>Skupiny příjemců centra událostí
 
@@ -86,7 +86,7 @@ FROM Input
 
 Azure IoT Hub je vysoce škálovatelná publikování a odběr schopná optimalizované pro scénáře IoT.
 
-Výchozí časové razítko události pocházející ze služby IoT Hub ve službě Stream Analytics je časové razítko, které byly přijaty události ve službě IoT Hub, který je `EventEnqueuedUtcTime`. Ke zpracování dat jako datový proud pomocí časového razítka v případě, že datová část, je nutné použít [TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) – klíčové slovo.
+Výchozí časové razítko události pocházející ze služby IoT Hub ve službě Stream Analytics je časové razítko, které byly přijaty události ve službě IoT Hub, který je `EventEnqueuedUtcTime`. Ke zpracování dat jako datový proud pomocí časového razítka v případě, že datová část, je nutné použít [TIMESTAMP BY](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) – klíčové slovo.
 
 ### <a name="iot-hub-consumer-groups"></a>Skupiny příjemců IOT Hubu
 

@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/16/2019
 ms.author: juliako
-ms.openlocfilehash: 02c359fa7a0da5c7b374e202dc91ceb6489a5352
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
-ms.translationtype: HT
+ms.openlocfilehash: 0abc3eec380cccae2672d0e9aa4a3a4c7199362f
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190883"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295664"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Živé streamování pomocí služby Azure Media Services v3
 
@@ -55,13 +55,13 @@ Dynamické filtrování se používá k řízení počet stop, formáty, přenos
 
 ![Průchozí](./media/live-streaming/pass-through.svg)
 
-Při použití předávané **živé události** se spoléháte na váš místní kodér pro kódování v reálném čase, že vygeneruje stream videa s několika přenosovými rychlostmi a odešle ho jako informační kanál příspěvku do živé události (pomocí protokolu RTMP nebo fragmentovaného MP4). Živá událost potom přenese příchozí streamy videa bez dalšího zpracování. Takové vytvoření předávací živé události je optimalizovaná pro dlouho běžící události v reálném čase nebo 24 × 365 lineární živé streamování. 
+Při použití předávací **živá událost**, můžete spoléhat na vaše místní kodér služby live Encoding pro vygenerování více datový proud videa s přenosovou rychlostí a odeslat, že jako příspěvek informační kanál k živé události (s použitím vstupní protokol RTMP nebo fragmentovaný soubor MP4). Živá událost se potom provede prostřednictvím příchozí datové proudy videa k dynamické packager (koncový bod streamování) bez jakékoli další překódování. Takové vytvoření předávací živé události je optimalizovaná pro dlouho běžící události v reálném čase nebo 24 × 365 lineární živé streamování. 
 
 ### <a name="live-encoding"></a>Kódování v reálném čase  
 
 ![Kódování v reálném čase](./media/live-streaming/live-encoding.svg)
 
-Při použití kódování v reálném čase pomocí Media Services nakonfigurujte místní kodér pro kódování v reálném čase tak, aby jako informační kanál příspěvku do živé události odesílal video s jednou přenosovou rychlostí (pomocí protokolu RTMP nebo fragmentovaného MP4). Živá událost tento příchozí stream s jednou přenosovou rychlostí zakóduje do [streamu videa s několika přenosovými rychlostmi](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) a zpřístupní ho k doručení na zařízení pro přehrávání přes protokoly, jako jsou MPEG-DASH, HLS a Smooth Streaming. 
+Pokud používáte cloudové kódování pomocí Media Services, nakonfigurujete by vaše místní kodér služby live Encoding odesílat videa s jednou přenosovou rychlostí jako příspěvek informačního kanálu (až 32Mbps agregace) živé události (s použitím vstupní protokol RTMP nebo fragmentovaný soubor MP4). Živá událost videoúlohy příchozí s jednou přenosovou rychlostí streamování do [více streamů videa s přenosovou rychlostí](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) v různých řešení ke zlepšení doručování a zpřístupňuje je pro doručení pro přehrávání zařízení prostřednictvím standardních oborových protokolů jako jsou MPEG-DASH, Apple HTTP Live Streaming (HLS) a Microsoft Smooth Streaming. 
 
 ## <a name="live-streaming-workflow"></a>Pracovní postup živého streamování
 

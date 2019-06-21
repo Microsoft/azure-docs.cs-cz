@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: pullabhk
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 1ac5e77cdda96413db0452fcb13fc48905479419
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
-ms.translationtype: HT
+ms.openlocfilehash: 7c53d8fe0ee5bbfdbe180aa4d18d8c7b7fab29c2
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67136286"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295297"
 ---
 # <a name="monitoring-at-scale-using-azure-monitor"></a>Monitorování ve velkém měřítku pomocí Azure monitoru
 
@@ -47,6 +47,9 @@ Pracovní prostor služby LA můžete vybrat z jiného předplatného jako cíl.
 ### <a name="deploying-solution-to-log-analytics-workspace"></a>Nasazení řešení do pracovního prostoru Log Analytics
 
 Jakmile jsou data v prostoru LA [nasazení šablony Githubu](https://azure.microsoft.com/resources/templates/101-backup-oms-monitoring/) na LA k vizualizaci dat. Ujistěte se, že vám poskytnou stejné skupiny prostředků, název pracovního prostoru a umístění pracovního prostoru správně identifikovat pracovní prostor a pak na něj nainstalovat tuto šablonu.
+
+> [!NOTE]
+> Uživatelé, kteří nemají upozornění nebo úlohy zálohování a obnovení v jejich pracovním prostoru LA může zobrazit chyba s kódem "BadArgumentError" na portálu. Uživatelé mohou tuto chybu ignorovat a pokračovat v používání řešení. Po spuštění odpovídající typ dat odesílaných do pracovního prostoru vizualizace, bude odrážet že stejné a uživatelé neuvidí tato chyba už.
 
 ### <a name="view-azure-backup-data-using-log-analytics-la"></a>Zobrazení dat Azure Backup pomocí Log Analytics (LA)
 

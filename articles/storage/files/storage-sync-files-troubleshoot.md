@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 26055727e308f8c05aece31746434d7e9a0a5abd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.openlocfilehash: 76308b9b5676169de8828aa5850e71f6ba48de71
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65555951"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295091"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Řešení problémů se Synchronizací souborů Azure
 Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě soubory Azure, při zachování flexibility, výkonu a kompatibility s místními souborového serveru. Azure File Sync transformuje serveru systému Windows na rychlou mezipaměť sdílené složky Azure. Můžete použít jakýkoli protokol dostupný ve Windows serveru pro přístup k datům místně, včetně SMB, NFS a FTPS. Můžete mít libovolný počet mezipamětí po celém světě potřebujete.
@@ -863,6 +863,8 @@ Pokud narazíte na problémy s Azure File Sync na serveru, spusťte následujíc
 
 Pokud není problém vyřešen, spusťte nástroj AFSDiag:
 1. Vytvoření adresáře, ve kterém se uloží výstupní AFSDiag (například C:\Output).
+    > [!NOTE]
+    >AFSDiag odstraní veškerý obsah ve výstupním adresáři před shromažďování protokolů. Určení umístění výstupu, který neobsahuje data.
 2. Otevřete okno Powershellu se zvýšenými oprávněními a spusťte následující příkazy (po každém z nich stiskněte klávesu Enter):
 
     ```powershell

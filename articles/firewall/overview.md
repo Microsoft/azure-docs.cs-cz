@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 6/20/2019
+ms.date: 6/21/2019
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: ace0b56ce1ba4c140666c8f2dd6e2187f479446e
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: deca4d1f66950e89148089d2984eb9cb35c470a8
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/20/2019
-ms.locfileid: "67272643"
+ms.locfileid: "67304574"
 ---
 # <a name="what-is-azure-firewall"></a>Co je brána Azure Firewall?
 
@@ -73,7 +73,7 @@ Pro bránu firewall můžete povolit filtrování na základě analýzy hrozeb, 
 
 ### <a name="outbound-snat-support"></a>Podpora pro odchozí SNAT
 
-Veškeré IP adresy pro odchozí provoz z virtuálních sítí se překládají na veřejnou IP adresu brány Azure Firewall na základě zdroje (SNAT). Můžete identifikovat a povolit provoz pocházející z vaší virtuální sítě do vzdálených internetových cílů.
+Veškeré IP adresy pro odchozí provoz z virtuálních sítí se překládají na veřejnou IP adresu brány Azure Firewall na základě zdroje (SNAT). Můžete identifikovat a povolit provoz pocházející z vaší virtuální sítě do vzdálených internetových cílů. Brány Firewall na Azure není SNAT, pokud cílová IP adresa je rozsah privátních IP za [IANA RFC 1918](https://tools.ietf.org/html/rfc1918). Pokud vaše organizace používá veřejnou rozsah IP adres pro privátní sítě, brána Firewall služby Azure se provoz do jedné z brány firewall na privátní IP adresy v AzureFirewallSubnet SNAT.
 
 ### <a name="inbound-dnat-support"></a>Podpora DNAT u příchozích přenosů
 

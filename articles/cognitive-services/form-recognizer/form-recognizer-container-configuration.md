@@ -6,15 +6,15 @@ author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: form-recognizer
-ms.topic: overview
-ms.date: 06/10/2019
+ms.topic: conceptual
+ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: bdff74be8578bb862974479b3151b0d922f00dd9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7e8e7a13cd02a6f3b109a84829dba2a81fd36aaa
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67063993"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67296236"
 ---
 # <a name="configure-form-recognizer-containers"></a>Konfigurace formuláře Rozlišovač kontejnery
 
@@ -74,7 +74,7 @@ Kontejner modulu pro rozpoznávání formuláře vyžaduje vstupní připojení 
 
 Syntaxe umístění hostitele připojení se liší v závislosti na operačním systému hostitele. Kromě toho připojení umístění [hostitelský počítač](form-recognizer-container-howto.md#the-host-computer) nemusí být dostupný z důvodu konfliktu mezi oprávnění účtu služby Docker a oprávnění umístění připojení hostitele.
 
-|Nepovinné| Name | Typ dat | Popis |
+|Nepovinné| Název | Typ dat | Popis |
 |-------|------|-----------|-------------|
 |Požaduje se| `Input` | String | Cíl vstupní připojení. Výchozí hodnota je `/input`.    <br><br>Příklad:<br>`--mount type=bind,src=c:\input,target=/input`|
 |Požaduje se| `Output` | String | Cíl připojení výstupu. Výchozí hodnota je `/output`.  <br><br>Příklad:<br>`--mount type=bind,src=c:\output,target=/output`|

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 06/12/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 27315bf562f7b221b19747aca4809f2be5fd1121
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 7d7cba63060756bff786b9475275e5262627cae9
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147453"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295718"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>Kurz: Při aktualizaci základní image do služby Azure container registry. automatizace sestavování imagí kontejneru 
 
@@ -30,7 +30,7 @@ V poslední části série tohoto kurzu se naučíte:
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud chcete Azure CLI používat místně, musíte mít nainstalovanou verzi Azure CLI **2.0.46** nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade rozhraní příkazového řádku (CLI), přečtěte si téma [Instalace Azure CLI][azure-cli].
+Pokud chcete Azure CLI používat místně, musíte mít nainstalovanou verzi Azure CLI **2.0.46** nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade rozhraní příkazového řádku, naleznete v tématu [instalace Azure CLI][azure-cli].
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -61,7 +61,7 @@ GIT_PAT=<personal-access-token> # The PAT you generated in the second tutorial
 
 ## <a name="base-images"></a>Základní image
 
-Soubory Dockerfile definující většinu imagí kontejnerů specifikují nadřazenou image, na které jsou založené. Tato image se často označuje jako *základní image*. Základní image obvykle obsahují operační systém, například [Alpine Linux][base-alpine] nebo [Windows Nano Server][base-windows], na kterém jsou použity zbývající vrstvy kontejneru. Můžou také obsahovat architektury aplikace, jako je třeba [Node.js][base-node] nebo [.NET Core][base-dotnet].
+Soubory Dockerfile definující většinu imagí kontejnerů specifikují nadřazenou image, na které jsou založené. Tato image se často označuje jako *základní image*. Základní Image obvykle obsahují operačního systému, například [Alpine Linux][base-alpine] or [Windows Nano Server][base-windows], na které se použijí zbývající části kontejneru vrstvy. Také mohou zahrnovat aplikačních architektur, jako [Node.js][základní uzel] nebo [.NET Core][base-dotnet].
 
 ### <a name="base-image-updates"></a>Aktualizace základní image
 
@@ -73,23 +73,23 @@ Když se základní image aktualizuje, budete muset znovu sestavit jakékoli ima
 
 * V současné době pro sestavení image ze souboru Dockerfile, zjistí úlohu ACR závislosti na základní Image ve stejné Azure container registry, do veřejného úložiště Docker Hub nebo do veřejného úložiště ve službě Microsoft Container Registry. Pokud základní image podle `FROM` příkazu se nachází v jednom z těchto umístění, ACR úkol přidá hook zajistit bitovou kopii znovu sestaví kdykoli aktualizovat své základní.
 
-* Když vytvoříte úlohu služby ACR s [az acr úloha vytvoření] [ az-acr-task-create] příkazu, ve výchozím nastavení je úkol *povolené* událost. aktivační událost podle aktualizací základních imagí. To znamená `base-image-trigger-enabled` je nastavena na hodnotu True. Pokud chcete zakázat toto chování v rámci úlohy, aktualizujte vlastnost na hodnotu False. Například spusťte následující [az acr úlohy aktualizace] [ az-acr-task-update] příkaz:
+* Když vytvoříte úlohu služby ACR s [az acr úloha vytvoření][az-acr-task-create] příkazu, ve výchozím nastavení je úkol *povolené* událost. aktivační událost podle aktualizací základních imagí. To znamená `base-image-trigger-enabled` je nastavena na hodnotu True. Pokud chcete zakázat toto chování v rámci úlohy, aktualizujte vlastnost na hodnotu False. Například spusťte následující [az acr úlohy aktualizace][az-acr-task-update] příkaz:
 
   ```azurecli
   az acr task update --myregistry --name mytask --base-image-trigger-enabled False
   ```
 
-* Povolit úlohu ACR, abyste zjistili a sledovat závislosti image kontejneru, – tedy jeho základní image – musí nejdřív spustit úlohu **alespoň jednou**. Například aktivovat ručně pomocí úkolu [az acr úlohy] [ az-acr-task-run] příkazu.
+* Povolit úlohu ACR, abyste zjistili a sledovat závislosti image kontejneru, – tedy jeho základní image – musí nejdřív spustit úlohu **alespoň jednou**. Například aktivovat ručně pomocí úkolu [az acr úlohy][az-acr-task-run] příkazu.
 
-* Spustit úlohu s aktualizací základních imagí, musí mít základní image *stabilní* označení, jako například `node:9-alpine`. Toto označení je typické pro základní image, která se aktualizuje s operačním systémem a framework opravy nejnovější stabilní verzi. Pokud základní image se aktualizuje s novou značku verze, neaktivuje úkolu. Další informace o označování image, najdete v článku [doporučené postupy pokyny](https://blogs.msdn.microsoft.com/stevelasker/2018/03/01/docker-tagging-best-practices-for-tagging-and-versioning-docker-images/). 
+* Spustit úlohu s aktualizací základních imagí, musí mít základní image *stabilní* označení, jako například `node:9-alpine`. Toto označení je typické pro základní image, která se aktualizuje s operačním systémem a framework opravy nejnovější stabilní verzi. Pokud základní image se aktualizuje s novou značku verze, neaktivuje úkolu. Další informace o označování image, najdete v článku [doporučené postupy pokyny](https://stevelasker.blog/2018/03/01/docker-tagging-best-practices-for-tagging-and-versioning-docker-images/). 
 
 ### <a name="base-image-update-scenario"></a>Scénář aktualizace základní image
 
-Tento kurz vás provede scénářem aktualizace základní image. [Vzorový kód][code-sample] zahrnuje dva soubory Dockerfile: image aplikace a image, na které je založená. V následujících částech vytvoříte ACR úkolu, který automaticky aktivuje sestavení aplikace bitové kopie, když novou verzi základní image se vloží do stejné registru kontejneru.
+Tento kurz vás provede scénářem aktualizace základní image. [Vzorový kód][code-sample] obsahuje dva soubory Dockerfile: image aplikace a obrázek určuje jako její základ. V následujících částech vytvoříte ACR úkolu, který automaticky aktivuje sestavení aplikace bitové kopie, když novou verzi základní image se vloží do stejné registru kontejneru.
 
 [Dockerfile-app][dockerfile-app]: Malé webové aplikace Node.js, který vykreslí statická webová stránka zobrazující Node.js verze, na které je založená. Řetězec verze je simulovaný: zobrazuje obsah proměnné prostředí `NODE_VERSION`, která je definovaná v základní imagi.
 
-[Soubor Dockerfile base][dockerfile-base]: Na obrázku, který `Dockerfile-app` určuje jako její základ. Je založená na imagi [Node][base-node] a zahrnuje proměnnou prostředí `NODE_VERSION`.
+[Základní soubor Dockerfile][dockerfile-base]: Na obrázku, který `Dockerfile-app` určuje jako její základ. Je založena na [uzel][base-node] obrázku a zahrnuje `NODE_VERSION` proměnné prostředí.
 
 V následujících částech vytvoříte úlohu, aktualizujete hodnotu `NODE_VERSION` v souboru Dockerfile základní image a potom použijete ACR Tasks k sestavení základní image. Když úloha ACR odešle do registru novou základní image, automaticky aktivuje sestavení image aplikace. Volitelně můžete spustit image kontejneru aplikace místně, abyste se mohli podívat na různé řetězce verze v sestavených imagích.
 
@@ -105,7 +105,7 @@ az acr build --registry $ACR_NAME --image baseimages/node:9-alpine --file Docker
 
 ## <a name="create-a-task"></a>Vytvoření úkolu
 
-Dále pomocí příkazu [az acr build-task create][az-acr-task-create] vytvořte úlohu:
+Dále vytvořte úkol s [az acr úloha vytvoření][az-acr-task-create]:
 
 ```azurecli-interactive
 az acr task create \
@@ -120,9 +120,9 @@ az acr task create \
 ```
 
 > [!IMPORTANT]
-> Pokud jste už dříve vytvořili úlohy ve verzi Preview pomocí příkazu `az acr build-task`, tyto úlohy bude potřeba vytvořit znovu pomocí příkazu [az acr task][az-acr-task].
+> Pokud jste dříve vytvořili úlohy ve verzi preview se `az acr build-task` příkazu, tyto úlohy se muset znovu vytvořit pomocí [az acr úloh][az-acr-task] příkazu.
 
-Tato úloha je podobná rychlé úloze vytvořené v [předchozím kurzu](container-registry-tutorial-build-task.md). Dává službě ACR Tasks pokyn aktivovat sestavení image, když se do úložiště určeného parametrem `--context` odešlou potvrzení. Zatímco souborem Dockerfile sloužícím k sestavení image v předchozím kurzu určuje veřejnou základní image (`FROM node:9-alpine`), soubor Dockerfile v tomto úkolu [soubor Dockerfile aplikace][dockerfile-app], určuje základní image ve stejném registr:
+Tato úloha je podobná rychlé úloze vytvořené v [předchozím kurzu](container-registry-tutorial-build-task.md). Dává službě ACR Tasks pokyn aktivovat sestavení image, když se do úložiště určeného parametrem `--context` odešlou potvrzení. Zatímco souborem Dockerfile sloužícím k sestavení image v předchozím kurzu určuje veřejnou základní image (`FROM node:9-alpine`), soubor Dockerfile v tomto úkolu [soubor Dockerfile aplikace][dockerfile-app], určuje základní image ve stejné registru:
 
 ```Dockerfile
 FROM ${REGISTRY_NAME}/baseimages/node:9-alpine
@@ -132,7 +132,7 @@ Tato konfigurace usnadňuje simulovat framework opravy v základní imagi pozdě
 
 ## <a name="build-the-application-container"></a>Sestavení kontejneru aplikace
 
-Použití [az acr úlohy] [ az-acr-task-run] ručně spustit úlohu a sestavení image aplikace. Tento krok zajistí, že úkol sleduje image aplikace závislost na základní image.
+Použití [az acr úlohy][az-acr-task-run] ručně spustit úlohu a sestavení image aplikace. Tento krok zajistí, že úkol sleduje image aplikace závislost na základní image.
 
 ```azurecli-interactive
 az acr task run --registry $ACR_NAME --name taskhelloworld
@@ -168,7 +168,7 @@ docker stop myapp
 
 ## <a name="list-the-builds"></a>Výpis sestavení
 
-Dále pomocí příkazu [az acr task list-runs][az-acr-task-list-runs] vypište spuštění úloh, která služba ACR Tasks dokončila pro váš registr:
+V dalším kroku seznamu úloha běží, ACR úlohy byla dokončena pro registry pomocí [seznamu – spuštěním az acr úlohy][az-acr-task-list-runs] příkaz:
 
 ```azurecli-interactive
 az acr task list-runs --registry $ACR_NAME --output table

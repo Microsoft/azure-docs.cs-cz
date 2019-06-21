@@ -13,20 +13,14 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/06/2018
 ms.author: bwren
-ms.openlocfilehash: b5860243b6b605288aaf8d6dffe2260bc031a592
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b118740f3a57e168c5dfb071c199bcf424bd5113
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65560830"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295562"
 ---
 # <a name="search-queries-in-azure-monitor-logs"></a>Vyhledávací dotazy protokolů Azure Monitor
-
-> [!NOTE]
-> By se měla Dokončit [Začínáme s Azure Monitor protokolu dotazy](get-started-queries.md) před dokončením v této lekci.
-
-[!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
-
 Pomocí názvu tabulky nebo příkaz vyhledávání můžete spustit dotazů na protokoly Azure monitoru. Tento kurz se zabývá vyhledávacích dotazů. Existují výhody každé metody.
 
 Dotazy založené na tabulce začněte tím, že vytváření oboru dotazu a proto jsou obvykle mnohem efektivnější než vyhledávací dotazy. Vyhledávací dotazy jsou že menší strukturovaná, což je lepší volbou při vyhledávání pro konkrétní hodnoty napříč sloupců nebo tabulek. **hledání** můžete zkontrolovat všechny sloupce z dané tabulky, nebo všechny tabulky, pro zadanou hodnotu. Množství zpracovávaných dat může být obrovské, což je důvod, proč může trvat delší dobu pro dokončení těchto dotazů a může vrátit velmi velké množství výsledků.
