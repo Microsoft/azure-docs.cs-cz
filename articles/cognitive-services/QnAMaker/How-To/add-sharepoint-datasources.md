@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 04/05/2019
+ms.date: 06/20/2019
 ms.author: tulasim
-ms.openlocfilehash: e479cf1729b7dcd2ed2f2470f2a935bdf94af80b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e1b0e3dfb81a9934b393428a946cf1440367985c
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65954965"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67311863"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>Přidejte zabezpečenou zdroje dat Sharepoint do znalostní báze
 
@@ -35,6 +35,20 @@ Můžete přidat všechny podporované nástroje QnA Maker [typy souborů](../Co
     ![Získáte adresu URL souboru Sharepoint tak, že vyberete tři tečky nabídky Soubor pak zkopírujete adresu URL.](../media/add-sharepoint-datasources/get-sharepoint-file-url.png)
 
 1. Na portálu pro nástroj QnA Maker na **nastavení** stránce [přidejte adresu URL](edit-knowledge-base.md#add-datasource) znalostní báze. 
+
+### <a name="images-with-sharepoint-files"></a>Image se soubory služby Sharepoint
+
+Pokud soubory obrázků, ty nejsou extrahována. Po na páry QnA je extrahován soubor, můžete přidat bitovou kopii, z portálu QnA Maker.
+
+Přidání bitové kopie s následující syntaxí markdownu: 
+
+```markdown
+![Explanation or description of image](URL of public image)
+```
+
+Text v hranatých závorkách a `[]`, vysvětluje bitovou kopii. Adresa URL v závorkách, `()`, je přímý odkaz na obrázek. 
+
+Při testování pár QnA v panelu interaktivní testu na portálu pro nástroj QnA Maker na obrázku zobrazí se místo text v markdownu. Tato operace ověří image je možné veřejně načíst z klientské aplikace.
 
 ## <a name="permissions"></a>Oprávnění
 

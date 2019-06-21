@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: aahi
-ms.openlocfilehash: 881c829424124cca843beb7005306edd53be2673
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: ff4f9af82024e9d39ad89a39bcb2fe4130de9101
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203992"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67304184"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Použití s názvem rozpoznávání entit v rozhraní Text Analytics
 
@@ -39,7 +39,7 @@ Použití rozhraní entity linking v různých jazycích vyžaduje použití odp
 
 ## <a name="supported-types-for-named-entity-recognition"></a>Podporované typy pro rozpoznávání pojmenovaných entit
 
-| Type  | SubType | Příklad: |
+| Typ  | SubType | Příklad: |
 |:-----------   |:------------- |:---------|
 | Person (Osoba)        | NENÍ K DISPOZICI\*         | "Jan", "Billem Gatesem"     |
 | Location      | NENÍ K DISPOZICI\*         | "Redmond, Washington", "Paříž"  |
@@ -105,7 +105,7 @@ Podrobnosti o definici žádosti najdete v článku o [volání rozhraní API pr
 
 ## <a name="step-2-post-the-request"></a>Krok 2: Odeslat žádost
 
-Analýza se provede po přijetí žádosti. Služba přijímá až 100 požadavků na druhý a 1 000 požadavků za minutu. Každá žádost může mít maximální velikost 1 MB.
+Analýza se provede po přijetí žádosti. Najdete v článku [limity dat](../overview.md#data-limits) části v přehledu o velikosti a počtu požadavky můžete odesílat za minutu a sekundu.
 
 Nezapomeňte, že služba je bezstavová. Ve vašem účtu se neukládají žádná data. Výsledky se vrátí okamžitě v odpovědi.
 

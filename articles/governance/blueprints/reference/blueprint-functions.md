@@ -109,7 +109,7 @@ Některé příklady načítání dat z _myTemplateArtifact_ ukázky jsou:
 
 | Výraz | Type | Hodnota |
 |:---|:---|:---|
-|`[artifacts("myTemplateArtifact").outputs.myArray]` | Array | \["first", "second"\] |
+|`[artifacts("myTemplateArtifact").outputs.myArray]` | Pole | \["first", "second"\] |
 |`[artifacts("myTemplateArtifact").outputs.myArray[0]]` | String | "first" |
 |`[artifacts("myTemplateArtifact").outputs.myString]` | String | "Moje řetězcovou hodnotu" |
 |`[artifacts("myTemplateArtifact").outputs.myObject]` | Object | {"myproperty": "Moje value", "anotherProperty": true} |

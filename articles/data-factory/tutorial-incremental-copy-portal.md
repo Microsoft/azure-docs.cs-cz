@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/11/2018
 ms.author: yexu
-ms.openlocfilehash: 1bc4bd9b95dc7e45b9b90fbe096ed71c5aa9bedf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6a9d6ec651cd365995ce63a8dff6d60c8b23dec1
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60571029"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67312648"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>Přírůstkové načtení dat z databáze Azure SQL do úložiště Azure Blob Storage
 V tomto kurzu vytvoříte službu Azure Data Factory s kanálem, který načítá rozdílová data z tabulky v databázi Azure SQL do úložiště Azure Blob Storage. 
@@ -215,7 +215,7 @@ V tomto kurzu vytvoříte kanál se dvěma aktivitami vyhledávání, jednou akt
     7. Na kartě **Připojení** ověřte, že jako **Propojená služba** je vybraná služba **AzureSqlDatabaseLinkedService**.
        
         ![Okno Nová propojená služba](./media/tutorial-incremental-copy-portal/azure-sql-linked-service-settings.png)
-10. Jako **Tabulka** vyberte **[dbo].[watermarktable]**. Pokud chcete zobrazit náhled dat v tabulce, klikněte na **Náhled dat**.
+10. Jako **Tabulka** vyberte **[dbo].[watermarktable]** . Pokud chcete zobrazit náhled dat v tabulce, klikněte na **Náhled dat**.
 
     ![Datová sada meze – nastavení připojení](./media/tutorial-incremental-copy-portal/watermark-dataset-connection-settings.png)
 11. Přepněte na editor kanálu kliknutím na kartu kanálu v horní části nebo kliknutím na název kanálu ve stromovém zobrazení vlevo. V okně Vlastnosti aktivity **Vyhledávání** ověřte, že je v poli **Zdrojová datová sada** vybraná datová sada **WatermarkDataset**. 
@@ -234,11 +234,11 @@ V tomto kurzu vytvoříte kanál se dvěma aktivitami vyhledávání, jednou akt
 16. Přepněte na kartu **Připojení** a proveďte následující kroky: 
 
     1. Jako **Propojená služba** vyberte **AzureSqlDatabaseLinkedService**.
-    2. Jako Tabulka vyberte **[dbo].[tabulka_zdroje_dat]**. Později v tomto kurzu pro tuto datovou sadu zadáte dotaz. Dotaz má přednost před tabulkou, kterou zadáte v tomto kroku. 
+    2. Jako Tabulka vyberte **[dbo].[tabulka_zdroje_dat]** . Později v tomto kurzu pro tuto datovou sadu zadáte dotaz. Dotaz má přednost před tabulkou, kterou zadáte v tomto kroku. 
 
         ![Druhá aktivita vyhledávání – nová datová sada](./media/tutorial-incremental-copy-portal/source-dataset-connection.png)
 17. Přepněte na editor kanálu kliknutím na kartu kanálu v horní části nebo kliknutím na název kanálu ve stromovém zobrazení vlevo. V okně Vlastnosti aktivity **Vyhledávání** ověřte, že je v poli **Zdrojová datová sada** vybraná datová sada **SourceDataset**. 
-18. V poli **Použít dotaz** vyberte **Dotaz** a zadejte následující dotaz: vybíráte pouze maximální hodnotu **LastModifytime** z tabulky **tabulka_zdroje_dat**. Pokud tento dotaz nemáte, datová sada získá všechny řádky z tabulky, jejíž název jste zadali (tabulka_zdroje_dat) v definici datové sady.
+18. V poli **Použít dotaz** vyberte **Dotaz** a zadejte následující dotaz: vybíráte pouze maximální hodnotu **LastModifytime** z tabulky **tabulka_zdroje_dat**. Ujistěte se prosím, že mají také zaškrtnuté **pouze první řádek**.
 
     ```sql
     select MAX(LastModifytime) as NewWatermarkvalue from data_source_table

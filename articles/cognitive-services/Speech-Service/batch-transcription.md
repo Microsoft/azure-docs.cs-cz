@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 2/20/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 1828cdce66104424cc7845fea89127219e6b77a0
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.openlocfilehash: 45ed0167f5a83fa843a224ada35e96672a6752a1
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67137265"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67311849"
 ---
 # <a name="why-use-batch-transcription"></a>Proč používat službu Batch určené k transkripci?
 
@@ -91,6 +91,7 @@ Použijte tyto volitelné vlastnosti konfigurace určené k transkripci:
 | `PunctuationMode` | Určuje způsob zpracování interpunkce v výsledky rozpoznávání. Platné hodnoty jsou `none` který zakáže interpunkční znaménka, `dictated` což naznačuje explicitní interpunkce, `automatic` které umožní dekodér řešit interpunkční znaménka, nebo `dictatedandautomatic` což naznačuje nařízeny interpunkční znaménka nebo automaticky. |
  | `AddWordLevelTimestamps` | Určuje, pokud úroveň časová razítka slovo měla být přidána do výstupu. Platné hodnoty jsou `true` umožňující slovo úrovně časová razítka a `false` (výchozí hodnota) pro jeho zakázání. |
  | `AddSentiment` | Určuje, že se přidaly subjektivního hodnocení utterance. Platné hodnoty jsou `true` umožňující subjektivního hodnocení na utterance a `false` (výchozí hodnota) pro jeho zakázání. |
+ | `AddDiarization` | Určuje, že tento diarization alalysis se provádí na vstupu, který má být mono kanál obsahující dva hlasy. Platné hodnoty jsou `true` umožňující diarization a `false` (výchozí hodnota) pro jeho zakázání. Také budete potřebovat `AddWordLevelTimestamps` nastavit na hodnotu true.|
 
 ### <a name="storage"></a>Úložiště
 
@@ -128,13 +129,8 @@ Odpovídající zvuk bude obsahovat přednášející identifikována číslem (
 
 Všimněte si také, že Diarization není k dispozici v Stereo záznamy. Kromě toho všechny JSON výstup bude obsahovat značku mluvčího. Pokud se nepoužívá diarization, se zobrazí "mluvčího: Hodnotu NULL' v kódu JSON výstupu.
 
-Podporovaná národní prostředí jsou uvedeny níže.
-
-| Jazyk | Národní prostředí |
-|--------|-------|
-| Angličtina | en-US |
-| Čínština | zh-CN |
-| Deutsch | de-DE |
+> [!NOTE]
+> Diarization jsou k dispozici ve všech oblastech a pro všechna národní prostředí.
 
 ## <a name="sentiment"></a>Mínění
 

@@ -11,12 +11,12 @@ ms.date: 01/10/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: de99d1a58cac12c80748b34ef4a1b07c9fb2a78e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 34c8c49166ea13d67c1f3d51805671c63dbb352b
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60337027"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67312313"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>Transformace dat v cloudu pomocí aktivity Sparku ve službě Azure Data Factory
 V tomto kurzu vytvoříte pomocí webu Azure Portal kanál služby Azure Data Factory. Tento kanál transformuje data pomocí aktivity Sparku a propojené služby Azure HDInsight na vyžádáni. 
@@ -147,7 +147,7 @@ V této části vytvoříte tyto dvě propojené služby:
    
    b. Ověřte, že je v poli **Typ** vybraná možnost **HDInsight na vyžádání**.
    
-   c. V poli **Propojená služba Azure Storage** vyberte **AzureStorage1**. Tuto propojenou službu jste vytvořili dříve. Pokud jste použili jiný název, zadejte sem správný název. 
+   c. Pro **propojená služba Azure Storage**vyberte **AzureBlobStorage1**. Tuto propojenou službu jste vytvořili dříve. Pokud jste použili jiný název, zadejte sem správný název. 
    
    d. V poli **Typ clusteru** vyberte **spark**.
    
@@ -189,7 +189,7 @@ V této části vytvoříte tyto dvě propojené služby:
    ![Zadání propojené služby HDInsight](./media/tutorial-transform-data-spark-portal/select-hdinsight-linked-service.png)
 1. Přepněte na kartu **Skripty/Jar** a proveďte následující kroky: 
 
-   a. V poli **Propojená služba úloh** vyberte **AzureStorage1**.
+   a. Pro **propojená služba úloh**vyberte **AzureBlobStorage1**.
    
    b. Klikněte na **Procházet úložiště**.
 
@@ -206,7 +206,7 @@ V této části vytvoříte tyto dvě propojené služby:
 
 
 ## <a name="trigger-a-pipeline-run"></a>Aktivace spuštění kanálu
-Vyberte na panelu nástrojů **Aktivační událost** a potom vyberte **Aktivovat**. 
+Vyberte **přidat aktivační událost** na panelu nástrojů a pak vyberte **aktivovat**. 
 
 ![Tlačítka Aktivační událost a Aktivovat](./media/tutorial-transform-data-spark-portal/trigger-now-menu.png)
 
@@ -222,7 +222,7 @@ Vyberte na panelu nástrojů **Aktivační událost** a potom vyberte **Aktivova
 
    ![Stav spuštění kanálu](./media/tutorial-transform-data-spark-portal/pipeline-run-succeeded.png) 
 
-   Zpátky na zobrazení spuštění kanálu můžete přepnout výběrem odkazu **Kanály** v horní části.
+   Zpět na zobrazení spuštění kanálu můžete přepnout výběrem **všechna spuštění kanálu** odkazu v horní části.
 
    ![Zobrazení Spuštění aktivit](./media/tutorial-transform-data-spark-portal/activity-runs.png)
 
