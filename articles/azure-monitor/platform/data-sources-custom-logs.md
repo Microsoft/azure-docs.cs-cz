@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/12/2019
+ms.date: 06/19/2019
 ms.author: bwren
-ms.openlocfilehash: c80736dcd8be0c7ff3aae850aaaf9659f47daf36
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 56dd1c29d5606da96bbc6d519b70caf580852446
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60996165"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273080"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Vlastní protokoly ve službě Azure Monitor
 Vlastní protokoly zdroj dat ve službě Azure Monitor umožňuje shromažďovat události z textových souborů v počítačích se systémy Windows a Linux. Mnoho aplikací protokolovat informace k textovým souborům místo standardní protokolování služby, jako je protokol událostí Windows nebo protokolu Syslog. Po shromáždění, můžete analyzovat data do jednotlivých polí v dotazech nebo extrahovat data během shromažďování u jednotlivých polí.
@@ -35,11 +35,7 @@ Soubory protokolů, které se mají shromažďovat musí odpovídat následujíc
 - Soubor protokolu musí používat kódování ASCII nebo UTF-8.  Nejsou podporovány jiných formátů, například UTF-16.
 
 >[!NOTE]
->Pokud existují duplicitní položky v souboru protokolu, bude shromažďovat Azure Monitor je.  Ale výsledky dotazu bude nekonzistentní kde vyfiltrovali výsledky zobrazit více událostí, než počet výsledků.  Je důležité, abyste ověřili protokol, který chcete zjistit, zda je aplikace, která ji vytvoří, příčinou tohoto chování a pokud je to možné jej vyřešit před vytvořením definice kolekce vlastní protokol.  
->
-  
->[!NOTE]
-> Pokud vaše aplikace vytvoří nový soubor protokolu, každý den nebo když dosáhne určité velikosti, agenta Log Analytics pro Linux nevyhledává až po restartování. Je to proto, že agent pouze vytvoří výčet a zahájí monitorování pro vzory pomocí zadaného protokolů při spuštění a z tohoto důvodu je potřeba naplánovat automatickou restartování agenta.  Toto omezení neexistuje pomocí agenta Log Analytics pro Windows.  
+> Pokud existují duplicitní položky v souboru protokolu, bude shromažďovat Azure Monitor je. Ale výsledky dotazu bude nekonzistentní kde vyfiltrovali výsledky zobrazit více událostí, než počet výsledků. Je důležité, abyste ověřili protokol, který chcete zjistit, zda je aplikace, která ji vytvoří, příčinou tohoto chování a pokud je to možné jej vyřešit před vytvořením definice kolekce vlastní protokol.  
 >
 
 >[!NOTE]
