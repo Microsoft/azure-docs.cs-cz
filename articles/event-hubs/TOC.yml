@@ -28,20 +28,8 @@
       items:
         - name: .NET Core
           href: event-hubs-dotnet-standard-getstarted-send.md
-        - name: .NET Framework
-          href: event-hubs-dotnet-framework-getstarted-send.md
         - name: Java
           href: event-hubs-java-get-started-send.md
-        - name: Python
-          href: event-hubs-python-get-started-send.md
-        - name: Node.js
-          href: event-hubs-node-get-started-send.md
-        - name: Přejít
-          href: event-hubs-go-get-started-send.md
-        - name: C (jenom odesílání)
-          href: event-hubs-c-getstarted-send.md
-        - name: Apache Storm (jenom příjem)
-          href: event-hubs-storm-getstarted-receive.md
     - name: Zachycení událostí
       items:
         - name: Použití webu Azure Portal k povolení funkce Event Hubs Capture
@@ -60,33 +48,21 @@
       href: event-hubs-tutorial-visualize-anomalies.md
     - name: Uložení zachycených dat ve službě SQL Data Warehouse
       href: store-captured-data-data-warehouse.md
+    - name: Zpracování událostí Apache Kafka pro Event Hubs s využitím Stream Analytics
+      href: event-hubs-kafka-stream-analytics.md
     - name: Streamování dat do Azure Databricks pomocí služby Event Hubs
       href: ../azure-databricks/databricks-stream-from-eventhubs.md
       maintainContext: true
-    - name: Povolení bran firewall a integrace virtuálních sítí v oboru názvů Event Hubs
-      href: event-hubs-tutorial-virtual-networks-firewalls.md
-    - name: Event Hubs pro Apache Kafka
-      items:
-        - name: Zrcadlení zprostředkovatele Kafka v centru událostí s podporou Apache Kafka
-          href: event-hubs-kafka-mirror-maker-tutorial.md
-        - name: Připojení Apache Sparku k centrům událostí s podporou Apache Kafka
-          href: event-hubs-kafka-spark-tutorial.md
-        - name: Připojení Apache Flinku k centrům událostí s podporou Apache Kafka
-          href: event-hubs-kafka-flink-tutorial.md
-        - name: Integrace připojení Apache Kafka s centry událostí s podporou Kafka (verze Preview)
-          href: event-hubs-kafka-connect-tutorial.md
-        - name: Připojení Akka Streams k centrům událostí s podporou Apache Kafka
-          href: event-hubs-kafka-akka-streams-tutorial.md
 - name: Ukázky
   href: event-hubs-samples.md
 - name: Koncepty
   items:
-    - name: Funkce Event Hubs
+    - name: Terminologie Event Hubs
       href: event-hubs-features.md
-    - name: Přehled třídy Event Processor Host
-      href: event-hubs-event-processor-host.md
-    - name: Průvodce programováním
-      href: event-hubs-programming-guide.md
+    - name: Dostupnost a konzistence
+      href: event-hubs-availability-and-consistency.md
+    - name: Škálovatelnost
+      href: event-hubs-scalability.md
     - name: Zabezpečení
       items:
         - name: Spravovaná identita pro prostředky Azure
@@ -99,54 +75,95 @@
           href: event-hubs-authentication-and-security-model-overview.md
         - name: Atributy zabezpečení
           href: event-hubs-security-attributes.md
-    - name: Dostupnost a konzistence
-      href: event-hubs-availability-and-consistency.md
     - name: Průvodce protokolem AMQP 1.0
       href: ../service-bus-messaging/service-bus-amqp-protocol-guide.md
       maintainContext: true
 - name: Návody
   items:
-    - name: 'Odesílání, příjem a zachytávání událostí pomocí Pythonu'
-      href: event-hubs-python.md
-    - name: Nastavení diagnostických protokolů
-      href: event-hubs-diagnostic-logs.md
-    - name: Event Hubs pro Apache Kafka
+    - name: Vývoj
+      items:
+        - name: Získání připojovacího řetězce Event Hubs
+          href: event-hubs-get-connection-string.md
+        - name: Výměna událostí mezi aplikacemi s využitím různých protokolů
+          href: event-hubs-exchange-events-different-protocols.md
+        - name: Průvodce programováním
+          href: event-hubs-programming-guide.md
+        - name: Příjem událostí pomocí třídy EventProcessorHost
+          href: event-hubs-event-processor-host.md
+    - name: Použití klientských knihoven
+      items:
+        - name: .NET Framework
+          items:
+            - name: Odeslání a příjem událostí pomocí rozhraní .NET Framework
+              href: event-hubs-dotnet-framework-getstarted-send.md
+        - name: Java
+          items:
+            - name: Vytvoření aplikace Spring Cloud Stream Binder
+              href: /java/azure/spring-framework/configure-spring-cloud-stream-binder-java-app-azure-event-hub
+              maintainContext: true
+            - name: Použití aplikace Spring Boot Starter pro Apache Kafka
+              href: /java/azure/spring-framework/configure-spring-cloud-stream-binder-java-app-kafka-azure-event-hub
+              maintainContext: true
+        - name: Python
+          items:
+            - name: Odesílání a příjem událostí pomocí Pythonu
+              href: event-hubs-python-get-started-send.md
+            - name: 'Odesílání, příjem a zachytávání událostí pomocí Pythonu'
+              href: event-hubs-python.md
+        - name: Node.js
+          items:
+            - name: Odesílání a příjem událostí pomocí Node.js
+              href: event-hubs-node-get-started-send.md
+        - name: Přejít
+          items:
+            - name: Odesílání a příjem událostí pomocí Go
+              href: event-hubs-go-get-started-send.md
+        - name: C (jenom odesílání)
+          items:
+            - name: Odesílání událostí pomocí C
+              href: event-hubs-c-getstarted-send.md
+        - name: Apache Storm (jenom příjem)
+          items:
+            - name: Příjem událostí pomocí Apache Stormu
+              href: event-hubs-storm-getstarted-receive.md
+    - name: Integrace s Apache Kafka
       items:
         - name: Vytvoření Event Hubs s podporou Apache Kafka
           href: event-hubs-create-kafka-enabled.md
-        - name: Zpracování událostí Apache Kafka pro Event Hubs s využitím Stream Analytics
-          href: event-hubs-kafka-stream-analytics.md
-    - name: Spravovat
+        - name: Zrcadlení zprostředkovatele Kafka v centru událostí s podporou Apache Kafka
+          href: event-hubs-kafka-mirror-maker-tutorial.md
+        - name: Připojení Apache Sparku k centrům událostí s podporou Apache Kafka
+          href: event-hubs-kafka-spark-tutorial.md
+        - name: Připojení Apache Flinku k centrům událostí s podporou Apache Kafka
+          href: event-hubs-kafka-flink-tutorial.md
+        - name: Integrace připojení Apache Kafka s centry událostí s podporou Kafka (verze Preview)
+          href: event-hubs-kafka-connect-tutorial.md
+        - name: Připojení Akka Streams k centrům událostí s podporou Apache Kafka
+          href: event-hubs-kafka-akka-streams-tutorial.md
+    - name: Správa a monitorování
       items:
         - name: Monitorování Event Hubs s využitím Azure Monitoru
           href: event-hubs-metrics-azure-monitor.md
+        - name: Nastavení diagnostických protokolů
+          href: event-hubs-diagnostic-logs.md
+        - name: Streamování dat Diagnostiky Azure pomocí Event Hubs
+          href: event-hubs-streaming-azure-diags-data.md
+        - name: Automatické škálování jednotek propustnosti
+          href: event-hubs-auto-inflate.md
         - name: Knihovny pro správu Event Hubs
           href: event-hubs-management-libraries.md
-    - name: Získání připojovacího řetězce Event Hubs
-      href: event-hubs-get-connection-string.md
-    - name: Vývoj v Javě
+    - name: Zabezpečení
       items:
-        - name: Vytvoření aplikace Spring Cloud Stream Binder
-          href: /java/azure/spring-framework/configure-spring-cloud-stream-binder-java-app-azure-event-hub
-        - name: Použití aplikace Spring Boot Starter pro Apache Kafka
-          href: /java/azure/spring-framework/configure-spring-cloud-stream-binder-java-app-kafka-azure-event-hub
+        - name: Použití bran firewall
+          href: event-hubs-ip-filtering.md
+        - name: Použití koncových bodů služby pro virtuální síť
+          href: event-hubs-service-endpoints.md
+        - name: Povolení bran firewall a integrace virtuálních sítí v oboru názvů Event Hubs
+          href: event-hubs-tutorial-virtual-networks-firewalls.md
     - name: Řešení potíží
       items:
         - name: Výjimky
           href: event-hubs-messaging-exceptions.md
-    - name: Použití bran firewall
-      href: event-hubs-ip-filtering.md
-    - name: Použití koncových bodů služby pro virtuální síť
-      href: event-hubs-service-endpoints.md
-    - name: Automatické škálování jednotek propustnosti
-      href: event-hubs-auto-inflate.md
-    - name: Streamování dat Diagnostiky Azure pomocí Event Hubs
-      href: event-hubs-streaming-azure-diags-data.md
-    - name: Výměna událostí mezi aplikacemi s využitím různých protokolů
-      href: event-hubs-exchange-events-different-protocols.md
-    - name: Vytvoření aplikace Spring Cloud Stream Binder
-      href: /java/azure/spring-framework/configure-spring-cloud-stream-binder-java-app-azure-event-hub?view=azure-java-stable
-      maintainContext: true
 - name: Referenční informace
   items:
     - name: Java

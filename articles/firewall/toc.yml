@@ -43,6 +43,10 @@
       href: deploy-cli.md
     - name: Nasazení pomocí šablony
       href: deploy-template.md
+    - name: Nasazení s využitím několika veřejných IP adres
+      href: deploy-multi-public-ip-powershell.md
+    - name: Nasazení s využitím Zón dostupnosti
+      href: deploy-availability-zone-powershell.md
     - name: Integrace s využitím nástroje pro vyrovnávání zatížení
       href: integrate-lb.md
 - name: Referenční informace

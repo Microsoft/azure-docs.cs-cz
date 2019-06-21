@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8b19c0fd8af2792a4ffb877e5c6a7fc6b3f94511
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 975289f338e638ed0209d4f6cf2a163ced996e42
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60836110"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67202947"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Důležité informace týkající se nasazení Azure Virtual Machines DBMS pro úlohy SAP
 [1114181]: https://launchpad.support.sap.com/#/notes/1114181
@@ -150,7 +150,7 @@ Umístění souborů databáze a soubory protokolů a znovu a typu pomocí služ
 Jak již bylo uvedeno Pokud požadavek na vstupně-výstupních operací překročí, co můžete zadat jeden virtuální pevný disk, vyvážení počtu vstupně-výstupních operací, které jsou potřeba pro soubory databáze a počtem virtuálních pevných disků. Nejjednodušší způsob, jak distribuovat zatížení vstupně-výstupních operací na discích je sestavení software stripe v různých discích. Pak umístíte počet datových souborů k SAP DBMS na jednotky LUN carved z platformy stripe softwaru. počet disků v zapisují prokládaně doprovází požadavky na vstupně-výstupních operací, nárokům na propustnost disku a svazku požadavky.
 
 
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
 > Doporučujeme použít prostory úložiště ve Windows vytvořit prokládané sady v rámci více virtuálních pevných disků Azure. Použijte aspoň Windows Server 2012 R2 nebo Windows Server 2016.
@@ -164,7 +164,7 @@ Jak již bylo uvedeno Pokud požadavek na vstupně-výstupních operací překro
 >
 >
 
-- - -
+---
 
 > [!NOTE]
 > Protože Azure Storage uchovává tři Image virtuálních pevných disků, to nemá smysl nakonfigurovat redundance, když jste prokládané. Potřebujete nakonfigurovat prokládáním tak, aby vstupně-výstupních operací se distribuují prostřednictvím různých virtuálních pevných disků.
@@ -230,7 +230,7 @@ Virtuální počítače Azure nabízejí nonpersistent disky po nasazení virtu�
 
 Další informace najdete v tématu [pochopení dočasné jednotky na virtuálních počítačích s Windows v Azure](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/).
 
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
 > Jednotky D ve Virtuálním počítači Azure je netrvalý jednotku, která je založená na některé místní disky na Azure výpočetním uzlu. Protože je netrvalý, budou ztraceny všechny změny provedené obsah na jednotce D, po restartování virtuálního počítače. Změny zahrnují soubory, které byly uloženy, adresářů, které byly vytvořeny a aplikace, které byly nainstalovány.
@@ -241,7 +241,7 @@ Další informace najdete v tématu [pochopení dočasné jednotky na virtuáln�
 >
 >
 
-- - -
+---
 
 
 
@@ -339,7 +339,7 @@ Pokud chcete dál snížit latenci sítě mezi virtuálními počítači Azure, 
 > Ne všechny typy virtuálních počítačů podporují Akcelerovanými síťovými službami. V předchozím článku jsou uvedeny typy virtuálních počítačů, které podporují Akcelerovanými síťovými službami.
 >
 
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
 > Zjistěte, jak nasadit virtuální počítače s Accelerated Networking pro Windows, najdete v článku [vytvořit virtuální počítač Windows s Akcelerovanými síťovými službami](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell).
@@ -350,7 +350,7 @@ Pokud chcete dál snížit latenci sítě mezi virtuálními počítači Azure, 
 >
 >
 
-- - -
+---
 
 > [!NOTE]
 > V případě SUSE, Red Hat a Oracle Linux Akcelerovanými síťovými službami podporuje nejnovější verze. Starší verze jako SLES 12 SP2 nebo RHEL 7.2 nepodporují akcelerovaných síťových služeb Azure.

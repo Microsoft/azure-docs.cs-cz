@@ -1,0 +1,62 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentace k Asistivní čtečce
+metadata:
+  title: 'Dokumentace ke službě Asistivní čtečka – rychlá zprovoznění, kurzy, reference k rozhraní API – Azure Cognitive Services | Microsoft Docs'
+  description: Naučte se využívat Asistivní čtečku ve vaší aplikaci.
+  services: cognitive-services
+  author: metanMSFT
+  manager: nitinme
+  ms.service: cognitive-services
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 06/20/2019
+  ms.author: metanMSFT
+abstract:
+  description: 'Asistivní čtečka je nástroj, který implementuje osvědčené techniky pro zlepšení míry porozumění čteného textu a je určený pro začínající čtenáře, studenty daného jazyka a osoby s poruchami učení. Asistivní čtečku můžete využít ve vašich webových aplikacích prostřednictvím sady SDK pro Asistivní čtečku.'
+sections:
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/cognitive-services/immersive-reader/overview
+            html: <p>Další informace o Asistivní čtečce a její integraci do vašich aplikací</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: Co je Asistivní čtečka?
+          - href: /azure/cognitive-services/immersive-reader/reference
+            html: <p>Další informace o sadě Javascript SDK pro Asistivní čtečku</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: Použití sady SDK pro Asistivní čtečku
+  - title: Zprovoznění během 5 minut
+    items:
+      - type: paragraph
+        text: 'Začínáme s Asistivní čtečkou:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/logo_csharp.svg
+            text: 'C&#35;'
+            alt: 'Logo C#'
+            href: quickstart
+  - title: Podrobné kurzy
+    items:
+      - type: paragraph
+        text: 'Naučte se vyvíjet aplikace s využitím Asistivní čtečky:'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="tutorial.md">Spuštění Asistivní čtečky s využitím Node.js</a>
+  - title: Referenční informace
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Sady SDK
+            html: <p><a href="reference.md">Javascript</a></p>

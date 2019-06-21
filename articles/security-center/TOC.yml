@@ -45,7 +45,7 @@
       href: security-center-onboarding.md
     - name: Ochrana serveru pomocí Ochrany ATP v programu Windows Defender
       href: security-center-wdatp.md
-    - name: Pokročilé zabezpečení dat pro IaaS
+    - name: Pokročilé zabezpečení dat pro SQL na virtuálních počítačích Azure (Public Preview)
       href: security-center-iaas-advanced-data.md
     - name: Ochrana služby App Service
       href: security-center-app-services.md
@@ -83,7 +83,7 @@
           href: security-center-virtual-machine-protection.md
         - name: Ochrana síťových prostředků
           href: security-center-network-recommendations.md
-        - name: Ochrana dat a služby SQL
+        - name: Ochrana dat a služby úložiště
           href: security-center-sql-service-recommendations.md
         - name: Ochrana identit a přístupu
           href: security-center-identity-access.md

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/26/2018
 ms.author: sedusch
-ms.openlocfilehash: c93bca14d9385eaf9f79f69d76e9e704796da7a9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 82ab400c89cb57f3cf72cfb9196ea7c6402808fe
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66154117"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203918"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Nasazení virtuálních počítačů pro SAP NetWeaver v Azure
 
@@ -534,7 +534,7 @@ Po nasazení virtuálního počítače v Azure, použijte stejné pokyny a nást
 Vzhledem k tomu, že různé verze operačního systému nebo DBMS požadavky různých opravy, obrázky, které najdete na webu Azure Marketplace nemusí vašim potřebám. Místo toho můžete chtít vytvořit virtuální počítač s použitím vlastní image virtuálního počítače OS/DBMS, které můžete nasadit znovu později.
 Použijete jiný postup k vytvoření privátní image pro Linux, než se vytvořte jedno pro Windows.
 
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
 > Příprava image Windows, který vám pomůže nasadit více virtuálních počítačů, nastavení Windows (např. Windows SID nebo název hostitele) abstrahovaná nebo na místní virtuální počítač generalizovaný. Můžete použít [sysprep](https://msdn.microsoft.com/library/hh825084.aspx) provedete to tak.
@@ -545,7 +545,7 @@ Použijete jiný postup k vytvoření privátní image pro Linux, než se vytvo�
 >
 >
 
-- - -
+---
 Můžete připravit a vytvořit vlastní image a použijte ji k vytvoření více nových virtuálních počítačů. To je popsáno v [Azure Virtual Machines plánování a implementace SAP Netweaveru][planning-guide]. Nastavení databáze obsahu instalace nového systému SAP (záloha databáze obnoví z disku, který je připojen k virtuálnímu počítači) pomocí Správce zřizování softwaru SAP nebo přímo obnovení zálohy databáze ze služby Azure storage, pokud váš systém DBMS podporuje. Další informace najdete v tématu [nasazení DBMS virtuálních počítačů Azure pro SAP NetWeaver][dbms-guide]. Pokud jste již nainstalovali systémem SAP na vaše místní virtuální počítač (hlavně u dvouvrstvé systémy), můžete upravit nastavení systému SAP po nasazení virtuálního počítače Azure postupem přejmenovat systému podporována službou SAP Software zřizování správce (SAP Mějte na paměti [1619720]). Jinak můžete nainstalovat SAP software po nasazení virtuálního počítače Azure.
 
 Následující diagram ukazuje specifické pro SAP postupně jednotlivé kroky k nasazení virtuálních počítačů z vlastní image:
@@ -674,7 +674,7 @@ V tomto scénáři je Agent virtuálního počítače **není** automaticky inst
 
 Další informace o agenta virtuálního počítače Azure najdete v následující prostředky.
 
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
 > [Přehled služby Azure agenta virtuálního počítače][virtual-machines-windows-agent-user-guide]
@@ -685,7 +685,7 @@ Další informace o agenta virtuálního počítače Azure najdete v následují
 >
 >
 
-- - -
+---
 
 Následující diagram ukazuje postupně jednotlivé kroky pro přesun místní virtuální počítač pomocí virtuálního pevného disku není zobecněný Azure:
 

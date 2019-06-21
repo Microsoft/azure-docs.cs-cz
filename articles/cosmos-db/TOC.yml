@@ -624,10 +624,12 @@
         - name: Protokolování aplikací pomocí funkce Logic Apps
           href: /azure/logic-apps/logic-apps-scenario-error-and-exception-handling
           maintainContext: true
-    - name: Monitorování
+    - name: Monitorování s využitím metrik
       items:
-        - name: Monitorování s využitím metrik
+        - name: Zobrazení metrik z účtu Cosmos DB
           href: use-metrics.md
+        - name: Zobrazení metrik z Azure Monitoru
+          href: cosmos-db-azure-monitor-metrics.md
         - name: Monitorování smluv SLA
           href: monitor-accounts.md
     - name: Vývoj v místním prostředí

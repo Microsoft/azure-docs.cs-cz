@@ -73,10 +73,14 @@
           href: service-fabric-tutorial-upgrade-cluster.md
         - name: 5. Odstranění clusteru
           href: service-fabric-tutorial-delete-cluster.md
-    - name: Vytvoření samostatného clusteru v AWS
+    - name: Vytvoření samostatného clusteru
       items:
-        - name: 1. Vytvoření infrastruktury v AWS
-          href: service-fabric-tutorial-standalone-create-infrastructure.md
+        - name: 1. Vytvoření infrastruktury
+          items:
+            - name: S využitím AWS
+              href: service-fabric-tutorial-standalone-create-infrastructure.md
+            - name: S využitím Azure
+              href: service-fabric-tutorial-standalone-azure-create-infrastructure.md
         - name: 2. Nastavení služby Service Fabric
           href: service-fabric-tutorial-standalone-create-service-fabric-cluster.md
         - name: 3. Nasazení aplikace do clusteru
@@ -695,6 +699,8 @@
       items:
         - name: Diagnostika běžných scénářů
           href: service-fabric-diagnostics-common-scenarios.md
+        - name: Diagnostika chyb balíčků kódu
+          href: service-fabric-diagnostics-code-package-errors.md
         - name: Monitorování aplikací
           items:
             - name: Přidání protokolování do aplikace

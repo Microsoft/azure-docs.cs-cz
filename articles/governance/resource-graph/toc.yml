@@ -33,6 +33,9 @@
     - name: Práce s rozsáhlými datovými sadami
       displayName: 'page, first, skip, token'
       href: ./concepts/work-with-data.md
+    - name: Pokyny pro omezované požadavky
+      displayName: 'pagination, batching, throttling, parallel'
+      href: ./concepts/guidance-for-throttled-requests.md
 - name: Návody
   items:
     - name: Získání změn prostředků

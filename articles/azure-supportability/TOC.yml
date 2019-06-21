@@ -11,6 +11,8 @@
       href: per-vm-quota-requests.md
     - name: Celkové oblastní zvýšení limitu virtuálních jader
       href: regional-quota-requests.md
+    - name: Zvýšení limitu sítě
+      href: networking-quota-requests.md
 - name: Řešení potíží s oblastí nebo předplatným skladové položky
   href: sku-series-unavailable.md
 - name: Referenční informace
