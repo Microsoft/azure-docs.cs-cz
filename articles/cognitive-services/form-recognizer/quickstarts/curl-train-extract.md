@@ -9,12 +9,12 @@ ms.subservice: form-recognizer
 ms.topic: quickstart
 ms.date: 04/15/2019
 ms.author: pafarley
-ms.openlocfilehash: 9b5f3b77e3af719d0e3b37ac196b1691ce659e5e
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 3f3b74452ff1f866b0285eee962ab3678b151a30
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67271436"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67331832"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Rychlý start: Trénování modelu Rozlišovač formuláře a extrahovat data formuláře pomocí rozhraní REST API pomocí cURL
 
@@ -52,7 +52,7 @@ Nejprve budete potřebovat sadu trénovacích dat v objektu blob služby Azure S
 K natrénování modelu Rozlišovač formuláře pomocí dokumenty v kontejnerech objektů blob v Azure, zavolejte **trénování** rozhraní API pomocí příkazu cURL, který následuje. Před spuštěním příkazu, proveďte následující změny:
 
 1. Nahraďte `<Endpoint>` s koncovým bodem, který jste získali váš klíč předplatného Rozlišovač formuláře. Vyhledejte ji na váš prostředek formuláře Rozlišovač **přehled** kartu.
-1. Nahraďte `<SAS URL>` s kontejnerem objektů Blob v Azure storage, sdílený přístup k adrese URL podpisu (SAS) umístění trénovací data. (Získat adresu SAS URL kliknutím sdíleného přístupového podpisu v nabídce nastavení v účtu úložiště a "vygenerovat SAS a připojovací řetězec". Tím se zobrazí adresa URL SAS služby Blob service. Upravit tuto adresu url tak, že přidáte containername po .net / a před? sv = v adrese url, třeba:.blob.core.windows.net/ < name_of_your_container > /? sv =... Toto je adresu URL SAS, pokud má být použit.)
+1. Nahraďte `<SAS URL>` s objektem Blob Azure kontejner úložiště je sdílený přístup k adrese URL podpisu (SAS). K načtení to, otevřete Průzkumníka služby Microsoft Azure Storage, klikněte pravým tlačítkem na kontejner a vyberte **získat sdílený přístupový podpis**. Klikněte na tlačítko Další dialogové okno a zkopírujte hodnotu v **URL** oddílu. Ji by měl mít formát _služba ._protokol: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
 1. Nahraďte `<subscription key>` s klíči předplatného jste zkopírovali v předchozím kroku.
 
 ```bash
@@ -63,59 +63,40 @@ Zobrazí se `200 (Success)` odpověď se následující výstup JSON:
 
 ```json
 {
-  "parameters": {
-    "Endpoint": "{Endpoint}",
-    "Content-Type": "application/json",
-    "Ocp-Apim-Subscription-Key": "{API key}",
-    "body": {},
-    "trainRequest": {
-      "source": "/input/data",
-      "sourceFilter": {
-        "prefix": "",
-        "includeSubFolders": false
-      }
+  "modelId": "59e2185e-ab80-4640-aebc-f3653442617b",
+  "trainingDocuments": [
+    {
+      "documentName": "Invoice_1.pdf",
+      "pages": 1,
+      "errors": [],
+      "status": "success"
+    },
+    {
+      "documentName": "Invoice_2.pdf",
+      "pages": 1,
+      "errors": [],
+      "status": "success"
+    },
+    {
+      "documentName": "Invoice_3.pdf",
+      "pages": 1,
+      "errors": [],
+      "status": "success"
+    },
+    {
+      "documentName": "Invoice_4.pdf",
+      "pages": 1,
+      "errors": [],
+      "status": "success"
+    },
+    {
+      "documentName": "Invoice_5.pdf",
+      "pages": 1,
+      "errors": [],
+      "status": "success"
     }
-  },
-  "responses": {
-    "200": {
-      "body": {
-        "modelId": "ad1901b6-ddaa-4249-8938-3f03f65cc893",
-        "trainingDocuments": [
-          {
-            "documentName": "0.pdf",
-            "pages": 1,
-            "errors": [],
-            "status": "success"
-          },
-          {
-            "documentName": "1.pdf",
-            "pages": 1,
-            "errors": [],
-            "status": "success"
-          },
-          {
-            "documentName": "2.pdf",
-            "pages": 1,
-            "errors": [],
-            "status": "success"
-          },
-          {
-            "documentName": "3.pdf",
-            "pages": 1,
-            "errors": [],
-            "status": "success"
-          },
-          {
-            "documentName": "4.pdf",
-            "pages": 1,
-            "errors": [],
-            "status": "success"
-          }
-        ],
-        "errors": []
-      }
-    }
-  }
+  ],
+  "errors": []
 }
 ```
 
@@ -128,12 +109,12 @@ V dalším kroku budete analýza dokumentu a z něj extrahovat páry klíč hodn
 1. Nahraďte `<Endpoint>` s koncovým bodem, který jste získali váš klíč předplatného Rozlišovač formuláře. Vyhledejte ji na váš prostředek formuláře Rozlišovač **přehled** kartu.
 1. Nahraďte `<modelID>` s ID modelu, který jste získali v předchozí části.
 1. Nahraďte `<path to your form>` s cestou k souboru (například C:\temp\file.pdf) formuláře.
-1. Nahraďte `<file type>` s typem souboru. Podporované typy: pdf, image/jpeg, image/png.
+1. Nahraďte `<file type>` s typem souboru. Podporované typy: `application/pdf`, `image/jpeg`, `image/png`.
 1. Místo `<subscription key>` použijte váš klíč předplatného.
 
 
 ```bash
-curl -X POST "https://<Endpoint>/formrecognizer/v1.0-preview/custom/models/<modelID>/analyze" -H "Content-Type: multipart/form-data" -F "form=@\"<path to your form>\";type=application/<file type>" -H "Ocp-Apim-Subscription-Key: <subscription key>"
+curl -X POST "https://<Endpoint>/formrecognizer/v1.0-preview/custom/models/<modelID>/analyze" -H "Content-Type: multipart/form-data" -F "form=@\"<path to your form>\";type=<file type>" -H "Ocp-Apim-Subscription-Key: <subscription key>"
 ```
 
 ### <a name="examine-the-response"></a>Prozkoumání odpovědi

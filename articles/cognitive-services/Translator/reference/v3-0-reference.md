@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-pawal
-ms.openlocfilehash: f58ff566ebb83ed6163637aa3899a925ed06242a
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 4133cec401723ab103b0b3bfff62eee21b653e2b
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67269215"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67331826"
 ---
 # <a name="translator-text-api-v30"></a>Translator Text API v3.0
 
@@ -31,20 +31,20 @@ Verze 3 rozhraní Translator Text API poskytuje moderní webové API založené 
 
 ## <a name="base-urls"></a>Základní adresy URL
 
-Microsoft Translator je provádět z více umístění datového centra. Aktuálně jsou umístěny v 6 [oblastí Azure](https://azure.microsoft.com/global-infrastructure/regions):
+Microsoft Translator je provádět z více umístění datového centra. Aktuálně jsou umístěny v 6 [zeměpisných oblastech Azure](https://azure.microsoft.com/global-infrastructure/regions):
 
 * **Jižní Americe:** Západní USA 2 a střed USA – západ 
 * **Asie a Tichomoří:** Jihovýchodní Asie a Korea – jih
 * **Evropa:** Severní Evropa a západní Evropa
 
-Požadavky na rozhraní Microsoft Translator Text API jsou ve většině případů zpracovat datacenter, která je nejblíž k původu žádosti. V případě datacenter selhání může být žádost směrována mimo oblast.
+Požadavky na rozhraní Microsoft Translator Text API jsou ve většině případů zpracovat datacenter, která je nejblíž k původu žádosti. V případě datacenter selhání může být žádost směrována mimo Azure zeměpisné oblasti.
 
-Vynutit požadavek na ošetřit konkrétní datové centrum, změňte globální koncový bod rozhraní API požadavek na požadovanou místní koncový bod:
+Pokud chcete vynutit požadavek na zpracovat určité zeměpisné oblasti Azure, změňte globální koncový bod v požadavku rozhraní API na požadovanou místní koncový bod:
 
-|Popis|Oblast|Základní adresa URL|
+|Popis|Zeměpisná oblast Azure|Základní adresa URL|
 |:--|:--|:--|
-|Azure|Globální|  api.cognitive.microsofttranslator.com|
-|Azure|Severní Amerika|   api-nam.cognitive.microsofttranslator.com|
+|Azure|Globální (– neregionální)|   api.cognitive.microsofttranslator.com|
+|Azure|Spojené státy|   api-nam.cognitive.microsofttranslator.com|
 |Azure|Evropa|  api-eur.cognitive.microsofttranslator.com|
 |Azure|Asie a Tichomoří|    api-apc.cognitive.microsofttranslator.com|
 

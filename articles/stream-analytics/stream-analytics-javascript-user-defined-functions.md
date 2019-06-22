@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc
 ms.date: 04/01/2018
-ms.openlocfilehash: ff8e61c53774429087ffe1a9137d40b155eb3f68
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c7414ee159303465d6698ce9c47d04ba37c0c46e
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61479537"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329366"
 ---
 # <a name="tutorial-azure-stream-analytics-javascript-user-defined-functions"></a>Kurz: Azure uživatelem definované funkce jazyka JavaScript v Stream Analytics
  
@@ -121,6 +121,8 @@ Pole | Pole
 Null, Nedefinováno | NULL
 Jakýkoli jiný typ (například funkce nebo chyba) | Nepodporuje se (výsledkem je chyba za běhu)
 
+Jazyk JavaScript je velká a malá písmena a použití malých a velkých pole objektů v kódu jazyka JavaScript musí odpovídat malých a velkých písmen polí v příchozí data. Mějte prosím na paměti, že úlohy s úrovní kompatibility 1.0 převede pole z příkazu SQL SELECT být malými písmeny. V části úroveň kompatibility 1.1 nebo vyšší bude mít pole z příkazu SELECT se stejnou velikostí písmen, jak je uvedeno v dotazu SQL.
+
 ## <a name="troubleshooting"></a>Řešení potíží
 Chyby jazyka JavaScript za běhu se považují za závažné a zobrazují se prostřednictvím protokolu aktivit. Pokud chcete protokol načíst, přejděte na portálu Azure Portal na příslušnou úlohu a vyberte **Protokol aktivit**.
 
@@ -128,7 +130,7 @@ Chyby jazyka JavaScript za běhu se považují za závažné a zobrazují se pro
 ## <a name="other-javascript-user-defined-function-patterns"></a>Další vzory uživatelem definovaných funkcí jazyka JavaScript
 
 ### <a name="write-nested-json-to-output"></a>Zápis vnořeného řetězce JSON do výstupu
-Pokud máte krok následného zpracování, který jako vstup používá výstup úlohy Stream Analytics a vyžaduje formát JSON, můžete do výstupu zapsat řetězec JSON. V dalším příkladu se volá funkce **JSON.stringify()**, která sbalí všechny dvojice název/hodnota ve vstupu a pak je zapíše jako jedinou hodnotu řetězce do výstupu.
+Pokud máte krok následného zpracování, který jako vstup používá výstup úlohy Stream Analytics a vyžaduje formát JSON, můžete do výstupu zapsat řetězec JSON. V dalším příkladu se volá funkce **JSON.stringify()** , která sbalí všechny dvojice název/hodnota ve vstupu a pak je zapíše jako jedinou hodnotu řetězce do výstupu.
 
 **Definice uživatelem definované funkce jazyka JavaScript:**
 

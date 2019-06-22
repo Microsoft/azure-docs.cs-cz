@@ -9,12 +9,12 @@ ms.subservice: form-recognizer
 ms.topic: quickstart
 ms.date: 04/24/2019
 ms.author: pafarley
-ms.openlocfilehash: b405c643f642a8b3f950848fe8cba65207cb5cb3
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 04c7663073a710fe39017b01edd0623a837d6354
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67271422"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67331807"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>Rychlý start: Trénování modelu Rozlišovač formuláře a extrahovat data formuláře pomocí rozhraní REST API s využitím Pythonu
 
@@ -47,12 +47,13 @@ Po dokončení nasazení prostředku Rozlišovač formuláře vyhledejte a vyber
 
 ## <a name="train-a-form-recognizer-model"></a>Trénování modelu Rozlišovač formuláře
 
-Nejprve budete potřebovat sadu trénovacích dat v objektu blob služby Azure Storage. Měli byste mít minimálně pět vzorku formy (dokumenty PDF a/nebo imagí) stejný typ nebo strukturu jako hlavní vstupní data. Nebo můžete použít jeden prázdný formulář s dva formuláře vyplněné. Název souboru prázdný formulář musí obsahovat slovo "prázdný".
+Nejprve budete potřebovat sadu trénovací data v kontejneru objektů blob v Azure Storage. Měli byste mít minimálně pět vzorku formy (dokumenty PDF a/nebo imagí) stejný typ nebo strukturu jako hlavní vstupní data. Nebo můžete použít jeden prázdný formulář s dva formuláře vyplněné. Název souboru prázdný formulář musí obsahovat slovo "prázdný".
 
 K natrénování modelu Rozlišovač formuláře pomocí dokumenty v kontejnerech objektů blob v Azure, zavolejte **trénování** rozhraní API pomocí pythonu kód, který následuje. Před spuštěním kódu, proveďte následující změny:
 
 1. Nahraďte `<Endpoint>` s adresu URL koncového bodu pro formuláře pro rozpoznávání prostředků v oblasti Azure, kde jste získali klíče předplatného.
-1. Nahraďte `<SAS URL>` s kontejnerem objektů Blob v Azure storage, sdílený přístup k adrese URL podpisu (SAS) umístění trénovací data.  
+1. Nahraďte `<SAS URL>` s objektem Blob Azure kontejner úložiště je sdílený přístup k adrese URL podpisu (SAS). K načtení to, otevřete Průzkumníka služby Microsoft Azure Storage, klikněte pravým tlačítkem na kontejner a vyberte **získat sdílený přístupový podpis**. Klikněte na tlačítko Další dialogové okno a zkopírujte hodnotu v **URL** oddílu. Ji by měl mít formát _služba ._protokol: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
+1. Nahraďte `<file type>` s typem souboru. Podporované typy: `application/pdf`, `image/jpeg`, `image/png`.
 1. Nahraďte `<Subscription key>` s klíči předplatného jste zkopírovali v předchozím kroku.
     ```python
     ########### Python Form Recognizer Train #############
@@ -63,7 +64,7 @@ K natrénování modelu Rozlišovač formuláře pomocí dokumenty v kontejnerec
     source = r"<SAS URL>"
     headers = {
         # Request headers
-        'Content-Type': 'application/json',
+        'Content-Type': '<file type>',
         'Ocp-Apim-Subscription-Key': '<Subscription Key>',
     }
     url = base_url + "/train" 
@@ -83,59 +84,40 @@ Zobrazí se `200 (Success)` odpověď s tímto výstupem JSON:
 
 ```json
 {
-  "parameters": {
-    "Endpoint": "{Endpoint}",
-    "Content-Type": "application/json",
-    "Ocp-Apim-Subscription-Key": "{API key}",
-    "body": {},
-    "trainRequest": {
-      "source": "/input/data",
-      "sourceFilter": {
-        "prefix": "",
-        "includeSubFolders": false
-      }
+  "modelId": "59e2185e-ab80-4640-aebc-f3653442617b",
+  "trainingDocuments": [
+    {
+      "documentName": "Invoice_1.pdf",
+      "pages": 1,
+      "errors": [],
+      "status": "success"
+    },
+    {
+      "documentName": "Invoice_2.pdf",
+      "pages": 1,
+      "errors": [],
+      "status": "success"
+    },
+    {
+      "documentName": "Invoice_3.pdf",
+      "pages": 1,
+      "errors": [],
+      "status": "success"
+    },
+    {
+      "documentName": "Invoice_4.pdf",
+      "pages": 1,
+      "errors": [],
+      "status": "success"
+    },
+    {
+      "documentName": "Invoice_5.pdf",
+      "pages": 1,
+      "errors": [],
+      "status": "success"
     }
-  },
-  "responses": {
-    "200": {
-      "body": {
-        "modelId": "ad1901b6-ddaa-4249-8938-3f03f65cc893",
-        "trainingDocuments": [
-          {
-            "documentName": "0.pdf",
-            "pages": 1,
-            "errors": [],
-            "status": "success"
-          },
-          {
-            "documentName": "1.pdf",
-            "pages": 1,
-            "errors": [],
-            "status": "success"
-          },
-          {
-            "documentName": "2.pdf",
-            "pages": 1,
-            "errors": [],
-            "status": "success"
-          },
-          {
-            "documentName": "3.pdf",
-            "pages": 1,
-            "errors": [],
-            "status": "success"
-          },
-          {
-            "documentName": "4.pdf",
-            "pages": 1,
-            "errors": [],
-            "status": "success"
-          }
-        ],
-        "errors": []
-      }
-    }
-  }
+  ],
+  "errors": []
 }
 ```
 
@@ -148,7 +130,7 @@ V dalším kroku budete analýza dokumentu a z něj extrahovat páry klíč hodn
 1. Nahraďte `<Endpoint>` s koncovým bodem, který jste získali s klíči předplatného Rozlišovač formuláře. Vyhledejte ji na váš prostředek formuláře Rozlišovač **přehled** kartu.
 1. Nahraďte `<path to your form>` s cestou k souboru (například C:\temp\file.pdf) formuláře.
 1. Nahraďte `<modelID>` s ID modelu, který jste získali v předchozí části.
-1. Nahraďte `<file type>` s typem souboru. Podporované typy: pdf, image/jpeg, image/png.
+1. Nahraďte `<file type>` s typem souboru. Podporované typy: `application/pdf`, `image/jpeg`, `image/png`.
 1. Místo `<subscription key>` použijte váš klíč předplatného.
 
     ```python
@@ -161,7 +143,7 @@ V dalším kroku budete analýza dokumentu a z něj extrahovat páry klíč hodn
     model_id = "<modelID>"
     headers = {
         # Request headers
-        'Content-Type': 'application/<file type>',
+        'Content-Type': '<file type>',
         'Ocp-Apim-Subscription-Key': '<subscription key>',
     }
 
