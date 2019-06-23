@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/29/2019
 ms.author: erhopf
-ms.openlocfilehash: 9cad860b8808dd2682995768c282d8376ab5d9be
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 5f06ca04b0b6ea48ebb49952df71cb02946777fa
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175294"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67333369"
 ---
 ## <a name="authentication"></a>Authentication
 
@@ -26,8 +26,7 @@ Při použití `Ocp-Apim-Subscription-Key` záhlaví, je nutné pouze zadejte kl
 'Ocp-Apim-Subscription-Key': 'YOUR_SUBSCRIPTION_KEY'
 ```
 
-Při použití `Authorization: Bearer` záhlaví, budete muset vytvořit žádost o `issueToken` koncového bodu. V této žádosti o výměnu váš klíč předplatného pro přístupový token, který je platný 10 minut. V následujících částech dozvíte, jak získat token, použijte token a aktualizovat token.
-
+Při použití `Authorization: Bearer` záhlaví, budete muset vytvořit žádost o `issueToken` koncového bodu. V této žádosti o výměnu váš klíč předplatného pro přístupový token, který je platný 10 minut. V následujících částech dozvíte, jak získat token a používá token.
 
 ### <a name="how-to-get-an-access-token"></a>Jak získat přístupový token
 
