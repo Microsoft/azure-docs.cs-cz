@@ -11,18 +11,18 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: badf351f8336e501b3ee1c035fcb389a570750c0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8c7476a82df75d8ba653a2a8e6c0f9f557b53c42
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65072858"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341879"
 ---
 # <a name="add-an-entity-to-example-utterances"></a>Přidání entity do příklad projevy 
 
 Příklad projevy jsou příkladem text otázky uživatele nebo příkazy. Představuje Language Understanding (LUIS), budete muset přidat [příklad projevy](luis-concept-utterance.md) do [záměr](luis-concept-intent.md).
 
-Obvykle nejprve přidat příkladu utterance záměru a pak na stránce záměru vytváření entit a projevy popisek. Pokud byste raději entity nejprve vytvoříte, přečtěte si téma [přidat entity](luis-how-to-add-entities.md).
+Obvykle nejprve přidat příkladu utterance k záměru, a pak vytvářet entity a označovat projevy na stránce záměru. Pokud byste raději entity nejprve vytvoříte, přečtěte si téma [přidat entity](luis-how-to-add-entities.md).
 
 ## <a name="marking-entities-in-example-utterances"></a>Označení entity v příkladu projevy
 

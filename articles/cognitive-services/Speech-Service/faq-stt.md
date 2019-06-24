@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: panosper
-ms.openlocfilehash: 29ec50a1d2e0aebb1aeb73b38c662f4a18624754
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6cc530d2680c0410081ad3ad3e573cd59d5583d6
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60539056"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341966"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Převod řeči na Text – nejčastější dotazy
 
@@ -69,7 +69,7 @@ Pokud máte upravit a nasadit model se standardními hodnotami V1.0, zůstane to
 
 **A**: Můžete vertikálně navýšit kapacitu váš model v přírůstcích po 20 souběžných požadavků.
 
-Pokud budete potřebovat větší měřítko, kontaktujte nás.
+Kontakt [podporu řeči](mailto:speechsupport@microsoft.com?subject=Request%20for%20higher%20concurrency%20for%20Speech-to-text) Pokud budete potřebovat větším měřítku.
 
 **Otázka: Můžete stáhnout Moje modelu a spustit místně?**
 

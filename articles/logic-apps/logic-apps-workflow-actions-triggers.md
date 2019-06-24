@@ -53,10 +53,10 @@ Aktivační události mají tyto prvky nejvyšší úrovně, i když některé j
 | Hodnota | Type | Popis | 
 |-------|------|-------------| 
 | <*trigger-name*> | String | Název aktivační události | 
-| <*trigger-type*> | String | Typ aktivační události, jako je například "Http" nebo "ApiConnection" | 
+| <*Typ aktivační události*> | String | Typ aktivační události, jako je například "Http" nebo "ApiConnection" | 
 | <*trigger-inputs*> | JSON – objekt | Vstupy, které definují chování triggeru | 
 | <*time-unit*> | String | Jednotka času, který popisuje, jak často se trigger spustí: "Druhý", "Minute", "Hour", "Day", "Týden", "Měsíc" | 
-| <*number-of-time-units*> | Integer | Hodnota, která určuje, jak často se trigger spustí na základě četnosti, což je počet časových jednotek počkat, až se trigger spustí znovu <p>Toto jsou minimální a maximální intervaly: <p>-Měsíc: 1 – 16 měsíců </br>-Den: 1 – 500 dnů </br>-Hodinu: 1 – 12 000 hodin </br>-Minutu: 1-72,000 minut </br>-Sekundu: 1-9,999,999 sekund<p>Například pokud je interval 6 a je frekvence "Měsíc", opakování je nastaveno na každých 6 měsíců. | 
+| <*číslo z časových jednotek*> | Integer | Hodnota, která určuje, jak často se trigger spustí na základě četnosti, což je počet časových jednotek počkat, až se trigger spustí znovu <p>Toto jsou minimální a maximální intervaly: <p>-Měsíc: 1 – 16 měsíců </br>-Den: 1 – 500 dnů </br>-Hodinu: 1 – 12 000 hodin </br>-Minutu: 1-72,000 minut </br>-Sekundu: 1-9,999,999 sekund<p>Například pokud je interval 6 a je frekvence "Měsíc", opakování je nastaveno na každých 6 měsíců. | 
 |||| 
 
 *Volitelné*
@@ -1891,7 +1891,7 @@ Modul Logic Apps ověří přístup k aktivační události, kterou chcete volat
 | Hodnota | Type | Popis | 
 |-------|------|-------------| 
 | <*nested-logic-app-name*> | String | Název aplikace logiky, kterou chcete volat | 
-| <*Název aktivační události*> | String | Název pro Spouštěč vnořenou aplikaci logiky, kterou chcete volat | 
+| <*trigger-name*> | String | Název pro Spouštěč vnořenou aplikaci logiky, kterou chcete volat | 
 | <*Azure-subscription-ID*> | String | ID předplatného Azure vnořenou aplikaci logiky |
 | <*Azure-resource-group*> | String | Název skupiny prostředků Azure vnořenou aplikaci logiky |
 | <*nested-logic-app-name*> | String | Název aplikace logiky, kterou chcete volat |

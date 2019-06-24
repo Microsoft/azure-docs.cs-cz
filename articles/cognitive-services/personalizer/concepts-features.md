@@ -7,15 +7,15 @@ author: edjez
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
-ms.topic: overview
-ms.date: 05/07/2019
+ms.topic: concept
+ms.date: 06/24/2019
 ms.author: edjez
-ms.openlocfilehash: b2054aa963991ffa2d92aabf1ce896031f2d87fc
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 2353b8c735602aff0386f44cc29d2be5eb9f90c4
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296061"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67340893"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>Funkce jsou informace o akce a kontextu
 
@@ -70,12 +70,15 @@ Funkce obory názvů vlastních konvencemi jako jsou platný klíčů JSON můž
 
 V následujícím kódu JSON `user`, `state`, a `device` jsou funkce obory názvů.
 
+Objekty JSON může obsahovat vnořené objekty JSON a jednoduché vlastnosti a hodnoty. Pole může obsahovat pouze v případě, že jsou položky pole čísel. 
+
 ```JSON
 {
     "contextFeatures": [
         { 
             "user": {
-                "name":"Doug"
+                "name":"Doug",
+                "latlong": [47.6, -122.1]
             }
         },
         {
@@ -121,7 +124,7 @@ Například na druhé časové razítko je velmi zhuštěné funkce. Ji může n
 
 #### <a name="expand-feature-sets-with-extrapolated-information"></a>Rozbalte sady funkcí extrapolované informacemi
 
-Můžete také získat další funkce podle přemýšlet o neprozkoumaných atributy, které mohou být odvozeny z informací, které už máte. Například v seznamu individuálního nastavení fiktivní film, je možné, který pracovní den víkendu vs vyvolat různé chování uživatelů? Čas může mít atribut "víkendu" nebo "den v týdnu" rozšířit. Státních svátků v kulturní jednotka pozornost k určitým typům film? Například "Halloweenem" atribut je užitečné v místech, kde je relevantní. Je možné, že destivo počasí má významný dopad na řadu videa pro mnoho uživatelů? V čase a místě může poskytovat služby weather, informace a můžete ho přidat jako další funkce. 
+Můžete také získat další funkce podle přemýšlet o neprozkoumaných atributy, které mohou být odvozeny z informací, které už máte. Například v seznamu individuálního nastavení fiktivní film, je možné, který pracovní den víkendu vs elicits různé chování uživatelů? Čas může mít atribut "víkendu" nebo "den v týdnu" rozšířit. Státních svátků v kulturní jednotka pozornost k určitým typům film? Například "Halloweenem" atribut je užitečné v místech, kde je relevantní. Je možné, že destivo počasí má významný dopad na řadu videa pro mnoho uživatelů? V čase a místě může poskytovat služby weather, informace a můžete ho přidat jako další funkce. 
 
 #### <a name="expand-feature-sets-with-artificial-intelligence-and-cognitive-services"></a>Rozbalte sady funkcí pomocí umělé inteligence a cognitive services
 
@@ -196,6 +199,8 @@ V některých případech je určen pouze později v obchodní logiky Pokud výs
 
 Při volání metody pořadí, odešlete několik akcí na výběr:
 
+Objekty JSON může obsahovat vnořené objekty JSON a jednoduché vlastnosti a hodnoty. Pole může obsahovat pouze v případě, že jsou položky pole čísel. 
+
 ```json
 {
     "actions": [
@@ -204,7 +209,8 @@ Při volání metody pořadí, odešlete několik akcí na výběr:
       "features": [
         {
           "taste": "salty",
-          "spiceLevel": "medium"
+          "spiceLevel": "medium",
+          "grams": [400,800]
         },
         {
           "nutritionLevel": 5,
@@ -217,7 +223,8 @@ Při volání metody pořadí, odešlete několik akcí na výběr:
       "features": [
         {
           "taste": "sweet",
-          "spiceLevel": "none"
+          "spiceLevel": "none",
+          "grams": [150, 300, 450]
         },
         {
           "nutritionalLevel": 2
@@ -229,7 +236,8 @@ Při volání metody pořadí, odešlete několik akcí na výběr:
       "features": [
         {
           "taste": "sweet",
-          "spiceLevel": "none"
+          "spiceLevel": "none",
+          "grams": [300, 600, 900]
         },
         {
           "nutritionLevel": 5
@@ -244,7 +252,8 @@ Při volání metody pořadí, odešlete několik akcí na výběr:
       "features": [
         {
           "taste": "salty",
-          "spiceLevel": "low"
+          "spiceLevel": "low",
+          "grams": [300, 600]
         },
         {
           "nutritionLevel": 8
@@ -271,6 +280,8 @@ Aplikace zodpovídá za načítání informací o kontextu z příslušných dat
 
 Kontext je vyjádřena jako objekt JSON, který je odeslán do rozhraní API pořadí:
 
+Objekty JSON může obsahovat vnořené objekty JSON a jednoduché vlastnosti a hodnoty. Pole může obsahovat pouze v případě, že jsou položky pole čísel. 
+
 ```JSON
 {
     "contextFeatures": [
@@ -288,7 +299,9 @@ Kontext je vyjádřena jako objekt JSON, který je odeslán do rozhraní API po�
         {
             "device": {
                 "mobile":true,
-                "Windows":true
+                "Windows":true,
+                "screensize": [1680,1050]
+                }
             }
         }
     ]

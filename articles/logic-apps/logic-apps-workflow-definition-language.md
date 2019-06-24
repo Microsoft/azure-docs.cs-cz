@@ -80,7 +80,7 @@ Tady je obecnou strukturu pro definici výstupu:
 |-----------|----------|------|-------------|
 | <*key-name*> | Ano | String | Název klíče pro výstup návratová hodnota |
 | <*key-type*> | Ano | int, float, string, securestring, bool, array, objekt JSON | Typ výstupu vracené hodnoty |
-| <*key-value*> | Ano | Stejné jako <*key-type*> | Návratová hodnota výstupu |
+| <*key-value*> | Ano | Stejné jako <*typ klíče*> | Návratová hodnota výstupu |
 |||||
 
 K získání výstup z běhu pracovního postupu, zkontrolujte historii spuštění aplikace logiky a podrobnosti na webu Azure Portal nebo pomocí [rozhraní REST API služby pracovního postupu](https://docs.microsoft.com/rest/api/logic/workflows). Můžete také předat výstup do externích systémů, například Power BI tak, že můžete vytvořit řídicí panely.

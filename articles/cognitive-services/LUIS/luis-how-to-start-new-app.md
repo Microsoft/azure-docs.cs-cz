@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 9d650a17ddfac6461341e50c4693e4522d9628b3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b8b0cebf4ba47f875caacfcfbf89b84551b41333
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65148198"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341861"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>Vytvoření nové aplikace LUIS na portálu služby LUIS
 Existuje několik způsobů, jak vytvořit aplikaci LUIS. Můžete vytvořit aplikaci LUIS v [LUIS](https://www.luis.ai) portálu, nebo prostřednictvím LUIS vytváření [rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f).
@@ -65,7 +65,7 @@ Vytvořit novou aplikaci s rozhraním API pro vytváření obsahu v několika zp
 
 Možné chyby jsou: 
 
-* Aplikace s tímto názvem už existuje. Opětovné importování aplikace a nastavení **volitelný název** na nový název. 
+* Aplikace s tímto názvem už existuje. Tento problém můžete znovu importovat aplikaci a nastavit **volitelný název** na nový název. 
 
 ## <a name="export-app-for-backup"></a>Exportovat aplikaci pro zálohování
 
