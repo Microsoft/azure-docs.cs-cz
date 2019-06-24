@@ -212,7 +212,7 @@
 - name: Referenční informace
   items:
     - name: Referenční informace k šablonám
-      href: subtoc/toc.yml
+      href: /azure/templates/
     - name: Funkce šablon
       items:
         - name: Všechny funkce
