@@ -79,8 +79,8 @@ Tady je obecnou strukturu pro definici výstupu:
 | Atribut | Požaduje se | Typ | Popis |
 |-----------|----------|------|-------------|
 | <*key-name*> | Ano | String | Název klíče pro výstup návratová hodnota |
-| <*key-type*> | Ano | int, float, string, securestring, bool, pole, objekt JSON | Typ výstupu vracené hodnoty |
-| <*key-value*> | Ano | Stejné jako <*typ klíče*> | Návratová hodnota výstupu |
+| <*key-type*> | Ano | int, float, string, securestring, bool, array, objekt JSON | Typ výstupu vracené hodnoty |
+| <*key-value*> | Ano | Stejné jako <*key-type*> | Návratová hodnota výstupu |
 |||||
 
 K získání výstup z běhu pracovního postupu, zkontrolujte historii spuštění aplikace logiky a podrobnosti na webu Azure Portal nebo pomocí [rozhraní REST API služby pracovního postupu](https://docs.microsoft.com/rest/api/logic/workflows). Můžete také předat výstup do externích systémů, například Power BI tak, že můžete vytvořit řídicí panely.
@@ -110,9 +110,9 @@ Tady je obecnou strukturu pro definici parametru:
 
 | Atribut | Požaduje se | Typ | Popis |
 |-----------|----------|------|-------------|
-| <*Typ parametru*> | Ano | int, float, string, securestring, bool, pole, objekt JSON, secureobject <p><p>**Poznámka:** Pro všechna hesla, klíče a tajné klíče, použijte `securestring` a `secureobject` typy, protože `GET` operace nevrací těchto typů. Další informace o zabezpečení parametry najdete v tématu [zabezpečení aplikací logiky](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters) | Typ parametru |
-| <*výchozí hodnoty parametrů*> | Ano | Stejné jako `type` | Výchozí hodnota parametru, pokud není zadána žádná hodnota, když vytvoří instanci pracovního postupu |
-| <*array-with-permitted-parameter-values*> | Ne | Pole | Pole s hodnotami, které přijímají parametr |
+| <*parameter-type*> | Ano | int, float, string, securestring, bool, array, objekt JSON, secureobject <p><p>**Poznámka:** Pro všechna hesla, klíče a tajné klíče, použijte `securestring` a `secureobject` typy, protože `GET` operace nevrací těchto typů. Další informace o zabezpečení parametry najdete v tématu [zabezpečení aplikací logiky](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters) | Typ parametru |
+| <*default-parameter-values*> | Ano | Stejné jako `type` | Výchozí hodnota parametru, pokud není zadána žádná hodnota, když vytvoří instanci pracovního postupu |
+| <*array-with-permitted-parameter-values*> | Ne | Array | Pole s hodnotami, které přijímají parametr |
 | `metadata` | Ne | JSON – objekt | Další parametr podrobnosti, například název nebo čitelný popis pro svou aplikaci logiky nebo toku nebo dat doby návrhu použít Visual Studio nebo jinými nástroji |
 ||||
 
