@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: sngun
-ms.openlocfilehash: 7574985dbcc502d03bc886c7651c859b22968c5f
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 60c7e6b32f60d6f42d706489c41dbeea4af0d15d
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65596087"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67342125"
 ---
 # <a name="build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>Vytvoření konzolové aplikace .NET pro správu dat v účtu rozhraní SQL API služby Azure Cosmos DB
 
@@ -40,7 +40,7 @@ V tomto kurzu získáte informace o následujících postupech:
 > - Vytvoření dokumentů JSON
 > - Dotaz na kolekci
 > - Aktualizace dokumentu JSON
-> - Odstranit dokument
+> - Odstranění dokumentu
 > - Odstranění databáze
 
 ## <a name="prerequisites"></a>Požadavky
@@ -68,7 +68,7 @@ Ke spuštění staženého kompletní řešení:
 1. V *App.config* soubor, aktualizovat `EndpointUrl` a `PrimaryKey` hodnoty, jak je popsáno v [připojte se k účtu Azure Cosmos DB](#Connect) oddílu.
 1. Vyberte **ladění** > **spustit bez ladění** nebo stiskněte klávesu **Ctrl**+**F5** sestavíte a spustíte aplikaci.
 
-## <a name="create-an-azure-cosmos-db-account"></a>Vytvořit účet Azure Cosmos DB
+## <a name="create-an-azure-cosmos-db-account"></a>Vytvoření účtu služby Azure Cosmos DB
 
 Postupujte podle těchto pokynů a vytvořte účet služby Azure Cosmos DB na webu Azure Portal. Pokud již máte účet služby Azure Cosmos DB používat, přeskočte k části [nastavení řešení v sadě Visual Studio](#SetupVS). 
 
@@ -78,7 +78,7 @@ Postupujte podle těchto pokynů a vytvořte účet služby Azure Cosmos DB na w
 
 1. V sadě Visual Studio 2017, vyberte **souboru** > **nový** > **projektu**.
    
-1. V **nový projekt** dialogového okna, vyberte **Visual C#**   >  **Konzolová aplikace (.NET Framework)**, pojmenujte svůj projekt *AzureCosmosDBApp* a pak vyberte **OK**.
+1. V **nový projekt** dialogového okna, vyberte **Visual C#**   >  **Konzolová aplikace (.NET Framework)** , pojmenujte svůj projekt *AzureCosmosDBApp* a pak vyberte **OK**.
    
    ![Snímek obrazovky s oknem Nový projekt](./media/sql-api-get-started/nosql-tutorial-new-project-2.png)
    
@@ -450,7 +450,7 @@ Následující diagram znázorňuje, jakým způsobem volá syntaxe dotazu Azure
 
 ![Diagram ilustrující obor a význam dotazu použitého v kurzu NoSQL k vytvoření konzolové aplikace v jazyce C#](./media/sql-api-get-started/nosql-tutorial-collection-documents.png)
 
-[FROM](how-to-sql-query.md#FromClause) – klíčové slovo v dotazu SQL je volitelný, protože dotazy služby Azure Cosmos DB již mají obor nastaven na jedinou kolekci. Můžete zaměnit `FROM Families f` s `FROM root r`, nebo jiné proměnné název, který zvolíte. Azure Cosmos DB, která odvodí `Families`, `root`, nebo název proměnné, zvolíte odkazuje na aktuální kolekci.
+[FROM](sql-query-from.md) – klíčové slovo v dotazu SQL je volitelný, protože dotazy služby Azure Cosmos DB již mají obor nastaven na jedinou kolekci. Můžete zaměnit `FROM Families f` s `FROM root r`, nebo jiné proměnné název, který zvolíte. Azure Cosmos DB, která odvodí `Families`, `root`, nebo název proměnné, zvolíte odkazuje na aktuální kolekci.
 
 ## <a id="ReplaceDocument"></a>Aktualizace dokumentu JSON
 

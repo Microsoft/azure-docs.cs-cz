@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 04/10/2019
 ms.author: sbowles
-ms.openlocfilehash: c22230545ccbe1ef1b4bfa35a33f0302197463b1
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 1696a20094357d084ba54739767509b8d50c4ad5
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66124531"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341298"
 ---
 # <a name="example-identify-faces-in-images"></a>Příklad: Identifikace tváří na obrázcích
 
@@ -41,10 +41,10 @@ https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&retu
 &subscription-key=<Subscription key>
 ```
 
-Jako alternativu, zadejte klíč předplatného v hlavičce žádosti HTTP **ocp-apim-subscription-key: &lt;Klíč předplatného&gt;**.
+Jako alternativu, zadejte klíč předplatného v hlavičce žádosti HTTP **ocp-apim-subscription-key: &lt;Klíč předplatného&gt;** .
 Při použití klientské knihovny klíč předplatného předána do konstruktoru třídy FaceServiceClient. Příklad:
  
-```CSharp 
+```csharp 
 faceServiceClient = new FaceServiceClient("<Subscription Key>");
 ```
  
@@ -63,7 +63,7 @@ Nejprve vytvořte nový jeden objekt PersonGroup pomocí [jeden objekt PersonGro
 
 Po definování skupiny lidí v něm můžete definovat pomocí [vytvořit jeden objekt PersonGroup uživatele –](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c) rozhraní API. Metoda klientské knihovny je CreatePersonAsync. Pro každou osobu, která můžete přidat plochy po jejich vytvoření.
 
-```CSharp 
+```csharp 
 // Create an empty PersonGroup
 string personGroupId = "myfriends";
 await faceServiceClient.CreatePersonGroupAsync(personGroupId, "My Friends");
@@ -84,7 +84,8 @@ Detekce se provádí odesláním webové žádosti POST do rozhraní API [Face -
 Pro každou tvář, který je zjištěn, volání [jeden objekt PersonGroup osobě – přidání rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) se přidá do správné osoby.
 
 Následující kód ukazuje proces detekce tváře z obrázku a její přidání k osobě:
-```CSharp 
+
+```csharp 
 // Directory contains image files of Anna
 const string friend1ImageDir = @"D:\Pictures\MyFriends\Anna\";
  
@@ -105,13 +106,13 @@ Pokud bitová kopie obsahuje více než jeden pro rozpoznávání tváře, přid
 
 Jeden objekt PersonGroup musí školení, před provedením identifikaci usnadňuje využívání. Jeden objekt PersonGroup musí retrained po přidání nebo odebrání osoba nebo při úpravě registrované rozpoznávání tváře osoby. K trénování se používá rozhraní API [PersonGroup – Train](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249). Při použití klientské knihovny je volání metody TrainPersonGroupAsync:
  
-```CSharp 
+```csharp 
 await faceServiceClient.TrainPersonGroupAsync(personGroupId);
 ```
  
 Školení je asynchronní proces. To nemusí být dokončeno i po TrainPersonGroupAsync metoda vrátí. Můžete potřebovat dotaz na stav školení. Použití [jeden objekt PersonGroup – získání stavu školení](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395247) metody rozhraní API nebo GetPersonGroupTrainingStatusAsync klientské knihovny. Následující kód ukazuje jednoduchý logiku, čekající na jeden objekt PersonGroup školení na dokončení:
  
-```CSharp 
+```csharp 
 TrainingStatus trainingStatus = null;
 while(true)
 {
@@ -134,7 +135,7 @@ Pomocí předchozího postupu musí být rozpoznány testování rozpoznávání
 
 Následující kód znázorňuje proces identifikace:
 
-```CSharp 
+```csharp 
 string testImageFile = @"D:\Pictures\test_img1.jpg";
 
 using (Stream s = File.OpenRead(testImageFile))
