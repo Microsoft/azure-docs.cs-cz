@@ -5,11 +5,11 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
 ms.openlocfilehash: b6ea8c7b3a6374572c8bd31e3c62b788efbafcbc
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66156308"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67175661"
 ---
 ## <a name="obtain-an-azure-resource-manager-token"></a>Získání tokenu Azure Resource Manageru
 Azure Active Directory se musí ověřovat všechny úkoly, které můžete provádět s prostředky pomocí Azure Resource Manageru. V příkladu je vidět tady používá ověřování pomocí hesla, naleznete v části Další přístupy [požadavků ověřování Azure Resource Manageru][lnk-authenticate-arm].

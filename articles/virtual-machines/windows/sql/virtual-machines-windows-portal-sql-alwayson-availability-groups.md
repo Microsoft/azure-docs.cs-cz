@@ -16,10 +16,10 @@ ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
 ms.openlocfilehash: bddc83d55c8909412f7f935a4324a6f316a82cd7
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62129549"
 ---
 # <a name="configure-always-on-availability-groups-in-azure-virtual-machines-automatically-resource-manager"></a>Konfigurace skupin dostupnosti Always On v Azure Virtual Machines automaticky: Resource Manager
@@ -206,7 +206,7 @@ Pro připojení RDP k systému SQL Server postupujte podle těchto kroků:
 1. Z řídicího panelu Azure portal ověřte, nasazení proběhlo úspěšně.
 2. Klikněte na tlačítko **prostředky**.
 3. V **prostředky** okna, klikněte na tlačítko **sqlserver 0**, což je název počítače některého z virtuálních počítačů se systémem SQL Server.
-4. V okně pro **sqlserver 0**, klikněte na tlačítko **připojit**. Váš prohlížeč požádá, pokud chcete otevřít nebo uložit objekt vzdáleného připojení. Klikněte na **Otevřít**.
+4. V okně pro **sqlserver 0**, klikněte na tlačítko **připojit**. Váš prohlížeč požádá, pokud chcete otevřít nebo uložit objekt vzdáleného připojení. Klikněte na tlačítko **otevřít**.
 5. **Připojení ke vzdálené ploše** možná by vás varovala, že nelze identifikovat vydavatele tohoto vzdáleného připojení. Klikněte na **Připojit**.
 6. Zabezpečení Windows vás vyzve k zadání přihlašovacích údajů pro připojení k IP adresu primárního řadiče domény. Klikněte na tlačítko **použijte jiný účet**. Pro **uživatelské jméno**, typ **contoso\DomainAdmin**. Tento účet jste nakonfigurovali, když nastavíte uživatelské jméno pro správce v šabloně. Použijte složité heslo, které jste zvolili při konfiguraci šablony.
 7. **Vzdálená plocha** možná by vás varovala, že vzdáleném počítači nelze ověřit z důvodu problémů s certifikátem zabezpečení. To se dozvíte, název certifikátu zabezpečení. Pokud jste postupovali podle tohoto kurzu, název je **sqlserver 0.contoso.com**. Klikněte na **Ano**.

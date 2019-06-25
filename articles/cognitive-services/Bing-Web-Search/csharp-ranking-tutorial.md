@@ -3,20 +3,20 @@ title: Použití pořadí pro zobrazení výsledků hledání
 titleSuffix: Azure Cognitive Services
 description: Ukazuje, jak použít odpovědí Bing RankingResponse k zobrazení výsledků hledání v pořadí řazení.
 services: cognitive-services
-author: bradumbaugh
+author: aahill
 manager: nitinme
 ms.assetid: 2575A80C-FC74-4631-AE5D-8101CF2591D3
 ms.service: cognitive-services
 ms.subservice: bing-web-search
-ms.topic: conceptual
-ms.date: 05/08/2017
-ms.author: bking
-ms.openlocfilehash: 6afaa2f497fa1a23d083c3ddd76359a49105732d
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.topic: tutorial
+ms.date: 06/18/2019
+ms.author: aahi
+ms.openlocfilehash: cfe198352cae95227a76535544d55a6be0c66abc
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66384840"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203243"
 ---
 # <a name="build-a-console-app-search-client-in-c"></a>Vytvoření konzolového klienta vyhledávací aplikaci v jazyce C#
 

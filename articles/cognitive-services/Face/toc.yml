@@ -59,7 +59,7 @@
       href: Face-API-How-to-Topics/HowtoIdentifyFacesinImage.md
     - name: Přidání tváří
       href: Face-API-How-to-Topics/how-to-add-faces.md
-    - name: Použití HeadPose k otočení obdélníku
+    - name: Použití atributu HeadPose
       href: Face-API-How-to-Topics/how-to-use-headpose.md
     - name: Určení modelu rozpoznávání obličeje
       href: Face-API-How-to-Topics/specify-recognition-model.md

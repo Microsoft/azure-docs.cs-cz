@@ -9,10 +9,10 @@ ms.date: 03/29/2018
 ms.author: alkohli;
 ms.subservice: common
 ms.openlocfilehash: 42c8c9c89a69224b222aabe8e929d800d22162ce
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65604218"
 ---
 # <a name="open-a-support-ticket-for-an-importexport-job"></a>Vytvořit lístek podpory pro úlohu importu/exportu
@@ -22,7 +22,7 @@ Pokud narazíte na případné problémy s vaší službou Import/Export, může
 * Jak vytvořit žádost o podporu.
 * Jak spravovat životní cyklus žádost o podporu z v rámci portálu.
 
-## <a name="create-a-support-request"></a>Vytvořit žádost o podporu
+## <a name="create-a-support-request"></a>Vytvoření žádosti o podporu
 
 Proveďte následující kroky a vytvoříte žádost o podporu:
 
@@ -61,7 +61,7 @@ Proveďte následující kroky a vytvoříte žádost o podporu:
    2. Kontaktní údaje zadejte jméno, e-mailu, volitelné kontakt, země/oblast. Vyberte **uložit změny kontaktů pro budoucí požadavky na podporu** zaškrtávací políčko.
    3. Klikněte na možnost **Vytvořit**.
    
-       ![Kontaktní údaje](./media/storage-import-export-contact-microsoft-support/import-export-support7.png)   
+       ![Kontaktní informace](./media/storage-import-export-contact-microsoft-support/import-export-support7.png)   
 
       Microsoft Support bude tyto informace slouží k kontaktovat, další informace, diagnostiku a řešení.
       Po odeslání vaší žádosti pracovníkem technické podpory bude vás kontaktovat co nejdříve a pokračovat při zpracování požadavku.

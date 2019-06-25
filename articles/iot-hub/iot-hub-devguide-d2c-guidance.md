@@ -9,10 +9,10 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.openlocfilehash: fffa064b912a96b05feb901d1d2d44533c4681b7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60885512"
 ---
 # <a name="device-to-cloud-communications-guidance"></a>Doprovodných materiálech ke komunikaci typu zařízení cloud
@@ -35,7 +35,7 @@ Tady je podrobné porovnání různých možností komunikace typu zařízení c
 | Ukládání a načítání | Dočasně ukládají ve službě IoT Hub, až na 7 dní. Pouze sekvenční čtení. | Uložené ve službě IoT Hub ve dvojčeti zařízení. Retrievable pomocí [dotazovací jazyk služby IoT Hub](iot-hub-devguide-query-language.md). | Uložené v uživatelem zadaný účet služby Azure Storage. |
 | Velikost | Až 256 KB zpráv. | Ohlášené vlastnosti maximální velikost je 8 KB. | Maximální velikost souboru podporovaná službou Azure Blob Storage. |
 | Frekvence | Vysoká. Další informace najdete v tématu [služby IoT Hub omezuje](iot-hub-devguide-quotas-throttling.md). | Střední. Další informace najdete v tématu [služby IoT Hub omezuje](iot-hub-devguide-quotas-throttling.md). | Nízká. Další informace najdete v tématu [služby IoT Hub omezuje](iot-hub-devguide-quotas-throttling.md). |
-| Protocol (Protokol) | K dispozici na všechny protokoly. | K dispozici používat protokol MQTT nebo AMQP. | K dispozici při použití libovolného protokolu pro, ale vyžaduje protokol HTTPS na zařízení. |
+| Protocol | K dispozici na všechny protokoly. | K dispozici používat protokol MQTT nebo AMQP. | K dispozici při použití libovolného protokolu pro, ale vyžaduje protokol HTTPS na zařízení. |
 
 Aplikace může potřebovat odeslat informace i jako telemetrická data časové řady nebo výstrahu a zpřístupní ji ve dvojčeti zařízení. V tomto scénáři zvolte jednu z následujících možností:
 

@@ -45,7 +45,7 @@
       href: security-center-onboarding.md
     - name: Ochrana serveru pomocí Ochrany ATP v programu Windows Defender
       href: security-center-wdatp.md
-    - name: Pokročilé zabezpečení dat pro IaaS
+    - name: Pokročilé zabezpečení dat pro SQL na virtuálních počítačích Azure (Public Preview)
       href: security-center-iaas-advanced-data.md
     - name: Ochrana služby App Service
       href: security-center-app-services.md
@@ -74,15 +74,16 @@
     - name: Viditelnost v rámci celého tenanta
       href: security-center-management-groups.md
     - name: Implementace doporučení pro zabezpečení
-      href: security-center-recommendations.md
       items:
+        - name: Co jsou doporučení zabezpečení
+          href: security-center-recommendations.md
         - name: Posílení stavu zabezpečení
           href: security-center-monitoring.md
         - name: Ochrana vašich počítačů a aplikací
           href: security-center-virtual-machine-protection.md
         - name: Ochrana síťových prostředků
           href: security-center-network-recommendations.md
-        - name: Ochrana dat a služby SQL
+        - name: Ochrana dat a služby úložiště
           href: security-center-sql-service-recommendations.md
         - name: Ochrana identit a přístupu
           href: security-center-identity-access.md
@@ -181,6 +182,8 @@
       href: /learn/browse/?term=securityS
     - name: Správa uživatelských dat
       href: security-center-privacy.md
+    - name: Správa IoT
+      href: 'https://docs.microsoft.com/en-us/azure/asc-for-iot/'
     - name: Nejčastější dotazy
       href: security-center-faq.md
     - name: Zabezpečení Azure

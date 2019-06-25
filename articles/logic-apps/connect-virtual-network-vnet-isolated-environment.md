@@ -10,10 +10,10 @@ ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.openlocfilehash: bd1f06c93a75673f86f0c52f78cad8a60f7a1a1e
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65961448"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Připojení k virtuálním sítím Azure z Azure Logic Apps s využitím integrace služby prostředí (ISE)
@@ -88,7 +88,7 @@ Tyto tabulky popisují porty ve vaší virtuální síti, která používá vaš
 | Azure závislost SQL | Odchozí | 1433 | VirtualNetwork | SQL |
 | Azure Resource Health | Odchozí | 1886 | VirtualNetwork | Internet | Pro publikování stav Resource Health |
 | API Management – koncový bod správy | Příchozí | 3443 | APIManagement  | VirtualNetwork | |
-| Závislost z protokolu do zásady centra událostí a agenta monitorování | Odchozí | 5672 | VirtualNetwork  | EventHub | |
+| Závislost z protokolu do zásady centra událostí a agenta monitorování | Odchozí | 5672 | VirtualNetwork  | Centrum událostí | |
 | Přístup k mezipaměti Azure pro instance Redis mezi instancemi Role | Příchozí <br>Odchozí | 6379-6383 | VirtualNetwork  | VirtualNetwork | Navíc ISE pracovat s mezipamětí Azure Redis, je nutné otevřít tyto [odchozí a příchozí porty popsaných v ukládání do mezipaměti Azure redis Cache – nejčastější dotazy](../azure-cache-for-redis/cache-how-to-premium-vnet.md#outbound-port-requirements). |
 | Nástroj pro vyrovnávání zatížení Azure | Příchozí | * | AzureLoadBalancer | VirtualNetwork |  |
 ||||||
@@ -117,7 +117,7 @@ Do vyhledávacího pole zadejte jako filtr "prostředí integrační služby".
    | **Předplatné** | Ano | <*název_předplatného_Azure*> | Předplatné Azure, které můžete použít pro vaše prostředí |
    | **Skupina prostředků** | Ano | <*Azure-resource-group-name*> | Skupina prostředků Azure, ve kterém chcete vytvořit prostředí |
    | **Název prostředí integrační služby** | Ano | <*environment-name*> | Název prostředí |
-   | **Umístění** | Ano | <*Azure-datacenter-region*> | Oblast datového centra Azure, jak nasadíte prostředí |
+   | **Location** | Ano | <*Azure-datacenter-region*> | Oblast datového centra Azure, jak nasadíte prostředí |
    | **Zvýšení kapacity** | Ano | 0 až 10 | Počet jednotek další zpracování pro tento prostředek ISE. Po vytvoření navyšovat kapacitu, najdete v článku [ISE přidat kapacitu](#add-capacity). |
    | **Virtuální síť** | Ano | <*Azure-virtual-network-name*> | Virtuální síť Azure ve které chcete vložit prostředí, takže aplikace logiky v daném prostředí mají přístup k vaší virtuální sítě. Pokud nemáte sítě, [nejprve vytvořte virtuální síť Azure](../virtual-network/quick-create-portal.md). <p>**Důležité**: Je možné *pouze* provádět tento vkládání při vytváření vašeho ISE. |
    | **Podsítě** | Ano | <*subnet-resource-list*> | ISE vyžaduje čtyři *prázdný* podsítě pro vytváření prostředků ve vašem prostředí. K vytvoření každé podsíti [, použijte postup v této tabulce](#create-subnet).  |
@@ -156,12 +156,12 @@ Do vyhledávacího pole zadejte jako filtr "prostředí integrační služby".
 
    1. Na **podsítě** podokně zvolte **podsítě**.
 
-      ![Přidat podsíť](./media/connect-virtual-network-vnet-isolated-environment/add-subnet.png)
+      ![Přidání podsítě](./media/connect-virtual-network-vnet-isolated-environment/add-subnet.png)
 
    1. Na **přidat podsíť** podokně zadejte tyto informace.
 
       * **Název**: Název pro vaši podsíť
-      * **Rozsah adres (blok CIDR)**: Rozsah vaší podsítě ve virtuální síti a ve formátu CIDR
+      * **Rozsah adres (blok CIDR)** : Rozsah vaší podsítě ve virtuální síti a ve formátu CIDR
 
       ![Přidat podrobnosti o podsíti](./media/connect-virtual-network-vnet-isolated-environment/subnet-details.png)
 

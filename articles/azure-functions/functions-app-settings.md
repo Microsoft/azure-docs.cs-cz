@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/22/2018
 ms.author: glenga
-ms.openlocfilehash: 02becd787fcc5f82efff7ef21feaf336fba3a26f
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 62d359494050b188869d51d1e3975c823b9c0a76
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65967589"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204944"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Reference k nastavení aplikací pro službu Azure Functions
 
@@ -32,6 +32,10 @@ Instrumentační klíč Application Insights při použití služby Application 
 |Klíč|Ukázková hodnota|
 |---|------------|
 |APPINSIGHTS_INSTRUMENTATIONKEY|5dbdd5e9 af77-484b-9032-64f83bb83bb|
+
+## <a name="azurefunctionsenvironment"></a>AZURE_FUNCTIONS_ENVIRONMENT
+
+Ve verzi 2.x modul runtime služby Functions, nakonfiguruje chování aplikace založené na prostředí modulu runtime. Tato hodnota je [čtení během inicializace](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/Program.cs#L43). Můžete nastavit `AZURE_FUNCTIONS_ENVIRONMENT` na libovolnou hodnotu, ale [tří hodnot](/dotnet/api/microsoft.aspnetcore.hosting.environmentname) jsou podporovány: [Vývoj](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.development), [pracovní](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.staging), a [produkční](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.production). Když `AZURE_FUNCTIONS_ENVIRONMENT` není nastavený, použije se výchozí `Production`. Toto nastavení by měl být použít namísto `ASPNETCORE_ENVIRONMENT` nastavení prostředí modulu runtime. 
 
 ## <a name="azurewebjobsdashboard"></a>AzureWebJobsDashboard
 
@@ -71,14 +75,6 @@ Když je toto nastavení aplikace vynechán nebo nastaven na `false`, zobrazí s
 |Klíč|Ukázková hodnota|
 |---|------------|
 |AzureWebJobsFeatureFlags|feature1 feature2|
-
-## <a name="azurewebjobsscriptroot"></a>AzureWebJobsScriptRoot
-
-Cesta ke kořenovému adresáři kde *host.json* složky souboru a funkce jsou umístěny. V aplikaci function app, výchozí hodnota je `%HOME%\site\wwwroot`.
-
-|Klíč|Ukázková hodnota|
-|---|------------|
-|AzureWebJobsScriptRoot|%Home%\site\wwwroot|
 
 ## <a name="azurewebjobssecretstoragetype"></a>AzureWebJobsSecretStorageType
 

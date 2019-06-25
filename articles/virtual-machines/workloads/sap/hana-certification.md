@@ -15,10 +15,10 @@ ms.date: 09/04/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 15de566d756d6b0f7719eabf74ee9c7ac66659d6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60794010"
 ---
 # <a name="certification"></a>Certifikace
@@ -41,5 +41,5 @@ Porovnání se spouštěním SAP HANA ve virtuálních počítačích, toto ře�
 - Kromě řešení je zde popsáno můžete nainstalovat další komponenty ve vašem předplatném Azure, která se připojuje k SAP HANA v Azure (velké instance). Příklady jsou komponenty, které umožňují komunikaci s, nebo přímo do systému SAP HANA databáze, jako jsou třeba jump servery, servery protokolu RDP, SAP HANA Studio, SAP Data Services pro SAP BI scénáře, nebo řešení pro monitorování sítě.
 - Velká Instance HANA stejně jako v Azure, nabízí podporu pro vysokou dostupnost a funkce pro zotavení po havárii.
 
-**Další kroky**
+**Další postup**
 - Přečtěte si [dostupných skladových položek pro HLI](hana-available-skus.md) 

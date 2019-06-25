@@ -1,8 +1,20 @@
 ---
-Title: obsahovat popis souboru: zahrnout soubor Autor: robinsh ms.service: služby iot hub: služby iot hub ms.topic: zahrnují ms.date: 03/05/2019 ms.author: robinsh ms.custom: soubor k zahrnutí
-<!-- this is the bit that tells the customer how to view the routing info they just set up -->
+title: zahrnout soubor
+description: zahrnout soubor
+author: robinsh
+ms.service: iot-hub
+services: iot-hub
+ms.topic: include
+ms.date: 03/05/2019
+ms.author: robinsh
+ms.custom: include file
+ms.openlocfilehash: 178236f774b0e1a6fe20c73afe0e7fd6965e67a5
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67235280"
 ---
-
 Teď, když vaše koncové body a směrování zpráv jsou nastavené, jejich konfiguraci můžete zobrazit na portálu. Přihlaste se k [webu Azure portal](https://portal.azure.com) a přejděte na **skupiny prostředků**. V dalším kroku vyberte skupinu prostředků a pak vyberte své centrum (název centra začíná `ContosoTestHub` v tomto kurzu). Zobrazí podokno služby IoT Hub.
 
 ![Vlastnosti obrazovky služby IoT Hub](./media/iot-hub-include-view-routing-in-portal/01-show-hub-properties.png)

@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: sstein, carlrab
 manager: craigg
 ms.date: 06/12/2019
-ms.openlocfilehash: eba5294780cc39ced6e9ebb93abde84c31f90ed8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: afa575c9015cbb21386d23101b74456822dfa33c
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67070109"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275464"
 ---
 # <a name="azure-sql-database-serverless-preview"></a>Azure SQL Database bez serveru (preview)
 
@@ -25,7 +25,7 @@ Azure SQL Database, bez serveru (preview) je výpočetní úroveň pro izolovan�
 
 ## <a name="serverless-compute-tier"></a>Bezserverová výpočetní úroveň
 
-Na úrovni výpočetní prostředí pro izolovanou databázi je parametrizován rozsah škálování výpočetní prostředky a prodlevu autopause.  Konfigurace tyto parametry obrazce výkon databáze a výpočetní náklady.
+Na úrovni výpočetní prostředí pro izolovanou databázi je parametrizován rozsah automatické škálování výpočetních a prodlevu autopause.  Konfigurace tyto parametry obrazce výkon databáze a výpočetní náklady.
 
 ![bez serveru fakturace](./media/sql-database-serverless/serverless-billing.png)
 
@@ -37,9 +37,9 @@ Na úrovni výpočetní prostředí pro izolovanou databázi je parametrizován 
 ### <a name="cost"></a>Náklady
 
 - Náklady na databáze bez serveru je součtem výpočetní náklady a náklady na úložiště.
-- Při využití služby compute je v rozsahu definovaném minimálním a omezení pro službu compute maximální nakonfigurovaný, náklady na výpočetní prostředky podle vCore a využití paměti.
-- Při využití služby compute je nižší než omezení compute min nakonfigurované, náklady na výpočetní prostředky se odvíjí min virtuálních jader a minimální pamětí nakonfigurovaných.
-- Pokud databáze je pozastavený, náklady na výpočetní výkon jsou nula a bude účtovat pouze úložiště.
+- Při využití služby compute se mezi minimální a maximální limity nakonfigurované, výpočetní náklady závisí na vCore a využité paměti.
+- Při využití služby compute je nižší než minimální omezení nakonfigurované, náklady na výpočetní je na základě virtuálních jader pro minimální a minimální pamětí nakonfigurovaných.
+- Pokud databáze je pozastavený, náklady na výpočetní prostředky je nula a pouze náklady na úložiště se účtují.
 - Náklady na úložiště, je určena stejným způsobem jako v zřízených výpočetních vrstvy.
 
 Další podrobnosti o nákladech, naleznete v tématu [fakturace](sql-database-serverless.md#billing).
@@ -253,6 +253,8 @@ Uživatelským fondem zdrojů je vnitřní většina hranice správy prostředk�
 
 ### <a name="metrics"></a>Metriky
 
+Metriky pro monitorování využití prostředků aplikace balíčku a uživatele fondu bez serveru databáze jsou uvedeny v následující tabulce:
+
 |Entita|Metrika|Popis|Jednotky|
 |---|---|---|---|
 |Balíček aplikace|app_cpu_percent|Procentuální podíl virtuálních jader, používat aplikace vzhledem k maximální počet virtuálních jader pro povolené aplikace.|Procento|
@@ -263,10 +265,6 @@ Uživatelským fondem zdrojů je vnitřní většina hranice správy prostředk�
 |Uživatel fondu|log_IO_percent|Procento protokolu pro uživatelské zatížení povoleny MB/s, které používá uživatelské zatížení vzhledem k maximální protokolu MB/s.|Procento|
 |Uživatel fondu|workers_percent|Procento pracovních procesů využívaných zatížení uživatelů vzhledem k maximální počet pracovních procesů povolen pro uživatelské zatížení.|Procento|
 |Uživatel fondu|sessions_percent|Procento relací použít úlohu uživatele vzhledem k maximálního počtu relací povolená pro uživatelské zatížení.|Procento|
-____
-
-> [!NOTE]
-> Metriky na webu Azure Portal jsou k dispozici v podokně databáze pro izolované databáze podle **monitorování**.
 
 ### <a name="pause-and-resume-status"></a>Pozastavit a obnovit stav
 

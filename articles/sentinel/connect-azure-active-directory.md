@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2019
+ms.date: 06/17/2019
 ms.author: rkarlin
-ms.openlocfilehash: 357435b8a4ac396c1548c89206f269730e871f6b
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: ce4a57b8c266fe474fc2e6dd8f811fc7440e7ac6
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204495"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190442"
 ---
 # <a name="connect-data-from-azure-active-directory"></a>Připojení dat ze služby Azure Active Directory
 
@@ -34,6 +34,8 @@ Azure Sentinel umožňuje shromažďovat data z [Azure Active Directory](../acti
 - Pokud chcete exportovat data přihlášení ze služby Active Directory, musí mít licenci Azure AD P1 nebo P2.
 
 - Uživatel se globální správce nebo bezpečnostní oprávnění správce v tenantovi chcete Streamovat protokoly z.
+
+- Aby bylo možné zobrazit stav připojení, musíte mít oprávnění pro přístup k diagnostickým protokolům Azure AD. 
 
 
 ## <a name="connect-to-azure-ad"></a>Připojení k Azure AD

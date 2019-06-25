@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.topic: article
 ms.date: 04/04/2019
 ms.openlocfilehash: 4159b2e7af83030f46d5aca150ef99a1380e711f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61473004"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Stav migrace scénáře podporované službou Azure Database Migration Service
@@ -39,7 +39,7 @@ Následující tabulky popisují, jaké scénáře migrace jsou podporované př
 ### <a name="offline-one-time-migration-support"></a>Podpora migrace offline (jednorázová)
 V následující tabulce jsou uvedeny Azure Database Migration Service podporu pro offline migraci.
 
-| Cíl  | Zdroj | Podpora | Status |
+| Target  | source | Podpora | Status |
 | ------------- | ------------- |:-------------:|:-------------:|
 | **Azure SQL DB** | SQL Server | ✔ | GA |
 |   | RDS SQL |  |  |
@@ -58,7 +58,7 @@ V následující tabulce jsou uvedeny Azure Database Migration Service podporu p
 ### <a name="online-continuous-sync-migration-support"></a>Podpora migrace online (Průběžná synchronizace)
 Podpora Azure Database Migration Service online migrace naleznete v následující tabulce.
 
-| Cíl  | Zdroj | Podpora | Status |
+| Target  | source | Podpora | Status |
 | ------------- | ------------- |:-------------:|:-------------:|
 | **Azure SQL DB** | SQL Server | ✔ | GA |
 |   | RDS SQL | ✔ | GA |

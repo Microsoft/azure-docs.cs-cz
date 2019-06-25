@@ -11,10 +11,10 @@ ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: a02983c5019870e8b17db48184b2f238a82f8a40
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66510587"
 ---
 # <a name="localization"></a>Lokalizace
@@ -45,7 +45,7 @@ ms.locfileid: "66510587"
 
 **Lokalizace** prvek obsahuje následující prvky XML
 
-| Prvek | Výskyty | Popis |
+| Element | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | SupportedLanguages | 1: n | Seznam podporovaných jazyků. | 
 | LocalizedResources | 0: n | Seznam lokalizovaných prostředků. |
@@ -63,7 +63,7 @@ ms.locfileid: "66510587"
 
 **SupportedLanguages** prvek obsahuje následující prvky:
 
-| Prvek | Výskyty | Popis |
+| Element | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | SupportedLanguage | 1: n | Zobrazí obsah, který odpovídá značku jazyka podle RFC 5646 – značky pro identifikaci jazyků. | 
 
@@ -77,7 +77,7 @@ ms.locfileid: "66510587"
 
 **LocalizedResources** prvek obsahuje následující prvky:
 
-| Prvek | Výskyty | Popis |
+| Element | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | LocalizedCollections | 0: n | Definuje celé kolekce v různé jazykové verze. Kolekce může mít různý počet položek a různých řetězců pro různé jazykové verze. Kolekce příklady výčty, které se zobrazují v typy deklarací identity. Například je uživateli v rozevíracím seznamu zobrazí seznam země/oblast. |
 | LocalizedStrings | 0: n | Definuje všechny řetězce, s výjimkou těchto řetězců, které se zobrazují v kolekcích v různé jazykové verze. |
@@ -86,7 +86,7 @@ ms.locfileid: "66510587"
 
 **LocalizedCollections** prvek obsahuje následující prvky:
 
-| Prvek | Výskyty | Popis |
+| Element | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | LocalizedCollection | 1: n | Seznam podporovaných jazyků. |
 
@@ -102,7 +102,7 @@ ms.locfileid: "66510587"
 
 **LocalizedCollection** prvek obsahuje následující prvky:
 
-| Prvek | Výskyty | Popis |
+| Element | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | Položka | 0: n | Definuje k dispozici možnost uživatele vybrat pro deklaraci identity v uživatelském rozhraní, jako jsou hodnoty v rozevíracího seznamu. |
 
@@ -138,7 +138,7 @@ Následující příklad ukazuje použití **LocalizedCollections** elementu. Ob
 
 **LocalizedStrings** prvek obsahuje následující prvky:
 
-| Prvek | Výskyty | Popis |
+| Element | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | LocalizedString | 1: n | Lokalizovaný řetězec. |
 

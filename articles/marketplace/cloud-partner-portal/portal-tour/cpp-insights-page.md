@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: pabutler
 ms.openlocfilehash: 2cbe3b790197c3f71305e4cb21d0f37fe0404511
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64943493"
 ---
 # <a name="insights-page"></a>Stránka Přehledy
@@ -21,7 +21,7 @@ ms.locfileid: "64943493"
 
 |  **Řídicí panel**    |  **Zobrazený obsah**               |
 |  -------------    |  ---------------------               |
-| **Souhrn**       | grafy trendů a hodnoty agregovaná data, která shrnuje aktivity na webu marketplace pro vydavatele, nabídky |
+| **Shrnutí**       | grafy trendů a hodnoty agregovaná data, která shrnuje aktivity na webu marketplace pro vydavatele, nabídky |
 | **Výběr**        | výplaty a souvisejících transakcí v formáty grafické a ke stažení |
 | **Využití & objednávky** | objednávky a informace o využití ve formátu grafické a ke stažení |
 | **Zákazníka**      | informace o zákaznících, včetně jejich nákupní profilu |

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 5e6548a5a04e32b374a8a9c29d2ca5f89fd65c78
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 62511118edb4f8b5061f90138bac2aa2b5d3cfe3
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65160182"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165156"
 ---
 # <a name="private-cloud-vmware-components"></a>Součásti VMware privátního cloudu
 
@@ -33,11 +33,11 @@ Zásobníku VMware privátní cloud se nasazuje s následující verze softwaru.
 | ESXi | 6.7U1 | Enterprise Plus |
 | vCenter | 6.7U1 | vCenter Standard |
 | vSAN | 6.7 | Enterprise |
-| NSX Data Center | 2.3 | Upřesňující |
+| NSX Data Center | 2.3 | Upřesnit |
 
 ## <a name="esxi"></a>ESXi
 
-VMware ESXi je nainstalován na uzlech zakoupené CloudSimple při vytvoření privátního cloudu.  ESXi poskytuje hypervisor nasazení úloh virtuálních počítačů (VM).  Uzly poskytují infrastrukturu konvergované na hyper v (výpočetní výkon a úložiště) v privátním cloudu.  Uzly jsou součástí clusteru vSphere do privátního cloudu.  Každý uzel má čtyři fyzické sítě rozhraní připojené k underlay sítě.  Dvě fyzická síťová rozhraní, které se používají k vytváření **vSphere distribuované přepnout (VDS)** na serveru vCenter a dvě slouží k vytvoření **NSX spravované virtuální distribuovaný přepínač (N-VDS)**.  Síťová rozhraní jsou nakonfigurované v režimu aktivní aktivní pro zajištění vysoké dostupnosti.
+VMware ESXi je nainstalován na uzlech zřízené CloudSimple při vytvoření privátního cloudu.  ESXi poskytuje hypervisor nasazení úloh virtuálních počítačů (VM).  Uzly poskytují infrastrukturu konvergované na hyper v (výpočetní výkon a úložiště) v privátním cloudu.  Uzly jsou součástí clusteru vSphere do privátního cloudu.  Každý uzel má čtyři fyzické sítě rozhraní připojené k underlay sítě.  Dvě fyzická síťová rozhraní, které se používají k vytváření **vSphere distribuované přepnout (VDS)** na serveru vCenter a dvě slouží k vytvoření **NSX spravované virtuální distribuovaný přepínač (N-VDS)** .  Síťová rozhraní jsou nakonfigurované v režimu aktivní aktivní pro zajištění vysoké dostupnosti.
 
 Další informace o VMware ESXi
 

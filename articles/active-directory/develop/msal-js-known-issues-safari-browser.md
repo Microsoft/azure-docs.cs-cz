@@ -18,10 +18,10 @@ ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cb89b1ef4dbbef234fba3152d7f85bbadfbdc64a
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65873882"
 ---
 # <a name="known-issues-on-safari-browser-with-msaljs"></a>Známé problémy v prohlížeči Safari se MSAL.js 
@@ -36,7 +36,7 @@ MSAL.js používá k provádění získání tokenu služby tichou a obnovení v
 
 Neexistuje žádné řešení tohoto problému v tomto okamžiku a jsme vyhodnocují možnosti s komunitou standardy.
 
-### <a name="work-around"></a>Alternativní postup
+### <a name="work-around"></a>Obejít
 
 Ve výchozím nastavení je povolené nastavení ITP v prohlížeči Safari. Toto nastavení můžete zakázat tak, že přejdete do **Předvolby** -> **ochrany osobních údajů** a zrušíte zaškrtnutí **zabránit sledování webů** možnost.
 

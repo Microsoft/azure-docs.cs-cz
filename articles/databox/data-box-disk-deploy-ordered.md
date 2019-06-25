@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 02/27/2019
+ms.date: 06/17/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 1d25ea2ce6e365e0d04fab325f9c13bb37382758
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 5f8fd9b2ecb58b34476bf8ecca7aa08dfc446040
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65603180"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273392"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk"></a>Kurz: Pořadí disku Azure Data Box
 
@@ -47,9 +47,14 @@ Než začnete, ujistěte se, že:
     - Musí na něm běžet [podporovaný operační systém](data-box-disk-system-requirements.md#supported-operating-systems-for-clients).
     - Musí na něm být nainstalovaný [požadovaný software](data-box-disk-system-requirements.md#other-required-software-for-windows-clients), pokud jde o klienta pro Windows.  
 
-## <a name="order-data-box-disk"></a>Objednání služby Data Box Disk
+## <a name="order-data-box-disk"></a>Objednat Data Box Disk
 
-Službu Data Box Disk si objednejte na portálu [Azure Portal](https://aka.ms/azuredataboxfromdiskdocs) následujícím postupem.
+Přihlášení k aplikaci:
+
+- Na webu Azure portal na této adrese URL: https://portal.azure.com objednávky disku Data Box.
+- Nebo na portálu Azure Government na této adrese URL: https://portal.azure.us. Další podrobnosti najdete v části [připojit se k portálu Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal).
+
+Objednávku Data Box Disk, proveďte následující kroky.
 
 1. V levém horním rohu portálu klikněte na **+ Vytvořit prostředek** a vyhledejte *Azure Data Box*. Klikněte na **Azure Data Box**.
     
@@ -64,7 +69,7 @@ Službu Data Box Disk si objednejte na portálu [Azure Portal](https://aka.ms/az
     |Nastavení|Hodnota|
     |---|---|
     |Předplatné|Vyberte předplatné, pro které je služba Data Box povolena.<br> Předplatné je propojeno s vaším fakturačním účtem. |
-    |Typ převodu| Import do Azure|
+    |Typ přenosu| Import do Azure|
     |Zdrojová země | Vyberte zemi nebo oblast, kde se aktuálně nachází vaše data.|
     |Cílová oblast Azure|Vyberte oblast Azure, do které chcete data přenést.|
 
@@ -77,7 +82,7 @@ Službu Data Box Disk si objednejte na portálu [Azure Portal](https://aka.ms/az
 
     |Nastavení|Hodnota|
     |---|---|
-    |Název|Zadejte popisný název pro sledování objednávky.<br> Název může být tvořen 3 až 24 písmeny, číslicemi a spojovníky. <br> Název musí začínat a končit písmenem nebo číslicí. |
+    |Name|Zadejte popisný název pro sledování objednávky.<br> Název může být tvořen 3 až 24 písmeny, číslicemi a spojovníky. <br> Název musí začínat a končit písmenem nebo číslicí. |
     |Skupina prostředků| Použijte existující skupinu prostředků, nebo vytvořte novou. <br> Skupina prostředků je logický kontejner prostředků, které lze spravovat nebo nasadit společně. |
     |Cílová oblast Azure| K účtu úložiště přiřaďte oblast.<br> V současné době se podporují účty úložiště ve všech oblastech USA, Západní Evropě, Severní Evropě, Kanadě a Austrálii. |
     |Odhadovaná velikost dat v TB| Zadejte odhad v TB. <br>Podle objemu dat vám Microsoft pošle odpovídající počet 8TB disků SSD (s využitelnou kapacitou 7 TB). <br>Maximální využitelná kapacita 5 disků je 35 TB. |
@@ -146,7 +151,7 @@ Pokud chcete odstranit zrušenou objednávku, přejděte do části **Přehled**
 V tomto kurzu jste se dozvěděli o tématech spojených se službou Azure Data Box Disk, jako jsou:
 
 > [!div class="checklist"]
-> * Objednání služby Data Box Disk
+> * Objednat Data Box Disk
 > * Sledování objednávky
 > * Zrušení objednávky
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 82a8eecb4fb211117000c94c51644ce1fd27916d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 5c038f0be31acea52c2ef07d43f0dbaf3434a371
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61463886"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64709524"
 ---
 # <a name="encoding-error-codes"></a>Kódy chyb kódování
 
@@ -30,7 +30,7 @@ Následující tabulka uvádí chybové kódy, které může být vrácen v př�
 | Neznámé |Neznámá chyba při provádění úlohy |
 | ErrorDownloadingInputAssetMalformedContent |Kategorie chyby, která obsahuje chyby při stahování vstupní asset, jako jsou názvy souborů, soubory nulovou délku, nesprávné formátuje a tak dále. |
 | ErrorDownloadingInputAssetServiceFailure |Kategorie chyby, které pokrývá problémy na straně služby – chyby sítě nebo úložiště příklad při stahování. |
-| ErrorParsingConfiguration |Kategorie chyb, ve kterém úlohy <see cref="MediaTask.PrivateData"/> (konfigurace) není platná, například konfigurace není platný systém přednastavení nebo obsahuje neplatný kód XML. |
+| ErrorParsingConfiguration |Kategorie chyb, kde úloha \<naleznete v tématu cref="MediaTask.PrivateData"/ > (konfigurace) není platná, například konfigurace není platný systém přednastavení nebo obsahuje neplatný kód XML. |
 | ErrorExecutingTaskMalformedContent |Kategorie chyby během provádění úlohy, ve kterém problémy uvnitř vstupními multimediálními soubory způsobit selhání. |
 | ErrorExecutingTaskUnsupportedFormat |Kategorie chyby, pokud procesor médií nemůže zpracovat soubory k dispozici – formát multimédií není podporován nebo se neshoduje s nastavením. Například pokusu vygenerovat pouze se zvukem výstup z prostředku, který má pouze video |
 | ErrorProcessingTask |Kategorie jiné chyby, které procesor médií, zaznamená během zpracování úlohy, které nesouvisí s obsahem. |

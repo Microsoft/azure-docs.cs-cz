@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/24/2016
 ms.author: paulhsu
 ms.openlocfilehash: 018552982a8ece3bbbaea2d60e2a6e64f681f822
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60815139"
 ---
 # <a name="command-line-interface"></a>Command Line Interface
@@ -80,9 +80,9 @@ Tyto soubory mohou být určeno místního souboru cesty nebo cesty adresy URL p
 |-----------------|----------------------------|
 | `<grammarFile>` | Binární gramatika je vstupní cesta         |
 | `<indexFile>`   | Vstupní binárního indexového cesta           |
-| `--port <port>` | Číslo místního portu.  Výchozí: 8000 |
+| `--port <port>` | Číslo místního portu.  Výchozí hodnota: 8000 |
 
-Tyto soubory mohou být určeno místního souboru cesty nebo cesty adresy URL pro objekty BLOB Azure.  Webová služba bude dostupný http://localhost:&lt; port&gt;/.  Zobrazit [webová rozhraní API](WebAPI.md) pro seznam podporovaných operací.
+Tyto soubory mohou být určeno místního souboru cesty nebo cesty adresy URL pro objekty BLOB Azure.  Webová služba bude dostupný http://localhost:&lt ; port&gt; /.  Zobrazit [webová rozhraní API](WebAPI.md) pro seznam podporovaných operací.
 
 Prostředí, místně hostované služby, které jsou omezené na index mimo Azure soubory velikost 10 požadavků za sekundu a 1 000 volání celkem až 1 MB.  Chcete-li omezenému, spusťte **host_service** uvnitř virtuálního počítače Azure, nebo nasadit do cloudu Azure pomocí služby **deploy_service**.
 

@@ -10,10 +10,10 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/22/2017
 ms.openlocfilehash: 555083235aff08476e82f0daa81203b66591f3cc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66167279"
 ---
 # <a name="secure-calls-to-custom-apis-from-azure-logic-apps"></a>Zabezpečení volání vlastních rozhraní API z Azure Logic Apps
@@ -180,7 +180,7 @@ Prázdná webová aplikace a aplikaci logiky spolu s ověřováním Azure Active
 
 [![Nasazení do Azure](media/logic-apps-custom-api-authentication/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-logic-app-custom-api%2Fazuredeploy.json)
 
-#### <a name="part-3-populate-the-authorization-section-in-your-logic-app"></a>3. část: Naplnění části autorizace v aplikaci logiky
+#### <a name="part-3-populate-the-authorization-section-in-your-logic-app"></a>3\. část: Naplnění části autorizace v aplikaci logiky
 
 Předchozí šablona už má tato autorizace část nastavení, ale pokud přímo autorizujete aplikaci logiky, musí obsahovat oddíl plnou autorizaci.
 

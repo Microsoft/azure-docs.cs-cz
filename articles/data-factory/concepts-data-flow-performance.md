@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.date: 05/16/2019
-ms.openlocfilehash: d4acc620fb2a4c41615c745516e5ccfafd59d848
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bbbc2bc5c47821469ecf15a27195b1bf0c12e6e5
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67057945"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190635"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Mapování výkonu toky dat a Průvodce laděním
 
@@ -59,6 +59,12 @@ Klepnutí na tuto ikonu se zobrazí plán provádění a následné výkonu prof
 * Nastavení velikosti dávky se dát pokyn ADF k ukládání dat v sadách v paměti namísto řádek po řádku. Je volitelné nastavení a mohou Pokud nejsou správně velká spuštění ve výpočetních uzlech nemá dostatek prostředků.
 * Nastavení dotazu vám umožní filtrovat řádky přímo na zdroji před i doručení pro tok dat ke zpracování, které můžete provést počáteční data pořízení rychlejší.
 * Pokud použijete dotaz, můžete přidat nepovinný dotaz pomocných parametrů pro vaši službu Azure SQL DB, to znamená READ UNCOMMITTED
+
+### <a name="set-isolation-level-on-source-transformation-settings-for-sql-datasets"></a>Nastavit úroveň izolace na transformaci nastavení zdroje u datových sad SQL
+
+* Nepotvrzené čtení bude poskytovat rychlejší výsledky dotazu na zdroj transformace
+
+![Úroveň izolace](media/data-flow/isolationlevel.png "úroveň izolace")
 
 ### <a name="set-sink-batch-size"></a>Nastavte velikost dávky jímky
 

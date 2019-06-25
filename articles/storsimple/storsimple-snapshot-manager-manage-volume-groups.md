@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: v-sharos
 ms.openlocfilehash: e84bc790ac577796e91be010deecc8c5cea1b010
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60303102"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64699716"
 ---
 # <a name="use-storsimple-snapshot-manager-to-create-and-manage-volume-groups"></a>Vytvoření a Správa skupin svazků pomocí StorSimple Snapshot Manageru
 ## <a name="overview"></a>Přehled
@@ -50,10 +50,10 @@ Pokud kliknete **skupin svazků** uzlu, **výsledky** podokně se zobrazí násl
 
 | Sloupec výsledků | Popis |
 |:--- |:--- |
-| Name |**Název** sloupec obsahuje název skupiny svazků. |
+| Název |**Název** sloupec obsahuje název skupiny svazků. |
 | Aplikace |**Aplikací** sloupci se zobrazuje počet zapisovače VSS jsou aktuálně nainstalovaná a spuštěná na hostiteli s Windows. |
 | Vybráno |**Vybrané** sloupci se zobrazuje počet svazků, které jsou obsaženy ve skupině svazku. Nula (0) znamená, že žádná aplikace přidružené svazky ve skupině svazku. |
-| Naimportováno |**Importováno** sloupci se zobrazuje počet importovaných svazků. Pokud je nastavena na **True**, v tomto sloupci označuje, že skupiny svazků jsou naimportovaná z webu Azure portal a nebyl vytvořen StorSimple Snapshot Manageru. |
+| Importovat |**Importováno** sloupci se zobrazuje počet importovaných svazků. Pokud je nastavena na **True**, v tomto sloupci označuje, že skupiny svazků jsou naimportovaná z webu Azure portal a nebyl vytvořen StorSimple Snapshot Manageru. |
 
 > [!NOTE]
 > Skupiny svazek StorSimple Snapshot Manageru se zobrazují na **zásady zálohování** karta na portálu Azure portal.

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 3/20/2019
 ms.author: mayg
 ms.openlocfilehash: 7bfe382ac1a175aafb4944dffa8d12a372f4fb70
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60772634"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>Analýza sestavy Azure Site Recovery Deployment Planner
@@ -33,13 +33,13 @@ List On-premises summary (Přehled místního prostředí) poskytuje přehled pr
 
 **Průměrný počet disků na kompatibilní virtuální počítač**: Průměrný počet disků ve všech kompatibilních virtuálních počítačích.
 
-**Průměrná velikost disku (GB)**: Vypočítaná průměrná velikost disků ve všech kompatibilních virtuálních počítačích.
+**Průměrná velikost disku (GB)** : Vypočítaná průměrná velikost disků ve všech kompatibilních virtuálních počítačích.
 
-**Desired RPO (minutes)**: Obnovení výchozí cíl bodu, nebo hodnota předaná pro parametr "DesiredRPO" v okamžiku generování sestavy, sloužící k odhadu požadované šířky pásma.
+**Desired RPO (minutes)** : Obnovení výchozí cíl bodu, nebo hodnota předaná pro parametr "DesiredRPO" v okamžiku generování sestavy, sloužící k odhadu požadované šířky pásma.
 
-**Desired bandwidth (Mbps)**: Hodnota, kterou jste předali parametr "Šířky pásma" v okamžiku generování sestav k odhadu dosažitelného cíle bodu obnovení (RPO).
+**Desired bandwidth (Mbps)** : Hodnota, kterou jste předali parametr "Šířky pásma" v okamžiku generování sestav k odhadu dosažitelného cíle bodu obnovení (RPO).
 
-**Četnost změn dat vypozorovaná typických za den (GB)**: Průměrná četnost změn dat vysledovat v všech dnů profilace.
+**Četnost změn dat vypozorovaná typických za den (GB)** : Průměrná četnost změn dat vysledovat v všech dnů profilace.
 
 ## <a name="recommendations"></a>Doporučení 
 List sestavy nasazení Hyper-V do Azure s doporučeními obsahuje následující podrobné údaje pro vybraný požadovaný cíl bodu obnovení:
@@ -197,17 +197,17 @@ Pokud se například díky charakteristikám úloh disk umístil do kategorie P2
 
 **R/W IOPS (with Growth Factor) ve špičce**: Úlohy/w IOPS na disku (výchozí je 95. percentil) včetně faktoru budoucího růstu (výchozí hodnota 30 %). Celkový počet IOPS čtení a zápisu virtuálního počítače nebude vždy odpovídat součtu IOPS čtení a zápisu jednotlivých disků virtuálního počítače. Počet IOPS čtení a zápisu virtuálního počítače ve špičce je maximální hodnota součtu IOPS čtení a zápisu jeho jednotlivých disků v každé minutě období profilace.
 
-**Peak Data Churn in MB/s (with Growth Factor)**: Ve špičce četnost změn dat na disku (výchozí je 95. percentil) včetně faktoru budoucího růstu (výchozí hodnota 30 %). Celková četnost změn dat virtuálního počítače nebude vždy odpovídat součtu četností změn dat jednotlivých disků virtuálního počítače. Četnost změn dat virtuálního počítače ve špičce je maximální hodnota součtu četností změn jeho jednotlivých disků v každé minutě období profilace.
+**Peak Data Churn in MB/s (with Growth Factor)** : Ve špičce četnost změn dat na disku (výchozí je 95. percentil) včetně faktoru budoucího růstu (výchozí hodnota 30 %). Celková četnost změn dat virtuálního počítače nebude vždy odpovídat součtu četností změn dat jednotlivých disků virtuálního počítače. Četnost změn dat virtuálního počítače ve špičce je maximální hodnota součtu četností změn jeho jednotlivých disků v každé minutě období profilace.
 
 **Velikost virtuálního počítače Azure**: Ideální velikost virtuálního počítače Azure Cloud Services mapovaného pro tento místní virtuální počítač. Mapování vychází z velikosti paměti, počtu disků, jader a síťových adaptérů a počtu IOPS čtení a zápisu místního virtuálního počítače. Doporučení vždy představuje nejmenší velikost virtuálního počítače Azure, která odpovídá všem charakteristikám místního virtuálního počítače.
 
 **Number of Disks**: Celkový počet disků virtuálního počítače (VHD) na virtuálním počítači.
 
-**Disk Size (GB)**: Celková velikost všech disků virtuálního počítače. Nástroj ukazuje také velikosti jednotlivých disků ve virtuálním počítači.
+**Disk Size (GB)** : Celková velikost všech disků virtuálního počítače. Nástroj ukazuje také velikosti jednotlivých disků ve virtuálním počítači.
 
 **Počet jader**: Počet Procesorových jader ve virtuálním počítači.
 
-**Paměť (MB)**: Paměť RAM ve virtuálním počítači.
+**Paměť (MB)** : Paměť RAM ve virtuálním počítači.
 
 **Síťové adaptéry**: Počet síťových adaptérů na virtuálním počítači.
 
@@ -254,15 +254,15 @@ Sestava aplikace Excel vygenerovaná Plánovačem nasazení služby Site Recover
 
 **R/W IOPS (with Growth Factor) ve špičce**: Zatížení ve špičce IOPS na disku (výchozí je 95. percentil) včetně faktoru budoucího růstu (výchozí hodnota 30 %). Celkový počet IOPS čtení a zápisu virtuálního počítače nebude vždy odpovídat součtu IOPS čtení a zápisu jednotlivých disků virtuálního počítače. Počet IOPS čtení a zápisu virtuálního počítače ve špičce je maximální hodnota součtu IOPS čtení a zápisu jeho jednotlivých disků v každé minutě období profilace.
 
-**Peak Data Churn (MB/s) (with Growth Factor)**: Ve špičce četnost změn dat na disku (výchozí je 95. percentil) včetně faktoru budoucího růstu (výchozí hodnota 30 %). Všimněte si, že celková četnost změn dat virtuálního počítače nebude vždy odpovídat součtu četností změn dat jednotlivých disků virtuálního počítače. Četnost změn dat virtuálního počítače ve špičce je maximální hodnota součtu četností změn jeho jednotlivých disků v každé minutě období profilace.
+**Peak Data Churn (MB/s) (with Growth Factor)** : Ve špičce četnost změn dat na disku (výchozí je 95. percentil) včetně faktoru budoucího růstu (výchozí hodnota 30 %). Všimněte si, že celková četnost změn dat virtuálního počítače nebude vždy odpovídat součtu četností změn dat jednotlivých disků virtuálního počítače. Četnost změn dat virtuálního počítače ve špičce je maximální hodnota součtu četností změn jeho jednotlivých disků v každé minutě období profilace.
 
 **Number of Disks**: Celkový počet virtuálních pevných disků ve virtuálním počítači.
 
-**Disk Size (GB)**: Celkovou nastavenou velikost všech disků virtuálního počítače. Nástroj ukazuje také velikosti jednotlivých disků ve virtuálním počítači.
+**Disk Size (GB)** : Celkovou nastavenou velikost všech disků virtuálního počítače. Nástroj ukazuje také velikosti jednotlivých disků ve virtuálním počítači.
 
 **Počet jader**: Počet Procesorových jader ve virtuálním počítači.
 
-**Paměť (MB)**: Množství paměti RAM ve virtuálním počítači.
+**Paměť (MB)** : Množství paměti RAM ve virtuálním počítači.
 
 **Síťové adaptéry**: Počet síťových adaptérů na virtuálním počítači.
 
@@ -298,13 +298,13 @@ List obsahuje požadavek na celkový volný prostor úložiště pro všechny sv
 
 **Hostitel Hyper-V**: Seznam profilovaných serverů Hyper-V. Pokud součástí clusteru Hyper-V je server, jsou všechny uzly clusteru seskupené dohromady.
 
-**Volume (VHD path)**: Každý svazek hostitele Hyper-V, kde jsou k dispozici VHD/Vhdx. 
+**Volume (VHD path)** : Každý svazek hostitele Hyper-V, kde jsou k dispozici VHD/Vhdx. 
 
-**Volné místo k dispozici (GB)**: Volné místo na svazku dostupné.
+**Volné místo k dispozici (GB)** : Volné místo na svazku dostupné.
 
-**Celkový prostor úložiště vyžadovaný na svazku (GB)**: Celkový volný prostor úložiště vyžadovaný na svazku pro zajištění úspěšné počáteční replikace a rozdílové replikace. 
+**Celkový prostor úložiště vyžadovaný na svazku (GB)** : Celkový volný prostor úložiště vyžadovaný na svazku pro zajištění úspěšné počáteční replikace a rozdílové replikace. 
 
-**Celkový počet další úložiště, které se má zřídit na svazku pro úspěšnou replikaci (GB)**: Doporučené celkové další místo, které musí být zřízené na svazku pro zajištění úspěšné počáteční replikace a rozdílové replikace.
+**Celkový počet další úložiště, které se má zřídit na svazku pro úspěšnou replikaci (GB)** : Doporučené celkové další místo, které musí být zřízené na svazku pro zajištění úspěšné počáteční replikace a rozdílové replikace.
 
 ## <a name="initial-replication-batching"></a>Rozdělení počáteční replikace do dávek 
 
@@ -327,21 +327,21 @@ Pokud jste pro každý svazek postupovali podle doporučení požadavku na míst
 
 **Komentáře**: Pokud žádnou akci, je potřeba pro konkrétní svazek virtuálního počítače, komentář je tady. Pokud například na svazku není dostatek volného místa, v komentáři se uvede Add additional storage to protect this VM (Přidat další úložiště pro ochranu tohoto virtuálního počítače).
 
-**Volume (VHD path)**: Název svazku, kde jsou umístěné virtuální pevné disky Virtuálního počítače. 
+**Volume (VHD path)** : Název svazku, kde jsou umístěné virtuální pevné disky Virtuálního počítače. 
 
 **Na svazku (GB) volného místa**: Volné místo na disku na svazku pro daný virtuální počítač. Při výpočtu dostupného volného místa na svazcích se bere v úvahu místo na disku použité pro rozdílovou replikaci virtuálními počítači předchozích dávek, jejichž virtuální pevné disky jsou na stejném svazku. 
 
 Příklad: VM1, VM2 a VM3 se nacházejí na svazku E:\VHDpath. Před zahájením replikace je na svazku 500 GB volného místa. VM1 je součástí dávky 1, VM2 je součástí dávky 2 a VM3 je součástí dávky 3. Pro VM1 je k dispozici 500 GB volného místa. Dostupné volné místo pro VM2 je 500 GB − místo na disku vyžadované pro rozdílovou replikaci VM1. Pokud VM1 vyžaduje pro rozdílovou replikaci 300 GB, dostupné volné místo pro VM2 je 500 GB − 300 GB = 200 GB. Podobně VM2 vyžaduje pro rozdílovou replikaci 300 GB. Dostupné volné místo pro VM3 je 200 GB − 300 GB = −100 GB.
 
-**Úložiště vyžadovaný na svazku pro počáteční replikaci (GB)**: Volný prostor úložiště vyžadovaný na svazku pro počáteční replikaci virtuálního počítače.
+**Úložiště vyžadovaný na svazku pro počáteční replikaci (GB)** : Volný prostor úložiště vyžadovaný na svazku pro počáteční replikaci virtuálního počítače.
 
-**Úložiště vyžadovaný na svazku pro rozdílovou replikaci (GB)**: Volný prostor úložiště vyžadovaný na svazku pro rozdílovou replikaci příslušného virtuálního počítače.
+**Úložiště vyžadovaný na svazku pro rozdílovou replikaci (GB)** : Volný prostor úložiště vyžadovaný na svazku pro rozdílovou replikaci příslušného virtuálního počítače.
 
-**Vyžaduje další storage podle deficit, aby se zabránilo selhání replikace (GB)**: Další prostor úložiště vyžadovaný na svazku pro daný virtuální počítač. Odpovídá rozdílu mezi maximálním požadavkem na prostor úložiště pro počáteční a rozdílovou replikaci a volným místem, které je na svazku dostupné.
+**Vyžaduje další storage podle deficit, aby se zabránilo selhání replikace (GB)** : Další prostor úložiště vyžadovaný na svazku pro daný virtuální počítač. Odpovídá rozdílu mezi maximálním požadavkem na prostor úložiště pro počáteční a rozdílovou replikaci a volným místem, které je na svazku dostupné.
 
-**Minimální šířka pásma vyžadovaná pro počáteční replikaci (MB/s)**: Minimální šířka pásma vyžadovaná pro počáteční replikaci pro virtuální počítač.
+**Minimální šířka pásma vyžadovaná pro počáteční replikaci (MB/s)** : Minimální šířka pásma vyžadovaná pro počáteční replikaci pro virtuální počítač.
 
-**Minimální šířka pásma vyžadovaná pro rozdílovou replikaci (MB/s)**: Minimální šířka pásma vyžadovaná pro rozdílovou replikaci příslušného virtuálního počítače.
+**Minimální šířka pásma vyžadovaná pro rozdílovou replikaci (MB/s)** : Minimální šířka pásma vyžadovaná pro rozdílovou replikaci příslušného virtuálního počítače.
 
 ### <a name="network-utilization-details-for-each-batch"></a>Podrobnosti o využití sítě pro jednotlivé dávky 
 Každá tabulka poskytuje přehled o využití sítě příslušnou dávkou.
@@ -352,7 +352,7 @@ Každá tabulka poskytuje přehled o využití sítě příslušnou dávkou.
 
 **Přibližná využitá šířka pásma pro rozdílovou replikaci dávky**: Šířku pásma potřebnou pro rozdílovou replikaci virtuálních počítačů příslušné dávky. 
 
-**Odhadovaný čas počáteční replikace pro službu batch (hh: mm)**: Odhadovaný čas počáteční replikace do hodiny: minuty.
+**Odhadovaný čas počáteční replikace pro službu batch (hh: mm)** : Odhadovaný čas počáteční replikace do hodiny: minuty.
 
 
 

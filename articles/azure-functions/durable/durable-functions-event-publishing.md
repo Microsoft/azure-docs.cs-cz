@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: glenga
 ms.openlocfilehash: c07a42349fbd81a46b1b7cd9bcad1978f891a6b2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60733707"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Durable Functions publikování do služby Azure Event Grid (preview)
@@ -250,19 +250,19 @@ Zobrazí protokoly z funkce, kterou jste vytvořili na webu Azure Portal.
 
 Následující seznam popisuje schéma události životního cyklu:
 
-* **`id`**: Jedinečný identifikátor události event gridu.
-* **`subject`**: Cesta k předmětu událostí. `durable/orchestrator/{orchestrationRuntimeStatus}`. `{orchestrationRuntimeStatus}` bude `Running`, `Completed`, `Failed`, a `Terminated`.  
-* **`data`**: Odolná služba Functions konkrétní parametry.
-  * **`hubName`**: [TaskHub](durable-functions-task-hubs.md) název.
-  * **`functionName`**: Název funkce nástroje Orchestrator.
-  * **`instanceId`**: Trvalý instanceId funkce.
-  * **`reason`**: Další data přidružená k události sledování. Další informace najdete v tématu [diagnostiky v Durable Functions (Azure Functions)](durable-functions-diagnostics.md)
-  * **`runtimeStatus`**: Orchestrace stav modulu Runtime. Spuštěna, dokončena, se nezdařilo, protože bylo zrušeno.
-* **`eventType`**: "orchestratorEvent"
-* **`eventTime`**: Čas události (UTC).
-* **`dataVersion`**: Verze schématu událostí životního cyklu.
-* **`metadataVersion`**:  Verze metadat.
-* **`topic`**: Event grid tématu prostředek.
+* **`id`** : Jedinečný identifikátor události event gridu.
+* **`subject`** : Cesta k předmětu událostí. `durable/orchestrator/{orchestrationRuntimeStatus}`. `{orchestrationRuntimeStatus}` bude `Running`, `Completed`, `Failed`, a `Terminated`.  
+* **`data`** : Odolná služba Functions konkrétní parametry.
+  * **`hubName`** : [TaskHub](durable-functions-task-hubs.md) název.
+  * **`functionName`** : Název funkce nástroje Orchestrator.
+  * **`instanceId`** : Trvalý instanceId funkce.
+  * **`reason`** : Další data přidružená k události sledování. Další informace najdete v tématu [diagnostiky v Durable Functions (Azure Functions)](durable-functions-diagnostics.md)
+  * **`runtimeStatus`** : Orchestrace stav modulu Runtime. Spuštěna, dokončena, se nezdařilo, protože bylo zrušeno.
+* **`eventType`** : "orchestratorEvent"
+* **`eventTime`** : Čas události (UTC).
+* **`dataVersion`** : Verze schématu událostí životního cyklu.
+* **`metadataVersion`** :  Verze metadat.
+* **`topic`** : Event grid tématu prostředek.
 
 ## <a name="how-to-test-locally"></a>Místní testování
 

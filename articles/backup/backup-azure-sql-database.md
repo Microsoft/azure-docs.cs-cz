@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: tutorial
-ms.date: 04/23/2019
+ms.date: 06/18/2019
 ms.author: raynew
-ms.openlocfilehash: 2a6319565aa05f34ce31a14c5fc57e591248f4ee
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: cb8b188f8d5313852ce57481031faafc28e247b3
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66399699"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204302"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Informace o zálohování SQL Serverů ve virtuálních počítačích Azure
 
@@ -50,6 +50,17 @@ Než začnete, ověřte, níže:
 **Podporované operační systémy** | Windows Server 2016, Windows Server 2012 R2, Windows Server 2012<br/><br/> Linux se momentálně nepodporuje.
 **Podporované verze systému SQL Server** | SQL Server 2017; SQL Server 2016, SQL Server 2014, SQL Server 2012.<br/><br/> Enterprise, Standard, Web, Developer, Express.
 **Podporované verze rozhraní .NET** | Rozhraní .NET framework 4.5.2 a vyšších nainstalovala do virtuálního počítače
+
+### <a name="support-for-sql-server-2008-and-sql-server-2008-r2"></a>Podpora pro SQL Server 2008 a SQL Server 2008 R2
+
+Azure Backup nedávno oznámilo podporu [servery SQL Server SESTAVENÁ](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-2008-eos-extend-support) – SQL Server 2008 a SQL Server 2008 R2. Toto řešení je momentálně ve verzi preview pro SQL Server SESTAVENÁ a podporuje následující konfigurace:
+
+1. SQL Server 2008 a SQL Server 2008 R2 a systémem Windows 2008 R2 SP1
+2. Rozhraní .NET framework 4.5.2 a vyšším musí být nainstalovaný na virtuálním počítači
+3. Nepodporuje zálohování pro FCI a zrcadlených databází
+
+Všechny ostatní [funkce požadavky a omezení](#feature-consideration-and-limitations) platí pro tyto verze také. Tuto funkci do okamžiku je obecně dostupná vám nebude nic účtovat zákazníka.
+
 
 ## <a name="feature-consideration-and-limitations"></a>Funkce aspektů a omezení
 
@@ -114,9 +125,19 @@ Rozdílové | Primární
 Protokol |  Sekundární
 Úplné copy-Only |  Sekundární
 
-## <a name="fix-sql-sysadmin-permissions"></a>Oprava oprávnění správce systému SQL
+## <a name="set-vm-permissions"></a>Nastavit oprávnění pro virtuální počítač
 
-  Pokud je potřeba opravit oprávnění z důvodu **UserErrorSQLNoSysadminMembership** chyby, proveďte následujících kroků:
+  Když spustíte zjišťování na SQL serveru, Azure Backup provede následující akce:
+
+* Přidá AzureBackupWindowsWorkload rozšíření.
+* Vytvoří účet NT SERVICE\AzureWLBackupPluginSvc se zjistit databáze na virtuálním počítači. Tento účet se používá pro účely zálohování a obnovení a vyžaduje oprávnění správce systému SQL.
+* Zjistí databáze, které jsou spuštěny na virtuálním počítači s Azure Backup používá účet NT AUTHORITY\SYSTEM. Tento účet musí být u veřejných přihlášení na SQL.
+
+Pokud jste nevytvořili virtuální počítač SQL serverem na webu Azure Marketplace, nebo pokud používáte SQL 2008 a 2008 R2, může se zobrazit **UserErrorSQLNoSysadminMembership** chyby.
+
+K udělení oprávnění u **SQL 2008** a **2008 R2** a systémem Windows 2008 R2, přečtěte si [tady](#give-sql-sysadmin-permissions-for-sql-2008-and-sql-2008-r2).
+
+U všech ostatních verzí opravte oprávnění pomocí následujících kroků:
 
   1. Použijte účet s oprávněními správce systému SQL Server k přihlášení k serveru SQL Server Management Studio (SSMS). Pokud potřebujete speciální oprávnění, by měla fungovat ověřování Windows.
   2. Na serveru SQL Server, otevřete **zabezpečení/přihlášení** složky.
@@ -146,8 +167,72 @@ Protokol |  Sekundární
 > [!NOTE]
 > Pokud SQL Server má několik instancí systému SQL Server nainstalován, pak je nutné přidat oprávnění sysadmin pro **NT Service\AzureWLBackupPluginSvc** účet pro všechny instance SQL.
 
+### <a name="give-sql-sysadmin-permissions-for-sql-2008-and-sql-2008-r2"></a>Udělit oprávnění správce systému SQL pro SQL 2008 a SQL 2008 R2
+
+Přidat **NT AUTHORITY\SYSTEM** a **NT Service\AzureWLBackupPluginSvc** přihlášení k instanci serveru SQL Server:
+
+1. Přejděte Instance systému SQL Server v Průzkumníku objektů.
+2. Přejděte do zabezpečení -> přihlášení
+3. Klikněte pravým tlačítkem na přihlášení a klikněte na tlačítko *nového přihlašovacího jména...*
+
+    ![Nové přihlášení pomocí aplikace SSMS](media/backup-azure-sql-database/sql-2k8-new-login-ssms.png)
+
+4. Přejděte na kartu Obecné a zadejte **NT AUTHORITY\SYSTEM** jako přihlašovací jméno.
+
+    ![přihlašovací jméno pro aplikace SSMS](media/backup-azure-sql-database/sql-2k8-nt-authority-ssms.png)
+
+5. Přejděte na *role serveru* a zvolte *veřejné* a *sysadmin* role.
+
+    ![Výběr rolí v aplikaci SSMS](media/backup-azure-sql-database/sql-2k8-server-roles-ssms.png)
+
+6. Přejděte na *stav*. *Udělení* oprávnění pro připojení k databázovému stroji a přihlaste se jako *povoleno*.
+
+    ![Udělení oprávnění v aplikaci SSMS](media/backup-azure-sql-database/sql-2k8-grant-permission-ssms.png)
+
+7. Klikněte na tlačítko OK.
+8. Opakujte stejný postupně jednotlivé kroky (1-7) přidání NT Service\AzureWLBackupPluginSvc přihlášení k instanci systému SQL Server. Pokud přihlašovací jméno už existuje, ujistěte se, že má role serveru sysadmin a v oblasti stav má udělení oprávnění pro připojení k databázovému stroji a přihlaste se na povoleno.
+9. Po udělení oprávnění, **znovu zjistit databáze** na portálu: Trezor **->** zálohování infrastruktury **->** úlohy na virtuálním počítači Azure:
+
+    ![Znovu zjistit databáze na webu Azure Portal](media/backup-azure-sql-database/sql-rediscover-dbs.png)
+
+Alternativně můžete automatizovat udělení oprávnění spuštěním následujících příkazů Powershellu v režimu správce. Název instance je ve výchozím nastavení k MSSQLSERVER. Změnu instance název argumentu ve skriptu musí být:
+
+```powershell
+param(
+    [Parameter(Mandatory=$false)] 
+    [string] $InstanceName = "MSSQLSERVER"
+)
+if ($InstanceName -eq "MSSQLSERVER")
+{
+    $fullInstance = $env:COMPUTERNAME   # In case it is the default SQL Server Instance
+}
+else
+{
+    $fullInstance = $env:COMPUTERNAME + "\" + $InstanceName   # In case of named instance
+}
+try
+{ 
+    sqlcmd.exe -S $fullInstance -Q "sp_addsrvrolemember 'NT Service\AzureWLBackupPluginSvc', 'sysadmin'" # Adds login with sysadmin permission if already not available
+}
+catch
+{
+    Write-Host "An error occurred:"
+    Write-Host $_.Exception|format-list -force
+}
+try
+{ 
+    sqlcmd.exe -S $fullInstance -Q "sp_addsrvrolemember 'NT AUTHORITY\SYSTEM', 'sysadmin'" # Adds login with sysadmin permission if already not available
+}
+catch
+{
+    Write-Host "An error occurred:"
+    Write-Host $_.Exception|format-list -force
+}
+```
+
+
 ## <a name="next-steps"></a>Další postup
 
-- [Další informace o](backup-sql-server-database-azure-vms.md) zálohování databází systému SQL Server.
-- [Další informace o](restore-sql-database-azure-vm.md) obnovení zálohovaných databáze systému SQL Server.
-- [Další informace o](manage-monitor-sql-database-backup.md) Správa zálohování databází systému SQL Server.
+* [Další informace o](backup-sql-server-database-azure-vms.md) zálohování databází systému SQL Server.
+* [Další informace o](restore-sql-database-azure-vm.md) obnovení zálohovaných databáze systému SQL Server.
+* [Další informace o](manage-monitor-sql-database-backup.md) Správa zálohování databází systému SQL Server.

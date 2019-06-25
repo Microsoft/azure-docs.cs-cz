@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.openlocfilehash: b8c1513838fb848388946e18698a0410aa7a0332
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65949622"
 ---
 # <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>Jak vytvořit využívající Smooth Streaming aplikace Windows Store  
@@ -66,11 +66,11 @@ Další informace o vývoji aplikací Windows Store naleznete v tématu [vývoj 
 1. V nabídce **Soubor** klikněte na tlačítko **Nový** a pak klikněte na tlačítko **Projekt**.
 1. Z tohoto dialogového okna Nový projekt zadejte nebo vyberte následující hodnoty:
 
-    | Název | Hodnota |
+    | Name | Hodnota |
     | --- | --- |
     | Šablony skupiny |Nainstalované, šablony/Visual C#Windows Store |
     | Šablona |Prázdná aplikace (XAML) |
-    | Název |SSPlayer |
+    | Name |SSPlayer |
     | Location |C:\SSTutorials |
     | Název řešení |SSPlayer |
     | Vytvořit adresář pro řešení |(vybráno) |
@@ -1027,7 +1027,7 @@ Dokončili jste Lekce 4.  V této lekci se přidat funkci, která zvolte stop.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poslat názor
+## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="other-resources"></a>Další materiály:

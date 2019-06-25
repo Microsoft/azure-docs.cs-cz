@@ -8,10 +8,10 @@ ms.service: marketplace
 ms.topic: how-to
 ms.date: 05/30/2019
 ms.openlocfilehash: 5cb4caa6f0f8098e68d693be6cc2f33b5ccbeb32
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66752855"
 ---
 # <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>Jak spravovat vaše obchodní Marketplace účet v partnerském centru 
@@ -84,7 +84,7 @@ Chcete-li nastavení vašeho účtu pro výběr, je potřeba **přidružit Accou
 
 Teď, když Account Microsoft souvisí, chcete-li přidat výběr účtu, budete muset:
 - **Vyberte způsob platby**: Bankovním účtu nebo PayPal
-- **Přidat platební údaje**: To může zahrnovat výběr typu účtu (Kontrola nebo úspory), zadáte jméno vlastníka účtu, číslo účtu a směrování číslo, fakturační adresu, telefonní číslo a PayPal e-mailovou adresu. * Další informace o používání služby PayPal jako způsob platby vašeho účtu a chcete zjistit, zda je podporován ve vaší oblasti na trhu, naleznete v tématu [PayPal informace](https://docs.microsoft.com/windows/uwp/publish/setting-up-your-payout-account-and-tax-forms#paypal-info).
+- **Přidat platební údaje**: To může zahrnovat výběr typu účtu (Kontrola nebo úspory), zadáte jméno vlastníka účtu, číslo účtu a směrování číslo, fakturační adresu, telefonní číslo a PayPal e-mailovou adresu. \* Další informace o používání služby PayPal jako způsob platby vašeho účtu a chcete zjistit, zda je podporován ve vaší oblasti na trhu, naleznete v tématu [PayPal informace](https://docs.microsoft.com/windows/uwp/publish/setting-up-your-payout-account-and-tax-forms#paypal-info).
 
 > [!IMPORTANT]
 > Změna účtu výběr zpozdit vaší platby podle až jeden cyklus platby. Toto zpoždění dochází, protože budeme potřebovat ověřit změnu účtu stejně jako při prvním nastavování účtu výběr. Budete stále platby za celou částku po váš účet byl ověřen; všechny platby z důvodu pro aktuální platební cyklu přibudou další.  
@@ -174,7 +174,7 @@ Chcete-li přidat uživatele na váš účet v partnerském centru, které již 
 
 1. Přejděte na **uživatelé** (v části **nastavení účtu**) a vyberte **přidat uživatele**.
 2. Vyberte jeden nebo více uživatelů ze seznamu, který se zobrazí. Do vyhledávacího pole můžete vyhledat konkrétní uživatele.
-* Pokud vyberete více než jeden uživatel přidat váš účet v partnerském centru, je nutné jim přiřadit stejné roli nebo sadu vlastních oprávnění. Chcete-li přidat více uživatelů s jinou rolí nebo oprávnění, tento postup opakujte pro každou roli nebo sadu vlastních oprávnění.
+\* Pokud vyberete více než jeden uživatel přidat váš účet v partnerském centru, je nutné jim přiřadit stejné roli nebo sadu vlastních oprávnění. Chcete-li přidat více uživatelů s jinou rolí nebo oprávnění, tento postup opakujte pro každou roli nebo sadu vlastních oprávnění.
 3.  Po výběru uživatele klikněte na **přidat vybrané**.
 5.  V **role** nastavte role nebo vlastních oprávnění pro vybrané uživatele.
 6.  Vyberte **Uložit**.

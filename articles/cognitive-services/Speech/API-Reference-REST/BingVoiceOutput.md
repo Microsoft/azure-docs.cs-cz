@@ -66,8 +66,8 @@ Content-Type | aplikace/ssml + xml | Vstupní typ obsahu.
 X-Microsoft-OutputFormat | **1.** ssml – 16 khz – 16 bitů-mono – převod textu na řeč <br> **2.** nezpracovaná – 16 khz – 16 bitů-mono-pcm <br>**3.** audio-16khz-16kbps-mono-siren <br> **4.** riff-16khz-16kbps-mono-siren <br> **5.** riff – 16 khz – 16 bitů-mono-pcm <br> **6.** audio-16khz-128kbitrate-mono-mp3 <br> **7.** audio-16khz-64kbitrate-mono-mp3 <br> **8.** audio-16khz-32kbitrate-mono-mp3 | Zvukový formát výstupu.
 X-Search-AppId | Identifikátor GUID (pouze hex, pomlčky) | ID, které jednoznačně identifikuje klientskou aplikaci. To může být ID úložiště pro aplikace. Pokud není k dispozici, může být ID uživatele vygenerované aplikace.
 X-Search-ClientID | Identifikátor GUID (pouze hex, pomlčky) | ID, které jednoznačně identifikuje instance aplikace pro každou instalaci.
-Uživatelský Agent | Název aplikace | Název aplikace je povinné a musí být kratší než 255 znaků.
-Autorizace | Autorizační token |  Zobrazit <a href="#Subscription">autorizační token</a> oddílu.
+User-Agent | Název aplikace | Název aplikace je povinné a musí být kratší než 255 znaků.
+Authorization | Autorizační token |  Zobrazit <a href="#Subscription">autorizační token</a> oddílu.
 
 ### <a name="InputParam"></a>Vstupní parametry
 

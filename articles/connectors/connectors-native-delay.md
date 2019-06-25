@@ -11,10 +11,10 @@ tags: connectors
 ms.topic: conceptual
 ms.date: 05/25/2019
 ms.openlocfilehash: 27475fb3f086dbc5166a473e9d657d2dab723938
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66297620"
 ---
 # <a name="delay-running-the-next-action-in-azure-logic-apps"></a>Zpoždění spuštění další akce v Azure Logic Apps
@@ -81,7 +81,7 @@ Tady jsou některé způsoby příklad použití těchto akcí:
 
    | Vlastnost | Název JSON | Požaduje se | Typ | Popis |
    |----------|-----------|----------|------|-------------|
-   | Timestamp | časové razítko | Ano | String | Koncové datum a čas pro obnovení pracovního postupu pomocí tohoto formátu: <p>YYYY-MM-DDThh:mm:ssZ <p>Tak například, pokud chcete 18. září 2017 ve 14:00, zadejte "2017-09-18T14:00:00Z". <p>**Poznámka:** Musí dodržovat tento formát času [specifikace formátu ISO 8601 datum čas](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) v [formát času UTC data](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), ale bez [časový posun](https://en.wikipedia.org/wiki/UTC_offset). Bez časové pásmo je nutné přidat písmeno "Z" na konci bez mezer. Tato "Z" odkazuje na ekvivalentní [námořních čas](https://en.wikipedia.org/wiki/Nautical_time). |
+   | Timestamp | timestamp | Ano | String | Koncové datum a čas pro obnovení pracovního postupu pomocí tohoto formátu: <p>YYYY-MM-DDThh:mm:ssZ <p>Tak například, pokud chcete 18. září 2017 ve 14:00, zadejte "2017-09-18T14:00:00Z". <p>**Poznámka:** Musí dodržovat tento formát času [specifikace formátu ISO 8601 datum čas](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) v [formát času UTC data](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), ale bez [časový posun](https://en.wikipedia.org/wiki/UTC_offset). Bez časové pásmo je nutné přidat písmeno "Z" na konci bez mezer. Tato "Z" odkazuje na ekvivalentní [námořních čas](https://en.wikipedia.org/wiki/Nautical_time). |
    ||||||
 
 1. Přidejte všechny další akce, které chcete spustit v pracovním postupu.

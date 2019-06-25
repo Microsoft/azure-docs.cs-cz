@@ -9,11 +9,11 @@ ms.date: 02/19/2018
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: e7fcb72cecbfad2de80b844ed5281267d5e4c0c3
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66164556"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67174939"
 ---
 Po označení prostředků můžete zobrazit náklady na prostředky s příslušnými značkami. Zobrazení nejnovějšího využití v analýze nákladů nějakou dobu trvá, proto náklady možná ještě nevidíte. Jakmile budou náklady k dispozici, můžete zobrazit náklady na prostředky napříč skupinami prostředků ve vašem předplatném. K zobrazení nákladů musí mít uživatelé [přístup k fakturačním údajům na úrovni předplatného](../articles/billing/billing-manage-access.md).
 

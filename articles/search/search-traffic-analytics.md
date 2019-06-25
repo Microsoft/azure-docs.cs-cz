@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: c30c8bae3e76778a31cdd0695acde52b5b1c6b02
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b15ae30151b22509a78b9a39d258991363a05e5b
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60749558"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295423"
 ---
 # <a name="implement-search-traffic-analytics-in-azure-search"></a>Ve službě Azure Search implementovat prohledání analýzy provozu
 Prohledání analýzy provozu je vzor pro implementování smyčka zpětné vazby pro vaši vyhledávací službu. Tento model popisuje potřebná data a jak ji pomocí Application Insights, monitorování služeb ve více platformách Špička v oboru shromažďovat.
@@ -79,7 +79,7 @@ Pro ostatní jazyky a platformy, najdete v úplných [seznamu](https://docs.micr
 
     // This sample uses the Azure Search .NET SDK https://www.nuget.org/packages/Microsoft.Azure.Search
 
-    var client = new SearchIndexClient(<ServiceName>, <IndexName>, new SearchCredentials(<QueryKey>)
+    var client = new SearchIndexClient(<SearchServiceName>, <IndexName>, new SearchCredentials(<QueryKey>)
     var headers = new Dictionary<string, List<string>>() { { "x-ms-azs-return-searchid", new List<string>() { "true" } } };
     var response = await client.Documents.SearchWithHttpMessagesAsync(searchText: searchText, searchParameters: parameters, customHeaders: headers);
     IEnumerable<string> headerValues;
@@ -98,7 +98,7 @@ Pro ostatní jazyky a platformy, najdete v úplných [seznamu](https://docs.micr
 
 Pokaždé, když požadavek hledání vydává uživatelem, je zapotřebí přihlásit, který jako vyhledávání událostí s následující schéma na vlastní události Application Insights:
 
-**ServiceName**: název vyhledávací služby (řetězec) **SearchId**: Jedinečný identifikátor (guid) vyhledávací dotaz (nastane v odpovědi na vyhledávání) **IndexName**: index služby search (string) bude dotazovat **QueryTerms**: hledané termíny (řetězec) zadané uživatelem **ResultCount**: (int). počet dokumentů, které byly vráceny (nastane v odpovědi na vyhledávání)  **ScoringProfile**: název bodovací profil používá, pokud existuje (string)
+**SearchServiceName**: název vyhledávací služby (řetězec) **SearchId**: Jedinečný identifikátor (guid) vyhledávací dotaz (nastane v odpovědi na vyhledávání) **IndexName**: indexu služby vyhledávání (string) možné dotazovat **QueryTerms**: hledané termíny (řetězec) zadané uživatelem **ResultCount**: (int). počet dokumentů, které byly vráceny (nastane v odpovědi na vyhledávání)  **ScoringProfile**: název bodovací profil používá, pokud existuje (string)
 
 > [!NOTE]
 > Počet požadavků na dotazy uživatelů vygenerované přidáním $count = true vašemu vyhledávacímu dotazu. Další informace najdete v článku [zde](https://docs.microsoft.com/rest/api/searchservice/search-documents#request)

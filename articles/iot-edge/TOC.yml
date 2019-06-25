@@ -51,6 +51,22 @@
           href: tutorial-deploy-custom-vision.md
         - name: Místní ukládání dat s využitím SQL
           href: tutorial-store-data-sql-server.md
+    - name: 4. Kompletní ukázka strojového učení na hraničním zařízení
+      items:
+        - name: Úvod
+          href: tutorial-machine-learning-edge-01-intro.md
+        - name: Nastavení služeb Azure a počítače pro vývoj
+          href: tutorial-machine-learning-edge-02-prepare-environment.md
+        - name: Generování dat simulovaného zařízení
+          href: tutorial-machine-learning-edge-03-generate-data.md
+        - name: Trénování a nasazení modelu služby Azure Machine Learning
+          href: tutorial-machine-learning-edge-04-train-model.md
+        - name: Konfigurace transparentní brány
+          href: tutorial-machine-learning-edge-05-configure-edge-device.md
+        - name: Vytvoření a nasazení modulů IoT Edge
+          href: tutorial-machine-learning-edge-06-custom-modules.md
+        - name: Odeslání dat do IoT Hubu přes transparentní bránu
+          href: tutorial-machine-learning-edge-07-send-data-to-hub.md
 - name: Koncepty
   items:
     - name: Modul runtime IoT Edge
@@ -149,6 +165,8 @@
       items:
         - name: Konfigurace transparentní brány
           href: how-to-create-transparent-gateway.md
+        - name: Ověření podřízeného zařízení
+          href: how-to-authenticate-downstream-device.md
         - name: Připojení podřízeného zařízení
           href: how-to-connect-downstream-device.md
         - name: Protokolová brána Modbus

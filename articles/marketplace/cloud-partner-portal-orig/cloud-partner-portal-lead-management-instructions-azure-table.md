@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: pabutler
-ms.openlocfilehash: a1bcab9816627b453ba8b20b7bcd9402c2dfd151
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 08f9d794822dfd7879efc7c4813ecc46f92f6a45
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66240561"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147905"
 ---
 # <a name="lead-management-instructions-for-azure-table"></a>Průběžná správa pokyny, jak Azure Table
 
@@ -97,7 +97,7 @@ V následující sadu kroků se připojíte k Azure table a nastavte logika zpra
 
      ![Vyberte vlastní hodnotu pro název tabulky Azure](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-getentities-table-name.png)
 
-   - **Dotaz filtru** – klikněte na toto pole a **získat minulý čas** ikona se zobrazí v automaticky otevíraném okně. Vyberte **minulý čas** využít jako časové razítko pro filtrování dotazu. Alternativně můžete vložit následující funkci do pole: čas vytvoření `gt datetime'@{body('Get_past_time')}'` 
+   - **Dotaz filtru** – klikněte na toto pole a **získat minulý čas** ikona se zobrazí v automaticky otevíraném okně. Vyberte **minulý čas** využít jako časové razítko pro filtrování dotazu. Alternativně můžete vložit následující funkci do pole: čas vytvoření `Timestamp gt datetime'@{body('Get_past_time')}'` 
 
      ![Nastavit filtr dotazu – funkce](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-getentities-filterquery.png)
 

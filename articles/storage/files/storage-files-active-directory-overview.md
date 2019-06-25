@@ -5,22 +5,22 @@ services: storage
 author: roygara
 ms.service: storage
 ms.topic: article
-ms.date: 09/19/2018
+ms.date: 06/18/2019
 ms.author: rogarana
-ms.openlocfilehash: ad8ddf7e9e324bbcc48f15c95870a24fe7476828
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 21087424be1a7a3edfe2dddcbec830bd74559b23
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66237769"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67269362"
 ---
-# <a name="overview-of-azure-active-directory-authentication-over-smb-for-azure-files-preview"></a>Přehled ověřování pomocí Azure Active Directory přes protokol SMB pro soubory Azure (preview)
+# <a name="overview-of-azure-files-azure-active-directory-domain-service-aad-ds-authentication-support-for-smb-access-preview"></a>Přehled podpory ověřování soubory Azure Azure Active Directory Domain Service (AAD DS) pro přístup k protokolu SMB (Preview)
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
 
-Zjistěte, jak povolit ověřování Azure AD prostřednictvím protokolu SMB pro soubory Azure, najdete v článku [povolit Azure Active Directory authentication přes protokol SMB pro soubory Azure (Preview)](storage-files-active-directory-enable.md).
+Zjistěte, jak povolit ověřování pomocí AAD DS pro soubory Azure, najdete v článku [povolit ověřování Azure Active Directory Domain Service přes protokol SMB pro soubory Azure (Preview)](storage-files-active-directory-enable.md).
 
 ## <a name="glossary"></a>Glosář 
-Je dobré znát několik klíčových pojmů týkajících se ověřování Azure AD prostřednictvím protokolu SMB pro soubory Azure:
+Je dobré znát několik klíčových pojmů týkajících se ověřování pomocí služby Azure AD Domain Service přes protokol SMB pro soubory Azure:
 
 -   **Azure Active Directory (Azure AD)**  
     Azure Active Directory (Azure AD) je od Microsoftu založené na cloudu adresáři a identitami správy službou s více tenanty. Azure AD kombinuje základní adresářové služby, správu přístupu k aplikacím a ochranu identity v rámci jednoho řešení. Další informace najdete v tématu [co je Azure Active Directory?](../../active-directory/fundamentals/active-directory-whatis.md)
@@ -38,14 +38,14 @@ Je dobré znát několik klíčových pojmů týkajících se ověřování Azur
 -  **Server protokolu Message Block (SMB)**  
     Protokol SMB je standardní síťového sdílení souborů protokolu. Protokol SMB je označované také jako Common Internet File System nebo CIFS. Další informace o protokolu SMB najdete v tématu [Microsoft protokolu SMB a přehled protokolu CIFS](https://docs.microsoft.com/windows/desktop/FileIO/microsoft-smb-protocol-and-cifs-protocol-overview).
 
-## <a name="advantages-of-azure-ad-authentication"></a>Výhody ověřování Azure AD
-Azure AD prostřednictvím protokolu SMB pro soubory Azure nabízí několik výhod oproti použití ověřování pomocí sdíleného klíče:
+## <a name="advantages-of-azure-ad-domain-service-authentication"></a>Výhody ověřování pomocí služby Azure AD Domain Service
+Ověřování Azure AD Domain Services pro Azure Files nabízí několik výhod oproti použití ověřování pomocí sdíleného klíče:
 
--   **Rozšiřují prostředí tradiční založené na identitě soubor sdílené složce přístup do cloudu s Azure AD**  
-    Pokud máte v úmyslu "lift and shift" vaší aplikace do cloudu, která nahrazuje tradiční souborové servery s Azure Files a pak můžete aplikaci k ověřování pomocí Azure AD pro přístup k datům souborů. Azure podporuje soubory pomocí přihlašovacích údajů Azure AD z virtuálních počítačů připojených k doméně přes protokol SMB přístup sdílených složek, souborů či adresářů. Můžete také synchronizace všech objektů v místním Active Directory do služby Azure AD, chcete-li zachovat uživatelská jména, hesla a další přiřazení skupiny.
+-   **Rozšiřují prostředí tradiční založené na identitě soubor sdílené složce přístup do cloudu s Azure AD a Azure AD Domain Services**  
+    Pokud máte v úmyslu metodou "lift and shift" přihlašovací údaje pro přístup k datům souboru aplikace do cloudu, která nahrazuje tradiční souborové servery se soubory Azure, můžete aplikaci k ověřování ve službě Azure AD. Azure podporuje soubory pomocí přihlašovacích údajů Azure AD pro přístup k službě soubory Azure přes protokol SMB ze služby AAD DS připojených k doméně virtuální počítače s Windows. Můžete také synchronizace všech objektů v místním Active Directory do služby Azure AD, chcete-li zachovat uživatelská jména, hesla a další přiřazení skupiny.
 
 -   **Vynutit detailní řízení přístupu ke sdílené složky Azure**  
-    Pomocí ověřování Azure AD prostřednictvím protokolu SMB můžete udělit oprávnění na konkrétní identitu na sdílenou složku, adresáře nebo úrovni souboru. Předpokládejme například, že máte několik týmů pro projekt spolupráce pomocí jedné sdílené složky Azure. Všechny týmy přístup k adresářům, kteří nejsou citliví, můžete udělit zároveň omezit přístup k adresářům obsahující citlivá finanční data pouze finanční tým. 
+    Můžete udělit oprávnění na konkrétní identitu na sdílenou složku, adresáře nebo úrovni souboru. Předpokládejme například, že máte několik týmů pro projekt spolupráce pomocí jedné sdílené složky Azure. Všechny týmy přístup k adresářům, kteří nejsou citliví, můžete udělit zároveň omezit přístup k adresářům obsahující citlivá finanční data pouze finanční tým. 
 
 -   **Zálohování seznamy ACL spolu s daty**  
     Soubory Azure můžete použít k zálohování vaší stávající místní sdílené složky. Služba soubory Azure chrání vaše seznamy ACL spolu s daty při zálohování souboru sdílení do služby soubory Azure přes protokol SMB.
@@ -57,17 +57,17 @@ Když identity přidružené k aplikaci spuštěné na virtuálním počítači 
 
 ![Snímek obrazovky znázorňující diagram ověřování Azure AD prostřednictvím protokolu SMB](media/storage-files-active-directory-overview/azure-active-directory-over-smb-for-files-overview.png)
 
-### <a name="enable-azure-ad-authentication-over-smb"></a>Povolení ověřování Azure AD přes SMB
-Můžete povolit ověřování Azure AD prostřednictvím protokolu SMB pro soubory Azure pro vaše účty úložiště. nové i stávající vytvořené po 24. září 2018. 
+### <a name="enable-azure-ad-domain-service-authentication-for-smb-access"></a>Povolit ověřování Azure AD Domain Services pro přístup k protokolu SMB
+Můžete povolit ověřování pomocí služby Azure AD Domain Service pro soubory Azure pro vaše účty úložiště. nové i stávající vytvořené po 24. září 2018. 
 
-Než povolíte ověřování Azure AD prostřednictvím protokolu SMB, ověřte, že Azure AD Domain Services byla nasazena pro primární tenant Azure AD, ke kterému je přidružena účtu úložiště. Pokud jste ještě Azure AD Domain Services, postupujte podle podrobných pokynů v [povolit Azure Active Directory Domain Services pomocí webu Azure portal](../../active-directory-domain-services/create-instance.md).
+Před povolením této funkce, ověřte, že byla nasazena služba Azure AD Domain Services pro primární tenant Azure AD, ke kterému je přidružena účtu úložiště. Pokud jste ještě Azure AD Domain Services, postupujte podle podrobných pokynů v [povolit Azure Active Directory Domain Services pomocí webu Azure portal](../../active-directory-domain-services/create-instance.md).
 
-Nasazení služby Azure AD Domain Services obvykle trvá 10 až 15 minut. Po nasazení služby Azure AD Domain Services, můžete povolit ověřování Azure AD prostřednictvím protokolu SMB pro soubory Azure. Další informace najdete v tématu [povolit Azure Active Directory authentication přes protokol SMB pro soubory Azure (Preview)](storage-files-active-directory-enable.md). 
+Nasazení služby Azure AD Domain Services obvykle trvá 10 až 15 minut. Po nasazení služby Azure AD Domain Services, můžete povolit ověřování Azure AD prostřednictvím protokolu SMB pro soubory Azure. Další informace najdete v tématu [povolit Azure Active Directory Domain Services ověřování prostřednictvím protokolu SMB pro soubory Azure (Preview)](storage-files-active-directory-enable.md). 
 
 ### <a name="configure-share-level-permissions-for-azure-files"></a>Konfigurovat oprávnění na úrovni sdílené složky pro soubory Azure
-Po povolení ověřování Azure AD můžete nakonfigurovat vlastní role RBAC pro Azure AD identity a přiřadit přístupová práva k žádné sdílené složky v účtu úložiště.
+Jakmile bylo povoleno ověřování pomocí služby Azure AD Domain Service, můžete nakonfigurovat vlastní role RBAC pro Azure AD identity a přiřadit přístupová práva k žádné sdílené složky v účtu úložiště.
 
-Když se aplikace běžící na virtuálním počítači připojeném k doméně se pokusí o připojení sdílené složky Azure nebo přístup k adresáři nebo souboru, přihlašovacích údajů Azure AD. aplikace ověřeni zajistit správné oprávnění na úrovni sdílené složky a oprávnění systému souborů NTFS. Informace o konfiguraci oprávnění na úrovni sdílené složky najdete v tématu [povolit Azure Active Directory authentication přes protokol SMB (Preview)](storage-files-active-directory-enable.md).
+Když se aplikace běžící na virtuálním počítači připojeném k doméně se pokusí o připojení sdílené složky Azure nebo přístup k adresáři nebo souboru, přihlašovacích údajů Azure AD. aplikace ověřeni zajistit správné oprávnění na úrovni sdílené složky a oprávnění systému souborů NTFS. Informace o konfiguraci oprávnění na úrovni sdílené složky najdete v tématu [povolit Azure Active Directory Domain Services ověřování přes protokol SMB (Preview)](storage-files-active-directory-enable.md).
 
 ### <a name="configure-directory--or-file-level-permissions-for-azure-files"></a>Konfigurovat oprávnění na úrovni adresáře nebo souboru pro soubory Azure 
 Služba soubory Azure vynucuje standardní oprávnění systému souborů NTFS na úrovni adresáře a souboru, včetně v kořenovém adresáři. Konfigurace oprávnění na úrovni adresář nebo soubor je podporována pouze prostřednictvím protokolu SMB. Připojit cílové sdílené složce z vašeho virtuálního počítače a konfigurovat oprávnění Windows s použitím [icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) nebo [nastavení seznamu ACL](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-acl) příkazu. 
@@ -82,7 +82,7 @@ Uživatel má klíč účtu úložiště můžete přístup ke službě soubory 
 > V rámci osvědčených postupů pro zabezpečení vyhnout sdíleli své klíče účtu úložiště a využívat oprávnění Azure AD, kdykoli je to možné.
 
 ### <a name="preserve-directory-and-file-acls-for-data-import-to-azure-file-shares"></a>Zachovat adresáře a souboru seznamy ACL pro import dat do sdílené složky Azure
-Ověřování Azure AD prostřednictvím protokolu SMB podporuje zachování adresář nebo seznamy ACL v souborech při kopírování dat do sdílené složky Azure. Ve verzi preview můžete zkopírovat seznam ACL v adresáři nebo souboru do služby soubory Azure. Například můžete použít [robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy) s příznakem `/copy:s` ke kopírování dat a seznamů ACL do sdílené složky Azure.
+Služba soubory Azure teď podporuje zachování seznamy ACL pro adresář nebo soubor při kopírování dat do sdílené složky Azure. Seznamy ACL na adresář nebo soubor můžete zkopírovat do služby soubory Azure. Například můžete použít [robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy) s příznakem `/copy:s` ke kopírování dat a seznamů ACL do sdílené složky Azure. Seznam ACL a zachovávání s rozlišením je ve výchozím a není potřeba explicitně povolit funkci ověřování Azure AD Domain Services na vašem účtu úložiště. 
 
 ## <a name="pricing"></a>Ceny
 Neplatí žádné další poplatky službu povolit ověřování Azure AD prostřednictvím protokolu SMB na vašem účtu úložiště. Další informace o cenách najdete v tématu [cenám služby soubory Azure](https://azure.microsoft.com/pricing/details/storage/files/) a [ceny služby Azure AD Domain Services](https://azure.microsoft.com/pricing/details/active-directory-ds/) stránky.

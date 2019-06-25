@@ -11,10 +11,10 @@ ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 4f917c45030ad70a2ab76fed877bd822d1902f82
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64927279"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Sledování změn ve vašem prostředí pomocí řešení Change Tracking
@@ -46,7 +46,7 @@ Následující Linuxových distribucích se oficiálně podporuje. Agenta pro Li
 * Ubuntu Linux 14.04 LTS, 16.04 LTS a 18.04 LTS
 * SUSE Linux Enterprise Server 12
 
-### <a name="32-bit"></a>32 bitů
+### <a name="32-bit"></a>32-bit
 
 * CentOS 6
 * Oracle Linux 6
@@ -169,7 +169,7 @@ V následující tabulce jsou uvedeny frekvence shromažďování dat pro typy z
 | Registru Windows | 50 minut |
 | Soubor Windows | 30 minut |
 | Souborů v Linuxu | 15 minut |
-| Služby pro Windows | 10 sekund až 30 minut.</br> Výchozí: 30 minut |
+| Služby pro Windows | 10 sekund až 30 minut.</br> Výchozí hodnota: 30 minut |
 | Procesy démon Linuxu | 5 minut |
 | Windows software | 30 minut |
 | Softwaru platformy Linux | 5 minut |
@@ -179,11 +179,11 @@ Následující tabulka uvádí omezení sledované položky na počítač pro ř
 | **Prostředek** | **Limit**| **Poznámky** |
 |---|---|---|
 |File|500||
-|Registr|250||
+|Registru|250||
 |Windows software|250|Nezahrnuje aktualizací softwaru|
 |Balíčky Linux|1250||
 |Služby|250||
-|Démon|250||
+|Daemon|250||
 
 Průměrné využití dat Log Analytics pro počítače s pomocí řešení Change Tracking a Inventory je přibližně 40MB za měsíc. Tato hodnota je pouze přibližný a může se změnit podle vašeho prostředí. Doporučuje se, že monitorovat vaše prostředí a přesně na používání, které máte.
 
@@ -263,7 +263,7 @@ Kliknutím na změnit nebo událostí zobrazí podrobné informace o této změn
 
 ![Obrázek řešení change tracking podrobnosti](./media/change-tracking/change-tracking-details.png)
 
-## <a name="search-logs"></a>Hledat protokoly
+## <a name="search-logs"></a>Hledání protokolů
 
 Kromě podrobností, které jsou k dispozici na portálu můžete udělat protokoly hledání. S **řešení Change Tracking** otevřít, klikněte na stránce **Log Analytics**, tím se otevře **protokoly** stránky.
 

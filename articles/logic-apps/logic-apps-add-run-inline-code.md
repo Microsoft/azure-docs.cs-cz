@@ -10,10 +10,10 @@ ms.reviewer: derek1ee, LADocs
 ms.topic: article
 ms.date: 05/14/2019
 ms.openlocfilehash: 0bfa98396ee3afb80b486a5a17959664dfbe603c
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65602118"
 ---
 # <a name="add-and-run-code-snippets-by-using-inline-code-in-azure-logic-apps"></a>Přidání a spuštění kódu pomocí vloženého kódu v Azure Logic Apps
@@ -52,7 +52,7 @@ V tomto článku přijde triggery aplikace logiky příklad při přijetí nové
 
    * Chcete-li přidat akci na konci pracovního postupu, zvolte **nový krok**.
 
-   * Přidání akce mezi stávající kroky, přesuňte ukazatel myši nad šipku, která se připojuje tyto kroky. Vyberte znaménko plus (**+**) a vyberte **přidat akci**.
+   * Přidání akce mezi stávající kroky, přesuňte ukazatel myši nad šipku, která se připojuje tyto kroky. Vyberte znaménko plus ( **+** ) a vyberte **přidat akci**.
 
    V tomto příkladu přidá **vloženého kódu** akce pod triggerem Office 365 Outlook.
 
@@ -204,7 +204,7 @@ V příkladu v tomto tématu `workflowContext` objekt má tyto vlastnosti, kter�
 
 <a name="add-parameters"></a>
 
-## <a name="add-parameters"></a>Přidat parametry
+## <a name="add-parameters"></a>Přidání parametrů
 
 V některých případech bude pravděpodobně nutné explicitně vyžadují, aby **vloženého kódu** akce obsahuje výsledky z aktivační události nebo konkrétní akce, které odkazuje kód jako závislosti tak, že přidáte **aktivační událost** nebo **Akce** parametry. Tato možnost je užitečná v případech, kde nejsou nalezeny odkazované výsledky v době běhu.
 
@@ -215,7 +215,7 @@ Předpokládejme například, že máte kód, který odkazuje **SelectedOption**
 
 Chcete-li přidat tyto parametry, otevřete **přidat nový parametr** seznam a vyberte parametry chcete:
 
-   ![Přidat parametry](./media/logic-apps-add-run-inline-code/inline-code-action-add-parameters.png)
+   ![Přidání parametrů](./media/logic-apps-add-run-inline-code/inline-code-action-add-parameters.png)
 
    | Parametr | Popis |
    |-----------|-------------|

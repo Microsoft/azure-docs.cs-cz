@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 94b35f0530dacfadb799f1d44d7a9eb666def6c9
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65891976"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Přidat služby Google jako zprostředkovatele identity pro uživatele typu Host B2B
@@ -36,7 +36,7 @@ Pokud uživatel typu Host se zobrazí chyba "záhlaví příliš dlouhá", zkust
 
 ## <a name="step-1-configure-a-google-developer-project"></a>Krok 1: Konfigurace projektu pro vývojáře Google
 Nejprve vytvořte nový projekt v konzole pro vývojáře Google získat klienta, ID a tajný kód klienta, který později můžete přidat do služby Azure AD. 
-1. Přejděte na rozhraní API Google na https://console.developers.google.coma přihlaste se pomocí účtu Google. Doporučujeme vám, že používáte účet Google sdílený týmu.
+1. Přejděte na rozhraní API Google na https://console.developers.google.com a přihlaste se pomocí účtu Google. Doporučujeme vám, že používáte účet Google sdílený týmu.
 2. Vytvoření nového projektu: Na řídicím panelu vyberte **vytvořit projekt**a pak vyberte **vytvořit**. Na stránce Nový projekt, zadejte **název projektu**a pak vyberte **vytvořit**.
    
    ![Snímek obrazovky zobrazující pro Google nová stránka projektu](media/google-federation/google-new-project.png)
@@ -64,7 +64,7 @@ Nejprve vytvořte nový projekt v konzole pro vývojáře Google získat klienta
    - `https://login.microsoftonline.com/te/<directory id>/oauth2/authresp` <br>(kde `<directory id>` je vaše ID adresáře)
    
      > [!NOTE]
-     > Pokud chcete najít ID vašeho adresáře, přejděte na https://portal.azure.coma v části **Azure Active Directory**, zvolte **vlastnosti** a zkopírujte **ID adresáře**.
+     > Pokud chcete najít ID vašeho adresáře, přejděte na https://portal.azure.com a v části **Azure Active Directory**, zvolte **vlastnosti** a zkopírujte **ID adresáře**.
 
    ![Snímek obrazovky ukazující, autorizovaní přesměrování oddíl identifikátorů URI](media/google-federation/google-create-oauth-client-id.png)
 
@@ -101,7 +101,7 @@ Můžete odstranit nastavení federace služby Google. Pokud tak učiníte, nebu
 1. Přejděte na [Azure Portal](https://portal.azure.com). V levém podokně vyberte **Azure Active Directory**. 
 2. Vyberte **organizační vztahy**.
 3. Vyberte **zprostředkovatelé Identity**.
-4. Na **Google** řádek, vyberte příslušnou kontextovou nabídku (**...** ) a pak vyberte **odstranit**. 
+4. Na **Google** řádek, vyberte příslušnou kontextovou nabídku ( **...** ) a pak vyberte **odstranit**. 
    
    ![Snímek obrazovky zobrazující možnost odstranit zprostředkovatele identity v sociálních sítích](media/google-federation/google-social-identity-providers.png)
 

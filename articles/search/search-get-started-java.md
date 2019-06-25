@@ -10,10 +10,10 @@ ms.date: 08/26/2018
 ms.author: jjed
 ms.custom: seodec2018
 ms.openlocfilehash: d16f20e3c2dfa3d670006e44f0072a3871d41c3f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61289716"
 ---
 # <a name="get-started-with-azure-search-in-java"></a>Začínáme s Azure Search v Javě
@@ -118,7 +118,7 @@ Všechny následné úpravy souborů a spouštěné příkazy se budou provádě
 Nyní jste dokončili úlohy konfigurace. V dalším kroku sestavíte a spustíte projekt.
 
 ## <a name="build-the-project"></a>Sestavení projektu
-1. V Prohlížeči projektu klikněte pravým tlačítkem na název projektu a zvolte **Spustit jako** > **Build Maven...**, abyste nakonfigurovali projekt.
+1. V Prohlížeči projektu klikněte pravým tlačítkem na název projektu a zvolte **Spustit jako** > **Build Maven...** , abyste nakonfigurovali projekt.
    
     ![][10]
 2. V okně Upravit konfiguraci v části Cíle zadejte „clean install“ a pak klikněte na **Spustit**.

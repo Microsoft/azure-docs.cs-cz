@@ -1,17 +1,18 @@
 ---
-title: Nakonfigurovat zásady Apache HBase v HDInsight s balíčkem Enterprise Security Package - Azure
-description: Zjistěte, jak nakonfigurovat zásady Apache Rangeru pro HBase v Azure HDInsight s balíčkem Enterprise Security Package.
+title: Kurz – nakonfigurovat zásady Apache HBase v HDInsight s balíčkem Enterprise Security Package - Azure
+description: Kurz – zjistěte, jak nakonfigurovat zásady Apache Rangeru pro HBase v Azure HDInsight s balíčkem Enterprise Security Package.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.topic: tutorial
-ms.date: 02/01/2019
-ms.openlocfilehash: d1f2a2b24e6f1856d021911e6f2e9c107bd38b72
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.date: 06/18/2019
+ms.openlocfilehash: 04592ba307cd696c20778d4a79f03be2eb0ac987
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64926101"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274400"
 ---
 # <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>Kurz: Nakonfigurovat zásady Apache HBase v HDInsight s balíčkem Enterprise Security Package
 
@@ -105,7 +106,7 @@ Vytvoření zásad Ranger pro **sales_user1** a **marketing_user1**.
 
    |**Nastavení**  |**Navrhovaná hodnota**  |
    |---------|---------|
-   |Název zásady  |  sales_customers_name_contact   |
+   |Název zásad  |  sales_customers_name_contact   |
    |Tabulky HBase   |  Zákazníci |
    |HBase rodin sloupců   |  Jméno kontaktu |
    |Sloupec HBase   |  * |
@@ -129,7 +130,7 @@ Vytvoření zásad Ranger pro **sales_user1** a **marketing_user1**.
 
    |**Nastavení**  |**Navrhovaná hodnota**  |
    |---------|---------|
-   |Název zásady  |  marketing_customers_contact   |
+   |Název zásad  |  marketing_customers_contact   |
    |Tabulky HBase   |  Zákazníci |
    |HBase rodin sloupců   |  Kontakt |
    |Sloupec HBase   |  * |
@@ -159,7 +160,7 @@ Na základě zásad Ranger nakonfigurovaná, **sales_user1** můžete zobrazit v
    kinit sales_user1
    ```
 
-2. Otevřete prostředí hbase a prohledávání tabulky `Customers`.
+2. Otevřete prostředí HBase a prohledávání tabulky `Customers`.
 
    ```hbaseshell
    hbase shell
@@ -201,7 +202,7 @@ Na základě zásad Ranger nakonfigurovaná, **sales_user1** můžete zobrazit v
    kinit marketing_user1
    ```
 
-2. Otevřete prostředí hbase a prohledávání tabulky `Customers`:
+2. Otevřete prostředí HBase a prohledávání tabulky `Customers`:
 
     ```hbaseshell
     hbase shell
@@ -237,7 +238,7 @@ Pokud nebudete tuto aplikaci používat, odstraňte cluster HBase, který jste v
 2. V **hledání** pole v horní části, typ **HDInsight**. 
 1. Vyberte **clustery HDInsight** pod **služby**.
 1. V seznamu clusterů HDInsight, který se zobrazí, klikněte **...**  u clusteru, který jste vytvořili pro účely tohoto kurzu. 
-1. Klikněte na **Odstranit**. Klikněte na **Ano**.
+1. Klikněte na tlačítko **odstranit**. Klikněte na **Ano**.
 
 ## <a name="next-steps"></a>Další postup
 

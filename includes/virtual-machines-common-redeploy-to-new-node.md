@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 1c3996c3f40da496af0cd795d0873864667a1f19
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66160290"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67175012"
 ---
 ## <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 1. Vyberte virtuální počítač, kterou chcete znovu nasadit a pak vyberte *znovu nasadit* tlačítko *nastavení* okno. Budete muset posunout dolů viz **podpora a řešení potíží** části, která obsahuje tlačítko "Znovu nasadit" jako v následujícím příkladu:
@@ -23,8 +23,8 @@ ms.locfileid: "66160290"
     ![Aktualizuje se virtuální počítač](./media/virtual-machines-common-redeploy-to-new-node/vmupdating.png)
 4. **Stav** pak změní na *počáteční* jako virtuální počítač se spustí na nového hostitele Azure, jak je znázorněno v následujícím příkladu:
    
-    ![Virtuální počítač se spouští.](./media/virtual-machines-common-redeploy-to-new-node/vmstarting.png)
+    ![Virtuální počítač se spouští](./media/virtual-machines-common-redeploy-to-new-node/vmstarting.png)
 5. Po dokončení procesu spouštění virtuálního počítače **stav** vrátí do *systémem*, označující, virtuální počítač má se znovu úspěšně nasadil:
    
-    ![Virtuální počítač je spuštěný.](./media/virtual-machines-common-redeploy-to-new-node/vmrunning.png)
+    ![Virtuální počítač je spuštěný](./media/virtual-machines-common-redeploy-to-new-node/vmrunning.png)
 

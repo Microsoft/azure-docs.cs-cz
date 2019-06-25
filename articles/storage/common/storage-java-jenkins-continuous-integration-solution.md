@@ -10,10 +10,10 @@ custom: jenkins
 ms.date: 07/31/2018
 ms.subservice: common
 ms.openlocfilehash: d9ef6f5056fdbd7187c92c98d1c884a5314c29a0
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65153669"
 ---
 # <a name="using-azure-storage-with-a-jenkins-continuous-integration-solution"></a>Použití služby Azure Storage s řešením Jenkins kontinuální integrace
@@ -118,7 +118,7 @@ Následující postup ukazuje, ke konfiguraci kroku sestavení na stažení polo
 1. V **sestavení** část konfigurace úlohy, vyberte **přidat krok sestavení** a vyberte **stáhnout z úložiště objektů Blob v Azure**.
 2. Pro **název účtu úložiště**, vyberte účet úložiště.
 3. Pro **název kontejneru**, zadejte název kontejneru, který obsahuje objekty BLOB, kterou chcete stáhnout. Můžete použít proměnné prostředí.
-4. Pro **název objektu Blob**, zadejte název objektu blob. Můžete použít proměnné prostředí. Navíc můžete použít hvězdičku, jako zástupný znak po zadání počátečního písmena názvu objektu blob. Například **projektu\\*** vyberete všechny objekty BLOB, jejichž jména začínají **projektu**.
+4. Pro **název objektu Blob**, zadejte název objektu blob. Můžete použít proměnné prostředí. Navíc můžete použít hvězdičku, jako zástupný znak po zadání počátečního písmena názvu objektu blob. Například **projektu\\** * vyberete všechny objekty BLOB, jejichž jména začínají **projektu**.
 5. [Volitelné] Pro **cestu pro stažení**, zadejte cestu na počítač Jenkinse, kam chcete soubory stáhnout z úložiště objektů blob v Azure. Můžete také použít proměnné prostředí. (Pokud nezadáte hodnotu **cestu pro stažení**, stáhnou se soubory z Azure blob storage do pracovního prostoru úlohy.)
 
 Pokud máte další položky, které chcete stáhnout z úložiště objektů blob v Azure, můžete vytvořit další kroky sestavení.
@@ -137,7 +137,7 @@ Tato část obsahuje přehled komponent služby objektů Blob.
   
     (Formát, nahoře platí pro globální cloud Azure. Pokud používáte jiný cloud Azure, použijte koncový bod v rámci [webu Azure Portal](https://portal.azure.com) určit váš koncový bod adresy URL.)
   
-    Ve výše uvedené, formátu `storageaccount` představuje název účtu úložiště `container_name` představuje název vašeho kontejneru a `blob_name` představuje název objektu blob služby v uvedeném pořadí. V rámci název kontejneru může mít několik cest oddělených lomítkem, **/**. Příklad názvu kontejneru používá pro účely tohoto kurzu byla **MyJob**, a **${sestavení\_ID} a$ {sestavení\_číslo}** byl použit pro běžné virtuální cestu, což vede k nutnosti adresy URL objektu blob v následujícím formátu:
+    Ve výše uvedené, formátu `storageaccount` představuje název účtu úložiště `container_name` představuje název vašeho kontejneru a `blob_name` představuje název objektu blob služby v uvedeném pořadí. V rámci název kontejneru může mít několik cest oddělených lomítkem, **/** . Příklad názvu kontejneru používá pro účely tohoto kurzu byla **MyJob**, a **${sestavení\_ID} a$ {sestavení\_číslo}** byl použit pro běžné virtuální cestu, což vede k nutnosti adresy URL objektu blob v následujícím formátu:
   
     `http://example.blob.core.windows.net/myjob/2014-04-14_23-57-00/1/hello.txt`
 

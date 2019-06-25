@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/03/2019
 ms.author: jeedes
-ms.openlocfilehash: b656bbb7c5924f14b300f0352551530bb47f2a53
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: aa3548a71e403728cbec4b8df2b0dce1cf6abde7
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67097120"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164480"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mitel-micloud-connect"></a>Kurz: Integrace Azure Active Directory s Mitel MiCloud připojení
 
@@ -210,7 +210,7 @@ Vytvoření uživatele ve vašem účtu MiCloud připojení s následujícími p
 * **Pracovní e-mailové adresy:** `brittasimon@<yourcompanydomain>.<extension>`   
 (Příklad: [ brittasimon@contoso.com ](mailto:brittasimon@contoso.com))
 
-* **Uživatelské jméno:** `brittasimon@<yourcompanydomain>.<extension> `  
+* **Uživatelské jméno:** `brittasimon@<yourcompanydomain>.<extension>`  
 (Příklad: [ brittasimon@contoso.com ](mailto:brittasimon@contoso.com); uživatelské jméno je obvykle stejné jako uživatele pracovní e-mailové adresy)
 
 **POZNÁMKA:** Uživatelské jméno MiCloud připojení musí být stejný jako e-mailovou adresu uživatele v Azure.

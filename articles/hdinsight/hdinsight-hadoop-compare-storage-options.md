@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/08/2019
-ms.openlocfilehash: 320b8f948d08e46c43085e174dfbe838f44bac79
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.date: 06/17/2019
+ms.openlocfilehash: b0d963e212e66bf96ec42ec2a5c0fd5005f7a889
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66479157"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165878"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Porovnání možností úložiště pro použití s clustery Azure HDInsight
 
@@ -55,7 +55,7 @@ Můžete vytvořit cluster pomocí různé kombinace služeb pro primární a vo
 | 3.6 | Data Lake Storage Gen1 | Data Lake Storage Gen2 | Ne |
 | 4.0 | Data Lake Storage Gen1 | Jakýkoli | Ne |
 
-* = Může to být jeden nebo více účtů Data Lake Storage Gen2, za předpokladu, že jsou všechny instalační program a použít stejné spravovanou identitu pro přístup ke clusteru.
+\* = Může to být jeden nebo více účtů Data Lake Storage Gen2, za předpokladu, že jsou všechny instalační program a použít stejné spravovanou identitu pro přístup ke clusteru.
 
 ## <a name="use-azure-data-lake-storage-gen2-with-apache-hadoop-in-azure-hdinsight"></a>Použití Azure Data Lake Storage Gen2 s Apache Hadoop v Azure HDInsight
 

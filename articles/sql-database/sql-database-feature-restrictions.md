@@ -13,10 +13,10 @@ ms.reviewer: vanto
 manager: craigg
 ms.date: 03/22/2019
 ms.openlocfilehash: ac7a074e78def504a10b4daa07971f919f414a88
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66259449"
 ---
 # <a name="azure-sql-database-feature-restrictions"></a>Omezení služby Azure SQL Database funkce
@@ -134,7 +134,7 @@ Vezměte v úvahu webovou aplikaci, která má požadavek v podobě:
 http://www.contoso.com/employee.php?id=1
 ```
 
-které provádí následující databáze:
+Které provádí následující databáze:
 
 ```sql
 SELECT Name FROM EMPLOYEES WHERE Id=$EmpId

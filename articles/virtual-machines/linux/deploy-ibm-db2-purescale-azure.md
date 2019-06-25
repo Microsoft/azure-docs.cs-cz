@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 11/09/2018
 ms.author: njray
 ms.openlocfilehash: fba6b5308b380b374611c09747302dbf8305dd9b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60716043"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>Nasazení pureScale IBM DB2 v Azure
@@ -80,15 +80,15 @@ Po vytvoření skriptů zařízení iSCSI, posledním krokem je instalace DB2 pu
 
 | Název obrazovky               | Pole                                        | Hodnota                                                                                                 |
 |---------------------------|----------------------------------------------|-------------------------------------------------------------------------------------------------------|
-| Uvítání                   |                                              | Nová instalace                                                                                           |
+| Vítej                   |                                              | Nová instalace                                                                                           |
 | Vyberte produkt          |                                              | DB2 verze 11.1.3.3. Edice serveru s DB2 pureScale                                              |
 | Konfigurace             | Adresář                                    | /data1/opt/ibm/db2/V11.1                                                                              |
 |                           | Vybrat typ instalace                 | Typické                                                                                               |
-|                           | Souhlasím s podmínkami IBM                     | Zaškrtnuté                                                                                               |
+|                           | Souhlasím s podmínkami IBM                     | Zaškrtnuto                                                                                               |
 | Vlastníka instance            | Existující Instance pro uživatele, uživatelského jména        | DB2sdin1                                                                                              |
 | Ohraničených uživatele               | Existující uživatele, uživatelského jména                     | DB2sdfe1                                                                                              |
 | Systém souborů clusteru       | Sdílené cesty k disku oddílu zařízení            | /dev/dm-2                                                                                             |
-|                           | Bod připojení                                  | /DB2sd\_1804a                                                                                         |
+|                           | Přípojný bod                                  | /DB2sd\_1804a                                                                                         |
 |                           | Sdíleném disku pro data                         | /dev/dm-1                                                                                             |
 |                           | Přípojný bod (Data)                           | /DB2fs/datafs1                                                                                        |
 |                           | Sdílený disk protokolu                          | /dev/dm-0                                                                                             |

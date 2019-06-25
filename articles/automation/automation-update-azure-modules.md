@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 05/30/2019
+ms.date: 06/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c09c9df1b8af7adca5c0169cf31881121ba6cc99
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: cd7c268008afbd87e855516d5834676423272646
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66427484"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67146720"
 ---
 # <a name="how-to-update-azure-powershell-modules-in-azure-automation"></a>Aktualizace modulů Azure Powershellu ve službě Azure Automation
 
@@ -35,9 +35,7 @@ Pokud vyvíjíte skripty místně, doporučuje se mít stejnou verzí modulů m�
 
 Tady jsou některé aspekty, vezměte v úvahu při použití tohoto procesu se aktualizovat moduly Azure:
 
-* Tato sada runbook podporuje, jenom aktualizace **Azure** a **AzureRm** aktuálně moduly. [Moduly Azure Powershellu Az](/powershell/azure/new-azureps-module-az) jsou podporované v účtech Automation, ale nelze aktualizovat pomocí tohoto runbooku. Existují důležité faktory, které je potřeba vzít v úvahu při použití `Az` modulů ve vašem účtu Automation, další informace najdete v článku [Az použití modulů ve vašem účtu Automation](az-modules.md).
-
-* Vyhněte se spouští tento runbook na účty Automation, které obsahují Az moduly.
+* Tato sada runbook podporuje aktualizace **Azure** a **AzureRm** modulů ve výchozím nastavení. Tato sada runbook podporuje aktualizace **Az** i moduly. Zkontrolujte [runbooku moduly Azure aktualizace souboru README](https://github.com/microsoft/AzureAutomation-Account-Modules-Update/blob/master/README.md) Další informace o aktualizaci `Az` moduly pomocí tohoto runbooku. Existují další důležité faktory, které je potřeba vzít v úvahu při použití `Az` modulů ve vašem účtu Automation, další informace najdete v článku [Az použití modulů ve vašem účtu Automation](az-modules.md).
 
 * Před spuštěním této sady runbook, ujistěte se, že má váš účet služby Automation [pověření účtu spustit jako pro Azure](manage-runas-account.md) vytvořili.
 

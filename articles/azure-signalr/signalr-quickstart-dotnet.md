@@ -7,16 +7,16 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 04/20/2019
 ms.author: zhshang
-ms.openlocfilehash: cda1eddc5fa40e97038274cf9b4c3c2cb9552871
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 2020ee02d236ca13431adb736d9f48171d33b4f3
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65154499"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147420"
 ---
 # <a name="quickstart-create-a-chat-room-with-aspnet-and-signalr-service"></a>Rychlý start: Vytvoření chatovací místnosti s technologií ASP.NET a služby SignalR
 
-Službě Azure SignalR je na základě [SignalR pro ASP.NET Core 2.0](https://docs.microsoft.com/aspnet/core/signalr/introduction), což je **není** 100 % kompatibilní s knihovnou SignalR technologie ASP.NET. Službě Azure SignalR opětovně implementována funkce SignalR technologie ASP.NET data protokol založený na nejnovější technoledges ASP.NET Core. Při použití služby Azure SignalR pro funkci SignalR technologie ASP.NET, již nejsou podporovány některé funkce SignalR technologie ASP.NET, například Azure SignalR není přehrát zprávy při opětovném připojení klienta. Přenos navždy rámce a JSONP nejsou také podporu. Některé změny kódu a správná verze závislé knihovny jsou potřebné k tomu funkce SignalR technologie ASP.NET aplikace fungovaly se službou SignalR. 
+Službě Azure SignalR je na základě [SignalR pro ASP.NET Core 2.0](https://docs.microsoft.com/aspnet/core/signalr/introduction), což je **není** 100 % kompatibilní s knihovnou SignalR technologie ASP.NET. Službě Azure SignalR opětovně implementována funkce SignalR technologie ASP.NET data protokol založený na nejnovější technologie ASP.NET Core. Při použití služby Azure SignalR pro funkci SignalR technologie ASP.NET, již nejsou podporovány některé funkce SignalR technologie ASP.NET, například Azure SignalR není přehrát zprávy při opětovném připojení klienta. Přenos navždy rámce a JSONP nejsou také podporu. Některé změny kódu a správná verze závislé knihovny jsou potřebné k tomu funkce SignalR technologie ASP.NET aplikace fungovaly se službou SignalR. 
 
 Odkazovat [verze rozdíly doc](https://docs.microsoft.com/aspnet/core/signalr/version-differences?view=aspnetcore-2.2) pro úplný seznam porovnání funkcí mezi funkce SignalR technologie ASP.NET a ASP.NET Core SignalR.
 

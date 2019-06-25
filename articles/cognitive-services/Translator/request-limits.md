@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: erhopf
-ms.openlocfilehash: c19e39918aa64730a35a27fcdadd70800f47f4fa
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: d04677362e0ba3ace59d55ede9bd6241f17130e9
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66514642"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67269230"
 ---
 # <a name="request-limits-for-translator-text"></a>Omezení počtu požadavků pro Translator Text
 
@@ -38,7 +38,7 @@ Následující tabulky zobrazí pole elementu a znak omezení pro každou operac
 
 ## <a name="character-limits-per-hour"></a>Omezení znak za hodinu
 
-Váš limit počtu znaků za hodinu je podle vaší úrovně předplatného Translator Text. Hodinová kvóta by měl rovnoměrně spotřebovává během hodiny. Pokud jste nebo překročí limity nebo pošlete příliš velké části kvóta v krátké době, pravděpodobně dostanete out kvóty odpovědi.
+Váš limit počtu znaků za hodinu je podle vaší úrovně předplatného Translator Text. Hodinová kvóta by měl rovnoměrně spotřebovává během hodiny. Pokud jste nebo překročí limity nebo pošlete příliš velké části kvóta v krátké době, pravděpodobně dostanete out kvóty odpovědi. Neplatí žádné limity u souběžných požadavků.
 
 | Úroveň | Limit počtu znaků |
 |------|-----------------|

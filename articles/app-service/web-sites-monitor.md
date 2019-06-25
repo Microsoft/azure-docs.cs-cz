@@ -16,10 +16,10 @@ ms.date: 01/11/2019
 ms.author: byvinyal
 ms.custom: seodec18
 ms.openlocfilehash: a5d4d13d8e60cd7f273363a9bc385098e15cbb71
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60832569"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Monitorování aplikací ve službě Azure App Service
@@ -53,7 +53,7 @@ Další informace o konkrétní kvóty, limity a funkce, které jsou k dispozici
 
 ### <a name="quota-enforcement"></a>Vynucení kvót
 
-Pokud překročí aplikace *procesoru (zkráceně)*, *procesoru (den)*, nebo *šířky pásma* kvóty, aplikace se zastaví, dokud se kvóta resetuje. Během této doby všechny žádosti přicházející způsobit chybu HTTP 403.
+Pokud překročí aplikace *procesoru (zkráceně)* , *procesoru (den)* , nebo *šířky pásma* kvóty, aplikace se zastaví, dokud se kvóta resetuje. Během této doby všechny žádosti přicházející způsobit chybu HTTP 403.
 
 ![Chyba 403 zprávy][http403]
 

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 01/23/2018
 ms.author: spelluru
 ms.openlocfilehash: 794e797e504d6064c13ffe0a4ed131e668d86e97
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60421603"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64699383"
 ---
 # <a name="relay-hybrid-connections-node-api-overview"></a>Přehled rozhraní API uzlu hybridní připojení přenosu
 
@@ -131,7 +131,7 @@ Argumenty konstruktoru:
 - `server` (povinné) – úplný identifikátor URI pro hybridní připojení. název, na které se mají očekávat, obvykle zkonstruován pomocí WebSocket.createRelayListenUri() Pomocná metoda.
 - `token` Tento argument (povinné) – obsahuje řetězec dříve vystaveného tokenu nebo funkce zpětného volání, která může být volána k získání tokenu řetězce. Možnost zpětného volání je upřednostňované, protože umožňuje obnovit token.
 
-#### <a name="events"></a>Události
+#### <a name="events"></a>Duration
 
 `RelayedServer` instance vysílat tři události, které vám umožní zpracování příchozích požadavků, připojení a zjišťování chybové stavy. Musí přihlásit k odběru `connect` událostí ke zpracování zpráv. 
 

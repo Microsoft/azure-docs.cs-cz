@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 03/16/2018
 ms.author: vturecek
 ms.openlocfilehash: b6ca4810d86bb3c8413f0a740ac4483a848b8e10
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60726335"
 ---
 # <a name="getting-started-with-reliable-actors"></a>Začínáme s Reliable Actors
@@ -50,11 +50,11 @@ Vytvořený projekt zobrazuje následující strukturu:
 
 Řešení obsahuje tři projekty:
 
-* **Projekt aplikace (MyApplication)**. Tento projekt balíčky všechny služby najednou pro nasazení. Obsahuje *ApplicationManifest.xml* a skriptů prostředí PowerShell pro správu aplikace.
+* **Projekt aplikace (MyApplication)** . Tento projekt balíčky všechny služby najednou pro nasazení. Obsahuje *ApplicationManifest.xml* a skriptů prostředí PowerShell pro správu aplikace.
 
-* **Projekt rozhraní (HelloWorld.Interfaces)**. Tento projekt obsahuje definici rozhraní pro objekt actor. Rozhraní objektu actor lze definovat v každém projektu s názvem.  Rozhraní definuje kontrakt objektu actor sdílený mezi implementací objektu actor a klienty objekt actor volají.  Protože klientské projekty mohou na něm závisí, je obvykle vhodné jej definovat na sestavení, která je oddělená od implementace objektu actor.
+* **Projekt rozhraní (HelloWorld.Interfaces)** . Tento projekt obsahuje definici rozhraní pro objekt actor. Rozhraní objektu actor lze definovat v každém projektu s názvem.  Rozhraní definuje kontrakt objektu actor sdílený mezi implementací objektu actor a klienty objekt actor volají.  Protože klientské projekty mohou na něm závisí, je obvykle vhodné jej definovat na sestavení, která je oddělená od implementace objektu actor.
 
-* **Projekt služby objektu actor (HelloWorld)**. Tento projekt definuje službu Service Fabric, který bude hostovat objekt actor. Obsahuje implementace objektu actor, *HelloWorld.cs*. Implementace objektu actor je třída, která se odvozuje od základního typu `Actor` a implementuje rozhraní definované v *MyActor.Interfaces* projektu. Třídu objektu actor musí také implementovat konstruktor, který přijímá `ActorService` instance a `ActorId` a předává je do základní `Actor` třídy.
+* **Projekt služby objektu actor (HelloWorld)** . Tento projekt definuje službu Service Fabric, který bude hostovat objekt actor. Obsahuje implementace objektu actor, *HelloWorld.cs*. Implementace objektu actor je třída, která se odvozuje od základního typu `Actor` a implementuje rozhraní definované v *MyActor.Interfaces* projektu. Třídu objektu actor musí také implementovat konstruktor, který přijímá `ActorService` instance a `ActorId` a předává je do základní `Actor` třídy.
     
     Tento projekt obsahuje také *Program.cs*, který zaregistruje třídy actor pomocí modulu runtime Service Fabric `ActorRuntime.RegisterActorAsync<T>()`. `HelloWorld` Třída je již registrována. Jakékoli další objekt actor implementace přidány do projektu musí být zaregistrovaný také ve `Main()` metody.
 
@@ -97,7 +97,7 @@ Vytvořte jednoduchou konzolovou aplikaci k volání služby objektu actor.
 
 1. Klikněte pravým tlačítkem na řešení v Průzkumníku řešení > **přidat** > **nový projekt...** .
 
-2. V části **.NET Core** typy projektů, zvolte **Konzolová aplikace (.NET Core)**.  Pojmenujte projekt *ActorClient*.
+2. V části **.NET Core** typy projektů, zvolte **Konzolová aplikace (.NET Core)** .  Pojmenujte projekt *ActorClient*.
     
     ![Přidání dialogového okna Nový projekt][6]    
     

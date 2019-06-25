@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 81180d6930816a4a7715ce60313347019029fccd
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 9306e44655bd172343f20ac4fda2b2c56afcfb88
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66416089"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164496"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>Kurz: Optimalizace nákladů od doporučení.
 
@@ -54,7 +54,7 @@ Seznam doporučení identifikuje nedostatečné efektivity využití, nebo obsah
 Vysoký dopad doporučení patří:
 - [Nákup rezervované instance virtuálních počítačů ušetříte peníze, než byste platili s průběžnými platbami](../advisor/advisor-cost-recommendations.md#buy-reserved-virtual-machine-instances-to-save-money-over-pay-as-you-go-costs)
 - [Optimalizovat výdaje a prostřednictvím Změna velikosti nebo vypnutí nedostatečně využité instance virtuálního počítače](../advisor/advisor-cost-recommendations.md#optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances)
-- [Použití Storage úrovně Standard pro ukládání snímků Managed Disks ](../advisor/advisor-cost-recommendations.md#use-standard-snapshots-for-managed-disks)
+- [Použití Storage úrovně Standard pro ukládání snímků Managed Disks](../advisor/advisor-cost-recommendations.md#use-standard-snapshots-for-managed-disks)
 
 Střední dopad doporučení patří:
 - [Azure Data Factory kanálů, které se nedaří odstranit](../advisor/advisor-cost-recommendations.md#delete-azure-data-factory-pipelines-that-are-failing)

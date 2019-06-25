@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: f3c362730e7908e88b363659b7fa580b6f2cddf1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61217160"
 ---
 # <a name="azure-media-services-error-codes"></a>Kódy chyb služby Azure Media Services
@@ -88,7 +88,7 @@ Požadavek nešlo ověřit (dříve, než je možné autorizovat) kvůli jednomu
 * Pokud chcete vytvořit lokátor pro určitý prostředek, který již má 5 lokátory používá byl proveden pokus o. (Úložiště azure vynucuje omezení na jeden kontejner úložiště pět zásady sdíleného přístupu.)
 * Propojení účtu úložiště prostředku IngestManifestAsset není stejný jako účet úložiště používané IngestManifest nadřazenou položkou.  
 
-## <a name="500-internal-server-error"></a>500 – Interní chyba serveru
+## <a name="500-internal-server-error"></a>Chyba 500 interní Server
 Během zpracování požadavku, Media Services nalezne nějaké chybě, která zabrání v pokračování zpracování. Může to být způsobené jedním z následujících důvodů:
 
 * Vytváření prostředku nebo úloha selže, protože informace o kvótách služby účtu Media Services je dočasně nedostupná.

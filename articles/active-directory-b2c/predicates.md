@@ -11,10 +11,10 @@ ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: 06879164c6f72891b734da077c667c6f90448fe4
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66512968"
 ---
 # <a name="predicates-and-predicatevalidations"></a>Predikáty a PredicateValidations
@@ -33,7 +33,7 @@ Následující diagram znázorňuje vztah mezi elementy:
 
 **Predikáty** prvek obsahuje následující element:
 
-| Prvek | Výskyty | Popis |
+| Element | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | Predikát | 1: n | Seznam predikáty. | 
 
@@ -46,20 +46,20 @@ Následující diagram znázorňuje vztah mezi elementy:
 
 **Predikátu** prvek obsahuje následující prvky:
 
-| Prvek | Výskyty | Popis |
+| Element | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | UserHelpText | 1:1 | Chybová zpráva pro uživatele, pokud kontrola selže. Tento řetězec může být lokalizovány pomocí [přizpůsobení jazyka](localization.md) |
 | Parametry | 1:1 | Parametry pro typ metody ověření řetězce. | 
 
 **Parametry** prvek obsahuje následující prvky:
 
-| Prvek | Výskyty | Popis |
+| Element | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | Parametr | 1: n | Parametry pro typ metody ověření řetězce. | 
 
 **Parametr** prvek obsahuje následující atributy:
 
-| Prvek | Výskyty | Popis |
+| Element | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | ID | 1:1 | Identifikátor parametru. |
 
@@ -132,7 +132,7 @@ Při ověřování do kontroly oproti typu deklarace identity, definujte predik�
 
 **PredicateValidations** prvek obsahuje následující element:
 
-| Prvek | Výskyty | Popis |
+| Element | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | PredicateValidation | 1: n | Seznam predikátu ověření. | 
 
@@ -144,13 +144,13 @@ Při ověřování do kontroly oproti typu deklarace identity, definujte predik�
 
 **PredicateValidation** prvek obsahuje následující element:
 
-| Prvek | Výskyty | Popis |
+| Element | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | PredicateGroups | 1: n | Seznam skupin predikátu. | 
 
 **PredicateGroups** prvek obsahuje následující element:
 
-| Prvek | Výskyty | Popis |
+| Element | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | PredicateGroup | 1: n | Seznam predikáty. | 
 
@@ -162,7 +162,7 @@ Při ověřování do kontroly oproti typu deklarace identity, definujte predik�
 
 **PredicateGroup** prvek obsahuje následující prvky:
 
-| Prvek | Výskyty | Popis |
+| Element | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | UserHelpText | 1:1 |  Popis predikátu, které vám pomůžou uživatelům vědět, jaká hodnota by měla zadání. | 
 | PredicateReferences | 1: n | Seznam odkazy na predikát. | 
@@ -175,7 +175,7 @@ Při ověřování do kontroly oproti typu deklarace identity, definujte predik�
 
 **PredicateReferences** prvek obsahuje následující prvky:
 
-| Prvek | Výskyty | Popis |
+| Element | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | PredicateReference | 1: n | Odkaz na predikát. | 
 

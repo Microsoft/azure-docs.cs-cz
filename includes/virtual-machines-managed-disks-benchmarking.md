@@ -9,11 +9,11 @@ ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 9c59b98fb615266c193f997c01c83922c18d4408
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66147911"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67174992"
 ---
 *Zahřívá se do mezipaměti*  
 Disk s použití mezipaměti u hostitele jen pro čtení se schopnost poskytovat vyšší vstupně-výstupních operací než limit na disku. Chcete-li získat tento maximálního výkonu při čtení z mezipaměti hostitele, nejprve je musí zahřívání mezipaměti tento disk. Tím se zajistí, že IOs pro čtení, že nástroj pro srovnávací testy, se bude řídit na čtení z mezipaměti svazku, ve skutečnosti přístupy do mezipaměti a nikoli disk přímo. Výsledek přístupy do mezipaměti v další vstupně-výstupních operací z jedné mezipaměti povolena disku.
@@ -62,24 +62,24 @@ Provedení kroků zahřívání mezipaměti
 
 1. Vytvořit dva specifikace přístup s hodnotami ukazuje následující příklad.
 
-   | Název | Velikost požadavku | Náhodné % | % Čtení |
+   | Name | Velikost požadavku | Náhodné % | % Čtení |
    | --- | --- | --- | --- |
    | RandomWrites\_1 MB |1 MB |100 |0 |
    | RandomReads\_1 MB |1 MB |100 |100 |
 1. Spusťte test Iometer pro inicializaci mezipaměti disku s následujícími parametry. Použití tří pracovních vláken pro cílový svazek a hloubka fronty 128. Nastavení doby trvání "Doba běhu" testu do 2 hodin na kartě "Nastavení testu".
 
-   | Scénář | Cílový svazek | Název | Trvání |
+   | Scénář | Cílový svazek | Název | Doba trvání |
    | --- | --- | --- | --- |
    | Inicializovat Disk mezipaměti |CacheReads |RandomWrites\_1 MB |2 hodin |
 1. Spusťte test Iometer pro zahájení práce s disk mezipaměti s následujícími parametry. Použití tří pracovních vláken pro cílový svazek a hloubka fronty 128. Nastavení doby trvání "Doba běhu" testu do 2 hodin na kartě "Nastavení testu".
 
-   | Scénář | Cílový svazek | Název | Trvání |
+   | Scénář | Cílový svazek | Name | Doba trvání |
    | --- | --- | --- | --- |
    | Zahřívání Disk mezipaměti |CacheReads |RandomReads\_1 MB |2 hodin |
 
 Po disk mezipaměti je provozní teplotu, pokračujte v testu scénáře uvedené níže. Ke spuštění testů Iometer, použijte aspoň tři pracovní vlákna pro **každý** cílit na svazku. Pro každý pracovní podproces vyberte cílový svazek, nastavte hloubka fronty a vyberte jednu z uložené testovací specifikace, jak je znázorněno v následující tabulce, chcete-li spustit příslušný testovací scénář. Tabulka také ukazuje očekávané výsledky IOPS a propustnost při spuštění těchto testů. Ve všech případech se používá malou velikost vstupně-výstupních operací o velikosti 8 KB a hloubka vysokou fronty 128.
 
-| Testovací scénář | Cílový svazek | Název | Výsledek |
+| Testovací scénář | Cílový svazek | Name | Výsledek |
 | --- | --- | --- | --- |
 | Max. Čtení vstupně-výstupních operací |CacheReads |RandomWrites\_8 kb |50 000 VSTUPNĚ-VÝSTUPNÍCH OPERACÍ |
 | Max. Zápis IOPS |NoCacheWrites |RandomReads\_8K |64 000 VSTUPNĚ-VÝSTUPNÍCH OPERACÍ |

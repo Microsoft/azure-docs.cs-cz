@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 5df666dc2bd574c168d6b5f65dd6a909564a921f
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64868423"
 ---
 # <a name="get-started-with-delivering-content-on-demand-by-using-the-azure-portal"></a>Začínáme s doručováním obsahu na vyžádání pomocí webu Azure Portal
@@ -101,10 +101,10 @@ Pokud chcete monitorovat průběh úlohy kódování, vyberte v horní části s
 ## <a name="publish-content"></a>Publikování obsahu
 Pokud chcete uživatelům poskytnout adresu URL, kterou můžou použít ke streamování nebo stažení vašeho obsahu, musíte prostředek nejprve publikovat vytvořením lokátoru. Lokátory zajišťují přístup k souborům v prostředku. Služba Azure Media Services podporuje dva typy lokátorů: 
 
-* **Lokátory streamování (OnDemandOrigin)**. Lokátory streamování se používají pro adaptivní streamování. Mezi příklady adaptivního streamování patří HLS, Smooth Streaming a MPEG-DASH. Pokud chcete vytvořit lokátor streamování, váš prostředek musí obsahovat soubor .ism. 
-* **Progresivní lokátory (sdílený přístupový podpis)**. Progresivní lokátory se používají k doručování videa přes progresivní stahování.
+* **Lokátory streamování (OnDemandOrigin)** . Lokátory streamování se používají pro adaptivní streamování. Mezi příklady adaptivního streamování patří HLS, Smooth Streaming a MPEG-DASH. Pokud chcete vytvořit lokátor streamování, váš prostředek musí obsahovat soubor .ism. 
+* **Progresivní lokátory (sdílený přístupový podpis)** . Progresivní lokátory se používají k doručování videa přes progresivní stahování.
 
-Pokud chcete vytvořit adresu URL streamování HLS, připojte na konec adresy *(format=m3u8-aapl)*:
+Pokud chcete vytvořit adresu URL streamování HLS, připojte na konec adresy *(format=m3u8-aapl)* :
 
     {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{file name}.ism/Manifest(format=m3u8-aapl)
 
@@ -112,7 +112,7 @@ Pokud chcete vytvořit adresu URL streamování pro přehrávání prostředků 
 
     {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{file name}.ism/Manifest
 
-Pokud chcete vytvořit adresu URL streamování MPEG-DASH, připojte na konec adresy *(format=mpd-time-csf)*:
+Pokud chcete vytvořit adresu URL streamování MPEG-DASH, připojte na konec adresy *(format=mpd-time-csf)* :
 
     {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{file name}.ism/Manifest(format=mpd-time-csf)
 

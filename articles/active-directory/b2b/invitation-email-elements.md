@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3f93586d46aa01116990f8f02f344c6952d3c1b1
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65768373"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>Prvky B2B spolupráce e-mailová pozvánka – Azure Active Directory
@@ -31,10 +31,10 @@ Podívejme se na několik elementů e-mailu, abyste věděli, jak nejlépe použ
 ### <a name="subject"></a>Subject
 Předmět e-mailu odpovídá následujícímu vzoru: Zveme vás k &lt;tenantname&gt; organizace
 
-### <a name="from-address"></a>Adresa odesílatele
+### <a name="from-address"></a>Z adresy
 Používáme vzor LinkedIn jako adresa odesílatele.  By měl být jasné, kdo je odesílatel pozvánky a ze společnosti a i vyjasnit, e-mailu přichází z Microsoftu e-mailovou adresu. Formát je: Microsoft Invitations <invites@microsoft.com> nebo &lt;zobrazované jméno odesílatele pozvánky&gt; z &lt;tenantname&gt; (přes Microsoft) <invites@microsoft.com>.
 
-### <a name="reply-to"></a>Zpáteční adresa
+### <a name="reply-to"></a>Odpovědět
 Odpovědi e-mailu je nastavena k e-mailu odesílatel pozvánky, pokud je k dispozici, takže odpovídání na e-mailu odešle e-mailu zpět odesílatel pozvánky.
 
 ### <a name="branding"></a>Branding
@@ -53,7 +53,7 @@ Pokud ještě jste nenastavili profilový obrázek, zobrazí se ikona s iniciál
 
   ![Snímek obrazovky s e-mailové pozvánce s odesílatel pozvánky iniciály zobrazí](media/invitation-email-elements/inviters-initials.png)
 
-### <a name="body"></a>Text zprávy
+### <a name="body"></a>Tělo
 Text obsahuje zprávu, že odesílatel pozvánky kontextovému při [pozvání uživatelů typu Host do adresáře, skupiny nebo aplikace](add-users-administrator.md) nebo [pomocí e-mailové pozvánce API](customize-invitation-api.md). Takže nezpracovává značky HTML z bezpečnostních důvodů je textová oblast.
 
   ![Snímek obrazovky zobrazující tělo e-mailová pozvánka](media/invitation-email-elements/invitation-email-body.png)

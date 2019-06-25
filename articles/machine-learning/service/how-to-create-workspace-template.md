@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 04/16/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: abe497ed96515e8194fb2ddefd8e7f4cb9908758
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 2c5491bab9b45df11c2fe81aa933a1a34c49a41b
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205123"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205938"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning-service"></a>Vytvořit pracovní prostor pro službu Azure Machine Learning pomocí šablony Azure Resource Manageru
 
@@ -38,7 +38,7 @@ Následující šablony Resource Manageru je možné vytvořit pracovní prostor
 Tato šablona vytvoří následující služby Azure:
 
 * Skupina prostředků Azure
-* Účet služby Azure Storage
+* Azure Storage Account
 * Azure Key Vault
 * Azure Application Insights
 * Azure Container Registry
@@ -68,7 +68,7 @@ Další informace o šablonách najdete v následujících článcích:
 1. Vyberte __Uložit__ použít šablonu. Zadejte následující informace a souhlas s uvedené podmínky a ujednání:
 
    * Předplatné: Vyberte předplatné Azure má použít pro tyto prostředky.
-   * Skupina zdrojů: Vyberte nebo vytvořte skupinu prostředků k obsáhnutí služeb.
+   * Skupina prostředků: Vyberte nebo vytvořte skupinu prostředků k obsáhnutí služeb.
    * Název pracovního prostoru: Název, který se má použít pro pracovní prostor Azure Machine Learning, která bude vytvořena. Název pracovního prostoru musí být dlouhý 3 až 33 znaků. Může obsahovat jenom alfanumerické znaky a "-".
    * Umístění: Vyberte umístění, kde se prostředky vytvoří.
 
@@ -99,7 +99,7 @@ az group deployment create \
   --name exampledeployment \
   --resource-group examplegroup \
   --template-file azuredeploy.json \
-  --parameters workspaceName=exampleworkspace
+  --parameters workspaceName=exampleworkspace location=eastus
 ```
 
 Další informace najdete v tématu [nasazení prostředků pomocí šablon Resource Manageru a Azure CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md) a [nasazení privátní šablony Resource Manageru s tokenem SAS a rozhraní příkazového řádku Azure](../../azure-resource-manager/resource-manager-cli-sas-token.md).

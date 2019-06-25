@@ -16,20 +16,20 @@ ms.workload: infrastructure-services
 ms.date: 11/17/2018
 ms.author: sedusch
 ms.openlocfilehash: f09f66e81ec4878aedebfee9be4c0c67b75c8ad6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61462965"
 ---
 # <a name="sap-lama-connector-for-azure"></a>Konektor SAP LaMa pro Azure
 
-[1877727]:https://launchpad.support.sap.com/#/notes/1877727
-[2343511]:https://launchpad.support.sap.com/#/notes/2343511
-[2350235]:https://launchpad.support.sap.com/#/notes/2350235
-[2562184]:https://launchpad.support.sap.com/#/notes/2562184
-[2628497]:https://launchpad.support.sap.com/#/notes/2628497
-[2445033]:https://launchpad.support.sap.com/#/notes/2445033
+[1877727]: https://launchpad.support.sap.com/#/notes/1877727
+[2343511]: https://launchpad.support.sap.com/#/notes/2343511
+[2350235]: https://launchpad.support.sap.com/#/notes/2350235
+[2562184]: https://launchpad.support.sap.com/#/notes/2562184
+[2628497]: https://launchpad.support.sap.com/#/notes/2628497
+[2445033]: https://launchpad.support.sap.com/#/notes/2445033
 [Logo_Linux]:media/virtual-machines-shared-sap-shared/Linux.png
 [Logo_Windows]:media/virtual-machines-shared-sap-shared/Windows.png
 [dbms-guide]:dbms-guide.md
@@ -51,7 +51,7 @@ Tato příručka popisuje, jak nastavit Azure konektoru pro SAP LaMa, vytvořit 
 
 Následující poznámky SAP se vztahují na téma o LaMa SAP v Azure:
 
-| Poznámka: číslo | Název |
+| Poznámka: číslo | Titul |
 | --- | --- |
 | [2343511] |Konektor Microsoft Azure pro správu SAP na šířku (LaMa) |
 | [2350235] |SAP Landscape Management 3.0 – Enterprise edition |
@@ -385,7 +385,7 @@ Použití *as1-di-0* pro *název hostitele Instance Pa adresy* v dialogovém okn
    Ujistěte se, že sapmnt sdílené složky na ASCS/SCS má plný přístup pro SAP_AS1_GlobalAdmin
 
 * Chyba v kroku *povolení ochrany po spuštění pro klon*
-  * Nepovedlo se otevřít soubor "\\as1 ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1 di 0' příčina: Žádný odpovídající soubor nebo adresář
+  * Nepovedlo se otevřít soubor "\\as1 ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1 di 0' příčina: Soubor nebo adresář neexistuje
   * Řešení  
     Účet počítače serveru aplikace potřebuje oprávnění k zápisu do profilu
 

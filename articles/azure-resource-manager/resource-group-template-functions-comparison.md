@@ -1,25 +1,17 @@
 ---
 title: Funkce šablon Azure Resource Manageru – porovnání | Dokumentace Microsoftu
 description: Popisuje funkce pro použití v šabloně Azure Resource Manageru pro porovnání hodnot.
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
-ms.assetid: ''
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 09/05/2017
 ms.author: tomfitz
-ms.openlocfilehash: 6591a75577670f5bb50c1275af7e51e9b8328d50
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0eafadd4049baea58aa882b3421eaa6a684a3a38
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66128684"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205500"
 ---
 # <a name="comparison-functions-for-azure-resource-manager-templates"></a>Porovnání funkcí šablon Azure Resource Manageru
 
@@ -173,7 +165,7 @@ Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-sa
 
 Výstup z předchozího příkladu je:
 
-| Název | Typ | Hodnota |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
 | checkNotEquals | Bool | True |
 
@@ -250,7 +242,7 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| checkInts | Bool | False (Nepravda) |
+| checkInts | Bool | False |
 | checkStrings | Bool | True |
 
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
@@ -326,7 +318,7 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| checkInts | Bool | False (Nepravda) |
+| checkInts | Bool | False |
 | checkStrings | Bool | True |
 
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
@@ -403,7 +395,7 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | checkInts | Bool | True |
-| checkStrings | Bool | False (Nepravda) |
+| checkStrings | Bool | False |
 
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
 
@@ -479,7 +471,7 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | checkInts | Bool | True |
-| checkStrings | Bool | False (Nepravda) |
+| checkStrings | Bool | False |
 
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
 

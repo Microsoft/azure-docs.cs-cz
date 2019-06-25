@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 5/30/2019
+ms.date: 6/21/2019
 ms.author: victorh
-ms.openlocfilehash: 75b1131f2853cb444481b9c7a6c96e28f8537538
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 933b4167f25db5a01cf1160f5e781a1fe31afc6b
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66384675"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67304599"
 ---
 # <a name="azure-firewall-faq"></a>Nejčastější dotazy k Azure bránu Firewall
 
@@ -76,7 +76,6 @@ Brána Firewall služby Azure service doplňuje funkci skupiny zabezpečení sí
 
 Brány Firewall na Azure je spravovaná služba s víc vrstvami ochrany, včetně ochrany platform se NIC úrovni skupin zabezpečení sítě (ne zobrazitelné).  Skupiny Nsg na úrovni podsítě nejsou vyžadovány v podsíti brány Firewall na Azure a jsou zakázané, aby žádné přerušení služby.
 
-
 ## <a name="how-do-i-set-up-azure-firewall-with-my-service-endpoints"></a>Jak nastavit Brána Firewall služby Azure se Moje koncové body služby?
 
 Zabezpečený přístup ke službám PaaS doporučujeme koncových bodů služby. Můžete povolit koncové body služby v podsíti brány Firewall na Azure a zakázat ve virtuálních sítích propojených paprsku. Tímto způsobem, můžete využívat funkce – zabezpečení koncového bodu služby a centrálního protokolování pro veškerý provoz.
@@ -123,6 +122,10 @@ Ano, brána Firewall služby Azure můžete v centrální virtuální síti pro 
 ## <a name="can-azure-firewall-forward-and-filter-network-traffic-between-subnets-in-the-same-virtual-network-or-peered-virtual-networks"></a>Brána Firewall služby Azure můžete předat dál a filtrování síťového provozu mezi podsítěmi ve stejné virtuální síti nebo v partnerských virtuálních sítích?
 
 Ano. Konfigurace trasy definované uživatelem pro přesměrování přenosu dat mezi podsítěmi ve stejné virtuální síti, ale vyžaduje další pozornost. Při používání rozsah adres virtuální sítě je dostatečná předponu cíl pro uživatelem definovaná TRASA, to také směruje veškerý provoz z jednoho počítače do jiného počítače ve stejné podsíti prostřednictvím instance Brána Firewall služby Azure. Abyste tomu předešli, obsahoval trasu pro podsíť v uživatelem definovaná TRASA s typem dalšího segmentu směrování z **VNET**. Správa tyto trasy může být náročné a náchylné k chybám. Doporučenou metodou pro interní síť segmentace, je použití skupin zabezpečení sítě, které nevyžadují trasy definované uživatelem.
+
+## <a name="does-azure-firewall-outbound-snat-between-private-networks"></a>Je brána Firewall služby Azure odchozí SNAT mezi privátními sítěmi?
+
+Brány Firewall na Azure není SNAT, pokud cílová IP adresa je rozsah privátních IP za [IANA RFC 1918](https://tools.ietf.org/html/rfc1918). Pokud vaše organizace používá veřejnou rozsah IP adres pro privátní sítě, SNATs brány Firewall Azure provoz do jedné z brány firewall na privátní IP adresy ve AzureFirewallSubnet.
 
 ## <a name="is-forced-tunnelingchaining-to-a-network-virtual-appliance-supported"></a>Musí tunelové propojení/řetězení síťové virtuální zařízení podporované?
 

@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 10/28/2018
 ms.author: magoedte
 ms.openlocfilehash: 09755922da78a3e856c491c01ce9f34f50063d71
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65606503"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Pomocí řešení Service Map v Azure
@@ -160,10 +160,10 @@ Neúspěšná připojení jsou uvedeny v rámci služby maps Service Map pro pro
 
 Principy neúspěšná připojení může pomoci při řešení potíží, ověření migrace, analýzu zabezpečení a porozumění celkové architektury. Neúspěšná připojení jsou někdy neškodné, ale často ukazují přímo na problém, jako je převzetí služeb při selhání prostředí náhle stane nedostupný, nebo dvou aplikačních vrstev se nebude moct komunikovat po migrace do cloudu.
 
-## <a name="client-groups"></a>Skupiny klientů
+## <a name="client-groups"></a>Skupin klientů
 Skupiny klientů jsou pole na mapě, které představují klientské počítače, které nemají agenti závislosti. Jedné skupiny klientů reprezentuje klienty pro jednotlivé procesy nebo počítač.
 
-![Skupiny klientů](media/service-map/client-groups.png)
+![Skupin klientů](media/service-map/client-groups.png)
 
 Pokud chcete zobrazit IP adresy serverů ve skupině klientů, vyberte skupinu. Obsah skupiny jsou uvedeny v **vlastnosti skupiny klientů** podokně.
 
@@ -343,7 +343,7 @@ Tady jsou některé důležité body ke zvážení:
 #### <a name="naming-and-classification"></a>Zásady vytváření názvů a klasifikace
 Pro usnadnění práce IP adresu ke konci vzdáleného připojení je součástí RemoteIp vlastnost. Pro příchozí připojení, RemoteIp je stejný jako SourceIp, zatímco pro odchozí připojení, je stejný jako DestinationIp. Vlastnost RemoteDnsCanonicalNames představuje hlášených počítači pro RemoteIp canonical názvy DNS. Vlastnosti RemoteDnsQuestions a RemoteClassification jsou vyhrazené pro budoucí použití. 
 
-#### <a name="geolocation"></a>Zeměpisná poloha
+#### <a name="geolocation"></a>Geografická poloha
 *VMConnection* obsahuje také informace o zeměpisné poloze informace o vzdáleným koncem záznamech připojení ve vlastnostech následující záznam: 
 
 | Vlastnost | Popis |
@@ -510,5 +510,5 @@ Další informace o [prohledávání protokolů](../../azure-monitor/log-query/l
 Zobrazit [řešení potíží s konfigurací řešení Service Map dokumentu v části]( service-map-configure.md#troubleshooting).
 
 
-## <a name="feedback"></a>Zpětná vazba
+## <a name="feedback"></a>Váš názor
 Máte jakoukoli zpětnou vazbu pro nás o mapy služeb nebo v této dokumentaci?  Navštivte naše [User Voice stránky](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map), kde můžete navrhnout funkce nebo hlasovat do existujících návrhů.

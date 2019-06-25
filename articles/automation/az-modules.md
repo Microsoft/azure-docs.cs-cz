@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 02/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4ea30bcfcdcedc2e3b6b17fba21fb4b0e2c1745a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: a45a1fbe0d7a99c970d6f8f5626c1349f9d8b1ca
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "67075489"
+ms.locfileid: "67123699"
 ---
 # <a name="az-module-support-in-azure-automation"></a>Podpora modulu az ve službě Azure Automation
 
@@ -63,7 +63,7 @@ Tento proces importu je možné provést prostřednictvím [Galerie prostředí 
 
 ## <a name="test-your-runbooks"></a>Testovat vaše sady runbook
 
-Jakmile `Az` moduly importují ve vašem účtu Automation, můžete teď začít upravovat runbooky místo toho použít Az modulu. Většina rutin mají stejný název s výjimkou `AzureRM` byl změněn na `Az`. Seznam modulů, které nepostupujte podle tohoto procesu najdete v tématu [seznamu výjimek](/powershell/azure/migrate-from-azurerm-to-az#change-module-imports-and-cmdlet-names).
+Jakmile `Az` moduly importují ve vašem účtu Automation, můžete teď začít upravovat runbooky místo toho použít Az modulu. Většina rutin mají stejný název s výjimkou `AzureRM` byl změněn na `Az`. Seznam modulů, které nepostupujte podle tohoto procesu najdete v tématu [seznamu výjimek](/powershell/azure/migrate-from-azurerm-to-az#update-cmdlets-modules-and-parameters).
 
 Jeden ze způsobů, jak testovat vaše sady runbook před úpravy sady runbook a používají nové rutiny, je použití `Enable-AzureRMAlias -Scope Process` na začátku sady runbook. Přidáním tohoto runbooku můžete vaše sada runbook poběží beze změn.
 

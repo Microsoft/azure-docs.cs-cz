@@ -16,10 +16,10 @@ ms.date: 02/26/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 86747b72c436c4dac3bbf0a752fee4d24cb47f60
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60722504"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Vytvoření účtu Batch pomocí webu Azure Portal
@@ -92,7 +92,7 @@ Při vytváření prvního účtu Batch v režimu předplatného uživatele mus�
 
     ![Registrace poskytovatele Microsoft.Batch][register_provider]
 
-1. V **předplatné** stránce **řízení přístupu (IAM)** > **přiřazení rolí** > **přidat přiřazení role**.
+1. V **předplatné** stránce **řízení přístupu (IAM)**  > **přiřazení rolí** > **přidat přiřazení role**.
 
     ![Řízení přístupu pro předplatné][subscription_access]
 

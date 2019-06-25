@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: 4ec9d5e605a2319a04dac4cb52dbe49c77354479
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 91f15f9c19b480d950b2c715e6d9290e01184cf7
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510641"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67272374"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB .NET Core SDK pro rozhraní SQL API: Zpráva k vydání verze a prostředky
 > [!div class="op_single_selector"]
@@ -49,6 +49,12 @@ Azure Cosmos DB .NET Core SDK má paritu funkcí s nejnovější verzí [.NET SD
 * Nový model objektu, pomocí metod a nejvyšší úrovně CosmosClient rozdělit mezi relevantní CosmosDatabases, CosmosContainers a CosmosItems třídy.
 * Podpora pro datové proudy.
 * Aktualizované CosmosResponseMessage ze serveru vrátit stavový kód a pouze vyvolat výjimku, pokud není vrácena žádná odpověď.
+
+### <a name="a-name250250"></a><a name="2.5.0"/>2.5.0
+
+* Povolit požadavky na zápis pro použití náhradní lokality do jiné oblasti, pokud původní jeden server selže
+* Přidání relace zásady opakování pro žádost o zápis
+* Opravy trasování časování pro dotazy, které způsobily prázdné stránky
 
 ### <a name="a-name240240"></a><a name="2.4.0"/>2.4.0
 
@@ -216,7 +222,7 @@ Azure Cosmos DB .NET Core SDK má paritu funkcí s nejnovější verzí [.NET SD
 
 ### <a name="a-name112112"></a><a name="1.1.2"/>1.1.2
 
-* Oprava problému, který občas způsobí, že o výjimku WebException: Vzdálený název se nedá rozpoznat.
+* Oprava problému, který občas způsobí, že o výjimku WebException: Vzdálený název nelze rozpoznat.
 * Přidání podpory pro přímo tak, že přidáte nová přetížení ReadDocumentAsync rozhraní API pro čtení typu dokumentu.
 
 ### <a name="a-name111111"></a><a name="1.1.1"/>1.1.1
@@ -251,6 +257,7 @@ Pokud máte dotazy související s touto sadou SDK, zveřejněte ji do [StackOve
 
 | Verze | Datum vydání | Datum vyřazení z provozu |
 | --- | --- | --- |
+| [2.5.0](#2.5.0) |18. června 2019 |--- |
 | [2.4.0](#2.4.0) |05. května 2019 |--- |
 | [2.3.0](#2.3.0) |04. dubna 2019 |--- |
 | [2.2.3](#2.2.3) |11. března 2019 |--- |

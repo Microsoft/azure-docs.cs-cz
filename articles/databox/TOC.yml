@@ -111,8 +111,16 @@
           items:
             - name: Správa prostřednictvím portálu Azure Portal
               href: data-box-portal-ui-admin.md
-            - name: Řešení problémů s Data Box Disky
-              href: data-box-disk-troubleshoot.md
+            - name: Řešení potíží
+              items:
+                - name: Problémy s odemykáním
+                  href: data-box-disk-troubleshoot-unlock.md
+                - name: Problémy s kopírováním dat
+                  href: data-box-disk-troubleshoot-data-copy.md
+                - name: Problémy s ověřováním
+                  href: data-box-disk-troubleshoot.md
+                - name: Problémy s nahráváním
+                  href: data-box-disk-troubleshoot-upload.md
             - name: Kontaktování podpory
               href: data-box-disk-contact-microsoft-support.md
     - name: Data Box Heavy

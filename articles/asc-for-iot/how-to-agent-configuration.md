@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
 ms.openlocfilehash: 311a867c863cbd72292d8e34b4f7abdb949b12c6
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65198442"
 ---
 # <a name="tutorial-configure-security-agents"></a>Kurz: Konfigurace agentů zabezpečení
@@ -125,12 +125,12 @@ Výchozí hodnoty jsou k dispozici ve správné schéma v [Githubu](https://aka.
 |Události vynechané statistiky |eventPriorityDroppedEventsStatistics |Nízká |True|Statistika událostí týkající se agenta. |
 |Statistika zpráv|eventPriorityMessageStatistics |Nízká |True |Agent související statistiky zpráv. |
 |Připojené hardwaru|eventPriorityConnectedHardware |Nízká |True |Snímek veškerý hardware připojené k zařízení.|
-|Naslouchající porty|eventPriorityListeningPorts |Vysoký |True |Snímek všech otevřených naslouchající porty na zařízení.|
+|Naslouchající porty|eventPriorityListeningPorts |Vysoká |True |Snímek všech otevřených naslouchající porty na zařízení.|
 |Vytvoření procesu |eventPriorityProcessCreate |Nízká |False |Vytvoření zařízení procesu audity.|
 |Ukončit proces|eventPriorityProcessTerminate |Nízká |False |Audity zpracování ukončení na zařízení.| 
 |Systémové informace |eventPrioritySystemInformation |Nízká |True |Snímek informace o systému (například: Operační systém nebo procesor).| 
-|Místní uživatele| eventPriorityLocalUsers |Vysoký |True|Snímek registrovaných místních uživatelů v rámci systému. |
-|Přihlásit|  eventPriorityLogin |Vysoký|False|Kontrola událostí přihlášení k zařízení (místní a vzdálené přihlášení).|
+|Místní uživatele| eventPriorityLocalUsers |Vysoká |True|Snímek registrovaných místních uživatelů v rámci systému. |
+|Přihlásit|  eventPriorityLogin |Vysoká|False|Kontrola událostí přihlášení k zařízení (místní a vzdálené přihlášení).|
 |Vytvoření připojení |eventPriorityConnectionCreate|Nízká|False|Audity připojení TCP vytvořili do a ze zařízení. |
 |Konfigurace brány firewall| eventPriorityFirewallConfiguration|Nízká|True|Snímek konfigurace brány firewall na zařízení (pravidla brány firewall). |
 |Směrným plánem operačního systému| eventPriorityOSBaseline| Nízká|True|Zkontrolujte snímek směrným plánem operačního systému zařízení.|

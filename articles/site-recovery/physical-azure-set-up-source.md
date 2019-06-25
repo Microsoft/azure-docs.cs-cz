@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/14/2019
 ms.author: ramamill
 ms.openlocfilehash: 5f0578026e95378065fc68198434e347a87eb1fe
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62123910"
 ---
 # <a name="set-up-the-configuration-server-for-disaster-recovery-of-physical-servers-to-azure"></a>Nastavení konfigurace serveru pro zotavení po havárii fyzických serverů do Azure
@@ -50,7 +50,7 @@ V následující tabulce jsou uvedeny minimální hardware, software a požadavk
    ![Nastavení zdroje](./media/physical-azure-set-up-source/plus-config-srv.png)
 2. V **přidat Server** okno, zkontrolujte, že **konfigurační Server** se zobrazí v **typ serveru**.
 4. Stáhněte si instalační soubor sjednocené instalace Site Recovery.
-5. Stáhněte registrační klíč trezoru. Při spuštění sjednocené instalace potřebujete registrační klíč. Klíč je platný pět dní od jeho vygenerování.
+5. Stáhnout registrační klíč trezoru Při spuštění sjednocené instalace potřebujete registrační klíč. Klíč je platný pět dní od jeho vygenerování.
 
     ![Nastavení zdroje](./media/physical-azure-set-up-source/set-source2.png)
 6. Na počítači, který používáte jako konfigurační server, spusťte **Azure Site Recovery Unified Setup** nainstalovat konfigurační server, procesový server a hlavní cílový server.

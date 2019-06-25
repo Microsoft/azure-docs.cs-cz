@@ -11,10 +11,10 @@ ms.service: cost-management
 manager: vitavor
 ms.custom: seodec18
 ms.openlocfilehash: b83368b913bf1303b49e3a56e3a15248af222cbe
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66002053"
 ---
 # <a name="view-key-cost-metrics-with-dashboards"></a>Klíč zobrazení nákladů metrik pomocí řídicích panelů
@@ -42,7 +42,7 @@ Pokud chcete rychle začít s vlastní řídicí panel, můžete duplikovat něk
 
 Pokud chcete vytvořit vlastní řídicí panel:
 
-1. Na domovské stránce, klikněte na tlačítko **přidat nový +**. Zobrazí se stránka Můj řídicí panel.  
+1. Na domovské stránce, klikněte na tlačítko **přidat nový +** . Zobrazí se stránka Můj řídicí panel.  
     ![Stránku řídicího panelu, kde můžete přidávat nové sestavy](./media/dashboards/my-dashboard.png)
 2. Klikněte na tlačítko **přidat novou sestavu**. Zobrazí se okno Přidat sestavu.
 3. Vyberte sestavu, kterou chcete přidat pomůcky řídicího panelu. Ve widgetu se přidá na řídicí panel.
@@ -101,7 +101,7 @@ Duplikovat řídicí panel (klonovat) vlastní:
 1. Na řídicím panelu, který chcete duplikovat, klikněte na tlačítko **uložit jako**. Nový řídicí panel se otevře s názvem a číslem.
 2. Přejmenujte duplicitní řídicí panel a upravit, jak potřebujete.
 
-- nebo -
+\- nebo -
 
 1. V nastavení řídicího panelu, klikněte na tlačítko **uložit jako** na řádek, který chcete duplikovat řídicí panel.
 2. Otevře se duplicitní řídicí panel.
@@ -113,7 +113,7 @@ Kterýkoli řídicí panel můžete nastavit jako výchozí. Nastavení pro výc
 
 - Klikněte na kartu řídicí panel chcete nastavit jako výchozí a potom klikněte na **výchozí** na pravé straně.
 
-- nebo -
+\- nebo -
 
 1. Klikněte na tlačítko **nastavení řídicího panelu** zobrazte seznam dostupných řídicích panelů a vyberte řídicí panel, který chcete nastavit jako výchozí.  
     ![řídicí panel Možnosti pro výchozí řídicí panel](./media/dashboards/dashboard-options.png)

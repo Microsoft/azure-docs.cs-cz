@@ -6,15 +6,15 @@ services: cognitive-services
 author: IEvangelist
 ms.service: cognitive-services
 ms.subservice: anomaly-detection
-ms.topic: article
-ms.date: 06/10/2019
+ms.topic: conceptual
+ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 8e6f7e33bf8bae3bc76074093167650813d76a8b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e6b5bcefb2a8df136d37dad062fbca651c312dc4
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67073338"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275497"
 ---
 # <a name="configure-anomaly-detector-containers"></a>Konfigurace kontejnery detekce anomálií
 
@@ -87,7 +87,7 @@ Detekce anomálií kontejnery nepoužívejte vstup nebo výstup připojí k ulo�
 
 Syntaxe umístění hostitele připojení se liší v závislosti na operačním systému hostitele. Kromě toho [hostitelský počítač](anomaly-detector-container-howto.md#the-host-computer)na umístění připojení nemusí být přístupné z důvodu konfliktu mezi oprávnění používat účet služby Docker a hostiteli připojit umístění oprávnění. 
 
-|Nepovinné| Name | Typ dat | Popis |
+|Nepovinné| Název | Typ dat | Popis |
 |-------|------|-----------|-------------|
 |Nepovoleno| `Input` | String | Kontejnery detekce anomálií Nepoužívejte toto.|
 |Nepovinné| `Output` | String | Cíl připojení výstupu. Výchozí hodnota je `/output`. Toto je umístění protokolů. To zahrnuje protokoly kontejneru. <br><br>Příklad:<br>`--mount type=bind,src=c:\output,target=/output`|

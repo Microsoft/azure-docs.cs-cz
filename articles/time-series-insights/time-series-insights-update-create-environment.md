@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
-ms.date: 04/25/2019
+ms.date: 06/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 77b7b90b63ffebc14498183fc179b9c8ae76a722
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 824d24b97f192583a42192b3bb90eb1818e1aa18
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66237846"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273059"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>Kurz: Nastavení prostředí Azure čas Series Insights ve verzi Preview
 
@@ -28,6 +28,9 @@ V tomto kurzu se naučíte:
 * Spuštění ukázky akcelerátor řešení pro streamování dat do prostředí Azure čas Series Insights ve verzi Preview.
 * Proveďte základní analýzy na data.
 * Definujte typ modelu časové řady a hierarchie a přidružte jej k instancím.
+
+>[!TIP]
+> [Akcelerátory řešení IoT](https://www.azureiotsolutions.com/Accelerators) poskytují podnikové předkonfigurované řešení, která vám pomůže zrychlit vývoj vlastních řešení IoT.
 
 ## <a name="create-a-device-simulation"></a>Vytvoření simulace zařízení
 
@@ -43,58 +46,18 @@ V této části vytvoříte tři Simulovaná zařízení, které posílají data
 
     | Parametr | Akce |
     | --- | --- |
-    | **Název řešení** | Zadejte jedinečnou hodnotu pro novou skupinu prostředků. Uvedené prostředky Azure se vytvoří a přiřadí do skupiny prostředků. |
-    | **Předplatné** | Vyberte předplatné, které jste použili k vytvoření prostředí Time Series Insights. |
-    | **Oblast** | Vyberte oblast, který jste použili k vytvoření prostředí Time Series Insights. |
-    | **Nasadit nepovinné prostředky Azure** | Nechte **služby IoT Hub** zaškrtnuté políčko. Simulovaná zařízení pomocí služby IoT Hub se připojte a Streamovat data. |
+    | **Název nasazení** | Zadejte jedinečnou hodnotu pro novou skupinu prostředků. Uvedené prostředky Azure se vytvoří a přiřadí do skupiny prostředků. |
+    | **Předplatné Azure** | Vyberte předplatné, které jste použili k vytvoření prostředí Time Series Insights. |
+    | **Umístění Azure** | Vyberte oblast, který jste použili k vytvoření prostředí Time Series Insights. |
+    | **Možnosti nasazení** | Vyberte **zřídit novou službu IoT Hub**. |
  
-    Vyberte **vytvořit řešení**. Počkejte 10 až 15 minut pro vaše řešení nasadit.
+    Vyberte **vytvořit řešení**. Může trvat až 20 minut, než se řešení pro dokončení nasazení.
 
     [![Vytvoření stránky řešení simulace zařízení](media/v2-update-provision/device-two-create.png)](media/v2-update-provision/device-two-create.png#lightbox)
 
-1. Na řídicím panelu řešení akcelerátoru, vyberte **spuštění**:
-
-    [![Spuštění řešení simulace zařízení](media/v2-update-provision/device-three-launch.png)](media/v2-update-provision/device-three-launch.png#lightbox)
-
-1. Budete přesměrováni na **simulace zařízení IoT Microsoft Azure** stránky. V pravém horním rohu stránky vyberte **nové simulace**.
-
-    [![Stránka simulace Azure IoT](media/v2-update-provision/device-four-iot-sim-page.png)](media/v2-update-provision/device-four-iot-sim-page.png#lightbox)
-
-1. V **nastavení** podokně nastavit následující parametry:
-
-    | Parametr | Akce |
-    | --- | --- |
-    | **Název** | Zadejte jedinečný název pro simulátor. |
-    | **Popis** | Zadejte definici. |
-    | **Simulation duration** („Doba trvání simulace“) | Nastavte na **běží hodně dlouho**. |
-    | **Device model** („Model zařízení“) | **Název**: Zadejte **chladič**. <br />**Velikost**: Zadejte **3**. |
-    | **Target IoT Hub** („Cílový IoT Hub“) | Nastavte na **použití předem zřízené služby IoT Hub**. |
-
-    [![Parametry pro nastavení](media/v2-update-provision/device-five-params.png)](media/v2-update-provision/device-five-params.png#lightbox)
-
-    Vyberte **spustit simulaci**.
-
-    Na řídicím panelu zařízení simulace, poznamenejte si informace zobrazené pro **aktivních zařízení** a **zpráv za sekundu**.
-
-    [![Simulace řídicí panel služby Azure IoT](media/v2-update-provision/device-seven-dashboard.png)](media/v2-update-provision/device-seven-dashboard.png#lightbox)
-
-## <a name="list-device-simulation-properties"></a>Seznam vlastností simulace zařízení
-
-Před vytvořením prostředí Azure Time Series Insights, budete potřebovat názvy služby IoT hub, vaše předplatné a skupinu prostředků.
-
-1. Přejdete na řídicí panel řešení akcelerátoru. Přihlaste se pomocí stejného účtu předplatného Azure. Najdete simulace zařízení, kterou jste vytvořili v předchozí části.
-
-1. Vyberte vaše simulátor zařízení a pak vyberte **spuštění**. V podokně zařízení simulátoru řešení akcelerátoru na pravé straně vyberte **portálu pro správu Azure** možnost.
-
-    [![Simulátor výpisy](media/v2-update-provision/device-six-listings.png)](media/v2-update-provision/device-six-listings.png#lightbox)
-
-1. Poznamenejte si názvy skupiny IoT hub, předplatné a prostředků.
-
-    [![Azure portal zařízení simulátoru řídicí panel podrobnosti](media/v2-update-provision/device-eight-portal.png)](media/v2-update-provision/device-eight-portal.png#lightbox)
-
 ## <a name="create-a-time-series-insights-preview-payg-environment"></a>Vytvoření prostředí s průběžnými PLATBAMI čas Series Insights ve verzi Preview
 
-Tato část popisuje, jak vytvořit prostředí Azure čas Series Insights ve verzi Preview s využitím [webu Azure portal](https://portal.azure.com/).
+Tato část popisuje, jak vytvořit prostředí Azure čas Series Insights ve verzi Preview a připojte ho ke službě IoT hub, který je vytvořen s využitím akcelerátorů řešení IoT [webu Azure portal](https://portal.azure.com/).
 
 1. Přihlaste se k webu Azure portal pomocí svého účtu předplatného.
 
@@ -109,7 +72,7 @@ Tato část popisuje, jak vytvořit prostředí Azure čas Series Insights ve ve
     | **Název prostředí** | Zadejte jedinečný název pro prostředí Azure čas Series Insights ve verzi Preview. |
     | **Předplatné** | Zadejte předplatné, ve kterém chcete vytvořit prostředí Azure čas Series Insights ve verzi Preview. Osvědčeným postupem je používat stejné předplatné jako v ostatních prostředků IoT, které jsou vytvořené v simulátoru zařízení. |
     | **Skupina prostředků** | Vyberte existující skupinu prostředků nebo vytvořte novou skupinu prostředků pro prostředek prostředí Azure čas Series Insights ve verzi Preview. Skupina prostředků představuje kontejner prostředků Azure. Osvědčeným postupem je použít stejnou skupinu prostředků jako ostatní prostředky IoT, které jsou vytvořené v simulátoru zařízení. |
-    | **Umístění** | Vyberte oblast datového centra pro prostředí Azure čas Series Insights ve verzi Preview. Aby se zabránilo náklady na přidání šířku pásma a čekací doba, je nejlepší vytvořit prostředí Azure čas Series Insights ve verzi Preview ve stejné oblasti jako vašich IoT prostředků. |
+    | **Location** | Vyberte oblast datového centra pro prostředí Azure čas Series Insights ve verzi Preview. Aby se zabránilo další latenci, je nejlepší vytvořit prostředí Azure čas Series Insights ve verzi Preview ve stejné oblasti jako vašich IoT prostředků. |
     | **Tier** |  Vyberte **PAYG** (*s průběžnými platbami*). Toto je SKU produktu Azure čas Series Insights ve verzi Preview. |
     | **ID vlastnosti** | Zadejte hodnotu, která jednoznačně identifikuje instanci času řady. Hodnotu, kterou zadáte v **ID vlastnosti** pole je neměnný. Později ho nelze změnit. Pro účely tohoto kurzu zadejte **iothub připojení zařízení id**. Další informace o ID řady času, naleznete v tématu [osvědčené postupy pro výběr ID řady času](./time-series-insights-update-how-to-id.md). |
     | **Název účtu úložiště** | Zadejte globálně jedinečný název pro nový účet úložiště vytvořit. |
@@ -129,7 +92,7 @@ Tato část popisuje, jak vytvořit prostředí Azure čas Series Insights ve ve
    | **Předplatné** | Vyberte předplatné, které jste použili pro simulátor zařízení. |
    | **Název centra IoT** | Vyberte název centra IoT, které jste vytvořili pro simulátor zařízení. |
    | **Zásady přístupu pro službu IoT Hub** | Vyberte **iothubowner**. |
-   | **Skupina uživatelů centra IOT** | Vyberte **nový**, zadejte jedinečný název a potom vyberte **přidat**. Skupina uživatelů musí být jedinečná hodnota v Azure čas Series Insights ve verzi Preview. |
+   | **IoT Hub consumer group** | Vyberte **nový**, zadejte jedinečný název a potom vyberte **přidat**. Skupina uživatelů musí být jedinečná hodnota v Azure čas Series Insights ve verzi Preview. |
    | **Vlastnost časového razítka** | Tato hodnota se používá k identifikaci **časové razítko** vlastnost v příchozí telemetrická data. Pro účely tohoto kurzu ponechte toto pole prázdné. Simulátor používá příchozí časové razítko ze služby IoT Hub, kde je použit výchozí Time Series Insights. |
 
    Vyberte **Zkontrolovat a vytvořit**.
@@ -159,6 +122,34 @@ Tato část popisuje, jak vytvořit prostředí Azure čas Series Insights ve ve
       [![Uvedené pověření](media/v2-update-provision/payg-ten-verify.png)](media/v2-update-provision/payg-ten-verify.png#lightbox)
 
    Pokud vaše přihlašovací údaje nejsou uvedené, je nutné si udělit oprávnění pro přístup k prostředí. Další informace o nastavení oprávnění najdete v článku [udělení přístupu k datům](./time-series-insights-data-access.md).
+
+## <a name="stream-data-into-your-environment"></a>Datový Stream do vašeho prostředí
+
+1. Přejděte zpět [stránka akcelerátory řešení Azure IoT](https://www.azureiotsolutions.com/Accelerators). Vyhledejte řešení v řídicím panelu řešení akcelerátoru. Vyberte **spuštění**:
+
+    [![Spuštění řešení simulace zařízení](media/v2-update-provision/device-three-launch.png)](media/v2-update-provision/device-three-launch.png#lightbox)
+
+1. Budete přesměrováni na **simulace zařízení IoT Microsoft Azure** stránky. V pravém horním rohu stránky vyberte **nové simulace**.
+
+    [![Stránka simulace Azure IoT](media/v2-update-provision/device-four-iot-sim-page.png)](media/v2-update-provision/device-four-iot-sim-page.png#lightbox)
+
+1. V **nastavení** podokně nastavit následující parametry:
+
+    | Parametr | Akce |
+    | --- | --- |
+    | **Název** | Zadejte jedinečný název pro simulátor. |
+    | **Popis** | Zadejte definici. |
+    | **Simulation duration** („Doba trvání simulace“) | Nastavte na **běží hodně dlouho**. |
+    | **Device model** („Model zařízení“) | **Název**: Zadejte **chladič**. <br />**Velikost**: Zadejte **3**. |
+    | **Target IoT Hub** („Cílový IoT Hub“) | Nastavte na **použití předem zřízené služby IoT Hub**. |
+
+    [![Parametry pro nastavení](media/v2-update-provision/device-five-params.png)](media/v2-update-provision/device-five-params.png#lightbox)
+
+    Vyberte **spustit simulaci**.
+
+    Na řídicím panelu zařízení simulace, poznamenejte si informace zobrazené pro **aktivních zařízení** a **zpráv za sekundu**.
+
+    [![Simulace řídicí panel služby Azure IoT](media/v2-update-provision/device-seven-dashboard.png)](media/v2-update-provision/device-seven-dashboard.png#lightbox)
 
 ## <a name="analyze-data-in-your-environment"></a>Analýza dat ve vašem prostředí
 

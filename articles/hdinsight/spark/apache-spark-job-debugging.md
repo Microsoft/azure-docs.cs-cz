@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: hrasheed
 ms.openlocfilehash: 5e384520c1b8d6cf5e3b182bbddf41a5f4f7f8f6
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64707825"
 ---
 # <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>Ladění Apache Spark úloh spuštěných v Azure HDInsight
@@ -24,7 +24,7 @@ Musíte mít následující:
 
 * Předplatné Azure. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * Cluster Apache Spark ve službě HDInsight. Pokyny najdete v tématu [Vytváření clusterů Apache Spark ve službě Azure HDInsight](apache-spark-jupyter-spark-sql.md).
-* Měli jste spustili spuštění poznámkového bloku,  **[Machine learning: Prediktivní analýza dat kontroly potravin pomocí MLLib](apache-spark-machine-learning-mllib-ipython.md)**. Pokyny, jak spustit tento poznámkový blok postupujte podle odkazu.  
+* Měli jste spustili spuštění poznámkového bloku,  **[Machine learning: Prediktivní analýza dat kontroly potravin pomocí MLLib](apache-spark-machine-learning-mllib-ipython.md)** . Pokyny, jak spustit tento poznámkový blok postupujte podle odkazu.  
 
 ## <a name="track-an-application-in-the-yarn-ui"></a>Sledování aplikace v Uživatelském rozhraní YARN
 1. Spuštění uživatelského rozhraní YARN. Klikněte na tlačítko **Yarn** pod **řídicí panely clusteru**.
@@ -41,7 +41,7 @@ Musíte mít následující:
     Pro takové aplikace, které jsou spouštěny z poznámkových bloků Jupyter, stav je vždy **systémem** dokud neukončíte poznámkového bloku.
 3. Ze zobrazení aplikací můžete procházet hierarchii dále najdete kontejnerů přidružených k aplikaci a protokoly (stdout/stderr). Rozhraní Spark můžete také spustit kliknutím propojení odpovídá **sledování adresy URL**, jak je znázorněno níže. 
    
-    ![Stáhnout protokoly kontejnerů](./media/apache-spark-job-debugging/download-container-logs.png)
+    ![Stáhnout protokoly kontejneru](./media/apache-spark-job-debugging/download-container-logs.png)
 
 ## <a name="track-an-application-in-the-spark-ui"></a>Sledování aplikace v Uživatelském rozhraní Spark
 V uživatelském rozhraní Spark můžete přejít ke Sparkových úloh, které jsou vyvolaných pomocí aplikace, kterou jste dříve spustili.

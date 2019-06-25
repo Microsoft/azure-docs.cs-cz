@@ -14,10 +14,10 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/04/2018
 ms.openlocfilehash: 46232afcaf9504d4cfbd80160e2d7e7ea958d600
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61488107"
 ---
 # <a name="designing-globally-available-services-using-azure-sql-database"></a>Navrhování globálně dostupné služby využívající Azure SQL Database
@@ -153,7 +153,7 @@ Zde jsou některé, ale **kompromisy**:
 
 Strategie zotavení po havárii konkrétní cloud můžete kombinovat nebo rozšířit tyto způsoby návrhu, které nejvíc vyhovují potřebám vaší aplikace.  Jak už bylo zmíněno dříve, strategie, kterou zvolíte je založená na smlouvě SLA chcete nabízet vaše zákazníky a topologie nasazení aplikace. Mohou pomoci rozhodnout, následující tabulka porovnává možnosti na základě plánovaného bodu obnovení (RPO) a odhadovaný čas obnovení (ERT).
 
-| Vzor | Cíl bodu obnovení (RPO) | ERT |
+| Vzor | CÍL BODU OBNOVENÍ | ERT |
 |:--- |:--- |:--- |
 | Aktivní pasivní nasazení pro zotavení po havárii pomocí společně umístěné databáze access |Přístup pro čtení a zápis < 5 s |Čas detekce selhání a hodnotu TTL pro DNS |
 | Aktivní aktivní nasazení pro vyrovnávání zatížení aplikací |Přístup pro čtení a zápis < 5 s |Čas detekce selhání a hodnotu TTL pro DNS |

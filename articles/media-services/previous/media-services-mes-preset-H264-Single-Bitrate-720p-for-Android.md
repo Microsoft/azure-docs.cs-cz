@@ -1,8 +1,8 @@
 ---
 title: Předvolby H264 S jednou přenosovou rychlostí 720p pro Android | Dokumentace Microsoftu
 description: Téma s přehledem **H264 s jednou přenosovou rychlostí 720p pro Android** přednastavení úloh.
-author: WenJason
-manager: digimobile
+author: Juliako
+manager: femila
 editor: ''
 services: media-services
 documentationcenter: ''
@@ -12,14 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 03/19/2019
-ms.date: 04/01/2019
-ms.author: v-jay
+ms.date: 03/19/2019
+ms.author: juliako
 ms.openlocfilehash: da44cf33882d2658b20f117053d486177117a5a7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61131014"
 ---
 # <a name="h264-single-bitrate-720p-for-android"></a>H264 Single Bitrate 720p for Android

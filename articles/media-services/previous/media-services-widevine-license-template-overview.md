@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: d0bb72361e1bff3615f6785ac4c91a10ea773498
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60825527"
 ---
 # <a name="widevine-license-template-overview"></a>Přehled šablon licencování Widevine 
@@ -63,7 +63,7 @@ Azure Media Services můžete použít ke konfiguraci a o licence Google Widevin
 | --- | --- | --- |
 | datová část |Řetězec s kódováním base64 |Požadavek na licenční odeslány klientem. |
 | content_id |Řetězec s kódováním base64 |Použít k odvození klíče ID a obsah identifikátor klíče pro každý content_key_specs.track_type. |
-| zprostředkovatel |string |Použít k vyhledání obsahu klíčů a zásad. Pokud Microsoft doručení klíče slouží k doručování licencí Widevine, tento parametr je ignorován. |
+| Zprostředkovatel |string |Použít k vyhledání obsahu klíčů a zásad. Pokud Microsoft doručení klíče slouží k doručování licencí Widevine, tento parametr je ignorován. |
 | název_zásad |string |Název zásady dříve zaregistrovaný. Volitelné. |
 | allowed_track_types |Výčet |SD_ONLY nebo SD_HD. Ovládací prvky, které obsah klíče jsou součástí licencí. |
 | content_key_specs |Pole JSON struktury, najdete v části "Obsahu specifikace klíče."  |Citlivější ovládací prvek, na které symetrické klíče k vrácení. Další informace najdete v části "Obsahu specifikace klíče." Lze zadat pouze jednu z hodnot allowed_track_types a content_key_specs. |
@@ -86,7 +86,7 @@ Každá hodnota content_key_specs je nutné zadat pro všechny stopy, bez ohledu
 | content_key_specs.key_id |Řetězec s kódováním base64 binární, 16 bajtů |Jedinečný identifikátor pro klíč. |
 
 ## <a name="policy-overrides"></a>Přepsání zásad
-| Název | Hodnota | Popis |
+| Name | Hodnota | Popis |
 | --- | --- | --- |
 | policy_overrides. can_play |Logická hodnota true nebo false |Určuje povolené přehrávání obsahu. Výchozí hodnota je false. |
 | policy_overrides. can_persist |Logická hodnota true nebo false |Označuje, že může uložit trvale licence na stálé úložiště pro použití v offline režimu. Výchozí hodnota je false. |

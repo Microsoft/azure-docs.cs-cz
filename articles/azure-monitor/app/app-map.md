@@ -14,10 +14,10 @@ ms.date: 03/15/2019
 ms.reviewer: sdash
 ms.author: mbullwin
 ms.openlocfilehash: 70d1f54aed5e83801b1d1e249d7a412dd6d9a49a
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65964039"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Mapa aplikace: Třídění distribuovaných aplikací
@@ -58,7 +58,7 @@ Vyberte **vyšetřování chyb** ke spuštění v podokně selhání.
 
 ![Snímek obrazovky selhání prostředí](media/app-map/failures.png)
 
-### <a name="investigate-performance"></a>Prověřit výkon
+### <a name="investigate-performance"></a>Vyšetřování výkonu
 
 Chcete-li vyřešit problémy s výkonem, vyberte **vyšetřování výkonu**.
 

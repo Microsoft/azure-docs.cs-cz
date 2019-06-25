@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 02/21/2019
 ms.author: rgarcia
 ms.openlocfilehash: d2b00697ce4487b6d24889e824511adf7973faa0
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66110696"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67174701"
 ---
 ![Různé platformy](./media/spatial-anchors-azure-concepts/place-anchor.gif)
 

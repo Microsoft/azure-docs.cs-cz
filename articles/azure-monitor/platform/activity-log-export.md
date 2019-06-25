@@ -9,10 +9,10 @@ ms.date: 05/20/2019
 ms.author: bwren
 ms.subservice: logs
 ms.openlocfilehash: acf2526e79519e610614dc5217efbfe5e327b90f
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66248141"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Exportovat protokol aktivit Azure storage nebo Azure Event Hubs
@@ -156,7 +156,7 @@ Pokud profil protokolu již existuje, musíte nejprve odstranit stávající pro
     | --- | --- | --- |
     | name |Ano |Název profilu protokolu. |
     | storage-account-id |Ano |ID prostředku účtu úložiště, ke kterému má být uložen protokolů aktivit. |
-    | umístění |Ano |Místo oddělený seznam oblastí, pro které chcete shromažďovat události protokolu aktivit. Můžete zobrazit seznam všech oblastí pro vaše předplatné pomocí `az account list-locations --query [].name`. |
+    | locations |Ano |Místo oddělený seznam oblastí, pro které chcete shromažďovat události protokolu aktivit. Můžete zobrazit seznam všech oblastí pro vaše předplatné pomocí `az account list-locations --query [].name`. |
     | days |Ano |Počet dní pro události, které by měla být zachována, od 1 do 365. Hodnota nula bude po neomezenou dobu ukládání protokolů (trvale).  Pokud nula, povolené parametr by měl být nastavte na hodnotu true. |
     |enabled | Ano |True nebo False.  Umožňuje povolit nebo zakázat zásady uchovávání informací.  Pokud je hodnota True, musí být parametr dní hodnotu větší než 0.
     | categories |Ano |Místo oddělený seznam kategorie událostí, které se mají shromažďovat. Možné hodnoty jsou Write, Delete a akce. |
@@ -235,8 +235,8 @@ Prvky v tomto JSON jsou popsány v následující tabulce.
 | callerIpAddress |IP adresa uživatele, který provedl operaci, deklarace nebo hlavní název služby deklarace identity na základě dostupnosti. |
 | correlationId |Obvykle GUID ve formátu řetězce. Události, které sdílejí ID korelace patřit do stejné akce uber. |
 | identity |Objekt blob JSON popisující autorizace a deklarace identity. |
-| Autorizace |Objekt BLOB RBAC vlastností události. Obvykle obsahuje vlastnosti "action", "role" a "rozsah". |
-| úroveň |Úroveň události. Jeden z následujících hodnot: _Kritické_, _chyba_, _upozornění_, _informační_, a _Verbose_ |
+| authorization |Objekt BLOB RBAC vlastností události. Obvykle obsahuje vlastnosti "action", "role" a "rozsah". |
+| level |Úroveň události. Jeden z následujících hodnot: _Kritické_, _chyba_, _upozornění_, _informační_, a _Verbose_ |
 | location |Oblast, ve kterém došlo k umístění (nebo globálního). |
 | properties |Sada `<Key, Value>` páry (tj. slovník) popisující podrobnosti o události. |
 

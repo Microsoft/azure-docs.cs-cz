@@ -14,14 +14,14 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 72c88ef10bf1df217ec6e24ac744d0b30386b4a3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60824010"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Přesun dat z databáze DB2 pomocí aktivity kopírování objekt pro vytváření dat Azure
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, který používáte:"]
 > * [Verze 1](data-factory-onprem-db2-connector.md)
 > * [Verze 2 (aktuální verze)](../connector-db2.md)
 
@@ -106,7 +106,7 @@ Pro aktivitu kopírování, pokud je zdroj typu **RelationalSource** (která zah
 
 | Vlastnost | Popis | Povolené hodnoty | Požaduje se |
 | --- | --- | --- | --- |
-| **Dotaz** |Použijte vlastní dotaz číst data. |Řetězec dotazu SQL. Příklad: `"query": "select * from "MySchema"."MyTable""` |Ne (Pokud **tableName** je zadána vlastnost datové sady) |
+| **query** |Použijte vlastní dotaz číst data. |Řetězec dotazu SQL. Příklad: `"query": "select * from "MySchema"."MyTable""` |Ne (Pokud **tableName** je zadána vlastnost datové sady) |
 
 > [!NOTE]
 > Schéma a tabulku názvy jsou malá a velká písmena. V příkazu dotazu, uzavřete názvy vlastností s použitím "" (dvojité uvozovky).
@@ -311,7 +311,7 @@ Aktivitu kopírování, která převádí data z databáze DB2 typu na typ .NET 
 | SmallInt |Int16 |
 | Integer |Int32 |
 | BigInt |Int64 |
-| real |Single |
+| Real |Single |
 | Double |Double |
 | Float |Double |
 | Decimal |Decimal |
@@ -321,14 +321,14 @@ Aktivitu kopírování, která převádí data z databáze DB2 typu na typ .NET 
 | Čas |TimeSpan |
 | Timestamp |DateTime |
 | Xml |Byte[] |
-| char |String |
+| Char |String |
 | VarChar |String |
 | LongVarChar |String |
 | DB2DynArray |String |
 | Binární hodnota |Byte[] |
 | VarBinary |Byte[] |
 | LongVarBinary |Byte[] |
-| Obrázek |String |
+| Graphic |String |
 | VarGraphic |String |
 | LongVarGraphic |String |
 | Clob |String |
@@ -337,7 +337,7 @@ Aktivitu kopírování, která převádí data z databáze DB2 typu na typ .NET 
 | SmallInt |Int16 |
 | Integer |Int32 |
 | BigInt |Int64 |
-| real |Single |
+| Real |Single |
 | Double |Double |
 | Float |Double |
 | Decimal |Decimal |
@@ -347,7 +347,7 @@ Aktivitu kopírování, která převádí data z databáze DB2 typu na typ .NET 
 | Čas |TimeSpan |
 | Timestamp |DateTime |
 | Xml |Byte[] |
-| char |String |
+| Char |String |
 
 ## <a name="map-source-to-sink-columns"></a>Mapování zdroje do jímky sloupce
 Další postup mapování sloupců v datové sadě zdroje do sloupců v datové sadě jímky najdete v tématu [mapování sloupců v datové sadě ve službě Azure Data Factory](data-factory-map-columns.md).

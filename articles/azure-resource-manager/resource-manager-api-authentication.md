@@ -1,23 +1,17 @@
 ---
 title: Ověřování služby Active Directory a Azure Resource Manageru | Dokumentace Microsoftu
 description: Příručka pro vývojáře k ověřování pomocí rozhraní API Azure Resource Manageru a Azure Active Directory pro integraci aplikace s jiných předplatných Azure.
-services: azure-resource-manager,active-directory
-documentationcenter: na
 author: dushyantgill
-ms.assetid: 17b2b40d-bf42-4c7d-9a88-9938409c5088
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: identity
 ms.date: 04/05/2019
 ms.author: dugill
-ms.openlocfilehash: ae405d5dd99a0e2acced924ccccab292b4489cde
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3a8f9f1975530c846008b3b3def4f4d4a22716fd
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61063213"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205452"
 ---
 # <a name="use-resource-manager-authentication-api-to-access-subscriptions"></a>Ověřování pomocí Správce prostředků rozhraní API pro přístup k předplatným
 
@@ -65,7 +59,7 @@ Správa vašich připojených předplatných:
 
 ![Připojit předplatné](./media/resource-manager-api-authentication/sample-ux-7.png)
 
-## <a name="register-application"></a>Zaregistrovat aplikaci
+## <a name="register-application"></a>Registrace aplikace
 Předtím, než se pustíte do psaní kódu, zaregistrujte webovou aplikaci s Azure Active Directory (AD). Registrace aplikace vytvoří centrální identitu pro vaši aplikaci ve službě Azure AD. Obsahuje základní informace o vaší aplikaci, jako je ID klienta OAuth, adresy URL odpovědí a přihlašovací údaje, které vaše aplikace používá k ověřování a přístup k rozhraní API Azure Resource Manageru. Registrace aplikace taky zaznamenává různých delegovaná oprávnění, které vaše aplikace potřebuje při přístupu k Microsoft APIs pro daného uživatele.
 
 Svou aplikaci zaregistrovat, najdete v článku [rychlý start: Registrace aplikace s platformou identity Microsoft](../active-directory/develop/quickstart-register-app.md). Dejte aplikaci název a vyberte **účty v libovolném adresáři organizace** pro typy podporovaných účtů. Adresa URL přesměrování zadejte domény přidružené k Azure Active Directory.
@@ -292,7 +286,7 @@ Tady jsou identifikátory běžně používaných předdefinované role:
 | Přispěvatel účtů úložiště |86e8f5dc-a6e9-4c67-9d15-de283e8eac25 |
 | Přispěvatel webů |de139f84-1756-47ae-9be6-808fbbe84772 |
 | Přispěvatel webových plánů |2cc479cb-7b4d-49a8-b449-8c00fd0f0a4b |
-| Přispěvatel SQL Serveru |6d8ee4ec-f05a-4a1d-8b00-a9b17e38b437 |
+| Přispěvatel SQL serveru |6d8ee4ec-f05a-4a1d-8b00-a9b17e38b437 |
 | Přispěvatel databází SQL |9b7fa17d-e63e-47b0-bb0a-15c516ac86ec |
 
 ### <a name="assign-rbac-role-to-application"></a>Přiřaďte roli RBAC do aplikace

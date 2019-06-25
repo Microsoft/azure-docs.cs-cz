@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: sogup
-ms.openlocfilehash: 9d4d1db808446cb010e6551bdcec514fc550d802
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 5fdf8e6c19711f6ce38d430a9dffab185cad961b
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65966317"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67296174"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Nejčastější dotazy: zálohování virtuálních počítačů Azure
 
@@ -59,7 +59,7 @@ Zadejte oprávnění pro službu Azure Backup pro přístup k trezoru klíčů. 
 ### <a name="i-migrated-vm-disks-to-managed-disks-will-my-backups-continue-to-work"></a>Můžu migrovat disky virtuálních počítačů na managed disks. Budou moje zálohy stále fungovat?
 Ano, zálohy fungují. Není nutné nic překonfigurovat.
 
-### <a name="why-cant-i-see-my-vm-in-the-configure-backup-wizard"></a>Proč nelze zobrazit v Průvodci nakonfigurujte zálohování virtuálního počítače?
+### <a name="why-cant-i-see-my-vm-in-the-configure-backup-wizard"></a>Proč se můj virtuální počítač nezobrazuje v průvodci konfigurací zálohování?
 Průvodce uvádí pouze virtuální počítače ve stejné oblasti jako trezor, a, který už se nezálohují.
 
 ### <a name="my-vm-is-shut-down-will-an-on-demand-or-a-scheduled-backup-work"></a>Můj virtuální počítač je vypnutý. Bude na vyžádání nebo naplánované zálohování práce?
@@ -90,6 +90,9 @@ Azure Backup nejde zálohovat disk WA povolené, ale můžete vyloučit ze zálo
 
 Máme verzi private preview pro zálohování SAP HANA spuštěnou s plánovaný bod obnovení do 15 minut. Je součástí podobným způsobem jako záloha databáze SQL a používá rozhraní backInt pro řešení třetích stran s certifikací SAP Hana. Pokud vás zajímá, pošlete nám e-mail na `AskAzureBackupTeam@microsoft.com` s předmětem **zaregistrovat k privátní verzi preview pro zálohování SAP HANA ve virtuálních počítačích Azure**.
 
+### <a name="what-is-the-maximum-delay-i-can-expect-in-backup-start-time-from-the-scheduled-backup-time-i-have-set-in-my-vm-backup-policy"></a>Jaký je maximální zpoždění očekávané v čas spuštění zálohování od naplánované zálohování, které mají nastavím my zásady zálohování virtuálního počítače?
+Do 2 hodin od plánované doby zálohování se aktivuje plánované zálohování. Pro příklad. Pokud 100 virtuálních počítačů máte čas spuštění zálohování, které jsou naplánovány na 2:00:00, pak ve max. 4:00:00 všechny 100VMs budou mít úlohy zálohování v průběhu. Pokud plánovaného zálohování jsou pozastavené kvůli výpadku a obnovení a opakovat, můžete spustit zálohování mimo toto okno plánované 2 hod.
+
 
 ## <a name="restore"></a>Obnovení
 
@@ -108,7 +111,7 @@ Ano, můžete použít zálohy pořízené před disky se migrovaly z nespravova
 - Ve výchozím nastavení vytvoří úlohu obnovení virtuálního počítače nespravovaného virtuálního počítače.
 - Však můžete obnovit disky a jejich používání při vytváření spravovaných virtuálních počítačů.
 
-### <a name="how-do-i-restore-a-vm-to-a-restore-point-before-the-vm-was-migrated-to-managed-disks"></a>Jak obnovit virtuální počítač s bodem obnovení před migrací virtuálního počítače na managed disks?
+### <a name="how-do-i-restore-a-vm-to-a-restore-point-before-the-vm-was-migrated-to-managed-disks"></a>Jak obnovit virtuální počítač do bodu obnovení před migrací virtuálního počítače na spravované disky?
 Ve výchozím nastavení vytvoří úlohu obnovení virtuálního počítače s nespravovanými disky virtuálního počítače. Vytvoření virtuálního počítače se spravovanými disky:
 1. [Obnovit do nespravované disky](tutorial-restore-disk.md#restore-a-vm-disk).
 2. [Převod obnovených disků na managed disks](tutorial-restore-disk.md#convert-the-restored-disk-to-a-managed-disk).

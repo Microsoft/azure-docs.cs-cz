@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 05/14/2019
 ms.custom: seodec18
 ms.openlocfilehash: 7be6c9eda6d0a70d929efe4c00f661eb67105820
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65606424"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurace prostředí pro vývoj pro Azure Machine Learning
@@ -295,14 +295,14 @@ Vytvoření [Databricks pro cluster](https://docs.microsoft.com/azure/azure-data
 
 Pomocí těchto nastavení:
 
-| Nastavení |Platí pro| Hodnota |
+| Nastavení |Platná pro| Hodnota |
 |----|---|---|
-| Název clusteru |vždy| yourclustername |
-| Modul runtime Databricks |vždy| Any non ML runtime (non ML 4.x, 5.x) |
-| Verze Pythonu |vždy| 3 |
-| Pracovní procesy |vždy| 2 nebo vyšší |
-| Typy virtuálních počítačů uzlů pracovního procesu <br>(určuje maximální počet souběžných iterací) |Automatizované ML<br>Pouze| Optimalizované pro paměť virtuálního počítače upřednostňované |
-| Povolení automatického škálování |Automatizované ML<br>Pouze| Zrušte zaškrtnutí políčka |
+| Název clusteru |Vždy| yourclustername |
+| Modul runtime Databricks |Vždy| Any non ML runtime (non ML 4.x, 5.x) |
+| Verze Pythonu |Vždy| 3 |
+| Pracovní procesy |Vždy| 2 nebo vyšší |
+| Typy virtuálních počítačů uzlů pracovního procesu <br>(určuje maximální počet souběžných iterací) |Automatizované strojové učení<br>Pouze| Optimalizované pro paměť virtuálního počítače upřednostňované |
+| Povolení automatického škálování |Automatizované strojové učení<br>Pouze| Zrušte zaškrtnutí políčka |
 
 Počkejte, než je cluster spuštěn, než budete pokračovat.
 
@@ -311,7 +311,7 @@ Jakmile je cluster spuštěn, [vytvořit knihovnu](https://docs.databricks.com/u
 
 1. Zvolte **pouze jeden** možnost (žádné další instalace sady SDK jsou podporovány)
 
-   |Sada SDK&nbsp;balíčku&nbsp;funkce|Zdroj|PyPi&nbsp;název&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+   |Sada SDK&nbsp;balíčku&nbsp;funkce|source|PyPi&nbsp;název&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
    |----|---|---|
    |Pro Databricks| Nahrát Python Egg nebo PyPI | azureml-sdk[databricks]|
    |Pro Databricks - with-<br> automatizované funkce ML| Nahrát Python Egg nebo PyPI | azureml-sdk[automl_databricks]|
@@ -378,7 +378,7 @@ Chcete-li použít tento soubor z vašeho kódu, použijte `ws=Workspace.from_co
 
 Konfigurační soubor můžete vytvořit třemi způsoby:
 
-* **Postupujte podle kroků v [vytvořit pracovní prostor služby Azure Machine Learning](setup-create-workspace.md#sdk)**: A *config.json* vytvoří soubor v knihovně poznámkových bloků Azure. Soubor obsahuje informace o konfiguraci pro váš pracovní prostor. Stáhněte nebo zkopírujte *config.json* do jiných vývojových prostředích.
+* **Postupujte podle kroků v [vytvořit pracovní prostor služby Azure Machine Learning](setup-create-workspace.md#sdk)** : A *config.json* vytvoří soubor v knihovně poznámkových bloků Azure. Soubor obsahuje informace o konfiguraci pro váš pracovní prostor. Stáhněte nebo zkopírujte *config.json* do jiných vývojových prostředích.
 
 * **Stáhněte si soubor**: V [webu Azure portal](https://ms.portal.azure.com)vyberte **stáhnout config.json** z **přehled** části pracovního prostoru.
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: b-juche
-ms.openlocfilehash: fa2de14ada5d24531dfecc7f2f709a87f39ea6cb
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: bf2262d8a222cec6c5d0d7e53ded7b2994481656
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65826461"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205659"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Pokyny pro plánování sítě Azure NetApp Files
 
@@ -42,7 +42,7 @@ Následující funkce nejsou aktuálně podporovány pro soubory Azure NetApp:
 
 Platí následující omezení sítě do služby soubory Azure NetApp:
 
-* Počet virtuálních počítačů, se můžou připojit svazek (pomocí virtuální sítě nebo mezi partnerskými virtuálními sítěmi) nemůže být delší než 1000.
+* Počet IP adres používaných ve virtuální síti s Azure Files NetApp (včetně partnerských virtuálních sítích) může mít maximálně 1000.
 * V každé Azure Virtual Network (VNet) je možné jenom jednu podsíť delegovat do služby soubory Azure NetApp.
 
 
@@ -95,7 +95,7 @@ Následující diagram znázorňuje prostředí Azure-native:
 
 Základní scénář je vytvořit nebo připojit k Azure NetApp Files svazku z virtuálních počítačů (VM) ve stejné virtuální síti. 2 virtuální sítě ve výše uvedeném diagramu svazku 1 se vytvoří v delegované podsítě a je možné připojit na 1 virtuální počítač ve výchozím nastavení podsítě.
 
-### <a name="vnet-peering"></a>VNET Peering
+### <a name="vnet-peering"></a>Partnerské vztahy virtuálních sítí
 
 Pokud máte další virtuální sítě ve stejné oblasti, které potřebují přístup k prostředkům druhé strany, virtuální sítě můžou být připojené pomocí [VNet peering](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) povolit zabezpečené připojení přes infrastrukturu Azure. 
 
@@ -109,7 +109,7 @@ Ve výše uvedeném diagramu i když 3 virtuálního počítače může připoji
 
 Následující diagram znázorňuje hybridním prostředí: 
 
-![Hybridní síťové prostředí](../media/azure-netapp-files/azure-netapp-files-networ-hybrid-environment.png)
+![Hybridní síťové prostředí](../media/azure-netapp-files/azure-netapp-files-network-hybrid-environment.png)
 
 Aplikace z místních datových center v hybridním scénáři potřebují přístup k prostředkům v Azure.  To platí, zda chcete rozšířit svoje datové centrum do Azure, nebo chcete použít nativní služby Azure nebo zotavení po havárii. Zobrazit [VPN Gateway možnosti plánování](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways?toc=%2fazure%2fvirtual-network%2ftoc.json#planningtable) o tom, jak připojit více prostředkům na pracovišti na prostředky v Azure prostřednictvím sítě site-to-site VPN nebo ExpressRoute.
 
@@ -117,10 +117,10 @@ V hybridní topologii centra s paprsky centrum, virtuální síť v Azure funguj
 
 V závislosti na konfiguraci. Prostředky můžete připojit z místního na prostředky v centru a aby se paprsky mezi.
 
-V topologii uvedená výše a místní sítí se připojila k rozbočovači virtuální síť v Azure a existují 2 paprsku, který virtuálních sítí v partnerském vztahu s virtuální síti centra.  V tomto scénáři jsou možnosti připojení, nepodporuje pro soubory Azure NetApp svazky:
+V topologii uvedená výše a místní sítí se připojila k rozbočovači virtuální síť v Azure a jsou 2 paprsku virtuálních sítí ve stejné oblasti v partnerském vztahu s virtuální síti centra.  V tomto scénáři jsou možnosti připojení, nepodporuje pro soubory Azure NetApp svazky:
 
-* Místní prostředky virtuálních počítačů 1 a 2 virtuálního počítače může připojit k svazku 1 v centru přes síť site-to-site VPN nebo ExpressRoute. 
-* Místní prostředky virtuálních počítačů 1 a 2 virtuálního počítače může připojit k svazku 2 nebo 3 svazku.
+* Místní prostředky virtuálních počítačů 1 a 2 virtuálního počítače může připojit k svazku 1 v centru přes síť VPN site-to-site nebo Expressroute. 
+* Místní prostředky virtuálních počítačů 1 a 2 virtuálního počítače můžete připojit k svazku 2 nebo 3 svazku přes VPN typu site-to-site a místní partnerský vztah virtuální sítě.
 * 3 virtuální počítač v centru virtuální sítě můžete připojit k svazku v paprsku 1 virtuální sítě 2 a 3 svazku v paprsku 2 virtuální sítě.
 * 4 virtuální počítač v paprsku 1 virtuální síť a 5 virtuálních počítačů z paprskem 2 virtuální sítě můžete připojit k svazku 1 ve virtuální síti centra.
 

@@ -9,18 +9,18 @@ ms.date: 04/26/2018
 ms.author: menchi
 ms.custom: include file
 ms.openlocfilehash: e78c9a490d2ad02fb132d62b0ab0b55f15d3d4ed
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66166277"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67175660"
 ---
 ## <a name="create-a-module-identity"></a>Vytvoření identity modulu
 
 V této části vytvoříte konzolovou aplikaci .NET, která v registru identit v centru IoT vytvoří identitu zařízení a identitu modulu. Zařízení nebo modul je možné připojit k centru IoT, pouze pokud má záznam v registru identit. Další informace najdete v tématu [registr identit tématu Příručka vývojáře pro IoT Hub](../articles/iot-hub/iot-hub-devguide-identity-registry.md). Když spustíte tuto konzolovou aplikaci, vygeneruje jedinečné ID a klíč zařízení i modulu. Vaše zařízení a modul použijí tyto hodnoty k vlastní identifikaci při odesílání zpráv typu zařízení-cloud do služby IoT Hub. V ID se rozlišují malá a velká písmena.
 
 
-1. **Vytvoření projektu v sadě Visual Studio** – V sadě Visual Studio přidejte k novému řešení klasický desktopový projekt Visual C# pro systém Windows pomocí šablony projektu **Konzolová aplikace (.NET Framework)**. Ujistěte se, že máte .NET Framework verze 4.6.1 nebo novější. Projekt pojmenujte **CreateIdentities** a řešení pojmenujte **IoTHubGetStarted**.
+1. **Vytvoření projektu v sadě Visual Studio** – V sadě Visual Studio přidejte k novému řešení klasický desktopový projekt Visual C# pro systém Windows pomocí šablony projektu **Konzolová aplikace (.NET Framework)** . Ujistěte se, že máte .NET Framework verze 4.6.1 nebo novější. Projekt pojmenujte **CreateIdentities** a řešení pojmenujte **IoTHubGetStarted**.
 
     ![Vytvoření řešení v sadě Visual Studio](./media/iot-hub-get-started-create-module-identity-csharp/create-identities-csharp1.JPG)
 

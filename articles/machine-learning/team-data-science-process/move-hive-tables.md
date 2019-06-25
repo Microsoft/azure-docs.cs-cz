@@ -12,10 +12,10 @@ ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 404335ce0cd05085c79cbeea29ad95f79008289c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64681954"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Vytváření tabulek Hive a načtení dat z úložiště objektů Blob v Azure
@@ -137,19 +137,19 @@ Tady je dotaz Hive, který vytvoří tabulku Hive.
 
 Tady je popis jednotlivých polí, které potřebujete k modulu plug-in a další konfigurace:
 
-* **\<Název databáze\>**: název databáze, kterou chcete vytvořit. Pokud chcete použít výchozí databázi dotaz *vytvořit databázi...*  lze vynechat.
-* **\<Název tabulky\>**: název tabulky, kterou chcete vytvořit v rámci zadané databázi. Pokud chcete použít výchozí databázi, se v tabulce můžete přímo odkazuje *\<název tabulky\>* bez \<název_databáze\>.
-* **\<Oddělovač polí\>**: oddělovač, který odděluje citaci pole v datovém souboru k odeslání do tabulky Hive.
-* **\<Oddělovač řádků\>**: oddělovač, který odděluje citaci řádků v datovém souboru služby.
-* **\<umístění úložiště\>**: umístění úložiště Azure storage k ukládání dat tabulky Hive. Pokud nezadáte *umístění \<umístění úložiště\>*, databáze a tabulky uložené v *hive/warehouse/* adresáře ve výchozím kontejneru podle cluster Hive Výchozí nastavení. Pokud chcete zadat umístění úložiště, umístění úložiště musí být v rámci výchozího kontejneru pro databáze a tabulky. Toto umístění se musí se označuje jako umístění vzhledem k výchozí kontejner clusteru ve formátu *"wasb: / / / / / < adresář 1 > /"* nebo *"wasb: / / / / / < adresář 1 > / < adresář 2 > /"* atd. Po spuštění dotazu relativní adresáře se vytvoří v rámci výchozího kontejneru.
-* **TBLPROPERTIES("skip.header.line.count"="1")**: Pokud datový soubor obsahuje řádek záhlaví, budete muset přidat tuto vlastnost **na konci** z *vytvořit tabulku* dotazu. V opačném případě řádek záhlaví je načtena jako záznam do tabulky. Pokud datový soubor nemá řádek záhlaví, tato konfigurace může vynechat v dotazu.
+* **\<Název databáze\>** : název databáze, kterou chcete vytvořit. Pokud chcete použít výchozí databázi dotaz *vytvořit databázi...*  lze vynechat.
+* **\<Název tabulky\>** : název tabulky, kterou chcete vytvořit v rámci zadané databázi. Pokud chcete použít výchozí databázi, se v tabulce můžete přímo odkazuje *\<název tabulky\>* bez \<název_databáze\>.
+* **\<Oddělovač polí\>** : oddělovač, který odděluje citaci pole v datovém souboru k odeslání do tabulky Hive.
+* **\<Oddělovač řádků\>** : oddělovač, který odděluje citaci řádků v datovém souboru služby.
+* **\<umístění úložiště\>** : umístění úložiště Azure storage k ukládání dat tabulky Hive. Pokud nezadáte *umístění \<umístění úložiště\>* , databáze a tabulky uložené v *hive/warehouse/* adresáře ve výchozím kontejneru podle cluster Hive Výchozí nastavení. Pokud chcete zadat umístění úložiště, umístění úložiště musí být v rámci výchozího kontejneru pro databáze a tabulky. Toto umístění se musí se označuje jako umístění vzhledem k výchozí kontejner clusteru ve formátu *"wasb: / / / / / < adresář 1 > /"* nebo *"wasb: / / / / / < adresář 1 > / < adresář 2 > /"* atd. Po spuštění dotazu relativní adresáře se vytvoří v rámci výchozího kontejneru.
+* **TBLPROPERTIES("skip.header.line.count"="1")** : Pokud datový soubor obsahuje řádek záhlaví, budete muset přidat tuto vlastnost **na konci** z *vytvořit tabulku* dotazu. V opačném případě řádek záhlaví je načtena jako záznam do tabulky. Pokud datový soubor nemá řádek záhlaví, tato konfigurace může vynechat v dotazu.
 
 ## <a name="load-data"></a>Načtení dat do tabulek Hive
 Tady je dotaz Hive, který načítá data do tabulky Hive.
 
     LOAD DATA INPATH '<path to blob data>' INTO TABLE <database name>.<table name>;
 
-* **\<Cesta k datům objektu blob\>**: Pokud je soubor objektu blob k nahrání do tabulky Hive ve výchozím kontejneru clusteru HDInsight Hadoop *\<cesty k datům objektu blob\>* by měl být ve formátu *"wasb: / /\< v tomto kontejneru adresáři > /\<název souboru objektu blob > "*. Soubor objektu blob může být také v dalších kontejneru clusteru HDInsight Hadoop. V takovém případě *\<cesty k datům objektu blob\>* by měl být ve formátu *"wasb: / /\<název kontejneru >\<název účtu úložiště >.blob.core.windows.net/\<název souboru objektu blob > "*.
+* **\<Cesta k datům objektu blob\>** : Pokud je soubor objektu blob k nahrání do tabulky Hive ve výchozím kontejneru clusteru HDInsight Hadoop *\<cesty k datům objektu blob\>* by měl být ve formátu *"wasb: / /\< v tomto kontejneru adresáři > /\<název souboru objektu blob > "* . Soubor objektu blob může být také v dalších kontejneru clusteru HDInsight Hadoop. V takovém případě *\<cesty k datům objektu blob\>* by měl být ve formátu *"wasb: / /\<název kontejneru >\<název účtu úložiště >.blob.core.windows.net/\<název souboru objektu blob > "* .
 
   > [!NOTE]
   > Data objektů blob k nahrání do tabulky Hive musí být ve výchozím nastavení nebo další kontejneru účtu úložiště pro Hadoop cluster. V opačném případě *NAČÍST DATA* stěžovali, nelze přístup k datům se dotaz nezdaří.
@@ -225,7 +225,7 @@ Vyberte data z externí tabulky v kroku 1 a vložit do tabulky ORC
            FROM <database name>.<external textfile table name>
            WHERE <partition variable>=<partition value>;
 
-Můžete bezpečně vyřadit *\<název tabulky externí textový soubor\>* při pomocí následujícího dotazu po všechna data byla vložena do  *\<název_databáze\>.\< Název tabulky ORC\>*:
+Můžete bezpečně vyřadit *\<název tabulky externí textový soubor\>* při pomocí následujícího dotazu po všechna data byla vložena do  *\<název_databáze\>.\< Název tabulky ORC\>* :
 
         DROP TABLE IF EXISTS <database name>.<external textfile table name>;
 

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: mikeray
 ms.openlocfilehash: c6666f4417cde9e0f77cc965ded1d6bdb5dced34
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66165825"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67174965"
 ---
 ## <a name="start-your-powershell-session"></a>Spuštění relace prostředí PowerShell
  

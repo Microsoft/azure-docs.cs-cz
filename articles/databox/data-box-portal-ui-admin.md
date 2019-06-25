@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: overview
 ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: c998e01cdb9031771acd3d9605da3e77d5ae3201
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: a7681ba815533296deae2b585e377a733074b6c9
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65953372"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147920"
 ---
 # <a name="use-azure-portal-to-administer-your-data-box-disk"></a>Pomocí webu Azure portal ke správě vašeho disku Data Box
 
@@ -76,7 +76,7 @@ Odstranit se dají jenom dokončené nebo zrušené objednávky. Pokud chcete od
      ![Odstranění objednávky Data Box Disku 2](media/data-box-portal-ui-admin/delete-order2.png)
 
 
-## <a name="download-shipping-label"></a>Stáhnout expediční štítek
+## <a name="download-shipping-label"></a>Stažení expedičního štítku
 
 Pokud se zpětný expediční štítek zaslaný s vašimi disky někam zatoulá nebo ztratí, můžete si expediční štítek stáhnout. 
 
@@ -103,7 +103,7 @@ Pokud chcete upravit objednávku, proveďte následující kroky.
 
     ![Úprava dodací adresy 2](media/data-box-portal-ui-admin/edit-shipping-address2.png)
 
-## <a name="edit-notification-details"></a>Upravit podrobnosti o oznámení
+## <a name="edit-notification-details"></a>Úprava podrobností o oznámení
 
 Může být potřeba změnit uživatele, kteří mají dostávat e-maily se stavem objednávky. Některý uživatel například může potřebovat informaci o doručení nebo vyzvednutí disku. Jiný uživatel možná muset být informováni, když se kopírování dat dokončí, abyste mohli ověřit, že data jsou v účtu úložiště Azure před odstraněním ze zdroje. V takových případech můžete upravit podrobnosti o oznámení.
 
@@ -129,7 +129,7 @@ Pokud chcete upravit podrobnosti o oznámení, proveďte následující kroky.
 |Přijato     | Vaše disky dorazily do datového centra Azure. Brzy začne kopírování dat.        |
 |Data se zkopírovala     |Probíhá kopírování dat.<br> Počkejte, dokud se kopírování dat nedokončí.         |
 |Dokončeno       |Objednávka se úspěšně dokončila.<br> Než odstraníte data z místních serverů, zkontrolujte, jestli se data objevila v Azure.         |
-|Dokončeno s chybami| Kopírování dat se dokončilo, ale došlo k chybám. <br> Zkontrolujte protokoly kopírování pomocí cesty uvedené v části **Přehled**. Další informace najdete v článku [Stažení diagnostických protokolů](data-box-disk-troubleshoot.md#download-diagnostic-logs).   |
+|Dokončeno s chybami| Kopírování dat se dokončilo, ale došlo k chybám. <br> Zkontrolujte protokoly chyb pro nahrávání pomocí cesty k jeho součástí **přehled**. Další informace najdete v části [protokoly chyb nahrávání stažení](data-box-disk-troubleshoot-upload.md#download-logs).   |
 |Zrušeno            |Došlo ke zrušení objednávky. <br> Buď jste objednávku zrušili, nebo došlo k chybě a objednávku zrušila služba.     |
 
 

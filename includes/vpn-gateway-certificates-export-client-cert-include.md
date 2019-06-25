@@ -9,11 +9,11 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: b657d54c3ebbe5afc20fc98c1348bb783410df60
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66150330"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67174881"
 ---
 Pokud generujete klientský certifikát, je automaticky nainstalován v počítači, který jste použili k jeho vygenerování. Pokud chcete nainstalovat klientský certifikát na jiný klientský počítač, musíte exportovat klientský certifikát, který jste vygenerovali.
 
@@ -31,10 +31,10 @@ Pokud generujete klientský certifikát, je automaticky nainstalován v počíta
    ![Formát souboru pro export](./media/vpn-gateway-certificates-export-client-cert-include/includeallcerts.png)
 5. Na stránce **Zabezpečení** je nutné chránit soukromý klíč. Pokud vyberete použití hesla, ujistěte se, že jste si poznamenali nebo si pamatujete heslo, které jste pro tento certifikát nastavili. Pak klikněte na **Další**.
 
-   ![zabezpečení](./media/vpn-gateway-certificates-export-client-cert-include/security.png)
+   ![security](./media/vpn-gateway-certificates-export-client-cert-include/security.png)
 6. V části **Soubor pro export** **přejděte** do umístění, do kterého chcete certifikát vyexportovat. V části **Název souboru** zadejte název souboru. Pak klikněte na **Další**.
 
    ![soubor pro export](./media/vpn-gateway-certificates-export-client-cert-include/filetoexport.png)
 7. Certifikát vyexportujte kliknutím na **Dokončit**.
 
-   ![dokončit](./media/vpn-gateway-certificates-export-client-cert-include/finish.png)
+   ![Dokončit](./media/vpn-gateway-certificates-export-client-cert-include/finish.png)

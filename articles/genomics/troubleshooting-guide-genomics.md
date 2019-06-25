@@ -12,10 +12,10 @@ ms.workload: genomics
 ms.topic: article
 ms.date: 10/29/2018
 ms.openlocfilehash: 78084e6beac7b390b1ea1afe888030c5224856b6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60790500"
 ---
 # <a name="troubleshooting-guide"></a>Průvodce odstraňováním potíží
@@ -116,7 +116,7 @@ Tyto chyby jsou užitečné uživatele. Podle typu souboru a kód chyby, služby
 
 | Typ souboru | Kód chyby | Chybová zpráva                                                                           | Doporučený postup při řešení potíží                                                                                         |
 |--------------|------------|-----------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------|
-| Všechny          | 701        | Čtení [readId] má základních tříd [numberOfBases], ale limit je [maxReadLength]           | Nejčastější příčinou této chyby je poškození souboru, což vede ke zřetězení dvou čtení. Zkontrolujte vstupní soubory. |
+| Jakýkoli          | 701        | Čtení [readId] má základních tříd [numberOfBases], ale limit je [maxReadLength]           | Nejčastější příčinou této chyby je poškození souboru, což vede ke zřetězení dvou čtení. Zkontrolujte vstupní soubory. |
 | BAM          | 200        |   Nelze načíst soubor "[yourFileName]".                                                                                       | Zkontrolujte formát souboru BAM. Znovu odešlete pracovní postup s správně formátovaného souboru.                                                                           |
 | BAM          | 201        |  Nelze načíst soubor BAM [název_souboru].                                                                                      |Zkontrolujte formát souboru BAM.  Odešlete pracovní postup s správně formátovaného souboru.                                                                            |
 | BAM          | 202        | Nelze načíst soubor BAM [název_souboru]. Příliš malé a chybějící záhlaví souboru.                                                                                        | Zkontrolujte formát souboru BAM.  Odešlete pracovní postup s správně formátovaného souboru.                                                                            |

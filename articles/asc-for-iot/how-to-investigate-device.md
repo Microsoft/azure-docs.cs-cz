@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/18/2019
 ms.author: mlottner
 ms.openlocfilehash: 15e65c155a98ae12c156587735d34a16ed2c9109
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65192657"
 ---
 # <a name="investigate-a-suspicious-iot-device"></a>Prozkoumat podezřelé zařízení IoT
@@ -92,7 +92,7 @@ Tato data použijte k zjištění:
   1. Kteří uživatelé mají přístup k zařízení?
   2. Mají uživatelé s přístupem úrovně oprávnění podle očekávání? 
 
-### <a name="open-ports"></a>Otevřít porty
+### <a name="open-ports"></a>Otevření portů
 
 Chcete-li zjistit, které porty v zařízení jsou právě používány, nebo byly použity, použijte následující dotaz kql: 
 

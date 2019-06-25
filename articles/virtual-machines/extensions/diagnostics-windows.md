@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: saurabh
-ms.openlocfilehash: 520211f3499931281d3ac86a1da1144564a8bb48
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: bd2bcc9284c24f9fa6a02556d7101c1b788ee71e
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55980750"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67155000"
 ---
 # <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>Použití PowerShellu k povolení Diagnostiky Azure na virtuálním počítači s Windows
 
 Diagnostika Azure je funkce v Azure, která umožňuje shromažďování diagnostických dat v nasazené aplikaci. Diagnostické rozšíření můžete použít ke shromažďování diagnostických dat, jako jsou protokoly aplikací a čítače výkonu z virtuálního počítače Azure (VM), na kterém běží Windows. 
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="enable-the-diagnostics-extension-if-you-use-the-resource-manager-deployment-model"></a>Povolení diagnostického rozšíření, pokud používáte model nasazení Resource Manager
 Při vytváření virtuálního počítače s Windows prostřednictvím modelu nasazení Azure Resource Manageru tak, že přidáte konfigurace rozšíření šablony Resource Manageru, můžete povolit rozšíření diagnostiky. Zobrazit [vytvořit virtuální počítač Windows s monitorováním a diagnostikou pomocí šablony Azure Resource Manageru](diagnostics-template.md).
@@ -65,16 +65,16 @@ Vrátí rutina *PublicSettings*, který obsahuje konfiguraci diagnostiky. Existu
 ## <a name="enable-the-diagnostics-extension-if-you-use-the-classic-deployment-model"></a>Povolení diagnostického rozšíření, pokud používáte model nasazení classic
 Můžete použít [Set-AzureVMDiagnosticsExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurevmdiagnosticsextension) rutina pro povolení diagnostického rozšíření na virtuální počítač, který lze vytvořit pomocí modelu nasazení classic. Následující příklad ukazuje, jak vytvořit nový virtuální počítač prostřednictvím modelu nasazení classic s diagnostickým rozšířením povolena.
 
-    $VM = New-AzureVMConfig -Name $VM -InstanceSize Small -ImageName $VMImage
+    $VM = New-AzVMConfig -Name $VM -InstanceSize Small -ImageName $VMImage
     $VM = Add-AzureProvisioningConfig -VM $VM -AdminUsername $Username -Password $Password -Windows
-    $VM = Set-AzureVMDiagnosticsExtension -DiagnosticsConfigurationPath $Config_Path -VM $VM -StorageContext $Storage_Context
-    New-AzureVM -Location $Location -ServiceName $Service_Name -VM $VM
+    $VM = Set-AzVMDiagnosticsExtension -DiagnosticsConfigurationPath $Config_Path -VM $VM -StorageContext $Storage_Context
+    New-AzVM -Location $Location -ServiceName $Service_Name -VM $VM
 
 Pokud chcete povolit rozšíření diagnostiky na existující virtuální počítač, který byl vytvořen prostřednictvím modelu nasazení classic, nejprve pomocí [Get-AzureVM](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azurevm) rutiny pro získání konfigurace virtuálního počítače. Aktualizujte konfiguraci virtuálního počítače pro zahrnutí rozšíření diagnostiky pomocí [Set-AzureVMDiagnosticsExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurevmdiagnosticsextension) rutiny. Nakonec platí aktualizovanou konfiguraci pro virtuální počítač s použitím [Update-AzureVM](https://docs.microsoft.com/powershell/module/servicemanagement/azure/update-azurevm).
 
-    $VM = Get-AzureVM -ServiceName $Service_Name -Name $VM_Name
-    $VM_Update = Set-AzureVMDiagnosticsExtension -DiagnosticsConfigurationPath $Config_Path -VM $VM -StorageContext $Storage_Context
-    Update-AzureVM -ServiceName $Service_Name -Name $VM_Name -VM $VM_Update.VM
+    $VM = Get-AzVM -ServiceName $Service_Name -Name $VM_Name
+    $VM_Update = Set-AzVMDiagnosticsExtension -DiagnosticsConfigurationPath $Config_Path -VM $VM -StorageContext $Storage_Context
+    Update-AzVM -ServiceName $Service_Name -Name $VM_Name -VM $VM_Update.VM
 
 ## <a name="sample-diagnostics-configuration"></a>Ukázková konfigurace diagnostiky
 Následující kód XML lze použít pro veřejné konfiguraci diagnostiky pomocí výše uvedených skriptů. Tahle vzorová konfigurace přenášet různé čítače výkonu pro účet úložiště diagnostiky, spolu s chyby z aplikace, zabezpečení a systém kanálů v protokolu událostí Windows a případné chyby protokoly infrastruktury diagnostiky.

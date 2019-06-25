@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f3bfe067b7a927f800f88958ee2ffca09711c10
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: c012ebfb00b57079e43b74b4f6570744db980860
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65812816"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67113160"
 ---
 # <a name="conditional-access-for-b2b-collaboration-users"></a>Podmíněný přístup pro uživatele spolupráce B2B
 
@@ -46,7 +46,7 @@ Podívejte se na následující animace zobrazíte uplatnění prostředí:
 ### <a name="mfa-reset-for-b2b-collaboration-users"></a>MFA pro uživatele spolupráce B2B resetování
 V současné době správce můžete vyžadovat uživatele spolupráce B2B až po korektury si znovu pouze pomocí následujících rutin Powershellu:
 
-1. Připojení ke službě Azure AD
+1. Připojení k Azure AD
 
    ```
    $cred = Get-Credential
@@ -75,7 +75,7 @@ V aktuální verzi vícefaktorové ověřování je vždy v prostředku tenantů
 
 Pokud Contoso má povolenou zásadu vícefaktorového ověřování pro počítač App1, ale ne počítači App2, pak když se podíváte na Contoso vícefaktorové ověřování deklarací identity v tokenu, nám může se zobrazit následující problém:
 
-* 1. den: Uživatel má MFA ve společnosti Contoso a přistupuje k serveru App1 a pak žádné další MFA řádku je zobrazena ve společnosti Fabrikam.
+* 1\. den: Uživatel má MFA ve společnosti Contoso a přistupuje k serveru App1 a pak žádné další MFA řádku je zobrazena ve společnosti Fabrikam.
 
 * Dne 2: Uživatel použil 2 aplikace ve společnosti Contoso, takže teď při přístupu ke společnosti Fabrikam, musí registrovat pro MFA existuje.
 
@@ -89,7 +89,7 @@ Doporučení pro vícefaktorové ověřování pro uživatele B2B je proto vždy
 
 ### <a name="device-based-location-based-and-risk-based-conditional-access-for-b2b-users"></a>Na základě zařízení, na základě umístění a na základě rizik podmíněného přístupu pro uživatele B2B
 
-Pokud Contoso povolí zásady podmíněného přístupu podle zařízení pro firemní data, je zabráněno přístup ze zařízení, která nejsou spravovaná společností Contoso a není kompatibilní se zásadami společnosti Contoso zařízení.
+Pokud Contoso povolí zásady podmíněného přístupu na základě zařízení pro firemní data, je zabráněno přístup ze zařízení, která nejsou spravovaná společností Contoso a není kompatibilní se zásadami společnosti Contoso zařízení.
 
 Pokud uživatel B2B zařízení nespravuje ve společnosti Contoso, zablokuje se přístup uživatelů B2B z partnerských organizací v jakémkoli kontextu tyto zásady vynucují. Contoso však můžete vytvořit seznamy vyloučení obsahující konkrétní partnerskou uživatele chcete vyloučit ze zásad podmíněného přístupu na základě zařízení.
 

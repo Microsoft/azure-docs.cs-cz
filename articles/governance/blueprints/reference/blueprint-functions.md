@@ -8,10 +8,10 @@ ms.topic: reference
 ms.service: blueprints
 manager: carmonm
 ms.openlocfilehash: dc72113a8f5ed978d64d35c43e94dc9e19e4cdb1
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65209406"
 ---
 # <a name="functions-for-use-with-azure-blueprints"></a>Funkce pro použití se službou Azure podrobné plány
@@ -107,7 +107,7 @@ Artefaktem šablony Resource Manageru s ID _myTemplateArtifact_ vlastnost obsahu
 
 Některé příklady načítání dat z _myTemplateArtifact_ ukázky jsou:
 
-| Výraz | Type | Value |
+| Výraz | Type | Hodnota |
 |:---|:---|:---|
 |`[artifacts("myTemplateArtifact").outputs.myArray]` | Pole | \["first", "second"\] |
 |`[artifacts("myTemplateArtifact").outputs.myArray[0]]` | String | "first" |
@@ -126,7 +126,7 @@ Kombinuje více řetězcových hodnot a vrací spojený řetězec.
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| řetězec1 |Ano |string |První hodnota pro zřetězení. |
+| string1 |Ano |string |První hodnota pro zřetězení. |
 | Další argumenty |Ne |string |Další hodnoty v postupném pořadí pro zřetězení |
 
 ### <a name="return-value"></a>Návratová hodnota
@@ -151,7 +151,7 @@ Vrátí hodnotu parametru podrobného plánu. Zadaný název parametru musí bý
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| Název parametru |Ano |string |Název parametru se vraťte. |
+| parameterName |Ano |string |Název parametru se vraťte. |
 
 ### <a name="return-value"></a>Návratová hodnota
 

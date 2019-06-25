@@ -1,25 +1,17 @@
 ---
 title: Šablona Azure Resource Manageru funkce – pole a objekty | Dokumentace Microsoftu
 description: Popisuje funkce pro použití v šabloně Azure Resource Manageru pro práci s poli a objekty.
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
-ms.assetid: ''
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/8/2018
 ms.author: tomfitz
-ms.openlocfilehash: c80625fb36709f66319b4966e210785864f30d09
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e093cb65137576a725a7d23676e5b2288bb778a0
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66128707"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206378"
 ---
 # <a name="array-and-object-functions-for-azure-resource-manager-templates"></a>Pole a objektu funkce pro šablony Azure Resource Manageru
 
@@ -49,7 +41,7 @@ K získání řetězcové hodnoty oddělené hodnotu pole, naleznete v tématu [
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="array"></a>pole
+## <a name="array"></a>array
 `array(convertToArray)`
 
 Převede hodnotu na pole.
@@ -58,7 +50,7 @@ Převede hodnotu na pole.
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| convertToArray |Ano |int, string, pole nebo objekt |Hodnota k převedení na pole. |
+| convertToArray |Ano |int, string, array nebo object |Hodnota k převedení na pole. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -136,8 +128,8 @@ Vrátí první hodnotu než null z parametrů. Prázdné řetězce, pole prázdn
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |int, string, pole nebo objekt |První hodnota pro test pro hodnotu null. |
-| Další argumenty |Ne |int, string, pole nebo objekt |Další hodnoty pro testování hodnotu null. |
+| arg1 |Ano |int, string, array nebo object |První hodnota pro test pro hodnotu null. |
+| Další argumenty |Ne |int, string, array nebo object |Další hodnoty pro testování hodnotu null. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -329,7 +321,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="contains" />
 
-## <a name="contains"></a>obsahuje
+## <a name="contains"></a>Obsahuje
 `contains(container, itemToFind)`
 
 Kontroluje, zda pole obsahuje hodnotu, objekt obsahuje klíč nebo řetězec obsahuje daný podřetězec. Porovnání řetězců rozlišuje velká a malá písmena. Při testování, pokud objekt obsahuje klíč, porovnání ale velká a malá písmena.
@@ -403,11 +395,11 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | stringTrue | Bool | True |
-| stringFalse | Bool | False (Nepravda) |
+| stringFalse | Bool | False |
 | objectTrue | Bool | True |
-| objectFalse | Bool | False (Nepravda) |
+| objectFalse | Bool | False |
 | arrayTrue | Bool | True |
-| arrayFalse | Bool | False (Nepravda) |
+| arrayFalse | Bool | False |
 
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
 
@@ -630,7 +622,7 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| arrayOutput | String | jedna |
+| arrayOutput | String | jeden |
 | stringOutput | String | O |
 
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
@@ -864,7 +856,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="length" />
 
-## <a name="length"></a>Délka
+## <a name="length"></a>length
 `length(arg1)`
 
 Vrátí počet prvků v poli nebo znaků v řetězci.
@@ -1011,7 +1003,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="min" />
 
-## <a name="min"></a>min.
+## <a name="min"></a>min
 `min(arg1)`
 
 Vrátí minimální hodnotu z pole celých čísel nebo čárkami oddělený seznam celých čísel.
@@ -1139,7 +1131,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="skip" />
 
-## <a name="skip"></a>přeskočit
+## <a name="skip"></a>Přeskočit
 `skip(originalValue, numberToSkip)`
 
 Vrátí pole obsahující všechny prvky po číslo zadané v poli, nebo vrátí řetězec, všechny znaky za číslo zadané v řetězci.

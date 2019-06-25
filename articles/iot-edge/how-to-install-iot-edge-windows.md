@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: 8907ae61fb03b417a74eb32e1fd09aece75d5e2c
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: f67f24cab907c3fe9998704e0a0a85d5b29f60a7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66151725"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66808858"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>Nainstalovat modul runtime Azure IoT Edge ve Windows
 
@@ -86,7 +86,7 @@ Tento příklad ukazuje ruční instalace s kontejnery Windows:
 3. **Nasadit IoTEdge** příkaz kontroluje, zda váš počítač Windows na podporovanou verzi, se změní na funkci kontejnery a potom stáhne moby runtime a modul runtime IoT Edge. Příkaz ve výchozím nastavení používá kontejnery Windows. 
 
    ```powershell
-   . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
+   . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
    Deploy-IoTEdge
    ```
 
@@ -95,7 +95,7 @@ Tento příklad ukazuje ruční instalace s kontejnery Windows:
 5. **Inicializace IoTEdge** příkaz nakonfiguruje modul runtime IoT Edge na svém počítači. Příkaz výchozí hodnota je ruční zřizování s kontejnery Windows. 
 
    ```powershell
-   . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
+   . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
    Initialize-IoTEdge
    ```
 
@@ -135,7 +135,7 @@ Následující příklad ukazuje automatické instalace s kontejnery Windows:
 3. **Nasadit IoTEdge** příkaz kontroluje, zda váš počítač Windows na podporovanou verzi, se změní na funkci kontejnery a potom stáhne moby runtime a modul runtime IoT Edge. Příkaz ve výchozím nastavení používá kontejnery Windows. 
 
    ```powershell
-   . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
+   . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
    Deploy-IoTEdge
    ```
 
@@ -144,7 +144,7 @@ Následující příklad ukazuje automatické instalace s kontejnery Windows:
 6. **Inicializace IoTEdge** příkaz nakonfiguruje modul runtime IoT Edge na svém počítači. Příkaz výchozí hodnota je ruční zřizování s kontejnery Windows. Použít `-Dps` příznak pro použití služby Device Provisioning místo ručního zřizování.
 
    ```powershell
-   . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
+   . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
    Initialize-IoTEdge -Dps
    ```
 
@@ -169,10 +169,10 @@ Můžete stáhnout jeden nebo oba z těchto souborů předem do zařízení a pa
 
 Nejnovější instalační soubory IoT Edge spolu s předchozími verzemi, naleznete v tématu [Azure IoT Edge uvolní](https://github.com/Azure/azure-iotedge/releases).
 
-K instalaci součástí offline, použijte `-OfflineInstallationPath` parametr jako součást nasazení – IoTEdge příkaz a zadejte absolutní cestu k adresáři souboru. Například
+K instalaci součástí offline, použijte `-OfflineInstallationPath` parametr jako součást nasazení – IoTEdge příkaz a zadejte absolutní cestu k adresáři souboru. Například:
 
 ```powershell
-. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
+. {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
 Deploy-IoTEdge -OfflineInstallationPath C:\Downloads\iotedgeoffline
 ```
 
@@ -189,7 +189,7 @@ Get-Service iotedge
 Zkontrolujte protokoly služby z posledních 5 minut. Pokud právě jste dokončili, instalace modulu runtime IoT Edge, může se zobrazit seznam chyb od času mezi spuštění **nasadit IoTEdge** a **inicializace IoTEdge**. Tyto chyby jsou očekávané chování, protože služba se pokouší spustit před konfigurován. 
 
 ```powershell
-. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
+. {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
 ```
 
 Seznam s moduly. Po dokončení nové instalace pouze modulu byste měli vidět spuštění **edgeAgent**. Poté co [nasadit moduly IoT Edge](how-to-deploy-modules-portal.md), zobrazí se ostatním. 
@@ -233,7 +233,7 @@ Další informace najdete v tématu [aktualizovat démon zabezpečení IoT Edge 
 Tento příklad ukazuje instalaci, která odkazuje na existující konfigurační soubor a nepoužívá kontejnery Windows: 
 
 ```powershell
-. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
+. {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
 Update-IoTEdge
 ```
 
@@ -272,7 +272,7 @@ Příkaz nasadit IoTEdge stáhne a nasadí démon zabezpečení IoT Edge a jeho 
 | **Proxy** | Adresa URL proxy serveru | Zahrňte tento parametr, pokud vaše zařízení je potřeba přejít přes proxy server pro přístup k Internetu. Další informace najdete v tématu [nakonfigurovat nastavení zařízení IoT Edge pro komunikaci přes proxy server](how-to-configure-proxy-support.md). |
 | **OfflineInstallationPath** | Cesta k adresáři | Pokud tento parametr je součástí, instalační program zkontroluje uvedené adresář pro soubor cab IoT Edge a MSI modulu Runtime VC soubory potřebné k instalaci. Všechny soubory v adresáři nenašel se stáhnou. Pokud jsou oba soubory v adresáři, můžete nainstalovat IoT Edge bez připojení k Internetu. Tento parametr můžete také použít konkrétní verzi. |
 | **InvokeWebRequestParameters** | Zatřiďovací tabulka parametrů a hodnot | Při instalaci několika webových požadavků probíhají. Použijte toto pole můžete nastavit parametry pro tyto webové žádosti. Tento parametr je vhodné nakonfigurovat přihlašovací údaje pro proxy servery. Další informace najdete v tématu [nakonfigurovat nastavení zařízení IoT Edge pro komunikaci přes proxy server](how-to-configure-proxy-support.md). |
-| **RestartIfNeeded** | žádný | Tento příznak umožňuje restartovat počítač bez výzvy, skript nasazení v případě potřeby. |
+| **RestartIfNeeded** | None | Tento příznak umožňuje restartovat počítač bez výzvy, skript nasazení v případě potřeby. |
 
 ### <a name="initialize-iotedge"></a>Initialize-IoTEdge
 
@@ -299,15 +299,15 @@ Inicializace IoTEdge příkaz nakonfiguruje IoT Edge se připojovací řetězec 
 | **Proxy** | Adresa URL proxy serveru | Zahrňte tento parametr, pokud vaše zařízení je potřeba přejít přes proxy server pro přístup k Internetu. Další informace najdete v tématu [nakonfigurovat nastavení zařízení IoT Edge pro komunikaci přes proxy server](how-to-configure-proxy-support.md). |
 | **InvokeWebRequestParameters** | Zatřiďovací tabulka parametrů a hodnot | Při instalaci několika webových požadavků probíhají. Použijte toto pole můžete nastavit parametry pro tyto webové žádosti. Tento parametr je vhodné nakonfigurovat přihlašovací údaje pro proxy servery. Další informace najdete v tématu [nakonfigurovat nastavení zařízení IoT Edge pro komunikaci přes proxy server](how-to-configure-proxy-support.md). |
 | **OfflineInstallationPath** | Cesta k adresáři | Pokud tento parametr je součástí, instalační program zkontroluje uvedené adresář pro soubor cab IoT Edge a MSI modulu Runtime VC soubory potřebné k instalaci. Všechny soubory v adresáři nenašel se stáhnou. Pokud jsou oba soubory v adresáři, můžete nainstalovat IoT Edge bez připojení k Internetu. Tento parametr můžete také použít konkrétní verzi. |
-| **RestartIfNeeded** | žádný | Tento příznak umožňuje restartovat počítač bez výzvy, skript nasazení v případě potřeby. |
+| **RestartIfNeeded** | None | Tento příznak umožňuje restartovat počítač bez výzvy, skript nasazení v případě potřeby. |
 
 
 ### <a name="uninstall-iotedge"></a>Uninstall-IoTEdge
 
 | Parametr | Přípustné hodnoty | Komentáře |
 | --------- | --------------- | -------- |
-| **Platnost** | žádný | Tento příznak vynutí odinstalování v případě, že předchozí pokus o odinstalaci nebylo úspěšné. 
-| **RestartIfNeeded** | žádný | Tento příznak umožňuje odinstalačního skriptu, který chcete restartovat počítač bez výzvy, v případě potřeby. |
+| **Platnost** | None | Tento příznak vynutí odinstalování v případě, že předchozí pokus o odinstalaci nebylo úspěšné. 
+| **RestartIfNeeded** | None | Tento příznak umožňuje odinstalačního skriptu, který chcete restartovat počítač bez výzvy, v případě potřeby. |
 
 
 ## <a name="next-steps"></a>Další postup

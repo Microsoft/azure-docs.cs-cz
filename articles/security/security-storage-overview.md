@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/28/2019
 ms.author: terrylan
 ms.openlocfilehash: 74c24e05d974c4b3bb15a242185b645231f74580
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65792782"
 ---
 # <a name="azure-storage-security-overview"></a>Přehled zabezpečení služby Azure Storage
@@ -34,7 +34,7 @@ Tento článek obsahuje přehled funkcí zabezpečení služby Azure, které mů
 
 Podrobnější přehled zabezpečení ve službě Azure Storage, najdete v článku [Průvodci zabezpečením Azure Storage](../storage/common/storage-security-guide.md). Tato příručka obsahuje podrobné informace o funkcích zabezpečení služby Azure Storage. Tyto funkce patří klíče účtu úložiště, šifrování dat během přenosu a neaktivních uložených dat a analýza úložiště.
 
-## <a name="role-based-access-control"></a>Řízení přístupu na základě role
+## <a name="role-based-access-control"></a>Řízení přístupu na základě rolí
 
 Můžete pomoct zabezpečit svůj účet úložiště pomocí řízení přístupu na základě rolí. Omezení přístupu na základě [znát](https://en.wikipedia.org/wiki/Need_to_know) a [nejnižší možná oprávnění](https://en.wikipedia.org/wiki/Principle_of_least_privilege) principů zabezpečení je nutné pro organizace, které chcete vynutit zásady zabezpečení pro přístup k datům. Tato přístupová práva jsou uděluje přiřazením příslušné role RBAC pro skupiny nebo aplikace v určitém rozsahu. Můžete použít [předdefinované role RBAC](../role-based-access-control/built-in-roles.md), jako je Přispěvatel účtů úložiště, přiřadit oprávnění pro uživatele.
 
@@ -85,7 +85,7 @@ Azure Disk Encryption pro virtuální počítače pomáhá splnit organizační 
 
 Disk Encryption pro virtuální počítače funguje pro operační systémy Linux a Windows. Také využívá služby Key Vault můžete chránit, spravovat a kontrolovat použití klíče pro šifrování disků. Všechna data v disky virtuálních počítačů v klidovém stavu zašifrovaná pomocí standardní šifrovací technologie v rámci účtů úložiště Azure. Řešení Disk Encryption pro Windows je založené na [Microsoft BitLocker Drive Encryption](https://technet.microsoft.com/library/cc732774.aspx), a řešení pro Linux je založen na [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt).
 
-Další informace
+Víc se uč
 
 * [Azure Disk Encryption pro Windows a Linuxem v režimu IaaS Virtual Machines](https://gallery.technet.microsoft.com/Azure-Disk-Encryption-for-a0018eb0)
 
@@ -123,6 +123,6 @@ Další informace:
 
 Azure Disk Encryption používá [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) umožňují řídit a spravovat klíče pro šifrování disků a tajné kódy ve vašem předplatném služby key vault. Také zajistí, že všechna data na discích virtuálních počítačů jsou zašifrovaná rest ve službě Azure Storage. Auditovat klíče a použití zásad, měli byste použít Key Vault.
 
-Další informace
+Víc se uč
 
 * [Co je Azure Key Vault?](../key-vault/key-vault-overview.md)

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
 ms.openlocfilehash: 284480ab8b9973c02f365dbf3ebfd3a103ef4b42
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64919157"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>Nastavení účtu fakturační zákaznické smlouvy Microsoft
@@ -81,7 +81,7 @@ Můžete požádat o podnikovým správcům registraci dokončete nastavení fak
 
 Uživatel ve vaší organizaci, kdo podepsal smlouvy zákazníka Microsoftu se přidá jako vlastník na fakturační profil. Požádat uživatele, aby vás přidal jako vlastníka tak, aby dokončení nastavení.  <!-- Todo Are there any next steps -->
 
-## <a name="understand-changes-to-your-billing-hierarchy"></a>Informace o změnách hierarchie fakturace
+## <a name="understand-changes-to-your-billing-hierarchy"></a>Změny fakturace hierarchii porozumět
 
 Vaše nové fakturační účet zjednodušuje fakturaci pro vaši organizaci při poskytování rozšířeného fakturace a možnosti správy nákladů. Následující diagram popisuje, jakým způsobem je organizována fakturace v nové fakturační účet.
 
@@ -142,7 +142,7 @@ Služby Azure ve vašem předplatném poběží i nadále bez přerušení. Pře
 
 Přístup k prostředkům Azure, která byla nastavena pomocí Azure RBAC (řízení přístupu na základě role) nemá vliv během přechodu.
 
-### <a name="azure-reservations"></a>Azure Reservations
+### <a name="azure-reservations"></a>Azure rezervace
 
 Žádné rezervace Azure v smlouvu Enterprise se přesune do nového fakturačního účtu. Během přechodu nedojde k žádným změnám slev za rezervace, které se u vašich předplatných uplatňují.
 
@@ -205,7 +205,7 @@ K dokončení instalace, musíte mít přístup k nové fakturační účet a sm
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-2. Vyhledejte **Cost Management a fakturace**.
+2. Hledat na **Cost Management a fakturace**.
 
    ![Snímek obrazovky zobrazující Azure search na portálu](./media/billing-mca-setup-account/billing-search-cost-management-billing.png)
 
@@ -217,11 +217,11 @@ K dokončení instalace, musíte mít přístup k nové fakturační účet a sm
 
 Předplatná Azure, které jsou přešel ze smlouvu Enterprise k nové fakturační účet se zobrazí na stránce předplatná Azure. Pokud se domníváte, že je jakékoli předplatné chybí, přechod fakturace předplatného ručně na webu Azure portal. Další informace najdete v tématu [získat fakturační vlastnictví předplatného Azure od jiných uživatelů](billing-mca-request-billing-ownership.md)
 
-### <a name="azure-reservations"></a>Azure Reservations
+### <a name="azure-reservations"></a>Azure rezervace
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-2. Vyhledejte **Cost Management a fakturace**.
+2. Hledat na **Cost Management a fakturace**.
 
    ![Snímek obrazovky zobrazující Azure search na portálu](./media/billing-mca-setup-account/billing-search-cost-management-billing.png)
 
@@ -241,7 +241,7 @@ Azure rezervace, které jsou přesunuty z smlouva Enterprise Agreement enrollmen
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-2. Vyhledejte **Cost Management a fakturace**.
+2. Hledat na **Cost Management a fakturace**.
 
    ![Snímek obrazovky zobrazující Azure search na portálu](./media/billing-mca-setup-account/billing-search-cost-management-billing.png)
 
@@ -257,7 +257,7 @@ Tito správci jsou uvedené jako vlastníky profil při organizace, které jsou 
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-2. Vyhledejte **Cost Management a fakturace**.
+2. Hledat na **Cost Management a fakturace**.
 
    ![Snímek obrazovky zobrazující Azure search na portálu](./media/billing-mca-setup-account/billing-search-cost-management-billing.png).
 
@@ -271,7 +271,7 @@ Tito správci jsou uvedené jako vlastníky profil při organizace, které jsou 
 
 Tito správci a správci oddělení jsou uvedené jako vlastníky části faktury nebo čtenáři části faktury Ačkoli vlastníky účtů v oddělení jsou uvedeny jako tvůrce předplatného Azure. Opakujte krok pro všechny oddíly faktury ke kontrole přístupu pro všechny oddělením ve vaší registraci smlouvy Enterprise. Vlastníky účtů, které nebyly součástí oddělení získají oprávnění na oddíl faktury s názvem **části faktury výchozí**. Pokud se domníváte, že chybí přístupu pro všechny správce, můžete udělit přístup k webu Azure Portal. Další informace najdete v tématu [Správa fakturace rolí na portálu Azure portal](billing-understand-mca-roles.md#manage-billing-roles-in-the-azure-portal).
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktování podpory
+## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktujte podporu
 
 Pokud potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.
 

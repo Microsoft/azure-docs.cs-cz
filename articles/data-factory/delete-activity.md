@@ -14,10 +14,10 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.openlocfilehash: 00658b650cdc0b1752bb9f2f205420018c1d6edd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61346339"
 ---
 # <a name="delete-activity-in-azure-data-factory"></a>Odstranit aktivitu ve službě Azure Data Factory
@@ -82,7 +82,7 @@ Zde je několik doporučení pro použití aktivity odstranit:
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
 | Datové sady | Poskytuje referenční datové sady k určení, které soubory nebo složky, která se má odstranit | Ano |
-| rekurzivní | Určuje, zda soubory jsou odstraněné rekurzivně z podsložky nebo pouze z určené složky.  | Ne. Výchozí formát je `false`. |
+| recursive | Určuje, zda soubory jsou odstraněné rekurzivně z podsložky nebo pouze z určené složky.  | Ne. Výchozí formát je `false`. |
 | maxConcurrentConnections | Počet připojení pro připojení k úložišti úložiště současně pro odstranění složky nebo soubory.   |  Ne. Výchozí formát je `1`. |
 | EnableLogging | Určuje, zda je potřeba zaznamenat názvy souboru nebo složky, které se odstranily. Pokud je hodnota true, budete muset dál zadejte účet úložiště k ukládání souboru protokolu tak, aby mohl sledovat chování aktivity odstranit soubor protokolu pro čtení. | Ne |
 | logStorageSettings | Platí jenom v případě enablelogging = true.<br/><br/>Skupina vlastností úložiště, které mohou být zadat, kam chcete uložit soubor protokolu obsahující názvy souboru nebo složky, které se odstranily aktivitou odstranit. | Ne |
@@ -115,12 +115,12 @@ Existují dvě místa, kde můžete zobrazit a monitorovat výsledky aktivity od
 
 ### <a name="sample-log-file-of-the-delete-activity"></a>Ukázkový soubor protokolu aktivit Delete
 
-| Název | Kategorie | Status | Chyba |
+| Name | Category | Status | Chyba |
 |:--- |:--- |:--- |:--- |
-| test1/yyy.json | File | Odstraněno |  |
-| test2/hello789.txt | File | Odstraněno |  |
-| test2/test3/hello000.txt | File | Odstraněno |  |
-| test2/test3/zzz.json | File | Odstraněno |  |
+| test1/yyy.json | File | Odstranění |  |
+| test2/hello789.txt | File | Odstranění |  |
+| test2/test3/hello000.txt | File | Odstranění |  |
+| test2/test3/zzz.json | File | Odstranění |  |
 
 ## <a name="examples-of-using-the-delete-activity"></a>Příklady použití aktivit Delete
 
@@ -573,4 +573,4 @@ Datová sada pro cíl dat používá aktivitu kopírování.
 
 Další informace o přesunutí souborů ve službě Azure Data Factory.
 
--   [Nástroj pro kopírování dat v Azure Data Factory](copy-data-tool.md)
+-   [Nástroj Kopírování dat ve službě Azure Data Factory](copy-data-tool.md)

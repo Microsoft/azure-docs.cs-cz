@@ -17,12 +17,12 @@ ms.date: 06/04/2019
 ms.author: joflore
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: faabc65a78626c053aecfac81b560b4731e40b95
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 57c5b7a6044de0413c07538e5f1e6034e210d529
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729998"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67155228"
 ---
 # <a name="what-is-a-device-identity"></a>Co je identita zařízení?
 
@@ -71,6 +71,7 @@ Cílem zařízení připojených k Azure AD je zjednodušit:
 - Nasazení Windows na pracovní zařízení
 - Přístup k aplikacím a prostředkům organizace z jakéhokoli zařízení s Windows
 - Cloudovou správu pracovních zařízení
+- Uživatelům umožní přihlásit se svými zařízeními s jejich Azure AD nebo synchronizace služby Active Directory pracovní nebo školní účty.
 
 ![Zařízení zaregistrovaná v Azure AD](./media/overview/02.png)
 
@@ -137,12 +138,10 @@ Obecně platí, že byste měli použít:
 - Zařízení připojená k Azure AD:
    - Pro zařízení ve vlastnictví vaší organizace
    - Pro zařízení, která **nejsou** připojená k místní službě AD
-   - K ruční registraci zařízení v Azure AD
    - Ke změně místního stavu zařízení
 - Hybridní zařízení připojená k Azure AD pro zařízení připojená k místní službě AD
    - Pro zařízení ve vlastnictví vaší organizace
    - Pro zařízení připojená k místní službě AD
-   - K automatické registraci zařízení v Azure AD
    - Ke změně místního stavu zařízení
 
 ## <a name="license-requirements"></a>Licenční požadavky

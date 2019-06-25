@@ -58,6 +58,8 @@
       href: 'https://aka.ms/adpricing'
     - name: Regionální dostupnost
       href: 'https://aka.ms/adregion'
+    - name: Zapojte se skupiny poradců k Detektoru anomálií v Microsoft Teams
+      href: 'https://aka.ms/adadvisorsjoin'
     - name: Architektura referenčních řešení
       href: 'https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/'
     - name: Dodržování předpisů
@@ -66,8 +68,6 @@
   items:
     - name: Získat podporu
       href: 'https://aka.ms/adsupport'
-    - name: Zapojení do veřejné komunity
-      href: 'https://aka.ms/adadvisorsjoin'
     - name: Stack Overflow
       href: 'https://aka.ms/adso'
     - name: MSDN

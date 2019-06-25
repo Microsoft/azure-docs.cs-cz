@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: fasttrack-new
 services: batch
 ms.openlocfilehash: a811a9cb1b124aff7c64d25cf71a1b84bff0c173
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65541748"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>Kanály Azure můžete vytvářet a nasazovat řešení HPC
@@ -26,7 +26,7 @@ V tomto příkladu vytvoříme bude sestavení a vydání kanálu pro nasazení 
 
 ![Diagram znázorňující tok nasazení do našeho kanálu](media/batch-ci-cd/DeploymentFlow.png)
 
-### <a name="setup"></a>Nastavení
+### <a name="setup"></a>Instalace
 
 Postupovat podle kroků v tomto článku, budete potřebovat organizaci Azure DevOps a týmového projektu.
 
@@ -418,13 +418,13 @@ Existuje několik kroků potřebných k nasazení infrastruktury. Jak jsme použ
     * **Akce**: Vytvoření nebo aktualizace skupiny prostředků
     * **Skupina prostředků**: $(resourceGroupName)
     * **Umístění**: $(location)
-    * **Template**: $(System.ArtifactsDirectory)/**{YourAzureRepoArtifactSourceAlias}**/arm-templates/storageAccount.json
+    * **Template**: $(System.ArtifactsDirectory)/ **{YourAzureRepoArtifactSourceAlias}** /arm-templates/storageAccount.json
     * **Přepsání parametrů šablony**: $(storageAccountName) – název účtu
 
 1. Odešlete artefakty ze správy zdrojového kódu do účtu úložiště. Zde je úloha kanálu Azure k této. V rámci této úlohy se adresa URL kontejneru účtu úložiště a tokenu SAS výstupem proměnné v kanálech Azure. To znamená, že můžete znovu použít v průběhu této fáze agenta.
 
     Přidat **Azure File Copy** úloh a nastavte následující vlastnosti:
-    * **Source:** $(System.ArtifactsDirectory)/**{YourAzureRepoArtifactSourceAlias}**/arm-templates/
+    * **Source:** $(System.ArtifactsDirectory)/ **{YourAzureRepoArtifactSourceAlias}** /arm-templates/
     * **Typ připojení Azure**: Azure Resource Manager
     * **Předplatné Azure:** Vyberte příslušné předplatné Azure
     * **Cílový typ**: Azure Blob
@@ -441,7 +441,7 @@ Existuje několik kroků potřebných k nasazení infrastruktury. Jak jsme použ
     * **Akce**: Vytvoření nebo aktualizace skupiny prostředků
     * **Skupina prostředků**: $(resourceGroupName)
     * **Umístění**: $(location)
-    * **Template**: $(System.ArtifactsDirectory)/**{YourAzureRepoArtifactSourceAlias}**/arm-templates/deployment.json
+    * **Template**: $(System.ArtifactsDirectory)/ **{YourAzureRepoArtifactSourceAlias}** /arm-templates/deployment.json
     * **Přepsání parametrů šablony**: ```-templateContainerUri $(templateContainerUri) -templateContainerSasToken $(templateContainerSasToken) -batchAccountName $(batchAccountName) -batchAccountPoolName $(batchAccountPoolName) -applicationStorageAccountName $(applicationStorageAccountName)```
 
 Běžnou praxí je použití úkolů s Azure Key Vault. Pokud instanční objekt (připojení k vašemu předplatnému Azure) odpovídající přístup zásady s nastavením, můžete stáhnout tajné kódy ze služby Azure Key Vault a použít jako proměnné ve vašem kanálu. Název tajného kódu se nastaví s přidruženou hodnotu. Například mohou být odkazovány tajného kódu sshPassword s $(sshPassword) v definici vydané verze.

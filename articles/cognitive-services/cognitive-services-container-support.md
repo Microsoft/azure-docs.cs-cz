@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 06/11/2019
 ms.author: dapine
-ms.openlocfilehash: 9b2db8f913f2eecb4f320b6edde3c1d5a422691f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: 8ebc3d9f3339e2f703a1f374363b72b86f63d903
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67062126"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204042"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Podpora kontejnerů ve službě Azure Cognitive Services
 
@@ -82,7 +82,7 @@ Kromě toho jsou podporovány některé kontejnery ve službě Cognitive Service
 Kontejnery služby Azure Cognitive Services jsou veřejně dostupné prostřednictvím předplatného Azure a imagí kontejnerů Dockeru můžete načíst z Microsoft Container Registry nebo Docker Hubu. Můžete použít [operace docker pull](https://docs.docker.com/engine/reference/commandline/pull/) příkaz Stáhnout image kontejneru z registru odpovídající.
 
 > [!IMPORTANT]
-> V současné době musíte dokončit proces registrace pro přístup k následujícím kontejnery, ve kterých vyplňují a odesílají dotazník otázek o vás, vaše společnost a případ použití, pro který chcete implementovat kontejnery. Když jste udělili přístup a zadat přihlašovací údaje, můžete pak načítání imagí kontejneru pro rozpoznávání tváře a rozpoznat Text kontejnerů v privátním registru kontejneru hostovaná služba Azure Container Registry.
+> V současné době musíte dokončit proces registrace pro přístup k následujícím kontejnery, ve kterých vyplňují a odesílají dotazník otázek o vás, vaše společnost a případ použití, pro který chcete implementovat kontejnery. Jakmile jste udělili přístup a zadat přihlašovací údaje, můžete pak načítat Image kontejneru z registru kontejneru soukromého hostované ve službě Azure Container Registry.
 > * [Dectector anomálií](Anomaly-Detector/anomaly-detector-container-howto.md#request-access-to-the-container-registry)
 > * [Rozpoznávání tváře](Face/face-how-to-install-containers.md)
 > * [Nástroj pro rozpoznávání formuláře](form-recognizer/form-recognizer-container-howto.md#request-access-to-the-container-registry)
@@ -106,6 +106,8 @@ Jednotlivých kontejnerů může mít vlastní požadavky, včetně serveru a po
 [!INCLUDE [Discoverability of more container information](../../includes/cognitive-services-containers-discoverability.md)]
 
 ## <a name="next-steps"></a>Další postup
+
+Další informace o [kontejneru recepty](/containers/container-reuse-recipe.md) můžete pomocí služeb Cognitive Services.
 
 Instalace a prozkoumejte funkce poskytované službou kontejnerů ve službě Azure Cognitive Services:
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/26/2017
 ms.author: jeconnoc
 ms.openlocfilehash: 2a9879ebc55a5f25c1a358e386697dce1c55ec90
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61434062"
 ---
 # <a name="configuring-ssl-for-an-application-in-azure"></a>Konfigurace protokolu SSL pro aplikaci v Azure
@@ -40,7 +40,7 @@ Certifikát musí splňovat následující požadavky na certifikáty protokolu 
 
 * Certifikát musí obsahovat privátní klíč.
 * Certifikát musí být vytvořen pro výměnu klíčů, musí umožňovat export do souboru Personal Information Exchange (.pfx).
-* Název subjektu certifikátu musí odpovídat doménu, kterou používá pro přístup ke cloudové službě. Nelze získat certifikát SSL od certifikační autority (CA) pro doménu cloudapp.net. Musíte získat název vlastní domény při přístupu ke službě. Když požádáte o certifikát od certifikační Autority, název subjektu certifikátu musí odpovídat názvu vlastní domény pro přístup k aplikaci. Například, pokud je název vaší vlastní domény **contoso.com** by požádáte o certifikát z certifikační Autority pro ***. contoso.com** nebo **www\.contoso.com**.
+* Název subjektu certifikátu musí odpovídat doménu, kterou používá pro přístup ke cloudové službě. Nelze získat certifikát SSL od certifikační autority (CA) pro doménu cloudapp.net. Musíte získat název vlastní domény při přístupu ke službě. Když požádáte o certifikát od certifikační Autority, název subjektu certifikátu musí odpovídat názvu vlastní domény pro přístup k aplikaci. Například, pokud je název vaší vlastní domény **contoso.com** by požádáte o certifikát z certifikační Autority pro * **. contoso.com** nebo **www\.contoso.com**.
 * Certifikát musí používat minimálně 2048bitové šifrování.
 
 Pro účely testování můžete [vytvořit](cloud-services-certs-create.md) a použít certifikát podepsaný svým držitelem. Certifikát podepsaný svým držitelem není ověřen pomocí certifikační Autority a cloudapp.net domény můžete použít jako adresu URL webu. Například následující úkol používá certifikát podepsaný svým držitelem, ve kterém je běžný název (CN) použitý v certifikátu **sslexample.cloudapp.net**.
@@ -138,7 +138,7 @@ Vaše aplikace musí být nakonfigurována pro použití certifikátu a musí b�
 
 Teď, když definice služby a služby konfigurační soubory se aktualizovaly, balíček nasazení pro jeho odeslání do Azure. Pokud používáte **cspack**, nepoužívejte **/generateConfigurationFile** označit jako, který přepíše informace o certifikátu, který je vložený.
 
-## <a name="step-3-upload-a-certificate"></a>Krok 3: Nahrát certifikát
+## <a name="step-3-upload-a-certificate"></a>Krok 3: Nahrání certifikátu
 Připojte se k webu Azure portal a...
 
 1. V **všechny prostředky** části portálu vyberte cloudovou službu.

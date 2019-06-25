@@ -1,0 +1,42 @@
+- name: Dokumentace ke službě Bastion
+  href: index.yml
+- name: Přehled
+  items:
+    - name: Informace o službě Azure Bastion
+      href: bastion-overview.md
+- name: Návody
+  items:
+    - name: Vytvoření hostitele typu bašta
+      href: bastion-create-host-portal.md
+    - name: Připojení k virtuálnímu počítači
+      items:
+        - name: SSH (Linux)
+          href: bastion-connect-vm-ssh.md
+        - name: RDP (Windows)
+          href: bastion-connect-vm-rdp.md
+    - name: Práce s využitím relace virtuálního počítače
+      items:
+        - name: Kopírování a vkládání
+          href: bastion-vm-copy-paste.md
+        - name: Zobrazení na celou obrazovku
+          href: bastion-vm-full-screen.md
+    - name: Práce se skupinami zabezpečení sítě
+      href: bastion-nsg.md
+- name: Referenční informace
+  items:
+    - name: REST
+      href: 'https://docs.microsoft.com/rest/api/network-gateway'
+- name: Zdroje a prostředky
+  items:
+    - name: Nejčastější dotazy ke službě Bastion
+      href: bastion-faq.md
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/?category=networking'
+    - name: Blog
+      href: 'https://azure.microsoft.com/blog/topics/networking'
+    - name: Fórum
+      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork'
+    - name: SLA verze Preview
+      href: 'https://azure.microsoft.com/support/legal/preview-supplemental-terms'
+    - name: SLA
+      href: 'https://azure.microsoft.com/support/legal/sla'

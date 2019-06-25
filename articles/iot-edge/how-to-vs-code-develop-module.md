@@ -10,10 +10,10 @@ ms.date: 02/20/2019
 ms.topic: article
 ms.service: iot-edge
 ms.openlocfilehash: 9a7d83070caad86d7d66b62a9592dbb1e0017f97
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62125912"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Použití Visual Studio Code pro vývoj a ladění modulů Azure IoT Edge
@@ -89,7 +89,7 @@ Následující kroky ukazují, jak vytvořit modul IoT Edge ve vašem jazyce obl
 
 1. Zadejte název modulu. Zvolte název, který je jedinečný v rámci vašeho registru kontejneru.
 
-1. Zadejte název modulu úložiště imagí. Visual Studio Code autopopulates modulu název s **localhost:5000 / < název vašeho modulu\>**. Nahraďte ho vlastním registru informace. Pokud používáte místní registru Dockeru pro testování, pak **localhost** je v pořádku. Pokud používáte Azure Container Registry, potom pomocí serveru přihlášení z nastavení svého registru. Přihlašovací server vypadá jako ***\<název registru\>*. azurecr.io**. Nahradit jenom **localhost:5000** část řetězce tak, aby konečný výsledek bude vypadat jako **\<* název registru*\>.azurecr.io/* \<název modulu\>***.
+1. Zadejte název modulu úložiště imagí. Visual Studio Code autopopulates modulu název s **localhost:5000 / < název vašeho modulu\>** . Nahraďte ho vlastním registru informace. Pokud používáte místní registru Dockeru pro testování, pak **localhost** je v pořádku. Pokud používáte Azure Container Registry, potom pomocí serveru přihlášení z nastavení svého registru. Přihlašovací server vypadá jako * **\<název registru\>*. azurecr.io**. Nahradit jenom **localhost:5000** část řetězce tak, aby konečný výsledek bude vypadat jako * *\<* název registru *\>.azurecr.io/* \<název modulu\>***.
 
    ![Zadání úložiště imagí Dockeru](./media/how-to-develop-csharp-module/repository.png)
 
@@ -116,7 +116,7 @@ Pokud chcete přidat další moduly do vašeho řešení, spusťte příkaz **Az
 
 Výchozí modul kód, který je součástí řešení se nachází v následujícím umístění:
 
-- Funkce Azure Functions (C#): **moduly >  *&lt;název modulu&gt;* > *&lt;název modulu&gt;*.cs**
+- Funkce Azure Functions (C#): **moduly >  *&lt;název modulu&gt;*  >  *&lt;název modulu&gt;* .cs**
 - C#: **moduly > *&lt;název modulu&gt;* > Program.cs**
 - Python: **moduly > *&lt;název modulu&gt;* > main.py**
 - Node.js: **moduly > *&lt;název modulu&gt;* > app.js**
@@ -162,7 +162,7 @@ Pokud chcete nastavit a spusťte simulátor, spusťte příkaz **Azure IoT Edge:
 
      - Otevřete soubor `Program.cs` a přidejte zarážku.
 
-     - Přejděte do zobrazení ladění Visual Studio Code tak, že vyberete **zobrazení > ladění**. Vyberte konfiguraci ladění  ***&lt;název modulu&gt;* místní ladění (.NET Core)** z rozevíracího seznamu.
+     - Přejděte do zobrazení ladění Visual Studio Code tak, že vyberete **zobrazení > ladění**. Vyberte konfiguraci ladění  ** *&lt;název modulu&gt;* místní ladění (.NET Core)** z rozevíracího seznamu.
 
         > [!NOTE]
         > Pokud .NET Core `TargetFramework` není konzistentní s vaše cesta k programu v `launch.json`, budete muset ručně aktualizovat cestu program v `launch.json` tak, aby odpovídaly `TargetFramework` v souboru .csproj tak, že kód Visual Studio můžete úspěšně spustit to program.
@@ -176,11 +176,11 @@ Pokud chcete nastavit a spusťte simulátor, spusťte příkaz **Azure IoT Edge:
 
      - Otevřete soubor `app.js` a přidejte zarážku.
 
-     - Přejděte do zobrazení ladění Visual Studio Code tak, že vyberete **zobrazení > ladění**. Vyberte konfiguraci ladění  ***&lt;název modulu&gt;* místní ladění (Node.js)** z rozevíracího seznamu.
+     - Přejděte do zobrazení ladění Visual Studio Code tak, že vyberete **zobrazení > ladění**. Vyberte konfiguraci ladění  ** *&lt;název modulu&gt;* místní ladění (Node.js)** z rozevíracího seznamu.
    - **Java**
      - Otevřete soubor `App.java` a přidejte zarážku.
 
-     - Přejděte do zobrazení ladění Visual Studio Code tak, že vyberete **zobrazení > ladění**. Vyberte konfiguraci ladění  ***&lt;název modulu&gt;* místní ladění (Java)** z rozevíracího seznamu.
+     - Přejděte do zobrazení ladění Visual Studio Code tak, že vyberete **zobrazení > ladění**. Vyberte konfiguraci ladění  ** *&lt;název modulu&gt;* místní ladění (Java)** z rozevíracího seznamu.
 
 1. Klikněte na tlačítko **spustit ladění** nebo stiskněte klávesu **F5** ke spuštění relace ladění.
 
@@ -228,7 +228,7 @@ Ve vývojovém počítači můžete spustit simulátor IoT Edge místo instalace
 
    ![Proměnné Watch](media/how-to-develop-csharp-module/view-log.png)
 
-1. Přejděte do zobrazení ladění Visual Studio Code a vyberte konfigurační soubor ladění pro modul. Název možnosti ladění by měl být podobný  ***&lt;název modulu&gt;* vzdálené ladění**
+1. Přejděte do zobrazení ladění Visual Studio Code a vyberte konfigurační soubor ladění pro modul. Název možnosti ladění by měl být podobný  ** *&lt;název modulu&gt;* vzdálené ladění**
 
 1. Vyberte **spustit ladění** nebo stiskněte klávesu **F5**. Vyberte proces pro připojení.
 
@@ -316,13 +316,13 @@ Vám může přeskočit, pokud moduly jsou spuštěny na stejném počítači ja
 
   - Ujistěte se, že modul na počítači za účelem ladění je spuštěný a připravený pro ladicí programy pro připojení a zda je port 9229 externě dostupný. Můžete to ověřit tak, že otevřete `http://<target-machine-IP>:9229/json` na počítači ladicího programu. Tato adresa URL by se zobrazit informace o modul Node.js chcete ladit.
   
-  - Na svém vývojovém počítači, otevřete Visual Studio Code a pak upravte `launch.json` tak, aby hodnota adresu  ***&lt;název modulu&gt;* vzdálené ladění (Node.js)** profil (nebo  ***&lt;název modulu&gt;* vzdálené ladění (Node.js v kontejneru Windows)** Profilovat, pokud je modul spuštěn jako kontejner Windows) je IP počítač, který se právě ladí.
+  - Na svém vývojovém počítači, otevřete Visual Studio Code a pak upravte `launch.json` tak, aby hodnota adresu  ** *&lt;název modulu&gt;* vzdálené ladění (Node.js)** profil (nebo  ** *&lt;název modulu&gt;* vzdálené ladění (Node.js v kontejneru Windows)** Profilovat, pokud je modul spuštěn jako kontejner Windows) je IP počítač, který se právě ladí.
 
 - **Java**
 
   - Vytvoření tunelu SSH k počítači, který chcete ladit spuštěním `ssh -f <username>@<target-machine> -L 5005:127.0.0.1:5005 -N`.
   
-  - Na svém vývojovém počítači, otevřete Visual Studio Code a upravit  ***&lt;název modulu&gt;* vzdálené ladění (Java)** profil v `launch.json` tak, aby se můžete připojit k cílový počítač. Další informace o úpravách `launch.json` a ladění v Javě pomocí Visual Studio Code, naleznete v části [konfigurace ladicí program](https://code.visualstudio.com/docs/java/java-debugging#_configuration).
+  - Na svém vývojovém počítači, otevřete Visual Studio Code a upravit  ** *&lt;název modulu&gt;* vzdálené ladění (Java)** profil v `launch.json` tak, aby se můžete připojit k cílový počítač. Další informace o úpravách `launch.json` a ladění v Javě pomocí Visual Studio Code, naleznete v části [konfigurace ladicí program](https://code.visualstudio.com/docs/java/java-debugging#_configuration).
 
 - **Python**
 
@@ -330,16 +330,16 @@ Vám může přeskočit, pokud moduly jsou spuštěny na stejném počítači ja
 
   - V kódu `ptvsd.enable_attach(('0.0.0.0', 5678))` , který jste předtím vložili do `main.py`, změňte **0.0.0.0** na IP adresu počítače, abyste mohli ladit. Sestavení, push a znovu nasaďte modul IoT Edge.
 
-  - Na svém vývojovém počítači, otevřete Visual Studio Code a pak upravte `launch.json` tak, aby `host` hodnotu  ***&lt;název modulu&gt;* vzdálené ladění (Python)** profil používá IP adresu cílového počítače namísto `localhost`.
+  - Na svém vývojovém počítači, otevřete Visual Studio Code a pak upravte `launch.json` tak, aby `host` hodnotu  ** *&lt;název modulu&gt;* vzdálené ladění (Python)** profil používá IP adresu cílového počítače namísto `localhost`.
 
 ### <a name="debug-your-module"></a>Ladění modulu
 
-1. V zobrazení ladění Visual Studio Code vyberte konfigurační soubor ladění pro modul. Název možnosti ladění by měl být podobný  ***&lt;název modulu&gt;* vzdálené ladění**
+1. V zobrazení ladění Visual Studio Code vyberte konfigurační soubor ladění pro modul. Název možnosti ladění by měl být podobný  ** *&lt;název modulu&gt;* vzdálené ladění**
 
 1. Otevřete soubor modulu pro vývojový jazyk a přidejte zarážku:
 
-   - **Funkce Azure Functions (C#)**: Přidejte zarážku do souboru `<your module name>.cs`.
-   - **C#**: Přidejte zarážku do souboru `Program.cs`.
+   - **Funkce Azure Functions (C#)** : Přidejte zarážku do souboru `<your module name>.cs`.
+   - **C#** : Přidejte zarážku do souboru `Program.cs`.
    - **Node.js**: Přidejte zarážku do souboru `app.js`.
    - **Java**: Přidejte zarážku do souboru `App.java`.
    - **Python**: Přidejte zarážku do souboru `main.py`v metodě zpětného volání, které jste přidali `ptvsd.break_into_debugger()` řádku.

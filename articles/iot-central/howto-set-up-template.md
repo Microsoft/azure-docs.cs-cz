@@ -3,17 +3,17 @@ title: Nastavit šablonu zařízení v aplikaci Azure IoT Central | Dokumentace 
 description: Zjistěte, jak nastavit šablonu zařízení měření, nastavení, vlastnostmi, pravidla a řídicí panel.
 author: viv-liu
 ms.author: viviali
-ms.date: 01/30/2019
+ms.date: 06/19/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: d1704220a13b6d6b5a48b7167d7912a38057127d
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 58f50a1a2b90b4b5f9708bf0f1a7cb51db8e47ae
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65466524"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275960"
 ---
 # <a name="set-up-a-device-template"></a>Nastavení šablony zařízení
 
@@ -149,7 +149,7 @@ Například můžete přidat nové nastavení rychlost ventilátor tak, že vybe
 
 Po výběru **Uložit**, **ventilátor rychlost** nastavení se zobrazí jako dlaždice. Operátor můžete použít ve **Device Explorer** stránky Změna rychlosti ventilátor zařízení.
 
-## <a name="properties"></a>Vlastnost
+## <a name="properties"></a>Vlastnosti
 
 Vlastnosti jsou metadata, která má přidružený k zařízení, jako je například umístění zařízení a sériové číslo. Přidat do šablony zařízení, která se zobrazí jako dlaždice na více vlastností **vlastnosti** kartu. Vlastnost může mít typ, jako je číslo, text, datum, přepínací tlačítko, vlastnosti zařízení, popisku nebo umístění. Operátor můžete zadat hodnoty vlastností při jejich vytvoření zařízení, a mohli upravit tyto hodnoty v každém okamžiku. Vlastnosti zařízení jsou jen pro čtení a odesílány ze zařízení do aplikace. Operátor nelze změnit vlastnosti zařízení. Po připojení skutečných zařízení, na dlaždici vlastnosti zařízení je aktualizace v aplikaci.
 

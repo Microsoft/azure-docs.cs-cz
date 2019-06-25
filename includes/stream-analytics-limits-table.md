@@ -1,10 +1,10 @@
 ---
 ms.openlocfilehash: 1bf7f3c15b40590c400e8a730de20c199bb1b4c2
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66238562"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67175403"
 ---
 ---
 | Identifikátor omezení | Omezení | Komentáře |

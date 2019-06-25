@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: juliako
 ms.openlocfilehash: ebcda6026f79bc88df91471d8be88316ba57bfc6
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65411376"
 ---
 # <a name="streaming-endpoint-origin-errors"></a>Streamování chyby koncový bod (počátek) 
@@ -48,7 +48,7 @@ Požadavek obsahuje neplatné informace a je odmítnuto pomocí těchto kódů c
 |MPE_ENC_ENCRYPTION_REQUIRED |0x8088021E |Šifrování se vyžaduje pro obsah, zásady pro doručení, je třeba formát výstupu. |
 |MPE_ENC_ENCRYPTION_NOT_SET_IN_DELIVERY_POLICY |0x8088024D |Šifrování není nastavena v nastavení zásad doručování. |
 
-## <a name="404-not-found"></a>404 Nenalezeno
+## <a name="404-not-found"></a>404 – Nenalezeno
 
 Operace se pokouší tak, aby fungoval na prostředek, který již existuje. Například prostředek už byla odstraněna.
 

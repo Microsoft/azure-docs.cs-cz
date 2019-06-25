@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 12/11/2018
 ms.author: cherylmc
 ms.openlocfilehash: 74940f3b89237233acd575aa5df441163e00d178
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60845459"
 ---
 # <a name="configure-a-point-to-site-connection-by-using-certificate-authentication-classic"></a>Konfigurace připojení typu Point-to-Site s použitím ověření certifikátu (classic)
@@ -191,8 +191,8 @@ V každém klientském počítači můžete použít stejný konfigurační bal�
 
 2. Z **Point-to-site VPN připojení** vyberte balíček ke stažení, který odpovídá operačnímu systému klienta, kde je nainstalovaný:
 
-   * U 64bitových klientů vyberte **Klient VPN (64bitový)**.
-   * U 32bitových klientů vyberte **Klient VPN (32bitový)**.
+   * U 64bitových klientů vyberte **Klient VPN (64bitový)** .
+   * U 32bitových klientů vyberte **Klient VPN (32bitový)** .
 
    ![Stažení balíčku pro konfiguraci klienta VPN](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/dlclient.png)
 

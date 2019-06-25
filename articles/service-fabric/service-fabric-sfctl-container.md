@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
 ms.openlocfilehash: a5037c535737946a50d8af6fa60d0815120276d9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60837300"
 ---
 # <a name="sfctl-container"></a>sfctl container
@@ -29,7 +29,7 @@ Spuštění kontejneru související s příkazy v uzlu clusteru.
 |Příkaz|Popis|
 | --- | --- |
 | invoke-api | Vyvolání kontejneru rozhraní API v kontejneru nasadit na uzlu Service Fabricu pro balíček daného kódu. |
-| Protokoly | Získá kontejner protokoly pro kontejner nasadit na uzlu Service Fabricu pro balíček daného kódu. |
+| logs | Získá kontejner protokoly pro kontejner nasadit na uzlu Service Fabricu pro balíček daného kódu. |
 
 ## <a name="sfctl-container-invoke-api"></a>vyvolat kontejner sfctl-api
 Vyvolání kontejneru rozhraní API v kontejneru nasadit na uzlu Service Fabricu pro balíček daného kódu.

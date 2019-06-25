@@ -12,10 +12,10 @@ ms.date: 05/02/2019
 ms.author: travisw
 ms.custom: ''
 ms.openlocfilehash: 1c5712fa8bbdb158992127f8f48d810a0a9b6f79
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65603476"
 ---
 # <a name="about-custom-voice-first-virtual-assistants-preview"></a>O vlastní hlasové první virtuální Asistenti ve verzi preview
@@ -37,7 +37,7 @@ Přímé řádku řeči a jeho přidružené funkce pro vlastní hlasové první
 |[Převod textu na řeč](text-to-speech.md) | Textové odpovědí z vašeho robota se má syntetizovat pomocí [převod textu na řeč](text-to-speech.md) z hlasové služby Azure. Tohoto slučování pak budou dostupné do klientské aplikace jako zvukový datový proud. Společnost Microsoft nabízí možnost vytvářet vlastní vysoce kvalitní, vlastní hlasové neuronových sítí převod textu na ŘEČ, umožňující hlasový vstup do vaší značky, další informace [kontaktujte nás](mailto:mstts@microsoft.com).
 |[Direct Line řeči](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech) | Jako kanál v rámci rozhraní Bot Framework s přímým přístupem řádku Speech umožňuje hladký a bezproblémový připojení mezi klientskou aplikaci, kompatibilní robotů a možnosti hlasové služby Azure. Další informace o konfiguraci vašeho robota použití kanálu Direct řeči řádku, naleznete v tématu [jeho stránky v dokumentaci k rozhraní Bot Framework](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech).
 
-## <a name="sample-code"></a>Ukázkový kód
+## <a name="sample-code"></a>Ukázka kódu
 
 Ukázkový kód pro vytváření virtuálních asistentů první hlasu je k dispozici na Githubu. Tyto ukázky zahrnují klientská aplikace pro připojení k svého robota v různých oblíbených programovacích jazyků.
 

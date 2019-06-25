@@ -16,12 +16,12 @@ ms.date: 05/07/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev
-ms.openlocfilehash: 0d44e5d9f0d1ed893a16c318e3cfa0ee1bfc123b
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 0acef783b4877b5b1787f142aec6cc3588293f83
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65823349"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111462"
 ---
 # <a name="microsoft-identity-platform-integration-checklist"></a>Kontrolní seznam integrace Microsoft identity platform
 
@@ -52,7 +52,7 @@ Pomocí následujícího kontrolního seznamu ujistěte se, že aplikace účinn
 | ![Zaškrtávací políčko](./media/active-directory-integration-checklist/checkbox-two.svg) | Dodržovat [pokyny pro aplikace pro Branding](howto-add-branding-in-azure-ad-apps.md). |
 | ![Zaškrtávací políčko](./media/active-directory-integration-checklist/checkbox-two.svg) | Zadejte smysluplný název a logo pro vaši aplikaci. Tyto informace se zobrazí na výzva k povolení spuštění vaší aplikace. Ujistěte se, že vaše jméno a logo se zástupcem společnosti/produkt tak, aby uživatelé mohli kvalifikovaně rozhodnout. Ujistěte se, že nejsou porušení žádné ochranné známky. |
 
-### <a name="privacy"></a>Soukromí
+### <a name="privacy"></a>Ochrana osobních údajů
 
 |   |   |
 |---|---|

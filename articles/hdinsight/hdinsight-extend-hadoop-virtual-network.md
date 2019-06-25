@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 06/04/2019
-ms.openlocfilehash: 4bfbce7dd985f3ebf67fde671d83acf30623b641
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 06/17/2019
+ms.openlocfilehash: 0dbcc99850d0a8b3b7306fac2bd8f89e6c941e4c
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67055404"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67163663"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Rozšíření Azure HDInsight pomocí Azure Virtual Network
 
@@ -25,7 +25,7 @@ Zjistěte, jak používat HDInsight s [Azure Virtual Network](../virtual-network
 * Přímý přístup k [Apache Hadoop](https://hadoop.apache.org/) služby, které nejsou k dispozici veřejně přes internet. Například [Apache Kafka](https://kafka.apache.org/) rozhraní API nebo [Apache HBase](https://hbase.apache.org/) rozhraní Java API.
 
 > [!IMPORTANT]  
-> 28\. února 2019 síťové prostředky (jako jsou síťové karty, LBs atd.) pro nový clustery, které jsou vytvořené ve virtuální síti se zřídí ve stejné skupině prostředků clusteru HDInsight. Tyto prostředky byly dříve zřízeny ve skupině prostředků virtuální sítě. Není žádná změna aktuální spuštěné clustery a tyto clustery, které jsou vytvořené bez virtuální sítě.
+> 28. února 2019 síťové prostředky (jako jsou síťové karty, LBs atd.) pro nový clustery, které jsou vytvořené ve virtuální síti se zřídí ve stejné skupině prostředků clusteru HDInsight. Tyto prostředky byly dříve zřízeny ve skupině prostředků virtuální sítě. Není žádná změna aktuální spuštěné clustery a tyto clustery, které jsou vytvořené bez virtuální sítě.
 
 ## <a name="prerequisites-for-code-samples-and-examples"></a>Požadavky na ukázky a příklady
 
@@ -211,13 +211,13 @@ Pro připojení k Apache Ambari a další webové stránky prostřednictvím vir
 
 ## <a id="networktraffic"></a> Řízení síťového provozu
 
-### <a name="controlling-inbound-traffic-to-hdinsight-clusters"></a>Řízení příchozího provozu do clusterů HDInsight
+### <a name="techniques-for-controlling-inbound-and-outbound-traffic-to-hdinsight-clusters"></a>Postupy pro řízení příchozího a odchozího provozu do clusterů HDInsight
 
 Síťový provoz v Azure Virtual Network se dá řídit pomocí následujících metod:
 
 * **Skupiny zabezpečení sítě** (NSG) umožňují filtrovat příchozí a odchozí přenosy v síti. Další informace najdete v tématu [filtrování provozu sítě s použitím skupin zabezpečení sítě](../virtual-network/security-overview.md) dokumentu.
 
-* **Síťová virtuální zařízení** replikovat funkce zařízení, jako jsou brány firewall a směrovače. Další informace najdete v tématu [síťová zařízení](https://azure.microsoft.com/solutions/network-appliances) dokumentu.
+* **Síťová virtuální zařízení** (NVA) lze použít s pouze odchozí provoz. Síťová virtuální zařízení replikovat funkce zařízení, jako jsou brány firewall a směrovače.  Další informace najdete v tématu [síťová zařízení](https://azure.microsoft.com/solutions/network-appliances) dokumentu.
 
 Je spravovaná služba HDInsight vyžaduje neomezený přístup ke stavu HDInsight a správy služeb pro příchozí a odchozí provoz z virtuální sítě. Při použití skupin zabezpečení sítě, musíte zajistit, že tyto služby můžete stále komunikovat s clusterem HDInsight.
 

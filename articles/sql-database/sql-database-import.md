@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: 98b316f8a9c1c8ceba91870af4ff67b1aa854a9b
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.date: 06/20/2019
+ms.openlocfilehash: 0b92fb9c9bf022adce4cc0dd3e58ce8e476ed5b7
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65785324"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303511"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database"></a>Rychlý start: Import souboru BACPAC do databáze ve službě Azure SQL Database
 
@@ -35,6 +35,9 @@ Můžete importovat do databáze SQL serveru do databáze Azure SQL Database pom
 > [!NOTE]
 > [Spravovaná instance](sql-database-managed-instance.md) aktuálně nepodporuje migrace databáze do instance databáze ze souboru BACPAC s použitím webu Azure portal. Pro import do spravované instance pomocí SQL Server Management Studio nebo nástroje SQLPackage.
 
+> [!NOTE]
+> K uložení souboru bacpac, stejně jako dočasné soubory generované záznamem Architektura aplikace na datové vrstvě (DacFX) potřebovat počítače zpracování žádosti o importu a exportu prostřednictvím portálu nebo Powershellu. Požadované místo na disku se výrazně liší mezi databází se stejnou velikostí a může trvat až 3krát velikosti databáze. Počítače spustí požadavek import/export pouze mají 450GB místa na místním disku. Jako výsledek některé žádosti může selhat s chybou "Není dostatek místa na disku". Alternativním řešením v takovém případě je sqlpackage.exe spustit na počítači s dostatkem místa na místním disku. Při importu/exportu databáze větší než 150GB, použijte [SqlPackage](#import-from-a-bacpac-file-using-sqlpackage) chcete vyhnout tomuto problému.
+ 
 1. Importovat ze souboru BACPAC do nové izolované databáze pomocí webu Azure portal, otevřete stránku pro příslušnou databázi serveru a pak na panelu nástrojů vyberte **importovat databázi**.  
 
    ![Import1 databáze](./media/sql-database-import/import1.png)
@@ -81,6 +84,8 @@ SqlPackage.exe /a:Import /sf:testExport.bacpac /tdn:NewDacFX /tsn:apptestserver.
 > [!NOTE]
 > [Spravovaná instance](sql-database-managed-instance.md) aktuálně nepodporuje migrace databáze do instance databáze ze souboru BACPAC s použitím prostředí Azure PowerShell. Pro import do spravované instance pomocí SQL Server Management Studio nebo nástroje SQLPackage.
 
+> [!NOTE]
+> K uložení souboru bacpac, stejně jako dočasné soubory generované záznamem Architektura aplikace na datové vrstvě (DacFX) potřebovat počítače zpracování žádosti o importu a exportu prostřednictvím portálu nebo Powershellu. Požadované místo na disku se výrazně liší mezi databází se stejnou velikostí a může trvat až 3krát velikosti databáze. Počítače spustí požadavek import/export pouze mají 450GB místa na místním disku. Jako výsledek některé žádosti může selhat s chybou "Není dostatek místa na disku". Alternativním řešením v takovém případě je sqlpackage.exe spustit na počítači s dostatkem místa na místním disku. Při importu/exportu databáze větší než 150GB, použijte [SqlPackage](#import-from-a-bacpac-file-using-sqlpackage) chcete vyhnout tomuto problému.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]

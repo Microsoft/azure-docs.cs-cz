@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/3/2018
 ms.author: victorh
 ms.openlocfilehash: b08eae072c2fbe420401424baf97a25b4cbbe87b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60790738"
 ---
 # <a name="host-load-balanced-azure-web-apps-at-the-zone-apex"></a>Hostitele s vyrovnáváním zatížení Azure web apps ve vrcholu zóny
@@ -43,7 +43,7 @@ Vytvořte skupinu prostředků pro všechny prostředky používané v tomto čl
 Vytvořte dva plány služby App Service Web ve vaší skupině prostředků, informace o konfiguraci pomocí následující tabulky. Další informace o vytvoření plánu služby App Service najdete v tématu [spravovat plán služby App Service v Azure](../app-service/app-service-plan-manage.md).
 
 
-|Název  |Operační systém  |Location  |Cenová úroveň  |
+|Name  |Operační systém  |Location  |Cenová úroveň  |
 |---------|---------|---------|---------|
 |ASP-01     |Windows|USA – východ|Sdílené D1 pro vývoj/testování|
 |ASP-02     |Windows|USA – střed|Sdílené D1 pro vývoj/testování|
@@ -87,12 +87,12 @@ Nyní můžete vytvořit koncové body pro dvě webové aplikace.
 3. Klikněte na tlačítko **Add** (Přidat).
 4. V následující tabulce použijte ke konfiguraci koncových bodů:
 
-   |Type  |Název  |Cíl  |Location  |Nastavení vlastní hlavičky|
+   |Type  |Název  |Target  |Location  |Vlastní nastavení hlaviček|
    |---------|---------|---------|---------|---------|
    |Externí koncový bod     |End-01|IP adresa, kterou jste si poznamenali pro App-01|USA – východ|Hostitel:\<adresu URL, které jste si poznamenali pro App-01\><br>Example: **host:app-01.azurewebsites.net**|
    |Externí koncový bod     |End-02|IP adresa, kterou jste si poznamenali pro App-02|USA – střed|Hostitel:\<adresu URL, které jste si poznamenali pro App-02\><br>Example: **host:app-02.azurewebsites.net**
 
-## <a name="create-dns-zone"></a>Vytvořit zónu DNS
+## <a name="create-dns-zone"></a>Vytvoření zóny DNS
 
 Existující zónu DNS můžete použít pro testování, nebo můžete vytvořit novou zónu. Vytvoření a delegování novou zónu DNS v Azure najdete v tématu [kurzu: Hostování domény v Azure DNS](dns-delegate-domain-azure-dns.md).
 
@@ -104,7 +104,7 @@ Pokud zónu DNS je připraven, můžete přidat záznamu o aliasu pro vrcholu z�
 2. Klikněte na **Sada záznamů**.
 3. Přidání záznamu, nastavte pomocí následující tabulky:
 
-   |Název  |Type  |Sada záznamů alias  |Typ aliasu  |Prostředek Azure|
+   |Name  |Type  |Sada záznamů alias  |Typ aliasu  |Prostředek Azure|
    |---------|---------|---------|---------|-----|
    |@     |A|Ano|Prostředek Azure|Traffic Manager – profilu|
 

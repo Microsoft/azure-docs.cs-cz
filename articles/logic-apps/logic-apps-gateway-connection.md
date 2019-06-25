@@ -10,10 +10,10 @@ ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 10/01/2018
 ms.openlocfilehash: 0580fe09c2cb6569724a9b4365233a3142645a47
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65546264"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Připojení k místním zdrojům dat z Azure Logic Apps
@@ -68,7 +68,7 @@ Po instalaci brány na místním počítači, pak vytvoříte prostředek Azure 
    | **Název** | Název pro prostředek brány | 
    | **Předplatné** | Název předplatného Azure, které by měly být stejné předplatné jako aplikace logiky. Výchozí odběr je založený na účtu Azure, který jste použili k přihlášení. | 
    | **Skupina prostředků** | Název [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md) pro uspořádání souvisejících prostředků | 
-   | **Umístění** | Azure omezuje toto umístění do stejné oblasti, která byla vybrána pro cloudovou službu Brána během [instalace brány](../logic-apps/logic-apps-gateway-install.md). <p>**Poznámka:** Ujistěte se, že toto umístění prostředku brány odpovídá umístění bránu cloudové služby. V opačném případě instalaci brány se nemusí zobrazit v seznamu nainstalovaných bran pro výběr v dalším kroku. Pro prostředek brány a pro vaši aplikaci logiky, můžete použít různé oblasti. | 
+   | **Location** | Azure omezuje toto umístění do stejné oblasti, která byla vybrána pro cloudovou službu Brána během [instalace brány](../logic-apps/logic-apps-gateway-install.md). <p>**Poznámka:** Ujistěte se, že toto umístění prostředku brány odpovídá umístění bránu cloudové služby. V opačném případě instalaci brány se nemusí zobrazit v seznamu nainstalovaných bran pro výběr v dalším kroku. Pro prostředek brány a pro vaši aplikaci logiky, můžete použít různé oblasti. | 
    | **Název instalace** | Pokud vaše instalace brány není vybrána, vyberte bránu, kterou jste dříve nainstalovali. | 
    | | | 
 

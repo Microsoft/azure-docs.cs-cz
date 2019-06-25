@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: mbaldwin
 ms.openlocfilehash: d68ffe6561da6a23c288dfabd1d3eb6b34099bb3
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66003109"
 ---
 # <a name="security-attributes-for-azure-service-bus-messaging"></a>Atributy zabezpečení pro Azure zasílání zpráv Service Bus
@@ -41,7 +41,7 @@ Tento článek popisuje atributy zabezpečení integrované do Azure zasílání
 | Izolace sítě a podporu funkce brány firewall| Ano (pouze úroveň Premium) |  |
 | Vynucené tunelování podpory| Ne |  |
 
-## <a name="detection"></a>Detekce
+## <a name="detection"></a>Detection (Detekce)
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|

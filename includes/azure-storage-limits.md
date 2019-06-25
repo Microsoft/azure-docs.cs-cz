@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/11/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: ee9b70827c19236287f81f66f4b9c6e1004a54fd
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: e3cff54f49d40fb7da99dcafa9535349ccb70e09
+ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66114507"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67150476"
 ---
 Následující tabulka popisuje výchozí limity pro Azure pro obecné účely v1, v2 a účty Blob storage. *Příchozího přenosu dat* limit odkazuje na všechna data z požadavků, které se odesílají na účet úložiště. *Odchozího přenosu dat* limit odkazuje na všechna data z odpovědi, které byly přijaty z účtu úložiště.
 
@@ -32,15 +32,15 @@ Následující tabulka popisuje výchozí limity pro Azure pro obecné účely v
 <sup>1</sup>účty úložiště azure úrovně Standard podporovat vyšší limity pro příchozí přenos dat podle požadavku. Chcete-li požádat o zvýšení v omezení účtu pro příchozí přenos dat, obraťte se na [podpory Azure](https://azure.microsoft.com/support/faq/).
 
 <sup>2</sup> [replikace azure Storage](https://docs.microsoft.com/azure/storage/common/storage-redundancy) mezi možnosti patří:
-* **RA-GRS**: Geograficky redundantní úložiště jen pro čtení. Pokud je povolené RA-GRS, jsou stejné jako pro primární umístění cíle odchozího přenosu dat pro sekundární lokality.
-* **GRS**: Geograficky redundantní úložiště. 
-* **ZRS**: Zónově redundantní úložiště.
-* **LRS**: Místně redundantní úložiště. 
+- **RA-GRS**: Geograficky redundantní úložiště jen pro čtení. Pokud je povolené RA-GRS, jsou stejné jako pro primární umístění cíle odchozího přenosu dat pro sekundární lokality.
+- **GRS**: Geograficky redundantní úložiště.
+- **ZRS**: Zónově redundantní úložiště.
+- **LRS**: Místně redundantní úložiště.
 
 > [!NOTE]
 > Doporučujeme používat účet úložiště pro obecné účely verze 2 pro většinu scénářů. Pro obecné účely v1 nebo účet úložiště objektů Blob v Azure můžete snadno upgradovat na účet pro obecné účely v2 došlo k výpadku a bez nutnosti kopírovat data.
 >
-> Další informace o účtech Azure Storage najdete v tématu [účet úložiště – přehled](../articles/storage/common/storage-account-overview.md). 
+> Další informace o účtech Azure Storage najdete v tématu [účet úložiště – přehled](../articles/storage/common/storage-account-overview.md).
 
 Potřeb svojí aplikace překročení cíle škálovatelnosti z jednoho účtu úložiště, můžete vytvářet aplikace pomocí více účtů úložiště. Pak můžete dělit datové objekty mezi těmito účty úložiště. Informace o cenách najdete v tématu [ceny za Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
 

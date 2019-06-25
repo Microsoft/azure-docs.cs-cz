@@ -16,10 +16,10 @@ ms.date: 11/14/2018
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: d4e16ca40e8026861d492f950396d6aa39d4c445
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65791558"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>Uchování úloh a dat do služby Azure Storage pomocí knihovny File Conventions služby Batch pro .NET
@@ -59,7 +59,7 @@ Zachování výstupní data do služby Azure Storage pomocí knihovny File Conve
 
 1. Na webu Azure Portal přejděte ke svému účtu Batch.
 1. V části **nastavení**vyberte **účtu úložiště**.
-1. Pokud ještě nemáte účet úložiště spojené s vaším účtem Batch, klikněte na tlačítko **účtu úložiště (žádný)**.
+1. Pokud ještě nemáte účet úložiště spojené s vaším účtem Batch, klikněte na tlačítko **účtu úložiště (žádný)** .
 1. Vyberte ze seznamu pro vaše předplatné účet úložiště. Pro zajištění nejlepšího výkonu použijte účet služby Azure Storage, který je ve stejné oblasti jako účet Batch, kde běží vaše úlohy.
 
 ## <a name="persist-output-data"></a>Zachovat výstupní data

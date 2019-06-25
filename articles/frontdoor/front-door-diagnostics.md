@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sharadag
 ms.openlocfilehash: 16770ea0a320b3d9f081cc21a102ab050a6467f6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60736772"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door-service"></a>Monitorování metrik a protokolů ve službě Azure branou
@@ -34,11 +34,11 @@ Metriky jsou funkce pro určité prostředky Azure, které umožňují zobrazit 
 | RequestCount | Počet požadavků | Počet | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Počet požadavků klientů obsluhuje branou.  |
 | RequestSize | Velikost požadavku | B | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Počet bajtů odeslaných na požadavky klientů na branou. |
 | ResponseSize | Velikost odpovědi | B | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Počet bajtů odeslaných jako odpovědi z přední dveře do klientů. |
-| TotalLatency | Celková latence | Milisekund | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Čas se počítají na základě požadavku klienta přijatých branou až do posledního bajtu odpovědi z přední dveře potvrzeny klienta. |
-| BackendRequestCount | Počet požadavků back-endu | Počet | HttpStatus</br>HttpStatusGroup</br>Back-end | Počet požadavků odeslaných z přední dveře k back-endů. |
-| BackendRequestLatency | Odezva back-endu požadavku | Milisekund | Back-end | Čas se počítají na základě když žádost byla odeslána branou back-endu dokud branou poslední bajt odpovědi přijaté z back-endu. |
-| BackendHealthPercentage | Procento stav back-endu | Procento | Back-end</br>BackendPool | Procento úspěšných stavů testy z přední dveře k back-endů. |
-| WebApplicationFirewallRequestCount | Počet požadavků brány Firewall webových aplikací | Počet | PolicyName</br>RuleName</br>Akce | Počet žádostí klienta zpracovaných rozhraním zabezpečení vrstvy aplikace branou. |
+| TotalLatency | Celková latence | Milisekundy | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Čas se počítají na základě požadavku klienta přijatých branou až do posledního bajtu odpovědi z přední dveře potvrzeny klienta. |
+| BackendRequestCount | Počet požadavků back-endu | Počet | HttpStatus</br>HttpStatusGroup</br>Back-endu | Počet požadavků odeslaných z přední dveře k back-endů. |
+| BackendRequestLatency | Odezva back-endu požadavku | Milisekundy | Back-endu | Čas se počítají na základě když žádost byla odeslána branou back-endu dokud branou poslední bajt odpovědi přijaté z back-endu. |
+| BackendHealthPercentage | Procento stav back-endu | Procento | Back-endu</br>BackendPool | Procento úspěšných stavů testy z přední dveře k back-endů. |
+| WebApplicationFirewallRequestCount | Počet požadavků brány Firewall webových aplikací | Count | PolicyName</br>RuleName</br>Akce | Počet žádostí klienta zpracovaných rozhraním zabezpečení vrstvy aplikace branou. |
 
 ## <a name="activity-log"></a>Protokoly aktivit
 

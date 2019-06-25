@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: hrasheed
 ms.openlocfilehash: f0db36fa380d0d1bb7f2b581c4bf8fa1abfaadaf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60698635"
 ---
 # <a name="use-apache-ambari-to-optimize-hdinsight-cluster-configurations"></a>Použití Apache Ambari optimalizovat konfigurace clusterů HDInsight
@@ -176,7 +176,7 @@ Mapa úlohy vytvoření dočasné soubory, které jsou používány úlohy reduk
 
 K dispozici kompresní typy jsou:
 
-| Formát | Tool | algoritmus | Přípona souboru | Rozdělitelné? |
+| Formát | Nástroj | algoritmus | Přípona souboru | Rozdělitelné? |
 | -- | -- | -- | -- | -- |
 | Gzip | Gzip | DEFLATE | .gz | Ne |
 | Bzip2 | Bzip2 | Bzip2 |.bz2 | Ano |
@@ -269,7 +269,7 @@ Následující části popisují další optimalizace související Hive, může
 
 Výchozí typ spojení v Hive *shuffle spojení*. V Hive speciální mapovačů čtení vstupu a generovat dvojici klíč/hodnota spojení do pomocný soubor. Hadoop seřadí a sloučí tyto dvojice ve fázi náhodně. Tato fáze shuffle je nákladný. Výběr správné spojení na základě vašich dat může výrazně zlepšit výkon.
 
-| Typ připojení | Kdy | Jak | Nastavení hivu | Komentáře |
+| Typ spojení | Kdy | Jak | Nastavení hivu | Komentáře |
 | -- | -- | -- | -- | -- |
 | Shuffle spojení | <ul><li>Výchozí volba</li><li>Vždy funguje.</li></ul> | <ul><li>Čte z část jednu z tabulek</li><li>Kontejnery a řazení na klíč spojení</li><li>Odešle každý zmenšit jeden interval.</li><li>Spojení se provádí na straně zmenšit</li></ul> | Žádné významné Hive nastavení potřebné | Pokaždé, když funguje |
 | Spojení map | <ul><li>Můžete přizpůsobit jedné tabulky v paměti</li></ul> | <ul><li>Načte malé tabulky do tabulky hash v paměti</li><li>Datové proudy přes část velkého souboru</li><li>Připojí každý záznam z tabulky hash</li><li>Spojení jsou mapovačem samostatně</li></ul> | `hive.auto.confvert.join=true` | Velmi rychlé zpracování, ale omezené |
@@ -419,7 +419,7 @@ Následující konfigurace jsou důležité pro zlepšení výkonu úlohy náro�
 
 #### <a name="maximum-region-file-size"></a>Oblast maximální velikost souboru
 
-HBase ukládá data v interním formátu volá *hfile –*. Vlastnost `hbase.hregion.max.filesize` definuje velikost jednoho hfile – pro oblast.  Oblast je rozdělený do dvou oblastí, pokud součet všech HFiles v oblasti je větší než toto nastavení.
+HBase ukládá data v interním formátu volá *hfile –* . Vlastnost `hbase.hregion.max.filesize` definuje velikost jednoho hfile – pro oblast.  Oblast je rozdělený do dvou oblastí, pokud součet všech HFiles v oblasti je větší než toto nastavení.
  
 ![Maximální velikost souboru HBase HRegion](./media/hdinsight-changing-configs-via-ambari/hbase-hregion-max-filesize.png)
 

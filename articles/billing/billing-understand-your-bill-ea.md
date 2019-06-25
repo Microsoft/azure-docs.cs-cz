@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/01/2019
 ms.author: banders
 ms.openlocfilehash: be20ad0583558949f65b9706f0a478669360bf3d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64571204"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>Vysvětlení faktury za Azure Enterprise Agreement
@@ -36,7 +36,7 @@ Při jedné z následujících akcí během fakturačního cyklu obdržíte fakt
 - **Nadlimitní využití služby**: Poplatky za využívání vaší organizace být vyšší než zůstatek vašeho kreditu.
 - **Poplatky se účtují samostatně**: Služby, vaše organizace používá nejsou pokryty všemi uvedeného kreditu. Pro tyto služby se fakturují bez ohledu na to, váš zůstatek kreditu:
     - Canonical
-    - Základy Citrix XenApp
+    - Citrix XenApp Essentials
     - Citrix XenDesktop
     - Registrovaný uživatel
     - Openlogic
@@ -74,7 +74,7 @@ Jeden nebo více Azure faktury se zobrazí, když dojde k následujícímu:
 - **Nadlimitní využití služby**: Poplatky za využívání vaší organizace být vyšší než zůstatek vašeho kreditu.
 - **Poplatky se účtují samostatně**: Služby, vaše organizace používá nejsou pokryty všemi uvedeného kreditu. Pro tyto služby se fakturují bez ohledu na to, váš zůstatek kreditu:
     - Canonical
-    - Základy Citrix XenApp
+    - Citrix XenApp Essentials
     - Citrix XenDesktop
     - Registrovaný uživatel
     - Openlogic
@@ -112,7 +112,7 @@ V následující tabulce jsou uvedeny podmínky a popisy, které jsou uvedené n
 |---|---|---|
 |Celková částka rozšířené|Celkové využití|Celkové využití před zdaněním poplatek za určité období, než se použije tento kredit.|
 |Využití závazků|Využití závazků|Tento kredit použije toto konkrétní období.|
-|Celkový prodej|Celkové nadlimitní využití|Celkové využití nákladů, která překračuje vašeho kreditu. Tato částka nezahrnuje daně.|
+|Celkový prodej|Celkové Nadlimitní využití|Celkové využití nákladů, která překračuje vašeho kreditu. Tato částka nezahrnuje daně.|
 |Částka daně|Neuvedeno|Daň, která se vztahuje na množství celkového prodeje pro konkrétní období.|
 |Celková částka|Neuvedeno|Dobu vypršení platnosti faktury poté, co se použije tento kredit a přidá daně.|
 

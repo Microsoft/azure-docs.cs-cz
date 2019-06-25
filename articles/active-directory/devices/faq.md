@@ -16,12 +16,12 @@ ms.date: 03/22/2019
 ms.author: joflore
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af10596fb1ddf4a4f9eba2b8265eb77221a19f4c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: e29c58c0e9a31b2eb3e3d7e237a3db8173214faf
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "60353121"
+ms.locfileid: "67110648"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory nejčastější dotazy ke správě zařízení
 
@@ -49,7 +49,7 @@ Následující zařízení jsou uvedeny v části **zařízení uživatelů**:
 
 ### <a name="q-i-see-the-device-record-under-the-user-info-in-the-azure-portal-and-i-see-the-state-as-registered-on-the-device-am-i-set-up-correctly-to-use-conditional-access"></a>Otázka: Zobrazí záznam zařízení v části informace o uživateli na webu Azure Portal. A protože zaregistrované na zařízení se zobrazuje stav. Teď můžu nastavit správně použití podmíněného přístupu?
 
-**Odpověď:** Stav připojení k zařízení, se zobrazí podle **deviceID**, musí odpovídat stavu na Azure AD a splnění libovolného kritéria hodnocení pro podmíněný přístup. Další informace najdete v tématu [vyžadují spravovaná zařízení pro přístup k aplikaci cloud s podmíněným přístupem](../conditional-access/require-managed-devices.md).
+**Odpověď:** Stav připojení k zařízení, se zobrazí podle **deviceID**, musí odpovídat stavu na Azure AD a musí splňovat všechna kritéria hodnocení pro podmíněný přístup. Další informace najdete v tématu [vyžadují spravovaná zařízení pro přístup k aplikaci cloud s podmíněným přístupem](../conditional-access/require-managed-devices.md).
 
 ---
 
@@ -263,7 +263,7 @@ Připojení k hybridní službě Azure AD má přednost před stavu registrován
 
 **Poznámky:**
 
-- Uživatelé zahrnutých ve své zásady podmíněného přístupu, musí [podporovanou verzi sady Office pro macOS](../conditional-access/technical-reference.md#client-apps-condition) pro přístup k prostředkům. 
+- Uživatelé součástí vašim požadavkům zásad podmíněného přístupu [podporovanou verzi sady Office pro macOS](../conditional-access/technical-reference.md#client-apps-condition) pro přístup k prostředkům. 
 
 - Během prvního pokusu přístup uživatelům výzva k registraci zařízení pomocí portálu společnosti.
 

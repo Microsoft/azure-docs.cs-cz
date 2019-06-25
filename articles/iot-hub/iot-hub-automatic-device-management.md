@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: chrisgre
 ms.openlocfilehash: 598bf82e375f472b2f723c3462ba7ba7b4d25fbe
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61333640"
 ---
 # <a name="automatic-iot-device-management-at-scale-using-the-azure-portal"></a>Automatická správa zařízení IoT ve velkém měřítku pomocí webu Azure portal
@@ -66,7 +66,7 @@ Existuje pět kroků pro vytvoření konfigurace. V následujících částech s
 
 3. Vyberte **Další** přejděte k dalšímu kroku. 
 
-### <a name="specify-settings"></a>Zadat nastavení
+### <a name="specify-settings"></a>Zadejte nastavení
 
 Tato část určuje cíl obsahu v cílové zařízení dvojčat. Existují dva vstupy pro každou sadu nastavení. První je cesta dvojčete zařízení, který určuje cestu k části JSON v rámci požadované vlastnosti dvojčete, které budou nastaveny.  Druhým je obsah JSON, který má být vložen v této části. Například nastavte cestu dvojče zařízení a obsah takto:
 

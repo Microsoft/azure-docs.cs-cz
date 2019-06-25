@@ -205,7 +205,7 @@
           href: iot-accelerators-device-simulation-advanced-device.md
         - name: Vizualizace telemetrických dat s využitím Time Series Insights
           href: iot-accelerators-device-simulation-time-series-insights.md
-        - name: Serializace telemetrie pomocí Protbuf
+        - name: Serializace telemetrie pomocí Protbufu
           href: iot-accelerators-device-simulation-protobuf.md
         - name: Nasazení vlastní image Dockeru
           href: iot-accelerators-device-simulation-deploy-image.md

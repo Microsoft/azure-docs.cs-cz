@@ -10,10 +10,10 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 06/02/2017
 ms.openlocfilehash: f0591b47ce7ba6837f300088c856c0098fb66710
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60998816"
 ---
 # <a name="b2b-errors-and-solutions-for-azure-logic-apps"></a>B2B chyby a řešení pro Azure Logic Apps
@@ -105,7 +105,7 @@ Příklad:
 
 ## <a name="x12-and-edifact"></a>X12 a EDIFACT
 
-### <a name="leading-or-trailing-space-found"></a>Našla se počáteční nebo koncová mezera.    
+### <a name="leading-or-trailing-space-found"></a>Počáteční nebo koncová mezera nalezen    
     
 |   |   | 
 |---|---|

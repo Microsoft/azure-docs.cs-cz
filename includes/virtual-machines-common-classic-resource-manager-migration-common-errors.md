@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 16ccd89fe6eaad3fd6c2704b2f324f486eee45e1
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66111641"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67174985"
 ---
 # <a name="common-errors-during-classic-to-azure-resource-manager-migration"></a>Běžné chyby při migraci z modelu Classic na Azure Resource Manager
 Tento článek obsahuje katalog nejběžnějších chyb a omezení rizik při migraci prostředků IaaS z modelu nasazení Azure Classic do zásobníku Azure Resource Manageru.

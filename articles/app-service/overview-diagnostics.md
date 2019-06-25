@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/10/2017
 ms.author: jennile
 ms.custom: seodec18
-ms.openlocfilehash: 3e304df51133d53adad50e672249bde6c9960712
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: f2f798be85e9c3aeb8d4b54cba89d8be059427e0
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65539749"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147343"
 ---
 # <a name="azure-app-service-diagnostics-overview"></a>Přehled diagnostiky služby Azure App Service
 
@@ -103,12 +103,12 @@ Jako Proaktivní monitorování využití procesoru, proaktivní automatické op
 
 ![Proaktivní automatické opravy](./media/app-service-diagnostics/proactive-auto-healing-10.png)
 
-## <a name="change-analysis"></a>Analýza změn
+## <a name="change-analysis-only-for-windows-app"></a>Změnit analýzy (pouze pro aplikace pro Windows)
 
-V agilním vývojové prostředí někdy se může být obtížné udržovat přehled o všechny změny provedené do vaší aplikace a umožnit samostatně kotvícímu bodu na změnu, která způsobila není v pořádku chování. Změna analýzy můžete zúžit na změny do vaší aplikace pro usnadnění odstraňování poruch prostředí. Změna analýzy je součástí diagnostickou sestavu jako **aplikace spadne** tak můžete současně jiné metriky.
+V agilním vývojové prostředí někdy se může být obtížné udržovat přehled o všechny změny provedené do vaší aplikace a umožnit samostatně kotvícímu bodu na změnu, která způsobila chování není v pořádku. Změna analýzy můžete zúžit na změny do vaší aplikace pro usnadnění odstraňování poruch prostředí. Změna analýzy se nachází v **změny aplikace** a také vloží do diagnostickou sestavu jako **aplikace spadne** tak můžete současně jiné metriky.
+
+Změna analýzy musí být povoleno před použitím funkce. Další informace o analysis změnit, navštivte [oznamujeme nové prostředí analýzy změn v diagnostice App Service](https://azure.github.io/AppService/2019/05/07/Announcing-the-new-change-analysis-experience-in-App-Service-Diagnostics-Analysis.html).
 
 ![Změnit analýzy výchozí stránku](./media/app-service-diagnostics/change-analysis-default-page-11.png)
 
 ![Rozdílové zobrazení](./media/app-service-diagnostics/diff-view-12.png)
-
-Změna analýzy musí být povoleno před použitím funkce. Další informace o analysis změnit, navštivte [oznamujeme nové prostředí analýzy změn v diagnostice App Service](https://azure.github.io/AppService/2019/05/07/Announcing-the-new-change-analysis-experience-in-App-Service-Diagnostics-Analysis.html).

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: glenga
 ms.openlocfilehash: fecf6759dd7b277dda10fa2656e6ae9407490370
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64922969"
 ---
 # <a name="monitor-azure-functions"></a>Monitorování Azure Functions
@@ -77,7 +77,7 @@ S [povolenou integrací služby Application Insights](#enable-application-insigh
 
 Uvidíte, že obě stránky obsahují **spustit ve službě Application Insights** odkaz pro dotaz Application Insights Analytics, který načítá data.
 
-![Spustit v Application Insights](media/functions-monitoring/run-in-ai.png)
+![Spustit ve službě Application Insights](media/functions-monitoring/run-in-ai.png)
 
 Zobrazí se následující dotaz. Vidíte, že seznamu vyvolání je omezená na poslední 30 dnů. V seznamu se zobrazí více než 20 řádků (`where timestamp > ago(30d) | take 20`). Seznam podrobností volání je za posledních 30 dní bez omezení.
 
@@ -97,7 +97,7 @@ Informace o tom, jak pomocí Application Insights, najdete v článku [dokumenta
 
 Následující oblasti služby Application Insights může být užitečné, když se určuje chování, výkon nebo chyby ve vašich funkcí:
 
-| Tab | Popis |
+| Tabulátor | Popis |
 | ---- | ----------- |
 | **[selhání](../azure-monitor/app/asp-net-exceptions.md)** |  Vytvoření grafů a výstrah na základě funkce chyby a výjimky serveru. **Název operace** je název funkce. Selhání v závislosti nezobrazí, Pokud implementujete vlastní telemetrii pro závislosti. |
 | **[Výkon](../azure-monitor/app/performance-counters.md)** | Analýza problémů s výkonem. |
@@ -605,7 +605,7 @@ Můžete napsat vlastní kód k zobrazení závislostí. Příklady najdete v t�
 
 Hlášení problémů s integrací služby Application Insights ve funkcích, nebo aby návrh nebo žádost [vytvoření problému v Githubu](https://github.com/Azure/Azure-Functions/issues/new).
 
-## <a name="streaming-logs"></a>Protokoly streamování
+## <a name="streaming-logs"></a>Datový proud protokolů
 
 Při vývoji aplikace, je často užitečné prohlédnout si informace o protokolování v téměř reálném čase. Můžete zobrazit datový proud protokolů generovaných vašich funkcí na webu Azure Portal nebo v relaci příkazového řádku v místním počítači.
 

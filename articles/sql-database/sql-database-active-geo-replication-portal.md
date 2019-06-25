@@ -13,10 +13,10 @@ ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 02/13/2019
 ms.openlocfilehash: 8bada96c648881a9943176c45115627a829fcc58
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60864056"
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>Konfigurace aktivní geografické replikace pro Azure SQL Database webu Azure portal a zahájit převzetí služeb při selhání
@@ -70,7 +70,7 @@ Sekundární databáze můžete přepnout na primární.
 2. V okně databáze SQL vyberte **všechna nastavení** > **geografickou replikaci**.
 3. V **sekundárních replik** vyberte databáze, kterou chcete nové primární a klikněte na tlačítko **převzetí služeb při selhání**.
 
-    ![převzetí služeb při selhání](./media/sql-database-geo-replication-failover-portal/secondaries.png)
+    ![Převzetí služeb při selhání](./media/sql-database-geo-replication-failover-portal/secondaries.png)
 4. Klikněte na tlačítko **Ano** zahájíte převzetí služeb při selhání.
 
 Příkaz okamžitě přepne sekundární databázi do primární role. Tento proces by měl obvykle dokončí, v rámci 30 sekund nebo i rychleji.

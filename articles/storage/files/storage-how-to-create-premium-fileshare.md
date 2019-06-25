@@ -9,10 +9,10 @@ ms.date: 05/05/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 265a1cf0a8a5e1e099a4ec7a9f0d674e0c474dd4
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65190097"
 ---
 # <a name="how-to-create-an-premium-azure-file-share"></a>Jak vytvořit premium sdílené složky Azure
@@ -47,8 +47,8 @@ Každý účet úložiště musí patřit do nějaké skupiny prostředků Azure
 1. Dále zadejte název účtu úložiště. Zvolený název musí být jedinečný v rámci Azure. Název také musí mít délku 3 až 24 znaků a může obsahovat jenom číslice a malá písmena.
 1. Vyberte pro svůj účet úložiště nějaké umístění nebo použijte výchozí umístění.
 1. Pro **výkonu** vyberte **Premium**.
-1. Vyberte **druh účtu** a zvolte **úložiště souborů (preview)**.
-1. Ponechte **replikace** nastavit na výchozí hodnotu **místně redundantní úložiště (LRS)**.
+1. Vyberte **druh účtu** a zvolte **úložiště souborů (preview)** .
+1. Ponechte **replikace** nastavit na výchozí hodnotu **místně redundantní úložiště (LRS)** .
 
     ![Jak vytvořit účet úložiště úrovně premium sdílené složky](media/storage-how-to-create-premium-fileshare/premium-files-storage-account.png)
 
@@ -59,7 +59,7 @@ Jakmile se vytvořil váš prostředek účtu úložiště, přejděte na ni.
 
 ### <a name="create-a-premium-file-share"></a>Vytvoření sdílené složky úrovně Premium
 
-1. V levé nabídce pro účet úložiště, přejděte **Souborová služba** a potom vyberte **soubory (preview)**.
+1. V levé nabídce pro účet úložiště, přejděte **Souborová služba** a potom vyberte **soubory (preview)** .
 1. Vyberte **+ sdílená** k vytvoření sdílené složky premium.
 1. Zadejte název a požadované kvóty pro svou sdílenou složku a pak vyberte **vytvořit**.
 

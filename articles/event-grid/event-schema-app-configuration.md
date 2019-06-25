@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 05/30/2019
 ms.author: jimmyca
 ms.openlocfilehash: fe0274f723692eea3cfd25cc0e9e146b35dce2ae
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66735778"
 ---
 # <a name="azure-event-grid-event-schema-for-azure-app-configuration"></a>Schéma událostí Azure Event Grid pro konfiguraci aplikací Azure
@@ -75,14 +75,14 @@ Událost má následující dat nejvyšší úrovně:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| téma | string | Úplné prostředků cesta ke zdroji události. Toto pole není zapisovatelná. Event gridu poskytuje tuto hodnotu. |
-| Předmět | string | Vydavatel definované cesta předmět události. |
+| topic | string | Úplné prostředků cesta ke zdroji události. Toto pole není zapisovatelná. Event gridu poskytuje tuto hodnotu. |
+| subject | string | Vydavatel definované cesta předmět události. |
 | eventType | string | Jeden z typů registrované události pro tento zdroj událostí. |
-| čas události | string | Vygenerování události podle času UTC poskytovatele. |
+| eventTime | string | Vygenerování události podle času UTC poskytovatele. |
 | id | string | Jedinečný identifikátor pro událost. |
 | data | objekt | Data událostí konfigurace aplikace. |
-| dataVersion | string | Verze schématu datového objektu. Vydavatel Určuje verzi schématu. |
-| metadataVersion | string | Verze schématu metadat události. Event Grid definuje schéma vlastnosti nejvyšší úrovně. Event gridu poskytuje tuto hodnotu. |
+| dataVersion | string | Verze schématu datového objektu Vydavatel Určuje verzi schématu. |
+| metadataVersion | string | Verze schématu metadat události Event Grid definuje schéma vlastnosti nejvyšší úrovně. Event gridu poskytuje tuto hodnotu. |
 
 Datový objekt má následující vlastnosti:
 
@@ -90,7 +90,7 @@ Datový objekt má následující vlastnosti:
 | -------- | ---- | ----------- |
 | key | string | Klíč klíč hodnota, která byla změněna nebo odstraněna. |
 | label | string | Popisek, pokud je libovolná z klíč hodnota, která byla změněna nebo odstraněna. |
-| Značka Etag | string | Pro `KeyValueModified` etag nový klíč hodnota. Pro `KeyValueDeleted` etag klíč hodnota, která byla odstraněna. |
+| etag | string | Pro `KeyValueModified` etag nový klíč hodnota. Pro `KeyValueDeleted` etag klíč hodnota, která byla odstraněna. |
  
 ## <a name="next-steps"></a>Další postup
 

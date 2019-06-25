@@ -1,23 +1,17 @@
 ---
 title: Značky prostředků Azure pro logické uspořádání | Dokumentace Microsoftu
 description: Ukazuje způsob použití značek k uspořádání prostředků Azure pro fakturaci a správu.
-services: azure-resource-manager
-documentationcenter: ''
 author: tfitzmac
-ms.assetid: 003a78e5-2ff8-4685-93b4-e94d6fb8ed5b
 ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: AzurePortal
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: tomfitz
-ms.openlocfilehash: 0ee1cc9673d5e4fbd71706af74e82f6520d42b6d
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 861e108efa6da3668f529e0324fd0de19fe84328
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64868791"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206479"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>Používání značek k uspořádání prostředků Azure
 

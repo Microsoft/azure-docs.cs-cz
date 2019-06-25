@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: shlo
 ms.openlocfilehash: a825982532047f6e311c5508394df243310f02ab
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65233919"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>Vysvětlení, příklady ceny služby Data Factory
@@ -41,7 +41,7 @@ K provedení scénáře, budete muset vytvořit kanál s následujícími polož
 | --- | --- |
 | Vytvoření propojené služby | 2 r/w entity  |
 | Vytvoření datových sad | 4 entity čtení/zápis (2 pro vytvoření datové sady a 2 pro odkazy na propojenou službu) |
-| Vytvořit kanál | 3 entity čtení/zápis (1 pro vytvoření kanálu, 2 pro odkazy na datové sady) |
+| Vytvoření kanálu | 3 entity čtení/zápis (1 pro vytvoření kanálu, 2 pro odkazy na datové sady) |
 | Získání kanálu | 1 pro čtení a zápis entity |
 | Spuštění kanálu | 2 spuštění aktivit (1 pro spuštění, 1 pro aktivity spuštění aktivační události) |
 | Kopírování dat z předpokladu: spuštění = 10 minut | 10 \* 4 prostředí azure Integration Runtime (výchozí nastavení DIÚ = 4) Další informace o jednotkách integrace dat a optimalizace výkonu kopírování najdete v tématu [v tomto článku](copy-activity-performance.md) |
@@ -72,7 +72,7 @@ K provedení scénáře, budete muset vytvořit kanál s následujícími polož
 | --- | --- |
 | Vytvoření propojené služby | 3 entity čtení/zápisu  |
 | Vytvoření datových sad | 4 entity čtení/zápis (2 pro vytvoření datové sady a 2 pro odkazy na propojenou službu) |
-| Vytvořit kanál | 3 entity čtení/zápis (1 pro vytvoření kanálu, 2 pro odkazy na datové sady) |
+| Vytvoření kanálu | 3 entity čtení/zápis (1 pro vytvoření kanálu, 2 pro odkazy na datové sady) |
 | Získání kanálu | 1 pro čtení a zápis entity |
 | Spuštění kanálu | 3 spuštění aktivit (1 pro spuštění, 2 pro aktivity spuštění aktivační události) |
 | Kopírování dat z předpokladu: spuštění = 10 minut | 10 \* 4 prostředí azure Integration Runtime (výchozí nastavení DIÚ = 4) Další informace o jednotkách integrace dat a optimalizace výkonu kopírování najdete v tématu [v tomto článku](copy-activity-performance.md) |
@@ -106,7 +106,7 @@ K provedení scénáře, budete muset vytvořit kanál s následujícími polož
 | --- | --- |
 | Vytvoření propojené služby | 3 entity čtení/zápisu  |
 | Vytvoření datových sad | 4 entity čtení/zápis (2 pro vytvoření datové sady a 2 pro odkazy na propojenou službu) |
-| Vytvořit kanál | 3 entity čtení/zápis (1 pro vytvoření kanálu, 2 pro odkazy na datové sady) |
+| Vytvoření kanálu | 3 entity čtení/zápis (1 pro vytvoření kanálu, 2 pro odkazy na datové sady) |
 | Získání kanálu | 1 pro čtení a zápis entity |
 | Spuštění kanálu | 4 spuštění aktivit (1 pro spuštění, 3 pro aktivity spuštění aktivační události) |
 | Kopírování dat z předpokladu: spuštění = 10 minut | 10 \* 4 prostředí azure Integration Runtime (výchozí nastavení DIÚ = 4) Další informace o jednotkách integrace dat a optimalizace výkonu kopírování najdete v tématu [v tomto článku](copy-activity-performance.md) |
@@ -149,7 +149,7 @@ K provedení scénáře, budete muset vytvořit kanál s následujícími polož
 | --- | --- |
 | Vytvoření propojené služby | 2 r/w entity  |
 | Vytvoření datových sad | 4 entity čtení/zápis (2 pro vytvoření datové sady a 2 pro odkazy na propojenou službu) |
-| Vytvořit kanál | 3 entity čtení/zápis (1 pro vytvoření kanálu, 2 pro odkazy na datové sady) |
+| Vytvoření kanálu | 3 entity čtení/zápis (1 pro vytvoření kanálu, 2 pro odkazy na datové sady) |
 | Získání kanálu | 1 pro čtení a zápis entity |
 | Spuštění kanálu | 2 spuštění aktivit (1 pro spuštění, 1 pro aktivity spuštění aktivační události) |
 | Doba provádění předpoklady toku dat: = 10 min + 10 min. hodnota TTL | 10 \* 8jádrový obecné výpočetní s TTL 10 |

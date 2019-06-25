@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/22/2019
-ms.openlocfilehash: 15aedaa7eedad4940945e9b1e7eff0e1780da796
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: ca29bfdb381c5cab0625a320679331c82f63c887
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65790384"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67118072"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-based-purchasing-model"></a>Omezení prostředků pro izolované databáze pomocí nákupní model založený na virtuálních jádrech
 
@@ -146,7 +146,7 @@ Můžete nastavit úroveň služby, výpočetního prostředí a velikost úlož
 |Velikost databáze TempDB (GB)|32|64|128|
 |Typ úložiště|Storage úrovně Premium (vzdálené)|Storage úrovně Premium (vzdálené)|Storage úrovně Premium (vzdálené)|
 |Vstupně-výstupní latence (přibližné)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|
-|Cíl vstupně-výstupních operací (64 KB)|250|500|1000|
+|Cíl vstupně-výstupních operací (64 KB)|500|1000|2000|
 |Omezení přenosové rychlosti protokolu (MB/s)|2.5|5.6|10|
 |Maximální počet souběžných pracovních procesů (požadavků)|75|150|300|
 |Maximální povolené relace|30000|30000|30000|

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/25/2018
 ms.author: jasonh
 ms.openlocfilehash: 5f68b50c94dad0be6d89eef2d6fbef949424f9ba
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57964112"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67175444"
 ---
 > [!IMPORTANT]
 > SCP.NET verze použitá v projektu musí odpovídat verzi Storm na clusteru HDInsight. Použijte následující tabulku k určení verze, které byste měli použít:

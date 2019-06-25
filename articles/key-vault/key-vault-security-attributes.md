@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 1c2265ff5f4c444121bf70c35145703f1b9fe981
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66000183"
 ---
 # <a name="security-attributes-for-azure-key-vault"></a>Atributy zabezpečení pro Azure Key Vault
@@ -40,7 +40,7 @@ Tento článek popisuje atributy zabezpečení integrované do Azure Key Vault.
 | Izolace sítě a podporu funkce brány firewall| Ano | Pomocí pravidel brány firewall virtuální sítě. |
 | Vynucené tunelování podpory| Ne |  |
 
-## <a name="detection"></a>Detekce
+## <a name="detection"></a>Detection (Detekce)
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
@@ -61,7 +61,7 @@ Tento článek popisuje atributy zabezpečení integrované do Azure Key Vault.
 | Řízení a rovinou protokolování a auditování| Ano | Používat službu Log Analytics. |
 | Protokolování roviny dat a auditu| Ano | Používat službu Log Analytics. |
 
-## <a name="access-controls"></a>Ovládací prvky přístupu
+## <a name="access-controls"></a>Řízení přístupu
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|

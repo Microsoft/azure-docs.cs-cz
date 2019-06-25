@@ -13,10 +13,10 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
 ms.openlocfilehash: d2b06d044f68972ef72dd9b53401980e84ef779f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66152431"
 ---
 # <a name="provision-enterprise-edition-for-the-azure-ssis-integration-runtime"></a>Zřízení Enterprise Edition pro prostředí Azure-SSIS Integration Runtime
@@ -42,7 +42,7 @@ Některé z těchto funkcí vyžadovat instalaci dalších komponent pro přizp�
 | Přibližné seskupení a vyhledávání s fuzzy logikou transformace  | Seskupení přibližných shod a vyhledávání s fuzzy logikou transformace jsou předinstalovány v prostředí Azure-SSIS IR Enterprise Edition. Tyto součásti podporu systému SQL Server a Azure SQL Database pro ukládání referenční data. |
 | Extrakce termínu a období vyhledávání transformace | Termín extrakce a vyhledávací termín transformace jsou předinstalovány v prostředí Azure-SSIS IR Enterprise Edition. Tyto součásti podporu systému SQL Server a Azure SQL Database pro ukládání referenční data. |
 
-## <a name="instructions"></a>Instrukce
+## <a name="instructions"></a>Pokyny
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

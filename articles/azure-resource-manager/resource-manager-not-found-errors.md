@@ -1,24 +1,17 @@
 ---
 title: Prostředek Azure nenalezení | Dokumentace Microsoftu
 description: Popisuje, jak vyřešit chyby, když prostředek se nenašel.
-services: azure-resource-manager
-documentationcenter: ''
 author: tfitzmac
-manager: timlt
-editor: ''
 ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 06/06/2018
 ms.author: tomfitz
-ms.openlocfilehash: 0dfbfa73009b5fa47dd7bb0804b612d0c2ad0a5a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9c999a70ffdbed0c954cfc960b5febdaff06e4ae
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61062244"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206190"
 ---
 # <a name="resolve-not-found-errors-for-azure-resources"></a>Vyřešte chyby nenalezení pro prostředky Azure
 

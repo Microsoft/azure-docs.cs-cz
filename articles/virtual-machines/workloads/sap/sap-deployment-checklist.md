@@ -17,10 +17,10 @@ ms.date: 04/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 93fae0babdee5eac87d50679fdd5b2b938c4df2e
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65236888"
 ---
 # <a name="sap-workload-on-azure-planning-and-deployment-checklist"></a>Úloh SAP v Azure kontrolní seznam plánování a nasazení 
@@ -157,7 +157,7 @@ Pilotní nasazení můžete spustit před nebo v paralelní k plánování a př
    3.  Ujistěte se, že všechny prostředky, které je potřeba šifrovat zašifrují. Definování a provádění procesy pro zálohování certifikáty, ukládat a přístup k těchto certifikátů a obnovení šifrovaných entity. 
    4.  Použití [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-faq) a/nebo disky operačního systému, kde možných odesílatelů operačního systému podporují pohledu
    5.  Zkontrolujte, že se používají příliš mnoho vrstvy šifrování. To dává smysl omezené použití Azure Disk encryption a na prvních jedné z metod DBMS transparentnímu šifrování dat
-6. Testování výkonnosti
+6. Testování výkonu
    1.  V systému SAP na základě SAP trasování a měření porovnejte nejvyšší 10 online sestavy do aktuální implementace, kde je to možné 
    2.  V SAP na základě SAP trasování a měření porovnejte prvních 10 dávkových úloh aktuální implementace, kde je to možné 
    3.  V SAPU na základě SAP trasování a měření porovnejte přenosy dat prostřednictvím rozhraní do systému SAP. Zaměřte se na rozhraních, kdy víte, teď bude přenos mezi různými umístěními, jako v místním do Azure 

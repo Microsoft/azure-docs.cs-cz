@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: a45e2af6f2cb9c105c084585a03a6de615fa1397
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64573042"
 ---
 # <a name="streaming-endpoints-overview"></a>Přehled koncových bodů streamování  
@@ -79,8 +79,8 @@ Pokud vaše **verze "1.0"** koncový bod streamování má > = 1 (SU), jednotky 
 |--------------|----------|-----------------|-----------------|-----------------|
 |Classic|1.0|0|Není k dispozici|Free|
 |Koncový bod streamování Standard (preview)|2.0|0|Ano|Placené|
-|Jednotky streamování Premium|1.0|> 0|Ano|Placené|
-|Jednotky streamování Premium|2.0|> 0|Ano|Placené|
+|Jednotky streamování Premium|1.0|>0|Ano|Placené|
+|Jednotky streamování Premium|2.0|>0|Ano|Placené|
 
 ### <a name="features"></a>Funkce
 
@@ -104,7 +104,7 @@ Informace o smlouvách SLA najdete v článku [ceny a smlouva SLA](https://azure
 
 ## <a name="migration-between-types"></a>Migrace mezi typy
 
-Od | Akce | Akce
+Z | Do | Akce
 ---|---|---
 Classic|Standard|Muset vyjádřit výslovný souhlas
 Classic|Premium| Škálování (dodatečné jednotky streamování)

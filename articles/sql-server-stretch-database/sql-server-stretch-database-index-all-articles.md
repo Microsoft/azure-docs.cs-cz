@@ -14,10 +14,10 @@ ms.author: blazem
 ms.reviewer: jroth
 manager: jroth
 ms.openlocfilehash: 81f1ac3280381ef08a1daf1fa4e041227a07aeaf
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66003028"
 ---
 # <a name="all-topics-for-azure-sql-server-stretch-database-service"></a>Všechna témata týkající se služby Azure SQL Server Stretch Database
@@ -31,7 +31,7 @@ Toto téma obsahuje přehled každé téma, která se vztahuje přímo **SQL Ser
 | 3 |[Přehled služby Stretch Database](sql-server-stretch-database-overview.md) |Zjistěte, jak funkce Stretch Database migruje vaše studená data transparentně a bezpečně do cloudu Microsoft Azure. |
 | 4 |[Začínáme spuštěním Průvodce Stretch Database povolit](sql-server-stretch-database-wizard.md) |Naučte se nakonfigurovat databázi pro funkci Stretch Database spuštěním průvodce povolením funkce Stretch pro databázi. |
 
-## <a name="enable"></a>Zapnout
+## <a name="enable"></a>Povolení
 | &nbsp; | Titul | Popis |
 | ---:|:--- |:--- |
 | 5 |[Povolení funkce Stretch Database pro databázi](sql-server-stretch-database-enable-database.md) |Zjistěte, jak nakonfigurovat databázi pro Stretch Database. |

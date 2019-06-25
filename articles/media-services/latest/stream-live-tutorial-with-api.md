@@ -1,6 +1,6 @@
 ---
-title: Stream za provozu pomocí Azure Media Services v3 pomocí .NET | Dokumentace Microsoftu
-description: Tento kurz vás provede postupem živého streamování s Media Services v3 s použitím .NET Core.
+title: Stream za provozu pomocí Azure Media Services v3 | Dokumentace Microsoftu
+description: Tento kurz vás provede kroky pro živé streamování pomocí Media Services v3.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -12,21 +12,21 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 04/21/2019
+ms.date: 06/13/2019
 ms.author: juliako
-ms.openlocfilehash: e4f32e14e8c1035055bd8a37bb453764984fbe4d
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 5028fd4179f19634b41bb46a5f6df40f36cc8e29
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149141"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275572"
 ---
-# <a name="tutorial-stream-live-with-media-services-v3-using-net"></a>Kurz: Stream živé pomocí Media Services v3 pomocí .NET
-
-Ve službě Azure Media Services [živé události](https://docs.microsoft.com/rest/api/media/liveevents) zodpovídají za zpracování obsahu živého streamování. Živá událost obsahuje vstupní koncový bod (adresa URL ingestu), pak poskytnete kodér služby live Encoding. Živá událost přijímat živé vstupní datové proudy z live encoder a zpřístupňuje je prostřednictvím jednoho nebo více datových proudů [koncové body streamování](https://docs.microsoft.com/rest/api/media/streamingendpoints). Události v reálném čase také poskytuje koncový bod ve verzi preview (adresa URL náhledu), který používáte k zobrazení náhledu a ověření datového proudu před dalším zpracováním a doručením. Tento kurz ukazuje, jak použít .NET Core k vytvoření **průchozího** typu události v reálném čase. 
+# <a name="tutorial-stream-live-with-media-services"></a>Kurz: Stream za provozu pomocí služby Media Services
 
 > [!NOTE]
-> Než budete pokračovat, přečtěte si téma [Živé streamování s Media Services v3](live-streaming-overview.md). 
+> I když v tomto kurzu použijete [sady .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) příklady, obecný postup je stejný pro [rozhraní REST API](https://docs.microsoft.com/rest/api/media/liveevents), [rozhraní příkazového řádku](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest), nebo jiné podporované [sady SDK](media-services-apis-overview.md#sdks) .
+
+Ve službě Azure Media Services [živé události](https://docs.microsoft.com/rest/api/media/liveevents) zodpovídají za zpracování obsahu živého streamování. Živá událost obsahuje vstupní koncový bod (adresa URL ingestu), pak poskytnete kodér služby live Encoding. Živá událost přijímat živé vstupní datové proudy z live encoder a zpřístupňuje je prostřednictvím jednoho nebo více datových proudů [koncové body streamování](https://docs.microsoft.com/rest/api/media/streamingendpoints). Události v reálném čase také poskytuje koncový bod ve verzi preview (adresa URL náhledu), který používáte k zobrazení náhledu a ověření datového proudu před dalším zpracováním a doručením. Tento kurz ukazuje, jak použít .NET Core k vytvoření **průchozího** typu události v reálném čase. 
 
 V tomto kurzu získáte informace o následujících postupech:    
 
@@ -47,6 +47,9 @@ K dokončení kurzu potřebujete následující:
 - Postupujte podle kroků v [rozhraní API k přístupu k Azure Media Services pomocí Azure CLI](access-api-cli-how-to.md) a uložte přihlašovací údaje. Je potřeba použít pro přístup k rozhraní API.
 - Fotoaparát nebo zařízení (jako je přenosný počítač), které se používá k vysílání události
 - Místní kodér pro kódování v reálném čase, který převádí signály z kamery na datové proudy, které se odesílají do služby živého streamování Media Services. Datový proud musí být ve formátu **RTMP** nebo **Smooth Streaming**.
+
+> [!TIP]
+> Než budete pokračovat, přečtěte si téma [Živé streamování s Media Services v3](live-streaming-overview.md). 
 
 ## <a name="download-and-configure-the-sample"></a>Stažení a konfigurace ukázky aplikace
 
@@ -88,7 +91,8 @@ Některé věci, které můžete zadat při vytváření živé události jsou:
 * Umístění Media Services 
 * Protokol streamování pro živá událost (v současné době jsou podporovány protokoly RTMP nebo Smooth Streaming).<br/>Možnost protokolu nelze změnit během živá událost nebo jeho přidružené výstupů za běhu. Pokud požadujete různé protokoly, měli byste vytvořit samostatné živá událost pro každý protokol streamování.  
 * Omezení IP adres u ingestování a náhledu. Můžete definovat IP adresy, které jsou povoleno ingestování videa tato živá událost. Povolené IP adresy se dají zadat jako jedna IP adresa (třeba 10.0.0.1), rozsah IP adres pomocí IP adresy a masky podsítě CIDR (třeba 10.0.0.1/22) nebo rozsah IP adres a maska podsítě v desítkovém zápisu s tečkou (třeba 10.0.0.1(255.255.252.0)).<br/>Pokud nezadáte žádné IP adresy a neexistuje definice pravidla, nebude povolená žádná IP adresa. Pokud chcete povolit libovolnou IP adresy, vytvořte pravidlo a nastavte 0.0.0.0/0.<br/>IP adresy musí být v jednom z následujících formátů: Adresu IpV4 s 4 číslice, rozsah adres CIDR.
-* Při vytváření události můžete nastavit automatické spouštění. <br/>Když automatické spuštění je nastavena na hodnotu true, živá událost se spustí po jeho vytvoření. To znamená, co nejdříve startsrunning živá událost fakturace začíná. Musíte explicitně volat Stop prostředku živá událost, která zastaví další fakturace. Další informace najdete v tématu [živá událost stavy a fakturace](live-event-states-billing.md).
+* Při vytváření události můžete nastavit automatické spouštění. <br/>Když automatické spuštění je nastavena na hodnotu true, živá událost se spustí po jeho vytvoření. To znamená, fakturace spustí, jakmile živá událost se spustí. Musíte explicitně volat Stop prostředku živá událost, která zastaví další fakturace. Další informace najdete v tématu [živá událost stavy a fakturace](live-event-states-billing.md).
+* Pro adresu URL ingestování bude prediktivní nastavte režim "vlastní". Podrobné informace najdete v tématu [živá událost ingestované adresy URL](live-events-outputs-concept.md#live-event-ingest-urls).
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/Live/MediaV3LiveApp/Program.cs#CreateLiveEvent)]
 

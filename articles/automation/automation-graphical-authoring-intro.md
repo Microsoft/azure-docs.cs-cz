@@ -10,10 +10,10 @@ ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: ae732ab5c73dbec4a2aef6521b9edb490079112e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60740543"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Grafické vytváření obsahu v Azure Automation.
@@ -44,7 +44,7 @@ Ovládací prvky můžete použít v dolní části plátna pro přiblížení a
 
 Ovládacím prvku knihovna je, kde můžete vybrat [aktivity](#activities) přidáte do runbooku. Můžete je přidat na plátno, kde je připojení k jiné aktivity. Obsahuje čtyři části jsou popsané v následující tabulce:
 
-| Sekce | Popis |
+| Section | Popis |
 |:--- |:--- |
 | Rutiny |Zahrnuje všechny rutiny, které lze použít ve své sadě runbook. Rutiny jsou uspořádané podle modulu. Všechny moduly nainstalované ve vašem účtu automation jsou k dispozici. |
 | Runbooky |Obsahuje sady runbook ve vašem účtu automation. Tyto sady runbook lze přidat na plátno a použít jako podřízené sady runbook. Zobrazují se jenom runbooky stejného typu jako sady runbook, který právě upravujete core; pro grafický jsou uvedeny pouze pomocí prostředí PowerShell runbooky sady runbook, zatímco pro grafický Powershellový pracovní postup sady runbook jsou uvedeny pouze pomocí prostředí PowerShell pracovního postupu-sady runbook. |
@@ -89,7 +89,7 @@ Když runbook ještě nebyla publikována, je ve stavu **nový**. Když se publi
 
 Máte také možnost vrátit na publikovanou verzi runbooku. Vyvolá okamžitě všechny změny provedené od posledního publikování sady runbook a nahradí koncept runbooku publikovanou verzi.
 
-## <a name="activities"></a>Aktivity
+## <a name="activities"></a>Činnosti
 
 Aktivity jsou stavební bloky sady runbook. Aktivita může být rutiny Powershellu, podřízené sady runbook nebo aktivita pracovního postupu. Přidání aktivity do sady runbook pravým tlačítkem myši v ovládacím prvku knihovna a výběrem **přidat na plátno**. Potom můžete kliknout a přetáhněte aktivitu umístit kamkoli na plátno, který vás zajímá. Umístění na plátně aktivity nemá vliv na operace sady runbook žádným způsobem. Můžete rozložit sadě runbook, ale pro vás nejvhodnější vizualizaci jeho operace.
 
@@ -119,11 +119,11 @@ Pokud zadáte hodnotu pro parametr, vyberte zdroj dat k určení, jak je zadaná
 | Asset certifikátu |Vyberte certifikát Automation jako vstup. |
 | Asset připojení |Vyberte připojení služby Automation jako vstup. |
 | Powershellový výraz |Zadat jednoduchý [Powershellový výraz](#powershell-expressions). Výraz je vyhodnocen před aktivity a výsledek použité pro hodnotu parametru. Proměnné můžete použít k odkazování na výstupu aktivity nebo vstupní parametr runbooku. |
-| Není nakonfigurované |Vymaže libovolnou hodnotu, která byla dříve nakonfigurovaná. |
+| Není nakonfigurováno |Vymaže libovolnou hodnotu, která byla dříve nakonfigurovaná. |
 
 #### <a name="optional-additional-parameters"></a>Nepovinné další parametry
 
-Všechny rutiny máte možnost zadat další parametry. Jedná se o běžné parametry Powershellu nebo jiné vlastní parametry. Zobrazí se textové pole, ve kterém můžete zadat parametry s využitím syntaxe Powershellu. Chcete-li například použít **Verbose** společný parametr, zadali byste **"-Verbose: $True"**.
+Všechny rutiny máte možnost zadat další parametry. Jedná se o běžné parametry Powershellu nebo jiné vlastní parametry. Zobrazí se textové pole, ve kterém můžete zadat parametry s využitím syntaxe Powershellu. Chcete-li například použít **Verbose** společný parametr, zadali byste **"-Verbose: $True"** .
 
 ### <a name="retry-activity"></a>Opakování aktivity
 
@@ -194,7 +194,7 @@ Vyberte odkaz a nakonfigurujte její vlastnosti v okně konfigurace. Jedná se o
 | Typ odkazu | Popis |
 |:--- |:--- |
 | Kanál |Cílová aktivita spustí jednou pro každý objekt výstup ze zdrojové aktivity. Cílová aktivita se nespustí, pokud zdrojová aktivita výsledkem žádný výstup. Výstup ze zdrojové aktivity je k dispozici jako objekt. |
-| Sekvence |Cílová aktivita se spustí pouze jednou. Přijímá pole objektů ze zdrojové aktivity. Výstup ze zdrojové aktivity je k dispozici jako pole objektů. |
+| Pořadí |Cílová aktivita se spustí pouze jednou. Přijímá pole objektů ze zdrojové aktivity. Výstup ze zdrojové aktivity je k dispozici jako pole objektů. |
 
 ### <a name="starting-activity"></a>Spuštění aktivit
 
@@ -249,7 +249,7 @@ Následující příklad je součástí sady runbook, který se spustí sadu vir
 
 Cyklus je, když aktivita odkazy cíl, zpět jeho zdrojová aktivita nebo jiné aktivity, který nakonec odkazuje zpět na svůj zdroj. Cykly není aktuálně povoleno ve vytváření grafického obsahu. Pokud vaše sada runbook obsahuje cyklus, uloží správně, ale při spuštění se zobrazí chyba.
 
-![Cyklické](media/automation-graphical-authoring-intro/runbook-cycle.png)
+![Cyklus](media/automation-graphical-authoring-intro/runbook-cycle.png)
 
 ### <a name="sharing-data-between-activities"></a>Sdílení dat mezi aktivitami
 
@@ -272,7 +272,7 @@ $ActivityOutput['Activity Label'].PropertyName
 
 Můžete nastavit [kontrolní body](automation-powershell-workflow.md#checkpoints) v sadě runbook grafický Powershellový pracovní postup tak, že vyberete *runbook kontrolního bodu* u všech aktivit. To způsobí, že kontrolní bod nastavit po spuštění aktivit.
 
-![Checkpoint](media/automation-graphical-authoring-intro/set-checkpoint.png)
+![CheckPoint](media/automation-graphical-authoring-intro/set-checkpoint.png)
 
 Kontrolní body jsou povolené jenom v sadách runbook grafický Powershellový pracovní postup, není k dispozici v grafických runboocích. Pokud sada runbook používá rutiny Azure, měli byste postupovat podle všechny kontrolní aktivity s Connect-AzureRmAccount v případě, je runbook pozastavený a restartuje od tohoto kontrolního bodu na jinému pracovnímu procesu.
 
@@ -324,7 +324,7 @@ Každý vstupní parametr je definován vlastností v následující tabulce:
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| Název |Jedinečný název parametru. To může obsahovat jenom alfanumerické znaky a nesmí obsahovat mezery. |
+| Name |Jedinečný název parametru. To může obsahovat jenom alfanumerické znaky a nesmí obsahovat mezery. |
 | Popis |Volitelný popis pro vstupní parametr. |
 | Type |Datový typ, očekávání pro hodnotu parametru. Na webu Azure portal poskytuje vhodný ovládací prvek pro datový typ pro každý parametr při zobrazení výzvy ke vstupu. |
 | Povinné |Určuje, zda je nutné zadat hodnotu pro parametr. Sadu runbook nelze spustit, pokud nezadáte hodnotu pro každý povinný parametr, který nemá výchozí hodnotu definovanou. |

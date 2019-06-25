@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pabutler
 ms.openlocfilehash: 2719b6b47225576f2eadeb5e5b40b3aa7b39444d
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64943087"
 ---
 <a name="seller-insights-faq"></a>Prodejce Insights – nejčastější dotazy
@@ -35,19 +35,19 @@ Po stažení transakcí z modulu výběr, vyhledejte sloupec s názvem **výběr
 <a name="calculate-my-open-accounts-receivable"></a>Vypočítat Moje otevřít pohledávek
 -------------------------------------
 
-Po stažení transakcí z modulu výběr, vyhledejte sloupec s názvem **výběr stav**a použijte filtr, aby se zobrazily pouze hodnotu "Nadcházející výběr" a "Není připraven pro výběr." Pak provede součet sloupec s názvem **výběr částka (PC)**.
+Po stažení transakcí z modulu výběr, vyhledejte sloupec s názvem **výběr stav**a použijte filtr, aby se zobrazily pouze hodnotu "Nadcházející výběr" a "Není připraven pro výběr." Pak provede součet sloupec s názvem **výběr částka (PC)** .
 
 
 <a name="calculate-revenue-by-customer-usage-period"></a>Vypočítat výnosy podle: období využití zákazníka
 ------------------------------------------
 
-Po stažení transakcí z modulu výběr, vyhledejte sloupec s názvem **stav transakce**a hodnota "Paid" filtru.   Pro každou transakci uvedený, sloupec s názvem **výběr částka (PC)** představuje velikost byly placené.  Pro odhad doby využití asociovaný s transakcí, použít sloupec **datum poplatku**, což je aproximace posledního dne spotřeby pro období, na kterou se vztahuje transakci.
+Po stažení transakcí z modulu výběr, vyhledejte sloupec s názvem **stav transakce**a hodnota "Paid" filtru.   Pro každou transakci uvedený, sloupec s názvem **výběr částka (PC)**  představuje velikost byly placené.  Pro odhad doby využití asociovaný s transakcí, použít sloupec **datum poplatku**, což je aproximace posledního dne spotřeby pro období, na kterou se vztahuje transakci.
 
 
 <a name="calculate-your-bad-debt"></a>Vypočítat nedobytné pohledávky
 ---------------------
 
-Po stažení transakcí z modulu výběr, vyhledejte sloupec s názvem **konečný stav kolekce**a použijte filtr jenom zobrazit hodnota "odepsat." Pak provede součet sloupec s názvem **výběr částka (PC)**.
+Po stažení transakcí z modulu výběr, vyhledejte sloupec s názvem **konečný stav kolekce**a použijte filtr jenom zobrazit hodnota "odepsat." Pak provede součet sloupec s názvem **výběr částka (PC)** .
 
 
 <a name="view-payout-or-customer-contact-information"></a>Zobrazit výběr nebo zákazník kontaktní informace

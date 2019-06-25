@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/06/2019
+ms.date: 06/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb5e667151f0148468e9eda8189c0f249b402b56
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bd06eafca2c508bc73fa2b327235621797be417c
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67095275"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274190"
 ---
 # <a name="tutorial-integrate-otsuka-shokai-with-azure-active-directory"></a>Kurz: Integrace s Azure Active Directory Otsuka Shokai
 
@@ -29,7 +29,6 @@ V tomto kurzu se dozvíte, jak integrovat Otsuka Shokai s Azure Active Directory
 
 * Ovládací prvek ve službě Azure AD, který má přístup k Otsuka Shokai.
 * Aby uživatelé mohli být automaticky přihlášeni k Otsuka Shokai pomocí jejich účtů služby Azure AD.
-* Správa účtů v jednom centrálním místě – na webu Azure portal.
 
 Další informace o integraci aplikací SaaS v Azure AD, najdete v článku [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
@@ -112,17 +111,15 @@ Použijte následující postup povolení jednotného přihlašování Azure AD 
 
     g. Klikněte na **Uložit**.
 
-1. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko Kopírovat zkopírujte **adresa Url federačních metadat aplikace** a uložte ho do vašeho programu Poznámkový blok .
-
-   ![Odkaz ke stažení certifikátu](common/copy-metadataurl.png)
-
-1. Na **nastavení Otsuka Shokai** tématu, zkopírujte příslušné adresy URL na základě vašich požadavků.
-
-   ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
-
 ### <a name="configure-otsuka-shokai"></a>Konfigurace Otsuka Shokai
 
-Ke konfiguraci jednotného přihlašování na **Otsuka Shokai** straně, je nutné odeslat **adresa Url federačních metadat aplikace** k [tým podpory Otsuka Shokai](mailto:Tatsuya.Satoh@otsuka-shokai.co.jp). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+1. Při připojení ke stránce zákazníka z jednotného přihlašování aplikace, Průvodce spustí nastavení jednotného přihlašování.
+
+2. Pokud Otsuka ID není zaregistrované, pokračujte Otsuka ID nové registrace.   Pokud jste se zaregistrovali Otsuka-ID, přejděte k nastavení propojení.
+
+3. Pokračovat na konci a když na hlavní obrazovce se zobrazí po přihlášení na stránce zákazníka, nastavení jednotného přihlašování se dokončí.
+
+4. Při příštím připojení k stránce zákazníka z jednotného přihlašování aplikace po otevření obrazovky pokyny na hlavní obrazovce se zobrazí po přihlášení na stránce zákazníka.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
@@ -156,7 +153,7 @@ V této části povolíte B. Simon používat jednotné přihlašování Azure d
 
 ### <a name="create-otsuka-shokai-test-user"></a>Vytvoření Otsuka Shokai testovacího uživatele
 
-V této části vytvořte uživatele B.Simon v Otsuka Shokai. Práce s [tým podpory Otsuka Shokai](mailto:Tatsuya.Satoh@otsuka-shokai.co.jp) přidat uživatele na platformě Otsuka Shokai. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+Při prvním přístupu k Otsuka Shokai se provede registrace nové aplikace SaaS účtu. Kromě toho jsme také přidruží SaaS a účtu služby Azure AD v době vytvoření nového.
 
 ### <a name="test-sso"></a>Test SSO
 

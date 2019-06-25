@@ -18,10 +18,10 @@ ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1f6f66779bec9ed4e38e5a662c2d3728ba2034b6
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65545298"
 ---
 # <a name="single-page-applications"></a>Jednostránkové aplikace
@@ -45,11 +45,11 @@ V tomto scénáři, když se uživatel přihlásí, JavaScript front-end využí
 1. Kód jazyka JavaScript klienta, spouštění v prohlížeči extrahuje token z odpovědi používané k zabezpečení volání aplikace webového že rozhraní API zpět ukončit.
 1. Prohlížeč volání aplikace webového rozhraní API zpět končit ID tokenu v autorizační hlavičce. Ověřování služby Azure AD vydá token ID, který může sloužit jako nosný token, pokud prostředek je stejné jako ID klienta (v tomto případě to platí je webové rozhraní API back-endu vaší aplikace vlastní).
 
-## <a name="code-samples"></a>Ukázky kódu
+## <a name="code-samples"></a>Ukázky kódů
 
 Zobrazit [ukázky kódu pro scénáře jednostránková aplikace](sample-v1-code.md#single-page-applications). Nezapomeňte se podívat zpět často, jak často jsou přidávány nové ukázky.
 
-## <a name="app-registration"></a>Registrace aplikace
+## <a name="app-registration"></a>Registrace aplikací
 
 * Jednoho tenanta – Pokud vytváříte aplikaci pouze pro vaši organizaci, je nutné jej zaregistrovat v adresáři vaší firmy s využitím webu Azure portal.
 * Víceklientské – Pokud vytváříte aplikaci, která je možné uživatele mimo vaši organizaci ho musí být zaregistrovaný v adresáři vaší společnosti, ale také musí být zaregistrovaný v adresáři každé organizace, který bude používat aplikace. K zajištění dostupnosti v jejich adresáři aplikace, můžete zahrnout procesu registrace pro vaše zákazníky, díky kterým souhlas s vaší aplikací. Při registraci pro vaši aplikaci, se zobrazí se dialogové okno zobrazující oprávnění, která aplikace požaduje instalaci a pak možnost vyjádřit souhlas. V závislosti na požadovaných oprávnění může být správcem v druhé organizaci nutné vyjádřit souhlas. Když uživatel nebo správce souhlasí, aplikace je zaregistrovaný v jejich adresáře.

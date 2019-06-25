@@ -4,15 +4,15 @@ description: Tento článek představuje konceptů, jako jsou uložené procedur
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 06/14/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 40d120fe5fcc79721923d3493e74b5195ecc129c
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 529c536d9ea3b898745f03c80b63702b2af485da
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65965700"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165580"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Uložené procedury, triggery a uživatelem definovaných funkcí
 
@@ -73,9 +73,9 @@ Buď můžete zajistit, že vaše funkce jazyka JavaScript dokončit během čas
 
 Funkce jazyka JavaScript jsou také podléhá [zřízené kapacity propustnosti](request-units.md). Funkce jazyka JavaScript může potenciálně skončit pomocí velký počet jednotek žádostí za krátkou dobu a může být míra časově omezené při dosažení limitu kapacity zřízenou propustnost. Je důležité si uvědomit, že skripty využívají větší propustnost kromě propustnost trvání provádění databázových operací, i když tyto databázové operace jsou mírně levnější než provádění stejné operace z klienta.
 
-## <a name="triggers"></a>Aktivační události
+## <a name="triggers"></a>Aktivační procedury
 
-Tato část popisuje dva typy aktivačních událostí:
+Azure Cosmos DB podporuje dva typy aktivačních událostí:
 
 ### <a name="pre-triggers"></a>Předběžné aktivační události
 
@@ -84,6 +84,9 @@ Azure Cosmos DB poskytuje triggery, které můžou vyvolat operace na položku s
 ### <a name="post-triggers"></a>Po aktivační události
 
 Podobně jako u předběžné aktivační události se po aktivační události jsou také přidružené operace na položku služby Azure Cosmos DB a nevyžadují žádné vstupní parametry. Mohou být spuštěny *po* operace byla dokončena a mají přístup k zprávy s odpovědí, která je odeslána do klienta. Příklady najdete v tématu [jak psát triggery](how-to-write-stored-procedures-triggers-udfs.md#triggers) článku.
+
+> [!NOTE]
+> Zaregistrované, aktivační události nelze spustit automaticky při jejich odpovídající operace (vytvoření / odstranění / nahrazení / aktualizace) dojít. Musí být explicitně volána při provádění těchto operací. Další informace najdete v tématu [spuštění aktivační události](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) článku.
 
 ## <a id="udfs"></a>Uživatelem definované funkce
 

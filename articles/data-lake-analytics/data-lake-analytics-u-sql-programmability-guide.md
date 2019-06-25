@@ -10,10 +10,10 @@ ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.openlocfilehash: d1b230b40d1f880787334ebfd39e704e3a650baa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60811612"
 ---
 # <a name="u-sql-programmability-guide"></a>Průvodce programovatelností U-SQL
@@ -1067,11 +1067,11 @@ UDO je obvykle volána explicitně ve skriptu U-SQL jako součást následujíc�
 ## <a name="use-user-defined-extractors"></a>Použití uživatelem definované – extraktory
 U-SQL umožňuje import externích dat pomocí příkazu EXTRAKCE. Příkaz EXTRAKCE můžete použít předdefinované – extraktory UDO:  
 
-* *Extractors.Text()*: Poskytuje extrakce z textových souborů s oddělovači jiné kódování.
+* *Extractors.Text()* : Poskytuje extrakce z textových souborů s oddělovači jiné kódování.
 
-* *Extractors.Csv()*: Poskytuje extrakce z hodnot oddělených čárkami (CSV) soubory jiné kódování.
+* *Extractors.Csv()* : Poskytuje extrakce z hodnot oddělených čárkami (CSV) soubory jiné kódování.
 
-* *Extractors.Tsv()*: Poskytuje extrakce z hodnoty oddělené tabulátorem (TSV) soubory jiné kódování.
+* *Extractors.Tsv()* : Poskytuje extrakce z hodnoty oddělené tabulátorem (TSV) soubory jiné kódování.
 
 Může být užitečné pro vývoj vlastní Extraktor. To může být užitečné při importu dat pokud chceme proveďte jednu z následujících úloh:
 
@@ -1219,9 +1219,9 @@ OUTPUT @rs0 TO @output_file USING Outputters.Text();
 ## <a name="use-user-defined-outputters"></a>Použití uživatelem definované výstupní moduly
 Uživatelem definované outputter je jiný UDO U-SQL, který umožňuje rozšířit vestavěné funkce U-SQL. Podobně jako extraktoru, existuje několik předdefinovaných výstupní moduly.
 
-* *Outputters.Text()*: Zapíše data do textových souborů s oddělovači jiné kódování.
-* *Outputters.Csv()*: Zapíše data do různých kódování na soubory hodnotami oddělenými čárkami (CSV).
-* *Outputters.Tsv()*: Zapíše data do hodnoty oddělené tabulátorem (TSV) soubory jiné kódování.
+* *Outputters.Text()* : Zapíše data do textových souborů s oddělovači jiné kódování.
+* *Outputters.Csv()* : Zapíše data do různých kódování na soubory hodnotami oddělenými čárkami (CSV).
+* *Outputters.Tsv()* : Zapíše data do hodnoty oddělené tabulátorem (TSV) soubory jiné kódování.
 
 Vlastní outputter umožňuje zapisovat data ve vlastním formátu definovaný. To může být užitečné pro následující úlohy:
 

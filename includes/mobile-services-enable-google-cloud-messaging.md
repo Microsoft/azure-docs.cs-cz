@@ -9,16 +9,16 @@ ms.date: 04/06/2018
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: a7d0a899b4a2ef86153e82a4e3f04e7ec430a1bc
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66156858"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67175599"
 ---
 1. Přejděte na [Google Cloud Console](https://console.developers.google.com/cloud-resource-manager) a přihlaste se pomocí svých přihlašovacích údajů k účtu Google. 
 2. Na panelu nástrojů vyberte **Vytvořit projekt**. 
    
-    ![Vytvořit nový projekt](./media/mobile-services-enable-google-cloud-messaging/mobile-services-google-new-project.png)   
+    ![Vytvoření nového projektu](./media/mobile-services-enable-google-cloud-messaging/mobile-services-google-new-project.png)   
 3. Do pole **Project name** (Název projektu) zadejte název vašeho produktu a klikněte na **Create** (Vytvořit).
 4. Vyberte na panelu nástrojů tlačítko **upozornění** a v seznamu vyberte váš projekt. Zobrazí se řídicí panel pro váš projekt. Můžete také přejít přímo na řídicí panel pomocí adresy URL: `https://console.developers.google.com/home/dashboard?project=<YOUR PROJECT NAME>`
 

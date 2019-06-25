@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: milanga;juliako;
 ms.openlocfilehash: e0b083cba575f4d1c0eb19afb76fca29431ae75e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61463527"
 ---
 # <a name="detect-motions-with-azure-media-analytics"></a>Zjištění mají s Azure Media Analytics
@@ -105,7 +105,7 @@ Následující tabulka popisuje prvky výstupního souboru JSON.
 | Duration |Každá událost fragment obsahuje pohybu, během tohoto dobu trvání. |
 | Type |V aktuální verzi je to vždy pro obecné pohybu ' 2'. Tento popisek poskytuje rozhraní API pro Video flexibilitu zařadit do pohybu v budoucích verzích. |
 | RegionID |Jak jsme vysvětlili výše, bude vždy 0 v této verzi. Tento popisek poskytuje rozhraní Video API flexibilitu při hledání pohybu v různých oblastech v budoucích verzích. |
-| Oblasti |Odkazuje na oblast ve videu, pokud vás zajímají pohybu. <br/><br/>-"id" představuje oblasti oblast – v této verzi je pouze jeden, ID 0. <br/>-"type" představuje obrazec oblasti záleží pro pohybu. V současné době jsou podporovány "Obdélník" a "mnohoúhelníku".<br/> Pokud jste zadali "Obdélník", oblast má dimenze v X, Y, šířku a výšku. Souřadnice X a Y představují horní levé prvků jejich souřadnice XY oblasti v normalizovaných rozsahu od 0,0 do 1,0. Šířku a výšku reprezentaci velikosti oblasti v normalizovaných rozsahu od 0,0 do 1,0. V aktuální verzi jsou X, Y, šířka a výška vždy pevně nastavena na 0, 0 a 1, 1. <br/>Pokud jste zadali "mnohoúhelníku", má oblast rozměrů v bodech. <br/> |
+| Regions |Odkazuje na oblast ve videu, pokud vás zajímají pohybu. <br/><br/>-"id" představuje oblasti oblast – v této verzi je pouze jeden, ID 0. <br/>-"type" představuje obrazec oblasti záleží pro pohybu. V současné době jsou podporovány "Obdélník" a "mnohoúhelníku".<br/> Pokud jste zadali "Obdélník", oblast má dimenze v X, Y, šířku a výšku. Souřadnice X a Y představují horní levé prvků jejich souřadnice XY oblasti v normalizovaných rozsahu od 0,0 do 1,0. Šířku a výšku reprezentaci velikosti oblasti v normalizovaných rozsahu od 0,0 do 1,0. V aktuální verzi jsou X, Y, šířka a výška vždy pevně nastavena na 0, 0 a 1, 1. <br/>Pokud jste zadali "mnohoúhelníku", má oblast rozměrů v bodech. <br/> |
 | Fragments |Metadata je rozdělený do bloků dat až do různých segmentů zvaných fragmenty. Každý fragment obsahuje začátek, dobu trvání, číslo intervalu a události. Fragment se žádné události znamená, že se během tohoto čas spuštění a trvání zjistil bez pohybu. |
 | Hranaté závorky] |Každá závorka představuje jeden interval v události. Byla zjištěna prázdné závorky pro tohoto intervalu znamená, že bez pohybu. |
 | locations |Tento nový záznam v rámci události obsahuje umístění, kde k pohybu došlo. Toto je konkrétnější než detekce zóny. |

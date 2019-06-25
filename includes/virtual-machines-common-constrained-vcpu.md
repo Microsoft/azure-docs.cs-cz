@@ -9,11 +9,11 @@ ms.date: 03/09/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
 ms.openlocfilehash: 24fbab2bb637edf6c7e31215cdc7ac82bdb0ebab
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66158486"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67175002"
 ---
 Některé databázové úlohy, jako je SQL Server nebo Oracle vyžadují vysoký poměr paměti, úložiště a šířku pásma vstupně-výstupních operací, ale ne počet vysokou jader. Mnoho úloh databáze nejsou náročné na CPU. Azure nabízí určité velikosti virtuálních počítačů, ve kterém lze omezit počet virtuálních procesorů virtuálního počítače chcete snížit náklady na licencování softwaru, a přitom stejnou paměť, úložiště a šířku pásma vstupně-výstupních operací.
 
@@ -21,10 +21,10 @@ Počet virtuálních procesorů může být omezena na polovinu nebo jednoho čt
 
 Například Standard_GS5 současnými velikostmi virtuálních počítačů se dodává s 32 virtuálních procesorů, 448 GB paměti RAM, 64 disků (až 256 TB) a 80 000 vstupně-výstupních operací nebo 2 GB/s šířky pásma vstupně-výstupních operací. Nový virtuální počítač o velikosti Standard_GS5 16 a Standard_GS5 8 se dodává s 8 a 16 virtuálních procesorů aktivní, při zachování rest specifikace Standard_GS5 paměti, úložiště a šířku pásma vstupně-výstupních operací.
 
-Licenční poplatky za SQL Server nebo Oracle jsou omezeny na nový počet virtuálních procesorů a by měly být účtovány další produkty podle nový počet virtuálních procesorů. Výsledkem je 50 až 75 % zvýšení poměr specifikace virtuálních počítačů pro aktivní virtuálních procesorů (Fakturovatelné). Tyto nové velikosti virtuálních počítačů povolit úloh zákazníka používat stejnou paměť, úložiště a šířku pásma vstupně-výstupní operace a optimalizovat náklady na licencování softwaru. V tuto chvíli zůstane výpočetní náklady, která zahrnuje licencování operačního systému, je stejný jako původní velikost. Další informace najdete v tématu [velikosti virtuálních počítačů Azure pro další nákladově efektivní databázové úlohy](https://azure.microsoft.com/blog/announcing-new-azure-vm-sizes-for-more-cost-effective-database-workloads/).
+Licenční poplatky za SQL Server nebo Oracle jsou omezeny na nový počet virtuálních procesorů a by měly být účtovány další produkty podle nový počet virtuálních procesorů. Výsledkem je 50 až 75 % zvýšení poměr specifikace virtuálních počítačů pro aktivní virtuálních procesorů (Fakturovatelné). Tyto nové velikosti virtuálních počítačů umožňují zákaznickým úlohám využívat stejnou paměť, úložiště a šířku pásma pro vstupně-výstupní operace a současně optimalizují náklady na licencování softwaru. V tuto chvíli zůstane výpočetní náklady, která zahrnuje licencování operačního systému, je stejný jako původní velikost. Další informace najdete v tématu [velikosti virtuálních počítačů Azure pro další nákladově efektivní databázové úlohy](https://azure.microsoft.com/blog/announcing-new-azure-vm-sizes-for-more-cost-effective-database-workloads/).
 
 
-| Název                | Virtuální procesory | Specifikace           |
+| Name                | Virtuální procesory | Specifikace           |
 |---------------------|------|-----------------|
 | Standard_M8-2ms     | 2    | Stejné jako M8ms    |
 | Standard_M8-4ms     | 4    | Stejné jako M8ms    |

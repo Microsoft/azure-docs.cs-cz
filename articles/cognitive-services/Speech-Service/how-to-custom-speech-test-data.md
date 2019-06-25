@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 04da6b7a904bed8fa0990afe77b7fc81bec5a76e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c3e77a8ec46ae18cb9daa855d842969cc2ba4bb9
+ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67064029"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67137242"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Příprava dat pro Custom Speech
 
@@ -138,11 +138,11 @@ Pokud jsou obvyklé podmínky bez standardní výslovnosti, které vaši uživat
 
 To zahrnuje příklady mluvené slovo utterance a vlastní výslovnosti pro každou:
 
-| Mluvené slovo formuláře | Nerozpoznal/zobrazí formulář |
+| Nerozpoznal/zobrazí formulář | Mluvené slovo formuláře |
 |--------------|--------------------------|
-| o tři c p | 3CPO |  
-| k c n t | CNTK |
-| i ztrojnásobit e | IEEE |
+| 3CPO | o tři c p |  
+| CNTK | k c n t |
+| IEEE | i ztrojnásobit e |
 
 Mluvené slovo formuláře je zapsané ve fonetické sekvence států. To může být tvořen písmeno, slova, slabik nebo s použitím kombinace všech tří.
 

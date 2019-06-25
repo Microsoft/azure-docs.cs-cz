@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/19/2018
 ms.author: magattus
 ms.openlocfilehash: 083d8f66a73471548c812e27325e1ec69ad5c45c
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64869591"
 ---
 # <a name="restrict-azure-cdn-content-by-countryregion"></a>Omezení obsahu Azure CDN podle země nebo oblasti
@@ -42,12 +42,12 @@ Pro přístup k funkci geografické filtrování, vyberte koncový bod CDN na po
 
 Z **cesta** zadejte relativní cestu k umístění, do které se uživatelům povoluje nebo odepírá přístup. 
 
-Můžete provést geografické filtrování pro všechny soubory s předání lomítko (/) nebo vybrat konkrétní složky zadáním cesty k adresářům (například */obrazky/*). Můžete také provést geografické filtrování u jednoho souboru (například */pictures/city.png*). Více pravidel jsou povoleny. Po zadání pravidlo, zobrazí se prázdný řádek můžete zadat další pravidla.
+Můžete provést geografické filtrování pro všechny soubory s předání lomítko (/) nebo vybrat konkrétní složky zadáním cesty k adresářům (například */obrazky/* ). Můžete také provést geografické filtrování u jednoho souboru (například */pictures/city.png*). Více pravidel jsou povoleny. Po zadání pravidlo, zobrazí se prázdný řádek můžete zadat další pravidla.
 
 Například všechny následující filtry cesta adresáře jsou platné:   
 */*                                 
-*/Photos/*     
-*/Photos/Štrasburku /*     
+*/Photos/*      
+*/Photos/Štrasburku /*      
 */Photos/Strasbourg/city.png*
 
 ### <a name="define-the-type-of-action"></a>Definování typ akce

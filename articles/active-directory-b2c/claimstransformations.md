@@ -11,10 +11,10 @@ ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: c904ac9d4c59a467dd8402ec44682c3cbd03fd8d
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66511537"
 ---
 # <a name="claimstransformations"></a>ClaimsTransformations
@@ -59,7 +59,7 @@ Seznam funkcí transformace deklarací identity, které je možné zahrnout cest
 ```
 
 
-| Prvek | Výskyty | Popis |
+| Element | Výskyty | Popis |
 | ------- | -------- | ----------- |
 | InputClaims | 0:1 | Seznam **InputClaim** elementy, které určují typy deklarací, které jsou použity jako vstup do transformace deklarací identity. Každý z těchto elementů obsahuje odkaz na typu deklarace identity, již definovaná v části ClaimsSchema v zásadách. |
 | Vstupní parametry | 0:1 | Seznam **InputParameter** prvky, které jsou k dispozici jako vstup pro transformaci deklarací identity.  
@@ -69,7 +69,7 @@ Seznam funkcí transformace deklarací identity, které je možné zahrnout cest
 
 **InputClaims** prvek obsahuje následující element:
 
-| Prvek | Výskyty | Popis |
+| Element | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | InputClaim | 1: n | Typ deklarace identity očekávaný vstup. |
 
@@ -86,7 +86,7 @@ Seznam funkcí transformace deklarací identity, které je možné zahrnout cest
 
 **Vstupní parametry** prvek obsahuje následující element:
 
-| Prvek | Výskyty | Popis |
+| Element | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | InputParameter | 1: n | Očekávaný vstupní parametr. |
 
@@ -102,7 +102,7 @@ Seznam funkcí transformace deklarací identity, které je možné zahrnout cest
 
 **OutputClaims** prvek obsahuje následující element:
 
-| Prvek | Výskyty | Popis |
+| Element | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | outputClaim | 0: n | Typ deklarace identity očekávaný výstup. |
 

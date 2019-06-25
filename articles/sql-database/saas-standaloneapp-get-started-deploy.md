@@ -13,10 +13,10 @@ ms.reviewer: sstein
 manager: craigg
 ms.date: 11/07/2018
 ms.openlocfilehash: b1b281c7beac6b6cb48834e636edff818f89bf12
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66304138"
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>Nasazení a zkoumání samostatné aplikace jednoho tenanta, který používá Azure SQL Database
@@ -76,16 +76,16 @@ Aplikace prezentuje místa, které jsou hostiteli události.  Místa jsou klient
 
 1. Otevřete stránku události pro každé tři tenantů v samostatných prohlížeče karty:
 
-   - http://events.contosoconcerthall.&lt;user&gt;.trafficmanager.net
-   - http://events.dogwooddojo.&lt;user&gt;.trafficmanager.net
-   - http://events.fabrikamjazzclub.&lt;user&gt;.trafficmanager.net
+   - http://events.contosoconcerthall.&lt ;user&gt;.trafficmanager.net
+   - http://events.dogwooddojo.&lt ;user&gt;.trafficmanager.net
+   - http://events.fabrikamjazzclub.&lt ;user&gt;.trafficmanager.net
 
      (V každé adrese URL nahradit &lt;uživatele&gt; s hodnotou uživatele vašeho nasazení.)
 
-   ![Události](./media/saas-standaloneapp-get-started-deploy/fabrikam.png)
+   ![Duration](./media/saas-standaloneapp-get-started-deploy/fabrikam.png)
 
 K řízení distribuce příchozích požadavků, tato aplikace používá [ *Azure Traffic Manager*](../traffic-manager/traffic-manager-overview.md). Každá instance aplikace specifickým pro tenanta zahrnuje název tenanta jako část názvu domény v adrese URL. Všechny tenantů zahrnují konkrétní adresy URL **uživatele** hodnotu. Adresy URL použijte následující formát:
-- http://events.&lt;venuename&gt;.&lt;user&gt;.trafficmanager.net
+- http://events.&lt ;venuename&gt;.&lt; user&gt;.trafficmanager.net
 
 Každý tenant databáze **umístění** je zahrnuta v aplikaci nastavení odpovídající nasazené aplikace.
 

@@ -1,5 +1,5 @@
 ---
-title: Zásady ochrany směrného plánu podmíněného přístupu – Azure Active Directory
+title: Zásady podmíněného přístupu podle směrného plánu ochrany – Azure Active Directory
 description: Základní zásady podmíněného přístupu k ochraně organizací před běžnými útoky
 services: active-directory
 ms.service: active-directory
@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca062f4024bb5b0946812e00c8ccc1254b56d333
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 39a591a335d022ef7b2b99fdec930ddf0496cd47
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66003293"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67112590"
 ---
 # <a name="what-are-baseline-policies"></a>Co jsou zásady na směrný plán?
 
 Zásady na směrný plán představují sadu předdefinovaných zásad pomoc při ochraně organizací před mnoha útoky běžné. Tyto běžnými útoky mohou zahrnovat heslo zařízení, opakování a útoky phishing. Zásady na směrný plán jsou k dispozici ve všech edicích služby Azure AD. Zpřístupňuje tyto standardní hodnoty zásady ochrany k dispozici všem uživatelům vzhledem k tomu, že byla založená na identitě útoky na vzestupu během posledních několika let. Cílem tyto čtyři zásady je zajistit, že všechny organizace mají úroveň standardních hodnot zabezpečení povoleno bez dalších poplatků.  
 
-Správa zásad podmíněného přístupu přizpůsobené vyžaduje licenci Azure AD Premium.
+Správa vlastních zásad podmíněného přístupu vyžaduje licenci Azure AD Premium.
 
 ## <a name="baseline-policies"></a>Základní zásady
 

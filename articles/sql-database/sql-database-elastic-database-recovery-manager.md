@@ -13,10 +13,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 01/03/2019
 ms.openlocfilehash: 1bab1ed9e2a24b0a84f4327d47a910934319b397
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61475881"
 ---
 # <a name="using-the-recoverymanager-class-to-fix-shard-map-problems"></a>Oprava problémů s mapováním horizontálních oddílů pomocí třídy RecoveryManager
@@ -33,7 +33,7 @@ Definice termínu, naleznete v tématu [Glosář nástrojů elastické databáze
 
 ## <a name="why-use-the-recovery-manager"></a>Proč použít recovery manager
 
-V prostředí s horizontálně dělené databáze je jednoho tenanta na databázi a velký počet databází na serveru. V prostředí může být také mnoho serverů. Každá databáze je mapována v mapy horizontálních oddílů, takže volání je možné směrovat správnému serveru a databáze. Databáze jsou sledována podle **klíč horizontálního dělení**, a je mu přiřazená každý horizontální oddíl **rozsahu hodnot klíčů**. Například klíč horizontálního dělení může představovat názvů zákazníka z hodnoty "D" k "F" Mapování všech horizontálních oddílů (označuje se také jako databáze) a jejich mapování oblastí jsou obsaženy v **mapy horizontálních oddílů globální (GSM)**. Každá databáze obsahuje také mapa rozsahů adres obsažené v horizontálním oddílu, který se označuje jako **mapy horizontálních oddílů místní (LSM)**. Když se aplikace připojí k horizontálnímu oddílu, mapování je uložit do mezipaměti s aplikací pro rychlé načítání. LSM slouží k ověření dat uložených v mezipaměti.
+V prostředí s horizontálně dělené databáze je jednoho tenanta na databázi a velký počet databází na serveru. V prostředí může být také mnoho serverů. Každá databáze je mapována v mapy horizontálních oddílů, takže volání je možné směrovat správnému serveru a databáze. Databáze jsou sledována podle **klíč horizontálního dělení**, a je mu přiřazená každý horizontální oddíl **rozsahu hodnot klíčů**. Například klíč horizontálního dělení může představovat názvů zákazníka z hodnoty "D" k "F" Mapování všech horizontálních oddílů (označuje se také jako databáze) a jejich mapování oblastí jsou obsaženy v **mapy horizontálních oddílů globální (GSM)** . Každá databáze obsahuje také mapa rozsahů adres obsažené v horizontálním oddílu, který se označuje jako **mapy horizontálních oddílů místní (LSM)** . Když se aplikace připojí k horizontálnímu oddílu, mapování je uložit do mezipaměti s aplikací pro rychlé načítání. LSM slouží k ověření dat uložených v mezipaměti.
 
 GSM a LSM může přestat synchronizované z následujících důvodů:
 

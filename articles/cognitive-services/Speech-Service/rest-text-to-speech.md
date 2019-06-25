@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 59155b41906ffd401b971bee1248a225d0c33657
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 08bf1363f3c6c9b68243cc10ffb2785f53e02107
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072455"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67342192"
 ---
 # <a name="text-to-speech-rest-api"></a>Převod textu na řeč REST API
 
@@ -225,6 +225,7 @@ Stavový kód HTTP pro každou odpověď indikuje úspěch nebo běžné chyby.
 | 400 | Chybný požadavek | Povinný parametr nebyl nalezen, prázdný nebo null. Nebo hodnota předaná buď povinný nebo volitelný parametr není platný. Běžné potíže se hlavičku, která je příliš dlouhý. |
 | 401 | Neautorizováno | Požadavek není autorizovaný. Ověřte váš klíč předplatného nebo token je platný a v oblasti správné. |
 | 413 | Příliš velká entita požadavku | Vstup SSML je delší než 1024 znaků. |
+| 415 | Nepodporovaný typ média | Je možné, který chybného `Content-Type` nebyl poskytnut. `Content-Type` musí být nastavená na `application/ssml+xml`. | 
 | 429 | Příliš mnoho žádostí | Překročili jste kvótu nebo počet požadavků pro vaše předplatné povolená. |
 | 502 | Chybná brána | Problém sítě nebo na straně serveru. Může také znamenat neplatné záhlaví. |
 

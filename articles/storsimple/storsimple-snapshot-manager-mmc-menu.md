@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: v-sharos
 ms.openlocfilehash: be761f0a2e59878139ae54dba62634a53b172711
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60302971"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64715283"
 ---
 # <a name="use-the-mmc-menu-actions-in-storsimple-snapshot-manager"></a>Použijte nabídku akcí MMC prostřednictvím StorSimple Snapshot Manageru
 
@@ -30,7 +30,7 @@ StorSimple Snapshot Manageru, zobrazí se následující akce na všechny nabíd
 * Nové okno 
 * Obnovení 
 * Exportovat seznam 
-* Nápověda 
+* Help 
 
 Tyto akce jsou součástí Microsoft Management Console (MMC) a nejsou specifická pro StorSimple Snapshot Manageru. Tento kurz popisuje tyto akce a vysvětluje, jak každý z nich pomocí StorSimple Snapshot Manageru.
 
@@ -91,7 +91,7 @@ Můžete použít **exportovat seznam** akci Uložit seznam v souboru hodnot odd
       
       ![Exportovat seznam jako soubor hodnot oddělených čárkami](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_Export_List.png) 
 
-## <a name="help"></a>Nápověda
+## <a name="help"></a>Help
 Můžete použít **pomáhají** nabídce pro zobrazení k dispozici online nápovědu pro StorSimple Snapshot Manageru a konzoly MMC.
 
 #### <a name="to-view-available-online-help"></a>Chcete-li zobrazit dostupné online nápovědy

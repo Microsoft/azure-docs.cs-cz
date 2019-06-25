@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: erikre
 ms.openlocfilehash: 96c4da8465a87fee4c00bfc6177515c94910704a
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66121361"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67174684"
 ---
 Zákazníci Azure můžou každý měsíc odemknout 25 000 bezplatných e-mailů. Těchto 25 000 bezplatných e-mailů měsíčně vám poskytne přístup k rozšířené tvorbě sestav, rozšířeným analýzám a [všem rozhraním API][all APIs] (Web, SMTP, Event, Parse a další). Informace o dalších službách, které SendGrid poskytuje, najdete na stránce [SendGrid Solutions][SendGrid Solutions] (Řešení SendGrid).
 

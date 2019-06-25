@@ -18,10 +18,10 @@ ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 84a8c2954473401a9e57cba045907c60862ed61f
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65546234"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Postup: Migrace ze služby Azure Access Control Service
@@ -129,7 +129,7 @@ Následující části popisují základní doporučení pro migraci ze řízen�
 
 Každé cloudové službě Microsoftu, které přijímá tokeny, které jsou vydány službou Access Control, teď podporuje aspoň jeden alternativní formu ověřování. Mechanismus správné ověřování se liší u každé služby. Doporučujeme vám, že odkazujete na příslušnou část dokumentace k jednotlivým službám oficiální pokyny. Pro usnadnění práce každá sada dokumentace je k dispozici zde:
 
-| Služba | Pokyny |
+| Služba | Doprovodné materiály |
 | ------- | -------- |
 | Azure Service Bus | [Migrace na sdílených přístupových podpisů](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-migrate-acs-sas) |
 | Azure Service Bus Relay | [Migrace na sdílených přístupových podpisů](https://docs.microsoft.com/azure/service-bus-relay/relay-migrate-acs-sas) |
@@ -150,7 +150,7 @@ Každé cloudové službě Microsoftu, které přijímá tokeny, které jsou vyd
 
 SharePoint 2013, 2016, a Sharepointu Online zákazníci využili dlouho ACS pro účely ověřování v cloudu na místní a hybridní scénáře. Některé funkce služby SharePoint a případy použití ovlivňuje vyřazení z provozu služby ACS, zatímco jiné se tak nestane. Níže uvedená tabulka shrnuje pokyny k migraci pro některé z nejoblíbenějších SharePoint funkcí této služby ACS využívat:
 
-| Funkce | Pokyny |
+| Funkce | Doprovodné materiály |
 | ------- | -------- |
 | Ověřování uživatelů ze služby Azure AD | Dříve Azure AD nepodporuje tokeny SAML 1.1 vyžaduje SharePoint pro ověřování a služby ACS byl použit jako zprostředkovatel, který vytvořil SharePoint kompatibilní s formáty tokenu Azure AD. Teď můžete [připojit přímo k Azure AD pomocí služby Azure AD App Gallery SharePoint na místní aplikace SharePoint](https://docs.microsoft.com/azure/active-directory/saas-apps/sharepoint-on-premises-tutorial). |
 | [Ověřování pomocí služby App & server-to-server ověřování ve službě SharePoint v místním prostředí](https://technet.microsoft.com/library/jj219571(v=office.16).aspx) | Není ovlivněna vyřazení ACS; nejsou nutné žádné změny. | 

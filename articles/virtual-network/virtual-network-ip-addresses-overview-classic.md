@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: genli
 ms.openlocfilehash: 9e7a5772dd1e10abf43eddf0548833d625ecfb24
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60742113"
 ---
 # <a name="ip-address-types-and-allocation-methods-classic-in-azure"></a>Typy IP adres a metody přidělení (classic) v Azure
@@ -87,7 +87,7 @@ Azure [Application gateway](../application-gateway/application-gateway-introduct
 ### <a name="at-a-glance"></a>První pohled
 Následující tabulka ukazuje, každý typ prostředku pomocí metody možné přidělení (dynamické/statické) a schopnost přiřadit několik veřejných IP adres.
 
-| Prostředek | Dynamická | Statická | Několik IP adres |
+| Resource | Dynamické | Statická | Několik IP adres |
 | --- | --- | --- | --- |
 | Cloudová služba |Ano |Ano |Ano |
 | Instance role virtuálních počítačů IaaS nebo PaaS |Ano |Ne |Ne |
@@ -137,7 +137,7 @@ Privátní IP adresu můžete přiřadit konfiguraci **front-endu** nástroje [A
 ### <a name="at-a-glance"></a>První pohled
 Následující tabulka ukazuje, každý typ prostředku se metody možné přidělení (dynamické/statické) a možnost přiřadit k více privátních IP adres.
 
-| Prostředek | Dynamická | Statická | Několik IP adres |
+| Resource | Dynamické | Statická | Několik IP adres |
 | --- | --- | --- | --- |
 | Virtuální počítač (v *samostatné* cloudovou službu nebo virtuální sítě) |Ano |Ano |Ano |
 | PaaS role instance (v *samostatné* cloudovou službu nebo virtuální sítě) |Ano |Ne |Ne |
@@ -162,7 +162,7 @@ Ve většině případů veřejné IP adresy jsou zdarma. Zde se účtuje nomin�
 ## <a name="differences-between-resource-manager-and-classic-deployments"></a>Rozdíly mezi Resource Managerem a klasickými nasazeními
 Níže je uvedeno porovnání IP adresování funkcí v modelu nasazení classic a Resource Manageru.
 
-|  | Prostředek | Classic | Resource Manager |
+|  | Resource | Classic | Resource Manager |
 | --- | --- | --- | --- |
 | **Veřejná IP adresa** |***VM*** |Označuje jako ILPIP (pouze dynamické) |Označuje jako veřejné IP adresy (dynamické nebo statické) |
 |  ||Přiřazené k Virtuálním počítači IaaS nebo instancí rolí PaaS |Přidružené k síťové karty Virtuálního počítače |

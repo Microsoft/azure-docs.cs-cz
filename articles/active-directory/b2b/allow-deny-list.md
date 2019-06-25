@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: sasubram
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b302ec0265473e09b3960660b10661faa1960442
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: fa975446c19db3176fdb89ccfb1a987b1fda049d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65812967"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67113228"
 ---
 # <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>Povolení nebo blokování pozvánek uživatelů B2B z konkrétních organizací
 
@@ -64,7 +64,7 @@ Přidání seznamu povolených položek:
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Vyberte **Azure Active Directory** > **uživatelé** > **uživatelská nastavení**.
 3. V části **externích uživatelů**vyberte **spravovat nastavení externí spolupráce**.
-4. V části **omezení spolupráce**vyberte **umožnit zasílání pozvánek jen na konkrétní domény (nejvíce omezující)**.
+4. V části **omezení spolupráce**vyberte **umožnit zasílání pozvánek jen na konkrétní domény (nejvíce omezující)** .
 5. V části **cílové domény**, zadejte název domény, které chcete povolit. Pro více domén zadejte každou doménu na nový řádek. Příklad:
 
    ![Ukazuje možnost povolit přidání domén](./media/allow-deny-list/AllowListSettings.png)
@@ -157,7 +157,7 @@ Remove-AzureADPolicy -Id $currentpolicy.Id
 ## <a name="next-steps"></a>Další postup
 
 - Přehled Azure AD s B2B, naleznete v tématu [co je spolupráce B2B ve službě Azure AD?](what-is-b2b.md)
-- Informace o podmíněném přístupu a spolupráce B2B najdete v tématu [podmíněného přístupu pro uživatele spolupráce B2B](conditional-access.md).
+- Informace o spolupráci podmíněného přístupu a B2B najdete v tématu [podmíněného přístupu pro uživatele spolupráce B2B](conditional-access.md).
 
 
 

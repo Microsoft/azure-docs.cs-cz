@@ -1,10 +1,15 @@
 ---
+author: ecfan
+ms.service: logic-apps
+ms.topic: include
+ms.date: 11/03/2016
+ms.author: estfan
 ms.openlocfilehash: d90ef1737f0107e5e323c1e90e3f9021efd4e4f7
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62130009"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205802"
 ---
 ### <a name="prerequisites"></a>Požadavky
 * A [SMTP](https://wikipedia.org/wiki/Simple_Mail_Transfer_Protocol) účtu  

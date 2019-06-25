@@ -11,10 +11,10 @@ ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 12/18/2017
 ms.openlocfilehash: e6a7eaa94e7196c830a66b2d77023bd562119c92
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64699442"
 ---
 # <a name="analyze-customer-churn-using-azure-machine-learning-studio"></a>Analýza výpovědí zákazníků pomocí Azure Machine Learning Studio
@@ -188,7 +188,7 @@ Modelech hostovaných v nástroji Machine Learning Studio překonal SAS 15-25 % 
 V odvětví telekomunikace vznikly několik postupů k analýze četnosti změn, včetně:  
 
 * Odvození metriky pro čtyři základní kategorie:
-  * **Entity (například předplatné)**. Zřízení základních informací o odběru a/nebo zákazníkovi, který je předmětem změn.
+  * **Entity (například předplatné)** . Zřízení základních informací o odběru a/nebo zákazníkovi, který je předmětem změn.
   * **Aktivita**. Získáte všechny informace o možných využití, která souvisí s entitou, například počet přihlášení.
   * **Zákaznická podpora**. Získejte informace z protokolů podpory zákazníků k označení, zda u odběru byl problémy nebo interakce s zákaznickou podporu.
   * **Konkurenceschopnost a obchodní data**. Získat všechny informace o možných o zákazníkovi (například může být obtížné sledovat nebo není k dispozici).

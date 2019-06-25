@@ -11,10 +11,10 @@ ms.date: 03/05/2019
 ms.author: pullabhk
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
 ms.openlocfilehash: ab7d2c0af4bc71733a7995b7e781f0facbfbb29f
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65236434"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Monitorování úloh Azure Backup
@@ -48,8 +48,8 @@ Výstrahy jsou primárně scénáře, ve kterém se uživatelům oznamuje tak, a
 ### <a name="alert-scenarios"></a>Scénáře výstrah
 Následující scénáře jsou definovány službou jako výstražné scénáře.
 
-  - Selhání zálohování a obnovení
-  - Zálohování proběhla úspěšně s upozorněními pro agenta Azure Backup (MAB)
+  - Selhání zálohování nebo obnovení
+  - Zálohování proběhlo úspěšně s upozorněními pro agenta Azure Backup (MAB)
   - Zastavte ochranu při zachování dat a zastavení ochrany a odstraňte data
 
 ### <a name="exceptions-when-an-alert-is-not-raised"></a>Výjimky, pokud není vyvolána výstraha
@@ -65,7 +65,7 @@ Výše uvedené výjimky jsou navržené tak, že z souhlasem, že výsledkem t�
 
   - Zálohování virtuálních počítačů Azure
   - Zálohování souborů Azure
-  - Zálohování úloh Azure jako SQL
+  - Zálohování úloh Azure, jako je SQL
   - Agent Azure Backup (MAB)
 
 > [!NOTE]

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 1c0da1a768b894f543b9089643622c31d6a8758d
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 34a94a1b9c38070f5c9de22d9a9e4f24183a876c
+ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730149"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67151011"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>Konfigurace zařízení IoT Edge pro komunikaci přes proxy server
 
@@ -52,7 +52,7 @@ Před zahájením kroků v tomto článku, musíte znát adresu URL vašeho prox
 
 Adresy URL proxy serveru provést následující formát: **protokol**://**proxy_host**:**proxy_port**.
 
-* **Protokol** HTTP nebo HTTPS. Démon Dockeru můžete použít buď protokol, v závislosti na nastavení registru kontejneru, ale kontejnerů démon a modul runtime IoT Edge by měl vždycky používají protokol HTTPS.
+* **Protokol** HTTP nebo HTTPS. Démon Dockeru můžete použít buď protokol, v závislosti na nastavení registru kontejneru, ale kontejnerů démon a modul runtime IoT Edge měli vždy používat HTTP pro připojení k proxy serveru.
 
 * **Proxy_host** je adresa proxy serveru. Pokud váš proxy server vyžaduje ověření, můžete zadat své přihlašovací údaje jako součást proxy hostitele v následujícím formátu: **uživatele**:**heslo**\@**proxy_host** .
 
@@ -250,7 +250,7 @@ S proměnnými prostředí zahrnuty vaše definice modulu by měl vypadat jako v
     },
     "env": {
         "https_proxy": {
-            "value": "https://proxy.example.com:3128"
+            "value": "http://proxy.example.com:3128"
         }
     },
     "status": "running",

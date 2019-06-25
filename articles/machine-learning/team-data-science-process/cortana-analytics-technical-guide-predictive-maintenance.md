@@ -12,10 +12,10 @@ ms.date: 03/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
 ms.openlocfilehash: e2f0f1e7ac8f510c4ff5be7933c55278fef74694
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60715526"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace"></a>Technický průvodce do šablony řešení Cortana Intelligence pro prediktivní údržby v leteckém průmyslu
@@ -171,10 +171,10 @@ Následující kroky vás o tom, jak připojit soubor pbix do SQL Database, kter
    
    Budete potřebovat **databáze název serveru, název databáze, uživatelské jméno a heslo** před přechodem na další kroky. Tady jsou kroky a provede vás postupy je najít.
    
-   * Jednou **"Azure SQL Database"** v šabloně řešení diagram změní na zelenou, klikněte na něj a potom klikněte na tlačítko **"Otevřít"**.
+   * Jednou **"Azure SQL Database"** v šabloně řešení diagram změní na zelenou, klikněte na něj a potom klikněte na tlačítko **"Otevřít"** .
    * Zobrazí se vám nové kartě nebo okno prohlížeče zobrazující stránky Azure portal. Klikněte na tlačítko **"Skupiny prostředků"** na levém panelu.
-   * Vyberte předplatné, který používáte pro nasazení řešení a pak vyberte **"YourSolutionName\_ResourceGroup"**.
-   * V nové lokalitě pop si panelu, klikněte na tlačítko ![SQL ikonu](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-sql.png) ikonu pro přístup k vaší databázi. Název databáze je vedle této ikony (například **"pmaintenancedb"**) a **název databázového serveru** je uvedený v části vlastnosti název serveru a by měl vypadat podobně jako  **YourSolutionName.database.windows.net**.
+   * Vyberte předplatné, který používáte pro nasazení řešení a pak vyberte **"YourSolutionName\_ResourceGroup"** .
+   * V nové lokalitě pop si panelu, klikněte na tlačítko ![SQL ikonu](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-sql.png) ikonu pro přístup k vaší databázi. Název databáze je vedle této ikony (například **"pmaintenancedb"** ) a **název databázového serveru** je uvedený v části vlastnosti název serveru a by měl vypadat podobně jako  **YourSolutionName.database.windows.net**.
    * Vaše databáze **uživatelské jméno** a **heslo** jsou stejné jako uživatelské jméno a heslo zaznamenaných během nasazení řešení.
 2. Aktualizujte zdroj dat ze studené cesty souboru sestavy v Power BI Desktopu.
    
@@ -182,8 +182,8 @@ Následující kroky vás o tom, jak připojit soubor pbix do SQL Database, kter
      
      ![Upravit dotazy](./media/cortana-analytics-technical-guide-predictive-maintenance/edit-queries.png)
    * Zobrazí se vám dvou tabulek, **RemainingUsefulLife** a **PMResult**. Vyberte v první tabulce a klikněte na tlačítko ![ikona nastavení dotazu](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-query-settings.png) vedle **'Source'** pod **použitý postup** na pravé straně **"Nastavení dotazu"** panel. Ignorujte jakékoli upozornění, které se zobrazí.
-   * V lokalitě pop si okna nahradit **"Server"** a **'Databáze'** s vlastními názvy serveru a databáze a pak klikněte na tlačítko **"OK"**. Pro název serveru, je nutné zadat port 1433 (**YourSolutionName.database.windows.net, 1433**). Ponechejte pole databáze jako **pmaintenancedb**. Ignorujte upozornění, které se zobrazí na obrazovce.
-   * V dalším pop si okno se zobrazí dvě možnosti, v levém podokně (**Windows** a **databáze**). Klikněte na tlačítko **'Databáze'**, vyplňte vaše **'Jméno uživatele'** a **'Password'** (Toto je uživatelské jméno a heslo, které jste zadali při prvním nasazení řešení a vytvoří Azure SQL database). V ***jaké úroveň, která se použije toto nastavení vyberte***, zaškrtněte možnost na úrovni databáze. Pak klikněte na tlačítko **"Připojit"**.
+   * V lokalitě pop si okna nahradit **"Server"** a **'Databáze'** s vlastními názvy serveru a databáze a pak klikněte na tlačítko **"OK"** . Pro název serveru, je nutné zadat port 1433 (**YourSolutionName.database.windows.net, 1433**). Ponechejte pole databáze jako **pmaintenancedb**. Ignorujte upozornění, které se zobrazí na obrazovce.
+   * V dalším pop si okno se zobrazí dvě možnosti, v levém podokně (**Windows** a **databáze**). Klikněte na tlačítko **'Databáze'** , vyplňte vaše **'Jméno uživatele'** a **'Password'** (Toto je uživatelské jméno a heslo, které jste zadali při prvním nasazení řešení a vytvoří Azure SQL database). V ***jaké úroveň, která se použije toto nastavení vyberte***, zaškrtněte možnost na úrovni databáze. Pak klikněte na tlačítko **"Připojit"** .
    * Klikněte na druhé tabulky **PMResult** klikněte ![ikona navigace](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-navigation.png) vedle **'Source'** pod **použitý postup** na pravé straně **"Nastavení dotazu"** panelu a aktualizujte název serveru a databáze jako výše uvedené kroky a klikněte na tlačítko OK.
    * Jakmile budete s asistencí zpět na předchozí stránku, zavřete okno. Zobrazí se zpráva – klikněte na tlačítko **použít**. A konečně, klikněte na tlačítko **Uložit** tlačítko Uložit změny. Váš soubor Power BI má nyní navázalo se připojení k serveru. Pokud vaše vizualizace jsou prázdné, nezapomeňte že vymazat výběry na vizualizace, která bude vizualizovat všechna data kliknutím na ikonu gumy v pravém horním rohu legend. Pomocí tlačítka aktualizovat tak, aby odrážely nová data na vizualizace. Na začátku zobrazí jenom data počáteční hodnoty na vaše vizualizace jako služby data factory je naplánovaná aktualizace každé 3 hodiny. Po 3 hodiny zobrazí se nových předpovědí projeví ve svých vizualizacích při aktualizaci data.
 3. (Volitelné) Publikovat na řídicím panelu studené cesty [Power BI online](https://www.powerbi.com/). Všimněte si, že tento krok potřebuje účet Power BI (nebo účet Office 365).

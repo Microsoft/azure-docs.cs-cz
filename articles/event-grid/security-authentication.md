@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: babanisa
 ms.openlocfilehash: 87cfce6045ce84f83ca651472635227547c26ee9
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66117010"
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid zabezpečení a ověřování 
@@ -35,9 +35,9 @@ Stejně jako mnoho dalších služeb, které podporují webhooky služby Event G
 
 Pokud používáte jiný typ koncového bodu, jako například aktivační událost HTTP na základě funkcí Azure, musí koncový bod kódu účastnit handshake ověření pomocí služby Event Grid. Event Grid podporuje dva způsoby ověření předplatného.
 
-1. **Metoda handshake ValidationCode (prostřednictvím kódu programu)**: Pokud zdrojový kód pro vaše koncové body, tato metoda se doporučuje. V době vytvoření odběru událostí služby Event Grid odešle událost ověření předplatného do vašeho koncového bodu. Schéma této události je podobně jako ostatní události Event gridu. Obsahuje datovou část této události `validationCode` vlastnost. Vaše aplikace ověřuje, že žádost o ověření pro předplatné Očekávaná událost a vrátí kód pro ověření do služby Event Grid. Tento mechanismus handshake je podporováno ve všech verzích služby Event Grid.
+1. **Metoda handshake ValidationCode (prostřednictvím kódu programu)** : Pokud zdrojový kód pro vaše koncové body, tato metoda se doporučuje. V době vytvoření odběru událostí služby Event Grid odešle událost ověření předplatného do vašeho koncového bodu. Schéma této události je podobně jako ostatní události Event gridu. Obsahuje datovou část této události `validationCode` vlastnost. Vaše aplikace ověřuje, že žádost o ověření pro předplatné Očekávaná událost a vrátí kód pro ověření do služby Event Grid. Tento mechanismus handshake je podporováno ve všech verzích služby Event Grid.
 
-2. **Metoda handshake ValidationURL (ručně)**: V některých případech, systém nelze přístup ke zdrojovému kódu pro implementaci metody handshake ValidationCode koncového bodu. Například, pokud používáte službu třetí strany (například [Zapier](https://zapier.com) nebo [IFTTT](https://ifttt.com/)), nemůže reagovat na prostřednictvím kódu programu pomocí ověřovacího kódu.
+2. **Metoda handshake ValidationURL (ručně)** : V některých případech, systém nelze přístup ke zdrojovému kódu pro implementaci metody handshake ValidationCode koncového bodu. Například, pokud používáte službu třetí strany (například [Zapier](https://zapier.com) nebo [IFTTT](https://ifttt.com/)), nemůže reagovat na prostřednictvím kódu programu pomocí ověřovacího kódu.
 
    Počínaje verzí 2018-05-01-preview, podporuje Služba Event Grid handshake ruční ověření. Pokud vytváříte odběr událostí pomocí sady SDK nebo nástroj, který používá rozhraní API verze 2018-05-01-preview nebo později, odešle služby Event Grid `validationUrl` vlastnost v datové části události ověření předplatného. Dokončete signalizace najít tuto adresu URL v datech událostí a ručně odeslat požadavek GET. Můžete použít klienta REST nebo ve webovém prohlížeči.
 
@@ -204,7 +204,7 @@ Event Grid obsahuje dvě předdefinované role pro správu odběry událostí. P
 
 Je možné [těchto rolí přiřadit uživateli nebo skupině](../role-based-access-control/quickstart-assign-role-user-portal.md).
 
-**Přispěvatel EventSubscription EventGrid (Preview)**: Správa operací odběru Event gridu
+**Přispěvatel EventSubscription EventGrid (Preview)** : Správa operací odběru Event gridu
 
 ```json
 [
@@ -240,7 +240,7 @@ Je možné [těchto rolí přiřadit uživateli nebo skupině](../role-based-acc
 ]
 ```
 
-**Čtenář EventSubscription EventGrid (Preview)**: přečíst odběry služby Event Grid
+**Čtenář EventSubscription EventGrid (Preview)** : přečíst odběry služby Event Grid
 
 ```json
 [

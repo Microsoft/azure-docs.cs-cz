@@ -10,10 +10,10 @@ ms.date: 09/10/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 847c928681451b4fef93198e2f2272d5bb04b1b8
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64919803"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>Kompilace konfigurací DSC v konfiguraci stavu služby Azure Automation
@@ -41,7 +41,7 @@ Až se rozhodnete pro metodu kompilace použijte následující postupy ke spuš
 
 ## <a name="compiling-a-dsc-configuration-with-the-azure-portal"></a>Kompilace konfigurací DSC pomocí webu Azure portal
 
-1. Ve svém účtu Automation, klikněte na tlačítko **konfigurace stavu (DSC)**.
+1. Ve svém účtu Automation, klikněte na tlačítko **konfigurace stavu (DSC)** .
 1. Klikněte na **konfigurace** kartu a potom klikněte na název konfigurace pro kompilaci.
 1. Klikněte na tlačítko **kompilaci**.
 1. Pokud konfigurace nemá žádné parametry, zobrazí se výzva k potvrzení, zda chcete zkompilovat jej. Pokud v konfiguraci obsahuje parametry, **kompilaci konfigurace** otevře se okno, abyste mohli zadat hodnoty parametrů. Přečtěte si následující [ **základní parametry** ](#basic-parameters) části Další podrobnosti o parametrech.

@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: kumud
 ms.openlocfilehash: f25840c21ec64ca8d8e9e17eb39637cff7524c76
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66755257"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>Vytvoření, změna nebo odstranění síťového rozhraní
@@ -33,7 +33,7 @@ Pokud potřebujete přidat, změnit, nebo odebrání IP adres pro síťové rozh
 Před dokončením kroků v jakékoli části tohoto článku, proveďte následující úkoly:
 
 - Pokud ještě nemáte účet Azure, zaregistrujte si [Bezplatný zkušební účet](https://azure.microsoft.com/free).
-- Pokud používáte portál, otevřete https://portal.azure.coma přihlaste se pomocí svého účtu Azure.
+- Pokud používáte portál, otevřete https://portal.azure.com a přihlaste se pomocí svého účtu Azure.
 - Pokud používáte příkazy prostředí PowerShell k dokončení úkolů v tomto článku, buď spusťte příkazy [Azure Cloud Shell](https://shell.azure.com/powershell), nebo pomocí prostředí PowerShell z vašeho počítače. Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Tento kurz vyžaduje modul Azure PowerShell verze 1.0.0 nebo novějším. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
 - Pokud k dokončení úkolů v tomto článku pomocí příkazů rozhraní příkazového řádku Azure (CLI), buď spusťte příkazy [Azure Cloud Shell](https://shell.azure.com/bash), nebo pomocí rozhraní příkazového řádku z vašeho počítače. Tento kurz vyžaduje použití Azure CLI verze 2.0.28 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli). Pokud používáte Azure CLI místně, musíte také spustit `az login` vytvořit připojení k Azure.
 
@@ -49,7 +49,7 @@ Při vytváření virtuálního počítače pomocí webu Azure portal, na portá
 
     |Nastavení|Požadováno?|Podrobnosti|
     |---|---|---|
-    |Name|Ano|Název musí být jedinečný v rámci skupiny prostředků, kterou vyberete. V čase budete mít pravděpodobně několik síťových rozhraní ve vašem předplatném Azure. Návrhy při vytváření zásady vytváření názvů provést několik síťových rozhraní snadnější správu, naleznete v tématu [zásady vytváření názvů](/azure/architecture/best-practices/naming-conventions?toc=%2fazure%2fvirtual-network%2ftoc.json#naming-rules-and-restrictions). Název nelze změnit po vytvoření síťového rozhraní.|
+    |Název|Ano|Název musí být jedinečný v rámci skupiny prostředků, kterou vyberete. V čase budete mít pravděpodobně několik síťových rozhraní ve vašem předplatném Azure. Návrhy při vytváření zásady vytváření názvů provést několik síťových rozhraní snadnější správu, naleznete v tématu [zásady vytváření názvů](/azure/architecture/best-practices/naming-conventions?toc=%2fazure%2fvirtual-network%2ftoc.json#naming-rules-and-restrictions). Název nelze změnit po vytvoření síťového rozhraní.|
     |Virtuální síť|Ano|Výběr virtuální sítě pro síťové rozhraní. Síťové rozhraní můžete přiřadit pouze k virtuální síti, který existuje ve stejném předplatném a umístění jako síťové rozhraní. Jakmile se vytvoří síťové rozhraní, nelze změnit virtuální síť, ke které je přiřazen. Virtuální počítač, který můžete přidat síťové rozhraní musí existovat také ve stejném umístění a předplatném jako síťové rozhraní.|
     |Podsíť|Ano|Vyberte podsíť ve virtuální síti, kterou jste vybrali. Můžete změnit podsíť, ve které je síťové rozhraní přiřazená po jeho vytvoření.|
     |Přidělení privátní IP adresy|Ano| V tomto nastavení, abyste dokázali vybrat metody přiřazení pro IPv4 adresu. Zvolte jednu z následujících metod přiřazení: **Dynamické:** Když vyberete tuto možnost, Azure automaticky přiřadí další dostupnou adresou z adresního prostoru podsítě, kterou jste vybrali. **Statické:** Když vyberete tuto možnost, musíte ručně přiřadit dostupnou IP adresu z v rámci adresního prostoru podsítě, kterou jste vybrali. Statické a dynamické adresy se nezmění, dokud je změna nebo odstranění síťového rozhraní. Metodu přiřazování můžete změnit po vytvoření síťového rozhraní. Server Azure DHCP přiřadí tuto adresu k síťovému rozhraní v operačním systému virtuálního počítače.|

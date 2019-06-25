@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f935b1b2815501710444e3f921a157ba02e3215
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7814ff6b7575fedc19e63676ce3353c2a62a62b4
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65544085"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67154426"
 ---
 # <a name="instantiate-a-confidential-client-application-with-configuration-options-using-msalnet"></a>Vytvoření instance důvěrné klientské aplikace s možnostmi konfigurace pomocí MSAL.NET
 
@@ -62,12 +62,12 @@ Konfigurace aplikace ASP.NET Core je popsaná v *appsettings.json* souboru:
 }
 ```
 
-Počínaje MSAL.NET v3.x, můžete nakonfigurovat důvěrné klientské aplikace ze souboru config. Třídy související s konfigurací aplikace jsou umístěné v `Microsoft.Identity.Client.AppConfig` oboru názvů.
+Počínaje MSAL.NET v3.x, můžete nakonfigurovat důvěrné klientské aplikace ze souboru config.
 
-Ve třídě, ve které chcete nakonfigurovat a vytvoření instance aplikace, je třeba deklarovat `ConfidentialClientApplicationOptions` objektu.  Vázání konfigurace čtení ze zdrojové (včetně souboru appconfig.json) na instanci aplikace možnosti:
+Ve třídě, ve které chcete nakonfigurovat a vytvoření instance aplikace, je třeba deklarovat `ConfidentialClientApplicationOptions` objektu.  Svázat instance možnosti aplikace pomocí konfigurace čtení ze zdrojové (včetně souboru appconfig.json) `IConfigurationRoot.Bind()` metodu z [balíček nuget Microsoft.Extensions.Configuration.Binder](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder):
 
 ```csharp
-using Microsoft.Identity.Client.AppConfig;
+using Microsoft.Identity.Client;
 
 private ConfidentialClientApplicationOptions _applicationOptions;
 _applicationOptions = new ConfidentialClientApplicationOptions();

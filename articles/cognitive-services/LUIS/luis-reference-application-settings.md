@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/29/2019
 ms.author: diberry
-ms.openlocfilehash: c19d328c3a5f4dd6dbe14ca94809e42c5655ea72
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: a8a1f6fe9372d013d310c557161ceb813b8a478b
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66391141"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67163639"
 ---
 # <a name="application-settings"></a>Nastavení aplikace
 
@@ -107,8 +107,8 @@ To zahrnuje francouzština a Kanadské subkultury.
 |Znaky s diakritikou nastavena na hodnotu false|Znaky s diakritikou nastavena na hodnotu false|
 |--|--|
 |`ä`|`a`|
-|`ö `|`o`| 
-|`ü `|`u`| 
+|`ö`|`o`| 
+|`ü`|`u`| 
 
 #### <a name="italian-it-it-diacritics"></a>Italština `it-it` diakritiku
 
@@ -121,7 +121,7 @@ To zahrnuje francouzština a Kanadské subkultury.
 |`í`|`i`| 
 |`î`|`i`| 
 |`ò`|`o`| 
-|`ó `|`o`| 
+|`ó`|`o`| 
 |`ù`|`u`|
 |`ú`|`u`|
 
@@ -134,7 +134,7 @@ To zahrnuje španělština a Kanadské mexických.
 |`á`|`a`|
 |`é`|`e`|
 |`í`|`i`| 
-|`ó `|`o`| 
+|`ó`|`o`| 
 |`ú`|`u`|
 |`ü`|`u`|
 |`ñ`|`u`|

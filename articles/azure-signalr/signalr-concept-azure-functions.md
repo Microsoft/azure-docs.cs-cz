@@ -6,16 +6,19 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: c06203cfd7537dd4c9bc35c75a3f21d12bf64d26
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c88e2b012086f61aad3143c8fe6b0bd25ec333e5
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61401868"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275096"
 ---
 # <a name="build-real-time-apps-with-azure-functions-and-azure-signalr-service"></a>Vytváření aplikací v reálném čase pomocí Azure Functions a služby Azure SignalR
 
 Vzhledem k tomu, že služba Azure SignalR a Azure Functions jsou obě plně spravované a vysoce škálovatelné služby, které vám umožňují soustředit se místo správy infrastruktury na vytváření aplikací, je běžné obě tyto služby používat společně, abyste v [bezserverovém](https://azure.microsoft.com/solutions/serverless/) prostředí získali komunikaci v reálném čase.
+
+> [!NOTE]
+> Naučte se používat SignalR a Azure Functions společně v interaktivním kurzu [povolit automatické aktualizace ve webové aplikaci pomocí Azure Functions a služby SignalR](https://docs.microsoft.com/learn/modules/automatic-update-of-a-webapp-using-azure-functions-and-signalr).
 
 ## <a name="integrate-real-time-communications-with-azure-services"></a>Integrace komunikace v reálném čase do služeb Azure
 
@@ -63,9 +66,10 @@ Služba SignalR vám umožňuje vysílat zprávy do všech klientů nebo jenom d
 
 V tomto článku jste získali přehled o použití Azure Functions se službou SignalR, abyste mohli povolit širokou škálu scénářů týkajících se bezserverového zasílání zpráv v reálném čase.
 
-Úplné podrobnosti o tom, jak používat Azure Functions a služby SignalR společně přečtěte si následující pokyny.
+Úplné podrobnosti o tom, jak používat Azure Functions a služby SignalR společně najdete na následujících odkazech:
 
 * [Azure Functions vývoj a konfiguraci s služby SignalR](signalr-concept-serverless-development-config.md)
+* [Povolit automatické aktualizace ve webové aplikaci pomocí Azure Functions a služby SignalR](https://docs.microsoft.com/learn/modules/automatic-update-of-a-webapp-using-azure-functions-and-signalr)
 
 Pokud chcete zjistit víc, postupujte podle jednoho z těchto rychlých startů.
 

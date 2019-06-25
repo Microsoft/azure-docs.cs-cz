@@ -9,10 +9,10 @@ ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: ef6def9f03a880d9fc8d649fe226caf597ba0ad5
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65991830"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>Správa registrovaných serverů pomocí služby Azure File Sync
@@ -152,7 +152,7 @@ Teď, když byla stažena všechna data a server je odebraná ze všech skupin s
 1. Na webu Azure Portal, přejděte *registrované servery* část služby synchronizace úložiště.
 2. Klikněte pravým tlačítkem na server, ke kterému chcete zrušit registraci a klikněte na tlačítko "Zrušit registraci serveru".
 
-    ![Zrušit registraci serveru](media/storage-sync-files-server-registration/unregister-server-1.png)
+    ![Zrušení registrace serveru](media/storage-sync-files-server-registration/unregister-server-1.png)
 
 ## <a name="ensuring-azure-file-sync-is-a-good-neighbor-in-your-datacenter"></a>Zajistit, že Azure File Sync je dobrý soused ve vašem datovém centru 
 Protože Azure File Sync zřídka bude jedinou službou ve svém datovém centru, můžete omezit využití sítě a úložiště služby Azure File Sync.

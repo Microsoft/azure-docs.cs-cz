@@ -15,10 +15,10 @@ ms.workload: tbd
 ms.date: 07/18/2017
 ms.author: jeconnoc
 ms.openlocfilehash: 21fbfe22901de677209b55639cd8871ab408375b
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64719031"
 ---
 # <a name="sizes-for-cloud-services"></a>Velikosti pro Cloud Services
@@ -86,9 +86,9 @@ Následující tabulky pro jednotlivé velikosti virtuálních počítačů uvá
 | Velikost            | Procesorová jádra | Paměť: GiB  | Dočasné úložiště: GiB       | Max. počet NIC / Šířka pásma sítě |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | ExtraSmall      | 1         | 0,768        | 20                   | 1 / malá |
-| Krátkodobé používání           | 1         | 1,75         | 225                  | 1 / střední |
-| Střednědobé používání          | 2         | 3,5          | 490                  | 1 / střední |
-| Dlouhodobé používání           | 4         | 7            | 1000                 | 2 / vysoká |
+| Malé           | 1         | 1,75         | 225                  | 1 / střední |
+| Střední          | 2         | 3,5          | 490                  | 1 / střední |
+| Velké           | 4         | 7            | 1000                 | 2 / vysoká |
 | ExtraLarge      | 8         | 14           | 2040                 | 4 / vysoká |
 | A5              | 2         | 14           | 490                  | 1 / střední |
 | A6              | 4         | 28           | 1000                 | 2 / vysoká |

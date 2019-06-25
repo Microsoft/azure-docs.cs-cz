@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 2/20/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 22d85f7a1c5b89c005b4c5b92f2f6b9ea449fe8d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 45ed0167f5a83fa843a224ada35e96672a6752a1
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67064072"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67311849"
 ---
 # <a name="why-use-batch-transcription"></a>Proč používat službu Batch určené k transkripci?
 
@@ -91,6 +91,7 @@ Použijte tyto volitelné vlastnosti konfigurace určené k transkripci:
 | `PunctuationMode` | Určuje způsob zpracování interpunkce v výsledky rozpoznávání. Platné hodnoty jsou `none` který zakáže interpunkční znaménka, `dictated` což naznačuje explicitní interpunkce, `automatic` které umožní dekodér řešit interpunkční znaménka, nebo `dictatedandautomatic` což naznačuje nařízeny interpunkční znaménka nebo automaticky. |
  | `AddWordLevelTimestamps` | Určuje, pokud úroveň časová razítka slovo měla být přidána do výstupu. Platné hodnoty jsou `true` umožňující slovo úrovně časová razítka a `false` (výchozí hodnota) pro jeho zakázání. |
  | `AddSentiment` | Určuje, že se přidaly subjektivního hodnocení utterance. Platné hodnoty jsou `true` umožňující subjektivního hodnocení na utterance a `false` (výchozí hodnota) pro jeho zakázání. |
+ | `AddDiarization` | Určuje, že tento diarization alalysis se provádí na vstupu, který má být mono kanál obsahující dva hlasy. Platné hodnoty jsou `true` umožňující diarization a `false` (výchozí hodnota) pro jeho zakázání. Také budete potřebovat `AddWordLevelTimestamps` nastavit na hodnotu true.|
 
 ### <a name="storage"></a>Úložiště
 
@@ -102,6 +103,35 @@ Dotazování na stav určené k transkripci nemusí být většina výkonné a p
 
 Další podrobnosti najdete v tématu [Webhooky](webhooks.md).
 
+## <a name="speaker-separation-diarization"></a>Oddělení mluvčího (Diarization)
+
+Diarization je proces oddělení reproduktorů část zvuk. Náš kanál Batch podporuje Diarization a dokáže rozpozná dva přednášející na záznamy mono kanálu.
+
+Budete muset požádat o, pro diarization zpracování vaší žádosti vám přepisování zvukového záznamu, jednoduše přidat odpovídající parametr v požadavku HTTP, jak je znázorněno níže.
+
+ ```json
+{
+  "recordingsUrl": "<URL to the Azure blob to transcribe>",
+  "models": [{"Id":"<optional acoustic model ID>"},{"Id":"<optional language model ID>"}],
+  "locale": "<locale to us, for example en-US>",
+  "name": "<user defined name of the transcription batch>",
+  "description": "<optional description of the transcription>",
+  "properties": {
+    "AddWordLevelTimestamps" : "True",
+    "AddDiarization" : "True"
+  }
+}
+```
+
+Úroveň časová razítka Word by také musel "zapnout" jako parametry v výše uvedeného požadavku označení. 
+
+Odpovídající zvuk bude obsahovat přednášející identifikována číslem (aktuálně podporujeme jenom dva hlasů, takže mluvčích budou označeny jako "mluvčího 1 ' a 'Mluvčího 2') následovanou výstupem určené k transkripci.
+
+Všimněte si také, že Diarization není k dispozici v Stereo záznamy. Kromě toho všechny JSON výstup bude obsahovat značku mluvčího. Pokud se nepoužívá diarization, se zobrazí "mluvčího: Hodnotu NULL' v kódu JSON výstupu.
+
+> [!NOTE]
+> Diarization jsou k dispozici ve všech oblastech a pro všechna národní prostředí.
+
 ## <a name="sentiment"></a>Mínění
 
 Zabarvení je nová funkce v rozhraní API služby Batch určené k transkripci a je důležité funkce v doméně center volání. Zákazníci můžou využít `AddSentiment` parametry na jejich požadavky na 
@@ -112,7 +142,7 @@ Zabarvení je nová funkce v rozhraní API služby Batch určené k transkripci 
 4.  Přesně určit, co šlo dobře jenom v případě zapnutí negativní volání pozitivní
 5.  Určit, co se zákazníkům líbí a co se nelíbí produkt nebo službu
 
-Má skóre mínění na zvukový segmentu kde zvuku segmentu je definován jako časová prodleva mezi začátkem utterance (posun) a nečinnosti zjištění konce datového proudu bajtů. Celý text v rámci tohoto segmentu se používá k výpočtu mínění. Neměňte výpočtu všechny agregované mínění hodnoty pro celý volání nebo celý řeči každý kanál. Toto je ponecháno ke vlastník domény další použití.
+Má skóre mínění na zvukový segmentu kde zvuku segmentu je definován jako časová prodleva mezi začátkem utterance (posun) a nečinnosti zjištění konce datového proudu bajtů. Celý text v rámci tohoto segmentu se používá k výpočtu mínění. Neměňte výpočtu všechny agregované mínění hodnoty pro celý volání nebo celý řeči každý kanál. Tato agregace je ponecháno ke vlastník domény další použití.
 
 Zabarvení se použije na lexikální formuláře.
 
@@ -151,7 +181,7 @@ Ukázka výstupu JSON vypadá níže:
   ]
 }
 ```
-Funkce používá model mínění, která je aktuálně ve verzi Beta.
+Tato funkce používá model mínění, která je aktuálně ve verzi Beta.
 
 ## <a name="sample-code"></a>Ukázka kódu
 

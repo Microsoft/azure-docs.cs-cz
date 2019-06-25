@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
 ms.openlocfilehash: d227b8d038dd686bde9b031ca2c58adc7dd6d76b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60718063"
 ---
 # <a name="overview-of-multi-tenant-support-for-vmware-disaster-recovery-to-azure-with-csp"></a>Přehled podpory více tenantů pro zotavení po havárii VMware do Azure s využitím CSP
@@ -24,11 +24,11 @@ Tento článek poskytuje přehled o implementaci a správu více tenantů replik
 
 Existují tři hlavní modely víceklientské:
 
-* **Sdílené služby poskytovatele hostingu (HSP)**: Partner vlastní fyzické infrastruktury, a používá sdílené prostředky (vCenter, datová centra, fyzického úložiště a tak dále) pro hostování více klientské virtuální počítače ve stejné infrastruktuře. Partner nabízí správu zotavení po havárii jako spravovanou službu nebo tenanta může vlastnit zotavení po havárii jako řešení samoobslužné služby.
+* **Sdílené služby poskytovatele hostingu (HSP)** : Partner vlastní fyzické infrastruktury, a používá sdílené prostředky (vCenter, datová centra, fyzického úložiště a tak dále) pro hostování více klientské virtuální počítače ve stejné infrastruktuře. Partner nabízí správu zotavení po havárii jako spravovanou službu nebo tenanta může vlastnit zotavení po havárii jako řešení samoobslužné služby.
 
 * **Vyhrazené poskytovatele služby hostingu**: Partner vlastní fyzické infrastruktury, ale používá vyhrazené prostředky (více vCenters fyzických úložišť a tak dále) pro hostování virtuálních počítačů každého tenanta do samostatného infrastruktury. Partner nabízí správu zotavení po havárii jako spravovanou službu nebo tenanta může vlastnit jako řešení samoobslužné služby.
 
-* **Spravovat poskytovatele služeb (MSP)**: Zákazník je vlastníkem fyzické infrastruktury, který hostuje virtuální počítače a partnera poskytuje funkce pro kontrolu zotavení po havárii a správu.
+* **Spravovat poskytovatele služeb (MSP)** : Zákazník je vlastníkem fyzické infrastruktury, který hostuje virtuální počítače a partnera poskytuje funkce pro kontrolu zotavení po havárii a správu.
 
 ## <a name="shared-hosting-services-provider-hsp"></a>Sdílené hostování poskytovatele služeb (HSP)
 
@@ -110,7 +110,7 @@ Omezit operace zotavení po havárii až pouze převzetí služeb při selhání
 ### <a name="deploy-resources-to-the-tenant-subscription"></a>Nasazení prostředků do tenanta předplatného
 
 1. Na portálu Azure portal vytvořte skupinu prostředků a potom nasazovat trezor služby Recovery Services, obvykle proces.
-2. Stáhněte registrační klíč trezoru.
+2. Stáhnout registrační klíč trezoru
 3. Zaregistrujte se na CS tenanta pomocí registračního klíče trezoru.
 4. Zadejte pověření pro dva přístupové účty, účet pro přístup k serveru vCenter a účet pro přístup k virtuálnímu počítači.
 

@@ -569,11 +569,11 @@ Datový objekt má následující vlastnosti:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| FirstTimestamp | string | Časové razítko přijetí pro jednu z úrovní sleduje/kvality typu videa. |
+| firstTimestamp | string | Časové razítko přijetí pro jednu z úrovní sleduje/kvality typu videa. |
 | firstDuration | string | Doba trvání bloků dat s první časové razítko. |
 | secondTimestamp | string  | Časové razítko přijetí pro některé další úroveň sledování/kvality typu videa. |
 | secondDuration | string | Doba trvání bloků dat s druhé časové razítko. |
-| Časová osa | string | Časová osa časová razítka a doba trvání.|
+| timescale | string | Časová osa časová razítka a doba trvání.|
 
 ### <a name="liveeventingestheartbeat"></a>LiveEventIngestHeartbeat
 
@@ -612,17 +612,17 @@ Datový objekt má následující vlastnosti:
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
 | trackType | string | Typ stopě (zvuk / Video). |
-| TrackName | string | Název stopě (buď pokud kodér nebo v případě RTMP server vygeneruje v *TrackType_Bitrate* formátu). |
-| S přenosovou rychlostí | integer | S přenosovou rychlostí dráhy. |
+| trackName | string | Název stopě (buď pokud kodér nebo v případě RTMP server vygeneruje v *TrackType_Bitrate* formátu). |
+| bitrate | integer | S přenosovou rychlostí dráhy. |
 | incomingBitrate | integer | Vypočtený s přenosovou rychlostí podle bloků dat z kodéru. |
-| LastTimestamp | string | Poslední časové razítko přijetí pro sledování v posledních 20 sekund. |
-| Časová osa | string | Časový rámec, ve kterém jsou vyjádřeny časová razítka. |
+| lastTimestamp | string | Poslední časové razítko přijetí pro sledování v posledních 20 sekund. |
+| timescale | string | Časový rámec, ve kterém jsou vyjádřeny časová razítka. |
 | overlapCount | integer | Počet bloků dat měli překrytých časová razítka v posledních 20 sekund. |
 | discontinuityCount | integer | Počet nespojitosti zjištěnými v posledních 20 sekund. |
 | nonIncreasingCount | integer | Počet bloků dat s časovými razítky v minulosti byly přijaty v posledních 20 sekund. |
 | unexpectedBitrate | bool | Pokud očekávaných a aktuálních přenosových rychlostí lišit o více než povolený limit v posledních 20 sekund. Je hodnota true v případě a pouze tehdy, pokud incomingBitrate > = 2 * s přenosovou rychlostí nebo incomingBitrate < = nebo IncomingBitrate s přenosovou rychlostí/2 = 0. |
 | state | string | Stav živé události. |
-| V pořádku | bool | Označuje, zda ingestování je v pořádku na základě počtu a příznaky. V pořádku má hodnotu true Pokud overlapCount = 0 & & discontinuityCount = 0 & & nonIncreasingCount = 0 & & unexpectedBitrate = false. |
+| healthy | bool | Označuje, zda ingestování je v pořádku na základě počtu a příznaky. V pořádku má hodnotu true Pokud overlapCount = 0 & & discontinuityCount = 0 & & nonIncreasingCount = 0 & & unexpectedBitrate = false. |
 
 ### <a name="liveeventtrackdiscontinuitydetected"></a>LiveEventTrackDiscontinuityDetected
 
@@ -656,12 +656,12 @@ Datový objekt má následující vlastnosti:
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
 | trackType | string | Typ stopě (zvuk / Video). |
-| TrackName | string | Název stopě (buď pokud kodér nebo v případě RTMP server vygeneruje v *TrackType_Bitrate* formátu). |
-| S přenosovou rychlostí | integer | S přenosovou rychlostí dráhy. |
-| PreviousTimestamp | string | Časové razítko předchozí fragment. |
-| NewTimestamp | string | Časové razítko aktuální fragmentu. |
+| trackName | string | Název stopě (buď pokud kodér nebo v případě RTMP server vygeneruje v *TrackType_Bitrate* formátu). |
+| bitrate | integer | S přenosovou rychlostí dráhy. |
+| previousTimestamp | string | Časové razítko předchozí fragment. |
+| newTimestamp | string | Časové razítko aktuální fragmentu. |
 | discontinuityGap | string | Mezera mezi nad dva časová razítka. |
-| Časová osa | string | Jsou reprezentovány časový rámec, ve které časovým razítkem a diskontinuitu mezera. |
+| timescale | string | Jsou reprezentovány časový rámec, ve které časovým razítkem a diskontinuitu mezera. |
 
 ### <a name="common-event-properties"></a>Společných vlastností události
 

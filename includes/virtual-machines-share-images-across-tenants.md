@@ -9,11 +9,11 @@ ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 499aeccdf00980eeb66ac6ee06e45267fd515143
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66145884"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67174971"
 ---
 Sdílené Galerie obrázků vám umožní sdílení obrázků s využitím RBAC. RBAC můžete použít ke sdílení imagí v rámci vašeho tenanta a dokonce i jednotlivci mimo vašeho tenanta. Ale pokud ho chcete sdílet imagí mimo vašeho tenanta Azure ve velkém měřítku, měli byste vytvořit registrace aplikace k usnadnění sdílení.  Registrace aplikace s využitím můžete povolit složitější scénáře sdílení, jako jsou: 
 
@@ -40,7 +40,7 @@ Udělit oprávnění registrace aplikací k použití Galerie sdílené bitové 
 1. Na webu Azure Portal vyberte galerii sdílené bitové kopie, kterou chcete sdílet s jiným tenantem.
 1. Vyberte **vyberte řízení přístupu (IAM)** a v části **přidat přiřazení role** vyberte *přidat*. 
 1. V části **Role**vyberte **čtečky**.
-1. V části **přiřadit přístup:**, nechte pole jako **uživatele, skupinu nebo instanční objekt služby Azure AD**.
+1. V části **přiřadit přístup:** , nechte pole jako **uživatele, skupinu nebo instanční objekt služby Azure AD**.
 1. V části **vyberte**, typ *myGalleryApp* a vyberte ji, když se zobrazí v seznamu. Jakmile budete hotovi, vyberte **Uložit**.
 
 
@@ -54,9 +54,9 @@ https://login.microsoftonline.com/<Tenant 2 ID>/oauth2/authorize?client_id=<Appl
 
 V [webu Azure portal](https://portal.azure.com) přihlaste jako Tenant 2 a umožněte přístup registraci aplikace do skupiny prostředků, ve kterém chcete vytvořit virtuální počítač.
 
-1. Vyberte skupinu prostředků a potom vyberte **řízení přístupu (IAM)**. V části **přidat přiřazení role** vyberte **přidat**. 
+1. Vyberte skupinu prostředků a potom vyberte **řízení přístupu (IAM)** . V části **přidat přiřazení role** vyberte **přidat**. 
 1. V části **Role**, typ **Přispěvatel**.
-1. V části **přiřadit přístup:**, nechte pole jako **uživatele, skupinu nebo instanční objekt služby Azure AD**.
+1. V části **přiřadit přístup:** , nechte pole jako **uživatele, skupinu nebo instanční objekt služby Azure AD**.
 1. V části **vyberte** typ *myGalleryApp* poté jej vyberte, když se zobrazí v seznamu. Jakmile budete hotovi, vyberte **Uložit**.
 
 > [!NOTE]

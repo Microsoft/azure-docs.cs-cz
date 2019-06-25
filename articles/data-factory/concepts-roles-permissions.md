@@ -12,10 +12,10 @@ author: gauravmalhot
 ms.author: gamal
 manager: craigg
 ms.openlocfilehash: 19666eb668dd120c1705c6a62a8ba1abd2321026
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61261805"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Role a oprávnění pro službu Azure Data Factory
@@ -78,7 +78,7 @@ Tady je pár příkladů, které ukazují, můžete dosáhnout s vlastními role
   Tento scénář vyžaduje dvě přiřazení rolí.
 
   1. Přiřadíte integrovanou **Přispěvatel** na objekt pro vytváření dat na úrovni role.
-  2. Vytvořit vlastní roli s oprávněním **Microsoft.Resources/deployments/**. Tuto vlastní roli přiřadíte uživatele na úrovni skupiny prostředků.
+  2. Vytvořit vlastní roli s oprávněním **Microsoft.Resources/deployments/** . Tuto vlastní roli přiřadíte uživatele na úrovni skupiny prostředků.
 
 - Umožní uživateli aktualizovat objekt pro vytváření dat z Powershellu nebo sady SDK, ale není na portálu Azure portal.
 

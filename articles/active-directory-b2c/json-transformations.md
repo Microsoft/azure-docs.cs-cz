@@ -11,10 +11,10 @@ ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: 9a026d205d3ab855ecbb51048e7464df6fb4a094
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66510752"
 ---
 # <a name="json-claims-transformations"></a>JSON deklarace identity transformace
@@ -121,7 +121,7 @@ Získá Zadaný prvek číselné (dlouhé) z dat JSON.
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputJson | string | ClaimTypes, které používají deklarace identity transformace získat deklarace identity. |
 | InputParameter | claimToExtract | string | Název elementu JSON, který chcete extrahovat. |
-| outputClaim | extractedClaim | Long | Typ ClaimType, který je vytvořen po zavolání této ClaimsTransformation, název elementu zadali v _claimToExtract_ vstupní parametry. |
+| outputClaim | extractedClaim | long | Typ ClaimType, který je vytvořen po zavolání této ClaimsTransformation, název elementu zadali v _claimToExtract_ vstupní parametry. |
 
 V následujícím příkladu, extrahuje transformace deklarací identity `id` element z dat JSON.
 

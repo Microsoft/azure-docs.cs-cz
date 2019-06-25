@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.date: 5/15/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 5ddcdeca41e2f21fa27db25f7e0721c7ef87e491
-ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
+ms.openlocfilehash: 272c6d2de23b1e89caef3f9bee20a96c5c196cde
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65620276"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275177"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Omezení velikosti pro požadavek webové aplikace brány firewall a seznamy vyloučení
 
@@ -35,16 +35,16 @@ WAF také nabízí Konfigurovatelný ovladače k zapnutí nebo vypnutí kontroly
 
 Seznamy vyloučení WAF umožňují vynechat určité atributy žádosti ze zkušební verze WAF. Běžným příkladem je že vložen tokeny, které se používají pro ověřování nebo pole s heslem služby Active Directory. Tyto atributy jsou náchylné k obsahovat speciální znaky, které můžou aktivovat falešně pozitivní z pravidla firewallu webových aplikací. Po přidání atributu do seznamu vyloučení WAF se nepovažuje za žádným pravidlem nakonfigurovaná a aktivní WAF. V oboru jsou globální seznamy vyloučení.
 
-Následující atributy mohou být přidány do seznamu vyloučení:
+Následující atributy lze přidat do seznamu vyloučení. Hodnoty z vybraného pole není u nich vyhodnoceno proti pravidla firewallu webových aplikací. Seznam vyloučení odebrat kontroly hodnoty tohoto pole.
 
 * Hlavičky žádosti
 * Soubory cookie požadavků
-* Název atributu požadavku (argumenty)
+* Název atributu požadavku (argumenty) se dá přidat jako vyloučeného elementu, jako například:
 
-   * Vícedílný dat formuláře
-   * XML
-   * JSON
-   * Adresa URL dotazu argumentů
+   * Název pole formuláře
+   * XML entity
+   * JSON entity
+   * Argumenty řetězce dotazu adresy URL
 
 Můžete určit přesné požadavek záhlaví, textu, soubor cookie nebo atributu shodu řetězce dotazu.  Nebo můžete volitelně zadat částečné shody. Vyloučení je vždycky aktivní pole hlavičky, nikdy ne na jeho hodnotu. Pravidla vyloučení jsou globální v oboru a platí pro všechny stránky a všechna pravidla.
 

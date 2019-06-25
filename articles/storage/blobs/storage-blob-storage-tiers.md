@@ -10,10 +10,10 @@ ms.author: mhopkins
 ms.reviewer: clausjor
 ms.subservice: blobs
 ms.openlocfilehash: 8e9e27f14c4ccd6f5822033baa21aaafcf96c428
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65148496"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob storage: horká, studená a archivní úroveň přístupu
@@ -89,7 +89,7 @@ Ovládání datových vrstev na úrovni objektů blob umožňuje změnit vrstvu 
 
 Čas poslední změny úrovně objektu blob je zveřejněný prostřednictvím vlastnosti **Access Tier Change Time** objektu blob. Pokud je objekt blob v archivní úrovni, ho nelze přepsat, aby nahrávání stejný objekt blob není povolena v tomto scénáři. Můžete přepsat objektů blob v horké nebo studené úrovně, ve kterém případě nový objekt blob zdědí úroveň objektu blob, který se přepsal.
 
-Objekty BLOB ve všech úrovních tři přístup mohou existovat vedle sebe ve stejném účtu. Každý objekt blob, který nemá explicitně přiřazenou vrstvu, odvozuje nastavení vrstvy přístupu z účtu. Pokud je úroveň přístupu odvozuje z účtu, zobrazí se **Access Tier Inferred** blob nastavenou na hodnotu "true" a objektu blob **úroveň přístupu** vlastností objektu blob odpovídá úrovni účtu. Na webu Azure Portal, odvození úrovně přístupu, zobrazí se vlastnosti s úrovní přístupu objektu blob (například **horká (odvozeno)** nebo **studená (odvozeno)**).
+Objekty BLOB ve všech úrovních tři přístup mohou existovat vedle sebe ve stejném účtu. Každý objekt blob, který nemá explicitně přiřazenou vrstvu, odvozuje nastavení vrstvy přístupu z účtu. Pokud je úroveň přístupu odvozuje z účtu, zobrazí se **Access Tier Inferred** blob nastavenou na hodnotu "true" a objektu blob **úroveň přístupu** vlastností objektu blob odpovídá úrovni účtu. Na webu Azure Portal, odvození úrovně přístupu, zobrazí se vlastnosti s úrovní přístupu objektu blob (například **horká (odvozeno)** nebo **studená (odvozeno)** ).
 
 > [!NOTE]
 > Úložiště archivu a ovládání datových vrstev na úrovni objektů blob podporují jenom objekty blob bloku. Nejde také změnit úroveň objektu blob bloku, který má snímky.

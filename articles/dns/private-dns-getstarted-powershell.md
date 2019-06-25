@@ -1,30 +1,30 @@
 ---
-title: Kurz – Vytvoření privátní zóny Azure DNS pomocí Azure PowerShellu
-description: V tomto kurzu vytvoříte a otestujete privátní zónu a záznam DNS v Azure DNS. Tento podrobný průvodce vám pomůže vytvořit a spravovat první privátní zónu a záznam DNS pomocí Azure PowerShellu.
+title: Vytvoření privátní zóny DNS pomocí Azure Powershellu
+description: V tomto článku vytvoříte a testování privátní zónu a záznam DNS v Azure DNS. Tento podrobný průvodce vám pomůže vytvořit a spravovat první privátní zónu a záznam DNS pomocí Azure PowerShellu.
 services: dns
 author: vhorne
 ms.service: dns
-ms.topic: tutorial
-ms.date: 06/13/2019
+ms.topic: article
+ms.date: 06/14/2019
 ms.author: victorh
-ms.openlocfilehash: 8f39c9707fef013c162e407a7e3ccaa67f2cabfc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9d79ed28bd331b723755e1c17233aa82421ad1d7
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080586"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147876"
 ---
-# <a name="tutorial-create-an-azure-dns-private-zone-using-azure-powershell"></a>Kurz: Vytvoření privátní zóny DNS pomocí Azure Powershellu
+# <a name="create-an-azure-dns-private-zone-using-azure-powershell"></a>Vytvoření privátní zóny DNS pomocí Azure Powershellu
 
 [!INCLUDE [private-dns-public-preview-notice](../../includes/private-dns-public-preview-notice.md)]
 
-Tento kurz vás provede kroky k vytvoření první privátní zóny a záznamu DNS pomocí Azure PowerShellu.
+Tento článek vás provede kroky k vytvoření první privátní zóny a záznamu DNS pomocí Azure PowerShellu.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 K hostování záznamů DNS v určité doméně se používá zóna DNS. Pokud chcete začít hostovat svou doménu v DNS Azure, musíte vytvořit zónu DNS pro daný název domény. Všechny záznamy DNS pro vaši doménu se pak vytvoří v této zóně DNS. Když chcete publikovat privátní zónu DNS do virtuální sítě, zadáte seznam virtuálních sítí, které mají povoleno překládat záznamy v rámci této zóny.  Toto nastavení se nazývá *propojené* virtuální sítě. Pokud je povolená Automatická registrace, Azure DNS také aktualizuje záznamy zóny pokaždé, když je vytvořen virtuální počítač, změny jeho "IP adresu, nebo je odstranit.
 
-V tomto kurzu se naučíte:
+V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Vytvoření privátní zóny DNS
@@ -32,16 +32,11 @@ V tomto kurzu se naučíte:
 > * Vytvoření dalšího záznamu DNS
 > * Testování privátní zóny
 
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-Pokud chcete, můžete tento kurz dokončit pomocí [rozhraní příkazového řádku Azure](private-dns-getstarted-cli.md).
-
-<!--- ## Get the Preview PowerShell modules
-These instructions assume you have already installed and signed in to Azure PowerShell, including ensuring you have the required modules for the Private Zone feature. -->
-
-<!---[!INCLUDE [dns-powershell-setup](../../includes/dns-powershell-setup-include.md)] -->
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+Pokud dáváte přednost, můžete absolvovat s použitím tohoto postupu [rozhraní příkazového řádku Azure](private-dns-getstarted-cli.md).
 
 ## <a name="create-the-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -204,7 +199,7 @@ Totéž zopakujte pro virtuální počítač myVM02.
 
 ## <a name="delete-all-resources"></a>Odstranění všech prostředků
 
-Pokud už nejsou potřeba, můžete všechny prostředky vytvořené v rámci tohoto kurzu odstranit odstraněním skupiny prostředků **MyAzureResourceGroup**.
+Pokud už je nepotřebujete, odstraňte **MyAzureResourceGroup** skupinu prostředků odstraňte prostředky vytvořené v tomto článku.
 
 ```azurepowershell
 Remove-AzResourceGroup -Name MyAzureResourceGroup
@@ -212,8 +207,7 @@ Remove-AzResourceGroup -Name MyAzureResourceGroup
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste nasadili privátní zónu DNS, vytvořili záznam DNS nasadila a zónu otestovali.
+V tomto článku jste privátní zóny DNS vytvořit záznam DNS nasadila a otestovala zóny.
 Teď se můžete o privátních zónách DNS dozvědět podrobnější informace.
 
-> [!div class="nextstepaction"]
-> [Použití Azure DNS pro privátní domény](private-dns-overview.md)
+* [Použití Azure DNS pro privátní domény](private-dns-overview.md)

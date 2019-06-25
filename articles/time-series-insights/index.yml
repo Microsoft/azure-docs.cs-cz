@@ -5,14 +5,14 @@ metadata:
   title: 'Dokumentace ke službě Azure Time Series Insights – rychlá zprovoznění, kurzy, reference k rozhraní API | Microsoft Docs'
   description: 'Naučte se spouštět analýzy Azure IoT v cloudu s využitím plně spravovaného zpracování událostí. Analyzujte data v reálném čase z aplikací, senzorů, zařízení a dalších zdrojů.'
   services: time-series-insights
-  author: anshan
+  author: deepakpalled
   manager: cshankar
   ms.service: time-series-insights
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 06/03/2019
-  ms.author: anshan
+  ms.author: dpalled
 abstract:
   description: 'Vítá vás služba Azure Time Series Insights. Azure Time Series Insights poskytuje výkonné nástroje pro telemetrii a zkoumání dat, které pomáhají vylepšovat provozní analýzy. Tato dokumentace popisuje službu Time Series Insights, postup při zahájení práce s využitím četných jejích funkcí a její výkonná rozhraní API. Informace jsou uváděné ve dvou verzích, pro všeobecně dostupnou verzi (Time Series Insights ve verzi GA) a pro hlavní aktualizaci této služby, která je ve verzi Preview (Time Series Insights ve verzi Preview).'
   aside:

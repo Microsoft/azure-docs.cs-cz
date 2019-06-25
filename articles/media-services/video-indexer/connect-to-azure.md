@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
 ms.openlocfilehash: 33493f1bdff6071737aad4bfb8c7d0e5e22896db
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65799848"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Vytvoření připojení k Azure účet služby Video Indexer
@@ -139,11 +139,11 @@ V dialogovém okně zadejte následující informace:
 
 |Nastavení|Popis|
 |---|---|
-|Oblast účtu Video Indexeru|Název oblasti účtu Video Indexer. Pro lepší výkon a nižší náklady důrazně doporučujeme zadat název oblasti, kde se nachází na prostředek služby Azure Media Services a účet služby Azure Storage. |
+|Oblast účtu video Indexer|Název oblasti účtu Video Indexer. Pro lepší výkon a nižší náklady důrazně doporučujeme zadat název oblasti, kde se nachází na prostředek služby Azure Media Services a účet služby Azure Storage. |
 |Tenant Azure Active Directory (AAD)|Název tenanta Azure AD, například "contoso.onmicrosoft.com". Informace o tenantovi můžete získat z webu Azure portal. Umístěte ukazatel myši nad název přihlášeného uživatele v pravém horním rohu. Vyhledání názvu napravo od **domény**.|
 |ID předplatného|Předplatné Azure, ve kterém by měl vytvoří toto připojení. ID předplatného můžete získat z webu Azure portal. Klikněte na **všechny služby** v levém panelu a vyhledejte "předplatné". Vyberte **předplatná** a pak vyberte požadovaného ID z seznam vašich předplatných.|
 |Název skupiny prostředků Azure Media Services|Název pro skupinu prostředků, ve které jste vytvořili účet Media Services.|
-|Název prostředku mediální služby|Název účtu Azure Media Services, kterou jste vytvořili v předchozí části.|
+|Název mediální služby prostředků|Název účtu Azure Media Services, kterou jste vytvořili v předchozí části.|
 |ID aplikace|Azure AD ID aplikace (s oprávněními pro zadaný účet Media Services), který jste vytvořili v předchozí části.|
 |Klíč aplikace|Klíč aplikace Azure AD, kterou jste vytvořili v předchozí části. |
 

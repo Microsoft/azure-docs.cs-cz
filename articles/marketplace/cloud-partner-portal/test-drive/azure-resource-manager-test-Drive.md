@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
 ms.openlocfilehash: 92c55c7f15b3f350ad802157bf401f3e75983789
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65606430"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Vyzkoušejte Azure Resource Manageru
@@ -362,7 +362,7 @@ V tuto chvíli vypočítá celkový počet možných souběžných testovacími 
 
 **Test Drive Resource Manageru šablony -** *vyžaduje* nahrát šablonu Resource Manageru. Toto je soubor, který jste vytvořili v předchozí části výše. Název souboru hlavní šablony: "hlavní template.json" a ujistěte se, že šablony Resource Manageru obsahuje výstupní parametry klíče proměnné, které jsou potřeba. (Musí být soubor typu ZIP)
 
-**Přístup k informacím o -** *vyžaduje* po zákazník dostane jejich Test Drive, se jim prezentují přístup k informacím. Tyto pokyny jsou určené ke sdílení užitečné výstupní parametry z testovacího správce prostředků disku šablony. Chcete-li zahrnout výstupních parametrů, použijte dvojitých složených závorkách (například **{{outputname}}**), a že bude správně vložena do umístění. (Formátování řetězce ve formátu HTML je zde doporučeného k vykreslení v části front end).
+**Přístup k informacím o -** *vyžaduje* po zákazník dostane jejich Test Drive, se jim prezentují přístup k informacím. Tyto pokyny jsou určené ke sdílení užitečné výstupní parametry z testovacího správce prostředků disku šablony. Chcete-li zahrnout výstupních parametrů, použijte dvojitých složených závorkách (například **{{outputname}}** ), a že bude správně vložena do umístění. (Formátování řetězce ve formátu HTML je zde doporučeného k vykreslení v části front end).
 
 ### <a name="test-drive-deployment-subscription-details"></a>Podrobnosti předplatného nasazení testu jednotky
 
@@ -403,7 +403,7 @@ Klikněte na Uložit. Posledním krokem je zkopírovat ID aplikace pro tuto regi
 Zadané aplikace se používá k nasazení do předplatného, potřebujeme pro tuto aplikaci přidat jako přispěvatele daného předplatného. Tyto pokyny jsou jako níže:
 
 1. Přejděte do okna odběry a vyberte odpovídající předplatné, který používáte pro pouze na testovací verzi.
-1. Klikněte na tlačítko **řízení přístupu (IAM)**.
+1. Klikněte na tlačítko **řízení přístupu (IAM)** .
 1. Klikněte na tlačítko **přiřazení rolí** kartu.  ![Přidat nový objekt řízení přístupu](./media/azure-resource-manager-test-drive/SetupSub7_1.jpg)
 1. Klikněte na tlačítko **přidat přiřazení role**.
 1. Nastavit jako roli **Přispěvatel**.

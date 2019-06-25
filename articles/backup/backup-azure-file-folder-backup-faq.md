@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: dacurwin
-ms.openlocfilehash: 1ac3cdecc79cafb9ea2697cca3c87b2ebe083d40
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 56dc87b1cdf36d761c46133004a05f8fa225a091
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66254855"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66808295"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>Běžné dotazy týkající se zálohování souborů a složek 
 
@@ -83,11 +83,11 @@ Při přejmenování počítače s Windows, všechna stávající nastavená zá
 - Pokud potřebujete obnovit data zálohovaná do trezoru se starým názvem serveru, použijte možnost obnovit do alternativního umístění v Průvodci obnovením dat. [Další informace](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine). 
 
 ### <a name="what-is-the-maximum-file-path-length-for-backup"></a>Jaký je maximální délka cesty pro zálohu?
-Agenta MARS spoléhá na systém souborů NTFS a používá specifikace délky cesty k souboru omezený [rozhraní Windows API](/windows/desktop/FileIO/naming-a-file#fully_qualified_vs._relative_paths). Pokud jsou delší než povolená hodnota soubory, které chcete chránit, zálohujte nadřazenou složku nebo diskovou jednotku.  
+Agenta MARS spoléhá na systém souborů NTFS a používá specifikace délky cesty k souboru omezený [rozhraní Windows API](/windows/desktop/FileIO/naming-a-file#fully-qualified-vs-relative-paths). Pokud jsou delší než povolená hodnota soubory, které chcete chránit, zálohujte nadřazenou složku nebo diskovou jednotku.  
 
 ### <a name="what-characters-are-allowed-in-file-paths"></a>Jaké znaky jsou povolené v cestách k souborům?
 
-Agenta MARS spoléhá na systém souborů NTFS a umožňuje [podporované znaky](/windows/desktop/FileIO/naming-a-file#naming_conventions) v názvy cest.
+Agenta MARS spoléhá na systém souborů NTFS a umožňuje [podporované znaky](/windows/desktop/FileIO/naming-a-file#naming-conventions) v názvy cest.
 
 ### <a name="the-warning-azure-backups-have-not-been-configured-for-this-server-appears"></a>Zobrazí se upozornění "Zálohování Azure nebyly nakonfigurovány pro tento server".
 Toto upozornění se může zobrazit i v případě, že nakonfigurujete zásady zálohování, nastavení plánu zálohování uložené na místním serveru neshodují s nastavením uloženým v trezoru služby backup.

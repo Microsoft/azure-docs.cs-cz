@@ -10,10 +10,10 @@ ms.date: 05/09/2019
 ms.author: dpalled
 ms.custom: seodec18
 ms.openlocfilehash: 089285637bb740fea47f1fd07de0906dfe46662b
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66244462"
 ---
 # <a name="shape-json-to-maximize-query-performance"></a>Tvar JSON pro zajištění maximálního výkonu dotazů 
@@ -90,14 +90,14 @@ Příklad datové části JSON:
 
 * Referenční tabulky dat, který má klíčovou vlastnost **deviceId**:
 
-   | deviceId | ID zprávy | deviceLocation |
+   | deviceId | messageId | deviceLocation |
    | --- | --- | --- |
    | FXXX | ŘÁDEK\_DAT | EVROPA |
    | FRRR | ŘÁDEK\_DAT | USA |
 
 * Series Insights události tabulka doby, po sloučení:
 
-   | deviceId | ID zprávy | deviceLocation | časové razítko | řada. Míra tok ft3/s | řada. Modul ropy tlak psi |
+   | deviceId | messageId | deviceLocation | timestamp | řada. Míra tok ft3/s | řada. Modul ropy tlak psi |
    | --- | --- | --- | --- | --- | --- |
    | FXXX | ŘÁDEK\_DAT | EVROPA | 2018-01-17T01:17:00Z | 1.0172575712203979 | 34.7 |
    | FXXX | ŘÁDEK\_DAT | EVROPA | 2018-01-17T01:17:00Z | 2.445906400680542 | 49.2 |
@@ -161,7 +161,7 @@ Příklad datové části JSON:
 
 * Referenční tabulky dat, který obsahuje vlastnosti klíče **deviceId** a **series.tagId**:
 
-   | deviceId | series.tagId | ID zprávy | deviceLocation | type | Jednotka |
+   | deviceId | series.tagId | messageId | deviceLocation | type | Jednotka |
    | --- | --- | --- | --- | --- | --- |
    | FXXX | pumpRate | ŘÁDEK\_DAT | EVROPA | Míra toku | ft3/s |
    | FXXX | oilPressure | ŘÁDEK\_DAT | EVROPA | Modul ropy tlaku | psi |
@@ -170,7 +170,7 @@ Příklad datové části JSON:
 
 * Series Insights události tabulka doby, po sloučení:
 
-   | deviceId | series.tagId | ID zprávy | deviceLocation | type | Jednotka | časové razítko | Series.Value |
+   | deviceId | series.tagId | messageId | deviceLocation | type | Jednotka | timestamp | Series.Value |
    | --- | --- | --- | --- | --- | --- | --- | --- |
    | FXXX | pumpRate | ŘÁDEK\_DAT | EVROPA | Míra toku | ft3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 | 
    | FXXX | oilPressure | ŘÁDEK\_DAT | EVROPA | Modul ropy tlaku | psi | 2018-01-17T01:17:00Z | 34.7 |

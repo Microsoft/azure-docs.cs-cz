@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 03/29/2019
 ms.author: diberry
 ms.openlocfilehash: acb561970b6a8576d1219fc15758e21a3032c9e5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60813282"
 ---
 # <a name="batch-testing-with-1000-utterances-in-luis-portal"></a>Testování s 1 000 projevy portálu LUIS služby batch
@@ -32,10 +32,10 @@ Odeslat soubor batch projevy, označované jako *datovou sadu*, pro účely test
 
 |**pravidla**|
 |--|
-|* Žádné duplicitní projevy|
+|\* Žádné duplicitní projevy|
 |projevy 1 000 nebo méně|
 
-* Duplicity, jsou považovány za přesná shody, ne shody, které jsou nejprve tokenizovaného. 
+\* Duplicity, jsou považovány za přesná shody, ne shody, které jsou nejprve tokenizovaného. 
 
 ## <a name="entities-allowed-in-batch-tests"></a>Entity, které jsou povolené v testech služby batch
 

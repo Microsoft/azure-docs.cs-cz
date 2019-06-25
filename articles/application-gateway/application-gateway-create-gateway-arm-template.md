@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 4/15/2019
 ms.author: victorh
 ms.openlocfilehash: 29b607f10c15ba35a515b55b059b7b55ff594fe6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66135758"
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-resource-manager-template"></a>Vytvoření služby Application Gateway pomocí šablony Azure Resource Manageru
@@ -161,9 +161,9 @@ K nasazení šablony Azure Resource Manageru, který jste stáhli, pomocí Azure
     az group create --location westus --name appgatewayRG
     ```
     
-    **-n (nebo --name)**. Název nové skupiny prostředků. V našem scénáři je to název *appgatewayRG*.
+    **-n (nebo --name)** . Název nové skupiny prostředků. V našem scénáři je to název *appgatewayRG*.
     
-    **-l (nebo --location)**. Oblast Azure, ve které je vytvořena nová skupina prostředků. Pro náš scénář má *westus*.
+    **-l (nebo --location)** . Oblast Azure, ve které je vytvořena nová skupina prostředků. Pro náš scénář má *westus*.
 
 1. Spustit `az group deployment create` rutiny nasadíte novou virtuální síť pomocí šablony a parametrů soubory, které jste stáhli a upravili v předchozím kroku. Seznam uvedený za výstupem vysvětluje použité parametry.
 

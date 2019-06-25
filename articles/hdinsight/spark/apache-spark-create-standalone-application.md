@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Vytvoření aplikace v jazyce Scala Maven pro Spark v Azure HDInsight pomocí IntelliJ'
-description: Vytvořte aplikaci Spark napsanou v jazyce Scala, která jako sestavovací systém používá Apache Maven, s využitím existujícího archetypu Maven pro Scala, který poskytuje IntelliJ IDEA.
+description: Kurz – vytvoření Sparkové aplikace napsané v jazyce Scala pomocí nástroje Apache Maven jako systém sestavení a existující archetypu Maven pro Scala poskytované IntelliJ IDEA.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 05/28/2019
-ms.openlocfilehash: 212a2ca89b91de518f07d097b00b31e785216cb0
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: cf1ada88cda77091e303e67b9652b9c6a372e2d1
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66304012"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295380"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-apache-spark-in-hdinsight-using-intellij"></a>Kurz: Vytvoření aplikace v jazyce Scala Maven pro Apache Spark v HDInsight pomocí IntelliJ
 

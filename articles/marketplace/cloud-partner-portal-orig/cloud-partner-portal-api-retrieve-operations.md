@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 09/14/2018
 ms.author: pabutler
 ms.openlocfilehash: 1fbcc1d50dbc4488c4123be64e85de612233ccc3
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64935784"
 ---
 <a name="retrieve-operations"></a>Načtení operací
@@ -37,16 +37,16 @@ Načte všechny operace týkající se nabídky nebo na konkrétní operace pro 
 |  offerId           |  Identifikátor nabídky                                                                                              |  String       |
 |  operationId       |  Identifikátor GUID, který jednoznačně identifikuje operace týkající se nabídky. OperationId může načíst s použitím tohoto rozhraní API a také dochází v hlavičce HTTP odpovědi pro jakékoli dlouho spuštěné operace, jako [nabídka publikovat](./cloud-partner-portal-api-publish-offer.md) rozhraní API.  |   Guid   |
 |  filteredStatus    | Nepovinný dotaz parametr slouží k filtrování podle stavu (třeba `running`) na kolekci vrácené poskytovatelem tohoto rozhraní API.  |   String |
-|  verze API-version       | Nejnovější verzi rozhraní API                                                                                           |    Datum      |
+|  api-version       | Nejnovější verzi rozhraní API                                                                                           |    Datum      |
 |  |  |  |
 
 
-<a name="header"></a>Hlavička
+<a name="header"></a>Záhlaví
 ------
 
 |  **Název**          |  **Hodnota**           |
 |  ---------------   | -------------------- |
-|  Typ obsahu      | `application/json`   |
+|  Content-Type      | `application/json`   |
 |  Autorizace     | `Bearer YOUR_TOKEN`  |
 |  |  |
 

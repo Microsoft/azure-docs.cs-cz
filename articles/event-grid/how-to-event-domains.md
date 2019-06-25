@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.author: babanisa
 ms.topic: conceptual
 ms.date: 01/17/2019
-ms.openlocfilehash: 73c837897f4a104fabb4143d4b49fa3fbc258bb4
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 0042b0bd8c6ed9e9d253c44151dcf0588c742b48
+ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66305031"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67137848"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>Správa témat a publikovat události pomocí událostí domény
 
@@ -194,7 +194,7 @@ A pak pomocí vašeho oblíbeného způsob vytváření metody POST protokolu HT
 
 ## <a name="search-lists-of-topics-or-subscriptions"></a>Seznam hledání témata nebo předplatná
 
-Aby bylo hledání a správu velkého počtu témat nebo odběrů, rozhraní API služby Event Grid podporují seznamu stránkování.
+Aby bylo hledání a správu velkého počtu témat nebo odběrů, podporují rozhraní API služby Event Grid výpis a stránkování.
 
 ### <a name="using-cli"></a>Pomocí rozhraní příkazového řádku
 

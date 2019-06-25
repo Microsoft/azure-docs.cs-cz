@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: ee721558e0e643a4b5fdcfa4cf0fe9c2195fa479
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 7a37c9d51541c279a6b820641b6eb46175aa8413
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64736977"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67174978"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure premium storage: návrh pro vysoký výkon
 
@@ -98,7 +98,7 @@ Potom změřte požadavky na maximální výkon vaší aplikace v průběhu své
 | Min. Latence | | | |
 | Průměrná latence | | | |
 | Max. Procesor | | | |
-| Průměr CPU | | | |
+| Průměrné využití procesoru | | | |
 | Max. Memory (Paměť) | | | |
 | Průměrné paměti | | | |
 | Hloubka fronty | | | |
@@ -178,8 +178,8 @@ Tady je příklad jak vypočítat počet IOPS a propustnost nebo šířku pásma
 
 | Požadavek na aplikaci | Velikost vstupně-výstupních operací | IOPS | Propustnost nebo šířku pásma |
 | --- | --- | --- | --- |
-| Maximální počet vstupně-výstupních operací za sekundu |8 kB |5 000 |40 MB za sekundu |
-| Maximální propustnost |1024 kB |200 |200 MB za sekundu |
+| Maximální počet vstupně-výstupních operací |8 kB |5 000 |40 MB za sekundu |
+| Maximální propustnost |1 024 KB |200 |200 MB za sekundu |
 | Maximální propustnost + vysoké vstupně-výstupních operací |64 kB |3,200 |200 MB za sekundu |
 | Maximální počet vstupně-výstupních operací a Vysoká propustnost |32 KB. |5 000 |160 MB za sekundu |
 

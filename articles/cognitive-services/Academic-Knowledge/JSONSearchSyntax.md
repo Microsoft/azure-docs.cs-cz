@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
 ms.openlocfilehash: fddd2291fe7fbb46c57d31e9aebc7fc6244df971
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61336962"
 ---
 # <a name="json-search-syntax"></a>Syntaxe prohledávání JSON
@@ -33,7 +33,7 @@ ms.locfileid: "61336962"
 }
 ```
 
-Názvy uzlů v cestě dotazu (_v0 v1,..._ ) bude sloužit jako identifikátory uzlů, které lze odkazovat v objektu dotazu. názvy edge (_e0 e1,..._ ) v cestě představují typy odpovídající hran. Můžeme použít hvězdičku _*_ jako uzlů nebo hran název (s výjimkou počáteční uzel, který se musí předávat) Chcete-li deklarovat, které nejsou bez omezení na takový prvek. Například cestu dotazu `/v0/*/v1/e1/*/` načte cesty z grafu bez omezení typu na hraničních zařízeních _(v0 v1)_. Mezitím dotaz nemá omezení v cílovém umístění (poslední uzel) cesta buď.
+Názvy uzlů v cestě dotazu (_v0 v1,..._ ) bude sloužit jako identifikátory uzlů, které lze odkazovat v objektu dotazu. názvy edge (_e0 e1,..._ ) v cestě představují typy odpovídající hran. Můžeme použít hvězdičku _*_ jako uzlů nebo hran název (s výjimkou počáteční uzel, který se musí předávat) Chcete-li deklarovat, které nejsou bez omezení na takový prvek. Například cestu dotazu `/v0/*/v1/e1/*/` načte cesty z grafu bez omezení typu na hraničních zařízeních _(v0 v1)_ . Mezitím dotaz nemá omezení v cílovém umístění (poslední uzel) cesta buď.
 
 Pokud cesta obsahuje pouze jeden uzel, Řekněme, že _v0_, jednoduše dotaz vrátí všechny entity, které vyhovují omezení. Omezení objekt použitý pro počáteční uzel, se nazývá *od objektu dotazu*, jejichž specifikace dostane následujícím způsobem.
 

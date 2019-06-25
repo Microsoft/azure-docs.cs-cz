@@ -19,10 +19,10 @@ ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cfc9c027806cb1a3f65e67eda771894a7250ee67
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66417652"
 ---
 # <a name="microsoft-identity-platform-protocols"></a>Protokoly Microsoft identity platform
@@ -69,7 +69,7 @@ Kde `{tenant}` může trvat jednu ze čtyř různých hodnot:
 | `common` | Umožňuje uživatelům s osobní účty Microsoft a pracovních nebo školních účtů ze služby Azure AD pro přihlášení do aplikace. |
 | `organizations` | Umožňuje jenom uživatelům s pracovních nebo školních účtů ze služby Azure AD pro přihlášení do aplikace. |
 | `consumers` | Umožňuje jenom uživatelům s osobní účty Microsoft (MSA) pro přihlášení do aplikace. |
-| `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` Nebo `contoso.onmicrosoft.com` | Umožňuje pouze uživatelé s pracovní nebo školní účty z konkrétní služby Azure AD tenanta pro přihlášení do aplikace. Lze použít buď popisný název tenanta Azure AD nebo identifikátor GUID vašeho tenanta. |
+| `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` nebo `contoso.onmicrosoft.com` | Umožňuje pouze uživatelé s pracovní nebo školní účty z konkrétní služby Azure AD tenanta pro přihlášení do aplikace. Lze použít buď popisný název tenanta Azure AD nebo identifikátor GUID vašeho tenanta. |
 
 Chcete-li zjistěte, jak pracovat s těmito koncovými body, zvolte typ konkrétní aplikace v [protokoly](#protocols) části a přejděte na odkaz Další informace.
 

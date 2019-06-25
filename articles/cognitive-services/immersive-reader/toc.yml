@@ -1,0 +1,27 @@
+- name: Dokumentace k Asistivní čtečce
+  href: index.yml
+- name: Přehled
+  items:
+    - name: Co je Asistivní čtečka?
+      href: Overview.md
+- name: Šablony Rychlý start
+  expanded: true
+  items:
+    - name: 'Pomocí C#'
+      href: Quickstart.md
+- name: Kurzy
+  items:
+    - name: Spuštění Asistivní čtečky (Node.js)
+      href: tutorial.md
+- name: Referenční informace
+  items:
+    - name: Referenční informace k sadě SDK
+      href: reference.md
+- name: Zdroje a prostředky
+  items:
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/en-us/updates/?product=cognitive-services'
+    - name: Podpora jazyků
+      href: 'https://aka.ms/ltlangsupport'
+    - name: Regionální dostupnost
+      href: 'https://azure.microsoft.com/en-us/global-infrastructure/services/?products=cognitive-services'

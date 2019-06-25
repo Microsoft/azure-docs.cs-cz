@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/01/2019
 ms.author: luisca
 ms.openlocfilehash: 149b701d4a1700787656448e2bdd0d92d2a93844
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65791520"
 ---
 #   <a name="conditional-skill"></a>Podmíněné dovedností
@@ -89,7 +89,7 @@ Vstupy jsou malá a velká písmena.
 
 | Vstup   | Popis |
 |-------------|-------------|
-| condition   | Tento vstup je [vyhodnotí pole](#evaluated-fields) , která představuje podmínku, která má vyhodnotit. Tato podmínka by se měl vyhodnotit na logickou hodnotu (*true* nebo *false*).   <br/>  Příklady: <br/> "= true" <br/> "= $(/document/language) =="fr"" <br/> "= $(/ / stránkydokumentů/\*/language) == $(/ dokument/expectedLanguage)" <br/> |
+| Podmínka   | Tento vstup je [vyhodnotí pole](#evaluated-fields) , která představuje podmínku, která má vyhodnotit. Tato podmínka by se měl vyhodnotit na logickou hodnotu (*true* nebo *false*).   <br/>  Příklady: <br/> "= true" <br/> "= $(/document/language) =="fr"" <br/> "= $(/ / stránkydokumentů/\*/language) == $(/ dokument/expectedLanguage)" <br/> |
 | whenTrue    | Tento vstup je [vyhodnotí pole](#evaluated-fields) , který představuje hodnotu vrátit, pokud je podmínka vyhodnocena *true*. Konstanty řetězců by měla být vrácena v jednoduchých uvozovkách ("a"). <br/>Ukázkové hodnoty: <br/> "="smlouva""<br/>"= $(/ dokument/contractType)" <br/> "= $(/ / entitydokumentu/\*)" <br/> |
 | whenFalse   | Tento vstup je [vyhodnotí pole](#evaluated-fields) , který představuje hodnotu vrátit, pokud je podmínka vyhodnocena *false*. <br/>Ukázkové hodnoty: <br/> "="smlouva""<br/>"= $(/ dokument/contractType)" <br/> "= $(/ / entitydokumentu/\*)" <br/>
 

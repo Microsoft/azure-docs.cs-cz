@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: magattus
 ms.custom: ''
-ms.openlocfilehash: 956df17c821b86d95b1d87c3c8d8197bab7a95be
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: f7de7fe1c677d54c0fa3e6d3ca4730ef1083bc81
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65955263"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273273"
 ---
 # <a name="set-up-failover-across-multiple-azure-cdn-endpoints-with-azure-traffic-manager"></a>Nastavit převzetí služeb při selhání mezi několika koncových bodů Azure CDN pomocí Azure Traffic Manageru
 
@@ -81,7 +81,7 @@ Po nastavení profily CDN a Traffic Manager postupujte podle těchto kroků při
 
     Azure CDN pomocí *cdnverify* subdoménu ověřit mapování DNS k dokončení tohoto procesu registrace. Další informace najdete v tématu [vytvořit záznam CNAME DNS](cdn-map-content-to-custom-domain.md#create-a-cname-dns-record). Tento krok povoluje tak, aby můžou reagovat na požadavky na jeho rozpoznání vlastní doménu Azure CDN.
     
- > [!NOTE]
+    > [!NOTE]
     > Povolit protokol SSL na **Azure CDN od Akamai** profily, musíte přímo cname vlastní doménu do koncového bodu. cdnverify pro povolení protokolu SSL se ještě nepodporuje. 
     >
 

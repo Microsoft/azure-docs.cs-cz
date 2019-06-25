@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: zhshang
 ms.openlocfilehash: f7cc05c8c2a299d809c4386d119fef58fa2548d5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61269398"
 ---
 # <a name="performance-guide-for-azure-signalr-service"></a>Průvodce výkonem pro služby Azure SignalR
@@ -122,14 +122,14 @@ Proveďte *není* překročit zvýrazněné hodnoty v následujících dvou tabu
 
 |       echo                        | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |-----------------------------------|-------|-------|-------|--------|--------|--------|---------|
-| Připojení                       | 1 000 | 2 000 | 5 000 | 10 000 | 20,000 | 50,000 | 100 000 |
+| Připojení                       | 1 000 | 2 000 | 5 000 | 10,000 | 20,000 | 50,000 | 100 000 |
 | **Příchozí šířky pásma** | **2 MB/s**    | **4 MB/s**    | **10 MB/s**   | **20 MB/s**    | **40 MB/s**    | **100 MB/s**   | **200 MB/s**    |
 | Odchozí šířka pásma | 2 Mb/s   | 4 Mb/s   | 10 Mb/s  | 20 MB/s   | 40 MBps   | 100 MB/s  | 200 MB/s   |
 
 
 |     Vysílání             | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
-| Připojení               | 1 000 | 2 000 | 5 000  | 10 000 | 20,000 | 50,000  | 100 000 |
+| Připojení               | 1 000 | 2 000 | 5 000  | 10,000 | 20,000 | 50,000  | 100 000 |
 | Příchozí šířky pásma  | 4 KBps   | 4 KBps   | 4 KBps    | 4 KBps    | 4 KBps    | 4 KBps     | 4 KBps    |
 | **Odchozí šířka pásma** | **4 MB/s**    | **8 MB/s**    | **20 MB/s**    | **40 MB/s**    | **80 MB/s**    | **200 MB/s**    | **400 MB/s**   |
 
@@ -213,8 +213,8 @@ Chování **echo** shledá, že maximální šířky příchozího pásma je rov
 
 |       echo                        | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |-----------------------------------|-------|-------|-------|--------|--------|--------|---------|
-| Připojení                       | 1 000 | 2 000 | 5 000 | 10 000 | 20,000 | 50,000 | 100 000 |
-| Příchozí/odchozí zprávy za sekundu | 1 000 | 2 000 | 5 000 | 10 000 | 20,000 | 50,000 | 100 000 |
+| Připojení                       | 1 000 | 2 000 | 5 000 | 10,000 | 20,000 | 50,000 | 100 000 |
+| Příchozí/odchozí zprávy za sekundu | 1 000 | 2 000 | 5 000 | 10,000 | 20,000 | 50,000 | 100 000 |
 | Příchozí nebo odchozí šířka pásma | 2 Mb/s   | 4 Mb/s   | 10 Mb/s  | 20 MB/s   | 40 MBps   | 100 MB/s  | 200 MB/s   |
 
 V tomto případě se vyvolá každý klient rozbočovači definovanému v aplikačním serverem. Centrum jen volá metodu definované v původní na straně klienta. Je nejvíce zjednodušené rozbočovače pro toto centrum **echo**.
@@ -231,7 +231,7 @@ I pro toto centrum jednoduché je provoz tlak na serveru aplikace jako viditeln�
 
 |    echo          | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Připojení      | 1 000 | 2 000 | 5 000 | 10 000 | 20,000 | 50,000 | 100 000 |
+| Připojení      | 1 000 | 2 000 | 5 000 | 10,000 | 20,000 | 50,000 | 100 000 |
 | Počet serverů aplikace | 2     | 2     | 2     | 3      | 3      | 10     | 20      |
 
 > [!NOTE]
@@ -249,9 +249,9 @@ Následující tabulka shrnuje maximální počet klientských připojení, poč
 
 |     Vysílání             | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
-| Připojení               | 1 000 | 2 000 | 5 000  | 10 000 | 20,000 | 50,000  | 100 000 |
+| Připojení               | 1 000 | 2 000 | 5 000  | 10,000 | 20,000 | 50,000  | 100 000 |
 | Příchozí zprávy za sekundu  | 2     | 2     | 2      | 2      | 2      | 2       | 2       |
-| Odchozí zprávy za sekundu | 2 000 | 4,000 | 10 000 | 20,000 | 40,000 | 100 000 | 200 000 |
+| Odchozí zprávy za sekundu | 2 000 | 4,000 | 10,000 | 20,000 | 40,000 | 100 000 | 200 000 |
 | Příchozí šířky pásma  | 4 KBps   | 4 KBps   | 4 KBps    | 4 KBps    | 4 KBps    | 4 KBps     | 4 KBps     |
 | Odchozí šířka pásma | 4 Mb/s   | 8 Mb/s   | 20 MB/s   | 40 MBps   | 80 MBps   | 200 MB/s   | 400 MB/s   |
 
@@ -259,7 +259,7 @@ Všesměrové vysílání klienty, kteří odesílají zprávy jsou více než �
 
 |   Vysílání      | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Připojení      | 1 000 | 2 000 | 5 000 | 10 000 | 20,000 | 50,000 | 100 000 |
+| Připojení      | 1 000 | 2 000 | 5 000 | 10,000 | 20,000 | 50,000 | 100 000 |
 | Počet serverů aplikace | 2     | 2     | 2     | 2      | 2      | 2      | 2       |
 
 > [!NOTE]
@@ -287,19 +287,19 @@ Náklady směrování je důležité pro odesílání zpráv do více skupin mal
 
 |   Odeslat do malé skupiny     | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50 | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|--------|---------|
-| Připojení               | 1 000 | 2 000 | 5 000  | 10 000 | 20,000 | 50,000 | 100 000
+| Připojení               | 1 000 | 2 000 | 5 000  | 10,000 | 20,000 | 50,000 | 100 000
 | Počet členů skupiny        | 10    | 10    | 10     | 10     | 10     | 10     | 10 
-| Počet skupin               | 100   | 200   | 500    | 1 000  | 2 000  | 5 000  | 10 000 
+| Počet skupin               | 100   | 200   | 500    | 1 000  | 2 000  | 5 000  | 10,000 
 | Příchozí zprávy za sekundu  | 200   | 400   | 1 000  | 2,500  | 4,000  | 7,000  | 7,000   |
 | Příchozí šířky pásma  | 400 KBps  | 800 KBps  | 2 Mb/s     | 5 Mb/s     | 8 Mb/s     | 14 MBps    | 14 MBps     |
-| Odchozí zprávy za sekundu | 2 000 | 4,000 | 10 000 | 25,000 | 40,000 | 70,000 | 70,000  |
+| Odchozí zprávy za sekundu | 2 000 | 4,000 | 10,000 | 25,000 | 40,000 | 70,000 | 70,000  |
 | Odchozí šířka pásma | 4 Mb/s    | 8 Mb/s    | 20 MB/s    | 50 MBps     | 80 MBps    | 140 MBps   | 140 MBps    |
 
 Počet připojení klientů jsou volání rozbočovače, tak server číslo aplikace je také důležité pro výkon. V následující tabulce jsou uvedeny počty server navrhované aplikace.
 
 |  Odeslat do malé skupiny   | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Připojení      | 1 000 | 2 000 | 5 000 | 10 000 | 20,000 | 50,000 | 100 000 |
+| Připojení      | 1 000 | 2 000 | 5 000 | 10,000 | 20,000 | 50,000 | 100 000 |
 | Počet serverů aplikace | 2     | 2     | 2     | 3      | 3      | 10     | 20      |
 
 > [!NOTE]
@@ -311,19 +311,19 @@ Pro **odeslat do velké skupiny**, odchozí šířka pásma se stane problémov�
 
 |    Odeslat do velké skupiny      | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
-| Připojení               | 1 000 | 2 000 | 5 000  | 10 000 | 20,000 | 50,000  | 100 000
-| Počet členů skupiny        | 100   | 200   | 500    | 1 000  | 2 000  | 5 000   | 10 000 
+| Připojení               | 1 000 | 2 000 | 5 000  | 10,000 | 20,000 | 50,000  | 100 000
+| Počet členů skupiny        | 100   | 200   | 500    | 1 000  | 2 000  | 5 000   | 10,000 
 | Počet skupin               | 10    | 10    | 10     | 10     | 10     | 10      | 10
 | Příchozí zprávy za sekundu  | 20    | 20    | 20     | 20     | 20     | 20      | 20      |
 | Příchozí šířky pásma  | 80 KBps   | 40 KBps   | 40 KBps    | 20 KBps    | 40 KBps    | 40 KBps     | 40 KBps     |
-| Odchozí zprávy za sekundu | 2 000 | 4,000 | 10 000 | 20,000 | 40,000 | 100 000 | 200 000 |
+| Odchozí zprávy za sekundu | 2 000 | 4,000 | 10,000 | 20,000 | 40,000 | 100 000 | 200 000 |
 | Odchozí šířka pásma | 8 Mb/s    | 8 Mb/s    | 20 MB/s    | 40 MBps    | 80 MBps    | 200 MB/s    | 400 MB/s    |
 
 Odesílání počet připojení je více než 40. Zatížení na serveru aplikace je malé, takže doporučený počet webových aplikací je malý.
 
 |  Odeslat do velké skupiny  | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Připojení      | 1 000 | 2 000 | 5 000 | 10 000 | 20,000 | 50,000 | 100 000 |
+| Připojení      | 1 000 | 2 000 | 5 000 | 10,000 | 20,000 | 50,000 | 100 000 |
 | Počet serverů aplikace | 2     | 2     | 2     | 2      | 2      | 2      | 2       |
 
 > [!NOTE]
@@ -345,7 +345,7 @@ V následující tabulce je uveden statistické po mnoho zaokrouhlí spuštění
 
 |   Odeslat do připojení   | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50          | Unit100         |
 |------------------------------------|-------|-------|-------|--------|--------|-----------------|-----------------|
-| Připojení                        | 1 000 | 2 000 | 5 000 | 10 000 | 20,000 | 50,000          | 100 000         |
+| Připojení                        | 1 000 | 2 000 | 5 000 | 10,000 | 20,000 | 50,000          | 100 000         |
 | Příchozí/odchozí zprávy za sekundu | 1 000 | 2 000 | 5 000 | 8 000  | 9,000  | 20,000 | 20,000 |
 | Příchozí nebo odchozí šířka pásma | 2 Mb/s    | 4 Mb/s    | 10 Mb/s   | 16 MB/s    | 18 MB/s    | 40 MBps       | 40 MBps       |
 
@@ -353,7 +353,7 @@ Tento případ použití vyžaduje vysokého zatížení v aplikaci na straně s
 
 |  Odeslat do připojení  | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Připojení      | 1 000 | 2 000 | 5 000 | 10 000 | 20,000 | 50,000 | 100 000 |
+| Připojení      | 1 000 | 2 000 | 5 000 | 10,000 | 20,000 | 50,000 | 100 000 |
 | Počet serverů aplikace | 2     | 2     | 2     | 3      | 3      | 10     | 20      |
 
 > [!NOTE]
@@ -369,21 +369,21 @@ Následující tabulka uvádí počet navrhované web app pro funkci SignalR tec
 
 |   echo           | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Připojení      | 1 000 | 2 000 | 5 000 | 10 000 | 20,000 | 50,000 | 100 000 |
+| Připojení      | 1 000 | 2 000 | 5 000 | 10,000 | 20,000 | 50,000 | 100 000 |
 | Počet serverů aplikace | 2     | 2     | 4     | 4      | 8      | 32      | 40       |
 
 Následující tabulka uvádí počet navrhované web app pro funkci SignalR technologie ASP.NET **vysílání**.
 
 |  Vysílání       | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Připojení      | 1 000 | 2 000 | 5 000 | 10 000 | 20,000 | 50,000 | 100 000 |
+| Připojení      | 1 000 | 2 000 | 5 000 | 10,000 | 20,000 | 50,000 | 100 000 |
 | Počet serverů aplikace | 2     | 2     | 2     | 2      | 2      | 2      | 2       |
 
 Následující tabulka uvádí počet navrhované web app pro funkci SignalR technologie ASP.NET **odeslat do malé skupiny**.
 
 |  Odeslat do malé skupiny     | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Připojení      | 1 000 | 2 000 | 5 000 | 10 000 | 20,000 | 50,000 | 100 000 |
+| Připojení      | 1 000 | 2 000 | 5 000 | 10,000 | 20,000 | 50,000 | 100 000 |
 | Počet serverů aplikace | 2     | 2     | 4     | 4      | 8      | 32      | 40       |
 
 ### <a name="serverless-mode"></a>Režim bez serveru
@@ -397,9 +397,9 @@ Všichni klienti připojení pomocí protokolu WebSocket pomocí služby Azure S
 
 |   Vysílání přes rozhraní REST API     | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
-| Připojení               | 1 000 | 2 000 | 5 000  | 10 000 | 20,000 | 50,000  | 100 000 |
+| Připojení               | 1 000 | 2 000 | 5 000  | 10,000 | 20,000 | 50,000  | 100 000 |
 | Příchozí zprávy za sekundu  | 2     | 2     | 2      | 2      | 2      | 2       | 2       |
-| Odchozí zprávy za sekundu | 2 000 | 4,000 | 10 000 | 20,000 | 40,000 | 100 000 | 200 000 |
+| Odchozí zprávy za sekundu | 2 000 | 4,000 | 10,000 | 20,000 | 40,000 | 100 000 | 200 000 |
 | Příchozí šířky pásma  | 4 KBps    | 4 KBps    | 4 KBps     | 4 KBps     | 4 KBps     | 4 KBps      | 4 KBps      |
 | Odchozí šířka pásma | 4 Mb/s    | 8 Mb/s    | 20 MB/s    | 40 MBps    | 80 MBps    | 200 MB/s    | 400 MB/s    |
 
@@ -408,9 +408,9 @@ Test výkonnosti přiřadí uživatelských jmen pro všechny klienty dříve, n
 
 |   Poslat uživateli prostřednictvím rozhraní REST API | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
-| Připojení               | 1 000 | 2 000 | 5 000  | 10 000 | 20,000 | 50,000  | 100 000 |
-| Příchozí zprávy za sekundu  | 300   | 600   | 900    | 1,300  | 2 000  | 10 000  | 18,000  |
-| Odchozí zprávy za sekundu | 300   | 600   | 900    | 1,300  | 2 000  | 10 000  | 18,000 |
+| Připojení               | 1 000 | 2 000 | 5 000  | 10,000 | 20,000 | 50,000  | 100 000 |
+| Příchozí zprávy za sekundu  | 300   | 600   | 900    | 1,300  | 2 000  | 10,000  | 18,000  |
+| Odchozí zprávy za sekundu | 300   | 600   | 900    | 1,300  | 2 000  | 10,000  | 18,000 |
 | Příchozí šířky pásma  | 600 KBps  | 1.2 MB/s  | 1.8 MB/s   | 2.6 MB/s   | 4 Mb/s     | 10 Mb/s     | 36 MB/s    |
 | Odchozí šířka pásma | 600 KBps  | 1.2 MB/s  | 1.8 MB/s   | 2.6 MB/s   | 4 Mb/s     | 10 Mb/s     | 36 MB/s    |
 
@@ -434,5 +434,5 @@ V tomto článku jste získali přehled o výkonu služby Azure SignalR v typick
 
 Získat podrobné informace o interní informace služby a škálování, přečtěte si následující příručky:
 
-* [Interní informace o Azure služby SignalR](signalr-concept-internals.md)
+* [Interní informace služby Azure SignalR Service](signalr-concept-internals.md)
 * [Škálování služby Azure SignalR](signalr-howto-scale-multi-instances.md)

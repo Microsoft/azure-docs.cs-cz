@@ -11,10 +11,10 @@ ms.topic: article
 ms.assetid: a5413f80-eaad-4bcf-b371-2ad0ef629c3d
 ms.date: 01/27/2017
 ms.openlocfilehash: 1db324006e1e6332b5fdd8afd28ebed8a32ac707
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60845762"
 ---
 # <a name="create-schemas-for-tracking-x12-messages-in-integration-accounts-for-azure-logic-apps"></a>Vytvoření schémat pro sledování X12 zprávy v integračních účtů pro Azure Logic Apps
@@ -133,7 +133,7 @@ Při monitorování úspěch, chyby a vlastnosti zprávy pro transakce business-
 | respondingTransactionSetId | String | Sady transakcí odpovídá ID, který mapuje na AK201 v potvrzení. (Volitelné) |
 | statusCode | Boolean | Stavový kód potvrzení sady transakcí. (Povinné) |
 | segmentsCount | Enum | Stavový kód potvrzení. Povolené hodnoty jsou **přijato**, **Odmítnuto**, a **AcceptedWithErrors**. (Povinné) |
-| processingStatus | Enum | Stav zpracování potvrzení. Povolené hodnoty jsou **přijaté**, **vygenerované**, a **odeslané**. (Povinné) |
+| StavZpracování | Enum | Stav zpracování potvrzení. Povolené hodnoty jsou **přijaté**, **vygenerované**, a **odeslané**. (Povinné) |
 | CorrelationMessageId | String | ID korelace zprávy. Kombinace {AgreementName} {*GroupControlNumber*} {TransactionSetControlNumber}. (Volitelné) |
 | isMessageFailed | Boolean | Zda X12 zprávy se nezdařilo. (Povinné) |
 | ak2Segment | String | Potvrzení transakce v rámci přijatý funkční skupiny. (Volitelné) |
@@ -237,7 +237,7 @@ Při monitorování úspěch, chyby a vlastnosti zprávy pro transakce business-
 | respondingInterchangeControlNumber |String | Technické potvrzení, které se získaly od partnerů pro kontrolní číslo výměny. (Volitelné) |
 | isMessageFailed | Boolean | Zda X12 zprávy se nezdařilo. (Povinné) |
 | statusCode | Enum | Výměny. stavový kód potvrzení. Povolené hodnoty jsou **přijato**, **Odmítnuto**, a **AcceptedWithErrors**. (Povinné) |
-| processingStatus | Enum | Stav potvrzení. Povolené hodnoty jsou **přijaté**, **vygenerované**, a **odeslané**. (Povinné) |
+| StavZpracování | Enum | Stav potvrzení. Povolené hodnoty jsou **přijaté**, **vygenerované**, a **odeslané**. (Povinné) |
 | ta102 | String | Interchange datum. (Volitelné) |
 | ta103 | String | Interchange čas. (Volitelné) |
 | ta105 | String | Výměny. Poznámka: kód. (Volitelné) |
@@ -349,7 +349,7 @@ Při monitorování úspěch, chyby a vlastnosti zprávy pro transakce business-
 | respondingFunctionalGroupId | String | ID mapuje AK101 ve funkční skupině potvrzení. (Volitelné) |
 | isMessageFailed | Boolean | Zda X12 zprávy se nezdařilo. (Povinné) |
 | statusCode | Enum | Stavový kód potvrzení. Povolené hodnoty jsou **přijato**, **Odmítnuto**, a **AcceptedWithErrors**. (Povinné) |
-| processingStatus | Enum | Stav zpracování potvrzení. Povolené hodnoty jsou **přijaté**, **vygenerované**, a **odeslané**. (Povinné) |
+| StavZpracování | Enum | Stav zpracování potvrzení. Povolené hodnoty jsou **přijaté**, **vygenerované**, a **odeslané**. (Povinné) |
 | ak903 | String | Počet přijatých sady transakcí. (Volitelné) |
 | ak904 | String | Číslo sady transakcí přijaté v identifikované funkční skupiny. (Volitelné) |
 | ak9Segment | String | Zda je funkční skupinu určené v segmentu AK1 přijímat nebo odmítat a proč. (Volitelné) |

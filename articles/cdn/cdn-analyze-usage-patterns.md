@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 88cbd942413757388278d69d728d407271e4c4a3
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65606392"
 ---
 # <a name="core-reports-from-verizon"></a>Základní sestavy od Verizonu
@@ -29,7 +29,7 @@ Použitím Verizon základní sestavy prostřednictvím portálu spravovat pro V
 
 * Šířka pásma
 * Přenesená data
-* Přístupy
+* Počet přístupů
 * Stavy mezipaměti
 * Poměr přístupů do mezipaměti
 * Přenesená Data IPV4/IPV6
@@ -96,7 +96,7 @@ Chcete-li snížit přístupů k mezipaměti vypršela platnost, nastavte prost�
   
   * Cache-Control: s-maxage
   * Cache-Control: max-age
-  * Platí do
+  * Vypršení platnosti
 * TCP_MISS: Tento stav indikuje, že verzi v mezipaměti požadovaný prostředek nebyl nalezen na nejbližší klientovi POP. Prostředek je požadováno ze zdrojového serveru nebo serveru shield původu. Pokud zdrojový server nebo server původu shield vrátí prostředek, je dodávat do klienta a ukládat do mezipaměti na klientovi a serveru edge. Jinak než 200 stavový kód (například 403 Zakázáno nebo 404 Nenalezeno) se vrátí.
 * TCP_EXPIRED_HIT: Tento stav je uveden při zpracování žádosti, která cílí na prostředek s vypršenou platností TTL přímo v lokalitě POP do klienta. Například když majetek společnosti max-age vypršela platnost. 
   

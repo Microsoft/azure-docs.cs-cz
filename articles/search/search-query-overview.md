@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/13/2019
 ms.custom: seodec2018
 ms.openlocfilehash: 95f5dde12ad9e34a0a04c988a816538ac30e01e6
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65595980"
 ---
 # <a name="how-to-compose-a-query-in-azure-search"></a>Jak sestavit dotazu ve službě Azure Search
@@ -51,7 +51,7 @@ Příklady jsou užitečné pro zavedení nových konceptů. Jak reprezentativn�
 
 + **`queryType`** Nastaví analyzátor, který může být ve službě Azure Search [výchozí jednoduchý analyzátor dotazů](search-query-simple-examples.md) (optimální pro fulltextové vyhledávání), nebo [kompletní analyzátor dotazů Lucene](search-query-lucene-examples.md) používá pro konstrukty na rozšířený dotaz jako regulární výrazy , vyhledávání blízkých výrazů, přibližných shod a hledání pomocí zástupných znaků, pár.
 
-+ **`search`** poskytuje porovnávání kritéria, obvykle textu, ale často připojí logické operátory. Jediným samostatným podmínky jsou *termín* dotazy. Jsou uzavřené v uvozovkách vícedílný dotazy *klíčových frází* dotazy. Hledání může být definován, stejně jako v **`search=*`**, ale spíše se skládá z podmínek, fráze a operátory podobný co se zobrazuje v příkladu.
++ **`search`** poskytuje porovnávání kritéria, obvykle textu, ale často připojí logické operátory. Jediným samostatným podmínky jsou *termín* dotazy. Jsou uzavřené v uvozovkách vícedílný dotazy *klíčových frází* dotazy. Hledání může být definován, stejně jako v **`search=*`** , ale spíše se skládá z podmínek, fráze a operátory podobný co se zobrazuje v příkladu.
 
 + **`searchFields`** je volitelný, použita pro omezení dotazu provádění konkrétních polí.
 
@@ -86,8 +86,8 @@ Požadované elementy na žádost o dotazu jsou následující komponenty:
 
 + Služby koncového bodu a index kolekci documents, vyjádřené jako adresu URL obsahující pevné a uživatelem definované součásti: **`https://<your-service-name>.search.windows.net/indexes/<your-index-name>/docs`**
 + **`api-version`** (Pouze rozhraní REST) je potřeba, protože více než jednu verzi rozhraní API je k dispozici po celou dobu. 
-+ **`api-key`**, dotazu nebo správce klíč api-key, ověří se tato žádost do služby.
-+ **`queryType`**, jednoduché nebo úplné, který lze vynechat, pokud používáte integrované výchozí jednoduchá syntaxe.
++ **`api-key`** , dotazu nebo správce klíč api-key, ověří se tato žádost do služby.
++ **`queryType`** , jednoduché nebo úplné, který lze vynechat, pokud používáte integrované výchozí jednoduchá syntaxe.
 + **`search`** nebo **`filter`** poskytuje porovnávání kritéria, která může neurčené, pokud chcete provést prázdné vyhledávání. Oba typy dotazů jsou popisována v pojmech jednoduchý analyzátor, ale i pokročilé dotazy vyžadují parametr hledání pro předávání výrazy složitých dotazů.
 
 Všechny ostatní parametry hledání jsou volitelné. Úplný seznam atributů najdete v tématu [vytvoření indexu (REST)](https://docs.microsoft.com/rest/api/searchservice/create-index). Bližší pohled na použití parametrů během zpracování, naleznete v tématu [jak funguje fulltextové vyhledávání ve službě Azure Search](search-lucene-query-architecture.md).
@@ -160,7 +160,7 @@ Pokud chcete Azure Search vracela výsledky seřazené podle hodnoty místo skó
 
 
 ### <a name="hit-highlighting"></a>Zvýrazňování položek
-Ve službě Azure Search je zvýrazňování přesné části výsledků vyhledávání, která odpovídá vyhledávacímu dotazu je snadné pomocí **`highlight`**, **`highlightPreTag`**, a **`highlightPostTag`** parametry. Můžete určit, u jakých *prohledávatelných* polí má být odpovídající text zvýrazněný, stejně tak můžete zadat značky řetězce, které se mají připojit k začátku a ke konci odpovídajícího text vráceného službou Azure Search.
+Ve službě Azure Search je zvýrazňování přesné části výsledků vyhledávání, která odpovídá vyhledávacímu dotazu je snadné pomocí **`highlight`** , **`highlightPreTag`** , a **`highlightPostTag`** parametry. Můžete určit, u jakých *prohledávatelných* polí má být odpovídající text zvýrazněný, stejně tak můžete zadat značky řetězce, které se mají připojit k začátku a ke konci odpovídajícího text vráceného službou Azure Search.
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 

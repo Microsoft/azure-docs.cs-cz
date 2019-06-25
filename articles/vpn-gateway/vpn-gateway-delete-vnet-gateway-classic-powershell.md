@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 05/11/2017
 ms.author: cherylmc
 ms.openlocfilehash: ca014e4f5fbc4a5695dbc5fedc85826c71a2a906
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60863976"
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell-classic"></a>Odstranit bránu virtuální sítě pomocí prostředí PowerShell (classic)
@@ -56,7 +56,7 @@ V tomto příkladu se soubor konfigurace sítě exportuje do adresáře C:\Azure
 Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
 ```
 
-V textovém editoru otevřete soubor a podívejte se na název pro klasické virtuální sítě. Při vytváření virtuální sítě na webu Azure Portal, není úplný název, který používá Azure nezobrazuje na portálu. Virtuální síť, která se zobrazí s názvem "ClassicVNet1" na webu Azure Portal, například může mít mnohem déle, název v konfiguračním souboru sítě. Název může vypadat podobně jako: Seskupit ClassicRG1 ClassicVNet1. Názvy virtuální sítě jsou uvedené jako **"VirtualNetworkSite name ="**. Při spuštění rutiny Powershellu, použijte názvy v konfiguračním souboru sítě.
+V textovém editoru otevřete soubor a podívejte se na název pro klasické virtuální sítě. Při vytváření virtuální sítě na webu Azure Portal, není úplný název, který používá Azure nezobrazuje na portálu. Virtuální síť, která se zobrazí s názvem "ClassicVNet1" na webu Azure Portal, například může mít mnohem déle, název v konfiguračním souboru sítě. Název může vypadat podobně jako: Seskupit ClassicRG1 ClassicVNet1. Názvy virtuální sítě jsou uvedené jako **"VirtualNetworkSite name ="** . Při spuštění rutiny Powershellu, použijte názvy v konfiguračním souboru sítě.
 
 ## <a name="delete"></a>Krok 3: Odstranit bránu virtuální sítě
 

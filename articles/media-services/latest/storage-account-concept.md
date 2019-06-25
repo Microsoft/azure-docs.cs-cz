@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 05/11/2019
 ms.author: juliako
 ms.openlocfilehash: 9cbb995eb3310a2263185d6fd6dba20efce37f38
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/13/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65550148"
 ---
 # <a name="cloud-upload-and-storage"></a>Nahrávání na cloud a úložiště
@@ -54,14 +54,14 @@ K ochraně vašich prostředků v klidovém stavu, prostředky by se měla šifr
 
 ## <a name="storage-account-errors"></a>Chyby účtu úložiště
 
-Stav "Odpojeno" pro účtu Azure Media Services znamená, že účet už má přístup na jeden nebo více účtů úložiště z důvodu změn v přístupových klíčů k úložišti. Přístupové klíče k úložišti aktuální nevyžadovala provádět mnoho úloh v účtu Media Services.
+Odpojený stav účtu služby Media Services znamená, že tento účet již nemá přístup k jednomu nebo více účtům připojeného úložiště z důvodu změny v přístupových klíčích k úložišti. Služba Media Services vyžaduje k provedení mnoha úkolů v účtu aktuální přístupové klíče k úložišti.
 
-Níže jsou uvedeny základní scénáře, které by v účtu Azure Media Services nemají přístup k účtům úložiště. 
+Důsledkem následujících primárních scénářů je to, že účet služby Media Services nemá přístup k účtům připojeného úložiště. 
 
 |Problém|Řešení|
 |---|---|
-|K oddělení předplatných se migrovaly účtu Media Services nebo účty připojené úložiště. |Migrace na účty úložiště nebo účtu Azure Media Services tak, aby byly všechny ve stejném předplatném. |
-|Účet Media Services je pomocí účtu služby storage připojené v jiném předplatném, jako byl dřívější účtu Media Services, kde to bylo podporováno. Všechny počáteční účtů Media Services se převedly moderní účtům na základě Azure prostředky Manageru (ARM) a bude mít odpojeném stavu. |Migrace účtu úložiště nebo účtu Azure Media Services tak, aby byly všechny ve stejném předplatném.|
+|Účet služby Media Services nebo účty připojeného úložiště byly migrovány do oddělených předplatných. |Účty úložiště nebo účet služby Media Services migrujte tak, aby všechny tyto účty byly ve stejném předplatném. |
+|Účet služby Media Services používá účet připojeného úložiště v jiném předplatném, jako ve starším účtu Media Services, kde to bylo podporováno. Všechny starší účty služby Media Services byly převedeny na moderní účty založené na Azure Resource Manageru (ARM) a budou v odpojeném stavu. |Účet úložiště nebo účet služby Media Services migrujte tak, aby všechny tyto účty byly ve stejném předplatném.|
 
 ## <a name="next-steps"></a>Další postup
 

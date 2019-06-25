@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.openlocfilehash: 00161f8158ad73591687764528258e1081f81ce2
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65914298"
 ---
 # <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>Jak zřídit starší zařízení pomocí symetrických klíčů
@@ -198,7 +198,7 @@ V této části budete aktualizovat ukázkou zřizování s názvem **prov\_dev\
 
 Tento ukázkový kód simuluje posloupnost spouštěcí zařízení, která odešle žádost o zřízení instance služby Device Provisioning. Pořadí spouštění způsobí, že bude používat a přiřazen do služby IoT hub, který jste nakonfigurovali ve skupině pro registraci zařízení.
 
-1. Na webu Azure Portal vyberte okno **Přehled** vaší služby Device Provisioning Service a poznamenejte si hodnotu **_Rozsah ID_**.
+1. Na webu Azure Portal vyberte okno **Přehled** vaší služby Device Provisioning Service a poznamenejte si hodnotu **_Rozsah ID_** .
 
     ![Extrahování informací o koncovém bodu služby Device Provisioning z okna portálu](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 
@@ -268,7 +268,7 @@ Tento ukázkový kód simuluje posloupnost spouštěcí zařízení, která ode�
 
 
 
-## <a name="security-concerns"></a>Záležitosti zabezpečení
+## <a name="security-concerns"></a>Zajištění zabezpečení
 
 Mějte na paměti, že zůstane klíč odvozené zařízení jsou součástí image, která není nejlepším postupem zabezpečení doporučené. Toto je jedním z důvodů, proč jsou zabezpečení a snadné použití kompromisy. 
 

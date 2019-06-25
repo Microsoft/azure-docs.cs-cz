@@ -5,18 +5,18 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: jeconnoc
 ms.openlocfilehash: f23d5246401f23694755e63a51c52da5dbf5ac1b
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66125390"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67175349"
 ---
 > [!WARNING]
 > Když povolíte diagnostiku pro existující role, jsou při nasazení balíčku zakázat všechna rozšíření, které jste už nastavili. Mezi ně patří:
 >
 > * Microsoft Monitoring Agent diagnostiky
 > * Monitorování zabezpečení Microsoft Azure
-> * Microsoft Antimalware                 
+> * Antimalware od Microsoftu                 
 > * Microsoft Monitoring Agent
 > * Agent služby Microsoft Profiler      
 > * Windows Azure Domain Extension        

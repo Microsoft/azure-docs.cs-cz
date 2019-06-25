@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: yegu
 ms.openlocfilehash: 6960c21091e0bc01c198e713c0c276984566ac41
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65786082"
 ---
 # <a name="introduction-to-the-azure-cache-for-redis-premium-tier"></a>Úvod do mezipaměti Azure Redis na úrovni Premium
@@ -50,7 +50,7 @@ Mezipaměť vytvořena na úrovni Basic nebo Standard jsou dostupné na veřejn�
 
 Další informace najdete v tématu [konfigurace podpory služby Virtual Network pro mezipaměť Azure Premium pro Redis](cache-how-to-premium-vnet.md).
 
-## <a name="importexport"></a>Import a export
+## <a name="importexport"></a>Import/export
 Import/Export je Azure Cache pro operace správy dat Redis, který umožňuje importovat data do mezipaměti Azure Redis a export dat z mezipaměti Azure Redis import a export pro snímek Redis databáze (RDB) z mezipaměti úrovně premium pro Azure Cache Objekt blob stránky v účtu služby Azure Storage. To umožňuje migraci mezi různé mezipaměti Azure pro instance Redis nebo naplňte mezipaměť daty před použitím.
 
 Import je možné uvést kompatibilní soubory RDB Redis z jakéhokoli serveru Redis spuštěná v jakémkoli cloudu nebo prostředí, včetně Redis běžící na Linuxu, Windows nebo libovolného poskytovatele cloudových služeb, jako je například Amazon Web Services a další. Import dat je snadný způsob, jak vytvořit mezipaměť s předem naplněných daty. Během procesu importu mezipaměti Redis Azure načte soubory RDB ze služby Azure storage do paměti a pak vloží klíčů do mezipaměti.
@@ -74,7 +74,7 @@ Další informace najdete v tématu [restartovat](cache-administration.md#reboot
 >
 >
 
-## <a name="schedule-updates"></a>Naplánovat aktualizace
+## <a name="schedule-updates"></a>Plán aktualizací
 Funkci naplánované aktualizace umožňuje určit časové období údržby pro mezipaměť. Pokud je zadána časové období údržby, všechny aktualizace serveru Redis probíhají během tohoto časového období. Určete časové období údržby, vyberte požadovanou dny a zadejte údržby spusťte okno hodinu za každý den. Všimněte si, že časového období údržby se ve standardu UTC. 
 
 Další informace najdete v tématu [naplánovat aktualizace](cache-administration.md#schedule-updates) a [naplánovat aktualizace nejčastější dotazy k](cache-administration.md#schedule-updates-faq).

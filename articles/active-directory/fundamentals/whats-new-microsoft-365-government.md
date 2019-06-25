@@ -14,10 +14,10 @@ ms.date: 05/07/2019
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5b077c7b5efbad2add971d42ff31938b56f6bc33
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66258891"
 ---
 # <a name="whats-new-for-azure-active-directory-in-microsoft-365-government"></a>Co je nového v Azure Active Directory ve službě Microsoft 365 Government
@@ -51,7 +51,7 @@ Zákazníci by mohla dříve přihlásit pomocí Azure po celém světě (portal
 
 V následující tabulce jsou uvedeny koncových bodů pro všechny zákazníky:
 
-| Název | Podrobnosti o koncovém bodu |
+| Name | Podrobnosti o koncovém bodu |
 |------|------------------|
 | Portály |Microsoft Azure Government: https://portal.azure.us<p>Microsoft 365 Government – GCC vysokou: https://portal.office365.us<p>Microsoft 365 Government – DoD: https://portal.apps.mil |
 | Koncového bodu autority Azure Active Directory | https://login.microsoftonline.us |

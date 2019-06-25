@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 09/25/2018
 ms.author: yushwang
 ms.openlocfilehash: 51402196c8429797b644357822a1e3c08982b384
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65209512"
 ---
 # <a name="how-to-configure-bgp-on-an-azure-vpn-gateway-by-using-cli"></a>Konfigurace protokolu BGP ve službě Azure VPN gateway pomocí rozhraní příkazového řádku
@@ -225,7 +225,7 @@ Je důležité, abyste měli jistotu, že se adresní prostor IP adres nové vir
 
 V tomto příkladu patří virtuální sítě do stejného předplatného. Můžete nastavit připojení VNet-to-VNet mezi různých předplatných. Další informace najdete v tématu [konfigurace připojení typu VNet-to-VNet](vpn-gateway-howto-vnet-vnet-cli.md). Ujistěte se, že přidáte `-EnableBgp $True` při vytváření připojení se povolit protokol BGP.
 
-#### <a name="1-create-a-new-resource-group"></a>1. Vytvořit novou skupinu prostředků
+#### <a name="1-create-a-new-resource-group"></a>1. Vytvoření nové skupiny prostředků
 
 ```azurecli
 az group create -n TestBGPRG2 -l westus

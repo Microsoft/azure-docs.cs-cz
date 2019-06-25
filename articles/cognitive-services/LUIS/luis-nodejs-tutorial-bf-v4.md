@@ -1,5 +1,5 @@
 ---
-title: Bot - Node.js – v4
+title: Language Understanding Bot Node.js v4
 titleSuffix: Azure Cognitive Services
 description: Pomocí Node.js vytvořte chatovacího robota integrovaného se službou Language Understanding (LUIS). Tento chatovací robot používá k rychlé implementaci řešení robota aplikaci Human Resources. K vytvoření robota se používá Bot Framework ve verzi 4 a Web App Bot Azure.
 services: cognitive-services
@@ -9,26 +9,25 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 01/30/2019
+ms.date: 06/15/2019
 ms.author: diberry
-ms.openlocfilehash: 54bae5548764ed1f89a2ffb7992eb222a058c706
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 832a62c5cc5440d81f4b92d2463a563f5bb884a3
+ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60194104"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67150843"
 ---
-# <a name="tutorial-luis-bot-in-nodejs-with-the-bot-framework-4x-and-the-azure-web-app-bot"></a>Kurz: Služba LUIS robotů v Node.js s použitím rozhraní Bot Framework 4.x a použijete Azure Web app bot
-Pomocí Node.js můžete vytvořit chatovacího robota integrovaného se službou Language Understanding (LUIS). Tento robot používá k implementaci řešení robota aplikaci HomeAutomation. K vytvoření robota se používá [Web App Bot](https://docs.microsoft.com/azure/bot-service/) Azure a [Bot Framework ve verzi](https://github.com/Microsoft/botbuilder-js) v4.
+# <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-nodejs"></a>Kurz: Použijte Web App Bot povolené službou Language Understanding v Node.js 
+
+Použití Node.js k vytvoření chatovací robot součástí jazyka (LUIS). Robot je vytvořené pomocí Azure [Web app bot](https://docs.microsoft.com/azure/bot-service/) prostředků a [Bot Framework verze](https://github.com/Microsoft/botbuilder-dotnet) V4.
 
 **V tomto kurzu se naučíte:**
 
 > [!div class="checklist"]
 > * Vytvořit Web App Bota. Tento proces za vás vytvoří novou aplikaci LUIS.
-> * Přidat předem připravenou doménu do nového modelu LUIS
-> * Stáhnout si projekt vytvořený službou webového robota
+> * Stáhněte si projekt bot vytvořena webová služba bot
 > * Spustit robota a emulátor místně na počítači
-> * Upravit kód robota pro nové záměry LUIS
 > * Zobrazit výsledky promluv v robotovi
 
 ## <a name="prerequisites"></a>Požadavky
@@ -37,13 +36,13 @@ Pomocí Node.js můžete vytvořit chatovacího robota integrovaného se službo
 * [Visual Studio Code](https://code.visualstudio.com/Download)
 
 
-## <a name="create-web-app-bot"></a>Vytvoření Web App Bota
+## <a name="create-a-web-app-bot-resource"></a>Vytvořit prostředek použijete web app bot
 
 1. Na portálu **Azure Portal** vyberte [Vytvořit nový prostředek](https://portal.azure.com).
 
-2. Ve vyhledávací poli vyhledejte a vyberte **Web App Bot**. Vyberte **Vytvořit**.
+1. Ve vyhledávací poli vyhledejte a vyberte **Web App Bot**. Vyberte **Vytvořit**.
 
-3. V **Bot Service** (Služba robota) zadejte požadované informace:
+1. V **Bot Service** (Služba robota) zadejte požadované informace:
 
     |Nastavení|Účel|Navrhované nastavení|
     |--|--|--|
@@ -55,309 +54,314 @@ Pomocí Node.js můžete vytvořit chatovacího robota integrovaného se službo
     |App name (Název aplikace)|Název se používá jako subdoména, když je váš robot nasazený do cloudu (například humanresourcesbot.azurewebsites.net).|`luis-nodejs-bot-` + `<your-name>`, například `luis-nodejs-bot-johnsmith`|
     |Bot template (Šablona robota)|Nastavení Bot Frameworku – viz následující tabulka|
     |LUIS App location (Umístění aplikace LUIS)|Musí být stejné jako oblast prostředků LUIS|`westus`|
+    |Plán App service/umístění|Neměňte z Zadaná výchozí hodnota.|
+    |Application Insights|Neměňte z Zadaná výchozí hodnota.|
+    |Microsoft App ID a heslo|Neměňte z Zadaná výchozí hodnota.|
 
-4. V **nastaveních šablony robota** vyberte následující možnosti a pak v těchto nastaveních zvolte tlačítko **Vybrat**:
+1. V **Bot šablony**, vyberte následující a potom klepněte **vyberte** tlačítko v těchto nastavení:
 
     |Nastavení|Účel|Výběr|
     |--|--|--|
     |SDK version (Verze sady SDK)|Bot framework version (Verze Bot Frameworku)|**SDK v4**|
     |SDK language (Jazyk sady SDK)|Programovací jazyk robota|**Node.js**|
-    |Echo/Basic Bot (Robot Echo/Základní robot)|Typ robota|**Basic Bot** (Základní robot)|
+    |Bot|Typ robota|**Basic Bot** (Základní robot)|
     
-5. Vyberte **Vytvořit**. Tím se vytvoří a nasadí služba robota do Azure. Část tohoto procesu vytvoří aplikaci LUIS nazvanou `luis-nodejs-bot-XXXX`. Tento název je založený na názvu robota a aplikace v předchozí části.
+1. Vyberte **Vytvořit**. Tím se vytvoří a nasadí služba robota do Azure. Část tohoto procesu vytvoří aplikaci LUIS nazvanou `luis-nodejs-bot-XXXX`. Tento název je založen na názvu aplikace /Azure Bot Service.
 
     [![Vytvoření webové aplikace robota](./media/bfv4-nodejs/create-web-app-service.png)](./media/bfv4-nodejs/create-web-app-service.png#lightbox)
 
-6. Tuto kartu prohlížeče nechte otevřenou. Pro všechny kroky s portálem LUIS otevřete novou kartu prohlížeče. Po nasazení nové služby robota pokračujte k další části.
+    Počkejte, dokud bot service je vytvořen před pokračováním.
 
-## <a name="add-prebuilt-domain-to-model"></a>Přidání předem připravené domény do modelu
-Část nasazení služby robota vytvoří novou aplikaci LUIS se záměry a příklady promluv. Robot poskytuje mapování záměrů na novou aplikaci LUIS pro následující záměry: 
+## <a name="the-bot-has-a-language-understanding-model"></a>Robot má model Language Understanding
+
+Proces vytvoření bot service vytvoří také novou aplikaci LUIS pomocí tříd Intent a projevy příklad. Robot poskytuje mapování záměrů na novou aplikaci LUIS pro následující záměry: 
 
 |Záměry základního robota LUIS|Příklad promluvy|
 |--|--|
-|Zrušit|`stop`|
-|Pozdrav|`hello`|
-|Nápověda|`help`|
+|Kniha let|`Travel to Paris`|
+|Zrušit|`bye`|
 |Žádný|Cokoli mimo doménu aplikace|
 
-Přidejte do modelu předem připravenou aplikaci HomeAutomation, která má zpracovávat promluvy jako: `Turn off the living room lights`
+## <a name="test-the-bot-in-web-chat"></a>Testování ve Web Chat robota
 
-1. Přejděte na portál [LUIS](https://www.luis.ai) a přihlaste se.
-2. Na stránce **My Apps** (Moje aplikace) vyberte sloupec **Created date** (Datum vytvoření) k seřazení podle data, kdy byla aplikace vytvořena. Služba Azure Bot Service vytvořila novou aplikaci v předchozí části. Její název je `luis-nodejs-bot-` + `<your-name>` + 4 náhodné znaky.
-3. Otevřete aplikaci a vyberte část **Build** (Sestavení) v horním navigačním panelu.
-4. V levém navigačním panelu vyberte **Prebuilt Domains** (Předem připravené domény).
-5. Vyberte doménu **HomeAutomation** vybráním možnosti **Add domain** (Přidat doménu) na kartě.
-6. V nabídce vpravo nahoře vyberte **Train** (Trénovat).
-7. V nabídce vpravo nahoře vyberte **Publish** (Publikovat). 
+1. Zatímco jste pořád na webu Azure Portal pro novým robotem, vyberte **testování ve Web Chat**. 
+1. V **napište zprávu** textového pole zadejte text `hello`. Informace o rozhraní bot framework, jakož i Příklady dotazů pro konkrétní model LUIS, jako je například rezervace letenky na Paříž jako odpověď vrátí robota. 
 
-    Aplikace vytvořená službou Azure Bot Service teď obsahuje nové záměry:
+    ![Snímek obrazovky webu Azure portal, zadejte text "hello".](./media/bfv4-nodejs/ask-bot-question-in-portal-test-in-web-chat.png)
 
-    |Nové záměry základního robota|Příklad promluvy|
-    |--|--|
-    |HomeAutomation.TurnOn|`turn the fan to high`
-    |HomeAutomation.TurnOff|`turn off ac please`|
+    Funkce testu můžete použít pro rychlé testování svého robota. Další informace dokončení testování, včetně ladění, stažení kódu robotů a pomocí sady Visual Studio. 
 
-## <a name="download-the-web-app-bot"></a>Stažení Web App Bota 
+## <a name="download-the-web-app-bot-source-code"></a>Stáhněte si zdrojový kód web app bot
 Pokud chcete vyvíjet kód Web App Bota, stáhněte si kód a použijte ho ve svém místním počítači. 
 
-1. Na portálu Azure Portal, stále v prostředku Web App Bot, vyberte **Application Settings** (Nastavení aplikace) a zkopírujte hodnoty **botFilePath** a **botFileSecret**. Později je budete muset přidat do souboru prostředí. 
+1. Na portálu Azure Portal vyberte **Build** (Sestavení) v části **Bot management** (Správa robota). 
 
-2. Na portálu Azure Portal vyberte **Build** (Sestavení) v části **Bot management** (Správa robota). 
-
-3. Vyberte **Download Bot source code** (Stáhnout zdrojový kód robota). 
+1. Vyberte **Download Bot source code** (Stáhnout zdrojový kód robota). 
 
     [![Stáhněte si web app bot zdrojový kód pro základního robota](../../../includes/media/cognitive-services-luis/bfv4/download-code.png)](../../../includes/media/cognitive-services-luis/bfv4/download-code.png#lightbox)
 
-4. Když se zdrojový kód zazipuje, zobrazí se zpráva s odkazem na stažení kódu. Vyberte odkaz. 
+1. Při zobrazení dialogu požádá **obsahují nastavení aplikace v souboru zip staženého?** vyberte **Ano**.
 
-5. Uložte soubor zip do místního počítače a extrahujte soubory. Otevřete projekt. 
+1. Když se zdrojový kód zazipuje, zobrazí se zpráva s odkazem na stažení kódu. Vyberte odkaz. 
 
-6. Otevřete soubor bot.js a najděte `const results = await this.luisRecognizer.recognize(context);`. Tady se uživatelská promluva zadaná do robota odešle do služby LUIS.
+1. Uložte soubor zip do místního počítače a extrahujte soubory. Otevřete projekt pomocí sady Visual Studio. 
 
-   ```javascript
-    /**
-     * Driver code that does one of the following:
-     * 1. Display a welcome card upon startup
-     * 2. Use LUIS to recognize intents
-     * 3. Start a greeting dialog
-     * 4. Optionally handle Cancel or Help interruptions
-     *
-     * @param {Context} context turn context from the adapter
-     */
-    async onTurn(context) {
-        // Create a dialog context
-        const dc = await this.dialogs.createContext(context);
+## <a name="review-code-to-send-utterance-to-luis-and-get-response"></a>Revize kódu utterance posílala LUIS a získat odpovědi
 
-        if(context.activity.type === ActivityTypes.Message) {
-            // Perform a call to LUIS to retrieve results for the current activity message.
-            const results = await this.luisRecognizer.recognize(context);
-            
-            const topIntent = LuisRecognizer.topIntent(results);
+1. Otevřít **dialogová okna -> luisHelper.js** souboru. Tady se uživatelská promluva zadaná do robota odešle do služby LUIS. Odpověď služby luis se vrátí z metody jako **bookDetails** objekt JSON. Když vytvoříte vlastní robota, by měl taky vytvořit vlastní objekt vrátit podrobnosti služby luis. 
 
-            // handle conversation interrupts first
-            const interrupted = await this.isTurnInterrupted(dc, results);
-            if(interrupted) {
-                return;
+    ```nodejs
+    // Copyright (c) Microsoft Corporation. All rights reserved.
+    // Licensed under the MIT License.
+    
+    const { LuisRecognizer } = require('botbuilder-ai');
+    
+    class LuisHelper {
+        /**
+         * Returns an object with preformatted LUIS results for the bot's dialogs to consume.
+         * @param {*} logger
+         * @param {TurnContext} context
+         */
+        static async executeLuisQuery(logger, context) {
+            const bookingDetails = {};
+    
+            try {
+                const recognizer = new LuisRecognizer({
+                    applicationId: process.env.LuisAppId,
+                    endpointKey: process.env.LuisAPIKey,
+                    endpoint: `https://${ process.env.LuisAPIHostName }`
+                }, {}, true);
+    
+                const recognizerResult = await recognizer.recognize(context);
+    
+                const intent = LuisRecognizer.topIntent(recognizerResult);
+    
+                bookingDetails.intent = intent;
+    
+                if (intent === 'Book_flight') {
+                    // We need to get the result from the LUIS JSON which at every level returns an array
+    
+                    bookingDetails.destination = LuisHelper.parseCompositeEntity(recognizerResult, 'To', 'Airport');
+                    bookingDetails.origin = LuisHelper.parseCompositeEntity(recognizerResult, 'From', 'Airport');
+    
+                    // This value will be a TIMEX. And we are only interested in a Date so grab the first result and drop the Time part.
+                    // TIMEX is a format that represents DateTime expressions that include some ambiguity. e.g. missing a Year.
+                    bookingDetails.travelDate = LuisHelper.parseDatetimeEntity(recognizerResult);
+                }
+            } catch (err) {
+                logger.warn(`LUIS Exception: ${ err } Check your LUIS configuration`);
             }
-
-            // Continue the current dialog
-            const dialogResult = await dc.continue();
-
-            switch(dialogResult.status) {
-                case DialogTurnStatus.empty:
-                    switch (topIntent) {
-                        case GREETING_INTENT:
-                            await dc.begin(GREETING_DIALOG);
-                            break;
-
-                        case NONE_INTENT:
-                        default:
-                            // help or no intent identified, either way, let's provide some help
-                            // to the user
-                            await dc.context.sendActivity(`I didn't understand what you just said to me. topIntent ${topIntent}`);
-                            break;
-                    }
-
-                case DialogTurnStatus.waiting:
-                    // The active dialog is waiting for a response from the user, so do nothing
-                break;
-
-                case DialogTurnStatus.complete:
-                    await dc.end();
-                    break;
-
-                default:
-                    await dc.cancelAll();
-                    break;
-
-            }
-
-        } else if (context.activity.type === 'conversationUpdate' && context.activity.membersAdded[0].name === 'Bot') {
-            // When activity type is "conversationUpdate" and the member joining the conversation is the bot
-            // we will send our Welcome Adaptive Card.  This will only be sent once, when the Bot joins conversation
-            // To learn more about Adaptive Cards, see https://aka.ms/msbot-adaptivecards for more details.
-            const welcomeCard = CardFactory.adaptiveCard(WelcomeCard);
-            await context.sendActivity({ attachments: [welcomeCard] });
+            return bookingDetails;
+        }
+    
+        static parseCompositeEntity(result, compositeName, entityName) {
+            const compositeEntity = result.entities[compositeName];
+            if (!compositeEntity || !compositeEntity[0]) return undefined;
+    
+            const entity = compositeEntity[0][entityName];
+            if (!entity || !entity[0]) return undefined;
+    
+            const entityValue = entity[0][0];
+            return entityValue;
+        }
+    
+        static parseDatetimeEntity(result) {
+            const datetimeEntity = result.entities['datetime'];
+            if (!datetimeEntity || !datetimeEntity[0]) return undefined;
+    
+            const timex = datetimeEntity[0]['timex'];
+            if (!timex || !timex[0]) return undefined;
+    
+            const datetime = timex[0].split('T')[0];
+            return datetime;
         }
     }
-    ```
-
-    Robot odešle uživatelovu promluvu do služby LUIS a obdrží výsledky. Hlavní záměr určuje tok konverzace. 
-
-
-## <a name="start-the-bot"></a>Spuštění robota
-Před změnou kódu nebo nastavení zkontrolujte, jestli robot funguje. 
-
-1. Ve Visual Studio Codu otevřete okno terminálu. 
-
-2. Nainstalujte závislosti npm pro tohoto robota. 
-
-    ```bash
-    npm install
-    ```
-3. Vytvořte soubor pro proměnné prostředí, které kód robota hledá. Pojmenujte soubor `.env`. Přidejte tyto proměnné prostředí:
-
-    <!--there is no code language that represents an .env file correctly-->
-    ```env
-    botFilePath=
-    botFileSecret=
-    ```
-
-    Nastavte hodnoty proměnných prostředí na hodnoty, které jste zkopírovali z Application Settings (Nastavení aplikace) služby Azure Bot Service v 1. kroku v části **[Stažení Web App Bota](#download-the-web-app-bot)**.
-
-4. Spusťte robota v režimu sledování. Všechny změny provedené v kódu po tomto spuštění způsobí automatické restartování aplikace.
-
-    ```bash
-    npm run watch
-    ```
-
-5. Při spuštění robota se v okně terminálu zobrazí místní port, na kterém robot běží:
-
-    ```console
-    > basic-bot@0.1.0 start C:\Users\pattiowens\repos\BFv4\luis-nodejs-bot-src
-    > node ./index.js NODE_ENV=development
-
-    restify listening to http://[::]:3978
     
-    Get the Emulator: https://aka.ms/botframework-emulator
+    module.exports.LuisHelper = LuisHelper;
+    ```
+
+1. Otevřít **dialogová okna -> bookingDialog.js** pochopit, jak objekt BookingDetails slouží ke správě toku konverzace. Podrobnosti cesty se zobrazí výzva, v krocích, pak celý rezervace je potvrzen a nakonec opakován zpět tak, aby uživatel. 
+
+    ```nodejs
+    // Copyright (c) Microsoft Corporation. All rights reserved.
+    // Licensed under the MIT License.
     
-    To talk to your bot, open the luis-nodejs-bot-pattiowens.bot file in the Emulator
+    const { TimexProperty } = require('@microsoft/recognizers-text-data-types-timex-expression');
+    const { ConfirmPrompt, TextPrompt, WaterfallDialog } = require('botbuilder-dialogs');
+    const { CancelAndHelpDialog } = require('./cancelAndHelpDialog');
+    const { DateResolverDialog } = require('./dateResolverDialog');
+    
+    const CONFIRM_PROMPT = 'confirmPrompt';
+    const DATE_RESOLVER_DIALOG = 'dateResolverDialog';
+    const TEXT_PROMPT = 'textPrompt';
+    const WATERFALL_DIALOG = 'waterfallDialog';
+    
+    class BookingDialog extends CancelAndHelpDialog {
+        constructor(id) {
+            super(id || 'bookingDialog');
+    
+            this.addDialog(new TextPrompt(TEXT_PROMPT))
+                .addDialog(new ConfirmPrompt(CONFIRM_PROMPT))
+                .addDialog(new DateResolverDialog(DATE_RESOLVER_DIALOG))
+                .addDialog(new WaterfallDialog(WATERFALL_DIALOG, [
+                    this.destinationStep.bind(this),
+                    this.originStep.bind(this),
+                    this.travelDateStep.bind(this),
+                    this.confirmStep.bind(this),
+                    this.finalStep.bind(this)
+                ]));
+    
+            this.initialDialogId = WATERFALL_DIALOG;
+        }
+    
+        /**
+         * If a destination city has not been provided, prompt for one.
+         */
+        async destinationStep(stepContext) {
+            const bookingDetails = stepContext.options;
+    
+            if (!bookingDetails.destination) {
+                return await stepContext.prompt(TEXT_PROMPT, { prompt: 'To what city would you like to travel?' });
+            } else {
+                return await stepContext.next(bookingDetails.destination);
+            }
+        }
+    
+        /**
+         * If an origin city has not been provided, prompt for one.
+         */
+        async originStep(stepContext) {
+            const bookingDetails = stepContext.options;
+    
+            // Capture the response to the previous step's prompt
+            bookingDetails.destination = stepContext.result;
+            if (!bookingDetails.origin) {
+                return await stepContext.prompt(TEXT_PROMPT, { prompt: 'From what city will you be travelling?' });
+            } else {
+                return await stepContext.next(bookingDetails.origin);
+            }
+        }
+    
+        /**
+         * If a travel date has not been provided, prompt for one.
+         * This will use the DATE_RESOLVER_DIALOG.
+         */
+        async travelDateStep(stepContext) {
+            const bookingDetails = stepContext.options;
+    
+            // Capture the results of the previous step
+            bookingDetails.origin = stepContext.result;
+            if (!bookingDetails.travelDate || this.isAmbiguous(bookingDetails.travelDate)) {
+                return await stepContext.beginDialog(DATE_RESOLVER_DIALOG, { date: bookingDetails.travelDate });
+            } else {
+                return await stepContext.next(bookingDetails.travelDate);
+            }
+        }
+    
+        /**
+         * Confirm the information the user has provided.
+         */
+        async confirmStep(stepContext) {
+            const bookingDetails = stepContext.options;
+    
+            // Capture the results of the previous step
+            bookingDetails.travelDate = stepContext.result;
+            const msg = `Please confirm, I have you traveling to: ${ bookingDetails.destination } from: ${ bookingDetails.origin } on: ${ bookingDetails.travelDate }.`;
+    
+            // Offer a YES/NO prompt.
+            return await stepContext.prompt(CONFIRM_PROMPT, { prompt: msg });
+        }
+    
+        /**
+         * Complete the interaction and end the dialog.
+         */
+        async finalStep(stepContext) {
+            if (stepContext.result === true) {
+                const bookingDetails = stepContext.options;
+    
+                return await stepContext.endDialog(bookingDetails);
+            } else {
+                return await stepContext.endDialog();
+            }
+        }
+    
+        isAmbiguous(timex) {
+            const timexPropery = new TimexProperty(timex);
+            return !timexPropery.types.has('definite');
+        }
+    }
+    
+    module.exports.BookingDialog = BookingDialog;
     ```
 
-## <a name="start-the-emulator"></a>Spusťte emulátor.
 
-1. Spusťte emulátor robota. 
+## <a name="install-dependencies-and-start-the-bot-code-in-visual-studio"></a>Instalace závislostí a spuštění kódu robotů v sadě Visual Studio
 
-2. V emulátoru robota vyberte soubor *.bot v kořenovém adresáři projektu. Tento soubor `.bot` obsahuje koncový bod adresy URL robota pro zprávy:
-
-    [![Bot emulátor v4](../../../includes/media/cognitive-services-luis/bfv4/bot-emulator-v4.png)](../../../includes/media/cognitive-services-luis/bfv4/bot-emulator-v4.png#lightbox)
-
-3. Zadejte tajný kód robota, který jste zkopírovali z Application Settings (Nastavení aplikace) služby Azure Bot Service v 1. kroku v části **[Stažení Web App Bota](#download-the-web-app-bot)**. Emulátoru to umožní přístup k zašifrovaným polím v souboru .bot.
-
-    ![Tajný kód emulátoru robota v4](../../../includes/media/cognitive-services-luis/bfv4/bot-secret.png)
+1. Ve VSCode, z integrovaný terminál nainstalujte závislosti pomocí příkazu `npm install`.
+1. Také integrovaného terminálu spusťte pomocí příkazu robota `npm start`. 
 
 
-4. V emulátoru robota zadejte `Hello` a získejte správnou odpověď pro základního robota.
+## <a name="use-the-bot-emulator-to-test-the-bot"></a>Použití emulátoru robota k otestování robota
 
-    [![Odpověď základního robota v emulátoru](../../../includes/media/cognitive-services-luis/bfv4/emulator-test.png)](../../../includes/media/cognitive-services-luis/bfv4/emulator-test.png#lightbox)
+1. Začněte Bot emulátoru a vyberte **otevřít Bot**.
+1. V **otevřete robota** vyskakovací dialogové okno, zadejte adresu URL vašeho robota, jako například `http://localhost:3978/api/messages`. `/api/messages` Trasy je webová adresa pro robota.
+1. Zadejte **ID aplikace Microsoft** a **heslo Microsoft App**byl nalezen v **.env** soubor v kořenové složce kódu bot jste si stáhli.
 
-## <a name="modify-bot-code"></a>Úprava kódu robota 
-
-Do souboru `bot.js` přidejte kód pro zpracování nových záměrů. 
-
-1. V horní části souboru najděte část **Supported LUIS Intents** (Podporované záměry LUIS) a přidejte konstanty pro záměry HomeAutomation:
-
-   ```javascript
-    // Supported LUIS Intents
-    const GREETING_INTENT = 'Greeting';
-    const CANCEL_INTENT = 'Cancel';
-    const HELP_INTENT = 'Help';
-    const NONE_INTENT = 'None';
-    const TURNON_INTENT = 'HomeAutomation_TurnOn'; // new intent
-    const TURNOFF_INTENT = 'HomeAutomation_TurnOff'; // new intent
-    ```
-
-    Všimněte si, že tečka, `.`, mezi doménou a záměrem z aplikace portálu LUIS se nahradí podtržítkem, `_`. 
-
-2. Najděte parametr **isTurnInterrupted**, který přijímá předpověď LUIS promluvy a přidejte řádek, který vytiskne výsledek do konzoly.
-
-   ```javascript
-    /**
-     * Look at the LUIS results and determine if we need to handle
-     * an interruptions due to a Help or Cancel intent
-     *
-     * @param {DialogContext} dc - dialog context
-     * @param {LuisResults} luisResults - LUIS recognizer results
-     */
-    async isTurnInterrupted(dc, luisResults) {
-        console.log(JSON.stringify(luisResults));
-    ...
-    ```
-
-    Robot nemá přesně stejnou odpověď jako žádost rozhraní REST API služby LUIS, proto je důležité zjistit rozdíl prohlédnutím odpovědi JSON. Vlastnosti textu a záměrů jsou stejné, ale hodnoty vlastností entity jsou změněné. 
+    Volitelně můžete vytvořit novým robotem, konfigurace a zkopírujte `MicrosoftAppId` a `MicrosoftAppPassword` z **.env** soubor v projektu sady Visual Studio pro robota. Název konfiguračního souboru robota by měl být stejný jako název robota. 
 
     ```json
     {
-        "$instance": {
-            "HomeAutomation_Device": [
-                {
-                    "startIndex": 23,
-                    "endIndex": 29,
-                    "score": 0.9776345,
-                    "text": "lights",
-                    "type": "HomeAutomation.Device"
-                }
-            ],
-            "HomeAutomation_Room": [
-                {
-                    "startIndex": 12,
-                    "endIndex": 22,
-                    "score": 0.9079433,
-                    "text": "livingroom",
-                    "type": "HomeAutomation.Room"
-                }
-            ]
-        },
-        "HomeAutomation_Device": [
-            "lights"
+        "name": "<bot name>",
+        "description": "<bot description>",
+        "services": [
+            {
+                "type": "endpoint",
+                "appId": "<appId from .env>",
+                "appPassword": "<appPassword from .env>",
+                "endpoint": "http://localhost:3978/api/messages",
+                "id": "<don't change this value>",
+                "name": "http://localhost:3978/api/messages"
+            }
         ],
-        "HomeAutomation_Room": [
-            "livingroom"
-        ]
+        "padlock": "",
+        "version": "2.0",
+        "overrides": null,
+        "path": "<local path to .bot file>"
     }
     ```
 
-3. Přidejte záměry do příkazu switch metody onTurn pro případ `DialogTurnStatus.empty`:
+1. V emulátoru robota, zadejte `Hello` dostanete stejnou odpověď pro základního robota, jako jste obdrželi **testování ve Web Chat**.
 
-   ```javascript
-    switch (topIntent) {
-        case GREETING_INTENT:
-            await dc.begin(GREETING_DIALOG);
-            break;
+    [![Odpověď základního robota v emulátoru](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png)](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png#lightbox)
 
-        // New HomeAutomation.TurnOn intent
-        case TURNON_INTENT: 
 
-            await dc.context.sendActivity(`TurnOn intent found, entities included: ${JSON.stringify(results.entities)}`);
-            break;
+## <a name="ask-bot-a-question-for-the-book-flight-intent"></a>Zeptejte se bot pro knihy letu záměr
 
-        // New HomeAutomation.TurnOff intent
-        case TURNOFF_INTENT: 
+1. V emulátoru bot rezervovat tak, že zadáte následující utterance let: 
 
-            await dc.context.sendActivity(`TurnOff intent found, entities included: ${JSON.stringify(results.entities)}`);
-            break;
-
-        case NONE_INTENT:
-        default:
-            // help or no intent identified, either way, let's provide some help
-            // to the user
-            await dc.context.sendActivity(`I didn't understand what you just said to me. topIntent ${topIntent}`);
-            break;
-    }
+    ```bot
+    Book a flight from Paris to Berlin on March 22, 2020
     ```
 
-## <a name="view-results-in-bot"></a>Zobrazení výsledků v robotovi
+    Emulátor bot požádá o potvrzení. 
 
-1. V emulátoru robota zadejte promluvu: `Turn on the livingroom lights to 50%`
+1. Vyberte **Ano**. Robot jako odpověď vrátí souhrn jeho akce. 
+1. Z protokolu bot emulátor, vyberte řádek, který zahrnuje `Luis Trace`. Tím se zobrazí odpověď JSON na záměr a entity utterance služby luis.
 
-2. Robot odpoví takto:
+    [![Odpověď základního robota v emulátoru](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png)](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png#lightbox)
 
-    ```json
-    TurnOn intent found, entities included: {"$instance":{“HomeAutomation_Device”:[{“startIndex”:23,“endIndex”:29,“score”:0.9776345,“text”:“lights”,“type”:“HomeAutomation.Device”}],“HomeAutomation_Room”:[{“startIndex”:12,“endIndex”:22,“score”:0.9079433,“text”:“livingroom”,“type”:“HomeAutomation.Room”}]},“HomeAutomation_Device”:[“lights”],“HomeAutomation_Room”:[“livingroom”]}
-    ```
+## <a name="learn-more-about-the-web-app-bot-and-framework"></a>Další informace o Web App Bot a framework
 
-## <a name="learn-more-about-bot-framework"></a>Další informace o Bot Frameworku
 Azure Bot Service využívá sadu SDK Bot Frameworku. Přečtěte si další informace o sadě SDK a Bot Frameworku:
 
 * Dokumentace pro [Azure Bot Service](https://docs.microsoft.com/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0) v4
 * [Ukázky Bot Builderu](https://github.com/Microsoft/botbuilder-samples)
-* [Sada SK Bot Builderu](https://docs.microsoft.com/javascript/api/botbuilder-core/?view=botbuilder-ts-latest)
+* [Bot Builder Node.js SDK](https://github.com/Microsoft/botbuilder-js)
 * [Nástroje Bot Builderu](https://github.com/Microsoft/botbuilder-tools):
 
 ## <a name="next-steps"></a>Další postup
 
-Vytvořili jste Azure Bot Service, zkopírovali jste tajný klíč robota a cestu k souboru .bot a stáhli jste soubor zip kódu. Přidali jste předem připravenou doménu HomeAutomation do aplikace LUIS vytvořené v rámci nové služby Azure Bot Service a pak aplikaci vyškolili a znovu publikovali. Extrahovali jste projekt kódu, vytvořili soubor prostředí (`.env`) a nastavili tajný kód robota a cestu k souboru .bot. Do souboru bot.js jste přidali kód pro zpracování dvou nových záměrů. Pak jste robota otestovali v emulátoru robota, abyste viděli odpověď služby LUIS pro promluvu jednoho z nových záměrů. 
-
+Další informace naleznete v [ukázky](https://github.com/microsoft/botframework-solutions) s konverzační robotů. 
 
 > [!div class="nextstepaction"]
-> [Vytvoření vlastní domény v LUIS](luis-quickstart-intents-only.md)
+> [Vytvoření aplikace Language Understanding s doménou vlastního subjektu](luis-quickstart-intents-only.md)

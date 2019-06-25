@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
 ms.openlocfilehash: cdffbfd11a0f1c7d99818fa00f550965774b9b31
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65190069"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>O službě soubory Azure – nejčastější dotazy (FAQ)
@@ -23,7 +23,7 @@ Tento článek obsahuje odpovědi na běžné otázky o Azure Files funkce a fun
 1. V sekci komentáře v tomto článku.
 2. [Fórum služby Azure Storage](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata).
 3. [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files). 
-4. podporu Microsoftu. Chcete-li vytvořit novou žádost o podporu, na webu Azure Portal, na **pomáhají** kartu, vyberte možnost **Nápověda a podpora** tlačítko a pak vyberte **nová žádost o podporu**.
+4. Podporu Microsoftu. Chcete-li vytvořit novou žádost o podporu, na webu Azure Portal, na **pomáhají** kartu, vyberte možnost **Nápověda a podpora** tlačítko a pak vyberte **nová žádost o podporu**.
 
 ## <a name="general"></a>Obecné
 * <a id="why-files-useful"></a>
@@ -360,7 +360,7 @@ Tento článek obsahuje odpovědi na běžné otázky o Azure Files funkce a fun
     Ne. Maximální velikost sdílené složky Azure je 5 TiB. V současné době je pevný limit, který jsme nelze upravit. Pracujeme na řešení, které zvýšit velikost sdílené složky na 100 TB, ale časové osy pro sdílení v tuto chvíli nemáme.
 
 * <a id="open-handles-quota"></a>
-**Kolik klientů může souběžně přístup ke stejnému souboru?**   
+**Kolik klientů může souběžně přístup ke stejnému souboru?**    
     Používá se kvóta 2 000 otevřenými popisovači v jednom souboru. Až budete mít 2 000 otevřené popisovače, se zobrazí chybová zpráva s upozorněním, že je dosaženo kvóty.
 
 * <a id="zip-slow-performance"></a>

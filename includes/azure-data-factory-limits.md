@@ -9,10 +9,10 @@ ms.date: 5/30/2019
 ms.author: jingwang
 ms.custom: include file
 ms.openlocfilehash: ac0747dcff4e74363a58dc9aaf6da4dbd4c6a1c7
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66427612"
 ---
 Azure Data Factory je víceklientská služba, která má následující výchozí omezení na místě zajistit, aby chránily zákaznických předplatných z druhé strany úlohy. Chcete-li zvýšit limity až do maximální pro vaše předplatné, obraťte se na podporu.
@@ -28,7 +28,7 @@ Azure Data Factory je víceklientská služba, která má následující výchoz
 | Spuštění souběžných externích aktivit na předplatné a [oblast Azure Integration Runtime](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location)<br><small>Externí aktivity jsou spravovány v modulu runtime integrace, ale spustit na propojené služby, včetně Databricks, uložené procedury, HDInsights a dalších.</small> | 3000 | [Obraťte se na podporu](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Na předplatné a spuštění souběžných aktivit kanálu [oblast Azure Integration Runtime](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location) <br><small>Aktivity v kanálu provést v prostředí integration runtime, včetně Lookup, GetMetadata a odstranit. </small>| 1000 | [Obraťte se na podporu](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Souběžné operace na předplatné a vytváření [oblast Azure Integration Runtime](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location)<br><small>Test připojení, procházet seznam složek a seznam tabulek, včetně náhledu data. | 200 | [Obraťte se na podporu](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
-| Souběžné jednotky integrace dat<sup>1</sup> spotřeby na předplatné a [oblast Azure Integration Runtime](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location)| Oblast skupina 1<sup>2</sup>: 6000<br>2. skupina oblasti<sup>2</sup>: 3000<br>Skupina oblast 3<sup>2</sup>: 1500 | [Obraťte se na podporu](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
+| Souběžné jednotky integrace dat<sup>1</sup> spotřeby na předplatné a [oblast Azure Integration Runtime](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location)| Oblast skupina 1<sup>2</sup>: 6000<br>2\. skupina oblasti<sup>2</sup>: 3000<br>Skupina oblast 3<sup>2</sup>: 1500 | [Obraťte se na podporu](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Maximální aktivity za kanál, který obsahuje vnitřní aktivity pro kontejnery | 40 | 40 |
 | Maximální počet propojených integration runtime, který je možné vytvořit pro jednu místní prostředí integration runtime | 100 | [Obraťte se na podporu](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Maximální parametry za kanál | 50 | 50 |
@@ -52,7 +52,7 @@ Azure Data Factory je víceklientská služba, která má následující výchoz
 | Oblast skupiny | Oblasti | 
 | -------- | ------ |
 | Oblast skupiny 1 | Střed USA, východní USA, východní USA 2, Severní Evropa, západní Evropa, USA – Západ, USA – západ 2 |
-| 2. skupina oblasti | Austrálie – východ, Austrálie – jihovýchod, Brazílie – Jih, střed Indie, Japonsko – východ, Northcentral USA, střed USA – Jih, jihovýchodní Asie, střed USA – západ |
+| 2\. skupina oblasti | Austrálie – východ, Austrálie – jihovýchod, Brazílie – Jih, střed Indie, Japonsko – východ, Northcentral USA, střed USA – Jih, jihovýchodní Asie, střed USA – západ |
 | Skupina oblast 3 | Kanada – střed, Asie – východ, Francie – střed, Korea – střed, Velká Británie – jih |
 
 <sup>3</sup> kanálu, datové sady a propojené služby objekty představují logické seskupení úloh. Omezení pro tyto objekty nejsou souvisí objem dat můžete přesouvat a zpracovávat pomocí Azure Data Factory. Data Factory je navržena tak, aby k manipulaci s petabajty dat.

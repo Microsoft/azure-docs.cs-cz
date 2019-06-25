@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: ambapat
-ms.openlocfilehash: a88451403f242c39212c80e3c7425a901c6819cc
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 67925f2123f2a4f2524002eb075754c38fad4b42
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64725283"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67118989"
 ---
 # <a name="secure-access-to-a-key-vault"></a>Zabezpečený přístup k trezoru klíčů
 
@@ -125,7 +125,7 @@ Následující tabulka shrnuje přístupová oprávnění pro naše role a aplik
 
 | Role | Oprávnění k rovině správy | Oprávnění k rovině dat |
 | --- | --- | --- |
-| Bezpečnostní tým | Přispěvatel Key Vaultu | Klíče: zálohovat, vytvořit, odstranit, získat, import, seznam, obnovit<br>Tajnými klíči: všechny operace |
+| Bezpečnostní tým | Přispěvatel Key Vaultu | Klíče: zálohovat (backup), vytvořit (create), odstranit (delete), získat (get), importovat (import), vypsat (list), obnovit (restore)<br>Tajnými klíči: všechny operace |
 | Vývojáři a&nbsp;operátory | Oprávnění k nasazení služby Key Vault<br><br> **Poznámka:** Toto oprávnění uděluje nasazené virtuální počítače se načíst tajné kódy z trezoru klíčů. | Žádný |
 | Auditoři | Žádný | Klíče: vypsat (list)<br>Tajné klíče: vypsat (list)<br><br> **Poznámka:** Toto oprávnění umožňuje auditoři kontrolu i těch atributů (značky, aktivace data, data vypršení platnosti) klíče a tajné kódy, které nejsou zaznamenávány do protokolů. |
 | Aplikace | Žádný | Klíče: podepsat (sign)<br>Tajné klíče: získat (get) |

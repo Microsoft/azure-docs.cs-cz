@@ -1,6 +1,6 @@
 ---
 title: Seznam zamítnout přiřazení pro prostředky Azure pomocí rozhraní REST API – Azure | Dokumentace Microsoftu
-description: Zjistěte, jak zobrazit seznam zamítnout přiřazení pro uživatele, skupiny nebo aplikace, pomocí řízení přístupu na základě role (RBAC) pro prostředky Azure a rozhraní REST API.
+description: Zjistěte, jak zobrazit seznam zamítnout přiřazení pro uživatele, skupiny nebo aplikace pomocí řízení přístupu na základě role (RBAC) pro prostředky Azure a rozhraní REST API.
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -12,22 +12,22 @@ ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 06/10/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 59bcf2b33d203ae216b4965b963a727a6b34ae72
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: 0bc49456f5965846a2de542b4a063bab2d1838bf
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "60194663"
+ms.locfileid: "67118289"
 ---
 # <a name="list-deny-assignments-for-azure-resources-using-the-rest-api"></a>Seznam zamítnout přiřazení pro prostředky Azure pomocí rozhraní REST API
 
-[Zamítnout přiřazení](deny-assignments.md) zablokuje uživatelům možnost provádět akce konkrétních prostředků Azure i v případě přiřazení role uděluje přístup. Tento článek popisuje způsob použití rozhraní REST API do seznamu Odepřít přiřazení.
+[Zamítnout přiřazení](deny-assignments.md) zablokuje uživatelům možnost provádět akce konkrétních prostředků Azure i v případě přiřazení role uděluje přístup. Tento článek popisuje, jak zobrazit seznam zamítnout přiřazení pomocí rozhraní REST API.
 
 > [!NOTE]
-> V tuto chvíli odepřít jediný způsob, jakým můžete přidat vlastní přiřazení je s využitím Azure podrobné plány. Další informace najdete v tématu [chránit nové prostředky podle zámky prostředků Azure plány](../governance/blueprints/tutorials/protect-new-resources.md).
+> Nelze přímo vytvořit vlastní zamítnout přiřazení. Informace o tom, zakáže se vytvoří přiřazení, najdete v části [zamítnout přiřazení](deny-assignments.md).
 
 ## <a name="prerequisites"></a>Požadavky
 

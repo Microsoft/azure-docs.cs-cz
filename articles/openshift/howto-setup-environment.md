@@ -9,12 +9,12 @@ ms.date: 05/10/2019
 ms.topic: conceptual
 ms.service: openshift
 manager: jeconnoc
-ms.openlocfilehash: f0ef421d7954aa33cf69e7de2f4902a86ed8b580
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 21ccd7b2919714610dbd51c62701c4bb32d330d6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306408"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66808834"
 ---
 # <a name="set-up-your-azure-red-hat-openshift-dev-environment"></a>Nastavení vývojového prostředí Azure Red Hat OpenShift
 
@@ -22,7 +22,7 @@ K vytváření a spouštění aplikací v Microsoft Azure Red Hat OpenShift, bud
 
 * Koupit Azure rezervované instance virtuálních počítačů.
 * Nainstalovat verzi 2.0.65 (nebo vyšší) z příkazového řádku Azure (nebo použijte Azure Cloud Shell).
-* Zaregistrujte se `openshiftmanagedcluster` funkce a poskytovatelů prostředků přidružené.
+* Zaregistrujte se `AROGA` funkce a poskytovatelů prostředků přidružené.
 * Vytvoření tenanta Azure Active Directory (Azure AD).
 * Vytvoření objektu aplikace Azure AD.
 * Vytvoření uživatele služby Azure AD.
@@ -55,7 +55,7 @@ Alternativně můžete použít [Azure Cloud Shell](https://docs.microsoft.com/a
 
 ## <a name="register-providers-and-features"></a>Zaregistrovat poskytovatele a funkce
 
-`Microsoft.ContainerService openshiftmanagedcluster` Funkce `Microsoft.Solutions`, a `Microsoft.Network` zprostředkovatele musí být zaregistrovaný k vašemu předplatnému ručně před nasazením svůj první cluster Azure Red Hat OpenShift.
+`Microsoft.ContainerService AROGA` Funkce `Microsoft.Solutions`, `Microsoft.Compute`, `Microsoft.Storage`, `Microsoft.KeyVault` a `Microsoft.Network` zprostředkovatele musí být zaregistrovaný k vašemu předplatnému ručně před nasazením svůj první cluster Azure Red Hat OpenShift.
 
 Ručně registrovat tyto poskytovatele a funkce, použijte následující pokyny z prostředí Bash, pokud jste nainstalovali rozhraní příkazového řádku nebo z relace Azure Cloud Shell (Bash) vašeho webu Azure Portal:
 
@@ -65,10 +65,10 @@ Ručně registrovat tyto poskytovatele a funkce, použijte následující pokyny
     az account set --subscription <SUBSCRIPTION ID>
     ```
 
-1. Registrovat funkci openshiftmanagedcluster Microsoft.ContainerService:
+1. Registrovat funkci Microsoft.ContainerService AROGA:
 
     ```bash
-    az feature register --namespace Microsoft.ContainerService -n openshiftmanagedcluster
+    az feature register --namespace Microsoft.ContainerService -n AROGA
     ```
 
 1. Zaregistrujte poskytovatele Microsoft.Storage:

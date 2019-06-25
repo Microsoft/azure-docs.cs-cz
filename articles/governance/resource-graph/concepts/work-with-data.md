@@ -7,16 +7,18 @@ ms.date: 04/01/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: ff9513418857562408c162533c48f6495b1f83c4
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 9accdc19062cba7bb313afac3da056798c325a4c
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65137859"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274412"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Práce s datovými sadami velkých prostředků Azure
 
 Azure Graph prostředků je určená pro práci s a získávání informací o prostředcích v prostředí Azure. Prostředek grafu díky zrychlujeme tato data, i v případě, že dotazování tisíc záznamů. Zdroj grafu obsahuje celou řadu možností pro práci s těmito velkými datovými sadami.
+
+Informace o práci s dotazy s vysokou frekvencí najdete v tématu [pokyny pro omezené požadavky](./guidance-for-throttled-requests.md).
 
 ## <a name="data-set-result-size"></a>Velikost datové sady výsledků
 
@@ -84,6 +86,6 @@ Příklad najdete v tématu [další stránky dotaz](/rest/api/azureresourcegrap
 
 ## <a name="next-steps"></a>Další postup
 
-- Zobrazit jazyk v aplikaci [Starter dotazy](../samples/starter.md)
-- Viz advanced používá v [upřesňujících dotazů](../samples/advanced.md)
-- Naučte se [prozkoumat zdroje](explore-resources.md)
+- Zobrazit jazyk v aplikaci [Starter dotazy](../samples/starter.md).
+- Viz advanced používá v [upřesňujících dotazů](../samples/advanced.md).
+- Zjistěte, jak [materiály](explore-resources.md).

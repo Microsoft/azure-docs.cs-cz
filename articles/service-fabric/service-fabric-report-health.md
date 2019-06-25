@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
 ms.openlocfilehash: 49ebf4ab95816a3da2f74a464b12b46de6228456
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60723440"
 ---
 # <a name="add-custom-service-fabric-health-reports"></a>Přidání vlastních stavových sestav Service Fabric
@@ -57,8 +57,8 @@ Jednou stav vytváření sestav, je jasné, stavu sestavy lze zaslat snadno. Mů
 ## <a name="health-client"></a>Stav klienta
 Sestavy stavu odešlou do nástroje health manager prostřednictvím stavu klienta, který se nachází uvnitř klienta prostředků infrastruktury. Nástroje health manager uloží sestavy v health store. Stav klienta lze nastavit s následujícím nastavením:
 
-* **HealthReportSendInterval**: Zpoždění mezi časem, sestava se přidá do klienta a čas odeslání do Správce stavu. Používá k batch sestavy do jedné zprávy, namísto odesílání zpráv pro každou sestavu. Dávkování zvyšuje výkon. Výchozí: 30 sekund.
-* **HealthReportRetrySendInterval**: Interval, kdy stav klienta znovu odešle nahromaděné stavu sestav nástroje health manager. Výchozí: 30 sekund, minimální: 1 sekunda.
+* **HealthReportSendInterval**: Zpoždění mezi časem, sestava se přidá do klienta a čas odeslání do Správce stavu. Používá k batch sestavy do jedné zprávy, namísto odesílání zpráv pro každou sestavu. Dávkování zvyšuje výkon. Výchozí hodnota: 30 sekund.
+* **HealthReportRetrySendInterval**: Interval, kdy stav klienta znovu odešle nahromaděné stavu sestav nástroje health manager. Výchozí hodnota: 30 sekund, minimální: 1 sekunda.
 * **HealthOperationTimeout**: Časový limit pro sestavy zpráva odeslaná do Správce stavu. Pokud vyprší časový limit zprávy, stavu klient pokus obnovuje se až do nástroje health manager potvrdí, že sestava se zpracovalo. Výchozí hodnota: dvě minuty.
 
 > [!NOTE]

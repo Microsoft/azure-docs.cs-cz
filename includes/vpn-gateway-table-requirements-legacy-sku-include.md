@@ -9,11 +9,11 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 5b9e036816aa532d32b1b4305ef6ae646ae05bae
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66159264"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67174896"
 ---
 V následující tabulce jsou uvedeny požadavky pro PolicyBased a RouteBased VPN Gateway. Tato tabulka platí pro model nasazení Resource Manager i pro klasický model. V případě klasického modelu brány PolicyBased VPN jsou stejné jako statické brány a trasové brány jsou stejné jako odpovídají dynamickým branám.
 

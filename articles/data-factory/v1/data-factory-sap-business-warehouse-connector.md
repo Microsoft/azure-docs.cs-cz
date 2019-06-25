@@ -14,14 +14,14 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 1823c2ec28b342d41371eb6677e0330d7f885087
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61258654"
 ---
 # <a name="move-data-from-sap-business-warehouse-using-azure-data-factory"></a>Přesun dat z SAP Business Warehouse s využitím Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, který používáte:"]
 > * [Verze 1](data-factory-sap-business-warehouse-connector.md)
 > * [Verze 2 (aktuální verze)](../connector-sap-business-warehouse.md)
 
@@ -66,9 +66,9 @@ Vlastnost | Popis | Povolené hodnoty | Požaduje se
 -------- | ----------- | -------------- | --------
 server | Název serveru, na kterém se nachází instance SAP BW. | string | Ano
 systemNumber | Číslo systému systému SAP BW. | Dvěma číslicemi desetinné číslo reprezentované jako řetězec. | Ano
-ID klienta | ID klienta v systému SAP W klienta. | Tři číslice desetinné číslo reprezentované jako řetězec. | Ano
-uživatelské jméno | Jméno uživatele, který má přístup k serveru SAP | string | Ano
-heslo | Heslo pro tohoto uživatele. | string | Ano
+clientId | ID klienta v systému SAP W klienta. | Tři číslice desetinné číslo reprezentované jako řetězec. | Ano
+username jméno | Jméno uživatele, který má přístup k serveru SAP | string | Ano
+password | Heslo pro tohoto uživatele. | string | Ano
 gatewayName | Název brány, který služba Data Factory měla použít pro připojení k místní instanci SAP BW. | string | Ano
 encryptedCredential | Řetězec, který šifrované přihlašovací údaje. | string | Ne
 
@@ -309,8 +309,8 @@ QUAN | Decimal
 RAW | Byte[]
 RAWSTRING | Byte[]
 STRING | String
-JEDNOTKA | String
-DAT | String
+UNIT | String
+DATS | String
 NUMC | String
 TIMS | String
 

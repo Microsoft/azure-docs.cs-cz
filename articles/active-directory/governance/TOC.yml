@@ -46,6 +46,8 @@
           href: entitlement-management-request-access.md
         - name: Schvalování žádostí
           href: entitlement-management-request-approve.md
+        - name: Delegování úloh
+          href: entitlement-management-delegate.md
         - name: Zobrazení sestav a protokolů
           href: entitlement-management-reports.md
         - name: Řešení potíží

@@ -16,10 +16,10 @@ ms.date: 08/29/2016
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: cbf6a44f1a3210906ec7ab0d04eecb997bc2c470
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65412812"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Řešení potíží s aplikace ve službě Azure App Service pomocí sady Visual Studio
@@ -684,7 +684,7 @@ Navíc není nutné používat technologie ASP.NET nebo `System.Diagnostics` tra
 Další informace o analýze protokolů webového serveru najdete v následujících zdrojích:
 
 * [LogParser](https://www.microsoft.com/download/details.aspx?id=24659)<br/>
-  Nástroj pro zobrazení dat v protokolů webového serveru (*.log* soubory).
+  Nástroj pro zobrazení dat v protokolů webového serveru ( *.log* soubory).
 * [Řešení potíží s problémy s výkonem služby IIS nebo chyby aplikace pomocí LogParser](https://www.iis.net/learn/troubleshoot/performance-issues/troubleshooting-iis-performance-issues-or-application-errors-using-logparser)<br/>
   Úvod do nástroje analyzátoru protokolů, který můžete použít k analýze protokolů webového serveru.
 * [Příspěvky do blogu podle Robert McMurray pomocí LogParser](https://blogs.msdn.com/b/robert_mcmurray/archive/tags/logparser/)<br/>

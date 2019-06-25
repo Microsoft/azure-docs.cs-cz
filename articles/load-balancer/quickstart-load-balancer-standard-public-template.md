@@ -12,46 +12,53 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/30/2019
+ms.date: 06/19/2019
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: c418041c5de343d7210dbd153ebe6cea0af95c42
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a95bedc8b2b395f856512ec49bae630666fe36da
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67066805"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67272885"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-by-using-azure-resource-manager-template"></a>Rychlý start: Vytvoření Load balanceru úrovně Standard pro vyrovnávání zatížení virtuálních počítačů pomocí šablony Azure Resource Manageru
 
-Vyrovnávání zatížení zajišťuje vyšší úroveň dostupnosti a škálování tím, že rozprostírá příchozí požadavky na více virtuálních počítačů. Můžete nasadit šablonu Azure Resource Manageru vytvořit nástroj pro vyrovnávání zatížení vyrovnávat zatížení virtuálních počítačů (VM). V tomto rychlém startu se dozvíte, jak vyrovnávat zatížení virtuálních počítačů pomocí Load Balanceru úrovně Standard.
+Vyrovnávání zatížení zajišťuje vyšší úroveň dostupnosti a škálování tím, že rozprostírá příchozí požadavky na více virtuálních počítačů. V tomto rychlém startu se dozvíte, jak nasadit šablonu Azure Resource Manageru k vytvoření load balanceru úrovně standard pro vyrovnávat zatížení virtuálních počítačů (VM).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="create-a-standard-load-balancer"></a>Vytvoření standardního nástroje pro vyrovnávání zatížení
 
-V této části vytvoříte Load balanceru úrovně Standard, který pomáhá vyrovnávat zatížení virtuálních počítačů. Load Balancer úrovně Standard podporuje pouze standardní veřejnou IP adresu. Při vytváření Load Balanceru úrovně Standard musíte vytvořit také novou standardní veřejnou IP adresu nakonfigurovanou jako jeho front-end (ve výchozím nastavení má název *LoadBalancerFrontend*). Existuje mnoho metod, které slouží k vytvoření load balanceru úrovně standard. V tomto rychlém startu použijete Azure PowerShell k nasazení [šablony Resource Manageru](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/101-load-balancer-standard-create/azuredeploy.json). Šablony Resource Manageru jsou soubory JSON, které definují, jaké prostředky je pro řešení potřeba nasadit. Abyste porozuměli konceptům spojeným s nasazením a správou řešení Azure, najdete v článku [dokumentace ke službě Azure Resource Manageru](/azure/azure-resource-manager/). Další související šablony nástroje pro vyrovnávání zatížení Azure najdete v tématu [šablony pro rychlý start Azure](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Network&pageNumber=1&sort=Popular).
+Load Balancer úrovně Standard podporuje pouze standardní veřejnou IP adresu. Při vytváření Load balanceru úrovně Standard musíte vytvořit také novou standardní veřejnou IP adresu, který je nakonfigurovaný jako front-endu pro Load balancer úrovně Standard. Existuje mnoho metod, které slouží k vytvoření load balanceru úrovně standard. V tomto rychlém startu použijete Azure PowerShell k nasazení [šablony Resource Manageru](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-load-balancer-standard-create/azuredeploy.json). Šablony Resource Manageru jsou soubory JSON, které definují, jaké prostředky je pro řešení potřeba nasadit. Abyste porozuměli konceptům spojeným s nasazením a správou řešení Azure, najdete v článku [dokumentace ke službě Azure Resource Manageru](/azure/azure-resource-manager/). Další související šablony nástroje pro vyrovnávání zatížení Azure najdete v tématu [šablony pro rychlý start Azure](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Network&pageNumber=1&sort=Popular).
 
-Pokud chcete nasadit šablonu, vyberte **vyzkoušet** otevřete Azure Cloud shell, a vložte následující skript prostředí PowerShell do okna prostředí. Vložte kód, pravým tlačítkem myši na okno prostředí a potom vyberte **vložte**. Seznam oblastí, které podporují zóny dostupnosti pro virtuální počítače Azure, najdete v části [tady](../availability-zones/az-overview.md).
+1. Vyberte **vyzkoušet** z následující blok kódu a otevřete Azure Cloud shell, postupujte podle pokynů pro přihlášení k Azure.
 
-```azurepowershell-interactive
-$projectName = Read-Host -Prompt "Enter a project name with 12 or less letters or numbers that is used to generate Azure resource names"
-$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-$adminUserName = Read-Host -Prompt "Enter the virtual machine administrator account name"
-$adminPassword = Read-Host -Prompt "Enter the virtual machine administrator password" -AsSecureString
+   ```azurepowershell-interactive
+   $projectName = Read-Host -Prompt "Enter a project name with 12 or less letters or numbers that is used to generate Azure resource names"
+   $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
+   $adminUserName = Read-Host -Prompt "Enter the virtual machine administrator account name"
+   $adminPassword = Read-Host -Prompt "Enter the virtual machine administrator password" -AsSecureString
 
-$resourceGroupName = "${projectName}rg"
-$templateUri = "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/101-load-balancer-standard-create/azuredeploy.json"
+   $resourceGroupName = "${projectName}rg"
+   $templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-load-balancer-standard-create/azuredeploy.json"
 
-New-AzResourceGroup -Name $resourceGroupName -Location $location
-New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri -projectName $projectName -location $location -adminUsername $adminUsername -adminPassword $adminPassword
+   New-AzResourceGroup -Name $resourceGroupName -Location $location
+   New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri -projectName $projectName -location $location -adminUsername $adminUsername -adminPassword $adminPassword
 
-Write-Host "Press [ENTER] to continue."
+   Write-Host "Press [ENTER] to continue."
+   ```
 
-```
+   Počkejte, až se zobrazí výzva z konzoly.
+2. Vyberte **kopírování** z předchozí blok kódu zkopírujte skript prostředí PowerShell.
+3. Klikněte pravým tlačítkem na panelu konzoly prostředí a potom vyberte **vložit**.
+4. Zadejte hodnoty.
 
- >[!NOTE]
- >Název skupiny prostředků je název projektu s **rg** připojí. Budete potřebovat název skupiny prostředků v další části.  Trvá několik minut, než vytvoříte prostředky.
+   Nasazení šablony vytvoří tři zóny dostupnosti.  Zóny dostupnosti jsou podporovány pouze v [určitých oblastech](../availability-zones/az-overview.md). Použijte jeden z podporovaných oblastí. Pokud si nejste jisti, zadejte **centralus**.
+
+   Název skupiny prostředků je název projektu s **rg** připojí. Budete potřebovat název skupiny prostředků v další části.
+
+Pokud chcete nasadit šablonu trvá asi 10 minut.
 
 ## <a name="test-the-load-balancer"></a>Otestování nástroje pro vyrovnávání zatížení
 

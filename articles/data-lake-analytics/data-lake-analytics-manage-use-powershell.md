@@ -10,10 +10,10 @@ ms.assetid: ad14d53c-fed4-478d-ab4b-6d2e14ff2097
 ms.topic: conceptual
 ms.date: 06/29/2018
 ms.openlocfilehash: 4273828c9c2bdb75fcbc1de45da55c5a03dd615f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66156428"
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-powershell"></a>Správa Azure Data Lake Analytics pomocí Azure PowerShell
@@ -84,7 +84,7 @@ Login-AzAccount -ServicePrincipal -TenantId $tenantid -Credential $pscredential 
 ## <a name="manage-accounts"></a>Správa účtů
 
 
-### <a name="list-accounts"></a>Vypíše účty
+### <a name="list-accounts"></a>Výpis účtů
 
 ```powershell
 # List Data Lake Analytics accounts within the current subscription.
@@ -94,7 +94,7 @@ Get-AdlAnalyticsAccount
 Get-AdlAnalyticsAccount -ResourceGroupName $rg
 ```
 
-### <a name="create-an-account"></a>Vytvořit účet
+### <a name="create-an-account"></a>Vytvoření účtu
 
 Každý účet Data Lake Analytics vyžaduje výchozí účet Data Lake Store, který slouží k ukládání protokolů. Můžete použít existující účet nebo vytvořit účet. 
 
@@ -243,7 +243,7 @@ Get-AdlJob -Account $adla -State Accepted,Compiling,New,Paused,Scheduling,Start
 Použití `-Result` parametr ke zjištění, zda byl ukončen úlohy byla úspěšně dokončena. Obsahuje tyto hodnoty:
 
 * Zrušeno
-* Nezdařilo se
+* Selhalo
 * Žádný
 * Úspěch
 

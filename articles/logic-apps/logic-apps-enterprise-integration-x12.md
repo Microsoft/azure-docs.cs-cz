@@ -11,10 +11,10 @@ ms.topic: article
 ms.assetid: 7422d2d5-b1c7-4a11-8c9b-0d8cfa463164
 ms.date: 01/31/2017
 ms.openlocfilehash: f06e213dbae31c9d7c4e212d605cc962aba71d2d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64728760"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Výměna X12 zpráv pro podnikovou integraci B2B v Azure Logic Apps sadou Enterprise Integration Pack
@@ -68,13 +68,13 @@ Poté co [vytvořit integrační účet](../logic-apps/logic-apps-enterprise-int
 
     | Vlastnost | Popis |
     | --- | --- |
-    | Název |Název smlouvy |
+    | Name |Název smlouvy |
     | Typ smlouvy | By měl být X12 |
     | Partner s identitou hostitele |Smlouvu musí hostitelské i hostující partnera. Partner hostitele představuje organizace, který konfiguruje smlouvy. |
     | Identita hostitele |Identifikátor pro hostitele partnera |
     | Partner s identitou hosta |Smlouvu musí hostitelské i hostující partnera. Partner s identitou hosta představuje organizace, která je podnikající s partnerem hostitele. |
     | Identita hosta |Identifikátor partner s identitou hosta |
-    | Nastavení příjmu |Tyto vlastnosti se vztahují na všechny zprávy přijaté službou smlouvu. |
+    | Zobrazit nastavení |Tyto vlastnosti se vztahují na všechny zprávy přijaté službou smlouvu. |
     | Nastavení odesílání |Tyto vlastnosti se vztahují na všechny zprávy odeslané dohodou. |  
 
    > [!NOTE]
@@ -99,9 +99,9 @@ Smlouvy o je nyní připravena ke zpracování příchozích zpráv, které v so
 
 | Vlastnost | Popis |
 | --- | --- |
-| ISA1 (Kvalifikátor autorizace) |Z rozevíracího seznamu vyberte hodnotu kvalifikátor autorizace. |
+| ISA1 (kvalifikátor autorizace) |Z rozevíracího seznamu vyberte hodnotu kvalifikátor autorizace. |
 | ISA2 |Volitelné. Zadejte informace o autorizaci. Pokud je hodnota, kterou jste zadali pro ISA1 než 00, zadejte alespoň jeden alfanumerický znak a maximálně 10. |
-| ISA3 (Kvalifikátor zabezpečení) |Z rozevíracího seznamu vyberte hodnotu kvalifikátor zabezpečení. |
+| ISA3 (kvalifikátor zabezpečení) |Z rozevíracího seznamu vyberte hodnotu kvalifikátor zabezpečení. |
 | ISA4 |Volitelné. Zadejte hodnotu informace o zabezpečení. Pokud je hodnota, kterou jste zadali pro ISA3 než 00, zadejte alespoň jeden alfanumerický znak a maximálně 10. |
 
 ### <a name="acknowledgment"></a>Potvrzení
@@ -124,7 +124,7 @@ Vyberte schéma pro každý typ transakce (ST1) a u aplikace odesílatele (GS2).
 | --- | --- |
 | Version |Vyberte X12 verze |
 | Typ transakce (ST01) |Vyberte typ transakce |
-| Aplikace odesílatele (GS02) |Vyberte aplikace odesílatele |
+| U aplikace odesílatele (GS02) |Vyberte aplikace odesílatele |
 | Schéma |Vyberte soubor schématu, které chcete použít. Schémata jsou přidány do účtu pro integraci. |
 
 > [!NOTE]
@@ -144,11 +144,11 @@ Vyberte schéma pro každý typ transakce (ST1) a u aplikace odesílatele (GS2).
 
 | Vlastnost | Popis |
 | --- | --- |
-| Zakázat duplicity kontrolní číslo výměny. |Zablokovat duplicitní výměn. Kontrolní číslo výměny (ISA13) vyhledá kontrolní číslo výměny přijaté. Pokud se zjistí shoda, nebude zpracování příjmu kanálu výměna. Můžete zadat počet dní pro provedení kontroly tím, že hodnota pro *zkontrolovat duplicity ISA13 každých (dny)*. |
+| Zakázat duplicity kontrolní číslo výměny. |Zablokovat duplicitní výměn. Kontrolní číslo výměny (ISA13) vyhledá kontrolní číslo výměny přijaté. Pokud se zjistí shoda, nebude zpracování příjmu kanálu výměna. Můžete zadat počet dní pro provedení kontroly tím, že hodnota pro *zkontrolovat duplicity ISA13 každých (dny)* . |
 | Zakázat duplicity kontrolních čísel skupiny |Blok výměn s duplicitní skupiny kontrolních čísel. |
 | Zakázat duplicity kontrolních čísel sad transakcí |Blok výměn se duplicitní transakce sada kontrolních čísel. |
 
-### <a name="validations"></a>Ověřování
+### <a name="validations"></a>Ověření
 
 ![Nastavení vlastností ověřování pro přijaté zprávy](./media/logic-apps-enterprise-integration-x12/x12-36.png) 
 
@@ -170,7 +170,7 @@ Po dokončení každého řádku ověření druhého je automaticky přidán. Po
 | Vlastnost | Popis |
 | --- | --- |
 | Převést implicitní desítkový formát "Nn" základní 10 číselnou hodnotu |Převede číslo EDI, který je zadaný ve formátu "Nn" na číselnou hodnotu základu 10 |
-| Pokud jsou povolené koncové oddělovače, vytvořit prázdné značky XML |Zaškrtněte toto políčko, aby odesílatele výměny zahrnout prázdné značky XML pro koncové oddělovače. |
+| Vytvořit prázdné značky XML, pokud jsou povolené koncové oddělovače |Zaškrtněte toto políčko, aby odesílatele výměny zahrnout prázdné značky XML pro koncové oddělovače. |
 | Rozdělit výměnu jako sady transakcí – pozastavit sady transakcí při chybě|Analyzuje každou transakci nastavit ve výměně do samostatného dokumentu XML použitím odpovídající obálku do sady transakcí. Pozastaví jenom transakce, pokud ověření selže. |
 | Rozdělit výměnu jako sady transakcí – pozastavit výměnu při chybě|Analyzuje každou transakci nastavit ve výměně do samostatného dokumentu XML použitím odpovídající obálky. Pozastaví celé výměně, když jeden nebo více sady transakcí v výměna neúspěšné ověření. | 
 | Zachovat výměnu – pozastavit sady transakcí při chybě |Výměna ponechá beze změn, vytvoří dokument XML pro celé dávkové výměnu. Pozastaví jenom sady transakcí, které nesplní ověřování současně zpracovávat všechny ostatní sady transakcí. |
@@ -208,7 +208,7 @@ Nyní je připravená pro zpracování odchozích zpráv, které v souladu s vá
 | --- | --- |
 | Očekává se TA1 |Technické potvrzení (TA1) vrátíte odesílatele výměny. Toto nastavení určuje, že požadavky hostitele partnera, který odesílá zprávy potvrzení od partnera hostovaného ve smlouvě. Tato potvrzení se očekává partner hostitele na základě nastavení přijímat smlouvy. |
 | Očekává se FA |Funkční potvrzení (IM) vrátíte odesílatele výměny. Vyberte, jestli chcete 997 nebo 999 potvrzení, na základě verze schématu, které pracujete. Tato potvrzení se očekává partner hostitele na základě nastavení přijímat smlouvy. |
-| Verze FA |Vyberte verzi DM |
+| Verze DM |Vyberte verzi DM |
 
 ### <a name="schemas"></a>Schémata
 
@@ -301,6 +301,6 @@ Po dokončení každého řádku ověření druhého je automaticky přidán. Po
 ## <a name="view-the-swagger"></a>Zobrazení swaggeru
 Zobrazit [swagger podrobnosti](/connectors/x12/). 
 
-## <a name="learn-more"></a>Další informace
+## <a name="learn-more"></a>Víc se uč
 * [Další informace o Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "přečtěte si víc o Enterprise Integration Pack")  
 

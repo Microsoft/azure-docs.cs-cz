@@ -10,12 +10,13 @@ ms.topic: conceptual
 ms.date: 05/06/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: eb99cd94dca2a463c275dd5d4fab540b4fc55318
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 4cbca467b50dd0e43132b6d09dc0785c501fca0f
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66510447"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204678"
 ---
 # <a name="manage-user-data-in-azure-active-directory-b2c"></a>Správa údajů uživatele ve službě Azure Active Directory B2C
 
@@ -25,7 +26,7 @@ ms.locfileid: "66510447"
 
 ## <a name="delete-user-data"></a>Odstranit data uživatelů
 
-Data uživatele uložená v adresáři Azure AD B2C a v protokolech auditování. Všechna data auditu uživatele se uchovávají po dobu 30 dnů v Azure AD B2C. Pokud chcete odstranit data uživatele během tohoto 30denního období, můžete použít [odstranění uživatele](/previous-versions/azure/ad/graph/api/users-operations#DeleteUser) operace. Operace odstranění se vyžaduje pro jednotlivé tenanty Azure AD B2C kde se může nacházet data. 
+Data uživatele uložená v adresáři Azure AD B2C a v protokolech auditování. Všechna data auditu uživatele se uchovávají po dobu 7 dní v Azure AD B2C. Pokud chcete odstranit data uživatele během tohoto období 7 dní, můžete použít [odstranění uživatele](/previous-versions/azure/ad/graph/api/users-operations#DeleteUser) operace. Operace odstranění se vyžaduje pro jednotlivé tenanty Azure AD B2C kde se může nacházet data. 
 
 Každého uživatele v Azure AD B2C je přiřazen identifikátor objektu. ID objektu poskytuje jednoznačný identifikátor můžete použít k odstranění údajů uživatele ve službě Azure AD B2C. V závislosti na vaší architektuře ID objektu může být užitečné korelační identifikátor napříč dalšími službami, jako jsou finanční, marketing a zákaznických relace správy databází. 
 

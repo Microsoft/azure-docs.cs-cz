@@ -1,18 +1,18 @@
 ---
 title: 'Kurz: Vytváření clusterů na vyžádání Apache Hadoop v Azure HDInsight pomocí Data Factory '
-description: Zjistěte, jak vytvářet clustery na vyžádání Apache Hadoop v HDInsight pomocí Azure Data Factory.
+description: Kurz – zjistěte, jak vytvářet clustery na vyžádání Apache Hadoop v HDInsight pomocí Azure Data Factory.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.author: hrasheed
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: tutorial
 ms.date: 04/18/2019
-ms.openlocfilehash: 37c9a11b806ff49fce27120d03f67182037dc693
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 64f016ac0fa572cb8cf8504902108cffae267cec
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64726880"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67293293"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Kurz: Vytváření clusterů na vyžádání Apache Hadoop v HDInsight pomocí Azure Data Factory
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -189,7 +189,7 @@ V tomto článku nakonfigurujete aktivitu Hive k vytvoření clusteru HDInsight 
 
     |Vlastnost  |Hodnota  |
     |---------|---------|
-    |Název | Zadejte název datové továrny. Tento název musí být globálně jedinečný.|
+    |Name | Zadejte název datové továrny. Tento název musí být globálně jedinečný.|
     |Předplatné | Vyberte své předplatné Azure. |
     |Skupina prostředků | Vyberte **použít existující** a pak vyberte skupinu prostředků, kterou jste vytvořili, pomocí Powershellového skriptu. |
     |Version | Ponechte **V2**. |
@@ -230,7 +230,7 @@ V této části vytvoříte dvě propojené služby v rámci vaší datové tov�
 
     |Vlastnost |Hodnota |
     |---|---|
-    |Název |Zadejte `HDIStorageLinkedService`.|
+    |Name |Zadejte `HDIStorageLinkedService`.|
     |Předplatné Azure |Vyberte své předplatné z rozevíracího seznamu.|
     |Název účtu úložiště |Vyberte účet služby Azure Storage, kterou jste vytvořili jako součást skriptu prostředí PowerShell.|
 
@@ -252,7 +252,7 @@ V této části vytvoříte dvě propojené služby v rámci vaší datové tov�
 
     | Vlastnost | Hodnota |
     | --- | --- |
-    | Název | Zadejte `HDinisghtLinkedService`.|
+    | Name | Zadejte `HDInsightLinkedService`.|
     | Type | Vyberte **HDInsight na vyžádání**. |
     | Propojená služba Azure Storage | Vyberte `HDIStorageLinkedService`. |
     | Typ clusteru | Vyberte **hadoop** |

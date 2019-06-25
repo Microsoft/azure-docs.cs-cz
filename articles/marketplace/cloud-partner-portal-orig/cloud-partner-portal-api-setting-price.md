@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
 ms.openlocfilehash: dde3e04dc8f30ea5657139d50dd4456e5dfb57c2
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64935732"
 ---
 <a name="pricing-for-virtual-machine-offers"></a>Ceny nabídek virtuálních počítačů
@@ -124,7 +124,7 @@ Následující tabulka uvádí různé oblasti, můžete zadat vlastní základn
 | DE         | Německo              | EUR               |
 | GR         | Řecko               | EUR               |
 | GT         | Guatemala            | GTQ               |
-| HK         | Hongkong – zvláštní správní oblast        | HKD               |
+| HK         | Hongkong – zvláštní administrativní oblast        | HKD               |
 | HU         | Maďarsko              | HUF               |
 | IS         | Island              | PŘIDĚLENÍ DISKU               |
 | IN         | Indie                | INR               |
@@ -142,7 +142,7 @@ Následující tabulka uvádí různé oblasti, můžete zadat vlastní základn
 | LI         | Lichtenštejnsko        | CHF               |
 | LT         | Litva            | EUR               |
 | LU         | Lucembursko           | EUR               |
-| MK         | Severní Makedonie      | MKD               |
+| MK         | Makedonie – sever      | MKD               |
 | MY         | Malajsie             | MYR               |
 | MT         | Malta                | EUR               |
 | MX         | Mexiko               | MXN               |

@@ -116,7 +116,7 @@
           href: licensing-groups-change-licenses.md
         - name: Další scénáře
           href: licensing-group-advanced.md
-        - name: Skupinové licencování s využitím PowerShellu
+        - name: Skupinové licencování s využitím PowerShellu a Graphu
           href: licensing-ps-examples.md
         - name: ID plánů služeb pro licencování
           href: licensing-service-plan-reference.md

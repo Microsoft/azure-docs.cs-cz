@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 19c2298c9bda03acba28496a97c89c2a53e3c44e
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: fc172b5327d72687fea7d13ddb706ecc7ab630b6
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65964894"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "67135347"
 ---
 # <a name="tutorial-share-azure-spatial-anchors-across-sessions-and-devices-with-an-azure-cosmos-db-back-end"></a>Kurz: Sdílené složky Azure prostorových kotev vztahů mezi relacemi a zařízeními pomocí služby Azure Cosmos DB back-endu
 
@@ -44,7 +44,7 @@ Je vhodné poznamenat, že i když je budete v tomto kurzu pomocí Unity a Azure
 
 Kopírovat `Connection String` vzhledem k tomu, že ho budete potřebovat.
 
-## <a name="open-the-sample-project-in-unity"></a>Otevřete ukázkový projekt v Unity
+## <a name="download-the-unity-sample-project"></a>Stáhněte si ukázkový projekt Unity
 
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 

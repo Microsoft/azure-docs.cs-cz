@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: anavin
-ms.openlocfilehash: 23cd77d4a2d0c8203670039dd44c878bf7217fd3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fe163fc2370e884bed58bfffe5baffa5642b6d90
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799108"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147999"
 ---
 # <a name="public-ip-address-prefix"></a>Předpona veřejné IP adresy
 
@@ -32,7 +32,7 @@ Vytvoření veřejné předpona IP adresy v oblasti Azure a předplatné tak, ž
 
 ## <a name="why-create-a-public-ip-address-prefix"></a>Proč vytvářet předponu veřejné IP adresy?
 
-Když vytvoříte prostředky veřejné IP adresy, Azure k dispozici veřejnou IP adresu přiřadit z žádným z rozsahů, které jsou použity v jiné oblasti. Jakmile Azure přiřadí adresu, budete vědět, co je adresa, ale až do Azure ho přiřadí adresu, si nejste jisti, jakou adresu může být přiřazeno. To může být problematické, pokud například vám nebo vaší obchodní partnery nastavení pravidel brány firewall, které umožňují konkrétní IP adresy. Pokaždé, když je novou veřejnou IP adresu přiřadit prostředku, adresa musí být přidán do pravidla brány firewall. Při přiřazování adres k prostředkům z předponu veřejné IP adresy, pravidla brány firewall nemusíte aktualizovat pokaždé, když je jednou z adres, přiřadit, protože celá řada může být přidán do pravidla.
+Když vytvoříte prostředky veřejné IP adresy, Azure přiřadí k dispozici veřejnou IP adresu z žádným z rozsahů použít v oblasti. Jakmile Azure přiřadí adresu, budete vědět, co je adresa, ale až do Azure ho přiřadí adresu, si nejste jisti, jakou adresu může být přiřazeno. To může být problematické, pokud například vám nebo vaší obchodní partnery nastavení pravidel brány firewall, které umožňují konkrétní IP adresy. Pokaždé, když je novou veřejnou IP adresu přiřadit prostředku, adresa musí být přidán do pravidla brány firewall. Při přiřazování adres k prostředkům z předponu veřejné IP adresy, pravidla brány firewall nemusíte aktualizovat pokaždé, když je jednou z adres, přiřadit, protože celá řada může být přidán do pravidla.
 
 ## <a name="benefits"></a>Výhody
 

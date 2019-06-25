@@ -11,10 +11,10 @@ ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 11/29/2017
 ms.openlocfilehash: c46f22fb5c906aaffa48f39a0c643ca2a48573f9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60867022"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio"></a>Interpretace výsledků modelu v nástroji Azure Machine Learning Studio
@@ -25,7 +25,7 @@ Toto téma vysvětluje, jak vizualizovat a interpretace výsledků predikce v Az
 Existují čtyři hlavní typy modelů v Azure Machine Learning Studio strojového učení:
 
 * Klasifikace
-* Clustering
+* Vytváření clusterů
 * Regrese
 * Doporučené systémy
 
@@ -174,7 +174,7 @@ Spuštění webové služby, vrácený výsledek vypadá jako obrázek 14. Před
 
 Obrázek 14. Webové služby výsledek kvůli problému regrese automobilů cena
 
-## <a name="clustering"></a>Clustering
+## <a name="clustering"></a>Vytváření clusterů
 **Příklad experimentu**
 
 K vytvoření clusterů experiment znovu použijeme datové sady Iris. Tady můžete filtrovat si popisky třídy v sadě dat tak, aby pouze funkce a je možné pro clustering. V tomto iris případ použití, zadejte počet clusterů, které mají být dvě během procesu trénování, což znamená, že by cluster květin na dvě třídy. Experimentu se zobrazí v obrázek 15.

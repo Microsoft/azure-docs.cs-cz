@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 05/13/2019
 ms.author: kraigb
 ms.openlocfilehash: 0440e498451ee141fa03851b78418caf911d0e32
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65596739"
 ---
 # <a name="manage-and-configure-projects"></a>Správa a konfigurace projektů
@@ -35,7 +35,7 @@ Projekt v poznámkových bloků Azure je v podstatě konfiguraci základní virt
 
 Poznámkových bloků Azure spustí základní virtuální počítač se při každém spuštění poznámkového bloku nebo jiného souboru. Server automaticky ukládá soubory a ukončí po 60 minutách nečinnosti. Taky můžete zastavit server kdykoli s **vypnutí** příkazu (Klávesová zkratka: h).
 
-## <a name="compute-tier"></a>Úroveň výpočetních prostředků
+## <a name="compute-tier"></a>Služba COMPUTE úrovně
 
 Ve výchozím nastavení, spouštět projekty **bezplatné Compute** úroveň, která je omezena na 4 GB paměti a 1 GB dat, aby se zabránilo zneužití. Můžete obejít tato omezení a zvýšit výkon pomocí jiný virtuální počítač, který zřídíte v předplatném Azure. Další informace najdete v tématu [jak používat virtuální počítače pro datové vědy](use-data-science-virtual-machine.md).
 
@@ -69,7 +69,7 @@ Na řídicím panelu Projekt, vyberte **nastavení projektu**a pak **informace**
 | **Prázdný soubor** | Soubor, do kterého můžete ukládat jakýkoli obsah, jako je text, data atd. | Vytvoří pole v seznamu souboru projektu, ve kterém zadáte název souboru. |
 | **Markdown** | Soubor Markdown. | Vytvoří pole v seznamu souboru projektu, ve kterém zadáte název souboru. |
 
-### <a name="upload-files"></a>Nahrát soubory
+### <a name="upload-files"></a>Nahrání souborů
 
 **Nahrát** příkaz poskytuje dvě možnosti, jak importovat data z jiných míst: **Z adresy URL** a **z počítače**. Další informace najdete v tématu [práce s datovými soubory v projektech poznámkového bloku Azure](work-with-project-data-files.md).
 

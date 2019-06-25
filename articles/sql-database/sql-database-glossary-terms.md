@@ -13,10 +13,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 04/26/2019
 ms.openlocfilehash: 057c764a46508804bee6aa8f9912fdedc69e811f
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65762702"
 ---
 # <a name="azure-sql-database-glossary-of-terms"></a>Azure SQL Database Glosář termínů
@@ -24,14 +24,14 @@ ms.locfileid: "65762702"
 |Kontext|Termín|Další informace|
 |:---|:---|:---|
 |Název služby Azure|Azure SQL Database nebo SQL Database|[Služba Azure SQL Database](sql-database-technical-overview.md)|
-|Úroveň výpočetních prostředků|Bez serveru (preview)|[úroveň výpočetní prostředí](sql-database-serverless.md)
-||Zajištěno|[úroveň výpočetní prostředí](sql-database-serverless.md)
+|Služba COMPUTE úrovně|Bez serveru (preview)|[úroveň výpočetní prostředí](sql-database-serverless.md)
+||Zřízené|[úroveň výpočetní prostředí](sql-database-serverless.md)
 |Možnosti nasazení |Izolovaná databáze|[Izolované databáze](sql-database-single-database.md)|
 ||Elastický fond|[Elastický fond](sql-database-elastic-pool.md)|
 ||Spravovaná instance|[Spravovaná instance](sql-database-managed-instance.md)|
-|Serverové objekty|Databáze SQL server nebo databázový server|[Databázový server](sql-database-servers.md)|
+|Objekty serveru|Databáze SQL server nebo databázový server|[Databázový server](sql-database-servers.md)|
 ||Spravovaná instance serveru SQL Database, spravované instance serveru nebo instance serveru|[Spravovaná instance](sql-database-managed-instance.md)|
-Databázové objekty|Databáze Azure SQL|Všechny databáze ve službě Azure SQL Database|
+databázové objekty|Databáze Azure SQL|Všechny databáze ve službě Azure SQL Database|
 ||Izolovaná databáze|Databáze vytvořené pomocí volby nasazení izolovaná databáze|
 ||Databázi ve fondu|Databáze vytvořené v rámci nebo přesunout do elastického fondu|
 ||Instance databáze|Databáze vytvořené v rámci managed instance|
@@ -44,8 +44,8 @@ Databázové objekty|Databáze Azure SQL|Všechny databáze ve službě Azure SQ
 ||Zřízené databáze|Databáze nakonfigurována na úrovni zřízených výpočetních|
 |[Nákupní modely a prostředky](sql-database-purchase-models.md)|Nákupní model založený na DTU|[Nákupní model založený na DTU](sql-database-service-tiers-dtu.md)|
 ||Nákupní model založený na virtuálních jádrech|[nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md)|
-||virtuální jádro|Základní do hostovaného operačního systému k dispozici na hypervisoru.|
-||Úroveň služby|Úroveň služeb v rámci nákupní model|
+||vCore|Základní do hostovaného operačního systému k dispozici na hypervisoru.|
+||Úroveň služeb|Úroveň služeb v rámci nákupní model|
 ||Vypočítat velikost|Množství výpočetních prostředků pro izolované databáze, elastický fond nebo spravované instance v rámci úrovně služeb|
 ||Velikost úložiště|Velikost úložiště, které jsou dostupné pro izolované databáze, elastický fond nebo spravované instance|
 ||Generace výpočetních funkcí|Generování procesoru v rámci úrovně služeb|

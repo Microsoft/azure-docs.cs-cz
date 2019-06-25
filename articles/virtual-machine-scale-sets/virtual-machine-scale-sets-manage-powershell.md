@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: cynthn
-ms.openlocfilehash: c4684dd27aeed4fab4335a93ea5a458b4a9f5d80
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: a6474320fd8b1545d61320cd43e155ab077ba310
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56821179"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64683527"
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-azure-powershell"></a>Správa virtuálního počítače škálovací sady pomocí Azure Powershellu
 
@@ -28,7 +28,7 @@ V průběhu životního cyklu škálovací sady virtuálních počítačů možn
 
 Pokud je potřeba vytvořit škálovací sadu virtuálních počítačů, můžete si [vytvoření škálovací sady pomocí Azure Powershellu](quick-create-powershell.md).
 
-[!INCLUDE [updated-for-az-vm.md](../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
 ## <a name="view-information-about-a-scale-set"></a>Zobrazit informace o škálovací sady
 Chcete-li zobrazit celkové informace o škálovací sadě, použijte [Get-AzVmss](/powershell/module/az.compute/get-azvmss). Následující příklad získá informace o škálovací sadu s názvem *myScaleSet* v *myResourceGroup* skupinu prostředků. Zadejte vlastní názvy následujícím způsobem:

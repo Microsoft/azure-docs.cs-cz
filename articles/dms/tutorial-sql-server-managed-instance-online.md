@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 05/22/2019
-ms.openlocfilehash: 1229ff3221deb49601dec3cd40b556ea367fc4c9
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.date: 06/14/2019
+ms.openlocfilehash: 4e45251147561f2376ac4b044ebdf3a599092dcf
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66240707"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67126107"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-database-managed-instance-online-using-dms"></a>Kurz: Migrace SQL serveru do spravované instance Azure SQL Database pomocí DMS online
 
@@ -72,6 +72,10 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
 * Ujistěte se, že účet služby, ve kterém je spuštěná zdrojová instance SQL Serveru, má oprávnění k zápisu do sdílené síťové složky, kterou jste vytvořili, a že účet počítače pro zdrojový server má k této sdílené složce přístup pro čtení i zápis.
 * Poznamenejte si uživatele Windows (a jeho heslo) s oprávněním Úplné řízení ke sdílené síťové složce, kterou jste vytvořili dříve. Služba Azure Database Migration Service zosobní přihlašovací údaje uživatele za účelem nahrání záložních souborů do kontejneru úložiště Azure pro operaci obnovení.
 * Vytvořte Azure Active Directory aplikace ID, které vygeneruje klíč ID aplikace, služby DMS můžete použít k připojení k cílové databázi Azure managed instance a kontejner úložiště Azure. Další informace najdete v článku [Vytvoření aplikace Azure Active Directory a instančního objektu s přístupem k prostředkům pomocí portálu](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal).
+
+  > [!NOTE]
+  > DMS vyžaduje oprávnění přispěvatele daného předplatného pro zadané ID aplikace. Aktivně pracujeme ke snížení požadavků na těchto oprávnění.
+
 * Vytvořte nebo si poznamenejte **úroveň výkonu Standard** účtu úložiště Azure, do kterého může služba DMS nahrát soubory záloh databází a který může použít k migraci databází.  Nezapomeňte účet úložiště Azure vytvořit ve stejné oblasti jako službu DMS.
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>Registrace poskytovatele prostředků Microsoft.DataMigration
@@ -179,15 +183,15 @@ Po vytvoření instance služby ji vyhledejte na webu Azure Portal, otevřete ji
 
 4. Vyberte **Uložit**.
 
-## <a name="select-source-databases"></a>Vyberte zdrojové databáze
+## <a name="select-source-databases"></a>Výběr zdrojových databází
 
 1. Na obrazovce **Vybrat zdrojové databáze** vyberte zdrojovou databázi, kterou chcete migrovat.
 
-    ![Vyberte zdrojové databáze](media/tutorial-sql-server-to-managed-instance-online/dms-select-source-databases2.png)
+    ![Výběr zdrojových databází](media/tutorial-sql-server-to-managed-instance-online/dms-select-source-databases2.png)
 
 2. Vyberte **Uložit**.
 
-## <a name="configure-migration-settings"></a>Nakonfigurujte nastavení migrace
+## <a name="configure-migration-settings"></a>Konfigurace nastavení migrace
 
 1. Na obrazovce **Konfigurace nastavení migrace** zadejte následující podrobnosti:
 

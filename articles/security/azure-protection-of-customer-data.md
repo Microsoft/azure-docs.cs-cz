@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: 04163d1fa2a46a2de877702d479f439a5e8711d7
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65603132"
 ---
 # <a name="azure-customer-data-protection"></a>Ochrana dat zákazníků Azure   
@@ -44,7 +44,7 @@ Azure poskytuje zákazníkům silné dat zabezpečení, ve výchozím nastavení
 - Zákazník a cloudu.
 - Interně mezi systémy pro Azure a datových center.
 
-**Šifrování**: Šifrování dat v úložišti a přenosu je možné nasadit pomocí zákazníkům doporučujeme pro zajištění důvěrnost a integrita dat. To je jednoduché pro zákazníci moci nakonfigurovat jejich cloudové služby Azure pro použití protokolu SSL k ochraně komunikace s Internetem a dokonce i mezi své virtuální počítače hostované v Azure.
+**Šifrování:** Šifrování dat v úložišti a přenosu je možné nasadit pomocí zákazníkům doporučujeme pro zajištění důvěrnost a integrita dat. To je jednoduché pro zákazníci moci nakonfigurovat jejich cloudové služby Azure pro použití protokolu SSL k ochraně komunikace s Internetem a dokonce i mezi své virtuální počítače hostované v Azure.
 
 **Redundanci dat**: Microsoft zajišťuje, že data jsou chráněna, pokud je cyberattack nebo fyzickému poškození do datového centra. Zákazníci mohou zvolit:
 
@@ -55,9 +55,9 @@ Data je možné replikovat v rámci vybrané zeměpisné oblasti za účelem zaj
 
 Při vytváření účtu úložiště, vyberte jednu z těchto možností replikace:
 
-- **Místně redundantní úložiště (LRS)**: Místně redundantní úložiště udržuje tři kopie dat. LRS se replikuje třikrát v rámci jednoho zařízení v jedné oblasti. LRS chrání vaše data před běžnými výpadky hardwaru, ale ne před výpadkem celého selhání.
-- **Zónově redundantní úložiště (ZRS)**: Zónově redundantní úložiště udržuje tři kopie dat. ZRS se replikuje třikrát v zařízení dvě až tři poskytují větší odolnost než LRS. Replikace v rámci jedné oblasti nebo napříč dvěma oblastmi. ZRS pomáhá zajistit, že vaše data byla odolná v jedné oblasti.
-- **Geograficky redundantní úložiště (GRS)**: Při vytváření účtu úložiště se automaticky vybere geograficky redundantní úložiště. GRS udržuje šest kopií dat. S GRS vaše data se replikují třikrát v rámci primární oblasti. Vaše data se také replikuje třikrát v sekundární oblasti vzdálené stovky mil od primární oblasti, takže poskytuje nejvyšší úroveň odolnosti. V případě selhání primární oblasti Azure Storage převezme služby při selhání do sekundární oblasti. GRS pomáhá zajistit, že vaše data byla odolná ve dvou oblastech.
+- **Místně redundantní úložiště (LRS)** : Místně redundantní úložiště udržuje tři kopie dat. LRS se replikuje třikrát v rámci jednoho zařízení v jedné oblasti. LRS chrání vaše data před běžnými výpadky hardwaru, ale ne před výpadkem celého selhání.
+- **Zónově redundantní úložiště (ZRS)** : Zónově redundantní úložiště udržuje tři kopie dat. ZRS se replikuje třikrát v zařízení dvě až tři poskytují větší odolnost než LRS. Replikace v rámci jedné oblasti nebo napříč dvěma oblastmi. ZRS pomáhá zajistit, že vaše data byla odolná v jedné oblasti.
+- **Geograficky redundantní úložiště (GRS)** : Při vytváření účtu úložiště se automaticky vybere geograficky redundantní úložiště. GRS udržuje šest kopií dat. S GRS vaše data se replikují třikrát v rámci primární oblasti. Vaše data se také replikuje třikrát v sekundární oblasti vzdálené stovky mil od primární oblasti, takže poskytuje nejvyšší úroveň odolnosti. V případě selhání primární oblasti Azure Storage převezme služby při selhání do sekundární oblasti. GRS pomáhá zajistit, že vaše data byla odolná ve dvou oblastech.
 
 **Odstranění dat**: Když zákazníci odstranit data, nebo nechte Azure, Microsoft se řídí přísné normy pro přepsání úložiště prostředky před jejich opětovné použití, stejně jako fyzické zničení Vyřazená z provozu hardwaru. Microsoft provádí kompletní odstranění dat na žádost zákazníka a ukončení smlouvy.
 

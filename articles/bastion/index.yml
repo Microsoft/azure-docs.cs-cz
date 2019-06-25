@@ -1,0 +1,43 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentace ke službě Azure Bastion
+metadata:
+  document_id: null
+  title: Bastion
+  meta.description: Learn how to use Azure Bastion
+  author: cherylmc
+  ms.service: Bastion
+  ms.topic: landing-page
+  ms.date: 06/13/2019
+  ms.author: cherylmc
+abstract:
+  description: 'Zjistěte, jak využívat Azure Bastion pro připojení k virtuálnímu počítači. Nakonfigurujte možnosti bezpečného a bezproblémového připojení RDP/SSH k virtuálním počítačům přímo na webu Azure Portal přes SSL. Když se připojíte přes Azure Bastion, virtuální počítače nepotřebují veřejnou IP adresu.'
+  aside:
+    image:
+      alt: null
+      height: 110
+      src: 'https://go.microsoft.com/fwlink/?linkid=2095604'
+      width: 250
+    title: 'Práce s Azure Bastionem (1:03)'
+    href: 'https://go.microsoft.com/fwlink/?linkid=2095517'
+    width: 250
+sections:
+  - title: Vytvoření a správa Azure Bastionu (Preview)
+    items:
+      - type: paragraph
+        text: 'Zjistěte, jak nakonfigurovat hostitele Azure Bastionu, a pak se připojte k virtuálnímu počítači.'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/bastion/bastion-create-host-portal">Vytvoření a úpravy hostitele Azure Bastionu</a>
+          - html: <a href="/azure/bastion/bastion-connect-vm-ssh">Připojení k virtuálnímu počítači s Windows</a>
+          - html: <a href="/azure/bastion/bastion-connect-vm-rdp">Připojení k virtuálnímu počítači s Linuxem</a>
+          - html: <a href="/azure/bastion/bastion-faq">Nejčastější dotazy k Azure Bastionu</a>
+  - title: Referenční informace
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: REST
+            html: '<p><a href="https://msdn.microsoft.com/library/azure/mt586720">Reference k rozhraní REST API</a></p>'

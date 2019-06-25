@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
-ms.openlocfilehash: 0b17a87fa02c382ae19cca6e4abcfff2ec475450
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c6d395d878d38ab48b95ca82d94d2a222428bae1
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66252682"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274940"
 ---
 # <a name="compare-message-routing-and-event-grid-for-iot-hub"></a>Porovnání směrování zpráv a služby Event Grid pro službu IoT Hub
 
@@ -64,7 +64,7 @@ Směrování zpráv služby IoT Hub a integrace služby IoT Hub s využitím slu
 
    Směrování zpráv služby IoT Hub podporuje omezený počet jedinečných koncových bodů a typy koncových bodů, ale můžete vytvořit konektory přesměrovat data a události na další koncové body. Úplný seznam podporovaných koncových bodů najdete v tabulce v předchozí části. 
 
-   Integrace služby IoT Hub s využitím služby Event Grid podporuje 500 koncových bodů služby IoT Hub a používané typy koncových bodů. Naively integruje se s Azure Functions, Logic Apps, úložiště a front Service Bus a také funguje s webhooky k rozšíření odesílání dat mimo ekosystém služby Azure a do třetí strany obchodních aplikací.
+   Integrace služby IoT Hub s využitím služby Event Grid podporuje 500 koncových bodů služby IoT Hub a používané typy koncových bodů. Nativně integruje s Azure Functions, Logic Apps, úložiště a front Service Bus a také pracuje s webhooky k rozšíření odesílání dat mimo ekosystém služby Azure a do třetí strany obchodních aplikací.
 
 * **Je důležité, pokud vaše data přibývají v pořadí?**
 

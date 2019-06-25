@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako;
 ms.openlocfilehash: 1fe003ae13bc5f195932f4f140e17c4dc2791959
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61247352"
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>Zákona o svobodném přístupu tváří pomocí Azure Media Analytics 
@@ -34,7 +34,7 @@ Kromě plně automatického režimu je dvoufázovou pracovní postup, který umo
 ### <a name="combined-mode"></a>Kombinovaný režim
 Tímto se vytvoří zrevidovaně mp4 automaticky bez jakékoli manuální vstup.
 
-| Krok | Název souboru | Poznámky |
+| Fáze | Název souboru | Poznámky |
 | --- | --- | --- |
 | Vstupní asset |foo.bar |Video ve formátu WMV, MOV nebo MP4 |
 | Konfigurace vstupu |Konfigurace úlohy předvolby |{'version':'1.0 ', 'možnosti': {"režimu": "kombinovanou"}} |
@@ -49,7 +49,7 @@ Tímto se vytvoří zrevidovaně mp4 automaticky bez jakékoli manuální vstup.
 ### <a name="analyze-mode"></a>Analýza režimu
 **Analyzovat** pass dvoufázovou pracovního postupu přebírá video vstup a vytvoří soubor JSON pro rozpoznávání tváře umístění a obrázky ve formátu jpg jednotlivých zjistila pro rozpoznávání tváře.
 
-| Krok | Název souboru | Poznámky |
+| Fáze | Název souboru | Poznámky |
 | --- | --- | --- |
 | Vstupní asset |foo.bar |Video ve formátu WMV, MPV nebo MP4 |
 | Konfigurace vstupu |Konfigurace úlohy předvolby |{'version':'1.0 ', 'možnosti': {"režimu": "analyzovat"}} |
@@ -114,7 +114,7 @@ Jedná se o seznam ID rozostření původního videa a poznámky JSON. Tento re�
 
 Výstup z průchodu analyzovat nezahrnuje původního videa. Video musí nahráli do vstupní asset úlohy Redact režimu a vybrali jako primární soubor.
 
-| Krok | Název souboru | Poznámky |
+| Fáze | Název souboru | Poznámky |
 | --- | --- | --- |
 | Vstupní asset |foo.bar |Video ve formátu WMV, MPV nebo MP4. Stejné jako v kroku 1 videa. |
 | Vstupní asset |foo_annotations.json |Soubor metadat poznámky z fáze, volitelné změny. |
@@ -153,9 +153,9 @@ Můžete najít ukázky níže rozostření typů.
 
 ![Reproduktoru](./media/media-services-face-redaction/blur2.png)
 
-#### <a name="high"></a>Vysoký
+#### <a name="high"></a>Vysoká
 
-![Vysoký](./media/media-services-face-redaction/blur3.png)
+![Vysoká](./media/media-services-face-redaction/blur3.png)
 
 #### <a name="box"></a>Box
 

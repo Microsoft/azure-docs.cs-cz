@@ -13,10 +13,10 @@ ms.date: 04/29/2019
 ms.reviewer: mbullwin
 ms.author: nimolnar
 ms.openlocfilehash: 832f927f81b57fd16c202b855d8f1dbe0617ad56
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65149901"
 ---
 # <a name="dependency-auto-collection"></a>Automatické shromažďování závislostí
@@ -30,7 +30,7 @@ Níže je seznam aktuálně podporovaných volání závislostí, které jsou au
 | Webových formulářů ASP.NET | 4.5+ |
 | ASP.NET MVC | 4+ |
 | ASP.NET WebAPI | 4.5+ |
-| Jádro ASP.NET | 1.1+ |
+| ASP.NET Core | 1.1+ |
 | <b> Komunikačních knihoven</b> |
 | [HttpClient](https://www.microsoft.com/net/) | 4.5 +, .NET core 1.1 + |
 | [SqlClient](https://www.nuget.org/packages/System.Data.SqlClient) | .NET core 1.0 +, NuGet 4.3.0 |
@@ -68,7 +68,7 @@ Níže je seznam aktuálně podporovaných volání závislostí, které jsou au
 | JMX | 1.0+ |
 
 > [!NOTE]
-> * S výjimkou reaktivního programování na podporu.
+> \* S výjimkou reaktivního programování na podporu.
 > <br>Instalace †requires [JVM agenta](https://docs.microsoft.com/azure/application-insights/app-insights-java-agent#install-the-application-insights-agent-for-java).
 
 ## <a name="nodejs"></a>Node.js

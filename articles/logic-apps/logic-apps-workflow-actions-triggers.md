@@ -8,13 +8,13 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
-ms.date: 05/13/2019
-ms.openlocfilehash: aa5d3a0555875571276fdf4046ad0e4dd1e69bbd
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.date: 06/19/2019
+ms.openlocfilehash: 490131d1743b366b5ac51a5a0fdac4b89ffe08f2
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65596944"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274173"
 ---
 # <a name="reference-for-trigger-and-action-types-in-workflow-definition-language-for-azure-logic-apps"></a>Referenční informace pro aktivační událost a akce typy v jazyka definice pracovního postupu pro Azure Logic Apps
 
@@ -52,9 +52,9 @@ Aktivační události mají tyto prvky nejvyšší úrovně, i když některé j
 
 | Hodnota | Type | Popis | 
 |-------|------|-------------| 
-| <*Název aktivační události*> | String | Název aktivační události | 
+| <*trigger-name*> | String | Název aktivační události | 
 | <*Typ aktivační události*> | String | Typ aktivační události, jako je například "Http" nebo "ApiConnection" | 
-| <*vstupy triggeru*> | JSON – objekt | Vstupy, které definují chování triggeru | 
+| <*trigger-inputs*> | JSON – objekt | Vstupy, které definují chování triggeru | 
 | <*time-unit*> | String | Jednotka času, který popisuje, jak často se trigger spustí: "Druhý", "Minute", "Hour", "Day", "Týden", "Měsíc" | 
 | <*číslo z časových jednotek*> | Integer | Hodnota, která určuje, jak často se trigger spustí na základě četnosti, což je počet časových jednotek počkat, až se trigger spustí znovu <p>Toto jsou minimální a maximální intervaly: <p>-Měsíc: 1 – 16 měsíců </br>-Den: 1 – 500 dnů </br>-Hodinu: 1 – 12 000 hodin </br>-Minutu: 1-72,000 minut </br>-Sekundu: 1-9,999,999 sekund<p>Například pokud je interval 6 a je frekvence "Měsíc", opakování je nastaveno na každých 6 měsíců. | 
 |||| 
@@ -157,7 +157,7 @@ Kontroluje, Tato aktivační událost nebo *hlasování* koncový bod pomocí [r
 | Element | Type | Popis |
 |---------|------|-------------|
 | Záhlaví | JSON – objekt | Hlavičky z odpovědi |
-| hlavní část | JSON – objekt | Text z odpovědi |
+| Text | JSON – objekt | Text z odpovědi |
 | Stavový kód | Integer | Stavový kód z odpovědi |
 |||| 
 
@@ -330,7 +330,7 @@ Tento trigger zkontroluje nebo dotazuje zadaný koncový bod na základě plánu
 | Element | Type | Popis |
 |---------|------|-------------| 
 | Záhlaví | JSON – objekt | Hlavičky z odpovědi | 
-| hlavní část | JSON – objekt | Text z odpovědi | 
+| Text | JSON – objekt | Text z odpovědi | 
 | Stavový kód | Integer | Stavový kód z odpovědi | 
 |||| 
 
@@ -425,7 +425,7 @@ Některé hodnoty, jako například <*typ metody*>, jsou k dispozici pro obě `"
 | Element | Type | Popis |
 |---------|------|-------------| 
 | Záhlaví | JSON – objekt | Hlavičky z odpovědi | 
-| hlavní část | JSON – objekt | Text z odpovědi | 
+| Text | JSON – objekt | Text z odpovědi | 
 | Stavový kód | Integer | Stavový kód z odpovědi | 
 |||| 
 
@@ -824,7 +824,7 @@ Tady jsou některé běžně používané akce:
 |-------------|-------------| 
 | [**Compose**](#compose-action) | Vytvoří jeden výstup ze vstupů, což může mít různé typy. | 
 | [**Spuštění kódu jazyka JavaScript**](#run-javascript-code) | Spouštět fragmenty kódu jazyka JavaScript, které se vejdou do určitých kritérií. Požadavky na kód a další informace najdete v tématu [přidat a spuštění kódu pomocí vloženého kódu](../logic-apps/logic-apps-add-run-inline-code.md). |
-| [**– funkce**](#function-action) | Volá funkci Azure. | 
+| [ **– funkce**](#function-action) | Volá funkci Azure. | 
 | [**HTTP**](#http-action) | Zavolá koncový bod HTTP. | 
 | [**Připojte se k**](#join-action) | Vytvoří řetězec ze všech položek v poli a tyto položky odděluje znak zadaného oddělovače. | 
 | [**Parsování formátu JSON**](#parse-json-action) | Vytvoří uživatelsky přívětivé tokeny z vlastností ve formátu JSON obsahu. Tyto vlastnosti pak odkazujete včetně tokenů ve vaší aplikaci logiky. | 
@@ -1014,7 +1014,7 @@ Pak můžete výstup akce v dalších akcí.
 
 | Hodnota | Type | Popis | 
 |-------|------|-------------| 
-| <*inputs-to-compose*> | Vše | Vstupy pro vytvoření jediného výstupu | 
+| <*inputs-to-compose*> | Jakýkoli | Vstupy pro vytvoření jediného výstupu | 
 |||| 
 
 *Příklad 1*
@@ -1645,7 +1645,7 @@ Chcete-li zadat nebo upravit záhlaví sloupců a hodnot, použijte `columns` po
 | Hodnota | Type | Popis | 
 |-------|------|-------------| 
 | <*název sloupce*> | String | Název záhlaví sloupce | 
-| <*Hodnota sloupce*> | Vše | Hodnota ve sloupci | 
+| <*Hodnota sloupce*> | Jakýkoli | Hodnota ve sloupci | 
 |||| 
 
 *Příklad 1*
@@ -1891,7 +1891,7 @@ Modul Logic Apps ověří přístup k aktivační události, kterou chcete volat
 | Hodnota | Type | Popis | 
 |-------|------|-------------| 
 | <*nested-logic-app-name*> | String | Název aplikace logiky, kterou chcete volat | 
-| <*Název aktivační události*> | String | Název pro Spouštěč vnořenou aplikaci logiky, kterou chcete volat | 
+| <*trigger-name*> | String | Název pro Spouštěč vnořenou aplikaci logiky, kterou chcete volat | 
 | <*Azure-subscription-ID*> | String | ID předplatného Azure vnořenou aplikaci logiky |
 | <*Azure-resource-group*> | String | Název skupiny prostředků Azure vnořenou aplikaci logiky |
 | <*nested-logic-app-name*> | String | Název aplikace logiky, kterou chcete volat |
@@ -2624,7 +2624,7 @@ Ale mají vypršení časového limitu žádosti o omezit, tak pro dlouhodobé a
 
 ### <a name="run-in-high-throughput-mode"></a>Spustit v režimu Vysoká propustnost
 
-Pro běh aplikace logiky jeden, počet akcí, které jsou spouštěny každých 5 minut, které má [výchozí limit](../logic-apps/logic-apps-limits-and-config.md#throughput-limits). Chcete-li tento limit zvýšit [maximální](../logic-apps/logic-apps-limits-and-config.md#throughput-limits) je to možné, můžete nastavit `operationOptions` vlastnost `OptimizedForHighThroughput`. Toto nastavení umístí do režimu "Vysoká propustnost" aplikace logiky. 
+Pro definici aplikace logiky jeden má počet akcí, které jsou spouštěny každých 5 minut [výchozí limit](../logic-apps/logic-apps-limits-and-config.md#throughput-limits). Chcete-li tento limit zvýšit [maximální](../logic-apps/logic-apps-limits-and-config.md#throughput-limits) je to možné, můžete nastavit `operationOptions` vlastnost `OptimizedForHighThroughput`. Toto nastavení umístí do režimu "Vysoká propustnost" aplikace logiky. 
 
 > [!NOTE]
 > Režim vysoké propustnosti je ve verzi preview. Můžete také distribuovat zatížení napříč více než jedné aplikace logiky podle potřeby.

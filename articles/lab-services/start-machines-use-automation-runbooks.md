@@ -13,16 +13,16 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: spelluru
 ms.openlocfilehash: 8d3885ba25e479316f97ecbb0681a1680650fc09
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61083614"
 ---
 # <a name="start-virtual-machines-in-a-lab-in-order-by-using-azure-automation-runbooks"></a>Spuštění virtuálních počítačů v testovacím prostředí v pořadí pomocí runbooků Azure Automation
 [Autostart](devtest-lab-set-lab-policy.md#set-autostart) funkce DevTest Labs umožňuje konfigurovat virtuální počítače na automatické spouštění v určenou dobu. Tato funkce nepodporuje počítače ke spuštění v určitém pořadí. Existuje několik scénářů, ve kterém tento typ automation může být užitečné.  Jeden scénář je, kde Jumpbox virtuálního počítače v testovacím prostředí musí být spuštěna nejprve, než ostatní virtuální počítače, jako Jumpbox slouží jako přístupový bod pro ostatní virtuální počítače.  V tomto článku se dozvíte, jak vytvořit účet Azure Automation s Powershellového runbooku, který se spustí skript. Skript používá značky na virtuálních počítačích v testovacím prostředí a umožňuje tak řídit pořadí spouštění bez nutnosti změny skriptu.
 
-## <a name="setup"></a>Nastavení
+## <a name="setup"></a>Instalace
 V tomto příkladu se virtuální počítače v testovacím prostředí musí mít značka **StartupOrder** přidán s odpovídající hodnotou (0,1,2, atd.). Určete všechny počítače, které nemusí být spuštěna jako hodnotu -1.
 
 ## <a name="create-an-azure-automation-account"></a>Vytvoření účtu Azure Automation

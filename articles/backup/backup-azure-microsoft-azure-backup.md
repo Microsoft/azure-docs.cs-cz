@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: kasinh
-ms.openlocfilehash: 26f25a0dcbeef0d5b7456d42caaca392c3ca6a1a
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 43793f1cc105bda7a50371f8fffd4ff787f6e300
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62098858"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204425"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Instalace a upgrade Azure Backup serveru
 > [!div class="op_single_selector"]
@@ -42,19 +42,18 @@ Azure Backup serveru dědí většině funkcí úlohy zálohování z Data Prote
 Prvním krokem k Azure Backup serveru zprovoznění je nastavit systém Windows Server. Váš server může být v Azure nebo místně.
 
 ### <a name="using-a-server-in-azure"></a>Použití serveru v Azure
-Při výběru serveru ke spuštění Azure Backup Server, doporučujeme začít s Galerie imagí Windows serveru 2012 R2 Datacenter, Windows Server 2016 Datacenter nebo Windows Server. 2019 Datacenter. V článku [vytvořit svůj první virtuální počítač s Windows na webu Azure Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), kurz pro zahájení práce s doporučenou virtuálního počítače v Azure, i pokud jste nikdy Azure před. Doporučená minimální požadavky pro virtuální počítač (VM) serveru by měly být: A2 Standard s využitím dvou jader a 3,5 GB paměti RAM.
+Při výběru serveru ke spuštění Azure Backup Server, doporučujeme začít s Galerie imagí Windows serveru 2012 R2 Datacenter, Windows Server 2016 Datacenter nebo Windows Server. 2019 Datacenter. V článku [vytvořit svůj první virtuální počítač s Windows na webu Azure Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), kurz pro zahájení práce s doporučenou virtuálního počítače v Azure, i pokud jste nikdy Azure před. Doporučená minimální požadavky pro virtuální počítač (VM) serveru by měly být: Standard_A4_v2 s čtyři jádra a 8 GB paměti RAM.
 
 Ochrana zatížení pomocí Azure Backup serveru má mnoho detailů. V článku [instalace aplikace DPM jako virtuální počítač Azure](https://technet.microsoft.com/library/jj852163.aspx), pomáhá popisují tyto drobné rozdíly. Před nasazením počítače, přečtěte si tento článek úplně.
 
 ### <a name="using-an-on-premises-server"></a>Pomocí místního serveru
-Pokud nechcete pro spuštění základního serveru v Azure, můžete spustit na serveru na virtuálních počítačů Hyper-V, virtuálních počítačů VMware nebo fyzické hostitele. Doporučená minimální požadavky na hardware serveru jsou dvě jádra a 4 GB paměti RAM. V následující tabulce jsou uvedeny podporované operační systémy:
+Pokud nechcete pro spuštění základního serveru v Azure, můžete spustit na serveru na virtuálních počítačů Hyper-V, virtuálních počítačů VMware nebo fyzické hostitele. Doporučená minimální požadavky na hardware serveru jsou dvě jádra a 8 GB paměti RAM. V následující tabulce jsou uvedeny podporované operační systémy:
 
 | Operační systém | Platforma | Skladová jednotka (SKU) |
 |:--- | --- |:--- |
 | Windows Server 2019 |64bitová verze |Standard, Datacenter, Essentials (MABS V3 a novější) |
 | Windows Server 2016 a nejnovější aktualizace Service packu |64bitová verze |Standard, Datacenter, Essentials (MABS V2 a novější) |
 | Windows Server 2012 R2 a nejnovější aktualizace Service Packu |64bitová verze |Standard, Datacenter, Foundation |
-| Windows Server 2012 a nejnovější aktualizace Service Packu |64bitová verze |Datacenter, Foundation, Standard |
 | Windows Storage Server 2012 R2 a nejnovější aktualizace Service Packu |64bitová verze |Standard, Workgroup |
 | Windows Storage Server 2012 a nejnovější aktualizace Service Packu |64bitová verze |Standard, Workgroup |
 
@@ -142,7 +141,7 @@ Chcete-li upravit nastavení replikace úložiště:
 Po stažení všechny soubory, klikněte na tlačítko **MicrosoftAzureBackupInstaller.exe**. Tím se spustí **Průvodce instalací nástroje Microsoft Azure Backup** k extrakci instalačních souborů do umístění, které jste zadali. Pokračujte v průvodci a klikněte na **extrahovat** tlačítko Zahájit proces extrakce.
 
 > [!WARNING]
-> Minimálně 4GB volného místa je potřeba extrahovat soubory instalačního programu.
+> Minimálně 4 GB volného místa je potřeba extrahovat soubory instalačního programu.
 >
 >
 
@@ -206,7 +205,7 @@ Po dokončení procesu extrakce zaškrtněte políčko ke spuštění čerstvě 
 
     Dalším krokem je konfigurace agenta Microsoft Azure Recovery Services. Jako součást konfigurace budete muset zadejte svoje přihlašovací údaje trezoru se zaregistrovat počítač pro trezor služby recovery services. Bude také zadejte heslo pro šifrování/dešifrování data přenášená mezi Azure a místním. Můžete automaticky generovat přístupové heslo nebo zadat minimální heslo 16 znaků. Dokud agent nakonfigurovaný, pokračujte v průvodci.
 
-    ![Azure Backup Serer PreReq2](./media/backup-azure-microsoft-azure-backup/mars/04.png)
+    ![PreReq2 Azure Backup serveru](./media/backup-azure-microsoft-azure-backup/mars/04.png)
 9. Po úspěšném dokončení registrace Microsoft Azure Backup serveru na instalaci a konfiguraci systému SQL Server a komponenty Azure Backup serveru pokračuje celkové Průvodce instalací. Po dokončení instalace součásti SQL serveru, jsou nainstalované komponenty Azure Backup serveru.
 
     ![Server Azure Backup](./media/backup-azure-microsoft-azure-backup/final-install/venus-installation-screen.png)
@@ -262,7 +261,7 @@ Pokud potřebujete přesunout MABS na nový server, a přitom zachovat úložiš
 9. Obnovení SQL databázi DPMDB
 10. Z příkazového řádku správce na nový disk cd serveru do služby Microsoft Azure Backup nainstalujte umístění a složky bin
 
-    Příklad cesty: C:\windows\system32>cd "c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin\" 
+    Příklad cesty: C:\windows\system32>cd "c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin\"
 
 11. Azure Backup, spusťte DPMSYNC-SYNC
 
@@ -285,13 +284,13 @@ Jakmile budete vědět o stavu možnosti připojení Azure a předplatné Azure,
 | Došlo ke ztrátě připojení > 15 dnů |Zrušení zřízení |Zastaveno |Zastaveno |Body obnovení zastavena a Azure odstranit |Zastaveno |
 
 ### <a name="recovering-from-loss-of-connectivity"></a>Obnovit ze ztráty připojení
-Pokud máte bránu firewall nebo proxy server, který brání přístupu k Azure, potřebujete na seznam povolených následující domény adresy v profilu nebo proxy server brány firewall:
+Pokud máte bránu firewall nebo proxy server, který brání přístupu k Azure, budete muset povolit následující domény adresy v profilu nebo proxy server brány firewall:
 
 * `http://www.msftncsi.com/ncsi.txt`
 * \*.Microsoft.com
 * \*.WindowsAzure.com
 * \*.microsoftonline.com
-* \*.windows.net
+* \*. windows.net
 
 Po připojení k Azure se obnovila na počítač serveru Azure Backup, operace, které lze provést Určuje stav předplatného Azure. Výše uvedené tabulce obsahuje podrobnosti o operacích povolená, když je počítač se "připojeno".
 
@@ -307,7 +306,7 @@ Pomocí následujících postupů můžete upgradovat MABS.
 ### <a name="upgrade-from-mabs-v2-to-v3"></a>Upgrade z MABS V2 na V3
 
 > [!NOTE]
-> 
+>
 > MABS V2 není předpoklady pro instalaci MABS V3. Ale můžete upgradovat na MABS V3 pouze z MABS V2.
 
 Pro upgrade MABS použijte následující kroky:
@@ -317,15 +316,15 @@ Pro upgrade MABS použijte následující kroky:
 2. Upgrade serveru. Kroky jsou podobné [instalace](#install-and-upgrade-azure-backup-server). Pro nastavení SQL, pomocí možnosti pro upgrade na SQL 2017 vaší instanci SQL, nebo použít vlastní instanci systému SQL server 2017 získáte.
 
    > [!NOTE]
-   > 
+   >
    > Neukončovat se upgraduje vaše instance SQL, ukončí se odinstaluje instance generování sestav SQL a proto se nezdaří pokus o upgrade znovu MABS.
 
    Co je důležité si uvědomit:
 
    > [!IMPORTANT]
-   > 
+   >
    >  Jako součást upgradu SQL 2017 jsme zálohovat šifrovací klíče SQL a odinstalaci služby reporting services. Po upgradu SQL server reporting je nainstalován service(14.0.6827.4788) & obnoví šifrovací klíče.
-   > 
+   >
    > Při konfiguraci SQL 2017 ručně, najdete *konfigurace služby SSRS 2017 SQL* části Postup instalace.
 
 3. Aktualizujte agenty ochrany na chráněných serverech.
@@ -333,7 +332,7 @@ Pro upgrade MABS použijte následující kroky:
 5. Můžete začít nyní chrání vaše data. Pokud provádíte upgrade na moderní úložiště záloh, při ochraně, můžete také svazky, které chcete ukládat zálohy v a vyhledejte v části zřízené místo. [Další informace](backup-mabs-add-storage.md).
 
 > [!NOTE]
-> 
+>
 > Pokud upgradujete z MABS V1 na V2, ujistěte se, že váš operační systém Windows Server 2016 nebo Windows Server 2012 R2. Abyste mohli využívat nové funkce, jako je systém System Center 2016 Data Protection Manager moderní úložiště záloh, je nutné nainstalovat V2 zálohování serveru ve Windows serveru 2016. Před upgradováním na nebo instalace zálohování serveru V2, přečtěte si informace o [požadavky na instalaci](https://docs.microsoft.com/system-center/dpm/install-dpm?view=sc-dpm-1807#setup-prerequisites) pro MABS.
 
 ## <a name="troubleshooting"></a>Řešení potíží

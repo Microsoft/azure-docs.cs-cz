@@ -3,17 +3,17 @@ title: Vytváření webhooků v pravidlech v Azure IoT Central | Dokumentace Mic
 description: Vytváření webhooků v Azure IoT Central automatické zaslání oznámení jiné aplikace při vyvolat pravidla.
 author: viv-liu
 ms.author: viviali
-ms.date: 02/20/2019
+ms.date: 06/16/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 22167de6676837c45c48a0bafd19b1ba69578827
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fdeefdc1ec5372d6ac17f0f985ee0c50ce902e56
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60888313"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165329"
 ---
 # <a name="create-webhook-actions-on-rules-in-azure-iot-central"></a>Vytvoření akce webhooku pro pravidla v Azure IoT Central
 
@@ -39,7 +39,7 @@ V tomto příkladu připojíte k RequestBin nechte se informovat pravidla vyvola
 
 Když se pravidlo aktivuje, nyní uvidíte novou žádost o joinkind RequestBin.
 
-## <a name="payload"></a>Datová část
+## <a name="payload"></a>datová část
 
 Když se aktivuje pravidlo požadavku HTTP POST se provede na adresu URL zpětného volání, obsahující datovou část json s měření, zařízení, pravidla a podrobnosti o aplikaci. Pro pravidlo telemetrická data datové části vypadá takto:
 

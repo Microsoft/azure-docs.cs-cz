@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/24/2019
+ms.date: 06/13/2019
 ms.author: ypitsch,kumud
-ms.openlocfilehash: 99650577b17874e61d1cede979d7ef2f4bfd491b
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: ecce41878f7579862bba083f8cecf5db3cbde3e6
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66247286"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67144135"
 ---
 # <a name="microsoft-global-network"></a>Globální síť Microsoftu
 
@@ -33,8 +33,10 @@ Každý den, zákazníci po celém světě připojení a předat triliony požad
  
 Pro vypnutí [osvědčené možného prostředí](https://www.sdxcentral.com/articles/news/azure-tops-aws-gcp-in-cloud-performance-says-thousandeyes/2018/11/) je jednoduché, když používáte Microsoft cloud. Od okamžiku, kdy provozu zákazníka přejde do naší globální sítě prostřednictvím našich strategicky umístěných hraničních uzlů vaše data prochází optimalizované trasy v blízkosti rychlostí světla. Tím se zajistí optimální latence pro zajištění nejlepšího výkonu. Tyto hraničních uzlů, všechny připojen do více než 3500 jedinečný Internet partnerů (partneři) přes tisíc připojení ve více než 145 umístěních, poskytují základ naší strategie propojení. 
  
-Zda připojení z Londýna do Tokio, nebo z Washington DC k Los Angeles, je vyjadřuje výkon sítě a vliv věci, jako je například latenci, zpoždění, ztrátu paketů a propustnost.  V Microsoftu nám dávají přednost a použití přímé propojení na rozdíl od přenosu odkazy, se takto zachová přenosy odpovědí symetrický a pomáhá udržovat segmentů směrování, partnerský vztah stranami a cesty jako krátce a jednoduše co nejblíže. Tento přístup úrovně premium, označovaný také jako [směrování studeného brambory](https://en.wikipedia.org/wiki/Hot-potato_and_cold-potato_routing), zajišťuje, aby zákazníci síťové provoz zůstává v rámci sítě Microsoftu po dobu předtím, než jsme předat.  
- 
+Zda připojení z Londýna do Tokio, nebo z Washington DC k Los Angeles, je vyjadřuje výkon sítě a vliv věci, jako je například latenci, zpoždění, ztrátu paketů a propustnost.  V Microsoftu nám dávají přednost a použití přímé propojení na rozdíl od přenosu odkazy, se takto zachová přenosy odpovědí symetrický a pomáhá udržovat segmentů směrování, partnerský vztah stranami a cesty jako krátce a jednoduše co nejblíže. 
+
+Například pokud uživatel v Londýně se pokusí získat přístup ke službě v Brně, potom zadá přenosy z Internetu, jeden z našich hrany v Londýně, prochází přes Microsoft WAN prostřednictvím Francie, naše Trans Arábie cesty mezi Evropy a Indie a Japonska je hostitelem služby. Symetrický se přenosy odpovědí. To se někdy označuje jako [studeného brambory směrování](https://en.wikipedia.org/wiki/Hot-potato_and_cold-potato_routing) což znamená, že provoz zůstává v Microsoft sítě, dokud než je možné předat ji vypnout.  
+  
 Ano, to znamená všechny přenosy při použití služby Microsoft? Ano, veškerý provoz mezi datového centra, v rámci Microsoft Azure nebo mezi službami Microsoftu, jako jsou virtuální počítače, Office 365, XBox, databáze SQL, Storage, a virtuální sítě jsou směrovány do naší globální sítě a nikdy přes veřejný Internet, k zajištění optimální výkon a integritu.  
  
 Obrovské investice do kapacity fiber rozsah a rozmanitost napříč metro, pozemního a podmořské cesty jsou zásadní pro nás zajistit konzistentní a vysoké úrovně služeb během technologickým extrémní nárůst našich cloudových a online služeb. Nedávno přidanými funkcemi naší globální sítě jsou naše [MAREA](https://www.submarinecablemap.com/#/submarine-cable/marea) Podmořský kabel, v oboru první otevřít řádku systému (OLS) přes subsea mezi Bilbao, Španělsko a Virginie Beach, Virginia, USA, jakož i [AEC](https://www.submarinecablemap.com/#/submarine-cable/aeconnect-1)mezi New York, USA a Dublin, Irsko a [nové napříč Tichomoří (NCP)](https://www.submarinecablemap.com/#/submarine-cable/new-cross-pacific-ncp-cable-system) až Tokio, Japonsko, Portland, Oregon, USA. 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/19/2019
 ms.author: banders
 ms.openlocfilehash: aee51793c66ae57f740300797b8fdc1799e685cd
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65604034"
 ---
 # <a name="understand-terms-on-your-microsoft-customer-agreement-invoice"></a>Vysvětlení podmínek na faktuře smlouvy zákazníka se společností Microsoft
@@ -59,14 +59,14 @@ V následujících částech jsou důležité termíny, které se zobrazují na 
 
 | Termín | Popis |
 | --- | --- |
-| Poplatky|Celkový počet Microsoft poplatky za tento fakturační profil od poslední fakturačního období |
+| Poplatky za|Celkový počet Microsoft poplatky za tento fakturační profil od poslední fakturačního období |
 | Závěrečné titulky |Kredity, které jste dostali od vrátí |
 | Kredity Azure použít | Kredity Azure, která se automaticky použijí Azure účtuje každého fakturačního období |
 | Mezisoučet |Dlužná částka před zdaněním |
-| Daň |Typ a velikost daň, která platíte, v závislosti na zemi nebo oblast, váš fakturační profil. Pokud nemusíte zaplatit daň, neuvidíte daně na vaší faktuře. |
+| Daně |Typ a velikost daň, která platíte, v závislosti na zemi nebo oblast, váš fakturační profil. Pokud nemusíte zaplatit daň, neuvidíte daně na vaší faktuře. |
 | Odhadované celkové úspory |Odhadované celkové množství, které jste si uložili z efektivní slevy. Pokud je k dispozici, efektivní zvýhodněné sazby jsou uvedeny pod položky řádku nákupní podrobnosti faktury z oddílu. |
 
-### <a name="invoice-sections"></a>Oddíly faktury
+### <a name="invoice-sections"></a>Části faktury
 
 U každé části faktury za fakturační profil zobrazí se vám poplatky, výše kreditů Azure použít, daň a Celková dlužná částka.
 
@@ -84,13 +84,13 @@ Celková dlužná částka pro každou řadu service se vypočte tak, že *kredi
 
 | Termín |Popis |
 | --- | --- |
-| Jednotková cena | Efektivní Jednotková cena služby (v cenách měny), která se používá pro míru využití. Toto je jedinečné pro produkt, řady služeb, měření a nabídky. |
+| Cena za jednotku | Efektivní Jednotková cena služby (v cenách měny), která se používá pro míru využití. Toto je jedinečné pro produkt, řady služeb, měření a nabídky. |
 | Množství | Množství zakoupených nebo spotřebované během fakturačního období |
 | Poplatky za/kredity | NET výše poplatků po použití kredity/vrácení peněz |
 | Azure Credit | Množství použít na poplatky za/kredity kredity Azure|
 | Sazba daně | Daň za procenta podle země/oblasti |
 | Částka daně | Částka daně použít k nákupu podle sazba daně |
-| celkem | Celková dlužná částka za nákup |
+| Celkem | Celková dlužná částka za nákup |
 
 ### <a name="how-to-pay"></a>Způsoby platby
 

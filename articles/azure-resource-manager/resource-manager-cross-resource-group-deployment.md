@@ -1,24 +1,17 @@
 ---
 title: Nasazujte prostředky Azure na několika předplatného a skupiny prostředků. | Dokumentace Microsoftu
 description: Ukazuje, jak cílit na více než jeden Azure předplatného a skupiny prostředků během nasazování.
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: ''
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 06/02/2018
 ms.author: tomfitz
-ms.openlocfilehash: 3641833f0b55f20066302de350bfab17adfade0e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 33b0a998206b68f1807f5bfa3c3f39164798842c
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66128529"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205470"
 ---
 # <a name="deploy-azure-resources-to-more-than-one-subscription-or-resource-group"></a>Nasazujte prostředky Azure k více než jedno předplatné nebo skupinu prostředků
 

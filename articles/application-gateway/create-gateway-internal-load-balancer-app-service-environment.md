@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 11/06/2018
 ms.author: genli
 ms.openlocfilehash: baed2b23a321c53a614303d3085fbb3a4bf6ad0b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60831091"
 ---
 # <a name="back-end-server-certificate-is-not-whitelisted-for-an-application-gateway-using-an-internal-load-balancer-with-an-app-service-environment"></a>Certifikát serveru back-end není povolený pro službu application gateway pomocí interního nástroje Load Balancer pomocí služby App Service Environment
@@ -31,14 +31,14 @@ Když vytvoříte aplikační brány pomocí ILB ASE v back-endu, back-end serve
 
 **Konfigurace aplikační brány:**
 
-- **Naslouchací proces:** Pro více lokalit
+- **Naslouchací proces:** Multi-Site
 - **Port:** 443
 - **Hostname:** test.appgwtestase.com
 - **Certifikát SSL:** CN=test.appgwtestase.com
 - **Back-Endového fondu:** IP adresa nebo plně kvalifikovaný název domény
-- **IP adresa:**: 10.1.5.11
+- **IP adresa:** : 10.1.5.11
 - **Nastavení protokolu HTTP:** HTTPS
-- **Port:**: 443
+- **Port:** : 443
 - **Vlastní test paměti:** Název hostitele – test.appgwtestase.com
 - **Certifikát pro ověřování:** .cer test.appgwtestase.com
 - **Stav back-endu:** Není v pořádku – certifikát back-end serveru není na seznamu povolených pomocí služby Application Gateway.
@@ -70,6 +70,6 @@ Při použití plně kvalifikovaný název domény (FQDN) pro přístup k ILB ba
 
 Aby se snížila režie, můžete nahrát certifikát ILB v nastavení protokolu HTTP, aby cesta testu paměti fungovat. (Tento krok je jen pro přidávání na seznam povolených. To se nepoužije pro komunikaci protokolem SSL.) Můžete načíst certifikát ILB použitím ILB s jeho IP adresa v prohlížeči na adrese HTTPS a export certifikátu protokolu SSL v Base-64 kódování formátu CER a nahrává se certifikát na příslušné nastavení HTTP.
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktování podpory
+## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktujte podporu
 
 Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.

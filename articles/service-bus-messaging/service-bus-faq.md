@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: 8461764a3f1f682ffb97420a4efdf2803f518872
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64707134"
 ---
 # <a name="service-bus-faq"></a>Nejčastější dotazy k Service Bus
@@ -51,7 +51,7 @@ Následující protokoly s Azure Service Bus můžete použít k odesílání a 
 
 V následující tabulce pro odchozí porty, které je potřeba otevřít na použití těchto protokolů ke komunikaci s Azure Event Hubs. 
 
-| Protocol (Protokol) | Porty | Podrobnosti | 
+| Protocol | Porty | Podrobnosti | 
 | -------- | ----- | ------- | 
 | AMQP | 5671 a 5672 | Zobrazit [Průvodce protokolem AMQP](service-bus-amqp-protocol-guide.md) | 
 | SBMP | 9350-9354 | Zobrazit [režim připojení](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet) |

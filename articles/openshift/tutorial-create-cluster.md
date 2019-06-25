@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.topic: tutorial
 ms.service: openshift
 ms.date: 05/14/2019
-ms.openlocfilehash: 651236c25ed912ebd7399d351677a67e3826278c
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 9094fa441ff5ffdd5f579fd072ffaa303961314d
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306184"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67304274"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-cluster"></a>Kurz: Vytvoření clusteru Azure Red Hat OpenShift
 
@@ -106,6 +106,10 @@ az group create --name $CLUSTER_NAME --location $LOCATION
 ### <a name="optional-connect-the-clusters-virtual-network-to-an-existing-virtual-network"></a>Volitelné: Propojení virtuální sítě clusteru pro existující virtuální sítě
 
 Pokud nepotřebujete připojení clusteru, které vytvoříte na existující virtuální síť přes partnerský vztah virtuální sítě (VNET), tento krok přeskočte.
+
+Pokud partnerský vztah k síti mimo výchozí předplatné, pak v tomto předplatném, musíte také zaregistrovat poskytovatele Microsoft.ContainerService. Chcete-li to provést, spusťte následující příkaz v tomto předplatném. Jinak Pokud se partnerský vztah virtuální sítě je umístěn ve stejném předplatném, můžete přeskočit krok registrace. 
+
+`az provider register -n Microsoft.ContainerService --wait`
 
 Nejprve získejte identifikátor existující virtuální síť. Identifikátor bude ve tvaru: `/subscriptions/{subscription id}/resourceGroups/{resource group of VNET}/providers/Microsoft.Network/virtualNetworks/{VNET name}`.
 

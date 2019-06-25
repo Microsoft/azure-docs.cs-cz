@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/23/2019
+ms.date: 06/14/2019
 ms.author: magoedte
-ms.openlocfilehash: 1809cc50f3ad3c285e0b69bc6e383a2c7c398238
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 0c128aaf8102b3072b6a63c80ea860ceefbf5124
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65139248"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67146293"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Správu a údržbu agenta Log Analytics pro Windows a Linux
 
@@ -300,4 +300,6 @@ Proveďte následující kroky konfigurace agenta Log Analytics pro Linux pro hl
 
 ## <a name="next-steps"></a>Další postup
 
-Kontrola [řešení potíží s agenta pro Linux](agent-linux-troubleshoot.md) Pokud narazíte na problémy při instalaci a správě agenta.
+- Kontrola [řešení potíží s agenta pro Linux](agent-linux-troubleshoot.md) Pokud narazíte na problémy při instalaci a správě agenta pro Linux.
+
+- Kontrola [řešení potíží s agentem Windows](agent-windows-troubleshoot.md) Pokud narazíte na problémy při instalaci a správě agenta Windows.

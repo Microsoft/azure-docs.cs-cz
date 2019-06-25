@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
 ms.openlocfilehash: 37e556ca458a5b0a171664e089d39cfb448d5f96
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65800120"
 ---
 # <a name="customize-a-person-model-with-the-video-indexer-website"></a>Přizpůsobení modelu osoba s webem Video Indexer
@@ -91,7 +91,7 @@ Můžete odstranit všechny osoby modelu, který jste vytvořili ve vašem účt
 
     ![Odstranit osoby](./media/customize-face-model/delete-person.png)
     
-    Automaticky otevírané okno se zobrazí a oznámit, že tato akce odstraní osoba model a všechny osoby a soubory, které obsahuje. Tato akce je nevratná 
+    Automaticky otevírané okno se zobrazí a oznámit, že tato akce odstraní osoba model a všechny osoby a soubory, které obsahuje. Tuto akci nejde vrátit zpět. 
 
     ![Odstranit osoby](./media/customize-face-model/delete-person2.png)
 1. Pokud jste si jistí, klikněte na odstranit znovu.

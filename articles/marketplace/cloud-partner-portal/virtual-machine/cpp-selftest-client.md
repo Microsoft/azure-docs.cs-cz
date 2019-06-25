@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: pabutler
 ms.openlocfilehash: 117249feea04381b34f8fc1d95f77c2c1a567dba
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64938726"
 ---
 # <a name="create-a-self-test-client-to-pre-validate-an-azure-virtual-machine-image"></a>Vytvoření klienta sami otestovat kód předběžně ověřit image virtuálních počítačů Azure
@@ -264,7 +264,7 @@ Následující postup použijte k registraci klientské aplikace.
     ![Konfigurace víceklientské aplikace](./media/stclient-select-api.png)
 
 12. V části **přístup přes rozhraní API přidat**, vyberte **vyberte oprávnění**.
-13. Vyberte **přístup "Windows Azure Service Management API"**.
+13. Vyberte **přístup "Windows Azure Service Management API"** .
 
     ![Povolit přístup přes rozhraní API pro aplikaci](./media/stclient-enable-api-access.png)
 

@@ -9,14 +9,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 06/18/2019
 ms.author: diberry
-ms.openlocfilehash: f922f9c64f182377365192543305b48659c518da
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 7e1e61d96b066c395668ce1dd9cdba4cb4ecb2be
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417974"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204103"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding – nejčastější dotazy (FAQ)
 
@@ -189,11 +189,11 @@ Naleznete v tématu [vytváření obsahu a dotaz předpovědi klíče koncového
 
 ### <a name="i-got-an-error-about-being-out-of-quota-how-do-i-fix-it"></a>Zobrazila se chyba o překročení kvóty. Jak ho mám opravit? 
 
-Zobrazit, [k vyřešení chyby limit kvóty, pokud klíč překročí využití cenové úrovně](luis-how-to-azure-subscription.md##how-to-fix-out-of-quota-errors-when-the-key-exceeds-pricing-tier-usage) Další informace.
+Zobrazit, [stavový kód opravit HTTP 403 a 429](luis-how-to-azure-subscription.md#fix-http-status-code-403-and-429) Další informace.
 
 ### <a name="i-need-to-handle-more-endpoint-queries-how-do-i-do-that"></a>Potřebuji další koncový bod dotazy zpracovávají. Jak to mohu provést? 
 
-Zobrazit, [k vyřešení chyby limit kvóty, pokud klíč překročí využití cenové úrovně](luis-how-to-azure-subscription.md##how-to-fix-out-of-quota-errors-when-the-key-exceeds-pricing-tier-usage) Další informace.
+Zobrazit, [stavový kód opravit HTTP 403 a 429](luis-how-to-azure-subscription.md#fix-http-status-code-403-and-429) Další informace.
 
 
 

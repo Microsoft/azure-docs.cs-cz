@@ -1,5 +1,5 @@
 ---
-title: Co je privátní DNS Azure?
+title: Co je Privátní DNS v Azure?
 description: Přehled privátní DNS, který hostuje službu v Microsoft Azure.
 services: dns
 author: vhorne
@@ -7,14 +7,14 @@ ms.service: dns
 ms.topic: overview
 ms.date: 6/12/2019
 ms.author: victorh
-ms.openlocfilehash: a8548b4972d5853f09630ae3e9ded05ed6fee32b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7012bbe98e41a3eb273b26e7e4ade705a6eaf8e1
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67076392"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147568"
 ---
-# <a name="what-is-azure-private-dns"></a>Co je privátní DNS Azure?
+# <a name="what-is-azure-private-dns"></a>Co je Privátní DNS v Azure?
 
 > [!IMPORTANT]
 > Azure Private DNS je aktuálně ve verzi public preview.
@@ -64,21 +64,11 @@ Azure DNS poskytuje následující možnosti:
 
 Azure DNS má následující omezení:
 
-* Jednu privátní zónu je povolen pouze jeden registrační virtuální síť.
-* Až 10 řešení virtuálních sítí jsou povoleny jednu privátní zónu. Toto omezení se odeberou, když tato funkce je obecně dostupná.
-* Konkrétnímu virtuálnímu síťovému může být propojený jenom jednu privátní zónu jako registrační virtuální síť.
-* Konkrétnímu virtuálnímu síťovému nesmí být propojení až 10 privátních zón jako virtuální síť pro překlad. Toto omezení se odeberou, když tato funkce je obecně dostupná.
-* Pokud chcete zadat registrační virtuální síť, nejsou záznamy DNS pro virtuální počítače z této virtuální sítě, které jsou registrovány k privátní zóně zobrazitelné nebo získat z prostředí Azure Powershell a rozhraní API pro Azure CLI. Záznamy virtuálního počítače jsou ve skutečnosti zaregistrované a vyřeší úspěšně.
-* Reverzní DNS funguje pouze pro privátní adresní prostor IP v registrační virtuální síť.
-* Reverzní DNS pro privátní IP adresa, která není registrována v privátní zóny (například privátní IP adresy pro virtuální počítač ve virtuální síti, který se propojí jako virtuální síť pro překlad pro privátní zóny) vrátí *internal.cloudapp.net* jako příponu DNS. Tato přípona však není možné přeložit.
-* Virtuální síť musí být úplně prázdná poprvé, můžete ho propojit s privátní zóně jako virtuální síť registraci nebo řešení. Však může být virtuální síť pak neprázdný pro budoucí propojení jako virtuální síť registraci nebo řešení, k jiné privátní zóny.
-* Podmíněné předávání v současné době nepodporuje (například pro povolení rozlišení mezi sítěmi Azure a místního prostředí). Informace o tom, jak umožňuje zákazníkům realizovat tento scénář prostřednictvím jiné mechanismy, naleznete v tématu [překlad názvů pro virtuální počítače a instance rolí](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
+* Konkrétnímu virtuálnímu síťovému lze propojit pouze jednu privátní zónu, jako kdyby je povolená Automatická registrace záznamů DNS virtuálního počítače. Můžete však propojit s několika virtuálními sítěmi jednu zónu DNS.
 * Reverzní DNS funguje pouze pro privátní adresní prostor IP v propojené virtuální sítě
 * Reverzních záznamů DNS pro privátní IP adresu pro virtuální síť propojenou vrátí "internal.cloudapp.net" jako výchozí přípona pro virtuální počítač. Pro virtuální sítě, které jsou propojeny s privátní zónou s povolená Automatická registrace, reverzní DNS pro privátní IP adresa vrátí 2 plně kvalifikované názvy domén, s výchozí příponou *internal.cloudapp.net* a druhou s příponou privátní zónu.
-* Podmíněné předávání se nepodporuje. Například, aby bylo možné rozlišení mezi Azure a místní sítí. Zjistěte, jak můžete zajistit pro tento scénář s využitím jiné mechanismy. Zobrazit [překlad názvů pro virtuální počítače a instance rolí](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)
+* Podmíněné předávání se v tuto chvíli nepodporuje nativně. Aby bylo možné rozlišení mezi Azure a místní sítí. Zobrazit [překlad názvů pro virtuální počítače a instance rolí](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)
  
-
-
 ## <a name="pricing"></a>Ceny
 
 Informace o cenách najdete v tématu [ceny služby Azure DNS](https://azure.microsoft.com/pricing/details/dns/).

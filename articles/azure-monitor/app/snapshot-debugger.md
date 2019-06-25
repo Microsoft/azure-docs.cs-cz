@@ -13,10 +13,10 @@ ms.reviewer: brahmnes
 ms.date: 03/07/2019
 ms.author: mbullwin
 ms.openlocfilehash: 4157285e8af67acd1dc3627bebc12076d7fe072c
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65595558"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Ladicí snímky pro výjimky v aplikacích .NET
@@ -44,7 +44,7 @@ Podporují se následující prostředí:
 
 Pokud jste povolili ladicí program snímků, ale nezobrazují snímky, zkontrolujte naše [Průvodce odstraňováním potíží](snapshot-debugger-troubleshoot.md?toc=/azure/azure-monitor/toc.json).
 
-## <a name="grant-permissions"></a>Udělit oprávnění
+## <a name="grant-permissions"></a>Udělení oprávnění
 
 Přístup k snímků je chráněn řízení přístupu na základě role (RBAC). Ke kontrole snímku, je musíte nejprve přidat do potřebné role vlastník předplatného.
 
@@ -54,7 +54,7 @@ Přístup k snímků je chráněn řízení přístupu na základě role (RBAC).
 Přiřaďte vlastníky těchto předplatných `Application Insights Snapshot Debugger` role pro uživatele, kteří budou kontrolovat snímky. Tato role může být přiřazena na jednotlivé uživatele nebo skupiny podle vlastníků předplatných pro cílový prostředek Application Insights nebo jeho skupina prostředků nebo předplatného.
 
 1. Přejděte do prostředku Application Insights na webu Azure Portal.
-1. Klikněte na tlačítko **řízení přístupu (IAM)**.
+1. Klikněte na tlačítko **řízení přístupu (IAM)** .
 1. Klikněte na tlačítko **+ přidat přiřazení role** tlačítko.
 1. Vyberte **Application Insights Snapshot debuggeru** z **role** rozevíracího seznamu.
 1. Vyhledejte a zadejte název pro uživatele přidat.

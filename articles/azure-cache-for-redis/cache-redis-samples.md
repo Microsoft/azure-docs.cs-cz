@@ -12,14 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache
 ms.devlang: multiple
 ms.topic: article
-origin.date: 01/23/2017
-ms.date: 02/27/2019
-ms.author: v-junlch
+ms.date: 01/23/2017
+ms.author: yegu
 ms.openlocfilehash: 73c771ab18d1cc2944298818c1cab90eb2f277ff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60829799"
 ---
 # <a name="azure-cache-for-redis-samples"></a>Ukázky služby Azure Cache for Redis
@@ -32,14 +31,14 @@ Příklady v tomto oddíle ukazují základní informace o připojení k Azure p
 
 Tato ukázka předvádí, jak:
 
-- Používat různé možnosti připojení
-- Čtení a zápis objektů do a z mezipaměti pomocí synchronní a asynchronní operace
-- Příkazy Redis MGET a MSET vracet hodnotu zadaného klíče
-- Provedení transakčního operací Redis
-- Práce s využitím Redisu seznamy a seřazené sady
-- Store pomocí JsonConvert serializátory objektů .NET
-- Implementace označování pomocí sad Redis
-- Práce s clusterem Redis
+* Používat různé možnosti připojení
+* Čtení a zápis objektů do a z mezipaměti pomocí synchronní a asynchronní operace
+* Příkazy Redis MGET a MSET vracet hodnotu zadaného klíče
+* Provedení transakčního operací Redis
+* Práce s využitím Redisu seznamy a seřazené sady
+* Store pomocí JsonConvert serializátory objektů .NET
+* Implementace označování pomocí sad Redis
+* Práce s clusterem Redis
 
 Další informace najdete v tématu [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) najdete v dokumentaci na Githubu a další scénáře využití [StackExchange.Redis.Tests](https://github.com/StackExchange/StackExchange.Redis/tree/master/tests) testování částí.
 
@@ -53,8 +52,8 @@ Další informace najdete v tématu [StackExchange.Redis](https://github.com/Sta
 ## <a name="azure-cache-for-redis-customer-query-sample"></a>Mezipaměť Azure Redis zákazníka dotazu ukázku
 Tato ukázka předvádí, porovná výkon mezi přístup k datům z mezipaměti a přístup k datům z trvalého úložiště. Tato ukázka má dva projekty.
 
-- [Ukázka, jak lze mezipaměti Azure Redis vylepšit výkon ukládání dat do mezipaměti](https://github.com/rustd/RedisSamples/tree/master/RedisCacheCustomerQuerySample)
-- [Počáteční hodnota databáze a mezipaměti pro tuto ukázku](https://github.com/rustd/RedisSamples/tree/master/SeedCacheForCustomerQuerySample)
+* [Ukázka, jak lze mezipaměti Azure Redis vylepšit výkon ukládání dat do mezipaměti](https://github.com/rustd/RedisSamples/tree/master/RedisCacheCustomerQuerySample)
+* [Počáteční hodnota databáze a mezipaměti pro tuto ukázku](https://github.com/rustd/RedisSamples/tree/master/SeedCacheForCustomerQuerySample)
 
 ## <a name="aspnet-session-state-and-output-caching"></a>Stavu relace ASP.NET a ukládání výstupu do mezipaměti
 [Použití mezipaměti Azure Redis k uložení SessionState technologie ASP.NET a OutputCache](https://github.com/rustd/RedisSamples/tree/master/SessionState_OutputCaching) Ukázka předvádí, jak můžete používat k ukládání relaci ASP.NET a výstupní mezipaměti pro Redis pomocí zprostředkovatele SessionState a OutputCache mezipaměti Azure Redis .
@@ -70,6 +69,4 @@ Tato ukázka předvádí, porovná výkon mezi přístup k datům z mezipaměti 
 
 ## <a name="bandwidth-monitor"></a>Monitorování šířky pásma
 [Šířky pásma monitorování](https://github.com/JonCole/SampleCode/tree/master/BandWidthMonitor) ukázky vám umožní monitorovat šířku pásma použít na straně klienta. K měření šířky pásma, spusťte ukázku v mezipaměti klientského počítače, provádět volání do mezipaměti a sledujte šířky pásma nahlášený ukázky monitorování šířky pásma.
-
-<!-- Update_Description: update metedata properties -->
 

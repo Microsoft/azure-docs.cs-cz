@@ -2,7 +2,7 @@
 title: Jak vyžadovat vícefaktorové ověřování (MFA) pro přístup z nedůvěryhodných sítích s podmíněným přístupem Azure Active Directory (Azure AD) | Dokumentace Microsoftu
 description: Zjistěte, jak nakonfigurovat zásady podmíněného přístupu v Azure Active Directory (Azure AD) k pro pokusy o přístup z nedůvěryhodných sítích.
 services: active-directory
-keywords: conditional access to apps, conditional access with Azure AD, secure access to company resources, conditional access policies
+keywords: Podmíněný přístup k aplikacím, podmíněný přístup s Azure AD, zabezpečený přístup k prostředkům společnosti, zásady podmíněného přístupu
 documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: daveba
@@ -18,12 +18,12 @@ ms.date: 12/10/2018
 ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ebf8cb1c3b49975356389c7c9444aff319326f74
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: fa9760c44df13c33687c279478935600325dd085
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "60301100"
+ms.locfileid: "67111868"
 ---
 # <a name="how-to-require-mfa-for-access-from-untrusted-networks-with-conditional-access"></a>Postup: Vyžadovat vícefaktorové ověřování pro přístup z nedůvěryhodných sítích s podmíněným přístupem   
 
@@ -35,7 +35,7 @@ Tento článek obsahuje informace, na kterých je nutné nakonfigurovat zásady 
 
 Tento článek předpokládá, že máte zkušenosti s: 
 
-- [Základní koncepty](overview.md) podmíněného přístupu Azure AD 
+- [Základní koncepty](overview.md) z podmíněného přístupu Azure AD 
 - [Osvědčené postupy](best-practices.md) ke konfiguraci zásad podmíněného přístupu na webu Azure Portal
 
 
@@ -73,11 +73,11 @@ Namísto pokusu o definovat, jaké jsou všechna místa, které nejsou důvěryh
 
 - Zahrnout všechny umístění 
 
-    ![podmíněný přístup](./media/untrusted-networks/02.png)
+    ![Podmíněný přístup](./media/untrusted-networks/02.png)
 
 - Vyloučit všechny důvěryhodné umístění 
 
-    ![podmíněný přístup](./media/untrusted-networks/01.png)
+    ![Podmíněný přístup](./media/untrusted-networks/01.png)
 
 
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/19/2018
 ms.author: aljo
-ms.openlocfilehash: d5aa09f3ff899766e6eb6d1784e4417f7b48eac0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 456eac4a8d3a6cb8cbaca13ad4e4f3b2ae0309bc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66110262"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67125601"
 ---
 # <a name="service-fabric-networking-patterns"></a>Service Fabric sítě vzory
 Cluster Azure Service Fabric můžete integrovat další funkce Azure sítě. V tomto článku ukážeme, jak vytvářet clustery, které používají následující funkce:
@@ -268,7 +268,7 @@ Další příklad naleznete v tématu [, který není specifický pro Service Fa
                     ],
     ```
 
-7. V `Microsoft.ServiceFabric/clusters` prostředků, změna `managementEndpoint` na plně kvalifikovaný název domény DNS statické IP adresy. Pokud používáte zabezpečeného clusteru, ujistěte se, že změníte *http://* k *https://*. (Všimněte si, že tento krok platí jenom pro clustery Service Fabric. Pokud použijete škálovací sady virtuálních počítačů, přeskočte tento krok.)
+7. V `Microsoft.ServiceFabric/clusters` prostředků, změna `managementEndpoint` na plně kvalifikovaný název domény DNS statické IP adresy. Pokud používáte zabezpečeného clusteru, ujistěte se, že změníte *http://* k *https://* . (Všimněte si, že tento krok platí jenom pro clustery Service Fabric. Pokud použijete škálovací sady virtuálních počítačů, přeskočte tento krok.)
 
     ```json
                     "fabricSettings": [],
@@ -370,7 +370,7 @@ Tento scénář nahradí externím vyrovnáváním zatížení v šabloně Servi
                     ],
     ```
 
-6. V `Microsoft.ServiceFabric/clusters` prostředků, změna `managementEndpoint` tak, aby odkazoval na adresu interního nástroje pro vyrovnávání. Pokud používáte zabezpečeného clusteru, ujistěte se, že změníte *http://* k *https://*. (Všimněte si, že tento krok platí jenom pro clustery Service Fabric. Pokud použijete škálovací sady virtuálních počítačů, přeskočte tento krok.)
+6. V `Microsoft.ServiceFabric/clusters` prostředků, změna `managementEndpoint` tak, aby odkazoval na adresu interního nástroje pro vyrovnávání. Pokud používáte zabezpečeného clusteru, ujistěte se, že změníte *http://* k *https://* . (Všimněte si, že tento krok platí jenom pro clustery Service Fabric. Pokud použijete škálovací sady virtuálních počítačů, přeskočte tento krok.)
 
     ```json
                     "fabricSettings": [],
@@ -606,10 +606,7 @@ V clusteru dvě typ uzlu jeden typ uzlu je v externím vyrovnáváním zatížen
 Po nasazení zobrazí se dvě služby Vyrovnávání zatížení ve skupině prostředků. Pokud přejdete nástroje pro vyrovnávání zatížení, můžete zobrazit veřejné IP adresy a správa koncových bodů (porty 19000 a 19080) přiřazenou veřejnou IP adresu. Můžete zobrazit také statické interní IP adresu a aplikace koncový bod (port 80) přiřazená interní služby load balancer. Oba nástroje pro vyrovnávání zatížení používat stejný fond back-end škálovací sady virtuálního počítače.
 
 ## <a name="next-steps"></a>Další postup
-[Vytvoření clusteru](service-fabric-cluster-creation-via-arm.md) ternalLB.json
-    ```
+[Vytvoření clusteru](service-fabric-cluster-creation-via-arm.md)
 
 Po nasazení zobrazí se dvě služby Vyrovnávání zatížení ve skupině prostředků. Pokud přejdete nástroje pro vyrovnávání zatížení, můžete zobrazit veřejné IP adresy a správa koncových bodů (porty 19000 a 19080) přiřazenou veřejnou IP adresu. Můžete zobrazit také statické interní IP adresu a aplikace koncový bod (port 80) přiřazená interní služby load balancer. Oba nástroje pro vyrovnávání zatížení používat stejný fond back-end škálovací sady virtuálního počítače.
 
-## <a name="next-steps"></a>Další postup
-[Vytvoření clusteru](service-fabric-cluster-creation-via-arm.md)

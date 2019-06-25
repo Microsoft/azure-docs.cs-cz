@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: clemensv
 ms.openlocfilehash: 2d6836b2bf667e4170e67a95dc1daad72a769eb9
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66150394"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67175241"
 ---
 ### <a name="create-a-console-application"></a>Vytvoření konzolové aplikace
 
-V sadě Visual Studio vytvořte nový projekt **Konzolová aplikace (.NET Framework)**.
+V sadě Visual Studio vytvořte nový projekt **Konzolová aplikace (.NET Framework)** .
 
 ### <a name="add-the-relay-nuget-package"></a>Přidání balíčku NuGet služby Relay
 

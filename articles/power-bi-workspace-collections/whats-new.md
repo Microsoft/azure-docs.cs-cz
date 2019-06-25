@@ -9,10 +9,10 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.openlocfilehash: 9ef9416abb4aaf0927d1e072286ef83a4d8c39cb
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64724018"
 ---
 # <a name="whats-new-in-power-bi-workspace-collections"></a>Novinky v kolekcích pracovních prostorů Power BI
@@ -53,13 +53,13 @@ Aktualizace **kolekce pracovních prostorů Power BI** vydávají v pravidelnýc
 
 * [Pokročilé analýzy s Power BI pracovního prostoru kolekce a jazyka R](https://powerbi.microsoft.com/blog/r-in-pbie/)
 
-## <a name="august-31-2016"></a>31. srpna 2016
+## <a name="august-31-2016"></a>31\. srpna 2016
 Součástí této verze:
 
 * Všechny nové sady JavaScript SDK, který podporuje [rozšířené filtrování a navigace na stránce](interact-with-reports.md).
 * Kolekce pracovních prostorů Power BI jsou nyní podporovány v datovém centru Kanada – střed. Zkontrolujte [datacenter stav](https://azure.microsoft.com/status/).
 
-## <a name="july-11-2016"></a>11. července 2016
+## <a name="july-11-2016"></a>11\. července 2016
 Součástí této verze:
 
 * **Skvělé zprávy!** Služba kolekce pracovních prostorů Power BI už není ve verzi preview – jeho nyní GA (obecně dostupné).  

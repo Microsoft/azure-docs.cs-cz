@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/27/2019
 ms.author: mlottner
 ms.openlocfilehash: 40963e0d81ccff21cc625b799833b996547a13b6
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65198321"
 ---
 # <a name="pricing-and-associated-costs"></a>Ceny a související náklady
@@ -62,7 +62,7 @@ Chcete-li změnit nastavení:
 
 Následující tabulka obsahuje souhrn související náklady a důsledky jednotlivých možností.
 
-|     | Využití | Poznámka |
+|     | Využití | Komentář |
 | --- | --- | --- |
 | **Využití kvóty služby IoT Hub** |  |
 | [Export zařízení](https://docs.microsoft.com/azure/iot-hub/iot-hub-bulk-identity-mgmt#export-devices) úlohy (dvojčete export) | Jednou za den | Zakázat _dvojčete kolekci metadat_ |
@@ -73,7 +73,7 @@ Následující tabulka obsahuje souhrn související náklady a důsledky jednot
 >[!Important]
 > Vyjádří svůj nesouhlas se závažné důsledky pro dostupných funkcí zabezpečení.
   
-| Odhlásit | Důsledky |
+| Odhlásit se | Důsledky |
 | --- | --- |
 | _Kolekce metadat dvojčete_ | Zakázat [vlastní upozornění](quickstart-create-custom-alerts.md) |
 | | Zakázat manifestu doporučení IoT Edge |

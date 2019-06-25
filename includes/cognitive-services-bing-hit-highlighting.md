@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: nitinme
 ms.openlocfilehash: fccc036a5e0422508f7ebc3370a4b5faa5176dc2
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66124777"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67175335"
 ---
 Bingu podporuje zvýraznění shod, které označí termíny dotazu (nebo jiné podmínky této Bingu najde relevantní) v zobrazení řetězce některé části odpovědi. Například na webové stránce společnosti `name`, `displayUrl`, a `snippet` pole označit termíny dotazu.
 

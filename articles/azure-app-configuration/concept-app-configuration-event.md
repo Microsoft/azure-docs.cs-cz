@@ -8,10 +8,10 @@ ms.date: 05/30/2019
 ms.topic: article
 ms.service: azure-app-configuration
 ms.openlocfilehash: 601124aef37d2b285db71130f5c63b3620c7768f
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66735643"
 ---
 # <a name="reacting-to-azure-app-configuration-events"></a>Reakce na události konfigurace aplikace pro Azure
@@ -39,12 +39,12 @@ Události konfigurace aplikace služby Azure obsahovat všechny informace, kter�
 
 > |Vlastnost|Typ|Popis|
 > |-------------------|------------------------|-----------------------------------------------------------------------|
-> |téma|string|Konfigurace aplikací, který vysílá události úplné id Azure Resource Manageru.|
-> |Předmět|string|Identifikátor URI klíč hodnota, která je předmětem události.|
-> |čas události|string|Datum/čas, která byla vygenerována událost ve formátu ISO 8601.|
+> |topic|string|Konfigurace aplikací, který vysílá události úplné id Azure Resource Manageru.|
+> |subject|string|Identifikátor URI klíč hodnota, která je předmětem události.|
+> |eventTime|string|Datum/čas, která byla vygenerována událost ve formátu ISO 8601.|
 > |eventType|string|"Microsoft.AppConfiguration.KeyValueModified" nebo "Microsoft.AppConfiguration.KeyValueDeleted".|
 > |ID|string|Jedinečný identifikátor této události.|
-> |dataVersion|string|Verze schématu datového objektu.|
+> |dataVersion|string|Verze schématu datového objektu|
 > |metadataVersion|string|Verze schématu vlastnosti nejvyšší úrovně.|
 > |data|objekt|Shromažďování dat o určité události konfigurace aplikace pro Azure|
 > |data.Key|string|Klíč klíč hodnota, která byla změněna nebo odstraněna.|

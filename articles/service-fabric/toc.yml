@@ -73,10 +73,14 @@
           href: service-fabric-tutorial-upgrade-cluster.md
         - name: 5. Odstranění clusteru
           href: service-fabric-tutorial-delete-cluster.md
-    - name: Vytvoření samostatného clusteru v AWS
+    - name: Vytvoření samostatného clusteru
       items:
-        - name: 1. Vytvoření infrastruktury v AWS
-          href: service-fabric-tutorial-standalone-create-infrastructure.md
+        - name: 1. Vytvoření infrastruktury
+          items:
+            - name: S využitím AWS
+              href: service-fabric-tutorial-standalone-create-infrastructure.md
+            - name: S využitím Azure
+              href: service-fabric-tutorial-standalone-azure-create-infrastructure.md
         - name: 2. Nastavení služby Service Fabric
           href: service-fabric-tutorial-standalone-create-service-fabric-cluster.md
         - name: 3. Nasazení aplikace do clusteru
@@ -517,6 +521,8 @@
               href: service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md
             - name: Nastavení linuxového clusteru ve Windows
               href: service-fabric-local-linux-cluster-windows.md
+            - name: Nasazení aplikace .NET Core do vzdáleného linuxového clusteru z VS
+              href: service-fabric-how-to-publish-linux-app-vs.md
         - name: Práce ve vývojovém prostředí Linux/Eclipse
           items:
             - name: Začínáme s modulem plug-in Eclipse pro Java Development
@@ -693,6 +699,8 @@
       items:
         - name: Diagnostika běžných scénářů
           href: service-fabric-diagnostics-common-scenarios.md
+        - name: Diagnostika chyb balíčků kódu
+          href: service-fabric-diagnostics-code-package-errors.md
         - name: Monitorování aplikací
           items:
             - name: Přidání protokolování do aplikace
@@ -842,8 +850,8 @@
       href: 'https://azure.microsoft.com/pricing/details/service-fabric/'
     - name: Cenová kalkulačka
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Průvodci odstraňováním potíží
-      href: 'https://github.com/Azure/Service-Fabric-Troubleshooting-Guides'
+    - name: "Poznámky k\_verzi"
+      href: release-notes.md
     - name: Ukázka kódu
       href: 'https://aka.ms/servicefabricsamples'
     - name: Možnosti podpory
@@ -852,5 +860,7 @@
       href: service-fabric-versions.md
     - name: Aktualizace služeb
       href: 'https://azure.microsoft.com/updates/?product=service-fabric'
+    - name: Průvodci odstraňováním potíží
+      href: 'https://github.com/Azure/Service-Fabric-Troubleshooting-Guides'
     - name: Videa
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=service-fabric'

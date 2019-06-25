@@ -8,12 +8,12 @@ ms.author: pmorgan
 ms.date: 05/14/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 3c125c54c1e0a70cdec19af912b17759d82a9936
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: c831e8fdacf5103619374605dd980ab1f6735047
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65969465"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "67135311"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-hololens-unity-app-using-azure-spatial-anchors"></a>Kurz: Podrobné pokyny k vytvoření nové aplikace HoloLens Unity pomocí prostorových kotev vztahů Azure
 
@@ -38,7 +38,7 @@ Nejprve se nastavíme naše projektu a scénu Unity:
 7. Prázdný výchozí scény uložte do nového souboru pomocí: **Soubor** > **uložit jako**.
 8. Pojmenujte novou scénu **hlavní** a stiskněte klávesu **Uložit** tlačítko.
 
-**nastavení projektu**
+**Nastavení projektu**
 
 Nyní nastavíme některá nastavení projektu Unity, které nám pomáhají cíl Windows Holographic SDK pro vývoj. 
 
@@ -77,7 +77,7 @@ Je potřeba nechat Unity vědí, by měl vytvořit aplikaci, kterou jsme se poku
 
 **Vytvoření skriptu**
 1. V **projektu** podokno, vytvořte novou složku **skripty**v části **prostředky** složky. 
-2. Klikněte pravým tlačítkem na složku a potom vyberte **vytvořit >**,  **C# skript**. Název je **AzureSpatialAnchorsScript**. 
+2. Klikněte pravým tlačítkem na složku a potom vyberte **vytvořit >** ,  **C# skript**. Název je **AzureSpatialAnchorsScript**. 
 3. Přejděte na **GameObject** -> **vytvořit prázdné**. 
 4. Vyberte ho a v **inspektoru** přejmenovat z **GameObject** k **MixedRealityCloud**. Vyberte **přidat součást** a vyhledat a přidat **AzureSpatialAnchorsScript**.
 

@@ -13,10 +13,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 12/18/2018
 ms.openlocfilehash: 2aa98c3958f1dffeb8adbad5e91a11f397d4a9fd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61035712"
 ---
 # <a name="in-memory-sample"></a>Ukázka v paměti
@@ -406,7 +406,7 @@ V databázi s cenovou úroveň P2 můžete očekávat přibližně devětkrát z
 
 - Zobrazit [běžné vzory úlohy a důležité informace o migraci](https://msdn.microsoft.com/library/dn673538.aspx) (které popisuje vzory zatížení kde OLTP v paměti obvykle poskytují významného zvýšení výkonu)
 
-#### <a name="application-design"></a>Návrh aplikace
+#### <a name="application-design"></a>Návrh aplikací
 
 - [Paměti OLTP (Optimalizace v paměti)](https://msdn.microsoft.com/library/dn133186.aspx)
 

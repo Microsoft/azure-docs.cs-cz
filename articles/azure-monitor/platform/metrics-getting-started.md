@@ -9,10 +9,10 @@ ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
 ms.openlocfilehash: 3306e888970d99132d17d4ccf967f074302412ca
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65595448"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Začínáme s Průzkumníkem metrik Azure
@@ -38,14 +38,14 @@ Chcete-li vytvořit grafu metrik z prostředků, skupinu prostředků, předplat
 
 3. Vyberte metriku ze seznamu dostupných metrik.
 
-    > ![Vyberte metriku](./media/metrics-getting-started/metric-picker.png)
+    > ![Vyberte metriku.](./media/metrics-getting-started/metric-picker.png)
 
 4. Volitelně můžete změnit agregace metrik. Například může být vhodné grafu zobrazíte minimální, maximální a průměrné hodnoty metriky.
 
 > [!NOTE]
 > Použití **přidat metriku** tlačítko a opakujte tyto kroky, pokud chcete zobrazit několik metrik zobrazených ve stejném grafu. Několik grafů v jednom zobrazení, vyberte **přidat graf** tlačítko v horní části.
 
-## <a name="select-a-time-range"></a>Vybrat časový rozsah
+## <a name="select-a-time-range"></a>Vyberte časový rozsah
 
 Tento graf zobrazuje ve výchozím nastavení, posledních 24 hodin data metrik. Použití **výběr času** panel změnit časový rozsah, Přiblížit nebo oddálit v grafu. 
 

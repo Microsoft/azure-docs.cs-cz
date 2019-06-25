@@ -1,6 +1,6 @@
 ---
-title: Ověření přístupu k objektům BLOB a fronty pomocí spravované identity pro prostředky Azure – Azure Storage | Dokumentace Microsoftu
-description: Úložiště objektů Blob a fronty Azure podporují ověřování pomocí Azure Active Directory pomocí spravované identity pro prostředky Azure. Spravované identity pro prostředky Azure můžete použít k ověření přístupu k objektům BLOB a fronty z aplikací běžících v Azure virtuální počítače, aplikace function App, škálovací sady virtuálních počítačů a dalších.
+title: Autorizace přístupu k objektům BLOB a fronty s Azure Active Directory a spravovaným identitám pro prostředky Azure – Azure Storage
+description: Azure Blob a fronty úložiště podpora autorizaci přístupu k prostředkům pomocí Azure Active Directory a spravovaným identitám pro prostředky Azure. Spravované identity pro prostředky Azure můžete použít k autorizaci přístupu k objektům BLOB a fronty z aplikací běžících v Azure virtuální počítače, aplikace function App, škálovací sady virtuálních počítačů a dalších.
 services: storage
 author: tamram
 ms.service: storage
@@ -9,14 +9,14 @@ ms.date: 04/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: f7525c3e125010bb4db9655bc214861e22dc8875
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 23e1171a8757d021b8c6d38f90bdbf720014045f
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65787961"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303421"
 ---
-# <a name="authenticate-access-to-blobs-and-queues-with-azure-active-directory-and-managed-identities-for-azure-resources"></a>Ověření přístupu k objektům BLOB a fronty s Azure Active Directory a spravovaným identitám pro prostředky Azure
+# <a name="authorize-access-to-blobs-and-queues-with-azure-active-directory-and-managed-identities-for-azure-resources"></a>Autorizace přístupu k objektům BLOB a fronty s Azure Active Directory a spravovaným identitám pro prostředky Azure
 
 Úložiště objektů Blob a fronty Azure podporují ověřování Azure Active Directory (Azure AD) s [spravovaných identit pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md). Spravovat identity pro prostředky Azure můžete autorizovat přístup k objektu blob a fronty dat pomocí přihlašovacích údajů Azure AD z aplikace běžící v Azure virtuální počítače (VM), aplikace function App, škálovací sady virtuálních počítačů a dalším službám. Pomocí spravované identity pro prostředky Azure spolu s ověřováním Azure AD, se můžete vyhnout ukládání přihlašovacích údajů s vašimi aplikacemi, které běží v cloudu.  
 

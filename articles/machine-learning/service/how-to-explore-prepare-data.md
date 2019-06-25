@@ -12,10 +12,10 @@ manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/23/2019
 ms.openlocfilehash: e29ef2616a43223ec582575ca6363f78b26e5f22
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66753061"
 ---
 # <a name="explore-and-prepare-data-with-the-dataset-class-preview"></a>Prozkoumejte a příprava dat pomocí třídy datové sady (Preview)
@@ -117,7 +117,7 @@ sample_dataset.to_pandas_dataframe()
 dataset.get_profile()
 ```
 
-||Typ|Minimum|Maximum|Počet|Chybí počet|Nechybí počet|Procento chybějících|Počet chyb|Prázdný počet|0,1 % Quantile|1 % Quantile|5 % Quantile|25 % Quantile|50 % Quantile|75 % Quantile|95 % Quantile|99 % Quantile|99,9 % Quantile|střední hodnotu|Směrodatná odchylka|Odchylka|Zešikmení|Míra fluktuace
+||Type|Minimum|Maximum|Počet|Chybí počet|Nechybí počet|Procento chybějících|Počet chyb|Prázdný počet|0,1 % Quantile|1 % Quantile|5 % Quantile|25 % Quantile|50 % Quantile|75 % Quantile|95 % Quantile|99 % Quantile|99,9 % Quantile|střední hodnotu|Směrodatná odchylka|Odchylka|Zešikmení|Míra fluktuace
 -|----|---|---|-----|-------------|-----------------|---------------|-----------|-----------|-------------|-----------|-----------|------------|------------|------------|------------|------------|--------------|----|------------------|--------|--------|--------
 ID|FieldType.INTEGER|1.04986e + 07|1.05351e + 07|10.0|0.0|10.0|0.0|0.0|0.0|1.04986e + 07|1.04992e + 07|1.04986e + 07|1.05166e + 07|1.05209e + 07|1.05259e + 07|1.05351e + 07|1.05351e + 07|1.05351e + 07|1.05195e + 07|12302.7|1.51358e + 08|-0.495701|-1.02814
 Číslo případu|FieldType.STRING|HZ239907|HZ278872|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
@@ -256,7 +256,7 @@ ds_def = ds_def.assert_value('Longitude', (value <= 180) & (value >= -87), error
 ds_def.get_profile()
 ```
 
-||Typ|Minimum|Maximum|Počet|Chybí počet|Nechybí počet|Procento chybějících|Počet chyb|Prázdný počet|0,1 % Quantile|1 % Quantile|5 % Quantile|25 % Quantile|50 % Quantile|75 % Quantile|95 % Quantile|99 % Quantile|99,9 % Quantile|střední hodnotu|Směrodatná odchylka|Odchylka|Zešikmení|Míra fluktuace
+||Type|Minimum|Maximum|Počet|Chybí počet|Nechybí počet|Procento chybějících|Počet chyb|Prázdný počet|0,1 % Quantile|1 % Quantile|5 % Quantile|25 % Quantile|50 % Quantile|75 % Quantile|95 % Quantile|99 % Quantile|99,9 % Quantile|střední hodnotu|Směrodatná odchylka|Odchylka|Zešikmení|Míra fluktuace
 -|----|---|---|-----|-------------|-----------------|---------------|-----------|-----------|-------------|-----------|-----------|------------|------------|------------|------------|------------|--------------|----|------------------|--------|--------|--------
 ID|FieldType.INTEGER|1.04986e + 07|1.05351e + 07|10.0|0.0|10.0|0.0|0.0|0.0|1.04986e + 07|1.04992e + 07|1.04986e + 07|1.05166e + 07|1.05209e + 07|1.05259e + 07|1.05351e + 07|1.05351e + 07|1.05351e + 07|1.05195e + 07|12302.7|1.51358e + 08|-0.495701|-1.02814
 Zadržení|FieldType.BOOLEAN|False|False|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||

@@ -3,16 +3,15 @@ title: Nastavit zdroj transformace ve funkci mapování toku dat služby Azure D
 description: Zjistěte, jak nastavit zdroj transformace v mapování se předávají Data.
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 5d8a339049ebda02c2fe470c5d8dc2c743d547ff
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: 86e30c465a605681519565261beec75d88ccd472
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67077238"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190807"
 ---
 # <a name="source-transformation-for-mapping-data-flow"></a>Transformace zdroje pro mapování toku dat 
 
@@ -84,9 +83,39 @@ Při volbě nastavení pro správu souborů ve zdroji.
 ![Nová nastavení zdroje](media/data-flow/source2.png "nové nastavení")
 
 * **Cesta se zástupným znakem**: Ze zdrojové složky zvolte řadu soubory, které odpovídají vzoru. Toto nastavení potlačí všechny soubory v definici datové sady.
+
+Zástupný znak příklady:
+
+* ```*``` Představuje libovolnou sadu znaků
+* ```**``` Představuje rekurzivní directory vnoření
+* ```?``` Nahrazuje jeden znak
+* ```[]``` Odpovídá jednomu z více znaků v závorkách
+
+* ```/data/sales/**/*.csv``` Získá všechny soubory sdíleného svazku clusteru v rámci /data/sales
+* ```/data/sales/20??/**``` Získá všechny soubory ve 20. prosincem století
+* ```/data/sales/2004/*/12/[XY]1?.csv``` Získá všechny soubory csv v 2004 v prosinci od verze X nebo Y předchází 2 číslice
+
+Kontejner musí být zadaný v datové sadě. Vaše cesta se zástupným znakem proto musí také obsahovat vaše cesta ke složce z kořenové složky.
+
 * **Seznam souborů**: Toto je sada souborů. Vytvořte textový soubor, který obsahuje seznam souborů relativní cestu ke zpracování. Přejděte na tento textový soubor.
 * **Sloupce pro uložení názvu souboru**: Název zdrojového souboru Store ve sloupci ve vašich datech. Zadejte nový název pro uložení řetězce názvu souboru.
 * **Po dokončení**: Zvolte po data spouštění toků, odstranění souboru se zdrojovým nebo přesunutí zdrojového souboru se zdrojovým souborem neprovede žádnou akci. Jsou relativní cesty pro přesunutí.
+
+Pokud chcete přesunout do jiného umístění následující po zpracování zdrojové soubory, vyberte nejdřív "Přesun" pro operace se soubory. Nastavte adresář "z". Pokud nepoužíváte žádné zástupné znaky pro cestu, pak bude "od" nastavení budou stejné složce jako zdrojové složky.
+
+Pokud máte cestu ke zdroji se zástupnými znaky, například:
+
+```/data/sales/20??/**/*.csv```
+
+Můžete zadat jako "z"
+
+```/data/sales```
+
+A "do" jako
+
+```/backup/priorSales```
+
+V takovém případě všechny podadresáře v rámci /data/sales, které byly Source přesunou vzhledem k /backup/priorSales.
 
 ### <a name="sql-datasets"></a>Datové sady SQL
 
@@ -94,6 +123,14 @@ Pokud je zdrojem v SQL Database nebo SQL Data Warehouse, máte další možnosti
 
 * **Dotaz:** Zadejte dotaz SQL pro zdroj. Toto nastavení potlačí všechny tabulky, kterou jste zvolili v datové sadě. Všimněte si, že **klauzule Order By** klauzule zde nejsou podporovány, ale můžete nastavit úplný příkaz SELECT FROM. Můžete také použít funkce uživatelem definovaná tabulka. **Vybrat * z udfGetData()** je UDF v SQL, která vrací tabulku. Tento dotaz vytvoří zdrojové tabulky, který používáte ve svém toku data.
 * **Velikost dávky**: Zadejte velikost dávky k bloku dat velkých objemů dat do operace čtení.
+* **Úroveň izolace**: Výchozí hodnota pro ADF mapování toků dat zdroje SQL je nepotvrzené čtení. Můžete změnit úroveň izolace na jednu z těchto hodnot:
+* Read Committed
+* Nepotvrzené čtení
+* Opakovatelné pro čtení
+* Serializovatelné
+* Žádné (Ignorovat úroveň izolace)
+
+![Úroveň izolace](media/data-flow/isolationlevel.png "úroveň izolace")
 
 > [!NOTE]
 > Operace se soubory spustit pouze v případě, že spuštění toku dat z kanálu (ladění kanálu nebo spustit provádění), která používá aktivitu spuštění toku dat v rámci kanálu. Operace se soubory *nejsou* spuštění v režimu ladění se předávají Data.

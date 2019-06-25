@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 05/30/2019
+ms.date: 06/05/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efd3ff8a6e7ddf2aa6242cc322d8a6536a6bd26b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fbb4001e9496d31d9c2879721f8cf8e26b74ddf3
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66474069"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204552"
 ---
 # <a name="what-is-azure-ad-entitlement-management-preview"></a>Co je Správa oprávnění Azure AD? (Preview)
 
@@ -129,41 +129,6 @@ Abyste lépe pochopili Správa nároků a jeho dokumentace, měli byste zkontrol
 | adresář prostředků | Adresář, který má jeden nebo více prostředků sdílet. |
 | přiřazení uživatelé | Přiřazení přístupu k balíčku pro uživatele nebo skupiny. |
 | Povolit | Proces zpřístupnění uživatelé můžou žádat o přístup k balíčku. |
-
-## <a name="roles-and-permissions"></a>Role a oprávnění
-
-Správa nároků má různé role podle pracovní funkci.
-
-| Role | Popis |
-| --- | --- |
-| [Správce uživatelů](../users-groups-roles/directory-assign-admin-roles.md#user-administrator) | Spravujte všechny aspekty správy oprávnění.<br/>Vytvoření uživatelů a skupin. |
-| Tvůrce katalogu | Vytvoření a Správa katalogů. Obvykle správce IT nebo vlastníka prostředku. Osoby, která se automaticky vytvoří katalog stane první katalogu vlastníka do katalogu. |
-| Vlastník katalogu | Úprava a Správa existujících katalogů. Obvykle správce IT nebo vlastníka prostředku. |
-| Správce přístupu k balíčku | Úprava a Správa všech existujících balíčků přístup v rámci katalogu. |
-| Schvalovatele | Schválení požadavků na přístup k balíčkům. |
-| Žadatel | Žádost o přístup k balíčkům. |
-
-V následující tabulce jsou uvedeny oprávnění pro každou z těchto rolí.
-
-| Úkol | Správce uživatelů | Tvůrce katalogu | Vlastník katalogu | Správce přístupu k balíčku | Schvalovatele |
-| --- | :---: | :---: | :---: | :---: | :---: |
-| [Vytvořit nový balíček pro přístup v obecné katalogu](entitlement-management-access-package-create.md) | :heavy_check_mark: |  :heavy_check_mark: |  |  |  |
-| [Vytvořit nový balíček pro přístup do katalogu](entitlement-management-access-package-create.md) | :heavy_check_mark: |   | :heavy_check_mark: |  |  |
-| [Přidání nebo odebrání role prostředků do/z přístupu k balíčku](entitlement-management-access-package-edit.md) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Zadejte, kdo žádosti přístup k balíčku](entitlement-management-access-package-edit.md#add-a-new-policy) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Přímo přiřadit uživatele přístupu k balíčku](entitlement-management-access-package-edit.md#directly-assign-a-user) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Zobrazení, který má přiřazení přístupu k balíčku](entitlement-management-access-package-edit.md#view-who-has-an-assignment) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Zobrazení žádostí přístup k balíčku](entitlement-management-access-package-edit.md#view-requests) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Zobrazit chyby doručování požadavku](entitlement-management-access-package-edit.md#view-a-requests-delivery-errors) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Zrušení čekající žádosti o](entitlement-management-access-package-edit.md#cancel-a-pending-request) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Skrýt přístupu k balíčku](entitlement-management-access-package-edit.md#change-the-hidden-setting) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Odstranit balíček přístup](entitlement-management-access-package-edit.md#delete) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Schválení žádosti o přístup](entitlement-management-request-approve.md) |  |  |  |  | :heavy_check_mark: |
-| [Vytvořit katalog](entitlement-management-catalog-create.md) | :heavy_check_mark: | :heavy_check_mark: |  |  |  |
-| [Přidat nebo odebrat prostředky z katalogu obecné](entitlement-management-catalog-create.md#add-resources-to-a-catalog) | :heavy_check_mark: |  |  |  |  |
-| [Přidat nebo odebrat prostředky z katalogu](entitlement-management-catalog-create.md#add-resources-to-a-catalog) | :heavy_check_mark: |  | :heavy_check_mark: |  |  |
-| [Přidat vlastníky katalogu nebo přístup ke správci balíčků](entitlement-management-catalog-create.md#add-catalog-owners-or-access-package-managers) | :heavy_check_mark: |  | :heavy_check_mark: |  |  |
-| [Upravit nebo odstranit katalog](entitlement-management-catalog-create.md#edit-a-catalog) | :heavy_check_mark: |  | :heavy_check_mark: |  |  |
 
 ## <a name="license-requirements"></a>Licenční požadavky
 

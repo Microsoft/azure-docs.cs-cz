@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
 ms.openlocfilehash: 042aedf1a043cd89d74ff099554642d38a3c7dd3
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66120653"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67174754"
 ---
 ## <a name="what-is-table-storage"></a>Co je služba Table Storage
 Azure Table storage ukládá velké objemy strukturovaných dat. Služba je úložištěm dat typu NoSQL, které přijímá ověřená volání z cloudu Azure i z prostředí mimo něj. Jsou ideální pro ukládání strukturovaných, nerelačních dat tabulky Azure. Mezi běžná použití služby Table Storage patří:

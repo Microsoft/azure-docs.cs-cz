@@ -11,16 +11,16 @@ ms.date: 04/02/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.openlocfilehash: 200433d95d62edf2e878e58e5089a6baff290775
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65850584"
 ---
 # <a name="using-stored-procedures-in-sql-data-warehouse"></a>Použití uložených procedur ve službě SQL Data Warehouse
 Tipy pro provádění uložené procedury pro vývoj řešení ve službě Azure SQL Data Warehouse.
 
-## <a name="what-to-expect"></a>Co očekávat
+## <a name="what-to-expect"></a>Co můžete očekávat
 
 SQL Data Warehouse podporuje mnoho funkcí T-SQL, které se používají v systému SQL Server. Důležitější je jsou specifické funkce škálování na víc systémů, které vám umožní maximalizovat výkon vašeho řešení.
 

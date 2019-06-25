@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: hrasheed
 ms.openlocfilehash: b580890b1663aa6ce742443e927e4d760585d4ce
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64700289"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-storage-account"></a>Použití více clusterů HDInsight s účtem úložiště Azure Data Lake
@@ -36,9 +36,9 @@ Pokud chcete povolit tuto strukturu složek, které bude efektivně využívat c
 
 |Složka  |Oprávnění  |Vlastnící uživatel  |Vlastnící skupina  | Jmenovaný uživatel | Oprávnění pro pojmenovaného uživatele | Pojmenované skupiny | Oprávnění s názvem skupiny |
 |---------|---------|---------|---------|---------|---------|---------|---------|
-|/ | rwxr-x--x  |admin |admin  |Instanční objekt |--x  |FINGRP   |r-x         |
-|/Clusters | rwxr-x--x |admin |admin |Instanční objekt |--x  |FINGRP |r-x         |
-|/ clustery/finance | rwxr-x--t |admin |FINGRP  |Instanční objekt |rwx  |-  |-     |
+|/ | rwxr-x--x  |admin |admin  |Instanční objekt služby |--x  |FINGRP   |r-x         |
+|/Clusters | rwxr-x--x |admin |admin |Instanční objekt služby |--x  |FINGRP |r-x         |
+|/ clustery/finance | rwxr-x--t |admin |FINGRP  |Instanční objekt služby |rwx  |-  |-     |
 
 V tabulce
 
@@ -50,10 +50,10 @@ Pokyny o tom, jak vytvořit aplikaci AAD (která také vytvoří instanční obj
 
 Některé klíčové body ke zvážení.
 
-- Dvě úrovně struktury složek (**/clusterů/finance/**) musí být vytvořené a zřízené s příslušnými oprávněními správce úložiště Data Lake **před** pomocí účtu úložiště pro clustery. Tato struktura není vytvořena automaticky při vytváření clusterů.
+- Dvě úrovně struktury složek ( **/clusterů/finance/** ) musí být vytvořené a zřízené s příslušnými oprávněními správce úložiště Data Lake **před** pomocí účtu úložiště pro clustery. Tato struktura není vytvořena automaticky při vytváření clusterů.
 - Výše uvedený příklad doporučuje nastavení vlastnící skupina tohoto **/clustery/finance** jako **FINGRP** a jejímu **r-x** přístup k FINGRP do hierarchie celou složku spuštění z kořenového adresáře. Tím se zajistí, že členové FINGRP se můžete dostat strukturu složek, počínaje kořenový.
 - V případech, kdy vytvořit clustery se v rámci různých objektů služby AAD **/clustery/finance**, sticky-bit (při nastavení na **finance** složky) zajišťuje, že vytvořeny složky podle jednoho instančního objektu nelze odstranit, druhý.
-- Jakmile strukturu složek a oprávnění jsou na místě, procesu vytváření clusteru HDInsight vytvoří specifických pro cluster úložiště v rámci **/clusterů/finance/**. Například může být úložiště pro cluster s názvem fincluster01 **/clusters/finance/fincluster01**. Vlastnictví a oprávnění pro složky vytvoří cluster HDInsight je uveden v tabulce tady.
+- Jakmile strukturu složek a oprávnění jsou na místě, procesu vytváření clusteru HDInsight vytvoří specifických pro cluster úložiště v rámci **/clusterů/finance/** . Například může být úložiště pro cluster s názvem fincluster01 **/clusters/finance/fincluster01**. Vlastnictví a oprávnění pro složky vytvoří cluster HDInsight je uveden v tabulce tady.
 
     |Složka  |Oprávnění  |Vlastnící uživatel  |Vlastnící skupina  | Jmenovaný uživatel | Oprávnění pro pojmenovaného uživatele | Pojmenované skupiny | Oprávnění s názvem skupiny |
     |---------|---------|---------|---------|---------|---------|---------|---------|
@@ -87,8 +87,8 @@ Tato nastavení se ví, vliv na jeden konkrétní HDInsight případ použití z
 
 Jak je uvedeno v JIRA YARN propojené dříve, při lokalizaci prostředky veřejné lokalizátora ověří, zda všechny požadované prostředky jsou skutečně veřejné jejich oprávnění ve vzdáleném systému souborů. Žádné LocalResource nevejde této podmínky je odmítnutých pro lokalizaci. Kontrola oprávnění, zahrnuje přístup pro čtení do souboru "ostatní". Tento scénář nefunguje out-of-the-box při hostování clustery HDInsight v Azure Data Lake, protože Azure Data Lake zakazuje veškerý přístup k "ostatní" na kořenové úrovni složky.
 
-#### <a name="workaround"></a>Alternativní řešení
-Sada čtení spouštěcích oprávnění k **ostatní** prostřednictvím hierarchie, například na **/**, **/clusterů** a   **/clustery/finance** jak je znázorněno v předchozí tabulce.
+#### <a name="workaround"></a>Alternativní řešení:
+Sada čtení spouštěcích oprávnění k **ostatní** prostřednictvím hierarchie, například na **/** , **/clusterů** a   **/clustery/finance** jak je znázorněno v předchozí tabulce.
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 

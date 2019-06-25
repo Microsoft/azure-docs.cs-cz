@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 0ef65c23ee1bf4f064695779b71c8616427da204
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60877818"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-rest-api"></a>Ověřování koncového uživatele pomocí Azure Data Lake Storage Gen1 pomocí rozhraní REST API
@@ -33,9 +33,9 @@ V tomto článku se dozvíte o tom, jak pomocí rozhraní REST API, provádět o
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Vytvoření aplikace Azure Active Directory "Nativní"**. Je nutné dokončit kroky v [ověřování koncového uživatele s Data Lake Storage Gen1 pomocí Azure Active Directory](data-lake-store-end-user-authenticate-using-active-directory.md).
+* **Vytvoření aplikace Azure Active Directory "Nativní"** . Je nutné dokončit kroky v [ověřování koncového uživatele s Data Lake Storage Gen1 pomocí Azure Active Directory](data-lake-store-end-user-authenticate-using-active-directory.md).
 
-* **[cURL](https://curl.haxx.se/)**. Tento článek používá cURL k předvedení jak volat rozhraní REST API vůči účtu Data Lake Storage Gen1.
+* **[cURL](https://curl.haxx.se/)** . Tento článek používá cURL k předvedení jak volat rozhraní REST API vůči účtu Data Lake Storage Gen1.
 
 ## <a name="end-user-authentication"></a>Ověřování koncových uživatelů
 Ověřování koncového uživatele je doporučený postup, pokud chcete, aby uživatel měl přístup do vaší aplikace pomocí Azure AD. Aplikace je mít přístup k prostředkům Azure se stejnou úrovní přístupu jako přihlášený uživatel. Uživatel musí zadat přihlašovací údaje pravidelně v pořadí pro vaši aplikaci k Udržovat přístup.
@@ -49,7 +49,7 @@ V tomto scénáři aplikace vyzve uživatele k přihlášení a všechny operace
         https://login.microsoftonline.com/<TENANT-ID>/oauth2/authorize?client_id=<APPLICATION-ID>&response_type=code&redirect_uri=<REDIRECT-URI>
 
    > [!NOTE]
-   > \<REDIRECT-URI&gt; musí být zakódovaný, aby se dal použít jako adresa URL. Ano, pro https://localhost, použijte `https%3A%2F%2Flocalhost`)
+   > \<REDIRECT-URI&gt; musí být zakódovaný, aby se dal použít jako adresa URL. Ano, pro https://localhost , použijte `https%3A%2F%2Flocalhost` )
 
     Pro účely tohoto kurzu můžete ve výše zobrazené adrese URL nahradit zástupné hodnoty a vložit ji do adresního řádku webového prohlížeče. Budete přesměrováni na ověření pomocí přihlášení Azure. Po úspěšném přihlášení se zobrazí v adresním řádku prohlížeče odpověď. Odpověď bude mít tento formát:
 

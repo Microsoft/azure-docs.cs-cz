@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 934e9b705ab5f399d29f24c915b4c60a3b06138b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b64051a4ef7b6a816b03562fef0452cbe9ce949a
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67082570"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67144027"
 ---
 # <a name="how-to-use-mlflow-with-azure-machine-learning-service-preview"></a>Jak používat MLflow službou Azure Machine Learning (Preview)
 
@@ -145,7 +145,7 @@ Pokud nemáte v úmyslu použít zaznamenané metriky a artefaktů ve vašem pra
 
 ## <a name="example-notebooks"></a>Příklad poznámkové bloky
 
-[MLflow s poznámkovými bloky Azure ML](https://github.com/Azure/MachineLearningNotebooks/blob/master/contrib/mlflow) ukazuje koncepty v tomto článku.
+[MLflow s poznámkovými bloky Azure ML](https://aka.ms/azureml-mlflow-examples) ukazuje koncepty v tomto článku.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: 1928185521419006a487a933e2ecba79894a09d3
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64686790"
 ---
 # <a name="localization-support-in-azure-maps"></a>Podpora lokalizace ve službě Azure Maps
@@ -25,7 +25,7 @@ Azure Maps podporuje různé jazyky a zobrazení podle země/oblast. Tento člá
 Lokalizované Azure Maps v různých jazycích napříč službami. Následující tabulka obsahuje kódy podporovaných jazyků pro každou službu.  
   
 
-| ID         | Název                   |  Maps | Search | Směrování | Provoz incidenty | Mapový ovládací prvek JS | Časové pásmo |
+| ID         | Name                   |  Maps | Search | Směrování | Provoz incidenty | Mapový ovládací prvek JS | Časové pásmo |
 |------------|------------------------|:-----:|:------:|:-------:|:-----------------:|:--------------:|:---------:|
 | af-ZA      | Afrikánština              |       |    ✓   |    ✓    |                   |                |     ✓     |
 | ar-SA      | arabština                 |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
@@ -39,8 +39,8 @@ Lokalizované Azure Maps v různých jazycích napříč službami. Následujíc
 | da-DK      | dánština                 |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | NL-NL      | Holandština                  |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | nl-BE      | Holandština (Belgie)        |       |    ✓   |         |                   |                |     ✓     |
-| cs AU      | Angličtina (Austrálie)    |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
-| cs NZ      | Angličtina (Nový Zéland)  |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
+| cs AU      | angličtina (Austrálie)    |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
+| cs NZ      | angličtina (Nový Zéland)  |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | en-GB      | Angličtina (Velká Británie) |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | en-US      | Angličtina (USA)          |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | et EE      | Estonština               |       |    ✓   |         |         ✓         |                |     ✓     |
@@ -85,7 +85,7 @@ Lokalizované Azure Maps v různých jazycích napříč službami. Následujíc
 
 ## <a name="azure-maps-supported-views"></a>Zobrazení nepodporuje Azure Maps
 
-Azure parametr mapy zobrazení (také označované jako "uživatelské oblasti parametr") je kód země ISO 3166 písmeno 2, které vám ukážou, že správné mapování pro určení, které sada geopoliticky zemi/oblast sporné území ohraničení a popisků se zobrazí na mapě.  Ve výchozím nastavení parametr zobrazení je nastaven na **"Unified"**.  Země nebo oblasti, které nejsou v zobrazení seznamu se ve výchozím nastavení zobrazení "Unified". Je vaší odpovědností zjistit umístění uživatelů a potom nastavit parametr zobrazení správně pro danou lokaci. Parametr zobrazení v Azure Maps je nutné použít v souladu s příslušnými zákony, včetně těch o mapování země, ve kterém mapy, obrázky a další data a třetích stran obsah, který jste oprávnění pro přístup k prostřednictvím Azure Maps je k dispozici.
+Azure parametr mapy zobrazení (také označované jako "uživatelské oblasti parametr") je kód země ISO 3166 písmeno 2, které vám ukážou, že správné mapování pro určení, které sada geopoliticky zemi/oblast sporné území ohraničení a popisků se zobrazí na mapě.  Ve výchozím nastavení parametr zobrazení je nastaven na **"Unified"** .  Země nebo oblasti, které nejsou v zobrazení seznamu se ve výchozím nastavení zobrazení "Unified". Je vaší odpovědností zjistit umístění uživatelů a potom nastavit parametr zobrazení správně pro danou lokaci. Parametr zobrazení v Azure Maps je nutné použít v souladu s příslušnými zákony, včetně těch o mapování země, ve kterém mapy, obrázky a další data a třetích stran obsah, který jste oprávnění pro přístup k prostřednictvím Azure Maps je k dispozici.
 
 Následující tabulka uvádí podporované zobrazení.
 
@@ -107,4 +107,4 @@ Následující tabulka uvádí podporované zobrazení.
 | SA           | Saúdská Arábie (Arabské zobrazení)            |   ✓   |        |     ✓          |
 | SY           | Sýrie (Arabské zobrazení)                   |   ✓   |        |     ✓          |
 | ANO VŠEM           | Jemen (Arabské zobrazení)                   |   ✓   |        |     ✓          |
-| Sjednocené      | Sjednocený pohled (ostatní)                  |   ✓   |   ✓     |     ✓          |
+| Unifikace      | Sjednocený pohled (ostatní)                  |   ✓   |   ✓     |     ✓          |

@@ -10,10 +10,10 @@ services: iot-central
 ms.custom: mvc
 manager: philmea
 ms.openlocfilehash: 5248b9546ffe931b72123778d0d23574e5238405
-ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66742409"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-that-send-notifications"></a>Rozšíření Azure IoT Central pomocí vlastního pravidla, které odesílají oznámení
@@ -60,7 +60,7 @@ Použití [webu Azure portal vytvořte obor názvů služby Event Hubs](https://
 
 | Nastavení | Hodnota |
 | ------- | ----- |
-| Name    | Vyberte název vašeho oboru názvů |
+| Název    | Vyberte název vašeho oboru názvů |
 | Cenová úroveň | Basic |
 | Předplatné | Vaše předplatné |
 | Skupina prostředků | DetectStoppedDevices |
@@ -73,7 +73,7 @@ Použití [webu Azure portal k vytvoření úlohy Stream Analytics](https://port
 
 | Nastavení | Hodnota |
 | ------- | ----- |
-| Name    | Vyberte název požadované úlohy |
+| Název    | Vyberte název požadované úlohy |
 | Předplatné | Vaše předplatné |
 | Skupina prostředků | DetectStoppedDevices |
 | Location | USA – východ |
@@ -101,7 +101,7 @@ Použití [webu Azure portal k vytvoření účtu SendGrid](https://portal.azure
 
 | Nastavení | Hodnota |
 | ------- | ----- |
-| Name    | Volba názvu účtu SendGrid |
+| Název    | Volba názvu účtu SendGrid |
 | Heslo | Vytvořit heslo |
 | Předplatné | Vaše předplatné |
 | Skupina prostředků | DetectStoppedDevices |

@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 05/01/219
 ms.author: bwren
 ms.openlocfilehash: 2db6ddf57802f6fcf38cfc3ad7094ed94eaca3d8
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65234198"
 ---
 # <a name="import-azure-monitor-log-data-into-power-bi"></a>Importovat do Power BI data protokolů Azure Monitor
@@ -36,7 +36,7 @@ Pro import dat z [pracovní prostor Log Analytics](manage-access.md) ve službě
 Začněte vytvořením [dotaz protokolu](../log-query/log-query-overview.md) , která vrací data, která chcete k naplnění datové sady Power BI.  Poté exportovat tento dotaz k [Power Query (M) jazyk](https://msdn.microsoft.com/library/mt807488.aspx) které může využívat Power BI Desktopu.
 
 1. [Vytvořit dotaz protokolu v Log Analytics](../log-query/get-started-portal.md) k extrakci dat pro datové sady.
-2. Vyberte **exportovat** > **Power BI dotazu (M)**.  Tento dotaz exportuje do textového souboru s názvem **PowerBIQuery.txt**. 
+2. Vyberte **exportovat** > **Power BI dotazu (M)** .  Tento dotaz exportuje do textového souboru s názvem **PowerBIQuery.txt**. 
 
     ![Export prohledávání protokolů](media/powerbi/export-analytics.png)
 

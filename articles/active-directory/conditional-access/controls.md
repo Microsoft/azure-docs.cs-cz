@@ -1,8 +1,8 @@
 ---
-title: Co jsou řízení přístupu v Azure Active Directory podmíněného přístupu? | Dokumenty Microsoft
+title: Co je řízení přístupu v Azure Active Directory podmíněného přístupu? | Dokumenty Microsoft
 description: Zjistěte, jak řízení přístupu v Azure Active Directory podmíněný přístup do práce.
 services: active-directory
-keywords: conditional access to apps, conditional access with Azure AD, secure access to company resources, conditional access policies
+keywords: Podmíněný přístup k aplikacím, podmíněný přístup s Azure AD, zabezpečený přístup k prostředkům společnosti, zásady podmíněného přístupu
 documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: daveba
@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/23/2019
+ms.date: 06/15/2019
 ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: acc30bc18921b79be3b5e5b2ae340eab29dd5bcf
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 206b5fef3e4e686bd237fe0f45cfb91dccd4626f
+ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66305763"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67136496"
 ---
-# <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Co jsou řízení přístupu v Azure Active Directory podmíněného přístupu?
+# <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Co je řízení přístupu v Azure Active Directory podmíněného přístupu?
 
 S [podmíněného přístupu Azure Active Directory (Azure AD)](../active-directory-conditional-access-azure-portal.md), jak ověřeného přístupu uživatele můžete řídit vašich cloudových aplikacích. V zásadách podmíněného přístupu definujte odpověď ("to") důvod Aktivace zásady ("Když taková situace nastane").
 
@@ -49,7 +49,7 @@ Existují dva typy ovládacích prvků:
 
 - **Ovládací prvky relací** – Pokud chcete omezit přístup v rámci relace
 
-Toto téma vysvětluje různé ovládací prvky, které jsou k dispozici v podmíněný přístup Azure AD. 
+Toto téma vysvětluje různé ovládací prvky, které jsou k dispozici v podmíněného přístupu Azure AD. 
 
 ## <a name="grant-controls"></a>Udělit řízení
 
@@ -72,7 +72,7 @@ Pomocí služby Multi-Factor authentication pomáhá chránit prostředky přís
 
 ### <a name="compliant-device"></a>Odpovídající zařízení
 
-Můžete nakonfigurovat zásady podmíněného přístupu, které jsou založené na zařízení. Cílem zásad podmíněného přístupu podle zařízení je jenom udělit přístup k aplikacím, vybraný cloud z [spravovaných zařízeních](require-managed-devices.md). Vyžadování aby zařízení bylo označené jako vyhovující je jednou z možností máte k omezení přístupu ke spravovaným zařízením. Zařízení může být označený jako kompatibilní s Intune (pro libovolné zařízení, operačního systému) nebo systém MDM třetí strany pro zařízení s Windows 10. Systémy MDM třetí strany pro typy zařízení, operačního systému než Windows 10 nejsou podporovány. 
+Můžete nakonfigurovat zásady podmíněného přístupu, které jsou založené na zařízení. Cílem zásad podmíněného přístupu na základě zařízení je jenom udělit přístup k aplikacím, vybraný cloud z [spravovaných zařízeních](require-managed-devices.md). Vyžadování aby zařízení bylo označené jako vyhovující je jednou z možností máte k omezení přístupu ke spravovaným zařízením. Zařízení může být označený jako kompatibilní s Intune (pro libovolné zařízení, operačního systému) nebo systém MDM třetí strany pro zařízení s Windows 10. Systémy MDM třetí strany pro typy zařízení, operačního systému než Windows 10 nejsou podporovány. 
 
 Vaše zařízení potřebuje k registraci do služby Azure AD, než může být označený jako kompatibilní. Pokud chcete zaregistrovat zařízení, máte tři možnosti: 
 
@@ -84,9 +84,9 @@ Další informace najdete v tématu [vyžadování spravovaných zařízení pro
 
 ### <a name="hybrid-azure-ad-joined-device"></a>Zařízení připojené k hybridní službě Azure AD
 
-Vyžaduje hybridní zařízení připojeného k Azure AD je další možností je třeba nakonfigurovat zásady podmíněného přístupu podle zařízení. Tento požadavek se vztahuje na Windows stolní počítače, přenosné počítače a organizace tablety, které jsou připojené k místní Active Directory. Pokud je vybraná tato možnost, své zásady podmíněného přístupu uděluje pokusů o přístup k zařízení, které jsou připojené k vaší místní Active Directory a Azure Active Directory.  
+Vyžaduje hybridní zařízení připojeného k Azure AD je další možností je třeba nakonfigurovat zásady podmíněného přístupu na základě zařízení. Tento požadavek se vztahuje na Windows stolní počítače, přenosné počítače a organizace tablety, které jsou připojené k místní Active Directory. Pokud je vybraná tato možnost, své zásady podmíněného přístupu uděluje pokusů o přístup k zařízení, které jsou připojené k vaší místní Active Directory a Azure Active Directory.  
 
-Další informace najdete v tématu [nastavit zásady podmíněného přístupu podle zařízení Azure Active Directory](require-managed-devices.md).
+Další informace najdete v tématu [nastavit zásady podmíněného přístupu na základě zařízení Azure Active Directory](require-managed-devices.md).
 
 ### <a name="approved-client-app"></a>Klientem schválenou aplikaci
 
@@ -100,7 +100,7 @@ S klientem schválených aplikací, můžete vyžadovat, aby klientská aplikace
 Vzhledem k tomu, že vaši zaměstnanci používají mobilní zařízení pro osobní a pracovní úkoly, můžete chtít mít možnost chránit firemní data při přístupu pomocí zařízení i v případě, kdy nejsou spravujete sami.
 Můžete použít [zásady ochrany aplikací Intune](https://docs.microsoft.com/intune/app-protection-policy) k ochraně dat vaší společnosti není závislá na řešení správy mobilních zařízení (MDM).
 
-Pomocí zásad ochrany aplikací, můžete omezit přístup pro klientské aplikace, které předaly do Azure AD má obdržení [zásady ochrany aplikací Intune](https://docs.microsoft.com/intune/app-protection-policy). Například můžete omezit přístup k Exchangi Online k aplikaci Outlook, která má zásady ochrany aplikací Intune. Zásady podmíněného přístupu, která vyžaduje zásady ochrany aplikací se také označuje jako [zásady podmíněného přístupu založeného na ochranu aplikací](app-protection-based-conditional-access.md). 
+Pomocí zásad ochrany aplikací, můžete omezit přístup pro klientské aplikace, které předaly do Azure AD má obdržení [zásady ochrany aplikací Intune](https://docs.microsoft.com/intune/app-protection-policy). Například můžete omezit přístup k Exchangi Online k aplikaci Outlook, která má zásady ochrany aplikací Intune. Zásady podmíněného přístupu, která vyžaduje zásady ochrany aplikací se také označuje jako [zásad podmíněného přístupu na základě ochrany aplikace](app-protection-based-conditional-access.md). 
 
 Vaše zařízení musí být zaregistrované do služby Azure AD, než aplikace může být označený jako zásady, které jsou chráněné.
 
@@ -125,18 +125,20 @@ Poskytovatelé aktuálně nabízí kompatibilní služby patří:
 
 - [Duo zabezpečení](https://duo.com/docs/azure-ca)
 - [Datacard Entrust](https://www.entrustdatacard.com/products/authentication/intellitrust)
+- [GSMA](https://mobileconnect.io/azure/)
 - [Ping Identity](https://documentation.pingidentity.com/pingid/pingidAdminGuide/index.shtml#pid_c_AzureADIntegration.html)
 - RSA
 - [SecureAuth](https://docs.secureauth.com/pages/viewpage.action?pageId=47238992#)
 - [Silverfort](https://www.silverfort.io/company/using-silverfort-mfa-with-azure-active-directory/)
 - [Symantec VIP](https://help.symantec.com/home/VIP_Integrate_with_Azure_AD)
+- [Thales (Gemalto)](https://resources.eu.safenetid.com/help/AzureMFA/Azure_Help/Index.htm)
 - [Trusona](https://www.trusona.com/docs/azure-ad-integration-guide)
 
 Další informace o těchto služeb obraťte se na zprostředkovatele přímo.
 
 ### <a name="creating-custom-controls"></a>Vytváření vlastních ovládacích prvků
 
-Chcete-li vytvořit vlastní ovládací prvek, obrátíte nejprve poskytovatele, který chcete využívat. Každý poskytovatel jiného subjektu než Microsoft má vlastní proces a požadavky registrace, přihlášení k odběru nebo v opačném případě se stanou součástí služby a k označení, kterou chcete integrovat s podmíněným přístupem. V tomto okamžiku poskytovateli vám poskytne bloku dat ve formátu JSON. Tato data umožňuje zprostředkovatele a podmíněného přístupu spolupráce pro vašeho tenanta, vytvoří nový ovládací prvek a definuje, jak podmíněný přístup můžete říct, pokud vaši uživatelé úspěšně provedly ověřování s poskytovateli.
+Chcete-li vytvořit vlastní ovládací prvek, obrátíte nejprve poskytovatele, který chcete využívat. Každý poskytovatel jiného subjektu než Microsoft má vlastní proces a požadavky registrace, přihlášení k odběru nebo v opačném případě se stanou součástí služby a k označení, kterou chcete integrovat s podmíněným přístupem. V tomto okamžiku poskytovateli vám poskytne bloku dat ve formátu JSON. Tato data umožňuje zprostředkovatele a podmíněného přístupu spolupráce pro vašeho tenanta, vytvoří nový ovládací prvek a definuje, jak podmíněný přístup, že pokud vaši uživatelé mají úspěšně provést ověření s poskytovatelem.
 
 Vlastní ovládací prvky nelze použít s Identity Protection automatizace vyžadování vícefaktorového ověřování nebo zvýšení oprávnění role v Privileged Identity Manager (PIM).
 
@@ -182,6 +184,6 @@ Další informace naleznete v tématu:
 
 ## <a name="next-steps"></a>Další postup
 
-- Pokud chcete vědět, jak nakonfigurovat zásady podmíněného přístupu najdete v tématu [vyžadovat vícefaktorové ověřování pro konkrétní aplikace s podmíněným přístupem Azure Active Directory](app-based-mfa.md).
+- Pokud chcete vědět, jak nakonfigurovat zásady podmíněného přístupu najdete v tématu [vyžadovat vícefaktorové ověřování pro konkrétní aplikace, pomocí Azure Active Directory podmíněného přístupu](app-based-mfa.md).
 
-- Pokud jste připraveni nakonfigurovat zásady podmíněného přístupu pro vaše prostředí, přečtěte si [osvědčené postupy pro podmíněný přístup v Azure Active Directory](best-practices.md).
+- Pokud jste připraveni ke konfiguraci zásad podmíněného přístupu pro vaše prostředí, najdete v článku [osvědčené postupy pro podmíněný přístup v Azure Active Directory](best-practices.md).

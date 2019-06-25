@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 08/09/2018
 ms.author: genli
 ms.openlocfilehash: c5f92d564a93823fd9c0f932fa95f20d4e827761
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60734470"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Řešení potíží s nástrojem pro vyrovnávání zatížení Azure
@@ -38,13 +38,13 @@ Je možné, neodpovídá back-endového fondu nástroje pro vyrovnávání zatí
 - Brána firewall nebo skupinu zabezpečení sítě neblokuje port v back-endového fondu nástroje pro vyrovnávání zatížení virtuálních počítačů 
 - Další konfigurace v nástroji pro vyrovnávání zatížení
 
-### <a name="cause-1-load-balancer-backend-pool-vm-is-unhealthy"></a>1. příčina: Back-endového fondu nástroje pro vyrovnávání zatížení virtuálního počítače není v pořádku 
+### <a name="cause-1-load-balancer-backend-pool-vm-is-unhealthy"></a>1\. příčina: Back-endového fondu nástroje pro vyrovnávání zatížení virtuálního počítače není v pořádku 
 
 **Ověřování a řešení**
 
 Chcete-li vyřešit tento problém, přihlášení do zúčastněných virtuálních počítačů a zkontrolujte, jestli je stav virtuálního počítače v pořádku a můžou reagovat na **PsPing** nebo **použít příkaz TCPing** z jiného virtuálního počítače ve fondu. Pokud virtuální počítač není v pořádku nebo je schopna odpovědět na test, musíte mohli problém vyřešit a získat virtuální počítač zpět do stavu v pořádku, předtím, než se mohl podílet na Vyrovnávání zatížení.
 
-### <a name="cause-2-load-balancer-backend-pool-vm-is-not-listening-on-the-probe-port"></a>2. příčina: Načíst back-endového fondu nástroje pro vyrovnávání, kterou virtuální počítač nenaslouchá na portu sondy
+### <a name="cause-2-load-balancer-backend-pool-vm-is-not-listening-on-the-probe-port"></a>2\. příčina: Načíst back-endového fondu nástroje pro vyrovnávání, kterou virtuální počítač nenaslouchá na portu sondy
 Pokud virtuální počítač je v pořádku, ale neodpovídá na test, pak jednou z možných důvodů může být, že port testu není otevřen v účasti virtuální počítač nebo virtuální počítač nenaslouchá na portu.
 
 **Ověřování a řešení**
@@ -55,7 +55,7 @@ Pokud virtuální počítač je v pořádku, ale neodpovídá na test, pak jedno
 3. Pokud státu port není uvedena jako **NASLOUCHAJÍCÍ**, nakonfigurujte správný port. 
 4. Můžete také vybrat jiný port, který je uveden jako **NASLOUCHAJÍCÍ**a aktualizujte konfiguraci nástroje pro vyrovnávání zatížení odpovídajícím způsobem.              
 
-### <a name="cause-3-firewall-or-a-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vms"></a>3. důvod: Brána firewall nebo skupinu zabezpečení sítě neblokuje port v back-endového fondu nástroje pro vyrovnávání zatížení virtuálních počítačů  
+### <a name="cause-3-firewall-or-a-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vms"></a>3\. důvod: Brána firewall nebo skupinu zabezpečení sítě neblokuje port v back-endového fondu nástroje pro vyrovnávání zatížení virtuálních počítačů  
 Pokud brána firewall na virtuálním počítači blokuje port testu nebo jeden nebo více síťové skupiny zabezpečení nakonfigurované v podsíti nebo na virtuálním počítači, neumožňuje testu a Oslovte port, je schopna odpovědět na sondu stavu virtuálního počítače.          
 
 **Ověřování a řešení**
@@ -89,7 +89,7 @@ Pokud back-endový fond, virtuální počítač je uveden jako v pořádku a odp
 * Přístup k nástroje pro vyrovnávání zatížení ze stejného virtuálního počítače a síťovou kartu 
 * Přístup k front-endu nástroje pro vyrovnávání zatížení Internet ze zúčastněných back-endového fondu nástroje pro vyrovnávání zatížení virtuálních počítačů 
 
-### <a name="cause-1-load-balancer-backend-pool-vm-is-not-listening-on-the-data-port"></a>1. příčina: Načíst back-endového fondu nástroje pro vyrovnávání, kterou virtuální počítač není připraven na datovém portu 
+### <a name="cause-1-load-balancer-backend-pool-vm-is-not-listening-on-the-data-port"></a>1\. příčina: Načíst back-endového fondu nástroje pro vyrovnávání, kterou virtuální počítač není připraven na datovém portu 
 Pokud virtuální počítač neodpovídá na přenos dat, může být vzhledem k tomu, že cílový port není otevřen v zapojený virtuální počítač nebo virtuální počítač nenaslouchá na portu. 
 
 **Ověřování a řešení**
@@ -99,7 +99,7 @@ Pokud virtuální počítač neodpovídá na přenos dat, může být vzhledem k
 3. Pokud port není uvedená se stavem "NASLOUCHÁNÍ", nakonfigurovat na port naslouchacího procesu správné 
 4. Pokud port, který je označen jako naslouchající, zkontrolujte cílové aplikace na tomto portu pro všechny možné problémy. 
 
-### <a name="cause-2-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vm"></a>2. příčina: Skupina zabezpečení sítě neblokuje port v back-endového fondu nástroje pro vyrovnávání zatížení virtuálních počítačů  
+### <a name="cause-2-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vm"></a>2\. příčina: Skupina zabezpečení sítě neblokuje port v back-endového fondu nástroje pro vyrovnávání zatížení virtuálních počítačů  
 
 Pokud jeden nebo více skupin zabezpečení sítě nakonfigurované v podsíti nebo na virtuálním počítači, blokuje Zdrojová IP adresa nebo portu pro virtuální počítač se nemůže odpovědět.
 
@@ -110,7 +110,7 @@ Pokud jeden nebo více skupin zabezpečení sítě nakonfigurované v podsíti n
 * Pokud žádné z pravidel, blokují přenosy, odeberte a znovu nakonfigurovat pravidla pro povolení provozu data.  
 * Test, pokud virtuální počítač má teď začali reagovat na sond stavu.
 
-### <a name="cause-3-accessing-the-load-balancer-from-the-same-vm-and-network-interface"></a>3. důvod: Přístup k nástroje pro vyrovnávání zatížení virtuálních počítačů a síťových rozhraní 
+### <a name="cause-3-accessing-the-load-balancer-from-the-same-vm-and-network-interface"></a>3\. důvod: Přístup k nástroje pro vyrovnávání zatížení virtuálních počítačů a síťových rozhraní 
 
 Pokud vaše aplikace hostované v back-endového virtuálního počítače nástroje pro vyrovnávání zatížení pokouší o přístup k jiné aplikace hostované na stejnou back-endového virtuálního počítače přes stejném síťovém rozhraní, se o nepodporovaný scénář a se nezdaří. 
 

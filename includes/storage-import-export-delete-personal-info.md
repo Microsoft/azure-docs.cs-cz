@@ -9,11 +9,11 @@ ms.date: 05/18/2018
 ms.author: cshoe
 ms.custom: include file
 ms.openlocfilehash: e6a0ded137162328fd446b65ddb4a15fa6f1db88
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66114978"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67175220"
 ---
 ## <a name="deleting-personal-information"></a>Odstranění osobní údaje
 
@@ -24,7 +24,7 @@ Osobní údaje vztahující se k importu/exportu služby (přes portál a rozhra
 - Jméno kontaktu
 - Telefonní číslo
 - Email
-- Ulice
+- Ulice a číslo
 - Město
 - PSČ
 - Stav

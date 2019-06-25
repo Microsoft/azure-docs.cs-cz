@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
 ms.openlocfilehash: 0af6e87d3e0b4b3b40b63db07384d4a33a9d43e1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66154205"
 ---
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>Nastavte Oracle ASM na linuxovém virtuálním počítači Azure  
@@ -530,7 +530,7 @@ Nastavení instalace Oracle ASM, proveďte následující kroky:
 5. V **vytvořit skupinu disku** dialogové okno:
 
    - Zadejte název skupiny disku **FRA**.
-   - V části **redundance**vyberte **externí (žádný)**.
+   - V části **redundance**vyberte **externí (žádný)** .
    - V části **vyberte discích**vyberte **ORCL_FRA**.
    - V části **velikost alokační jednotky**vyberte **4**.
    - Klikněte na tlačítko `ok` k vytvoření skupiny disků.

@@ -18,10 +18,10 @@ ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b5e175a8cdd1622add90bd80df63303fe914ab9c
-ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66430803"
 ---
 # <a name="application-configuration-options"></a>Možnosti konfigurace aplikace
@@ -38,7 +38,7 @@ Ve vašem kódu, je inicializovat nového klienta veřejné nebo důvěrnými in
 ## <a name="authority"></a>Autorita
 Oprávnění je adresa URL, která určuje adresář, který MSAL můžete požádat o tokeny od. Běžné autority jsou:
 
-- https://login.microsoftonline.com/&lt; tenanta&gt;/, kde &lt;tenanta&gt; je ID tenanta domény přidružené k tohoto tenanta Azure AD nebo tenanta Azure Active Directory (Azure AD). Použít pouze k přihlášení uživatelů konkrétní organizace.
+- https://login.microsoftonline.com/&lt ; tenanta&gt; /, kde &lt; tenanta&gt; je ID tenanta domény přidružené k tohoto tenanta Azure AD nebo tenanta Azure Active Directory (Azure AD). Použít pouze k přihlášení uživatelů konkrétní organizace.
 - https://login.microsoftonline.com/common/. Použít k přihlášení uživatelů s pracovní a školní účty nebo osobní účty Microsoft.
 - https://login.microsoftonline.com/organizations/. Použít k přihlášení uživatelů s pracovním a školním účtům.
 - https://login.microsoftonline.com/consumers/. Použít k přihlášení uživatelů s (dříve označované jako účty Windows Live ID) jenom osobní účty Microsoft.

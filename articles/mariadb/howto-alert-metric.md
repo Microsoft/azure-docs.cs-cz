@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.openlocfilehash: ce9804a4ecad4cd0f2e797038dc10c71b50de9bf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61040976"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mariadb"></a>Nastavení upozornění na metriky pro službu Azure Database pro MariaDB pomocí webu Azure portal
@@ -46,13 +46,13 @@ Můžete nakonfigurovat a získat informace o použití pravidel upozornění:
 
 6. Vyberte ze seznamu signálů, které se mají generovat výstrahy na metriku. V tomto příkladu vyberte "Procenta úložiště".
    
-   ![Vybrat metriku](./media/howto-alert-metric/6-configure-signal-logic.png)
+   ![Vyberte metriku](./media/howto-alert-metric/6-configure-signal-logic.png)
 
 7. Konfigurace, včetně logika upozornění **podmínku** (např.) "Větší než"), **prahová hodnota** (např.) 85 procent), **Časová agregace**, **období** času musí být splněny pravidlo metriky před výstrah aktivačních událostí (např.) "Za posledních 30 minut") a **frekvence**.
    
    Vyberte **provádí** po dokončení.
 
-   ![Vybrat metriku](./media/howto-alert-metric/7-set-threshold-time.png)
+   ![Vyberte metriku](./media/howto-alert-metric/7-set-threshold-time.png)
 
 8. V rámci **skupiny akcí** vyberte **vytvořit nový** k vytvoření nové skupiny pro příjem oznámení o výstraze.
 

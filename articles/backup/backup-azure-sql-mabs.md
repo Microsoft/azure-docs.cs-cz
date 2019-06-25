@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/24/2017
 ms.author: kasinh
 ms.openlocfilehash: 72b2368979f0c9e546e1c7ef7fc462bf1d64c947
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60782051"
 ---
 # <a name="back-up-sql-server-to-azure-with-azure-backup-server"></a>Zálohování SQL serveru do Azure s Azure Backup serveru
@@ -64,7 +64,7 @@ Než začnete, ujistěte se, že máte [nainstalované a připravené Azure Back
     Pokud **automaticky rozšiřovat svazky** je vybraná možnost, MABS lze účet pro zvýšení záložní svazek při nárůstu jejich objemu produkčního prostředí. Pokud **automaticky rozšiřovat svazky** možnost není vybraná, MABS omezuje na úložiště zálohování pro zdroje dat ve skupině ochrany.
 9. Správci mít přenosu tomto prvotním zálohování ručně (mimo síť) Chcete-li se vyhnout zahlcení šířky pásma nebo v síti. Mohou také nakonfigurovat čas, kdy se může stát počáteční přenos. Klikněte na **Další**.
 
-    ![Metoda počáteční replikace](./media/backup-azure-backup-sql/pg-manual.png)
+    ![Metodu počáteční replikace](./media/backup-azure-backup-sql/pg-manual.png)
 
     Kopie prvotní zálohy. vyžaduje přenos celý zdroj dat (databáze SQL serveru) z provozního serveru (počítač s SQL serverem) pro MABS. Tato data můžou být velké a přenášení dat přes síť může být delší než šířka pásma. Z tohoto důvodu se mohou správci přenosu prvotní zálohování: **Ručně** (pomocí vyměnitelného média) Chcete-li se vyhnout zahlcení šířky pásma, nebo **automaticky přes síť** (v určený čas).
 

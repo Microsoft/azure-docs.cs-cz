@@ -4,25 +4,22 @@ description: Nasazujte prostředky Azure s využitím šablon Resource Manageru 
 services: azure-resource-manager
 documentationcenter: ''
 author: mumian
-manager: dougeby
-editor: tysonn
 ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 05/23/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 9c3fda8dfac5d95e66238c17a0233b1b729c9970
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a42ccb1c0e60f5bf1568ccea13392186577f2875
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67060261"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205722"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>Kurz: Pomocí Správce nasazení Azure pomocí šablon Resource Manageru (Public preview)
 
-Zjistěte, jak pomocí [Azure Deployment Manageru](./deployment-manager-overview.md) nasazovat aplikace napříč několika oblastmi. Pokud chcete použít nástroj Deployment Manager, je potřeba vytvořit dvě šablony:
+Zjistěte, jak pomocí [Azure Deployment Manageru](./deployment-manager-overview.md) nasazovat aplikace napříč několika oblastmi. Pokud máte radši rychlejší přístup [rychlý start Azure Deployment Manager](https://github.com/Azure-Samples/adm-quickstart) vytvoří požadované konfigurace v rámci vašeho předplatného a přizpůsobí artefakty pro nasazení aplikace v několika oblastech. Rychlý start provádí stejné úlohy, stejně jako v tomto kurzu.
+
+Pokud chcete použít nástroj Deployment Manager, je potřeba vytvořit dvě šablony:
 
 * **Šablona topologie:** popisuje prostředky Azure, ze kterých se skládá vaše aplikace, a kam se mají nasadit.
 * **Šablona uvedení:** popisuje kroky, které se mají provést při nasazování aplikací.
@@ -46,9 +43,8 @@ Tento kurz se zabývá následujícími úkony:
 
 Další zdroje informací:
 
-- [Reference k rozhraní REST API Azure Deployment Manager](https://docs.microsoft.com/rest/api/deploymentmanager/).
-- [Kurz: Použít kontrolu v nástroji Azure Deployment Manager](./deployment-manager-tutorial-health-check.md).
-- [Ukázky Azure Deployment Manager](https://github.com/Azure-Samples/adm-quickstart).
+* [Reference k rozhraní REST API Azure Deployment Manager](https://docs.microsoft.com/rest/api/deploymentmanager/).
+* [Kurz: Použít kontrolu v nástroji Azure Deployment Manager](./deployment-manager-tutorial-health-check.md).
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 

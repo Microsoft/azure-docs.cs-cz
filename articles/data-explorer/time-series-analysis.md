@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/07/2019
 ms.openlocfilehash: 7415e13a445a73af197362c6cfbd3a865a2fea02
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65604063"
 ---
 # <a name="time-series-analysis-in-azure-data-explorer"></a>Analýzu časových řad v Průzkumníku dat Azure
@@ -34,7 +34,7 @@ Výsledná tabulka obsahuje sloupec časového razítka, tři sloupce kontextov�
 
 |   |   |   |   |   |
 | --- | --- | --- | --- | --- |
-|   | Časové razítko | BrowserVer | OsVer | Země nebo oblast |
+|   | Časové razítko | BrowserVer | OsVer | Země/oblast |
 |   | 2016-08-25 09:12:35.4020000 | Chrome 51.0 | Windows 7 | Spojené království |
 |   | 2016-08-25 09:12:41.1120000 | Chrome 52.0 | Windows 10 |   |
 |   | 2016-08-25 09:12:46.2300000 | Chrome 52.0 | Windows 7 | Spojené království |
@@ -142,7 +142,7 @@ demo_series3
 
 |   |   |   |   |
 | --- | --- | --- | --- |
-|   | období | Skóre | dny |
+|   | období | Skóre | days |
 |   | 84 | 0.820622786055595 | 7 |
 |   | 12 | 0.764601405803502 | 1 |
 
@@ -180,7 +180,7 @@ demo_many_series1
 
 |   |   |   |   |   |   |
 | --- | --- | --- | --- | --- | --- |
-|   | TIMESTAMP | Loc | anonOp | DB | Přečtená data |
+|   | TIMESTAMP | Loc | anonOp | DB | DataRead |
 |   | 2016-09-11 21:00:00.0000000 | Loc 9 | 5117853934049630089 | 262 | 0 |
 |   | 2016-09-11 21:00:00.0000000 | Loc 9 | 5117853934049630089 | 241 | 0 |
 |   | 2016-09-11 21:00:00.0000000 | Loc 9 | -865998331941149874 | 262 | 279862 |
@@ -222,7 +222,7 @@ demo_many_series1
 
 |   |   |
 | --- | --- |
-|   | Count |
+|   | Počet |
 |   | 18339 |
 
 Teď vytvoříme vytvořit sadu 18339 časových řad pro metriku čtení počtu. Přidáme `by` klauzule příkazu zkontrolujte series, použití lineární regrese a vyberte horní dva časové řady, do kterých se nejvýznamnější snížení trendů:

@@ -19,35 +19,26 @@
         - name: Pomocí Node.js
           href: stream-files-nodejs-quickstart.md
     - name: Kódování načteného souboru a streamování videa
-      items:
-        - name: S využitím .NET
-          displayName: 'encode, encoding, job, transform'
-          href: stream-files-tutorial-with-api.md
+      displayName: 'encode, encoding, job, transform'
+      href: stream-files-tutorial-with-api.md
     - name: Živé streamování
-      items:
-        - name: S využitím .NET
-          href: stream-live-tutorial-with-api.md
+      href: stream-live-tutorial-with-api.md
+      displayName: 'Live Events, Live Outputs, ingest'
     - name: Analýza videa
-      items:
-        - name: S využitím .NET
-          displayName: 'job, transform, VideoAnalyzerPreset, AudioAnalyzerPreset'
-          href: analyze-videos-tutorial-with-api.md
+      displayName: 'job, transform, VideoAnalyzerPreset, AudioAnalyzerPreset'
+      href: analyze-videos-tutorial-with-api.md
     - name: Dynamické šifrování s využitím AES-128
-      items:
-        - name: S využitím .NET
-          href: protect-with-aes128.md
+      href: protect-with-aes128.md
     - name: Dynamické šifrování s využitím DRM
-      items:
-        - name: S využitím .NET
-          displayName: 'PlayReady, Widevine, FairPlay'
-          href: protect-with-drm.md
+      displayName: 'PlayReady, Widevine, FairPlay'
+      href: protect-with-drm.md
 - name: Koncepty
   items:
     - name: Přehled
       href: concepts-overview.md
     - name: Nahrávání na cloud a úložiště
       items:
-        - name: Úložiště
+        - name: Storage
           href: storage-account-concept.md
           displayName: Storage side encryption
         - name: Prostředky
@@ -122,6 +113,7 @@
           href: live-streaming-overview.md
         - name: Živé události a výstupy
           href: live-events-outputs-concept.md
+          displayName: 'vanity, ingest'
         - name: Doporučené kodéry pro kódování v reálném čase
           href: recommended-on-premises-live-encoders.md
         - name: Použití cloudového DVR

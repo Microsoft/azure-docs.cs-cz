@@ -8,31 +8,16 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: cacd5510147ce997efec922f4b4656956a098d88
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2553aa95d5028c510b4e1a1b7f51a9f410bcea51
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66676935"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67154860"
 ---
 # <a name="register-the-microsoftvmwarecloudsimple-resource-provider-on-your-azure-subscription"></a>Registrace poskytovatele prostředků Microsoft.VMwareCloudSimple v rámci předplatného Azure
 
-Služba CloudSimple umožňuje využívat řešení VMware Azure podle CloudSimple. Pokud chcete používat službu CloudSimple, musí nejprve být povolená na vaše předplatné Azure. Pak je možné zaregistrovat službu Microsoft.VMwareCloudSimple jako poskytovatele prostředků.
-
-## <a name="enable-the-cloudsimple-service"></a>Povolit službu CloudSimple
-
-Chcete-li povolit službu CloudSimple na vaše předplatné Azure, otevřete žádost o podporu s [podpory Microsoftu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest). Vyberte následující možnosti, když odešlete žádost.
-
-* Typ problému: **Technické**
-* Předplatné: **ID vašeho předplatného**
-* Typ služby: **Řešení VMware podle CloudSimple**
-* Typ problému: **Kvóta vyhrazené uzly**
-* Podtyp problému: **Navyšte kvótu vyhrazené uzly**
-* Předmět: **Povolit službu CloudSimple**
-
-Taky se můžete obrátit na obchodního zástupce společnosti Microsoft [ azurevmwaresales@microsoft.com ](mailto:azurevmwaresales@microsoft.com). Zadejte ID svého předplatného Azure v e-mailu.  
-
-Po povolení služby CloudSimple pro vaše předplatné můžete povolit zprostředkovatele prostředků v rámci předplatného.
+Služba CloudSimple umožňuje využívat řešení VMware Azure podle CloudSimple. Služba Microsoft.VMwareCloudSimple můžete zaregistrovat poskytovatele prostředků.
 
 ## <a name="register-the-resource-provider"></a>Registrace poskytovatele prostředků
 

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/29/2019
 ms.author: absha
 ms.openlocfilehash: 9160d300270bf1ab5043bee632d27bcc4b7bf332
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66476036"
 ---
 # <a name="rewrite-http-headers-with-application-gateway"></a>Přepsání hlavičky protokolu HTTP pomocí služby Application Gateway
@@ -20,7 +20,7 @@ ms.locfileid: "66476036"
 
 Hlavičky protokolu HTTP umožňují klientem a serverem pro předávání dalších informací s požadavku nebo odpovědi. Pomocí přepsání tyto hlavičky, lze provádět důležité úkoly, jako je například pole hlavičky související se zabezpečením, jako HSTS / X-XSS ochrany přidání, odebrání pole hlavičky odpovědi, které může odhalit citlivé informace a odebírá se informace o portu X-předané – pro hlavičky.
 
-Služba Application Gateway umožňuje přidat, odebrat nebo aktualizovat hlaviček žádostí a odpovědí protokolu HTTP při požadavku a odpovědi pakety přesunout mezi klientem a back endové fondy. A umožňuje přidání podmínky k zajištění, že určených hlaviček jsou zapsány pouze v případě, že jsou splněny určité podmínky.
+Když se pakety požadavků a odpovědí pohybují mezi klientem a back-endovými fondy, služba Application Gateway umožňuje přidat, odebrat nebo aktualizovat hlavičky požadavků a odpovědí HTTP. Umožňuje také přidat určité podmínky, které zajistí, že se zadané hlavičky přepíší pouze při splnění těchto podmínek.
 
 Služba Application Gateway také podporuje několik [serverových proměnných](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers#server-variables) umožňující ukládání dalších informací o požadavcích a odpovědích. To usnadňuje vytváření pravidla pro přepis výkonné.
 

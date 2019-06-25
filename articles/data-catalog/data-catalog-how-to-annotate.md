@@ -9,10 +9,10 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
 ms.openlocfilehash: 18dfd9eb66c1dc71ecb14bb748d9cdd6afeb00a7
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65953183"
 ---
 # <a name="how-to-annotate-data-sources"></a>Postup přidání poznámek ke zdrojům dat
@@ -34,7 +34,7 @@ Každá z těchto perspektiv je vhodné a Data Catalog používá crowdsourcingo
 ## <a name="different-types-of-annotations"></a>Různé druhy poznámky
 Data Catalog podporuje následující typy poznámky:
 
-| Poznámka | Poznámky |
+| Poznámky | Poznámky |
 | --- | --- |
 | Popisný název |Na úrovni prostředku data, aby datových assetů srozumitelnější můžete zadat popisné názvy. Popisné názvy jsou nejužitečnější, když základní název objektu je nejasné, zkrácený nebo jinak nemá význam pro uživatele. |
 | Popis |Popisy, lze je zadat v datovém assetu a atribut / sloupce úrovně. Popisy jsou krátké formě volného textu poznámky, které popisují uživatele Perspektiva na datový prostředek nebo jeho použití. |

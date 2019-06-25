@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: rimman
 ms.custom: rimman
-ms.openlocfilehash: 956f63dd92c82df0998cfaca76c7ecf5b10f053e
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 3cf075c2909b35bb08ca4cb24aaa3b99597f34c6
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65953850"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203515"
 ---
 # <a name="data-modeling-in-azure-cosmos-db"></a>Modelování dat v Azure Cosmos DB
 
@@ -176,9 +176,9 @@ Stock *zaza* může být prodávají stovky časy v jediném den a tisíce uživ
 
 ## <a name="referencing-data"></a>Odkazy na data
 
-Ano vkládání dat funguje krásně řadě případů ale je jasné, že existují scénáře, kdy denormalizing vaše data budou způsobila více problémů, než je vhodné. Tak co můžeme udělat teď?
+Vkládání dat krásně funguje u mnoha případech ale existují scénáře, kdy denormalizing data způsobí, že více problémů, než je vhodné. Tak co můžeme udělat teď?
 
-Relační databáze nejsou jediným místem, kde můžete vytvářet vztahy mezi entitami. V databázi dokumentů můžete mít informace v jednom dokumentu, který ve skutečnosti má vztah k datům v jiných dokumentech. Teď můžu mi propagaci ještě jednu minutu, že jsme integrovali systémy, které by být vhodnější pro relační databáze ve službě Azure Cosmos DB nebo jiné databáze dokumentů, ale jednoduché vztahy jsou v pořádku a můžou být užitečné.
+Relační databáze nejsou jediným místem, kde můžete vytvářet vztahy mezi entitami. V databázi dokumentů můžete mít informace v jednom dokumentu, které souvisejí s daty v jiných dokumentech. Nedoporučujeme vytvářet systémy, které by být vhodnější pro relační databáze ve službě Azure Cosmos DB nebo jiné databáze dokumentů, ale jednoduché vztahy jsou v pořádku a můžou být užitečné.
 
 V následující JSON jsme se rozhodli používat na příklad, základní portfolio z dříve, ale tentokrát označujeme skladová položka Portfolio místo jeho vložení. Tímto způsobem, při skladová položka mění mnohokrát za den jediný dokument, který je potřeba aktualizovat je jeden uložených dokumentů.
 

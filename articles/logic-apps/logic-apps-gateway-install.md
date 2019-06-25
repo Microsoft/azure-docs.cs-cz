@@ -10,10 +10,10 @@ ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 10/01/2018
 ms.openlocfilehash: 10a6e5c33f6a3c23d98e6eb3380de0d6dc6ac216
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65544490"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Instalace místní brány dat pro Azure Logic Apps
@@ -430,7 +430,7 @@ Tady jsou další lokality místo, kde najdete různé protokoly:
 Najít protokoly událostí pro bránu, postupujte podle těchto kroků:
 
 1. Na počítači s instalací brány otevřete **Prohlížeč událostí**. 
-2. Rozbalte **Prohlížeč událostí (místní)** > **protokoly aplikací a služeb**. 
+2. Rozbalte **Prohlížeč událostí (místní)**  > **protokoly aplikací a služeb**. 
 3. Vyberte **On-premises data gateway služby**.
 
    ![Zobrazení protokolu událostí pro bránu](./media/logic-apps-gateway-install/event-viewer.png)

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
 ms.openlocfilehash: 8b919608dfc562d8db77619d5215a6828a53a4aa
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66165530"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67174949"
 ---
 1. Když jste připojeni k virtuálnímu počítači pomocí Vzdálené plochy, vyhledejte nástroj **Configuration Manager**:
 
@@ -21,7 +21,7 @@ ms.locfileid: "66165530"
 
     ![Povolení protokolu TCP](./media/virtual-machines-sql-server-connection-tcp-protocol/enable-tcp.png)
 
-1. V podokně konzoly klikněte na **SQL Server Services** (Služby SQL Serveru). V podokně podrobností klikněte pravým tlačítkem na **systému SQL Server (*název instance*)** (výchozí instancí je **SQL Server (MSSQLSERVER)**) a potom klikněte na tlačítko **restartovat**se zastaví a restartuje instanci systému SQL Server.
+1. V podokně konzoly klikněte na **SQL Server Services** (Služby SQL Serveru). V podokně podrobností klikněte pravým tlačítkem na **systému SQL Server (*název instance*)** (výchozí instancí je **SQL Server (MSSQLSERVER)** ) a potom klikněte na tlačítko **restartovat**se zastaví a restartuje instanci systému SQL Server.
 
     ![Restartování databázového stroje](./media/virtual-machines-sql-server-connection-tcp-protocol/restart-sql-server.png)
 

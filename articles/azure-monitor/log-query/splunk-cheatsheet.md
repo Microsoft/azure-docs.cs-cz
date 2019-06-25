@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: bwren
 ms.openlocfilehash: fb637197139001c67a4cfa773f897e6701dc1e9c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61425130"
 ---
 # <a name="splunk-to-azure-monitor-log-query"></a>Splunk dotazu protokolu Azure Monitor
@@ -28,23 +28,23 @@ Tento článek je určený jako pomoc uživatelům, kteří znají Splunk učit 
 
 Následující tabulka porovnává koncepty a datových struktur mezi protokoly Splunk a Azure Monitor.
 
- | Koncept  | Splunk | Azure Monitor |  Poznámka
+ | Koncept  | Splunk | Azure Monitor |  Komentář
  | --- | --- | --- | ---
- | Jednotka nasazení  | Cluster |  Cluster |  Azure Monitor umožňuje libovolné různé dotazy clusteru. Splunk je nepodporuje. |
+ | Jednotka nasazení  | Clusteru |  Clusteru |  Azure Monitor umožňuje libovolné různé dotazy clusteru. Splunk je nepodporuje. |
  | Mezipaměti dat |  kontejnery  |  Zásady ukládání do mezipaměti a jejich uchovávání |  Určuje období a ukládání do mezipaměti úrovně pro data. Toto nastavení přímo ovlivňuje výkon dotazů a náklady na nasazení. |
- | Logický oddíl dat  |  index  |  databáze  |  Umožňuje logické rozdělení data. Obou implementacích povolit sjednocení a propojení mezi tyto oddíly. |
- | Strukturované událost metadat | neuvedeno | tabulka |  Splunk nemá koncept vystaveni vyhledávací jazyk metadat události. Protokoly Azure monitoru nemá koncept tabulku, která má sloupce. Každá instance události je namapována na řádek. |
- | Datový záznam | událost | řádek |  Terminologie pouze změny. |
+ | Logický oddíl dat  |  index  |  database  |  Umožňuje logické rozdělení data. Obou implementacích povolit sjednocení a propojení mezi tyto oddíly. |
+ | Strukturované událost metadat | neuvedeno | table |  Splunk nemá koncept vystaveni vyhledávací jazyk metadat události. Protokoly Azure monitoru nemá koncept tabulku, která má sloupce. Každá instance události je namapována na řádek. |
+ | Datový záznam | událost | Řádek |  Terminologie pouze změny. |
  | Atribut záznam dat | Pole |  Sloupec |  Ve službě Azure Monitor je předdefinovaná jako součást struktura tabulky. Každá událost ve Splunku, má svou vlastní sadu polí. |
  | Typy | datový typ |  datový typ |  Azure Monitor datové typy jsou více explicitní, jako jsou nastaveny na sloupce. Oba se budou moct pracovat dynamicky datových typů a zhruba ekvivalentní sadu datových typů včetně podpory JSON. |
- | Dotazy a hledání  | hledat | query |  Koncepty jsou v podstatě stejné mezi Azure Monitor a Splunk. |
+ | Dotazy a hledání  | search | query |  Koncepty jsou v podstatě stejné mezi Azure Monitor a Splunk. |
  | Čas ingestování události | Systémový čas | ingestion_time() |  Každé události ve Splunku, získá systému časové razítko času, které události se indexovat. Ve službě Azure Monitor můžete definovat zásadu ingestion_time, který zpřístupňuje systémový sloupec, který může být odkazováno pomocí funkce ingestion_time(). |
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>Funkce
 
 Následující tabulka obsahuje funkce ve službě Azure Monitor, která jsou rovnocenná Splunk funkce.
 
-|Splunk | Azure Monitor |Poznámka
+|Splunk | Azure Monitor |Komentář
 |---|---|---
 |strcat – | strcat()| (1) |
 |split  | split() | (1) |
@@ -55,10 +55,10 @@ Následující tabulka obsahuje funkce ve službě Azure Monitor, která jsou ro
 | substr – | substring() | (1)<br>Všimněte si také, že používá Splunk založen na jedničce indexy. Azure Monitor poznámky indexy od nuly. |
 | ToLower |  tolower() | (1) |
 | ToUpper | toupper() | (1) |
-| shoda | odpovídá regulárnímu |  (2)  |
-| reg. výr. | odpovídá regulárnímu | Ve Splunku `regex` je operátor. Ve službě Azure Monitor je relační operátor. |
+| Shoda | odpovídá regulárnímu |  (2)  |
+| regex | odpovídá regulárnímu | Ve Splunku `regex` je operátor. Ve službě Azure Monitor je relační operátor. |
 | searchmatch | == | Ve Splunku `searchmatch` umožňuje vyhledat přesný řetězec.
-| náhodná | rand()<br>rand(n) | Splunk vaší funkce vrátí číslo od nuly do 2<sup>31</sup>-1. Azure Monitor "vrátí číslo v rozsahu od 0,0 do 1,0, nebo pokud parametr zadán, mezi 0 a n-1.
+| náhodné | rand()<br>rand(n) | Splunk vaší funkce vrátí číslo od nuly do 2<sup>31</sup>-1. Azure Monitor "vrátí číslo v rozsahu od 0,0 do 1,0, nebo pokud parametr zadán, mezi 0 a n-1.
 | teď | now() | (1)
 | relative_time | ToTimeSpan() | (1)<br>Ve službě Azure Monitor je ekvivalent na Splunk relative_time (datetimeVal, offsetVal) datetimeVal + totimespan(offsetVal).<br>Například <code>search &#124; eval n=relative_time(now(), "-1d@d")</code> stane <code>...  &#124; extend myTime = now() - totimespan("1d")</code>.
 
@@ -158,7 +158,7 @@ Najdete v článku [agregací ve službě Azure Monitor protokolu dotazy](aggreg
 
 
 
-### <a name="join"></a>Spojit
+### <a name="join"></a>Připojit
 Spojení ve Splunku má významné omezení. Poddotaz má limit 10000 výsledky (nastavte v konfiguračním souboru nasazení) a existuje digitálních omezený počet spojení.
 
 | |  | |

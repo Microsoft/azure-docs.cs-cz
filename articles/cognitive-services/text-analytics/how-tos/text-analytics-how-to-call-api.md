@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: aahi
-ms.openlocfilehash: 720a6c57d4f1a6079f78244559a25018349bd378
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e98979ac43945ebc9af82d5f89db01855429ca70
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60831388"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67304209"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Volání REST API pro analýzu textu
 
@@ -40,7 +40,7 @@ Vstup musí být v nezpracované nestrukturovaného textu JSON. XML není podpor
 
 Aktuálně můžete odeslat dokumenty stejný pro všechny operace rozhraní Text Analytics: zabarvení, klíčových frází, rozpoznávání jazyka a identifikace entit. (Schéma je pravděpodobně lišit pro každou analýzy v budoucnu.)
 
-| Element | Platné hodnoty | Povinné? | Využití |
+| Element | Platné hodnoty | Požadováno? | Využití |
 |---------|--------------|-----------|-------|
 |`id` |Datový typ je řetězec, ale v praxi ID dokumentu mají být celá čísla. | Požaduje se | Systém používá ID zadáte strukturovat výstup. Pro každé ID v požadavku se generují kódech jazyků, klíčové fráze a skóre mínění.|
 |`text` | Nestrukturované nezpracovaný text, maximálně 5 120 znaků. | Požaduje se | Pro rozpoznávání jazyka lze vyjádřit text v libovolném jazyce. Pro analýzu mínění, extrakci klíčových frází a identifikace entit, musí mít text [podporovaný jazyk](../text-analytics-supported-languages.md). |
@@ -87,7 +87,7 @@ Služba přijímá požádat o velikost až 1 MB. Pokud používáte Postman (ne
   + [Rozpoznávání entit](text-analytics-how-to-entity-linking.md)  
 
 
-6. Klikněte na tlačítko **odeslat** odešlete žádost. Můžete odeslat až 100 požadavků za minutu. 
+6. Klikněte na tlačítko **odeslat** odešlete žádost. Najdete v článku [limity dat](../overview.md#data-limits) části v přehledu o počtu požadavků můžete odesílat za minutu a sekundu.
 
    V nástroji Postman by se odpověď zobrazí v dalším okně dolů, jako jeden dokument JSON, s položkou pro každé ID dokumentu, který je zadaný v požadavku.
 

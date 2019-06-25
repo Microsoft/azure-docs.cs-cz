@@ -15,17 +15,17 @@ ms.devlang: azurecli
 ms.date: 01/11/2018
 ms.author: delhan
 ms.openlocfilehash: 513ce98703e67053ab0bcac3e6fc7a3e959f6870
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60307383"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64717270"
 ---
 # <a name="use-remote-tools-to-troubleshoot-azure-vm-issues"></a>Použití nástrojů pro vzdálenou potíží virtuálního počítače Azure
 
 Při odstraňování potíží v Azure virtuální počítač (VM) můžete připojit k virtuálnímu počítači pomocí nástrojů remote tools, které jsou popsané v tomto článku namísto použití protokolu RDP (Remote Desktop).
 
-## <a name="serial-console"></a>Konzola sériového portu
+## <a name="serial-console"></a>Sériová konzola
 
 Použití [konzoly sériového portu virtuálního počítače](serial-console-windows.md) ke spouštění příkazů na vzdáleném virtuálním počítači Azure.
 
@@ -43,7 +43,7 @@ psexec \\<computer>-u user -s cmd
 >* Parametr -s zajišťuje, že příkaz je vyvolán pomocí systémový účet (oprávnění správce).
 >* PsExec používá porty TCP 135 a 445. Proto se dvěma porty musí být ve firewallu otevřené.
 
-## <a name="run-commands"></a>Spouštěcí příkazy
+## <a name="run-commands"></a>Spouštění příkazů
 
 Zobrazit [spustit Powershellové skripty ve virtuálním počítači Windows pomocí příkazu Spustit](../windows/run-command.md) Další informace o tom, jak používat funkci spustit příkazy ke spouštění skriptů na virtuálním počítači.
 
@@ -236,7 +236,7 @@ Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
 
 1. Z jiného virtuálního počítače ve stejné virtuální síti, spusťte instanci **Services.msc**.
 
-2. Klikněte pravým tlačítkem na **služby (místní počítač)**.
+2. Klikněte pravým tlačítkem na **služby (místní počítač)** .
 
 3. Vyberte **připojit k jinému počítači**.
 

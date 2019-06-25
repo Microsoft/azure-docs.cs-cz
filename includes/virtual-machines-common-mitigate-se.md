@@ -9,10 +9,10 @@ ms.date: 06/04/2019
 ms.author: cynthn;kareni
 ms.custom: include file
 ms.openlocfilehash: 46ade0ecb0e2e081585803a0b1bc7eab989e21e6
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66735230"
 ---
 **Poslední aktualizace dokumentů**: 4. června 2019 3:00 PM PST.
@@ -28,7 +28,7 @@ Další informace o tom, jak zabezpečení je integrované do všech oblastí Az
 > [!NOTE] 
 > Vzhledem k tomu, že nejprve publikování tohoto dokumentu, několik variant této třídy ohrožení zabezpečení se poskytly. Microsoft nadále být výrazně investovali do ochrany našich zákazníků a poskytuje doprovodné materiály. Na této stránce se aktualizují, jak budeme dál uvolnit další opravy. 
 > 
-> 14. května 2019 [Intel zveřejněn](https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00233.html) novou sadu spekulativního spouštění na straně kanálu chyby zabezpečení označované jako mikroarchitektury vzorkování dat (MDS naleznete pokyny Microsoftu ohledně zabezpečení [ADV190013](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV190013)), který více CVEs bylo přiřazeno: 
+> 14\. května 2019 [Intel zveřejněn](https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00233.html) novou sadu spekulativního spouštění na straně kanálu chyby zabezpečení označované jako mikroarchitektury vzorkování dat (MDS naleznete pokyny Microsoftu ohledně zabezpečení [ADV190013](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV190013)), který více CVEs bylo přiřazeno: 
 > - CVE-2019-11091 - mikroarchitektury Data vzorkování paměti Uncacheable (MDSUM)
 > - CVE-2018-12126 - Store mikroarchitektury vyrovnávací paměti pro Data vzorkování (MSBDS) 
 > - CVE-2018-12127 - mikroarchitektury zatížení Port dat vzorkování (MLPDS)

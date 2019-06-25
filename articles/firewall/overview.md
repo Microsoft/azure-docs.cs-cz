@@ -6,19 +6,19 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 6/5/2019
+ms.date: 6/21/2019
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 4b33174b20cdf42e29cdb5b4786122513d2c6080
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: deca4d1f66950e89148089d2984eb9cb35c470a8
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66753740"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67304574"
 ---
 # <a name="what-is-azure-firewall"></a>Co je brána Azure Firewall?
 
-Azure Firewall je spravovaná cloudová služba síťového zabezpečení, která chrání vaše prostředky ve virtuálních sítích Azure. Je plně stavová brána firewall jako služba s integrovanou vysokou dostupnost a škálovatelnost cloudu neomezený. 
+Azure Firewall je spravovaná cloudová služba síťového zabezpečení, která chrání vaše prostředky ve virtuálních sítích Azure. Je plně stavová brána firewall jako služba s integrovanou vysokou dostupnost a škálovatelnost cloudu neomezený.
 
 ![Přehled brány firewall](media/overview/firewall-threat.png)
 
@@ -31,6 +31,21 @@ Brána Azure Firewall nabízí následující funkce:
 ### <a name="built-in-high-availability"></a>Integrovaná vysoká dostupnost
 
 Vysoká dostupnost je součástí, takže žádné služby Vyrovnávání zatížení další požadované a není nic, které je potřeba nakonfigurovat.
+
+### <a name="availability-zones-public-preview"></a>Zóny dostupnosti (public preview)
+
+Během nasazování rozložit několika zónami dostupnosti pro zajištění vyšší dostupnosti je možné nakonfigurovat brány Firewall na Azure. Díky zónám dostupnosti vaší dostupnost zvýší na 99,99 % dostupnost. Další informace najdete v tématu Brána Firewall Azure [smlouva o úrovni služeb (SLA)](https://azure.microsoft.com/support/legal/sla/azure-firewall/v1_0/). 99,99 % dostupnosti smlouvy SLA se nabízí, když vyberete dva nebo více zónách dostupnosti.
+
+Brána Firewall služby Azure můžete také přiřadit ke konkrétní zóně pouze z důvodů blízkosti pomocí služeb standard 99,95 % SLA.
+
+Se neúčtují žádné další poplatky pro bránu firewall nasazeného v zóně dostupnosti. Existují však další náklady pro příchozí a odchozí datové přenosy spojené se zónami dostupnosti. Další informace najdete v tématu [podrobnosti o cenách šířky pásma](https://azure.microsoft.com/pricing/details/bandwidth/).
+
+Zóny dostupnosti Azure brány Firewall jsou dostupné v oblastech, které podporují zóny dostupnosti. Další informace najdete v tématu [co jsou zóny dostupnosti v Azure?](../availability-zones/az-overview.md#services-support-by-region)
+
+> [!NOTE]
+> Zóny dostupnosti se dá nakonfigurovat jenom během nasazení. Nemůžete nakonfigurovat stávající brány firewall zahrnout zóny dostupnosti.
+
+Další informace o zónách dostupnosti najdete v tématu [co jsou zóny dostupnosti v Azure?](../availability-zones/az-overview.md)
 
 ### <a name="unrestricted-cloud-scalability"></a>Neomezená cloudová škálovatelnost
 
@@ -58,11 +73,23 @@ Pro bránu firewall můžete povolit filtrování na základě analýzy hrozeb, 
 
 ### <a name="outbound-snat-support"></a>Podpora pro odchozí SNAT
 
-Veškeré IP adresy pro odchozí provoz z virtuálních sítí se překládají na veřejnou IP adresu brány Azure Firewall na základě zdroje (SNAT). Můžete identifikovat a povolit provoz pocházející z vaší virtuální sítě do vzdálených internetových cílů.
+Veškeré IP adresy pro odchozí provoz z virtuálních sítí se překládají na veřejnou IP adresu brány Azure Firewall na základě zdroje (SNAT). Můžete identifikovat a povolit provoz pocházející z vaší virtuální sítě do vzdálených internetových cílů. Brány Firewall na Azure není SNAT, pokud cílová IP adresa je rozsah privátních IP za [IANA RFC 1918](https://tools.ietf.org/html/rfc1918). Pokud vaše organizace používá veřejnou rozsah IP adres pro privátní sítě, brána Firewall služby Azure se provoz do jedné z brány firewall na privátní IP adresy v AzureFirewallSubnet SNAT.
 
 ### <a name="inbound-dnat-support"></a>Podpora DNAT u příchozích přenosů
 
 Příchozí síťový provoz na veřejnou IP adresu vaší brány firewall se překládá (překlad cílových adres) a filtruje na privátní IP adresy ve vašich virtuálních sítích.
+
+### <a name="multiple-public-ips-public-preview"></a>Několik veřejných IP adres (public preview)
+
+Můžete přiřadit víc veřejných IP adres (až 600) s bránou firewall.
+
+To umožňuje používat následující scénáře:
+
+- **DNAT** -více instancí standardní port lze přeložit do back-end serverů. Například pokud máte dvě veřejné IP adresy, může překládat TCP port 3389 (RDP) pro obě IP adresy.
+- **SNAT** – další porty jsou k dispozici pro odchozí připojení SNAT, snižuje riziko vyčerpání portů SNAT. Brána Firewall služby Azure v tuto chvíli náhodně vybere zdroj veřejnou IP adresu pro připojení. Pokud máte jakékoli podřízené filtrování ve vaší síti, budete muset povolit všechny veřejné IP adresy přidružené k vaší brány firewall.
+
+> [!NOTE]
+> Ve verzi public preview je-li přidat nebo odebrat veřejnou IP adresu do spuštěného brány firewall, nemusí existující příchozí připojení pomocí pravidel pro DNAT fungovat 40 – 120 sekund.
 
 ### <a name="azure-monitor-logging"></a>Protokolování Azure Monitor
 
@@ -82,7 +109,11 @@ Pravidla síťového filtrování pro jiné protokoly než TCP/UDP (třeba ICMP)
 |Rozsah portů v pravidlech sítě a aplikace|Porty s vysokou jsou vyhrazené pro správu a stavu jsou omezená na 64 000 portů sondy. |Pracujeme na toto omezení zmírnit.|
 |Upozornění na hrozby intelligence může získat zakryté hvězdičkami|Pravidla sítě s cílem 80 a 443 pro odchozí filtrování masky hrozeb intelligence výstrahy, když se nakonfigurovaný tak, aby režimu jen pro výstrahy.|Vytvoření výstupní filtrování 80/443 pomocí pravidel pro aplikace. Nebo změňte režim threat intelligence **výstrahy a Odepřít**.|
 |Azure Brána Firewall používá pouze pro překlad názvů Azure DNS|Brány Firewall Azure řeší plně kvalifikované názvy domény pouze pomocí služby Azure DNS. Vlastní server DNS se nepodporuje. Neexistuje žádný vliv na překlad názvů DNS v jiných podsítích.|Pracujeme na toto omezení zmírnit.|
-|Azure bránu Firewall SNAT/DNAT nefunguje pro privátní IP cíle|Podpora brány Firewall SNAT/DNAT Azure je omezený na příchozí a výchozí přenos dat sítě Internet. SNAT/DNAT aktuálně nefunguje pro privátní IP cíle. Například paprsků do paprsku.|Toto je na silniční mapu pro budoucí aktualizaci.
+|Azure bránu Firewall SNAT/DNAT nefunguje pro privátní IP cíle|Podpora brány Firewall SNAT/DNAT Azure je omezený na příchozí a výchozí přenos dat sítě Internet. SNAT/DNAT aktuálně nefunguje pro privátní IP cíle. Například paprsků do paprsku.|Jedná se o aktuální omezení.|
+|Nelze odebrat první veřejná IP adresa|Nelze odebrat první veřejná IP adresa přiřazená bránu firewall, pokud je brána firewall bylo zrušeno přiřazení nebo odstranit.|Jedná se o účel.|
+|Pokud přidáte nebo odeberete veřejnou IP adresu, nemusí fungovat dočasně DNAT pravidla.| Pokud přidáte nebo odeberete veřejnou IP adresu do spuštěného brány firewall, nemusí fungovat existující příchozí připojení pomocí pravidel pro DNAT 40 – 120 sekund.|Toto je omezení verze preview pro veřejnost k použití této funkce.|
+|Zóny dostupnosti se dá nakonfigurovat jenom během nasazení.|Zóny dostupnosti se dá nakonfigurovat jenom během nasazení. Zóny dostupnosti nelze nakonfigurovat po nasazení brány firewall.|Jedná se o účel.|
+
 ## <a name="next-steps"></a>Další postup
 
 - [Kurz: Nasazení a konfiguraci brány Firewall Azure pomocí webu Azure portal](tutorial-firewall-deploy-portal.md)

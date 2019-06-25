@@ -51,6 +51,8 @@
     - name: Návody
       expanded: true
       items:
+        - name: Správa sdílení B2B
+          href: delegate-invitations.md
         - name: Správa pozvánek
           items:
             - name: Správci přidávají uživatele B2B
@@ -61,8 +63,6 @@
               href: google-federation.md
             - name: Ověřování jednorázovým heslem
               href: one-time-passcode.md
-            - name: Zásady sdílení B2B
-              href: delegate-invitations.md
             - name: Povolení nebo blokování pozvánek
               href: allow-deny-list.md
             - name: Přidání uživatelů B2B bez pozvánky

@@ -12,10 +12,10 @@ ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
 ms.openlocfilehash: e3570ab1227ca388ac62bffdc74bb68b1ddc41d1
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62105662"
 ---
 # <a name="monitor-and-manage-wunderlist-by-using-azure-logic-apps"></a>Monitorování a správa Wunderlistu s využitím Azure Logic Apps
@@ -61,7 +61,7 @@ S Azure Logic Apps a konektor Wunderlist můžete vytvořit automatizovaných ú
        -nebo-
 
      * Mezi kroky, ve které chcete přidat akci přesuňte ukazatel nad šipku mezi kroky. 
-     Vyberte znaménko plus (**+**), který se zobrazí a pak vyberte **přidat akci**.
+     Vyberte znaménko plus ( **+** ), který se zobrazí a pak vyberte **přidat akci**.
      
        Do vyhledávacího pole zadejte jako filtr "wunderlistu". 
        V seznamu akcí vyberte požadovanou akci.

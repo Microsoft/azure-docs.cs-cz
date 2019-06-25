@@ -12,10 +12,10 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
 ms.openlocfilehash: 998fcba50636cd92b14bdbe1633c2548e84a6bfc
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64696406"
 ---
 # <a name="connect-to-sql-server-or-azure-sql-database-from-azure-logic-apps"></a>Připojení k serveru SQL Server nebo databázi Azure SQL z Azure Logic Apps
@@ -63,7 +63,7 @@ V Azure Logic Apps, musí začínat každá aplikace logiky [aktivační událos
 3. Pokud se zobrazí výzva k připojení podrobnosti [vytvořit připojení SQL](#create-connection). 
    Nebo, pokud už připojení existuje, vyberte **název tabulky** , který chcete v seznamu.
 
-   ![Vyberte tabulku](./media/connectors-create-api-sqlazure/azure-sql-database-table.png)
+   ![Výběr tabulky](./media/connectors-create-api-sqlazure/azure-sql-database-table.png)
 
 4. Nastavte **Interval** a **frekvence** vlastnosti, které určují, jak často aplikace logiky zkontroluje tabulku.
 
@@ -90,7 +90,7 @@ V Azure Logic Apps [akce](../logic-apps/logic-apps-overview.md#logic-app-concept
    ![Zvolte možnost "Nový krok", "Přidat akci"](./media/connectors-create-api-sqlazure/add-action.png)
    
    Přidání akce mezi stávající kroky, najeďte myší na připojení šipku. 
-   Vyberte znaménko plus (**+**), který se zobrazí a klikněte na tlačítko **přidat akci**.
+   Vyberte znaménko plus ( **+** ), který se zobrazí a klikněte na tlačítko **přidat akci**.
 
 2. Do vyhledávacího pole zadejte jako filtr "sql server". Ze seznamu akcí vyberte dělat SQL, který chcete. 
 

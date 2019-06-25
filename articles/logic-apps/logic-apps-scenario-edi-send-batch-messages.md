@@ -9,11 +9,11 @@ ms.reviewer: estfan, LADocs
 ms.topic: article
 ms.date: 08/19/2018
 ms.openlocfilehash: d6d3a7111f3a5e49e32eba8ca4f09d692538cb87
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60427880"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "64715800"
 ---
 # <a name="send-edi-messages-in-batches-to-trading-partners-with-azure-logic-apps"></a>Odesílání zpráv EDI v dávkách obchodními partnery pomocí Azure Logic Apps
 
@@ -65,14 +65,14 @@ Pro tento příjemce služby batch, zadejte v dávkovém režimu, název, krité
 
 4. Nastavte služby batch příjemce vlastnosti: 
 
-   | Vlastnost | Value | Poznámky | 
+   | Vlastnost | Hodnota | Poznámky | 
    |----------|-------|-------|
-   | **Režim dávky** | Vložené |  |  
+   | **Režim dávky** | vložené |  |  
    | **Název dávky** | TestBatch | K dispozici pouze s **vložené** režimu služby batch | 
    | **Kritéria uvolnění** | Na základě plánu podle počtu zpráv, | K dispozici pouze s **vložené** režimu služby batch | 
    | **Počet zpráv** | 10 | K dispozici pouze s **zprávy podle počtu** kritéria uvolnění | 
    | **Interval** | 10 | K dispozici pouze s **podle plánu** kritéria uvolnění | 
-   | **Frekvence** | minuta | K dispozici pouze s **podle plánu** kritéria uvolnění | 
+   | **Frekvence** | Minuta | K dispozici pouze s **podle plánu** kritéria uvolnění | 
    ||| 
 
    ![Zadejte podrobnosti o triggeru batch](./media/logic-apps-scenario-EDI-send-batch-messages/batch-receiver-release-criteria.png)
@@ -126,7 +126,7 @@ K Ujistěte se, že vaše batch příjemce funguje podle očekávání, můžete
 
    | Vlastnost | Popis | 
    |----------|-------------|
-   | **Metoda** | Z tohoto seznamu, vyberte **příspěvek**. | 
+   | **– Metoda** | Z tohoto seznamu, vyberte **příspěvek**. | 
    | **Identifikátor URI** | Umožňuje vygenerovat URI pro vaši žádost o bin a do tohoto pole zadejte tento identifikátor URI. | 
    | **Text** | Klikněte do tohoto pole a po otevření seznamu dynamického obsahu vyberte **tělo** token, který se zobrazí v části, **kódování Batch podle názvu smlouvy**. <p>Pokud nevidíte **tělo** token vedle **kódování Batch podle názvu smlouvy**vyberte **zobrazit další**. | 
    ||| 

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 9b9922602218280d58331a755ed0dfed7df96f40
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66155893"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67175043"
 ---
 #### <a name="to-cable-your-device-for-power"></a>K zapojení kabeláže zařízení pro výkon
 > [!NOTE]
@@ -37,13 +37,13 @@ ms.locfileid: "66155893"
     
     **Kabeláž napájení**
     
-    | Popisek | Popis |
+    | Štítek | Popis |
     |:--- |:--- |
     | 1 |Primární zařízení |
     | 2 |PCM 0 |
     | 3 |PCM 1 |
-    | 4 |Řadič 0 |
-    | 5 |Řadič 1 |
+    | 4 |Kontroler 0 |
+    | 5 |Kontroler 1 |
     | 6 |Kontroleru EBOD 0 |
     | 7 |Kontroleru EBOD 1 |
     | 8 |Skříň EBOD |

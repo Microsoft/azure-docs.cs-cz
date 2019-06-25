@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: cynthn
 ms.openlocfilehash: c2ed33aea77b5478e8d17f6bd0213ef3e778b806
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66125220"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67175344"
 ---
 ## <a name="transfer-local-files-to-cloud-shell"></a>Přenos místních souborů do služby Cloud Shell
 `clouddrive` Directory se synchronizuje s okna portálu služby Azure storage. Pomocí tohoto okna přenos místních souborů nebo ze sdílené složky. Aktualizace souborů z v rámci Cloud Shell se projeví ve službě file storage grafického uživatelského rozhraní při aktualizaci okna.
@@ -21,7 +21,7 @@ ms.locfileid: "66125220"
 2. Vyberte cílový soubor.
 3. Vyberte **Stáhnout** tlačítko.
 
-### <a name="upload-files"></a>Nahrát soubory
+### <a name="upload-files"></a>Nahrání souborů
 
 ![Místní soubory k odeslání](../articles/cloud-shell/media/persisting-shell-storage/upload.png)
 1. Přejdete na připojené sdílené složky.

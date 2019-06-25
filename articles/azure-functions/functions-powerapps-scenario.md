@@ -13,10 +13,10 @@ ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: ''
 ms.openlocfilehash: 26f6502f63b39d3f1ecf8dfeb09c8df4daa63b68
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65786118"
 ---
 # <a name="call-a-function-from-powerapps"></a>Volání funkce z PowerApps
@@ -100,13 +100,13 @@ Nyní jste připraveni vytvořit aplikaci v PowerApps a přidat vlastní rozhran
 
     1. Na **Data** panelu, klikněte na tlačítko **přidat do aplikace statická data**.
 
-        ![Přidat zdroj dat](media/functions-powerapps-scenario/add-static-data.png)
+        ![Přidání zdroje dat](media/functions-powerapps-scenario/add-static-data.png)
 
         Obvykle by číst a zapisovat data z externího zdroje, ale přidáte data aplikace Excel jako statická data vzhledem k tomu, že toto je vzorový.
 
     1. Přejděte k souboru aplikace Excel můžete uložit, vyberte **turbíny** tabulky a klikněte na tlačítko **připojit**.
 
-        ![Přidat zdroj dat](media/functions-powerapps-scenario/choose-table.png)
+        ![Přidání zdroje dat](media/functions-powerapps-scenario/choose-table.png)
 
 
 1. Jako zdroj dat přidáte vlastní rozhraní API.
@@ -136,7 +136,7 @@ Teď, když zdroje dat jsou k dispozici v aplikaci, přidáte obrazovku do vaš�
 
 1. V **Data** panelu, vyberte **turbíny** ze seznamu.
 
-    ![Vyberte zdroj dat](media/functions-powerapps-scenario/select-data-source.png)
+    ![Výběr zdroje dat](media/functions-powerapps-scenario/select-data-source.png)
 
     Datová sada neobsahuje bitové kopie, takže teď že můžete změnit rozložení, aby lépe vyhovovaly data. 
 

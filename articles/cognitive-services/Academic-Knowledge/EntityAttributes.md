@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
 ms.openlocfilehash: 485775660ecfdf2291365ab98c9188295ea2cbde
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61340175"
 ---
 # <a name="entity-attributes"></a>Atributy entit
@@ -22,13 +22,13 @@ ms.locfileid: "61340175"
 Academic graph se skládá ze 7 typů entit. Všechny entity budou mít Entity ID a typ Entity.
 
 ## <a name="common-entity-attributes"></a>Běžné atributy entit
-Název    |Popis                |Type       | Operace
+Name    |Popis                |Type       | Operace
 ------- | ------------------------- | --------- | ----------------------------
-ID      |ID entity                  |Int64      |Rovná se
-Ty      |Typ entity                |Výčet   |Rovná se
+ID      |Entity ID                  |Int64      |Je rovno
+Ty      |Typ entity                |Výčet   |Je rovno
 
 ## <a name="entity-type-enum"></a>Entitu typu enum
-Název                                                            |value
+Name                                                            |value
 ----------------------------------------------------------------|-----
 [Paper](PaperEntityAttributes.md)                               |0
 [Author](AuthorEntityAttributes.md)                             |1

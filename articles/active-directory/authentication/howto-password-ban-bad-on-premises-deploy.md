@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c22c9c202e6de3b31b99803dce4a07d38287a92
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 134ab2a5f0b1b1569cdf4747f5bbe3f895ba4e8f
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67057283"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67293017"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Nasazení ochrany hesel Azure AD
 
@@ -145,7 +145,7 @@ Existují dva instalační programy požadovaných pro ochranu hesel Azure AD. J
    > Může existovat významnému zpoždění před dokončením poprvé, tato rutina se spouští pro konkrétního tenanta Azure. Pokud selhání je nahlášeno, nemusíte dělat starosti o toto zpoždění.
 
 1. Zaregistrujte doménové struktuře.
-   * Je třeba inicializovat místní doménové struktuře služby Active Directory se přihlašovací údaje potřebné ke komunikaci s Azure pomocí `Register-AzureADPasswordProtectionForest` rutiny Powershellu. Rutina vyžaduje přihlašovací údaje globálního správce pro vašeho tenanta Azure. Také vyžaduje oprávnění správce v místním Active Directory domény v kořenové doméně doménové struktury. Tento krok spustí jednou pro každou doménovou strukturu.
+   * Je třeba inicializovat místní doménové struktuře služby Active Directory se přihlašovací údaje potřebné ke komunikaci s Azure pomocí `Register-AzureADPasswordProtectionForest` rutiny Powershellu. Rutina vyžaduje přihlašovací údaje globálního správce pro vašeho tenanta Azure. Také vyžaduje místní oprávnění správce služby Active Directory organizace. Tento krok spustí jednou pro každou doménovou strukturu.
 
       `Register-AzureADPasswordProtectionForest` Rutina podporuje následujících režimů ověřování tři.
 
@@ -219,7 +219,7 @@ Existují dva instalační programy požadovaných pro ochranu hesel Azure AD. J
 
    V obou případech se nahradit `http://yourhttpproxy.com:8080` adresu a port konkrétní proxy serveru HTTP.
 
-   Pokud váš proxy server HTTP je nakonfigurovaný pro nás zásad autorizace, je nutné udělit přístup k účtu počítače služby Active Directory počítače, který hostuje službu proxy serveru pro ochranu heslem.
+   Pokud váš proxy server HTTP je nakonfigurován pro použití zásad autorizace, je nutné udělit přístup k účtu počítače služby Active Directory počítače, který hostuje službu proxy serveru pro ochranu heslem.
 
    Doporučujeme zastavit a restartovat službu proxy můžete vytvořit nebo aktualizovat *AzureADPasswordProtectionProxy.exe.config* souboru.
 

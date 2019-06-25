@@ -2,23 +2,14 @@
   href: /azure/hdinsight
 - name: Přehled
   items:
-    - name: Informace o Apache Hadoopu v HDInsightu
+    - name: Co je Apache Hadoop v HDInsightu?
       href: apache-hadoop-introduction.md
-      maintainContext: true
-    - name: Architektura Apache Hadoop v HDInsightu
-      href: ../hdinsight-hadoop-architecture.md
-      maintainContext: true
-    - name: Součásti systému Apache Hadoop ve službě HDInsight
-      href: ../hdinsight-component-versioning.md
-      maintainContext: true
-    - name: HDInsight 4.0
-      href: ../hdinsight-version-release.md
       maintainContext: true
 - name: Šablony Rychlý start
   items:
     - name: Vytvoření clusteru Apache Hadoop – portál
       href: apache-hadoop-linux-create-cluster-get-started-portal.md
-    - name: Vytvoření clusteru Apache Hadoop – šablona Resource Manageru
+    - name: Vytvoření clusteru Apache Hadoop – šablona
       displayName: 'resource manager template, arm template, resource manager group'
       href: apache-hadoop-linux-tutorial-get-started.md
 - name: Kurzy
@@ -28,9 +19,6 @@
       maintainContext: true
     - name: Vytváření clusterů na vyžádání
       href: ../hdinsight-hadoop-create-linux-clusters-adf.md
-      maintainContext: true
-    - name: Monitorování dostupnosti clusterů s využitím protokolů Azure Monitoru a Ambari
-      href: ../hdinsight-cluster-availability.md
       maintainContext: true
 - name: Ukázky
   items:
@@ -45,6 +33,18 @@
       maintainContext: true
 - name: Koncepty
   items:
+    - name: Monitorování dostupnosti clusterů s využitím protokolů Azure Monitoru a Ambari
+      href: ../hdinsight-cluster-availability.md
+      maintainContext: true
+    - name: HDInsight 4.0
+      href: ../hdinsight-version-release.md
+      maintainContext: true
+    - name: Architektura Apache Hadoop v HDInsightu
+      href: ../hdinsight-hadoop-architecture.md
+      maintainContext: true
+    - name: Komponenty systému Apache Hadoop v HDInsightu
+      href: ../hdinsight-component-versioning.md
+      maintainContext: true
     - name: Plánování kapacity clusteru
       href: ../hdinsight-capacity-planning.md
       maintainContext: true
@@ -471,9 +471,6 @@
   items:
     - name: Clustery s Windows
       items:
-        - name: Migrace clusterů s Windows na clustery s Linuxem
-          href: ../hdinsight-migrate-from-windows-to-linux.md
-          maintainContext: true
         - name: Migrace řešení .NET do linuxových clusterů
           href: ../hdinsight-hadoop-migrate-dotnet-to-linux.md
           maintainContext: true

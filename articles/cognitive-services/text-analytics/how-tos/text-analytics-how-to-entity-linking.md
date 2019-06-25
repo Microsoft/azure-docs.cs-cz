@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: aahi
-ms.openlocfilehash: c8319dbcb8cebe51dae2a4d7e8d9749c3ab7674f
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: ff4f9af82024e9d39ad89a39bcb2fe4130de9101
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65231419"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67304184"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Použití s názvem rozpoznávání entit v rozhraní Text Analytics
 
@@ -31,7 +31,7 @@ Propojování entit je schopnost identifikovat a rozpoznat identity entity v tex
 ### <a name="named-entity-recognition-ner"></a>Rozpoznávání pojmenovaných entit (NER)
 Rozpoznávání entit s názvem (NER) je schopnost určit různé entity v textu a uspořádejte je do kategorií na předem definované třídy. Níže jsou uvedeny podporované tříd entit.
 
-V rozhraní Text Analytics [verze 2.1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634), propojování entit a rozpoznávání pojmenovaných entit (NER) jsou k dispozici.
+V rozhraní Text Analytics [verze 2.1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634), propojování entit a rozpoznávání pojmenovaných entit (NER) jsou k dispozici pro několik jazyků. Zobrazit [jazykovou podporu](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition) najdete další informace. 
 
 ### <a name="language-support"></a>Podpora jazyků
 
@@ -39,29 +39,29 @@ Použití rozhraní entity linking v různých jazycích vyžaduje použití odp
 
 ## <a name="supported-types-for-named-entity-recognition"></a>Podporované typy pro rozpoznávání pojmenovaných entit
 
-| Type  | SubType | Příklad: |
+| Typ  | SubType | Příklad: |
 |:-----------   |:------------- |:---------|
-| Osoba        | NENÍ K DISPOZICI\*         | "Jan", "Billem Gatesem"     |
+| Person (Osoba)        | NENÍ K DISPOZICI\*         | "Jan", "Billem Gatesem"     |
 | Location      | NENÍ K DISPOZICI\*         | "Redmond, Washington", "Paříž"  |
-| Organizace  | NENÍ K DISPOZICI\*         | "Microsoft".   |
-| Množství      | Číslo        | "6", "six"     | 
-| Množství      | Procento    | "50 %", "50 %"| 
-| Množství      | Pořadí       | "2", "druhé"     | 
-| Množství      | NumberRange   | "4 až 8"     | 
+| Organizace  | NENÍ K DISPOZICI\*         | "Microsoft"   |
+| Množství      | Číslo        | "6", "šest"     | 
+| Množství      | Procento    | "50 %", "padesát procent"| 
+| Množství      | Pořadí       | "2.", "druhý"     | 
+| Množství      | Číselný rozsah   | "4 až 8"     | 
 | Množství      | Věk           | "90 den starý", "30 let"    | 
-| Množství      | Měna      | "$10.99"     | 
+| Množství      | Měna      | "10,99 USD"     | 
 | Množství      | Dimenze     | "10 mil", "40 cm"     | 
 | Množství      | Teplota   | "32 stupňů"    |
-| DateTime      | NENÍ K DISPOZICI\*         | "6:30 odp. 4. února 2012"      | 
-| DateTime      | Datum          | ". Května 2. 2017", "05/02/2017"   | 
-| DateTime      | Time          | "8: 00", "8:00"  | 
-| DateTime      | DateRange     | "Května 2. na 5. května"    | 
-| DateTime      | timeRange     | "18: 00 do 19: 00"     | 
-| DateTime      | Trvání      | "1 minutu a 45 sekundách"   | 
-| DateTime      | Sada           | "čtvrtek"     | 
-| DateTime      | Časové pásmo      |    | 
+| DateTime      | NENÍ K DISPOZICI\*         | "4. února 2012 – 18:30"      | 
+| DateTime      | Datum          | "2. května 2017", "2. 5. 2017"   | 
+| DateTime      | Čas          | "8: 00", "8:00"  | 
+| DateTime      | Rozsah dat     | "2. května až 5. května"    | 
+| DateTime      | Časový rozsah     | "18:00 až 19:00"     | 
+| DateTime      | Doba trvání      | "1 minuta a 45 sekund"   | 
+| DateTime      | Sada           | "každé úterý"     | 
+| DateTime      | časové pásmo      |    | 
 | zprostředkovatele identity           | NENÍ K DISPOZICI\*         | "https:\//www.bing.com"    |
-| E-mail         | NENÍ K DISPOZICI\*         | "support@contoso.com" |
+| Email         | NENÍ K DISPOZICI\*         | "support@contoso.com" |
 
 \* V závislosti na vstupním a extrahované entit, může vynechat některé entity `SubType`.  Všechny typy podporovaných entit uvedené jsou k dispozici pouze pro angličtina, zjednodušená čínština, francouzština, němčina a španělština jazyky.
 
@@ -105,11 +105,11 @@ Podrobnosti o definici žádosti najdete v článku o [volání rozhraní API pr
 
 ## <a name="step-2-post-the-request"></a>Krok 2: Odeslat žádost
 
-Analýza se provede po přijetí žádosti. Služba přijímá až 100 požadavků na druhý a 1 000 požadavků za minutu. Každá žádost může mít maximální velikost 1 MB.
+Analýza se provede po přijetí žádosti. Najdete v článku [limity dat](../overview.md#data-limits) části v přehledu o velikosti a počtu požadavky můžete odesílat za minutu a sekundu.
 
 Nezapomeňte, že služba je bezstavová. Ve vašem účtu se neukládají žádná data. Výsledky se vrátí okamžitě v odpovědi.
 
-## <a name="step-3-view-results"></a>Krok 3: Zobrazit výsledky
+## <a name="step-3-view-results"></a>Krok 3: Zobrazení výsledků
 
 Všechny žádosti POST vrací odpověď ve formátu JSON s ID a zjištěnými vlastnostmi.
 

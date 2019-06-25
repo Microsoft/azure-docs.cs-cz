@@ -10,16 +10,16 @@ services: iot-dps
 manager: timlt
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 6e1681e4eca923e8e4ce541570b4ed4b3ba9d567
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: 4a6a074c3f677023928fefa5c09eb305b5441dfe
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65834435"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303977"
 ---
 # <a name="enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Registrace zařízení do centra IoT pomocí klienta služby Azure IoT Hub Device Provisioning (.NET)
 
-V předchozím kurzu jste se naučili nastavit zařízení pro připojení ke službě Device Provisioning. V tomto kurzu zjistíte, jak pomocí této služby zřídit zařízení pro jedno centrum IoT s využitím **_jednotlivé registrace_** i **_skupin registrací_**. V tomto kurzu získáte informace o následujících postupech:
+V předchozím kurzu jste se naučili nastavit zařízení pro připojení ke službě Device Provisioning. V tomto kurzu zjistíte, jak pomocí této služby zřídit zařízení pro jedno centrum IoT s využitím **_jednotlivé registrace_** i **_skupin registrací_** . V tomto kurzu získáte informace o následujících postupech:
 
 > [!div class="checklist"]
 > * Registrace zařízení
@@ -60,7 +60,7 @@ Zařízení můžete do služby Device Provisioning zaregistrovat dvěma způsob
 
 1. Pomocí šablony projektu **Konzolová aplikace** vytvořte v sadě Visual Studio projekt konzolové aplikace Visual C#. Pojmenujte projekt **DeviceProvisioning**.
     
-1. V Průzkumníku řešení klikněte pravým tlačítkem na projekt **DeviceProvisioning** a pak klikněte na **Spravovat balíčky NuGet...**.
+1. V Průzkumníku řešení klikněte pravým tlačítkem na projekt **DeviceProvisioning** a pak klikněte na **Spravovat balíčky NuGet...** .
 
 1. V okně **Správce balíčků NuGet** vyberte **Procházet** a vyhledejte **microsoft.azure.devices.provisioning.service**. Vyberte příslušnou položku, kliknutím na **Nainstalovat** nainstalujte balíček **Microsoft.Azure.Devices.Provisioning.Service** a přijměte podmínky použití. Tímto postupem se stáhne a nainstaluje balíček NuGet [sady SDK služby Azure IoT Device Provisioning](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) a jeho závislosti a přidá se na něj odkaz.
 
@@ -121,16 +121,16 @@ Zařízení můžete do služby Device Provisioning zaregistrovat dvěma způsob
         SetRegistrationDataAsync().GetAwaiter().GetResult();
             
         Console.WriteLine("Done, hit enter to exit.");
-        Console.ReadLine();
     }
     catch (Exception ex)
     {
         Console.WriteLine();
         Console.WriteLine("Error in sample: {0}", ex.Message);
     }
+    Console.ReadLine();
     ```
         
-1. V Průzkumníku řešení sady Visual Studio klikněte pravým tlačítkem na své řešení a pak klikněte na **Nastavit projekty po spuštění...**. Vyberte **Jeden spouštěný projekt** a pak v rozevírací nabídce vyberte projekt **DeviceProvisioning**.  
+1. V Průzkumníku řešení sady Visual Studio klikněte pravým tlačítkem na své řešení a pak klikněte na **Nastavit projekty po spuštění...** . Vyberte **Jeden spouštěný projekt** a pak v rozevírací nabídce vyberte projekt **DeviceProvisioning**.  
 
 1. Spusťte aplikaci .NET pro zařízení **DeviceProvisiong**. Pro zařízení by se mělo nastavit zřizování: 
 

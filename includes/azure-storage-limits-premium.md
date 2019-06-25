@@ -9,11 +9,11 @@ ms.date: 03/23/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 7b75e24e5d59206ee8330c3ca9eaf86eacbad13d
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66114808"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67175215"
 ---
 ### <a name="premium-performance-block-blob-storage"></a>Úložiště objektů blob bloku výkon úrovně Premium
 
@@ -21,14 +21,14 @@ Výkon bloku objektů blob v účtu služby premium storage je optimalizovaná p
 
 ### <a name="premium-performance-filestorage-preview"></a>Výkon úrovně Premium úložiště souborů (preview)
 
-Soubory typu Premium, použijte účet jedinečný úložiště s názvem **úložiště souborů (preview)**. Tento typ účtu je navržená pro úlohy s vysokým vstupně-výstupních operací, vysoké propustnosti s konzistentní s nízkou latencí. File storage úrovně Premium se škáluje s velikosti zřízené sdílené složky.
+Soubory typu Premium, použijte účet jedinečný úložiště s názvem **úložiště souborů (preview)** . Tento typ účtu je navržená pro úlohy s vysokým vstupně-výstupních operací, vysoké propustnosti s konzistentní s nízkou latencí. File storage úrovně Premium se škáluje s velikosti zřízené sdílené složky.
 
-|Oblast  |Cíl  |
+|Oblast  |Target  |
 |---------|---------|
 |Maximální počet zřízení velikost     |100 TiB     |
-|Sdílené položky   |Neomezené  |
+|Sdílené složky   |Unlimited  |
 |IOPS     |100 000    |
-|Příchozí přenos|4,136 MiB/s     |
+|Příchozí přenos dat|4,136 MiB/s     |
 |Výchozí přenos|6,204 MiB/s |
 
  Premium soubor sdílet měřítko cíle, najdete v článku [soubory typu Premium škálování cíle](../articles/storage/common/storage-scalability-targets.md#premium-files-scale-targets) oddílu.

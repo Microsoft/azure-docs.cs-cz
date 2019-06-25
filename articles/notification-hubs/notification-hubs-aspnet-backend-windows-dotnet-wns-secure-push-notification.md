@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
 ms.openlocfilehash: cf23ef5df3bdcaad23841da111fa06cc36b4cd57
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61459159"
 ---
 # <a name="securely-push-notifications-from-azure-notification-hubs"></a>Bezpečně nabízená oznámení ze služby Azure Notification Hubs
@@ -90,7 +90,7 @@ V tomto kurzu zabezpečení nabízené ukazuje, jak bezpečně pošle nabízené
 Dalším krokem je vytvoření komponenty na pozadí nabízených oznámení.
 
 1. V Průzkumníku řešení klikněte pravým tlačítkem myši na uzel řešení na nejvyšší úrovni (**řešení SecurePush** v tomto případě), potom klikněte na tlačítko **přidat**, klikněte na **nový projekt**.
-2. Rozbalte **Store aplikace**, pak klikněte na tlačítko **aplikace Windows Phone**, klikněte na **součást prostředí Windows Runtime (Windows Phone)**. Pojmenujte projekt **PushBackgroundComponent**a potom klikněte na tlačítko **OK** pro vytvoření projektu.
+2. Rozbalte **Store aplikace**, pak klikněte na tlačítko **aplikace Windows Phone**, klikněte na **součást prostředí Windows Runtime (Windows Phone)** . Pojmenujte projekt **PushBackgroundComponent**a potom klikněte na tlačítko **OK** pro vytvoření projektu.
 
     ![][12]
 3. V Průzkumníku řešení klikněte pravým tlačítkem myši **PushBackgroundComponent (Windows Phone 8.1)** projektu a pak klikněte na **přidat**, klikněte na **třídy**. Pojmenujte novou třídu `PushBackgroundTask.cs`. Klikněte na tlačítko **přidat** ke generování třídy.

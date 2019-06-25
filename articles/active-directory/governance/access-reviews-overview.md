@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 01/18/2019
+ms.date: 06/05/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1563a023f397999deb5c6abd40843d6a376b0492
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7fcc804db66430598e72e9ebf31a8837eda1cca6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60351403"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67204594"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Co jsou Azure AD access kontroly?
 
@@ -46,7 +46,7 @@ Azure AD umožňuje spolupráci interně ve vaší organizaci a s uživateli z e
 - **Pokud je nemožné automation:** Můžete vytvořit pravidla dynamického členství pro skupiny zabezpečení nebo skupiny Office 365, ale co když HR data není ve službě Azure AD nebo pokud uživatelé stále potřebují přístup po opuštění skupiny pro jejich nahrazení trénování? Potom můžete vytvořit recenzi této skupiny tak zajistěte, aby uživatelům, kteří stále potřebují přístup mají mít nadále přístup.
 - **Když skupiny se používá pro nový účel:** Pokud máte vytvořenou skupinu, která se má synchronizovat s Azure AD nebo pokud budete chtít povolit aplikaci Salesforce pro všichni členové skupiny tým prodeje, bylo by vhodné požádat vlastníka skupiny zkontrolovat členství ve skupině před skupiny se používají v různých riziko co obsahem.
 - **Obchodní důležitá data access:** pro některé prostředky, může být požadováno lidi mimo žádat IT pravidelně odhlášení a zadejte odůvodnění na proč potřebují přístup pro účely auditování.
-- **Chcete-li udržovat seznam výjimek pro zásady:** Ideální světě, všemi uživateli proveďte následujícím způsobem přístup zásady zabezpečení přístupu k prostředkům vaší organizace. Někdy existují však obchodních případů, které vyžadují, abyste provedli výjimky. Jako správce IT můžete spravovat tuto úlohu, vyhnout dohledu výjimky zásad a auditoři poskytnout důkaz, že tyto výjimky jsou pravidelně kontrolovány.
+- **Chcete-li udržovat seznam výjimek pro zásady:** Ideální světě všichni uživatelé by podle zásady přístupu k zabezpečení přístupu k prostředkům vaší organizace. Někdy existují však obchodních případů, které vyžadují, abyste provedli výjimky. Jako správce IT můžete spravovat tuto úlohu, vyhnout dohledu výjimky zásad a auditoři poskytnout důkaz, že tyto výjimky jsou pravidelně kontrolovány.
 - **Požádejte vlastníci skupiny a ověřte, zda že stále potřebují hostů v jejich skupinách:** S některými v místním prostředí IAM, ale nebyl pozvaný hosté může automatizovat přístup zaměstnanců. Pokud skupinu poskytuje hostů přístup k obchodní citlivý obsah a pak její odpovědnosti vlastníka skupiny. potvrďte, hosté ještě legitimní obchodní potřebu přístupu.
 - **Máte pravidelně opakované kontroly:** Můžete nastavit opakování kontroly přístupu uživatelů na sadu frekvencí například týdně, měsíčně, čtvrtletně nebo ročně a recenzenti budou upozorněni na začátku každé revizi. Revidující mohli schválit nebo odepřít přístup s rozhraním popisný a díky inteligentní doporučení.
 
@@ -56,21 +56,34 @@ V závislosti na tom, co chcete zkontrolovat, se vytvoří vaše kontroly přís
 
 | Přístupová práva uživatelů | Recenzenti mohou být | Kontrola vytvořené v | Kontrolor prostředí |
 | --- | --- | --- | --- |
-| Členy skupiny zabezpečení</br>Členové skupiny Office | Zadaný revidující</br>Vlastníci skupiny</br>Vlastní kontroly | Kontroly přístupu Azure AD</br>Skupiny Azure AD | Přístupový panel |
-| Přiřazené k připojené aplikaci | Zadaný revidující</br>Vlastní kontroly | Kontroly přístupu Azure AD</br>Azure AD podnikové aplikace (ve verzi preview) | Přístupový panel |
-| Azure AD role | Zadaný revidující</br>Vlastní kontroly | Azure AD PIM | portál Azure |
-| Role prostředků Azure | Zadaný revidující</br>Vlastní kontroly | Azure AD PIM | portál Azure |
+| Členy skupiny zabezpečení</br>Členové skupiny Office | Zadaný revidující</br>Vlastníci skupiny</br>Svým přezkoumat | Kontroly přístupu Azure AD</br>Skupiny Azure AD | Přístupový panel |
+| Přiřazené k připojené aplikaci | Zadaný revidující</br>Svým přezkoumat | Kontroly přístupu Azure AD</br>Azure AD podnikové aplikace (ve verzi preview) | Přístupový panel |
+| Azure AD role | Zadaný revidující</br>Svým přezkoumat | [Azure AD PIM](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | portál Azure |
+| Role prostředků Azure | Zadaný revidující</br>Svým přezkoumat | [Azure AD PIM](../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | portál Azure |
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="which-users-must-have-licenses"></a>Kteří uživatelé musí mít licence?
 
-Pomocí kontrol přístupu, musí mít jedno z těchto licencí:
+Každý uživatel, který komunikuje s využitím kontrol přístupu musí mít placené licence Azure AD Premium P2. Příklady obsahují:
 
-- Azure AD Premium P2
-- Enterprise Mobility + Security (EMS) E5 licence
+- Správci, kteří vytvoření kontroly přístupu
+- Zkontrolovat vlastníci skupiny, kteří provádějí přístupového
+- Uživatelům přiřadit jako revidující
+- Uživatele, kteří provádějí svým přezkoumat
 
-Další informace najdete v tématu [jak: Registrace pro Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) nebo [Enterprise Mobility + Security E5 zkušební](https://aka.ms/emse5trial).
+Můžete také zadávat do kontrolovat svůj vlastní přístup uživatelů typu Host. Každé placené Azure AD Premium P2 licencí, přiřadit jeden z uživatelů vaší vlastní organizaci můžete pozvat až pět uživatelů typu Host externí příspěvek uživatele Azure AD pro mezifiremní (B2B). Tyto uživatele typu Host můžete také použít funkce Azure AD Premium P2. Další informace najdete v tématu [doprovodné materiály k licencování spolupráce B2B ve službě Azure AD](../b2b/licensing-guidance.md).
 
-## <a name="get-started-with-access-reviews"></a>Začínáme s využitím kontroly přístupu
+Tady je několik ukázkových scénářů, která vám pomůže určit počet licencí, které potřebujete.
+
+| Scénář | Výpočet | Požadovaný počet licencí |
+| --- | --- | --- |
+| Správce vytvoří kontroly přístupu a skupiny s 500 uživateli.<br/>Přiřadí 3 vlastníci skupiny jako revidující. | 1 Správce + 3 vlastníci skupiny | 4 |
+| Správce vytvoří kontroly přístupu a skupiny s 500 uživateli.<br/>Díky svým přezkoumat. | 1 Správce + 500 uživatelů jako kontrolují sami sebe | 501 |
+| Správce vytvoří kontroly přístupu a skupiny s 5 uživateli a 25 uživatelů typu Host.<br/>Díky svým přezkoumat. | 1 Správce + 5 uživatelů jako kontrolují sami sebe<br/>(uživatelé typu Host jsou popsané v poměru vyžaduje 1:5) | 6 |
+| Správce vytvoří kontroly přístupu a skupiny s 5 uživateli a 28 uživatele typu Host.<br/>Díky svým přezkoumat. | 1 Správce + 5 uživatelů jako kontrolují sami sebe + 1 uživatel k pokrytí uživatelů typu Host v poměru vyžaduje 1:5 | 7 |
+
+Informace o tom, jak přiřadit licence pro vaše používá, najdete v části [přiřazení nebo odebrání licencí pomocí portálu Azure Active Directory](../fundamentals/license-users-groups.md).
+
+## <a name="learn-about-access-reviews"></a>Seznamte se s využitím kontroly přístupu
 
 Další informace o vytvoření a provedení kontroly přístupu, podívejte se na tato krátká ukázka:
 
@@ -80,29 +93,9 @@ Pokud jste připravení nasadit kontroly přístupu ve vaší organizaci, postup
 
 >[!VIDEO https://www.youtube.com/embed/X1SL2uubx9M]
 
-## <a name="enable-access-reviews"></a>Povolení kontroly přístupu
+## <a name="license-requirements"></a>Licenční požadavky
 
-Povolit kontroly přístupu, postupujte podle těchto kroků.
-
-1. Jako globální správce nebo Správce uživatelů, přihlaste se k [webu Azure portal](https://portal.azure.com) ve které chcete použít přístup kontroly.
-
-1. Klikněte na tlačítko **všechny služby** a najít přístup kontroly služby.
-
-1. Klikněte na tlačítko **kontrol přístupu**.
-
-    ![Všechny služby - kontroly přístupu](./media/access-reviews-overview/all-services-access-reviews.png)
-
-1. V navigačním seznamu klikněte na tlačítko **připojení** otevřít **zavést kontroly přístupu** stránky.
-
-    ![Připojení kontroly přístupu](./media/access-reviews-overview/onboard-button.png)
-
-1. Klikněte na tlačítko **vytvořit** umožňuje přístup kontroly v aktuálním adresáři.
-
-    ![Zavést kontroly přístupu](./media/access-reviews-overview/onboard-access-reviews.png)
-
-    Kontroly při příštím spuštění aplikace access, povolí se přístup Kontrola možností.
-
-    ![Kontroly přístupu povolena](./media/access-reviews-overview/access-reviews-enabled.png)
+[!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
 
 ## <a name="next-steps"></a>Další postup
 

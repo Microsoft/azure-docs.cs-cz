@@ -1,6 +1,6 @@
 ---
 title: Základní zásady ochrany koncového uživatele (preview) – Azure Active Directory
-description: Zásady podmíněného přístupu na vyžadovat vícefaktorové ověřování pro uživatele
+description: Zásady podmíněného přístupu tak, aby vyžadovala vícefaktorové ověřování pro uživatele
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 104665774eee885cc2f562e9813cffcf23aa943e
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: e5b72be0dbe35cf95eed404c7c1407c53f5f2ecb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66235507"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67112349"
 ---
 # <a name="baseline-policy-end-user-protection-preview"></a>Základní zásady: Ochrana koncového uživatele (preview)
 
@@ -88,6 +88,6 @@ Tuto zásadu povolit a chránit uživatele:
 
 Další informace naleznete v tématu:
 
-* [Zásady podmíněného přístupu směrný plán ochrany](concept-baseline-protection.md)
+* [Zásady ochrany směrného plánu podmíněného přístupu](concept-baseline-protection.md)
 * [Zabezpečení vaší infrastruktury identit v pěti krocích](../../security/azure-ad-secure-steps.md)
 * [Co je podmíněný přístup v Azure Active Directory?](overview.md)

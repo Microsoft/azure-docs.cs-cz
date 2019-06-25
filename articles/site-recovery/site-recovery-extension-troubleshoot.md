@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 11/27/2018
 ms.author: asgang
 ms.openlocfilehash: 5ea701682c03370cea46f9126ecf78427a776371
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61280667"
 ---
 # <a name="troubleshoot-issues-with-the-azure-site-recovery-agent"></a>Řešení potíží s agentem Azure Site Recovery
@@ -26,14 +26,14 @@ Kód chyby: "151076"
 
  Azure Site Recovery nainstalovat rozšíření virtuálního počítače jako součást úlohu zapnutí ochrany. Některé z následujících podmínek by mohly bránit ochranu před se aktivuje a selhání úlohy. Dokončení následujících kroků pro řešení problémů a opakujte operaci:
 
-**1. příčina: [Agent je nainstalovaný na virtuálním počítači, ale přestane reagovat (pro virtuální počítače s Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**    
+**1. příčina: [Agent je nainstalovaný na virtuálním počítači, ale přestane reagovat (pro virtuální počítače s Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**     
 **2. příčina: [Agent nainstalovaný na virtuálním počítači je zastaralý (pro virtuální počítače s Linuxem)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
 **3. důvod: [Rozšíření služby Site Recovery se nepodařilo aktualizovat nebo načíst](#the-site-recovery-extension-fails-to-update-or-load)**  
 
 Chybová zpráva: "Předchozí operace rozšíření site recovery trvá déle, než se očekávalo."<br>
 Kód chyby: "150066"<br>
 
-**1. příčina: [Agent je nainstalovaný na virtuálním počítači, ale přestane reagovat (pro virtuální počítače s Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**    
+**1. příčina: [Agent je nainstalovaný na virtuálním počítači, ale přestane reagovat (pro virtuální počítače s Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**     
 **2. příčina: [Agent nainstalovaný na virtuálním počítači je zastaralý (pro virtuální počítače s Linuxem)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
 **3. důvod: [Stav rozšíření služby Site Recovery je nesprávný](#the-site-recovery-extension-fails-to-update-or-load)**  
 
@@ -45,7 +45,7 @@ Kód chyby: "151099"<br>
 K této chybě může dojít, pokud na virtuálním počítači agent hosta Azure není v připraveném stavu.
 Můžete zkontrolovat stav agenta hosta Azure v [webu Azure portal](https://portal.azure.com/). Přejděte na virtuální počítač, který se pokoušíte chránit a zkontrolovat stav "virtuální počítač > Nastavení > Vlastnosti > Stav agenta". Ve většině případů se stav agenta po restartování virtuálního počítače připraví. Ale pokud Restart není možné nebo jsou stále k problému, proveďte následující kroky pro řešení potíží.
 
-**1. příčina: [Agent je nainstalovaný na virtuálním počítači, ale přestane reagovat (pro virtuální počítače s Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**    
+**1. příčina: [Agent je nainstalovaný na virtuálním počítači, ale přestane reagovat (pro virtuální počítače s Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**     
 **2. příčina: [Agent nainstalovaný na virtuálním počítači je zastaralý (pro virtuální počítače s Linuxem)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
 
 

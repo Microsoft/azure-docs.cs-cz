@@ -17,12 +17,12 @@ ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc
 monikerRange: vsts
-ms.openlocfilehash: 5fabe9ba03c9516f5df41645fc6ab1b7a0cb2050
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 88fb243af7628b159a2255c2cdae2ab86f39ca1e
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60555943"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275485"
 ---
 # <a name="create-a-cicd-pipeline-for-net-with-azure-devops-projects"></a>Vytvoření kanálu CI/CD pro .NET pomocí projektů Azure DevOps
 
@@ -44,17 +44,13 @@ Projekty DevOps vytvoří kanál CI/CD v Azure DevOps. Můžete vytvořit novou 
 
 ## <a name="select-a-sample-application-and-azure-service"></a>Výběr ukázkové aplikace a služby Azure
 
-1. Vyberte ukázkovou aplikaci .NET. Ukázky .NET zahrnují výběr open source architektury ASP.NET nebo multiplatformní architektury .NET Core.
+1. Vyberte ukázkovou aplikaci **.NET**. Ukázky .NET zahrnují výběr open source architektury ASP.NET nebo multiplatformní architektury .NET Core.
 
     ![.NET Framework](_img/azure-devops-project-aspnet-core/chooselanguagedotnet.png)
 
-1. Vyberte aplikační platformu .NET Core.  
-    Tato ukázka představuje aplikaci ASP.NET Core MVC.
+2. Tato ukázka představuje aplikaci ASP.NET Core MVC. Vyberte **.NET Core** aplikační platformy, vyberte **Další**.    
     
-2. Vyberte **Další**.  
-    Webová aplikace ve Windows je výchozí cíl nasazení.  Volitelně můžete zvolit Web App on Linux nebo Web App for Containers.  Rozhraní framework aplikace, který jste zvolili dříve, určí typ cíle nasazení služby Azure k dispozici tady.  
-    
-3. Ponechat výchozí služby a pak vyberte **Další**.
+3. Vyberte **webové aplikace Windows** jako cíl nasazení, vyberte **Další**. Volitelně můžete dalšími službami Azure pro vaše nasazení. Rozhraní framework aplikace, který jste zvolili dříve, určí typ cíle nasazení služby Azure k dispozici tady.
 
 ## <a name="configure-azure-devops-and-an-azure-subscription"></a>Konfigurace Azure DevOps a předplatné Azure 
 

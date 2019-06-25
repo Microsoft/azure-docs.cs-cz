@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.openlocfilehash: ea6d969ed6612f947e3c73c438738bd98ac2bb30
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60362267"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "64700466"
 ---
 # <a name="add-a-vmm-script-to-a-recovery-plan"></a>Skript přidáte tak nástroj VMM do plánu obnovení
 
@@ -45,7 +45,7 @@ Pomocí skriptů Powershellu v plánech obnovení. Byla přístupná z plánu ob
   
   1. Otevřete Editor registru a přejděte na **HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\Azure lokality Recovery\Registration**.
 
-  1. Změňte hodnotu **ScriptLibraryPath** k  **\\\libserver2.contoso.com\share\\**. Zadejte úplný plně kvalifikovaný název domény. Zadejte oprávnění k umístění sdílené složky. Toto je kořenový uzel sdílené složky. Ke kontrole kořenový uzel v nástroji VMM, přejděte do kořenového uzlu v knihovně. Cesta, která se otevře je kořenovou cestu. Toto je cesta, která je nutné použít v proměnné.
+  1. Změňte hodnotu **ScriptLibraryPath** k  **\\\libserver2.contoso.com\share\\** . Zadejte úplný plně kvalifikovaný název domény. Zadejte oprávnění k umístění sdílené složky. Toto je kořenový uzel sdílené složky. Ke kontrole kořenový uzel v nástroji VMM, přejděte do kořenového uzlu v knihovně. Cesta, která se otevře je kořenovou cestu. Toto je cesta, která je nutné použít v proměnné.
 
   1. Testování skriptu pomocí uživatelského účtu, který má stejnou úroveň uživatelská práva jako účet služby VMM. Pomocí těchto uživatelských práv ověří poskytovaných samostatnou otestované skripty spustit stejným způsobem, který se spustí v plánech obnovení. Na serveru VMM nastavte zásady spouštění obejít, následujícím způsobem:
 

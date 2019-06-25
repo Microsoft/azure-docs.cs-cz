@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2017
 ms.author: rkarlin
-ms.openlocfilehash: 6cbf3d70bd835ce1b838b19c93507f7d9487a418
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 90dbb33fa516d3a831d4e60969ac6b6c8312d539
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60332561"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64574159"
 ---
 # <a name="azure-security-center-search"></a>Hledání v Centru zabezpečení Azure
+
+> [!NOTE]
+> Řídicí panel Security Center vyhledávání se vyřadí dne 31. května 2019. Další informace a alternativní služby najdete v tématu [vyřazení Security Center nabízí (červenec 2019)](security-center-features-retirement-july2019.md#menu_search).
+
 Azure Security Center používá [protokoly Azure monitoru hledání](../log-analytics/log-analytics-log-searches.md) načíst a analyzovat data zabezpečení. Protokoly Azure monitoru poskytuje dotazovací jazyk k rychlému načítání a slučování dat. Ze služby Security Center můžete využít vyhledávání protokoly Azure monitoru vytvářet dotazy a analyzovat shromážděná data.
 
 Vyhledávání je dostupné úrovni Free a úroveň Standard služby Security Center.  Aby byla data dostupná v rámci vaší prohledávání protokolů je závislá na úroveň vrstvy použitý pro váš pracovní prostor.  Zobrazit Security Center [stránce s cenami](../security-center/security-center-pricing.md) Další informace.
@@ -39,13 +43,13 @@ Vyhledávání je dostupné úrovni Free a úroveň Standard služby Security Ce
 
 2. Security Center obsahuje seznam všech pracovních prostorů v rámci vašich předplatných Azure. Vyberte pracovní prostor. (Pokud máte jenom jeden pracovní prostor, tento selektor pracovního prostoru se nezobrazí.)
 
-   ![Vybrat pracovní prostor][2]
+   ![Vyberte pracovní prostor][2]
 
 3. **Prohledávání protokolů** otevře. K dotazování na další data v rámci vybraného pracovního prostoru, zadejte tento příklad dotazu:
 
    SecurityEvent | kde EventID == 4625 | shrnutí count() by TargetAccount
 
-   Výsledek se zobrazí všechny účty, které se nezdařilo přihlášení (událost 4625).
+   Výsledek se zobrazí všechny účty, které se nepodařilo přihlásit (událost 4625).
 
    ![Výsledky hledání][3]
 

@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: magoedte
 ms.openlocfilehash: 3f3de81197b05d4f025a3fd8638cffe4b07cecad
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61424635"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>Sjednocení několik prostředků Azure monitoru Application Insights 
@@ -103,12 +103,12 @@ V následující tabulce jsou uvedeny rozdíly ve schématu mezi Log Analytics a
 | ApplicationName | appName|
 | ApplicationTypeVersion | application_Version |
 | AvailabilityCount | itemCount |
-| AvailabilityDuration | doba trvání |
-| AvailabilityMessage | zpráva |
+| AvailabilityDuration | Doba trvání |
+| AvailabilityMessage | message |
 | AvailabilityRunLocation | location |
 | AvailabilityTestId | id |
-| AvailabilityTestName | jméno |
-| AvailabilityTimestamp | časové razítko |
+| AvailabilityTestName | name |
+| AvailabilityTimestamp | timestamp |
 | Prohlížeč | client_browser |
 | Město | client_city |
 | Když | client_IP |
@@ -116,24 +116,24 @@ V následující tabulce jsou uvedeny rozdíly ve schématu mezi Log Analytics a
 | Země | client_CountryOrRegion | 
 | CustomEventCount | itemCount | 
 | CustomEventDimensions | customDimensions |
-| CustomEventName | jméno | 
+| CustomEventName | name | 
 | DeviceModel | client_Model | 
 | DeviceType | client_Type | 
 | ExceptionCount | itemCount | 
 | ExceptionHandledAt | handledAt |
-| ExceptionMessage | zpráva | 
+| ExceptionMessage | message | 
 | ExceptionType | type |
 | ID operace | operation_id |
 | OperationName | operation_Name | 
 | Operační systém | client_OS | 
 | PageViewCount | itemCount |
-| PageViewDuration | doba trvání | 
-| PageViewName | jméno | 
+| PageViewDuration | Doba trvání | 
+| PageViewName | name | 
 | ParentOperationID | operation_Id | 
 | RequestCount | itemCount | 
-| RequestDuration | doba trvání | 
+| RequestDuration | Doba trvání | 
 | ID žádosti | id | 
-| RequestName | jméno | 
+| RequestName | name | 
 | RequestSuccess | úspěch | 
 | ResponseCode | Kód výsledku | 
 | Role | cloud_RoleName |

@@ -11,10 +11,10 @@ ms.topic: article
 ms.assetid: dd517c4d-1701-4247-b83c-183c4d8d8aae
 ms.date: 09/08/2016
 ms.openlocfilehash: 8c0e47f5bed0799b8536cecb38a85ed76185d0cd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60845817"
 ---
 # <a name="overview-b2b-enterprise-integration-scenarios-in-azure-logic-apps-with-enterprise-integration-pack"></a>Přehled: Scénáře integrace enterprise B2B v Azure Logic Apps sadou Enterprise Integration Pack
@@ -56,7 +56,7 @@ Podniková integrace podporuje tyto oborové standardy:
 
 [Nasazení plně funkční ukázkové AS2 odeslání a příjem aplikace logiky](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-as2-send-receive) , který využívá funkce B2B pro Azure Logic Apps.
 
-## <a name="learn-more"></a>Další informace
+## <a name="learn-more"></a>Víc se uč
 * [Smlouvy o](../logic-apps/logic-apps-enterprise-integration-agreements.md "přečtěte si víc o smlouvách enterprise integration")
 * [Scénáře B2b (B2B)](../logic-apps/logic-apps-enterprise-integration-b2b.md "zjistěte, jak vytvořit s B2B funkce Logic apps ")  
 * [Certifikáty](logic-apps-enterprise-integration-certificates.md "přečtěte si víc o podnikové integraci certifikáty")

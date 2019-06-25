@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
 ms.openlocfilehash: aaa5b3a85c08f11d821557257de451b8ffc8a3fc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60814173"
 ---
 # <a name="calchistogram-method"></a>calchistogram – metoda
@@ -23,12 +23,12 @@ ms.locfileid: "60814173"
 ## <a name="request"></a>Žádost
 `http://<host>/calchistogram?expr=<expr>[&options]` 
 
-Název|Hodnota|Popis
+Name|Hodnota|Popis
 ----|-----|-----------
 expr | Textový řetězec | Výraz strukturovaných dotazů, který určuje index entity, přes která chcete vypočítat histogramy.
 Atributy | Textový řetězec (výchozí = "") | Čárkami oddělený seznam atributu, který má zahrnout do odpovědi.
 count   | Číslo (výchozí = 10) | Číslo s vrácenými výsledky.
-Posun  | Číslo (výchozí = 0) | Index první výsledek vrátit.
+offset  | Číslo (výchozí = 0) | Index první výsledek vrátit.
 
 ## <a name="response-json"></a>Odpověď (JSON)
 JSONPath | Popis

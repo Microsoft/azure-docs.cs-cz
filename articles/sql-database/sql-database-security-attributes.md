@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 6c495456a5a3295abe5460ff6b5586e41fab2d95
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66001040"
 ---
 # <a name="security-attributes-for-azure-sql-database"></a>Atributy zabezpečení pro službu Azure SQL Database
@@ -42,7 +42,7 @@ Azure SQL Database obsahuje oba [izolované databáze](sql-database-single-index
 | Izolace sítě a podporu funkce brány firewall| Ano | Brány firewall na obě databáze a serveru úroveň; izolace pro sítě [spravovanou instanci](sql-database-managed-instance.md) pouze |
 | Vynucené tunelování podpory| Ano | [spravovaná instance](sql-database-managed-instance.md) prostřednictvím [Azure ExpressRoute](../expressroute/index.yml) sítě VPN |
 
-## <a name="detection"></a>Detekce
+## <a name="detection"></a>Detection (Detekce)
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|

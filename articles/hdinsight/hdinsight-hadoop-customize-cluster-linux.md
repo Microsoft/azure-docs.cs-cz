@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.openlocfilehash: 03fcbb0216d85e337b4161aa24ceeb7d3a2bdebe
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66479457"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Přizpůsobení clusterů Azure HDInsight pomocí skriptových akcí
@@ -143,7 +143,7 @@ Skripty akce skriptu umožňuje použít následující nástroje:
 
 HDInsight poskytuje skriptů v clusterech HDInsight nainstalovat následující komponenty:
 
-| Název | Skript |
+| Name | Skript |
 | --- | --- |
 | Přidání účtu služby Azure Storage |`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`. Zobrazit [přidání dalších účtů úložiště pro HDInsight](hdinsight-hadoop-add-storage.md). |
 | Instalace rozhraní Hue |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`. Zobrazit [instalace a použití rozhraní Hue v HDInsight Hadoop clusterů](hdinsight-hadoop-hue-linux.md). |
@@ -174,7 +174,7 @@ Tato část popisuje různé způsoby, jak skriptových akcí můžete použít 
     | Vlastnost | Hodnota |
     | --- | --- |
     | Vyberte skript | Chcete-li použít vlastní skript, vyberte __vlastní__. V opačném případě vyberte jednu z poskytnutých skriptů. |
-    | Name |Zadejte název akce skriptu. |
+    | Název |Zadejte název akce skriptu. |
     | URI skriptu bash |Zadejte identifikátor URI skriptu. |
     | HEAD/Worker/Zookeeper |Zadejte uzly, na kterých je skript spuštěn: **Hlavní**, **pracovního procesu**, nebo **ZooKeeper**. |
     | Parametry |Zadejte parametry, pokud je to nutné skript. |
@@ -256,7 +256,7 @@ Přejděte [webu Azure portal](https://portal.azure.com):
     | Vlastnost | Hodnota |
     | --- | --- |
     | Vyberte skript | Chcete-li použít vlastní skript, vyberte __vlastní__. V opačném případě vyberte dodávaného skriptu. |
-    | Název |Zadejte název akce skriptu. |
+    | Name |Zadejte název akce skriptu. |
     | URI skriptu bash |Zadejte identifikátor URI skriptu. |
     | HEAD/Worker/Zookeeper |Zadejte uzly, na kterých je skript spuštěn: **Hlavní**, **pracovního procesu**, nebo **ZooKeeper**. |
     | Parametry |Zadejte parametry, pokud je to nutné skript. |

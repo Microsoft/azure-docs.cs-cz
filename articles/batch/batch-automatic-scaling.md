@@ -16,10 +16,10 @@ ms.date: 06/20/2017
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: fdc2cd8f2218d50aa49d6b4eab2800eb6c92d9c9
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62118107"
 ---
 # <a name="create-an-automatic-scaling-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Vytvořit vzorec automatického škálování pro škálování výpočetních uzlů ve fondu služby Batch
@@ -160,8 +160,8 @@ Tyto operace jsou povolené na typy, které jsou uvedené v předchozí části.
 | doubleVec *operátor* doubleVec |+, -, *, / |doubleVec |
 | TimeInterval *operátor* double |*, / |TimeInterval |
 | TimeInterval *operátor* timeinterval |+, - |TimeInterval |
-| TimeInterval *operátor* časové razítko |+ |časové razítko |
-| časové razítko *operátor* timeinterval |+ |časové razítko |
+| TimeInterval *operátor* časové razítko |+ |timestamp |
+| časové razítko *operátor* timeinterval |+ |timestamp |
 | časové razítko *operátor* časové razítko |- |TimeInterval |
 | *operátor*double |-, ! |double |
 | *operátor*timeinterval |- |TimeInterval |
@@ -173,7 +173,7 @@ Tyto operace jsou povolené na typy, které jsou uvedené v předchozí části.
 
 Při testování s tříhodnotový operátor double (`double ? statement1 : statement2`) nenulový je **true**, a nula je **false**.
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>Funkce
 Tyto předdefinované **funkce** jsou k dispozici pro použití při definování automatické vzorec škálování.
 
 | Funkce | Návratový typ | Popis |
@@ -195,7 +195,7 @@ Tyto předdefinované **funkce** jsou k dispozici pro použití při definován�
 | STD(doubleVecList) |double |Vrátí směrodatnou odchylku ukázkové hodnoty v doubleVecList. |
 | stop() | |Zastaví vyhodnocení výrazu automatického škálování. |
 | SUM(doubleVecList) |double |Vrátí součet všech součástí doubleVecList. |
-| čas (řetězec datum a čas = "") |časové razítko |Vrátí časové razítko od aktuálního času, pokud jsou předány žádné parametry nebo časové razítko řetězce data a času, pokud je předán. Formáty podporované data a času jsou W3C DTF a RFC 1123. |
+| čas (řetězec datum a čas = "") |timestamp |Vrátí časové razítko od aktuálního času, pokud jsou předány žádné parametry nebo časové razítko řetězce data a času, pokud je předán. Formáty podporované data a času jsou W3C DTF a RFC 1123. |
 | Val (doubleVec v dvojitých i) |double |Vrátí hodnotu prvku, který je na místě i ve vektoru v, s počáteční index 0. |
 
 Některé funkce, které jsou popsány v předchozí tabulce může přijmout seznam jako argument. Čárkami oddělený seznam je kombinací *double* a *doubleVec*. Příklad:
@@ -297,7 +297,7 @@ Metriky prostředků a úloh můžete použít, když definujete vzorec. Můžet
       <li>$NetworkOutBytes</li></ul></p>
   </tr>
   <tr>
-    <td><b>Úkol</b></td>
+    <td><b>Úloha</b></td>
     <td><p>Metriky úlohy jsou na základě stavu úkolů, například aktivní, čekající a dokončeny. Následující služby definované proměnné jsou užitečné pro provádění úprav velikost fondu na základě metrik úloh:</p>
     <p><ul>
       <li>$ActiveTasks</li>

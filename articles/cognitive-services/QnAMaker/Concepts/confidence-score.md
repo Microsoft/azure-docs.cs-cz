@@ -3,20 +3,20 @@ title: Skóre spolehlivosti – QnA Maker
 titleSuffix: Azure Cognitive Services
 description: Skóre spolehlivosti označuje jistotu, že odpověď je doprava odpovídá dotazu daného uživatele.
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 04/05/2019
-ms.author: tulasim
+ms.date: 06/17/2019
+ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 4fb5d1e20c4c857dedcec2dc4695f82fccd9269d
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: c14c607e4c563bbeeaff02b2c2478cc4b4d96ee5
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65792746"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165142"
 ---
 # <a name="confidence-score-of-a-qna-maker-knowledge-base"></a>Skóre spolehlivosti znalostní báze QnA Maker
 Když uživatelský dotaz je hledána znalostní báze, vrátí QnA Maker příslušné odpovědi, spolu s skóre spolehlivosti. Toto skóre označuje jistotu, že odpověď je doprava odpovídá dotazu daného uživatele. 
@@ -46,7 +46,7 @@ Následující tabulka uvádí typické přidruženou skóre spolehlivosti.
 |0|Žádná shoda, proto se vrátí odpověď.|"Kolik službu stojí"|
 
 ## <a name="choose-a-score-threshold"></a>Zvolte prahové hodnoty skóre
-V tabulce výše najdete skóre, které se očekává, že na většině znalostní báze. Ale protože každých KB se liší a má různé druhy slova, záměry a cíle, které doporučujeme test a vyberte prahovou hodnotu, které bude nejlépe vyhovuje. Ve výchozím nastavení prahová hodnota je nastavena na hodnotu 0, tak, aby všechny možné odpovědi jsou vráceny. Je doporučenou prahovou hodnotu, která by měla fungovat pro většinu znalostní báze **50**.
+V tabulce výše najdete skóre, které se očekává, že na většině znalostní báze. Ale protože každých KB se liší a má různé druhy slova, záměry a cíle –, doporučujeme test a zvolte prahová hodnota, které bude nejlépe vyhovuje. Ve výchozím nastavení prahová hodnota je nastavena na hodnotu 0, tak, aby všechny možné odpovědi jsou vráceny. Je doporučenou prahovou hodnotu, která by měla fungovat pro většinu znalostní báze **50**.
 
 Pokud zvolíte, že vaše mezní hodnota, mějte na paměti rovnováhu mezi přesnost a pokrytí a upravit vaše mezní hodnota, na základě vašich požadavků.
 
@@ -56,6 +56,12 @@ Pokud zvolíte, že vaše mezní hodnota, mějte na paměti rovnováhu mezi pře
 
 > [!NOTE]
 > Novější verze nástroje QnA Maker vylepšení bodovací logiku zahrnout a může mít vliv na vaše mezní hodnota. Kdykoli můžete aktualizovat službu, ujistěte se, že pro testování a upravit prahovou hodnotu v případě potřeby. Služba QnA verzi, můžete zjistit [tady](https://www.qnamaker.ai/UserSettings)a zjistit, jak získat nejnovější aktualizace [tady](../How-To/troubleshooting-runtime.md).
+
+## <a name="set-threshold"></a>Nastavenou prahovou hodnotu 
+
+Nastavení prahové hodnoty skóre jako vlastnost [text GenerateAnswer API JSON](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration). To znamená, že jste nastavili pro každé volání GenerateAnswer. 
+
+Z rozhraní bot framework, nastavte jako součást možnosti objekt s skóre [ C# ](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-c) nebo [Node.js](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-nodejs).
 
 ## <a name="improve-confidence-scores"></a>Zvýšení skóre spolehlivosti
 Pro zvýšení skóre spolehlivosti konkrétní odpovědi na dotaz uživatele, můžete přidat uživatelský dotaz ve znalostní bázi jako alternativní dotaz na odpověď. Můžete také použít velkých a malých písmen [word rozšiřuje](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) synonyma přidáte klíčová slova v znalostní BÁZÍ.

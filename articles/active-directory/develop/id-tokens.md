@@ -18,10 +18,10 @@ ms.custom: aaddev
 ms:custom: fasttrack-edit
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 25408b2120a9ac9f38e7959ef8e9dbbb34df7c2b
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65962579"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft identity platform ID tokenů
@@ -54,7 +54,7 @@ Zobrazit tento token ukázkové verze 2.0 v [jwt.ms](https://jwt.ms/#id_token=ey
 
 ### <a name="header-claims"></a>Deklarace identity záhlaví
 
-|Deklarace identity | Formát | Popis |
+|Deklarovat | Formát | Popis |
 |-----|--------|-------------|
 |`typ` | String – vždy tokenů JWT"" | Označuje, že token je token JWT.|
 |`alg` | String | Určuje algoritmus, který se použil k podepsání token. Příklad: "RS256" |
@@ -65,7 +65,7 @@ Zobrazit tento token ukázkové verze 2.0 v [jwt.ms](https://jwt.ms/#id_token=ey
 
 Tento seznam obsahuje deklarace, které jsou ve většině id_tokens ve výchozím nastavení (Pokud není uvedeno jinak).  Vaše aplikace však může využívat [nepovinných deklarací identity](active-directory-optional-claims.md) požádat o další deklarace identity v požadavku id_token.  Toto musí být v rozsahu `groups` deklaraci identity pro informace o jeho jméno.
 
-|Deklarace identity | Formát | Popis |
+|Deklarovat | Formát | Popis |
 |-----|--------|-------------|
 |`aud` |  Řetězec, identifikátor ID URI aplikace | Identifikuje zamýšlený příjemce tokenu. V `id_tokens`, cílová skupina je ID vaší aplikace, přiřazené vaší aplikaci na webu Azure Portal. Vaše aplikace by měl ověřit tuto hodnotu a odmítnout token, pokud hodnota se neshoduje. |
 |`iss` |  Řetězec, identifikátor URI služby tokenů zabezpečení | Identifikuje službu tokenů zabezpečení (STS), který vytvoří a vrátí token a tenanta Azure AD, ve kterém byl uživatel ověřený. Pokud byl token vydán bodem v2.0, identifikátor URI, skončí za `/v2.0`.  Identifikátor GUID, který označuje, že uživatel je příjemce uživatele z účtu Microsoft je `9188040d-6c67-4c5b-b112-36a304b66dad`. Aplikace by měla část GUID deklarace slouží k omezení sadu klienty, kteří se můžou přihlásit k aplikaci, pokud je k dispozici. |

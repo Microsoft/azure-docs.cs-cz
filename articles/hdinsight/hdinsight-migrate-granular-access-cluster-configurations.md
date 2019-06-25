@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 1ec4786291d6e2e5be6785e52cf3ab5bb5bbc690
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 982c5dcc052f92afe381235db0bf066262fd82c6
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66754533"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67304288"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migrace na granulární řízení přístupu na základě rolí pro konfigurace clusteru
 
@@ -20,10 +20,10 @@ Představujeme některé důležité změny pro podporu více velice přesně ko
 
 ## <a name="what-is-changing"></a>Co se mění?
 
-Dříve, může získat tajných kódů přes rozhraní API HDInsight uživatelé clusteru má vlastník, Přispěvatel nebo Čtenář [role RBAC](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles), jako kdyby byly k dispozici pro každý, kdo má `*/read` nebyla nutná oprávnění.
+Dříve, může získat tajných kódů přes rozhraní API HDInsight uživatelé clusteru má vlastník, Přispěvatel nebo Čtenář [role RBAC](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles), jako kdyby byly k dispozici pro každý, kdo má `*/read` oprávnění.
 Od této chvíle, přístup k těchto tajných kódů bude vyžadovat `Microsoft.HDInsight/clusters/configurations/*` oprávnění, což znamená se už můžete mít přístup uživatelé pomocí role Čtenář. Tajné kódy, definovaná podle hodnoty, které by bylo možné získat přístup více se zvýšeným oprávněním než role uživatelů musí povolit. Patří mezi ně hodnoty, jako je například přihlašovací údaje clusteru brány protokolu HTTP, klíče účtu úložiště a přihlašovací údaje databáze.
 
-Představujeme nový [operátor clusteru Hdinsight](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) role, která bude moct načíst tajné kódy bez udělení oprávnění správce, Přispěvatel nebo vlastník. Shrnutí:
+Představujeme nový [operátor clusteru HDInsight](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) role, která bude moct načíst tajné kódy bez udělení oprávnění správce, Přispěvatel nebo vlastník. Shrnutí:
 
 | Role                                  | Dříve                                                                                       | Do budoucna       |
 |---------------------------------------|--------------------------------------------------------------------------------------------------|-----------|
@@ -148,14 +148,14 @@ Aktualizace na [verze 27.1.0](https://github.com/Azure/azure-sdk-for-go/tree/mas
 Aktualizace na [Az PowerShell verze 2.0.0](https://www.powershellgallery.com/packages/Az) nebo později, aby se zabránilo přerušení.  Úpravy jen minimum kódu může být vyžadováno, pokud používáte metodu těmito změnami ovlivněny.
 - `Grant-AzHDInsightHttpServicesAccess` je nyní zastaralá a nahradila ji nové `Set-AzHDInsightGatewayCredential` rutiny.
 - `Get-AzHDInsightJobOutput` má byla aktualizována o podporu granulární přístup na základě rolí k klíč úložiště.
-    - Uživatelé s rolí operátora clusteru HDInsight, Přispěvatel nebo vlastník nebude mít vliv.
+    - Uživatelů s rolemi Vlastník, Přispěvatel a Operátor clusteru HDInsight se tato změna nedotkne.
     - Uživatelé s pouze roli Čtenář muset zadat `DefaultStorageAccountKey` parametr explicitně.
 - `Revoke-AzHDInsightHttpServicesAccess` je nyní zastaralá. Je povolený protokol HTTP teď vždy, takže tuto rutinu je už je nepotřebujete.
  Zobrazit [az. Průvodce migrací HDInsight](https://github.com/Azure/azure-powershell/blob/master/documentation/migration-guides/Az.2.0.0-migration-guide.md#azhdinsight) další podrobnosti.
 
 ## <a name="add-the-hdinsight-cluster-operator-role-assignment-to-a-user"></a>Přidání přiřazení role operátor clusteru HDInsight na uživatele
 
-Uživatel s [Přispěvatel](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) nebo [vlastníka](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) můžete přiřadit role [operátor clusteru Hdinsight](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) role pro uživatele, které byste měli mít přístup pro čtení a zápis k citlivé Hodnoty konfigurace clusteru HDInsight (například přihlašovací údaje clusteru brány a klíče účtu úložiště).
+Uživatel s [Přispěvatel](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) nebo [vlastníka](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) můžete přiřadit role [operátor clusteru HDInsight](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) role pro uživatele, které byste měli mít přístup pro čtení a zápis k citlivé Hodnoty konfigurace clusteru HDInsight (například přihlašovací údaje clusteru brány a klíče účtu úložiště).
 
 ### <a name="using-the-azure-cli"></a>Použití Azure CLI
 

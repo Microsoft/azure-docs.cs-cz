@@ -1,21 +1,21 @@
 ---
 title: 'Rychlý start: Volání pomocí koncových bodů vlastního vyhledávání Bingu C# SDK | Dokumentace Microsoftu'
 titleSuffix: Azure Cognitive Services
-description: Nastavení konzolové aplikace sady SDK pro vizuální vyhledávání v jazyce C#.
+description: Použití SDK vlastní vyhledávání Bingu pro C# hledání vaší instance vlastního hledání.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 09/06/2018
+ms.date: 06/18/2019
 ms.author: scottwhi
-ms.openlocfilehash: 9e13edce77819d5ef8cfc3b6becff9fb82224a83
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 0381df439d0c0904e8741bb1f31b179566c72ec5
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595959"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206178"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-the-c-sdk"></a>Rychlý start: Volání pomocí koncových bodů vlastního vyhledávání Bingu C# SDK 
 
@@ -27,7 +27,7 @@ V tomto rychlém startu můžete začít si vyžádat výsledky hledání z vaš
 - Microsoft [.NET Core](https://www.microsoft.com/net/download/core)
 - Libovolná edice [sady Visual Studio 2017 nebo novější](https://www.visualstudio.com/downloads/)
 - Pokud používáte Linux nebo MacOS, je možné tuto aplikaci spustit pomocí [Mono](https://www.mono-project.com/).
-- Nainstalovaný balíček [NuGet pro vlastní vyhledávání](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0). 
+- [Vlastní vyhledávání Bingu](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0) balíček NuGet. 
     - Z **Průzkumníka řešení** v sadě Visual Studio, klikněte pravým tlačítkem na projekt a vyberte **spravovat balíčky NuGet** z nabídky. Nainstalujte balíček `Microsoft.Azure.CognitiveServices.Search.CustomSearch`. Při instalaci balíčku NuGet pro vlastní vyhledávání se nainstalují také následující sestavení:
         - Microsoft.Rest.ClientRuntime
         - Microsoft.Rest.ClientRuntime.Azure

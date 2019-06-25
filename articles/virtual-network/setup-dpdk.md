@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 07/27/2018
 ms.author: labattul
 ms.openlocfilehash: c5cb840035c5d0d5694982324c7237c58001e689
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60731596"
 ---
 # <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>Nastavit DPDK ve virtuálním počítači s Linuxem
@@ -33,14 +33,14 @@ DPDK poběží na Azure virtual machines, které podporují více distribuce ope
 
 ## <a name="benefit"></a>Výhoda
 
-**Vyšší pakety za sekundu (PPS)**: Vynechání jádra a ovládací prvek a současně paketů v prostoru uživatele snižuje počet cyklů odstraněním přepnutí kontextu. Také zlepšuje paketů, které zpracovává za sekundu na virtuálních počítačích Azure s Linuxem.
+**Vyšší pakety za sekundu (PPS)** : Vynechání jádra a ovládací prvek a současně paketů v prostoru uživatele snižuje počet cyklů odstraněním přepnutí kontextu. Také zlepšuje paketů, které zpracovává za sekundu na virtuálních počítačích Azure s Linuxem.
 
 
 ## <a name="supported-operating-systems"></a>Podporované operační systémy
 
 Podporují se následující distribucí z Galerie Azure:
 
-| Operační systém Linux     | Verze jádra        |
+| Linux OS     | Verze jádra        |
 |--------------|----------------       |
 | Ubuntu 16.04 | 4.15.0-1015-Azure     |
 | Ubuntu 18.04 | 4.15.0-1015-Azure     |

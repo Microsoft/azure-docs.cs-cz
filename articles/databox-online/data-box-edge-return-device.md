@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: alkohli
 ms.openlocfilehash: 9aeae0ab68d809b36a3316054f12a5a9657721f1
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65468601"
 ---
 # <a name="return-your-azure-data-box-edge-device"></a>Vrátí zařízení Azure Data Box Edge
@@ -102,7 +102,7 @@ Proveďte následující kroky k odstranění zařízení a prostředků na webu
 
 2. V **odstranit zařízení** okně zadejte název zařízení, kterou chcete odstranit a vyberte **odstranit**.
 
-    ![Potvrdit odstranění](media/data-box-edge-return-device/delete-resource-2.png)
+    ![Potvrzení odstranění](media/data-box-edge-return-device/delete-resource-2.png)
 
 Zobrazí se oznámení po zařízení a přidružený prostředek se úspěšně odstranil.
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16e4a5f63ba80b02a967888ad76fedf165a576c8
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 6515f60fb67e52a7924afec2effd0c2001935e5d
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66473398"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190264"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>Co je primární aktualizovat Token?
 
@@ -63,6 +63,9 @@ PRT je vydané během ověřování uživatele na zařízení s Windows 10 ve dv
    * Přidání účtu z **nastavení** > **účty** > **přístup do práce nebo do školy** > **Connect**
 
 V těchto scénářích je modul plug-in Azure AD WAM primární autority pro PRT, protože Windows přihlašování nefunguje s tímto účtem služby Azure AD.
+
+> [!NOTE]
+> 3\. stran zprostředkovatelů identity, musí podporovat protokol WS-Trust umožňující PRT vystavení na zařízeních s Windows 10. Bez WS-Trust, PRT nemůže být vystaveno pro uživatele v hybridní Azure připojené k AD nebo Azure AD připojené zařízení
 
 ## <a name="what-is-the-lifetime-of-a-prt"></a>Co je životnost PRT?
 

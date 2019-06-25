@@ -9,11 +9,11 @@ ms.date: 11/09/2017
 ms.author: mandia
 ms.custom: include file
 ms.openlocfilehash: 2697a7d14141682ee8208d8cbe954e6e1679e3b5
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66238762"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67175385"
 ---
 | Resource | Free (Preview) | Developer | Basic | Standard | Premium |
 | --- | --- | --- | --- | --- | --- |

@@ -16,12 +16,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6112facfc0c10d7a0a0495cd778fa6c3cb6130a7
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 79ffb31dd41e600344d341d17e07ad13d5fcd7f8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962149"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111083"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-android-app"></a>Přihlašování uživatelů a volání Microsoft Graphu z aplikace pro Android
 
@@ -62,7 +62,7 @@ Tato příručka používá následující knihovny pro ověřování:
 
 V tomto kurzu se vytvoří nový projekt. Pokud chcete stáhnout dokončený kurzu místo toho [stáhnout kód](https://github.com/Azure-Samples/active-directory-android-native-v2/archive/master.zip).
 
-### <a name="create-a-new-project"></a>Vytvořit nový projekt
+### <a name="create-a-new-project"></a>Vytvoření nového projektu
 
 1. Otevřete Android Studio a vyberte buď **spusťte nový projekt Android Studio**.
     - Pokud je už otevřená Android Studio, vyberte **souboru** > **nový** > **nový projekt**.
@@ -70,7 +70,7 @@ V tomto kurzu se vytvoří nový projekt. Pokud chcete stáhnout dokončený kur
 3. Pojmenujte svoji aplikaci, nastavte `Minimum API level` k **rozhraní API 19 nebo novější**, přístupů **Dokončit**.
 5. Ve vaší `app/build.gradle`, nastavte `targetedSdkVersion` 27. 
 
-## <a name="register-your-application"></a>Zaregistrujte svoji aplikaci.
+## <a name="register-your-application"></a>Registrace vaší aplikace
 
 Můžete zaregistrovat aplikaci v některém ze dvou způsobů, jak je popsáno v následujících dvou částech.
 
@@ -85,7 +85,7 @@ Můžete zaregistrovat aplikaci v některém ze dvou způsobů, jak je popsáno 
 
 ## <a name="build-your-app"></a>Sestavení aplikace
 
-### <a name="configure-your-android-app"></a>Konfigurovat aplikaci pro Android
+### <a name="configure-your-android-app"></a>Konfigurace aplikace pro Android
 
 1. Klikněte pravým tlačítkem myši **res** > **nový** > **složky** > **nezpracovaná složku prostředků**
 2. V **aplikace** > **res** > **nezpracovaná**, vytvořte nový soubor JSON s názvem `auth_config.json` a vložte váš ***MSAL konfigurace***. Zobrazit [MSAL konfigurace pro další informace o](https://github.com/AzureAD/microsoft-authentication-library-for-android/wiki/Configuring-your-app).
@@ -178,7 +178,7 @@ Můžete zaregistrovat aplikaci v některém ze dvou způsobů, jak je popsáno 
 
 ### <a name="add-msal-to-your-project"></a>Do projektu přidejte MSAL
 
-1. V nástroji Android Studio vyberte **skriptů Gradle** > **build.gradle (modul: aplikace)**.
+1. V nástroji Android Studio vyberte **skriptů Gradle** > **build.gradle (modul: aplikace)** .
 2. V části **závislosti**, vložte následující kód:
 
     ```gradle  

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: jeconnoc
 ms.openlocfilehash: cd0bceae770182e778410d8065d34dfeed055acc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61433133"
 ---
 # <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service"></a>Vytvoření chatovací aplikace v Node.js pomocí Socket.IO na cloudové službě Azure
@@ -113,7 +113,7 @@ Po uložení změn **server.js**, postupujte následovně pro instalaci požadov
    > 
    > znovu nainstalujte AzureAuthoringTools v 2.7.1 a AzureComputeEmulator v 2.7 – Ujistěte se, že odpovídá této verzi.
 
-2. Otevřete prohlížeč a přejděte do **http://127.0.0.1**.
+2. Otevřete prohlížeč a přejděte do **http://127.0.0.1** .
 3. Když se otevře okno prohlížeče, zadat přezdívku a pak stiskněte enter.
    To vám umožní publikovat zprávy jako konkrétní přezdívku. K otestování funkce více uživatelů, otevřete další okna prohlížeče pomocí stejné adresy URL a zadejte jiné zástupné názvy.
    

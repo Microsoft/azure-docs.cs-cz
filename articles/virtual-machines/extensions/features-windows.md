@@ -17,10 +17,10 @@ ms.date: 03/30/2018
 ms.author: roiyz
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ce13f053c2adee6a9a347a4162b60cc6d6b40eda
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66160275"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Rozšíření virtuálních počítačů a funkce pro Windows
@@ -291,7 +291,7 @@ Jaké verze jsou spuštěny, najdete v části [zjištění nenainstaloval Agent
 
 #### <a name="extension-updates"></a>Aktualizace rozšíření
 
-Při aktualizaci rozšíření je k dispozici, Agent hosta Windows soubory ke stažení a upgraduje rozšíření. Aktualizace automatické rozšíření jsou buď *menší* nebo *opravu Hotfix*. Můžete vyjádřit výslovný souhlas nebo vyjádřit výslovný nesouhlas rozšíření *menší* aktualizuje při zřizování rozšíření. Následující příklad ukazuje, jak automaticky aktualizovat dílčí verze v šabloně Resource Manageru s *autoUpgradeMinorVersion ": true,"*:
+Při aktualizaci rozšíření je k dispozici, Agent hosta Windows soubory ke stažení a upgraduje rozšíření. Aktualizace automatické rozšíření jsou buď *menší* nebo *opravu Hotfix*. Můžete vyjádřit výslovný souhlas nebo vyjádřit výslovný nesouhlas rozšíření *menší* aktualizuje při zřizování rozšíření. Následující příklad ukazuje, jak automaticky aktualizovat dílčí verze v šabloně Resource Manageru s *autoUpgradeMinorVersion ": true,"* :
 
 ```json
     "properties": {
@@ -368,7 +368,7 @@ Následující postup platí pro všechna rozšíření virtuálních počítač
 
 ### <a name="view-extension-status"></a>Zobrazit stav rozšíření
 
-Po spuštění rozšíření virtuálního počítače na virtuálním počítači použít [rutiny Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) vrátit stav rozšíření. *Dílčí stavy [0]* odhalí zřizování rozšíření bylo úspěšné, což znamená, že se úspěšně nasadit do virtuálních počítačů, ale provádění rozšíření ve virtuálním počítači se nezdařilo, *dílčí stavy [1]*.
+Po spuštění rozšíření virtuálního počítače na virtuálním počítači použít [rutiny Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) vrátit stav rozšíření. *Dílčí stavy [0]* odhalí zřizování rozšíření bylo úspěšné, což znamená, že se úspěšně nasadit do virtuálních počítačů, ale provádění rozšíření ve virtuálním počítači se nezdařilo, *dílčí stavy [1]* .
 
 ```powershell
 Get-AzVM -ResourceGroupName "myResourceGroup" -VMName "myVM" -Status

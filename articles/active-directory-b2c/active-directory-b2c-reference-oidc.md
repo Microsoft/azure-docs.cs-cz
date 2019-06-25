@@ -10,12 +10,13 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 85639e2648131f9475ad2ae77f31d43e64bf82e7
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 0c855a3e0280e1fadf2362f2d8959beff2f5d00a
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66509205"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67271962"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Webové přihlášení s OpenID Connect v Azure Active Directory B2C
 
@@ -79,7 +80,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | redirect_uri | Ne | `redirect_uri` Parametr vaší aplikace, kde můžete odesílat a přijímat aplikace žádosti o ověření. Musí odpovídat přesně jeden z `redirect_uri` parametry, které jste zaregistrovali na webu Azure Portal, s tím rozdílem, že ho musí mít kódování URL. |
 | scope | Ano | Seznam oborů oddělených mezerami. `openid` Rozsah Určuje oprávnění pro uživatele a získat data o uživateli v podobě ID tokenů. `offline_access` Obor je nepovinné pro webové aplikace. Znamená to, že aplikace bude vyžadovat *obnovovací token* pro rozšířené přístup k prostředkům. |
 | response_mode | Ne | Metoda, která se používá k odesílání výsledný autorizační kód zpět do aplikace. Může být buď `query`, `form_post`, nebo `fragment`.  `form_post` Režim odpovědi se doporučuje pro zvýšení zabezpečení. |
-| stav | Ne | Hodnota v požadavku, který je také vrácen v odpovědi tokenu. Může být řetězec s žádný obsah, který chcete. Náhodně generované jedinečná hodnota se obvykle používá pro prevenci útoků proti padělání žádosti více webů. Stav se také používá ke kódování informace o stavu uživatele v aplikaci předtím, než požadavek na ověření došlo k chybě, jako jsou stránky, které byly na. |
+| state | Ne | Hodnota v požadavku, který je také vrácen v odpovědi tokenu. Může být řetězec s žádný obsah, který chcete. Náhodně generované jedinečná hodnota se obvykle používá pro prevenci útoků proti padělání žádosti více webů. Stav se také používá ke kódování informace o stavu uživatele v aplikaci předtím, než požadavek na ověření došlo k chybě, jako jsou stránky, které byly na. |
 | nonce | Ano | Hodnota zahrnutý v požadavku (generovaný aplikací), který je součástí výsledný token ID jako deklarace identity. Aplikace pak můžete ověřit tuto hodnotu a zmírnění útoků opětovného přehrání tokenu. Hodnota je obvykle náhodnou jedinečný řetězec, který slouží k určení původu žádosti. |
 | p | Ano | Tok uživatele, který se spouští. Jde o název toku uživatele, který je vytvořen ve vašem tenantovi Azure AD B2C. Název toku uživatele by měl začínat `b2c\_1\_`. |
 | řádek | Ne | Typ interakce s uživatelem, který je potřeba. Jediná platná hodnota v tuto chvíli je `login`, které donutí uživatele k zadání přihlašovacích údajů tohoto požadavku. |
@@ -101,7 +102,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 | --------- | ----------- |
 | id_token | Token ID, která aplikace požaduje. ID token můžete použít k ověření identity uživatele a zahájit relaci s uživatelem. |
 | code | Autorizační kód, který aplikace požaduje, pokud jste použili `response_type=code+id_token`. Aplikace můžete požádat o přístupový token pro cílový prostředek autorizační kód. Autorizační kódy se obvykle vyprší po přibližně 10 minut. |
-| stav | Pokud `state` parametr je zahrnutý v požadavku, stejnou hodnotu by se měla zobrazit v odpovědi. Aplikace by měla ověřte, že `state` hodnoty v požadavku a odpovědi jsou identické. |
+| state | Pokud `state` parametr je zahrnutý v požadavku, stejnou hodnotu by se měla zobrazit v odpovědi. Aplikace by měla ověřte, že `state` hodnoty v požadavku a odpovědi jsou identické. |
 
 Chybové odpovědi je také možné odeslat `redirect_uri` parametru tak, aby aplikace můžete odpovídajícím způsobem zpracovat:
 
@@ -116,7 +117,7 @@ error=access_denied
 | --------- | ----------- |
 | error | Kód, který slouží ke klasifikaci typy chyb, ke kterým dochází. |
 | error_description | Určité chybové zprávě, který vám pomůže identifikovat hlavní příčinu chyby ověřování. |
-| stav | Pokud `state` parametr je zahrnutý v požadavku, stejnou hodnotu by se měla zobrazit v odpovědi. Aplikace by měla ověřte, že `state` hodnoty v požadavku a odpovědi jsou identické. |
+| state | Pokud `state` parametr je zahrnutý v požadavku, stejnou hodnotu by se měla zobrazit v odpovědi. Aplikace by měla ověřte, že `state` hodnoty v požadavku a odpovědi jsou identické. |
 
 ## <a name="validate-the-id-token"></a>Ověřit ID token
 
@@ -152,7 +153,9 @@ Po ověření tokenu ID, můžete začít relaci s uživatelem. Deklarace identi
 
 Pokud potřebujete spustit jenom toky uživatelů pro webové aplikace, můžete přeskočit několik částí. Tyto části platí pouze pro webové aplikace, které je potřeba provést ověřená volání do webového rozhraní API a jsou také chráněné službou Azure AD B2C.
 
-Uplatníte autorizační kód, který jste získali (s použitím `response_type=code+id_token`) o token u požadovaného prostředku odesláním `POST` požádat o `/token` koncového bodu. V současné době je jediný zdroj, který můžete požádat o token pro vaše aplikace vlastní back endové webové rozhraní API. Konvence pro požadování tokenu sami sobě je použít ID klienta aplikace jako obor:
+Uplatníte autorizační kód, který jste získali (s použitím `response_type=code+id_token`) o token u požadovaného prostředku odesláním `POST` požádat o `/token` koncového bodu. V Azure AD B2C, můžete [požádat o tokeny přístupu pro další rozhraní API](active-directory-b2c-access-tokens.md#request-a-token) obvyklým zadáním jejich počet rozsahů: v požadavku.
+
+Také můžete vyžádat přístupového tokenu pro vaše aplikace vlastní back endové webové rozhraní API podle konvence pomocí ID klienta aplikace jako požadovaný obor (což bude mít za následek přístupový token s tímto ID klienta jako "cílovou skupinu"):
 
 ```
 POST fabrikamb2c.onmicrosoft.com/oauth2/v2.0/token?p=b2c_1_sign_in HTTP/1.1

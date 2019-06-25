@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: jegeib
 ms.openlocfilehash: 6ad6eca20827e1683237b2c668eba71acedfaade
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64917621"
 ---
 # <a name="threat-modeling-tool-update-release-71604081---492019"></a>Vydání aktualizace nástroj pro modelování hrozeb 7.1.60408.1 - 4/9/2019
@@ -48,7 +48,7 @@ Verze klienta nástroje pro modelování hrozeb se teď zobrazují na domovské 
 
 Uživatelům s přímým přístupem tak, aby se aktualizovaly všechny odkazy na podporu v rámci nástroje [ tmtextsupport@microsoft.com ](mailto:tmtextsupport@microsoft.com) místo fórum na webu MSDN.
 
-## <a name="system-requirements"></a>Systémové požadavky
+## <a name="system-requirements"></a>Požadavky na systém
 
 - Podporované operační systémy
   - [Microsoft Windows 10 Anniversary Update](https://blogs.windows.com/windowsexperience/2016/08/02/how-to-get-the-windows-10-anniversary-update/#HTkoK5Zdv0g2F2Zq.97) nebo novější

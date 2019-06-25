@@ -33,26 +33,33 @@
           href: learn/quick-collect-windows-computer.md
 - name: Kurzy
   items:
-    - name: Analýza dat v analytice protokolů
-      href: learn/tutorial-viewdata.md
-    - name: Vizualizace dat v analytice protokolů
-      href: learn/tutorial-logs-dashboards.md
+    - name: Protokoly
+      items:
+        - name: Log Analytics
+          href: log-query/get-started-portal.md
+        - name: Dotazy na protokoly
+          href: log-query/get-started-queries.md
+        - name: Vizualizace dat protokolu
+          href: learn/tutorial-logs-dashboards.md
+        - name: Upozornění na data protokolů
+          href: learn/tutorial-response.md
+    - name: Application Insights
+      items:
+        - name: Vyhledání běhových výjimek aplikací
+          href: learn/tutorial-runtime-exceptions.md
+        - name: Vyhledání potíží s výkonem aplikací
+          href: learn/tutorial-performance.md
+        - name: Upozornění na stav aplikace
+          href: learn/tutorial-alert.md
+        - name: Vysvětlení uživatelů aplikací
+          href: learn/tutorial-users.md
+        - name: Vytvoření vlastních řídicích panelů
+          href: learn/tutorial-app-dashboards.md
+        - name: Application Insights
     - name: Archivace metrik platformy a dat protokolů
       href: learn/tutorial-archive-data.md
-    - name: Upozornění na data protokolů
-      href: learn/tutorial-response.md
     - name: Automatické škálování podle výkonu a plánu
       href: learn/tutorial-autoscale-performance-schedule.md
-    - name: Vyhledání běhových výjimek aplikací
-      href: learn/tutorial-runtime-exceptions.md
-    - name: Vyhledání potíží s výkonem aplikací
-      href: learn/tutorial-performance.md
-    - name: Upozornění na stav aplikace
-      href: learn/tutorial-alert.md
-    - name: Vysvětlení uživatelů aplikací
-      href: learn/tutorial-users.md
-    - name: Vytvoření vlastních řídicích panelů
-      href: learn/tutorial-app-dashboards.md
 - name: Ukázky
   items:
     - name: Azure PowerShell
@@ -115,12 +122,8 @@
       href: visualizations.md
     - name: Integrace partnerů
       href: platform/partners.md
-    - name: Přechod na portál OMS
-      items:
-        - name: Přehled
-          href: platform/oms-portal-transition.md
-        - name: Časté dotazy
-          href: platform/oms-portal-faq.md
+    - name: Vyřazení portálu OMS
+      href: platform/oms-portal-transition.md
     - name: Nejčastější dotazy
       items:
         - name: Log Analytics
@@ -203,6 +206,8 @@
               href: platform/stream-monitoring-data-event-hubs.md
             - name: Korelace vlastních zdrojů dat
               href: app/custom-data-correlation.md
+            - name: Zobrazení oznámení služby
+              href: platform/service-notifications.md
         - name: Instalace a konfigurace agentů
           items:
             - name: Přehled agentů monitorování
@@ -249,6 +254,8 @@
               items:
                 - name: Rozšíření Log Analytics pro virtuální počítače
                   href: platform/vmext-troubleshoot.md
+                - name: Agent Log Analytics pro Windows
+                  href: platform/agent-windows-troubleshoot.md
                 - name: Linuxový agent Log Analytics
                   href: platform/agent-linux-troubleshoot.md
         - name: Zdroje dat agenta
@@ -667,6 +674,99 @@
               href: insights/solutions.md
             - name: Cílová řešení
               href: insights/solution-targeting.md
+    - name: Analýza dat
+      items:
+        - name: Metriky
+          items:
+            - name: Začínáme s Průzkumníkem metrik
+              href: platform/metrics-getting-started.md
+            - name: Pokročilé funkce Průzkumníku metrik
+              href: platform/metrics-charts.md
+            - name: Příklady grafů metrik
+              href: platform/metric-chart-samples.md
+            - name: Řešení potíží s grafy metrik
+              href: platform/metrics-troubleshoot.md
+        - name: Protokoly
+          items:
+            - name: Přehled dotazů na protokoly
+              displayname: 'log query, log queries, query, queries'
+              href: log-query/log-query-overview.md
+            - name: Kurzy
+              items:
+                - name: Kurz Log Analytics
+                  href: log-query/get-started-portal.md
+                - name: Kurz dotazů k protokolům
+                  href: log-query/get-started-queries.md
+            - name: Protokolování dat
+              items:
+                - name: Datová struktura protokolů
+                  href: log-query/logs-structure.md
+                - name: Rozsah dotazu
+                  href: log-query/scope.md
+                - name: Standardní vlastnosti
+                  href: platform/log-standard-properties.md
+            - name: Dotazovací jazyk
+              items:
+                - name: Dokumentace k dotazovacímu jazyku
+                  href: log-query/query-language.md
+                - name: Rozdíly v jazycích
+                  href: log-query/data-explorer-difference.md
+                - name: Užitečné operátory
+                  href: log-query/functions.md
+                - name: Functions
+                  href: log-query/useful-operators.md
+                - name: Přechod z prohledávání protokolu
+                  href: log-query/log-search-transition.md
+                - name: Lekce
+                  items:
+                    - name: Operace s řetězci
+                      href: log-query/string-operations.md
+                    - name: Operace s datem a časem
+                      href: log-query/datetime-operations.md
+                    - name: Agregační funkce
+                      href: log-query/aggregations.md
+                    - name: Pokročilé agregace
+                      href: log-query/advanced-aggregations.md
+                    - name: Spojení
+                      href: log-query/joins.md
+                    - name: JSON a datové struktury
+                      href: log-query/json-data-structures.md
+                    - name: Psaní rozšířených dotazů
+                      href: log-query/advanced-query-writing.md
+                    - name: Grafy a diagramy
+                      href: log-query/charts.md
+                    - name: Vyhledávací dotazy
+                      href: log-query/search-queries.md
+                - name: Přehledy
+                  items:
+                    - name: SQL
+                      href: log-query/sql-cheatsheet.md
+                    - name: Splunk
+                      href: log-query/splunk-cheatsheet.md
+            - name: Napříč prostředky
+              items:
+                - name: Dotazy napříč prostředky
+                  href: log-query/cross-workspace-query.md
+                - name: výraz rozhraní API
+                  href: log-query/app-expression.md
+                - name: výraz pracovního prostoru
+                  href: log-query/workspace-expression.md
+                - name: Sjednocení prostředků dat aplikací
+                  href: log-query/unify-app-resource-data.md
+            - name: Příklady a pokyny
+              items:
+                - name: Příklady dotazů na protokol
+                  href: log-query/examples.md
+                - name: Příklady inteligentních analýz
+                  href: log-query/smart-analytics.md
+                - name: Vytváření efektivních dotazů
+                  href: log-query/log-query-performance.md
+                - name: Analýza textových dat
+                  href: log-query/parse-text.md
+            - name: Skupiny počítačů
+              href: platform/computer-groups.md
+            - name: Konektor pro Flow
+              href: platform/flow-tutorial.md
     - name: Vizualizace dat
       items:
         - name: Zobrazení
@@ -685,104 +785,10 @@
               href: platform/powerbi.md
             - name: Export dat aplikací
               href: app/export-power-bi.md
+        - name: Řídicí panely
+          href: app/app-insights-dashboards.md
         - name: Odeslání dat do Grafany
           href: platform/grafana-plugin.md
-    - name: Analýza dat
-      items:
-        - name: Metriky
-          items:
-            - name: Začínáme s Průzkumníkem metrik
-              href: platform/metrics-getting-started.md
-            - name: Pokročilé funkce Průzkumníku metrik
-              href: platform/metrics-charts.md
-            - name: Příklady grafů metrik
-              href: platform/metric-chart-samples.md
-            - name: Řešení potíží s grafy metrik
-              href: platform/metrics-troubleshoot.md
-        - name: Protokoly
-          items:
-            - name: Dotazy na protokoly
-              href: log-query/log-query-overview.md
-            - name: Portály dotazů na protokoly
-              href: log-query/portals.md
-            - name: Dokumentace k dotazovacímu jazyku
-              href: log-query/query-language.md
-            - name: Rozdíly v jazycích
-              href: log-query/data-explorer-difference.md
-            - name: Přechod z prohledávání protokolu
-              href: log-query/log-search-transition.md
-            - name: Začínáme
-              items:
-                - name: Začínáme s portálem Analytics
-                  href: log-query/get-started-portal.md
-                - name: Začínáme s dotazy
-                  href: log-query/get-started-queries.md
-                - name: Vyhledávací dotazy
-                  href: log-query/search-queries.md
-                - name: Užitečné operátory
-                  href: log-query/useful-operators.md
-            - name: Lekce
-              items:
-                - name: Operace s řetězci
-                  href: log-query/string-operations.md
-                - name: Operace s datem a časem
-                  href: log-query/datetime-operations.md
-                - name: Agregační funkce
-                  href: log-query/aggregations.md
-                - name: Pokročilé agregace
-                  href: log-query/advanced-aggregations.md
-                - name: Spojení
-                  href: log-query/joins.md
-                - name: JSON a datové struktury
-                  href: log-query/json-data-structures.md
-                - name: Psaní rozšířených dotazů
-                  href: log-query/advanced-query-writing.md
-                - name: Grafy a diagramy
-                  href: log-query/charts.md
-                - name: Functions
-                  href: log-query/functions.md
-            - name: Přehledy
-              items:
-                - name: SQL
-                  href: log-query/sql-cheatsheet.md
-                - name: Splunk
-                  href: log-query/splunk-cheatsheet.md
-            - name: Dotazovací jazyk
-              items:
-                - name: Příklady
-                  href: log-query/examples.md
-                - name: Vytváření efektivních dotazů
-                  href: log-query/log-query-performance.md
-                - name: Inteligentní analýza
-                  href: log-query/smart-analytics.md
-                - name: Hledání napříč prostředky
-                  href: log-query/cross-workspace-query.md
-                - name: výraz rozhraní API
-                  href: log-query/app-expression.md
-                - name: výraz pracovního prostoru
-                  href: log-query/workspace-expression.md
-            - name: Protokolování dat
-              items:
-                - name: Data aplikací
-                  href: app/analytics.md
-                - name: Sjednocení prostředků dat aplikací
-                  href: log-query/unify-app-resource-data.md
-                - name: Standardní vlastnosti
-                  href: platform/log-standard-properties.md
-                - name: Analýza textových dat
-                  href: log-query/parse-text.md
-            - name: Provedení akce na základě výsledků hledání
-              href: log-query/take-action.md
-            - name: Skupiny počítačů
-              href: platform/computer-groups.md
-            - name: Konektor pro Flow
-              href: platform/flow-tutorial.md
-            - name: Rozhraní API pro prohledávání protokolů
-              href: 'https://dev.loganalytics.io/'
-        - name: Zobrazení událostí v protokolu aktivit
-          href: ../azure-resource-manager/resource-group-audit.md
-        - name: Zobrazení oznámení služby
-          href: platform/service-notifications.md
     - name: Reakce na incidenty
       items:
         - name: Výstrahy
@@ -933,6 +939,8 @@
           items:
             - name: Názorný postup s použitím REST API
               href: platform/rest-api-walkthrough.md
+            - name: Rozhraní API pro prohledávání protokolů
+              href: 'https://dev.loganalytics.io/'
             - name: Rozhraní API pro výstrahy
               href: platform/api-alerts.md
         - name: Aplikace
@@ -975,6 +983,8 @@
               href: platform/runbook-datacollect.md
 - name: Referenční informace
   items:
+    - name: Omezení služby
+      href: service-limits.md
     - name: Application Insights
       items:
         - name: Automatické shromažďování závislostí
@@ -985,6 +995,8 @@
           href: app/nuget.md
         - name: Podpora platformy
           href: app/platforms.md
+        - name: Přepsání koncového bodu
+          href: app/custom-endpoints.md
     - name: Datový model Application Insights
       items:
         - name: Přehled

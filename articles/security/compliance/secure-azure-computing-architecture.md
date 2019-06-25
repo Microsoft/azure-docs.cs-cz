@@ -7,10 +7,10 @@ ms.date: 4/9/2019
 ms.topic: article
 ms.service: security
 ms.openlocfilehash: 017a26d5672f666d4d8eaf629a0f53fe0cfe517f
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65963230"
 ---
 # <a name="secure-azure-computing-architecture"></a>Secure Azure Computing Architecture
@@ -165,7 +165,7 @@ Vzhledem k tomu, že splňují požadavky SCCA doporučujeme tuto architekturu. 
     - Použijte buď Citrix nebo F5 založené na šablonu, která je nasazená.
 - Veřejné IP adresy
     - Slouží pro front-endu do ExpressRoute se přepne do online režimu. Tyto IP adresy překladu do back endu Azure privátní adresní prostor.
-- Tabulky směrování 
+- Směrovací tabulky 
     - Platily automatizace, tyto trasy tabulky vynutit tunel veškerý provoz přes toto virtuální zařízení.
 - Nástroje pro vyrovnávání zatížení Azure – standardní SKU
     - Slouží k vyrovnávat zatížení provozu napříč zařízení.

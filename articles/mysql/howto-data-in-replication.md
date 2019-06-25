@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/31/2018
 ms.openlocfilehash: 7d56d7f8fcbd53d4f69863d260591ef80f3d7188
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61459040"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Postup konfigurace pro replikaci dat MySQL v Azure Database
@@ -204,7 +204,7 @@ Následující kroky připravte a nakonfigurujte MySQL server hostované místn�
 
 ## <a name="other-stored-procedures"></a>Dalších uložených procedur
 
-### <a name="stop-replication"></a>Zastavit replikaci
+### <a name="stop-replication"></a>Zastavení replikace
 
 Pokud chcete zastavit replikaci mezi serverem pro hlavní a repliku, použijte následující uložené procedury:
 

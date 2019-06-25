@@ -14,10 +14,10 @@ ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
 ms.openlocfilehash: 263316028e7b35a1a515322dddc4ee867011dcac
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65604100"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights kohorty
@@ -136,7 +136,7 @@ Kohorta a filtry se liší. Předpokládejme, že máte kohorta uživatelů z Sp
 * Kohorta verze se zobrazí všechny události od uživatelů, kteří odeslaný Spojené království v aktuálním časovém rozsahu jednoho nebo více událostí. Pokud je rozdělte podle země nebo oblasti, uvidíte pravděpodobně mnoha zemích a oblastech.
 * Verze filtry zobrazuje jenom události z Spojeném království. Ale pokud je rozdělte podle země nebo oblasti, se zobrazí pouze Spojeném království.
 
-## <a name="learn-more"></a>Další informace
+## <a name="learn-more"></a>Víc se uč
 
 * [Dotazovací jazyk Analytics](https://go.microsoft.com/fwlink/?linkid=856587)
 * [Uživatelé, relace, události](usage-segmentation.md)

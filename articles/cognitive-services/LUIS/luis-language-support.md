@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: diberry
 ms.openlocfilehash: 8f067bc005c4de9ddc87ed598b1717f8fbb29a6a
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65072382"
 ---
 # <a name="language-and-region-support-for-luis"></a>Podpora jazyka a oblasti pro LUIS
@@ -49,14 +49,14 @@ Služba LUIS rozumí projevy v následujících jazycích:
 
 Podpora jazyků se liší u [předem připravených entit](luis-reference-prebuilt-entities.md) a [předem připravených domén](luis-reference-prebuilt-domains.md).
 
-### <a name="chinese-support-notes"></a>* Čínština podporují poznámky
+### <a name="chinese-support-notes"></a>\* Čínština podporují poznámky
 
  - V `zh-cn` jazykovou verzi, LUIS očekává zjednodušené čínštiny znakové sady namísto tradičních znakovou sadu.
  - Názvy tříd Intent, entity, funkce a regulární výrazy mohou být znaky čínské nebo římské číslice.
  - Najdete v článku [předem připravených domén odkaz](luis-reference-prebuilt-domains.md) informace, na kterém jsou předem připravených domén podporovány v `zh-cn` jazykovou verzi.
 <!--- When writing regular expressions in Chinese, do not insert whitespace between Chinese characters.-->
 
-### <a name="japanese-support-notes"></a>* Japonské podporuje poznámky
+### <a name="japanese-support-notes"></a>\* Japonské podporuje poznámky
 
  - Protože služba LUIS neposkytuje syntaktické analýzy a nebude pochopili rozdíl mezi Keigo a neformální japonština, budete muset začlenit různé úrovně formální jako příklady školení pro vaše aplikace.
      - でございます není stejný jako です.

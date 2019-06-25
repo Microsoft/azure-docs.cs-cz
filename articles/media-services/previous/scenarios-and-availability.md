@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 930420240d7b0f116f72056404e809ca94820f11
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65991435"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Scénáře a dostupnost funkcí služby Media Services v datových centrech
@@ -179,8 +179,8 @@ Zákazníci Media Services si můžou zvolit koncový bod streamování **Standa
 
 |Název|Status|Datová centra
 |---|---|---|
-|Standard|GA|Všechny|
-|Premium|GA|Všechny|
+|Standard|GA|Vše|
+|Premium|GA|Vše|
 
 ### <a name="live-encoding"></a>Kódování v reálném čase
 
@@ -194,9 +194,9 @@ AMS nabízí dva kodéry na vyžádání – **Media Encoder Standard** a **Prac
 
 #### <a name="availability"></a>Dostupnost
 
-|Název procesoru médií|Status|Datacentra
+|Název procesoru médií|Status|Datová centra
 |---|---|---|
-|Media Encoder Standard|GA|Všechny|
+|Media Encoder Standard|GA|Vše|
 |Pracovní postup kodéru Media Encoder Premium|GA|Všechny s výjimkou Číny|
 
 ### <a name="analytics-media-processors"></a>Analytické procesory médií
@@ -205,15 +205,15 @@ Media Analytics je kolekce řečových a vizuálních komponent, které organiza
 
 #### <a name="availability"></a>Dostupnost
 
-|Název procesoru médií|Status|Datacentra
+|Název procesoru médií|Status|Datová centra
 |---|---|---|
-|Azure Media Face Detector|Náhled|Všechny|
-|Azure Media Indexer|GA|Všechny|
-|Azure Media Motion Detector|Náhled|Všechny|
-|Azure Media OCR|Náhled|Všechny|
-|Azure Media Redactor|Náhled|Všechny|
-|Azure Media Stabilizer|Náhled|Všechny|
-|Azure Media Video Thumbnails|Náhled|Všechny|
+|Azure Media Face Detector|Náhled|Vše|
+|Azure Media Indexer|GA|Vše|
+|Azure Media Motion Detector|Náhled|Vše|
+|Azure Media OCR|Náhled|Vše|
+|Azure Media Redactor|Náhled|Vše|
+|Azure Media Stabilizer|Náhled|Vše|
+|Azure Media Video Thumbnails|Náhled|Vše|
 |Azure Media Indexer 2|Náhled|Všechny s výjimkou Číny a oblasti federální vlády|
 
 ### <a name="protection"></a>Ochrana
@@ -222,12 +222,12 @@ Microsoft Azure Media Services umožňuje zabezpečení médií od okamžiku opu
 
 #### <a name="availability"></a>Dostupnost
 
-|Šifrování|Status|Datacentra|
+|Šifrování|Status|Datová centra|
 |---|---|---| 
-|Úložiště|GA|Všechny|
-|Klíče AES-128|GA|Všechny|
-|FairPlay|GA|Všechny|
-|PlayReady|GA|Všechny|
+|Úložiště|GA|Vše|
+|Klíče AES-128|GA|Vše|
+|FairPlay|GA|Vše|
+|PlayReady|GA|Vše|
 |Widevine|GA|Všechna kromě oblastí Německo, Federální vláda a Čína.
 
 ### <a name="reserved-units-rus"></a>Rezervované jednotky (RU)
@@ -248,9 +248,9 @@ Další informace najdete v části popisující [škálování](#scaling).
 
 #### <a name="availability"></a>Dostupnost
 
-|Název typu RU|Status|Datacentra
+|Název typu RU|Status|Datová centra
 |---|---|---|
-|S1|GA|Všechny|
+|S1|GA|Vše|
 |S2|GA|Všechna kromě oblastí Brazílie – jih a Indie – západ|
 |S3|GA|Všechna kromě oblasti Indie – západ|
 
@@ -260,6 +260,6 @@ Prohlédněte si mapy kurzů k Media Services.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poslat názor
+## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

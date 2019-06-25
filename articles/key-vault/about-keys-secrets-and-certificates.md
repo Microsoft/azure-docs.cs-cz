@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: b50f98c4abaeda3ac1805b73aa18fe6c29596426
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64708692"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Informace o klíčích, tajných kódů a certifikátů
@@ -330,7 +330,7 @@ Existují další atributy jen pro čtení, které jsou zahrnuty v odpovědi:
 > [!Note] 
 > Pokud vyprší platnost certifikátu služby Key Vault, je adresovatelný klíč a tajný kód nefunkčnost.  
 
-#### <a name="tags"></a>Značky
+#### <a name="tags"></a>Tags
 
  Klient zadaného slovníku páry klíč-hodnota, podobně jako značky v klíči a tajnými kódy.  
 

@@ -11,10 +11,10 @@ ms.custom: vs-azure
 ms.topic: article
 ms.date: 04/25/2019
 ms.openlocfilehash: fb071ac056355a056e5333284808417a258515de
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65467451"
 ---
 # <a name="build-your-first-serverless-app-with-azure-logic-apps-and-azure-functions---visual-studio"></a>Vytvořte svoji první aplikaci bez serveru s Azure Logic Apps a Azure Functions – Visual Studio
@@ -88,7 +88,7 @@ Pokud chcete začít, vytvořte [projekt skupiny prostředků Azure](../azure-re
    > [!TIP]
    > Ve scénářích, kde nechcete k nasazení řešení do skupiny prostředků Azure, můžete použít prázdnou **aplikace logiky** šablony, které právě vytvoří prázdný logiku aplikace.
 
-1. Z **zobrazit šablony z tohoto umístění** seznamu vyberte **Quickstart pro Azure (github.com/Azure/azure-quickstart-templates)**.
+1. Z **zobrazit šablony z tohoto umístění** seznamu vyberte **Quickstart pro Azure (github.com/Azure/azure-quickstart-templates)** .
 
 1. Do vyhledávacího pole zadejte jako filtr "aplikace logiky". Ve výsledcích vyberte tuto šablonu: **101-logic-app-and-function-app**
 

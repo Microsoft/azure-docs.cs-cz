@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 01/24/2019
+ms.date: 06/18/2019
 ms.author: alkohli
-ms.openlocfilehash: 412b554710c552bdfdf8bf94a59e822beed55b32
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: a8a8b9d872860425be721515a7087085acf12065
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925316"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206048"
 ---
 # <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-preview"></a>Kurz: Použít službu data kopírování pro kopírování dat do Azure Data Box (preview)
 
@@ -59,11 +59,11 @@ Pro kopírování dat pomocí služby kopie dat, je potřeba vytvořit úlohu:
     |-------------------------------|---------|
     |**Název úlohy**                       |Jedinečný název méně než 230 znaků pro úlohu. V názvu úlohy nejsou povolené tyto znaky: \<, \>, \|, \?, \*, \\, \:, \/, a \\\.         |
     |**Umístění zdroje**                |Zadejte cestu k protokolu SMB pro zdroj dat ve formátu: `\\<ServerIPAddress>\<ShareName>` nebo `\\<ServerName>\<ShareName>`.        |
-    |**Uživatelské jméno**                       |Uživatelské jméno v `\\<DomainName><UserName>` formát pro přístup ke zdroji dat.        |
+    |**Uživatelské jméno**                       |Uživatelské jméno v `\\<DomainName><UserName>` formát pro přístup ke zdroji dat. Pokud je připojení místního správce, potřebují explicitní oprávnění. Klikněte pravým tlačítkem na složku, vyberte **vlastnosti** a pak vyberte **zabezpečení**. To by měl přidat místního správce v **zabezpečení** kartu.       |
     |**Heslo**                       |Heslo pro přístup ke zdroji dat           |
     |**Cílový účet úložiště**    |Vyberte cílový účet úložiště k nahrání dat do seznamu.         |
     |**Cílový typ**       |Vyberte typ cílového úložiště ze seznamu: **Objekt Blob bloku**, **objektů Blob stránky**, nebo **soubory Azure**.        |
-    |**Cílový kontejner a sdílet**    |Zadejte název kontejneru nebo sdílet, že chcete nahrát data v účtu cílového úložiště. Název může obsahovat název sdílené složky ani název kontejneru. Například použít `myshare` nebo `mycontainer`. Můžete také zadat název ve formátu `sharename\directory_name` nebo `containername\virtual_directory_name`.        |
+    |**Cílový kontejner a sdílet**    |Zadejte název kontejneru nebo sdílet, že chcete nahrát data v účtu cílového úložiště. Název může obsahovat název sdílené složky ani název kontejneru. Můžete například použít `myshare` nebo `mycontainer`. Můžete také zadat název ve formátu `sharename\directory_name` nebo `containername\virtual_directory_name`.        |
     |**Zkopírujte soubory odpovídající vzoru**    | Můžete zadat vzor odpovídající název souboru v následujících dvou způsobů:<ul><li>**Použití zástupných znaků výrazů:** Pouze `*` a `?` jsou podporovány v výrazy se zástupnými znaky. Například výraz `*.vhd` vyhledá všechny soubory, které mají `.vhd` rozšíření. Obdobně `*.dl?` vyhledá všechny soubory s příponou buď `.dl` nebo, které spouštějí `.dl`, jako například `.dll`. Obdobně `*foo` vyhledá všechny soubory, jejichž názvy končí `foo`.<br>Výraz se zástupnými znaky můžete zadat přímo do pole. Ve výchozím nastavení je hodnota, kterou zadáte v poli považován výraz se zástupnými znaky.</li><li>**Použijte regulární výrazy:** Na základě POSIX regulární výrazy nejsou podporovány. Například regulární výraz `.*\.vhd` bude odpovídat všechny soubory, které mají `.vhd` rozšíření. Regulární výrazy, zadejte `<pattern>` přímo jako `regex(<pattern>)`. Další informace o formátování regulárních výrazů, přejděte na [jazyk regulárních výrazů – Stručná referenční příručka](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference).</li><ul>|
     |**Optimalizace souborů**              |Pokud je tato funkce povolena, jsou při ingestování zkomprimována soubory menší než 1 MB. Tento balení urychlí kopírování dat pro malé soubory. Také ukládá významné množství času, pokud počet souborů, které úplně překročí počet adresářů.        |
  

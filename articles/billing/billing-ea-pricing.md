@@ -16,10 +16,10 @@ ms.date: 02/22/2019
 ms.author: banders
 ms.custom: seodec18
 ms.openlocfilehash: d4c64433089f14d845cea8be9adf0ef13675cfd1
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62127629"
 ---
 # <a name="view-and-download-your-organizations-azure-pricing"></a>Zobrazovat a stahovat, ceny za Azure vaší organizace
@@ -51,7 +51,7 @@ Musí být fakturační profil vlastníkem, přispěvatelem, Čtenář nebo spr�
 ### <a name="download-price-sheets-for-the-current-billing-period"></a>Stáhněte si ceníky pro aktuální fakturační období
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1. Vyhledejte **Cost Management a fakturace**.
+1. Hledat na **Cost Management a fakturace**.
 1. Vyberte fakturační profil. V závislosti na přístup potřebujete nejprve vybrat fakturační účet.
 1. V **přehled** okně Najít odkazy ke stažení pod poplatky za měsíc k datu.
 1. Vyberte **Azure ceníku**.
@@ -60,7 +60,7 @@ Musí být fakturační profil vlastníkem, přispěvatelem, Čtenář nebo spr�
 ### <a name="download-price-sheets-for-billed-charges"></a>Stáhněte si ceníky se fakturuje za
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1. Vyhledejte **Cost Management a fakturace**.
+1. Hledat na **Cost Management a fakturace**.
 1. Vyberte fakturační profil. V závislosti na přístup potřebujete nejprve vybrat fakturační účet.
 1. Vyberte **Faktury**.
 1. V mřížce faktury nalezen řádek odpovídající ceníku, který chcete stáhnout fakturu.
@@ -78,7 +78,7 @@ Můžete také použít ceny vaší organizace k odhadu nákladů s cenovou kalk
 
 1. Přejděte [cenovou kalkulačku Azure](https://azure.microsoft.com/pricing/calculator).
 1. Vpravo nahoře vyberte **přihlášení**.
-1. V části **programy a nabídky** > **licenční Program**vyberte **Enterprise Agreement (EA)**.
+1. V části **programy a nabídky** > **licenční Program**vyberte **Enterprise Agreement (EA)** .
 1. V části **programy a nabídky** > **vybrané smlouvy**vyberte **nic Nevybráno**.
 
     ![Snímek obrazovky zobrazující ceníku sdíleného svazku clusteru tlačítko pro stažení](./media/billing-ea-pricing/ea-pricing-calculator-estimate.png)

@@ -4,12 +4,12 @@ ms.service: container-registry
 ms.topic: include
 ms.date: 05/02/2019
 ms.author: danlep
-ms.openlocfilehash: 6e0175173f17ae0958522517360b94ee80f3b2f9
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 40cc1856a5e943ca5596e7d11712febadd30e3ec
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66148972"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67133515"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -27,9 +27,12 @@ Aktivovat úlohu na potvrzení změn do úložiště Git, třeba ACR úlohy osob
 
 1. Přejděte na stránku vytvoření tokenu PAT na GitHubu na adrese https://github.com/settings/tokens/new.
 1. Zadejte krátký **popis** tokenu, například „Ukázka služby ACR Tasks“.
-1. V části **repo** (úložiště) povolte **repo:status** (úložiště:stav) a **public_repo** (veřejné_úložiště).
+1. Vyberte obory pro službu ACR pro přístup k úložišti. Pro přístup k veřejné úložiště, stejně jako v tomto kurzu v části **úložiště**, povolte **úložiště: stav** a **public_repo**
 
    ![Snímek obrazovky se stránkou generování tokenu PAT na GitHubu][build-task-01-new-token]
+
+   > [!NOTE]
+   > Generovat token PAT pro přístup k *privátní* úložiště, zvolte rozsah úplného **úložiště** ovládacího prvku.
 
 1. Vyberte tlačítko **Generate token** (Vygenerovat token). (Můžete být vyzváni k potvrzení hesla.)
 1. Vygenerovaný token zkopírujte a uložte na **bezpečné místo** (tento token použijete při definici úlohy v následující části).

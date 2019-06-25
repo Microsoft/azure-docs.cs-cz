@@ -13,10 +13,10 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 03/31/2017
 ms.openlocfilehash: b091fb8c6f0b2b655ce0595188c362206f79d702
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66495043"
 ---
 # <a name="call-trigger-or-nest-workflows-with-http-endpoints-in-azure-logic-apps"></a>Volání triggeru, nebo vnořené pracovní postupy s koncovými body HTTP v Azure Logic Apps
@@ -294,7 +294,7 @@ Odpověď: Ano, koncové body HTTP podporují pokročilejší konfigurace prost�
 
 Odpověď: Tady je přehled o tyto změny:
 
-| 1. prosince 2014 ve verzi preview | 1. června 2016 |
+| 1\. prosince 2014 ve verzi preview | 1\. června 2016 |
 | --- | --- |
 | Klikněte na tlačítko **naslouchací proces protokolu HTTP** aplikace API |Klikněte na tlačítko **ruční aktivační události** (je vyžadována aplikace bez rozhraní API) |
 | Naslouchací proces protokolu HTTP nastavení "*automaticky odešle odpověď*" |Buď patří **odpovědi** akce nebo není v definici pracovního postupu |

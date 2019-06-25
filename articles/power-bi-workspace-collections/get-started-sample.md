@@ -9,10 +9,10 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/25/2017
 ms.openlocfilehash: 6cf78bf9c83df0a1255c14499bbd2036a2be5ed6
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64714507"
 ---
 # <a name="get-started-with-power-bi-workspace-collections-sample"></a>Začínáme s ukázkou kolekce pracovních prostorů Power BI
@@ -140,7 +140,7 @@ Pomocí společných server a databáze atributy selhání. Příklad: Server=tc
 
 | Část | Popis |
 | --- | --- |
-| Název |Název sestavy. |
+| Titul |Název sestavy. |
 | Řetězec dotazu |Odkaz na ID sestavy. |
 ```cshtml
 <div id="reports-nav" class="panel-collapse collapse">
@@ -170,7 +170,7 @@ Report.cshtml: Nastavte **Model.AccessToken**a výraz Lambda pro **PowerBIReport
 </div>
 ```
 
-### <a name="controller"></a>Kontrolér
+### <a name="controller"></a>Kontroler
 
 **DashboardController.cs**: Vytvoří PowerBIClient předávání **tokenu aplikace**. JSON Web Token (token JWT) se generuje z **podpisový klíč** zobrazíte **přihlašovací údaje**. **Pověření** slouží k vytvoření instance **PowerBIClient**. Jakmile budete mít instanci **PowerBIClient**, můžete volat GetReports() a GetReportsAsync().
 

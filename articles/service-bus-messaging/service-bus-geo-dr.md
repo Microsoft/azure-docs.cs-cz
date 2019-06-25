@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: a2b92b7673ed852e203ca0926421be6ee8cf977d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 24d6658733ea38c15f0673d10db3c0ff5ef51c23
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67058173"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190149"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Azure Service Bus Geo-zotavení po havárii
 
@@ -62,6 +62,17 @@ Proces instalace je takto:
 2. Zřízení ***sekundární*** služby Service Bus Premium Namespace v oblasti *liší od kde primární obor názvů zřizován*. To vám pomůže povolit izolaci chyb napříč oblastmi jiném datovém centru.
 
 3. Vytvoření párování mezi primární obor názvů a sekundární obor názvů získat ***alias***.
+
+    >[!NOTE] 
+    > Pokud máte [migraci vašeho oboru názvů Azure Service Bus úrovně Standard pro Azure Service Bus Premium](service-bus-migrate-standard-premium.md), pak je třeba použít existující alias (například Service Bus úrovně Standard obor názvů připojovací řetězec) nevytvořil zotavení po havárii konfigurace prostřednictvím **PS/CLI** nebo **rozhraní REST API**.
+    >
+    >
+    > Důvodem je, že během migrace, Azure Service Bus úrovně Standard názvu vašeho oboru názvů připojovací řetězec/DNS samotné stane alias do svého oboru názvů Azure Service Bus úrovně Premium.
+    >
+    > Tento alias (například Azure Service Bus úrovně Standard obor názvů připojovací řetězec) pro připojení k oboru názvů úrovně Premium, kde párování pro zotavení po havárii po nastavení musí využívat klientské aplikace.
+    >
+    > Pokud používáte portál pro nastavení konfigurace zotavení po havárii, pak na portálu abstraktní tento výstrahou od vás.
+
 
 4. Použití ***alias*** získaný v kroku 3 pro připojení klientských aplikací pro Geo-DR povolené primární obor názvů. Na začátku aliasem, který se odkazuje na primární obor názvů.
 

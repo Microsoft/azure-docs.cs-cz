@@ -1,6 +1,6 @@
 ---
 title: Authentication
-titleSuffix: Cognitive Services - Azure
+titleSuffix: Azure Cognitive Services
 description: 'Existují tři způsoby, jak ověřit požadavek na prostředek Azure Cognitive Services: klíč předplatného, nosný token nebo víc služeb předplatného. V tomto článku se dozvíte o jednotlivých metod a jak vytvořit žádost.'
 services: cognitive-services
 author: erhopf
@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: erhopf
-ms.openlocfilehash: 90bc2bf4c207f3bb2727d76c2e6b4fd5597539b1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 06cc5509598cb6227a64e2cf375a5686c89312eb
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60336762"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67163673"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Ověření požadavků ve službě Azure Cognitive Services
 
@@ -29,7 +29,7 @@ Každý požadavek do služby Azure Cognitive musí obsahovat hlavičku ověřov
 Před provedením požadavku, budete potřebovat účet Azure a předplatné služeb Azure Cognitive Services. Pokud již máte účet, neváhejte a přejděte k další části. Pokud nemáte účet, máme Tento průvodce vám několika minut: [Vytvoření účtu služeb Cognitive Services pro Azure](cognitive-services-apis-create-account.md).
 
 Můžete získat klíč předplatného z [webu Azure portal](cognitive-services-apis-create-account.md#access-your-resource) po vytvoření účtu nebo aktivaci [bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/my-apis).
- 
+
 ## <a name="authentication-headers"></a>Ověřovací hlavičky
 
 Pojďme ověřovací hlavičky, které jsou k dispozici pro použití se službou Azure Cognitive Services rychle.

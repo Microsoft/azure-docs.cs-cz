@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/18/2017
 ms.author: jeconnoc
 ms.openlocfilehash: a6cf2276da463f71f008c4bfb6eee4c232b18308
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61433697"
 ---
 # <a name="how-to-create-and-deploy-a-cloud-service"></a>Jak vytvořit a nasadit cloudovou službu
@@ -73,7 +73,7 @@ Chcete-li vytvořit cloudovou službu s nasazení webové role nebo role pracovn
 
     ![Publikovat cloudovou službu](media/cloud-services-how-to-create-deploy-portal/select-package.png)
 
-## <a name="upload-a-certificate"></a>Nahrát certifikát
+## <a name="upload-a-certificate"></a>Nahrání certifikátu
 Pokud byl balíček pro nasazení [nakonfigurovaný tak, aby používali certifikáty](cloud-services-configure-ssl-certificate-portal.md#modify), teď můžete nahrát certifikát.
 
 1. Vyberte **certifikáty**a na **přidat certifikáty** podokně, vyberte soubor PFX certifikátu SSL a potom zadejte **heslo** pro certifikát

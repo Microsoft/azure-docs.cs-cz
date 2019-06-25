@@ -11,12 +11,12 @@ ms.custom: mvc
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.date: 04/25/2019
-ms.openlocfilehash: afa539bc3369e4f9d9ecf27340436e0be70a03ad
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: a8857d62b3078d78bdd0a339ebadf766ddb2fb43
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190579"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295822"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Rychlý start: Vytváření automatizovaných úloh, procesů a pracovních postupů s Azure Logic Apps – Visual Studio
 
@@ -88,7 +88,7 @@ Začněte vytvořením [projektu skupiny prostředků Azure](../azure-resource-m
 
    1. Zadejte název skupiny prostředků Azure, které chcete používat a další informace o projektu. Zvolte **Vytvořit**.
 
-1. V seznamu šablon vyberte **aplikace logiky** šablony. Vyberte **OK**.
+1. V seznamu šablon vyberte **aplikace logiky** šablony. Zvolte **OK**.
 
    ![Výběr šablony Aplikace logiky](./media/quickstart-create-logic-apps-with-visual-studio/select-logic-app-template.png)
 
@@ -105,6 +105,9 @@ Pokud máte projekt, vytvořte aplikaci logiky s skupinu prostředků Azure **pr
 
    ![Otevření souboru .json aplikace logiky pomocí Návrháře aplikace logiky](./media/quickstart-create-logic-apps-with-visual-studio/open-logic-app-designer.png)
 
+   > [!TIP]
+   > Pokud tento příkaz nemáte k dispozici v aplikaci Visual Studio 2019, zkontrolujte, že máte nejnovější aktualizace pro sadu Visual Studio.
+
    Visual Studio vás vyzve k zadání vašeho předplatného Azure a skupinu prostředků Azure pro vytváření a nasazování prostředků pro vaši aplikaci logiky a připojením.
 
 1. Pro **předplatné**, vyberte své předplatné Azure. Pro **skupiny prostředků**vyberte **vytvořit nový** vytvořit novou skupinu prostředků Azure.
@@ -116,7 +119,7 @@ Pokud máte projekt, vytvořte aplikaci logiky s skupinu prostředků Azure **pr
    | Výpis profilu uživatele | Contoso <br> jamalhartnett@contoso.com | Ve výchozím nastavení se jedná o účet, který jste použili k přihlášení |
    | **Předplatné** | Průběžné platby <br> (jamalhartnett@contoso.com) | Název vašeho předplatného Azure a přidruženého účtu |
    | **Skupina prostředků** | MyLogicApp-RG <br> (Západní USA) | Skupina prostředků Azure a umístění pro ukládání a nasazování prostředků vaší aplikace logiky |
-   | **Umístění** | MyLogicApp-RG2 <br> (Západní USA) | Jiné umístění, pokud nechcete použít umístění skupiny prostředků |
+   | **Location** | MyLogicApp-RG2 <br> (Západní USA) | Jiné umístění, pokud nechcete použít umístění skupiny prostředků |
    ||||
 
 1. Návrhář pro Logic Apps se otevře stránka, která zobrazí video úvod a běžně používanými triggery. Posunout dolů za video a triggery máme **šablony**a vyberte **prázdná aplikace logiky**.

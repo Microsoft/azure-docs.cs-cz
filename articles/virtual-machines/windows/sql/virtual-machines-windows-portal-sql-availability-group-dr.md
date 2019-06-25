@@ -17,10 +17,10 @@ ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
 ms.openlocfilehash: f9e31ac7685d597c741033bc165c6a51280e3d72
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64571726"
 ---
 # <a name="configure-an-always-on-availability-group-on-azure-virtual-machines-in-different-regions"></a>Konfigurace skupiny dostupnosti AlwaysOn na virtuálních počítačích, které jsou v různých oblastech Azure
@@ -167,14 +167,14 @@ Po otestování připojení k primární replice přejděte zpět do vašeho pri
 
 | Location | Instance serveru | Role | Režim dostupnosti | Režim převzetí služeb při selhání
 | ----- | ----- | ----- | ----- | -----
-| Primární datové centrum | SQL-1 | Primární | Synchronní | Automaticky
-| Primární datové centrum | SQL-2 | Sekundární | Synchronní | Automaticky
+| Primární datové centrum | SQL-1 | Primární | Synchronní | Automatické
+| Primární datové centrum | SQL-2 | Sekundární | Synchronní | Automatické
 | Sekundární nebo vzdálené datové centrum | SQL-3 | Sekundární | Asynchronní | Manual
 
 
 ### <a name="more-information-about-planned-and-forced-manual-failover"></a>Další informace o plánovaných a vynucené ruční převzetí služeb při selhání
 
-Další informace najdete v následujících tématech:
+Další informace naleznete v následujících tématech:
 
 - [Provést plánované ruční převzetí služeb skupiny dostupnosti (SQL Server)](https://msdn.microsoft.com/library/hh231018.aspx)
 - [Provést vynucené ruční převzetí služeb skupiny dostupnosti (SQL Server)](https://msdn.microsoft.com/library/ff877957.aspx)

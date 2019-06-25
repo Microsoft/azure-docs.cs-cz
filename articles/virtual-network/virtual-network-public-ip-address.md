@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: e1e82d7f7b6b8bf9bfef56b569db2db097b914ab
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 98810af66b0be6d925229b7e05dc01f62106e7cd
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/17/2019
 ms.locfileid: "64728730"
 ---
 # <a name="create-change-or-delete-a-public-ip-address"></a>Vytvořit, změnit nebo odstranit veřejnou IP adresu
@@ -35,7 +35,7 @@ Další informace o veřejné IP adresy a jak vytvořit, změnit a toku nějaký
 Před dokončením kroků v jakékoli části tohoto článku, proveďte následující úkoly:
 
 - Pokud ještě nemáte účet Azure, zaregistrujte si [Bezplatný zkušební účet](https://azure.microsoft.com/free).
-- Pokud používáte portál, otevřete https://portal.azure.coma přihlaste se pomocí svého účtu Azure.
+- Pokud používáte portál, otevřete https://portal.azure.com a přihlaste se pomocí svého účtu Azure.
 - Pokud používáte příkazy prostředí PowerShell k dokončení úkolů v tomto článku, buď spusťte příkazy [Azure Cloud Shell](https://shell.azure.com/powershell), nebo pomocí prostředí PowerShell z vašeho počítače. Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Tento kurz vyžaduje modul Azure PowerShell verze 1.0.0 nebo novějším. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
 - Pokud k dokončení úkolů v tomto článku pomocí příkazů rozhraní příkazového řádku Azure (CLI), buď spusťte příkazy [Azure Cloud Shell](https://shell.azure.com/bash), nebo pomocí rozhraní příkazového řádku z vašeho počítače. Tento kurz vyžaduje použití Azure CLI verze 2.0.31 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli). Pokud používáte Azure CLI místně, musíte také spustit `az login` vytvořit připojení k Azure.
 
@@ -50,9 +50,9 @@ Veřejné IP adresy účtovat nominální poplatek. Chcete-li zobrazit ceny, př
 3. V části **veřejnou IP adresu**vyberte **vytvořit**.
 4. Zadejte nebo vyberte hodnoty pro následující nastavení v části **vytvoření veřejné IP adresy**a pak vyberte **vytvořit**:
 
-   |Nastavení|Povinné?|Podrobnosti|
+   |Nastavení|Požadováno?|Podrobnosti|
    |---|---|---|
-   |Název|Ano|Název musí být jedinečný v rámci skupiny prostředků, kterou vyberete.|
+   |Name|Ano|Název musí být jedinečný v rámci skupiny prostředků, kterou vyberete.|
    |Skladová jednotka (SKU)|Ano|Všechny veřejné IP adresy vytvořené před zavedením skladových položek jsou **základní** SKU veřejné IP adresy. Skladovou Položku nelze změnit po vytvoření veřejné IP adresy. Samostatný virtuální počítač, virtuální počítače v rámci skupinu dostupnosti nebo škálovací sady virtuálních počítačů můžete použít základní nebo standardní SKU. Kombinování skladové položky virtuálních počítačů v rámci skupiny dostupnosti nebo škálovací sady se nepovoluje. **Základní** SKU: Pokud vytvoříte veřejnou IP adresu v oblasti, která podporují zóny dostupnosti **zóna dostupnosti** nastavená na *žádný* ve výchozím nastavení. Můžete vybrat zóně dostupnosti zaručit konkrétní zóně pro veřejnou IP adresu. **Standardní** SKU: Může být přidružený k virtuálnímu počítači nebo front-endu nástroje pro vyrovnávání zatížení veřejnou IP adresu standardních SKU. Pokud vytváříte veřejnou IP adresu v oblasti, která podporují zóny dostupnosti **zóna dostupnosti** nastavená na *zónově redundantní* ve výchozím nastavení. Další informace o zónách dostupnosti najdete v tématu **zóna dostupnosti** nastavení. Standardní skladová jednotka je vyžadována, pokud přidružte adresu nástroji pro vyrovnávání zatížení Standard. Další informace o nástroji pro vyrovnávání zatížení standard najdete v tématu [nástroji Azure load balancer standardní SKU](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Při přiřazování veřejné IP adresy standardní SKU k síťovému rozhraní virtuálního počítače je potřeba explicitně povolit plánovaný provoz pomocí [skupiny zabezpečení sítě](security-overview.md#network-security-groups). Komunikace s prostředkem nebude možná, dokud nevytvoříte a nepřiřadíte skupinu zabezpečení sítě a explicitně nepovolíte požadovaný provoz.|
    |Verze protokolu IP|Ano| Vyberte IPv4 nebo IPv6. Během veřejné IPv4 adresy můžete přiřadit k několika prostředkům Azure, veřejnou IP adresu protokolu IPv6 je přiřadit pouze nástroje pro vyrovnávání zatížení přístupem k Internetu. Nástroje pro vyrovnávání zatížení můžete zatížení můžete vyrovnávat přenosy protokolu IPv6 pro virtuální počítače Azure. Další informace o [vyrovnáváním zatížení IPv6 provozu do virtuálních počítačů](../load-balancer/load-balancer-ipv6-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Pokud jste vybrali **standardní SKU**, nemáte možnost vybrat si *IPv6*. Adresu IPv4 přístupnou lze vytvořit pouze při použití **standardní SKU**.|
    |Přiřazení IP adresy|Ano|**Dynamické:** Dynamické adresy se přiřazují pouze po veřejná IP adresa je přidružená k prostředku Azure, a první spuštění prostředku. Dynamické adresy se mohou měnit, pokud máte přiřazenou k prostředku, jako je například virtuální počítač a virtuální počítač je zastaveno (přidělení zrušeno) a potom znovu spustit. Adresa zůstala stejná, pokud virtuální počítač restartovat nebo zastavení (ale není uvolněný.). Dynamické adresy se vydávají při prostředek veřejné IP adresy je oddělen od prostředků, který je přidružen k. **Statické:** Statické adresy se přiřazují při vytvoření veřejné IP adresy. Statické adresy se uvolní až do odstranění prostředku veřejné IP adresy. Pokud adresa není přidružená k prostředku, metodu přiřazování můžete změnit po vytvoření adresu. Pokud je adresa přidružená k prostředku, nebudete moci změnit metodu přiřazení. Pokud vyberete *IPv6* pro **verze protokolu IP**, je metoda přiřazení *dynamické*. Pokud vyberete *standardní* pro **SKU**, je metoda přiřazení *statické*.|
@@ -70,7 +70,7 @@ Veřejné IP adresy účtovat nominální poplatek. Chcete-li zobrazit ceny, př
 
 I když portál nabízí možnost vytvořit dvě veřejné IP adresy prostředků (jeden IPv4 a jedna IPv6), následující příkazy rozhraní příkazového řádku a Powershellu vytvoří jeden prostředek s adresou pro jednu verzi protokolu IP, nebo druhé. Pokud chcete, aby dva prostředky veřejné IP adresy adresu, jeden pro každou verzi protokolu IP je musí spustit příkaz dvakrát, zadáním jiné názvy a verze pro prostředky veřejné adresy IP adresy.
 
-|Tool|Příkaz|
+|Nástroj|Příkaz|
 |---|---|
 |Rozhraní příkazového řádku|[az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create)|
 |PowerShell|[New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress)|
@@ -89,7 +89,7 @@ I když portál nabízí možnost vytvořit dvě veřejné IP adresy prostředk�
 
 **Příkazy**
 
-|Tool|Příkaz|
+|Nástroj|Příkaz|
 |---|---|
 |Rozhraní příkazového řádku|[AZ network public-ip list](/cli/azure/network/public-ip#az-network-public-ip-list) na seznamu veřejné IP adresy [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show) zobrazíte nastavení. [az network public-ip update](/cli/azure/network/public-ip#az-network-public-ip-update) aktualizovat; [az network public-ip delete](/cli/azure/network/public-ip#az-network-public-ip-delete) odstranit|
 |PowerShell|[Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) načíst objekt veřejné IP adresy a zobrazte její nastavení [Set-AzPublicIpAddress](/powershell/module/az.network/set-azpublicipaddress) aktualizovat nastavení. [Odebrat AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress) odstranit|
@@ -108,7 +108,7 @@ Zjistěte, jak přiřadit veřejnou IP adresu na následujících odkazech:
 
 K provádění úloh na veřejné IP adresy, musí mít váš účet přiřazenou k [Přispěvatel sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolí nebo [vlastní](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) role, která je přiřazena příslušné akce uvedené v následující tabulce:
 
-| Akce                                                             | Název                                                           |
+| Akce                                                             | Name                                                           |
 | ---------                                                          | -------------                                                  |
 | Microsoft.Network/publicIPAddresses/read                           | Přečtěte si veřejné IP adresy                                          |
 | Microsoft.Network/publicIPAddresses/write                          | Vytvořit nebo aktualizovat veřejnou IP adresu                           |

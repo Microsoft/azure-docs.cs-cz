@@ -11,12 +11,12 @@ ms.date: 01/09/2019
 author: sharonlo101
 ms.author: shlo
 manager: craigg
-ms.openlocfilehash: 82786b8f01ce409179f4ddd37127679f9357cd0e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: dfdfb9e38f16d0077175587933b0800b87cc1931
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64727063"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67144118"
 ---
 # <a name="azure-function-activity-in-azure-data-factory"></a>Aktivita funkce Azure ve službě Azure Data Factory
 
@@ -41,13 +41,13 @@ Návratový typ funkce Azure musí být platný `JObject`. (Mějte na paměti, k
 
 | **Vlastnost**  | **Popis** | **Povolené hodnoty** | **Požadováno** |
 | --- | --- | --- | --- |
-| jméno  | Název aktivity v kanálu  | String | ano |
+| name  | Název aktivity v kanálu  | String | ano |
 | type  | Typ aktivity je "AzureFunctionActivity. | String | ano |
 | Propojená služba | Funkce Azure, propojené služby pro odpovídající aplikaci funkcí Azure  | Odkaz na propojenou službu | ano |
 | Název funkce  | Název funkce v aplikaci Azure Function App, která volá tuto aktivitu | String | ano |
 | method  | Metoda rozhraní REST API pro volání funkce | Řetězec podporované typy: "GET", "POST", "UMÍSTĚNÍ"   | ano |
 | záhlaví  | Hlavičky, které se odesílají na požadavek. Například nastavení jazyka a typu na vyžádání: "záhlaví": {"Accept-Language": "en-us", "Content-Type": "application/json"} | Řetězec (nebo výraz s hodnotu resultType řetězec) | Ne |
-| hlavní část  | text, který se zasílá společně s žádost na metodu api – funkce  | Řetězec (nebo výraz s hodnotu resultType řetězec) nebo objekt.   | Vyžaduje se pro metody PUT/POST |
+| Text  | text, který se zasílá společně s žádost na metodu api – funkce  | Řetězec (nebo výraz s hodnotu resultType řetězec) nebo objekt.   | Vyžaduje se pro metody PUT/POST |
 |   |   |   | |
 
 Zobrazit schéma datové části požadavku v [schématu datové části požadavku](control-flow-web-activity.md#request-payload-schema) oddílu.
@@ -64,6 +64,10 @@ Azure Functions vyprší po sekundách 230 bez ohledu `functionTimeout` nastaven
 
 Další informace o odolná služba Functions v [v tomto článku](../azure-functions/durable/durable-functions-overview.md). Aktivita funkce Azure můžete nastavit pro volání funkce trvalý, který vrátí odpověď se jiný identifikátor URI, například [v tomto příkladu](../azure-functions/durable/durable-functions-http-api.md#http-api-url-discovery). Protože `statusQueryGetUri` vrátí 202 stav protokolu HTTP při funkce běží, stav funkce můžete dotazovat pomocí aktivitu webu. Stačí nastavit aktivitu webu s `url` pole nastaveno `@activity('<AzureFunctionActivityName>').output.statusQueryGetUri`. Po dokončení funkce trvalý výstup funkce bude výstup aktivity webu.
 
+
+## <a name="sample"></a>Ukázka
+
+Můžete najít ukázky služby Data Factory, který používá funkci Azure Functions k extrahování obsahu souboru cíl [tady](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV2/UntarAzureFilesWithAzureFunction).
 
 ## <a name="next-steps"></a>Další postup
 

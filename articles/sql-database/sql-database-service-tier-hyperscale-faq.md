@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 05/06/2019
-ms.openlocfilehash: 38d9ad007b67756bdca0c6f98267aa16ba38ee9d
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 535ae91abc04b2fdcebb6a2083db95ec50f61798
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65791433"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275582"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Nejčastější dotazy týkající se databáze Azure SQL Hyperškálováním
 
@@ -44,19 +44,19 @@ Založený na virtuálních jádrech služby, které úrovně se liší předev�
 - Úroveň služby Hyperškálovatelného je optimalizována pro úlohy velmi rozsáhlé databáze.
 - Úroveň pro důležité obchodní informace služby jsou vhodné pro firemní úlohy kde vstupně-výstupní latence je prioritou.
 
-| | Typ prostředku | Obecné použití |  Hyperškálování | Obchodně klíčové |
+| | Typ prostředku | Obecné použití |  Hyperškálování | Pro důležité obchodní informace |
 |:---|:---:|:---:|:---:|:---:|:---:|
-| **Nejlepší pro** |Všechny|  Většinu obchodních úloh. Nabídky rozpočtu orientované vyvážené výpočetní a úložné možnosti. | Datové aplikace s požadavky na kapacitu velkých objemů dat a možnost automatického škálování úložiště a škálování výpočetní plynule. | OLTP aplikace s vysokou četností transakcí a nejnižší latenci vstupně-výstupních operací. Nabízí nejvyšší odolnost proti selhání s využitím několika, izolovaných replik.|
+| **Nejlepší pro** |Vše|  Většinu obchodních úloh. Nabídky rozpočtu orientované vyvážené výpočetní a úložné možnosti. | Datové aplikace s požadavky na kapacitu velkých objemů dat a možnost automatického škálování úložiště a škálování výpočetní plynule. | OLTP aplikace s vysokou četností transakcí a nejnižší latenci vstupně-výstupních operací. Nabízí nejvyšší odolnost proti selhání s využitím několika, izolovaných replik.|
 |  **Typ prostředku** ||Izolované databáze nebo elastického fondu / spravované instance | Izolovaná databáze | Izolované databáze nebo elastického fondu / spravované instance |
 | **Vypočítat velikost**|Izolovanou databázi nebo elastický fond * | 1 až 80 virtuálních jader | 1 až 80 virtuálních jader * | 1 až 80 virtuálních jader |
 | |Spravovaná instance | 8, 16, 24, 32, 40, 64, 80 virtuálních jader | neuvedeno | 8, 16, 24, 32, 40, 64, 80 virtuálních jader |
-| **Typ úložiště** | Všechny |Vzdálené úložiště úrovně Premium (za instanci) | Zrušit propojených úložiště místní mezipaměti SSD (za instanci) | Mimořádně rychlým místní SSD storage (za instanci) |
+| **Typ úložiště** | Vše |Vzdálené úložiště úrovně Premium (za instanci) | Zrušit propojených úložiště místní mezipaměti SSD (za instanci) | Mimořádně rychlým místní SSD storage (za instanci) |
 | **Velikost úložiště** | Izolované databáze nebo elastického fondu | 5 GB – 4 TB | Až 100 TB | 5 GB – 4 TB |
 | | Spravovaná instance  | 32 GB – 8 TB | neuvedeno | 32 GB – 4 TB |
 | **Vstupně-výstupních operací** | Jednu databázi ** | 500 IOPS na vCore s 7000 maximální IOPS | Zatím neznámý | 5000 vstupně-výstupních operací s 200 000 maximální IOPS|
 | | Spravovaná instance | Závisí na velikosti souboru | neuvedeno | Spravovanou instanci: Závisí na velikosti souboru|
-|**Dostupnost**|Všechny|1 repliky, žádné škálování pro čtení, ne v místní mezipaměti | Víc replik, až 15 škálování pro čtení, částečné místní mezipaměti | 3 repliky, 1 škálování pro čtení, zónově redundantní vysokou dostupnost, úplná místní mezipaměti |
-|**Zálohování**|Všechny|RA-GRS, 7 – 35 dní (7 dní ve výchozím nastavení)| RA-GRS, 7 – 35 dní (7 dní ve výchozím nastavení), konstantní čas obnovení bodu v čase (PITR) | RA-GRS, 7 – 35 dní (7 dní ve výchozím nastavení) |
+|**Dostupnost**|Vše|1 repliky, žádné škálování pro čtení, ne v místní mezipaměti | Víc replik, až 15 škálování pro čtení, částečné místní mezipaměti | 3 repliky, 1 škálování pro čtení, zónově redundantní vysokou dostupnost, úplná místní mezipaměti |
+|**Zálohování**|Vše|RA-GRS, 7 – 35 dní (7 dní ve výchozím nastavení)| RA-GRS, 7 – 35 dní (7 dní ve výchozím nastavení), konstantní čas obnovení bodu v čase (PITR) | RA-GRS, 7 – 35 dní (7 dní ve výchozím nastavení) |
 
 \* Elastické fondy nejsou podporovány v rámci úrovně služeb hyperškálovatelný systém
 
@@ -79,7 +79,7 @@ Azure SQL Database Hyperškálovatelného úroveň je momentálně dostupná v o
 
 Ano. Další informace a omezení počtu databází Hyperškálovatelného v rámci logického serveru, najdete v článku [limity prostředků SQL Database pro databáze ve fondu a jeden na logickém serveru](sql-database-resource-limits-logical-server.md).
 
-### <a name="what-are-the-performance-characteristic-of-a-hyperscale-database"></a>Co jsou charakteristické výkonu databáze hyperškálovatelný systém
+### <a name="what-are-the-performance-characteristics-of-a-hyperscale-database"></a>Co jsou výkonové charakteristiky databáze hyperškálovatelný systém
 
 Architektura Hyperškálovatelného SQL Database poskytuje vysoký výkon a propustnost při současné podpoře velikosti velké databáze. 
 
@@ -94,7 +94,7 @@ Velkokapacitní SQL Database nabízí rychlou škálovatelnost podle potřeb va�
 
   S Hyperškálováním budete mít také možnost zřizování jeden nebo více dalších výpočetních uzlů, které můžete použít k obsluze žádostí o čtení. To znamená, že vám pomůže těchto dalších výpočetních uzlů jako jen pro čtení uzly přesměrování zpracování úlohy čtení od primární výpočetních prostředků. Kromě jen pro čtení, že tyto uzly slouží také jako hot standby je v případě převzetí přes z primárního serveru.
 
-  Zřizování každé z těchto dalších výpočetních uzlů můžete udělat v konstantním čase a je online operace. Můžete připojit k tyto uzly další výpočetní prostředky jen pro čtení tak, že nastavíte `ApplicationIntent` argument u připojovacího řetězce k `read_only`. Všechna připojení označené `read-only` se automaticky směrují na jednom z uzlů další výpočetní prostředky jen pro čtení.
+  Zřizování každé z těchto dalších výpočetních uzlů můžete udělat v konstantním čase a je online operace. Můžete připojit k tyto uzly další výpočetní prostředky jen pro čtení tak, že nastavíte `ApplicationIntent` argument u připojovacího řetězce k `readonly`. Všechna připojení označené `readonly` se automaticky směrují na jednom z uzlů další výpočetní prostředky jen pro čtení.
 
 ## <a name="deep-dive-questions"></a>Podrobné informace o dotazy
 
@@ -140,7 +140,7 @@ Ne.
 
 ### <a name="how-many-read-scale-replicas-are-supported"></a>Počet replik škálování pro čtení jsou podporované.
 
-Ve výchozím nastavení se databáze hyperškálovatelný systém vytvoří se jedna replika škálování pro čtení (dvě repliky celkem). Můžete škálovat počet replik jen pro čtení mezi 0 a 4 s využitím [webu Azure portal](https://portal.azure.com), [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current), [Powershell](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabase) nebo [rozhraní příkazového řádku](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update)...
+Ve výchozím nastavení se databáze hyperškálovatelný systém vytvoří se jedna replika škálování pro čtení (dvě repliky celkem). Můžete škálovat počet replik jen pro čtení mezi 0 a 4 s využitím [webu Azure portal](https://portal.azure.com), [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current), [Powershell](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabase) nebo [CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update).
 
 ### <a name="for-high-availability-do-i-need-to-provision-additional-compute-nodes"></a>Pro zajištění vysoké dostupnosti můžu potřebujete ke zřízení dalších výpočetních uzlů
 
@@ -361,7 +361,7 @@ Ve výchozím nastavení se nám vytvořit 2 repliky pro Hyperškálovatelného 
 
 ### <a name="how-do-i-connect-to-these-secondary-compute-nodes"></a>Jak připojit k těmto sekundární výpočetních uzlů
 
-Můžete připojit k tyto uzly další výpočetní prostředky jen pro čtení tak, že nastavíte `ApplicationIntent` argument u připojovacího řetězce k `read_only`. Všechna připojení označené `read-only` se automaticky směrují na jednom z uzlů další výpočetní prostředky jen pro čtení.  
+Můžete připojit k tyto uzly další výpočetní prostředky jen pro čtení tak, že nastavíte `ApplicationIntent` argument u připojovacího řetězce k `readonly`. Všechna připojení označené `readonly` se automaticky směrují na jednom z uzlů další výpočetní prostředky jen pro čtení.  
 
 ### <a name="can-i-create-a-dedicated-endpoint-for-the-read-scale-replica"></a>Můžete vytvořit vyhrazený koncový bod pro repliku škálování pro čtení
 

@@ -4,14 +4,14 @@ description: Zjistěte, jak najít jednotky žádosti (RU) poplatků pro všechn
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 05/23/2019
+ms.date: 06/14/2019
 ms.author: thweiss
-ms.openlocfilehash: 0671556a1ad049782090ffede509072adbac4c6a
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 07ca6278da6dd1f50f017f389c2c1389a42196f4
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66416033"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67163836"
 ---
 # <a name="find-the-request-unit-charge-in-azure-cosmos-db"></a>Najít zátěž jednotky žádostí ve službě Azure Cosmos DB
 
@@ -297,8 +297,9 @@ Další informace najdete v tématu [rychlý start: Sestavení aplikace Table AP
 Další informace o optimalizaci spotřebu RU, najdete v těchto článcích:
 
 * [Jednotky žádostí a propustnost ve službě Azure Cosmos DB](request-units.md)
-* [Optimalizujte náklady zřízenou propustnost v databázi Azure Cosmos DB](optimize-cost-throughput.md)
+* [Optimalizace nákladů na zřízenou propustnost ve službě Azure Cosmos DB](optimize-cost-throughput.md)
 * [Optimalizujte náklady dotazu ve službě Azure Cosmos DB](optimize-cost-queries.md)
 * [Globálně škálujte zřízená propustnost](scaling-throughput.md)
 * [Zřizování propustnosti na kontejnerech a databází](set-throughput.md)
 * [Zřizování propustnosti kontejneru](how-to-provision-container-throughput.md)
+* [Monitorování a ladění s využitím metrik ve službě Azure Cosmos DB](use-metrics.md)

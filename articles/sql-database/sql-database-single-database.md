@@ -13,10 +13,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 04/08/2019
 ms.openlocfilehash: 36b1fb96ac1dd89375588a65063ce729f6ac825d
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65794391"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>Co je izolované databáze ve službě Azure SQL Database
@@ -32,7 +32,7 @@ Možnost nasazení izolovaná databáze vytvoří databázi ve službě Azure SQ
 
 Vytvoření první aplikace na malou izolovanou databází s nízkými náklady ve vrstvě výpočty bez serveru (preview) nebo velikost malých výpočetních zřízených výpočetních úrovni. Můžete změnit [výpočetní prostředky ani prostředky služby úrovně](sql-database-single-database-scale.md) ručně nebo prostřednictvím kódu programu kdykoli podle potřeb vašeho řešení. Můžete upravit úroveň výkonu bez přerušení provozu aplikace a bez dopadu na vaše zákazníky. Dynamická škálovatelnost umožňuje databázím transparentně reagovat na rychle se měnící požadavky na prostředky a vy díky tomu platíte pouze za prostředky, které potřebujete, když je potřebujete.
 
-## <a name="single-databases-and-elastic-pools"></a>Izolované databáze a elastických fondů
+## <a name="single-databases-and-elastic-pools"></a>Izolované databáze a elastické fondy
 
 Izolované databáze můžete přesunout do nebo z [elastického fondu](sql-database-elastic-pool.md) pro sdílení prostředků. Řadě firem a aplikací stačí, že může vytvářet izolované databáze a nastavovat větší nebo menší výkon na vyžádání, zejména při relativně předvídatelném způsobu používání. Ale pokud vaše vzorce používání předvídatelné nejsou, může být správa nákladů a údržba obchodního modelu velmi těžká. Elastické fondy jsou navržené pro vyřešení tohoto problému. Princip je jednoduchý. Přidělit prostředky výkonu fondu, nikoli jednotlivé databáze a budete platit pro souhrnné prostředky výkonu fondu místo za výkon izolovaných databází.
 

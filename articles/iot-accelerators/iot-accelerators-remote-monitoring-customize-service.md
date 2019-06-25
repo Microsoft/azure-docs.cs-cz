@@ -3,17 +3,16 @@ title: Přidat službu do řešení vzdálené monitorování uživatelské rozh
 description: Tento článek ukazuje, jak přidat nové služby do vzdáleného monitorování řešení akcelerátoru webového uživatelského rozhraní.
 author: dominicbetts
 manager: timlt
-ms.author: v-yiso
+ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-origin.date: 10/02/2018
-ms.date: 11/26/2018
+ms.date: 10/02/2018
 ms.topic: conceptual
 ms.openlocfilehash: e44aa8ade512a6005959e795cb1d4ad861da1338
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61447042"
 ---
 # <a name="add-a-custom-service-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Přidat vlastní služby do vzdáleného monitorování řešení akcelerátoru webového uživatelského rozhraní
@@ -48,13 +47,13 @@ Abyste mohli začít, **src/návod/služby** složka obsahuje soubory, které de
 
 **exampleService.js**
 
-
+[!code-javascript[Example service](~/remote-monitoring-webui/src/walkthrough/services/exampleService.js?name=service "Example service")]
 
 Další informace o tom, jak se implementují služby najdete v tématu [Úvod do reaktivního programování jste dosud chyběla](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754).
 
 **model/exampleModels.js**
 
-
+[!code-javascript[Example model](~/remote-monitoring-webui/src/walkthrough/services/models/exampleModels.js?name=models "Example model")]
 
 Kopírování **exampleService.js** k **src/služby** složku a Kopírovat **exampleModels.js** k **src/services/modely** složky.
 
@@ -76,7 +75,7 @@ Jak začít, **src/návod/store/reduktorů** složka obsahuje redukční funkci 
 
 **exampleReducer.js**
 
-
+[!code-javascript[Example reducer](~/remote-monitoring-webui/src/walkthrough/store/reducers/exampleReducer.js?name=reducer "Example reducer")]
 
 Kopírování **exampleReducer.js** k **src/store/reduktorů** složky.
 

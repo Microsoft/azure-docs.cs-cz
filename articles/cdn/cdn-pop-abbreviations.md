@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/20/2018
 ms.author: magattus
 ms.openlocfilehash: 3de7f36228bba4cfc84e17dd056683a1a76df684
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64869617"
 ---
 # <a name="azure-cdn-pop-locations-by-abbreviation"></a>Azure CDN lokality POP podle zkratek
@@ -35,9 +35,9 @@ Zkratka | Location | Oblast
 AGA | Atlanta, Georgia, USA | Severní Ameriku: Východním pobřeží USA
 AGB | Atlanta, Georgia, USA | Severní Ameriku: Východním pobřeží USA
 AKL | Auckland, Nový Zéland | Asie
-AMA | Amsterodam, Nizozemsko | Evropa
-AMB | Amsterodam, Nizozemsko | Evropa
-AMS | Amsterodam, Nizozemsko | Evropa
+AMA | Amsterdam, Nizozemsko | Evropa
+AMB | Amsterdam, Nizozemsko | Evropa
+AMS | Amsterdam, Nizozemsko | Evropa
 ARN | Stockholm, Švédsko | Evropa
 ATL | Atlanta, Georgia, USA | Severní Ameriku: Východním pobřeží USA
 BAQ | Barranquilla, Kolumbie | Latinská Amerika
@@ -77,9 +77,9 @@ FTY | Atlanta, Georgia, USA | Severní Ameriku: Východním pobřeží USA
 GB | Rio de Janeiro, Brazílie | Latinská Amerika
 NEHRANATÉ | Sao Paulo, Brazílie | Latinská Amerika
 HEL | Helsinki, Finsko | Evropa
-HHP | Hongkong – zvláštní správní oblast | Asie
-HKC | Hongkong – zvláštní správní oblast | Asie
-HKG | Hongkong – zvláštní správní oblast | Asie
+HHP | Hongkong – zvláštní administrativní oblast | Asie
+HKC | Hongkong – zvláštní administrativní oblast | Asie
+HKG | Hongkong – zvláštní administrativní oblast | Asie
 HND | Tokio, Japonsko | Asie
 IAD | Ashburn, Virginia, USA | Severní Ameriku: Východním pobřeží USA
 ICN | Soul, Jižní | Asie
@@ -132,7 +132,7 @@ QRO | Santiago de Querétaro, Mexico | Severní Amerika
 RHV | Síť San Jose, Kalifornie, USA | Severní Ameriku: Západním pobřeží USA
 RIB | Rio de Janeiro, Brazílie | Latinská Amerika
 RIX | Riga, Lotyšsko | Evropa
-RTM | Amsterodam, Nizozemsko | Evropa
+RTM | Amsterdam, Nizozemsko | Evropa
 SAA | Síť San Jose, Kalifornie, USA | Severní Ameriku: Západním pobřeží USA
 SAB | Síť San Jose, Kalifornie, USA | Severní Ameriku: Západním pobřeží USA
 SCL | Valparaíso, Chile | Latinská Amerika

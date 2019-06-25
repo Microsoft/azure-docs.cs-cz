@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/03/2018
 ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: 9765af13a22a0ae9db8a45c396e7d5a32b71b79c
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 5dc2587a0c127106d5afb41e20eca43919065f1b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730327"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67118786"
 ---
 # <a name="how-to-configure-monitoring-in-azure-digital-twins"></a>Jak nakonfigurovat monitorování v Azure digitální dvojče
 
@@ -68,11 +68,11 @@ Příklady protokolování diagnostiky:
 Povolení diagnostických protokolů pro instanci:
 
 1. Otevřete prostředek na webu Azure portal.
-1. Klikněte na tlačítko **nastavení diagnostiky**:
+1. Vyberte **nastavení diagnostiky**:
 
     [![Nastavení diagnostiky jeden](media/how-to-configure-monitoring/diagnostic-settings-one.png)](media/how-to-configure-monitoring/diagnostic-settings-one.png#lightbox)
 
-1. Klikněte na tlačítko **zapnout diagnostiku** ke shromažďování dat (pokud už dříve povolené).
+1. Vyberte **zapnout diagnostiku** ke shromažďování dat (pokud už dříve povolené).
 1. Vyplňte požadovaná pole a vyberte, jak a kde se uloží data:
 
     [![Dvě nastavení diagnostiky](media/how-to-configure-monitoring/diagnostic-settings-two.png)](media/how-to-configure-monitoring/diagnostic-settings-two.png#lightbox)
@@ -101,7 +101,7 @@ Dotazování na celý protokol je poskytována prostřednictvím [protokoly Azur
 
     [![Log analytics](media/how-to-configure-monitoring/log-analytics.png)](media/how-to-configure-monitoring/log-analytics.png#lightbox)
 
-1. Pokud ještě nemáte **pracovní prostor Log Analytics** instance, můžete vytvořit pracovní prostor kliknutím **přidat** tlačítka:
+1. Pokud ještě nemáte **pracovní prostor Log Analytics** instance, můžete vytvořit pracovní prostor tak, že vyberete **přidat** tlačítka:
 
     [![Vytváření OMS](media/how-to-configure-monitoring/log-analytics-oms.png)](media/how-to-configure-monitoring/log-analytics-oms.png#lightbox)
 
@@ -114,7 +114,7 @@ Další informace o operacích výkonný dotazovací najdete v tématu [Začín�
 > [!NOTE]
 > Může dojít ke zpoždění 5 minut při odesílání událostí do **pracovní prostor Log Analytics** poprvé.
 
-Protokoly Azure monitoru také poskytují výkonný chyb a oznámení výstrah služeb, které můžete zobrazit kliknutím **diagnostikovat a řešit problémy**:
+Protokoly Azure monitoru také poskytují výkonný chyb a oznámení výstrah služeb, které můžete zobrazit tak, že vyberete **diagnostikovat a řešit problémy**:
 
    [![Oznámení o upozornění a chyby](media/how-to-configure-monitoring/log-analytics-notifications.png)](media/how-to-configure-monitoring/log-analytics-notifications.png#lightbox)
 

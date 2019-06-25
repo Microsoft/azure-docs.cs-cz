@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: 00229cca1d7fb238b330ec98cd35d0bb59bc821a
-ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.openlocfilehash: 0c8aa00d069ae54584d8e828dab35c22048f1876
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66015629"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295541"
 ---
 # <a name="use-the-voluntary-migration-tool-to-migrate-your-classic-alert-rules"></a>Použijte nástroj dobrovolné migrace k migraci klasického pravidel upozornění
 
@@ -38,7 +38,7 @@ Proces migrace převede classic pravidla upozornění na nové, odpovídající 
 
 - Formát datové části oznámení a rozhraní API můžete vytvářet a spravovat nové pravidla upozornění se liší od nastavení classic pravidel upozornění, protože podporují další funkce. [Informace o přípravě na migraci](alerts-prepare-migration.md).
 
-- Některé klasické pravidla upozornění není možné migrovat pomocí nástroje. [Zjistěte, která pravidla se nedají migrovat a co dělat s nimi](alerts-understand-migration.md#which-classic-alert-rules-can-be-migrated).
+- Některé klasické pravidla upozornění není možné migrovat pomocí nástroje. [Zjistěte, která pravidla se nedají migrovat a co dělat s nimi](alerts-understand-migration.md#classic-alert-rules-that-will-not-be-migrated).
 
     > [!NOTE]
     > Proces migrace nebude mít vliv na vyhodnocení pravidel upozornění classic. Budou dál spouštět a odesílání upozornění, dokud se migrují a projeví nová pravidla upozornění.

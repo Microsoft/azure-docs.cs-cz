@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/14/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: bfa3e5a943ee59b1ed335f45e113a60f62572675
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.openlocfilehash: 722097f1a61a10cd45c0c330e998021cd1abf0c8
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66735029"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147961"
 ---
 # <a name="get-started-with-azcopy"></a>Začínáme s AzCopy
 
@@ -49,7 +49,8 @@ Další informace o konkrétní příkaz, jednoduše uvést název příkazu (na
 
 ![Vložená Nápověda](media/storage-use-azcopy-v10/azcopy-inline-help.png)
 
-Předtím, než můžete dělat nic smysluplné pomocí nástroje AzCopy, musíte se rozhodnout, jak vám poskytnout přihlašovací údaje pro ověření do služby storage.
+> [!NOTE] 
+> Jako vlastník účtu služby Azure Storage nejsou automaticky přiřadit oprávnění pro přístup k datům. Předtím, než můžete dělat nic smysluplné pomocí nástroje AzCopy, musíte se rozhodnout, jak vám poskytnout přihlašovací údaje pro ověření do služby storage. 
 
 ## <a name="choose-how-youll-provide-authorization-credentials"></a>Zvolte, jak vám poskytnout přihlašovací údaje pro autorizaci
 
@@ -67,9 +68,9 @@ Tuto tabulku použijte jako vodítko:
 
 Úroveň ověřování, který je třeba vychází Určuje, zda chcete nahrát soubory nebo je právě stáhnout.
 
-#### <a name="authorization-to-upload-files"></a>Oprávnění k nahrání souborů
+Pokud chcete stáhnout soubory, ověřte, že [čtecí modul dat pro úložiště objektů Blob](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader) byla přiřazena vaši identitu.
 
-Ověřte, že jednu z těchto rolí se přiřadila k vaší identitě:
+Pokud chcete nahrát soubory a potom ověřte, že jednu z těchto rolí se přiřadila k vaší identitě:
 
 - [Storage Blob Data Contributor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor)
 - [Vlastník dat úložiště objektů Blob](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)
@@ -87,27 +88,6 @@ Není nutné mít jednu z těchto rolí přiřadit k vaší identity, pokud vaš
 
 Další informace najdete v tématu [řízení přístupu v Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control).
 
-#### <a name="authorization-to-download-files"></a>Povolení ke stahování souborů
-
-Ověřte, že jednu z těchto rolí se přiřadila k vaší identitě:
-
-- [Čtenář dat objektu Blob služby Storage](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader)
-- [Storage Blob Data Contributor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor)
-- [Vlastník dat úložiště objektů Blob](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)
-
-Tyto role je možné přiřadit k vaší identity v některém z těchto oborů:
-
-- Kontejner (systém souborů)
-- Účet úložiště
-- Skupina prostředků
-- Předplatné
-
-Zjistěte, jak ověřit a přiřazení rolí, najdete v článku [udělit přístup k Azure data objektů blob a fronty pomocí RBAC na webu Azure Portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
-
-Není nutné mít jednu z těchto rolí přiřadit k vaší identity, pokud vaši identitu se přidá do seznamu řízení přístupu (ACL) cílový kontejner nebo adresáře. V seznamu ACL musí vaše identity oprávnění ke čtení pro cílový adresář a oprávnění spouštět v kontejneru a každý nadřazený adresář.
-
-Další informace najdete v tématu [řízení přístupu v Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control).
-
 #### <a name="authenticate-your-identity"></a>Ověření vaší identity
 
 Po ověření, že vaši identitu nebyla zadána potřebnou úroveň oprávnění, otevřete příkazový řádek, zadejte následující příkaz a stiskněte klávesu ENTER.
@@ -115,6 +95,14 @@ Po ověření, že vaši identitu nebyla zadána potřebnou úroveň oprávněn�
 ```azcopy
 azcopy login
 ```
+
+Pokud patříte do více než jedné organizace, zahrnují ID tenanta organizace, ke kterému patří účet úložiště.
+
+```azcopy
+azcopy login --tenant-id=<tenant-id>
+```
+
+Nahradit `<tenant-id>` zástupný prvek s ID tenanta organizace, ke kterému patří účet úložiště. Pokud chcete najít ID tenanta, vyberte **Azure Active Directory > Vlastnosti > ID adresáře** na webu Azure Portal.
 
 Tento příkaz vrátí ověřovacího kódu a adresu URL webu. Otevřít web, zadejte kód a pak zvolte **Další** tlačítko.
 
@@ -146,13 +134,32 @@ Příkazy v příkladu najdete v tématu některého z těchto článků.
 
 - [Přenos dat pomocí AzCopy a Amazon S3 intervalů](storage-use-azcopy-s3.md)
 
-## <a name="configure-optimize-and-troubleshoot-azcopy"></a>Konfigurace, optimalizovat a řešení potíží s AzCopy
+## <a name="use-azcopy-in-a-script"></a>Pomocí AzCopy ve skriptu
 
-Zobrazit [konfigurovat, optimalizovat a řešení potíží s AzCopy](storage-use-azcopy-configure.md)
+V průběhu času AzCopy [odkaz ke stažení](#download-and-install-azcopy) bude odkazovat na nové verze AzCopy. Pokud váš skript stáhne AzCopy, může být skript přestanou fungovat, pokud změní funkce, které váš skript, závisí na novější verzi AzCopy. 
+
+Chcete-li těmto potížím vyhnout, získáte statické (zrušení měnící) odkaz na aktuální verzi AzCopy. Tímto způsobem váš skript stáhne přesně stejnou verzi nástroje AzCopy pokaždé, když běží.
+
+Pokud chcete získat odkaz, spusťte tento příkaz:
+
+| Operační systém  | Příkaz |
+|--------|-----------|
+| **Linux** | `curl -v https://aka.ms/downloadazcopy-v10-linux` |
+| **Windows** | `(curl https://aka.ms/downloadazcopy-v10-windows -MaximumRedirection 0 -ErrorAction silentlycontinue).RawContent` |
+
+> [!NOTE]
+> Pro Linux `--strip-components=1` na `tar` příkaz odebere složku nejvyšší úrovně, který obsahuje název verze a místo toho extrahuje binárního souboru přímo do aktuální složky. To umožňuje skript, který chcete aktualizovat na novou verzi `azcopy` stačí pouze aktualizovat `wget` adresy URL.
+
+Adresa URL se zobrazí ve výstupu tohoto příkazu. Váš skript pak si můžete stáhnout nástroj AzCopy pomocí této adresy URL.
+
+| Operační systém  | Příkaz |
+|--------|-----------|
+| **Linux** | `wget -O azcopyv10.tar https://azcopyvnext.azureedge.net/release20190301/azcopy_linux_amd64_10.0.8.tar.gz tar -xf azcopyv10.tar --strip-components=1 ./azcopy` |
+| **Windows** | `Invoke-WebRequest https://azcopyvnext.azureedge.net/release20190517/azcopy_windows_amd64_10.1.2.zip -OutFile azcopyv10.zip <<Unzip here>>` |
 
 ## <a name="use-azcopy-in-storage-explorer"></a>V Průzkumníku služby Storage pomocí AzCopy
 
-Pokud chcete využít výhody výkonu AzCopy, ale budete chtít pracovat se soubory pomocí Průzkumníka služby Storage namísto příkazového řádku, povolte AzCopy v Průzkumníku služby Storage.
+Pokud chcete využít výhody výkonu AzCopy, ale budete chtít pracovat se soubory pomocí Průzkumníka služby Storage namísto příkazového řádku, povolte AzCopy v Průzkumníku služby Storage. 
 
 V Průzkumníku služby Storage vyberte **ve verzi Preview**->**použijte AzCopy k vylepšení nahrát objekt Blob a stažení**.
 
@@ -161,6 +168,8 @@ V Průzkumníku služby Storage vyberte **ve verzi Preview**->**použijte AzCopy
 > [!NOTE]
 > Není nutné toto nastavení povolte, pokud jste povolili hierarchického oboru názvů na vašem účtu úložiště. Který je, protože Průzkumníka služby Storage automaticky pomocí nástroje AzCopy pro účty úložiště, které mají hierarchického oboru názvů.  
 
+Průzkumník služby Storage používá klíč účtu k provádění operací, takže po přihlášení do Průzkumníka služby Storage, nebudete muset zadávat přihlašovací údaje pro další ověření.
+
 <a id="previous-version" />
 
 ## <a name="use-the-previous-version-of-azcopy"></a>V předchozí verzi AzCopy
@@ -168,7 +177,12 @@ V Průzkumníku služby Storage vyberte **ve verzi Preview**->**použijte AzCopy
 Pokud potřebujete předchozí verzi AzCopy (AzCopy v8.1), naleznete v některé z následujících odkazů:
 
 - [AzCopy ve Windows (v8:)](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy)
+
 - [AzCopy v Linuxu (v8:)](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy-linux)
+
+## <a name="configure-optimize-and-troubleshoot-azcopy"></a>Konfigurace, optimalizovat a řešení potíží s AzCopy
+
+Zobrazit [konfigurovat, optimalizovat a řešení potíží s AzCopy](storage-use-azcopy-configure.md)
 
 ## <a name="next-steps"></a>Další postup
 

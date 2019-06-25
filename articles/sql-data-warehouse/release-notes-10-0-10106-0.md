@@ -11,10 +11,10 @@ ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
 ms.openlocfilehash: 9e5f10c2b4c2108626db79ad9821a8b07e57a2e3
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66417714"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Poznámky k verzi Azure SQL Data Warehouse
@@ -40,7 +40,7 @@ Použití data identifikovat pro potvrzení, který uvolní se nastavily pro vá
 |**Sady výsledků dotazu do mezipaměti (Preview)**|Ukládání do mezipaměti sady výsledků umožňuje rychlé pomalejší doby odezvy při snížení čas strávený při vytváření přehledů pro specialisty na obchodní analýzu a generování sestav uživatelů. Další informace naleznete v tématu:</br> - [ALTER DATABASE (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql?view=azure-sqldw-latest)</br> - [Příkaz ALTER DATABASE nastavit možnosti (Transact SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest)</br> - [Sada výsledků dotazu nastavení ukládání do mezipaměti (Transact-SQL)](/sql/t-sql/statements/set-result-set-caching-transact-sql?view=azure-sqldw-latest)</br> - [SET Statement (Transact-SQL)](/sql/t-sql/statements/set-statements-transact-sql)</br> - [sys.databases (Transact-SQL)](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql?view=azure-sqldw-latest)|
 |**Seřazené clusterovaný index columnstore (Preview)**|Columnstore je klíčem k ukládání a efektivní dotazování na velké objemy dat. Pro každou tabulku rozdělí příchozích dat do skupiny řádků a každý sloupec skupina řádků formulářů Segment na disku.  Seřazené Clusterované columnstore optimalizovat indexy další spuštění dotazu povolením odstranění efektivní segmentu.   Další informace naleznete v tématu:</br> -  [Vytvoření tabulky (Azure SQL Data Warehouse)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?view=azure-sqldw-latest)</br> -  [CREATE COLUMNSTORE INDEX (Transact-SQL)](/sql/t-sql/statements/create-columnstore-index-transact-sql?view=azure-sqldw-latest).|
 
-## <a name="march-2019"></a>2019. března
+## <a name="march-2019"></a>2019\. března
 
 | Vylepšení služby | Podrobnosti |
 | --- | --- |
@@ -58,7 +58,7 @@ Použití data identifikovat pro potvrzení, který uvolní se nastavily pro vá
 | --- | --- |
 | | |
 
-## <a name="january-2019"></a>2019. ledna
+## <a name="january-2019"></a>2019\. ledna
 
 ### <a name="service-improvements"></a>Vylepšení služby
 
@@ -66,7 +66,7 @@ Použití data identifikovat pro potvrzení, který uvolní se nastavily pro vá
 | --- | --- |
 |**Vrátí pořadí podle optimalizace**|VYBERTE... Klauzule ORDER BY dotazů získat zvýšení výkonu v této verzi.   Nyní všechny výpočetní uzly odesílat své výsledky do jednoho výpočetního uzlu. Tento uzel sloučí a řadí výsledky a vrátí uživateli.  Slučování přes jeden výpočetní uzel, výsledkem zvýšení výkonu, když obsahuje velký počet řádků sady výsledků dotazu. Prováděcí modul dotazu dříve by pořadí výsledky na jednotlivých výpočetních uzlech. Výsledky by jim Streamovat řídicímu uzlu. Řídicí uzel by pak sloučit výsledky.|
 |**Vylepšení přesunu dat pro PartitionMove a BroadcastMove**|V Azure SQL Data Warehouse Gen2, kroky pro přesun dat typu ShuffleMove, pomocí technik přesunu dat rychlé.  Další informace najdete v tématu [blogu vylepšení výkonu](https://azure.microsoft.com/blog/lightning-fast-query-performance-with-azure-sql-data-warehouse/). V této verzi PartitionMove a BroadcastMove jsou nyní používá stejné postupy přesunu rychlé data. Uživatelské dotazy, které používají tyto typy kroky pro přesun dat se spustí s vyšším výkonem. Žádné změny kódu je potřebné k využití těchto vylepšení výkonu.|
-|**Důležité chyby**|Nesprávná verze Azure SQL Data Warehouse – `SELECT @@VERSION` může vrátit nesprávné verze 10.0.9999.0. 10.0.10106.0 je správná verze na aktuální vydání. Tato chyba byla nahlášena a je pod kontrolu.
+|**Důležité chyby**|Nesprávná verze Azure SQL Data Warehouse – `SELECT @@VERSION` může vrátit nesprávné verze 10.0.9999.0. 10\.0.10106.0 je správná verze na aktuální vydání. Tato chyba byla nahlášena a je pod kontrolu.
 | | |
 
 ### <a name="documentation-improvements"></a>Dokumentace k vylepšení

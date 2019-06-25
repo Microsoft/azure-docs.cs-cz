@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec1994169891d5256436ac4de741339c865bb268
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 12b75c2df7d11b0e90c5dccc3bc2aae4e0fb0c1e
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65824644"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204475"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Zápis výrazů pro mapování atributů ve službě Azure Active Directory
 Při konfiguraci zřizování pro aplikace SaaS, je jedním z typů mapování atributů, které můžete zadat mapování výrazu. Pro ty musíte napsat skript jako výraz, který umožňuje transformovat data uživatelů na formáty, které jsou více přijatelné pro aplikace SaaS.
@@ -40,7 +40,7 @@ Syntaxe výrazů pro mapování atributů je připomínající Visual Basic pro 
 ## <a name="list-of-functions"></a>Seznam funkcí
 [Připojit](#append) &nbsp; &nbsp; &nbsp; &nbsp; [FormatDateTime](#formatdatetime) &nbsp; &nbsp; &nbsp; &nbsp; [připojení](#join) &nbsp; &nbsp; &nbsp; &nbsp; [Mid](#mid) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [NormalizeDiacritics](#normalizediacritics) [není](#not) &nbsp; &nbsp; &nbsp; &nbsp; [nahradit](#replace) &nbsp; &nbsp; &nbsp; &nbsp; [SelectUniqueValue](#selectuniquevalue) &nbsp; &nbsp; &nbsp; &nbsp; [SingleAppRoleAssignment](#singleapproleassignment) &nbsp; &nbsp; &nbsp; &nbsp; [Rozdělení](#split) &nbsp; &nbsp; &nbsp; &nbsp; [ StripSpaces](#stripspaces) &nbsp; &nbsp; &nbsp; &nbsp; [přepínač](#switch) &nbsp; &nbsp; &nbsp; &nbsp; [ToLower](#tolower) &nbsp; &nbsp; &nbsp; &nbsp; [ToUpper](#toupper)
 
-- - -
+---
 ### <a name="append"></a>Připojit
 **Funkce:**<br> Append(Source, suffix)
 
@@ -53,7 +53,7 @@ Syntaxe výrazů pro mapování atributů je připomínající Visual Basic pro 
 | **Zdroj** |Požaduje se |Řetězec |Obvykle název atributu ze zdrojového objektu. |
 | **Přípona** |Požaduje se |Řetězec |Řetězec, který chcete přidat do konce zdrojové hodnoty. |
 
-- - -
+---
 ### <a name="formatdatetime"></a>formatDateTime
 **Funkce:**<br> FormatDateTime (zdroj, inputFormat outputFormat.)
 
@@ -67,7 +67,7 @@ Syntaxe výrazů pro mapování atributů je připomínající Visual Basic pro 
 | **inputFormat** |Požaduje se |Řetězec |Očekávaný formát zdrojové hodnoty. Podporovaných formátů naleznete v tématu [ https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx ](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx). |
 | **outputFormat** |Požaduje se |Řetězec |Formát výstupního data. |
 
-- - -
+---
 ### <a name="join"></a>Spojit
 **Funkce:**<br> Připojte se k (oddělovač, zdroj1, zdroj2,...)
 
@@ -82,7 +82,7 @@ Pokud jedna z hodnot zdroje je vícehodnotový atribut, pak každá hodnota v to
 | **Oddělovač** |Požaduje se |Řetězec |Řetězec použitý k oddělení zdrojové hodnoty, když jsou zřetězeny do jednoho řetězce. Může být "" Pokud žádný oddělovač je povinný. |
 | **zdroj1... zdrojN** |Povinné, proměnná počet pokusů |Řetězec |Hodnoty, který se má spojit dohromady řetězce. |
 
-- - -
+---
 ### <a name="mid"></a>Mid
 **Funkce:**<br> Mid (source; start, délka)
 
@@ -96,7 +96,7 @@ Pokud jedna z hodnot zdroje je vícehodnotový atribut, pak každá hodnota v to
 | **start** |Požaduje se |integer |Index v **zdroj** řetězce, kde by měla začít dílčí řetězec. První znak v řetězci budou mít index hodnotu 1, druhý znak bude mít index 2 a tak dále. |
 | **Délka** |Požaduje se |integer |Délka podřetězce. Pokud délka skončí mimo **zdroj** řetězec, funkce vrátí dílčí řetězec z **start** indexu do konce **zdroj** řetězec. |
 
-- - -
+---
 ### <a name="normalizediacritics"></a>NormalizeDiacritics
 **Funkce:**<br> NormalizeDiacritics(source)
 
@@ -108,7 +108,7 @@ Pokud jedna z hodnot zdroje je vícehodnotový atribut, pak každá hodnota v to
 | --- | --- | --- | --- |
 | **Zdroj** |Požaduje se |String | Obvykle křestní jméno nebo poslední atribut name. |
 
-- - -
+---
 ### <a name="not"></a>Not
 **Funkce:**<br> Not(Source)
 
@@ -120,7 +120,7 @@ Pokud jedna z hodnot zdroje je vícehodnotový atribut, pak každá hodnota v to
 | --- | --- | --- | --- |
 | **Zdroj** |Požaduje se |Logického řetězce |Byl očekáván **zdroj** hodnoty jsou "True" nebo "False". |
 
-- - -
+---
 ### <a name="replace"></a>Nahradit
 **Funkce:**<br> Nahraďte (zdroj, oldValue, regexPattern, regexGroupName, zastaralá, replacementAttributeName, šablona)
 
@@ -153,7 +153,7 @@ Nahradí hodnoty v řetězci. V závislosti na parametry, které poskytnou fungu
 | **replacementAttributeName** |Nepovinné |Řetězec |Název atributu použitého pro nahrazující hodnotou, když zdroj nemá žádnou hodnotu. |
 | **Šablony** |Nepovinné |Řetězec |Když **šablony** je zadána hodnota, podíváme se **oldValue** uvnitř šablony a nahraďte ji metodou zdrojovou hodnotu. |
 
-- - -
+---
 ### <a name="selectuniquevalue"></a>SelectUniqueValue
 **Funkce:**<br> SelectUniqueValue (uniqueValueRule1, uniqueValueRule2, uniqueValueRule3,...)
 
@@ -171,7 +171,7 @@ Nahradí hodnoty v řetězci. V závislosti na parametry, které poskytnou fungu
 | **uniqueValueRule1... uniqueValueRuleN** |Minimálně 2 jsou povinné, ne horní mez |String | Seznam pravidel pro vytvoření jedinečnou hodnotu pro vyhodnocení. |
 
 
-- - -
+---
 ### <a name="singleapproleassignment"></a>SingleAppRoleAssignment
 **Funkce:**<br> SingleAppRoleAssignment([appRoleAssignments])
 
@@ -183,7 +183,7 @@ Nahradí hodnoty v řetězci. V závislosti na parametry, které poskytnou fungu
 | --- | --- | --- | --- |
 | **[appRoleAssignments]** |Požaduje se |Řetězec |**[appRoleAssignments]**  objektu. |
 
-- - -
+---
 ### <a name="split"></a>rozdělení
 **Funkce:**<br> Split (zdroj, oddělovač)
 
@@ -196,7 +196,7 @@ Nahradí hodnoty v řetězci. V závislosti na parametry, které poskytnou fungu
 | **Zdroj** |Požaduje se |Řetězec |**Zdroj** hodnotu aktualizovat. |
 | **delimiter** |Požaduje se |String |Určuje znak, který se použije k rozdělení řetězce (Příklad: ",") |
 
-- - -
+---
 ### <a name="stripspaces"></a>StripSpaces
 **Funkce:**<br> StripSpaces(source)
 
@@ -208,7 +208,7 @@ Nahradí hodnoty v řetězci. V závislosti na parametry, které poskytnou fungu
 | --- | --- | --- | --- |
 | **Zdroj** |Požaduje se |Řetězec |**Zdroj** hodnotu aktualizovat. |
 
-- - -
+---
 ### <a name="switch"></a>Přepínač
 **Funkce:**<br> Switch (zdroj, výchozí hodnota, key1, value1, key2, value2,...)
 
@@ -223,7 +223,7 @@ Nahradí hodnoty v řetězci. V závislosti na parametry, které poskytnou fungu
 | **key** |Požaduje se |Řetězec |**Klíč** k porovnání **zdroj** hodnotu. |
 | **value** |Požaduje se |Řetězec |Nahrazující hodnotou pro **zdroj** odpovídající klíči. |
 
-- - -
+---
 ### <a name="tolower"></a>toLower
 **Funkce:**<br> ToLower (zdroj, jazyková verze)
 
@@ -236,7 +236,7 @@ Nahradí hodnoty v řetězci. V závislosti na parametry, které poskytnou fungu
 | **Zdroj** |Požaduje se |Řetězec |Obvykle název atributu ze zdrojového objektu |
 | **Jazyková verze** |Nepovinné |String |Formát pro název jazykové verze podle RFC 4646 *languagecode2 – země/regioncode2*, kde *languagecode2* je kód jazyka dvoupísmenné a *země/regioncode2*dvoupísmenné subkulturu kód. Mezi příklady patří ja-JP japonština (Japonsko) a en US pro angličtinu (Spojené státy). V případech, kdy kód jazyka dvoupísmenné není k dispozici se používá třípísmenný kód odvozené ze souboru ISO 639-2.|
 
-- - -
+---
 ### <a name="toupper"></a>toUpper
 **Funkce:**<br> ToUpper (zdroj, jazyková verze)
 

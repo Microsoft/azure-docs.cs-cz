@@ -10,10 +10,10 @@ ms.date: 01/15/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: cdffc339bee1f5456e4eeb619e566b1f9c34b143
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61076762"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Vytvoření samostatného účtu Azure Automation
@@ -89,7 +89,7 @@ Chcete-li vytvořit účet Azure Automation na webu Azure Portal, proveďte nás
 
 Po úspěšném vytvoření účtu Automation se pro vaší potřebu automaticky vytvoří několik prostředků. Po vytvoření tyto sady runbook lze bezpečně odstranit, pokud nechcete, aby se. Účty spustit jako, můžete použít k ověření ke svému účtu v sadě runbook a by měla zůstat, není-li vytvořit jinou nebo je nevyžadují. Následující tabulka shrnuje prostředky pro účet Spustit jako.
 
-| Prostředek | Popis |
+| Resource | Popis |
 | --- | --- |
 | Runbook AzureAutomationTutorial |Ukázkový grafický runbook, který předvádí ověření pomocí účtu spustit jako. Sada runbook získává všechny prostředku Resource Manageru. |
 | Runbook AzureAutomationTutorialScript |Ukázkový runbook Powershellu, který předvádí ověření pomocí účtu spustit jako. Sada runbook získává všechny prostředku Resource Manageru. |
@@ -99,7 +99,7 @@ Po úspěšném vytvoření účtu Automation se pro vaší potřebu automaticky
 
 Následující tabulka shrnuje prostředky pro účet Spustit jako pro Azure Classic.
 
-| Prostředek | Popis |
+| Resource | Popis |
 | --- | --- |
 | Runbook AzureClassicAutomationTutorial |Ukázkový grafický runbook. Sada runbook získá všechny klasické virtuální počítače v rámci předplatného pomocí spustit jako účtu pro Azure Classic (certifikát). Potom zobrazí názvy virtuálních počítačů a stav. |
 | Runbook se skriptem AzureClassicAutomationTutorial |Ukázkový runbook Powershellu. Sada runbook získá všechny klasické virtuální počítače v rámci předplatného pomocí spustit jako účtu pro Azure Classic (certifikát). Potom zobrazí názvy virtuálních počítačů a stav. |

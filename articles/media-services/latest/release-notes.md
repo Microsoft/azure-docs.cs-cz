@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 06/04/2019
+ms.date: 06/07/2019
 ms.author: juliako
-ms.openlocfilehash: e34e0f9fee1d09e66dcdd5069e800dc1f3f750cb
-ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
+ms.openlocfilehash: aa4e37e3b360727feb998ef5e9ca9b776c4b0e53
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66688645"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303951"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 poznámky k verzi
 
@@ -33,6 +33,19 @@ Abyste mohli používat aktuální pomocí nejnovější vývoj, tento článek 
 > Aktuálně nemůžete spravovat prostředky v3 pomocí webu Azure Portal. Použití [rozhraní REST API](https://aka.ms/ams-v3-rest-sdk), rozhraní příkazového řádku, nebo jeden z podporovaných sad SDK.
 
 Další informace najdete v tématu [pokyny k migraci pro přechod ze služby Media Services v2 na v3](migrate-from-v2-to-v3.md#known-issues).
+
+## <a name="june-2019"></a>2019 dne
+
+### <a name="video-subclipping"></a>Video oříznutím
+
+Teď můžete oříznout nebo dílčího klipu videa, když ho pomocí kódování [úlohy](https://docs.microsoft.com/rest/api/media/jobs). 
+
+Tato funkce funguje s jakoukoli [transformace](https://docs.microsoft.com/rest/api/media/transforms) , který je sestaven buď pomocí [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) přednastavení, nebo [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) předvolby. 
+
+Příklady:
+
+* [Dílčí klip videa s využitím .NET](subclip-video-dotnet-howto.md)
+* [Dílčí klip videa s využitím REST](subclip-video-rest-howto.md)
 
 ## <a name="may-2019"></a>. Května 2019.
 

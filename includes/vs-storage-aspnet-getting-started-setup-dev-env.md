@@ -9,11 +9,11 @@ ms.date: 09/15/2018
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: a7c696870e22e1692ca5ed778e47f8e4cc00615a
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66160780"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67174908"
 ---
 ## <a name="set-up-the-development-environment"></a>Nastavení vývojového prostředí
 
@@ -25,7 +25,7 @@ Tato část vás provede nastavení vývojového prostředí. To zahrnuje vytvo�
 
 1. V hlavní nabídce vyberte **souboru** > **nový** > **projektu**.
 
-1. V **nový projekt** dialogu **webové** > **webová aplikace ASP.NET (.NET Framework)**. V **název** uveďte **StorageAspNet**. Vyberte **OK**.
+1. V **nový projekt** dialogu **webové** > **webová aplikace ASP.NET (.NET Framework)** . V **název** uveďte **StorageAspNet**. Vyberte **OK**.
 
     ![Snímek obrazovky s dialogovým oknem Nový projekt](./media/vs-storage-aspnet-getting-started-setup-dev-env/vs-storage-aspnet-getting-started-setup-dev-env-1.png)
 

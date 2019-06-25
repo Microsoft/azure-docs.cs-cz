@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: magoedte
 ms.openlocfilehash: 76f4061af816c59e644db99913193ed6fcf24d18
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65205758"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Windows a Linuxem zdroje dat výkonu ve službě Azure Monitor
@@ -116,7 +116,7 @@ V následující tabulce jsou uvedeny objekty a čítače, které můžete zadat
 | Memory (Paměť) | Použitá paměť v MB |
 | Síť | Celkový počet bajtů přenesených |
 | Síť | Celkový počet přijatých bajtů |
-| Síť | Bajty celkem |
+| Síť | Celkový počet bajtů |
 | Síť | Celkový počet paketů odesílané informace |
 | Síť | Celkový počet přijatých paketů |
 | Síť | Chyby celkem příjmu |
@@ -214,7 +214,7 @@ Následující tabulka obsahuje příklady různých dotazů na protokoly, kter�
 | Perf &#124; kde ObjectName == "Procesor pro" a hodnota CounterName == "% Processor Time" a InstanceName == "_Total" &#124; shrnout AVGCPU = avg(CounterValue) podle počítače |Průměrné využití procesoru ve všech počítačích |
 | Perf &#124; tam, kde CounterName == "% Processor Time" &#124; summarize AggregatedValue = max(CounterValue) podle počítače |Maximální využití CPU ve všech počítačích |
 | Perf &#124; kde ObjectName == "LogicalDisk" a hodnota CounterName == "Aktuální délka fronty disku" a počítač == "MyComputerName" &#124; summarize AggregatedValue = avg(CounterValue) podle InstanceName |Průměrná napříč všemi instancemi daného počítače. aktuální délka fronty disku |
-| Perf &#124; where CounterName == "Disk Transfers/sec" &#124; summarize AggregatedValue = percentile(CounterValue, 95) by Computer |95. percentil z přenosy disku/s pro všechny počítače |
+| Perf &#124; where CounterName == "Disk Transfers/sec" &#124; summarize AggregatedValue = percentile(CounterValue, 95) by Computer |95\. percentil z přenosy disku/s pro všechny počítače |
 | Perf &#124; tam, kde CounterName == "% Processor Time" a InstanceName == "_Total" &#124; summarize AggregatedValue = avg(CounterValue) podle bin (TimeGenerated, 1 hodina), počítač |Hodinové průměrné zatížení CPU ve všech počítačích |
 | Perf &#124; kde počítač == "Počítač" a hodnota CounterName startswith_cs "%" a InstanceName == "_Total" &#124; summarize AggregatedValue = podle bin (TimeGenerated, 1 hodina), hodnota CounterName. percentilu (CounterValue, 70) | Hodinové 70 percentilu každý % procenta čítače pro určitý počítač |
 | Perf &#124; tam, kde CounterName == "% Processor Time" a InstanceName == "_Total" a počítač == "Počítač" &#124; shrnout ["min(CounterValue)"] = min(CounterValue), ["avg(CounterValue)"] = avg(CounterValue), ["percentile75(CounterValue)"] percentil (CounterValue, 75) = ["max(CounterValue)"] = max(CounterValue) podle bin (TimeGenerated, 1 hodina), počítač |Hodinové průměrné, minimální, maximální a 75 percentilu využití procesoru pro určitý počítač |

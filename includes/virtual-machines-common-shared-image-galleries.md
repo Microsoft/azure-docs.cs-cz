@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 7a0e628eed861767d1eeb50b0ded7bb3d8807328
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 3ea41a16f79f903b5ff7d2b93f74f7d3d2a0dd83
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66271528"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67133314"
 ---
 Sdílené Galerie Imagí je služba, která vám pomůže sestavit strukturu a organizace spravované Image. Zadejte sdílený Galerie obrázků:
 
 - Spravovat globální replikací obrázků.
 - Správa verzí a seskupení obrázky pro snadnější správu.
-- Vysoce dostupných imagí s účty Zónově redundantního úložiště (ZRS) v oblasti, které podporují zóny dostupnosti. ZRS nabízí lepší odolnost proti chybám oblastmi.
+- Vysoce dostupných imagí s účty Zónově redundantního úložiště (ZRS) v oblasti, které podporují zóny dostupnosti. Zónově redundantní úložiště nabízí vyšší odolnost proti selháním jednotlivých zón.
 - Sdílení napříč předplatnými a dokonce i mezi tenanty Active Directory (AD), pomocí RBAC.
 - Škálování nasazení pomocí bitové kopie repliky v jednotlivých oblastech.
 
@@ -78,15 +78,15 @@ V následující tabulce jsou uvedeny zdrojových oblastí. Všech veřejných o
 
 | Zdrojových oblastí |
 |---------------------|-----------------|------------------|-----------------|
-| Austrálie – střed   | Střed USA – EUAP | Korea – střed    | Velká Británie – jih 2      |
-| Austrálie – střed 2 | Východní Asie       | Jižní Korea – jih      | Spojené království – západ         |
-| Austrálie – východ      | USA – východ         | Středoseverní USA | Západní střed USA |
-| Austrálie – jihovýchod | Východní USA 2       | Severní Evropa     | Západní Evropa     |
-| Brazílie – jih        | East US 2 EUAP  | Středojižní USA | Indie – západ      |
-| Kanada – střed      | Francie – střed  | Indie – jih      | Západní USA         |
-| Kanada – východ         | Francie – jih    | Jihovýchodní Asie   | Západní USA         |
-| Střed Indie       | Japonsko – východ      | Velká Británie – sever         | Západní USA 2       |
-| USA – střed          | Japonsko – západ      | Velká Británie – jih         |                 |
+| Austrálie – střed   | Střed USA – EUAP | Korea – střed    | Západní střed USA |
+| Austrálie – střed 2 | Východní Asie       | Jižní Korea – jih      | Západní Evropa     |
+| Austrálie – východ      | USA – východ         | Středoseverní USA | Indie – západ      |
+| Austrálie – jihovýchod | Východní USA 2       | Severní Evropa     | Západní USA         |
+| Brazílie – jih        | East US 2 EUAP  | Středojižní USA | Západní USA 2       |
+| Kanada – střed      | Francie – střed  | Indie – jih      |                 |
+| Kanada – východ         | Francie – jih    | Jihovýchodní Asie   |                 |
+| Střed Indie       | Japonsko – východ      | Velká Británie – jih         |                 |
+| USA – střed          | Japonsko – západ      | Spojené království – západ          |                 |
 
 
 

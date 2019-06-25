@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: jeconnoc
 ms.openlocfilehash: 26910fe2b0b45a6e31f9c907ac31d83a74a95775
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66125365"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67175347"
 ---
 > [!NOTE]
 > Pro úspěšné dokončení této části, musíte mít funkční instalaci Node.js a Azure SDK pro Node.js pro vaši platformu.

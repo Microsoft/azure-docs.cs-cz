@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: juliako
 ms.openlocfilehash: 065cb4daa9501ee658d364dad43b9e03798e4083
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66160962"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67175421"
 ---
 Úloha vytvoří výstupní soubor JSON, který obsahuje metadata o zjištěných a sleduje tváře. Metadata obsahují souřadnice označující umístění tváří, jakož i face ID číslo označující sledování tohoto jednotlivce. Face ID čísla jsou náchylné k obnovit okolností, když dojde ke ztrátě nebo překrývajících se v rámci, přední rozpoznávání tváře výsledkem několika jednotlivcům získávání přiřadit víc ID.
 
@@ -21,7 +21,7 @@ Ve výstupu JSON obsahuje následující prvky:
 | --- | --- |
 | version |To se vztahuje na verzi rozhraní API pro Video. |
 | Časová osa |"Značky" za sekundu videa. |
-| Posun |Toto je posunutí čas pro časové razítko. Ve verzi 1.0 rozhraní API pro Video bude vždy 0. V budoucnu scénáře, které podporujeme, tato hodnota se může změnit. |
+| offset |Toto je posunutí čas pro časové razítko. Ve verzi 1.0 rozhraní API pro Video bude vždy 0. V budoucnu scénáře, které podporujeme, tato hodnota se může změnit. |
 | Šířka, vysoký |Šířka a vysoký snímek výstup videa, v pixelech.|
 | snímkovou |Počet snímků ve videu za sekundu. |
 | [fragmenty](#fragments-json-elements) |Metadata je rozdělený do bloků dat až do různých segmentů zvaných fragmenty. Každý fragment obsahuje začátek, dobu trvání, číslo intervalu a události. |
@@ -31,10 +31,10 @@ Ve výstupu JSON obsahuje následující prvky:
 |Element|Popis|
 |---|---|
 | start |Čas zahájení první událost v "impulzech." |
-| doba trvání |Délka fragment v "impulzech." |
+| Doba trvání |Délka fragment v "impulzech." |
 | index | (Platí jenom pro Azure Media Redactor) definuje index snímku aktuálního události. |
 | interval |Interval každý záznam událostí v rámci fragment v "impulzech." |
-| události |Každá událost obsahuje tváří zjištěna a sledovány v rámci této dobu trvání. Je to pole událostí. Vnější pole představuje jeden časový interval. Vnitřní pole se skládá z 0 nebo více událostí, které se v tomto bodu v čase odehrály. Prázdné závorky [] znamená, že nebyly zjištěny žádné tváře. |
+| stránka events |Každá událost obsahuje tváří zjištěna a sledovány v rámci této dobu trvání. Je to pole událostí. Vnější pole představuje jeden časový interval. Vnitřní pole se skládá z 0 nebo více událostí, které se v tomto bodu v čase odehrály. Prázdné závorky [] znamená, že nebyly zjištěny žádné tváře. |
 | id |ID tváře, která je sledována. Toto číslo může tak nechtěně změnit, pokud stane nezjištěné tváře. Dané osoby by mělo mít stejné ID v rámci celkového videa, ale to nemůže být zaručena z důvodu omezení v algoritmu detekce (uzavření atd.). |
 | x, y |Vlevo nahoře X a Y souřadnice rozpoznávání tváře ohraničujícího rámečku v normalizovaných škálování od 0,0 do 1,0. <br/>-X a Y souřadnice jsou relativní šířku vždycky, takže pokud máte na výšku videa (nebo vzhůru nohama, v případě iOS), budete muset transponuje souřadnice odpovídajícím způsobem. |
 | Šířka, výška |Šířku a výšku plochy ohraničujícího rámečku v normalizovaných škálování od 0,0 do 1,0. |

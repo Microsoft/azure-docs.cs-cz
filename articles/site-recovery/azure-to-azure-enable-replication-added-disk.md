@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/29/2018
 ms.author: asgang
 ms.openlocfilehash: 69122ffe9cefa3e1b9c6c8fbadfa80492ebebbde
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64928059"
 ---
 # <a name="enable-replication-for-a-disk-added-to-an-azure-vm"></a>Povolení replikace pro disk přidat do virtuálního počítače Azure
@@ -36,7 +36,7 @@ Když přidáte nový disk k virtuálnímu počítači Azure, které je replikov
 
 Tento článek předpokládá, že jste již nastavili zotavení po havárii pro virtuální počítač, na který přidáváte na disku. Pokud jste tak dosud, postupujte [kurz pro zotavení po havárii Azure do Azure](azure-to-azure-tutorial-enable-replication.md). 
 
-## <a name="enable-replication-for-an-added-disk"></a>Povolení replikace pro přidání disku 
+## <a name="enable-replication-for-an-added-disk"></a>Povolení replikace pro přidaný disk 
 
 Povolíte replikaci pro přidání disku, postupujte takto:
 

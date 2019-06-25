@@ -10,10 +10,10 @@ ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.openlocfilehash: 7e48809537acc21edbcf12d299a333df486c258f
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66257157"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Diagnostika a řešení problémů při používání .NET SDK služby Azure Cosmos DB
@@ -53,7 +53,7 @@ RequestTimeout obvykle dochází při používání přímé/TCP, ale může nas
 * Vytvoření víc instancí DocumentClient může vést k připojení kolize a vypršení časového limitu. Postupujte podle [tipy ke zvýšení výkonu](performance-tips.md)a použijte jednu instanci DocumentClient napříč celým procesem.
 * Uživatelé někdy zobrazit se zvýšenými oprávněními latence nebo abychom si vyžádali vypršení časového limitu, protože jejich kolekce se zřizují nedostatečně, back endu, omezí požadavků a klient pokus obnovuje interně bez toto zpřístupnění volajícímu. Zkontrolujte, [portálu metriky](monitor-accounts.md).
 * Azure Cosmos DB celkovou zřízenou propustnost rovnoměrně distribuuje mezi všemi fyzickými oddíly. Zkontrolujte portálu metriky, abyste viděli, pokud zatížení je zjištění úrovně hot [klíč oddílu](partition-data.md). To způsobí, že celková propustnost (RU/s) se zobrazí pod zřízených ru spotřebovaných, ale jeden oddíl spotřebované propustnost (RU/s) dojde k překročení zřízené propustnosti. 
-* 2.0 SDK kromě toho přidá sémantiku kanálu pro připojení přímo/TCP. Jedno připojení TCP se používá pro více požadavků ve stejnou dobu. To může vést k dva problémy v určitých případech:
+* 2\.0 SDK kromě toho přidá sémantiku kanálu pro připojení přímo/TCP. Jedno připojení TCP se používá pro více požadavků ve stejnou dobu. To může vést k dva problémy v určitých případech:
     * Vysoký stupeň souběžnosti může vést ke kolizi na kanálu.
     * Velké žádostí a odpovědí může vést k blokování head řádku na kanálu a podněcují kolize, i s relativně nízký stupeň souběžnosti.
     * Pokud tento případ spadá do některé z těchto dvou kategorií (nebo podezření vysoké využití procesoru), jedná se o možná zmírnění rizik:

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: e128f3c67a41322d9c25a8d6941e937729760bf4
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66165373"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67174953"
 ---
 V tomto kroku vytvoříte pravidlo brány firewall k otevření portu sondy pro koncový bod s vyrovnáváním zatížení (59999, jak je uvedeno výše) a jiné pravidlo otevřete port naslouchacího procesu skupiny dostupnosti. Protože jste vytvořili koncový bod s vyrovnáváním zatížení na virtuálních počítačích, které obsahují replik skupin dostupnosti, budete muset otevřít port testu a port naslouchacího procesu na příslušných virtuálních počítačích.
 

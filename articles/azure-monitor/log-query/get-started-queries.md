@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/09/2019
 ms.author: bwren
-ms.openlocfilehash: 105454205c0fe3a0020693a1289a65cecd2bf57b
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.openlocfilehash: b03109ee5cdb76247bf3be6fda97e0cf6e434f17
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65519018"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67296091"
 ---
-# <a name="get-started-with-azure-monitor-log-queries"></a>Začínáme s dotazy protokolů Azure Monitor
+# <a name="get-started-with-log-queries-in-azure-monitor"></a>Začínáme s dotazy protokolu ve službě Azure Monitor
 
 
 > [!NOTE]
@@ -28,9 +28,9 @@ ms.locfileid: "65519018"
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-V tomto kurzu se dozvíte, pro zápis dotazů na protokoly Azure monitoru. To se dozvíte, jak do:
+V tomto kurzu se dozvíte, psaní dotazů protokolu ve službě Azure Monitor. To se dozvíte, jak do:
 
-- Zjistit strukturu dotazy.
+- Zjistit strukturu dotazu
 - Řazení výsledků dotazu
 - Filtrování výsledků dotazu
 - Zadejte časový rozsah
@@ -38,6 +38,8 @@ V tomto kurzu se dozvíte, pro zápis dotazů na protokoly Azure monitoru. To se
 - Definice a používání vlastních polí
 - Agregace a skupinových výsledky
 
+Kurz týkající se používat službu Log Analytics na portálu Azure portal, najdete v části [Začínáme s Azure Monitor Log Analytics](get-started-portal.md).<br>
+Podrobné informace o dotazech protokolu ve službě Azure Monitor, naleznete v tématu [přehled protokolu dotazů ve službě Azure Monitor](log-query-overview.md).
 
 ## <a name="writing-a-new-query"></a>Napište nový dotaz
 Dotazy můžete spustit buď pomocí názvu tabulky nebo *hledání* příkazu. Měli byste začít s názvem tabulky, protože definuje vymazat obor pro dotaz a zvyšuje výkon dotazů a relevance výsledků.
@@ -71,8 +73,8 @@ search in (SecurityEvent) "Cryptographic"
 
 Tento dotaz vyhledá *SecurityEvent* tabulky pro záznamy obsahující frázi "Kryptografický". Tyto záznamy se vrátí a zobrazí 10 záznamů. Pokud jsme vynechat, nechte `in (SecurityEvent)` částečně a pouze spustit `search "Cryptographic"`, hledání se přenášejí prostřednictvím *všechny* tabulek, které by trvat déle a být méně efektivní.
 
-> [!NOTE]
-> Ve výchozím nastavení, časový rozsah _posledních 24 hodin_ nastavena. Pokud chcete použít jiný rozsah, použijte Výběr času (umístěný vedle *Přejít* tlačítko) nebo přidat explicitní čas filtr rozsahu do dotazu.
+> [!WARNING]
+> Vyhledávací dotazy jsou obvykle pomalejší než dotazy založené na tabulku, protože mají zpracovávat další data. 
 
 ## <a name="sort-and-top"></a>Řazení a nahoře
 Zatímco **trvat** je užitečné získat o pár záznamů, výsledky jsou vybrané a zobrazí bez určitého pořadí. Získat seřazený zobrazení, může **řazení** podle preferované sloupce:

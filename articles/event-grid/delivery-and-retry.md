@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: spelluru
 ms.openlocfilehash: b4bfdd3e9cdf99314dc55907ba163adc6cd39423
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65952884"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Doručování zpráv Event Grid a zkuste to znovu
@@ -28,7 +28,7 @@ Event Grid počká 30 sekund pro odpověď po doručení zprávy. Po 30 sekund P
 
 - 10 sekund
 - 30 sekund
-- 1 minutu
+- 1 minuta
 - 5 minut
 - 10 minut
 - 30 minut
@@ -74,7 +74,7 @@ Následující kódy odpovědi HTTP označuje, že pokus o doručení událostí
 
 - 400 – Chybný požadavek
 - 401 Neautorizováno
-- 404 Nenalezeno
+- 404 – Nenalezeno
 - 408 časový limit žádosti
 - Entita 413 požadavku je moc velká
 - Identifikátor URI 414 příliš dlouhý

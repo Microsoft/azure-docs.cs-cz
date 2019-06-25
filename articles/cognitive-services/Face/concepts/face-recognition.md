@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pafarley
 ms.openlocfilehash: fa38c492530cb8938e49bc15e13fdd39ed5b6f1c
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65890879"
 ---
 # <a name="face-recognition-concepts"></a>Koncepty rozpoznávání tváře
@@ -37,7 +37,7 @@ Operace rozpoznávání používají především následující datové struktu
 
 Tato část podrobně popisuje použití datových struktur výše popsaný čtyři operace rozpoznávání. Široký popis každé operace rozpoznávání najdete v tématu [přehled](../Overview.md).
 
-### <a name="verify"></a>Ověření
+### <a name="verify"></a>Ověřit
 
 [Ověřte](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a) operace přebírá face ID z DetectedFace nebo PersistedFace a jiné face ID nebo osoba a určuje, zda patří stejné osobě. Pokud předáte do objektu osoba, můžete volitelně předat jeden objekt PersonGroup, ke kterému patří tato osoba ke zlepšení výkonu.
 

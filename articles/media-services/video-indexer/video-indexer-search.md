@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
 ms.openlocfilehash: 93376059dac2a8336e581269d8289d893779b291
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65799096"
 ---
 # <a name="find-exact-moments-within-videos"></a>Vyhledání určitých momentů ve videích
@@ -26,14 +26,14 @@ Toto téma ukazuje možnosti hledání, které vám umožní vyhledání určit�
 
     V následujícím příkladu jsme vyhledávání pro všechna videa, které mluvit o zabezpečení a která Satya se zobrazí,
 
-    ![Vyhledávání](./media/video-indexer-search/video-indexer-search01.png)
+    ![Search](./media/video-indexer-search/video-indexer-search01.png)
 3. Hledejte souhrnný poznatky o videu.
 
     Můžete vyhledávat ve videu kliknutím **Přehrát** na video. Potom můžete hledat ve videu výběrem **hledání** kartu. 
 
     V následujícím příkladu jsme vyhledejte "Secure (zabezpečeno) uvnitř vybrané videa.
 
-    ![Vyhledávání](./media/video-indexer-search/video-indexer-search02.png)
+    ![Search](./media/video-indexer-search/video-indexer-search02.png)
 
     Pokud kliknete na některý z výsledků, hráč přináší je na daném okamžiku videa. Ve vaší aplikaci můžete dosáhnout zobrazení player a přehledy a synchronizace. Další informace najdete v tématu [vložit Video Indexer widgetů do aplikace](video-indexer-embed-widgets.md). 
 4. Vyhledejte podrobný přehled videa.
@@ -44,7 +44,7 @@ Toto téma ukazuje možnosti hledání, které vám umožní vyhledání určit�
     
     V následujícím příkladu jsme hledali text "smíšené reality". Můžeme také použít další filtry, jak je znázorněno na následující obrazovce.
     
-    ![Vyhledávání](./media/video-indexer-search/video-indexer-search03.png)
+    ![Search](./media/video-indexer-search/video-indexer-search03.png)
 
 ## <a name="next-steps"></a>Další postup 
 

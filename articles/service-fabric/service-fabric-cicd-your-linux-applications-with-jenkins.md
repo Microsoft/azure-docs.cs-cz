@@ -13,10 +13,10 @@ ms.workload: NA
 ms.date: 07/31/2018
 ms.author: saysa
 ms.openlocfilehash: 3b1e6f769d5c65065d95ac96c4ab4ed10702e5cf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61038689"
 ---
 # <a name="use-jenkins-to-build-and-deploy-your-linux-applications"></a>Použití Jenkinse k vytvoření a nasazení Linuxové aplikace
@@ -298,7 +298,7 @@ Pro vývojová a testovací prostředí můžete nakonfigurovat přihlašovací 
 
 1. K vytvoření instančního objektu služby Azure Active Directory a přiřadit jí oprávnění ve vašem předplatném Azure, postupujte podle kroků v [použití portálu k vytvoření aplikace Azure Active Directory a instančního objektu](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal). Věnujte pozornost následujícím:
 
-   * Během provádění kroků v tématu, nezapomeňte zkopírovat a uložit následující hodnoty: *ID aplikace*, *klíč aplikace*, *ID adresáře (ID Tenanta)*, a *ID předplatného*. Budete potřebovat ke konfiguraci přihlašovacích údajů Azure v Jenkinsu.
+   * Během provádění kroků v tématu, nezapomeňte zkopírovat a uložit následující hodnoty: *ID aplikace*, *klíč aplikace*, *ID adresáře (ID Tenanta)* , a *ID předplatného*. Budete potřebovat ke konfiguraci přihlašovacích údajů Azure v Jenkinsu.
    * Pokud nemáte k dispozici [požadovaná oprávnění](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions) ve vašem adresáři, budete muset požádat správce, aby vám udělil oprávnění nebo vytvořit instanční objekt služby pro vás nebo budete muset nakonfigurovat koncový bod správy pro vašeho v clusteru **akcích po sestavení** pro vaše úlohy v Jenkinsu.
    * V [vytvoření aplikace Azure Active Directory](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#create-an-azure-active-directory-application) oddílu, můžete zadat libovolný ve správném formátu adresy URL pro **přihlašovací adresa URL**.
    * V [přiřaďte aplikaci roli](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal) oddílu, můžete přiřadit aplikace *čtečky* role pro skupinu prostředků pro váš cluster.

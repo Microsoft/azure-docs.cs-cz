@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
 ms.openlocfilehash: f72d49a3ab204ce64eb89d0f05630b640c138e0a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61390077"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Stáhněte si VHD s Linuxem z Azure
@@ -34,7 +34,7 @@ Virtuální pevný disk nejde stáhnout z Azure, pokud je připojen k spuštěn�
 
 Chcete-li použít virtuální pevný disk jako image k vytvoření dalších virtuálních počítačů, postupujte takto:
 
-1. Pomocí SSH, název účtu a veřejnou IP adresu virtuálního počítače se připojte k němu a zrušení jeho zřízení. Můžete najít veřejnou IP adresu pomocí [az network public-ip show](https://docs.microsoft.com/cli/azure/network/public-ip#az-network-public-ip-show). + Parametr uživatele také odebere posledního zřízeného uživatelského účtu. Pokud jsou pečení přihlašovací údaje k virtuálnímu počítači, nechte si to + parametr uživatele. Následující příklad odebere posledního zřízeného uživatelského účtu:
+1. Pomocí SSH, název účtu a veřejnou IP adresu virtuálního počítače se připojte k němu a zrušení jeho zřízení. Můžete najít veřejnou IP adresu pomocí [az network public-ip show](https://docs.microsoft.com/cli/azure/network/public-ip#az-network-public-ip-show). \+ Parametr uživatele také odebere posledního zřízeného uživatelského účtu. Pokud jsou pečení přihlašovací údaje k virtuálnímu počítači, nechte si to + parametr uživatele. Následující příklad odebere posledního zřízeného uživatelského účtu:
 
     ```bash
     ssh azureuser@<publicIpAddress>
@@ -72,7 +72,7 @@ Stáhněte soubor virtuálního pevného disku, budete muset vygenerovat [sdíle
 2.  Vyberte disk s operačním systémem virtuálního počítače a potom klikněte na tlačítko **exportovat**.
 3.  Klikněte na tlačítko **generování adresy URL**.
 
-    ![Vygenerovat URL](./media/download-vhd/export-generate.png)
+    ![Generování adresy URL](./media/download-vhd/export-generate.png)
 
 ## <a name="download-vhd"></a>Stažení virtuálního pevného disku
 

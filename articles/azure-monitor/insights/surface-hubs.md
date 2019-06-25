@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: magoedte
 ms.openlocfilehash: 7e0dbb4c3cd8ae4bb552e7b7f0748f1bde2f51de
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65232784"
 ---
 # <a name="monitor-surface-hubs-with-azure-monitor-to-track-their-health"></a>Díky Azure monitoru ke sledování jejich stavu monitorování Surface Huby
@@ -38,7 +38,7 @@ V dalším kroku vám bude přidat existující pracovní prostor Log Analytics 
 * Automaticky pomocí Intune
 * Ručně pomocí **nastavení** na vašem zařízení Surface Hub.
 
-## <a name="set-up-monitoring"></a>Nastavte monitorování
+## <a name="set-up-monitoring"></a>Nastavení monitorování
 Můžete monitorovat stav a aktivitu Surface hubu pomocí Azure monitoru. Surface Hubu můžete registrovat pomocí Intune nebo místně s použitím **nastavení** na Surface Hubu.
 
 ## <a name="connect-surface-hubs-to-azure-monitor-through-intune"></a>Připojit zařízení Surface hub ke sledování Azure prostřednictvím služby Intune

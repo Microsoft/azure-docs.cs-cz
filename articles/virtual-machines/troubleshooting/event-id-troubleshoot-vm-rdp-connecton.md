@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
 ms.openlocfilehash: 4c783c70217a84bbe5ccf15accc4a2bec0b7cca8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61485357"
 ---
 # <a name="troubleshoot-azure-vm-rdp-connection-issues-by-event-id"></a>Řešení potíží s připojením RDP virtuálních počítačů Azure podle ID události 
@@ -56,35 +56,35 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windo
 
 **Název protokolu:**      Systémový <br />
 **Zdroj:**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
-**Datum:***čas* <br />
+**Datum:** *čas* <br />
 **ID události:**      1058 <br />
 **Kategorie úkolu:** Žádný <br />
 **Úroveň:**         Chyba <br />
 **Klíčová slova:**      Classic <br />
 **Uživatel:**          neuvedeno <br />
-**Počítač:***počítače* <br />
+**Počítač:** *počítače* <br />
 **Popis:** Server hostitele relace VP se nepodařilo nahradit neplatné vlastní podepsané certifikátu používaného pro ověřování serveru hostitele relace VP na připojení SSL. Příslušný kód stavu byl odepření přístupu.
 
 **Název protokolu:**      Systémový <br />
 **Zdroj:**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
-**Datum:***čas* <br />
+**Datum:** *čas* <br />
 **ID události:**      1058 <br />
 **Kategorie úkolu:** Žádný <br />
 **Úroveň:**         Chyba <br />
 **Klíčová slova:**      Classic <br />
 **Uživatel:**          neuvedeno <br />
-**Počítač:***počítače* <br />
+**Počítač:** *počítače* <br />
 **Popis:** Server hostitele relace VP se nepodařilo vytvořit nový certifikát podepsaný svým držitelem pro ověřování serveru hostitele relace VP na připojení SSL, příslušný kód stavu je, že objekt již existuje.
 
 **Název protokolu:**      Systémový <br />
 **Zdroj:**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
-**Datum:***čas* <br />
+**Datum:** *čas* <br />
 **ID události:**      1057 <br />
 **Kategorie úkolu:** Žádný <br />
 **Úroveň:**         Chyba <br />
 **Klíčová slova:**      Classic <br />
 **Uživatel:**          neuvedeno <br />
-**Počítač:***počítače* <br />
+**Počítač:** *počítače* <br />
 **Popis:** Server hostitele relace VP se nepodařilo vytvořit novou vlastní podepsaný certifikát, který se použije pro ověřování serveru hostitele relace VP na připojení SSL. Příslušný kód stavu byl kurzory neexistuje.
 
 Můžete také vyhledat SCHANNEL chybové události 36872 a 36870 spuštěním následujících příkazů:
@@ -102,7 +102,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and 
 **Úroveň:**         Chyba <br />
 **Klíčová slova:**       <br />
 **Uživatel:**          SYSTÉM <br />
-**Počítač:***počítače* <br />
+**Počítač:** *počítače* <br />
 **Popis:** Při pokusu přistoupit k soukromému klíči pověření SSL serveru došlo k závažné chybě. Kód chyby vrácený kryptografickým modulem je 0x8009030D.  <br />
 Stav vnitřní chyba je 10001.
 
@@ -224,7 +224,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and 
 **Úroveň:**         Chyba <br />
 **Klíčová slova:**       <br />
 **Uživatel:**          SYSTÉM <br />
-**Počítač:***počítače* <br />
+**Počítač:** *počítače* <br />
 **Popis:** Při vytváření pověření serveru TLS došlo k závažné chybě. Stav vnitřní chyba je 10013.
  
 ### <a name="cause"></a>Příčina
@@ -248,13 +248,13 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name=' Microsoft-Wind
 
 **Název protokolu:**      Microsoft-Windows-TerminalServices-SessionBroker/Operational <br />
 **Zdroj:**        Microsoft-Windows-TerminalServices-SessionBroker <br />
-**Datum:***čas* <br />
+**Datum:** *čas* <br />
 **ID události:**      2056 <br />
 **Kategorie úkolu:** (109) <br />
 **Úroveň:**         Chyba <br />
 **Klíčová slova:**       <br />
 **Uživatel:**          SÍŤOVÉ SLUŽBY <br />
-**Počítač:***plně kvalifikovaný název domény počítače* <br />
+**Počítač:** *plně kvalifikovaný název domény počítače* <br />
 **Popis:** Popis pro 2056 ID události ze zdroje Microsoft-Windows-TerminalServices-SessionBroker nebyl nalezen. Součást, která vyvolá tuto událost není nainstalována na místním počítači nebo že je poškozená instalace. Můžete nainstalovat nebo opravit součásti v místním počítači. <br />
 Pokud událost pochází z jiného počítače, informace o zobrazení museli uložit s událostí. <br />
 Tyto informace je obsažena v události: <br />
@@ -264,18 +264,18 @@ Přihlášení k databázi se nezdařilo.
 
 **Název protokolu:**      Microsoft-Windows-TerminalServices-SessionBroker-Client/Operational <br />
 **Zdroj:**        Microsoft-Windows-TerminalServices-SessionBroker-Client <br />
-**Datum:***čas* <br />
+**Datum:** *čas* <br />
 **ID události:**      1296 <br />
 **Kategorie úkolu:** (104) <br />
 **Úroveň:**         Chyba <br />
 **Klíčová slova:**       <br />
 **Uživatel:**          SÍŤOVÉ SLUŽBY <br />
-**Počítač:***plně kvalifikovaný název domény počítače* <br />
+**Počítač:** *plně kvalifikovaný název domény počítače* <br />
 **Popis:** Popis pro 1296 ID události ze zdroje Microsoft-Windows-TerminalServices-SessionBroker – klient nebyl nalezen. Součást, která vyvolá tuto událost není nainstalována na místním počítači nebo že je poškozená instalace. Můžete nainstalovat nebo opravit součásti v místním počítači.
 Pokud událost pochází z jiného počítače, informace o zobrazení museli uložit s událostí.
 Tyto informace je obsažena v události:  <br />
-*Text* <br />
-*Text* <br />
+*text* <br />
+*text* <br />
 Zprostředkovatel připojení ke vzdálené ploše není připraven na komunikaci RPC.
 
 ### <a name="cause"></a>Příčina

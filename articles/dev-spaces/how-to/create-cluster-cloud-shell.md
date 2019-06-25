@@ -9,16 +9,16 @@ ms.date: 10/04/2018
 ms.topic: conceptual
 description: Zjistěte, jak rychle vytvořit cluster Kubernetes povolené prostory vývoj Azure přímo z prohlížeče bez nutnosti instalace cokoli.
 keywords: Docker, Kubernetes, Azure, AKS, službě Azure Kubernetes, kontejnery, Helm, služby sítě, směrování sítě služby, kubectl, k8s
-ms.openlocfilehash: 532a094f96817f3c525384694b6fa60a292aa948
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: cd0c8c3c26feefe3448ada1cf1575706cd17e525
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66391658"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66808687"
 ---
 # <a name="create-a-kubernetes-cluster-using-azure-cloud-shell"></a>Vytvoření clusteru Kubernetes pomocí Azure Cloud Shellu
 
-Můžete použít [Azure Cloud Shell](/azure/cloud-shell) k vytvoření clusteru prostory vývoj Azure s použitím **vyzkoušet** tlačítko z této stránky. Pokud nejste přihlášení, postupujte podle pokynů se přihlásit pomocí účtu Azure a pak zadejte příkazy příkazového řádku Azure Cloud Shell, když se objeví.
+Můžete použít [Azure Cloud Shell](/azure/cloud-shell) k vytvoření clusteru Azure Kubernetes Service pomocí **vyzkoušet** tlačítko z této stránky. Pokud nejste přihlášení, postupujte podle pokynů se přihlásit pomocí účtu Azure a pak zadejte příkazy příkazového řádku Azure Cloud Shell, když se objeví.
 
 ## <a name="create-the-cluster"></a>Vytvoření clusteru
 
@@ -39,6 +39,9 @@ Vytvoření clusteru bude trvat několik minut.  Po dokončení se zobrazí výs
 ## <a name="next-steps"></a>Další postup
 
 Naleznete v tématu [Azure Dev prostory](/azure/dev-spaces/) odkazy na úplné kurzy.
+
+> [!IMPORTANT]
+> Mnohé z Azure Dev prostory šablon rychlý start a kurzy k provádění operací pomocí Azure CLI prostory vývoj. Nelze nainstalovat rozhraní příkazového řádku Azure Dev mezery ve službě Azure Cloud Shell.
 
 
 [supported-regions]: ../about.md#supported-regions-and-configurations

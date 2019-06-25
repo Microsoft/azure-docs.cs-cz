@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
 ms.openlocfilehash: e1b8bb3544a08b60564ceb5bd7e1666214059e09
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60743917"
 ---
 # <a name="control-routing-and-use-virtual-appliances-classic-using-the-azure-cli"></a>Řídit směrování a použití virtuálních zařízení (classic) pomocí rozhraní příkazového řádku Azure
@@ -72,8 +72,8 @@ Vytvoření směrovací tabulky a trasy potřebné pro podsítě front end, kter
    
     Parametry:
    
-   * **-l (nebo --location)**. Oblasti Azure, ve kterém se vytvoří nová skupina NSG. Pro náš scénář *westus*.
-   * **-n (nebo --name)**. Název nové skupiny NSG. Pro náš scénář *NSG front-endu*.
+   * **-l (nebo --location)** . Oblasti Azure, ve kterém se vytvoří nová skupina NSG. Pro náš scénář *westus*.
+   * **-n (nebo --name)** . Název nové skupiny NSG. Pro náš scénář *NSG front-endu*.
 3. Spusťte následující příkaz k vytvoření trasy ve směrovací tabulce odesílat veškerý provoz směřující do back endové podsítě (192.168.2.0/24) k **FW1** virtuálního počítače (192.168.0.4):
 
     ```azurecli
@@ -89,9 +89,9 @@ Vytvoření směrovací tabulky a trasy potřebné pro podsítě front end, kter
    
     Parametry:
    
-   * **-r (nebo--název směrovací tabulky)**. Název směrovací tabulka, ve kterém se trasa přidá. Pro náš scénář *uživatelem definovaná TRASA front-endu*.
-   * **-a (nebo --address-prefixes)**. Předpona pro podsíť, ve kterém jsou pakety směřující na adresy. Pro náš scénář *192.168.2.0/24*.
-   * **-t (nebo--další typ segmentu směrování)**. Typ objektu provozu se odešlou do. Možné hodnoty jsou *VirtualAppliance*, *VirtualNetworkGateway*, *VNETLocal*, *Internet*, nebo *žádný*.
+   * **-r (nebo--název směrovací tabulky)** . Název směrovací tabulka, ve kterém se trasa přidá. Pro náš scénář *uživatelem definovaná TRASA front-endu*.
+   * **-a (nebo --address-prefixes)** . Předpona pro podsíť, ve kterém jsou pakety směřující na adresy. Pro náš scénář *192.168.2.0/24*.
+   * **-t (nebo--další typ segmentu směrování)** . Typ objektu provozu se odešlou do. Možné hodnoty jsou *VirtualAppliance*, *VirtualNetworkGateway*, *VNETLocal*, *Internet*, nebo *žádný*.
    * **-p (nebo--další segment směrování ip adresy**). IP adresa dalšího segmentu směrování. Pro náš scénář *192.168.0.4*.
 4. Přidružení směrovací tabulky vytvořené pomocí následujícího příkazu spusťte **front-endu** podsítě:
 
@@ -114,7 +114,7 @@ Vytvoření směrovací tabulky a trasy potřebné pro podsítě front end, kter
    
     Parametry:
    
-   * **-t (nebo--vnet-name)**. Název sítě VNet, ve kterém se podsíť nachází. V našem scénáři je to *TestVNet*.
+   * **-t (nebo--vnet-name)** . Název sítě VNet, ve kterém se podsíť nachází. V našem scénáři je to *TestVNet*.
    * **-n (nebo--subnet-name**. Název směrovací tabulky podsítě se přidají do. V našem scénáři je to *FrontEnd*.
 
 ## <a name="create-the-udr-for-the-back-end-subnet"></a>Vytvoření uživatelem definovaná TRASA pro podsíť back-end

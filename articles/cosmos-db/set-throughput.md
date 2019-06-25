@@ -4,14 +4,14 @@ description: Zjistěte, jak nastavit zřízená propustnost pro kontejnery Azure
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/28/2019
+ms.date: 06/14/2019
 ms.author: rimman
-ms.openlocfilehash: ce059e542ee7bfa67e899b4923e3410e13e4930e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 61f8e93fd82f7da632e0ab7e16ad6fbf4ca25646
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067502"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165042"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>Zřízení propustnosti u kontejnerů a databází
 
@@ -72,6 +72,9 @@ Můžete kombinovat dva modely. Zřizování propustnosti na databázi a kontejn
 
 * Můžete vytvořit databázi Azure Cosmos, s názvem *Z* se zřízenou propustností *"K"* RU. 
 * Dále vytvořte pět kontejnery s názvem *A*, *B*, *C*, *D*, a *E* v databázi. Při vytváření kontejneru B, ujistěte se, že chcete povolit **zřízení Vyhrazená propustnost pro tento kontejner** řádku a explicitně nakonfigurovat *"P"* ru zřízenou propustnost na tento kontejner. Všimněte si, že můžete nakonfigurovat sdílené a vyhrazené propustnosti pouze při vytváření databáze a kontejner. 
+
+   ![Nastavení propustnosti na úrovni kontejneru](./media/set-throughput/coll-level-throughput.png)
+
 * *"K"* rezervovaných jednotek propustnosti je sdílen mezi čtyři kontejnery *A*, *C*, *D*, a *E*. Přesné množství propustnost, které jsou k dispozici *A*, *C*, *D*, nebo *E* se liší. Neexistují žádné smlouvy SLA pro jednotlivých jednotlivých kontejnerů o propustnosti.
 * Kontejner s názvem *B* je zaručeno, že zobrazíte *"P"* rezervovaných jednotek propustnosti celou dobu. Se zajištěním smlouvy o úrovni služeb.
 

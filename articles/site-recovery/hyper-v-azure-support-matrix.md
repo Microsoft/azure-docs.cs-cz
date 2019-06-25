@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: raynew
 ms.openlocfilehash: bce9f3b3a574d27e2fb47fb9b2da9470c43fd2eb
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66399425"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Matice podpory pro zotavení po havárii místních virtuálních počítačů Hyper-V do Azure
@@ -103,7 +103,7 @@ Více cest (MPIO). Testovat pomocí:<br></br> DSM od společnosti Microsoft, SP4
 --- | --- | ---
 VMDK | Není k dispozici | Není k dispozici
 VHD/VHDX | Ano | Ano
-2. generace virtuálních počítačů | Ano | Ano
+2\. generace virtuálních počítačů | Ano | Ano
 ROZHRANÍM EFI/UEFI| Ano | Ano
 Sdílený disk clusteru | Ne | Ne
 Šifrovaného disku | Ne | Ne
@@ -162,7 +162,7 @@ FC disk | Nepodporuje se | Kontrola předpokladů selže, pokud není podporová
 Formát pevného disku | VHD <br/><br/> VHDX | Site Recovery při převzetí služeb při selhání do Azure automaticky převede formát VHDX na VHD. Když převezmete služby zpět do místního, virtuální počítače i nadále používat formát VHDX.
 BitLocker | Nepodporuje se | Než povolíte replikaci pro virtuální počítač, musí se zakázat nástroj BitLocker.
 název virtuálního počítače | 1 až 63 znaků. Pouze písmena, číslice a pomlčky. Název virtuálního počítače musí začínat a končit písmenem nebo číslicí. | Aktualizujte hodnotu ve vlastnostech virtuálního počítače ve službě Site Recovery.
-Typ virtuálního počítače | 1. generace<br/><br/> Generace 2 – Windows | Virtuální počítače generace 2 použijte disk operačního systému typu basic (která zahrnuje jednu nebo dvě datové svazky naformátované jako VHDX) a menší než 300 GB místa na disku se nepodporuje.<br></br>Virtuální počítače s Linuxem generace 2 nejsou podporované. [Další informace](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/).|
+Typ virtuálního počítače | 1\. generace<br/><br/> Generace 2 – Windows | Virtuální počítače generace 2 použijte disk operačního systému typu basic (která zahrnuje jednu nebo dvě datové svazky naformátované jako VHDX) a menší než 300 GB místa na disku se nepodporuje.<br></br>Virtuální počítače s Linuxem generace 2 nejsou podporované. [Další informace](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/).|
 
 ## <a name="recovery-services-vault-actions"></a>Trezor služeb zotavení
 

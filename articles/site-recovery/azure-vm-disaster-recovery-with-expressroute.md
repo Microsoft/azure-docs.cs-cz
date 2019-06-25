@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
 ms.openlocfilehash: 90388d570d027aea3c897f7306a1714fd7e847b3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60772378"
 ---
 # <a name="integrate-azure-expressroute-with-disaster-recovery-for-azure-vms"></a>Integrace Azure ExpressRoute se zotavení po havárii pro virtuální počítače Azure
@@ -164,11 +164,11 @@ Tato konfigurace pomáhá chránit proti selhání primární okruh ExpressRoute
 
 ### <a name="access-with-a-single-circuit"></a>Přístup pomocí jednoho okruhu
 
-V této konfiguraci je jenom jeden okruh Expressroute. I když je okruh má redundantní připojení v případě, že jeden ocitne mimo provoz, jednu trasu okruhu neposkytne odolnost, pokud partnerského vztahu oblast přestane fungovat. Poznámky:
+V této konfiguraci je jenom jeden okruh Expressroute. I když je okruh má redundantní připojení v případě, že jeden ocitne mimo provoz, jednu trasu okruhu neposkytne odolnost, pokud partnerského vztahu oblast přestane fungovat. Všimněte si, že:
 
 - Můžete replikovat virtuální počítače Azure do jakékoliv oblasti Azure v [stejné zeměpisné polohy](azure-to-azure-support-matrix.md#region-support). Není-li cílovou oblastí Azure ve stejném umístění jako zdroj, je potřeba povolit ExpressRoute Premium, pokud používáte jeden okruh ExpressRoute. Další informace o [umístění ExpressRoute](../expressroute/expressroute-locations.md#azure-regions-to-expressroute-locations-within-a-geopolitical-region) a [ceny za ExpressRoute](https://azure.microsoft.com/pricing/details/expressroute/).
 - Nemůžete se připojit zdrojové a cílové virtuální sítě současně k okruhu Pokud se používá stejné adresní prostor IP adres v cílové oblasti. V tomto scénáři:    
-    -  Odpojit připojení na straně zdroje a potom musí vytvořit připojení na straně cíl. Tato změna připojení možnost využívat skripty jako součást plánu obnovení Site Recovery. Poznámky:
+    -  Odpojit připojení na straně zdroje a potom musí vytvořit připojení na straně cíl. Tato změna připojení možnost využívat skripty jako součást plánu obnovení Site Recovery. Všimněte si, že:
         - Selhání v oblasti pokud je primární oblast nedostupná operace odpojení, může selhat. Může to mít dopad vytvoření připojení k cílové oblasti.
         - Pokud jste nevytvořili připojení v cílové oblasti a později obnoví primární oblasti, pokud může dojít k drops paketů dvě souběžná připojení se pokusí připojit k stejném adresním prostoru.
         - Chcete-li tomu zabránit, ukončete ihned primární připojení.

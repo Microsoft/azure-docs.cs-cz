@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 250aea52de63a6397ce00e9cadcadf3a8ba39858
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 41cf5f8bcc69e181350a63d215fb0d78d43dcfdf
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60870502"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67272813"
 ---
 # <a name="delegated-access-in-windows-virtual-desktop-preview"></a>Delegovaný přístup v náhledu virtuální plochy Windows
 
@@ -25,7 +25,7 @@ Virtuální Desktop Windows Delegovaný přístup podporuje následující hodno
     * Instanční objekty
 * Definice role
     * Vestavěné role
-* Rozsah
+* Scope
     * Skupiny tenanta
     * Tenanti
     * Fondy hostitele
@@ -42,11 +42,11 @@ Delegovaný přístup v virtuální plochy Windows má několik definic předdef
 
 ## <a name="powershell-cmdlets-for-role-assignments"></a>Rutiny Powershellu pro přiřazení rolí
 
-Spuštěním následující rutiny vytvořit, zobrazit a upravovat přiřazení rolí:
+Spuštěním následující rutiny k vytvoření, zobrazení a odebrání přiřazení role:
 
 * **Get-RdsRoleAssignment** zobrazí seznam přiřazení rolí.
 * **Nové RdsRoleAssignment** vytvoří nové přiřazení role.
-* **Set-RdsRoleAssignment** upraví přiřazení rolí.
+* **Odebrat RdsRoleAssignment** Odstraní přiřazení rolí.
 
 ### <a name="accepted-parameters"></a>Parametry akceptované
 

@@ -336,6 +336,18 @@
         - name: Project Acoustics
           tocHref: /azure/cognitive-services/acoustics/
           topicHref: /azure/cognitive-services/acoustics/what-is-acoustics
+        - name: Rozpoznávání formulářů
+          tocHref: /azure/cognitive-services/form-recognizer/
+          topicHref: /azure/cognitive-services/form-recognizer/
+        - name: Rozpoznávání rukopisu
+          tocHref: /azure/cognitive-services/Ink-Recognizer/
+          topicHref: /azure/cognitive-services/Ink-Recognizer/
+        - name: Personalizace
+          tocHref: /azure/cognitive-services/personalizer/
+          topicHref: /azure/cognitive-services/personalizer/
+        - name: Asistivní čtečka
+          tocHref: /azure/cognitive-services/immersive-reader/
+          topicHref: /azure/cognitive-services/immersive-reader/
     - name: Konektory
       tocHref: /azure/connectors/
       topicHref: /azure/connectors/
@@ -358,6 +370,9 @@
         - name: Kubernetes
           tocHref: /azure/container-service/kubernetes/
           topicHref: /azure/container-service/kubernetes/
+    - name: Bastion
+      tocHref: /azure/bastion/
+      topicHref: /azure/bastion/
     - name: Databáze Cosmos
       tocHref: /azure/cosmos-db/
       topicHref: /azure/cosmos-db/
@@ -581,6 +596,10 @@
     - name: Zabezpečení
       tocHref: /azure/security/
       topicHref: /azure/security/
+      items:
+        - name: Vývoj
+          tocHref: /azure/security/develop/
+          topicHref: /azure/security/develop/
     - name: Security Center
       tocHref: /azure/security-center/
       topicHref: /azure/security-center/

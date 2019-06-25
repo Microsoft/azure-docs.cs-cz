@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/25/2019
 ms.author: jaredro
 ms.custom: include file
-ms.openlocfilehash: 1bcadc18172535649a0ceb482939ca6a75477e25
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: ab74c331bdc8b72612aa848688e1de080314337a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66170727"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67133874"
 ---
 ### <a name="what-is-expressroute-direct"></a>Co je ExpressRoute přímo?
 
@@ -28,11 +28,10 @@ Zákazníci bude nutné spolupracovat s jejich místní prostředníci a poskyto
 K dispozici porty se bude dynamicky a bude k dispozici v prostředí PowerShell, chcete-li zobrazit kapacitu. Zahrnují umístění a *se může změnit závislosti na dostupnosti*:
 
 * Amsterdam
-* Canberra
 * Chicago
-* Washington
+* Washington DC
 * Dallas 
-* Hongkong – zvláštní správní oblast
+* Hongkong – zvláštní administrativní oblast
 * Londýn
 * Los Angeles
 * New York City

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alkarche
 ms.openlocfilehash: 6d11961f06a75341e633c7a8963e6b83ed37cf13
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61341627"
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>Podpora metadat OpenAPI 2.0 ve službě Azure Functions (preview)
@@ -36,7 +36,7 @@ Můžete nakonfigurovat všechna nastavení OpenAPI na **definice rozhraní API*
 > [!NOTE]
 > Funkce definice rozhraní API funkce není podporována pro beta verze modulu runtime aktuálně.
 
-Chcete-li povolit generování definování rychlý start a hostovanou definici OpenAPI, nastavte **zdroj definice rozhraní API** k **– funkce (Preview)**. **Externí adresa URL** umožňuje funkce pomocí definice OpenAPI, který má hostovanou jinde.
+Chcete-li povolit generování definování rychlý start a hostovanou definici OpenAPI, nastavte **zdroj definice rozhraní API** k **– funkce (Preview)** . **Externí adresa URL** umožňuje funkce pomocí definice OpenAPI, který má hostovanou jinde.
 
 ## <a name="generate-definition"></a>Generovat kostru Swagger z metadat funkce
 Šablonu můžete začít psát první definici OpenAPI. Definice funkce šablony vytvoří stručnou definici OpenAPI pomocí všechna metadata v souboru function.json pro jednotlivé funkce triggeru HTTP. Je potřeba vyplnit Další informace o rozhraní API z [specifikace OpenAPI](https://swagger.io/specification/), jako je například šablony žádostí a odpovědí.

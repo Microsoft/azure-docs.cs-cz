@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 01/11/2019
 ms.author: annayak
 ms.openlocfilehash: 35f8a766c6d260e23ff854284d5b8ee047e64b42
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64926232"
 ---
 # <a name="troubleshoot-classic-storage-resource-deletion-errors"></a>Řešení chyb při odstraňování prostředku klasického úložiště.
@@ -99,7 +99,7 @@ Na portálu může být dvě možnosti v závislosti na seznam vybraných pro od
 #### <a name="azure-powershell"></a>Azure PowerShell 
 Pokud uživatel zvolí možnost odstranit pomocí prostředí PowerShell, bude výsledkem následující chyba. 
 
-> <span style="color:cyan">**Remove-AzureStorageBlob -Context $context -Container vhds -Blob "classicvm-os-8698.vhd"**</span>
+> <span style="color:cyan">**Remove-AzureStorageBlob -Context $context -Container vhds -Blob "classicvm-os-8698.vhd"** </span>
 > 
 > <span style="color:red">Remove-AzureStorageBlob : Vzdálený server vrátil chybu: (412) je aktuálně zapůjčení u objektu blob a žádné ID zapůjčení byla zadaná v žádosti... Kód stavu HTTP: 412 – HTTP chybová zpráva: V požadavku bylo zadáno žádné ID zapůjčení u objektu blob je aktuálně zapůjčení.</span>
 

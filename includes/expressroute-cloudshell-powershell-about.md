@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/21/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: f446ec6bce138a072a214a9e9cd7880ad215ad3b
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: ba6673b5fda6af8c9bd3ef53dff33fe63f41e26d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66117805"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67132983"
 ---
 Tento článek používá rutiny prostředí PowerShell. Pokud chcete spustit rutiny, můžete použít Azure Cloud Shell. Azure Cloud Shell je bezplatné interaktivní prostředí, který byl předinstalován běžné nástroje Azure a je nakonfigurován pro použití s vaším účtem. Stačí kliknout na **Kopírovat** a zkopírovat kód, vložit ho do Cloud Shellu a potom ho spustit stisknutím Enter. Existuje několik způsobů, jak Cloud Shell spustit:
 
@@ -24,6 +24,6 @@ Tento článek používá rutiny prostředí PowerShell. Pokud chcete spustit ru
 | Klikněte na tlačítko **Cloud Shell** v nabídce v pravé horní části webu Azure Portal. | [![Cloud Shell na portálu](./media/vpn-gateway-cloud-shell-powershell/cloud-shell-menu.png)](https://portal.azure.com) |
 |  |  |
 
-**Místní použití Powershellu**
+**Místní spuštění prostředí Azure PowerShell**
 
-Můžete také nainstalovat a spustit rutiny prostředí Azure PowerShell místně ve vašem počítači. Rutiny Powershellu se často aktualizují. Pokud používáte nejnovější verzi, zadané v pokynech pro hodnoty nemusí fungovat. Pokud chcete zjistit verzi prostředí PowerShell, které spouštíte místně, použijte `Get-Module -ListAvailable Az` rutiny. Pro instalaci nebo aktualizaci, najdete v článku [instalace modulu Azure PowerShell](/powershell/azure/install-az-ps).
+Můžete také nainstalovat a spustit rutiny prostředí Azure PowerShell místně ve vašem počítači. Rutiny Powershellu se často aktualizují. Pokud používáte nejnovější verzi, zadané v pokynech pro hodnoty nemusí fungovat. K vyhledání nainstalovaných verzí Powershellu v systému, použijte `Get-Module -ListAvailable Az` rutiny. Pro instalaci nebo aktualizaci, najdete v článku [instalace modulu Azure PowerShell](/powershell/azure/install-az-ps).

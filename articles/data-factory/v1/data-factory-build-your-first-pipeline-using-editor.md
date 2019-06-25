@@ -27,7 +27,7 @@ ms.locfileid: "64573821"
 > * [Azure Portal](data-factory-build-your-first-pipeline-using-editor.md)
 > * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 > * [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
-> * [Šablona Azure Resource Manageru](data-factory-build-your-first-pipeline-using-arm.md)
+> * [Šablona Azure Resource Manager](data-factory-build-your-first-pipeline-using-arm.md)
 > * [REST API](data-factory-build-your-first-pipeline-using-rest-api.md)
 
 

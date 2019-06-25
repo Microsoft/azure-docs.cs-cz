@@ -13,10 +13,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 03/12/2019
 ms.openlocfilehash: 2127c05d7e52b0103d91ecfac4fb5977a4815f31
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66123348"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>Přesun dat mezi cloudovými databázemi s horizontálním navýšením kapacity
@@ -210,7 +210,7 @@ Poskytuje služby dělení a slučování **stavem** tabulky v databázi úloži
 
   Hodnoty XML, který poskytuje podrobnější sestavu průběh. Sestava průběhu se pravidelně aktualizovat, protože sady řádků se zkopírují ze zdroje do cíle. V případě chyby nebo výjimky tento sloupec obsahuje také podrobné informace o selhání.
 
-### <a name="azure-diagnostics"></a>Azure Diagnostics
+### <a name="azure-diagnostics"></a>Diagnostika Azure
 
 Služby dělení a slučování používá Azure Diagnostics založené na Azure SDK 2.5 pro monitorování a diagnostiku. Konfigurace diagnostiky se řídit, jak je popsáno zde: [Povolení diagnostiky v Azure Cloud Services a Virtual Machines](../cloud-services/cloud-services-dotnet-diagnostics.md). Balíček ke stažení obsahuje dvě konfigurace diagnostiky – jeden pro webovou roli a jeden pro roli pracovního procesu. Obsahuje definice a čítače výkonu, protokoly IIS, protokoly událostí Windows a protokoly událostí aplikace dělení a slučování protokolu.
 

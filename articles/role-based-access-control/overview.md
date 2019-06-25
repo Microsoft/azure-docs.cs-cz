@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/13/2019
+ms.date: 06/12/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: db9424ff4ddd2663ae1342294181dc885c6ed937
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 4a5352e96e522a8bd32c428957b3bbfd62c5fa9b
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66479557"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275937"
 ---
 # <a name="what-is-role-based-access-control-rbac-for-azure-resources"></a>Co je řízení přístupu na základě rolí (RBAC) pro prostředky Azure?
 
@@ -74,7 +74,7 @@ Azure obsahuje několik [předdefinovaných rolí](built-in-roles.md), které m�
 
 Zbývající předdefinované role umožňují správu konkrétních prostředků Azure. Role [Přispěvatel virtuálních počítačů](built-in-roles.md#virtual-machine-contributor) například uživateli umožňuje vytvářet a spravovat virtuální počítače. Pokud předdefinované role není splnili specifické požadavky vaší organizace, můžete vytvořit vlastní [vlastních rolí pro prostředky Azure](custom-roles.md).
 
-Azure zavádí datové operace (momentálně ve verzi Preview), které vám umožní udělit přístup k datům v rámci objektu. Pokud má uživatel například přístup ke čtení dat u účtu úložiště, bude moci číst objekty blob nebo zprávy v rámci daného účtu úložiště. Další informace najdete v tématu [pochopení definic rolí pro prostředky Azure](role-definitions.md).
+Azure má operace s daty, které vám umožní udělit přístup k datům v rámci objektu. Pokud má uživatel například přístup ke čtení dat u účtu úložiště, bude moci číst objekty blob nebo zprávy v rámci daného účtu úložiště. Další informace najdete v tématu [pochopení definic rolí pro prostředky Azure](role-definitions.md).
 
 ### <a name="scope"></a>Scope
 
@@ -108,10 +108,7 @@ Co se tak stane, když máte více překrývající se přiřazení rolí? RBAC 
 
 ## <a name="deny-assignments"></a>Přiřazení zamítnutí
 
-Model RBAC původně umožňoval jen povolení, ne zamítnutí, teď ale omezeně podporuje také přiřazení zamítnutí. Přiřazení role, podobně jako *zamítnout přiřazení* akce Odepřít bude k obrazci skupinu pro uživatele, skupiny, instanční objekt nebo spravovaná identita v určitém rozsahu pro účely odepření přístupu. Přiřazení role definuje sadu akcí, které jsou *povolené*, zatímco přiřazení odepřít definuje sadu akcí, které jsou *nepovoluje*. Jinými slovy, přiřazení zamítnutí blokuje uživatelům možnost provádět určité akce i v případě, že přiřazení role jim přístup uděluje. Přiřazení zamítnutí mají přednost před přiřazením rolí. Další informace najdete v tématu [porozumění zamítnout přiřazení pro prostředky Azure](deny-assignments.md) a [zobrazení zamítnout přiřazení pro prostředky Azure pomocí webu Azure portal](deny-assignments-portal.md).
-
-> [!NOTE]
-> V tuto chvíli odepřít jediný způsob, jakým můžete přidat vlastní přiřazení je s využitím Azure podrobné plány. Další informace najdete v tématu [chránit nové prostředky podle zámky prostředků Azure plány](../governance/blueprints/tutorials/protect-new-resources.md).
+Model RBAC původně umožňoval jen povolení, ne zamítnutí, teď ale omezeně podporuje také přiřazení zamítnutí. Přiřazení role, podobně jako *zamítnout přiřazení* akce Odepřít bude k obrazci skupinu pro uživatele, skupiny, instanční objekt nebo spravovaná identita v určitém rozsahu pro účely odepření přístupu. Přiřazení role definuje sadu akcí, které jsou *povolené*, zatímco přiřazení odepřít definuje sadu akcí, které jsou *nepovoluje*. Jinými slovy, přiřazení zamítnutí blokuje uživatelům možnost provádět určité akce i v případě, že přiřazení role jim přístup uděluje. Přiřazení zamítnutí mají přednost před přiřazením rolí. Další informace najdete v tématu [porozumění zamítnout přiřazení pro prostředky Azure](deny-assignments.md).
 
 ## <a name="how-rbac-determines-if-a-user-has-access-to-a-resource"></a>Jak se v modelu RBAC určí, jestli má uživatel přístup k prostředku
 

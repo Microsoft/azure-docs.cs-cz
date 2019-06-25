@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/24/2018
 ms.author: pabutler
 ms.openlocfilehash: 058ab30358811cb66ae033fb464974639569ae18
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64935262"
 ---
 # <a name="configure-lead-management-using-an-https-endpoint"></a>Konfigurace správy potenciálních zákazníků pomocí koncového bodu HTTPS
@@ -52,7 +52,7 @@ Koncový bod HTTPS můžete použít ke zpracování Azure Marketplace a AppSour
 1. Vyberte **+ nový krok**.
 2. Zvolte systém CRM podle vašeho výběru s akcí k vytvoření nového záznamu. Na následující obrazovce zachycení ukazuje **Dynamics 365 – vytvořit nový záznam** jako příklad.
 
-    ![Vytvořit nový záznam](./media/cloud-partner-portal-lead-management-instructions-https/https-image009.png)
+    ![Vytvoří nový záznam](./media/cloud-partner-portal-lead-management-instructions-https/https-image009.png)
 
 3. Zadejte **název organizace** , který je vstupy propojení pro váš konektor. Vyberte **vede** z **název Entity** rozevíracího seznamu.
 

@@ -12,10 +12,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 05/22/2019
 ms.openlocfilehash: 8499d99ab82fa89062d74c7dc5db5d7dd11e770c
-ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66016380"
 ---
 # <a name="time-zones-in-azure-sql-database-managed-instance"></a>Časových pásem v Azure SQL Database Managed Instance
@@ -100,119 +100,119 @@ Pomocí stejného časového pásma mezi primární a sekundární instance ve s
 
 | **ID časového pásma** | **Zobrazovaný název časového pásma** |
 | --- | --- |
-| Datová hranice (běžný čas) | (UTC-12:00) Západní mezinárodní časová osa |
-| UTC-11 | (UTC-11:00) Koordinovaný univerzální čas (UTC)-11 |
-| Aleutské ostrovy (běžný čas) | (UTC-10:00) Aleutské ostrovy |
+| Datová hranice standardní čas | (UTC-12:00) Západní mezinárodní časová osa |
+| UTC-11 | (UTC-11:00) Koordinovaný univerzální čas-11 |
+| Aleutská (běžný čas) | (UTC-10:00) Aleutské ostrovy |
 | Havajské ostrovy (běžný čas) | (UTC-10:00) Havajské ostrovy |
-| Markézy (běžný čas) | (UTC-09:30) Souostroví Markézy |
+| Marquesas Standard Time | (UTC-09:30) Souostroví Markézy |
 | Aljaška (běžný čas) | (UTC-09:00) Aljaška |
-| UTC-09 | (UTC-09:00) Koordinovaný světový čas-09 |
-| Tichomoří – Mexiko (běžný čas) | (UTC-08:00) Baja California |
-| UTC-08 | (UTC-08:00) Koordinovaný světový čas-08 |
+| UTC-09 | (UTC-09:00) Koordinovaný univerzální čas (UTC)-09 |
+| Tichomoří Mexiko (běžný čas) | (UTC-08:00) Baja California |
+| UTC-08 | (UTC-08:00) Koordinovaný univerzální čas (UTC)-08 |
 | Tichomoří (běžný čas) | (UTC-08:00) Tichomoří (USA a Kanada) |
 | Horská oblast USA (běžný čas) | (UTC-07:00) Arizona |
-| Horská oblast – Mexiko (běžný čas) | (UTC-07:00) Chihuahua, La Paz, Mazatlan |
+| Horská oblast Mexiko (běžný čas) | (UTC-07:00) Chihuahua, La Paz, Mazatlan |
 | Horská oblast (běžný čas) | (UTC-07:00) Horská oblast USA a Kanady |
 | Střední Amerika (běžný čas) | (UTC-06:00) Střední Amerika |
-| Střední oblast (běžný čas) | (UTC-06:00) Střed USA a Kanady |
+| Střední (běžný čas) | (UTC-06:00) Střed USA a Kanady |
 | Velikonoční ostrov (běžný čas) | (UTC-06:00) Velikonoční ostrov |
-| Střední oblast – Mexiko (běžný čas) | (UTC-06:00) Guadalajara, Mexico City, Monterrey |
-| Střední Kanada (běžný čas) | (UTC-06:00) Saskatchewan |
-| Tichomoří J. Amerika (běžný čas) | (UTC-05:00) Bogota, Lima, Quito, Rio Branco |
-| Východní oblast – Mexiko (běžný čas) | (UTC-05:00) Chetumal |
+| Centrální Mexiko (běžný čas) | (UTC-06:00) Guadalajara, Mexico City, Monterrey |
+| Kanada – střed (běžný čas) | (UTC-06:00) Saskatchewan |
+| Tichomoří j. Amerika (běžný čas) | (UTC-05:00) Bogota, Lima, Quito, Rio Branco |
+| Východní Mexiko (běžný čas) | (UTC-05:00) Chetumal |
 | Východní oblast (běžný čas) | (UTC-05:00) Východ USA a Kanady |
 | Haitský běžný čas | (UTC-05:00) Haiti |
 | Kuba (běžný čas) | (UTC-05:00) Havana |
-| Východ USA (běžný čas) | (UTC-05:00) Indiana (východ) |
+| Východní USA (běžný čas) | (UTC-05:00) Indiana (východ) |
 | Turks a Caicos (běžný čas) | (UTC-05:00) Turks a Caicos |
 | Paraguay (běžný čas) | (UTC-04:00) Asunción |
 | Atlantik (běžný čas) | (UTC-04:00) Atlantik (Kanada) |
-| Venezuela (běžný čas) | (UTC-04:00) Caracas |
+| Venezuela Standard Time | (UTC-04:00) Caracas |
 | Střední Brazílie (běžný čas) | (UTC-04:00) Cuiaba |
-| Západní J. Amerika (běžný čas) | (UTC-04:00) Georgetown, La Paz, Manaus, San Juan |
+| SA Western Standard Time | (UTC-04:00) Georgetown, La Paz, Manaus, San Juan |
 | Tichomoří Jižní Am. (běžný čas) | (UTC-04:00) Santiago |
 | Newfoundland (běžný čas) | (UTC-03:30) Newfoundland |
-| Tocantins (běžný čas) | (UTC-03:00) Araguaina |
-| E. Jižní Amerika (běžný čas) | (UTC-03:00) Brazílie |
-| Východní J. Amerika (běžný čas) | (UTC-03:00) Cayenne, Fortaleza |
-| Argentina (běžný čas) | (UTC-03:00) Buenos Aires |
+| Tocantis (běžný čas) | (UTC-03:00) Araguaína |
+| E. Jižní Amerika (běžný čas) | (UTC-03:00) Brasília |
+| Přidružení zabezpečení (východní běžný čas) | (UTC-03:00) Cayenne, Fortaleza |
+| Argentina Standard Time | (UTC-03:00) Buenos Aires |
 | Grónsko (běžný čas) | (UTC-03:00) Grónsko |
 | Montevideo (běžný čas) | (UTC-03:00) Montevideo |
 | Magallanský standardní čas | (UTC-03:00) Punta Arenas |
-| Saint Pierre (běžný čas) | (UTC-03:00) Saint-Pierre a Miquelon |
+| Saint Pierre (běžný čas) | (UTC-03:00) Saint Pierre a Miquelon |
 | Bahia (běžný čas) | (UTC-03:00) Salvador |
 | UTC-02 | (UTC-02:00) Koordinovaný univerzální čas (UTC)-02 |
 | Střední Atlantik (běžný čas) | (UTC-02:00) Střední Atlantik – starý čas |
 | Azory (běžný čas) | (UTC-01:00) Azory |
-| Cabo Verde (běžný čas) | (UTC-01:00) Ostrovy Cabo Verde |
-| UTC | Koordinovaný univerzální čas (UTC) |
-| Střední čas (běžný čas) | (UTC+00:00) Dublin, Edinburgh, Lisabon, Londýn |
+| Cabo Verde (běžný čas) | (UTC-01:00) Cabo Verde |
+| UTC | (UTC) Koordinovaný univerzální čas |
+| GMT (běžný čas) | (UTC+00:00) Dublin, Edinburgh, Lisabon, Londýn |
 | Střední (běžný čas) | (UTC+00:00) Monrovia, Reykjavík |
 | W. Evropa (běžný čas) | (UTC+01:00) Amsterdam, Berlín, Bern, Řím, Stockholm, Vídeň |
 | Střední Evropa (běžný čas) | (UTC+01:00) Bělehrad, Bratislava, Budapešť, Lublaň, Praha |
 | Románské země (běžný čas) | (UTC+01:00) Brusel, Kodaň, Madrid, Paříž |
-| Maroko (běžný čas) | (UTC+01:00) Casablanca |
-| Svatý Tomáš, standardní čas | (UTC+01:00) Svatý Tomáš |
-| Střední Evropa (běžný čas) | (UTC+01:00) Sarajevo, Skopje, Varšava, Záhřeb |
+| Maroko (běžný čas) | (UTC + 01:00) Casablanca |
+| Svatý Tomáš (běžný čas) | (UTC + 01:00) Sao Tome |
+| Centrální běžný čas | (UTC+01:00) Sarajevo, Skopje, Varšava, Záhřeb |
 | W. Střední Afriky (běžný čas) | (UTC+01:00) Západ střední Afriky |
-| Jordánsko (běžný čas) | (UTC+02:00) Ammán |
+| (Jordánsko běžný čas) | (UTC+02:00) Ammán |
 | Balkán (běžný čas) | (UTC+02:00) Atény, Bukurešť |
 | Střední východ (běžný čas) | (UTC+02:00) Bejrút |
 | Egypt (běžný čas) | (UTC+02:00) Káhira |
 | E. Evropa (běžný čas) | (UTC+02:00) Kišiněv |
 | Sýrie (běžný čas) | (UTC+02:00) Damašek |
 | Západní břeh (běžný čas) | (UTC+02:00) Gaza, Hebron |
-| Jihoafrická republika (běžný čas) | (UTC+02:00) Harare, Pretoria |
-| Finsko (běžný čas) | (UTC+02:00) Helsinky, Kyjev, Riga, Sofie, Tallinn, Vilnius |
+| Jižní Afrika (běžný čas) | (UTC+02:00) Harare, Pretoria |
+| SOUBOR (běžný čas) | (UTC+02:00) Helsinky, Kyjev, Riga, Sofie, Tallinn, Vilnius |
 | Izrael (běžný čas) | (UTC+02:00) Jeruzalém |
 | Kaliningrad (běžný čas) | (UTC+02:00) Kaliningrad |
-| Súdánský standardní čas | (UTC+02:00) Chartúm |
+| Súdánský standardní čas | (UTC + 02:00) Chartúm |
 | Libye (běžný čas) | (UTC+02:00) Tripolis |
-| Namibie (běžný čas) | (UTC+02:00) Windhoek |
-| Arabský poloostrov (běžný čas) | (UTC+03:00) Bagdád |
+| Namibie (běžný čas) | (UTC + 02:00) Windhoek |
+| Arabské (běžný čas) | (UTC+03:00) Bagdád |
 | Turecko (běžný čas) | (UTC+03:00) Istanbul |
 | Oblast Arábie (běžný čas) | (UTC+03:00) Kuvajt, Rijád |
 | Bělorusko (běžný čas) | (UTC+03:00) Minsk |
-| Rusko (běžný čas) | (UTC+03:00) Moskva, St. Petersburg |
+| Rusko (běžný čas) | (UTC + 03:00) Moskva, Sant Petěrburg |
 | E. Afrika (běžný čas) | (UTC+03:00) Nairobi |
 | Irán (běžný čas) | (UTC+03:30) Teherán |
-| Arábie (běžný čas) | (UTC+04:00) Abú Dhabi, Maskat |
+| Arábie (běžný čas) | (UTC+04:00) Abú Dhabi, Muskat |
 | Astrachaňský běžný čas | (UTC+04:00) Astrachaň, Uljanovsk |
 | Ázerbájdžán (běžný čas) | (UTC+04:00) Baku |
 | Rusko časové pásmo 3 | (UTC+04:00) Iževsk, Samara |
 | Běžný čas Mauritius | (UTC+04:00) Port Louis |
-| Saratovský standardní čas | (UTC+04:00) Saratov |
-| Gruzie (běžný čas) | (UTC+04:00) Tbilisi |
-| Volgogradský standardní čas | (UTC+04:00) Volgograd |
+| Saratovský standardní čas | (UTC + 04:00) Saratov |
+| Georgian Standard Time | (UTC+04:00) Tbilisi |
+| Volgograd (běžný čas) | (UTC + 04:00) Volgograd |
 | Kavkaz (běžný čas) | (UTC+04:00) Jerevan |
 | Afghánistán (běžný čas) | (UTC+04:30) Kábul |
 | Západní Asie (běžný čas) | (UTC+05:00) Ašchabád, Taškent |
 | Jekatěrinburg (běžný čas) | (UTC+05:00) Jekatěrinburg |
 | Pákistán (běžný čas) | (UTC+05:00) Islámábád, Karáčí |
-| Indie (běžný čas) | (UTC+05:30) Čennaj, Kolkata, Mumbaí, Dillí |
+| Indie (běžný čas) | (UTC+05:30) Čennaj, Kalkata, Bombaj, Nové Dillí |
 | Srí Lanka (běžný čas) | (UTC+05:30) Šrí Džajavardanapura |
 | Nepál (běžný čas) | (UTC+05:45) Káthmándú |
 | Střední Asie (běžný čas) | (UTC+06:00) Astana |
 | Bangladéš (běžný čas) | (UTC+06:00) Dháka |
-| Omsk (běžný čas) | (UTC+06:00) Omsk |
+| Omsk (běžný čas) | (UTC + 06:00) Omsk |
 | Myanmar (běžný čas) | (UTC+06:30) Yangon (Rangún) |
 | Jihovýchodní Asie (běžný čas) | (UTC+07:00) Bangkok, Hanoj, Jakarta |
 | Altajský běžný čas | (UTC+07:00) Barnaul, Gorno-Altajsk |
 | W. Mongolsko (běžný čas) | (UTC+07:00) Chovd |
 | Severní Asie (běžný čas) | (UTC+07:00) Krasnojarsk |
-| N. Střední Asie (běžný čas) | (UTC+07:00) Novosibirsk |
-| Tomská oblast (běžný čas) | (UTC+07:00) Tomská oblast |
-| Čína (běžný čas) | (UTC+08:00) Peking, Čchung-čching, Hongkong, Urumqi |
+| N. Střední Asie (běžný čas) | (UTC + 07:00) Novosibirsk |
+| Tomská oblast (běžný čas) | (UTC+07:00) Tomsk |
+| Čína (běžný čas) | (UTC+08:00) Peking, Čchung-čching, Hongkong, Urumči |
 | Východ severní Asie (běžný čas) | (UTC+08:00) Irkutsk |
 | Singapore (běžný čas) | (UTC+08:00) Kuala Lumpur, Singapur |
 | W. Austrálie (běžný čas) | (UTC+08:00) Perth |
 | Taipei (běžný čas) | (UTC+08:00) Tchaj-pej |
 | Ulánbátar (běžný čas) | (UTC+08:00) Ulánbátar |
-| Středozápad Austr. (běžný čas) | (UTC+08:45) Eucla |
+| Střední Austrálie W. (běžný čas) | (UTC+08:45) Eucla |
 | Zabajkalský běžný čas | (UTC+09:00) Čita |
 | Tokio (běžný čas) | (UTC+09:00) Ósaka, Sapporo, Tokio |
-| Severní Korea (běžný čas) | (UTC+09:00) Pchjongjang |
-| Jižní Korea (běžný čas) | (UTC+09:00) Soul |
+| Severní Korea (běžný čas) | (UTC + 09:00) Pchjongjang |
+| Korea (běžný čas) | (UTC+09:00) Soul |
 | Jakutsk (běžný čas) | (UTC+09:00) Jakutsk |
 | Cen. Austrálie (běžný čas) | (UTC+09:30) Adelaide |
 | Střední Austrálie (běžný čas) | (UTC+09:30) Darwin |
@@ -227,14 +227,14 @@ Pomocí stejného časového pásma mezi primární a sekundární instance ve s
 | Magadan (běžný čas) | (UTC+11:00) Magadan |
 | Norfolk (běžný čas) | (UTC+11:00) Norfolk |
 | Sachalin (běžný čas) | (UTC+11:00) Sachalin |
-| Střední Tichomoří (běžný čas) | (UTC+11:00) Šalamounovy ostrovy, Nová Kaledonie |
+| Střední Tichomořský běžný čas | (UTC+11:00) Šalamounovy ostrovy, Nová Kaledonie |
 | Rusko časové pásmo 11 | (UTC+12:00) Anadyr, Petropavlovsk-Kamčatskij |
 | Nový Zéland (běžný čas) | (UTC+12:00) Auckland, Wellington |
-| UTC+12 | (UTC+12:00) Koordinovaný univerzální čas (UTC)+12 |
+| UTC+12 | (UTC+12:00) Koordinovaný univerzální čas+12 |
 | Fidži (běžný čas) | (UTC+12:00) Fidži |
 | Kamčatka (běžný čas) | (UTC+12:00) Petropavlovsk-Kamčatskij – starý čas |
-| Chathamovy ostrovy (běžný čas) | (UTC+12:45) Chathamovy ostrovy |
-| UTC+13 | (UTC+13:00) Koordinovaný univerzální čas (UTC) + 13 |
+| Chathamovy ostrovy (běžný čas) | (UTC+12:45) Chathamské ostrovy |
+| UTC+13 | (UTC + 13:00) Koordinovaný univerzální čas + 13 |
 | Tonga (běžný čas) | (UTC+13:00) Nuku'alofa |
 | Samoa (běžný čas) | (UTC+13:00) Samoa |
 | Ostrovy Line (běžný čas) | (UTC+14:00) Ostrov Kiritimati |

@@ -1,23 +1,17 @@
 ---
 title: Funkce šablon Azure Resource Manageru – řetězec | Dokumentace Microsoftu
 description: Popisuje funkce pro použití v šabloně Azure Resource Manageru pro práci s řetězci.
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-ms.assetid: ''
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 04/08/2019
 ms.author: tomfitz
-ms.openlocfilehash: 82b9403a3d5a5b6938f5b95bbfce888d1e70e451
-ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
+ms.openlocfilehash: 979474ea6b5b61935742591f8fba87d200d618e4
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66431215"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206342"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Řetězec funkce pro šablony Azure Resource Manageru
 
@@ -1015,7 +1009,7 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | lastString | Int | 0 |
 | NotFound | Int | -1 |
 
-## <a name="length"></a>Délka
+## <a name="length"></a>length
 
 `length(string)`
 
@@ -1550,7 +1544,7 @@ Vrátí dílčí řetězec, který začíná na pozici zadaného znaku a obsahuj
 |:--- |:--- |:--- |:--- |
 | stringToParse |Ano |string |Původní řetězec, ze které je dílčí řetězec extrahován. |
 | Počáteční index |Ne |int |Počáteční znak pozice s nulovým základem pro dílčí řetězec. |
-| Délka |Ne |int |Počet znaků pro dílčí řetězec. Musí odkazovat na umístění v rámci řetězce. Musí být nulová nebo větší. |
+| length |Ne |int |Počet znaků pro dílčí řetězec. Musí odkazovat na umístění v rámci řetězce. Musí být nulová nebo větší. |
 
 ### <a name="return-value"></a>Návratová hodnota
 

@@ -10,10 +10,10 @@ ms.service: automation
 ms.custom: mvc
 manager: carmonm
 ms.openlocfilehash: 38b5b233d21c0c5d79d7bcb6a145e6232b238b0e
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66133125"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>Začlenění řešení Update Management, Change Tracking a Inventory z virtuálního počítače Azure
@@ -51,22 +51,22 @@ Pokud vybraný pracovní prostor už nemá řešení Update Management nebo Chan
 
 Pokud je vybraný pracovní prostor už řešení, se znovu nasadit řešení a nebude přidána konfigurace oboru.
 
-Vyberte symbol tří teček (**...** ) na všechny konfigurace a pak vyberte **upravit**. V **upravit konfiguraci oboru** vyberte **vyberte skupiny počítačů**. **Skupiny počítačů** podokně se zobrazí na uložená hledání, které se používají k vytvoření konfigurace oboru.
+Vyberte symbol tří teček ( **...** ) na všechny konfigurace a pak vyberte **upravit**. V **upravit konfiguraci oboru** vyberte **vyberte skupiny počítačů**. **Skupiny počítačů** podokně se zobrazí na uložená hledání, které se používají k vytvoření konfigurace oboru.
 
-## <a name="saved-searches"></a>Uložené výsledky hledání
+## <a name="saved-searches"></a>Uložená hledání
 
 Při přidání počítače do Update Management, Change Tracking nebo řešení Inventory počítač přidán do jednoho ze dvou uložené výsledky hledání ve vašem pracovním prostoru. Uložené výsledky hledání jsou dotazy, které obsahují počítače, které cílí na tato řešení.
 
 Přejděte do svého pracovního prostoru. V části **Obecné**vyberte **uložená hledání**. V následující tabulce jsou uvedeny dva uložená hledání, které jsou používány těmito řešeními:
 
-|Název     |Category  |Alias  |
+|Name     |Category  |Alias  |
 |---------|---------|---------|
 |MicrosoftDefaultComputerGroup     |  Sledování změn ve       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 |MicrosoftDefaultComputerGroup     | Aktualizace        | Updates__MicrosoftDefaultComputerGroup         |
 
 Vyberte jednu z uložené výsledky hledání, chcete-li zobrazit dotaz, který se používá k naplnění skupiny. Následující obrázek ukazuje dotaz a jeho výsledky:
 
-![Uložené výsledky hledání](media/automation-onboard-solutions-from-vm/logsearch.png)
+![Uložená hledání](media/automation-onboard-solutions-from-vm/logsearch.png)
 
 ## <a name="unlink-workspace"></a>Zrušit propojení pracovního prostoru
 

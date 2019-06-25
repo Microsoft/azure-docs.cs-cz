@@ -16,11 +16,11 @@ ms.date: 01/09/2019
 ms.author: andret
 ms.custom: include file
 ms.openlocfilehash: 4fc189c339e64a1f2cb3da73ea4c473425cebcbe
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65081703"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203810"
 ---
 | Mobilní a nativní aplikace | Webové aplikace a SPA | Webová rozhraní API |
 | --- | --- | --- |

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 3/20/2019
 ms.author: mayg
 ms.openlocfilehash: cbea6785239c70a3cdb229d0811497f051224238
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61472487"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>Analýza sestavy Azure Site Recovery Deployment Planner pro zotavení po havárii VMware do Azure
@@ -32,13 +32,13 @@ List On-premises summary (Přehled místního prostředí) poskytuje přehled pr
 
 **Průměrný počet disků na kompatibilní virtuální počítač**: Průměrný počet disků ve všech kompatibilních virtuálních počítačích.
 
-**Průměrná velikost disku (GB)**: Vypočítaná průměrná velikost disků ve všech kompatibilních virtuálních počítačích.
+**Průměrná velikost disku (GB)** : Vypočítaná průměrná velikost disků ve všech kompatibilních virtuálních počítačích.
 
-**Desired RPO (minutes)**: Obnovení výchozí cíl bodu, nebo hodnota předaná v parametru "DesiredRPO" v okamžiku generování sestavy, sloužící k odhadu požadované šířky pásma.
+**Desired RPO (minutes)** : Obnovení výchozí cíl bodu, nebo hodnota předaná v parametru "DesiredRPO" v okamžiku generování sestavy, sloužící k odhadu požadované šířky pásma.
 
-**Desired bandwidth (Mbps)**: Hodnota, kterou jste předali pro parametr 'Šířky pásma' při generování sestavy, sloužící k odhadu dosažitelného cíle bodu obnovení.
+**Desired bandwidth (Mbps)** : Hodnota, kterou jste předali pro parametr 'Šířky pásma' při generování sestavy, sloužící k odhadu dosažitelného cíle bodu obnovení.
 
-**Četnost změn dat vypozorovaná typických za den (GB)**: Průměrná četnost změn dat vysledovat v všech dnů profilace. Toto číslo se používá jako jeden ze vstupů pro určení počtu konfiguračních serverů a dalších procesových serverů, které se mají v nasazení použít.
+**Četnost změn dat vypozorovaná typických za den (GB)** : Průměrná četnost změn dat vysledovat v všech dnů profilace. Toto číslo se používá jako jeden ze vstupů pro určení počtu konfiguračních serverů a dalších procesových serverů, které se mají v nasazení použít.
 
 ## <a name="recommendations"></a>Doporučení
 
@@ -201,17 +201,17 @@ Pokud se například díky charakteristikám úloh disk umístil do kategorie P2
 
 **R/W IOPS (with Growth Factor) ve špičce**: Úlohy/w IOPS na disku (výchozí je 95. percentil), včetně faktoru budoucího růstu (výchozí hodnota 30 %). Všimněte si, že celkový počet R/W IOPS virtuálního počítače nebude vždy odpovídat součtu R/W IOPS jednotlivých disků virtuálního počítače, protože počet R/W IOPS virtuálního počítače ve špičce je maximální hodnota součtu R/W IOPS jeho jednotlivých disků v každé minutě období profilace.
 
-**Peak Data Churn in Mbps (with Growth Factor)**: Ve špičce četnost změn dat na disku (výchozí je 95. percentil), včetně faktoru budoucího růstu (výchozí hodnota 30 %). Všimněte si, že celková četnost změn dat virtuálního počítače nebude vždy odpovídat součtu četností změn dat jednotlivých disků virtuálního počítače, protože četnost změn dat virtuálního počítače ve špičce je maximální hodnota součtu četností změn jeho jednotlivých disků v každé minutě období profilace.
+**Peak Data Churn in Mbps (with Growth Factor)** : Ve špičce četnost změn dat na disku (výchozí je 95. percentil), včetně faktoru budoucího růstu (výchozí hodnota 30 %). Všimněte si, že celková četnost změn dat virtuálního počítače nebude vždy odpovídat součtu četností změn dat jednotlivých disků virtuálního počítače, protože četnost změn dat virtuálního počítače ve špičce je maximální hodnota součtu četností změn jeho jednotlivých disků v každé minutě období profilace.
 
 **Velikost virtuálního počítače Azure**: Ideální velikost virtuálního počítače Azure Cloud Services mapovaného pro tento místní virtuální počítač. Mapování vychází z velikosti paměti, počtu disků, jader nebo síťových adaptérů a počtu R/W IOPS místního virtuálního počítače. Doporučení vždy představuje nejmenší velikost virtuálního počítače Azure, která odpovídá všem charakteristikám místního virtuálního počítače.
 
 **Number of Disks**: Celkový počet disků virtuálního počítače (Vmdk) ve virtuálním počítači.
 
-**Disk size (GB)**: Celkovou nastavenou velikost všech disků virtuálního počítače. Nástroj ukazuje také velikosti jednotlivých disků ve virtuálním počítači.
+**Disk size (GB)** : Celkovou nastavenou velikost všech disků virtuálního počítače. Nástroj ukazuje také velikosti jednotlivých disků ve virtuálním počítači.
 
 **Počet jader**: Počet Procesorových jader ve virtuálním počítači.
 
-**Paměť (MB)**: Paměť RAM ve virtuálním počítači.
+**Paměť (MB)** : Paměť RAM ve virtuálním počítači.
 
 **Síťové adaptéry**: Počet síťových adaptérů na virtuálním počítači.
 
@@ -253,15 +253,15 @@ Pokud se například díky charakteristikám úloh disk umístil do kategorie P2
 
 **R/W IOPS (with Growth Factor) ve špičce**: Zatížení ve špičce IOPS na disku (výchozí je 95. percentil), včetně faktoru budoucího růstu (výchozí hodnota 30 %). Všimněte si, že celkový počet R/W IOPS virtuálního počítače nebude vždy odpovídat součtu R/W IOPS jednotlivých disků virtuálního počítače, protože počet R/W IOPS virtuálního počítače ve špičce je maximální hodnota součtu R/W IOPS jeho jednotlivých disků v každé minutě období profilace.
 
-**Peak Data Churn in Mbps (with Growth Factor)**: Ve špičce četnost změn dat na disku (výchozí 95. percentil) včetně faktoru budoucího růstu (výchozí hodnota 30 %). Všimněte si, že celková četnost změn dat virtuálního počítače nebude vždy odpovídat součtu četností změn dat jednotlivých disků virtuálního počítače, protože četnost změn dat virtuálního počítače ve špičce je maximální hodnota součtu četností změn jeho jednotlivých disků v každé minutě období profilace.
+**Peak Data Churn in Mbps (with Growth Factor)** : Ve špičce četnost změn dat na disku (výchozí 95. percentil) včetně faktoru budoucího růstu (výchozí hodnota 30 %). Všimněte si, že celková četnost změn dat virtuálního počítače nebude vždy odpovídat součtu četností změn dat jednotlivých disků virtuálního počítače, protože četnost změn dat virtuálního počítače ve špičce je maximální hodnota součtu četností změn jeho jednotlivých disků v každé minutě období profilace.
 
 **Number of Disks**: Celkový počet disků Vmdk ve virtuálním počítači.
 
-**Disk size (GB)**: Celkovou nastavenou velikost všech disků virtuálního počítače. Nástroj ukazuje také velikosti jednotlivých disků ve virtuálním počítači.
+**Disk size (GB)** : Celkovou nastavenou velikost všech disků virtuálního počítače. Nástroj ukazuje také velikosti jednotlivých disků ve virtuálním počítači.
 
 **Počet jader**: Počet Procesorových jader ve virtuálním počítači.
 
-**Paměť (MB)**: Množství paměti RAM ve virtuálním počítači.
+**Paměť (MB)** : Množství paměti RAM ve virtuálním počítači.
 
 **Síťové adaptéry**: Počet síťových adaptérů na virtuálním počítači.
 

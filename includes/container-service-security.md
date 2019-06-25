@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
 ms.openlocfilehash: 39bb75a6f834789f91cb590ffebb72f45624eb25
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66148860"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67175560"
 ---
 # <a name="deprecated-securing-docker-containers-in-azure-container-service"></a>(NEPOUŽÍVANÉ) Zabezpečení kontejnerů Dockeru v Azure Container Service
 

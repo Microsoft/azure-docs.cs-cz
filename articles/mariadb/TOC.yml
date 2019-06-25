@@ -59,12 +59,20 @@
           href: concepts-business-continuity.md
         - name: Zálohování a obnovení
           href: concepts-backup.md
-    - name: Monitorování
+    - name: Monitorování a ladění
       items:
         - name: Monitorování
           href: concepts-monitoring.md
-        - name: Protokoly serveru
+        - name: Protokoly pomalých dotazů
           href: concepts-server-logs.md
+        - name: Protokoly auditu
+          href: concepts-audit-logs.md
+        - name: Úložiště dotazů
+          href: concepts-query-store.md
+        - name: Query Performance Insight
+          href: concepts-query-performance-insight.md
+        - name: Doporučení k výkonu
+          href: concepts-performance-recommendations.md
     - name: Vývoj
       items:
         - name: Kompatibilita ovladačů a nástrojů
@@ -75,6 +83,8 @@
       items:
         - name: Replikace příchozích dat
           href: concepts-data-in-replication.md
+        - name: Čtení replik
+          href: concepts-read-replicas.md
 - name: Návody
   items:
     - name: Pravidla brány firewall
@@ -113,10 +123,16 @@
           href: howto-auto-grow-storage-portal.md
     - name: Přístup k protokolům serveru
       items:
-        - name: portál Azure
-          href: howto-configure-server-logs-portal.md
-        - name: Azure CLI
-          href: howto-configure-server-logs-cli.md
+        - name: Protokoly pomalých dotazů
+          items:
+            - name: portál Azure
+              href: howto-configure-server-logs-portal.md
+            - name: Azure CLI
+              href: howto-configure-server-logs-cli.md
+        - name: Protokoly auditu
+          items:
+            - name: portál Azure
+              href: howto-configure-audit-logs-portal.md
     - name: Monitorování
       items:
         - name: Vytváření upozornění na metriky
@@ -125,6 +141,8 @@
       items:
         - name: Konfigurace replikace příchozích dat
           href: howto-data-in-replication.md
+        - name: Vytváření replik pro čtení – Azure Portal
+          href: howto-read-replicas-portal.md
     - name: Řešení potíží
       items:
         - name: Řešení chyb připojení

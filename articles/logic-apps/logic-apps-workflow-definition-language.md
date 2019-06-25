@@ -10,10 +10,10 @@ ms.reviewer: klam, LADocs
 ms.topic: reference
 ms.date: 05/13/2019
 ms.openlocfilehash: 3b0ad33ea6348f24079b3c88f972437244c0bc93
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65596761"
 ---
 # <a name="schema-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Referenční dokumentace schématu pro jazyk pro definování pracovních postupů v Azure Logic Apps
@@ -52,7 +52,7 @@ Tady je základní strukturu pro definici pracovního postupu:
 
 <a name="triggers-actions"></a>
 
-## <a name="triggers-and-actions"></a>Aktivační události a akce
+## <a name="triggers-and-actions"></a>Triggery a akce
 
 V definici pracovního postupu `triggers` a `actions` oddíly definovat volání, ke kterým dochází při provádění pracovního postupu. Syntaxe a další informace o těchto částech najdete v tématu [triggerů pracovního postupu a akce](../logic-apps/logic-apps-workflow-actions-triggers.md).
 
@@ -79,7 +79,7 @@ Tady je obecnou strukturu pro definici výstupu:
 | Atribut | Požaduje se | Typ | Popis |
 |-----------|----------|------|-------------|
 | <*key-name*> | Ano | String | Název klíče pro výstup návratová hodnota |
-| <*key-type*> | Ano | int, float, string, securestring, bool, pole, objekt JSON | Typ výstupu vracené hodnoty |
+| <*key-type*> | Ano | int, float, string, securestring, bool, array, objekt JSON | Typ výstupu vracené hodnoty |
 | <*key-value*> | Ano | Stejné jako <*typ klíče*> | Návratová hodnota výstupu |
 |||||
 
@@ -110,9 +110,9 @@ Tady je obecnou strukturu pro definici parametru:
 
 | Atribut | Požaduje se | Typ | Popis |
 |-----------|----------|------|-------------|
-| <*Typ parametru*> | Ano | int, float, string, securestring, bool, pole, objekt JSON, secureobject <p><p>**Poznámka:** Pro všechna hesla, klíče a tajné klíče, použijte `securestring` a `secureobject` typy, protože `GET` operace nevrací těchto typů. Další informace o zabezpečení parametry najdete v tématu [zabezpečení aplikací logiky](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters) | Typ parametru |
-| <*výchozí hodnoty parametrů*> | Ano | Stejné jako `type` | Výchozí hodnota parametru, pokud není zadána žádná hodnota, když vytvoří instanci pracovního postupu |
-| <*array-with-permitted-parameter-values*> | Ne | Pole | Pole s hodnotami, které přijímají parametr |
+| <*parameter-type*> | Ano | int, float, string, securestring, bool, array, objekt JSON, secureobject <p><p>**Poznámka:** Pro všechna hesla, klíče a tajné klíče, použijte `securestring` a `secureobject` typy, protože `GET` operace nevrací těchto typů. Další informace o zabezpečení parametry najdete v tématu [zabezpečení aplikací logiky](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters) | Typ parametru |
+| <*default-parameter-values*> | Ano | Stejné jako `type` | Výchozí hodnota parametru, pokud není zadána žádná hodnota, když vytvoří instanci pracovního postupu |
+| <*array-with-permitted-parameter-values*> | Ne | Array | Pole s hodnotami, které přijímají parametr |
 | `metadata` | Ne | JSON – objekt | Další parametr podrobnosti, například název nebo čitelný popis pro svou aplikaci logiky nebo toku nebo dat doby návrhu použít Visual Studio nebo jinými nástroji |
 ||||
 

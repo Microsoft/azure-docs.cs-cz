@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: bc244ecb62655d1e95046fb0eb8548fdacdcc2a1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4d002a82e3968e0462e5f6e775ec147669c01b0d
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61478585"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147953"
 ---
 # <a name="azure-importexport-system-requirements"></a>Požadavky na systém Azure Import/Export
 
@@ -41,7 +41,7 @@ Pro přípravu pevných disků pomocí nástroje WAImportExport následující *
 
 Služba Import/Export Azure podporuje následující typy účtů úložiště:
 
-- V2 úložiště účty pro obecné účely (doporučeno pro většinu scénářů)
+- Účty úložiště standard pro obecné účely v2 (doporučeno pro většinu scénářů)
 - Účty služby Blob Storage
 - Obecné účely v1 úložiště účtů (nasazení Classic nebo Azure Resource Manageru), 
 

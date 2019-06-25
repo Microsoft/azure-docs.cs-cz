@@ -8,10 +8,10 @@ ms.date: 05/21/2019
 ms.author: rimman
 ms.reviewer: sngun
 ms.openlocfilehash: a097539e51aa2a2130dead236d553d60f2ebb89d
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65965633"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Vysvětlení faktury za Azure Cosmos DB
@@ -96,8 +96,8 @@ Předpokládejme, že máte kontejner služby Azure Cosmos v oblasti západní U
 
 |**Položka** |**Využití (měsíc)** |**Frekvence** |**Měsíční náklady** |
 |---------|---------|---------|-------|
-|Faktura za propustnost za kontejner v oblasti Západní USA      | 10 tisíc RU/s * 24 * 30    |0.008 za 100 RU/s za hodinu   |$576|
-|Faktura za propustnost za 3 další oblasti: Východní USA, Severní Evropa a Východní Asie       | 3 * 10 tisíc RU/s * 24 * 30    |0.008 za 100 RU/s za hodinu  |$1,728|
+|Faktura za propustnost za kontejner v oblasti Západní USA      | 10 tisíc RU/s * 24 * 30    |0\.008 za 100 RU/s za hodinu   |$576|
+|Faktura za propustnost za 3 další oblasti: Východní USA, Severní Evropa a Východní Asie       | 3 * 10 tisíc RU/s * 24 * 30    |0\.008 za 100 RU/s za hodinu  |$1,728|
 |Faktura za úložiště za kontejner v oblasti Západní USA      | 250 GB    |$ 0,25/GB  |$62.50|
 |Faktura za úložiště za 3 další oblasti: Východní USA, Severní Evropa a Východní Asie      | 3 * 250 GB    |$ 0,25/GB  |$187.50|
 |**Celkem**     |     |  |**$2,554**|
@@ -214,7 +214,7 @@ Uvažujme jiný příklad, ve které chcete proaktivně přibližnou výši dř�
 |----|----|----|----|
 |Typ operace| Počet požadavků za sekundu| Střední RU nebo žádosti| RU potřeby|
 |Zápis| 100 | 5 | 500|
-|Číst| 400| 1| 400|
+|Čtení| 400| 1| 400|
 
 Celkový počet RU za sekundu: 500 + 400 = 900 hodinové náklady: 900/100 * $0.008 = $0.072 očekávané měsíční poplatek za propustnost (za předpokladu, že nabídka 31 dní): $0.072 * 24 * 31 = $53.57
 
@@ -238,7 +238,7 @@ Vaše Celková fakturovaná částka (bez rezervované kapacity) by (předpoklá
 |----|----|----|----|----|
 |USA – východ|$0.008 |50 K|$4|$2,880 |
 |Japonsko – východ|$0.009 |50 K| $4.50 |$3,240 |
-|celkem|||$8.50|$6,120 |
+|Celkem|||$8.50|$6,120 |
 
 Pojďme se podívat, že jste zakoupili rezervované kapacity místo. Můžete si koupit rezervované kapacity pro 100 tisíc RU/s za cenu 56,064 po dobu jednoho roku (na 20 % sleva) nebo 6.40 $ za hodinu. Podívejte se na cenách záložní kapacitu [stránce s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/)).  
 
@@ -253,7 +253,7 @@ Efektivně pořízeného je kredit ve výši na 8 USD za hodinu za 100 tisíc RU
 |USA – východ|$0.008 |50 K|$4|$2,880 |
 |Japonsko – východ|$0.009 |50 K| $4.50 |$3,240 |
 |||Průběžné platby|$8.50|$6120|
-|Zakoupená záložní kapacita|0.0064 (20 % sleva) |100 RU/s nebo předem zakoupené kapacitě na 8 USD |-$8|-$5,760 |
+|Zakoupená záložní kapacita|0\.0064 (20 % sleva) |100 RU/s nebo předem zakoupené kapacitě na 8 USD |-$8|-$5,760 |
 |Částka před slevou|||$0.50 |$360 |
 
 ## <a name="next-steps"></a>Další kroky

@@ -9,10 +9,10 @@ ms.date: 04/10/2019
 ms.author: absha
 ms.custom: mvc
 ms.openlocfilehash: e144214a58f9fe383cf4edd878554792d9d6a6f9
-ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64947170"
 ---
 # <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-portal"></a>Přepište hlaviček žádostí a odpovědí HTTP pomocí Azure Application Gateway – Azure portal
@@ -97,7 +97,7 @@ V tomto příkladu upravíme adresy URL přesměrování pomocí přepsání hla
 
    - V části **malá a velká písmena**vyberte **ne**.
 
-   - V **operátor** seznamu vyberte **rovná se (=)**.
+   - V **operátor** seznamu vyberte **rovná se (=)** .
 
    - Zadejte vzorek regulárního výrazu. V tomto příkladu použijeme vzor `(https?):\/\/.*azurewebsites\.net(.*)$`.
 

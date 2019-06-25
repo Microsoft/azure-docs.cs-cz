@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: spelluru
 ms.openlocfilehash: 5b5c973a8daa8776efb0909092c569ea46902265
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66307314"
 ---
 # <a name="server-side-geo-disaster-recovery-in-azure-event-grid"></a>Na straně serveru geografického zotavení po havárii ve službě Azure Event Grid
@@ -26,7 +26,7 @@ Automatické převzetí služeb při selhání služby Event Grid má jiný rpo 
 
 ## <a name="recovery-point-objective-rpo"></a>Cíl bodu obnovení (RPO)
 - **Cíl bodu obnovení metadat**: nula minut. Kdykoli se prostředek vytvoří ve službě Event Grid, se okamžitě replikuje napříč oblastmi. Pokud dojde k selhání dojde ke ztrátě žádná metadata.
-- **Data cíle bodu obnovení**: Pokud váš systém je v pořádku a zachycena na existující provoz v době regionální převzetí služeb při selhání, cíle bodu obnovení pro události je asi 5 minut.
+- **Data cíle bodu obnovení**: Pokud je váš systém v pořádku a zachytil existující provoz v době, kdy došlo k místnímu převzetí služeb při selhání, cíl bodu obnovení pro události je přibližně 5 minut.
 
 ## <a name="recovery-time-objective-rto"></a>Plánovaná doba obnovení (RTO)
 - **Metadata RTO**: Ale obecně to se stane mnohem rychleji, do 60 minut, začne přijímat volání vytvoření/aktualizace/odstranění pro témata a odběry služby Event Grid.

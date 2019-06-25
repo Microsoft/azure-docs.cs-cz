@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 764fca8d3cb4cd9c40d7880043637f89ef1a8578
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 4bf931b19b7490a94f30afde49038cdc7573fab3
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66755377"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67302251"
 ---
 # <a name="how-to-schedule-indexers-for-azure-search"></a>Jak naplánovat indexování pro službu Azure Search
 Indexer normálně spouští jednou, ihned po jeho vytvoření. Můžete ho znovu spustit na vyžádání pomocí portálu, rozhraní REST API nebo .NET SDK. Můžete také nakonfigurovat indexer pravidelné spouštění podle plánu.
@@ -43,6 +43,9 @@ Zvažte následující příklad to lze provést konkrétnější. Předpokláde
 * Dojde k prvnímu spuštění indexeru začíná na nebo okolo 1 dne. května 2019 v 8:00:00 UTC. Předpokládejme, že toto spuštění trvá 20 minut (nebo vždy menší než 1 hodina).
 * Spuštění druhého začíná na nebo okolo 1 dne. května 2019 9:00:00 UTC. Předpokládejme, že toto spuštění trvá 70 minut – více než jedna hodina – a to se nikdy nedokončí až do 10:10:00 UTC.
 * Třetí spuštění je naplánované spuštění v 10:00:00 UTC, ale v tuto chvíli je stále spuštěna předchozích spuštění. To naplánované spuštění se pak přeskočí. Další spuštění indexeru začnou účtovat až 11:00 AM UTC.
+
+> [!NOTE]
+> Pokud indexer je nastavený na určité plánu, ale opakovaně selže u stejného dokumentu tytéž pokaždé, když ji spustí, začne indexeru spuštěný na méně častá intervalu (až maximálního počtu alespoň jednou za 24 hodin) až do jeho úspěšně provede aga průběh v.  Pokud si myslíte, že je všechno, co vyřešili problém, která je příčinou indexeru zaseknout v určitém bodě, můžete provést na spuštění vyžádání indexeru, a pokud, který úspěšně provede průběh, indexeru se vrátí do jeho nastavit interval plán znovu.
 
 <a name="portal"></a>
 

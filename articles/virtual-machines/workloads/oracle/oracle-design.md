@@ -15,18 +15,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: c5a76b9cee8fd6eb09ee4d24c1380202fd17cc6d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1f808161087dff614ef83aacc606501bce96d3eb
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60836240"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67155138"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Návrh a implementace databáze Oracle v Azure
 
 ## <a name="assumptions"></a>Předpoklady
 
 - Plánování migrace z místní databáze Oracle do Azure.
+- Máte [balíčku diagnostiky](https://docs.oracle.com/cd/E11857_01/license.111/e11987/database_management.htm) pro Oracle Database, které pokud chcete migrovat
 - Pochopení různých metrik máte v sestavách Oracle AWR.
 - Máte znalosti směrný plán výkonu aplikace a využití platformy.
 
@@ -72,11 +73,11 @@ Existují čtyři potenciální oblasti, které můžete ladit ke zlepšení vý
 
 ### <a name="generate-an-awr-report"></a>Generování sestavy AWR
 
-Pokud máte existující databázi Oracle a plánujete migrovat do Azure, máte několik možností. Můžete spustit sestavy Oracle AWR a získat metriky (vstupně-výstupních operací, MB/s, GiBs a tak dále). Potom vyberte virtuální počítač na základě metrik, které jste shromáždili. Nebo můžete kontaktovat infrastruktury týmem pro získání podobné informace.
+Pokud máte existující databázi Oracle a plánujete migrovat do Azure, máte několik možností. Pokud máte [balíčku diagnostiky](https://www.oracle.com/technetwork/oem/pdf/511880.pdf) pro vaše instance Oracle, můžete spustit sestavu Oracle AWR získat metriky (vstupně-výstupních operací, MB/s, GiBs a tak dále). Potom vyberte virtuální počítač na základě metrik, které jste shromáždili. Nebo můžete kontaktovat infrastruktury týmem pro získání podobné informace.
 
 Můžete zvážit spouštění sestavy AWR během pravidelné a špičku úloh, abyste mohli porovnat. Na základě těchto sestav, můžete velikost virtuálních počítačů na základě průměrné zatížení nebo maximálního zatížení.
 
-Tady je příklad toho, jak vygenerovat sestavu AWR:
+Tady je příklad toho, jak vygenerovat sestavu AWR (Generovat AWR sestav pomocí správce Oracle Enterprise, pokud vaše aktuální instalace obsahuje):
 
 ```bash
 $ sqlplus / as sysdba
@@ -143,6 +144,10 @@ Podle potřeby šířky pásma sítě, jsou různé typy brány můžete vybíra
 
 - Latence sítě vyšší ve srovnání s místním nasazením. Omezení sítě round zkracuje dobu odezvy může výrazně zlepšit výkon.
 - Pokud chcete zkrátit dobu odezvy, konsolidovat aplikace, které mají vysokou transakce nebo "příliš upovídaným" aplikací na stejný virtuální počítač.
+- Použijte virtuální počítače s [Akcelerovanými síťovými službami](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli) pro lepší výkon sítě.
+- U určitých Linux distrubutions, zvažte povolení [podpora uvolnění dočasné paměti/UNMAP](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm#trimunmap-support).
+- Nainstalujte [Oracle Enterprise Manager](https://www.oracle.com/technetwork/oem/enterprise-manager/overview/index.html) na samostatném virtuálním počítači.
+- Velké stránky nejsou povolené v linuxu ve výchozím nastavení. Zvažte povolení velké stránky a nastavte `use_large_pages = ONLY ` v databázi Oracle. To může pomoci zvýšit výkon. Další informace najdete [tady](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/refrn/USE_LARGE_PAGES.html#GUID-1B0F4D27-8222-439E-A01D-E50758C88390).
 
 ### <a name="disk-types-and-configurations"></a>Typy disků a konfigurace
 
@@ -183,6 +188,7 @@ Jakmile budete mít jasnou představu o vstupně-výstupní požadavky, můžete
 - Používejte kompresi dat ke snížení vstupně-výstupních operací (pro data a indexů).
 - Samostatné protokoly znovu, systém a podmínky a zpět TS na samostatné datové disky.
 - Neumisťujte žádných souborů aplikací na výchozí disky operačního systému (/ dev/sda). Tyto disky nejsou optimalizovány pro virtuální počítač rychlé spuštění a jejich nemusí poskytnout dostatečný výkon pro vaše aplikace.
+- Pokud používáte virtuální počítače řady M-Series ve službě storage úrovně Premium, umožňují [akcelerátorem zápisu](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator) znovu na disku pro protokoly.
 
 ### <a name="disk-cache-settings"></a>Nastavení mezipaměti disku
 
@@ -190,7 +196,7 @@ Existují tři možnosti pro použití mezipaměti u hostitele:
 
 - *Jen pro čtení*: Všechny požadavky jsou ukládány do mezipaměti pro budoucí čtení. Všechny zápisy jsou trvalé přímo do Azure Blob storage.
 
-- *Read-write*: Toto je "čtení napřed" algoritmu. Čtení a zápisu jsou uložené v mezipaměti pro budoucí čtení. Zápisy non přímého zápisu jsou trvalé nejprve do místní mezipaměti. Pro SQL Server zůstávají zápisy do služby Azure Storage, protože používá přímého zápisu. Také poskytuje nejnižší latenci disku pro malé úlohy.
+- *ReadWrite*: Toto je "čtení napřed" algoritmu. Čtení a zápisu jsou uložené v mezipaměti pro budoucí čtení. Zápisy non přímého zápisu jsou trvalé nejprve do místní mezipaměti. Také poskytuje nejnižší latenci disku pro malé úlohy. Použití mezipaměti ReadWrite do aplikace, která nezpracovává uchování požadovaná data může způsobit ztrátu dat, pokud dojde k chybě virtuální počítač.
 
 - *Žádný* (zakázáno): Když použijete tuto možnost, můžete obejít mezipaměť. Všechna data je převedena na disk a ukládají do Azure Storage. Tato metoda nabízí nejvyšší sazba vstupně-výstupních operací pro úlohy náročné na vstupně-výstupních operací. Také je potřeba vzít v úvahu "transakční náklady".
 
@@ -205,7 +211,6 @@ Pro maximalizaci propustnosti, doporučujeme začít s **žádný** pro použit�
 - Pro DATA, použijte **žádný** pro ukládání do mezipaměti. Ale pokud vaše databáze je jen pro čtení nebo pro intenzivní čtení, použijte **jen pro čtení** ukládání do mezipaměti.
 
 Po uložení nastavení disku dat nelze změnit nastavení mezipaměti hostitele, není-li odpojit jednotku na úrovni operačního systému a znovu ho připojte po provedení změny.
-
 
 ## <a name="security"></a>Zabezpečení
 

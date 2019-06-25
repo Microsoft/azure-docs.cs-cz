@@ -8,14 +8,13 @@ manager: jeconnoc
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
-origin.date: 02/18/2019
-ms.date: 03/20/2019
-ms.author: v-junlch
+ms.date: 02/18/2019
+ms.author: cshoe
 ms.openlocfilehash: 0c1dbbae5e4be965f195b5ea4fc88b1bc5fb4f87
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61437867"
 ---
 # <a name="azure-functions-binding-expression-patterns"></a>Služba Azure Functions vazby vzory výrazů
@@ -314,5 +313,3 @@ V jazyce C# a jinými jazyky rozhraní .NET, můžete použít vzoru imperativn�
 ## <a name="next-steps"></a>Další postup
 > [!div class="nextstepaction"]
 > [Používat návratovou hodnotu funkce Azure](./functions-bindings-return-value.md)
-
-<!-- Update_Description: link update -->

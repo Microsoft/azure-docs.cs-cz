@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-pawal
-ms.openlocfilehash: 973d38413fa39fec1c50b5e9770b6114fa2c4c3d
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 4133cec401723ab103b0b3bfff62eee21b653e2b
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66387518"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67331826"
 ---
 # <a name="translator-text-api-v30"></a>Translator Text API v3.0
 
@@ -31,20 +31,20 @@ Verze 3 rozhraní Translator Text API poskytuje moderní webové API založené 
 
 ## <a name="base-urls"></a>Základní adresy URL
 
-Microsoft Translator je provádět z více umístění datového centra. Aktuálně jsou umístěny v 6 [oblastí Azure](https://azure.microsoft.com/global-infrastructure/regions):
+Microsoft Translator je provádět z více umístění datového centra. Aktuálně jsou umístěny v 6 [zeměpisných oblastech Azure](https://azure.microsoft.com/global-infrastructure/regions):
 
 * **Jižní Americe:** Západní USA 2 a střed USA – západ 
 * **Asie a Tichomoří:** Jihovýchodní Asie a Korea – jih
 * **Evropa:** Severní Evropa a západní Evropa
 
-Požadavky na rozhraní Microsoft Translator Text API jsou ve většině případů zpracovat datacenter, která je nejblíž k původu žádosti. V případě datacenter selhání může být žádost směrována mimo oblast.
+Požadavky na rozhraní Microsoft Translator Text API jsou ve většině případů zpracovat datacenter, která je nejblíž k původu žádosti. V případě datacenter selhání může být žádost směrována mimo Azure zeměpisné oblasti.
 
-Vynutit požadavek na ošetřit konkrétní datové centrum, změňte globální koncový bod rozhraní API požadavek na požadovanou místní koncový bod:
+Pokud chcete vynutit požadavek na zpracovat určité zeměpisné oblasti Azure, změňte globální koncový bod v požadavku rozhraní API na požadovanou místní koncový bod:
 
-|Popis|Oblast|Základní adresa URL|
+|Popis|Zeměpisná oblast Azure|Základní adresa URL|
 |:--|:--|:--|
-|Azure|Globální|  api.cognitive.microsofttranslator.com|
-|Azure|Severní Amerika|   api-nam.cognitive.microsofttranslator.com|
+|Azure|Globální (– neregionální)|   api.cognitive.microsofttranslator.com|
+|Azure|Spojené státy|   api-nam.cognitive.microsofttranslator.com|
 |Azure|Evropa|  api-eur.cognitive.microsofttranslator.com|
 |Azure|Asie a Tichomoří|    api-apc.cognitive.microsofttranslator.com|
 
@@ -154,6 +154,7 @@ Kód chyby je, chybu zařadit 6místným číselným číslo kombinování stavo
 | 400075| Kombinace jazyka párování a kategorii není platné.|
 | 400077| Byla překročena maximální požadavek velikost. Zobrazení [omezení počtu požadavků](../request-limits.md).|
 | 400079| Vlastní systém požadovaný pro překlad mezi z a do jazyka neexistuje.|
+| 400080| Přepis není podporována pro jazyk nebo skriptu.|
 | 401000| Požadavek není autorizovaný, protože jsou přihlašovací údaje chybí nebo je neplatný.|
 | 401015| "Zadané přihlašovací údaje jsou pro rozhraní API pro rozpoznávání řeči. Tato žádost vyžaduje přihlašovací údaje pro rozhraní Text API. Použijte prosím předplatné Translator Text API."|
 | 403000| Operace není povolena.|

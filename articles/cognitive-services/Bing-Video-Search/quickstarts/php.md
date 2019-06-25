@@ -10,19 +10,19 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 01/31/2019
 ms.author: aahi
-ms.openlocfilehash: 50c39594aeb014860d25b2f2cc791ebfec14b572
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fb02e569cb764405abc1e69f3ca0c8c3710860ed
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61473327"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "67134933"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-php"></a>Rychlý start: Hledání videí pomocí API REST pro vyhledávání videí Bingu a PHP
 
 V tomto rychlém startu můžete provést první volání do rozhraní API Bingu pro vyhledávání Video a zobrazení výsledků na vyhledávacím z odpovědi JSON. Tato jednoduchá aplikace JavaScript odešle dotaz pro vyhledávání videí HTTP do rozhraní API a zobrazí odpovědi. Zatímco tato aplikace je napsána v jazyce JavaScript a Node.js používá, je rozhraní API RESTful webová služba, která je kompatibilní s Většina programovacích jazyků.
 Ukázka kódu byla napsaná tak, aby fungovala v PHP 5.6.
 
-Technické podrobnosti o rozhraních API najdete v [referenci k rozhraní API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference).
+Technické podrobnosti o rozhraních API najdete v [referenci k rozhraní API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -32,7 +32,7 @@ Technické podrobnosti o rozhraních API najdete v [referenci k rozhraní API](h
 
 ## <a name="running-the-application"></a>Spouštění aplikace.
 
-[Rozhraní API pro vyhledávání videí Bingu](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference) vrátí výsledky videí z vyhledávacího webu Bing.
+[Rozhraní API pro vyhledávání videí Bingu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) vrátí výsledky videí z vyhledávacího webu Bing.
 
 1. Ujistěte se, že je v souboru `php.ini` povolena podpora zabezpečeného protokolu HTTP, jak je to popsáno v komentáři kódu.
 2. V oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt PHP.

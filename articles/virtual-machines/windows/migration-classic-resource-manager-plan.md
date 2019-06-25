@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: b8bb3db58538263ea60520d4537a76c6ebb6abf7
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d3e1995682569e5ef7b356bd85ad6c7dba6cdbdb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58112513"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64689494"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Plánování migrace prostředků IaaS z modelu classic na Azure Resource Manager
 Zatímco Azure Resource Manager nabízí spoustu skvělých funkcí, je velmi důležité naplánovat, aby to bylo jistě hladký chod průběhu migrace. Plánování zbavuje čas zajistí, že není narazíte na problémy při provádění aktivity migrace.
@@ -116,7 +116,7 @@ Následující byly problémy zjištěné v mnoha větší migrace. Nejedná se 
 
 - **Nasazení webové nebo pracovní Role** -obsahující webové a pracovní role Cloud Services nejde migrovat na Azure Resource Manager. Webové a pracovní role musí být nejprve odebrány z virtuální sítě, před zahájením migrace.  Typické řešení je můžete data přesunout instance webové nebo pracovní role na samostatné klasická virtuální síť, která je také propojena k okruhu ExpressRoute, nebo migrovat kód novější PaaS App Services (této diskuse je nad rámec tohoto dokumentu). V předchozí případ znovu nasadit, vytvořit novou virtuální síť modelu Classic, přesunutí nebo opětovného nasazení webové nebo pracovní role, které chcete tuto novou virtuální síť a pak odstranit nasazení z virtuální sítě, který se přesouvá. Žádné požadované změny kódu. Nové [partnerské vztahy virtuálních sítí](../../virtual-network/virtual-network-peering-overview.md) funkce slouží k navázání partnerského vztahu mezi společně klasickou virtuální síť obsahující webové nebo pracovní role a dalším virtuálním sítím ve stejné oblasti Azure, jako je například virtuální síť se migrovat (**po dokončení migrace virtuální sítě jako partnerské virtuální sítě se nedají migrovat**), proto poskytuje stejné funkce bez ztráty výkonu a žádné snížení latence nebo šířka pásma. Zadaný přidání [partnerské vztahy virtuálních sítí](../../virtual-network/virtual-network-peering-overview.md), můžete nyní snadno minimalizovat nasazení webové nebo pracovní role a nedochází k blokování migrace do Azure Resource Manageru.
 
-- **Azure Resource Manageru kvóty** -oblasti Azure, které mají samostatné kvóty a omezení pro Classic a Azure Resource Manageru. I když ve scénáři migrace není spotřebovávanou nový hardware *(jsme už prohození existujících virtuálních počítačů z modelu Classic na Azure Resource Manager)*, stále potřebují být v místě s dostatečnou kapacitou před kvóty správce prostředků Azure migraci můžete začít. Tady jsou hlavní omezení, které jsme viděli způsobit problémy.  Otevření lístku podpory kvótu zvýšit limity.
+- **Azure Resource Manageru kvóty** -oblasti Azure, které mají samostatné kvóty a omezení pro Classic a Azure Resource Manageru. I když ve scénáři migrace není spotřebovávanou nový hardware *(jsme už prohození existujících virtuálních počítačů z modelu Classic na Azure Resource Manager)* , stále potřebují být v místě s dostatečnou kapacitou před kvóty správce prostředků Azure migraci můžete začít. Tady jsou hlavní omezení, které jsme viděli způsobit problémy.  Otevření lístku podpory kvótu zvýšit limity.
 
     > [!NOTE]
     > Tato omezení musí být vyvolána ve stejné oblasti jako vaše aktuální prostředí k migraci.
@@ -132,7 +132,7 @@ Následující byly problémy zjištěné v mnoha větší migrace. Nejedná se 
 
     Můžete zkontrolovat aktuální kvóty správce prostředků Azure pomocí následujících příkazů v nejnovější verzi Azure Powershellu.
     
-    [!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+    [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
     **COMPUTE** *(počet jader, sady dostupnosti)*
 

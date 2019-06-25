@@ -4,12 +4,12 @@ ms.service: container-service
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
-ms.openlocfilehash: 2ed74a4ba19af3a441bcf26a48890f033e6c365f
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: a4af53e035929a44f74a95b8e9897cb1dc0c6d8e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66151679"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66814747"
 ---
 [!INCLUDE [ACS deprecation](container-service-deprecation.md)]
 
@@ -29,7 +29,7 @@ Počet uzlů agentů v clusteru DC/OS, Docker Swarm nebo Kubernetes můžete zm�
 
 ## <a name="scale-with-the-azure-cli"></a>Škálování pomocí Azure CLI
 
-Ujistěte se, že jste [nainstalované](/cli/azure/install-az-cli2) nejnovější rozhraní příkazového řádku Azure a přihlášení k účtu Azure (`az login`).
+[Instalace rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli) a přihlaste se k účtu Azure pomocí `az login`.
 
 ### <a name="see-the-current-agent-count"></a>Zobrazení aktuálního počtu agentů
 Pokud chcete zobrazit aktuální počet agentů v clusteru, spusťte příkaz `az acs show`. Zobrazí se konfigurace clusteru. Například následující příkaz zobrazí konfiguraci služby kontejneru `containerservice-myACSName` ve skupině prostředků `myResourceGroup`:

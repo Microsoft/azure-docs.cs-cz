@@ -7,23 +7,23 @@ ms.author: jeanb
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/07/2018
-ms.openlocfilehash: dfb34f8c0fca792618860e0a8d5a1bf1736f3611
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.date: 06/11/2019
+ms.openlocfilehash: 0c74c0f85ea1851bc50ee20dbde9336f4f7b757a
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65416051"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164390"
 ---
-# <a name="machine-learning-integration-in-stream-analytics-preview"></a>Machine Learning integrace ve službě Stream Analytics (Náhled)
-Stream Analytics podporuje uživatelem definované funkce, které vyžadují ke koncovým bodům Azure Machine Learning. Podpora rozhraní REST API pro tuto funkci je podrobně popsaná v [knihovny rozhraní REST API pro Stream Analytics](https://msdn.microsoft.com/library/azure/dn835031.aspx). Tento článek obsahuje doplňující informace potřebné pro úspěšné implementaci této funkce ve Stream Analytics. Kurz také se zveřejní a je k dispozici [tady](stream-analytics-machine-learning-integration-tutorial.md).
+# <a name="azure-machine-learning-studio-integration-in-stream-analytics-preview"></a>Integrace služby Azure Machine Learning Studio ve službě Stream Analytics (Náhled)
+Stream Analytics podporuje uživatelem definované funkce, které vyžadují ke koncovým bodům Azure Machine Learning Studio. Podpora rozhraní REST API pro tuto funkci je podrobně popsaná v [knihovny rozhraní REST API pro Stream Analytics](https://msdn.microsoft.com/library/azure/dn835031.aspx). Tento článek obsahuje doplňující informace potřebné pro úspěšné implementaci této funkce ve Stream Analytics. Kurz také se zveřejní a je k dispozici [tady](stream-analytics-machine-learning-integration-tutorial.md).
 
-## <a name="overview-azure-machine-learning-terminology"></a>Přehled: Terminologie služby Azure Machine Learning
-Microsoft Azure Machine Learning poskytuje nástroj pro spolupráci, přetáhněte myší, které můžete použít k sestavení, testovat a nasazovat řešení prediktivní analýzy s vašimi daty. Tento nástroj je volána *Azure Machine Learning Studio*. Sady studio se používá k interakci s prostředky Machine Learning a snadno vytvářet, testovat a iterovat návrh. Níže jsou tyto prostředky a jejich definice.
+## <a name="overview-azure-machine-learning-studio-terminology"></a>Přehled: Terminologie služby Azure Machine Learning Studio
+Microsoft Azure Machine Learning Studio poskytuje nástroj pro spolupráci, přetáhněte myší, které můžete použít k sestavení, testovat a nasazovat řešení prediktivní analýzy s vašimi daty. Tento nástroj je volána *Azure Machine Learning Studio*. Sady studio se používá k interakci s prostředky Machine Learning a snadno vytvářet, testovat a iterovat návrh. Níže jsou tyto prostředky a jejich definice.
 
 * **Pracovní prostor**: *Pracovní prostor* je kontejner, který obsahuje všechny ostatní prostředky služby Machine Learning společně v kontejneru pro správu a řízení.
 * **Experiment**: *Experimenty* vytvářejí datovým vědcům využívat datových sad a jejich trénování modelu strojového učení.
-* **Koncový bod**: *Koncové body* se používá jako vstup přijímat funkce, používá model zadaný strojového učení a vrací Vyhodnocená výstup objektu Azure Machine Learning.
+* **Koncový bod**: *Koncové body* jsou Azure Machine Learning Studio objekt použitý k používají funkce jako vstup, použít model zadaný strojového učení a vrací Vyhodnocená výstup.
 * **Webová služba vyhodnocování**: A *vyhodnocování služby typu webservice* je kolekce koncových bodů, jak je uvedeno výše.
 
 Každý koncový bod má rozhraní API pro dávkové spouštění a synchronní zpracování. Stream Analytics používá synchronní zpracování. Název konkrétní služby [požadavku nebo odpovědi služby](../machine-learning/studio/consume-web-services.md) v aplikaci Azure Machine Learning studio.
@@ -42,7 +42,7 @@ Rozhraní REST API můžete nakonfigurovat úlohy pro volání funkce Azure stro
 6. Spuštění úlohy
 
 ## <a name="creating-a-udf-with-basic-properties"></a>Vytváření uživatelem definovanou FUNKCI s základní vlastnosti
-Například následující ukázkový kód vytvoří skalární UDF s názvem *newudf* , která vytvoří vazbu na koncový bod Azure Machine Learning. Všimněte si, že *koncový bod* (identifikátor URI služby) najdete na stránce nápovědy rozhraní API pro zvolený služby a *apiKey* můžete najít na hlavní stránce služeb.
+Například následující ukázkový kód vytvoří skalární UDF s názvem *newudf* , která vytvoří vazbu na koncový bod Azure Machine Learning Studio. Všimněte si, že *koncový bod* (identifikátor URI služby) najdete na stránce nápovědy rozhraní API pro zvolený služby a *apiKey* můžete najít na hlavní stránce služeb.
 
 ```
     PUT : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>?api-version=<apiVersion>
@@ -69,7 +69,7 @@ Text požadavku příkladu:
 ```
 
 ## <a name="call-retrievedefaultdefinition-endpoint-for-default-udf"></a>Volání koncového bodu RetrieveDefaultDefinition pro výchozí hodnotu UDF
-Jakmile se vytvoří kostru UDF je potřeba dokončení definice UDF. Koncový bod RetrieveDefaultDefinition vám pomůže využít vaše výchozí definici pro skalární funkci, která je vázána na koncový bod Azure Machine Learning. Datová část níže vyžaduje, abyste k získání výchozí definice UDF pro skalární funkci, která je vázána na koncový bod Azure Machine Learning. Ji neurčuje skutečný koncový bod, protože již byl poskytnut během požadavek PUT. Stream Analytics volá zadaný v požadavku, pokud ji explicitně poskytuje koncový bod. V opačném případě použije předplatné původně odkazuje. Tady UDF přebírá jediný řetězec, parametr (věta) a vrátí výstup jednoho typu řetězec, což znamená "mínění" popisku pro tuto větu:.
+Jakmile se vytvoří kostru UDF je potřeba dokončení definice UDF. Koncový bod RetrieveDefaultDefinition vám pomůže využít vaše výchozí definici pro skalární funkci, která je vázána na koncový bod Azure Machine Learning Studio. Datová část níže vyžaduje, abyste k získání výchozí definice UDF pro skalární funkci, která je vázána na koncový bod Azure Machine Learning. Ji neurčuje skutečný koncový bod, protože již byl poskytnut během požadavek PUT. Stream Analytics volá zadaný v požadavku, pokud ji explicitně poskytuje koncový bod. V opačném případě použije předplatné původně odkazuje. Tady UDF přebírá jediný řetězec, parametr (věta) a vrátí výstup jednoho typu řetězec, což znamená "mínění" popisku pro tuto větu:.
 
 ```
 POST : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>/RetrieveDefaultDefinition?api-version=<apiVersion>

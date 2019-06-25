@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: spelluru
 ms.openlocfilehash: 76a4c16afc9edef0a88ac9f2892de9738fd30289
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66305059"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Principy událostí filtrování pro předplatná Event gridu
@@ -107,7 +107,7 @@ Veškeré porovnávání řetězců jsou insensitve případ.
 
 Pro události ve schématu služby Event Grid použijte následující hodnoty pro klíč:
 
-* Id
+* ID
 * Téma
 * Subject
 * EventType
@@ -117,7 +117,7 @@ Pro události ve schématu služby Event Grid použijte následující hodnoty p
 Pro události v cloudu události schéma použijte následující hodnoty pro klíč:
 
 * ID události
-* Zdroj
+* source
 * EventType
 * EventTypeVersion
 * Data událostí (např. Data.key1)

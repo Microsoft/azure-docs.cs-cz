@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 05/22/2019
 ms.author: magoedte
 ms.openlocfilehash: 9fa76c9637a6dcdca48bf45e8ee2aa9305a4f64f
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66130459"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines"></a>Pochopení stavu virtuálních počítačů Azure
@@ -65,7 +65,7 @@ Tato část popisuje výchozí stav kritéria definovat za účelem monitorován
 - Stav služby Windows Firewall
 - Stav služby Vzdálená správa Windows
 
-### <a name="linux-vms"></a>Linuxové virtuální počítače
+### <a name="linux-vms"></a>Virtuální počítače s Linuxem
 - Disk – monitorování střední Doba disku/přenos 
 - Disk – monitorování střední Doba disku/čtení 
 - Disk – monitorování střední Doby disku/zápis 
@@ -120,7 +120,7 @@ Při přístupu ke stavu z virtuálního počítače Azure s operačním systém
 
 ### <a name="aggregate-virtual-machine-perspective"></a>Perspektiva agregační virtuálního počítače
 
-Chcete-li zobrazit shromažďování stavu pro všechny virtuální počítače ve skupině prostředků, ze seznamu navigace na portálu vyberte **Azure Monitor** a pak vyberte **virtuálních počítačů (preview)**.  
+Chcete-li zobrazit shromažďování stavu pro všechny virtuální počítače ve skupině prostředků, ze seznamu navigace na portálu vyberte **Azure Monitor** a pak vyberte **virtuálních počítačů (preview)** .  
 
 ![Virtuální počítač statistiky, sledování zobrazení ze služby Azure Monitor](./media/vminsights-health/vminsights-aggregate-health.png)
 
@@ -187,7 +187,7 @@ Stav kritérií stavu je definován pomocí jedné ze čtyř stavů – *kritick
 
 Stav diagnostiky stránka má tři hlavní části:
 
-* Model komponent 
+* Komponenta modelu 
 * Kritéria stavu
 * Změny stavu 
 
@@ -239,7 +239,7 @@ Tři sloupce jsou vzájemně propojena mezi sebou. Když vyberete zjištěné in
 
 ![Příklad výběru sledované instance a výsledky](./media/vminsights-health/health-diagnostics-vm-example-01.png)
 
-V příkladu výše, když vyberete **disku – 1 D:**, je filtrovaná stromu kritéria **Disk - 1 D:**. **Změny stavu** sloupci se zobrazuje změny stavu založené na dostupnosti **disku – 1 D:**. 
+V příkladu výše, když vyberete **disku – 1 D:** , je filtrovaná stromu kritéria **Disk - 1 D:** . **Změny stavu** sloupci se zobrazuje změny stavu založené na dostupnosti **disku – 1 D:** . 
 
 Najdete v článku aktualizovaný stav, můžete aktualizovat stránku diagnostiky stavu kliknutím **aktualizovat** odkaz.  Při aktualizaci stavu kritérium stav podle předem definovaného intervalu dotazování tento úkol vám umožní vyhnout čekání a odráží nejnovější stav.  **Kritéria stavu** je filtr umožňuje určit obor výsledky na základě vybraného stavu - *pořádku*, *upozornění*, *kritický*, *Neznámý*, a *všechny*.  **Poslední aktualizace** čas v pravém horním rohu představuje poslední čas při poslední stránku diagnostiky stavu aktualizace.  
 
@@ -261,7 +261,7 @@ Toto zobrazení můžete filtrovat výběrem hodnoty v rozevíracích nabídek v
 
 |Sloupec |Popis | 
 |-------|------------| 
-|Předplatné |Vyberte předplatné Azure. Pouze výstrahy ve vybraném předplatném se nastavují v zobrazení. | 
+|Předplatné |Vyberte předplatné služby Azure. Pouze výstrahy ve vybraném předplatném se nastavují v zobrazení. | 
 |Skupina prostředků |Výběr jedné skupiny prostředků. V zobrazení jsou zahrnuty pouze výstrahy s cíli ve vybrané skupině prostředků. | 
 |Typ prostředku |Vyberte jeden nebo více typů prostředků. Ve výchozím nastavení pouze výstrahy cíle **virtuálních počítačů** nebude vybrána a zahrnuté v tomto zobrazení. Tento sloupec je k dispozici pouze po zadal skupinu prostředků. | 
 |Prostředek |Vyberte prostředek. V zobrazení jsou zahrnuty pouze výstrahy s tento prostředek jako cíl. Tento sloupec je k dispozici pouze po byl zadán typ prostředku. | 

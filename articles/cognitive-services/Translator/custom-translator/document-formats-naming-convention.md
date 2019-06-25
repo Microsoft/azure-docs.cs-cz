@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: v-pawal
 ms.topic: conceptual
-ms.openlocfilehash: 29b74aeaaae0bcfd5f6ae4a3c38cc00176292899
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 0959be545f541da2f0efd5bd1e8cc209ab5a0996
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66386917"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275425"
 ---
 # <a name="document-formats-and-naming-convention-guidance"></a>Zdokumentujte formátů a pojmenování pokyny konvence
 
@@ -37,7 +37,7 @@ Tato tabulka obsahuje všechny podporované formáty souborů, které vám umož
 
 ## <a name="dictionary-formats"></a>Slovník formátů
 
-Translator vlastní slovníky, podporuje všechny formáty souborů, ty jsou podporovány pro trénovací sada. Pokud používáte Excel slovníku, Zkontrolujte prosím, že první řádek / řádků tabulky by měl být kódech jazyků.
+Translator vlastní slovníky, podporuje všechny formáty souborů, které jsou podporovány pro trénovací sady. Pokud používáte Excel slovníku, první řádek / řádků tabulky by měl být kódech jazyků.
 
 ## <a name="zip-file-formats"></a>Formáty souboru ZIP
 

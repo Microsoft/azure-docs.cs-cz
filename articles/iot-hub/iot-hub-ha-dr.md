@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: rkmanda
 ms.openlocfilehash: 7479d9a230bd28c2ed2e4c8c79ba9301028af36c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60779368"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>IoT Hub vysokou dostupnost a zotavení po havárii
@@ -72,7 +72,7 @@ Microsoft iniciované převzetí služeb při selhání provést microsoftem vý
 
 Velké RTO totiž Microsoft musíte provést operaci převzetí služeb při selhání jménem všech ovlivněných zákazníků v dané oblasti. Pokud používáte méně kritické řešení IoT, které může tolerovat výpadek přibližně za den, je ok můžete zavést závislost na tuto možnost splnit celkové cíle obnovení po havárii pro vaše řešení IoT. Celková doba běhu operations budou plně funkční, jakmile tento proces se aktivuje, je popsaný v části "Doba obnovení".
 
-### <a name="manual-failover-preview"></a>Ruční převzetí služeb při selhání (Preview)
+### <a name="manual-failover-preview"></a>Ruční převzetí služeb při selhání (preview)
 
 Pokud vaše cíle doby provozu firmy nejsou splněné podle RTO, která iniciovala Microsoft poskytuje převzetí služeb při selhání, měli byste zvážit, pomocí ruční převzetí služeb při selhání spustit proces převzetí služeb při selhání, sami. RTO, tato možnost může být kdekoli mezi 10 minut do několika hodin. RTO je aktuálně funkce počet zařízení zaregistrovaný s instancí centra IoT se převzetí služeb při selhání. Můžete očekávat RTO rozbočovače hostování přibližně 100 000 zařízení v ballpark 15 minut. Celková doba běhu operations budou plně funkční, jakmile tento proces se aktivuje, je popsaný v části "Doba obnovení".
 
@@ -125,11 +125,11 @@ Pro zjednodušení tohoto kroku, měli byste použít idempotentní operace. Ide
 
 Tady je přehled HA/DR možnosti uvedené v tomto článku, který může sloužit jako referenční rámec zvolit možnost zprava, který vám vyhovuje řešení.
 
-| Možnost HA/DR | RTO | Cíl bodu obnovení (RPO) | Vyžaduje ruční zásah? | Implementace složitost | Další náklady dopad|
+| Možnost HA/DR | RTO | CÍL BODU OBNOVENÍ | Vyžaduje ruční zásah? | Implementace složitost | Další náklady dopad|
 | --- | --- | --- | --- | --- | --- |
 | Microsoft iniciované převzetí služeb při selhání |2 - 26 hodin.|Přečtěte si výše uvedené tabulce cíle bodu obnovení|Ne|Žádný|Žádný|
 | Ruční převzetí služeb při selhání |10 minut – 2 hodiny|Přečtěte si výše uvedené tabulce cíle bodu obnovení|Ano|Velmi nízké. Potřebujete aktivovat tuto operaci z portálu.|Žádný|
-| Pro různé oblasti HA |< 1 min|Závisí na četnosti replikace vašeho vlastního řešení HA|Ne|Vysoký|1 > x náklady na 1 IoT hub|
+| Pro různé oblasti HA |< 1 min|Závisí na četnosti replikace vašeho vlastního řešení HA|Ne|Vysoká|1 > x náklady na 1 IoT hub|
 
 ## <a name="next-steps"></a>Další postup
 

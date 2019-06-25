@@ -10,10 +10,10 @@ ms.date: 05/03/2019
 ms.author: mhopkins
 ms.subservice: common
 ms.openlocfilehash: df7c14f1ee83015303657f9a0babde3d60c92292
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65209674"
 ---
 # <a name="azure-storage-samples-using-net"></a>Ukázky pro Azure Storage pomocí .NET
@@ -25,11 +25,11 @@ Následující tabulka obsahuje přehled o našem úložišti ukázek a scéná�
 <table style="font-size:90%"><thead><tr><th style="font-size:110%">Koncový bod</th><th style="font-size:110%">Scénář</th><th style="font-size:110%">Vzorový kód</th></tr></thead><tbody> 
 <tr> 
 <td rowspan="16"><b>Objekt blob</b></td>
-<td>Připojit objekt blob</td> 
+<td>Doplňovací objekt Blob</td> 
 <td><a href="https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs#L1144">Začínáme s využitím objektů BLOB</a></td> 
 </tr> 
 <tr> 
-<td>Objekt blob bloku</td>
+<td>Objekt Blob bloku</td>
 <td><a href="https://github.com/Azure-Samples/storage-blobs-dotnet-webapp/blob/master/WebApp-Storage-DotNet/Controllers/HomeController.cs">Azure Blob Storage Fotogalerie webové aplikace</a></td>
 </tr> 
 <tr> 
@@ -73,7 +73,7 @@ Následující tabulka obsahuje přehled o našem úložišti ukázek a scéná�
 <td><a href="https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/GettingStarted.cs">Začínáme s využitím objektů BLOB</a></td>
 </tr> 
 <tr> 
-<td>Objekt blob stránky</td>
+<td>Page Blob</td>
 <td><a href="https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/GettingStarted.cs">Začínáme s využitím objektů BLOB</a></td>
 </tr>
 <tr> 
@@ -160,7 +160,7 @@ Následující tabulka obsahuje přehled o našem úložišti ukázek a scéná�
 </tr> 
 <tr> 
 <td rowspan="7"><b>Tabulka</b></td>
-<td>Vytvořit tabulku</td> 
+<td>Vytvoření tabulky</td> 
 <td><a href="https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114/sourcecode?fileId=123913&pathId=50196262">Správa souběžnosti pomocí služby Azure Storage – ukázková aplikace</a></td> 
 </tr> 
 <tr> 

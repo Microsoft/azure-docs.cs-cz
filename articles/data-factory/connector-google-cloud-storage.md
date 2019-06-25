@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
 ms.openlocfilehash: 9c9a4b41dbb9b9acc2982ae2af1f3a611f9d3beb
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65228274"
 ---
 # <a name="copy-data-from-google-cloud-storage-using-azure-data-factory"></a>Kopírování dat z Google Cloud Storage pomocí Azure Data Factory
@@ -38,7 +38,7 @@ Konkrétně tento konektor Google Cloud Storage podporuje kopírování souborů
 
 Ke zkopírování dat z Google Cloud Storage, ujistěte se, že máte následující oprávnění:
 
-- **Pro spuštění aktivity kopírování:**: `s3:GetObject` a `s3:GetObjectVersion` pro objekt operace.
+- **Pro spuštění aktivity kopírování:** : `s3:GetObject` a `s3:GetObjectVersion` pro objekt operace.
 - **Pro grafické uživatelské rozhraní Data Factory pro vytváření**: `s3:ListAllMyBuckets` a `s3:ListBucket` / `s3:GetBucketLocation` pro operace kontejneru oprávnění kromě u je vyžadováno cesty operací, jako jsou test připojení a procházení a přejděte k souborům. Pokud nechcete, aby pro udělení těchto oprávnění, přeskočit test připojení na stránce pro vytvoření propojené služby a zadejte cestu přímo v nastavení datové sady.
 
 ## <a name="getting-started"></a>Začínáme
@@ -56,7 +56,7 @@ Pro službu Google Cloud Storage. propojený jsou podporovány následující vl
 | type | Vlastnost type musí být nastavená na **AmazonS3**. | Ano |
 | accessKeyId | ID tajný přístupový klíč. Pokud chcete najít přístupový klíč a tajný kód, přejděte na **Google Cloud Storage** > **nastavení** > **Interoperability**. |Ano |
 | secretAccessKey | Vlastního klíče přístupu k tajným klíčům. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
-| serviceUrl | Zadejte vlastní koncový bod S3 jako **`https://storage.googleapis.com`**. | Ano |
+| serviceUrl | Zadejte vlastní koncový bod S3 jako **`https://storage.googleapis.com`** . | Ano |
 | connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. (Pokud je vaše úložiště dat se nachází v privátní síti), můžete použít prostředí Azure Integration Runtime nebo modul Integration Runtime. Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. |Ne |
 
 Zde naleznete příklad:

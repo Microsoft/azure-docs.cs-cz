@@ -9,11 +9,11 @@ ms.date: 05/13/2019
 ms.author: rolyon
 ms.custom: include file
 ms.openlocfilehash: f8576c8486fb25d645eaf67448d2d7e0b9f5071f
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66238216"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67175415"
 ---
 | Resource | Omezení |
 | --- | --- |

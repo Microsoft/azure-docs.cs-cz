@@ -14,10 +14,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 03/06/2019
 ms.openlocfilehash: 2682f98628f3c1cf22a2c3767f52bedbc148fa62
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60723488"
 ---
 # <a name="sql-error-codes-for-sql-database-client-applications-database-connection-errors-and-other-issues"></a>Kódy chyb SQL pro klientské aplikace SQL Database: Chyby připojení databáze a další problémy
@@ -216,9 +216,9 @@ Tyto chyby nespadají do všech předchozích kategorií.
 | 40652 |16 |Nelze přesunout nebo vytvořit server. Předplatné (id předplatného) překročí kvótu serveru. |
 | 40671 |17 |Selhání komunikace mezi bránou a službu správy. Zkuste to prosím znovu později. |
 | 40852 |16 |Nejde otevřít databázi ' %. \*ls na serveru "%. \*ls požadovaný v přihlášení. Přístup k databázi je povolený jenom pomocí povoleno zabezpečení připojovacího řetězce. Chcete-li přistupovat k databázi, upravte připojovací řetězce obsahující zabezpečení na serveru plně kvalifikovaný název domény –.database.windows "Název_serveru".net by měla upravit tak, aby .database "Název_serveru". `secure`. windows.net. |
-| 40914 | 16 | Nejde otevřít server "*[název_serveru]*' požadovaný v přihlášení. Klient není povolen přístup k serveru.<br /><br />Pokud chcete vyřešit, zvažte přidání [pravidlo virtuální sítě](sql-database-vnet-service-endpoint-rule-overview.md). |
-| 45168 |16 |SQL Azure systém pod zátěží a je uvedení horní limit na souběžné operace DB CRUD pro jeden server služby SQL Database (např. vytvoření databáze). Server uvedený v chybové zprávě překročil maximální počet souběžných připojení. Zkuste to znovu později. |
-| 45169 |16 |Systém SQL azure pod zátěží a je uvedení horní limit počtu souběžných server operace CRUD pro v rámci jednoho předplatného (např. vytvoření serveru). Předplatné zadané v chybové zprávě překročil maximální počet souběžných připojení, a žádost byla zamítnuta. Zkuste to znovu později. |
+| 40914 | 16 | Nejde otevřít server " *[název_serveru]* ' požadovaný v přihlášení. Klient není povolen přístup k serveru.<br /><br />Pokud chcete vyřešit, zvažte přidání [pravidlo virtuální sítě](sql-database-vnet-service-endpoint-rule-overview.md). |
+| 45168 |16 |SQL Azure systém pod zátěží a je uvedení horní limit na souběžné operace DB CRUD pro jeden server služby SQL Database (např. vytvoření databáze). Server uvedený v chybové zprávě překročil maximální počet souběžných připojení. Opakujte akci později. |
+| 45169 |16 |Systém SQL azure pod zátěží a je uvedení horní limit počtu souběžných server operace CRUD pro v rámci jednoho předplatného (např. vytvoření serveru). Předplatné zadané v chybové zprávě překročil maximální počet souběžných připojení, a žádost byla zamítnuta. Opakujte akci později. |
 
 ## <a name="next-steps"></a>Další postup
 

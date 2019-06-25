@@ -10,7 +10,7 @@
     - name: Rychlý start
       expanded: true
       items:
-        - name: Inicializace a nákup kapacity
+        - name: Inicializace a zřizování kapacity
           href: quickstart-create-cloudsimple-service.md
         - name: Konfigurace prostředí privátního cloudu
           href: quickstart-create-private-cloud.md
@@ -62,7 +62,7 @@
           href: access-cloudsimple-portal.md
         - name: Správa uzlů
           items:
-            - name: Nákup uzlů
+            - name: Zřizování uzlů
               href: create-nodes.md
         - name: Správa prostředků privátního cloudu
           items:

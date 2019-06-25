@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 04/24/2019
+ms.date: 06/11/2019
 ms.author: spelluru
-ms.openlocfilehash: bdcc4349f84a35b312ecb3ad6205273b62c2e989
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 803fe6eff8804dbd407642386865fe975c8db524
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64722727"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67123278"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Kurz: Nastavení testovacího prostředí v učebně 
 V tomto kurzu nastavíte testovací prostředí v učebně pomocí virtuálních počítačů, které používají studenti v učebně.  
@@ -48,7 +48,7 @@ Vlastník testovacího prostředí můžete přidat ostatním uživatelům **Aut
 
         ![Vytvoření testovacího prostředí v učebně](../media/tutorial-setup-classroom-lab/new-lab-window.png)
 4. Na stránce **Select virtual machine specifications** (Výběr specifikací virtuálních počítačů) proveďte následující kroky:
-    1. Vyberte **velikost** virtuálních počítačů vytvořených v testovacím prostředí. V současné době **malé**, **střední**, **velké**, a **GPU** velikosti jsou povoleny.
+    1. Vyberte **velikost** virtuálních počítačů vytvořených v testovacím prostředí. V současné době **malé**, **střední**, **střední (virtualizace)** , **velké**, a **GPU** velikosti jsou povolené.
     3. Vyberte **image virtuálního počítače**, která se má použít k vytvoření virtuálních počítačů v testovacím prostředí. Pokud vyberete image Linuxu, zobrazí se možnost Povolit připojení ke vzdálené ploše pro něj. Podrobnosti najdete v tématu [povolit připojení ke vzdálené ploše pro Linux](how-to-enable-remote-desktop-linux.md).
     4. Vyberte **Další**.
 
@@ -69,9 +69,11 @@ Vlastník testovacího prostředí můžete přidat ostatním uživatelům **Aut
 
     ![Stránka Configure template (Konfigurace šablony) po dokončení konfigurace](../media/tutorial-setup-classroom-lab/configure-template-after-complete.png)
 8. Na **konfigurovat šablony** stránce, proveďte následující kroky: Tyto kroky jsou **volitelné** pro tento kurz.
-    1. Vyberte **Connect** (Připojit) a připojte se k virtuálnímu počítači šablony. Pokud je šablona Linux virtuálního počítače, můžete vybrat, jestli se chcete připojit pomocí SSH nebo RDP (Pokud je povolen protokol RDP).
-    2. Nainstalujte a nakonfigurujte na virtuálním počítači šablony požadovaný software.     
-    3. Zadejte **popis** šablony.
+    2. Vyberte **Connect** (Připojit) a připojte se k virtuálnímu počítači šablony. Pokud je šablona Linux virtuálního počítače, můžete vybrat, jestli se chcete připojit pomocí SSH nebo RDP (Pokud je povolen protokol RDP).
+    1. Vyberte **resetovat heslo** k resetování hesla pro virtuální počítač. 
+    1. Nainstalujte a nakonfigurujte na virtuálním počítači šablony požadovaný software. 
+    1. **Zastavte** virtuální počítač.  
+    1. Zadejte **popis** šablony.
 9. Na stránce šablony vyberte **Next** (Další). 
 10. Na stránce **Publish the template** (Publikování šablony) proveďte následující akce. 
     1. Chcete-li publikovat šablony okamžitě, vyberte **publikovat**.  
@@ -107,6 +109,40 @@ Vlastník testovacího prostředí můžete přidat ostatním uživatelům **Aut
 
     ![Seznam uživatelů](../media/how-to-configure-student-usage/users-list-new.png)
 
+## <a name="set-quotas-for-users"></a>Nastavení kvót pro uživatele
+Kvóty uživatele můžete nastavit pomocí následujících kroků: 
+
+1. Vyberte **uživatelé** v nabídce vlevo, pokud ještě není aktivní na stránce. 
+2. Vyberte **kvóty na uživatele:** na panelu nástrojů. 
+3. Na **kvóty uživatele** stránky, zadejte počet hodin, kterou chcete přidělit pro jednotlivé uživatele (student): 
+    1. **0 hodin (pouze schéma)** . Uživatelé mohou používat své virtuální počítače pouze v naplánovaném čase nebo jako vlastník testovacího prostředí se změní na virtuálních počítačích pro ně.
+
+        ![Nula hodin – pouze naplánovaném čase](../media/how-to-configure-student-usage/zero-hours.png)
+    1. **Celkový počet hodin testovacího prostředí na uživatele**. Uživatelé můžou používat svoje virtuální počítače pro zadaného počtu hodin (zadaný pro toto pole) **kromě naplánovaném čase**. Pokud vyberete tuto možnost, zadejte **počet hodin** v textovém poli. 
+
+        ![Počet hodin na uživatele](../media/how-to-configure-student-usage/number-of-hours-per-user.png)
+    4. Vyberte **Uložit**. 
+5. Nyní uvidíte změněné hodnoty na panelu nástrojů: **Kvóta na uživatele: &lt;počet hodin&gt;** . 
+
+    ![Kvóta na uživatele](../media/how-to-configure-student-usage/quota-per-user.png)
+
+## <a name="set-a-schedule-for-the-lab"></a>Nastavte plán pro testovací prostředí
+Pokud jste nakonfigurovali nastavení kvóty pro **0 hodin (pouze schéma)** , je nutné nastavit plán pro testovací prostředí. V tomto kurzu nastavte plán bude týdenního plánu opakování.
+
+1. Přepněte **plány** stránku a vybrat **přidat plán** na panelu nástrojů. 
+
+    ![Přidejte tlačítko plán na stránce plány](../media/how-to-create-schedules/add-schedule-button.png)
+2. Na **přidat plán** stránce, přepněte na **týdenní** v horní části. 
+3. Pro **naplánovat dnů (povinné)** , vyberte dny, ve které chcete plánu se projeví. V následujícím příkladu je vybrána pondělí až pátek. 
+4. Pro **z** zadejte **naplánovat datum zahájení** nebo vyberte datum tak, že vyberete **kalendáře** tlačítko. Toto pole je povinné. 
+5. Pro **datum ukončení plánu**, zadejte nebo vyberte koncové datum, na kterém jsou virtuální počítače vypnou. 
+6. Pro **počáteční čas**, vyberte čas, kdy chcete spustit virtuální počítače. Počáteční čas je vyžadována, pokud čas ukončení není nastaven. Vyberte **odebrat zahájit událost** Pokud chcete určit pouze čas ukončení. Pokud **počáteční čas** je zakázaná, vyberte **přidat počáteční událost** vedle rozevíracího seznamu, aby je. 
+7. Pro **čas ukončení**, vyberte čas, kdy chcete vypnout virtuální počítače. Čas ukončení je vyžadována, pokud není nastaven počáteční čas. Vyberte **událost odebrání po zastavení** Pokud chcete zadat čas spuštění. Pokud **čas ukončení** je zakázaná, vyberte **události zastavení přidat** vedle rozevíracího seznamu, aby je.
+8. Pro **časové pásmo (povinné)** , vyberte časové pásmo pro spuštění a zastavení časy, které jste zadali.  
+9. Pro **poznámky**, zadejte popis případné poznámky pro daný plán. 
+10. Vyberte **Uložit**. 
+
+    ![Týdenní plán](../media/how-to-create-schedules/add-schedule-page-weekly.png)
 
 ## <a name="send-an-email-with-the-registration-link"></a>Odeslat e-mail s odkazem registraci
 

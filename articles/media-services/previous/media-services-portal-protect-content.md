@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 65e5b5502b7d63d89845781487443f539a708816
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64866973"
 ---
 # <a name="configure-content-protection-policies-by-using-the-azure-portal"></a>Konfigurace zásad ochrany obsahu pomocí webu Azure portal
@@ -76,7 +76,7 @@ Pokud konfigurujete licenci jako trvalé, se uloží do trvalého úložiště n
 ### <a name="basic"></a>Basic
 Když vyberete **základní**, vytvoření šablony s použitím všech výchozích hodnot.
 
-### <a name="advanced"></a>Upřesňující
+### <a name="advanced"></a>Upřesnit
 Další informace o šablona práv Widevine, najdete v článku [Přehled šablon licencování Widevine](media-services-widevine-license-template-overview.md).
 
 ![Rozšířená ochrana obsahu](./media/media-services-portal-content-protection/media-services-content-protection005.png)

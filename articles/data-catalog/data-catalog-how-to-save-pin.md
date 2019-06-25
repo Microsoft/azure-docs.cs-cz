@@ -9,10 +9,10 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
 ms.openlocfilehash: df3220ddb80ebc329ed6b0024ca4eefd2bdfb321
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61002005"
 ---
 # <a name="save-searches-and-pin-data-assets-in-azure-data-catalog"></a>Uložení hledání a PIN kód datové assety ve službě Azure Data Catalog
@@ -21,7 +21,7 @@ Azure Data Catalog poskytuje možnosti pro zjišťování zdrojů dat. Můžete 
 
 Ale co když je potřeba pravidelně pracovat se stejnými daty? A co když vy a ostatní uživatelé pravidelně přispívat vaše znalosti do stejného zdroje dat v katalogu? V těchto situacích by bylo nutné opakovaně vystavovat stejné hledání může být neefektivní. To je, kde může pomoct uložené výsledky hledání a připojených datových assetů.
 
-## <a name="saved-searches"></a>Uložené výsledky hledání
+## <a name="saved-searches"></a>Uložená hledání
 Uložené výsledky hledání ve službě Data Catalog je opakovaně použitelné, definice vyhledávání na uživatele. Můžete definovat hledání včetně hledaného, značky a další filtry a pak ho uložte. Uložené výsledky hledání definici později vrátit všechny datové assety, které odpovídají jeho kritéria vyhledávání můžete spustit znovu.
 
 ### <a name="create-a-saved-search"></a>Vytvořit uložené výsledky hledání

@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: jeconnoc
 ms.openlocfilehash: 3082ca34f2bcb71dd7aa02b4539899997374cfc0
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65595157"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Začínáme s cloudovými službami Azure Cloud Services a technologií ASP.NET
@@ -236,7 +236,7 @@ Připojovací řetězce k účtu úložiště Azure pro projekt webové role i p
 2. Klikněte na kartu **Nastavení**. V rozevíracím seznamu **Konfigurace služby** vyberte **Cloud**.
 
     ![Konfigurace cloudu](./media/cloud-services-dotnet-get-started/sccloud.png)
-3. Vyberte položku **StorageConnectionString** a na pravém konci řádku se zobrazí tlačítko se třemi tečkami (**...**) . Kliknutím na tlačítko se třemi tečkami otevřete dialogové okno **Vytvoření připojovací řetězce k účtu úložiště**.
+3. Vyberte položku **StorageConnectionString** a na pravém konci řádku se zobrazí tlačítko se třemi tečkami ( **...** ) . Kliknutím na tlačítko se třemi tečkami otevřete dialogové okno **Vytvoření připojovací řetězce k účtu úložiště**.
 
     ![Otevření pole Vytvoření připojovacího řetězce](./media/cloud-services-dotnet-get-started/opencscreate.png)
 4. V dialogovém okně **Vytvoření připojovacího řetězce k úložišti** klikněte na **Předplatné**, zvolte účet úložiště, které jste už dříve vytvořili, a potom klikněte na tlačítko **OK**. Pokud ještě nejste přihlášeni, budete vyzváni k zadání přihlašovacích údajů k účtu Azure.
@@ -326,7 +326,7 @@ Po vytvoření řešení zkontrolujete kód, který je pro projekty cloudových 
 
 ### <a name="create-a-cloud-service-visual-studio-solution"></a>Vytvoření řešení cloudové služby Visual Studio
 1. Ve Visual Studiu zvolte v nabídce **Soubor** možnost **Nový projekt**.
-2. V levém podokně dialogového okna **Nový projekt** rozbalte položku **Visual C#**, vyberte šablonu **Cloud** a potom klikněte na šablonu **Cloudová služba Azure**.
+2. V levém podokně dialogového okna **Nový projekt** rozbalte položku **Visual C#** , vyberte šablonu **Cloud** a potom klikněte na šablonu **Cloudová služba Azure**.
 3. Pojmenujte projekt a řešení ContosoAdsCloudService a potom klikněte na tlačítko **OK**.
 
     ![Nový projekt](./media/cloud-services-dotnet-get-started/newproject.png)
@@ -654,7 +654,7 @@ Prvek `<input>` sděluje prohlížeči, aby zobrazil dialogové okno pro výběr
 <input type="file" name="imageFile" accept="image/*" class="form-control fileupload" />
 ```
 
-### <a name="contosoadsworker---workerrolecs---onstart-method"></a>ContosoAdsWorker – WorkerRole.cs – metoda OnStart 
+### <a name="contosoadsworker---workerrolecs---onstart-method"></a>ContosoAdsWorker – WorkerRole.cs – metoda OnStart
 Prostředí role pracovního procesu Azure volá metodu `OnStart` ve třídě `WorkerRole`, když se spouští role pracovního procesu, a volá metodu `Run`, když se metoda `OnStart` dokončí.
 
 Metoda `OnStart` získá připojovací řetězec databáze ze souboru *.cscfg* a předá ho do třídy DbContext v Entity Framework. Poskytovatel SQLClienta se používá ve výchozím nastavení, takže ho není nutné zadávat.

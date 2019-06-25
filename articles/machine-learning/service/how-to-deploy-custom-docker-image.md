@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/05/2019
-ms.openlocfilehash: 02bc8835ddb163d81f389e13b21b88adca55cb2f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bd0e8099be5422d561541aeb8911c9a1610befcb
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67082622"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67272764"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-image"></a>Nasazení modelu používání vlastní image Dockeru
 
@@ -43,6 +43,7 @@ Tento dokument je rozdělen do dvou částí:
 * Pracovní skupině služby Azure Machine Learning. Další informace najdete v tématu [vytvořit pracovní prostor](setup-create-workspace.md) článku.
 * Azure Machine Learning SDK. Další informace najdete v tématu část Python SDK [vytvořit pracovní prostor](setup-create-workspace.md#sdk) článku.
 * [Rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+* [Rozšíření rozhraní příkazového řádku pro službu Azure Machine Learning](reference-azure-machine-learning-cli.md).
 * [Azure Container Registry](/azure/container-registry) nebo jiných registru Dockeru, který je přístupný na Internetu.
 * Kroky v tomto dokumentu předpokládají, že máte zkušenosti s vytvářením a používáním __odvozování configuration__ objekt jako součást modelu nasazení. Další informace najdete v části "Příprava na nasazení" z [, jak nasadíte a jak](how-to-deploy-and-where.md#prepare-to-deploy).
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
 ms.openlocfilehash: 4d4c540e00794bfdf1df265457798cc13530c828
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61337784"
 ---
 # <a name="lambda-search-syntax"></a>Syntaxe prohledávání lambda
@@ -33,13 +33,13 @@ FollowEdge(params string[] edgeTypes)
 > [!NOTE]
 > Záleží nám na nejsou typy edge(s) dodržovat, jednoduše vynechejte *FollowEdge()* mezi dvěma uzly: dotaz provede všechny možné okraje mezi těmito dvěma uzly.
 
-Lze zadat možné provádět na uzlu prostřednictvím akce procházení *VisitNode()*, to znamená, zda chcete zastavit na tomto uzlu a jako výsledek vrátit aktuální cestu nebo pokračovat v průzkumu grafu.  Typ výčtu *akce* definuje dva typy akcí: *Action.Return* a *Action.Continue*. Můžete předat tyto hodnoty výčtu přímo do *VisitNode()*, nebo můžete zkombinovat s bitovým – a operátor 'a'. Když dvě akce se zkombinují, znamená to, provedou se obě akce. Poznámka: Nepoužívejte bitový- nebo operátor ' |' na akce. To způsobí, že dotaz ukončit bez vrácení cokoli. Přeskakuje se *VisitNode()* mezi dvěma *FollowEdge()* volání způsobí, že dotaz tak, aby bezpodmínečně prozkoumat graf po přicházejících u uzlu.
+Lze zadat možné provádět na uzlu prostřednictvím akce procházení *VisitNode()* , to znamená, zda chcete zastavit na tomto uzlu a jako výsledek vrátit aktuální cestu nebo pokračovat v průzkumu grafu.  Typ výčtu *akce* definuje dva typy akcí: *Action.Return* a *Action.Continue*. Můžete předat tyto hodnoty výčtu přímo do *VisitNode()* , nebo můžete zkombinovat s bitovým – a operátor 'a'. Když dvě akce se zkombinují, znamená to, provedou se obě akce. Poznámka: Nepoužívejte bitový- nebo operátor ' |' na akce. To způsobí, že dotaz ukončit bez vrácení cokoli. Přeskakuje se *VisitNode()* mezi dvěma *FollowEdge()* volání způsobí, že dotaz tak, aby bezpodmínečně prozkoumat graf po přicházejících u uzlu.
 
 ```
 VisitNode(Action action, IEnumerable<string> select = null)
 ```
 
-Pro *VisitNode()*, jsme také můžete předat ve výrazu lambda typu *výraz\<Func\<uzlů, akce\>\>*, který by *Uzlů* a vrátí procházení akce:
+Pro *VisitNode()* , jsme také můžete předat ve výrazu lambda typu *výraz\<Func\<uzlů, akce\>\>* , který by *Uzlů* a vrátí procházení akce:
 
 ```
 VisitNode(Expression<Func<INode, Action>> action, IEnumerable<string> select = null)
@@ -65,11 +65,11 @@ Určuje, jestli pole s daným názvem existuje v aktuálním uzlu.
 
 ##### <a name="string-getstring-fieldname"></a>získat řetězec (řetězec fieldName)
 
-Funguje jako *GetField\<řetězec\>(fieldName)*. Ale nevyvolá výjimky, pokud pole není nalezeno, místo toho vrátí prázdný řetězec.
+Funguje jako *GetField\<řetězec\>(fieldName)* . Ale nevyvolá výjimky, pokud pole není nalezeno, místo toho vrátí prázdný řetězec.
 
 ##### <a name="bool-hasstring-fieldname"></a>má BOOL (název pole řetězce)
 
-Sdělí, jestli se daná vlastnost existuje v aktuálním uzlu. Stejné jako *ContainsField(fieldName)*.
+Sdělí, jestli se daná vlastnost existuje v aktuálním uzlu. Stejné jako *ContainsField(fieldName)* .
 
 ##### <a name="bool-hasstring-fieldname-string-value"></a>má BOOL (fieldName řetězec, řetězec)
 

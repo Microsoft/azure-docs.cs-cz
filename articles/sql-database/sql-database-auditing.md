@@ -13,10 +13,10 @@ ms.reviewer: vanto
 manager: craigg
 ms.date: 04/16/2019
 ms.openlocfilehash: 3efdf5c256a22529c9d19e9ae1dce5d2db9516a5
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65827772"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Začínáme s auditem databáze SQL
@@ -231,7 +231,7 @@ V produkčním prostředí budete pravděpodobně pravidelně aktualizují vaše
 
 ## <a id="subheading-7"></a>Spravovat auditování služby SQL database pomocí prostředí Azure PowerShell
 
-**Rutiny Powershellu (včetně podpory klauzule WHERE pro další filtrování)**:
+**Rutiny Powershellu (včetně podpory klauzule WHERE pro další filtrování)** :
 
 - [Vytvořit nebo aktualizovat databázi auditování zásad (Set-AzSqlDatabaseAuditing)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseauditing)
 - [Vytvořit nebo aktualizovat zásady auditování serveru (Set-AzSqlServerAuditing)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserverauditing)

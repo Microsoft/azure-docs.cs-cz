@@ -10,14 +10,14 @@ ms.service: security
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
-ms.date: 01/16/2019
+ms.date: 06/11/2019
 ms.author: angrobe
-ms.openlocfilehash: 10b4c6bfb9c79ee933feadec2ee41e52c86df76e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d921e529140bc7446e3c9f97b33ba226431d7b91
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60607716"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67143518"
 ---
 # <a name="azure-security-documentation"></a>Dokumentace ke službě Azure Security
 
@@ -122,12 +122,12 @@ Zabezpečení je integrované do všech oblastí Azure. Azure nabízí jedinečn
         </a>
     </li>
     <li style="list-style: none;">
-        <a href="/azure/security/azure-log-audit">
+        <a href="/azure/security/develop">
             <div class="cardSize">
                 <div class="cardPadding">
                     <div class="card" style="min-height: 0;padding-bottom: 24px; text-align: center;">
                         <div class="cardText">
-                            <p style="font-size: 1.12rem;">Jaké možnosti monitorování a protokolování jsou v Azure k dispozici?</p>
+                            <p style="font-size: 1.12rem;">Vývoj a nasazení zabezpečených aplikací</p>
                         </div>
                     </div>
                 </div>
@@ -163,6 +163,23 @@ Zabezpečení je integrované do všech oblastí Azure. Azure nabízí jedinečn
 </ul>
 
 <ul class="cardsL panelContent singlePanelContent" style="display:flex!important;">
+    <li style="list-style: none;">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <div class="ico64Link"><img src="https://docs.microsoft.com/media/common/i_code-samples.svg" alt="" /></div>
+                        <h3>Vývojáři</h3>
+                        <ul class="noBullet">
+                            <li style="list-style: none;">
+                                <a class="barLink" href="/azure/security/develop/secure-dev-overview">Osvědčené postupy zabezpečeného vývoje</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
     <li style="list-style: none;">
         <div class="cardSize">
             <div class="cardPadding">
@@ -227,29 +244,6 @@ Zabezpečení je integrované do všech oblastí Azure. Azure nabízí jedinečn
             </div>
         </div>
     </li>
-    <li style="list-style: none;">
-    <div class="cardSize">
-        <div class="cardPadding">
-            <div class="card">
-                <div class="cardText">
-                     <div class="ico64Link"><img src="https://docs.microsoft.com/media/common/i_tasks.svg" alt="" /></div>
-                     <h3>Kontrolní seznamy</h3>
-                     <ul class="noBullet">
-                        <li style="list-style: none;">
-                            <a class="barLink" href="/azure/security/azure-database-security-checklist">Zabezpečení databází</a>
-                        </li>
-                        <li style="list-style: none;">
-                            <a class="barLink" href="/azure/security/azure-operational-security-checklist">Provozní zabezpečení</a>
-                        </li>
-                        <li style="list-style: none;">
-                            <a class="barLink" href="/azure/security/azure-service-fabric-security-checklist">Zabezpečení Service Fabric</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</li>
 </ul>
 
 <ul class="cardsFTitle panelContent">

@@ -1,6 +1,6 @@
 ---
-title: Rychlý start – vyžadují podmínky použití přijmout před přístup ke cloudovým aplikacím, které se nechrání podmíněným přístupem Azure Active Directory | Dokumentace Microsoftu
-description: V tomto rychlém startu zjistíte, jak můžete vyžadovat, že jsou vaše podmínky použití přijmout před udělením přístupu k vybrané cloudovým aplikacím pomocí podmíněného přístupu Azure Active Directory.
+title: Rychlý start – vyžadují podmínky použití přijmout před přístup ke cloudovým aplikacím, které jsou chráněné službou Azure Active Directory podmíněného přístupu | Dokumentace Microsoftu
+description: V tomto rychlém startu zjistíte, jak můžete vyžadovat, že jsou vaše podmínky použití přijmout před udělením přístupu k vybrané cloudové aplikace pomocí Azure Active Directory podmíněného přístupu.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c37a58cb9f9d1082d02854f43e511e5431d90c13
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2a3523a050a021f3a98c144efe14d692704fba63
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60302053"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67112219"
 ---
 # <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>Rychlý start: Vyžadovat podmínky použití přijmout před přístupem k cloudových aplikací
 
@@ -25,7 +25,7 @@ Před použitím některých cloudových aplikací ve vašem prostředí, může
 - Jednoduchý způsob konfigurace podmínek použití
 - Možnost vyžadovat přijetí vaše podmínky použití prostřednictvím zásad podmíněného přístupu  
 
-Tento rychlý start ukazuje, jak nakonfigurovat [zásad podmíněného přístupu Azure AD](../active-directory-conditional-access-azure-portal.md) , která vyžaduje podmínky použití přijmout pro vybranou cloudovou aplikaci ve vašem prostředí.
+Tento rychlý start ukazuje, jak nakonfigurovat [zásady podmíněného přístupu Azure AD](../active-directory-conditional-access-azure-portal.md) , která vyžaduje podmínky použití přijmout pro vybranou cloudovou aplikaci ve vašem prostředí.
 
 ![Vytvoření zásad](./media/require-tou/5555.png)
 
@@ -57,7 +57,7 @@ Tato část obsahuje kroky k vytvoření ukázkové podmínky použití. Když v
 
 1. Typ **Moje podmínky použití**a potom uložte dokument na počítač jako **mytou.pdf**.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
+1. Přihlaste se k vaší [webu Azure portal](https://portal.azure.com) jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
 
 1. Na webu Azure Portal, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory**.
 
@@ -95,14 +95,14 @@ Tato část obsahuje kroky k vytvoření ukázkové podmínky použití. Když v
 
 ## <a name="create-your-conditional-access-policy"></a>Vytvořte zásadu podmíněného přístupu
 
-Tato část ukazuje, jak vytvořit zásady podmíněného přístupu vyžaduje. Scénář v tomto rychlém startu používá:
+Tato část ukazuje, jak vytvořit požadované zásady podmíněného přístupu. Scénář v tomto rychlém startu používá:
 
 - Azure portal jako zástupný symbol pro cloudové aplikace, která vyžaduje vaše podmínky použití přijmout. 
 - Ukázkového uživatele k otestování zásady podmíněného přístupu.  
 
 V zásadách nastavte:
 
-| Nastavení | Value |
+| Nastavení | Hodnota |
 | --- | --- |
 | Uživatelé a skupiny | Isabella Simonsen |
 | Cloudové aplikace | Správa Microsoft Azure |
@@ -150,7 +150,7 @@ V zásadách nastavte:
 
 1. V **ovládací prvky přístupu** klikněte na tlačítko **udělení**.
 
-   ![Ovládací prvky přístupu](./media/require-tou/10.png)
+   ![Řízení přístupu](./media/require-tou/10.png)
 
 1. Na **udělení** stránky:
 
@@ -164,13 +164,13 @@ V zásadách nastavte:
 
 1. V **povolit zásady** klikněte na tlačítko **na**.
 
-   ![Povolit zásadu](./media/require-tou/18.png)
+   ![Povolení zásady](./media/require-tou/18.png)
 
 1. Klikněte na možnost **Vytvořit**.
 
 ## <a name="evaluate-a-simulated-sign-in"></a>Vyhodnocení Simulovaná přihlášení
 
-Teď, když jste nakonfigurovali zásady podmíněného přístupu, pravděpodobně chcete zjistit, jestli fungují podle očekávání. Jako první krok pomocí podmíněného přístupu, nástroj pro co když zásady pro simulaci u přihlášení z testovacího uživatele. Při této simulaci se odhadne dopad přihlášení na vaše zásady a vygeneruje se sestava simulace.  
+Teď, když jste nakonfigurovali zásady podmíněného přístupu, budete pravděpodobně chtít vědět, jestli funguje podle očekávání. Jako první krok pomocí podmíněného přístupu, nástroj pro co když zásady pro simulaci u přihlášení z testovacího uživatele. Při této simulaci se odhadne dopad přihlášení na vaše zásady a vygeneruje se sestava simulace.  
 
 K inicializaci co, pokud nástroj pro vyhodnocení zásad, nastavit:
 
@@ -188,7 +188,7 @@ Kliknutím na **co když** vytvoří sestavu simulace, která zobrazí:
 
 1. Na [podmíněného přístupu – zásady](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) klikněte v nabídce v horní části na stránce **co když**.  
 
-   ![What If](./media/require-tou/14.png)
+   ![Co když](./media/require-tou/14.png)
 
 1. Klikněte na tlačítko **uživatelé**vyberte **Isabella Simonsen**a potom klikněte na tlačítko **vyberte**.
 
@@ -210,7 +210,7 @@ Kliknutím na **co když** vytvoří sestavu simulace, která zobrazí:
 
 1. Klikněte na tlačítko **co když**.
 
-## <a name="test-your-conditional-access-policy"></a>Otestování zásady podmíněného přístupu
+## <a name="test-your-conditional-access-policy"></a>Otestovat své zásady podmíněného přístupu
 
 V předchozí části jste zjistili, jak vyhodnotit simulované přihlášení. Kromě simulaci byste měli také otestovat své zásady podmíněného přístupu k zajištění, že funguje podle očekávání.
 

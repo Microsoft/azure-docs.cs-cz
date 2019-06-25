@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 6189ea2866d1c16f994179df0179e29353e6c47d
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65410725"
 ---
 # <a name="create-a-custom-voice"></a>Vytvořit vlastní hlasový vstup
@@ -48,7 +48,7 @@ V následující tabulce jsou uvedeny stavy zpracování pro importované datov�
 | ----- | ------- |
 | Zpracování | Vaše datová sada byla přijata a se zpracovává. |
 | Úspěch | Vaše datová sada je potvrzená a můžete nyní používat k sestavení modelu hlasu. |
-| Nezdařilo se | Vaše datová sada selhal při zpracování z mnoha důvodů, například soubor chyby, problémy dat nebo problémů se sítí. |
+| Selhalo | Vaše datová sada selhal při zpracování z mnoha důvodů, například soubor chyby, problémy dat nebo problémů se sítí. |
 
 Po dokončení ověření můžete zobrazit celkový počet odpovídajících projevy pro každý z datových sad v **projevy** sloupce. Pokud datový typ, který jste zvolili vyžaduje dlouho zvuk segmentace, v tomto sloupci jsou pouze údaje projevy, které můžeme mít segmentované, buď v závislosti na své záznamy nebo prostřednictvím služby určené k transkripci řeči. Můžete dál stáhnout datovou sadu ověřen, chcete-li zobrazit podrobné výsledky projevy, které byly úspěšně naimportovány a jejich mapování přepisy. Tip: více než jedna hodina dokončení zpracování dat může trvat dlouho zvuk segmentace.
 
@@ -90,7 +90,7 @@ Stav, který se zobrazí odráží proces převodu datové sady do modelu hlasu,
 | ----- | ------- |
 | Zpracování | Vytváří se váš model hlasu. |
 | Úspěch | Váš model hlasové vytvořilo a je možné nasadit. |
-| Nezdařilo se | Váš model hlasové selhal v školení z mnoha důvodů, například nezobrazený data problémy nebo problémů se sítí. |
+| Selhalo | Váš model hlasové selhal v školení z mnoha důvodů, například nezobrazený data problémy nebo problémů se sítí. |
 
 Školení čas se liší v závislosti na objemu zpracovaných dat zvuku. Typické doby rozsahu o 30 minut, než stovky projevy až 40 hodin pro 20 000 projevy. Jakmile se úspěšně trénování modelu, můžete spustit a otestovat ho.
 

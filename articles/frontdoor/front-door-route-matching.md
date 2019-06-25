@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: eec99bde0ea73a99a9dc1345f938b821a95a7c05
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60736275"
 ---
 # <a name="how-front-door-matches-requests-to-a-routing-rule"></a>Jak branou odpovídá požadavků na pravidlo směrování
@@ -48,7 +48,7 @@ Při párování hostitele front-endu, můžeme použít logiku jak je uvedeno n
 
 Abychom vysvětlili, tento proces dále, Podívejme se na příklad konfigurace branou tras (pouze levá strana):
 
-| Pravidlo směrování | Front-endoví hostitelé | `Path` |
+| Pravidlo směrování | Hostitele front-endu | `Path` |
 |-------|--------------------|-------|
 | A | foo.contoso.com | /\* |
 | B | foo.contoso.com | složku /Users/\* |
@@ -78,7 +78,7 @@ Po určení konkrétní front-endové hostitele a filtrování možných pravidl
 
 Abychom vysvětlili, dále, Podívejme se na jinou sadu příklady:
 
-| Pravidlo směrování | Hostitel front-endu    | `Path`     |
+| Pravidlo směrování | Hostitele front-endu    | `Path`     |
 |-------|---------|----------|
 | A     | www\.contoso.com | /        |
 | B     | www\.contoso.com | /\*      |
@@ -112,7 +112,7 @@ Zadaný tuto konfiguraci, výsledkem bude v následující tabulce odpovídajíc
 >
 > Příklad konfigurace:
 >
-> | Trasa | Hostitel             | `Path`    |
+> | Trasa | Host             | `Path`    |
 > |-------|------------------|---------|
 > | A     | profile.contoso.com | /api/\* |
 >
@@ -120,7 +120,7 @@ Zadaný tuto konfiguraci, výsledkem bude v následující tabulce odpovídajíc
 >
 > | Příchozí požadavek       | Porovnávané trasy |
 > |------------------------|---------------|
-> | profile.domain.com/other | Žádné. Chyba 400: Chybný požadavek |
+> | profile.domain.com/other | Žádné Chyba 400: Chybný požadavek |
 
 ### <a name="routing-decision"></a>Rozhodnutí o směrování
 Jakmile zjišťována shoda pro jedno pravidlo směrování branou, pak musíme zvolte, jak zpracovat požadavek. Pokud je pro odpovídající pravidlo směrování branou odpověď uložená v mezipaměti k dispozici pak stejné získá obsluhovat zpět do klienta. V opačném případě je dalším krokem, který získá ohodnocení se, jestli jste nakonfigurovali [přepisu adresy URL (vlastního předávajícího cesta)](front-door-url-rewrite.md) odpovídající směrování je pravidlo nebo ne. Pokud není k dispozici vlastního předávajícího cestu definovanou, získá požadavek předá do příslušného back-endu v nakonfigurované back-endový fond, protože je. V opačném cestu požadavku se aktualizuje podle [vlastního předávajícího cesta](front-door-url-rewrite.md) definovaných a potom přeposílají do back-endu.

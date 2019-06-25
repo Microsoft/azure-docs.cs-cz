@@ -10,14 +10,13 @@ ms.assetid: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-origin.date: 02/01/2018
-ms.date: 11/22/2018
-ms.author: v-junlch
+ms.date: 02/01/2018
+ms.author: cshoe
 ms.openlocfilehash: bf54d312de5625a7fa44cea4d5107e83cf15583c
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62105504"
 ---
 # <a name="azure-functions-error-handling"></a>Zpracování chyb Azure Functions
@@ -45,5 +44,3 @@ Při integraci se službami Azure, můžete mít chyb, které vyvolala, které p
 + [Service Bus](functions-bindings-service-bus.md#exceptions-and-return-codes)
 
 + [Table Storage](functions-bindings-storage-table.md#exceptions-and-return-codes)
-
-<!-- Update_Description: update metedata properties -->

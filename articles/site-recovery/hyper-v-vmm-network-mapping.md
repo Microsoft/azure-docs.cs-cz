@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/30/2019
 ms.author: raynew
 ms.openlocfilehash: d2f7f83654f397cc6b93adbbebc25193155bcedb
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66399379"
 ---
 # <a name="prepare-network-mapping-for-hyper-v-vm-disaster-recovery-to-azure"></a>Příprava mapování sítě pro zotavení po havárii virtuálních počítačů Hyper-V do Azure
@@ -54,7 +54,7 @@ Mapování sítě funguje takto:
 
 Tady je příklad pro ilustraci tohoto mechanismu. Pojďme se na organizaci s dvěma umístěními v Brno a Ostrava.
 
-**Umístění** | **Server VMM** | **Sítě virtuálních počítačů** | **Mapovat na**
+**Location** | **Server VMM** | **Sítě virtuálních počítačů** | **Mapovat na**
 ---|---|---|---
 New York | VMM-NewYork| VMNetwork1-NewYork | Mapovat na VMNetwork1 Chicago
  |  | VMNetwork2-NewYork | Nemapováno
@@ -79,7 +79,7 @@ SilverCloud2 | <p>Není k dispozici</p><p></p> | <p>LogicalNetwork1-NewYork</p><
 
 ### <a name="logical-and-vm-network-settings"></a>Nastavení logické a VM sítě
 
-**Umístění** | **Logické sítě** | **Přidružené sítě virtuálních počítačů**
+**Location** | **Logické sítě** | **Přidružené sítě virtuálních počítačů**
 ---|---|---
 New York | LogicalNetwork1-NewYork | VMNetwork1-NewYork
 Chicago | LogicalNetwork1-Chicago | VMNetwork1-Chicago

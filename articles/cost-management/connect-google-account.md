@@ -11,10 +11,10 @@ ms.service: cost-management
 manager: benshy
 ms.custom: seodec18
 ms.openlocfilehash: 247d959abadc92d70bdd60555a090986743e9322
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66002078"
 ---
 # <a name="connect-a-google-cloud-platform-account"></a>Připojení účtu Google Cloud Platform
@@ -63,7 +63,7 @@ Cloudyn shromažďovat údaje o využití a prostředků, potřebuje následují
 
 1. Otevřete portál Cloudyn z portálu Azure portal nebo přejděte na [ https://azure.cloudyn.com ](https://azure.cloudyn.com/) a přihlaste se.
 2. Klikněte na tlačítko **nastavení** (symbol ozubeného kola) a pak vyberte **cloudové účty**.
-3. V **Správa účtů**, vyberte **účty Google** kartu a potom klikněte na tlačítko **přidat nový +**.
+3. V **Správa účtů**, vyberte **účty Google** kartu a potom klikněte na tlačítko **přidat nový +** .
 4. V **název účtu služby Google**, zadejte e-mailovou adresu pro fakturační účet a pak klikněte na tlačítko **Další**.
 5. V dialogovém okně ověřování Google, vyberte nebo zadejte účet Google a následně **povolit** cloudyn.com přístup k vašemu účtu.
 6. Přidat žádost o informace o projektu, že jste měli předchozí jste si poznamenali. Patří mezi ně **ID projektu**, **projektu** název, **fakturační** název kontejneru a **fakturační souboru** předpona sestavy a potom klikněte na  **Uložit**.  

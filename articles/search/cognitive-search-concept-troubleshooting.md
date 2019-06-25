@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: c97ccd82a9c09e10572733040e238443cbf777da
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c0de4d2b9ad0d009b9cd363d19a2de3f29d810d4
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64696602"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303456"
 ---
 # <a name="troubleshooting-tips-for-cognitive-search"></a>Tipy pro řešení potíží pro kognitivního vyhledávání
 
@@ -94,7 +94,10 @@ Analýza obrázku je výpočetně náročné i jednoduché v případech, tak p�
 
 Maximální doba spuštění se liší podle úrovně: několik minut na Free vrstvy, 24 hodin indexování fakturovatelné vrstev. Pokud se zpracování nepodaří dokončit během 24 hodin pro zpracování na vyžádání, přepněte na plán, který chcete nechat pokračovat zpracování tam, kde skončila. 
 
-Pro plánované indexery indexování obnoví podle plánu na poslední známé dobré dokumentu. Pomocí opakovaně indexeru můžete fungují jeho prostřednictvím nevyřízených položek image několik hodin nebo dnů, dokud se zpracovávají všechny bitové kopie zrušení zpracování. Další informace o plánu syntaxe, naleznete v tématu [krok 3: Create-an-indexer](search-howto-indexing-azure-blob-storage.md#step-3-create-an-indexer).
+Pro plánované indexery indexování obnoví podle plánu na poslední známé dobré dokumentu. Pomocí opakovaně indexeru můžete fungují jeho prostřednictvím nevyřízených položek image několik hodin nebo dnů, dokud se zpracovávají všechny bitové kopie zrušení zpracování. Další informace o plánu syntaxe, naleznete v tématu [krok 3: Vytvoření indexeru](search-howto-indexing-azure-blob-storage.md#step-3-create-an-indexer) nebo naleznete v tématu [naplánování indexerů Azure Search](search-howto-schedule-indexers.md).
+
+> [!NOTE]
+> Pokud indexer je nastavený na určité plánu, ale opakovaně selže u stejného dokumentu tytéž pokaždé, když ji spustí, začne indexeru spuštěný na méně častá intervalu (až maximálního počtu alespoň jednou za 24 hodin) až do jeho úspěšně provede aga průběh v.  Pokud si myslíte, že je všechno, co vyřešili problém, která je příčinou indexeru zaseknout v určitém bodě, můžete provést na spuštění vyžádání indexeru, a pokud, který úspěšně provede průběh, indexeru se vrátí do jeho nastavit interval plán znovu.
 
 Založené na portálu indexování (jak je popsáno v tomto rychlém startu), výběr indexer "Spustit jednou" možnost omezení zpracování na 1 hodinu (`"maxRunTime": "PT1H"`). Můžete chtít rozšířit okno zpracování na něco delší dobu.
 

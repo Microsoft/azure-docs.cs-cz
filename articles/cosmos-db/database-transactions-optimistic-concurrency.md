@@ -8,10 +8,10 @@ ms.date: 05/21/2019
 ms.author: rimman
 ms.reviewer: sngun
 ms.openlocfilehash: 1da5dabad04d72c903072a33dfb7b0229f99c62d
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65978991"
 ---
 # <a name="transactions-and-optimistic-concurrency-control"></a>Řízení optimistické souběžnosti a transakce
@@ -33,11 +33,11 @@ Databázový stroj ve službě Azure Cosmos DB podporuje úplnou kyseliny (atomi
 | Spustit uloženou proceduru | Zápis a čtení | Transakce více položek |
 | Provádění procedury sloučení zahájené systému | Zápis | Transakce více položek |
 | Systém zahájené spuštění odstranění položky podle vypršení platnosti (TTL) položky | Zápis | Transakce více položek |
-| Číst | Číst | Transakce jedné položky |
-| Kanál změn | Číst | Transakce více položek |
-| Stránkovaná pro čtení | Číst | Transakce více položek |
-| Stránkovaných dotazů | Číst | Transakce více položek |
-| Spuštění UDF jako součást stránkovaných dotazů | Číst | Transakce více položek |
+| Čtení | Čtení | Transakce jedné položky |
+| Kanál změn | Čtení | Transakce více položek |
+| Stránkovaná pro čtení | Čtení | Transakce více položek |
+| Stránkovaných dotazů | Čtení | Transakce více položek |
+| Spuštění UDF jako součást stránkovaných dotazů | Čtení | Transakce více položek |
 
 ## <a name="multi-item-transactions"></a>Transakce více položek
 

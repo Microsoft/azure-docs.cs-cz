@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/14/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: b590345a8779637e93cf26efb7d322ee6c5ecdc2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: fea9e79986e45127ad4918ed62bd8bf8dc782133
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "67073710"
+ms.locfileid: "67125805"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>Přenos dat pomocí AzCopy a Blob storage
 
@@ -191,7 +191,7 @@ Tato část obsahuje následující příklady:
 
 ## <a name="synchronize-files"></a>Synchronizovat soubory
 
-Můžete synchronizovat obsah místního systému souborů do kontejneru objektů blob. Také můžete synchronizovat kontejner objektů blob místního systému souborů ve vašem počítači. Synchronizace je jednosměrná. Jinými slovy zvolíte, které tyto dva koncové body se zdroji a která z nich je cílem.
+Můžete synchronizovat obsah místního souboru systému s kontejner objektů blob. Synchronizace je jednosměrná. Jinými slovy zvolíte, které tyto dva koncové body se zdroji a která z nich je cílem.
 
 > [!NOTE]
 > Tento scénář se v současné době podporuje pouze pro účty, které nemají hierarchického oboru názvů. V aktuální verzi AzCopy není synchronizace mezi ostatní zdroje a cíle (například: File storage nebo kbelíků Amazon Web Services (AWS) S3).
@@ -203,18 +203,18 @@ Pokud jste nastavili `--delete-destination` příznak `true` AzCopy odstraní so
 > [!NOTE]
 > Aby se zabránilo nechtěnému odstranění, ujistěte se, že chcete povolit [obnovitelné odstranění](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) funkci před použitím `--delete-destination=prompt|true` příznak.
 
-### <a name="synchronize-a-container-to-a-local-file-system"></a>Synchronizovat místního systému souborů kontejneru
+### <a name="update-a-container-with-changes-to-a-local-file-system"></a>Aktualizace kontejneru se změnami v místním systému souborů
 
-V takovém případě místního systému souborů se stane zdroj a cíl je kontejner.
+V tomto případě kontejner je cílem a místního systému souborů je zdrojem.
 
 |    |     |
 |--------|-----------|
 | **Syntaxe** | `azcopy sync "<local-directory-path>" "https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>" --recursive` |
 | **Příklad** | `azcopy sync "C:\myDirectory" "https://mystorageaccount.blob.core.windows.net/mycontainer" --recursive` |
 
-### <a name="synchronize-a-local-file-system-to-a-container"></a>Synchronizovat místního systému souborů do kontejneru
+### <a name="update-a-local-file-system-with-changes-to-a-container"></a>Aktualizace místního systému souborů se změnami do kontejneru
 
-V tomto případě kontejner stane zdroje a místního systému souborů je cílem.
+V tomto případě místního systému souborů je cílem a zdrojem je kontejner.
 
 |    |     |
 |--------|-----------|

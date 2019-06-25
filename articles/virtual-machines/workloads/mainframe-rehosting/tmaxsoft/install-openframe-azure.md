@@ -9,10 +9,10 @@ ms.date: 04/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 ms.openlocfilehash: b69ded2591478a477cd142decb39218841c9ac62
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65410111"
 ---
 # <a name="install-tmaxsoft-openframe-on-azure"></a>Instalace TmaxSoft OpenFrame v Azure
@@ -565,7 +565,7 @@ Základní aplikační server je nainstalována před jednotlivých služeb, kte
      [oframe7@ofdemo ~]$ ps -ef|grep tbsvr
      ```
 
-    ![Základ](media/base-01.png)
+    ![Základní](media/base-01.png)
 
      > [!IMPORTANT]
      > Ujistěte se, že začnete Tibero před instalací.

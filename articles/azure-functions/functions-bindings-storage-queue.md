@@ -13,10 +13,10 @@ ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
 ms.openlocfilehash: 72460136f5fa0dcfec78716fc02e0aaf9e860840
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66472297"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure Queue storage vazby pro službu Azure Functions
@@ -525,7 +525,7 @@ Pokud se pokusíte vytvořit vazbu na `CloudQueueMessage` a zobrazí se chybová
 
 V jazyce C# a skript jazyka C# psát více zpráv fronty pomocí jedné z následujících typů: 
 
-* `ICollector<T>` Nebo `IAsyncCollector<T>`
+* `ICollector<T>` nebo `IAsyncCollector<T>`
 * [CloudQueue](/dotnet/api/microsoft.azure.storage.queue.cloudqueue)
 
 Do funkce jazyka JavaScript, použijte `context.bindings.<name>` pro přístup k výstupní fronty zprávu. Řetězec nebo objekt JSON serializovatelný můžete použít pro datovou část položky fronty.

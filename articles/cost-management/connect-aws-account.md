@@ -11,10 +11,10 @@ ms.service: cost-management
 manager: benshy
 ms.custom: seodec18
 ms.openlocfilehash: b39296e18b38180e1081866d6e8197973dc782b1
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66002166"
 ---
 # <a name="connect-an-amazon-web-services-account"></a>Připojení účtu Amazon Web Services
@@ -36,7 +36,7 @@ Prvním krokem je získání připojení jedinečné heslo z portálu Cloudyn. P
 
 1. Otevřete portál Cloudyn z portálu Azure portal nebo přejděte na [ https://azure.cloudyn.com ](https://azure.cloudyn.com) a přihlaste se.
 2. Kliknutím na symbol ozubeného kola a pak vyberte **cloudové účty**.
-3. Správa účtů, vyberte **účtů AWS** kartu a potom klikněte na tlačítko **přidat nový +**.
+3. Správa účtů, vyberte **účtů AWS** kartu a potom klikněte na tlačítko **přidat nový +** .
 4. V **přidání účtu AWS** dialogové okno, kopie **externí ID** a uložte hodnotu pro roli AWS vytváření kroky v další části. Externí ID je jedinečné pro váš účet. Na následujícím obrázku příklad externí ID se _Contoso_ následuje ji číslo. Vaše ID se liší.  
     ![Externí ID, které jsou zobrazeny v okně Přidání účtu AWS](./media/connect-aws-account/external-id.png)
 
@@ -57,7 +57,7 @@ Prvním krokem je získání připojení jedinečné heslo z portálu Cloudyn. P
 
 1. Otevřete portál Cloudyn z portálu Azure portal nebo přejděte na https://azure.cloudyn.com/ a přihlaste se.
 2. Kliknutím na symbol ozubeného kola a pak vyberte **cloudové účty**.
-3. Správa účtů, vyberte **účtů AWS** kartu a potom klikněte na tlačítko **přidat nový +**.
+3. Správa účtů, vyberte **účtů AWS** kartu a potom klikněte na tlačítko **přidat nový +** .
 4. V **název účtu**, zadejte název pro účet.
 5. Vedle položky **typ přístupu**vyberte **IAM Role**.
 6. V **Role ARN** pole, vložte tuto hodnotu jste dříve zkopírovali a potom klikněte na **Uložit**.  
@@ -94,7 +94,7 @@ Následující části vás provede vytvořením uživatele jen pro čtení k po
 
 1. Portál Cloudyn můžete otevřít z webu Azure Portal nebo můžete přejít na adresu https://azure.cloudyn.com/ a přihlásit se.
 2. Kliknutím na symbol ozubeného kola a pak vyberte **cloudové účty**.
-3. Správa účtů, vyberte **účtů AWS** kartu a potom klikněte na tlačítko **přidat nový +**.
+3. Správa účtů, vyberte **účtů AWS** kartu a potom klikněte na tlačítko **přidat nový +** .
 4. Pro **název účtu**, zadejte název účtu.
 5. Vedle položky **typ přístupu**vyberte **IAM uživatele**.
 6. V **přístupový klíč**, vložte **přístup klíče ID** hodnotu ze souboru credentials.csv.

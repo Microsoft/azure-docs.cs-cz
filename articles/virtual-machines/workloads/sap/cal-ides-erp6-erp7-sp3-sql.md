@@ -17,10 +17,10 @@ ms.workload: infrastructure-services
 ms.date: 09/16/2016
 ms.author: hermannd
 ms.openlocfilehash: 413e449f005d288f66da0257f5b800733e58eb94
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60836428"
 ---
 # <a name="deploy-sap-ides-ehp7-sp3-for-sap-erp-60-on-azure"></a>Nasazení SAP IDES EHP7 SP3 pro SAP ERP 6.0 v Azure
@@ -104,7 +104,7 @@ Po přihlášení k SAP CAL na první stránce obvykle povede k **řešení** st
 
     c.  Zadejte hlavní **heslo** pro řešení, jak je znázorněno:
 
-    ![Režim SAP CAL Basic: Vytvořit instanci](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic10a.png)
+    ![Režim SAP CAL Basic: Vytvoření Instance](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic10a.png)
 
 1. Klikněte na možnost **Vytvořit**. Zopakovat později v závislosti na velikosti a složitosti řešení (SAP CAL poskytuje odhad), stav se zobrazí jako aktivní a připravena k použití: 
 

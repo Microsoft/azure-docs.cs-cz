@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: db2104020e9478b1fedf68e1c9467f75e16044e2
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66155795"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67175044"
 ---
 #### <a name="to-cable-for-power"></a>K zapojení výkon
 1. Ujistěte se, že výkon přepínače na všech napájení a chlazení moduly (PCMs) jsou na jinou pozici.
@@ -25,11 +25,11 @@ ms.locfileid: "66155795"
    
     **Napájení kabelů v zařízení 8100**
    
-   | Popisek | Popis |
+   | Štítek | Popis |
    |:--- |:--- |
    | 1 |PCM 0 |
-   | 2 |Řadič 1 |
-   | 3 |Řadič 0 |
+   | 2 |Kontroler 1 |
+   | 3 |Kontroler 0 |
    | 4 |PCM 1 |
    | 5 |Jednotky PDU |
 4. Chcete-li v systému, překlopte napájení přepínače na obou PCMs do polohy zapnuto.

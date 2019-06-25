@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/21/2016
 ms.author: ghogen
 ms.openlocfilehash: ea50506df53bfd586656d0030be4536d9d3b907d
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62122980"
 ---
 # <a name="get-started-with-azure-table-storage-and-visual-studio-connected-services-aspnet"></a>Začínáme s Azure table storage a Visual Studio připojené služby (ASP.NET)
@@ -24,7 +24,7 @@ ms.locfileid: "62122980"
 
 ## <a name="overview"></a>Přehled
 
-Azure Table storage umožňuje ukládat velké objemy strukturovaných dat. Tato služba je úložiště dat typu NoSQL, která přijímá ověřených volání z uvnitř i mimo Azure cloud. Tabulky Azure jsou ideální pro ukládání strukturovaných, nerelačních dat.
+Azure Table storage umožňuje ukládat velké objemy strukturovaných dat. Tato služba je úložiště dat typu NoSQL, která přijímá ověřených volání z uvnitř i mimo Azure cloud. Jsou ideální pro ukládání strukturovaných, nerelačních dat tabulky Azure.
 
 Tento kurz ukazuje, jak napsat kód technologie ASP.NET pro některé běžné scénáře pomocí entity úložiště tabulek v Azure. Mezi tyto scénáře patří vytvoření tabulky a přidávání, dotazování a odstranění tabulkové entity. 
 
@@ -171,7 +171,7 @@ Následující kroky ukazují, jak vytvořit tabulku:
 
 1. Spusťte aplikaci a vyberte **Create table** zobrazíte výsledky podobně jako na následujícím snímku obrazovky:
   
-    ![Vytvořit tabulku](./media/vs-storage-aspnet-getting-started-tables/create-table-results.png)
+    ![Vytvoření tabulky](./media/vs-storage-aspnet-getting-started-tables/create-table-results.png)
 
     Jak už bylo zmíněno dříve, **CloudTable.CreateIfNotExists** vrátí metoda **true** pouze když neexistuje a je vytvořen v tabulce. Proto při spuštění aplikace, existuje v tabulce, metoda vrátí **false**. Ke spuštění aplikace více než jednou, je nutné odstranit tabulku před spuštěním aplikace. Odstraňuje se tabulka, můžete to udělat pomocí **CloudTable.Delete** metody. Můžete také odstranit pomocí tabulky [webu Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) nebo [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md).  
 

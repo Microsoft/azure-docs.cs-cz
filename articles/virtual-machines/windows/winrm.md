@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2016
 ms.author: kasing
-ms.openlocfilehash: 89739aa51748e7bc69fc42b8b745994bbe50e39d
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: c4df3d6a55021cafa04bb6bcba643be41dc0e612
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58309789"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273776"
 ---
 # <a name="setting-up-winrm-access-for-virtual-machines-in-azure-resource-manager"></a>Nastavení přístupu WinRM pro virtuální počítače v Azure Resource Manageru
 
@@ -32,7 +32,7 @@ Tady jsou kroky, které musíte provést nastavení virtuálního počítače s 
 4. Získat adresu URL pro váš certifikát podepsaný svým držitelem ve službě Key Vault
 5. Odkazovat na adresu URL svého certifikáty podepsané svým držitelem při vytváření virtuálního počítače
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="step-1-create-a-key-vault"></a>Krok 1: Vytvoření trezoru klíčů
 Můžete použít následující příkaz k vytvoření služby Key Vault
@@ -93,7 +93,7 @@ Můžete získat odkaz na adresu URL pomocí šablony níže uvedeného kódu
 #### <a name="powershell"></a>PowerShell
 Můžete získat pomocí této adresy URL následující příkaz prostředí PowerShell
 
-    $secretURL = (Get-AzureKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>").Id
+    $secretURL = (Get-AzKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>").Id
 
 ## <a name="step-5-reference-your-self-signed-certificates-url-while-creating-a-vm"></a>Krok 5: Odkazovat na adresu URL svého certifikáty podepsané svým držitelem při vytváření virtuálního počítače
 #### <a name="azure-resource-manager-templates"></a>Šablony Azure Resource Manageru
@@ -138,7 +138,7 @@ Zdrojový kód pro tuto šablonu můžete najít na [Githubu](https://github.com
 #### <a name="powershell"></a>PowerShell
     $vm = New-AzVMConfig -VMName "<VM name>" -VMSize "<VM Size>"
     $credential = Get-Credential
-    $secretURL = (Get-AzureKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>").Id
+    $secretURL = (Get-AzKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>").Id
     $vm = Set-AzVMOperatingSystem -VM $vm -Windows -ComputerName "<Computer Name>" -Credential $credential -WinRMHttp -WinRMHttps -WinRMCertificateUrl $secretURL
     $sourceVaultId = (Get-AzKeyVault -ResourceGroupName "<Resource Group name>" -VaultName "<Vault Name>").ResourceId
     $CertificateStore = "My"

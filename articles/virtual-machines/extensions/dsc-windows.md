@@ -15,10 +15,10 @@ ms.workload: ''
 ms.date: 03/26/2018
 ms.author: robreed
 ms.openlocfilehash: 9f81e2b7537a5ecc6778baa93a1bab23dd30ff8a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61475503"
 ---
 # <a name="powershell-dsc-extension"></a>Rozšíření PowerShell DSC
@@ -101,23 +101,23 @@ Následující kód JSON ukazuje schéma pro nastavení část rozšíření DSC
 | Název | Hodnota / příklad | Typ dat |
 | ---- | ---- | ---- |
 | apiVersion | 2018-10-01 | date |
-| vydavatele | Microsoft.Powershell.DSC | string |
+| publisher | Microsoft.Powershell.DSC | string |
 | type | DSC | string |
 | typeHandlerVersion | 2.77 | int |
 
 ### <a name="settings-property-values"></a>Nastavení hodnoty vlastností
 
-| Název | Typ dat | Popis
+| Name | Typ dat | Popis
 | ---- | ---- | ---- |
 | settings.wmfVersion | string | Určuje verzi Windows Management Framework, který musí být nainstalován na váš virtuální počítač. Nastavení této vlastnosti 'nejnovější' nainstaluje nejaktuálnější verzi WMF. Pouze aktuální možné hodnoty této vlastnosti jsou "4.0", '5.0' a 'nejnovější'. Tyto možné hodnoty jsou v souladu s aktualizací. Výchozí hodnota je 'nejnovější'. |
 | settings.configuration.url | string | Určuje adresu URL umístění, ze kterého chcete stáhnout konfigurační soubor zip DSC. Pokud zadaná adresa URL vyžaduje SAS token pro přístup, musíte nastavit vlastnost protectedSettings.configurationUrlSasToken hodnotu váš token SAS. Tato vlastnost je vyžadována, pokud jsou definovány settings.configuration.script a/nebo settings.configuration.function.
 | settings.configuration.script | string | Určuje název souboru skriptu, který obsahuje definici konfigurace DSC. Tento skript musí být v kořenové složce stažený z adresy URL určený vlastností configuration.url souboru zip. Tato vlastnost je vyžadována, pokud jsou definovány settings.configuration.url a/nebo settings.configuration.script.
 | settings.configuration.function | string | Určuje název konfigurace DSC. Konfigurace s názvem musí být součástí skriptu určené configuration.script. Tato vlastnost je vyžadována, pokud jsou definovány settings.configuration.url a/nebo settings.configuration.function.
-| settings.configurationArguments | Kolekce | Definuje všechny parametry, které chcete předat do vaší konfigurace DSC. Tato vlastnost se šifrovat nebude.
+| settings.configurationArguments | Collection | Definuje všechny parametry, které chcete předat do vaší konfigurace DSC. Tato vlastnost se šifrovat nebude.
 | settings.configurationData.url | string | Určuje adresu URL z nichž lze stáhnout soubor konfiguračních dat (.pds1) použít jako vstup pro konfiguraci DSC. Pokud zadaná adresa URL vyžaduje SAS token pro přístup, musíte nastavit vlastnost protectedSettings.configurationDataUrlSasToken hodnotu váš token SAS.
 | settings.privacy.dataEnabled | string | Povolí nebo zakáže shromažďování telemetrie. Pouze možné hodnoty této vlastnosti jsou "Zapnout", "Zakázat", ", nebo $null. Opuštění tato vlastnost prázdná nebo mít hodnotu null bude povolit telemetrii
 | settings.advancedOptions.forcePullAndApply | Bool | Toto nastavení slouží k zajištění lepších možností práce s příponou k registraci uzlů ve službě Azure Automation DSC.  Pokud je hodnota `$true`, rozšíření počká na první spuštění konfigurace získaných ze služby teprve potom se informuje o úspěchu nebo selhání.  Pokud je hodnota nastavena na $false, stav vrácený rozšíření bude odkazovat pouze na Určuje, zda uzel byl zaregistrován ve službě Azure Automation stav konfigurace úspěšně a konfigurace uzlu nebude spuštěno během registrace.
-| settings.advancedOptions.downloadMappings | Kolekce | Definuje alternativní umístění pro stažení závislosti, jako jsou WMF a .NET
+| settings.advancedOptions.downloadMappings | Collection | Definuje alternativní umístění pro stažení závislosti, jako jsou WMF a .NET
 
 ### <a name="protected-settings-property-values"></a>Chráněné hodnoty nastavení vlastností
 

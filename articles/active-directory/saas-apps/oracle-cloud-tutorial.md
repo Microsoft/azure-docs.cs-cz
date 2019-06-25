@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 06/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a034e7dc06defd701b58ec283ee161f5557c075d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 456c984e577e3427ce8cd62d6f63987118f2c8ed
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67095451"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164159"
 ---
 # <a name="tutorial-integrate-oracle-cloud-infrastructure-console-with-azure-active-directory"></a>Kurz: Integrace s Azure Active Directory Oracle cloudové infrastruktury konzoly
 
@@ -92,7 +92,7 @@ Použijte následující postup povolení jednotného přihlašování Azure AD 
       > [!NOTE]
       > Pokud **identifikátor** a **adresy URL odpovědi** hodnoty nechcete získat polulated automaticky, a potom zadejte hodnoty ručně podle vašich požadavků.
 
-      V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce: ` https://console.<REGIONNAME>.oraclecloud.com/`
+      V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://console.<REGIONNAME>.oraclecloud.com/`
 
       > [!NOTE]
       > Hodnota není skutečný. Aktualizujte příslušnou hodnotu skutečné přihlašovací adresa URL. Kontakt [tým podpory klienta Oracle cloudové infrastruktury konzoly](https://www.oracle.com/support/advanced-customer-support/products/cloud.html) má být získána hodnota. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.

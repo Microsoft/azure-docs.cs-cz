@@ -13,10 +13,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: 35759f03d7cf09a4114ca6dca74bd3ee92fdcbfa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60761688"
 ---
 # <a name="multi-shard-querying-using-elastic-database-tools"></a>Dotazování více horizontálních oddílů pomocí nástrojů pro elastické databáze
@@ -61,7 +61,7 @@ using (MultiShardConnection conn = new MultiShardConnection(myShardMap.GetShards
 
 Klíčovým rozdílem je konstrukce připojení více horizontálních oddílů. Kde **SqlConnection** pracuje na jednotlivé databáze, **MultiShardConnection** přijímá ***sadu horizontálních oddílů*** jako vstup. Naplnění kolekce horizontálních oddílů z mapy horizontálních oddílů. Potom spuštění dotazu na sadu horizontálních oddílů pomocí **UNION ALL** sémantiku sestavit jeden celkový výsledek. Volitelně můžete do výstupu pomocí přidali jméno horizontálních oddílů, odkud pochází řádku z **ExecutionOptions** vlastnost příkazu.
 
-Všimněte si volání **myShardMap.GetShards()**. Tato metoda načte všechny horizontální oddíly z mapy horizontálních oddílů a poskytuje snadný způsob, jak spustit dotaz napříč všemi databázemi relevantní. Kolekce horizontálních oddílů pro dotazování více horizontálních oddílů může být kontrast dále provedením dotazu LINQ nad shromažďováním vrácená z volání **myShardMap.GetShards()**. V kombinaci se zásadou částečných výsledků byla navržena tak, aby fungovat dobře pro desítky až stovek horizontálních oddílů aktuální funkce v dotazování více horizontálních oddílů.
+Všimněte si volání **myShardMap.GetShards()** . Tato metoda načte všechny horizontální oddíly z mapy horizontálních oddílů a poskytuje snadný způsob, jak spustit dotaz napříč všemi databázemi relevantní. Kolekce horizontálních oddílů pro dotazování více horizontálních oddílů může být kontrast dále provedením dotazu LINQ nad shromažďováním vrácená z volání **myShardMap.GetShards()** . V kombinaci se zásadou částečných výsledků byla navržena tak, aby fungovat dobře pro desítky až stovek horizontálních oddílů aktuální funkce v dotazování více horizontálních oddílů.
 
 Omezení týkajícího se dotazování více horizontálních oddílů je aktuálně chybějící ověření pro horizontální oddíly a shardlety, které se generuje dotaz. Zatímco směrování závislé na datech ověří, jestli daný horizontálních oddílů je součástí mapy horizontálních oddílů v době dotazu, neprovádějte více horizontálních oddílů dotazy tato kontrola. To může vést k více horizontálních oddílů dotazy, které běží na databáze, které byly odebrány z mapy horizontálních oddílů.
 

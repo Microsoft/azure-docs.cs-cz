@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/24/2018
 ms.author: pkc
-ms.openlocfilehash: a931de8be07d41cf4daab63aa7691973ee158452
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 667ee6a49238c1ecaabec631cb72804b0c4b2323
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60545057"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67304257"
 ---
 # <a name="azure-service-fabric-support-options"></a>Možnosti podpory Azure Service Fabric
 
@@ -43,7 +43,7 @@ Další informace:
 
 ## <a name="report-production-issues-or-request-paid-support-for-standalone-service-fabric-clusters"></a>Oznámit problémy v produkčním prostředí nebo požádat o placené podpory pro samostatnou službu, kterou clusterů Service Fabric
 
-Pro vytváření sestav místně nasadili problémy ve vašem clusteru Service Fabric nebo v jiných cloudech, otevřete lístek pro profesionální podporu na [Microsoft support portal](https://support.microsoft.com/oas/default.aspx?prid=16146).
+Pro vytváření sestav místně nasadili problémy ve vašem clusteru Service Fabric nebo v jiných cloudech, otevřete lístek pro profesionální podporu na [Microsoft support portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
 
 Další informace:
 
@@ -60,11 +60,11 @@ Nahlásit problémy s Azure Service Fabric na [úložiště git Service-Fabric p
 
 ### <a name="stackoverflow-and-msdn-forums"></a>Fórech StackOverflow a MSDN
 
-[Značky Service Fabric na StackOverflow] [ stackoverflow] a [Service Fabric fórum na webu MSDN] [ msdn-forum] jsou nejvhodnější pro kladení otázek o tom, jak použít Platforma funguje a jak může provádět určité úlohy s ní.
+[Značky Service Fabric na StackOverflow][stackoverflow] and the [Service Fabric forum on MSDN][msdn-forum] jsou nejvhodnější používat pro kladení otázek o fungování platformu a jak může provádět určité úlohy s ní.
 
 ### <a name="azure-feedback-forum"></a>Fórum Azure pro názory
 
-[Fóru pro zpětnou vazbu Azure Service Fabric] [ uservoice-forum] je nejlepším místem pro odeslání nápady týkající se funkcí velký máte pro produkt, jako je kontrola nejoblíbenější požadavky jsou součástí naší střední až dlouhodobé plánování. Doporučujeme vám technologie rally podporu pro vaše návrhy v rámci komunity.
+[Fóru pro zpětnou vazbu Azure Service Fabric][uservoice-forum] je nejlepším místem pro odeslání nápady týkající se funkcí velký máte pro produkt, jako je kontrola nejoblíbenější požadavky jsou součástí naší střední až dlouhodobé plánování. Doporučujeme vám technologie rally podporu pro vaše návrhy v rámci komunity.
 
 ## <a name="service-fabric-preview-versions---unsupported-for-production-use"></a>Service Fabric ve verzi Preview verze - nepodporovaný pro použití v produkčním prostředí
 

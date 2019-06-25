@@ -18,10 +18,10 @@ ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: fe9b70d74e326166afae366becc47fbcc8b2ea56
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66120293"
 ---
 # <a name="create-an-sap-netweaver-multi-sid-configuration"></a>Vytvořte konfiguraci několika identifikátorů SID služby SAP NetWeaver
@@ -108,7 +108,7 @@ V existujícím clusteru služby WSFC se dvěma uzly můžete nainstalovat dalš
 | Role virtuálního počítače | Název hostitele virtuálního počítače | Statická IP adresa |
 | --- | --- | --- |
 | 1 uzel clusteru pro instanci ASCS/SCS |pr1-ascs-0 |10.0.0.10 |
-| 2. uzel clusteru pro instanci ASCS/SCS |pr1-ascs-1 |10.0.0.9 |
+| 2\. uzel clusteru pro instanci ASCS/SCS |pr1-ascs-1 |10.0.0.9 |
 
 ### <a name="create-a-virtual-host-name-for-the-clustered-sap-ascsscs-instance-on-the-dns-server"></a>Vytvořte virtuální hostitel název Clusterové instance SAP ASCS/SCS na serveru DNS
 

@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 04/29/2019
 ms.author: raynew
 ms.openlocfilehash: 6e31308800f72d60381f1e4ecd540482ba263851
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65969366"
 ---
 # <a name="troubleshoot-the-process-server"></a>Řešení potíží s procesového serveru
@@ -69,7 +69,7 @@ Procesový server generuje počet výstrah stavu služby. Tyto výstrahy a dopor
 
 Služby, které by měl být spuštěn na procesovém serveru jsou shrnuty v následující tabulce. Existují mírné rozdíly ve službách, v závislosti na způsobu nasazení procesového serveru. 
 
-Pro všechny služby s výjimkou agenta Microsoft Azure Recovery Services (obengine), zkontrolujte, programu je nastavená na **automatické** nebo **automaticky (zpožděné spuštění)**.
+Pro všechny služby s výjimkou agenta Microsoft Azure Recovery Services (obengine), zkontrolujte, programu je nastavená na **automatické** nebo **automaticky (zpožděné spuštění)** .
  
 **Nasazení** | **Spuštění služby**
 --- | ---

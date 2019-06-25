@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: 478c261bb909cbc931a7dbbaa9cb6c61152970e4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60878917"
 ---
 # <a name="comparing-azure-data-lake-storage-gen1-and-azure-blob-storage"></a>Porovnání Azure Data Lake Storage Gen1 a Azure Blob Storage
@@ -37,7 +37,7 @@ Tabulky v tomto článku shrnuje rozdíly mezi Azure Data Lake Storage Gen1 a Az
 | Operace s daty – ověření |Na základě [identit Azure Active Directory](../active-directory/develop/authentication-scenarios.md) |Podle sdílené tajné klíče - [přístupové klíče účtu](../storage/common/storage-account-manage.md#access-keys) a [klíče podpisu pro sdílený přístup](../storage/common/storage-dotnet-shared-access-signature-part-1.md). |
 | Operace s daty – ověřovací protokol |OAuth 2.0. Volání musí obsahovat platný token JWT (JSON Web Token) vydané službou Azure Active Directory |Hash-based Message Authentication Code (metoda HMAC). Volání musí obsahovat hodnotu hash SHA-256 s kódováním Base64 přes část požadavku HTTP. |
 | Operace s daty – autorizace |POSIX seznamy řízení přístupu (ACL).  Seznamy řízení přístupu na základě Azure Active Directory identit můžete nastavit na úrovni souborů a složek. |Pro autorizaci na úrovni účtu – použijte [přístupové klíče účtu](../storage/common/storage-account-manage.md#access-keys)<br>Pro účet, kontejner nebo objekt blob autorizace – použijte [sdílené přístupové klíče podpisu](../storage/common/storage-dotnet-shared-access-signature-part-1.md) |
-| Operace s daty – auditování |K dispozici. Zobrazit [tady](data-lake-store-diagnostic-logs.md) informace. |K dispozici. |
+| Operace s daty – auditování |K dispozici. Zobrazit [tady](data-lake-store-diagnostic-logs.md) informace. |K dispozici |
 | Šifrování neaktivních uložených dat |<ul><li>Transparentní, na straně serveru</li> <ul><li>S použitím klíčů spravovaných služeb</li><li>Pomocí klíčů spravovaných zákazníkem v Azure Key Vaultu</li></ul></ul> |<ul><li>Transparentní, na straně serveru</li> <ul><li>S použitím klíčů spravovaných služeb</li><li>Pomocí klíčů spravovaných zákazníkem v Azure Key Vaultu (preview)</li></ul><li>Šifrování na straně klienta</li></ul> |
 | Operace správy (například účet vytvořit) |[Řízení přístupu na základě rolí](../role-based-access-control/overview.md) (RBAC) poskytovaný platformou Azure pro správu účtu |[Řízení přístupu na základě rolí](../role-based-access-control/overview.md) (RBAC) poskytovaný platformou Azure pro správu účtu |
 | Sady SDK pro vývojáře |.NET, Java, Python, Node.js |.NET, Java, Python, Node.js, C++, Ruby, PHP, Go, Android, iOS |

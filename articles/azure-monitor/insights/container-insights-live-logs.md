@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/12/2019
+ms.date: 06/19/2019
 ms.author: magoedte
-ms.openlocfilehash: 71c6f1936f8cbc700a24d0ffb497947c8c8d3a50
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7fd9248fd38054b7f0e1fad2888d8b0d4cf2e60c
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67075306"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274224"
 ---
 # <a name="how-to-view-logs-and-events-in-real-time-preview"></a>Postup zobrazení protokolů a událostí v reálném čase (preview)
 Azure Monitor pro kontejnery obsahuje funkci, která je aktuálně ve verzi preview, která poskytuje živé zobrazit protokoly kontejneru Azure Kubernetes Service (AKS) (stdout/stderr) a události bez nutnosti spuštění příkazů kubectl. Když vyberete jednu z možností, nové podokno se zobrazí pod tabulkou dat výkonu na **uzly**, **řadiče**, a **kontejnery** zobrazení. Zobrazuje živé protokolování a události generované modulem kontejneru pro další pomoc při řešení problémů v reálném čase.
@@ -77,6 +77,9 @@ AKS je nakonfigurovat pro ověřování uživatelů pomocí Azure Active Directo
 
 >[!NOTE]
 >Konfigurace ověřování pomocí Azure Active Directory pro jednotné přihlašování na lze provést pouze během počátečního nasazení nového clusteru AKS. Nelze nakonfigurovat jednotné přihlašování v pro cluster AKS, už nasazená.
+  
+>[!IMPORTANT]
+>Pokud jste změnili konfiguraci Azure AD pro ověřování uživatelů pomocí aktualizované identifikátor URI, vymažte mezipaměť prohlížeče, aby aktualizované ověřovací token je stažení a použití.   
 
 ## <a name="view-live-logs-and-events"></a>Zobrazit živé protokoly a události
 

@@ -11,10 +11,10 @@ ms.date: 05/17/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: bcbda2464a4607aaa0b1bb96ef8f34c8713cb5f1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60738760"
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Řízení přístupu na základě role ve službě Azure Automation
@@ -32,7 +32,7 @@ Ve službě Azure Automation se přístup uděluje přiřazením příslušné r
 | Čtenář |Role čtenáře vám umožní zobrazit všechny prostředky na účtu Automation, ale neumožní vám provádět změny. |
 | Operátor služby Automation |Role operátora služby Automation umožňuje zobrazit název sady runbook a vlastnosti a vytváření a Správa úloh pro všechny sady runbook v účtu Automation. Tato role je užitečná, pokud chcete chránit prostředky na účtu Automation, například assety přihlašovacích údajů a runbooky, aby je nikdo nemohl zobrazit nebo upravit, ale aby členové vaší organizace mohli tyto runbooky stále spouštět. |
 |Operátor úloh Automation|Role operátor úloh Automation umožňuje vytváření a Správa úloh pro všechny sady runbook v účtu Automation.|
-|Operátor runbooků Automation|Role operátora služby Automation Runbook umožňuje uživateli zobrazit název a vlastnosti sady runbook.|
+|Operátor Runbooků Automation|Role operátora služby Automation Runbook umožňuje uživateli zobrazit název a vlastnosti sady runbook.|
 | Přispěvatel Log Analytics | Role Přispěvatel Log Analytics umožňuje číst všechna data monitorování a upravit nastavení monitorování. Úprava nastavení monitorování patří přidávání rozšíření do virtuálních počítačů, čtení klíčů účtů úložiště, abyste mohli konfigurovat shromažďování protokolů ze služby Azure storage, vytváření a konfigurace účtů služby Automation, přidávání řešení a konfigurace diagnostik Azure na všechny prostředky Azure.|
 | Čtenář Log Analytics | Role Čtenář Log Analytics umožňuje zobrazit a prohledat všechna sledování a také zobrazení nastavení monitorování. To zahrnuje zobrazení konfigurace diagnostiky Azure na všech prostředcích Azure. |
 | Přispěvatel monitorování | Role Přispěvatel monitorování umožňuje číst všechny monitorování dat a aktualizovat nastavení monitorování.|
@@ -116,7 +116,7 @@ Role operátor úloh Automation je poskytnuta v rozsahu účtu Automation. Dí
 |Microsoft.Insights/alertRules/*      | Vytvářet a spravovat pravidla výstrah.        |
 |Microsoft.Support/* |Vytvořit a spravovat lístky podpory.|
 
-### <a name="automation-runbook-operator"></a>Operátor runbooků Automation
+### <a name="automation-runbook-operator"></a>Operátor Runbooků Automation
 
 Role operátora služby Automation Runbook jsou udělena v oboru sady Runbook. Operátor automatizace sady Runbook můžete zobrazit název a vlastnosti sady runbook.  Tato role v kombinaci s role operátor úloh Automation umožňuje operátor můžete také vytvářet a spravovat úlohy runbooku. V následující tabulce jsou uvedeny oprávnění udělená pro roli:
 
@@ -135,7 +135,7 @@ Přispěvatel Log Analytics může číst všechna data monitorování a upravit
 
 |**Akce**  |**Popis**  |
 |---------|---------|
-|* / čtení|Číst prostředky všech typů, s výjimkou tajných kódů.|
+|\* / čtení|Číst prostředky všech typů, s výjimkou tajných kódů.|
 |Microsoft.Automation/automationAccounts/*|Správa účtů služby automation.|
 |Microsoft.ClassicCompute/virtualMachines/extensions/*|Vytvoření a správa rozšíření virtuálních počítačů.|
 |Microsoft.ClassicStorage/storageAccounts/listKeys/action|Vypsat klíče účtu klasického úložiště.|
@@ -155,7 +155,7 @@ Přispěvatel Log Analytics může číst všechna data monitorování a upravit
 
 |**Akce**  |**Popis**  |
 |---------|---------|
-|* / čtení|Číst prostředky všech typů, s výjimkou tajných kódů.|
+|\* / čtení|Číst prostředky všech typů, s výjimkou tajných kódů.|
 |Microsoft.OperationalInsights/workspaces/analytics/query/action|Správa dotazů v protokoly Azure monitoru.|
 |Microsoft.OperationalInsights/workspaces/search/action|Hledat data protokolů Azure Monitor.|
 |Microsoft.Support/*|Vytvořit a spravovat lístky podpory.|
@@ -168,7 +168,7 @@ Přispěvatel monitorování může číst všechna data monitorování a aktual
 
 |**Akce**  |**Popis**  |
 |---------|---------|
-|* / čtení|Číst prostředky všech typů, s výjimkou tajných kódů.|
+|\* / čtení|Číst prostředky všech typů, s výjimkou tajných kódů.|
 |Microsoft.AlertsManagement/alerts/*|Správa výstrah.|
 |Microsoft.AlertsManagement/alertsSummary/*|Správa výstrah řídicí panel.|
 |Microsoft.Insights/AlertRules/*|Spravujte pravidla výstrah.|
@@ -194,7 +194,7 @@ Přispěvatel monitorování může číst všechna data monitorování a aktual
 
 |**Akce**  |**Popis**  |
 |---------|---------|
-|* / čtení|Číst prostředky všech typů, s výjimkou tajných kódů.|
+|\* / čtení|Číst prostředky všech typů, s výjimkou tajných kódů.|
 |Microsoft.OperationalInsights/workspaces/search/action|Hledejte pracovní prostory Log Analytics.|
 |Microsoft.Support/*|Vytvořit a spravovat lístky podpory|
 
@@ -204,7 +204,7 @@ Správce uživatelských přístupů můžete spravovat přístup uživatelů k 
 
 |**Akce**  |**Popis**  |
 |---------|---------|
-|* / čtení|Číst všechny prostředky|
+|\* / čtení|Číst všechny prostředky|
 |Microsoft.Authorization/*|Správa autorizací|
 |Microsoft.Support/*|Vytvořit a spravovat lístky podpory|
 
@@ -221,7 +221,7 @@ V následujících tabulkách minimální požadované oprávnění potřebná p
 |Vytvořit nový výchozí pracovní prostor      | Microsoft.OperationalInsights/workspaces/write         | Skupina prostředků         |
 |Vytvořit nový účet      |  Microsoft.Automation/automationAccounts/write        |Skupina prostředků         |
 |Propojení pracovního prostoru a účtu      |Microsoft.OperationalInsights/workspaces/write</br>Microsoft.Automation/automationAccounts/read|Pracovní prostor</br>Účet Automation
-|Vytvořit řešení      | Microsoft.OperationalInsights/workspaces/intelligencepacks/write |Skupina prostředků          |
+|Vytvoření řešení      | Microsoft.OperationalInsights/workspaces/intelligencepacks/write |Skupina prostředků          |
 |Jak vytvořit rozšíření agenta MMA      | Microsoft.Compute/virtualMachines/write         | Virtuální počítač         |
 |Vytvořit uložené výsledky hledání      | Microsoft.OperationalInsights/workspaces/write          | Pracovní prostor         |
 |Vytvořit konfiguraci oboru      | Microsoft.OperationalInsights/workspaces/write          | Pracovní prostor         |
@@ -240,14 +240,14 @@ V následujících tabulkách minimální požadované oprávnění potřebná p
 |**Akce**  |**Oprávnění** |**Minimální rozsah**  |
 |---------|---------|---------|
 |Vytvořte nové nasazení     | Microsoft.Resources/deployments/*        | Předplatné         |
-|Vytvořte novou skupinu prostředků     | Microsoft.Resources/subscriptions/resourceGroups/write         | Předplatné        |
+|Vytvořit novou skupinu prostředků     | Microsoft.Resources/subscriptions/resourceGroups/write         | Předplatné        |
 |Okno AutomationOnboarding – vytvořit nový pracovní prostor     |Microsoft.OperationalInsights/workspaces/write           | Skupina prostředků        |
 |Okno AutomationOnboarding – přečtěte si propojení pracovního prostoru     | Microsoft.Automation/automationAccounts/read        | Účet Automation       |
 |Okno AutomationOnboarding – přečtěte si řešení     | Microsoft.OperationalInsights/workspaces/intelligencepacks/read         | Řešení        |
 |Okno AutomationOnboarding – čtení pracovního prostoru     | Microsoft.OperationalInsights/workspaces/intelligencepacks/read        | Pracovní prostor        |
 |Vytvoření odkazu na pracovní prostor a účet     | Microsoft.OperationalInsights/workspaces/write        | Pracovní prostor        |
 |Zapsat účet pro materiálů uložených      | Microsoft.Automation/automationAccounts/write        | Účet        |
-|Vytvořit řešení      | Microsoft.OperationalInsights/workspaces/intelligencepacks/write        | Skupina prostředků         |
+|Vytvoření řešení      | Microsoft.OperationalInsights/workspaces/intelligencepacks/write        | Skupina prostředků         |
 |Vytvořit/upravit uložené hledání     | Microsoft.OperationalInsights/workspaces/write        | Pracovní prostor        |
 |Vytvořit nebo upravit konfiguraci oboru     | Microsoft.OperationalInsights/workspaces/write        | Pracovní prostor        |
 |Řešení odkazu ke konfiguraci oboru      | Microsoft.OperationalInsights/workspaces/intelligencepacks/write         | Řešení         |

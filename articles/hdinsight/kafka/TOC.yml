@@ -11,19 +11,19 @@
       href: apache-kafka-get-started.md
     - name: Vytvoření clusteru Apache Kafka – PowerShell
       href: apache-kafka-quickstart-powershell.md
-    - name: Vytvoření clusteru Apache Kafka – šablona Resource Manageru
+    - name: Vytvoření clusteru Apache Kafka – šablona
       displayName: 'resource manager template, arm template, resource manager group'
       href: apache-kafka-quickstart-resource-manager-template.md
 - name: Kurzy
   items:
-    - name: Použití strukturovaného streamování Apache Sparku
-      href: ../hdinsight-apache-kafka-spark-structured-streaming.md
-    - name: Zápis/čtení z Apache Kafka pomocí Apache Stormu
-      href: ../hdinsight-apache-storm-with-kafka.md
     - name: Použití rozhraní Apache Kafka Producer and Consumer API
       href: apache-kafka-producer-consumer-api.md
     - name: Vývoj aplikace s využitím rozhraní Apache Kafka Streams API
       href: apache-kafka-streams-api.md
+    - name: Použití strukturovaného streamování Apache Sparku
+      href: ../hdinsight-apache-kafka-spark-structured-streaming.md
+    - name: Zápis/čtení z Apache Kafka pomocí Apache Stormu
+      href: ../hdinsight-apache-storm-with-kafka.md
 - name: Koncepty
   items:
     - name: Plánování kapacity

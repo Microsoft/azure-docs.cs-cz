@@ -16,10 +16,10 @@ ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
 ms.openlocfilehash: c0584a69349c2785b5b6bce1d17c023c95b36151
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66136178"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>Řešení potíží s doménou a problémy s certifikátem protokolu SSL ve službě Azure App Service
@@ -267,7 +267,7 @@ K tomuto problému dochází z jednoho z následujících důvodů:
 
     **Řešení**: Ověřte, zda je správně nakonfigurována vaše CNAME nebo záznam. K mapování vlastní domény na aplikaci, vytvořte záznam CNAME nebo záznam. Pokud chcete použít kořenovou doménu, musíte použít záznamy A a TXT:
 
-    |Typ záznamu|Hostitel|Přejděte na|
+    |Typ záznamu|Host|Přejděte na|
     |------|------|-----|
     |A|@|IP adresa pro aplikaci|
     |TXT|@|`<app-name>.azurewebsites.net`|
@@ -301,7 +301,7 @@ Není to povinné k migraci do Azure DNS hostování. Pokud chcete migrovat do A
 
 **Chci koupit doménu z doména App Service, ale můžete hostovat Moje domény GoDaddy místo Azure DNS?**
 
-24. července 2017, od domény služby App Service zakoupené na portálu jsou hostované na Azure DNS. Pokud upřednostňujete použití jiného poskytovatele hostitelských služeb, musí přejít na web příslušného vydavatele získat řešení hostování domény.
+24\. července 2017, od domény služby App Service zakoupené na portálu jsou hostované na Azure DNS. Pokud upřednostňujete použití jiného poskytovatele hostitelských služeb, musí přejít na web příslušného vydavatele získat řešení hostování domény.
 
 **Musím platit za ochranu osobních údajů pro Moje doména?**
 

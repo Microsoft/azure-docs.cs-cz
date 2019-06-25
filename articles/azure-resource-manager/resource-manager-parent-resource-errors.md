@@ -1,22 +1,17 @@
 ---
 title: Azure nadřazený prostředek chyby | Dokumentace Microsoftu
 description: Popisuje, jak řešení chyb při práci se nadřazený prostředek.
-services: azure-resource-manager
-documentationcenter: ''
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 08/01/2018
 ms.author: tomfitz
-ms.openlocfilehash: 19642138105f3de0e2bda3f0f80e12cf74a35709
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6111f9128c56fed97414734275a21612544cccb8
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61059986"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205391"
 ---
 # <a name="resolve-errors-for-parent-resources"></a>Řešení chyb pro nadřazené prostředky
 

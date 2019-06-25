@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/18/2017
 ms.author: alch
 ms.openlocfilehash: 7f692c08f8af322bf7e6ab576e2e6f516594a6c4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61336513"
 ---
 # <a name="similarity-method"></a>Metoda podobnosti
@@ -39,7 +39,7 @@ Parametr        |Typ dat      |Požaduje se | Popis
 
 ## <a name="response"></a>Odpověď
 
-Název | Popis
+Name | Popis
 --------|---------
 **SimilarityScore**        |Představující kosinovou podobnost s1 a s2 s hodnotami blíž k 1.0 význam podobné a hodnoty blíže-1.0, což znamená menší hodnota s plovoucí desetinnou čárkou
 
@@ -47,12 +47,12 @@ Název | Popis
 
 ## <a name="successerror-conditions"></a>Úspěch/chybových podmínek
 
-Stav protokolu HTTP | Důvod | Odpověď
+Stav protokolu HTTP | Reason | Odpověď
 -----------|----------|--------
 **200**         |Úspěch | Plovoucí desetinné číslo s desetinnou čárkou
 **400**         | Chybný požadavek nebo požadavek není platný | Chybová zpráva      
 **500**         |Vnitřní chyba serveru | Chybová zpráva
-**Vypršel časový limit**     | Vypršel časový limit žádosti.  | Chybová zpráva
+**Vypršel časový limit**     | Vypršel časový limit požadavku.  | Chybová zpráva
 
 <br>
 

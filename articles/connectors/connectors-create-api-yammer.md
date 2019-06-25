@@ -12,10 +12,10 @@ ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
 ms.openlocfilehash: ca2d28f3438fd166fa282488206662c95777bf3b
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62104727"
 ---
 # <a name="monitor-and-manage-your-yammer-account-by-using-azure-logic-apps"></a>Monitorovat a spravovat váš účet Yammeru pomocí Azure Logic Apps
@@ -60,7 +60,7 @@ Můžete použít aktivační události, které odpovědi z vašeho účtu Yamme
        -nebo-
 
      * Mezi kroky, ve které chcete přidat akci přesuňte ukazatel nad šipku mezi kroky. 
-     Vyberte znaménko plus (**+**), který se zobrazí a pak vyberte **přidat akci**.
+     Vyberte znaménko plus ( **+** ), který se zobrazí a pak vyberte **přidat akci**.
      
        Do vyhledávacího pole zadejte jako filtr "yammer". 
        V seznamu akcí vyberte požadovanou akci.

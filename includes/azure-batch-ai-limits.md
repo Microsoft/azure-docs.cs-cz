@@ -9,11 +9,11 @@ ms.date: 09/11/2018
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: 4603dd88d1212d06f4aeb1763a48f3015e20e8a8
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62128496"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203790"
 ---
 | **Prostředek** | **Výchozí omezení** | **Maximální limit** |
 | --- | --- | --- |

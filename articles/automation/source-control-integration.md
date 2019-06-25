@@ -9,20 +9,20 @@ ms.author: gwallace
 ms.date: 04/26/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 94912d5aa10ddd2e67c33bcbb416f007c85f105c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: ce41ae73a0c55a2b5c27cbdce4d4c16853acf59e
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64574106"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273192"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Integrace správy zdrojového kódu ve službě Azure Automation
 
-Správy zdrojového kódu umožňuje udržovat vaše sady runbook ve vaší službě Automation jsou účet aktuální pomocí skriptů v úložišti Githubu nebo úložiště Azure zdrojového ovládacího prvku. Správy zdrojového kódu můžete snadno spolupracovat se svým týmem, sledovat změny a vrátit zpět na starší verze vašich sadách runbook. Například správy zdrojového kódu můžete synchronizovat různými větvemi ve správě zdrojového kódu pro účty služby Automation vývojové, testovací nebo produkční prostředí. To usnadňuje podporu kód, který byl testován ve vašem vývojovém prostředí účtu Automation v produkčním prostředí. Integrace správy zdrojového kódu pomocí automatizace podporuje jeden směr synchronizaci z svým úložištěm řízení zdrojů.
+Správy zdrojového kódu můžete aktualizovat své sady runbook ve vašem účtu Automation pomocí skriptů v Githubu nebo úložiště Azure úložiště řízení zdrojů. Správy zdrojového kódu můžete snadno spolupracovat se svým týmem, sledovat změny a vrátit zpět na starší verze vašich sadách runbook. Například správy zdrojového kódu můžete synchronizovat různými větvemi ve správě zdrojového kódu pro účty služby Automation vývojové, testovací nebo produkční prostředí. To usnadňuje podporu kód, který byl testován ve vašem vývojovém prostředí účtu Automation v produkčním prostředí. Integrace správy zdrojového kódu pomocí automatizace podporuje jeden směr synchronizaci z svým úložištěm řízení zdrojů.
 
 Azure Automation podporuje tři typy správy zdrojového kódu:
 
-* GitHubu
+* GitHub
 * Úložiště Azure (Git)
 * Úložiště Azure (TFVC)
 
@@ -48,7 +48,7 @@ Na **souhrnný ovládací prvek zdroje** stránce, potřebné informace a klikn�
 |Vlastnost  |Popis  |
 |---------|---------|
 |Název správy zdrojového kódu     | Popisný název pro správu zdrojového kódu. *Tento název může obsahovat jenom písmena a číslice.*        |
-|Typ správy zdrojového kódu     | Typ zdrojového ovládacího prvku zdroje. Dostupné možnosti jsou:</br> GitHubu</br>Úložiště Azure (Git)</br> Úložiště Azure (TFVC)        |
+|Typ správy zdrojového kódu     | Typ zdrojového ovládacího prvku zdroje. Dostupné možnosti jsou:</br> GitHub</br>Úložiště Azure (Git)</br> Úložiště Azure (TFVC)        |
 |Úložiště     | Název úložiště nebo projektu. Prvních 200 úložišť jsou vráceny. K vyhledání úložiště, zadejte název do pole a klikněte na tlačítko **hledání na Githubu**.|
 |Branch     | Větev o přijetí změn zdrojových souborů ze. Cílení na větev není k dispozici pro typ ovládacího prvku zdroje TFVC.          |
 |Cesta ke složce     | Tato složka obsahuje sady runbook k synchronizaci. Příklad: /Runbooks </br>*Jenom runbooky ve složce určené synchronizují. Rekurze se nepodporuje.*        |
@@ -79,7 +79,7 @@ New-AzureRmAutomationSourceControl -Name SCReposGit -RepoUrl https://<accountnam
 New-AzureRmAutomationSourceControl -Name SCReposTFVC -RepoUrl https://<accountname>.visualstudio.com/<projectname>/_versionControl -SourceType VsoTfvc -AccessToken <secureStringofPAT> -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName> -FolderPath "/Runbooks"
 ```
 
-### <a name="github"></a>GitHubu
+### <a name="github"></a>GitHub
 
 ```powershell-interactive
 New-AzureRmAutomationSourceControl -Name SCGitHub -RepoUrl https://github.com/<accountname>/<reponame>.git -SourceType GitHub -FolderPath "/MyRunbooks" -Branch master -AccessToken <secureStringofPAT> -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName>
@@ -89,11 +89,11 @@ New-AzureRmAutomationSourceControl -Name SCGitHub -RepoUrl https://github.com/<a
 
 Správy zdrojových kódů vyžaduje některé minimální sadu oprávnění pro osobní přístupové tokeny. Následující tabulky obsahují minimální sadu oprávnění potřebných pro GitHub a úložiště Azure.
 
-#### <a name="github"></a>GitHubu
+#### <a name="github"></a>GitHub
 
 Další informace o vytvoření osobního přístupového tokenu githubu najdete [vytvoření osobního přístupového tokenu pro příkazový řádek](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/).
 
-|Rozsah  |Popis  |
+|Scope  |Popis  |
 |---------|---------|
 |**úložiště**     |         |
 |repo:status     | Stav přístupu pro potvrzení změn         |
@@ -107,7 +107,7 @@ Další informace o vytvoření osobního přístupového tokenu githubu najdete
 
 Další informace o vytvoření osobního přístupového tokenu v úložišti Azure, navštivte [ověření přístupu s osobní přístupové tokeny](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate).
 
-|Rozsah  |
+|Scope  |
 |---------|
 |Kódování (čtení)     |
 |Projekt a tým (čtení)|

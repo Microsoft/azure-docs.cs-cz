@@ -11,10 +11,10 @@ ms.topic: article
 ms.assetid: 20fc3722-6f8b-402f-b391-b84e9df6fcff
 ms.date: 07/08/2016
 ms.openlocfilehash: 05368f627c5e9482a43d5e30b0e16b1d47f6217c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60999026"
 ---
 # <a name="receive-b2b-data-with-azure-logic-apps-and-enterprise-integration-pack"></a>Příjem dat B2B s Azure Logic Apps a Enterprise Integration Pack
@@ -96,7 +96,7 @@ Postupujte podle těchto kroků můžete vytvořit aplikaci logiky B2B, které p
 
     ![](./media/logic-apps-enterprise-integration-b2b/b2b-17.png)  
 
-16. Uložte svou práci.
+16. Uložte si práci.
 
     ![](./media/logic-apps-enterprise-integration-b2b/transform-5.png)  
 
@@ -109,5 +109,5 @@ Jsou teď provádí nastavení aplikace logiky B2B. V reálné aplikaci může b
 * Akcí B2B vám pomůžou snadno vytvářet partnery a smlouvy v účtu integrace a využívat v aplikaci logiky.
 * Když rozšíříte aplikace logiky s další akce, můžete odesílat a přijímat data mezi ostatním aplikacím a službám, jako je SalesForce.
 
-## <a name="learn-more"></a>Další informace
+## <a name="learn-more"></a>Víc se uč
 [Další informace o Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md)

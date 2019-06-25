@@ -11,10 +11,10 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seofeb2018
 ms.openlocfilehash: 628ced069c9d32c6e874c2e36a1e3b752c476003
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65024653"
 ---
 # <a name="indexing-blobs-producing-multiple-search-documents"></a>Indexování objektů BLOB vytváření více vyhledávání dokumentů
@@ -61,7 +61,7 @@ Když vytvoříte indexeru a nastavte **parsingMode** k `jsonLines` – bez zad�
 
 Toto nastavení způsobí index Azure Search, který obsahuje následující informace (pro zkrácení zkrátila kódovanou jako base64 id)
 
-| id | teplota | tlak | časové razítko |
+| id | teplota | tlak | timestamp |
 |----|-------------|----------|-----------|
 | aHR0 ... YjEuanNvbjsx | 100 | 100 | 2019-02-13T00:00:00Z |
 | aHR0 ... YjEuanNvbjsy | 33 | 30 | 2019-02-14T00:00:00Z |

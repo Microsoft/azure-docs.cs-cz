@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
 ms.openlocfilehash: 5ed5e791cd6e611218769650115c78afd1869f67
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60743424"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-linux"></a>Síť rozšíření virtuálních počítačů sledovacích procesů agenta pro Linux
@@ -41,10 +41,10 @@ Network Watcher Agent rozšíření lze nakonfigurovat pro následující distri
 | Ubuntu | 12+ |
 | Debian | 7 a 8 |
 | Red Hat | 6 a 7 |
-| Oracle Linux | 6.8 + a 7 |
+| Oracle Linux | 6.8+ a 7 |
 | SUSE Linux Enterprise Server | 11 a 12 |
-| Přestupné OpenSUSE | 42.3+ |
-| CentOS | 6.5 + a 7 |
+| OpenSUSE Leap | 42.3+ |
+| CentOS | 6.5+ a 7 |
 | CoreOS | 899.17.0+ |
 
 
@@ -79,7 +79,7 @@ Následující kód JSON ukazuje schéma pro rozšíření Network Watcher Agent
 | Název | Hodnota / příklad |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
-| vydavatele | Microsoft.Azure.NetworkWatcher |
+| publisher | Microsoft.Azure.NetworkWatcher |
 | type | NetworkWatcherAgentLinux |
 | typeHandlerVersion | 1.4 |
 

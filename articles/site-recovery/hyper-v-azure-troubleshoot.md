@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/14/2019
 ms.author: rajanaki
 ms.openlocfilehash: a7fcd4deb0446577af310ff5380ffddf05ba87be
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64719819"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Řešení potíží s technologií Hyper-V do Azure replikace a převzetí služeb při selhání
@@ -145,7 +145,7 @@ Konzistentní vzhledem k snímku je bodu v čase snímek dat aplikací ve virtu�
 
 Všechny události replikace Hyper-V jsou zaznamenána do protokolu Hyper-V-VMMS\Admin umístěné v **protokoly aplikací a služeb** > **Microsoft** > **Windows**. Kromě toho můžete povolit analytický protokol pro službu Správa virtuálních počítačů Hyper-V, následujícím způsobem:
 
-1. Ujistěte se, protokoly ladění a zobrazitelné v prohlížeči událostí. Protokoly dostupné v Event Vieweru, klikněte opakovaně na **zobrazení** > **zobrazit protokoly ladění a analýzu.**. Analytický protokol se zobrazí v části **Hyper-V-VMMS**.
+1. Ujistěte se, protokoly ladění a zobrazitelné v prohlížeči událostí. Protokoly dostupné v Event Vieweru, klikněte opakovaně na **zobrazení** > **zobrazit protokoly ladění a analýzu.** . Analytický protokol se zobrazí v části **Hyper-V-VMMS**.
 2. V **akce** podokně klikněte na tlačítko **povolit protokol**. 
 
     ![Povolení protokolu](media/hyper-v-azure-troubleshoot/enable-log.png)

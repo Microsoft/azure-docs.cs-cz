@@ -12,12 +12,12 @@ ms.date: 09/10/2018
 ms.author: lizross
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fafa3974eb01b36015254307ba1a52a9bc221da
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f970e9d43bc6dd67fe55ca9cdcfcae716c9f166a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60249977"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67110610"
 ---
 # <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>Rychlý start: Vytvoření nového tenanta v Azure Active Directory
 Pomocí portálu Azure Active Directory (Azure AD) můžete provádět všechny úlohy správy, včetně vytvoření nového tenanta pro vaši organizaci. 
@@ -69,6 +69,6 @@ Pokud tuto aplikaci nebudete používat, můžete tenanta odstranit provedením 
 
 - Přidejte skupiny a členy, viz [Vytvoření základní skupiny a přidání členů](active-directory-groups-create-azure-portal.md)
 
-- Přečtěte si informace o tom, jak vám [přístup na základě role pomocí služby Privileged Identity Management](../../role-based-access-control/pim-azure-resource.md) a [podmíněný přístup](../../role-based-access-control/conditional-access-azure-management.md) může pomoci spravovat přístup k aplikacím a prostředkům vaší organizace.
+- Další informace o [přístupu na základě role pomocí Privileged Identity Management](../../role-based-access-control/pim-azure-resource.md) a [podmíněného přístupu](../../role-based-access-control/conditional-access-azure-management.md) k řízení přístupu aplikací a prostředků vaší organizace.
 
 - Přečtěte si o službě Azure AD, včetně [základních licenčních informací, terminologie a souvisejících funkcích](active-directory-whatis.md).

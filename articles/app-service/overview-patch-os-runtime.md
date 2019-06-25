@@ -15,10 +15,10 @@ ms.date: 02/02/2018
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 086f5773a8ae4085a8e5bc0637bdebe5f2df4fb0
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65203332"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Operační systém a používání dílčích oprav modulu runtime ve službě Azure App Service
@@ -99,7 +99,7 @@ Následující tabulka ukazuje jak verzí systému Windows a modulu runtime jazy
 >
 >
 
-## <a name="more-resources"></a>Další zdroje informací
+## <a name="more-resources"></a>Další materiály
 
 [Centrum zabezpečení: Zabezpečení](https://www.microsoft.com/en-us/trustcenter/security)  
 [64bitový ASP.NET Core ve službě Azure App Service](https://gist.github.com/glennc/e705cd85c9680d6a8f1bdb62099c7ac7)

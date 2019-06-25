@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: snehaa
 ms.openlocfilehash: 17cead93325da903161d95b315435d6e7b106dbb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61292974"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate – nejčastější dotazy (FAQ)
@@ -169,7 +169,7 @@ Pokud určíte kritérium určení velikosti bude jako typu místní – místn�
 
 ### <a name="what-impact-does-performance-history-and-percentile-utilization-have-on-the-size-recommendations"></a>Doporučení velikosti jaký vliv má percentilu a historii využití výkonu?
 
-Tyto vlastnosti se zohledňují pouze při určování velikosti na základě výkonu. Azure Migrate shromažďuje historii výkonu místních počítačů a používá ji k doporučení typu disku a velikosti virtuálního počítače v Azure. Zařízení kolektoru průběžně profiluje místní prostředí a každých 20 sekund shromažďuje data o využití v reálném čase. Zařízení seskupuje 20sekundové vzorky a pro každých 15 minut vytvoří jeden datový bod. Jeden datový bod se vytvoří tak, že zařízení ze všech 20sekundových vzorků vybere maximální hodnotu a odešle ji do Azure. Když v Azure vytvoříte posouzení, Azure Migrate na základě doby výkonu a hodnoty percentilu historie výkonu vypočítá hodnotu efektivního využití, kterou použije k určení velikosti. Například pokud nastavíte dobu trvání výkonu 1 den a percentil hodnoty 95. percentilu, Azure Migrate použije body odesílaných kolekcí pro poslední den, seřazený ve vzestupném pořadí a vybere 95. percentil hodnoty jako efektivní ut vzorku 15 minut ilization. 95. percentil hodnoty zajistí, že se ignoruje všechny odlehlé hodnoty, které můžou mít, pokud vyberete 99. percentilu. Pokud chcete vybrat maximální využití v určitém období a nechcete přijít o žádné odlehlé hodnoty, měli byste vybrat 99. percentil.
+Tyto vlastnosti se zohledňují pouze při určování velikosti na základě výkonu. Azure Migrate shromažďuje historii výkonu místních počítačů a používá ji k doporučení typu disku a velikosti virtuálního počítače v Azure. Zařízení kolektoru průběžně profiluje místní prostředí a každých 20 sekund shromažďuje data o využití v reálném čase. Zařízení seskupuje 20sekundové vzorky a pro každých 15 minut vytvoří jeden datový bod. Jeden datový bod se vytvoří tak, že zařízení ze všech 20sekundových vzorků vybere maximální hodnotu a odešle ji do Azure. Když v Azure vytvoříte posouzení, Azure Migrate na základě doby výkonu a hodnoty percentilu historie výkonu vypočítá hodnotu efektivního využití, kterou použije k určení velikosti. Například pokud nastavíte dobu trvání výkonu 1 den a percentil hodnoty 95. percentilu, Azure Migrate použije body odesílaných kolekcí pro poslední den, seřazený ve vzestupném pořadí a vybere 95. percentil hodnoty jako efektivní ut vzorku 15 minut ilization. 95\. percentil hodnoty zajistí, že se ignoruje všechny odlehlé hodnoty, které můžou mít, pokud vyberete 99. percentilu. Pokud chcete vybrat maximální využití v určitém období a nechcete přijít o žádné odlehlé hodnoty, měli byste vybrat 99. percentil.
 
 ## <a name="dependency-visualization"></a>Vizualizace závislostí
 

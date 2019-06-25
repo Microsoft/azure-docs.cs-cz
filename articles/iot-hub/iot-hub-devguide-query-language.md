@@ -7,16 +7,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: rezas
-ms.openlocfilehash: e5387f1e44a55b0a30f8620b49d237ac1e1ec2b6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4fbb731d9908e791a6fce2b087d9b734b98a25cb
+ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61442082"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67137731"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>Dotazovací jazyk služby IoT Hub pro dvojčata zařízení a modul, úlohy a směrování zpráv
 
-Centrum IoT poskytuje výkonné jazyce podobném SQL k načtení informací o [dvojčata zařízení](iot-hub-devguide-device-twins.md) a [úlohy](iot-hub-devguide-jobs.md), a [směrování zpráv](iot-hub-devguide-messages-d2c.md). Tento článek představuje:
+Centrum IoT poskytuje výkonné jazyce podobném SQL k načtení informací ohledně [dvojčata zařízení](iot-hub-devguide-device-twins.md), [dvojčaty modulů](iot-hub-devguide-module-twins.md), [úlohy](iot-hub-devguide-jobs.md), a [směrovánízpráv](iot-hub-devguide-messages-d2c.md). Tento článek představuje:
 
 * Úvod do hlavní funkce dotazovací jazyk služby IoT Hub, a
 * Podrobný popis jazyka. Podrobnosti o dotazovací jazyk pro směrování zpráv, najdete v části [dotazy v směrování zpráv](../iot-hub/iot-hub-devguide-routing-query-syntax.md).
@@ -25,7 +25,7 @@ Centrum IoT poskytuje výkonné jazyce podobném SQL k načtení informací o [d
 
 ## <a name="device-and-module-twin-queries"></a>Dotazů na dvojčata zařízení a modul
 
-[Dvojčata zařízení](iot-hub-devguide-device-twins.md) a dvojčaty modulů může obsahovat libovolné objekty JSON vlastnosti a značky. IoT Hub umožňuje dvojčaty modulů a dvojčata zařízení dotazu jako jeden dokument JSON obsahující informace o veškerém dvojčete.
+[Dvojčata zařízení](iot-hub-devguide-device-twins.md) a [dvojčaty modulů](iot-hub-devguide-module-twins.md) může obsahovat libovolné objekty JSON vlastnosti a značky. IoT Hub umožňuje dvojčaty modulů a dvojčata zařízení dotazu jako jeden dokument JSON obsahující informace o veškerém dvojčete.
 
 Předpokládejme například, že vaše dvojčata zařízení centra IoT mají následující strukturu (dvojče zařízení by se měl podobat pouze s další moduleId):
 
@@ -159,7 +159,7 @@ SELECT LastActivityTime FROM devices WHERE status = 'enabled'
 
 ### <a name="module-twin-queries"></a>Dotazy dvojčete modulu
 
-Při dotazování u dvojčaty modulů se podobá po pokládání dotazů na dvojčata zařízení, ale pomocí jiné kolekce/oboru názvů, tedy ne "zařízení z" může dotazovat device.modules:
+Při dotazování u dvojčaty modulů je podobný dotazování na dvojčata zařízení, ale pomocí jinou kolekci nebo oboru názvů; místo z **zařízení**, dotaz z **devices.modules**:
 
 ```sql
 SELECT * FROM devices.modules
@@ -315,7 +315,7 @@ V současné době se dotazuje na **devices.jobs** nepodporují:
 
 ## <a name="basics-of-an-iot-hub-query"></a>Základní informace o službě IoT Hub dotazu
 
-Každý dotaz služby IoT Hub se skládá, vyberte a z klauzule volitelné místo, kde a klauzule GROUP BY. Každý dotaz se spouští v kolekci dokumentů JSON, například dvojčata zařízení. Klauzule FROM označuje provést iteraci v kolekci dokumentů (**zařízení** nebo **devices.jobs**). Poté je použit filtr v klauzuli WHERE. Pomocí agregace, jsou výsledky tohoto kroku seskupené podle zadání v klauzuli Group by. Pro každou skupinu, je vygenerována řádku zadané v klauzuli SELECT.
+Každý dotaz služby IoT Hub se skládá, vyberte a z klauzule volitelné místo, kde a klauzule GROUP BY. Každý dotaz se spouští v kolekci dokumentů JSON, například dvojčata zařízení. Klauzule FROM označuje provést iteraci v kolekci dokumentů (**zařízení**, **devices.modules**, nebo **devices.jobs**). Poté je použit filtr v klauzuli WHERE. Pomocí agregace, jsou výsledky tohoto kroku seskupené podle zadání v klauzuli Group by. Pro každou skupinu, je vygenerována řádku zadané v klauzuli SELECT.
 
 ```sql
 SELECT <select_list>
@@ -326,7 +326,7 @@ SELECT <select_list>
 
 ## <a name="from-clause"></a>FROM – klauzule
 
-**z < from_specification >** klauzule může převzít jenom dvě hodnoty: **ZE zařízení** na dvojčata zařízení dotazu, nebo **z devices.jobs** na podrobnosti o dotazu úlohy na zařízení.
+**z < from_specification >** klauzule může převzít jenom tři hodnoty: **ZE zařízení** na dvojčata zařízení dotaz, **z devices.modules** k dotazování dvojčat modulů, nebo **z devices.jobs** na podrobnosti o dotazu úlohy na zařízení.
 
 
 ## <a name="where-clause"></a>Klauzule WHERE

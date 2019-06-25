@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: d20fc0cee6bce1389649e6287170b1963e799ccf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61463891"
 ---
 # <a name="advanced-encoding-with-media-encoder-premium-workflow"></a>Pokročilé kódování pomocí Media Encoderu Premium Workflow
@@ -62,7 +62,7 @@ Jsou prováděny následovně:
     Ve většině případů je prázdný řetězec konfigurace pro úlohu (jako v následujícím příkladu). Existují některé pokročilé scénáře (které vyžadují dynamické nastavení vlastnosti modulu runtime) v takovém případě je zadat jako řetězec XML pro úlohu kódování. Mezi tyto scénáře patří: vytváření překrytí, paralelní a sekvenční médií spojování, titulkování.
 5. Přidáte dva vstupní datové zdroje do úlohy.
 
-   1. 1. dne – asset pracovního postupu.
+   1. 1\. dne – asset pracovního postupu.
    2. 2 – asset videa.
 
       >[!NOTE]

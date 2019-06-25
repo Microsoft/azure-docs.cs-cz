@@ -13,10 +13,10 @@ ms.date: 01/07/2019
 ms.reviewer: sergkanz
 ms.author: mbullwin
 ms.openlocfilehash: fef016d87cc60bc916fdcb08f92171e115221fe5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60900517"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>Telemetrie žádostí: Datový model Application Insights
@@ -25,7 +25,7 @@ Položky telemetrie požadavku (v [Application Insights](../../azure-monitor/app
 
 Žádost o telemetrii podporuje standardní rozšiřitelném modelu používání vlastní `properties` a `measurements`.
 
-## <a name="name"></a>Název
+## <a name="name"></a>Name
 
 Název žádosti představuje cestu kódu potřebný ke zpracování požadavku. Kardinalita s nízkou hodnotu umožňující lepší seskupení požadavků. Pro požadavky HTTP, to představuje metodu HTTP a šablonu cesty URL jako `GET /values/{id}` bez skutečného `id` hodnotu.
 
@@ -39,13 +39,13 @@ Identifikátor instance volání žádosti. Slouží pro korelaci mezi žádost�
 
 Maximální délka: 128 znaků
 
-## <a name="url"></a>URL
+## <a name="url"></a>Adresa URL
 
 Adresa URL požadavku se všemi parametry řetězce dotazu.
 
 Maximální délka: 2 048 znaků
 
-## <a name="source"></a>Zdroj
+## <a name="source"></a>source
 
 Zdroj žádosti. Příklady jsou Instrumentační klíč volajícího nebo ip adresy volajícího. Další informace najdete v tématu [korelace](../../azure-monitor/app/correlation.md) stránky.
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: c032dbc528ed5034280d0ecb4c95700b51869991
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 6fc1e1aaaa3b2489dd4083f56d45ab0abc2b6892
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65793629"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165977"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-search"></a>Jak v Azure Search implementovat fasetovou navigaci
 Fasetová navigace je filtrační mechanismus, který poskytuje samořízeného k podrobnostem námětů a navigace ve vyhledávání aplikací. Termín 'Fasetové navigace' může být obeznámeni, ale pravděpodobně ho před jste použili. Jak ukazuje následující příklad, Fasetové navigace není nic jiného než kategorie slouží k filtrování výsledků.
@@ -232,7 +232,7 @@ SearchParameters sp = new SearchParameters()
 
 Parametr dotazu omezující vlastnost je nastavena na pole a v závislosti na datový typ, může být dále parametrizován čárkami oddělený seznam, který obsahuje `count:<integer>`, `sort:<>`, `interval:<integer>`, a `values:<list>`. Seznam hodnot se podporuje pro číselná data při nastavování rozsahů. Zobrazit [vyhledávání dokumentů (API služby Azure Search)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) podrobnosti o použití.
 
-Spolu s omezující vlastnosti by měl žádost formulované aplikace také vytvářet filtry můžete zúžit sadu Release candidate dokumentů na základě výběru hodnota omezující vlastnosti. Pro úložiště kol, Fasetové navigace poskytuje možné dotazy, jako jsou *barvy, výrobci a typech kol jsou k dispozici?*. Filtrování získáte odpovědi na otázky jako *které přesně kol jsou červené, horská kola, v tomto cena rozsah?*. Po kliknutí na "Red" k označení, že mají být zobrazeny pouze produkty Red zahrnuje další dotaz aplikace odesílá `$filter=Color eq ‘Red’`.
+Spolu s omezující vlastnosti by měl žádost formulované aplikace také vytvářet filtry můžete zúžit sadu Release candidate dokumentů na základě výběru hodnota omezující vlastnosti. Pro úložiště kol, Fasetové navigace poskytuje možné dotazy, jako jsou *barvy, výrobci a typech kol jsou k dispozici?* . Filtrování získáte odpovědi na otázky jako *které přesně kol jsou červené, horská kola, v tomto cena rozsah?* . Po kliknutí na "Red" k označení, že mají být zobrazeny pouze produkty Red zahrnuje další dotaz aplikace odesílá `$filter=Color eq ‘Red’`.
 
 Následující fragment kódu z `JobsSearch.cs` stránku přidá vybrané obchodní název filtru Pokud vyberete hodnotu z omezující vlastnost název firmy.
 
@@ -395,11 +395,11 @@ Při práci s výsledky hledání, podívejte se na adresu URL pro změny v kons
    
 <a name="nextstep"></a>
 
-## <a name="learn-more"></a>Další informace
+## <a name="learn-more"></a>Víc se uč
 Sledování [podrobné informace o Azure Search](https://channel9.msdn.com/Events/TechEd/Europe/2014/DBI-B410). Na 45:25 není o tom, jak implementovat omezující vlastnosti na ukázku.
 
 Další přehledy o Principy návrhu pro fasetovou navigaci doporučujeme na následujících odkazech:
 
 * [Vzory návrhu: Fasetová navigace](https://alistapart.com/article/design-patterns-faceted-navigation)
-* [Front-endu aspekty při implementaci Fasetové vyhledávání – část 1 ](https://articles.uie.com/faceted_search2/)
+* [Front-endu aspekty při implementaci Fasetové vyhledávání – část 1](https://articles.uie.com/faceted_search2/)
 

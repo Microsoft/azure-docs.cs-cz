@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
 ms.openlocfilehash: d312a93f83ef38fa1ae855a1e313280fc608948d
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65799404"
 ---
 # <a name="scenes-shots-and-keyframes"></a>Scény, snímky a klíčové snímky
@@ -30,7 +30,7 @@ Video Indexer Určuje změnu scény ve videu podle vizuální prvky. Znázorňuj
 > [!NOTE]
 > Vztahuje se na videa, které obsahují alespoň 3 scény.
 
-## <a name="shot-detection"></a>Detekce snímku
+## <a name="shot-detection"></a>Detekci
 
 Video Indexer Určuje, kdy snímek změny ve videu podle vizuálních podnětů, sledováním náhlé a postupné přechodů v barevném schématu sousední snímků. Na snímku metadata obsahují počáteční a koncový čas, jakož i seznam klíčové snímky, které jsou součástí tohoto snímku. Snímky jsou přijata ze stejné fotoaparátu/kamery ve stejnou dobu po sobě jdoucích snímků.
 

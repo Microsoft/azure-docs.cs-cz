@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2019
 ms.openlocfilehash: 0086327661df637dc0ae60208ed9424b4610ef0e
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65969489"
 ---
 # <a name="limits-in-azure-cosmos-db"></a>Omezení ve službě Azure Cosmos DB
@@ -27,9 +27,9 @@ Po vytvoření účtu Azure Cosmos v rámci vašeho předplatného, můžete spr
 | Maximální jednotek ru na databázi ([sdílené propustnosti zřízené režimu](databases-containers-items.md#azure-cosmos-containers)) | 1 000 000 ve výchozím nastavení. Zvětšit podle [vyplňte lístek podpory Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) nebo kontaktujete nás prostřednictvím [dotaz Cosmos DB](mailto:askcosmosdb@microsoft.com) |
 | Maximální jednotek požadavku za klíč oddílu (logická) | 10,000 |
 | Maximální úložiště v rámci všech položek na klíč oddílu (logická)| 10 GB |
-| Maximální počet klíčů oddílů distinct (logická) | Neomezené |
-| Maximální velikost úložiště na kontejner | Neomezené |
-| Maximální velikost úložiště na databázi | Neomezené |
+| Maximální počet klíčů oddílů distinct (logická) | Unlimited |
+| Maximální velikost úložiště na kontejner | Unlimited |
+| Maximální velikost úložiště na databázi | Unlimited |
 
 > [!NOTE]
 > Osvědčené postupy pro správu úloh, které mají klíče oddílů, které potřebovat vyšší limity pro úložiště nebo propustnost, naleznete v tématu [návrh a výměně klíčů oddílů](synthetic-partition-keys.md)

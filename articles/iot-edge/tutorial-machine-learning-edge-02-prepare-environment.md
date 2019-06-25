@@ -8,12 +8,12 @@ ms.date: 06/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f8652dab5db8bbd59982cb1dda727698868df23c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f36b706213639c5bea383ec20ffc7f6d7ed01021
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67057740"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67155714"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>Kurz: Nastavení prostředí pro machine learningu na hraničních zařízeních IoT
 
@@ -61,7 +61,7 @@ Adresář DevVM obsahuje soubory potřebné k vytvoření virtuálního počíta
 1. Otevřete Powershell jako správce a přejděte do adresáře, kam jste stáhli kód. Označujeme do kořenového adresáře pro zdroj jako `<srcdir>`.
 
     ```powershell
-    cd \<srcdir\>\IoTEdgeAndMlSample\DevVM
+    cd <srcdir>\IoTEdgeAndMlSample\DevVM
     ```
 
 2. Spusťte následující příkaz, aby bylo možné spouštění skriptů. Zvolte **Ano všem** po zobrazení výzvy.
@@ -141,7 +141,7 @@ Teď, když jste připojili do vývojového počítače, přidejte některá už
 3. Spusťte skript.
 
     ```powershell
-    .\\Enable-CodeExtensions.ps1
+    .\Enable-CodeExtensions.ps1
     ```
 
 4. Skript se spustí na několik minut, instalaci rozšíření VS code:

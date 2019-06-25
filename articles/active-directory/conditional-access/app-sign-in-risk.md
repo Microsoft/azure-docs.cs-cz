@@ -1,5 +1,5 @@
 ---
-title: Rychlý start – zablokuje přístup, když se zjistí ohrožení relace s podmíněným přístupem Azure Active Directory | Dokumentace Microsoftu
+title: Rychlý start – zablokuje přístup při zjištění ohrožení relace s Azure Active Directory podmíněným přístupem | Dokumentace Microsoftu
 description: V tomto rychlém startu zjistíte, jak nakonfigurovat zásadu podmíněného přístupu Azure Active Directory (Azure AD) k blokování přihlášení podle rizika relace.
 services: active-directory
 ms.service: active-directory
@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5defdf2d33d32042775271fe01aba377687ae75
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f8de4e785bbe2496ca38b33512da1c85f9ff76f3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60413287"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67112779"
 ---
-# <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>Rychlý start: Blokovat přístup, když se zjistí ohrožení relace s podmíněným přístupem Azure Active Directory  
+# <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>Rychlý start: Při zjištění ohrožení relace pomocí Azure Active Directory podmíněného přístupu blokovat přístup  
 
 Pokud chcete zachovat prostředí chráněný, můžete zablokovat podezřelé uživatele z přihlášení. [Azure Active Directory (Azure AD) Identity Protection](../active-directory-identityprotection.md) analyzuje každé přihlášení a vypočítá pravděpodobnost, že pokus přihlášení nebyl prováděné legitimním vlastníkem uživatelského účtu. Pravděpodobnost (nízká, střední, vysoká) je uveden v podobě počítané hodnoty nazvané [úrovně rizika přihlášení](conditions.md#sign-in-risk). Tím, že nastavíte podmínku rizika přihlášení, můžete nakonfigurovat zásady podmíněného přístupu na úrovně riziko konkrétního přihlášení.
 
@@ -32,7 +32,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 K dokončení scénáře v tomto kurzu budete potřebovat:
 
-- **Přístup k Azure AD Premium P2 edice** – podmíněný přístup je schopnost Azure AD Premium P1, P2 edition musíte protože scénář v tomto kurzu rychlý start vyžaduje Identity Protection.
+- **Přístup k Azure AD Premium P2 edice** – Přestože podmíněný přístup je schopnost Azure AD Premium P1, budete potřebovat edici P2, protože scénář v tomto kurzu rychlý start vyžaduje Identity Protection.
 
 - **Ochrana identity** – scénář v tomto kurzu rychlý start vyžaduje, aby byla povolena ochrana Identity. Pokud si nejste jisti, jak povolit Identity Protection, přečtěte si téma [povolení Azure Active Directory Identity Protection](../identity-protection/enable.md).
 
@@ -53,20 +53,20 @@ Cílem tohoto kroku je zajistit, že testovací účet můžete přístup k vaš
 
 Scénář v tomto rychlém startu se používá u přihlášení v prohlížeči Tor k vygenerování zjištěné **přihlášení z anonymních IP adres** riziková událost. Úroveň rizika tuto rizikovou událost je střední. Reakce na tuto rizikovou událost, nastavte podmínku rizika přihlašování na médium. V produkčním prostředí byste měli nastavit podmínku rizika přihlašování na vysoce nebo na střední a vysokou.
 
-Tato část ukazuje, jak vytvořit zásady podmíněného přístupu vyžaduje. V zásadách nastavte:
+Tato část ukazuje, jak vytvořit požadované zásady podmíněného přístupu. V zásadách nastavte:
 
-| Nastavení | Value |
+| Nastavení | Hodnota |
 | --- | --- |
 | Uživatelé a skupiny | Alain Charon  |
 | Cloudové aplikace | Všechny cloudové aplikace |
-| Riziko přihlášení | Střednědobé používání |
+| Riziko přihlášení | Střední |
 | Udělení | Blokovat přístup |
 
 ![Vytvoření zásad](./media/app-sign-in-risk/130.png)
 
 **Ke konfiguraci zásady podmíněného přístupu:**
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
+1. Přihlaste se k vaší [webu Azure portal](https://portal.azure.com) jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
 
 1. Na webu Azure Portal, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory**.
 
@@ -78,11 +78,11 @@ Tato část ukazuje, jak vytvořit zásady podmíněného přístupu vyžaduje. 
 
 1. Na **podmíněného přístupu** klikněte na stránku, na panelu nástrojů v horní části **přidat**.
 
-   ![Name](./media/app-sign-in-risk/108.png)
+   ![Název](./media/app-sign-in-risk/108.png)
 
 1. Na **nový** stránku, **název** textové pole, typ **blokovat přístup k úrovni střední riziko**.
 
-   ![Name](./media/app-sign-in-risk/104.png)
+   ![Název](./media/app-sign-in-risk/104.png)
 
 1. V **přiřazení** klikněte na tlačítko **uživatelů a skupin**.
 
@@ -114,7 +114,7 @@ Tato část ukazuje, jak vytvořit zásady podmíněného přístupu vyžaduje. 
 
 1. Klikněte na tlačítko **podmínky**.
 
-   ![Ovládací prvky přístupu](./media/app-sign-in-risk/19.png)
+   ![Řízení přístupu](./media/app-sign-in-risk/19.png)
 
 1. Na **podmínky** stránky:
 
@@ -132,7 +132,7 @@ Tato část ukazuje, jak vytvořit zásady podmíněného přístupu vyžaduje. 
 
 1. V **ovládací prvky přístupu** klikněte na tlačítko **udělení**.
 
-   ![Ovládací prvky přístupu](./media/app-sign-in-risk/10.png)
+   ![Řízení přístupu](./media/app-sign-in-risk/10.png)
 
 1. Na **udělení** stránky:
 
@@ -144,13 +144,13 @@ Tato část ukazuje, jak vytvořit zásady podmíněného přístupu vyžaduje. 
 
 1. V **povolit zásady** klikněte na tlačítko **na**.
 
-   ![Povolit zásadu](./media/app-sign-in-risk/18.png)
+   ![Povolení zásady](./media/app-sign-in-risk/18.png)
 
 1. Klikněte na možnost **Vytvořit**.
 
 ## <a name="evaluate-a-simulated-sign-in"></a>Vyhodnocení Simulovaná přihlášení
 
-Teď, když jste nakonfigurovali zásady podmíněného přístupu, pravděpodobně chcete zjistit, jestli fungují podle očekávání. Jako první krok, použijte podmíněný přístup **co když nástroj zásad** simulace u přihlášení z testovacího uživatele. Při této simulaci se odhadne dopad přihlášení na vaše zásady a vygeneruje se sestava simulace.  
+Teď, když jste nakonfigurovali zásady podmíněného přístupu, budete pravděpodobně chtít vědět, jestli funguje podle očekávání. Jako první krok, použijte podmíněný přístup **co když nástroj zásad** simulace u přihlášení z testovacího uživatele. Při této simulaci se odhadne dopad přihlášení na vaše zásady a vygeneruje se sestava simulace.  
 
 Při spuštění **co když nástroj zásad** pro tento scénář **blokovat přístup k úrovni střední riziko** by měl být uvedený **zásady, které budou platit**.
 
@@ -160,7 +160,7 @@ Při spuštění **co když nástroj zásad** pro tento scénář **blokovat př
 
 1. Na [podmíněného přístupu – zásady](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) klikněte v nabídce v horní části na stránce **co když**.  
 
-   ![What If](./media/app-sign-in-risk/14.png)
+   ![Co když](./media/app-sign-in-risk/14.png)
 
 1. Klikněte na tlačítko **uživatele**vyberte **Alan Charon** na **uživatelé** stránce a potom klikněte na tlačítko **vyberte**.
 
@@ -172,7 +172,7 @@ Při spuštění **co když nástroj zásad** pro tento scénář **blokovat př
 
 1. Klikněte na tlačítko **co když**.
 
-## <a name="test-your-conditional-access-policy"></a>Otestování zásady podmíněného přístupu
+## <a name="test-your-conditional-access-policy"></a>Otestovat své zásady podmíněného přístupu
 
 V předchozí části jste zjistili, jak vyhodnotit simulované přihlášení. Kromě simulaci byste měli také otestovat své zásady podmíněného přístupu, abyste měli jistotu, že funguje podle očekávání.
 

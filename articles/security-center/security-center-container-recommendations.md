@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/20/2018
 ms.author: rkarlin
 ms.openlocfilehash: 782c769bc7825dc9b6bd3ba3b8e36885bf150eaa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60705250"
 ---
 # <a name="understand-azure-security-center-container-recommendations"></a>Vysvětlení doporučení kontejneru služby Azure Security Center
@@ -32,11 +32,11 @@ Azure Security Center poskytuje následující možnosti a pomáhá vám zabezpe
     ![Karta kontejneru](./media/security-center-container-recommendations/docker-recommendation.png)
 
 
-- **Doporučení zabezpečení podle srovnávacích testů CIS pro Docker**<br>Security Center prohledává vaše konfigurace Dockeru a budete mít přehled o chybné konfigurace tím, že poskytuje seznam všech pravidel, která selhala, které byly vyhodnoceny. Security Center obsahuje pokyny, které vám pomůžou tyto problémy rychle vyřešit a ušetřit čas. Security Center průběžně vyhodnocuje konfigurace Dockeru a poskytne vám jejich nejnovější stav.
+- **Doporučení zabezpečení podle srovnávacích testů CIS pro Docker**<br>Security Center kontroluje konfigurace Dockeru a poskytuje vám vhled do nesprávných konfigurací tím, že poskytuje seznam všech neúspěšných pravidel, která byla posouzena. Security Center obsahuje pokyny, které vám pomůžou tyto problémy rychle vyřešit a ušetřit čas. Security Center nepřetržitě posuzuje konfigurace Dockeru a poskytuje vám jejich nejnovější stav.
 
     ![Karta kontejneru](./media/security-center-container-recommendations/container-cis-benchmark.png)
 
-- **Zjišťování hrozeb v reálném čase kontejneru**<br> Security Center poskytuje detekci hrozeb v reálném čase pro vaše kontejnery na počítačích s Linuxem pomocí AuditD komponenty. Výstrahy Identifikujte několik podezřelých aktivit Dockeru, jako je například vytvoření privilegovaných kontejneru na hostiteli, údaj o běžící uvnitř kontejneru Dockeru nebo s využitím kryptografických modulů pro dolování server Secure Shell (SSH). Tyto informace můžete rychle opravit problémy se zabezpečením a zlepšit zabezpečení kontejnerů.
+- **Zjišťování hrozeb v reálném čase kontejneru**<br> Security Center poskytuje detekci hrozeb v reálném čase pro vaše kontejnery na počítačích s Linuxem pomocí AuditD komponenty. Výstrahy Identifikujte několik podezřelých aktivit Dockeru, jako je například vytvoření privilegovaných kontejneru na hostiteli, údaj o běžící uvnitř kontejneru Dockeru nebo s využitím kryptografických modulů pro dolování server Secure Shell (SSH). Pomocí těchto informací můžete rychle opravit problémy se zabezpečením a vylepšit zabezpečení kontejnerů.
 
     ![Karta kontejneru](./media/security-center-container-recommendations/docker-threat-detection.png)
 
@@ -45,13 +45,13 @@ V následujících tabulkách použijte jako vám pomůžou pochopit dostupné k
 
 | Doporučení | Popis | Náprava |
 | --- | --- | --- |
-|Napravte ohrožení zabezpečení v konfiguracích zabezpečení kontejnerů. |Náprava ohrožení zabezpečení v kontejneru konfigurace zabezpečení na základě osvědčených postupů konfigurace.| Napravit ohrožení zabezpečení v konfiguracích zabezpečení kontejnerů:<br>1. Projděte si seznam pravidel, která selhala.<br>2. Opravte každé pravidlo podle zadaného pokynů.|
+|Náprava ohrožení zabezpečení v kontejneru konfigurace zabezpečení |Náprava ohrožení zabezpečení v kontejneru konfigurace zabezpečení na základě osvědčených postupů konfigurace.| Napravit ohrožení zabezpečení v konfiguracích zabezpečení kontejnerů:<br>1. Projděte si seznam pravidel, která selhala.<br>2. Opravte každé pravidlo podle zadaného pokynů.|
 
 
 ## <a name="next-steps"></a>Další postup
 Další informace o doporučení, které se vztahují na jiné typy prostředků Azure, naleznete v následujících tématech:
 
-* [Monitorování identity a přístupu ve službě Azure Security Center](security-center-identity-access.md)
+* [Monitorování identity a přístupu v Azure Security Center](security-center-identity-access.md)
 * [Ochrana sítě pomocí Azure Security Center](security-center-network-recommendations.md)
 * [Ochrana služby Azure SQL ve službě Azure Security Center](security-center-sql-service-recommendations.md)
 

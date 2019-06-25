@@ -85,9 +85,10 @@
           items:
             - name: Optimalizace výkonu
               href: storage-performance.md
-        - name: Optimalizované z hlediska GPU
-          href: sizes-gpu.md
+        - name: Zrychlené výpočetní funkce
           items:
+            - name: Optimalizované z hlediska GPU
+              href: sizes-gpu.md
             - name: Nastavení ovladačů GPU
               href: n-series-driver-setup.md
         - name: Vysokovýkonné výpočetní prostředí
@@ -118,8 +119,8 @@
           href: ephemeral-os-disks.md
     - name: Sítě
       href: network-overview.md
-    - name: Automatické škálování aplikací
-      href: autoscale.md
+    - name: Škálovací sady
+      href: ../../virtual-machine-scale-sets/overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
     - name: Automatizace infrastruktury
       href: infrastructure-automation.md
     - name: Zabezpečení a zásady
@@ -410,8 +411,6 @@
           href: freebsd-pf-nat.md
         - name: Databáze
           items:
-            - name: MySQL
-              href: mysql-install.md
             - name: MySQL v SUSE
               href: mysql-on-opensuse.md
             - name: MongoDB

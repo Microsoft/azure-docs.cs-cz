@@ -6,14 +6,14 @@ author: anuragm
 manager: shivamg
 ms.service: backup
 ms.topic: article
-ms.date: 05/27/2019
+ms.date: 06/18/2019
 ms.author: anuragm
-ms.openlocfilehash: 8459bb451c4ff462ee816b986cafdbf776603917
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 9ed30a35f30d1b6b9fdcd43110ed93618a10dbc3
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306957"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204195"
 ---
 # <a name="troubleshoot-back-up-sql-server-on-azure"></a>Řešení potíží s zálohování SQL serveru v Azure
 
@@ -25,8 +25,7 @@ Zobrazit funkce zvážit, najdete v článku, [zálohování serveru SQL Server 
 
 ## <a name="sql-server-permissions"></a>Oprávnění SQL serveru
 
-Konfigurace ochrany pro databáze serveru SQL Server na virtuálním počítači, **AzureBackupWindowsWorkload** rozšíření musí být nainstalované na tomto virtuálním počítači. Pokud se zobrazí chyba, **UserErrorSQLNoSysadminMembership**, to znamená, že vaše Instance SQL nemá požadovaná oprávnění pro zálohování. Chcete-li tuto chybu opravit, postupujte podle kroků v [nastavit oprávnění pro virtuální počítače s SQL mimo marketplace](backup-azure-sql-database.md#fix-sql-sysadmin-permissions).
-
+Konfigurace ochrany pro databáze serveru SQL Server na virtuálním počítači, **AzureBackupWindowsWorkload** rozšíření musí být nainstalované na tomto virtuálním počítači. Pokud se zobrazí chyba, **UserErrorSQLNoSysadminMembership**, to znamená, že vaše Instance SQL nemá požadovaná oprávnění pro zálohování. Chcete-li tuto chybu opravit, postupujte podle kroků v [nastavit oprávnění pro virtuální počítače s SQL mimo marketplace](backup-azure-sql-database.md#set-vm-permissions).
 
 ## <a name="backup-type-unsupported"></a>Nepodporovaný typ zálohování
 
@@ -52,7 +51,7 @@ Konfigurace ochrany pro databáze serveru SQL Server na virtuálním počítači
 
 | Chybová zpráva | Možné příčiny | Doporučená akce |
 |---|---|---|
-| Je porušený řetězec protokolu. | Databáze nebo virtuální počítač zálohovaný pomocí jiné řešení zálohování, která ořízne řetězec protokolu.|<ul><li>Zkontrolujte, zda jiné řešení zálohování nebo skriptu se používá. Pokud ano, přestat jiné řešení zálohování. </li><li>Pokud bylo zálohování zálohování ad hoc protokolu, aktivujte úplné zálohování spustit nový řetězec protokolu. Protokol naplánované zálohování není vyžadována žádná akce, jak služba Azure Backup automaticky spustí úplné zálohování, chcete-li vyřešit tento problém.</li>|
+| Řetěz protokolů je porušený. | Databáze nebo virtuální počítač zálohovaný pomocí jiné řešení zálohování, která ořízne řetězec protokolu.|<ul><li>Zkontrolujte, zda jiné řešení zálohování nebo skriptu se používá. Pokud ano, přestat jiné řešení zálohování. </li><li>Pokud bylo zálohování zálohování ad hoc protokolu, aktivujte úplné zálohování spustit nový řetězec protokolu. Protokol naplánované zálohování není vyžadována žádná akce, jak služba Azure Backup automaticky spustí úplné zálohování, chcete-li vyřešit tento problém.</li>|
 
 ## <a name="usererroropeningsqlconnection"></a>UserErrorOpeningSQLConnection
 
@@ -82,7 +81,7 @@ Konfigurace ochrany pro databáze serveru SQL Server na virtuálním počítači
 
 | Chybová zpráva | Možné příčiny | Doporučená akce |
 |---|---|---|
-| Obnovení se nezdařilo, protože databáze se nepovedlo převést do režimu offline. | Během operace obnovení, cílová databáze je potřeba uvést do offline režimu. Azure Backup není schopen poskytnout tato data do offline režimu. | Použijte další podrobnosti v nabídce Azure portal chyba zúžit hlavní příčiny. Další informace najdete v tématu [dokumentace ke službě SQL](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms). |
+| Obnovení selhalo, protože databázi nejde nastavit offline. | Během operace obnovení, cílová databáze je potřeba uvést do offline režimu. Azure Backup není schopen poskytnout tato data do offline režimu. | Použijte další podrobnosti v nabídce Azure portal chyba zúžit hlavní příčiny. Další informace najdete v tématu [dokumentace ke službě SQL](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms). |
 
 ##  <a name="usererrorcannotfindservercertificatewiththumbprint"></a>UserErrorCannotFindServerCertificateWithThumbprint
 
@@ -94,14 +93,14 @@ Konfigurace ochrany pro databáze serveru SQL Server na virtuálním počítači
 
 | Chybová zpráva | Možné příčiny | Doporučená akce |
 |---|---|---|
-| Záloha protokolu pro obnovení obsahuje hromadně protokolované změny. Nelze použít k zastavení v libovolný bod v čase podle pokynů SQL. | Pokud je databáze v režimu hromadně protokolovaný obnovení, data mezi hromadně protokolované transakce a další protokolu transakcí nelze obnovit. | Vyberte jiný bod v čase pro obnovení. [Další informace](https://docs.microsoft.com/previous-versions/sql/sql-server-2008-r2/ms186229(v=sql.105))
+| Záloha protokolů použitá k obnovení obsahuje hromadně protokolované změny. Podle pokynů pro SQL ji nejde použít k zastavení v libovolném bodu v čase. | Pokud je databáze v režimu hromadně protokolovaný obnovení, data mezi hromadně protokolované transakce a další protokolu transakcí nelze obnovit. | Vyberte jiný bod v čase pro obnovení. [Další informace](https://docs.microsoft.com/previous-versions/sql/sql-server-2008-r2/ms186229(v=sql.105))
 
 
 ## <a name="fabricsvcbackuppreferencecheckfailedusererror"></a>FabricSvcBackupPreferenceCheckFailedUserError
 
 | Chybová zpráva | Možné příčiny | Doporučená akce |
 |---|---|---|
-| Předvolby zálohování pro SQL skupiny dostupnosti AlwaysOn nejde splnit, protože některé uzly ve skupině dostupnosti nejsou zaregistrované. | Uzly, které jsou potřebné k zálohování není zaregistrované, nebo nejsou dostupné. | <ul><li>Zajistěte, aby všechny uzly potřebné k zálohování této databáze jsou zaregistrovaná a v pořádku a pak zkuste operaci zopakovat.</li><li>Předvolby zálohování změnu SQL skupiny dostupnosti Always On.</li></ul> |
+| Předvolbu zálohování pro skupinu dostupnosti SQL AlwaysOn není možné zajistit, protože některé uzly ve skupině dostupnosti nejsou zaregistrované. | Uzly, které jsou potřebné k zálohování není zaregistrované, nebo nejsou dostupné. | <ul><li>Zajistěte, aby všechny uzly potřebné k zálohování této databáze jsou zaregistrovaná a v pořádku a pak zkuste operaci zopakovat.</li><li>Předvolby zálohování změnu SQL skupiny dostupnosti Always On.</li></ul> |
 
 ## <a name="vmnotinrunningstateusererror"></a>VMNotInRunningStateUserError
 

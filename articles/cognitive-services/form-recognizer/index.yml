@@ -17,6 +17,15 @@ metadata:
 ms.custom: seodec18
 abstract:
   description: 'Rozpoznávání formulářů Azure je kognitivní služba, která využívá technologie strojového učení k identifikaci a extrahování párů klíč-hodnota a dat tabulek z formulářových dokumentů. Jejím výstupem jsou strukturovaná data, která zahrnují relace z původního souboru. Učení bez supervize umožňuje tomuto modelu porozumět relacím mezi poli a položkami a jejich rozložení a nevyžaduje se přitom ruční popisování dat ani náročné kódování nebo údržba.'
+  aside:
+    image:
+      alt: null
+      height: 110
+      src: ../media/index/form-recognizer-landing-page-video.png
+      width: 250
+    title: 'Automatizace procesů s využitím AI a Rozpoznáváním formulářů (2:15)'
+    href: 'https://channel9.msdn.com/Shows/AI-Show/Learn-about-AI-powered-robotic-process-automation-with-Form-Recognizer'
+    width: 250
 sections:
   - items:
       - type: list

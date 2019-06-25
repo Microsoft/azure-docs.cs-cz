@@ -1,6 +1,6 @@
 ---
-title: Referenční informace nastavení podmíněného přístupu Azure Active Directory | Dokumentace Microsoftu
-description: Získejte přehled o podporovaných nastavení v zásadách podmíněného přístupu Azure Active Directory.
+title: Referenční informace k nastavení Azure Active Directory podmíněného přístupu | Dokumentace Microsoftu
+description: Získejte přehled o podporovaných nastavení v zásadách Azure Active Directory podmíněného přístupu.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fae09b5aeed05dfb09f2b998de805ef0607e7f39
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 5919eebccad8d7f9e048ae07be296eaaaf8428eb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65823552"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67112112"
 ---
-# <a name="azure-active-directory-conditional-access-settings-reference"></a>Odkaz nastavení podmíněného přístupu Azure Active Directory
+# <a name="azure-active-directory-conditional-access-settings-reference"></a>Referenční informace k nastavení Azure Active Directory podmíněného přístupu
 
 Můžete použít [podmíněného přístupu Azure Active Directory (Azure AD)](../active-directory-conditional-access-azure-portal.md) řídit jak oprávněným uživatelům můžete přístup k vašim prostředkům.
 
@@ -73,7 +73,7 @@ Zásady podmíněného přístupu můžete přiřadit následující cloudové a
 - Online Skype pro firmy
 - Virtuální privátní síť (VPN)
 - Visual Studio App Center
-- Windows Defender ATP
+- Ochrana ATP v programu Windows Defender
 
 ### <a name="other-applications"></a>Další aplikace
 
@@ -91,7 +91,7 @@ V zásadách podmíněného přístupu můžete nakonfigurovat podmínku platfor
 
 - Android
 - iOS
-- Windows Phone
+- telefon se systémem Windows
 - Windows
 - macOS
 
@@ -121,7 +121,7 @@ Toto nastavení funguje u všech prohlížečů. Tím se uspokojí zásady pro z
 | Windows 7              | Internet Explorer, Chrome                     |
 | iOS                    | Safari, Microsoft Edge, Intune Managed Browser |
 | Android                | Chrome, Microsoft Edge, Intune Managed Browser |
-| Windows Phone          | Internet Explorer, Microsoft Edge             |
+| telefon se systémem Windows          | Internet Explorer, Microsoft Edge             |
 | Windows Server 2016    | Internet Explorer, Microsoft Edge             |
 | Windows Server 2016    | Chrome                                        |
 | Windows Server 2012 R2 | Internet Explorer, Chrome                     |
@@ -141,7 +141,7 @@ Toto rozšíření automaticky nasazovat do prohlížečů Chrome, vytvořte ná
 |    |    |
 | --- | --- |
 | `Path` | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
-| Název | 1 |
+| Name | 1 |
 | Type | REG_SZ (String) |
 | Data | ppnbnpeolgkicgegkbkbjmhlideopiji; https://clients2.google.com/service/update2/crx |
 
@@ -152,7 +152,7 @@ Chrome podpoře v **Windows 8.1 a 7**, vytvořte následující klíč registru:
 | `Path` | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
 | Název | 1 |
 | Type | REG_SZ (String) |
-| Data | {"vzor": "https://device.login.microsoftonline.comfiltr","": {"VYSTAVITELE": {"CN": "MS-organizace přístup"}}} |
+| Data | {"vzor": "https://device.login.microsoftonline.com filtr","": {"VYSTAVITELE": {"CN": "MS-organizace přístup"}}} |
 
 Tyto prohlížeče podporují ověřování zařízení umožňuje identifikovat a ověřovat na zásady zařízení. Kontrola zařízení selže, pokud je spuštěn prohlížeč v privátním režimu.
 
@@ -164,11 +164,11 @@ Ve své zásady podmíněného přístupu můžete vybrat **mobilní aplikace a 
 
 Toto nastavení nemá vliv na pokusy o přístup z následující mobilní aplikace a desktopoví klienti:
 
-| Klientské aplikace | Cílová služba | Platforma |
+| Klientské aplikace. | Cílová služba | Platforma |
 | --- | --- | --- |
 | Aplikace Dynamics CRM | Dynamics CRM | Windows 10, Windows 8.1, iOS a Android |
 | E-mailu nebo kalendáře/lidí aplikace Outlook 2016, Outlook 2013 (s moderním ověřováním)| Office 365 Exchange Online | Windows 10 |
-| Zásady MFA a polohy pro aplikace. Zařízení na základě zásad nejsou podporovány.| Všechny služby app service pro Moje aplikace| Android a iOS |
+| Zásady MFA a polohy pro aplikace. Zařízení na základě zásad nejsou podporovány.| Všechny služby app service pro Moje aplikace| Zařízení s androidem a iOS |
 | Microsoft Teams služby – tato volba určuje všechny služby, které podporují Microsoft Teams a všechny jeho klientské aplikace – Windows Desktop, iOS, Android, webové části a webový klient | Microsoft Teams | Windows 10, Windows 8.1, Windows 7, iOS, Android a macOS |
 | Synchronizovat klientských aplikací Office 2016, Office 2013 (s moderním ověřováním), OneDrive (viz [poznámky](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)) | Office 365 SharePoint Online | Windows 8.1, Windows 7 |
 | Aplikace pro Office 2016, Office univerzální aplikace, Office 2013 (s moderním ověřováním), synchronizačního klienta Onedrivu (naleznete v tématu [poznámky](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)), do budoucna plánujeme přidat podpora skupin Office, do budoucna plánujeme přidat podpora aplikací služby SharePoint | Office 365 SharePoint Online | Windows 10 |

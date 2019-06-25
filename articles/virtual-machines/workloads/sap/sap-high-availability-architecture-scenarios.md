@@ -18,10 +18,10 @@ ms.date: 01/21/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 37f5040585681a53743fb3426b7f7ffac36de51c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60936224"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>Architektura pro vysokou dostupnost a scénáře pro SAP NetWeaver
@@ -369,7 +369,7 @@ Počet aktualizací a domény selhání, které se dají ve skupině dostupnosti
 Pokud nasadíte několik instancí SAP aplikačních serverů v jejich vyhrazených virtuálních počítačích, za předpokladu, že máme pět aktualizačních domén splatit na následujícím obrázku. Maximální skutečný počet aktualizací a domény selhání v rámci skupiny dostupnosti může být v budoucnu změnit:
 
 ![Obrázek 2: Vysoká dostupnost aplikační servery SAP v Azure dostupnosti][planning-guide-figure-3000]
-_**obrázek 2:** Nastavit vysokou dostupnost aplikační servery SAP ve skupině dostupnosti Azure_
+ _**obrázek 2:** Nastavit vysokou dostupnost aplikační servery SAP ve skupině dostupnosti Azure_
 
 Další informace najdete v tématu [Správa dostupnosti virtuálních počítačů s Windows v Azure][azure-virtual-machines-manage-availability].
 

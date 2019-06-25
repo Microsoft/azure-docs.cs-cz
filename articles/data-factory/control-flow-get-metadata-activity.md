@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: jingwang
 ms.openlocfilehash: 78f63b4f46fe5479d4d0fd5849ad80536d8a137c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61346843"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Získání metadat aktivity v Azure Data Factory
@@ -43,10 +43,10 @@ Aktivita GetMetadata přijímá datovou sadu jako požadovaný vstup a výstup i
 
 **Úložiště souborů:**
 
-| Connector/metadat | itemName<br>(soubor/složka) | itemType<br>(soubor/složka) | velikost<br>(soubor) | vytvořené<br>(soubor/složka) | lastModified<br>(soubor/složka) |childItems<br>(složka) |contentMD5<br>(soubor) | Struktura<br/>(soubor) | počet sloupců<br>(soubor) | Existuje<br>(soubor/složka) |
+| Connector/metadat | itemName<br>(soubor/složka) | itemType<br>(soubor/složka) | size<br>(soubor) | Vytvoření<br>(soubor/složka) | lastModified<br>(soubor/složka) |childItems<br>(složka) |contentMD5<br>(soubor) | structure<br/>(soubor) | počet sloupců<br>(soubor) | Existuje<br>(soubor/složka) |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
 | Amazon S3 | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
-| Cloudové úložiště Googlu | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
+| Google Cloud Storage | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
 | Azure Blob | √/√ | √/√ | √ | x/x | √/√* | √ | √ | √ | √ | √/√ |
 | Azure Data Lake Storage Gen1 | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | Azure Data Lake Storage Gen2 | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
@@ -60,7 +60,7 @@ Aktivita GetMetadata přijímá datovou sadu jako požadovaný vstup a výstup i
 
 **Relační databáze:**
 
-| Connector/metadat | Struktura | počet sloupců | Existuje |
+| Connector/metadat | structure | počet sloupců | Existuje |
 |:--- |:--- |:--- |:--- |
 | Azure SQL Database | √ | √ | √ |
 | Azure SQL Database Managed Instance | √ | √ | √ |
@@ -75,12 +75,12 @@ Dá se zadat následující typy metadat v seznamu polí aktivita GetMetadata na
 |:--- |:--- |
 | itemName | Název souboru nebo složky. |
 | itemType | Typ souboru nebo složky. Výstupní hodnota je `File` nebo `Folder`. |
-| velikost | Velikost souboru v bajtech. Použít pouze soubor. |
-| vytvořené | Vytvořený data a času souboru nebo složky. |
+| size | Velikost souboru v bajtech. Použít pouze soubor. |
+| Vytvoření | Vytvořený data a času souboru nebo složky. |
 | lastModified | Poslední změny data a času souboru nebo složky. |
 | childItems | Seznam podsložky a soubory v rámci dané složky. Vztahuje se pouze pro složku. Výstupní hodnota je seznam názvů a typů položku každé podřízené položky. |
 | contentMD5 | MD5 souboru. Použít pouze soubor. |
-| Struktura | Struktura dat v souboru nebo relační databázové tabulky. Výstupní hodnota je seznam sloupec název a typ sloupce. |
+| structure | Struktura dat v souboru nebo relační databázové tabulky. Výstupní hodnota je seznam sloupec název a typ sloupce. |
 | počet sloupců | Počet sloupců v souboru nebo relační tabulky. |
 | Existuje| Určuje, zda existuje soubor/složka/tabulky nebo ne. Mějte na paměti, že pokud "existuje" v seznamu polí GetaMetadata zadána, aktivita selhání i v případě, že neexistuje položka (soubor/složka/tabulky); Místo toho vrátí `exists: false` ve výstupu. |
 

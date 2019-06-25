@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 09/07/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 40a5416f15b0e2d66d6ce4b4787573560ee4af00
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: b2bce9788006a564def9bd8c1375a85dc4184b67
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66156404"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66814801"
 ---
 ## <a name="create-a-device-identity"></a>Vytvoření identity zařízení
 
-V této části použijete rozhraní příkazového řádku Azure k vytvoření identity zařízení pro účely tohoto kurzu. Rozhraní příkazového řádku Azure je předinstalován v [Azure Cloud Shell](~/articles/cloud-shell/overview.md), nebo můžete [nainstalujte ho místně](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). V ID zařízení se rozlišují malá a velká písmena.
+V této části použijete rozhraní příkazového řádku Azure k vytvoření identity zařízení pro účely tohoto kurzu. Rozhraní příkazového řádku Azure je předinstalován v [Azure Cloud Shell](~/articles/cloud-shell/overview.md), nebo můžete [nainstalovat Azure CLI místně](/cli/azure/install-azure-cli). V ID zařízení se rozlišují malá a velká písmena.
 
 1. Spusťte následující příkaz prostředí příkazového řádku, kde jsou k instalaci rozšíření IoT pomocí Azure CLI:
 

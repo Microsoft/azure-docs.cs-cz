@@ -1,5 +1,5 @@
 ---
-title: Informace pro vývojáře pro podmíněný přístup Azure Active Directory
+title: Informace pro vývojáře pro Azure Active Directory podmíněného přístupu
 description: Informace pro vývojáře a scénáře pro podmíněný přístup Azure AD
 services: active-directory
 keywords: ''
@@ -15,24 +15,24 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0674934f7105df3874048308e98fd582d32e72bc
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 9e4e0eb830d5ede910e72ec3193cfd613561811b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962838"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111525"
 ---
-# <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Informace pro vývojáře pro podmíněný přístup Azure Active Directory
+# <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Informace pro vývojáře pro Azure Active Directory podmíněného přístupu
 
 Funkce podmíněného přístupu v Azure Active Directory (Azure AD) nabízí několika způsoby, které můžete použít k zabezpečení aplikace a chránit služby. Podmíněný přístup umožňuje vývojářům a podnikovými zákazníky chrání služby ve velké množství způsobů, včetně:
 
-* Vícefaktorové ověřování
+* Ověřování pomocí služby Multi-Factor Authentication
 * Povolení Intune jenom registrovaná zařízení pro přístup k určité služby
 * Rozsahy omezení umístění uživatele a IP adres
 
 Další informace o všech možnostech podmíněného přístupu najdete v tématu [podmíněného přístupu v Azure Active Directory](../active-directory-conditional-access-azure-portal.md).
 
-Vývojářům vyvíjejícím aplikace pro službu Azure AD Tento článek ukazuje, jak můžete pomocí podmíněného přístupu a dozvíte se víc i o důsledcích přístup k prostředkům, které nemáte kontrolu nad, který může mít zásady podmíněného přístupu. Tento článek také zkoumá dopad podmíněného přístupu v tok on-behalf-of, webových aplikací, přístupu k Microsoft Graphu a volání rozhraní API.
+Pro vývojáře, kteří vytvářejí aplikace pro službu Azure AD Tento článek popisuje, jak můžete pomocí podmíněného přístupu a dozvíte se víc i o důsledcích přístup k prostředkům, které nemáte kontrolu nad, který může mít zásady podmíněného přístupu. Tento článek také zkoumá dopad podmíněného přístupu v tok on-behalf-of, webových aplikací, přístupu k Microsoft Graphu a volání rozhraní API.
 
 Znalost [jeden](quickstart-v1-integrate-apps-with-azure-ad.md) a [víceklientské](howto-convert-app-to-be-multi-tenant.md) aplikace a [běžné vzory ověřování](authentication-scenarios.md) se předpokládá, že.
 
@@ -40,7 +40,7 @@ Znalost [jeden](quickstart-v1-integrate-apps-with-azure-ad.md) a [víceklientsk�
 
 ### <a name="app-types-impacted"></a>Ovlivněné typy aplikací
 
-Podmíněný přístup v nejběžnějších případech nezmění chování vaší aplikace nebo vyžaduje změny od vývojáře. Pouze v určitých případech při aplikaci nepřímo nebo v tichém režimu žádá token pro služby, aplikace vyžaduje změny kódu pro zpracování podmíněného přístupu "výzvy". Může být stejně jednoduché jako požadavek interaktivní přihlášení.
+Podmíněný přístup v nejběžnějších případech nezmění chování vaší aplikace nebo vyžaduje změny od vývojáře. Pouze v některých případech při aplikaci nepřímo nebo v tichém režimu žádá token pro služby, aplikace vyžaduje změny kódu pro zpracování podmíněného přístupu "výzvy". Může být stejně jednoduché jako požadavek interaktivní přihlášení.
 
 Konkrétně následující scénáře vyžadují kód pro zpracování podmíněného přístupu "výzvy":
 
@@ -49,7 +49,7 @@ Konkrétně následující scénáře vyžadují kód pro zpracování podmíně
 * Jednostránkové aplikace s využitím ADAL.js
 * Funkce Web Apps volání prostředku
 
-Podmíněný přístup pro aplikaci můžete použít zásady, ale můžete také použít k webovému rozhraní API přistupuje k aplikaci. Další informace o tom, jak nakonfigurovat zásady podmíněného přístupu najdete v tématu [rychlý start: Vyžadovat vícefaktorové ověřování pro konkrétní aplikace s podmíněným přístupem Azure Active Directory](../conditional-access/app-based-mfa.md).
+Podmíněný přístup pro aplikaci můžete použít zásady, ale můžete také použít k webovému rozhraní API přistupuje k aplikaci. Další informace o tom, jak nakonfigurovat zásady podmíněného přístupu najdete v tématu [rychlý start: Vyžadovat vícefaktorové ověřování pro konkrétní aplikace pomocí Azure Active Directory podmíněného přístupu](../conditional-access/app-based-mfa.md).
 
 V závislosti na scénáři můžete použít podnikový zákazník a kdykoli odebrat zásady podmíněného přístupu. Aby vaše aplikace bude moct pracovat při použije nová zásada budete muset implementovat zpracování "problém". Následující příklady znázorňují zpracování challenge.
 
@@ -100,9 +100,9 @@ Následující informace platí jenom v těchto scénářích podmíněného př
 * Aplikace přístup k více službám nebo prostředkům
 * Jednostránkové aplikace s využitím ADAL.js
 
-Následující části popisují běžných scénářů, které jsou složitější. Základní princip je podmíněný přístup, které zásady jsou vyhodnocovány v okamžiku vyžádání tokenu pro službu, která se má použít zásady podmíněného přístupu.
+Následující části popisují běžných scénářů, které jsou složitější. Základní princip je, že zásady podmíněného přístupu jsou vyhodnocovány v okamžiku vyžádání tokenu pro službu, která se má použít zásady podmíněného přístupu.
 
-## <a name="scenario-app-performing-the-on-behalf-of-flow"></a>Scénář: Aplikace provádí tok on-behalf-of
+## <a name="scenario-app-performing-the-on-behalf-of-flow"></a>Scénář: Aplikace provádí tok On-Behalf-Of
 
 V tomto scénáři provedeme tento případ, ve kterém nativní aplikace volá webové služby nebo rozhraní API. Pak tato služba nemá tok "on-behalf-of" volat podřízené služby. V našem případě jsme použili naše zásady podmíněného přístupu u podřízené služby (webové rozhraní API 2) a používají nativní aplikace namísto aplikace typu server/démon. 
 

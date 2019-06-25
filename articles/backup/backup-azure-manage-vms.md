@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: sogup
 ms.openlocfilehash: aa953440f03137f3359276bc9e06cb0c73f0ab4a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61219086"
 ---
 # <a name="manage-azure-vm-backups"></a>Správa záloh virtuálních počítačů Azure
@@ -132,7 +132,7 @@ Pokud chcete obnovit ochranu pro virtuální počítač:
 
     ![Zprávu s upozorněním úspěšně chráněného virtuálního počítače](./media/backup-azure-manage-vms/success-message.png)
 
-## <a name="delete-backup-data"></a>Odstranit data zálohy
+## <a name="delete-backup-data"></a>Odstranění zálohovaných dat
 
 Můžete odstranit zálohovaná data Virtuálního počítače během **Zastavit zálohování** úlohy nebo po dokončení úlohy zálohování. Než odstraníte data záloh, mějte tyto podrobnosti:
 

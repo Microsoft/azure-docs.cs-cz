@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 05/07/2018
+ms.date: 06/18/2018
 ms.author: maheshb
-ms.openlocfilehash: 267b50e15d39fc5a0df763cea2e2b79f9b23d151
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 87c6744dd9ee0a921a422320563f10acff9ed875
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595805"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206216"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-c"></a>Rychlý start: Volání pomocí koncových bodů vlastního vyhledávání BinguC# 
 
@@ -25,9 +25,9 @@ V tomto rychlém startu můžete začít si vyžádat výsledky hledání od va�
 
 - Instanci vlastního vyhledávání Bingu. Zobrazit [rychlý start: Vytvoření první instanci vlastního vyhledávání Bingu](quick-start.md) Další informace.
 - Microsoft [.NET Core](https://www.microsoft.com/net/download/core)
-- Libovolná edice [sady Visual Studio 2017 nebo novější](https://www.visualstudio.com/downloads/)
+- Libovolná edice [Visual Studio 2019 nebo novější](https://www.visualstudio.com/downloads/)
 - Pokud používáte Linux nebo MacOS, je možné tuto aplikaci spustit pomocí [Mono](https://www.mono-project.com/).
-- Nainstalovaný balíček [NuGet pro vlastní vyhledávání](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0). 
+- [Vlastní vyhledávání Bingu](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0) balíček NuGet. 
     - Z **Průzkumníka řešení** v sadě Visual Studio, klikněte pravým tlačítkem na projekt a vyberte **spravovat balíčky NuGet** z nabídky. Nainstalujte balíček `Microsoft.Azure.CognitiveServices.Search.CustomSearch`. Při instalaci balíčku NuGet pro vlastní vyhledávání se nainstalují také následující sestavení:
         - Microsoft.Rest.ClientRuntime
         - Microsoft.Rest.ClientRuntime.Azure
@@ -104,7 +104,7 @@ V tomto rychlém startu můžete začít si vyžádat výsledky hledání od va�
     ```
    ## <a name="process-and-view-the-results"></a>Zpracování a zobrazení výsledků
 
-1. Iterujte přes objekt odpovědi k zobrazení informací o jednotlivých výsledek hledání, včetně názvu, adresu url a datum, byl naposledy procházen webovou stránku.
+3. Iterujte přes objekt odpovědi k zobrazení informací o jednotlivých výsledek hledání, včetně názvu, adresu url a datum, byl naposledy procházen webovou stránku.
 
     ```csharp
     for(int i = 0; i < response.webPages.value.Length; i++) {                

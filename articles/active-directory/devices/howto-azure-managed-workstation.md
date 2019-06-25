@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 242926c0821e4951d2a2bd2f858f63691baf1017
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: ae7c823b9aea262556081354a108ac9509a284ab
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66307224"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67110691"
 ---
 # <a name="deploy-a-secure-workstation"></a>Nasazení zabezpečené pracovní stanice
 
@@ -102,9 +102,9 @@ Chcete-li dále posílit procesu připojování zařízení ke službě Azure AD
 
 Na webu Azure Portal, přejděte do **Azure Active Directory** > **mobilita (MDM a MAM)**  > **Microsoft Intune**. Změnit nastavení **obor uživatele MDM** k **všechny** a zvolte **Uložit** jako povolíme libovolné zařízení spravovat přes Intune. v tomto scénáři. Další informace najdete v článku [Intune rychlý start: Nastavení automatické registrace pro zařízení s Windows 10](https://docs.microsoft.com/Intune/quickstart-setup-auto-enrollment). V dalším kroku vytvoříme zásad konfigurace a dodržování předpisů Intune.
 
-#### <a name="azure-ad-conditional-access"></a>Podmíněný přístup Azure AD
+#### <a name="azure-ad-conditional-access"></a>Podmíněný přístup služby Azure AD
 
-Podmíněný přístup Azure AD pomoct chránit tyto privilegovaných úlohy správy na zařízení dodržující předpisy. Uživatelů jsme definovali jako členy **zabezpečení pracovních stanic uživatelů** skupiny, bude nutné provést ověřování službou Multi-Factor Authentication při přihlašování do cloudových aplikací. Budeme postupovat podle nejlepších praktik a účtů pro nouzový přístup vyloučit ze zásad. Další informace najdete v článku [spravovat účty pro nouzový přístup ve službě Azure AD](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)
+Azure AD podmíněný přístup vám může pomoci udržovat úkoly správy privilegovaných na kompatibilních zařízeních. Uživatelů jsme definovali jako členy **zabezpečení pracovních stanic uživatelů** skupiny, bude nutné provést ověřování službou Multi-Factor Authentication při přihlašování do cloudových aplikací. Budeme postupovat podle nejlepších praktik a účtů pro nouzový přístup vyloučit ze zásad. Další informace najdete v článku [spravovat účty pro nouzový přístup ve službě Azure AD](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)
 
 Jak nakonfigurovat podmíněný přístup na webu Azure Portal, přejděte do **Azure Active Directory** > **podmíněného přístupu** > **nové zásady**.
 
@@ -122,7 +122,7 @@ Jak nakonfigurovat podmíněný přístup na webu Azure Portal, přejděte do **
       * Pro více ovládacích prvků – **vyžadovat všechny vybrané ovládací prvky**
 * Povolit zásady – **na**
 
-Organizace mohou volitelně vytvořit zásady pro blokování zemí, kde by uživatelé přístup k prostředkům společnosti. Další informace o vytváření zásad podmíněného přístupu na základě umístění IP najdete v článku [co je podmínka umístění podmíněného přístupu Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/location-condition)
+Organizace mohou volitelně vytvořit zásady pro blokování zemí, kde by uživatelé přístup k prostředkům společnosti. Další informace o IP zásady podmíněného přístupu na základě umístění najdete v článku [co je podmínka umístění v Azure Active Directory podmíněného přístupu?](https://docs.microsoft.com/azure/active-directory/conditional-access/location-condition)
 
 ## <a name="intune-configuration"></a>Konfigurace v Intune
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 2f0b01601dfb28b2b6b8ee8ca53398ec3dccb803
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65787288"
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>Rozhraní API protokolu HTTP v Durable Functions (Azure Functions)
@@ -104,7 +104,7 @@ Několik částí zahrnují konkrétní rozhraní API HTTP nepodporuje rozšíř
 
 Získá stav instance zadaného Orchestrace.
 
-#### <a name="request"></a>Požadavek
+#### <a name="request"></a>Žádost
 
 Pro verzi 1.x modul runtime služby Functions, požadavek formátována následujícím způsobem (více řádků jsou platné pro přehlednost):
 
@@ -146,11 +146,11 @@ Požádat o výchozí sadu a také následující unikátní parametry již bylo
 
 Několik hodnot kód stavu je to možné, může být vrácen.
 
-* **HTTP 200 (OK)**: Zadaná instance je ve stavu dokončení.
-* **HTTP 202 (přijato)**: Probíhá určené instance.
-* **HTTP 400 (Chybný požadavek)**: Zadaná instance se nezdařilo nebo bylo ukončeno.
-* **HTTP 404 (Nenalezeno)**: Zadaná instance neexistuje nebo nebyl spuštěn.
-* **HTTP 500 (vnitřní chyba serveru)**: Zadaná instance selhala s neošetřenou výjimkou.
+* **HTTP 200 (OK)** : Zadaná instance je ve stavu dokončení.
+* **HTTP 202 (přijato)** : Probíhá určené instance.
+* **HTTP 400 (Chybný požadavek)** : Zadaná instance se nezdařilo nebo bylo ukončeno.
+* **HTTP 404 (Nenalezeno)** : Zadaná instance neexistuje nebo nebyl spuštěn.
+* **HTTP 500 (vnitřní chyba serveru)** : Zadaná instance selhala s neošetřenou výjimkou.
 
 Datová část odpovědi **HTTP 200** a **HTTP 202** případech je objekt JSON s následující pole:
 
@@ -228,7 +228,7 @@ Můžete také zjistit stav všech instancí tak, že odeberete `instanceId` z p
 Je jedna věc, mějte na paměti, že `connection` a `code` jsou volitelné. Pokud máte anonymní ověřování na funkci kódu není povinné.
 Pokud nechcete použít jiné než definované v nastavení aplikace, které AzureWebJobsStorage jiného úložiště připojovací řetězec, můžete bezpečně ignorovat připojení parametru řetězce dotazu.
 
-#### <a name="request"></a>Požadavek
+#### <a name="request"></a>Žádost
 
 Pro verzi 1.x modul runtime služby Functions, požadavek formátována následujícím způsobem (více řádků jsou platné pro přehlednost):
 
@@ -336,7 +336,7 @@ Pokud nastavíte hodnotu token pokračování v dalším záhlaví požadavku, m
 
 Vymaže historii a související artefakty pro instanci zadaného Orchestrace.
 
-#### <a name="request"></a>Požadavek
+#### <a name="request"></a>Žádost
 
 Pro verzi 1.x modul runtime služby Functions, požadavek formátována následujícím způsobem (více řádků jsou platné pro přehlednost):
 
@@ -366,8 +366,8 @@ Požádat o výchozí sadu a také následující unikátní parametry již bylo
 
 Následující hodnoty kód stavu HTTP může být vrácen.
 
-* **HTTP 200 (OK)**: Historie instance byla úspěšně odstraněna.
-* **HTTP 404 (Nenalezeno)**: Zadaná instance neexistuje.
+* **HTTP 200 (OK)** : Historie instance byla úspěšně odstraněna.
+* **HTTP 404 (Nenalezeno)** : Zadaná instance neexistuje.
 
 Datová část odpovědi **HTTP 200** případem je objekt JSON s následující pole:
 
@@ -387,7 +387,7 @@ Tady je datovou část odpovědi příklad (ve formátu pro lepší čitelnost):
 
 Můžete také odstranit historii a související artefakty pro víc instancí v rámci centra úloh tak, že odeberete `{instanceId}` z požadavku "Vyprázdnit historii jediné instance". Selektivní vymazání historie instance, použijte stejné filtry, které je popsáno v žádosti "Získat všechny stav instance".
 
-#### <a name="request"></a>Požadavek
+#### <a name="request"></a>Žádost
 
 Pro verzi 1.x modul runtime služby Functions, požadavek formátována následujícím způsobem (více řádků jsou platné pro přehlednost):
 
@@ -428,8 +428,8 @@ Požádat o výchozí sadu a také následující unikátní parametry již bylo
 
 Následující hodnoty kód stavu HTTP může být vrácen.
 
-* **HTTP 200 (OK)**: Historie instance byla úspěšně odstraněna.
-* **HTTP 404 (Nenalezeno)**: Nebyly nalezeny žádné instance, která odpovídají výraz filtru.
+* **HTTP 200 (OK)** : Historie instance byla úspěšně odstraněna.
+* **HTTP 404 (Nenalezeno)** : Nebyly nalezeny žádné instance, která odpovídají výraz filtru.
 
 Datová část odpovědi **HTTP 200** případem je objekt JSON s následující pole:
 
@@ -449,7 +449,7 @@ Tady je datovou část odpovědi příklad (ve formátu pro lepší čitelnost):
 
 Odešle zprávu oznámení události ke spuštěné instanci Orchestrace.
 
-#### <a name="request"></a>Požadavek
+#### <a name="request"></a>Žádost
 
 Pro verzi 1.x modul runtime služby Functions, požadavek formátována následujícím způsobem (více řádků jsou platné pro přehlednost):
 
@@ -481,10 +481,10 @@ Požádat o výchozí sadu a také následující unikátní parametry již bylo
 
 Několik hodnot kód stavu je to možné, může být vrácen.
 
-* **HTTP 202 (přijato)**: Vyvolána událost byla přijata ke zpracování.
-* **HTTP 400 (Chybný požadavek)**: Obsah požadavku nebyl typu `application/json` nebo nebyl platný kód JSON.
-* **HTTP 404 (Nenalezeno)**: Zadané instance nebyla nalezena.
-* **HTTP 410 (pryč)**: Zadaná instance dokončí nebo se nezdařilo a nemůže zpracovat žádné vyvolanou události.
+* **HTTP 202 (přijato)** : Vyvolána událost byla přijata ke zpracování.
+* **HTTP 400 (Chybný požadavek)** : Obsah požadavku nebyl typu `application/json` nebo nebyl platný kód JSON.
+* **HTTP 404 (Nenalezeno)** : Zadané instance nebyla nalezena.
+* **HTTP 410 (pryč)** : Zadaná instance dokončí nebo se nezdařilo a nemůže zpracovat žádné vyvolanou události.
 
 Tady je příklad žádosti, která odešle řetězec JSON `"incr"` k čekání na událost s názvem instance **operace**:
 
@@ -502,7 +502,7 @@ Odpovědi pro toto rozhraní API neobsahuje žádný obsah.
 
 Ukončí běžící instanci Orchestrace.
 
-#### <a name="request"></a>Požadavek
+#### <a name="request"></a>Žádost
 
 Pro verzi 1.x modul runtime služby Functions, požadavek formátována následujícím způsobem (více řádků jsou platné pro přehlednost):
 
@@ -535,9 +535,9 @@ Požádat o parametry pro toto rozhraní API obsahovat výchozí sadu a také n�
 
 Několik hodnot kód stavu je to možné, může být vrácen.
 
-* **HTTP 202 (přijato)**: Ukončení požadavku byla přijata ke zpracování.
-* **HTTP 404 (Nenalezeno)**: Zadané instance nebyla nalezena.
-* **HTTP 410 (pryč)**: Zadaná instance dokončí nebo se nezdařilo.
+* **HTTP 202 (přijato)** : Ukončení požadavku byla přijata ke zpracování.
+* **HTTP 404 (Nenalezeno)** : Zadané instance nebyla nalezena.
+* **HTTP 410 (pryč)** : Zadaná instance dokončí nebo se nezdařilo.
 
 Tady je příklad žádosti, která ukončí spuštěné instance a určí důvod z **buggy**:
 
@@ -551,7 +551,7 @@ Odpovědi pro toto rozhraní API neobsahuje žádný obsah.
 
 Obnoví instanci neúspěšné Orchestrace do spuštěného stavu přehráním nejnovější neúspěšné operace.
 
-### <a name="request"></a>Požadavek
+### <a name="request"></a>Žádost
 
 Pro verzi 1.x modul runtime služby Functions, požadavek formátována následujícím způsobem (více řádků jsou platné pro přehlednost):
 
@@ -584,9 +584,9 @@ Požádat o parametry pro toto rozhraní API obsahovat výchozí sadu a také n�
 
 Několik hodnot kód stavu je to možné, může být vrácen.
 
-* **HTTP 202 (přijato)**: Rewind žádost byla přijata ke zpracování.
-* **HTTP 404 (Nenalezeno)**: Zadané instance nebyla nalezena.
-* **HTTP 410 (pryč)**: Zadaná instance byla dokončena nebo byl ukončen.
+* **HTTP 202 (přijato)** : Rewind žádost byla přijata ke zpracování.
+* **HTTP 404 (Nenalezeno)** : Zadané instance nebyla nalezena.
+* **HTTP 410 (pryč)** : Zadaná instance byla dokončena nebo byl ukončen.
 
 Tady je příklad žádosti, která přetočí nezdařených instancí a určí důvod z **oprava**:
 

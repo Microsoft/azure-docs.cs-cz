@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/17/2019
-ms.openlocfilehash: 60cddf15ee8a93aa01a72fdc124fa27e68184e04
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: acafd6d8f37edd3e16561a4e588556bb771619f8
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65916036"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206705"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>Principy a úpravy jednotek streamování
 
@@ -59,7 +59,7 @@ Základní sada operátorů stavová služba Stream Analytics k dispozici jsou p
 
 Mějte na paměti, že úloha s logikou složitého dotazu může mít vysokou % využití SU i v případě, že není přijímání průběžně vstupních událostí. K tomu může dojít po náhlá Špička v vstupní a výstupní události. Úloha může nadále zachovat stav v paměti, pokud je složitý dotaz.
 
-% Využití SU může najednou umístit do 0 na krátkou dobu před vracející se zpět do očekávané úrovně. K tomu dochází z důvodu přechodných chyb nebo systém byl iniciován upgrady.
+% Využití SU může najednou umístit do 0 na krátkou dobu před vracející se zpět do očekávané úrovně. K tomu dochází z důvodu přechodných chyb nebo systém byl iniciován upgrady. Zvýšení počtu jednotek streamování pro úlohu nemusí snížit % využití SU, pokud váš dotaz není [plně paralelní](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization).
 
 ## <a name="stateful-query-logicin-temporal-elements"></a>Stavových dotazů logiky v elementech dočasné
 Jeden jedinečné funkce úlohy Azure Stream Analytics je stavové zpracování, jako jsou agregace v okně, dočasné spojení a dočasné analytických funkcí. Každý z těchto operátorů uchovává informace o stavu. Je maximální velikost okna pro tyto elementy dotazu je sedm dní. 

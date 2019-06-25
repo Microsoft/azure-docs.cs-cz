@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: 3b170a214c7c3c464f7ea645fa1dc42cce0a0580
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65951707"
 ---
 # <a name="security-frame-authentication--mitigations"></a>Zabezpečení rámce: Ověřování | Zmírnění rizik 
@@ -48,7 +48,7 @@ ms.locfileid: "65951707"
 | **Použitelných technologiích** | Obecné |
 | **Atributy**              | neuvedeno  |
 | **Odkazy**              | neuvedeno  |
-| Podrobnosti | <p>Ověřování je proces, ve kterém entita prokáže svoji identitu, obvykle pomocí přihlašovacích údajů, jako je například uživatelské jméno a heslo. Existuje více ověřovací protokoly dostupné kterých lze považovat za. Některé z nich jsou uvedeny níže:</p><ul><li>Klientské certifikáty</li><li>Založené na Windows</li><li>Na základě formulářů</li><li>Federace – služby AD FS</li><li>Federace – Azure AD</li><li>Federace - serveru identit</li></ul><p>Zvažte možnost použít standardní ověřovací mechanismus pro identifikaci zdroje procesu</p>|
+| Podrobnosti | <p>Ověřování je proces, ve kterém entita prokáže svoji identitu, obvykle pomocí přihlašovacích údajů, jako je například uživatelské jméno a heslo. Existuje více ověřovací protokoly dostupné kterých lze považovat za. Některé z nich jsou uvedeny níže:</p><ul><li>Klientské certifikáty</li><li>Na základě Windows</li><li>Na základě formulářů</li><li>Federace – služby AD FS</li><li>Federace – Azure AD</li><li>Federace - serveru identit</li></ul><p>Zvažte možnost použít standardní ověřovací mechanismus pro identifikaci zdroje procesu</p>|
 
 ## <a id="handle-failed-authn"></a>Aplikace musí zvládnout bezpečně scénáře selhání ověření
 
@@ -335,12 +335,12 @@ Konfigurace služby MSMQ tak, aby vyžadovala domény Windows nebo ověřování
 
 | Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Webové rozhraní API | 
+| **Komponenta**               | Web API | 
 | **SDL fáze**               | Sestavení |  
 | **Použitelných technologiích** | Obecné |
 | **Atributy**              | neuvedeno  |
 | **Odkazy**              | [Ověřování a autorizace v rozhraní ASP.NET Web API](https://www.asp.net/web-api/overview/security/authentication-and-authorization-in-aspnet-web-api), [externí ověřovací služby pomocí rozhraní ASP.NET Web API (C#)](https://www.asp.net/web-api/overview/security/external-authentication-services) |
-| **Kroky** | <p>Ověřování je proces, ve kterém entita prokáže svoji identitu, obvykle pomocí přihlašovacích údajů, jako je například uživatelské jméno a heslo. Existuje více ověřovací protokoly dostupné kterých lze považovat za. Některé z nich jsou uvedeny níže:</p><ul><li>Klientské certifikáty</li><li>Založené na Windows</li><li>Na základě formulářů</li><li>Federace – služby AD FS</li><li>Federace – Azure AD</li><li>Federace - serveru identit</li></ul><p>Odkazy v části odkazy poskytují podrobnosti nižší úrovně o jak každý z ověřovací schémata je možné implementovat pro zabezpečení webového rozhraní API.</p>|
+| **Kroky** | <p>Ověřování je proces, ve kterém entita prokáže svoji identitu, obvykle pomocí přihlašovacích údajů, jako je například uživatelské jméno a heslo. Existuje více ověřovací protokoly dostupné kterých lze považovat za. Některé z nich jsou uvedeny níže:</p><ul><li>Klientské certifikáty</li><li>Na základě Windows</li><li>Na základě formulářů</li><li>Federace – služby AD FS</li><li>Federace – Azure AD</li><li>Federace - serveru identit</li></ul><p>Odkazy v části odkazy poskytují podrobnosti nižší úrovně o jak každý z ověřovací schémata je možné implementovat pro zabezpečení webového rozhraní API.</p>|
 
 ## <a id="authn-aad"></a>Použít standardní ověřovací scénáře podporované službou Azure Active Directory
 
@@ -490,7 +490,7 @@ await deviceClient.SendEventAsync(message);
     var connectionString = 'HostName=<HostName>DeviceId=<DeviceId>SharedAccessKey=<SharedAccessKey>';
     var client = clientFromConnectionString(connectionString);
     ```
-  #### <a name="sas-token"></a>Token SAS
+  #### <a name="sas-token"></a>SAS Token
 * Získá generováno interně při použití symetrický klíč, ale můžeme můžete vygenerovat a použít ho explicitně i
 * Definujte protokol: `var Http = require('azure-iot-device-http').Http;`
 * Vytvořte sas token:

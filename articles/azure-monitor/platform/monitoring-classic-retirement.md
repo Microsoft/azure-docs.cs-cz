@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 2/7/2019
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: d7c8c8e6931c3e677273fab17755031527aff978
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fb7821b07e68459cb3d76812a12e85387b9f0f52
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67069361"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295107"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Sjednocené upozorňování a monitorování ve službě Azure Monitor nahradí classic upozorňování a monitorování
 
 Azure Monitor teď stal jednotné plnohodnotných sledování služby, které teď podporuje v prostředků; "Jedné výstrahy" a "jedna metrika. Další informace najdete v tématu naše [blogový příspěvek na nový Azure Monitor](https://azure.microsoft.com/blog/new-full-stack-monitoring-capabilities-in-azure-monitor/). Nové Azure, monitorování a upozorňování platformy je sestavený Build bude rychlejší a chytřejší vytváření a rozšiřitelné – uchování kroku s rostoucí expanse cloud computingu a v řádku s filozofií inteligentního cloudu společnosti Microsoft. 
 
-S novou Azure monitorování a upozorňování platformy na místě můžeme vyřazení "klasickém", monitorování a upozorňování platformu – hostované v rámci *zobrazit upozornění classic* části upozornění v Azure, **se přestanou používat podle 2019 dne na Azure veřejných cloudů**. [Azure Government cloud](../../azure-government/documentation-government-welcome.md) a [Azure China](https://docs.azure.cn/) tyto zásady neovlivní.
+S novou Azure monitorování a upozorňování platformy na místě můžeme vyřazení "klasickém", monitorování a upozorňování platformu – hostované v rámci *zobrazit upozornění classic* části upozornění v Azure, **se přestanou používat podle 2019 dne na Azure veřejných cloudů**. [Azure Government cloud](../../azure-government/documentation-government-welcome.md) a [Azure China 21Vianet](https://docs.azure.cn/) tyto zásady neovlivní.
 
 > [!NOTE]
 > Datum vyřazení pro migraci klasických upozornění byla z důvodu zpoždění při uvádění nástroj pro migraci [rozšířená tak, aby 31. srpna 2019](https://azure.microsoft.com/updates/azure-monitor-classic-alerts-retirement-date-extended-to-august-31st-2019/) od původně oznámené data 30. června 2019.
@@ -67,7 +67,7 @@ Na konci dne. 2019 ve službě Azure Monitor:
 - Pravidla výstrah, které dál existovat v upozornění (klasická) nad rámec 2019. srpna bude i nadále spouštět a aktivují upozornění, ale nebudou k dispozici pro úpravy.
 - Od září 2019, pravidla výstrah ve službě classic monitoring a alerting, které se dají migrovat, bude automaticky přesunut microsoftem na ekvivalentní na nové platformě Azure monitor ve fázích pokrývající několik týdnů. Proces bude bezproblémové bez výpadku a bez ztráty monitorování pokrytí budou mít zákazníci.
 - Upozornění pravidla migrovány do nového oznámení platformy bude poskytovat monitorování pokrytí jako předtím, ale se aktivuje upozornění s datovými částmi nové. Všechny e-mailovou adresu, koncový bod webhooku nebo odkaz na aplikaci logiky přidružené klasické pravidlo upozornění přenesena při migraci, ale nemusí správně fungovat jako datová část oznámení se bude lišit v nové platformy.
-- Některé [classic pravidel upozornění, které se nedají migrovat automaticky](alerts-understand-migration.md#which-classic-alert-rules-can-be-migrated) a vyžadují ruční zásah uživatele bude pokračovat až do roku 2020 dne.
+- Některé [classic pravidel upozornění, které se nedají migrovat automaticky](alerts-understand-migration.md#classic-alert-rules-that-will-not-be-migrated) a vyžadují ruční zásah uživatele bude pokračovat až do roku 2020 dne.
 
 > [!IMPORTANT]
 > Microsoft Azure Monitor se vrátila ve fázích [nástroj pro migraci dobrovolně](alerts-using-migration-tool.md) classic pravidla výstrah k nové platformy brzy. A spusťte ho vynutí pro všechny klasické pravidla výstrah, které stále existuje a je možné migrovat, od září 2019. Zákazníci musí zajistit náročné datové části klasické pravidlo upozornění je přizpůsobena zpracovat nové datové části ze služby automation [Unified metrik a výstrah ve službě Application Insights](#unified-metrics-and-alerts-in-application-insights) nebo [Unified metriky a upozornění na jiné službě Azure prostředky](#unified-metrics-and-alerts-for-other-azure-resources), po migraci klasického pravidel upozornění. Další informace najdete v tématu [Příprava na migraci klasické pravidlo upozornění](alerts-prepare-migration.md)

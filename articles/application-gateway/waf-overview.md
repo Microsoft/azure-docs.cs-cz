@@ -8,10 +8,10 @@ ms.date: 5/22/2019
 ms.author: amsriva
 ms.topic: conceptual
 ms.openlocfilehash: 9c2759222198f5df682d9e7a5363c0d9679e0fad
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65991402"
 ---
 # <a name="web-application-firewall-for-azure-application-gateway"></a>Firewall webových aplikací služby Azure Application Gateway
@@ -133,7 +133,7 @@ V režimu vyhodnocení anomálií provoz, který odpovídá jakékoli pravidlo n
 |Kritická     |5|
 |Chyba        |4|
 |Upozornění      |3|
-|Poznámka       |2|
+|Všimněte si, že       |2|
 
 Je prahová hodnota 5 anomálií skóre blokuje komunikaci. Tak jediné *kritický* pravidlo je dostatečná pro waf služby Application Gateway blokovat žádost, i v režimu ochrany před únikem informací. Krom jedné *upozornění* pravidla shody jenom zvýší anomálií 3 skóre, která není k dispozici dostatek samostatně k blokování provozu.
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/16/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 87fca23cab27ec27bfc9799066c126994167f46e
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 499b5ac77728bc14aadd5a2ef235e28b6ca83516
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66391377"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67133403"
 ---
 Paměťově optimalizované velikosti nabídky virtuálních počítačů vysoký poměr paměti procesoru, které jsou velmi vhodné pro servery relačních databází, střední a velké mezipaměti a analýzu v paměti. Tento článek obsahuje informace o počtu virtuálních procesorů, datové disky a síťové adaptéry, jakož i úložiště propustnost a šířku pásma sítě pro jednotlivé velikosti v této skupině. 
 
@@ -188,48 +188,6 @@ Akcelerátor zápisu:  [Podporuje se](https://docs.microsoft.com/azure/virtual-m
 <sup>4</sup> instance je izolovaná na hardware vyhrazený pro jediného zákazníka.
 <br>
 
-## <a name="gs-series"></a>Řada GS 
-
-ACU: 180 - 240 <sup>1</sup>
-
-Premium Storage:  Podporováno
-
-Premium Storage ukládání do mezipaměti:  Podporováno
-
-| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Max. propustnost dočasného úložiště a úložiště v mezipaměti: IOPS / MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku bez mezipaměti: IOPS / MB/s | Maximální počet síťových karet / očekávaný šířka pásma (MB/s) |
-|---|---|---|---|---|---|---|---|
-| Standard_GS1 |2 |28 |56 |8 |10000 / 100 (264) |5000 / 125 |2 / 2 000 |
-| Standard_GS2 |4 |56 |112 |16 |20000 / 200 (528) |10000 / 250 |2 / 4 000 |
-| Standard_GS3 |8 |112 |224 |32 |40000 / 400 (1056) |20000 / 500 |4 / 8 000 |
-| Standard_GS4&nbsp;<sup>3</sup> |16 |224 |448 |64 |80000 / 800 (2112) |40000 / 1000 |8 / 16 000 |
-| Standard_GS5&nbsp;<sup>2,&nbsp;3</sup> |32 |448 |896 |64 |160000 / 1600 (4224) |80000 / 2000 |8 / 20 000 |
-
-<sup>1</sup> maximální propustnost disku (IOPS nebo MB/s) se GS-series virtuálních počítačů může být omezená počtem, velikostí a prokládáním připojených disků. Podrobnosti najdete v tématu [návrh pro vysoký výkon](../articles/virtual-machines/windows/premium-storage-performance.md).
-
-<sup>2</sup> instance je izolovaná na hardware vyhrazený pro jediného zákazníka.
-
-<sup>3</sup> core dostupné velikosti omezen.
-
-<br>
-
-## <a name="g-series"></a>G-series
-
-ACU: 180 - 240
-
-Premium Storage:  Nepodporuje se
-
-Premium Storage ukládání do mezipaměti:  Nepodporuje se
-
-| Velikost         | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Maximální propustnost dočasného úložiště: IOPS / čtení v MB/s / zápis v MB/s | Maximální počet datových disků nebo propustnost: IOPS | Maximální počet síťových karet / očekávaný šířka pásma (MB/s) |
-|--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
-| Standard_G1  | 2         | 28          | 384            | 6000 / 93 / 46                                           | 8 / 8 × 500                       | 2 / 2 000                     |
-| Standard_G2  | 4         | 56          | 768            | 12000 / 187 / 93                                         | 16 / 16 × 500                       | 2 / 4 000                     |
-| Standard_G3  | 8         | 112         | 1536          | 24000 / 375 / 187                                        | 32 / 32 × 500                     | 4 / 8 000                |
-| Standard_G4  | 16        | 224         | 3072          | 48000 / 750 / 375                                        | 64 / 64 × 500                     | 8 / 16 000          |
-| Standard_G5&nbsp;<sup>1</sup> | 32        | 448         | 6144          | 96000 / 1500 / 750                                       | 64 / 64 × 500                     | 8 / 20 000           |
-
-<sup>1</sup> instance je izolovaná na hardware vyhrazený pro jediného zákazníka.
-<br>
 
 ## <a name="dsv2-series-11-15"></a>DSv2-series 11-15
 

@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: banders
 ms.openlocfilehash: 000315a2d751a05d3e401ee1bb9f593c6e321194
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64922898"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Přidat nebo změnit správce předplatného Azure
@@ -45,7 +45,7 @@ Chcete-li uživatel správcem předplatného Azure, přiřaďte jim [vlastníka]
 
 1. Klikněte na předplatné, ve které chcete udělit přístup.
 
-1. Klikněte na tlačítko **řízení přístupu (IAM)**.
+1. Klikněte na tlačítko **řízení přístupu (IAM)** .
 
 1. Klikněte na tlačítko **přiřazení rolí** kartu zobrazíte všechna přiřazení rolí pro toto předplatné.
 
@@ -72,6 +72,6 @@ Chcete-li uživatel správcem předplatného Azure, přiřaďte jim [vlastníka]
 * [Postup: Přiřazení nebo přidání předplatného Azure do služby Azure Active Directory](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 * [Oprávnění role správce v Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md)
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktování podpory
+## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktujte podporu
 
 Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.

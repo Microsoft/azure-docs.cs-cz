@@ -11,10 +11,10 @@ ms.date: 03/22/2019
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.openlocfilehash: 6c8ce090039e3d5cc85c86d920710294de2165f9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60748822"
 ---
 # <a name="monitor-workload---azure-portal"></a>Monitorování úloh – Azure portal
@@ -30,7 +30,7 @@ Tento článek popisuje, jak pomocí webu Azure portal k monitorování vaší �
 
 Přejděte do okna procházení pro pracovní prostory Log Analytics a vytvoření pracovního prostoru 
 
-![Pracovní prostory Log Analytics](media/sql-data-warehouse-monitor/log_analytics_workspaces.png)
+![Pracovní prostory log Analytics](media/sql-data-warehouse-monitor/log_analytics_workspaces.png)
 
 ![Přidat pracovní prostor analýzy](media/sql-data-warehouse-monitor/add_analytics_workspace.png)
 

@@ -17,12 +17,12 @@ ms.date: 11/21/2018
 ms.author: joflore
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12d603ddbba9e36d562c8dcd6e3844af28c91255
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: fc638c515af59f6872f2dae262a6910318abdd0e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64918839"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67110764"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Postup: Plánování implementace připojení ke službě Azure AD
 
@@ -44,13 +44,13 @@ K naplánování vaší implementace připojení k Azure AD, které byste se sez
 
 |   |   |
 |---|---|
-|![Zaškrtnout][1]|Zkontrolujte vaše scénáře|
-|![Zaškrtnout][1]|Kontrola vaší infrastruktury identit|
-|![Zaškrtnout][1]|Vyhodnocení správy zařízení|
-|![Zaškrtnout][1]|Pochopte předpoklady pro aplikace a prostředky|
-|![Zaškrtnout][1]|Popis možností zřizování|
-|![Zaškrtnout][1]|Konfigurace organizace stav roamingu|
-|![Zaškrtnout][1]|Konfigurace podmíněného přístupu|
+|![Kontrola][1]|Zkontrolujte vaše scénáře|
+|![Kontrola][1]|Kontrola vaší infrastruktury identit|
+|![Kontrola][1]|Vyhodnocení správy zařízení|
+|![Kontrola][1]|Pochopte předpoklady pro aplikace a prostředky|
+|![Kontrola][1]|Popis možností zřizování|
+|![Kontrola][1]|Konfigurace organizace stav roamingu|
+|![Kontrola][1]|Konfigurace podmíněného přístupu|
 
 
 
@@ -270,17 +270,17 @@ Zvolte postup nasazení nebo přístupy revize výše uvedené tabulce a kontrol
 
 Na webu Azure portal umožňuje že řídit nasazení služby Azure AD připojené zařízení ve vaší organizaci. Nakonfigurovat související nastavení na **stránce služby Azure Active Directory**vyberte `Devices > Device settings`.
 
-### <a name="users-may-join-devices-to-azure-ad"></a>Uživatelé můžou připojovat zařízení do Azure AD
+### <a name="users-may-join-devices-to-azure-ad"></a>Uživatelé můžou připojovat zařízení do služby Azure AD
 
 Tuto možnost nastavte na **všechny** nebo **vybrané** založené na rozsah nasazení a který se má povolit nastavení Azure AD připojené zařízení. 
 
-![Uživatelé můžou připojovat zařízení do Azure AD](./media/azureadjoin-plan/01.png)
+![Uživatelé můžou připojovat zařízení do služby Azure AD](./media/azureadjoin-plan/01.png)
 
-### <a name="additional-local-administrators-on-azure-ad-joined-devices"></a>Další místní správci na zařízeních připojených do Azure AD
+### <a name="additional-local-administrators-on-azure-ad-joined-devices"></a>Zařízení připojená k další místní správci na Azure AD
 
 Zvolte **vybrané** a vybere uživatelů, které chcete přidat do skupiny místních správců na zařízeních připojených k všechny Azure AD. 
 
-![Další místní správci na zařízeních připojených do Azure AD](./media/azureadjoin-plan/02.png)
+![Zařízení připojená k další místní správci na Azure AD](./media/azureadjoin-plan/02.png)
 
 
 ### <a name="require-multi-factor-auth-to-join-devices"></a>Vyžadovat vícefaktorové ověřování pro připojení zařízení
@@ -325,11 +325,11 @@ Podle oboru, jednu z následujících se stane toto:
 
 Existují tři adresy URL, které se vztahují k vaší konfigurace MDM:
 
-- Adresa URL podmínek použití MDM
+- MDM adresa URL podmínek použití
 
 - Adresa URL zjišťování MDM 
 
-- Adresa URL s předpisy služby MDM
+- Adresa URL s předpisy MDM
 
 
 ![Přidání aplikace](./media/azureadjoin-plan/06.png)

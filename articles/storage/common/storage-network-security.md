@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 56a25c95d9bc01078b3eff3729a8a693ee3cf510
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65520258"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurace virtuálních sítí a bran firewall Azure Storage
@@ -229,7 +229,7 @@ Zadejte rozsahy adres pomocí povolených internet [notaci CIDR](https://tools.i
    > [!NOTE]
    > Rozsahy malé adres pomocí "/ 31" nebo "/ 32" předpony velikosti se nepodporují. Tyto rozsahy musí být nakonfigurovaný pomocí jednotlivých pravidel IP adres.
 
-Pravidla síťových IP jsou povolené jenom pro **veřejného Internetu** IP adresy. IP adresy rozsahů, které jsou vyhrazené pro privátní sítě (jak je definováno v [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)) nejsou povoleny v pravidlech IP. Privátní sítě zahrnují adresy začínající hodnotami _maska 10.*_, _172.16. *_ - _172.31. *_, a _192.168. *_.
+Pravidla síťových IP jsou povolené jenom pro **veřejného Internetu** IP adresy. IP adresy rozsahů, které jsou vyhrazené pro privátní sítě (jak je definováno v [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)) nejsou povoleny v pravidlech IP. Privátní sítě zahrnují adresy začínající hodnotami _maska 10.*_ , _172.16. *_  - _172.31. *_ , a _192.168. *_ .
 
    > [!NOTE]
    > Pravidla protokolu IP sítě nemají žádný vliv na požadavků pocházejících ze stejné oblasti Azure jako účet úložiště. Použití [pravidla virtuální sítě](#grant-access-from-a-virtual-network) požadavky stejné oblasti.

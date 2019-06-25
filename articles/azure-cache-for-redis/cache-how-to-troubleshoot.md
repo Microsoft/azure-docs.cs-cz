@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/15/2019
 ms.author: yegu
 ms.openlocfilehash: 66361871d365068a90a2eeab70d92adb6b246a83
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60830003"
 ---
 # <a name="how-to-troubleshoot-azure-cache-for-redis"></a>Řešení potíží s Azure Cache pro Redis
@@ -202,12 +202,12 @@ Tato chybová zpráva obsahuje metriky, který vám pomůže odkazovat na pří�
 | --- | --- |
 | instrukce |V posledním časovém intervalu: byl vydán 0 příkazy |
 | mgr |Správce soketu dělá `socket.select`, což znamená, že je s dotazem, operačního systému k označení soketu, který nabízí něco udělat. Čtečka není čtení aktivně ze sítě. protože nemá myslíte, že se něco udělat |
-| fronta |Existují 73 celkový počet probíhajících operací |
+| queue |Existují 73 celkový počet probíhajících operací |
 | qu |6 v průběhu operace jsou ve frontě unsent a nebyly dosud napsány tak, aby odchozí síťové |
 | qs |67 operací v průběhu byly odeslány na server, ale ještě není k dispozici odpověď. Odpovědí může být `Not yet sent by the server` nebo `sent by the server but not yet processed by the client.` |
 | qc |0 nebo v průběhu operace viděli odpovědi, ale nebyly dosud byl označen jako úplný vzhledem k tomu, že se čeká na dokončení smyčky |
 | WR |Je bajtů/activewriters aktivní zapisovače (to znamená, že 6 unsent požadavky nejsou ignorovány) |
-| ve |Neexistují žádné aktivní čtecí zařízení a jsou k dispozici ke čtení na síťové rozhraní bajty/activereaders nula bajtů |
+| V |Neexistují žádné aktivní čtecí zařízení a jsou k dispozici ke čtení na síťové rozhraní bajty/activereaders nula bajtů |
 
 ### <a name="steps-to-investigate"></a>Postup k prozkoumání
 

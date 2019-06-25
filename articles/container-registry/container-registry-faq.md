@@ -8,12 +8,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 5/13/2019
 ms.author: sajaya
-ms.openlocfilehash: 1400c023e43179a9c8490334e262711486c75a2d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: beeb4986750e398071e3afb6c1f04663f858cec1
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66417925"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303575"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Nejčastější dotazy k Azure Container Registry
 
@@ -440,6 +440,85 @@ Toto nastavení platí také pro `az acr run` příkazu.
 - [CircleCI](https://github.com/Azure/acr/blob/master/docs/integration/CircleCI.md)
 - [Akce Githubu](https://github.com/Azure/acr/blob/master/docs/integration/github-actions/github-actions.md)
 
+## <a name="error-references-for-az-acr-check-health"></a>Chyba odkazy pro `az acr check-health`
+
+### <a name="dockercommanderror"></a>DOCKER_COMMAND_ERROR
+
+Tato chyba znamená, že tento klient docker pro rozhraní příkazového řádku se nenašel, který vylučuje hledání verze dockeru, vyhodnocování stavu démona dockeru a zajistit, že je možné spustit příkaz docker pull.
+
+*Možná řešení*: instalace klienta dockeru; přidání cestě dockeru k systémovým proměnným.
+
+### <a name="dockerdaemonerror"></a>DOCKER_DAEMON_ERROR
+
+Tato chyba znamená, že stav démona dockeru není k dispozici nebo že to není dosažitelná pomocí rozhraní příkazového řádku. To znamená, že operace dockeru (například přihlášení, o přijetí změn), bude k dispozici prostřednictvím rozhraní příkazového řádku.
+
+*Možná řešení*: Restartujte démona dockeru nebo ověřit, zda je správně nainstalován.
+
+### <a name="dockerversionerror"></a>DOCKER_VERSION_ERROR
+
+Tato chyba znamená, že rozhraní příkazového řádku se nepodařilo spustit příkaz `docker --version`.
+
+*Možná řešení*: Zkuste příkaz spustit ručně, ujistěte se, že máte nejnovější verzi rozhraní příkazového řádku a prozkoumejte chybová zpráva.
+
+### <a name="dockerpullerror"></a>DOCKER_PULL_ERROR
+
+Tato chyba znamená, že rozhraní příkazového řádku nebyl schopen stáhnout ukázkový obrázek do vašeho prostředí.
+
+*Možná řešení*: Ověřte, že jsou všechny komponenty potřebné k vyžádání obrázku správně spuštěna.
+
+### <a name="helmcommanderror"></a>HELM_COMMAND_ERROR
+
+Tato chyba znamená, že tento příkaz helm klient nebyl nalezen pomocí rozhraní příkazového řádku, který vylučuje jiné operace helm.
+
+*Možná řešení*: Ověřte, že helm instalaci klienta, a jeho cesty je přidaný do proměnných prostředí systému.
+
+### <a name="helmversionerror"></a>HELM_VERSION_ERROR
+
+Tato chyba znamená, že rozhraní příkazového řádku nebyl schopen určit nainstalovanou verzi Helm. K tomu může dojít, pokud verze rozhraní příkazového řádku Azure (nebo, pokud verze helm) používá je zastaralý.
+
+*Možná řešení*: aktualizovat na nejnovější verzi rozhraní příkazového řádku Azure nebo na verzi doporučenou helm; ručně spuštěním příkazu a prozkoumat chybová zpráva.
+
+### <a name="connectivitydnserror"></a>CONNECTIVITY_DNS_ERROR
+
+Tato chyba znamená, že DNS pro daného registru přihlašovací server byl příkaz ping, ale nereagovala na, což znamená, že není k dispozici. To může znamenat některé problémy s připojením. Může také znamenat, že registru neexistuje, že uživatel nemá oprávnění k registru (se správně načíst jeho přihlašovací server) nebo, že cíl registru do jiného cloudu než ten, který používá v Azure CLI.
+
+*Možná řešení*: ověření připojení; zkontrolujte pravopis registru a že registru existuje, ověřte, že uživatel má správná oprávnění na něj a, cloudu v registru je stejný, který se používá na rozhraní příkazového řádku Azure.
+
+### <a name="connectivityforbiddenerror"></a>CONNECTIVITY_FORBIDDEN_ERROR
+
+To znamená, že challenge koncový bod pro daného registru odpověděl stavem 403 Zakázáno HTTP. To znamená, že uživatelé nemají přístup k registru, pravděpodobně z důvodu konfigurace virtuální sítě.
+
+*Možná řešení*: odebrání pravidla virtuální sítě a přidání aktuální IP adresu klienta do seznamu povolených aplikací.
+
+### <a name="connectivitychallengeerror"></a>CONNECTIVITY_CHALLENGE_ERROR
+
+Tato chyba znamená, že koncový bod challenge cílového registru nevydala příkaz náročné.
+
+*Možná řešení*: Zkuste za nějakou chvíli znovu. Pokud chyba přetrvává, otevřete prosím am problém na https://aka.ms/acr/issues.
+
+### <a name="connectivityaadloginerror"></a>CONNECTIVITY_AAD_LOGIN_ERROR
+
+Tato chyba znamená, že koncový bod challenge cílového registru vydány složité, ale registru nepodporuje AAD přihlášení.
+
+*Možná řešení*: Zkuste jiným způsobem protokolování služby, například přihlašovací údaje správce. V případě, že uživatel chce, aby se chcete přihlásit pomocí AAD podporu, otevřete prosím problém am na https://aka.ms/acr/issues.
+
+### <a name="connectivityrefreshtokenerror"></a>CONNECTIVITY_REFRESH_TOKEN_ERROR
+
+To znamená, že přihlašovacího serveru registru neodpověděla token obnovení, což znamená, že byl odepřen přístup do registru cíl. To může dojít, pokud uživatel nemá správná oprávnění registru nebo pokud jsou zastaralé přihlašovací údaje uživatele pro Azure CLI.
+
+*Možná řešení*: Ověřte, jestli má uživatel oprávnění na registru; spuštění `az login` aktualizovat oprávnění, tokenů a přihlašovací údaje.
+
+### <a name="connectivityaccesstokenerror"></a>CONNECTIVITY_ACCESS_TOKEN_ERROR
+
+To znamená, že přihlašovacího serveru registru neodpověděl s přístupovým tokenem, což znamená, že byl odepřen přístup do registru cíl. To může dojít, pokud uživatel nemá správná oprávnění registru nebo pokud jsou zastaralé přihlašovací údaje uživatele pro Azure CLI.
+
+*Možná řešení*: Ověřte, jestli má uživatel oprávnění na registru; spuštění `az login` aktualizovat oprávnění, tokenů a přihlašovací údaje.
+
+### <a name="loginservererror"></a>LOGIN_SERVER_ERROR
+
+To znamená, že rozhraní příkazového řádku se nepodařilo najít přihlašovací server daného registru a pro aktuálního cloudu nebyl nalezen žádný výchozí příponou. Tomu může dojít, pokud v registru neexistuje, pokud uživatel nemá správná oprávnění k registru, pokud v registru a aktuální cloudem Azure CLI se neshodují, nebo pokud je zastaralá verze rozhraní příkazového řádku Azure.
+
+*Možná řešení*: Ověřte správnost pravopis a zda registru existovat; ověřte, zda má uživatel oprávnění na registru a, odpovídají cloudy registru a prostředí rozhraní příkazového řádku; aktualizace příkazového řádku Azure na nejnovější verzi.
 
 ## <a name="next-steps"></a>Další postup
 

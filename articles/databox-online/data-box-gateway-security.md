@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 04/16/2019
 ms.author: alkohli
 ms.openlocfilehash: 230d1a28ba15a8736e46c02cb08217a28fc18599
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60754267"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64695184"
 ---
 # <a name="azure-data-box-gateway-security-and-data-protection"></a>Azure Data Box brány zabezpečení a ochranu dat.
 

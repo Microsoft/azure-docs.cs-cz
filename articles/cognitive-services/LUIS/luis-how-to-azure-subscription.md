@@ -9,29 +9,28 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 03/01/2019
+ms.date: 06/18/2019
 ms.author: diberry
-ms.openlocfilehash: 7315c80ad74eae07e41577fb2ac13742002e729e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7f82bf5a40df0554d4f98b2d835fcbd69279be43
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60198529"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204164"
 ---
 # <a name="using-subscription-keys-with-your-luis-app"></a>Použití klíčů předplatného s aplikací LUIS
 
-Není nutné k vytvoření klíčů předplatného používat dotazy zdarma prvních 1 000 koncových bodů. Jakmile se používají tyto dotazy koncového bodu, vytvořte prostředek Azure v [webu Azure portal](https://portal.azure.com), daný prostředek přiřadit aplikace LUIS v [LUIS portál](https://www.luis.ai).
-
-Pokud se zobrazí _překročení kvóty_ chyby ve formuláři HTTP 403 a 429, budete muset vytvořit klíč a přiřaďte ho do své aplikace. 
+Při prvním použití Language Understanding (LUIS), není nutné k vytvoření klíčů předplatného. 1000 koncový bod dotazy jsou uvedeny na začátku. 
 
 Pro účely testování a prototypu pouze úroveň free (F0) můžete použijte. Pro produkční systémy, používat [placené](https://aka.ms/luis-price-tier) vrstvy. Nepoužívejte [vytváření klíč](luis-concept-keys.md#authoring-key) za dotazy na koncový bod v produkčním prostředí.
+
 
 <a name="create-luis-service"></a>
 <a name="create-language-understanding-endpoint-key-in-the-azure-portal"/>
 
 ## <a name="create-prediction-endpoint-runtime-resource-in-the-azure-portal"></a>Vytvoření predikcí koncový bod runtimový prostředek na webu Azure Portal
 
-Další informace najdete [sestavit aplikaci](get-started-portal-build-app.md) rychlý start.
+Můžete vytvořit [předpovědi koncový bod prostředku](get-started-portal-deploy-app.md#create-the-endpoint-resource) na webu Azure Portal. Tento prostředek by měla sloužit pouze pro dotazy předpovědi s koncový bod. Tento prostředek nepoužívají vytváření změny do aplikace.
 
 <a name="programmatic-key" ></a>
 <a name="authoring-key" ></a>
@@ -49,7 +48,7 @@ Další informace najdete [sestavit aplikaci](get-started-portal-build-app.md) r
 
 ## <a name="assign-resource-key-to-luis-app-in-luis-portal"></a>Klíč prostředku přiřadit aplikace LUIS portálu LUIS
 
-Další informace najdete [nasazení](get-started-portal-deploy-app.md) rychlý start.
+Pokaždé, když vytvoříte nový prostředek pro LUIS, budete muset [přiřazení prostředku k aplikaci LUIS](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal). Po přiřazení, nebudete muset znovu proveďte tento krok, není-li vytvořit nový prostředek. Můžete vytvořit nový prostředek rozbalte oblasti vaší aplikace nebo pro podporu větší počet dotazy předpovědi.
 
 <!-- content moved to luis-reference-regions.md, need replacement links-->
 <a name="regions-and-keys"></a>
@@ -155,10 +154,30 @@ Pro účely automatizace, jako je kanál CI/CD můžete automatizovat přiřazov
     ![Ověřte svou úroveň platby LUIS](./media/luis-usage-tiers/updated.png)
 1. Nezapomeňte [přiřadit tento klíč koncového bodu](#assign-endpoint-key) na **publikovat** stránce a používat ho v všechny dotazy na koncový bod. 
 
-## <a name="how-to-fix-out-of-quota-errors-when-the-key-exceeds-pricing-tier-usage"></a>K vyřešení chyby limit kvóty, pokud klíč překročí využití cenové úrovně
-Každá úroveň umožňuje koncový bod požadavků na účet služby LUIS určitou rychlostí. Pokud se o počet žádostí o je vyšší než povolený počet účtu Účtovaná podle objemu dat za minutu nebo za měsíc, požadavky obdrží chybu HTTP "429: Příliš mnoho požadavků."
+## <a name="fix-http-status-code-403-and-429"></a>Oprava stavový kód HTTP 403 a 429
 
-Každá úroveň umožňuje kumulativní žádostí za měsíc. Pokud celkový počet požadavků jsou vyšší než povolený počet souborů, požadavky obdrží chybu HTTP "403: zakázáno".  
+Získáte chyby 403 a 429 stavové kódy překročíte transakcí za sekundu nebo transakcí za měsíc pro svou cenovou úroveň.
+
+### <a name="when-you-receive-an-http-403-error-status-code"></a>Když se zobrazí kód stav chyby HTTP 403
+
+Pokud použijete všechny tyto bezplatné 1000 koncový bod dotazy nebo překročí měsíční kvóta transakce svou cenovou úroveň, obdržíte kód stav chyby HTTP 403. 
+
+Chcete-li tuto chybu opravit, musíte buď [změnit svou cenovou úroveň](luis-how-to-azure-subscription.md#change-pricing-tier) na vyšší úroveň nebo [vytvořit nový prostředek](get-started-portal-deploy-app.md#create-the-endpoint-resource) a [přiřazení k vaší aplikaci](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal).
+
+Řešení této chyby patří:
+
+* V [webu Azure portal](https://portal.azure.com), na vaší Language Understanding prostředků, na **správy prostředků -> cenová úroveň**, změnit svou cenovou úroveň na vyšší úroveň TPS. Nemusíte dělat nic. portálu Language Understanding, pokud váš prostředek je už přiřazený k aplikaci umožňující porozumět jazyku.
+*  Pokud využití překročí nejvyšší cenová úroveň, přidáte další prostředky Language Understanding se nástroj pro vyrovnávání zatížení před nimi. [Language Understanding kontejneru](luis-container-howto.md) s Kubernetes a Docker Compose vám ho mohl pomoct to.
+
+### <a name="when-you-receive-an-http-429-error-status-code"></a>Když se zobrazí kód stavu HTTP 429 chyby
+
+Tento kód stavu je vrácena, pokud vaše transakce za sekundu překračuje svou cenovou úroveň.  
+
+Řešení zahrnují:
+
+* Je možné [zvyšte svou cenovou úroveň](#change-pricing-tier), pokud nejsou na nejvyšší úrovni.
+* Pokud využití překročí nejvyšší cenová úroveň, přidáte další prostředky Language Understanding se nástroj pro vyrovnávání zatížení před nimi. [Language Understanding kontejneru](luis-container-howto.md) s Kubernetes a Docker Compose vám ho mohl pomoct to.
+* Vaší žádosti o aplikace klienta se může bran [zásady opakování](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines) lze implementovat sami získat tímto stavovým kódem. 
 
 ## <a name="viewing-summary-usage"></a>Zobrazení souhrnu využití
 Informace o použití LUIS můžete zobrazit v Azure. **Přehled** stránka zobrazuje poslední souhrnné informace, včetně volání a chyby. Pokud provedete požadavku koncového bodu LUIS, pak okamžitě podívejte se **stránka s přehledem**, povolit pro použití se zobrazí až pět minut.

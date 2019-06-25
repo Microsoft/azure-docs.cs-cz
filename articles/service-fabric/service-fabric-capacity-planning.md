@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
 ms.openlocfilehash: d7ca566b86ed79aa773d7af2553223c79ed9944a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60341998"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64701839"
 ---
 # <a name="capacity-planning-for-service-fabric-applications"></a>Plánování kapacity pro aplikace Service Fabric
 Tento dokument vás naučí, jak odhadnout objem prostředků (procesory, paměť RAM, diskové úložiště), budete muset spustit vaše aplikace Azure Service Fabric. Je běžné, že požadavky na prostředky do v průběhu času měnit. Obvykle potřebujete několik prostředků, při vývoji a testování vaší služby, a pak přejdete do produkčního prostředí a vaše aplikace poroste popularita vyžadují více prostředků. Při návrhu aplikace pečlivě promyslete dlouhodobé požadavky a rozhodovat, které umožňují službě škálovat podle potřeby vysoké zákazníka.

@@ -9,12 +9,12 @@ ms.subservice: form-recognizer
 ms.topic: quickstart
 ms.date: 04/15/2019
 ms.author: pafarley
-ms.openlocfilehash: aed18cd33078d6af65e749cf9dd4950087b6b72c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3f3b74452ff1f866b0285eee962ab3678b151a30
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67063900"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67331832"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Rychlý start: Trénování modelu Rozlišovač formuláře a extrahovat data formuláře pomocí rozhraní REST API pomocí cURL
 
@@ -36,7 +36,7 @@ Když je udělen přístup k použití modulu pro rozpoznávání formulář, do
 |--|--|
 | **Název** | Popisný název pro váš prostředek. Doporučujeme použít popisný název, například *MyNameFormRecognizer*. |
 | **Předplatné** | Vyberte předplatné Azure, která udělil přístup. |
-| **Umístění** | Umístění vaší instanci služby cognitive Services. Různá umístění mohou zavést latence, ale mít vliv na běhovou dostupnost vašeho prostředku. |
+| **Location** | Umístění vaší instanci služby cognitive Services. Různá umístění mohou zavést latence, ale mít vliv na běhovou dostupnost vašeho prostředku. |
 | **Cenová úroveň** | Náklady na váš prostředek závisí na zvolené cenové úrovni a využití. Další informace najdete v tématu rozhraní API [podrobnosti o cenách](https://azure.microsoft.com/pricing/details/cognitive-services/).
 | **Skupina prostředků** | [Skupiny prostředků Azure](https://docs.microsoft.com/azure/architecture/cloud-adoption/governance/resource-consistency/azure-resource-access#what-is-an-azure-resource-group) , která bude obsahovat váš prostředek. Můžete vytvořit novou skupinu nebo ho přidat do existující skupiny. |
 
@@ -52,7 +52,7 @@ Nejprve budete potřebovat sadu trénovacích dat v objektu blob služby Azure S
 K natrénování modelu Rozlišovač formuláře pomocí dokumenty v kontejnerech objektů blob v Azure, zavolejte **trénování** rozhraní API pomocí příkazu cURL, který následuje. Před spuštěním příkazu, proveďte následující změny:
 
 1. Nahraďte `<Endpoint>` s koncovým bodem, který jste získali váš klíč předplatného Rozlišovač formuláře. Vyhledejte ji na váš prostředek formuláře Rozlišovač **přehled** kartu.
-1. Nahraďte `<SAS URL>` s kontejnerem objektů Blob v Azure storage, sdílený přístup k adrese URL podpisu (SAS) umístění trénovací data. (Získat adresu SAS URL kliknutím sdíleného přístupového podpisu v nabídce nastavení v účtu úložiště a "vygenerovat SAS a připojovací řetězec". Tím se zobrazí adresa URL SAS služby Blob service. Upravit tuto adresu url tak, že přidáte containername po .net / a před? sv = v adrese url, třeba:.blob.core.windows.net/ < name_of_your_container > /? sv =... Toto je adresu URL SAS, pokud má být použit.)
+1. Nahraďte `<SAS URL>` s objektem Blob Azure kontejner úložiště je sdílený přístup k adrese URL podpisu (SAS). K načtení to, otevřete Průzkumníka služby Microsoft Azure Storage, klikněte pravým tlačítkem na kontejner a vyberte **získat sdílený přístupový podpis**. Klikněte na tlačítko Další dialogové okno a zkopírujte hodnotu v **URL** oddílu. Ji by měl mít formát _služba ._protokol: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
 1. Nahraďte `<subscription key>` s klíči předplatného jste zkopírovali v předchozím kroku.
 
 ```bash
@@ -109,12 +109,12 @@ V dalším kroku budete analýza dokumentu a z něj extrahovat páry klíč hodn
 1. Nahraďte `<Endpoint>` s koncovým bodem, který jste získali váš klíč předplatného Rozlišovač formuláře. Vyhledejte ji na váš prostředek formuláře Rozlišovač **přehled** kartu.
 1. Nahraďte `<modelID>` s ID modelu, který jste získali v předchozí části.
 1. Nahraďte `<path to your form>` s cestou k souboru (například C:\temp\file.pdf) formuláře.
-1. Nahraďte `<file type>` s typem souboru. Podporované typy: pdf, image/jpeg, image/png.
+1. Nahraďte `<file type>` s typem souboru. Podporované typy: `application/pdf`, `image/jpeg`, `image/png`.
 1. Místo `<subscription key>` použijte váš klíč předplatného.
 
 
 ```bash
-curl -X POST "https://<Endpoint>/formrecognizer/v1.0-preview/custom/models/<modelID>/analyze" -H "Content-Type: multipart/form-data" -F "form=@\"<path to your form>\";type=application/<file type>" -H "Ocp-Apim-Subscription-Key: <subscription key>"
+curl -X POST "https://<Endpoint>/formrecognizer/v1.0-preview/custom/models/<modelID>/analyze" -H "Content-Type: multipart/form-data" -F "form=@\"<path to your form>\";type=<file type>" -H "Ocp-Apim-Subscription-Key: <subscription key>"
 ```
 
 ### <a name="examine-the-response"></a>Prozkoumání odpovědi

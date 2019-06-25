@@ -10,10 +10,10 @@ ms.date: 07/13/2017
 ms.author: robb
 ms.subservice: diagnostic-extension
 ms.openlocfilehash: c5fc2199de8623dd3a9f2bc5faf23c7c40d67d75
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64922807"
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>Streamování dat diagnostiky Azure do horké cesty s využitím služby Event Hubs
@@ -45,7 +45,7 @@ Event Hubs příjem dat z Azure Diagnostics se podporuje v cloudových služeb, 
 * Zřízeno na článek, obor názvů služby Event Hubs [Začínáme se službou Event Hubs](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
 
 ## <a name="connect-azure-diagnostics-to-event-hubs-sink"></a>Připojení diagnostiky Azure do služby Event Hubs jímky
-Ve výchozím nastavení Azure Diagnostics vždy posílá protokoly a metriky pro účet služby Azure Storage. Aplikace může také posílat do služby Event Hubs tak, že přidáte nový **jímky** části **PublicConfig** / **WadCfg** elementu *. wadcfgx* souboru. V sadě Visual Studio *.wadcfgx* soubor je uložený v následujícím umístění: **Cloudový projekt služby** > **role** > **(RoleName)** > **diagnostics.wadcfgx** souboru.
+Ve výchozím nastavení Azure Diagnostics vždy posílá protokoly a metriky pro účet služby Azure Storage. Aplikace může také posílat do služby Event Hubs tak, že přidáte nový **jímky** části **PublicConfig** / **WadCfg** elementu *. wadcfgx* souboru. V sadě Visual Studio *.wadcfgx* soubor je uložený v následujícím umístění: **Cloudový projekt služby** > **role** >  **(RoleName)**  > **diagnostics.wadcfgx** souboru.
 
 ```xml
 <SinksConfig>
@@ -202,7 +202,7 @@ Následující příklad ukazuje, jak může vývojář omezit množství odesí
 Jímka v tomto příkladu se použije pro protokoly a filtrovat jenom pro úroveň trasování chyba.
 
 ## <a name="deploy-and-update-a-cloud-services-application-and-diagnostics-config"></a>Nasazení a aktualizace konfigurace aplikace a Diagnostika cloudových služeb
-Visual Studio nabízí nejsnadnější způsob, jak nasadit aplikace a služby Event Hubs jímky konfigurace. Chcete-li zobrazit a upravit soubor, otevřete *.wadcfgx* souboru v sadě Visual Studio, upravte ho a uložte ho. Cesta je **projekt cloudové služby** > **role** > **(RoleName)** > **diagnostics.wadcfgx**.  
+Visual Studio nabízí nejsnadnější způsob, jak nasadit aplikace a služby Event Hubs jímky konfigurace. Chcete-li zobrazit a upravit soubor, otevřete *.wadcfgx* souboru v sadě Visual Studio, upravte ho a uložte ho. Cesta je **projekt cloudové služby** > **role** >  **(RoleName)**  > **diagnostics.wadcfgx**.  
 
 V tomto okamžiku všechny nasazení a nasazení aktualizací akcí ve Visual Studio, Visual Studio Team System a všechny příkazy nebo skripty, které jsou založené na MSBuild a použití **/t: publikování** zahrnout cíl *.wadcfgx* v procesu vytváření balíčků. Kromě toho nasazení a aktualizace nasazení souboru do Azure pomocí příslušné rozšíření agenta diagnostiky Azure na virtuálních počítačích.
 

@@ -1,6 +1,6 @@
 ---
 title: Řešení Azure VMware podle CloudSimple rychlý start – vytvoření služby
-description: Zjistěte, jak vytvořit službu CloudSimple, nákupu uzlů a uzly rezervovat
+description: Zjistěte, jak vytvořit službu CloudSimple zřízení uzlů a uzly rezervovat
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/10/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 9b3b95db24f4b0f9a0cf8f5102dfeea5dc51e29f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 5732ea726bdecc10d0757224870ee5d8be83a2b2
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64577567"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164223"
 ---
 # <a name="quickstart---create-service"></a>Rychlý start – vytvoření služby
 
@@ -21,7 +21,7 @@ Abyste mohli začít, vytvořte řešení VMware Azure podle CloudSimple na webu
 
 ## <a name="vmware-solution-by-cloudsimple---service-overview"></a>Řešení VMware podle CloudSimple – přehled služeb
 
-Služba CloudSimple umožňuje využívat řešení VMware Azure podle CloudSimple.  Vytváření služby můžete zakoupit uzly, rezerva uzly a vytváření privátních cloudů.  Přidat službu CloudSimple v každé oblasti Azure, kde je k dispozici služba CloudSimple.  Služba definuje hraniční síť řešení VMware Azure podle CloudSimple.  Tato hraniční síť se používá pro služby, které zahrnují připojení k Internetu, VPN a ExpressRoute do privátních cloudů.
+Služba CloudSimple umožňuje využívat řešení VMware Azure podle CloudSimple.  Vytváření služby vám umožní zřízení uzly rezerva uzly a vytváření privátních cloudů.  Přidat službu CloudSimple v každé oblasti Azure, kde je k dispozici služba CloudSimple.  Služba definuje hraniční síť řešení VMware Azure podle CloudSimple.  Tato hraniční síť se používá pro služby, které zahrnují připojení k Internetu, VPN a ExpressRoute do privátních cloudů.
 
 Chcete-li přidat službu CloudSimple, musíte vytvořit podsíť brány. Podsíť brány se používá při vytváření hraniční sítě a vyžaduje o velikosti/28 blok CIDR. Adresní prostor podsítě brány musí být jedinečný. Nesmí překrývat s žádným z vaší místní síti adresní prostory nebo adresní prostor virtuální sítě Azure.
 
@@ -47,9 +47,6 @@ Postupem uvedeným níže povolte poskytovatele prostředků pro službu CloudSi
 
 ## <a name="create-the-service"></a>Vytvoření služby
 
->[!NOTE]
-> V rámci předplatného musí být povolena služba CloudSimple. Pokud u vašeho odběru není aktivováno, obdržíte chybu při pokusu o vytvoření služby.  Postupujte podle kroků v [služby povolit CloudSimple](https://docs.azure.cloudsimple.com/enable-cloudsimple-service) článku povolit službu.
-
 1. Vyberte **Všechny služby**.
 2. Vyhledejte **CloudSimple služby**.
 
@@ -71,7 +68,7 @@ Postupem uvedeným níže povolte poskytovatele prostředků pro službu CloudSi
 
 Služba je vytvořen a přidán do seznamu služeb.
 
-## <a name="purchase-nodes"></a>Nákupní uzly
+## <a name="provision-nodes"></a>Zřizování uzlů
 
 Nastavení platit jako můžete přejít kapacity pro prostředí CloudSimple privátního cloudu, nejdříve zřídit uzly na webu Azure Portal.
 
@@ -85,7 +82,7 @@ Nastavení platit jako můžete přejít kapacity pro prostředí CloudSimple pr
 
     ![Přidání uzlů CloudSimple](media/create-cloudsimple-node-add.png)
 
-5. Vyberte předplatné, ve které chcete koupit CloudSimple uzly.
+5. Vyberte předplatné, ve které chcete zřídit CloudSimple uzly.
 6. Vyberte skupinu prostředků pro uzly. Chcete-li přidat novou skupinu prostředků, klikněte na tlačítko **vytvořit nový**.
 7. Zadejte předponu k identifikaci uzlů.
 8. Vyberte umístění pro prostředky uzlu.

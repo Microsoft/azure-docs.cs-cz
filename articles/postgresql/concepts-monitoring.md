@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: b7d69e0fe16f96b0e3886c3736f8b91d4c06b446
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 06/19/2019
+ms.openlocfilehash: c69ffb30a37de8e6dc3e15aa1f7dcd6a9311d614
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67063756"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274300"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---single-server"></a>Sledování a ladění – Azure Database for PostgreSQL – jeden Server
 Data o vašich serverech monitorování vám pomůže řešit a optimalizovat pro vaši úlohu. Azure Database for PostgreSQL nabízí různé možnosti monitorování k poskytování přehledů o chování vašeho serveru.
@@ -34,10 +34,12 @@ Tyto metriky jsou k dispozici pro službu Azure Database for PostgreSQL:
 |serverlog_storage_usage|Využité úložiště protokolů serveru|B|Množství využívaného úložiště protokolu serveru.|
 |serverlog_storage_limit|Limit úložiště protokolů serveru|B|Maximální serverové úložiště protokolu pro tento server.|
 |active_connections|Aktivní připojení|Count|Počet aktivních připojení k serveru.|
-|connections_failed|Neúspěšná připojení|Count|Počet selhání připojení k serveru.|
+|connections_failed|Neúspěšná připojení|Počet|Počet selhání připojení k serveru.|
 |network_bytes_egress|Síťové výstupy|B|Odchozí síťový provoz mezi aktivních připojení.|
 |network_bytes_ingress|Síťové vstupy|B|Sítě v rámci aktivních připojení.|
 |backup_storage_used|Využité úložiště záloh|B|Velikost úložiště záloh používá.|
+|pg_replica_log_delay_in_bytes|Maximální prodleva mezi repliky|B|Prodleva v bajtech mezi hlavní a většina obložení repliky. Tato metrika je k dispozici na hlavní server.|
+|pg_replica_log_delay_in_seconds|Prodleva repliky|Sekundy|Čas od poslední přehrály transakce. Tato metrika je k dispozici pouze servery repliky.|
 
 ## <a name="server-logs"></a>Protokoly serveru
 Můžete povolit protokolování na server. Tyto protokoly jsou také k dispozici prostřednictvím Azure diagnostické protokoly v [protokoly Azure monitoru](../azure-monitor/log-query/log-query-overview.md), Event Hubs a účet úložiště. Další informace o protokolování, najdete [protokoly serveru](concepts-server-logs.md) stránky.

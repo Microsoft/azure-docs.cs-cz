@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Hledání zpráv - Bingu News Search SDK pro Python'
+title: 'Rychlý start: Hledání zpráv pomocí sady SDK vyhledávání zpráv Bingu pro Python'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu slouží k vyhledání zpráv pomocí sady SDK vyhledávání zpráv Bingu pro Python a zpracování odpovědi.
 services: cognitive-services
@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 01/10/2019
+ms.date: 06/18/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: e9a24084e025723febf854fad7ba83db55d1f824
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 2f6185ca6c2ddd44be2c12a81cedf1adcc2e30cd
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65798606"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67339015"
 ---
 # <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-python"></a>Rychlý start: Provádění sadou SDK pro vyhledávání zpráv Bingu pro vyhledávání zpráv pro Python
 
@@ -72,7 +72,8 @@ Pokud se nenajdou žádné výsledky hledání, tisk první výsledek webové st
 ```python
 if news_result.value:
     first_news_result = news_result.value[0]
-    print("Total estimated matches value: {}".format(news_result.total_estimated_matches))
+    print("Total estimated matches value: {}".format(
+        news_result.total_estimated_matches))
     print("News result count: {}".format(len(news_result.value)))
     print("First news name: {}".format(first_news_result.name))
     print("First news url: {}".format(first_news_result.url))

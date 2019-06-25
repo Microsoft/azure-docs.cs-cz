@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: 9d872a6d753a206dcfb03761e50e5854db4f146e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: MT
+ms.openlocfilehash: 8712c5fa69b16fc2f743f43ee8a755037f28f722
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071592"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67155668"
 ---
 # <a name="understand-how-the-migration-tool-works"></a>Pochopit, jak funguje nástroj pro migraci
 
@@ -23,7 +23,7 @@ Tento článek vysvětluje, jak funguje nástroj pro migraci dobrovolná. Popisu
 > [!NOTE]
 > Datum vyřazení pro migraci klasických upozornění byla z důvodu zpoždění při uvádění nástroj pro migraci [rozšířená tak, aby 31. srpna 2019](https://azure.microsoft.com/updates/azure-monitor-classic-alerts-retirement-date-extended-to-august-31st-2019/) od původně oznámené data 30. června 2019.
 
-## <a name="which-classic-alert-rules-can-be-migrated"></a>Která klasického upozornění pravidla je možné migrovat?
+## <a name="which-classic-alert-rules-cannot-be-migrated"></a>Která klasického upozornění pravidla se nedají migrovat?
 
 Přestože nástroj můžete migrovat téměř všechny klasické pravidel upozornění, existují některé výjimky. Následující pravidla upozornění se nemigruje s použitím nástroje (nebo při automatické migraci v září 2019):
 
@@ -32,6 +32,8 @@ Přestože nástroj můžete migrovat téměř všechny klasické pravidel upozo
 - Klasické pravidla upozornění na některé metriky účtu úložiště. Zobrazit [podrobnosti](#storage-account-metrics) dále v tomto článku.
 
 Pokud vaše předplatné má tato pravidla classic, musíte je migrovat ručně. Protože neposkytujeme automatické migrace, všechny existující, klasického upozornění metrik z těchto typů budou nadále fungovat až do roku 2020 dne. Toto rozšíření nabízí vám čas přesunout do nové výstrahy. Však žádné nové výstrahy classic je možné vytvořit po srpnu 2019.
+
+Kromě výše uvedených výjimky, pokud pravidel upozornění classic jsou neplatné například se nachází na [zastaralé metriky](#classic- alert-rules-on-deprecated-metrics) nebo prostředky, které se odstranily, se nemigruje během migrace dobrovolná. Při automatické migraci se stane, se odstraní všechna taková neplatný klasického pravidla upozornění. 
 
 ### <a name="guest-metrics-on-virtual-machines"></a>Metrik hosta na virtuálních počítačích
 
@@ -60,6 +62,20 @@ S výjimkou oznámení na tyto metriky se dají migrovat všechny klasických up
 Klasické výstraha pravidla na procenta metriky se musí migrovat na základě [mapování mezi metriky staré a nové úložiště](https://docs.microsoft.com/azure/storage/common/storage-metrics-migration#metrics-mapping-between-old-metrics-and-new-metrics). Bude nutné prahové hodnoty odpovídajícím způsobem upravit, protože nové metriky, které jsou k dispozici je některý z absolutní.
 
 Klasické pravidla upozornění na AnonymousThrottlingError, SASThrottlingError a ThrottlingError musí rozdělit na dvě nové výstrahy, protože neexistuje žádný kombinované metriku, která poskytuje stejné funkce. Prahové hodnoty bude třeba ho upravit odpovídajícím způsobem.
+
+### <a name="classic-alert-rules-on-deprecated-metrics"></a>Klasické pravidla upozornění na zastaralé metriky
+
+Toto jsou classic pravidla upozornění na metriky, které byly podporovány nějakou dobu před časem zastaralý. Malé procento zákazník může mít neplatný klasického pravidla upozornění na tyto metriky. Protože tato pravidla upozornění jsou neplatné, nebude se migrovat. 
+
+| Typ prostředku| Počet metrik: zastaralé |
+|-------------|----------------- |
+| Microsoft.DBforMySQL/servers | compute_consumption_percent, compute_limit |
+| Microsoft.DBforPostgreSQL/servers | compute_consumption_percent, compute_limit |
+| Microsoft.Network/publicIPAddresses | defaultddostriggerrate |
+| Microsoft.SQL/servers/databases | service_level_objective, storage_limit, storage_used, throttling, dtu_consumption_percent, storage_used |
+| Microsoft.Web/hostingEnvironments/multirolepools | averagememoryworkingset |
+| Microsoft.Web/hostingEnvironments/workerpools | BytesReceived httpqueuelength |
+
 
 ## <a name="rollout-phases"></a>Fáze uvedení
 

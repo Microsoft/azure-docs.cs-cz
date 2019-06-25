@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/06/2019
+ms.date: 06/14/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: a5187ed299f77c11892c6e34c8dfd3f904c7e075
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b269c75be7fec55fb77afecc6d04b86266c74a6f
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067713"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147301"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrujte svou aplikaci s Azure Virtual Network
 Tento dokument popisuje funkci integrace virtuální sítě Azure App Service a jak ho nastavit s aplikacemi v [služby Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). [Azure Virtual Networks] [ VNETOverview] (Vnet) umožňuje umístit řadu prostředků Azure v síti bez Internetu možnosti směrování.  
@@ -102,6 +102,10 @@ Jakmile vaše aplikace je integrovaný s vaší virtuální sítě, bude použí
 Chcete-li vaše aplikace se odpojí z virtuální sítě, vyberte **odpojit**. Tato operace restartuje vaše webová aplikace. 
 
 Novou funkci integrace virtuální sítě vám umožní použít koncové body služby.  Koncové body služby s vaší aplikací, použití nově zavedené integraci virtuální sítě pro připojení k vybrané virtuální síti a potom nakonfigurujte koncové body služby v podsíti, který jste použili pro integraci. 
+
+#### <a name="web-app-for-containers"></a>Web App for Containers
+
+Pokud používáte služby App Service v Linuxu pomocí integrovaných imagí, místní funkci integrace virtuální sítě funguje bez jakýchkoli dalších změn. Pokud použijete Web App for Containers, musíte upravit image dockeru, aby bylo možné používat integrace virtuální sítě. Do své image dockeru pomocí proměnné prostředí PORT jako port pro naslouchání hlavní webový server, namísto použití pevně zakódované číslo portu. Proměnná prostředí portu je automaticky nastavena podle platformy App Service v době spuštění kontejneru.
 
 ### <a name="how-vnet-integration-works"></a>Jak funguje integrace virtuální sítě
 

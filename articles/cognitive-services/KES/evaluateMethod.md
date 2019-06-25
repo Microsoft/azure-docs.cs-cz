@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
 ms.openlocfilehash: dcfa9bb7931cf3b682bacf722b67acd6d4a370c0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60814103"
 ---
 # <a name="evaluate-method"></a>vyhodnocení metody
@@ -32,8 +32,8 @@ Název|Hodnota|Popis
 expr       | Textový řetězec | Výraz strukturovaných dotazů, který vybere podmnožinu index entity.
 Atributy | Textový řetězec | Čárkami oddělený seznam atributů, které chcete zahrnout do odpovědi.
 count      | Číslo (výchozí = 10) | Maximální počet výsledků k vrácení.
-Posun     | Číslo (výchozí = 0) | Index první výsledek vrátit.
-Řadit podle |   Textový řetězec | Název atributu použitého k řazení výsledků, za nímž následuje nepovinný řazení (výchozí = asc): "*%{attrname/*[: (asc&#124;desc)]".  Pokud není zadán, jsou výsledky vrácené snižuje pravděpodobnost přirozený protokolu.
+offset     | Číslo (výchozí = 0) | Index první výsledek vrátit.
+Řadit podle |   Textový řetězec | Název atributu použitého k řazení výsledků, za nímž následuje nepovinný řazení (výchozí = asc): " *%{attrname/* [: (asc&#124;desc)]".  Pokud není zadán, jsou výsledky vrácené snižuje pravděpodobnost přirozený protokolu.
 timeout  | Číslo (výchozí = 1000) | Časový limit v milisekundách. Se vrátí pouze výsledky vypočítán dříve, než vypršel časový limit.
 
 Použití *počet* a *posun* parametry, může být velký počet výsledků získávají postupně prostřednictvím více požadavků.

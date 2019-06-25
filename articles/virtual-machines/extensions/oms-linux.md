@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 06/06/2019
 ms.author: roiyz
 ms.openlocfilehash: 8b24af016349db0fcfb4106a1e69da395e3d0150
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66755152"
 ---
 # <a name="azure-monitor-virtual-machine-extension-for-linux"></a>Rozšíření virtuálního počítače Azure Monitor pro Linux
@@ -135,10 +135,10 @@ Následující kód JSON ukazuje schéma pro rozšíření agenta Log Analytics.
 | Název | Hodnota / příklad |
 | ---- | ---- |
 | apiVersion | 2018-06-01 |
-| vydavatele | Microsoft.EnterpriseCloud.Monitoring |
+| publisher | Microsoft.EnterpriseCloud.Monitoring |
 | type | OmsAgentForLinux |
 | typeHandlerVersion | 1.7 |
-| ID pracovního prostoru (např.) | 6f680a37-00c6-41c7-a93f-1437e3462574 |
+| workspaceId (např.) | 6f680a37-00c6-41c7-a93f-1437e3462574 |
 | workspaceKey (např.) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI+rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ== |
 
 

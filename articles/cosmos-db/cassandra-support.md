@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: 46eea21e1eafce1696ed1cf77a1f334798f0bc17
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a6fc9f1a5c32fc9ffa1e1e6ebe525b72030fe803
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60895075"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67155656"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Funkce Apache Cassandra, které podporuje rozhraní API Cassandra pro Azure Cosmos DB 
 
@@ -74,6 +74,8 @@ Rozhraní API Cassandra pro Azure Cosmos DB podporuje následující datové typ
 Rozhraní API Cassandra pro Azure Cosmos DB podporuje tyto funkce CQL:
 
 * Podpisový  
+* Agregační funkce
+  * min, max, avg, count
 * Funkce pro převod objektů blob 
   * typeAsBlob(value)  
   * blobAsType(value)
@@ -88,7 +90,8 @@ Rozhraní API Cassandra pro Azure Cosmos DB podporuje tyto funkce CQL:
   * toDate(timeuuid)  
   * toTimestamp(timeuuid)  
   * toTimestamp(date)  
-  * toTimestamp(date)  
+  * toTimestamp(date) 
+  
 
 
 ## <a name="cassandra-query-language-limits"></a>Omezení jazyka Cassandra Query Language
@@ -154,11 +157,11 @@ foreach (string key in insertResult.Info.IncomingPayload)
 
 ## <a name="consistency-mapping"></a>Mapování konzistence 
 
-Rozhraní API Cassandra pro Azure Cosmos DB poskytuje volbu konzistence pro operace čtení. Všechny operace zápisu, bez ohledu na konzistenci účtu, se vždy zapíšou, tak, aby se dodržely smlouvy SLA o výkonu zápisu.
+Rozhraní API Cassandra pro Azure Cosmos DB poskytuje volbu konzistence pro operace čtení.  Mapování konzistence je podrobně popsán [tady [(https://docs.microsoft.com/azure/cosmos-db/consistency-levels-across-apis#cassandra-mapping).
 
 ## <a name="permission-and-role-management"></a>Správa oprávnění a rolí
 
-Azure Cosmos DB podporuje řízení přístupu na základě role (RBAC) a hesla/klíče pro čtení a zápis nebo jen pro čtení, které se dají získat prostřednictvím webu [Azure Portal](https://portal.azure.com). Azure Cosmos DB zatím nepodporuje uživatele a role pro aktivity v rovině dat. 
+Azure Cosmos DB podporuje řízení přístupu na základě role (RBAC) pro zřizování, otočení klíčů, zobrazováním metrik a čtení i zápis a jen pro čtení hesla/klíče, které můžete získat prostřednictvím [webu Azure portal](https://portal.azure.com). Azure Cosmos DB zatím nepodporuje uživatelů a rolí pro CRUD aktivity. 
 
 ## <a name="planned-support"></a>Plánovaná podpora 
 * V současné době se v příkazu create keyspace ignoruje název oblasti – distribuce dat se implementuje na základní platformě Cosmos DB a pro daný účet se zveřejňuje prostřednictvím portálu nebo PowerShellu. 

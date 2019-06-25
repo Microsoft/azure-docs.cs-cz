@@ -14,11 +14,11 @@ ms.topic: troubleshooting
 ms.date: 11/08/2017
 ms.author: tomfitz
 ms.openlocfilehash: 922389b7c6c1bb7ad1d9b8f6ec35ccc1c5656723
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60390847"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64683937"
 ---
 # <a name="resolve-reserved-resource-name-errors"></a>Řešení chyb název vyhrazený prostředek
 

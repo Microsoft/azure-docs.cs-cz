@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: ad7d4dceefcaa06effa6b2974b0a8a03ad641372
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60794022"
 ---
 # <a name="azure-maps-traffic-coverage"></a>Zajištění provozu Azure Maps
@@ -42,8 +42,8 @@ Mapy, ale nemá stejnou úroveň informací a přesnost pro všechny oblasti. N�
 |Země/oblast   |Incidenty  |Tok  |
 |---------|:---------:|:---------:|
 |Austrálie     |✓         |✓        |
-|Brunej   |✓         |✓        |
-|Hongkong – zvláštní správní oblast     |✓         |✓         |
+|Brunei   |✓         |✓        |
+|Hongkong – zvláštní administrativní oblast     |✓         |✓         |
 |Indie   |✓         |✓         |
 |Indonésie     |✓         |✓         |
 |Macao – zvláštní administrativní oblast     |✓         |✓         |
@@ -69,7 +69,7 @@ Mapy, ale nemá stejnou úroveň informací a přesnost pro všechny oblasti. N�
 |Dánsko     |✓         |✓         |
 |Estonsko     |         | ✓        |
 |Finsko     |✓         |✓         |
-|+ Ostrovy Land      |✓         |✓         |
+|\+ Ostrovy Land      |✓         |✓         |
 |Francie     |✓         |✓         |
 |Monako     |✓         |✓         |
 |Německo     |✓         |✓         |
@@ -89,7 +89,7 @@ Mapy, ale nemá stejnou úroveň informací a přesnost pro všechny oblasti. N�
 |Norsko     |✓         |✓         |
 |Polsko     |✓         |✓         |
 |Portugalsko     |✓         |✓         |
-|+ Azory a Madeira     |✓         |✓         |
+|\+ Azory a Madeira     |✓         |✓         |
 |Rumunsko     |✓         |✓         |
 |Ruská federace     |✓         |✓         |
 |San Marino    |✓         |✓         |
@@ -97,16 +97,16 @@ Mapy, ale nemá stejnou úroveň informací a přesnost pro všechny oblasti. N�
 |Slovinsko     |✓         |✓         |
 |Španělsko     |✓         |✓         |
 |+Andorra     |✓         |✓         |
-|+ Baleárské ostrovy     |✓         |✓         |
-|+ Kanárské ostrovy     |✓         |✓         |
+|\+ Baleárské ostrovy     |✓         |✓         |
+|\+ Kanárské ostrovy     |✓         |✓         |
 |Švédsko     |✓         |✓         |
 |Švýcarsko     |✓         |✓        |
 |Turecko     |✓         |✓         |
 |Ukrajina     |✓         |✓         |
 |Spojené království     |✓         |✓         |
 |+Gibraltar     |✓         |✓         |
-|+ Guernsey & Jersey     |✓         |✓         |
-|+ Ostrov Man     |✓         |✓         |
+|\+ Guernsey & Jersey     |✓         |✓         |
+|\+ Ostrov Man     |✓         |✓         |
 |Vatikán   |✓         |✓         |
 
 

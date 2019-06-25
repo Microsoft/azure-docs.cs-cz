@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/25/2019
 ms.author: cynthn
-ms.openlocfilehash: 20fd8a0bfccea579ddef5a605d65f5643d4849bd
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 893b71d3a1cc6ece8272cb1a372302ff384003dd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500011"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64693771"
 ---
 # <a name="find-windows-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>Vyhledání imagí virtuálních počítačů Windows na webu Azure Marketplace pomocí Azure Powershellu
 
@@ -28,7 +28,7 @@ Tento článek popisuje, jak pomocí Azure Powershellu k vyhledání imagí virt
 
 Můžete také procházet dostupné Image a pomocí nabídky [Azure Marketplace](https://azuremarketplace.microsoft.com/) výkladní skříň, [webu Azure portal](https://portal.azure.com), nebo [rozhraní příkazového řádku Azure](../linux/cli-ps-findimage.md). 
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 [!INCLUDE [virtual-machines-common-image-terms](../../../includes/virtual-machines-common-image-terms.md)]
 
@@ -242,7 +242,7 @@ DataDiskImages   : []
 
 ```
 
-### <a name="accept-the-terms"></a>Přijmout podmínky
+### <a name="accept-the-terms"></a>Přijměte podmínky
 
 Chcete-li zobrazit licenční podmínky, použijte [Get-AzMarketplaceterms](https://docs.microsoft.com/powershell/module/az.marketplaceordering/get-azmarketplaceterms) rutiny a předejte jí nákupu plánu parametry. Výstup obsahuje odkaz na podmínky pro Marketplace image a ukazuje, zda jste již přijali podmínky. Nezapomeňte použít jenom malá písmena. hodnoty parametrů.
 

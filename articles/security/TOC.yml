@@ -54,8 +54,14 @@
               href: azure-security-disk-encryption-overview.md
             - name: Šablony Rychlý start
               items:
-                - name: Šifrování virtuálního počítače – Azure PowerShell
-                  href: quick-encrypt-vm-powershell.md
+                - name: Šifrování virtuálního počítače s Linuxem s využitím Azure CLI
+                  href: azure-disk-encryption-linux-cli-quickstart.md
+                - name: Šifrování virtuálního počítače s Linuxem s využitím Azure Powershellu
+                  href: azure-disk-encryption-linux-powershell-quickstart.md
+                - name: Šifrování virtuálního počítače s Windows s využitím Azure CLI
+                  href: azure-disk-encryption-windows-cli-quickstart.md
+                - name: Šifrování virtuálního počítače s Windows s využitím Azure Powershellu
+                  href: azure-disk-encryption-windows-powershell-quickstart.md
             - name: Azure Disk Encryption
               items:
                 - name: Požadavky na šifrování disků

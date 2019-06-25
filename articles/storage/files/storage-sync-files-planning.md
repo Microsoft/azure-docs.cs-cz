@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 2/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7cbb934b87440d23e65fce53d7da40c5ffbd3150
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 9bb33e7d2bb80bcb19087dca6bc21bafc791af2a
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65597074"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303914"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Plánování nasazení Synchronizace souborů Azure
 Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě soubory Azure, při zachování flexibility, výkonu a kompatibility s místními souborového serveru. Azure File Sync transformuje serveru systému Windows na rychlou mezipaměť sdílené složky Azure. Můžete použít jakýkoli protokol dostupný ve Windows serveru pro přístup k datům místně, včetně SMB, NFS a FTPS. Můžete mít libovolný počet mezipamětí po celém světě potřebujete.
@@ -170,17 +170,26 @@ Windows Server Failover Clustering je podporována službou Azure File Sync mož
 
 ### <a name="data-deduplication"></a>Odstranění duplicitních dat
 **Verze agenta 5.0.2.0**   
-Odstranění duplicitních dat se nepodporuje u svazků s cloudem ovládání datových vrstev na Windows serveru 2016 a Windows Server 2019 zapnout. Povolení odstranění duplicitních dat na svazku s povoleno vrstvení cloudu umožňuje ukládat do mezipaměti další soubory lokálně bez zřizování úložiště.
+Odstranění duplicitních dat se nepodporuje u svazků s cloudem ovládání datových vrstev na Windows serveru 2016 a Windows Server 2019 zapnout. Povolení odstranění duplicitních dat na svazku s povoleno vrstvení cloudu umožňuje ukládat do mezipaměti další soubory lokálně bez zřizování úložiště. Všimněte si, že tyto úspory svazku platí pouze v místním; nebude zajištěná data ve službě soubory Azure. 
 
 **Windows Server 2012 R2 nebo starší verzí agenta**  
 U svazků, které nemají povolené vrstvení cloudu Azure File Sync podporuje Windows Server povoleným odstraněním duplicitních dat se na svazku.
 
+**Poznámky**
+- Pokud odstranění duplicitních dat je nainstalovaný před instalací agenta Azure File Sync, restartování se vyžaduje pro podporu funkce odstranění duplicitních dat a cloudové ovládání datových vrstev na stejném svazku.
+- Pokud je povolené odstraňování duplicitních dat na svazku po cloud ovládání datových vrstev je povoleno, počáteční úlohy optimalizace odstranění duplicitních dat optimalizuje soubory na svazku, které již nejsou vrstvené a může mít následující dopad na cloud ovládání datových vrstev na:
+    - Volné místo zásad bude pokračovat na úrovni souborů podle volného místa na svazku pomocí Heat mapě.
+    - Datum zásad se přeskočí ovládání datových vrstev na souborů, které mohly jinak nárok ovládání datových vrstev na kvůli přístupu k souborům úlohu optimalizace odstranění duplicit.
+- Pro probíhající úloh optimalizace odstranění duplicit, s datem zásad vrstvení cloudu se získat opožděná. odstranění duplicitních dat [MinimumFileAgeDays](https://docs.microsoft.com/powershell/module/deduplication/set-dedupvolume?view=win10-ps) nastavení, pokud soubor již nebude vrstvený. 
+    - Příklad: Pokud MinimumFileAgeDays nastavení je 7 dní a datum zásady vrstvení cloudu je 30 dní, budou zásady datum vrstvy soubory po 37 dnech.
+    - Poznámka: Jakmile je soubor vrstvené Azure File Sync, úlohy optimalizace odstranění duplicit soubor přeskočí.
+
 ### <a name="distributed-file-system-dfs"></a>Systém souborů DFS (DFS)
 Azure File Sync podporuje zprostředkovatel komunikace s objekty s obory názvů DFS (DFS-N) a replikace DFS (DFS-R).
 
-**DFS Namespaces (DFS-N)**: Na serverech systému souborů DFS-N se plně podporuje Azure File Sync. Můžete nainstalovat agenta Azure File Sync na jeden nebo více členů systému souborů DFS-N, synchronizaci dat mezi koncové body serveru a koncový bod cloudu. Další informace najdete v tématu [přehledu oborů názvů DFS](https://docs.microsoft.com/windows-server/storage/dfs-namespaces/dfs-overview).
+**DFS Namespaces (DFS-N)** : Na serverech systému souborů DFS-N se plně podporuje Azure File Sync. Můžete nainstalovat agenta Azure File Sync na jeden nebo více členů systému souborů DFS-N, synchronizaci dat mezi koncové body serveru a koncový bod cloudu. Další informace najdete v tématu [přehledu oborů názvů DFS](https://docs.microsoft.com/windows-server/storage/dfs-namespaces/dfs-overview).
  
-**Replikace DFS (DFS-R)**: Od systému souborů DFS-R a Azure File Sync jsou obě řešení replikace, ve většině případů doporučujeme nahrazení systému souborů DFS-R pomocí služby Azure File Sync. Existuje však několik scénářů, kdy je vhodné používat společně systému souborů DFS-R a Azure File Sync:
+**Replikace DFS (DFS-R)** : Od systému souborů DFS-R a Azure File Sync jsou obě řešení replikace, ve většině případů doporučujeme nahrazení systému souborů DFS-R pomocí služby Azure File Sync. Existuje však několik scénářů, kdy je vhodné používat společně systému souborů DFS-R a Azure File Sync:
 
 - Migrujete ze systému souborů DFS-R nasazení k nasazení služby Azure File Sync. Další informace najdete v tématu [migrace replikace DFS (DFS-R) nasazení do Azure File Sync](storage-sync-files-deployment-guide.md#migrate-a-dfs-replication-dfs-r-deployment-to-azure-file-sync).
 - Ne každá na místním serveru, která potřebuje kopii data souborů můžete připojené přímo k Internetu.
@@ -200,9 +209,12 @@ Pomocí nástroje sysprep na serveru, který má nainstalovaného agenta Azure F
 Pokud cloud na koncovém bodu serveru vrstvení je povoleno, soubory, které proběhne jsou vynechány a není indexované podle Windows Search. Bez vrstvené soubory jsou správně indexovány.
 
 ### <a name="antivirus-solutions"></a>Antivirová řešení
-Protože antivirové ochrany v programu funguje tak, že prohledávání souborů známých škodlivý kód, může způsobit antivirový odvolání vrstvené soubory. Do verze 4.0 a vyšší než agenta Azure File Sync vrstvené soubory sady FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS atribut zabezpečení Windows. Doporučujeme, abyste konzultaci s dodavatelem softwaru se naučíte konfigurovat jejich řešení Chcete-li přeskočit čtení souborů s touto sadou atribut (mnoho tomu automaticky).
+Protože antivirové ochrany v programu funguje tak, že prohledávání souborů známých škodlivý kód, může způsobit antivirový odvolání vrstvené soubory. Do verze 4.0 a vyšší než agenta Azure File Sync vrstvené soubory sady FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS atribut zabezpečení Windows. Doporučujeme, abyste konzultaci s dodavatelem softwaru se naučíte konfigurovat jejich řešení Chcete-li přeskočit čtení souborů s touto sadou atribut (mnoho tomu automaticky). 
 
 Společnosti Microsoft interní antivirových řešení, program Windows Defender a System Center Endpoint Protection (SCEP), i automatické přeskočení čtení souborů, které mají tento atribut nastavit. Jsme otestovali je a identifikovat jeden menší problém: Když přidáte server do existující skupiny synchronizace, soubory menší než 800 bajtů se odvolání (Stáhnout) na novém serveru. Tyto soubory zůstanou na novém serveru a nebude vrstvený, protože nesplňují požadavek vrstvení velikost (> 64 kb).
+
+> [!Note]  
+> Antivirového můžete zkontrolovat kompatibilitu mezi svých produktů a Azure File Sync pomocí [Azure souboru synchronizace antivirové ochrany v programu kompatibility sady testů.] (https://www.microsoft.com/download/details.aspx?id=58322), což je k dispozici ke stažení na webu Microsoft Download Center.
 
 ### <a name="backup-solutions"></a>Řešení zálohování
 Jako jsou antivirové řešení řešení pro zálohování může způsobit odvolání vrstvené soubory. Doporučujeme použít zálohování sdílené složky Azure místo produktu pro zálohování místních řešení cloudového zálohování.
@@ -242,7 +254,7 @@ Azure File Sync je k dispozici pouze v těchto oblastech:
 | Kanada – východ | Québec |
 | Střed Indie | Puné |
 | USA – střed | Iowa |
-| Východní Asie | Hongkong – zvláštní správní oblast |
+| Východní Asie | Hongkong – zvláštní administrativní oblast |
 | USA – východ | Virginie |
 | USA – východ 2 | Virginie |
 | Korea – střed| Soul |
@@ -256,18 +268,15 @@ Azure File Sync je k dispozici pouze v těchto oblastech:
 | Jihovýchodní Asie | Singapur |
 | Velká Británie – jih | Londýn |
 | Spojené království – západ | Cardiff |
-| US Gov Arizona (preview) | Arizona |
-| US Gov Texas (preview) | Texas |
-| US Gov Virginie (preview) | Virginie |
+| USA (Gov) – Arizona | Arizona |
+| USA (Gov) – Texas | Texas |
+| USA (Gov) – Virginia | Virginie |
 | Západní Evropa | Nizozemsko |
 | Západní střed USA | Wyoming |
 | Západní USA | Kalifornie |
 | Západní USA 2 | Washington |
 
 Azure File Sync podporuje synchronizaci pouze u sdílené složky Azure, který je ve stejné oblasti jako služba synchronizace úložiště.
-
-> [!Note]  
-> Azure File Sync je momentálně dostupný jenom ve verzi private preview pro oblasti státní správy. Najdete v našich [poznámky k verzi](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#agent-version-5020) pokyny pro registraci v programu preview.
 
 ### <a name="azure-disaster-recovery"></a>Zotavení po havárii Azure
 Pokud chcete chránit před ztrátou oblasti Azure, Azure File Sync se integruje s [redundance geograficky redundantní úložiště](../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) možnost (GRS). Úložiště GRS funguje s použitím bloku asynchronní replikaci mezi úložiště v primární oblasti, pomocí kterého budete obvykle pracovat, a úložiště ve spárovaném sekundární oblasti. V případě havárie, což způsobí, že určitá oblast Azure pro go dočasně nebo trvale offline společnost Microsoft bude úložiště převzetí služeb při selhání pro spárované oblasti. 
@@ -302,7 +311,7 @@ Pro podporu integrace převzetí služeb při selhání mezi geograficky redunda
 | Spojené království – západ             | Velká Británie – jih           |
 | USA (Gov) – Arizona      | USA (Gov) – Texas       |
 | US Gov – Iowa         | USA (Gov) – Virginia    |
-| Virgini USA (gov)      | USA (Gov) – Texas       |
+| USA (Gov) – Virginia      | USA (Gov) – Texas       |
 | Západní Evropa         | Severní Evropa       |
 | Západní střed USA     | Západní USA 2          |
 | Západní USA             | USA – východ            |

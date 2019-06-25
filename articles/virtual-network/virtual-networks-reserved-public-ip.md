@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 10/12/2018
 ms.author: genli
 ms.openlocfilehash: 8afed4eb1add0ba3a7db474e54b2f78a0babab06
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60789073"
 ---
 # <a name="reserved-ip-addresses-classic-deployment"></a>Rezervované IP adresy (klasické nasazení)
@@ -34,7 +34,7 @@ Další informace o IP adresách v Azure najdete v článku [IP adresy](virtual-
 
 ## <a name="when-do-i-need-a-reserved-ip"></a>Kdy je potřeba vyhrazená IP adresa?
 * **Chcete mít jistotu, že IP adresa je vyhrazena ve vašem předplatném**. Pokud chcete rezervovat IP adresu, která se neuvolní ze svého předplatného za žádných okolností, měli byste použít vyhrazené veřejné IP adresy.  
-* **Chcete, aby vaše IP adresa se cloudové služby i napříč zastavena nebo uvolnit stavu (VM)**. Pokud má vaše služba přístup s použitím IP adresy, který nemění, i když virtuální počítače v cloudové službě se vypnout nebo zastaveno (přidělení zrušeno).
+* **Chcete, aby vaše IP adresa se cloudové služby i napříč zastavena nebo uvolnit stavu (VM)** . Pokud má vaše služba přístup s použitím IP adresy, který nemění, i když virtuální počítače v cloudové službě se vypnout nebo zastaveno (přidělení zrušeno).
 * **Chcete zajistit, aby používal odchozího provozu z Azure předvídatelné IP adresu**. Možná bude vaše místní bráně firewall nakonfigurované tak, aby provoz jenom z konkrétních IP adres. Rezervací integrační balíček, znát IP adresu zdroje a není potřeba aktualizovat pravidla brány firewall kvůli o změnu IP.
 
 ## <a name="faqs"></a>Nejčastější dotazy

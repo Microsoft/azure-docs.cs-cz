@@ -1,26 +1,19 @@
 ---
 title: Řešení potíží s běžnými chybami nasazení v Azure | Dokumentace Microsoftu
 description: Popisuje, jak řešit běžné chyby při nasazování prostředků do Azure pomocí Azure Resource Manageru.
-services: azure-resource-manager
-documentationcenter: ''
 tags: top-support-issue
 author: tfitzmac
-manager: timlt
-editor: tysonn
 keywords: Chyba nasazení, nasazení azure, nasazení do azure
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 02/15/2019
 ms.author: tomfitz
-ms.openlocfilehash: f6ebeb1d9953311ad1cb85d8ab33c83d5e92d687
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fea7f77b1f4bcace23ad9164354c4f42e868869f
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66128564"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206324"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Řešení potíží s běžnými chybami nasazení v Azure pomocí Azure Resource Manageru
 
@@ -30,14 +23,14 @@ Tento článek popisuje některé běžné chyby nasazení v Azure a poskytuje i
 
 ## <a name="error-codes"></a>Kódy chyb
 
-| Kód chyby | Zmírnění | Další informace |
+| Kód chyby | Omezení rizik | Další informace |
 | ---------- | ---------- | ---------------- |
 | AccountNameInvalid | Postupujte podle omezení názvů pro účty úložiště. | [Rozpoznání názvu účtu úložiště](resource-manager-storage-account-name-errors.md) |
 | AccountPropertyCannotBeSet | Zkontrolujte vlastnosti účtu úložiště k dispozici. | [storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
 | AllocationFailed | Cluster nebo oblast nemá k dispozici prostředky nebo nemůžou podporovat požadovanou velikost virtuálního počítače. Zkuste požadavek zopakovat později, nebo požádat o jinou velikost virtuálního počítače. | [Potíže se zřizování a přidělením pro Linux](../virtual-machines/linux/troubleshoot-deployment-new-vm.md), [potíže zřizování a přidělením pro Windows](../virtual-machines/windows/troubleshoot-deployment-new-vm.md) a [Poradce při potížích s chybami přidělení](../virtual-machines/troubleshooting/allocation-failure.md)|
 | AnotherOperationInProgress | Počkejte na dokončení souběžné operace. | |
 | AuthorizationFailed | Váš účet nebo instanční objekt nemá dostatečný přístup k dokončení nasazení. Zkontrolujte role, kterou váš účet patří do a jeho přístup k oboru nasazení.<br><br>Tato chyba může zobrazit při není zaregistrovaný poskytovatel požadovaný prostředek. | [Řízení přístupu na základě rolí Azure](../role-based-access-control/role-assignments-portal.md)<br><br>[Vyřešit registrace](resource-manager-register-provider-errors.md) |
-| BadRequest | Jste odeslali hodnot nasazení, které neodpovídají očekávání podle Resource Manageru. Zkontrolujte zprávu vnitřní stav pro pomoc s řešením potíží. | [Referenční informace k šablonám](/azure/templates/) a [podporované umístění](resource-group-authoring-templates.md#resource-location) |
+| Chybného požadavku | Jste odeslali hodnot nasazení, které neodpovídají očekávání podle Resource Manageru. Zkontrolujte zprávu vnitřní stav pro pomoc s řešením potíží. | [Referenční informace k šablonám](/azure/templates/) a [podporované umístění](resource-group-authoring-templates.md#resource-location) |
 | Konflikt | Kterou žádáte o operaci, která není povolena v aktuálním stavu prostředku. Například změna velikosti disku je povolená jenom při vytváření virtuálního počítače nebo při zrušení přidělení virtuálního počítače. | |
 | DeploymentActive | Počkejte, souběžné nasazení do této skupiny prostředků k dokončení. | |
 | DeploymentFailed | Chyba DeploymentFailed je obecná chyba, která neposkytuje informace potřebné k vyřešení chyby. Hledejte v podrobnostech o chybě kód chyby, která poskytuje další informace. | [Vyhledejte kód chyby:](#find-error-code) |
@@ -63,7 +56,7 @@ Tento článek popisuje některé běžné chyby nasazení v Azure a poskytuje i
 | MissingRegistrationForLocation | Zkontrolujte stav registrace poskytovatele prostředků a podporovaná umístění. | [Vyřešit registrace](resource-manager-register-provider-errors.md) |
 | MissingSubscriptionRegistration | Zaregistrujte předplatné u poskytovatele prostředků. | [Vyřešit registrace](resource-manager-register-provider-errors.md) |
 | NoRegisteredProviderFound | Zkontrolujte stav registrace poskytovatele prostředků. | [Vyřešit registrace](resource-manager-register-provider-errors.md) |
-| Nenalezeno | Pravděpodobně se pokoušíte nasadit souběžně s nadřazeném prostředku závislý prostředek. Zaškrtněte, pokud budete muset přidat závislost. | [Řešení závislostí](resource-manager-not-found-errors.md) |
+| NotFound | Pravděpodobně se pokoušíte nasadit souběžně s nadřazeném prostředku závislý prostředek. Zaškrtněte, pokud budete muset přidat závislost. | [Řešení závislostí](resource-manager-not-found-errors.md) |
 | OperationNotAllowed | Nasazení je pokus o operaci, která překračuje kvótu pro předplatné, skupinu prostředků nebo oblasti. Pokud je to možné upravte nasazení tak, aby neopustí kvóty. V opačném případě zvažte žádosti o změnu do vaší kvóty. | [Vyřešit kvóty](resource-manager-quota-errors.md) |
 | ParentResourceNotFound | Ujistěte se, že nadřazený prostředek existuje před vytvořením podřízené prostředky. | [Vyřešit nadřazený prostředek](resource-manager-parent-resource-errors.md) |
 | PasswordTooLong | Možná jste vybrali heslo příliš mnoho znaků nebo může mít převést hodnotu heslo na zabezpečený řetězec před předáním jako parametr. Pokud šablona obsahuje **zabezpečený řetězec** parametr, není nutné převést hodnotu na zabezpečený řetězec. Zadejte hodnotu hesla jako text. |  |
@@ -86,36 +79,36 @@ Tento článek popisuje některé běžné chyby nasazení v Azure a poskytuje i
 
 ## <a name="find-error-code"></a>Vyhledejte kód chyby:
 
-Existují dva typy chyb, které dostanete:
+Existují dva typy chyb, ke kterým může dojít:
 
-* chyby ověření
-* chyby nasazení
+* Chyby ověření
+* Chyby nasazení
 
-Chyby ověření jsou vyvolány scénáře, které se dá určit před nasazením. Patří mezi ně chyby syntaxe v šabloně nebo pokusu o nasazení prostředků, které by došlo k vaší kvóty předplatného. Chyby nasazení vznikají z podmínek, které nastanou během procesu nasazení. Patří mezi ně pokusu o přístup k prostředku, který se nasazuje paralelně.
+K chybám ověření dochází ve scénářích, které je možné určit před nasazením. Patří k nim chyby syntaxe v šabloně nebo pokusy o nasazení prostředků, které by překročily kvóty předplatného. K chybám nasazení dochází za podmínek, které nastanou během procesu nasazení. Patří mezi ně pokusy o přístup k paralelně nasazovaným prostředkům.
 
-Oba typy chyb vrátí kód chyby, který použijete k řešení potíží s nasazení. Oba typy chyb se zobrazí v [protokolu aktivit](resource-group-audit.md). Chyby ověření však nejsou zobrazeny v historii nasazení, protože nasazení nikdy nespustili.
+Oba typy chyb vrací kód chyby, který můžete použít při řešení potíží s nasazením. Oba typy chyb se zobrazí v [protokolu aktivit](resource-group-audit.md). Chyby ověření se ale nezobrazí v historii nasazení, protože vůbec nedojde k zahájení nasazení.
 
-### <a name="validation-errors"></a>Chyby ověření
+### <a name="validation-errors"></a>chyby ověření
 
-Při nasazení pomocí portálu, se zobrazí chyba ověření po odeslání hodnoty.
+Při nasazování pomocí portálu se po odeslání hodnot zobrazí chyba ověření.
 
 ![Zobrazit chybu ověření na portálu](./media/resource-manager-common-deployment-errors/validation-error.png)
 
-Vyberte zprávu pro další podrobnosti. Na následujícím obrázku vidíte **InvalidTemplateDeployment** chyby a napište zprávu, která určuje zásadu blokované nasazení.
+Výběrem zprávy zobrazíte další podrobnosti. Na následujícím obrázku vidíte **InvalidTemplateDeployment** chyby a napište zprávu, která určuje zásadu blokované nasazení.
 
 ![Zobrazit podrobnosti o ověřování](./media/resource-manager-common-deployment-errors/validation-details.png)
 
 ### <a name="deployment-errors"></a>chyby nasazení
 
-Při operaci projde ověřovacími, ale je během nasazení se nezdaří, získáte chyba nasazení.
+Pokud operace projde ověřením, ale během nasazování selže, zobrazí se chyba nasazení.
 
-Pokud chcete zobrazit kódy chyb nasazení a zpráv pomocí Powershellu, použijte:
+Pokud chcete zobrazit kódy a zprávy chyb nasazení v PowerShellu, použijte následující příkaz:
 
 ```azurepowershell-interactive
 (Get-AzResourceGroupDeploymentOperation -DeploymentName exampledeployment -ResourceGroupName examplegroup).Properties.statusMessage
 ```
 
-Pokud chcete zobrazit kódy chyb nasazení a zprávy pomocí Azure CLI, použijte:
+Pokud chcete zobrazit kódy a zprávy chyb nasazení v Azure CLI, použijte následující příkaz:
 
 ```azurecli-interactive
 az group deployment operation list --name exampledeployment -g examplegroup --query "[*].properties.statusMessage"
@@ -125,11 +118,11 @@ Na portálu vyberte oznámení.
 
 ![Chyba oznámení](./media/resource-manager-common-deployment-errors/notification.png)
 
-Se zobrazí další podrobnosti o tomto nasazení. Vyberte možnost najdete další informace o této chybě.
+Se zobrazí další podrobnosti o tomto nasazení. Výběrem možnosti zobrazíte další informace o chybě.
 
 ![nasazení selhalo](./media/resource-manager-common-deployment-errors/deployment-failed.png)
 
-Zobrazí chybovou zprávu a chybové kódy. Všimněte si, že jsou dva kódy chyb. První kód chyby: (**DeploymentFailed**) je obecná chyba, která neposkytuje informace potřebné k vyřešení chyby. Druhý kód chyby: (**StorageAccountNotFound**) nabízí podrobné informace, které potřebujete. 
+Zobrazí se chybová zpráva a kódy chyb. Všimněte si, že se zobrazí dva kódy chyb. První kód chyby (**DeploymentFailed**) značí obecnou chybu a neposkytuje podrobnosti potřebné k vyřešení této chyby. Druhý kód chyby (**StorageAccountNotFound**) poskytuje potřebné podrobnosti. 
 
 ![Podrobnosti o chybě](./media/resource-manager-common-deployment-errors/error-details.png)
 

@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 10/11/2018
 ms.author: robb
 ms.subservice: logs
-ms.openlocfilehash: 21eec5ee2fef185a927f6a416732303765e02b1c
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 468bcdb6aa688157196bb9cba8added623a857d3
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65789325"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67155307"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Podporované služby, schémat a kategorie pro diagnostické protokoly Azure
 
@@ -23,24 +23,24 @@ Kombinace typu prostředku (k dispozici v `resourceId` vlastnost) a `category` j
 
 ## <a name="top-level-diagnostic-logs-schema"></a>Schéma nejvyšší úrovně diagnostické protokoly
 
-| Název | Požadované a volitelné | Popis |
+| Name | Požadované a volitelné | Popis |
 |---|---|---|
 | time | Požaduje se | Časové razítko (UTC) události. |
 | resourceId | Požaduje se | ID prostředku prostředků, které události, protože ho. Pro tenanta služby to je /tenants/tenant-id/providers/provider-name formuláře. |
-| ID Tenanta | Vyžaduje se pro tenanta protokoly | ID tenanta, který tato událost se váže na tenanta Active Directory. Tato vlastnost slouží pouze pro protokoly na úrovni tenanta, nezobrazí se v protokolech úrovni prostředků. |
+| tenantId | Vyžaduje se pro tenanta protokoly | ID tenanta, který tato událost se váže na tenanta Active Directory. Tato vlastnost slouží pouze pro protokoly na úrovni tenanta, nezobrazí se v protokolech úrovni prostředků. |
 | operationName | Požaduje se | Název operace reprezentovaný touto událostí. Pokud událost představuje operaci RBAC, jedná se o název operace RBAC (např.) Microsoft.Storage/storageAccounts/blobServices/blobs/Read). Obvykle modelována ve formě operaci Resource Manager i v případě, že se nejedná o skutečný zdokumentovaných operace Resource Manageru (`Microsoft.<providerName>/<resourceType>/<subtype>/<Write/Read/Delete/Action>`) |
-| operationVersion | Volitelná | Přidružené operaci, pokud operationName byla provedena pomocí rozhraní API (např api-version. `http://myservice.windowsazure.net/object?api-version=2016-06-01`). Pokud neexistuje žádné rozhraní API, která odpovídá této operace, verze představuje verzi jazyka tuto operaci v případě, že v budoucnu změnit vlastnosti přidružené k operaci. |
+| operationVersion | Nepovinné | Přidružené operaci, pokud operationName byla provedena pomocí rozhraní API (např api-version. `http://myservice.windowsazure.net/object?api-version=2016-06-01`). Pokud neexistuje žádné rozhraní API, která odpovídá této operace, verze představuje verzi jazyka tuto operaci v případě, že v budoucnu změnit vlastnosti přidružené k operaci. |
 | category | Požaduje se | Kategorie protokolu události. Kategorie je týdenní i členitost, ve kterém můžete povolit nebo zakázat přihlásí k určitému prostředku. Vlastnosti, které se zobrazují v rámci objektu blob vlastnosti události jsou stejné v rámci typu protokolu konkrétní kategorie a prostředků. Kategorie typické protokolu jsou "Audit" "provozní" "Spuštění" a "Požadavek." |
-| resultType | Volitelná | Stav události. Mezi typické hodnoty patří spuštěno, v průběhu, úspěšné, neúspěšné, aktivní a vyřešeno. |
-| resultSignature | Volitelná | Dílčí stav události. Pokud tato operace odpovídá volání rozhraní REST API, to je stavový kód HTTP odpovídající volání REST. |
-| resultDescription | Volitelná | Statické textový popis této operace, např. "Získat soubor úložiště." |
-| durationMs | Volitelná | Doba trvání operace v milisekundách. |
-| callerIpAddress | Volitelná | Volající IP adresu, pokud odpovídá operaci volání rozhraní API by pocházející z entity s veřejně dostupnou IP adresu. |
-| correlationId | Volitelná | GUID, který se používá k seskupení sady souvisejících událostí. Obvykle Pokud dvě události mají stejnou operationName ale dvou různých stavů (např.) "Začínáme" a "Úspěchu"), sdílejí stejné ID korelace. To může také představovat jiné vztahy mezi událostmi. |
-| identity | Volitelná | Objekt blob JSON, který popisuje identity uživatele nebo aplikaci, která provádí operaci. Obvykle bude zahrnovat autorizace a deklarace / token JWT ze služby active directory. |
-| Úroveň | Volitelná | Úroveň závažnosti události. Musí být jedna z informační, chyba, upozornění nebo kritický. |
-| location | Volitelná | Oblast prostředku generování událostí, např. "East US" nebo "Francie – jih" |
-| properties | Volitelná | Některé rozšířené vlastnosti týkající se této konkrétní kategorii událostí. Všechny vlastní nebo jedinečné vlastnosti musí být umístěte soubor "B část" schématu. |
+| resultType | Nepovinné | Stav události. Mezi typické hodnoty patří spuštěno, v průběhu, úspěšné, neúspěšné, aktivní a vyřešeno. |
+| resultSignature | Nepovinné | Dílčí stav události. Pokud tato operace odpovídá volání rozhraní REST API, to je stavový kód HTTP odpovídající volání REST. |
+| resultDescription | Nepovinné | Statické textový popis této operace, např. "Získat soubor úložiště." |
+| durationMs | Nepovinné | Doba trvání operace v milisekundách. |
+| callerIpAddress | Nepovinné | Volající IP adresu, pokud odpovídá operaci volání rozhraní API by pocházející z entity s veřejně dostupnou IP adresu. |
+| correlationId | Nepovinné | GUID, který se používá k seskupení sady souvisejících událostí. Obvykle Pokud dvě události mají stejnou operationName ale dvou různých stavů (např.) "Začínáme" a "Úspěchu"), sdílejí stejné ID korelace. To může také představovat jiné vztahy mezi událostmi. |
+| identity | Nepovinné | Objekt blob JSON, který popisuje identity uživatele nebo aplikaci, která provádí operaci. Obvykle bude zahrnovat autorizace a deklarace / token JWT ze služby active directory. |
+| Level | Nepovinné | Úroveň závažnosti události. Musí být jedna z informační, chyba, upozornění nebo kritický. |
+| location | Nepovinné | Oblast prostředku generování událostí, např. "East US" nebo "Francie – jih" |
+| properties | Nepovinné | Některé rozšířené vlastnosti týkající se této konkrétní kategorii událostí. Všechny vlastní nebo jedinečné vlastnosti musí být umístěte soubor "B část" schématu. |
 
 ## <a name="service-specific-schemas-for-resource-diagnostic-logs"></a>Specifické pro služby schémata pro diagnostické protokoly prostředků
 Schéma protokolů diagnostiky prostředků se liší podle kategorie prostředků a protokolu. Tento seznam obsahuje všechny služby, které provádět dostupné diagnostické protokoly a odkazy služby a schématu podle kategorií tam, kde je k dispozici.
@@ -49,20 +49,20 @@ Schéma protokolů diagnostiky prostředků se liší podle kategorie prostředk
 | --- | --- |
 | Azure Active Directory | [Přehled](../../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md), [schéma protokolu auditu](../../active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema.md) a [schématu přihlášení](../../active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema.md) |
 | Analysis Services | https://azure.microsoft.com/blog/azure-analysis-services-integration-with-azure-diagnostic-logs/ |
-| API management | [Diagnostické protokoly služby API Management](../../api-management/api-management-howto-use-azure-monitor.md#diagnostic-logs) |
+| API Management | [Diagnostické protokoly služby API Management](../../api-management/api-management-howto-use-azure-monitor.md#diagnostic-logs) |
 | Brány Application Gateway |[Diagnostika protokolování pro službu Application Gateway](../../application-gateway/application-gateway-diagnostics.md) |
 | Azure Automation |[Log analytics pro Azure Automation.](../../automation/automation-manage-send-joblogs-log-analytics.md) |
 | Azure Batch |[Protokolování diagnostiky služby Azure Batch](../../batch/batch-diagnostics.md) |
 | Azure Database for MySQL | [Azure Database for MySQL diagnostické protokoly](../../mysql/concepts-server-logs.md#diagnostic-logs) |
 | Azure Database for PostgreSQL | [Azure Database for PostgreSQL diagnostické protokoly](../../postgresql/concepts-server-logs.md#diagnostic-logs) |
-| Cognitive Services | Schéma není k dispozici. |
+| Cognitive Services | [Protokolování diagnostiky pro Azure Cognitive Services](../../cognitive-services/diagnostic-logging.md) |
 | Content Delivery Network | [Diagnostické protokoly Azure CDN](../../cdn/cdn-azure-diagnostic-logs.md) |
 | CosmosDB | [Azure Cosmos DB Logging](../../cosmos-db/logging.md) |
 | Data Factory | [Monitorovat datové továrny pomocí Azure monitoru](../../data-factory/monitor-using-azure-monitor.md) |
 | Data Lake Analytics |[Přístup k protokolům diagnostiky pro Azure Data Lake Analytics](../../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
 | Data Lake Store |[Zobrazení diagnostických protokolů pro Azure Data Lake Store](../../data-lake-store/data-lake-store-diagnostic-logs.md) |
 | Event Hubs |[Diagnostické protokoly Azure Event Hubs](../../event-hubs/event-hubs-diagnostic-logs.md) |
-| Express Route | Schéma není k dispozici. |
+| ExpressRoute | Schéma není k dispozici. |
 | Brána Azure Firewall | Schéma není k dispozici. |
 | IoT Hub | [Operací služby IoT Hub](../../iot-hub/iot-hub-monitor-resource-health.md#use-azure-monitor) |
 | Key Vault |[Protokolování v Azure Key Vault](../../key-vault/key-vault-logging.md) |
@@ -72,7 +72,7 @@ Schéma protokolů diagnostiky prostředků se liší podle kategorie prostředk
 | DDOS Protection | [Správa Azure DDoS Standard Protection](../../virtual-network/manage-ddos-protection.md) |
 | PowerBI Dedicated | [Protokolování diagnostiky pro Power BI Embedded v Azure](https://docs.microsoft.com/power-bi/developer/azure-pbie-diag-logs) |
 | Recovery Services | [Datový Model pro zálohování Azure](../../backup/backup-azure-reports-data-model.md)|
-| Vyhledávání |[Povolení a používání prohledání analýzy provozu](../../search/search-traffic-analytics.md) |
+| Search |[Povolení a používání prohledání analýzy provozu](../../search/search-traffic-analytics.md) |
 | Service Bus |[Diagnostické protokoly Azure Service Bus](../../service-bus-messaging/service-bus-diagnostic-logs.md) |
 | SQL Database | [Protokolování diagnostiky služby Azure SQL Database](../../sql-database/sql-database-metrics-diag-logging.md) |
 | Stream Analytics |[Diagnostické protokoly úloh](../../stream-analytics/stream-analytics-job-diagnostic-logs.md) |
@@ -90,15 +90,15 @@ Schéma protokolů diagnostiky prostředků se liší podle kategorie prostředk
 |Microsoft.Automation/automationAccounts|JobStreams|Datové proudy úlohy|
 |Microsoft.Automation/automationAccounts|DscNodeStatus|Stav uzlu DSC|
 |Microsoft.Batch/batchAccounts|ServiceLog|Protokoly služby|
-|Microsoft.Cdn/profiles/endpoints|CoreAnalytics|Získá metriky koncového bodu, třeba šířku pásma, výchozí přenos atd.|
+|Microsoft.Cdn/profiles/endpoints|CoreAnalytics|Získá metriky koncového bodu, například šířku pásma, výchozí přenos atd.|
 |Microsoft.ClassicNetwork/networksecuritygroups|Událost toku pravidel skupiny zabezpečení sítě|Událost toku pravidel skupiny zabezpečení sítě|
 |Microsoft.CognitiveServices/accounts|Auditování|Protokoly auditu|
-|Microsoft.CognitiveServices/accounts|Operace RequestResponse|Protokoly požadavků a odpovědí|
-|Microsoft.ContainerService/managedClusters|kube-apiserver|Server rozhraní API Kubernetes|
-|Microsoft.ContainerService/managedClusters|kube-controller-manager|Správce kontroleru Kubernetes|
-|Microsoft.ContainerService/managedClusters|cluster-autoscaler|Automatické škálování clusteru Kubernetes|
+|Microsoft.CognitiveServices/accounts|Operace RequestResponse|Žádost a odpověď protokoly|
+|Microsoft.ContainerService/managedClusters|kube-apiserver|Kubernetes API Server|
+|Microsoft.ContainerService/managedClusters|kube-controller-manager|Kubernetes Controller Manager|
+|Microsoft.ContainerService/managedClusters|cluster-autoscaler|Automatického škálování clusteru Kubernetes|
 |Microsoft.ContainerService/managedClusters|kube-scheduler|Plánovač Kubernetes|
-|Microsoft.ContainerService/managedClusters|Guard|Ověřovací webhook|
+|Microsoft.ContainerService/managedClusters|Guard|Ověřování Webhooku|
 |Microsoft.CustomerInsights/hubs|Použitím objektů Auditevent|Použitím objektů Auditevent|
 |Microsoft.DataFactory/factories|ActivityRuns|Kanál protokolu spuštění aktivit|
 |Microsoft.DataFactory/factories|PipelineRuns|Spuštění kanálu protokolu|
@@ -130,17 +130,17 @@ Schéma protokolů diagnostiky prostředků se liší podle kategorie prostředk
 |Microsoft.EventHub/namespaces|ArchiveLogs|Archivovat protokoly|
 |Microsoft.EventHub/namespaces|OperationalLogs|Provozní protokoly|
 |Microsoft.EventHub/namespaces|AutoScaleLogs|Automatické škálování protokoly|
-|Microsoft.Insights/AutoscaleSettings|AutoscaleEvaluations|Vyhodnocení automatického škálování|
-|Microsoft.Insights/AutoscaleSettings|AutoscaleScaleActions|Akce automatického škálování|
+|Microsoft.Insights/AutoscaleSettings|AutoscaleEvaluations|Vyhodnocování automatického škálování|
+|Microsoft.Insights/AutoscaleSettings|AutoscaleScaleActions|Automaticky škálovat Škálovací akce|
 |Microsoft.IoTSpaces/Graph|Trasování|Trasování|
 |Microsoft.IoTSpaces/Graph|Provozní|Provozní|
 |Microsoft.IoTSpaces/Graph|Auditování|Auditování|
 |Microsoft.IoTSpaces/Graph|UserDefinedFunction|UserDefinedFunction|
-|Microsoft.IoTSpaces/Graph|Příchozí přenos|Příchozí přenos|
+|Microsoft.IoTSpaces/Graph|Příchozí přenos dat|Příchozí přenos dat|
 |Microsoft.IoTSpaces/Graph|Výchozí přenos|Výchozí přenos|
 |Microsoft.KeyVault/vaults|AuditEvent|Protokoly auditu|
 |Microsoft.Logic/workflows|Modul runtime|Diagnostické události modulu runtime pracovního postupu|
-|Microsoft.Logic/integrationAccounts|IntegrationAccountTrackingEvents|Sledovat události u účtu pro integraci|
+|Microsoft.Logic/integrationAccounts|IntegrationAccountTrackingEvents|Události sledování účtu integrace|
 |Microsoft.Network/networksecuritygroups|NetworkSecurityGroupEvent|Událost skupiny zabezpečení sítě|
 |Microsoft.Network/networksecuritygroups|NetworkSecurityGroupRuleCounter|Čítač pravidlo skupiny zabezpečení sítě|
 |Microsoft.Network/loadBalancers|LoadBalancerAlertEvent|Události výstrah nástroje pro vyrovnávání zatížení|
@@ -176,7 +176,7 @@ Schéma protokolů diagnostiky prostředků se liší podle kategorie prostředk
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryProtectedDiskDataChurn|Četnost změn dat na Disk chráněný Azure Site Recovery|
 |Microsoft.Search/searchServices|OperationLogs|Protokoly operací|
 |Microsoft.ServiceBus/namespaces|OperationalLogs|Provozní protokoly|
-|Microsoft.Sql/servers/databases|SQLInsights|Přehledy SQL|
+|Microsoft.Sql/servers/databases|SQLInsights|SQL Insights|
 |Microsoft.Sql/servers/databases|AutomaticTuning|Automatické ladění|
 |Microsoft.Sql/servers/databases|QueryStoreRuntimeStatistics|Statistické údaje o Query Store|
 |Microsoft.Sql/servers/databases|QueryStoreWaitStatistics|Statistiky čekání Query Store|
@@ -194,7 +194,7 @@ Schéma protokolů diagnostiky prostředků se liší podle kategorie prostředk
 |Microsoft.Sql/servers/databases|Čeká|Čeká|
 |Microsoft.Sql/managedInstances|ResourceUsageStats|Statistiky o využití prostředků|
 |Microsoft.Sql/managedInstances|SQLSecurityAuditEvents|Událost auditu zabezpečení SQL|
-|Microsoft.Sql/managedInstances/databases|SQLInsights|Přehledy SQL|
+|Microsoft.Sql/managedInstances/databases|SQLInsights|SQL Insights|
 |Microsoft.Sql/managedInstances/databases|QueryStoreRuntimeStatistics|Statistické údaje o Query Store|
 |Microsoft.Sql/managedInstances/databases|QueryStoreWaitStatistics|Statistiky čekání Query Store|
 |Microsoft.Sql/managedInstances/databases|Chyby|Chyby|
@@ -209,4 +209,3 @@ Schéma protokolů diagnostiky prostředků se liší podle kategorie prostředk
 * [Stream protokolů diagnostiky prostředků k **Event Hubs**](../../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md)
 * [Změnit nastavení diagnostiky prostředků pomocí REST API služby Azure Monitor](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)
 * [Analýza protokolů ze služby Azure storage s využitím Log Analytics](../../azure-monitor/platform/collect-azure-metrics-logs.md)
-

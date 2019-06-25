@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: genli
 ms.openlocfilehash: 3df4108907a4e1e65a444faf1049163966b7accf
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66170756"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67174929"
 ---
 ## <a name="scenario"></a>Scénář
 Virtuální počítač s jedním Síťovým vytvoření a připojení k virtuální síti. Virtuální počítač vyžaduje tři různé *privátní* IP adresy a dva *veřejné* IP adresy. IP adresy jsou přiřazeny k následující konfigurace protokolu IP:

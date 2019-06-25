@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako;cenkdin;anilmur
 ms.openlocfilehash: d0da69601bfc6fd09c10b30d45195722781d87d6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61232036"
 ---
 # <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>Kodér Wirecast můžete odesílat živý datový proud s jednou přenosovou rychlostí 
@@ -94,7 +94,7 @@ V tomto kurzu se používají následující nastavení výstupu. Zbytek tohoto 
 3. Klikněte na **OK**.
 4. Na stránce nastavení nastavit **cílové** pole bylo **Azure Media Services**.
 
-    Profil kódování je předem vybraná pro **Azure H.264 720 p 16:9 (1280 x 720)**. Chcete-li nastavení upravit, vyberte ikonu ozubeného kola vedle rozevíracího seznamu a klikněte na tlačítko **nové přednastavení**.
+    Profil kódování je předem vybraná pro **Azure H.264 720 p 16:9 (1280 x 720)** . Chcete-li nastavení upravit, vyberte ikonu ozubeného kola vedle rozevíracího seznamu a klikněte na tlačítko **nové přednastavení**.
 
     ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast3.png)
 5. Konfigurovat kodér předvolby.

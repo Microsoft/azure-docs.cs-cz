@@ -13,10 +13,10 @@ ms.author: gamal
 ms.reviewer: maghan
 manager: craigg
 ms.openlocfilehash: 76962975705ff53a292f41a0a54e42c5f2991a2c
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66002559"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Průběžná integrace a doručování (CI/CD) v Azure Data Factory
@@ -947,7 +947,7 @@ Zde jsou uvedeny pokyny pro použití při vytváření souboru vlastních param
 
 * Pouze vlastnosti a všechny vlastnosti v cestě `typeProperties` jsou parametrizovány s jejich odpovídajících výchozích hodnot. Například od verze schématu dnešní existují dvě vlastnosti v části **IntegrationRuntimes** vlastnosti typu: `computeProperties` a `ssisProperties`. Oba typy vlastností se vytvoří s jejich odpovídajících výchozích hodnot a typy (Object).
 
-#### <a name="triggers"></a>Aktivační události
+#### <a name="triggers"></a>Aktivační procedury
 
 * V části `typeProperties`, dvě vlastnosti jsou parametrizovány. První z nich je `maxConcurrency`, který je zadán s výchozí hodnotou a typ by `string`. Má výchozí název parametru `<entityName>_properties_typeProperties_maxConcurrency`.
 * `recurrence` Také parametrizované vlastnosti. V části, nejsou zadány všechny vlastnosti na této úrovni k parametrizovat jako řetězce, výchozí hodnoty a názvy parametrů. Výjimka je `interval` vlastnost, která je jako typ Číslo s parametry a s názvem parametru doplněny `<entityName>_properties_typeProperties_recurrence_triggerSuffix`. Podobně platí `freq` vlastnosti je řetězec a parametrizované jako řetězec. Ale `freq` Parametrizovaná vlastnost bez výchozí hodnoty. Název je zkráceno a příponou. Například, `<entityName>_freq`.

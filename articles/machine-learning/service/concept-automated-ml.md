@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 06/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1dcdbbf0a2a71fa38b6eacd6a8d179cdad979937
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3f00a530cb4e62ae83dea349c949e8f2ddc43c0c
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059292"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203032"
 ---
 # <a name="what-is-automated-machine-learning"></a>Co je automatické machine learning?
 
@@ -171,7 +171,7 @@ Automatizované ML je také dostupná v dalších řešení Microsoftu, jako:
 |Integrace|Popis|
 |------------|-----------|
 |[ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)|Výběr automatického modelu a školení v aplikacích .NET pomocí sady Visual Studio a Visual Studio Code s ML.NET automatizované ML (Preview).|
-|[HDIsnight](../../hdinsight/spark/apache-spark-run-machine-learning-automl.md)|Horizontální navýšení kapacity vašeho automatizované úlohy trénování ML ve Sparku v HDInsight clustery paralelně.|
+|[HDInsight](../../hdinsight/spark/apache-spark-run-machine-learning-automl.md)|Horizontální navýšení kapacity vašeho automatizované úlohy trénování ML ve Sparku v HDInsight clustery paralelně.|
 |[PowerBI](https://docs.microsoft.com/power-bi/service-machine-learning-automated)|Vyvolání modelů strojového učení přímo v Power BI (Preview).|
 |[SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)|Vytvořte nové modely strojového učení nad vašimi daty v clusterech velké objemy dat SQL serveru 2019.|
 

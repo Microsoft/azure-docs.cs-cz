@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 03/23/2018
 ms.author: chackdan
 ms.openlocfilehash: a5f8735df2b230de2b0ddcdcccff09430bada9e3
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64684690"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Typy uzlů Service Fabric a Azure virtuálního počítače škálovací sady
@@ -34,7 +34,7 @@ Jak je znázorněno na předchozím obrázku, instancí škálovací sady spušt
 Když vertikálně navýšit kapacitu škálovací sady, je vytvořena nová instance. Nový název instance škálovací sady je obvykle škálovací sady názvu plus číslo další instance. V našem příkladu je BackEnd_5.
 
 ## <a name="map-scale-set-load-balancers-to-node-types-and-scale-sets"></a>Mapování nástroje pro vyrovnávání zatížení škálovací sady na typy uzlů a škálovací sady
-Pokud váš cluster na webu Azure Portal nasadit nebo použít ukázkové šablony Azure Resource Manageru, jsou uvedeny všechny prostředky ve skupině prostředků. Můžete zobrazit nástroje pro vyrovnávání zatížení pro každou škálovací sady nebo uzel typu. Název nástroje pro vyrovnávání zatížení používá následující formát: **LB -&lt;název typu uzlu&gt;**. Příkladem je LB-sfcluster4doc-0, jak je znázorněno na následujícím obrázku:
+Pokud váš cluster na webu Azure Portal nasadit nebo použít ukázkové šablony Azure Resource Manageru, jsou uvedeny všechny prostředky ve skupině prostředků. Můžete zobrazit nástroje pro vyrovnávání zatížení pro každou škálovací sady nebo uzel typu. Název nástroje pro vyrovnávání zatížení používá následující formát: **LB -&lt;název typu uzlu&gt;** . Příkladem je LB-sfcluster4doc-0, jak je znázorněno na následujícím obrázku:
 
 ![Zdroje a prostředky][Resources]
 

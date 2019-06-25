@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/22/2019
 ms.author: jowargo
-ms.openlocfilehash: b9fa54a24c5d96f0d3ad48034907f2c6fe5cb385
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 714c2be7265a41a7791ce39bfaa1bdc12fa58cac
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60426800"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67340750"
 ---
 # <a name="tutorial-send-notifications-to-universal-windows-platform-apps-by-using-azure-notification-hubs"></a>Kurz: Odesílat oznámení do aplikací pro univerzální platformu Windows pomocí Azure Notification Hubs
 
@@ -29,7 +29,7 @@ ms.locfileid: "60426800"
 V tomto kurzu vytvoříte centrum oznámení, které posílá nabízená oznámení aplikaci pro Univerzální platformu Windows (UPW). Vytvoříte prázdnou aplikaci pro Windows Store, která přijímá nabízená oznámení ze Služby nabízených oznámení Windows (WNS). Potom můžete používat vaše Centrum oznámení k vysílání nabízených oznámení pro všechna zařízení, na kterých běží vaše aplikace.
 
 > [!NOTE]
-> Dokončený kód pro tento kurz najdete na [GitHubu](https://github.com/Azure/azure-notificationhubs-samples/tree/master/dotnet/GetStartedWindowsUniversal).
+> Dokončený kód pro tento kurz najdete na [GitHubu](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/UwpSample).
 
 Můžete provést následující kroky:
 
@@ -77,7 +77,7 @@ Pokud chcete odesílat nabízená oznámení do aplikací UPW, přidružte svou 
 
 ### <a name="configure-wns-settings-for-the-hub"></a>Konfigurace nastavení WNS centra
 
-1. V **nastavení oznámení** vyberte **Windows (WNS)**.
+1. V **nastavení oznámení** vyberte **Windows (WNS)** .
 2. Zadejte hodnoty **Identifikátor SID balíčku** a **Klíč balíčku**, které jste si poznamenali v předchozí části.
 3. Na panelu nástrojů klikněte na tlačítko **Uložit**.
 
@@ -90,13 +90,13 @@ Vaše centrum oznámení je teď nakonfigurované pro práci se službou WNS. M�
 1. V sadě Visual Studio, otevřete **souboru** nabídce vyberte možnost **nový**a pak vyberte **projektu**.
 2. V **nový projekt** dialogového okna, proveďte následující kroky:
 
-    1. Rozbalte **Visual C#**.
+    1. Rozbalte **Visual C#** .
     2. Vyberte **Univerzální aplikace pro Windows**.
-    3. Vyberte **Prázdná aplikace (univerzální pro Windows)**.
+    3. Vyberte **Prázdná aplikace (univerzální pro Windows)** .
     4. Zadejte **název** projektu.
     5. Vyberte **OK**.
 
-        ![Dialogové okno Nový projekt](./media/notification-hubs-windows-store-dotnet-get-started/new-project-dialog.png)
+        ![Dialogové okno nového projektu](./media/notification-hubs-windows-store-dotnet-get-started/new-project-dialog.png)
 3. Potvrďte výchozí hodnoty **cíle**, **minimální** verze platforem a vyberte **OK**.
 4. V Průzkumníku řešení klikněte pravým tlačítkem na projekt aplikace pro Windows Store, vyberte **Store** a pak vyberte **Přidružit aplikaci ve Store**. Zobrazí se průvodce **Přidružením aplikace k Windows Store**.
 5. V průvodci se přihlaste pomocí svého účtu Microsoft.

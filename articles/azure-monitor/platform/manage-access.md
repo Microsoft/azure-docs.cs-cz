@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: magoedte
-ms.openlocfilehash: 27db27d79a05f24461e63242c0395cfd81315432
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 22802950c68dc5a3cf0df8ee26ff38ccb937b551
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60782765"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295505"
 ---
 # <a name="manage-log-data-and-workspaces-in-azure-monitor"></a>Správa dat protokolů a pracovním prostorům ve službě Azure Monitor
 Azure Monitor úložiště vytvářet protokoly dat v pracovním prostoru Log Analytics, která je v podstatě kontejner, který obsahuje data a informace o konfiguraci. Ke správě přístupu k protokolování dat, můžete provádět různé úlohy správy související s pracovními prostory. Vy nebo další členové vaší organizace můžete používat víc pracovních prostorů ke správě různých sad dat, která se shromažďují ze všech částí vaší infrastruktury IT.
@@ -278,7 +278,7 @@ V tématu [definování řízení přístupu na tabulky](#table-level-rbac) ní�
 ## <a name="table-level-rbac"></a>Na úrovni tabulky RBAC
 **Tabulka úroveň RBAC** umožňuje poskytovat podrobnější řízení dat v pracovním prostoru Log Analytics další oprávnění. Tento ovládací prvek můžete zadat konkrétní datové typy, které jsou dostupné jenom pro konkrétní skupinu uživatelů.
 
-Implementujte řízení přístupu na tabulku pomocí [vlastní role Azure](../../role-based-access-control/custom-roles.md) udělit nebo odepřít přístup na konkrétní [tabulky](../log-query/log-query-overview.md#how-azure-monitor-log-data-is-organized) v pracovním prostoru. Tyto role se použijí u pracovních prostorů s zaměřené na pracovní prostor nebo zaměřené na prostředek [přístup k řízení režimy](#access-control-mode) bez ohledu na uživatele [režim přístupu](#access-modes).
+Implementujte řízení přístupu na tabulku pomocí [vlastní role Azure](../../role-based-access-control/custom-roles.md) udělit nebo odepřít přístup na konkrétní [tabulky](../log-query/logs-structure.md) v pracovním prostoru. Tyto role se použijí u pracovních prostorů s zaměřené na pracovní prostor nebo zaměřené na prostředek [přístup k řízení režimy](#access-control-mode) bez ohledu na uživatele [režim přístupu](#access-modes).
 
 Vytvoření [vlastní roli](../../role-based-access-control/custom-roles.md) s definují přístup k řízení přístupu k tabulce následujících akcí.
 

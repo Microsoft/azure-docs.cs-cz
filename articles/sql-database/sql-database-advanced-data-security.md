@@ -12,10 +12,10 @@ ms.reviewer: vanto
 manager: craigg
 ms.date: 03/31/2019
 ms.openlocfilehash: a078ac38cef5b395a19481188c474c7f908160d5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61419472"
 ---
 # <a name="advanced-data-security-for-azure-sql-database"></a>Pokročilé data zabezpečení pro službu Azure SQL Database
@@ -58,7 +58,7 @@ Klikněte na tlačítko **zjišťování a klasifikace dat** karty zobrazíte do
 
 Pokud chcete zobrazit a spravovat nastavení služby Active Directory, přejděte na **rozšířené zabezpečení dat** pod **zabezpečení** záhlaví pro váš server SQL Database nebo spravované instance. Na této stránce můžete povolit nebo zakázat reklamy a upravovat ohrožení zabezpečení posouzení a nastavení rozšířené ochrany před internetovými útoky pro celý server SQL Database nebo spravované instance.
 
-![Nastavení serveru](./media/sql-advanced-protection/server_settings.png) 
+![nastavení serveru](./media/sql-advanced-protection/server_settings.png) 
 
 ## <a name="4-manage-ads-settings-for-a-sql-database"></a>4. Správa nastavení služby Active Directory pro SQL database
 

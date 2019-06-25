@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: spelluru
 ms.openlocfilehash: fdd18b833794c25cb90188ba8bc418d4785492ba
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60824094"
 ---
 # <a name="monitor-event-grid-message-delivery"></a>Monitorování doručování zpráv služby Event Grid 
@@ -35,8 +35,8 @@ Metriky pro témata, jsou:
 
 Pro předplatná jsou metriky:
 
-* **Doručení bylo úspěšné.**: Událost úspěšně doručit do koncového bodu předplatného a 2xx odpověď.
-* **Doručení nebylo úspěšné.**: Události odeslané do koncového bodu předplatného, ale odpověď 4xx a 5xx.
+* **Doručení bylo úspěšné.** : Událost úspěšně doručit do koncového bodu předplatného a 2xx odpověď.
+* **Doručení nebylo úspěšné.** : Události odeslané do koncového bodu předplatného, ale odpověď 4xx a 5xx.
 * **Vypršela platnost události**: Nebylo doručeno události a všechny opakované pokusy byly odeslány. Událost byla zrušena.
 * **Odpovídající události**: Odběr události se odpovídající událost v tomto tématu.
 

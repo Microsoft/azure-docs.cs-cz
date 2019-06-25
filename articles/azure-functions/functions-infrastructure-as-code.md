@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: glenga
-ms.openlocfilehash: 5d028768c062ef7df74d48f83ccc4e27a506f1ac
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 283487eeb0f1f85940da4db8c932602e1b45efd3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60737053"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64695807"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Automatizace nasazování prostředků pro vaši aplikaci funkcí ve službě Azure Functions
 
@@ -37,7 +37,7 @@ Ukázkové šablony najdete tady:
 
 Nasazení služby Azure Functions se obvykle skládá z těchto zdrojů:
 
-| Prostředek                                                                           | Požadavek | Informace o syntaxi a vlastnosti                                                         |   |
+| Resource                                                                           | Požadavek | Informace o syntaxi a vlastnosti                                                         |   |
 |------------------------------------------------------------------------------------|-------------|-----------------------------------------------------------------------------------------|---|
 | Aplikace function app                                                                     | Požaduje se    | [Microsoft.Web/sites](/azure/templates/microsoft.web/sites)                             |   |
 | [Služby Azure Storage](../storage/index.yml) účtu                                   | Požaduje se    | [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |   |
@@ -663,6 +663,27 @@ Tady je příklad, který využívá HTML:
 ```html
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/<url-encoded-path-to-azuredeploy-json>" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"></a>
 ```
+
+### <a name="deploy-using-powershell"></a>Nasazení pomocí Powershellu
+
+Následující příkazy Powershellu vytvořte skupinu prostředků a nasazovat šablony, vytvoříte aplikaci function app se požadované prostředky. Chcete-li spustit místně, musíte mít [prostředí Azure PowerShell](/powershell/azure/install-az-ps) nainstalované. Spustit [ `Connect-AzAccount` ](/powershell/module/az.accounts/connect-azaccount) k přihlášení.
+
+```powershell
+# Register Resource Providers if they're not already registered
+Register-AzResourceProvider -ProviderNamespace "microsoft.web"
+Register-AzResourceProvider -ProviderNamespace "microsoft.storage"
+
+# Create a resource group for the function app
+New-AzResourceGroup -Name "MyResourceGroup" -Location 'West Europe'
+
+# Create the parameters for the file, which for this template is the function app name.
+$TemplateParams = @{"appName" = "<function-app-name>"}
+
+# Deploy the template
+New-AzResourceGroupDeployment -ResourceGroupName "MyResourceGroup" -TemplateFile template.json -TemplateParameterObject $TemplateParams -Verbose
+```
+
+K otestování tohoto nasazení, můžete použít [šablony, jako je ten](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-function-app-create-dynamic/azuredeploy.json) , který vytvoří aplikaci funkcí ve Windows v plánu Consumption. Nahraďte `<function-app-name>` jedinečný název pro vaši aplikaci function app.
 
 ## <a name="next-steps"></a>Další postup
 

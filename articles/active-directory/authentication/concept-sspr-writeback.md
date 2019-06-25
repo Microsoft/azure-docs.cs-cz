@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 749216d3fe9164857bd4abce7ba7c766e466e7d3
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 2dbf27301e738978e7f03d2423a4d23fd63c97b5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65823301"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67113501"
 ---
 # <a name="what-is-password-writeback"></a>Co je zpětný zápis hesla?
 
@@ -152,7 +152,6 @@ Hesel, zapíšou se zpět v následujících situacích:
    * Jakékoli správce samoobslužné platnost změnit heslo operace, třeba vypršení platnosti hesla
    * Jakékoli správce samoobslužného resetování hesla, které mohou být [portál pro resetování hesel](https://passwordreset.microsoftonline.com)
    * Jakékoli s koncovým uživatelem iniciované správcem heslo resetovat z [webu Azure portal](https://portal.azure.com)
-   * Jakékoli s koncovým uživatelem iniciované správcem heslo resetovat z [centra pro správu služeb Microsoft 365](https://admin.microsoft.com)
 
 ## <a name="unsupported-writeback-operations"></a>Operace zpětného zápisu nepodporované
 
@@ -162,6 +161,7 @@ Hesla jsou *není* zpětný zápis v některém z následujících situací:
    * Všichni koncoví uživatelé resetovat vlastní hesla s použitím prostředí PowerShell verze 1, verze 2 nebo Azure AD Graph API
 * **Nepodporovaný správce operací**
    * Jakékoli s koncovým uživatelem iniciované správcem heslo resetovat z prostředí PowerShell verze 1, verze 2 nebo Azure AD Graph API
+   * Jakékoli s koncovým uživatelem iniciované správcem heslo resetovat z [centra pro správu služeb Microsoft 365](https://admin.microsoft.com)
 
 > [!WARNING]
 > Použití zaškrtávacího políčka "uživatel musí změnit heslo při příštím přihlášení" nástroje pro správu služby Active Directory on-premises jako jsou uživatelé služby Active Directory a počítače nebo Centrum správy služby Active Directory není podporováno. Při změně hesla místních nekontrolují tuto možnost.

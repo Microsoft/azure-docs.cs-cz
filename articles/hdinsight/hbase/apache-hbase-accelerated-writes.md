@@ -8,10 +8,10 @@ ms.author: hrasheed
 ms.topic: conceptual
 ms.date: 4/29/2019
 ms.openlocfilehash: 219899c2e336f544ff6572589cc79f84f555490d
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65233838"
 ---
 # <a name="azure-hdinsight-accelerated-writes-for-apache-hbase"></a>Azure HDInsight Accelerated zápisy pro Apache HBase
@@ -26,9 +26,9 @@ V HBase **řádek** obsahuje jeden nebo více **sloupce** a je identifikován **
 
 ## <a name="write-ahead-log-for-apache-hbase"></a>Zápis dopředné protokolování pro Apache HBase
 
-HBase nejprve zapíše aktualizací dat na typ protokol transakcí volat napsat dopředu protokolu (WAL). Po aktualizaci je uložen v WAL, jsou zapsána do v paměťově **paměťového úložiště**. Když data v paměti dosáhne své maximální kapacity, se zapíšou na disk jako **hfile –**.
+HBase nejprve zapíše aktualizací dat na typ protokol transakcí volat napsat dopředu protokolu (WAL). Po aktualizaci je uložen v WAL, jsou zapsána do v paměťově **paměťového úložiště**. Když data v paměti dosáhne své maximální kapacity, se zapíšou na disk jako **hfile –** .
 
-Pokud **RegionServer** selže nebo přestane být k dispozici před vyprázdní metody zapsat dopředu protokolu je možné přehrát aktualizace. Bez WAL Pokud **RegionServer** dojde k chybě před vyprazdňování aktualizace **hfile –**, všechny tyto aktualizace se ztratí.
+Pokud **RegionServer** selže nebo přestane být k dispozici před vyprázdní metody zapsat dopředu protokolu je možné přehrát aktualizace. Bez WAL Pokud **RegionServer** dojde k chybě před vyprazdňování aktualizace **hfile –** , všechny tyto aktualizace se ztratí.
 
 ## <a name="accelerated-writes-feature-in-azure-hdinsight-for-apache-hbase"></a>Zrychlené zápisy funkce v Azure HDInsight pro Apache HBase
 
@@ -36,7 +36,7 @@ Funkce Accelerated zapíše řeší problém vyšší latence zápisu, způsobil
 
 ## <a name="how-to-enable-accelerated-writes-for-hbase-in-hdinsight"></a>Jak povolit akcelerované zapíše pro HBase v HDInsight
 
-K vytvoření nového clusteru HBase pomocí funkce Accelerated zapisuje, postupujte podle kroků v [nastavení clusterů v HDInsight](../hdinsight-hadoop-provision-linux-clusters.md) dokud nedosáhnete **kroku 3, úložiště**. V části **nastavení Metastoru**, klikněte na zaškrtávací políčko vedle položky **povolit akcelerované zapíše (preview)**. Pokračujte ve zbývajících krocích pro vytváření clusteru.
+K vytvoření nového clusteru HBase pomocí funkce Accelerated zapisuje, postupujte podle kroků v [nastavení clusterů v HDInsight](../hdinsight-hadoop-provision-linux-clusters.md) dokud nedosáhnete **kroku 3, úložiště**. V části **nastavení Metastoru**, klikněte na zaškrtávací políčko vedle položky **povolit akcelerované zapíše (preview)** . Pokračujte ve zbývajících krocích pro vytváření clusteru.
 
 ![Zrychlené zápisy volbu Povolit pro HDInsight Apache HBase](./media/apache-hbase-accelerated-writes/accelerated-writes-cluster-creation.png)
 

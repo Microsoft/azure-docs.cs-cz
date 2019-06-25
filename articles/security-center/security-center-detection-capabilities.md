@@ -15,16 +15,16 @@ ms.workload: na
 ms.date: 12/2/2018
 ms.author: rkarlin
 ms.openlocfilehash: 8cd76909c9ce15a97de4ea5af3b21ac120058dd3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60705879"
 ---
 # <a name="azure-security-center-detection-capabilities"></a>Funkce detekce ve službě Azure Security Center
 Tento dokument popisuje možnosti pokročilé detekce Azure Security Center, která pomáhá identifikovat aktivní hrozby pro vaše prostředky Microsoft Azure – Windows i Linuxem – a poskytne vám informace potřebné pro rychlou reakci na.
 
-Rozšířená detekce je k dispozici v úrovni Standard služby Azure Security Center. Bezplatná zkušební verze je k dispozici. Upgrade můžete provést z nabídky cenových úrovní v [Zásadách zabezpečení](tutorial-security-policy.md). Další informace o cenách naleznete na stránce [služby Security Center](https://azure.microsoft.com/pricing/details/security-center/).
+Rozšířená detekce je k dispozici v úrovni Standard služby Azure Security Center. K dispozici je bezplatná zkušební verze. Upgrade můžete provést z nabídky cenových úrovní v [Zásadách zabezpečení](tutorial-security-policy.md). Další informace o cenách naleznete na stránce [služby Security Center](https://azure.microsoft.com/pricing/details/security-center/).
 
 
 ## <a name="responding-to-todays-threats"></a>Reakce na současné hrozby
@@ -64,7 +64,7 @@ Kromě toho se pomocí vzájemné souvislosti s dalšími signály hledají podp
 * **Odchozí útoky**: Útočníci často cílí na cloudové prostředky s cílem využít je k dalším útokům. Napadené virtuální počítače je například možné použít pro spouštění útoků hrubou silou proti jiným virtuálním počítačům, odesílání nevyžádané pošty nebo skenování otevřených portů a dalších zařízení na internetu. Služba Security Center pomocí strojového učení, které uplatňuje na síťový provoz, dokáže detekovat odchozí síťovou komunikaci vybočující z normy. V případě nevyžádané pošty služba Security Center také koreluje neobvyklý e-mailový provoz pomocí informací ze služby Office 365 a snaží se zjistit, jestli pošta neslouží pro nekalé účely nebo jestli je výsledkem legitimní e-mailové kampaně.  
 
 ### <a name="anomaly-detection"></a>Detekce anomálií
-Služba Azure Security Center také identifikuje hrozby pomocí detekce anomálií. Oproti behaviorální analýze (která závisí na známých schématech odvozovaných z velkých datových sad), je detekce anomálií více „personalizovaná“ a zaměřuje se na standardní hodnoty specifické pro vaše nasazení. Pomocí strojového učení se určí běžné úrovně aktivity pro vaše nasazení a poté se vygenerují pravidla definující neobvyklé hodnoty, které by mohly představovat událost zabezpečení. Zde naleznete příklad:
+Služba Azure Security Center také identifikuje hrozby pomocí detekce anomálií. Oproti behaviorální analýze (která závisí na známých schématech odvozovaných z velkých datových sad), je detekce anomálií více „personalizovaná“ a zaměřuje se na standardní hodnoty specifické pro vaše nasazení. Pomocí strojového učení se určí běžné úrovně aktivity pro vaše nasazení a poté se vygenerují pravidla definující neobvyklé hodnoty, které by mohly představovat událost zabezpečení. Tady je příklad:
 
 * **Příchozí útoky hrubou silou RDP/SSH**: Vaše nasazení mohou obsahovat vytížené virtuální počítače s velkým množstvím přihlášení každý den a další virtuální počítače, které mají velmi málo nebo žádná přihlášení. Azure Security Center dokáže určit standardní hodnoty pro přihlašovací aktivitu pro tyto virtuální počítače a pomocí strojového učení definovat, co je mimo rámec běžné přihlašovací aktivity. Pokud se počet přihlášení, čas přihlášení nebo místo, ze kterého žádost o přihlášení pochází, případně další charakteristiky související s přihlášením výrazně liší od standardních hodnot, vygeneruje se výstraha. A strojové učení tu zase určuje, co je významné.
 

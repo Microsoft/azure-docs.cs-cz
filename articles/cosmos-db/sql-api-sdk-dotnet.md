@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/09/2018
 ms.author: sngun
-ms.openlocfilehash: 3c420882b734883039ec95d609c155617359fa25
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 865fb2ebf0d02c40a8f7c9e9c818e26432e5734a
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510722"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67272365"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK pro rozhraní SQL API: Stáhněte si a poznámky k verzi
 > [!div class="op_single_selector"]
@@ -39,7 +39,7 @@ ms.locfileid: "65510722"
 |**Kurz vývoje webové aplikace**|[Vývoj webových aplikací pomocí služby Azure Cosmos DB](sql-api-dotnet-application.md)|
 |**Aktuální podporované architektury**|[Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)|
 
-## <a name="release-notes"></a>Poznámky k verzi
+## <a name="release-notes"></a>Poznámky k verzi
 
 ### <a name="a-name3001-preview3001-preview"></a><a name="3.0.0.1-preview"/>3.0.0.1-Preview
 * Ve verzi Preview 1 [verze 3.0.0](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) sady .NET SDK pro verzi public preview.
@@ -47,6 +47,12 @@ ms.locfileid: "65510722"
 * Nový model objektu, pomocí metod a nejvyšší úrovně CosmosClient rozdělit mezi relevantní CosmosDatabases, CosmosContainers a CosmosItems třídy. 
 * Podpora pro datové proudy. 
 * Aktualizované CosmosResponseMessage ze serveru vrátit stavový kód a pouze vyvolat výjimku, pokud není vrácena žádná odpověď. 
+
+### <a name="a-name250250"></a><a name="2.5.0"/>2.5.0
+
+* Povolit požadavky na zápis pro použití náhradní lokality do jiné oblasti, pokud původní jeden server selže
+* Přidání relace zásady opakování pro žádost o zápis
+* Opravy trasování časování pro dotazy, které způsobily prázdné stránky
 
 ### <a name="a-name240240"></a><a name="2.4.0"/>2.4.0
 
@@ -212,7 +218,7 @@ ms.locfileid: "65510722"
 * Opravy, aby sada SDK odolnější automatické převzetí služeb při selhání za určitých podmínek.
 
 ### <a name="a-name11221122"></a><a name="1.12.2"/>1.12.2
-* Oprava problému, který občas způsobí, že o výjimku WebException: Vzdálený název se nedá rozpoznat.
+* Oprava problému, který občas způsobí, že o výjimku WebException: Vzdálený název nelze rozpoznat.
 * Přidání podpory pro přímo tak, že přidáte nová přetížení ReadDocumentAsync rozhraní API pro čtení typu dokumentu.
 
 ### <a name="a-name11211121"></a><a name="1.12.1"/>1.12.1
@@ -375,6 +381,7 @@ Služba odmítne všechny žádosti do služby Azure Cosmos DB pomocí vyřazeno
 
 | Version | Datum vydání | Datum vyřazení z provozu |
 | --- | --- | --- |
+| [2.5.0](#2.5.0) |18. června 2019 |--- |
 | [2.4.0](#2.4.0) |05. května 2019 |--- |
 | [2.3.0](#2.3.0) |04. dubna 2019 |--- |
 | [2.2.3](#2.2.3) |11. února 2019 |--- |

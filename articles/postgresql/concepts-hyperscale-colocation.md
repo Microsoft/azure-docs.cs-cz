@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.openlocfilehash: d03cfd49887adf1f6a4650e374d3e13eeca735a4
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65077467"
 ---
 # <a name="table-colocation-in-azure-database-for-postgresql--hyperscale-citus-preview"></a>Společné umístění tabulky ve službě Azure Database for PostgreSQL – velkokapacitní (Citus) (preview)
@@ -102,7 +102,7 @@ V tomto případě distribuci dat vytvoří podstatné nevýhody:
 
 -   Režie z dotazování každý horizontální oddíl, spouštění více dotazů
 -   Režie Q1 vrácením klientovi mnoho řádků
--   2. čtvrtletí stát velké
+-   2\. čtvrtletí stát velké
 -   Nemusíte psát dotazy v několika krocích vyžaduje změny v aplikaci
 
 Protože data rozptýlena, může být paralelizována dotazy. Je však pouze výhodné Pokud množství práce, která provádí dotaz je podstatně větší nároky na dotazování více horizontálních oddílů.

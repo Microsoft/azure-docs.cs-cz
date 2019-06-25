@@ -5,14 +5,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 06/18/2019
 ms.author: sutalasi
-ms.openlocfilehash: 5fbe4fd5f85026cd62f1bd10e36561b312464054
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: bc1d52a1062d1848daaaeef7977f96cd270567c8
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64690575"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203474"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>Nastavení zotavení po havárii do Azure pro virtuální počítače Hyper-V pomocí Powershellu a Azure Resource Manageru
 
@@ -113,6 +113,15 @@ Nastavte kontext trezoru následujícím způsobem:
 5. Ověřte, že je hostitel Hyper-V zaregistrovaný k lokalitě:
 
         $server =  Get-AsrFabric -Name $siteName | Get-AsrServicesProvider -FriendlyName $server-friendlyname
+
+Pokud používáte Hyper-V server core, stáhněte si instalační soubor a postupujte podle těchto kroků:
+1. Extrahujte soubory z AzureSiteRecoveryProvider.exe do místního adresáře spuštěním tohoto příkazu: ```AzureSiteRecoveryProvider.exe /x:. /q```
+2. Spustit ```.\setupdr.exe /i``` výsledky se protokolují do % Programdata%\ASRLogs\DRASetupWizard.log.
+
+3. Registrace serveru spuštěním následujícího příkazu:
+
+    ```cd  C:\Program Files\Microsoft Azure Site Recovery Provider\DRConfigurator.exe" /r /Friendlyname "FriendlyName of the Server" /Credentials "path to where the credential file is saved"```
+
 
 ## <a name="step-6-create-a-replication-policy"></a>Krok 6: Vytvoření zásady replikace
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
 ms.openlocfilehash: d0ef9f34d6b657a063e50b0f144197c41905e809
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60949133"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>Úvod do monitorování stavu Service Fabric
@@ -196,7 +196,7 @@ K odesílání dat o stavu k úložišti stavů, reportérka musí identifikovat
 * **SourceId**. Řetězec, který jednoznačně identifikuje reportérka událost stavu.
 * **Identifikátor entity**. Identifikují entitu, ve kterém se použije sestavy. Se liší v závislosti [typ entity](service-fabric-health-introduction.md#health-entities-and-hierarchy):
   
-  * Cluster. Žádné.
+  * Cluster. Žádné
   * Uzel. Název uzlu (řetězec).
   * aplikace. Název aplikace (URI). Představuje název instance aplikace nasazené v clusteru.
   * Služba. Název služby (URI). Představuje název instance služby nasazené v clusteru.
@@ -211,7 +211,7 @@ K odesílání dat o stavu k úložišti stavů, reportérka musí identifikovat
 * **RemoveWhenExpired**. Logická hodnota. Pokud je nastavený na hodnotu true, sestav stavu s ukončenou platností se automaticky odebere z health store a sestavy nebude mít vliv vyhodnocování stavu entity. Používá, když se sestava je platný pro určité zadané době pouze a není nutné explicitně smažte osoby podávající hlášení. Slouží také k odstranění z health store sestav (například sledovacího zařízení se změní a zastaví odesílání sestav s předchozí zdroj a vlastnost). Může odeslat sestavy s krátkou TimeToLive spolu s RemoveWhenExpired vymazat všechny předchozí stav z health store. Pokud je hodnota nastavena na hodnotu false, je považován za chybu při hodnocení stavu vypršela platnost sestavy. Hodnota false signály, které mají stav úložiště, které pravidelně hlásit zdroj pro tuto vlastnost. Pokud ne, pak musí existovat něco špatného sledovacího zařízení. Stav od sledovacího zařízení je zachycen zvážení události za chybu.
 * **SequenceNumber**. Kladné celé číslo, které musí být stále se zvětšujícím, představuje pořadí zpráv. Používá se v úložišti stavů k zjišťování zastaralých sestavy, které byly přijaty opožděně kvůli zpoždění v síti nebo jiných problémů. Sestavy byl odmítnut, pokud pořadové číslo je že menší nebo rovna maximální číslo pro stejnou entitu, zdroj a vlastnost nedávno zavedlo. Pokud se nezadá, číslo sekvence se vygeneruje automaticky. Je nutné umístit do pořadovým číslem pouze v případě, že vytváření sestav o přechodů mezi stavy. V takovém případě zdroj musí pamatovat které sestavy je odeslat a uchovávat informace pro obnovení na převzetí služeb při selhání.
 
-Tyto čtyři úryvky informací – ID zdroje, identifikátor entity, vlastnosti a elementu HealthState – jsou požadovány pro každé sestavě o stavu. ID zdroje řetězce nesmí začínat předponou "**systému.**", který je vyhrazený pro sestavy systému. Pro stejnou entitu je pouze jednu sestavu pro stejný zdroj a vlastnost. Více sestav pro stejný zdroj a vlastnosti navzájem přepisují, stavu na straně klienta (pokud jsou dávkové,) nebo na stav uložení na straně. Nahrazení je založen na sekvenci čísel. novější sestavy (přičemž vyšší čísla pořadí) nahraďte starších sestav.
+Tyto čtyři úryvky informací – ID zdroje, identifikátor entity, vlastnosti a elementu HealthState – jsou požadovány pro každé sestavě o stavu. ID zdroje řetězce nesmí začínat předponou "**systému.** ", který je vyhrazený pro sestavy systému. Pro stejnou entitu je pouze jednu sestavu pro stejný zdroj a vlastnost. Více sestav pro stejný zdroj a vlastnosti navzájem přepisují, stavu na straně klienta (pokud jsou dávkové,) nebo na stav uložení na straně. Nahrazení je založen na sekvenci čísel. novější sestavy (přičemž vyšší čísla pořadí) nahraďte starších sestav.
 
 ### <a name="health-events"></a>Události stavu
 Interně, health store udržuje [události týkající se stavu](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthevent), které obsahují všechny informace ze sestav a další metadata. Metadata obsahují čas, kdy byl zadán sestavy stavu klienta a čas, kdy se změnil na straně serveru. Události stavu jsou vráceny pomocí [dotazů na stav](service-fabric-view-entities-aggregated-health.md#health-queries).

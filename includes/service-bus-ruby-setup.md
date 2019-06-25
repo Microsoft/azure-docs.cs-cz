@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: spelluru
 ms.openlocfilehash: 16ce537a54fc77fc0f72b859d6d193501d86c1fc
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66111220"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67175240"
 ---
 ## <a name="create-a-ruby-application"></a>Vytvoření aplikace v Ruby
 Pokyny najdete v tématu [vytvoření aplikace Ruby v Azure](../articles/virtual-machines/linux/classic/ruby-rails-web-app.md).
@@ -41,4 +41,4 @@ signer = Azure::ServiceBus::Auth::SharedAccessSigner.new
 sb_host = "https://#{Azure.sb_namespace}.servicebus.windows.net"
 ```
 
-Nastavte hodnotu oboru názvů na hodnotu, kterou jste vytvořili místo celou adresu URL. Například použít **"yourexamplenamespace"**, ne "yourexamplenamespace.servicebus.windows.net".
+Nastavte hodnotu oboru názvů na hodnotu, kterou jste vytvořili místo celou adresu URL. Například použít **"yourexamplenamespace"** , ne "yourexamplenamespace.servicebus.windows.net".

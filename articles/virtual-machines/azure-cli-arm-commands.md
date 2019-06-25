@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: danlep
-ms.openlocfilehash: 8b76e1a168d39d2f39098754f43bae73c21c2049
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: ac1a6136eae79700c427b27c8869bc9241c62abc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60799817"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64717786"
 ---
 # <a name="azure-cli-commands-in-resource-manager-mode"></a>Příkazy Azure CLI v režimu Resource Manageru
 Tento článek obsahuje syntaxi a možnosti pro příkazy rozhraní příkazového řádku Azure (CLI), které by se běžně používají k vytváření a správě prostředků Azure v modelu nasazení Azure Resource Manageru. Tyto příkazy přistupujete pomocí rozhraní příkazového řádku v režimu Resource Manageru (arm). Nejedná se o úplný odkaz a verzi CLI může zobrazit mírně odlišné příkazy nebo parametry. Obecný přehled prostředků a skupin prostředků Azure, najdete v části [přehled Azure Resource Manageru](../azure-resource-manager/resource-group-overview.md).  
@@ -969,7 +969,8 @@ Parametr možnosti:
      -s, --subscription <subscription>      the subscription identifier
 
 <BR>
-    Network lb-fondu adres odstranit [parametry] < resource-group >< lb-name > <name>
+
+    network lb address-pool delete [options] <resource-group> <lb-name> <name>
 
 Odstraní prostředky rozsah fondu back-end IP z nástroje pro vyrovnávání zatížení.
 
@@ -1333,7 +1334,9 @@ Parametr možnosti:
     -s, --subscription <subscription>            the subscription identifier
 
 <br>
-    Network public-ip list [parametry] < resource-group > Vypíše seznam všechny prostředky veřejné IP adresy v rámci skupiny prostředků.
+
+    network public-ip list [options] <resource-group>
+Uvádí všechny prostředky veřejné IP adresy v rámci skupiny prostředků.
 
     azure network public-ip list -g myresourcegroup
 
@@ -1353,8 +1356,10 @@ Parametr možnosti:
     --json                                 use json output
     -g, --resource-group <resource-group>  the name of the resource group
     -s, --subscription <subscription>      the subscription identifier
+
 <BR>
-    Network public-ip show [parametry] < resource-group > <name>
+
+    network public-ip show [options] <resource-group> <name>
 
 Zobrazí vlastnosti veřejné IP adresy pro prostředek veřejné IP adresy v rámci skupiny prostředků.
 

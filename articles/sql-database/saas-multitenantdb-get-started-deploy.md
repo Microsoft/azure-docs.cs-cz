@@ -13,10 +13,10 @@ ms.reviewer: billgib, stein
 manager: craigg
 ms.date: 10/16/2018
 ms.openlocfilehash: 350e67f5a1e7e1eab7abe27a6ca851ed2420af84
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65978532"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>Nasazení a zkoumání horizontálně dělené aplikace s více tenanty
@@ -58,7 +58,7 @@ Předpokladem dokončení tohoto kurzu je splnění následujících požadavků
 ### <a name="plan-the-names"></a>Plánování názvy
 
 V krocích v této části zadáte *uživatele* hodnotu, která se používá k zajištění jsou globálně jedinečné názvy prostředků a název *skupiny prostředků* obsahující všechny prostředky vytvořené v rámci nasazení aplikace. Pro osoby s názvem *Ann Finley*, doporučujeme:
-- *Uživatel:* **af1***(iniciálami a číslice.   Použít jinou hodnotu (například af2) Pokud nasadíte aplikaci podruhé.)*
+- *Uživatel:* **af1** *(iniciálami a číslice. Použít jinou hodnotu (například af2) Pokud nasadíte aplikaci podruhé.)*
 - *Skupina prostředků:* **wingtip-mt – af1** *(wingtip-mt označuje to horizontálně dělené aplikace s více tenanty. Přidávání af1 uživatelské jméno koreluje název skupiny prostředků s názvy prostředků, které obsahuje.)*
 
 Teď zvolte názvy a zapište si. 
@@ -125,19 +125,19 @@ Každé místo dostane vlastní webovou aplikaci pro výpis svých akcí a prode
 Centrální **Centrum akcí** webová stránka obsahuje seznam odkazů na klienty v určité nasazení. Pomocí následujícího postupu práce **Centrum akcí** webové stránky a jednotlivé webové aplikace:
 
 1. Otevřít **Centrum akcí** ve webovém prohlížeči:
-   - http://events.wingtip-mt.&lt; Uživatel&gt;. trafficmanager.net &nbsp; *(nahradit &lt;uživatele&gt; s hodnotou uživatele vašeho nasazení.)*
+   - http://events.wingtip-mt.&lt ; Uživatel&gt;. trafficmanager.net &nbsp; *(nahradit &lt; uživatele&gt; s hodnotou uživatele vašeho nasazení.)*
 
      ![centrum akcí](media/saas-multitenantdb-get-started-deploy/events-hub.png)
 
 2. V **Centru akcí** klikněte na **Fabrikam Jazz Club**.
 
-   ![Události](./media/saas-multitenantdb-get-started-deploy/fabrikam.png)
+   ![Duration](./media/saas-multitenantdb-get-started-deploy/fabrikam.png)
 
 ### <a name="azure-traffic-manager"></a>Azure Traffic Manager
 
 K řízení distribuce příchozích požadavků, aplikace Wingtip používá [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md). Stránka události pro každého klienta obsahuje název tenanta v adrese URL. Každá adresa URL obsahuje také vaše konkrétní hodnotu uživatele. Každá adresa URL dodržuje zobrazených formátu pomocí následujících kroků:
 
-- http://events.wingtip-mt.&lt;user&gt;.trafficmanager.net/*fabrikamjazzclub*
+- http://events.wingtip-mt.&lt ;user&gt;.trafficmanager.net/*fabrikamjazzclub*
 
 1. Aplikace akcí analyzuje název tenanta z adresy URL. Je název tenanta *fabrikamjazzclub* v předchozí příklad adresy URL.
 2. Aplikace pak hash názvu tenanta k vytvoření klíče pro přístup ke katalogu pomocí [správy mapování horizontálních oddílů](sql-database-elastic-scale-shard-map-management.md).
@@ -210,7 +210,7 @@ Teď můžeme podívat na některé z nasazených prostředků:
 
 1. V [webu Azure portal](https://portal.azure.com), přejděte na seznam skupin prostředků. Otevřete skupinu prostředků, kterou jste vytvořili při nasazení aplikace.
 
-   ![skupiny prostředků](./media/saas-multitenantdb-get-started-deploy/resource-group.png)
+   ![skupina prostředků](./media/saas-multitenantdb-get-started-deploy/resource-group.png)
 
 2. Klikněte na tlačítko **katalogu mt&lt;uživatele&gt;**  serveru. Server katalogu obsahuje dvě databáze s názvem *tenantcatalog* a *basetenantdb*. *Basetenantdb* databáze je databáze prázdnou šablonu. Chcete-li vytvořit novou databázi tenantů, je zkopírován, jestli se použije pro více tenantů nebo jen jednoho tenanta.
 

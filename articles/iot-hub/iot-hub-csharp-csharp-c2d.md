@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: robinsh
 ms.openlocfilehash: 0d83bdc3fd3f644013a2d2b80128839658524db9
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65864447"
 ---
 # <a name="send-messages-from-the-cloud-to-your-device-with-iot-hub-net"></a>Odesílání zpráv z cloudu do zařízení pomocí IoT Hub (.NET)
@@ -113,7 +113,7 @@ Nejdřív načtěte připojovací řetězec služby IoT Hub z portálu.
 
 Teď můžete napsat konzolovou aplikaci .NET, která odesílá zprávy typu cloud zařízení do aplikace pro zařízení.
 
-1. V aktuálním řešení sady Visual Studio klikněte pravým tlačítkem na řešení a vyberte Přidat > Nový projekt. Vyberte **Windows Desktop** a potom **aplikace konzoly (.NET Framework)**. Pojmenujte projekt **SendCloudToDevice** a vyberte nejnovější verzi rozhraní .NET Framework a pak vyberte **OK** pro vytvoření projektu.
+1. V aktuálním řešení sady Visual Studio klikněte pravým tlačítkem na řešení a vyberte Přidat > Nový projekt. Vyberte **Windows Desktop** a potom **aplikace konzoly (.NET Framework)** . Pojmenujte projekt **SendCloudToDevice** a vyberte nejnovější verzi rozhraní .NET Framework a pak vyberte **OK** pro vytvoření projektu.
 
    ![Nový projekt v sadě Visual Studio](./media/iot-hub-csharp-csharp-c2d/create-identity-csharp1.png)
 

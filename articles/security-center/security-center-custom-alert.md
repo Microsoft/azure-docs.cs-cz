@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/29/2018
 ms.author: rkarlin
 ms.openlocfilehash: a5deee4209001d8c2212033c2d547d7c4199bd25
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65192629"
 ---
 # <a name="custom-alert-rules-in-azure-security-center-preview"></a>Vlastní pravidla výstrah v Azure Security Center (Preview)
@@ -58,7 +58,7 @@ Vlastní pravidla výstrah ve službě Security Center umožňují definovat nov
 
 Otevřete řídicí panel **Security Center** a podle těchto kroků vytvořte vlastní pravidlo výstrah:
 
-1.  V levém podokně v části **Detekce** klikněte na **Vlastní pravidla výstrah (Preview)**.
+1.  V levém podokně v části **Detekce** klikněte na **Vlastní pravidla výstrah (Preview)** .
 2.  Na stránce **Security Center – Vlastní pravidla výstrah (Preview)** klikněte na **Nové vlastní pravidlo výstrah**.
 
     ![Vlastní výstraha](./media/security-center-custom-alert/security-center-custom-alert-fig1.png)

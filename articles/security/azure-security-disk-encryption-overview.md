@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9b00a5262b1e144aa47cd7fd640906225ff4fecd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 58c5c8321e505fe2c1c7d19c58fe0d031b75b3e4
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67068792"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67294865"
 ---
 # <a name="azure-disk-encryption-overview"></a>Přehled služby Azure Disk Encryption
 
@@ -45,7 +45,7 @@ Azure Disk Encryption podporuje následující scénáře zákazníka:
 Také podporuje následující scénáře pro virtuální počítače při jsou povolena ve službě Microsoft Azure:
 
 * Integrace se službou Azure Key Vault.
-* [Virtuální počítače úrovně standard](https://azure.microsoft.com/pricing/details/virtual-machines/). [Virtuální počítače s Linuxem](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport) v rámci těchto úrovních, musí splňovat minimální požadovaná paměť 7 GB. 
+* [Virtuální počítače úrovně standard](https://azure.microsoft.com/pricing/details/virtual-machines/) , které splňují [minimální požadovaná paměť](azure-security-disk-encryption-prerequisites.md#supported-vm-sizes). 
 * Povolení šifrování na Windows a virtuální počítače s Linuxem, spravovaný disk a škálovací sady virtuálních počítačů podporované Image Galerie Azure.
 * Zakazuje šifrování u operačního systému a datové disky pro virtuální počítače s Windows, škálování virtuální počítače a spravovaných disků virtuálních počítačů.
 * Zakázat šifrování na datových jednotkách pro virtuální počítače s Linuxem, škálování virtuální počítače a spravovaných disků virtuálních počítačů.
@@ -56,7 +56,7 @@ Také podporuje následující scénáře pro virtuální počítače při jsou 
 * Povolení šifrování na operační systém Linux virtuálního počítače a datové disky.
 
    > [!NOTE]
-   > Šifrování jednotky operačního systému u některých Linuxových distribucích se nepodporuje. Další informace najdete v tématu [nejčastější dotazy týkající se Azure Disk Encryption](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport) článku.
+   > Šifrování jednotky operačního systému u některých Linuxových distribucích se nepodporuje. Další informace najdete v tématu [Azure Disk Encryption podporované operační systémy: Linux](azure-security-disk-encryption-prerequisites.md#linux).
    
 * Povolení šifrování na virtuálních počítačích, které mají nakonfigurované prostory úložiště Windows od verze Windows serveru 2016.
 * Zálohování a obnovení šifrovaných virtuálních počítačů pro scénáře bez KEK a šifrovací klíč klíče (KEK).
@@ -93,8 +93,6 @@ Zahrnuje řešení Azure Disk Encryption pro virtuální počítače pro Windows
 * [Rutiny Powershellu disk encryption](/powershell/module/az.compute/set-azvmdiskencryptionextension?view=azps-2.2.0).
 * [Rutiny rozhraní příkazového řádku Azure disk encryption](/cli/azure/vm/encryption?view=azure-cli-latest).
 * [Šablony Azure Resource Manageru disk encryption](azure-security-disk-encryption-appendix.md#resource-manager-templates).
-
-Azure Disk Encryption je podporována na virtuálních počítačích, na kterých běží Windows nebo Linux OS. Další informace o podporovaných operačních systémů najdete v tématu [– nejčastější dotazy](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport).
 
 > [!NOTE]
 > Není k dispozici bez dalších poplatků k šifrování disků virtuálních počítačů pomocí Azure Disk Encryption. Standardní [cenách služby Key Vault](https://azure.microsoft.com/pricing/details/key-vault/) platí pro trezor klíčů, který se používá k ukládání šifrovacích klíčů. 

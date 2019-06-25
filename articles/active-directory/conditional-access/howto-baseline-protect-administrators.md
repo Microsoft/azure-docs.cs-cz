@@ -1,6 +1,6 @@
 ---
 title: Základní zásady vyžadovat vícefaktorové ověřování pro správce – Azure Active Directory
-description: Zásady podmíněného přístupu na vyžadovat vícefaktorové ověřování pro správce
+description: Zásady podmíněného přístupu tak, aby vyžadovala ověření službou Multi-Factor Authentication pro správce
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1ce48126c3e8867ac7f2696d8cf7db992a9a60a
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 9b2ffd2949c2540265539a743cb41d8070d7ba2a
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66003278"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204634"
 ---
 # <a name="baseline-policy-require-mfa-for-admins"></a>Základní zásady: Vyžadování MFA pro správce
 
@@ -72,10 +72,13 @@ Tuto zásadu povolit a chránit vaše správce:
 1. Kliknutím na Přidat všechny uživatele vyloučení **uživatelé** > **vybrat vyloučené uživatele** a výběru uživatelů, které je třeba vyloučit. Klikněte na tlačítko **vyberte** pak **provádí**.
 1. Klikněte na tlačítko **Uložit**.
 
+> [!WARNING]
+> Došlo možnost **povolit zásady automaticky v budoucnu** kdy tato zásada byla ve verzi preview. Odebrali jsme tuto možnost, chcete-li minimalizovat dopad na uživatele i s náhlými. Pokud jste vybrali tuto možnost, že je k dispozici, **nepoužívat zásady** automaticky je teď vybrán. Pokud chce použít tyto zásady na směrný plán, najdete v článku, aby je výše uvedené kroky.
+
 ## <a name="next-steps"></a>Další postup
 
 Další informace naleznete v tématu:
 
-* [Zásady podmíněného přístupu směrný plán ochrany](concept-baseline-protection.md)
+* [Zásady ochrany směrného plánu podmíněného přístupu](concept-baseline-protection.md)
 * [Zabezpečení vaší infrastruktury identit v pěti krocích](../../security/azure-ad-secure-steps.md)
 * [Co je podmíněný přístup v Azure Active Directory?](overview.md)

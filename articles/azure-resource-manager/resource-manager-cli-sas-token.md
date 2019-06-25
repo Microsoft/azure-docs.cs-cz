@@ -1,25 +1,17 @@
 ---
 title: Nasazení šablony Azure s tokenem SAS a rozhraní příkazového řádku Azure | Dokumentace Microsoftu
 description: Pomocí Azure Resource Manageru a Azure CLI k nasazení prostředků do Azure ze šablony, který je chráněný pomocí tokenu SAS.
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
-ms.assetid: ''
 ms.service: azure-resource-manager
-ms.devlang: azurecli
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 05/31/2017
 ms.author: tomfitz
-ms.openlocfilehash: c869b76a0d1ba10bc27aefa60cbe4ed5b8d8201a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a71698831859e92300706ade8c2284cbfc7ee241
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61061352"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205414"
 ---
 # <a name="deploy-private-resource-manager-template-with-sas-token-and-azure-cli"></a>Nasazení privátní šablony Resource Manageru s tokenem SAS a rozhraní příkazového řádku Azure
 

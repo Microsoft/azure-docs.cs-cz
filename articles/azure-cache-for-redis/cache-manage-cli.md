@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: yegu
 ms.openlocfilehash: 1d7a18f3f46cec73d70389b82eed5a85e440d340
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62119074"
 ---
 # <a name="how-to-create-and-manage-azure-cache-for-redis-using-the-azure-classic-cli"></a>Jak vytvořit a spravovat Azure mezipaměti Redis pomocí Azure classic CLI
@@ -46,11 +46,11 @@ Následující vlastnosti se používají při vytváření a aktualizaci mezipa
 
 | Vlastnost | Přepínač | Popis |
 | --- | --- | --- |
-| jméno |-n, --name |Název mezipaměti Azure redis Cache. |
+| name |-n, --name |Název mezipaměti Azure redis Cache. |
 | skupina prostředků |-g, --resource-group |Název skupiny prostředků. |
 | location |-l,--umístění |Umístění pro vytvoření mezipaměti. |
-| velikost |-z, --size |Velikost mezipaměti pro Azure redis Cache. Platné hodnoty: [C0, C1, C2, C3, C4, C5, C6, P1, P2, P3, P4] |
-| SKU |-x, --sku |Redis SKU. By měla být jedna z: [Basic, Standard, Premium] |
+| size |-z, --size |Velikost mezipaměti pro Azure redis Cache. Platné hodnoty: [C0, C1, C2, C3, C4, C5, C6, P1, P2, P3, P4] |
+| Skladová položka |-x, --sku |Redis SKU. By měla být jedna z: [Basic, Standard, Premium] |
 | EnableNonSslPort |-e,--enable bez--port ssl |Vlastnost EnableNonSslPort ukládání do mezipaměti Azure pro Redis. Přidejte tento příznak, pokud chcete povolit Port bez SSL ke svojí mezipaměti |
 | Konfigurace mezipaměti redis |-c, --redis-configuration |Konfigurace mezipaměti redis. Zadejte řetězec ve formátu JSON konfigurace klíčů a hodnot v tomto poli. Formát: "{" ":""," ":" "}" |
 | Konfigurace mezipaměti redis |-f, --redis-configuration-file |Konfigurace mezipaměti redis. Zadejte cestu k souboru, který obsahuje konfigurační klíče a hodnoty tady. Formát pro vstupní soubor: {"": "","": ""} |

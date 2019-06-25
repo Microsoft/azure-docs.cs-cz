@@ -4,16 +4,16 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 1/29/2019
 ms.author: rgarcia
-ms.openlocfilehash: 228f445dda2724985154723a292adb8215a5ad68
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9798e5f76881be38fb27e1f428565caba6e50bf2
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60342334"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "67135092"
 ---
 Otevřít **nastavení sestavení** tak, že vyberete **souboru** > **nastavení sestavení**.
 
-V **platformy** vyberte **Android**. Změnit **sestavovací systém** k **Gradle** a vyberte **Export projektů**.
+V **platformy** vyberte **Android**. Změnit **sestavovací systém** k **Gradle** a zajistit **Export projektů** zaškrtávacího políčka nemá značku zaškrtnutí.
 
 Vyberte **přepínač platformy** platformy s cílem změnit **Android**. Unity může výzvu k instalaci součásti pro Android, podporují, pokud v nich chybí.
 

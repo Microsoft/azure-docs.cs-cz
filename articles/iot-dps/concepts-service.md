@@ -3,16 +3,16 @@ title: Služba konceptech v Azure IoT Hub Device Provisioning Service | Dokument
 description: Popisuje zřizování koncepty služby specifické pro zařízení pomocí služby Azure Device Provisioning a centrem IoT
 author: nberdy
 ms.author: nberdy
-ms.date: 03/30/2018
+ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
 ms.openlocfilehash: 4a4f53f991355e634e8139f9e90bec6c508a527d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60745804"
 ---
 # <a name="iot-hub-device-provisioning-service-concepts"></a>Koncepty IoT Hub Device Provisioning Service
@@ -31,7 +31,7 @@ Koncový bod služby operací je koncový bod pro správu nastavení služby a �
 
 Koncový bod pro zřizování zařízení je jeden koncový bod, který všechna zařízení používat pro účely automatického zřízení. Adresa URL je stejný pro všechny zřizování instance služby, eliminuje nutnost reflash zařízení pomocí nové informace o připojení ve scénářích dodavatelského řetězce. Rozsah ID zajistí izolaci klientů.
 
-## <a name="linked-iot-hubs"></a>Propojená centra IoT Hub
+## <a name="linked-iot-hubs"></a>Propojená centra IoT hub
 
 Služby Device Provisioning můžete zřizovat zařízení pouze centra IoT hub, které byly spojeny s ji. Propojení centra IoT na instanci služby Device Provisioning poskytuje služby oprávnění čtení a zápis do registru zařízení služby IoT hub. služby Device Provisioning pomocí odkazu, který může vytvářet ID zařízení a nastavili počáteční konfiguraci ve dvojčeti zařízení. Propojená centra IoT hub může být v libovolné oblasti Azure. Může propojit hubs v jiných předplatných k vaší službě zřizování.
 

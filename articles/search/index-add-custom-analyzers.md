@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: b670b5aeffcd699226a088d8db21a12dbaf40042
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66242820"
 ---
 # <a name="add-custom-analyzers-to-an-azure-search-index"></a>Vlastní analyzátory přidat do indexu Azure Search
@@ -221,7 +221,7 @@ Atributy indexu pro analyzátory, se liší v závislosti na tom, určete, jestl
 
 |||  
 |-|-|  
-|Název|Musí obsahovat jenom písmena, číslice, mezery, pomlčky nebo podtržítka, může pouze úvodní a končit alfanumerickými znaky a je omezený na 128 znaků.|  
+|Name|Musí obsahovat jenom písmena, číslice, mezery, pomlčky nebo podtržítka, může pouze úvodní a končit alfanumerickými znaky a je omezený na 128 znaků.|  
 |Type|Musí být "#Microsoft.Azure.Search.CustomAnalyzer".|  
 |CharFilters|Nastavte na jednu z předdefinovaných char filtry uvedené v [Char filtry](#char-filters-reference) tabulky nebo char vlastní filtr zadaný v definici indexu.|  
 |Tokenizátor|Povinná hodnota. Nastavte na jednu z předdefinovaných tokenizátory uvedené v [Tokenizátory](#Tokenizers) tabulky níže nebo vlastní tokenizátor zadané v definici indexu.|  
@@ -251,7 +251,7 @@ Vlastní analyzátor můžete použít předdefinované tokenizátor výchozí n
 
 |||  
 |-|-|  
-|Název|Musí obsahovat jenom písmena, číslice, mezery, pomlčky nebo podtržítka, může pouze úvodní a končit alfanumerickými znaky a je omezený na 128 znaků.|  
+|Name|Musí obsahovat jenom písmena, číslice, mezery, pomlčky nebo podtržítka, může pouze úvodní a končit alfanumerickými znaky a je omezený na 128 znaků.|  
 |Type|Tokenizátor název ze seznamu podporovaných tokenizátory. Zobrazit **tokenizer_type** sloupec v [Tokenizátory](#Tokenizers) následující tabulka.|  
 |Možnosti|Musí být platné možnosti tokenizátor daného typu uvedené v [Tokenizátory](#Tokenizers) následující tabulka.|  
 

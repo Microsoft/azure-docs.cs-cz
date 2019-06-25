@@ -12,10 +12,10 @@ ms.date: 05/18/2018
 ms.author: v-jansko
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 7498ba08b9ce7b6aae10f38a393eb8cba37f3f4e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60827897"
 ---
 # <a name="translator-speech-api-languages"></a>Translator Speech API: Jazyky
@@ -132,7 +132,7 @@ Langagues {řeči (object, volitelné), text (object, volitelné), převod textu
 
 ### <a name="headers"></a>Hlavičky
 
-|Hlavička|Popis|Type|
+|Záhlaví|Popis|Type|
 :--|:--|:--|
 X-RequestId|Hodnota generován serverem k identifikaci žádosti a používá pro účely odstraňování potíží.|string|
 
@@ -140,14 +140,14 @@ X-RequestId|Hodnota generován serverem k identifikaci žádosti a používá pr
 
 |Parametr|Popis|Typ parametru|Typ dat|
 |:--|:--|:--|:--|
-|verze API-version    |Verze rozhraní API požadovaná klientem. Povolené hodnoty jsou: `1.0`.|query|string|
+|api-version    |Verze rozhraní API požadovaná klientem. Povolené hodnoty jsou: `1.0`.|query|string|
 |scope  |Nastaví podporované jazyky nebo hlasy vrácena klientovi. Tento parametr zadán jako čárkou oddělený seznam klíčových slov. Následující klíčová slova jsou k dispozici:<ul><li>`speech`: Poskytuje sadu jazyky podporované pro přepisy řeči.</li><li>`tts`: Poskytuje sadu podporuje pro převod textu na řeč.</li><li>`text`: Poskytuje sadu jazyky podporované pro překlad textu.</li></ul>Pokud není zadána hodnota, hodnota `scope` výchozí hodnota je `text`.|query|string|
 |X-ClientTraceId    |Identifikátor GUID klientem generovaná použít ke sledování požadavku. Usnadňuje řešení potíží se musí klienti zadejte novou hodnotu s každou žádostí a zaznamenejte ho.|záhlaví|string|
 |Přijměte jazyka    |Některá pole v odpovědi jsou názvy jazyků nebo oblastech. Použijte tento parametr se definuje jazyk, ve kterém se vrátí názvy. Jazyk je zadán zadáním značky jazyka ve správném formátu BCP 47. Vyberte značku ze seznamu identifikátorů jazyka se vrátil s `text` oboru. U nepodporovaných jazyků názvy jsou k dispozici v angličtině.<br/>Například použijte hodnotu `fr` žádosti názvy ve francouzštině, nebo použijte hodnotu `zh-Hant` požadavek názvy v tradiční čínštině.|záhlaví|string|
 
 ### <a name="response-messages"></a>Zprávy odpovědi
 
-|Kód stavu HTTP|Důvod|
+|Kód stavu HTTP|Reason|
 |:--|:--|
 |400|Chybný požadavek. Zkontrolujte vstupní parametry k zajištění, že jsou platné. Objekt odpovědi obsahuje podrobnější popis chyby.|
 |429|Příliš mnoho požadavků.|

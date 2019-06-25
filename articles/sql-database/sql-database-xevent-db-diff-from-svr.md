@@ -13,10 +13,10 @@ ms.reviewer: jrasnik
 manager: craigg
 ms.date: 12/19/2018
 ms.openlocfilehash: 7f742b094575b78f453fb735b23cc5319a27fa7e
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65206652"
 ---
 # <a name="extended-events-in-sql-database"></a>Rozšířené události ve službě SQL Database
@@ -52,7 +52,7 @@ Předchozí vystavení následujících položek je užitečný, pokud zvolíte 
 - PowerShell
     - [Pomocí Azure Powershellu s Azure Storage](../storage/common/storage-powershell-guide-full.md) – poskytuje podrobné informace o prostředí PowerShell a službu Azure Storage.
 
-## <a name="code-samples"></a>Ukázky kódu
+## <a name="code-samples"></a>Ukázky kódů
 
 Související témata obsahují dvě ukázky kódu:
 
@@ -90,7 +90,7 @@ Funkce Rozšířené události podporuje několik [zobrazení katalogu](https://
 | **sys.database_event_session_targets** |Vrátí řádek pro každý cíl události pro relace události. |
 | **sys.database_event_sessions** |Vrátí řádek pro každou relaci události v databázi SQL Database. |
 
-V systému Microsoft SQL Server, podobně jako zobrazení katalogu mít názvy, které zahrnují *server\_*  místo *.database\_*. Vzor názvů je třeba **sys.server_event_%**.
+V systému Microsoft SQL Server, podobně jako zobrazení katalogu mít názvy, které zahrnují *server\_*  místo *.database\_* . Vzor názvů je třeba **sys.server_event_%** .
 
 ## <a name="new-dynamic-management-views-dmvshttpsmsdnmicrosoftcomlibraryms188754aspx"></a>Nové zobrazení dynamické správy [(DMV)](https://msdn.microsoft.com/library/ms188754.aspx)
 
@@ -170,7 +170,7 @@ Musíte mít **ovládací prvek** v databázi oprávnění k vydávání **vytvo
 
 SAS token můžete vygenerovat pro váš kontejner Azure Storage, musíte zadat **rwl** oprávnění. **Rwl** hodnota poskytuje následující oprávnění:
 
-- Číst
+- Čtení
 - Zápis
 - Seznam
 

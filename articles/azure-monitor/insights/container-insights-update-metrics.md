@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 05/06/2019
 ms.author: magoedte
 ms.openlocfilehash: f4e15c4fc7bd7b786c5204153fe64f010e5ffe85
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65148853"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>Postup aktualizace Azure Monitor k zapnutí metrik pro kontejnery
@@ -25,7 +25,7 @@ Azure Monitor pro kontejnery zavádí podporu pro shromažďování metrik z uzl
 
 Jako součást této funkce jsou povoleny následující metriky:
 
-| Obor názvů metriky | Metrika | Popis |
+| Metriky oboru názvů | Metrika | Popis |
 |------------------|--------|-------------|
 | insights.container/nodes | cpuUsageMillicores cpuUsagePercentage, memoryRssBytes, memoryRssPercentage, memoryWorkingSetBytes, memoryWorkingSetPercentage, nodesCount | Jedná se o *uzel* metriky a zahrnují *hostitele* jako dimenze a také<br> Název uzlu jako hodnotu *hostitele* dimenze. |
 | insights.container/pods | podCount | Jedná se o *pod* metriky a patří jako dimenze - ControllerName, Kubernetes obor názvů, název, fáze. |

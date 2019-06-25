@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: spelluru
 ms.openlocfilehash: f4a9a131bcabc28a1eb77ffc31d93dc1d391cce4
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66157201"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67175602"
 ---
 ## <a name="prerequisites"></a>Požadavky 
 K dokončení tohoto kurzu musíte mít soubor virtuálního pevného disku, který nahráli do účtu úložiště přidruženého testovacího prostředí, ve kterém vytváříte vlastní image. Vyberte některou z následujících odkazů můžete nahrát soubor virtuálního pevného disku:

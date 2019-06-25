@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6f512911811535818f4ad857c5c3b956870f619
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0ae638f8cbef29c5d167a3ab59188169cbd934ef
+ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65074542"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67150229"
 ---
 # <a name="web-app-that-signs-in-users---app-registration"></a>Webové aplikace, který se přihlásí uživatelé – registrace aplikace
 
@@ -48,14 +48,14 @@ Pokud přejdete na tento odkaz, můžete vytvořit bootstrap vytvoření webové
 1. Pokud váš účet poskytuje přístup k více než jednoho tenanta, v pravém horním rohu vyberte svůj účet a nastavení portálu relace k požadované službě Azure AD tenanta.
 1. V levém navigačním podokně, vyberte **Azure Active Directory** služby a pak vyberte **registrace aplikací** > **registrace nové**.
 1. Když se zobrazí stránka **Registrace aplikace**, zadejte registrační informace vaší aplikace:
-   - Vyberte typy podporovaných účtů pro vaši aplikaci (naleznete v tématu [účtu podporované typy](./v2-supported-account-types.md))
-   - V části **Název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, například `AspNetCore-WebApp`.
-   - V **adresy URL odpovědi**, přidat příslušnou odpovědní adresu URL pro vaši aplikaci, například `https://localhost:44321/`a vyberte **zaregistrovat**.
+   1. Vyberte typy podporovaných účtů pro vaši aplikaci (naleznete v tématu [účtu podporované typy](./v2-supported-account-types.md))
+   1. V části **Název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, například `AspNetCore-WebApp`.
+   1. V **identifikátor URI pro přesměrování**typu aplikace a přidejte cílový identifikátor URI, který bude přijímat vrátil odpovědí na tokeny po úspěšném ověření. Například, `https://localhost:44321/`.  Vyberte **Zaregistrovat**.
 1. Vyberte **ověřování** nabídky a potom přidejte následující informace:
-- V **adresy URL odpovědi**, přidejte `https://localhost:44321/signin-oidc`a vyberte **zaregistrovat**.
-- V **upřesňující nastavení** nastavte **odhlašovací adresa URL** k `https://localhost:44321/signout-oidc`.
-- V části **implicitní grant**, zkontrolujte **tokeny typu ID**.
-- Vyberte **Uložit**.
+   1. V **adresy URL odpovědi**, přidejte `https://localhost:44321/signin-oidc`.
+   1. V **upřesňující nastavení** nastavte **odhlašovací adresa URL** k `https://localhost:44321/signout-oidc`.
+   1. V části **implicitní grant**, zkontrolujte **tokeny typu ID**.
+   1. Vyberte **Uložit**.
 
 ### <a name="register-an-app-using-powershell"></a>Registrace aplikace pomocí Powershellu
 

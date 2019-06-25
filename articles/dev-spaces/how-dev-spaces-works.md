@@ -10,12 +10,12 @@ ms.date: 03/04/2019
 ms.topic: conceptual
 description: Popisuje procesy, které tento power Azure Dev mezery a jak jsou nakonfigurované v konfiguračním souboru azds.yaml
 keywords: azds.yaml prostory vývoj Azure, vývoj mezery, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
-ms.openlocfilehash: e437a53d640bbdad3cdeeba8fd73e1f9ffef4023
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: 083ed45a8fa95ac5fc26af6547b5765acf80e43b
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66399839"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67154555"
 ---
 # <a name="how-azure-dev-spaces-works-and-is-configured"></a>Jak funguje Azure Dev mezery a je nakonfigurován
 
@@ -210,7 +210,7 @@ azds up
 1. Vytvoří kontejner pro vaši aplikaci.
 1. Nasadí vaši aplikaci do prostoru pro vývoj.
 1. Veřejně přístupný název DNS pro váš koncový bod aplikace vytvoří, pokud nakonfigurované.
-1. Používá *port vpřed* pro poskytnutí přístupu k aplikaci pomocí koncového bodu http://locahost.
+1. Používá *port vpřed* pro poskytnutí přístupu k aplikaci pomocí koncového bodu http://localhost.
 1. Předává stdout a stderr do nástrojů na straně klienta.
 
 

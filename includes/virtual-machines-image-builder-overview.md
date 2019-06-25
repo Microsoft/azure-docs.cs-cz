@@ -6,11 +6,11 @@ ms.topic: include
 ms.service: virtual-machines-linux
 manager: jeconnoc
 ms.openlocfilehash: e1b3b5fe603072069cb3a19c7597fcc1872fefd7
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66111461"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67174989"
 ---
 Image standardizované virtuálních počítačů (VM) umožňují organizacím migrace do cloudu a zajistit konzistenci v nasazení. Image obvykle zahrnují předdefinované nastavení zabezpečení a konfigurace a potřebný software. Nastavení pro vytváření bitových kopií kanálu vyžaduje čas, infrastruktury a nastavení, ale pomocí Tvůrce Image virtuálního počítače Azure, stačí zadat jednoduchou konfiguraci a popis bitové kopie, odeslat ho do služby a bitové kopie vytvořené a distribuovat.
  
@@ -20,7 +20,7 @@ Image Builder pro virtuální počítač Azure (Azure Image Builder) umožňuje 
 > Image Builder pro Azure je aktuálně ve verzi public preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="preview-features"></a>Funkce ve verzi Preview
+## <a name="preview-features"></a>Funkce Preview
 
 Pro verzi preview se podporují tyto funkce:
 
@@ -88,7 +88,7 @@ az role assignment create \
 Pokud účet služby se nenašel, může to znamená, že předplatné, ve kterém chcete přidat přiřazení role nebyl ještě zaregistrované u poskytovatele prostředků.
 
 
-## <a name="costs"></a>Poplatky
+## <a name="costs"></a>Náklady
 Vám budou účtovat nějaké compute, sítě a náklady na úložiště při vytváření, sestavování a ukládání imagí s Image Builder pro Azure. Tyto náklady jsou podobné náklady na ruční vytvoření vlastních imagí. Za prostředky vám bude účtovat sazby Azure. 
 
 Během procesu vytváření image, stáhnou se soubory a uložená v `IT_<DestinationResourceGroup>_<TemplateName>` skupinu prostředků, která budou účtovat poplatky za malé úložiště. f nechcete zachovat, odstranit šablonu Image po sestavení image.

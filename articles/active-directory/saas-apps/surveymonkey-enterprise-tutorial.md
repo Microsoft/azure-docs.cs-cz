@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c55438e2a853094bc26b3cb672687733f206f104
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 10d43de00c9daefdb86a92d92ebe2cfe39fd3248
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67089591"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164402"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-surveymonkey-enterprise"></a>Kurz: Integrace Azure Active Directory SurveyMonkey Enterprise
 
@@ -110,7 +110,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s SurveyMonkey organizace, pr
 
     ![SurveyMonkey podnikové domény a adresy URL jednotného přihlašování – informace](common/both-signonurl.png)
 
-    V **přihlašovací adresa URL** textové pole, zadejte adresu URL:  ` https://www.surveymonkey.com/user/sign-in/sso/?ut_source=megamenu`
+    V **přihlašovací adresa URL** textové pole, zadejte adresu URL:  `https://www.surveymonkey.com/user/sign-in/sso/?ut_source=megamenu`
 
 6. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **kód XML metadat federace**  z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
 

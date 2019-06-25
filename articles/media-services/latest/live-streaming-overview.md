@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 05/11/2019
+ms.date: 06/16/2019
 ms.author: juliako
-ms.openlocfilehash: fa09185e68c8d3a70562fe50c583ff872bf91e48
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0abc3eec380cccae2672d0e9aa4a3a4c7199362f
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65556229"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295664"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Živé streamování pomocí služby Azure Media Services v3
 
@@ -31,7 +31,7 @@ Azure Media Services umožňuje doručovat živé události do vašich zákazní
 - Komponenty ve službě Media Services, která umožňuje ingestovat, ve verzi preview, balení, záznamu, šifrování a vysílat živě přenášená akce vašim zákazníkům nebo do sítě CDN pro další distribuci.
 
 Tento článek obsahuje přehled a pokyny k živé streamování pomocí služby Media Services a odkazy na další související články.
-
+ 
 > [!NOTE]
 > Aktuálně nemůžete spravovat prostředky v3 pomocí webu Azure Portal. Použijte rozhraní [REST API](https://aka.ms/ams-v3-rest-ref), [rozhraní příkazového řádku](https://aka.ms/ams-v3-cli-ref) nebo některou z podporovaných sad [SDK](media-services-apis-overview.md#sdks).
 
@@ -49,27 +49,27 @@ Dynamické filtrování se používá k řízení počet stop, formáty, přenos
 
 ## <a name="live-event-types"></a>Live typy událostí
 
-Živá událost může být jeden ze dvou typů: Předávací tak pro živé kódování. Podrobnosti o živém streamování v Media Services v3 najdete v tématu [živé události a Live výstupy](live-events-outputs-concept.md).
+[Živé události](https://docs.microsoft.com/rest/api/media/liveevents) zodpovídají za ingestování a zpracování informačních kanálů živého videa. Živá událost může být jeden ze dvou typů: Předávací tak pro živé kódování. Podrobnosti o živém streamování v Media Services v3 najdete v tématu [živé události a Live výstupy](live-events-outputs-concept.md).
 
 ### <a name="pass-through"></a>Průchod
 
 ![Průchozí](./media/live-streaming/pass-through.svg)
 
-Při použití předávané **živé události** se spoléháte na váš místní kodér pro kódování v reálném čase, že vygeneruje stream videa s několika přenosovými rychlostmi a odešle ho jako informační kanál příspěvku do živé události (pomocí protokolu RTMP nebo fragmentovaného MP4). Živá událost potom přenese příchozí streamy videa bez dalšího zpracování. Takové vytvoření předávací živé události je optimalizovaná pro dlouho běžící události v reálném čase nebo 24 × 365 lineární živé streamování. 
+Při použití předávací **živá událost**, můžete spoléhat na vaše místní kodér služby live Encoding pro vygenerování více datový proud videa s přenosovou rychlostí a odeslat, že jako příspěvek informační kanál k živé události (s použitím vstupní protokol RTMP nebo fragmentovaný soubor MP4). Živá událost se potom provede prostřednictvím příchozí datové proudy videa k dynamické packager (koncový bod streamování) bez jakékoli další překódování. Takové vytvoření předávací živé události je optimalizovaná pro dlouho běžící události v reálném čase nebo 24 × 365 lineární živé streamování. 
 
 ### <a name="live-encoding"></a>Kódování v reálném čase  
 
 ![Kódování v reálném čase](./media/live-streaming/live-encoding.svg)
 
-Při použití kódování v reálném čase pomocí Media Services nakonfigurujte místní kodér pro kódování v reálném čase tak, aby jako informační kanál příspěvku do živé události odesílal video s jednou přenosovou rychlostí (pomocí protokolu RTMP nebo fragmentovaného MP4). Živá událost tento příchozí stream s jednou přenosovou rychlostí zakóduje do [streamu videa s několika přenosovými rychlostmi](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) a zpřístupní ho k doručení na zařízení pro přehrávání přes protokoly, jako jsou MPEG-DASH, HLS a Smooth Streaming. 
+Pokud používáte cloudové kódování pomocí Media Services, nakonfigurujete by vaše místní kodér služby live Encoding odesílat videa s jednou přenosovou rychlostí jako příspěvek informačního kanálu (až 32Mbps agregace) živé události (s použitím vstupní protokol RTMP nebo fragmentovaný soubor MP4). Živá událost videoúlohy příchozí s jednou přenosovou rychlostí streamování do [více streamů videa s přenosovou rychlostí](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) v různých řešení ke zlepšení doručování a zpřístupňuje je pro doručení pro přehrávání zařízení prostřednictvím standardních oborových protokolů jako jsou MPEG-DASH, Apple HTTP Live Streaming (HLS) a Microsoft Smooth Streaming. 
 
 ## <a name="live-streaming-workflow"></a>Pracovní postup živého streamování
 
 Živé streamování pracovního postupu v Media Services v3 informace o tom, je nutné nejdříve si přečtěte a koncepce následující: 
 
-- [Koncové body streamování rozhraní API](streaming-endpoint-concept.md)
-- [Živé události a rozhraní API za provozu výstupy](live-events-outputs-concept.md)
-- [Rozhraní API pro streamování lokátory](streaming-locators-concept.md)
+- [Koncové body streamování](streaming-endpoint-concept.md)
+- [Živé události a výstupy](live-events-outputs-concept.md)
+- [Lokátory streamování](streaming-locators-concept.md)
 
 ### <a name="general-steps"></a>Obecné kroky
 
@@ -79,7 +79,7 @@ Při použití kódování v reálném čase pomocí Media Services nakonfiguruj
 4. Získat adresu URL ve verzi preview a použít ho k ověření, že je ve skutečnosti přijímají vstup z kodéru.
 5. Vytvořte nový **Asset** objektu.
 6. Vytvoření **Live výstup** a používat název assetu, kterou jste vytvořili.<br/>**Live výstup** bude archivovat do datového proudu **Asset**.
-7. Vytvoření **Lokátor streamování** pomocí integrované **streamování zásad** typy.<br/>Pokud máte v úmyslu šifrování obsahu, přečtěte si [Content protection přehled](content-protection-overview.md).
+7. Vytvoření **Lokátor streamování** s [předdefinovaných typů zásad streamování](streaming-policy-concept.md)
 8. Seznam cest na **Lokátor streamování** získat zpět adresy URL používat (Toto jsou deterministické).
 9. Získání názvu hostitele pro **koncový bod streamování** (původní), kterou chcete z datového proudu.
 10. Adresu URL v kroku 8 v kombinaci s názvem hostitele v kroku 9 získat úplnou adresu URL.

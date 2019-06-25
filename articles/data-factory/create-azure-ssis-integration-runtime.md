@@ -13,10 +13,10 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
 ms.openlocfilehash: d30ec0765627ec173f0027e49f44cb77f6b26ac6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66155206"
 ---
 # <a name="create-azure-ssis-integration-runtime-in-azure-data-factory"></a>Vytvoření prostředí Azure-SSIS Integration Runtime ve službě Azure Data Factory
@@ -51,7 +51,7 @@ Když si zřídíte Azure-SSIS IR, nainstaluje se také Azure Feature Pack for S
 
     Ujistěte se, že vaše databáze Azure SQL server nebo spravované Instance ještě nemá SSISDB. Zřízení prostředí Azure-SSIS IR nepodporuje použití existující databáze SSISDB.
 
-- **Azure Resource Manageru virtuální síť (volitelné)**. Musí mít virtuální síť Azure Resource Manageru, pokud platí alespoň jedna z následujících podmínek:
+- **Azure Resource Manageru virtuální síť (volitelné)** . Musí mít virtuální síť Azure Resource Manageru, pokud platí alespoň jedna z následujících podmínek:
 
   - Na serveru Azure SQL Database s koncovými body služby virtuální sítě nebo spravovanou instanci, která je ve virtuální síti, jsou hostiteli databáze SSISDB.
   - Chcete se připojit k datům v místním úložišti z balíčků SSIS spuštěných v Azure-SSIS IR.

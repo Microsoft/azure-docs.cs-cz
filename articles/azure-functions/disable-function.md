@@ -3,33 +3,29 @@ title: Zakázání funkcí ve službě Azure Functions
 description: Zjistěte, jak zakázat a povolit funkce v Azure Functions 1.x a 2.x.
 services: functions
 documentationcenter: ''
-author: tdykstra
-manager: cfowler
-editor: ''
-ms.service: functions
-ms.workload: na
-ms.devlang: na
-ms.topic: article
-origin.date: 07/24/2018
-ms.date: 08/31/2018
-ms.author: v-junlch
+author: ggailey777
+manager: jeconnoc
+ms.service: azure-functions
+ms.topic: conceptual
+ms.date: 07/24/2018
+ms.author: glenga
 ms.openlocfilehash: a32b4815a2716428ceeec034ddc5589e3aa062e8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60710567"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Zakázání funkcí ve službě Azure Functions
 
 Tento článek vysvětluje, jak zakázat funkce ve službě Azure Functions. K *zakázat* funkce znamená, že aby modul runtime ignorovat Automatická aktivační událost, která je definována pro funkci. Způsob, můžete to udělat závisí na verzi modulu runtime a programovací jazyk:
 
-- Functions 1.x
-  - Skriptovací jazyky
-  - Knihovny tříd jazyka C#
-- Functions 2.x
-  - Jedním ze způsobů pro všechny jazyky
-  - Volitelným způsobem pro knihovny tříd jazyka C#
+* Functions 1.x
+  * Skriptovací jazyky
+  * Knihovny tříd jazyka C#
+* Functions 2.x
+  * Jedním ze způsobů pro všechny jazyky
+  * Volitelným způsobem pro knihovny tříd jazyka C#
 
 ## <a name="functions-1x---scripting-languages"></a>Funkce 1.x – skriptovacích jazyků
 
@@ -62,7 +58,7 @@ V druhém příkladu je zakázána funkce po nastavení aplikace, který má ná
 
 Můžete upravit soubor v portálu Azure portal nebo použitím **stav funkce** zapnout funkce **spravovat** kartu. Na portálu přepínač funguje tak, že změníte *function.json* souboru.
 
-![Stav přepínače – funkce](./media/disable-function/function-state-switch.png)
+![Stav přepínače – funkce](media/disable-function/function-state-switch.png)
 
 ## <a name="functions-1x---c-class-libraries"></a>Funkce 1.x – knihoven tříd C#
 
@@ -113,7 +109,7 @@ Tato metoda umožňuje povolit nebo zakázat funkci změnou nastavení aplikace 
 
 Ve funkcích 2.x je funkce vypnout pomocí nastavení aplikace. Například zakázat funkci s názvem `QueueTrigger`, můžete vytvořit nastavení aplikace s názvem `AzureWebJobs.QueueTrigger.Disabled`a nastavte ho na `true`. Pokud chcete povolit funkci, nastavte nastavení aplikace, které `false`. Můžete také použít **stav funkce** zapnout funkce **spravovat** kartu. Přepínač funguje tak, že vytváření a odstraňování `AzureWebJobs.<functionname>.Disabled` nastavení aplikace.
 
-![Stav přepínače – funkce](./media/disable-function/function-state-switch.png)
+![Stav přepínače – funkce](media/disable-function/function-state-switch.png)
 
 ## <a name="functions-2x---c-class-libraries"></a>Funkce 2.x - knihoven tříd C#
 
@@ -122,4 +118,3 @@ V knihovně tříd 2.x funkcí doporučujeme používat metodu, která funguje p
 ## <a name="next-steps"></a>Další postup
 
 Tento článek je o vypnutí automatických aktivačních procedur. Další informace o aktivačních událostech najdete v tématu [aktivačními událostmi a vazbami](functions-triggers-bindings.md).
-

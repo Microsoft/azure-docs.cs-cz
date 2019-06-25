@@ -14,11 +14,11 @@ ms.date: 06/15/2018
 ms.author: delhan
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: f510a111a6c8846b300c09f368a3a2a05b2bb7ad
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60306975"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64719892"
 ---
 # <a name="troubleshoot-deployment-issues-with-restarting-or-resizing-an-existing-windows-vm-in-azure"></a>Nasazení řešení potíží s restartováním nebo změnou velikosti stávajícího virtuálního počítače Windows v Azure
 Při pokusu o spuštění virtuálního počítače pro zastavené Azure (VM), nebo změňte velikost existujícího virtuálního počítače Azure, je běžnou chybou, ke které dojde k selhání přidělení. Tato chyba výsledkem v případě, že cluster nebo oblasti buď nemá žádné prostředky k dispozici, nebo nepodporuje požadovanou velikost virtuálního počítače.

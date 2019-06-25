@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
 ms.openlocfilehash: 7f89dc33c105a82646c8f12422f88a06efdca18b
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66238547"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67175399"
 ---
 Azure Data Lake Analytics zjednodušuje složité úlohy správy distribuované infrastruktury a složitého kódu. Dynamicky Zřizuje prostředky a ve kterém můžete provádět analýzu na exabajtech dat. Po dokončení úlohy využitý výpočetní ukončí prostředky automaticky. Platíte jenom za výpočetní výkon, který byl použit. Při zvětšování a zmenšování objemu uložených dat nebo množství využitých výpočtů nemusíte přepisovat kód. Chcete-li zvýšit výchozí omezení pro vaše předplatné, obraťte se na podporu.
 

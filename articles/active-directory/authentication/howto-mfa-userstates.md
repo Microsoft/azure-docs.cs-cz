@@ -11,19 +11,19 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cd26f7bdf928dcbd2cf841526857dc44623f133
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3a2c036265049bf4b87435e96f779482da404caa
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67057419"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164818"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>Jak vyžadovat dvoustupňové ověřování pro uživatele
 
 Můžete využít jeden ze dvou následujících metod pro vyžadováním dvoustupňového ověřování, které vyžadují pomocí účtu globálního správce. První možností je povolit jednotlivé uživatele pro Azure Multi-Factor Authentication (MFA). Pokud uživatelé jsou povolené jednotlivě, jejich provedení dvoustupňového ověřování pokaždé, když se přihlásí (s několika výjimkami, jako je například, když se přihlásí z důvěryhodných IP adres nebo když _zapamatovaných zařízeních_ funkce je zapnutá). Druhou možností je nastavit zásady podmíněného přístupu, která vyžaduje dvoustupňové ověření za určitých podmínek.
 
 > [!TIP]
-> Vyberte jednu z těchto metod a vyžadovat dvoustupňové ověřování, ne obojí. Povolení uživatele pro ověřování Azure Multi-Factor Authentication potlačí všechny zásady podmíněného přístupu.
+> Povolení ověřování Azure Multi-Factor Authentication pomocí zásad podmíněného přístupu je doporučený postup. Změna stavů uživatele se už nedoporučuje, pokud vaše licence nezahrnují podmíněného přístupu, jak se bude vyžadovat, aby uživatelé proveďte vícefaktorové ověřování pokaždé, když se přihlásí.
 
 ## <a name="choose-how-to-enable"></a>Zvolte, jak povolit
 

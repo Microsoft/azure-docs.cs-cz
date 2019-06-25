@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 05/02/2019
 ms.author: spelluru
 ms.openlocfilehash: 2ad81ae97414abbf3266cc5728febf9abe836151
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65522950"
 ---
 # <a name="automate-adding-a-lab-user-to-a-lab-in-azure-devtest-labs"></a>Automatické přidání uživatele testovacího prostředí do testovacího prostředí ve službě Azure DevTest Labs
@@ -121,7 +121,7 @@ Role ID je definovaný v sekci proměnných a s názvem `devTestLabUserRoleId`. 
 "devTestLabUserRoleId": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/111111111-0000-0000-11111111111111111')]",
 ```
 
-### <a name="principal-id"></a>ID instančního objektu
+### <a name="principal-id"></a>ID objektu zabezpečení
 ID objektu zabezpečení je ID objektu uživatele služby Active Directory, skupinu nebo instanční objekt, který chcete přidat jako uživatele testovacího prostředí pro testovací prostředí. Šablona používá `ObjectId` jako parametr.
 
 ObjectId můžete získat pomocí [Get-AzureRMADUser](/powershell/module/azurerm.resources/get-azurermaduser?view=azurermps-6.13.0), [Get-AzureRMADGroup nebo [Get-AzureRMADServicePrincipal](/powershell/module/azurerm.resources/get-azurermadserviceprincipal?view=azurermps-6.13.0) rutin prostředí PowerShell. Tyto rutiny vrátí jeden nebo seznam objektů služby Active Directory, které mají vlastnost ID, která je ID objektu, které potřebujete. Následující příklad ukazuje, jak získat ID objektu jenom jednoho konkrétního uživatele ve společnosti.

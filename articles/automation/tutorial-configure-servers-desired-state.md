@@ -9,12 +9,12 @@ ms.author: robreed
 manager: carmonm
 ms.topic: conceptual
 ms.date: 08/08/2018
-ms.openlocfilehash: 83a65be50a3cec9cea47682ab5e207bd4ad9e984
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3bcdb667ee649b9bbf32ad33e74e876cdd2b5cbf
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072561"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67144192"
 ---
 # <a name="configure-servers-to-a-desired-state-and-manage-drift"></a>Konfigurace serverů do požadovaného stavu a správa odchylek
 
@@ -154,7 +154,7 @@ Pokud se rozhodnete k odebrání uzlu ze služby, lze provést pomocí webu Azur
 > [!NOTE]
 > Zrušení registrace uzlu ze služby pouze nastaví Local Configuration Manageru tak, že uzel už je připojení ke službě.
 > To vliv nemá odpovídající konfiguraci, která je aktuálně použité k uzlu.
-> Chcete-li odebrat aktuální konfiguraci, použijte [Powershellu](https://docs.microsoft.com/en-us/powershell/module/psdesiredstateconfiguration/remove-dscconfigurationdocument?view=powershell-5.1) nebo odstranit místní konfigurační soubor (to je jedinou možností pro uzly s Linuxem).
+> Chcete-li odebrat aktuální konfiguraci, použijte [Powershellu](https://docs.microsoft.com/powershell/module/psdesiredstateconfiguration/remove-dscconfigurationdocument?view=powershell-5.1) nebo odstranit místní konfigurační soubor (to je jedinou možností pro uzly s Linuxem).
 
 ### <a name="azure-portal"></a>portál Azure
 
@@ -165,7 +165,7 @@ V zobrazení uzlů, které se otevře, klikněte na tlačítko **Unregister**.
 
 ### <a name="powershell"></a>PowerShell
 
-Zrušení registrace uzlu ze služby konfigurace stavu služby Azure Automation pomocí prostředí PowerShell, postupujte podle dokumentace pro rutinu [Unregister-AzAutomationDscNode](https://docs.microsoft.com/en-us/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-2.0.0).
+Zrušení registrace uzlu ze služby konfigurace stavu služby Azure Automation pomocí prostředí PowerShell, postupujte podle dokumentace pro rutinu [Unregister-AzAutomationDscNode](https://docs.microsoft.com/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-2.0.0).
 
 ## <a name="next-steps"></a>Další postup
 

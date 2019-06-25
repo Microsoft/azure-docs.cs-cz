@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 01/08/2019
-ms.openlocfilehash: 48c59ddc1e203030bd967911d536930cb94761d3
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.openlocfilehash: f1cb7c9aa0844c82acd333c4f9dd87a4dda013e7
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66356176"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165334"
 ---
 # <a name="securely-run-experiments-and-inference-inside-an-azure-virtual-network"></a>Bezpečné spuštění experimentů a odvození uvnitř virtuální sítě Azure
 
@@ -35,9 +35,13 @@ Tento dokument předpokládá, že máte zkušenosti s Azure Virtual Networks a 
 ## <a name="storage-account-for-your-workspace"></a>Účet úložiště pro váš pracovní prostor
 
 > [!IMPORTANT]
-> Můžete vložit účet úložiště, který je připojený k pracovnímu prostoru Azure Machine Learning služby za bránou virtuální sítě pouze během operace služby experimentování ve službě. Odvození vyžaduje neomezený přístup k účtu úložiště. Pokud si nejste jistí, jestli jste upravili tato nastavení nebo Ne, viz __změnit výchozí pravidlo přístupu síť__ v [virtuální sítí a bran firewall nakonfigurovat služby Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security). Pomocí postupu povolit přístup ze všech sítí při odvození nebo model bodování.
+> __Výchozí účet úložiště__ pro vaše aplikace Azure Machine Learning je možné použít služby ve virtuální síti __jenom v průběhu zpracování operace služby experimentování ve službě__.
+>
+> Pro __storage jiné než výchozí účty pro služby experimentování ve službě__, nebo pokud používáte účet úložiště pro __odvození__, musíte mít __neomezený přístup k účtu úložiště__.
+> 
+> Pokud si nejste jistí, jestli jste upravili tato nastavení nebo Ne, viz __změnit výchozí pravidlo přístupu síť__ v [virtuální sítí a bran firewall nakonfigurovat služby Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security). Pomocí postupu povolit přístup ze všech sítí při odvození nebo model bodování.
 
-Možnosti služby experimentování ve službě Azure Machine Learning s Azure Storage za bránou virtuální sítě, postupujte podle následujících kroků:
+Použít místo výchozí účet úložiště Azure pro pracovní prostor ve virtuální síti, postupujte následovně:
 
 1. Vytvoření experimentování ve službě výpočty např. Machine Learning Compute za bránou virtuální sítě nebo připojení k pracovnímu prostoru ex výpočetní experimentování ve službě. HDInsight cluster nebo virtuální počítač. Další informace najdete v tématu [pomocí Machine Learning Compute](#use-machine-learning-compute) a [použít virtuální počítač nebo clusteru HDInsight](#use-a-virtual-machine-or-hdinsight-cluster) části v tomto dokumentu
 2. Přejdete k úložišti připojeném do pracovního prostoru. ![Image na webu Azure portal zobrazující Azure Storage, který je připojený k pracovnímu prostoru služby Azure Machine Learning](./media/how-to-enable-virtual-network/workspace-storage.png)

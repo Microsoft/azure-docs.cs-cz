@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: cd004e1eb6a40648c52dd3b5aee0ec38bff8f9b3
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 73979ec3bd1d667453a186ea1f20bbeddc12db8f
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66304192"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273310"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Nejčastější dotazy k Azure Spatial Anchors
 
@@ -78,7 +78,7 @@ Azure prostorových ukotvení odpovídá [podmínky smlouvy služby Azure](https
 Datum obecné dostupnosti (GA) bude brzy oznámena.
 
 **Otázka: Máte splněné žádné omezení?**
- 
+
 **A**: Ano, máme limitů omezování.  Neočekáváme, že je pro vývoj a testování aplikací typické dosáhnete. Pro nasazení v produkčním prostředí jsou připravené pro podporu požadavků na vysoce škálovatelné našich zákazníků. [Kontaktujte nás](mailto:azuremrs@microsoft.com) fattica. V této fázi ve verzi Preview jsme dosud nepublikovali naše ovládání datových vrstev a cenové struktury, ale Očekáváme, že k tomu brzy.
 
 **Otázka: V jaké oblasti je prostorových kotvy Azure dostupný?**
@@ -125,3 +125,7 @@ Začínáme s [vývoj zde](index.yml).
 **Otázka: Funguje se Xamarinem?**
 
 **Odpověď:** Ano. Protože neposkytujeme sada Xamarin SDK, Očekáváme, že vývojáři mohou použít prostorová kotvy Azure ve svých aplikacích Xamarin díky integraci s Azure API prostorových kotvy vztahů.
+
+**Otázka: Jaké porty a protokoly, používá prostorových kotvy Azure?**
+
+**Odpověď:** Azure prostorových kotvy komunikuje přes port TCP 443 pomocí šifrovaného protokolu. Pro ověřování používá [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/), která komunikuje pomocí protokolu HTTPS přes port 443.

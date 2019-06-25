@@ -43,7 +43,7 @@ Následující tabulka obsahuje mapování verzi rozšíření virtuálního po�
 | Verze sady prostředků agenta log Analytics Windows | Verze rozšíření Azure VM Windows monitorování | Datum vydání | Poznámky k verzi |
 |--------------------------------|--------------------------|--------------------------|--------------------------|
 | 10.20.18001 | 1.0.18001 | 2019 dne | <ul><li> Stabilizace vylepšení a opravy menších chyb </li><li> Přidání možnosti zakázat výchozí přihlašovací údaje při navazování připojení proxy server (podpora pro WINHTTP_AUTOLOGON_SECURITY_LEVEL_HIGH) </li></ul>|
-| 10.19.13515 | 1.0.13515 | 2019\. března | <ul><li>Stabilizace menší opravy </li></ul> |
+| 10.19.13515 | 1.0.13515 | 2019. března | <ul><li>Stabilizace menší opravy </li></ul> |
 | 10.19.10006 | neuvedeno | DEC 2018 | <ul><li> Stabilizace menší opravy </li></ul> | 
 | 8.0.11136 | neuvedeno | Září 2018 |  <ul><li> Přidání podpory pro zjišťování Změna ID prostředku. přesun virtuálních počítačů </li><li> Přidání podpory pro vytváření sestav nainstalovat ID při použití rozšíření prostředků </li></ul>| 
 | 8.0.11103 | neuvedeno |  Duben 2018 | |
@@ -93,7 +93,7 @@ Následující kód JSON ukazuje schéma pro rozšíření agenta Log Analytics.
 | publisher | Microsoft.EnterpriseCloud.Monitoring |
 | type | MicrosoftMonitoringAgent |
 | typeHandlerVersion | 1.0 |
-| ID pracovního prostoru (e.g)* | 6f680a37-00c6-41c7-a93f-1437e3462574 |
+| workspaceId (e.g)* | 6f680a37-00c6-41c7-a93f-1437e3462574 |
 | workspaceKey (např.) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI+rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ== |
 
 \* ID pracovního prostoru je volána consumerId v rozhraní API služby Log Analytics.

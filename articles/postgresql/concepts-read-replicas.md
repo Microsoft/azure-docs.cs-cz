@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/05/2019
-ms.openlocfilehash: 75a3c8a9912fe9ace70e411983996167da755128
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.date: 06/14/2019
+ms.openlocfilehash: c98247b0ba8b670a59dec9aa3ec87e949f1dda78
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66734653"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147934"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Repliky pro čtení ve službě Azure Database for PostgreSQL – jeden Server
 
@@ -122,6 +122,9 @@ Replika je vytvořen pomocí stejné konfigurace serveru na hlavní server. Po v
 PostgreSQL vyžaduje hodnotu `max_connections` parametr čtení repliky být větší než nebo rovna hodnotě hlavní; v opačném případě repliky nelze spustit. Ve službě Azure Database for PostgreSQL `max_connections` hodnota parametru je založená na SKU. Další informace najdete v tématu [omezení ve službě Azure Database for PostgreSQL](concepts-limits.md). 
 
 Pokud při pokusu o aktualizaci hodnot serveru, ale nedrží omezení, zobrazí se chybová zpráva.
+
+### <a name="maxpreparedtransactions"></a>max_prepared_transactions
+[Vyžaduje PostgreSQL](https://www.postgresql.org/docs/10/runtime-config-resource.html#GUC-MAX-PREPARED-TRANSACTIONS) hodnotu `max_prepared_transactions` parametr čtení repliky být větší než nebo rovna hodnotě hlavní; v opačném případě repliky nelze spustit. Pokud chcete změnit `max_prepared_transactions` v předloze, nejdřív ho změnit na replikách.
 
 ### <a name="stopped-replicas"></a>Zastavené repliky
 Chcete-li zrušit replikace mezi serverem a hlavním serverem repliky pro čtení replik restartuje na použití změny. Zastavené replika přestane být samostatný server, který přijímá operace čtení i zápisu. Samostatný server nelze je převést na repliku znovu.

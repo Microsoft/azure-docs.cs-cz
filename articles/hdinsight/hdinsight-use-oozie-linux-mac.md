@@ -8,10 +8,10 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.openlocfilehash: 55db43bf3037fcba59e7ad783c6d8c06f1886bdb
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65142834"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Použití Apache Oozie s Hadoopem Apache k definování a spuštění workflowu v Azure HDInsight založených na Linuxu
@@ -665,7 +665,7 @@ Níže jsou uvedeny konkrétní chyby, které se můžete setkat a způsob jejic
 
 **Příčina:** Adresy objektů Blob v Azure storage, které se používá v **job.xml** soubor neobsahuje kontejner úložiště nebo název účtu úložiště. Musí být ve formátu adresa úložiště objektů Blob `wasbs://containername@storageaccountname.blob.core.windows.net`.
 
-**Řešení:** Změna adresy úložiště objektů Blob, které používá úlohy.
+**Rozlišení**: Změna adresy úložiště objektů Blob, které používá úlohy.
 
 ### <a name="ja002-oozie-is-not-allowed-to-impersonate-ltusergt"></a>JA002: Není povoleno zosobnit Oozie &lt;uživatele&gt;
 
@@ -675,7 +675,7 @@ Níže jsou uvedeny konkrétní chyby, které se můžete setkat a způsob jejic
 
 **Příčina:** Aktuální nastavení oprávnění neumožňují Oozie zosobnit zadaný uživatelský účet.
 
-**Řešení:** Oozie můžou vydávat za uživatele v **uživatelé** skupiny. Použití `groups USERNAME` zobrazíte skupiny, ke kterým je uživatelský účet členem. Pokud uživatel není členem **uživatelé** skupině, použijte následující příkaz pro přidání uživatele do skupiny:
+**Rozlišení**: Oozie můžou vydávat za uživatele v **uživatelé** skupiny. Použití `groups USERNAME` zobrazíte skupiny, ke kterým je uživatelský účet členem. Pokud uživatel není členem **uživatelé** skupině, použijte následující příkaz pro přidání uživatele do skupiny:
 
     sudo adduser USERNAME users
 
@@ -690,7 +690,7 @@ Níže jsou uvedeny konkrétní chyby, které se můžete setkat a způsob jejic
 
 **Příčina:** Sqoop není schopen načíst ovladač databáze vyžadované pro přístup k databázi.
 
-**Řešení:** Při použití Sqoopu z úlohu Oozie musí zahrnovat ovladač databáze s další prostředky, jako je například workflow.xml, tato úloha používá. Také odkazovat na archiv, který obsahuje databázi ovladače z `<sqoop>...</sqoop>` část workflow.xml.
+**Rozlišení**: Při použití Sqoopu z úlohu Oozie musí zahrnovat ovladač databáze s další prostředky, jako je například workflow.xml, tato úloha používá. Také odkazovat na archiv, který obsahuje databázi ovladače z `<sqoop>...</sqoop>` část workflow.xml.
 
 Například pro úlohy v tomto dokumentu použijete následující kroky:
 

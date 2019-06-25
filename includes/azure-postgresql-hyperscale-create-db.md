@@ -9,11 +9,11 @@ ms.date: 05/14/2019
 ms.author: jonels
 ms.custom: include file
 ms.openlocfilehash: c07e352288d7dc1d0bf198fd74c8baaded3a2d23
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66154497"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67175250"
 ---
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -64,7 +64,7 @@ Azure Database for PostgreSQL – velkokapacitní (Citus) (preview) používá s
 
 Při vytváření vašeho serveru Azure Database for postgresql – výchozí databázi s názvem **citus** se vytvoří. Pro připojení k vašemu databázovému serveru, budete potřebovat připojovací řetězec a heslo správce.
 
-1. Získání připojovacího řetězce. Na stránce skupiny serveru klikněte na tlačítko **připojovací řetězce** položky nabídky. (Je podle **nastavení**.) Vyhledejte řetězec označené  **C++ (libpq)**. Bude ve tvaru:
+1. Získání připojovacího řetězce. Na stránce skupiny serveru klikněte na tlačítko **připojovací řetězce** položky nabídky. (Je podle **nastavení**.) Vyhledejte řetězec označené  **C++ (libpq)** . Bude ve tvaru:
 
    ```
    host=hostname.postgres.database.azure.com port=5432 dbname=citus user=citus password={your_password} sslmode=require

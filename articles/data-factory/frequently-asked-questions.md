@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: shlo
 ms.openlocfilehash: d704c32ee7417c6460ad6cc880e451adddfa61de
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61345750"
 ---
 # <a name="azure-data-factory-faq"></a>Nejčastější dotazy k Azure Data Factory
@@ -112,7 +112,7 @@ Předplatné Azure může obsahovat jednu nebo více instancí služby Azure Dat
 ### <a name="pipelines"></a>Kanály
 Objekt pro vytváření dat může mít jeden nebo víc kanálů. Kanál je logické seskupení aktivit, které provádějí určitou jednotku práce. Aktivity v kanálu společně provádí úlohy. Kanál může například obsahovat skupinu aktivit, které ingestují data z objektu blob Azure a pak spustit dotaz Hive v clusteru služby HDInsight pro rozdělení dat. Výhodou je, že vám pomůže kanálu spravovat aktivity jako sadu, a ne by bylo potřeba spravovat jednotlivé aktivity jednotlivě. Můžete společně řetězit aktivity v kanálu pro jejich probíhaly postupně, nebo můžete provozovat nezávisle na sobě paralelně.
 
-### <a name="activities"></a>Aktivity
+### <a name="activities"></a>Činnosti
 Aktivity představují krok zpracování v rámci kanálu. Například můžete použít aktivitu kopírování ke kopírování dat z jednoho úložiště dat do jiného. Podobně můžete použít aktivitu Hivu, která spustí dotaz Hivu na clusteru Azure HDInsight, aby transformoval a analyzoval vaše data. Data Factory podporuje tři typy aktivit: aktivity přesunu dat, aktivity transformace dat a aktivity řízení.
 
 ### <a name="datasets"></a>Datové sady
@@ -126,7 +126,7 @@ Propojené služby mají dva účely ve službě Data Factory:
 - K reprezentaci *úložiště dat* , který obsahuje, ale není omezena pouze na místní instance systému SQL Server, instanci Oracle database, sdílené složky nebo účtu služby Azure Blob storage. Seznam podporovaných úložišť dat najdete v tématu [aktivita kopírování ve službě Azure Data Factory](copy-activity-overview.md).
 - Představují *výpočetní prostředek*, který může hostovat provádění aktivity. Například aktivita HDInsight Hive spustí v clusteru HDInsight Hadoop. Seznam aktivit transformace a podporovaných výpočetních prostředí najdete v tématu [transformace dat ve službě Azure Data Factory](transform-data.md).
 
-### <a name="triggers"></a>Aktivační události
+### <a name="triggers"></a>Aktivační procedury
 Aktivační události představují jednotky zpracování, které určují, kdy je spuštěna provádění zřetězeného příkazu. Pro různé typy událostí existují různé typy aktivačních událostí. 
 
 ### <a name="pipeline-runs"></a>Spuštění kanálu
@@ -139,7 +139,7 @@ Datová sada je parametr silného typu a entita, která můžete opakovaně pou�
 
 Propojená služba je také parametr silného typu, který obsahuje informace o připojení k úložišti dat nebo výpočetnímu prostředí. Také je entita, která můžete opakovaně používat nebo odkazovat.
 
-### <a name="control-flows"></a>Řízení toků
+### <a name="control-flows"></a>Toky řízení
 Řízení toků orchestraci aktivit kanálu, které zahrnují řetězení aktivit v sekvenci, větvení, parametry, které můžete definovat na úrovni kanálu a argumenty předávané při volání kanálu na vyžádání nebo pomocí aktivační události. Řízení toků zahrnovat také předávání vlastního stavu a kontejnery smyček (tedy iterátory foreach).
 
 

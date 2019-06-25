@@ -12,10 +12,10 @@ ms.date: 05/16/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: bac897178c8220abe72a92a5cf14fc4767cdd3bf
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66755061"
 ---
 # <a name="monitor-resource-consumption-and-query-activity-in-azure-search"></a>Monitorování prostředků spotřeby a dotaz aktivity ve službě Azure Search
@@ -111,7 +111,7 @@ resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/pr
 ## <a name="log-schema"></a>Schéma protokolu
 Objekty BLOB obsahující protokoly přenosů služby vyhledávání jsou strukturované, jak je popsáno v této části. Každý objekt blob má jeden kořenový objekt volána **záznamy** obsahující pole objektů protokolu. Každý objekt blob obsahuje záznamy pro všechny operace, které došlo během jedné hodiny.
 
-| Name | Typ | Příklad: | Poznámky |
+| Název | Typ | Příklad: | Poznámky |
 | --- | --- | --- | --- |
 | time |datetime |"2018-12-07T00:00:43.6872559Z" |Časové razítko operace |
 | resourceId |řetězec |"/ SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111 /<br/>VÝCHOZÍ/RESOURCEGROUPS/POSKYTOVATELE /<br/> SPOLEČNOSTI MICROSOFT. HLEDÁNÍ/SEARCHSERVICES/SEARCHSERVICE" |Vaše ID prostředku |
@@ -136,7 +136,7 @@ Objekty BLOB obsahující protokoly přenosů služby vyhledávání jsou strukt
 
 Metriky se vám budou zaznamenávat požadavků na dotazy.
 
-| Název | Typ | Příklad: | Poznámky |
+| Name | Typ | Příklad: | Poznámky |
 | --- | --- | --- | --- |
 | resourceId |řetězec |"/ SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111 /<br/>VÝCHOZÍ/RESOURCEGROUPS/POSKYTOVATELE /<br/>SPOLEČNOSTI MICROSOFT. HLEDÁNÍ/SEARCHSERVICES/SEARCHSERVICE" |vaše id prostředku |
 | metricName |řetězec |"Latence" |Název metriky |

@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 03/09/2018
 ms.author: jonbeck
 ms.openlocfilehash: ebcb58e0cdfc896ae90115fab58cc6d11fe7ef09
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60844219"
 ---
 # <a name="constrained-vcpu-capable-vm-sizes"></a>Velikosti virtuálních počítačů umožňující omezené virtuálních procesorů

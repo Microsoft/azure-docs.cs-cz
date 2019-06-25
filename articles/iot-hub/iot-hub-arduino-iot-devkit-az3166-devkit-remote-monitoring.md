@@ -10,10 +10,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 02/02/2018
 ms.author: liydu
 ms.openlocfilehash: ae8dc263e08528c6e3b3bae8c779162c96d51f43
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61324240"
 ---
 # <a name="connect-mxchip-iot-devkit-to-azure-iot-remote-monitoring-solution-accelerator"></a>Připojení MXChip IoT DevKit k akcelerátoru řešení vzdáleného monitorování Azure IoT
@@ -48,7 +48,7 @@ Aktivní předplatné Azure. Pokud nemáte, můžete zaregistrovat pomocí jedn�
 
 3. Zadejte název řešení, vyberte předplatné a oblast a potom klikněte na **vytvořit řešení**. Zřídí řešení může chvíli trvat.
   
-   ![Vytvořit řešení](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/azure-iot-suite-new-solution.png)
+   ![Vytvoření řešení](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/azure-iot-suite-new-solution.png)
 
 4. Po zřízení dokončí, klikněte na tlačítko **spuštění**. Některé Simulovaná zařízení jsou vytvořené pro dané řešení během procesu zřizování. Klikněte na tlačítko **zařízení** je.
 

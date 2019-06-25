@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
 ms.openlocfilehash: 88776e2f4167c950d60c0405dcf950b5173fb989
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60814135"
 ---
 # <a name="interpret-method"></a>interpretace – metoda
@@ -30,7 +30,7 @@ Název|Hodnota| Popis
 query    | Textový řetězec | Dotazu zadaného uživatelem.  Pokud dokončení je nastavená na 1, dotaz bude interpretovat jako předponu pro generování návrhy automatického dokončování dotazů.        
 Dokončení | 0 (výchozí) nebo 1 | 1 znamená, že návrhy automatického dokončování jsou generovány na základě dat gramatiky a index.         
 count    | Číslo (výchozí = 10) | Maximální počet interpretace vrátit.         
-Posun   | Číslo (výchozí = 0) | Index prvního interpretace vrátit.  Například *počet = 2 & UN přenosu = 0* vrátí interpretace 0 a 1. *Počet = 2 & UN přenosu = 2* vrátí interpretace 2 a 3.       
+offset   | Číslo (výchozí = 0) | Index prvního interpretace vrátit.  Například *počet = 2 & UN přenosu = 0* vrátí interpretace 0 a 1. *Počet = 2 & UN přenosu = 2* vrátí interpretace 2 a 3.       
 timeout  | Číslo (výchozí = 1000) | Časový limit v milisekundách. Jsou vráceny pouze interpretace nalezen předtím, než vypršel časový limit.
 
 Použití *počet* a *posun* parametry, může být velký počet výsledků získávají postupně prostřednictvím více požadavků.

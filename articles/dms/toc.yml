@@ -42,8 +42,10 @@
       href: howto-sql-server-to-azure-sql-mi-powershell.md
     - name: Monitorování aktivit migrace
       href: how-to-monitor-migration-activity.md
-    - name: Migrace balíčků SSIS do Azure
+    - name: Migrace balíčků SSIS do Azure SQL Database
       href: how-to-migrate-ssis-packages.md
+    - name: Migrace balíčků SSIS do spravované instance Azure SQL Database
+      href: how-to-migrate-ssis-packages-managed-instance.md
 - name: Zdroje a prostředky
   items:
     - name: Stav scénáře migrace databází

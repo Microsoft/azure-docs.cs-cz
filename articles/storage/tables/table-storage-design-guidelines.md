@@ -2,18 +2,17 @@
 title: Návrh tabulky pokyny pro úložiště Azure | Dokumentace Microsoftu
 description: Navrhněte svoji službu Azure table pro efektivní podporovat operace čtení.
 services: storage
-author: WenJason
+author: SnehaGunda
 ms.service: storage
 ms.topic: article
-origin.date: 04/23/2018
-ms.date: 12/10/2018
-ms.author: v-jay
-ms.component: tables
+ms.date: 04/23/2018
+ms.author: sngun
+ms.subservice: tables
 ms.openlocfilehash: d056d29469ad9a60fceeee307aca3c0e1319283c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61269829"
 ---
 # <a name="guidelines-for-table-design"></a>Pokyny pro návrh tabulek

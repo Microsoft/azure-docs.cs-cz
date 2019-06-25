@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: magottei
 ms.custom: seodec2018
-ms.openlocfilehash: 256a38320c9b3ca826ee9c12ac0a437957f988e2
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 4ed18b5f83bdb052f2db6847a320c26a8e49f83e
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65539285"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147545"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-search"></a>Řešení běžných potíží indexeru ve službě Azure Search
 
@@ -27,7 +27,7 @@ Indexery můžete spustit do celé řady důvodů, názvy při indexování dat 
 
 ## <a name="data-source-connection-errors"></a>Chyby připojení zdroje dat
 
-### <a name="blob-storage"></a>Úložiště objektů blob
+### <a name="blob-storage"></a>Blob Storage
 
 #### <a name="storage-account-firewall"></a>Brány firewall na účet úložiště
 
@@ -35,14 +35,11 @@ Azure Storage poskytuje konfigurovat bránu firewall. Brána firewall je ve výc
 
 Neexistuje žádná konkrétní chybová zpráva, pokud je povolena brána firewall. Obvykle, brána firewall chyby vypadat `The remote server returned an error: (403) Forbidden`.
 
-Můžete ověřit, že brána firewall je povolena v [portál](https://docs.microsoft.com/azure/storage/common/storage-network-security#azure-portal). Pokud je povolená brána firewall, máte dvě možnosti pro získání chcete tento problém vyřešit:
+Můžete ověřit, že brána firewall je povolena v [portál](https://docs.microsoft.com/azure/storage/common/storage-network-security#azure-portal). Pouze podporované alternativním řešením je zakázat bránu firewall, že vyberete možnost povolit přístup z ["Všechny sítě"](https://docs.microsoft.com/azure/storage/common/storage-network-security#azure-portal).
 
-1. Zakázat bránu firewall, že vyberete možnost povolit přístup z ["všechny sítě.](https://docs.microsoft.com/azure/storage/common/storage-network-security#azure-portal)
-1. [Přidat výjimku](https://docs.microsoft.com/azure/storage/common/storage-network-security#managing-ip-network-rules) pro IP adresu vaší služby search. Chcete-li zjistit tuto IP adresu, použijte následující příkaz:
+Pokud indexer nemá žádné připojené dovednosti, můžete _může_ pokusí [přidat výjimku](https://docs.microsoft.com/azure/storage/common/storage-network-security#managing-ip-network-rules) pro IP adresy vaší služby search. Ale tento scénář není podporován a nemusí fungovat.
 
-`nslookup <service name>.search.windows.net`
-
-Výjimky nefungují pro [kognitivního vyhledávání](cognitive-search-concept-intro.md). Jediným alternativním řešením je zakázat bránu firewall.
+IP adresu vaší služby search můžete zjistit pomocí příkazu ping jeho plně kvalifikovaný název domény (`<your-search-service-name>.search.windows.net`).
 
 ### <a name="cosmos-db"></a>Cosmos DB
 

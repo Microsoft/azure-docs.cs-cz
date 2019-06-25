@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 51e1fd18b52d7e215ba43be540156199fb41778e
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66155907"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67175041"
 ---
 #### <a name="to-attach-the-sas-cables"></a>Připojení SAS kabely
 1. Určete primární a EBOD skříně. Dvě skříně lze identifikovat podle jejich příslušných back rovinami. Viz následující obrázek pro doprovodné materiály. 
@@ -18,7 +18,7 @@ ms.locfileid: "66155907"
    
     **Zpět na zobrazení primárním serverem a skříně EBOD**
    
-   | Popisek | Popis |
+   | Štítek | Popis |
    |:--- |:--- |
    | 1 |Primární zařízení |
    | 2 |Skříň EBOD |
@@ -28,7 +28,7 @@ ms.locfileid: "66155907"
    
     **Umístění štítku sériové číslo**
    
-   | Popisek | Popis |
+   | Štítek | Popis |
    |:--- |:--- |
    | 1 |Vymazat přílohu |
 3. Zadaná SAS kabely použijte pro připojení skříň EBOD na primární zařízení následujícím způsobem:
@@ -41,12 +41,12 @@ ms.locfileid: "66155907"
       
       **SAS kabely**
       
-      | Popisek | Popis |
+      | Štítek | Popis |
       |:--- |:--- |
       | A |Primární zařízení |
       | B |Skříň EBOD |
-      | 1 |Řadič 0 |
-      | 2 |Řadič 1 |
+      | 1 |Kontroler 0 |
+      | 2 |Kontroler 1 |
       | 3 |Kontroleru EBOD 0 |
       | 4 |Kontroleru EBOD 1 |
       | 5, 6 |Portů SAS proti na primární skříň (EBOD označené) |

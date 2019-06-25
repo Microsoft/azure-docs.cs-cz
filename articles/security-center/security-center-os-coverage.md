@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 6/03/2019
 ms.author: monhaber
-ms.openlocfilehash: c5b5b88ee1334ac6d7b39b8ad53bd020e6042454
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: e2d66db2ae3c379db86d40603d919489fdf15eed
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480536"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67144264"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>Platformy a funkcí podporovaných službou Azure Security Center
 
@@ -78,7 +78,7 @@ Podporují se také virtuální počítače, na kterých běží v cloudové slu
 > [!div class="mx-tableFixed"]
 > 
 
-|Server|Windows||Linux||||Ceny|
+|Server|Windows|||Linux|||Ceny|
 |----|----|----|----|----|----|----|----|
 |**Prostředí**|**Azure**||**Non-Azure**|**Azure**||**Non-Azure**||
 ||**Virtuální počítač**|**Škálovací sada virtuálních počítačů**||**Virtuální počítač**|**Škálovací sada virtuálních počítačů**|

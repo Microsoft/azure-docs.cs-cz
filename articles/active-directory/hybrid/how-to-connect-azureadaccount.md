@@ -16,12 +16,12 @@ ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d68c190b51b9bbb5faf21e8ea75b07d1a82005e5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0ea151ee79fccd66f1d9422744d8f57829677ec0
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64571416"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204536"
 ---
 # <a name="change-the-azure-ad-connector-account-password"></a>Změna hesla účtu konektoru služby Azure AD
 Účet Azure AD Connector by měla být služba zdarma. Pokud potřebujete resetovat svoje přihlašovací údaje, toto téma je za vás. Například pokud je globální správce omylem resetovat heslo k účtu pomocí Powershellu.
@@ -39,12 +39,12 @@ Tato rutina resetuje heslo pro účet služby a aktualizovat ho ve službě Azur
 ## <a name="known-issues-these-steps-can-solve"></a>Známé problémy můžete vyřešit tyto kroky
 Tato část se seznam chyb hlášených zákazníky, které byly odstraněny pověření obnovit do účtu Azure AD Connector.
 
-- - -
+---
 Událost 6900  
 Na serveru došlo k neočekávané chybě při zpracování oznámení o změně hesla:  
 AADSTS70002: Chyba ověřování přihlašovacích údajů. AADSTS50054: K ověřování se používá staré heslo.
 
-- - -
+---
 Událost 659  
 Chyba při načítání konfigurace synchronizace zásad hesel. Microsoft.IdentityModel.Clients.ActiveDirectory.AdalServiceException:  
 AADSTS70002: Chyba ověřování přihlašovacích údajů. AADSTS50054: K ověřování se používá staré heslo.

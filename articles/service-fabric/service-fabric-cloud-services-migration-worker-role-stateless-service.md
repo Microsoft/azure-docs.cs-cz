@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 10fb44b0e76282ad78e7687beaa2e50e819e5cd9
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62109997"
 ---
 # <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>Příručka k převodu webové a pracovní role pro bezstavové služby Service Fabric
@@ -136,7 +136,7 @@ Nastavení konfigurace v rámci cloudových služeb se nastavují pro roli virtu
 Každá z těchto balíčků lze nezávisle označovat verzí a upgradovat. Podobně jako cloudové služby, balíček config je možné programově přistupovat přes rozhraní API a události jsou k dispozici pro oznámení služby změní konfiguraci balíčku. Souboru Settings.xml lze použít pro konfigurace klíč hodnota a programový přístup podobně jako v části Nastavení aplikace ze souboru App.config. Ale na rozdíl od služeb Cloud Services, Service Fabric config balíček může obsahovat všechny konfigurační soubory v libovolném formátu, ať už jde o XML, JSON, YAML nebo vlastní binární formát. 
 
 ### <a name="accessing-configuration"></a>Přístup ke konfiguraci
-#### <a name="cloud-services"></a>Cloud Services
+#### <a name="cloud-services"></a>Cloudové služby
 Nastavení konfigurace ze ServiceConfiguration.*.cscfg přístupné prostřednictvím `RoleEnvironment`. Tato nastavení jsou globálně k dispozici pro všechny instance rolí ve stejném nasazení cloudové služby.
 
 ```csharp
@@ -168,7 +168,7 @@ using (StreamReader reader = new StreamReader(Path.Combine(configPackage.Path, "
 ```
 
 ### <a name="configuration-update-events"></a>Události konfigurace služby aktualizací
-#### <a name="cloud-services"></a>Cloud Services
+#### <a name="cloud-services"></a>Cloudové služby
 `RoleEnvironment.Changed` Událost se používá pro všechny instance rolí upozornit, když dojde ke změně v prostředí, jako je například změna konfigurace. To umožňuje využívat aktualizace konfigurace bez recyklace role instance nebo restartování pracovního procesu.
 
 ```csharp
@@ -208,13 +208,13 @@ private void CodePackageActivationContext_ConfigurationPackageModifiedEvent(obje
 ## <a name="startup-tasks"></a>Úlohy po spuštění
 Úlohy po spuštění jsou akce prováděné před spuštěním aplikace. Úlohy po spuštění se obvykle používá ke spouštění skriptů instalace použitím zvýšených oprávnění. Cloud Services a Service Fabric podporovat úlohy při spuštění. Hlavní rozdíl je, že v cloudových službách, úlohy po spuštění se váže k virtuálnímu počítači protože je součástí role instance, zatímco v Service Fabric úlohy po spuštění je vázán na službu, která není vázána k žádné konkrétní virtuální počítač.
 
-| Service Fabric | Cloud Services |
+| Service Fabric | Cloudové služby |
 | --- | --- |
 | Umístění konfigurace |ServiceDefinition.csdef |
 | Oprávnění |"omezené" nebo "se zvýšenými oprávněními" |
 | Pořadí úloh |"jednoduchý", "pozadí", "popředí" |
 
-### <a name="cloud-services"></a>Cloud Services
+### <a name="cloud-services"></a>Cloudové služby
 V cloudových službách je nakonfigurovaný vstupní bod spuštění podle role v ServiceDefinition.csdef. 
 
 ```xml

@@ -16,10 +16,10 @@ ms.date: 02/21/2019
 ms.author: banders
 ms.custom: seodec18
 ms.openlocfilehash: 245e5ca6e2d7d1f48951d63ba6539180a35f1358
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65604164"
 ---
 # <a name="view-the-tax-documents-for-your-microsoft-customer-agreement"></a>Zobrazit daňové doklady pro smlouvy Microsoft zákazníka

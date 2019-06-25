@@ -17,11 +17,11 @@ ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
 ms.openlocfilehash: e1ed419892412c1fb9334fed74b82c53154723ed
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60252425"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64708414"
 ---
 # <a name="how-to-create-an-unmanaged-vm-image-from-an-azure-vm"></a>Vytvoření nespravované image virtuálního počítače z virtuálního počítače Azure
 
@@ -32,7 +32,7 @@ Tento článek popisuje, jak používat Azure PowerShell k vytvoření image gen
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="generalize-the-vm"></a>Generalizace virtuálního počítače 
-Tato část ukazuje, jak zobecnit pro použití jako image virtuálního počítače Windows. Zobecňuje se virtuální počítač odebere všechny osobní informace o vašem účtu, mimo jiné a připraví počítač, který má být použit jako obrázek. Podrobnosti o nástroji Sysprep najdete v tématu [použití nástroje Sysprep: Úvod](https://technet.microsoft.com/library/bb457073.aspx).
+Tato část ukazuje, jak zobecnit pro použití jako image virtuálního počítače Windows. Zobecňuje se virtuální počítač odebere všechny osobní informace o vašem účtu, mimo jiné a připraví počítač, který má být použit jako obrázek. Další informace o nástroji Sysprep najdete v tématu [Použití nástroje Sysprep: Úvod](https://technet.microsoft.com/library/bb457073.aspx).
 
 Ujistěte se, že na počítači spuštěná role serveru jsou podporované pomocí nástroje Sysprep. Další informace najdete v tématu [podpory nástroje Sysprep pro role serveru](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
 
@@ -89,7 +89,7 @@ Můžete také zobecnit virtuální počítač s Linuxem pomocí `sudo waagent -
     Stop-AzVM -ResourceGroupName <resourceGroup> -Name <vmName>
     ```
    
-    *Stav* pro virtuální počítač v Azure portal se změní z **Zastaveno** k **zastaveno (přidělení zrušeno)**.
+    *Stav* pro virtuální počítač v Azure portal se změní z **Zastaveno** k **zastaveno (přidělení zrušeno)** .
 2. Nastavte stav virtuálního počítače na **zobecněno**. 
    
     ```powershell

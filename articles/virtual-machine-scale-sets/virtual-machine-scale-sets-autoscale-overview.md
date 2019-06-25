@@ -17,10 +17,10 @@ ms.date: 05/29/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 610f3073594f73f04a68865593be6bfb4188d4f1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60883666"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Nastaví přehled automatického škálování díky škálování virtuálních počítačů Azure
@@ -56,7 +56,7 @@ Pravidla automatického škálování můžete použít metriky z jednoho z nás
 |----------------------|------------------------------------------------------------------------------------------------------------------------------|
 | Aktuální škálovací sady    | Pro metriky hostitele, které nevyžadují žádné další agenty do nainstalovány nebo nakonfigurovány.                                  |
 | Účet úložiště      | Diagnostické rozšíření Azure zapíše do úložiště Azure, který je pak zpracován k aktivaci pravidla automatického škálování metriky výkonu. |
-| Fronta Service Bus    | Vaše aplikace ani jiné součásti může přenášet zprávy ve frontě služby Azure Service Bus na aktivační událost pravidla.                   |
+| Fronty služby Service Bus    | Vaše aplikace ani jiné součásti může přenášet zprávy ve frontě služby Azure Service Bus na aktivační událost pravidla.                   |
 | Application Insights | Instrumentační balíček, nainstalované ve vaší aplikaci, která jsou streamována metriky přímo z aplikace.                         |
 
 
@@ -68,10 +68,10 @@ Následující metriky hostitele jsou k dispozici pro použití při vytvářen�
 | Procento CPU            |
 | Síťové vstupy                |
 | Síťové výstupy               |
-| Čtení z disku – bajty           |
-| Zápis na disk – bajty          |
-| Čtení z disku – operace/s  |
-| Zápis na disk – operace/s |
+| Bajty čtení disku           |
+| Bajty zápisu disku          |
+| Čtení z disku operace/s  |
+| Operace zápisu disku/s |
 | Zbývající kredity CPU     |
 | Spotřebované kredity CPU      |
 
@@ -84,17 +84,17 @@ Při vytváření pravidel automatického škálování pro danou metriku monito
 | Maximum          |
 | Celkem            |
 | Poslední             |
-| Počet            |
+| Count            |
 
 Pravidla automatického škálování se pak zobrazí, když metriky se porovná s definovanou prahovou hodnotu s jedním z následujících operátorů:
 
 | Operátor                 |
 |--------------------------|
 | Větší než             |
-| Větší než nebo rovno |
-| Méně než                |
+| Je větší nebo rovno |
+| Je menší než                |
 | Je menší nebo rovno    |
-| Rovno                 |
+| Je rovno                 |
 | Není rovno             |
 
 

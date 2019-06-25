@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: justhu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8db590c8c79db9bc47edbbef69a11d3b0e4b51f6
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 9035cc629a11c125c1b6351bd4bff9f5576f7baf
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65540351"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111072"
 ---
 # <a name="tenancy-in-azure-active-directory"></a>Architektura v Azure Active Directory
 
@@ -38,8 +38,8 @@ Na webu Azure Portal můžete nakonfigurovat aplikaci tak, aby se jedním tenant
 
 | Cílová skupina | Jeden nebo více-tenant | Kdo se může přihlásit | 
 |----------|--------| ---------|
-| V tomto adresáři pouze účty | Jeden tenant | Vaši aplikaci nebo rozhraní API můžou používat všechny účty uživatelů a hostů ve vašem adresáři.<br>*Tuto možnost použijte, pokud vaší cílovou skupinou probíhá interně ve vaší organizaci.* |
-| Účty v libovolném adresáři Azure AD | Víc klientů | Všech uživatelů a hostů pomocí pracovního nebo školního účtu společnosti Microsoft můžete použít, vaše aplikace nebo rozhraní API. To zahrnuje školy a podniky, které používají Office 365.<br>*Tuto možnost použijte, pokud vaší cílovou skupinou obchodní nebo vzdělávací zákazníků.* |
+| V tomto adresáři pouze účty | Jeden tenant | Vaše aplikace nebo rozhraní API, můžete použít všechny uživatele a účet hosta. ve vašem adresáři.<br>*Tuto možnost použijte, pokud vaší cílovou skupinou probíhá interně ve vaší organizaci.* |
+| Účty v ke každému adresáři Azure AD | Víc klientů | Všech uživatelů a hostů pomocí pracovního nebo školního účtu společnosti Microsoft můžete použít, vaše aplikace nebo rozhraní API. To zahrnuje školy a podniky, které používají Office 365.<br>*Tuto možnost použijte, pokud vaší cílovou skupinou obchodní nebo vzdělávací zákazníků.* |
 | Účty v jakékoli adresáře služby Azure AD a osobní účty Microsoft (jako je Skype, Xbox, Outlook.com) | Víc klientů | Všichni uživatelé s pracovní nebo školní nebo osobní účet Microsoft můžete použít, vaše aplikace nebo rozhraní API. Zahrnuje školy a podniky, které používají Office 365, jakož i osobní účty, které se používají k přihlášení ke službám, jako jsou Xbox a Skype.<br>*Tuto možnost použijte k cílení nejširší sadu účtů Microsoft.* | 
 
 ## <a name="best-practices-for-multi-tenant-apps"></a>Osvědčené postupy pro aplikace s více tenanty

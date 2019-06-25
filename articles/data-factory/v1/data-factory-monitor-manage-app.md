@@ -14,10 +14,10 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 5b70edd4f65538b52c70881258bc500a34b04d80
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60826423"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>Monitorování a Správa kanálů Azure Data Factory pomocí aplikace pro monitorování a Správa
@@ -188,7 +188,7 @@ Okna aktivity může být v jednom z následujících stavů:
 </tr>
 <tr>
 <tr>
-<td rowspan="2">Probíhá</td><td>Ověřování platnosti</td><td>Probíhá ověřování.</td>
+<td rowspan="2">Probíhá zpracování</td><td>Probíhá ověřování</td><td>Probíhá ověřování.</td>
 </tr>
 <td>-</td>
 <td>Okno aktivity se zpracovává.</td>
@@ -200,12 +200,12 @@ Okna aktivity může být v jednom z následujících stavů:
 <td>Zrušeno</td><td>V okně aktivita bylo zrušeno uživatelem.</td>
 </tr>
 <tr>
-<td>Ověření</td><td>Ověření selhalo.</td>
+<td>Ověření</td><td>Ověření se nezdařilo.</td>
 </tr>
 <tr>
 <td>-</td><td>Okno aktivity se nepodařilo vygenerovat nebo ověřit.</td>
 </tr>
-<td>Připraveno</td><td>-</td><td>Okna aktivity je připravený k použití.</td>
+<td>Připraven</td><td>-</td><td>Okna aktivity je připravený k použití.</td>
 </tr>
 <tr>
 <td>Přeskočeno</td><td>-</td><td>V okně Aktivita nebyla zpracována.</td>

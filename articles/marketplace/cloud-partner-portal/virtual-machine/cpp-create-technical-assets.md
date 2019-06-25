@@ -8,17 +8,17 @@ ms.topic: article
 ms.date: 08/20/2018
 ms.author: pabutler
 ms.openlocfilehash: 6113c10cd152a22bd31e7212d86925b0c2107e58
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64938418"
 ---
 # <a name="create-technical-assets-for-a-virtual-machine-offer"></a>Vytvoření technických prostředků pro nabídky virtuálních počítačů
 
 Tato část vás provede vytvořením a konfigurace technických prostředků pro nabídky virtuálních počítačů (VM) pro Azure Marketplace.  Virtuální počítač obsahuje dvě součásti: řešení virtuálního pevného disku (VHD) a volitelné přidružené datové disky.  
 
-- *Virtuální pevné disky (VHD)*, který obsahuje operační systém a řešení, kterou nasadíte v rámci vaší nabídky Azure Marketplace. Proces přípravy virtuálního pevného disku se liší v závislosti na tom, jestli je založenou na Linuxu a Windows, nebo virtuální počítač založený na vlastní.
+- *Virtuální pevné disky (VHD)* , který obsahuje operační systém a řešení, kterou nasadíte v rámci vaší nabídky Azure Marketplace. Proces přípravy virtuálního pevného disku se liší v závislosti na tom, jestli je založenou na Linuxu a Windows, nebo virtuální počítač založený na vlastní.
 - *Datové disky* představují vyhrazené, trvalé úložiště pro virtuální počítač. Proveďte *není* řešení virtuálního pevného disku (například `C:` jednotky) k ukládání informací o trvalé.
 
 Image virtuálního počítače obsahuje jeden operační systém disku a nula nebo více datových disků. Jeden virtuální pevný disk je potřeba na disk. I prázdné datové disky vyžadují vytvoření virtuálního pevného disku.
@@ -52,9 +52,9 @@ Kromě toho doporučujeme přidat následující nástroje do svého vývojovéh
 
 -   [Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
 -   [Visual Studio Code](https://code.visualstudio.com/)
-    *   Linka: [Nástroje Azure Resource Manageru](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
-    *   Linka: [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
-    *   Linka: [Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
+    *   Rozšíření: [Nástroje Azure Resource Manageru](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
+    *   Rozšíření: [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
+    *   Rozšíření: [Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
 
 Doporučujeme také kontrola nástroje dostupné v [Azure Developer Tools](https://azure.microsoft.com/tools/) stránky a pokud používáte Visual Studio [Visual Studio Marketplace](https://marketplace.visualstudio.com/).
 

@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 10/19/2016
 ms.author: rclaus
 ms.openlocfilehash: ae8315b2a484cddc500b5c2dd02a019cb4f46d8e
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62127085"
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>Možnosti překladu názvů DNS pro virtuální počítače s Linuxem v Azure
@@ -72,7 +72,7 @@ Ukládání do mezipaměti balíčků, jako je například dnsmasq, několik rů
 **Ubuntu (resolvconf používá)**
   * Nainstalujte balíček dnsmasq ("sudo apt-get install dnsmasq").
 
-**SUSE (používá netconf)**:
+**SUSE (používá netconf)** :
 1. Nainstalujte balíček dnsmasq ("sudo zypperu instalace dnsmasq").
 2. Povolte službu dnsmasq ("Povolit dnsmasq.service systemctl").
 3. Spusťte službu dnsmasq ("start systemctl dnsmasq.service").

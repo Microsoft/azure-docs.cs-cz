@@ -4,20 +4,22 @@ description: Export šablony Azure Resource Manageru z prostředků ve vašem p�
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 05/09/2019
+ms.date: 06/19/2019
 ms.author: tomfitz
-ms.openlocfilehash: ea9499da3dac67635a48704f439f6592c6ed467e
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: e482bf99013b9bec9dfbf64c4e8ad5a8a43ff540
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65515381"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67296310"
 ---
 # <a name="single-and-multi-resource-export-to-template-in-azure-portal"></a>Export jednoho a víc prostředků šablony na webu Azure portal
 
 Chcete-li pomoci v oblastech vytváření šablon Azure Resource Manageru, můžete vyexportovat šablonu z existujících prostředků. Vyexportované šablony vám pomůže pochopit syntaxi JSON a vlastnosti, které prostředky nasazovat. K automatizaci budoucí nasazení, začněte s vyexportované šablony a upravit ji pro váš scénář.
 
 Resource Manager umožňuje vybrat jeden nebo více prostředků pro export do šablony. Můžete se zaměřit na přesně prostředky, které potřebujete v šabloně.
+
+Tento článek ukazuje, jak exportovat šablony na portálu. Můžete také použít [rozhraní příkazového řádku Azure](manage-resource-groups-cli.md#export-resource-groups-to-templates), [prostředí Azure PowerShell](manage-resource-groups-powershell.md#export-resource-groups-to-templates), nebo [rozhraní REST API](/rest/api/resources/resourcegroups/exporttemplate).
 
 ## <a name="choose-the-right-export-option"></a>Zvolte možnost správné exportu
 
@@ -88,7 +90,7 @@ Chcete-li exportovat jeden prostředek:
 
 1. Po úspěšném ověření, ale před zahájením nasazení, vyberte **stáhnout šablonu pro automatizaci**.
 
-   ![Stáhnout šablonu](./media/export-template-portal/download-before-deployment.png)
+   ![Stažení šablony](./media/export-template-portal/download-before-deployment.png)
 
 1. Šablona se zobrazí a je k dispozici ke stažení.
 
@@ -110,11 +112,11 @@ Můžete exportovat šablonu, která byla použita k nasazení existujících pr
 
 1. Vyberte **šablony**. Šablona použitá pro toto nasazení se zobrazí a je k dispozici ke stažení.
 
-   ![Vybrat šablonu](./media/export-template-portal/show-template-from-history.png)
+   ![Vyberte šablonu](./media/export-template-portal/show-template-from-history.png)
 
 ## <a name="next-steps"></a>Další postup
 
-- Další Azure Resource Manageru najdete v tématu [přehled Azure Resource Manageru](./resource-group-overview.md).
+- Zjistěte, jak exportovat šablony s [rozhraní příkazového řádku Azure](manage-resource-groups-cli.md#export-resource-groups-to-templates), [prostředí Azure PowerShell](manage-resource-groups-powershell.md#export-resource-groups-to-templates), nebo [rozhraní REST API](/rest/api/resources/resourcegroups/exporttemplate).
 - Seznamte se se syntaxí šablony Resource Manageru, najdete v článku [Princip struktury a syntaxe šablon Azure Resource Manageru](./resource-group-authoring-templates.md).
 - Zjistěte, jak vyvíjet šablony, najdete v článku [podrobné kurzy](/azure/azure-resource-manager/).
 - Schémata šablon Azure Resource Manageru najdete v tématu [referenčními informacemi k šablonám](/azure/templates/).

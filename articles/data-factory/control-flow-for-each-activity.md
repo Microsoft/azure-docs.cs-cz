@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: shlo
 ms.openlocfilehash: c5c12a66e8f66195a096588d779648d7486ab47b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60808761"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>Aktivita ForEach ve službě Azure Data Factory
@@ -71,12 +71,12 @@ Vlastnosti jsou popsány dále v tomto článku. Vlastnost položky je kolekce a
 
 Vlastnost | Popis | Povolené hodnoty | Požaduje se
 -------- | ----------- | -------------- | --------
-jméno | Název pro každou aktivitu. | String | Ano
+name | Název pro každou aktivitu. | String | Ano
 type | Musí být nastaveno na **ForEach** | String | Ano
 isSequential | Určuje, zda smyčky by měl provádět sekvenčně nebo paralelně.  Maximálně 20 průchod cyklem lze provést najednou paralelně). Například, pokud máte iterace aktivity ForEach přes 10 různé zdroje a jímky datové sady s aktivitou kopírování **isSequential** nastavena na hodnotu False, jsou všechny kopie spouštěny najednou. Výchozí hodnota je False. <br/><br/> "IsSequential" je nastavený na hodnotu False, ujistěte se, že se správnou konfiguraci, kterou chcete spustit více spustitelných souborů. V opačném případě by měl tuto vlastnost použít opatrně vyhnout konflikty při zápisu. Další informace najdete v tématu [paralelní provádění](#parallel-execution) oddílu. | Boolean | Ne. Výchozí hodnota je False.
 batchCount | Počet v dávce má být použit pro řízení počet paralelních spuštění (Pokud isSequential je nastavena na hodnotu false). | Celé číslo (maximální 50) | Ne. Výchozí hodnota je 20.
-Items | Výraz, který vrátí pole JSON na provést iteraci. | Výraz (který vrací pole JSON) | Ano
-Aktivity | Činnosti, které mají být provedeny. | Seznam aktivit | Ano
+Položky | Výraz, který vrátí pole JSON na provést iteraci. | Výraz (který vrací pole JSON) | Ano
+Činnosti | Činnosti, které mají být provedeny. | Seznam aktivit | Ano
 
 ## <a name="parallel-execution"></a>Paralelní provádění
 Pokud **isSequential** je nastavena na hodnotu false, aktivita iteruje paralelně s délkou maximálně 20 souběžných iterací. Toto nastavení by měl používat opatrně. Souběžné iterací psaní do stejné složky, ale jiné soubory, je tento přístup v pořádku. Souběžné iterací souběžně psaní přesně stejný soubor, tento přístup pravděpodobně způsobí chybu. 
@@ -482,7 +482,7 @@ Nejprve deklarujte `array` _proměnné_ v kanálu. Potom vyvolat _připojit prom
 
 Tady jsou některá omezení aktivita ForEach a navrhovaná alternativní řešení.
 
-| Omezení | Alternativní řešení |
+| Omezení | Alternativní řešení: |
 |---|---|
 | Nelze vnořovat smyčku ForEach uvnitř jiného smyčky ForEach (nebo do dokud smyčky). | Navrhněte dvouúrovňová kanálu, kde vnější kanál s vnější smyčky ForEach Iteruje přes kanál vnitřní s vnořené smyčky. |
 | Aktivita ForEach může mít nejvýše `batchCount` 50 pro paralelní zpracování a maximálně 100 000 položek. | Navrhněte dvouúrovňová kanálu, kde vnější kanálu s aktivitou ForEach Iteruje přes vnitřní kanálu. |

@@ -1,5 +1,5 @@
 ---
-title: Co je podmínka umístění podmíněného přístupu Azure Active Directory? | Dokumenty Microsoft
+title: Co je podmínka umístění v Azure Active Directory podmíněného přístupu? | Dokumenty Microsoft
 description: Další informace o použití podmínka umístění pro řízení přístupu k vašim cloudovým aplikacím založené na síťovém umístění uživatele.
 services: active-directory
 ms.service: active-directory
@@ -12,14 +12,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98588e0c25439fd4988fe39e06e7042cfa9113cb
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: bd62cda209a8ac95a41fa271ce3a96001a3b4811
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66305682"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164778"
 ---
-# <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Co je podmínka umístění podmíněného přístupu Azure Active Directory? 
+# <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Co je podmínka umístění v Azure Active Directory podmíněného přístupu? 
 
 S [podmíněného přístupu Azure Active Directory (Azure AD)](../active-directory-conditional-access-azure-portal.md), můžete určit, jak Autorizovaní uživatelé můžou přistupovat k vašim cloudovým aplikacím. Podmínka umístění zásad podmíněného přístupu můžete spojit nastavení ovládacích prvků přístupu do síťových umístění vašich uživatelů.
 
@@ -56,7 +56,10 @@ Pojmenované umístění má následující komponenty:
 - **Země nebo oblasti** – tato možnost umožňuje vybrat jeden nebo více zemi nebo oblast pro definování pojmenovaných umístění.
 - **Včetně neznámých oblastí** – některé IP adresy, které nejsou namapované na konkrétní zemi nebo oblast. Tato možnost umožňuje zvolit, pokud se tyto IP adresy, měly by být součástí pojmenované umístění. Toto nastavení použijte, když zásady pomocí pojmenovaných umístění by se měly používat pro neznámými umístěními.
 
-Počet pojmenovaná umístění, které můžete nakonfigurovat je omezen velikostí související objekt ve službě Azure AD. Organizace, můžete nakonfigurovat až 90 pojmenovaná umístění, konfigurace jednotlivých s až 1200 rozsahy IP adres.
+Počet pojmenovaná umístění, které můžete nakonfigurovat je omezen velikostí související objekt ve službě Azure AD. Můžete nakonfigurovat umístěních v závislosti na následující omezení:
+
+- Jeden s názvem umístění s až 1200 rozsahy IP adres.
+- Maximálně 90 pojmenovaná umístění s jeden rozsah IP adres přiřazené ke každému z nich.
 
 Zásady podmíněného přístupu platí pro přenosy protokolu IPv4 a IPv6. Aktuálně pojmenovaná umístění neumožňují rozsahy IPv6 potřeba nakonfigurovat. Toto omezení způsobí, že v následujících případech:
 
@@ -113,7 +116,7 @@ Pomocí této možnosti můžete vybrat jeden nebo více pojmenovaná umístěn�
 
 ### <a name="when-is-a-location-evaluated"></a>Když je vyhodnocen na místě?
 
-Vyhodnotí se zásady podmíněného přístupu při:
+Zásady podmíněného přístupu se vyhodnocují při:
 
 - Zpočátku přihlášení uživatele k webové aplikaci app, mobily nebo stolní počítače.
 - Desktopové nebo mobilní aplikaci, která používá moderní ověřování, obnovovací token používá k získání nového tokenu přístupu. Ve výchozím nastavení je tato kontrola jednou za hodinu.
@@ -145,5 +148,5 @@ Rozhraní API a PowerShell není dosud podporována pro pojmenovaná umístění
 
 ## <a name="next-steps"></a>Další postup
 
-- Pokud chcete vědět, jak nakonfigurovat zásady podmíněného přístupu najdete v tématu [vyžadovat vícefaktorové ověřování pro konkrétní aplikace s podmíněným přístupem Azure Active Directory](app-based-mfa.md).
-- Pokud jste připraveni nakonfigurovat zásady podmíněného přístupu pro vaše prostředí, přečtěte si [osvědčené postupy pro podmíněný přístup v Azure Active Directory](best-practices.md).
+- Pokud chcete vědět, jak nakonfigurovat zásady podmíněného přístupu najdete v tématu [vyžadovat vícefaktorové ověřování pro konkrétní aplikace, pomocí Azure Active Directory podmíněného přístupu](app-based-mfa.md).
+- Pokud jste připraveni ke konfiguraci zásad podmíněného přístupu pro vaše prostředí, najdete v článku [osvědčené postupy pro podmíněný přístup v Azure Active Directory](best-practices.md).

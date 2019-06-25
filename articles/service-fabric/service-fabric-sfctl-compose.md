@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
 ms.openlocfilehash: 4b5cbb4a24b61de7e64a52ef950deedab3eec263
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60837262"
 ---
 # <a name="sfctl-compose"></a>sfctl compose
@@ -28,11 +28,11 @@ Vytvářet, odstraňovat a spravovat aplikace Docker Compose.
 
 |Příkaz|Popis|
 | --- | --- |
-| vytvoření | Service Fabric vytvoří nasazení compose. |
+| create | Service Fabric vytvoří nasazení compose. |
 | list | Získá seznam compose nasazení vytvořeno v clusteru Service Fabric. |
 | odebrat | Odstraní existující Service Fabric tvoří nasazení z clusteru. |
 | status | Získá informace o službě Service Fabric nasazení compose. |
-| upgradovat | Spustí se upgrade nasazení compose v clusteru Service Fabric. |
+| upgrade | Spustí se upgrade nasazení compose v clusteru Service Fabric. |
 | upgrade-rollback | Spustí vrácení nasazení compose upgradovat v clusteru Service Fabric. |
 | upgrade-status | Získá podrobnosti pro upgrade na nejnovější provést na této platformě Service Fabric nasazení compose. |
 

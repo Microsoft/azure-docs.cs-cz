@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
 ms.openlocfilehash: bced6a9e6c59dc32657dbabef986e29e0447b28b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60947198"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Sestava odhadu nákladů z Plánovače nasazení služby Azure Site Recovery 
@@ -125,7 +125,7 @@ Ruční přidání virtuálních počítačů:
 
     i. **Azure Hybrid Use Benefit**
 
-1. Pokud chcete použít stejnou hodnotu pro všechny virtuální počítače v tabulce, vyberte **Apply to all** (Použít u všech) pro sloupce **Number of DR-Drills in a year**, **Each DR-Drill duration (Days)**, **Data redundancy** a **Azure Hybrid Use Benefit**.
+1. Pokud chcete použít stejnou hodnotu pro všechny virtuální počítače v tabulce, vyberte **Apply to all** (Použít u všech) pro sloupce **Number of DR-Drills in a year**, **Each DR-Drill duration (Days)** , **Data redundancy** a **Azure Hybrid Use Benefit**.
 
 1. Výběrem možnosti **Re-calculate cost** (Přepočítat náklady) aktualizujte náklady.
 
@@ -133,17 +133,17 @@ Ruční přidání virtuálních počítačů:
 
 **Počet virtuálních počítačů**: Počet virtuálních počítačů, které odpovídají konfiguraci. Počet existujících virtuálních počítačů můžete aktualizovat, pokud podobná konfigurace virtuálních počítačů není profilovaná, ale je chráněná.
 
-**IaaS size (Recommendation)**: Velikost role virtuálního počítače pro kompatibilní virtuální počítač, který nástroj doporučuje. 
+**IaaS size (Recommendation)** : Velikost role virtuálního počítače pro kompatibilní virtuální počítač, který nástroj doporučuje. 
 
-**Velikost IaaS (Your selection)**: Výchozí velikost je stejná jako doporučená velikost role virtuálního počítače. Roli můžete na základě vašich požadavků změnit. Náklady na výpočetní výkon jsou založené na vybrané velikosti role virtuálního počítače.
+**Velikost IaaS (Your selection)** : Výchozí velikost je stejná jako doporučená velikost role virtuálního počítače. Roli můžete na základě vašich požadavků změnit. Náklady na výpočetní výkon jsou založené na vybrané velikosti role virtuálního počítače.
 
 **Typ úložiště**: Typ úložiště, které je virtuální počítač využívá. Je to Storage úrovně Standard nebo Premium.
 
-**Velikost virtuálního počítače celková velikost úložiště (GB)**: Celková velikost úložiště virtuálního počítače.
+**Velikost virtuálního počítače celková velikost úložiště (GB)** : Celková velikost úložiště virtuálního počítače.
 
 **Počet postupů zotavení po Havárii za rok**: Počet, kolikrát je provést zotavení po Havárii za rok. Ve výchozím nastavení je to čtyřikrát za rok. Můžete změnit období pro konkrétní virtuální počítače nebo použít novou hodnotu pro všechny virtuální počítače. Zadejte novou hodnotu do horního řádku a vyberte **Apply to all** (Použít u všech). Na základě počtu postupů zotavení po havárii za rok a délky trvání jednotlivých postupů se vypočítají celkové náklady na postupy zotavení po havárii. 
 
-**Každý DR-Drill duration (Days)**: Doba trvání jednotlivých zotavení po Havárii. Ve výchozím nastavení je to 7 dnů vždy po 90 dnech, v souladu s [výhodou Software Assurance pro zotavení po havárii](https://azure.microsoft.com/pricing/details/site-recovery). Můžete změnit období pro konkrétní virtuální počítače nebo použít novou hodnotu pro všechny virtuální počítače. Zadejte novou hodnotu do horního řádku a vyberte **Apply to all** (Použít u všech). Celkové náklady na postupy zotavení po havárii se vypočítají na základě počtu postupů zotavení po havárii za rok a délky trvání jednotlivých postupů.
+**Každý DR-Drill duration (Days)** : Doba trvání jednotlivých zotavení po Havárii. Ve výchozím nastavení je to 7 dnů vždy po 90 dnech, v souladu s [výhodou Software Assurance pro zotavení po havárii](https://azure.microsoft.com/pricing/details/site-recovery). Můžete změnit období pro konkrétní virtuální počítače nebo použít novou hodnotu pro všechny virtuální počítače. Zadejte novou hodnotu do horního řádku a vyberte **Apply to all** (Použít u všech). Celkové náklady na postupy zotavení po havárii se vypočítají na základě počtu postupů zotavení po havárii za rok a délky trvání jednotlivých postupů.
  
 **Typ operačního systému**: Typ operačního systému (OS) virtuálního počítače. Je to Windows nebo Linux. Pokud je jako typ operačního systému nastavený systém Windows, je pro příslušný počítač možné využít Zvýhodněné hybridní využití Azure. 
 
@@ -155,7 +155,7 @@ Ruční přidání virtuálních počítačů:
 
 **Náklady na replikaci stálé**: Náklady na úložiště pro replikaci.
 
-**Total DR-Drill cost (average)**: Náklady výpočetní výkon a úložiště pro nácvik zotavení po Havárii.
+**Total DR-Drill cost (average)** : Náklady výpočetní výkon a úložiště pro nácvik zotavení po Havárii.
 
 **Náklady na licence Azure Site Recovery**: Licence Site Recovery nákladů.
 

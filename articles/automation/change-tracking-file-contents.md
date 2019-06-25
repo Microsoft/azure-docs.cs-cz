@@ -10,10 +10,10 @@ ms.date: 07/03/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: dae0ea3e564a3dfafcd7f072f9b0d8854df17ed7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61304220"
 ---
 # <a name="view-contents-of-a-file-that-is-being-tracked-with-change-tracking"></a>Zobrazit obsah souboru, který je sledován pomocí řešení Change Tracking
@@ -34,7 +34,7 @@ Sledování souborů obsahu vám umožní zobrazit obsah souboru před a po změ
 2. V horní nabídce vyberte **upravit nastavení**.
 3. Vyberte **obsah souboru** a klikněte na tlačítko **odkaz**. Tím se otevře **přidat umístění obsahu pro řešení Change Tracking** podokně.
 
-   ![povolit](./media/change-tracking-file-contents/enable.png)
+   ![Povolit](./media/change-tracking-file-contents/enable.png)
 
 4. Vyberte předplatné a účet úložiště pro ukládání obsahu souboru. Pokud chcete povolit sledování obsahu souboru pro všechny existující sledované soubory, vyberte **na** pro **nahrát obsah souboru pro všechna nastavení**. Toto můžete změnit pro každé cesty souboru později.
 

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
 ms.openlocfilehash: c6fc363a7ab9de215647e371a9d3c846f8688bd5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61466319"
 ---
 # <a name="widevine-license-template-overview"></a>Přehled šablon licencování Widevine 
@@ -60,11 +60,11 @@ Azure Media Services umožňuje šifrování obsahu pomocí **Google Widevine**.
 
 ## <a name="json-message"></a>Zprávy JSON
 
-| Název | Hodnota | Popis |
+| Name | Hodnota | Popis |
 | --- | --- | --- |
 | datová část |Řetězec s kódováním base64 |Požadavek na licenční odeslány klientem. |
 | content_id |Řetězec s kódováním base64 |Použít k odvození klíče ID a obsah identifikátor klíče pro každý content_key_specs.track_type. |
-| zprostředkovatel |string |Použít k vyhledání obsahu klíčů a zásad. Pokud Microsoft doručení klíče slouží k doručování licencí Widevine, tento parametr je ignorován. |
+| Zprostředkovatel |string |Použít k vyhledání obsahu klíčů a zásad. Pokud Microsoft doručení klíče slouží k doručování licencí Widevine, tento parametr je ignorován. |
 | název_zásad |string |Název zásady dříve zaregistrovaný. Volitelné. |
 | allowed_track_types |Výčet |SD_ONLY nebo SD_HD. Ovládací prvky, které obsah klíče jsou součástí licencí. |
 | content_key_specs |Pole JSON struktury, najdete v části "Obsahu specifikace klíče."  |Citlivější ovládací prvek, na které symetrické klíče k vrácení. Další informace najdete v části "Obsahu specifikace klíče." Lze zadat pouze jednu z hodnot allowed_track_types a content_key_specs. |
@@ -78,7 +78,7 @@ Pokud již existující zásady existují, není nutné zadat jakoukoliv hodnotu
 
 Každá hodnota content_key_specs je nutné zadat pro všechny stopy, bez ohledu na to use_policy_overrides_exclusively možnost. 
 
-| Název | Hodnota | Popis |
+| Name | Hodnota | Popis |
 | --- | --- | --- |
 | content_key_specs. track_type |string |Název typu sledování. Pokud content_key_specs je zadaná v žádosti o licenci, ujistěte se, že chcete určit, že všechny typy sledovat explicitně. Pokud tak neučiníte za následek selhání při přehrávání za 10 sekund. |
 | content_key_specs  <br/> security_level |uint32 |Definuje požadavky na klienta odolnosti pro přehrávání. <br/> -Softwarových kryptografie prázdné pole je povinné. <br/> -Vyžaduje se šifrování software a dekodér obfuskovaný. <br/> -Klíčové materiálu a kryptografické operace je provést v rámci prostředí pro důvěryhodného spouštění podporovaný hardware. <br/> -Kryptografie a dekódování obsahu se musí provádět v rámci prostředí pro důvěryhodného spouštění podporovaný hardware.  <br/> -Kryptografie, dekódování a všechny zpracování médií (komprimovaným a nekomprimovaným formátem) musí zpracovat v rámci prostředí pro důvěryhodného spouštění podporovaný hardware. |
@@ -102,7 +102,7 @@ Každá hodnota content_key_specs je nutné zadat pro všechny stopy, bez ohledu
 | policy_overrides&#46;renew_with_usage |Logická hodnota true nebo false |Označuje, že licence, které je odesláno pro prodloužení platnosti při spuštění využití. Toto pole se používá pouze v případě, že can_renew má hodnotu true. |
 
 ## <a name="session-initialization"></a>Inicializace relace
-| Název | Hodnota | Popis |
+| Name | Hodnota | Popis |
 | --- | --- | --- |
 | provider_session_token |Řetězec s kódováním base64 |Tento token relace je předána zpět v licenci a existuje v následné obnovení. Token relace není zachována po relace. |
 | provider_client_token |Řetězec s kódováním base64 |Token klienta k odesílání zpět v odpovědi licence. Pokud požadavek na licenční obsahuje token klienta, tato hodnota je ignorována. Token klienta potrvá déle než relace licence. |

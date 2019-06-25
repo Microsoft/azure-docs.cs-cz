@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: 70469a9e8737a9df18628951a061c97081c74080
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62127374"
 ---
 # <a name="grant-user-permissions-to-specific-lab-policies"></a>Udělení uživatelských oprávnění na určitém laboratorním zásady
@@ -28,7 +28,7 @@ Tento článek ukazuje, jak pomocí prostředí PowerShell k udělení oprávně
 ## <a name="policies-as-resources"></a>Zásady jako prostředky
 Jak je popsáno v [řízení přístupu na základě Role v Azure](../role-based-access-control/role-assignments-portal.md) článku, RBAC umožňuje přesnou správu přístupu prostředků Azure. RBAC můžete oddělit úlohy v rámci týmu DevOps a poskytnout pouze takovou úroveň přístupu pro uživatele, kteří potřebují k provádění svých úloh.
 
-Ve službě DevTest Labs, se zásada typ prostředku, který umožňuje akce RBAC **Microsoft.DevTestLab/labs/policySets/policies/**. Jednotlivé zásady testovacího prostředí je prostředek v prostředku typu zásad a je možné přiřadit jako obor pro roli RBAC.
+Ve službě DevTest Labs, se zásada typ prostředku, který umožňuje akce RBAC **Microsoft.DevTestLab/labs/policySets/policies/** . Jednotlivé zásady testovacího prostředí je prostředek v prostředku typu zásad a je možné přiřadit jako obor pro roli RBAC.
 
 Například, pokud chcete udělit oprávnění pro čtení a zápis uživatele **povolené velikosti virtuálních počítačů** zásad, vytvořili byste vlastní roli, která funguje s **Microsoft.DevTestLab/labs/policySets/policies/** akce a pak přiřaďte tuto vlastní roli v rámci příslušné uživatele **Microsoft.DevTestLab/labs/policySets/policies/AllowedVmSizesInLab**.
 

@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: be66fd51b37c0e62b2b757a88ee1db9319b2093a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60878827"
 ---
 # <a name="copy-data-from-azure-storage-blobs-to-azure-data-lake-storage-gen1"></a>Kopírování dat z úložiště objektů BLOB Azure do Azure Data Lake Storage Gen1
@@ -54,7 +54,7 @@ Parametry v syntaxi popsané níže:
 
 | Možnost | Popis |
 | --- | --- |
-| Zdroj |Určuje umístění zdrojových dat v Azure storage blob. Zdrojem může být kontejner objektů blob, objekt blob nebo jiného účtu Data Lake Storage Gen1. |
+| source |Určuje umístění zdrojových dat v Azure storage blob. Zdrojem může být kontejner objektů blob, objekt blob nebo jiného účtu Data Lake Storage Gen1. |
 | cíl |Určuje cíl Gen1 úložiště Data Lake pro kopírování. |
 | SourceKey |Určuje přístupový klíč úložiště pro zdrojový objekt blob úložiště Azure. To je potřeba, pouze pokud je zdroj kontejner objektů blob nebo objekt blob. |
 | Účet |**Volitelné**. Použijte, pokud chcete spustit úlohu kopírování pomocí účtu Azure Data Lake Analytics. Pokud používáte parametr/Account v syntaxi, ale nezadávejte účet Data Lake Analytics, AdlCopy používá výchozí účet pro spuštění úlohy. Navíc pokud použijete tuto možnost, musíte přidat zdroj (Azure Storage Blob) a cíl (Azure Data Lake Storage Gen1) jako zdroj dat pro svůj účet Data Lake Analytics. |

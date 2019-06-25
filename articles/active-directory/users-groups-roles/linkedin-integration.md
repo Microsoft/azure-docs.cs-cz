@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1130885cc3168582935264ffaad9fd7a8ba3c60b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 36ca46d6df9c32f23d3051d1205c3c6b39e69f5a
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64920235"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164719"
 ---
 # <a name="integrate-linkedin-account-connections-in-azure-active-directory"></a>Integrace s účtem LinkedIn ve službě Azure Active Directory
 
@@ -44,7 +44,7 @@ Můžete povolit s účtem LinkedIn pouze uživatelé mají mít přístup z cel
 1. V části **s účtem LinkedIn**, umožňuje uživatelům připojit své účty pro přístup k jejich připojením Linkedinu v rámci některé aplikace Microsoftu. Žádná data se sdílí, dokud uživatelé udělit souhlas s připojit své účty.
 
     * Vyberte **Ano** povolit službu pro všechny uživatele ve vaší organizaci
-    * Vyberte **vybrané** povolit pouze skupinu vybraných uživatelů ve vaší organizaci
+    * Vyberte **vybraná skupina** povolit službu pro pouze skupinu vybraných uživatelů ve vaší organizaci
     * Vyberte **ne** chcete odvolat svůj souhlas všech uživatelů ve vaší organizaci
 
     ![Integrace s účtem LinkedIn v organizaci](./media/linkedin-integration/linkedin-integration.png)

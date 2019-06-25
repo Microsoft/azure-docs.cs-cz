@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 04/23/2019
-ms.openlocfilehash: e1bc99cdc089050fbfa931bbbc7b9a6a316a3a75
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 8699533cd64e6b1778c5e78b8c51eb1efe518c75
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66240182"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67126218"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>Konfigurace clusteru HDInsight s Balíčkem zabezpečení podniku pomocí služby Azure Active Directory Domain Services
 
@@ -27,7 +27,7 @@ V tomto článku se dozvíte, jak konfigurace clusteru HDInsight s ESP pomocí A
 ## <a name="enable-azure-ad-ds"></a>Povolení služby Azure AD DS
 
 > [!NOTE]  
-> Pouze správci tenanta nemá oprávnění pro povolení služby Azure AD – DS. Pokud je úložiště clusteru služby Azure Data Lake Storage (ADLS) Gen1 a Gen2 je potřeba zakázat ověřování službou Multi-Factor Authentication (MFA) pouze pro uživatele, kteří se potřebují přístup ke clusteru pomocí základního ověřování protokolu Kerberos. Můžete použít [důvěryhodné IP adresy](../../active-directory/authentication/howto-mfa-mfasettings.md#trusted-ips) nebo [podmíněného přístupu](../../active-directory/conditional-access/overview.md) zakázat MFA pro konkrétní uživatele, pouze když přistupují rozsah adres virtuální sítě IP clusteru HDInsight. Pokud používáte podmíněný přístup Zkontrolujte prosím, že tento koncový bod služby AD v povolena na virtuální síť HDInsight.
+> Pouze správci tenanta nemá oprávnění pro povolení služby Azure AD – DS. Pokud je úložiště clusteru služby Azure Data Lake Storage (ADLS) Gen1 a Gen2 je potřeba zakázat ověřování službou Multi-Factor Authentication (MFA) pouze pro uživatele, kteří se potřebují přístup ke clusteru pomocí základního ověřování protokolu Kerberos. Můžete použít [důvěryhodné IP adresy](../../active-directory/authentication/howto-mfa-mfasettings.md#trusted-ips) nebo [podmíněného přístupu](../../active-directory/conditional-access/overview.md) zakázat MFA pro konkrétní uživatele, pouze když přistupují rozsah adres virtuální sítě IP clusteru HDInsight. Pokud používáte podmíněný přístup prosím zkontrolujte že povolených koncových bodů služby AD v na virtuální síť HDInsight.
 >
 > Pokud je cluster úložiště Azure Blob Storage (WASB), nezakazujte vícefaktorové ověřování.
 

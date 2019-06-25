@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/07/2019
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2ddcf1f38d3d92f9d9bdd12203ebf99f20600478
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: e983a3f8e29108bd642fd23d5afcb564065d9fc1
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65409773"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203903"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines, plánování a implementace SAP NetWeaver
 
@@ -34,14 +34,14 @@ ms.locfileid: "65409773"
 [1139904]:https://launchpad.support.sap.com/#/notes/1139904
 [1173395]:https://launchpad.support.sap.com/#/notes/1173395
 [1245200]:https://launchpad.support.sap.com/#/notes/1245200
-[1409604]:https://launchpad.support.sap.com/#/notes/1409604
+[1409604]: https://launchpad.support.sap.com/#/notes/1409604
 [1558958]:https://launchpad.support.sap.com/#/notes/1558958
 [1585981]:https://launchpad.support.sap.com/#/notes/1585981
 [1588316]:https://launchpad.support.sap.com/#/notes/1588316
 [1590719]:https://launchpad.support.sap.com/#/notes/1590719
-[1597355]:https://launchpad.support.sap.com/#/notes/1597355
+[1597355]: https://launchpad.support.sap.com/#/notes/1597355
 [1605680]:https://launchpad.support.sap.com/#/notes/1605680
-[1619720]:https://launchpad.support.sap.com/#/notes/1619720
+[1619720]: https://launchpad.support.sap.com/#/notes/1619720
 [1619726]:https://launchpad.support.sap.com/#/notes/1619726
 [1619967]:https://launchpad.support.sap.com/#/notes/1619967
 [1750510]:https://launchpad.support.sap.com/#/notes/1750510
@@ -53,24 +53,24 @@ ms.locfileid: "65409773"
 [1772688]:https://launchpad.support.sap.com/#/notes/1772688
 [1814258]:https://launchpad.support.sap.com/#/notes/1814258
 [1882376]:https://launchpad.support.sap.com/#/notes/1882376
-[1909114]:https://launchpad.support.sap.com/#/notes/1909114
+[1909114]: https://launchpad.support.sap.com/#/notes/1909114
 [1922555]:https://launchpad.support.sap.com/#/notes/1922555
-[1928533]:https://launchpad.support.sap.com/#/notes/1928533
+[1928533]: https://launchpad.support.sap.com/#/notes/1928533
 [1941500]:https://launchpad.support.sap.com/#/notes/1941500
 [1956005]:https://launchpad.support.sap.com/#/notes/1956005
 [1973241]:https://launchpad.support.sap.com/#/notes/1973241
-[1984787]:https://launchpad.support.sap.com/#/notes/1984787
-[1999351]:https://launchpad.support.sap.com/#/notes/1999351
-[2002167]:https://launchpad.support.sap.com/#/notes/2002167
-[2015553]:https://launchpad.support.sap.com/#/notes/2015553
+[1984787]: https://launchpad.support.sap.com/#/notes/1984787
+[1999351]: https://launchpad.support.sap.com/#/notes/1999351
+[2002167]: https://launchpad.support.sap.com/#/notes/2002167
+[2015553]: https://launchpad.support.sap.com/#/notes/2015553
 [2039619]:https://launchpad.support.sap.com/#/notes/2039619
-[2069760]:https://launchpad.support.sap.com/#/notes/2069760
+[2069760]: https://launchpad.support.sap.com/#/notes/2069760
 [2121797]:https://launchpad.support.sap.com/#/notes/2121797
 [2134316]:https://launchpad.support.sap.com/#/notes/2134316
-[2178632]:https://launchpad.support.sap.com/#/notes/2178632
-[2191498]:https://launchpad.support.sap.com/#/notes/2191498
+[2178632]: https://launchpad.support.sap.com/#/notes/2178632
+[2191498]: https://launchpad.support.sap.com/#/notes/2191498
 [2233094]:https://launchpad.support.sap.com/#/notes/2233094
-[2243692]:https://launchpad.support.sap.com/#/notes/2243692
+[2243692]: https://launchpad.support.sap.com/#/notes/2243692
 
 [azure-cli]:../../../cli-install-nodejs.md
 [azure-portal]:https://portal.azure.com
@@ -524,7 +524,7 @@ Microsoft Azure Virtual Machines využívat různé typy úložišť. Při imple
 
 Virtuální počítače Azure nabízejí dočasné disky po nasazení virtuálního počítače. V případě restartování virtuálního počítače vymaže veškerý obsah na těchto jednotkách. Jedná se tedy vzhledem k tomu, že datové soubory a soubory protokolů a znovu databází za žádných okolností musíte umístit na těchto jednotkách netrvalé. Můžou nastat výjimky pro některé databáze, kde tyto disky netrvalé může být vhodný pro databázi tempdb a tabulkové temp prostory. Ale Vyhněte se použití těchto jednotek pro virtuální počítače řady A-Series, od těchto jednotek netrvalé mají omezenou propustnost s rodiny virtuálních počítačů. Další podrobnosti najdete v článku [pochopení dočasné jednotky na virtuálních počítačích s Windows v Azure](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)
 
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 > 
 > Jednotce D:\ ve Virtuálním počítači Azure je jednotka netrvalé, která je založená na některé místní disky na Azure výpočetním uzlu. Protože je dočasný, to znamená, že dojde ke ztrátě všechny změny provedené v obsahu na jednotku D:\, po restartování virtuálního počítače. "Všechny změny", jako jsou soubory uložené, vytvoření adresáře aplikace nainstalované, atd.
@@ -535,7 +535,7 @@ Virtuální počítače Azure nabízejí dočasné disky po nasazení virtuáln�
 > 
 > 
 
-- - -
+---
 
 Microsoft Azure Storage poskytuje trvalého úložiště a typickou úroveň ochrany a redundance na úložiště SAN. Disky založené na Azure Storage jsou virtuální pevný disk (VHD) umístěný ve službě Azure Storage. Místní-Disk s operačním systémem Windows (C:\, Linux/dev/sda1) je uložené v Azure Storage a další svazky nebo disky připojené k virtuálnímu počítači získat uložené, příliš.
 
@@ -582,7 +582,7 @@ Pokud jsou rezervace součástí virtuálních počítačů řady DS-series v [(
 
 Další informace o Premium Storage najdete tady: <https://azure.microsoft.com/blog/2015/04/16/azure-premium-storage-now-generally-available-2>
 
-#### <a name="azure-storage-accounts"></a>Účty úložiště Azure
+#### <a name="azure-storage-accounts"></a>Účty služby Azure Storage
 
 Při nasazování služeb nebo virtuálních počítačů v Azure, nasazení virtuálních pevných disků a Imagí virtuálních počítačů mohou být uspořádány v jednotkách nazývaných účtech úložiště Azure. Při plánování nasazení služby Azure, budete muset pečlivě zvažte omezení Azure. Na jedné straně je omezený počet účtů úložiště, jedno předplatné Azure. I když každý účet úložiště Azure může obsahovat velký počet souborů virtuálního pevného disku, je pevný limit na celkový počet IOPS na účet úložiště. Nasazení stovky virtuálních počítačů SAP pomocí vytváření významné vstupně-výstupní operace volání systémy DBMS, se doporučuje pro distribuci vysoké vstupně-výstupních operací DBMS VMs mezi více účtů úložiště Azure. Nechcete překračovat aktuální limit účtech úložiště Azure na jedno předplatné musí věnovat pozornost. Vzhledem k tomu, že úložiště je důležitou součástí nasazení databáze pro systém SAP, tento koncept je podrobněji popsána podrobněji už odkazované [nasazení DBMS][dbms-guide].
 
@@ -835,7 +835,7 @@ Máte v plánu přesouvat místní konkrétního systému SAP do Azure. To můž
 
 Z důvodu požadavků na oprav konkrétní verze operačního systému nebo DBMS zadaný imagí v Tržišti Azure Marketplace, nemusí odpovídat vašim potřebám. Proto můžete potřebovat k vytvoření virtuálního počítače pomocí vlastní privátní image operačního systému/DBMS virtuálního počítače, který po nasazení potom několikrát. Příprava duplikace privátní image, musí být považovány za následující položky:
 
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
 > Další podrobnosti najdete tady: <https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed> Nastavení Windows (např. Windows SID nebo název hostitele) musí být na místní virtuální počítač pomocí příkazu sysprep abstrahovaná/zobecněný.
@@ -847,7 +847,7 @@ Z důvodu požadavků na oprav konkrétní verze operačního systému nebo DBMS
 >
 >
 
-- - -
+---
 Pokud jste již nainstalovali SAP obsah ve vaší místní virtuální počítač (zejména pro systémy vrstvy 2), můžete upravit nastavení systému SAP po nasazení virtuálního počítače Azure prostřednictvím instance přejmenovat postupu podporovány službou SAP Software zřizování správce (SAP Mějte na paměti [1619720]). Najdete v kapitolách [přípravy pro nasazení virtuálního počítače pomocí bitové kopie zákaznického pro SAP] [ planning-guide-5.2.2] a [nahrání VHD z místního úložiště do Azure] [ planning-guide-5.3.2]tohoto dokumentu pro místní přípravné kroky a nahrání generalizovaného virtuálního počítače do Azure. Přečíst kapitolu [scénář 2: Nasazení virtuálního počítače s použitím vlastní image pro SAP] [ deployment-guide-3.3] v [Průvodce nasazením] [ deployment-guide] podrobný postup nasazení těchto image v Azure.
 
 #### <a name="deploying-a-vm-out-of-the-azure-marketplace"></a>Nasazení virtuálního počítače mimo Azure Marketplace
@@ -870,7 +870,7 @@ Požadavky při přípravě vlastní disku virtuálního počítače Azure jsou:
 * Přidejte další místní účet s oprávněními správce, které se dají použít tak, že podpory společnosti Microsoft nebo které je možné přiřadit jako kontext pro služby a aplikace, které poběží, dokud je nasazen virtuální počítač a vhodnější uživatelů je možné použít.
 * Přidáte další místní účty, protože ty mohou být potřebné pro scénáře nasazení.
 
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
 > V tomto scénáři žádné generalizace (sysprep) virtuálního počítače je potřeba nahrát a nasadit virtuální počítač v Azure.
@@ -884,7 +884,7 @@ Požadavky při přípravě vlastní disku virtuálního počítače Azure jsou:
 >
 >
 
-- - -
+---
 #### <a name="57f32b1c-0cba-4e57-ab6e-c39fe22b6ec3"></a>Příprava pro nasazení virtuálního počítače pomocí bitové kopie zákaznického pro SAP
 
 Soubory virtuálního pevného disku, které obsahují zobecněný operačního systému jsou uloženy v kontejnery v účtech úložiště Azure nebo jako Image spravovaného disku. Nasadíte nový virtuální počítač z takových bitové kopie pomocí odkazu na image virtuálního pevného disku nebo spravovaného disku jako zdroj v souborech šablony nasazení, jak je popsáno v kapitole [scénář 2: Nasazení virtuálního počítače s použitím vlastní image pro SAP] [ deployment-guide-3.3] z [Průvodce nasazením][deployment-guide].
@@ -897,7 +897,7 @@ Požadavky při přípravě vlastní Image virtuálního počítače Azure jsou:
 * Přidáte další místní účty, protože ty mohou být potřebné pro scénáře nasazení.
 * Pokud image obsahuje k instalaci aplikace SAP NetWeaver a přejmenovat název hostitele z původní název Přejme během nasazení Azure je pravděpodobné, že doporučuje se kopírovat nejnovější verze DVD pro správce zřizování softwaru SAP do šablony. To vám umožní snadno použít funkci přejmenování SAP poskytuje můžete přizpůsobit změněné název hostitele nebo změnit identifikátor SID systému SAP v rámci do nasazené bitové kopie virtuálního počítače, co nejdříve spustit novou kopii.
 
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
 > Ujistěte se, že jednotku D:\ není použít automatického připojení disku sady pro připojené disky, jak je popsáno v kapitole [nastavení automatického připojení pro připojené disky] [ planning-guide-5.5.3] v tomto dokumentu.
@@ -908,14 +908,14 @@ Požadavky při přípravě vlastní Image virtuálního počítače Azure jsou:
 >
 >
 
-- - -
+---
 * Grafické uživatelské rozhraní SAP (pro správce a instalační program účely) můžete předem nainstalované v těchto šablon.
 * Další software, které jsou potřebné k úspěšnému spuštění virtuálních počítačů v různých scénářích nainstalujete tak dlouho, dokud tento software může spolupracovat s přejmenování virtuálního počítače.
 
 Pokud virtuální počítač připravený dostatečně obecný a nakonec nezávisle na účtů/uživatele není k dispozici ve scénáři nasazenou Azure, se provádí poslední krok přípravy zobecňuje tyto image.
 
 ##### <a name="generalizing-a-vm"></a>Zobecňuje se virtuální počítač
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
 > Posledním krokem je pro přihlášení k virtuálnímu počítači pomocí účtu správce. Otevřete příkazové okno Windows jako *správce*. Přejděte na %windir%\windows\system32\sysprep a spustit sysprep.exe.
@@ -928,7 +928,7 @@ Pokud virtuální počítač připravený dostatečně obecný a nakonec nezávi
 >
 >
 
-- - -
+---
 ### <a name="transferring-vms-and-vhds-between-on-premises-to-azure"></a>Převod virtuálních počítačů a virtuálních pevných disků mezi on-premises do Azure
 Protože nahrávání imagí virtuálních počítačů a disků do Azure není možné prostřednictvím webu Azure portal, budete muset použít rutiny prostředí Azure PowerShell nebo rozhraní příkazového řádku. Další možností je použití nástroje "AzCopy". Nástroj můžete zkopírovat virtuální pevné disky mezi místními a Azure (v obou směrech). Je taky zkopírovat virtuální pevné disky mezi oblastmi Azure. Obraťte se prosím [této dokumentace] [ storage-use-azcopy] ke stažení a použití nástroje AzCopy.
 
@@ -1001,7 +1001,7 @@ Infrastruktura jako služba Azure není jednosměrné ulici, kde pouze nebudou m
 
 Během doby stahování nemůže být aktivních virtuálních pevných disků na Managed Disks. I v případě stahování disky, které jsou připojené k virtuálním počítačům, virtuální počítač je potřeba vypnout a uvolnit. Pokud chcete stáhnout obsah databáze, který potom slouží k nastavení nového systému místní a pokud je to přijatelné být funkční, která během doby stahování a instalace nového systému, který se můžete stále systému v Azure , může dlouho výpadky provedením zálohy komprimované databáze na disk a stáhnout pouze tento disk místo také stažení virtuálního počítače pro základní operační systém.
 
-#### <a name="powershell"></a>Prostředí PowerShell
+#### <a name="powershell"></a>PowerShell
 
 * Stahování spravovaného disku  
   Nejdřív je potřeba získat přístup k podkladové blob spravovaného disku. Pak můžete zkopírovat základní objekt blob na nový účet úložiště a stáhnout objekt blob z tohoto účtu úložiště.
@@ -1061,7 +1061,7 @@ Datové disky mohou být uloženy jako soubory VHD v účtu úložiště Azure m
 
 Datové disky můžou být také Managed Disks. V takovém případě spravovaného disku se používá k vytvoření nového spravovaného disku před přímého připojení k virtuálnímu počítači. Název spravovaného disku musí být jedinečný v rámci skupiny prostředků.
 
-##### <a name="powershell"></a>Prostředí PowerShell
+##### <a name="powershell"></a>PowerShell
 
 Rutiny prostředí Azure PowerShell můžete použít ke kopírování virtuálního pevného disku, jak je znázorněno v [v tomto článku][storage-powershell-guide-full-copy-vhd]. K vytvoření nového spravovaného disku použijte nový AzDiskConfig a New-AzDisk jak je znázorněno v následujícím příkladu.
 
@@ -1089,7 +1089,7 @@ Profesionální edicí průzkumníky úložiště Azure najdete tady:
 
 Kopírování samotného virtuálního pevného disku v rámci účtu úložiště je proces, který trvá jenom pár sekund (podobně jako na hardware sítě SAN vytváření snímků pomocí opožděné a kopii při zápisu). Až budete mít kopii souboru virtuálního pevného disku, můžete připojit k virtuálnímu počítači nebo použít jako bitové kopie virtuální pevný disk připojit k virtuálním počítačům.
 
-##### <a name="powershell"></a>Prostředí PowerShell
+##### <a name="powershell"></a>PowerShell
 
 ```powershell
 # attach a vhd to a vm
@@ -1135,7 +1135,7 @@ az vm disk attach --disk <new disk name or managed disk id> --resource-group <re
 #### <a name="9789b076-2011-4afa-b2fe-b07a8aba58a1"></a>Kopírování disků mezi účty Azure Storage
 Tuto úlohu nelze provést na portálu Azure portal. Můžete použít rutiny Azure Powershellu, rozhraní příkazového řádku Azure nebo prohlížeče třetích stran úložiště. Rutiny prostředí PowerShell nebo příkazů rozhraní příkazového řádku můžete vytvářet a spravovat objekty BLOB, mezi které patří schopnost asynchronně kopírovat objekty BLOB mezi účty úložiště a oblastmi v rámci předplatného Azure.
 
-##### <a name="powershell"></a>Prostředí PowerShell
+##### <a name="powershell"></a>PowerShell
 Můžete také zkopírovat virtuální pevné disky mezi předplatnými. Další informace najdete v článku [v tomto článku][storage-powershell-guide-full-copy-vhd].
 
 Základní tok logiky rutiny PS vypadá takto:
@@ -1188,7 +1188,7 @@ Zpracování struktury virtuálního počítače a přidružené disky v ideáln
 ![Odkaz na konfiguraci virtuálního počítače Azure IaaS pro SAP][planning-guide-figure-1300]
 
 
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
 > U mnoha zákazníků jsme viděli konfigurace, například SAP a DBMS binární soubory nebyly nainstalovanou na jednotce c:\, kam se nainstaloval operační systém. Existují různé důvody pro to, ale když přejdeme zpět do kořenového adresáře, obvykle byla, že byly malé jednotky a upgrady operačního systému nutné další místo 10 až 15 lety. Obě podmínky těchto dnů příliš často už neplatí. Dnes jednotky c:\ lze mapovat na velké objemy disků nebo virtuálních počítačů. Aby bylo možné zjednodušení nasazení v jejich strukturu, doporučuje se odpovídat následujícímu vzoru nasazení systémů SAP NetWeaver v Azure
@@ -1214,14 +1214,14 @@ sudo service waagent restart
 
 Přečtěte si prosím Poznámka SAP [1597355] podrobné informace o velikosti doporučené odkládacího souboru
 
-- - -
+---
 Počet disků pro DBMS datové soubory a typ jsou tyto disky hostované na Azure Storage byste měli určit podle požadavků na vstupně-výstupních operací a latence vyžaduje. Přesné kvóty jsou popsané v [(Linux) v tomto článku] [ virtual-machines-sizes-linux] a [v tomto článku (Windows)][virtual-machines-sizes-windows].
 
 Prostředí pro nasazení SAP za poslední dva roky nám museli některé lekcí, které lze shrnout jako:
 
 * Provoz vstupně-výstupních operací na různé datové soubory není vždy stejný od stávajících zákazníků systémů může mít jinak velikost datových souborů představující jejich databáze SAP. V důsledku se ukázalo lepší používat konfiguraci RAID přes víc disků k umístit datové soubory, které logické jednotky LUN carved mimo těch. Došlo k situacím, zejména s Azure Standard Storage, kde objemem vstupně-výstupních operací dosažení kvóty jednoho disku pro protokol transakcí DBMS. V takových případech se doporučuje použití služby Premium Storage nebo případně agregaci více úložiště úrovně Standard prokládanou disků pomocí softwaru.
 
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
 > * [Osvědčené postupy z hlediska výkonu pro SQL Server ve službě Azure Virtual Machines][virtual-machines-sql-server-performance-best-practices]
@@ -1234,7 +1234,7 @@ Prostředí pro nasazení SAP za poslední dva roky nám museli některé lekcí
 >
 >
 
-- - -
+---
 * Premium Storage je zobrazují se významné lepší výkon, hlavně pro zápis protokolů kritické transakce. Pro SAP scénáře, které se očekává poskytování výkonu se podobají produkčním důrazně doporučujeme použít virtuální počítač řady, která můžete využít Azure Premium Storage.
 
 Mějte na paměti, disku, který obsahuje operační systém, a doporučujeme, binární soubory SAP a databázi (základní virtuální počítač), už není omezený na 127GB. Velikost nyní může mít až 1TB. To by měl být dostatek místa pro zachovat všechny nezbytné souboru, včetně například SAP protokoly úloh služby batch.
@@ -1255,7 +1255,7 @@ Dále musíte rozhodnout, jestli chcete vytvořit nový a prázdný disk nebo je
 
 **DŮLEŽITÉ:** Můžete **neměňte** chcete používat ukládání do mezipaměti hostitele s Azure Storage úrovně Standard. Preference mezipaměti hostitele by měl ponechte výchozí hodnotu NONE. S Azure Storage úrovně Premium byste měli povolit ukládání do mezipaměti pro čtení je-li vlastnost vstupně-výstupních operací je většinou pro čtení, stejně jako typický vstupně-výstupní operace proti datové soubory databáze. V případě soubor protokolu transakcí databáze se doporučuje neexistující ukládání do mezipaměti.
 
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
 > [Postup připojení datového disku na webu Azure Portal][virtual-machines-linux-attach-disk-portal]
@@ -1268,7 +1268,7 @@ Dále musíte rozhodnout, jestli chcete vytvořit nový a prázdný disk nebo je
 >
 >
 
-- - -
+---
 Pokud nový disk se prázdný disk, budete muset také a disk naformátujte. Pro formátování, zejména pro DBMS dat a souborů protokolu stejné doporučení pro nasazení DBMS úplné obnovení systému použije.
 
 Jak již bylo uvedeno v kapitole [The koncept virtuálního počítače Microsoft Azure][planning-guide-3.2], účet služby Azure Storage neposkytuje nekonečné prostředky v rámci svazku, vstupně-výstupních operací a objem dat vstupně-výstupních operací. Obvykle DBMS virtuální počítače jsou největší vliv. Může být nejvhodnější použít samostatný účet úložiště pro každý virtuální počítač, pokud máte několik vysoké objemy vstupně-výstupní operace virtuálních počítačů určených k nasazení, abyste mohli zůstat v rámci limitu objemu účet služby Azure Storage. V opačném případě budete muset naleznete v tématu Jak vyrovnávat tyto virtuální počítače mezi různými účty úložiště bez dosažení limitu každý jeden účet úložiště. Další podrobnosti jsou popsány v [nasazení DBMS][dbms-guide]. Tato omezení je třeba také zachovat v paměti pro virtuální počítače serverem nebo jiným virtuálním počítačům, které mohou vyžadovat další virtuální pevné disky čistě aplikace SAP. Tato omezení neplatí, pokud použijete spravovaný Disk. Pokud chcete používat Premium Storage, doporučujeme použít Managed Disks.
@@ -1278,7 +1278,7 @@ Jiné téma, jež jsou relevantní pro účty úložiště je virtuálních pevn
 Azure geografické replikace funguje místně na každý virtuální pevný disk ve virtuálním počítači a nereplikuje napříč více virtuálních pevných disků ve virtuálním počítači s Iosem v chronologickém pořadí. Proto se replikují virtuální pevný disk, který představuje základní virtuální počítač, stejně jako jakékoli další virtuální pevné disky připojené k virtuálnímu počítači nezávisle na sobě navzájem. To znamená, že není žádná synchronizace mezi změnami v různých virtuálních pevných disků. Fakt, že bez ohledu na jejich pořadí, ve kterém jsou zapsány znamená, že se replikují IOs geografická replikace není hodnota pro databázové servery, které mají své databáze distribuovat napříč více virtuálních pevných disků. Kromě databázového systému může existovat i další aplikace, kde procesy zápisu nebo manipulaci s daty v různých virtuálních pevných disků a kde je důležité udržovat pořadí změny. Pokud se jedná o požadavek, by se neměla povolovat geografické replikace do Azure. Závisí na tom, jestli potřebujete nebo chcete geografickou replikaci pro sadu virtuálních počítačů, ale ne pro jiné sady, lze již zařadit virtuálních počítačů a jejich související virtuální pevné disky do různých účtů úložiště, které mají geografická replikace povolená nebo zakázaná.
 
 #### <a name="17e0d543-7e8c-4160-a7da-dd7117a1ad9d"></a>Nastavení automatického připojení pro připojené disky
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
 > Pro virtuální počítače, které jsou vytvořené z vlastních Imagí nebo disky, je potřeba zkontrolovat a případně nastavte parametr automatického připojení. Nastavení tohoto parametru vám umožní virtuální počítač po restartování nebo opětovné nasazení v Azure a připojené/připojených jednotek automaticky znovu připojit.
@@ -1300,7 +1300,7 @@ Azure geografické replikace funguje místně na každý virtuální pevný disk
 >
 >
 
-- - -
+---
 ### <a name="final-deployment"></a>Poslední nasazení
 
 Poslední nasazení a přesné kroky, zejména s ohledem na nasazení SAP rozšířené monitorování, najdete [Průvodce nasazením][deployment-guide].
@@ -1328,11 +1328,11 @@ Podrobnosti najdete v článku, který popisuje podrobnosti k tomuto tématu: <h
 
 Může být potřeba nakonfigurovat bránu firewall na virtuálních počítačích povolit příchozí přenosy do systému SAP.
 
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
 > Bránu Windows Firewall v rámci virtuálního počítače Azure nasazené je ve výchozím nastavení zapnuté. Teď je potřeba povolit SAP Port, který chcete otevřít, jinak nebudou moci připojit grafickým uživatelským rozhraním SAP.
-> To uděláte takto:
+> Použijte následující postup:
 >
 > * Otevřete ovládací panely\systém a zabezpečení\Brána Windows Firewall na **upřesňující nastavení**.
 > * Teď klikněte pravým tlačítkem na příchozí pravidla a zvolili **nové pravidlo**.
@@ -1352,8 +1352,8 @@ Může být potřeba nakonfigurovat bránu firewall na virtuálních počítač�
 >
 >
 
-- - -
-#### <a name="security-recommendations"></a>Doporučení pro zabezpečení
+---
+#### <a name="security-recommendations"></a>Doporučení zabezpečení
 
 Grafické uživatelské rozhraní SAP nepřipojuje k některému z instance SAP (port 32xx), které jsou spuštěné, ale nejdřív se připojuje přes port otevřen k procesu serveru zpráv SAP (port 36xx) okamžitě. V minulosti použil stejný port serveru zpráv pro interní komunikaci s instancí aplikace. Aby se zabránilo aplikačních serverů s místními od nedopatřením komunikaci se serverem zprávy v Azure, je možné změnit interní komunikační porty. Důrazně doporučujeme změnit interní komunikace mezi server zpráv SAP a její instance aplikace na jiné číslo portu v systémech, které byly naklonovali z místních systémů, jako je klonování vývoje pro projekt testování atd. To můžete udělat s výchozím parametrem profilu:
 
@@ -1374,7 +1374,7 @@ Předpokladem je, že jste vytvořili Image virtuálního počítače, jak je po
 
 Posloupnost událostí k implementaci scénáře vypadá takto:
 
-##### <a name="powershell"></a>Prostředí PowerShell
+##### <a name="powershell"></a>PowerShell
 
 * Vytvořit novou skupinu prostředků pro každý školení/ukázku na šířku
 
@@ -1489,7 +1489,7 @@ $vm = Get-AzVM -ResourceGroupName $rgName -Name SAPERPDemo
 Add-AzVMDataDisk -VM $vm -Name datadisk -DiskSizeInGB 1023 -CreateOption empty -Lun 0 | Update-AzVM
 ```
 
-##### <a name="cli"></a>CLI
+##### <a name="cli"></a>Rozhraní příkazového řádku
 
 Následující příklad kódu je možné v Linuxu. Pro Windows, buď pomocí prostředí PowerShell, jak je popsáno výše, nebo úprava příkladu rgName % nahrazujícím $rgName a nastavte proměnnou prostředí pomocí příkazu Windows *nastavit*.
 
@@ -1501,7 +1501,7 @@ rgNameLower=saperpdemo1
 az group create --name $rgName --location "North Europe"
 ```
 
-* Vytvořit nový účet úložiště
+* Vytvoření nového účtu úložiště
 
 ```
 az storage account create --resource-group $rgName --location "North Europe" --kind Storage --sku Standard_LRS --name $rgNameLower
@@ -1629,12 +1629,12 @@ V typické SAP v následující tabulce jsou uvedeny portů pro komunikaci. V po
 
 <!-- sapms is prefix of a SAP service name and not a spelling error -->
 
-| Služba | Název portu | Příklad `<nn`> = 01 | Výchozí rozsah (maximálních) | Poznámka |
+| Služba | Název portu | Příklad `<nn`> = 01 | Výchozí rozsah (maximálních) | Komentář |
 | --- | --- | --- | --- | --- |
 | Dispečer |sapdp`<nn>` najdete v článku * |3201 |3200 - 3299 |Dispečer SAP, SAP grafického uživatelského rozhraní pro Windows a Java |
 | Server zpráv |sapms`<sid`> Zobrazit ** |3600 |bezplatné sapms`<anySID`> |identifikátor SID = ID systému SAP |
-| brána |sapgw`<nn`> Zobrazit * |3301 |free |Brány SAP, použít pro komunikaci CPIC a v dokumentu RFC |
-| Směrovač SAP |sapdp99 |3299 |free |Pouze názvy položek konfigurace (centrální instance) služby lze přiřadit v /etc/services na libovolnou hodnotu po dokončení instalace. |
+| brána |sapgw`<nn`> Zobrazit * |3301 |Zdarma |Brány SAP, použít pro komunikaci CPIC a v dokumentu RFC |
+| Směrovač SAP |sapdp99 |3299 |Zdarma |Pouze názvy položek konfigurace (centrální instance) služby lze přiřadit v /etc/services na libovolnou hodnotu po dokončení instalace. |
 
 *) nn = číslo Instance SAP
 
@@ -1655,10 +1655,10 @@ Společnost Microsoft přidala mnoho dalších typů virtuálních počítačů,
 
 Nastavení místní síťové tiskárny TCP/IP, na základě ve Virtuálním počítači Azure se celkově stejně jako v podnikové síti, za předpokladu, že že máte tunel VPN typu Site-To-Site nebo ExpressRoute připojení.
 
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
-> To uděláte takto:
+> Použijte následující postup:
 >
 > * Průvodce konfigurací, který umožňuje snadno nastavit tiskárny na Virtuálním počítači Azure jsou dostupné některé síťové tiskárny. Pokud žádný takový software Průvodce byl distribuován s tiskárnou, chcete-li vytvořit nový port tiskárny TCP/IP je manuální způsob, jak nastavit.
 > * Otevřete ovládací panely -> zařízení a tiskárny -> Přidat tiskárnu
@@ -1674,7 +1674,7 @@ Nastavení místní síťové tiskárny TCP/IP, na základě ve Virtuálním po�
 >
 >
 
-- - -
+---
 ![Tisk v síti][planning-guide-figure-2200]
 
 ##### <a name="host-based-printer-over-smb-shared-printer-in-cross-premises-scenario"></a>Na základě hostitele tiskárny přes protokol SMB (sdílené tiskárny) ve scénáři mezi různými místy
@@ -1690,7 +1690,7 @@ Sdílené tiskárny je identifikován jedinečný název v síti:
 
 Postup:
 
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
 > Sdílejte vaše místní tiskárnu.
@@ -1706,19 +1706,19 @@ Postup:
 >
 >
 
-- - -
+---
 ##### <a name="usb-printer-printer-forwarding"></a>Tiskárny USB (přesměrování tiskárny)
 
 V Azure není k dispozici možnost služby Vzdálená plocha můžete poskytnout uživatelům přístup ke svým zařízením místní tiskárnu ve vzdálené relaci.
 
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
 > Další podrobnosti o tisk s Windows najdete tady: <https://technet.microsoft.com/library/jj590748.aspx>.
 >
 >
 
-- - -
+---
 #### <a name="integration-of-sap-azure-systems-into-correction-and-transport-system-tms-in-cross-premises"></a>Integrace SAP do opravy a systému pro přenos (TMS) v mezi místními systémy pro Azure
 
 Změna SAP a přenosu systému (TMS) je potřeba nakonfigurovat pro export a import žádost o přenos mezi systémy ve světě. Předpokládáme, že vývoj instance systému SAP (vývoj) jsou umístěné v Azure, zatímco kontroly kvality (dotazů a odpovědí) a produktivní systémy (PRD) jsou v místním. Kromě toho předpokládáme, že je adresář centrálního přenosu.

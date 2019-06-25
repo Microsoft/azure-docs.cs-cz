@@ -1,22 +1,22 @@
 ---
-title: Vlastní pravidla brány Firewall webových aplikací (WAF) Azure
-description: Tento článek obsahuje přehled firewallu webových aplikací (WAF) vlastní pravidla ve službě Azure Application Gateway.
+title: Firewall webových aplikací (WAF) v2 vlastního pravidla ve službě Azure
+description: Tento článek obsahuje základní informace o vlastních pravidel brány Firewall webových aplikací (WAF) v2 ve službě Azure Application Gateway.
 services: application-gateway
 ms.topic: article
 author: vhorne
 ms.service: application-gateway
-ms.date: 6/5/2019
+ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: d35e1dc96f65e51ab14c4962d1824334cbdb1616
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: f6ea831771a8ffecfdd4c7c0d6374c16894e25ed
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66752026"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164664"
 ---
-# <a name="custom-rules-for-web-application-firewall"></a>Vlastní pravidla pro Firewall webových aplikací
+# <a name="custom-rules-for-web-application-firewall-v2"></a>Vlastní pravidla pro Firewall webových aplikací v2
 
-Firewall webových aplikací (WAF) Azure Application Gateway se dodává s předem nakonfigurované, spravované platformy sady pravidel, který nabízí ochranu z mnoha různých typů útoků. Tyto útoky patří mezi skriptování, útok prostřednictvím injektáže SQL a další. Pokud jste správce WAF, můžete k zapsání vlastní pravidla, která rozšiřují základní pravidla nastavení pravidel (CRS). Pravidla můžete blokovat nebo povolit požadovaný provoz na základě kritérií porovnání.
+Azure Application Gateway Firewall webových aplikací (WAF) v2 dodává s předem nakonfigurované, spravované platformy sady pravidel, který nabízí ochranu z mnoha různých typů útoků. Tyto útoky patří mezi skriptování, útok prostřednictvím injektáže SQL a další. Pokud jste správce WAF, můžete k zapsání vlastní pravidla, která rozšiřují základní pravidla nastavení pravidel (CRS). Pravidla můžete blokovat nebo povolit požadovaný provoz na základě kritérií porovnání.
 
 Vlastní pravidla umožňují vytvářet vlastní pravidla, která se vyhodnotí pro každý požadavek, který prochází WAF. Tato pravidla uchování vyšší prioritu než zbytek pravidla v sadách pravidel spravovaná. Vlastní pravidla obsahují název pravidla, Priorita pravidla a podmínky odpovídající pole. Pokud jsou tyto podmínky splněny, akci (na povoleného i blokovaného).
 

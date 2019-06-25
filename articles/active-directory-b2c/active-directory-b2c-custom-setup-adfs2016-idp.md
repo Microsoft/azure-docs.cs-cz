@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 4510074619ff513b7284819d88fdb2532e4ce33a
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 2c469b333c6896d33b440bfadf0ebbdbeece71a3
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66510435"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67272130"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Přidání služby AD FS jako zprostředkovatele identity SAML pomocí vlastních zásad v Azure Active Directory B2C
 
@@ -101,6 +101,10 @@ Nyní jste nakonfigurovali zásady tak, aby Azure AD B2C ví, jak komunikovat s 
 1. Na **vlastní zásady** stránky ve vašem tenantovi Azure AD B2C, vyberte **nahrát zásady**.
 2. Povolit **přepsat zásady, pokud existuje**a poté vyhledejte a vyberte *TrustFrameworkExtensions.xml* souboru.
 3. Klikněte na **Odeslat**.
+
+> [!NOTE]
+> Visual Studio code příponou B2C používá "socialIdpUserId." Sociální zásady je také nutný pro AD FS.
+>
 
 ## <a name="register-the-claims-provider"></a>Registrace zprostředkovatele deklarací identity
 

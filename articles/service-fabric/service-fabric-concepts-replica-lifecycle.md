@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 01/10/2018
 ms.author: aprameyr
 ms.openlocfilehash: 7f8638365b40395a5dd82457c40e5c15209ba1a7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60882386"
 ---
 # <a name="replicas-and-instances"></a>Replik a instancí 
@@ -116,11 +116,11 @@ Role repliky není v pohotovostním stavu relevantní.
 ## <a name="replica-role"></a>Role repliky 
 Role repliky určuje jeho funkci sady replik:
 
-- **Primární (P)**: Existuje jedna primární sady replik, který zodpovídá za operace čtení a zápisu. 
-- **ActiveSecondary (S)**: Jedná se o repliky, které přijímat aktualizace stavu z primárního serveru, aplikovat a pak odešle zpět potvrzení. Existují více aktivní sekundární databáze v replikách. Počet těchto aktivní sekundární databáze určuje počet chyb, které může služba zpracovat.
-- **IdleSecondary (I)**: Tyto repliky byly sestaveny pomocí primární. Obdrželi stavu z primárního serveru, než mohou být přesunuty do aktivní sekundární. 
-- **Žádný (N)**: Tyto repliky nemají odpovědnost sady replik.
-- **Neznámý (U)**: Toto je počáteční role repliky předtím, než začne přijímat veškeré **ChangeRole** volání rozhraní API ze Service Fabric.
+- **Primární (P)** : Existuje jedna primární sady replik, který zodpovídá za operace čtení a zápisu. 
+- **ActiveSecondary (S)** : Jedná se o repliky, které přijímat aktualizace stavu z primárního serveru, aplikovat a pak odešle zpět potvrzení. Existují více aktivní sekundární databáze v replikách. Počet těchto aktivní sekundární databáze určuje počet chyb, které může služba zpracovat.
+- **IdleSecondary (I)** : Tyto repliky byly sestaveny pomocí primární. Obdrželi stavu z primárního serveru, než mohou být přesunuty do aktivní sekundární. 
+- **Žádný (N)** : Tyto repliky nemají odpovědnost sady replik.
+- **Neznámý (U)** : Toto je počáteční role repliky předtím, než začne přijímat veškeré **ChangeRole** volání rozhraní API ze Service Fabric.
 
 Následující diagram znázorňuje přechody role repliky a nějaké ukázkové scénáře, ve kterých může dojít:
 

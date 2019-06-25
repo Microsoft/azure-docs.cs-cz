@@ -8,10 +8,10 @@ ms.author: babanisa
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.openlocfilehash: 61821caa2450096bdbdde3461316ad21a82f6f18
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66304301"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>Principy událostí domény pro správu tématy Event gridu
@@ -101,7 +101,7 @@ Tady jsou omezení a kvóty vztahující se k doménám události:
 
 - 100 000 témata události doménu 
 - 100 událostí domény jedno předplatné Azure 
-- 500 odběry událostí na téma v doméně události
+- 500 odběrů událostí na téma v doméně událostí
 - 50 předplatných obor domény 
 - 5 000 událostí za druhé rychlost příjmu (do domény)
 

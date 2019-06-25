@@ -6,12 +6,12 @@ description: Naučte se vytvářet a spravovat výkonné aplikace pomocí cloudo
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: bc052b749724a76df3df3572913f4bcbc146df17
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: dffb0fc1ca08cb0b1ab73448c987d648bc8aead7
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66497081"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67191041"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -773,6 +773,12 @@ Automatizace úloh Azure pomocí skriptů s využitím PowerShellu </a>
                                             <a href="/azure/frontdoor/">
                                                 <img src="media/index/frontdoor.svg" alt="" />
                                                 <p>Azure Front Door Service</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/azure/bastion/">
+                                                <img src="media/index/web_connect.svg" alt="" />
+                                                <p>Azure Bastion</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -2414,6 +2420,25 @@ Automatizace úloh Azure pomocí skriptů s využitím PowerShellu </a>
                                                 <div class="cardText">
                                                     <h3>Azure Front Door Service</h3>
                                                     <p>Škálovatelný a zabezpečený vstupní bod pro doručování globálních webových aplikací</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+<li>
+                                <a href="/azure/bastion/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/web_connect.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure Bastion</h3>
+                                                    <p>Zabezpečené a bezproblémové možnosti připojení k virtuálním počítačům přes SSL prostřednictvím webu Azure Portal bez veřejné IP adresy</p>
                                                 </div>
                                             </div>
                                         </div>

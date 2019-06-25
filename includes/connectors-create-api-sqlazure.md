@@ -9,11 +9,11 @@ ms.date: 05/15/2018
 ms.author: estfan
 ms.custom: include file
 ms.openlocfilehash: da03c5247b8ebe0a3305b08a05d661264497663f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60540783"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67175260"
 ---
 * Pokud používáte Azure SQL Database, postupujte podle kroků v části [připojit ke službě Azure SQL Database](#connect-azure-sql-db). 
 
@@ -48,7 +48,7 @@ ms.locfileid: "60540783"
    | Vlastnost | Hodnota | Podrobnosti | 
    |----------|-------|---------| 
    | Název připojení | <*my-sql-connection*> | Název připojení | 
-   | Název serveru SQL | <*my-sql-server*> | Název serveru SQL server |
+   | Název SQL Serveru | <*my-sql-server*> | Název serveru SQL server |
    | Název databáze SQL | <*my-sql-database*>  | Název pro vaši databázi SQL | 
    | Uživatelské jméno | <*my-sql-username*> | Uživatelské jméno pro přístup k databázi |
    | Heslo | <*my-sql-password*> | Heslo pro přístup k databázi | 
@@ -100,11 +100,11 @@ Abyste mohli vybrat bránu, ujistěte se, že jste již [nastavit vaši bránu d
    |----------|-------|---------| 
    | Připojit přes místní bránu | Tuto možnost vyberte, nejdřív pro nastavení systému SQL Server. | | 
    | Název připojení | <*my-sql-connection*> | Název připojení | 
-   | Název serveru SQL | <*my-sql-server*> | Název serveru SQL server |
+   | Název SQL Serveru | <*my-sql-server*> | Název serveru SQL server |
    | Název databáze SQL | <*my-sql-database*>  | Název pro vaši databázi SQL |
    | Uživatelské jméno | <*my-sql-username*> | Uživatelské jméno pro přístup k databázi |
    | Heslo | <*my-sql-password*> | Heslo pro přístup k databázi | 
-   | Typ ověření | Windows nebo Basic | Volitelné: Typ ověřování používaný systémem SQL server | 
+   | Typ ověřování | Windows nebo Basic | Volitelné: Typ ověřování používaný systémem SQL server | 
    | Brány | <*my-data-gateway*> | Název pro místní bránu dat | 
    |||| 
 

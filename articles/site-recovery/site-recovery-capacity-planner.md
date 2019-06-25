@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: raynew
 ms.openlocfilehash: eeadfd6a57ff8a26f3f124e2a807fcd66e77b85f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61036651"
 ---
 # <a name="plan-capacity-for-hyper-v-vm-disaster-recovery"></a>Plánování kapacity pro zotavení po havárii virtuálních počítačů Hyper-V 
@@ -54,7 +54,7 @@ Nástroj můžete spustit ve dvou režimech:
 
    a. V **vyberte váš scénář**, zvolte **Hyper-V do Azure** nebo **VMware/fyzických prostředků do Azure**.
 
-   b. V **průměrná denní frekvence změny dat (%)**, zadejte tyto informace shromáždíte pomocí [kapacity Hyper-V, nástroj pro plánování](site-recovery-capacity-planning-for-hyper-v-replication.md) nebo [Site Recovery Deployment Planner](./site-recovery-deployment-planner.md).
+   b. V **průměrná denní frekvence změny dat (%)** , zadejte tyto informace shromáždíte pomocí [kapacity Hyper-V, nástroj pro plánování](site-recovery-capacity-planning-for-hyper-v-replication.md) nebo [Site Recovery Deployment Planner](./site-recovery-deployment-planner.md).
 
    c. **Komprese** nastavení nepoužívají při replikaci virtuálních počítačů Hyper-V do Azure. Komprese použijte zařízení třetích stran, jako je Riverbed.
 
@@ -66,8 +66,8 @@ Nástroj můžete spustit ve dvou režimech:
 
 4. Po zadání hodnoty pro zdrojové prostředí, zobrazený výstup zahrnuje:
 
-   * **Šířka pásma vyžadovaná pro rozdílovou replikaci (v MB za sekundu)**: Průměrná denní četnost změn dat se vypočítá šířce pásma pro rozdílovou replikaci.
-   * **Šířka pásma vyžadovaná pro počáteční replikaci (v MB za sekundu)**: Šířka pásma sítě pro počáteční replikaci se počítají hodnoty počáteční replikace, které zadáte.
+   * **Šířka pásma vyžadovaná pro rozdílovou replikaci (v MB za sekundu)** : Průměrná denní četnost změn dat se vypočítá šířce pásma pro rozdílovou replikaci.
+   * **Šířka pásma vyžadovaná pro počáteční replikaci (v MB za sekundu)** : Šířka pásma sítě pro počáteční replikaci se počítají hodnoty počáteční replikace, které zadáte.
    * **Úložiště (v GB) vyžaduje**: Celkový úložiště Azure vyžaduje.
    * **Celkový počet vstupně-výstupních operací na úložiště úrovně Standard**: Číslo se počítá na základě jednotek velikosti 8 kb IOPS na účty celkový úložiště úrovně standard. Pro rychlé plánovače číslo se vypočítá podle všech disků zdrojového virtuálního počítače a frekvence změny dat o denním. Pro podrobné plánovače číslo se počítá na základě celkového počtu virtuálních počítačů, které jsou mapovány na standardní virtuální počítače Azure a data změnit rychlost na těchto virtuálních počítačích.
    * **Počet účtů úložiště úrovně Standard vyžaduje**: Celkový počet účtů úložiště úrovně standard je potřeba k ochraně virtuálních počítačů. Účet úložiště úrovně standard může obsahovat až 20 000 IOPS ve všech virtuálních počítačích ve standardním úložišti. Na disku je podporováno maximálně 500 IOPS.
@@ -92,15 +92,15 @@ Nástroj můžete spustit ve dvou režimech:
 
    a. V **jader procesoru**, zadejte celkový počet jader na zdrojovém serveru.
 
-   b. V **přidělení paměti (v MB)**, zadejte velikost paměti RAM zdrojovém serveru.
+   b. V **přidělení paměti (v MB)** , zadejte velikost paměti RAM zdrojovém serveru.
 
    c. V **počet síťových adaptérů**, zadejte počet síťových adaptérů na zdrojovém serveru.
 
-   d. V **celková velikost úložiště (v GB)**, zadejte celková velikost úložiště virtuálního počítače. Například pokud na zdrojovém serveru má tři disky s 500 GB, celková velikost úložiště velikost je 1 500 GB.
+   d. V **celková velikost úložiště (v GB)** , zadejte celková velikost úložiště virtuálního počítače. Například pokud na zdrojovém serveru má tři disky s 500 GB, celková velikost úložiště velikost je 1 500 GB.
 
    e. V **počet disků připojených**, zadejte celkový počet disků ze zdrojového serveru.
 
-   f. V **disku využití kapacity (%)**, zadejte průměrné využití.
+   f. V **disku využití kapacity (%)** , zadejte průměrné využití.
 
    g. V **(%) frekvence každodenní změny dat**, zadejte frekvence každodenní změny dat ze zdrojového serveru.
 

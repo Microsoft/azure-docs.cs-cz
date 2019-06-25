@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 63e424e9029ac81ed73696fc25882fc601bece96
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 21c10e142802914bcf3292ef7f25066675e6cdd1
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67091159"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67143924"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sharepoint-on-premises"></a>Kurz: Integrace Azure Active Directory s místní SharePoint
 
@@ -56,6 +56,9 @@ Pokud chcete nakonfigurovat integraci služby SharePoint v místním do služby 
 1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
+
+    > [!NOTE]   
+    > Pokud element by neměl být k dispozici, jej můžete otevřít také prostřednictvím pevné **všechny služby** odkazu v horní části levého navigačního panelu. V následujícím přehledu **Azure Active Directory** odkaz umístěn v **Identity** části nebo ji lze vyhledávat pomocí textového pole filtru.
 
 2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
 

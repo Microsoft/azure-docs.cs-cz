@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 06/06/201
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 89034b04c6b38c0873f890e55693c6e15e6a8d93
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a3677e45738c368d8438872da740a362a8048a63
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67069399"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67155541"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Kurz: Mapování existujícího vlastního názvu DNS do služby Azure App Service
 
@@ -156,7 +156,7 @@ Může trvat nějakou dobu pro novou vlastní doménu projeví v aplikaci prvku 
 ![Přidaný záznam CNAME](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
 
 > [!NOTE]
-> A **Poznámka zabezpečení** popisek pro vaši vlastní doménu znamená, že je ještě není vázán na certifikát SSL a jakékoli požadavek HTTPS z prohlížeče do vaší vlastní domény zobrazí a chyby nebo upozornění, v závislosti na prohlížeči. Pokud chcete přidat vazbu SSL, najdete v článku [vytvoření vazby existujícího vlastního certifikátu SSL do služby Azure App Service](app-service-web-tutorial-custom-ssl.md).
+> A **zabezpečení** popisek pro vaši vlastní doménu znamená, že je ještě není vázán na certifikát SSL a jakékoli požadavek HTTPS z prohlížeče do vaší vlastní domény zobrazí a chyby nebo upozornění, v závislosti na prohlížeči. Pokud chcete přidat vazbu SSL, najdete v článku [vytvoření vazby existujícího vlastního certifikátu SSL do služby Azure App Service](app-service-web-tutorial-custom-ssl.md).
 
 Pokud jste nějaký krok vynechali nebo jste někde udělali překlep, ve spodní části stránky se zobrazí chyba ověření.
 
@@ -240,7 +240,7 @@ Může trvat nějakou dobu pro novou vlastní doménu projeví v aplikaci prvku 
 ![Přidaný záznam A](./media/app-service-web-tutorial-custom-domain/a-record-added.png)
 
 > [!NOTE]
-> A **Poznámka zabezpečení** popisek pro vaši vlastní doménu znamená, že je ještě není vázán na certifikát SSL a jakékoli požadavek HTTPS z prohlížeče do vaší vlastní domény zobrazí a chyby nebo upozornění, v závislosti na prohlížeči. Pokud chcete přidat vazbu SSL, najdete v článku [vytvoření vazby existujícího vlastního certifikátu SSL do služby Azure App Service](app-service-web-tutorial-custom-ssl.md).
+> A **zabezpečení** popisek pro vaši vlastní doménu znamená, že je ještě není vázán na certifikát SSL a jakékoli požadavek HTTPS z prohlížeče do vaší vlastní domény zobrazí a chyby nebo upozornění, v závislosti na prohlížeči. Pokud chcete přidat vazbu SSL, najdete v článku [vytvoření vazby existujícího vlastního certifikátu SSL do služby Azure App Service](app-service-web-tutorial-custom-ssl.md).
 
 Pokud jste nějaký krok vynechali nebo jste někde udělali překlep, ve spodní části stránky se zobrazí chyba ověření.
 

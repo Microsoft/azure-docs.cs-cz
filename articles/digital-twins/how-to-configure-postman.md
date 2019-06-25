@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 06/05/2019
 ms.author: v-adgera
-ms.openlocfilehash: 31944c08bad503c20832ea7e4e682c0063ab0f9f
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.openlocfilehash: cd67f1065f47b758f2a7e0e5be3c60169c30273e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66735037"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67116570"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Postup konfigurace nástroje Postman pro digitální dvojče Azure
 
@@ -41,7 +41,7 @@ Konfigurace aplikace Azure Active Directory pro používání služby flow impli
 
     [![Registrace aplikace Azure Active Directory přidat rozhraní api](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png#lightbox)
 
-1. Klikněte na tlačítko **Manifest** otevřete manifest aplikace pro vaši aplikaci. Nastavte *oauth2AllowImplicitFlow* k `true`.
+1. Vyberte **Manifest** otevřete manifest aplikace pro vaši aplikaci. Nastavte *oauth2AllowImplicitFlow* k `true`.
 
     [![Azure Active Directory implicitní tok](media/how-to-configure-postman/implicit-flow.png)](media/how-to-configure-postman/implicit-flow.png#lightbox)
 
@@ -62,7 +62,7 @@ V dalším kroku nastavení a konfigurace nástroje Postman pro získání token
     https://login.microsoftonline.com/YOUR_AZURE_TENANT.onmicrosoft.com/oauth2/authorize?resource=0b07f429-9f4b-4714-9392-cc5e8e80c8b0
     ```
 
-    | Název  | Nahradit hodnotou | Příklad: |
+    | Name  | Nahradit hodnotou | Příklad: |
     |---------|---------|---------|
     | YOUR_AZURE_TENANT | Název tenanta vaší organizace | `microsoft` |
 
@@ -111,7 +111,7 @@ Po dokončení předchozích kroků konfigurace nástroje Postman aby ověřené
    > * Nemusíte určit tyto hlavičky pro každou část.
    > * Musíte vybrat `multipart/mixed` nebo další odpovídající **Content-Type** pro celou žádost.
 
-1. A konečně, klikněte na tlačítko **odeslat** k odeslání žádosti HTTP POST s více částmi.
+1. Nakonec vyberte **odeslat** k odeslání žádosti HTTP POST s více částmi.
 
 ## <a name="next-steps"></a>Další postup
 

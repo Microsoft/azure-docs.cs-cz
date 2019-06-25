@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 91fad34073d7505c596bedfb6c93946ee7393dd7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60825604"
 ---
 # <a name="use-azure-media-analytics-to-convert-text-content-in-video-files-into-digital-text"></a>Pomocí Azure Media Analytics můžete převést textový obsah v videosouborů na digitální text  
@@ -112,7 +112,7 @@ Výstup obsahuje následující atributy:
 | Výška |výšku v pixelech |
 | Fragments |pole založené na čase bloky dat videa, do kterého metadata je rozdělený do bloků dat |
 | start |Počáteční čas fragment v "značky" |
-| doba trvání |Délka fragment v "značky" |
+| Doba trvání |Délka fragment v "značky" |
 | interval |Interval každá událost v rámci dané fragmentu |
 | stránka events |pole obsahující oblastí |
 | oblast |objekt představující zjistil slova nebo fráze |

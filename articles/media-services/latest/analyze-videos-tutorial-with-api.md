@@ -1,5 +1,5 @@
 ---
-title: Analýza videa pomocí Media Services pomocí rozhraní .NET – Azure | Dokumentace Microsoftu
+title: Analýza videa pomocí služby Azure Media Services | Microsoft Docs
 description: Pokud chcete analyzovat video pomocí služby Azure Media Services, postupujte podle kroků v tomto kurzu.
 services: media-services
 documentationcenter: ''
@@ -9,22 +9,25 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
-ms.date: 04/21/2019
+ms.date: 06/19/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: ead6fdc0ade4a24d162603b9dc3749726c0d8002
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: 2c26ba24f0262f7cf43f80b4f4deae464581d08d
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65415644"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273888"
 ---
-# <a name="tutorial-analyze-videos-with-media-services-v3-using-net"></a>Kurz: Analýza videa pomocí Media Services v3 pomocí .NET
+# <a name="tutorial-analyze-videos-with-media-services-v3"></a>Kurz: Analýza videa pomocí Media Services v3
+
+> [!NOTE]
+> I když v tomto kurzu použijete [sady .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) příklady, obecný postup je stejný pro [rozhraní REST API](https://docs.microsoft.com/rest/api/media/liveevents), [rozhraní příkazového řádku](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest), nebo jiné podporované [sady SDK](media-services-apis-overview.md#sdks) .
 
 Tento kurz vám ukáže, jak analyzovat video pomocí služby Azure Media Services. Existuje mnoho případů, ve kterých můžete potřebovat získat podrobnější přehled o zaznamenaném video nebo audio obsahu. Pokud chtějí organizace například dosáhnout vyšší spokojenosti zákazníků, mohou převést záznamy řeči zákaznické podpory na text a vytvořit prohledávatelný katalog s rejstříky a řídicími panely. Pak může získat přehled o jejich firmy, jako je například seznam častých stížností, zdrojům stížnosti a další užitečné informace.
 
 V tomto kurzu získáte informace o následujících postupech:    
-
+ 
 > [!div class="checklist"]
 > * Stažení ukázkové aplikace popsané v tématu
 > * Kontrola kódu, který analyzuje dané video

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 01/30/2019
 ms.author: tomfitz
 ms.openlocfilehash: 7c081b3bc5f9e6273f680b24897f9aced4999afa
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66129031"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67175391"
 ---
 ## <a name="deploy-template-from-cloud-shell"></a>Nasazení šablony ze služby Cloud Shell
 
@@ -19,11 +19,11 @@ K nasazení šablony můžete použít [Cloud Shell](../articles/cloud-shell/ove
 
 1. Vyberte vaši skupinu prostředků služby Cloud Shell. Vzor názvů je `cloud-shell-storage-<region>`.
 
-   ![Vybrat skupinu prostředků](./media/resource-manager-cloud-shell-deploy/select-cs-resource-group.png)
+   ![Výběr skupiny prostředků](./media/resource-manager-cloud-shell-deploy/select-cs-resource-group.png)
 
 1. Vyberte účet úložiště pro službu Cloud Shell.
 
-   ![Vybrat účet úložiště](./media/resource-manager-cloud-shell-deploy/select-storage.png)
+   ![Výběr účtu úložiště](./media/resource-manager-cloud-shell-deploy/select-storage.png)
 
 1. Vyberte **Objekty blob**.
 
@@ -31,7 +31,7 @@ K nasazení šablony můžete použít [Cloud Shell](../articles/cloud-shell/ove
 
 1. Vyberte **+ Kontejner**.
 
-   ![Přidat kontejner](./media/resource-manager-cloud-shell-deploy/add-container.png)
+   ![Přidání kontejneru](./media/resource-manager-cloud-shell-deploy/add-container.png)
 
 1. Zadejte svůj kontejner názvu a úroveň přístupu. Ukázková šablona v tomto článku obsahuje žádné citlivé informace, takže povolit anonymní přístup pro čtení. Vyberte **OK**.
 
@@ -47,7 +47,7 @@ K nasazení šablony můžete použít [Cloud Shell](../articles/cloud-shell/ove
 
 1. Vyhledejte a nahrajte vaši šablonu.
 
-   ![Nahrát soubor](./media/resource-manager-cloud-shell-deploy/find-and-upload-template.png)
+   ![Nahrání souboru](./media/resource-manager-cloud-shell-deploy/find-and-upload-template.png)
 
 1. Po odeslal, vyberte šablonu.
 
@@ -55,7 +55,7 @@ K nasazení šablony můžete použít [Cloud Shell](../articles/cloud-shell/ove
 
 1. Zkopírujte adresu URL.
 
-   ![Zkopírovat adresu URL](./media/resource-manager-cloud-shell-deploy/copy-url.png)
+   ![Zkopírujte adresu URL](./media/resource-manager-cloud-shell-deploy/copy-url.png)
 
 1. Otevřete příkazový řádek.
 

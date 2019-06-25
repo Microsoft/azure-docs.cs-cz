@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 12/18/2018
 ms.topic: conceptual
 ms.openlocfilehash: 0f9669d491648ecc621aab27d0908dcc3dc84438
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65823329"
 ---
 # <a name="understand-the-device-model-schema"></a>Pochopení schématu modelu zařízení
@@ -114,7 +114,7 @@ Následující příklad ukazuje definici objektu stavu zařízení pro zaříze
 
 Spuštění služby simulace **chladič-01-state.js** souboru každých pět sekund na Aktualizovat stav zařízení. Zobrazí soubory jazyka JavaScript pro zařízení s Simulovaná výchozí [složky scripts](https://github.com/Azure/device-simulation-dotnet/tree/master/Services/data/devicemodels/scripts) na Githubu. Podle konvence mají tyto soubory jazyka JavaScript příponu **– stav** abychom je odlišili od soubory, které implementují chování metody.
 
-## <a name="properties"></a>Vlastnost
+## <a name="properties"></a>Vlastnosti
 
 `Properties` Části schéma definuje hodnoty vlastností zařízení odesílá do řešení. Příklad:
 

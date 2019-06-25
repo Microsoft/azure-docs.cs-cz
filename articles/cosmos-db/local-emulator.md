@@ -5,13 +5,13 @@ ms.service: cosmos-db
 ms.topic: tutorial
 author: deborahc
 ms.author: dech
-ms.date: 05/20/2019
-ms.openlocfilehash: 9e7342ebcbcf536b26e6cf7fb89e3cf58666d24f
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.date: 06/21/2019
+ms.openlocfilehash: d7d9d62525161e6871cafd65cf5cd2c403cf0579
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65953957"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67331776"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Pro místní vývoj a testování používat emulátor služby Azure Cosmos
 
@@ -241,7 +241,7 @@ Pokud chcete zobrazit seznam možností, na příkazovém řádku zadejte `Cosmo
 |[Žádné argumenty] | Spustí se emulátor služby Azure Cosmos pomocí výchozích nastavení. |CosmosDB.Emulator.exe| |
 |[Nápověda] |Zobrazí seznam podporovaných argumentů příkazového řádku.|CosmosDB.Emulator.exe /? | |
 | GetStatus |Získá stav emulátor služby Azure Cosmos. Stav je indikován ukončovací kód: 1 = od, 2 = spuštěný, 3 = zastavena. Záporný ukončovací kód označuje, že došlo k chybě. Žádný jiný výstup neexistuje. | CosmosDB.Emulator.exe /GetStatus| |
-| Vypnout| Vypne emulátor služby Azure Cosmos.| CosmosDB.Emulator.exe /Shutdown | |
+| Shutdown| Vypne emulátor služby Azure Cosmos.| CosmosDB.Emulator.exe /Shutdown | |
 |DataPath | Určuje cestu, do které chcete uložit datové soubory. Výchozí hodnota je % LocalAppdata%\CosmosDBEmulator. | CosmosDB.Emulator.exe /DataPath=\<datapath\> | \<DataPath\>: Přístupná cesta |
 |Port | Určuje číslo portu pro emulátor. Výchozí hodnota je 8081. |CosmosDB.Emulator.exe /Port=\<port\> | \<Port\>: Jeden port číslo |
 | MongoPort | Určuje číslo portu, který chcete použít pro rozhraní API kompatibility MongoDB. Výchozí hodnota je 10255. |CosmosDB.Emulator.exe /MongoPort= \<mongoport\>|\<mongoport\>: Jeden port číslo|
@@ -413,6 +413,57 @@ Pokud chcete otevřít Průzkumníka dat, přejděte v prohlížeči na následu
 
     https://<emulator endpoint provided in response>/_explorer/index.html
 
+## Se systémem Mac nebo Linux<a id="mac"></a>
+
+Aktuálně můžete emulátor Cosmos spustit jenom na Windows. Uživatele, které spuštěné Mac nebo Linux ve virtuálním počítači Windows můžete spustit emulátor hostované hypervisoru, jako jsou Parallels nebo VirtualBox. Dále jsou uvedené kroky, aby to bylo.
+
+V rámci virtuálního počítače Windows spusťte následující příkaz a poznamenejte si IPv4 adresu.
+
+```cmd
+ipconfig.exe
+```
+
+V rámci vaší aplikace budete muset změnit identifikátor URI objektu DocumentClient IPv4 adresu vrácenou `ipconfig.exe`. Dalším krokem je obejít ověření certifikační Autority při vytváření objektu DocumentClient. K tomu budete muset zadat HttpClientHandler pro konstruktor DocumentClient, který má vlastní implementace ServerCertificateCustomValidationCallback.
+
+Níže je příklad kódu by měla vypadat.
+
+```csharp
+using System;
+using Microsoft.Azure.Documents;
+using Microsoft.Azure.Documents.Client;
+using System.Net.Http;
+
+namespace emulator
+{
+    class Program
+    {
+        static async void Main(string[] args)
+        {
+            string strEndpoint = "https://10.135.16.197:8081/";  //IPv4 address from ipconfig.exe
+            string strKey = "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==";
+
+            //Work around the CA validation
+            var httpHandler = new HttpClientHandler()
+            {
+                ServerCertificateCustomValidationCallback = (req,cert,chain,errors) => true
+            };
+
+            //Pass http handler to document client
+            using (DocumentClient client = new DocumentClient(new Uri(strEndpoint), strKey, httpHandler))
+            {
+                Database database = await client.CreateDatabaseIfNotExistsAsync(new Database { Id = "myDatabase" });
+                Console.WriteLine($"Created Database: id - {database.Id} and selfLink - {database.SelfLink}");
+            }
+        }
+    }
+}
+```
+
+Nakonec z na virtuálním počítači Windows spusťte emulátor Cosmos z příkazového řádku pomocí následujících možností.
+
+```cmd
+Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
+```
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
@@ -450,7 +501,7 @@ Pokud chcete shromažďovat trasovací soubory pro ladění, spusťte z příkaz
 ### <a id="uninstall"></a>Odinstalace místního emulátoru
 
 1. Ukončete všechny otevřené instance místní emulátor kliknutím pravým tlačítkem na emulátor služby Azure Cosmos ikonu na hlavním panelu systému a potom klepněte na tlačítko. Ukončení všech instancí může chvíli trvat.
-2. Do vyhledávacího pole ve Windows zadejte **Programy a funkce** a klikněte na výsledek **Programy a funkce (nastavení systému)**.
+2. Do vyhledávacího pole ve Windows zadejte **Programy a funkce** a klikněte na výsledek **Programy a funkce (nastavení systému)** .
 3. V seznamu aplikací se posuňte na položku **Azure Cosmos DB Emulator**, vyberte ji, klikněte na **Odinstalovat**, potvrďte a znovu klikněte na **Odinstalovat**.
 4. Když je aplikace odinstalovaná, přejděte do složky `%LOCALAPPDATA%\CosmosDBEmulator` a odstraňte ji.
 

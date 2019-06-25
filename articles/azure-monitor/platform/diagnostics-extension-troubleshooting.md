@@ -9,21 +9,21 @@ ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: robb
 ms.openlocfilehash: 99ac4ffc288773e52183d371ef2c20f6153bc0f3
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65471786"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Řešení potíží diagnostiky Azure
 Tento článek popisuje informace o odstraňování potíží, které se týkají pomocí Azure Diagnostics. Další informace o diagnostice Azure najdete v tématu [přehled Azure Diagnostics](diagnostics-extension-overview.md).
 
 ## <a name="logical-components"></a>Logické součásti
-**Modul plug-in Spouštěč diagnostiky (DiagnosticsPluginLauncher.exe)**: Spustí rozšíření Azure Diagnostics. Slouží jako položku bodu procesu.
+**Modul plug-in Spouštěč diagnostiky (DiagnosticsPluginLauncher.exe)** : Spustí rozšíření Azure Diagnostics. Slouží jako položku bodu procesu.
 
-**Modul plug-in diagnostiky (DiagnosticsPlugin.exe)**: Nakonfiguruje, spouští a spravuje životnost agenta monitorování. Je hlavní proces, který je spouštěn spouštěč.
+**Modul plug-in diagnostiky (DiagnosticsPlugin.exe)** : Nakonfiguruje, spouští a spravuje životnost agenta monitorování. Je hlavní proces, který je spouštěn spouštěč.
 
-**Monitoring Agent (vypnutí Monagenta\*procesy .exe)**: Monitoruje, shromažďuje a přenese diagnostická data.  
+**Monitoring Agent (vypnutí Monagenta\*procesy .exe)** : Monitoruje, shromažďuje a přenese diagnostická data.  
 
 ## <a name="logartifact-paths"></a>Cesty protokolu/artefaktů
 Následující části jsou cesty pro některé důležité protokoly a artefakty. Označujeme k těmto informacím v celé zbývající části dokumentu.
@@ -96,7 +96,7 @@ Pokud narazíte **záporné** ukončovací kód, přečtěte si [ukončovací k�
 ## <a name="diagnostics-data-is-not-logged-to-azure-storage"></a>Diagnostická data se protokolují do služby Azure Storage
 Určete, jestli žádná data se povolí, nebude nebo některá data se zobrazuje.
 
-### <a name="diagnostics-infrastructure-logs"></a>Protokoly diagnostické infrastruktury
+### <a name="diagnostics-infrastructure-logs"></a>Protokoly infrastruktury diagnostiky
 Diagnostické protokoly všechny chyby v diagnostických protokolů infrastruktury. Ujistěte se, že jste povolili [zachycení diagnostické infrastruktury protokolů v konfiguraci](#how-to-check-diagnostics-extension-configuration). Pak můžete rychle vyhledat všechny relevantní chyby, které se zobrazují v `DiagnosticInfrastructureLogsTable` tabulka ve vašem účtu úložiště.
 
 ### <a name="no-data-is-appearing"></a>Žádná data
@@ -232,7 +232,7 @@ Modul plug-in vrátí následující kódy ukončení:
 
 | Ukončovací kód | Popis |
 | --- | --- |
-| 0 |Úspěšné |
+| 0 |Úspěch |
 | -1 |Obecná chyba. |
 | -2 |Nepovedlo se načíst soubor rcf.<p>Tato interní chyba by měla pouze dojít, pokud spuštění modulu plug-in agenta hosta je vyvolána ručně nesprávně na virtuálním počítači. |
 | -3 |Nelze načíst konfigurační soubor diagnostiky.<p><p>Řešení: Způsobené konfigurační soubor není předávání ověřování schématu. Řešením je poskytnout konfigurační soubor, který odpovídá schématu. |

@@ -1,10 +1,15 @@
 ---
+author: rayne-wiselman
+ms.service: site-recovery
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: raynew
 ms.openlocfilehash: ffc9b09c72ef1bf5180a0d626908d09b6fdd41ca
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62122791"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203716"
 ---
 ### <a name="prepare-for-a-push-installation-on-a-windows-computer"></a>Příprava nabízené instalace na počítači Windows
 
@@ -13,10 +18,10 @@ ms.locfileid: "62122791"
 
    > [!NOTE]
    > Pokud nepoužíváte doménový účet, zakažte vzdálené řízení přístupu uživatele v místním počítači. Zakázání vzdálené řízení přístupu uživatele, pod klíčem registru HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System přidáte novou hodnotu DWORD: **LocalAccountTokenFilterPolicy**. Nastavte hodnotu na **1**. K provedení této úlohy z příkazového řádku, spusťte následující příkaz:  
-   > `REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1`
+   `REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1`
    >
    >
-1. V bráně Windows Firewall v počítači, který chcete chránit, vyberte **povolit aplikaci nebo funkci průchod bránou Firewall**. Povolit **sdílení souborů a tiskáren** a **Windows Management Instrumentation (WMI)**. Pro počítače, které patří do nějaké domény můžete nakonfigurovat nastavení brány firewall pomocí objektu zásad skupiny (GPO).
+1. V bráně Windows Firewall v počítači, který chcete chránit, vyberte **povolit aplikaci nebo funkci průchod bránou Firewall**. Povolit **sdílení souborů a tiskáren** a **Windows Management Instrumentation (WMI)** . Pro počítače, které patří do nějaké domény můžete nakonfigurovat nastavení brány firewall pomocí objektu zásad skupiny (GPO).
 
    ![Nastavení brány firewall](./media/site-recovery-prepare-push-install-mob-svc-win/mobility1.png)
 
@@ -31,5 +36,3 @@ ms.locfileid: "62122791"
     d. Přidejte účet, který jste vytvořili.
 
     e. Zadejte přihlašovací údaje, které používáte při povolení replikace počítače.
-<!--Update_Description: wording update-->
-<!--ms.date: 09/17/2018-->

@@ -10,10 +10,10 @@ ms.date: 04/02/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: d230fa97d009f0ee2a3bc86a0b6b7c8d40687a46
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61216028"
 ---
 # <a name="certificate-assets-in-azure-automation"></a>Prostředků certifikátů ve službě Azure Automation
@@ -35,11 +35,11 @@ Pro AzureRM rutiny v následující tabulce se používají k vytváření a spr
 |[Set-AzureRmAutomationCertificate](/powershell/module/azurerm.automation/set-azurermautomationcertificate)|Nastaví vlastnosti existujícího certifikátu včetně nahrání souboru certifikátu a nastavení hesla pro .pfx.|
 |[Add-AzureCertificate](/powershell/module/servicemanagement/azure/add-azurecertificate)|Nahrání certifikátu služby pro zadaná Cloudová služba.|
 
-## <a name="activities"></a>Aktivity
+## <a name="activities"></a>Činnosti
 
 Aktivity v následující tabulce se používají pro přístup k certifikáty v sadě runbook a konfiguracích DSC.
 
-| Aktivity | Popis |
+| Činnosti | Popis |
 |:---|:---|
 |Get-AutomationCertificate|Získá certifikát pro použití v runbooku nebo konfigurace DSC. Vrátí [System.Security.Cryptography.X509Certificates.X509Certificate2](/dotnet/api/system.security.cryptography.x509certificates.x509certificate2) objektu.|
 

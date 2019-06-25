@@ -10,10 +10,10 @@ ms.date: 08/26/2016
 ms.author: saudas
 ms.custom: mvc
 ms.openlocfilehash: 3e4ba15fa1925ca40ad7760acbd14331fbdd1343
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61457322"
 ---
 # <a name="deprecated-enable-public-access-to-an-azure-container-service-application"></a>(NEPOUŽÍVANÉ) Povolení veřejného přístupu k aplikaci Azure Container Service
@@ -41,7 +41,7 @@ Nejdřív potřebujeme pro otevření portu, jaké chceme.
    | Port |Port kontejneru pro testování. |
    | `Path` |(Pokud v režimu HTTP) Cesta relativní webu do testu. HTTPS se nepodporuje. |
    | Interval |Množství času mezi test pokusí v řádu sekund. |
-   | Prahová hodnota pro poškozený stav |Počet po sobě jdoucích test pokusí předtím, než kontejneru není v pořádku. |
+   | Prahová hodnota špatného stavu |Počet po sobě jdoucích test pokusí předtím, než kontejneru není v pořádku. |
 6. Zpět na vlastnosti nástroje pro vyrovnávání zatížení agenta, klikněte na tlačítko **pravidla Vyrovnávání zatížení** a potom **přidat**.
    
     ![Pravidla nástroje pro vyrovnávání zatížení Azure container service](./media/container-service-enable-public-access/add-balancer-rule.png)
@@ -72,11 +72,11 @@ Teď potřebujeme přidat pravidlo zabezpečení, která směruje provoz z naši
    
    | Pole | Popis |
    | --- | --- |
-   | Název |Popisný název pravidla brány firewall. |
+   | Name |Popisný název pravidla brány firewall. |
    | Priorita |Pořadí priority pro pravidlo. Čím nižší číslo vyšší je priorita. |
-   | Zdroj |Omezte příchozí rozsah IP adres má být povolen nebo odepřen tímto pravidlem. Použití **jakékoli** pro nezadání omezení. |
+   | source |Omezte příchozí rozsah IP adres má být povolen nebo odepřen tímto pravidlem. Použití **jakékoli** pro nezadání omezení. |
    | Služba |Vyberte sadu předdefinovaných služby, které je pro toto pravidlo zabezpečení. Jinak použijte **vlastní** vytvořit vlastní. |
-   | Protocol (Protokol) |Omezení provozu na základě **TCP** nebo **UDP**. Použití **jakékoli** pro nezadání omezení. |
+   | Protocol |Omezení provozu na základě **TCP** nebo **UDP**. Použití **jakékoli** pro nezadání omezení. |
    | Rozsah portů |Když **služby** je **vlastní**, určuje rozsah portů, na která toto pravidlo vztahuje. Jediný port, můžete použít jako **80**, nebo jako rozsah **1024 1500**. |
    | Akce |Povolí nebo zakážou provoz, který splňuje kritéria. |
 

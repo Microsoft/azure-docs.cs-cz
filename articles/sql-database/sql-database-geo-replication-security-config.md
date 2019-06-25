@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: 50cec0774729073678498922b2c58f1ca62d7d82
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8a2a2fffa9ed3a4dae3c0768291b7585be4bfc6d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60341943"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64690835"
 ---
 # <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>Konfigurace a Správa zabezpečení služby Azure SQL Database pro geografické obnovení nebo převzetí služeb při selhání
 
@@ -89,7 +89,9 @@ Posledním krokem je přejít na cílový server nebo servery a generovat přihl
 > [!NOTE]
 > Pokud chcete udělit přístup uživatelů k sekundární, ale ne na primární, můžete to udělat změnou přihlášení uživatele na primárním serveru pomocí následující syntaxe.
 >
-> PŘÍKAZ ALTER LOGIN <login name> ZAKÁZAT
+> ```sql
+> ALTER LOGIN <login name> DISABLE
+> ```
 >
 > ZAKÁZAT nedojde ke změně hesla, takže můžete vždy povolit ji v případě potřeby.
 

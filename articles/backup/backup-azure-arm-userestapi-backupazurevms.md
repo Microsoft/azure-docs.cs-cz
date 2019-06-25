@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: pullabhk
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 8a47d3cf346d7961e9f8b1c4fa615a2faa6b1da0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 295c4fed9ab674f0c9e812c02f6b82ee53ef1b91
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60646760"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274866"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Zálohování virtuálního počítače Azure pomocí Azure Backup přes rozhraní REST API
 
@@ -47,7 +47,7 @@ Operaci 'aktualizovat' je [asynchronní operace](https://docs.microsoft.com/azur
 
 Vrátí dva odpovědi: 202 (přijato), když se vytvoří jiná operace a pak 200 (OK) po dokončení této operace.
 
-|Name  |Typ  |Popis  |
+|Název  |Typ  |Popis  |
 |---------|---------|---------|
 |204 žádný obsah.     |         |  OK bez obsahu vrátil      |
 |202 přijato     |         |     Přijato    |
@@ -108,13 +108,13 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 *Získat* identifikátor URI má všechny požadované parametry. Je potřeba žádné další žádosti subjekt.
 
-#### <a name="responses"></a>Odezvy
+##### <a name="responses-1"></a>Odpovědi
 
 |Name  |Typ  |Popis  |
 |---------|---------|---------|
 |200 OK     | [WorkloadProtectableItemResourceList](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       OK |
 
-##### <a name="example-responses"></a>Ukázkové odpovědi
+##### <a name="example-responses-1"></a>Ukázkové odpovědi
 
 Jakmile *získat* odeslání žádosti se vrátí odpověď 200 (OK).
 
@@ -214,7 +214,7 @@ Vytvoření chráněné položky se zobrazí [asynchronní operace](https://docs
 
 Vrátí dva odpovědi: 202 (přijato), když se vytvoří jiná operace a pak 200 (OK) po dokončení této operace.
 
-|Název  |Typ  |Popis  |
+|Name  |Typ  |Popis  |
 |---------|---------|---------|
 |200 OK     |    [ProtectedItemResource](https://docs.microsoft.com/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  OK       |
 |202 přijato     |         |     Přijato    |
@@ -300,7 +300,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 Spustit zálohu na vyžádání, jsou následující komponenty z textu požadavku.
 
-|Name  |Typ  |Popis  |
+|Název  |Typ  |Popis  |
 |---------|---------|---------|
 |properties     | [IaaSVMBackupRequest](https://docs.microsoft.com/rest/api/backup/backups/trigger#iaasvmbackuprequest)        |Vlastnosti BackupRequestResource         |
 
@@ -329,7 +329,7 @@ Vrátí dva odpovědi: 202 (přijato), když se vytvoří jiná operace a pak 20
 |---------|---------|---------|
 |202 přijato     |         |     Přijato    |
 
-#### <a name="example-responses"></a>Ukázkové odpovědi
+##### <a name="example-responses-3"></a>Ukázkové odpovědi
 
 Jakmile odešlete *příspěvek* žádost o zálohu na vyžádání, první odezvy je 202 (přijato) se hlavička umístění nebo Azure asynchronní záhlaví.
 
@@ -439,13 +439,13 @@ DELETE https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroup
 DELETE https://management.azure.com//Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;iaasvmcontainerv2;testRG;testVM?api-version=2016-12-01
 ```
 
-### <a name="responses"></a>Odezvy
+### <a name="responses-2"></a>Odpovědi
 
 *Odstranit* ochrana je [asynchronní operace](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Znamená to, že tato operace vytvoří jiná operace, která je třeba sledovat samostatně.
 
 Vrátí dva odpovědi: 202 (přijato), když se vytvoří jiná operace a pak 204 (NoContent) po dokončení této operace.
 
-|Název  |Typ  |Popis  |
+|Name  |Typ  |Popis  |
 |---------|---------|---------|
 |204 NoContent     |         |  NoContent       |
 |202 přijato     |         |     Přijato    |

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: spelluru
 ms.openlocfilehash: b54bc52a2feaf4646d801265ddb273c2c86158ee
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60823447"
 ---
 # <a name="subscribe-to-events-through-portal"></a>Přihlášení k odběru událostí prostřednictvím portálu
@@ -36,7 +36,7 @@ Chcete-li vytvořit odběr Event gridu pro jakýkoli z podporovaných [zdroje ud
 
 1. Vyberte typ vašeho předplatného, které chcete vytvořit. Například, přihlášení k odběru událostí předplatného Azure, vyberte **předplatná Azure** a cílové předplatné.
 
-   ![Vyberte předplatné Azure.](./media/subscribe-through-portal/azure-subscription.png)
+   ![Vyberte předplatné Azure](./media/subscribe-through-portal/azure-subscription.png)
 
 1. Přihlásit odběr pro všechny typy událostí pro tento zdroj události a udržovat **odběru pro všechny typy událostí** zaškrtnutým políčkem. V opačném případě vyberte typy událostí pro toto předplatné.
 

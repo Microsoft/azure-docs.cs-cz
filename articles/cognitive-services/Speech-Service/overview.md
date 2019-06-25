@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: dc0871c0b16246fa178072e9d9f266d4c02ba1c4
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 4750937ee7ef6230ed4635d739a102a501b19a30
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66002992"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341802"
 ---
 # <a name="what-are-the-speech-services"></a>Co jsou služby Speech?
 
@@ -26,13 +26,13 @@ Hlasové služby Azure jsou sjednocení speech to text, převod textu na řeč a
 
 Tyto funkce tvoří hlasové služby Azure. Další informace o běžných případů použití pro jednotlivé funkce nebo procházet Reference k rozhraní API pomocí odkazů v této tabulce.
 
-| Služba | Funkce | Popis | SDK | REST |
+| Služba | Funkce | Popis | Sada SDK | REST |
 |---------|---------|-------------|-----|------|
 | [Speech-to-Text](speech-to-text.md) | Převod řeči na text | Převod řeči na text transcribes audiostreamy na text v reálném čase, který může využívat nebo zobrazení vaší aplikace, nástroje nebo zařízení. Použít převod řeči na text pomocí [Language Understanding (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/) odvodit záměry uživatele z přepisu řeči a zákona o hlasové příkazy. | [Ano](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [Ano](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | | [Přepis služby batch](batch-transcription.md) | Přepis Batch umožňuje asynchronní určené k transkripci řeči na text velkých svazků s daty. Toto je nějakou službu založenou na REST, která využívá stejný koncový bod jako přizpůsobení a správa modelů. | Ne | [Ano](https://westus.cris.ai/swagger/ui/index) |
 | | [Přepis konverzace](conversation-transcription-service.md) | Umožňuje rozpoznávání řeči v reálném čase, identifikace mluvčího a diarization. Jde o ideální řešení pro přepisování schůzky osobně s možností rozlišení mluvčí. | Ano | Ne |
 | | [Vytvořit modely řeči](#customize-your-speech-experience) | Pokud používáte speech to text pro rozpoznávání a přepis v jedinečné prostředí, můžete vytvořit a trénování vlastních akustických, jazyk a výslovnost modelů hluk adresu nebo slovníku specifických pro dané odvětví. | Ne | [Ano](https://westus.cris.ai/swagger/ui/index) |
-| [Text-to-Speech](text-to-speech.md) | Převod textu na řeč | Převod textu na řeč převede vstupní text na řeč syntetizovaný podobnou té lidské. Vyberte standardní hlasy a hlasy neuronových sítí (naleznete v tématu [jazykovou podporu](language-support.md)). | [Ano](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [Ano](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| [Text-to-Speech](text-to-speech.md) | Převod textu na řeč | Převod textu na řeč převádí vstupní text pomocí podobnou té lidské řečového [řeči syntézu Markup Language (SSML)](text-to-speech.md#speech-synthesis-markup-language-ssml). Vyberte standardní hlasy a hlasy neuronových sítí (naleznete v tématu [jazykovou podporu](language-support.md)). | [Ano](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [Ano](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | | [Vytvořit vlastní hlasů](#customize-your-speech-experience) | Vytvoření vlastního hlasového písma jedinečné pro vaší značce nebo produktu. | Ne | [Ano](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | [Překlad řeči](speech-translation.md) | Překlad řeči | Překlad řeči umožňuje v reálném čase, vícejazykového překlad řeči do aplikací, nástroje a zařízení. Pomocí této služby pro překlad řeči řeči a rozpoznávání řeči na text. | [Ano](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | Ne |
 | [Voice-first Virtual Assistants](voice-first-virtual-assistants.md) | Asistenti virtuální první hlasu | Vlastní virtuálních asistentů pomocí hlasové služby Azure umožní vývojářům vytvářet konverzační rozhraní přirozené, podobnou té lidské pro jejich aplikace a prostředí. Kanál s přímým přístupem řeči řádku rozhraní Bot Framework rozšiřuje tyto možnosti tím, že poskytuje koordinované, iniciovat organizovaně, což vstupní bod do kompatibilní bot umožňující hlasové v hlasových si interakce s nízkou latencí a vysokou spolehlivostí. | [Ano](voice-first-virtual-assistants.md) | Ne |

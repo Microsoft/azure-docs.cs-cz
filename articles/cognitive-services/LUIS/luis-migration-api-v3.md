@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 05/22/2019
+ms.date: 06/24/2019
 ms.author: diberry
-ms.openlocfilehash: b7b4e25c78ef08bdf9a7c2f3faf96725fc5f5fc8
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: fb4cf119195b3be23dc8f2cb98bd019769583473
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66123891"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341841"
 ---
 # <a name="preview-migrate-to-api-version-3x--for-luis-apps"></a>Verze Preview: Migrovat na verzi rozhraní API pro aplikace LUIS 3.x
 
@@ -54,11 +54,14 @@ Změny objektu odpovědi V3 zahrnují [předem připravených entit](luis-refere
 
 Rozhraní API V3 má parametry řetězce dotazu.
 
-|Název parametru|Type|Version|Účel|
-|--|--|--|--|
-|`query`|string|Pouze v3|**Ve verzi V2**, probíhá utterance k předpovídat `q` parametr. <br><br>**Ve verzi 3**, je předáno funkci `query` parametru.|
-|`show-all-intents`|Boolean|Pouze v3|Vrátí všechny příkazy se odpovídající skóre v **prediction.intents** objektu. Příkazy se vrátí jako objekty v nadřazeném prvku `intents` objektu. To umožňuje programový přístup, aniž byste museli najít záměr v poli: `prediction.intents.give`. Ve verzi V2 tyto se vrátí ve formě pole. |
-|`verbose`|Boolean|V2 & V3|**Ve verzi V2**, když byly vráceny nastavenou na hodnotu true, všechny předpokládané záměry. Pokud budete potřebovat všechny předpokládané záměrů, použijte param V3 z `show-all-intents`.<br><br>**Ve verzi 3**, tento parametr pouze poskytuje entity metadata podrobné údaje o predikci entity.  |
+|Název parametru|Typ|Version|Výchozí|Účel|
+|--|--|--|--|--|
+|`log`|boolean|V2 & V3|false|Query Store v souboru protokolu.| 
+|`query`|string|Pouze v3|Žádná výchozí hodnota - je požadováno v požadavek GET|**Ve verzi V2**, probíhá utterance k předpovídat `q` parametr. <br><br>**Ve verzi 3**, je předáno funkci `query` parametru.|
+|`show-all-intents`|boolean|Pouze v3|false|Vrátí všechny příkazy se odpovídající skóre v **prediction.intents** objektu. Příkazy se vrátí jako objekty v nadřazeném prvku `intents` objektu. To umožňuje programový přístup, aniž byste museli najít záměr v poli: `prediction.intents.give`. Ve verzi V2 tyto se vrátí ve formě pole. |
+|`verbose`|boolean|V2 & V3|false|**Ve verzi V2**, když byly vráceny nastavenou na hodnotu true, všechny předpokládané záměry. Pokud budete potřebovat všechny předpokládané záměrů, použijte param V3 z `show-all-intents`.<br><br>**Ve verzi 3**, tento parametr pouze poskytuje entity metadata podrobné údaje o predikci entity.  |
+
+
 
 <!--
 |`multiple-segments`|boolean|V3 only|Break utterance into segments and predict each segment for intents and entities.|
@@ -71,12 +74,23 @@ Rozhraní API V3 má parametry řetězce dotazu.
 {
     "query":"your utterance here",
     "options":{
-        "timezoneOffset": "-8:00"
+        "datetimeReference": "2019-05-05T12:00:00",
+        "overridePredictions": true
     },
     "externalEntities":[],
     "dynamicLists":[]
 }
 ```
+
+|Vlastnost|Typ|Version|Výchozí|Účel|
+|--|--|--|--|--|
+|`dynamicLists`|array|Pouze v3|Není nutné.|[Dynamické seznamy](#dynamic-lists-passed-in-at-prediction-time) vám umožní rozšířit existující entity trénovaného a publikované seznam již v aplikaci LUIS.|
+|`externalEntities`|array|Pouze v3|Není nutné.|[Externí entity](#external-entities-passed-in-at-prediction-time) aplikace LUIS umožnit k identifikaci a entity za běhu, který může sloužit jako funkce do existující entity. |
+|`options.datetimeReference`|string|Pouze v3|žádná výchozí hodnota|Používá k určení [datetimeV2 posun](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity).|
+|`options.overridePredictions`|boolean|Pouze v3|false|Určuje, pokud uživatele [externí entitu (se stejným názvem jako stávající entity)](#override-existing-model-predictions) se používá nebo stávající entity v modelu se používá k předpovědi. |
+|`query`|string|Pouze v3|Povinná hodnota.|**Ve verzi V2**, probíhá utterance k předpovídat `q` parametr. <br><br>**Ve verzi 3**, je předáno funkci `query` parametru.|
+
+
 
 ## <a name="response-changes"></a>Změny odpovědi
 
@@ -275,6 +289,67 @@ V předchozím utterance utterance používá `him` jako odkaz na `Hazem`. Můž
 
 Předpověď odpovědi obsahuje této externí entity, všechny ostatní prediktivní entity, protože je definována v požadavku.  
 
+### <a name="override-existing-model-predictions"></a>Přepsat existující předpovědí modelu
+
+`overridePredictions` Možnosti vlastnost určuje, že pokud uživatel odešle externí entita, která se překrývá s prediktivní entity se stejným názvem, LUIS zvolí entity předaný nebo entity v modelu. 
+
+Představte si třeba dotaz `today I'm free`. Služba LUIS zjistí `today` jako datetimeV2 s následující odpověď:
+
+```JSON
+"datetimeV2": [
+    {
+        "type": "date",
+        "values": [
+            {
+                "timex": "2019-06-21",
+                "value": "2019-06-21"
+            }
+        ]
+    }
+]
+```
+
+Pokud uživatel odešle externí entitu:
+
+```JSON
+{
+    "entityName": "datetimeV2",
+    "startIndex": 0,
+    "entityLength": 5,
+    "resolution": {
+        "date": "2019-06-21"
+    }
+}
+```
+
+Pokud `overridePredictions` je nastavena na `false`, LUIS vrátí odpověď, jakoby nebyly odeslány externí entity. 
+
+```JSON
+"datetimeV2": [
+    {
+        "type": "date",
+        "values": [
+            {
+                "timex": "2019-06-21",
+                "value": "2019-06-21"
+            }
+        ]
+    }
+]
+```
+
+Pokud `overridePredictions` je nastavena na `true`, LUIS, vrátí odpověď včetně:
+
+```JSON
+"datetimeV2": [
+    {
+        "date": "2019-06-21"
+    }
+]
+```
+
+
+
 #### <a name="resolution"></a>Řešení
 
 _Volitelné_ `resolution` vrátí vlastnost v předpovědi odpověď, a to díky tomu umožňuje předat metadata přidružená k externí entitu a pak ji přijmou vrátit v odpovědi. 
@@ -287,6 +362,7 @@ Hlavním účelem je rozšířit předem připravených entit, ale není omezena
 * {"text": "value"}
 * 12345 
 * ["a", "b", "c"]
+
 
 
 ## <a name="dynamic-lists-passed-in-at-prediction-time"></a>Dynamické seznamy předaný v době predikcí

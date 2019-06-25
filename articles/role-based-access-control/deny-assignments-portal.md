@@ -1,6 +1,6 @@
 ---
-title: Zobrazení zamítnout přiřazení pro prostředky Azure pomocí webu Azure portal | Dokumentace Microsoftu
-description: Zjistěte, jak zobrazit uživatele, skupiny, instančních objektů a spravovaných identit, které mají odepřený přístup ke konkrétním prostředku akce v určitém rozsahu pomocí webu Azure portal.
+title: Seznam zamítnout přiřazení pro prostředky Azure pomocí webu Azure portal | Dokumentace Microsoftu
+description: Zjistěte, jak zobrazit seznam uživatelů, skupin, instančních objektů a spravovaných identit, které mají odepřený přístup ke konkrétním prostředku akce v konkrétní rozsahy pomocí webu Azure portal.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,22 +11,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/13/2019
+ms.date: 06/10/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 2dcbcbec9054b31312043ef6642f59fa64728b30
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: 21ffb1a2539a2e724a91dd3b2818270a5e573ef8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "60194325"
+ms.locfileid: "67127490"
 ---
-# <a name="view-deny-assignments-for-azure-resources-using-the-azure-portal"></a>Zobrazení zamítnout přiřazení pro prostředky Azure pomocí webu Azure portal
+# <a name="list-deny-assignments-for-azure-resources-using-the-azure-portal"></a>Seznam zamítnout přiřazení pro prostředky Azure pomocí webu Azure portal
 
-[Zamítnout přiřazení](deny-assignments.md) zablokuje uživatelům možnost provádět akce konkrétních prostředků Azure i v případě přiřazení role uděluje přístup. Tento článek popisuje, jak pomocí webu Azure portal zobrazit zamítnout přiřazení.
+[Zamítnout přiřazení](deny-assignments.md) zablokuje uživatelům možnost provádět akce konkrétních prostředků Azure i v případě přiřazení role uděluje přístup. Tento článek popisuje, jak zobrazit seznam zamítnout přiřazení pomocí webu Azure portal.
 
 > [!NOTE]
-> V tuto chvíli odepřít jediný způsob, jakým můžete přidat vlastní přiřazení je s využitím Azure podrobné plány. Další informace najdete v tématu [chránit nové prostředky podle zámky prostředků Azure plány](../governance/blueprints/tutorials/protect-new-resources.md).
+> Nelze přímo vytvořit vlastní zamítnout přiřazení. Informace o tom, zakáže se vytvoří přiřazení, najdete v části [zamítnout přiřazení](deny-assignments.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -34,13 +34,13 @@ Pokud chcete získat informace o přiřazení odepřít, musíte mít:
 
 - `Microsoft.Authorization/denyAssignments/read` oprávnění, která je obsažena ve většině [předdefinované role pro prostředky Azure](built-in-roles.md).
 
-## <a name="view-deny-assignments"></a>Zobrazení zamítnout přiřazení
+## <a name="list-deny-assignments"></a>Seznam zamítnout přiřazení
 
-Podle těchto kroků zobrazit zamítnout přiřazení v oboru předplatného nebo správu skupiny.
+Postupujte podle těchto kroků seznamu Odepřít přiřazení v oboru předplatného nebo správu skupiny.
 
 1. Na webu Azure Portal, klikněte na tlačítko **všechny služby** a potom **skupin pro správu** nebo **předplatná**.
 
-1. Klikněte na skupinu pro správu nebo předplatného, které chcete zobrazit.
+1. Klikněte na skupinu pro správu nebo předplatného, které chcete zobrazit seznam.
 
 1. Klikněte na tlačítko **řízení přístupu (IAM)** .
 
@@ -67,9 +67,9 @@ Podle těchto kroků zobrazit zamítnout přiřazení v oboru předplatného neb
 
 1. Pro žádnou z povolených položek přidat značka zaškrtnutí a pak klikněte na **OK** k zobrazení vybraných sloupcích.
 
-## <a name="view-details-about-a-deny-assignment"></a>Zobrazit podrobnosti o přiřazení Odepřít
+## <a name="list-details-about-a-deny-assignment"></a>Seznam podrobností o přiřazení Odepřít
 
-Následujícím postupem zobrazíte další podrobnosti o přiřazení odepřít.
+Následující postup k seznamu další podrobnosti o přiřazení odepřít.
 
 1. Otevřít **zamítnout přiřazení** podokně, jak je popsáno v předchozí části.
 
@@ -110,4 +110,4 @@ Následujícím postupem zobrazíte další podrobnosti o přiřazení odepřít
 ## <a name="next-steps"></a>Další postup
 
 * [Vysvětlení zamítnout přiřazení pro prostředky Azure](deny-assignments.md)
-* [Seznam zamítnout přiřazení pro prostředky Azure pomocí rozhraní REST API](deny-assignments-rest.md)
+* [Seznam zamítnout přiřazení pro prostředky Azure pomocí Azure Powershellu](deny-assignments-powershell.md)

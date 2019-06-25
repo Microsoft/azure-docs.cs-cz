@@ -13,10 +13,10 @@ ms.author: shlo
 ms.reviewer: ''
 manager: craigg
 ms.openlocfilehash: b32e4abebdfb93312c60a25ca8b483f071e5e73c
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65507821"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Vizuální vytváření obsahu v Azure Data Factory
@@ -58,7 +58,7 @@ Ve službě Azure Data Factory, přejděte **pusťme se do práce** stránky. Vy
 
 V podokně se zobrazí následující kód úložišť Azure nastavení úložiště:
 
-| Nastavení | Popis | Value |
+| Nastavení | Popis | Hodnota |
 |:--- |:--- |:--- |
 | **Typ úložiště** | Typ úložiště kódu úložiště Azure.<br/> | Azure úložišť Git |
 | **Azure Active Directory** | Název tenanta Azure AD. | `<your tenant name>` |
@@ -78,7 +78,7 @@ Otevře se podokno konfigurace. Podrobnosti o nastavení konfigurace najdete v p
 
 ### <a name="use-a-different-azure-active-directory-tenant"></a>Použít na jiného tenanta Azure Active Directory
 
-Úložišti Git v úložišti Azure můžete vytvořit v jiném tenantovi Azure Active Directory. Pokud chcete zadat jinou tenanta Azure AD, musíte mít oprávnění správce pro předplatné Azure, které používáte.
+Úložiště Git v Azure Repos můžete vytvořit v jiném tenantovi Azure Active Directory. Pokud chcete zadat jinou tenanta Azure AD, musíte mít oprávnění správce pro předplatné Azure, které používáte.
 
 ### <a name="use-your-personal-microsoft-account"></a>Použití osobního účtu Microsoft
 
@@ -266,10 +266,10 @@ Informace o podporovaných výrazů naleznete v tématu [výrazům a funkcím ve
 
 ![Přidat dynamický obsah](media/author-visually/dynamic-content-2.png)
 
-## <a name="provide-feedback"></a>Poslat názor
+## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 Vyberte **zpětnou vazbu** komentovat funkcí nebo oznámení o problémech s nástrojem Microsoft:
 
-![Zpětná vazba](media/author-visually/provide-feedback.png)
+![Váš názor](media/author-visually/provide-feedback.png)
 
 ## <a name="next-steps"></a>Další postup
 Další informace o monitorování a Správa kanálů najdete v tématu [monitorování a Správa kanálů prostřednictvím kódu programu](monitor-programmatically.md).

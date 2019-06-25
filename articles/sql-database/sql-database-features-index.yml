@@ -41,7 +41,7 @@ sections:
           - title: Dočasné tabulky
             href: /azure/sql-database/sql-database-temporal-tables
             html: <p>Sledovat a analyzovat kompletní historii změn ve vašich datech.</p>
-  - title: Další zdroje informací
+  - title: Další materiály
     items:
       - type: list
         style: ordered

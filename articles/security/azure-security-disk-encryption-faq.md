@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: e1583ccf04b68f81a71bd2f63779680427ce3362
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 98acc7f6dd5ec7cf3702bbcbe60e2739732512e2
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67068785"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67294915"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Azure Disk Encryption pro virtuální počítače IaaS – nejčastější dotazy
 
@@ -29,43 +29,6 @@ Azure Disk Encryption GA podporuje šablony Azure Resource Manageru, Azure Power
 ## <a name="how-much-does-azure-disk-encryption-cost"></a>Kolik stojí Azure Disk Encryption
 
 Neplatí žádné poplatky pro šifrování disků virtuálních počítačů pomocí Azure Disk Encryption, ale existují poplatky související s používáním služby Azure Key Vault. Další informace o Azure Key Vault náklady, najdete v článku [cenách služby Key Vault](https://azure.microsoft.com/pricing/details/key-vault/) stránky.
-
-
-## <a name="which-virtual-machine-tiers-does-azure-disk-encryption-support"></a>Jaké úrovně virtuálních počítačů Azure Disk Encryption podporuje?
-
-Azure Disk Encryption je k dispozici na virtuálních počítačích úrovně standard, včetně [A, D, DS, E, G, GS a F](https://azure.microsoft.com/pricing/details/virtual-machines/) řady virtuálních počítačů IaaS. Je také k dispozici pro virtuální počítače s premium storage. Není k dispozici na úrovni basic virtuálních počítačů.
-
-## <a name="bkmk_LinuxOSSupport"></a> Jaké distribuce Linuxu podporuje Azure Disk Encryption?
-
-Azure Disk Encryption je podporována u podmnožiny [distribucí Linuxu schválených pro Azure](../virtual-machines/linux/endorsed-distros.md), což je podmnožina všech možných distribucí systému Linux server.
-
- ![Diagram Vennův nejrůznějších distribucí systému Linux serverem, které podporují Azure Disk Encryption](./media/azure-security-disk-encryption-faq/ade-supported-distros.png)
-
-Server distribucí systému Linux, které nejsou schválené pro Azure nepodporují Azure Disk Encryption a těch, které jsou schválené pro, podporují pouze následující distribucích a verzích Azure Disk Encryption:
-
-| Linuxové distribuce | Verze | Typ svazku podporovaný pro šifrování|
-| --- | --- |--- |
-| Ubuntu | 18.04| Disk operačního systému a dat |
-| Ubuntu | 16.04| Disk operačního systému a dat |
-| Ubuntu | 14.04.5</br>[s Azure vyladěný jádra aktualizovat, aby 4.15 nebo novější](azure-security-disk-encryption-tsg.md#bkmk_Ubuntu14) | Disk operačního systému a dat |
-| RHEL | 7.6 | Disk s operačním systémem a daty (viz poznámka níže) |
-| RHEL | 7.5 | Disk s operačním systémem a daty (viz poznámka níže) |
-| RHEL | 7.4 | Disk s operačním systémem a daty (viz poznámka níže) |
-| RHEL | 7.3 | Disk s operačním systémem a daty (viz poznámka níže) |
-| RHEL | 7.2 | Disk s operačním systémem a daty (viz poznámka níže) |
-| RHEL | 6.8 | Datový disk (viz poznámka níže) |
-| RHEL | 6.7 | Datový disk (viz poznámka níže) |
-| CentOS | 7.5 | Disk operačního systému a dat |
-| CentOS | 7.4 | Disk operačního systému a dat |
-| CentOS | 7.3 | Disk operačního systému a dat |
-| CentOS | 7.2N | Disk operačního systému a dat |
-| CentOS | 6.8 | Datový disk |
-| openSUSE | 42.3 | Datový disk |
-| SLES | 12-SP4 | Datový disk |
-| SLES | 12-SP3 | Datový disk |
-
-> [!NOTE]
-> Novou implementaci ADE se podporuje pro RHEL operačního systému a datovým diskem pro Image s průběžnými platbami RHEL7. ADE není aktuálně podporována pro Image RHEL přenést-Your-vlastní – předplatné (BYOS). Zobrazit [Azure Disk Encryption pro Linux](azure-security-disk-encryption-linux.md) Další informace.
 
 ## <a name="how-can-i-start-using-azure-disk-encryption"></a>Jak můžu začít používat Azure Disk Encryption?
 

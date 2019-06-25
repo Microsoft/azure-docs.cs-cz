@@ -13,10 +13,10 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 ms.openlocfilehash: d299a785d50657ef40c0c49cb2dce33b8939fd02
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60860980"
 ---
 # <a name="transform-data-by-running-a-jar-activity-in-azure-databricks"></a>Transformovat data spuštěním Jar aktivit v Azure Databricks
@@ -58,7 +58,7 @@ Následující tabulka popisuje vlastnostech JSON použitých v definici JSON:
 
 |Vlastnost|Popis|Požaduje se|
 |:--|---|:-:|
-|jméno|Název aktivity v kanálu.|Ano|
+|name|Název aktivity v kanálu.|Ano|
 |description|Text popisující, jakým způsobem aktivita naloží.|Ne|
 |type|Pro aktivitu Jar Databricks je typ aktivity DatabricksSparkJar.|Ano|
 |linkedServiceName|Název propojené služby Databricks, ve kterém se spouští aktivity soubor Jar. Další informace o tuto propojenou službu, najdete v článku [propojené služby Compute](compute-linked-services.md) článku.|Ano|

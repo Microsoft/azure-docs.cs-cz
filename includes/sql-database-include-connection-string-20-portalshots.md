@@ -11,11 +11,11 @@ ms.topic: include
 ms.date: 07/13/2018
 ms.author: ninarn
 ms.openlocfilehash: 6ead2e0ea326b5c3f2e76e7aa9cc4ab3c50d4154
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66164277"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67175087"
 ---
 ### <a name="obtain-the-connection-string-from-the-azure-portal"></a>Získání připojovacího řetězce z webu Azure portal
 Použití [webu Azure portal](https://portal.azure.com/) k získání připojovacího řetězce, které jsou nezbytné pro váš klientský program pro interakci s Azure SQL Database.

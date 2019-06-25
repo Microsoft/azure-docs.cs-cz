@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pabutler
 ms.openlocfilehash: 6fdab26bb5a4da5402a3a0a895a7c8835ef22c2f
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64935801"
 ---
 # <a name="configure-lead-management-for-dynamics-crm-online"></a>Konfigurace Správa potenciálních zákazníků pro Dynamics CRM online
@@ -141,5 +141,5 @@ Posledním krokem je povolit uživateli, který jste vytvořili pro zápis si po
 
 Dokončení konfigurace Dynamics CRM pro zájemce management tak, že přidáte informace generované účtu na portál Cloud Partner. Příklad:
 
--   **Azure Active Directory** - **Id aplikace** (Příklad: *23456052-AAAA-bbbb-8662-1234df56788f*), **Id adresáře** (Příklad: *12345678-8af1-4asf-1234-12234d01db47*), a **klíč aplikace** (Příklad: *1234ABCDEDFRZ/G/FdY0aUABCEDcqhbLn/ST122345nBc=*).
--   **Office 365** - **Url** (Příklad: *https://contoso.crm4.dynamics.com*), **uživatelské jméno** (Příklad: *contoso\@ contoso.onmicrosoft.com*), a **heslo** (Příklad: *P\@ssw0rd*).
+-   **Azure Active Directory** - **Id aplikace** (Příklad: *23456052-AAAA-bbbb-8662-1234df56788f*), **Id adresáře** (Příklad: *12345678-8af1-4asf-1234-12234d01db47*), a **klíč aplikace** (Příklad: *1234ABCDEDFRZ/G/FdY0aUABCEDcqhbLn/ST122345nBc=* ).
+-   **Office 365** - **Url** (Příklad: *https://contoso.crm4.dynamics.com* ), **uživatelské jméno** (Příklad: *contoso\@ contoso.onmicrosoft.com*), a **heslo** (Příklad: *P\@ ssw0rd*).

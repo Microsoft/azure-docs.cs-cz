@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: ba2985b8b6c92e299e8ab378263c9b4c062561d5
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66171538"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67175213"
 ---
 #### <a name="to-mount-initialize-and-format-a-volume"></a>Připojení, inicializace a formátování svazku
 1. Spusťte iniciátor iSCSI od Microsoftu.

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: b17978da3195b364f868d33ab7ad9faa1544e9ec
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 13eb1a8fcea2f74cda5921a51b8c2e8816be975f
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60238015"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303688"
 ---
 # <a name="stream-azure-diagnostic-logs-to-log-analytics-workspace-in-azure-monitor"></a>Diagnostické protokoly Azure Stream do pracovního prostoru Log Analytics ve službě Azure Monitor
 
@@ -60,7 +60,7 @@ Pracovní prostor Log Analytics, nemusí být ve stejném předplatném jako pro
 
 4. Klikněte na **Uložit**.
 
-Po chvíli se nové nastavení se zobrazí v seznamu nastavení pro tento prostředek a diagnostické protokoly se streamují do tohoto pracovního prostoru, jakmile je vygenerována nová data události. Všimněte si, že může být až 15 minut mezi při události je vygenerován a pokud je zobrazeno v Log Analytics.
+Po chvíli se nové nastavení se zobrazí v seznamu nastavení pro tento prostředek a diagnostické protokoly se streamují do tohoto pracovního prostoru, jakmile je vygenerována nová data události. Může být až 15 minut mezi při události je vygenerován a pokud je zobrazeno v Log Analytics.
 
 ### <a name="via-powershell-cmdlets"></a>Pomocí rutin prostředí PowerShell
 
@@ -99,37 +99,81 @@ Můžete přidat další kategorie pro protokol diagnostiky tak, že přidáte s
 
 V okně protokoly na portálu Azure Monitor můžete dotazovat diagnostické protokoly jako součást řešení Správa protokolů ve složce AzureDiagnostics tabulky. Existují také [několik řešení monitorování pro prostředky Azure](../../azure-monitor/insights/solutions.md) instalací získat okamžitý přehled o data protokolu odesílají do služby Azure Monitor.
 
+## <a name="azure-diagnostics-vs-resource-specific"></a>Azure vs. diagnostiky specifické podle prostředků  
+Po povolení cílového Log Analytics v konfiguraci diagnostiky Azure existují dva různé způsoby, které se zobrazí data ve vašem pracovním prostoru:  
+- **Diagnostika Azure** – Toto je metoda starší verzi ještě dnes používá většina služeb Azure. V tomto režimu se všechna data z libovolné nastavení diagnostiky odkazovala na daný pracovní prostor v skončí _AzureDiagnostics_ tabulky. 
+<br><br>Protože mnoho prostředků odesílat data do stejné tabulky (_AzureDiagnostics_), schéma v této tabulce je velmi sadu schémat všech různých datových typů shromažďují. Například pokud jste vytvořili nastavení diagnostiky pro kolekci následující typy dat, všechny odesílají do stejného pracovního prostoru:
+    - Auditovat protokoly 1 prostředek (s schématu, který se skládá ze sloupců A, B a C)  
+    - Protokoly chyb prostředků 2 (schéma skládající se z sloupců D, E a F s)  
+    - Protokoly toku dat 3 prostředků (skládající se z sloupců G, H a jsem schéma s)  
+
+    V tabulce AzureDiagnostics bude vypadat následovně, s ukázkovými daty:  
+
+    | ResourceProvider | Category | A | B | C | D | E | F | G | H | I |
+    | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
+    | Microsoft.Resource1 | AuditLogs | x1 | y1 | z1 |
+    | Microsoft.Resource2 | ErrorLogs | | | | q1 | w1 | e1 |
+    | Microsoft.Resource3 | DataFlowLogs | | | | | | | j1 | k1 | l1|
+    | Microsoft.Resource2 | ErrorLogs | | | | q2 | w2 | e2 |
+    | Microsoft.Resource3 | DataFlowLogs | | | | | | | j3 | k3 | l3|
+    | Microsoft.Resource1 | AuditLogs | x5 | y5 | z5 |
+    | ... |
+
+- **Specifické podle prostředků** – v tomto režimu, vytvářejí jednotlivé tabulky ve vybraném pracovním prostoru na každou kategorii vybraný v konfigurační nastavení diagnostiky. Tato metoda novější mnohem snadněji k nalezení přesně chcete najít přes explicitní oddělení oblastí zájmu: tabulka pro každou kategorii. Kromě toho poskytuje výhody v jeho podpory pro dynamické typy. Tento režim pro vybrané typy prostředků Azure, můžete zobrazit již například [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-analyze-activity-logs-log-analytics) nebo [Intune](https://docs.microsoft.com/intune/review-logs-using-azure-monitor) protokoly. Nakonec Očekáváme, že každý typ dat k migraci do režimu specifické podle prostředků. 
+
+    V předchozím příkladu by výsledkem vytváří tři tabulky: 
+    - Tabulka _mají_ následujícím způsobem:
+
+        | ResourceProvider | Category | A | B | C |
+        | -- | -- | -- | -- | -- |
+        | Microsoft.Resource1 | AuditLogs | x1 | y1 | z1 |
+        | Microsoft.Resource1 | AuditLogs | x5 | y5 | z5 |
+        | ... |
+
+    - Tabulka _nepřenesl_ následujícím způsobem:  
+
+        | ResourceProvider | Category | D | E | F |
+        | -- | -- | -- | -- | -- | 
+        | Microsoft.Resource2 | ErrorLogs | q1 | w1 | e1 |
+        | Microsoft.Resource2 | ErrorLogs | q2 | w2 | e2 |
+        | ... |
+
+    - Tabulka _DataFlowLogs_ následujícím způsobem:  
+
+        | ResourceProvider | Category | G | H | I |
+        | -- | -- | -- | -- | -- | 
+        | Microsoft.Resource3 | DataFlowLogs | j1 | k1 | l1|
+        | Microsoft.Resource3 | DataFlowLogs | j3 | k3 | l3|
+        | ... |
+
+    Další výhody používání režimu specifických pro prostředky zahrnují Vylepšený výkon napříč latence příjmu dat a časů dotazu, lepší vyhledatelnost schémata a jejich strukturu, udělovat oprávnění RBAC na určité tabulky a další.
+
+### <a name="selecting-azure-diagnostic-vs-resource-specific-mode"></a>Výběr Azure diagnostickém režimu vs specifické podle prostředků
+Pro většinu služeb Azure prostředky nebudete mít možnost volby, zda se má použít režim diagnostiky Azure nebo specifické podle prostředků; data budou automaticky směrovat prostřednictvím metody vybraný prostředek použít. Podrobnosti najdete v dokumentaci od prostředků jste povolili k odesílání dat do Log Analytics pro podrobnosti, na které se použijí režimu. 
+
+Jak je uvedeno v předchozí části, je nakonec cíl Azure monitoru mají všechny služby v Azure, použijte režim specifické podle prostředků. Pro usnadnění tohoto přechodu a ujistěte se, že se neztratí jako součást jeho některých služeb Azure při připojování ke službě Log Analytics vám poskytne výběru režimu:  
+   ![Diagnostické nastavení režimu výběru](media/diagnostic-logs-stream-log-store/diagnostic-settings-mode-selector.png)
+
+Jsme **důrazně** doporučujeme, že se pokud chcete vyhnout potenciálně složité migrace dolů cestách, všechny nově vytvořené použití nastavení diagnostiky prostředků na režimu.  
+
+Pro existující povolené diagnostické nastavení, jakmile konkrétní prostředek Azure budou moct zpětně přepnutí z diagnostiky Azure do režimu specifické podle prostředků. Dříve ingestuje data se budou dál k dispozici v _AzureDiagnostics_ tabulky, dokud ho ages podle nakonfigurované v nastavení uchovávání dat v pracovním prostoru, ale žádná nová data se odešlou do vyhrazené tabulky. To znamená, které pro všechny dotazy, které mají rozložit stará data a nové (dokud stará data plně ages navýšení kapacity), [sjednocení](https://docs.microsoft.com/azure/kusto/query/unionoperator) operátor v dotazech, budou muset kombinovat dvěma datovými sadami.
+
+Podívejte se prosím o nový Azure služeb podpory protokolů v režimu specifické podle prostředků na [aktualizace Azure](https://azure.microsoft.com/updates/) blogu!
+
 ### <a name="known-limitation-column-limit-in-azurediagnostics"></a>Známá omezení: omezení počtu sloupců v AzureDiagnostics
-Protože mnoho prostředků odeslat datové typy se odesílají do stejné tabulky (_AzureDiagnostics_), schéma v této tabulce je velmi sadu schémat všech různých datových typů shromažďují. Například pokud jste vytvořili nastavení diagnostiky pro kolekci následující typy dat, všechny odesílají do stejného pracovního prostoru:
-- Auditovat protokoly 1 prostředek (s schématu, který se skládá ze sloupců A, B a C)  
-- Protokoly chyb prostředků 2 (schéma skládající se z sloupců D, E a F s)  
-- Protokoly toku dat 3 prostředků (skládající se z sloupců G, H a jsem schéma s)  
- 
-V tabulce AzureDiagnostics bude vypadat následovně, s ukázkovými daty:  
- 
-| ResourceProvider | Category | A | B | C | D | E | F | G | H | I |
-| -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
-| Microsoft.Resource1 | AuditLogs | x1 | y1 | z1 |
-| Microsoft.Resource2 | ErrorLogs | | | | q1 | w1 | e1 |
-| Microsoft.Resource3 | DataFlowLogs | | | | | | | j1 | k1 | l1|
-| Microsoft.Resource2 | ErrorLogs | | | | q2 | w2 | e2 |
-| Microsoft.Resource3 | DataFlowLogs | | | | | | | j3 | k3 | l3|
-| Microsoft.Resource1 | AuditLogs | x5 | y5 | z5 |
-| ... |
- 
-Je omezený na explicitní jakékoli dané tabulky protokolu Azure nemá více než 500 sloupce. Po jeho dosažení se v době příjmu se zahodí všechny řádky obsahující data s žádným sloupcem mimo prvních 500. V tabulce AzureDiagnostics je zejména napadnutelné přes bezpečnostní bude dopad na toto omezení. To obvykle proběhne buď protože širokou škálu zdrojů dat se odesílají do stejného pracovního prostoru, nebo několik zdrojů velmi podrobné údaje odesílané do stejného pracovního prostoru. 
- 
+Je omezený na explicitní jakékoli dané tabulky protokolu Azure nemá více než 500 sloupce. Po jeho dosažení se v době příjmu se zahodí všechny řádky obsahující data s žádným sloupcem mimo prvních 500. V tabulce AzureDiagnostics je zejména napadnutelné přes bezpečnostní bude dopad na toto omezení. To obvykle proběhne buď protože širokou škálu zdrojů dat se odesílají do stejného pracovního prostoru, nebo několik zdrojů podrobné údaje odesílané do stejného pracovního prostoru. 
+
 #### <a name="azure-data-factory"></a>Azure Data Factory  
-Azure Data Factory, z důvodu velmi podrobné sadu protokolů, je prostředek, který je známé hlavně ovlivní tento limit. Zejména:  
+Azure Data Factory, z důvodu velmi podrobné sadu protokolů, je prostředek, který je známé hlavně ovlivní tento limit. Zejména pro diagnostické nastavení před konkrétní prostředky režimu byl povolený nebo explicitně zvolíte pro použití režimu specifické podle prostředků z důvodů zpětné kompatibility:  
 - *Uživatel parametry definované pro všechny aktivity v kanálu*: bude nový sloupec, který vytvoří pro každý parametr jedinečně pojmenovaná uživatele pro všechny aktivity. 
-- *Aktivita vstupy a výstupy*: tyto aktivity aktivity se liší a generují velké množství sloupců z důvodu jejich podrobné povahy. 
+- *Aktivita vstupy a výstupy*: tyto aktivity aktivity se liší a kvůli jejich podrobné povahu generování velkého počtu sloupců. 
  
-Jako s širší návrhy řešení níže, se doporučuje k izolaci ADF protokoly do své vlastní pracovní prostor, který minimalizuje riziko tyto protokoly vliv na jiné typy protokolů shromažďují ve vašich pracovních prostorů. Očekáváme, že připravili protokoly služby Azure Data Factory k dispozici brzy.
+Jako s širší návrhy řešení níže, doporučujeme migrovat vaše protokoly pro použití režimu specifické podle prostředků co nejdříve. Pokud se nemůžete k tomu okamžitě, dočasné alternativou je izolaci ADF protokoly do své vlastní pracovní prostor, který minimalizuje riziko tyto protokoly vliv na jiné typy protokolů shromažďují ve vašich pracovních prostorů. 
  
 #### <a name="workarounds"></a>Alternativní řešení
-Krátkodobé, dokud předefinovat limit 500 sloupce, doporučujeme k oddělení do samostatných pracovních prostorů pro snížení rizika vzniku dosažení limitu podrobné datové typy.
+Krátká období, dokud se všechny služby Azure povolené v režimu specifické podle prostředků za služby není zatím podporuje režim specifické podle prostředků, se doporučuje pro jednotlivé typy podrobné údaje publikuje tyto služby do samostatných pracovních prostorů ke snížení možnost dosažení limitu.  
  
-Dlouhodobější, diagnostiky Azure se přesouvají směrem od jednotné a řídkých schématu do jednotlivých tabulek na jednotlivé typy dat; spárovat s podporou pro dynamické typy, značně tím zlepšíte použitelnost data přicházející do protokolů Azure pomocí Azure Diagnostics mechanismu. Už to pro uvidíte vyberte typy prostředků Azure, například [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-analyze-activity-logs-log-analytics) nebo [Intune](https://docs.microsoft.com/intune/review-logs-using-azure-monitor) protokoly. Podívejte se prosím pro nejnovější zprávy o nové typy prostředků v Azure podporuje tyto kurátorované protokoly na [aktualizace Azure](https://azure.microsoft.com/updates/) blogu!
+Dlouhodobější, Diagnostika Azure bude přechází k všech služeb Azure podporuje režim specifické podle prostředků. Doporučujeme, abyste přesunutí do tohoto režimu co nejdříve pro snížení potenciálu ně neměly vliv toto omezení 500 sloupce.  
 
 
 ## <a name="next-steps"></a>Další postup

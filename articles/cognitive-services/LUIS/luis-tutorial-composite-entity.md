@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 02/19/2019
 ms.author: diberry
 ms.openlocfilehash: a5cedec4937da276a4848498ad29a723f6e41ba3
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65073705"
 ---
 # <a name="tutorial-group-and-extract-related-data"></a>Kurz: Seskupení a extrakce souvisejících dat
@@ -93,7 +93,7 @@ Služba LUIS poskytuje několik předem připravených entit pro extrakci běžn
 
     ![Snímek obrazovky zadání složený název v rozevíracím seznamu dialogového okna](./media/luis-tutorial-composite-entity/hr-create-composite-entity-2.png)
 
-1. V **jaký typ entity chcete vytvořit?**, všechna pole, vyžaduje se v seznamu: `personName` a `Department`. Vyberte **Done** (Hotovo). Všimněte si, že předem připravených entit personName, byl přidán do složeného entity. Pokud jste mohli předem připravených entit zobrazí mezi počáteční a koncové tokeny složený entity, složený entity musí obsahovat předem připravených entit. Pokud předem připravených entit nejsou zahrnuty, složený entity není správně předpovědět, ale je každý jednotlivý prvek.
+1. V **jaký typ entity chcete vytvořit?** , všechna pole, vyžaduje se v seznamu: `personName` a `Department`. Vyberte **Done** (Hotovo). Všimněte si, že předem připravených entit personName, byl přidán do složeného entity. Pokud jste mohli předem připravených entit zobrazí mezi počáteční a koncové tokeny složený entity, složený entity musí obsahovat předem připravených entit. Pokud předem připravených entit nejsou zahrnuty, složený entity není správně předpovědět, ale je každý jednotlivý prvek.
 
     ![Snímek obrazovky zadání složený název v rozevíracím seznamu dialogového okna](./media/luis-tutorial-composite-entity/hr-create-composite-entity-3.png)
 

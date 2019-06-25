@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/19/2018
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 8923c94409dcf079179ed0464046e39ef7654c4c
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 8c067b6e238fab2970e5e40f0660a5c7555a8f2e
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65949824"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67302228"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-search"></a>Jak indexovat rozsáhlým datovým sadám ve službě Azure Search
 
@@ -54,7 +54,7 @@ Indexer plánování je důležitým mechanismem pro zpracování velkých datov
 
 Záměrné naplánovat indexování spustí v určitých intervalech s úlohou obvykle dokončení před pokračováním v dalšího naplánovaného intervalu. Ale pokud se zpracování nedokončí v rámci intervalu, indexer zastaví (protože mu došla času). Na další interval zpracování bude pokračovat tam, kde poslední skončila, s vedení systému sledovat, kde dochází. 
 
-V praxi, pro načítání indexů zahrnující několik dní můžete indexer do 24 hodin plánu. Názvy při indexování bude pokračovat na další cyklus 24 hodin, restartuje na poslední známé dobré dokumentu. Tímto způsobem může indexer pracovat skrze nevyřízenou položku dokumentu několik dnů, po kterém se zpracují všechny nezpracované dokumenty. Další informace o tento přístup, najdete v části [indexování velké datové sady ve službě Azure Blob storage](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets). Další informace o nastavení plánů obecně naleznete v tématu [vytvořit Indexer REST API](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer#request-syntax).
+V praxi, pro načítání indexů zahrnující několik dní můžete indexer do 24 hodin plánu. Názvy při indexování bude pokračovat na další cyklus 24 hodin, restartuje na poslední známé dobré dokumentu. Tímto způsobem může indexer pracovat skrze nevyřízenou položku dokumentu několik dnů, po kterém se zpracují všechny nezpracované dokumenty. Další informace o tento přístup, najdete v části [indexování velké datové sady ve službě Azure Blob storage](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets). Další informace o nastavení plánů obecně naleznete v tématu [vytvořit Indexer REST API](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer#request-syntax) nebo naleznete v tématu [naplánování indexerů Azure Search](search-howto-schedule-indexers.md).
 
 <a name="parallel-indexing"></a>
 

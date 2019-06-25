@@ -11,10 +11,10 @@ ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
 ms.openlocfilehash: 9071cf524a0f3d319d108cb5c961fa886cf8747f
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66399900"
 ---
 # <a name="database-views-in-azure-blockchain-workbench"></a>Zobrazení databáze v aplikaci Azure Blockchain Workbench
@@ -33,7 +33,7 @@ Tato část obsahuje přehled o zobrazení databáze a dat, která obsahují.
 
 Toto zobrazení obsahuje podrobné informace o **aplikace** , které byly nahrány do Azure Blockchain Workbench.
 
-| Název                             | Type          | Může mít hodnotu Null | Popis                                                                                                                                                                                                                                                   |
+| Name                             | Type          | Může mít hodnotu Null | Popis                                                                                                                                                                                                                                                   |
 |----------------------------------|---------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationId                    | int           | Ne          | Jedinečný identifikátor pro aplikaci |
 | ApplicationName                  | nvarchar(50)  | Ne          | Název aplikace |
@@ -70,7 +70,7 @@ Toto zobrazení obsahuje podrobné informace o rolích, které byly definovány 
 
 V *Asset přenos* aplikace, například *Jan Macek* může být přiřazena *kupujících* role.
 
-| Název                       | Type          | Může mít hodnotu Null | Popis                                                                                                                                                                                                                           |
+| Name                       | Type          | Může mít hodnotu Null | Popis                                                                                                                                                                                                                           |
 |----------------------------|---------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationId              | int           | Ne          | Jedinečný identifikátor pro aplikaci                                                                                                                                                                                               |
 | ApplicationName            | nvarchar(50)  | Ne          | Název aplikace                                                                                                                                                                                                           |
@@ -93,7 +93,7 @@ Toto zobrazení obsahuje podrobné informace o připojení definované v aplikac
 -   Podrobnosti přidružené knihy
 -   Informace o přidružené uživateli
 
-| Název                     | Type          | Může mít hodnotu Null | Popis                                                                                                                                                                                                                           |
+| Name                     | Type          | Může mít hodnotu Null | Popis                                                                                                                                                                                                                           |
 |--------------------------|---------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ConnectionId             | int           | Ne          | Jedinečný identifikátor pro připojení v aplikaci Azure Blockchain Workbench |
 | ConnectionEndpointUrl    | nvarchar(50)  | Ne          | Adresa url koncového bodu připojení |
@@ -118,7 +118,7 @@ Toto zobrazení obsahuje podrobné informace o nasazených smluv. Pro každou sm
 -   Podrobnosti o uživateli, který inicioval akci
 -   Podrobnosti týkající se blokování blockchain a transakce
 
-| Název                                     | Type           | Může mít hodnotu Null | Popis                                                                                                                                                                                                                                                   |
+| Name                                     | Type           | Může mít hodnotu Null | Popis                                                                                                                                                                                                                                                   |
 |------------------------------------------|----------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ConnectionId                             | int            | Ne          | Jedinečný identifikátor pro připojení v aplikaci Azure Blockchain Workbench.                                                                                                                                                                                         |
 | ConnectionEndpointUrl                    | nvarchar(50)   | Ne          | Adresa url koncového bodu připojení |
@@ -159,7 +159,7 @@ Toto zobrazení představuje většinu informací o související s akcí proved
 -   Podrobnosti o uživateli, který inicioval akci
 -   Podrobnosti týkající se blokování blockchain a transakce
 
-| Název                                     | Type          | Může mít hodnotu Null | Popis                                                                                                                                                                                                                                                                                                    |
+| Name                                     | Type          | Může mít hodnotu Null | Popis                                                                                                                                                                                                                                                                                                    |
 |------------------------------------------|---------------|-------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationId                            | int           | Ne          | Jedinečný identifikátor pro aplikaci |
 | ApplicationName                          | nvarchar(50)  | Ne          | Název aplikace |
@@ -258,7 +258,7 @@ Toto zobrazení představuje většinu informací týkajících se stavu konkré
 -   Definice vlastnosti přidružené inteligentní kontraktu
 -   Podrobnosti o stavu vlastnost kontraktu
 
-| Název                               | Type          | Může mít hodnotu Null | Popis                                                                                                                                                                                                                                                                        |
+| Name                               | Type          | Může mít hodnotu Null | Popis                                                                                                                                                                                                                                                                        |
 |------------------------------------|---------------|-------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationId                      | int           | Ne          | Jedinečný identifikátor pro aplikaci |
 | ApplicationName                    | nvarchar(50)  | Ne          | Název aplikace |
@@ -293,7 +293,7 @@ Toto zobrazení představuje většinu informací týkajících se stavu konkré
 
 Toto zobrazení obsahuje podrobné informace na consortium členů, které je zajištěno jeho použití pro Azure Blockchain Workbench. Ve výchozím nastavení se vyplní data prostřednictvím počátečního zřízení uživatele.
 
-| Název               | Type          | Může mít hodnotu Null | Popis                                                                                                                                                                                                                               |
+| Name               | Type          | Může mít hodnotu Null | Popis                                                                                                                                                                                                                               |
 |--------------------|---------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ID                 | int           | Ne          | Jedinečný identifikátor uživatele |
 | externalID         | nvarchar(255) | Ne          | Externí identifikátor pro uživatele. Ve výchozím nastavení toto ID je identifikátor guid představující ID Azure Active Directory pro uživatele. |
@@ -337,7 +337,7 @@ Toto zobrazení představuje podrobnosti základní pracovní postup metadata a 
 -   Definice pracovního postupu přidružená
 -   Podrobnosti o funkci pracovního postupu
 
-| Název                                 | Type          | Může mít hodnotu Null | Popis                                                                          |
+| Name                                 | Type          | Může mít hodnotu Null | Popis                                                                          |
 |--------------------------------------|---------------|-------------|--------------------------------------------------------------------------------------|
 | ApplicationId                        | int           | Ne          | Jedinečný identifikátor pro aplikaci |
 | ApplicationName                      | nvarchar(50)  | Ne          | Název aplikace |
@@ -366,7 +366,7 @@ Toto zobrazení představuje vlastností definovaných pro pracovní postup. Pro
 -   Definice pracovního postupu přidružená
 -   Podrobnosti vlastnosti pracovního postupu
 
-| Název                         | Type          | Může mít hodnotu Null | Popis                                                                                                                                                                                                                                                   |
+| Name                         | Type          | Může mít hodnotu Null | Popis                                                                                                                                                                                                                                                   |
 |------------------------------|---------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationId                | int           | Ne          | Jedinečný identifikátor pro aplikaci |
 | ApplicationName              | nvarchar(50)  | Ne          | Název aplikace |

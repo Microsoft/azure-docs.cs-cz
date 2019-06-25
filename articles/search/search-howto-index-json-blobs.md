@@ -11,10 +11,10 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
 ms.openlocfilehash: 4f3fb624f5e6137c9edb0be97adc16d8c808ebd9
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65523073"
 ---
 # <a name="how-to-index-json-blobs-using-azure-search-blob-indexer"></a>Jak indexovat objektů BLOB JSON pomocí indexeru Azure Search Blob
@@ -142,7 +142,7 @@ Zkopírujte následující čtyři hodnoty do poznámkového bloku tak, aby vlo�
 
 + Název služby Azure Search
 + Klíč správce služby Azure Search
-+ Název účtu úložiště Azure
++ Název účtu služby Azure storage
 + Klíč účtu úložiště Azure
 
 Tyto hodnoty můžete najít na portálu:
@@ -170,7 +170,7 @@ Nahraďte platné hodnoty pro název služby, klíč správce, účet úložišt
         "container" : { "name" : "my-container", "query" : "optional, my-folder" }
     }   
 
-### <a name="3---create-a-target-search-index"></a>3. vytvoření cílovým indexem vyhledávání 
+### <a name="3---create-a-target-search-index"></a>3\. vytvoření cílovým indexem vyhledávání 
 
 Indexery jsou párovány s schématu indexu. Pokud používáte rozhraní API (a ne na portálu), připravte indexu předem tak, aby jej zadat v operaci indexeru.
 

@@ -5,17 +5,17 @@ author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.topic: conceptual
+ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: maxluk
-ms.openlocfilehash: 94cc41890778e842cb2e4bd6e06b90361cbef1cd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d03fbcc59b0340e8a99d71f9b08f4405a89b30f3
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67066460"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274024"
 ---
-# <a name="use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Vytváření aplikací Apache Spark pro cluster služby HDInsight pomocí sady Azure Toolkit pro IntelliJ
+# <a name="tutorial-use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Kurz: Vytváření aplikací Apache Spark pro cluster služby HDInsight pomocí sady Azure Toolkit pro IntelliJ
 
 Použití sady Azure Toolkit pro IntelliJ modulu plug-in k vývoji [Apache Spark](https://spark.apache.org/) aplikace napsané v [Scala](https://www.scala-lang.org/)a odešlete je do clusteru HDInsight Spark přímo z vývojového IntelliJ integrované prostředí (IDE). Modul plug-in můžete použít několika způsoby:
 

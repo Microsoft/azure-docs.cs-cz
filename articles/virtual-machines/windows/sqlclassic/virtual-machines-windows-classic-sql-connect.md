@@ -17,10 +17,10 @@ ms.author: mathoma
 ms.reviewer: jroth
 experimental_id: d51f3cc6-753b-4e
 ms.openlocfilehash: b8994d4c1eabf4381bf8364c76f7328d225f7e1a
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62111523"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure-classic-deployment"></a>Připojení k virtuálnímu počítači s SQL Serverem v Azure (klasické nasazení)
@@ -58,7 +58,7 @@ V tomto scénáři můžete připojit pomocí virtuálního počítače **název
 ### <a name="connect-to-sql-server-over-the-internet"></a>Připojení k SQL serveru přes Internet
 Pokud chcete z Internetu připojit k databázovém stroji SQL serveru, musíte vytvořit koncový bod virtuálního počítače pro příchozí komunikace TCP. Tento krok konfigurace Azure směruje příchozí provoz portu TCP na port TCP, který je pro virtuální počítač přístupný.
 
-Připojení přes internet, musíte použít název DNS Virtuálního počítače a čísla portu koncového bodu virtuálního počítače (nakonfigurované dále v tomto článku). K vyhledání názvu DNS, přejděte na web Azure Portal a vyberte **virtuální počítače (classic)**. Potom vyberte virtuální počítač. **Název DNS** je zobrazena ve **přehled** oddílu.
+Připojení přes internet, musíte použít název DNS Virtuálního počítače a čísla portu koncového bodu virtuálního počítače (nakonfigurované dále v tomto článku). K vyhledání názvu DNS, přejděte na web Azure Portal a vyberte **virtuální počítače (classic)** . Potom vyberte virtuální počítač. **Název DNS** je zobrazena ve **přehled** oddílu.
 
 Představte si třeba klasický virtuální počítač s názvem **mysqlvm** s názvem DNS **mysqlvm7777.cloudapp.net** a koncového bodu virtuálního počítače z **57500**. Za předpokladu, že správně nakonfigurovaná připojení, následující připojovací řetězec může sloužit k přístupu k virtuálnímu počítači z libovolného místa v síti internet:
 

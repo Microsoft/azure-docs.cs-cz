@@ -11,11 +11,11 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: 7489f42719223dbd7f9cc2908f666dca53fe7c04
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 9a078579fff355d7ddb996316af2a2136fb62335
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66496394"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Strategie pro testování kódu ve službě Azure Functions
@@ -312,7 +312,7 @@ module.exports = {
 ```
 Tento modul implementuje `IsPastDue` vlastnost stát je jako instance falešné časovače.
 
-Pak pomocí rozšíření VS Code funkce [vytvořit novou funkci jazyka JavaScript HTTP](https://docs.microsoft.com/azure/azure-functions/tutorial-javascript-vscode-get-started) a pojmenujte ho *HttpTrigger*. Jakmile se vytvoří funkci, přidejte nový soubor ve stejné složce s názvem **index.test.js**a přidejte následující kód:
+Pak pomocí rozšíření VS Code funkce [vytvořit novou funkci jazyka JavaScript HTTP](https://code.visualstudio.com/tutorials/functions-extension/getting-started) a pojmenujte ho *HttpTrigger*. Jakmile se vytvoří funkci, přidejte nový soubor ve stejné složce s názvem **index.test.js**a přidejte následující kód:
 
 ```javascript
 const httpFunction = require('./index');

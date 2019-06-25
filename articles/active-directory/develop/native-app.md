@@ -18,10 +18,10 @@ ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a6bf24124c4b072a64ef59500b2f723ff6abbb0e
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65545846"
 ---
 # <a name="native-apps"></a>Nativní aplikace
@@ -46,11 +46,11 @@ Pokud používáte knihoven ověřování služby AD, většinu níže popsanýc
 > [!NOTE]
 > Aktualizace tokenu vydaného službou Azure AD umožňuje přístup k více prostředkům. Například pokud máte klientské aplikace, který má oprávnění k volání dvě webové rozhraní API, obnovovací token slouží k získání přístupového tokenu pro jiné webové rozhraní API také.
 
-## <a name="code-samples"></a>Ukázky kódu
+## <a name="code-samples"></a>Ukázky kódů
 
 Pro nativní aplikace pro scénáře webového rozhraní API najdete v ukázkách kódu. A vraťte se často – často přidáváme nové ukázky. [Nativní aplikace pro webové rozhraní API](sample-v1-code.md#desktop-and-mobile-public-client-applications-calling-microsoft-graph-or-a-web-api).
 
-## <a name="app-registration"></a>Registrace aplikace
+## <a name="app-registration"></a>Registrace aplikací
 
 Registrace aplikace ke koncovému bodu Azure AD v1.0, najdete v článku [registrace aplikace](quickstart-register-app.md).
 

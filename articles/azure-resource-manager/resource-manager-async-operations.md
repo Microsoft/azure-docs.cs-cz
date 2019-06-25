@@ -1,24 +1,18 @@
 ---
 title: Stav asynchronní operace – Azure Resource Manageru
 description: Popisuje, jak sledovat asynchronních operací v Azure. Zobrazí hodnoty, které použijete k získání stavu dlouhotrvající operace.
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-ms.assetid: ''
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 12/09/2018
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 1b05ed50f08ddbf2eb5da8e08f5bf623596e1f9b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 56d55365a243a9e51e96985ee0035c43404f82f0
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61061366"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206300"
 ---
 # <a name="track-asynchronous-azure-operations"></a>Sledování asynchronních operací v Azure
 Některé operace Azure REST spustit asynchronně, protože operaci nelze dokončit, rychle. Tento článek popisuje, jak sledovat stav asynchronní operace, ať už v odpovědi vrácené hodnoty.  

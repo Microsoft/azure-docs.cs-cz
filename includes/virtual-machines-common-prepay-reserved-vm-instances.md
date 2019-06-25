@@ -5,11 +5,11 @@ ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 05/14/2019
 ms.openlocfilehash: c7ff7ab0800449c2a3aa9d58bd036981caccaa1c
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66156262"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67174975"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances-ri"></a>Předplatit si virtuální počítače se službou Azure Reserved VM Instances (RI)
 
@@ -72,7 +72,7 @@ Rezervované instance virtuálních počítačů jsou dostupné pro většinu ve
 
     | Pole      | Popis|
     |------------|--------------|
-    |Název        |Název této rezervace.|
+    |Name        |Název této rezervace.|
     |Předplatné|Předplatné použité k úhradě rezervace. Způsob platby v rámci předplatného účtuje pořizovací náklady pro rezervaci. Tento typ předplatného musí být smlouvu enterprise agreement (nabízejí čísla: MS-AZR-0017P nebo MS-AZR - 0148 P) nebo s průběžnými platbami (nabízejí čísla: MS-AZR-0003P nebo MS-AZR-0023P). V případě předplatného se smlouvou Enterprise se poplatky strhávají z peněžního zůstatku v rámci dané registrace nebo se účtují jako nadlimitní využití. V případě předplatného s průběžnými platbami se poplatky účtují na platební kartu nebo pomocí způsobu platby faktur určeného v předplatném.|    
     |Scope       |Obor pro rezervaci může vztahovat na jedno předplatné jeden nebo více odběrů (sdíleném oboru). Pokud vyberete: <ul><li>Jedno předplatné – sleva za rezervaci se používá pro virtuální počítače v tomto předplatném. </li><li>Na úrovni Shared – sleva za rezervaci se použijí pro virtuální počítače spuštěné v rámci všech předplatných v rámci kontextu vaší fakturace. Pro podnikové zákazníky sdílený obor je registrace a obsahuje všechna předplatná v rámci registrace. Pro zákazníky s průběžnými platbami sdílený obor je Všechna předplatná s průběžnými platbami, vytváří správce účtu.</li></ul>|
     |Oblast    |Oblast Azure, která je předmětem rezervace.|    
@@ -96,9 +96,9 @@ Také můžete rozdělit do menších bloků dat a sloučení už rozdělit reze
 Následující typy změn nelze změnit po zakoupení přímo:
 
 - Stávající rezervaci oblasti
-- Skladová jednotka
+- Skladová jednotka (SKU)
 - Množství
-- Trvání
+- Doba trvání
 
 Můžete však *exchange* rezervace, pokud chcete provádět změny.
 

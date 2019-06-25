@@ -16,17 +16,17 @@ ms.workload: data-services
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: 7d4cb8e55c5d1561c09cf85122550a66e3671f17
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60714106"
 ---
 # <a name="service-bus-diagnostic-logs"></a>Diagnostické protokoly služby Service Bus
 
 Dva typy protokolů můžete zobrazit pro Azure Service Bus:
-* **[Protokoly aktivit](../azure-monitor/platform/activity-logs-overview.md)**. Tyto protokoly obsahují informace o operace provedené na úlohu. Protokoly jsou vždy povoleny.
-* **[Diagnostické protokoly](../azure-monitor/platform/diagnostic-logs-overview.md)**. Můžete nakonfigurovat diagnostické protokoly pro rozsáhlejší informace o všech novinkách, ke které dochází v rámci úlohy. Diagnostické protokoly aktivit titulní od okamžiku vytvoření úlohy, až do odstranění úlohy, včetně aktualizací a aktivity, ke kterým dochází, když úloha běží.
+* **[Protokoly aktivit](../azure-monitor/platform/activity-logs-overview.md)** . Tyto protokoly obsahují informace o operace provedené na úlohu. Protokoly jsou vždy povoleny.
+* **[Diagnostické protokoly](../azure-monitor/platform/diagnostic-logs-overview.md)** . Můžete nakonfigurovat diagnostické protokoly pro rozsáhlejší informace o všech novinkách, ke které dochází v rámci úlohy. Diagnostické protokoly aktivit titulní od okamžiku vytvoření úlohy, až do odstranění úlohy, včetně aktualizací a aktivity, ke kterým dochází, když úloha běží.
 
 ## <a name="turn-on-diagnostic-logs"></a>Zapnout diagnostické protokoly
 
@@ -73,7 +73,7 @@ SubscriptionId | ID předplatného
 EventTimeString | Čas operace
 EventProperties | Vlastnosti operace
 Status | Stav operace
-Volající | Volající operace (Azure portal nebo správy klienta)
+Caller | Volající operace (Azure portal nebo správy klienta)
 category | OperationalLogs
 
 Tady je příklad operační protokol řetězec formátu JSON:

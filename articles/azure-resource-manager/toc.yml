@@ -37,6 +37,9 @@
       href: resource-manager-tutorial-deploy-sql-extensions-bacpac.md
     - name: Zabezpečené artefakty
       href: resource-manager-tutorial-secure-artifacts.md
+    - name: Průběžná integrace s využitím Azure Pipelines
+      displayName: DevOps
+      href: resource-manager-tutorial-use-azure-pipelines.md
     - name: Použití postupů bezpečného nasazení
       displayName: adm
       href: deployment-manager-tutorial.md
@@ -121,9 +124,10 @@
               href: resource-manager-powershell-sas-token.md
         - name: Nasazení do několika skupin prostředků nebo předplatných
           href: resource-manager-cross-resource-group-deployment.md
-        - name: Průběžná integrace s využitím Azure DevOps Services
-          href: ../vs-azure-tools-resource-groups-ci-in-vsts.md
-          maintainContext: true
+    - name: CI/CD
+      items:
+        - name: Projekt VS s kanály
+          href: vs-resource-groups-project-devops-pipelines.md
     - name: Export šablony
       href: export-template-portal.md
     - name: Spravovat
@@ -208,7 +212,7 @@
 - name: Referenční informace
   items:
     - name: Referenční informace k šablonám
-      href: subtoc/toc.yml
+      href: /azure/templates/
     - name: Funkce šablon
       items:
         - name: Všechny funkce

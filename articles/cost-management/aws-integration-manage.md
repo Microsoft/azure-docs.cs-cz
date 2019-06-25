@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: ormaoz
 ms.custom: ''
-ms.openlocfilehash: 007b6c409dde248a4dde7a15fd16b543add234bc
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 57e66d449b194662bfc03f7e130cf49c02a15793
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64870309"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275706"
 ---
 # <a name="manage-aws-costs-and-usage-in-azure"></a>Spravovat náklady na AWS a jeho použití v Azure
 
@@ -83,7 +83,7 @@ Následující tabulka popisuje dimenze, které jsou k dispozici pro skupinu a f
 | Kategorie měřiče | lineItem/ProductCode | Vše |   |
 | Podkategorie měřiče | lineitem/UsageType | Vše |   |
 | Operace | lineItem/operace | Vše |   |
-| Prostředek | lineItem/ResourceId | Vše |   |
+| Resource | lineItem/ResourceId | Vše |   |
 | Typ prostředku | product/instanceType | Vše | Pokud produkt/instanceType má hodnotu null, použije se lineItem/UsageType. |
 | ResourceGuid | neuvedeno | Vše | Měřičů Azure identifikátor GUID. |
 | Název služby | produkt/ProductName | Vše | Pokud produkt/ProductName má hodnotu null, použije se lineItem/kód ProductCode souboru. |
@@ -91,8 +91,8 @@ Následující tabulka popisuje dimenze, které jsou k dispozici pro skupinu a f
 | ID předplatného | lineItem/UsageAccountId | Konsolidované skupiny účet a správu |   |
 | Název předplatného | neuvedeno | Konsolidované skupiny účet a správu | Názvy účtů se shromažďují pomocí rozhraní API pro organizaci AWS. |
 | Značka | resourceTags/\* | Vše | _Uživatele:_ předpona je odebrán z uživatelské značky povolit značky cloudu. _Aws:_ předponu zůstává nedotčeno. |
-| ID fakturačního účtu | bill/PayerAccountId | Skupina pro správu |   |
-| Název fakturačního účtu | neuvedeno | Skupina pro správu | Názvy účtů se shromažďují pomocí rozhraní API pro organizaci AWS. |
+| ID účtu fakturace | bill/PayerAccountId | Skupina pro správu |   |
+| Název účtu fakturace | neuvedeno | Skupina pro správu | Názvy účtů se shromažďují pomocí rozhraní API pro organizaci AWS. |
 | Poskytovatel | neuvedeno | Skupina pro správu | AWS a Azure. |
 
 ## <a name="set-budgets-on-aws-scopes"></a>Sada rozpočty na AWS obory
@@ -129,6 +129,8 @@ Použijte následující informace o odstraňování potíží vyřešit běžn�
 
 ### <a name="no-permission-to-aws-linked-accounts"></a>Nemáte oprávnění ke AWS propojené účty
 
+**Kód chyby:** _Neautorizováno_
+
 Existují dva způsoby, jak získat oprávnění pro přístup k náklady na AWS, propojené účty:
 
 - Získáte přístup do skupiny pro správu, který má AWS propojené účty.
@@ -136,7 +138,11 @@ Existují dva způsoby, jak získat oprávnění pro přístup k náklady na AWS
 
 Ve výchozím nastavení autora konektoru AWS je vlastníkem všechny objekty, které tento konektor vytvořen. Včetně AWS konsolidovaný účet a AWS propojený účet.
 
+Pokud chcete mít možnost ověřit nastavení konektoru budete potřebovat alespoň roli přispěvatele, čtenář, nemůže ověřit nastavení konektoru
+
 ### <a name="collection-failed-with-assumerole"></a>Kolekce se nezdařilo s AssumeRole
+
+**Kód chyby:** _FailedToAssumeRole_
 
 Tato chyba znamená, že nelze volat rozhraní API AssumeRole AWS Cost Management. Tomuto problému může dojít z důvodu problému s definice role. Ověřte, že jsou splněny následující podmínky:
 
@@ -147,11 +153,23 @@ Tato chyba znamená, že nelze volat rozhraní API AssumeRole AWS Cost Managemen
 
 ### <a name="collection-failed-with-access-denied"></a>Collection se nezdařil se přístup odepřen
 
-Tato chybová zpráva znamená, že Cost Management nejde získat přístup ke stejné soubory uložené v intervalu Amazon S3. Ujistěte se, že AWS JSON zásady připojené k roli vypadá podobně jako v příkladu se zobrazí v dolní části [vytvoření role a zásady v AWS](aws-integration-set-up-configure.md#create-a-role-and-policy-in-aws) oddílu.
+- **Kód chyby:** _AccessDeniedReportDefinitions_ 
+- **Kód chyby:** _AccessDeniedListReports_ 
+- **Kód chyby:** _AccessDeniedDownloadReport_ 
 
-### <a name="connector-error-with-failedtofindreport"></a>Chyba konektoru s FailedToFindReport
+Tato chyba zpráv znamená, že nejde získat přístup ke stejné soubory uložené v intervalu Amazon S3 Cost Management. Ujistěte se, že AWS JSON zásady připojené k roli vypadá podobně jako v příkladu se zobrazí v dolní části [vytvoření role a zásady v AWS](aws-integration-set-up-configure.md#create-a-role-and-policy-in-aws) oddílu.
+
+### <a name="collection-failed-since-we-did-not-find-the-cost-and-usage-report"></a>Kolekce se nezdařilo, protože nebyly nalezeny náklady a sestava využití
+
+**Kód chyby:** _FailedToFindReport_
 
 Tato chyba znamená, že náklady na správu nelze najít sestavu nákladů a využití, která byla definována v konektoru. Ujistěte se, že se neodstraní a AWS JSON zásady připojené k roli vypadá podobně jako v příkladu se zobrazí v dolní části [vytvoření role a zásady v AWS](aws-integration-set-up-configure.md#create-a-role-and-policy-in-aws) oddílu.
+
+### <a name="unable-to-create-or-verify-connector-due-to-cost-and-usage-report-definitions-mismatch"></a>Nepovedlo se vytvořit nebo ověřte konektor z důvodu neshody definice náklady a sestava využití
+
+**Kód chyby:** _ReportIsNotValid_
+
+Tato chyba má vztah k definici sestavy využití a náklady na AWS jsme vyžadovat konkrétní nastavení pro tuto sestavu, naleznete v tématu požadavky uvedené v [vytvoření sestavy nákladů a využití v AWS](aws-integration-set-up-configure.md#create-a-cost-and-usage-report-in-aws)
 
 ## <a name="next-steps"></a>Další postup
 

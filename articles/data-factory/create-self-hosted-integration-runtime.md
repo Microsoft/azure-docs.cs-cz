@@ -7,16 +7,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/15/2019
+ms.date: 06/18/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 90e43ab0448646650067dbf151702132f434c01e
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: ec6177bb353602f20040f05215678e3a8a161ebc
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65967961"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190836"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Vytvoření a konfigurace místní prostředí integration runtime
 Prostředí integration runtime (IR) je výpočetní infrastruktura, která Azure Data Factory používá pro poskytují funkce integrace dat v různých síťových prostředích. Podrobnosti o prostředí IR najdete v tématu [přehled modulu runtime integrace](concepts-integration-runtime.md).
@@ -44,7 +44,7 @@ Tento dokument popisuje, jak můžete vytvořit a nakonfigurovat v místním pro
 
     ```
 
-## <a name="setting-up-a-self-hosted-ir-on-an-azure-vm-by-using-an-azure-resource-manager-template-automation"></a>Nastavení místní prostředí IR na Virtuálním počítači Azure s použitím šablony Azure Resource Manageru (Automatizace)
+## <a name="setting-up-a-self-hosted-ir-on-an-azure-vm-by-using-an-azure-resource-manager-template"></a>Nastavení místní prostředí IR na Virtuálním počítači Azure s použitím šablony Azure Resource Manageru 
 Instalace v místním prostředí IR na virtuálním počítači Azure můžete automatizovat pomocí [tuto šablonu Azure Resource Manageru](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vms-with-selfhost-integration-runtime). Tato šablona poskytuje snadný způsob, jak máte plně funkční v místním prostředí IR uvnitř virtuální sítě Azure s funkcemi vysoké dostupnosti a škálovatelnosti (za předpokladu, můžete nastavit počet uzlů na 2 nebo vyšší).
 
 ## <a name="command-flow-and-data-flow"></a>Příkaz toku a toku dat
@@ -86,6 +86,7 @@ Stáhněte si balíček MSI Instalační program z můžete nainstalovat místn�
 
 - Konfigurovat schéma napájení na hostitelském počítači pro místní prostředí integration runtime tak, aby počítač nepřejde do režimu spánku. Pokud hostitelský počítač přejde do režimu spánku, místní prostředí integration runtime přejde do režimu offline.
 - Přihlašovací údaje související s místní prostředí integration runtime pravidelně zálohujte.
+- Pro místní prostředí IR automatizaci instalace operací, najdete [níže uvedený oddíl](#automation-support-for-self-hosted-ir-function).  
 
 ## <a name="install-and-register-self-hosted-ir-from-the-download-center"></a>Instalace a registrace v místním prostředí IR ze služby Stažení softwaru
 
@@ -110,6 +111,45 @@ Stáhněte si balíček MSI Instalační program z můžete nainstalovat místn�
 
     c. Vyberte **Zaregistrovat**.
 
+## <a name="automation-support-for-self-hosted-ir-function"></a>Podpora automatizace pro v místním prostředí IR – funkce
+
+
+> [!NOTE]
+> Pokud máte v úmyslu nastavit místní prostředí IR na virtuálním počítači Azure a chcete automatizovat instalaci pomocí šablon Azure Resource Manageru, najdete [části](#setting-up-a-self-hosted-ir-on-an-azure-vm-by-using-an-azure-resource-manager-template).
+
+Můžete použít příkazový řádek pro nastavení nebo správu existující v místním prostředí IR. To lze použít pro automatizaci instalace a registrace uzlů prostředí IR v místním prostředí. 
+
+**Dmgcmd.exe** je zahrnuta v místním prostředí instalace – nachází se obvykle nachází: C:\Program Files\Microsoft Integration Runtime\3.0\Shared\ folder. To podporuje různé parametry a lze vyvolat pomocí příkazového řádku pomocí dávkových skriptů pro automatizaci. 
+
+*Použití:* 
+
+```powershell
+dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<thumbprint>"] -EnableRemoteAccessInContainer "<port>" ["<thumbprint>"] -DisableRemoteAccess -Key "<AuthenticationKey>" -GenerateBackupFile "<filePath>" "<password>" -ImportBackupFile "<filePath>" "<password>" -Restart -Start -Stop -StartUpgradeService -StopUpgradeService -TurnOnAutoUpdate -TurnOffAutoUpdate -SwitchServiceAccount "<domain\user>" ["password"] -Loglevel <logLevel> ] 
+```
+
+ *Podrobnosti (parametry / vlastnost):* 
+
+| Vlastnost                                                    | Popis                                                  | Požaduje se |
+| ----------------------------------------------------------- | ------------------------------------------------------------ | -------- |
+| RegisterNewNode "`<AuthenticationKey>`"                     | Registrovat uzel Integration Runtime (v místním prostředí) se zadaným klíčem ověřování | Ne       |
+| EnableRemoteAccess "`<port>`" ["`<thumbprint>`"]            | Povolení vzdáleného přístupu na aktuální uzel pro nastavení clusteru s vysokou dostupností a/nebo povolení nastavení přihlašovacích údajů přímo proti v místním prostředí IR (bez nutnosti kontaktovat službu ADF) pomocí  **Nové AzDataFactoryV2LinkedServiceEncryptedCredential** rutina ze vzdáleného počítače ve stejné síti. | Ne       |
+| EnableRemoteAccessInContainer "`<port>`" ["`<thumbprint>`"] | Povolit vzdálený přístup k aktuální uzel po uzlu běží v kontejneru | Ne       |
+| DisableRemoteAccess                                         | Zakažte vzdálený přístup k aktuální uzel. Vzdálený přístup je potřebné k instalaci více uzly. New -**AzDataFactoryV2LinkedServiceEncryptedCredential** rutinu Powershellu stále funguje, i když vzdálený přístup je zakázán, dokud se spouští ve stejném počítači jako uzel v místním prostředí IR. | Ne       |
+| Klíč "`<AuthenticationKey>`"                                 | Přepsat / aktualizovat předchozí ověřovací klíč. Buďte opatrní, protože to může způsobit vaše předchozí uzel v místním prostředí IR přechod do offline režimu, pokud je klíč nové prostředí integration runtime. | Ne       |
+| GenerateBackupFile "`<filePath>`" "`<password>`"            | Generovat soubor zálohy pro aktuální uzel, záložní soubor obsahuje uzel klíč a data store přihlašovací údaje | Ne       |
+| ImportBackupFile "`<filePath>`" "`<password>`"              | Obnovení ze zálohy uzlu                          | Ne       |
+| Restart                                                     | Restartujte službu modulu Integration Runtime (v místním prostředí) hostitele   | Ne       |
+| Start                                                       | Spuštění (v místním prostředí) hostitelskou službu modulu Integration Runtime     | Ne       |
+| Zastavit                                                        | Zastavit službu modulu Integration Runtime (v místním prostředí) aktualizace        | Ne       |
+| StartUpgradeService                                         | Spusťte službu modulu Integration Runtime (v místním prostředí) aktualizace       | Ne       |
+| StopUpgradeService                                          | Zastavit službu modulu Integration Runtime (v místním prostředí) aktualizace        | Ne       |
+| TurnOnAutoUpdate                                            | Zapnout prostředí Integration Runtime (v místním prostředí) automatické aktualizace        | Ne       |
+| TurnOffAutoUpdate                                           | Vypnout prostředí Integration Runtime (v místním prostředí) automatickou aktualizaci       | Ne       |
+| SwitchServiceAccount "< doména\uživatel >" ["password"]           | Nastavit funkci DIAHostService na nový účet Spustit jako. Použijte prázdné heslo ("") pro účet systému nebo virtuální účet | Ne       |
+| Loglevel `<logLevel>`                                       | Nastavit úroveň protokolu ETW (vypnuto, chyba, podrobný nebo všechny). Obecně určené pro podporu společnosti Microsoft během ladění. | Ne       |
+
+   
+
 
 ## <a name="high-availability-and-scalability"></a>Vysoká dostupnost a škálovatelnost
 Místní prostředí integration runtime můžou být spojené s více virtuálních počítačů v Azure nebo na místních počítačích. Tyto počítače se označují jako uzly. Můžete mít až čtyři uzly, které jsou spojené s místní prostředí integration runtime. Výhody s více uzly (na místních počítačích s nainstalovanou bránu) pro logické brány jsou:
@@ -126,11 +166,11 @@ Po instalaci softwaru místní prostředí integration runtime z můžete přidr
 
 ### <a name="scale-considerations"></a>Důležité informace o škálování
 
-#### <a name="scale-out"></a>Horizontálně navýšit kapacitu
+#### <a name="scale-out"></a>Horizontální navýšení kapacity
 
 Když je málo dostupné paměti na místní prostředí IR a využití CPU je vysoké, přidání nového uzlu pomáhá horizontální navýšení kapacity zatížení napříč počítači. Pokud aktivity selhávají, protože jste vypršení časového limitu nebo protože uzel v místním prostředí IR je offline, pomůže, pokud chcete přidat uzel do brány.
 
-#### <a name="scale-up"></a>Škálovat nahoru
+#### <a name="scale-up"></a>Vertikální navýšení kapacity
 
 Pokud nejsou dostupné paměti a procesoru využívá dobře, ale spuštění souběžných úloh se blíží limitu, by měla vertikálně navýšit kapacitu zvýšením počtu souběžných úloh, které můžou běžet na uzlu. Můžete také vertikálně navýšit kapacitu, když aktivity jsou vypršení časového limitu, protože místní prostředí IR je přetížena. Jak je znázorněno na následujícím obrázku, můžete zvýšit maximální kapacita pro uzel:  
 
@@ -341,7 +381,7 @@ Pokud používáte bránu firewall jiného dodavatele, můžete ručně otevřet
 
 ```
 msiexec /q /i IntegrationRuntime.msi NOFIREWALL=1
-``` 
+```
 
 Pokud zvolíte ne pro otevření portu 8060 na počítači s modulem runtime integrace v místním prostředí, použijte mechanismy než aplikace nastavení přihlašovacích údajů nakonfigurovat přihlašovací údaje úložiště dat. Například můžete použít **New-AzDataFactoryV2LinkedServiceEncryptCredential** rutiny Powershellu.
 

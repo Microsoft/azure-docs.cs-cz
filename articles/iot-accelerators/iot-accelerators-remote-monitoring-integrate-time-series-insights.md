@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.openlocfilehash: 4cc9b0051eaa12eee07f067352126ad159107a83
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61442922"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Integrace služby Azure Time Series Insights se vzdáleným monitorováním
@@ -89,13 +89,13 @@ Vytvořte nový zdroj událostí k připojení ke službě IoT hub. Ujistěte se
     | Nastavení | Hodnota |
     | ------- | ----- |
     | Název zdroje událostí | Na následujícím snímku obrazovky používá název **contosorm-iot-hub**. Po dokončení tohoto kroku, použijte vlastní jedinečný název. |
-    | Zdroj | **IoT Hub** |
+    | source | **IoT Hub** |
     | Možnost importu | **Pomocí služby IoT Hub z dostupných předplatných** |
     | ID předplatného | Z rozevíracího seznamu vyberte své předplatné Azure. |
-    | Název centra IoT Hub | **contosorma57a6**. Použijte název vašeho centra IoT z vašeho řešení vzdáleného monitorování. |
-    | Název zásady centra IoT Hub | **iothubowner** zkontrolujte zásady používané zásady vlastníka. |
-    | Klíč zásad centra IoT Hub | Toto pole se vyplní automaticky. |
-    | Skupina uživatelů centra IoT Hub | **timeseriesinsights** |
+    | Název centra IOT | **contosorma57a6**. Použijte název vašeho centra IoT z vašeho řešení vzdáleného monitorování. |
+    | Název zásad centra IOT | **iothubowner** zkontrolujte zásady používané zásady vlastníka. |
+    | Klíč zásad centra IOT | Toto pole se vyplní automaticky. |
+    | Skupina uživatelů centra IOT | **timeseriesinsights** |
     | Formát serializace události | **JSON**     | 
     | Název vlastnosti časového razítka | Ponechte prázdné |
 
@@ -136,7 +136,7 @@ Dalším krokem je konfigurace mikroslužeb Azure Stream Analytics Manageru pře
 
 1. Zvolte **ContosoRM** skupinu prostředků.
 
-1. Najdete Azure Stream Analytics (ASA) datové proudy úlohy v seznamu prostředků. Název prostředku začíná **streamingjobs -**.
+1. Najdete Azure Stream Analytics (ASA) datové proudy úlohy v seznamu prostředků. Název prostředku začíná **streamingjobs -** .
 
 1. V horní části stránky klikněte na tlačítko Zastavit ASA streamovacích úloh.
 

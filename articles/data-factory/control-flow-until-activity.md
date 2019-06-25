@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 ms.openlocfilehash: 5a053ab213390a12c5d2051a802a1fa98279c344
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66155169"
 ---
 # <a name="until-activity-in-azure-data-factory"></a>Do aktivity ve službě Azure Data Factory
@@ -55,7 +55,7 @@ Dokud aktivita poskytuje stejné funkce, která DNT – dokud opakování ve smy
 Vlastnost | Popis | Povolené hodnoty | Požaduje se
 -------- | ----------- | -------------- | --------
 name | Název `Until` aktivity. | String | Ano
-Typ | Musí být nastaveno na **dokud**. | String | Ano
+type | Musí být nastaveno na **dokud**. | String | Ano
 Výraz | Výraz, který se musí vyhodnotit na hodnotu true nebo false | výraz.  | Ano
 timeout | Provést – až do smyčky vyprší po určeném čase. | řetězec. `d.hh:mm:ss` (nebo) `hh:mm:ss`. Výchozí hodnota je 7 dní. Maximální hodnota je: 90 dnů. | Ne
 Činnosti | Sadu aktivit, které jsou prováděny, dokud je výraz vyhodnocen `true`. | Pole aktivit. |  Ano

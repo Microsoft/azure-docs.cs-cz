@@ -43,6 +43,8 @@
         - name: Offline vyhodnocení
           href: concepts-offline-evaluation.md
           displayName: 'learning policy, Counterfactual, features'
+    - name: Škálovatelnost a výkon
+      href: concepts-scalability-performance.md
 - name: Návody
   items:
     - name: Vytvoření a konfigurace služby Personalizace

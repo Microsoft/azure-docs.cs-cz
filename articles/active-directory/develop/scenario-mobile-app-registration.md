@@ -17,10 +17,10 @@ ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2b6ebab0eeca6895e1c7a0f6008972030d81da42
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65962406"
 ---
 # <a name="mobile-app-that-calls-web-apis---app-registration"></a>Mobilní aplikace, že volání webového rozhraní API – registrace aplikace
@@ -43,7 +43,7 @@ Pokud chcete ručně konfigurovat identifikátor URI pro přesměrování, uděl
 - ***Android***: `msauth://<PACKAGE_NAME>/<SIGNATURE_HASH>`
   - Hodnota hash podpisu s Androidem můžete vygenerovat pomocí klíče vydání nebo ladícího do příkazu KeyTool.
 
-## <a name="api-permissions"></a>Oprávnění rozhraní API
+## <a name="api-permissions"></a>Oprávnění k rozhraní API
 
 Mobilní aplikace volat rozhraní API jménem přihlášeného uživatele. Vaše aplikace potřebuje požadovat delegovaná oprávnění, také označuje jako obory. V závislosti na požadované prostředí to můžete udělat staticky prostřednictvím webu Azure portal nebo dynamicky za běhu. Staticky registrace oprávnění umožňuje správcům snadno schválení vaší aplikace a doporučuje se.
 

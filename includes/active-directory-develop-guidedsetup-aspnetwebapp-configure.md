@@ -15,13 +15,13 @@ ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: 2cdc6ea01e6c3555740102f319d0f4e8e4fc1c22
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66121719"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67175615"
 ---
-## <a name="register-your-application"></a>Zaregistrujte svoji aplikaci.
+## <a name="register-your-application"></a>Registrace vaší aplikace
 
 Zaregistrujte si vaši aplikaci a přidejte informace o registraci aplikace do svého řešení, máte dvě možnosti:
 

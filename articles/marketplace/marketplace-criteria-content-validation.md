@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: yijenj
-ms.openlocfilehash: 3345dd82a1de4f9144cdeb5acd5d3e506dc55de8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 97fb4dc37f3c9f776e4abf433f916ceaf177a70b
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64937832"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67202684"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Pokyny pro zařazení na Azure Marketplace
 
@@ -39,14 +39,14 @@ Musí splňovat všechny nabídky [všechny požadavky na výpis](https://docs.m
 | 11 | Podpora řešení a Nápověda | Propojení alespoň jeden z následujících akcí: <br>o telefonních čísel <br>o e-mailová podpora <br>o Chat agentů <br>o komunitní fóra |<br>• Podporují metody uvedené: podpora pro telefon a e-mailu. <br>• Placená podpora se poskytuje zdarma během zkušební verze nebo zkušební období jednotky | 
 | 12 | Právní informace | Zásady nebo podmínky, které jsou k dispozici prostřednictvím veřejné adresy URL |  | 
 
-----
+---
 ## <a name="trial-offer-requirements"></a>Požadavky na nabídka zkušební verze
 
 |  | Výpis – Element | Základní požadavky | Požadavky na optimální | 
 |:--- |:--- |:--- |:--- |
 |  | Stav seznamu | Odkaz musí vést k vedené zákazníka zkušební prostředí | Další funkce CTAs (například koupit) také k dispozici | 
 
-----
+---
 ## <a name="saas-apps-requirements"></a>Požadavky na aplikace SaaS
 
 |  | Výpis – Element | Základní požadavky | Požadavky na optimální | 
@@ -63,7 +63,7 @@ Musí splňovat všechny nabídky [všechny požadavky na výpis](https://docs.m
 | 10 | Kontakty: Podpora řešení a Nápověda | <br>• Engineering jméno kontaktu: Zadejte název technický kontakt pro vaši aplikaci. Tento kontakt obdrží technické komunikaci od Microsoftu.<br>• Engineering kontaktního e-mailu:  Zadejte e-mailová adresa technický kontakt pro vaši aplikaci.<br>• Engineering kontakty telefon: Zadejte telefonní číslo technickým kontaktem. ISO telefonní číslo zápisy jsou podporovány. Podrobnosti najdete v tématu https://en.wikipedia.org/wiki/E.123.<br>• Podpora jméno kontaktu: Zadejte jméno kontaktu podpory pro vaši aplikaci. Tento kontakt obdrží zpráv týkající se podpory od Microsoftu.<br>• Podpora kontaktní e-mail: Zadejte e-mailovou adresu kontaktu podpory pro vaši aplikaci. <br>• Podpora obraťte se na telefon: Zadejte telefonní číslo kontaktu podpory. ISO telefonní číslo zápisy jsou podporovány. Podrobnosti najdete v tématu https://en.wikipedia.org/wiki/E.123. <br>• Podpora adresa URL: Zadejte adresu URL na vaše stránka podpory. | <br>• Podporují metody uvedené: podpora pro telefon a e-mailu. <br>• Placená podpora se poskytuje zdarma během zkušební verze nebo zkušební období jednotky |
 | 11 | Právní informace |<br>• Adresa URL zásad ochrany osobních údajů: Zadejte adresu URL zásad ochrany osobních údajů vaší aplikace do pole Adresa URL zásad ochrany osobních údajů v CPP. <br>• Podmínky použití: Zadejte podmínky použití vaší aplikace. Zákazníkům je potřeba přijmout tyto podmínky předtím, než se pokusí vaší aplikace. |  Zásady nebo podmínky, které jsou k dispozici prostřednictvím veřejné adresy URL webu |
 
-----
+---
 
 ## <a name="container-offer-requirements"></a>Nabídka požadavků na kontejner
 
@@ -74,7 +74,7 @@ Musí splňovat všechny nabídky [všechny požadavky na výpis](https://docs.m
 | 3 | Artefakty Marketplace | Správné zobrazení loga |<br>• Logo obsahuje "hlavní image", tedy velké formát obrázku na webu Azure Portal <br>• Loga: Malý (48 x 48) a velké (216 x 216) jsou požadavky <br>• Požadavky na image Hero: https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-solution-template-offer-publish<br>Snímek obrazovky • (max. 5):  CPP vyžaduje image ve formátu PNG s rozlišení 1280 × 720.|
 | 4 | Průběžná správa |<br>• Průběžná správa: Vyberte systému, kam se budou ukládat vaše potenciálních zákazníků. <br>• Informace o připojení systému CRM [zde](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads) | |
 
-----
+---
 
 ## <a name="consulting-offer-requirements"></a>Požadavky na konzultační nabídky
 
@@ -97,6 +97,3 @@ Musí splňovat všechny nabídky [všechny požadavky na výpis](https://docs.m
 ## <a name="next-steps"></a>Další postup
 * Další informace o typech různých nabídek na webu Marketplace. <br>[Aplikace SaaS](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide) <br>[Containers](https://docs.microsoft.com/azure/marketplace/marketplace-containers) <br>[Konzultační služby](https://docs.microsoft.com/azure/marketplace/consulting-services)
 *   [Určení typu výpis pro vaše řešení](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type).
-
- 
----

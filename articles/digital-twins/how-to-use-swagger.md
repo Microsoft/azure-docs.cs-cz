@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: 842c35a1575c7bcf6f547fb04d5680178b3bee78
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: c402b82b91b02f8d9619c851d09c689fd103c9fe
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730362"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67116438"
 ---
 # <a name="azure-digital-twins-swagger-reference-documentation"></a>Digitální dvojče Swagger referenční dokumentace k Azure
 
@@ -104,7 +104,7 @@ Další informace o interaktivním testování požadavků, které jsou chráně
     ```plaintext
     https://YOUR_SWAGGER_URL/ui/oauth2-redirect-html
     ```
-    | Name  | Nahradit hodnotou | Příklad: |
+    | Název  | Nahradit hodnotou | Příklad: |
     |---------|---------|---------|
     | YOUR_SWAGGER_URL | Vaši adresu URL dokumentace k rozhraní REST API pro správu nalézt v portálu  | `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger` |
 
@@ -112,7 +112,7 @@ Další informace o interaktivním testování požadavků, které jsou chráně
 
     ![Registrace aplikace Azure AD přidat rozhraní api](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)
 
-4. Konfigurace manifestu aplikace povolit implicitní tok OAuth 2.0. Klikněte na tlačítko **Manifest** otevřete manifest aplikace pro vaši aplikaci. Nastavte *oauth2AllowImplicitFlow* k `true`.
+4. Konfigurace manifestu aplikace povolit implicitní tok OAuth 2.0. Vyberte **Manifest** otevřete manifest aplikace pro vaši aplikaci. Nastavte *oauth2AllowImplicitFlow* k `true`.
 
     ![Azure AD implicitní tok](../../includes/media/digital-twins-permissions/aad-app-allow-implicit-flow.png)
 
@@ -120,9 +120,9 @@ Další informace o interaktivním testování požadavků, které jsou chráně
 
 Po dokončení registrace Azure Active Directory:
 
-6. Klikněte na tlačítko **Authorize** tlačítko na stránce swagger.
+6. Vyberte **Authorize** tlačítko na stránce swagger.
 
-    [![Klikněte na tlačítko Swaggeru povolit tlačítko](media/how-to-use-swagger/swagger-select-authorize-btn.png)](media/how-to-use-swagger/swagger-select-authorize-btn.png#lightbox)
+    [![Vyberte Swaggeru povolit tlačítko](media/how-to-use-swagger/swagger-select-authorize-btn.png)](media/how-to-use-swagger/swagger-select-authorize-btn.png#lightbox)
 
 7. Vložte do ID aplikace **client_id** pole.
 

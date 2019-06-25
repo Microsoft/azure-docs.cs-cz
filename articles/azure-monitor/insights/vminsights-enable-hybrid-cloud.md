@@ -13,29 +13,29 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/07/2019
 ms.author: magoedte
-ms.openlocfilehash: 89970802ff21a254fae0604e50ea2b8b5901f95a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: bc26cc0654aac9416bf31ffccf426648e3a8b8d2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "67052007"
+ms.locfileid: "67122536"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-for-a-hybrid-environment"></a>Povolit monitorování Azure pro hybridní prostředí pro virtuální počítače (preview)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Tento článek vysvětluje, jak povolit Azure Monitor pro virtuální počítače (preview) pro virtuální počítače nebo fyzické počítače, které jsou hostované ve vašem datovém centru nebo jiných cloudovém prostředí. Na konci tohoto procesu, který se úspěšně začali jste monitorování virtuálních počítačů ve vašem prostředí a další, pokud se vyskytly problémy s výkonem nebo dostupností. 
+Tento článek vysvětluje, jak povolit Azure Monitor pro virtuální počítače (preview) pro virtuální počítače nebo fyzické počítače, které jsou hostované ve vašem datovém centru nebo jiných cloudovém prostředí. Na konci tohoto procesu se úspěšně začali jste monitorování virtuálních počítačů ve vašem prostředí a další, pokud se vyskytly problémy s výkonem nebo dostupností. 
 
-Před Začínáme pracovat, nezapomeňte se podívat [požadavky](vminsights-enable-overview.md) a ověřte vaše předplatné a prostředky splňují požadavky. Seznamte se s požadavky a metody nasazení pro [agenta Log Analytics Linux a Windows](../../log-analytics/log-analytics-agent-overview.md).
+Než začnete, nezapomeňte se podívat [požadavky](vminsights-enable-overview.md) a ověřte, že vaše předplatné a prostředky splňují požadavky. Seznamte se s požadavky a metody nasazení pro [agenta Log Analytics Linux a Windows](../../log-analytics/log-analytics-agent-overview.md).
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
 >[!NOTE]
->Azure Monitor pro agenta závislostí mapování virtuálních počítačů nebude přenášet vlastní data a nevyžaduje žádné změny brány firewall nebo porty. Mapy dat je vždy přenášených v rámci agenta Log Analytics ve službě Azure Monitor, buď přímo nebo prostřednictvím [bránu OMS](../../azure-monitor/platform/gateway.md) Pokud zásady zabezpečení IT neumožňují počítače v síti pro připojení k Internetu.
+>Azure Monitor pro agenta závislostí mapování virtuálních počítačů nebude přenášet vlastní data a nevyžaduje žádné změny brány firewall nebo porty. Mapy dat je vždy přenášených v rámci agenta Log Analytics ve službě Azure Monitor, buď přímo nebo prostřednictvím [brány Operations Management Suite](../../azure-monitor/platform/gateway.md) Pokud zásady zabezpečení IT neumožňují počítače v síti připojení k Internetu.
 
-Úkoly k dokončení této úlohy se dají shrnout takto:
+Kroky k dokončení této úlohy se dají shrnout takto:
 
-1. Instalace agenta Log Analytics pro Windows nebo Linux. Před instalací agenta, zkontrolujte [přehled agenta Log Analytics](../platform/log-analytics-agent.md) článku vám pomohou pochopit požadavky na systém a metody nasazení.  
+1. Instalace agenta Log Analytics pro Windows nebo Linux. Před instalací agenta, zkontrolujte [přehled agenta Log Analytics](../platform/log-analytics-agent.md) článku vám pomohou pochopit požadavky na systém a metody nasazení.
 
 2. Stáhněte a nainstalujte Azure Monitor pro virtuální počítače mapu závislostí agenta pro [Windows](https://aka.ms/dependencyagentwindows) nebo [Linux](https://aka.ms/dependencyagentlinux).
 
@@ -56,7 +56,7 @@ Následující tabulka obsahuje parametry, které podporují instalaci agenta z 
 | /? | Vrátí seznam možností příkazového řádku. |
 | /S | Provádí tichou instalaci bez zásahu uživatele. |
 
-Například spusťte instalační program se `/?` parametr, typ **InstallDependencyAgent Windows.exe /?** .
+Například spusťte instalační program se `/?` parametr, zadejte **InstallDependencyAgent Windows.exe /?** .
 
 Soubory agenta závislostí Windows jsou nainstalované v *agenta závislostí C:\Program Files\Microsoft* ve výchozím nastavení. Pokud se nepodaří spustit po dokončení instalace agenta závislostí, zkontrolujte protokoly podrobné informace o chybě. Adresář protokolu je *%Programfiles%\Microsoft závislost Agent\logs*.
 
@@ -73,9 +73,9 @@ Agent závislostí je nainstalovaný na servery s Linuxem z *InstallDependencyAg
 | -s | Provede tichou instalaci bez zobrazení výzev uživateli. |
 | – Zkontrolujte | Kontrola oprávnění a operačního systému, ale nechcete nainstalovat agenta. |
 
-Například ke spuštění instalačního programu s `-help` parametr, typ **InstallDependencyAgent Linux64.bin – Nápověda**.
+Například ke spuštění instalačního programu s `-help` parametr, zadejte **InstallDependencyAgent Linux64.bin – Nápověda**.
 
-Instalace agenta závislostí Linux jako uživatel root spuštěním následujícího příkazu `sh InstallDependencyAgent-Linux64.bin`.
+Instalace agenta závislostí Linux jako uživatel root pomocí příkazu `sh InstallDependencyAgent-Linux64.bin`.
 
 Pokud agenta závislostí nespustí, zkontrolujte protokoly podrobné informace o chybě. U agentů Linuxu adresáři protokolu není */var/opt/microsoft/dependency-agent/log*.
 
@@ -90,18 +90,18 @@ Soubory pro agenta závislostí jsou umístěny v následujících adresářích
 | Binární soubory úložiště | /var/opt/microsoft/dependency-agent/storage |
 
 ## <a name="enable-performance-counters"></a>Povolit čítače výkonu
-Pokud pracovní prostor Log Analytics, který je odkazován řešení ještě nenakonfigurovala získat čítače výkonu, vyžadují řešení, musíte je povolit. Můžete tak učinit v některém ze dvou způsobů:
+Pokud pracovní prostor Log Analytics, který je odkazován řešení ještě nenakonfigurovala získat čítače výkonu, vyžadují řešení, musíte je povolit. To lze provést jedním ze dvou způsobů:
 * Ručně, jak je popsáno v [Windows a Linuxem zdroje dat výkonu do Log Analytics](../../azure-monitor/platform/data-sources-performance-counters.md)
 * Stažením a instalací, který je k dispozici skript prostředí PowerShell [Galerie prostředí PowerShell pro Azure](https://www.powershellgallery.com/packages/Enable-VMInsightsPerfCounters/1.1)
 
 ## <a name="deploy-azure-monitor-for-vms"></a>Nasazení pro virtuální počítače Azure Monitor
 Tato metoda zahrnuje šablony JSON, který určuje konfiguraci pro povolení součásti řešení ve vašem pracovním prostoru Log Analytics.
 
-Pokud nejste obeznámeni s nasazováním prostředků pomocí šablony, naleznete v tématu:
+Pokud si nejste jisti, jak nasadit prostředky pomocí šablony, naleznete v tématu:
 * [Nasazení prostředků pomocí šablon Resource Manageru a Azure PowerShellu](../../azure-resource-manager/resource-group-template-deploy.md)
 * [Nasazení prostředků pomocí šablon Resource Manageru a Azure CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md)
 
-Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte nejprve nainstalovat a používat rozhraní příkazového řádku místně. Musíte používat Azure CLI verze 2.0.27 nebo novější. Zjistěte verzi, spusťte `az --version`. Pokud potřebujete instalaci nebo upgrade rozhraní příkazového řádku Azure, najdete v článku [instalace rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Pokud chcete používat rozhraní příkazového řádku Azure, musíte nejprve nainstalovat a používat rozhraní příkazového řádku místně. Musíte používat Azure CLI verze 2.0.27 nebo novější. Zjistěte verzi, spusťte `az --version`. Pro instalaci nebo upgrade rozhraní příkazového řádku Azure, najdete v článku [instalace rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 ### <a name="create-and-execute-a-template"></a>Vytvoření a provedení šablony
 
@@ -179,7 +179,7 @@ Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte n
     New-AzResourceGroupDeployment -Name DeploySolutions -TemplateFile InstallSolutionsForVMInsights.json -ResourceGroupName ResourceGroupName> -WorkspaceName <WorkspaceName> -WorkspaceLocation <WorkspaceLocation - example: eastus>
     ```
 
-    Změna konfigurace může trvat několik minut. Po dokončení se zobrazí zpráva, která je podobný následujícímu a zahrnuje výsledek:
+    Změna konfigurace může trvat několik minut déle. Když se dokončí, zobrazí se zpráva, která je podobný následujícímu a zahrnuje výsledek:
 
     ```powershell
     provisioningState       : Succeeded
@@ -188,4 +188,9 @@ Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte n
 
 ## <a name="next-steps"></a>Další postup
 
-Teď, když je zapnuté monitorování pro vaše virtuální počítače, tyto informace jsou dostupné pro analýzy a monitorování Azure pro virtuální počítače. Další informace o použití funkce stavu, najdete v článku [zobrazení monitorování Azure pro virtuální počítače stav](vminsights-health.md). Chcete-li zobrazit závislosti zjištěných aplikací, najdete v článku [zobrazení monitorování Azure pro virtuální počítače mapu](vminsights-maps.md). Pokud chcete identifikovat problémová místa a celkové využití výkonu vašich virtuálních počítačů, přečtěte si téma [zobrazení výkonu virtuálních počítačů Azure](vminsights-performance.md), nebo chcete-li zobrazit závislosti zjištěných aplikací, najdete v článku [zobrazení monitorování Azure pro virtuální počítače mapu](vminsights-maps.md).
+Teď, když je zapnuté monitorování pro vaše virtuální počítače, tyto informace jsou dostupné pro analýzy a monitorování Azure pro virtuální počítače.
+ 
+- Další informace o použití funkce stavu, najdete v článku [zobrazení monitorování Azure pro virtuální počítače stav](vminsights-health.md).
+- Chcete-li zobrazit závislosti zjištěných aplikací, najdete v článku [zobrazení monitorování Azure pro virtuální počítače mapu](vminsights-maps.md).
+- Identifikujte kritické body a celkové využití s výkonem Virtuálního počítače, naleznete v tématu [virtuálního počítače Azure zobrazení výkonu](vminsights-performance.md).
+- Chcete-li zobrazit závislosti zjištěných aplikací, najdete v článku [zobrazení monitorování Azure pro virtuální počítače mapu](vminsights-maps.md).

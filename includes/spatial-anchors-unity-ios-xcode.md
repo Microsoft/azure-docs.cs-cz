@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 1/29/2019
 ms.author: rgarcia
 ms.openlocfilehash: e8daaaf5b6b15eb3095f11e94c707a33b4b18e28
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60681193"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67174694"
 ---
 Vyberte **sestavení**. V dialogovém okně, které se otevře vyberte složku pro projekt Xcode pro export.
 
@@ -45,7 +45,7 @@ V části **informace o nasazení**, ujistěte se, že **cíl nasazení** je nas
 
 Připojit zařízení s Iosem do Mac a nastavte **aktivní schéma** na zařízení s Iosem.
 
-![Vybrat zařízení](./media/spatial-anchors-unity/select-device.png)
+![Vyberte zařízení](./media/spatial-anchors-unity/select-device.png)
 
 Vyberte **sestavení a poté spusťte aktuální schéma**.
 

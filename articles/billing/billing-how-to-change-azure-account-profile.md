@@ -14,10 +14,10 @@ ms.date: 04/29/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: f61396d8fb0f02fe77f5ee35560f45a0c4698a10
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65850770"
 ---
 # <a name="change-the-profile-information-for-your-azure-account"></a>Změnit informace profilu pro váš účet Azure
@@ -57,7 +57,7 @@ Z důvodu technická omezení nemůžeme změnit zemi/oblast pro existující ú
 
 Se zobrazí výzva k v [webu Azure portal](https://portal.azure.com) ověření nebo aktualizovat svou e-mailovou adresu každých 90 dní. Microsoft pošle e-mailů vaší e-mailovou adresu profil s Azure informace o účtu pro:
 
-- Oznámení služeb
+- Oznámení služby
 - Výstrahy zabezpečení
 - Fakturační účely
 - Podpora
@@ -76,7 +76,7 @@ Kontaktní e-mailovou adresu můžete změnit pomocí jedné z následujících 
 
 * Přejděte [kontaktní informace](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade) oblast na webu Azure Portal a zadejte e-mailovou adresu. Adresa, které poskytujete obdrží služby a marketingových materiálů. E-mailovou adresu v System Center profilu účtu Azure se aktualizuje tak, aby odpovídaly automaticky. Aktualizuje se profil e-mailovou adresu neaktualizuje přihlašovací e-mailovou adresu.
 
-* V [webu Azure portal](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade), vyberte ikonu s vašimi iniciálami nebo obrázek. Potom vyberte příslušnou kontextovou nabídku (**...** ). V dalším kroku vyberte **Moje kontaktní informace** v nabídce a zadejte e-mailovou adresu. Adresa, které poskytujete obdrží služby a marketingových materiálů. E-mailovou adresu ve vašem profilu účtu centra Azure se aktualizuje tak, aby odpovídaly automaticky. Aktualizuje se profil e-mailovou adresu neaktualizuje přihlašovací e-mailovou adresu.
+* V [webu Azure portal](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade), vyberte ikonu s vašimi iniciálami nebo obrázek. Potom vyberte příslušnou kontextovou nabídku ( **...** ). V dalším kroku vyberte **Moje kontaktní informace** v nabídce a zadejte e-mailovou adresu. Adresa, které poskytujete obdrží služby a marketingových materiálů. E-mailovou adresu ve vašem profilu účtu centra Azure se aktualizuje tak, aby odpovídaly automaticky. Aktualizuje se profil e-mailovou adresu neaktualizuje přihlašovací e-mailovou adresu.
 
 ![Příklad aktualizuje e-mailovou adresu v Azure](./media/billing-how-to-change-azure-account-profile/azure-contact-information.png)
 

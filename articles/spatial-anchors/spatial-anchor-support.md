@@ -9,10 +9,10 @@ ms.date: 02/24/2019
 ms.topic: troubleshooting
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 1930d5fc9dafe7d480302ded9b4e5a86f55a7669
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65964527"
 ---
 # <a name="azure-spatial-anchors-support-options"></a>Možnosti podpory Azure prostorových kotvy
@@ -31,7 +31,7 @@ Chcete otevřít lístek technickou podporu na webu Azure Portal pro Azure prost
 
 1. Při dokončování pole lístku podpory: 
 
-- Typ problému: Technická
+- Typ problému: Technické
 - Služba: Spatial Anchors
 
 ![Pole lístek podpory Azure portal](./media/spatial-anchor-support3.png)

@@ -5,18 +5,15 @@ services: azure-resource-manager,azure-portal
 documentationcenter: ''
 author: mumian
 ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: jgao
-ms.openlocfilehash: 559c1874c119eabef2c35a954961c1e669df3c06
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: bc3c1a05c64edea260bd177dd7eaefc003db5310
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65507230"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67296291"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>Správa skupin prostředků Azure Resource Manageru pomocí webu Azure portal
 
@@ -31,7 +28,7 @@ Další články o správě skupin prostředků:
 
 ## <a name="what-is-a-resource-group"></a>Co je skupina prostředků
 
-Skupina prostředků je kontejner, který uchovává související prostředky pro řešení Azure. Skupina prostředků může zahrnovat všechny prostředky pro řešení nebo pouze ty prostředky, které chcete spravovat jako skupinu. Na základě toho, co je pro vaši organizaci nejvhodnější, rozhodnete, jakým způsobem se mají prostředky přidělovat do skupin prostředků. Obecně platí přidejte prostředky, které sdílejí stejný životní cyklus do stejné skupiny prostředků, takže můžete snadno nasadit, aktualizovat a odstranit jako skupina.
+Skupina prostředků je kontejner, který obsahuje související prostředky pro řešení Azure. Skupina prostředků může zahrnovat všechny prostředky pro řešení nebo pouze ty prostředky, které chcete spravovat jako skupinu. Na základě toho, co je pro vaši organizaci nejvhodnější, rozhodnete, jakým způsobem se mají prostředky přidělovat do skupin prostředků. Obecně platí přidejte prostředky, které sdílejí stejný životní cyklus do stejné skupiny prostředků, takže můžete snadno nasadit, aktualizovat a odstranit jako skupina.
 
 Skupina prostředků ukládá metadata o prostředcích. Při zadávání umístění skupiny prostředků tedy určujete, kde se tato metadata ukládají. Z důvodu dodržování předpisů může být nutné zajistit, aby se data ukládala v určité oblasti.
 
@@ -48,7 +45,7 @@ Skupina prostředků ukládá metadata o prostředcích. Při zadávání umíst
 
    - **Předplatné**: Vyberte své předplatné Azure. 
    - **Skupina prostředků**: Zadejte název nové skupiny prostředků. 
-   - **Oblast**: Vyberte umístění Azure, jako je například **USA (střed)**.
+   - **Oblast**: Vyberte umístění Azure, jako je například **USA (střed)** .
 
      ![Vytvořte skupinu prostředků](./media/manage-resource-groups-portal/manage-resource-groups-create-group.png)
 5. Vyberte **zkontrolovat a vytvořit**
@@ -57,7 +54,7 @@ Skupina prostředků ukládá metadata o prostředcích. Při zadávání umíst
 
     ![Přejděte do skupiny prostředků](./media/manage-resource-groups-portal/manage-resource-groups-add-group-go-to-resource-group.png)
 
-## <a name="list-resource-groups"></a>Vypsat skupiny prostředků
+## <a name="list-resource-groups"></a>Seznam skupin prostředků
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Seznam skupin prostředků, vyberte **skupiny prostředků**
@@ -109,14 +106,6 @@ Můžete provést značky u prostředků a skupin prostředků logicky tak uspo�
 ## <a name="export-resource-groups-to-templates"></a>Export skupiny prostředků do šablon
 
 Informace o exportování šablony najdete v tématu [export jednoho a víc prostředků šablony - Portal](export-template-portal.md).
-
-### <a name="fix-export-issues"></a>Oprava problémů s exportem
-
-Ne všechny typy prostředků podporují funkci exportu šablony. Zobrazí jenom export problémy při exportu ze skupiny prostředků, ne z historie nasazení. Pokud vaše poslední nasazení přesně reprezentuje aktuální stav skupiny prostředků, měli byste šablonu exportovat z historie nasazení, ne ze skupiny zdrojů. Exportujte jenom ze skupiny prostředků po provedení změny do skupiny prostředků, které nejsou definovány v jediné šabloně.
-
-K vyřešení problémů s exportem ručně přidáním chybějících prostředků zpět do šablony. Chybová zpráva obsahuje typy prostředků, které nelze exportovat. Vyhledejte tyto typy prostředků v [referenčních informacích k šablonám](/azure/templates/). Pokud například chcete ručně přidat bránu virtuální sítě, přečtěte si [referenční informace k šablonám o prostředku Microsoft.Network/virtualNetworkGateways](/azure/templates/microsoft.network/virtualnetworkgateways). Referenční dokumentace šablony vám ve formátu JSON, bude příslušný materiál přidán do šablony.
-
-Po získání formátu JSON pro prostředek, potřebujete získat hodnoty prostředků. Hodnoty prostředku můžete zobrazit pomocí operace GET v rozhraní REST API pro typ prostředku. Třeba, abyste získali hodnoty pro příslušnou bránu virtuální sítě, přečtěte si část [brány virtuální sítě – získání](/rest/api/network-gateway/virtualnetworkgateways/get).
 
 ## <a name="manage-access-to-resource-groups"></a>Správa přístupu ke skupinám prostředků
 

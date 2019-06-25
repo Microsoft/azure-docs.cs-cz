@@ -1,24 +1,27 @@
 ---
 title: Nasazení modulu Azure Blob Storage do zařízení – Azure IoT Edge | Dokumentace Microsoftu
 description: Modul služby Azure Blob Storage nasadíte do zařízení IoT Edge k ukládání dat na hraničních zařízeních.
-author: kgremban
-ms.author: kgremban
-ms.date: 05/21/2019
+author: arduppal
+ms.author: arduppal
+ms.date: 06/19/2019
 ms.topic: article
 ms.service: iot-edge
 ms.custom: seodec18
 ms.reviewer: arduppal
-manager: philmea
-ms.openlocfilehash: d844e81de9cfb556e91ab5c0d5a8074c822cce0a
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+manager: mchad
+ms.openlocfilehash: 468e4fca5e67850949e7d5826e4bc88fa504b9d6
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65990471"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295198"
 ---
 # <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>Nasazení Azure Blob Storage na modul IoT Edge do zařízení
 
 Existuje několik způsobů, jak nasadit moduly IoT Edge zařízení a všechny z nich pracovat pro službu Azure Blob Storage na moduly IoT Edge. Tyto dvě metody nejjednodušší jsou pomocí webu Azure portal nebo šablony Visual Studio Code.
+
+> [!NOTE]
+> Azure Blob Storage na hraničních zařízeních IoT je v [ve verzi public preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -88,35 +91,35 @@ Manifest nasazení je dokument JSON, který popisuje, které moduly chcete nasad
      > [!IMPORTANT]
      > Neměňte druhou polovinu adresáře úložiště vytvořit vazbu hodnotu, která odkazuje na konkrétní umístění v modulu. Vazba adresář úložiště by měl končit vždy **: / blobroot** pro kontejnery Linuxu a **: C: / BlobRoot** pro kontejnery Windows.
 
-    ![Aktualizace modulu kontejneru vytvořit možnosti – portál](./media/how-to-store-data-blob/edit-module.png)
-
-1. Nastavte [ovládání datových vrstev na](how-to-store-data-blob.md#tiering-properties) a [time-to-live](how-to-store-data-blob.md#time-to-live-properties) vlastnosti pro modul následující JSON zkopírováním a vložením do **požadované vlastnosti dvojčete modulu sady** pole. Konfigurace jednotlivých vlastností s odpovídající hodnotou, uložit a pokračovat s nasazením.
+1. Nastavte [deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) a [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties) vlastnosti pro modul následující JSON zkopírováním a vložením do **požadované sady dvojče zařízení vlastnosti** pole. Konfigurace jednotlivých vlastností s odpovídající hodnotou, uložit a pokračovat s nasazením.
 
    ```json
    {
      "properties.desired": {
-       "ttlSettings": {
-         "ttlOn": <true, false>,
-         "timeToLiveInMinutes": <timeToLiveInMinutes>
+       "deviceAutoDeleteProperties": {
+         "deleteOn": <true, false>,
+         "deleteAfterMinutes": <timeToLiveInMinutes>,
+         "retainWhileUploading":<true,false>
        },
-       "tieringSettings": {
-         "tieringOn": <true, false>,
-         "backlogPolicy": "<NewestFirst, OldestFirst>",
-         "remoteStorageConnectionString": "DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>; EndpointSuffix=<your end point suffix>",
-         "tieredContainers": {
+       "deviceToCloudUploadProperties": {
+         "uploadOn": <true, false>,
+         "uploadOrder": "<NewestFirst, OldestFirst>",
+         "cloudStorageConnectionString": "DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>; EndpointSuffix=<your end point suffix>",
+         "storageContainersForUpload": {
            "<source container name1>": {
              "target": "<target container name1>"
            }
-         }
+         },
+         "deleteAfterUpload":<true,false>
        }
      }
    }
 
       ```
 
-   ![nastavit vlastnosti vrstvení a time-to-live](./media/how-to-store-data-blob/iotedge_custom_module.png)
+   ![Sada kontejner vytvořit možnosti, deviceAutoDeleteProperties a deviceToCloudUploadProperties vlastnosti](./media/how-to-deploy-blob/iotedge-custom-module.png)
 
-   Informace o konfiguraci ovládání datových vrstev a hodnota TTL po nasazení modulu najdete v tématu [upravit dvojče modulu](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Edit-Module-Twin). Další informace o požadovaných vlastností najdete v tématu [definovat nebo aktualizace požadované vlastnosti](module-composition.md#define-or-update-desired-properties).
+   Informace o konfiguraci deviceToCloudUploadProperties a deviceAutoDeleteProperties po nasazení modulu najdete v tématu [upravit dvojče modulu](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Edit-Module-Twin). Další informace o požadovaných vlastností najdete v tématu [definovat nebo aktualizace požadované vlastnosti](module-composition.md#define-or-update-desired-properties).
 
 1. Vyberte **Uložit**.
 
@@ -157,8 +160,8 @@ Azure IoT Edge poskytuje šablony ve Visual Studio Code a pomohou vám vytvořit
    | ----- | ----- |
    | Vyberte složku | Vyberte umístění na vývojovém počítači pro Visual Studio Code k vytvoření těchto souborů řešení. |
    | Zadejte název řešení | Zadejte popisný název pro vaše řešení nebo přijměte výchozí **EdgeSolution**. |
-   | Vyberte šablonu modulu | Zvolte **existujícímu modulu (úplnou bitovou kopii zadejte adresu URL)**. |
-   | Zadejte název modulu | Zadejte název všechna malá pro modul, jako je třeba **službě Azure BLOB Storage**.<br /><br />Je důležité používat malá písmena název pro službu Azure Blob Storage na modul IoT Edge. IoT Edge je velká a malá písmena, při odkazování na moduly a sady SDK služby Storage výchozí hodnoty na malá písmena. |
+   | Vyberte šablonu modulu | Zvolte **existujícímu modulu (úplnou bitovou kopii zadejte adresu URL)** . |
+   | Zadejte název modulu | Zadejte název všechna malá pro modul, jako je třeba **azureblobstorageoniotedge**.<br /><br />Je důležité používat malá písmena název pro službu Azure Blob Storage na modul IoT Edge. IoT Edge je velká a malá písmena, při odkazování na moduly a sady SDK služby Storage výchozí hodnoty na malá písmena. |
    | Použijte image Dockeru pro modul | Zadejte identifikátor URI image: **mcr.microsoft.com/azure-blob-storage:latest** |
 
    Visual Studio Code přebírá informace k dispozici, vytvoří řešení IoT Edge a nahraje je v novém okně. Šablona řešení vytvoří šablonu manifestu nasazení, která obsahuje bitové kopie modulu úložiště objektů blob, ale je potřeba nakonfigurovat možnosti vytvoření modulu.
@@ -182,7 +185,7 @@ Azure IoT Edge poskytuje šablony ve Visual Studio Code a pomohou vám vytvořit
       }
       ```
 
-      ![Aktualizace modulu CreateOptions field - Visual Studio Code](./media/how-to-store-data-blob/create-options.png)
+      ![Aktualizace modulu CreateOptions field - Visual Studio Code](./media/how-to-deploy-blob/create-options.png)
 
 1. Nahraďte `<your storage account name>` s názvem, které si zapamatujete. Názvy účtů musí být 3 až 24 znaků dlouhá a malá písmena a číslice. Bez mezer.
 
@@ -196,32 +199,34 @@ Azure IoT Edge poskytuje šablony ve Visual Studio Code a pomohou vám vytvořit
       > [!IMPORTANT]
       > Neměňte druhou polovinu adresáře úložiště vytvořit vazbu hodnotu, která odkazuje na konkrétní umístění v modulu. Vazba adresář úložiště by měl končit vždy **: / blobroot** pro kontejnery Linuxu a **: C: / BlobRoot** pro kontejnery Windows.
 
-1. Konfigurace [ovládání datových vrstev na](how-to-store-data-blob.md#tiering-properties) a [time-to-live](how-to-store-data-blob.md#time-to-live-properties) vlastnosti pro modul přidáním následujícího formátu JSON *deployment.template.json* souboru. Nakonfigurujte každou vlastnost s odpovídající hodnotu a uložte soubor.
+1. Konfigurace [deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) a [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties) pro modul přidáním následujícího formátu JSON *deployment.template.json* souboru. Nakonfigurujte každou vlastnost s odpovídající hodnotu a uložte soubor.
 
    ```json
    "<your azureblobstorageoniotedge module name>":{
      "properties.desired": {
-       "ttlSettings": {
-         "ttlOn": <true, false>,
-         "timeToLiveInMinutes": <timeToLiveInMinutes>
+       "deviceAutoDeleteProperties": {
+         "deleteOn": <true, false>,
+         "deleteAfterMinutes": <timeToLiveInMinutes>,
+         "retainWhileUploading": <true, false>
        },
-       "tieringSettings": {
-         "tieringOn": <true, false>,
-         "backlogPolicy": "<NewestFirst, OldestFirst>",
-         "remoteStorageConnectionString": "DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>",
-         "tieredContainers": {
+       "deviceToCloudUploadProperties": {
+         "uploadOn": <true, false>,
+         "uploadOrder": "<NewestFirst, OldestFirst>",
+         "cloudStorageConnectionString": "DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>",
+         "storageContainersForUpload": {
            "<source container name1>": {
              "target": "<target container name1>"
            }
-         }
+         },
+         "deleteAfterUpload": <true, false>
        }
      }
    }
    ```
 
-   ![Nastavte požadované vlastnosti pro azureblobstorageoniotedge – Visual Studio Code](./media/how-to-store-data-blob/tiering_ttl.png)
+   ![Nastavte požadované vlastnosti pro azureblobstorageoniotedge – Visual Studio Code](./media/how-to-deploy-blob/devicetocloud-deviceautodelete.png)
 
-   Informace o konfiguraci ovládání datových vrstev a hodnota TTL po nasazení modulu najdete v tématu [upravit dvojče modulu](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Edit-Module-Twin). Další informace o kontejneru možnosti vytváření, restartování zásad a požadované stavu, najdete v tématu [EdgeAgent požadované vlastnosti](module-edgeagent-edgehub.md#edgeagent-desired-properties).
+   Informace o konfiguraci deviceToCloudUploadProperties a deviceAutoDeleteProperties po nasazení modulu najdete v tématu [upravit dvojče modulu](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Edit-Module-Twin). Další informace o kontejneru možnosti vytváření, restartování zásad a požadované stavu, najdete v tématu [EdgeAgent požadované vlastnosti](module-edgeagent-edgehub.md#edgeagent-desired-properties).
 
 1. Uložte soubor *deployment.template.json*.
 

@@ -9,10 +9,10 @@ ms.date: 05/21/2019
 ms.author: rimman
 ms.reviewer: sngun
 ms.openlocfilehash: dabce19d60a380b47d3583dedb5c11303f416ce7
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65978710"
 ---
 # <a name="connect-a-mongodb-application-to-azure-cosmos-db"></a>Připojení aplikace MongoDB ke službě Azure Cosmos DB
@@ -32,7 +32,7 @@ Tento kurz obsahuje dva způsoby, jak načíst informace o připojovacím řetě
 1. V internetovém prohlížeči, přihlaste se k [webu Azure portal](https://portal.azure.com).
 2. V **služby Azure Cosmos DB** okně vyberte rozhraní API. 
 3. V levém podokně okna účtu klikněte na tlačítko **úvodní**. 
-4. Zvolte vaši platformu (**.NET**, **Node.js**, **MongoDB Shell**, **Java**, **Python**). Pokud se váš ovladač nebo nástroj v seznamu, Nedělejte si starosti – průběžně dokumentujeme další fragmenty kódu pro připojení. Zadejte komentář dole na co chcete zobrazit. Zjistěte, jak vytvořit vlastní připojení, přečtěte si téma [získat informace o připojovacím řetězci účtu](#GetCustomConnection).
+4. Zvolte vaši platformu ( **.NET**, **Node.js**, **MongoDB Shell**, **Java**, **Python**). Pokud se váš ovladač nebo nástroj v seznamu, Nedělejte si starosti – průběžně dokumentujeme další fragmenty kódu pro připojení. Zadejte komentář dole na co chcete zobrazit. Zjistěte, jak vytvořit vlastní připojení, přečtěte si téma [získat informace o připojovacím řetězci účtu](#GetCustomConnection).
 5. Zkopírujte a vložte fragment kódu do své aplikace MongoDB.
 
     ![Okna rychlý start](./media/connect-mongodb-account/QuickStartBlade.png)

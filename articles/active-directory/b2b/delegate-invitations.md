@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 11dda7fc3760f468c094fb4cf4484a27895f83b9
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65812672"
 ---
 # <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>Povolit externí spolupráce B2B a spravovat, kdo může zvát hosty
@@ -48,7 +48,7 @@ Ve výchozím nastavení všichni uživatelé, včetně hostů, můžete pozvat 
    - **Správci a uživatelé v roli odesílatele pozvánky hostů můžou posílat pozvánky**: Povolit správci a uživatelé v roli "Odesílatel pozvánky hostů" zvát hosty, nastavte tuto zásadu na **Ano**.
    - **Členové můžou posílat pozvánky**: Bez oprávnění správce členům zvát hosty do adresáře povolit, nastavte tuto zásadu na **Ano**.
    - **Hosté můžou posílat pozvánky**: Povolit hosté zvát jiné hosty, nastavte tuto zásadu na **Ano**.
-   - **Povolení e-mailu jednorázového hesla pro hosty (Preview)**: Další informace o funkci jednorázové heslo, naleznete v tématu [e-mailu ověřování jednorázovým heslem (preview)](one-time-passcode.md).
+   - **Povolení e-mailu jednorázového hesla pro hosty (Preview)** : Další informace o funkci jednorázové heslo, naleznete v tématu [e-mailu ověřování jednorázovým heslem (preview)](one-time-passcode.md).
    - **Omezení spolupráce**: Další informace o povolení nebo blokování pozvánek na konkrétní domény najdete v tématu [povolení nebo blokování pozvánek uživatelů B2B z konkrétních organizací](allow-deny-list.md).
 
 ## <a name="assign-the-guest-inviter-role-to-a-user"></a>Uživateli přiřadit roli odesílatel pozvánky hostů

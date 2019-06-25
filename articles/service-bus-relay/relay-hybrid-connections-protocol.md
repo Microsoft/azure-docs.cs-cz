@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 05/02/2018
 ms.author: clemensv
 ms.openlocfilehash: e96d0103a03e841f39e8adb88215f6d6e24a305a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60420038"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64706094"
 ---
 # <a name="azure-relay-hybrid-connections-protocol"></a>Azure Relay Hybrid Connections protokolu
 
@@ -155,7 +155,7 @@ Pokud připojení soketu WebSocket se nezdaří z důvodu hybridní připojení.
 
 | Kód | Chyba          | Popis
 | ---- | -------------- | -------------------------------------------------------------------
-| 404  | Nenalezené      | Hybridní připojení. cesta je neplatná nebo základní adresa URL má špatný formát.
+| 404  | Nebyl nalezen      | Hybridní připojení. cesta je neplatná nebo základní adresa URL má špatný formát.
 | 401  | Neautorizováno   | Token zabezpečení je chybějící nebo poškozené nebo neplatné.
 | 403  | Zakázáno      | Token zabezpečení není platný pro tuto cestu pro tuto akci.
 | 500  | Vnitřní chyba | Došlo k chybě služby.
@@ -434,7 +434,7 @@ _Obor názvů adresy_ je plně kvalifikovaný název oboru názvů Azure Relay, 
 
 Možnosti parametr řetězce dotazu se takto:
 
-| Param          | Povinné? | Popis
+| Param          | Požadováno? | Popis
 | -------------- | --------- | -------------------------- |
 | `sb-hc-action` | Ano       | Pro roli odesílatele parametr musí být `sb-hc-action=connect`.
 | `{path}`       | Ano       | (viz následující odstavec)
@@ -453,7 +453,7 @@ Pokud připojení soketu WebSocket se nezdaří z důvodu hybridní připojení.
 
 | Kód | Chyba          | Popis
 | ---- | -------------- | -------------------------------------------------------------------
-| 404  | Nenalezené      | Hybridní připojení. cesta je neplatná nebo základní adresa URL má špatný formát.
+| 404  | Nebyl nalezen      | Hybridní připojení. cesta je neplatná nebo základní adresa URL má špatný formát.
 | 401  | Neautorizováno   | Token zabezpečení je chybějící nebo poškozené nebo neplatné.
 | 403  | Zakázáno      | Token zabezpečení není platná pro tuto cestu a pro tuto akci.
 | 500  | Vnitřní chyba | Došlo k chybě služby.
@@ -482,7 +482,7 @@ _Obor názvů adresy_ je plně kvalifikovaný název oboru názvů Azure Relay, 
 
 Možnosti parametr řetězce dotazu se takto:
 
-| Param          | Povinné? | Popis
+| Param          | Požadováno? | Popis
 | -------------- | --------- | ---------------- |
 | `sb-hc-token`  | Ano\*     | Naslouchací proces musíte zadat platný, kódovaná adresou URL služby Service Bus sdílí přístup Token pro obor názvů nebo hybridní připojení, která uděluje **odeslat** vpravo.
 
@@ -491,7 +491,7 @@ Token se také dá provést buď `ServiceBusAuthorization` nebo `Authorization` 
 Protože služba efektivně funguje jako proxy server, i v případě, nikoli jako true proxy server HTTP, buď přidá `Via` záhlaví nebo označí existující `Via` záhlaví kompatibilní s [RFC7230, část 5.7.1](https://tools.ietf.org/html/rfc7230#section-5.7.1).
 Služba přidá název hostitele obor názvů Relay k `Via`.
 
-| Kód | Zpráva  | Popis                    |
+| Kód | Message  | Popis                    |
 | ---- | -------- | ------------------------------ |
 | 200  | OK       | Žádost byla zpracována alespoň jeden naslouchací proces.  |
 | 202  | Přijato | Žádost byla přijata alespoň jeden naslouchací proces. |
@@ -500,12 +500,12 @@ Pokud dojde k chybě, můžete službu odpovědět následujícím způsobem. Ur
 
 | Kód | Chyba           | Popis
 | ---- | --------------- |--------- |
-| 404  | Nenalezené       | Hybridní připojení. cesta je neplatná nebo základní adresa URL má špatný formát.
+| 404  | Nebyl nalezen       | Hybridní připojení. cesta je neplatná nebo základní adresa URL má špatný formát.
 | 401  | Neautorizováno    | Token zabezpečení je chybějící nebo poškozené nebo neplatné.
 | 403  | Zakázáno       | Token zabezpečení není platná pro tuto cestu a pro tuto akci.
 | 500  | Vnitřní chyba  | Došlo k chybě služby.
 | 503  | Chybná brána     | Požadavek nešlo směrován na jakékoli naslouchacího procesu.
-| 504  | Časový limit brány | Žádost byla směrována do naslouchacího procesu, ale naslouchací proces neuznal příjmu v požadovaném čase.
+| 504  | Vypršel časový limit brány | Žádost byla směrována do naslouchacího procesu, ale naslouchací proces neuznal příjmu v požadovaném čase.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -10,10 +10,10 @@ ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
 ms.openlocfilehash: 7bc7f3631748f4ac74a76e9e67aa2aef2c8f9a71
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66480322"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Řešení potíží s Azure Files problémy ve Windows
@@ -30,7 +30,7 @@ Při pokusu o připojení sdílené složky, může dojít k následující chyb
 
 - Došlo k systémové chybě 5. Přístup byl zamítnut.
 
-### <a name="cause-1-unencrypted-communication-channel"></a>1. příčina: Nešifrovaná komunikace kanálu
+### <a name="cause-1-unencrypted-communication-channel"></a>1\. příčina: Nešifrovaná komunikace kanálu
 
 Z bezpečnostních důvodů připojení sdílených složek Azure jsou blokovány, pokud není šifrovaný komunikační kanál, a pokud se pokus o připojení není proveden ze stejné datové centrum, kde jsou umístěné sdílených složek Azure. Nezašifrované připojení ve stejném datacentru je taky možné zablokovat Pokud [vyžadovat zabezpečený přenos](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) pro účet úložiště je povolené nastavení. Šifrovaný komunikační kanál je k dispozici pouze v případě, že uživatele klientský operační systém podporuje šifrování protokolu SMB.
 
@@ -41,7 +41,7 @@ Windows 8, Windows Server 2012 a novějších verzích každý systém vyjednáv
 1. Připojení z klienta, který podporuje šifrování protokolu SMB (Windows 8, Windows Server 2012 nebo novější) nebo z virtuálního počítače ve stejném datacentru jako účet služby Azure storage, který se používá pro sdílenou složku Azure připojit.
 2. Ověřte, [vyžadovat zabezpečený přenos](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) nastavení je zakázaný v účtu úložiště, pokud klient nepodporuje šifrování protokolu SMB.
 
-### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>2. příčina: Pravidla virtuální sítě nebo brány firewall jsou povolené v účtu úložiště 
+### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>2\. příčina: Pravidla virtuální sítě nebo brány firewall jsou povolené v účtu úložiště 
 
 Pokud virtuální síť (VNET) a pravidla brány firewall jsou nakonfigurované v účtu úložiště, síťový provoz bude odepřen přístup Pokud IP adresa klienta nebo virtuální sítě je povolený přístup.
 
@@ -58,7 +58,7 @@ Při pokusu o připojení sdílené složky v místním nebo z jiného datového
 - Došlo k systémové chybě 67. Název sítě se nenašel.
 - Došlo k systémové chybě 87. Parametr je nesprávný.
 
-### <a name="cause-1-port-445-is-blocked"></a>1. příčina: Port 445 blokovaný.
+### <a name="cause-1-port-445-is-blocked"></a>1\. příčina: Port 445 blokovaný.
 
 Systémová chyba 53 nebo 67 systémové chybě může dojít, pokud 445 odchozí komunikace přes port na datové centrum Azure Files je blokovaná. Chcete-li zobrazit souhrn poskytovatelů internetových služeb, které povolí nebo zakáže přístup z portu 445, přejděte na [TechNet](https://social.technet.microsoft.com/wiki/contents/articles/32346.azure-summary-of-isps-that-allow-disallow-access-from-port-445.aspx).
 
@@ -109,7 +109,7 @@ Práce s oddělením IT nebo poskytovatele internetových služeb pro otevření
 Služba soubory Azure podporuje také REST kromě protokolu SMB. Přístup REST funguje přes port 443 (standardní tcp). Existují různé nástroje, které jsou napsané pomocí rozhraní REST API, které umožňují bohaté možnosti uživatelského rozhraní. [Průzkumník služby Storage](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows) je jedním z nich. [Stažení a instalace Storage Exploreru](https://azure.microsoft.com/features/storage-explorer/) a připojení ke sdílené složce se opírá o službě soubory Azure. Můžete také použít [Powershellu](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-powershell) které také uživatelské rozhraní REST API.
 
 
-### <a name="cause-2-ntlmv1-is-enabled"></a>2. příčina: NTLMv1 je povolená.
+### <a name="cause-2-ntlmv1-is-enabled"></a>2\. příčina: NTLMv1 je povolená.
 
 Systémová chyba 53 nebo systémové chybě 87 může dojít, pokud je povolená komunikace NTLMv1 na straně klienta. Služba soubory Azure podporuje jenom ověřování NTLMv2. S NTLMv1 povolené vytvoří klienta méně bezpečné. Proto se zablokovat komunikaci pro soubory Azure. 
 
@@ -144,13 +144,13 @@ Při procházení sdílené složky Azure na portálu může zobrazit následuj�
 Selhání autorizace  
 Nemáte přístup 
 
-### <a name="cause-1-your-user-account-does-not-have-access-to-the-storage-account"></a>1. příčina: Váš uživatelský účet nemá přístup k účtu úložiště
+### <a name="cause-1-your-user-account-does-not-have-access-to-the-storage-account"></a>1\. příčina: Váš uživatelský účet nemá přístup k účtu úložiště
 
 ### <a name="solution-for-cause-1"></a>Řešení příčiny 1
 
 Přejděte do účtu úložiště, kde se nachází sdílená složka Azure, klikněte na tlačítko **řízení přístupu (IAM)** a ověřte váš uživatelský účet má přístup k účtu úložiště. Další informace najdete v tématu [jak zabezpečit svůj účet úložiště pomocí řízení přístupu na základě Role (RBAC)](https://docs.microsoft.com/azure/storage/common/storage-security-guide#how-to-secure-your-storage-account-with-role-based-access-control-rbac).
 
-### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>2. příčina: Pravidla virtuální sítě nebo brány firewall jsou povolené v účtu úložiště
+### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>2\. příčina: Pravidla virtuální sítě nebo brány firewall jsou povolené v účtu úložiště
 
 ### <a name="solution-for-cause-2"></a>Řešení příčiny 2
 

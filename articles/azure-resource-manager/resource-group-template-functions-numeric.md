@@ -1,25 +1,17 @@
 ---
 title: Azure Resource Manageru šablony funkce – číselné | Dokumentace Microsoftu
 description: Popisuje funkce pro použití v šabloně Azure Resource Manageru pro práci s čísly.
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
-ms.assetid: ''
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/08/2017
 ms.author: tomfitz
-ms.openlocfilehash: 5ed3a0a57dad61a5fe783790eba4cb89ce19c660
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f63ce16369fd1ff58d5368b43c3c730008e63d9a
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66128648"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206421"
 ---
 # <a name="numeric-functions-for-azure-resource-manager-templates"></a>Numerické funkce pro šablony Azure Resource Manageru
 
@@ -40,7 +32,7 @@ Resource Manager poskytuje následující funkce pro práci s celými čísly:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="add"></a>přidat
+## <a name="add"></a>add
 `add(operand1, operand2)`
 
 Vrací součet dvou celých čísel zadaná.
@@ -121,7 +113,7 @@ Vrátí index iterace smyčky.
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
 | loopName | Ne | string | Název smyčky pro získání iterace. |
-| Posun |Ne |int |Číslo, které má přidat do iterace založený na nule hodnoty. |
+| offset |Ne |int |Číslo, které má přidat do iterace založený na nule hodnoty. |
 
 ### <a name="remarks"></a>Poznámky
 
@@ -386,7 +378,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="min" />
 
-## <a name="min"></a>min.
+## <a name="min"></a>min
 `min (arg1)`
 
 Vrátí minimální hodnotu z pole celých čísel nebo čárkami oddělený seznam celých čísel.
@@ -591,7 +583,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="sub" />
 
-## <a name="sub"></a>Sub
+## <a name="sub"></a>sub
 `sub(operand1, operand2)`
 
 Vrátí odečtení dvou celých čísel zadaná.

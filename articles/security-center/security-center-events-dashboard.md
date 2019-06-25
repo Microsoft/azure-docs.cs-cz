@@ -14,25 +14,26 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/05/2017
 ms.author: rkarlin
-ms.openlocfilehash: 01f6da4f5ad6b618c444949fce8d2b7aa3367e17
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: bc0fd83bd45e7c5c671b387d124cdddc75244ade
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60705082"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64573523"
 ---
 # <a name="monitoring-and-processing-security-events-in-azure-security-center"></a>Sledování a zpracování událostí zabezpečení v Azure Security Center
 Řídicí panel události poskytuje přehled o počet událostí zabezpečení, které jsou shromážděné v průběhu času a seznam významné události, které mohou vyžadovat vaši pozornost.  
 
 > [!NOTE]
-> Pro tuto funkci používat, musí váš pracovní prostor v nich běžet Log Analytics verze 2 a je na Security Center úrovně Standard. Zobrazit Security Center [stránce s cenami](security-center-pricing.md) Další informace o úrovni Standard.
->
->
+> Řídicí panel události zabezpečení se vyřadí dne 31. května 2019. Další informace a alternativní služby najdete v tématu [vyřazení Security Center nabízí (červenec 2019)](security-center-features-retirement-july2019.md#menu_events).
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="what-is-a-security-event"></a>Co je událost zabezpečení?
 Security Center používá agenta Microsoft Monitoring Agent shromažďovat různé zabezpečení související s konfigurací a události z vašeho počítače a uloží tyto události v pracovních prostorech. Příkladem takových dat jsou: protokoly operačního systému (protokoly událostí Windows), spuštění procesů a události z řešení zabezpečení integrované pomocí služby Security Center. Microsoft Monitoring Agent také do vašich pracovní prostorů zkopíruje soubory se stavem systému.
+
+## <a name="requirements"></a>Požadavky
+Pro tuto funkci používat, musí váš pracovní prostor v nich běžet Log Analytics verze 2 a je na Security Center úrovně Standard. Zobrazit Security Center [stránce s cenami](security-center-pricing.md) Další informace o úrovni Standard.
 
 ## <a name="events-processed-dashboard"></a>Řídicí panel události byly zpracovány
 Přístup **události** řídicího panelu z hlavní nabídky služby Security Center nebo Security Center **přehled** okno.  

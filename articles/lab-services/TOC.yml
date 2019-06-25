@@ -50,6 +50,10 @@
       items:
         - name: Koncepce DevTest Labs
           href: devtest-lab-concepts.md
+        - name: Osvědčené postupy pro distribuovaný vývoj založený na spolupráci
+          href: best-practices-distributive-collaborative-development-environment.md
+        - name: Integrace s Azure DevOps
+          href: devtest-lab-dev-ops.md
         - name: Scénáře
           items:
             - name: Oblíbené scénáře použití DevTest Labs
@@ -92,6 +96,8 @@
               href: classroom-labs/how-to-use-shared-image-gallery.md
             - name: Povolení připojení ke vzdálené ploše pro Linux
               href: classroom-labs/how-to-enable-remote-desktop-linux.md
+            - name: Nastavení nebo resetování hesel pro virtuální počítače
+              href: classroom-labs/how-to-set-virtual-machine-passwords.md
     - name: DevTest Labs
       items:
         - name: Určení skupiny prostředků pro virtuální počítače testovacího prostředí
@@ -106,6 +112,8 @@
           href: personal-data-delete-export.md
         - name: Import virtuálních počítačů z jiného testovacího prostředí
           href: import-virtual-machines-from-another-lab.md
+        - name: Konfigurace testovacího prostředí pro použití brány vzdálené plochy
+          href: configure-lab-remote-desktop-gateway.md
         - name: Vytvoření objektu pro vytváření imagí
           href: image-factory-create.md
           items:

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 6/13/2019
 ms.author: victorh
-ms.openlocfilehash: 7cf6b4984f3941da3b2cd0e4eada5eb1d87f2b01
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6aad0502b5739906d1fa8fa896f8d0af8cc38e30
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67054745"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205002"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Automatické škálování a zónově redundantní služba Application Gateway v2 
 
@@ -24,7 +24,7 @@ Nové SKU v2 zahrnuje následující vylepšení:
 - **Zóna redundance**: Application Gateway nebo nasazení WAF může zahrnovat více zón dostupnosti, není potřeba zřizovat samostatných instancí Application Gateway v každé zóně s Traffic Managerem. Můžete zónu jednoho nebo několika zónami, ve které jsou nasazené instance aplikační brány, díky tomu odolnější vůči selhání zóny. Fond back-endu pro aplikace můžete podobně distribuované napříč zónami dostupnosti.
 
   Redundanci zón je k dispozici, pouze pokud Azure nejsou k dispozici zóny. V jiných oblastech jsou podporovány všechny ostatní funkce. Další informace najdete v tématu [co jsou zóny dostupnosti v Azure?](../availability-zones/az-overview.md#services-support-by-region)
-- **Virtuální IP adresy statické**: Application gateway v2 skladová položka podporuje statické virtuální IP adresy zadejte výhradně. Tím se zajistí, že nedojde ke změně virtuální IP adresy přidružené k službě application gateway pro životní cyklus nasazení, i po restartování počítače.
+- **Virtuální IP adresy statické**: SKU brány v2 aplikace podporuje výhradně statického typu virtuálních IP adres. Tím se zajistí, že nedojde ke změně virtuální IP adresa přidružená k bráně aplikace pro životní cyklus nasazení, i po restartování počítače.  Není statické virtuální IP adresy ve verzi 1, adresa URL aplikace brány je nutné použít místo IP adresy pro doménu směrování názvů App Services přes application gateway.
 - **Přepište záhlaví**: Služba Application Gateway umožňuje přidat, odebrat nebo aktualizovat hlavičky požadavku a odpovědi protokolu HTTP s v2 SKU. Další informace najdete v tématu [hlavičky HTTP přepsat pomocí služby Application Gateway](rewrite-http-headers.md)
 - **Integrace se službou Key Vault (preview)** : Application Gateway v2 podporuje integraci se službou Key Vault (ve verzi public preview) pro certifikáty serveru, které jsou připojeny k naslouchací procesy HTTPS povolené. Další informace najdete v tématu [ukončení protokolu SSL s využitím služby Key Vault certifikátů](key-vault-certs.md).
 - **Azure Kubernetes Service příchozího přenosu dat kontroler (preview)** : Kontroler příchozího přenosu dat v2 Application Gateway umožňuje Azure Application Gateway má být použit jako příchozího přenosu dat pro Azure Kubernetes Service (AKS) označuje jako clusteru AKS. Další informace najdete v tématu [stránky dokumentace](https://azure.github.io/application-gateway-kubernetes-ingress/).
@@ -42,7 +42,7 @@ Standard_v2 a WAF_v2 SKU je k dispozici v následujících oblastech: USA (stře
 Cenový model s v2 SKU doprovází využití a je již připojen k instanci počtu nebo velikosti. Ceny SKU v2 má dvě součásti:
 
 - **Pevná cena** – Toto je po hodinách (nebo hodiny) cenu za zřízení Standard_v2 nebo WAF_v2 brány.
-- **Cena ze jednotku kapacity** – to je založené na spotřebě náklady, které se účtuje pevný náklady. Poplatek za jednotku kapacity se také počítá hodinové nebo jeho část každou hodinu. Existují tři dimenze na kapacitní jednotky – výpočetní jednotku, trvalé připojení a propustnosti. Výpočetní jednotka je míra využité kapacity procesoru. Faktory ovlivňující výpočetní jednotka jsou TLS připojení za sekundu, přepisování adres URL výpočty a zpracování pravidla WAF. Trvalé připojení je míra navázané připojení TCP ke službě application gateway v daném fakturačním intervalu. Propustnost je průměrná megabity/sec zpracovaných v daném fakturačním intervalu.
+- **Cena ze jednotku kapacity** – to je založené na spotřebě náklady, které se účtuje pevný náklady. Poplatek za jednotky kapacity se počítá po hodinách nebo částečně po hodinách. Jednotka kapacity má tři dimenze – výpočetní jednotka, trvalá připojení a propustnost. Výpočetní jednotka měří spotřebovanou kapacitu procesoru. Faktory ovlivňující výpočetní jednotka jsou TLS připojení za sekundu, přepisování adres URL výpočty a zpracování pravidla WAF. Trvalé připojení je míra navázané připojení TCP ke službě application gateway v daném fakturačním intervalu. Propustnost je průměrná megabity/sec zpracovaných v daném fakturačním intervalu.
 
 Každá Kapacitní jednotka se skládá z nejvíce: 1 výpočetní jednotku, nebo 2 500 trvalá připojení nebo propustnost 2.22 MB/s.
 

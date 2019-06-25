@@ -7,12 +7,12 @@ ms.date: 05/06/2019
 ms.topic: overview
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 9d3385b688208065e5854b6358819b5afad8fe65
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 4724789dd1a0893c5ef4ab112306c185f0e87da7
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66162079"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274376"
 ---
 # <a name="overview-of-the-azure-resource-graph-service"></a>Přehled služby Azure Graph prostředků
 
@@ -71,7 +71,7 @@ Prostředek grafu omezuje dotazy na úrovni uživatele. Odpověď služby obsahu
 - `x-ms-user-quota-remaining` (int): Zbývající kvóta zdrojů pro uživatele. Tato hodnota se mapuje na počet dotazů.
 - `x-ms-user-quota-resets-after` (hh:mm:ss): Doba trvání, dokud se resetuje využití kvóty uživatele
 
-Další informace najdete v tématu [požadavky omezení využití sítě Správce prostředků](../../azure-resource-manager/resource-manager-request-limits.md).
+Další informace najdete v tématu [pokyny pro omezené požadavky](./concepts/guidance-for-throttled-requests.md).
 
 ## <a name="running-your-first-query"></a>Spusťte váš první dotaz
 

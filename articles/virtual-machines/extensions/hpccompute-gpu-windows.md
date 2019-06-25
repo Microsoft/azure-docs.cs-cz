@@ -37,9 +37,9 @@ Toto rozšíření podporuje následující OSs:
 
 | Distribuce | Version |
 |---|---|
-| Windows 10 (až do verze 1803)| Jádro |
-| Windows Server 2016 | Jádro |
-| Windows Server 2012R2 | Jádro |
+| Windows 10 (až do verze 1803)| Core |
+| Windows Server 2016 | Core |
+| Windows Server 2012R2 | Core |
 
 ### <a name="internet-connectivity"></a>Připojení k internetu
 

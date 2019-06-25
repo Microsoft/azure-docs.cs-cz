@@ -9,10 +9,10 @@ ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 03/01/2017
 ms.openlocfilehash: 14908225e78b79cb748e712ae23643ddde4a4242
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60813548"
 ---
 # <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>Spuštění a testování U-SQL s Azure Data Lake U-SQL SDK
@@ -344,7 +344,7 @@ veřejné LocalRunHelper ([System.IO.TextWriter messageOutput = null])
 |CodeBehindReferences|string|Pokud tento skript má další kódu na pozadí odkazy, zadejte cesty odděleny ";"|
 |CppSdkDir|string|CppSDK adresáře|
 |CurrentDir|string|Aktuální adresář|
-|Kořenová datová složka|string|Kořenová cesta dat|
+|DataRoot|string|Kořenová cesta dat|
 |DebuggerMailPath|string|Cesta k zásuvky pošty ladicího programu|
 |GenerateUdoRedirect|bool|Pokud chcete generovat načítání přesměrování přepsání konfigurace sestavení|
 |HasCodeBehind|bool|Pokud tento skript má kódu na pozadí|
@@ -362,9 +362,9 @@ veřejné LocalRunHelper ([System.IO.TextWriter messageOutput = null])
 |WorkDir|string|Upřednostňované pracovní adresář|
 
 
-**Metoda**
+**– Metoda**
 
-|Metoda|Popis|Návrat|Parametr|
+|Metoda|Popis|Vrátí|Parametr|
 |------|-----------|------|---------|
 |public bool DoCompile()|Kompilace skriptu U-SQL|Hodnota TRUE v případě úspěchu| |
 |veřejné bool DoExec()|Spuštění zkompilovaného výsledku|Hodnota TRUE v případě úspěchu| |
@@ -374,7 +374,7 @@ veřejné LocalRunHelper ([System.IO.TextWriter messageOutput = null])
 
 ## <a name="faq-about-common-issue"></a>Nejčastější dotazy týkající se běžných potíží
 
-### <a name="error-1"></a>1. Chyba:
+### <a name="error-1"></a>1\. Chyba:
 E_CSC_SYSTEM_INTERNAL: Vnitřní chyba! Nepovedlo se načíst soubor nebo sestavení 'ScopeEngineManaged.dll' nebo některou z jeho závislostí. Zadaný modul nebyl nalezen.
 
 Zkontrolujte prosím následující:

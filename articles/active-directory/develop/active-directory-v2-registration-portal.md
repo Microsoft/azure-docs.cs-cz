@@ -19,10 +19,10 @@ ms.reviewer: lenalepa
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ec615e1c6229539958f66d0dca15cf7eb788e597
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65546102"
 ---
 # <a name="app-registration-reference"></a>Reference k registraci aplikací
@@ -40,7 +40,7 @@ Tento seznam obsahuje všechny vaše aplikace zaregistrovaná pro použití ke k
 ## <a name="live-sdk-applications"></a>Aplikace sady Live SDK
 Tento seznam obsahuje všechny vaše aplikace zaregistrovaná pro použití výhradně pomocí účtu Microsoft. Nejsou povoleny pro použití se službou Azure Active Directory. To je, kde můžete najít všechny aplikace, které byly zaregistrovány pomocí portálu pro vývojáře MSA na `https://account.live.com/developers/applications`. Všechny funkce, které jste provedli dříve na `https://account.live.com/developers/applications` se teď dá provádět na tomto novém portálu `https://apps.dev.microsoft.com`.
 
-## <a name="application-secrets"></a>Tajné kódy aplikace
+## <a name="application-secrets"></a>Tajných klíčů aplikací
 Tajné kódy aplikace jsou přihlašovací údaje, které umožňují aplikaci provádět spolehlivé [ověření klienta](https://tools.ietf.org/html/rfc6749#section-2.3) s Azure AD. V OAuth a OpenID Connect, tajný klíč aplikace se obvykle označuje jako `client_secret`. V protokolu v2.0, všechny aplikace, která přijímá token zabezpečení do adresovatelného umístění webové (pomocí `https` schéma) musíte použít tajný klíč aplikace identifikuje do služby Azure AD po uplatnění tohoto tokenu zabezpečení. Nativního klienta, které přijímá tokeny na zařízení se navíc je zakázané používat tajný klíč aplikace k ověřování klienta. To odrazuje od úložiště tajných kódů v nezabezpečené prostředí.
 
 Každá aplikace může obsahovat dva tajné kódy platnou aplikaci v daném okamžiku. Udržovat dva tajné kódy, máte možnost provádět pravidelné výměny klíčů napříč celým prostředím vaší aplikace. Až provedete migraci celé vaší aplikace na nový tajný kód, můžete odstranit staré tajného kódu a zřízení nového.
@@ -49,7 +49,7 @@ V tuto chvíli v portálu pro registraci aplikace jsou povoleny pouze dva druhy 
 Je potřeba nahrát certifikát, který obsahuje veřejný klíč.
 
 ## <a name="profile"></a>Profil
-Profil části portálu pro registraci aplikace je možné přizpůsobit přihlašovací stránku vaší aplikace. V tuto chvíli je možné změnit logo aplikace stránky přihlášení, podmínky adresa URL služby a adresu URL prohlášení o ochraně osobních údajů. Logo musí být průhledný obrázek 48×48 nebo 50×50 pixelů v souboru GIF, PNG nebo JPEG o velikosti 15 kB a míň. Zkuste změna hodnot a zobrazení výsledné přihlašovací stránky!
+Profil části portálu pro registraci aplikace je možné přizpůsobit přihlašovací stránku vaší aplikace. V tuto chvíli je možné změnit logo aplikace stránky přihlášení, podmínky adresa URL služby a adresu URL prohlášení o ochraně osobních údajů. Logo musí být transparentní 48 × 48 nebo 50 × 50 pixelů bitové kopie v souboru GIF, PNG nebo JPEG, který je 15 KB nebo menší. Zkuste změna hodnot a zobrazení výsledné přihlašovací stránky!
 
 ## <a name="live-sdk-support"></a>Živá podpora SDK
 Když povolíte "podporu SDK Live", všechny tajné kódy aplikace vytvoříte, se zřídí do Azure AD a Microsoft Account datových úložišť. To umožňuje vaší aplikaci integrují přímo se službou Microsoft Account (login.live.com). Pokud chcete vytvořit aplikaci pomocí Microsoft Account přímo (na rozdíl od použití koncového bodu Azure AD v2.0), by se zkontrolujte, zda že je povolena podpora Live SDK.

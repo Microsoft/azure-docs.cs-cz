@@ -11,10 +11,10 @@ ms.topic: article
 ms.assetid: f169c411-1bd7-4554-80c1-84351247bf94
 ms.date: 01/27/2017
 ms.openlocfilehash: 180d90450497b38f107f3601944385a003f50282
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60845779"
 ---
 # <a name="create-schemas-for-tracking-as2-messages-and-mdns-in-integration-accounts-for-azure-logic-apps"></a>Vytvoření schémat pro sledování zpráv AS2 a něho v integračních účtů pro Azure Logic Apps
@@ -76,7 +76,7 @@ Ke sledování úspěšnosti, chyby a vlastnosti zprávy pro transakce business-
 | outgoingHeaders |Slovník JToken | Odchozí podrobnosti záhlaví zprávy AS2. (Volitelné) |
 | isNrrEnabled | Boolean | Používejte výchozí hodnotu, pokud hodnota není známá. (Povinné) |
 | isMdnExpected | Boolean | Používejte výchozí hodnotu, pokud hodnota není známá. (Povinné) |
-| mdnType | Výčet | Povolené hodnoty jsou **NotConfigured**, **synchronizace**, a **asynchronní**. (Povinné) |
+| mdnType | Enum | Povolené hodnoty jsou **NotConfigured**, **synchronizace**, a **asynchronní**. (Povinné) |
 ||||
 
 ## <a name="as2-mdn-tracking-schema"></a>Schéma sledování AS2 MDN
@@ -123,8 +123,8 @@ Ke sledování úspěšnosti, chyby a vlastnosti zprávy pro transakce business-
 | isMessageFailed |Boolean | Určuje, zda zpráva AS2 se nepodařilo. (Povinné) |
 | isMessageSigned |Boolean | Určuje, zda byl podepsán zpráva AS2. (Povinné) |
 | isNrrEnabled | Boolean | Používejte výchozí hodnotu, pokud hodnota není známá. (Povinné) |
-| statusCode | Výčet | Povolené hodnoty jsou **přijato**, **Odmítnuto**, a **AcceptedWithErrors**. (Povinné) |
-| micVerificationStatus | Výčet | Povolené hodnoty jsou **NotApplicable**, **Succeeded**, a **neúspěšné**. (Povinné) |
+| statusCode | Enum | Povolené hodnoty jsou **přijato**, **Odmítnuto**, a **AcceptedWithErrors**. (Povinné) |
+| micVerificationStatus | Enum | Povolené hodnoty jsou **NotApplicable**, **Succeeded**, a **neúspěšné**. (Povinné) |
 | correlationMessageId | String | ID korelace. Původní messaged ID (ID zprávy, pro který je nakonfigurovaný zprávy MDN. zprávy). (Volitelné) |
 | incomingHeaders | Slovník JToken | Určuje podrobnosti záhlaví příchozí zprávy. (Volitelné) |
 | outgoingHeaders |Slovník JToken | Určuje podrobnosti odchozí záhlaví zprávy. (Volitelné) |
