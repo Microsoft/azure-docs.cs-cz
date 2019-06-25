@@ -151,7 +151,7 @@ Pomocí `AADClientCertificate`:
 | EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | string | 
 | KeyEncryptionAlgorithm | "RSA OAEP", "RSA 256 OAEP", "RSA1_5. | string |
 | KeyEncryptionKeyURL | url | string |
-| (volitelné) KeyVaultURL | url | string |
+| KeyVaultURL | url | string |
 | Passphrase | password | string | 
 | SequenceVersion | uniqueidentifier | string |
 | VolumeType | Operačního systému, dat, všechny | string |
