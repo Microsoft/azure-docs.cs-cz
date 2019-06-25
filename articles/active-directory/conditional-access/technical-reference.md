@@ -150,7 +150,7 @@ Chrome podpoře v **Windows 8.1 a 7**, vytvořte následující klíč registru:
 |    |    |
 | --- | --- |
 | `Path` | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
-| Název | 1 |
+| Name | 1 |
 | Type | REG_SZ (String) |
 | Data | {"vzor": "https://device.login.microsoftonline.com filtr","": {"VYSTAVITELE": {"CN": "MS-organizace přístup"}}} |
 
