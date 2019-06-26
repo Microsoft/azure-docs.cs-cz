@@ -325,9 +325,9 @@ Každý vstupní parametr je definován vlastností v následující tabulce:
 | Vlastnost | Popis |
 |:--- |:--- |
 | Name |Jedinečný název parametru. To může obsahovat jenom alfanumerické znaky a nesmí obsahovat mezery. |
-| Popis |Volitelný popis pro vstupní parametr. |
+| Description |Volitelný popis pro vstupní parametr. |
 | Type |Datový typ, očekávání pro hodnotu parametru. Na webu Azure portal poskytuje vhodný ovládací prvek pro datový typ pro každý parametr při zobrazení výzvy ke vstupu. |
-| Povinné |Určuje, zda je nutné zadat hodnotu pro parametr. Sadu runbook nelze spustit, pokud nezadáte hodnotu pro každý povinný parametr, který nemá výchozí hodnotu definovanou. |
+| Mandatory |Určuje, zda je nutné zadat hodnotu pro parametr. Sadu runbook nelze spustit, pokud nezadáte hodnotu pro každý povinný parametr, který nemá výchozí hodnotu definovanou. |
 | Výchozí hodnota |Určuje, jaká hodnota se používá pro parametr, pokud není zadáno. To může být buď Null, nebo konkrétní hodnotu. |
 
 ### <a name="runbook-output"></a>Výstup runbooku
