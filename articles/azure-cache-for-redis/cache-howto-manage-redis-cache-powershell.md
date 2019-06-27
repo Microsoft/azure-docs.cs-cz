@@ -127,17 +127,17 @@ Následující tabulka obsahuje vlastnosti a popisy pro běžně používané pa
 
 | Parametr | Popis | Výchozí |
 | --- | --- | --- |
-| Název |Název mezipaměti | |
+| Name |Název mezipaměti | |
 | Location |Umístění mezipaměti | |
 | ResourceGroupName |Název skupiny prostředků, ve kterém chcete vytvořit mezipaměť | |
-| Velikost |Velikost mezipaměti. Platné hodnoty jsou: P1, P2, P3, P4, C0, C1, C2, C3, C4, C5, C6, 250MB, 1GB, 2,5 GB, 6 GB, 13 GB, 26 GB, 53 GB |1GB |
+| Size |Velikost mezipaměti. Platné hodnoty jsou: P1, P2, P3, P4, C0, C1, C2, C3, C4, C5, C6, 250MB, 1GB, 2,5 GB, 6 GB, 13 GB, 26 GB, 53 GB |1GB |
 | ShardCount |Počet horizontálních oddílů k vytvoření při vytváření cache ve verzi premium s aktivovaným clusteringem. Platné hodnoty jsou: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 | |
-| Skladová jednotka (SKU) |Určuje skladovou Položku mezipaměti. Platné hodnoty jsou: Basic, Standard a Premium |Standard |
+| SKU |Určuje skladovou Položku mezipaměti. Platné hodnoty jsou: Basic, Standard a Premium |Standard |
 | RedisConfiguration |Určuje nastavení konfigurace Redis. Podrobnosti o každém nastavení, naleznete na následujícím [RedisConfiguration vlastnosti](#redisconfiguration-properties) tabulky. | |
 | EnableNonSslPort |Určuje, zda je povoleno port bez SSL. |False |
 | MaxMemoryPolicy |Tento parametr se již nepoužívá – místo toho použijte RedisConfiguration. | |
 | StaticIP |Při hostování mezipaměti ve virtuální síti, určuje jedinečnou IP adresu v podsíti pro ukládání do mezipaměti. Pokud se nezadá, jeden je vybrán pro vás z podsítě. | |
-| Podsíť |Při hostování mezipaměti ve virtuální síti, určuje název podsítě, ve které se má nasadit do mezipaměti. | |
+| Subnet |Při hostování mezipaměti ve virtuální síti, určuje název podsítě, ve které se má nasadit do mezipaměti. | |
 | VirtualNetwork |Při hostování mezipaměti ve virtuální síti, určuje Identifikátor prostředku virtuální sítě, ve které se má nasadit do mezipaměti. | |
 | KeyType |Určuje, které přístupový klíč se znovu vygenerovat při obnovování přístupových klíčů. Platné hodnoty jsou: Primární, sekundární | |
 
