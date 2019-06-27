@@ -79,7 +79,7 @@ Uložené výsledky hledání se jednotlivé vlastnosti je popsané v následuj�
 | Vlastnost | Popis |
 |:--- |:--- |
 | category | Kategorie pro uložené výsledky hledání.  Všechny uložené výsledky hledání ve stejném řešení často sdílí jednu kategorii, takže jsou seskupené dohromady v konzole. |
-| DisplayName | Název má být zobrazen pro uložené výsledky hledání na portálu. |
+| displayName | Název má být zobrazen pro uložené výsledky hledání na portálu. |
 | query | Spustit dotaz. |
 
 > [!NOTE]
@@ -123,7 +123,7 @@ Vlastnosti pro plán prostředky jsou popsány v následující tabulce.
 
 | Název elementu | Požaduje se | Popis |
 |:--|:--|:--|
-| povoleno       | Ano | Určuje, zda je povoleno výstrahu, když se vytvoří. |
+| enabled       | Ano | Určuje, zda je povoleno výstrahu, když se vytvoří. |
 | interval      | Ano | Jak často dotaz spustí během několika minut. |
 | queryTimeSpan | Ano | Časový interval v minutách, přes které se má vyhodnotit výsledky. |
 
@@ -176,10 +176,10 @@ Vlastnosti pro akce upozornění prostředky jsou popsány v následujících ta
 
 | Název elementu | Požaduje se | Popis |
 |:--|:--|:--|
-| Type | Ano | Typ akce.  Toto je **výstraha** pro akce výstrah. |
-| Název | Ano | Zobrazovaný název výstrahy.  Toto je název, který se zobrazí v konzole pro pravidla upozornění. |
-| Popis | Ne | Popis výstrahy. |
-| Severity | Ano | Závažnost výstrahy záznam z následujících hodnot:<br><br> **Kritická**<br>**Upozornění**<br>**Informační**
+| type | Ano | Typ akce.  Toto je **výstraha** pro akce výstrah. |
+| name | Ano | Zobrazovaný název výstrahy.  Toto je název, který se zobrazí v konzole pro pravidla upozornění. |
+| description | Ne | Popis výstrahy. |
+| severity | Ano | Závažnost výstrahy záznam z následujících hodnot:<br><br> **Kritická**<br>**Upozornění**<br>**Informační**
 
 
 #### <a name="threshold"></a>Prahová hodnota
