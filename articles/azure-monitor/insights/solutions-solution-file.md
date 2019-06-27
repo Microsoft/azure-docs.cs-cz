@@ -72,7 +72,7 @@ Následující tabulka popisuje atributy parametr.
 |:--- |:--- |
 | type |Datový typ pro parametr. Vstupní ovládací prvek zobrazuje pro uživatele závisí na datovém typu.<br><br>BOOL – rozevíracího seznamu<br>String – textové pole<br>int – textové pole<br>SecureString - pole pro heslo<br> |
 | category |Volitelné kategorie pro parametr.  Parametry ve stejné kategorii jsou seskupené dohromady. |
-| Ovládací prvek |Další funkce pro parametry řetězce.<br><br>Zobrazí se datum a čas – ovládací prvek datum a čas.<br>identifikátor GUID - hodnota identifikátoru Guid je generován automaticky, a parametr nezobrazuje. |
+| control |Další funkce pro parametry řetězce.<br><br>Zobrazí se datum a čas – ovládací prvek datum a čas.<br>identifikátor GUID - hodnota identifikátoru Guid je generován automaticky, a parametr nezobrazuje. |
 | description |Volitelný popis pro parametr.  Zobrazí bublinu informace vedle parametru. |
 
 ### <a name="standard-parameters"></a>Standardní parametry
@@ -226,7 +226,7 @@ Výše uvedený příklad je pro řešení s sady runbook, plánu a zobrazení. 
 |:--- |:--- |
 | name |Název řešení. |
 | version |Verze řešení podle autora. |
-| Produkt |Jedinečný řetězec k identifikaci řešení. |
+| product |Jedinečný řetězec k identifikaci řešení. |
 | publisher |Vydavatel řešení. |
 
 
