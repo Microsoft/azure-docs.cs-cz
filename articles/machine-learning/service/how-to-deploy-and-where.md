@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 05/31/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: c4ab5fe4625bce1ed66258a5b9aab597dae17a1a
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: b5a08b9b998f8d0b30091af016af564e836d4651
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67304002"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67331655"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Nasazujte modely pomocí služby Azure Machine Learning
 
@@ -39,7 +39,9 @@ Další informace o konceptech pracovního postupu nasazení, najdete v části 
 
 ## <a id="registermodel"></a> Zaregistrujte svůj model
 
-Registrace vašich modelů strojového učení ve vašem pracovním prostoru Azure Machine Learning. Model mohou pocházet ze služby Azure Machine Learning nebo může pocházet z někde jinde. Následující příklady ukazují, jak zaregistrovat modelu ze souboru:
+Registrovanému modelu logický kontejner pro jeden nebo více souborů, které tvoří modelu. Například pokud máte model, který je uložen ve více souborech, můžete je zaregistrovat jako jeden model v pracovním prostoru. Po registraci pak můžete stáhnout nebo nasadit registrovanému modelu a zobrazí všechny soubory, které jste zaregistrovali.
+
+Modely strojového učení jsou registrované ve vašem pracovním prostoru Azure Machine Learning. Model mohou pocházet ze služby Azure Machine Learning nebo může pocházet z někde jinde. Následující příklady ukazují, jak zaregistrovat modelu ze souboru:
 
 ### <a name="register-a-model-from-an-experiment-run"></a>Zaregistrujte model z spuštění experimentu
 
@@ -48,11 +50,18 @@ Registrace vašich modelů strojového učení ve vašem pracovním prostoru Azu
   model = run.register_model(model_name='sklearn_mnist', model_path='outputs/sklearn_mnist_model.pkl')
   print(model.name, model.id, model.version, sep='\t')
   ```
+
+  > [!TIP]
+  > Chcete-li zahrnout více souborů registrace modelu, nastavte `model_path` k adresáři, který obsahuje soubory.
+
 + **Pomocí rozhraní příkazového řádku**
+
   ```azurecli-interactive
   az ml model register -n sklearn_mnist  --asset-path outputs/sklearn_mnist_model.pkl  --experiment-name myexperiment
   ```
 
+  > [!TIP]
+  > Chcete-li zahrnout více souborů registrace modelu, nastavte `--asset-path` k adresáři, který obsahuje soubory.
 
 + **Použití VS Code**
 
@@ -77,10 +86,16 @@ Můžete zaregistrovat externě vytvořené model poskytnutím **místní cesta*
                          description = "MNIST image classification CNN from ONNX Model Zoo",)
   ```
 
+  > [!TIP]
+  > Chcete-li zahrnout více souborů registrace modelu, nastavte `model_path` k adresáři, který obsahuje soubory.
+
 + **Pomocí rozhraní příkazového řádku**
   ```azurecli-interactive
   az ml model register -n onnx_mnist -p mnist/model.onnx
   ```
+
+  > [!TIP]
+  > Chcete-li zahrnout více souborů registrace modelu, nastavte `-p` k adresáři, který obsahuje soubory.
 
 **Časový odhad**: Přibližně 10 sekund.
 
@@ -110,12 +125,14 @@ Skript obsahuje dvě funkce, které načíst a spustit model:
 * `run(input_data)`: Tato funkce využívá model k predikci hodnoty založené na vstupní data. K serializaci a rušení serializace, vstupy a výstupy spustit obvykle používají JSON. Můžete také pracovat s Nezpracovaná binární data. Můžete transformovat data, před odesláním do modelu, nebo před vrácením klientovi.
 
 #### <a name="what-is-getmodelpath"></a>Co je get_model_path?
-Při registraci modelu, zadejte název modelu používají pro správu modelů v registru. Tento název použít v get_model_path rozhraní API, které vrací cestu soubory modelu v místním systému souborů. Když si zaregistrujete, složku nebo sadu souborů, toto rozhraní API vrátí cestu k adresáři, který obsahuje tyto soubory.
 
-Při registraci modelu, můžete jí název, který odpovídá do modelu je umístění, místně nebo během nasazování služby.
+Při registraci modelu, zadejte název modelu používají pro správu modelů v registru. Použijte tento název se [Model.get_model_path()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-) načíst cestu soubory modelu v místním systému souborů. Když si zaregistrujete, složku nebo sadu souborů, toto rozhraní API vrátí cestu k adresáři, který obsahuje soubory.
 
-Následujícím příkladu vrátí cestu jednoho souboru s názvem "sklearn_mnist_model.pkl" (který byl zaregistrován s názvem "sklearn_mnist")
-```
+Při registraci modelu, můžete jí název, který odpovídá modelu je umístění, místně nebo během nasazování služby.
+
+Následujícím příkladu vrátí cestu jednoho souboru s názvem `sklearn_mnist_model.pkl` (který byl zaregistrován s názvem `sklearn_mnist`):
+
+```python
 model_path = Model.get_model_path('sklearn_mnist')
 ``` 
 
@@ -293,7 +310,8 @@ Následující části ukazují, jak vytvořit konfiguraci nasazení a použít 
 
 ### <a name="optional-profile-your-model"></a>Volitelné: Profil modelu
 Před nasazením modelu jako služby, můžete chtít profilujte ji určit optimální využití procesoru a požadavky na paměť.
-Můžete to provést prostřednictvím sady SDK nebo rozhraní příkazového řádku.
+
+Můžete provést profilu model pomocí sady SDK nebo rozhraní příkazového řádku.
 
 Další informace si můžete prohlédnout naše dokumentace k sadě SDK tady: https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-
 
@@ -386,7 +404,7 @@ Pokud už máte cluster AKS, který je připojený, můžete nasadit do ní. Pok
 Další informace o nasazení služby AKS a automatického horizontálního snížení kapacity [AksWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice) odkaz.
 
 #### Vytvoření nového clusteru AKS<a id="create-attach-aks"></a>
-**Časový odhad:** Přibližně 5 minut.
+**Časový odhad**: Přibližně 20 minut.
 
 Vytvořit nebo připojit AKS cluster je vždy jednou procesu pro váš pracovní prostor. Tento cluster pro více nasazení můžete znovu použít. Při odstranění clusteru nebo skupinu prostředků, který jej obsahuje, musíte vytvořit nový cluster, které se budete muset nasadit. Můžete mít více AKS clustery připojené k vašemu pracovnímu prostoru.
 
@@ -425,10 +443,11 @@ Další informace o `cluster_purpose` parametr, najdete v článku [AksCompute.C
 
 > [!IMPORTANT]
 > Pro [ `provisioning_configuration()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py), pokud vyberete vlastní hodnoty agent_count a vm_size, je třeba Ujistěte se, že agent_count vynásobené vm_size je větší než nebo roven 12 virtuálních procesorů. Například pokud použijete vm_size "Standard_D3_v2", který má 4 virtuální procesory, pak měli byste vybrat agent_count 3 nebo vyšší.
-
-**Časový odhad**: Přibližně 20 minut.
+>
+> Sada SDK Azure Machine Learning neposkytuje podporu škálování clusteru AKS. Škálování uzlů v clusteru, pomocí uživatelského rozhraní pro váš cluster AKS na portálu Azure portal. Můžete pouze změnit počet uzlů, není velikost virtuálního počítače z clusteru.
 
 #### <a name="attach-an-existing-aks-cluster"></a>Připojení existujícího clusteru AKS
+**Časový odhad:** Přibližně 5 minut.
 
 Pokud už máte AKS cluster ve vašem předplatném Azure, a je verze 1.12. ##, ve kterém můžete nasadit svou image.
 

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.reviewer: vitalyg
 ms.author: cithomas
-ms.openlocfilehash: 7a657f175307e019155e37538021c5aecf5bb068
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.openlocfilehash: 4da91150999864c64ead28b74242e85d23a51ead
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67136898"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67310450"
 ---
 # <a name="sampling-in-application-insights"></a>Vzorkování ve službě Application Insights
 
@@ -313,7 +313,7 @@ V Průzkumníku metrik kurzy, jako jsou počty požadavků a výjimek násobí f
                     <Add name = "SamplingPercentage" value = "50" />
                 </Processor>
             </BuiltInProcessors>
-        <TelemetryProcessors/>
+        </TelemetryProcessors>
     ```
 
 3. Můžete zahrnout nebo vyloučit určité typy telemetrie z vzorkování, pomocí následujících značek uvnitř značky procesoru "FixedRateSamplingTelemetryProcessor"

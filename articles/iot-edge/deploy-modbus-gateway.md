@@ -6,15 +6,15 @@ manager: philmea
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 02/25/2019
+ms.date: 06/20/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: 1c9855f982b888e8e1d68bfe5233983db8c826ad
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 25be0629b2ef877d8757f515cb6ccd5942e58d5f
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61248005"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67312798"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>Připojení zařízení Modbus TCP přes zařízení brány IoT Edge
 
@@ -35,7 +35,7 @@ V tomto článku se předpokládá, že používáte protokol Modbus TCP. Dalš�
 
 Chcete-li otestovat funkci brány Modbus, Microsoft nabízí jednoduchý modul, který můžete použít. V modulu se dá dostat z Azure Marketplace [Modbus](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft_iot.edge-modbus?tab=Overview), nebo identifikátor URI, image **mcr.microsoft.com/azureiotedge/modbus:1.0**.
 
-Pokud chcete vytvořit vlastní modul a přizpůsobit pro vaše prostředí, je open source [modulu Azure IoT Edge Modbus](https://github.com/Azure/iot-edge-modbus) projektu na Githubu. Podle pokynů uvedených v projektu na GitHubu vytvořte vlastní bitovou kopii kontejneru. Pokud vytvoříte vlastní image kontejneru, podívejte se na [vývoj C# moduly v sadě Visual Studio](how-to-visual-studio-develop-csharp-module.md) nebo [vývoj modulů ve Visual Studio Code](how-to-vs-code-develop-module.md). Tyto články poskytují pokyny k vytvoření nové moduly a publikování Image kontejneru do registru.
+Pokud chcete vytvořit vlastní modul a přizpůsobit pro vaše prostředí, je open source [modulu Azure IoT Edge Modbus](https://github.com/Azure/iot-edge-modbus) projektu na Githubu. Podle pokynů uvedených v projektu na GitHubu vytvořte vlastní bitovou kopii kontejneru. Vytvoření image kontejneru, najdete [vývoj C# moduly v sadě Visual Studio](how-to-visual-studio-develop-csharp-module.md) nebo [vývoj modulů ve Visual Studio Code](how-to-vs-code-develop-module.md). Tyto články poskytují pokyny k vytvoření nové moduly a publikování Image kontejneru do registru.
 
 ## <a name="try-the-solution"></a>Vyzkoušejte toto řešení
 
@@ -85,12 +85,13 @@ Tato část vás provede nasazením modul Modbus od Microsoftu do zařízení Io
 
 5. Zpět v kroku **přidání modulů** vyberte **Další**.
 
-7. V kroku **určení tras** zkopírujte do textového pole následující JSON. Tato trasa odešle všechny zprávy shromážděné modulem Modbus do centra IoT Hub. V této trase je "modbusOutput" koncový bod, který modul Modbus pomocí používá pro výstup dat a "upstream" je speciální cílové umístění, která říká hraničních zařízeních IoT hub pro odesílání zpráv do služby IoT Hub.
+7. V kroku **určení tras** zkopírujte do textového pole následující JSON. Tato trasa odešle všechny zprávy shromážděné modulem Modbus do centra IoT Hub. V této trase **modbusOutput** je koncový bod tohoto Modbus modul se používá pro výstup dat a **$upstream** speciální cíl, že hraničních zařízeních IoT hub pro odesílání zpráv do služby IoT Hub.
+
    ```JSON
    {
-    "routes": {
-      "modbusToIoTHub":"FROM /messages/modules/modbus/outputs/modbusOutput INTO $upstream"
-    }
+     "routes": {
+       "modbusToIoTHub":"FROM /messages/modules/modbus/outputs/modbusOutput INTO $upstream"
+     }
    }
    ```
 

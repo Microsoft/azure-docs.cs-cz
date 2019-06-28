@@ -8,14 +8,14 @@ services: iot-hub
 ms.devlang: java
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 03/15/2019
+ms.date: 06/21/2019
 ms.author: wesmc
-ms.openlocfilehash: 4f9f4ccb53f9530122f0a2463f8f45b596856282
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
-ms.translationtype: HT
+ms.openlocfilehash: d125328d903b419aa81c54ffecf1f549d4cb4fe2
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149678"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67330789"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-android"></a>Rychlý start: Řízení zařízení připojená ke službě IoT hub (Android)
 
@@ -94,12 +94,12 @@ Budete také potřebovat _připojovací řetězec služby_ umožnit aplikacím b
 **YourIoTHubName**: Nahraďte tento zástupný text pod názvem, který jste zvolili pro službu IoT hub.
 
 ```azurecli-interactive
-az iot hub show-connection-string --name YourIoTHubName --output table
+az iot hub show-connection-string --name YourIoTHubName --policy-name service --output table
 ```
 
 Poznamenejte si připojovací řetězec služby, který vypadá nějak takto:
 
-`HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={YourSharedAccessKey}`
+`HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}`
 
 Tuto hodnotu použijete později v tomto rychlém startu. Připojovací řetězec služby se liší od připojovacího řetězce zařízení.
 
@@ -125,7 +125,7 @@ Zařízení SDK ukázkovou aplikaci můžete spustit na fyzické zařízení s A
    > * Verze modulu plug-in Android Gradle a Gradle z projektu odkazováno jsou zastaralé pro vaši verzi systému Android Studio. Postupujte podle [tyto pokyny](https://developer.android.com/studio/releases/gradle-plugin) odkaz a nainstalujte správná verze modulu plug-in a Gradle pro vaši instalaci.
    > * Licenční smlouvy pro sadu Android SDK není podepsaný. Postupujte podle pokynů ve výstupu sestavení k podepisování licenční smlouvy a stáhnout sadu SDK.
 
-4. Po dokončení sestavení kliknutím na **spustit** > **spuštění "aplikace"**. Konfigurace aplikace pro spuštění na fyzické zařízení s Androidem nebo emulátoru Androidu. Další informace o spouštění aplikace pro Android na fyzické zařízení nebo emulátoru najdete v tématu [spuštění aplikace](https://developer.android.com/training/basics/firstapp/running-app).
+4. Po dokončení sestavení kliknutím na **spustit** > **spuštění "aplikace"** . Konfigurace aplikace pro spuštění na fyzické zařízení s Androidem nebo emulátoru Androidu. Další informace o spouštění aplikace pro Android na fyzické zařízení nebo emulátoru najdete v tématu [spuštění aplikace](https://developer.android.com/training/basics/firstapp/running-app).
 
 5. Jakmile aplikace načte, klikněte na tlačítko **Start** tlačítko Zahájit odesílání telemetrických dat do služby IoT Hub:
 
@@ -166,7 +166,7 @@ Aplikace back-end služby IoT Hub se obvykle běží v cloudu, kde se snadněji 
 2. V nástroji Android Studio, otevřete *gradle.properties* pro ukázku projekt a aktualizujte hodnotu **ConnectionString** a **DeviceId** vlastnosti s vaším připojením služby řetězec, který jste si předtím poznamenali a zaregistrujete zařízení s Androidem ID.
 
     ```
-    ConnectionString=HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={YourSharedAccessKey}
+    ConnectionString=HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}
     DeviceId=MyAndroidDevice
     ```
 
@@ -178,7 +178,7 @@ Aplikace back-end služby IoT Hub se obvykle běží v cloudu, kde se snadněji 
    > * Verze modulu plug-in Android Gradle a Gradle z projektu odkazováno jsou zastaralé pro vaši verzi systému Android Studio. Postupujte podle [tyto pokyny](https://developer.android.com/studio/releases/gradle-plugin) odkaz a nainstalujte správná verze modulu plug-in a Gradle pro vaši instalaci.
    > * Licenční smlouvy pro sadu Android SDK není podepsaný. Postupujte podle pokynů ve výstupu sestavení k podepisování licenční smlouvy a stáhnout sadu SDK.
 
-4. Po dokončení sestavení kliknutím na **spustit** > **spuštění "aplikace"**. Konfigurace aplikace pro spuštění na samostatné fyzické zařízení s Androidem nebo emulátoru Androidu. Další informace o spouštění aplikace pro Android na fyzické zařízení nebo emulátoru najdete v tématu [spuštění aplikace](https://developer.android.com/training/basics/firstapp/running-app).
+4. Po dokončení sestavení kliknutím na **spustit** > **spuštění "aplikace"** . Konfigurace aplikace pro spuštění na samostatné fyzické zařízení s Androidem nebo emulátoru Androidu. Další informace o spouštění aplikace pro Android na fyzické zařízení nebo emulátoru najdete v tématu [spuštění aplikace](https://developer.android.com/training/basics/firstapp/running-app).
 
 5. Jakmile aplikace načte, aktualizujte **nastavit Interval pro zasílání zpráv** hodnota, která se **1000** a klikněte na tlačítko **Invoke**.
 

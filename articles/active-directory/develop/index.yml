@@ -1,6 +1,13 @@
 ### YamlMime:Landing
 title: Microsoft Identity Platform (dříve Azure Active Directory pro vývojáře)
 summary: 'Platforma identit Microsoftu vznikla z platformy pro vývojáře Azure Active Directory (Azure AD). Umožňuje vývojářům vytvářet aplikace, které přihlašují všechny identity od Microsoftu a získávají tokeny pro volání rozhraní API od Microsoftu, jako jsou Microsoft Graph nebo rozhraní API, která vytvořili vývojáři. Je to plnohodnotná platforma, kterou tvoří ověřovací služba kompatibilní se standardy OAuth 2.0 a OpenID Connect, opensourcové knihovny, registrace a konfigurace aplikací, robustní koncepční a referenční dokumentace, ukázky rychlých zprovoznění, ukázky kódu, kurzy a praktičtí průvodci.'
+metadata:
+  ms.topic: landing-page
+  ms.date: 06/22/2019
+  author: CelesteDG
+  ms.service: active-directory
+  ms.subservice: develop
+  ms.workload: identity
 landingContent:
   - title: O platformě Microsoft Identity Platform
     linkLists:

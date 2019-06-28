@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: ddd3b0889eedd55f809dbb57b2ef41a2ae3f9c94
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 89c4723e83979f89721677146810abdf99fb5d11
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65521399"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67310470"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>referenční materiály k Host.JSON pro Azure Functions 2.x  
 
@@ -147,7 +147,7 @@ Seznam funkcí, které spustí úlohu hostitele. Prázdné pole znamená, že sp
 
 ## <a name="functiontimeout"></a>functionTimeout
 
-Určuje dobu trvání časového limitu pro všechny funkce. V plánu Consumption bez serveru platný rozsah je od 1 sekundy do 10 minut a výchozí hodnota je 5 minut. V plánu služby App Service neexistuje žádné omezení celkové a výchozí hodnota závisí na verzi modulu runtime. Ve verzi 2.x, výchozí hodnota pro službu App Service na plán je 30 minut. Ve verzi 1.x, je *null*, což znamená žádný časový limit.
+Určuje dobu trvání časového limitu pro všechny funkce. V plánu Consumption bez serveru platný rozsah je od 1 sekundy do 10 minut a výchozí hodnota je 5 minut. V vyhrazený plán služby App Service neexistuje žádné omezení celkové a výchozí hodnota je 30 minut. Hodnota `-1` označuje spuštění bez vazby.
 
 ```json
 {

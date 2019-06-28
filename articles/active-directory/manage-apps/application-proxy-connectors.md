@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51ad6ea2abcc18b985e9c45fbfb1ffba98fb2c1f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 674d055c40ff594f0e4e05ec512b9124b1d7ab77
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66113089"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341333"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Principy konektorů Proxy aplikací Azure AD
 
@@ -34,7 +34,7 @@ Pokud chcete úspěšně nasadit Proxy aplikace, budete potřebovat alespoň jed
 ### <a name="windows-server"></a>Windows server
 Potřebujete server s Windows serverem 2012 R2 nebo novější na kterých je nainstalován konektor Proxy aplikací. Server potřebuje pro připojení k Proxy aplikace služby v Azure a místních aplikací, které publikujete.
 
-Windows server musí mít TLS 1.2 zapnutý předtím, než nainstalujete konektor Proxy aplikací. Existující konektory se starším než 1.5.612.0 budou nadále fungovat na dřívější verze TLS až do odvolání. Povolení protokolu TLS 1.2:
+Windows server musí mít TLS 1.2 zapnutý předtím, než nainstalujete konektor Proxy aplikací. Povolení protokolu TLS 1.2 na serveru:
 
 1. Nastavte následující klíče registru:
     

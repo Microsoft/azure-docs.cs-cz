@@ -17,12 +17,12 @@ ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc
 monikerRange: vsts
-ms.openlocfilehash: 88fb243af7628b159a2255c2cdae2ab86f39ca1e
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 387801f2ecb2f5fa1639005726218efb54d75dc8
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275485"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67331425"
 ---
 # <a name="create-a-cicd-pipeline-for-net-with-azure-devops-projects"></a>Vytvoření kanálu CI/CD pro .NET pomocí projektů Azure DevOps
 
@@ -46,7 +46,7 @@ Projekty DevOps vytvoří kanál CI/CD v Azure DevOps. Můžete vytvořit novou 
 
 1. Vyberte ukázkovou aplikaci **.NET**. Ukázky .NET zahrnují výběr open source architektury ASP.NET nebo multiplatformní architektury .NET Core.
 
-    ![.NET Framework](_img/azure-devops-project-aspnet-core/chooselanguagedotnet.png)
+   ![.NET Framework](_img/azure-devops-project-aspnet-core/chooselanguagedotnet.png)
 
 2. Tato ukázka představuje aplikaci ASP.NET Core MVC. Vyberte **.NET Core** aplikační platformy, vyberte **Další**.    
     
@@ -54,37 +54,35 @@ Projekty DevOps vytvoří kanál CI/CD v Azure DevOps. Můžete vytvořit novou 
 
 ## <a name="configure-azure-devops-and-an-azure-subscription"></a>Konfigurace Azure DevOps a předplatné Azure 
 
-1. Vytvořte novou organizaci bezplatné Azure DevOps nebo zvolte existující organizace.
+1. Zadejte **název projektu**.
 
-    a. Zvolte název pro váš projekt. 
+2. Vytvořte nový zdarma **organizace Azure DevOps** nebo zvolte existující organizace z rozevíracího seznamu.
 
-    b. Vyberte předplatné Azure a umístění, zvolte název pro vaši aplikaci a pak vyberte **provádí**.  
-    Po několika minutách se zobrazí řídicí panel projekty DevOps na webu Azure Portal. Ukázková aplikace je nastavena v úložišti ve vaší organizaci Azure DevOps, sestavení je spuštěno a vaše aplikace bude nasazena do Azure. Tento řídicí panel poskytuje vhled do vašeho úložiště kódu, kanál CI/CD a vaši aplikaci v Azure.
-    
+3. Vyberte vaše **předplatné Azure**, zadejte název vaší **webovou aplikaci** nebo přijmout výchozí nastavení a potom vyberte **provádí**. Po několika minutách se zobrazí přehled nasazení projekty DevOps na webu Azure Portal. 
 
-2. Na pravé straně řídicího panelu, vyberte **Procházet** k běžící aplikaci zobrazit.
+4. Vyberte **přejít k prostředku** k zobrazení řídicího panelu Projekt DevOps. V pravém horním rohu, připněte **projektu** na řídicí panel pro rychlý přístup. Ukázkovou aplikaci je nastavený v úložišti ve vaší **organizace Azure DevOps**. Sestavení je spuštěno a aplikace je nasazená do Azure.
 
-    ![Zobrazení řídicího panelu](_img/azure-devops-project-aspnet-core/dashboardnopreview.png) 
+5. Řídicí panel poskytuje přehled o úložišti kódu, váš kanál CI/CD a vaší aplikace v Azure. Na pravé straně v části prostředky Azure vyberte **Procházet** zobrazíte běžící aplikaci.
+
+   ![Zobrazení řídicího panelu](_img/azure-devops-project-aspnet-core/dashboardnopreview.png) 
 
 ## <a name="commit-code-changes-and-execute-cicd"></a>Potvrzení změn kódu a spuštění CI/CD
 
- Projekty DevOps vytvoří úložiště Git v úložišti Azure nebo z Githubu. K zobrazení úložiště a proveďte změny kódu aplikace, postupujte takto:
+Projekty DevOps vytvoří úložiště Git v úložišti Azure nebo z Githubu. K zobrazení úložiště a proveďte změny kódu aplikace, postupujte takto:
 
-1. Na levé straně řídicího panelu DevOps Projects, vyberte odkaz pro vaše **hlavní** větve.  
-Tento odkaz otevře zobrazení nově vytvořeného úložiště Git.
+1. Na levé straně řídicího panelu DevOps Projects, vyberte odkaz pro vaše **hlavní** větve. Tento odkaz otevře zobrazení nově vytvořeného úložiště Git.
 
-1. Pokud chcete zobrazit adresu URL klonu úložiště, v pravé horní části prohlížeče vyberte **Clone** (Klonovat).  
-Úložiště Git můžete naklonovat do svého oblíbeného integrovaného vývojového prostředí (IDE).  V dalších několika krocích můžete k provedení změn kódu a jejich potvrzení přímo do hlavní větve použít webový prohlížeč.
+2. V dalších několika krocích můžete použít webový prohlížeč a potvrdit změny kódu přímo **hlavní** větve. Taky můžete klonování úložiště Git v oblíbeném prostředí IDE tak, že vyberete **klonování** z horní části stránky úložiště. 
 
-1. Na levé straně prohlížeče, přejděte **Views/Home/index.cshtml** souboru.
+3. Na levé straně přejděte struktury souboru aplikace do **Application/aspnet-core-dotnet-core/Pages/Index.cshtml**.
 
-1. Vyberte **upravit**a potom změňte nadpis h2. Zadejte například **rovnou začít s projekty Azure DevOps** nebo provést nějakou změnu.
+4. Vyberte **upravit**a potom změňte nadpis h2. Zadejte například **rovnou začít s projekty Azure DevOps** nebo provést nějakou změnu.
 
-    ![Úpravy kódu](_img/azure-devops-project-aspnet-core/codechange.png)
+      ![Úpravy kódu](_img/azure-devops-project-aspnet-core/codechange.png)
 
-1. Vyberte **potvrzení**a pak uložte provedené změny.
+5. Vyberte **potvrzení**, napište komentář a vyberte **potvrzení** znovu.
 
-1. V prohlížeči přejdete na řídicí panel Projekt Azure DevOps.  Teď by se mělo zobrazit probíhající sestavení. Provedené změny se automaticky vytvořené a nasazené prostřednictvím kanálu CI/CD.
+6. V prohlížeči přejdete na řídicí panel Projekt Azure DevOps.  Teď by se mělo zobrazit probíhající sestavení. Provedené změny se automaticky vytvořené a nasazené prostřednictvím kanálu CI/CD.
 
 ## <a name="examine-the-cicd-pipeline"></a>Prozkoumejte kanálu CI/CD
 

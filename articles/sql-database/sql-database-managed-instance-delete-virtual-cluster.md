@@ -1,6 +1,6 @@
 ---
-title: Odstranit virtuální síť po odstranění Azure SQL Database managed instance | Dokumentace Microsoftu
-description: Zjistěte, jak odstranit virtuální síť po odstranění Azure SQL Database managed instance.
+title: Odstranění podsítě po odstranění služby Azure SQL Database managed instance | Dokumentace Microsoftu
+description: Zjistěte, jak odstranit virtuální síť Azure po odstranění služby Azure SQL Database managed instance.
 services: sql-database
 ms.service: sql-database
 ms.subservice: management
@@ -12,39 +12,39 @@ ms.author: danil
 ms.reviewer: douglas, carlrab, sstein
 manager: craigg
 ms.date: 05/07/2019
-ms.openlocfilehash: 61f6c25031c4906e65c2f75a7679600741e8311a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ec5d99e160e739f59e2bf2ea369fe83e9900a1f1
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65791376"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295302"
 ---
-# <a name="delete-subnet-after-deleting-azure-sql-database-managed-instance"></a>Odstranit podsíť po odstranění Azure SQL Database managed instance
+# <a name="delete-a-subnet-after-deleting-an-azure-sql-database-managed-instance"></a>Odstranění podsítě po odstranění služby Azure SQL Database managed instance
 
-Tento článek obsahuje pokyny o tom, jak ručně odstranit podsíť po odstranění posledního Azure SQL Database managed instance, které se nacházejí v ní.
+Tento článek obsahuje pokyny o tom, jak ručně po odstranění posledního Azure SQL Database managed instance, které se nacházejí v ní odstranit podsíť.
 
-[Virtuální cluster](sql-database-managed-instance-connectivity-architecture.md#virtual-cluster-connectivity-architecture) , která je obsažená na odstraněný spravovanou instanci se uchovají po dobu 12 hodin před odstraněním instance. Virtuální cluster je zachováno záměrné umožňuje rychlejší vytvoření spravované instance ve stejné podsíti. Udržování prázdný virtuální cluster je zdarma. Během tohoto období se nedá odstranit podsíť přidružená virtuální cluster.
+SQL Database používá [virtuální cluster](sql-database-managed-instance-connectivity-architecture.md#virtual-cluster-connectivity-architecture) tak, aby obsahovala odstraněné spravované instance. Virtuální cluster se uchovávají po dobu 12 hodin po odstranění instance vám umožní rychle vytvářet spravované instance ve stejné podsíti. Neplatí žádné poplatky za pořízení prázdný virtuální cluster. Během tohoto období se nedá odstranit podsíť přidružená virtuální cluster.
 
-Okamžité uvolnění používán clusterem prázdný virtuální podsítě je možné provádět prostřednictvím ručního odstranění virtuálního clusteru. Odstranění virtuální cluster lze provádět pomocí webu Azure portal nebo virtuálních clusterů rozhraní API.
+Pokud nechcete, aby počkejte po dobu 12 hodin, a upřednostnit okamžitě odstranit virtuálního clusteru a její podsítě, lze provést ručně. Virtuální cluster odstraňte ručně pomocí webu Azure portal nebo rozhraní API virtuálních clusterů.
 
 > [!NOTE]
 > Virtuální cluster by měl obsahovat žádné spravované instance pro odstranění k dosažení úspěchu.
 
-## <a name="delete-virtual-cluster-from-azure-portal"></a>Odstranění virtuálního clusteru z webu Azure portal
+## <a name="delete-virtual-cluster-from-the-azure-portal"></a>Odstranit virtuální cluster na webu Azure Portal
 
-Odstranění virtuálního clusteru pomocí webu Azure portal, vyhledejte prostředky virtuálních clusterů pomocí předdefinovaných vyhledávacích.
+Odstranění virtuálního clusteru pomocí webu Azure portal, vyhledejte prostředky virtuálních clusterů.
 
-![Vyhledejte virtuální cluster.](./media/sql-database-managed-instance-delete-virtual-cluster/virtual-clusters-search.png)
+![Snímek obrazovky webu Azure portal, pomocí vyhledávacího pole zvýrazněnou](./media/sql-database-managed-instance-delete-virtual-cluster/virtual-clusters-search.png)
 
-Po nalezení virtuální cluster, který chcete odstranit, vyberte tento prostředek a vyberte možnost odstranit. Zobrazí se výzva k potvrzení odstranění virtuálního clusteru.
+Po nalezení virtuálních clusterů, které chcete odstranit, vyberte tento prostředek a vyberte **odstranit**. Budete vyzváni k potvrzení odstranění virtuálního clusteru.
 
-![Virtuální cluster odstraňte.](./media/sql-database-managed-instance-delete-virtual-cluster/virtual-clusters-delete.png)
+![Snímek obrazovky webu Azure portal virtuálních clusterů řídicí panel, se zvýrazněnou možností odstranit](./media/sql-database-managed-instance-delete-virtual-cluster/virtual-clusters-delete.png)
 
-Potvrzení, že byl odstraněn virtuální cluster najdete v oznámení portálu Azure portal. Úspěšné odstranění virtuální cluster okamžitě uvolní podsítě pro další použití.
+Oblast oznámení portálu Azure portal zobrazí potvrzení, že byl odstraněn virtuální cluster. Úspěšné odstranění virtuální cluster okamžitě uvolní podsítě pro další použití.
 
-## <a name="delete-virtual-cluster-using-api"></a>Odstranění virtuálního clusteru pomocí rozhraní API
+## <a name="delete-virtual-cluster-by-using-the-api"></a>Odstranění virtuálního clusteru pomocí rozhraní API
 
-Chcete-li odstranit virtuálního clusteru pomocí rozhraní API parametry identifikátoru URI zadaný v [virtuálních clusterů delete – metoda](https://docs.microsoft.com/rest/api/sql/virtualclusters/delete).
+Pokud chcete odstranit virtuální cluster prostřednictvím rozhraní API, použijte parametry identifikátoru URI zadaný v [virtuálních clusterů delete – metoda](https://docs.microsoft.com/rest/api/sql/virtualclusters/delete).
 
 ## <a name="next-steps"></a>Další postup
 

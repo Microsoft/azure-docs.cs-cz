@@ -3,19 +3,19 @@ title: Vrátí N-Best překlady – Translator Text API
 titlesuffix: Azure Cognitive Services
 description: Vrátí N-Best překlady pomocí rozhraní Microsoft Translator Text API.
 services: cognitive-services
-author: rajdeep-in
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
-ms.author: v-pawal
-ms.openlocfilehash: 27138fc82515983bb07df845e1204fe04dff915a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: swmachan
+ms.openlocfilehash: d3e64fff8fa0d2d815ea3bff4a44962d74a7118b
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66389678"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357616"
 ---
 # <a name="how-to-return-n-best-translations"></a>Jak vracet N-Best překlady
 

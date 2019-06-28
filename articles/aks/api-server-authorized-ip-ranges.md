@@ -1,18 +1,18 @@
 ---
 title: Rozhraní API server ověřen rozsahy IP adres ve službě Azure Kubernetes Service (AKS)
-description: Zjistěte, jak k zabezpečení clusteru pomocí IP adresy rozsahů adres pro přístup k rozhraní API serveru ve službě Azure Kubernetes Service (AKS)
+description: Zjistěte, jak zabezpečit cluster pomocí rozsahu IP adres pro přístup k rozhraní API serveru ve službě Azure Kubernetes Service (AKS)
 services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: iainfou
-ms.openlocfilehash: 185c16e76094fe55a54fb17bef24fcd03d7b54f0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9ec48c8ed924293a5ffea903fe03a9830dcd1184
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66475157"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329419"
 ---
 # <a name="preview---secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Ve verzi Preview - zabezpečený přístup k serveru pomocí rozhraní API oprávnění rozsahy IP adres ve službě Azure Kubernetes Service (AKS)
 
@@ -34,30 +34,34 @@ Musí mít Azure CLI verze 2.0.61 nebo později nainstalována a nakonfigurován
 
 ### <a name="install-aks-preview-cli-extension"></a>Instalace rozšíření aks ve verzi preview rozhraní příkazového řádku
 
-Příkazy rozhraní příkazového řádku ke konfiguraci rozšíření rozsahy IP adres serveru oprávnění rozhraní API jsou k dispozici v *aks ve verzi preview* rozšíření rozhraní příkazového řádku. Nainstalujte *aks ve verzi preview* pomocí rozšíření Azure CLI [přidat rozšíření az] [ az-extension-add] příkaz, jak je znázorněno v následujícím příkladu:
+Ke konfiguraci rozšíření rozsahy IP adres serveru oprávnění rozhraní API, je nutné *aks ve verzi preview* CLI verze rozšíření 0.4.1 nebo vyšší. Nainstalujte *aks ve verzi preview* pomocí rozšíření Azure CLI [přidat rozšíření az][az-extension-add] command, then check for any available updates using the [az extension update][az-extension-update] příkaz:
 
 ```azurecli-interactive
+# Install the aks-preview extension
 az extension add --name aks-preview
-```
 
-> [!NOTE]
-> Pokud jste dříve nainstalovali *aks ve verzi preview* rozšíření, nainstalujte všechny dostupné aktualizace pomocí `az extension update --name aks-preview` příkazu.
+# Update the extension to make sure you have the latest version installed
+az extension update --name aks-preview
+```
 
 ### <a name="register-feature-flag-for-your-subscription"></a>Zaregistrujte příznak funkce pro vaše předplatné
 
-Jak používat rozhraní API server ověřen rozsahy IP adres, nejprve povolte příznak funkce v rámci předplatného. K registraci *APIServerSecurityPreview* příznak funkce, použijte [az funkce register] [ az-feature-register] příkaz, jak je znázorněno v následujícím příkladu:
+Jak používat rozhraní API server ověřen rozsahy IP adres, nejprve povolte příznak funkce v rámci předplatného. K registraci *APIServerSecurityPreview* příznak funkce, použijte [az funkce register][az-feature-register] příkaz, jak je znázorněno v následujícím příkladu:
+
+> [!CAUTION]
+> Při registraci funkce v rámci předplatného nelze nyní zrušit registraci této funkce. Po povolení některé funkce ve verzi preview se výchozí hodnoty lze pro všechny clustery AKS, pak jste vytvořili v rámci předplatného. Nepovolí funkce ve verzi preview na předplatná pro produkční prostředí. Testování funkce ve verzi preview a shromažďování zpětné vazby pomocí samostatné předplatné.
 
 ```azurecli-interactive
 az feature register --name APIServerSecurityPreview --namespace Microsoft.ContainerService
 ```
 
-Trvá několik minut, než se stav zobrazíte *registrované*. Vy můžete zkontrolovat stav registrace pomocí [seznam funkcí az] [ az-feature-list] příkaz:
+Trvá několik minut, než se stav zobrazíte *registrované*. Vy můžete zkontrolovat stav registrace pomocí [seznam funkcí az][az-feature-list] příkaz:
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/APIServerSecurityPreview')].{Name:name,State:properties.state}"
 ```
 
-Až to budete mít, aktualizujte registraci *Microsoft.ContainerService* poskytovatele prostředků pomocí [az provider register] [ az-provider-register] příkaz:
+Až to budete mít, aktualizujte registraci *Microsoft.ContainerService* poskytovatele prostředků pomocí [az provider register][az-provider-register] příkaz:
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -81,7 +85,7 @@ Další informace o serveru rozhraní API a další součásti clusteru, najdete
 
 IP adresa serveru oprávnění rozhraní API rozsahy funkční pouze u nových clusterů AKS. Autorizované rozsahy IP adres nelze povolit, protože operace vytvoření součástí clusteru. Pokud se pokusíte povolit oprávnění rozsahy IP adres jako součást clusteru vytvořit proces, nelze získat přístup k rozhraní API serveru během nasazení, jako výstupní IP adresou není definovaný v tomto okamžiku jsou uzly clusteru.
 
-Nejprve vytvořte cluster pomocí [az aks vytvořit] [ az-aks-create] příkazu. Následující příklad vytvoří jeden uzel clusteru s názvem *myAKSCluster* ve skupině prostředků s názvem *myResourceGroup*.
+Nejprve vytvořte cluster pomocí [az aks vytvořit][az-aks-create] příkazu. Následující příklad vytvoří jeden uzel clusteru s názvem *myAKSCluster* ve skupině prostředků s názvem *myResourceGroup*.
 
 ```azurecli-interactive
 # Create an Azure resource group
@@ -105,7 +109,7 @@ Aby bylo zajištěno, že uzly v clusteru můžete spolehlivě komunikovat se se
 > [!WARNING]
 > Použití brány Firewall Azure může mít za následek snížit velké náklady na za období měsíčního fakturačního cyklu. Nutnost používat Brána Firewall služby Azure by měly být pouze nutné v tomto období počáteční verzi preview. Další informace a náklady na plánování najdete v tématu [Brána Firewall služby Azure ceny][azure-firewall-costs].
 
-Nejprve získejte *MC_* název skupiny prostředků pro AKS cluster a virtuální sítě. Potom vytvořte podsíť pomocí [az podsíti virtuální sítě vytvořit] [ az-network-vnet-subnet-create] příkazu. Následující příklad vytvoří podsíť s názvem *AzureFirewallSubnet* s rozsahem CIDR *10.200.0.0/16*:
+Nejprve získejte *MC_* název skupiny prostředků pro AKS cluster a virtuální sítě. Potom vytvořte podsíť pomocí [az podsíti virtuální sítě vytvořit][az-network-vnet-subnet-create] příkazu. Následující příklad vytvoří podsíť s názvem *AzureFirewallSubnet* s rozsahem CIDR *10.200.0.0/16*:
 
 ```azurecli-interactive
 # Get the name of the MC_ cluster resource group
@@ -127,7 +131,7 @@ az network vnet subnet create \
     --address-prefixes 10.200.0.0/16
 ```
 
-Pokud chcete vytvořit bránu Firewall Azure, nainstalujte *azure firewall* pomocí rozšíření rozhraní příkazového řádku [přidat rozšíření az] [ az-extension-add] příkaz. Potom vytvořte pomocí brány firewall [vytvořit síťová brána firewall az] [ az-network-firewall-create] příkazu. Následující příklad vytvoří firewall k Azure s názvem *myAzureFirewall*:
+Pokud chcete vytvořit bránu Firewall Azure, nainstalujte *azure firewall* pomocí rozšíření rozhraní příkazového řádku [přidat rozšíření az][az-extension-add] command. Then, create a firewall using the [az network firewall create][az-network-firewall-create] příkaz. Následující příklad vytvoří firewall k Azure s názvem *myAzureFirewall*:
 
 ```azurecli-interactive
 # Install the CLI extension for Azure Firewall
@@ -139,7 +143,7 @@ az network firewall create \
     --name myAzureFirewall
 ```
 
-Azure bránu firewall se přiřadí veřejnou IP adresu, která výchozí přenos prochází přes. Vytvoření pomocí veřejné adresy [az network public-ip vytvořit] [ az-network-public-ip-create] příkaz a pak vytvořte konfiguraci IP brány firewall pomocí [az síťové brány firewall protokolu ip-config vytvořit] [ az-network-firewall-ip-config-create] , který se vztahuje veřejnou IP adresu:
+Azure bránu firewall se přiřadí veřejnou IP adresu, která výchozí přenos prochází přes. Vytvoření pomocí veřejné adresy [az network public-ip vytvořit][az-network-public-ip-create] command, then create an IP configuration on the firewall using the [az network firewall ip-config create][az-network-firewall-ip-config-create] , který se vztahuje veřejnou IP adresu:
 
 ```azurecli-interactive
 # Create a public IP address for the firewall
@@ -158,7 +162,7 @@ az network firewall ip-config create \
     --public-ip-address myAzureFirewallPublicIP
 ```
 
-Teď vytvořte pravidlo brány firewall Azure sítě, které *povolit* všechny *TCP* provozu pomocí [sítě pravidlo az síťové brány firewall vytvořit] [ az-network-firewall-network-rule-create] příkaz. Následující příklad vytvoří pravidlo sítě *AllowTCPOutbound* pro provoz s libovolný zdroj nebo cíl adresy:
+Teď vytvořte pravidlo brány firewall Azure sítě, které *povolit* všechny *TCP* provozu pomocí [sítě pravidlo az síťové brány firewall vytvořit][az-network-firewall-network-rule-create] příkazu. Následující příklad vytvoří pravidlo sítě *AllowTCPOutbound* pro provoz s libovolný zdroj nebo cíl adresy:
 
 ```azurecli-interactive
 az network firewall network-rule create \
@@ -192,7 +196,7 @@ FIREWALL_INTERNAL_IP=$(az network firewall show \
 K8S_ENDPOINT_IP=$(kubectl get endpoints -o=jsonpath='{.items[?(@.metadata.name == "kubernetes")].subsets[].addresses[].ip}')
 ```
 
-Nakonec vytvořte trasu v existující AKS sítě směrovací tabulky pomocí [az network route-table postupu vytvoření] [ az-network-route-table-route-create] příkaz, který umožňuje přenos pro účely zařízení Azure brány firewall serveru rozhraní API komunikace.
+Nakonec vytvořte trasu v existující AKS sítě směrovací tabulky pomocí [az network route-table postupu vytvoření][az-network-route-table-route-create] příkaz, který umožní provoz určený zařízení Azure brány firewall pro komunikaci serveru rozhraní API.
 
 ```azurecli-interactive
 az network route-table route create \
@@ -212,7 +216,7 @@ Poznamenejte si veřejnou IP adresu zařízení Brána Firewall služby Azure. T
 
 Pokud chcete povolit rozšíření rozsahy IP adres serveru oprávnění rozhraní API, poskytovat seznam autorizovaných rozsahy IP adres. Když zadáte rozsah CIDR, začněte s první IP adresou v rozsahu. Například *137.117.106.90/29* platný rozsah je ale ujistěte se, že zadáte první IP adresou v rozsahu, například *137.117.106.88/29*.
 
-Použití [az aks aktualizovat] [ az-aks-update] příkaz a zadejte *– rozhraní api-server oprávnění – – rozsahy ip* povolit. Tyto rozsahy IP adres jsou obvykle rozsahy adres použitými ve vaší místní sítě. Přidejte veřejnou IP adresu své vlastní brány Azure získaný v předchozím kroku, jako například *20.42.25.196/32*.
+Použití [az aks aktualizovat][az-aks-update] příkaz a zadejte *– rozhraní api-server oprávnění – – rozsahy ip* povolit. Tyto rozsahy IP adres jsou obvykle rozsahy adres použitými ve vaší místní sítě. Přidejte veřejnou IP adresu své vlastní brány Azure získaný v předchozím kroku, jako například *20.42.25.196/32*.
 
 Následující příklad umožňuje rozhraní API oprávnění rozsahy IP adres serveru v clusteru s názvem *myAKSCluster* ve skupině prostředků s názvem *myResourceGroup*. Rozsahy IP adres k autorizaci jsou *20.42.25.196/32* (brány Azure veřejnou IP adresu), pak *172.0.0.10/16* a *168.10.0.10/18*:
 
@@ -225,7 +229,7 @@ az aks update \
 
 ## <a name="update-or-disable-authorized-ip-ranges"></a>Aktualizace nebo zakázání autorizované rozsahy IP adres
 
-Aktualizace nebo zakázání autorizované rozsahy IP adres, znovu použijete [az aks aktualizovat] [ az-aks-update] příkazu. Zadejte aktualizovaný rozsah CIDR, který chcete povolit, nebo zadat, že chcete zakázat API server prázdného rozsahu oprávnění rozsahy IP adres, jak je znázorněno v následujícím příkladu:
+Aktualizace nebo zakázání autorizované rozsahy IP adres, znovu použijete [az aks aktualizovat][az-aks-update] příkazu. Zadejte aktualizovaný rozsah CIDR, který chcete povolit, nebo zadat, že chcete zakázat API server prázdného rozsahu oprávnění rozsahy IP adres, jak je znázorněno v následujícím příkladu:
 
 ```azurecli-interactive
 az aks update \
@@ -238,7 +242,7 @@ az aks update \
 
 V tomto článku jste povolili rozšíření rozsahy IP adres serveru oprávnění rozhraní API. Tento přístup je jednou ze součástí sady spouštění zabezpečeného clusteru AKS.
 
-Další informace najdete v tématu [koncepty zabezpečení pro aplikace a clustery ve službě AKS] [ concepts-security] a [osvědčené postupy pro zabezpečení clusteru a inovace ve službě AKS] [ operator-best-practices-cluster-security].
+Další informace najdete v tématu [koncepty zabezpečení pro aplikace a clustery ve službě AKS][concepts-security] and [Best practices for cluster security and upgrades in AKS][operator-best-practices-cluster-security].
 
 <!-- LINKS - external -->
 [azure-firewall-costs]: https://azure.microsoft.com/pricing/details/azure-firewall/
@@ -265,3 +269,5 @@ Další informace najdete v tématu [koncepty zabezpečení pro aplikace a clust
 [az-network-route-table-route-create]: /cli/azure/network/route-table/route#az-network-route-table-route-create
 [aks-support-policies]: support-policies.md
 [aks-faq]: faq.md
+[az-extension-list]: /cli/azure/extension#az-extension-list
+[az-extension-update]: /cli/azure/extension#az-extension-update

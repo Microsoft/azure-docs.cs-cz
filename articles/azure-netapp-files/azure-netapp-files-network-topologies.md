@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: b-juche
-ms.openlocfilehash: bf2262d8a222cec6c5d0d7e53ded7b2994481656
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 207fb003eb1fdaafe4f43f7cd41dd4b7662eddf9
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205659"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67331981"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Pokyny pro plánování sítě Azure NetApp Files
 
@@ -81,7 +81,7 @@ Pokud virtuální síť je v partnerském vztahu s jinou virtuální sítí, nel
 
 ### <a name="udrs-and-nsgs"></a>Trasy definované uživatelem a skupin zabezpečení sítě
 
-Skupiny zabezpečení sítě (Nsg) s dalším segmentem směrování do nelze použít jako delegovaný podsítě pro soubory Azure NetApp. Podobně uživatelem definované trasy (udr) také nejsou podporovány. 
+Trasy definované uživatelem (udr) a skupiny zabezpečení sítě (Nsg) nejsou podporovány na delegovaný podsítě pro soubory Azure NetApp.
 
 Jako alternativní řešení můžete použít skupiny Nsg do jiných podsítí, které buď povolovat nebo zamítat provoz do a z Azure Files NetApp delegovaný podsítě.  
 

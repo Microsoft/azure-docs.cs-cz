@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 02/27/2019
+ms.date: 06/24/2019
 ms.author: danis
-ms.openlocfilehash: da539a5bebc1613115f89a7b47c513ce486b5e3a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a64fb40c905fbe98dc594ab3626666723d1628d0
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60627925"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357270"
 ---
 # <a name="prepare-an-existing-linux-azure-vm-image-for-use-with-cloud-init"></a>Příprava image existujícího virtuálního počítače Azure s Linuxem pro použití s nástrojem cloud-init
 Tento článek popisuje, jak využít stávající virtuální počítač Azure a připravit ho bude opakovaně nasazeném a připravené k použití cloud-init. Výsledná bitová kopie lze použít k nasazení nového virtuálního počítače nebo škálovací sady virtuálních počítačů – každý z nich může potom dají dál přizpůsobit pomocí cloud-init v době nasazení.  Tyto skripty cloud-init spustit při prvním spuštění, jakmile se zřizují prostředky Azure. Další informace o tom, jak funguje cloud-init nativně v Azure a podporovaných distribucích systému Linux, najdete v části [přehled cloud-init](using-cloud-init.md)
@@ -65,19 +65,14 @@ sed -i 's/Provisioning.Enabled=y/Provisioning.Enabled=n/g' /etc/waagent.conf
 sed -i 's/Provisioning.UseCloudInit=n/Provisioning.UseCloudInit=y/g' /etc/waagent.conf
 sed -i 's/ResourceDisk.Format=y/ResourceDisk.Format=n/g' /etc/waagent.conf
 sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.conf
-cp /lib/systemd/system/waagent.service /etc/systemd/system/waagent.service
-sed -i 's/After=network-online.target/WantedBy=cloud-init.service\\nAfter=network.service systemd-networkd-wait-online.service/g' /etc/systemd/system/waagent.service
-systemctl daemon-reload
 cloud-init clean
 ```
-Povolit Azure jenom jako zdroj dat pro agenta Azure Linux tak, že vytvoříte nový soubor `/etc/cloud/cloud.cfg.d/91-azure_datasource.cfg` pomocí editoru podle vašeho výběru s následujícími řádky:
+
+Povolit Azure jenom jako zdroj dat pro agenta Azure Linux tak, že vytvoříte nový soubor `/etc/cloud/cloud.cfg.d/91-azure_datasource.cfg` pomocí editoru podle vašeho výběru s následující řádek:
 
 ```bash
 # Azure Data Source config
 datasource_list: [ Azure ]
-datasource:
-   Azure:
-     agent_command: [systemctl, start, waagent, --no-block]
 ```
 
 Pokud vaše stávající image Azure má odkládací soubor nakonfigurovaný a chcete změnit konfiguraci odkládací soubor pro nové Image pomocí cloud-init, musíte odebrat existující odkládacího souboru.

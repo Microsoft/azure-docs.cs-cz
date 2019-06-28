@@ -3,19 +3,19 @@ title: 'Rychlý start: Rozpoznání textu jazyka Java – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu budete zjistěte, jak zjistit jazyk zadaného textu s použitím Javy a rozhraní REST Translator Text API.
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/04/2019
-ms.author: erhopf
-ms.openlocfilehash: f2d5a9d5564b6136601a003e01a3c58cac5a74e3
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.author: swmachan
+ms.openlocfilehash: b3498cc8c73d74f06eea59c1a87047adf52ca6d4
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66514870"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357987"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-detect-text-language-using-java"></a>Rychlý start: Použití rozhraní Translator Text API rozpoznat jazyk textu pomocí Javy
 

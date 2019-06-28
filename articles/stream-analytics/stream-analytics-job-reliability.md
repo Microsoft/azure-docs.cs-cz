@@ -3,32 +3,32 @@ title: Vyhnout se přerušením služeb v úlohách Azure Stream Analytics
 description: Tento článek popisuje pokyny k provádění úlohy Stream Analytics upgrade odolný.
 services: stream-analytics
 author: jseb225
-ms.author: jeanb
+ms.author: sidram
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 06/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7375fb2763ad83e049b1ef30a623f164e059a792
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 672706c97a423819dd26941e0b6e22affa9c2bb8
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61479452"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329841"
 ---
 # <a name="guarantee-stream-analytics-job-reliability-during-service-updates"></a>Záruka spolehlivosti úlohy Stream Analytics během aktualizace služeb
 
-Součástí je plně spravovaná služba je schopnost zavádět nové funkce služby a vylepšení rychlým tempem. Stream Analytics v důsledku toho může mít aktualizace služby nasazení na základě týdenní (nebo vyšší). Bez ohledu na to, jaký objem testování provádí stále existuje riziko, že existující, spuštěné úlohy, mohou přestat fungovat kvůli implementaci chybu. Pro zákazníky, kteří spouštět kritické úlohy streamování zpracování těchto rizik třeba se jim vyhnout. Azure je mechanismus zákazníci mohou používat ke snížení rizika **[spárované oblasti](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)** modelu. 
+Součástí je plně spravovaná služba je schopnost zavádět nové funkce služby a vylepšení rychlým tempem. Stream Analytics v důsledku toho může mít aktualizace služby nasazení na základě týdenní (nebo vyšší). Bez ohledu na to, jaký objem testování provádí stále existuje riziko, že existující, spuštěné úlohy, mohou přestat fungovat kvůli implementaci chybu. Pokud používáte zásadně důležité úlohy, tato rizika třeba se jim vyhnout. Toto riziko následující Azure můžete snížit **[spárované oblasti](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)** modelu. 
 
 ## <a name="how-do-azure-paired-regions-address-this-concern"></a>Jak spárované oblasti Azure, které řeší tento problém?
 
-Stream Analytics zaručuje, že úlohy ve spárovaných oblastí jsou aktualizovány v samostatné dávky. Mezi aktualizacemi identifikovat potenciální chyby slov a opravit je v důsledku není dostatečná časové prodlevy.
+Stream Analytics zaručuje, že úlohy ve spárovaných oblastí jsou aktualizovány v samostatné dávky. Mezi aktualizacemi identifikovat možné problémy a opravit je je výsledkem dostatečná časové prodlevy.
 
 _S výjimkou střed Indie_ (jehož spárovaná oblast, Indie – Jih, nemá přítomnost Stream Analytics), nasazení aktualizace do služby Stream Analytics se nevyskytuje v sadě spárované oblasti současně. Nasazení ve více oblastech **ve stejné skupině** může dojít k **ve stejnou dobu**.
 
 V článku věnovaném **[dostupnost a spárovaných oblastí](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)** obsahuje nejnovější informace, na kterém jsou spárované oblasti.
 
-Zákazníkům doporučujeme obě spárovaných oblastí nasazení stejné úlohy. Kromě Stream Analytics interní možnosti monitorování, Zákazníci také doporučujeme monitorovat úlohy jako **obě** jsou úloh v produkčním prostředí. Pokud se zjistí, že konec být výsledkem aktualizace služby Stream Analytics, odpovídajícím způsobem eskalovat a převzetí služeb při selhání kterýchkoli příjem dat na výstup úlohy v pořádku. Eskalace pro podporu bránící spárované oblasti byly ovlivněny nové nasazení a udržovat tak integritu spárované úloh.
+Doporučuje se obě spárovaných oblastí nasazení stejné úlohy. Měli byste pak [sledování těchto úloh](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-set-up-alerts#scenarios-to-monitor) máme vás upozornit, když se stane něco neočekávaného. Pokud jeden z těchto úloh končí nahoru v [chybového stavu](https://docs.microsoft.com/azure/stream-analytics/job-states) po aktualizaci služby Stream Analytics, můžete kontaktovat zákaznickou podporu vám pomůže identifikovat hlavní příčinu. By měl také převzetí služeb při selhání kterýchkoli příjem dat na výstup úlohy v pořádku.
 
 ## <a name="next-steps"></a>Další postup
 

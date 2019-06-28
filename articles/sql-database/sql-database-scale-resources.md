@@ -11,17 +11,17 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 6285348aa8067f356635dfff9ecd4eb34c431f0b
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.date: 06/25/2019
+ms.openlocfilehash: d8949f63dfa9b409cc14fe9c3bbed70f23a73c86
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147698"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357138"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>Dynamicky škálovat prostředky databáze s minimálními výpadky
 
-Azure SQL Database umožňuje dynamicky přidat další prostředky do databáze s minimálními výpadky.
+Azure SQL Database umožňuje dynamicky přidat další prostředky do databáze s minimálními [výpadek](https://azure.microsoft.com/support/legal/sla/sql-database/v1_2/), nicméně je přepínač po dobu kde dojde k databázi ke ztrátě připojení pro krátké množství času, který může být zmírnit použitím logika opakovaných pokusů.
 
 ## <a name="overview"></a>Přehled
 

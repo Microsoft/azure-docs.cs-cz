@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: 9339d891e8fe895f598e1a2615fcfa66b053b3e0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 91368ac3b1d7948257fa9e55debc862567593425
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67063853"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341389"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Konfigurace aplikace v Javě v Linuxu pro Azure App Service
 
@@ -60,6 +60,43 @@ Pokud vaše aplikace používá [Logback](https://logback.qos.ch/) nebo [Log4j](
 ### <a name="troubleshooting-tools"></a>Řešení potíží s nástroji
 
 Integrované Image Java jsou založeny na [Alpine Linuxu](https://alpine-linux.readthedocs.io/en/latest/getting_started.html) operačního systému. Použití `apk` Správce balíčků pro instalaci řešení potíží nástroje nebo příkazy.
+
+### <a name="flight-recorder"></a>Nahrávání letu
+
+Všechny Image Linuxu, Javě ve službě App Service mají nahrávání letu Zulu nainstalované, takže můžete snadno připojit k JVM a spustit profiler záznam nebo vygenerovat výpis haldy paměti.
+
+#### <a name="timed-recording"></a>Vypršel časový limit nahrávání
+
+K získání začít, připojte se přes SSH služby App Service a spustit `jcmd` příkazu zobrazte seznam všechny spuštěné procesy Java. Kromě jcmd samotného měli byste vidět aplikace Java spuštěná s číslem ID procesu (pid).
+
+```shell
+078990bbcd11:/home# jcmd
+Picked up JAVA_TOOL_OPTIONS: -Djava.net.preferIPv4Stack=true
+147 sun.tools.jcmd.JCmd
+116 /home/site/wwwroot/app.jar
+```
+
+Spusťte následující příkaz Spustit záznam 30 sekundách JVM. Tím profil JVM a vytvořte soubor JFR `jfr_example.jfr` v domovském adresáři. (Nahradit 116 pid aplikace v jazyce Java.)
+
+```shell
+jcmd 116 JFR.start name=MyRecording settings=profile duration=30s filename="/home/jfr_example.jfr"
+```
+
+Během 30 druhý interval může ověřit záznam probíhat spuštěním `jcmd 116 JFR.check`. Tím se zobrazí všechny záznamy pro daný proces Javy.
+
+#### <a name="continuous-recording"></a>Průběžné záznam
+
+Nahrávání letu Zulu můžete průběžně profilu aplikace v jazyce Java s minimálním dopadem na výkon modulu runtime ([zdroj](https://assets.azul.com/files/Zulu-Mission-Control-data-sheet-31-Mar-19.pdf)). Uděláte to tak, spusťte následující příkaz rozhraní příkazového řádku Azure k vytvoření nastavení aplikace s názvem JAVA_OPTS s nezbytné konfigurace. Obsah JAVA_OPTS nastavení aplikace, které jsou předány `java` příkaz při spuštění aplikace.
+
+```azurecli
+az webapp config appsettings set -g <your_resource_group> -n <your_app_name> --settings JAVA_OPTS=-XX:StartFlightRecording=disk=true,name=continuous_recording,dumponexit=true,maxsize=1024m,maxage=1d
+```
+
+Další informace najdete v tématu [Jcmd informace o příkazech](https://docs.oracle.com/javacomponents/jmc-5-5/jfr-runtime-guide/comline.htm#JFRRT190).
+
+### <a name="analyzing-recordings"></a>Analýza záznamy
+
+Použití [FTPS](../deploy-ftp.md) JFR soubor stáhnout do svého místního počítače. Pokud chcete analyzovat soubor JFR, stáhněte a nainstalujte [Zulu střediskem](https://www.azul.com/products/zulu-mission-control/). Řídicí středisko Zulu, v tématu [Azul dokumentaci](https://docs.azul.com/zmc/) a [pokyny k instalaci](https://docs.microsoft.com/en-us/java/azure/jdk/java-jdk-flight-recorder-and-mission-control).
 
 ## <a name="customization-and-tuning"></a>Přizpůsobení a optimalizace
 

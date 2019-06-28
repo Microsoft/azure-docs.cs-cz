@@ -8,16 +8,15 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.assetid: 447ffb8e-3e91-4403-872b-2f496495899d
-ms.date: 04/05/2019
-ms.openlocfilehash: 26d653b873e959f0804e0456ed87ee68c39413e5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/22/2019
+ms.openlocfilehash: 4bfee4ec442c9e7b0351b0fd0c6a2b8e163a2541
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64720671"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67330307"
 ---
-# <a name="create-and-manage-trading-partner-agreements-by-using-azure-logic-apps-and-enterprise-integration-pack"></a>Vytvoření a Správa smluv s obchodními partnery s využitím Azure Logic Apps a Enterprise Integration Pack
+# <a name="create-and-manage-trading-partner-agreements-in-azure-logic-apps"></a>Vytvoření a Správa smluv s obchodními partnery v Azure Logic Apps
 
 A [obchodní partner](../logic-apps/logic-apps-enterprise-integration-partners.md) 
 *smlouvy* pomáhá organizacím a podnikům bez problémů komunikovat mezi sebou definováním konkrétní standardní průmyslový protokol, pro použití při výměně zpráv Business-to-business (B2B). Smlouvy o poskytují běžné výhody, třeba:
@@ -27,6 +26,8 @@ A [obchodní partner](../logic-apps/logic-apps-enterprise-integration-partners.m
 * Je snadné vytvořit, spravovat a používat pro sestavování integračních řešení enterprise.
 
 Tento článek popisuje, jak vytvořit AS2, EDIFACT nebo X12 smlouvy, který vám pomůže při vytváření integrovaných řešení pro scénáře B2B enterprise s použitím [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md) a [Azure Logic Apps](../logic-apps/logic-apps-overview.md). Když vytvoříte smlouvu, potom můžete použít AS2, EDIFACT nebo X12 konektory pro výměnu zpráv B2B.
+
+Vytvoření smlouvy pro výměnu zpráv RosettaNet najdete v tématu [zpráv Exchange RosettaNet](../logic-apps/logic-apps-enterprise-integration-rosettanet.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -65,8 +66,8 @@ V hlavní nabídce Azure zvolte **všechny služby**. Do vyhledávacího pole za
    | **Identita hostitele** | Ano | <*host-partner-identifier*> | Identifikátor hostitele partnera |
    | **Partner s identitou hosta** | Ano | <*jméno partnera hosta*> | Představuje organizace, která je podnikající s partnerem hostitele partner s identitou hosta |
    | **Identita hosta** | Ano | <*guest-partner-identifier*> | Identifikátor partner hosta |
-   | **Zobrazit nastavení** | Různé | Různé | Tyto vlastnosti určit způsob zpracování všechny příchozí zprávy přijaté službou smlouvy. Další informace najdete v tématu Typ příslušné smlouvy: <p>- [Nastavení zpráv AS2](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [Nastavení zpráv EDIFACT](logic-apps-enterprise-integration-edifact.md) <br>- [X12 zprávy nastavení](logic-apps-enterprise-integration-x12.md) |
-   | **Nastavení odesílání** | Různé | Různé | Tyto vlastnosti určit způsob zpracování všech odchozí zprávy odeslané smlouvě. Další informace najdete v tématu Typ příslušné smlouvy: <p>- [Nastavení zpráv AS2](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [Nastavení zpráv EDIFACT](logic-apps-enterprise-integration-edifact.md) <br>- [X12 zprávy nastavení](logic-apps-enterprise-integration-x12.md) |
+   | **Zobrazit nastavení** | Různé | Různé | Tyto vlastnosti určují, jak partner s identitou hostitele obdrží všechny příchozí zprávy od partnera hostovaného ve smlouvě. Další informace najdete v tématu Typ příslušné smlouvy: <p>- [Nastavení zpráv AS2](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [Nastavení zpráv EDIFACT](logic-apps-enterprise-integration-edifact.md) <br>- [X12 zprávy nastavení](logic-apps-enterprise-integration-x12.md) |
+   | **Nastavení odesílání** | Různé | Různé | Tyto vlastnosti určují, jak partner s identitou hostitele odešle všechny odchozí zprávy partnerovi hostovaného ve smlouvě. Další informace najdete v tématu Typ příslušné smlouvy: <p>- [Nastavení zpráv AS2](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [Nastavení zpráv EDIFACT](logic-apps-enterprise-integration-edifact.md) <br>- [X12 zprávy nastavení](logic-apps-enterprise-integration-x12.md) |
    |||||
 
 1. Po dokončení vytváření vaší smlouvě na **přidat** zvolte **OK**a vraťte se ke svému účtu integrace.

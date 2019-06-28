@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: raynew
-ms.openlocfilehash: 8df4f17c9afbf10c6507e505c6540c3f66a42309
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 51de1c4ac17360282877f05d52c3ea8fa2c6d712
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275625"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67310779"
 ---
 # <a name="delete-a-recovery-services-vault"></a>Odstranění trezoru služby Recovery Services
 
@@ -114,7 +114,7 @@ Tento postup poskytuje příklad, který ukazuje, jak odstranit zálohovaná dat
 1. V nabídce řídicího panelu trezoru klikněte na tlačítko **infrastruktura zálohování**.
 2. Klikněte na tlačítko **servery pro správu zálohování** k zobrazení serverů.
 
-    ![Vyberte svůj trezor otevřete jeho řídicí panel](./media/backup-azure-delete-vault/delete-backup-management-servers.png)
+    ![Vyberte trezor otevřete jeho řídicí panel](./media/backup-azure-delete-vault/delete-backup-management-servers.png)
 
 3. Klikněte pravým tlačítkem na položku > **odstranit**.
 4. Na **odstranit** nabídku, zadejte název serveru a klikněte na tlačítko **odstranit**.
@@ -124,7 +124,7 @@ Tento postup poskytuje příklad, který ukazuje, jak odstranit zálohovaná dat
 
 > [!NOTE]
 > Odebrat položky, v konzole pro správu serveru nebo v konzole MARS na chráněném serveru, ukončete ochranu a odstranit zálohy. Pokud zůstanou zálohované položky, se zobrazí následující chyba při pokusu o odstranění a zrušení registrace serveru:
-> 
+>
 >![nepovedlo se odstranit](./media/backup-azure-delete-vault/deletion-failed.png)
 
 6. Pokud chcete ověřit, že úloha odstranění dokončena, zkontrolujte zprávy Azure ![Odstranit data zálohy](./media/backup-azure-delete-vault/messages.png).
@@ -159,8 +159,8 @@ Tento postup poskytuje příklad, který ukazuje, jak odstranit zálohovaná dat
 
 > [!NOTE]
 > Před odstraněním těchto server registrace, musí se odstranit zálohované položky přidružené k zálohování serveru pro správu nebo agenta Azure Backup serveru. Odebrat položky zálohování, přejděte na SC DPM, MABS nebo MARS konzoly pro správu na serveru podle potřeby a vyberte příslušné možnosti k zastavení ochrany a odstranění zálohy. Pokud jsou stále spojeny žádné zálohované položky, zobrazí se následující chyba:
-> 
-> 
+>
+>
 >![nepovedlo se odstranit](./media/backup-azure-delete-vault/deletion-failed.png)
 
 8. Pokud chcete ověřit, že úloha odstranění dokončena, zkontrolujte zprávy Azure ![Odstranit data zálohy](./media/backup-azure-delete-vault/messages.png).

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: pabutler
-ms.openlocfilehash: dd2e68c820a8c9e503a3539fd50bf3fba68e3949
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9cfec65843012e781c8a8dd06cbc4d1225b0dd36
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257529"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67338895"
 ---
 # <a name="dynamics-365-for-customer-engagement-prerequisites"></a>Dynamics 365 Customer Engagement předpoklady
 
@@ -40,7 +40,7 @@ Musí odpovídat vaší Dynamics 365 Customer Engagement aplikace [pokyny pro re
 
 Obchodní požadavky zahrnují následující procesní, smluvní a právní závazky:
 
-* Musíte být zaregistrováni na [Microsoft Partner Network (MPN)](https://partners.microsoft.com/PartnerProgram/simplifiedenrollment.aspx) nebo být registrované vydavatele na webu Marketplace cloudu. Pokud jste se nezaregistrovali, postupujte podle kroků v [stát vydavatelem cloudové Tržiště](https://docs.microsoft.com/azure/marketplace/become-publisher).  (Třetí krok, použijte [formulář nominace partnera AppSource](https://appsource.microsoft.com/partners/signup)). 
+* Musíte být zaregistrováni na [Microsoft Partner Network (MPN)](https://partners.microsoft.com/PartnerProgram/simplifiedenrollment.aspx) nebo být registrované vydavatele na webu Marketplace cloudu. Pokud jste se nezaregistrovali, postupujte podle kroků v [stát vydavatelem cloudové Tržiště](https://docs.microsoft.com/azure/marketplace/become-publisher).  (Může se také připojit pomocí [Dynamics 365 pro Customer Engagement onboardingový tým](https://experience.dynamics.com/isvengage/)).
 
     >[!NOTE]
     >K přihlášení na portál Cloud Partner musí použít stejný účet registrace Microsoft Developer Center. Pro svoje nabídky na webu Azure Marketplace byste měli mít jenom jeden účet Microsoft. Tento účet nesmí být specifické pro jednotlivé služby nebo nabídky.

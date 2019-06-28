@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: 91f15f9c19b480d950b2c715e6d9290e01184cf7
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 14350125f88c315a813eb64e3ce2b88dbec2aa24
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67272374"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67340198"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB .NET Core SDK pro rozhraní SQL API: Zpráva k vydání verze a prostředky
 > [!div class="op_single_selector"]
@@ -50,10 +50,8 @@ Azure Cosmos DB .NET Core SDK má paritu funkcí s nejnovější verzí [.NET SD
 * Podpora pro datové proudy.
 * Aktualizované CosmosResponseMessage ze serveru vrátit stavový kód a pouze vyvolat výjimku, pokud není vrácena žádná odpověď.
 
-### <a name="a-name250250"></a><a name="2.5.0"/>2.5.0
+### <a name="a-name241241"></a><a name="2.4.1"/>2.4.1
 
-* Povolit požadavky na zápis pro použití náhradní lokality do jiné oblasti, pokud původní jeden server selže
-* Přidání relace zásady opakování pro žádost o zápis
 * Opravy trasování časování pro dotazy, které způsobily prázdné stránky
 
 ### <a name="a-name240240"></a><a name="2.4.0"/>2.4.0
@@ -234,7 +232,7 @@ Azure Cosmos DB .NET Core SDK má paritu funkcí s nejnovější verzí [.NET SD
 
 ### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
 
-* Přidání podpory pro dotazy agregace (počet, MIN, MAX, součet a průměr). Zobrazit [podporu agregace](how-to-sql-query.md#Aggregates).
+* Přidání podpory pro dotazy agregace (počet, MIN, MAX, součet a průměr). Zobrazit [podporu agregace](sql-query-aggregates.md).
 * Snížili minimální propustnost na dělené kolekce z 10,100 RU/s na 2 500 RU/s.
 
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
@@ -257,7 +255,7 @@ Pokud máte dotazy související s touto sadou SDK, zveřejněte ji do [StackOve
 
 | Verze | Datum vydání | Datum vyřazení z provozu |
 | --- | --- | --- |
-| [2.5.0](#2.5.0) |18. června 2019 |--- |
+| [2.4.1](#2.4.1) |20. června 2019 |--- |
 | [2.4.0](#2.4.0) |05. května 2019 |--- |
 | [2.3.0](#2.3.0) |04. dubna 2019 |--- |
 | [2.2.3](#2.2.3) |11. března 2019 |--- |

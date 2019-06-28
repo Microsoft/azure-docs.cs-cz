@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df4f06528d0dd261dd92ab84b07bb705e23f7fd6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 523f1adc94870f79d198366059f33ad52f5dad68
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67113072"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67293068"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Spolupráce Azure Active Directory s B2B nejčastější dotazy
 
@@ -42,7 +42,7 @@ Ano. Uživatelé typu Host můžete resetovat své metody ověřování službou
 Zvoucí organizaci provádí ověřování službou Multi-Factor Authentication. Zvoucí organizaci Ujistěte se, že má organizace dostatek licencí pro uživatele B2B, kteří používají ověřování službou Multi-Factor Authentication.
 
 ### <a name="what-if-a-partner-organization-already-has-multi-factor-authentication-set-up-can-we-trust-their-multi-factor-authentication-and-not-use-our-own-multi-factor-authentication"></a>Co když partnerské organizace už má nastavení služby Multi-Factor authentication? Můžete jsme důvěřovat ověřování službou Multi-Factor Authentication a nepoužívat naše vlastní služby Multi-Factor authentication?
-Tato funkce je plánovaná pro budoucí verze, tak, která pak můžete vybrat konkrétní partnerů, které chcete vyloučit z vaší služby Multi-Factor authentication (zvoucí organizaci.).
+Tato funkce není aktuálně podporována. Pokud přístup k prostředkům vaší organizace se vyžaduje ověřování službou Multi-Factor Authentication, se musí registrovat pro ověřování službou Multi-Factor Authentication v organizaci partnera poskytujícího vaše (pozvání) organizace.
 
 ### <a name="how-can-i-use-delayed-invitations"></a>Použití zpožděného pozvánky
 Organizace chtít přidat uživatele spolupráce B2B, zřizování aplikací podle potřeby a potom odeslat pozvánky. Pozvání spolupráce B2B rozhraní API můžete použít k přizpůsobení pracovního postupu registrace.

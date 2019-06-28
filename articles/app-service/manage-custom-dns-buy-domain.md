@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 4b26446845d004b4dd92807c0b5ec0ada9ed181f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6bba176a27cc70321915654e3e2e62320f22c16c
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66475210"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67310147"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Nákup vlastního názvu domény pro službu Azure App Service
 
@@ -147,7 +147,7 @@ Zobrazí také názvy vybraných hostitelů v **vlastní domény** stránku, **v
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added.png)
 
 > [!NOTE]
-> A **Poznámka zabezpečení** popisek pro vaši vlastní doménu znamená, že je ještě není vázán na certifikát SSL a jakékoli požadavek HTTPS z prohlížeče do vaší vlastní domény zobrazí a chyby nebo upozornění, v závislosti na prohlížeči. Konfigurace vazby SSL, najdete v článku [koupě a konfigurace certifikátu SSL pro službu Azure App Service](web-sites-purchase-ssl-web-site.md).
+> A **zabezpečení** popisek pro vaši vlastní doménu znamená, že je ještě není vázán na certifikát SSL a jakékoli požadavek HTTPS z prohlížeče do vaší vlastní domény zobrazí chybu nebo upozornění, v závislosti na prohlížeči. Konfigurace vazby SSL, najdete v článku [koupě a konfigurace certifikátu SSL pro službu Azure App Service](web-sites-purchase-ssl-web-site.md).
 >
 
 Chcete-li otestovat názvy hostitelů, přejděte na uvedené názvy hostitelů v prohlížeči. V příkladu v předchozím snímku obrazovky, zkuste přejít na stránku _kontoso.net_ a _www\.kontoso.net_.

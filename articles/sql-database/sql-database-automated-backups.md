@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 05/20/2019
-ms.openlocfilehash: 1c81f5748d1e3edff4902eb462b9beea78acd8bc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3e56244f074e31672cf77bc74998096e215a4db7
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65951646"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357337"
 ---
 # <a name="automated-backups"></a>Automatizované zálohy
 
@@ -32,7 +32,7 @@ SQL Database využívá technologii SQL Server k vytvoření [úplné zálohová
 Můžete použít tyto zálohy na:
 
 - **Obnovit existující databáze v daném okamžiku v minulosti** do doby uchování pomocí webu Azure portal, prostředí Azure PowerShell, rozhraní příkazového řádku Azure nebo rozhraní REST API. V izolované databáze a elastické fondy tahle operace vytvoří novou databázi na stejném serveru jako je původní databáze. Ve spravované instanci této operace můžete vytvořit kopii databáze nebo na stejném nebo jiném Managed Instance v rámci stejného předplatného.
-  - **[Změnit uchování zálohy](#how-to-change-the-pitr-backup-retention-period)**  mezi 35 dnů ke konfiguraci zásady zálohování.
+  - **[Změnit uchování zálohy](#how-to-change-the-pitr-backup-retention-period)**  mezi 7 až 35 dnů ke konfiguraci zásady zálohování.
   - **Změna zásad dlouhodobého uchovávání na 10 let** do izolované databáze a Elastických fondů pomocí [na webu Azure portal](sql-database-long-term-backup-retention-configure.md#configure-long-term-retention-policies) nebo [prostředí Azure PowerShell](sql-database-long-term-backup-retention-configure.md#use-powershell-to-configure-long-term-retention-policies-and-restore-backups).
 - **Obnovení odstraněné databáze s časem se odstranila** nebo kdykoli do doby uchování. Odstraněnou databázi můžete obnovit jen do stejného logického serveru nebo Managed Instance, kde původní databáze byla vytvořena.
 - **Obnovení databáze do jiné geografické oblasti**. Geografické obnovení umožňuje zotavení po havárii zeměpisné, když nelze přistupovat k serveru a databáze. Vytvoří novou databázi v jakékoli existující server kdekoli v celém světě.

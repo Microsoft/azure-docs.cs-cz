@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 3/18/2019
-ms.openlocfilehash: 4be73554df0b6bddaafe3910c80c855e127d79f1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ac58bbbc252d66620ad410bffa805b75ec3042d4
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60771647"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341755"
 ---
 # <a name="azure-stream-analytics-output-to-azure-sql-database"></a>Výstup Azure Stream Analytics ke službě Azure SQL Database
 
@@ -39,7 +39,7 @@ Tady jsou některé konfigurace v rámci jednotlivých služeb, který může po
 
 - **Dělené tabulky a indexy** – použití [dělené](https://docs.microsoft.com/sql/relational-databases/partitions/partitioned-tables-and-indexes?view=sql-server-2017) tabulky SQL a dělené indexy v tabulce se stejným sloupcem jako klíč oddílu (například PartitionId) může výrazně snížit konfliktů mezi oddíly během zápisu. Pro dělenou tabulku, budete muset vytvořit [oddílů](https://docs.microsoft.com/sql/t-sql/statements/create-partition-function-transact-sql?view=sql-server-2017) a [schéma oddílu](https://docs.microsoft.com/sql/t-sql/statements/create-partition-scheme-transact-sql?view=sql-server-2017) na primární skupinu souborů. Při načítání nových dat to bude také zvýšit dostupnost existující data. Limit vstupně-výstupních operací protokolu může spuštění na základě počtu oddílů, které jde navýšit o upgrade SKU.
 
-- **Vyhněte se narušení jedinečné klíče** – Pokud se zobrazí [více klíčů porušení upozornění](stream-analytics-common-troubleshooting-issues.md#handle-duplicate-records-in-azure-sql-database-output) v protokolu aktivit Azure Stream Analytics, zkontrolujte úlohy není ovlivněn porušení omezení unique, které by mohly nastat během obnovení případy. Toho se lze vyvarovat nastavením [Ignorovat\_DUP\_klíč](stream-analytics-common-troubleshooting-issues.md#handle-duplicate-records-in-azure-sql-database-output) možnost v indexů.
+- **Vyhněte se narušení jedinečné klíče** – Pokud se zobrazí [více klíčů porušení upozornění](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) v protokolu aktivit Azure Stream Analytics, zkontrolujte úlohy není ovlivněn porušení omezení unique, které by mohly nastat během obnovení případy. Toho se lze vyvarovat nastavením [Ignorovat\_DUP\_klíč](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) možnost v indexů.
 
 ## <a name="azure-data-factory-and-in-memory-tables"></a>Azure Data Factory a tabulky v paměti
 

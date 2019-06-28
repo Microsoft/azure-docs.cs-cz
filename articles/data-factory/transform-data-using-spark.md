@@ -11,12 +11,12 @@ ms.date: 05/31/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: cdf4dba3996668b3c9fe31df10050ff2cbff6cb3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c493dbc99edc794dd5a261dfc004c2c8c1cb6d52
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60387821"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67312076"
 ---
 # <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>Transformace dat pomocí aktivity Sparku ve službě Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, který používáte:"]
@@ -25,8 +25,6 @@ ms.locfileid: "60387821"
 
 Aktivita Spark ve službě Data Factory [kanálu](concepts-pipelines-activities.md) spustí program Sparku na [vlastní](compute-linked-services.md#azure-hdinsight-linked-service) nebo [na vyžádání](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) clusteru HDInsight. Tento článek vychází [aktivity transformace dat](transform-data.md) článek, který nabízí obecný přehled o transformaci dat a aktivity podporované transformace. Při použití Spark propojené služby na vyžádání služby Data Factory automaticky vytvoří cluster Spark je just-in-time ke zpracování dat a pak odstraní cluster po dokončení zpracování. 
 
-> [!IMPORTANT]
-> Aktivita Spark nepodporuje clustery HDInsight Spark, které pomocí Azure Data Lake Store jako primární úložiště.
 
 ## <a name="spark-activity-properties"></a>Vlastnosti aktivity Spark
 Tady je ukázková definice JSON aktivity Spark:    
@@ -45,7 +43,7 @@ Tady je ukázková definice JSON aktivity Spark:
             "referenceName": "MyAzureStorageLinkedService",
             "type": "LinkedServiceReference"
         },
-        "rootPath": "adfspark\\pyFiles",
+        "rootPath": "adfspark",
         "entryFilePath": "test.py",
         "sparkConfig": {
             "ConfigItem1": "Value"

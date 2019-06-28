@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 675ce2de91dd4e53f4945ceef3b174c33be001f6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2872d106eea56a37c362195e7a3250058336768b
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66118604"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295060"
 ---
 # <a name="appendix-for-azure-disk-encryption"></a>Dodatek pro Azure Disk Encryption 
 
@@ -133,15 +133,15 @@ V následující tabulce jsou uvedeny parametry, které lze použít ve skriptu 
   - [Zakažte šifrování u spuštěného virtuálního počítače s Linuxem](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm-without-aad) 
     - Zakázáním šifrování je povolena pouze u svazků s daty pro virtuální počítače s Linuxem.  
 
-### <a name="encrypt-or-decrypt-vm-scale-sets"></a>Šifrování nebo dešifrování škálovací sady virtuálních počítačů
+### <a name="encrypt-or-decrypt-virtual-machine-scale-sets"></a>Šifrování nebo dešifrování škálovací sady virtuálních počítačů
 
 - [Povolit šifrování disku ve škálovací sadě virtuálních počítačů spuštěné systému Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-linux)
 
 - [Povolit šifrování disku ve škálovací sady virtuálních počítačů spuštěných Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-windows)
 
-  - [Nasadit počítače VM Scale Sets ze systému Linux s jumpbox a povoluje šifrování na VMSS v Linuxu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox)
+  - [Nasazení virtuálního počítače škálovací sady virtuálních počítačů s Linuxem pomocí jumpbox a povoluje šifrování na VMSS v Linuxu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox)
 
-  - [Nasadit počítače VM Scale Sets z Windows pomocí jumpbox a povoluje šifrování na Windows VMSS](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox)
+  - [Nasazení virtuálního počítače škálovací sady virtuálních počítačů Windows s jumpbox a povoluje šifrování na Windows VMSS](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox)
 
 - [Zakázat šifrování disku ve škálovací sadě virtuálních počítačů spuštěné systému Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-linux)
 
@@ -206,7 +206,7 @@ Použití [ `manage-bde` ](https://technet.microsoft.com/library/ff829849.aspx) 
 
 ### <a name="prerequisites-for-os-disk-encryption"></a>Požadavky na šifrování disku operačního systému
 
-* Virtuální počítač musí používat kompatibilní se šifrováním disku operačního systému distribučního jak je uvedeno v [Azure Disk Encryption – nejčastější dotazy](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport) 
+* Virtuální počítač musí používat kompatibilní se šifrováním disku operačního systému distribučního jak je uvedeno v [Azure Disk Encryption podporované operační systémy: Linux](azure-security-disk-encryption-prerequisites.md#linux) 
 * Virtuální počítač musí být vytvořené z Marketplace image v Azure Resource Manageru.
 * Virtuální počítač Azure s minimálně 4 GB paměti RAM (doporučená velikost je 7 GB).
 * (Pro RHEL a CentOS) Zakážete SELinux. Pokud chcete zakázat SELinux, naleznete v tématu "4.4.2. Zakázání SELinux"v [Průvodce SELinux uživatele a správce](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/SELinux_Users_and_Administrators_Guide/sect-Security-Enhanced_Linux-Working_with_SELinux-Changing_SELinux_Modes.html#sect-Security-Enhanced_Linux-Enabling_and_Disabling_SELinux-Disabling_SELinux) na virtuálním počítači.

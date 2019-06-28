@@ -9,13 +9,13 @@ services: iot-hub
 ms.devlang: java
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 02/22/2019
-ms.openlocfilehash: 12574dd6600004175ab85eead0f837544c6e5ebf
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 06/21/2019
+ms.openlocfilehash: 52e221088a7b12551636ecdc81532448f38eb26c
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59004798"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67330451"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-java"></a>Rychlý start: Odesílání telemetrických dat ze zařízení do služby IoT hub a čtení s back endové aplikace (Java)
 
@@ -87,7 +87,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
     Tuto hodnotu použijete později v tomto rychlém startu.
 
-3. Dále potřebujete _koncový bod kompatibilní s Event Hubs_, _cestu kompatibilní s Event Hubs_ a _primární klíč vlastníka centra IoT_ z centra IoT, abyste umožnili back-endové aplikaci připojit se k centru IoT a načíst zprávy. Následující příkazy načtou tyto hodnoty pro centrum IoT:
+3. Musíte také _koncový bod kompatibilní se službou Event Hubs_, _kompatibilní se službou Event Hubs cesta_, a _primární klíč služby_ ze služby IoT hub umožňuje back endové aplikace připojení ke službě IoT hub a načítání zpráv. Následující příkazy načtou tyto hodnoty pro centrum IoT:
 
      **YourIoTHubName: Nahraďte tento zástupný text pod názvem, který jste vybrali pro službu IoT hub.
 
@@ -96,7 +96,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
     az iot hub show --query properties.eventHubEndpoints.events.path --name YourIoTHubName
 
-    az iot hub policy show --name iothubowner --query primaryKey --hub-name YourIoTHubName
+    az iot hub policy show --name service --query primaryKey --hub-name YourIoTHubName
     ```
 
     Tyto tři hodnoty si poznamenejte, použijete je později v rychlém startu.
@@ -135,12 +135,11 @@ Back-endová aplikace se připojí ke koncovému bodu **Events** na straně slu�
 
 2. V libovolném textovém editoru otevřete soubor **src/main/java/com/microsoft/docs/iothub/samples/ReadDeviceToCloudMessages.java**. Aktualizujte následující proměnné a uložte provedené změny souboru.
 
-    | Proměnná | Hodnota |
+    | Proměnná | Value |
     | -------- | ----------- |
     | `eventHubsCompatibleEndpoint` | Hodnotu proměnné nahraďte koncovým bodem kompatibilním s Event Hubs, který jste si předtím poznamenali. |
     | `eventHubsCompatiblePath`     | Hodnotu proměnné nahraďte cestou kompatibilní s Event Hubs, kterou jste si předtím poznamenali. |
-    | `iotHubSasKey`                | Hodnotu proměnné nahraďte primárním klíčem vlastníka centra IoT, který jste si předtím poznamenali. |
-
+    | `iotHubSasKey`                | Nahraďte hodnotou proměnné, primární klíč služby, které jste si poznamenali dříve. |
 
 3. V okně místního terminálu pomocí následujících příkazů nainstalujte požadované knihovny a sestavte back-endovou aplikaci:
 

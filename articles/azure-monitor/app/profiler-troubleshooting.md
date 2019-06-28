@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: 6ab13e1ecd5f4825270f4b3a28251b959ad98f02
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6b57ffbd3cb2b31da3fc2882e941f9788d83fea8
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60731015"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341676"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Poradce při potížích, povolení nebo zobrazení Application Insights Profiler
 
@@ -69,7 +69,7 @@ Pro Profiler fungovala správně:
 * Webové aplikace musí mít povolené Application Insights.
 * Webové aplikace musí mít následující nastavení aplikace:
 
-    |Nastavení aplikace    | Hodnota    |
+    |Nastavení aplikace    | Value    |
     |---------------|----------|
     |APPINSIGHTS_INSTRUMENTATIONKEY         | Instrumentační klíč pro váš prostředek Application Insights    |
     |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |
@@ -88,7 +88,7 @@ Pro Profiler fungovala správně:
 
       ![profiler-webjob-log]
 
-Pokud nelze zjistit, proč se Profiler nefunguje pro vás, můžete stáhnout a odeslat na náš tým pro pomoc. 
+Pokud nelze zjistit, proč se Profiler nefunguje pro vás, můžete stáhnout a odeslat ji na náš tým potřebujete pomoc, serviceprofilerhelp@microsoft.com. 
     
 ### <a name="manual-installation"></a>Ruční instalace
 
@@ -101,7 +101,7 @@ Když konfigurujete Profiler, jsou provedeny aktualizace nastavení webové apli
 1. Nastavte **Always On** k **na**.
 1. Vytvoření nastavení aplikace:
 
-    |Nastavení aplikace    | Hodnota    |
+    |Nastavení aplikace    | Value    |
     |---------------|----------|
     |APPINSIGHTS_INSTRUMENTATIONKEY         | Instrumentační klíč pro váš prostředek Application Insights    |
     |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |

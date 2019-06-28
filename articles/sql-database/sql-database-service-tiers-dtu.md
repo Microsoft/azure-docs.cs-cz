@@ -11,17 +11,17 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 5/10/2019
-ms.openlocfilehash: 5d769e2198b714d611b3004e11ccc624d4c6acdf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/25/2019
+ms.openlocfilehash: 964a2931267ad2f1e2842693eadf43f8f629a084
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65546456"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357230"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Úrovně služeb v model nákupu založený na DTU
 
-Úrovně služeb v model nákupu založený na DTU jsou rozlišené pomocí celou řadu velikostí výpočetních s pevnou velikost zahrnutého úložiště, pevné období uchování zálohy a pevnou cenu. Všechny úrovně služeb v model nákupu založený na DTU poskytují flexibilitu změny velikosti výpočetních bez jakýchkoli prostojů. Izolované databáze a elastické fondy se účtují po hodinách na základě úrovně služeb a výpočetního prostředí.
+Úrovně služeb v model nákupu založený na DTU jsou rozlišené pomocí celou řadu velikostí výpočetních s pevnou velikost zahrnutého úložiště, pevné období uchování zálohy a pevnou cenu. Všechny úrovně služeb v model nákupu založený na DTU poskytují flexibilitu změny velikosti výpočetních s minimálními [výpadek](https://azure.microsoft.com/support/legal/sla/sql-database/v1_2/), nicméně je přepínač po dobu kde dojde k databázi ke ztrátě připojení pro krátkou dobu, která můžete minimalizovat použití logika opakovaných pokusů. Izolované databáze a elastické fondy se účtují po hodinách na základě úrovně služeb a výpočetního prostředí.
 
 > [!IMPORTANT]
 > Spravovaná instance SQL Database nepodporuje nákupní model založený na DTU. Další informace najdete v tématu [Azure SQL Database Managed Instance](sql-database-managed-instance.md).
@@ -165,9 +165,9 @@ Klíčové metriky na test výkonnosti se propustnost a dobu odezvy.
 
 | Třída služeb | Měření propustnosti | Požadavky na dobu odezvy |
 | --- | --- | --- |
-| Premium |Transakce za sekundu |95\. percentil na 0,5 sekund. |
-| Standard |Transakce za minutu |90\. percentil na 1.0 sekund. |
-| Basic |Transakce za hodinu |80\. percentil na 2.0 sekund. |
+| Premium |Transakce za sekundu |95. percentil na 0,5 sekund. |
+| Standard |Transakce za minutu |90. percentil na 1.0 sekund. |
+| Basic |Transakce za hodinu |80. percentil na 2.0 sekund. |
 
 ## <a name="next-steps"></a>Další postup
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: raynew
-ms.openlocfilehash: 8fd9f56c262ce3a7110aa71bf72d01fe875212c0
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 3ff6a1a52048e805f9236349d4fc8d45a14b78ea
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275767"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341457"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Matice podpory pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure
 
@@ -69,9 +69,9 @@ Site Recovery podporuje jakoukoli úlohu spuštěnou na podporovaném počítač
 Nastavení počítače | Počítače, které se replikují do Azure, musí splňovat [požadavky služby Azure](#azure-vm-requirements).
 Úlohám počítače | Site Recovery podporuje jakoukoli úlohu spuštěnou na podporovaném počítači replikace. [Další informace](https://aka.ms/asr_workload).
 Windows | – Windows Server 2019 (podporováno od [34 kumulativní aktualizace](https://support.microsoft.com/help/4490016) (verze 9.22 služby Mobility) a vyšší.<br/> – Windows Server 2016 (jádro serveru 64-bit, Server s desktopovým prostředím)<br/> - Windows Server 2012 R2, Windows Server 2012<br/> – Windows Server 2008 R2 s na minimálně SP1.<br/> – Windows Server 2008 64 a 32-bit s na minimálně SP2]. Pro migraci pouze podporováno. [Další informace](migrate-tutorial-windows-server-2008.md).<br/> – Windows 10, Windows 8.1, Windows 8, Windows 7 64-bit (podporováno od [36 kumulativní aktualizace](https://support.microsoft.com/help/4503156) (verze 9.22 služby Mobility a vyšší). Windows 7 RTM se nepodporuje. 
-Linux | Je podporován pouze 64bitové verzi systému. 32bitový systém se nepodporuje.<br/><br/> Site Recovery orchestruje převzetí služeb při selhání spuštění servery s Linuxem v Azure. Linux dodavatelů ale může omezit podporu pouze verze distribuce, které se ještě nedostaly ukončenou životností.<br/><br/> V Linuxových distribucích jsou podporovány pouze uložených jader, které jsou součástí vydání/aktualizace podverze distribuce.<br/><br/> Mezi hlavní Linux není podporována verze distribuční upgrade chráněných počítačů. K upgradu, zakažte replikaci, upgradovat operační systém a pak replikaci zase povolte.<br/><br/> [Další informace](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) informace o podpoře pro Linux a open source technologiemi v Azure.
-Linux Red Hat Enterprise | 5.2 na 5,11</b><br/> 6.1 k 6.10</b><br/> 7.0 pro 7.6<br/> <br/> Servery se systémem Red Hat Enterprise Linux by měly mít 5,11 5.2 [komponenty služby Linux Integration Services (LIS)](https://www.microsoft.com/download/details.aspx?id=55106) nainstalována počítačů pro spuštění v Azure.
-Linux: CentOS | 5.2 na 5,11</b><br/> 6.1 k 6.10</b><br/> 7.0 pro 7.6<br/> <br/> Servery se systémem CentOS 5.2 5,11 by měly mít [komponenty služby Linux Integration Services (LIS)](https://www.microsoft.com/download/details.aspx?id=55106) nainstalována počítačů pro spuštění v Azure.
+Linux | Je podporován pouze 64bitové verzi systému. 32bitový systém se nepodporuje.<br/><br/>Každý server Linux musí mít [komponenty služby Linux Integration Services (LIS)](https://www.microsoft.com/download/details.aspx?id=55106) nainstalované. Je vyžadován ke spuštění po testu převzetí služeb při selhání/převzetí služeb serveru v Azure. Pokud služby LIS součásti nechybí, ujistěte se, k instalaci [součásti](https://www.microsoft.com/download/details.aspx?id=55106) než povolíte replikaci pro počítače ke spuštění v Azure. <br/><br/> Site Recovery orchestruje převzetí služeb při selhání spuštění servery s Linuxem v Azure. Linux dodavatelů ale může omezit podporu pouze verze distribuce, které se ještě nedostaly ukončenou životností.<br/><br/> V Linuxových distribucích jsou podporovány pouze uložených jader, které jsou součástí vydání/aktualizace podverze distribuce.<br/><br/> Mezi hlavní Linux není podporována verze distribuční upgrade chráněných počítačů. K upgradu, zakažte replikaci, upgradovat operační systém a pak replikaci zase povolte.<br/><br/> [Další informace](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) informace o podpoře pro Linux a open source technologiemi v Azure.
+Linux Red Hat Enterprise | 5.2 na 5,11</b><br/> 6.1 k 6.10</b><br/> 7.0 pro 7.6<br/> <br/> Servery se systémem Red Hat Enterprise Linux 5.2 5,11 & 6.1 6.10 nemají [komponenty služby Linux Integration Services (LIS)](https://www.microsoft.com/download/details.aspx?id=55106) předinstalovaným. Nezapomeňte nainstalovat [součásti](https://www.microsoft.com/download/details.aspx?id=55106) než povolíte replikaci pro počítače ke spuštění v Azure.
+Linux: CentOS | 5.2 na 5,11</b><br/> 6.1 k 6.10</b><br/> 7.0 pro 7.6<br/> <br/> Servery se systémem CentOS 5.2 5,11 & 6.1 6.10 nemají [komponenty služby Linux Integration Services (LIS)](https://www.microsoft.com/download/details.aspx?id=55106) předinstalovaným. Nezapomeňte nainstalovat [součásti](https://www.microsoft.com/download/details.aspx?id=55106) než povolíte replikaci pro počítače ke spuštění v Azure.
 Ubuntu | Server se systémem Ubuntu 14.04 LTS [(zkontrolujte podporované verze jádra)](#ubuntu-kernel-versions)<br/><br/>Server se systémem Ubuntu 16.04 LTS [(zkontrolujte podporované verze jádra)](#ubuntu-kernel-versions)
 Debian | Debian 7/Debian 8 [(zkontrolujte podporované verze jádra)](#debian-kernel-versions)
 SUSE Linux | Systém SUSE Linux Enterprise Server 12 SP1, SP2, SP3, SP4 [(zkontrolujte podporované verze jádra)](#suse-linux-enterprise-server-12-supported-kernel-versions)<br/> SUSE Linux Enterprise Server 11 SP3, SUSE Linux Enterprise Server 11 SP4<br/> Upgrade replikované počítače z operačního systému SUSE Linux Enterprise Server 11 SP3 SP4 není podporován. Pokud chcete upgradovat, zakažte replikaci a znovu povolit po upgradu.
@@ -194,7 +194,7 @@ Disk horké přidávat nebo odebírat hosta/server | Ne
 Host/server - vyloučení disku | Ano
 Funkce multipath hosta/server (MPIO) | Ne
 Oddílů GPT hosta/server | Pěti oddílů se podporuje od [37 kumulativní aktualizace](https://support.microsoft.com/help/4508614/) (verze 9.25 služby Mobility) a vyšší. Dříve nebyly podporovány čtyři.
-Spuštění EFI/UEFI hosta/server | -Podporovány, pokud používáte verzi služby Mobility 9.13 nebo vyšší.<br/> -Podporované při migraci virtuálních počítačů VMware nebo fyzické servery s Windows serverem 2012 nebo novější do Azure.<br/> Pouze – můžete replikovat virtuální počítače pro migraci. Navrácení služeb po obnovení do místní se nepodporuje.<br/> – Je podporované pouze systémem souborů NTFS. <br/> -Velikost sektoru disku musí být fyzický sektor o velikosti 512 bajtů.
+Spuštění EFI/UEFI hosta/server | -Podporovány, pokud používáte verzi služby Mobility 9.13 nebo vyšší.<br/> -Podporované při migraci virtuálních počítačů VMware nebo fyzické servery s Windows serverem 2012 nebo novější do Azure.<br/> Pouze – můžete replikovat virtuální počítače pro migraci. Navrácení služeb po obnovení do místní se nepodporuje.<br/> – Podporované pouze systémem souborů NTFS a zabezpečené typ spouštění UEFI se nepodporuje. <br/> -Velikost sektoru disku musí být fyzický sektor o velikosti 512 bajtů.
 
 ## <a name="replication-channels"></a>Kanály replikace
 

@@ -9,12 +9,12 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: 'Docker, Kubernetes, Azure, AKS, službě Azure Kubernetes, kontejnery, Helm, služby sítě, směrování sítě služby, kubectl, k8s '
-ms.openlocfilehash: 53571fdd7c5a93fef4df0832253542a5a6dfbec5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e0379bbc7f26ea30f65c5eac73633ca0371aa283
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67058550"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67331309"
 ---
 # <a name="troubleshooting-guide"></a>Průvodce odstraňováním potíží
 
@@ -414,3 +414,12 @@ V současné době Azure Dev prostory je určena pro spuštění na systému Lin
 
 ### <a name="try"></a>Vyzkoušení
 [Přidání změny chuti](../aks/operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations) ke svému clusteru AKS zajistit Linux podů nejsou naplánovány ke spuštění na uzlech Windows.
+
+## <a name="error-found-no-untainted-linux-nodes-in-ready-state-on-the-cluster-there-needs-to-be-at-least-one-untainted-linux-node-in-ready-state-to-deploy-pods-in-azds-namespace"></a>Chyba "nebyly nalezeny žádné untainted Linux uzly ve stavu připraveno na clusteru. Musí existovat alespoň jeden uzel untainted Linux ve stavu Připraveno k nasazení podů v oboru názvů "azds"."
+
+### <a name="reason"></a>Reason
+
+Azure Dev prostory nelze vytvořit řadič ve vašem clusteru AKS, protože nemohl najít untainted uzel v *připravené* stavu naplánování podů na. Vyžaduje nejméně jeden uzel Linux v Azure Dev prostory *připravené* stavu, který umožňuje pro plánování podů bez zadání tolerations.
+
+### <a name="try"></a>Vyzkoušení
+[Aktualizujte konfiguraci barvu](../aks/operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations) ve vašem clusteru AKS, aby aspoň jeden Linux umožňuje plánování podů bez zadání tolerations uzlu. Také se ujistěte, že je alespoň jeden uzel systému Linux, který umožňuje plánování podů bez zadání tolerations v *připravené* stavu. Pokud je uzel trvá příliš dlouho kontaktovat *připravené* stavu, můžete zkusit restartovat uzel.

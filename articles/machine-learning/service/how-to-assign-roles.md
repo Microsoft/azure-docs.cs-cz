@@ -11,12 +11,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 02/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2410787c3307136f827ea7fc34df9a545a59cbf4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e062fd73f2baeb4948430b13e0caa1f5c0b3f066
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65850907"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341116"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Spravovat přístup k pracovnímu prostoru Azure Machine Learning
 
@@ -49,13 +49,13 @@ Pokud jste vlastník pracovního prostoru, můžete přidat a odebrat role pro p
 Pokud jste nainstalovali [CLI aplikace Azure Machine Learning](reference-azure-machine-learning-cli.md), můžete také příkaz rozhraní příkazového řádku k přiřazení rolí uživatelům.
 
 ```azurecli-interactive 
-az ml workspace share -n <workspace_name> -g <resource_group_name> --role <role_name> --user <user_corp_email_address>
+az ml workspace share -w <workspace_name> -g <resource_group_name> --role <role_name> --user <user_corp_email_address>
 ```
 
 `user` Pole je e-mailovou adresu stávajícího uživatele v instanci služby Azure Active Directory, kde se nachází pracovní prostor nadřazeného předplatného. Tady je příklad toho, jak pomocí tohoto příkazu:
 
 ```azurecli-interactive 
-az ml workspace share -n my_workspace -g my_resource_group --role Contributor --user jdoe@contoson.com
+az ml workspace share -w my_workspace -g my_resource_group --role Contributor --user jdoe@contoson.com
 ```
 
 ## <a name="create-custom-role"></a>Vytvořit vlastní roli

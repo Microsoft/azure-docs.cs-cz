@@ -10,12 +10,12 @@ ms.date: 01/17/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 5f8d8d96e15fe3b59cb288a9a1cf6c547312fe67
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 16f38f6aae11f7bf806b7bad76db8f739fb2823d
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65951314"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357080"
 ---
 # <a name="designing-highly-available-applications-using-ra-grs"></a>Navrhování aplikací s vysokou dostupností pomocí RA-GRS
 
@@ -212,6 +212,33 @@ Následující tabulka znázorňuje příklad co může nastat při aktualizaci 
 V tomto příkladu se předpokládá, že klient přepíná na čtení ze sekundární oblasti v T5. Můžou číst **role správce** entity v tuto chvíli entity však obsahuje hodnotu pro počet správců, která není konzistentní s počtem **zaměstnance** entity, které jsou v tuto chvíli je označena jako správci v sekundární oblasti. Váš klient může jednoduše zobrazit tuto hodnotu, se riziko, že je nekonzistentní informace. Alternativně může pokusit určit, který klient **role správce** je ve stavu potenciálně konzistentní vzhledem k tomu dojít mimo pořadí aktualizací a potom informovat uživatele o této skutečnosti.
 
 Rozpoznat, že má potenciálně nekonzistentní data, může klient použít hodnotu *čas poslední synchronizace* , můžete kdykoli získat dotazováním služby úložiště. Znamená to čas, kdy byla poslední data v sekundární oblasti konzistentní vzhledem k aplikacím a pokud služba použili všechny transakce před tento bod v čase. V příkladu výše, po vloží službu **zaměstnance** entity v sekundární oblasti, čas poslední synchronizace je nastavena na *T1*. Zůstane v *T1* až do aktualizace služby **zaměstnance** entity v sekundární oblasti, pokud je nastavena na *T6*. Pokud klient získá čas poslední synchronizace, když načte entity na *T5*, ho můžete porovnat s časovým razítkem v entitě. Pokud časové razítko u entity je pozdější než čas poslední synchronizace, pak tato entita je v potenciálně nekonzistentním stavu a můžete provést cokoli, co je vhodnou pro vaši aplikaci. Použití tohoto pole vyžaduje vědět, kdy byla dokončena poslední aktualizace na primární.
+
+## <a name="getting-the-last-sync-time"></a>Získávání čas poslední synchronizace
+
+Prostředí PowerShell nebo rozhraní příkazového řádku Azure můžete použít k načtení čas poslední synchronizace k určení, kdy posledního zápisu dat do sekundární.
+
+### <a name="powershell"></a>PowerShell
+
+Pokud chcete získat čas poslední synchronizace pro účet úložiště pomocí prostředí PowerShell, podívejte se účet úložiště **GeoReplicationStats.LastSyncTime** vlastnost. Nezapomeňte nahradit zástupné hodnoty vlastními hodnotami:
+
+```powershell
+$lastSyncTime = $(Get-AzStorageAccount -ResourceGroupName <resource-group> `
+    -Name <storage-account> `
+    -IncludeGeoReplicationStats).GeoReplicationStats.LastSyncTime
+```
+
+### <a name="azure-cli"></a>Azure CLI
+
+Pokud chcete získat čas poslední synchronizace pro účet úložiště pomocí Azure CLI, podívejte se účet úložiště **geoReplicationStats.lastSyncTime** vlastnost. Použití `--expand` parametr návratové hodnoty pro vlastnosti vnořen v souladu s **geoReplicationStats**. Nezapomeňte nahradit zástupné hodnoty vlastními hodnotami:
+
+```azurecli
+$lastSyncTime=$(az storage account show \
+    --name <storage-account> \
+    --resource-group <resource-group> \
+    --expand geoReplicationStats \
+    --query geoReplicationStats.lastSyncTime \
+    --output tsv)
+```
 
 ## <a name="testing"></a>Testování
 
