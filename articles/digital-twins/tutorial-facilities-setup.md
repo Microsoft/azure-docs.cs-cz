@@ -6,18 +6,18 @@ author: dsk-2015
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 12/17/2018
+ms.date: 06/26/2019
 ms.author: dkshir
-ms.openlocfilehash: 096df62305af91ac85ce9ddbcff5b0160aaa4e8a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f826c6652937caab8b140b489626eef97612baea
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60534512"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67462207"
 ---
-# <a name="tutorial-deploy-azure-digital-twins-and-configure-a-spatial-graph"></a>Kurz: Nasazení služby Azure Digital Twins a konfigurace prostorového grafu
+# <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>Kurz: Nasazení Azure digitální dvojče Preview a konfigurace prostorový graf
 
-Použít službu Azure digitální dvojče spojit lidé, místa a zařízení v přeměnit prostorových systému. Tato série kurzů ukazuje, jak použít k detekci obsazení místa s optimálních podmínek jakosti teplotu a air digitální dvojče Azure. 
+Služba Azure digitální dvojče, ve verzi Preview můžete spojit lidé, místa a zařízení v přeměnit prostorových systému. Tato série kurzů ukazuje, jak použít k detekci obsazení místa s optimálních podmínek jakosti teplotu a air digitální dvojče Azure. 
 
 Tyto kurzy vás provedou konzolovou aplikaci .NET pro vytváření scénáři kancelářskou budovu. Sestavování má více podlahy a místnosti v rámci každý floor. Místnostech obsahovat zařízení připojených senzorů, které detekce pohybu, okolní teploty a vzduchu kvality. 
 
@@ -103,7 +103,7 @@ Ve složce extrahované vzorku, otevřete soubor **digital-twins-samples-csharp\
 1. V sadě Visual Studio Code otevřete [appSettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/appSettings.json) soubor **vytížení – rychlý Start** projektu. Aktualizací následujících hodnot:
    * **ClientId**: Zadejte ID aplikace pro registraci aplikace Azure AD. Jste si poznamenali v části toto ID ve kterém jste [nastavení oprávnění aplikace](#permissions).
    * **Tenant**: Zadejte ID adresáře vašeho [tenanta Azure AD](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant). Také uvedené v části toto ID ve kterém jste [nastavení oprávnění aplikace](#permissions).
-   * **BaseUrl**: Zadejte adresu URL instance digitální dvojče. Pokud chcete získat tuto adresu URL, nahraďte zástupné symboly v této adrese URL s hodnotami pro vaši instanci: `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`. Tuto adresu URL můžete získat také změnou adresy URL rozhraní API správy z [část nasazení](#deploy). Nahraďte **swagger /** s **api/v1.0/**.
+   * **BaseUrl**: Zadejte adresu URL instance digitální dvojče. Pokud chcete získat tuto adresu URL, nahraďte zástupné symboly v této adrese URL s hodnotami pro vaši instanci: `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`. Tuto adresu URL můžete získat také změnou adresy URL rozhraní API správy z [část nasazení](#deploy). Nahraďte **swagger /** s **api/v1.0/** .
 
 1. Podívejte se do seznamu digitální dvojče funkce, které můžete prozkoumat pomocí ukázky. Spusťte následující příkaz:
 

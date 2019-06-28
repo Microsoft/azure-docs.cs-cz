@@ -11,16 +11,16 @@ ms.topic: quickstart
 ms.date: 12/06/2018
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 674bb3f22f7b8c7c7ea3b52c2f27d862a9961fcb
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 5a42f9196bc7803a794f031819948d50934009f8
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65466254"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67466794"
 ---
 # <a name="quickstart-recognize-speech-in-a-uwp-app-by-using-the-speech-sdk"></a>Rychlý start: Rozpoznávání řeči v aplikaci pro UPW pomocí sadou SDK pro řeč
 
-Rychlí průvodci jsou také k dispozici pro [překlad řeči](quickstart-translate-speech-uwp.md) a [virtuálních asistentů hlasové první](quickstart-virtual-assistant-csharp-uwp.md).
+Rychlí průvodci jsou také k dispozici pro [převod textu na řeč](quickstart-text-to-speech-csharp-uwp.md), [překlad řeči](quickstart-translate-speech-uwp.md) a [virtuálních asistentů hlasové první](quickstart-virtual-assistant-csharp-uwp.md).
 
 V případě potřeby vyberte jiný programovací jazyk a/nebo prostředí:<br/>
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
@@ -41,7 +41,7 @@ K tomuto rychlému startu potřebujete:
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-quickstart-uwp-create-proj.md)]
 
-## <a name="add-sample-code"></a>Přidejte ukázkový kód.
+## <a name="add-sample-code"></a>Přidání ukázkového kódu
 
 1. Uživatelské rozhraní aplikace je definované pomocí XAML. Otevřete `MainPage.xaml` v Průzkumníku řešení. V zobrazení XAML návrháře vložte do značky Grid (mezi `<Grid>` a `</Grid>`) následující fragment kódu XAML.
 

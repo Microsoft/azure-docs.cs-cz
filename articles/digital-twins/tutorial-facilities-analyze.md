@@ -8,12 +8,12 @@ ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 12/18/2018
 ms.author: dkshir
-ms.openlocfilehash: 0c441974b40f35bcc39aec05e5ffe66b68e46c10
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 897050513449c099ce75c248eef00a38aac98ad9
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60534699"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67462321"
 ---
 # <a name="tutorial-visualize-and-analyze-events-from-your-azure-digital-twins-spaces-by-using-time-series-insights"></a>Kurz: Vizualizujte a analyzujte události z prostory vaší digitální dvojče Azure s využitím Time Series Insights
 
@@ -52,7 +52,7 @@ Můžete použít [Event Hubs](../event-hubs/event-hubs-about.md) služby k vytv
 
 1. Zadejte **název** pro váš obor názvů služby Event Hubs. Zvolte **standardní** pro **cenová úroveň**, vaše **předplatné**, **skupiny prostředků** , který jste použili pro vaši instanci digitální dvojče a **umístění**. Vyberte **Vytvořit**.
 
-1. V nasazení oboru názvů služby Event Hubs, vyberte obor názvů, v části **prostředků**.
+1. V nasazení oboru názvů služby Event Hubs, vyberte **přehled** podokně, vyberte **přejít k prostředku**.
 
     ![Obor názvů služby Event Hubs po nasazení](./media/tutorial-facilities-analyze/open-event-hub-ns.png)
 
@@ -132,17 +132,19 @@ Můžete použít [Event Hubs](../event-hubs/event-hubs-about.md) služby k vytv
 
 1. Vyhledejte a vyberte nový prostředek **Time Series Insights**. Vyberte **Vytvořit**.
 
-1. Zadejte **Název** vaší instance služby Time Series Insights a pak vyberte své **Předplatné**. Vyberte **skupiny prostředků** , který jste použili pro vaši instanci digitální dvojče a **umístění**. Vyberte **Vytvořit**.
+1. Zadejte **Název** vaší instance služby Time Series Insights a pak vyberte své **Předplatné**. Vyberte **skupiny prostředků** , který jste použili pro vaši instanci digitální dvojče a **umístění**. Vyberte **Další: Zdroj události** tlačítko nebo **zdroj události** kartu.
 
     ![Vybrané možnosti pro vytvoření instance služby Time Series Insights](./media/tutorial-facilities-analyze/create-tsi.png)
 
-1. Po nasazení instance, otevřete prostředí Time Series Insights a pak otevřete jeho **zdroje událostí** podokně. Vyberte **přidat** tlačítko v horní části stránky se přidat skupinu uživatelů.
-
-1. V podokně **Nový zdroj událostí** zadejte **Název** a zkontrolujte, že jsou správně vybrané ostatní hodnoty. Vyberte **ManageSend** pro **název zásady centra událostí**a pak vyberte skupinu příjemců, který jste vytvořili v předchozí části pro **skupina uživatelů centra událostí**. Vyberte **Vytvořit**.
+1. V **zdroj události** kartu, zadejte **název**vyberte **centra událostí** jako **typ zdroje**a ujistěte se, že jsou vybrány další hodnoty správně. Vyberte **ManageSend** pro **název zásad přístupu centra událostí**a pak vyberte skupinu příjemců, který jste vytvořili v předchozí části pro **skupinu uživatelů centra událostí**. Vyberte **Zkontrolovat a vytvořit**.
 
     ![Vybrané možnosti pro vytvoření zdroje událostí](./media/tutorial-facilities-analyze/tsi-event-source.png)
 
-1. Otevřít **přehled** podokno pro vaše prostředí Time Series Insights, vyberte **přejít na prostředí** tlačítko v horní části. Pokud dojde k přístupu k datům upozornění, otevřete **zásady přístupu k datům** podokno pro vaši instanci služby Time Series Insights, vyberte **přidat**vyberte **Přispěvatel** roli a vyberte příslušné uživatele.
+1. V **zkontrolovat a vytvořit** podokno, zkontrolujte zadané informace a vyberte **vytvořit**.
+
+1. V podokně nasazení vyberte zdroj Time Series Insights, který jste právě vytvořili. Otevře se **přehled** podokno pro vaše prostředí Time Series Insights.
+
+1. Vyberte **přejít na prostředí** tlačítko v horní části. Pokud dojde k přístupu k datům upozornění, otevřete **zásady přístupu k datům** podokno pro vaši instanci služby Time Series Insights, vyberte **přidat**vyberte **Přispěvatel** roli a vyberte příslušné uživatele.
 
 1. **Přejít na prostředí** tlačítko otevře [Průzkumníka služby Time Series Insights](../time-series-insights/time-series-insights-explorer.md). Pokud se nezobrazí žádné události, simulace událostí zařízení tak, že přejdete na **připojení zařízení** digitální dvojče vzorku a spuštění projektu `dotnet run`.
 

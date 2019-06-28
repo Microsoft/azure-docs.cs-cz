@@ -3,19 +3,19 @@ title: 'Rychlý start: Převést text skriptu Java – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu zjistíte jak transkripce text (převod) z jednoho skriptu na jinou pomocí Javy a rozhraní REST Translator Text API. V této ukázce se provádí transkripce z japonštiny do latinky.
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/04/2019
-ms.author: erhopf
-ms.openlocfilehash: 353d5950372fe9a1255bf2b17dea4f8148d3ee6e
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.author: swmachan
+ms.openlocfilehash: 599ff4d2e888e6495044bb2161bc11813064399b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66514791"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445080"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-transliterate-text-using-java"></a>Rychlý start: Transkripce textu s použitím jazyka Java pomocí rozhraní Translator Text API
 
@@ -108,6 +108,7 @@ Přidejte tyto řádky do `Transliterate` třídy. Uvidíte, že spolu s `api-ve
 String subscriptionKey = "YOUR_SUBSCRIPTION_KEY";
 String url = "https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0&language=ja&fromScript=jpan&toScript=latn";
 ```
+Pokud používáte víc služeb předplatného služeb Cognitive Services, musíte taky zahrnout `Ocp-Apim-Subscription-Region` v parametry požadavku. [Další informace o dvojúrovňovém víc služeb předplatného](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication). 
 
 ## <a name="create-a-client-and-build-a-request"></a>Vytvoření klienta a žádost o sestavení
 

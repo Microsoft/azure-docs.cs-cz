@@ -3,19 +3,19 @@ title: 'Rychlý start: Přeložení textu, Javy – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu budete zjistěte, jak převést řetězec textu z angličtiny italština a němčina pomocí Javy a rozhraní REST Translator Text API.
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/04/2019
-ms.author: erhopf
-ms.openlocfilehash: fbbe139160a7efd528e63e206aa37ac72b2542df
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.author: swmachan
+ms.openlocfilehash: f8846e8dc6df8753562a36c05342f04307dd886e
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66515193"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445089"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-translate-a-string-using-java"></a>Rychlý start: Použití rozhraní Translator Text API pro převod řetězce pomocí Javy
 
@@ -107,6 +107,8 @@ Přidejte tyto řádky do `Translate` třídy. Uvidíte, že spolu s `api-versio
 String subscriptionKey = "YOUR_SUBSCRIPTION_KEY";
 String url = "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=de,it";
 ```
+
+Pokud používáte víc služeb předplatného služeb Cognitive Services, musíte taky zahrnout `Ocp-Apim-Subscription-Region` v parametry požadavku. [Další informace o dvojúrovňovém víc služeb předplatného](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication). 
 
 ## <a name="create-a-client-and-build-a-request"></a>Vytvoření klienta a žádost o sestavení
 

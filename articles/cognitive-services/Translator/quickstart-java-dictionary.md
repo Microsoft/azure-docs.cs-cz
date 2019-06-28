@@ -3,19 +3,19 @@ title: 'Rychlý start: Vyhledávání slov s využitím dvojjazyčného slovník
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu dozvíte víc o získání alternativní překlady pro podmínku a také příklady použití těchto alternativní překlady pomocí Javy a rozhraní Translator Text API.
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/04/2019
-ms.author: erhopf
-ms.openlocfilehash: 027e895ffbeb3cc0ff5b3348c2d7a8b76b930cf3
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.author: swmachan
+ms.openlocfilehash: d4c8f06b1689f3aaa5a88e39583a48cf990dd532
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66514813"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445148"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary-using-java"></a>Rychlý start: Vyhledávání slov s využitím dvojjazyčného slovníku pomocí Javy
 
@@ -108,6 +108,8 @@ Přidejte tyto řádky do `AltTranslation` třídy. Uvidíte, že spolu s `api-v
 String subscriptionKey = "YOUR_SUBSCRIPTION_KEY";
 String url = "https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0&from=en&to=es";
 ```
+
+Pokud používáte víc služeb předplatného služeb Cognitive Services, musíte taky zahrnout `Ocp-Apim-Subscription-Region` v parametry požadavku. [Další informace o dvojúrovňovém víc služeb předplatného](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication). 
 
 ## <a name="create-a-client-and-build-a-request"></a>Vytvoření klienta a žádost o sestavení
 

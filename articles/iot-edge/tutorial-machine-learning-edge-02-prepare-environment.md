@@ -8,12 +8,12 @@ ms.date: 06/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f36b706213639c5bea383ec20ffc7f6d7ed01021
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: fd3b5766ec2bd8d1babf847598f1fbe5b6511ce7
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67155714"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67432833"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>Kurz: Nastavení prostředí pro machine learningu na hraničních zařízeních IoT
 
@@ -190,7 +190,7 @@ Skript spusťte trvá asi 2 minuty. Jakmile budete hotovi, skript vypíše náze
 
 Při vytváření služby IoT hub skript, který jsme spustili v předchozí části také vytvořit vlastní koncový bod a trasy. IoT Hub trasy se skládají z výrazu dotazu a koncový bod. Pokud zpráva odpovídá výrazu, data se odesílají na trase přidruženého koncového bodu. Koncové body může být Služba Event Hubs, fronty Service Bus a témat. Koncový bod v tomto případě je kontejner objektů Blob v účtu úložiště. Na webu Azure portal umožňuje použít ke kontrole vytvořen skriptem naše trasy.
 
-1. Otevřete web [Azure Portal](http://portal.azure.com).
+1. Otevřete web [Azure Portal](https://portal.azure.com).
 
 1. Vyberte všechny služby z levé tabulky, do vyhledávacího pole zadejte IoT a vyberte **služby IoT Hub**.
 

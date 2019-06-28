@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: d8330ff663a7adc2f1cae3ed6bdf1cec2fa972c5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ae075dbc922932a4eaffd9126560c159d33459d0
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66808452"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67466967"
 ---
 # <a name="ship-an-application"></a>Dodávejte aplikace
 
@@ -46,6 +46,9 @@ Požadované sadou SDK pro řeč soubory je možné nasadit ve stejném adresá�
 
 >[!NOTE]
 > Od verze 1.3.0 soubor `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` (k dispozici v předchozích verzích) už není potřeba. Funkce je teď integrovaná v core SDK.
+
+>[!NOTE]
+> Pro aplikace Windows Forms (.NET Framework) C# projektu, ujistěte se, že tyto knihovny jsou zahrnuty v nastavení projektu nasazení. Můžete zkontrolovat v části `Properties -> Publish Section`. Klikněte na tlačítko `Application Files` tlačítko a najít odpovídající knihovny z rozevíracího seznamu dolů. Ujistěte se, že hodnota je nastavena na `Included`. Visual Studio bude obsahovat soubor, pokud je projekt publikován nebo nasadí.
 
 ## <a name="linux"></a>Linux
 

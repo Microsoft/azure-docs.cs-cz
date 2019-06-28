@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 126bb05109e624fb1198ea16b07cd7836103f9e2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e76ca7198bfded725d89f04fd162d470a85da904
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67100879"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442844"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hr2day-by-merces"></a>Kurz: Integrace Azure Active Directory s HR2day podle Merces
 
@@ -112,7 +112,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s HR2day podle Merces, prove�
     > [!NOTE]
     > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty skutečné přihlašovací adresu URL a identifikátor. Kontakt [HR2day týmem podpory Merces klienta](mailto:servicedesk@merces.nl) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
 
-5. Vaše HR2day Merces aplikace očekává, že kontrolní výrazy SAML v určitém formátu, který je potřeba přidat vlastní atribut mapování konfigurace atributy tokenu SAML. Na následujícím snímku obrazovky se zobrazí v seznamu atributů výchozí. Klikněte na tlačítko **upravit** ikony otevřete **atributy uživatele** dialogového okna.
+5. Vaše HR2day Merces aplikace očekává, že kontrolní výrazy SAML v určitém formátu, který je potřeba přidat vlastní atribut mapování konfigurace atributy tokenu SAML. Na následujícím snímku obrazovky se zobrazí v seznamu atributů výchozí. Klikněte na tlačítko **upravit** ikony otevřete **atributy uživatele** dialogového okna.
 
     ![image](common/edit-attribute.png)
 
@@ -121,7 +121,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s HR2day podle Merces, prove�
 
 6. V **deklarace identity uživatelů** části na **atributy uživatele** dialogovém okně Upravit deklarace identity pomocí **ikonu pro úpravu** nebo přidání deklarace identity pomocí **přidat novou deklaraci**ke konfiguraci atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky:
 
-    | Name |  Zdrojový atribut |
+    | Název |  Zdrojový atribut |
     | ---------- | ----------- |
     | ATTR_LOGINCLAIM | `join([mail],"102938475Z","@"` |
     | | |
@@ -218,7 +218,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 ### <a name="create-hr2day-by-merces-test-user"></a>Vytvoření HR2day podle Merces testovacího uživatele
 
-V této části vytvoříte volány Britta Simon v HR2day Merces uživatele. Práce s [tým podpory HR2day podle Merces](mailto:servicedesk@merces.nl) přidáte uživatele HR2day platformou Merces. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části vytvoříte volány Britta Simon v HR2day Merces uživatele. Práce s [tým podpory HR2day podle Merces](mailto:servicedesk@merces.nl) přidáte uživatele HR2day platformou Merces. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
 > [!NOTE]
 > Pokud je potřeba ručně vytvořit uživatele, obraťte se [HR2day týmem podpory klienta Merces](mailto:servicedesk@merces.nl).

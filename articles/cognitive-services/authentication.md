@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: erhopf
-ms.openlocfilehash: 06cc5509598cb6227a64e2cf375a5686c89312eb
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 6de5711ca977612f01943f6aaf2c9d7061116090
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67163673"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67435933"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Ověření požadavků ve službě Azure Cognitive Services
 
@@ -28,7 +28,7 @@ Každý požadavek do služby Azure Cognitive musí obsahovat hlavičku ověřov
 
 Před provedením požadavku, budete potřebovat účet Azure a předplatné služeb Azure Cognitive Services. Pokud již máte účet, neváhejte a přejděte k další části. Pokud nemáte účet, máme Tento průvodce vám několika minut: [Vytvoření účtu služeb Cognitive Services pro Azure](cognitive-services-apis-create-account.md).
 
-Můžete získat klíč předplatného z [webu Azure portal](cognitive-services-apis-create-account.md#access-your-resource) po vytvoření účtu nebo aktivaci [bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/my-apis).
+Můžete získat klíč předplatného z [webu Azure portal](cognitive-services-apis-create-account.md#get-the-keys-for-your-subscription) po vytvoření účtu nebo aktivaci [bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/my-apis).
 
 ## <a name="authentication-headers"></a>Ověřovací hlavičky
 
@@ -38,7 +38,7 @@ Pojďme ověřovací hlavičky, které jsou k dispozici pro použití se službo
 |--------|-------------|
 | OCP-Apim-Subscription-Key | Tuto hlavičku používají k ověření pomocí klíče předplatného pro konkrétní službu nebo klíč víc služeb předplatného. |
 | OCP-Apim předplatné – oblasti | Tato hlavička se pouze při použití klíče víc služeb předplatného se vyžaduje [Translator Text API](./Translator/reference/v3-0-reference.md). Tuto hlavičku používají k určení oblasti předplatného. |
-| Autorizace | Tuto hlavičku používají, pokud používáte ověřovací token. V následujících oddílech jsou podrobně popsané kroky nutné k provedení výměny tokenu. Zadaná hodnota následující formát: `Bearer <TOKEN>`. |
+| Authorization | Tuto hlavičku používají, pokud používáte ověřovací token. V následujících oddílech jsou podrobně popsané kroky nutné k provedení výměny tokenu. Zadaná hodnota následující formát: `Bearer <TOKEN>`. |
 
 ## <a name="authenticate-with-a-single-service-subscription-key"></a>Ověření s klíčem jednoúčelovou předplatného
 

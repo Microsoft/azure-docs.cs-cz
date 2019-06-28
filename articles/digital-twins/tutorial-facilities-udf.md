@@ -6,18 +6,18 @@ author: dsk-2015
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 12/27/2018
+ms.date: 06/26/2019
 ms.author: dkshir
-ms.openlocfilehash: ad6c2625dc56dc3a3155183a04b712122a3b10f1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 738e78ce06d98960c87414948e045cc4abe37d6b
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60533507"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67462188"
 ---
-# <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins"></a>Kurz: Zřízení sestavení a sledování práce pomocí digitální dvojče Azure
+# <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins-preview"></a>Kurz: Zřízení sestavení a sledování práce pomocí Azure digitální dvojče Preview
 
-Tento kurz ukazuje, jak pomocí služby Azure Digital Twins monitorovat požadované teplotní podmínky a úroveň komfortu v prostorech. Poté co [konfigurace budovy ukázka](tutorial-facilities-setup.md), můžete zajistit vaše sestavení a spuštění vlastní funkce pro vaše data ze senzorů pomocí kroků v tomto kurzu.
+Tento kurz ukazuje, jak pomocí Azure digitální dvojče Preview můžete sledovat prostory vaší pro požadovanou teploty a pohodlí úroveň. Poté co [konfigurace budovy ukázka](tutorial-facilities-setup.md), můžete zajistit vaše sestavení a spuštění vlastní funkce pro vaše data ze senzorů pomocí kroků v tomto kurzu.
 
 V tomto kurzu se naučíte:
 
@@ -43,14 +43,14 @@ Můžete definovat sadu konkrétní podmínky pro monitorování v datech ze sen
 
 Z **obsazení quickstart** ukázkový projekt, otevřete soubor **src\actions\provisionSample.yaml** ve Visual Studio Code. Všimněte si části, která začíná typem **matchers** (Pravidla shody). Každá položka v rámci tohoto typu se zadaným vytvoří předávaný **název**. Předávaný bude monitorovat senzoru typu **dataTypeValue**. Všimněte si, jak souvisí s prostor s názvem *fokus místnosti A1*, který má **zařízení** uzel, který obsahuje pár senzory. Ke zřízení předávaný, který bude sledovat jednu z těchto senzorů, ujistěte se, že jeho **dataTypeValue** odpovídá senzoru **datový typ**. 
 
-Přidejte následující předávaný pod stávající procesy pro hledání shody. Ujistěte se, že jsou zarovnány klíče a mezery nejsou nahrazeny karty.
+Přidejte následující předávaný pod stávající procesy pro hledání shody. Ujistěte se, že jsou zarovnány klíče a mezery nejsou nahrazeny karty. Tyto řádky jsou taky k dispozici v *provisionSample.yaml* souboru jako komentovaná řádky. Můžete je Odkomentujte tak, že odeberete `#` před každý řádek znak.
 
 ```yaml
       - name: Matcher Temperature
         dataTypeValue: Temperature
 ```
 
-Tato předávaný bude sledovat SAMPLE_SENSOR_TEMPERATURE senzor, který jste přidali v [první kurz](tutorial-facilities-setup.md). Tyto řádky jsou taky k dispozici v *provisionSample.yaml* souboru jako komentovaná řádky. Můžete je Odkomentujte tak, že odeberete `#` před každý řádek znak.
+Tato předávaný bude sledovat SAMPLE_SENSOR_TEMPERATURE senzor, který jste přidali v [první kurz](tutorial-facilities-setup.md). 
 
 <a id="udf"></a>
 

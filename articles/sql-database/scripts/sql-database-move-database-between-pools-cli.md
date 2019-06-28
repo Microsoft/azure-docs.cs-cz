@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 640212b0ae3c9d5658b79652f394a1ad8b92e218
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.date: 06/25/2019
+ms.openlocfilehash: 173e54dc6cf24676a8bf9833b0b6152a5fd89748
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65834505"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447860"
 ---
 # <a name="use-cli-to-move-an-azure-sql-database-in-a-sql-elastic-pool"></a>Přesun databáze Azure SQL v elastickém fondu SQL pomocí rozhraní příkazového řádku
 
@@ -38,7 +38,7 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (
 Použijte následující příkaz k odebrání skupiny prostředků a všechny prostředky, které s ním spojená.
 
 ```azurecli-interactive
-az group delete --name myResourceGroup
+az group delete --name $resourceGroupName
 ```
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu

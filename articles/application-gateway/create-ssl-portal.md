@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 4/17/2019
 ms.author: victorh
-ms.openlocfilehash: f3ba3eb12dc85a72c4e49c374e62209b83400d33
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ed4230969e81eee0d77b7e4b69eac3a264068388
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66134412"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449167"
 ---
 # <a name="tutorial-configure-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>Kurz: Konfigurace aplikační brány s ukončení protokolu SSL pomocí webu Azure portal
 
@@ -54,9 +54,9 @@ PSParentPath: Microsoft.PowerShell.Security\Certificate::LocalMachine\my
 Thumbprint                                Subject
 ----------                                -------
 E1E81C23B3AD33F9B4D1717B20AB65DBB91AC630  CN=www.contoso.com
-
-Use [Export-PfxCertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) with the Thumbprint that was returned to export a pfx file from the certificate:
 ```
+
+Použití [Export-PfxCertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) s kryptografickým otiskem, který byl vrácen Pokud chcete exportovat soubor pfx certifikátu:
 
 ```powershell
 $pwd = ConvertTo-SecureString -String "Azure123456!" -Force -AsPlainText
@@ -106,7 +106,7 @@ Virtuální sítě je potřeba ke komunikaci mezi prostředky, které vytvořít
 
 V tomto příkladu vytvoříte dva virtuální počítače použít jako servery back-endu pro službu application gateway. Také nainstalujte IIS na virtuálních počítačích, chcete-li ověřit, že službu application gateway se úspěšně vytvořil.
 
-### <a name="create-a-virtual-machine"></a>Vytvořit virtuální počítač
+### <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
 
 1. Vyberte **Nový**.
 2. Vyberte **Výpočty** a potom v seznamu Doporučené vyberte **Windows Server 2016 Datacenter**.

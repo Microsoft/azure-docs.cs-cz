@@ -1,28 +1,33 @@
 ---
-title: Začínáme s příkladem HBase v HDInsight – Azure
-description: Postupujte podle tohoto příkladu Apache HBase a začněte používat Hadoop ve službě HDInsight. Vytvářejte tabulky z prostředí HBase a dotazujte je pomocí Hive.
+title: Kurz – použití Apache HBase v Azure HDInsight
+description: V tomto kurzu Apache HBase a začněte používat hadoop v HDInsight. Vytvářejte tabulky z prostředí HBase a dotazujte je pomocí Hive.
 keywords: příkaz hbase,příklad hbase
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.topic: conceptual
-ms.date: 05/27/2019
+ms.topic: tutorial
+ms.date: 06/25/2019
 ms.author: hrasheed
-ms.openlocfilehash: 9d94a976c08cdb5184ea4c5e2cd70ac039d78378
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 48b02a042b55af9ff65f57220f7a64c9cbde8848
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66384685"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445553"
 ---
-# <a name="get-started-with-an-apache-hbase-example-in-hdinsight"></a>Začínáme s příkladem Apache HBase ve službě HDInsight
+# <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>Kurz: Použití Apache HBase v Azure HDInsight
 
-Zjistěte, jak vytvořit [Apache HBase](https://hbase.apache.org/) clusteru v HDInsight vytvářet tabulky HBase a dotazovat tabulky pomocí [Apache Hive](https://hive.apache.org/).  Obecné informace o HBase naleznete v tématu [přehled HDInsight HBase](./apache-hbase-overview.md).
+Tento kurz ukazuje, jak vytvořit cluster Apache HBase v Azure HDInsight, vytvářet tabulky HBase a dotazovat tabulky pomocí Apache Hive.  Obecné informace o HBase naleznete v tématu [přehled HDInsight HBase](./apache-hbase-overview.md).
 
-[!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
+V tomto kurzu se naučíte:
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+> [!div class="checklist"]
+> * Vytvoření clusteru Apache HBase
+> * Vytváření tabulek HBase a vkládání dat
+> * Použití Apache Hive k dotazování služby Apache HBase
+> * Použití rozhraní REST API HBase pomocí Curl
+> * Kontrola stavu clusteru
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -30,10 +35,9 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 * Bash. V příkladech v tomto článku pomocí prostředí Bash ve Windows 10 pro příkaz curl. Zobrazit [subsystém Windows pro Linux Instalační příručka pro Windows 10](https://docs.microsoft.com/windows/wsl/install-win10) kroky instalace.  Další [prostředí Unix](https://www.gnu.org/software/bash/) fungují stejně.  Příklady curl, s drobné úpravy, můžete pracovat na příkazovém řádku Windows.  Alternativně můžete použít rutinu prostředí Windows PowerShell [Invoke-RestMethod](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-restmethod).
 
-
 ## <a name="create-apache-hbase-cluster"></a>Vytvoření clusteru Apache HBase
 
-Následující postup používá šablonu Azure Resource Manageru pro vytvoření clusteru HBase a výchozího účtu služby Azure Storage. Pro lepší pochopení parametrů použitých v postupu a dalších metod vytvoření clusteru si projděte téma [Vytvoření Hadoop clusterů se systémem Linux v HDInsight](../hdinsight-hadoop-provision-linux-clusters.md). Další informace o použití Data Lake Storage Gen2 najdete v tématu [rychlý start: Nastavení clusterů v HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+Následující postup používá šablonu Azure Resource Manageru k vytvoření clusteru HBase a výchozího účtu služby Azure Storage. Pro lepší pochopení parametrů použitých v postupu a dalších metod vytvoření clusteru si projděte téma [Vytvoření Hadoop clusterů se systémem Linux v HDInsight](../hdinsight-hadoop-provision-linux-clusters.md).
 
 1. Následující obrázek otevřete šablonu na webu Azure Portal. Tato šablona je umístěná na [šablony rychlý start Azure](https://azure.microsoft.com/resources/templates/).
 
@@ -56,12 +60,11 @@ Následující postup používá šablonu Azure Resource Manageru pro vytvořen�
 
 3. Vyberte **vyjadřuji souhlas s podmínkami a ujednáními uvedenými nahoře**a pak vyberte **nákupní**. Vytvoření clusteru trvá přibližně 20 minut.
 
-> [!NOTE]  
-> Po odstranění clusteru služby HBase můžete vytvořit jiný cluster HBase pomocí stejného výchozího kontejneru blob. Nový cluster převezme tabulky HBase, které jste vytvořili v původním clusteru. Aby se zabránilo nekonzistencím, doporučujeme zakázat tabulky HBase před odstraněním clusteru.
+Po odstranění clusteru služby HBase můžete vytvořit jiný cluster HBase pomocí stejného výchozího kontejneru blob. Nový cluster převezme tabulky HBase, které jste vytvořili v původním clusteru. Aby se zabránilo nekonzistencím, doporučujeme zakázat tabulky HBase před odstraněním clusteru.
 
 ## <a name="create-tables-and-insert-data"></a>Vytváření tabulek a vkládání dat
 
-SSH slouží k připojení ke clusterům HBase a používání [Apache HBase Shell](https://hbase.apache.org/0.94/book/shell.html) k vytváření tabulek HBase, vkládání dat a dotazování na data. Další informace najdete v tématu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
+SSH slouží k připojení ke clusterům HBase a používání [Apache HBase Shell](https://hbase.apache.org/0.94/book/shell.html) k vytváření tabulek HBase, vkládání dat a dotazování na data.
 
 Pro většinu osob se data zobrazí v tabulkovém formátu:
 
@@ -149,8 +152,7 @@ Ukázkový datový soubor nachází v kontejneru objektů blob veřejný, `wasb:
 
 Volitelně můžete vytvořit textový soubor a nahrát ho do vlastního účtu úložiště. Pokyny najdete v tématu [nahrávání dat pro úlohy Apache Hadoop v HDInsight](../hdinsight-upload-data.md).
 
-> [!NOTE]  
-> Tento postup používá tabulku kontaktů HBase, kterou jste vytvořili v posledním postupu.
+Tento postup používá `Contacts` tabulky HBase, kterou jste vytvořili v posledním postupu.
 
 1. Z vaší open ssh připojení, spusťte následující příkaz, který umožňuje transformovat data soubor na StoreFiles a uložit do relativní cesty určené `Dimporttsv.bulk.output`.
 
@@ -178,7 +180,7 @@ Data v tabulkách HBase můžete dotazovat pomocí [Apache Hive](https://hive.ap
 
     Další informace o Beeline najdete v tématu [Použití Hivu s Hadoopem ve službě HDInsight s Beeline](../hadoop/apache-hadoop-use-hive-beeline.md).
 
-1. Spusťte následující příkaz [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) skript k vytvoření tabulky Hive, která se mapuje na tabulku HBase. Před spuštěním tohoto prohlášení ověřte, zda jste vytvořili ukázkové tabulky odkazované dříve v tomto kurzu pomocí prostředí HBase.
+1. Spusťte následující příkaz [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) skript k vytvoření tabulky Hive, která se mapuje na tabulku HBase. Ujistěte se, že jste vytvořili ukázkové tabulky odkazované dříve v tomto článku pomocí prostředí HBase před spuštěním tohoto příkazu.
 
     ```hiveql
     CREATE EXTERNAL TABLE hbasecontacts(rowkey STRING, name STRING, homephone STRING, officephone STRING, officeaddress STRING)
@@ -270,16 +272,17 @@ Další informace o HBase Rest naleznete v tématu [Referenční příručka Apa
 >   
 >        {"status":"ok","version":"v1"}
 
-
 ## <a name="check-cluster-status"></a>Kontrola stavu clusteru
 
 HBase v HDInsight se dodává s webovým uživatelským rozhraním pro sledování clusterů. Pomocí webového uživatelského rozhraní, můžete žádat o statistické údaje nebo informace o oblastech.
 
 **Přístup k hlavnímu uživatelskému rozhraní HBase**
 
-1. Přihlaste se k uživatelské rozhraní Ambari Web na `https://Clustername.azurehdinsight.net`.
-2. V nabídce vlevo klikněte na **HBase**.
-3. V horní části stránky klikněte na **Rychlé odkazy**, najeďte myší na odkaz na aktivní uzel Zookeeper a klikněte na **Hlavní uživatelské rozhraní HBase**.  Uživatelské rozhraní se otevře na nové kartě prohlížeče:
+1. Přihlaste se k webovému uživatelskému rozhraní Ambari na `https://CLUSTERNAME.azurehdinsight.net` kde `CLUSTERNAME` je název vašeho clusteru HBase.
+
+1. Vyberte **HBase** v levé nabídce.
+
+1. Vyberte **rychlé odkazy** nahoře na stránce, přejděte na odkaz aktivní uzel Zookeeper a pak vyberte **hlavní uživatelské rozhraní HBase**.  Uživatelské rozhraní se otevře na nové kartě prohlížeče:
 
    ![Hlavní uživatelské rozhraní HDInsight HBase](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-hmaster-ui.png)
 
@@ -291,20 +294,19 @@ HBase v HDInsight se dodává s webovým uživatelským rozhraním pro sledován
    - úlohy
    - atributy softwaru
 
-## <a name="delete-the-cluster"></a>Odstranění clusteru
+## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Aby se zabránilo nekonzistencím, doporučujeme zakázat tabulky HBase před odstraněním clusteru.
+Aby se zabránilo nekonzistencím, doporučujeme zakázat tabulky HBase před odstraněním clusteru. Můžete použít příkaz HBase `disable 'Contacts'`. Pokud nebudete tuto aplikaci používat, odstraňte cluster HBase, který jste vytvořili pomocí následujících kroků:
 
-[!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
-
-## <a name="troubleshoot"></a>Řešení potíží
-
-Pokud narazíte na problémy s vytvářením clusterů HDInsight, podívejte se na [požadavky na řízení přístupu](../hdinsight-hadoop-customize-cluster-linux.md#access-control).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. V **hledání** pole v horní části, typ **HDInsight**.
+1. Vyberte **clustery HDInsight** pod **služby**.
+1. V seznamu clusterů HDInsight, který se zobrazí, klikněte **...**  u clusteru, který jste vytvořili pro účely tohoto kurzu.
+1. Klikněte na tlačítko **odstranit**. Klikněte na **Ano**.
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto článku jste zjistili, jak vytvořit cluster Apache HBase a jak vytvářet tabulky a zobrazovat data v těchto tabulkách z prostředí HBase. Také jste se naučili, jak používat dotazy na data Hive v tabulkách HBase a jak používat rozhraní REST API HBase C# k vytvoření tabulky HBase a načtení dat z tabulky.
+V tomto kurzu jste zjistili, jak vytvořit cluster Apache HBase a jak vytvářet tabulky a zobrazovat data v těchto tabulkách z prostředí HBase. Také jste se naučili, jak používat dotazy na data Hive v tabulkách HBase a jak používat rozhraní REST API HBase C# k vytvoření tabulky HBase a načtení dat z tabulky. Další informace naleznete v tématu:
 
-Další informace naleznete v tématu:
-
-* [Přehled HDInsight HBase](./apache-hbase-overview.md): Apache HBase je databáze NoSQL open source Apache postavená na Apache Hadoopu, která umožňuje náhodný přístup a silnou konzistenci pro velké objemy nestrukturovaných a částečně strukturovaných dat.
+> [!div class="nextstepaction"]
+> [Přehled HDInsight HBase](./apache-hbase-overview.md)

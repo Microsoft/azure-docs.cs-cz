@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 06/13/2019
+ms.date: 06/25/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 0314c0e03402d53c7f79eed2efe11db953d184e6
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 7e7a1f119a2f2b0e60645cb776b26c124910cacb
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147512"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448216"
 ---
 # <a name="tutorial-return-azure-data-box-disk-and-verify-data-upload-to-azure"></a>Kurz: Vrátí disku Azure Data Box a ověřte nahrání dat do Azure
 
@@ -88,7 +88,7 @@ Pokud vrácení zařízení v Evropě, proveďte následující kroky.
 
 ### <a name="pick-up-in-asia-pacific-region"></a>Pokračovat v oblasti Asie a Tichomoří
 
-Tato oblast obsahuje pokyny pro vyzvednutí v oblasti Japonsko, Koreji a Austrálii.
+Tato oblast obsahuje pokyny pro vyzvednutí v Japonsku, Koreji, Austrálie a Singapur.
 
 #### <a name="pick-up-in-australia"></a>Pokračovat v Austrálii
 
@@ -103,43 +103,64 @@ Datacentra Azure v Austrálii mít oznámení o zvýšení zabezpečení. Všech
 
 #### <a name="pick-up-in-japan"></a>Pokračovat v Japonsku
 
-1. Nezapomeňte uvést návratový connote Chakubarai Japonsko příspěvku.
-2. Zápis vaší společnosti název a adresu informace o connote jako vaše informace odesílatele.
-3. Zavolejte na číslo žádost o vyzvednutí Japonsko příspěvek 0800-0800-111 (bezplatné volání). Vytočit 7 číslic PSČ výstupní adresy a potom je předejte pro nejbližší pobočku příspěvku.
-    - Dostupné časy pro žádost o vyzvednutí závisí na příslušné pobočky příspěvku.
-    - Informujte, že zásilka je pro Japonsko příspěvek Chakubarai Yu-Pack.
-    - Použití Chakubarai connote, která byla zahrnuta.
-4. Pokud Japonsko příspěvek Chakubarai connote nejsou zahrnuty, e-mailu *Quantium řešení* na `Customerservice.JP@quantiumsolutions.com`. *Řešení Quantium* požádá o příspěvek Japonsko sbírání a požádejte ho, aby přenést connote na vyzvednutí.
-    - Označuje odkaz na číslo Chakubarai connote příspěvek sloupec, který přinese Japonsko příspěvku.
-    - Zadejte adresu pro doručení, jak je znázorněno níže:   
-        ```
-        3F N7 Prologis Park Tokyo Ohta, 1-3-6 Tokai Ohta-ku, Tokyo 143-0001
-        Microsoft Service Center c/o Quantium Solutions Japan
-        TEL: 03-5755-0150
-        ```
+1. Zapsat vaše společnost název a adresu informace v poznámce zásilky jako vaše informace odesílatele.
+2. E-mailu Quantium řešení pomocí následující šablony e-mailu.
 
-Pokud Chakubarai connote chybí, můžete požádat o vyzvednutí e-mailu. Pomocí následující šablony e-mailovou žádost o vyzvednutí.
+    - Pokud Japonsko příspěvek Chakubarai zásilky Poznámka nebyla zahrnuta nebo chybí, Všimněte si, že v tomto e-mailu. Japonsko řešení Quantium požádá o příspěvek Japonsko přenést na vyzvednutí zásilky Poznámka.
+    - Pokud máte více objednávek, e-mailu k zajištění individuální vyzvednutí.
 
-```
-To: Customerservice.JP@quantiumsolutions.com
-Subject: Pickup request for Azure Data Box Disk｜Job Name： 
-Body: 
-- Azure Data Box Disk job name：
-- Reference number:  
-- Requested pickup date：mmdd (Select a requested time slot from below).
-    a. 08：00-13：00 
-    b. 13：00-15：00 
-    c. 15：00-17：00 
-    d. 17：00-19：00 
-```
+    ```
+    To: Customerservice.JP@quantiumsolutions.com
+    Subject: Pickup request for Azure Data Box Disk｜Job Name： 
+    Body: 
+    - Japan Post Yu-Pack tracking number (reference number)：
+    - Requested pickup date：mmdd (Select a requested time slot from below).
+        a. 08：00-13：00 
+        b. 13：00-15：00 
+        c. 15：00-17：00 
+        d. 17：00-19：00 
+    ```
+
+3. Dostávat e-mailové potvrzení z řešení Quantium poté, co jste si vyzvednutí. Potvrzení e-mailu obsahuje také informace v poznámce Chakubarai zásilku.
+
+V případě potřeby můžete požádat podporu řešení Quantium (japonské) na následující informace: 
+
+- E-mailu:Customerservice.JP@quantiumsolutions.com 
+- Telefon: 03-5755-0150 
 
 #### <a name="pick-up-in-korea"></a>Pokračovat v Koreji
 
-1. Nezapomeňte uvést návratový connote.
-2. Chcete-li žádost o vyzvednutí:
-    1. Volání *Quantium Solutions International* linku na 070 1418 8231 během hodin (10: 00 do 17: 00, pondělí až pátku). Nabídka *Microsoft vyzvednutí* a číslo connote uspořádat pro kolekci.  
-    2. Pokud linka pro je zaneprázdněný, e-mailu `microsoft@rocketparcel.com`, s předmět e-mailu *Pickup Microsoft* a číslo connote jako odkaz.
+1. Nezapomeňte uvést návratový nákladní list.
+2. Chcete-li žádost o vyzvednutí při odeslání Poznámka je k dispozici:
+    1. Volání *Quantium Solutions International* linku na 070 1418 8231 během hodin (10: 00 do 17: 00, pondělí až pátku). Nabídka *Microsoft Azure vyzvednutí* a číslo žádosti o služby k uspořádání pro kolekci.  
+    2. Pokud linku je zaneprázdněný, pošlete e-mail `microsoft@rocketparcel.com`, s předmět e-mailu *vyzvednutí Microsoft Azure* a číslo žádosti o služby jako odkaz.
     3. Pokud Kurýrní nedorazí pro kolekci, zavolejte *Quantium Solutions International* linku pro alternativní režimu. 
+    4. Obdržíte e-mailové potvrzení pro vyzvednutí naplánovat.
+3. Tento krok proveďte, pouze v případě, že poznámka zásilka není k dispozici. Chcete-li žádost o vyzvednutí:
+    1. Volání *Quantium Solutions International* linku na 070 1418 8231 během hodin (10: 00 do 17: 00, pondělí až pátku). Nabídka *Microsoft Azure vyzvednutí* a číslo žádosti o služby k uspořádání pro kolekci. Zadejte, že potřebujete nová poznámka zásilky uspořádat pro kolekci. Zadejte (zákazníka) odesílatele, příjemce informace (datacentrum Azure) a referenční číslo (číslo žádosti o službu). 
+    2. Pokud linku je zaneprázdněný, pošlete e-mail `microsoft@rocketparcel.com`, s předmět e-mailu *vyzvednutí Microsoft Azure* a číslo žádosti o služby jako odkaz.
+    3. Pokud Kurýrní nedorazí pro kolekci, zavolejte *Quantium Solutions International* linku pro alternativní režimu. 
+    4. Pokud byla podána žádost prostřednictvím telefonu obdržíte slovní potvrzení.
+
+### <a name="pick-up-in-singapore"></a>Sbírání Singapur
+
+1. Tisk Expediční štítek a připojte vrhá stín do pole. Pokud dojde k poškození nebo ztrátě popisku:
+    - Přejděte na **Přehled > Stáhnout expediční štítek**.
+
+        ![Stáhnout expediční štítek](media/data-box-disk-deploy-picked-up/download-shipping-label.png)
+
+        Tato akce stáhne zpáteční expediční štítek, jak je zobrazeno dál.
+
+        ![Ukázkový expediční štítek](media/data-box-disk-deploy-picked-up/exmple-shipping-label.png)
+    - Opatří štítek na zařízení. Ujistěte se, že je zobrazen popisek.
+
+2. Chcete-li žádost o vyzvednutí:
+    - Volání **SingPost** linku na **6845 6485** během hodin (9: 00 do 17: 00, pondělí až pátku).  
+    - Nabídka *Microsoft Azure vyzvednutí* a službu požádat o číslo (číslo pro sledování na zpětný Expediční štítek) k uspořádání pro kolekci. 
+    - Zobrazí se slovní potvrzení pro vyzvednutí naplánovat. 
+    - Pokud Kurýrní nedorazí pro kolekci, zavolejte **SingPost** na **6845 6485** alternativní režim. 
+3. Předá do Kurýrní. 
+
 
 ## <a name="verify-data-upload-to-azure"></a>Ověření nahrání dat do Azure
 

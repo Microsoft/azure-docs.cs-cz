@@ -11,14 +11,14 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: diberry
-ms.openlocfilehash: fb4cf119195b3be23dc8f2cb98bd019769583473
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 4c08c95a05d4f22e2338a7264409aec0f64a4755
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341841"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442523"
 ---
-# <a name="preview-migrate-to-api-version-3x--for-luis-apps"></a>Verze Preview: Migrovat na verzi rozhraní API pro aplikace LUIS 3.x
+# <a name="preview-migrate-to-api-version-3x-for-luis-apps"></a>Verze Preview: Migrovat na verzi rozhraní API pro aplikace LUIS 3.x
 
 Koncový bod dotazu predikcí rozhraní API změnily. Tento průvodce vám pochopit, jak migrovat na verzi 3 koncový bod rozhraní API. 
 
@@ -44,6 +44,27 @@ Spadají následující funkce služby LUIS **nepodporuje** v rozhraní API V3:
 
 [Referenční dokumentace](https://aka.ms/luis-api-v3) je k dispozici pro V3.
 
+## <a name="endpoint-url-changes-by-slot-name"></a>Změny adresy URL koncového bodu podle názvu slot
+
+Formát volání koncového bodu HTTP V3 změnila.
+
+|– METODA|zprostředkovatele identity|
+|--|--|
+|GET|https://<b>{REGION}</b>.api.cognitive.microsoft.com/luis/<b>v3.0-preview</b>/apps/<b>{APP-ID}</b>/slots/<b>{SLOT-NAME}</b>/predict?query=<b>{QUERY}</b>|
+|POST|https://<b>{REGION}</b>.api.cognitive.microsoft.com/luis/<b>v3.0-preview</b>/apps/<b>{APP-ID}</b>/slots/<b>{SLOT-NAME}</b>/predict|
+|||
+
+## <a name="endpoint-url-changes-by-version-id"></a>Změny adresy URL koncového bodu podle ID verze
+
+Pokud chcete zadat dotaz podle verze, musíte nejprve [publikování přes rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c3b) s `"directVersionPublish":true`. Dotazování na koncový bod odkazující na ID verze místo názvu slot.
+
+
+|– METODA|zprostředkovatele identity|
+|--|--|
+|GET|https://<b>{REGION}</b>.api.cognitive.microsoft.com/luis/<b>v3.0-preview</b>/apps/<b>{APP-ID}</b>/versions/<b>{VERSION-ID}</b>/predict?query=<b>{QUERY}</b>|
+|POST|https://<b>{REGION}</b>.api.cognitive.microsoft.com/luis/<b>v3.0-preview</b>/apps/<b>{APP-ID}</b>/versions/<b>{VERSION-ID}</b>/predict|
+|||
+
 ## <a name="prebuilt-entities-with-new-json"></a>Předem připravených entit pomocí nového kódu JSON
 
 Změny objektu odpovědi V3 zahrnují [předem připravených entit](luis-reference-prebuilt-entities.md). 
@@ -54,7 +75,7 @@ Změny objektu odpovědi V3 zahrnují [předem připravených entit](luis-refere
 
 Rozhraní API V3 má parametry řetězce dotazu.
 
-|Název parametru|Typ|Version|Výchozí|Účel|
+|Název parametru|Type|Version|Výchozí|Účel|
 |--|--|--|--|--|
 |`log`|boolean|V2 & V3|false|Query Store v souboru protokolu.| 
 |`query`|string|Pouze v3|Žádná výchozí hodnota - je požadováno v požadavek GET|**Ve verzi V2**, probíhá utterance k předpovídat `q` parametr. <br><br>**Ve verzi 3**, je předáno funkci `query` parametru.|
@@ -82,7 +103,7 @@ Rozhraní API V3 má parametry řetězce dotazu.
 }
 ```
 
-|Vlastnost|Typ|Version|Výchozí|Účel|
+|Vlastnost|Type|Version|Výchozí|Účel|
 |--|--|--|--|--|
 |`dynamicLists`|array|Pouze v3|Není nutné.|[Dynamické seznamy](#dynamic-lists-passed-in-at-prediction-time) vám umožní rozšířit existující entity trénovaného a publikované seznam již v aplikaci LUIS.|
 |`externalEntities`|array|Pouze v3|Není nutné.|[Externí entity](#external-entities-passed-in-at-prediction-time) aplikace LUIS umožnit k identifikaci a entity za běhu, který může sloužit jako funkce do existující entity. |

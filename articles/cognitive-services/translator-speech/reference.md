@@ -3,20 +3,20 @@ title: Translator Speech API Reference
 titleSuffix: Azure Cognitive Services
 description: Referenční dokumentace pro rozhraní Translator Speech API.
 services: cognitive-services
-author: Jann-Skotdal
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: reference
 ms.date: 05/18/2018
-ms.author: v-jansko
+ms.author: swmachan
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 3493f6d25461836d8f6e48ce4213b0f5b78b6372
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0f083a6ca3079128aad4aba3a53013df378a6106
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60539175"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446904"
 ---
 # <a name="translator-speech-api"></a>Translator Speech API
 
@@ -176,7 +176,7 @@ Když klientská aplikace dokončení vysílání datového proudu zvuku, obdrž
 |format|(prázdné)|Určuje formát převod textu na řeč zvukový stream vrácený poskytovatelem služby. Dostupné možnosti jsou:<ul><li>`audio/wav`: Zvukového průběhu zvukový datový proud. Klient musí použít hlavičku WAV správně interpretovat zvukový formát. Zvuk WAV pro převod textu na řeč je 16 bitů, jeden kanál PCM s vzorkovací frekvenci 24kHz nebo 16kHz.</li><li>`audio/mp3`: MP3 zvukový datový proud.</li></ul>Výchozí hodnota je `audio/wav`.|query|string|
 |ProfanityAction    |(prázdné)    |Určuje způsob, jakým služba pracovat profanities rozpoznán v řeči. Jsou platné akce:<ul><li>`NoAction`: Profanities je ponechán beze změny.</li><li>`Marked`: Profanities jsou nahrazeny značku. Zobrazit `ProfanityMarker` parametru.</li><li>`Deleted`: Profanities se odstraní. Například pokud slovo `"jackass"` je považován za vulgárních výrazů frázi `"He is a jackass."` se stane `"He is a .".`</li></ul>Výchozí hodnota je označen.|query|string|
 |ProfanityMarker|(prázdné)    |Určuje, jak zjištěné profanities jsou zpracovány při `ProfanityAction` je nastavena na `Marked`. Platné možnosti jsou:<ul><li>`Asterisk`: Profanities se nahradí řetězcem `***`. Například pokud slovo `"jackass"` je považován za vulgárních výrazů frázi `"He is a jackass."` se stane `"He is a ***.".`</li><li>`Tag`: Podle značky XML vulgárních výrazů jsou obklopené vulgárních výrazů. Například pokud slovo `"jackass"` je považován za vulgárních výrazů frázi `"He is a jackass."` se stanou `"He is a <profanity>jackass</profanity>."`.</li></ul>Výchozí formát je `Asterisk`.|query|string|
-|Autorizace|(prázdné)  |Určuje hodnotu klienta nosný token. Použijte předponu `Bearer` za nímž následuje hodnotu `access_token` hodnoty vrácené službou tokenu ověřování.|záhlaví   |string|
+|Authorization|(prázdné)  |Určuje hodnotu klienta nosný token. Použijte předponu `Bearer` za nímž následuje hodnotu `access_token` hodnoty vrácené službou tokenu ověřování.|záhlaví   |string|
 |OCP-Apim-Subscription-Key|(prázdné)|Požadováno pokud `Authorization` není zadána hlavička.|záhlaví|string|
 |access_token|(prázdné)   |Alternativní způsob, jak předat platný přístupový token OAuth. Nosný token je obvykle poskytují s hlavičkou `Authorization`. Některé knihovny pomocí protokolu websocket neumožňují klientským kódem, aby nastavení hlaviček. V takovém případě může klient použít `access_token` parametr předat platný token dotazu. Při použití přístupového tokenu pro ověření, pokud `Authorization` není nastavena hlavička, pak `access_token` musí být nastavena. Pokud jsou nastaveny záhlaví a parametr dotazu, je ignorován parametr dotazu. Klienti měli používat jenom jedna metoda předat token.|query|string|
 |klíč předplatného|(prázdné)   |Alternativní způsob, jak předat klíč předplatného. Některé knihovny pomocí protokolu websocket neumožňují klientským kódem, aby nastavení hlaviček. V takovém případě může klient použít `subscription-key` parametr předejte platné předplatné klíč dotazu. Pokud používáte klíč předplatného k ověření, `Ocp-Apim-Subscription-Key` není nastavena hlavička, pak musí být nastaven klíč předplatného. Pokud jsou nastaveny záhlaví a parametr dotazu, je ignorován parametr dotazu. Klienti měli používat jenom jednu metodu k předání `subscription key`.|query|string|

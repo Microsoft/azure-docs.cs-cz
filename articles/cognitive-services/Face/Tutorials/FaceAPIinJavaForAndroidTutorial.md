@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: pafarley
-ms.openlocfilehash: 5c7f2e86d6fe63d309c74d7304f1c19a714b6471
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a809a4de588a388c4be8ca6efa245450699eeb64
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60815490"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441607"
 ---
 # <a name="tutorial-create-an-android-app-to-detect-and-frame-faces-in-an-image"></a>Kurz: Vytvoření aplikace pro Android ke zjišťování a snímků tváří v obrázku
 
@@ -78,7 +78,7 @@ Odkomentujte volání **detectAndFrame** v **onActivityResult** metody. Stiskně
 
 ### <a name="add-the-gradle-dependency"></a>Přidat závislost Gradle
 
-V podokně **Project** (Projekt) použijte selektor rozevíracího seznamu a vyberte **Android**. Rozbalte **Gradle Scripts** (Skripty Gradle) a potom otevřete *build.gradle (Module: app)*. Přidejte závislost pro klientskou knihovnu služby Rozpoznávání tváře `com.microsoft.projectoxford:face:1.4.3`, jak ukazuje následující snímek obrazovky, a potom klikněte na **Sync Now** (Synchronizovat).
+V podokně **Project** (Projekt) použijte selektor rozevíracího seznamu a vyberte **Android**. Rozbalte **Gradle Scripts** (Skripty Gradle) a potom otevřete *build.gradle (Module: app)* . Přidejte závislost pro klientskou knihovnu služby Rozpoznávání tváře `com.microsoft.projectoxford:face:1.4.3`, jak ukazuje následující snímek obrazovky, a potom klikněte na **Sync Now** (Synchronizovat).
 
 ![Snímek souboru build.gradle aplikace v sadě Android Studio](../Images/face-tut-java-gradle.png)
 
@@ -100,7 +100,7 @@ V podokně **Project** rozbalte **app** a potom **manifests** a otevřete *Andro
 
 ## <a name="upload-image-and-detect-faces"></a>Nahrajte obrázek a rozpoznávání tváří
 
-Vaše aplikace bude voláním rozpoznávání tváří **FaceServiceClient.detect** metoda, která zabalí [rozpoznat](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) rozhraní REST API a vrátí seznam hodnot **pro rozpoznávání tváře** instancí.
+Vaše aplikace bude voláním rozpoznávání tváří **faceClient.Face.DetectWithStreamAsync** metoda, která zabalí [rozpoznat](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) rozhraní REST API a vrátí seznam hodnot **pro rozpoznávání tváře** instancí.
 
 Každá vrácená **pro rozpoznávání tváře** zahrnuje obdélník a určit jeho umístění v kombinaci s řadou volitelné obličejových atributů. V tomto příkladu jsou požadovány pouze obdélníky pro rozpoznávání tváře.
 

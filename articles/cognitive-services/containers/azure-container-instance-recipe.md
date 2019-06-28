@@ -8,14 +8,14 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 06/26/2019
 ms.author: dapine
-ms.openlocfilehash: db73d4e30c960eb09e6b5fbc9411901c69c28b01
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 45a03a0912681b4fc33ef8df88fa00fd5458f720
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67272970"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445821"
 ---
 # <a name="deploy-and-run-container-on-azure-container-instance-aci"></a>Nasazení a spouštění kontejnerů v Azure Container Instance (ACI)
 
@@ -35,46 +35,7 @@ Toto řešení funguje s kontejnerem všechny služby Cognitive Services. Na web
 
 Všechny proměnné v lomených závorkách `<>`, je třeba nahradit vlastními hodnotami. Toto nahrazení zahrnuje ostrých závorek.
 
-## <a name="step-2-launch-your-container-on-azure-container-instances-aci"></a>Krok 2: Spuštění kontejneru v Azure Container Instances (ACI)
-
-**Vytváří se prostředek služby Azure Container Instance (ACI).**
-
-1. Přejděte [vytvořit](https://ms.portal.azure.com/#create/Microsoft.ContainerInstances) stránky pro Container Instances.
-
-1. Na **Základy** kartu, zadejte následující údaje:
-
-    |Stránka|Nastavení|Hodnota|
-    |--|--|--|
-    |Základy|Předplatné|Vyberte své předplatné.|
-    |Základy|Skupina prostředků|Vyberte skupinu prostředků nebo vytvořte novou, jako `cognitive-services`.|
-    |Základy|Název kontejneru|Zadejte název, například `cognitive-container-instance`. Tento název musí být velkými písmeny nižší.|
-    |Základy|Location|Vyberte oblast pro nasazení.|
-    |Základy|Typ obrázku|`Public`|
-    |Základy|Název Image|Zadejte umístění kontejneru Cognitive Services. To může být na stejném místě jste použili v `docker pull` příkazu _například_: <br>`mcr.microsoft.com/azure-cognitive-services/sentiment`|
-    |Základy|Typ operačního systému|`Linux`|
-    |Základy|Velikost|Změnit velikost na navrhované doporučení pro vaše konkrétní kontejner služby Cognitive Services.:<br>2 jádra<br>4 GB
-    ||||
-  
-1. Na **sítě** kartu, zadejte následující údaje:
-
-    |Stránka|Nastavení|Hodnota|
-    |--|--|--|
-    |Sítě|Porty|Upravit existující port pro protokol TCP ze `80` k `5000`. To znamená, že jsou vystavení kontejneru na portu 5000.|
-    ||||
-
-1. Na **Upřesnit** kartu, zadejte následující podrobnosti o předávání kontejneru vyžaduje fakturace nastavení prostředků Instance kontejneru:
-
-    |Stránka Upřesnit klíč|Hodnota pokročilé stránky|
-    |--|--|
-    |`apikey`|Zkopírovány z **klíče** stránky prostředku. Budete potřebovat pouze dva klíče. Jedná se o 32 alfanumerický znak řetězec bez mezery, pomlčky, `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.|
-    |`billing`|Zkopírovány z **přehled** stránky prostředku. |
-    |`eula`|`accept`|
-
-    Pokud váš kontejner má další nastavení konfigurace, jako jsou vstupní připojení, připojí výstupu nebo protokolování, tato nastavení také muset přidat.
-
-1. Vyberte **zkontrolovat a vytvořit**.
-1. Jakmile úspěšně proběhne ověření, vyberte **vytvořit** na dokončení procesu vytváření.
-1. Vyberte ikonu zvonku v horním navigačním panelu. Toto je okno oznámení. Zobrazí se modrý **přejít k prostředku** tlačítko, pokud je prostředek vytvořený. Vyberte toto tlačítko Přejít nový prostředek.
+[!INCLUDE [Create a Text Analytics Containers on Azure Container Instances (ACI)](./includes/create-aci-resource.md)]
 
 ## <a name="use-the-container-instance"></a>Použijte instanci kontejneru
 

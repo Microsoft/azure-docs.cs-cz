@@ -3,19 +3,19 @@ title: Dynamický slovník – Translator Text API
 titlesuffix: Azure Cognitive Services
 description: Jak používat funkci dynamický slovník Translator Text API.
 services: cognitive-services
-author: rajdeep-in
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
-ms.author: v-pawal
-ms.openlocfilehash: d3a77ee9273e9f587b6157bb6ed2294865b1fca5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: swmachan
+ms.openlocfilehash: 2ef1e474dd5d36f1967501ea7bdedc4736954a2b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66514262"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67436010"
 ---
 # <a name="how-to-use-a-dynamic-dictionary"></a>Jak používat dynamický slovník
 

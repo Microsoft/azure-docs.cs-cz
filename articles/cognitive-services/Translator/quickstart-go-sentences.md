@@ -3,19 +3,19 @@ title: 'Rychlý start: Získání délky věty přejít – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu zjistíte délky vět v textu pomocí rozhraní Translator Text API a jazyka Go.
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: erhopf
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/04/2019
-ms.author: erhopf
-ms.openlocfilehash: 723e7e33a043f3700b562cf50a6f75539741507f
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.author: swmachan
+ms.openlocfilehash: a2ed5fdd9ff8042bcf23fb5ce31880ae4167483a
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66515221"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449623"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-using-go"></a>Rychlý start: Určení délky větu pomocí jazyka Go pomocí rozhraní Translator Text API
 
@@ -137,6 +137,8 @@ if err != nil {
     log.Fatal(err)
 }
 ```
+
+Pokud používáte víc služeb předplatného služeb Cognitive Services, musíte taky zahrnout `Ocp-Apim-Subscription-Region` v parametry požadavku. [Další informace o dvojúrovňovém víc služeb předplatného](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication). 
 
 ## <a name="handle-and-print-the-response"></a>Zpracování a tisku odpověď
 

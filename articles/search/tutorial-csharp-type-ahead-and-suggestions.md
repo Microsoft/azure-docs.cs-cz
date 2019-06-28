@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.author: v-pettur
 author: PeterTurcan
 ms.date: 05/01/2019
-ms.openlocfilehash: 48dde6ebe19f5a6c14008fd4e5e27a9fb0151928
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 01c0819fd0bf525739675ad756031cafc1a51673
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67304111"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67434668"
 ---
 # <a name="c-tutorial-add-autocompletion-and-suggestions---azure-search"></a>C#kurz: Přidat automatického doplňování a návrhy – Azure Search
 
@@ -69,11 +69,11 @@ Ve výše uvedené skriptu volaná funkce automatického dokončování není n�
     ```cs
     <head>
         <meta charset="utf-8">
-        <title>Autocomplete demo</title>
-        <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+        <title>Typeahead</title>
+        <link href="https://code.jquery.com/ui/1.12.1/themes/start/jquery-ui.css"
               rel="stylesheet">
         <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-        <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
         <link rel="stylesheet" href="~/css/hotels.css" />
     </head>
@@ -461,9 +461,9 @@ Vezměte v úvahu následující takeaways z tohoto projektu:
 
 ## <a name="next-steps"></a>Další postup
 
-Jedním z problémů s automatického doplňování a návrhy je, že zahrnují opakovaná volání serveru (jednu na každý klíče tah po zadání minimální počet znaků je dosaženo). Pokud toto opakovaná volání za následek pomalejší než očekávaných odpovědí, činnost koncového uživatele se sníží. Použití omezujících vlastností poskytuje alternativu zajímavé, aby tyto opakovaná volání, které se podíváme na další.
+V dalším kurzu jsme Podíváme se na jiný způsob řešení komfort uživatelů, používání omezujících vlastností můžete zúžit hledání jediným kliknutím.
 
 > [!div class="nextstepaction"]
-> [C#Kurz: Použití omezujících vlastností efektivitu navigace a sítě – Azure Search](tutorial-csharp-facets.md)
+> [C#Kurz: Podpora navigace – Azure Search pomocí omezující vlastnosti](tutorial-csharp-facets.md)
 
 

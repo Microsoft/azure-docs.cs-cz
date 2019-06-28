@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
-ms.date: 05/28/2019
-ms.openlocfilehash: cf1ada88cda77091e303e67b9652b9c6a372e2d1
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.date: 06/26/2019
+ms.openlocfilehash: d057aa162c5554ed6c568fb765ddb2b84ac92fd6
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295380"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448913"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-apache-spark-in-hdinsight-using-intellij"></a>Kurz: Vytvoření aplikace v jazyce Scala Maven pro Apache Spark v HDInsight pomocí IntelliJ
 
@@ -25,37 +25,37 @@ V tomto kurzu se dozvíte, jak vytvořit [Apache Spark](https://spark.apache.org
 * Vygenerování souboru JAR, který je možné odeslat do clusterů HDInsight Spark
 * Spuštění aplikace v clusteru Spark pomocí Livy
 
-> [!NOTE]  
-> HDInsight také nabízí nástroj v podobě modulu plug-in pro IntelliJ IDEA, který zjednodušuje proces vytváření a odesílání aplikací do clusteru HDInsight Spark v Linuxu. Další informace najdete v tématu [použití modulu plug-in nástroje HDInsight pro IntelliJ IDEA pro vytvoření a odesílání aplikací Apache Spark](apache-spark-intellij-tool-plugin.md).
-
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
+> * Instalace modulu plug-in Scala pro IntelliJ IDEA
 > * Vývoj aplikace Scala Maven pomocí IntelliJ
-
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+> * Vytvoření samostatného projektu Scala
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Cluster Apache Spark ve službě HDInsight. Pokyny najdete v tématu [Vytváření clusterů Apache Spark ve službě Azure HDInsight](apache-spark-jupyter-spark-sql.md).
+
 * [Oracle Java Development kit](https://www.azul.com/downloads/azure-only/zulu/).  Tento kurz používá verzi 8.0.202 Java.
+
 * Prostředí Java IDE. Tento článek používá [verze IntelliJ IDEA Community  2018.3.4](https://www.jetbrains.com/idea/download/).
+
 * Azure Toolkit for IntelliJ.  Zobrazit [instalace sady Azure Toolkit pro IntelliJ](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-installation?view=azure-java-stable).
 
 ## <a name="install-scala-plugin-for-intellij-idea"></a>Instalace modulu plug-in Scala pro IntelliJ IDEA
+
 Proveďte následující postup instalace modulu plug-in Scala:
 
 1. Otevřete IntelliJ IDEA.
 
 2. Na úvodní obrazovce, přejděte na **konfigurovat** > **moduly plug-in** otevřít **moduly plug-in** okna.
-   
+
     ![Povolení modulu plug-in Scala](./media/apache-spark-create-standalone-application/enable-scala-plugin.png)
 
 3. Vyberte **nainstalovat** pro modul plug-in Scala, který je mezi vybranými položkami v novém okně.  
- 
+
     ![Instalace modulu plug-in Scala](./media/apache-spark-create-standalone-application/install-scala-plugin.png)
 
 4. Po úspěšné instalaci modulu plug-in je potřeba restartovat integrované vývojové prostředí (IDE).
-
 
 ## <a name="use-intellij-to-create-application"></a>Použití IntelliJ k vytvoření aplikace
 
@@ -124,9 +124,9 @@ Proveďte následující postup instalace modulu plug-in Scala:
 15. Vyberte **automaticky importovat projekty Maven** zaškrtávací políčko.
 
 16. Vyberte **použít**a pak vyberte **OK**.  Potom se vrátíte do okna projektu.
-   
+
     ![Konfigurace Mavenu pro automatické stahování](./media/apache-spark-create-standalone-application/configure-maven.png)
-   
+
 
 17. V levém podokně přejděte do **src** > **hlavní** > **scala** > **com.microsoft.spark.example**a potom dvakrát klikněte na panel **aplikace** otevřete App.scala.
 
@@ -154,57 +154,74 @@ Proveďte následující postup instalace modulu plug-in Scala:
           }
         }
 19. V levém podokně dvakrát klikněte na soubor **pom.xml**.  
-   
+
 20. Mezi `<project>\<properties>` přidejte následující segmenty:
-      
+
           <scala.version>2.11.8</scala.version>
           <scala.compat.version>2.11.8</scala.compat.version>
           <scala.binary.version>2.11</scala.binary.version>
 
 21. Mezi `<project>\<dependencies>` přidejte následující segmenty:
-      
+
            <dependency>
              <groupId>org.apache.spark</groupId>
              <artifactId>spark-core_${scala.binary.version}</artifactId>
              <version>2.3.0</version>
            </dependency>
-      
+
     Uložte změny v souboru pom.xml.
 
 22. Vytvořte soubor .jar. IntelliJ IDEA umožňuje vytvoření souboru JAR jako artefaktu projektu. Proveďte následující kroky.
-    
+
     1. Z **souboru** příkaz **strukturu projektu...** .
 
     2. Z **strukturu projektu** okno, přejděte na **artefakty** > **na symbol plus +**  > **JAR**  >  **z modulů se závislosti...** .
-       
+
         ![Vytvoření souboru JAR](./media/apache-spark-create-standalone-application/create-jar-1.png)
 
     3. V **vytvořit JAR z modulů** okna, vyberte ikonu složky v **hlavní třída** textového pole.
 
     4. V **vyberte hlavní třída** okna, vyberte třídu, která se zobrazí ve výchozím nastavení a pak vyberte **OK**.
-       
+
         ![Vytvoření souboru JAR](./media/apache-spark-create-standalone-application/create-jar-2.png)
 
     5. V **vytvořit JAR z modulů** okna, zkontrolujte **extrahovat cílový soubor JAR** je vybrané a pak vyberte možnost **OK**.  Toto nastavení vytvoří jeden soubor JAR se všemi závislostmi.
-       
+
         ![Vytvoření souboru JAR](./media/apache-spark-create-standalone-application/create-jar-3.png)
 
     6. **Výstup rozložení** karta obsahuje seznam všech JAR, které jsou zahrnuté jako součást projektu Maven. Můžete vybrat a odstranit soubory, na kterých aplikace Scala nemá přímou závislost. V případě aplikace, kterou tady vytváříte, můžete odebrat všechny soubory kromě posledního (**SparkSimpleApp compile output**). Vyberte JAR odstranit a potom vyberte záporného symbolu **-** .
-       
+
         ![Vytvoření souboru JAR](./media/apache-spark-create-standalone-application/delete-output-jars.png)
-       
+
         Zkontrolujte, zda **zahrnout do sestavení projektu** zaškrtávací políčko zaškrtnuto, které zajišťuje, že soubor jar vytvoří pokaždé, když je sestavena nebo aktualizuje projekt. Vyberte **použít** a potom **OK**.
 
     7. Chcete-li vytvořit soubor jar, přejděte na **sestavení** > **artefakty sestavení** > **sestavení**. Projekt zkompiluje během přibližně 30 sekund.  Výstupní soubor JAR se vytvoří v adresáři **\out\artifacts**.
-       
+
         ![Vytvoření souboru JAR](./media/apache-spark-create-standalone-application/output.png)
 
 ## <a name="run-the-application-on-the-apache-spark-cluster"></a>Spuštění aplikace v clusteru Apache Spark
+
 Ke spuštění aplikace v clusteru můžete použít následující postupy:
 
 * **Zkopírujte soubor JAR aplikace do objektu blob úložiště Azure** přidruženého ke clusteru. Můžete k tomu použít nástroj příkazového řádku [**AzCopy**](../../storage/common/storage-use-azcopy.md). Existuje také řada dalších klientů, které můžete k nahrání dat použít. Můžete najít další informace o nich v [nahrávání dat pro úlohy Apache Hadoop v HDInsight](../hdinsight-upload-data.md).
 
 * **Odeslat úlohu aplikace vzdáleně pomocí Apache Livy** ke clusteru Spark. Clustery Spark ve službě HDInsight zahrnují rozhraní Livy, které zveřejňuje koncové body REST pro vzdálené odesílání úloh Sparku. Další informace najdete v tématu [úlohy odeslání Apache Spark vzdáleně pomocí Apache Livy Spark na HDInsight clusterů](apache-spark-livy-rest-interface.md).
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud nebudete tuto aplikaci používat, odstraňte cluster, který jste vytvořili pomocí následujících kroků:
+
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+
+1. V **hledání** pole v horní části, typ **HDInsight**.
+
+1. Vyberte **clustery HDInsight** pod **služby**.
+
+1. Seznam clusterů HDInsight, který se zobrazí, vyberte **...**  u clusteru, který jste vytvořili pro účely tohoto kurzu.
+
+1. Vyberte **Odstranit**. Vyberte **Ano**.
+
+![Odstranění clusteru HDInsight](./media/apache-spark-create-standalone-application/hdinsight-azure-portal-delete-cluster.png "Odstranění clusteru HDInsight")
 
 ## <a name="next-step"></a>Další krok
 

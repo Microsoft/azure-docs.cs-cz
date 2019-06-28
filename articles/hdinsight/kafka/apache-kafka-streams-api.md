@@ -7,24 +7,23 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: tutorial
-ms.date: 04/02/2019
-ms.openlocfilehash: d76ac8cc1673f1df8981a543321d34aa57cd0896
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.date: 06/25/2019
+ms.openlocfilehash: 0639ecaa0e4ae0581a6c88e1ea9a47de870a8355
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295477"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446382"
 ---
-# <a name="tutorial-apache-kafka-streams-api"></a>Kurz: Apache Kafka streams API
+# <a name="tutorial-use-apache-kafka-streams-api-in-azure-hdinsight"></a>Kurz: Použití Apache Kafka streams API v Azure HDInsight
 
-Zjistěte, jak vytvořit aplikaci, která používá rozhraní API Apache Kafka datových proudů a spustit ji s využitím Kafka v HDInsight. 
+Zjistěte, jak vytvořit aplikaci, která používá rozhraní API Apache Kafka datových proudů a spustit ji s využitím Kafka v HDInsight.
 
 Aplikace použitá v tomto kurzu počítá slova v datovém proudu. Přečte textová data z tématu Kafka, extrahuje jednotlivá slova a pak uloží slova a jejich počet do jiného tématu Kafka.
 
-> [!NOTE]  
-> Zpracování datových proudů Kafka se často provádí pomocí Apache Spark nebo Apache Storm. Kafka verze 1.1.0 (v HDInsight 3.5 a 3.6) zavedla rozhraní API datové proudy Kafka. Toto rozhraní API umožňuje transformovat datové proudy mezi vstupními a výstupními tématy. V některých případech to může být alternativa k vytváření řešení streamování Sparku nebo Stormu. 
->
-> Další informace o datových proudech Kafka najdete v [úvodní dokumentaci k datovým proudům](https://kafka.apache.org/10/documentation/streams/) na webu Apache.org.
+Zpracování datových proudů Kafka se často provádí pomocí Apache Spark nebo Apache Storm. Kafka verze 1.1.0 (v HDInsight 3.5 a 3.6) zavedla rozhraní API datové proudy Kafka. Toto rozhraní API umožňuje transformovat datové proudy mezi vstupními a výstupními tématy. V některých případech to může být alternativa k vytváření řešení streamování Sparku nebo Stormu.
+
+Další informace o datových proudech Kafka najdete v [úvodní dokumentaci k datovým proudům](https://kafka.apache.org/10/documentation/streams/) na webu Apache.org.
 
 V tomto kurzu se naučíte:
 
@@ -68,8 +67,7 @@ V souboru `pom.xml` je důležité porozumět následujícímu:
     </dependency>
     ```
 
-    > [!NOTE]  
-    > Položka `${kafka.version}` se deklaruje v části `<properties>..</properties>` souboru `pom.xml` a je nakonfigurovaná na verzi systému Kafka v clusteru HDInsight.
+    Položka `${kafka.version}` se deklaruje v části `<properties>..</properties>` souboru `pom.xml` a je nakonfigurovaná na verzi systému Kafka v clusteru HDInsight.
 
 * Moduly plug-in: Moduly plug-in maven poskytují různé možnosti. V tomto projektu se používají následující moduly plug-in:
 
@@ -206,8 +204,7 @@ Pokud chcete sestavit a nasadit projekt do clusteru Kafka ve službě HDInsight,
    * `RekeyedIntermediateTopic`: V tomto tématu se používá k znovu rozdělovat data, jako je počet aktualizovat `countByKey` operátor.
    * `wordcount-example-Counts-changelog`: Toto téma je stav úložiště používané konvencemi `countByKey` operace
 
-     > [!IMPORTANT]  
-     > Systém Kafka ve službě HDInsight je také možné nakonfigurovat tak, aby vytvářel témata automaticky. Další informace najdete v dokumentu [Konfigurace automatického vytváření témat](apache-kafka-auto-create-topics.md).
+    Systém Kafka ve službě HDInsight je také možné nakonfigurovat tak, aby vytvářel témata automaticky. Další informace najdete v dokumentu [Konfigurace automatického vytváření témat](apache-kafka-auto-create-topics.md).
 
 ## <a name="run-the-code"></a>Spuštění kódu
 
@@ -217,8 +214,7 @@ Pokud chcete sestavit a nasadit projekt do clusteru Kafka ve službě HDInsight,
     java -jar kafka-streaming.jar $KAFKABROKERS $KAFKAZKHOSTS &
     ```
 
-    > [!NOTE]  
-    > Může zobrazit upozornění týkající se Apache log4j. To můžete ignorovat.
+    Může zobrazit upozornění týkající se Apache log4j. To můžete ignorovat.
 
 2. K odesílání záznamů do tématu `test` použijte následující příkaz, který spustí aplikaci producenta:
 
@@ -232,8 +228,7 @@ Pokud chcete sestavit a nasadit projekt do clusteru Kafka ve službě HDInsight,
     /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server $KAFKABROKERS --topic wordcounts --formatter kafka.tools.DefaultMessageFormatter --property print.key=true --property key.deserializer=org.apache.kafka.common.serialization.StringDeserializer --property value.deserializer=org.apache.kafka.common.serialization.LongDeserializer --from-beginning
     ```
 
-    > [!NOTE]  
-    > Parametry `--property` říkají konzole konzumenta, aby vytiskla klíč (slovo) společně s počtem (hodnota). Tento parametr také konfiguruje deserializátor, který se použije při čtení těchto hodnot ze systému Kafka.
+    Parametry `--property` říkají konzole konzumenta, aby vytiskla klíč (slovo) společně s počtem (hodnota). Tento parametr také konfiguruje deserializátor, který se použije při čtení těchto hodnot ze systému Kafka.
 
     Výstup se bude podobat následujícímu:
    
@@ -250,8 +245,7 @@ Pokud chcete sestavit a nasadit projekt do clusteru Kafka ve službě HDInsight,
         jumped  13640
         jumped  13641
    
-    > [!NOTE]  
-    > Parametr `--from-beginning` konfiguruje konzumenta tak, aby začal číst záznamy uložené v tématu od začátku. Počet se zvýší při každém zjištění slova, takže téma obsahuje pro každé slovo několik záznamů s rostoucím počtem.
+    Parametr `--from-beginning` konfiguruje konzumenta tak, aby začal číst záznamy uložené v tématu od začátku. Počet se zvýší při každém zjištění slova, takže téma obsahuje pro každé slovo několik záznamů s rostoucím počtem.
 
 4. Producenta ukončíte stisknutím __Ctrl+C__. Pokračujte a pomocí __Ctrl + C__ ukončete aplikaci i konzumenta.
 
@@ -264,9 +258,19 @@ Pokud chcete sestavit a nasadit projekt do clusteru Kafka ve službě HDInsight,
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --delete --topic wordcount-example-Counts-changelog --zookeeper $KAFKAZKHOSTS
     ```
 
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud chcete vyčistit prostředky vytvořené v tomto kurzu, můžete odstranit skupinu prostředků. Odstraněním skupiny prostředků odstraníte také přidružený cluster HDInsight a všechny další prostředky, které jsou k příslušné skupině prostředků přidružené.
+
+Odebrání skupiny prostředků pomocí webu Azure Portal:
+
+1. Na webu Azure Portal rozbalením nabídky na levé straně otevřete nabídku služeb a pak zvolte __Skupiny prostředků__. Zobrazí se seznam skupin prostředků.
+2. Vyhledejte skupinu prostředků, kterou chcete odstranit, a klikněte pravým tlačítkem na tlačítko __Další__ (...) na pravé straně seznamu.
+3. Vyberte __Odstranit skupinu prostředků__ a potvrďte tuto akci.
+
 ## <a name="next-steps"></a>Další postup
 
-V tomto dokumentu jste zjistili, jak pomocí rozhraní API Apache Kafka datové proudy Kafka v HDInsight. Další informace o práci s platformou Kafka najdete v těchto zdrojích:
+V tomto dokumentu jste zjistili, jak pomocí rozhraní API Apache Kafka datové proudy Kafka v HDInsight. Další informace o práci s platformou Kafka použijte následující postup.
 
-* [Analýza protokolů platformy Apache Kafka](apache-kafka-log-analytics-operations-management.md)
-* [Replikace dat mezi clustery Apache Kafka](apache-kafka-mirroring.md)
+> [!div class="nextstepaction"]
+> [Analýza protokolů platformy Apache Kafka](apache-kafka-log-analytics-operations-management.md)

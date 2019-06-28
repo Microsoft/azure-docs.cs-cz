@@ -8,12 +8,12 @@ ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 12/18/2018
 ms.author: dkshir
-ms.openlocfilehash: 524ca96687e9395b65ec513326ad0fd4f7c6d429
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2a2364068a1fcba46509408672e5be7440fcfba5
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60533630"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67462244"
 ---
 # <a name="tutorial-receive-notifications-from-your-azure-digital-twins-spaces-by-using-logic-apps"></a>Kurz: Dostávat oznámení od prostory vaší digitální dvojče Azure s využitím Logic Apps
 
@@ -76,16 +76,16 @@ V této části nastavíte [služby Event Grid](../event-grid/overview.md) shrom
       - SpaceChange
       - TopologyOperation
       - UdfCustom
-      connectionString: Primary_connection_string_for_your_Event_Grid
-      secondaryConnectionString: Secondary_connection_string_for_your_Event_Grid
-      path: Event_Grid_Topic_Path
+      connectionString: <Primary connection string for your Event Grid>
+      secondaryConnectionString: <Secondary connection string for your Event Grid>
+      path: <Event Grid Topic Name without https:// and /api/events, e.g. eventgridname.region.eventgrid.azure.net>
     ```
 
-1. Nahraďte zástupný text `Primary_connection_string_for_your_Event_Grid` s hodnotou **YOUR_KEY_1**.
+1. Nahraďte zástupný text `<Primary connection string for your Event Grid>` s hodnotou **YOUR_KEY_1**.
 
-1. Nahraďte zástupný text `Secondary_connection_string_for_your_Event_Grid` s hodnotou **YOUR_KEY_2**.
+1. Nahraďte zástupný text `<Secondary connection string for your Event Grid>` s hodnotou **YOUR_KEY_2**.
 
-1. Zástupný text `Event_Grid_Topic_Path` nahraďte cestou k tématu Event Gridu. Získat tuto cestu tak, že odeberete **https://** koncové cesty prostředku z a **koncový bod tématu** adresy URL. Cesta by měla mít přibližně tento formát: *yourEventGridName.yourLocation.eventgrid.azure.net*.
+1. Nahraďte zástupnou hodnotu **cesta** s cestou téma event gridu. Získat tuto cestu tak, že odeberete **https://** koncové cesty prostředku z a **koncový bod tématu** adresy URL. Cesta by měla mít přibližně tento formát: *yourEventGridName.yourLocation.eventgrid.azure.net*.
 
     > [!IMPORTANT]
     > Všechny hodnoty zadávejte bez uvozovek. Ujistěte se, že existuje alespoň jeden znak po dvojtečky v souboru YAML. Můžete také ověřit váš obsah souboru YAML pomocí jakékoli online validátoru YAML [tento nástroj](https://onlineyamltools.com/validate-yaml).
@@ -114,7 +114,7 @@ Můžete použít [Azure Logic Apps](../logic-apps/logic-apps-overview.md) služ
 
 1. Otevřete váš prostředek služby Logic Apps při nasazení a pak otevřete **návrhář aplikace logiky** podokně. 
 
-1. Vyberte trigger **Když dojde k události Event Gridu**. Přihlaste se k vašemu tenantovi pomocí svého účtu Azure, po zobrazení výzvy. Vyberte **povolit přístup** pro prostředek služby Event Grid po zobrazení výzvy. Vyberte **Pokračovat**.
+1. Vyberte **výskytu události prostředku při Event gridu** aktivační události. Přihlaste se k vašemu tenantovi pomocí svého účtu Azure, po zobrazení výzvy. Vyberte **povolit přístup** pro váš prostředek služby Event Grid, pokud se zobrazí výzva. Vyberte **pokračovat**.
 
 1. V **při výskytu události prostředku (Preview)** okno: 
    
@@ -134,7 +134,7 @@ Můžete použít [Azure Logic Apps](../logic-apps/logic-apps-overview.md) služ
 
    b. V **obsah** pole, vyberte **tělo** z **dynamický obsah** seznamu.
 
-   c. Vyberte **ukázkový používání datovou část k vygenerování schématu**. Vložte následující datovou část JSON a potom vyberte **provádí**.
+   c. Vyberte **K vygenerování schématu použijte ukázkovou datovou část**. Vložte následující datovou část JSON a potom vyberte **provádí**.
 
     ```JSON
     {
@@ -174,7 +174,7 @@ Můžete použít [Azure Logic Apps](../logic-apps/logic-apps-overview.md) služ
 
    a. Vyberte **přidat akci**a vyberte **Office 365 Outlook**.
 
-   b. Z **akce** seznamu vyberte **odeslat e-mailu**. Vyberte **přihlášení** a použijte svoje přihlašovací údaje účtu e-mailu. Vyberte **povolit přístup** po zobrazení výzvy.
+   b. Z **akce** seznamu vyberte **odeslat e-mailu**. Vyberte **přihlášení** a použijte svoje přihlašovací údaje účtu e-mailu. Vyberte **povolit přístup** Pokud se zobrazí výzva.
 
    c. Do pole **Příjemce** zadejte ID svého e-mailu, abyste dostávali oznámení. V **subjektu**, zadejte text **digitální dvojče oznámení nízký air kvality v prostoru**. Potom vyberte **TopologyObjectId** z **dynamický obsah** seznamu pro **Parsovat JSON**.
 

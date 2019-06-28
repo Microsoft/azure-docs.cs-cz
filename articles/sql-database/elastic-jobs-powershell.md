@@ -12,18 +12,18 @@ ms.author: joke
 ms.reviwer: sstein
 manager: craigg
 ms.date: 03/13/2019
-ms.openlocfilehash: eb5066185f9301450a68276dd4b2ce2123231b34
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 53e10636535c553ac5fa17b5f4aac1000cd138bc
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61475999"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445375"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell"></a>Vytvoření agenta elastických úloh pomocí PowerShellu
 
 [Elastické úlohy](sql-database-job-automation-overview.md#elastic-database-jobs) umožňují paralelní spouštění jednoho nebo více skriptů Transact-SQL (T-SQL) napříč mnoha databázemi.
 
-V tomto kurzu se naučíte kroky potřebné ke spuštění dotazu napříč několika databázemi:
+V tomto kurzu se dozvíte, kroky potřebné ke spuštění dotazu ve více databázích:
 
 > [!div class="checklist"]
 > * Vytvoření agenta elastických úloh
@@ -71,7 +71,7 @@ Get-Module Az.Sql
 
 K vytvoření agenta elastických úloh se vyžaduje databáze (S0 nebo vyšší), která se použije jako [databáze úloh](sql-database-job-automation-overview.md#job-database). 
 
-*Následující skript vytvoří novou skupinu prostředků, server a databázi, která se použije jako databáze úloh. Následující skript také vytvoří druhý server se 2 prázdnými databázemi, pro které se budou spouštět úlohy.*
+*Následující skript vytvoří novou skupinu prostředků, server a databázi, která se použije jako databáze úloh. Níže uvedený skript také vytvoří druhý server s dvě prázdné databáze k provedení úloh před.*
 
 Elastické úlohy nemají žádné specifické požadavky na pojmenování, takže můžete použít libovolné zásady vytváření názvů, pokud splňují [požadavky Azure](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).
 
@@ -285,6 +285,23 @@ $JobExecution | Get-AzSqlElasticJobStepExecution
 # Get the job target execution details
 $JobExecution | Get-AzSqlElasticJobTargetExecution -Count 2
 ```
+
+### <a name="job-execution-states"></a>Stavy provádění úloh
+
+Následující tabulka uvádí možné úlohu spuštění stavy:
+
+|Stav|Popis|
+|:---|:---|
+|**Vytvoření** | Provádění úlohy byla právě vytvořena a ještě probíhá.|
+|**Probíhá zpracování** | Právě probíhá provádění úlohy.|
+|**WaitingForRetry** | Provádění úlohy nebyl schopen dokončit svou činnost a čeká na opakování.|
+|**Bylo úspěšně dokončeno** | Provádění úlohy se úspěšně dokončila.|
+|**SucceededWithSkipped** | Provádění úlohy se úspěšně dokončil, ale některé z jejích podřízených přeskočily.|
+|**Se nezdařilo** | Provádění úlohy má se nezdařilo a k vyčerpání jeho opakované pokusy.|
+|**Vypršel časový limit** | Vypršel časový limit provádění úlohy.|
+|**Bylo zrušeno** | Provádění úlohy byla zrušena.|
+|**Vynecháno** | Provádění úlohy byla přeskočena, protože jiné spuštění stejný krok úlohy je již spuštěna na stejném cíli.|
+|**WaitingForChildJobExecutions** | Čeká na všesměrově jeho spuštění podřízenou k dokončení provádění úlohy.|
 
 ## <a name="schedule-the-job-to-run-later"></a>Naplánování pozdějšího spuštění úlohy
 

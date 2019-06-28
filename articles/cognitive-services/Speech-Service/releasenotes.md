@@ -8,17 +8,42 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/13/2019
+ms.date: 06/26/2019
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: f22b0fcac6099482addfcf56a20e0e828866326e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 09296585ab0ab61f39c18cae6c533c0bbd91926a
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65606350"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449244"
 ---
 # <a name="release-notes"></a>Poznámky k verzi
+
+## <a name="speech-sdk-160-2019-june-release"></a>Speech SDK 1.6.0: 2019 – červen vydání
+**Ukázky**
+*   Ukázky kódu pro rychlý start pro převod textu na řeč na UPW a Unity
+*   Ukázky rychlý start pro Swift v Iosu
+*   Ukázky v Unity pro zpracování řeči a rozpoznávání záměru a překladu
+*   Aktualizace úvodní ukázky pro DialogServiceConnector
+
+**Vylepšení / změny**
+* Dialogové okno obor názvů:
+    * SpeechBotConnector byl přejmenován na DialogServiceConnector
+    * BotConfig byl přejmenován na DialogServiceConfig
+    * BotConfig::FromChannelSecret() má byla přeřazena na DialogServiceConfig::FromBotSecret()
+    * Všechny stávající klienty s přímým přístupem řeči řádku nadále podporovány po přejmenování
+* Aktualizace adaptéru REST převod textu na ŘEČ pro podporu proxy, trvalé připojení
+* Zlepšení chybovou zprávu, když je předána neplatná oblast
+
+**Opravy chyb**
+*   Oprava pro převod textu na ŘEČ: kde SpeakTextAsync budoucnost vrátila bez čekání, dokud se nedokončí zvuk vykreslování
+*   Oprava pro zařazování řetězců v C# povolit úplné jazyková podpora
+*   Oprava problému aplikace .NET core se načíst knihovnu core s cílovou architekturu net461 ve vzorcích
+*   Oprava pro občasné problémy, které je nasazování nativních knihoven do výstupní složky ve vzorcích
+*   Oprava pro zavření spolehlivě webové sokety
+*   Oprava pro možných chyb při otevírání připojení velmi při velkém zatížení v Linuxu
+
 
 ## <a name="speech-sdk-151"></a>Speech SDK 1.5.1
 

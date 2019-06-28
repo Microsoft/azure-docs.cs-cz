@@ -11,12 +11,12 @@ ms.date: 12/09/2018
 ms.topic: tutorial
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: 'Docker, Kubernetes, Azure, AKS, službě Azure Kubernetes, kontejnery, Helm, služby sítě, směrování sítě služby, kubectl, k8s '
-ms.openlocfilehash: c3a988a831ad1069e5988f9c67e92a85a7a44840
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 53c870ad135fe13eb3bf7556678cac29352911aa
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65765209"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442931"
 ---
 # <a name="team-development-with-azure-dev-spaces"></a>Týmový vývoj se službou Azure Dev Spaces
 
@@ -65,7 +65,7 @@ Nejdřív potřebujeme nasazení standardních hodnot z našich služeb. Toto na
 1. V **Průzkumníku řešení** klikněte pravým tlačítkem na projekt a vyberte **Vlastnosti**.
 1. Výběrem karty **Ladění** na levé straně zobrazte nastavení Azure Dev Spaces.
 1. Vyberte **změnu** vytvořit prostor, který bude nepoužívá, pokud jste F5 nebo Ctrl + F5 služby.
-1. V rozevírací nabídce místa, vyberte  **\<vytvořte nový prostor... \>**.
+1. V rozevírací nabídce místa, vyberte  **\<vytvořte nový prostor... \>** .
 1. Ujistěte se, že místo nadřazené nastavená na  **\<žádný\>** a zadejte název prostoru **dev**. Klikněte na tlačítko OK.
 1. Stisknutím kláves Ctrl + F5 ke spuštění _mywebapi_ bez ladicí program připojený.
 1. Přepněte do okna sady Visual Studio s _webfrontend_ projektu a stiskněte klávesu Ctrl + F5 ke spuštění i.
@@ -90,7 +90,7 @@ K vytvoření nového prostoru použijte následující postup:
 2. V **Průzkumníku řešení** klikněte pravým tlačítkem na projekt a vyberte **Vlastnosti**.
 3. Výběrem karty **Ladění** na levé straně zobrazte nastavení Azure Dev Spaces.
 4. Odtud můžete změnit nebo vytvořit cluster nebo prostor, který se použije po stisknutí F5 nebo Ctrl+F5. *Zkontrolujte, že je vybraný vývojový prostor Azure, který jste vytvořili dříve*.
-5. V rozevírací nabídce místa, vyberte  **\<vytvořte nový prostor... \>**.
+5. V rozevírací nabídce místa, vyberte  **\<vytvořte nový prostor... \>** .
 
     ![](media/get-started-netcore-visualstudio/Settings.png)
 
@@ -124,9 +124,9 @@ Následující diagram vám pomůže porozumět tomu, jak různé prostory fungu
 Tato integrovaná funkce služby Azure Dev Spaces umožňuje komplexní testování kódu ve sdíleném prostředí bez toho, aby si každý vývojář musel znovu vytvářet všechny služby ve svém prostoru. Tyto cesty vyžadují přesměrování šíření hlaviček v kódu aplikace, jak ukazuje předchozí krok tohoto průvodce.
 
 ### <a name="test-code-running-in-the-devscott-space"></a>Testovací kód spuštěný v _dev/scott_ místa
-Otestovat novou verzi systému *mywebapi* ve spojení s *webfrontend*, otevřete prohlížeč na adresu URL bodu veřejný přístup pro *webfrontend* (například http://dev.webfrontend.123456abcdef.eus.azds.io)a přejděte na stránku o. Měla by se zobrazit původní zpráva: „Hello from webfrontend and Hello from mywebapi.“
+Otestovat novou verzi systému *mywebapi* ve spojení s *webfrontend*, otevřete prohlížeč na adresu URL bodu veřejný přístup pro *webfrontend* (například http://dev.webfrontend.123456abcdef.eus.azds.io) a přejděte na stránku o. Měla by se zobrazit původní zpráva: „Hello from webfrontend and Hello from mywebapi.“
 
-Teď k adrese URL přidejte „scott.s.“. Adresa URL tedy bude vypadat nějak podobně jako http://scott.s.dev.webfrontend.123456abcdef.eus.azds.io. Aktualizujte stránku v prohlížeči. Se zarážka nastavila ve vaší *mywebapi* projektu by měl získat přístupů. Pokračujte kliknutím na F5. V prohlížeči by se teď měla zobrazit nová zpráva „Hello from webfrontend and mywebapi now says something new.“ Důvodem je, že cesta k aktualizovaný kód v *mywebapi* běží v _dev/scott_ místa.
+Teď k adrese URL přidejte „scott.s.“. část na adresu URL tak vypadat http načte\://scott.s.dev.webfrontend.123456abcdef.eus.azds.io a aktualizujte stránku v prohlížeči. Se zarážka nastavila ve vaší *mywebapi* projektu by měl získat přístupů. Pokračujte kliknutím na F5. V prohlížeči by se teď měla zobrazit nová zpráva „Hello from webfrontend and mywebapi now says something new.“ Důvodem je, že cesta k aktualizovaný kód v *mywebapi* běží v _dev/scott_ místa.
 
 Jakmile budete mít _dev_ místa, které vždy obsahuje nejnovější změny a za předpokladu, že vaše aplikace je navržené tak, aby výhod DevSpace od místa založené na směrování, jak je popsáno v této části kurzu, snad budete moct snadno najdete v článku jak prostory vývoje velmi užitečné při testování nových funkcí v rámci větší aplikace. Namísto nutnosti nasazení _všechny_ služby do privátního prostoru, můžete vytvořit privátní místa, která je odvozena z _dev_a "pouze nahoru" služby ve skutečnosti právě pracujete. Infrastruktura směrování Dev prostory se postaráme o všechno ostatní s využitím tolik služeb z vaší privátní místo jak to můžete znát při jako výchozí se použije zpět do nejnovější verze, která běží _dev_ místa. A stále lepší _více_ vývojáři můžou aktivně vyvíjet různé služby ve stejnou dobu do jejich vlastního prostoru pravidla bez narušení běžného mezi sebou.
 

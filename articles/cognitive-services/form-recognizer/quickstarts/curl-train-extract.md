@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Trénování modelu a extrahovat data formuláře pomocí cURL – nástroj pro rozpoznávání formuláře'
+title: 'Rychlý start: Trénování modelu a extrahovat data formuláře pomocí příkazu cURL – nástroj pro rozpoznávání formuláře'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu použijete rozhraní REST API pro rozpoznávání formuláře pomocí cURL k natrénování modelu a extrahovat data z formuláře.
 author: PatrickFarley
@@ -9,12 +9,12 @@ ms.subservice: form-recognizer
 ms.topic: quickstart
 ms.date: 04/15/2019
 ms.author: pafarley
-ms.openlocfilehash: 3f3b74452ff1f866b0285eee962ab3678b151a30
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 144cd0380cfe2a49d5827f9ecc34ed197f4ad1cd
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67331832"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441812"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Rychlý start: Trénování modelu Rozlišovač formuláře a extrahovat data formuláře pomocí rozhraní REST API pomocí cURL
 
@@ -26,7 +26,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 Abyste mohli absolvovat tento rychlý start, musíte mít:
 - Přístup k rozpoznávání formuláře omezený přístup ve verzi Preview. Pokud chcete získat přístup k verzi preview, vyplňte a odešlete [žádost o přístup formulář Rozlišovač](https://aka.ms/FormRecognizerRequestAccess) formuláře.
 - [cURL](https://curl.haxx.se/windows/) nainstalované.
-- Sada aspoň pět formy stejného typu. Tato data použijeme pro trénování modelu. Můžete použít [ukázkovou datovou sadou](https://go.microsoft.com/fwlink/?linkid=2090451) pro tento rychlý start. Nahrání dat do kořenového účtu služby Azure Blob Storage.
+- Sada aspoň pět formy stejného typu. Tato data použijeme pro trénování modelu. Můžete použít [ukázkové datové sadě](https://go.microsoft.com/fwlink/?linkid=2090451) pro tento rychlý start. Nahrání dat do kořenového účtu služby Azure Blob Storage.
 
 ## <a name="create-a-form-recognizer-resource"></a>Vytvořit prostředek Rozlišovač formuláře
 

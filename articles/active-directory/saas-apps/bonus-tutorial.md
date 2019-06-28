@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 298f25e151d4c52749d646a9457f0962c68bf4d4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f605398896c93d15b7475c05c79361fdcefcfcab
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67106152"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442775"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bonusly"></a>Kurz: Integrace Azure Active Directory s Bonusly
 
@@ -148,7 +148,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Bonusly, proveďte následu
 
     c. V **Vystavitel zprostředkovatele identity** textového pole vložte hodnotu **Azure AD identifikátor**, který jste zkopírovali z portálu Azure portal.
     
-    d. Vložit **kryptografický otisk** hodnota zkopírována z webu Azure portal do **otisků prstů certifikátů** textového pole.
+    d. Vložit **kryptografický otisk** hodnota zkopírována z webu Azure portal do **otisků prstů certifikátů** textového pole.
     
     e. Klikněte na **Uložit**.
 

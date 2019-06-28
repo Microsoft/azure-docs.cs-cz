@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 05/02/2019
 ms.author: bidishac
-ms.openlocfilehash: b463e2bd3df0c38bf446745a2eade221b00324da
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f2cf65f9ee920b50af6242cee6b53cd07e53f0bc
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072541"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67467021"
 ---
 # <a name="quickstart-create-a-voice-first-virtual-assistant-with-the-speech-sdk-java"></a>Rychlý start: Vytvoření první hlasové virtuálních asistentů se sadou SDK pro řeč, jazyk Java
 
@@ -30,14 +30,11 @@ K tomuto rychlému startu potřebujete:
 * Operační systém: Windows (64-bit), 16.04/18.04 Ubuntu Linux (64 bitů) a macOS 10.13 nebo novější
 * [Eclipse Java IDE](https://www.eclipse.org/downloads/)
 * [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) nebo [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
-* Klíče pro hlasové služby v rozhraní předplatného Azure **westus2** oblasti. Vytvoření odběru na [webu Azure portal](https://portal.azure.com).
+* Klíč předplatného pro hlasové služby. [Získat zdarma](get-started.md) neexistuje, vytvořte ho na [webu Azure portal](https://portal.azure.com).
 * Předem nakonfigurované bot vytvořené pomocí rozhraní Bot Framework verze 4.2 nebo novější. Robot by bylo potřeba přihlásit se k nové "Přímé řádku Speech" kanál pro příjem hlasového vstupu odběru.
 
     > [!NOTE]
-    > Řeči řádku s přímým přístupem (Preview) je momentálně dostupná jenom **westus2** oblasti.
-
-    > [!NOTE]
-    > 30denní zkušební verze pro standardní cenová úroveň je popsáno v [hlasové služby si můžete vyzkoušet zdarma](get-started.md) omezen na **westus** (ne **westus2**) a není proto kompatibilní s přímým Řádek řeči. Úrovně Free a standard **westus2** předplatná jsou kompatibilní.
+    > Řeči řádku s přímým přístupem (Preview) je momentálně dostupný v podmnožině oblastí s hlasové služby. Najdete [seznam podporovaných oblastí pro virtuálních asistentů hlasové první](regions.md#Voice-first virtual assistants) a ujistěte se prostředky nasadí v těchto oblastech.
 
 Pokud používáte Ubuntu 16.04/18.04, ujistěte se, že jsou tyto závislosti nainstalovány před zahájením Eclipse:
 
@@ -82,8 +79,8 @@ Kromě toho chce protokolování povolit, aktualizujte **pom.xml** souboru zahrn
 
     import com.microsoft.cognitiveservices.speech.audio.AudioConfig;
     import com.microsoft.cognitiveservices.speech.audio.PullAudioOutputStream;
-    import com.microsoft.cognitiveservices.speech.dialog.BotConnectorConfig;
-    import com.microsoft.cognitiveservices.speech.dialog.SpeechBotConnector;
+    import com.microsoft.cognitiveservices.speech.dialog.DialogServiceConfig;
+    import com.microsoft.cognitiveservices.speech.dialog.DialogServiceConnector;
     import org.slf4j.Logger;
     import org.slf4j.LoggerFactory;
 
@@ -142,62 +139,59 @@ Kromě toho chce protokolování povolit, aktualizujte **pom.xml** souboru zahrn
     }
     ```
 
-1. V **hlavní** metodu, budete nejprve konfigurovat vaše `BotConnectorConfig` a použijte ji k vytvoření `SpeechBotConnector` instance. To se připojí ke kanálu Direct line řeči pro interakci s svého robota. `AudioConfig` Instance se také používá jako zdroj pro zvukového vstupu. V tomto příkladu se používá výchozí mikrofon s `AudioConfig.fromDefaultMicrophoneInput()`.
+1. V **hlavní** metodu, budete nejprve konfigurovat vaše `DialogServiceConfig` a použijte ji k vytvoření `DialogServiceConnector` instance. To se připojí ke kanálu Direct line řeči pro interakci s svého robota. `AudioConfig` Instance se také používá jako zdroj pro zvukového vstupu. V tomto příkladu se používá výchozí mikrofon s `AudioConfig.fromDefaultMicrophoneInput()`.
 
     * Nahraďte řetězec `YourSubscriptionKey` s klíči předplatného, které můžete získat z [tady](get-started.md).
     * Nahraďte řetězec `YourServiceRegion` s [oblasti](regions.md) spojených s vaším předplatným.
     * Nahraďte řetězec `YourChannelSecret` s váš tajný klíč řádku s přímým přístupem řeči kanálu.
 
     > [!NOTE]
-    > Ve verzi preview, kanál s přímým přístupem řeči řádek aktuálně podporuje pouze **westus2** oblasti.
-
-    > [!NOTE]
-    > 30denní zkušební verze pro standardní cenová úroveň je popsáno v [hlasové služby si můžete vyzkoušet zdarma](get-started.md) omezen na **westus** (ne **westus2**) a není proto kompatibilní s přímým Řádek řeči. Úrovně Free a standard **westus2** předplatná jsou kompatibilní.
+    > Řeči řádku s přímým přístupem (Preview) je momentálně dostupný v podmnožině oblastí s hlasové služby. Najdete [seznam podporovaných oblastí pro virtuálních asistentů hlasové první](regions.md#voice-first-virtual-assistants) a ujistěte se prostředky nasadí v těchto oblastech.
 
     ```java
     final String channelSecret = "YourChannelSecret"; // Your channel secret
     final String subscriptionKey = "YourSubscriptionKey"; // Your subscription key
-    final String region = "YourServiceRegion"; // Your speech subscription service region. Note: only 'westus2' is currently supported
-    final BotConnectorConfig botConnectorConfig = BotConnectorConfig.fromSecretKey(channelSecret, subscriptionKey, region);
+    final String region = "YourServiceRegion"; // Your speech subscription service region. Note: only a subset of regions are currently supported
+    final DialogServiceConfig botConfig = DialogServiceConfig.fromBotSecret(channelSecret, subscriptionKey, region);
 
     // Configure audio input from microphone.
     final AudioConfig audioConfig = AudioConfig.fromDefaultMicrophoneInput();
 
-    // Create a SpeechjBotConnector instance
-    final SpeechBotConnector botConnector = new SpeechBotConnector(botConnectorConfig, audioConfig);
+    // Create a DialogServiceConnector instance
+    final DialogServiceConnector connector = new DialogServiceConnector(botConfig, audioConfig);
     ```
 
-1. `SpeechBotConnector` spoléhá na několik událostí ke komunikaci se svou činnost robota, výsledky rozpoznávání řeči a další informace. Dále přidejte tyto naslouchacích procesů událostí.
+1. `DialogServiceConnector` spoléhá na několik událostí ke komunikaci se svou činnost robota, výsledky rozpoznávání řeči a další informace. Dále přidejte tyto naslouchacích procesů událostí.
 
     ```java
     // Recognizing will provide the intermediate recognized text while an audio stream is being processed
-    botConnector.recognizing.addEventListener((o, speechRecognitionResultEventArgs) -> {
+    connector.recognizing.addEventListener((o, speechRecognitionResultEventArgs) -> {
         log.info("Recognizing speech event text: {}", speechRecognitionResultEventArgs.getResult().getText());
     });
 
     // Recognized will provide the final recognized text once audio capture is completed
-    botConnector.recognized.addEventListener((o, speechRecognitionResultEventArgs) -> {
+    connector.recognized.addEventListener((o, speechRecognitionResultEventArgs) -> {
         log.info("Recognized speech event reason text: {}", speechRecognitionResultEventArgs.getResult().getText());
     });
 
     // SessionStarted will notify when audio begins flowing to the service for a turn
-    botConnector.sessionStarted.addEventListener((o, sessionEventArgs) -> {
+    connector.sessionStarted.addEventListener((o, sessionEventArgs) -> {
         log.info("Session Started event id: {} ", sessionEventArgs.getSessionId());
     });
 
     // SessionStopped will notify when a turn is complete and it's safe to begin listening again
-    botConnector.sessionStopped.addEventListener((o, sessionEventArgs) -> {
+    connector.sessionStopped.addEventListener((o, sessionEventArgs) -> {
         log.info("Session stopped event id: {}", sessionEventArgs.getSessionId());
     });
 
     // Canceled will be signaled when a turn is aborted or experiences an error condition
-    botConnector.canceled.addEventListener((o, canceledEventArgs) -> {
+    connector.canceled.addEventListener((o, canceledEventArgs) -> {
         log.info("Canceled event details: {}", canceledEventArgs.getErrorDetails());
-        botConnector.disconnectAsync();
+        connector.disconnectAsync();
     });
 
     // ActivityReceived is the main way your bot will communicate with the client and uses bot framework activities.
-    botConnector.activityReceived.addEventListener((o, activityEventArgs) -> {
+    connector.activityReceived.addEventListener((o, activityEventArgs) -> {
         final String act = activityEventArgs.getActivity().serialize();
             log.info("Received activity {} audio", activityEventArgs.hasAudio() ? "with" : "without");
             if (activityEventArgs.hasAudio()) {
@@ -206,15 +200,15 @@ Kromě toho chce protokolování povolit, aktualizujte **pom.xml** souboru zahrn
         });
     ```
 
-1. Připojení `SpeechBotConnector` k přímé řeči řádku vyvoláním `connectAsync()` metoda. K otestování vašeho robota, můžete vyvolat `listenOnceAsync` metodu pro odeslání zvukového vstupu z mikrofonu. Kromě toho můžete použít také `sendActivityAsync` metodu pro odeslání vlastní aktivitu jako serializovaný řetězec. Tyto vlastní aktivity může poskytnout dodatečná data, svého robota použijete v konverzaci.
+1. Připojení `DialogServiceConnector` k přímé řeči řádku vyvoláním `connectAsync()` metoda. K otestování vašeho robota, můžete vyvolat `listenOnceAsync` metodu pro odeslání zvukového vstupu z mikrofonu. Kromě toho můžete použít také `sendActivityAsync` metodu pro odeslání vlastní aktivitu jako serializovaný řetězec. Tyto vlastní aktivity může poskytnout dodatečná data, svého robota použijete v konverzaci.
 
     ```java
-    botConnector.connectAsync();
+    connector.connectAsync();
     // Start listening.
     System.out.println("Say something ...");
-    botConnector.listenOnceAsync();
+    connector.listenOnceAsync();
 
-    // botConnector.sendActivityAsync(...)
+    // connector.sendActivityAsync(...)
     ```
 
 1. Uložit změny do `Main` souboru.
@@ -479,10 +473,12 @@ Konzola zobrazí zpráva "Dejme tomu, že něco" v tomto okamžiku, mohou mluvit
 Další ukázky, jako je čtení řeči z zvukový soubor, jsou k dispozici na Githubu.
 
 > [!div class="nextstepaction"]
-> [Prozkoumejte ukázky v Javě na Githubu](https://aka.ms/csspeech/samples)
+> [Vytvoření a nasazení základního robota](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
-- [Rychlé zprovoznění: Překlad řeči, jazyka Java (Windows, Linux)](quickstart-translate-speech-java-jre.md)
-- [Přizpůsobení akustických modelů](how-to-customize-acoustic-models.md)
-- [Přizpůsobení jazykových modelů](how-to-customize-language-model.md)
+- [O virtuálních asistentů hlasové první](voice-first-virtual-assistants.md)
+- [Získejte klíč předplatného hlasových služeb zdarma](get-started.md)
+- [Vlastní probuzení slova](speech-devices-sdk-create-kws.md)
+- [Připojení s přímým přístupem řádku řeči pro svého robota](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
+- [Prozkoumejte ukázky v Javě na Githubu](https://aka.ms/csspeech/samples)

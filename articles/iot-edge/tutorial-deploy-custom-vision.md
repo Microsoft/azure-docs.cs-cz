@@ -5,26 +5,27 @@ services: iot-edge
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/01/2018
+ms.date: 06/25/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: a0530739428e18d01209f94345ae53dfb743d80b
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 12b141f9aa75231adae9f64c57709f290883b420
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66239691"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67433946"
 ---
-# <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Kurz: Provedení klasifikace obrázků na hraničních zařízeních pomocí služby Custom Vision Service
+# <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Kurz: Klasifikace obrázků na hraničních zařízeních s využitím služby Custom Vision
 
-Azure IoT Edge může zvýšit efektivitu vašeho řešení IoT tím, že přesune úlohy z cloudu na hraniční zařízení. Tato funkce je vhodná pro služby, které zpracovávají velké množství dat, jako jsou modely počítačového zpracování obrazu. [Služba Custom Vision](../cognitive-services/custom-vision-service/home.md) umožňuje vytvářet vlastní klasifikátory obrázků a nasazovat je do zařízení jako kontejnery. Kombinace těchto dvou služeb umožňuje získávat informace z obrázků a video streamů bez nutnosti nejprve přenášet všechna tato data do jiného umístění. Služba Custom Vision poskytuje klasifikátor, který generuje přehledy porovnáváním obrázků s natrénovaným modelem. 
+Azure IoT Edge může zvýšit efektivitu vašeho řešení IoT tím, že přesune úlohy z cloudu na hraniční zařízení. Tato funkce je vhodná pro služby, které zpracovávají velké množství dat, jako jsou modely počítačového zpracování obrazu. [Služba Custom Vision](../cognitive-services/custom-vision-service/home.md) umožňuje vytvářet vlastní klasifikátory obrázků a nasazovat je do zařízení jako kontejnery. Kombinace těchto dvou služeb umožňuje získávat informace z obrázků a video streamů bez nutnosti nejprve přenášet všechna tato data do jiného umístění. Služba Custom Vision poskytuje klasifikátor, který generuje přehledy porovnáváním obrázků s natrénovaným modelem.
 
-Služba Custom Vision na zařízení IoT Edge by například mohla určovat, jestli je na dálnici větší nebo menší provoz než normálně nebo jestli jsou v garáži v některé řadě volná parkovací místa. Tyto přehledy je možné sdílet s jinou službou, která na ně může reagovat. 
+Služba Custom Vision na zařízení IoT Edge by například mohla určovat, jestli je na dálnici větší nebo menší provoz než normálně nebo jestli jsou v garáži v některé řadě volná parkovací místa. Tyto přehledy je možné sdílet s jinou službou, která na ně může reagovat.
 
-V tomto kurzu se naučíte: 
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
+>
 > * Vytvoření klasifikátoru obrázků s využitím služby Custom Vision
 > * Vytvoření modulu IoT Edge, který dotazuje webový server služby Custom Vision na vašem zařízení
 > * Odeslání výsledků klasifikátoru obrázků do služby IoT Hub
@@ -72,10 +73,11 @@ Jakmile bude klasifikátor obrázků vytvořený a natrénovaný, můžete ho ex
    | ----- | ----- |
    | Název | Zadejte název projektu, například **EdgeTreeClassifier**. |
    | Popis | Volitelný popis projektu. |
-   | Skupina prostředků | Přijměte výchozí hodnotu **Omezená zkušební verze**. |
+   | Skupina prostředků | Vyberte jednu z vašich skupin prostředků Azure, která obsahuje vlastní prostředek služby pro zpracování obrazu nebo **vytvořit nový** Pokud jste ještě nepřidali. |
    | Typy projektů | **Klasifikace** |
-   | Typy klasifikace | **Více tříd (jedna značka na obrázek)** | 
+   | Typy klasifikace | **Více tříd (jedna značka na obrázek)** |
    | Domény | **Obecné (kompaktní)** |
+   | Možnosti exportu | **Základní platformy (Tensorflow, CoreML, ONNX,...)** |
 
 5. Vyberte **Vytvořit projekt**.
 

@@ -3,19 +3,19 @@ title: Metadata s GenerateAnswer API – QnA Maker
 titleSuffix: Azure Cognitive Services
 description: Nástroj QnA Maker umožňuje přidat metadata ve formě dvojice klíč/hodnota do sad otázek a odpovědí. Můžete filtrovat výsledky na dotazy uživatelů a ukládání dalších informací, lze použít v následných konverzace.
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 06/17/2019
-ms.author: tulasim
-ms.openlocfilehash: d1e7a29e4ca94405e2d6b2000309ef6e2c3a777c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 06/27/2019
+ms.author: diberry
+ms.openlocfilehash: 99c076d7f26638833b568935e766cf319d21945e
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164614"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443474"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>Získejte odpovědi pomocí rozhraní GenerateAnswer API a metadat
 
@@ -37,13 +37,13 @@ Každá entita QnA má jedinečný a trvalý ID. Můžete provést aktualizace n
 
 ## <a name="get-answer-predictions-with-the-generateanswer-api"></a>Získání odpovědí předpovědi s rozhraním API GenerateAnswer
 
-Použití rozhraní API GenerateAnswer v váš bot nebo aplikaci k dotazování znalostní báze se dotaz uživatele, chcete-li získat nejlepší shodu z otázek a odpovědí nastaví.
+Můžete použít [GenerateAnswer API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer) v váš bot nebo aplikaci k dotazování znalostní báze se dotaz uživatele, nastaví se získat nejlepší shodu z otázek a odpovědí.
 
 <a name="generateanswer-endpoint"></a>
 
 ## <a name="publish-to-get-generateanswer-endpoint"></a>Publikování na získání GenerateAnswer koncového bodu 
 
-Po publikování znalostní báze, buď z [portál QnA Maker](https://www.qnamaker.ai), nebo pomocí [API](https://go.microsoft.com/fwlink/?linkid=2092179), můžete získat podrobné GenerateAnswer koncového bodu.
+Po publikování znalostní báze, buď z [portál QnA Maker](https://www.qnamaker.ai), nebo pomocí [API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish), můžete získat podrobné GenerateAnswer koncového bodu.
 
 Získat podrobnosti o vašich koncových bodů:
 1. Přihlaste se k webu [https://www.qnamaker.ai](https://www.qnamaker.ai).
@@ -59,34 +59,21 @@ Můžete také získat podrobnosti o vašem koncového bodu z **nastavení** kar
 
 ## <a name="generateanswer-request-configuration"></a>Konfigurační požadavek GenerateAnswer
 
-Volání GenerateAnswer pomocí požadavku HTTP POST. Ukázkový kód, který ukazuje, jak volat GenerateAnswer, najdete v článku [rychlých startů](../quickstarts/csharp.md).
+Volání GenerateAnswer pomocí požadavku HTTP POST. Ukázkový kód, který ukazuje, jak volat GenerateAnswer, najdete v článku [rychlých startů](../quickstarts/csharp.md). 
 
-**Adresa URL požadavku** má následující formát: 
+Požadavek POST používá:
+
+* Vyžaduje [parametry identifikátoru URI](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#uri-parameters)
+* Vyžaduje [vlastnosti hlavička](https://docs.microsoft.com/azure/cognitive-services/qnamaker/quickstarts/get-answer-from-knowledge-base-nodejs#add-a-post-request-to-send-question-and-get-an-answer), `Authorization`, pro zabezpečení
+* Vyžaduje [základní vlastnosti](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#feedbackrecorddto). 
+
+Adresa URL GenerateAnswer má následující formát: 
 
 ```
 https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
 ```
 
-|Vlastnost požadavku HTTP|Name|Type|Účel|
-|--|--|--|--|
-|Parametr trasa adresy URL|ID znalostní báze|string|Identifikátor GUID pro znalostní báze.|
-|Parametr trasa adresy URL|Hostitel koncového bodu QnA maker|string|Název hostitele koncového bodu nasazené ve vašem předplatném Azure. To je k dispozici na **nastavení** stránce po publikování znalostní báze. |
-|Záhlaví|Content-Type|string|Typ média textu odeslaného do rozhraní API. Výchozí hodnota je: "|
-|Záhlaví|Autorizace|string|Klíče vašeho koncového bodu (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).|
-|Tělo POST|JSON – objekt|JSON|Dotaz s nastavením.|
-
-
-Text JSON má několik nastavení:
-
-|Vlastnost text JSON|Požaduje se|Type|Účel|
-|--|--|--|--|
-|`question`|Vyžaduje|string|Uživatel dotaz k odeslání do znalostní báze.|
-|`top`|Volitelné|integer|Číslo seřazený výsledků, které chcete zahrnout do výstupu. Výchozí hodnota je 1.|
-|`userId`|Volitelné|string|Jedinečné ID k identifikaci uživatele. Toto ID se zaznamená do protokolů chatu.|
-|`scoreThreshold`|Volitelné|integer|Vrátí se pouze odpovědi s jistotou skóre nad touto prahovou hodnotou. Výchozí hodnota je 0.|
-|`isTest`|Volitelné|Boolean|Pokud nastavena na hodnotu true, vrátí výsledky z `testkb` indexu vyhledávání místo publikované indexu.|
-|`strictFilters`|Volitelné|string|Je-li zadána, říká QnA Maker vrátit pouze odpovědi, které mají zadanou metadat. Použití `none` znamená, odpověď by měla mít žádné filtry metadat. |
-|`RankerType`|Volitelné|string|Pokud je zadán jako `QuestionOnly`, informuje nástroj QnA Maker k vyhledání pouze dotazy. Pokud není zadaný, hledá QnA Maker otázek a odpovědí.
+Nezapomeňte nastavit vlastnost záhlaví HTTP `Authorization` s hodnotou řetězce `EndpointKey ` s koncový znak mezery pak klíč koncového bodu, který najdete na **nastavení** stránky.
 
 Příklad text JSON vypadá takto:
 
@@ -109,19 +96,7 @@ Příklad text JSON vypadá takto:
 
 ## <a name="generateanswer-response-properties"></a>Vlastnosti GenerateAnswer odpovědi
 
-Úspěšná odpověď vrací stav 200 a odpověď ve formátu JSON. 
-
-|Vlastnost odpovědi (seřazené podle skóre)|Účel|
-|--|--|
-|skóre|Hodnocení 0 až 100.|
-|ID|Jedinečné ID přiřazené k odpovědi.|
-|Dotazy|Dotazy poskytnutých uživatelem.|
-|Odpověď|Odpověď na dotaz.|
-|source|Název zdroje, ze kterého byla odpověď extrahovat nebo uložit znalostní báze knowledge base.|
-|zprostředkovatele identity|Metadata přidružená k odpovědi.|
-|metadata.name|Název metadat. (maximální délka řetězce: 100, povinné)|
-|metadata.Value|Hodnota metadat. (maximální délka řetězce: 100, povinné)|
-
+[Odpovědi](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#successful_query) je objekt JSON, včetně všech informace, které potřebujete k zobrazení odpovědi a dalších zapnout v konverzaci, pokud je k dispozici.
 
 ```json
 {

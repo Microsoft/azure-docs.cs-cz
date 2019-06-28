@@ -11,16 +11,16 @@ ms.topic: quickstart
 ms.date: 05/02/2019
 ms.author: travisw
 ms.custom: ''
-ms.openlocfilehash: 9d29fdbfc82f221dac3b304dcf9de8c230b4d5e2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4044f8d48efae4e8423f780c85e0f3ccfde12461
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67056790"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67467060"
 ---
 # <a name="quickstart-create-a-voice-first-virtual-assistant-with-the-speech-sdk-uwp"></a>Rychlý start: Vytvoření první hlasové virtuálních asistentů se sadou SDK pro řeč, UPW
 
-Rychlí průvodci jsou také k dispozici pro [speech to text](quickstart-csharp-uwp.md) a [překlad řeči](quickstart-translate-speech-uwp.md).
+Rychlí průvodci jsou také k dispozici pro [speech to text](quickstart-csharp-uwp.md), [převod textu na řeč](quickstart-text-to-speech-csharp-uwp.md) a [překlad řeči](quickstart-translate-speech-uwp.md).
 
 V tomto článku budete vyvíjet C# aplikace univerzální platformy Windows (UPW) s použitím [sadou SDK pro řeč](speech-sdk.md). Program se připojí k dříve vytvořený a nakonfigurovaný bot umožňující hlasové první virtuálních asistentů prostředí z klientské aplikace. Tato aplikace je vytvořená pomocí [balíčku NuGet sady Speech SDK](https://aka.ms/csspeech/nuget) a sady Microsoft Visual Studio 2017 (libovolné edice).
 
@@ -32,14 +32,11 @@ V tomto článku budete vyvíjet C# aplikace univerzální platformy Windows (UP
 K tomuto rychlému startu potřebujete:
 
 * [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
-* Klíče pro hlasové služby v rozhraní předplatného Azure **westus2** oblasti. Vytvoření odběru na [webu Azure portal](https://portal.azure.com).
+* Klíč předplatného pro hlasové služby. [Získat zdarma](get-started.md) neexistuje, vytvořte ho na [webu Azure portal](https://portal.azure.com).
 * Dříve vytvořeného bot nakonfigurovanou [kanál s přímým přístupem řádku řeči](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
 
     > [!NOTE]
-    > Řeči řádku s přímým přístupem (Preview) je momentálně dostupná jenom **westus2** oblasti.
-
-    > [!NOTE]
-    > 30denní zkušební verze pro standardní cenová úroveň je popsáno v [hlasové služby si můžete vyzkoušet zdarma](get-started.md) omezen na **westus** (ne **westus2**) a není proto kompatibilní s přímým Řádek řeči. Úrovně Free a standard **westus2** předplatná jsou kompatibilní.
+    > Řeči řádku s přímým přístupem (Preview) je momentálně dostupný v podmnožině oblastí s hlasové služby. Najdete [seznam podporovaných oblastí pro virtuálních asistentů hlasové první](regions.md#voice-first-virtual-assistants) a ujistěte se prostředky nasadí v těchto oblastech.
 
 ## <a name="optional-get-started-fast"></a>Volitelné: Rychlý začátek
 
@@ -63,7 +60,7 @@ V tomto rychlém startu popíše krok za krokem, jak vytvořit jednoduchý klien
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-    
+
         <Grid>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center"  Margin="20,50,0,0" VerticalAlignment="Center" Width="800">
                 <Button x:Name="EnableMicrophoneButton" Content="Enable Microphone"  Margin="0,0,10,0" Click="EnableMicrophone_ButtonClicked" Height="35"/>
@@ -111,7 +108,7 @@ V tomto rychlém startu popíše krok za krokem, jak vytvořit jednoduchý klien
     {
         public sealed partial class MainPage : Page
         {
-            private SpeechBotConnector botConnector;
+            private DialogServiceConnector connector;
 
             private enum NotifyType
             {
@@ -230,7 +227,7 @@ V tomto rychlém startu popíše krok za krokem, jak vytvořit jednoduchý klien
                 });
             }
 
-            private void InitializeBotConnector()
+            private void InitializeDialogServiceConnector()
             {
                 // New code will go here
             }
@@ -243,31 +240,31 @@ V tomto rychlém startu popíše krok za krokem, jak vytvořit jednoduchý klien
     }
     ```
 
-1. V dalším kroku vytvoříte `SpeechBotConnector` informace o vašem předplatném. Do těla metody přidejte následující `InitializeBotConnector`, stačí nahradit řetězce `YourChannelSecret`, `YourSpeechSubscriptionKey`, a `YourServiceRegion` vlastními hodnotami pro svého robota, předplatné řeči a [oblasti](regions.md).
+1. V dalším kroku vytvoříte `DialogServiceConnector` informace o vašem předplatném. Do těla metody přidejte následující `InitializeDialogServiceConnector`, stačí nahradit řetězce `YourChannelSecret`, `YourSpeechSubscriptionKey`, a `YourServiceRegion` vlastními hodnotami pro svého robota, předplatné řeči a [oblasti](regions.md).
 
     > [!NOTE]
-    > Ve verzi preview, kanál s přímým přístupem řeči řádek aktuálně podporuje pouze **westus2** oblasti.
+    > Řeči řádku s přímým přístupem (Preview) je momentálně dostupný v podmnožině oblastí s hlasové služby. Najdete [seznam podporovaných oblastí pro virtuálních asistentů hlasové první](regions.md#voice-first-virtual-assistants) a ujistěte se prostředky nasadí v těchto oblastech.
 
     > [!NOTE]
     > Informace o konfiguraci vašeho robota a načítání tajného klíče kanálu, naleznete v dokumentaci rozhraní Bot Framework pro [kanál s přímým přístupem řádku řeči](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech).
 
     ```csharp
-    // create a BotConnectorConfig by providing a bot secret key and Cognitive Services subscription key
+    // create a DialogServiceConfig by providing a bot secret key and Cognitive Services subscription key
     // the RecoLanguage property is optional (default en-US); note that only en-US is supported in Preview
     const string channelSecret = "YourChannelSecret"; // Your channel secret
     const string speechSubscriptionKey = "YourSpeechSubscriptionKey"; // Your subscription key
-    const string region = "YourServiceRegion"; // Your subscription service region. Note: only 'westus2' is currently supported
+    const string region = "YourServiceRegion"; // Your subscription service region. Note: only a subset of regions are currently supported
 
-    var botConnectorConfig = BotConnectorConfig.FromSecretKey(channelSecret, speechSubscriptionKey, region);
-    botConnectorConfig.SetProperty(PropertyId.SpeechServiceConnection_RecoLanguage, "en-US");
-    botConnector = new SpeechBotConnector(botConnectorConfig);
+    var botConfig = DialogServiceConfig.FromBotSecret(channelSecret, speechSubscriptionKey, region);
+    botConfig.SetProperty(PropertyId.SpeechServiceConnection_RecoLanguage, "en-US");
+    connector = new DialogServiceConnector(botConfig);
     ```
 
-1. `SpeechBotConnector` spoléhá na několik událostí ke komunikaci se svou činnost robota, výsledky rozpoznávání řeči a další informace. Přidání obslužných rutin pro tyto události, přidáním následující na konec těla `InitializeBotConnector`.
+1. `DialogServiceConnector` spoléhá na několik událostí ke komunikaci se svou činnost robota, výsledky rozpoznávání řeči a další informace. Přidání obslužných rutin pro tyto události, přidáním následující na konec těla `InitializeDialogServiceConnector`.
 
     ```csharp
     // ActivityReceived is the main way your bot will communicate with the client and uses bot framework activities
-    botConnector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
+    connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
     {
         NotifyUser($"Activity received, hasAudio={activityReceivedEventArgs.HasAudio} activity={activityReceivedEventArgs.Activity}");
 
@@ -277,7 +274,7 @@ V tomto rychlém startu popíše krok za krokem, jak vytvořit jednoduchý klien
         }
     };
     // Canceled will be signaled when a turn is aborted or experiences an error condition
-    botConnector.Canceled += (sender, canceledEventArgs) =>
+    connector.Canceled += (sender, canceledEventArgs) =>
     {
         NotifyUser($"Canceled, reason={canceledEventArgs.Reason}");
         if (canceledEventArgs.Reason == CancellationReason.Error)
@@ -286,47 +283,47 @@ V tomto rychlém startu popíše krok za krokem, jak vytvořit jednoduchý klien
         }
     };
     // Recognizing (not 'Recognized') will provide the intermediate recognized text while an audio stream is being processed
-    botConnector.Recognizing += (sender, recognitionEventArgs) =>
+    connector.Recognizing += (sender, recognitionEventArgs) =>
     {
         NotifyUser($"Recognizing! in-progress text={recognitionEventArgs.Result.Text}");
     };
     // Recognized (not 'Recognizing') will provide the final recognized text once audio capture is completed
-    botConnector.Recognized += (sender, recognitionEventArgs) =>
+    connector.Recognized += (sender, recognitionEventArgs) =>
     {
         NotifyUser($"Final speech-to-text result: '{recognitionEventArgs.Result.Text}'");
     };
     // SessionStarted will notify when audio begins flowing to the service for a turn
-    botConnector.SessionStarted += (sender, sessionEventArgs) =>
+    connector.SessionStarted += (sender, sessionEventArgs) =>
     {
         NotifyUser($"Now Listening! Session started, id={sessionEventArgs.SessionId}");
     };
     // SessionStopped will notify when a turn is complete and it's safe to begin listening again
-    botConnector.SessionStopped += (sender, sessionEventArgs) =>
+    connector.SessionStopped += (sender, sessionEventArgs) =>
     {
         NotifyUser($"Listening complete. Session ended, id={sessionEventArgs.SessionId}");
     };
     ```
 
-1. Konfiguraci a obslužné rutiny událostí zaregistrované `SpeechBotConnector` teď právě potřebuje naslouchat. Přidejte následující text `ListenButton_ButtonClicked` metodu `MainPage` třídy.
+1. Konfiguraci a obslužné rutiny událostí zaregistrované `DialogServiceConnector` teď právě potřebuje naslouchat. Přidejte následující text `ListenButton_ButtonClicked` metodu `MainPage` třídy.
 
     ```csharp
     private async void ListenButton_ButtonClicked(object sender, RoutedEventArgs e)
     {
-        if (botConnector == null)
+        if (connector == null)
         {
-            InitializeBotConnector();
+            InitializeDialogServiceConnector();
             // Optional step to speed up first interaction: if not called, connection happens automatically on first use
-            var connectTask = botConnector.ConnectAsync();
+            var connectTask = connector.ConnectAsync();
         }
 
         try
         {
             // Start sending audio to your speech-enabled bot
-            var listenTask = botConnector.ListenOnceAsync();
+            var listenTask = connector.ListenOnceAsync();
 
             // You can also send activities to your bot as JSON strings -- Microsoft.Bot.Schema can simplify this
             string speakActivity = @"{""type"":""message"",""text"":""Greeting Message"", ""speak"":""Hello there!""}";
-            await botConnector.SendActivityAsync(speakActivity);
+            await connector.SendActivityAsync(speakActivity);
 
         }
         catch (Exception ex)
@@ -359,10 +356,12 @@ V tomto rychlém startu popíše krok za krokem, jak vytvořit jednoduchý klien
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Prozkoumejte C# ukázky na Githubu](https://aka.ms/csspeech/samples)
+> [Vytvoření a nasazení základního robota](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
-- [Překlad řeči](how-to-translate-speech-csharp.md)
-- [Přizpůsobení akustických modelů](how-to-customize-acoustic-models.md)
-- [Přizpůsobení jazykových modelů](how-to-customize-language-model.md)
+- [O virtuálních asistentů hlasové první](voice-first-virtual-assistants.md)
+- [Získejte klíč předplatného hlasových služeb zdarma](get-started.md)
+- [Vlastní probuzení slova](speech-devices-sdk-create-kws.md)
+- [Připojení s přímým přístupem řádku řeči pro svého robota](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
+- [Prozkoumejte C# ukázky na Githubu](https://aka.ms/csspeech/samples)

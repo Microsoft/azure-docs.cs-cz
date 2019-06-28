@@ -3,19 +3,19 @@ title: 'Rychlý start: Získání délky věty C# – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu zjistíte jak určit délka větu pomocí rozhraní Translator Text API a .NET Core.
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/13/2019
-ms.author: erhopf
-ms.openlocfilehash: 00fe7ce5558672812be7949b8474a403499de94f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: swmachan
+ms.openlocfilehash: 27f515c775d4b1a77563ac10338fc2255e42731c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67123381"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448183"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-using-c"></a>Rychlý start: Použití rozhraní Translator Text API určit pomocí délka větuC#
 
@@ -163,6 +163,8 @@ foreach (BreakSentenceResult o in deserializedOutput)
     Console.WriteLine("The first sentence length is: {0}", o.SentLen[0]);
 }
 ```
+
+Pokud používáte víc služeb předplatného služeb Cognitive Services, musíte taky zahrnout `Ocp-Apim-Subscription-Region` v parametry požadavku. [Další informace o dvojúrovňovém víc služeb předplatného](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication). 
 
 ## <a name="put-it-all-together"></a>Spojení všech součástí dohromady
 

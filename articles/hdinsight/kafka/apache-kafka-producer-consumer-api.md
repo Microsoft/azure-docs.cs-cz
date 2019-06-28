@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
-ms.date: 04/02/2019
-ms.openlocfilehash: 3dead1bdedb75a1b6fafb947da9c88094f0c4de9
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 06/24/2019
+ms.openlocfilehash: 7a23d30e940417a6191cf14ad5d60159bd11c3da
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64724148"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446399"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>Kurz: Použití Apache Kafka Producer and Consumer API
 
@@ -65,8 +65,7 @@ V souboru `pom.xml` je důležité porozumět následujícímu:
     </dependency>
     ```
 
-    > [!NOTE]  
-    > Položka `${kafka.version}` se deklaruje v části `<properties>..</properties>` souboru `pom.xml` a je nakonfigurovaná na verzi systému Kafka v clusteru HDInsight.
+    Položka `${kafka.version}` se deklaruje v části `<properties>..</properties>` souboru `pom.xml` a je nakonfigurovaná na verzi systému Kafka v clusteru HDInsight.
 
 * Moduly plug-in: Moduly plug-in maven poskytují různé možnosti. V tomto projektu se používají následující moduly plug-in:
 
@@ -220,10 +219,19 @@ Konzumace klienty ze stejné skupiny se realizuje rozdělením tématu na oddíl
 
 Záznamy se v systému Kafka ukládají v pořadí, ve kterém je oddíl přijme. Pro dosažení doručování záznamů ve správném pořadí *v rámci oddílu* vytvořte skupinu příjemců, ve které bude počet instancí konzumentů odpovídat počtu oddílů. Pro dosažení doručování záznamů ve správném pořadí *v rámci tématu* vytvořte skupinu obsahující pouze jednu instanci konzumenta.
 
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud chcete vyčistit prostředky vytvořené v tomto kurzu, můžete odstranit skupinu prostředků. Odstraněním skupiny prostředků odstraníte také přidružený cluster HDInsight a všechny další prostředky, které jsou k příslušné skupině prostředků přidružené.
+
+Odebrání skupiny prostředků pomocí webu Azure Portal:
+
+1. Na webu Azure Portal rozbalením nabídky na levé straně otevřete nabídku služeb a pak zvolte __Skupiny prostředků__. Zobrazí se seznam skupin prostředků.
+2. Vyhledejte skupinu prostředků, kterou chcete odstranit, a klikněte pravým tlačítkem na tlačítko __Další__ (...) na pravé straně seznamu.
+3. Vyberte __Odstranit skupinu prostředků__ a potvrďte tuto akci.
+
 ## <a name="next-steps"></a>Další postup
 
 V tomto dokumentu jste zjistili, jak používat Apache Kafka Producer and Consumer API s využitím Kafka v HDInsight. Další informace o práci s platformou Kafka najdete v těchto zdrojích:
 
-* [Analýza protokolů platformy Apache Kafka](apache-kafka-log-analytics-operations-management.md)
-* [Replikace dat mezi clustery Apache Kafka](apache-kafka-mirroring.md)
-* [Apache Kafka Streams API ve službě HDInsight](apache-kafka-streams-api.md)
+> [!div class="nextstepaction"]
+> [Analýza protokolů platformy Apache Kafka](apache-kafka-log-analytics-operations-management.md)

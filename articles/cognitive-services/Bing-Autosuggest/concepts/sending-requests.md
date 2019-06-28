@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 02/20/2019
+ms.date: 06/25/2019
 ms.author: scottwhi
-ms.openlocfilehash: abcce52e126e01d25434a90260a220c9aa337f5b
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: be3262daf7ea2a637133ad658efe07ba9426415b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66382693"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449076"
 ---
 # <a name="sending-requests-to-the-bing-autosuggest-api"></a>Odesílání požadavků na rozhraní API pro automatické návrhy Bingu.
 
@@ -95,11 +95,11 @@ Následující příklad ukazuje požadavek, který vrací navrhované řetězce
 
 Pokud voláte některé z rozhraní API Bingu poprvé, nezahrnujte do volání hlavičku ID klienta. Hlavičku ID klienta zahrňte pouze v případě, že jste již dříve volali rozhraní API Bingu a Bing vrátil ID klienta pro příslušnou kombinaci uživatele a zařízení.
 
-Následující příklad ukazuje odpověď na předchozí požadavek. Odpověď zahrnuje skupinu návrhů webů, která obsahuje seznam návrhů vyhledávacích dotazů. Každý návrh obsahuje pole `displayText`, `query` a `url`.
+Následující návrhy skupinu webových je odpovědí na výše uvedený požadavek. Tato skupina obsahuje seznam návrhy hledání dotazu, s každou včetně návrhů `displayText`, `query`, a `url` pole.
 
 Pole `displayText` obsahuje navrhovaný dotaz, který můžete použít k vyplnění rozevíracího seznamu vašeho vyhledávacího pole. Musíte zobrazit všechny návrhy, které odpověď obsahuje, v uvedeném pořadí.  
 
-Pokud uživatel vybere z rozevíracího seznamu dotazu, můžete použít k volání jedné z [rozhraní API Bingu pro vyhledávání](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/bing-api-comparison?toc=%2Fen-us%2Fazure%2Fcognitive-services%2Fbing-autosuggest%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json) a zobrazení výsledků nebo uživatele poslat na stránce výsledky Bingu pomocí vráceného `url` pole. Následující příklad používá rozhraní API webové vyhledávání Bingu.
+Pokud uživatel vybere z rozevíracího seznamu dotazu, můžete použít k volání jedné z [rozhraní API Bingu pro vyhledávání](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/bing-api-comparison?toc=%2Fen-us%2Fazure%2Fcognitive-services%2Fbing-autosuggest%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json) a zobrazení výsledků nebo uživatele poslat na stránce výsledky Bingu pomocí vráceného `url` pole.
 
 ```json
 BingAPIs-TraceId: 76DD2C2549B94F9FB55B4BD6FEB6AC

@@ -8,14 +8,14 @@ ms.date: 06/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f3cf23f491aad1766f2d4087c440cc080dbe345e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a93b1128fe1ea0e03efc9060f2c3c4a93145f838
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67057649"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67432861"
 ---
-# <a name="tutorial-generate-simulated-device-data"></a>Kurz: Vytvořit data s Simulovaná zařízení
+# <a name="tutorial-generate-simulated-device-data"></a>Kurz: Generování dat simulovaného zařízení
 
 > [!NOTE]
 > Tento článek je součástí série kurz o používání Azure Machine learningu na hraničních zařízeních IoT. Pokud jste jste dostali přímo v tomto článku, doporučujeme vám začneme [nejprve článek](tutorial-machine-learning-edge-01-intro.md) v řadě nejlepších výsledků.
@@ -153,7 +153,7 @@ Data, která se právě jsme odeslali do služby IoT hub, byla směrována do ko
 
 1. Kliknutím na jednu z těchto složek k vyhledání souborů dat označených **00** a **01** odpovídající oddíl.
 
-1. Soubory jsou napsané v [Avro](http://avro.apache.org/) formátu, ale dvojitým kliknutím na některý z těchto souborů otevřete nové kartě prohlížeče a částečně vykreslit data. Pokud místo toho se zobrazí výzva k otevření souboru v aplikaci, můžete použít VS Code a vykreslí správně.
+1. Soubory jsou napsané v [Avro](https://avro.apache.org/) formátu, ale dvojitým kliknutím na některý z těchto souborů otevřete nové kartě prohlížeče a částečně vykreslit data. Pokud místo toho se zobrazí výzva k otevření souboru v aplikaci, můžete použít VS Code a vykreslí správně.
 
 1. Není nutné se pokouší číst a interpretovat data teď; Uděláme to v následujícím článku.
 

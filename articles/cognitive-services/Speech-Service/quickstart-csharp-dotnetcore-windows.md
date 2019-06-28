@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 12/13/2018
 ms.author: wolfma
-ms.openlocfilehash: f3dd4d20c6455e97b566ed435b14437d614e25b4
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 873145cf9d418433ba241ce06d7d594fb3e6322b
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65466429"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67465725"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-net-core"></a>Rychlý start: Rozpoznávání řeči se sadou SDK pro řeč pro .NET Core
 
-Rychlí průvodci jsou také k dispozici pro [překlad řeči](quickstart-translate-speech-dotnetcore-windows.md).
+Rychlí průvodci jsou také k dispozici pro [převod textu na řeč](quickstart-text-to-speech-dotnetcore.md) a [překlad řeči](quickstart-translate-speech-dotnetcore-windows.md).
 
 V případě potřeby vyberte jiný programovací jazyk a/nebo prostředí:<br/>
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
@@ -43,7 +43,7 @@ K tomuto rychlému startu potřebujete:
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-quickstart-dotnetcore-create-proj.md)]
 
-## <a name="add-sample-code"></a>Přidejte ukázkový kód.
+## <a name="add-sample-code"></a>Přidání ukázkového kódu
 
 1. Otevřete soubor `Program.cs` a veškerý kód nahraďte následujícím kódem.
 

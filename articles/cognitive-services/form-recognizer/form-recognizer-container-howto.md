@@ -9,17 +9,17 @@ ms.subservice: form-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 45303f1f75e80a66c3cb85154d458a970c214370
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: f38752928832b7dee6a7e55f1d25374a64391bbe
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295490"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441885"
 ---
 # <a name="install-and-run-form-recognizer-containers"></a>Instalace a spouštění kontejnerů Rozlišovač formuláře
 Azure pro rozpoznávání formuláře platí technologií pro strojové učení k identifikaci a extrahovat páry klíč hodnota a tabulky z formuláře. Přiřadí hodnoty a položky tabulky s páry klíč hodnota a potom vypíše strukturovanými daty, která obsahuje vztahy v původním souboru. 
 
-Ke snížení složitosti a snadnou integraci vlastního modelu Rozlišovač formuláře do procesu automatizace pracovního postupu nebo jiné aplikace, můžete volat modelu s použitím jednoduchého rozhraní REST API. Zobrazuje se jenom pět dokumentů (nebo prázdný formulář) jsou potřeba, abyste se mohli výsledky rychle, přesně a přizpůsobená pro váš konkrétní obsah. Žádné náročné ruční zásah nebo odbornými znalostmi o rozsáhlé datové vědy je nezbytné. A nevyžaduje označování dat nebo dat poznámky.
+Ke snížení složitosti a snadnou integraci vlastního modelu Rozlišovač formuláře do procesu automatizace pracovního postupu nebo jiné aplikace, můžete volat modelu s použitím jednoduchého rozhraní REST API. Zobrazuje se jenom pět formuláře dokumentů (nebo jeden prázdný formulář a dva formuláře vyplněné) jsou potřeba, abyste se mohli výsledky rychle, přesně a přizpůsobená pro váš konkrétní obsah. Žádné náročné ruční zásah nebo odbornými znalostmi o rozsáhlé datové vědy je nezbytné. A nevyžaduje označování dat nebo dat poznámky.
 
 |Funkce|Funkce|
 |-|-|

@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 06/05/2019
 ms.author: alkohli
-ms.openlocfilehash: 5628a1b3ea42c91f49f78699c37bb2b306275e9e
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 1c432ee5851115e029b55722b6b238b4672e8345
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730844"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446713"
 ---
 # <a name="use-the-azure-data-box-heavy-to-migrate-your-file-share-content-to-sharepoint-online"></a>Použijte silná Azure Data Box k migraci obsahu sdílené složky souboru na Sharepointu Online
 
@@ -81,7 +81,7 @@ Pro nejlepší výkon a připojení doporučujeme vytvořit virtuální počíta
 
 1. Přihlaste se k webu Azure portal a potom [vytvoření virtuálního počítače](../virtual-machines/windows/quick-create-portal.md).
 2. [Připojení sdílené složky Azure do virtuálního počítače](../storage/files/storage-how-to-use-files-windows.md#mount-the-azure-file-share-with-file-explorer).
-3. [Stáhněte si nástroj pro migraci SharePoint](http://spmtreleasescus.blob.core.windows.net/install/default.htm) a nainstalujte na svém virtuálním počítači Azure.
+3. [Stáhněte si nástroj pro migraci SharePoint](https://spmtreleasescus.blob.core.windows.net/install/default.htm) a nainstalujte na svém virtuálním počítači Azure.
 4. Spusťte nástroj pro migraci služby SharePoint. Klikněte na tlačítko **přihlášení** a zadejte Office 365 uživatelské jméno a heslo.
 5. Po zobrazení výzvy **kde jsou vaše data?** vyberte **sdílené**. Zadejte cestu ke sdílené složky Azure, kde se nachází vaše data.
 6. Postupujte podle zbývajících výzev jako za normálních okolností, včetně cílového umístění. Další informace najdete v části [jak používat nástroj pro migraci SharePoint](https://docs.microsoft.com/sharepointmigration/how-to-use-the-sharepoint-migration-tool).

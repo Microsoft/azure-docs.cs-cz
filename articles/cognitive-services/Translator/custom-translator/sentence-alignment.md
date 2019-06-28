@@ -2,19 +2,19 @@
 title: Věta párování a zarovnání – vlastní Translator
 titleSuffix: Azure Cognitive Services
 description: Během provádění trénování jsou věty, které jsou k dispozici v dokumentech paralelní spárované nebo zarovnána. Vlastní Translator učí jedné věty překlady najednou, načtením věty, překlad tuto větu. Potom zarovná slova a slovní spojení v těchto dvou věty k sobě navzájem.
-author: rajdeep-in
+author: swmachan
 manager: christw
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
-ms.author: v-pawal
+ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 99538fd18067377efcc9e744e9ec611e0f685273
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f73c40704e10a8e2368ee1eb369ee3dccdf269ee
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66389603"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448317"
 ---
 # <a name="sentence-pairing-and-alignment-in-parallel-documents"></a>Párování věty a zarovnání v paralelní dokumenty
 

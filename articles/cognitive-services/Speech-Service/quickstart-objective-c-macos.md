@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/03/2019
 ms.author: chlandsi
-ms.openlocfilehash: 67f2531b24796de1e00505fdc757f3c2244c5054
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 3eb65b5d41317a4cfc31917a4b08d931ba9c7aa6
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66002338"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67466613"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-macos-using-the-speech-sdk"></a>Rychlý start: Rozpoznávání řeči v Objective-C v systému macOS pomocí sady SDK pro řeč
 
@@ -67,13 +67,7 @@ V následujících dialogových oknech proveďte následující výběry:
 ## <a name="install-the-sdk-as-a-cocoapod"></a>Nainstalujte sadu SDK jako CocoaPod
 
 1. Instalace správce závislostí CocoaPod, jak je popsáno v jeho [pokyny k instalaci](https://guides.cocoapods.org/using/getting-started.html).
-1. Přejděte do adresáře ukázkovou aplikaci (`helloworld`). Umístit textový soubor s názvem `Podfile` a následující obsah v tomto adresáři:
-    ```
-    target 'helloworld' do
-        platform :osx, '10.13'
-        pod 'MicrosoftCognitiveServicesSpeech-macOS', '~> 1.5.1'
-    end
-    ```
+1. Přejděte do adresáře ukázkovou aplikaci (`helloworld`). Umístit textový soubor s názvem `Podfile` a následující obsah v tomto adresáři: [!code-objectivec[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/objectivec-macos/helloworld/Podfile)]
 1. Přejděte `helloworld` adresář, v terminálu a spusťte tento příkaz `pod install`. Tím se vygeneruje `helloworld.xcworkspace` pracovní prostor Xcode, která obsahuje ukázkovou aplikaci a sadou SDK pro řeč jako závislost. Tento pracovní prostor se použije v následujících tématech.
 
 ## <a name="add-the-sample-code"></a>Přidání vzorového kódu
@@ -87,7 +81,7 @@ V následujících dialogových oknech proveďte následující výběry:
 ## <a name="build-and-run-the-sample"></a>Sestavení a spuštění ukázky
 
 1. Zobrazte výstup ladění: vyberte **View** > **Debug Area** > **Activate Console** (Zobrazení > Oblast ladění > Aktivovat konzolu).
-1. Sestavit a spustit ukázkový kód tak, že vyberete **produktu** -> **spustit** z nabídky nebo kliknutím **Přehrát** tlačítko.
+1. Sestavit a spustit ukázkový kód tak, že vyberete **produktu** > **spustit** z nabídky nebo kliknutím **Přehrát** tlačítko.
 1. Poté, co klikněte na tlačítko a Řekněme, že pár slov, byste měli vidět text, který je slyšet ve spodní části obrazovky. Při prvním spuštění aplikace, by měla poskytnout přístup k aplikaci do počítače mikrofon výzva.
 
 ## <a name="next-steps"></a>Další postup

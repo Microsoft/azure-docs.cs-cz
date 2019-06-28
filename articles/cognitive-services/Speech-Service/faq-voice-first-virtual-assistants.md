@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: travisw
-ms.openlocfilehash: 8427417c9b579c7dfa21f834ce1ca77099159eb2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2c669f00ae65667f85976aca218ce51d630159ee
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65072610"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67465484"
 ---
 # <a name="voice-first-virtual-assistants-preview-frequently-asked-questions"></a>První hlasové virtuálních asistentů ve verzi Preview: Nejčastější dotazy
 
@@ -25,7 +25,7 @@ Pokud nemůžete najít odpovědi na své dotazy v tomto dokumentu, projděte si
 
 **Otázka: Co je přímé řádku řeči?**
 
-**Odpověď:** `SpeechBotConnector` z sadou SDK pro řeč poskytuje obousměrné, asynchronní komunikaci s roboty, které jsou připojeny k přímé řeči řádek kanál na rozhraní Bot Framework. Tento kanál obsahuje koordinovat přístup k rozpoznávání řeči na text a převod textu na řeč z hlasové služby Azure, které umožňují robotům budou plně plaformu, hlasové si konverzační prostředí. Díky podpoře pro probuzení slova a funkce ověřování aplikace Word toto řešení umožňuje vytvářet vysoce přizpůsobitelné hlasové první virtuální pomocníci pro vaší značce nebo produktu.
+**Odpověď:** `DialogServiceConnector` z sadou SDK pro řeč poskytuje obousměrné, asynchronní komunikaci s roboty, které jsou připojeny k přímé řeči řádek kanál na rozhraní Bot Framework. Tento kanál obsahuje koordinovat přístup k rozpoznávání řeči na text a převod textu na řeč z hlasové služby Azure, které umožňují robotům budou plně plaformu, hlasové si konverzační prostředí. Díky podpoře pro probuzení slova a funkce ověřování aplikace Word toto řešení umožňuje vytvářet vysoce přizpůsobitelné hlasové první virtuální pomocníci pro vaší značce nebo produktu.
 
 **Otázka: Jak mám začít?**
 
@@ -35,7 +35,7 @@ Pokud nemůžete najít odpovědi na své dotazy v tomto dokumentu, projděte si
 
 **Otázka: Při připojování se zobrazí chyba 401 a nic funguje. Vím, že můj klíč předplatného řeči je platný. Co se děje?**
 
-**Odpověď:** Ve verzi preview má přímý řeči řádku velmi konkrétní omezení na předplatné použité. Zkontrolujte, že používáte **řeči** prostředků (Microsoft.CognitiveServicesSpeechServices, "Speech") a *není* **služeb Cognitive Services** prostředků ( Microsoft.CognitiveServicesAllInOne, "Všechny služby Cognitive Services"). Navíc Upozorňujeme pouze **westus2** oblast je aktuálně nepodporuje.
+**Odpověď:** Ve verzi preview má přímý řeči řádku zvláštní omezení, která předplatná můžete použít. Zkontrolujte, že používáte **řeči** prostředků (Microsoft.CognitiveServicesSpeechServices, "Speech") a *není* **služeb Cognitive Services** prostředků ( Microsoft.CognitiveServicesAllInOne, "Všechny služby Cognitive Services"). Pouze [podmnožině oblastí s hlasové služby](regions.md#voice-first-virtual-assistants) jsou aktuálně podporovány pro přímé řádku řeči.
 
 ![Opravte předplatné pro přímou linku řeči](media/voice-first-virtual-assistants/faq-supported-subscription.png "příklad kompatibilní předplatného řeči")
 
@@ -43,9 +43,9 @@ Pokud nemůžete najít odpovědi na své dotazy v tomto dokumentu, projděte si
 
 **Odpověď:** Tato chyba označuje s komunikací mezi robotů a přímé řádku řeči. Ujistěte se, že jste [připojené přímé řeči řádek kanál](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech), [přidali jsme podporu protokolu streamování](https://aka.ms/botframework/addstreamingprotocolsupport) bot (s podporou související webové sokety) a potom zkontrolujte, jestli váš robot reaguje na příchozí požadavky z tohoto kanálu.
 
-**Otázka: To pořád nefunguje a/nebo dochází k jiné chybě při použití SpeechBotConnector a není jasné, co mám dělat. Co *by měl* můžu dělat?**
+**Otázka: Tento kód stále nefunguje a/nebo při použití DialogServiceConnector dochází k jiné chybě. Co bych měl/a dělat?**
 
-**Odpověď:** Protokolování souborů poskytuje podstatně více podrobností a pomáhají zrychlit žádosti o podporu. Chcete-li povolit, přečtěte si téma [použití protokolování do souboru](how-to-use-logging.md).
+**Odpověď:** Protokolování souborů poskytuje podstatně více podrobností a pomáhají zrychlit žádosti o podporu. Chcete-li tuto funkci povolit, přečtěte si téma [použití protokolování do souboru](how-to-use-logging.md).
 
 ## <a name="next-steps"></a>Další postup
 

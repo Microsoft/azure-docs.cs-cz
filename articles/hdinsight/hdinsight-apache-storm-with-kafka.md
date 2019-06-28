@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
-ms.date: 06/13/2019
-ms.openlocfilehash: fba9159fc4752a701c891fbe92a2e7e8023f0a54
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 06/25/2019
+ms.openlocfilehash: b6ef08be346aebd220b7234253ce45c4615e38a9
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165931"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445509"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>Kurz: Použití Apache Stormu s Apache Kafka v HDInsight
 
@@ -629,15 +629,9 @@ Odebrání skupiny prostředků pomocí webu Azure Portal:
 2. Vyhledejte skupinu prostředků, kterou chcete odstranit, a klikněte pravým tlačítkem na tlačítko __Další__ (...) na pravé straně seznamu.
 3. Vyberte __Odstranit skupinu prostředků__ a potvrďte tuto akci.
 
-> [!WARNING]  
-> Účtování clusteru HDInsight začne vytvořením clusteru a skončí jeho odstraněním. Účtuje se poměrnou částí po minutách, takže byste cluster měli odstranit vždy, když už se nepoužívá.
-> 
-> Odstraněním clusteru Kafka ve službě HDInsight odstraníte také všechna data uložená v systému Kafka.
-
 ## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste zjistili, jak pomocí [Apache Storm](https://storm.apache.org/) topologie, která bude zapisovat a číst z [Apache Kafka](https://kafka.apache.org/) v HDInsight. Můžete také zjistili, jak ukládat data do [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) kompatibilní úložiště využitá službou HDInsight.
 
-Další informace o použití systému Kafka v HDInsight, najdete v článku [použití Apache Kafka Producer and Consumer API](kafka/apache-kafka-producer-consumer-api.md) dokumentu.
-
-Informace o nasazení a monitorování topologií ve službě HDInsight na Linuxu najdete v dokumentu [Nasazení a správa topologií Apache Storm v HDInsight na Linuxu](storm/apache-storm-deploy-monitor-topology-linux.md).
+> [!div class="nextstepaction"]
+> [Použití Apache Kafka Producer and Consumer API](kafka/apache-kafka-producer-consumer-api.md)

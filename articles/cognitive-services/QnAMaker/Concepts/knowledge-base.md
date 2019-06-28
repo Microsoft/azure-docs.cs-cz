@@ -3,20 +3,20 @@ title: Znalostní báze – QnA Maker
 titleSuffix: Azure Cognitive Services
 description: Znalostní báze QnA Maker se skládá ze sady páry otázek a odpovědí (QnA) a volitelná metadata spojená s každou dvojici QnA.
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 03/04/2019
-ms.author: tulasim
+ms.date: 06/25/2019
+ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 02111ac90fe97ddaddbd41ad42410e7e76f1c405
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b9562a1686c4de4f4e2ef57a7d91bbf18dce63ef
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61379241"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447602"
 ---
 # <a name="what-is-a-qna-maker-knowledge-base"></a>Co je znalostní bázi nástroje QnA Maker?
 
@@ -37,6 +37,28 @@ Jeden QnA, reprezentovaný číselné ID QnA má několik variant otázky (alter
 Při ingestování formátovaný obsah do znalostní báze, nástroj QnA Maker se pokusí převést obsah na markdown. Čtení [to](https://aka.ms/qnamaker-docs-markdown-support) blogu o markdownu formáty používaném většina klientů konverzace.
 
 Pole metadat se skládá z dvojice klíč hodnota oddělené dvojtečkou **(produktu: Shredder)** . Klíče a hodnoty musí být prostého textu. Klíč metadat nesmí obsahovat žádné mezery. Metadata podporuje pouze jednu hodnotu pro klíč.
+
+## <a name="how-qna-maker-processes-a-user-query-to-select-the-best-answer"></a>Jak QnA Maker zpracovává uživatelské dotaz pro výběr nejlepší odpověď
+
+Trénovaného a [publikované](/quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) QnA Maker znalostní báze obdrží dotaz uživatele, robota nebo jiné klientské aplikace na [GenerateAnswer API](/how-to/metadata-generateanswer-usage.md#get-answer-predictions-with-the-generateanswer-api). Následující obrázek znázorňuje proces, při přijetí uživatelský dotaz.
+
+![Proces hodnocení pro uživatelský dotaz](../media/qnamaker-concepts-knowledgebase/rank-user-query-first-with-azure-search-then-with-qna-maker.png)
+
+Proces je vysvětleno v následující tabulce:
+
+|Krok|Účel|
+|--|--|
+|1|Klientská aplikace odešle dotaz na uživatele [GenerateAnswer API](/how-to/metadata-generateanswer-usage.md#get-answer-predictions-with-the-generateanswer-api).|
+|2|Nástroj QnA Maker předzpracování uživatelský dotaz se rozpoznávání jazyka, spellers a moduly pro dělení na slova.|
+|3|Tato předzpracování se používá ke změně uživatelský dotaz pro nejlepší výsledky hledání.|
+|4|Tento upravený dotaz odeslán do indexu Azure Search, přijetí `top` počet výsledků. Pokud správnou odpověď není v těchto výsledky, zvyšte hodnotu `top` mírně. Obecně hodnotu 10 pro `top` funguje v 90 % z dotazů.|
+|5|Nástroj QnA Maker se týká pokročilé snadné k určení správnost počet získaných výsledků vyhledávání Azure pro uživatelský dotaz. |
+|6|Klasifikátor trénovaného modelu používá funkci skóre, z kroku 5, chcete-li seřadit výsledky Azure Search.|
+|7|Nové výsledky se vrátí do klientské aplikace v seřazený pořadí.|
+|||
+
+Funkce používá zahrnují ale nejsou omezeny na úrovni slovo sémantiku, Termín úrovně důležitosti souhrnu a hloubkové zjištěná sémantickým modelům určíte podobnosti a relevance mezi dva textové řetězce.
+
 
 ## <a name="next-steps"></a>Další postup
 

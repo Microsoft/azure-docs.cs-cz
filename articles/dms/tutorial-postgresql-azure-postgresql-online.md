@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 05/08/2019
-ms.openlocfilehash: d7bd2555753df4c12404844c86be8f0339d88e23
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.date: 06/28/2019
+ms.openlocfilehash: 96bfb80602efe8e63f814fc9bf6cff3ae52e5983
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65415685"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67461538"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-database-for-postgresql-online-using-dms"></a>Kurz: Migrace PostgreSQL do Azure Database for PostgreSQL online pomocí DMS
 
@@ -24,6 +24,7 @@ Azure Database Migration Service můžete použít k migraci databází z místn
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
+>
 > * Migrace schématu ukázkový používání pg_dump nástroje.
 > * Vytvoření instance služby Azure Database Migration Service
 > * Vytvoření projektu migrace pomocí služby Azure Database Migration Service
@@ -65,11 +66,11 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
 * Vytvořte úrovni serveru [pravidlo brány firewall](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) pro službu Azure Database for PostgreSQL umožňuje Azure Database Migration Service přístup k cílovým databázím. Zadejte rozsah podsítě virtuální sítě pro Azure Database Migration Service.
 * Existují dvě metody pro vyvolání rozhraní příkazového řádku:
 
-    * V nabídce v pravém horním rohu webu Azure Portal, zvolte tlačítko Cloud Shell:
+  * V nabídce v pravém horním rohu webu Azure Portal, zvolte tlačítko Cloud Shell:
 
        ![Tlačítko Cloud Shell na webu Azure Portal](media/tutorial-postgresql-to-azure-postgresql-online/cloud-shell-button.png)
 
-    * Nainstalujte a spusťte místně rozhraní příkazového řádku. CLI 2.0 je nástroj příkazového řádku pro správu prostředků Azure.
+  * Nainstalujte a spusťte místně rozhraní příkazového řádku. CLI 2.0 je nástroj příkazového řádku pro správu prostředků Azure.
 
        Pokyny ke stažení CLI najdete v článku [Instalace Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Tento článek také uvádí platformy, které podporují CLI 2.0.
 
@@ -77,9 +78,9 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
 
 * Povolte logickou repliku v souboru postgresql.config a nastavte následující parametry:
 
-    * wal_level = **logical**
-    * max_replication_slots = [počet slotů], doporučujeme nastavení na **5 slotů**
-    * max_wal_senders = [počet souběžných úloh] - parametr max_wal_senders nastaví počet souběžných úloh, které můžete spustit, doporučujeme nastavení na **10 úloh**
+  * wal_level = **logical**
+  * max_replication_slots = [počet slotů], doporučujeme nastavení na **5 slotů**
+  * max_wal_senders = [počet souběžných úloh] - parametr max_wal_senders nastaví počet souběžných úloh, které můžete spustit, doporučujeme nastavení na **10 úloh**
 
 ## <a name="migrate-the-sample-schema"></a>Migrace ukázkového schématu
 
@@ -115,8 +116,7 @@ K dokončení všech databázových objektů, jako jsou schémata tabulek, index
     ```
 
 4. Pokud vaše schéma obsahuje cizí klíče, počáteční načtení a průběžná synchronizace migrace selžou. Spusťte následující skript v nástroji PgAdmin nebo psql, abyste extrahovali odstraněný skript cizího klíče a přidali skript cizí klíče do cílového umístění (Azure Database for PostgreSQL).
-
-    
+  
     ```
     SELECT Queries.tablename
            ,concat('alter table ', Queries.tablename, ' ', STRING_AGG(concat('DROP CONSTRAINT ', Queries.foreignkey), ',')) as DropQuery
@@ -141,7 +141,7 @@ K dokončení všech databázových objektů, jako jsou schémata tabulek, index
           AND ccu.table_schema = tc.table_schema
     WHERE constraint_type = 'FOREIGN KEY') Queries
       GROUP BY Queries.tablename;
-     ```
+    ```
 
     Spusťte skript pro odstranění cizího klíče (druhý sloupec) ve výsledku dotazu odstraňte cizí klíč.
 
@@ -359,7 +359,7 @@ K dokončení všech databázových objektů, jako jsou schémata tabulek, index
    az dms project task show --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask
    ```
 
-   OR
+   NEBO
 
     ```
    az dms project task show --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask --expand output

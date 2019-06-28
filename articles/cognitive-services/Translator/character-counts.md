@@ -3,19 +3,19 @@ title: Znak počty – Translator Text API
 titlesuffix: Azure Cognitive Services
 description: Jak rozhraní Translator Text API vrátí počet znaků.
 services: cognitive-services
-author: rajdeep-in
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
-ms.author: v-pawal
-ms.openlocfilehash: eccd0c47c1bfc071f43a6329406cd14f704d019e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: swmachan
+ms.openlocfilehash: cfd5823009b66b6b525c7add1fb56953d3c1a507
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66514290"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445264"
 ---
 # <a name="how-the-translator-text-api-counts-characters"></a>Jak rozhraní Translator Text API vrátí počet znaků
 

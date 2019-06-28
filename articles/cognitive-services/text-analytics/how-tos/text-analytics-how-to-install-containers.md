@@ -9,18 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 06/20/2019
+ms.date: 06/21/2019
 ms.author: dapine
-ms.openlocfilehash: 061d335767b7b1b61973c28861759d4d12c6c476
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: c4ef58f35b3d038f360ff962c70e92711bc205ce
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295645"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446512"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Instalace a spouštění kontejnerů pro analýzu textu
 
-Kontejnery rozhraní Text Analytics poskytuje pokročilé zpracování přirozeného jazyka nezpracovaný text a zahrnuje tři hlavní funkce: analýzu mínění, extrakci klíčových frází a rozpoznání jazyka. Propojování entit se aktuálně nepodporuje v kontejneru. 
+Kontejnery rozhraní Text Analytics poskytuje pokročilé zpracování přirozeného jazyka nezpracovaný text a zahrnuje tři hlavní funkce: analýzu mínění, extrakci klíčových frází a rozpoznání jazyka. Propojování entit se aktuálně nepodporuje v kontejneru.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 

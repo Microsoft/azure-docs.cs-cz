@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.author: v-pettur
 author: PeterTurcan
 ms.date: 05/01/2019
-ms.openlocfilehash: fc2f358921380803e89c7a8ed5c2ef0fc8e1e467
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 7e6c433168b73c6b58d13d4698bed55d7c18ec58
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67304324"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67434625"
 ---
 # <a name="c-tutorial-search-results-pagination---azure-search"></a>C#kurz: Stránkování výsledků vyhledávání – Azure Search
 
@@ -340,7 +340,7 @@ Máte základní hledání stránky řešení otevřené.
             if (page >= leftMostPage + GlobalVariables.MaxPageRange - 1)
             {
                 // Trigger a switch to a higher page range.
-                leftMostPage = Math.Min(leftMostPage + GlobalVariables.PageRangeDelta, model.pageCount - GlobalVariables.MaxPageRange);
+                leftMostPage = Math.Min(page - GlobalVariables.PageRangeDelta, model.pageCount - GlobalVariables.MaxPageRange);
             }
             model.leftMostPage = leftMostPage;
 
@@ -440,7 +440,7 @@ K implementaci nekonečné posouvání, začneme projektu předtím, než byly p
                 {
                     // Display the hotel name and description.
                     @Html.TextAreaFor(m => Model.resultList.Results[i].Document.HotelName, new { @class = "box1" })
-                    @Html.TextArea("desc", Model.resultList.Results[i].Document.Description, new { @class = "box2" })
+                    @Html.TextArea($"desc{i}", Model.resultList.Results[i].Document.Description, new { @class = "box2" })
                 }
             </div>
         }

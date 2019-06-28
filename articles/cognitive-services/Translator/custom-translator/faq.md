@@ -2,19 +2,19 @@
 title: Časté otázky – vlastní Translator
 titleSuffix: Azure Cognitive Services
 description: Poskytuje odpovědi na nejčastější dotazy týkající se vlastní překladač.
-author: rajdeep-in
+author: swmachan
 manager: christw
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
-ms.author: v-pawal
+ms.author: swmachan
 ms.topic: reference
-ms.openlocfilehash: 79dc5baacb19143f2b31de7f3822af382c2e6cf4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 00921eeb9f966ed62d1a2d7605419432a9fa50f5
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66384043"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443402"
 ---
 # <a name="frequently-asked-questions"></a>Nejčastější dotazy
 

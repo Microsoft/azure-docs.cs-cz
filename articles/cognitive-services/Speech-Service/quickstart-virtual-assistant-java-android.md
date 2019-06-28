@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 5/24/2019
 ms.author: travisw
-ms.openlocfilehash: 5991388e47981c83eec24b0d8f955f7c292180da
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7e82b2ef9500defe0d08351da1e3487e4671155f
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67081530"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67467045"
 ---
 # <a name="quickstart-create-a-voice-first-virtual-assistant-in-java-on-android-by-using-the-speech-sdk"></a>Rychlý start: Vytvoření první hlasové virtuálních asistentů v jazyce Java v Androidu pomocí sadou SDK pro řeč
 
@@ -30,15 +30,12 @@ Tato aplikace sestavena pomocí balíčku Maven řeči sady SDK a Android Studio
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Klíče pro hlasové služby v rozhraní předplatného Azure **westus2** oblasti. Vytvoření odběru na [webu Azure portal](https://portal.azure.com).
+* Klíč předplatného pro hlasové služby. [Získat zdarma](get-started.md) neexistuje, vytvořte ho na [webu Azure portal](https://portal.azure.com).
 * Dříve vytvořeného bot nakonfigurovanou [kanál s přímým přístupem řádku řeči](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
 * [Android Studio](https://developer.android.com/studio/) v3.3 nebo novější
- 
-    > [!NOTE]
-    > Řeči řádku s přímým přístupem (Preview) je momentálně dostupná jenom **westus2** oblasti.
 
     > [!NOTE]
-    > 30denní zkušební verze pro standardní cenová úroveň je popsáno v [hlasové služby si můžete vyzkoušet zdarma](get-started.md) omezen na **westus** (ne **westus2**) a není proto kompatibilní s přímým Řádek řeči. Úrovně Free a standard **westus2** předplatná jsou kompatibilní.
+    > Řeči řádku s přímým přístupem (Preview) je momentálně dostupný v podmnožině oblastí s hlasové služby. Najdete [seznam podporovaných oblastí pro virtuálních asistentů hlasové první](regions.md#Voice-first virtual assistants) a ujistěte se prostředky nasadí v těchto oblastech.
 
 ## <a name="create-and-configure-a-project"></a>Vytvoření a konfigurace projektu
 
@@ -126,8 +123,8 @@ Textové a grafické vyjádření uživatelském rozhraní by teď měl vypadat 
 
     import com.microsoft.cognitiveservices.speech.audio.AudioConfig;
     import com.microsoft.cognitiveservices.speech.audio.PullAudioOutputStream;
-    import com.microsoft.cognitiveservices.speech.dialog.BotConnectorConfig;
-    import com.microsoft.cognitiveservices.speech.dialog.SpeechBotConnector;
+    import com.microsoft.cognitiveservices.speech.dialog.DialogServiceConfig;
+    import com.microsoft.cognitiveservices.speech.dialog.DialogServiceConnector;
 
     import org.json.JSONException;
     import org.json.JSONObject;
@@ -139,10 +136,10 @@ Textové a grafické vyjádření uživatelském rozhraní by teď měl vypadat 
         private static String channelSecret = "YourChannelSecret";
         // Replace below with your own speech subscription key
         private static String speechSubscriptionKey = "YourSpeechSubscriptionKey";
-        // Replace below with your own speech service region (note: only 'westus2' is currently supported)
+        // Replace below with your own speech service region (note: only a subset of regions are currently supported)
         private static String serviceRegion = "YourSpeechServiceRegion";
 
-        private SpeechBotConnector botConnector;
+        private DialogServiceConnector connector;
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -160,24 +157,24 @@ Textové a grafické vyjádření uživatelském rozhraní by teď měl vypadat 
         }
 
         public void onBotButtonClicked(View v) {
-            // Recreate the SpeechBotConnector on each button press, ensuring that the existing one is closed
-            if (botConnector != null) {
-                botConnector.close();
-                botConnector = null;
+            // Recreate the DialogServiceConnector on each button press, ensuring that the existing one is closed
+            if (connector != null) {
+                connector.close();
+                connector = null;
             }
 
-            // Create the SpeechBotConnector from the channel and speech subscription information
-            BotConnectorConfig config = BotConnectorConfig.fromSecretKey(channelSecret, speechSubscriptionKey, serviceRegion);
-            botConnector = new SpeechBotConnector(config, AudioConfig.fromDefaultMicrophoneInput());
+            // Create the DialogServiceConnector from the channel and speech subscription information
+            DialogServiceConfig config = DialogServiceConfig.fromBotSecret(channelSecret, speechSubscriptionKey, serviceRegion);
+            connector = new DialogServiceConnector(config, AudioConfig.fromDefaultMicrophoneInput());
 
             // Optional step: preemptively connect to reduce first interaction latency
-            botConnector.connectAsync();
+            connector.connectAsync();
 
-            // Register the SpeechBotConnector's event listeners
+            // Register the DialogServiceConnector's event listeners
             registerEventListeners();
 
             // Begin sending audio to your bot
-            botConnector.listenOnceAsync();
+            connector.listenOnceAsync();
         }
 
         private void registerEventListeners() {
@@ -185,32 +182,32 @@ Textové a grafické vyjádření uživatelském rozhraní by teď měl vypadat 
             TextView activityText = (TextView) this.findViewById(R.id.activityText); // 'activityText' is the ID of your text view
 
             // Recognizing will provide the intermediate recognized text while an audio stream is being processed
-            botConnector.recognizing.addEventListener((o, recoArgs) -> {
+            connector.recognizing.addEventListener((o, recoArgs) -> {
                 recoText.setText("  Recognizing: " + recoArgs.getResult().getText());
             });
 
             // Recognized will provide the final recognized text once audio capture is completed
-            botConnector.recognized.addEventListener((o, recoArgs) -> {
+            connector.recognized.addEventListener((o, recoArgs) -> {
                 recoText.setText("  Recognized: " + recoArgs.getResult().getText());
             });
 
             // SessionStarted will notify when audio begins flowing to the service for a turn
-            botConnector.sessionStarted.addEventListener((o, sessionArgs) -> {
+            connector.sessionStarted.addEventListener((o, sessionArgs) -> {
                 recoText.setText("Listening...");
             });
 
             // SessionStopped will notify when a turn is complete and it's safe to begin listening again
-            botConnector.sessionStopped.addEventListener((o, sessionArgs) -> {
+            connector.sessionStopped.addEventListener((o, sessionArgs) -> {
             });
 
             // Canceled will be signaled when a turn is aborted or experiences an error condition
-            botConnector.canceled.addEventListener((o, canceledArgs) -> {
+            connector.canceled.addEventListener((o, canceledArgs) -> {
                 recoText.setText("Canceled (" + canceledArgs.getReason().toString() + ") error details: {}" + canceledArgs.getErrorDetails());
-                botConnector.disconnectAsync();
+                connector.disconnectAsync();
             });
 
             // ActivityReceived is the main way your bot will communicate with the client and uses bot framework activities.
-            botConnector.activityReceived.addEventListener((o, activityArgs) -> {
+            connector.activityReceived.addEventListener((o, activityArgs) -> {
                 try {
                     // Here we use JSONObject only to "pretty print" the condensed Activity JSON
                     String rawActivity = activityArgs.getActivity().serialize();
@@ -257,7 +254,7 @@ Textové a grafické vyjádření uživatelském rozhraní by teď měl vypadat 
 
    * Metoda `onBotButtonClicked` je obslužná rutina pro kliknutí na tlačítko, jak bylo uvedeno výše. Stiskněte tlačítko aktivuje jeden interakce ("zapnout") pomocí svého robota.
 
-   * `registerEventListeners` Metoda ukazuje události používané SpeechBotConnector a základní zpracování příchozí aktivit.
+   * `registerEventListeners` Metoda ukazuje události používané `DialogServiceConnector` a základní zpracování příchozí aktivit.
 
 1. Ve stejném souboru nahraďte konfiguračních řetězců tak, aby odpovídaly prostředky:
 
@@ -265,7 +262,7 @@ Textové a grafické vyjádření uživatelském rozhraní by teď měl vypadat 
 
     * Místo `YourSpeechSubscriptionKey` použijte váš klíč předplatného.
 
-    * Nahraďte `YourServiceRegion` s [oblasti](regions.md) přidružených k vašemu předplatnému (Poznámka: momentálně se podporuje jenom westus2).
+    * Nahraďte `YourServiceRegion` s [oblasti](regions.md) přidružených k vašemu předplatnému s přímým přístupem Speech řádku se aktuálně podporují pouze podmnožinu hlasových služeb regiony. Další informace najdete v tématu [oblastech](regions.md#voice-first-virtual-assistants).
 
 ## <a name="build-and-run-the-app"></a>Sestavení a spuštění aplikace
 
@@ -286,9 +283,11 @@ Po spuštění aplikace a jeho aktivity, klikněte na tlačítko Zahájit konver
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Prozkoumejte ukázky v Javě na Githubu](https://aka.ms/csspeech/samples)
-> [připojení s přímým přístupem řádku řeči pro svého robota](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
+> [Vytvoření a nasazení základního robota](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 - [O virtuálních asistentů hlasové první](voice-first-virtual-assistants.md)
+- [Získejte klíč předplatného hlasových služeb zdarma](get-started.md)
 - [Vlastní probuzení slova](speech-devices-sdk-create-kws.md)
+- [Připojení s přímým přístupem řádku řeči pro svého robota](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
+- [Prozkoumejte ukázky v Javě na Githubu](https://aka.ms/csspeech/samples)

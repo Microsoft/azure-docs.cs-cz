@@ -3,20 +3,20 @@ title: Nástroj QnA bot – Azure Bot Service – QnA Maker
 titleSuffix: Azure Cognitive Services
 description: Vytvoření chatovací robot QnA ze stránky publikování pro existující znalostní báze. Tato bot používá v4 Bot Framework SDK. Nemusíte psát žádný kód, sestavit robota, veškerý kód je k dispozici za vás.
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: article
-ms.date: 06/11/2019
-ms.author: tulasim
-ms.openlocfilehash: b3bae01d65685aa9ea7bfc95d1f1454741d37b5e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.topic: tutorial
+ms.date: 06/24/2019
+ms.author: diberry
+ms.openlocfilehash: 1d475d988847bd4cc9e37b91a0c5d28678cb05f2
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67053235"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446651"
 ---
 # <a name="tutorial-create-a-qna-bot-with-azure-bot-service-v4"></a>Kurz: Vytváření QnA robotů s využitím Azure Bot službu v4
 
@@ -84,12 +84,6 @@ Vytváření robotů jako klientskou aplikaci pro znalostní báze.
 
     Další informace o roboty Azure najdete v tématu [otázky, použijte nástroj QnA Maker odpovědět](https://docs.microsoft.com/azure/bot-service/bot-builder-howto-qna?view=azure-bot-service-4.0&tabs=cs)
 
-## <a name="related-to-qna-maker-bots"></a>Související s roboty QnA Maker
-
-* Robot nápovědy nástroje QnA Maker, používaná na portálu QnA Maker je k dispozici jako [bot ukázka](https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/csharp_dotnetcore/qnamaker-support-bot).
-    ![Červené robot je ikona bot nápovědy nástroje QnA Maker](../media/qnamaker-tutorials-create-bot/answer-bot-icon.PNG)
-* [Zdravotní péče robotů](https://docs.microsoft.com/HealthBot/qna_model_howto) použijte nástroj QnA Maker jako jeden z jejich [jazykových modelů](https://docs.microsoft.com/HealthBot/qna_model_howto).
-
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Jakmile budete hotovi s robotem v tomto kurzu, odeberte robota na webu Azure Portal. 
@@ -103,6 +97,16 @@ Pokud jste nevytvořili novou skupinu prostředků, budete muset najít prostře
 * Služby Cognitive Services
 * App service
 * Volitelně může také zahrnovat služby application insights a úložiště pro application insights data
+
+
+## <a name="related-to-qna-maker-bots"></a>Související s roboty QnA Maker
+
+* Robot nápovědy nástroje QnA Maker, používaná na portálu QnA Maker je k dispozici jako [bot ukázka](https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/csharp_dotnetcore/qnamaker-support-bot).
+    ![Červené robot je ikona bot nápovědy nástroje QnA Maker](../media/qnamaker-tutorials-create-bot/answer-bot-icon.PNG)
+* [Zdravotní péče robotů](https://docs.microsoft.com/HealthBot/qna_model_howto) použijte nástroj QnA Maker jako jeden z jejich [jazykových modelů](https://docs.microsoft.com/HealthBot/qna_model_howto).
+
+
+[!INCLUDE [Bot Information](../../../../includes/cognitive-services-qnamaker-luis-bot-info.md)]
 
 ## <a name="next-steps"></a>Další postup
 

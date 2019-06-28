@@ -1,43 +1,39 @@
 ---
-title: C#kurz použití omezujících vlastností efektivitu navigace a sítě – Azure Search
-description: Tento kurz vychází projektu "Výsledky hledání stránkování – Azure Search" Přidání omezující vlastnosti hledání. Přečtěte si, že omezující vlastnosti lze použít v navigaci a automatického doplňování.
+title: C#kurz použití omezující vlastnosti na podporu navigace – Azure Search
+description: Tento kurz vychází projektu "Výsledky hledání stránkování – Azure Search" Přidání omezující vlastnost navigace. Přečtěte si, že omezující vlastnosti je možné snadno Zúží vyhledávání.
 services: search
 ms.service: search
 ms.topic: tutorial
 ms.author: v-pettur
 author: PeterTurcan
 ms.date: 06/20/2019
-ms.openlocfilehash: a81042869564533050fef42a983f2f8fb9bc7b23
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 62326ad3bc5f2d740ce744819df559bce8658eb7
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67304668"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443782"
 ---
-# <a name="c-tutorial-use-facets-for-navigation-and-network-efficiency---azure-search"></a>C#kurz: Použití omezujících vlastností efektivitu navigace a sítě – Azure Search
+# <a name="c-tutorial-use-facets-to-aid-navigation---azure-search"></a>C#kurz: Podpora navigace – Azure Search pomocí omezující vlastnosti
 
-Omezující vlastnosti mají dva odlišné použití ve službě Azure Search. Omezující vlastnosti umožňuje podporu navigace, tím, že uživatel poskytuje sadu zaškrtněte políčka používat a zaměřit své hledání. Navíc můžete používají ke zlepšení efektivity sítě při použití automatického doplňování. Omezující vlastnost vyhledávání jsou efektivní, protože se provádí jenom s jednou registrací u každé načtení stránky, nikoli s jednou registrací u každé stisknutí kláves. 
+Omezující vlastnosti umožňují podporu navigace, tím, že uživatel poskytuje sadu odkazy na používat a zaměřit své hledání. Omezující vlastnosti jsou atributy dat (třeba kategorie, nebo konkrétní funkce, hotelu v našich ukázkových dat).
 
-Omezující vlastnosti jsou atributy dat (třeba kategorie hotelu v našich ukázkových dat) a obraze životnost vyhledávání.
-
-Tento kurz vytvoří dva projekty: jedno pro omezující vlastnost navigace a druhou pro omezující vlastnost automatického doplňování. Sestavení na stránkování projekt vytvořený v obou projektů [ C# kurzu: Výsledky stránkování – Azure Search](tutorial-csharp-paging.md) kurzu.
+V tomto kurzu se vytvoří na stránkování projekt vytvořený v [ C# kurzu: Výsledky stránkování – Azure Search](tutorial-csharp-paging.md) kurzu.
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
 > * Nastavit vlastnosti modelu jako _IsFacetable_
 > * Přidání omezující vlastnost navigace do vaší aplikace
-> * Přidání automatického doplňování omezující vlastnost do vaší aplikace
-> * Při rozhodování, kdy použití automatického doplňování omezující vlastnost
 
 ## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu je potřeba provést následující:
 
-Máte [ C# kurzu: Výsledky stránkování – Azure Search](tutorial-csharp-paging.md) projektu rychle zprovoznit. To být vlastní verzi, nebo ji nainstalovat z Githubu: [Vytvoření první aplikace](https://github.com/Azure-Samples/azure-search-dotnet-samples).
+Máte [ C# kurzu: Výsledky stránkování – Azure Search](tutorial-csharp-paging.md) projektu rychle zprovoznit. Tento projekt může být vlastní verzi nebo nainstalovat z Githubu: [Vytvoření první aplikace](https://github.com/Azure-Samples/azure-search-dotnet-samples).
 
-## <a name="set-model-fields-as-isfacetable"></a>Sada polí modelu jako IsFacetable
+## <a name="set-model-properties-as-isfacetable"></a>Nastavení vlastností modelu jako IsFacetable
 
-V pořadí pro vlastnosti modelu nacházely ve omezující vlastnosti hledání (navigační nebo automatického doplňování), musí být označená pomocí **IsFacetable**.
+V pořadí pro vlastnosti modelu nacházely ve vyhledávání omezující vlastnost, musí být označená pomocí **IsFacetable**.
 
 1. Zkontrolujte **hotelu** třídy. **Kategorie** a **značky**, například jsou označené jako **IsFacetable**, ale **HotelName** a **popis** nejsou. 
 
@@ -85,134 +81,40 @@ V pořadí pro vlastnosti modelu nacházely ve omezující vlastnosti hledání 
     }
     ```
 
-2. Společnost Microsoft nebude měnit všechny značky v tomto kurzu. Omezující vlastnost vyhledávání vyvolá chybu, pokud není požadováno do vyhledávacího pole označené odpovídajícím způsobem.
+2. Jsme nebudou měnit všechny značky v rámci tohoto kurzu, takže zavřete soubor hotel.cs beze změny.
+
+    > [!Note]
+    > Omezující vlastnost vyhledávání vyvolá chybu, pokud není požadováno do vyhledávacího pole označené odpovídajícím způsobem.
 
 
 ## <a name="add-facet-navigation-to-your-app"></a>Přidání omezující vlastnost navigace do vaší aplikace
 
-V tomto příkladu budeme umožňující uživateli vybrat jednu nebo více kategorií hotelu, v seznamu uvedeno nalevo od výsledky. Potřebujeme řadič znát seznam kategorií při prvním spuštění aplikace a předat tento seznam zobrazení, který se má zobrazit při vykreslení první obrazovky. Jak se zobrazí jednotlivé stránky potřebujeme Ujistěte se, že budeme mít udržuje seznam omezující vlastnosti a aktuální výběr uživatele, mají být předány na následujících stránkách. Znovu použijeme jako mechanismus pro zachování dat dočasné úložiště.
+V tomto příkladu budeme umožňující uživateli vybrat jednu kategorii hotelu nebo jeden rekreačním ze seznamů odkazy uvedené nalevo od výsledky. Uživatel spustí tak, že některé zadáte hledaný text, pak můžete zúžit výsledky hledání tak, že vyberete kategorii a můžete zúžit výsledky dál tak, že vyberete rekreačním nebo mohou vybrat rekreačním první (pořadí není důležité).
+
+Potřebujeme kontroleru k předání seznam omezující vlastnosti k zobrazení. Musíme udržovat volby uživatele v průběhu vyhledávání a znovu jako mechanismus pro zachování dat používáme dočasné úložiště.
 
 ![Chcete-li zúžit hledání "fondu" pomocí omezující vlastnost navigace](./media/tutorial-csharp-create-first-app/azure-search-facet-nav.png)
 
-### <a name="modify-the-searchdata-model"></a>Upravit SearchData model
+### <a name="add-filter-strings-to-the-searchdata-model"></a>Přidat filtr řetězce do modelu SearchData
 
-1. Otevřete soubor SearchData.cs a přidejte tuto další **pomocí** příkazu. Musíme povolit **seznamu&lt;řetězec&gt;**  vytvořit.
+1. Otevřete soubor SearchData.cs a přidejte vlastnosti řetězce **SearchData** třídy pro uložení řetězce filtru omezující vlastnost.
+
+    ```cs
+        public string categoryFilter { get; set; }
+        public string amenityFilter { get; set; }
+    ```
+
+### <a name="add-the-facet-action-method"></a>Přidejte metodu akce omezující vlastnost
+
+Domácí kontrolér musí jednu novou akci, **omezující vlastnost**a aktualizace existujících **Index** a **stránky** akce, stejně jako aktualizace **RunQueryAsync**  metody.
+
+1. Otevřete soubor domácí řadiče a přidejte **pomocí** příkaz, aby **seznamu&lt;řetězec&gt;**  vytvořit.
 
     ```cs
     using System.Collections.Generic;
     ```
 
-2. Ve stejném souboru přidejte následující řádky do **SearchData** třídy. Neodstraňujte žádný existující vlastnosti třídy, ale přidejte následující konstruktor metody a pole vlastností.
-
-    ```cs
-        public SearchData()
-        {
-        }
-
-        // Constructor to initialize the list of facets sent from the controller.
-        public SearchData(List<string> facets)
-        {
-            facetText = new string[facets.Count];
-
-            for (int i = 0; i < facets.Count; i++)
-            {
-                facetText[i] = facets[i];
-            }
-        }
-
-        // Array to hold the text for each facet.
-        public string[] facetText { get; set; }
-
-        // Array to hold the check box setting.
-        public bool[] facetOn { get; set; }
-    ```
-
-
-### <a name="search-for-facets-on-the-first-index-call"></a>Vyhledejte omezující vlastnosti při prvním volání indexu
-
-Domácí kontrolér musí významné změny. První volání **Index()** by již nevracelo zobrazení s žádné další zpracování. Chceme poskytnout úplný seznam omezující vlastnosti zobrazení a prvním volání je ten správný pro tento účel.
-
-1. Otevřete soubor domácí řadiče a přidejte dva **pomocí** příkazy.
-
-    ```cs
-    using System.Collections.Generic;
-    using System.Linq;
-    ```
-
-2. Nyní nahraďte několika řádků aktuální **Index()** metodu s metodou, která provádí omezující vlastnosti hledání pro kategorie hotelu. Při hledání se provádí asynchronně, musí deklarovat jsme **Index** metody jako **asynchronní**.
-
-    ```cs
-        public async Task<ActionResult> Index()
-        {
-            InitSearch();
-
-            // Set up the facets call in the search parameters.
-            SearchParameters sp = new SearchParameters()
-            {
-                // Search for up to 20 categories.
-                // Field names specified here must be marked as "IsFacetable" in the model, or the search call will throw an exception.
-                Facets = new List<string> { "Category,count:20" },
-            };
-
-            DocumentSearchResult<Hotel> searchResult = await _indexClient.Documents.SearchAsync<Hotel>("*", sp);
-
-            // Convert the results to a list that can be displayed in the client.
-            List<string> categories = searchResult.Facets["Category"].Select(x => x.Value.ToString()).ToList();
-
-            // Initiate a model with a list of facets for the first view.
-            SearchData model = new SearchData(categories);
-
-            // Save the facet text for the next view.
-            SaveFacets(model);
-
-            // Render the view including the facets.
-            return View(model);
-        }
-    ```
-
-    Několik bodů si zde. Můžeme převést výsledky hledání volání do seznam řetězců, pak tato omezující vlastnost řetězce jsou přidány do **SearchData** model pro komunikaci na zobrazení. Také jsme uložit tyto řetězce do dočasného úložiště před nakonec vykreslení zobrazení. Tato uložení se provádí tak, aby tento seznam je k dispozici pro další volání akce kontroleru.
-
-3. Teď přidejte dvě soukromé metody k uložení a obnovení omezujících vlastností vzoru a do dočasného úložiště.
-
-    ```cs
-        // Save the facet text to temporary storage, optionally saving the state of the check boxes.
-        private void SaveFacets(SearchData model, bool saveChecks = false)
-        {
-            for (int i = 0; i < model.facetText.Length; i++)
-            {
-                TempData["facet" + i.ToString()] = model.facetText[i];
-                if (saveChecks)
-                {
-                    TempData["faceton" + i.ToString()] = model.facetOn[i];
-                }
-            }
-            TempData["facetcount"] = model.facetText.Length;
-        }
-
-        // Recover the facet text to a model, optionally recoving the state of the check boxes.
-        private void RecoverFacets(SearchData model, bool recoverChecks = false)
-        {
-            // Create arrays of the appropriate length.
-            model.facetText = new string[(int)TempData["facetcount"]];
-            if (recoverChecks)
-            {
-                model.facetOn = new bool[(int)TempData["facetcount"]];
-            }
-
-            for (int i = 0; i < (int)TempData["facetcount"]; i++)
-            {
-                model.facetText[i] = TempData["facet" + i.ToString()].ToString();
-                if (recoverChecks)
-                {
-                    model.facetOn[i] = (bool)TempData["faceton" + i.ToString()];
-                }
-            }
-        }
-    ```
-
-### <a name="save-and-restore-facet-text-on-all-calls"></a>Uložení a obnovení omezující vlastnost text na všechna volání
-
-1. Dvou dalších akcí Domů řadiče **indexu (SearchData model)** a **stránky (SearchData model)** , obě muset obnovit omezující vlastnosti než volání hledání a uložit je znovu po volání hledání. Změnit **indexu (SearchData model)** pro tyto dvě volání.
+2. Nahradit **indexu (SearchData model)** metody akce.
 
     ```cs
         public async Task<ActionResult> Index(SearchData model)
@@ -225,19 +127,8 @@ Domácí kontrolér musí významné změny. První volání **Index()** by již
                     model.searchText = "";
                 }
 
-                // Recover the facet text.
-                RecoverFacets(model);
-
                 // Make the search call for the first page.
-                await RunQueryAsync(model, 0, 0);
-
-                // Ensure temporary data is stored for the next call.
-                TempData["page"] = 0;
-                TempData["leftMostPage"] = 0;
-                TempData["searchfor"] = model.searchText;
-
-                // Facets
-                SaveFacets(model, true);
+                await RunQueryAsync(model, 0, 0, "", "");
             }
 
             catch
@@ -248,49 +139,127 @@ Domácí kontrolér musí významné změny. První volání **Index()** by již
         }
     ```
 
-2. Teď to samé proveďte **stránky (SearchData model)** metody. Vypsali jsme pouze relevantní kód uvedený níže. Přidat **RecoverFacets** a **SaveFacets** volá kolem **RunQueryAsync** volání.
+3. Nahradit **stránky (SearchData model)** metody akce.
 
     ```cs
-                // Recover facet text and check marks.
-                RecoverFacets(model, true);
+        public async Task<ActionResult> Page(SearchData model)
+        {
+            try
+            {
+                int page;
 
-                await RunQueryAsync(model, page, leftMostPage);
+                // Calculate the page that should be displayed.
+                switch (model.paging)
+                {
+                    case "prev":
+                        page = (int)TempData["page"] - 1;
+                        break;
 
-                // Save facets and check marks.
-                SaveFacets(model, true);
+                    case "next":
+                        page = (int)TempData["page"] + 1;
+                        break;
+
+                    default:
+                        page = int.Parse(model.paging);
+                        break;
+                }
+
+                // Recover the leftMostPage.
+                int leftMostPage = (int)TempData["leftMostPage"];
+
+                // Recover the filters.
+                string catFilter = TempData["categoryFilter"].ToString();
+                string ameFilter = TempData["amenityFilter"].ToString();
+
+                // Recover the search text.
+                model.searchText = TempData["searchfor"].ToString();
+
+                // Search for the new page.
+                await RunQueryAsync(model, page, leftMostPage, catFilter, ameFilter);
+            }
+
+            catch
+            {
+                return View("Error", new ErrorViewModel { RequestId = "2" });
+            }
+            return View("Index", model);
+        }
     ```
 
-### <a name="set-up-a-search-filter"></a>Nastavit filtr pro hledání
-
-Když uživatel vybere určité charakteristiky, například Dejme tomu, že kliknou na **rozpočtu** a **možnost a Spa** kategorie a pak pouze hotely, které jsou definované jako jednu z těchto dvou kategorií by měla být vrácena v výsledky. K optimalizaci hledání tímto způsobem, musíme nastavit _filtr_.
-
-1. V **RunQueryAsync** metodu, přidejte kód pro cyklický průchod nastavení daného modelu omezující vlastnost, pro vytvoření řetězce filtru. A přidejte filtr, aby se **parametrech vyhledávání**, jak je znázorněno v následujícím kódu.
+4. Přidat **omezující vlastnosti (SearchData model)** metodě akce, chcete-li aktivovat, když uživatel klikne na odkaz omezující vlastnost. Model bude obsahovat vyhledávací filtr kategorií nebo rekreačním vyhledávací filtr. Třeba přidat ji po **stránky** akce.
 
     ```cs
-            // Create a filter for selected facets.
-            string selectedFacets = "";
-
-            for (int f = 0; f < model.facetText.Length; f++)
+        public async Task<ActionResult> Facet(SearchData model)
+        {
+            try
             {
-                if (model.facetOn[f])
+                // Filters set by the model override those stored in temporary data.
+                string catFilter;
+                string ameFilter;
+                if (model.categoryFilter != null)
                 {
-                    if (selectedFacets.Length > 0)
-                    {
-                        // If there is more than one selected facet, logically OR them together.
-                        selectedFacets += " or ";
-                    }
-                    selectedFacets += "(Category eq \'" + model.facetText[f] + "\')";
+                    catFilter = model.categoryFilter;
+                } else
+                {
+                    catFilter = TempData["categoryFilter"].ToString();
                 }
+
+                if (model.amenityFilter != null)
+                {
+                    ameFilter = model.amenityFilter;
+                } else
+                {
+                    ameFilter = TempData["amenityFilter"].ToString();
+                }
+
+                // Recover the search text.
+                model.searchText = TempData["searchfor"].ToString();
+
+                // Initiate a new search.
+                await RunQueryAsync(model, 0, 0, catFilter, ameFilter);
+            }
+
+            catch
+            {
+                return View("Error", new ErrorViewModel { RequestId = "2" });
+            }
+            return View("Index", model);
+        }
+    ```
+
+### <a name="set-up-the-search-filter"></a>Nastavení vyhledávací filtr
+
+Když uživatel vybere určité omezující vlastnost, například kliknutí na **možnost a Spa** kategorie a pak pouze hotely, které jsou definované jako tato kategorie má být vrácen ve výsledcích. Chcete-li zúžit hledání tak, musíme nastavit _filtr_.
+
+1. Nahradit **RunQueryAsync** metodu s následujícím kódem. Především, přebírá řetězec filtru kategorie a řetězce filtru rekreačním a nastaví **filtr** parametr **parametrech vyhledávání**.
+
+    ```cs
+        private async Task<ActionResult> RunQueryAsync(SearchData model, int page, int leftMostPage, string catFilter, string ameFilter)
+        {
+            InitSearch();
+
+            string facetFilter = "";
+
+            if (catFilter.Length > 0 && ameFilter.Length > 0)
+            {
+                // Both facets apply.
+                facetFilter = $"{catFilter} and {ameFilter}"; 
+            } else
+            {
+                // One, or zero, facets apply.
+                facetFilter = $"{catFilter}{ameFilter}";
             }
 
             var parameters = new SearchParameters
             {
-                // Facets: add the filter.
-                Filter = selectedFacets,
+                Filter = facetFilter,
 
-                // Enter Hotel property names into this list so only these values will be returned.
-                // If Select is empty, all values will be returned, which can be inefficient.
-                Select = new[] { "HotelName", "Description", "Category" },
+                // Return information on the text, and number, of facets in the data.
+                Facets = new List<string> { "Category,count:20", "Tags,count:20" },
+
+                // Enter Hotel property names into this list, so only these values will be returned.
+                Select = new[] { "HotelName", "Description", "Category", "Tags" },
+
                 SearchMode = SearchMode.All,
 
                 // Skip past results that have already been returned.
@@ -302,11 +271,53 @@ Když uživatel vybere určité charakteristiky, například Dejme tomu, že kli
                 // Include the total number of results.
                 IncludeTotalResultCount = true,
             };
+
+            // For efficiency, the search call should be asynchronous, so use SearchAsync rather than Search.
+            model.resultList = await _indexClient.Documents.SearchAsync<Hotel>(model.searchText, parameters);
+
+            // This variable communicates the total number of pages to the view.
+            model.pageCount = ((int)model.resultList.Count + GlobalVariables.ResultsPerPage - 1) / GlobalVariables.ResultsPerPage;
+
+            // This variable communicates the page number being displayed to the view.
+            model.currentPage = page;
+
+            // Calculate the range of page numbers to display.
+            if (page == 0)
+            {
+                leftMostPage = 0;
+            }
+            else
+               if (page <= leftMostPage)
+            {
+                // Trigger a switch to a lower page range.
+                leftMostPage = Math.Max(page - GlobalVariables.PageRangeDelta, 0);
+            }
+            else
+            if (page >= leftMostPage + GlobalVariables.MaxPageRange - 1)
+            {
+                // Trigger a switch to a higher page range.
+                leftMostPage = Math.Min(page - GlobalVariables.PageRangeDelta, model.pageCount - GlobalVariables.MaxPageRange);
+            }
+            model.leftMostPage = leftMostPage;
+
+            // Calculate the number of page numbers to display.
+            model.pageRange = Math.Min(model.pageCount - leftMostPage, GlobalVariables.MaxPageRange);
+
+            // Ensure Temp data is stored for the next call.
+            TempData["page"] = page;
+            TempData["leftMostPage"] = model.leftMostPage;
+            TempData["searchfor"] = model.searchText;
+            TempData["categoryFilter"] = catFilter;
+            TempData["amenityFilter"] = ameFilter;
+
+            // Return the new view.
+            return View("Index", model);
+        }
     ```
 
-    Přidali jsme **kategorie** vlastnosti do seznamu **vyberte** položek k vrácení. Přidání této vlastnosti není povinné, ale tímto způsobem můžeme ověřit jsme správně filtrování.
+    Přidali jsme **kategorie** a **značky** vlastnosti do seznamu **vyberte** položek k vrácení. Toto přidání není vyžadována pro omezující vlastnost navigace pro práci, ale tyto informace používáme k ověření, že jsme se správně filtrování.
 
-### <a name="define-a-few-additional-html-styles"></a>Definujte pár dalších stylů jazyka HTML
+### <a name="add-lists-of-facet-links-to-the-view"></a>Přidat seznam omezující vlastnost odkazy na zobrazení
 
 Zobrazení se bude vyžadovat významné změny. 
 
@@ -318,19 +329,21 @@ Zobrazení se bude vyžadovat významné změny.
     }
 
     .facetchecks {
-        width: 200px;
-        background-color: lightgoldenrodyellow;
+        width: 250px;
         display: normal;
         color: #666;
         margin: 10px;
+        padding: 5px;
+    }
+
+    .facetheader {
+        font-size: 10pt;
+        font-weight: bold;
+        color: darkgreen;    
     }
     ```
 
-### <a name="add-a-list-of-facet-checkboxes-to-the-view"></a>Přidání seznamu zaškrtávacích políček omezující vlastnosti k zobrazení
-
-Pro zobrazení jsme uspořádání výstup do tabulky, elegantně zarovnat omezující vlastnosti na levé straně a výsledky na pravé straně. Otevřete soubor index.cshtml.
-
-1. Nahradí celý obsah HTML &lt;tělo&gt; značky s následujícím kódem.
+2. Pro zobrazení uspořádání jsme výstup do tabulky, elegantně zarovnat omezující vlastnost seznamů na levé straně a výsledky na pravé straně. Otevřete soubor index.cshtml. Nahradí celý obsah HTML &lt;tělo&gt; značky s následujícím kódem.
 
     ```cs
     <body>
@@ -361,13 +374,41 @@ Pro zobrazení jsme uspořádání výstup do tabulky, elegantně zarovnat omezu
             <tr>
                 <td valign="top">
                     <div id="facetplace" class="facetchecks">
-                        <h5>Filter by Category:</h5>
-                        <ul class="facetlist">
-                            @for (var i = 0; i < Model.facetText.Length; i++)
+
+                        @if (Model != null && Model.resultList != null)
+                        {
+                            List<string> categories = Model.resultList.Facets["Category"].Select(x => x.Value.ToString()).ToList();
+
+                            if (categories.Count > 0)
                             {
-                                <li> @Html.CheckBoxFor(m => m.facetOn[i], new { @id = "check" + i.ToString() }) @Model.facetText[i] </li>
+                                <h5 class="facetheader">Category:</h5>
+                                <ul class="facetlist">
+                                    @for (var c = 0; c < categories.Count; c++)
+                                    {
+                                        var facetLink = $"{categories[c]} ({Model.resultList.Facets["Category"][c].Count})";
+                                        <li>
+                                            @Html.ActionLink(facetLink, "Facet", "Home", new { categoryFilter = $"Category eq '{categories[c]}'" }, null)
+                                        </li>
+                                    }
+                                </ul>
                             }
-                        </ul>
+
+                            List<string> tags = Model.resultList.Facets["Tags"].Select(x => x.Value.ToString()).ToList();
+
+                            if (tags.Count > 0)
+                            {
+                                <h5 class="facetheader">Amenities:</h5>
+                                <ul class="facetlist">
+                                    @for (var c = 0; c < tags.Count; c++)
+                                    {
+                                        var facetLink = $"{tags[c]} ({Model.resultList.Facets["Tags"][c].Count})";
+                                        <li>
+                                            @Html.ActionLink(facetLink, "Facet", "Home", new { amenityFilter = $"Tags/any(t: t eq '{tags[c]}')" }, null)
+                                        </li>
+                                    }
+                                </ul>
+                            }
+                        }
                     </div>
                 </td>
                 <td valign="top">
@@ -381,9 +422,15 @@ Pro zobrazení jsme uspořádání výstup do tabulky, elegantně zarovnat omezu
 
                             @for (var i = 0; i < Model.resultList.Results.Count; i++)
                             {
+                                string amenities = string.Join(", ", Model.resultList.Results[i].Document.Tags);
+
+                                string fullDescription = Model.resultList.Results[i].Document.Description;
+                                fullDescription += $"\nCategory: {Model.resultList.Results[i].Document.Category}";
+                                fullDescription += $"\nAmenities: {amenities}";
+
                                 // Display the hotel name and description.
                                 @Html.TextAreaFor(m => Model.resultList.Results[i].Document.HotelName, new { @class = "box1" })
-                                @Html.TextArea("desc", Model.resultList.Results[i].Document.Description + "\nCategory:  " +  Model.resultList.Results[i].Document.Category, new { @class = "box2" })
+                                @Html.TextArea($"desc{i}", fullDescription, new { @class = "box2" })
                             }
                         }
                     </div>
@@ -476,181 +523,40 @@ Pro zobrazení jsme uspořádání výstup do tabulky, elegantně zarovnat omezu
     </body>
     ```
 
-    Všimněte si použití **CheckBoxFor** volání k naplnění **facetOn** pole s výběry uživatele. Také jsme přidali kategorie hotelu konec popis hotelu. Tento text je jednoduše potvrďte, že naše vyhledávání funguje správně. Není moc jiný změnil z předchozích kurzů, s tím rozdílem, že budeme mít uspořádané výstup do tabulky.
+    Všimněte si použití **Html.ActionLink** volání. Toto volání komunikuje platný filtr řetězce kontroleru, když uživatel klikne na odkaz omezující vlastnost. 
 
 ### <a name="run-and-test-the-app"></a>Spuštění a testování aplikace
 
-1. Spusťte aplikaci a ověřte, že seznam omezující vlastnosti elegantně zobrazuje na levé straně.
+Výhodou omezující vlastnost navigace uživateli je, že se můžete zúžit hledání jedním kliknutím, který jsme můžete zobrazit v tomto pořadí.
 
-2. Zkuste vybrat jednu, dvě, tři nebo více políček a ověřte výsledky.
+1. Spusťte aplikaci, zadejte "letiště" jako hledaný text. Ověřte, zda seznam omezující vlastnosti elegantně objeví na levé straně. Těchto omezujících vlastností jsou vše, co platí pro hotely, které mají "letiště" v textových dat, s počtem jak často k nim dojde.
 
-    ![Chcete-li zúžit hledání "Wi-Fi" pomocí omezující vlastnost navigace](./media/tutorial-csharp-create-first-app/azure-search-facet-nav.png)
+    ![Chcete-li zúžit hledání "letiště" pomocí omezující vlastnost navigace](./media/tutorial-csharp-create-first-app/azure-search-facet-airport.png)
 
-3. Není lehké komplikací s omezující vlastnost navigace. Co se stane, pokud uživatel změní výběr omezující vlastnosti (zaškrtnutím nebo zrušením výběru zaškrtávací políčka), ale pak na jednu z možností stránkování a ne na vyhledávacím panelu? Změna výběru v důsledku toho by mělo zahájit nové hledání podle aktuální stránky již nebudou správná. Alternativně může být ignorovány změny provedené uživatelem, a další stránky výsledků uvedený, na základě výběrů původní omezující vlastnost. Jsme zvolili v tomto příkladu druhá možnost řešení, ale možná zvažte, jak může implementovat bývalé řešení. Pokud nejnovější výběr zvoleného omezující vlastnosti přesně neodpovídá výběru v dočasné úložiště možná spustí nové hledání?
+2. Klikněte na tlačítko **možnost a Spa** kategorie. Ověřte, že všechny výsledky jsou v této kategorii.
 
-Tím končí naše příklad omezující vlastnost navigace. Ale možná také zvažte jak může prodloužit tuto aplikaci. Seznam omezující vlastnost může rozšíří na další možnost omezující vlastnost pole (Řekněme, že **značky**), takže uživatel může vybrat celou řadu možností, jako je například fondu, Wi-Fi, pruhový, parkovací bezplatné a tak dále. 
+    ![Zúžení hledání "A možnost Spa"](./media/tutorial-csharp-create-first-app/azure-search-facet-airport-ras.png)
 
-Výhodou omezující vlastnost navigace uživateli je, že není potřeba zadávat stejný text, zachovají své volby omezující vlastnost životnost aktuální relace se aplikace. Může vybrat kategorie a případně také další atributy, jedním kliknutím, vyhledejte na jiné určitý text.
+3. Klikněte na tlačítko **kontinentální části snídani** rekreačním. Ověřte, že všechny výsledky jsou stále v kategorii "A možnost Spa" s vybranou rekreačním.
 
-Teď se podíváme jiné užívání omezujících vlastností.
+    ![Zúžení hledání "kontinentální části snídani"](./media/tutorial-csharp-create-first-app/azure-search-facet-airport-ras-cb.png)
 
-## <a name="add-facet-autocompletion-to-your-app"></a>Přidání automatického doplňování omezující vlastnost do vaší aplikace
+4. Zkuste vybrat jiné kategorie, pak jeden rekreačním a zobrazení zúžení výsledků. Opakujte naopak, jeden rekreačním a pak jednu kategorii.
 
-Omezující vlastnost automatického doplňování funguje tak, že počáteční vyhledávání při prvním spuštění aplikace. Toto vyhledávání shromažďuje seznam omezující vlastnosti pro použití jako návrhy při zadání uživatele.
-
-![Psaní "re" zobrazí tři omezující vlastnosti](./media/tutorial-csharp-create-first-app/azure-search-facet-type-re.png)
-
-Použijeme číselného stránkování aplikace, které může dokončení v druhé části kurzu jako základ pro tuto ukázku.
-
-K implementaci automatického doplňování omezující vlastnost, jsme není potřeba změnit některý z modely (data třídy). Potřebujeme přidat skript k zobrazení a akce pro kontroler.
-
-### <a name="add-an-autocomplete-script-to-the-view"></a>Přidání skriptu automatické dokončování pro zobrazení
-
-Aby bylo možné zahájit hledání omezující vlastnost, musíme odeslat dotaz. Přidat do souboru index.cshtml následující jazyka JavaScript poskytuje logiku dotazu a prezentaci, kterou potřebujeme.
-
-1. Vyhledejte **@Html.TextBoxFor(m = > m.searchText,...)** příkaz a přidejte jedinečné ID, podobně jako následující.
-
-    ```cs
-    <div class="searchBoxForm">
-        @Html.TextBoxFor(m => m.searchText, new { @class = "searchBox", @id = "azuresearchfacets" }) <input value="" class="searchBoxSubmit" type="submit">
-    </div>
-    ```
-
-2. Teď přidejte následující JavaScript (za uzavírací **&lt;/div&gt;** výše uvedené funguje bez problémů).
-
-    ```JavaScript
-     <script>
-            $(function () {
-                $.getJSON("/Home/Facets", function (data) {
-
-                    $("#azuresearchfacets").autocomplete({
-                        source: data,
-                        minLength: 2,
-                        position: {
-                            my: "left top",
-                            at: "left-23 bottom+10"
-                        }
-                    });
-                });
-            });
-        </script>
-    ```
-
-    Všimněte si, že skript volá **omezující vlastnosti** akce v kontroleru home, bez dalších parametrů, když je dosaženo o minimální délce dvě zadané znaky.
-
-### <a name="add-references-to-jquery-scripts-to-the-view"></a>Přidat odkazy na skripty jquery do zobrazení
-
-Ve výše uvedené skriptu volaná funkce automatického dokončování není něco musíme napsat sami je k dispozici v knihovně jquery. 
-
-1. Chcete-li získat přístup k knihovny jquery, nahraďte &lt;head&gt; část zobrazení souboru následujícím kódem.
-
-    ```cs
-    <head>
-        <meta charset="utf-8">
-        <title>Facets demo</title>
-        <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
-              rel="stylesheet">
-        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-        <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-
-        <link rel="stylesheet" href="~/css/hotels.css" />
-    </head>
-    ```
-
-2. Musíme také odstranit, nebo okomentovat, řádek odkazující na jquery v souboru _Layout.cshtml (v **zobrazení/Shared** složky). Vyhledejte následující řádky a okomentujte první řádek skriptu, jak je znázorněno. Odstraněním tohoto řádku můžeme vyhnout nejednoznačných odkazů na jquery.
-
-    ```html
-     <environment include="Development">
-            <!-- <script src="~/lib/jquery/dist/jquery.js"></script> -->
-            <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-            <script src="~/js/site.js" asp-append-version="true"></script>
-    </environment>
-    ```
-
-Teď můžeme použít funkce jquery předdefinované funkce automatického dokončování.
-
-### <a name="add-a-facet-action-to-the-controller"></a>Přidání akce omezující vlastnost ke kontroleru
-
-1. Otevřete domovskou kontroleru a přidejte následující dva **pomocí** příkazy na jednoho souboru.
-
-    ```cs
-    using System.Collections.Generic;
-    using System.Linq;
-    ```
-
-2. JavaScript v zobrazení aktivační události **omezující vlastnosti** akce v kontroleru, přidejme tedy tuto akci pro kontroler home (například níže **stránky** akce).
-
-    ```cs
-        public async Task<ActionResult> Facets()
-        {
-            InitSearch();
-
-            // Set up the facets call in the search parameters.
-            SearchParameters sp = new SearchParameters()
-            {
-                // Search all Tags, but limit the total number to 100, and add up to 20 categories.
-                // Field names specified here must be marked as "IsFacetable" in the model, or the search call will throw an exception.
-                Facets = new List<string> { "Tags,count:100", "Category,count:20" },
-            };
-
-            DocumentSearchResult<Hotel> searchResult = await _indexClient.Documents.SearchAsync<Hotel>("*", sp);
-
-            // Convert the results to two lists that can be displayed in the client.
-            List<string> facets = searchResult.Facets["Tags"].Select(x => x.Value.ToString()).ToList();
-            List<string> categories = searchResult.Facets["Category"].Select(x => x.Value.ToString()).ToList();
-
-            // Combine and return the lists.
-            facets.AddRange(categories);
-            return new JsonResult(facets);
-        }
-    ```
-
-    Všimněte si, že požaduje až 100 omezující vlastnosti z **značky** polí a až z 20 **kategorie** pole. **Počet** položky jsou volitelné, pokud žádný počet nastavená výchozí hodnota je 10.
-
-    Potřebujeme dva seznamy, které jsou následně se spojí dohromady do jedné, protože jsme pro dvě pole pro hledání vyzváni (**značky** a **kategorie**). Pokud jsme měli požádán o tři pole pro hledání, máme by zkombinovat do jedné tři seznamy a tak dále.
-
-    > [!NOTE]
-    > Je možné nastavit jeden nebo více z následujících parametrů pro každé pole v omezující vlastnosti hledání: **počet**, **řazení**, **interval**, a **hodnoty**. Další informace najdete v tématu [jak ve službě Azure Search implementovat fasetovou navigaci](https://docs.microsoft.com/azure/search/search-faceted-navigation).
-
-### <a name="compile-and-run-your-project"></a>Kompilace a spuštění projektu
-
-Teď otestujte aplikaci.
-
-1. Zkuste zadat "fr" do vyhledávacího pole, které by se zobrazit několik výsledky.
-
-    ![Zadáním "fr" zobrazí tři omezující vlastnosti](./media/tutorial-csharp-create-first-app/azure-search-facet-type-fr.png)
-
-2. Nyní přidejte "o" do "z" Ujistěte se a Všimněte si, že škálu možností je omezená na jednu.
-
-3. Zadejte jiné kombinace dvě písmena a zjistěte, co se zobrazuje. Všimněte si, že když zadáte server *není* volána. Omezující vlastnosti jsou uložené v mezipaměti místně při spuštění aplikace a nyní je jenom k volání serveru když uživatel požádá o hledání.
-
-## <a name="decide-when-to-use-a-facet-autocompletion-search"></a>Při rozhodování, kdy použití search automatického doplňování omezující vlastnost
-
-Vymazat rozdíl mezi omezující vlastnosti hledání a další hledání, jako jsou návrhy a automatického doplňování, je, že omezující vlastnost vyhledávání _navržené_ provádět pouze jednou při načtení stránky. Další automatického doplňování hledání jsou _navržené_ která bude volána po zadání každého znaku. Použití omezujících vlastností tímto způsobem potenciálně uloží mnoho volání na server. 
-
-Nicméně, kdy je vhodné omezující vlastnost automatického doplňování používat?
-
-Omezující vlastnost automatického doplňování je nejvhodnější použít, pokud:
-* Primárním důvodem, proč je, že výkon dalších hledání, které volají každé stisknutí klávesy na serveru je problém.
-* Vrátí omezující vlastnosti pro uživatele se seznamem možností přiměřené při zadání několik znaků.
-* Vrátí omezující vlastnosti poskytují rychlý způsob, jak přistupovat k nejvíce, nebo v ideálním případě všechny, aby byla data dostupná.
-* Maximální počet povolit nejvíce omezující vlastnosti mají být zahrnuty. V našem kódu nastavíme maximálně 100 omezující vlastnosti pro **značky** a 20 omezující vlastnosti pro **kategorie**. Sada maximální hodnoty musí fungovat s velikost datové sady. Pokud jsou nebyly příliš mnoho možných omezujících vlastností, pak možná hledání není užitečný by měl být.
-
-> [!NOTE]
-> Ačkoli omezující vlastnosti hledání jsou navržené tak, která se má volat po za načtení stránky, můžete samozřejmě volat mnohem častěji, závisí na vaší jazyka JavaScript. Mají stejnou hodnotu true je, že hledání automatického doplňování a návrhu lze provádět méně často než jednou za stisk klávesy. Znovu se určuje podle JavaScript, ne Azure Search. Omezující vlastnost vyhledávání je však navrženy k lze volat pouze jednou na jedné stránce jako omezující vlastnosti se službou Azure Search vytvářejí na základě hledaných dokumenty s tímto v úvahu. Je vhodné vzít v úvahu prohledávání automatického doplňování omezující vlastnost jako formu uživatelská asistence méně flexibilní ale mnohem efektivnější pro sítě.
+    >[!Note]
+    > Když se provádí jeden výběr v seznamu omezující vlastnosti (například kategorie) přepíše jakékoli předchozí výběr v seznamu kategorií.
 
 ## <a name="takeaways"></a>Shrnutí
 
 Vezměte v úvahu následující takeaways z tohoto projektu:
 
-* Je nutné k označení jednotlivá pole jako **IsFacetable**, pokud mají být součástí omezující vlastnost navigace nebo automatického doplňování.
+* Je nutné pro každou vlastnost jako označení **IsFacetable**, pokud mají být součástí omezující vlastnost navigace.
 * Omezující vlastnost navigace poskytuje uživatele s jednoduchou a intuitivní, způsob zúžení vyhledávání.
-* Omezující vlastnost navigace je nejlepší rozdělený do částí (kategorie hotelu), funkce hotelu, cena rozsahy, atd., každá část s odpovídajícím názvem.
-* Omezující vlastnost automatického doplňování je účinný způsob získání užitečných uživatelské prostředí bez volání opakované serveru jiné prohledávání automatického doplňování.
-* Automatického doplňování omezující vlastnost je _alternativní_ pro automatické dokončování a návrhy, ne doplněk.
+* Omezující vlastnost navigace je nejlepší rozdělený do částí (kategorie hotelu), vymoženosti hotelu, cena rozsahy adres, rozsahy hodnocení, atd., každá část s odpovídajícím názvem.
 
 ## <a name="next-steps"></a>Další postup
 
-Dokončili jste tuto sérii C# výukových kurzů – které by měl získali cenné informace o rozhraní API služby Azure Search.
+V dalším kurzu se podíváme na řazení výsledků. Do této chvíle jsou výsledky seřazeny jednoduše v pořadí, že se nacházejí v databázi.
 
-Další referenční dokumentace a kurzy, zvažte možnost procházení [Microsoft Learn](https://docs.microsoft.com/learn/browse/?products=azure), nebo další kurzy v [dokumentace ke službě Azure Search](https://docs.microsoft.com/azure/search/).
+> [!div class="nextstepaction"]
+> [C#kurz: Azure Search výsledky - ORDER](tutorial-csharp-orders.md)

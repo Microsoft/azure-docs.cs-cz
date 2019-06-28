@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 06/26/2019
 ms.author: dapine
-ms.openlocfilehash: 61a76412d7619784582e1fddd2a5b60244159ebc
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 5b406f9c7f8c16038561853170896d2cd95dc383
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67272941"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444848"
 ---
 # <a name="deploy-the-language-detection-container-to-azure-kubernetes-service"></a>Nasazení kontejneru detekce jazyka do služby Azure Kubernetes Service
 
@@ -81,7 +81,7 @@ Nasazení kontejneru do služby Azure Kubernetes Service, musí být dostupné I
     Uložit výsledky zobrazíte **loginServer** vlastnost. Bude jím částí adresy hostované kontejneru, potřebovat později v `language.yml` souboru.
 
     ```console
-    >az acr create --resource-group cogserv-container-rg --name pattyregistry --sku Basic
+    > az acr create --resource-group cogserv-container-rg --name pattyregistry --sku Basic
     {
         "adminUserEnabled": false,
         "creationDate": "2019-01-02T23:49:53.783549+00:00",
@@ -407,8 +407,8 @@ az group delete --name cogserv-container-rg
 
 ## <a name="next-steps"></a>Další postup
 
-* Použití více [kontejnery Cognitive Services](../cognitive-services-container-support.md)
-* Použití rozhraní Text Analytics připojená služba] (.. / vs-text připojené service.md)
+> [!div class="nextstepaction"]
+> [Kontejnery služby cognitive Services](../cognitive-services-container-support.md)
 
 <!--
 kubectl get secrets

@@ -3,19 +3,19 @@ title: 'Rychlý start: Přeložení textu, C# – Translator Text'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu přeložíte text z jednoho jazyka do jiného pomocí služby Translator Text API pomocí jazyka C#.
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/13/2019
-ms.author: erhopf
-ms.openlocfilehash: 82fa15f6b17ff3104b0832e11a094d0737d5d2ce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: swmachan
+ms.openlocfilehash: 242c16fd0ec1d32c889d511aee78924a296e191d
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67123363"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449429"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-translate-a-string-using-c"></a>Rychlý start: Použití rozhraní Translator Text API pro převod řetězce pomocíC#
 
@@ -198,6 +198,8 @@ foreach (TranslationResult o in deserializedOutput)
     }
 }
 ```
+
+Pokud používáte víc služeb předplatného služeb Cognitive Services, musíte taky zahrnout `Ocp-Apim-Subscription-Region` v parametry požadavku. [Další informace o dvojúrovňovém víc služeb předplatného](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication). 
 
 ## <a name="put-it-all-together"></a>Spojení všech součástí dohromady
 

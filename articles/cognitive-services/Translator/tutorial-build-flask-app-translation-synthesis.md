@@ -3,19 +3,19 @@ title: 'Kurz: Sestavení aplikace Flask přeložit syntetizace a analyzujte text
 titleSuffix: Azure Cognitive Services
 description: V tomto kurzu sestavíte aplikaci založené na Flask, která používá Azure Cognitive Services pro překlad textu, analýza mínění a syntetizace přeloženého textu na řeč. Našim hlavním cílem je kód Python a Flask tras, které umožňují naši aplikaci. Jsme nebude trávit spoustu času na jazyce Javascript, která řídí aplikaci, ale poskytují všechny soubory pro vám umožní zkontrolovat.
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 06/04/2019
-ms.author: erhopf
-ms.openlocfilehash: 4df2de7f0428ffe35712a29bfef645b6feb66813
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.author: swmachan
+ms.openlocfilehash: cef747e82e7d039952bec73e822f28eab2adaa97
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66515007"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67434894"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>Kurz: Sestavení aplikace Flask pomocí služeb Azure Cognitive Services
 

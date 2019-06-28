@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: raynew
-ms.openlocfilehash: cb8b188f8d5313852ce57481031faafc28e247b3
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 5dbdeeba68ae75069b61bd6dc069279ec3c5e5de
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204302"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443010"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Informace o zálohování SQL Serverů ve virtuálních počítačích Azure
 
@@ -59,7 +59,7 @@ Azure Backup nedávno oznámilo podporu [servery SQL Server SESTAVENÁ](https://
 2. Rozhraní .NET framework 4.5.2 a vyšším musí být nainstalovaný na virtuálním počítači
 3. Nepodporuje zálohování pro FCI a zrcadlených databází
 
-Všechny ostatní [funkce požadavky a omezení](#feature-consideration-and-limitations) platí pro tyto verze také. Tuto funkci do okamžiku je obecně dostupná vám nebude nic účtovat zákazníka.
+Uživatelé se budou účtovat pro tuto funkci do okamžiku je obecně dostupná. Všechny ostatní [funkce požadavky a omezení](#feature-consideration-and-limitations) platí pro tyto verze také. Kdybyste odkazovat [požadavky](backup-sql-server-database-azure-vms.md#prerequisites) před konfigurací ochrany na serverech SQL 2008 a 2008 R2, patří mezi ně nastavení [klíč registru](backup-sql-server-database-azure-vms.md#add-registry-key-to-enable-registration) (Tento krok nebude nutný když tato funkce je obecně k dispozici.)
 
 
 ## <a name="feature-consideration-and-limitations"></a>Funkce aspektů a omezení
@@ -193,13 +193,13 @@ Přidat **NT AUTHORITY\SYSTEM** a **NT Service\AzureWLBackupPluginSvc** přihlá
 8. Opakujte stejný postupně jednotlivé kroky (1-7) přidání NT Service\AzureWLBackupPluginSvc přihlášení k instanci systému SQL Server. Pokud přihlašovací jméno už existuje, ujistěte se, že má role serveru sysadmin a v oblasti stav má udělení oprávnění pro připojení k databázovému stroji a přihlaste se na povoleno.
 9. Po udělení oprávnění, **znovu zjistit databáze** na portálu: Trezor **->** zálohování infrastruktury **->** úlohy na virtuálním počítači Azure:
 
-    ![Znovu zjistit databáze na webu Azure Portal](media/backup-azure-sql-database/sql-rediscover-dbs.png)
+    ![Znovu zjistit databáze na webu Azure portal](media/backup-azure-sql-database/sql-rediscover-dbs.png)
 
 Alternativně můžete automatizovat udělení oprávnění spuštěním následujících příkazů Powershellu v režimu správce. Název instance je ve výchozím nastavení k MSSQLSERVER. Změnu instance název argumentu ve skriptu musí být:
 
 ```powershell
 param(
-    [Parameter(Mandatory=$false)] 
+    [Parameter(Mandatory=$false)]
     [string] $InstanceName = "MSSQLSERVER"
 )
 if ($InstanceName -eq "MSSQLSERVER")
@@ -211,7 +211,7 @@ else
     $fullInstance = $env:COMPUTERNAME + "\" + $InstanceName   # In case of named instance
 }
 try
-{ 
+{
     sqlcmd.exe -S $fullInstance -Q "sp_addsrvrolemember 'NT Service\AzureWLBackupPluginSvc', 'sysadmin'" # Adds login with sysadmin permission if already not available
 }
 catch
@@ -220,7 +220,7 @@ catch
     Write-Host $_.Exception|format-list -force
 }
 try
-{ 
+{
     sqlcmd.exe -S $fullInstance -Q "sp_addsrvrolemember 'NT AUTHORITY\SYSTEM', 'sysadmin'" # Adds login with sysadmin permission if already not available
 }
 catch

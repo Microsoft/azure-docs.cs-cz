@@ -3,19 +3,19 @@ title: 'Rychlý start: Zjistit jazyk textu C# – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu budete zjistěte, jak zjistit jazyk zadaného textu s použitím .NET Core a rozhraní REST Translator Text API.
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/13/2019
-ms.author: erhopf
-ms.openlocfilehash: 76e97a5241c1e39d02d8f33bf1894743d32e6244
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: swmachan
+ms.openlocfilehash: eaf9fa86437d2c69a9a1a68fba797f69c1339dd1
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67123401"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448238"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-detect-text-language-using-c"></a>Rychlý start: Použijte k detekci, jazyk textu s využitím rozhraní Translator Text APIC#
 
@@ -178,6 +178,8 @@ foreach (DetectResult o in deserializedOutput)
 }
 ```
 
+Pokud používáte víc služeb předplatného služeb Cognitive Services, musíte taky zahrnout `Ocp-Apim-Subscription-Region` v parametry požadavku. [Další informace o dvojúrovňovém víc služeb předplatného](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication). 
+
 ## <a name="put-it-all-together"></a>Spojení všech součástí dohromady
 
 Posledním krokem je volání `DetectTextRequest()` v `Main` funkce. Vyhledejte `static void Main(string[] args)` a nahraďte tento kód:
@@ -195,7 +197,6 @@ static async Task Main(string[] args)
     await DetectTextRequest(subscriptionKey, host, route, breakSentenceText);
 }
 ```
-
 ## <a name="run-the-sample-app"></a>Spuštění ukázkové aplikace
 
 Je to, jste připraveni spustit ukázkovou aplikaci. Z příkazového řádku (nebo relaci Terminálové služby) přejděte do adresáře vašeho projektu a spusťte:

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 0fe30bc6bdd1bba03df349305d8846e78063bd26
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 6df40909e2072ac2126344ba5b696c9e520e9955
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342217"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67434152"
 ---
 # <a name="install-and-run-speech-service-containers"></a>Instalace a spouštění kontejnerů Speech Service
 
@@ -25,7 +25,7 @@ Jsou dva řeči kontejnery **speech to text** a **převod textu na řeč**.
 
 |Funkce|Funkce|nejnovější|
 |-|-|--|
-|Převod řeči na text| <li>Transcribes průběžné v reálném čase řeči nebo služby batch záznam zvuku na text pomocí mezilehlých výsledků.|1.1.1|
+|Převod řeči na text| <li>Transcribes průběžné v reálném čase řeči nebo služby batch záznam zvuku na text pomocí mezilehlých výsledků.|1.1.2|
 |Převod textu na řeč| <li>Převádí text do přirozeně znějící řeči. vstup ve formátu prostého textu nebo řeči syntézu Markup Language (SSML). |1.1.0|
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
@@ -101,10 +101,10 @@ Všechny značky, s výjimkou `latest` jsou v následujícím formátu, kde `<cu
 Následující značku je příklad formátu:
 
 ```
-1.0.0-amd64-en-us-preview
+1.1.2-amd64-en-us-preview
 ```
 
-V následující tabulce jsou uvedeny podporované národní prostředí pro **speech to text** 1.1.1 verzi kontejneru:
+V následující tabulce jsou uvedeny podporované národní prostředí pro **speech to text** v 1.1.2 verzi kontejneru:
 
 |Jazyk národního prostředí|Tags|
 |--|--|
@@ -129,7 +129,7 @@ Všechny značky, s výjimkou `latest` jsou v následujícím formátu, kde `<cu
 Následující značku je příklad formátu:
 
 ```
-1.0.0-amd64-en-us-jessarus-preview
+1.1.0-amd64-en-us-jessarus-preview
 ```
 
 V následující tabulce jsou uvedeny podporované národní prostředí pro **převod textu na řeč** v 1.1.0 verzi kontejneru:

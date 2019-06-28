@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý start: Vytvoření, načtení a dotazování indexu na webu Azure portal – Azure Search'
-description: Vytvoření a dotazování prvního indexu služby Azure Search pomocí předdefinovaných ukázkových dat a Průvodce importem dat na webu Azure Portal.
+title: 'Rychlý start: Vytvoření, načtení a dotazování indexu pomocí webu Azure portal – Azure Search'
+description: Použijte Průvodce importem dat na webu Azure portal k vytvoření, načtení a dotazování prvního indexu služby Azure Search.
 author: HeidiSteen
 manager: cgronlun
 tags: azure-portal
@@ -10,14 +10,14 @@ ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: e5baa0876dc976553e8e541cef6b481329500bf6
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 90857ec2fabb1b807d3e3001f99ea3897d7d628a
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65606458"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443866"
 ---
-# <a name="quickstart-use-built-in-portal-tools-for-azure-search-import-indexing-and-queries"></a>Rychlý start: Integrované nástroje portálu použijte pro import Azure Search, indexování a dotazy
+# <a name="quickstart-create-an-azure-search-index-using-the-azure-portal"></a>Rychlý start: Vytvoření indexu Azure Search pomocí webu Azure portal
 > [!div class="op_single_selector"]
 > * [Azure Portal](search-get-started-portal.md)
 > * [PowerShell](search-howto-dotnet-sdk.md)
@@ -200,7 +200,7 @@ Součástí požadavků hledání jsou filtry omezující vlastnost. Pomocí par
 
 #### <a name="example-faceted-with-scope-reduction-searchfacetcitytop2"></a>Příklad (s omezujícími vlastnostmi a zmenšením rozsahu): `search=*&facet=city&$top=2`
 
-* Parametr **search=*** znamená prázdné vyhledávání. Prázdné vyhledávání prohledává všechno. Jedním z důvodů odeslání prázdného dotazu je použití filtru nebo omezující vlastnosti na kompletní sadu dokumentů. Chcete například, aby se fasetová navigační struktura skládala ze všech měst v indexu.
+* Parametr **search=** * znamená prázdné vyhledávání. Prázdné vyhledávání prohledává všechno. Jedním z důvodů odeslání prázdného dotazu je použití filtru nebo omezující vlastnosti na kompletní sadu dokumentů. Chcete například, aby se fasetová navigační struktura skládala ze všech měst v indexu.
 
 * Parametr **facet** vrací navigační strukturu, kterou můžete předat ovládacímu prvku uživatelského rozhraní. Vrací kategorie a počet. V tomto případě kategorie závisí na počtu měst. Ve službě Azure Search neexistuje agregace, ale můžete ji odhadnout pomocí parametru `facet`, který vrací počet dokumentů v každé kategorii.
 
@@ -232,7 +232,7 @@ Ve výchozím nastavení, hledaná termíny dotazu, jako je třeba *samamish* p�
 
 #### <a name="example-misspelled-term-unhandled-searchsamamish"></a>Příklad (chybně zadaný termín bez zpracování): `search=samamish`
 
-Ke zpracování chybně napsaných slov můžete využít vyhledávání přibližných shod. Vyhledávání přibližných shod se povolí v případě, že použijete úplnou syntaxi dotazů Lucene. K tomu je potřeba provést dvě věci: nastavit v dotazu **queryType=full** a připojit k řetězci dotazu znak **~**.
+Ke zpracování chybně napsaných slov můžete využít vyhledávání přibližných shod. Vyhledávání přibližných shod se povolí v případě, že použijete úplnou syntaxi dotazů Lucene. K tomu je potřeba provést dvě věci: nastavit v dotazu **queryType=full** a připojit k řetězci dotazu znak **~** .
 
 #### <a name="example-misspelled-term-handled-searchsamamishquerytypefull"></a>Příklad (chybně zadaný termín se zpracováním): `search=samamish~&queryType=full`
 

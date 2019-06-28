@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 06/12/2019
+ms.date: 06/26/2019
 ms.author: diberry
-ms.openlocfilehash: 1e46c935d298f2fe7ebfa4bce471288c9ab8a606
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: a126456159776254408df8325f97fcee967835e2
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67271943"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442724"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Pomocí zpracování pokynů můžete vytvořit více zapne konverzaci
 
@@ -229,33 +229,14 @@ V předchozí části Požadovaná odpověď a všechny následné pokynů `Acco
             "metadata": [],
             "context": {
                 "isContextOnly": true,
-                "promptsToAdd": [
+                "prompts": [
                     {
                         "displayOrder": 0,
                         "qnaId": 16,
                         "qna": null,
                         "displayText": "Use the sign-in screen"
-                    },
-                    {
-                        "displayOrder": 1,
-                        "qnaId": 17,
-                        "qna": null,
-                        "displayText": "Use Windows Hello to sign in"
-                    },
-                    {
-                        "displayOrder": 2,
-                        "qnaId": 18,
-                        "qna": null,
-                        "displayText": "Sign out"
-                    },
-                    {
-                        "displayOrder": 0,
-                        "qnaId": 79,
-                        "qna": null,
-                        "displayText": "Create a Windows Account"
                     }
-                ],
-                "promptsToDelete":[]
+                ]
             }
         },
         {
@@ -269,15 +250,14 @@ V předchozí části Požadovaná odpověď a všechny následné pokynů `Acco
             "metadata": [],
             "context": {
                 "isContextOnly": true,
-                "promptsToAdd": [
+                "prompts": [
                     {
                         "displayOrder": 0,
                         "qnaId": 16,
                         "qna": null,
                         "displayText": "Turn off the device"
                     }
-                ],
-                "promptsToDelete":[]
+                ]
             }
         },
         {
@@ -291,15 +271,14 @@ V předchozí části Požadovaná odpověď a všechny následné pokynů `Acco
             "metadata": [],
             "context": {
                 "isContextOnly": true,
-                "promptsToAdd": [],
-                "promptsToDelete":[]
+                "prompts": []
             }
         }
     ]
 }
 ```
 
-`promptsToAdd` Pole obsahuje text `displayText` vlastnost a `qnaId` tok hodnotu, takže můžete zobrazit tyto odpovědi jako další možnosti zobrazené v konverzaci, odešlete vybranou hodnotou a nástroje QnA Maker v následujícím požadavku. 
+`prompts` Pole obsahuje text v `displayText` vlastnost a `qnaId` tok hodnotu, takže můžete zobrazit tyto odpovědi jako další možnosti zobrazené v konverzaci, odešlete vybrané `qnaId` zpět do nástroje QnA Maker v následujícím požadavku . 
 
 <!--
 
@@ -345,8 +324,7 @@ Nástroj QnA Maker _GenerateAnswer_ odpověď JSON obsahuje zpracování pokynů
             "metadata": [],
             "context": {
                 "isContextOnly": true,
-                "promptsToAdd": [],
-                "promptsToDelete":[]
+                "prompts": []
             }
         },
         {
@@ -360,15 +338,14 @@ Nástroj QnA Maker _GenerateAnswer_ odpověď JSON obsahuje zpracování pokynů
             "metadata": [],
             "context": {
                 "isContextOnly": true,
-                "promptsToAdd": [
+                "prompts": [
                     {
                         "displayOrder": 0,
                         "qnaId": 4,
                         "qna": null,
                         "displayText": "Ports and connectors"
                     }
-                ],
-                "promptsToDelete":[]
+                ]
             }
         },
         {
@@ -382,8 +359,7 @@ Nástroj QnA Maker _GenerateAnswer_ odpověď JSON obsahuje zpracování pokynů
             "metadata": [],
             "context": {
                 "isContextOnly": true,
-                "promptsToAdd": [],
-                "promptsToDelete":[]
+                "prompts": []
             }
         }
     ]
@@ -407,6 +383,16 @@ Jsme přidali výzvy ve znalostní bázi a otestovat tok v testovací podokno. T
 FIX - Need to go to parent, then answer column, then edit answer. 
 
 -->
+
+## <a name="create-knowledge-base-with-multi-turn-prompts-with-the-create-api"></a>Vytvoření znalostní báze knowledge base s více zapnout výzvy s rozhraním API pro vytváření
+
+Může vytvořit případ znalostní báze s více zapnout výzvy k použití [vytvořit API nástroje QnA Maker](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create). Přidávání pokynů `context` vlastnosti `prompts` pole. 
+
+
+## <a name="add-or-delete-multi-turn-prompts-with-the-update-api"></a>Přidání nebo odstranění více zapnout výzvy s rozhraním API pro aktualizace
+
+Můžete přidat nebo odstranit více zapnout výzvy k použití [API nástroje QnA Maker aktualizace](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update).  Přidávání pokynů `context` vlastnosti `promptsToAdd` pole a `promptsToDelete` pole. 
+
 
 ## <a name="next-steps"></a>Další postup
 

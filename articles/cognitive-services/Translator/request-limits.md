@@ -3,19 +3,19 @@ title: Požádat o omezení – Translator Text API
 titleSuffix: Azure Cognitive Services
 description: Tento článek uvádí omezení požadavků pro rozhraní Translator Text API. Poplatky se účtují na základě počtu znaků, není požadavek četnost s maximálně 5 000 znaků na jednu žádost. Znak omezení platí pro odběr na základě s F0 omezená na 2 miliony znaků za hodinu.
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
-ms.author: erhopf
-ms.openlocfilehash: d04677362e0ba3ace59d55ede9bd6241f17130e9
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.author: swmachan
+ms.openlocfilehash: a7621cc80a38d9a07872a94d8e5221dc04023b86
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67269230"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67435035"
 ---
 # <a name="request-limits-for-translator-text"></a>Omezení počtu požadavků pro Translator Text
 
@@ -38,7 +38,11 @@ Následující tabulky zobrazí pole elementu a znak omezení pro každou operac
 
 ## <a name="character-limits-per-hour"></a>Omezení znak za hodinu
 
-Váš limit počtu znaků za hodinu je podle vaší úrovně předplatného Translator Text. Hodinová kvóta by měl rovnoměrně spotřebovává během hodiny. Pokud jste nebo překročí limity nebo pošlete příliš velké části kvóta v krátké době, pravděpodobně dostanete out kvóty odpovědi. Neplatí žádné limity u souběžných požadavků.
+Váš limit počtu znaků za hodinu je podle vaší úrovně předplatného Translator Text. 
+
+Hodinová kvóta by měl rovnoměrně spotřebovává během hodiny. Například na limit F0 vrstvy 2 miliony znaků za hodinu, znaky by měl být využity rychleji než zhruba 33,300 znaků na jednu minutu posuvné okno (2 miliony znaků dělený 60 minut).
+
+Pokud jste nebo překročí limity nebo pošlete příliš velké části kvóta v krátké době, pravděpodobně dostanete out kvóty odpovědi. Neplatí žádné limity u souběžných požadavků.
 
 | Úroveň | Limit počtu znaků |
 |------|-----------------|

@@ -3,28 +3,36 @@ title: Osvědčené postupy – QnA Maker
 titlesuffix: Azure Cognitive Services
 description: Použijte tyto osvědčené postupy pro zlepšení znalostní báze a application/chatovací robot koncovým uživatelům poskytovat lepší výsledky.
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 05/10/2019
-ms.author: tulasim
+ms.date: 06/25/2019
+ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: b8507bdbf66dc003b6f54317eb526c0e468b9f2b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c796114d124c64ac1c373baacabe00c7dcd70aa7
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67064377"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447631"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Doporučené postupy nástroje QnA Maker znalostní báze
-[Životního cyklu vývoje znalostní báze](../Concepts/development-lifecycle-knowledge-base.md) vás o tom, jak spravovat znalostní BÁZÍ od začátku do konce. Použijte tyto osvědčené postupy pro zlepšení znalostní báze a application/chatovací robot koncovým uživatelům poskytovat lepší výsledky.
+
+[Životního cyklu vývoje znalostní báze](../Concepts/development-lifecycle-knowledge-base.md) vás o tom, jak spravovat znalostní BÁZÍ od začátku do konce. Použijte tyto osvědčené postupy pro zlepšení znalostní báze a poskytují lepší výsledky do klientské aplikace nebo chat bodu robotů také koncovým uživatelům.
 
 ## <a name="extraction"></a>Extrakce
+
 Služba QnA Maker se neustále se zlepšovat algoritmy, které extrahují maximálně z obsahu a rozbalení seznamu podporovaných souborů a formátů HTML. Postupujte podle [pokyny](../Concepts/data-sources-supported.md) pro extrakci dat podle typu dokumentu. 
 
 Obecně platí nejčastější dotazy k stránky by měl být samostatný a ne kombinované spolu s dalšími informacemi. Produktových příruček by měl mít vymazat záhlaví a pokud možno indexovou stránku. 
+
+### <a name="configuring-multi-turn"></a>Konfigurace více zapnout
+
+Vytvořte znalostní bázi s více zapnout extrakce povolena. Pokud znalostní báze nemá nebo by měly podporovat hierarchie otázek, může tato hierarchie extrahují z dokumentu nebo vytvořené po dokumentu je extrahován. 
+
+<!--is this a global setting that can only be configured at kb creation time? -->
 
 ## <a name="creating-good-questions-and-answers"></a>Vytváří se správné otázky a odpovědi
 
@@ -34,9 +42,14 @@ Nejlepší dotazy se dají snadno. Vezměte v úvahu klíčové slovo nebo slovn
 
 Přidejte tolik alternativní otázky, jako třeba ale zjednodušení změny. Přidání více slov nebo frází, které nejsou součástí hlavním cílem otázky nepomůže QnA Maker najít shoda. 
 
+
+### <a name="add-relevant-alternative-questions"></a>Přidat alternativní relevantní otázky
+
+Uživatel může zadat otázky pomocí dotazu v přirozeném stylu textu, `How do I add a toner cartridge to my printer?` nebo klíčové slovo jako například hledat `toner cartridge`. Znalostní báze by měl mít obou stylů otázky, aby bylo možné správně vrátí nejlepší odpověď. Pokud si nejste jistí, jaká klíčová slova zákazníka přechází, použijte k analýze dotazy na data Application Insights.
+
 ### <a name="good-answers"></a>Správné odpovědi
 
-Nejlepší odpovědi jsou jednoduché odpovědi, ale ne příliš jednoduché, jako je například Ano a žádné odpovědi. Pokud vaše odpověď by měla propojit s dalšími zdroji nebo poskytují bohaté uživatelské prostředí s médii a odkazy, použijte [označování](../how-to/metadata-generateanswer-usage.md) pro rozlišení typu odpovědí, který očekáváte, pak odeslat tuto značku s dotaz pro získání verze správné odpovědi.
+Nejlepší odpovědi jsou jednoduché odpovědi, ale příliš jednoduché. Nepoužívejte například odpovědi `yes` a `no`. Pokud vaše odpověď by měla propojit s dalšími zdroji nebo poskytují bohaté uživatelské prostředí s médii a odkazy, použijte [označování metadat](./knowledge-base.md#key-knowledge-base-concepts) rozlišovat mezi odpovědi, pak [odeslat dotaz](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) s značky metadat v `strictFilters` vlastnost verzi správné odpovědi.
 
 ## <a name="chit-chat"></a>Chit chatu
 Přidat do svého robota, aby váš robot konverzační a zajímavější, chit chat s nízké úsilí. Můžete snadno přidat chit chat datových sad z předem definovaných osobnosti při vytváření znalostní BÁZÍ a kdykoli změnit. Zjistěte, jak [přidat chit chat znalostní BÁZÍ](../How-To/chit-chat-knowledge-base.md). 
@@ -65,12 +78,26 @@ Doporučujeme následující maximálně chit chat konkrétnější:
 * Kdo vytvořil jste?
 * Dobrý den,
    
+### <a name="adding-custom-chit-chat-with-a-metadata-tag"></a>Přidání vlastní chit chat s značky metadat
+
+Pokud chcete přidat vlastní dvojice QnA chit chatu, ujistěte se, že jste přidali metadata, proto se vrátí tyto odpovědi. Dvojice název/hodnota metadat `editorial:chitchat`.
+
+## <a name="searching-for-answers"></a>Hledání odpovědí
+
+Rozhraní API GenerateAnswer využívá otázky a odpovědi k vyhledání nejlepších odpovědi na dotaz uživatele.
+
+### <a name="searching-questions-only-when-answer-is-not-relevant"></a>Hledání dotazy pouze v případě, že odpověď se nevztahuje
+
+Použití [ `RankerType=QuestionOnly` ](#choosing-ranker-type) Pokud nechcete hledat odpovědi. 
+
+Příkladem je při znalostní báze je katalog zkratky jako dotazy s jejich úplný formát jako odpověď. Hodnota odpovědi nepomůže k vyhledání příslušné odpovědi.
 
 ## <a name="rankingscoring"></a>Pořadí a vyhodnocování
 Ujistěte se, že provádíte co nejlíp využít hodnocení funkce, které podporuje QnA Maker. To zvýší pravděpodobnost, která daný uživatelský dotaz je zodpovězen odpovídající odpověď.
 
 ### <a name="choosing-a-threshold"></a>Výběr prahové hodnoty
-Výchozí skóre spolehlivosti, který se používá jako prahová hodnota je 50, ale můžete ho změnit pro znalostní BÁZÍ podle svých potřeb. Protože každý KB se liší, by měl test a zvolte prahovou hodnotu, která je nejlepší vhodné pro vaše KB. Další informace najdete [skóre spolehlivosti](../Concepts/confidence-score.md). 
+
+Výchozí hodnota [skóre spolehlivosti](confidence-score.md#) , který se používá jako prahová hodnota je 50, ale můžete [změnit prahovou hodnotu](confidence-score.md#set-threshold) pro znalostní BÁZÍ podle svých potřeb. Protože každý KB se liší, by měl test a zvolte prahovou hodnotu, která je nejlepší vhodné pro vaše KB. 
 
 ### <a name="choosing-ranker-type"></a>Výběr typu klasifikátor
 Nástroj QnA Maker se ve výchozím nastavení, prohledá otázek a odpovědí. Pokud chcete prohledávat pouze dotazy, generovat odpověď, použijte `RankerType=QuestionOnly` v textu POST GenerateAnswer požadavku.
@@ -87,14 +114,14 @@ Nástroj QnA Maker se ve výchozím nastavení, prohledá otázek a odpovědí. 
 
 ### <a name="use-metadata-tags-to-filter-questions-and-answers"></a>Použití značek metadata do filtru otázek a odpovědí
 
-[Metadata](../How-To/edit-knowledge-base.md) umožňuje zúžit výsledky dotazu uživatele na základě metadat značek. Odpověď znalostní báze se může lišit podle značky metadat i v případě, že dotaz je stejný. Například *"kde je umístěn parkovací"* může mít různé odpovědi, pokud umístění restaurace větve se liší – to znamená, metadata jsou *umístění: Seattle* oproti *umístění: Redmond*.
+[Metadata](../How-To/edit-knowledge-base.md) přidává možnost pro klientskou aplikaci znát ho nepřijímat všechny odpovědi ale místo toho můžete zúžit výsledky dotazu uživatele na základě metadat značek. Odpověď znalostní báze se může lišit podle značky metadat i v případě, že dotaz je stejný. Například *"kde je umístěn parkovací"* může mít různé odpovědi, pokud umístění restaurace větve se liší – to znamená, metadata jsou *umístění: Seattle* oproti *umístění: Redmond*.
 
 ### <a name="use-synonyms"></a>Použití synonym
-Zatímco některé podpora synonym v angličtině, použití velkých a malých písmen [word rozšiřuje](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) synonyma přidáte klíčová slova, které mají jiný formát. Synonyma by měl přidány na úrovni služby QnA Maker a sdílí všechny znalostních bází ve službě.
+Zatímco některé podpora synonym v angličtině, použijte malá a velká písmena slov změny prostřednictvím [změny rozhraní API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) synonyma přidáte klíčová slova, které mají jiný formát. Synonyma jsou přidány na úrovni služby QnA Maker a sdílí všechny znalostních bází ve službě.
 
 |Původní aplikace word|Synonyma|
 |--|--|
-|Koupit|koupit<br>netbanking<br>NET bankovnictví|
+|Koupit|koupit<br>NET bankovnictví<br>NET bankovnictví|
 
 ### <a name="use-distinct-words-to-differentiate-questions"></a>Používat různá slova k rozlišení dotazy
 Algoritmus řazení QnA Maker, odpovídající uživatelský dotaz se dotaz znalostní báze knowledge base, funguje nejlépe, když se každý dotaz adresy různých věcí a potřebovali. Opakování téhož slova nastaven v rozmezí dotazy snižuje pravděpodobnost, že je vybrána správná odpověď pro daný uživatelský dotaz se tato slova. 
@@ -110,6 +137,8 @@ Protože se velmi podobá slov obsahuje jiné spojení těchto dvou maximálně,
 
 ## <a name="collaborate"></a>Spolupráce
 Nástroj QnA Maker umožňuje uživatelům [spolupracovat](../How-to/collaborate-knowledge-base.md) ve znalostní bázi. Uživatelé potřebovat přístup ke skupině prostředků Azure QnA Maker za účelem přístupu k znalostních bází. Některé organizace chtít externí pomocí úpravy znalostní báze knowledge base a údržba a stále mít možnost chránit přístup k jejich prostředky Azure. Tento model schvalovatele editoru se provádí nastavením dva identické [services QnA Maker](../How-to/set-up-qnamaker-service-azure.md) v různých předplatných a výběrem jedné pro cyklus úpravy testování. Po dokončení testování se přenáší obsah znalostní báze s [importu a exportu](../Tutorials/migrate-knowledge-base.md) zpracovat služba QnA Maker schvalovatele, který bude nakonec publikovat znalostní báze a aktualizujte koncový bod.
+
+
 
 ## <a name="active-learning"></a>Aktivní učení
 

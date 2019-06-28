@@ -11,13 +11,13 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: eeb932123e57dcb10fce3baf9670d8c1ae961fb8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/25/2019
+ms.openlocfilehash: 9da848e9aa093b4e918ed961d58f946b2298954c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66151668"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447196"
 ---
 # <a name="use-cli-to-monitor-and-scale-a-single-sql-database"></a>Monitorování a škálování izolované databáze SQL pomocí rozhraní příkazového řádku
 
@@ -41,7 +41,7 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (
 Použijte následující příkaz k odebrání skupiny prostředků a všechny prostředky, které s ním spojená.
 
 ```azurecli-interactive
-az group delete --name myResourceGroup
+az group delete --name $resourceGroupName
 ```
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu

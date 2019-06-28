@@ -3,24 +3,24 @@ title: Migrace na V3 – Translator Text API
 titlesuffix: Azure Cognitive Services
 description: Zjistěte, jak migrovat z V2 na V3 Translator Text API.
 services: cognitive-services
-author: rajdeep-in
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.author: v-pawal
-ms.openlocfilehash: 81b2e5c9c659a3811d7417d87b811a86f4350a52
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: swmachan
+ms.openlocfilehash: 8a2530a4eb4365a022ab11279b344a5d2852430b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66382916"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448299"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>Translator Text API V2 na V3 migrace
 
 > [!NOTE]
-> 30\. dubna 2018 se přestala nabízet v2. Migrujte prosím svoje aplikace na V3, abyste mohli využívat nové funkce je dostupná výhradně ve verzi 3.
+> 30. dubna 2018 se přestala nabízet v2. Migrujte prosím svoje aplikace na V3, abyste mohli využívat nové funkce je dostupná výhradně ve verzi 3.
 > 
 > Centrum Microsoft Translator se vyřadí 17. května 2019. [Zobrazit informace o migraci důležité a data](https://www.microsoft.com/translator/business/hub/).  
 

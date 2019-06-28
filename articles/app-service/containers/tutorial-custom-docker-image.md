@@ -16,16 +16,16 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 8463ffcb9d9983ff435c01f75dd48f68bde31767
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 72602cb1fda88497172b1837eab98d5e9ce41776
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62117581"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67435432"
 ---
 # <a name="tutorial-build-a-custom-image-and-run-in-app-service-from-a-private-registry"></a>Kurz: Sestavit vlastní image a spustit ve službě App Service z privátního registru
 
-[App Service](app-service-linux-intro.md) poskytuje integrované Image Dockeru v Linuxu s podporou konkrétních verzí, jako například PHP 7.0 a Node.js 4.5. App Service využívá technologii kontejnerů Dockeru k hostování integrovaných imagí i vlastních imagí jako platforma jako služba. V tomto kurzu se dozvíte, jak sestavit vlastní image a spusťte ho ve službě App Service. Tento přístup je užitečný v případě, že integrované image nezahrnují váš vybraný jazyk, nebo když vaše aplikace vyžaduje specifickou konfiguraci, kterou neposkytují integrované image.
+[App Service](app-service-linux-intro.md) poskytuje integrované Image Dockeru v Linuxu s podporou konkrétních verzí, jako například PHP 7.3 a Node.js 10.14. App Service využívá technologii kontejnerů Dockeru k hostování integrovaných imagí i vlastních imagí jako platforma jako služba. V tomto kurzu se dozvíte, jak sestavit vlastní image a spusťte ho ve službě App Service. Tento přístup je užitečný v případě, že integrované image nezahrnují váš vybraný jazyk, nebo když vaše aplikace vyžaduje specifickou konfiguraci, kterou neposkytují integrované image.
 
 V tomto kurzu se naučíte:
 
@@ -211,7 +211,7 @@ Po vytvoření webové aplikace Azure CLI zobrazí výstup podobný následujíc
 
 ### <a name="configure-registry-credentials-in-web-app"></a>Konfigurace přihlašovacích údajů registru ve webové aplikaci
 
-App Service a stáhněte si privátní image potřebuje informace o registru a image. Ve službě Cloud Shell, poskytnout jim [ `az webapp config container set` ](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) příkazu. Nahraďte  *\<název aplikace >*,  *\<azure-container-registry-name >*,  _\<registry-username >_ a  _\<heslo >_.
+App Service a stáhněte si privátní image potřebuje informace o registru a image. Ve službě Cloud Shell, poskytnout jim [ `az webapp config container set` ](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) příkazu. Nahraďte  *\<název aplikace >* ,  *\<azure-container-registry-name >* ,  _\<registry-username >_ a  _\<heslo >_ .
 
 ```azurecli-interactive
 az webapp config container set --name <app-name> --resource-group myResourceGroup --docker-custom-image-name <azure-container-registry-name>.azurecr.io/mydockerimage:v1.0.0 --docker-registry-server-url https://<azure-container-registry-name>.azurecr.io --docker-registry-server-user <registry-username> --docker-registry-server-password <password>

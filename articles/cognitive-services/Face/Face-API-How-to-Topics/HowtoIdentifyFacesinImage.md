@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 04/10/2019
 ms.author: sbowles
-ms.openlocfilehash: 1696a20094357d084ba54739767509b8d50c4ad5
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: f02f6ebb83f7fbc274797e944d59a5f1e973075c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341298"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67438475"
 ---
 # <a name="example-identify-faces-in-images"></a>Příklad: Identifikace tváří na obrázcích
 
@@ -42,10 +42,12 @@ https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&retu
 ```
 
 Jako alternativu, zadejte klíč předplatného v hlavičce žádosti HTTP **ocp-apim-subscription-key: &lt;Klíč předplatného&gt;** .
-Při použití klientské knihovny klíč předplatného předána do konstruktoru třídy FaceServiceClient. Příklad:
+Při použití klientské knihovny klíč předplatného předána do konstruktoru třídy FaceClient. Příklad:
  
 ```csharp 
-faceServiceClient = new FaceServiceClient("<Subscription Key>");
+private readonly IFaceClient faceClient = new FaceClient(
+            new ApiKeyServiceClientCredentials("<subscription key>"),
+            new System.Net.Http.DelegatingHandler[] { });
 ```
  
 Klíč předplatného najdete na webu Azure Marketplace na webu Azure Portal. Další informace najdete v tématu [předplatná](https://azure.microsoft.com/try/cognitive-services/).
@@ -59,17 +61,17 @@ V tomto kroku obsahuje jeden objekt PersonGroup, s názvem "MyFriends" Anna, fak
 ### <a name="step-21-define-people-for-the-persongroup"></a>Krok 2.1: Definování lidí pro jeden objekt PersonGroup
 Osoba je základní jednotkou identifikace. Osoba může mít zaregistrovanou jednu nebo několik známých tváří. Jeden objekt PersonGroup je kolekce uživatelů. Každý uživatel, který je definován v rámci konkrétní jeden objekt PersonGroup. Identifikace se provádí proti jeden objekt PersonGroup. Vytvoření jeden objekt PersonGroup, a pak vytvořte osob, jako je například Anna, faktury a Clare je úloha.
 
-Nejprve vytvořte nový jeden objekt PersonGroup pomocí [jeden objekt PersonGroup – vytvořit](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244) rozhraní API. Odpovídající rozhraní API klientské knihovny je metoda CreatePersonGroupAsync třídy FaceServiceClient. ID skupiny, který je určen k vytvoření skupiny je jedinečný pro každé předplatné. Také můžete získat, aktualizaci nebo odstranění objektů Persongroup pomocí jiných jeden objekt PersonGroup rozhraní API. 
+Nejprve vytvořte nový jeden objekt PersonGroup pomocí [jeden objekt PersonGroup – vytvořit](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244) rozhraní API. Odpovídající klientské knihovny rozhraní API je metoda CreatePersonGroupAsync FaceClient třídy. ID skupiny, který je určen k vytvoření skupiny je jedinečný pro každé předplatné. Také můžete získat, aktualizaci nebo odstranění objektů Persongroup pomocí jiných jeden objekt PersonGroup rozhraní API. 
 
 Po definování skupiny lidí v něm můžete definovat pomocí [vytvořit jeden objekt PersonGroup uživatele –](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c) rozhraní API. Metoda klientské knihovny je CreatePersonAsync. Pro každou osobu, která můžete přidat plochy po jejich vytvoření.
 
 ```csharp 
 // Create an empty PersonGroup
 string personGroupId = "myfriends";
-await faceServiceClient.CreatePersonGroupAsync(personGroupId, "My Friends");
+await faceClient.PersonGroup.CreateAsync(personGroupId, "My Friends");
  
 // Define Anna
-CreatePersonResult friend1 = await faceServiceClient.CreatePersonAsync(
+CreatePersonResult friend1 = await faceClient.PersonGroupPerson.CreateAsync(
     // Id of the PersonGroup that the person belonged to
     personGroupId,    
     // Name of the person
@@ -79,7 +81,7 @@ CreatePersonResult friend1 = await faceServiceClient.CreatePersonAsync(
 // Define Bill and Clare in the same way
 ```
 ### <a name="step2-2"></a> Krok 2.2: Rozpoznávání tváří a zaregistrujte je správné osoby
-Detekce se provádí odesláním webové žádosti POST do rozhraní API [Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) se souborem obrázku v textu požadavku HTTP. Při použití klientské knihovně pro rozpoznávání tváře se provádí prostřednictvím DetectAsync metody pro třídu FaceServiceClient.
+Detekce se provádí odesláním webové žádosti POST do rozhraní API [Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) se souborem obrázku v textu požadavku HTTP. Při použití klientské knihovně pro rozpoznávání tváře se provádí prostřednictvím DetectAsync metody pro třídu FaceClient.
 
 Pro každou tvář, který je zjištěn, volání [jeden objekt PersonGroup osobě – přidání rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) se přidá do správné osoby.
 
@@ -94,7 +96,7 @@ foreach (string imagePath in Directory.GetFiles(friend1ImageDir, "*.jpg"))
     using (Stream s = File.OpenRead(imagePath))
     {
         // Detect faces in the image and add to Anna
-        await faceServiceClient.AddPersonFaceAsync(
+        await faceClient.PersonGroupPerson.AddFaceFromStreamAsync(
             personGroupId, friend1.PersonId, s);
     }
 }
@@ -107,7 +109,7 @@ Pokud bitová kopie obsahuje více než jeden pro rozpoznávání tváře, přid
 Jeden objekt PersonGroup musí školení, před provedením identifikaci usnadňuje využívání. Jeden objekt PersonGroup musí retrained po přidání nebo odebrání osoba nebo při úpravě registrované rozpoznávání tváře osoby. K trénování se používá rozhraní API [PersonGroup – Train](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249). Při použití klientské knihovny je volání metody TrainPersonGroupAsync:
  
 ```csharp 
-await faceServiceClient.TrainPersonGroupAsync(personGroupId);
+await faceClient.PersonGroup.TrainAsync(personGroupId);
 ```
  
 Školení je asynchronní proces. To nemusí být dokončeno i po TrainPersonGroupAsync metoda vrátí. Můžete potřebovat dotaz na stav školení. Použití [jeden objekt PersonGroup – získání stavu školení](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395247) metody rozhraní API nebo GetPersonGroupTrainingStatusAsync klientské knihovny. Následující kód ukazuje jednoduchý logiku, čekající na jeden objekt PersonGroup školení na dokončení:
@@ -116,7 +118,7 @@ await faceServiceClient.TrainPersonGroupAsync(personGroupId);
 TrainingStatus trainingStatus = null;
 while(true)
 {
-    trainingStatus = await faceServiceClient.GetPersonGroupTrainingStatusAsync(personGroupId);
+    trainingStatus = await faceClient.PersonGroup.GetTrainingStatusAsync(personGroupId);
  
     if (trainingStatus.Status != Status.Running)
     {
@@ -140,10 +142,10 @@ string testImageFile = @"D:\Pictures\test_img1.jpg";
 
 using (Stream s = File.OpenRead(testImageFile))
 {
-    var faces = await faceServiceClient.DetectAsync(s);
+    var faces = await faceClient.Face.DetectAsync(s);
     var faceIds = faces.Select(face => face.FaceId).ToArray();
  
-    var results = await faceServiceClient.IdentifyAsync(personGroupId, faceIds);
+    var results = await faceClient.Face.IdentifyAsync(faceIds, personGroupId);
     foreach (var identifyResult in results)
     {
         Console.WriteLine("Result of face: {0}", identifyResult.FaceId);
@@ -155,7 +157,7 @@ using (Stream s = File.OpenRead(testImageFile))
         {
             // Get top 1 among all candidates returned
             var candidateId = identifyResult.Candidates[0].PersonId;
-            var person = await faceServiceClient.GetPersonAsync(personGroupId, candidateId);
+            var person = await faceClient.PersonGroupPerson.GetAsync(personGroupId, candidateId);
             Console.WriteLine("Identified as {0}", person.Name);
         }
     }

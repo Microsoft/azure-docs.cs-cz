@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.date: 05/31/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 4d6832346fb25ee09d97575c755cb2d85eb73cbe
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 0e8a9fefdf92f568001cc3352fe83a85157acf9a
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206604"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442585"
 ---
 # <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>Kurz: Kontrola stavu používání v Azure Deployment Manager (Public preview)
 
@@ -36,7 +36,7 @@ Tento kurz se zabývá následujícími úkony:
 > * Ověření nasazení zavedení
 > * Vyčištění prostředků
 
-Další zdroje informací:
+Další materiály:
 
 - [Reference k rozhraní REST API Azure Deployment Manager](https://docs.microsoft.com/rest/api/deploymentmanager/).
 - [Ukázky Azure Deployment Manager](https://github.com/Azure-Samples/adm-quickstart).
@@ -57,7 +57,7 @@ V produkčním prostředí obvykle použijete jeden nebo více monitorování po
 Následující dva soubory se používají k nasazení funkce Azure functions. Není nutné stáhnout tyto soubory do absolvovat kurz.
 
 * Šablony Resource Manageru se nachází v [ https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json ](https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json). Nasazení této šablony můžete vytvořit funkci Azure.
-* Soubor zip se zdrojový kód funkce Azure Functions, [ http://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip ](http://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip). Tato zip, volá se, je volána pomocí šablony Resource Manageru.
+* Soubor zip se zdrojový kód funkce Azure Functions, [ https://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip ](https://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip). Tato zip, volá se, je volána pomocí šablony Resource Manageru.
 
 Pokud chcete nasadit funkci Azure, vyberte **vyzkoušet** otevřete Azure Cloud shell a vložte následující skript do okna prostředí.  Vložte kód, pravým tlačítkem myši na okno prostředí a potom vyberte **vložte**.
 
