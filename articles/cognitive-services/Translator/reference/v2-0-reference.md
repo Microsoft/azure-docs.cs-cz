@@ -3,19 +3,19 @@ title: Translator Text API V2.0
 titleSuffix: Azure Cognitive Services
 description: Referenční dokumentace pro verze 2.0 Translator Text API.
 services: cognitive-services
-author: rajdeep-in
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/15/2018
-ms.author: v-pawal
-ms.openlocfilehash: d2ff61908d7901fc464b58ee1ef9b5605b3026a3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: swmachan
+ms.openlocfilehash: 88503c73e2ca9cf04e64ca3a47793e9b10ca325a
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66389849"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357825"
 ---
 # <a name="translator-text-api-v20"></a>Translator Text API v2.0
 
@@ -83,7 +83,7 @@ Typ obsahu odpovědi: application/xml
 
 ### <a name="parameters"></a>Parametry
 
-|Parametr|Hodnota|Popis    |Typ parametru|Typ dat|
+|Parametr|Value|Popis    |Typ parametru|Typ dat|
 |:--|:--|:--|:--|:--|
 |appid  |(prázdné)    |Povinná hodnota. Pokud hlavička autorizace nebo Ocp-Apim-Subscription-Key se používá, ponechejte tuto položku appid pole prázdné jinak obsahovat řetězec obsahující "Nosiče" + "" + "access_token".|query|string|
 |text|(prázdné)   |Povinná hodnota. Řetězec představující text k přeložení. Velikost textu nesmí být delší než 10000 znaků.|query|string|
@@ -188,7 +188,7 @@ Typ obsahu odpovědi: application/xml
 
 ### <a name="parameters"></a>Parametry
 
-|Parametr|Hodnota|Popis|Typ parametru|Typ dat|
+|Parametr|Value|Popis|Typ parametru|Typ dat|
 |:--|:--|:--|:--|:--|
 |Autorizace|(prázdné)) |Povinné, pokud není zadán appid pole nebo záhlaví Ocp-Apim-Subscription-Key. Autorizační token:  "Nosiče" + "" + "access_token".|záhlaví|string|
 |OCP-Apim-Subscription-Key|(prázdné)|Povinné, pokud není zadán appid pole nebo autorizační hlavičky.|záhlaví|string|
@@ -229,7 +229,7 @@ Typ obsahu odpovědi: application/xml
  
 ### <a name="parameters"></a>Parametry
 
-|Parametr|Hodnota|Popis|Typ parametru|Typ dat|
+|Parametr|Value|Popis|Typ parametru|Typ dat|
 |:--|:--|:--|:--|:--|
 |appid|(prázdné)|Povinná hodnota. Pokud `Authorization` nebo `Ocp-Apim-Subscription-Key` záhlaví se používá, ponechejte tuto položku appid pole prázdné jinak zahrnout řetězec obsahující `"Bearer" + " " + "access_token"`.|query|string|
 |Národní prostředí|(prázdné) |Povinná hodnota. Řetězec představující kombinaci kód ISO 639 dvoupísmenné malá jazykové verze přidružený jazyk a kód ISO 3166 velká subkulturu dvoupísmenné lokalizovat názvy jazyků nebo malými písmeny kód ISO 639 samostatně.|query|string|
@@ -263,7 +263,7 @@ Typ obsahu odpovědi: application/xml
  
 ### <a name="parameters"></a>Parametry
 
-|Parametr|Hodnota|Popis|Typ parametru|Typ dat|
+|Parametr|Value|Popis|Typ parametru|Typ dat|
 |:--|:--|:--|:--|:--|
 |appid|(prázdné)|Povinná hodnota. Pokud `Authorization` nebo `Ocp-Apim-Subscription-Key` záhlaví se používá, ponechejte tuto položku appid pole prázdné jinak zahrnout řetězec obsahující `"Bearer" + " " + "access_token"`.|query|string|
 |Autorizace|(prázdné)  |Požadováno pokud `appid` pole nebo `Ocp-Apim-Subscription-Key` není zadána hlavička. Autorizační token: `"Bearer" + " " + "access_token"`.|záhlaví|string|
@@ -296,7 +296,7 @@ Typ obsahu odpovědi: application/xml
 
 ### <a name="parameters"></a>Parametry
 
-|Parametr|Hodnota|Popis|Typ parametru|Typ dat|
+|Parametr|Value|Popis|Typ parametru|Typ dat|
 |:--|:--|:--|:--|:--|
 |appid|(prázdné)|Povinná hodnota. Pokud `Authorization` nebo `Ocp-Apim-Subscription-Key` záhlaví se používá, ponechejte tuto položku appid pole prázdné jinak zahrnout řetězec obsahující `"Bearer" + " " + "access_token"`.|query|string|
 |Autorizace|(prázdné)|Požadováno pokud `appid` pole nebo `Ocp-Apim-Subscription-Key` není zadána hlavička. Autorizační token: `"Bearer" + " " + "access_token"`.|záhlaví|string|
@@ -328,7 +328,7 @@ Typ obsahu odpovědi: application/xml
 
 ### <a name="parameters"></a>Parametry
 
-|Parametr|Hodnota|Popis|Typ parametru|Typ dat|
+|Parametr|Value|Popis|Typ parametru|Typ dat|
 |:--|:--|:--|:--|:--|
 |appid|(prázdné)|Povinná hodnota. Pokud `Authorization` nebo `Ocp-Apim-Subscription-Key` záhlaví se používá, ponechejte tuto položku appid pole prázdné jinak zahrnout řetězec obsahující `"Bearer" + " " + "access_token"`.|query|string|
 |text|(prázdné)   |Povinná hodnota. Řetězec obsahující věty nebo věty zadaného jazyka, který má být používaný wave Stream. Velikost textu mluvit nesmí přesáhnout 2000 znaků.|query|string|
@@ -364,7 +364,7 @@ Typ obsahu odpovědi: application/xml
 
 ### <a name="parameters"></a>Parametry
 
-|Parametr|Hodnota|Popis|Typ parametru|Typ dat|
+|Parametr|Value|Popis|Typ parametru|Typ dat|
 |:--|:--|:--|:--|:--|
 |appid|(prázdné)  |Povinná hodnota. Pokud `Authorization` nebo `Ocp-Apim-Subscription-Key` záhlaví se používá, ponechejte tuto položku appid pole prázdné jinak zahrnout řetězec obsahující `"Bearer" + " " + "access_token"`.|query|string|
 |text|(prázdné)|Povinná hodnota. Řetězec obsahující text, jehož jazyk je možné identifikovat. Velikost textu nesmí být delší než 10000 znaků.|query| string|
@@ -419,7 +419,7 @@ Typ obsahu odpovědi: application/xml
  
 ### <a name="parameters"></a>Parametry
 
-|Parametr|Hodnota|Popis|Typ parametru|Typ dat|
+|Parametr|Value|Popis|Typ parametru|Typ dat|
 |:--|:--|:--|:--|:--|
 |appid|(prázdné)|Povinná hodnota. Pokud `Authorization` nebo `Ocp-Apim-Subscription-Key` záhlaví se používá, ponechejte tuto položku appid pole prázdné jinak zahrnout řetězec obsahující `"Bearer" + " " + "access_token"`.|query|string|
 |Autorizace|(prázdné)|Požadováno pokud `appid` pole nebo `Ocp-Apim-Subscription-Key` není zadána hlavička. Autorizační token: `"Bearer" + " " + "access_token"`.|záhlaví|string|
@@ -453,7 +453,7 @@ Typ obsahu odpovědi: aplikace: xml
  
 ### <a name="parameters"></a>Parametry
 
-|Parametr|Hodnota|Popis|Typ parametru|Typ dat   |
+|Parametr|Value|Popis|Typ parametru|Typ dat   |
 |:--|:--|:--|:--|:--|
 |appid|(prázdné)|Povinná hodnota. Pokud `Authorization` nebo `Ocp-Apim-Subscription-Key` záhlaví se používá, ponechejte tuto položku appid pole prázdné jinak zahrnout řetězec obsahující `"Bearer" + " " + "access_token"`.|query|string|
 |originalText|(prázdné)|Povinná hodnota. Řetězec obsahující text na překlad z. Řetězec má maximální délku 1000 znaků.|query|string|
@@ -530,7 +530,7 @@ Typ obsahu odpovědi: application/xml
  
 ### <a name="parameters"></a>Parametry
 
-|Parametr|Hodnota|Popis|Typ parametru|Typ dat|
+|Parametr|Value|Popis|Typ parametru|Typ dat|
 |:--|:--|:--|:--|:--|
 |Autorizace|(prázdné)|Povinné, pokud není zadán appid pole nebo záhlaví Ocp-Apim-Subscription-Key. Autorizační token:  "Nosiče" + "" + "access_token".|záhlaví|string|
 |OCP-Apim-Subscription-Key|(prázdné)|Povinné, pokud není zadán appid pole nebo autorizační hlavičky.|záhlaví|string|
@@ -563,7 +563,7 @@ Typ obsahu odpovědi: application/xml
 
 ### <a name="parameters"></a>Parametry
 
-|Parametr|Hodnota|Popis|Typ parametru|Typ dat|
+|Parametr|Value|Popis|Typ parametru|Typ dat|
 |:--|:--|:--|:--|:--|
 |appid|(prázdné)  |Povinná hodnota. Pokud hlavička autorizace nebo Ocp-Apim-Subscription-Key se používá, ponechejte tuto položku appid pole prázdné jinak obsahovat řetězec obsahující "Nosiče" + "" + "access_token".|query| string|
 |text|(prázdné)   |Povinná hodnota. Řetězec představující text, který má rozdělení na věty. Velikost textu nesmí být delší než 10000 znaků.|query|string|
@@ -657,7 +657,7 @@ Typ obsahu odpovědi: application/xml
  
 ### <a name="parameters"></a>Parametry
 
-|Parametr|Hodnota|Popis|Typ parametru|Typ dat|
+|Parametr|Value|Popis|Typ parametru|Typ dat|
 |:--|:--|:--|:--|:--|
 |appid|(prázdné)|Povinná hodnota. Pokud `Authorization` nebo `Ocp-Apim-Subscription-Key` záhlaví se používá, ponechejte tuto položku appid pole prázdné jinak zahrnout řetězec obsahující `"Bearer" + " " + "access_token"`.|query|string|
 |text|(prázdné)|Povinná hodnota. Řetězec představující text k přeložení. Velikost textu nesmí být delší než 10000 znaků.|query|string|
@@ -777,7 +777,7 @@ Typ obsahu odpovědi: application/xml
  
 ### <a name="parameters"></a>Parametry
 
-|Parametr|Hodnota|Popis|Typ parametru|Typ dat|
+|Parametr|Value|Popis|Typ parametru|Typ dat|
 |:--|:--|:--|:--|:--|
 |Autorizace  |(prázdné)    |Požadováno pokud `appid` pole nebo `Ocp-Apim-Subscription-Key` není zadána hlavička. Autorizační token: `"Bearer" + " " + "access_token"`.|záhlaví|string|
 |OCP-Apim-Subscription-Key|(prázdné)  |Požadováno pokud `appid` pole nebo `Authorization` není zadána hlavička.|záhlaví|string|

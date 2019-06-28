@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: anantr
 ms.component: alerts
-ms.openlocfilehash: 6e97826499842a257f6402bd5268edc4cd6a486e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 212e6b042caec5f24a620dc491dc674417816df7
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66734935"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67310369"
 ---
 # <a name="action-rules-preview"></a>Akce pravidla (preview)
 
@@ -30,6 +30,8 @@ Akce pravidla umožňují definovat akce (nebo potlačení akce) v jakékoli Res
 
 I když pravidla upozornění umožňují definovat skupiny akcí, která se aktivuje, když výstraha se vygeneruje, zákazníci často mají tendenci uchovávat běžné akce skupiny v oboru jejich operací. Například tým odpovědný za skupině prostředků 'ContosoRG' bude pravděpodobně definovat stejnou skupinu akcí pro všechna pravidla výstrah, které jsou definované v rámci "ContosoRG". Akce pravidla umožňují tento proces zjednodušit tím, že je pro definování akcí ve velkém měřítku, takže se dá spouštět skupiny akcí pro všechny výstrahy vygenerované na konfigurovaném oboru. Po návratu do předchozího příkladu, může tým nyní definovat jedno pravidlo akce na 'ContosoRG", který spustí stejnou skupinu akcí pro všechny výstrahy generované v něm.
 
+> [!NOTE]
+> Akce pravidla aktuálně se nevztahují na upozornění na stav služby.
 
 ## <a name="configuring-an-action-rule"></a>Konfigurace pravidlo akce
 
@@ -98,7 +100,7 @@ Pokud vyberete **skupiny akcí** přepínací tlačítko, buď přidejte existuj
 ### <a name="action-rule-details"></a>Podrobnosti akce pravidla
 
 A konečně nakonfigurujte následující podrobnosti pro pravidlo akce
-* Name
+* Název
 * Skupina prostředků, ve kterém bude uložen
 * Popis 
 

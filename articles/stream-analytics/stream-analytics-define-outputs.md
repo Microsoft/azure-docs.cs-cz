@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/31/2019
-ms.openlocfilehash: ba803c493fd85a7be7bc6c5922171678cc6e0df0
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 4e62ae47de95f95600faa3dc27f6867b065e117b
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164452"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329980"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Vysvětlení vytvořené jako výstupy z Azure Stream Analytics
 
@@ -30,7 +30,7 @@ Některé typy podporu výstupy [dělení](#partitioning). [Výstup velikosti d�
 
 Stream Analytics podporuje [Azure Data Lake Storage Gen 1](../data-lake-store/data-lake-store-overview.md). Azure Data Lake Storage je podnikové úrovni velkokapacitní úložiště pro analytické úlohy s velkými objemy dat. Data Lake Storage můžete použít k ukládání dat libovolné velikosti, typu a rychlosti příjmu pro provozní a zjišťovací analýzy. Stream Analytics musí mít oprávnění k přístupu k Data Lake Storage.
 
-Azure Data Lake Storage výstup ze Stream Analytics není aktuálně dostupná v oblastech Azure Germany (T-Systems International) a Azure China (21Vianet).
+Azure Data Lake Storage výstup ze Stream Analytics není aktuálně dostupná v oblastech Azure Germany (T-Systems International) a Azure China 21Vianet.
 
 Následující tabulka uvádí názvy vlastností a jejich popisy nakonfigurovat výstup do Data Lake Storage Gen 1.   
 
@@ -50,7 +50,7 @@ Následující tabulka uvádí názvy vlastností a jejich popisy nakonfigurovat
 
 ## <a name="sql-database"></a>SQL Database
 
-Můžete použít [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) jako výstup pro data, která jsou svou povahou relační, nebo pro aplikace, které závisí na obsahu hostovaném v relační databázi. Úlohy Stream Analytics zapisovat do existující tabulky ve službě SQL Database. Schéma tabulky musí přesně odpovídat pole a jejich typy ve výstupu vaší úlohy. Můžete také určit [Azure SQL Data Warehouse](https://azure.microsoft.com/documentation/services/sql-data-warehouse/) možnost výstupu jako výstup prostřednictvím SQL Database. Další informace o způsoby, jak zlepšit propustnost zápis, najdete v článku [Stream Analytics se službou Azure SQL Database jako výstup](stream-analytics-sql-output-perf.md) článku. 
+Můžete použít [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) jako výstup pro data, která jsou svou povahou relační, nebo pro aplikace, které závisí na obsahu hostovaném v relační databázi. Úlohy Stream Analytics zapisovat do existující tabulky ve službě SQL Database. Schéma tabulky musí přesně odpovídat pole a jejich typy ve výstupu vaší úlohy. Můžete také určit [Azure SQL Data Warehouse](https://azure.microsoft.com/documentation/services/sql-data-warehouse/) možnost výstupu jako výstup prostřednictvím SQL Database. Další informace o způsoby, jak zlepšit propustnost zápis, najdete v článku [Stream Analytics se službou Azure SQL Database jako výstup](stream-analytics-sql-output-perf.md) článku.
 
 Následující tabulka uvádí názvy vlastností a jejich popis vytvářejícím výstupem SQL Database.
 
@@ -63,10 +63,10 @@ Následující tabulka uvádí názvy vlastností a jejich popis vytvářející
 | Heslo | Heslo pro připojení k databázi. |
 | Table | Název tabulky, kde je zapsán výstup. Název tabulky je velká a malá písmena. Schéma této tabulky by měl přesně shodovat s počtem pole a jejich typy, které generuje výstup úlohy. |
 |Dědit schéma oddílu| Možnost pro dědění schéma rozdělení oddílů z předchozího kroku dotazu, umožňují plně paralelní topologie s více zapisovačů do tabulky. Další informace najdete v tématu [výstupu Azure Stream Analytics ke službě Azure SQL Database](stream-analytics-sql-output-perf.md).|
-|Odpovídá počet v dávce| Doporučený limit počtu záznamy odeslané s každou hromadné vložení transakce.|
+|Maximální počet v dávce| Doporučené horní limit počtu záznamy odeslané s každou hromadné vložení transakce.|
 
 > [!NOTE]
-> Azure SQL Database nabídky, se podporuje pro úlohy, výstup ve Stream Analytics, ale virtuální počítač Azure, které používají verzi SQL Server s databází připojené se nepodporuje.
+> Azure SQL Database nabízí, je podporováno pro výstup úlohy ve Stream Analytics, ale virtuální počítač Azure, které používají verzi SQL Server s databází připojen nebo spravované Instance SQL Azure se ještě nepodporuje. To se může v budoucích verzích změnit.
 
 ## <a name="blob-storage"></a>Blob Storage
 
@@ -108,7 +108,7 @@ Budete potřebovat několik parametrů ke konfiguraci datové proudy ze služby 
 | Název vlastnosti | Popis |
 | --- | --- |
 | Alias pro výstup | Popisný název používaný v dotazech na přesměrujte výstup dotazu do centra událostí. |
-| Obor názvů centra událostí |Kontejner pro sadu entit pro zasílání zpráv. Když vytvoříte nové Centrum událostí, vytvoříte tím taky obor obor názvů centra událostí. |
+| Obor názvů centra událostí | Kontejner pro sadu entit pro zasílání zpráv. Když vytvoříte nové Centrum událostí, vytvoříte tím taky obor obor názvů centra událostí. |
 | Název centra událostí | Název výstupu centra událostí. |
 | Název zásady centra událostí | Zásady sdíleného přístupu, které vytvoříte v Centru událostí **konfigurovat** kartu. Každá zásada sdíleného přístupu má název, že je nastavená oprávnění a přístupové klíče. |
 | Klíč zásad centra událostí | Sdílený přístupový klíč, který se používá k ověření přístupu k obor názvů centra událostí. |
@@ -123,7 +123,7 @@ Budete potřebovat několik parametrů ke konfiguraci datové proudy ze služby 
 
 Můžete použít [Power BI](https://powerbi.microsoft.com/) jako výstup pro úlohu Stream Analytics k poskytování bohatých funkcí vizualizace poznatky o výsledky analýzy. Tuto funkci můžete použít pro provozní řídicích panelů, generování sestav a vytváření sestav řízené metriky.
 
-Výstup Power BI ze Stream Analytics není aktuálně dostupná v oblastech Azure Germany (T-Systems International) a Azure China (21Vianet).
+Výstup Power BI ze Stream Analytics není aktuálně dostupná v oblastech Azure Germany (T-Systems International) a Azure China 21Vianet.
 
 Následující tabulka uvádí názvy vlastností a jejich popisy nakonfigurovat výstup do Power BI.
 
@@ -209,17 +209,17 @@ Následující tabulka uvádí názvy vlastností a jejich popisy pro vytvořen�
 
 Počet oddílů je [na základě skladové položky služby Service Bus a velikosti](../service-bus-messaging/service-bus-partitioning.md). Klíč oddílu je jedinečné celé číslo pro každý oddíl.
 
-## <a name="service-bus-topics"></a>Service Bus Topics
+## <a name="service-bus-topics"></a>Témata služby Service Bus
 Fronty Service Bus poskytují způsob komunikace 1: 1 z odesílatele příjemci. [Témata služby Service Bus](https://msdn.microsoft.com/library/azure/hh367516.aspx) zadejte jeden mnoho forma komunikace.
 
-Následující tabulka uvádí názvy vlastností a jejich popisy pro vytvoření tématu výstup.
+Následující tabulka uvádí názvy vlastností a jejich popisy pro vytvoření výstupních téma služby Service Bus.
 
 | Název vlastnosti | Popis |
 | --- | --- |
 | Alias pro výstup |Popisný název používaný v dotazech na přímé výstup dotazu na toto téma služby Service Bus. |
 | Obor názvů služby Service Bus |Kontejner pro sadu entit pro zasílání zpráv. Když vytvoříte nové Centrum událostí, vytvoříte tím taky obor názvů Service Bus. |
 | Název tématu |Témata jsou entity pro zasílání zpráv, podobné centrům událostí a frontám. Jsou navržené ke shromažďování streamů událostí z zařízení a služeb. Když se na téma, udělil taky určitý název. Zprávy odeslané do tématu nejsou k dispozici, pokud není vytvořené předplatné, zajistěte proto je jeden nebo více předplatných v rámci tématu. |
-| Název zásad tématu |Když vytvoříte téma, můžete vytvořit taky zásady sdíleného přístupu k danému tématu **konfigurovat** kartu. Každá zásada sdíleného přístupu má název, že je nastavená oprávnění a přístupové klíče. |
+| Název zásad tématu |Při vytváření tématu služby Service Bus můžete vytvořit taky zásady sdíleného přístupu k danému tématu **konfigurovat** kartu. Každá zásada sdíleného přístupu má název, že je nastavená oprávnění a přístupové klíče. |
 | Klíč zásad tématu |Sdílený přístupový klíč, který se používá k ověření přístupu k oboru názvů služby Service Bus. |
 | Formát serializace události |Formát serializace pro výstupní data. JSON, CSV nebo Avro, jsou podporovány. |
 | Kódování |Pokud používáte formát CSV nebo JSON, kódování musí být zadán. V tuto chvíli je jediným podporovaným formátem kódování UTF-8. |
@@ -231,7 +231,7 @@ Počet oddílů je [na základě skladové položky služby Service Bus a veliko
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
 [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) je globálně distribuovaná databázová služba, která nabízí neomezené elastické škálování po celém světě, bohaté možnosti dotazů a automatického indexování přes dogmaticky na schématu datové modely. Další informace o možnostech kolekce Azure Cosmos DB pro Stream Analytics, najdete v článku [Stream Analytics pomocí služby Azure Cosmos DB jako výstup](stream-analytics-documentdb-output.md) článku.
 
-Výstup Azure Cosmos DB ze Stream Analytics není aktuálně dostupná v oblastech Azure Germany (T-Systems International) a Azure China (21Vianet).
+Výstup Azure Cosmos DB ze Stream Analytics není aktuálně dostupná v oblastech Azure Germany (T-Systems International) a Azure China 21Vianet.
 
 > [!Note]
 > V tuto chvíli je v Azure Stream Analytics podporuje jenom připojení ke službě Azure Cosmos DB pomocí rozhraní SQL API.
@@ -253,7 +253,7 @@ Následující tabulka popisuje vlastnosti pro vytvoření výstup Azure Cosmos 
 ## <a name="azure-functions"></a>Azure Functions
 Azure Functions je výpočetní prostředí služby, který používáte ke spuštění kódu na vyžádání bez nutnosti explicitně zřizovat nebo spravovat infrastrukturu. To umožňuje implementaci kódu aktivovaného událostmi, ke kterým dochází v Azure nebo partner služeb. Díky schopnosti služby Azure Functions reagovat na triggery je přirozeným výstupem pro Azure Stream Analytics. Tento adaptér pro výstup umožňuje uživatelům připojit Stream Analytics k Azure Functions a spuštění skriptu nebo kusu kódu v reakci na různé události.
 
-Výstup Azure Functions ze Stream Analytics není aktuálně dostupná v oblastech Azure Germany (T-Systems International) a Azure China (21Vianet).
+Výstup Azure Functions ze Stream Analytics není aktuálně dostupná v oblastech Azure Germany (T-Systems International) a Azure China 21Vianet.
 
 Azure Stream Analytics volá Azure Functions prostřednictvím triggerů HTTP. Adaptér pro výstup Azure Functions je k dispozici následující konfigurovatelné vlastnosti:
 
@@ -295,7 +295,7 @@ Následující tabulka shrnuje podporu oddílu a počet modulů pro zápis výst
 | Typ výstupu | Dělení podpory | Klíč oddílu  | Počet modulů pro zápis výstupu |
 | --- | --- | --- | --- |
 | Azure Data Lake Store | Ano | Použijte {date} a {time} tokeny v vzor předpony cesty. Vyberte formát data, jako je rrrr/MM/DD, DD/MM/rrrr nebo MM-DD-RRRR. HH se používá pro formát času. | Následuje vstupní dělení pro [plně paralelizovat dotazy](stream-analytics-scale-jobs.md). |
-| Azure SQL Database | Ano | Podle v klauzuli PARTITION BY v dotazu. | Následuje vstupní dělení pro [plně paralelizovat dotazy](stream-analytics-scale-jobs.md). Další informace o dosažení lépe zápisu propustnost při načítání dat do Azure SQL Database najdete v tématu [výstupu Azure Stream Analytics ke službě Azure SQL Database](stream-analytics-sql-output-perf.md). |
+| Azure SQL Database | Ano, je potřeba povolena. | Podle v klauzuli PARTITION BY v dotazu. | Když je povolena volba dědit dělení, následuje vstupní dělení pro [plně paralelizovat dotazy](stream-analytics-scale-jobs.md). Další informace o dosažení lépe zápisu propustnost při načítání dat do Azure SQL Database najdete v tématu [výstupu Azure Stream Analytics ke službě Azure SQL Database](stream-analytics-sql-output-perf.md). |
 | Azure Blob Storage | Ano | Použijte {date} a {time} tokeny z polí událostí v vzor cesty. Vyberte formát data, jako je rrrr/MM/DD, DD/MM/rrrr nebo MM-DD-RRRR. HH se používá pro formát času. Výstupní objekt BLOB lze rozdělit pomocí jedné události vlastní atribut {pole fieldname} nebo {data a času:\<specifikátor >}. | Následuje vstupní dělení pro [plně paralelizovat dotazy](stream-analytics-scale-jobs.md). |
 | Azure Event Hubs | Ano | Ano | Se liší v závislosti na zarovnání oddílu.<br /> Když klíč oddílu výstup z centra událostí je stejně v souladu s nadřazeného (předchozí) kroku dotazu, počet zapisovače je stejný jako počet oddílů ve výstupu centra událostí. Každý writer používá [EventHubSender třídy](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet) k odesílání událostí do konkrétních oddílů. <br /> Při klíče oddílu pro výstupu centra událostí není zarovnána s nadřazeného (předchozí) kroku dotazu, počet zapisovače je stejný jako počet oddílů v tomto dřívějším kroku. Každý writer používá [SendBatchAsync třídy](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet) v **EventHubClient** k odesílání událostí do všech oddílů výstup. |
 | Power BI | Ne | Žádný | Není k dispozici. |
@@ -315,14 +315,14 @@ Následující tabulka popisuje některé důležité informace pro dávkové zp
 | Typ výstupu | Maximální velikost zprávy | Optimalizace velikosti dávky |
 | :--- | :--- | :--- |
 | Azure Data Lake Store | Zobrazit [Data Lake Storage omezuje](../azure-subscription-service-limits.md#data-lake-store-limits). | Použijte až 4 MB za operace zápisu. |
-| Azure SQL Database | 10 000 maximální počet řádků na jeden příkaz bulk insert.<br />100 minimální řádků na jeden příkaz bulk insert. <br />Zobrazit [Azure SQL omezuje](../sql-database/sql-database-resource-limits.md). |  Každé dávky je zpočátku hromadné vložení pomocí maximální velikost dávky. Můžete rozdělit služby batch na polovinu (dokud se nedostanete velikost dávky minimální) podle opakovatelná chyby SQL. |
+| Azure SQL Database | Možnost konfigurace maximální počet v dávce pomocí. 10 000 maximální a 100 minimální řádků na jeden hromadné vložení ve výchozím nastavení.<br />Zobrazit [Azure SQL omezuje](../sql-database/sql-database-resource-limits.md). |  Hromadné vložení pomocí služby batch maximální počet je zpočátku každou dávku. Batch je rozdělen na polovinu (až do služby batch minimální počet) podle opakovatelná chyby SQL. |
 | Azure Blob Storage | Zobrazit [omezení služby Azure Storage](../azure-subscription-service-limits.md#storage-limits). | Objekt blob maximální velikost bloku je 4 MB.<br />Počet bock maximální objektů blob je 50 000. |
-| Azure Event Hubs  | 256 KB na zprávu. <br />Zobrazit [omezuje služby Event Hubs](../event-hubs/event-hubs-quotas.md). |  Při dělení vstup/výstup nejsou zarovnána, každé události je zabalena jednotlivě v **EventData** a odeslány dávku až do maximální velikosti (1 MB pro SKU úrovně Premium). <br /><br />  Pokud vstupní/výstupní dělení je zarovnán, více událostí jsou zkomprimována do jednoho **EventData** instance až maximální velikost zprávy a odeslat.  |
+| Azure Event Hubs  | 1 MB za zprávy nebo 256 KB. <br />Zobrazit [omezuje služby Event Hubs](../event-hubs/event-hubs-quotas.md). |  Při dělení vstup/výstup nejsou zarovnána, každé události je zabalena jednotlivě v `EventData` a odeslány až do maximální velikosti dávky. To se také stane, když [vlastní metadata vlastnosti](#custom-metadata-properties-for-output) se používají. <br /><br />  Pokud vstupní/výstupní dělení je zarovnán, více událostí jsou zkomprimována do jednoho `EventData` instance až maximální velikost zprávy a odeslat. |
 | Power BI | Zobrazit [omezuje rozhraní Rest API Power BI](https://msdn.microsoft.com/library/dn950053.aspx). |
 | Azure Table Storage | Zobrazit [omezení služby Azure Storage](../azure-subscription-service-limits.md#storage-limits). | Výchozí hodnota je 100 entit na jedné transakce. Můžete ho nakonfigurovat na menší hodnotu, podle potřeby. |
-| Fronty Azure Service Bus   | 256 KB na zprávu.<br /> Zobrazit [omezuje služby Service Bus](../service-bus-messaging/service-bus-quotas.md). | Použijte jednu událost za každou zprávu. |
-| Azure tématu služby Service Bus | 256 KB na zprávu.<br /> Zobrazit [omezuje služby Service Bus](../service-bus-messaging/service-bus-quotas.md). | Použijte jednu událost za každou zprávu. |
-| Azure Cosmos DB   | Zobrazit [služby Azure Cosmos DB omezí](../azure-subscription-service-limits.md#azure-cosmos-db-limits). | Velikost dávky a zápis jsou četnost upravit dynamicky na základě odpovědi služby Azure Cosmos DB. <br /> Neexistují žádná předem omezení ze Stream Analytics. |
+| Fronty Azure Service Bus   | 256 KB na zprávu pro úroveň Standard, 1MB pro úroveň Premium.<br /> Zobrazit [omezuje služby Service Bus](../service-bus-messaging/service-bus-quotas.md). | Použijte jednu událost za každou zprávu. |
+| Azure tématu služby Service Bus | 256 KB na zprávu pro úroveň Standard, 1MB pro úroveň Premium.<br /> Zobrazit [omezuje služby Service Bus](../service-bus-messaging/service-bus-quotas.md). | Použijte jednu událost za každou zprávu. |
+| Azure Cosmos DB   | Zobrazit [služby Azure Cosmos DB omezí](../azure-subscription-service-limits.md#azure-cosmos-db-limits). | Velikost dávky a zápis jsou upraveny frekvence dynamicky podle odpovědi služby Azure Cosmos DB. <br /> Neexistují žádná předem omezení ze Stream Analytics. |
 | Azure Functions   | | Výchozí velikost dávky je 262 144 bajtů (256 KB). <br /> Výchozí počet událostí za služby batch je 100. <br /> Velikost dávky je možné konfigurovat a můžete se zvýší nebo sníží ve službě Stream Analytics [výstup možnosti](#azure-functions).
 
 ## <a name="next-steps"></a>Další postup

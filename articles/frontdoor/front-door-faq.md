@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2019
 ms.author: sharadag
-ms.openlocfilehash: 256435dfd016ebbd86dbbe49f4abbb346fb1cd19
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b033f463722ddb3a0b7beabdf659900e7d7188df
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60736662"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67330868"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door-service"></a>Nejčastější dotazy pro Azure branou služby
 
@@ -75,11 +75,11 @@ Služba Azure branou má stejný seznam umístění POP (Point of Presence) jako
 
 ### <a name="is-azure-front-door-service-a-dedicated-deployment-for-my-application-or-is-it-shared-across-customers"></a>Je služba Azure branou vyhrazené nasazení pro aplikaci nebo je sdílen mezi zákazníky?
 
-Azure Service branou je globálně Distribuovaná služba více tenantů. Ano infrastrukturu pro branou je sdílen mezi svým zákazníkům. Ale tak, že vytvoříte přední dveře, můžete definovat konkrétní konfigurace požadované pro vaše aplikace a 
+Azure Service branou je globálně Distribuovaná služba více tenantů. Ano infrastrukturu pro branou je sdílen mezi svým zákazníkům. Po vytvoření uživatelského profilu branou, můžete definovat konkrétní konfigurace požadované pro vaší aplikaci a bez změny vašich branou mít vliv na ostatní konfigurace branou.
 
 ### <a name="is-http-https-redirection-supported"></a>Je HTTP -> přesměrování protokolu HTTPS, které jsou podporovány?
 
-Přední dveře v současné době nepodporuje adresy URL přesměrování.
+Ano. Ve skutečnosti Azure branou služby podporuje hostitele, cestu a dotaz řetězec přesměrování, stejně jako část adresy URL přesměrování. Další informace o [adresy URL přesměrování](front-door-url-redirect.md). 
 
 ### <a name="in-what-order-are-routing-rules-processed"></a>V jakém pořadí se pravidla směrování zpracovávají?
 
@@ -141,6 +141,11 @@ Přední dveře podporuje TLS verze 1.0, 1.1 a 1.2. TLS 1.3 se ještě nepodporu
 
 Pokud chcete povolit protokol HTTPS pro bezpečné doručování obsahu pro vlastní doménu branou, můžete použít certifikát, který je spravovaný službou Azure branou nebo použít svůj vlastní certifikát.
 Branou spravované ustanovení možnost Standardní certifikát SSL prostřednictvím Digicert a uložená v popředí dveří Key Vault. Pokud budete chtít použít svůj vlastní certifikát, pak můžete připojit certifikát od certifikační Autority podporované a může být standardní protokol SSL, rozšíření ověřování certifikátu nebo dokonce certifikát se zástupným znakem. Certifikáty podepsané svým držitelem nejsou podporovány. Přečtěte si [jak povolit HTTPS pro vlastní doménu](https://aka.ms/FrontDoorCustomDomainHTTPS).
+
+### <a name="does-front-door-support-auto-rotation-of-certificates"></a>Podporuje branou automatická rotace certifikátů?
+
+Pro vlastní vlastního certifikátu SSL automatické rotace klíčů nepodporuje. Podobně jako u jak se instalační program, pro dané vlastní doménu poprvé, bude potřebujete k bodu branou verze správný certifikát ve službě Key Vault a ujistěte se, že instanční objekt služby pro branou stále má přístup ke službě Key Vault. Tato operace zavedení aktualizovaný certifikát podle branou je zcela atomické a nezpůsobí žádné dopadu na produkční prostředí k dispozici v názvu subjektu nebo nedojde ke změně sítě SAN pro certifikát.
+</br>Možnosti certifikátu branou spravované že jsou certifikáty automaticky otočit o branou.
 
 ### <a name="what-are-the-current-cipher-suites-supported-by-azure-front-door-service"></a>Jaké jsou aktuální šifrovací sada podporovaná službou Azure branou?
 

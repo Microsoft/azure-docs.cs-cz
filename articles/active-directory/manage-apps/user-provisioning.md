@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/02/2019
+ms.date: 06/12/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 086161b73e2a3e07df835394dc26082e12fbd434
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3a58d2b235757faf760539f514ea349e33e12b41
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65963977"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67310005"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Automatizace zřizování a jeho rušení pro aplikace SaaS ve službě Azure Active Directory
 
@@ -190,46 +190,7 @@ Když do karantény, frekvence přírůstkových synchronizací postupně sníž
 
 ## <a name="how-long-will-it-take-to-provision-users"></a>Jak dlouho bude trvat nezajistíte zřízení uživatelů?
 
-Výkon závisí na tom, jestli vaše zřizování úloha běží počáteční synchronizace nebo přírůstková synchronizace.
-
-Pro **počáteční synchronizace**, čas úlohy závisí na mnoha faktorech, včetně počtu uživatelů a skupin v oboru pro zřizování a celkový počet uživatelů a skupin ve zdrojovém systému. Úplný seznam faktorů, které ovlivňují výkon počáteční replikace jsou shrnuté později v této části.
-
-Pro **přírůstkové synchronizace**, čas úlohy závisí na počtu změn v tento synchronizační cyklus. Pokud méně než 5 000 uživatelů nebo změn členství ve skupinách, můžete dokončit úlohy v rámci jednoho Přírůstková synchronizace cyklu. 
-
-Následující tabulka shrnuje časů synchronizace pro běžné scénáře zřizování. V těchto scénářích zdrojového systému je Azure AD a cílovém systému je aplikace SaaS. Doba synchronizace jsou odvozeny z statistické analýzy úloh synchronizace pro aplikace SaaS, ServiceNow, síti na pracovišti, G Suite a Salesforce.
-
-
-| Konfigurace oboru | Uživatelé, skupiny a členové v oboru | Čas počáteční synchronizace | Přírůstková synchronizace |
-| -------- | -------- | -------- | -------- |
-| Přiřazení uživatelé a skupiny pouze synchronizovat |  < 1,000 |  < 30 minut | < 30 minut |
-| Přiřazení uživatelé a skupiny pouze synchronizovat |  1,000 - 10,000 | 142 - minut 708 | < 30 minut |
-| Přiřazení uživatelé a skupiny pouze synchronizovat |   10,000 - 100,000 | 1,170 - 2,340 minut | < 30 minut |
-| Synchronizovat všechny uživatele a skupiny ve službě Azure AD |  < 1,000 | < 30 minut  | < 30 minut |
-| Synchronizovat všechny uživatele a skupiny ve službě Azure AD |  1,000 - 10,000 | < 30-120 minut | < 30 minut |
-| Synchronizovat všechny uživatele a skupiny ve službě Azure AD |  10,000 - 100,000  | 713 - 1,425 minut | < 30 minut |
-| Synchronizovat všechny uživatele ve službě Azure AD|  < 1,000  | < 30 minut | < 30 minut |
-| Synchronizovat všechny uživatele ve službě Azure AD | 1,000 - 10,000  | 43 - 86 minut | < 30 minut |
-
-
-Pro konfiguraci **synchronizace přiřazené uživatele a skupiny pouze**, těchto vzorců můžete použít k určení přibližné minimální a maximální očekávané **počáteční synchronizace** časy:
-
-    Minimum minutes =  0.01 x [Number of assigned users, groups, and group members]
-    Maximum minutes = 0.08 x [Number of assigned users, groups, and group members] 
-    
-Seznam faktorů, které ovlivňují čas potřebný k dokončení **počáteční synchronizace**:
-
-- Celkový počet uživatelů a skupin v oboru pro zřizování.
-
-- Celkový počet uživatelů, skupin a členů skupiny, které jsou k dispozici ve zdrojovém systému (Azure AD).
-
-- Určuje, zda uživatelé v oboru pro zřizování budou odpovídat existujícím uživatelům v cílové aplikaci nebo nutné vytvořit poprvé. Úlohy synchronizace pro které všichni uživatelé jsou vytvořeni poprvé trvat přibližně *dvakrát tak dlouho,* tak, jak synchronizovat úlohy, pro které všichni uživatelé budou odpovídat existujícím uživatelům.
-
-- Počet chyb v [protokoly auditu](check-status-user-account-provisioning.md). Pokud je mnoho chyb a služby zřizování přešel do stavu karantény je pomalejší výkon.    
-
-- Požádat o šířku pásma a omezení šířky pásma implementovány cílovým systémem. Některé cílové systémy implementovat omezení frekvence požadavků a omezení, které můžou ovlivnit výkon během operací velký synchronizace. Aplikace, která přijímá příliš mnoho požadavků příliš rychle za těchto podmínek může zpomalit jeho míry odezvy nebo uzavřením připojení. Kvůli zvýšení výkonu se konektoru je potřeba upravit odesláním žádosti o aplikace rychleji, než dokáže zpracovat aplikace. Zřizování konektory vytvořené microsoftem provést tuto úpravu. 
-
-- Počet a velikost přiřazených skupin. Přiřazené skupiny synchronizace trvá déle než synchronizaci uživatelů. Počet a velikost přiřazených skupin dopad na výkon. Pokud má aplikace [mapování povolena pro skupinu synchronizace objektů](customize-application-attributes.md#editing-group-attribute-mappings)vlastnosti skupiny jako například názvy skupin a členství ve skupinách se synchronizují kromě uživatelů. Tyto další synchronizace bude trvat déle než pouze synchronizaci uživatelských objektů.
-
+Výkon závisí na Určuje, zda běží vaše úlohy zřizování počáteční zřizování cyklu nebo přírůstkové cyklu. Podrobnosti o zřizování jak dlouho trvá a monitorování stavu služby zřizování najdete v tématu [zkontrolujte stav zřizování uživatelů](application-provisioning-when-will-provisioning-finish-specific-user.md). 
 
 ## <a name="how-can-i-tell-if-users-are-being-provisioned-properly"></a>Jak poznám, že pokud uživatelé se nezřizují správně?
 
@@ -255,7 +216,7 @@ Plán služby příklad podrobný postup nasazení pro zřizování odchozí už
 
 Ano, je možné použít uživatele Azure AD zřizování uživatelů služby zřizování B2B (nebo hostovaný) ve službě Azure AD k aplikacím SaaS.
 
-Pro B2B uživatelům umožní přihlásit k aplikaci SaaS pomocí Azure AD, ale SaaS aplikace musí mít jeho založené na SAML jednotné přihlašování nakonfigurovanou schopnost určitým způsobem. Další informace o tom, jak nakonfigurovat aplikace SaaS s podporou přihlášení od uživatele B2B, přečtěte si téma [konfigurace SaaS aplikace pro spolupráci B2B]( https://docs.microsoft.com/azure/active-directory/b2b/configure-saas-apps).
+Pro B2B uživatelům umožní přihlásit k aplikaci SaaS pomocí Azure AD, ale SaaS aplikace musí mít jeho založené na SAML jednotné přihlašování nakonfigurovanou schopnost určitým způsobem. Další informace o tom, jak nakonfigurovat aplikace SaaS s podporou přihlášení od uživatele B2B najdete v tématu [konfigurace SaaS aplikace pro spolupráci B2B]( https://docs.microsoft.com/azure/active-directory/b2b/configure-saas-apps).
 
 ### <a name="does-automatic-user-provisioning-to-saas-apps-work-with-dynamic-groups-in-azure-ad"></a>Podporuje automatické zřizování uživatelů pro SaaS aplikace pracují s dynamickými skupinami ve službě Azure AD?
 

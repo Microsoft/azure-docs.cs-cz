@@ -8,17 +8,17 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/17/2019
-ms.openlocfilehash: acafd6d8f37edd3e16561a4e588556bb771619f8
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.date: 06/21/2019
+ms.openlocfilehash: 54296f0b4aed22457a5218154111a42ad01ec262
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206705"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329344"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>Principy a úpravy jednotek streamování
 
-Streamování (su) jednotky představuje výpočetní prostředky, které jsou přiděleny k provedení úlohy. Čím vyšší je počet SU, tím více prostředků CPU a paměti se úloze přidělí. Tato kapacita vám umožní soustředit na logiku dotazu a přehledů nutnosti spravovat hardware pro spuštění vašeho Stream Analytics úlohy včas.
+Streamování (su) jednotky představuje výpočetní prostředky, které jsou přiděleny k provedení úlohy Stream Analytics. Čím vyšší je počet SU, tím více prostředků CPU a paměti se úloze přidělí. Tato kapacita vám umožní soustředit na logiku dotazu a přehledů nutnosti spravovat hardware pro spuštění vašeho Stream Analytics úlohy včas.
 
 Aby se dosáhlo nízké latence zpracování streamů, provádějí úlohy Stream Analytics veškeré zpracování v paměti. Při spuštění nedostatek paměti, úloha streamování se nezdaří. V důsledku toho pro produkční úlohy, je důležité monitorovat využití prostředků úlohy streamování a ujistěte se, že není dostatek prostředků přidělených zachovat úloh spuštěných 24 hodin denně 7.
 
@@ -85,7 +85,7 @@ Například v následujícím dotazu číslo přidružené k `clusterid` je kard
    GROUP BY  clusterid, tumblingwindow (minutes, 5)
    ```
 
-Pokud chcete zmírnit potíže způsobené vysokou kardinalitou v předchozím dotazu, můžete odesílat události do centra událostí, které jsou rozdělené podle `clusterid`a horizontální navýšení kapacity dotazu tím, že systém ke zpracování jednotlivých vstupních oddílů samostatně pomocí **oddílu PODLE** jak je znázorněno v následujícím příkladu:
+Aby bylo možné zmírnit problémy způsobené vysokou kardinalitou v předchozím dotazu, můžete odesílat události do centra událostí, které jsou rozdělené podle `clusterid`a horizontální navýšení kapacity dotazu tím, že systém ke zpracování jednotlivých vstupních oddílů samostatně pomocí **oddílu PODLE** jak je znázorněno v následujícím příkladu:
 
    ```sql
    SELECT count(*) 

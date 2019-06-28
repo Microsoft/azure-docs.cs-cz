@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.topic: article
 ms.date: 03/15/2018
-ms.openlocfilehash: 5dd9d8eac7d65815d7c98a28b0d5af55f19cec47
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 29d56e64f118fe36fb4905dca20d9fba2f210665
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65464436"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295913"
 ---
 # <a name="create-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Vytvoření datových proudů řídicí panel přehledů o zákazníků s Azure Logic Apps a Azure Functions
 
@@ -99,8 +99,8 @@ K zobrazení předchozích historií spuštění v sadě Visual Studio nebo na w
 
 * Otevřete Průzkumníka cloudu sady Visual Studio. Najít aplikaci logiky, otevřete místní nabídku aplikace. Vyberte **Otevřít historii spouštění**.
 
-  > [!NOTE]
-  > Pro Visual Studio 2019 Průzkumníka cloudu můžete otevřít návrhář aplikace logiky na webu Azure Portal, ale nemůže ještě otevřít vloženého návrháře aplikace logiky nebo historie spuštění.
+  > [!TIP]
+  > Pokud tento příkaz nemáte k dispozici v aplikaci Visual Studio 2019, zkontrolujte, že máte nejnovější aktualizace pro sadu Visual Studio.
 
 * Na webu Azure Portal vyhledejte svou aplikaci logiky. V nabídce aplikace logiky zvolte **přehled**. 
 

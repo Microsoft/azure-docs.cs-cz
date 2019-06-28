@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/16/2019
-ms.openlocfilehash: f6971038be7404850d958de67eb4755ae7d21a29
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b0f513462f1e09718dc18e9ce454b82e8978961f
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65761972"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329612"
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>Příklady pro běžné vzory využití Stream Analytics dotazů
 
@@ -157,7 +157,7 @@ Třeba zkontrolujte, že výsledek vrátí talířů licence, které začínají
 
 **Output2**:
 
-| Vytvoření | Čas | Počet |
+| Vytvoření | Čas | Count |
 | --- | --- | --- |
 | Toyota |2015-01-01T00:00:10.0000000Z |3 |
 
@@ -437,7 +437,12 @@ Například 2 po sobě jdoucích auta ze stejné značky zadali silniční linka
 
 ```SQL
     SELECT
-        [user], feature, DATEDIFF(second, LAST(Time) OVER (PARTITION BY [user], feature LIMIT DURATION(hour, 1) WHEN Event = 'start'), Time) as duration
+        [user],
+    feature,
+    DATEDIFF(
+        second,
+        LAST(Time) OVER (PARTITION BY [user], feature LIMIT DURATION(hour, 1) WHEN Event = 'start'),
+        Time) as duration
     FROM input TIMESTAMP BY Time
     WHERE
         Event = 'end'
@@ -627,7 +632,7 @@ WHERE
 
 **Výstup**:
 
-| TollID | Count |
+| TollID | Počet |
 | --- | --- |
 | 1 | 2 |
 | 2 | 2 |
@@ -655,7 +660,7 @@ GROUP BY TUMBLINGWINDOW(second, 5), TollId
 
 **Vstup**:  
 
-| DeviceId | Čas | Atribut | Hodnota |
+| DeviceId | Čas | Atribut | Value |
 | --- | --- | --- | --- |
 | 1 |2018-07-27T00:00:01.0000000Z |Teplota |50 |
 | 1 |2018-07-27T00:00:01.0000000Z |Teplota |50 |
@@ -695,6 +700,15 @@ GROUP BY DeviceId,TumblingWindow(minute, 5)
 ```
 
 **Vysvětlení**: [COUNT (DISTINCT času)](/stream-analytics-query/count-azure-stream-analytics) vrátí počet jedinečných hodnot ve sloupci čas v rámci časové okno. Pak můžete výstup tohoto kroku k výpočtu průměru za zařízení vypuštěním duplicitní položky.
+
+## <a name="geofencing-and-geospatial-queries"></a>Monitorování geografických zón a geoprostorové dotazy
+Azure Stream Analytics poskytuje geoprostorové funkce, které slouží k implementaci scénářů, jako je Správa vozového parku, svézt, sdílení auta připojená k síti a sledování prostředků. Geoprostorová data je možné ingestovat v rámci datového proudu událostí ve formátu GeoJSON nebo Well-Known text nebo odkazují na data. Další informace najdete [monitorování geografických zón a geoprostorové agregace scénáře se službou Azure Stream Analytics](geospatial-scenarios.md) článku.
+
+## <a name="language-extensibility-through-javascript-and-c"></a>Rozšíření pro jazyk pomocí JavaScriptu aC#
+Azure Stream Ananlytics dotazu langugae je možné rozšířit pomocí vlastní funkce, které jsou napsané v jazyce JavaScript nebo C# jazyky. Další informace najdete v článcích foolowing:
+* [Azure uživatelem definované funkce jazyka JavaScript v Stream Analytics](stream-analytics-javascript-user-defined-functions.md)
+* [Uživatelem definované agregace Azure jazyka JavaScript v Stream Analytics](stream-analytics-javascript-user-defined-aggregates.md)
+* [Vývoj .NET Standard uživatelsky definovaných funkcí pro úlohy Azure Stream Analytics Edge](stream-analytics-edge-csharp-udf-methods.md)
 
 ## <a name="get-help"></a>Podpora
 

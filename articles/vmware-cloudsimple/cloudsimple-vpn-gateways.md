@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c9689a468e8784eb4ec3590011e02a37d92d6b9c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a91d0f75b7e27065bd2ee0ea430a859d265afacb
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67083403"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67332036"
 ---
 # <a name="vpn-gateways-overview"></a>Přehled bran VPN
 
@@ -26,7 +26,7 @@ CloudSimple nabízí dva typy brány sítě VPN:
 
 ## <a name="site-to-site-vpn-gateway"></a>Brány VPN typu Site-to-site
 
-Brány VPN typu site-to-site slouží k posílání šifrovaného provozu mezi CloudSimple oblasti sítí a místním datacentrem. Pro účely definování rozsahu podsítě/CIDR, pro síťový provoz mezi vaší místní sítí a sítí oblasti CloudSimple použijte toto připojení.
+Brány VPN typu site-to-site slouží k posílání šifrovaného provozu mezi CloudSimple oblasti sítí a místním datacentrem. Pro účely definování rozsahu podsítě/CIDR, ke komunikaci mezi vaší místní sítí a sítí oblasti CloudSimple použijte toto připojení.
 
 VPN gateway umožňuje využívat služby z místně na vašem privátním cloudu a služby v privátním cloudu, z místní sítě.  CloudSimple poskytuje serveru VPN na základě zásad pro vytvoření připojení z vaší místní sítě.
 
@@ -38,6 +38,9 @@ Případy použití pro síť VPN site-to-site zahrnují:
 * Usnadnění úloh běžících na privátní cloud z vaší místní sítě.
 
 ![Topologie připojení VPN typu Site-to-Site](media/cloudsimple-site-to-site-vpn-connection.png)
+
+> [!IMPORTANT]
+> Musíte Uchytit TCP MSS 1078 bajtů nebo nižší. Nebo pokud vaše zařízení VPN nepodporují upnutí MSS, můžete také nastavit MTU na rozhraní tunelu na 1118 bajtů místo. 
 
 ### <a name="cryptographic-parameters"></a>Kryptografickým parametrům
 

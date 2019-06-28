@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: overview
 ms.date: 06/07/2019
-ms.openlocfilehash: 847b6f12a2be0b92fe59b19b81e7953e261d1dd0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b92acaa7e8403dfa28c1182fb1dc008d066624c6
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67129254"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67309976"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Co je Apache Hadoop komponenty a verze, které jsou k dispozici s HDInsight?
 
@@ -46,9 +46,9 @@ Verze součástí spojené s verzemi clusterů HDInsight jsou uvedeny v následu
 | Apache Storm | - | 1.1.0 | 1.0.1 | 0.10.0 | 0.10.0 | 0.9.3 |
 | Apache Mahout | - | 0.9.0+ | 0.9.0+ | 0.9.0+ | 0.9.0+ | 0.9.0 |
 | Apache Phoenix | 5 | 4.7.0 | 4.7.0 | 4.4.0 | 4.4.0 | 4.2.0 |
-| Apache Spark | 2.3.1 | 2.3.0, 2.2.0, 2.1.0 | 1.6.2, 2.0 | 1.6.0 | 1.5.2 | 1.3.1 (jenom Windows) |
+| Apache Spark | 2.3.1, 2.4 | 2.3.0, 2.2.0, 2.1.0 | 1.6.2, 2.0 | 1.6.0 | 1.5.2 | 1.3.1 (jenom Windows) |
 | Apache Livy | 0,5 | 0.4, 0.4, 0.3 | 0.3 | 0.3 | 0.2 | - |
-| Apache Kafka | 1.1.1 | 1.1, 1.0 * (viz poznámka níže) | 0.10.0 | 0.9.0 | - | - |
+| Apache Kafka | 1.1.1, 2.1 | 1.1, 1.0 * (viz poznámka níže) | 0.10.0 | 0.9.0 | - | - |
 | Apache Ambari | 2.7.0 | 2.6.0 | 2.4.0 | 2.2.1 | 2.1.0 | - |
 | Apache Zeppelin | 0.8.0 | 0.7.0 | - | - | - | - |
 | Mono | 4.2.1 | 4.2.1 | 4.2.1 | 3.2.8 | - | - |
@@ -74,8 +74,8 @@ Následující tabulka uvádí verze HDInsight, které jsou k dispozici na webu 
 
 | Verze HDInsight | Verze HDP | VM OS | Datum vydání | Datum vypršení platnosti podpory | Datum vyřazení z provozu | Vysoká dostupnost |  Dostupnost na webu Azure portal | 
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| HDInsight 4.0 |HDP 3.0 |Ubuntu 16.0.4 LTS |24\. září 2018 | | |Ano |Ano |
-| HDInsight 3.6 |HDP 2.6 |Ubuntu 16.0.4 LTS |4\. dubna 2017 | 30\. června 2020 |31\. prosince 2020 |Ano |Ano |
+| HDInsight 4.0 |HDP 3.0 |Ubuntu 16.0.4 LTS |24. září 2018 | | |Ano |Ano |
+| HDInsight 3.6 |HDP 2.6 |Ubuntu 16.0.4 LTS |4\. dubna 2017 | 30. června 2020 |31. prosince 2020 |Ano |Ano |
 
 
 > [!NOTE]  
@@ -88,15 +88,15 @@ Následující tabulka uvádí verze HDInsight, které jsou **není** k dispozic
 
 | Verze HDInsight | Verze HDP | VM OS | Datum vydání | Datum vypršení platnosti podpory | Datum vyřazení z provozu | Vysoká dostupnost |  Dostupnost na webu Azure portal | 
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| HDInsight 3.5 <br> (Bez Spark) |HDP 2.5 |Ubuntu 16.0.4 LTS |30\. září 2016 |5\. září 2017 |28\. června 2018 |Ano |Ne |
-| HDInsight 3.4 |HDP 2.4 |Ubuntu 14.0.4 LTS |29\. března 2016 |29\. prosince 2016 |9\. ledna 2018 |Ano |Ne |
-| HDInsight 3.3 |HDP 2.3 |Windows Server 2012 R2 |2\. prosince 2015 |27\. června 2016 |31\. července 2018 |Ano |Ne |
-| HDInsight 3.3 |HDP 2.3 |Ubuntu 14.0.4 LTS |2\. prosince 2015 |27\. června 2016 |31\. července 2017 |Ano |Ne |
-| HDInsight 3.2 |HDP 2.2 |Ubuntu 12.04 LTS nebo Windows Server 2012 R2 |18\. února 2015 |1\. března 2016 |1\. dubna 2017 |Ano |Ne |
-| HDInsight 3.1 |HDP 2.1 |Windows Server 2012 R2 |24\. června 2014 |18\. května 2015 |30\. června 2016 |Ano |Ne |
-| HDInsight 3.0 |HDP 2.0 |Windows Server 2012 R2 |11\. února 2014 |17\. září 2014 |30\. června 2015 |Ano |Ne |
-| HDInsight 2.1 |HDP 1.3 |Windows Server 2012 R2 |28\. října 2013 |12\. května 2014 |31\. května 2015 |Ano |Ne |
-| HDInsight 1.6 |HDP 1.1 | |28\. října 2013 |26\. dubna 2014 |31\. května 2015 |Ne |Ne |
+| HDInsight 3.5 <br> (Bez Spark) |HDP 2.5 |Ubuntu 16.0.4 LTS |30. září 2016 |5\. září 2017 |28. června 2018 |Ano |Ne |
+| HDInsight 3.4 |HDP 2.4 |Ubuntu 14.0.4 LTS |29. března 2016 |29. prosince 2016 |9\. ledna 2018 |Ano |Ne |
+| HDInsight 3.3 |HDP 2.3 |Windows Server 2012 R2 |2\. prosince 2015 |27. června 2016 |31. července 2018 |Ano |Ne |
+| HDInsight 3.3 |HDP 2.3 |Ubuntu 14.0.4 LTS |2\. prosince 2015 |27. června 2016 |31. července 2017 |Ano |Ne |
+| HDInsight 3.2 |HDP 2.2 |Ubuntu 12.04 LTS nebo Windows Server 2012 R2 |18. února 2015 |1\. března 2016 |1\. dubna 2017 |Ano |Ne |
+| HDInsight 3.1 |HDP 2.1 |Windows Server 2012 R2 |24. června 2014 |18. května 2015 |30. června 2016 |Ano |Ne |
+| HDInsight 3.0 |HDP 2.0 |Windows Server 2012 R2 |11. února 2014 |17. září 2014 |30. června 2015 |Ano |Ne |
+| HDInsight 2.1 |HDP 1.3 |Windows Server 2012 R2 |28. října 2013 |12. května 2014 |31. května 2015 |Ano |Ne |
+| HDInsight 1.6 |HDP 1.1 | |28. října 2013 |26. dubna 2014 |31. května 2015 |Ne |Ne |
 
 > [!NOTE]  
 > Clustery s vysokou dostupností pomocí dvou hlavních uzlů se nasadí ve výchozím nastavení pro HDInsight verze 2.1 nebo novější. Nejsou k dispozici u clusterů HDInsight verze 1.6.
@@ -170,7 +170,7 @@ V části obsahuje odkazy na poznámky k verzi pro datovou platformou Hortonwork
 * Verze clusteru HDInsight 3.2 využívá distribuci systému Hadoop, který je založen na [datovou platformu Hortonworks 2.2][hdp-2-2].
 
   * Zpráva k vydání verze pro konkrétní komponenty Apache jsou dostupné takto: [Hive 0.14](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310843&version=12326450), [Pig 0.14](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310730&version=12326954), [HBase 0.98.4](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310753&version=12326810), [Phoenix 4.2.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12315120&version=12327581), [M/R 2.6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310941&version=12327180), [HDFS 2.6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310942&version=12327181), [YARN 2.6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12313722&version=12327197), [běžné](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310240&version=12327179), [Tez 0.5.2](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314426&version=12328742), [Ambari 2.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12312020&version=12327486), [Storm 0.9.3](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314820&version=12327112), a [Oozie 4.1.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12324960&projectId=12311620).
-* Verze clusteru HDInsight 3.1 využívá distribuci systému Hadoop, který je založen na [datovou platformou Hortonworks 2.1.7][hdp-2-1-7]. Clustery HDInsight 3.1 vytvořené před listopadem, 7, 2014, jsou založeny na [datovou platformou Hortonworks 2.1.1][hdp-2-1-1].
+* Verze clusteru HDInsight 3.1 využívá distribuci systému Hadoop, který je založen na [datovou platformou Hortonworks 2.1.7][hdp-2-1-7]. HDInsight 3.1 clusters created before November, 7, 2014, are based on [Hortonworks Data Platform 2.1.1][hdp-2-1-1].
 * Verze clusteru HDInsight 3.0 využívá distribuci systému Hadoop, který je založen na [Hortonworks Data Platform 2.0][hdp-2-0-8].
 * Verze clusteru HDInsight 2.1 využívá distribuci systému Hadoop, který je založen na [Hortonworks Data Platform 1.3][hdp-1-3-0].
 * Verze clusteru HDInsight 1.6 využívá distribuci systému Hadoop, který je založen na [Hortonworks Data Platform 1.1][hdp-1-1-0].
