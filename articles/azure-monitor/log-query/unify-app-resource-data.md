@@ -103,17 +103,17 @@ V následující tabulce jsou uvedeny rozdíly ve schématu mezi Log Analytics a
 | ApplicationName | appName|
 | ApplicationTypeVersion | application_Version |
 | AvailabilityCount | itemCount |
-| AvailabilityDuration | Doba trvání |
+| AvailabilityDuration | duration |
 | AvailabilityMessage | message |
 | AvailabilityRunLocation | location |
 | AvailabilityTestId | id |
 | AvailabilityTestName | name |
 | AvailabilityTimestamp | timestamp |
-| Prohlížeč | client_browser |
-| Město | client_city |
-| Když | client_IP |
+| Browser | client_browser |
+| City | client_city |
+| ClientIP | client_IP |
 | Computer | cloud_RoleInstance | 
-| Země | client_CountryOrRegion | 
+| Country | client_CountryOrRegion | 
 | CustomEventCount | itemCount | 
 | CustomEventDimensions | customDimensions |
 | CustomEventName | name | 
@@ -123,25 +123,25 @@ V následující tabulce jsou uvedeny rozdíly ve schématu mezi Log Analytics a
 | ExceptionHandledAt | handledAt |
 | ExceptionMessage | message | 
 | ExceptionType | type |
-| ID operace | operation_id |
+| OperationID | operation_id |
 | OperationName | operation_Name | 
-| Operační systém | client_OS | 
+| OS | client_OS | 
 | PageViewCount | itemCount |
-| PageViewDuration | Doba trvání | 
+| PageViewDuration | duration | 
 | PageViewName | name | 
 | ParentOperationID | operation_Id | 
 | RequestCount | itemCount | 
-| RequestDuration | Doba trvání | 
-| ID žádosti | id | 
+| RequestDuration | duration | 
+| RequestID | id | 
 | RequestName | name | 
-| RequestSuccess | úspěch | 
-| ResponseCode | Kód výsledku | 
+| RequestSuccess | success | 
+| ResponseCode | resultCode | 
 | Role | cloud_RoleName |
-| Instance role | cloud_RoleInstance |
-| ID relace | session_Id | 
+| RoleInstance | cloud_RoleInstance |
+| SessionId | session_Id | 
 | SourceSystem | operation_SyntheticSource |
 | TelemetryTYpe | type |
-| zprostředkovatele identity | _url |
+| URL | _url |
 | UserAccountId | user_AccountId |
 
 ## <a name="next-steps"></a>Další postup
