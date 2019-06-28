@@ -3,17 +3,17 @@ title: Nastavení monitorování výstrah pro úlohy Azure Stream Analytics
 description: Tento článek popisuje, jak nastavit monitorování a výstrah pro úlohy Azure Stream Analytics pomocí webu Azure portal.
 services: stream-analytics
 author: jseb225
-ms.author: jeanb
+ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/11/2019
-ms.openlocfilehash: 09a5c77c770f7709b90d4959da5be9134b0f0ad9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 06/21/2019
+ms.openlocfilehash: 26e8e004f917b1c138bc27389cac1cc52672f3d4
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67077686"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329857"
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>Nastavení upozornění pro úlohy Azure Stream Analytics
 
@@ -22,6 +22,7 @@ Je důležité monitorovat úlohu Azure Stream Analytics zajistit, že úloha b�
 Můžete definovat pravidla týkající se metrik z dat protokolů operací pomocí portálu, stejně jako [programově](https://code.msdn.microsoft.com/windowsazure/Receive-Email-Notifications-199e2c9a).
 
 ## <a name="set-up-alerts-in-the-azure-portal"></a>Nastavte si upozornění na webu Azure Portal
+### <a name="get-alerted-when-a-job-stops-unexpectedly"></a>Nechte se upozornit, když se neočekávaně zastaví úlohu
 
 Následující příklad ukazuje, jak nastavit upozornění, pokud vaše úloha přejde do stavu selhání. Tato výstraha se doporučuje pro všechny úlohy.
 

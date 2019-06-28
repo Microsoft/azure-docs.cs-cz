@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.openlocfilehash: 0b68819ba032d7655433aadd30fe2852941096ce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 55db909f240756200d758fe89aabb217fb380d16
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61478874"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329822"
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Využití paralelizace dotazů ve službě Azure Stream Analytics
 Tento článek ukazuje, jak využít výhod paralelního zpracování v Azure Stream Analytics. Zjistíte, jak škálovat úlohy Stream Analytics pomocí konfigurace vstupního oddíly a ladění definice dotazu analytics.
@@ -60,7 +60,7 @@ Další informace o oddílech najdete v následujících článcích:
 
 1. Pokud svoji logiku dotazu závisí na stejnou instanci dotazu zpracovává stejným klíčem, musí se ujistěte, že událostí přejděte do stejného oddílu váš vstup. Pro službu IoT Hub nebo Event Hubs, to znamená, že se data události musí mít **PartitionKey** hodnota sady. Alternativně můžete použít dělené odesílatelů. Pro úložiště objektů blob to znamená odeslání události do stejné složky oddílu. Pokud svoji logiku dotazu nevyžaduje stejný klíč zpracovat stejnou instanci dotazu, můžete ignorovat tento požadavek. Příkladem této logiky může být jednoduchý dotaz filtru vybrat projektu.  
 
-2. Po dat je rozloží na straně vstupní, ujistěte se, že je váš dotaz dělený. To vyžaduje, abyste použili **PARTITION BY** ve všech krocích. Jsou povoleny několik kroků, ale všechny musí být dělené podle stejný klíč. V současné době dělení klíč musí být nastaveno na **PartitionId** mohl být plně paralelní úlohy.  
+2. Po dat je rozloží na straně vstupní, ujistěte se, že je váš dotaz dělený. To vyžaduje, abyste použili **PARTITION BY** ve všech krocích. Jsou povoleny několik kroků, ale všechny musí být dělené podle stejný klíč. V části úroveň kompatibility 1.0 a 1.1, musí být nastaveno na klíč rozdělení **PartitionId** mohl být plně paralelní úlohy. Pro úlohy s úrovní compatility 1.2 nebo vyšší vlastní sloupec se dá nastavit jako klíč oddílu v nastavení vstupu a úlohy budou paralellized automoatically i bez klauzuli PARTITION BY.
 
 3. Většina našich výstupu můžete využít výhod dělení, ale pokud použijete výstupní typ, který nepodporuje vytváření oddílů nebudou plně paralelní úlohy. Odkazovat [výstupní sekce](#outputs) další podrobnosti.
 
@@ -87,7 +87,7 @@ Dotaz:
     WHERE TollBoothId > 100
 ```
 
-Tento dotaz je jednoduchý filtr. Proto jsme nemusíte se starat o dělení vstup odeslaná do centra událostí. Všimněte si, že dotaz obsahuje **oddíl podle PartitionId**, takže splňuje požadavek #2 z dříve. Pro výstup, musíme nakonfigurovat výstup centra událostí v projektu na sadu klíče oddílu pro **PartitionId**. Jeden poslední se ujistěte se, že počet vstupních oddílů je roven počtu oddílů výstup.
+Tento dotaz je jednoduchý filtr. Proto jsme nemusíte se starat o dělení vstup odeslaná do centra událostí. Všimněte si, že před 1.2 musí obsahovat úlohy s úrovní kompatibility **oddíl podle PartitionId** tak splňuje požadavek #2 z předchozí klauzuli. Pro výstup, musíme nakonfigurovat výstup centra událostí v projektu na sadu klíče oddílu pro **PartitionId**. Jeden poslední se ujistěte se, že počet vstupních oddílů je roven počtu oddílů výstup.
 
 ### <a name="query-with-a-grouping-key"></a>Dotazování s klíčem seskupení
 
@@ -141,6 +141,26 @@ Dotaz:
 Jak je vidět, druhý krok využívá **TollBoothId** jako klíč rozdělení. Tento krok není stejný jako v prvním kroku, a proto vyžaduje, abychom náhodně. 
 
 Předchozí příklady ukazují některé úlohy Stream Analytics, které odpovídají (nebo nemusíte) jednoduše paralelně zpracovatelné topologie. Pokud jsou v souladu, mají potenciál pro maximální škálování. Pro úlohy, které se nehodí jeden z těchto profilů škálování doprovodné materiály bude k dispozici v budoucích aktualizací. Prozatím použijte obecné pokyny v následujících částech.
+
+### <a name="compatibility-level-12---multi-step-query-with-different-partition-by-values"></a>Úroveň kompatibility 1.2 – vícekrokového dotazu s různými hodnotami PARTITION BY 
+* Vstup: Centrum událostí s 8 oddíly
+* Výstup: Centrum událostí s 8 oddíly
+
+Dotaz:
+
+```SQL
+    WITH Step1 AS (
+    SELECT COUNT(*) AS Count, TollBoothId
+    FROM Input1
+    GROUP BY TumblingWindow(minute, 3), TollBoothId
+    )
+
+    SELECT SUM(Count) AS Count, TollBoothId
+    FROM Step1
+    GROUP BY TumblingWindow(minute, 3), TollBoothId
+```
+
+Úroveň kompatibility 1.2 ve výchozím nastavení povoluje provádění paralelního dotazu. Například dotaz z předchozí části bude parttioned tak dlouho, dokud "TollBoothId" sloupec je nastaven jako vstupní klíč oddílu. Klauzule PARTITION podle ParttionId se nevyžaduje.
 
 ## <a name="calculate-the-maximum-streaming-units-of-a-job"></a>Vypočítat maximální počet jednotek úlohy streamování
 Celkový počet jednotek streamování, které je možné úlohu Stream Analytics, závisí na počtu kroků v dotazu definovaném pro úlohy a počet oddílů pro jednotlivé kroky.

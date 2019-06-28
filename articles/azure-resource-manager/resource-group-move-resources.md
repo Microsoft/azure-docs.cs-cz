@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: tomfitz
-ms.openlocfilehash: 1cc2f3b1ee657706dba237c86552b1780bc9dd34
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: eb99bec74ae5444320b7098616d4bf2d81b90697
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295445"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67332029"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Přesunutí prostředků do nové skupiny prostředků nebo předplatného
 
@@ -79,7 +79,6 @@ Následující seznam obsahuje obecný přehled služby Azure, které lze přesu
 * DNS
 * Event Grid
 * Event Hubs
-* Přední dveře
 * Clustery HDInsight – viz [omezení HDInsight](#hdinsight-limitations)
 * Iot Central
 * IoT Huby
@@ -138,6 +137,7 @@ Následující seznam obsahuje obecný přehled služby Azure, které nelze pře
 * Vývoj mezery
 * Dynamics LCS
 * ExpressRoute
+* Přední dveře
 * Služby testovacího prostředí – testovacím prostředím v Učebnách nelze přesunout do nové skupiny prostředků nebo předplatného. DevTest Labs můžete přesunout do nové skupiny prostředků ve stejném předplatném, ale ne napříč předplatnými.
 * Managed Applications
 * Spravovaná identita - přiřazená uživatelem

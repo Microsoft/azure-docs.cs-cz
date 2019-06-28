@@ -7,23 +7,25 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 6/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: e43e1034abe4bbe3d31a46ab3b98b0efe612b852
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cb81c73f7946a10bae0470a55dcf1c0d55c2b847
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66159456"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67330055"
 ---
-# <a name="clean-up-your-azure-stream-analytics-job"></a>Vyčištění vaší úlohy Azure Stream Analytics
+# <a name="stop-or-delete-your-azure-stream-analytics-job"></a>Zastavit nebo odstranit úlohu Azure Stream Analytics
 
-Úlohy Azure Stream Analytics můžete snadno odstranit prostřednictvím webu Azure portal, prostředí Azure PowerShell, sady Azure SDK for .net nebo REST API. Úlohu Stream Analytics nelze obnovit, jakmile je Odstraněná.
+Úlohy Azure Stream Analytics můžete snadno zastavit nebo odstranit prostřednictvím webu Azure portal, prostředí Azure PowerShell, sady Azure SDK for .net nebo REST API. Úlohu Stream Analytics nelze obnovit, jakmile je Odstraněná.
 
 >[!NOTE] 
 >Při zastavení vaší úlohy Stream Analytics, data se uchovávají pouze ve vstupní a výstupní úložiště, jako jsou Event Hubs nebo Azure SQL Database. V případě potřeby k odebrání dat z Azure je potřeba provést proces odebrání za vstupní a výstupní prostředky vaší úlohy Stream Analytics.
 
 ## <a name="stop-a-job-in-azure-portal"></a>Zastavení úlohy na webu Azure portal
+
+Po zastavení úlohy prostředky, které byly deprovisionned a zastaví zpracování událostí. Zastaví se také poplatky za související s tuto úlohu. Ale všechny konfigurace zůstanou a můžete později restartovat úlohu 
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
 
@@ -35,6 +37,9 @@ ms.locfileid: "66159456"
 
 
 ## <a name="delete-a-job-in-azure-portal"></a>Odstraňování úlohy na webu Azure portal
+
+>[!WARNING] 
+>Úlohu Stream Analytics nelze obnovit, jakmile je Odstraněná.
 
 1. Přihlaste se k portálu Azure. 
 

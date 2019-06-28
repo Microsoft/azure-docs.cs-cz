@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
-ms.date: 06/11/2019
+ms.topic: conceptual
+ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 68ff6a156e0d159816b184452f1f945cbce65216
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fff876de41e0069573b73779a16ebf06a3dd58c8
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67052024"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295257"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Nainstalujte a spusťte LUIS kontejnery dockeru
  
@@ -281,9 +281,9 @@ Konfigurovat parametry dotazu jak a co je vrácená v odpovědi na dotaz:
 |--|--|--|
 |`q`|string|Utterance uživatele.|
 |`timezoneOffset`|číslo|TimezoneOffset umožňuje [změnit časové pásmo](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) používané datetimeV2 předem připravených entit.|
-|`verbose`|Boolean|Vrátí všechny příkazy a jejich výsledky, pokud je nastavena na hodnotu true. Výchozí hodnota je false, která vrací pouze hlavní záměr.|
-|`staging`|Boolean|Vrátí dotaz z pracovní prostředí výsledky, pokud je nastavena na hodnotu true. |
-|`log`|Boolean|Zaznamenává dotazy, které je možné použít později pro [aktivně učit](luis-how-to-review-endpoint-utterances.md). Výchozí hodnota je true.|
+|`verbose`|boolean|Vrátí všechny příkazy a jejich výsledky, pokud je nastavena na hodnotu true. Výchozí hodnota je false, která vrací pouze hlavní záměr.|
+|`staging`|boolean|Vrátí dotaz z pracovní prostředí výsledky, pokud je nastavena na hodnotu true. |
+|`log`|boolean|Zaznamenává dotazy, které je možné použít později pro [aktivně učit](luis-how-to-review-endpoint-utterances.md). Výchozí hodnota je true.|
 
 ### <a name="query-published-app"></a>Dotaz publikované aplikace
 

@@ -9,13 +9,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
-ms.date: 05/02/2019
-ms.openlocfilehash: c7f4b6d8aa614a460772fb7af11f9b83dc3fc979
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/20/2019
+ms.openlocfilehash: 4a3ab9094080ab257a885bb7a745fc83948327c2
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65800815"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67331685"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automaticky – train model prognózy časových řad
 
@@ -26,6 +26,14 @@ V tomto článku se dozvíte, jak pro trénování časových řad prognóz regr
 * Spustit předpovědi s daty časových řad
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2X1GW]
+
+Automatizované ML můžete kombinovat technik a postupů a získejte doporučené, vysoce kvalitní časovou řadu prognózy. Automatizované experiment časovou řadu je považován za problém regrese s množstvím proměnných. Poslední časové řady hodnoty jsou "neseskupené" se další dimenze pro regresor společně s další prediktory. 
+
+Tento přístup, na rozdíl od klasického čas řady metod, má výhodu přirozeně začlenění více kontextových proměnných a jejich vzájemných vztazích během cvičení. Ve skutečných aplikacích prognóz několika faktory mohou mít vliv na prognózy. Například při Prognózování prodeje, interakce historické trendy, exchange sazba a cena všechny společně jednotka prodejní výsledky. Další výhodou je, všechny nejnovější inovace v regresních modelů ihned k předpovědi.
+
+Je možné [konfigurace](#config) jak daleko dopředu prognózy by měl rozšířit (prognózy horizontu), a také zjevně demonstruje výskyt pomalé a provádění dalších akcí. Automatizované ML zjistí model jednu, ale často interně větvenou pro všechny položky v datové sady a predikcí možností. Další data jsou tedy k dispozici k odhadu parametry modelu a je možné generalizace nezobrazený řady. 
+
+Funkce z trénovací data extrahovat hrát důležitou roli. A automatizované ML provede standardní předběžného zpracování kroky a vygeneruje další funkce časových řad pro zachycení sezónní efekty a maximalizovat prediktivní přesnost. 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -69,6 +77,7 @@ y_test = X_test.pop("sales_quantity").values
 > [!NOTE]
 > Když trénujete model pro předpověď budoucích hodnot, zajistěte všechno, co funkce použité v školení se dá použít při spouštěním predikcí pro určené horizont. Například při vytváření prognózy poptávky, včetně funkcí pro aktuální ceny akcie může široce zvýšit přesnost školení. Nicméně pokud máte v úmyslu Prognózování s dlouhý časový horizont, nemusí být schopni přesně předpovědět budoucí uložené hodnoty odpovídající budoucí body časových řad a přesnost modelu může být negativně.
 
+<a name="config"></a>
 ## <a name="configure-and-run-experiment"></a>Nakonfigurování a spuštění experimentu
 
 Pro předpověď úkoly, používá automatizované strojového učení úkony předběžného zpracování a odhad kroky, které jsou specifické pro data časových řad. Provede následující kroky předběžného zpracování:
@@ -85,7 +94,7 @@ Pro předpověď úkoly, používá automatizované strojového učení úkony p
 |-------|-------|-------|
 |`time_column_name`|Slouží k zadání vstupních dat použít pro vytváření časové řady a jeho četnost odvození sloupce data a času.|✓|
 |`grain_column_names`|Názvy, definování skupin jednotlivé řady ve vstupních datech. Pokud není definovaný interval, datová sada se považuje za jednu časových řad.||
-|`max_horizon`|Maximální požadovaný prognózy horizontu v jednotkách frekvence časových řad.|✓|
+|`max_horizon`|Definuje maximální požadovaný prognózy horizontu v jednotkách frekvence časových řad. Jednotky jsou založeny na časový interval cvičných dat, např. měsíčně, týdenní, že uživatel by měl předpovědět navýšení kapacity.|✓|
 |`target_lags`|*n* období vpřed prodleva cílových hodnot před cvičení modelu.||
 |`target_rolling_window_size`|*n* historických období pro generování předpokládaných hodnoty, < = školení nastavení velikosti. Pokud tento parametr vynechán, *n* je nastavení úplné školení velikosti.||
 

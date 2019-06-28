@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/02/2019
-ms.openlocfilehash: a2a281fda9272fb794692becb0ca08f3cf791458
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 714283628e1b2ac445d36d0b07fe299b589a1cf0
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65989876"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67312805"
 ---
 # <a name="create-and-explore-automated-machine-learning-experiments-in-the-azure-portal-preview"></a>Vytvoření a prozkoumejte automatizované se strojovým učením na webu Azure Portal (Preview)
 
@@ -96,16 +96,16 @@ Vyberte tlačítko Vytvořit Experiment k naplnění následující formulář.
 
 1. U prognózy:
     1. Vyberte sloupec, čas: Tento sloupec obsahuje časové údaje, který se má použít.
-    1. Vyberte prognózy horizontu: Označuje, kolik jednotek doba (minut/hodin nebo dnů/týdny/měsíců nebo let) modelu bude moct předvídat budoucnost. Dál modelu se vyžaduje k předpovědi do budoucna, tím méně přesné se tak stane. [Další informace o vytváření prognóz a prognózy horizontu](https://docs.microsoft.com/azure/machine-learning/service/how-to-auto-train-forecast#configure-experiment).
+    1. Vyberte prognózy horizontu: Označuje, kolik jednotek doba (minut/hodin nebo dnů/týdny/měsíců nebo let) modelu bude moct předvídat budoucnost. Dál modelu se vyžaduje k předpovědi do budoucna, tím méně přesné se tak stane. [Další informace o vytváření prognóz a prognózy horizontu](how-to-auto-train-forecast.md).
 
 1. (Volitelné) Upřesňující nastavení: Další nastavení, které vám umožní lepší kontrolu nad trénovací úlohu.
 
     Upřesnit nastavení|Popis
     ------|------
-    Primární metriku| Hlavní metriku pro vyhodnocení modelu. [Další informace o metrikách modelu](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-auto-train#explore-model-metrics).
+    Primární metriku| Hlavní metriku pro vyhodnocení modelu. [Další informace o metrikách modelu](how-to-configure-auto-train.md#explore-model-metrics).
     Výstupní kritéria| Pokud se splní některá z těchto kritérií, trénovací úlohu ukončí před dokončením úplné. <br> *Trénovací úlohu doba (v minutách)* : Jak dlouho se má povolit spuštění trénovací úlohy.  <br> *Maximální počet opakování*: Maximální počet kanálů (iterací) k testování v trénovací úlohu. Úloha se vůbec nespustí větší než zadaný počet iterací. <br> *Metriky skóre prahová hodnota*:  Minimální skóre metriky pro všechny kanály. Tím se zajistí, že pokud máte definovanému cíli metriky, které chcete dosáhnout, není strávíte víc času na trénovací úlohu, než je nutné.
     Předzpracování| Vyberte k povolení nebo zakázání předběžného zpracování v automatizovaných strojové učení. Předběžné zpracování zahrnuje čištění dat, přípravě a transformace ke generování syntetické funkce. [Další informace o předběžném zpracování](#preprocess).
-    Ověření| Vyberte jednu z možností křížového ověření pro použití v trénovací úlohu. [Další informace o křížové ověření](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-auto-train#cross-validation-split-options).
+    Ověření| Vyberte jednu z možností křížového ověření pro použití v trénovací úlohu. [Další informace o křížové ověření](how-to-configure-auto-train.md).
     Souběžnost| Vyberte vícejádrových limity, které chcete použít při používání vícejádrové výpočetní.
     Blokované algoritmus| Výběr algoritmů, které chcete vyloučit z trénovací úlohu.
 
@@ -180,7 +180,7 @@ Po dokončení fáze přípravy experiment, zobrazí se vám na obrazovku s podr
 
 ### <a name="view-training-run-details"></a>Podrobnosti o spuštění zobrazit školení
 
-K podrobnostem na žádném z modelů výstup zobrazíte podrobnosti o spuštění jako grafy metrik a distribuci výkonu školení. [Další informace o grafech](https://docs.microsoft.com/azure/machine-learning/service/how-to-track-experiments#understanding-automated-ml-charts).
+K podrobnostem na žádném z modelů výstup zobrazíte podrobnosti o spuštění jako grafy metrik a distribuci výkonu školení. [Další informace o grafech](how-to-track-experiments.md#understanding-automated-ml-charts).
 
 ![Podrobnosti iterace](media/how-to-create-portal-experiments/iteration-details.png)
 
@@ -220,7 +220,7 @@ Automatizované ML vám pomůže s nasazením modelu bez nutnosti psaní kódu:
 
 1. Vyberte **Procházet** tlačítko vedle textového pole "Conda soubor" pro nahrání souboru prostředí (condaEnv.yml), které jste předtím stáhli.
 
-    Vám může používat vlastní hodnoticího skriptu a souboru systému conda, jakož i nahrát další soubory. [Další informace o vyhodnocování skript](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where#script).
+    Vám může používat vlastní hodnoticího skriptu a souboru systému conda, jakož i nahrát další soubory. [Další informace o vyhodnocování skript](how-to-deploy-and-where.md#script).
 
       >[!Important]
       > Názvy souborů musí být v části 32 znaků a musí začínat a končit alfanumerické znaky. Může obsahovat pomlčky, podtržítka, tečky a alfanumerické znaky mezi. Nejsou povoleny mezery.
@@ -228,7 +228,7 @@ Automatizované ML vám pomůže s nasazením modelu bez nutnosti psaní kódu:
     ![Vytvoření image](media/how-to-create-portal-experiments/create-image.png)
 
 1. Vyberte tlačítko "Vytvořit" spusťte vytváření bitové kopie. Bude to trvat několik minut, až to bude hotové, zobrazí se zpráva na horním panelu.
-1. Přejděte na kartu "Image", zaškrtněte políčko vedle image, kterou chcete nasadit a vyberte možnost "Vytvořit nasazení". [Další informace o nasazení](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where).
+1. Přejděte na kartu "Image", zaškrtněte políčko vedle image, kterou chcete nasadit a vyberte možnost "Vytvořit nasazení". [Další informace o nasazení](how-to-deploy-and-where.md).
 
     Existují 2 možnosti pro nasazení.
      + Azure Container Instance (ACI) – používá se víc pro testovací účely, nikoli provozní nasazení ve velkém měřítku. Ujistěte se, že vyplňte hodnoty pro minimálně jeden hlavní pro _záložní kapacita procesoru_a alespoň jeden gigabajt (GB) pro _záložní kapacita paměti_

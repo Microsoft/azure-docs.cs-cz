@@ -9,12 +9,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/01/2019
 ms.author: kasparks
-ms.openlocfilehash: a7e82fffdd9c865de6040c05ec28bc8bd2dced61
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f91e48a532a278c95d50775e135ac6379e8d8070
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60468275"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67332059"
 ---
 # <a name="get-started-with-azure-advisor"></a>Začínáme se službou Azure Advisor
 
@@ -94,9 +94,9 @@ Můžete mít skupiny prostředků nebo předplatná, pro které nechcete pro p�
 
 Tento postup nakonfiguruje pravidlo průměrné využití procesoru doporučení pro virtuální počítače s nízkým využitím.
 
-Advisor sleduje využívání virtuálních počítačů po dobu 14 dnů a pak identifikuje nízké využití virtuálních počítačů. Virtuální počítače, jejichž průměrné využití procesoru je 5 % nebo méně a využití sítě je 7 MB nebo méně čtyři nebo více dny jsou považovány za nízké využití virtuálních počítačů.
+Advisor sleduje využívání virtuálních počítačů po dobu 7 dní a pak identifikuje nízké využití virtuálních počítačů. Virtuální počítače jsou považovány za využití s nízkou při využití výkonu procesoru 5 % nebo méně a jejich využití sítě je menší než 2 %, nebo pokud aktuální zatížení může být obslouženo menší velikost virtuálního počítače.
 
-Pokud chcete být mnohem vyššími zjistit málo využívaných virtuálních počítačů, můžete upravit průměrné využití procesoru pravidlo na bázi předplatného.  Pravidlo průměrné využití procesoru můžete nastavit na 5 %, 10 %, 15 % nebo 20 %.
+Pokud chcete být mnohem vyššími zjistit málo využívaných virtuálních počítačů, můžete upravit průměrné využití procesoru pravidlo na bázi předplatného.  Pravidlo využití procesoru můžete nastavit na 5 %, 10 %, 15 % nebo 20 %.
 
 > [!NOTE]
 > Chcete-li upravit průměrné pravidlo využití procesoru pro identifikaci málo využívaných virtuálních počítačů, musí být předplatné *vlastníka*.  Pokud nemáte požadovaná oprávnění pro skupinu prostředků nebo předplatného, bude v uživatelském rozhraní zakázána možnost zahrnout nebo vyloučit. 

@@ -7,13 +7,13 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/03/2019
-ms.openlocfilehash: fdf98a0c0c40010bb55955b54dc7b04db8e199f5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/21/2019
+ms.openlocfilehash: 88c0aea851bcf70206b5f68d7865c487441905f6
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66493266"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329900"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Detekce anomálií ve službě Azure Stream Analytics
 
@@ -21,7 +21,7 @@ K dispozici v cloudu a Azure IoT Edge, Azure Stream Analytics nabízí integrova
 
 Modely strojového učení předpokládají rovnoměrně vzorky časové řady. Pokud časové řady není jednotné, vložíte na krok agregace se aktivační událost pro přeskakující okno před voláním detekce anomálií.
 
-Operace machine learning nepodporuje sezónnosti trendů nebo více s různými variantami korelace.
+Operace machine learning nepodporují sezónnosti trendů nebo více s různými variantami korelace v tuto chvíli.
 
 ## <a name="model-accuracy-and-performance"></a>Přesnost modelů a výkon
 
@@ -29,9 +29,9 @@ Obecně platí jeho přesnost zlepšuje se další data v posuvné okno. Data v 
 
 Funkce pracují tím, že některé normální založené na co se viděli zatím. Odlehlé hodnoty jsou označeny porovnání oproti zavedené normální, v rámci úroveň spolehlivosti. Velikost okna by měla vycházet z minimální události potřebné pro trénování modelu pro běžné chování tak, aby když se objeví anomálie, mohl by být schopen rozpoznat.
 
-Mějte na paměti, že doba odezvy model zvyšuje velikost historie, protože musí porovnávat s vyšší počet minulých událostech. Zahrnout pouze nezbytné počet událostí pro zajištění lepšího výkonu se doporučuje.
+Doba odezvy modelu se zvyšuje s velikost historie, protože se musí porovnávat s vyšší počet minulých událostech. Zahrnout pouze nezbytné počet událostí pro zajištění lepšího výkonu se doporučuje.
 
-Mezery v časové řady může být výsledkem modelu není příjem událostí v určitých bodech v čase. Tato situace zařizuje služba Stream Analytics s využitím imputace. Velikost historie, stejně jako doba trvání pro stejný posuvné okno se používá k výpočtu průměrnou rychlost, jakou se očekává doručení událostí.
+Mezery v časové řady může být výsledkem modelu není příjem událostí v určitých bodech v čase. Tato situace zařizuje služba Stream Analytics s využitím imputace logiku. Velikost historie, stejně jako doba trvání pro stejný posuvné okno se používá k výpočtu průměrnou rychlost, jakou se očekává doručení událostí.
 
 ## <a name="spike-and-dip"></a>(Špičky) a vyhrazené IP adresy
 
@@ -40,7 +40,7 @@ Dočasné anomálie v datovém proudu událostí řady času jsou označované j
 
 ![Příklad anomálií ve špičce a vyhrazené IP adresy](./media/stream-analytics-machine-learning-anomaly-detection/anomaly-detection-spike-dip.png)
 
-Ve stejném posuvné okno Pokud je menší než první, druhý zásobníku počítaný skóre pro menší zásobníku není pravděpodobně důležité dostatek ve srovnání s skóre pro první zásobníku v rámci hladina zadaný. Můžete zkusit snížení nastavení úrovně modelu důvěru k zachytávání těchto anomálie. Ale pokud začnete získat příliš mnoho výstrah, můžete použít vyšší interval spolehlivosti.
+Ve stejném posuvné okno Pokud je menší než první, druhý zásobníku počítaný skóre pro menší zásobníku není pravděpodobně důležité dostatek ve srovnání s skóre pro první zásobníku v rámci hladina zadaný. Můžete vyzkoušet, snížení spolehlivosti modelu k detekci anomálií takové. Ale pokud začnete získat příliš mnoho výstrah, můžete použít vyšší interval spolehlivosti.
 
 Následující příklad dotazu předpokládá jednotné vstupní sazba jednu událost za každou sekundu do posuvného okna 2 s historii událostí na 120. Poslední příkaz SELECT extrahuje a vypíše skóre a anomálií stavu hladina spolehlivosti 95 %.
 

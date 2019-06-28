@@ -7,15 +7,15 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: bwren
-ms.openlocfilehash: b395b7bccbf93b56e84d5e7b5a4ed7355eaca335
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 7605bf36c41c5b1276d29076173efd52409afaa9
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296347"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67310342"
 ---
 # <a name="overview-of-log-queries-in-azure-monitor"></a>Přehled protokolu dotazů ve službě Azure Monitor
-Protokol dotazů můžete plně využít výhody na data shromážděná v [protokoly Azure monitoru](../platform/data-platform-logs.md). Výkonný dotazovací jazyk umožňuje připojit data z více tabulek, agregovat rozsáhlých datových sad a provádět složité operace s minimem kódu. Prakticky libovolný dotaz může zodpovědět a provádět analýzy byla shromážděna podpůrné data, a pokud víte, jak vytvořit dotaz správný.
+Dotazy protokolu můžete plně využít výhody data shromážděná v [protokoly Azure monitoru](../platform/data-platform-logs.md). Výkonný dotazovací jazyk umožňuje připojit data z více tabulek, agregovat rozsáhlých datových sad a provádět složité operace s minimem kódu. Prakticky libovolný dotaz může zodpovědět a provádět analýzy byla shromážděna podpůrné data, a pokud víte, jak vytvořit dotaz správný.
 
 Některé funkce ve službě Azure Monitor, jako [insights](../insights/insights-overview.md) a [řešení](../insights/solutions-inventory.md) zpracovat data protokolu bez vystavení je základní dotazy. Plně využívat další funkce služby Azure Monitor, měli byste porozumět, jak jsou dotazy konstruovány a jak je můžete využít k interaktivní analýze dat protokolů Azure Monitor.
 

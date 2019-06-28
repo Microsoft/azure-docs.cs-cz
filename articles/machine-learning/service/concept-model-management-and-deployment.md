@@ -11,12 +11,12 @@ author: chris-lauren
 ms.author: clauren
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0eaf48f57c3011222b71a63d703e1ccec7aca001
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5cbb7f13214a86f528521fdeb1ffa1374ca813ef
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66692834"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67331707"
 ---
 # <a name="mlops-manage-deploy-and-monitor-models-with-azure-machine-learning-service"></a>MLOps: Spravovat, nasazovat a sledovat modely pomocí služby Azure Machine Learning
 
@@ -54,11 +54,14 @@ Další informace o ONNX službou Azure Machine Learning, najdete v článku [vy
 Registrace modelu umožňuje ukládat a verzí vašich modelů v cloudu Azure, ve vašem pracovním prostoru. Model registru usnadňuje uspořádat a sledovat, trénované modely.
 
 > [!TIP]
-> Budete taky moct registrovat modelů trénovaných mimo službu Azure Machine Learning.
+> Registrovanému modelu je logický kontejner pro jeden nebo více souborů, které tvoří modelu. Například pokud máte model, který je uložen ve více souborech, můžete je zaregistrovat jako jednoho modelu ve vašem pracovním prostoru Azure Machine Learning. Po registraci pak můžete stáhnout nebo nasadit registrovanému modelu a zobrazí všechny soubory, které jste zaregistrovali.
  
 Registrované modely jsou identifikovány názvem a verzí. Pokaždé, když zaregistrujete model se stejným názvem jako existující registr zvýší verzi. Během registrace, který se dá použít při vyhledávání pro modely můžete zadat také další metadata značky. Služba Azure Machine Learning podporuje všechny modely, které lze načíst s použitím Python verze 3.5.2 nebo vyšší.
 
-Nelze odstranit modely, které se používají v aktivních nasazeních.
+> [!TIP]
+> Budete taky moct registrovat modelů trénovaných mimo službu Azure Machine Learning.
+
+Nelze odstranit registrovaný modelu, který se používá v aktivních nasazeních.
 
 Další informace najdete v části registrace modelu z [nasazovat modely](how-to-deploy-and-where.md#registermodel).
 

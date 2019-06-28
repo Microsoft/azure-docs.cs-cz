@@ -7,18 +7,27 @@ ms.date: 06/07/2019
 ms.topic: article
 ms.service: azure
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: f921b4a95c1b0cfb29d84c0bacc17d268af6e6c5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 79879cd7f5ea5af1b794735f32e6e1367458e124
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67082817"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67310730"
 ---
-# <a name="vm-series-vcpu-limit-increase"></a>Navýšení limitu virtuálních počítačů řady virtuálních procesorů
+# <a name="vm-series-vcpu-limit-increase"></a>Zvýšení limitu virtuálních jader řady virtuálních počítačů
+
+Kvóty virtuálních procesorů Resource Manageru pro virtuální počítače a škálovací sady virtuálních počítačů se vynucují na dvou úrovních pro každé předplatné, v jednotlivých oblastech. 
+
+První vrstva je **celkový počet místních virtuálních procesorů limit** (přes všechny řady virtuálních počítačů), a druhé vrstvy je **za virtuální počítač řady virtuálních procesorů omezit** (jako je například virtuální procesory řady D-series). Pokaždé, když je nový virtuální počítač nasadit, součet nové i stávající virtuální procesory využití pro tento virtuální počítač řady nesmí překročit kvóty virtuálních procesorů schválené pro konkrétní řady virtuálních počítačů. Dále celkový počet virtuálních procesorů nové i stávající počet nasazených na všechny řady virtuálních počítačů může být maximálně celkový počet překročení kvóty virtuálních procesorů schválení předplatného. Pokud některý z těchto kvót je překročena, nasazení virtuálního počítače nebude možné.
+Můžete požádat o zvýšení limitu kvóty virtuálních procesorů pro virtuální počítače řady z webu Azure portal. Zvýšení kvóty řadu virtuálních počítačů automaticky zvětší, celkový počet místních virtuálních procesorů limit stejný jmenovce. 
+
+Když se vytvoří nový odběr, nemusí být celkový počet místních virtuálních procesorů výchozí shoduje se součtem výchozí kvóty virtuálních procesorů pro všechny jednotlivé řady virtuálních počítačů. Výsledkem může být předplatné s dostatečnou kvótu pro každé jednotlivé řady virtuálních počítačů, které chcete nasadit, ale ne dostatečnou kvótu pro celkový počet místních virtuálních procesorů pro všechna nasazení. V takovém případě bude muset odeslat žádost o zvýšení limitu celkový počet místních virtuálních procesorů explicitně. Celkový počet místních virtuálních procesorů limit nesmí překročit součet schválené kvóty přes všechny řady virtuálních počítačů pro oblast.
+
+Další informace o kvótách na [stránce kvóty virtuálních procesorů virtuálního počítače](https://docs.microsoft.com/azure/virtual-machines/windows/quotas) a [předplatného Azure a omezení služeb](https://aka.ms/quotalimits) stránky. 
 
 Teď si můžete vyžádat navýšení prostřednictvím příkazu **Nápověda a podpora** okno nebo **využití a kvóty** okno na portálu. 
 
-## <a name="request-per-vm-vcpu-quota-increase-at-subscription-level-using-the-help--support-blade"></a>Požadavku na zvýšení kvóty virtuálních procesorů virtuálního počítače na úrovni pomocí předplatného **Nápověda a podpora** okno
+## <a name="request-per-vm-series-vcpu-quota-increase-at-subscription-level-using-the-help--support-blade"></a>Požadavku na zvýšení kvóty virtuálních procesorů řady virtuálních počítačů na úrovni pomocí předplatného **Nápověda a podpora** okno
 
 Postupujte podle níže uvedených pokynů a vytvořte žádost o podporu prostřednictvím Azure "Nápověda a podpora" okně k dispozici na webu Azure Portal. 
 
@@ -59,7 +68,7 @@ Postupujte podle níže uvedených pokynů a vytvořte žádost o podporu prost�
 ![Nové limity](./media/resource-manager-core-quotas-request/new-limits.png)
 
 
-## <a name="request-per-vm-vcpu-quota-increase-at-subscription-level-using-usages--quota-blade"></a>Požadavek na zvýšení kvóty virtuálních procesorů virtuálního počítače na úrovni pomocí předplatného **využití a kvóty** okno
+## <a name="request-per-vm-series-vcpu-quota-increase-at-subscription-level-using-usages--quota-blade"></a>Požadavek na zvýšení kvóty virtuálních procesorů řady virtuálních počítačů na úrovni pomocí předplatného **využití a kvóty** okno
 
 Postupujte podle pokynů níže použití k vytvoření žádosti o podporu prostřednictvím Azure 'využití a kvóty"okno, které jsou k dispozici na webu Azure Portal. 
 

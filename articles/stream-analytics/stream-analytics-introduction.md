@@ -7,34 +7,34 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
-ms.date: 05/16/2019
-ms.openlocfilehash: f607c1e79262efdbec79677fa7f16863b7a9d160
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.date: 06/21/2019
+ms.openlocfilehash: c50ad2b045f32daf53033318123b68e4b2d58db5
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393972"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329324"
 ---
 # <a name="what-is-azure-stream-analytics"></a>Co je Azure Stream Analytics?
 
-Azure Stream Analytics je modul pro zpracování událostí, který je navržený pro zkoumat velké objemy streamovaná data. Vzory a vztahy mohou spadat do informace získané z počtu vstupních zdrojů, včetně zařízení, senzorů, webů, kanálů ze sociálních médií a aplikací. Tato schémata lze použít k aktivování dalších akcí ve směru server-klient, jako je vytváření výstrah, tak informací do nástrojů pro vytváření sestav nebo ukládání Transformovaná data pro pozdější použití.
+Azure Stream Analytics je komplexní modul pro zpracování událostí, která slouží k analýze a současně zpracovávat velké objemy rychlá streamovaná data z více zdrojů a analýzu v reálném čase. Vzory a vztahy mohou spadat do informace získané z počtu vstupních zdrojů, včetně zařízení, senzorů, záznamů o navštívených stránkách, sociálních médií a aplikací. Tato schémata lze aktivovat akce a pracovní postupy se spustí tyto vytváření výstrah, tak informací do nástrojů pro vytváření sestav nebo uložení transformovaných dat pro pozdější použití. Také Stream Analytics je k dispozici v modulu runtime Azure IoT Edge a podporuje stejný jazyk nebo syntaxe jako cloudu. 
 
 Následující scénáře jsou uvedené příklady, když použijete Azure Stream Analytics:
 
-* Senzoru Internetu věcí (IoT) a analýzy v reálném čase v telemetrii zařízení
+* Analýzu datových proudů v reálném čase telemetrie ze zařízení IoT
 * Webové protokoly/analýza navštívených webových stránek
 * Geoprostorová analýza pro správu vozového parku a vozidel bez řidiče
-* Vzdálené monitorování a prediktivní údržba nejcennějších prostředků
+* Vzdálené monitorování nebo prediktivní Údržba vysoce hodnotných prostředků
 * Analýza dat z prodejen v reálném čase pro účely zjišťování anomálií a řízení zásob
 
 ## <a name="how-does-stream-analytics-work"></a>Jak funguje Stream Analytics?
 
-Úlohy Azure Stream Analytics se skládá z vstup, transformační dotaz a výstup. Když Azure Event Hubs, Azure IoT Hub nebo Azure Blob Storage jsou přijatých událostí ze zařízení nebo software, můžete zadat jeden nebo více z těchto služeb jako vstupní zdroj pro vaši úlohu. Transformační dotaz, který je založen na SQL dotazovací jazyk, slouží k snadno filtrovat, řadit, agregovat a připojení streamovaných dat v časovém intervalu. Můžete upravit řazení možnosti a dobu trvání časových období při preforming agregační operace událostí.
+Úlohy Azure Stream Analytics se skládá z vstup, dotaz a výstup. Stream Analytics ingestují data z Azure Event Hubs, Azure IoT Hub nebo Azure Blob Storage. Dotaz, který je založen na dotazovací jazyk SQL, je možné snadno filtrovat, řazení, agregaci a spojovat streamovaná data za určitou dobu. Můžete také rozšířit tento jazyk SQL s použitím jazyka JavaScript a C# uživatelem definované funkce (UDF). Můžete snadno upravit řazení možnosti a dobu trvání časových období při preforming agregační operace pomocí jednoduchých jazykových konstruktorů a/nebo konfigurace událostí.
 
 Každá úloha má výstup pro Transformovaná data a můžete řídit, co se stane v reakci na informace, které jste analyzovali. Můžete například provést následující věci:
 
-* Posílat data do monitorované fronty k vyvolá upozornění nebo směru server-klient vlastních pracovních postupů.
-* Odesílání dat na řídicí panel Power BI pro vizualizace v reálném čase.
+* Odesílání dat do služby, jako jsou Azure Functions, Service Bus Topics nebo fronty k aktivaci vlastních pracovních postupů směru server-klient nebo komunikace.
+* Odesílání dat do řídicího panelu Power BI pro v reálném čase mnoha.
 * Data Store v jiné služby Azure storage k trénování služby machine learning model na základě historických dat nebo provedení dávkové analýzy.
 
 Následující obrázek ukazuje, jak data odesílají do Stream Analytics, analyzují a posílají k dalším akcím, jako je storage nebo prezentace:
@@ -67,9 +67,9 @@ Možnosti dotazovacího jazyka můžete rozšířit definováním a vyvoláním 
 
 Služba Azure Stream Analytics je plně spravovaná nabídka bez serveru (PaaS) v Azure. Nemusíte zřizovat žádný hardware nebo spravovat clustery na spuštění svých úloh. Azure Stream Analytics plně řídí vaši úlohu tak, že nastavení komplexních výpočetních clusterů v cloudu a přitom se bezpečně postará výkon ladění potřebné ke spuštění úlohy. Integrace s Azure Event Hubs a Azure IoT Hub umožňuje vaši úlohu, aby dokázala zpracovat miliony událostí za sekundu, které přicházejí z mnoha různých zdrojů, zahrnují připojených zařízení, webů a souborů protokolů. Pomocí centra událostí nabízejí funkci dělení, které můžete výpočty na logické kroky dělit, s možností dělit ještě podrobněji, pokud chcete zvýšit škálovatelnost.
 
-## <a name="run-in-the-cloud-on-in-the-intelligent-edge"></a>Spouštět v cloudu v inteligentních hraničních zařízení
+## <a name="run-in-the-cloud-or-on-the-intelligent-edge"></a>Běží v cloudu nebo na inteligentních hraničních zařízení
 
-Azure Stream Analytics můžete spouštět v cloudu pro rozsáhlé analýzy, nebo spustit na hraničních zařízeních IoT pro analýzu mimořádně nízkou latencí. Azure Stream Analytics používá stejné dotazovací jazyk v cloudu i hraničních zařízeních, který vývojářům umožňuje vytvořit skutečně hybridní architektury pro zpracování datových proudů.
+Azure Stream Analytics můžete spouštět v cloudu pro rozsáhlé analýzy, nebo spustit na hraničních zařízeních IoT pro analýzu mimořádně nízkou latencí. Azure Stream Analytics používá stejné dotazovací jazyk v cloudu i hraničních zařízeních, který vývojářům umožňuje vytvořit skutečně hybridní architektury pro zpracování datových proudů. 
 
 ## <a name="low-total-cost-of-ownership"></a>Nízké celkové náklady na vlastnictví
 
@@ -85,7 +85,7 @@ Azure Stream Analytics zaručuje právě-po zpracování událostí a na alespo�
 
 Azure Stream Analytics je vestavěným funkcím pro obnovení v případě se doručení události nezdaří. Stream Analytics také poskytuje integrované kontrolní body pro uchování stavu vašich úloh a poskytuje opakovatelné výsledky.
 
-Stream Analytics je spravovaná služba, zaručuje zpracování událostí s 99,9 % dostupnost na úrovni minut. Další informace najdete v tématu [Stream Analytics SLA](https://azure.microsoft.com/support/legal/sla/stream-analytics/v1_0/) stránky. 
+Stream Analytics je spravovaná služba, zaručuje zpracování událostí s 99,9 % dostupnost na minutu úrovni členitosti. Další informace najdete v tématu [Stream Analytics SLA](https://azure.microsoft.com/support/legal/sla/stream-analytics/v1_0/) stránky. 
 
 ### <a name="security"></a>Zabezpečení
 
@@ -97,7 +97,7 @@ Azure Stream Analytics následuje několik certifikací dodržování předpisů
 
 ## <a name="performance"></a>Výkon
 
-Stream Analytics může zpracovat miliony událostí za sekundu a dokáže poskytovat výsledky s nízkou latencí. Umožňuje vertikálně navýšit kapacitu a horizontální navýšení kapacity pro zpracování velkých událostí v reálném čase a složitých aplikací pro zpracování. Stream Analytics podporuje výkon díky dělení, což složitých dotazů paralelizovaná a spustit na několika uzlech pro streamování. Azure Stream Analytics je postavená na [Trill](https://github.com/Microsoft/Trill), streamování analytics stroj v paměti výkonné vyvinuty ve spolupráci s Microsoft Research.
+Stream Analytics dokáže zpracovat miliony událostí za sekundu a dokáže poskytovat výsledky s nízkou latencí ultra. Umožňuje vertikálně navýšit kapacitu a horizontální navýšení kapacity pro zpracování velkých událostí v reálném čase a složitých aplikací pro zpracování. Stream Analytics podporuje vyšší výkon díky dělení, což složitých dotazů paralelizovaná a spustit na několika uzlech pro streamování. Azure Stream Analytics je postavená na [Trill](https://github.com/Microsoft/Trill), streamování analytics stroj v paměti výkonné vyvinuty ve spolupráci s Microsoft Research.
 
 ## <a name="next-steps"></a>Další postup
 

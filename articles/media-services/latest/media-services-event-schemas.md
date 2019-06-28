@@ -455,10 +455,10 @@ Datový objekt má následující vlastnosti:
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
 | trackType | string | Typ stopě (zvuk / Video). |
-| TrackName | string | Jeden směr určený název. |
-| S přenosovou rychlostí | integer | S přenosovou rychlostí dráhy. |
+| trackName | string | Jeden směr určený název. |
+| bitrate | integer | S přenosovou rychlostí dráhy. |
 | timestamp | string | Časové razítko datové dávky vyřazen. |
-| Časová osa | string | Časové razítko. |
+| timescale | string | Časové razítko. |
 | Kód výsledku | string | Z důvodu rozevírací bloku dat data. **FragmentDrop_OverlapTimestamp** nebo **FragmentDrop_NonIncreasingTimestamp**. |
 
 ### <a name="liveeventincomingstreamreceived"></a>LiveEventIncomingStreamReceived
@@ -495,13 +495,13 @@ Datový objekt má následující vlastnosti:
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
 | trackType | string | Typ stopě (zvuk / Video). |
-| TrackName | string | Název stopě (buď pokud kodér nebo v případě RTMP server vygeneruje v *TrackType_Bitrate* formátu). |
-| S přenosovou rychlostí | integer | S přenosovou rychlostí dráhy. |
+| trackName | string | Název stopě (buď pokud kodér nebo v případě RTMP server vygeneruje v *TrackType_Bitrate* formátu). |
+| bitrate | integer | S přenosovou rychlostí dráhy. |
 | ingestUrl | string | Ingestování adresy URL poskytnuté živé události. |
 | encoderIp | string  | IP adresa z kodéru. |
 | encoderPort | string | Port kodér, ve kterém je tento datový proud zapnout. |
 | timestamp | string | První časové razítko přijetí datové dávky. |
-| Časová osa | string | Časový rámec, ve kterém je reprezentován časové razítko. |
+| timescale | string | Časový rámec, ve kterém je reprezentován časové razítko. |
 
 ### <a name="liveeventincomingstreamsoutofsync"></a>LiveEventIncomingStreamsOutOfSync
 

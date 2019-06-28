@@ -6,27 +6,27 @@ ms.author: zhongc
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/06/2019
-ms.openlocfilehash: 80843abe130f1388a5d4081adab7b9128446763b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/21/2019
+ms.openlocfilehash: 5929ff439bc31e16643e5c57868cd6b68f9cd99c
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65761977"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329576"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Způsoby řešení Azure Stream Analytics
 
 Stream Analytics je nejvhodnější s jinými službami vytvořit větší-ucelené řešení stejně jako mnoho dalších služeb v Azure. Tento článek popisuje jednoduché řešení Azure Stream Analytics a různých vzorech architektury. Můžete vytvořit na tyto vzory pro vývoj řešení pro složitější. Tyto vzory se dají popsaných v tomto článku je použít v nejrůznějších scénářích. Příkladem scénáře vzory jsou k dispozici na [architektury řešení Azure](https://azure.microsoft.com/solutions/architecture/?product=stream-analytics).
 
-## <a name="create-a-stream-analytics-job-with-a-real-time-dashboard"></a>Vytvoření úlohy Stream Analytics pomocí řídicího panelu v reálném čase
+## <a name="create-a-stream-analytics-job-to-power-real-time-dashboarding-experience"></a>Vytvoření úlohy Stream Analytics k prostředí v reálném čase mnoha napájení
 
-Azure Stream Analytics snadné použití rychle dokážete výstrahy a řídicí panely v reálném čase. Jednoduchým řešením ingestuje události ze služby Event Hubs nebo služby IoT Hub a [řídicí panel Power BI s nastavená streamovaná data se předají](/power-bi/service-real-time-streaming). Další informace najdete v tématu podrobný kurz [analýzu dat telefonních hovorů službou Stream Analytics a vizualizaci výsledků na řídicím panelu Power BI](stream-analytics-manage-job.md).
+S Azure Stream Analytics můžete rychle zprovozněte výstrahy a řídicí panely v reálném čase. Jednoduchým řešením ingestuje události ze služby Event Hubs nebo služby IoT Hub a [řídicí panel Power BI s nastavená streamovaná data se předají](/power-bi/service-real-time-streaming). Další informace najdete v tématu podrobný kurz [analýzu dat telefonních hovorů službou Stream Analytics a vizualizaci výsledků na řídicím panelu Power BI](stream-analytics-manage-job.md).
 
 ![Řídicí panel Power BI Azure Stream Analytics](media/stream-analytics-solution-patterns/pbidashboard.png)
 
 Toto řešení může být sestaven v několika málo minut z webu Azure portal. Neexistuje že žádné rozsáhlé kódování nepodílí a je jazykem SQL express obchodní logiku.
 
-Tento model řešení řídicí panel v reálném čase nabízí nejnižší latenci ze zdroje události na řídicí panel Power BI v prohlížeči. Azure Stream Analytics je služba pouze Azure díky této předdefinované funkci.
+Tento model řešení nabízí nejnižší latenci ze zdroje události na řídicí panel Power BI v prohlížeči. Azure Stream Analytics je služba pouze Azure díky této předdefinované funkci.
 
 ## <a name="use-sql-for-dashboard"></a>Použití SQL pro řídicí panel
 
@@ -34,19 +34,19 @@ Tento model řešení řídicí panel v reálném čase nabízí nejnižší lat
 
 ![Řídicí panel SQL Azure Stream Analytics](media/stream-analytics-solution-patterns/sqldashboard.png)
 
-Použití SQL database poskytuje větší flexibilitu za cenu zvýšení latence. Toto řešení je ideální pro úlohy s požadavky na latenci větší než jedna sekunda. Pomocí této metody můžete maximalizovat nástroj Power BI a dalších řezů a kostek data pro sestavy. Můžete také získat lepší flexibilitu vycházející z používání jiných řídicího panelu řešení, například tableau. představují.
+Použití SQL database poskytuje větší flexibilitu, ale za cenu mírně vyšší latencí. Toto řešení je ideální pro úlohy s požadavky na latenci větší než jedna sekunda. Pomocí této metody můžete maximalizovat možnosti Power BI k další řezu a rozčlenění data pro sestavy a mnohem více možností vizualizace. Můžete také získat lepší flexibilitu vycházející z používání jiných řídicího panelu řešení, například tableau. představují.
 
-SQL není úložiště dat vysokou propustnost a maximální propustnost do databáze SQL z Azure Stream Analytics je 24 MB/s. Pokud zdroje událostí ve vašem řešení vytvářejí data s větší rychlostí, budete muset použít logika zpracování ve službě Stream Analytics ke snížení frekvence výstupu SQL. Techniky, jako je například filtrování, agregace v okně, vzorovou shodu s dočasných spojení, a můžou používat analytických funkcí. Míra výstupních SQL můžete dál optimalizovat pomocí technik popsaných v [výstupu Azure Stream Analytics ke službě Azure SQL Database](stream-analytics-sql-output-perf.md).
+SQL není úložiště dat vysokou propustnost. Maximální propustnost do databáze SQL z Azure Stream Analytics je aktuálně přibližně 24 MB/s. Pokud zdroje událostí ve vašem řešení vytvářejí data s větší rychlostí, budete muset použít logika zpracování ve službě Stream Analytics ke snížení frekvence výstupu SQL. Techniky, jako je například filtrování, agregace v okně, vzorovou shodu s dočasných spojení, a můžou používat analytických funkcí. Míra výstupních SQL můžete dál optimalizovat pomocí technik popsaných v [výstupu Azure Stream Analytics ke službě Azure SQL Database](stream-analytics-sql-output-perf.md).
 
 ## <a name="incorporate-real-time-insights-into-your-application-with-event-messaging"></a>Začlenit do vaší aplikace se zasíláním zpráv na události v reálném čase
 
 Za druhé nejoblíbenější použití Stream Analytics je Generovat výstrahy v reálném čase. V tomto vzoru řešení obchodní logiky ve službě Stream Analytics lze použít k detekci [dočasné a prostorových vzorů](stream-analytics-geospatial-functions.md) nebo [anomálie](stream-analytics-machine-learning-anomaly-detection.md), pak vytvoří výstrahy signálů. Ale na rozdíl od řídicího panelu řešení, kde Stream Analytics používá Power BI jako upřednostňované koncový bod, počet jímky dočasných dat je možné. Tyto jímky zahrnují služby Event Hubs, služby Service Bus a Azure Functions. Jako tvůrce aplikací, musíte se rozhodnout, které datová jímka pro váš scénář nejvhodnější.
 
-Příjem událostí příjemce logiky musí být implementované Generovat výstrahy v pracovním postupu vaší existující firmy. Vzhledem k tomu, že můžete implementovat vlastní logiku ve službě Azure Functions, Functions je nejrychlejší způsob, jak můžete provést integraci. Kurz pro použití funkce Azure Functions jako výstup pro úlohu Stream Analytics lze nalézt v [spuštění Azure Functions z úloh Azure Stream Analytics](stream-analytics-with-azure-functions.md). Služba Azure Functions podporuje také různé typy oznámení, včetně textu a e-mailu. Aplikace logiky slouží také pro tyto integraci s Event Hubs mezi Stream Analytics a aplikaci logiky.
+Příjem událostí příjemce logiky musí být implementované Generovat výstrahy v pracovním postupu vaší existující firmy. Vzhledem k tomu, že můžete implementovat vlastní logiku ve službě Azure Functions, Azure Functions je nejrychlejší způsob, jak můžete provést integraci. Kurz pro použití funkce Azure Functions jako výstup pro úlohu Stream Analytics lze nalézt v [spuštění Azure Functions z úloh Azure Stream Analytics](stream-analytics-with-azure-functions.md). Služba Azure Functions podporuje také různé typy oznámení, včetně textu a e-mailu. Aplikace logiky slouží také pro tyto integraci s Event Hubs mezi Stream Analytics a aplikaci logiky.
 
 ![Aplikace pro zasílání zpráv událostí Azure Stream Analytics](media/stream-analytics-solution-patterns/eventmessagingapp.png)
 
-Event Hubs, na druhé straně nabízí flexibilní bod integrace. Mnoho dalších služeb, jako je Průzkumník dat Azure a Time Series Insights, můžete zpracovávat události ze služby Event Hubs. Služby se dají připojit přímo do služby Event Hubs jímky z Azure Stream Analytics k dokončení řešení. Event Hubs je také nejvyšší propustnost zasílání zpráv zprostředkovatele k dispozici v Azure pro takové scénáře integrace.
+Event Hubs, na druhé straně nabízí flexibilní bod integrace. Mnoho dalších služeb, jako je Průzkumník dat Azure a služby Time Series Insights může zpracovávat události ze služby Event Hubs. Služby se dají připojit přímo do služby Event Hubs jímky z Azure Stream Analytics k dokončení řešení. Event Hubs je také nejvyšší propustnost zasílání zpráv zprostředkovatele k dispozici v Azure pro takové scénáře integrace.
 
 ## <a name="dynamic-applications-and-websites"></a>Dynamická aplikace a weby
 

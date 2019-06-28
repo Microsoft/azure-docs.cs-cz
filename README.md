@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: d4e9e26f2c6764cc179826266891d861514e23f6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 01d6fa30fc781ffe2a9f387f7c9eb4c27eaacc77
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60344085"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67338241"
 ---
 # <a name="microsoft-azure-documentation"></a>Dokumentace k Microsoft Azure
 
@@ -34,10 +34,9 @@ Postupujte podle pokynů uvedených v tématu věnovaném [instalaci nástrojů 
 
 ## <a name="license"></a>Licence
 
-Veškeré licenční informace najdete v částech [LICENSE](.github/LICENSE), [LICENSE-CODE](.github/LICENSE-CODE) a [ThirdPartyNotices](.github/ThirdPartyNotices.md).
+Veškeré licenční informace najdete v částech [LICENSE](LICENSE), [LICENSE-CODE](LICENSE-CODE) a [ThirdPartyNotices](ThirdPartyNotices.md).
 
 ## <a name="code-of-conduct"></a>Pravidla chování
 
 Tento projekt přijal [pravidla chování pro Microsoft Open Source](https://opensource.microsoft.com/codeofconduct/).
 Další informace najdete v [nejčastějších dotazech k pravidlům chování](https://opensource.microsoft.com/codeofconduct/faq/). S případnými dalšími dotazy nebo připomínkami se obraťte na adresu [opencode@microsoft.com](mailto:opencode@microsoft.com).
-

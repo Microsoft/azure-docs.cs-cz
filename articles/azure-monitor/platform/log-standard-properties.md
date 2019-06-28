@@ -12,20 +12,20 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: bwren
-ms.openlocfilehash: 4d7c1d9b59e802343f6d8fe258e8e4ac961bb2df
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 50804e1f6ab4f352239d3f405e5b41e4e0c58d14
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67061007"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67292809"
 ---
-# <a name="standard-properties-in-azure-monitor-log-records"></a>Standardní vlastnosti ve službě Azure Monitor protokolování záznamů
-Data protokolu ve službě Azure Monitor je [uložené jako sady záznamů](../log-query/log-query-overview.md), každý s konkrétním datovým typem, který má jedinečnou sadu vlastností. Mnoho datových typů, bude mít standardní vlastnosti, které jsou společné pro více typů. Tento článek popisuje tyto vlastnosti a poskytuje příklady, jak je použít v dotazech.
+# <a name="standard-properties-in-azure-monitor-logs"></a>Standardní vlastnosti v protokolech monitorování Azure
+Data ve službě Azure Monitor protokoly jsou [uložené jako sady záznamů v pracovním prostoru Log Analytics nebo aplikace Application Insights](../log-query/logs-structure.md), každý s konkrétním datovým typem, který má jedinečnou sadu vlastností. Mnoho datových typů, bude mít standardní vlastnosti, které jsou společné pro více typů. Tento článek popisuje tyto vlastnosti a poskytuje příklady, jak je použít v dotazech.
 
 Některé z těchto vlastností jsou stále probíhá proces jeho implementování, takže je mohou zobrazit v některé typy dat, ale ještě není v jiných.
 
-## <a name="timegenerated"></a>TimeGenerated
-**TimeGenerated** vlastnost obsahuje datum a čas, který byl vytvořen záznam. Poskytuje běžné vlastnosti, které chcete použít pro filtrování nebo sumarizace podle času. Vyberte časový rozsah pro zobrazení nebo řídicím panelu na webu Azure Portal, použije k filtrování výsledků TimeGenerated.
+## <a name="timegenerated-and-timestamp"></a>TimeGenerated a časové razítko
+**TimeGenerated** (pracovní prostor Log Analytics) a **časové razítko** (aplikace v Application Insights) vlastnosti obsahovat datum a čas, který byl vytvořen záznam. Poskytuje běžné vlastnosti, které chcete použít pro filtrování nebo sumarizace podle času. Když vyberte časový rozsah pro zobrazení nebo řídicím panelu na webu Azure Portal, používá k filtrování výsledků TimeGenerated nebo časového razítka.
 
 ### <a name="examples"></a>Příklady
 
@@ -39,16 +39,25 @@ Event
 | sort by TimeGenerated asc 
 ```
 
-## <a name="type"></a>Type
-**Typ** vlastnost obsahuje název tabulky, ze kterého byla načtena záznam můžete také představit jako typ záznamu. Tato vlastnost je užitečná v dotazech, které kombinují záznamů z několika tabulek, jako jsou ty, které používají `search` operátor k rozlišení mezi záznamy různých typů. **$table** lze použít místo **typ** na některých místech.
+Následující dotaz vrátí počet výskytů výjimek pro každý den předchozího týdne.
+
+```Kusto
+exceptions
+| where timestamp between(startofweek(ago(7days))..endofweek(ago(7days))) 
+| summarize count() by bin(TimeGenerated, 1day) 
+| sort by timestamp asc 
+```
+
+## <a name="type-and-itemtype"></a>Typ a typ položky
+**Typ** (pracovní prostor Log Analytics) a **itemType** (aplikace v Application Insights) vlastnosti blokování název tabulky, ze které může se také byla načtena záznam představit jako záznam Zadejte. Tato vlastnost je užitečná v dotazech, které kombinují záznamů z několika tabulek, jako jsou ty, které používají `search` operátor k rozlišení mezi záznamy různých typů. **$table** lze použít místo **typ** na některých místech.
 
 ### <a name="examples"></a>Příklady
 Následující dotaz vrátí počet záznamů podle typu shromážděné za poslední hodinu.
 
 ```Kusto
 search * 
-| where TimeGenerated > ago(1h) 
-| summarize count() by Type 
+| where TimeGenerated > ago(1h)
+| summarize count() by Type
 ```
 
 ## <a name="resourceid"></a>\_ID prostředku

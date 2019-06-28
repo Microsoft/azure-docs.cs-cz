@@ -44,7 +44,7 @@ Ovládací prvky můžete použít v dolní části plátna pro přiblížení a
 
 Ovládacím prvku knihovna je, kde můžete vybrat [aktivity](#activities) přidáte do runbooku. Můžete je přidat na plátno, kde je připojení k jiné aktivity. Obsahuje čtyři části jsou popsané v následující tabulce:
 
-| Section | Popis |
+| Section | Description |
 |:--- |:--- |
 | Rutiny |Zahrnuje všechny rutiny, které lze použít ve své sadě runbook. Rutiny jsou uspořádané podle modulu. Všechny moduly nainstalované ve vašem účtu automation jsou k dispozici. |
 | Runbooky |Obsahuje sady runbook ve vašem účtu automation. Tyto sady runbook lze přidat na plátno a použít jako podřízené sady runbook. Zobrazují se jenom runbooky stejného typu jako sady runbook, který právě upravujete core; pro grafický jsou uvedeny pouze pomocí prostředí PowerShell runbooky sady runbook, zatímco pro grafický Powershellový pracovní postup sady runbook jsou uvedeny pouze pomocí prostředí PowerShell pracovního postupu-sady runbook. |
@@ -109,7 +109,7 @@ V následujícím příkladu rutiny Get-AzureRmVM má tři sady parametrů. Hodn
 
 Pokud zadáte hodnotu pro parametr, vyberte zdroj dat k určení, jak je zadaná hodnota. Zdroje dat, které jsou k dispozici pro konkrétní parametr závisí na platné hodnoty pro tento parametr. Například hodnota Null není k dispozici možnost pro parametr, který nepovoluje hodnoty null.
 
-| Zdroj dat | Popis |
+| Zdroj dat | Description |
 |:--- |:--- |
 | Konstantní hodnota |Zadejte hodnotu pro parametr. To je k dispozici pouze pro následující typy dat: Datový typ Int32, Int64, řetězec, logická hodnota, data a času, přepnout. |
 | Výstup aktivity |Výstupem z aktivity, které předchází aktuální aktivitu v pracovním postupu. Všechny aktivity. Platné jsou uvedeny. Vyberte aktivitu používat svůj výstup pro hodnotu parametru. V případě, že výstupem aktivity je objekt s více vlastnostmi, můžete zadat název vlastnosti po výběru aktivity. |
@@ -139,7 +139,7 @@ Podmínky opakování je Powershellový výraz, který je vyhodnocen po každém
 
 Podmínky opakování můžete použít proměnnou s názvem $RetryData, který poskytuje přístup k informacím o opakování aktivity. Tato proměnná má vlastnosti v následující tabulce:
 
-| Vlastnost | Popis |
+| Vlastnost | Description |
 |:--- |:--- |
 | NumberOfAttempts |Počet pokusů, které nebyly spuštěny aktivity. |
 | Výstup |Výstup z poslední spuštění aktivity. |
@@ -191,7 +191,7 @@ Vytvořte propojení mezi dvěma aktivitami zdrojová aktivita výběrem a klikn
 
 Vyberte odkaz a nakonfigurujte její vlastnosti v okně konfigurace. Jedná se o typ odkazu, která je popsána v následující tabulce:
 
-| Typ odkazu | Popis |
+| Typ odkazu | Description |
 |:--- |:--- |
 | Kanál |Cílová aktivita spustí jednou pro každý objekt výstup ze zdrojové aktivity. Cílová aktivita se nespustí, pokud zdrojová aktivita výsledkem žádný výstup. Výstup ze zdrojové aktivity je k dispozici jako objekt. |
 | Pořadí |Cílová aktivita se spustí pouze jednou. Přijímá pole objektů ze zdrojové aktivity. Výstup ze zdrojové aktivity je k dispozici jako pole objektů. |
@@ -322,7 +322,7 @@ Tím se otevře **vstupní a výstupní** ovládací prvek, ve kterém můžete 
 
 Každý vstupní parametr je definován vlastností v následující tabulce:
 
-| Vlastnost | Popis |
+| Vlastnost | Description |
 |:--- |:--- |
 | Name |Jedinečný název parametru. To může obsahovat jenom alfanumerické znaky a nesmí obsahovat mezery. |
 | Description |Volitelný popis pro vstupní parametr. |

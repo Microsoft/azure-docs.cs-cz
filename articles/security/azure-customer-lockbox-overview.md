@@ -6,13 +6,13 @@ ms.service: security
 ms.topic: article
 ms.author: cabailey
 manager: barbkess
-ms.date: 05/07/2019
-ms.openlocfilehash: 468e392cd2c45d79cbb24f8d737a6e83fbcd2725
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/20/2019
+ms.openlocfilehash: 0ee2dde5a941d069f5b745eafb35df780f657a47
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65079267"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67312622"
 ---
 # <a name="customer-lockbox-for-microsoft-azure"></a>Zákazník Lockboxu pro Microsoft Azure
 
@@ -97,7 +97,7 @@ Následující služby a scénáře jsou aktuálně obecné dostupnosti pro zák
 ### <a name="remote-desktop-access-to-virtual-machines"></a>Přístup ke vzdálené ploše pro virtuální počítače
 
 Zákazník Lockbox je zapnut pro přístup přes vzdálenou plochu žádostí směrovaných na virtuální počítače. Podporují se následující úlohy:
-- Platforma jako služba (PaaS) – verze 1
+- Platforma jako služba (PaaS) – Azure Cloud Services (webové role a role pracovního procesu)
 - Infrastruktura jako služba (IaaS) – Windows a Linux (pouze Azure Resource Manager)
 - Škálovací sada virtuálních počítačů – Windows a Linux
 

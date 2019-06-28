@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.service: security
 ms.topic: quickstart
 ms.date: 05/17/2019
-ms.openlocfilehash: 01c5c9b2e823c00d0a750cd466bb3a1ebf73debf
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: c0ae2f6588ede0305e02edf1942ff196aeb807bb
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67294951"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67331568"
 ---
 # <a name="quickstart-create-and-encrypt-a-linux-vm-with-the-azure-cli"></a>Rychlý start: Vytvoření a šifrování virtuálního počítače s Linuxem pomocí Azure CLI
 
@@ -40,7 +40,7 @@ az vm create \
     --resource-group myResourceGroup \
     --name myVM \
     --image Canonical:UbuntuServer:16.04-LTS:latest \
-    --size Standard_D2S_V3 \
+    --size Standard_D2S_V3
 ```
 
 Vytvoření virtuálního počítače a podpůrných prostředků trvá několik minut. Následující příklad ukazuje, že operace vytvoření virtuálního počítače byla úspěšná.

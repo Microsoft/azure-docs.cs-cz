@@ -12,15 +12,15 @@ ms.subservice: msi
 ms.devlang: ''
 ms.topic: overview
 ms.custom: mvc
-ms.date: 10/23/2018
+ms.date: 06/19/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d70dfceb0101c4f6dbd76f3c6b34d85e5255aa72
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 8c4f670f3bb14610e7f29a9201b357e73dacf09b
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "60290748"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67293225"
 ---
 # <a name="what-is-managed-identities-for-azure-resources"></a>Co jsou spravované identity prostředků Azure?
 
@@ -58,7 +58,7 @@ Následující diagram ukazuje fungování identit spravovaných služeb s virtu
 
 ![Identity spravovaných služeb a virtuální počítače Azure](media/overview/msi-vm-vmextension-imds-example.png)
 
-|  Vlastnost    | Systém přiřadil spravované identity | Uživatel přiřazenou spravované identity |
+|  Vlastnost    | Systém přiřadil spravované identity | uživatel přiřazenou spravované identity |
 |------|----------------------------------|--------------------------------|
 | Vytvoření |  Vytvoření prostředku Azure (třeba virtuální počítač Azure nebo Azure App Service) | Vytvořit jako samostatný prostředek Azure |
 | Životní cyklus | Životní cyklus sdílené s prostředky Azure, vytvořené pomocí spravované identity. <br/> Při odstranění nadřazený prostředek, je rovněž odstraněna spravovaná identita. | Nezávislý životní cyklus. <br/> Musí explicitně odstranit. |
@@ -129,6 +129,7 @@ Informace o použití spravované identity ve virtuálním počítači s Linuxem
 * [Přístup ke službě Azure Storage pomocí přístupové klávesy](tutorial-linux-vm-access-storage.md)
 * [Přístup ke službě Azure Storage pomocí sdílených přístupových podpisů](tutorial-linux-vm-access-storage-sas.md)
 * [Přístup k prostředku mimo Azure AD pomocí služby Azure Key Vault](tutorial-linux-vm-access-nonaad.md)
+* [Přístup k Azure Container Registry](../../container-registry/container-registry-authentication-managed-identity.md)
 
 Informace o použití spravované identity s dalšími službami Azure:
 
@@ -139,6 +140,7 @@ Informace o použití spravované identity s dalšími službami Azure:
 * [Azure Event Hubs](../../event-hubs/event-hubs-managed-service-identity.md)
 * [Azure API Management](../../api-management/api-management-howto-use-managed-service-identity.md)
 * [Azure Container Instances](../../container-instances/container-instances-managed-identity.md)
+* [Úlohy Azure Container Registry](../../container-registry/container-registry-tasks-authentication-managed-identity.md)
 
 ## Které služby Azure tuto funkci podporují?<a name="which-azure-services-support-managed-identity"></a>
 

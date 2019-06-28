@@ -7,17 +7,19 @@ ms.author: jeanb
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/15/2019
-ms.openlocfilehash: ff2930fbe0e53c4b3c1223f87919c0913296d07c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/21/2019
+ms.openlocfilehash: a41c3f60d4b949f78c0755f97c9ef7e6302d78d8
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66515921"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67330001"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-diagnostics-logs"></a>Řešení potíží s Azure Stream Analytics s využitím diagnostických protokolů
 
 V některých případech úlohy Azure Stream Analytics neočekávaně zastaví zpracování. Je důležité mít možnost vyřešit tento typ události. Selhání můžou být způsobená neočekávaným výsledkem dotazu, připojením k zařízením nebo neočekávaným výpadkem služby. Protokoly diagnostiky ve službě Stream Analytics může pomoct identifikovat příčiny problémů, pokud dojde k a zkrácení času obnovení.
+
+Důrazně doporučujeme povolit diagnostické protokoly pro všechny úlohy v produkčním prostředí.
 
 ## <a name="log-types"></a>Typy protokolů
 
@@ -62,7 +64,7 @@ Důrazně doporučujeme zapnout diagnostické protokoly a jejich odesílání do
 
     ![Navigace v okně diagnostické protokoly](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs-monitoring.png)  
 
-2.  Vytvoření **název** v **nastavení diagnostiky** a zaškrtněte políčko vedle položky **odesílat do Log Analytics**. Pak přidejte existující nebo vytvořte novou **pracovní prostor Log analytics**. Zaškrtněte políčka pro **provádění** a **Authoring** pod **protokolu**, a **AllMetrics** pod **METRIKA** . Klikněte na **Uložit**.
+2.  Vytvoření **název** v **nastavení diagnostiky** a zaškrtněte políčko vedle položky **odesílat do Log Analytics**. Pak přidejte existující nebo vytvořte novou **pracovní prostor Log analytics**. Zaškrtněte políčka pro **provádění** a **Authoring** pod **protokolu**, a **AllMetrics** pod **METRIKA** . Klikněte na **Uložit**. Doporučujeme použít pracovní prostor Log Analytics ve stejné oblasti Azure jako svou úlohu Stream Analytics zabránit spojené další náklady.
 
     ![Nastavení pro diagnostické protokoly](./media/stream-analytics-job-diagnostic-logs/diagnostic-settings.png)
 
@@ -113,7 +115,7 @@ Protokoly spuštění obsahují informace o události, ke kterým došlo během 
 
 ### <a name="data-errors"></a>Chyby dat
 
-Všechny chyby, ke které dojde během úlohy zpracování dat je v této kategorii protokolů. Nejčastěji tyto protokoly se vytvoří během data načtená, serializaci a operace zápisu. Tyto protokoly neobsahují chyby připojení. K chybám připojení jsou považovány za obecné události.
+Všechny chyby, ke které dojde během úlohy zpracování dat je v této kategorii protokolů. Nejčastěji tyto protokoly se vytvoří během data načtená, serializaci a operace zápisu. Tyto protokoly neobsahují chyby připojení. K chybám připojení jsou považovány za obecné události. Další informace o příčině různých různých [vstupní a výstupní data chyby](https://docs.microsoft.com/azure/stream-analytics/data-errors).
 
 Název | Popis
 ------- | -------
@@ -149,4 +151,4 @@ ID korelace | [Identifikátor GUID](https://en.wikipedia.org/wiki/Universally_un
 * [Začínáme se Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Škálovat úlohy Stream Analytics](stream-analytics-scale-jobs.md)
 * [Referenční příručka k Stream Analytics query language](https://msdn.microsoft.com/library/azure/dn834998.aspx)
-* [Stream Analytics správu reference k rozhraní REST API](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Stream Analytics data chyby](https://docs.microsoft.com/azure/stream-analytics/data-errors)

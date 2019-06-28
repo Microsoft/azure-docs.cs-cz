@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/28/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 666430a11fb95871eb601b2a38eb7b97ad16119f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 362f0b32ea99d0b888ea9f1efa0cd4ea74eb2fa1
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66498946"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67338499"
 ---
 # <a name="app-service-networking-features"></a>Funkce sítě služby App Service
 
@@ -112,7 +112,7 @@ Koncové body služby umožňuje uzamknout **příchozí** přístup do vaší a
 ![Koncové body služby](media/networking-features/service-endpoints.png)
 
 * Nastavení služby Application Gateway s vaší aplikací, aby zamezit příchozímu provozu do vaší aplikace
-* Testricting přístup k vaší aplikaci k prostředkům ve vaší virtuální síti. To může zahrnovat virtuální počítače, služby ase nebo dokonce i další aplikace používající integrace virtuální sítě 
+* Omezení přístupu k aplikaci tak, aby prostředky ve vaší virtuální síti. To může zahrnovat virtuální počítače, služby ase nebo dokonce i další aplikace používající integrace virtuální sítě 
 
 ![Koncové body služby pomocí služby application gateway](media/networking-features/service-endpoints-appgw.png)
 
@@ -136,7 +136,7 @@ Tato funkce se obvykle používá pro:
 
 Protože tato funkce umožňuje přístup k místním prostředkům bez brány firewall pro příchozí riziko, obvykle se s vývojáři. Další odchozí služby App Service síťové funkce jsou velmi virtuální sítě Azure související. Hybridní připojení nemá závislost na prostřednictvím virtuální sítě a slouží pro širší sítě, které potřebujete. Je důležité si uvědomit, že funkce App Service Hybrid Connections pro vás nebo vědět, co právě děláte dojde k jeho zvýraznění. To je Řekněme, že se použije pro přístup k databázi, webové služby nebo libovolného soket TCP na sálového počítače. Tato funkce v podstatě tunelových propojení pakety protokolu TCP. 
 
-Zatímco hybridní připojení se používá pro vývoj, používá se také také řadu provozních aplikací. Je skvělé pro přístup k webové služby nebo databáze, ale není vhodný pro situace zahrnující skvělé mnoho připojení vytváří. 
+Zatímco hybridní připojení se používá pro vývoj, používá se také také řadu provozních aplikací. Je skvělé pro přístup k webové služby nebo databáze, ale není vhodný pro situace týkající se vytváření mnoho připojení. 
 
 ### <a name="gateway-required-vnet-integration"></a>Brána vyžaduje integrace virtuální sítě 
 

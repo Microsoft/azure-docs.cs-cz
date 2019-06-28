@@ -7,14 +7,23 @@ ms.date: 06/07/2019
 ms.topic: article
 ms.service: azure
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 4c5524cf450959db7055ca5d032c81f79ebac077
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7ac6dce9aec1c363fa9772caabad9ce542d43888
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67083077"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67310651"
 ---
-# <a name="total-regional-vcpu-limit-increase"></a>Celkový počet virtuálních procesorů regionální navýšení limitu 
+# <a name="total-regional-vcpu-limit-increase"></a>Celkové oblastní zvýšení limitu virtuálních jader 
+
+Kvóty virtuálních procesorů Resource Manageru pro virtuální počítače a škálovací sady virtuálních počítačů se vynucují na dvou úrovních pro každé předplatné, v jednotlivých oblastech. 
+
+První vrstva je **celkový počet místních virtuálních procesorů limit** (přes všechny řady virtuálních počítačů), a druhé vrstvy je **za virtuální počítač řady virtuálních procesorů omezit** (jako je například virtuální procesory řady D-series). Pokaždé, když je nový virtuální počítač nasadit, součet nové i stávající virtuální procesory využití pro tento virtuální počítač řady nesmí překročit kvóty virtuálních procesorů schválené pro konkrétní řady virtuálních počítačů. Dále celkový počet virtuálních procesorů nové i stávající počet nasazených na všechny řady virtuálních počítačů může být maximálně celkový počet překročení kvóty virtuálních procesorů schválení předplatného. Pokud některý z těchto kvót je překročena, nasazení virtuálního počítače nebude možné.
+Můžete požádat o zvýšení limitu kvóty virtuálních procesorů pro virtuální počítače řady z webu Azure portal. Zvýšení kvóty řadu virtuálních počítačů automaticky zvětší, celkový počet místních virtuálních procesorů limit stejný jmenovce. 
+
+Když se vytvoří nový odběr, nemusí být celkový počet místních virtuálních procesorů výchozí shoduje se součtem výchozí kvóty virtuálních procesorů pro všechny jednotlivé řady virtuálních počítačů. Výsledkem může být předplatné s dostatečnou kvótu pro každé jednotlivé řady virtuálních počítačů, které chcete nasadit, ale ne dostatečnou kvótu pro celkový počet místních virtuálních procesorů pro všechna nasazení. V takovém případě bude muset odeslat žádost o zvýšení limitu celkový počet místních virtuálních procesorů explicitně. Celkový počet místních virtuálních procesorů limit nesmí překročit součet schválené kvóty přes všechny řady virtuálních počítačů pro oblast.
+
+Další informace o kvótách na [stránce kvóty virtuálních procesorů virtuálního počítače](https://docs.microsoft.com/azure/virtual-machines/windows/quotas) a [předplatného Azure a omezení služeb](https://aka.ms/quotalimits) stránky. 
 
 Teď si můžete vyžádat navýšení prostřednictvím příkazu **Nápověda a podpora** okno nebo **využití a kvóty** okno na portálu. 
 

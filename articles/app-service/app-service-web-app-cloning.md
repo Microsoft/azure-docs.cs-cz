@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/14/2016
 ms.author: aelnably
 ms.custom: seodec18
-ms.openlocfilehash: 198fedbbd1e97dcda15c9124109e50664f58f8e7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 907816d4f44a953ae338f6ca505b8fb3e048234e
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66139725"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329652"
 ---
 # <a name="azure-app-service-app-cloning-using-powershell"></a>Aplikace Azure App Service klonování pomocí Powershellu
 
@@ -28,7 +28,7 @@ ms.locfileid: "66139725"
 
 Verze prostředí Azure PowerShell verze 1.1.0 se přidala nová možnost pro `New-AzWebApp` , který umožňuje klonování existující aplikace služby App Service do nově vytvořené aplikace v jiné oblasti nebo ve stejné oblasti. Tato možnost umožňuje zákazníkům rychle a snadno nasadit počet aplikací, které v různých oblastech.
 
-Klonování aplikace je momentálně podporována pouze pro plány služby app service úrovně premium. Nová funkce používá stejná omezení jako funkce App Service – zálohování, naleznete v tématu [zálohování aplikace ve službě Azure App Service](manage-backup.md).
+Klonování aplikace je podporováno pro Standard, Premium, Premium V2 a izolované plány služby app service. Nová funkce používá stejná omezení jako funkce App Service – zálohování, naleznete v tématu [zálohování aplikace ve službě Azure App Service](manage-backup.md).
 
 ## <a name="cloning-an-existing-app"></a>Klonování existující aplikace
 Scénář: Existující aplikace v oblasti střed USA – jih a chcete naklonovat obsah do nové aplikace v oblasti střed USA – sever. To lze provést pomocí Azure Resource Manageru verze rutiny Powershellu pro vytvoření nové aplikace s `-SourceWebApp` možnost.

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/08/2019
 ms.author: tamram
 ms.subservice: tables
-ms.openlocfilehash: a428abd95f955a16d03c4ab86f05644f6db65da5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 63a81e390c113d10378973f928ffb58d71e8628e
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62101427"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295120"
 ---
 # <a name="table-design-patterns"></a>Způsoby návrhu tabulek
 Tento článek popisuje některé vzory, které jsou vhodné pro použití s řešeními služby tabulky. Uvidíte také, jak se prakticky vyřešit některé problémy a kompromisy popsané v dalších článcích návrh tabulky úložiště. Následující diagram obsahuje souhrn vztahy mezi různé vzorce:  
@@ -574,7 +574,25 @@ if (retrieveResult.Result != null)
 Všimněte si, jak očekává, že v tomto příkladu entity načte typu **EmployeeEntity**.  
 
 ### <a name="retrieving-multiple-entities-using-linq"></a>Načítání více entit pomocí jazyka LINQ
-Můžete načíst pomocí LINQ s klientskou knihovnu pro úložiště a zadat dotaz s více entit **kde** klauzuli. Chcete-li zabránit, prohledávání tabulky, by měla vždycky obsahovat **PartitionKey** hodnotu v poli kde klauzule a pokud je to možné **RowKey** hodnotu, aby prohledávání tabulky a oddílu. Služba table service podporuje omezenou sadu operátory porovnání (větší než, větší než nebo rovná, méně než, menší než nebo rovno, stejné a není rovno) pro použití v where – klauzule. Následující fragment kódu jazyka C# najde všechny zaměstnance, jejichž poslední jméno začíná písmenem "B" (za předpokladu, že **RowKey** ukládá příjmení) v prodejní oddělení (za předpokladu, že **PartitionKey** ukládá název oddělení):  
+LINQ slouží k načtení více entit ze služby Table service, při práci s Microsoft Azure Cosmos tabulky standardní knihovny. 
+
+```cli
+dotnet add package Microsoft.Azure.Cosmos.Table
+```
+
+Chcete-li následující příklady práce, budete muset zahrnout oborů názvů:
+
+```csharp
+using System.Linq;
+using Microsoft.Azure.Cosmos.Table;
+using Microsoft.Azure.Cosmos.Table.Queryable;
+```
+
+EmployeeTable je CloudTable objekt, který implementuje CreateQuery<ITableEntity>– metoda (), které vrací TableQuery<ITableEntity>. Objekty tohoto typu implementovat položku IQueryable a povolit pomocí syntaxe zápisu LINQ – výrazy dotazů a tečka.
+
+Načítání více entit a dosáhnout tak, že zadáte dotaz s **kde** klauzuli. Chcete-li zabránit, prohledávání tabulky, by měla vždycky obsahovat **PartitionKey** hodnotu v poli kde klauzule a pokud je to možné **RowKey** hodnotu, aby prohledávání tabulky a oddílu. Služba table service podporuje omezenou sadu operátory porovnání (větší než, větší než nebo rovná, méně než, menší než nebo rovno, stejné a není rovno) pro použití v where – klauzule. 
+
+Následující fragment kódu jazyka C# najde všechny zaměstnance, jejichž poslední jméno začíná písmenem "B" (za předpokladu, že **RowKey** ukládá příjmení) v prodejní oddělení (za předpokladu, že **PartitionKey** ukládá název oddělení):  
 
 ```csharp
 TableQuery<EmployeeEntity> employeeQuery = employeeTable.CreateQuery<EmployeeEntity>();
