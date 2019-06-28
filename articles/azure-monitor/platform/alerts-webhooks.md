@@ -72,24 +72,24 @@ Operace POST obsahuje následující datovou část JSON a schéma pro všechny 
 | Pole | Povinné | Pevné sady hodnot | Poznámky |
 |:--- |:--- |:--- |:--- |
 | status |Ano |Aktivováno, vyřešeno |Stav upozornění na základě podmínek, je nastavit. |
-| Kontext |Ano | |Kontext výstrahy. |
+| context |Ano | |Kontext výstrahy. |
 | timestamp |Ano | |Čas, kdy byla výstraha. |
 | id |Ano | |Každé pravidlo upozornění má jedinečné ID. |
 | name |Ano | |Název výstrahy. |
 | description |Ano | |Popis výstrahy. |
 | conditionType |Ano |Metriky, události |Podporuje dva typy výstrah: metrik a událostí. Upozornění na metriky jsou založeny na podmínku metriky. Výstrahy na události jsou založené na události v protokolu aktivit. Tuto hodnotu použijte, chcete-li zkontrolovat, jestli upozornění je založené na metriku nebo události. |
-| Podmínka |Ano | |Na základě konkrétních polí ke kontrole **conditionType** hodnotu. |
+| condition |Ano | |Na základě konkrétních polí ke kontrole **conditionType** hodnotu. |
 | metricName |Pro upozornění na metriku | |Název metriky, která definuje, co pravidlo monitoruje. |
 | metricUnit |Pro upozornění na metriku |Počet bajtů, BytesPerSecond, Count, CountPerSecond, %, sekund |Jednotka povolené v metrice. Zobrazit [povolené hodnoty](https://msdn.microsoft.com/library/microsoft.azure.insights.models.unit.aspx). |
 | metricValue |Pro upozornění na metriku | |Skutečná hodnota metriky, který výstrahu způsobil. |
-| Prahová hodnota |Pro upozornění na metriku | |Prahová hodnota, na který se aktivuje upozornění. |
-| velikost_okna |Pro upozornění na metriku | |Časový úsek, který slouží k monitorování výstrah aktivity podle prahovou hodnotu. Hodnota musí být mezi 5 minutami a 1 den. Hodnota musí být ve formátu ISO 8601 doby trvání. |
+| threshold |Pro upozornění na metriku | |Prahová hodnota, na který se aktivuje upozornění. |
+| windowSize |Pro upozornění na metriku | |Časový úsek, který slouží k monitorování výstrah aktivity podle prahovou hodnotu. Hodnota musí být mezi 5 minutami a 1 den. Hodnota musí být ve formátu ISO 8601 doby trvání. |
 | timeAggregation |Pro upozornění na metriku |Průměr, poslední, Maximum, Minimum, None, celkem |Jak by měl kombinovat data, která se shromažďují v čase. Výchozí hodnota je průměr. Zobrazit [povolené hodnoty](https://msdn.microsoft.com/library/microsoft.azure.insights.models.aggregationtype.aspx). |
-| – Operátor |Pro upozornění na metriku | |Operátor, který se používá k porovnání aktuálního data metriky pro nastavenou prahovou hodnotu. |
+| operator |Pro upozornění na metriku | |Operátor, který se používá k porovnání aktuálního data metriky pro nastavenou prahovou hodnotu. |
 | subscriptionId |Ano | |ID předplatného Azure. |
 | resourceGroupName |Ano | |Název skupiny prostředků pro daný prostředek. |
 | resourceName |Ano | |Název prostředku ovlivněných prostředků. |
-| Typ prostředku |Ano | |Typ prostředku ovlivněných prostředků. |
+| resourceType |Ano | |Typ prostředku ovlivněných prostředků. |
 | resourceId |Ano | |ID prostředku ovlivněných prostředků. |
 | resourceRegion |Ano | |Oblast nebo umístění ovlivněných prostředků. |
 | portalLink |Ano | |Přímý odkaz na souhrnné stránce portálu prostředků. |
