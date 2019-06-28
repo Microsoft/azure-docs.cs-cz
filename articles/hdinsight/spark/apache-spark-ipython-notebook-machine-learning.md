@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Sestavení služby machine learning aplikací v Azure HDInsight Spark'
-description: Podrobné pokyny k vytvoření aplikace strojového učení Apache Sparku v clusterech HDInsight Spark pomocí poznámkového bloku Jupyter.
+description: Kurz – podrobné pokyny o tom, jak vytvářet clustery pomocí poznámkového bloku Jupyter aplikace strojového učení Apache Spark v HDInsight Spark.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 05/24/2019
 ms.author: hrasheed
-ms.openlocfilehash: ed6a8f83d2ef31513aeadbc6741dd77c30c30070
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
-ms.translationtype: MT
+ms.openlocfilehash: 1013d16295c0348593a207b1af5e0d0d399dd116
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66252887"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295328"
 ---
 # <a name="tutorial-build-an-apache-spark-machine-learning-application-in-hdinsight"></a>Kurz: Sestavení Apache Spark machine learningu aplikace v HDInsight 
 

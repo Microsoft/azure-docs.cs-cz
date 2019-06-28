@@ -3,20 +3,20 @@ title: Konfigurace kontejnerů
 titlesuffix: Text Analytics - Azure Cognitive Services
 description: Rozhraní text Analytics poskytuje každý kontejner se společnou architekturu konfigurace, takže můžete snadno konfigurovat a spravovat úložiště, protokolování a telemetrická data a nastavení zabezpečení pro vaše kontejnery.
 services: cognitive-services
-author: diberry
+author: IEvangelist
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 04/16/2019
-ms.author: diberry
-ms.openlocfilehash: 1333aefc145e95223624f42a28ec0bb31ab70065
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/20/2019
+ms.author: dapine
+ms.openlocfilehash: 604b17bc3d4696ff0bf2be1759a53927a531fe13
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60828118"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67296026"
 ---
 # <a name="configure-text-analytics-docker-containers"></a>Konfigurace kontejnery dockeru pro analýzu textu
 
@@ -79,7 +79,7 @@ Kontejnery pro analýzu textu nepoužívejte vstup nebo výstup připojí k ulo�
 
 Syntaxe umístění hostitele připojení se liší v závislosti na operačním systému hostitele. Kromě toho [hostitelský počítač](how-tos/text-analytics-how-to-install-containers.md#the-host-computer)na umístění připojení nemusí být přístupné z důvodu konfliktu mezi oprávnění používat účet služby docker a hostiteli připojit umístění oprávnění. 
 
-|Nepovinné| Name | Typ dat | Popis |
+|Nepovinné| Název | Typ dat | Popis |
 |-------|------|-----------|-------------|
 |Nepovoleno| `Input` | String | Text Analytics kontejnery Nepoužívejte toto.|
 |Nepovinné| `Output` | String | Cíl připojení výstupu. Výchozí hodnota je `/output`. Toto je umístění protokolů. To zahrnuje protokoly kontejneru. <br><br>Příklad:<br>`--mount type=bind,src=c:\output,target=/output`|

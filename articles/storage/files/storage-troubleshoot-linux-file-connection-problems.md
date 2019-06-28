@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 9c08cd52bba6391660bc5f28e5db2dbec1126951
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 16d1739e01061a90d673e4bd79bba7bfe7ec3a90
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67118716"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295071"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Řešení potíží s Azure Files v Linuxu
 
@@ -191,6 +191,40 @@ Použijte uživatelský účet úložiště pro kopírování souborů:
 - `Passwd [storage account name]`
 - `Su [storage account name]`
 - `Cp -p filename.txt /share`
+
+## <a name="cannot-connect-to-or-mount-an-azure-file-share"></a>Nelze se připojit k nebo připojení sdílené složky Azure
+
+### <a name="cause"></a>Příčina
+
+Mezi běžné příčiny tohoto problému patří:
+
+- Používáte klientem nekompatibilní distribuce Linuxu. Doporučujeme použít následující Linuxových distribucí pro připojení sdílené složky Azure:
+
+    |   | SMB 2.1 <br>(Připojení na virtuálních počítačích v rámci stejné oblasti Azure) | SMB 3.0 <br>(Připojení z místního a mezi oblastmi) |
+    | --- | :---: | :---: |
+    | Ubuntu Server | 14.04+ | 16.04+ |
+    | RHEL | 7+ | 7.5+ |
+    | CentOS | 7+ |  7.5+ |
+    | Debian | 8+ |   |
+    | openSUSE | 13.2+ | 42.3+ |
+    | SUSE Linux Enterprise Server | 12 | 12 SP3+ |
+
+- V klientském počítači nejsou nainstalované nástroje CIFS (cifs utils).
+- Minimální verze protokolu SMB/CIFS, 2.1, není nainstalována na straně klienta.
+- Šifrování SMB 3.0 se nepodporuje na straně klienta. Šifrování SMB 3.0 je k dispozici v Ubuntu 16.4 a novějších verzích, společně s operačním systémem SUSE 12.3 a novějších verzích. Ostatní distribuce vyžadují jádra 4.11 a novějších verzích.
+- Pokoušíte se připojit k účtu úložiště přes port TCP 445, což není podporováno.
+- Pokoušíte se připojit ke sdílené složky Azure z virtuálního počítače Azure a virtuální počítač není ve stejné oblasti jako účet úložiště.
+- Pokud [vyžadovat zabezpečený přenos]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) pro účet úložiště je povolené nastavení, soubory Azure vám umožní pouze připojení využívající šifrování protokolu SMB 3.0.
+
+### <a name="solution"></a>Řešení
+
+Chcete-li problém vyřešit, použijte [řešení potíží s nástrojem pro soubory Azure chyby připojení v Linuxu](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089). Tento nástroj:
+
+* Umožňuje ověření klienta, spouštění prostředí.
+* Zjistí nekompatibilní klienta konfigurace, která může způsobit selhání přístupu pro soubory Azure.
+* Poskytuje doporučený postup na místním řešení.
+* Shromažďuje trasování diagnostiky.
+
 
 ## <a name="ls-cannot-access-ltpathgt-inputoutput-error"></a>ls: Nelze získat přístup k '&lt;cesta&gt;": Chyba vstupu/výstupu
 

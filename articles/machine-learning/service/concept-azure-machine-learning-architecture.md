@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 04/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 294b376665ba6b62f79f826520bc933543b38bda
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e0181eea2895dbc2b3db3367c850140e3fad21d4
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059283"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67331726"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Fungování služby Azure Machine Learning: Architektura a koncepty
 
@@ -97,7 +97,10 @@ Modely jsou identifikovány názvem a verzí. Pokaždé, když zaregistrujete mo
 
 Při registraci modelu můžete zadat další metadata značky a pak použít značky při hledání modely.
 
-Nelze odstranit modely, které jsou používány aktivní nasazení.
+> [!TIP]
+> Registrovanému modelu je logický kontejner pro jeden nebo více souborů, které tvoří modelu. Například pokud máte model, který je uložen ve více souborech, můžete je zaregistrovat jako jednoho modelu ve vašem pracovním prostoru Azure Machine Learning. Po registraci pak můžete stáhnout nebo nasadit registrovanému modelu a zobrazí všechny soubory, které jste zaregistrovali.
+
+Nelze odstranit registrovaný modelu, který se používá v aktivní nasazení.
 
 Příklad registrace modelu, naleznete v tématu [trénování modelu klasifikace obrázků s Azure Machine Learning](tutorial-train-models-with-aml.md).
 
