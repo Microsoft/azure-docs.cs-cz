@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0cb0fe056ff7ff4794667d6b28782daad100609f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 206e501860691cccc0578a0df4eec2b161b99b4c
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65921031"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341370"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Co jsou výchozí oprávnění uživatelů ve službě Azure Active Directory?
 V Azure Active Directory (Azure AD) mají všichni uživatelé udělenou sadu výchozích oprávnění. Přístup uživatele se skládá z typ uživatele, jejich [přiřazení rolí](active-directory-users-assign-role-azure-portal.md)a jejich vlastnictví jednotlivé objekty. Tento článek popisuje tato výchozí oprávnění a obsahuje porovnání výchozích nastavení člena a uživatele typu host. Výchozí oprávnění uživatelů lze změnit pouze v nastavení uživatele ve službě Azure AD.
@@ -34,7 +34,7 @@ Výchozí oprávnění pro hosty jsou ve výchozím nastavení omezující. Host
 
 **Oblast** | **Uživatelská oprávnění člena** | **Uživatelská oprávnění hosta**
 ------------ | --------- | ----------
-Uživatelé a kontakty | Čtení všech veřejných vlastností uživatelů a kontaktů<br>Zvaní hostů<br>Změna vlastního hesla<br>Správa vlastního čísla mobilního telefonu<br>Správa vlastní fotky<br>Zneplatnění vlastních obnovovacích tokenů | Čtení vlastních vlastností<br>Čtení vlastností zobrazovaného jména, e-mailu, přihlašovacího jména, fotky, hlavního názvu uživatele (UPN) a typu uživatele ostatních uživatelů a kontaktů<br>Změna vlastního hesla
+Uživatelé a kontakty | Čtení všech veřejných vlastností uživatelů a kontaktů<br>Zvaní hostů<br>Změna vlastního hesla<br>Správa vlastního čísla mobilního telefonu<br>Správa vlastní fotky<br>Zneplatnění vlastních obnovovacích tokenů | Čtení vlastních vlastností<br>Přečtěte si zobrazované jméno, e-mailu, přihlaste se název, fotografie, hlavní název uživatele a typ vlastnosti uživatele z jiných uživatelů a kontaktů<br>Změna vlastního hesla
 Skupiny | Vytváření skupin zabezpečení<br>Vytváření skupin Office 365<br>Čtení všech vlastností skupin<br>Čtení neskrytých členství ve skupinách<br>Čtení skrytých členství ve skupinách Office 365 u připojené skupiny<br>Spravovat vlastnosti, vlastnictví a členství ve skupinách, které uživatel vlastní<br>Přidávání hostů do vlastněných skupin<br>Správa nastavení dynamického členství<br>Odstranění vlastněných skupin<br>Obnovení vlastněných skupin Office 365 | Čtení všech vlastností skupin<br>Čtení neskrytých členství ve skupinách<br>Čtení skrytých členství ve skupinách Office 365 u připojených skupin<br>Správa vlastněných skupin<br>Přidávání hostů do vlastněných skupin (pokud je to povoleno)<br>Odstranění vlastněných skupin<br>Obnovení vlastněných skupin Office 365<br>Umožňuje číst vlastnosti skupin, do kterých patří, včetně členství.
 Aplikace | Registrace (vytvoření) nové aplikace<br>Čtení vlastností zaregistrovaných a podnikových aplikací<br>Správa vlastností aplikací, jejich přiřazení a přihlašovacích údajů u vlastněných aplikací<br>Vytvoření nebo odstranění hesla aplikace pro uživatele<br>Odstranění vlastněných aplikací<br>Obnovení vlastněných aplikací | Čtení vlastností zaregistrovaných a podnikových aplikací<br>Správa vlastností aplikací, jejich přiřazení a přihlašovacích údajů u vlastněných aplikací<br>Odstranění vlastněných aplikací<br>Obnovení vlastněných aplikací
 Zařízení | Čtení všech vlastností zařízení<br>Správa všech vlastností vlastněných zařízení<br> | Žádná oprávnění<br>Odstranění vlastněných zařízení<br>
@@ -50,24 +50,83 @@ Výchozí oprávnění pro členy je možné omezit následujícími způsoby.
 Oprávnění | Vysvětlení nastavení
 ---------- | ------------
 Uživatelé můžou registrovat aplikace | Nastavení této možnosti na Ne zabraňuje uživatelům vytvářet registrace aplikací. Možnost lze udělit pak zpátky na určité jednotlivce jejich přidáním do role pro vývojáře aplikací.
-Umožnit uživatelům propojit pracovní nebo školní účet s Linkedinem | Nastavení této možnosti na Ne zabraňuje uživatelům v připojení svého pracovního nebo školního účtu se svým účtem LinkedIn.  Zobrazit [účet LinkedIn připojení sdílení dat a vyjádření souhlasu](https://docs.microsoft.com/azure/active-directory/users-groups-roles/linkedin-user-consent) Další informace.
+Umožnit uživatelům propojit pracovní nebo školní účet s Linkedinem | Nastavení této možnosti na Ne zabraňuje uživatelům v připojení svého pracovního nebo školního účtu se svým účtem LinkedIn. Další informace najdete v tématu [účet LinkedIn připojení sdílení dat a vyjádření souhlasu](https://docs.microsoft.com/azure/active-directory/users-groups-roles/linkedin-user-consent).
 Možnost vytvářet skupiny zabezpečení | Nastavení této možnosti na hodnotu Ne zabrání uživatelům vytvářet skupiny zabezpečení. Globální správci a Správci uživatelů stále můžou vytvářet skupiny zabezpečení. Informace o postupu najdete v tématu [Rutiny Azure Active Directory pro konfiguraci nastavení skupiny](../users-groups-roles/groups-settings-cmdlets.md).
 Možnost vytvářet skupiny Office 365 | Nastavení této možnosti na hodnotu Ne zabrání uživatelům vytvářet skupiny Office 365. Nastavení této možnosti na hodnotu Někteří umožní vytvářet skupiny Office 365 vybrané skupině uživatelů. Globální správci a Správci uživatelů bude stále moci vytvářet skupiny Office 365. Informace o postupu najdete v tématu [Rutiny Azure Active Directory pro konfiguraci nastavení skupiny](../users-groups-roles/groups-settings-cmdlets.md).
 Omezení přístupu k portálu pro správu Azure AD | Nastavení této možnosti na hodnotu Ano zabraňuje uživatelům v přístupu Azure Active Directory s využitím webu Azure portal pouze.
-Možnost číst ostatní uživatele | Toto nastavení je k dispozici pouze v PowerShellu. Nastavení této možnosti na hodnotu $false zabrání všem uživatelům, kteří nejsou správci, číst z adresáře informace o uživatelích. Toto nastavení nebrání čtení informací o uživatelích v ostatních službách Microsoftu, jako je například Exchange Online. Toto nastavení je určené pro zvláštní okolnosti a jeho nastavení na hodnotu $false se nedoporučuje.
+Možnost číst ostatní uživatele | Toto nastavení je k dispozici pouze v PowerShellu. Nastavení tohoto příznaku na $false brání všechny bez oprávnění správce ve čtení informací o uživateli z adresáře. Tento příznak nezabraňuje čtení informací o uživateli v dalším službám Microsoftu, jako je Exchange Online. Toto nastavení je určená pro zvláštní okolnosti, a na $false nastavení tohoto příznaku se nedoporučuje.
 
 ## <a name="object-ownership"></a>Vlastnictví objektů
 
 ### <a name="application-registration-owner-permissions"></a>Oprávnění vlastníka registrace aplikace
 Když uživatel zaregistruje aplikaci, automaticky se přidá jako vlastník této aplikace. Jako vlastník může spravovat metadata aplikace, například její název a oprávnění, která aplikace vyžaduje. Může spravovat také konfiguraci aplikace specifickou pro tenanta, jako je konfigurace jednotného přihlašování a přiřazení uživatelů. Vlastník může také přidat nebo odebrat další vlastníky. Na rozdíl od globálních správců můžou vlastníci spravovat pouze aplikace, které vlastní.
 
-<!-- ### Enterprise application owner permissions
-
-When a user adds a new enterprise application, they are automatically added as an owner for the tenant-specific configuration of the application. As an owner, they can manage the tenant-specific configuration of the application, such as the SSO configuration, provisioning, and user assignments. An owner can also add or remove other owners. Unlike Global Administrators, owners can manage only the applications they own. <!--To assign an enterprise application owner, see *Assigning Owners for an Application*.-->
+### <a name="enterprise-application-owner-permissions"></a>Oprávnění vlastníka aplikace organizace
+Když uživatel přidá nové podnikovou aplikaci, jsou automaticky přidány jako vlastníka. Jako vlastníka můžou spravovat aplikace, jako je jednotné přihlašování konfiguraci, zřizování a přiřazení uživatelských konfigurace specifickým pro tenanta. Vlastník může také přidat nebo odebrat další vlastníky. Na rozdíl od globální správci vlastníci můžou spravovat jenom aplikace, které vlastní.
 
 ### <a name="group-owner-permissions"></a>Oprávnění vlastníka skupiny
-
 Když uživatel vytvoří skupinu, automaticky se přidá jako vlastník této skupiny. Jako vlastníka, mohou spravovat vlastnosti skupiny, jako je například název, jakož i Správa členství ve skupinách. Vlastník může také přidat nebo odebrat další vlastníky. Na rozdíl od globální správci a Správci uživatelů pouze vlastníci můžou spravovat skupiny, které vlastní. Pokud chcete přiřadit vlastníka skupiny, přečtěte si téma [Správa vlastníků skupiny](active-directory-accessmanagement-managing-group-owners.md).
+
+### <a name="ownership-permissions"></a>Vlastnictví oprávnění
+Následující tabulky popisují konkrétní oprávnění v Azure Active Directory člen uživatelé mají nad vlastnictví objektů. Uživatel má tato oprávnění pouze u objektů, které vlastní.
+
+#### <a name="owned-application-registrations"></a>Registrace vlastněné aplikací
+Uživatelé mohou provádět následující akce na registrace vlastněné aplikací.
+
+| **Akce** | **Popis** |
+| --- | --- |
+| microsoft.directory/applications/audience/update | Umožňuje aktualizujte vlastnost applications.audience ve službě Azure Active Directory. |
+| microsoft.directory/applications/authentication/update | Umožňuje aktualizujte vlastnost applications.authentication ve službě Azure Active Directory. |
+| microsoft.directory/applications/basic/update | Aktualizace základní vlastnosti na aplikace v Azure Active Directory. |
+| microsoft.directory/applications/credentials/update | Umožňuje aktualizujte vlastnost applications.credentials ve službě Azure Active Directory. |
+| microsoft.directory/applications/delete | Umožňuje odstraňte applications v Azure Active Directory. |
+| microsoft.directory/applications/owners/update | Umožňuje aktualizujte vlastnost applications.owners v Azure Active Directory. |
+| microsoft.directory/applications/permissions/update | Umožňuje aktualizujte vlastnost applications.permissions ve službě Azure Active Directory. |
+| microsoft.directory/applications/policies/update | Umožňuje aktualizujte vlastnost applications.policies ve službě Azure Active Directory. |
+| microsoft.directory/applications/restore | Umožňuje obnovte applications v Azure Active Directory. |
+
+#### <a name="owned-enterprise-applications"></a>Vlastní podnikové aplikace
+Uživatelé mohou provádět následující akce na vlastní podnikové aplikace. Podniková aplikace je tvořené instanční objekt služby, jeden nebo více zásad aplikací a někdy objekt aplikace ve stejném tenantovi jako instanční objekt služby.
+
+| **Akce** | **Popis** |
+| --- | --- |
+| microsoft.directory/auditLogs/allProperties/read | Číst všechny vlastnosti (včetně privileged vlastností) na mají ve službě Azure Active Directory. |
+| microsoft.directory/policies/basic/update | Aktualizace základní vlastnosti v policies v Azure Active Directory. |
+| microsoft.directory/policies/delete | Umožňuje odstraňte policies v Azure Active Directory. |
+| microsoft.directory/policies/owners/update | Umožňuje aktualizujte vlastnost policies.owners v Azure Active Directory. |
+| microsoft.directory/servicePrincipals/appRoleAssignedTo/update | Umožňuje aktualizujte vlastnost servicePrincipals.appRoleAssignedTo v Azure Active Directory. |
+| microsoft.directory/servicePrincipals/appRoleAssignments/update | Umožňuje aktualizujte vlastnost users.appRoleAssignments v Azure Active Directory. |
+| microsoft.directory/servicePrincipals/audience/update | Umožňuje aktualizujte vlastnost servicePrincipals.audience ve službě Azure Active Directory. |
+| microsoft.directory/servicePrincipals/authentication/update | Umožňuje aktualizujte vlastnost servicePrincipals.authentication ve službě Azure Active Directory. |
+| microsoft.directory/servicePrincipals/basic/update | Aktualizace základní vlastnosti na servicePrincipals v Azure Active Directory. |
+| microsoft.directory/servicePrincipals/credentials/update | Umožňuje aktualizujte vlastnost servicePrincipals.credentials ve službě Azure Active Directory. |
+| microsoft.directory/servicePrincipals/delete | Umožňuje odstraňte servicePrincipals v Azure Active Directory. |
+| microsoft.directory/servicePrincipals/owners/update | Umožňuje aktualizujte vlastnost servicePrincipals.owners v Azure Active Directory. |
+| microsoft.directory/servicePrincipals/permissions/update | Umožňuje aktualizujte vlastnost servicePrincipals.permissions ve službě Azure Active Directory. |
+| microsoft.directory/servicePrincipals/policies/update | Umožňuje aktualizujte vlastnost servicePrincipals.policies ve službě Azure Active Directory. |
+| microsoft.directory/signInReports/allProperties/read | Číst všechny vlastnosti (včetně privileged vlastností) na signInReports ve službě Azure Active Directory. |
+
+#### <a name="owned-devices"></a>Zařízení ve vlastnictví firmy
+Uživatelé mohou provádět následující akce v zařízení ve vlastnictví firmy.
+
+| **Akce** | **Popis** |
+| --- | --- |
+| microsoft.directory/devices/bitLockerRecoveryKeys/read | Umožňuje číst vlastnost devices.bitLockerRecoveryKeys ve službě Azure Active Directory. |
+| microsoft.directory/devices/disable | Zakážete devices v Azure Active Directory. |
+
+#### <a name="owned-groups"></a>Vlastní skupiny
+Uživatelé mohou provádět následující akce pro vlastnictví skupiny.
+
+| **Akce** | **Popis** |
+| --- | --- |
+| microsoft.directory/groups/appRoleAssignments/update | Umožňuje aktualizujte vlastnost groups.appRoleAssignments v Azure Active Directory. |
+| microsoft.directory/groups/basic/update | Aktualizace základní vlastnosti skupin v Azure Active Directory. |
+| microsoft.directory/groups/delete | Umožňuje odstraňte groups v Azure Active Directory. |
+| microsoft.directory/groups/dynamicMembershipRule/update | Umožňuje aktualizujte vlastnost groups.dynamicMembershipRule v Azure Active Directory. |
+| microsoft.directory/groups/members/update | Umožňuje aktualizujte vlastnost groups.members v Azure Active Directory. |
+| microsoft.directory/groups/owners/update | Umožňuje aktualizujte vlastnost groups.owners v Azure Active Directory. |
+| microsoft.directory/groups/restore | Umožňuje obnovte groups v Azure Active Directory. |
+| microsoft.directory/groups/settings/update | Umožňuje aktualizujte vlastnost groups.settings v Azure Active Directory. |
 
 ## <a name="next-steps"></a>Další postup
 

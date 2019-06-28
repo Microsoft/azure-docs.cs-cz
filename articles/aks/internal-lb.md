@@ -7,23 +7,23 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/04/2019
 ms.author: iainfou
-ms.openlocfilehash: 1b5d18a3dfd1181fd06b58fd58f496457e24b58e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 50a2161be4ee70f7ae5c8baa3816eb9f9943a5d2
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65956370"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67358022"
 ---
 # <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>Použití interního nástroje Azure Kubernetes Service (AKS)
 
 Pokud chcete omezit přístup k aplikacím ve službě Azure Kubernetes Service (AKS), můžete vytvořit a používat interní load balancer. Interní nástroj zpřístupňuje služby Kubernetes pouze pro aplikace spuštěné ve stejné virtuální síti jako Kubernetes cluster. Tento článek popisuje, jak vytváření a používání interního nástroje Azure Kubernetes Service (AKS).
 
 > [!NOTE]
-> Nástroj Azure Load Balancer je k dispozici ve dvou skladových jednotkách - *základní* a *standardní*. V současné době podporuje AKS *základní* SKU. Pokud chcete použít *standardní* SKU, můžete použít nadřazený [aks-engine][aks-engine]. Další informace najdete v tématu [porovnání SKU nástroje pro vyrovnávání zatížení Azure][azure-lb-comparison].
+> Nástroj Azure Load Balancer je k dispozici ve dvou skladových jednotkách - *základní* a *standardní*. Ve výchozím nastavení *základní* SKU se používá při manifestu služby se používá k vytvoření nástroje pro vyrovnávání zatížení v AKS. Další informace najdete v tématu [porovnání SKU nástroje pro vyrovnávání zatížení Azure][azure-lb-comparison].
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Tento článek předpokládá, že máte existující cluster AKS. Pokud potřebujete AKS cluster, najdete v tomto rychlém startu AKS [pomocí Azure CLI] [ aks-quickstart-cli] nebo [pomocí webu Azure portal][aks-quickstart-portal].
+Tento článek předpokládá, že máte existující cluster AKS. Pokud potřebujete AKS cluster, najdete v tomto rychlém startu AKS [pomocí Azure CLI][aks-quickstart-cli] or [using the Azure portal][aks-quickstart-portal].
 
 Také nutné mít Azure CLI verze 2.0.59 nebo později nainstalované a nakonfigurované. Spustit `az --version` k vyhledání verze. Pokud potřebujete instalaci nebo upgrade, naleznete v tématu [instalace Azure CLI][install-azure-cli].
 
@@ -48,7 +48,7 @@ spec:
     app: internal-app
 ```
 
-Nasazení pomocí interního nástroje pro vyrovnávání [kubectl použít] kubectl-použít] a zadejte název vašeho YAML manifestu:
+Nasazení pomocí interního nástroje pro vyrovnávání [použití kubectl][kubectl-apply] a zadejte název vašeho YAML manifestu:
 
 ```console
 kubectl apply -f internal-lb.yaml
@@ -96,7 +96,7 @@ internal-app   LoadBalancer   10.0.184.168   10.240.0.25   80:30225/TCP   4m
 
 ## <a name="use-private-networks"></a>Použití privátních sítí
 
-Při vytváření clusteru AKS, můžete zadat rozšířené nastavení sítě. Tento přístup vám umožní nasadit cluster do existující virtuální síť Azure a podsítě. Jeden scénář je k nasazení clusteru AKS do privátní síť připojená k v místním prostředí a spuštění služeb dostupná jenom interně. Další informace najdete v tématu konfigurovat vlastní podsítě virtuální sítě s [Kubenet] [ use-kubenet] nebo [Azure CNI][advanced-networking].
+Při vytváření clusteru AKS, můžete zadat rozšířené nastavení sítě. Tento přístup vám umožní nasadit cluster do existující virtuální síť Azure a podsítě. Jeden scénář je k nasazení clusteru AKS do privátní síť připojená k v místním prostředí a spuštění služeb dostupná jenom interně. Další informace najdete v tématu konfigurovat vlastní podsítě virtuální sítě s [Kubenet][use-kubenet] or [Azure CNI][advanced-networking].
 
 Žádné změny k předchozí kroky jsou nutné k nasazení interního nástroje v clusteru AKS, který používá privátní sítě. Nástroje pro vyrovnávání zatížení je vytvořen ve stejné skupině prostředků jako AKS cluster, ale připojení k vaší privátní virtuální síť a podsíť, jak je znázorněno v následujícím příkladu:
 
@@ -108,7 +108,7 @@ internal-app   LoadBalancer   10.1.15.188   10.0.0.35     80:31669/TCP   1m
 ```
 
 > [!NOTE]
-> Možná budete muset udělit instančním objektu pro AKS cluster *Přispěvatel sítě* role do skupiny prostředků, ve které jsou nasazené prostředky virtuální sítě Azure. Zobrazit instanční objekt s [az aks zobrazit][az-aks-show], jako například `az aks show --resource-group myResourceGroup --name myAKSCluster --query "servicePrincipalProfile.clientId"`. Chcete-li vytvořit přiřazení role, použijte [vytvořit přiřazení role az] [ az-role-assignment-create] příkazu.
+> Možná budete muset udělit instančním objektu pro AKS cluster *Přispěvatel sítě* role do skupiny prostředků, ve které jsou nasazené prostředky virtuální sítě Azure. Zobrazit instanční objekt s [az aks zobrazit][az-aks-show], jako například `az aks show --resource-group myResourceGroup --name myAKSCluster --query "servicePrincipalProfile.clientId"`. Chcete-li vytvořit přiřazení role, použijte [vytvořit přiřazení role az][az-role-assignment-create] příkazu.
 
 ## <a name="specify-a-different-subnet"></a>Zadejte jinou podsíť
 
@@ -141,6 +141,7 @@ Můžete také přímo odstranit službu jako s jakýmikoli prostředky Kubernet
 Další informace o službách Kubernetes na [dokumentace ke službě services Kubernetes][kubernetes-services].
 
 <!-- LINKS - External -->
+[kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubernetes-services]: https://kubernetes.io/docs/concepts/services-networking/service/
 [aks-engine]: https://github.com/Azure/aks-engine
 

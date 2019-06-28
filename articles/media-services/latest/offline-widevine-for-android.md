@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/08/2019
 ms.author: willzhan
-ms.openlocfilehash: 5102720242edd3ffc0a377bbddf0f7f3ade68b63
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9e90951f810c5101a46c29570af8ad71b42be637
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64937227"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341018"
 ---
 # <a name="offline-widevine-streaming-for-android"></a>Offline Widevine streamování pro Android
 
@@ -38,6 +38,9 @@ Pro vytváření aplikací pro Android player, uvádíme tři možnosti:
 > * Vytvořit přehrávač použitím rozšíření eme (Encrypted Media Extensions) a rozšíření zdroj média (MSE) v62 mobilního prohlížeče Chrome nebo novější
 
 V článku najdete tady také odpovědi některé běžné dotazy týkající se offline streamování Widevine chráněný obsah.
+
+> [!NOTE]
+> Offline DRM účtuje pouze pro provádění jednoho požadavku licenci, když si stáhnete obsah. Všechny chyby se nic neúčtuje.
 
 ## <a name="prerequisites"></a>Požadavky 
 

@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 03/26/2019
-ms.openlocfilehash: ca53f4bfa80d6fdead24dc7d562c2240bb3fa86d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 06/18/2019
+ms.openlocfilehash: 826944fd3713f5cc3e99f20cb140055bfdb11a14
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60387421"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341436"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>Vytváření a používání aktivní geografické replikace
 
@@ -100,9 +100,6 @@ Pro dosažení skutečné obchodní kontinuity podnikových procesů, je přidá
 
   Každá sekundární databáze můžete samostatně součástí elastického fondu nebo nesmí být v každém elastického fondu vůbec. Volba fond pro každou sekundární databázi je oddělená a nezávisí na konfiguraci všechny sekundární databáze (ať už primární nebo sekundární). Každý elastický fond je obsažen v rámci jedné oblasti, proto může sdílet více druhotných databází na stejném topologie nikdy elastického fondu.
 
-- **Konfigurovat výpočty velikosti sekundární databáze**
-
-  Primární a sekundární databáze musí mít stejné úrovně služeb. Také důrazně doporučujeme, že se vytvoří sekundární databáze se stejnou velikostí výpočetní prostředky (počet jednotek Dtu nebo virtuálních jader) jako primární. Sekundární s menší velikostí výpočetních ohrožen zvýšenou replikace prodlevy, potenciální nedostupnost sekundární databáze a proto riziko ztráty dat podstatné po převzetí služeb při. V důsledku toho publikované cíle bodu obnovení = 5 s nemůže být zaručena. Další rizika je, že po převzetí služeb při selhání vaší aplikace bude mít dopad na výkon kvůli nedostatku výpočetní kapacity nový primární dokud nebude upgradována na vyšší výpočetní velikost. Doba upgradu závisí na velikosti databáze. Kromě toho právě takové upgrade vyžaduje, že primární i sekundární databáze jsou online a proto nelze dokončit, dokud je zmírněna výpadek. Pokud se rozhodnete vytvořit sekundární s menší velikostí výpočetních, graf procento protokolu vstupně-výstupních operací na portálu Azure portal poskytuje vhodný způsob, jak odhadovat velikost minimální výpočetní sekundární databáze, která je nutná pro udržení zatížení replikace. Například, pokud primární databáze je P6 (1 000 DTU) a jeho protokolem procent vstupně-výstupních operací je sekundární musí být nejméně 50 % P4 (500 DTU). Můžete také načíst data protokolu vstupně-výstupních operací s využitím [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) nebo [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) databáze zobrazení.  Další informace o velikostech výpočetních SQL Database najdete v tématu [co jsou úrovně služby SQL Database](sql-database-purchase-models.md).
 
 - **Řízené uživatelem převzetí služeb při selhání a navrácení služeb po obnovení**
 
@@ -112,7 +109,19 @@ Pro dosažení skutečné obchodní kontinuity podnikových procesů, je přidá
 
 Doporučujeme používat [pravidla firewallu protokolu IP na úrovni databáze](sql-database-firewall-configure.md) pro geograficky replikované databáze, takže tato pravidla se dají replikovat s databází a zkontrolujte všechny sekundární databáze mají stejné pravidla firewallu protokolu IP jako primární. Tento přístup se eliminuje potřeba zákazníkům ručně konfigurovat a spravovat pravidla brány firewall na servery, které hostují jak primární a sekundární databází. Podobně použití [uživatelé databáze s omezením](sql-database-manage-logins.md) dat přístup zajistí primární i sekundární databáze vždy stejné přihlašovací údaje uživatele, takže při selhání, není k dispozici žádné přerušení z důvodu neshody se uživatelská jména a hesla. Přidání [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md), zákazníci můžou spravovat přístup uživatelů k primární i sekundární databáze a eliminují ke správě pověření v databázích úplně se vynechá.
 
-## <a name="upgrading-or-downgrading-a-primary-database"></a>Upgrade nebo při downgradu primární databáze
+## <a name="configuring-secondary-database"></a>Konfigurace aktivní sekundární databáze
+
+Primární a sekundární databáze musí mít stejné úrovně služeb. Také důrazně doporučujeme, že se vytvoří sekundární databáze se stejnou velikostí výpočetní prostředky (počet jednotek Dtu nebo virtuálních jader) jako primární. Pokud primární databáze je zápis náročné úlohy, nemusí být schopné udržovat tempo s ním sekundárního objektu s nižší výpočetní velikost. Způsobí zpoždění opakování na sekundární, potenciální nedostupnost a následně na riziko ztráty podstatné po převzetí služeb. V důsledku toho publikované cíle bodu obnovení = 5 s nemůže být zaručena. Také to může způsobit selhání nebo zablokování z ostatních úloh na primární. 
+
+Důsledkem imbalanced sekundární konfigurace je, že po převzetí služeb při selhání se výkon vaší aplikace mají z důvodu nedostatečné výpočetní kapacitu nový primární. Je potřeba upgradovat na vyšší výpočetní prostředky potřebné úrovně, které nebude možné, dokud je zmírněna výpadek. 
+
+> [!NOTE]
+> V současné době upgradem primární databáze není možné, pokud je offline sekundární. 
+
+
+Pokud se rozhodnete vytvořit sekundární s menší velikostí výpočetních, graf procento protokolu vstupně-výstupních operací na portálu Azure portal poskytuje vhodný způsob, jak odhadovat velikost minimální výpočetní sekundární databáze, která je nutná pro udržení zatížení replikace. Například, pokud primární databáze je P6 (1 000 DTU) a jeho protokolem procent vstupně-výstupních operací je sekundární musí být nejméně 50 % P4 (500 DTU). Můžete také načíst data protokolu vstupně-výstupních operací s využitím [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) nebo [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) databáze zobrazení.  Další informace o velikostech výpočetních SQL Database najdete v tématu [co jsou úrovně služby SQL Database](sql-database-purchase-models.md).
+
+## <a name="upgrading-or-downgrading-primary-database"></a>Upgrade nebo při downgradu primární databáze
 
 Můžete upgradovat nebo downgradovat primární databáze do různých výpočetních velikost (v rámci stejné úrovně služeb, ne mezi pro obecné účely a pro důležité obchodní informace) bez odpojení všechny sekundární databáze. Při upgradu, doporučujeme nejprve upgradovat sekundární databáze a pak upgradovat primární. Při downgradu, pořadí: nejprve downgradovat primární a poté downgradovat sekundární. Když upgradujete nebo starší verzi databáze, kterou chcete vrstvu různé služby, se vynucuje toto doporučení.
 
@@ -134,7 +143,7 @@ Z důvodu vysoké latenci sítě WAN průběžného kopírování používá mec
 
 ## <a name="monitoring-geo-replication-lag"></a>Monitorování prodleva geografické replikace
 
-K monitorování prodleva s ohledem na cíle bodu obnovení, použijte *replication_lag_sec* sloupec [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) u primární databáze. Zobrazuje prodlevy v sekundách mezi transakcí na primární potvrzena a zachována na sekundární. Například Pokud hodnota je zpoždění je 1 sekunda, znamená to, pokud je v tomto okamžiku vliv výpadku primární a převzetí služeb při selhání je intiated, 1 sekunda nejnovější transtions se neuloží. 
+K monitorování prodleva s ohledem na cíle bodu obnovení, použijte *replication_lag_sec* sloupec [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) u primární databáze. Zobrazuje prodlevy v sekundách mezi transakcí na primární potvrzena a zachována na sekundární. Například Pokud hodnota je zpoždění je 1 sekunda, znamená to, pokud je v tomto okamžiku vliv výpadku primární a převzetí služeb při selhání se zahájí, 1 sekunda nejnovější přechody se neuloží. 
 
 K měření prodleva s ohledem na změny u primární databáze, které byly použity na sekundárním, tedy k dispozici ke čtení ze sekundárního, porovnat *last_commit* čas na sekundární databázi se stejnou hodnotou na primární databáze.
 

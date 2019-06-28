@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0ac34f1d1e7fc2a967c7608f31f3b943f9380d01
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 622b4ab41162a7858097f717a103878f05917cd3
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65786191"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67342161"
 ---
 # <a name="variable-assets-in-azure-automation"></a>Proměnných assetů ve službě Azure Automation
 
@@ -28,7 +28,7 @@ Proměnných assetů jsou hodnoty, které jsou k dispozici pro všechny runbooky
 
 Protože proměnné služeb automatizace jsou trvalé, jsou k dispozici i v případě, runbooku nebo konfigurace DSC se nezdaří. Toto chování umožňuje hodnotu nastavení jedné sady runbook, který se pak použije v jiném, nebo se používá ve stejném runbooku nebo konfigurace DSC při příštím spuštění.
 
-Při vytváření proměnné je můžete zadat, že je uložen šifrované. Zašifrované proměnné jsou bezpečně uložené ve službě Azure Automation a jeho hodnotu nelze načíst z [Get-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Get-AzureRmAutomationVariable) rutinu, která je dodávána jako součást modulu Azure PowerShell. Jediným způsobem, že je možné načíst hodnotu zašifrovaných je z **Get-AutomationVariable** aktivitu v runbooku nebo konfigurace DSC.
+Při vytváření proměnné je můžete zadat, že je uložen šifrované. Zašifrované proměnné jsou bezpečně uložené ve službě Azure Automation a jeho hodnotu nelze načíst z [Get-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Get-AzureRmAutomationVariable) rutinu, která je dodávána jako součást modulu Azure PowerShell. Jediným způsobem, že je možné načíst hodnotu zašifrovaných je z **Get-AutomationVariable** aktivitu v runbooku nebo konfigurace DSC. Pokud chcete změnit nezašifrované zašifrovaná proměnná, můžete je odstranit a znovu vytvořit proměnnou jako nezašifrované.
 
 >[!NOTE]
 >Zabezpečené prostředky ve službě Azure Automation zahrnovat přihlašovací údaje, certifikátů, připojení a zašifrované proměnné. Tyto prostředky jsou zašifrované a uložené ve službě Azure Automation jednotlivých účtů automation pomocí jedinečný klíč, který je generován. Tento klíč je uložen v systému spravované služby Key Vault. Před uložením o zabezpečený prostředek, je klíč načíst ze služby Key Vault a použije k zašifrování assetu. Tento proces se spravuje přes Azure Automation.

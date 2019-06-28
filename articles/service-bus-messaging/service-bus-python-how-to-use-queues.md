@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 04/10/2019
 ms.author: aschhab
-ms.openlocfilehash: 6d95e4a0a7aeedef2fc7e635d2e49ea68c3ba0ca
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b74238ee49fe0d96d218f1800a33a9d60badc6d5
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65992051"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341698"
 ---
 # <a name="how-to-use-service-bus-queues-with-python"></a>Jak používat fronty služby Service Bus pomocí Pythonu
 
@@ -45,13 +45,13 @@ V tomto kurzu se dozvíte, jak vytvářet aplikace Python na odesílání a př�
 from azure.servicebus import ServiceBusClient
 ```
 
-Následující kód vytvoří **ServiceBusClient** objektu. Nahraďte `mynamespace`, `sharedaccesskeyname`, a `sharedaccesskey` s oborem názvů, název klíče sdíleného přístupového podpisu (SAS) a hodnotu.
+Následující kód vytvoří **ServiceBusClient** objektu. Nahraďte `<CONNECTION STRING>` s váš připojovací řetězec služby Service Bus.
 
 ```python
 sb_client = ServiceBusClient.from_connection_string('<CONNECTION STRING>')
 ```
 
-Hodnoty pro název klíče SAS a hodnoty najdete v [webu Azure portal] [ Azure portal] informace o připojení, nebo v sadě Visual Studio **vlastnosti** podokna při výběru služby Obor názvů Service Bus v Průzkumníku serveru (jak je znázorněno v předchozí části).
+Hodnoty pro název klíče SAS a hodnoty najdete v [webu Azure portal][Azure portal] informace o připojení, nebo v sadě Visual Studio **vlastnosti** podokna při výběru v Průzkumníku serveru (jako obor názvů služby Service Bus uvedené v předchozí části).
 
 ```python
 sb_client.create_queue("taskqueue")

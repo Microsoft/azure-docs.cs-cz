@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: mathoma
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: c72c4d21f948d6d6c4d1d4598efa0e13de9705a6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e4d056aacf8f3969b645747e2303574f3fea3bda
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64926199"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357124"
 ---
 # <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>Konfigurace replikace databáze spravované instance Azure SQL Database
 
@@ -40,7 +40,7 @@ Konfigurace managed instance fungovat jako vydavatel a/nebo distributora vyžadu
 
 - Spravované instance se teď neúčastní relace geografickou replikaci.
 - Že vydavatel spravovaná instance je ve stejné virtuální síti jako distributor a odběrateli, nebo [partnerský vztah virtuální sítě](../virtual-network/tutorial-connect-virtual-networks-powershell.md) stal mezi virtuálními sítěmi všechny tři entity. 
-- Připojení pomocí ověřování SQL mezi účastníky replikace.
+- Při připojování mezi účastníky replikace se používá ověřování SQL.
 - Sdílenou účtu úložiště Azure pro replikaci pracovní adresář.
 - Port 445 (odchozí TCP) je otevřen v zabezpečení pravidla NSG pro spravované instance pro přístup ke sdílené složce Azure. 
 
@@ -172,7 +172,7 @@ EXEC sp_adddistpublisher
   @login = N'$(username)',
   @password = N'$(password)',
   @working_directory = N'$(file_storage)',
-  @storage_connection_string = N'$(file_storage_key)';
+  @storage_connection_string = N'$(file_storage_key)'; -- Remove this parameter for on-premises publishers
 ```
 
 Tento skript nakonfiguruje místní vydavatele na spravované instanci přidá odkazovaný server a vytvoří sadu úloh pro SQL Server Agent. 

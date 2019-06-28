@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/19/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e79f4b58582ab6643a7a13ffee25503060a2208c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f5408ce82b16d72dde364238d427a798441dfc8b
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60929253"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67340822"
 ---
 # <a name="my-first-python-runbook"></a>Můj první runbook Pythonu
 
@@ -153,13 +153,14 @@ Spuštění virtuálního počítače pomocí klienta výpočetní prostředky. 
 ```python
 # Initialize the compute management client with the RunAs credential and specify the subscription to work against.
 compute_client = ComputeManagementClient(
-azure_credential,
-  str(runas_connection["SubscriptionId"])
+    azure_credential,
+    str(runas_connection["SubscriptionId"])
 )
 
 
 print('\nStart VM')
-async_vm_start = compute_client.virtual_machines.start("MyResourceGroup", "TestVM")
+async_vm_start = compute_client.virtual_machines.start(
+    "MyResourceGroup", "TestVM")
 async_vm_start.wait()
 ```
 
@@ -188,7 +189,8 @@ Všimněte si, že element seznamu argumentů `sys.argv[0]`, je název skriptu a
 Nyní můžete upravit poslední dva řádky, runbook použije parametr vstupní hodnoty místo pevně definovaných hodnot:
 
 ```python
-async_vm_start = compute_client.virtual_machines.start(resource_group_name, vm_name)
+async_vm_start = compute_client.virtual_machines.start(
+    resource_group_name, vm_name)
 async_vm_start.wait()
 ```
 

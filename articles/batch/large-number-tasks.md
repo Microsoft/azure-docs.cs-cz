@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 08/24/2018
 ms.author: lahugh
 ms.custom: ''
-ms.openlocfilehash: ed04774969f72f1d6037a350f019d81d812d73f6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0aff792d7e005fb17ebec0715ca3ac7237fd7a71
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60549661"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341008"
 ---
 # <a name="submit-a-large-number-of-tasks-to-a-batch-job"></a>Odeslání velkého počtu úkolů pro úlohu služby Batch
 
@@ -141,7 +141,8 @@ Nastavení `BatchExtensionsClient` , který používá rozšíření sady SDK:
 
 ```python
 
-client = batch.BatchExtensionsClient(base_url=BATCH_ACCOUNT_URL, resource_group=RESOURCE_GROUP_NAME, batch_account=BATCH_ACCOUNT_NAME)
+client = batch.BatchExtensionsClient(
+    base_url=BATCH_ACCOUNT_URL, resource_group=RESOURCE_GROUP_NAME, batch_account=BATCH_ACCOUNT_NAME)
 ...
 ```
 
@@ -149,10 +150,9 @@ Vytvořte kolekci úloh určených k přidání do úlohy. Příklad:
 
 
 ```python
-tasks=list()
+tasks = list()
 # Populate the list with your tasks
 ...
-
 ```
 
 Přidání pomocí kolekcí úloh [task.add_collection](/python/api/azure-batch/azure.batch.operations.TaskOperations?view=azure-python). Nastavte `threads` parametr zvýšit počet souběžných operací:
@@ -188,7 +188,7 @@ parameter_sweep = {
                 "repeatTask": {
                     "commandLine": "/bin/bash -c 'echo Hello world from task {0}'",
                     "constraints": {
-                        "retentionTime":"PT1H"
+                        "retentionTime": "PT1H"
                     }
                 }
             },

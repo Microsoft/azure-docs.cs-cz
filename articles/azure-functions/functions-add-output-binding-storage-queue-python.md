@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: aaeee4238110faa7a842073af8431b30b885db3c
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 4ae22a5cd6ad044a86db88986daf9cc7c05c00a2
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64870037"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67342316"
 ---
 # <a name="add-an-azure-storage-queue-binding-to-your-function"></a>Přidání vazby fronty Azure Storage do funkce
 
@@ -51,7 +51,7 @@ Ve funkcích, každý typ vazby vyžaduje `direction`, `type`a jedinečný `name
 
 Pokud chcete vytvořit vazbu, přidáte objekt konfigurace vazby na `function.json` souboru. Upravte soubor function.json ve složce HttpTrigger přidání objektu do `bindings` pole, které má následující vlastnosti:
 
-| Vlastnost | Hodnota | Popis |
+| Vlastnost | Value | Popis |
 | -------- | ----- | ----------- |
 | **`name`** | `msg` | Název identifikující vazby parametru odkazovaného v kódu. |
 | **`type`** | `queue` | Vazba je vazbu fronty Azure Storage. |
@@ -117,8 +117,8 @@ def main(req: func.HttpRequest, msg: func.Out[func.QueueMessage]) -> str:
         return func.HttpResponse(f"Hello {name}!")
     else:
         return func.HttpResponse(
-             "Please pass a name on the query string or in the request body",
-             status_code=400
+            "Please pass a name on the query string or in the request body",
+            status_code=400
         )
 ```
 
@@ -139,7 +139,7 @@ Zkopírujte adresu URL vaší funkce `HttpTrigger` z výstupu modulu runtime a v
 
 Tentokrát výstupní vazbu také vytvoří frontu s názvem `outqueue` ve službě Storage account a přidá zprávu pomocí tohoto stejného řetězce.
 
-V dalším kroku použijete rozhraní příkazového řádku Azure k zobrazení novou frontu a ověřte, že byl přidán zprávu. Můžete také zobrazit, pomocí vaší fronty [Microsoft Azure Storage Explorer] [ Azure Storage Explorer] nebo v [webu Azure portal](https://portal.azure.com).
+V dalším kroku použijete rozhraní příkazového řádku Azure k zobrazení novou frontu a ověřte, že byl přidán zprávu. Můžete také zobrazit, pomocí vaší fronty [Microsoft Azure Storage Explorer][Azure Storage Explorer] nebo v [webu Azure portal](https://portal.azure.com).
 
 ### <a name="set-the-storage-account-connection"></a>Nastavit připojení k účtu úložiště
 

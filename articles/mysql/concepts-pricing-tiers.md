@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: 20fb352e65a570063d9a0f55667db073f8a4ee27
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 726da603b5f583c85f4b7c4262c6e97f565a3678
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67062428"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67339931"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL cenové úrovně
 
@@ -67,7 +67,7 @@ Omezení úložiště zvyšujeme na naše úrovni obecné účely a optimalizova
 | IOPS | 3 IOPS/GB<br/>Minimum 100 vstupně-výstupních operací<br/>Max. 20 000 IOPS| 3 IOPS/GB<br/>Minimum 100 vstupně-výstupních operací<br/>Max. 20 000 IOPS |
 
 > [!IMPORTANT]
-> Rozsáhlá úložiště je aktuálně ve verzi public preview v těchto oblastech: USA – východ, USA – východ 2, střed USA, západní USA, západní USA 2, Severní Evropa, západní Evropa, jihovýchodní Asie, Japonsko – východ, Korea – střed, Austrálie – východ.
+> Rozsáhlá úložiště je aktuálně ve verzi public preview v těchto oblastech: USA – východ, USA – východ 2, střed USA, západní USA, Severní Evropa, západní Evropa, jihovýchodní Asie, Japonsko – východ, Korea – střed, Austrálie – východ.
 >
 > Rozsáhlá úložiště ve verzi preview v současné době nepodporuje:
 >

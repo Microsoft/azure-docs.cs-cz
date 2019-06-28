@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 92cb427149e6e6cbddfb96c6e4488017641e6482
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7dbb04a9d002fdcff49d28f69ee0975500bb7ed0
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60761739"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67340791"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Řešení potíží s Azure Stream Analytics výstupy
 
@@ -90,6 +90,10 @@ Při konfiguraci IGNORE_DUP_KEY pro několik typů indexů, mějte na paměti n�
 * Nelze nastavit IGNORE_DUP_KEY na primární klíč nebo jedinečné omezení, která používá příkaz ALTER INDEX, je nutné vyřadit a znovu vytvořte index.  
 * Můžete nastavit možnost IGNORE_DUP_KEY na hodnotu pomocí příkazu ALTER INDEX pro jedinečný index, který se liší od primární klíč nebo jedinečné omezení a vytvořit pomocí definition CREATE INDEX nebo INDEX.  
 * IGNORE_DUP_KEY neplatí pro indexy columnstore, protože nelze vynutit jedinečnost takové indexů.  
+
+## <a name="column-names-are-lower-cased-by-azure-stream-analytics"></a>Názvy sloupců jsou nižší malými a velkými písmeny služba Azure Stream Analytics
+Při použití původní úroveň kompatibility (1.0), Azure Stream Analytics umožňuje změnit názvy sloupců na malá písmena. Toto chování byla opravena v vyšší úrovně kompatibility. Aby bylo možné zachovat tento případ, doporučujeme zákazníkům přejít na úroveň kompatibility 1.1 nebo novější. Další informace najdete na [úroveň kompatibility pro úlohy Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level).
+
 
 ## <a name="get-help"></a>Podpora
 

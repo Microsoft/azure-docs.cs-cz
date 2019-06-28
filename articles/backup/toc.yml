@@ -144,8 +144,6 @@
           items:
             - name: Správa záloh virtuálních počítačů Azure
               href: backup-azure-manage-vms.md
-            - name: Monitorování výstrah pro zálohy virtuálních počítačů Azure
-              href: backup-azure-monitor-vms.md
         - name: Obnovení virtuálních počítačů Azure
           items:
             - name: Obnovení virtuálních počítačů Azure na portálu

@@ -7,19 +7,19 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 6/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: 43dd8be998e0f8f3b5a2b783c6a01d5b5ef3da12
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 54ff94cad3034e3679e57e5596ca13f3430cbbb3
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65506929"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67340564"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>Porozumění sledování úlohu Stream Analytics a monitorování dotazů
 
 ## <a name="introduction-the-monitor-page"></a>Představení: Na stránce monitorování
-Azure portal i zařízení surface klíčové metriky výkonu, který slouží k monitorování a ladění výkonu dotazů a úlohy. Pokud chcete zobrazit tyto metriky, přejděte na úlohu Stream Analytics mají zájem o metriky pro zobrazení a zobrazení **monitorování** části na stránce Přehled.  
+Portálu Azure povrchy klíčové metriky výkonu, který slouží k monitorování a ladění výkonu dotazů a úlohy. Pokud chcete zobrazit tyto metriky, přejděte na úlohu Stream Analytics mají zájem o metriky pro zobrazení a zobrazení **monitorování** části na stránce Přehled.  
 
 ![Úlohy Stream Analytics monitorování odkaz](./media/stream-analytics-monitoring/02-stream-analytics-monitoring-block.png)
 
@@ -68,4 +68,3 @@ Další podporu naleznete v našem [fóru služby Azure Stream Analytics](https:
 * [Škálování služby Stream Analytics](stream-analytics-scale-jobs.md)
 * [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Referenční příručka k rozhraní REST API pro správu služby Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-

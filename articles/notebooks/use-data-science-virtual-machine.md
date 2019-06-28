@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2019
 ms.author: getroyer
-ms.openlocfilehash: 9b762f1b3f1c17e15b051e72f5d2cf98bef446bf
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.openlocfilehash: 0ac50a5f52682c4315b8d08cf5632c4a6fa5242f
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67137759"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357585"
 ---
 # <a name="use-azure-data-science-virtual-machines"></a>Použijte virtuální počítače pro Azure datové vědy
 
@@ -51,9 +51,9 @@ Tyto hodnoty získat z DSVM stránky na webu Azure Portal.
 
 ## <a name="accessing-azure-notebooks-files-from-the-dsvm"></a>Přístup k souborům poznámkových bloků Azure z datové VĚDY
 
-Chcete-li zachovat parity cesty k souborům s **– Compute úrovně Free** úroveň, budete moci otevřít pouze jeden projekt současně v DSVM. Chcete-li otevřít nový projekt, je nutné vypnout otevřít projekt nejprve.
+Přístupu k systému souborů je podporována verze DSVM 19.06.15 nebo novější. Pokud chcete zkontrolovat verzi, nejprve připojte k vaší DSVM přes protokol SSH (IP adresa je k dispozici na webu Azure Portal). Potom spusťte následující příkaz pomocí vaší `<ip_address>`: `curl -H Metadata:true "http://<ip_address>/metadata/instance?api-version=2018-10-01"`. Číslo verze se zobrazí ve výstupu "verze".
 
-![Tlačítko vypnutí v poznámkových bloků Azure](media/shutdown.png)
+Chcete-li zachovat parity cesty k souborům s **– Compute úrovně Free** úroveň, budete moci otevřít pouze jeden projekt současně v DSVM. Chcete-li otevřít nový projekt, je nutné vypnout otevřít projekt nejprve.
 
 Při spuštění projektu na virtuálním počítači jsou připojené soubory na kořenovém adresáři serveru Jupyter (adresář ukazuje JupyterHub), nahradí výchozí soubory poznámkových bloků Azure. Když vypnete virtuální počítač pomocí **vypnutí** tlačítko v poznámkovém bloku uživatelského rozhraní, poznámkových bloků Azure obnoví výchozí soubory.
 

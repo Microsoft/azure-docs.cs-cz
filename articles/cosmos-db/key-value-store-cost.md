@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: a3b4886bc175311e9a0e61f3dfb99b1fe7e1a679
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 757366f1d1f94d11438be4df0772ce1155f71cee
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66236766"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67310588"
 ---
 # <a name="azure-cosmos-db-as-a-key-value-store--cost-overview"></a>Azure Cosmos DB jako hodnotu klíče úložiště – přehled nákladů
 
 Azure Cosmos DB je globálně distribuovaná a vícemodelová databázová služba pro snadné vytváření aplikací s vysokou dostupností, ve velkém měřítku. Ve výchozím nastavení služby Azure Cosmos DB automaticky indexuje všechna data, která ingestuje efektivně. To umožňuje rychlé a konzistentní [SQL](how-to-sql-query.md) (a [JavaScript](stored-procedures-triggers-udfs.md)) dotazy na všech druhů dat. 
 
-Tento článek popisuje náklady na služby Azure Cosmos DB pro jednoduché zápisu a operace čtení, když se používá jako úložiště dvojic klíč/hodnota. Zápisu operace zahrnují vložení, nahradí, odstraní a upsertuje dokumentů. Kromě zajištění 99,99 % smlouva SLA o dostupnosti pro všechny účty v jedné oblasti a všechny účty ve více oblastech s mírnější konzistencí a 99,999 % dostupnost pro čtení pro všechny účty databáze pro více oblastí, ve službě Azure Cosmos DB nabízí zaručeno, že < 10 ms, latence přečte a < 15 ms latence (indexované), zapíše na 99. percentilu. 
+Tento článek popisuje náklady na služby Azure Cosmos DB pro jednoduché zápisu a operace čtení, když se používá jako úložiště dvojic klíč/hodnota. Zápisu operace zahrnují vložení, nahradí, odstraní a upsertuje dokumentů. Kromě zajištění 99,99 % smlouva SLA o dostupnosti pro všechny účty v jedné oblasti a všechny účty ve více oblastech s mírnější konzistencí a 99,999 % dostupnost pro čtení pro všechny účty databáze pro více oblastí, ve službě Azure Cosmos DB nabízí zaručeno, že < 10 ms, latence přečte a (indexované) zapíše data, respektive na 99. percentilu. 
 
 ## <a name="why-we-use-request-units-rus"></a>Proč používáme jednotek žádosti (ru)
 

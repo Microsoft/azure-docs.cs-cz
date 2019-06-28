@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: adigan
-ms.openlocfilehash: dd4dad2cc3e541d3b6866c02341161dc1d9e1e6c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 801516ae2cfad891098c16f8cd6e9a4c7f157a93
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61234910"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67342016"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Datový model log Analytics pro Azure zálohování – uložená data
 
@@ -50,7 +50,7 @@ Tato tabulka obsahuje podrobnosti o upozornění související pole.
 | OperationName |Text |Název aktuální operace, například výstrahy |
 | Category |Text |Kategorie diagnostická data do protokoly Azure monitoru. Vždy AzureBackupReport |
 | Resource |Text |Toto je prostředek, pro kterou se data shromažďují, zobrazuje název trezoru služby Recovery Services |
-| ProtectedServerUniqueId_s |Text |Jedinečný identifikátor chráněného serveru přiřazené k výstraze |
+| ProtectedContainerUniqueId_s |Text |Jedinečný identifikátor chráněného serveru souvisejícího s výstrahou (ProtectedServerUniqueId_s byl ve V1)|
 | VaultUniqueId_s |Text |Jedinečný identifikátor chráněné trezor souvisejícího s výstrahou |
 | SourceSystem |Text |Zdrojový systém aktuálních dat – Azure |
 | ResourceId |Text |Jedinečný identifikátor pro prostředek, o tom, které se shromažďují data. Například id prostředku služby Recovery Services vault |
@@ -67,10 +67,12 @@ Tato tabulka obsahuje podrobnosti o zálohování související položku pole.
 | --- | --- | --- |
 | EventName_s |Text |Název události. Vždy AzureBackupCentralReport |  
 | BackupItemUniqueId_s |Text |Jedinečný identifikátor zálohované položky |
-| BackupItemId_s |Text |Identifikátor zálohovaná položka |
+| BackupItemId_s |Text |Identifikátor položky zálohování (v tomto poli je pouze pro schéma v1) |
 | BackupItemName_s |Text |Název zálohované položky |
 | BackupItemFriendlyName_s |Text |Popisný název zálohované položky |
 | BackupItemType_s |Text |Typ zálohování položky, například virtuální počítač, FileFolder |
+| BackupItemProtectionState_s |Text |Stav ochrany zálohované položky |
+| BackupItemAppVersion_s |Text |Verze aplikace pro zálohovaná položka |
 | ProtectionState_s |Text |Aktuální stav ochrany zálohované položky, třeba chráněné, ProtectionStopped |
 | ProtectionGroupName_s |Text | Název skupiny ochrany zálohovaná položka není chráněná ve, SC DPM a službu MABS, pokud je k dispozici|
 | SecondaryBackupProtectionState_s |Text |Určuje, zda je povoleno sekundární ochranu zálohované položky|
@@ -103,8 +105,7 @@ Tato tabulka obsahuje podrobné informace o přidružení zálohovaná položka 
 | Category |Text |Toto pole představuje kategorie diagnostická data do Log Analytics, je AzureBackupReport |
 | OperationName |Text |Toto pole představuje název aktuální operace - BackupItemAssociation |
 | Resource |Text |Toto je prostředek, pro kterou se data shromažďují, zobrazuje název trezoru služby Recovery Services |
-| PolicyUniqueId_g |Text |Jedinečný identifikátor pro zásady přidružené k zálohované položky |
-| ProtectedServerUniqueId_s |Text |Jedinečný identifikátor chráněného serveru přidružené k zálohované položky |
+| ProtectedContainerUniqueId_s |Text |Jedinečný identifikátor chráněného serveru přidružené k zálohované položky (ProtectedServerUniqueId_s byl ve V1) |
 | VaultUniqueId_s |Text |Jedinečný identifikátor trezoru, který obsahuje zálohované položky |
 | SourceSystem |Text |Zdrojový systém aktuálních dat – Azure |
 | ResourceId |Text |Identifikátor URI pro shromažďovaných údajů. Například id prostředku trezoru služby Recovery Services |
@@ -249,13 +250,14 @@ Tato tabulka obsahuje základní pole o kontejnerech chráněné. (Byl Protected
 | ProtectedContainerOSType_s |Text |Typ operačního systému chráněné kontejneru |
 | ProtectedContainerOSVersion_s |Text |Verze operačního systému chráněné kontejneru |
 | AgentVersion_s |Text |Číslo verze agenta zálohování nebo agenta ochrany (v případě aplikace DPM SC a MABS) |
-| BackupManagementType_s |Text |Typ zprostředkovatele pro provádění zálohování například IaaSVM FileFolder |
-| EntityState_s |Text |Aktuální stav objektu chráněného serveru, například aktivní, odstraněno |
+| BackupManagementType_s |Text |Typ zprostředkovatele pro provádění zálohování. Například IaaSVM, FileFolder |
+| EntityState_s |Text |Aktuální stav objektu chráněného serveru. Například aktivní, odstraněno |
 | ProtectedContainerFriendlyName_s |Text |Popisný název chráněného serveru |
 | ProtectedContainerName_s |Text |Název chráněného kontejneru |
-| ProtectedContainerWorkloadType_s |Text |Typ kontejneru chráněná zálohovat například IaaSVMContainer |
+| ProtectedContainerWorkloadType_s |Text |Typ kontejneru chráněná zálohovat. Například IaaSVMContainer |
 | ProtectedContainerLocation_s |Text |Kontejner chráněné nacházejí na místních nebo v Azure |
 | ProtectedContainerType_s |Text |Určuje, zda je kontejner chráněný server nebo kontejneru |
+| ProtectedContainerProtectionState_s’  |Text |Stav ochrany z chráněného kontejneru |
 
 ### <a name="storage"></a>Úložiště
 
@@ -263,7 +265,7 @@ Tato tabulka obsahuje podrobnosti o polích týkající se úložiště.
 
 | Pole | Typ dat | Popis |
 | --- | --- | --- |
-| CloudStorageInBytes_s |Desetinné číslo |Cloudové zálohování úložiště využitá službou zálohování, které se počítá na základě nejnovější hodnoty |
+| CloudStorageInBytes_s |Desetinné číslo |Cloudové zálohování úložiště využitá službou zálohování, které se počítá na základě nejnovější hodnoty (v tomto poli je pouze pro schéma v1)|
 | ProtectedInstances_s |Desetinné číslo |Počet chráněných instancí sloužící k výpočtu front-endu úložiště fakturace, vypočítané hodnoty na základě nejnovější |
 | EventName_s |Text |Toto pole představuje název této události, je vždy AzureBackupCentralReport |
 | SchemaVersion_s |Text |Toto pole označuje aktuální verzi schématu, ale **V2** |
@@ -280,6 +282,10 @@ Tato tabulka obsahuje podrobnosti o polích týkající se úložiště.
 | ResourceGroup |Text |Skupina prostředků prostředku (např.) Trezor služby Recovery Services) pro které se shromažďují data |
 | ResourceProvider |Text |Poskytovatel prostředků, pro které se shromažďují data. Například Microsoft.recoveryservices. |
 | ResourceType |Text |Typ prostředku, pro které se shromažďují data. Například trezory Recovery Services |
+| StorageUniqueId_s |Text |Jedinečné Id, které slouží k identifikaci entity úložiště |
+| StorageType_s |Text |Typ úložiště, například Cloud, svazku disku |
+| StorageName_s |Text |Název entity úložiště, např. E:\ |
+| StorageTotalSizeInGBs_s |Text |Celková velikost úložiště v GB, používané entity úložiště|
 
 ### <a name="storageassociation"></a>StorageAssociation
 
@@ -342,7 +348,7 @@ Tato tabulka určuje workload(s) svazku je přidružený.
 
 ### <a name="protectedinstance"></a>ProtectedInstance
 
-Tato tabulka obsahuje související pole Základní chráněných instancí.
+Tato tabulka obsahuje základní chráněná pole související s instancí.
 
 | Pole | Typ dat |Příslušné verze | Popis |
 | --- | --- | --- | --- |

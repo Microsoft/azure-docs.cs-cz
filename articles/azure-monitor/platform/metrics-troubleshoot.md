@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: cff1bbefc3c54f7f9c02c646bd9eef528fe28c73
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 73ef5cc00b5154dbdbc92911d17740c7d13038ec
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64939576"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341979"
 ---
 # <a name="troubleshooting-metrics-charts"></a>Řešení potíží s grafy metrik
 
@@ -73,7 +73,7 @@ Kolekce **hostovaného operačního systému** metriky vyžaduje konfiguraci roz
 
 ## <a name="error-retrieving-data-message-on-dashboard"></a>Zpráva "Chyba při načítání dat" na řídicím panelu
 
-Tento problém je běžný při řídicí panel byl vytvořen pomocí metriku, která se později zastaralé a odebrána z Azure. Chcete-li ověřit, že se jedná o tento případ, otevřete **metriky** kartu prostředku a zkontrolujte dostupné metriky v metriky pro výběr. Pokud metrika není zobrazený, metriku byl odebrán z Azure. Obvykle když metrika je zastaralá, je lepší novou metriku, která nabízí podobné perspektivou na stav prostředku.
+Tomuto problému může dojít v případě, že váš řídicí panel vytvořil s metriku, která se později zastaralé a odebrána z Azure. Chcete-li ověřit, že se jedná o tento případ, otevřete **metriky** kartu prostředku a zkontrolujte dostupné metriky v metriky pro výběr. Pokud metrika není zobrazený, metriku byl odebrán z Azure. Obvykle když metrika je zastaralá, je lepší novou metriku, která nabízí podobné perspektivou na stav prostředku.
 
 **Řešení:** Aktualizujte dlaždici selhání výběrem alternativní metrik pro graf na řídicí panel. Je možné [prohlédněte si seznam dostupných metrik pro služby Azure](metrics-supported.md).
 

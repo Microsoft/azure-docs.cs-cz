@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/29/2018
 ms.author: asgang
-ms.openlocfilehash: 86bd41d518006b0601a5c9d18e5429f76d5a4fc5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0dec8179cc9b69eeea679f517693e4debb9fb56e
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64926620"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67340704"
 ---
 # <a name="replicate-azure-vms-to-another-azure-region"></a>Replikace virtuálních počítačů Azure do jiné oblasti Azure
 
@@ -66,7 +66,7 @@ Povolení replikace. Tento postup předpokládá, že primární oblast Azure je
      >Typ dostupnosti - jediné instance, set nebo dostupnost zónu dostupnosti, nelze změnit po povolení replikace. Budete muset zakázat a povolit replikaci, chcete-li změnit typ dostupnosti.
      >
     
-   - **Zásady replikace**: Definuje nastavení pro obnovení bodu uchování historie a aplikace konzistentní frekvence pořizování snímků. Ve výchozím nastavení Azure Site Recovery vytvoří novou zásadu replikace s výchozím nastavením ' 24 hodin pro uchování bodu obnovení a "60 minut, než se frekvence snímků konzistentní vzhledem k aplikacím aplikace.
+   - **Zásady replikace**: Definuje nastavení pro obnovení bodu uchování historie a aplikace konzistentní frekvence pořizování snímků. Ve výchozím nastavení Azure Site Recovery vytvoří novou zásadu replikace s výchozím nastavením ' 24 hodin pro uchování bodu obnovení a frekvence pořizování snímků '4 hodiny pro konzistentní vzhledem k aplikacím.
 
      ![Povolení replikace](./media/site-recovery-replicate-azure-to-azure/enabledrwizard3.PNG)
 

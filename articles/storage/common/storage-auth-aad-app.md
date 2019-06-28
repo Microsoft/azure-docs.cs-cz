@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/05/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 30ebfec88182684f8e852808e978a51854389898
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e57291292d8957fd323f9be03bb7df0492484ea8
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67073444"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341619"
 ---
 # <a name="authenticate-with-azure-active-directory-from-an-application-for-access-to-blobs-and-queues"></a>Ověřování pomocí Azure Active Directory z aplikace pro přístup k objektům BLOB a fronty
 
@@ -121,7 +121,7 @@ V dalším kroku explicitně přiřadit **Přispěvatel dat objektu Blob úloži
 
 Pokud vaše aplikace přistupuje k Azure Storage, se podobně jménem uživatele, což znamená, že objekt blob nebo fronty prostředkům přistupuje pomocí oprávnění uživatele, který je přihlášen. Pokud chcete vyzkoušet tento příklad kódu, je nutné webovou aplikaci, která se zobrazí výzva k přihlášení pomocí identity Azure AD. Můžete vytvořit vlastní nebo použít ukázkové aplikace od Microsoftu.
 
-Dokončené ukázkovou webovou aplikaci, která získá token a použije ho k vytvoření objektu blob ve službě Azure Storage je k dispozici na [Githubu](http://aka.ms/aadstorage). Prostudování a spuštění je hotová ukázka může být užitečné k pochopení příklady kódu. Pokyny ohledně toho, jak spustit úplnou vzorovou naleznete v části s názvem [zobrazení a spuštění je hotová ukázka](#view-and-run-the-completed-sample).
+Dokončené ukázkovou webovou aplikaci, která získá token a použije ho k vytvoření objektu blob ve službě Azure Storage je k dispozici na [Githubu](https://aka.ms/aadstorage). Prostudování a spuštění je hotová ukázka může být užitečné k pochopení příklady kódu. Pokyny ohledně toho, jak spustit úplnou vzorovou naleznete v části s názvem [zobrazení a spuštění je hotová ukázka](#view-and-run-the-completed-sample).
 
 #### <a name="add-references-and-using-statements"></a>Přidání odkazů a příkazy using  
 
@@ -235,7 +235,7 @@ private AuthenticationProperties BuildAuthenticationPropertiesForIncrementalCons
 
 ## <a name="view-and-run-the-completed-sample"></a>Zobrazovat a spouštět je hotová ukázka
 
-Spuštění ukázkové aplikace, nejprve klonovat nebo stáhnout z [Githubu](http://aka.ms/aadstorage). Potom aktualizujte aplikaci, jak je popsáno v následujících částech.
+Spuštění ukázkové aplikace, nejprve klonovat nebo stáhnout z [Githubu](https://aka.ms/aadstorage). Potom aktualizujte aplikaci, jak je popsáno v následujících částech.
 
 ### <a name="provide-values-in-the-settings-file"></a>Zadejte hodnoty v souboru nastavení
 

@@ -76,7 +76,7 @@ Zahrnout [uložená hledání](../../azure-monitor/log-query/log-query-overview.
 
 Uložené výsledky hledání se jednotlivé vlastnosti je popsané v následující tabulce.
 
-| Vlastnost | Popis |
+| Vlastnost | description |
 |:--- |:--- |
 | category | Kategorie pro uložené výsledky hledání.  Všechny uložené výsledky hledání ve stejném řešení často sdílí jednu kategorii, takže jsou seskupené dohromady v konzole. |
 | displayName | Název má být zobrazen pro uložené výsledky hledání na portálu. |
@@ -121,7 +121,7 @@ Uložené výsledky hledání může mít jeden nebo více plánů s každý pl�
     }
 Vlastnosti pro plán prostředky jsou popsány v následující tabulce.
 
-| Název elementu | Požaduje se | Popis |
+| Název elementu | Požaduje se | description |
 |:--|:--|:--|
 | enabled       | Ano | Určuje, zda je povoleno výstrahu, když se vytvoří. |
 | interval      | Ano | Jak často dotaz spustí během několika minut. |
@@ -174,18 +174,18 @@ Akce upozornění mají následující strukturu. To zahrnuje společné proměn
 
 Vlastnosti pro akce upozornění prostředky jsou popsány v následujících tabulkách.
 
-| Název elementu | Požaduje se | Popis |
+| Název elementu | Požaduje se | description |
 |:--|:--|:--|
 | type | Ano | Typ akce.  Toto je **výstraha** pro akce výstrah. |
 | name | Ano | Zobrazovaný název výstrahy.  Toto je název, který se zobrazí v konzole pro pravidla upozornění. |
 | description | Ne | Popis výstrahy. |
-| severity | Ano | Závažnost výstrahy záznam z následujících hodnot:<br><br> **Kritická**<br>**Upozornění**<br>**Informační**
+| Severity | Ano | Závažnost výstrahy záznam z následujících hodnot:<br><br> **Kritická**<br>**Upozornění**<br>**Informační**
 
 
 #### <a name="threshold"></a>Prahová hodnota
 Tento oddíl je povinný. Definuje vlastnosti prahové hodnoty pro výstrahu.
 
-| Název elementu | Požaduje se | Popis |
+| Název elementu | Požaduje se | description |
 |:--|:--|:--|
 | Operátor | Ano | Operátor porovnání z následujících hodnot:<br><br>**gt = je větší než<br>lt = menší než** |
 | Hodnota | Ano | Hodnota určená k porovnání výsledků. |
@@ -196,7 +196,7 @@ Tato část je nepovinná. Zahrňte pro oznámení na základě měření metrik
 > [!NOTE]
 > Upozornění metriky měření jsou aktuálně ve verzi public preview.
 
-| Název elementu | Požaduje se | Popis |
+| Název elementu | Požaduje se | description |
 |:--|:--|:--|
 | TriggerCondition | Ano | Určuje, zda je prahová hodnota pro celkový počet porušení nebo po sobě jdoucí porušení z následujících hodnot:<br><br>**Celkový počet<br>po sobě jdoucích** |
 | Operátor | Ano | Operátor porovnání z následujících hodnot:<br><br>**gt = je větší než<br>lt = menší než** |
@@ -206,7 +206,7 @@ Tato část je nepovinná. Zahrňte pro oznámení na základě měření metrik
 #### <a name="throttling"></a>Throttling
 Tato část je nepovinná. Zahrňte v této části, pokud chcete potlačit výstrahy ze stejného pravidla pro určitou část času, po vytvoření výstrahy.
 
-| Název elementu | Požaduje se | Popis |
+| Název elementu | Požaduje se | description |
 |:--|:--|:--|
 | DurationInMinutes | Ano, pokud omezování zahrnuté – element | Kolik minut se má potlačit výstrahy, když je vytvořen ze stejné pravidlo upozornění. |
 
@@ -215,7 +215,7 @@ Všechna upozornění v Azure, použijte skupiny akcí jako výchozího mechanis
 
 Pro uživatele, kteří mají svá upozornění rozšíří do Azure – plánu teď měli mít podrobnosti skupiny akcí předána spolu s prahovou hodnotou, bude moct vytvořit výstrahu. Podrobnosti o e-mailu, adresy URL Webhooku, automatických postupů Runbook. Podrobnosti a další akce, musí být definován na straně nejdříve výstrahu; před vytvořením skupiny akcí můžete vytvořit jednu [skupiny akcí ze služby Azure Monitor](../../azure-monitor/platform/action-groups.md) portálu nebo pomocí [skupiny akcí – šablona Resource](../../azure-monitor/platform/action-groups-create-resource-manager-template.md).
 
-| Název elementu | Požaduje se | Popis |
+| Název elementu | Požaduje se | description |
 |:--|:--|:--|
 | AzNsNotification | Ano | ID prostředku Azure akce skupiny souviset s výstrahou pro pořízení potřebné akce při splnění kritérií výstrah. |
 | CustomEmailSubject | Ne | Vlastní předmět e-mailu odeslaného na všechny adresy zadaná ve skupině přidružené akcí. |
@@ -231,7 +231,7 @@ Každý plán obsahuje jednu **výstrah** akce. Definuje podrobnosti výstrahy a
 ##### <a name="emailnotification"></a>EmailNotification
  Tato část je nepovinná zahrnout, pokud chcete výstrahu odesílat poštu do jednoho nebo více příjemců.
 
-| Název elementu | Požaduje se | Popis |
+| Název elementu | Požaduje se | description |
 |:--|:--|:--|
 | Příjemci | Ano | Čárkami oddělený seznam e-mailové adresy k odeslání oznámení, když výstraha se vytvoří, jako v následujícím příkladu.<br><br>**["recipient1\@contoso.com", "recipient2\@contoso.com"]** |
 | Subject | Ano | Řádek předmětu e-mailu. |
@@ -240,7 +240,7 @@ Každý plán obsahuje jednu **výstrah** akce. Definuje podrobnosti výstrahy a
 ##### <a name="remediation"></a>Náprava
 Tato část je nepovinná zahrnout, pokud chcete runbook spustit v reakci na upozornění. 
 
-| Název elementu | Požaduje se | Popis |
+| Název elementu | Požaduje se | description |
 |:--|:--|:--|
 | RunbookName | Ano | Název spuštění sady runbook. |
 | WebhookUri | Ano | Identifikátor URI webhook pro runbook. |
@@ -269,7 +269,7 @@ Pokud bude zavolání webhooku po upozornění a bude je nutné prostředek akce
     }
 Vlastnosti pro prostředky akce Webhooku jsou popsány v následujících tabulkách.
 
-| Název elementu | Požaduje se | Popis |
+| Název elementu | Požaduje se | description |
 |:--|:--|:--|
 | type | Ano | Typ akce. Toto je **Webhooku** pro akce webhooku. |
 | jméno | Ano | Zobrazovaný název této akce. To se nezobrazí v konzole. |

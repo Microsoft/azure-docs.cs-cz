@@ -7,18 +7,18 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 6/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: fca76b632e9bcc27ed762886eaea696a5696ad3f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c0a76ecd12143e0bbaa9997bfc6d7295df9c4ec7
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60761864"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67340868"
 ---
 # <a name="test-a-stream-analytics-query-with-sample-data"></a>Testování dotazu Stream Analytics s ukázkovými daty
 
-Pomocí Azure Stream Analytics můžete nahrát ukázková data a testování dotazů na webu Azure Portal bez spuštění nebo zastavení úlohy.
+Pomocí Azure Stream Analytics můžete ukázková data ze vstupů nebo nahrání ukázkových dat do testování dotazů na webu Azure Portal bez spuštění nebo zastavení úlohy.
 
 ## <a name="upload-sample-data-and-test-the-query"></a>Nahrání ukázkových dat a otestujte dotaz
 
@@ -28,11 +28,15 @@ Pomocí Azure Stream Analytics můžete nahrát ukázková data a testování do
 
 3. Na Stream Analytics úlohy v části stránky, **topologie úlohy** záhlaví, vyberte **dotazu** otevřete okno editoru dotazů. 
 
-4. Otestování dotazu s ukázková vstupní data, klikněte pravým tlačítkem na některý z vašich vstupů.  Potom vyberte **nahrání ukázkových dat ze souboru**. Data musí být serializované ve formátu JSON, CSV nebo AVRO. Ukázkový vstup musí být zakódován do kódování UTF-8 a není komprimovaná. Pro testování vstupu sdíleného svazku clusteru na portálu se podporuje jenom oddělovače čárky (,).
+4. Pokud chcete otestovat dotaz je lze potom buď ukázková data ze živých vstup nebo odeslání ze souboru. Data musí být serializované ve formátu JSON, CSV nebo AVRO. Ukázkový vstup musí být zakódován do kódování UTF-8 a není komprimovaná. Pro testování vstupu sdíleného svazku clusteru na portálu se podporuje jenom oddělovače čárky (,).
+
+    1. Použití živého vstup: klikněte pravým tlačítkem na některý z vašich vstupů. Potom vyberte **ukázková data ze vstupu**. Na další obrazovce můžete nastavit dobu trvání vzorku.
+
+    1. Pomocí souboru: klikněte pravým tlačítkem na některý z vašich vstupů. Potom vyberte **nahrání ukázkových dat ze souboru**. 
 
     ![Stream analytics dotaz v editoru testu dotazů](media/stream-analytics-test-query/stream-analytics-test-query-editor-upload.png)
 
-5. Až se nahrávání dokončí, vyberte **testování** k otestování tohoto dotazu na ukázková data, které jste zadali.
+5. Po dokončení vzorkování nebo uložení vyberte **testování** k otestování tohoto dotazu na ukázková data, které jste zadali.
 
     ![editor testu ukázková data dotazu Stream analytics](media/stream-analytics-test-query/stream-analytics-test-query-editor-test.png)
 

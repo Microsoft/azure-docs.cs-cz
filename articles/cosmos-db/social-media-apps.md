@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: maquaran
-ms.openlocfilehash: 8206bff765b59ddc5d6be2388145bf51e1000241
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 45e27b37ca7a1718674914fbe9203b7dc64475b1
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66256882"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67342109"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Sociální funkce s Azure Cosmos DB
 
@@ -96,7 +96,7 @@ Vytváření kanálů stačí vytváření dokumentů, které může obsahovat s
         {"relevance":7, "post":"w34r-qeg6-ref6-8565"}
     ]
 
-Můžete mít "posledního" datový proud s příspěvky seřazené podle data vytvoření. Nebo můžete mít "Nejaktivnější" datový proud takových příspěvků s další lajků za posledních 24 hodin. Dokonce je možné implementovat vlastní datový proud pro každého uživatele na základě logiky jako sledujících a zájmy. Stále je seznam příspěvků. Je na vás o tom, jak vytvářet tyto seznamy, ale zůstává nerušený výkonu čtení. Jakmile získáte jednu z těchto seznamů, vydáte pomocí jediného dotazu pomocí služby Cosmos DB [v operátoru](how-to-sql-query.md#WhereClause) k získání stránek příspěvků v čase.
+Můžete mít "posledního" datový proud s příspěvky seřazené podle data vytvoření. Nebo můžete mít "Nejaktivnější" datový proud takových příspěvků s další lajků za posledních 24 hodin. Dokonce je možné implementovat vlastní datový proud pro každého uživatele na základě logiky jako sledujících a zájmy. Stále je seznam příspěvků. Je na vás o tom, jak vytvářet tyto seznamy, ale zůstává nerušený výkonu čtení. Jakmile získáte jednu z těchto seznamů, vydáte pomocí jediného dotazu pomocí služby Cosmos DB [IN – klíčové slovo](sql-query-keywords.md#in) k získání stránek příspěvků v čase.
 
 Informační kanály datové proudy může být postavená pomocí [Azure App Services](https://azure.microsoft.com/services/app-service/) procesy na pozadí: [Webjobs](../app-service/webjobs-create.md). Po vytvoření příspěvek zpracování na pozadí můžete aktivovat pomocí [služby Azure Storage](https://azure.microsoft.com/services/storage/) [fronty](../storage/queues/storage-dotnet-how-to-use-queues.md) a aktivovat pomocí Webjobs [Azure Webjobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki), implementující Publikovat šíření uvnitř streamů v závislosti na vlastní logiku.
 

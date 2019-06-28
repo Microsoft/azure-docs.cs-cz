@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: bcb0c806d916b9dff4461cad829a1d75e8df7cf6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 35193380cc890a93d93c68bf5fc405572b5aa409
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60766263"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67339900"
 ---
 # <a name="certificates-and-the-app-service-environment"></a>Certifikáty a App Service Environment 
 
@@ -85,7 +85,9 @@ Nahrání certifikátu do vaší aplikace ve vaší službě ASE:
 
     84EC242A4EC7957817B8E48913E50953552DAFA6,6A5C65DC9247F762FE17BF8D4906E04FE6B31819
 
-Tento certifikát bude k dispozici ve všech aplikacích ve stejném plánu služby app service jako aplikace, která se toto nastavení nakonfigurované. Pokud je nutné být k dispozici pro aplikace v různých plán služby App Service, musíte opakovat operace nastavení aplikace, které v aplikaci v tomto plánu služby App Service. Pokud chcete zkontrolovat, že je nastavena certifikát, přejděte do konzoly Kudu a vydávání tohoto příkazu dir cert: \localmachine\root v konzole ladění Powershellu. 
+Tento certifikát bude k dispozici ve všech aplikacích ve stejném plánu služby app service jako aplikace, která se toto nastavení nakonfigurované. Pokud je nutné být k dispozici pro aplikace v různých plán služby App Service, musíte opakovat operace nastavení aplikace, které v aplikaci v tomto plánu služby App Service. Pokud chcete zkontrolovat, že je nastavena certifikát, přejděte do konzoly Kudu a vydejte následující příkaz v Powershellu konzolou pro ladění:
+
+    dir cert:\localmachine\root
 
 Provést testování, můžete vytvořit certifikát podepsaný svým a vygenerovat *.cer* soubor s následující příkaz Powershellu: 
 

@@ -5,12 +5,12 @@ ms.date: 04/30/2019
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: jeconnoc
-ms.openlocfilehash: e1b3b5fe603072069cb3a19c7597fcc1872fefd7
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 5884bb5dc389e6abfd4fa23d28dd71ecd16ff423
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67174989"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67347109"
 ---
 Image standardizované virtuálních počítačů (VM) umožňují organizacím migrace do cloudu a zajistit konzistenci v nasazení. Image obvykle zahrnují předdefinované nastavení zabezpečení a konfigurace a potřebný software. Nastavení pro vytváření bitových kopií kanálu vyžaduje čas, infrastruktury a nastavení, ale pomocí Tvůrce Image virtuálního počítače Azure, stačí zadat jednoduchou konfiguraci a popis bitové kopie, odeslat ho do služby a bitové kopie vytvořené a distribuovat.
  
@@ -33,7 +33,7 @@ Pro verzi preview se podporují tyto funkce:
 - Vytváření obrázků ve formátu virtuálního pevného disku.
  
 
-## <a name="regions"></a>Oblasti
+## <a name="regions"></a>Regions
 Služba Azure Image Builder bude dostupná ve verzi preview v těchto oblastech. Bitové kopie mohou být distribuovány mimo tyto oblasti.
 - USA – východ
 - Východní USA 2
@@ -65,9 +65,9 @@ Azure Image Builder je plně spravovaná služba Azure, který je přístupný p
 ![Koncepční nákres proces Image Builder pro Azure](./media/virtual-machines-image-builder-overview/image-builder-process.png)
 
 1. Vytvoření Image šablony jako soubor .json. Tento soubor .json obsahuje informace o zdroj bitové kopie, přizpůsobení a distribuci. Existuje několik příkladů v [úložiště Azure Image Builder GitHub](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts).
-1. Odeslat do služby, tím se vytvoří artefakt Image šablony ve skupině prostředků, kterou zadáte. Na pozadí stáhne Image Builder zdrojového obrázku nebo ISO a skripty podle potřeby. Tyto jsou uložené v samostatné skupiny prostředků, které se automaticky vytvoří ve vašem předplatném, ve formátu: IT_<DestinationResourceGroup>_<TemplateName>. 
-1. Po vytvoření Image šablony lze následně vytvořit bitovou kopii. Image Builder na pozadí používá šablony a zdrojových souborech k vytvoření virtuálního počítače, sítě a úložiště v IT_<DestinationResourceGroup>_<TemplateName> skupinu prostředků.
-1. Jako součást vytváření image, Image builder distribuuje bitovou kopii podle šablony, pak odstraní další prostředky v IT_<DestinationResourceGroup>_<TemplateName> skupinu prostředků, která byla vytvořena pro proces.
+1. Odeslat do služby, tím se vytvoří artefakt Image šablony ve skupině prostředků, kterou zadáte. Na pozadí stáhne Image Builder zdrojového obrázku nebo ISO a skripty podle potřeby. Tyto jsou uložené v samostatné skupiny prostředků, které se automaticky vytvoří ve vašem předplatném, ve formátu: IT_\<DestinationResourceGroup>_\<TemplateName>. 
+1. Po vytvoření Image šablony lze následně vytvořit bitovou kopii. Image Builder na pozadí používá šablony a zdrojových souborech k vytvoření virtuálního počítače, sítě a úložiště v IT_\<DestinationResourceGroup > _\<TemplateName > skupiny prostředků.
+1. Jako součást vytváření image, Image builder distribuuje bitovou kopii podle šablony, pak odstraní další prostředky v IT_\<DestinationResourceGroup > _\<TemplateName > skupiny prostředků, pro kterou byla vytvořena proces.
 
 
 ## <a name="permissions"></a>Oprávnění

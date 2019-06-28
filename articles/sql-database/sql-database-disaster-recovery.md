@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 1e1bc92c684bf6ddbb7dc4ff0f882ad61ddeb27e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/21/2019
+ms.openlocfilehash: 00fa1128df03befda8b15be2d7f2c527f65f9973
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61075808"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341078"
 ---
 # <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>Obnovení služby Azure SQL Database a převzetí služeb při selhání sekundární lokalitou
 
@@ -34,7 +34,7 @@ Další informace o obchodní kontinuity podnikových procesů scénáře a funk
 > Pokud používáte zónově redundantní databáze úrovně Premium nebo pro důležité obchodní informace nebo fondy, je automatizovaný proces obnovení a zbývající část tohoto materiálu se nedá použít.
 
 > [!NOTE]
-> Primární a sekundární databáze musí mít stejné úrovně služeb. Také důrazně doporučujeme, aby se vytvoří sekundární databáze se stejnou velikostí výpočetní prostředky (počet jednotek Dtu nebo virtuálních jader) jako primární. Další informace najdete v tématu [upgradu nebo downgradu jako primární databáze](sql-database-active-geo-replication.md#upgrading-or-downgrading-a-primary-database).
+> Primární a sekundární databáze musí mít stejné úrovně služeb. Také důrazně doporučujeme, aby se vytvoří sekundární databáze se stejnou velikostí výpočetní prostředky (počet jednotek Dtu nebo virtuálních jader) jako primární. Další informace najdete v tématu [upgradu nebo downgradu jako primární databáze](sql-database-active-geo-replication.md#upgrading-or-downgrading-primary-database).
 
 > [!NOTE]
 > Použití jednoho nebo několika skupin převzetí služeb při selhání pro správu převzetí služeb při selhání několika databází.

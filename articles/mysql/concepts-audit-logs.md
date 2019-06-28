@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 06/11/2019
-ms.openlocfilehash: 35cbe04380e2113f986d1e7adf3f7fdf89cb9326
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a82afe6f5299609fd6dd57a54f04f49fad5d2268
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67078869"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357646"
 ---
 # <a name="audit-logs-in-azure-database-for-mysql"></a>Protokoly auditu v Azure Database for MySQL
 
@@ -45,7 +45,7 @@ Další parametry, které můžete upravit patří:
 
 Protokoly auditu jsou integrované s Azure Monitor diagnostické protokoly. Po povolení protokolů auditu na váš server MySQL, můžete vygenerovat protokoly Azure monitoru, Event Hubs nebo Azure Storage. Další informace o tom, jak povolit diagnostické protokoly na webu Azure Portal, najdete v článku [portálu článku protokolu auditu](howto-configure-audit-logs-portal.md#set-up-diagnostic-logs).
 
-## <a name="schemas"></a>Schémata
+## <a name="diagnostic-logs-schemas"></a>Schémata pro diagnostické protokoly
 
 Následující části popisují, co je výstupem MySQL protokolů auditování podle typu události. V závislosti na metodě výstup pole zahrnutá a pořadí, ve kterém jsou uvedeny se mohou lišit.
 

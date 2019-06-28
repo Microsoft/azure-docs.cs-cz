@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2018
 ms.author: rkarlin
-ms.openlocfilehash: a5deee4209001d8c2212033c2d547d7c4199bd25
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ab7165c3315e3a53f90900be8eaf1b9c614a2b07
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65192629"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341130"
 ---
 # <a name="custom-alert-rules-in-azure-security-center-preview"></a>Vlastní pravidla výstrah v Azure Security Center (Preview)
 Tento dokument vám pomůže vytvořit vlastní pravidla výstrah v Azure Security Center.
@@ -29,17 +29,15 @@ Tento dokument vám pomůže vytvořit vlastní pravidla výstrah v Azure Securi
 
 ## <a name="retirement-of-custom-alert-rules-in-azure-security-center"></a>Vyřazení oznámení na vlastní pravidla ve službě Azure Security Center
 
-Prostředí vlastní upozornění se vyřadí z důvodu vyřazení základní infrastruktury, je založen na 30. června 2019. V časovém rámci až do vyřazení uživatelé budou moci upravit existující vlastní pravidla výstrah ale nebudete moct přidat nové.
+Prostředí vlastní upozornění se vyřadí z důvodu vyřazení základní infrastruktury, je založen na 30. června 2019. V časovém rámci až do vyřazení uživatelé budou moci upravit existující vlastní pravidla výstrah ale nebudete moct přidat nové. Po vyřazení se projeví jakékoli vlastní výstrahy definované a výstrahy zabezpečení na základě těchto pravidel vlastní upozornění nevygeneruje.
 Uživatelé by měli buď:
-- Povolit [Azure Sentinelu](https://azure.microsoft.com/services/azure-sentinel/) s připojováním jedním kliknutím automaticky migrovat své existující výstrahy a vytvořit nové
+- Povolit [Azure Sentinelu](https://azure.microsoft.com/services/azure-sentinel/) a použít jeho integrovaný [analytics](https://docs.microsoft.com/azure/sentinel/tutorial-detect-threats) funkce k opětovnému vytvoření pravidla výstrah
 - Znovu vytvořit s využitím upozornění log Azure Monitor výstrah
                                      
-Chcete-li zachovat existující výstrahy a migrací do Azure Sentinelu, [spusťte Azure Sentinelu](https://portal.azure.com/#create/Microsoft.ASI/preview). Jako první krok vyberte pracovní prostor, kde jsou uložené vaše vlastní výstrahy a poté vyberte položku nabídky "Analytics" automaticky migrovat vaše upozornění.
+Chcete-li zachovat existující výstrahy a migrací do Azure Sentinelu, [spusťte Azure Sentinelu](https://portal.azure.com/#create/Microsoft.ASI/preview). Jako první krok vyberte pracovní prostor, kde jsou uložené vaše vlastní výstrahy a poté vyberte položku nabídky "Analytics" nastavit pravidla pro vlastní upozornění. Navštivte prosím [dokumentaci](https://docs.microsoft.com/azure/sentinel/tutorial-detect-threats) pro další informace.
 
 > [!NOTE]
-> Vlastní upozornění migrace do Azure Sentinelu je jednorázovou migraci všech vlastních výstrah do vybraného pracovního prostoru. Po dokončení migrace vlastní upozornění pro tento vybraný pracovní prostor nebude přístupná prostřednictvím Azure Security Center.
->
-> Vlastní upozornění pomocí [hledání](https://docs.microsoft.com/azure/azure-monitor/log-query/search-queries) nebo [sjednocení](https://docs-analytics-eus.azurewebsites.net/queryLanguage/query_language_unionoperator.html) dotazy příkazy nejsou podporované v Azure Sentinelu a nebudou migrována. Před provedením migrace prosím upravte tyto výstrahy.
+> Vlastní upozornění pomocí [hledání](https://docs.microsoft.com/azure/azure-monitor/log-query/search-queries) nebo [sjednocení](https://docs-analytics-eus.azurewebsites.net/queryLanguage/query_language_unionoperator.html) nepodporuje příkazy dotazy Sentinelu Azure. Před provedením migrace prosím upravte tyto výstrahy.
 
 Znovu vytvořte upozornění pomocí Azure monitoru upozornění protokolů, najdete v tématu: [Vytvoření, zobrazení a Správa upozornění protokolů pomocí Azure monitoru](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log) pokyny o tom, jak vytvořit upozornění protokolů. Obecný přehled o upozornění protokolů ve službě Azure Monitor, klikněte na tlačítko [tady](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log).
 

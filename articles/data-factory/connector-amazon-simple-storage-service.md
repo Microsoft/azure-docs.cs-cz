@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: a04dc76a110b1d126d5d826761e2e0c09c6aac47
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 088dfdbfbadfa43dc2bd161f56f0e2a6dbb94bb7
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65520236"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67311993"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>Kopírování dat z Amazon Simple Storage Service pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, který používáte:"]
@@ -111,6 +111,7 @@ Zkopírovat data z Amazonu S3 v **Parquet nebo formátu odděleného textu**, od
 | bucketName | Název sektoru S3.                                          | Ano      |
 | folderPath | Cesta ke složce v daném kontejneru. Pokud chcete použít zástupný znak, do složky filtr, přeskočte toto nastavení a zadejte v nastavení zdroje aktivity. | Ne       |
 | fileName   | Název souboru v daném intervalu + folderPath. Pokud chcete použít zástupný znak pro filtr souborů, přeskočte toto nastavení a zadejte v nastavení zdroje aktivity. | Ne       |
+| version | Verze objektu S3, pokud je povolená Správa verzí S3. Pokud není zadán, se načtou nejnovější verzi. |Ne |
 
 > [!NOTE]
 > **AmazonS3Object** typ datové sady uvedené v další části formát Parquet/textu je stále podporovány jako-pro aktivitu kopírování a vyhledávání/GetMetadata pro zpětnou kompatibilitu, ale nefunguje s mapování toku dat je. Byly navrženy používat tento nový model do budoucna a ADF vytváření uživatelského rozhraní se přepnulo na generování tyto nové typy.

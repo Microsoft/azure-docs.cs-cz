@@ -1,5 +1,5 @@
 ---
-title: Zabezpečený přístup k Azure Logic Apps | Dokumentace Microsoftu
+title: Zabezpečený přístup k Azure Logic Apps
 description: Přidání zabezpečení pro Azure Logic Apps, včetně aktivačních událostí, vstupů a výstupů, parametry a další služby
 services: logic-apps
 ms.service: logic-apps
@@ -7,15 +7,14 @@ ms.suite: integration
 author: kevinlam1
 ms.author: klam
 ms.reviewer: estfan, LADocs
-ms.assetid: 9fab1050-cfbc-4a8b-b1b3-5531bee92856
 ms.topic: article
 ms.date: 02/05/2019
-ms.openlocfilehash: 31b18e2dfbad1f572b5c9b0ae59f5e076db7cde2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 65369e5747f17c0e420d5775f1c5704cac9ca21b
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60995654"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341090"
 ---
 # <a name="secure-access-in-azure-logic-apps"></a>Zabezpečený přístup v Azure Logic Apps
 
@@ -156,9 +155,9 @@ Chcete-li přidat další ověřovací protokoly do aplikace logiky, zvažte pou
 
 Aby mohl jenom konkrétní uživatelé nebo skupiny spuštění operace na svou aplikaci logiky, můžete omezit přístup na úlohy, jako je správa, úpravy a zobrazení. Logic Apps podporuje [Azure Role-Based řízení přístupu (RBAC)](../role-based-access-control/role-assignments-portal.md), které můžete přizpůsobit nebo přiřazení předdefinované role pro členy ve vašem předplatném, například:
 
-* [Přispěvatel aplikace logiky](../role-based-access-control/built-in-roles.md#logic-app-contributor): Uživatelé mohou zobrazit, upravit a aktualizovat aplikace logiky. 
+* [Přispěvatel aplikace logiky](../role-based-access-control/built-in-roles.md#logic-app-contributor): Umožňuje spravovat aplikace logiky, ale nemůže změnit přístup k nim.
 
-* [Operátor aplikace logiky](../role-based-access-control/built-in-roles.md#logic-app-operator): Uživatelům můžete svou aplikaci logiky a historie spuštění, zobrazit a povolit nebo zakázat svou aplikaci logiky. Tato role se nedají upravit ani aktualizovat aplikaci logiky.
+* [Operátor aplikace logiky](../role-based-access-control/built-in-roles.md#logic-app-operator): Umožňuje, aby si přečíst, povolit a zakázat logic apps, ale nedají upravit ani je aktualizovat.
 
 Pokud chcete zabránit ostatním uživatelům změna nebo odstranění aplikace logiky, můžete použít [zámek prostředku Azure](../azure-resource-manager/resource-group-lock-resources.md). Tato funkce umožňuje zabránit ostatním uživatelům měnit nebo odstraňovat produkční prostředky.
 

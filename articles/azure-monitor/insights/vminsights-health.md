@@ -1,6 +1,6 @@
 ---
-title: Monitorování stavu virtuálních počítačů pomocí Azure monitoru pro virtuální počítače (preview) | Dokumentace Microsoftu
-description: Tento článek popisuje, jak porozumět stavu virtuálního počítače a službou Azure Monitor základního operačního systému pro virtuální počítače.
+title: Pochopení stavu virtuálních počítačů Azure | Dokumentace Microsoftu
+description: Tento článek popisuje, jak můžete porozumět stavu virtuálních počítačů a službou Azure Monitor základní operační systémy pro virtuální počítače.
 services: azure-monitor
 documentationcenter: ''
 author: mgoedtel
@@ -13,30 +13,32 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/22/2019
 ms.author: magoedte
-ms.openlocfilehash: 9fa76c9637a6dcdca48bf45e8ee2aa9305a4f64f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2bf891f8cfecbb9e78e511dcee7ed1c61c170016
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66130459"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67340146"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines"></a>Pochopení stavu virtuálních počítačů Azure
 
-Azure obsahuje několik služeb, které jednotlivě provádění konkrétních rolí a úloh v prostoru pro monitorování, ale nebyly k dispozici perspektivy podrobný stav operačního systému hostované na Azure virtual machines. V průběhu monitorování může pro různé podmínky použití Azure monitoru, nebyl navržen pro modelování a představují stavu základní součásti nebo celkového stavu virtuálního počítače. Prostřednictvím služby Azure Monitor pro funkci stav virtuálních počítačů aktivně Monitoruje dostupnost a výkon Windows nebo Linuxem hostovaného operačního systému s modelem, které představují klíčových komponent a jejich vztahů kritéria, která určuje, jak měřit kvalitu ty komponenty, a upozorní vás při zjištění není v pořádku podmínky.  
+Azure obsahuje služby pro konkrétní role a úlohy v prostoru pro monitorování, ale neposkytuje podrobné stavu perspektivy operačních systémů (OSs) hostovaných na Azure virtual machines (VM). I když používáte Azure Monitor pro různé podmínky má nejsou určeny pro modelování a představují stavu základní součásti nebo celkový stav virtuálních počítačů.
 
-Zobrazení celkového stavu virtuálního počítače Azure a základního operačního systému může být dodržen za dvou hledisek službou Azure Monitor stavu virtuálních počítačů, přímo z virtuálního počítače nebo ve všech virtuálních počítačích ve skupině prostředků ze služby Azure Monitor.
+Pomocí Azure monitoru stavu virtuálních počítačů můžete aktivně Monitoruje dostupnost a výkon Windows nebo Linuxem hostovaného operačního systému. Stav funkce používá model, který představuje klíčových komponent a jejich vztahy. najdete tu kritéria, která určuje, jak měřit stav součásti a odesílá upozornění, když zjistí podmínku není v pořádku.
 
-Tento článek vám pomůže pochopit, jak rychle posoudit, prozkoumat a vyřešit problémy se stavem zjištěna.
+Zobrazení celkový stav virtuálního počítače Azure a podkladovému operačnímu systému může být dodržen za dvou hledisek: přímo z virtuálního počítače, nebo ve všech virtuálních počítačích ve skupině prostředků ze služby Azure Monitor.
+
+Tento článek ukazuje, jak rychle posoudit, prozkoumat a vyřešit problémy se stavem zjištěném službou Azure Monitor pro funkci stav virtuálních počítačů.
 
 Informace o konfiguraci monitorování Azure pro virtuální počítače najdete v tématu [povolit monitorování Azure pro virtuální počítače](vminsights-enable-overview.md).
 
 ## <a name="monitoring-configuration-details"></a>Podrobnosti o konfiguraci monitorování
 
-Tato část popisuje výchozí stav kritéria definovat za účelem monitorování Windows Azure a virtuální počítače s Linuxem. Všechna kritéria stavu jsou nakonfigurovaná tak, aby upozornění, když je splněna podmínka není v pořádku. 
+Tato část popisuje výchozí kritéria stavu ke sledování Windows Azure a virtuální počítače s Linuxem. Všechna kritéria stavu jsou nakonfigurovaná tak, aby Odeslat výstrahu, když zjistí podmínku není v pořádku.
 
 ### <a name="windows-vms"></a>Virtuální počítače s Windows
 
-- Dostupný počet megabajtů paměti 
+- Dostupný počet megabajtů paměti
 - Průměrná sekund na zápis (logický Disk)
 - Průměrná sekund na zápis (Disk)
 - Průměrná logického disku sekund na čtení
@@ -66,9 +68,10 @@ Tato část popisuje výchozí stav kritéria definovat za účelem monitorován
 - Stav služby Vzdálená správa Windows
 
 ### <a name="linux-vms"></a>Virtuální počítače s Linuxem
-- Disk – monitorování střední Doba disku/přenos 
-- Disk – monitorování střední Doba disku/čtení 
-- Disk – monitorování střední Doby disku/zápis 
+
+- Disk – monitorování střední Doba disku/přenos
+- Disk – monitorování střední Doba disku/čtení
+- Disk – monitorování střední Doby disku/zápis
 - Stav disku
 - Volné místo logického disku
 - % Volného místa logického disku
@@ -79,229 +82,262 @@ Tato část popisuje výchozí stav kritéria definovat za účelem monitorován
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
+Chcete-li přihlásit, přejděte na [webu Azure portal](https://portal.azure.com).
 
-## <a name="introduction-to-health-experience"></a>Úvod do prostředí stavu
+## <a name="introduction-to-azure-monitor-for-vms-health"></a>Úvod do Azure monitoru stavu virtuálních počítačů
 
-Než se podíváme do aplikace pomocí funkcí stavu pro jeden virtuální počítač nebo skupinu virtuálních počítačů, je důležité, že poskytujeme stručný úvod, takže víte, jak je uvedené informace a co představují vizualizace.  
+Před použitím funkce stavu pro jeden virtuální počítač nebo skupinu virtuálních počítačů, je důležité pochopit, jak je uvedené informace a co představují vizualizace.
 
-### <a name="view-health-directly-from-a-virtual-machine"></a>Zobrazit stav přímo z virtuálního počítače 
+### <a name="view-health-directly-from-a-vm"></a>Zobrazit stav přímo z virtuálního počítače
 
-Chcete-li zobrazit stav virtuálního počítače Azure, vyberte **Insights (preview)** v levém podokně virtuální počítač. Na stránce přehledu virtuálního počítače **stavu** je ve výchozím nastavení otevřít a zobrazuje stav virtuálního počítače.  
+Chcete-li zobrazit stav virtuálního počítače Azure, vyberte **Insights (preview)** v levém podokně virtuálního počítače. Na stránce přehledu virtuálního počítače **stavu** karta je otevřený ve výchozím nastavení a zobrazuje stav virtuálního počítače.
 
 ![Azure Monitor pro přehled stavu virtuálních počítačů z vybraných virtuálních počítačů Azure](./media/vminsights-health/vminsights-directvm-health.png)
 
-Na **stavu** karta, v části **stavu virtuálního počítače hosta**, tato tabulka ukazuje aktuální stav virtuálního počítače a celkový počet upozornění na stav virtuálního počítače vyvolané komponentu není v pořádku. Další informace najdete v tématu [výstrahy](#alerts) další podrobnosti o upozornění prostředí.  
+V **stavu** ve skupině **stavu virtuálního počítače hosta**, v tabulce jsou uvedeny stav virtuálního počítače a celkový počet upozornění na stav virtuálního počítače vyvolané komponentou není v pořádku.
 
-Stavy definované pro virtuální počítač jsou popsány v následující tabulce: 
+Další informace najdete v tématu [výstrahy](#alerts).
+
+Stavy definované pro virtuální počítač jsou popsány v následující tabulce:
 
 |Ikona |Stav |Význam |
 |-----|-------------|---------------|
-| |V pořádku |Stav je v pořádku, pokud je v rámci podmínky definované stavu, o žádných problémech zjistila pro virtuální počítač a funguje podle potřeby. S nadřazené souhrnné monitorování stavu zobrazí souhrn po up a odráží nejlepší a nejhorší stav podřízených.|
-| |Kritická |Stav je velmi důležité, pokud není v podmínce definované stavu označující, že byly zjištěny jeden nebo více problémů, které je třeba řešit, aby bylo možné obnovit normální funkce. S nadřazené souhrnné monitorování stavu zobrazí souhrn po up a odráží nejlepší a nejhorší stav podřízených.|
-| |Upozornění |Stav je upozornění. Pokud je mezi dvěma prahovými hodnotami podmínky definované stavu, kde jeden udává *upozornění* stavu a druhý je uvedeno *kritický* stavu (tři prahové hodnoty stavu health můžete nakonfigurovat), nebo při, nekritické problém je zjištěna, což může způsobit kritické problémy, pokud nebyl vyřešen. S nadřazené souhrnné monitorování, pokud jeden nebo více podřízených je ve stavu upozornění, pak bude odrážet nadřazené *upozornění* stavu. Pokud je podřízený, který je v *kritický* a jiné podřízené v *upozornění* stavu, nadřazené souhrn se zobrazí stav *kritický*.|
-| |Neznámé |Stav je *neznámý* při nelze vypočítat z několika důvodů. Viz následující poznámka pod čarou <sup>1</sup> pro další podrobnosti a možná řešení je vyřešit. |
+| |V pořádku |Virtuální počítač je ve stavu definované podmínky. Tento stav indikuje existuje jsou zjištěny žádné problémy a virtuální počítač funguje normálně. Nadřazené souhrnné monitorování stavu shrnuje a odráží nejlepší a nejhorší stav podřízeného.|
+| |Kritická |Stav není v podmínce definované stavu označující, že jeden nebo více problémů byly zjištěny. Pokud chcete obnovit normální funkce musí tyto problémy řešeny. Stav v pořádku s nadřazené souhrnné monitorování shrnuje stav z a odráží nejlepší a nejhorší stav podřízeného.|
+| |Upozornění |Stav není mezi dvěma prahovými hodnotami podmínky definované stavu, kde jeden označuje stav varování a druhý označující kritický stav (tři prahové hodnoty stavu health můžete nakonfigurovat) nebo když nekritické problém může způsobit kritické problémy, pokud Nevyřešená. S nadřazené souhrnné monitorování jedna nebo víc podřízených je ve stavu varování, bude odrážet nadřazené varovném stavu. Jeden podřízený prvek je v kritickém stavu a jiné podřízené ve stavu upozornění, zobrazí nadřazené souhrnné jako kritický stav.|
+| |Neznámé |Stav nelze vypočítat z několika důvodů. V následujících částech najdete další podrobnosti a možná řešení. |
 
-<sup>1</sup> the Neznámý stav je způsobeno tím, k následujícím problémům:
+Stav neznámý stav může být způsobeno následujícím problémům:
 
-- Byla překonfigurována agenta a sestavy do pracovního prostoru už zadaný, když bylo povoleno monitorování Azure pro virtuální počítače. Konfigurace agenta na generování sestav do pracovního prostoru najdete [přidání nebo odebrání pracovního prostoru](../platform/agent-manage.md#adding-or-removing-a-workspace).
+- Agent byl znovu konfigurován s a sestavy do pracovního prostoru už zadaný, když bylo povoleno monitorování Azure pro virtuální počítače. Konfigurace agenta na generování sestav do pracovního prostoru najdete [přidání nebo odebrání pracovního prostoru](../platform/agent-manage.md#adding-or-removing-a-workspace).
 - Virtuální počítač se odstranil.
-- Pracovní prostor přidružený k monitorování Azure pro virtuální počítače se odstraní. K obnovení pracovního prostoru, pokud máte smlouvu Premier support výhody, můžete otevřít žádost o podporu s [Premier](https://premier.microsoft.com/).
-- Řešení závislostí se odstranily. Chcete-li znovu povolit ServiceMap a InfrastructureInsights řešení ve vašem pracovním prostoru Log Analytics, můžete přeinstalovat pomocí [šablony Azure Resource Manageru](vminsights-enable-at-scale-powershell.md#install-the-servicemap-and-infrastructureinsights-solutions) , který má k dispozici nebo pomocí možnosti konfigurace pracovního prostoru na Získejte kartu spuštěno.
+- Pracovní prostor, přidružené k monitorování Azure pro virtuální počítače se odstranil. Pracovní prostor můžete obnovit, pokud budete mít výhody podpory Premier Support. Přejděte na [Premier](https://premier.microsoft.com/) a žádost o podporu.
+- Řešení závislostí bylo odstraněno. Opětovné povolení ServiceMap a InfrastructureInsights řešení ve vašem pracovním prostoru Log Analytics, přeinstalujte pomocí těchto řešení [šablony Azure Resource Manageru](vminsights-enable-at-scale-powershell.md#install-the-servicemap-and-infrastructureinsights-solutions). Nebo použijte možnost konfigurace pracovního prostoru v kartě začít pracovat.
 - Virtuální počítač byl vypnut.
-- Služba Azure virtuální počítač nedostupný nebo právě probíhá údržba se.
-- Pracovní prostor [limitu uchovávání dat nebo dat o denním](../platform/manage-cost-storage.md) je splněna.
+- Služba Azure virtuální počítač není k dispozici, nebo právě probíhá údržba se.
+- Pracovní prostor [limitu uchovávání dat nebo dat o denním](../platform/manage-cost-storage.md) byla splněna.
 
-Výběr **zobrazit stav diagnostiky** se otevře stránka zobrazuje všechny součásti virtuálního počítače, přidruženého stavu kritéria, změny stavů a další závažné potíže, se kterými monitorování součásti související se virtuální počítač. Další informace najdete v tématu [stav diagnostiky](#health-diagnostics). 
+Vyberte **zobrazit stav diagnostiky** otevře se stránka zobrazující všechny součásti virtuálního počítače a související kritéria, změny stavu a dalších problémů zjištěných monitorování součásti související se virtuální počítač.
 
-V části **stav součásti** části, v tabulce jsou uvedeny souhrnné stav primární výkonu kategorií monitoruje stav kritéria pro tyto oblasti, konkrétně **procesoru**,  **Paměť**, **disku**, a **sítě**.  Výběrem některého z komponenty se otevře stránka obsahující všechny aspekty dané komponenty a stav příslušných stavu každého monitorování kritéria jednotlivých stavů.  
+Další informace najdete v tématu [stav diagnostiky](#health-diagnostics).
 
-Při přístupu ke stavu z virtuálního počítače Azure s operačním systémem Windows, stav horní, pět základních Windows služby jsou uvedeny v části **Core services stavu**.  Výběrem některého ze služeb otevře stránku s výpisem stavu kritéria sledování této komponentě a jeho stav.  Kliknutím na název stavu kritéria otevře se podokno vlastností a odtud můžete zkontrolovat podrobnosti o konfiguraci, včetně Pokud kritéria stavu má odpovídající Azure Monitor alert definované. Další informace najdete v tématu [stav diagnostiky a práci s kritéria](#health-diagnostics).  
+V **stavu** části tabulka zobrazuje souhrn stavů výkonu komponent monitoruje stav kritéria. Mezi tyto komponenty patří **procesoru**, **paměti**, **disku**, a **sítě**. Výběrem komponenty se otevře stránka obsahující seznam všech monitorování kritéria a stav této součásti.
 
-### <a name="aggregate-virtual-machine-perspective"></a>Perspektiva agregační virtuálního počítače
+Při přístupu k stavu z virtuálního počítače Azure, na kterém běží Windows, stav pěti základních služeb Windows se zobrazí v části **Core services stavu**. Výběr některých služeb se otevře stránka obsahující seznam kritéria stavu monitorování pro danou součást spolu s jeho stav.
 
-Chcete-li zobrazit shromažďování stavu pro všechny virtuální počítače ve skupině prostředků, ze seznamu navigace na portálu vyberte **Azure Monitor** a pak vyberte **virtuálních počítačů (preview)** .  
+Název stavu kritéria vyberete, otevře se podokno vlastností. V tomto podokně můžete zkontrolovat podrobnosti o konfiguraci, včetně kritéria stavu máte shodná výstraha Azure Monitor.
+
+Další informace najdete v tématu [stav diagnostiky a práci s kritéria](#health-diagnostics).
+
+### <a name="aggregate-vm-perspective"></a>Agregační perspektivy virtuálního počítače
+
+Chcete-li zobrazit stav kolekce všech vašich virtuálních počítačů ve skupině prostředků, vyberte **Azure Monitor** ze seznamu navigace v portálu a pak vyberte **virtuálních počítačů (preview)** .
 
 ![Virtuální počítač statistiky, sledování zobrazení ze služby Azure Monitor](./media/vminsights-health/vminsights-aggregate-health.png)
 
-Z **předplatné** a **skupiny prostředků** rozevíracích seznamech vyberte odpovídající prostředek skupiny, která zahrnuje virtuální počítače vztahuje ke skupině, chcete-li zobrazit stav jejich ohlášené.  Výběr pouze se vztahuje na funkce stavu a není přenesou na výkon nebo mapy.
+V **předplatné** a **skupiny prostředků** rozevíracích seznamech vyberte odpovídající prostředek skupiny, která zahrnuje virtuální počítače související s skupiny, chcete-li zobrazit jejich ohlášené stavu. Výběr pouze se vztahuje na funkce stav a nepřenáší na **výkonu** nebo **mapy** karty.
 
-Na **stavu** kartu, je možné získat následující:
+**Stavu** karta obsahuje následující informace:
 
-* Kolik virtuálních počítačů jsou ve stavu kritický nebo není v pořádku, a kolik jsou v pořádku, či ne odesílání dat (označované jako neznámém stavu)?
-* Které virtuální počítače podle operačního systému (OS) zasílání zpráv o stavu není v pořádku a kolik?
-* Kolik virtuálních počítačů jsou kvůli problému zjištěnému s procesoru, disku, paměti nebo síťový adaptér, zařazených do kategorií podle stavu není v pořádku?  
-* Kolik virtuálních počítačů jsou kvůli problému zjištěnému službou jádra operačního systému, zařazených do kategorií podle stavu není v pořádku?
+* Kolik virtuálních počítačů jsou ve stavu kritický nebo není v pořádku, a kolik jsou v pořádku nebo se odesílání dat (označované jako neznámém stavu).
+* Které a kolik virtuálních počítačů podle operačního systému zasílání zpráv o stavu není v pořádku.
+* Kolik virtuálních počítačů jsou kvůli problému zjištěnému s procesoru, disku, paměti nebo síťový adaptér, zařazených do kategorií podle stavu není v pořádku.
+* Kolik virtuálních počítačů jsou kvůli problému zjištěnému službou jádra operačního systému, zařazených do kategorií podle stavu není v pořádku.
 
-Tady můžete rychle identifikovat hlavní kritické problémy zjištěné podle kritérií stavu Proaktivní monitorování virtuálního počítače a zkontrolujte podrobnosti výstrahy stavu virtuálních počítačů a článek znalostní báze přidružené určené pro diagnostiku a opravy problému.  Vyberte některou z závažnosti otevřete [všechny výstrahy](../../azure-monitor/platform/alerts-overview.md#all-alerts-page) stránka se vyfiltruje podle tohoto závažnosti.
+Na **stavu** kartu, můžete identifikovat kritické problémy zjištěné podle kritérií stavu monitorování virtuálního počítače a zkontrolujte podrobnosti výstrahy a články znalostní báze přidružené. Tyto články vám můžou pomoct v diagnostiky a problémy. Vyberte některou z závažnosti otevřete [všechny výstrahy](../../azure-monitor/platform/alerts-overview.md#all-alerts-page) stránka se vyfiltruje podle tohoto závažnosti.
 
-**Distribuce virtuálního počítače podle operačního systému** seznam virtuálních počítačů uvedených ve verzi Windows nebo distribuce Linuxu, spolu s jejich verze. V každé kategorii operačního systému virtuálních počítačů jsou rozdělené další na základě stavu virtuálního počítače. 
+**Distribuce virtuálního počítače podle operačního systému** seznam virtuálních počítačů uvedených ve verzi Windows nebo distribuce Linuxu, spolu s jejich verze. V každé kategorii operačního systému virtuálních počítačů jsou rozdělené další na základě stavu virtuálního počítače.
 
 ![Přehled virtuálních počítačů virtuálního počítače distribučního perspektivy](./media/vminsights-health/vminsights-vmdistribution-by-os.png)
 
-Kliknutím na libovolnou položku sloupec - **počet virtuálních počítačů**, **kritický**, **upozornění**, **stavu v pořádku** nebo **neznámý** do Přejít k **virtuálních počítačů** stránky zobrazení filtrované výsledky odpovídající vybraný sloupec. Například, pokud chcete zkontrolovat všechny virtuální počítače spuštěné **Red Hat Enterprise Linux verze 7.5**, klikněte na **počet virtuálních počítačů** hodnota tohoto operačního systému a otevře se na následující stránce výpis virtuálních počítačů odpovídající Tento filtr a jejich stav aktuálně známé stavu.  
+Vyberte libovolný sloupec včetně **počet virtuálních počítačů**, **kritický**, **upozornění**, **pořádku**, nebo **neznámý**. Zobrazení filtrované výsledky v seznamu **virtuálních počítačů** stránky splňujících vybraný sloupec.
+
+Například pokud chcete zkontrolovat všechny virtuální počítače, na kterých běží Red Hat Enterprise Linux verze 7.5, vyberte **počet virtuálních počítačů** hodnotu tohoto operačního systému a zobrazí se seznam virtuálních počítačů, které odpovídají použitému filtru a jejich aktuálního stavu.
 
 ![Příklad souhrnu virtuálních počítačů Red Hat Linux](./media/vminsights-health/vminsights-rollup-vm-rehl-01.png)
- 
-Na **virtuálních počítačů** stránky, pokud vyberete název virtuálního počítače ve sloupci **název virtuálního počítače**, budete přesměrováni na stránku instance virtuálního počítače s dalšími podrobnostmi o upozornění a identifikovat problémy se stavem kritéria, která jsou vybraný virtuální počítač vliv.  Z tohoto místa můžete filtrovat kliknutím na podrobnosti o stavu stavu **stav** ikony v levém horním rohu stránky zobrazíte komponenty, které nejsou v pořádku nebo je můžete zobrazit stav virtuálního počítače výstrahy vyvolané komponentou není v pořádku zařazený do kategorie službou závažnost výstrahy.    
 
-Ze zobrazení seznamu virtuálních počítačů, otevře se kliknutím na název virtuálního počítače **stavu** stránka, která vybraný virtuální počítač, podobně jako v případě, že jste vybrali **Insights (preview)** z virtuálního počítače přímo.
+V **virtuálních počítačů** stránky, pokud vyberete název virtuálního počítače ve sloupci **název virtuálního počítače**, budete přesměrováni na **instance virtuálního počítače** stránky. Tato stránka obsahuje podrobnosti o upozornění a kritéria problémy se stavem, které mají vliv na vybraný virtuální počítač. Podrobnosti o stavu stavu filtrovat výběrem **stav** ikony v levém horním rohu stránky zobrazíte komponenty, které nejsou v pořádku. Můžete také zobrazit stav virtuálního počítače výstrahy vyvolané komponentou není v pořádku zařazený do kategorie službou závažnost výstrahy.
+
+Z **seznamu virtuálních počítačů** zobrazit, vyberte název virtuálního počítače a otevřete **stavu** stránky pro tento virtuální počítač, podobně jako v případě, že jste vybrali **Insights (preview)** z virtuálního počítače přímo.
 
 ![Přehled virtuálních počítačů z vybraných virtuálních počítačů Azure](./media/vminsights-health/vminsights-directvm-health.png)
 
-Zde zobrazuje souhrn **stav** pro virtuální počítač a **výstrahy**zařazené do kategorií podle závažnosti, které představují vyvolá, když se stav změní ze stavu na není v pořádku pro upozornění na stav virtuálního počítače kritéria stavu.  Výběr **virtuálních počítačů do kritického stavu** otevře se stránka seznam jednoho nebo více virtuálních počítačů, které jsou v kritickém stavu.  Kliknutím na stav pro jeden z virtuálních počítačů v seznamu se zobrazí **stav diagnostiky** zobrazení virtuálního počítače.  Tady můžete zjistit která kritéria stavu se odráží stav problému se stavem. Když **stav diagnostiky** stránka se otevře, zobrazuje všechny součásti virtuálního počítače a jeho přidruženého stavu kritéria s aktuálním stavem. Další informace najdete v tématu [stav diagnostiky](#health-diagnostics).  
+**Insights (preview)** stránka zobrazuje souhrn stav virtuálního počítače a výstrahy. Tento stav jsou rozdělené do kategorií podle závažnosti, která představuje virtuální počítač výstrahy týkající se stavu aktivovaná při změně stavu v pořádku na není v pořádku, na základě kritérií. Výběr **virtuálních počítačů do kritického stavu** otevře stránku se seznamem nejmíň jednoho virtuálního počítače v kritickém stavu.
 
-Výběr **zobrazit všechna kritéria stavu** se otevře stránka zobrazuje seznam všech kritéria stavu k dispozici s touto funkcí.  Informace můžete dále filtrovat podle následujících možností:
+Výběr stavu pro jeden z virtuálních počítačů ukazuje **stav diagnostiky** zobrazení virtuálního počítače. V tomto zobrazení můžete určit, která kritéria stavu se odráží problém – stav. Když **stav diagnostiky** stránka se otevře, zobrazuje všechny součásti virtuálního počítače a jeho přidruženého stavu kritéria a aktuální stav.
 
-* **Typ** – existují tři druhy stavu kritéria typy vyhodnocování podmínek a souhrnné celkového stavu monitorovaných virtuálních počítačů.  
-    a. **Jednotka** – měří určitý aspekt virtuálního počítače. Tento typ kritérií stavu může kontrolovat čítač výkonu pro zjištění výkonu komponenty, spustit skript k provedení virtuální transakce nebo sledovat události indikující chybu.  Ve výchozím nastavení je nastaven filtr k jednotce.  
-    b. **Závislost** – poskytuje shrnutí stavů mezi různými entitami. Tato kritéria stavu umožňuje stavu entity závisí na stavu jiného typu entity, která se spoléhá na úspěšně fungovat.  
-    c. **Agregační** – poskytuje souhrnný stav podobných kritérií stavu. Kritéria stavu jednotek a závislostí se obvykle konfigurují v rámci agregovaný kritéria. Kromě lepší uspořádání obecné mnoho různých stavů kritérií zaměřený na entitu, nabízí agregovaný kritérium jedinečný stav pro různé kategorie entit.
+Další informace najdete v tématu [stav diagnostiky](#health-diagnostics).
 
-* **Kategorie** -zadejte kritéria stavu se použijí pro skupinu kritéria podobného typu pro účely vytváření sestav.  Buď jsou **dostupnosti** nebo **výkonu**.
+Výběr **zobrazit všechna kritéria stavu** se otevře stránka zobrazuje seznam všech kritéria stavu k dispozici s touto funkcí. Informace můžete dále filtrovat podle následujících možností:
 
-Můžete přejít k další dolů zobrazíte, která instance nejsou v pořádku po kliknutí na hodnoty v rámci **není v pořádku, komponenta** sloupce.  Na stránce tabulka uvádí komponenty, které jsou v kritickém stavu.    
+* **Typ**. Existují tři typy stavů kritérií vyhodnocení podmínky a souhrnné celkového stavu monitorovaných virtuálních počítačů:
+    - **Jednotka**. Měří určitý aspekt virtuálního počítače. Tento typ kritérií stavu může kontrolovat čítač výkonu pro zjištění výkonu komponentě, spustit skript k provedení virtuální transakce nebo sledovat události indikující chybu. Ve výchozím nastavení k jednotce pro filtr.
+    - **Závislost**. Poskytuje shrnutí stavů mezi různými entitami. Tato kritéria stavu umožňuje stavu entity závisí na stavu jiného typu entity, která se spoléhá na úspěšně fungovat.
+    - **Agregační**. Poskytuje souhrnný stav podobných kritérií stavu. Kritéria stavu jednotek a závislostí se obvykle konfigurují v rámci agregovaný kritéria. Kromě lepší uspořádání obecné mnoho různých stavů kritérií zaměřený na entitu, nabízí agregovaný kritérium jedinečný stav pro různé kategorie entit.
+
+* **Kategorie**. Typ kritéria použít k seskupení podobných kritérií pro účely vytváření sestav. Tyto kategorie jsou **dostupnosti** a **výkonu**.
+
+Pokud chcete zobrazit, která instance nejsou v pořádku, vyberte hodnotu v rámci **není v pořádku, součást** sloupce. Na této stránce tabulka uvádí komponenty, které jsou v kritickém stavu.
 
 ## <a name="health-diagnostics"></a>Stav diagnostiky
 
-**Stav diagnostiky** stránka umožňuje vizualizovat modelu stavu virtuálního počítače, výpis všech součástí virtuálního počítače, související kritéria, změny stavu a další závažné potíže identifikovaný monitorované součásti související k virtuálnímu počítači.
+**Stav diagnostiky** stránka umožňuje vizualizovat modelu stavu virtuálního počítače. Tato stránka obsahuje všechny součásti virtuálního počítače, přidruženého stavu kritéria, změny stavu a další závažné potíže identifikovaný sledované součásti související se virtuální počítač.
 
 ![Příklad stránky stav diagnostiky pro virtuální počítač](./media/vminsights-health/health-diagnostics-page-01.png)
 
-Diagnostika stavu můžete spustit následujícími způsoby.
+Diagnostika stavu spuštění pomocí následujících metod:
 
-* Podle souhrnu stavu pro všechny virtuální počítače z hlediska agregační virtuálních počítačů ve službě Azure Monitor.  Na **stavu** stránky, klikněte na ikonu pro **kritický**, **upozornění**, **pořádku**, nebo **neznámý** Stav v části **stavu virtuálního počítače hosta** a přejít na stránku, která obsahuje seznam všech virtuálních počítačů odpovídající dané filtrované kategorie.  Kliknutím na hodnotu v **stav** sloupce se otevře stav diagnostiky oboru tohoto konkrétního virtuálního počítače.      
+* Podle souhrnu stavu pro všechny virtuální počítače z hlediska agregační virtuálních počítačů ve službě Azure Monitor:
 
-* Podle operačního systému z hlediska agregační virtuálních počítačů ve službě Azure Monitor. V části **distribuci virtuálních počítačů**, vyberete některou z hodnot sloupců se otevře **virtuálních počítačů** stránce a v tabulce odpovídající kategorii filtrovaný seznam.  Kliknutím na hodnoty v rámci **stav** sloupec otevře diagnostiku stavu pro vybraný virtuální počítač.    
+    1. Na **stavu** stránky, vyberte ikonu **kritický**, **upozornění**, **pořádku**, nebo **neznámý** Stav v části **stavu virtuálního počítače hosta**.
+    2. Přejděte na stránku, která obsahuje seznam všech virtuálních počítačů odpovídající dané filtrované kategorie.
+    3. Vyberte hodnotu v **stav** sloupci otevřete diagnostické stavu omezená na tomto virtuálním počítači.
+
+* Podle operačního systému z hlediska agregační virtuálních počítačů ve službě Azure Monitor. V části **distribuci virtuálních počítačů**, vyberete některou z hodnot sloupců se otevře **virtuálních počítačů** stránce a v tabulce odpovídající kategorii filtrovaný seznam. Výběrem hodnoty v rámci **stav** sloupec otevře diagnostiku stavu pro vybraný virtuální počítač.
  
-* Z virtuálního počítače v Azure Monitor pro virtuální počítače hosta **stavu** kartu tak, že vyberete **zobrazit stav diagnostiky** 
+* Z virtuálního počítače v Azure Monitor pro virtuální počítače hosta **stavu** kartu tak, že vyberete **zobrazit stav diagnostiky**.
 
-Diagnostika stavu organizuje informace o stavu do následujících kategorií: 
-
-* Dostupnost
-* Výkon
+Diagnostika stavu organizuje informace o stavu do dvou kategorií: dostupnost a výkon.
  
-Všechna kritéria stavu definovaný pro konkrétní součást, jako je například logického disku, využití procesoru, atd. lze zobrazit bez filtrování na dvě kategorie (které je veškeré zobrazení všechna kritéria) nebo filtrovat výsledky podle buď kategorie při výběru **dostupnosti**  nebo **výkonu** možnosti na stránce. Kromě toho můžete zobrazit kategorie kritéria vedle **kritéria** sloupce. Pokud kritériím neodpovídá vybranou kategorii, zobrazí se zpráva **žádná kritéria stavu k dispozici pro vybranou kategorii** v **kritéria** sloupce.  
+Bez filtrování na dvě kategorie lze zobrazit všechna kritéria stavu definované pro komponentu, jako je například logický disk, procesoru a tak dále. Tato zobrazení může být v zobrazení veškeré kritéria nebo prostřednictvím filtrování výsledků podle buď kategorie, když vyberete **dostupnosti** nebo **výkonu**.
 
-Stav kritérií stavu je definován pomocí jedné ze čtyř stavů – *kritický*, *upozornění*, *pořádku*, a *neznámý*. První tři se dají konfigurovat, což znamená, můžete upravit prahové hodnoty monitorování přímo z podokna kritérií stavu konfigurace nebo pomocí rozhraní REST API služby Azure Monitor [monitorování operace aktualizace](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/monitors/update). *Neznámý* není Konfigurovatelný a vyhrazené pro konkrétní scénáře.  
+Navíc kritéria kategorii uvidíte vedle **kritéria** sloupce. Pokud kritériím neodpovídají vybrané kategorie zprávu s oznámením **žádná kritéria stavu k dispozici pro vybranou kategorii** se zobrazí v **kritéria** sloupce.
 
-Stav diagnostiky stránka má tři hlavní části:
+Stav kritéria stavu je určené jedním ze čtyř typů: **Kritické**, **upozornění**, **v pořádku**, a **neznámý**. První tři se dají konfigurovat, což znamená, že můžete upravit přímo v monitorování prahových hodnot **kritéria** konfigurační podokno. To je také možné pomocí REST API služby Azure Monitor [monitorování operace aktualizace](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/monitors/update). **Neznámý** není Konfigurovatelný a je vyhrazený pro konkrétní scénáře.
 
-* Komponenta modelu 
+**Stav diagnostiky** stránka má tři hlavní části:
+
+* Komponenta modelu
 * Kritéria stavu
-* Změny stavu 
+* Změny stavu
 
 ![Oddíly stránku Stav diagnostiky](./media/vminsights-health/health-diagnostics-page-02.png)
 
 ### <a name="component-model"></a>Komponenta modelu
 
-Sloupec úplně vlevo na stránce Diagnostika stavu je součástí modelu. Všechny součásti, které jsou spojené s virtuálním Počítačem, se zobrazí v tomto sloupci spolu s jejich aktuálního stavu. 
+V levém sloupci **stav diagnostiky** stránka je **modelu**. Všechny součásti, které jsou spojené s virtuálním Počítačem, se zobrazí v tomto sloupci spolu s jejich aktuálního stavu.
 
-V následujícím příkladu jsou součásti zjištěné disku, logický disk, procesoru, paměti a operační systém. Více instancí tyto součásti jsou zjistí a zobrazí v tomto sloupci. Například následující obrázek ukazuje, že virtuální počítač má dvěma instancemi logických disků – C: a D:, které jsou v dobrém stavu.  
+V následujícím příkladu se zjištěné součásti **disku**, **logického disku**, **procesoru**, **paměti**, a  **Operační systém**. Více instancí tyto součásti jsou zjistí a zobrazí v tomto sloupci.
+
+Například následující obrázek znázorňuje, že virtuální počítač se dvěma instancemi logických disků **C:** a **D:** , které jsou v pořádku:
 
 ![Příklad modelu v stav diagnostiky](./media/vminsights-health/health-diagnostics-page-component.png)
 
 ### <a name="health-criteria"></a>Kritéria stavu
 
-V prostředním sloupci na stránce stavu diagnostiky se **kritéria** sloupce. Health model definované pro virtuální počítač se zobrazí v hierarchické stromové struktury. Health model pro virtuální počítač se skládá z jednotky a agregovaný kritéria.  
+V prostředním sloupci na stránce stavu diagnostiky se **kritéria**. Health model definované pro virtuální počítač se zobrazí v hierarchické stromové struktury. Health model pro virtuální počítač se skládá z jednotky a agregovaný kritéria.
 
 ![Příklad kritéria v stav diagnostiky](./media/vminsights-health/health-diagnostics-page-healthcriteria.png)
 
-Kritéria stavu měří stav monitorovaných instance s kritérií, které by mohly být prahovou hodnotu, stav entity atd. Kritéria stavu má dvě nebo tři stavu prahové hodnoty konfigurovatelné stavu, jak bylo popsáno dříve. V libovolném časovém okamžiku může být kritérium stavu pouze do jednoho z jeho možných stavů. 
+Kritéria stavu měří stav monitorovaných instance, které by mohly být prahovou hodnotu, stav entity a tak dále. Kritéria stavu má dvě nebo tři konfigurovatelné zdravotní stav prahové hodnoty, jak je popsáno výše. V libovolném okamžiku může být kritérium stavu pouze do jednoho z jeho možných stavů.
 
-Celkový stav cíl je určen podle stavu všech jeho stav kritéria definovaná v modelu stavu. Jedná se o kombinaci kritéria stavu zaměřených přímo na cíl, stav kritéria zaměřený na komponenty zahrnované do cílové prostřednictvím agregovaný kritérium. Tato hierarchie je znázorněna v **kritéria** část stránky diagnostiky stavu. Zásady souhrnu stavů je součástí konfigurace agregovaný kritéria (výchozí nastavení je *nejhorší of*). Můžete najít seznam výchozí sadu kritérií stavu spuštěných v rámci této funkce v části [monitorování podrobnosti o konfiguraci](#monitoring-configuration-details), a REST API služby Azure Monitor můžete použít [monitorovat instance – seznam podle prostředku operace](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/monitorinstances/listbyresource) k získání seznamu všech kritérií stavu a jeho podrobnou konfiguraci spouštění prostředku virtuálního počítače Azure.  
+Health model definuje kritéria určující stav celkové cíle a komponenty cíle. Hierarchie kritéria je zobrazena ve **kritéria** části na **stav diagnostiky** stránky.
 
-**Jednotka** typ kritérií stavu může mít svou konfiguraci upravit kliknutím na odkaz elipsa daleko vpravo a výběrem možnosti **zobrazit podrobnosti** a otevřete tak podokno konfigurace. 
+Souhrn stavů zásady jsou součástí konfigurace agregovaný kritéria (výchozí hodnota je nastavena na **nejhorší of**). Výchozí sadu kritérií stavu spuštěna jako součást tuto funkci můžete najít [monitorování podrobnosti o konfiguraci](#monitoring-configuration-details) části tohoto článku.
+
+Můžete použít také rozhraní REST API pro monitorování Azure [monitorování instance seznamu prostředkem](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/monitorinstances/listbyresource) k získání seznamu všech kritérií stavu. Tato kritéria obsahuje podrobnosti o konfiguraci spouštění prostředku virtuálního počítače Azure.
+
+**Jednotky** typ kritérií stavu může mít jeho konfiguraci upravit tak, že vyberete odkaz tlačítko se třemi tečkami na pravé straně. Vyberte **zobrazit podrobnosti** a otevřete tak podokno konfigurace.
 
 ![Příklad kritéria stavu konfigurace](./media/vminsights-health/health-diagnostics-vm-example-02.png)
 
-V podokně Konfigurace pro vybraný stav kritéria, použijeme příklad **průměrné sekund za zápisu disku**, jeho prahová hodnota se dá nakonfigurovat s jinou číselnou hodnotu. Monitorování dvou stavů, což znamená pouze změny provedené od v dobrém stavu na varování je. Další kritéria stavu může být tři stavy, ve kterém můžete nakonfigurovat hodnotu pro upozornění a kritickou stavu mezní hodnotu stavu. Můžete také změnit prahovou hodnotu pomocí REST API služby Azure Monitor [monitorování operace aktualizace](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/monitors/update).
+V podokně Konfigurace pro vybraný stav kritéria, pokud používáte v příkladu **průměrné sekund za zápisu disku**, prahová hodnota se dá nakonfigurovat s jinou číselnou hodnotu. Monitorování dvou stavů, což znamená, ho můžete změnit pouze z je **pořádku** k **upozornění**.
+
+Další kritéria stavu v některých případech pomocí tří stavů, ve kterém můžete nakonfigurovat hodnotu pro upozornění a kritickou mezní hodnoty stavu stavu. Můžete také upravit prahové hodnoty pomocí REST API služby Azure Monitor [konfigurace monitoru](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/monitors/update).
 
 >[!NOTE]
->Provádění změn konfigurace kritérií stavu do jedné instance se použijí pro všechny sledované instance.  Pokud vyberete třeba **disku D:-1** a upravovat **průměrné sekund za zápisu disku** prahovou hodnotu, se nevztahuje na pouze tuto instanci, ale všechny ostatní instance disku zjišťování a monitorování ve virtuálním počítači.
->
+>Provádění změn konfigurace kritérií stavu do jedné instance je platí pro všechny sledované instance. Pokud vyberete třeba **disku D:-1** a potom změňte **průměrné sekund za zápisu disku** prahovou hodnotu, změna se vztahuje na všechny instance zjišťování a monitorování ve virtuálním počítači.
+
 
 ![Konfigurace stavu kritéria příkladu monitorování jednotky](./media/vminsights-health/health-diagnostics-criteria-config-01.png)
 
-Pokud chcete získat další informace o indikátor stavu, článků znalostní báze jsou zahrnuty, aby mohli snadno identifikovat problémy, příčiny a řešení. Klikněte na **zobrazení informací o** na stránce na odkaz a otevře na nové kartě v prohlížeči zobrazující konkrétní znalostní báze. Kdykoli můžete zkontrolovat všechny články znalostní báze kritérium stavu dodává v rámci Azure Monitor pro virtuální počítače stavu funkce [tady](https://docs.microsoft.com/azure/monitoring/infrastructure-health/).
-  
+Pokud chcete získat další informace o stavu kritéria, zahrnuli jsme články ve znalostní bázi, abyste mohli snadno identifikovat problémy, příčiny a řešení. Vyberte **zobrazení informací o** na stránce najdete v článku znalostní báze související.
+
+Všechny články znalostní báze dodává v rámci Azure monitorování pro stav virtuálních počítačů najdete v tématu [dokumentace k Azure Monitor stavu znalostní báze](https://docs.microsoft.com/azure/monitoring/infrastructure-health/).
+
 ### <a name="state-changes"></a>Změny stavu
 
-Sloupec úplně vpravo na stránce stavu diagnostiky se **změny stavu**. Zobrazí všechny změny stavu přidružené k kritéria stavu, které je vybrané v **kritéria** části nebo změnit stav virtuálního počítače, pokud byl vybrán virtuální počítač **modelu** nebo **Kritéria** sloupci tabulky. 
+Sloupec nejvíce vpravo **stav diagnostiky** stránka je **změny stavu**. V tomto sloupci jsou uvedeny všechny změny stavu přidružené k kritéria stavu vybraná v **kritéria** části nebo změnit stav virtuálního počítače, pokud byl vybrán virtuální počítač **modelu** nebo  **Kritéria stavu** sloupci tabulky.
 
 ![Příklad změny stavu v stav diagnostiky](./media/vminsights-health/health-diagnostics-page-statechanges.png)
 
-V této části se skládá z kritérií stavu a doby přidružené seřazené podle poslední stav v horní části.   
+Následující části se zobrazuje stav kritéria stavu a přidružené čas. Tyto informace zobrazují nejnovější stav v horní části sloupce.
 
-### <a name="association-of-component-model-health-criteria-and-state-change-columns"></a>Změnit přidružení modelu, kritéria stavu a stavu sloupce 
+### <a name="association-of-component-model-health-criteria-and-state-changes-columns"></a>Přidružení sloupců modelu, kritéria stavu a změny stavu
 
-Tři sloupce jsou vzájemně propojena mezi sebou. Když vyberete zjištěné instance v **modelu** části **kritéria** části je filtrovaná zobrazení komponenty a odpovídajícím způsobem **změnu stavu**část je aktualizována na základě kritérií vybraný stav. 
+Tři sloupce jsou vzájemně propojena mezi sebou. Když vyberete instance v **modelu** sloupce, **kritéria** je sloupec filtrován zobrazení komponenty. Odpovídajícím způsobem **změny stavu** sloupec je aktualizován na základě kritérií vybraný stav.
 
 ![Příklad výběru sledované instance a výsledky](./media/vminsights-health/health-diagnostics-vm-example-01.png)
 
-V příkladu výše, když vyberete **disku – 1 D:** , je filtrovaná stromu kritéria **Disk - 1 D:** . **Změny stavu** sloupci se zobrazuje změny stavu založené na dostupnosti **disku – 1 D:** . 
+Například, pokud vyberete *disku – 1 D:* ze seznamu **modelu**, **kritéria** filtrů *Disk - 1 D:* a  **Stav změny** ukazuje změnu stavu na základě dostupnosti z *disku – 1 D:* .
 
-Najdete v článku aktualizovaný stav, můžete aktualizovat stránku diagnostiky stavu kliknutím **aktualizovat** odkaz.  Při aktualizaci stavu kritérium stav podle předem definovaného intervalu dotazování tento úkol vám umožní vyhnout čekání a odráží nejnovější stav.  **Kritéria stavu** je filtr umožňuje určit obor výsledky na základě vybraného stavu - *pořádku*, *upozornění*, *kritický*, *Neznámý*, a *všechny*.  **Poslední aktualizace** čas v pravém horním rohu představuje poslední čas při poslední stránku diagnostiky stavu aktualizace.  
+Pokud chcete zobrazit stav aktualizace stavu, můžete aktualizovat stránku diagnostiky stavu tak, že vyberete **aktualizovat** odkaz. Při aktualizaci stavu kritérium stav podle předem definovaného intervalu dotazování tento úkol vám umožní vyhnout čekání a odráží nejnovější stav. **Kritéria stavu** je filtr, který umožňuje určit obor výsledky na základě vybraného stavu: V pořádku, varování, kritické, neznámý a všechny. **Poslední aktualizace** čas v pravém horním rohu představuje čas posledního stavu diagnostiky stránka byla obnovena.
 
 ## <a name="alerts"></a>Výstrahy
 
-Pro funkci stav virtuálních počítačů Azure Monitor integruje s [Azure Alerts](../../azure-monitor/platform/alerts-overview.md) a vygeneruje výstrahu, pokud kritéria předdefinované stavu změnit dobrý do stavu není v pořádku, při zjištění stavu. Výstrahy jsou rozdělené podle závažnosti - závažnost 0 až 4, s závažnost 0 představuje nejvyšší úroveň závažnosti. 
+Monitorování stavu virtuálních počítačů Azure se integruje s [Azure Alerts](../../azure-monitor/platform/alerts-overview.md). Vyvolá výstrahu při změně předdefinované kritéria, když zjistí, v dobrém stavu do stavu není v pořádku. Výstrahy jsou rozdělené podle závažnosti, z závažnost 0 až 4 závažnost s závažnost 0 jako nejvyšší úrovně.
 
-Výstrahy nejsou přidružené skupinu akcí, které vás upozorní, pokud byla výstraha. Vlastník předplatného je potřeba nakonfigurovat oznámení kroků [dál v této části](#configure-alerts).   
+Výstrahy nejsou přidruženy k skupinu akcí, které vás upozorní, pokud byla výstraha. Vlastník předplatného musíte nakonfigurovat oznámení podle postupu v [konfigurace výstrah](#configure-alerts) oddílu.
 
-Celkový počet zařazených do kategorií podle závažnosti upozornění na stav virtuálního počítače je k dispozici na **stavu** řídicího panelu v části **výstrahy**. Když vyberete buď celkový počet výstrah nebo číslo odpovídající úroveň závažnosti, **výstrahy** se otevře a zobrazí seznam všech výstrah odpovídající výběru.  Například, pokud jste vybrali na řádek odpovídající **úroveň závažnost 1**, pak se zobrazí následující zobrazení:
+Celkový počet zařazených do kategorií podle závažnosti upozornění na stav virtuálního počítače je k dispozici na **stavu** řídicího panelu v části **výstrahy** oddílu. Když vyberete buď celkový počet výstrah nebo číslo odpovídající úroveň závažnosti, **výstrahy** se otevře a zobrazí seznam všech výstrah odpovídající výběru.
+
+Například, pokud vyberete řádek odpovídající k **úroveň závažnost 1**, zobrazí se následující zobrazení:
 
 ![Příklad všech 1. úrovně závažnosti výstrah](./media/vminsights-health/vminsights-sev1-alerts-01.png)
 
-Na **výstrahy** stránky, není pouze v oboru zobrazení výstrahy odpovídající váš výběr, ale také se filtrují podle **typ prostředku** pouze zobrazíte stav výstrahy vyvolané prostředku virtuálního počítače.  To se projeví v seznamu výstrah, ve sloupci **cílový prostředek**, kde se zobrazuje při byla splněna podmínka stavu konkrétní kritéria není v pořádku, byla výstraha vyvolána pro virtuální počítač Azure.  
+**Všechny výstrahy** stránky není v oboru zobrazovat pouze výstrahy odpovídající výběru. Také se filtrují podle **typ prostředku** zobrazíte pouze stav výstrahy vyvolané prostředku virtuálního počítače. Tento formát se projeví v seznamu výstrah pod sloupcem **cílový prostředek**, kde se zobrazí virtuální počítač Azure vyvolanou výstrahu. Pokud není v pořádku stav byl splněn.
 
-Upozornění z jiných typů prostředků nebo služeb nejsou určeny mají být zahrnuty v tomto zobrazení, například upozornění protokolů založené na dotazech protokolu nebo metriky upozornění, která by obvykle zobrazení z výchozího Azure Monitor [všechny výstrahy](../../azure-monitor/platform/alerts-overview.md#all-alerts-page) stránky. 
+Upozornění z jiných typů prostředků nebo služeb nejsou určeny mají být zahrnuty v tomto zobrazení. Tyto výstrahy obsahují upozornění protokolů, které jsou založeny na dotazy protokolů nebo upozornění metrik, které by normálně zobrazení z výchozího Azure Monitor [všechny výstrahy](../../azure-monitor/platform/alerts-overview.md#all-alerts-page) stránky.
 
-Toto zobrazení můžete filtrovat výběrem hodnoty v rozevíracích nabídek v horní části stránky.
+Toto zobrazení můžete filtrovat výběrem hodnoty v rozevíracích nabídkách v horní části stránky.
 
-|Sloupec |Popis | 
-|-------|------------| 
-|Předplatné |Vyberte předplatné služby Azure. Pouze výstrahy ve vybraném předplatném se nastavují v zobrazení. | 
-|Skupina prostředků |Výběr jedné skupiny prostředků. V zobrazení jsou zahrnuty pouze výstrahy s cíli ve vybrané skupině prostředků. | 
-|Typ prostředku |Vyberte jeden nebo více typů prostředků. Ve výchozím nastavení pouze výstrahy cíle **virtuálních počítačů** nebude vybrána a zahrnuté v tomto zobrazení. Tento sloupec je k dispozici pouze po zadal skupinu prostředků. | 
-|Prostředek |Vyberte prostředek. V zobrazení jsou zahrnuty pouze výstrahy s tento prostředek jako cíl. Tento sloupec je k dispozici pouze po byl zadán typ prostředku. | 
-|Severity |rozhodnout závažnost výstrahy, nebo vyberte *všechny* zahrnout všechny závažnosti výstrahy. | 
-|Stav monitorování |Vybrat podmínku monitorování pro filtrování upozorní, pokud byly *Fired* systém nebo *Vyřešeno* systém, pokud podmínka není už aktivní. Nebo vyberte *všechny* zahrnout všechny podmínky upozornění. | 
-|Stav upozornění |Vyberte stav výstrahy *nový*, *potvrzení*, *uzavřeno*, nebo vyberte *všechny* zahrnout výstrahy všechny stavy. | 
-|Monitorovat službu |Vyberte službu, nebo vyberte *všechny* zahrnout všechny služby. Pouze výstrahy z *VM Insights* jsou podporovány pro tuto funkci.| 
-|Časové rozmezí| Pouze výstrahy vyvolané v rámci vybrané časové období se nastavují v zobrazení. Podporované hodnoty jsou uplynulou hodinu, posledních 24 hodin, posledních 7 dní a posledních 30 dní. | 
+|Sloupec |Popis |
+|-------|------------|
+|Předplatné |Vyberte předplatné služby Azure. Pouze výstrahy ve vybraném předplatném se nastavují v zobrazení. |
+|Skupina prostředků |Výběr jedné skupiny prostředků. V zobrazení jsou zahrnuty pouze výstrahy s cíli ve vybrané skupině prostředků. |
+|Typ prostředku |Vyberte jeden nebo více typů prostředků. Ve výchozím nastavení pouze výstrahy cíle **virtuálních počítačů** nebude vybrána a zahrnuté v tomto zobrazení. Tento sloupec je k dispozici pouze po zadal skupinu prostředků. |
+|Prostředek |Vyberte prostředek. V zobrazení jsou zahrnuty pouze výstrahy s tento prostředek jako cíl. Tento sloupec je k dispozici až poté, co byl zadán typ prostředku. |
+|Severity |Vyberte výstrahy závažnosti nebo **všechny** zahrnout všechny závažnosti výstrahy. |
+|Stav monitorování |Vyberte podmínku monitorování výstrah filtr, pokud byla aktivována nebo vyřešena systémem, pokud podmínka není už aktivní. Nebo vyberte **všechny** zahrnout všechny podmínky upozornění. |
+|Stav upozornění |Vyberte stav výstrahy **nový**, **potvrzení**, **uzavřeno**, nebo **všechny** zahrnout výstrahy všechny stavy. |
+|Monitorovat službu |Vyberte službu nebo vyberte **všechny** zahrnout všechny služby. K použití této funkce jsou podporovány pouze výstrahy z virtuálního počítače Insights.|
+|Časové rozmezí| Pouze výstrahy vyvolané v rámci vybrané časové období se nastavují v zobrazení. Podporované hodnoty jsou uplynulou hodinu, posledních 24 hodin, posledních 7 dní a posledních 30 dní. |
 
-**Podrobností výstrahy** stránky se zobrazí, když vyberete výstrahu, kterým poskytuje podrobnosti výstrahy a díky tomu umožňuje změnit její stav. Další informace o správě výstrah naleznete v tématu [vytvoření, zobrazení a Správa výstrah pomocí Azure monitoru](../../azure-monitor/platform/alerts-metric.md).  
+Když vyberete výstrahu, **podrobností výstrahy** zobrazí se stránka. Tato stránka obsahuje podrobnosti o výstraze a umožňuje změnit její stav.
+
+Další informace o správě výstrah naleznete v tématu [vytvoření, zobrazení a Správa výstrah pomocí Azure monitoru](../../azure-monitor/platform/alerts-metric.md).
 
 >[!NOTE]
->V tomto čas, vytváření nových výstrah na základě kritérií stavu nebo upravit existující stavu pravidla výstrah ve službě Azure Monitor z portálu nepodporuje.  
->
+>Vytváření nových výstrah na základě kritérií stavu nebo změny stávajících stavu pravidla výstrah ve službě Azure Monitor z portálu není aktuálně podporováno.
+
 
 ![Panelu podrobností výstrahy pro vybrané výstrahy](./media/vminsights-health/alert-details-pane-01.png)
 
-Upozornění stavu lze také změnit pro jedno nebo více upozornění tak, že je vyberete a pak vyberete **změnit stav** z **všechny výstrahy** na horním levém rohu stránky. Na **změnit stav upozornění** podokně vyberte jednu z státy, přidejte popis změnu v hodnotě **komentář** pole a potom klikněte na tlačítko **Ok** potvrďte provedené změny. Během ověřování informací a změny se použijí, můžete sledovat jeho průběh **oznámení** z nabídky.  
+Upozornění stavu pro jedno nebo více upozornění můžete změnit výběrem a následným výběrem **změnit stav** z **všechny výstrahy** stránky v levém horním rohu. Vyberte jednu z stavů na **změnit stav upozornění** podokně Přidat popis změnu v hodnotě **komentář** pole a pak vyberte **Ok** potvrďte provedené změny. Při ověřování informací a změny se použijí, sledovat průběh **oznámení** v nabídce.
 
 ### <a name="configure-alerts"></a>Konfigurace upozornění
-Některé úlohy není možné spravovat z portálu Azure portal a třeba provádět pomocí upozornění správy [REST API služby Azure Monitor](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components). Zejména:
+Nelze spravovat určitých úloh správy upozornění z portálu Azure portal. Tyto úlohy je nutné provádět pomocí [REST API služby Azure Monitor](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components). Zejména:
 
-- Povolení nebo zakázání výstrahu týkající se stavu kritéria 
-- Nastavení oznámení pro výstrahy týkající se stavu kritéria 
+- Povolení nebo zakázání výstrahu týkající se stavu kritéria
+- Nastavení oznámení pro výstrahy týkající se stavu kritéria
 
-Používá metodu použitou v obou příkladech [ARMClient](https://github.com/projectkudu/armclient) na svém počítači s Windows. Pokud nejste obeznámeni s touto metodou, přečtěte si téma [pomocí ARMClient](../platform/rest-api-walkthrough.md#use-armclient).  
+Každý příklad používá [ARMClient](https://github.com/projectkudu/armclient) na svém počítači s Windows. Pokud nejste obeznámeni s touto metodou, přečtěte si téma [pomocí ARMClient](../platform/rest-api-walkthrough.md#use-armclient).
 
-#### <a name="enable-or-disable-alert-rule"></a>Povolení nebo zakázání pravidla upozornění
+#### <a name="enable-or-disable-an-alert-rule"></a>Povolení nebo zakázání pravidla upozornění
 
-K povolení nebo zakázání výstrahy pro konkrétní stav kritéria, vlastnost kritérií stavu *alertGeneration* musí být upravena s hodnotou buď **zakázané** nebo **povoleno**. K identifikaci *elementu monitorId* kritérií určitého stavu, bude následující příklad ukazuje, jak provádět dotazy pro tuto hodnotu pro kritéria **LogicalDisk\Avg disku sekund za přenos**.
+K povolení nebo zakázání výstrahy pro konkrétní kritéria, vlastnost **alertGeneration** musí být upraveny s hodnotou buď **zakázané** nebo **povoleno**.
+
+K identifikaci *elementu monitorId* pro konkrétní kritéria, následující příklad ukazuje, jak se dotázat na tuto hodnotu pro kritéria **LogicalDisk\Avg disku sekund za přenos**:
 
 1. V okně terminálu zadejte **armclient.exe přihlášení**. To vás vyzve k přihlášení do Azure.
 
-2. Zadejte následující příkaz k načtení všech kritérium stavu aktivní na konkrétní virtuální počítač a určit hodnotu pro *elementu monitorId* vlastnost. 
+2. Zadejte následující příkaz k načtení všech kritérium stavu aktivní na konkrétní virtuální počítač a určit hodnotu pro *elementu monitorId* vlastnost:
 
     ```
     armclient GET "subscriptions/subscriptionId/resourceGroups/resourcegroupName/providers/Microsoft.Compute/virtualMachines/vmName/providers/Microsoft.WorkloadMonitor/monitors?api-version=2018-08-31-preview”
     ```
 
-    Následující příklad ukazuje výstup tohoto příkazu. Poznamenejte si hodnotu *elementu MonitorId*. Tato hodnota je povinná na další krok potřebujeme k určení ID kritéria stavu a upravit jeho vlastnosti, aby se vytvořila výstraha.
+    Následující příklad ukazuje výstup *armclient GET* příkazu. Poznamenejte si hodnotu *elementu MonitorId*. Tato hodnota je povinná na další krok, kde jsme musíte zadat ID kritéria stavu a upravit jeho vlastnosti, aby se vytvořila výstraha.
 
     ```
     "id": "/subscriptions/a7f23fdb-e626-4f95-89aa-3a360a90861e/resourcegroups/Lab/providers/Microsoft.Compute/virtualMachines/SVR01/providers/Microsoft.WorkloadMonitor/monitors/ComponentTypeId='LogicalDisk',MonitorId='Microsoft_LogicalDisk_AvgDiskSecPerRead'",
@@ -340,37 +376,37 @@ K povolení nebo zakázání výstrahy pro konkrétní stav kritéria, vlastnost
       "etag": null,
     ```
 
-3. Zadejte následující příkaz k úpravě *alertGeneration* vlastnost.
+3. Zadejte následující příkaz k úpravě *alertGeneration* vlastnost:
 
     ```
     armclient patch subscriptions/subscriptionId/resourceGroups/resourcegroupName/providers/Microsoft.Compute/virtualMachines/vmName/providers/Microsoft.WorkloadMonitor/monitors/Microsoft_LogicalDisk_AvgDiskSecPerTransfer?api-version=2018-08-31-preview "{'properties':{'alertGeneration':'Disabled'}}"
     ```   
 
-4. Zadejte příkaz GET použili v kroku 2, chcete-li ověřit, hodnota vlastnosti je nastavena na **zakázané**.  
+4. Zadejte příkaz GET použili v kroku 2, chcete-li ověřit, že je hodnota vlastnosti nastavena **zakázané**.
 
-#### <a name="associate-action-group-with-health-criteria"></a>Kritéria stavu přidružit skupiny akcí
+#### <a name="associate-an-action-group-with-health-criteria"></a>Kritéria stavu přidružit skupiny akcí
 
-Azure Monitor stavu virtuálních počítačů podporuje SMS a e-mailová oznámení při výstrahy jsou generovány, když nebude kritéria stavu v pořádku. Konfigurace oznámení, budete muset poznamenejte si název skupiny akcí, který je nakonfigurován k odeslání serveru SMS nebo e-mailové oznámení. 
+Monitorování stavu virtuálních počítačů Azure podporuje oznámení SMS a e-mailové výstrahy jsou generovány z kritérií stavu není v pořádku. Konfigurace oznámení, poznamenejte si název skupiny akcí nakonfigurované k odeslání serveru SMS nebo e-mailové oznámení.
 
 >[!NOTE]
->Tato akce je třeba provést pro každý virtuální počítač monitorovaný, že chcete dostávat oznámení, se nevztahují na všechny virtuální počítače ve skupině prostředků.  
+>Tuto akci musíte provést pro každý monitorovaných virtuálních počítačů, která chcete dostávat oznámení. Nevztahuje se na všechny virtuální počítače ve skupině prostředků.
 
-1. V okně terminálu zadejte **armclient.exe přihlášení**. To vás vyzve k přihlášení do Azure.
+1. V okně terminálu zadejte *armclient.exe přihlášení*. To vás vyzve k přihlášení do Azure.
 
-2. Zadejte následující příkaz k přidružení skupiny akcí pravidel upozornění.
+2. Zadejte následující příkaz k přidružení skupiny akcí pravidel upozornění:
  
     ```
-    $payload = "{'properties':{'ActionGroupResourceIds':['/subscriptions/subscriptionId/resourceGroups/resourcegroupName/providers/microsoft.insights/actionGroups/actiongroupName']}}" 
+    $payload = "{'properties':{'ActionGroupResourceIds':['/subscriptions/subscriptionId/resourceGroups/resourcegroupName/providers/microsoft.insights/actionGroups/actiongroupName']}}"
     armclient PUT https://management.azure.com/subscriptions/subscriptionId/resourceGroups/resourcegroupName/providers/Microsoft.Compute/virtualMachines/vmName/providers/Microsoft.WorkloadMonitor/notificationSettings/default?api-version=2018-08-31-preview $payload
     ```
 
-3. Chcete-li ověřit hodnotu vlastnosti **actionGroupResourceIds** byl úspěšně aktualizován, zadejte následující příkaz.
+3. Pro ověření, že hodnota vlastnosti **actionGroupResourceIds** byl úspěšně aktualizován, zadejte následující příkaz:
 
     ```
     armclient GET "subscriptions/subscriptionName/resourceGroups/resourcegroupName/providers/Microsoft.Compute/virtualMachines/vmName/providers/Microsoft.WorkloadMonitor/notificationSettings?api-version=2018-08-31-preview"
     ```
 
-    Výstup by měl vypadat takto:
+    Výstup by měl vypadat jako následující kritéria:
     
     ```
     {
@@ -393,4 +429,5 @@ Azure Monitor stavu virtuálních počítačů podporuje SMS a e-mailová oznám
 
 ## <a name="next-steps"></a>Další postup
 
-Pokud chcete identifikovat problémová místa a celkové využití výkonu vašich virtuálních počítačů, přečtěte si téma [zobrazení výkonu virtuálních počítačů Azure](vminsights-performance.md), nebo chcete-li zobrazit závislosti zjištěných aplikací, najdete v článku [zobrazení monitorování Azure pro virtuální počítače mapu](vminsights-maps.md). 
+- K identifikaci omezení a celkový výkon virtuálního počítače, naleznete v tématu [virtuálního počítače Azure zobrazení výkonu](vminsights-performance.md).
+- Další informace o závislosti zjištěných aplikací najdete v tématu [zobrazení monitorování Azure pro virtuální počítače mapu](vminsights-maps.md).

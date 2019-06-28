@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 06/07/2019
 ms.author: tomfitz
-ms.openlocfilehash: 8b7e6d234984e84f5b238d657281dd8b1b9ec423
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4f1bc1415fbb875120d7b64128cae69e1e3f442c
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67056885"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67339847"
 ---
 # <a name="tag-support-for-azure-resources"></a>Podpora značek pro prostředky Azure
 Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-using-tags.md). Sloupec s názvem **podporuje značky** označuje, zda typ prostředku má vlastnost pro značku. Sloupec s názvem **značku sestavy nákladů** označuje, zda tento typ prostředku předá značka sestavy nákladů.
@@ -864,8 +864,8 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | dnszones/TXT | Ne |  Ne |
 | expressRouteCircuits | Ano  | Ne |
 | expressRouteServiceProviders | Ne |  Ne |
-| frontdoors | Ano | Ano |
-| frontdoorWebApplicationFirewallPolicies | Ano | Ano |
+| frontdoors | Ano, ale omezené (viz [poznámka níže](#frontdoor)) | Ano |
+| frontdoorWebApplicationFirewallPolicies | Ano, ale omezené (viz [poznámka níže](#frontdoor)) | Ano |
 | getDnsResourceReference | Ne |  Ne |
 | interfaceEndpoints | Ano | Ano |
 | internalNotify | Ne |  Ne |
@@ -898,6 +898,10 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | vpnGateways | Ano | Ne |
 | vpnSites | Ano | Ano |
 | webApplicationFirewallPolicies | Ano | Ano |
+
+<a id="frontdoor" />
+
+Branou služby Azure můžete použít značky při vytváření prostředku, ale aktualizaci nebo přidávání značek se momentálně nepodporuje.
 
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
 | Typ prostředku | Podporuje značky | Sestava náklady na značku |

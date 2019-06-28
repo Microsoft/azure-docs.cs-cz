@@ -14,12 +14,12 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: miparker
-ms.openlocfilehash: a4773ddd8114659118e89cfee57e73ddb39ff6b6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c35044918876b2c7710e26f6b868bc1096c2f538
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67116670"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67340390"
 ---
 # <a name="tutorial-push-notifications-to-swift-ios-apps-that-use-the-notification-hubs-rest-api"></a>Kurz: Odesílání nabízených oznámení do aplikace pro systém iOS Swift pomocí rozhraní REST API Notification Hubs
 
@@ -87,12 +87,12 @@ V této části sestavíte aplikaci pro iOS, který se připojí k centru oznám
 
 1. Aktualizace **devsettings.plist** pomocí vlastní hodnoty z centra oznámení, kterou jste zřídili zahrnout následující položky konfigurace:
 
-   | Klíč                            | Type                     | Hodnota                     |
+   | Klíč                            | Type                     | Value                     |
    |--------------------------------| -------------------------| --------------------------|
-   | notificationHubKey             | String                   | <hubKey>                  |
-   | notificationHubKeyName         | String                   | <hubKeyName>              |
-   | notificationHubName            | String                   | <hubName>                 |
-   | notificationHubNamespace       | String                   | <hubNamespace>            |
+   | notificationHubKey             | String                   | \<hubKey>                  |
+   | notificationHubKeyName         | String                   | \<hubKeyName>              |
+   | notificationHubName            | String                   | \<hubName>                 |
+   | notificationHubNamespace       | String                   | \<hubNamespace>            |
 
    Požadované hodnoty najdete tak, že přejdete na prostředek centra oznámení na webu Azure Portal. Konkrétně se **notificationHubName** a **notificationHubNamespace** hodnoty jsou v pravém horním rohu **Essentials** souhrn v rámci **Přehled** stránky.
 
@@ -408,10 +408,10 @@ Následující postup použijte k volání **instalace** rozhraní API:
 
 1. Konfigurace hlaviček žádosti následujícím způsobem:
 
-   | Klíč           | Hodnota            |
+   | Klíč           | Value            |
    | ------------- | ---------------- |
    | Content-Type  | application/json |
-   | Autorizace | <sasToken>       |
+   | Authorization | \<sasToken>       |
    | x-ms-version  | 2015-01          |
 
 1. Vyberte **kód** tlačítko, které se zobrazí v pravém horním rohu pod **Uložit** tlačítko. Požadavek by měl vypadat podobně jako v následujícím příkladu:
@@ -656,10 +656,10 @@ Může odeslat oznámení prostřednictvím [rozhraní REST API](/rest/api/notif
 
 1. Konfigurace hlaviček žádosti následujícím způsobem:
 
-   | Klíč                            | Hodnota                          |
+   | Klíč                            | Value                          |
    | ------------------------------ | ------------------------------ |
    | Content-Type                   | application/json;charset=utf-8 |
-   | Autorizace                  | <sasToken>                     |
+   | Authorization                  | \<sasToken>                     |
    | ServiceBusNotification-Format  | Šablony                       |
    | Tags                           | "12345"                        |
 

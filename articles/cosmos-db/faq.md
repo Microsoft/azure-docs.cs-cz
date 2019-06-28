@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 47b1d9720a23c1dbfdee8c2e4cba95ff998a4cc0
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.openlocfilehash: 89c04a55138d57fd2ff37a96f2bc92b12d1780d9
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67137745"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341231"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Nejčastější dotazy ohledně různých rozhraní API ve službě Azure Cosmos DB
 
@@ -159,11 +159,11 @@ Uživatele a oprávnění můžete vytvořit pomocí jedné z [sady SDK rozhran�
 
 ### <a name="does-the-sql-api-support-sql"></a>Podporuje rozhraní SQL API SQL?
 
-Dotazovací jazyk SQL podporuje účty rozhraní API SQL je vylepšená podmnožina dotazovacích funkcí, která je podporována serverem SQL Server. Dotazovací jazyk SQL služby Azure Cosmos DB nabízí bohaté hierarchické a relační operátory a rozšiřitelnost prostřednictvím založené na jazyce JavaScript, uživatelem definované funkce (UDF). Gramatika JSON umožňuje modelování dokumentů JSON ve formě stromů ve uzly s popiskem, které jsou používány Azure Cosmos DB automatických technikách indexování a dialektu dotazování SQL služby Azure Cosmos DB. Informace o používání gramatika SQL najdete v tématu [dotaz SQL] [ query] článku.
+Dotazovací jazyk SQL podporuje účty rozhraní API SQL je vylepšená podmnožina dotazovacích funkcí, která je podporována serverem SQL Server. Dotazovací jazyk SQL služby Azure Cosmos DB nabízí bohaté hierarchické a relační operátory a rozšiřitelnost prostřednictvím založené na jazyce JavaScript, uživatelem definované funkce (UDF). Gramatika JSON umožňuje modelování dokumentů JSON ve formě stromů ve uzly s popiskem, které jsou používány Azure Cosmos DB automatických technikách indexování a dialektu dotazování SQL služby Azure Cosmos DB. Informace o používání gramatika SQL najdete v tématu [dotaz SQL][query] článku.
 
 ### <a name="does-the-sql-api-support-sql-aggregation-functions"></a>Podporuje rozhraní SQL API agregační funkce SQL?
 
-Rozhraní SQL API podporuje agregaci s nízkou latencí v libovolném měřítku pomocí agregační funkce `COUNT`, `MIN`, `MAX`, `AVG`, a `SUM` prostřednictvím gramatika SQL. Další informace najdete v tématu [agregační funkce](how-to-sql-query.md#Aggregates).
+Rozhraní SQL API podporuje agregaci s nízkou latencí v libovolném měřítku pomocí agregační funkce `COUNT`, `MIN`, `MAX`, `AVG`, a `SUM` prostřednictvím gramatika SQL. Další informace najdete v tématu [agregační funkce](sql-query-aggregates.md).
 
 ### <a name="how-does-the-sql-api-provide-concurrency"></a>Jak rozhraní SQL API zajišťuje souběžnost?
 

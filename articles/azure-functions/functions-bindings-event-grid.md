@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/04/2018
 ms.author: cshoe
-ms.openlocfilehash: e11446b961727663961e4d3fa295a9b7f64860c9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 50ca0dd2555902ee9195abdd7a8fb71f81222cc8
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059667"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67342302"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Trigger služby Event Grid pro službu Azure Functions
 
@@ -213,6 +213,7 @@ Tady je kód Pythonu:
 ```python
 import logging
 import azure.functions as func
+
 
 def main(event: func.EventGridEvent):
     logging.info("Python Event Grid function processed a request.")

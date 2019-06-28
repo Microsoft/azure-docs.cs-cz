@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 42f290109ca380464cb07ac9f684cdde25b8fdcd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a92017c462ef62cbfb1aa6c2613a502d1cc5ffc6
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67063771"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67340740"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Cenové úrovně ve službě Azure Database for PostgreSQL – jeden Server
 
@@ -67,7 +67,7 @@ Omezení úložiště zvyšujeme na naše úrovni obecné účely a optimalizova
 | IOPS | 3 IOPS/GB<br/>Minimum 100 vstupně-výstupních operací<br/>Max. 20 000 IOPS| 3 IOPS/GB<br/>Minimum 100 vstupně-výstupních operací<br/>Max. 20 000 IOPS |
 
 > [!IMPORTANT]
-> Rozsáhlá úložiště je aktuálně ve verzi public preview v těchto oblastech: USA – východ, USA – východ 2, střed USA, západní USA, západní USA 2, Severní Evropa, západní Evropa, jihovýchodní Asie, Japonsko – východ, Korea – střed, Austrálie – východ.
+> Rozsáhlá úložiště je aktuálně ve verzi public preview v těchto oblastech: USA – východ, USA – východ 2, střed USA, západní USA, Severní Evropa, západní Evropa, jihovýchodní Asie, Japonsko – východ, Korea – střed, Austrálie – východ.
 >
 >Rozsáhlá úložiště ve verzi preview v současné době nepodporuje:
 >

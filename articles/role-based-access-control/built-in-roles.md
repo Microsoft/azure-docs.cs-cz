@@ -15,12 +15,12 @@ ms.date: 05/16/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 427c4615fcbb036ffff56a8fc592f258fb98845e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5a63053cc7fa1c1c86669ce2cea56b68f1a7b4b6
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66755124"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341506"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Předdefinované role pro prostředky Azure
 
@@ -98,8 +98,8 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 | [Autor testovacího prostředí](#lab-creator) | Umožňuje vytvořit, spravovat a odstraňovat spravovaná testovací prostředí v účtech Azure Lab. |
 | [Přispěvatel log Analytics](#log-analytics-contributor) | Přispěvatel log Analytics může číst všechna data monitorování a upravit nastavení monitorování. Úprava nastavení monitorování, zahrnuje přidání rozšíření virtuálního počítače na virtuální počítače; čtení klíčů účtů úložiště, abyste mohli konfigurovat shromažďování protokolů ze služby Azure Storage; Vytvoření a konfigurace účtů služby Automation; přidávání řešení a konfigurace diagnostik Azure na všech prostředcích Azure. |
 | [Čtenář log Analytics](#log-analytics-reader) | Čtenář log Analytics můžete zobrazit a vyhledat všechna data monitorování a zobrazení nastavení monitorování, včetně zobrazení konfigurace diagnostiky Azure na všech prostředcích Azure. |
-| [Přispěvatel aplikace logiky](#logic-app-contributor) | Umožňuje spravovat aplikace logiky, ale ne přístup k nim. |
-| [Operátor aplikace logiky](#logic-app-operator) | Umožňuje číst, povolovat a zakazovat aplikaci logiky. |
+| [Přispěvatel aplikace logiky](#logic-app-contributor) | Umožňuje spravovat aplikace logiky, ale nikoli změnit přístup k nim. |
+| [Operátor aplikace logiky](#logic-app-operator) | Umožňuje číst, povolit a zakázat logic apps, ale ne upravit nebo je aktualizovat. |
 | [Role operátora spravované aplikace](#managed-application-operator-role) | Umožňuje číst a provádět akce s prostředky spravované aplikace |
 | [Čtečka spravované aplikace](#managed-applications-reader) | Umožňuje číst prostředky ve spravované aplikaci a požádejte o přístup JIT. |
 | [Přispěvatel spravovaných identit](#managed-identity-contributor) | Vytvoření, čtení, aktualizace a odstraňování Identity přiřazené uživateli |
@@ -1620,7 +1620,7 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Popis** | Umožňuje spravovat aplikace logiky, ale ne přístup k nim. |
+> | **Popis** | Umožňuje spravovat aplikace logiky, ale nikoli změnit přístup k nim. |
 > | **ID** | 87a39d53-fc1b-424a-814c-f7e04687dc9e |
 > | **Akce** |  |
 > | Microsoft.Authorization/*/read | Další role a přiřazení rolí |
@@ -1654,7 +1654,7 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Popis** | Umožňuje číst, povolovat a zakazovat aplikaci logiky. |
+> | **Popis** | Umožňuje číst, povolit a zakázat logic apps, ale ne upravit nebo je aktualizovat. |
 > | **ID** | 515c2055-d9d4-4321-b1b9-bd0c9a0f79fe |
 > | **Akce** |  |
 > | Microsoft.Authorization/*/read | Další role a přiřazení rolí |
@@ -2494,7 +2494,7 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Popis** | Umožňuje správu účtů úložiště. Neposkytuje přístup k datům v účtu úložiště. |
+> | **Popis** | Umožňuje správu účtů úložiště. Poskytuje přístup k klíč účtu, který slouží pro přístup k datům prostřednictvím sdíleného klíče autorizace. |
 > | **ID** | 17d1049b-9a84-46fb-8f53-869881c3d3ab |
 > | **Akce** |  |
 > | Microsoft.Authorization/*/read | Číst všechny autorizace |

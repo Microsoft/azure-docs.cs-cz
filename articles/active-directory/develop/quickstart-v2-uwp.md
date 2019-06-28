@@ -17,12 +17,12 @@ ms.date: 04/12/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd4b6dd31d620603b765fd33494f399f97915af3
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: be8048c05217fbdb2956e2a67be4eb3e17abed10
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65784925"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341402"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Rychlý start: Volání rozhraní Microsoft Graph API z aplikace pro univerzální platformu Windows (UPW)
 
@@ -45,7 +45,7 @@ Tento rychlý Start obsahuje ukázku kódu, který ukazuje, jak aplikace univerz
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Option 2: Registraci a ručně konfiguraci vaší aplikace a ukázku kódu
 > [!div renderon="docs"]
-> #### <a name="step-1-register-your-application"></a>Krok 1: Zaregistrujte svoji aplikaci.
+> #### <a name="step-1-register-your-application"></a>Krok 1: Registrace vaší aplikace
 > Pokud chcete zaregistrovat aplikaci a přidat informace o registraci aplikace ke svému řešení, postupujte následovně:
 > 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
 > 1. Pokud váš účet umožňuje přístup k více tenantům, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
@@ -53,14 +53,14 @@ Tento rychlý Start obsahuje ukázku kódu, který ukazuje, jak aplikace univerz
 > 1. Vyberte **registrace nové**.
 > 1. Když se zobrazí stránka **Registrace aplikace**, zadejte registrační informace vaší aplikace:
 >      - V části **Název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, například `UWP-App-calling-MsGraph`.
->      - V části **Podporované typy účtu** vyberte **Účty v libovolném organizačním adresáři a osobní účty Microsoft (například Skype, Xbox, Outlook.com)**.
+>      - V části **Podporované typy účtu** vyberte **Účty v libovolném organizačním adresáři a osobní účty Microsoft (například Skype, Xbox, Outlook.com)** .
 >      - Výběrem možnosti **Registrovat** aplikaci vytvořte.
 > 1. V seznamu stránek pro aplikaci vyberte **Ověřování**.
 > 1. Rozbalte **plochy a zařízení** oddílu.  (Pokud **plochy a zařízení** se nezobrazuje, klikněte nejprve na horním banneru se zobrazit náhled zkušenosti s ověřováním)
 > 1. V části **identifikátor URI pro přesměrování** vyberte **přidejte identifikátor URI**.  Typ **urn: ietf:wg:oauth:2.0:oob**.
 > 1. Vyberte **Uložit**.
 
-> [!div renderon="portal" class="sxs-lookup alert alert-info"]
+> [!div renderon="portal" class="sxs-lookup"]
 > #### <a name="step-1-configure-your-application"></a>Krok 1: Konfigurace aplikace
 > Aby vzorový kód pro tento rychlý start fungoval, musíte jako identifikátor URI pro přesměrování přidat **urn:ietf:wg:oauth:2.0:oob**.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
@@ -90,7 +90,7 @@ Tento rychlý Start obsahuje ukázku kódu, který ukazuje, jak aplikace univerz
 > > [!TIP]
 > > Najít hodnotu *ID aplikace*, přejděte **přehled** části portálu
 
-#### <a name="step-4-run-your-application"></a>Krok 4: Spustit aplikaci
+#### <a name="step-4-run-your-application"></a>Krok 4: Spusťte aplikaci
 
 Pokud chcete vyzkoušet tento rychlý start na svém počítači s Windows:
 
@@ -128,7 +128,7 @@ PublicClientApp = new PublicClientApplicationBuilder.Create(ClientId)
 
 > |Kde: ||
 > |---------|---------|
-> | `ClientId` | Je **ID aplikace (klienta)**, kterou jste zaregistrovali na webu Azure Portal. Tuto hodnotu najdete na stránce **Přehled** aplikace na webu Azure Portal. |
+> | `ClientId` | Je **ID aplikace (klienta)** , kterou jste zaregistrovali na webu Azure Portal. Tuto hodnotu najdete na stránce **Přehled** aplikace na webu Azure Portal. |
 
 ### <a name="requesting-tokens"></a>Žádosti o tokeny
 

@@ -15,16 +15,16 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/18/2018
 ms.author: lahugh
-ms.openlocfilehash: 0ca22cfe99e77cd2ed3c5a966fb2412444103d71
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5cda3f99a263e8eef13ee2e8d8e6453eda0f4cb6
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64922445"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341176"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Ověřování řešení služby Batch pomocí Active Directory
 
-Azure Batch podporuje ověřování s [Azure Active Directory][aad_about] (Azure AD). Azure AD je Microsoftu pro více tenantů cloudový adresář a služba pro správu identit. Azure samotné služby Azure AD použije k ověření své zákazníky, správci služeb a organizační uživatele.
+Azure Batch podporuje ověřování pomocí [Azure Active Directory][aad_about] (Azure AD). Azure AD je Microsoftu pro více tenantů cloudový adresář a služba pro správu identit. Azure samotné služby Azure AD použije k ověření své zákazníky, správci služeb a organizační uživatele.
 
 Při používání ověřování Azure AD pomocí služby Azure Batch, můžete se ověřit jedním ze dvou způsobů:
 
@@ -64,7 +64,7 @@ Použití **koncový bod prostředku Azure Batch** k získání tokenu pro ově�
 
 ## <a name="register-your-application-with-a-tenant"></a>Registrace aplikace pomocí tenanta
 
-Prvním krokem při používání služby Azure AD k ověřování je registrace aplikace v tenantovi Azure AD. Registrace aplikace umožňuje volat Azure [Active Directory Authentication Library][aad_adal] (ADAL) z vašeho kódu. ADAL poskytuje rozhraní API pro ověřování pomocí Azure AD z vaší aplikace. Registrace aplikace vyžaduje se, jestli plánujete používat integrované ověřování nebo instanční objekt služby.
+Prvním krokem při používání služby Azure AD k ověřování je registrace aplikace v tenantovi Azure AD. Registrace aplikace umožňuje volat Azure [Active Directory Authentication Library][aad_adal] (ADAL) z uživatelského kódu. ADAL poskytuje rozhraní API pro ověřování pomocí Azure AD z vaší aplikace. Registrace aplikace vyžaduje se, jestli plánujete používat integrované ověřování nebo instanční objekt služby.
 
 Při registraci vaší aplikace zadejte informace o aplikaci do služby Azure AD. Azure AD pak poskytuje ID aplikace (také nazývané *ID klienta*), který používáte k aplikaci přidružit k Azure AD za běhu. Další informace o ID aplikace, najdete v článku [aplikace a instanční objekty v Azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md).
 
@@ -324,31 +324,31 @@ from azure.common.credentials import ServicePrincipalCredentials
 Při použití instančního objektu, je nutné zadat ID tenanta. Pokud chcete načíst ID tenanta, postupujte podle kroků uvedených v [získání ID tenanta pro Azure Active Directory](#get-the-tenant-id-for-your-active-directory):
 
 ```python
-TENANT_ID = "<tenant-id>";
+TENANT_ID = "<tenant-id>"
 ```
 
 Koncový bod prostředků služby Batch – reference:  
 
 ```python
-RESOURCE = "https://batch.core.windows.net/";
+RESOURCE = "https://batch.core.windows.net/"
 ```
 
 Odkazovat na účtu Batch:
 
 ```python
-BATCH_ACCOUNT_URL = "https://myaccount.mylocation.batch.azure.com";
+BATCH_ACCOUNT_URL = "https://myaccount.mylocation.batch.azure.com"
 ```
 
 Zadejte ID aplikace (ID klienta) pro vaši aplikaci. ID aplikace je k dispozici z registrace vaší aplikace na webu Azure Portal:
 
 ```python
-CLIENT_ID = "<application-id>";
+CLIENT_ID = "<application-id>"
 ```
 
 Zadejte tajný klíč, který jste zkopírovali z portálu Azure portal:
 
 ```python
-SECRET = "<secret-key>";
+SECRET = "<secret-key>"
 ```
 
 Vytvoření **ServicePrincipalCredentials** objektu:

@@ -7,28 +7,46 @@ ms.author: jeanb
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/11/2019
-ms.openlocfilehash: db14f8240dea95eb073a0a653c2798f02fbb7c35
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 06/21/2019
+ms.openlocfilehash: 5da09d705246ffd5002a1a21daab2266525f579e
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67162594"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357500"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-functions"></a>Škálovat úlohy Stream Analytics s funkcemi Azure Machine Learning Studio
-Nastavení úlohy Stream Analytics a spuštění ukázkových dat přes něj je snadná. Co máme dělat, když potřebujeme spustit stejná úloha s vyšší objem dat? Abychom mohli pochopit, jak nakonfigurovat úlohu Stream Analytics tak, aby škáluje se vyžaduje. V tomto dokumentu se zaměříme na zvláštní aspekty škálovat úlohy Stream Analytics s funkcemi Machine Learning. Informace o tom, jak škálovat úlohy Stream Analytics obecně najdete v článku [škálování úloh](stream-analytics-scale-jobs.md).
+
+Tento článek popisuje, jak efektivně škálovat úlohy Azure Stream Analytics, které funkce Azure Machine Learning. Informace o tom, jak škálovat úlohy Stream Analytics obecně najdete v článku [škálování úloh](stream-analytics-scale-jobs.md).
 
 ## <a name="what-is-an-azure-machine-learning-function-in-stream-analytics"></a>Co je Azure Machine Learning funkce ve Stream Analytics?
-Funkci strojového učení ve službě Stream Analytics můžete použít jako normální volání funkce v dotazovací jazyk Stream Analytics. Za scénu, jsou volání funkcí ve skutečnosti žádosti webové služby Azure Machine Learning Studio. Webové služby Machine Learning podporuje "dávkování" více řádků, volá zkrácené batch ve stejném volání webové služby rozhraní API, ke zlepšení celkovou propustnost. Další informace najdete v tématu [webových služeb Azure Machine Learning Studio](../machine-learning/studio/consume-web-services.md). Podpora pro Azure Machine Learning Studio ve službě Stream Analytics je ve verzi preview.
+
+Funkci strojového učení ve službě Stream Analytics můžete použít jako normální volání funkce v dotazovací jazyk Stream Analytics. Na pozadí ale volání těchto funkcí jsou ve skutečnosti žádosti webové služby Azure Machine Learning.
+
+"Dávkování" více řádků společně ve stejném volání rozhraní API webové služby, lze vylepšit propustnost žádosti webové služby Machine Learning. Toto seskupení je volána zkrácené služby batch. Další informace najdete v tématu [webových služeb Azure Machine Learning Studio](../machine-learning/studio/consume-web-services.md). Podpora pro Azure Machine Learning Studio ve službě Stream Analytics je ve verzi preview.
 
 ## <a name="configure-a-stream-analytics-job-with-machine-learning-functions"></a>Konfigurace úlohy Stream Analytics s funkcemi Machine Learning
-Když konfigurujete funkci strojového učení pro úlohu Stream Analytics, existují dva parametry, které byste měli zvážit, velikost dávky volání funkce Machine Learning a jednotky streamování (su) zřízené pro úlohu Stream Analytics. K určení příslušné hodnoty pro su, nejprve rozhodnutí musí provádět mezi latence a propustnosti, to znamená, latenci úlohy Stream Analytics a propustnost všechny SU. Služby SUs může být vždy přidána na úlohy pro zvýšení prostupnosti dobře oddílů dotazu Stream Analytics, i když další služby SUs zvýšit náklady na spuštění úlohy.
 
-Proto je důležité určit, *tolerance* latence ve spuštěném úlohu Stream Analytics. Další spuštění žádosti o služby Azure Machine Learning zvýší se latence přirozeně se velikost dávky, která sloučeniny latence úlohy Stream Analytics. Na druhé straně zvýšit velikost dávky umožňuje úlohy Stream Analytics ke zpracování * další události s *stejné číslo* služby Machine Learning webové žádosti o služby. Často je pod řádkem zvýšení velikosti dávky zvýšení latence webové služby Machine Learning, takže je důležité vzít v úvahu nejvíce cenově efektivní velikost dávky pro webovou službu Machine Learning v jakékoli dané situaci. Výchozí velikost dávky pro webovou službu požadavků je 1000 a mohou být upraveny buď pomocí [rozhraní REST API pro Stream Analytics](https://msdn.microsoft.com/library/mt653706.aspx "rozhraní REST API pro Stream Analytics") nebo [klienta Powershellu pro Stream Analytics](stream-analytics-monitor-and-manage-jobs-use-powershell.md "klienta Powershellu pro Stream Analytics").
+Existují dva parametry konfigurace funkce Machine Learning používané vaší úlohy Stream Analytics:
 
-Když velikost dávky bylo zjištěno, počet datových proudů jednotky (su) mohou být určeny, podle počtu událostí, které funkce je potřeba zpracovat za sekundu. Další informace o jednotek streamování najdete v tématu [škálovat úlohy Stream Analytics](stream-analytics-scale-jobs.md).
+* Velikost dávky volání funkce Machine Learning.
+* Počet jednotek streamování (su) zřízené pro úlohu Stream Analytics.
 
-Obecně platí existují 20 souběžných připojení k webové službě Machine Learning pro každých 6 SUs s tím rozdílem, že jeden SU úlohy a 3 SU získáte 20 souběžných připojení také.  Například pokud míra vstupních dat je 200 000 událostí za sekundu a velikost dávky je ponecháno na výchozí hodnotu 1 000 výsledný latence webové služby pomocí služby batch zkrácené 1000 událostí je 200 ms. To znamená, že všechna připojení můžete provádět pět požadavky na webovou službu Machine Learning za sekundu. Protože 20 připojení úlohy Stream Analytics zpracovávat 20 000 událostí v 200 ms a proto 100 000 událostí za sekundu. Proto zpracovat 200 000 událostí za sekundu, úlohy Stream Analytics musí 40 souběžných připojení, které přijdete na 12 su. Následující diagram znázorňuje požadavky z úlohy Stream Analytics na koncový bod webové služby Machine Learning – každých 6 SUs má 20 souběžných připojení k webové službě Machine Learning na maximum.
+K určení příslušné hodnoty pro su, rozhodněte, jestli chcete optimalizovat latenci úlohy Stream Analytics nebo propustnost každá jednotka Streamování. Služba SUs může být vždy přidána na úlohu chcete zvýšit propustnost dobře oddílů dotazu Stream Analytics. Další služby SUs zvýšit náklady na spuštění úlohy.
+
+Určení latence *tolerance* pro svou úlohu Stream Analytics. Zvětšení velikosti dávky zvýší latence žádostí o služby Azure Machine Learning a latenci úloh Stream Analytics.
+
+Zvětšení velikosti dávky umožňuje úlohy Stream Analytics ke zpracování **další události** s **stejné číslo** služby Machine Learning webové žádosti o služby. Zvýšení latence webové služby Machine Learning je obvykle pod řádkem zvýšení velikosti dávky. 
+
+Je důležité vzít v úvahu nejvíce cenově efektivní velikost dávky pro webovou službu Machine Learning v jakékoli dané situaci. Výchozí velikost dávky pro žádosti webové služby je 1000. Můžete změnit pomocí této výchozí velikost [rozhraní REST API pro Stream Analytics](https://docs.microsoft.com/previous-versions/azure/mt653706(v=azure.100) "rozhraní REST API pro Stream Analytics") nebo [klienta Powershellu pro Stream Analytics](stream-analytics-monitor-and-manage-jobs-use-powershell.md).
+
+Jakmile jste se rozhodli na velikost dávky, můžete nastavit počet jednotek streamování (su), na základě počtu událostí, které funkce je potřeba zpracovat za sekundu. Další informace o jednotek streamování najdete v tématu [škálovat úlohy Stream Analytics](stream-analytics-scale-jobs.md).
+
+Každých 6 SUs získáte 20 souběžných připojení k webové službě Machine Learning. Však 1 SU úlohy a úlohy 3 SU získáte 20 souběžných připojení.  
+
+Pokud vaše aplikace generuje 200 000 událostí za sekundu a velikost dávky je 1000, výsledný latence webové služby je 200 ms. Tato sazba znamená, že všechna připojení můžete provádět pět požadavky na webovou službu Machine Learning každou sekundu. Protože 20 připojení úlohy Stream Analytics zpracovávat 20 000 událostí za 200 ms a 100 000 událostí za sekundu.
+
+Úlohy Stream Analytics ke zpracování 200 000 událostí za sekundu, musí 40 souběžných připojení, které přijdete na 12 su. Následující diagram znázorňuje požadavky z úlohy Stream Analytics na koncový bod webové služby Machine Learning – každých 6 SUs má 20 souběžných připojení k webové službě Machine Learning na maximum.
 
 ![Škálování pomocí funkce Machine learningu příklad dvě úlohy Stream Analytics](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-00.png "škálování Stream Analytics s ukázkou dvě úlohy funkce Machine learningu")
 
@@ -36,7 +54,7 @@ Obecně platí ***B*** pro velikost dávky ***L*** pro webové služby čekací 
 
 ![Stream Analytics se službou Machine Learning funkce vzorec škálování](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-02.png "Stream Analytics se službou Machine Learning funkce vzorec škálování")
 
-Další pozornost mohou být 'maximální počet souběžných volání' na straně webové služby Machine Learning, doporučujeme nastavit maximální hodnotu (aktuálně 200).
+Můžete také nakonfigurovat 'maximální počet souběžných volání' na webovou službu Machine Learning. Doporučujeme nastavit tento parametr na maximální hodnotu (aktuálně 200).
 
 Další informace o tomto nastavení najdete v tématu [článku škálování pro Machine Learning Web Services](../machine-learning/studio/scaling-webservice.md).
 
@@ -54,21 +72,33 @@ Dotaz je jednoduchý plně dělené dotazu, za nímž následuje **mínění** f
     Into output
     From subquery
 ```
-Vezměte v úvahu následující scénář; s propustností 10 000 tweety za sekundu je nutné vytvořit úlohu Stream Analytics, provádět analýzu subjektivního hodnocení ve tweetech (události). Pomocí 1 SU, může tuto úlohu Stream Analytics být schopná zpracovat provoz? Použitím výchozí velikosti dávky 1 000 úlohu měli být schopni držet krok s vstupu. Další přidaná funkce Machine Learning má více než jedna sekunda latenci, která je obecná generovat výchozí latence analýzy subjektivního hodnocení webové služby Machine Learning (s výchozí velikost dávky 1000). Úlohy Stream Analytics **celkové** nebo na celkovou latenci by obvykle několik sekund. Podrobnější podívejte se do této úlohy Stream Analytics *zejména* volání funkce Machine Learning. Velikost dávky s jako 1 000, propustnost 10 000 událostí trvat asi 10 požadavků k webové službě. I přes jeden SU jsou dost souběžných připojení tak, aby vyhovovaly tento vstupní provoz.
+
+Podívejme se na konfiguraci potřebné k vytvoření úlohy Stream Analytics, která nepodporuje analýzu subjektivního hodnocení ve tweety rychlostí 10 000 tweety na druhý.
+
+Pomocí 1 SU, tato úloha Stream Analytics dokáže zpracovat provoz? Úlohu můžete držet krok s použitím výchozí velikosti dávky 1 000 vstupu. Vytvoří výchozí čekací doba analýzy subjektivního hodnocení webové služby Machine Learning (s výchozí velikost dávky 1000) nesmí být větší než druhý latence.
+
+Úlohy Stream Analytics **celkové** nebo na celkovou latenci by obvykle několik sekund. Podrobnější podívejte se do této úlohy Stream Analytics *zejména* volání funkce Machine Learning. S velikost dávky 1 000 propustnost 10 000 událostí trvá asi 10 požadavků k webové službě. I přes jeden SU jsou dost souběžných připojení tak, aby vyhovovaly tento vstupní provoz.
 
 Počet vstupních událostí se zvyšuje 100 x, potom úlohu Stream Analytics musí zpracovat 1 000 000 tweety za sekundu. Existují dvě možnosti, jak dosáhnout většího rozsahu:
 
-1. Zvětšete velikost dávky, nebo
-2. Vstupní datový proud pro zpracování událostí v paralelních oddílů
+1. Zvětšete velikost dávky.
+2. Rozdělení vstupního datového proudu pro zpracování událostí současně.
 
 První možnost, úloha **latence** zvyšuje.
 
-S druhou možnost Další služby SUs potřebuje zřídí a proto generovat více souběžných žádosti webové služby Machine Learning. To znamená, že úloha **náklady** zvyšuje.
+S druhou možnost budete muset zřídit další služby SUs mít více souběžných žádosti webové služby Machine Learning. Tato větší počet su, zvyšuje úlohy **náklady**.
 
-Předpokládejme, že latence analýza mínění webové služby Machine Learning je 200 ms pro 1 000 událostí dávky nebo níže, 250 ms pro dávky 5 000 událostí, 300 ms pro 10 000 událostí dávky nebo 500 ms pro dávky 25 000 událostí.
+Pojďme se podívat na škálování pomocí následující měření latence pro jednotlivé velikosti dávky:
 
-1. První možnost (**není** zřizování další su). Velikost dávky by mohla být zvýšena na **25 000**. To pak umožní úlohu pro zpracování 1 000 000 událostí s 20 souběžných připojení k webové službě Machine Learning (s latencí 500 ms za volání). Proto další latence úlohy Stream Analytics z důvodu požadavky na funkce mínění proti žádosti webové služby Machine Learning by zvýšil z **200 ms** k **500 ms**. Velikost dávky však **nelze** zvýší neomezeně webové služby Machine Learning vyžaduje velikost datové části požadavku 4 MB nebo menší časový limit po 100 sekund operaci žádosti o službu web.
-2. Druhá možnost necháte na 1000, velikost dávky s latencí 200 ms webové služby, každých 20 souběžných připojení k webové službě by se měl události procesu 1000 * 20 * 5 = 100 000 za sekundu. Proto zpracovat 1 000 000 událostí za sekundu, úloha potřebuje 60 su. Ve srovnání s první možnost, úlohy Stream Analytics žádným další žádosti webové služby batch, pak generování vyšší náklady.
+| Latence | Velikost dávky |
+| --- | --- |
+| 200 ms | dávky 1 000 událostí a nižší |
+| 250 ms | 5 000 událostí dávky |
+| 300 ms | 10 000 událostí dávky |
+| 500 ms | 25 000 událostí dávky |
+
+1. První možnost (**není** zřizování další su). Velikost dávky by mohla být zvýšena na **25 000**. Zvětšení velikosti dávky tímto způsobem umožní úlohu pro zpracování 1 000 000 událostí s 20 souběžných připojení k webové službě Machine Learning (s latencí 500 ms za volání). Proto další latence úlohy Stream Analytics z důvodu požadavky na funkce mínění proti žádosti webové služby Machine Learning by zvýšil z **200 ms** k **500 ms**. Velikost dávky však **nelze** zvýší neomezeně webové služby Machine Learning vyžaduje velikost datové části požadavku 4 MB nebo menší a webových časový limit žádosti o službu po 100 sekund operace.
+1. Druhá možnost necháte na 1000, velikost dávky s latencí 200 ms webové služby, každých 20 souběžných připojení k webové službě by se měl události procesu 1000 * 20 * 5 = 100 000 za sekundu. Proto zpracovat 1 000 000 událostí za sekundu, úloha potřebuje 60 su. Ve srovnání s první možnost, úlohy Stream Analytics žádným další žádosti webové služby batch, pak generování vyšší náklady.
 
 Tady je tabulka pro propustnost úlohy Stream Analytics pro různé služby SUs a velikostí dávky (v počtu událostí za sekundu).
 
@@ -85,10 +115,10 @@ Tady je tabulka pro propustnost úlohy Stream Analytics pro různé služby SUs 
 
 Nyní máte již dobrý přehled o fungování funkce Machine learningu ve službě Stream Analytics. Pravděpodobně také chápete, že úlohy Stream Analytics "pull" data ze zdrojů dat a každý "pull" vrátí služby batch pro úlohu Stream Analytics ke zpracování událostí. Jak tento dopad o přijetí změn model Machine Learning webové žádosti o služby
 
-Za normálních okolností velikost dávky, kterou jsme nastavili pro funkce Machine learningu nebudou přesně dělitelná počet událostí vrácených každou úlohu Stream Analytics "pull". Pokud k tomu dojde, webové služby Machine Learning je volána s "částečné" dávky. To slouží k nejsou spojené režijní náklady na latenci dalších úloh ve slučovací události z o přijetí změn na vyžádání.
+Za normálních okolností velikost dávky, kterou jsme nastavili pro funkce Machine learningu nebudou přesně dělitelná počet událostí vrácených každou úlohu Stream Analytics "pull". Pokud k tomu dojde, webové služby Machine Learning je volána s "částečné" dávky. Použití částečné dávky se vyhnete bez dalších úloh latence režijní náklady v události sloučení z o přijetí změn na vyžádání.
 
 ## <a name="new-function-related-monitoring-metrics"></a>Nové funkce související s monitorovací metriky
-V oblasti sledování úloh Stream Analytics byly přidány tři další metriky související funkce. Jak je znázorněno na následujícím obrázku jsou požadavky na funkce, funkce události a požadavky na funkce se nezdařilo.
+V oblasti sledování úloh Stream Analytics byly přidány tři další metriky související funkce. Jsou **požadavky na funkce**, **události funkcí** a **NEÚSPĚŠNÉ požadavky funkce**, jak je znázorněno na následujícím obrázku.
 
 ![Škálování Stream Analytics se službou Machine Learning funkce metriky](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-01.png "škálování Stream Analytics s metrikami funkce Machine Learning")
 
@@ -101,11 +131,12 @@ Jsou definovány takto:
 **NEZDAŘENÉ POŽADAVKY NA FUNKCE**: Počet Nezdařené požadavky na funkce.
 
 ## <a name="key-takeaways"></a>Stěžejní zjištění
-Slouží ke shrnutí hlavních bodů, aby bylo možné škálovat úlohy Stream Analytics s funkcemi Machine Learning, musí být považována za následující položky:
 
-1. Míra vstupních událostí
-2. Tolerovaný latence pro běžící úlohu Stream Analytics (a tedy velikost dávky žádosti webové služby Machine Learning)
-3. Zřízené SUs Stream Analytics a počet žádosti webové služby Machine Learning (Další funkce související náklady)
+Pokud chcete škálovat úlohy Stream Analytics s funkcemi Machine Learning, vezměte v úvahu následující faktory:
+
+1. Míra vstupních událostí.
+2. Tolerovaný latence pro běžící úlohu Stream Analytics (a tedy velikost dávky žádosti webové služby Machine Learning).
+3. Zřízené SUs Stream Analytics a počet žádosti webové služby Machine Learning (Další funkce související náklady).
 
 Plně oddílů dotazu Stream Analytics byla použita jako příklad. V případě potřeby složitějšího dotazu [fóru Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics) je skvělý prostředek pro získání další pomoc od týmu služby Stream Analytics.
 

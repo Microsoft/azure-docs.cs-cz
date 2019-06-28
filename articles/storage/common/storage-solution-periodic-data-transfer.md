@@ -6,14 +6,14 @@ author: alkohli
 ms.service: storage
 ms.subservice: blobs
 ms.topic: article
-ms.date: 04/01/2019
+ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 8f106674c1b1ec90477c7c030dc55085fcf10656
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fb49802adf6242f445b700d06622d7e6aa336b4d
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60729915"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357040"
 ---
 # <a name="solutions-for-periodic-data-transfer"></a>Řešení pro přenos periodických dat.
  
@@ -66,7 +66,7 @@ Následující tabulka shrnuje rozdíly mezi klíčové funkce.
 ## <a name="next-steps"></a>Další postup
 
 - [Přenos dat pomocí AzCopy](/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json).
-- [Další informace o datových přenos pomocí rozhraní API REST úložiště](https://docs.microsoft.com/azure/databox-online/data-box-gateway-deploy-add-shares).
+- [Další informace o datových přenos pomocí rozhraní API REST úložiště](https://docs.microsoft.com/dotnet/api/overview/azure/storage?view=azure-dotnet).
 - Pochopit postup:
     - [Přenos dat pomocí brány dat pole](https://docs.microsoft.com/azure/databox-online/data-box-gateway-deploy-add-shares).
     - [Transformace dat pomocí služby Data Box Edge před odesláním do Azure](https://docs.microsoft.com/azure/databox-online/data-box-edge-deploy-configure-compute).

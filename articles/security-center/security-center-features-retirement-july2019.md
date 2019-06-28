@@ -8,12 +8,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 4/16/2019
 ms.author: yoafr
-ms.openlocfilehash: 069345f9c2d0fff0b580365153d8be13bb4ba204
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1d364da9506124a35c724209c68ff72db4243e80
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65952134"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341576"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>Vyřazení služby Security Center nabízí (2019 dne)
 
@@ -114,16 +114,18 @@ Doporučujeme vám používat funkce mapy výstrahy, které jsou integrované do
 
 ## Vlastní pravidla výstrah (Preview)<a name="menu_customalerts"></a>
 
-Máme [vyřazení z provozu vlastní výstrahy prostředí](https://docs.microsoft.com/azure/security-center/security-center-custom-alert) na 30. června 2019 protože vyřazení její podpůrnou infrastrukturou. Dokud to neuděláte můžete upravit existující vlastní pravidla upozornění, ale nebudete moct přidat nové. Doporučujeme, abyste povolili [Azure Sentinelu](https://azure.microsoft.com/services/azure-sentinel/) automaticky migrovat existující výstrahy a vytvořit nové. Upozornění můžete případně vytvořit s využitím upozornění log Azure Monitor.
+Máme [vyřazení z provozu vlastní výstrahy prostředí](https://docs.microsoft.com/azure/security-center/security-center-custom-alert) na 30. června 2019 protože vyřazení její podpůrnou infrastrukturou. Dokud to neuděláte můžete upravit existující vlastní pravidla upozornění, ale nebudete moct přidat nové. Po datu vyřazení se projeví jakékoli vlastní výstrahy definované a výstrahy zabezpečení na základě těchto pravidel se nevygeneruje.
+Doporučujeme, abyste povolili [Azure Sentinelu](https://azure.microsoft.com/services/azure-sentinel/) a znovu vytvořte svá vlastní upozornění. Upozornění můžete případně vytvořit s využitím upozornění log Azure Monitor.
 
-Zachovat existující výstrahy a migrací do Azure Sentinelu:
+Zachovat existující výstrahy a vytváření s Azure Sentinelu:
 
-1. Otevřete Azure Sentinelu a vyberte pracovní prostor, kde jsou uložené vaše vlastní upozornění.
-1. Vyberte **Analytics** z nabídky automaticky migrovat vaše upozornění.
+1. [Otevřete Azure Sentinelu](https://portal.azure.com/#create/Microsoft.ASI/preview) a vyberte pracovní prostor, kde jsou uložené vaše vlastní upozornění
+1. Vyberte **Analytics** z nabídky
+1. Postupujte podle pokynů v následujících [kurzu](https://docs.microsoft.com/azure/sentinel/tutorial-detect-threats) o tom, jak vytvořit vlastní upozornění v Azure Sentinelu
+
+Pokud si nejste zájem o využití Sentinelu Azure, můžete vytvořit výstrahy s využitím upozornění log Azure Monitor. Pokyny najdete v tématu [vytvoření, zobrazení a Správa upozornění protokolů pomocí Azure monitoru](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log) a [upozornění protokolů ve službě Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log).
 
 ![Vlastní upozornění][13]
-
-Pokud si nejste zájem o přechod na Azure Sentinelu, doporučujeme vám vytvořit upozornění s využitím upozornění log Azure Monitor. Pokyny najdete v tématu [vytvoření, zobrazení a Správa upozornění protokolů pomocí Azure monitoru](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log) a [upozornění protokolů ve službě Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log).
 
 Další informace o vyřazení z provozu vlastní výstrahy, najdete v části [vlastní pravidla výstrah ve službě Azure Security Center (Preview)](https://docs.microsoft.com/azure/security-center/security-center-custom-alert).
 

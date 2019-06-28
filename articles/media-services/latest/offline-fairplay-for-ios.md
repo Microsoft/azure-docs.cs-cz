@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/08/2019
 ms.author: willzhan
-ms.openlocfilehash: 58315e639a54b67bdef6751004b7a768e4f92224
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f2514fff2a3bb292a86c9f4c0e92c37ed2709097
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64937516"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341045"
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>Offline FairPlay Streaming pro iOS 
 
@@ -40,6 +40,9 @@ Kromě ochrany obsahu online vysílání datového proudu různých protokolů p
 * V některých zemích nebo oblastech je stále omezena dostupnost Internetu a/nebo šířky pásma. Uživatelé zvolit nejprve stáhnout moct dál sledovat obsah, který je dostatečně vysoká, uspokojivé zobrazení prostředí rozlišení. V takovém případě problém obvykle není dostupnost sítě, ale omezena šířka pásma sítě. Over-the-top (OTT) / poskytovatelů online video platformy (OVP) požádat o podporu offline režimu.
 
 Tento článek popisuje podporu offline režimu FairPlay Streaming (FPS), která cílí na zařízení s Iosem 10 nebo novější. Tato funkce není podporována pro jiné Apple platformy, jako je například watchOS, tvOS nebo Safari v systému macOS.
+
+> [!NOTE]
+> Offline DRM účtuje pouze pro provádění jednoho požadavku licenci, když si stáhnete obsah. Všechny chyby se nic neúčtuje.
 
 ## <a name="prerequisites"></a>Požadavky
 

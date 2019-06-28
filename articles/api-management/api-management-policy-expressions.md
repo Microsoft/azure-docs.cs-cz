@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 9a19165f9ac15f7a40aea0501f960b06efbd63a3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6446919c80e7e3fd379e6e39eb51712f9736ea7e
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66304363"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341210"
 ---
 # <a name="api-management-policy-expressions"></a>Výrazy zásad rozhraní API Management
 Tento článek popisuje syntaxe výrazy zásad C# 7. Každý výraz má přístup k implicitně zadané [kontextu](api-management-policy-expressions.md#ContextVariables) proměnné a povolený [dílčí](api-management-policy-expressions.md#CLRTypes) typů rozhraní .NET Framework.
@@ -94,19 +94,19 @@ V následující tabulce jsou uvedeny typy rozhraní .NET Framework a jejich čl
 |System.Byte|Vše|
 |System.Char|Vše|
 |System.Collections.Generic.Dictionary<TKey, TValue>|Vše|
-|System.Collections.Generic.HashSet<T>|Vše|
-|System.Collections.Generic.ICollection<T>|Vše|
+|System.Collections.Generic.HashSet\<T>|Vše|
+|System.Collections.Generic.ICollection\<T>|Vše|
 |System.Collections.Generic.IDictionary<TKey, TValue>|Vše|
-|System.Collections.Generic.IEnumerable<T>|Vše|
-|System.Collections.Generic.IEnumerator<T>|Vše|
-|System.Collections.Generic.IList<T>|Vše|
-|System.Collections.Generic.IReadOnlyCollection<T>|Vše|
+|System.Collections.Generic.IEnumerable\<T>|Vše|
+|System.Collections.Generic.IEnumerator\<T>|Vše|
+|System.Collections.Generic.IList\<T>|Vše|
+|System.Collections.Generic.IReadOnlyCollection\<T>|Vše|
 |System.Collections.Generic.IReadOnlyDictionary<TKey, TValue>|Vše|
-|System.Collections.Generic.ISet<T>|Vše|
+|System.Collections.Generic.ISet\<T>|Vše|
 |System.Collections.Generic.KeyValuePair<TKey, TValue>|Vše|
-|System.Collections.Generic.List<T>|Vše|
-|System.Collections.Generic.Queue<T>|Vše|
-|System.Collections.Generic.Stack<T>|Vše|
+|System.Collections.Generic.List\<T>|Vše|
+|System.Collections.Generic.Queue\<T>|Vše|
+|System.Collections.Generic.Stack\<T>|Vše|
 |System.Convert|Vše|
 |System.DateTime|(Konstruktor), přidejte, Přidat_dny, AddHours, AddMilliseconds, AddMinutes, AddMonths, Přidat_sekundy, AddTicks, AddYears, datum, den, DayOfWeek, DayOfYear, DaysInMonth, hodinu, IsDaylightSavingTime, IsLeapYear, MaxValue, milisekund, minutu, MinValue, měsíc, nyní , Analýzy, druhý, odečítání, značky, TimeOfDay, dnes, ToString, UtcNow, rok|
 |System.DateTimeKind|Čas UTC|
@@ -156,7 +156,7 @@ V následující tabulce jsou uvedeny typy rozhraní .NET Framework a jejich čl
 |System.Security.Cryptography.SymmetricAlgorithm|Vše|
 |System.Security.Cryptography.X509Certificates.PublicKey|Vše|
 |System.Security.Cryptography.X509Certificates.RSACertificateExtensions|Vše|
-|System.Security.Cryptography.X509Certificates.X500DistinguishedName|Name|
+|System.Security.Cryptography.X509Certificates.X500DistinguishedName|Název|
 |System.Security.Cryptography.X509Certificates.X509Certificate|Vše|
 |System.Security.Cryptography.X509Certificates.X509Certificate2|Vše|
 |System.Security.Cryptography.X509Certificates.X509ContentType|Vše|
