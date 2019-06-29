@@ -10,12 +10,12 @@ ms.subservice: acoustics
 ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 38276757d0472582c3cf5035e1f52d34158a7e38
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1692032b093cd6189cac3ea3f63c563d9accd8ed
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61433540"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477828"
 ---
 # <a name="project-acoustics-unrealwwise-design-tutorial"></a>Kurz projektu Akustika Unreal/Wwise návrhu
 Tento kurz popisuje nastavení návrhu a pracovní postup pro projekt Akustika Unreal a Wwise.
@@ -122,6 +122,11 @@ Ke správě akustických dat streamování sami místo streamování automaticky
 Před voláním platnost zatížení dlaždice musí již nastavena velikost dlaždice. Například byste mohli dělat něco jako toto tlačítko Načíst soubor ACE, nastavte velikost dlaždic a streamování v oblasti:
 
 ![Snímek obrazovky streamování nastavení možnosti v Unreal](media/streaming-setup.png)
+
+Funkce načítání dat Akustika podrobného plánu použitého v tomto příkladu má následující parametry:
+
+* **Cíl:** AcousticsSpace objekt actor.
+* **Nové která má označení vytvoření:** Datovému assetu Akustika který se má načíst. Opuštění této prázdné/nastavení ho na hodnotu null odstraní aktuální která má označení vytvoření bez načtení nové.
 
 ### <a name="optionally-query-for-surface-proximity"></a>Volitelně můžete dotaz na povrchu blízkých výrazů
 Pokud chcete zobrazit jak blízko plochy jsou v konkrétní směr kolem naslouchací proces, můžete použít funkci vzdálenost dotazu. Tato funkce může být užitečná pro řízení směrové zpožděné odrazů nebo pro další logika hry využitím surface blízkosti. Dotaz je levnější než ray přetypování, protože výsledky se berou z Akustika vyhledávací tabulky.

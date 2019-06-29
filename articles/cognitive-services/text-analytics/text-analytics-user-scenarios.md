@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: overview
 ms.date: 04/04/2019
 ms.author: aahi
-ms.openlocfilehash: d8f8d110a13e768d93f0be3c4baaf5715436f2ed
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d8d2aed16b5af60c44501e6d72332783a164ff91
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60828032"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67478392"
 ---
 # <a name="example-user-scenarios-for-the-text-analytics-api"></a>Ukázkové uživatelské scénáře pro rozhraní Text Analytics API
 
@@ -29,7 +29,7 @@ Získejte podrobné přehledy z výsledků zjišťování zákazníků a zaměst
 
 ## <a name="analyze-recorded-inbound-customer-calls"></a>Analýza hovorů se zákazníky zaznamenané příchozí
 
-Extrakce poznatků z volání služby zákazníka pomocí převod textu na řeč, analýzu subjektivního hodnocení a extrakci frází klíč. Zobrazení výsledků v řídicím panelu Power BI nebo portálu k lepšímu pochopení zákazníků, zvýrazněte zákazníků služby trendy a zapojení zákazníků. Odeslání žádosti rozhraní API v dávce pro vytváření sestav, nebo v v reálném čase zásahu. 
+Extrakce poznatků z volání služby zákazníka pomocí převod textu na řeč, analýzu subjektivního hodnocení a extrakci frází klíč. Zobrazení výsledků v řídicím panelu Power BI nebo portálu k lepšímu pochopení zákazníků, zvýrazněte zákazníků služby trendy a zapojení zákazníků. Odeslání žádosti rozhraní API v dávce pro vytváření sestav, nebo v v reálném čase zásahu. Zobrazit [ukázkový kód](https://github.com/rlagh2/callcenteranalytics).
 
 ![Volání image popisující, jak automatizovat získávání informací ze služby zákazníkům pomocí analýzy mínění](media/use-cases/azure-inbound.svg)
 

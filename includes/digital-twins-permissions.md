@@ -2,50 +2,50 @@
 title: zahrnout soubor
 description: zahrnout soubor
 services: digital-twins
-author: alinamstanciu
+author: dsk-2015
 ms.service: digital-twins
 ms.topic: include
-ms.date: 06/26/2019
-ms.author: alinast
+ms.date: 06/28/2019
+ms.author: dkshir
 ms.custom: include file
-ms.openlocfilehash: f03ee57867185eac946be5b596477bf942643587
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 324f41055cf333081f308a3ff533ff7df6b33038
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67459195"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67479173"
 ---
 >[!NOTE]
->Mějte na paměti, že starší verze registraci aplikace AAD, který se používá zde bude brzy ukončena. V této části budou aktualizovány, jakmile digitální dvojče Azure jsou plně integrované s [registrace nové aplikace AAD](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app). Mezitím můžete vyzkoušet nové registrace AAD aplikace. Všimněte si, že budete muset použít [veřejným klientem (mobilní aplikace a destkopu)](https://docs.microsoft.com/azure/active-directory/develop/v2-app-types#mobile-and-native-apps) pro *identifikátor URI pro přesměrování*. 
+>Tato část obsahuje pokyny, jak [nové registrace aplikace Azure AD](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app). Pokud máte starší verzi nativní aplikace pro registraci, můžete ji tak dlouho, dokud se podporuje. Kromě toho pokud z nějakého důvodu nový způsob registrační aplikace nefunguje v nastavení aplikace, může pokusu o vytvoření starší verze nativní aplikaci AAD. Čtení [registraci Azure digitální dvojče aplikace ve službě starší verze služby Azure Active Directory](../articles/digital-twins/how-to-use-legacy-aad.md) další pokyny. 
 
-1. V [webu Azure portal](https://portal.azure.com), otevřete **Azure Active Directory** v levém podokně a pak otevřete **vlastnosti** podokně. Do dočasného souboru zkopírujte **ID adresáře**. Tuto hodnotu použijete ke konfiguraci a ukázkové aplikace v další části.
+1. V [webu Azure portal](https://portal.azure.com), otevřete **Azure Active Directory** v levém podokně a pak otevřete **registrace aplikací** podokně. Vyberte **registrace nové** tlačítko.
 
-    ![ID adresáře Azure Active Directory](./media/digital-twins-permissions/aad-app-reg-tenant.png)
+    ![Zaregistrovanou aplikaci](./media/digital-twins-permissions/aad-app-register.png)
 
-1. V [webu Azure portal](https://portal.azure.com), otevřete **Azure Active Directory** v levém podokně a pak otevřete **registrace aplikací (starší verze)** podokně. Vyberte **registrace nové aplikace** tlačítko.
-
-1. Zadejte popisný název pro tuto registraci aplikace v **název** pole. Zvolte **typ aplikace** jako **nativní**, a **identifikátor URI pro přesměrování** jako `https://microsoft.com`. Vyberte **Vytvořit**.
+1. Zadejte popisný název pro tuto registraci aplikace v **název** pole. V části **identifikátor URI pro přesměrování (volitelné)** zvolte **veřejným klientem (mobilu)** v rozevíracím seznamu na levé straně a zadejte `https://microsoft.com` do textového pole na pravé straně. Vyberte **Zaregistrovat**.
 
     ![Vytvořit podokno](./media/digital-twins-permissions/aad-app-reg-create.png)
 
-1.  Otevřete registrovaná aplikace a zkopírujte hodnotu **ID aplikace** pole do dočasného souboru. Tato hodnota identifikuje vaši aplikaci Azure Active Directory. ID aplikace použijete ke konfiguraci ukázkovou aplikaci v následujících částech.
+1. Abyste měli jistotu, že [aplikace je zaregistrovaný jako *nativní aplikaci*](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-app-registration), otevřete **ověřování** podokno pro registraci aplikace a potom přejděte dolů v tomto podokně. V **výchozí typ klienta** zvolte **Ano** pro **považovat aplikace veřejným klientem**. 
+
+    ![Výchozí nativní](./media/digital-twins-permissions/aad-app-default-native.png)
+
+1.  Otevřít **přehled** podokně registrované aplikace a zkopírujte hodnoty následující entity do dočasného souboru. Tyto hodnoty použijete ke konfiguraci ukázkovou aplikaci v následujících částech.
+
+    - **ID aplikace (klient)**
+    - **ID adresáře (tenant)**
 
     ![ID aplikace Azure Active Directory](./media/digital-twins-permissions/aad-app-reg-app-id.png)
 
-1. Otevřete podokno registrace vaší aplikace. Vyberte **nastavení** > **požadovaná oprávnění**a pak:
+1. Otevřít **oprávnění k rozhraní API** podokno pro registraci vaší aplikace. Vyberte **přidat oprávnění** tlačítko. V **žádosti rozhraní API oprávnění** podokně, vyberte **naše organizace bude využívat rozhraní API** kartu a potom vyhledejte **inteligentní prostory Azure**. Vyberte **Azure Smart prostory služby** rozhraní API.
 
-   a. Vyberte **přidat** v levém horním rohu otevřete **přístup přes rozhraní API přidat** podokně.
+    ![Search API](./media/digital-twins-permissions/aad-app-search-api.png)
 
-   b. Vyberte **vyberte rozhraní API** a vyhledejte **digitální dvojče Azure**. Pokud se vám toto rozhraní API nepodaří najít, vyhledejte místo toho **Azure Smart Spaces**.
+1. Vybrané rozhraní API se zobrazí jako **digitální dvojče Azure** ve stejném **žádosti rozhraní API oprávnění** podokně. Vyberte **pro čtení (1)** rozevírací seznam a vyberte **Read.Write** zaškrtávací políčko. Vyberte **přidat oprávnění** tlačítko.
 
-   c. Vyberte **digitální dvojče Azure (Azure Service pro inteligentní mezery)** možnost a vyberte **vyberte**.
+    ![Přidání oprávnění pro rozhraní API](./media/digital-twins-permissions/aad-app-req-permissions.png)
 
-   d. Zvolte **vyberte oprávnění**. Vyberte **přístup pro čtení a zápis** delegovaná oprávnění zaškrtněte políčko a zvolte **vyberte**.
+1. V závislosti na nastavení vaší organizace může být nutné provést další kroky k udělení přístupu správce k tomuto rozhraní API. Další informace vám poskytne správce. Po schválení je přístup správce **správce souhlasit vyžaduje** sloupec **oprávnění k rozhraní API** podokně se zobrazí podobný následujícímu pro vaše rozhraní API:
 
-   e. Vyberte **provádí** v **přístup přes rozhraní API přidat** podokně.
+    ![Přidání oprávnění pro rozhraní API](./media/digital-twins-permissions/aad-app-admin-consent.png)
 
-   f. V **požadovaná oprávnění** podokně, vyberte **udělit oprávnění** tlačítko a přijetí potvrzení, které se zobrazí. Pokud pro toto rozhraní API není uděleno oprávnění, obraťte se na správce.
-
-      ![Podokně požadovaná oprávnění](./media/digital-twins-permissions/aad-app-req-permissions.png)
-
- 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 05/09/2019
+ms.date: 06/28/2019
 ms.author: aahi
-ms.openlocfilehash: 9ae894bee803c60b56a1bfacd5667f355aa44d2b
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 835dc8d25ad1d6a30020408636b556c3f247200d
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65800002"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67478378"
 ---
 # <a name="quickstart-using-the-python-rest-api-to-call-the-text-analytics-cognitive-service"></a>Rychlý start: Pomocí rozhraní Python API REST k volání Text Analytics služby Cognitive Services 
 <a name="HOLTop"></a>
@@ -49,7 +49,6 @@ Vytvoření nové aplikace v Pythonu v oblíbeném editoru nebo prostředí IDE.
 import requests
 # pprint is used to format the JSON response
 from pprint import pprint
-from IPython.display import HTML
 ```
 
 Vytvoření proměnné pro váš klíč předplatného a koncový bod pro REST API pro analýzu textu. Ověřte, jestli jste použili při registraci odpovídá oblasti koncový bod (například `westcentralus`). Pokud používáte bezplatné zkušební verze klíče, nemusíte nic měnit.
@@ -192,7 +191,7 @@ Skóre mínění v dokumentu je mezi 0,0 a 1,0, s vyšší skóre označuje dal�
 
 <a name="KeyPhraseExtraction"></a>
 
-## <a name="extract-key-phrases"></a>Extrahovat klíčové fráze
+## <a name="extract-key-phrases"></a>Extrakce klíčových frází
  
 Chcete-li extrahovat klíčové fráze ze sady dokumentů, přidejte `keyPhrases` do základního koncového bodu pro analýzu textu a vytvoří adresu URL detekce jazyka. Příklad: `https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases`
     

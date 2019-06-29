@@ -9,12 +9,12 @@ ms.subservice: anomaly-detector
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: aahi
-ms.openlocfilehash: 766d009be3cd664d928a3c12f5fea38c26bbbdde
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1ad4a67d7737733e4c910d3495be29860769f27e
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64692202"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477813"
 ---
 # <a name="best-practices-for-using-the-anomaly-detector-api"></a>Doporučené postupy pro používání rozhraní API detekce anomálií
 
@@ -51,7 +51,7 @@ Níže je sada dat pomocí služby batch pro detekci anomálií. Model sestaven�
 
 ## <a name="data-preparation"></a>Příprava dat
 
-Rozhraní API detekce anomálií přijímá časové řady na žádost o objekt JSON ve formátu data. Časové řady může být jakékoli číselných dat zaznamenaných v průběhu času v sekvenčním pořadí. Koncový bod rozhraní API detekce anomálií, a to kvůli zvýšení výkonu rozhraní API můžete poslat windows daty časových řad. Minimální počet datových bodů, které můžete odeslat je 12 a maximální hodnota je 8640 body. 
+Rozhraní API detekce anomálií přijímá časové řady na žádost o objekt JSON ve formátu data. Časové řady může být jakékoli číselných dat zaznamenaných v průběhu času v sekvenčním pořadí. Koncový bod rozhraní API detekce anomálií, a to kvůli zvýšení výkonu rozhraní API můžete poslat windows daty časových řad. Minimální počet datových bodů, které můžete odeslat je 12 a maximální hodnota je 8640 body. [Členitost](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.granularity?view=azure-dotnet-preview) je definován jako vašich dat se definuje na rychlost. 
 
 Datových bodů poslaných do rozhraní API detekce anomálií musí mít platné časové razítko koordinovaný univerzální čas (UTC) a číselnou hodnotu. 
 
@@ -68,6 +68,15 @@ Datových bodů poslaných do rozhraní API detekce anomálií musí mít platn�
         "value": 29615278
       },
     ]
+}
+```
+
+Pokud vaše data se definuje na nestandardní časový interval, můžete použít tak, že přidáte `customInterval` atribut ve vaší žádosti. Například pokud řady je vzorkováno každých 5 minut, můžete přidat následující k žádosti JSON:
+
+```json
+{
+    "granularity" : "minutely", 
+    "customInterval" : 5
 }
 ```
 
