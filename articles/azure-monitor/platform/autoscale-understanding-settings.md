@@ -97,21 +97,21 @@ Pro ilustraci schématu nastavení automatického škálování, je použít ná
 | properties | targetResourceUri | ID prostředku se škálovat prostředek. Můžete mít jenom jedno nastavení automatického škálování pro každý prostředek. |
 | properties | profiles | Nastavení automatického škálování se skládá z jednoho nebo více profilů. Při každém spuštění modul automatického škálování je spuštěn v jednom profilu. |
 | profile | name | Název profilu. Můžete použít libovolný název, který vám pomůže určit, profil. |
-| profile | capacity.maximum | Maximální kapacita povolené. Zajišťuje, že automatické škálování, při provádění tohoto profilu není škálovat prostředek vyšší než toto číslo. |
-| profile | capacity.minimum | Minimální kapacitu povolené. Zajišťuje, že automatické škálování, při provádění tohoto profilu není škálovat prostředek pod tuto hodnotu. |
-| profile | capacity.default | Pokud dojde k nějakému problému čtení metrik prostředku (v tomto případě procesoru "vmss1") a aktuální kapacita bude pod výchozí, automatického škálování horizontálně navýší kapacitu na výchozí hodnotu. Toto je zajištění dostupnosti prostředků. Pokud už je aktuální kapacita vyšší než výchozí kapacita pro dotazy, automatické škálování v škálování. |
-| profile | rule | Automatické škálování se automaticky škáluje mezi minimální a maximální kapacity, pomocí pravidel v profilu. Můžete mít víc pravidel v profilu. Obvykle existují dvě pravidla: jednu k určení toho, kdy pro horizontální navýšení kapacity a druhým k určení toho, kdy škálovat v. |
+| profile | Capacity.maximum | Maximální kapacita povolené. Zajišťuje, že automatické škálování, při provádění tohoto profilu není škálovat prostředek vyšší než toto číslo. |
+| profile | Capacity.minimum | Minimální kapacitu povolené. Zajišťuje, že automatické škálování, při provádění tohoto profilu není škálovat prostředek pod tuto hodnotu. |
+| profile | Capacity.default | Pokud dojde k nějakému problému čtení metrik prostředku (v tomto případě procesoru "vmss1") a aktuální kapacita bude pod výchozí, automatického škálování horizontálně navýší kapacitu na výchozí hodnotu. Toto je zajištění dostupnosti prostředků. Pokud už je aktuální kapacita vyšší než výchozí kapacita pro dotazy, automatické škálování v škálování. |
+| profile | pravidla | Automatické škálování se automaticky škáluje mezi minimální a maximální kapacity, pomocí pravidel v profilu. Můžete mít víc pravidel v profilu. Obvykle existují dvě pravidla: jednu k určení toho, kdy pro horizontální navýšení kapacity a druhým k určení toho, kdy škálovat v. |
 | rule | metricTrigger | Definuje podmínku metriky pravidla. |
 | metricTrigger | metricName | Název metriky. |
 | metricTrigger |  metricResourceUri | ID prostředku prostředku, který vysílá metriky. Ve většině případů je stejný jako prostředek nastavuje. V některých případech může být jiný. Například je možné škálovat škálovací sadu virtuálních počítačů, na základě počtu zpráv ve frontě úložiště. |
 | metricTrigger | timeGrain | Doba trvání vzorkování metriky. Například **TimeGrain = "PT1M"** znamená, že metrika má agregovat každou 1 minutu pomocí způsobu agregace určeném v elementu statistiky. |
-| metricTrigger | statistic | Způsob agregace v období timeGrain. Například **statistiky = "Average"** a **timeGrain = "PT1M"** znamená, že metrika má agregovat každou 1 minutu zprůměrováním. Tato vlastnost určuje, jak se definuje tak metriku. |
+| metricTrigger | statistiky | Způsob agregace v období timeGrain. Například **statistiky = "Average"** a **timeGrain = "PT1M"** znamená, že metrika má agregovat každou 1 minutu zprůměrováním. Tato vlastnost určuje, jak se definuje tak metriku. |
 | metricTrigger | timeWindow | Množství času do minulosti pro metriky. Například **timeWindow = "PT10M"** znamená, že pokaždé, když se spustí automatické škálování, dotáže metriky za posledních 10 minut. Časový interval umožňuje metriky budou normalizovány a přitom vylučuje reakcím na přechodné špičky. |
 | metricTrigger | timeAggregation | Agregace metodu používanou k agregaci vzorkovaných metrik. Například **TimeAggregation = "Average"** by měl agregaci vzorkovaných metrik zprůměrováním. V předchozím případě vzorky deseti 1 minutu a průměrné je. |
 | rule | scaleAction | Akce, který se má provést při aktivaci metricTrigger pravidla. |
 | scaleAction | direction | "Zvýšit" pro horizontální navýšení kapacity, nebo "Snížení" pro horizontální snížení kapacity.|
 | scaleAction | value | Kolik zvýšení nebo snížení kapacity prostředku. |
-| scaleAction | cooldown | Množství času po operaci škálování než škálování provedete znovu. Například pokud **která = "PT10M"** , automatické škálování nebude pokoušet o škálování pro jiné 10 minut. Která se má povolit metriky stabilizovat po přidání nebo odebrání instance. |
+| scaleAction | která | Množství času po operaci škálování než škálování provedete znovu. Například pokud **která = "PT10M"** , automatické škálování nebude pokoušet o škálování pro jiné 10 minut. Která se má povolit metriky stabilizovat po přidání nebo odebrání instance. |
 
 ## <a name="autoscale-profiles"></a>Profily automatického škálování
 
