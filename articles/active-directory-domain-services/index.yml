@@ -5,8 +5,8 @@ metadata:
   title: Dokumentace ke službě Azure AD Domain Services
   description: 'Naučte se, jak můžete používat Active Directory Domain Services k připojení virtuálních počítačů Azure k doméně bez použití řadiče domény. Kurzy a další dokumentace ukazují, jak můžete spravovat virtuální počítače pomocí zásad skupiny.'
   keywords: 'Azure AD, Azure, domain join, group policy, LDAP, Kerberos, domain controller, DC, lift and shift'
-  author: MikeStephens-MS
-  ms.author: mstephen
+  author: iainfoulds
+  ms.author: iainfou
   manager: daveba
   ms.date: 05/22/2019
   ms.topic: landing-page

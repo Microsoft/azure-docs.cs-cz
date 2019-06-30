@@ -14,14 +14,17 @@
     - name: Použití rozhraní API Video Indexeru
       href: video-indexer-use-apis.md
 - name: Koncepty
-  href: video-indexer-concepts.md
   items:
+    - name: Přehled
+      href: video-indexer-concepts.md
     - name: Porovnání předvoleb Media Services a Video Indexeru
       href: compare-video-indexer-with-media-services-presets.md
     - name: Správa několika klientů
       href: manage-multiple-tenants.md
     - name: Přizpůsobení modelů obsahu
       items:
+        - name: Přehled
+          href: customize-content-models-overview.md
         - name: Značky
           href: customize-brands-model-overview.md
         - name: Jazyk
@@ -86,3 +89,5 @@
       href: faq.md
     - name: Dodržování předpisů
       href: 'https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942'
+    - name: "Poznámky k\_verzi"
+      href: release-notes.md

@@ -14,9 +14,6 @@
       href: apache-hadoop-linux-tutorial-get-started.md
 - name: Kurzy
   items:
-    - name: Provádění operací ETL
-      href: ../hdinsight-analyze-flight-delay-data-linux.md
-      maintainContext: true
     - name: Vytváření clusterů na vyžádání
       href: ../hdinsight-hadoop-create-linux-clusters-adf.md
       maintainContext: true
@@ -141,6 +138,10 @@
         - name: Nástroje pro VSCode
           href: ../hdinsight-for-vscode.md
           maintainContext: true
+        - name: Nástroje pro IntelliJ
+          href: ../spark/apache-spark-intellij-tool-plugin.md
+        - name: Nástroje pro Eclipse
+          href: ../spark/apache-spark-eclipse-tool-plugin.md
         - name: Nástroje služby Data Lake s Hortonworks Sandbox
           href: ../hdinsight-hadoop-emulator-visual-studio.md
           maintainContext: true
@@ -186,9 +187,6 @@
           maintainContext: true
         - name: Vývoj akcí skriptů
           href: ../hdinsight-hadoop-script-actions-linux.md
-          maintainContext: true
-        - name: Instalace a použití Presta
-          href: ../hdinsight-hadoop-install-presto.md
           maintainContext: true
         - name: Přidání knihoven Apache Hivu
           href: ../hdinsight-hadoop-add-hive-libraries.md
@@ -467,15 +465,11 @@
     - name: Šablona Resource Manageru
       displayName: 'resource manager template, arm template, resource manager group'
       href: /azure/templates/microsoft.hdinsight/allversions
-- name: Související
-  items:
-    - name: Clustery s Windows
-      items:
-        - name: Migrace řešení .NET do linuxových clusterů
-          href: ../hdinsight-hadoop-migrate-dotnet-to-linux.md
-          maintainContext: true
 - name: Zdroje a prostředky
   items:
+    - name: Migrace řešení .NET do linuxových clusterů
+      href: ../hdinsight-hadoop-migrate-dotnet-to-linux.md
+      maintainContext: true
     - name: "Poznámky k\_verzi"
       items:
         - name: Poznámky k aktuální verzi

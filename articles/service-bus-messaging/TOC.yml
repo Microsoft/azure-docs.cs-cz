@@ -19,6 +19,8 @@
               href: service-bus-quickstart-powershell.md
             - name: Azure CLI
               href: service-bus-quickstart-cli.md
+            - name: Šablona Azure Resource Manageru
+              href: service-bus-resource-manager-namespace-queue.md
         - name: Odesílání a příjem zpráv
           items:
             - name: .NET
@@ -40,7 +42,11 @@
     - name: Odběry a témata služby Service Bus
       items:
         - name: Vytvoření témat a odběrů
-          href: service-bus-quickstart-topics-subscriptions-portal.md
+          items:
+            - name: portál Azure
+              href: service-bus-quickstart-topics-subscriptions-portal.md
+            - name: Šablona Azure Resource Manageru
+              href: service-bus-resource-manager-namespace-topic.md
         - name: Publikování a přihlášení k odběru zpráv
           items:
             - name: .NET
@@ -187,10 +193,6 @@
           items:
             - name: Vytvoření oboru názvů
               href: service-bus-resource-manager-namespace.md
-            - name: Vytvoření oboru názvů a fronty
-              href: service-bus-resource-manager-namespace-queue.md
-            - name: Vytvoření oboru názvů s tématem a předplatným
-              href: service-bus-resource-manager-namespace-topic.md
             - name: Vytvoření autorizačního pravidla pro obor názvů a frontu
               href: service-bus-resource-manager-namespace-auth-rule.md
             - name: 'Vytvoření oboru názvů s tématem, předplatným a pravidlem'

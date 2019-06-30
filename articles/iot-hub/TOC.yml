@@ -159,6 +159,8 @@
           href: iot-hub-devguide-glossary.md
     - name: Zabezpečení
       items:
+        - name: Doporučení
+          href: /azure/iot-fundamentals/security-recommendations?context=azure/iot-hub/rc/rc
         - name: Zabezpečení od počátku
           href: /azure/iot-fundamentals/iot-security-ground-up?context=azure/iot-hub/rc/rc
         - name: Osvědčené postupy zabezpečení

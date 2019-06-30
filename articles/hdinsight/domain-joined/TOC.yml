@@ -14,8 +14,6 @@
   items:
     - name: Plánování pro clustery ESP
       href: apache-domain-joined-architecture.md
-    - name: Vytváření clusterů ESP a synchronizace s místním prostředím
-      href: apache-domain-joined-create-configure-enterprise-security-cluster.md
     - name: Konfigurace clusterů ESP s využitím Azure AD DS
       href: apache-domain-joined-configure-using-azure-adds.md
     - name: Synchronizace uživatelů Azure AD do clusteru služby HDInsight
@@ -30,26 +28,30 @@
       href: ../spark/apache-spark-eclipse-tool-plugin.md
     - name: Použití Apache Oozie v clusterech ESP
       href: hdinsight-use-oozie-domain-joined-clusters.md
-- name: Zabezpečení dat
-  href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
-- name: Síťový přístup
+    - name: Zabezpečení dat
+      href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
+    - name: Síťový přístup
+      items:
+        - name: HDInsight ve virtuální síti Azure
+          href: ../hdinsight-extend-hadoop-virtual-network.md
+        - name: Připojení služby HDInsight k místní síti
+          href: ../connect-on-premises-network.md
+        - name: Vytvoření clusteru Apache HBase ve virtuální síti Azure
+          href: ../hbase/apache-hbase-provision-vnet.md
+        - name: Replikace clusteru Apache HBase ve virtuální síti Azure
+          href: ../hbase/apache-hbase-replication.md
+    - name: Monitorování s využitím protokolů Azure Monitoru
+      items:
+        - name: Použití protokolů Azure Monitoru
+          href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
+        - name: Použití dotazů s protokoly Azure Monitoru
+          href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md
+        - name: Monitorování výkonu clusteru
+          href: ../hdinsight-key-scenarios-to-monitor.md
+- name: Postup
   items:
-    - name: HDInsight ve virtuální síti Azure
-      href: ../hdinsight-extend-hadoop-virtual-network.md
-    - name: Připojení služby HDInsight k místní síti
-      href: ../connect-on-premises-network.md
-    - name: Vytvoření clusteru Apache HBase ve virtuální síti Azure
-      href: ../hbase/apache-hbase-provision-vnet.md
-    - name: Replikace clusteru Apache HBase ve virtuální síti Azure
-      href: ../hbase/apache-hbase-replication.md
-- name: Monitorování s využitím protokolů Azure Monitoru
-  items:
-    - name: Použití protokolů Azure Monitoru
-      href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
-    - name: Použití dotazů s protokoly Azure Monitoru
-      href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md
-    - name: Monitorování výkonu clusteru
-      href: ../hdinsight-key-scenarios-to-monitor.md
+    - name: Vytváření clusterů ESP a synchronizace s místním prostředím
+      href: apache-domain-joined-create-configure-enterprise-security-cluster.md
 - name: Referenční informace
   items:
     - name: Ukázky kódů

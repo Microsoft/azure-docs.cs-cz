@@ -96,6 +96,7 @@
         - name: Azure CLI
           href: tutorial-manage-web-traffic-cli.md
         - name: Šablona
+          displayName: 'ARM, Resource Manager, template'
           href: create-vmss-template.md
     - name: Konfigurace interního nástroje pro vyrovnávání zatížení
       items:
@@ -241,6 +242,8 @@
       href: /rest/api/applicationgateway
     - name: Azure Resource Manager
       href: ../azure-resource-manager/resource-group-overview.md
+    - name: Šablona Resource Manageru
+      href: 'https://docs.microsoft.com/azure/templates/microsoft.network/allversions'
 - name: Zdroje a prostředky
   items:
     - name: Tvorba šablon

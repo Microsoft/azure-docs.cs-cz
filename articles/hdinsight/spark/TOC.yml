@@ -30,10 +30,6 @@
       href: apache-spark-ipython-notebook-machine-learning.md
     - name: Vytvoření aplikace Apache Spark v IntelliJ
       href: apache-spark-create-standalone-application.md
-    - name: Použití VSCode ke spouštění dotazů Apache Sparku
-      href: ../hdinsight-for-vscode.md
-    - name: Monitorování dostupnosti clusterů s využitím protokolů Azure Monitoru a Ambari
-      href: ../hdinsight-cluster-availability.md
 - name: Ukázky
   items:
     - name: Ukázky .NET
@@ -52,6 +48,8 @@
       href: ../hdinsight-component-versioning.md
     - name: HDInsight 4.0
       href: ../hdinsight-version-release.md
+    - name: Monitorování dostupnosti clusterů s využitím protokolů Azure Monitoru a Ambari
+      href: ../hdinsight-cluster-availability.md
 - name: Postup
   items:
     - name: Použití úložiště clusteru
@@ -158,8 +156,6 @@
               href: ../hdinsight-hadoop-customize-cluster-linux.md
             - name: Vývoj akcí skriptů
               href: ../hdinsight-hadoop-script-actions-linux.md
-            - name: Instalace a použití Presta
-              href: ../hdinsight-hadoop-install-presto.md
             - name: Přidání knihoven Apache Hivu
               href: ../hdinsight-hadoop-add-hive-libraries.md
             - name: Použití Apache Giraphu

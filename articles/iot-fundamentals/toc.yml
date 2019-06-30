@@ -8,11 +8,13 @@
       href: iot-services-and-technologies.md
 - name: Zabezpečení
   items:
-    - name: Architektura zabezpečení
-      href: iot-security-architecture.md
-    - name: Osvědčené postupy zabezpečení
-      href: iot-security-best-practices.md
-    - name: Zabezpečené nasazení
-      href: iot-security-deployment.md
+    - name: Doporučení
+      href: security-recommendations.md
     - name: Zabezpečení od počátku
       href: iot-security-ground-up.md
+    - name: Osvědčené postupy zabezpečení
+      href: iot-security-best-practices.md
+    - name: Architektura zabezpečení
+      href: iot-security-architecture.md
+    - name: Zabezpečené nasazení
+      href: iot-security-deployment.md

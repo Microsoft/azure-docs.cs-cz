@@ -50,10 +50,6 @@
           href: xamarin-notification-hubs-ios-push-notification-apns-get-started.md
         - name: Nabízená oznámení odesílaná zařízením s iOS
           href: notification-hubs-ios-xplat-localized-apns-push-notification.md
-    - name: Kindle
-      items:
-        - name: Nabízená oznámení odesílaná pomocí služby Amazon Device Messaging
-          href: notification-hubs-kindle-amazon-adm-push-notification.md
     - name: telefon se systémem Windows
       items:
         - name: Nabízená oznámení odesílaná aplikacím
@@ -129,8 +125,6 @@
           href: configure-windows-push-notification-service.md
         - name: Konfigurace Microsoft Služby nabízených oznámení
           href: configure-microsoft-push-notification-service.md
-        - name: Konfigurace zasílání zpráv zařízení pro Android
-          href: configure-android-device-messaging.md
         - name: Konfigurace nabízených oznámení cloudu Baidu
           href: configure-baidu-cloud-push.md
     - name: Registrace s využitím back-endu aplikací
