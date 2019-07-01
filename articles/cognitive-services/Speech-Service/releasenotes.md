@@ -11,16 +11,17 @@ ms.topic: conceptual
 ms.date: 06/26/2019
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 09296585ab0ab61f39c18cae6c533c0bbd91926a
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 609443a4926fabd991846faee4a0a7dffe3a696b
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449244"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490178"
 ---
 # <a name="release-notes"></a>Poznámky k verzi
 
 ## <a name="speech-sdk-160-2019-june-release"></a>Speech SDK 1.6.0: 2019 – červen vydání
+
 **Ukázky**
 *   Ukázky kódu pro rychlý start pro převod textu na řeč na UPW a Unity
 *   Ukázky rychlý start pro Swift v Iosu
@@ -35,6 +36,9 @@ ms.locfileid: "67449244"
     * Všechny stávající klienty s přímým přístupem řeči řádku nadále podporovány po přejmenování
 * Aktualizace adaptéru REST převod textu na ŘEČ pro podporu proxy, trvalé připojení
 * Zlepšení chybovou zprávu, když je předána neplatná oblast
+* Kód SWIFT a Objective-C:
+    * Vylepšené hlášení chyb: Metody, které může dojít k chybě, jsou teď k dispozici ve dvou verzích: Ten, který poskytuje `NSError` objekt pro zpracování chyb a ten, který vyvolává výjimku. Předchozí jsou vystaveny Swift. Tato změna vyžaduje úpravy existující kód Swift.
+    * Zpracování událostí vylepšené
 
 **Opravy chyb**
 *   Oprava pro převod textu na ŘEČ: kde SpeakTextAsync budoucnost vrátila bez čekání, dokud se nedokončí zvuk vykreslování
@@ -43,6 +47,8 @@ ms.locfileid: "67449244"
 *   Oprava pro občasné problémy, které je nasazování nativních knihoven do výstupní složky ve vzorcích
 *   Oprava pro zavření spolehlivě webové sokety
 *   Oprava pro možných chyb při otevírání připojení velmi při velkém zatížení v Linuxu
+*   Oprava pro chybějí metadata v rámci sadě pro macOS
+*   Oprava problémů s `pip install --user` na Windows
 
 
 ## <a name="speech-sdk-151"></a>Speech SDK 1.5.1

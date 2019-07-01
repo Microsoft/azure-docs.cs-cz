@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 6df40909e2072ac2126344ba5b696c9e520e9955
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 8f395788d4dd3c845155a52bd6b4666998838fcd
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67434152"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490240"
 ---
 # <a name="install-and-run-speech-service-containers"></a>Instalace a spouštění kontejnerů Speech Service
 
@@ -25,7 +25,7 @@ Jsou dva řeči kontejnery **speech to text** a **převod textu na řeč**.
 
 |Funkce|Funkce|nejnovější|
 |-|-|--|
-|Převod řeči na text| <li>Transcribes průběžné v reálném čase řeči nebo služby batch záznam zvuku na text pomocí mezilehlých výsledků.|1.1.2|
+|Převod řeči na text| <li>Transcribes průběžné v reálném čase řeči nebo služby batch záznam zvuku na text pomocí mezilehlých výsledků.|1.1.3|
 |Převod textu na řeč| <li>Převádí text do přirozeně znějící řeči. vstup ve formátu prostého textu nebo řeči syntézu Markup Language (SSML). |1.1.0|
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
@@ -101,10 +101,10 @@ Všechny značky, s výjimkou `latest` jsou v následujícím formátu, kde `<cu
 Následující značku je příklad formátu:
 
 ```
-1.1.2-amd64-en-us-preview
+1.1.3-amd64-en-us-preview
 ```
 
-V následující tabulce jsou uvedeny podporované národní prostředí pro **speech to text** v 1.1.2 verzi kontejneru:
+V následující tabulce jsou uvedeny podporované národní prostředí pro **speech to text** v 1.1.3 verzi kontejneru:
 
 |Jazyk národního prostředí|Tags|
 |--|--|

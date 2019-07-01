@@ -40,8 +40,6 @@
       href: ../hdinsight-sdk-python-samples.md
 - name: Koncepty
   items:
-    - name: Použití IntelliJ ke spouštění dotazů Apache Sparku
-      href: apache-spark-intellij-tool-plugin.md
     - name: Použití VSCode ke spouštění dotazů Apache Sparku
       href: ../hdinsight-for-vscode.md
     - name: Součásti systému Apache Hadoop ve službě HDInsight
