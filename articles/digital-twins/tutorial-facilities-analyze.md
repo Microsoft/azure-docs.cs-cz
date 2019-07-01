@@ -2,18 +2,18 @@
 title: 'Kurz: Analýza událostí ze systému Azure Digital Twins | Microsoft Docs'
 description: Zjistěte, jak vizualizovat a analyzovat události z prostory vaší digitální dvojče Azure s Azure Time Series Insights pomocí kroků v tomto kurzu.
 services: digital-twins
-author: dsk-2015
+author: alinamstanciu
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 12/18/2018
-ms.author: dkshir
-ms.openlocfilehash: 897050513449c099ce75c248eef00a38aac98ad9
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.author: alinast
+ms.openlocfilehash: 3f6111457d3438b80ace8cd557747ab8c799efd3
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67462321"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67484740"
 ---
 # <a name="tutorial-visualize-and-analyze-events-from-your-azure-digital-twins-spaces-by-using-time-series-insights"></a>Kurz: Vizualizujte a analyzujte události z prostory vaší digitální dvojče Azure s využitím Time Series Insights
 

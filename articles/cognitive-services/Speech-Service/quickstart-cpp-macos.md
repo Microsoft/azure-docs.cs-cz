@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/03/2019
 ms.author: wolfma
-ms.openlocfilehash: 498246292b3cf591433a709139621b039ac3af33
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 7f8822a34b0f87beaf522656a91e8d40c724a7a9
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66002168"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485015"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-macos-by-using-the-speech-sdk"></a>Rychlý start: Rozpoznávání řeči v jazyce C++ v systému macOS pomocí sady SDK pro řeč
 
@@ -31,7 +31,7 @@ Klíč předplatného hlasové služby k dokončení tohoto rychlého startu pot
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Aktuální verze sady Cognitive Services Speech SDK je `1.5.1`.
+Aktuální verze sady Cognitive Services Speech SDK je `1.6.0`.
 
 Sadou SDK pro řeč pro macOS můžete stáhnout jako ZIP framework sada z https://aka.ms/csspeech/macosbinary.
 
@@ -64,7 +64,7 @@ Sadu SDK si stáhněte a nainstalujte následujícím způsobem:
 
    Výpis adresáře by měl obsahovat oznámení třetích stran a soubory s licencí, a také `MicrosoftCognitiveServicesSpeech.framework` adresáře.
 
-## <a name="add-sample-code"></a>Přidejte ukázkový kód.
+## <a name="add-sample-code"></a>Přidání ukázkového kódu
 
 1. Vytvořte zdrojový soubor jazyka C++ s názvem `helloworld.cpp` a vložte do něj následující kód.
 

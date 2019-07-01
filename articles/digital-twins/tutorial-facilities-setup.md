@@ -2,18 +2,18 @@
 title: 'Kurz: Nasazení služby Azure Digital Twins | Microsoft Docs'
 description: Zjistěte, jak nasadit instanci služby Azure digitální dvojče a nakonfigurovat prostředky prostorových pomocí kroků v tomto kurzu.
 services: digital-twins
-author: dsk-2015
+author: alinamstanciu
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 06/26/2019
-ms.author: dkshir
-ms.openlocfilehash: f826c6652937caab8b140b489626eef97612baea
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.author: alinast
+ms.openlocfilehash: 15a152d6941a8c77cae2ef7771be93db4ddceae4
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67462207"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67484688"
 ---
 # <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>Kurz: Nasazení Azure digitální dvojče Preview a konfigurace prostorový graf
 

@@ -9,12 +9,12 @@ ms.date: 05/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 52725950be24e5c84bd16f17bb2d079b58612a37
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3573e136c1a830cd75aba0725b4bf087bcd63869
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67058317"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485965"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Kurz: Vývoj modulu jazyka C IoT Edge pro zařízení s Windows
 
@@ -62,7 +62,7 @@ Před zahájením tohoto kurzu, by měl prošli předchozího kurzu věnovaného
    ```
    
 > [!TIP]
-> Pokud používáte Visual Studio 2017 (verze 15.7 nebo novější), stáhněte a nainstalujte [nástroje Azure IoT Edge (Preview)](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) pro VS 2017 na Visual Studio Marketplace
+> Pokud používáte Visual Studio 2017 (verze 15.7 nebo novější), stáhněte a nainstalujte [nástroje Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) pro VS 2017 na Visual Studio Marketplace
 
 ## <a name="create-a-module-project"></a>Vytvoření modulu projektu
 

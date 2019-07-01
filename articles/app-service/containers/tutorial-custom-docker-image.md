@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 72602cb1fda88497172b1837eab98d5e9ce41776
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: b48ec72a1f0a4178dad66ed31c544399e90c5293
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67435432"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67484502"
 ---
 # <a name="tutorial-build-a-custom-image-and-run-in-app-service-from-a-private-registry"></a>Kurz: Sestavit vlastní image a spustit ve službě App Service z privátního registru
 
@@ -278,7 +278,7 @@ SSH umožňuje zabezpečenou komunikaci mezi kontejnerem a klientem. Umožňují
     > [!NOTE]
     > Tato konfigurace nepovoluje externí připojení ke kontejneru. SSH je k dispozici pouze prostřednictvím webu Kudu/SCM. Web Kudu/SCM se ověřuje pomocí svého účtu Azure.
 
-* [Soubor Dockerfile](https://github.com/Azure-Samples/docker-django-webapp-linux/blob/master/Dockerfile#L18) kopie [sshd_config](https://github.com/Azure-Samples/docker-django-webapp-linux/blob/master/sshd_config file in the repository) k */etc/ssh/* adresáře.
+* [Soubor Dockerfile](https://github.com/Azure-Samples/docker-django-webapp-linux/blob/master/Dockerfile#L18) kopie [sshd_config](https://github.com/Azure-Samples/docker-django-webapp-linux/blob/master/sshd_config) souboru v úložišti, abyste */etc/ssh/* adresáře.
 
     ```Dockerfile
     COPY sshd_config /etc/ssh/

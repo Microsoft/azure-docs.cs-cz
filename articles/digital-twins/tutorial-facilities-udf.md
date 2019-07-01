@@ -2,18 +2,18 @@
 title: 'Kurz: Monitorování prostoru pomocí služby Azure Digital Twins | Microsoft Docs'
 description: Zjistěte, jak zřizovat prostředky prostorových a sledování pracovních podmínek s Dvojčaty digitální Azure pomocí kroků v tomto kurzu.
 services: digital-twins
-author: dsk-2015
+author: alinamstanciu
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 06/26/2019
-ms.author: dkshir
-ms.openlocfilehash: 738e78ce06d98960c87414948e045cc4abe37d6b
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.author: alinast
+ms.openlocfilehash: 3ebfa9b54007d0b409780e6a549bdd2411b94810
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67462188"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67484668"
 ---
 # <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins-preview"></a>Kurz: Zřízení sestavení a sledování práce pomocí Azure digitální dvojče Preview
 

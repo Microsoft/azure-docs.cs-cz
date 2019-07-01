@@ -45,24 +45,22 @@
           href: application-proxy-network-topology.md
         - name: Porovnání řešení vzdáleného přístupu
           href: application-proxy-migration.md
+    - name: Jednotné přihlašování
+      items:
+        - name: Co je jednotné přihlašování
+          href: what-is-single-sign-on.md
+        - name: Plánování nasazení jednotného přihlašování
+          href: plan-sso-deployment.md
+    - name: Jednotné přihlašování jedním kliknutím
+      items:
+        - name: Co je jednotné přihlašování jedním kliknutím
+          href: one-click-sso-tutorial.md
     - name: Zřizování uživatelů a skupin
       items:
         - name: Automatické zřizování uživatelů
-          href: configure-automatic-user-provisioning-portal.md
-        - name: Aplikace SaaS
           href: user-provisioning.md
-        - name: Aplikace s podporou SCIM
+        - name: Automatizace zřizování pro aplikace s podporou SCIM
           href: use-scim-to-provision-users-and-groups.md
-        - name: Přizpůsobení atributů aplikací
-          href: Customize-application-attributes.md
-        - name: Zápis výrazů pro mapování atributů
-          href: functions-for-customizing-application-data.md
-        - name: Filtry oborů
-          href: define-conditional-rules-for-provisioning-user-accounts.md
-        - name: Sestavy pro automatické zřizování uživatelů
-          href: check-status-user-account-provisioning.md
-        - name: Řešení potíží se zřizováním uživatelů
-          href: application-provisioning-config-problem.md
     - name: Zabezpečení aplikací
       items:
         - name: Možnosti přístupu k aplikacím
@@ -75,18 +73,8 @@
           href: tenant-restrictions.md
         - name: Konfigurace šifrování tokenu SAML (Preview)
           href: howto-saml-token-encryption.md
-    - name: Jednotné přihlašování
-      items:
-        - name: Co je jednotné přihlašování
-          href: what-is-single-sign-on.md
-        - name: Plánování nasazení jednotného přihlašování
-          href: plan-sso-deployment.md
     - name: Portály pro koncové uživatele
       href: end-user-experiences.md
-    - name: Jednotné přihlašování jedním kliknutím
-      items:
-        - name: Co je jednotné přihlašování jedním kliknutím
-          href: one-click-sso-tutorial.md
 - name: Návody
   items:
     - name: Přidání cloudové aplikace
@@ -157,12 +145,20 @@
               href: application-proxy-configure-single-sign-on-on-premises-apps.md
     - name: Konfigurace zřizování uživatelů
       items:
-        - name: Jak dlouho trvá zřizování
-          href: application-provisioning-when-will-provisioning-finish-specific-user.md
-        - name: Konfigurace zřizování uživatelů – aplikace v galerii
+        - name: Zřizování uživatelů pro aplikace v galerii
           href: application-provisioning-config-how-to.md
-        - name: Synchronizace atributu pro mapování – aplikace v galerii
-          href: user-provisioning-sync-attributes-for-mapping.md
+        - name: Konfigurace automatického zřizování uživatelů
+          href: configure-automatic-user-provisioning-portal.md
+        - name: Přizpůsobení atributů aplikací
+          href: Customize-application-attributes.md
+        - name: Zápis výrazů pro mapování atributů
+          href: functions-for-customizing-application-data.md
+        - name: Filtry oborů
+          href: define-conditional-rules-for-provisioning-user-accounts.md
+        - name: Kontrola stavu zřizování
+          href: application-provisioning-when-will-provisioning-finish-specific-user.md
+        - name: Sestavy pro automatické zřizování uživatelů
+          href: check-status-user-account-provisioning.md
     - name: Přiřazení uživatelů a správa přístupu k aplikacím
       items:
         - name: Konfigurace souhlasu uživatele
@@ -235,10 +231,12 @@
               href: configure-password-single-sign-on-non-gallery-applications-problems.md
         - name: Řešení potíží se zřizováním uživatelů
           items:
+            - name: Řešení potíží se zřizováním uživatelů
+              href: application-provisioning-config-problem.md
+            - name: Synchronizace atributu pro mapování – aplikace v galerii
+              href: user-provisioning-sync-attributes-for-mapping.md
             - name: Hodiny – aplikace v galerii
               href: application-provisioning-when-will-provisioning-finish.md
-            - name: Potíže s konfigurací zřizování uživatelů – aplikace v galerii
-              href: application-provisioning-config-problem.md
             - name: Potíže při ukládání přihlašovacích údajů správce při konfiguraci zřizování uživatelů – aplikace v galerii
               href: application-provisioning-config-problem-storage-limit.md
             - name: Uživatelé nejsou zřízení – aplikace v galerii

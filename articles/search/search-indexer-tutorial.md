@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: c9413fb78bbb92618818ac4311ab1af8ad65576d
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: bb082fb83f8c2521b0deabced6f851e62b785e8f
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025086"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485392"
 ---
 # <a name="c-tutorial-crawl-an-azure-sql-database-using-azure-search-indexers"></a>C#Kurz: Procházejte databázi Azure SQL pomocí indexerů Azure Search
 
@@ -58,7 +58,7 @@ Volání REST vyžadují pro každý požadavek adresu URL služby a přístupov
 
 1. V **nastavení** > **klíče**, získat klíč pro úplná práva správce na službu. Existují dva klíče zaměnitelné správce, v případě, že budete potřebovat k výměně jeden k dispozici zajišťuje nepřetržitý chod podniků. U požadavků můžete použít buď primární nebo sekundární klíč pro přidání, úpravy a odstraňování objektů.
 
-![Získejte koncový bod a přístupový klíč rozhraní HTTP](media/search-fiddler/get-url-key.png "získat HTTP koncový bod a přístupový klíč")
+![Získejte koncový bod a přístupový klíč rozhraní HTTP](media/search-get-started-postman/get-url-key.png "získat HTTP koncový bod a přístupový klíč")
 
 Všechny požadavky vyžaduje klíč rozhraní api na každou požadavku odeslaného do vaší služby. Platný klíč vytváří na základě žádosti vztah důvěryhodnosti mezi aplikací, která žádost odeslala, a službou, která ji zpracovává.
 
@@ -99,7 +99,7 @@ Následující cvičení předpokládá, že neexistuje žádný server ani data
 
    ![Stránka databáze SQL](./media/search-indexer-tutorial/hotels-db.png)
 
-4. V navigačním podokně klikněte na tlačítko **editor dotazů (preview)**.
+4. V navigačním podokně klikněte na tlačítko **editor dotazů (preview)** .
 
 5. Klikněte na **Přihlášení** a zadejte uživatelské jméno a heslo správce serveru.
 

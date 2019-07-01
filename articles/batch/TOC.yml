@@ -27,6 +27,8 @@
       href: tutorial-rendering-batchexplorer-blender.md
     - name: Paralelní simulace R
       href: tutorial-r-doazureparallel.md
+    - name: OCR se službami Batch a Azure Functions
+      href: tutorial-batch-functions.md
 - name: Ukázky
   items:
     - name: Ukázky kódů

@@ -88,7 +88,7 @@
           href: stream-analytics-test-query.md
         - name: Zobrazení výsledků na řídicím panelu
           href: stream-analytics-power-bi-dashboard.md
-        - name: Vyčištění úlohy
+        - name: Zastavení nebo odstranění úlohy
           href: stream-analytics-clean-up-your-job.md
         - name: Párování úloh z důvodů spolehlivosti
           href: stream-analytics-job-reliability.md

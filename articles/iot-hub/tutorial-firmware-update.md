@@ -10,14 +10,14 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/21/2019
+ms.date: 06/28/2019
 ms.custom: mvc
-ms.openlocfilehash: 772f815a3db0490cb461d07c56a37956ce15b383
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: c576020118778e34b80187ec056fca22a4d9c5b1
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67330398"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485833"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>Kurz: Implementujte proces aktualizace firmwaru zařízení
 
@@ -186,7 +186,7 @@ Následující snímek obrazovky ukazuje výstup z back-endové aplikace a je na
 
 ![Back-endová aplikace](./media/tutorial-firmware-update/BackEnd2.png)
 
-Kvůli latenci v registru identit zařízení IoT Hub se možná nezobrazí všechny aktualizace stavu odeslané do back-endové aplikace. Metriky můžete zobrazit také na portálu v části **Automatická správa zařízení > Konfigurace zařízení IoT** vašeho centra IoT:
+Protože automatické konfigurace spuštění v okamžiku vytvoření a pak každých pět minut, se nemusí zobrazí každý stav aktualizace odeslán do back endové aplikace. Metriky můžete zobrazit také na portálu v části **Automatická správa zařízení > Konfigurace zařízení IoT** vašeho centra IoT:
 
 ![Zobrazení konfigurace na portálu](./media/tutorial-firmware-update/portalview.png)
 

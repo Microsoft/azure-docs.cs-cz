@@ -9,17 +9,17 @@ metadata:
   ms.author: mamccrea
   ms.service: stream-analytics
   ms.topic: landing-page
-  ms.date: 05/08/2019
+  ms.date: 06/21/2019
 abstract:
-  description: 'Stream Analytics je plně spravovaný bezserverový modul pro zpracování událostí, který umožňuje analyzovat datové proudy z aplikací a zařízení IoT v reálném čase. Naučte se používat službu Azure Stream Analytics prostřednictvím našich rychlých zprovoznění, kurzů a ukázek.'
+  description: 'Stream Analytics je plně spravovaná služba PaaS, která pomáhá analyzovat a zpracovávat rychlé streamy dat ze zařízení IoT, aplikací, navštívených stránek atd. v reálném čase a podle potřeby aktivuje upozornění a akce. Naučte se používat službu Azure Stream Analytics prostřednictvím našich rychlých zprovoznění, kurzů a ukázek.'
   aside:
     image:
       alt: null
       height: 110
       src: ./media/index/streaming-analytics-thumbnail.png
       width: 250
-    title: 'Strojové učení a analýzy v reálném čase s využitím Azure Stream Analytics (1:15:05)'
-    href: 'https://myignite.techcommunity.microsoft.com/sessions/65358?source=sessions#ignite-html-anchor'
+    title: 'Od cloudu k inteligentním hraničním zařízením – podpora rozhodování v reálném čase s využitím Azure Stream Analytics (1:02:11)'
+    href: 'https://azure.microsoft.com/resources/videos/build-2019-from-cloud-to-the-intelligent-edge-drive-real-time-decisions-with-azure-stream-analytics/'
     width: 250
 sections:
   - title: Zprovoznění během 5 minut

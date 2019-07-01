@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/03/2019
 ms.author: chlandsi
-ms.openlocfilehash: 3eb65b5d41317a4cfc31917a4b08d931ba9c7aa6
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: 49e39a40093f2efdf0fabbbf9f383576b2cebe22
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67466613"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67484996"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-macos-using-the-speech-sdk"></a>Rychlý start: Rozpoznávání řeči v Objective-C v systému macOS pomocí sady SDK pro řeč
 
@@ -34,7 +34,7 @@ Než začnete, tady je seznam požadovaných součástí:
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Aktuální verze sady Cognitive Services Speech SDK je `1.5.1`.
+Aktuální verze sady Cognitive Services Speech SDK je `1.6.0`.
 
 Cognitive Services sadou SDK pro řeč pro Mac se distribuuje jako sada framework.
 Je možné v projekty Xcode jako [CocoaPod](https://cocoapods.org/), nebo stažených z https://aka.ms/csspeech/macosbinary a propojení ručně. Tato příručka používá CocoaPod.

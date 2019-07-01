@@ -30,6 +30,8 @@
   items:
     - name: Klávesové zkratky
       href: azure-portal-keyboard-shortcuts.md
+    - name: Uvedení URL webu Azure Portal na seznamu bezpečných adres
+      href: azure-portal-safelist-urls.md
     - name: Struktura řídicích panelů Azure
       href: azure-portal-dashboards-structure.md
 - name: Zdroje a prostředky

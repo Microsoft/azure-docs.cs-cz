@@ -447,6 +447,18 @@
                   href: app/proactive-arm-config.md
                 - name: E-mailové oznámení
                   href: app/proactive-email-notification.md
+            - name: Dostupnost
+              items:
+                - name: Testy URL
+                  href: app/monitor-web-app-availability.md
+                - name: Testy s více kroky
+                  href: app/availability-multistep.md
+                - name: Upozornění na dostupnost
+                  href: app/availability-alerts.md
+                - name: Řešení potíží
+                  href: app/troubleshoot-availability.md
+            - name: Testování výkonu
+              href: app/performance-testing.md
             - name: Vytvoření prostředku
               href: app/create-new-resource.md
             - name: Data aplikací do služby Log Analytics
@@ -554,6 +566,8 @@
                       href: insights/container-insights-enable-existing-clusters.md
                 - name: Analýza
                   href: insights/container-insights-analyze.md
+                - name: Konfigurace nastavení kolekce agentů
+                  href: insights/container-insights-agent-config.md
                 - name: Zákaz monitorování
                   href: insights/container-insights-optout.md
                 - name: Zobrazení živých protokolů
@@ -795,8 +809,6 @@
           items:
             - name: Pravidla upozornění aplikace
               items:
-                - name: Dostupnost
-                  href: app/monitor-web-app-availability.md
                 - name: Upozornění metrik
                   href: app/alerts.md
             - name: Pravidla upozornění metriky platformy

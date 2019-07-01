@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 06/21/2019
 ms.author: v-rodixo
 ms.custom: seodec2018
-ms.openlocfilehash: 4186c422836771de4f8a283616d77214b91bfc02
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 8ce3c66432f3d2d0cb973886498aa46e7820698c
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67462699"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485261"
 ---
 # <a name="c-tutorial-combine-data-from-multiple-data-sources-in-one-azure-search-index"></a>C#Kurz: Kombinovat data z různých zdrojů dat v jednom indexu Azure Search
 
@@ -28,7 +28,7 @@ Tento kurz používá C#, sady .NET SDK pro Azure Search a webu Azure portal a p
 > * Nahrání ukázkových dat a vytvoření zdrojů dat
 > * Identifikujte klíč dokumentu
 > * Definování a vytvoření indexu
-> * Index hotelu data ze služby cosmos DB
+> * Index hotelu data ze služby Azure Cosmos DB
 > * Sloučit hotelu místnosti data z úložiště objektů blob
 
 ## <a name="prerequisites"></a>Požadavky
@@ -61,7 +61,7 @@ K interakci s vaší službou Azure Search, budete potřebovat adresu URL služb
 
 1. V **nastavení** > **klíče**, získat klíč pro úplná práva správce na službu. Existují dva klíče zaměnitelné správce, v případě, že budete potřebovat k výměně jeden k dispozici zajišťuje nepřetržitý chod podniků. U požadavků můžete použít buď primární nebo sekundární klíč pro přidání, úpravy a odstraňování objektů.
 
-![Získejte koncový bod a přístupový klíč rozhraní HTTP](media/search-fiddler/get-url-key.png "získat HTTP koncový bod a přístupový klíč")
+![Získejte koncový bod a přístupový klíč rozhraní HTTP](media/search-get-started-postman/get-url-key.png "získat HTTP koncový bod a přístupový klíč")
 
 Všechny požadavky vyžaduje klíč rozhraní api na každou požadavku odeslaného do vaší služby. Platný klíč vytváří vztah důvěryhodnosti, na základě požadavku na mezi aplikace odešle požadavek a službu, která ji zpracovává.
 
@@ -134,7 +134,7 @@ Názvy při indexování dat z různých zdrojů dat, každá hodnota klíčové
 
 Indexerů Azure Search můžete použít mapování polí pro přejmenování a dokonce i během procesu indexování u vydavatelských datová pole tak, aby zdrojová data mohou být přesměrováni na správné indexu pole.
 
-Například v cosmos DB ukázková data, se nazývá identifikátor hotelu **HotelId**. Ale v souborech JSON blob hotelu místnosti, má název hotelu identifikátor **Id**. Tento program zpracovává pomocí mapování **Id** pole z přes bloby až po **HotelId** klíčové pole v indexu.
+Například ve službě Azure Cosmos DB ukázková data, se nazývá identifikátor hotelu **HotelId**. Ale v souborech JSON blob hotelu místnosti, má název hotelu identifikátor **Id**. Tento program zpracovává pomocí mapování **Id** pole z přes bloby až po **HotelId** klíčové pole v indexu.
 
 > [!NOTE]
 > Ve většině případů klíče pro automaticky generované dokumentů, jako jsou ty několik indexerů vytvořených ve výchozím nastavení Nedovolte, aby byly klíče dobré dokumentů pro kombinované indexy. Obecně použijte smysluplné, jedinečnou hodnotu klíče, který již existuje v nebo můžete snadno přidat ke zdrojům dat.
@@ -146,8 +146,8 @@ Po nastavení a konfigurace dat jsou na místě, ukázkový program v **AzureSea
 Tento jednoduchý C#/konzolové aplikace .NET provádí následující úlohy:
 * Vytvoří nový index Azure Search na základě struktury dat C# hotelu třídy (který také odkazuje na adresu a místnosti třídy).
 * Vytvoří zdroj dat služby Azure Cosmos DB a indexer, který se mapuje na pole indexu dat Azure Cosmos DB.
-* Spuštění indexeru služby cosmos DB k načtení dat hotelu.
-* Vytvoří z úložiště objektů Blob v Azure datového zdroje a indexer, který mapuje data objektů JSOn Blob do indexu pole.
+* Spuštění indexeru služby Azure Cosmos DB k načtení dat hotelu.
+* Vytvoří z úložiště objektů Blob v Azure datového zdroje a indexer, který mapuje data objektů blob JSON do indexu pole.
 * Spuštění indexeru úložiště objektů blob v Azure k načtení dat místnosti.
 
  Před spuštěním programu, využijte prostudování kódu a definic indexu a indexeru pro tuto ukázku. Důležitý kód je ve dvou souborech:

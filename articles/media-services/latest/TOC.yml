@@ -223,6 +223,14 @@
             - name: S využitím REST
               displayName: 'encode, encoding, custom, transform'
               href: custom-preset-rest-howto.md
+        - name: Dílčí klip z videa
+          items:
+            - name: S využitím .NET
+              href: subclip-video-dotnet-howto.md
+              displayName: 'subclipping, clip, edit, trim, clipping'
+            - name: S využitím REST
+              href: subclip-video-rest-howto.md
+              displayName: 'subclipping, clip, edit, trim, clipping'
     - name: Použití služby Event Grid
       items:
         - name: Monitorování událostí – portál

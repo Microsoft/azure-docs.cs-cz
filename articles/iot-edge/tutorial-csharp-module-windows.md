@@ -9,12 +9,12 @@ ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 122028217a78463fa2ceaed63248a74257206345
-ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
+ms.openlocfilehash: d7ccce1f21b1caa2268317b7239617a80ddce10b
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66808770"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485935"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Kurz: Vývoj C# modul IoT Edge pro zařízení s Windows
 
@@ -54,7 +54,7 @@ Před zahájením tohoto kurzu měli jste prošli předchozího kurzu věnované
 * [Docker CE](https://docs.docker.com/install/) nakonfigurován pro spouštění kontejnerů Windows.
 
 > [!TIP]
-> Pokud používáte Visual Studio 2017 (verze 15.7 nebo novější), plrease stáhněte a nainstalujte [nástroje Azure IoT Edge (Preview)](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) pro VS 2017 na Visual Studio Marketplace
+> Pokud používáte Visual Studio 2017 (verze 15.7 nebo novější), plrease stáhněte a nainstalujte [nástroje Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) pro VS 2017 na Visual Studio Marketplace
 
 ## <a name="create-a-module-project"></a>Vytvoření modulu projektu
 

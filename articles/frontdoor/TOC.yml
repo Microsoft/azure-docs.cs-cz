@@ -46,6 +46,8 @@
       href: front-door-routing-methods.md
     - name: Přepsání adresy URL
       href: front-door-url-rewrite.md
+    - name: Přesměrování adresy URL
+      href: front-door-url-redirect.md
     - name: WAF
       items:
         - name: Přehled
@@ -58,6 +60,14 @@
           href: waf-front-door-monitor.md
 - name: Návody
   items:
+    - name: Přesměrování provozu
+      items:
+        - name: Konfigurace služby Front Door s přesměrováním HTTP na HTTPS
+          href: front-door-how-to-redirect-https.md
+    - name: Onboarding vlastních domén
+      items:
+        - name: Onboarding kořenové nebo vrcholové domény
+          href: front-door-how-to-onboard-apex-domain.md
     - name: Řešení potíží
       items:
         - name: Řešení potíží se směrováním

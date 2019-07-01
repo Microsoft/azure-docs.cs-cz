@@ -10,18 +10,18 @@ ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 90857ec2fabb1b807d3e3001f99ea3897d7d628a
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 4a1944c5c5f169274cf45bd3ebfb6df47942dd5a
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443866"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485633"
 ---
 # <a name="quickstart-create-an-azure-search-index-using-the-azure-portal"></a>Rychlý start: Vytvoření indexu Azure Search pomocí webu Azure portal
 > [!div class="op_single_selector"]
 > * [Azure Portal](search-get-started-portal.md)
 > * [PowerShell](search-howto-dotnet-sdk.md)
-> * [Postman](search-fiddler.md)
+> * [Postman](search-get-started-postman.md)
 > * [C#](search-create-index-dotnet.md)
 >*
 
@@ -34,7 +34,7 @@ Pro rychlé Seznamte se s koncepty Azure Search zkuste integrované nástroje na
 > * Zobrazení stávajícího indexu a možnosti pro změnu jeho
 > * Prozkoumejte fulltextové vyhledávání, filtry, omezující vlastnosti, vyhledávání přibližných shod a geografické vyhledávání pomocí **Průzkumníka služby Search**
 
-Pokud jsou příliš omezení nástroje, můžete zvážit [založený na kódu Úvod do programování Azure Search v .NET](search-howto-dotnet-sdk.md) nebo použijte [Postman nebo Fiddler pro volání rozhraní REST API](search-fiddler.md).
+Pokud jsou příliš omezení nástroje, můžete zvážit [založený na kódu Úvod do programování Azure Search v .NET](search-howto-dotnet-sdk.md) nebo použijte [Postman nebo Fiddler pro volání rozhraní REST API](search-get-started-postman.md).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. Můžete se taky podívat na 6minutovou ukázku kroků v tomto kurzu, která začíná přibližně po prvních třech minutách v tomto [videu s přehledem Azure Search](https://channel9.msdn.com/Events/Connect/2016/138).
 
@@ -274,4 +274,4 @@ Můžete prozkoumat další funkce služby Azure Search s použitím programový
 
 * [Vytvoření indexu pomocí .NET SDK](https://docs.microsoft.com/azure/search/search-create-index-dotnet)
 * [Vytvoření indexu pomocí rozhraní REST API](https://docs.microsoft.com/azure/search/search-create-index-rest-api)
-* [Vytvoření indexu pomocí nástroje Postman nebo Fiddler a rozhraní REST API Azure Search](search-fiddler.md)
+* [Vytvoření indexu pomocí nástroje Postman nebo Fiddler a rozhraní REST API Azure Search](search-get-started-postman.md)

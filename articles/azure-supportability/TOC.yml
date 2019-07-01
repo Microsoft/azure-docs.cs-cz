@@ -5,14 +5,17 @@
 - name: Přístupová práva pro vytvoření a správu žádostí o podporu
   href: create-manage-support-requests-using-access-control.md
 - name: Žádosti o navýšení kvóty
-  href: resource-manager-core-quotas-request.md
   items:
-    - name: Zvýšení limitu virtuálních jader řady virtuálních počítačů
-      href: per-vm-quota-requests.md
-    - name: Celkové oblastní zvýšení limitu virtuálních jader
-      href: regional-quota-requests.md
-    - name: Zvýšení limitu sítě
-      href: networking-quota-requests.md
+    - name: Požadavky na zvýšení kvóty modelu nasazení Resource Manageru
+      items:
+        - name: Zvýšení limitu virtuálních jader řady virtuálních počítačů
+          href: per-vm-quota-requests.md
+        - name: Celkové oblastní zvýšení limitu virtuálních jader
+          href: regional-quota-requests.md
+        - name: Zvýšení limitu sítě
+          href: networking-quota-requests.md
+    - name: Požadavky na zvýšení kvóty klasického modelu nasazení
+      href: classic-deployment-model-quota-increase-requests.md
 - name: Řešení potíží s oblastí nebo předplatným skladové položky
   href: sku-series-unavailable.md
 - name: Referenční informace

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 5/23/2019
 ms.author: travisw
-ms.openlocfilehash: 92e75e2db516df513ff5997f3efcd85bccbeade2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a8118d80e85d562fa4137ed1f1844e6bf9f1793e
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067619"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485034"
 ---
 1. Spusťte Android Studio a v uvítacím okně zvolte **Start a new Android Studio projekt** (Začít nový projekt Android Studia).
 
@@ -27,7 +27,7 @@ Android Studiu chvíli trvá, než nový projekt pro Android připraví. V dalš
 
 [!INCLUDE [License Notice](cognitive-services-speech-service-license-notice.md)]
 
-Aktuální verze sady Cognitive Services Speech SDK je `1.5.1`.
+Aktuální verze sady Cognitive Services Speech SDK je `1.6.0`.
 
 Sadou SDK pro řeč pro Android je zabalena jako [AAR (knihovna pro Android)](https://developer.android.com/studio/projects/android-library), který obsahuje potřebné knihovny a požadovaná oprávnění pro Android.
 Je hostován v úložiště Maven v protokolu https:\//csspeechstorage.blob.core.windows.net/maven/.
@@ -42,7 +42,7 @@ Nastavte projekt tak, aby používal sadu Speech SDK. Výběrem příkazu **File
 
    ![Snímek obrazovky okna se strukturou projektu](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-07-add-module-dependency.png)
 
-1. V okně, které se zobrazí, zadejte název a verzi naší sady Speech SDK pro Android – `com.microsoft.cognitiveservices.speech:client-sdk:1.5.1`. Pak vyberte **OK**.
+1. V okně, které se zobrazí, zadejte název a verzi naší sady Speech SDK pro Android – `com.microsoft.cognitiveservices.speech:client-sdk:1.6.0`. Pak vyberte **OK**.
    Sada Speech SDK by teď měla být přidaná do seznamu závislostí, jak je znázorněno níže:
 
    ![Snímek obrazovky okna se strukturou projektu](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-08-dependency-added-1.0.0.png)
