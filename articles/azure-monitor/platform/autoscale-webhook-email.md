@@ -62,11 +62,11 @@ Při použití rozhraní REST API nebo Resource Manageru šablony, zahrnují ele
 
 | Pole | Povinné? | Popis |
 | --- | --- | --- |
-| Operace |ano |Hodnota musí být "Škálovací" |
+| operation |ano |Hodnota musí být "Škálovací" |
 | sendToSubscriptionAdministrator |ano |Hodnota musí být "true" nebo "false" |
 | sendToSubscriptionCoAdministrators |ano |Hodnota musí být "true" nebo "false" |
 | customEmails |ano |Hodnota může být null [] nebo pole řetězců e-mailů |
-| Webhooky |ano |Hodnota může být null nebo platný identifikátor Uri |
+| webhooks |ano |Hodnota může být null nebo platný identifikátor Uri |
 | serviceUri |ano |platný identifikátor Uri protokolu https |
 | properties |ano |Hodnota musí být prázdná {} nebo může obsahovat páry klíč hodnota |
 
@@ -106,19 +106,19 @@ Při generování oznámení automatického škálování je datová část webh
 | Pole | Povinné? | Popis |
 | --- | --- | --- |
 | status |ano |Stav, který určuje, zda byla vygenerována akce automatického škálování |
-| Operace |ano |Pro zvýšení instancí je "Horizontální navýšení kapacity" a snížení v instancích, bude "Škálování v" |
-| Kontext |ano |Kontext akce automatického škálování |
+| operation |ano |Pro zvýšení instancí je "Horizontální navýšení kapacity" a snížení v instancích, bude "Škálování v" |
+| context |ano |Kontext akce automatického škálování |
 | timestamp |ano |Časové razítko při aktivaci akce automatického škálování |
 | id |Ano |ID správce prostředků zadaném nastavení automatického škálování |
 | name |Ano |Název nastavení automatického škálování |
-| Podrobnosti |Ano |Vysvětlení akci, která trvala služby automatického škálování a změna v počtu instancí |
+| details |Ano |Vysvětlení akci, která trvala služby automatického škálování a změna v počtu instancí |
 | subscriptionId |Ano |ID předplatného cílového prostředku, který je právě škálovat |
 | resourceGroupName |Ano |Název skupiny prostředků cílového prostředku, který je právě škálovat |
 | resourceName |Ano |Název cílového prostředku, který je právě škálovat |
-| Typ prostředku |Ano |Tři podporované hodnoty: "microsoft.classiccompute/domainnames/slots/roles" – Cloudová služba role, "microsoft.compute/virtualmachinescalesets" - Virtual Machine Scale Sets a "Microsoft.Web/serverfarms" – webové aplikace |
+| resourceType |Ano |Tři podporované hodnoty: "microsoft.classiccompute/domainnames/slots/roles" – Cloudová služba role, "microsoft.compute/virtualmachinescalesets" - Virtual Machine Scale Sets a "Microsoft.Web/serverfarms" – webové aplikace |
 | resourceId |Ano |Resource Manager ID cílového prostředku, který je právě škálovat |
 | portalLink |Ano |Azure portal odkaz na stránku Souhrn v cílový prostředek |
 | oldCapacity |Ano |Aktuální (staré) počet instancí kdy automatického škálování je akce škálování |
 | newCapacity |Ano |Nový počet instancí, který prostředek, který chcete škálovat automatického škálování |
-| Vlastnosti |Ne |Volitelné. Sadu < klíč, hodnota > páry (například Dictionary < String, String >). Vlastnosti pole je volitelné. Vlastní uživatelské rozhraní nebo pracovní postup aplikace logiky na základě aplikace můžete zadat klíče a hodnoty, které mohou být předány pomocí datové části. Existuje alternativní způsob předat vlastní vlastnosti odchozí volání webhooku je použití webhooku URI samotného (jako parametry dotazu) |
+| properties |Ne |Volitelné. Sadu < klíč, hodnota > páry (například Dictionary < String, String >). Vlastnosti pole je volitelné. Vlastní uživatelské rozhraní nebo pracovní postup aplikace logiky na základě aplikace můžete zadat klíče a hodnoty, které mohou být předány pomocí datové části. Existuje alternativní způsob předat vlastní vlastnosti odchozí volání webhooku je použití webhooku URI samotného (jako parametry dotazu) |
 
