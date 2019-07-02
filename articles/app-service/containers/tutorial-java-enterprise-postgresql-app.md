@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 11/13/2018
 ms.author: jafreebe
 ms.custom: seodec18
-ms.openlocfilehash: 6b9c9500423392ec07482f049697d9b49dc060bf
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: dcd1ef5c54885b758ac9a301616d79a163999bc9
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65603184"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509631"
 ---
 # <a name="tutorial-build-a-java-ee-and-postgres-web-app-in-azure"></a>Kurz: Vytvoření webové aplikace v Azure platformě Java EE určený a Postgres
 
@@ -38,7 +38,7 @@ V tomto kurzu se naučíte:
 
 ## <a name="clone-and-edit-the-sample-app"></a>Klonovat a upravit ukázkové aplikace
 
-V tomto kroku se naklonujte ukázkovou aplikaci a nakonfigurovat Maven Project objektový Model (POM nebo pom.xml) pro nasazení.
+V tomto kroku, naklonujte ukázkovou aplikaci a nakonfigurovat Maven Project objektový Model (POM nebo *pom.xml*) pro nasazení.
 
 ### <a name="clone-the-sample"></a>Vytvoření klonu ukázky
 
@@ -50,9 +50,9 @@ git clone https://github.com/Azure-Samples/wildfly-petstore-quickstart.git
 
 ### <a name="update-the-maven-pom"></a>Aktualizace Maven POM
 
-Modul plug-in Maven Azure aktualizujte požadovaný název a skupinu prostředků služby App Service. Nemusíte předem vytvářet v plánu služby App Service nebo instanci. Modul plug-in Maven vytvoří skupinu prostředků a App Service, pokud ještě neexistuje. 
+Modul plug-in Maven Azure aktualizujte požadovaný název a skupinu prostředků služby App Service. Nemusíte předem vytvářet v plánu služby App Service nebo instanci. Modul plug-in Maven vytvoří skupinu prostředků a App Service, pokud ještě neexistuje.
 
-Posuňte se dolů k `<plugins>` část _pom.xml_, řádek 200, aby se změny. 
+Posuňte se dolů k `<plugins>` část *pom.xml*, řádek 200, aby se změny.
 
 ```xml
 <!-- Azure App Service Maven plugin for deployment -->
@@ -67,6 +67,7 @@ Posuňte se dolů k `<plugins>` část _pom.xml_, řádek 200, aby se změny.
   ...
 </plugin>  
 ```
+
 Nahraďte `YOUR_APP_NAME` a `YOUR_RESOURCE_GROUP` s názvy vaší služby App Service a skupinu prostředků.
 
 ## <a name="build-and-deploy-the-application"></a>Sestavení a nasazení aplikace
@@ -103,13 +104,19 @@ Aplikace je v tuto chvíli používá H2 databázi v paměti. Klikněte na tlač
 
 ## <a name="provision-a-postgres-database"></a>Zřízení databáze Postgres
 
-Ke zřízení Postgres databázový server, otevřete terminál a spusťte následující příkaz s požadované hodnoty pro název serveru, uživatelské jméno, heslo a umístění. Použijte stejnou skupinu prostředků, které vaše služba App Service je v. Poznamenejte heslo pro pozdější!
+Ke zřízení Postgres databázový server, otevřete terminál a použít [az postgres server vytvořit](https://docs.microsoft.com/cli/azure/postgres/server) příkaz, jak je znázorněno v následujícím příkladu. Zástupné znaky (včetně ostrých závorek) nahraďte hodnotami, které si vyberete, pomocí stejného prostředku skupiny, které jste dříve zadali pro vaši instanci služby App Service. Přihlašovací údaje správce, poskytují se povolit budoucího přístupu, proto ji nezapomeňte zachovat si je pro pozdější použití.
 
 ```bash
-az postgres server create -n <desired-name> -g <same-resource-group> --sku-name GP_Gen4_2 -u <desired-username> -p <desired-password> -l <location>
+az postgres server create \
+    --name <server name> \
+    --resource-group <resource group> \
+    --location <location>
+    --sku-name GP_Gen5_2 \
+    --admin-user <administrator username> \
+    --admin-password <administrator password> \
 ```
 
-Přejděte na portál a vyhledejte vaši databázi Postgres. Když je okno, zkopírujte "Název_serveru" a "Přihlašovací jméno správce serveru" hodnoty, budete je potřebovat později.
+Po spuštění tohoto příkazu vyhledejte na webu Azure portal a přejděte k vaší databázi Postgres. Když je okno, zkopírujte "Název_serveru" a "Přihlašovací jméno správce serveru" hodnoty, budete je potřebovat později.
 
 ### <a name="allow-access-to-azure-services"></a>Povolit přístup ke službám Azure
 
@@ -123,7 +130,7 @@ Pro aplikace Java, který umožňuje používat naši databázi Postgres jsme te
 
 ### <a name="add-postgres-credentials-to-the-pom"></a>Přidat přihlašovací údaje Postgres POM
 
-V _pom.xml_, velká písmena zástupné hodnoty nahraďte Postgres název serveru, přihlašovací jméno správce a heslo. Tato pole jsou v rámci modulu plug-in Maven pro Azure. (Nezapomeňte nahradit `YOUR_SERVER_NAME`, `YOUR_PG_USERNAME`, a `YOUR_PG_PASSWORD` v `<value>` značky... není v rozsahu `<name>` značky!)
+V *pom.xml*, velká písmena zástupné hodnoty nahraďte Postgres název serveru, přihlašovací jméno správce a heslo. Tato pole jsou v rámci modulu plug-in Maven pro Azure. (Nezapomeňte nahradit `YOUR_SERVER_NAME`, `YOUR_PG_USERNAME`, a `YOUR_PG_PASSWORD` v `<value>` značky... není v rozsahu `<name>` značky!)
 
 ```xml
 <plugin>
@@ -148,36 +155,34 @@ V _pom.xml_, velká písmena zástupné hodnoty nahraďte Postgres název server
 
 ### <a name="update-the-java-transaction-api"></a>Aktualizovat transakce Java API
 
-Dále musíme upravit konfiguraci naše Java transakcí API (JPA) tak, aby naše aplikace v Javě bude komunikovat s Postgres místo databáze H2 v paměti, kterou jsme použili dříve. Otevřete editor pro _src/main/resources/META-INF/persistence.xml_. Nahraďte hodnotu `<jta-data-source>` za `java:jboss/datasources/postgresDS`. Toto nastavení by měl mít nyní JTA soubor XML:
+Dále musíme upravit konfiguraci naše Java transakcí API (JPA) tak, aby naše aplikace v Javě bude komunikovat s Postgres místo databáze H2 v paměti, kterou jsme použili dříve. Otevřete editor pro *src/main/resources/META-INF/persistence.xml*. Nahraďte hodnotu `<jta-data-source>` za `java:jboss/datasources/postgresDS`. Toto nastavení by měl mít nyní JTA soubor XML:
 
 ```xml
-...
 <jta-data-source>java:jboss/datasources/postgresDS</jta-data-source>
-...
 ```
 
 ## <a name="configure-the-wildfly-application-server"></a>Konfigurace serveru WildFly aplikací
 
 Před nasazením překonfigurovaná aplikace, musí aktualizujeme WildFly aplikačním serverem Postgres modul a jeho závislosti. Další informace o konfiguraci najdete v [server nakonfigurovat WildFly](configure-language-java.md#configure-java-ee-wildfly).
 
-Konfigurace serveru, potřebujeme čtyři soubory v `wildfly_config/` adresáře:
+Konfigurace serveru, potřebujeme čtyři soubory v *wildfly_config /* adresáře:
 
 - **postgresql-42.2.5.jar**: Tento soubor JAR je ovladač JDBC pro Postgres. Další informace najdete v tématu [oficiální web](https://jdbc.postgresql.org/index.html).
 - **postgres-module.xml**: Tento soubor XML deklaruje název modulu Postgres (org.postgres). Určuje také prostředky a závislosti, které jsou nezbytné pro modul, který se má použít.
 - **jboss_cli_commands.cl**: Tento soubor obsahuje konfiguračních příkazů, které budou spuštěny na JBoss rozhraní příkazového řádku. Příkazy přidejte modul Postgres WildFly aplikační server, zadejte přihlašovací údaje, deklarovat název JNDI, nastavit mezní hodnotu časového limitu, atd. Pokud nejste obeznámeni s JBoss CLI, přečtěte si článek [oficiální dokumentaci](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.0/html-single/management_cli_guide/#how_to_cli).
-- **startup_script.sh**: Nakonec tento skript prostředí se spustí pokaždé, když je spuštěná instance vaší služby App Service. Skript provádí pouze jednu funkci: přesměrujete příkazy v `jboss_cli_commands.cli` JBoss rozhraní příkazového řádku.
+- **startup_script.sh**: Nakonec tento skript prostředí se spustí pokaždé, když je spuštěná instance vaší služby App Service. Skript provádí pouze jednu funkci: přesměrujete příkazy v *jboss_cli_commands.cli* JBoss rozhraní příkazového řádku.
 
-Důrazně doporučujeme čtení obsahu těchto souborů, zejména _jboss_cli_commands.cli_.
+Důrazně doporučujeme čtení obsahu těchto souborů, zejména *jboss_cli_commands.cli*.
 
 ### <a name="ftp-the-configuration-files"></a>Konfigurační soubory protokolu FTP
 
-Budeme muset FTP obsah `wildfly_config/` naše instanci služby App Service. Chcete-li získat pověření serveru FTP, klikněte na tlačítko **získat profil publikování** tlačítka v okně App Service na webu Azure Portal. FTP uživatelské jméno a heslo bude v stažené dokumentu XML. Další informace o profilu publikování najdete v tématu [tento dokument](https://docs.microsoft.com/azure/app-service/deploy-configure-credentials).
+Budeme muset FTP obsah *wildfly_config /* naše instanci služby App Service. Chcete-li získat pověření serveru FTP, klikněte na tlačítko **získat profil publikování** tlačítka v okně App Service na webu Azure Portal. FTP uživatelské jméno a heslo bude v stažené dokumentu XML. Další informace o profilu publikování najdete v tématu [tento dokument](https://docs.microsoft.com/azure/app-service/deploy-configure-credentials).
 
-Pomocí FTP nástroje podle vašeho výběru, přenášet čtyři soubory v `wildfly_config/` k `/home/site/deployments/tools/`. (Všimněte si, že by neměla přenos adresář pouze soubory sami.)
+Pomocí FTP nástroje podle vašeho výběru, přenášet čtyři soubory v *wildfly_config /* k */home/site/nasazení/tools/* . (Všimněte si, že by neměla přenos adresář pouze soubory sami.)
 
 ### <a name="finalize-app-service"></a>Dokončení služby App Service
 
-V okně App Service, přejděte na panel "Nastavení aplikace". V části "Runtime", "Spouštěcí soubor" pole nastavte `/home/site/deployments/tools/startup_script.sh`. Tím se zajistí, že skript prostředí se spustí po vytvoření instance služby App Service, ale před WildFly spuštění serveru.
+V okně App Service, přejděte na panel "Nastavení aplikace". V části "Runtime", "Spouštěcí soubor" pole nastavte */home/site/deployments/tools/startup_script.sh*. Tím se zajistí, že skript prostředí se spustí po vytvoření instance služby App Service, ale před WildFly spuštění serveru.
 
 A konečně restartujte službu App Service. Toto tlačítko je v panelu "Přehled".
 

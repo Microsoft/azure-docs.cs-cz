@@ -8,7 +8,7 @@
 - name: Šablony Rychlý start
   expanded: true
   items:
-    - name: Detekce anomálií ve vašich datech
+    - name: REST API
       items:
         - name: 'Pomocí C#'
           href: quickstarts/detect-data-anomalies-csharp.md
@@ -16,6 +16,12 @@
           href: quickstarts/detect-data-anomalies-java.md
         - name: Pomocí Pythonu
           href: quickstarts/detect-data-anomalies-python.md
+    - name: Sada SDK
+      items:
+        - name: 'Pomocí C#'
+          href: quickstarts/detect-data-anomalies-csharp-sdk.md
+        - name: Pomocí Pythonu
+          href: quickstarts/detect-data-anomalies-python-sdk.md
 - name: Kurzy
   items:
     - name: Vizualizace anomálií jako dávky s využitím Power BI

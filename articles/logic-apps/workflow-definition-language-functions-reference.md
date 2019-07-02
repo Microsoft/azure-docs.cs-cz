@@ -84,10 +84,10 @@ Pro práci s řetězci, můžete použít tyto funkce řetězce a také někter�
 | --------------- | ---- |
 | [concat](../logic-apps/workflow-definition-language-functions-reference.md#concat) | Kombinací dvou nebo více řetězců a vrátit kombinované řetězec. |
 | [endsWith](../logic-apps/workflow-definition-language-functions-reference.md#endswith) | Zkontrolujte, jestli řetězec končí zadaným podřetězcem. |
-| [guid](../logic-apps/workflow-definition-language-functions-reference.md#guid) | Vygeneruje globálně jedinečný identifikátor (GUID) jako řetězec. |
+| [identifikátor GUID](../logic-apps/workflow-definition-language-functions-reference.md#guid) | Vygeneruje globálně jedinečný identifikátor (GUID) jako řetězec. |
 | [indexOf](../logic-apps/workflow-definition-language-functions-reference.md#indexof) | Vrátí počáteční pozici pro dílčí řetězec. |
 | [lastIndexOf](../logic-apps/workflow-definition-language-functions-reference.md#lastindexof) | Vrátí počáteční pozici posledního výskytu podřetězce. |
-| [replace](../logic-apps/workflow-definition-language-functions-reference.md#replace) | Nahraďte podřetězce pomocí zadaného řetězce a vrátit řetězec aktualizované. |
+| [nahradit](../logic-apps/workflow-definition-language-functions-reference.md#replace) | Nahraďte podřetězce pomocí zadaného řetězce a vrátit řetězec aktualizované. |
 | [split](../logic-apps/workflow-definition-language-functions-reference.md#split) | Vrátí pole obsahující podřetězců, oddělených čárkami, z většího řetězce na základě zadaného oddělovače znaků v původním řetězci. |
 | [startsWith](../logic-apps/workflow-definition-language-functions-reference.md#startswith) | Zkontrolujte, jestli řetězec začíná na konkrétní dílčí řetězec. |
 | [substring](../logic-apps/workflow-definition-language-functions-reference.md#substring) | Vrácení znaků z řetězce, počínaje od zadané pozice. |
@@ -3415,7 +3415,7 @@ A vrátí výsledek: `10`
 
 <a name="substring"></a>
 
-### <a name="substring"></a>dílčí řetězec
+### <a name="substring"></a>substring
 
 Vrácení znaků z řetězce, počínaje od zadané pozice nebo index.
 Index hodnoty začíná číslem 0.

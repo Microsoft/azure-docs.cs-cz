@@ -9,12 +9,12 @@ ms.date: 09/26/2018
 ms.topic: tutorial
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, službě Azure Kubernetes, kontejnery, Helm, služby sítě, směrování sítě služby, kubectl, k8s
-ms.openlocfilehash: e461f210dc5b2d0dda0eabd5ea80dfcdc9ccebfb
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: 30f912e9c1573b32247bb3c2a3f7d4026436748b
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66392812"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67503022"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-nodejs"></a>Začínáme s Azure Dev prostory s využitím Node.js
 
@@ -134,24 +134,27 @@ Ve výstupu konzoly vyhledejte informace o veřejné adrese URL, kterou vytvoři
 
 ```
 (pending registration) Service 'webfrontend' port 'http' will be available at <url>
+Service 'webfrontend' port 'http' is available at http://webfrontend.1234567890abcdef1234.eus.azds.io/
 Service 'webfrontend' port 80 (TCP) is available at 'http://localhost:<port>'
 ```
 
-Tuto adresu URL otevřete v okně prohlížeče. Mělo by se zobrazit načítání webové aplikace. Během spouštění kontejneru se výstup `stdout` a `stderr` streamuje do okna terminálu.
+Identifikace veřejné adresy URL pro službu ve výstupu `up` příkazu. Končí na `.azds.io`. V předchozím příkladu je veřejnou adresu URL `http://webfrontend.1234567890abcdef1234.eus.azds.io/`.
+
+Pokud chcete zobrazit webovou aplikaci, otevřete veřejnou adresu URL v prohlížeči. Všimněte si také, `stdout` a `stderr` streamuje výstup do *azds trasování* okno terminálu při interakci s vaší webovou aplikací. Potěší vás také informace o sledování požadavků HTTP, které procházejí systému. Díky tomu je snadněji sledovat komplexní volání víc služeb během vývoje. Instrumentace přidal Dev prostory poskytuje této žádosti sledování.
 
 > [!Note]
-> Při prvním spuštění může příprava veřejného záznamu DNS trvat několik minut. Pokud veřejnou adresu URL nelze vyřešit, můžete použít alternativní `http://localhost:<portnumber>` adresu URL, která se zobrazí ve výstupu konzoly. Pokud použijete adresu URL místního hostitele, může se zdát, že je kontejner spuštěný v místním prostředí, ale ve skutečnosti je spuštěný v AKS. Pro usnadnění práce a jednodušší interakci se službou z místního počítače vytvoří Azure Dev Spaces dočasný tunel SSH do kontejneru spuštěného v Azure. Můžete se vrátit a vyzkoušet veřejnou adresu URL později, jakmile bude záznam DNS připravený.
+> Kromě veřejné adresy URL, můžete použít alternativní `http://localhost:<portnumber>` adresu URL, která se zobrazí ve výstupu konzoly. Pokud používáte adresu URL místního hostitele, to může zdát, jako je kontejner spuštěný místně, ale ve skutečnosti běží v Azure. Azure Dev prostory používá Kubernetes *port vpřed* funkce, které mapují port místního hostitele do kontejneru ve službě AKS. To usnadňuje práci se službou z místního počítače.
 
 ### <a name="update-a-content-file"></a>Aktualizace souboru obsahu
 Azure Dev Spaces neslouží jenom ke spuštění kódu v prostředí Kubernetes. Umožňuje také rychle opakovaně prohlížet změny kódu, ke kterým dochází v prostředí Kubernetes v cloudu.
 
-1. Najděte soubor `./public/index.html` a upravte kód HTML. Můžete třeba změnit barvu pozadí stránky na odstín modré:
+1. Najděte soubor `./public/index.html` a upravte kód HTML. Například změna barvy pozadí stránky na odstín modré [na řádku 15](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/public/index.html#L15):
 
     ```html
     <body style="background-color: #95B9C7; margin-left:10px; margin-right:10px;">
     ```
 
-2. Uložte soubor. Za chvilku se v okně terminálu zobrazí zpráva o aktualizaci souboru ve spuštěném kontejneru.
+1. Uložte soubor. Za chvilku se v okně terminálu zobrazí zpráva o aktualizaci souboru ve spuštěném kontejneru.
 1. Přejděte do prohlížeče a aktualizujte stránku. Měli byste vidět novou barvu.
 
 Co se stalo? Úpravy souborů obsahu, jako je HTML a CSS, nevyžadují restartování procesu Node.js. Aktivní příkaz `azds up` automaticky synchronizuje změněné soubory obsahu přímo se spuštěným kontejnerem v Azure, abyste si mohli rychle prohlédnout upravený obsah.
@@ -161,7 +164,7 @@ Otevřete webovou aplikaci na mobilním zařízení s použitím veřejné adres
 
 Pokud chcete problém opravit, přidejte metaznačku `viewport`:
 1. Otevřete soubor `./public/index.html`.
-1. Do stávajícího prvku `head` přidejte metaznačku `viewport`:
+1. Přidat `viewport` metaznačku v existujícím `head` element, který spustí [na řádku 6](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/public/index.html#L6):
 
     ```html
     <head>
@@ -225,16 +228,24 @@ Když chcete v prostředí Kubernetes ladit kód, stiskněte **F5**.
 Podobně jako při příkazu `up` se na začátku ladění synchronizuje kód s vývojovým prostředím a sestaví se kontejner, který se nasadí v Kubernetes. Tentokrát se ale ladicí program připojí ke vzdálenému kontejneru.
 
 > [!Tip]
-> Na stavovém řádku editoru VS Code se zobrazí adresa URL, na kterou můžete kliknout.
+> Stavový řádek VS Code se změní na oranžovou, která udává, že je připojen ladicí program. Zobrazí se také kliknout, čímž adresu URL, která vám umožní rychle svůj web otevřít.
 
 ![](media/common/vscode-status-bar-url.png)
 
-V serverovém souboru s kódem nastavte zarážku, třeba ve funkci `app.get('/api'...` v souboru `server.js`. Aktualizujte stránku prohlížeče nebo stiskněte aktualizační tlačítko. Měli byste se dostat k zarážce, abyste mohli procházet kód.
+Nastavení zarážky v souboru kódu na straně serveru, třeba v rámci `app.get('/api'...` na [řádek 13 `server.js` ](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13). 
 
-Máte plný přístup k informacím o ladění, jako je zásobník volání, místní proměnné, informace o výjimkách apod., úplně stejně jako při lokálním spuštění kódu.
+    ```javascript
+    app.get('/api', function (req, res) {
+        res.send('Hello from webfrontend');
+    });
+    ```
+
+Aktualizujte stránku prohlížeče nebo stisknutím klávesy *Say ho znovu* tlačítka který by měl zarážce a mohli krokovat kód.
+
+Máte plný přístup k informacím o ladění, jako je zásobník volání, místní proměnné, informace o výjimkách apod., stejně jako při lokálním spuštění kódu.
 
 ### <a name="edit-code-and-refresh-the-debug-session"></a>Úprava kódu a aktualizace ladicí relace
-V aktivním ladicím programu změňte kód. Můžete třeba znovu změnit text úvodní zprávy:
+Pomocí ladicího programu aktivních Ujistěte se, upravit; kód například upravit zprávu hello na [řádek 13 `server.js` ](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13) znovu:
 
 ```javascript
 app.get('/api', function (req, res) {
@@ -242,9 +253,9 @@ app.get('/api', function (req, res) {
 });
 ```
 
-Uložte soubor a v **podokně akcí ladicího programu** klikněte na tlačítko **Aktualizovat**. 
+Uložte soubor a v **podokna akcí ladění**, klikněte na tlačítko **restartovat** tlačítko. 
 
-![](media/get-started-node/debug-action-refresh-nodejs.png)
+![](media/common/debug-action-refresh.png)
 
 Místo opětovného sestavení a nasazení nové image kontejneru po každé provedené změně, což často dlouho trvá, restartuje služba Azure Dev Spaces mezi ladicími relacemi proces Node.js, aby se zrychlil cyklus úprav a ladění.
 

@@ -564,6 +564,8 @@
                       href: insights/container-insights-enable-new-cluster.md
                     - name: Povolení pro stávající cluster
                       href: insights/container-insights-enable-existing-clusters.md
+                    - name: Mapování oblastí
+                      href: insights/container-insights-region-mapping.md
                 - name: Analýza
                   href: insights/container-insights-analyze.md
                 - name: Konfigurace nastavení kolekce agentů

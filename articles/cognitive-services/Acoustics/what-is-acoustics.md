@@ -10,12 +10,12 @@ ms.subservice: acoustics
 ms.topic: overview
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 1fc125322b83a0eb51095fac21dee05c7ffb39c1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 73b8980b0ea2d1adbd814026f026358e25dcbb55
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61432419"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67502952"
 ---
 # <a name="what-is-project-acoustics"></a>Co je Project Acoustics?
 Projekt Akustika je modul Akustika wave pro 3D interaktivní prostředí. Bez nutnosti ruční zóny značek modeluje wave účinky jako diffraction, portaling a dozvuku efekty při vytváření složitých scén. Zahrnuje také herní engine a zvukové middleware integrace. Projekt Akustika filozofií je podobný statické osvětlení: zanést do offline režimu podrobné fyzika zajistit fyzické směrný plán a využití jednoduché modulu runtime s ovládacími prvky návrhu výrazové ke splnění svých cílů umělecký.
@@ -29,7 +29,7 @@ Inovace projektu Akustika klíče je akustický simulace několik s koncepty ná
 
 ![Animace zobrazuje vodorovný 2D řez šíření wave do scény](media/wave-simulation.gif)
 
-## <a name="setup"></a>Nastavení
+## <a name="setup"></a>Instalace
 [Projekt integrace Unity Akustika](unity-integration.md) přetahování myší a zahrnuje modul plug-in zvukového modulu Unity. Posílení ovládací prvky zdroje zvuku Unity připojení projektu Akustika C# součást každé audio – objekt, ovládací prvky.
 
 [Projekt Akustika Unreal integrace](unreal-integration.md) zahrnuje moduly plug-in editoru a hry pro Unreal a k pluginu mixer Wwise. Komponentu vlastní zvuku rozšiřuje známých Wwise funkcí v rámci Unreal pomocí živých Akustika ovládací prvky návrhu. Ovládací prvky návrhu jsou také zobrazuje v Wwise pro modul plug-in mixer.
@@ -51,7 +51,7 @@ Moduly plug-in modulu runtime projektu Akustika je nyní nasadit na následujíc
   * Pro binární soubory Xbox a podporu kontaktujte nás přes formulář zaregistrovat
 
 ## <a name="contact-us"></a>Kontaktujte nás
-* [Fóra Akustika projektu](https://social.msdn.microsoft.com/Forums/en-US/home?forum=projectacoustics)
+* [Projekt Akustika diskuze a vydání, vytváření sestav](https://github.com/microsoft/ProjectAcoustics/issues)
 * [Přihlásit k odběru aktualizací na Akustika projektu](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRwMoAEhDCLJNqtVIPwQN6rpUOFRZREJRR0NIQllDOTQ1U0JMNVc4OFNFSy4u)
 
 ## <a name="next-steps"></a>Další postup

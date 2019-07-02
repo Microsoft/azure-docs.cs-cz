@@ -58,8 +58,6 @@
       href: 'https://azure.microsoft.com/resources/samples/?service=data-catalog'
     - name: REST
       href: /rest/api/datacatalog/
-    - name: Šablona Resource Manageru
-      href: /azure/templates/microsoft.datacatalog/catalogs
     - name: Reference k syntaxi služby Search
       href: /rest/api/datacatalog/data-catalog-search-syntax-reference
     - name: Koncepce pro vývojáře

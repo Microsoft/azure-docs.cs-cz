@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: tutorial
-ms.date: 05/28/2019
+ms.date: 07/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 31185900ede0fae74a04f98eaecee7379fb1c4fe
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: 3903e14e8923f6d29f2a88c61aead0cfc605b5b5
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66427805"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508673"
 ---
 # <a name="tutorial-return-azure-data-box-heavy-and-verify-data-upload-to-azure-preview"></a>Kurz: Vrátí Azure Data Box náročné a ověřte nahrání dat do Azure (preview)
 
@@ -43,11 +43,11 @@ Než začnete, ujistěte se, že:
 ## <a name="ship-data-box-heavy-back"></a>Příjemce dat pole náročné zpět
 
 1. Ujistěte se, že zařízení je vypnutý a odeberou se všechny kabely. Zařazování a bezpečně umístit 4 napájecích zásobník, který se dá dostat z zpět zařízení.
-2. Pokud zařízení se dodává v USA nebo Evropa, je dopravce FedEx.
+2. Zařízení se dodává LTL freight prostřednictvím FedEx v USA a DHL v EU
 
-    1. Zavolejte na místní číslo pro vaše dodací dopravce vyzvednutí naplánovat.
-    2. Oslovení [operace s daty pole](mailto:DataBoxOps@microsoft.com) informovat o vyzvednutí a získat zpětný Expediční štítek.
-    3. Ujistěte se, že Expediční štítek se zobrazí na vymazání obrazovky do přední části zařízení.
+    1. Oslovení [operace s daty pole](mailto:DataBoxOps@microsoft.com) informovat o vyzvednutí a získat zpětný Expediční štítek.
+    2. Zavolejte na místní číslo pro vaše dodací dopravce vyzvednutí naplánovat.
+    3. Ujistěte se, že Expediční štítek se zobrazují přednostně na vnější dodávky.
     4. Ujistěte se, že se ze zařízení odeberou staré popisky přesouvání z předchozích odeslání.
 3. Po náročné pole Data neexistoval a zkontrolovat vaším operátorem, aktualizace stavu objednávky na portálu **nenačítají**. Zobrazí se také ID sledování.
 

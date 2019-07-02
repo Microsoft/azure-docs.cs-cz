@@ -53,7 +53,7 @@ Aktivační události mají tyto prvky nejvyšší úrovně, i když některé j
 | Hodnota | Type | Popis | 
 |-------|------|-------------| 
 | <*trigger-name*> | String | Název aktivační události | 
-| <*Typ aktivační události*> | String | Typ aktivační události, jako je například "Http" nebo "ApiConnection" | 
+| <*trigger-type*> | String | Typ aktivační události, jako je například "Http" nebo "ApiConnection" | 
 | <*trigger-inputs*> | JSON – objekt | Vstupy, které definují chování triggeru | 
 | <*time-unit*> | String | Jednotka času, který popisuje, jak často se trigger spustí: "Druhý", "Minute", "Hour", "Day", "Týden", "Měsíc" | 
 | <*number-of-time-units*> | Integer | Hodnota, která určuje, jak často se trigger spustí na základě četnosti, což je počet časových jednotek počkat, až se trigger spustí znovu <p>Toto jsou minimální a maximální intervaly: <p>-Měsíc: 1 – 16 měsíců </br>-Den: 1 – 500 dnů </br>-Hodinu: 1 – 12 000 hodin </br>-Minutu: 1-72,000 minut </br>-Sekundu: 1-9,999,999 sekund<p>Například pokud je interval 6 a je frekvence "Měsíc", opakování je nastaveno na každých 6 měsíců. | 

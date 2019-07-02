@@ -9,12 +9,12 @@ ms.date: 09/26/2018
 ms.topic: tutorial
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, službě Azure Kubernetes, kontejnery, Helm, služby sítě, směrování sítě služby, kubectl, k8s
-ms.openlocfilehash: 323308b52874064658f65cf34abe18cc5ef208ff
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: e05dbc570836741a69ed229fc93eb32a7dfd01dd
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393450"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67503172"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core"></a>Začínáme s Azure Dev prostory s .NET Core
 
@@ -130,22 +130,46 @@ Sledujte výstup příkazu. Během jeho zpracování si můžete všimnout něko
 > Při prvním spuštění příkazu `up` budou tyto kroky trvat déle, ale následná spuštění by měla být rychlejší.
 
 ### <a name="test-the-web-app"></a>Test webové aplikace
-Ve výstupu konzoly vyhledejte informace o veřejné adrese URL, kterou vytvořil příkaz `up`. Bude v tomto tvaru: 
+Kontrola bude výstup konzoly pro *Application started* zprávu, která potvrzuje vytvoření `up` dokončení příkazu:
 
 ```
-(pending registration) Service 'webfrontend' port 'http' will be available at <url>
 Service 'webfrontend' port 80 (TCP) is available at 'http://localhost:<port>'
+Service 'webfrontend' port 'http' is available at http://webfrontend.1234567890abcdef1234.eus.azds.io/
+Microsoft (R) Build Engine version 15.9.20+g88f5fadfbe for .NET Core
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  webfrontend -> /src/bin/Debug/netcoreapp2.2/webfrontend.dll
+  webfrontend -> /src/bin/Debug/netcoreapp2.2/webfrontend.Views.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:00.94
+[...]
+webfrontend-5798f9dc44-99fsd: Now listening on: http://[::]:80
+webfrontend-5798f9dc44-99fsd: Application started. Press Ctrl+C to shut down.
 ```
 
-Tuto adresu URL otevřete v okně prohlížeče. Mělo by se zobrazit načítání webové aplikace. Během spouštění kontejneru se výstup `stdout` a `stderr` streamuje do okna terminálu.
+Identifikace veřejné adresy URL pro službu ve výstupu `up` příkazu. Končí na `.azds.io`. V předchozím příkladu je veřejnou adresu URL `http://webfrontend.1234567890abcdef1234.eus.azds.io/`.
+
+Pokud chcete zobrazit webovou aplikaci, otevřete veřejnou adresu URL v prohlížeči. Všimněte si také, `stdout` a `stderr` streamuje výstup do *azds trasování* okno terminálu při interakci s vaší webovou aplikací. Potěší vás také informace o sledování požadavků HTTP, které procházejí systému. Díky tomu je snadněji sledovat komplexní volání víc služeb během vývoje. Instrumentace přidal Dev prostory poskytuje této žádosti sledování.
+
+![okno terminálu azds trasování](media/get-started-netcore/azds-trace.png)
+
 
 > [!Note]
-> Při prvním spuštění může příprava veřejného záznamu DNS trvat několik minut. Pokud veřejnou adresu URL nelze vyřešit, můžete použít alternativní `http://localhost:<portnumber>` adresu URL, která se zobrazí ve výstupu konzoly. Pokud použijete adresu URL místního hostitele, může se zdát, že je kontejner spuštěný v místním prostředí, ale ve skutečnosti je spuštěný v AKS. Pro usnadnění práce a jednodušší interakci se službou z místního počítače vytvoří Azure Dev Spaces dočasný tunel SSH do kontejneru spuštěného v Azure. Můžete se vrátit a vyzkoušet veřejnou adresu URL později, jakmile bude záznam DNS připravený.
+> Kromě veřejné adresy URL, můžete použít alternativní `http://localhost:<portnumber>` adresu URL, která se zobrazí ve výstupu konzoly. Pokud použijete adresu URL místního hostitele, může se zdát, že je kontejner spuštěný v místním prostředí, ale ve skutečnosti je spuštěný v AKS. Azure Dev prostory používá Kubernetes *port vpřed* funkce, které mapují port místního hostitele do kontejneru ve službě AKS. To usnadňuje práci se službou z místního počítače.
 
 ### <a name="update-a-content-file"></a>Aktualizace souboru obsahu
 Azure Dev Spaces neslouží jenom ke spuštění kódu v prostředí Kubernetes. Umožňuje také rychle opakovaně prohlížet změny kódu, ke kterým dochází v prostředí Kubernetes v cloudu.
 
-1. Najděte soubor `./Views/Home/Index.cshtml` a upravte kód HTML. Můžete změnit řádek 70, na kterém je `<h2>Application uses</h2>`, třeba takto: `<h2>Hello k8s in Azure!</h2>`
+1. Najděte soubor `./Views/Home/Index.cshtml` a upravte kód HTML. Například změnit [řádku 73, který čte `<h2>Application uses</h2>` ](https://github.com/Azure/dev-spaces/blob/master/samples/dotnetcore/getting-started/webfrontend/Views/Home/Index.cshtml#L73) na něco jako: 
+
+    ```html
+    <h2>Hello k8s in Azure!</h2>
+    ```
+
 1. Uložte soubor. Za chvilku se v okně terminálu zobrazí zpráva o aktualizaci souboru ve spuštěném kontejneru.
 1. Přejděte do prohlížeče a aktualizujte stránku. Na webové stránce by se měl zobrazit aktualizovaný kód HTML.
 
@@ -160,7 +184,6 @@ Aktualizace souborů s kódem je o něco pracnější, protože aplikace .NET Co
 1. V okně terminálu spusťte `azds up`. 
 
 Tento příkaz znovu sestaví image kontejneru a znovu nasadí Helm chart. Pokud chcete vidět, jak se změny kódu projevily v běžící aplikaci, přejděte do nabídky O aplikaci webové aplikace.
-
 
 Existuje ještě *rychlejší způsob* vývoje kódu, který si ukážeme v další části. 
 
@@ -199,11 +222,11 @@ Když chcete v Kubernetes ladit kód, stiskněte **F5**.
 Stejně jako u příkazu `up` se kód synchronizuje s vývojovým prostorem a sestaví se kontejner, který se nasadí v Kubernetes. Ladicí program se tentokrát samozřejmě připojí ke vzdálenému kontejneru.
 
 > [!Tip]
-> Na stavovém řádku editoru VS Code se zobrazí adresa URL, na kterou můžete kliknout.
+> Stavový řádek VS Code se změní na oranžovou, která udává, že je připojen ladicí program. Zobrazí se také kliknout, čímž adresu URL, která slouží k otevření webu.
 
 ![](media/common/vscode-status-bar-url.png)
 
-V serverovém souboru s kódem nastavte zarážku, třeba ve funkci `Index()` ve zdrojovém souboru `Controllers/HomeController.cs`. Aktualizace stránky prohlížeče způsobí aktivaci zarážky.
+V serverovém souboru s kódem nastavte zarážku, třeba ve funkci `About()` ve zdrojovém souboru `Controllers/HomeController.cs`. Aktualizace stránky prohlížeče způsobí aktivaci zarážky.
 
 Máte plný přístup k informacím o ladění, jako je zásobník volání, místní proměnné, informace o výjimkách apod., stejně jako při lokálním spuštění kódu.
 
@@ -218,9 +241,9 @@ public IActionResult About()
 }
 ```
 
-Uložte soubor a v **podokně akcí ladicího programu** klikněte na tlačítko **Aktualizovat**. 
+Uložte soubor a v **podokna akcí ladění**, klikněte na tlačítko **restartovat** tlačítko. 
 
-![](media/get-started-netcore/debug-action-refresh.png)
+![](media/common/debug-action-refresh.png)
 
 Místo opětovného sestavení a nasazení nové image kontejneru po každé provedené změně, což často dlouho trvá, rekompiluje služba Azure Dev Spaces kód po přírůstcích ve stávajícím kontejneru, aby se zrychlil cyklus úprav/ladění.
 

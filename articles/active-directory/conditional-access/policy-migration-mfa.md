@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2804a50cc1ef7bb257e1549afabdef466ce3c2f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4819c283a136057ad7c3ffd755fd9e157d99a1bf
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112200"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509450"
 ---
 # <a name="migrate-a-classic-policy-that-requires-multi-factor-authentication-in-the-azure-portal"></a>Migrovat klasické zásady, která vyžaduje ověření službou Multi-Factor Authentication na webu Azure Portal
 
@@ -76,42 +76,32 @@ Proces migrace se skládá z následujících kroků:
 
    1. Pokud máte vybrané všechny uživatele v klasické zásady, klikněte na tlačítko **všichni uživatelé**. 
 
-   ![Podmíněný přístup](./media/policy-migration/35.png)
+      ![Podmíněný přístup](./media/policy-migration/35.png)
 
    1. Pokud máte vybrané v klasické zásady skupiny, klikněte na tlačítko **výběr uživatelů a skupin**a potom vyberte požadované uživatele a skupiny.
 
-   ![Podmíněný přístup](./media/policy-migration/36.png)
+      ![Podmíněný přístup](./media/policy-migration/36.png)
 
    1. Pokud máte vyloučené skupiny, klikněte na tlačítko **vyloučit** kartu a potom vyberte požadované uživatele a skupiny. 
 
-   ![Podmíněný přístup](./media/policy-migration/37.png)
+      ![Podmíněný přístup](./media/policy-migration/37.png)
 
 1. Na **nový** stránky, otevřete **cloudové aplikace** stránku, **přiřazení** klikněte na tlačítko **cloudové aplikace**.
-
 1. Na **cloudové aplikace** stránce, proveďte následující kroky:
-
-   ![Podmíněný přístup](./media/policy-migration/08.png)
-
    1. Klikněte na tlačítko **vyberte aplikace**.
-
    1. Klikněte na **Vybrat**.
-
    1. Na **vyberte** stránce vyberte cloudové aplikace a pak klikněte na **vyberte**.
-
    1. Na **cloudové aplikace** klikněte na **provádí**.
-
 1. Pokud máte **vyžadovat vícefaktorové ověřování** vybrané:
 
    ![Podmíněný přístup](./media/policy-migration/26.png)
 
    1. V **ovládací prvky přístupu** klikněte na tlačítko **udělení**.
 
-   ![Podmíněný přístup](./media/policy-migration/27.png)
+      ![Podmíněný přístup](./media/policy-migration/27.png)
 
    1. Na **udělení** klikněte na **udělit přístup**a potom klikněte na tlačítko **vyžadovat vícefaktorové ověřování**.
-
    1. Klikněte na **Vybrat**.
-
 1. Klikněte na tlačítko **na** povolit vaše zásady.
 
    ![Podmíněný přístup](./media/policy-migration/30.png)

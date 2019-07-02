@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: ae17ef749a353cd60227e31ba4dadf328b1dc935
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 301abe95b245603e5414eef84ce74cdc8de01d19
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66482450"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509832"
 ---
 # <a name="call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>Volání rozhraní Microsoft Graph API z desktopové aplikace Windows
 
@@ -28,7 +28,7 @@ Tato příručka ukazuje, jak nativní aplikace pro Windows Desktop .NET (XAML) 
 Po dokončení průvodce, vaše aplikace bude moct volat chráněné rozhraní API, které používá osobní účty (včetně outlook.com, live.com a další). Aplikace bude také použít pracovní a školní účty z jakéhokoli společnosti nebo organizace, která používá Azure Active Directory.  
 
 > [!NOTE]
-> V Průvodci vyžaduje Visual Studio 2015 Update 3 nebo Visual Studio 2019. Nemáte některou z těchto verzí? [Stáhněte si Visual Studio 2019 zdarma](https://www.visualstudio.com/downloads/).
+> V Průvodci vyžaduje Visual Studio 2015 Update 3, Visual Studio 2017 nebo Visual Studio 2019. Nemáte některé z těchto verzí? [Stáhněte si Visual Studio 2019 zdarma](https://www.visualstudio.com/downloads/).
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Jak funguje ukázkové aplikace vygenerované v této příručce
 

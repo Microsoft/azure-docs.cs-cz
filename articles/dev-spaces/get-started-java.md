@@ -10,12 +10,12 @@ ms.topic: tutorial
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, službě Azure Kubernetes, kontejnery, Helm, služby sítě, směrování sítě služby, kubectl, k8s
 manager: mmontwil
-ms.openlocfilehash: 0677eb4c65da242f8cfcb20754ec88ffb02c5929
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: 517951be2bc99f7607facaed3c9b04260fc6d3d8
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393163"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67503190"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-java"></a>Začínáme s Azure Dev prostory s Javou
 
@@ -137,18 +137,27 @@ Ve výstupu konzoly vyhledejte informace o veřejné adrese URL, kterou vytvoři
 
 ```
 (pending registration) Service 'webfrontend' port 'http' will be available at <url>
+Service 'webfrontend' port 'http' is available at http://webfrontend.1234567890abcdef1234.eus.azds.io/
 Service 'webfrontend' port 80 (TCP) is available at 'http://localhost:<port>'
 ```
 
-Tuto adresu URL otevřete v okně prohlížeče. Mělo by se zobrazit načítání webové aplikace. Během spouštění kontejneru se výstup `stdout` a `stderr` streamuje do okna terminálu.
+Identifikace veřejné adresy URL pro službu ve výstupu `up` příkazu. Končí na `.azds.io`. V předchozím příkladu je veřejnou adresu URL `http://webfrontend.1234567890abcdef1234.eus.azds.io/`.
+
+Pokud chcete zobrazit webovou aplikaci, otevřete veřejnou adresu URL v prohlížeči. Všimněte si také, `stdout` a `stderr` streamuje výstup do *azds trasování* okno terminálu při interakci s vaší webovou aplikací. Potěší vás také informace o sledování požadavků HTTP, které procházejí systému. Díky tomu je snadněji sledovat komplexní volání víc služeb během vývoje. Instrumentace přidal Dev prostory poskytuje této žádosti sledování.
 
 > [!Note]
-> Při prvním spuštění může příprava veřejného záznamu DNS trvat několik minut. Pokud veřejnou adresu URL nelze vyřešit, můžete použít alternativní `http://localhost:<portnumber>` adresu URL, která se zobrazí ve výstupu konzoly. Pokud použijete adresu URL místního hostitele, může se zdát, že je kontejner spuštěný v místním prostředí, ale ve skutečnosti je spuštěný v AKS. Pro usnadnění práce a jednodušší interakci se službou z místního počítače vytvoří Azure Dev Spaces dočasný tunel SSH do kontejneru spuštěného v Azure. Můžete se vrátit a vyzkoušet veřejnou adresu URL později, jakmile bude záznam DNS připravený.
-> ### <a name="update-a-content-file"></a>Aktualizace souboru obsahu
-> Azure Dev Spaces neslouží jenom ke spuštění kódu v prostředí Kubernetes. Umožňuje také rychle opakovaně prohlížet změny kódu, ke kterým dochází v prostředí Kubernetes v cloudu.
+> Kromě veřejné adresy URL, můžete použít alternativní `http://localhost:<portnumber>` adresu URL, která se zobrazí ve výstupu konzoly. Pokud použijete adresu URL místního hostitele, může se zdát, že je kontejner spuštěný v místním prostředí, ale ve skutečnosti je spuštěný v AKS. Azure Dev prostory používá Kubernetes *port vpřed* funkce, které mapují port místního hostitele do kontejneru ve službě AKS. To usnadňuje práci se službou z místního počítače.
+
+### <a name="update-a-content-file"></a>Aktualizace souboru obsahu
+Azure Dev Spaces neslouží jenom ke spuštění kódu v prostředí Kubernetes. Umožňuje také rychle opakovaně prohlížet změny kódu, ke kterým dochází v prostředí Kubernetes v cloudu.
 
 1. V okně terminálu stiskněte `Ctrl+C` (kvůli zastavení `azds up`).
-1. Otevřete soubor s kódem nazvaný `src/main/java/com/ms/sample/webfrontend/Application.java` a změňte úvodní zprávu: `return "Hello from webfrontend in Azure!";`
+1. Otevřít `src/main/java/com/ms/sample/webfrontend/Application.java`a upravit zprávu s pozdravem na [řádek 19](https://github.com/Azure/dev-spaces/blob/master/samples/java/getting-started/webfrontend/src/main/java/com/ms/sample/webfrontend/Application.java#L19):
+
+    ```java
+    return "Hello from webfrontend in Azure!";
+    ```
+
 1. Uložte soubor.
 1. V okně terminálu spusťte `azds up`.
 
@@ -181,7 +190,7 @@ Tím přidáte konfiguraci ladění pro Azure Dev Spaces do složky `.vscode`. N
 ![](media/get-started-java/debug-configuration.png)
 
 > [!Note]
-> Pokud na paletě příkazů nevidíte příkazy Azure Dev Spaces, ověřte, že máte nainstalované rozšíření VS Code pro Azure Dev Spaces. Ujistěte se, že pracovní prostor, který jste otevřeli ve VS Code, je složka obsahující soubor azds.yaml.
+> Pokud na paletě příkazů nevidíte příkazy Azure Dev Spaces, ověřte, že máte nainstalované rozšíření VS Code pro Azure Dev Spaces. Zkontrolujte, zda pracovní prostor otevřít ve VS Code, který obsahuje složku `azds.yaml`.
 
 ### <a name="debug-the-container-in-kubernetes"></a>Ladění kontejneru v Kubernetes
 Když chcete v Kubernetes ladit kód, stiskněte **F5**.
@@ -189,7 +198,7 @@ Když chcete v Kubernetes ladit kód, stiskněte **F5**.
 Stejně jako u příkazu `up` se kód synchronizuje s vývojovým prostorem a sestaví se kontejner, který se nasadí v Kubernetes. Ladicí program se tentokrát samozřejmě připojí ke vzdálenému kontejneru.
 
 > [!Tip]
-> Na stavovém řádku editoru VS Code se zobrazí adresa URL, na kterou můžete kliknout.
+> Stavový řádek VS Code se změní na oranžovou, která udává, že je připojen ladicí program. Zobrazí se také kliknout, čímž adresu URL, která slouží k otevření vaší aplikace.
 
 ![](media/common/vscode-status-bar-url.png)
 
@@ -207,9 +216,9 @@ public String greeting()
 }
 ```
 
-Uložte soubor a v **podokně akcí ladicího programu** klikněte na tlačítko **Aktualizovat**.
+Uložte soubor a v **podokna akcí ladění**, klikněte na tlačítko **restartovat** tlačítko.
 
-![](media/get-started-java/debug-action-refresh.png)
+![](media/common/debug-action-refresh.png)
 
 Místo opětovného sestavení a nasazení nové image kontejneru po každé provedené změně, což často dlouho trvá, rekompiluje služba Azure Dev Spaces kód po přírůstcích ve stávajícím kontejneru, aby se zrychlil cyklus úprav/ladění.
 
