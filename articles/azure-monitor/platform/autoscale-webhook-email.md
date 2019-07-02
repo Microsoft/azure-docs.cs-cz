@@ -10,7 +10,7 @@ ms.author: ancav
 ms.subservice: autoscale
 ms.openlocfilehash: 25ef2541dfa0b4cbd6e11d64381da645acfe653a
 ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/13/2019
 ms.locfileid: "60787301"
@@ -18,7 +18,7 @@ ms.locfileid: "60787301"
 # <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>Pomocí akcí automatického škálování můžete poslat e-mail a webhook oznámení výstrah ve službě Azure Monitor
 Tento článek popisuje, jak nastavit aktivační události tak, aby je volání adresy URL konkrétních webů nebo odeslat e-mailů na základě akcí automatického škálování v Azure.  
 
-## <a name="webhooks"></a>Webhooky
+## <a name="webhooks"></a>webhooks
 Webhooky umožňují směrování Azure oznámení výstrah do jiných systémů pro následné zpracování nebo vlastních oznámení. Například směrování výstraze služby, které může zpracovávat příchozí webového požadavku k odeslání že serveru SMS, protokol chyb, upozornění týmu pomocí chat nebo zasílání zpráv služby atd. Webhook identifikátor URI musí být platný koncový bod HTTP nebo HTTPS.
 
 ## <a name="email"></a>Email
@@ -62,7 +62,7 @@ Při použití rozhraní REST API nebo Resource Manageru šablony, zahrnují ele
 
 | Pole | Povinné? | Popis |
 | --- | --- | --- |
-| operation |ano |Hodnota musí být "Škálovací" |
+| Operace |ano |Hodnota musí být "Škálovací" |
 | sendToSubscriptionAdministrator |ano |Hodnota musí být "true" nebo "false" |
 | sendToSubscriptionCoAdministrators |ano |Hodnota musí být "true" nebo "false" |
 | customEmails |ano |Hodnota může být null [] nebo pole řetězců e-mailů |
@@ -106,7 +106,7 @@ Při generování oznámení automatického škálování je datová část webh
 | Pole | Povinné? | Popis |
 | --- | --- | --- |
 | status |ano |Stav, který určuje, zda byla vygenerována akce automatického škálování |
-| operation |ano |Pro zvýšení instancí je "Horizontální navýšení kapacity" a snížení v instancích, bude "Škálování v" |
+| Operace |ano |Pro zvýšení instancí je "Horizontální navýšení kapacity" a snížení v instancích, bude "Škálování v" |
 | context |ano |Kontext akce automatického škálování |
 | timestamp |ano |Časové razítko při aktivaci akce automatického škálování |
 | id |Ano |ID správce prostředků zadaném nastavení automatického škálování |
@@ -115,7 +115,7 @@ Při generování oznámení automatického škálování je datová část webh
 | subscriptionId |Ano |ID předplatného cílového prostředku, který je právě škálovat |
 | resourceGroupName |Ano |Název skupiny prostředků cílového prostředku, který je právě škálovat |
 | resourceName |Ano |Název cílového prostředku, který je právě škálovat |
-| resourceType |Ano |Tři podporované hodnoty: "microsoft.classiccompute/domainnames/slots/roles" – Cloudová služba role, "microsoft.compute/virtualmachinescalesets" - Virtual Machine Scale Sets a "Microsoft.Web/serverfarms" – webové aplikace |
+| Typ prostředku |Ano |Tři podporované hodnoty: "microsoft.classiccompute/domainnames/slots/roles" – Cloudová služba role, "microsoft.compute/virtualmachinescalesets" - Virtual Machine Scale Sets a "Microsoft.Web/serverfarms" – webové aplikace |
 | resourceId |Ano |Resource Manager ID cílového prostředku, který je právě škálovat |
 | portalLink |Ano |Azure portal odkaz na stránku Souhrn v cílový prostředek |
 | oldCapacity |Ano |Aktuální (staré) počet instancí kdy automatického škálování je akce škálování |
