@@ -54,8 +54,10 @@
       href: pre-reqs.md
     - name: Síťové topologie pro migrace Azure SQL DB MI
       href: resource-network-topologies.md
-    - name: Známé problémy
+    - name: Řešení potíží a známé problémy
       items:
+        - name: Řešení potíží s možnostmi připojení zdrojové databáze
+          href: known-issues-troubleshooting-dms-source-connectivity.md
         - name: Řešení běžných potíží a chyb
           href: known-issues-troubleshooting-dms.md
         - name: Známé problémy – online migrace do Azure SQL DB

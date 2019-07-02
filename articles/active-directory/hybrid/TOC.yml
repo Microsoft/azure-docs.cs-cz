@@ -22,6 +22,8 @@
       items:
         - name: Cloudově řízená správa pro místní úlohy
           href: cloud-governed-management-for-on-premises.md
+        - name: Čtyři kroky k posílení základu identit
+          href: four-steps.md
     - name: Azure AD Connect a Connect Health
       items:
         - name: Co je Azure AD Connect a Connect Health?
@@ -68,6 +70,8 @@
       items:
         - name: Co je Azure AD Connect Sync?
           href: how-to-connect-sync-whatis.md
+        - name: Účet služby Azure ADSync
+          href: concept-adsync-service-account.md
         - name: Funkce služby Azure AD Connect Sync
           href: how-to-connect-syncservice-features.md
         - name: Co je správce služeb synchronizace Azure AD Connect?

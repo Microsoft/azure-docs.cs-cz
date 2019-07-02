@@ -137,6 +137,8 @@
           href: overview-opc-twin.md
         - name: Co je OPC Vault
           href: overview-opc-vault.md
+        - name: Co je vydavatel OPC
+          href: overview-opc-publisher.md
         - name: Co je propojená továrna
           href: iot-accelerators-connected-factory-features.md
     - name: Šablony Rychlý start
@@ -153,8 +155,6 @@
           items:
             - name: Použití řídicího panelu
               href: iot-accelerators-connected-factory-dashboard.md
-            - name: Použití vydavatele OPC
-              href: 'https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md'
             - name: Konfigurace akcelerátoru řešení
               href: iot-accelerators-connected-factory-configure.md
             - name: Přizpůsobení akcelerátoru řešení
@@ -177,6 +177,12 @@
                   href: howto-opc-vault-deploy-existing-client-server-communication.md
             - name: Nasazení služby OPC Vault od nuly
               href: howto-opc-vault-deploy-scratch.md
+        - name: Vydavatel OPC
+          items:
+            - name: Konfigurace vydavatele OPC
+              href: howto-opc-publisher-configure.md
+            - name: Spuštění vydavatele OPC
+              href: howto-opc-publisher-run.md
     - name: Zdroje a prostředky
       items:
         - name: Úložiště GitHub

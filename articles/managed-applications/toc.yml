@@ -29,10 +29,18 @@
       href: sample-projects.md
 - name: Koncepty
   items:
-    - name: Vlastní poskytovatelé
+    - name: Poskytovatelé vlastních prostředků Azure
       href: custom-providers-overview.md
+    - name: Zobrazení definičních artefaktů
+      href: concepts-view-definition.md
 - name: Návody
   items:
+    - name: Poskytovatelé vlastních prostředků
+      items:
+        - name: Přidání vlastních akcí do Azure
+          href: custom-providers-action-endpoint-how-to.md
+        - name: Přidání vlastních prostředků do Azure
+          href: custom-providers-resources-endpoint-how-to.md
     - name: Vydavatelé
       items:
         - name: Vytvoření rozhraní portálu
@@ -57,6 +65,12 @@
           href: approve-just-in-time-access.md
 - name: Referenční informace
   items:
+    - name: Poskytovatelé vlastních prostředků
+      items:
+        - name: Referenční informace k proxy vlastních prostředků
+          href: custom-providers-proxy-resource-endpoint-reference.md
+        - name: Referenční informace k mezipaměti vlastních prostředků
+          href: custom-providers-proxy-cache-resource-endpoint-reference.md
     - name: Azure CLI
       href: /cli/azure/managedapp
     - name: PowerShell

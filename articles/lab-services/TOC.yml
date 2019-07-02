@@ -34,6 +34,8 @@
           href: 'https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates'
         - name: Azure PowerShell
           href: samples-powershell.md
+        - name: Azure PowerShell – modul Az.DevTestLabs2
+          href: 'https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Modules/Library'
         - name: Azure CLI
           href: samples-cli.md
 - name: Koncepty
@@ -283,6 +285,8 @@
           href: /cli/azure/lab
         - name: PowerShell
           href: /powershell/module/az.devtestlabs
+        - name: PowerShell – ukázkový modul Az.DevTestLabs2
+          href: 'https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Modules/Library'
         - name: REST API
           href: 'https://docs.microsoft.com/rest/api/dtl/'
         - name: Šablona Resource Manageru

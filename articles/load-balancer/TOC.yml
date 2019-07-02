@@ -188,6 +188,8 @@
       href: /learn/browse/?products=azure-virtual-machines
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/?category=networking'
+    - name: Názory na Azure Load Balancer
+      href: 'https://feedback.azure.com/forums/217313-networking/category/77467-load-balancing'
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/load-balancer/'
     - name: Cenová kalkulačka

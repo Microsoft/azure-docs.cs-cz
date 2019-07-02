@@ -19,6 +19,8 @@
     - name: Vývoj aplikací
       expanded: true
       items:
+        - name: Použití Draftu
+          href: kubernetes-draft.md
         - name: Použití jazyka Java (VS Code a CLI)
           href: ../dev-spaces/quickstart-java.md
           maintainContext: true
@@ -82,7 +84,7 @@
               href: operator-best-practices-container-image-management.md
             - name: Sítě
               href: operator-best-practices-network.md
-            - name: Úložiště
+            - name: Storage
               href: operator-best-practices-storage.md
             - name: Provozní kontinuita a zotavení po havárii
               href: operator-best-practices-multi-region.md
@@ -153,6 +155,8 @@
               href: configure-azure-cni.md
         - name: Vytvořte interní nástroj pro vyrovnávání zatížení.
           href: internal-lb.md
+        - name: Použití Load Balanceru úrovně Standard (Preview)
+          href: load-balancer-standard.md
         - name: Použití statické IP adresy
           href: static-ip.md
         - name: Příchozí přenos dat
@@ -187,6 +191,8 @@
           href: use-pod-security-policies.md
         - name: Definování rozsahů IP adres autorizovaných serverem podporujícím rozhraní API (Preview)
           href: api-server-authorized-ip-ranges.md
+        - name: Řízení nasazování s využitím Azure Policy (Preview)
+          href: ../governance/policy/concepts/rego-for-aks.md?toc=/azure/aks/toc.json
         - name: Aktualizace přihlašovacích údajů instančního objektu clusteru
           href: update-credentials.md
         - name: Omezení a řízení výchozího přenosu clusteru (Preview)
@@ -280,8 +286,6 @@
                   maintainContext: true
         - name: Spouštění aplikací pomocí Helm
           href: kubernetes-helm.md
-        - name: Vývoj aplikací pomocí Draft
-          href: kubernetes-draft.md
         - name: Použití technologie Open Service Broker for Azure
           href: integrate-azure.md
         - name: Použití rozhraní API Cosmos DB pro MongoDB s využitím OSBA

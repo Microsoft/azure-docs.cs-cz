@@ -26,6 +26,10 @@
       href: oracle-backup-recovery.md
     - name: Možnosti Oraclu pro zotavení po havárii
       href: oracle-disaster-recovery.md
+- name: Návody
+  items:
+    - name: Vzájemné propojení Azure a OCI – Preview
+      href: configure-azure-oci-networking.md
 - name: Zdroje a prostředky
   items:
     - name: Plány Azure do budoucna

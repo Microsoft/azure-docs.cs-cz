@@ -1,0 +1,36 @@
+- name: Dokumentace k Azure FXT Edge Fileru
+  href: index.yml
+- name: Přehled
+  items:
+    - name: Co je Azure FXT Edge Filer?
+      href: fxt-overview.md
+- name: Kurzy
+  items:
+    - name: 1. Instalace hardwaru
+      href: fxt-install.md
+    - name: 2. Připojení síťových portů a napájení
+      href: fxt-network-power.md
+    - name: 3. Nastavení hesel hardwaru
+      href: fxt-node-password.md
+    - name: 4. Vytvoření clusteru
+      href: fxt-cluster-create.md
+    - name: 5. Přidání uzlů clusteru
+      href: fxt-add-nodes.md
+    - name: 6. Přidání back-endového úložiště a konfigurace virtuálního oboru názvů
+      href: fxt-add-storage.md
+    - name: 7. Konfigurace síťových nastavení clusteru
+      href: fxt-configure-network.md
+- name: Návody
+  items:
+    - name: Připojení klientů
+      href: fxt-mount-clients.md
+    - name: Monitorování hardwaru Azure FXT Edge Fileru
+      href: fxt-monitor.md
+    - name: Bezpečné vypnutí hardwarového uzlu
+      href: fxt-power-off.md
+- name: Zdroje a prostředky
+  items:
+    - name: Specifikace hardwaru
+      href: fxt-specs.md
+    - name: Další dokumentace
+      href: fxt-additional-doc.md

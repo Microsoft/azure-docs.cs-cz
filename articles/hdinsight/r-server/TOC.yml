@@ -4,16 +4,23 @@
   items:
     - name: Co jsou služby ML Services v HDInsightu?
       href: r-server-overview.md
-- name: Začínáme
+- name: Šablony Rychlý start
+  expanded: true
   items:
-    - name: Začínáme se službami ML
-      href: r-server-get-started.md
+    - name: Ukázková úloha – RStudio Server
+      href: ./machine-learning-services-quickstart-job-rstudio.md
+    - name: Ukázková úloha – konzola R
+      href: ./machine-learning-services-quickstart-job-rconsole.md
+- name: Kurzy
+  items:
+    - name: R ve výpočetním kontextu Sparku v HDInsightu
+      href: ml-services-tutorial-spark-compute.md
+- name: Koncepty
+  items:
     - name: Instalace aplikací HDInsight
       href: ../hdinsight-apps-install-applications.md
     - name: Plánování kapacity clusteru
       href: ../hdinsight-capacity-planning.md
-- name: Koncepty
-  items:
     - name: Součásti systému Apache Hadoop ve službě HDInsight
       href: ../hdinsight-component-versioning.md
     - name: HDInsight 4.0
@@ -56,8 +63,6 @@
           href: ../hdinsight-hadoop-customize-cluster-linux.md
         - name: Vývoj akcí skriptů
           href: ../hdinsight-hadoop-script-actions-linux.md
-        - name: Instalace a použití Presta
-          href: ../hdinsight-hadoop-install-presto.md
         - name: Přidání knihoven Apache Hivu
           href: ../hdinsight-hadoop-add-hive-libraries.md
         - name: Použití Apache Giraphu

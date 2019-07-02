@@ -6,10 +6,15 @@
       href: ./apache-interactive-query-get-started.md
       maintainContext: true
 - name: Šablony Rychlý start
+  expanded: true
   items:
     - name: Zpracování dotazů Apache Hivu – Apache Zeppelin
       href: ./hdinsight-connect-hive-zeppelin.md
-- name: Začínáme
+- name: Kurzy
+  items:
+    - name: Analýza dat s interaktivními dotazy
+      href: ./interactive-query-tutorial-analyze-flight-data.md
+- name: Koncepty
   items:
     - name: Instalace aplikací HDInsight
       href: ../hdinsight-apps-install-applications.md
@@ -104,9 +109,6 @@
           maintainContext: true
         - name: Analýza uložených tweetů
           href: ../hdinsight-analyze-twitter-data-linux.md
-          maintainContext: true
-        - name: Analýza údajů o zpoždění letů
-          href: ../hdinsight-analyze-flight-delay-data-linux.md
           maintainContext: true
     - name: Rozšíření clusterů
       items:
@@ -246,9 +248,6 @@
         - name: Opravy operačního systému pro cluster HDInsight
           href: ../hdinsight-os-patching.md
           maintainContext: true
-        - name: Migrace úloh Hive na HDInsight 4.0
-          href: apache-hive-migrate-workloads.md
-          maintainContext: true
     - name: Řešení potíží
       href: ../hdinsight-troubleshoot-guide.md
       maintainContext: true
@@ -334,6 +333,11 @@
         - name: Monitorování výkonu clusteru
           href: ../hdinsight-key-scenarios-to-monitor.md
           maintainContext: true
+- name: Postup
+  items:
+    - name: Migrace úloh Hive na HDInsight 4.0
+      href: apache-hive-migrate-workloads.md
+      maintainContext: true
 - name: Referenční informace
   items:
     - name: Ukázky kódů

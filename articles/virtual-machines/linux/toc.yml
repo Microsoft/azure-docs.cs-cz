@@ -274,13 +274,13 @@
           items:
             - name: Přehled
               href: image-builder-overview.md
-            - name: Použití CLI
+            - name: Použití Azure CLI
               href: image-builder.md
             - name: Referenční informace k šablonám
               href: image-builder-json.md
-            - name: Použití společně s galeriemi
+            - name: Sestavení pro galerie imagí
               href: image-builder-gallery.md
-            - name: Aktualizace verze image
+            - name: Aktualizace existující image
               href: image-builder-gallery-update-image-version.md
             - name: Řešení potíží
               href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'

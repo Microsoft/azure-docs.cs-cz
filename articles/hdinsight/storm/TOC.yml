@@ -9,20 +9,20 @@
   items:
     - name: Vytvoření topologie Apache Stormu v HDInsightu
       href: ./apache-storm-quickstart.md
-- name: Začínáme
+- name: Kurzy
   items:
-    - name: Vytvoření clusteru Apache Storm
-      href: apache-storm-tutorial-get-started-linux.md
-    - name: Instalace aplikací HDInsight
-      href: ../hdinsight-apps-install-applications.md
-    - name: Plánování kapacity
-      href: ../hdinsight-capacity-planning.md
+    - name: Použití Apache Stormu k zápisu do úložiště
+      href: apache-storm-write-data-lake-store.md
 - name: Koncepty
   items:
     - name: Součásti systému Apache Hadoop ve službě HDInsight
       href: ../hdinsight-component-versioning.md
     - name: HDInsight 4.0
       href: ../hdinsight-version-release.md
+    - name: Instalace aplikací HDInsight
+      href: ../hdinsight-apps-install-applications.md
+    - name: Plánování kapacity
+      href: ../hdinsight-capacity-planning.md
 - name: Postup
   items:
     - name: Vývoj topologií Apache Storm
@@ -47,10 +47,6 @@
           href: 'https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/'
         - name: 'Event Hub a Apache Storm (C# a Java)'
           href: apache-storm-develop-csharp-event-hub-topology.md
-        - name: Azure Storage/Data Lake Storage (Java)
-          href: apache-storm-write-data-lake-store.md
-        - name: 'Centrum událostí, Apache HBase (Java)'
-          href: apache-storm-sensor-data-analysis.md
     - name: Rozšíření clusterů
       items:
         - name: Přizpůsobení clusterů pomocí Bootstrap

@@ -2,7 +2,7 @@
   href: index.yml
 - name: Přehled
   items:
-    - name: Co je Průzkumník dat?
+    - name: Co je Azure Data Explorer?
       href: data-explorer-overview.md
 - name: Šablony Rychlý start
   expanded: true
@@ -15,8 +15,6 @@
       items:
         - name: Webové uživatelské rozhraní
           href: web-query-data.md
-        - name: Python
-          href: python-query-data.md
 - name: Kurzy
   items:
     - name: Ingestování dat bez použití kódu
@@ -68,12 +66,18 @@
       items:
         - name: Zápis dotazů
           href: write-queries.md
-        - name: Analýza časových řad
-          href: time-series-analysis.md
-        - name: Detekce a předpovědi anomálií
-          href: anomaly-detection.md
-        - name: Strojové učení
-          href: machine-learning-clustering.md
+        - name: Dotazování na data ve službě Azure Data Lake
+          href: data-lake-query-data.md
+        - name: Python
+          href: python-query-data.md
+        - name: Strojové učení a analýzy časových řad
+          items:
+            - name: Analýza časových řad
+              href: time-series-analysis.md
+            - name: Detekce a předpovědi anomálií
+              href: anomaly-detection.md
+            - name: Strojové učení
+              href: machine-learning-clustering.md
     - name: Vizualizace dat
       items:
         - name: Power BI

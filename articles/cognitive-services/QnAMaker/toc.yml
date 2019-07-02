@@ -144,6 +144,13 @@
 - name: Referenční informace
   items:
     - name: Reference k rozhraní REST API
+      items:
+        - name: Rozhraní API pro vytváření
+          href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase'
+        - name: Rozhraní GenerateAnswer API
+          href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer'
+        - name: Rozhraní Train API
+          href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train'
       href: 'https://go.microsoft.com/fwlink/?linkid=2092179'
     - name: Nejčastější dotazy
       href: faqs.md

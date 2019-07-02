@@ -19,6 +19,8 @@
 - name: Koncepty
   expanded: false
   items:
+    - name: Využití podmíněného přístupu
+      href: howto-conditional-access-adoption-kit.md
     - name: Zásady základní ochrany
       href: concept-baseline-protection.md
     - name: Podmínky

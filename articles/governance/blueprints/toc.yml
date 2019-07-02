@@ -49,11 +49,33 @@
         - name: Kroky pro nasazení
           displayName: 'standards, iso, 27001'
           href: ./samples/iso27001-ase-sql-workload/deploy.md
-    - name: UK OFFICIAL
+    - name: NIST SP 800-53 Rev 4
       items:
         - name: Mapování kontrol
-          displayName: 'standards, uk official'
+          displayName: 'standards, nist, 800-53'
+          href: ./samples/nist-sp-800-53-rev4/control-mapping.md
+    - name: PCI-DSS v3.2.1
+      items:
+        - name: Přehled
+          displayName: 'standards, Payment Card Industry Data Security Standard'
+          href: ./samples/pci-dss-3.2.1/index.md
+        - name: Mapování kontrol
+          displayName: 'standards, Payment Card Industry Data Security Standard'
+          href: ./samples/pci-dss-3.2.1/control-mapping.md
+        - name: Kroky pro nasazení
+          displayName: 'standards, Payment Card Industry Data Security Standard'
+          href: ./samples/pci-dss-3.2.1/deploy.md
+    - name: UK OFFICIAL a UK NHS
+      items:
+        - name: Přehled
+          displayName: 'standards, uk official, uk nhs'
+          href: ./samples/ukofficial/index.md
+        - name: Mapování kontrol
+          displayName: 'standards, uk official, uk nhs'
           href: ./samples/ukofficial/control-mapping.md
+        - name: Kroky pro nasazení
+          displayName: 'standards, uk official, uk nhs'
+          href: ./samples/ukofficial/deploy.md
 - name: Koncepty
   items:
     - name: Životní cyklus podrobného plánu

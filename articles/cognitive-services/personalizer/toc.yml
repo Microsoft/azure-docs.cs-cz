@@ -62,12 +62,20 @@
       href: 'https://go.microsoft.com/fwlink/?linkid=2092082'
     - name: Sady SDK
       items:
-        - name: Referenční informace k sadě .NET SDK
-          href: 'https://go.microsoft.com/fwlink/?linkid=2092353'
-        - name: Balíček NuGet
-          href: 'https://go.microsoft.com/fwlink/?linkid=2092272'
+        - name: .NET
+          items:
+            - name: Referenční informace k sadě .NET SDK
+              href: 'https://go.microsoft.com/fwlink/?linkid=2092353'
+            - name: Balíček NuGet
+              href: 'https://go.microsoft.com/fwlink/?linkid=2092272'
+        - name: Python
+          items:
+            - name: Balíček Pypi
+              href: 'https://pypi.org/project/azure-cognitiveservices-personalizer/'
 - name: Zdroje a prostředky
   items:
+    - name: Řešení potíží
+      href: troubleshooting.md
     - name: Regionální dostupnost
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: Dodržování předpisů

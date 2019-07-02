@@ -58,6 +58,12 @@
       href: cross-network-connectivity.md
     - name: Běžné atributy zabezpečení Azure
       href: expressroute-security-attributes.md
+    - name: Návrh pro vysokou dostupnost
+      href: designing-for-high-availability-with-expressroute.md
+    - name: Návrh pro zotavení po havárii
+      items:
+        - name: Soukromý partnerský vztah
+          href: designing-for-disaster-recovery-with-expressroute-privatepeering.md
 - name: Návody
   items:
     - name: Vytvoření a změny okruhu

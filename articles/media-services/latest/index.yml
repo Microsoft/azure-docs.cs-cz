@@ -55,34 +55,22 @@ sections:
         className: cardsM
         columns: 1
         items:
-          - image:
-              src: media/index/dotnet.svg
-            html: '<p>V tomto kurzu se načte místní videosoubor, zakóduje se a potom se tento kódovaný obsah streamuje.<p/>'
+          - html: '<p>V tomto kurzu se načte místní videosoubor, zakóduje se a potom se tento kódovaný obsah streamuje.<p/>'
             href: /azure/media-services/latest/stream-files-tutorial-with-api
             title: Kódování načteného souboru a streamování videa
-          - image:
-              src: media/index/dotnet.svg
-            html: '<p>Kurz vysvětluje nastavení pro živou událost. Dál ukazuje, jak použít .NET Core k vytvoření průchozího typu události v reálném čase.</p>'
+          - html: '<p>Kurz vysvětluje nastavení pro živou událost. Dál ukazuje, jak vytvořit průchozí typ události v reálném čase.</p>'
             href: /azure/media-services/latest/stream-live-tutorial-with-api
             title: Živé vysílání
-          - image:
-              src: media/index/dotnet.svg
-            html: '<p>Tento kurz vám ukáže, jak analyzovat video pomocí rozhraní API služby Azure Media Services.</p>'
+          - html: '<p>Tento kurz vám ukáže, jak analyzovat video pomocí rozhraní API služby Azure Media Services.</p>'
             href: /azure/media-services/latest/analyze-videos-tutorial-with-api
             title: Analýza videa
-          - image:
-              src: media/index/dotnet.svg
-            html: '<p>Naučíte se, jak konfigurovat a využívat rozhraní API služby Media Services k dynamickému šifrování vašeho obsahu s využitím AES-128.</p>'
+          - html: '<p>Naučíte se, jak konfigurovat a využívat rozhraní API služby Media Services k dynamickému šifrování vašeho obsahu s využitím AES-128.</p>'
             href: /azure/media-services/latest/protect-with-aes128
             title: Dynamické šifrování s využitím AES-128
-          - image:
-              src: media/index/dotnet.svg
-            html: '<p>Naučíte se, jak konfigurovat a využívat rozhraní API služby Media Services k dynamickému šifrování vašeho obsahu s využitím více variant DRM (PlayReady, Widevine a FairPlay).</p>'
+          - html: '<p>Naučíte se, jak konfigurovat a využívat rozhraní API služby Media Services k dynamickému šifrování vašeho obsahu s využitím více variant DRM (PlayReady, Widevine a FairPlay).</p>'
             href: /azure/media-services/latest/protect-with-drm
             title: Dynamické šifrování s využitím více variant DRM
-          - image:
-              src: media/index/rest.svg
-            html: <p>Tento kurz ukazuje kódování vzdáleného souboru na základě adresy URL a streamování videa.</p>
+          - html: <p>Tento kurz ukazuje kódování vzdáleného souboru na základě adresy URL a streamování videa.</p>
             href: /azure/media-services/latest/stream-files-tutorial-with-rest
             title: Kódování vzdáleného souboru a streamování videa
   - title: Ukázky

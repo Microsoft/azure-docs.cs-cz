@@ -232,7 +232,7 @@
             - name: Audit nastavení auditování na úrovni databáze SQL
               displayName: auditIfNotExists
               href: samples/audit-sql-db-audit-setting.md
-    - name: Úložiště
+    - name: Storage
       items:
         - name: Povolené skladové položky pro účet úložiště a virtuální počítače
           displayName: 'initiative, vmSKUs, storageSKUs'
@@ -260,6 +260,9 @@
     - name: Vysvětlení efektu služby Policy
       displayName: 'order, evaluation'
       href: ./concepts/effects.md
+    - name: Azure Policy pro Kubernetes
+      displayName: 'aks, rego, k8s, opa, open policy agent, gatekeeper'
+      href: ./concepts/rego-for-aks.md
     - name: Auditování virtuálních počítačů s konfigurací hosta
       displayName: 'provider, tools, definition'
       href: ./concepts/guest-configuration.md

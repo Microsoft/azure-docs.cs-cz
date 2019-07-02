@@ -66,6 +66,8 @@
           href: how-to-navigate-apis.md
         - name: Běžné vzory dotazů
           href: how-to-query-common-apis.md
+    - name: Registrace aplikace s využitím ADD starší verze
+      href: how-to-use-legacy-aad.md
 - name: Referenční informace
   items:
     - name: Klientská knihovna uživatelem definovaných funkcí

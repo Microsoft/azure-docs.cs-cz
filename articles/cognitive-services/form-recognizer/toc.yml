@@ -17,6 +17,8 @@
               href: quickstarts/python-train-extract.md
 - name: Návody
   items:
+    - name: Vytvoření trénovací sady dat
+      href: build-training-data-set.md
     - name: Použití kontejnerů
       items:
         - name: Instalace a spuštění kontejnerů

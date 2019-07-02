@@ -70,8 +70,16 @@
           href: how-tos/text-analytics-how-to-install-containers.md
         - name: Konfigurace kontejnerů
           href: text-analytics-resource-container-config.md
-        - name: Spouštění ve službě Azure Kubernetes Service
-          href: How-tos/text-analytics-how-to-use-container-instance.md
+        - name: Použití instancí kontejneru (ACI)
+          items:
+            - name: Analýza mínění
+              href: how-tos/use-sentiment-analysis-on-aci.md
+        - name: Použití služby Kubernetes (AKS)
+          items:
+            - name: Rozpoznávání jazyka
+              href: how-tos/use-language-detection-on-aks.md
+            - name: Analýza mínění
+              href: how-tos/use-sentiment-analysis-on-aks.md
     - name: Použití připojené služby analýzy textu
       href: vs-text-connected-service.md
 - name: Referenční informace

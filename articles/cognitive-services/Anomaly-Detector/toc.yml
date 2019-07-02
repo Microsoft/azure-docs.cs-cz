@@ -58,6 +58,8 @@
       href: 'https://aka.ms/adpricing'
     - name: Regionální dostupnost
       href: 'https://aka.ms/adregion'
+    - name: Obsah generovaný uživateli
+      href: user-generated-content.md
     - name: Zapojte se skupiny poradců k Detektoru anomálií v Microsoft Teams
       href: 'https://aka.ms/adadvisorsjoin'
     - name: Architektura referenčních řešení
