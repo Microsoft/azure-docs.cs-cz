@@ -153,14 +153,14 @@ Následující tabulka popisuje parametry a hodnoty použité k vytvoření upoz
 | Parametr | value |
 | --- | --- |
 | Name |simpletestdiskwrite |
-| Umístění tohoto upozornění pravidla |USA – východ |
+| Umístění tohoto upozornění pravidla |East US |
 | ResourceGroup |montest |
 | TargetResourceId |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
-| MetricName výstrahy, která je vytvořena |\PhysicalDisk (využití _celkem) \Disk zápisů za sekundu. Zobrazit `Get-MetricDefinitions` rutiny o tom, jak získat přesné názvy metrik |
+| MetricName výstrahy, která je vytvořena |\PhysicalDisk(_Total)\Disk Writes/sec. See the `Get-MetricDefinitions` cmdlet about how to retrieve the exact metric names |
 | – Operátor |GreaterThan |
 | Prahová hodnota (počet za sekundu za pro tuto metriku) |1 |
 | Velikost_okna (ve formátu hh: mm:) |00:05:00 |
-| agregátoru (Statistika metriky, které v tomto případě používá průměrný počet) |Průměr |
+| agregátoru (Statistika metriky, které v tomto případě používá průměrný počet) |Average |
 | vlastní e-mailů (pole řetězců) |'foo@example.com','bar@example.com' |
 | poslat vlastníci, přispěvatelé a čtenáři e-mailu |-SendToServiceOwners |
 
