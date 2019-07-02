@@ -252,6 +252,8 @@
           href: troubleshoot-azure-files.md
         - name: SQL Server
           href: backup-sql-server-azure-troubleshoot.md
+        - name: Zálohování SAP HANA ve virtuálních počítačích Azure
+          href: backup-azure-sap-hana-database-troubleshoot.md
         - name: Stav systému
           href: backup-azure-system-state-troubleshoot.md
     - name: Monitorování úloh služby Azure Backup

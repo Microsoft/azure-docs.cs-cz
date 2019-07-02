@@ -302,6 +302,8 @@
           href: luis-reference-prebuilt-number.md
         - name: Entita Ordinal
           href: luis-reference-prebuilt-ordinal.md
+        - name: Entita Ordinal V2
+          href: luis-reference-prebuilt-ordinal-v2.md
         - name: Entita Percentage
           href: luis-reference-prebuilt-percentage.md
         - name: Entita PersonName

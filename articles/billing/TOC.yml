@@ -25,6 +25,8 @@
       href: billing-understand-your-invoice.md
     - name: Vysvětlení podmínek fakturace – pouze smlouva se zákazníkem Microsoftu
       href: billing-mca-understand-your-invoice.md
+    - name: Jak platit faktury – pouze smlouva se zákazníkem Microsoftu
+      href: billing-how-to-pay-bill.md
     - name: Fakturační účty pro smlouvu se zákazníkem Microsoftu
       href: billing-mca-overview.md
 - name: Správa nákladů
@@ -79,7 +81,7 @@
               href: billing-understand-suse-reservation-charges.md
         - name: Náklady na software nejsou součástí
           href: billing-reserved-instance-windows-software-costs.md
-        - name: Využití pro průběžné platby
+        - name: Využití pro jednotlivá předplatná
           href: billing-understand-reserved-instance-usage.md
         - name: Využití pro Enterprise
           href: billing-understand-reserved-instance-usage-ea.md
