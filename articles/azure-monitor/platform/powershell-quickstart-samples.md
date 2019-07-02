@@ -156,7 +156,7 @@ Následující tabulka popisuje parametry a hodnoty použité k vytvoření upoz
 | Umístění tohoto upozornění pravidla |East US |
 | ResourceGroup |montest |
 | TargetResourceId |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
-| MetricName výstrahy, která je vytvořena |\PhysicalDisk(_Total)\Disk Writes/sec. See the `Get-MetricDefinitions` cmdlet about how to retrieve the exact metric names |
+| MetricName výstrahy, která je vytvořena |\PhysicalDisk (využití _celkem) \Disk zápisů za sekundu. Zobrazit `Get-MetricDefinitions` rutiny o tom, jak získat přesné názvy metrik |
 | – Operátor |GreaterThan |
 | Prahová hodnota (počet za sekundu za pro tuto metriku) |1 |
 | Velikost_okna (ve formátu hh: mm:) |00:05:00 |
