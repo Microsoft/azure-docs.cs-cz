@@ -182,7 +182,7 @@ Klienti *musí* odeslat `speech.config` zpráv okamžitě po navázání připoj
 | Název hlavičky | Hodnota |
 |----|----|
 | `Path` | `speech.config` |
-| X-časové razítko | Časové razítko hodiny klienta UTC ve formátu ISO 8601 |
+| X-Timestamp | Časové razítko hodiny klienta UTC ve formátu ISO 8601 |
 | Content-Type | Application/json; charset = utf-8 |
 
 Stejně jako všechny zprávy v protokolu Speech Service klientského vznikla `speech.config` zpráva *musí* patří *X časové razítko* hlavičku, která zaznamenává klient UTC Čas odeslání zprávy ke službě. `speech.config` Zpráva *nemá* vyžadují *X-RequestId* záhlaví vzhledem k tomu, že tato zpráva není přidružený k žádosti o konkrétní řeči.
@@ -254,7 +254,7 @@ Následující hlavičky jsou potřebné pro všechny `audio` zprávy.
 | ------------- | ---------------- |
 | `Path` | `audio` |
 | X-RequestId | Identifikátor UUID ve formátu "no-dash" |
-| X-časové razítko | Časové razítko hodiny klienta UTC ve formátu ISO 8601 |
+| X-Timestamp | Časové razítko hodiny klienta UTC ve formátu ISO 8601 |
 | Content-Type | Typ zvukové obsahu. Typ musí být buď *audio/x-wav* (PCM) nebo *audio/silk* (SILK). |
 
 #### <a name="supported-audio-encodings"></a>Podporovaná kódování zvuku
@@ -309,7 +309,7 @@ Klienty, musíte potvrdit konec zapněte odesláním `telemetry` krátce po při
 | ------------- | ---------------- |
 | Kódování zpráv protokolu WebSocket | Text |
 | `Path` | `telemetry` |
-| X-časové razítko | Časové razítko hodiny klienta UTC ve formátu ISO 8601 |
+| X-Timestamp | Časové razítko hodiny klienta UTC ve formátu ISO 8601 |
 | Content-Type | `application/json` |
 | Tělo | Struktura JSON obsahující klientské informace o zapnutí |
 

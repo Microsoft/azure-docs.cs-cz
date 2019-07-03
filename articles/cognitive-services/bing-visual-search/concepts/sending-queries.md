@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: article
-ms.date: 4/03/2019
+ms.date: 7/01/2019
 ms.author: aahi
-ms.openlocfilehash: 62d34b859a0cf71320c478b7cab4a2914e5ee308
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bd5118b42f32a521df8e3acfffb68391d4021791
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60579860"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67541526"
 ---
 # <a name="sending-search-queries-to-the-bing-visual-search-api"></a>Odesílání vyhledávacích dotazů na rozhraní API vizuální vyhledávání Bingu
 
-Tento článek popisuje parametry a atributy požadavky odeslané na rozhraní API vizuální vyhledávání Bingu, jakož i objektu odpovědi.
+Tento článek popisuje parametry a atributy požadavky odeslané na rozhraní API vizuální vyhledávání Bingu, jakož i objektu odpovědi. 
 
 Získejte přehled o bitovou kopii třemi způsoby:
 
@@ -73,7 +73,7 @@ Požadavky se musí zasílat jenom jako požadavky HTTP POST.
 
 Následují parametry dotazu, které váš požadavek musí obsahovat. Minimálně byste měli zahrnout `mkt` parametr dotazu:
 
-| Name | Hodnota | Type | Požaduje se |
+| Název | Hodnota | Type | Požaduje se |
 | --- | --- | --- | --- |
 | <a name="cc" />cc  | Kód země dvou znaků, který představuje, odkud pochází výsledky.<br /><br /> Pokud tento parametr nastavíte, musíte zadat také hlavičku [Accept-Language](#acceptlanguage). Bing použije první podporovaný jazyk, který najde v seznamu jazyků, a zkombinuje ho se zadaným kódem země, aby určil trh, ze kterého má vrátit výsledky. Pokud seznam jazyků podporovaný jazyk neobsahuje, najde Bing nejbližší jazyk a trh, který požadavek podporuje. Nebo může místo zadaného trhu pro výsledky použít trh agregovaný nebo výchozí.<br /><br /> Tento parametr dotazu a parametr dotazu `Accept-Language` byste měli použít jenom v případě, že zadáte více jazyků. Jinak byste měli použít parametry dotazu `mkt` a `setLang`.<br /><br /> Tento parametr a parametr dotazu [mkt](#mkt) se vzájemně vylučují &mdash; nezadávejte oba. | String | Ne       |
 | <a name="mkt" />mkt   | Trh, odkud pochází výsledky. <br /><br /> **POZNÁMKA:** Na trhu, je třeba zadat vždy, pokud jsou známé. Určení trhu pomáhá Bingu směrovat požadavek a vrátit odpovídající a optimální odpověď.<br /><br /> Tento parametr a parametr dotazu [cc](#cc) se vzájemně vylučují &mdash; nezadávejte oba. | String | Ano      |
@@ -192,6 +192,9 @@ Content-Disposition: form-data; name="knowledgeRequest"
 ```
 
 ## <a name="bing-visual-search-responses"></a>Odpovědi pro vizuální vyhledávání Bingu
+
+
+[!INCLUDE [cognitive-services-bing-url-note](../../../../includes/cognitive-services-bing-url-note.md)]
 
 Pokud jsou k dispozici přehledy o obrázku, odpověď obsahuje jeden nebo více `tags`, které obsahují přehledy. `image` Pole obsahuje přehledy token vstupního obrázku:
 

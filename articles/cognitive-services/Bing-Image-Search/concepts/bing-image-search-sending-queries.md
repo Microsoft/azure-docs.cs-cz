@@ -1,5 +1,5 @@
 ---
-title: Odeslat image dotazy – rozhraní API pro vyhledávání obrázků Bingu
+title: Přizpůsobit a navrhnout image vyhledávací dotazy – rozhraní API pro vyhledávání obrázků Bingu
 titleSuffix: Azure Cognitive Services
 description: Další informace o přizpůsobení vyhledávacích dotazů, které odesíláte do rozhraní API Bingu pro vyhledávání obrázků.
 services: cognitive-services
@@ -9,22 +9,20 @@ ms.assetid: C2862E98-8BCC-423B-9C4A-AC79A287BE38
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: conceptual
-ms.date: 03/04/2019
+ms.date: 06/27/2019
 ms.author: aahi
-ms.openlocfilehash: 32ced1d06a10f33e9d71ef09ba51d22e9e406f73
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d833b017004365e9dad7241e360f42ff41a55883
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66384401"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67542746"
 ---
-# <a name="send-queries-to-the-bing-image-search-api"></a>Odesílání dotazů na rozhraní API Bingu pro vyhledávání obrázků
+# <a name="customize-and-suggest-image-search-queries"></a>Přizpůsobit a navrhnout image vyhledávacích dotazů
 
-Rozhraní API pro vyhledávání obrázků Bingu poskytuje funkce podobné Bing.com/Images. Můžete ho odeslat dotaz do Bingu a získat seznam určit prioritu relevantních obrázků.
+Pomocí tohoto článku se naučíte přizpůsobit dotazy a navrhnout hledané výrazy k odesílání do rozhraní API Bingu pro vyhledávání obrázků.
 
-## <a name="use-and-suggest-search-terms"></a>Použít a navrhnout hledané termíny
-
-Po zadání hledaného termínu kódování URL období před můžete nastavit [ **q** ](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query) parametr dotazu. Pokud zadáte například *řízení dinghies*, nastavte `q` k `sailing+dinghies` nebo `sailing%20dinghies`.
+## <a name="suggest-search-terms"></a>Navrhnout hledané termíny
 
 Pokud vaše aplikace obsahuje vyhledávací pole, ve kterém se zadávají hledané výrazy, můžete použít [rozhraní API pro automatické návrhy Bingu](../../bing-autosuggest/get-suggested-search-terms.md) na zlepšení uživatelského rozhraní. Rozhraní API můžete zobrazit navrhovaný hledané termíny v reálném čase. Rozhraní API vrátí řetězce navrhovaných dotazů na základě částečné hledané termíny a Cognitive Services.
 

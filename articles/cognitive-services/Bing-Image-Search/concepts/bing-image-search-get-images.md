@@ -11,12 +11,12 @@ ms.subservice: bing-image-search
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: f169f969a1acf4cefc8cee27f74a99730491176a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 309bbca762149f8804742d9ef02d4c3e8dfcdc6b
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66389418"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67542767"
 ---
 # <a name="get-images-from-the-web-with-the-bing-image-search-api"></a>Získat Image z webu pomocí rozhraní API Bingu pro vyhledávání obrázků
 
@@ -31,10 +31,11 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
+Použití [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query) parametr dotazu pro kódovaná adresou url hledaný termín. Pokud zadáte například *řízení dinghies*, nastavte `q` k `sailing+dinghies` nebo `sailing%20dinghies`.
+
 > [!IMPORTANT]
 > * Všechny požadavky se musí provádět ze serveru a ne od klienta.
 > * Pokud je vaše prvním voláním některé z rozhraní API pro vyhledávání Bingu, neobsahují záhlaví ID klienta. Pokud jste dříve označované jako Bing rozhraní API, které vrátí ID klienta pro uživatele a zařízení kombinaci pouze zahrnovat ID klienta.
-> * Bitové kopie musí být zobrazena v pořadí poskytnutém v odpovědi.
 
 ## <a name="get-images-from-a-specific-web-domain"></a>Získání bitové kopie z konkrétní webové domény
 
@@ -46,17 +47,6 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=sailing+dinghi
 
 > [!NOTE]
 > Odpovědi na dotazy, které používají `site:` operátor může zahrnovat obsah pro dospělé bez ohledu [bezpečné hledání](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#safesearch) nastavení. Používejte pouze `site:` Pokud si nejste vědomi obsah v doméně.
-
-Následující příklad ukazuje, jak získat malé obrázky z webu ContosoSailing.com zjištěné Bingem během posledního týdne.  
-
-```http
-GET https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=sailing+dinghies+site:contososailing.com&size=small&freshness=week&mkt=en-us HTTP/1.1  
-Ocp-Apim-Subscription-Key: 123456789ABCDE  
-X-MSEdge-ClientIP: 999.999.999.999  
-X-Search-Location: lat:47.60357;long:-122.3295;re:100  
-X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>  
-Host: api.cognitive.microsoft.com  
-```
 
 ## <a name="filter-images"></a>Filtrovat Image
 
@@ -73,9 +63,6 @@ Host: api.cognitive.microsoft.com
 
 Pokud chcete získat obrázky z konkrétní domény, použijte operátor dotazu [site:](https://msdn.microsoft.com/library/ff795613.aspx).
 
- > [!NOTE]
- > Odpovědi na dotazy, které používají `site:` operátor může zahrnovat obsah pro dospělé bez ohledu [bezpečné hledání](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#safesearch) nastavení. Používejte pouze `site:` Pokud si nejste vědomi obsah v doméně.
-
 Následující příklad ukazuje, jak získat malé obrázky z ContosoSailing.com, které Bing zjištěno v minulém týdnu.  
 
 ```http
@@ -90,6 +77,10 @@ Host: api.cognitive.microsoft.com
 ## <a name="bing-image-search-response-format"></a>Formát odpovědi Bingu pro vyhledávání obrázků
 
 Obsahuje zprávy s odpovědí ze služby Bing [Imagí](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) odpověď, která obsahuje seznam imagí, které služby Cognitive Services, jestli se má být relevantní pro dotaz. Každý [Image](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#image) objekt v seznamu obsahuje následující informace o imagi: adresa URL, jeho velikost, rozměry, jeho formát kódování, adresu URL na miniaturu obrázku a dimenze na miniaturu.
+
+> [!NOTE]
+> * Bitové kopie musí být zobrazena v pořadí poskytnutém v odpovědi.
+> * Protože formátech adres URL a parametry se mohou změnit bez předchozího upozornění, použijte všechny adresy URL jako-je. Neměla by mít závislosti na formátu adresy URL nebo parametry, pokud není uvedeno jinak.
 
 ```json
 {

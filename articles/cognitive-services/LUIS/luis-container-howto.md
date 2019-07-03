@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 07/02/2019
 ms.author: dapine
-ms.openlocfilehash: fff876de41e0069573b73779a16ebf06a3dd58c8
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 86b23c5f69fd96fe5c5614d99483e1936895ad9e
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295257"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537093"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Nainstalujte a spusťte LUIS kontejnery dockeru
  
@@ -175,16 +175,7 @@ Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 |{AUTHORING_KEY} | Vytváření klíč účtu služby LUIS pro publikovanou aplikaci LUIS.<br/>Můžete získat klíč pro vytváření obsahu z **uživatelská nastavení** stránky na portálu služby LUIS. |
 |{AZURE_REGION} | Příslušné oblasti Azure:<br/><br/>```westus``` – USA – západ<br/>```westeurope``` – Evropa západ<br/>```australiaeast``` – Austrálie – východ |
 
-Použijte následující příkaz CURL ke stažení zveřejněný balíček, nahraďte vlastními hodnotami:
-
-```bash
-curl -X GET \
-https://{AZURE_REGION}.api.cognitive.microsoft.com/luis/api/v2.0/package/{APPLICATION_ID}/slot/{APPLICATION_ENVIRONMENT}/gzip  \
- -H "Ocp-Apim-Subscription-Key: {AUTHORING_KEY}" \
- -o {APPLICATION_ID}_{APPLICATION_ENVIRONMENT}.gz
-```
-
-V případě úspěchu je odpověď na soubor balíčku LUIS. Uložte soubor v zadané umístění úložiště pro vstupní připojení kontejneru. 
+Stáhnout balíček publikované, najdete [dokumentace k rozhraní API zde][download-published-package]. Pokud se úspěšně stáhnul, odpověď je soubor balíčku LUIS. Uložte soubor v zadané umístění úložiště pro vstupní připojení kontejneru. 
 
 ### <a name="export-trained-apps-package-from-api"></a>Exportovat balíček trénovaného aplikace z rozhraní API
 
@@ -203,16 +194,7 @@ Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 |{AUTHORING_KEY} | Vytváření klíč účtu služby LUIS pro publikovanou aplikaci LUIS.<br/>Můžete získat klíč pro vytváření obsahu z **uživatelská nastavení** stránky na portálu služby LUIS.  |
 |{AZURE_REGION} | Příslušné oblasti Azure:<br/><br/>```westus``` – USA – západ<br/>```westeurope``` – Evropa západ<br/>```australiaeast``` – Austrálie – východ |
 
-Stáhnout balíček trénovaného použijte následující příkaz CURL:
-
-```bash
-curl -X GET \
-https://{AZURE_REGION}.api.cognitive.microsoft.com/luis/api/v2.0/package/{APPLICATION_ID}/versions/{APPLICATION_VERSION}/gzip  \
- -H "Ocp-Apim-Subscription-Key: {AUTHORING_KEY}" \
- -o {APPLICATION_ID}_v{APPLICATION_VERSION}.gz
-```
-
-V případě úspěchu je odpověď na soubor balíčku LUIS. Uložte soubor v zadané umístění úložiště pro vstupní připojení kontejneru. 
+Stáhnout balíček trénovaného, najdete [dokumentace k rozhraní API zde][download-trained-package]. Pokud se úspěšně stáhnul, odpověď je soubor balíčku LUIS. Uložte soubor v zadané umístění úložiště pro vstupní připojení kontejneru. 
 
 ## <a name="run-the-container-with-docker-run"></a>Spusťte kontejner s `docker run`
 
@@ -237,11 +219,9 @@ Billing={BILLING_ENDPOINT} ^
 ApiKey={ENDPOINT_KEY}
 ```
 
-* V tomto příkladu adresáři využívá `c:` disku, aby se zabránilo konfliktům oprávnění na Windows. Pokud je potřeba použít konkrétní adresář jako vstupní adresář, budete muset udělit dockeru služby oprávnění. 
+* V tomto příkladu adresáři využívá `C:` disku, aby se zabránilo konfliktům oprávnění na Windows. Pokud je potřeba použít konkrétní adresář jako vstupní adresář, budete muset udělit dockeru služby oprávnění. 
 * Pořadí argumentů nezmění, pokud máte velmi zkušenosti s kontejnery dockeru.
 * Pokud používáte jiný operační systém, použijte pro připojení a znak pro pokračování řádku pro váš systém správné konzole a Terminálové, syntaxe složky. Tyto příklady předpokládají konzola Windows s znak pro pokračování řádku `^`. Vzhledem k tomu, že kontejner je operační systém Linux, cíl připojení používá syntaxi složky Linux-style.
-
-
 
 Tento příkaz:
 
@@ -324,7 +304,6 @@ Z portálu služby LUIS, vyberte svou aplikaci a pak vyberte **importovat protok
 
 Po nahrání protokolu [zkontrolujte koncový bod](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-review-endpoint-utterances) projevy na portálu služby LUIS.
 
-
 <!--  ## Validate container is running -->
 
 [!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
@@ -362,14 +341,13 @@ Aplikace LUIS můžete použít, pokud ho **neobsahuje** některý z následují
 
 Konfigurace nepodporované aplikací.|Podrobnosti|
 |--|--|
-|Nepodporovaná kontejneru jazykových verzí| Holandština (nl-NL)<br>Japonština (ja-JP)<br>Němčina je podporováno pouze [1.0.1 tokenizátor nebo novější](luis-language-support.md#custom-tokenizer-versions).|
+|Nepodporovaná kontejneru jazykových verzí| Holandština (nl-NL)<br>Japonština (ja-JP)<br>Němčina je podporováno pouze [1.0.2 tokenizátor](luis-language-support.md#custom-tokenizer-versions).|
 |Nepodporovaná entity pro všechny jazykové verze|[KeyPhrase](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-prebuilt-keyphrase) předem připravených entit pro všechny jazykové verze|
 |Nepodporovaná entity pro jazykovou verzi Angličtina (en US)|[GeographyV2](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-prebuilt-geographyv2) předem připravených entit|
 |Dočištění řeči|Vnější závislosti nejsou podporovány v kontejneru.|
 |Analýza mínění|Vnější závislosti nejsou podporovány v kontejneru.|
 
-<!--blogs/samples/video coures -->
-
+<!--blogs/samples/video courses -->
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
 ## <a name="summary"></a>Souhrn
@@ -390,3 +368,7 @@ V tomto článku jste zjistili, koncepty a pracovní postup pro stažení, insta
 * Kontrola [konfigurace kontejnery](luis-container-configuration.md) nastavení konfigurace
 * Odkazovat na [Poradce při potížích s](troubleshooting.md) k vyřešení problémů týkajících se služby LUIS funkce.
 * Použití více [kontejnery Cognitive Services](../cognitive-services-container-support.md)
+
+<!-- Links - external -->
+[download-published-package]: https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/apps-packagepublishedapplicationasgzip
+[download-trained-package]: https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/apps-packagetrainedapplicationasgzip

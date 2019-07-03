@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 537a03710d28be607630cf252d2f187843991048
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 5380713af17a751ab695fee90895b4f6b0d2369b
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67438723"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67542815"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>Typy struktury a odpověď odezvy API vyhledávání na webu Bingu  
 
@@ -39,6 +39,8 @@ Pokud odešlete žádost o vyhledávání Bingu pro vyhledávání na webu, vrá
 ```
 
 Vyhledávání na webu Bingu obvykle vrátí podmnožinu odpovědi. Například, pokud byl termín dotazu *řízení dinghies*, odpověď může obsahovat `webPages`, `images`, a `rankingResponse`. Pokud jste použili [responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) k filtrování webových stránek, budou vždy obsahuje odpovědi `webpages` a `rankingResponse` odpovědi.
+
+[!INCLUDE [cognitive-services-bing-url-note](../../../includes/cognitive-services-bing-url-note.md)]
 
 ## <a name="webpages-answer"></a>Odpověď webové stránky
 
