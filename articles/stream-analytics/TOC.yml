@@ -36,6 +36,8 @@
   items:
     - name: Volba technologie analýzy streamování
       href: streaming-technologies.md
+    - name: Volba nástroje pro vývoj úloh
+      href: feature-comparison.md
     - name: Vstupní typy pro úlohu
       items:
         - name: Přehled vstupů

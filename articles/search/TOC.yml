@@ -195,6 +195,8 @@
           href: search-indexer-field-mappings.md
         - name: Připojení k virtuálním počítačům s SQL Serverem
           href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
+        - name: Monitorování indexerů
+          href: search-howto-monitor-indexers.md
         - name: Řešení běžných potíží
           href: search-indexer-troubleshooting.md
     - name: Rozšíření s využitím AI

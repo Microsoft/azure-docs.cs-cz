@@ -24,6 +24,9 @@
       maintainContext: true
 - name: Postup
   items:
+    - name: Migrace úloh Hive na HDInsight 4.0
+      href: apache-hive-migrate-workloads.md
+      maintainContext: true
     - name: Použití úložiště clusteru
       items:
         - name: S využitím Azure Storage
@@ -100,6 +103,9 @@
           href: ./apache-hadoop-connect-hive-power-bi-directquery.md
         - name: Připojení Power BI k Apache Hadoopu
           href: ../hadoop/apache-hadoop-connect-hive-power-bi.md
+          maintainContext: true
+        - name: Dotazování Hivu s využitím PowerShellu a ODBC
+          href: apache-hive-query-odbc-driver-powershell.md
           maintainContext: true
         - name: Připojení Excelu k Apache Hadoopu
           href: ../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md
@@ -333,11 +339,6 @@
         - name: Monitorování výkonu clusteru
           href: ../hdinsight-key-scenarios-to-monitor.md
           maintainContext: true
-- name: Postup
-  items:
-    - name: Migrace úloh Hive na HDInsight 4.0
-      href: apache-hive-migrate-workloads.md
-      maintainContext: true
 - name: Referenční informace
   items:
     - name: Ukázky kódů

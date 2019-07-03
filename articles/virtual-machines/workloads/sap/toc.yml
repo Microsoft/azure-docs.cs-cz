@@ -168,6 +168,8 @@
               href: high-availability-guide-suse-netapp-files.md
             - name: Vysoká dostupnost v Red Hat Enterprise Linuxu pro instanci (A)SCS
               href: high-availability-guide-rhel.md
+            - name: HA v Red Hat Enterprise Linuxu pro instanci (A)SCS s využitím Azure NetApp Files
+              href: high-availability-guide-rhel-netapp-files.md
         - name: Příprava infrastruktury Azure
           items:
             - name: Windows se sdíleným diskem pro instanci (A)SCS
@@ -194,6 +196,8 @@
               href: high-availability-guide-suse-netapp-files.md
             - name: Vysoká dostupnost pro SAP NetWeaver na Red Hat Enterprise Linuxu
               href: high-availability-guide-rhel.md
+            - name: Red Hat Enterprise Linux s NFS pro instanci (A)SCS s využitím Azure NetApp Files
+              href: high-availability-guide-rhel-netapp-files.md
         - name: SAP s několika SID
           items:
             - name: Windows se sdíleným diskem pro instanci (A)SCS

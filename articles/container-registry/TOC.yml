@@ -93,6 +93,8 @@
       items:
         - name: Přehled úloh ACR
           href: container-registry-tasks-overview.md
+        - name: Plánované úlohy
+          href: container-registry-tasks-scheduled.md
         - name: Úlohy s více kroky
           href: container-registry-tasks-multi-step.md
         - name: Použití s využitím spravované identity

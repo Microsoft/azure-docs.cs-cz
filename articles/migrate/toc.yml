@@ -42,6 +42,8 @@
   items:
     - name: Nejčastější dotazy
       href: resources-faq.md
+    - name: Migrace v architektuře přechodu na cloud
+      href: 'https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/index'
     - name: REST API
       href: 'https://docs.microsoft.com/rest/api/migrate/'
     - name: Šablona Resource Manageru

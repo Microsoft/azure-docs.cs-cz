@@ -460,10 +460,12 @@
               href: tutorial-query-graph.md
         - name: Návody
           items:
-            - name: Import dat grafu
-              href: bulk-executor-graph-dotnet.md
+            - name: Modelování dat grafů
+              href: graph-modeling.md
             - name: Dělení dat v grafu
               href: graph-partitioning.md
+            - name: Import dat grafu
+              href: bulk-executor-graph-dotnet.md
             - name: Optimalizace dotazů Gremlinu
               href: graph-execution-profile.md
             - name: Ukládání a správa služby Spring Data

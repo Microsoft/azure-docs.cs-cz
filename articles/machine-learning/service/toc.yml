@@ -197,6 +197,9 @@
         - name: Sledování experimentů s využitím MLflow
           displayName: 'log, monitor, metrics'
           href: how-to-use-mlflow.md
+        - name: Vizualizace experimentů s využitím TensorBoardu
+          displayName: 'log, monitor, metrics'
+          href: how-to-monitor-tensorboard.md
     - name: Automatizace strojového učení
       displayName: 'automl, auto ml'
       items:
@@ -304,6 +307,8 @@
               href: ../algorithm-module-reference/add-rows.md
             - name: Odebrání duplicitních řádků
               href: ../algorithm-module-reference/remove-duplicate-rows.md
+            - name: Spojení dat
+              href: ../algorithm-module-reference/join-data.md
             - name: Rozdělení dat
               href: ../algorithm-module-reference/split-data.md
             - name: Normalizace dat
@@ -352,12 +357,14 @@
               href: ../algorithm-module-reference/two-class-support-vector-machine.md
             - name: Clustering K-Means
               href: ../algorithm-module-reference/k-means-clustering.md
-        - name: Jazykové moduly Pythonu
+        - name: Jazykové moduly Pythonu a R
           items:
             - name: Spouštění skriptů Pythonu
               href: ../algorithm-module-reference/execute-python-script.md
             - name: Vytvoření modelu Pythonu
               href: ../algorithm-module-reference/create-python-model.md
+            - name: Spouštění skriptů R
+              href: ../algorithm-module-reference/execute-r-script.md
         - name: Chybové zprávy a kódy
           href: ../algorithm-module-reference/machine-learning-module-error-codes.md
 - name: Zdroje a prostředky
