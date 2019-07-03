@@ -6,12 +6,12 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: 6b7c3099415aed9529727a1de30cd832189db58d
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 36ed354304cb1c88e48088f4b36c1ad0350af0dc
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67450377"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67543020"
 ---
 # <a name="tutorial-configure-the-clusters-network-settings"></a>Kurz: Konfigurace nastavení sítě clusteru 
 
@@ -23,7 +23,7 @@ Co se dozvíte:
 
 > [!div class="checklist"]
 > * Nastavení sítě, které může být nutné aktualizovat po vytvoření clusteru
-> * Které případy použití FXT hrany Filer vyžadují server služby AD nebo serveru DNS 
+> * Které případy použití Azure FXT hrany Filer vyžadují server služby AD nebo serveru DNS 
 > * Jak nakonfigurovat kruhové dotazování DNS (RRDNS) automaticky načíst žádostí vyvažovat mezi klienta FXT clusteru
 
 Čas potřebný k dokončení těchto kroků závisí na tom, kolik změny v konfiguraci jsou potřeba ve vašem systému:
@@ -105,7 +105,7 @@ Pro zajištění optimálního výkonu konfigurace serveru DNS pro zpracování 
 
 Vserver clusteru se zobrazí na levé straně a IP adresy se zobrazí v centru a na pravé straně. Konfigurovat každý klientský přístupový bod a záznamy a ukazatele, jak je znázorněno.
 
-![Diagram kruhové dotazování DNS clusteru - podrobné alternativní text odkazu následuje image](media/fxt-rrdns-diagram.png) 
+![Diagram kruhové dotazování DNS clusteru - podrobné alternativní text odkazu následuje image](media/fxt-cluster-config/fxt-rrdns-diagram.png) 
 [podrobný popis textu](https://azure.github.io/Avere/legacy/Azure-FXT-EdgeFilerDNSconfiguration-alt-text.html)
 
 Každou IP adresu klienta musí mít jedinečný název pro interní použití v clusteru. (V tomto diagramu jsou klientských IP adres s názvem vs1 – klient - IP-* pro přehlednost, ale v produkčním prostředí je vhodné použít něco jako klient * stručnější.)

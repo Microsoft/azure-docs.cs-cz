@@ -63,14 +63,16 @@
       href: event-hubs-availability-and-consistency.md
     - name: Škálovatelnost
       href: event-hubs-scalability.md
+    - name: Geografické zotavení po havárii
+      items:
+        - name: Geografické zotavení po havárii a geografická replikace
+          href: event-hubs-geo-dr.md
     - name: Zabezpečení
       items:
         - name: Spravovaná identita pro prostředky Azure
           href: event-hubs-managed-service-identity.md
         - name: Řízení přístupu na základě rolí (Preview)
           href: event-hubs-role-based-access-control.md
-        - name: Geografické zotavení po havárii a geografická replikace
-          href: event-hubs-geo-dr.md
         - name: Přehled ověřování a modelu zabezpečení
           href: event-hubs-authentication-and-security-model-overview.md
         - name: Atributy zabezpečení

@@ -4,14 +4,14 @@ description: Vytvoření hybridního clusteru úložiště mezipaměti s Filer A
 author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: tutorial
-ms.date: 06/20/2019
+ms.date: 07/01/2019
 ms.author: v-erkell
-ms.openlocfilehash: 1bfe8f0efce0a844263fc65df0ad927114886769
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 94ec2b088940f4f1f683a4f88ae312879d909bc1
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67450538"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67543550"
 ---
 # <a name="tutorial-create-the-azure-fxt-edge-filer-cluster"></a>Kurz: Vytvoření clusteru Azure FXT hrany vyfiltrovat
 
@@ -34,7 +34,10 @@ Tento postup přijímá mezi 15 a 45 minut v závislosti na tom, kolik výzkumu,
 
 Před zahájením tohoto kurzu zajistěte splnění těchto požadavků:
 
-* Nainstalujte aspoň tři Azure FXT hrany Filer hardwaru pro systémy ve vašem datovém centru 
+* Instalace systémů hardware Azure FXT hrany Filer ve vašem datovém centru 
+
+  Potřebujete jenom jeden uzel k vytvoření clusteru, ale budete muset [přidejte aspoň dva další uzly](fxt-add-nodes.md) předtím, než můžete nakonfigurovat cluster a získat připravené k použití. 
+
 * Připojte kabely odpovídající napájení a sítě v systému  
 * Zapnutí nejméně jeden uzel Azure FXT hrany vyfiltrovat a [nastavit jeho kořenové heslo](fxt-node-password.md)
 
@@ -114,7 +117,7 @@ Použijte příkaz `ifconfig` zobrazíte adresy přiřazené k tomuto systému.
 
 Například příkaz `ifconfig | grep -B5 inet` vyhledá portů pomocí adres v síti internet a obsahuje pět řádků kontextu zobrazíte identifikátoru portu.
 
-Poznamenejte si všechny IP adresou uvedenou v sestavě ifconfig. Adresy, které uvedete s názvy portu, jako jsou e0a nebo e0b jsou vhodné možnosti. Nepoužívejte žádné IP adresy uvedené s e7 * názvy, protože tyto názvy se používají pouze pro IPMI porty, ne pravidelné síťové porty.  
+Poznamenejte si všechny IP adresou uvedenou v sestavě ifconfig. Adresy, které uvedete s názvy portu, jako jsou e0a nebo e0b jsou vhodné možnosti. Nepoužívejte žádné IP adresy uvedené s e7 * názvy, protože tyto názvy se používají pouze pro služby iDRAC/IPMI porty.  
 
 ## <a name="load-the-cluster-configuration-wizard"></a>Načíst Průvodce konfigurací clusteru
 
@@ -213,7 +216,7 @@ V nastavení **správu** oddílu jsou pro síť, která poskytuje přístup spr�
 
 * **MTU** – v případě potřeby upravte maximální přenosové jednotky (MTU) pro síť pro správu vašeho clusteru.
 
-* **Použití 1Gb mgmt sítě** -toto políčko zaškrtněte, pokud chcete přiřadit dva 1GbE síťové porty na svých uzlech FXT pouze síť pro správu. Pokud není toto políčko zaškrtnete, používá síť pro správu nejvyšší rychlosti portů dostupné. 
+* **Použití 1Gb mgmt sítě** -toto políčko zaškrtněte, pokud chcete přiřadit dva 1GbE síťové porty na svých uzlech FXT pouze síť pro správu. (Musí mít k dispozici pro všechny ostatní přenosy 25GbE/10GbE porty.) Pokud není toto políčko zaškrtnete, používá síť pro správu nejvyšší rychlosti portů dostupné. 
 
 ### <a name="configure-the-cluster-network"></a>Nakonfigurujte síť s clustery 
 
@@ -281,7 +284,7 @@ Pomocí ovládacích panelů webové rozhraní nastavit nový cluster. Pomocí n
 
 Přihlaste se k webovým rozhraním k uživatelskému jménu `admin` a heslo, které jste nastavili při vytváření clusteru.
 
-![webový prohlížeč zobrazující ovládací prvek panel pole přihlášení](media/fxt-cluster-config/admin-login.png)
+![webový prohlížeč zobrazující ovládací prvek panel pole přihlášení](media/fxt-cluster-create/admin-login.png)
 
 Ovládací Panel se otevře a zobrazí **řídicí panel** stránky. Při vytváření clusteru dokončení, měli vymazat všechny zprávy upozornění ze zobrazení.
 
@@ -289,7 +292,7 @@ Klikněte na tlačítko **nastavení** kartu Konfigurace clusteru.
 
 Na **nastavení** kartě na levém bočním panelu se zobrazí nabídka stránky konfigurace. Na stránkách jsou uspořádány podle kategorií. Klikněte + nebo - ovládacího prvku v horní části název kategorie zvětšení nebo skrýt na jednotlivých stránkách.
 
-![Karta nastavení ovládacích panelů (v prohlížeči) s clusterem > Obecné nastavení stránky načíst](media/fxt-cluster-config/settings-tab-populated.png)
+![Karta nastavení ovládacích panelů (v prohlížeči) s clusterem > Obecné nastavení stránky načíst](media/fxt-cluster-create/settings-tab-populated.png)
 
 ## <a name="cluster-setup-steps"></a>Postup instalace clusteru
 
@@ -315,7 +318,7 @@ Tyto kroky jsou potřeba pro většinu nebo všechny clustery.
 
   Čtení [konfigurace oboru názvů](fxt-add-storage.md#configure-the-namespace) podrobnosti. Tento krok zahrnuje:
   * Vytváření vservers
-  * Nastavení spojení mezi klienta sítě zobrazení a back-endu úložiště 
+  * Nastavení spojení mezi zobrazení klientské sítě a úložiště back-end 
   * Definování klientských IP adres obsluhuje každý vserver
 
   > [!Note] 
@@ -370,7 +373,7 @@ Následujícím postupem nastavit podporu nahrávání.
 
 1. Přejděte **clusteru** > **podporu** stránku nastavení. Přijměte zásady ochrany osobních údajů. 
 
-   ![Snímek obrazovky zobrazující ovládací panely a automaticky otevírané okno s tlačítkem pro potvrzení přijímat zásady ochrany osobních údajů](media/fxt-cluster-config/fxt-privacy-policy.png)
+   ![Snímek obrazovky zobrazující ovládací panely a automaticky otevírané okno s tlačítkem pro potvrzení přijímat zásady ochrany osobních údajů](media/fxt-cluster-create/fxt-privacy-policy.png)
 
 1. Klikněte na trojúhelník nalevo od **informace o zákaznících** rozbalte v části.
 1. Klikněte na tlačítko **Revalidate odesílat informace** tlačítko.
@@ -378,17 +381,17 @@ Následujícím postupem nastavit podporu nahrávání.
 1. Zaškrtněte políčka pro **statistiky monitorování**, **obecné informace o nahrání**, a **havárií nahrát informace**.
 1. Klikněte na **Submit** (Odeslat).  
 
-   ![Snímek obrazovky, který obsahuje oddíl informací o dokončené Zákaznická podpora nastavení stránky](media/fxt-cluster-config/fxt-support-info.png)
+   ![Snímek obrazovky, který obsahuje oddíl informací o dokončené Zákaznická podpora nastavení stránky](media/fxt-cluster-create/fxt-support-info.png)
 
 1. Klikněte na trojúhelník nalevo od **zabezpečení proaktivní podpory (SPS)** rozbalte v části.
 1. Zaškrtněte políčko u **odkaz povolit aktualizace Service PACKU**.
 1. Klikněte na **Submit** (Odeslat).
 
-   ![Snímek obrazovky obsahující dokončené zabezpečení proaktivní podporují oddíl na stránce nastavení podpory](media/fxt-cluster-config/fxt-support-sps.png)
+   ![Snímek obrazovky obsahující dokončené zabezpečení proaktivní podporují oddíl na stránce nastavení podpory](media/fxt-cluster-create/fxt-support-sps.png)
 
 ## <a name="next-steps"></a>Další postup
 
 Po vytvoření základní cluster a přijmout zásady ochrany osobních údajů, přidejte zbylé uzly clusteru. 
 
 > [!div class="nextstepaction"]
-> [Přidat uzly clusteru](fxt-add-nodes.md)
+> [Přidání uzlů clusteru](fxt-add-nodes.md)

@@ -5,14 +5,14 @@ services: ''
 author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: tutorial
-ms.date: 06/20/2019
+ms.date: 07/01/2019
 ms.author: v-erkell
-ms.openlocfilehash: 45f4e12a06e012a06e0b2659d729fce3a191cd32
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: ed9eca88e5ccc386b25acb95fa729a3cfb95cbd0
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67450419"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67543454"
 ---
 # <a name="tutorial-install-azure-fxt-edge-filer"></a>Kurz: Instalace Azure FXT hrany vyfiltrovat 
 
@@ -34,9 +34,7 @@ V tomto kurzu zahrnuje tyto kroky:
 Než začnete, ujistěte se, že datové centrum a stojanu, které se použijí se tyto funkce:
 
 * K dispozici 1U patice na racku které hodláte připojovat zařízení.
-* AC zdroj napájení a chlazení systémy, které splňují potřeby Filer Azure FXT hrany. 
-
-  Potřebujete pomoc, plánování a velikosti instalace, najdete v článku [výkon a teplotní specifikace](fxt-specs.md#power-and-thermal-specifications) Další informace o jmenovka hodnocení a teplotní výstupu za běžných podmínek.  
+* AC zdroj napájení a chlazení systémy, které splňují potřeby Filer Azure FXT hrany. (Čtení [výkon a teplotní specifikace](fxt-specs.md#power-and-thermal-specifications) nápovědu k plánování a velikosti instalace.)  
 
   > [!NOTE] 
   > Plně využít dvě jednotky dodavatelského redundantní napájení (PSUs), pomocí jednotek pro distribuci napájení na dva okruhy jinou větev, při připojování napájení ze sítě. Čtení [připojení napájecích kabelů](fxt-network-power.md#connect-power-cables) podrobnosti.  
@@ -156,8 +154,6 @@ Volitelné šrouby pevné připojení jsou k dispozici pro zabezpečení systém
 
 Na starosti správu volitelné kabel (CMA) je součástí Filer FXT hrany. Tištěné pokynů pro instalaci jsou k dispozici v balíčku. 
 
-<!-- need current images in electronic form from Dell - these are scans -->
-
 1. Rozbalení a identifikaci součástí cable management arm kit:
    * Na hlavním panelu CMA (1)
    * CMA (2)
@@ -168,7 +164,7 @@ Na starosti správu volitelné kabel (CMA) je součástí Filer FXT hrany. Tišt
    > [!TIP] 
    > K zabezpečení CMA k odeslání do racku, smyčky tie zabalí kolem košíky a na hlavním panelu a je pevně cinch. Zabezpečení CMA tímto způsobem bude také zabezpečit systém v nestabilním prostředí.
 
-   ![Obrázek CMA částí](media/fxt-install/cma-parts-scan-400.png)
+   ![Obrázek CMA částí](media/fxt-install/cma-kit-400.png)
 
 2. Nainstalujte CMA na hlavním panelu.
 
@@ -178,7 +174,7 @@ Na starosti správu volitelné kabel (CMA) je součástí Filer FXT hrany. Tišt
    1. Push panelu dopředu, dokud ho klikne na místě. (1)
    1. Na hlavním panelu odebrat, vměstnat tlačítka uvolňovací – směrem k středu a o přijetí změn na hlavním panelu mimo příjemce hranaté závorky (2).
 
-   ![Obrázek CMA instalace na hlavním panelu](media/fxt-install/cma-tray-scan-400.png)
+   ![Obrázek CMA instalace na hlavním panelu](media/fxt-install/cma-tray-install-400.png)
 
 3. Nainstalujte závorky CMA přílohy. 
 
@@ -188,7 +184,7 @@ Na starosti správu volitelné kabel (CMA) je součástí Filer FXT hrany. Tišt
    > * Pro usnadnění práce připojte CMA na straně opačný napájení (A na straně). Pokud se připojí na straně B, musí CMA odpojená Pokud chcete odebrat vnější napájení. 
    > * Před odebráním výkon poskytuje vždy odeberte do zásobníku. 
 
-   ![Obrázek instalace CMA závorka](media/fxt-install/cma-brackets-scan-400.png)
+   ![Obrázek instalace CMA závorka](media/fxt-install/cma-bracket-l-r-install-400.png)
 
    1. Vyberte odpovídající závorku CMA přílohy pro stranu, ve které chcete připojit CMA (nebo na straně A straně B).
    1. Nainstalujte závorky přílohy CMA s odpovídající strana A nebo B na straně označení zádi lišty snímku.
@@ -200,11 +196,11 @@ Na starosti správu volitelné kabel (CMA) je součástí Filer FXT hrany. Tišt
    1. Přizpůsobit zámek na konci nejkrajnější závorka, dokud se zámek zaujme (2). 
    1. Odebrat CMA, musí se vypnout obou zámky stisknutím tlačítka CMA verze v horní části krytech vnitřní a vnější západku (3).
 
-   ![Obrázek hlavního CMA instalace](media/fxt-install/cma-install-scan-400.png)
+   ![Obrázek hlavního CMA instalace](media/fxt-install/cma-install-400.png)
 
    CMA lze otočit mimo systém, hledá access a služby. Na konci zavěšené lift CMA od panelu pro vyjměte ho (1). Po jeho unseated ze zásobníku, postupná CMA mimo systém (2).
 
-   ![Otočí obrázek CMA otevřen pro služby](media/fxt-install/cma-open-scan-400.png)
+   ![Otočí obrázek CMA otevřen pro služby](media/fxt-install/cma-swing-over-tray-400.png)
 
 ## <a name="install-the-front-bezel-optional"></a>Nainstalujte přední rám (volitelné)
 
@@ -222,7 +218,7 @@ Chcete-li odebrat přední rám:
 1. Na levé straně klikněte na tlačítko vydání a o přijetí změn na levý konec lůžkem od skříni.
 1. Pravém konci vyjmutí a odeberte lůžkem.
    
-   ![Obrázek znázorňující tlačítko verze v levé části lůžkem a jak odebrat roztažením ven z levé strany](media/fxt-install/remove-bezel-updated-600.png)
+   ![Obrázek znázorňující tlačítko verze v levé části lůžkem a jak odebrat roztažením ven z levé strany](media/fxt-install/remove-bezel-edited-600.png)
 
 ## <a name="next-steps"></a>Další postup
 

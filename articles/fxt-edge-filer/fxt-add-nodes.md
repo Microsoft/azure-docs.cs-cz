@@ -6,12 +6,12 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: 970639eec8c16540d8d7653f1d8bb01e4a397080
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: d84b98b4ab936bbb6978144eb2e89b5e19df7069
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67450496"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67543204"
 ---
 # <a name="tutorial-add-cluster-nodes"></a>Kurz: Přidat uzly clusteru 
 

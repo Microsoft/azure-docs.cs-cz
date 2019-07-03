@@ -16,12 +16,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 780da9359aaf645abc9b685fa9d90bbea9199759
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: b7d68f6f7079872b81b750ba71997117aaa27d33
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962160"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67550561"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-ios-app"></a>Přihlašování uživatelů a volání Microsoft Graphu v aplikaci pro iOS
 
@@ -54,14 +54,14 @@ Tato ukázka používá Microsoft Authentication library (MSAL) k implementaci o
 
 V tomto kurzu se vytvoří nový projekt. Pokud chcete stáhnout dokončený kurzu místo toho [stáhnout kód](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip).
 
-### <a name="create-a-new-project"></a>Vytvořit nový projekt
+### <a name="create-a-new-project"></a>Vytvoření nového projektu
 
 1. Xcode otevřete a vyberte **vytvořte nový projekt Xcode**.
 2. Vyberte **iOS > jediné zobrazení aplikace** a vyberte **Další**.
 3. Zadejte název produktu a vybrat **Další**.
 4. Vyberte složku pro vytvoření aplikace a klikněte na tlačítko *vytvořit*.
 
-## <a name="register-your-application"></a>Zaregistrujte svoji aplikaci. 
+## <a name="register-your-application"></a>Registrace vaší aplikace 
 
 Můžete zaregistrovat aplikaci v některém ze dvou způsobů, jak je popsáno v následujících dvou částech.
 
@@ -382,7 +382,7 @@ Jakmile budete mít token prostřednictvím `self.accessToken`, vaše aplikace m
 
 | Klíč hlavičky    | value                 |
 | ------------- | --------------------- |
-| Autorizace | Nosiče < přístupový token > |
+| Authorization | Bearer \<access-token> |
 
 Přidejte následující text do `ViewController.swift`:
 

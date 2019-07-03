@@ -62,7 +62,7 @@ Při použití rozhraní REST API nebo Resource Manageru šablony, zahrnují ele
 
 | Pole | Povinné? | Popis |
 | --- | --- | --- |
-| Operace |ano |Hodnota musí být "Škálovací" |
+| operation |ano |Hodnota musí být "Škálovací" |
 | sendToSubscriptionAdministrator |ano |Hodnota musí být "true" nebo "false" |
 | sendToSubscriptionCoAdministrators |ano |Hodnota musí být "true" nebo "false" |
 | customEmails |ano |Hodnota může být null [] nebo pole řetězců e-mailů |
@@ -106,7 +106,7 @@ Při generování oznámení automatického škálování je datová část webh
 | Pole | Povinné? | Popis |
 | --- | --- | --- |
 | status |ano |Stav, který určuje, zda byla vygenerována akce automatického škálování |
-| Operace |ano |Pro zvýšení instancí je "Horizontální navýšení kapacity" a snížení v instancích, bude "Škálování v" |
+| operation |ano |Pro zvýšení instancí je "Horizontální navýšení kapacity" a snížení v instancích, bude "Škálování v" |
 | context |ano |Kontext akce automatického škálování |
 | timestamp |ano |Časové razítko při aktivaci akce automatického škálování |
 | id |Ano |ID správce prostředků zadaném nastavení automatického škálování |
@@ -115,7 +115,7 @@ Při generování oznámení automatického škálování je datová část webh
 | subscriptionId |Ano |ID předplatného cílového prostředku, který je právě škálovat |
 | resourceGroupName |Ano |Název skupiny prostředků cílového prostředku, který je právě škálovat |
 | resourceName |Ano |Název cílového prostředku, který je právě škálovat |
-| Typ prostředku |Ano |Tři podporované hodnoty: "microsoft.classiccompute/domainnames/slots/roles" – Cloudová služba role, "microsoft.compute/virtualmachinescalesets" - Virtual Machine Scale Sets a "Microsoft.Web/serverfarms" – webové aplikace |
+| resourceType |Ano |Tři podporované hodnoty: "microsoft.classiccompute/domainnames/slots/roles" – Cloudová služba role, "microsoft.compute/virtualmachinescalesets" - Virtual Machine Scale Sets a "Microsoft.Web/serverfarms" – webové aplikace |
 | resourceId |Ano |Resource Manager ID cílového prostředku, který je právě škálovat |
 | portalLink |Ano |Azure portal odkaz na stránku Souhrn v cílový prostředek |
 | oldCapacity |Ano |Aktuální (staré) počet instancí kdy automatického škálování je akce škálování |

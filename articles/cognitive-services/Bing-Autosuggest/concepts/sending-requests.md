@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 06/25/2019
+ms.date: 06/27/2019
 ms.author: scottwhi
-ms.openlocfilehash: be3262daf7ea2a637133ad658efe07ba9426415b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: fe35901f7d084fd96cb4c164e957391bfe2346a9
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449076"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67542627"
 ---
 # <a name="sending-requests-to-the-bing-autosuggest-api"></a>Odesílání požadavků na rozhraní API pro automatické návrhy Bingu.
 
-Pokud vaše aplikace posílá dotazy na některý z rozhraní API pro vyhledávání Bingu, můžete zlepšit možnosti vašich uživatelů hledání rozhraní API pro automatické návrhy Bingu. Rozhraní API pro automatické návrhy Bingu vrátí seznam navrhovaných dotazů na základě řetězce dotazu částečné do vyhledávacího pole. Jak znaků se zadávají do vyhledávacího pole ve vaší aplikaci, můžete zobrazit návrhy v rozevíracím seznamu. Další informace o odesílání požadavků k tomuto rozhraní API pomocí tohoto článku.
+Pokud vaše aplikace posílá dotazy na některý z rozhraní API pro vyhledávání Bingu, můžete zlepšit možnosti vašich uživatelů hledání rozhraní API pro automatické návrhy Bingu. Rozhraní API pro automatické návrhy Bingu vrátí seznam navrhovaných dotazů na základě řetězce dotazu částečné do vyhledávacího pole. Jak znaků se zadávají do vyhledávacího pole ve vaší aplikaci, můžete zobrazit návrhy v rozevíracím seznamu. Další informace o odesílání požadavků k tomuto rozhraní API pomocí tohoto článku. 
 
 ## <a name="bing-autosuggest-api-endpoint"></a>Koncový bod rozhraní API pro automatické návrhy Bingu
 
@@ -44,7 +44,7 @@ Příklady základní požadavky na používání rozhraní API pro automatické
 ## <a name="bing-autosuggest-api-requests"></a>Žádosti rozhraní API pro automatické návrhy Bingu
 
 > [!NOTE]
-> Požadavky na rozhraní API pro automatické návrhy Bingu musí používat protokol HTTPS.
+> * Požadavky na rozhraní API pro automatické návrhy Bingu musí používat protokol HTTPS.
 
 Doporučujeme, aby všechny požadavky pocházely ze serveru. Distribuce klíč v rámci klientské aplikace poskytuje další příležitosti škodlivým přístupem třetích stran. Kromě toho volání ze serveru poskytuje jediný bod upgradu pro budoucí aktualizace.
 
@@ -100,6 +100,8 @@ Následující návrhy skupinu webových je odpovědí na výše uvedený požad
 Pole `displayText` obsahuje navrhovaný dotaz, který můžete použít k vyplnění rozevíracího seznamu vašeho vyhledávacího pole. Musíte zobrazit všechny návrhy, které odpověď obsahuje, v uvedeném pořadí.  
 
 Pokud uživatel vybere z rozevíracího seznamu dotazu, můžete použít k volání jedné z [rozhraní API Bingu pro vyhledávání](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/bing-api-comparison?toc=%2Fen-us%2Fazure%2Fcognitive-services%2Fbing-autosuggest%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json) a zobrazení výsledků nebo uživatele poslat na stránce výsledky Bingu pomocí vráceného `url` pole.
+
+[!INCLUDE [cognitive-services-bing-url-note](../../../../includes/cognitive-services-bing-url-note.md)]
 
 ```json
 BingAPIs-TraceId: 76DD2C2549B94F9FB55B4BD6FEB6AC

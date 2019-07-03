@@ -36,7 +36,7 @@ SendGrid je [založené na cloudu e-mailové služby] , která poskytuje spolehl
 * Předávání dotazy zákazníků
 * E-mailových oznámení z aplikace
 
-Další informace najdete v tématu [ https://sendgrid.com ] [ https://sendgrid.com].
+Další informace najdete v tématu [https://sendgrid.com][https://sendgrid.com].
 
 ## <a name="create-a-sendgrid-account"></a>Vytvoření účtu SendGrid
 

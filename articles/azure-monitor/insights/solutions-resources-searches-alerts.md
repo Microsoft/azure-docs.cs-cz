@@ -179,7 +179,7 @@ Vlastnosti pro akce upozornění prostředky jsou popsány v následujících ta
 | type | Ano | Typ akce.  Toto je **výstraha** pro akce výstrah. |
 | name | Ano | Zobrazovaný název výstrahy.  Toto je název, který se zobrazí v konzole pro pravidla upozornění. |
 | description | Ne | Popis výstrahy. |
-| Severity | Ano | Závažnost výstrahy záznam z následujících hodnot:<br><br> **Kritická**<br>**Upozornění**<br>**Informační**
+| severity | Ano | Závažnost výstrahy záznam z následujících hodnot:<br><br> **Kritická**<br>**Upozornění**<br>**Informační**
 
 
 #### <a name="threshold"></a>Prahová hodnota

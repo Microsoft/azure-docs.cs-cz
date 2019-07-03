@@ -4,20 +4,20 @@ description: Zjistěte, jak vytvořit jednostránkovou webovou aplikaci, která 
 author: ashannon7
 ms.service: time-series-insights
 ms.topic: tutorial
-ms.date: 04/25/2019
+ms.date: 06/29/2019
 ms.author: dpalled
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: 2f25267b95e9ed5f7d5f6e6373fb9e3807927a7f
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.openlocfilehash: e415c681ae5a35de6e8ff76e09cfef8cc8cc98f8
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66735356"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67544067"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-single-page-web-app"></a>Kurz: Vytvoření jednostránkové webové aplikace Azure Time Series Insights
 
-Tento kurz vás provede procesem vytvoření vlastní webové jednostránkové aplikace (SPA) pro přístup k datům Azure Time Series Insights. 
+Tento kurz vás provede procesem vytvoření vlastní webové jednostránkové aplikace (SPA) pro přístup k datům Azure Time Series Insights.
 
 V tomto kurzu získáte informace o těchto tématech:
 
@@ -50,55 +50,14 @@ Tento kurz používá také data z prostředí Time Series Insights ukázkovou a
 
 ## <a name="register-the-application-with-azure-ad"></a>Registrace aplikace ve službě Azure AD
 
-Před sestavením aplikace, zaregistrujte se službou Azure AD. Registrace poskytuje konfigurace identity aplikace díky podpoře OAuth pro jednotné přihlašování. OAuth vyžaduje SPA určený typ udělení implicitní autorizace. Aktualizujete autorizace v manifestu aplikace. Manifest aplikace představuje reprezentaci JSON konfigurace identity aplikace.
-
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com) pomocí svého účtu předplatného Azure.  
-1. Vyberte položky **Azure Active Directory** > **Registrace aplikací** > **Registrace nové aplikace**.
-
-   [![Portál Azure – registrace aplikace Begin Azure AD](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration.png)](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration.png#lightbox)
-
-1. V **vytvořit** podokno, vyplňte požadované parametry.
-
-   Parametr|Popis
-   ---|---
-   **Název** | Zadejte název smysluplné registrace.  
-   **Typ aplikace** | Nechte **webové aplikace nebo rozhraní API**.
-   **Přihlašovací adresa URL** | Zadejte adresu URL pro přihlášení (domů) stránky aplikace. Vzhledem k tomu, že aplikace bude později hostované ve službě Azure App Service, musí používat adresu URL v https:\//azurewebsites.net domény. V tomto příkladu název vychází z názvu registrace.
-
-   Vyberte **vytvořit** vytvoření registrace nové aplikace.
-
-   [![Azure portal – možnosti vytvořit v podokně registrace aplikace Azure AD](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-create.png)](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-create.png#lightbox)
-
-1. Prostředek aplikace poskytují rozhraní REST API, můžete použít jiné aplikace. Rozhraní API jsou zaregistrovaná taky v Azure AD. Rozhraní API poskytují podrobné, zabezpečený přístup pro klientské aplikace zveřejněním *obory*. Vzhledem k tomu, že vaše aplikace volá rozhraní API Azure čas Series Insights, je nutné zadat rozhraní API a oboru. Udělení oprávnění rozhraní API a oboru za běhu. Vyberte **nastavení** > **požadovaná oprávnění** > **přidat**.
-
-   [![Azure portal – přidání možností pro přidání oprávnění Azure AD](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-add-perms.png)](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-add-perms.png#lightbox)
-
-1. V **přístup přes rozhraní API přidat** vyberte **1 Vyberte rozhraní API** k určení rozhraní API Azure čas Series Insights. V **vyberte rozhraní API** podokno, do vyhledávacího pole zadejte **azure čas**. Vyberte **Azure Time Series Insights** v seznamu výsledků. Zvolte **Vybrat**.
-
-   [![Azure portal – možnosti vyhledávání pro přidání oprávnění Azure AD](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-add-perms-api.png)](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-add-perms-api.png#lightbox)
-
-1. Můžete vybrat v oboru pro rozhraní API **přístup přes rozhraní API přidat** vyberte **2 oprávnění Select**. V **povolit přístup z** podokně, vyberte **service přístup k Azure Time Series Insights** oboru. Zvolte **Vybrat**. Se vrátíte **přístup přes rozhraní API přidat** podokně. Vyberte **Done** (Hotovo).
-
-   [![Azure portal – nastavení oboru pro přidání oprávnění Azure AD](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-add-perms-api-scopes.png)](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-add-perms-api-scopes.png#lightbox)
-
-1. V **požadovaná oprávnění** podokně rozhraní API Azure čas Series Insights se teď zobrazují. Také je třeba zadat oprávnění předběžné souhlasu pro aplikaci pro přístup k rozhraní API a oboru pro všechny uživatele. Vyberte **udělit oprávnění**a pak vyberte **Ano**.
-
-   [![Azure portal – možnosti udělení oprávnění pro přidání služby Azure AD požadovaná oprávnění](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-required-permissions-consent.png)](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-required-permissions-consent.png#lightbox)
-
-1. Jak jsme probírali výše, je také nutné aktualizovat manifest aplikace. Na vodorovné nabídce v horní části podokna ("popis cesty"), vyberte název aplikace se vraťte do **registrovaná aplikace** podokně. Vyberte **Manifest**, změnit `oauth2AllowImplicitFlow` vlastnost `true`a pak vyberte **Uložit**.
-
-   [![Azure portal – manifest aktualizace služby Azure AD](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-update-manifest.png)](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-update-manifest.png#lightbox)
-
-1. V navigace s popisem cesty, vyberte název aplikace se vrátíte **registrovaná aplikace** podokně. Zkopírujte hodnoty **domovskou stránku** a **ID aplikace** pro vaši aplikaci. Později v tomto kurzu použijete tyto vlastnosti.
-
-   [![Azure portal – kopírování ID aplikace i adresa URL domovské stránky hodnoty pro vaši aplikaci](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-application.png)](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-application.png#lightbox)
+[!INCLUDE [Azure Active Directory app registration](../../includes/time-series-insights-aad-registration.md)]
 
 ## <a name="build-and-publish-the-web-application"></a>Sestavení a publikování webové aplikace
 
 1. Vytvořte adresář pro uložení souborů projektu vaší aplikace. Přejděte ke každé z následujících adres URL. Klikněte pravým tlačítkem myši **Raw** odkaz v pravém horním rohu stránky a pak vyberte **uložit jako** uložit soubory v adresáři projektu.
 
-   - [*index.html*](https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/index.html): HTML a JavaScript pro danou stránku
-   - [*sampleStyles.css*]( https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/sampleStyles.css): Šablony stylů CSS
+   - [*index.HTML*](https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/index.html): HTML a JavaScript pro danou stránku
+   - [*sampleStyles.css*]( https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/sampleStyles.css): šablony stylů CSS
 
    > [!NOTE]
    > V závislosti na prohlížeči můžete potřebovat změnit přípony souborů HTML a CSS, než soubor uložíte.
@@ -142,7 +101,7 @@ Před sestavením aplikace, zaregistrujte se službou Azure AD. Registrace posky
       <link rel="stylesheet" type="text/css" href="../../dist/tsiclient.css"> -->
       ```
 
-   1. Chcete-li nakonfigurovat aplikaci, aby používala registraci ID aplikace Azure AD, změňte `clientID` a `postLogoutRedirectUri` hodnot pro použití hodnoty **ID aplikace** a **domovskou stránku** , který jste zkopírovali v kroku 9 v [ Registrace aplikace v Azure AD](#register-the-application-with-azure-ad).
+   1. Chcete-li nakonfigurovat aplikaci, aby používala registraci ID aplikace Azure AD, změňte `clientID` hodnotu použít **ID aplikace** jste si zkopírovali v **krok 3** při vám [registrované aplikace používání Azure AD](#register-the-application-with-azure-ad). Pokud jste vytvořili **odhlašovací adresa URL** ve službě Azure AD, nastavte tuto hodnotu jako `postLogoutRedirectUri` hodnotu.
 
       [!code-javascript[head-sample](~/samples-javascript/pages/tutorial/index.html?range=147-153&highlight=4-5)]
 
@@ -182,9 +141,9 @@ Před sestavením aplikace, zaregistrujte se službou Azure AD. Registrace posky
 
 Kód chyby nebo chybová podmínka | Popis
 ---------------------| -----------
-*AADSTS50011: Žádná odpověď adresa je zaregistrovaný pro aplikaci.* | Registrace služby Azure AD se nenašel **adresy URL odpovědi** vlastnost. Přejděte na **nastavení** > **adresy URL odpovědí** pro registraci aplikace Azure AD. Ověřte, že **přihlašování** adresa URL zadaná v kroku 3 v [registrace aplikace v Azure AD](#register-the-application-with-azure-ad) je k dispozici.
-*AADSTS50011: Odpověď url zadanou v požadavku se neshoduje s odpovědních adres URL nakonfigurované pro aplikaci: "\<Identifikátor GUID aplikace >'.* | `postLogoutRedirectUri` Zadané v kroku 6 v [sestavení a publikování webových aplikací](#build-and-publish-the-web-application) musí odpovídat hodnotě zadané v položce **nastavení** > **adresy URL odpovědí** v registrace aplikace Azure AD. Nezapomeňte také změnit hodnotu **cílovou adresu URL** používat *https* za krok 5 v [sestavení a publikování webových aplikací](#build-and-publish-the-web-application).
-Načtení webové aplikace, ale nemá míru, pouze text přihlašovací stránky, s bílým pozadím. | Ověřte, že cest popsané v kroku 4 v [sestavení a publikování webových aplikací](#build-and-publish-the-web-application) jsou správné. Pokud webová aplikace nemůže najít soubory .css, stránka nebude používat správné styly.
+*AADSTS50011: Žádná odpověď adresa je zaregistrovaný pro aplikaci.* | Registrace služby Azure AD se nenašel **adresy URL odpovědi** vlastnost. Přejděte na **nastavení** > **adresy URL odpovědí** pro registraci aplikace Azure AD. Ověřte, že **identifikátor URI pro přesměrování** jste měli možnost zadat v **kroku 2** při vám [registrované aplikace pro používání služby Azure AD](#register-the-application-with-azure-ad) je k dispozici.
+*AADSTS50011: Odpověď url zadanou v požadavku se neshoduje s odpovědních adres URL nakonfigurované pro aplikaci: "\<Identifikátor GUID aplikace >'.* | `postLogoutRedirectUri` Zadané v poli **kroku 6** v [sestavení a publikování webových aplikací](#build-and-publish-the-web-application) musí odpovídat hodnotě zadané v položce **nastavení**  >  **Adresy URL odpovědí** ve vaší registrace aplikace Azure AD. Nezapomeňte také změnit hodnotu **cílovou adresu URL** používat *https* za **kroku 5** v [sestavení a publikování webových aplikací](#build-and-publish-the-web-application).
+Načtení webové aplikace, ale nemá míru, pouze text přihlašovací stránky, s bílým pozadím. | Ověřte, že cest popsané v **kroku 4** v [sestavení a publikování webových aplikací](#build-and-publish-the-web-application) jsou správné. Pokud webová aplikace nemůže najít soubory .css, stránka nebude používat správné styly.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

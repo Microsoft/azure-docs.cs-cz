@@ -22,10 +22,6 @@
           href: bastion-vm-full-screen.md
     - name: Práce se skupinami zabezpečení sítě
       href: bastion-nsg.md
-- name: Referenční informace
-  items:
-    - name: REST
-      href: 'https://docs.microsoft.com/rest/api/network-gateway'
 - name: Zdroje a prostředky
   items:
     - name: Nejčastější dotazy ke službě Bastion

@@ -4,14 +4,14 @@ description: Jak zapojení síťové porty a připojit power Azure FXT hrany Fil
 author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: tutorial
-ms.date: 06/20/2019
+ms.date: 07/01/2019
 ms.author: v-erkell
-ms.openlocfilehash: 444835a94559a352bfd749cfa1cb2cd8c3a39373
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: ae179e8ce2a2ba772a7fb14825660e0fff9e7410
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67450307"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67542948"
 ---
 # <a name="tutorial-make-network-connections-and-supply-power-to-the-azure-fxt-edge-filer-node"></a>Kurz: Zkontrolujte připojení k síti a napájení Azure FXT hrany Filer uzlu
 
@@ -43,7 +43,7 @@ Identifikujte různé porty na pozadí vaší Azure FXT hrany vyfiltrovat.
 
 Tento článek také popisuje, jak [připojit napájení ze sítě](#connect-power-cables) pro uzel. 
 
-Tento článek také vysvětluje, jak se připojit k uzlu [sériového portu](#serial-port-only-when-necessary), ale sériového portu se používá jenom pro řešení potíží pro pokročilé. 
+Tento článek také vysvětluje, jak se připojit k uzlu [sériového portu](#serial-port-only-when-necessary), v případě potřeby odborné řešení potíží. 
 
 ### <a name="network-ports"></a>Síťové porty 
 
@@ -75,7 +75,7 @@ Typ připojení pro použití pro váš systém závisí na prostředí vašeho 
   * Přímé podporující 25GbE SFP28 typ připojte kabel twinaxial
   * Přímé podporující 10GbE SFP28 typ připojte kabel twinaxial
 
-* 1GbE síťové porty se používají pro přenos pro správu clusteru. Zkontrolujte **použít síť mgmt 1Gb** možnosti při vytváření clusteru (popsané v [konfigurace sítě pro správu](fxt-cluster-create.md#configure-the-management-network)). Porty s standardní Cat5 nebo lepší kabel, jak je popsáno v seznamu podporovaných kabely zapojení.
+* 1GbE síťové porty se používají pro přenos pro správu clusteru. Zkontrolujte **použít síť mgmt 1Gb** možnosti při vytváření clusteru, pokud chcete vytvořit fyzicky oddělené sítě pro konfiguraci clusteru (popsané v [konfigurace sítě pro správu](fxt-cluster-create.md#configure-the-management-network)). Porty s standardní Cat5 nebo lepší kabel, jak je popsáno v seznamu podporovaných kabely zapojení.
 
   Můžete nechat 1GbE porty uncabled, pokud hodláte použít vysokorychlostní porty pro veškerý provoz. Ve výchozím nastavení 1GbE síťové porty nepoužívají, pokud je k dispozici vyšší rychlost portu data.  
 
@@ -115,12 +115,12 @@ Postupujte podle těchto pokynů a kabely prostřednictvím CMA trasy:
 1. S CMA v umístění služby směrování sady kabel košíky vnitřní a vnější (2).
 1. Použijte předinstalovaných popruhů hook a smyčky k zabezpečení kabely (3) na jednom konci koše.
 1. Postupná CMA zpět do místa na hlavním panelu (4).
-1. Použití kabelu indikátor předinstalovaných stav zádi systém a zabezpečení kabel přesměrováním prostřednictvím CMA. Připojte druhém konci kabel do horního rohu vnějšího nákupní košík CMA (5). 
+1. Nainstalujte kabel indikátor stavu zádi systém a zabezpečení kabel přesměrováním prostřednictvím CMA. Připojte druhém konci kabel do horního rohu vnějšího nákupní košík CMA (5). 
 
    > [!CAUTION]
    > Aby se zabránilo potenciální poškození vyčnívající kabely, zabezpečte všechny slack kabel indikátor stavu po směrování tento kabel prostřednictvím CMA. 
 
-![Obrázek CMA s kabely nainstalovaná](media/cma-cabling-scan-400.png)
+![Obrázek CMA s kabely nainstalovaná](media/fxt-install/cma-cabling-400.png)
 
 > [!NOTE]
 >  Pokud jste nenainstalovali CMA, použít dva zavěšení a opakovat popruhů k dispozici v sadě lišty směrovat kabely zádi vašeho systému.
@@ -129,7 +129,7 @@ Postupujte podle těchto pokynů a kabely prostřednictvím CMA trasy:
 >  2. Vytvoření balíčku kabely jemně, přijímání změn je vymazat systému konektorů pro levé a pravé straně.
 >  3. Vlákno hook a smyčka popruhů prostřednictvím tooled sloty na vnější závorky CMA na každé straně systém a zabezpečení sady kabel.
 > 
->     ![Směrovat bez CMA kabely](media/fxt-route-cables-no-cma-400.png)
+>     ![Směrovat bez CMA kabely](media/fxt-install/fxt-route-cables-no-cma-400.png)
 
 ## <a name="about-ip-address-requirements"></a>O požadavcích na IP adresu
 

@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 06/19/2019
+ms.date: 06/27/2019
 ms.author: aahill
-ms.openlocfilehash: 4049042dc485725924349708e717ae48e8458ef7
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 93c2a5f9cd9fb3141e79559429ae69c0c42a96c1
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274651"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67542680"
 ---
 # <a name="sending-search-requests-to-the-bing-video-search-api"></a>Odesílání žádostí o hledání do API pro vyhledávání videí Bingu
 
-Tento článek popisuje parametry a atributy požadavky odeslané na rozhraní API Bingu pro vyhledávání videa, stejně jako objekt JSON odpovědi se vrátí.
+Tento článek popisuje parametry a atributy požadavky odeslané na rozhraní API Bingu pro vyhledávání videa, stejně jako objekt JSON odpovědi se vrátí. 
 
 [!INCLUDE [cognitive-services-bing-video-search-signup-requirements](../../../../includes/cognitive-services-bing-video-search-signup-requirements.md)]
 
@@ -72,6 +72,8 @@ Host: api.cognitive.microsoft.com
 ## <a name="example-json-response"></a>Příklad JSON odpovědi
 
 Následující příklad ukazuje odpověď na předchozí požadavek. Příklad také zobrazuje hlavičky odpovědi specifické pro Bing.
+
+[!INCLUDE [cognitive-services-bing-url-note](../../../../includes/cognitive-services-bing-url-note.md)]
 
 ```json
 BingAPIs-TraceId: 76DD2C2549B94F9FB55B4BD6FEB6AC

@@ -7,7 +7,7 @@
 - name: Šablony Rychlý start
   items:
     - name: Konfigurace výstrah pro události Service Health
-      href: ../azure-monitor/platform/alerts-activity-log-service-notifications.md?toc=%2fazure%2fservice-health%2ftoc.json
+      href: ../azure-monitor/platform/alerts-activity-log-service-notifications.md
 - name: Koncepty
   items:
     - name: Stavová stránka Azure
@@ -19,9 +19,9 @@
 - name: Postup
   items:
     - name: Konfigurace výstrah pro události Service Health
-      href: ../azure-monitor/platform/alerts-activity-log-service-notifications.md?toc=%2fazure%2fservice-health%2ftoc.json
+      href: alerts-activity-log-service-notifications.md
     - name: Zobrazení oznámení o stavu služby s využitím webu Azure Portal
-      href: ../azure-monitor/platform/service-notifications.md?toc=%2fazure%2fservice-health%2ftoc.json
+      href: service-notifications.md
     - name: Odesílání oznámení mimo systémy prostřednictvím webhooku
       href: service-health-alert-webhook-guide.md
     - name: Odesílání upozornění do ServiceNow

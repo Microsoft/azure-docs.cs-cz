@@ -6,12 +6,12 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: 0a16e654ff92c450438ac91c590b42d22201d015
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 4a69aa7838e08c83b47c5f0248e821edf86b3990
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67450454"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67543364"
 ---
 # <a name="tutorial-add-back-end-storage-and-configure-the-virtual-namespace"></a>Kurz: Přidat back endové úložné a nakonfigurovat virtuální obor názvů 
 
@@ -59,7 +59,7 @@ Definovat core filer kliknutím **vytvořit** tlačítko **Core Filer** > **spra
 
 ![Kliknutím na tlačítko Vytvořit nad seznam filtrech jádra na stránce Správa křížového Core](media/fxt-cluster-config/create-core-filer-button.png)
 
-**Přidat nový filtr Core** Průvodce vás provede procesem vytvoření základní filtr, který odkazuje na back-endového úložiště. Průvodce konfigurací clusteru obsahuje podrobný popis procesu, který se liší pro systém souborů NFS nebo NAS úložiště a cloudového úložiště (odkazy jsou výše). 
+**Přidat nový filtr Core** Průvodce vás provede procesem vytvoření základní filtr, který odkazuje na back endové úložné. Průvodce konfigurací clusteru obsahuje podrobný popis procesu, který se liší pro systém souborů NFS nebo NAS úložiště a cloudového úložiště (odkazy jsou výše). 
 
 Dílčí úkoly patří:
 
@@ -77,7 +77,7 @@ Dílčí úkoly patří:
 
 * Pro cloudové úložiště je nutné zadat cloudové služby a přístup k přihlašovací údaje, mezi další parametry. Podrobnosti najdete v článku [cloudové služby a protokol](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/new_core_filer_cloud.html#cloud-service-and-protocol) v Průvodci konfigurace clusteru.
 
-  ![Informace o filer core cloudu v nástroji Průvodce novou základní filtr](media/fxt-cluster-config/new-core-filer-cloud3.png) <!-- xxx get an Azure version of this screenshot xxx -->
+  ![Informace o filer core cloudu v nástroji Průvodce novou základní filtr](media/fxt-cluster-config/new-core-filer-cloud3.png) 
   
   Pokud jste už přidali přihlašovacích údajů pro přístup k cloudu pro tento cluster, jsou uvedeny v seznamu. Aktualizovat a přidat přihlašovací údaje **clusteru** > **přihlašovací údaje ke cloudu** stránku nastavení. 
 
@@ -105,7 +105,7 @@ Clusteru vservers udržovat obor názvů a poskytování obsahu pro klienty. Exi
 VServers jsou virtuální souborové servery, které řídí tok dat mezi klientem a křížového core clusteru:
 
 * VServers hostitele IP adresy klienta
-* VServers vytvořit obor názvů a definovat spojovacích bodech, které se mapují klienta virtuální adresářovou strukturu, exporty u back-endového úložiště
+* VServers vytvořit obor názvů a definovat spojovacích bodech, které se mapují klienta virtuální adresářovou strukturu, exporty u back endové úložné
 * VServers vynutit řízení přístupu k souboru, včetně základní filer export zásad a systémy ověřování uživatele
 * VServers poskytují infrastrukturu protokolu SMB
 
@@ -135,7 +135,7 @@ Použití **VServer** > **spravovat VServers** nastavení stránky vytvořte nov
 
 ### <a name="create-a-junction"></a>Vytvořit spojení
 
-A *spojení* back-endu úložiště cesta se mapuje na klienta viditelným oboru názvů.
+A *spojení* back endové úložné cesta se mapuje na klienta viditelným oboru názvů.
 
 Tento systém můžete použít ke zjednodušení cesty použité v přípojné body klienta a k jednoduchému škálování kapacity, protože jedna virtuální cesta zvládne úložiště z více jader filtrech.
 
@@ -161,4 +161,4 @@ Přečtěte si článek Průvodce konfigurací clusteru [řízení přístupu ke
 Po přidání úložiště a konfiguraci oboru názvů klienta, dokončete počáteční nastavení vašeho clusteru: 
 
 > [!div class="nextstepaction"]
-> [Konfigurace nastavení sítě clusteru](fxt-configure-network.md)
+> [Konfigurace síťových nastavení clusteru](fxt-configure-network.md)

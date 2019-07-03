@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 86d6653aceeb7a44e3758b629d74db516235fcf8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c78fa8ec470f04bcd88ab403249f77a65120c707
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67102339"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67550392"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-foresee-cx-suite"></a>Kurz: Integrace Azure Active Directory s přijetím Suite CX
 
@@ -119,7 +119,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s přijetím CX Suite, prove�
 
     a. V **přihlašovací adresa URL** textové pole, zadejte adresu URL: `https://cxsuite.foresee.com/`
 
-    b. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru: https:\//www.okta.com/saml2/service-provider/<UniqueID>
+    b. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru: https:\//www.okta.com/saml2/service-provider/\<UniqueID >
 
     > [!Note]
     > Pokud **identifikátor** automaticky polulated nelze získat hodnotu, pak vyplňte prosím hodnotu ručně podle výše vzor. Hodnota identifikátoru není skutečný. Aktualizujte tuto hodnotu skutečné identifikátor. Kontakt [tým podpory přijetím klienta Suite CX](mailto:support@foresee.com) tuto výhodu získáte. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.

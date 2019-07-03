@@ -117,7 +117,7 @@ Následující části popisují, jak nasadit skupiny kontejnerů do virtuální
 
 Nejprve nasadit skupinu kontejnerů a zadejte parametry pro nové virtuální sítě a podsítě. Pokud zadáte tyto parametry, Azure vytvoří virtuální síť a podsíť, deleguje podsítě do služby Azure Container instances a také vytvoří profil sítě. Po vytvoření těchto prostředků, vaše skupina kontejnerů se nasadí do podsítě.
 
-Spusťte následující příkaz [az container vytvořit] [ az-container-create] příkaz, který určuje nastavení pro nové virtuální sítě a podsítě. Je třeba zadat název skupiny prostředků, který byl vytvořen v oblasti, která [podporuje](#preview-limitations) skupiny kontejnerů ve službě virtual network. Tento příkaz nasadí veřejné Microsoft [aci-helloworld] [ aci-helloworld] kontejner, který malé Node.js webovým serverem, který obsluhuje statický webové stránky. V další části bude nasazení skupiny pro druhý kontejner do stejné podsítě a testování komunikace mezi instance dvou kontejnerů.
+Spusťte následující příkaz [az container vytvořit] [ az-container-create] příkaz, který určuje nastavení pro nové virtuální sítě a podsítě. Je třeba zadat název skupiny prostředků, který byl vytvořen v oblasti, která [podporuje](#preview-limitations) skupiny kontejnerů ve službě virtual network. Tento příkaz nasadí veřejné Microsoft [aci-helloworld][aci-helloworld] kontejner, který malé Node.js webovým serverem, který obsluhuje statický webové stránky. V další části bude nasazení skupiny pro druhý kontejner do stejné podsítě a testování komunikace mezi instance dvou kontejnerů.
 
 ```azurecli
 az container create \

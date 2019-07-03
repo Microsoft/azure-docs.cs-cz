@@ -72,6 +72,8 @@
               href: manage-private-cloud.md
             - name: Rozšíření privátního cloudu
               href: expand-private-cloud.md
+            - name: Zmenšení privátního cloudu
+              href: shrink-private-cloud.md
             - name: Mapování předplatného Azure
               href: azure-subscription-mapping.md
             - name: Zvýšení úrovně oprávnění

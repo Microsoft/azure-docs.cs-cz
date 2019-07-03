@@ -6,12 +6,12 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: dd74b82d4edad2b0176a3724176d924c2387f6fe
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: b48d8d74843947c3e40dc80234560b0147be6eea
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67450321"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67542968"
 ---
 # <a name="tutorial-mount-the-cluster"></a>Kurz: Připojení ke clusteru
 
@@ -61,11 +61,9 @@ Existují tři elementy pro tento příkaz:
 
 Cesta clusteru je kombinací vserver *IP adresu* plus cestu k *obor názvů spojení*. Obor názvů spojení je, že je definováno, pokud virtuální cesta je [přidali úložný systém](fxt-add-storage.md#create-a-junction).
 
-Například, pokud jste použili ``/avere/files`` jako vaší cestě k oboru názvů, vaši klienti připojují *IP_adresa*: / avere/soubory do jejich místní přípojného bodu. 
+Například, pokud jste použili ``/fxt/files`` jako vaší cestě k oboru názvů, vaši klienti připojují *IP_adresa*: / fxt/soubory do jejich místní přípojného bodu. 
 
-<!-- to do: update screenshot to use fxt/files instead of avere/files -->
-
-!["Přidání nové spojení" dialogové okno s/avere/soubory do pole Cesta oboru názvů](media/fxt-mount/fxt-create-junction-example.png)
+!["Přidání nové spojení" dialogové okno s/avere/soubory do pole Cesta oboru názvů](media/fxt-mount/fxt-junction-example.png)
 
 IP adresa je jedním z IP adresy klienta, definována pro vserver. Můžete najít rozsah určených pro klientské IP adresy na dvou místech v Ovládacích panelech clusteru:
 

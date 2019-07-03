@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/11/2019
+ms.date: 06/28/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ebc5d1d7cac78066fa4e6028b1921211cb05bf5
-ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.openlocfilehash: f21c7896f0ed2afba3a302b4686289cf331ba510
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67144638"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67536835"
 ---
 # <a name="tutorial-integrate-costpoint-with-azure-active-directory"></a>Kurz: Costpoint integrovat s Azure Active Directory
 
@@ -78,14 +78,18 @@ Použijte následující postup povolení jednotného přihlašování Azure AD 
 
    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
 
-4. Na **základní konfiguraci SAML** části aplikace je předem nakonfigurovaný a potřebné adresy URL se už předem vyplní s Azure. Uživatel musí uložte konfiguraci kliknutím **Uložit** tlačítko a proveďte následující kroky:
+4. Na **základní konfiguraci SAML** části, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu, proveďte následující kroky:
 
-    a. Klikněte na tlačítko **nastavit další adresy URL**.
+    a. V **identifikátor** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<CostpointURI>`
 
-    b. V **stav přenosu** textového pole zadejte hodnotu pomocí následujícího vzorce:`<SYSTEM VALUE>`
+    b. V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<CostpointURI>/LoginServlet.cps`
+
+    c. Klikněte na tlačítko **nastavit další adresy URL**.
+
+    d. V **stav přenosu** textového pole zadejte hodnotu pomocí následujícího vzorce:`<SYSTEM VALUE>`
 
     > [!NOTE]
-    > Stav přenosu hodnota není skutečný. Aktualizujte tato hodnota se skutečným stavem Relay. Kontakt [tým podpory Costpoint klienta](https://www.deltek.com/about/contact-us) tuto výhodu získáte.
+    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte pomocí skutečného identifikátoru, adresa URL odpovědi a stav přenosu. Kontakt [tým podpory Costpoint klienta](https://www.deltek.com/about/contact-us) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
 
 5. Pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu postupujte následovně:
 
