@@ -221,8 +221,8 @@ V seznamu uzlu transakce můžete získat veřejný klíč. Zkopírujte veřejn�
 
     | Hodnota | Popis
     |-------|-------------
-    | \<veřejný klíč alfa uzlu\> | Veřejný klíč alfa uzlu
-    | \<Etherea adresa účtu\> | Adresa účtu Etherea vytvořen v výchozí uzel transakce
+    | \<alpha node public key\> | Veřejný klíč alfa uzlu
+    | \<Ethereum account address\> | Adresa účtu Etherea vytvořen v výchozí uzel transakce
 
     V tomto příkladu počáteční hodnotu **storeData** je hodnota nastavena na 42.
 
@@ -392,8 +392,8 @@ Protože jsme nedeklarovalo **beta** uzlu veřejný klíč v **privateFor**, neb
 
     | Hodnota | Popis
     |-------|-------------
-    | \<veřejný klíč alfa uzlu\> | Veřejný klíč alfa uzlu
-    | \<Etherea adresa účtu\> | Vytvořit v uzlu transakce výchozí adresu účtu Etherea.
+    | \<alpha node public key\> | Veřejný klíč alfa uzlu
+    | \<Ethereum account address\> | Vytvořit v uzlu transakce výchozí adresu účtu Etherea.
 
     **privateFor** definuje uzly, na které je k dispozici transakce. V tomto příkladu uzel transakce výchozí účet můžete přetypovat privátní transakcí, které **alfa** uzlu. Budete muset přidat veřejných klíčů pro všechny účastníky privátní transakce.
 
