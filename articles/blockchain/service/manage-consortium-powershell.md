@@ -145,8 +145,8 @@ Pomocí této rutiny můžete získat podrobnosti o členovi nebo seznam členů
 
 | Parametr | Popis | Požaduje se |
 |-----------|-------------|:--------:|
-| Název | Název člena Blockchain služby, který chcete načíst podrobnosti o. Při zadání názvu se vrátí podrobnosti člena. Pokud název je vynechán, vrátí seznam všech členů consortium. | Ne |
-| Členové | Členové objektu získané z ConsortiumManagementContracts importu | Ano |
+| Name | Název člena Blockchain služby, který chcete načíst podrobnosti o. Při zadání názvu se vrátí podrobnosti člena. Pokud název je vynechán, vrátí seznam všech členů consortium. | Ne |
+| Members | Členové objektu získané z ConsortiumManagementContracts importu | Ano |
 | Web3Client | Objekt Web3Client získané z New-Web3Connection | Ano |
 
 #### <a name="example"></a>Příklad:
@@ -175,7 +175,7 @@ Tuto rutinu použijte k odebrání člena blockchain.
 | Parametr | Popis | Požaduje se |
 |-----------|-------------|:--------:|
 | Name | Název člena odebrat | Ano |
-| Členové | Členové objektu získané z ConsortiumManagementContracts importu | Ano |
+| Members | Členové objektu získané z ConsortiumManagementContracts importu | Ano |
 | Web3Account | Objekt Web3Account získané z Web3Account importu | Ano |
 | Web3Client | Objekt Web3Client získané z New-Web3Connection | Ano |
 
@@ -197,9 +197,9 @@ Consortium správci můžou nastavit **DisplayName** a **Role** pro všechny čl
 | Parametr | Popis | Požaduje se |
 |-----------|-------------|:--------:|
 | Name | Název člena blockchain | Ano |
-| displayName | Nové zobrazované jméno | Ne |
+| DisplayName | Nové zobrazované jméno | Ne |
 | AccountAddress | Adresa účtu | Ne |
-| Členové | Členové objektu získané z ConsortiumManagementContracts importu | Ano |
+| Members | Členové objektu získané z ConsortiumManagementContracts importu | Ano |
 | Web3Account | Objekt Web3Account získané z Web3Account importu | Ano |
 | Web3Client |  Objekt Web3Client získané z New-Web3Connection| Ano |
 
@@ -224,7 +224,7 @@ Tuto rutinu použijte k zvát nové členy pro konsorcia.
 |-----------|-------------|:--------:|
 | SubscriptionId | ID předplatného Azure člena pozvat | Ano |
 | Role | Consortium role. Hodnoty mohou být správce nebo uživatele. Správce je role správce consortium. Uživatel je roli člena consortium. | Ano |
-| Členové | Členové objektu získané z ConsortiumManagementContracts importu | Ano |
+| Members | Členové objektu získané z ConsortiumManagementContracts importu | Ano |
 | Web3Account | Objekt Web3Account získané z Web3Account importu | Ano |
 | Web3Client | Objekt Web3Client získané z New-Web3Connection | Ano |
 
@@ -243,7 +243,7 @@ Tuto rutinu použijte k načtení nebo zobrazit stav člena konsorcia pozvánky.
 | Parametr | Popis | Požaduje se |
 |-----------|-------------|:--------:|
 | SubscriptionId | ID předplatného Azure člena se pozvat. Pokud ID předplatného, ID je k dispozici, vrátí předplatné Podrobnosti pozvánky. Pokud ID předplatného je vynechán, vrátí seznam všech členských pozvánky. | Ne |
-| Členové | Členové objektu získané z ConsortiumManagementContracts importu | Ano |
+| Members | Členové objektu získané z ConsortiumManagementContracts importu | Ano |
 | Web3Client | Objekt Web3Client získané z New-Web3Connection | Ano |
 
 #### <a name="example"></a>Příklad:
@@ -270,7 +270,7 @@ Tuto rutinu použijte k odvolat pozvánku členem consortium.
 | Parametr | Popis | Požaduje se |
 |-----------|-------------|:--------:|
 | SubscriptionId | ID předplatného Azure člena odvolat | Ano |
-| Členové | Členové objektu získané z ConsortiumManagementContracts importu | Ano |
+| Members | Členové objektu získané z ConsortiumManagementContracts importu | Ano |
 | Web3Account | Objekt Web3Account získané z Web3Account importu | Ano |
 | Web3Client | Objekt Web3Client získané z New-Web3Connection | Ano |
 
@@ -291,7 +291,7 @@ Tuto rutinu použijte k nastavení **Role** existující pozvání. Pouze správ
 |-----------|-------------|:--------:|
 | SubscriptionId | ID předplatného Azure člena pozvat | Ano |
 | Role | Nová role consortium pro pozvánku. Hodnoty mohou být **uživatele** nebo **správce**. | Ano |
-| Členové |  Členové objektu získané z ConsortiumManagementContracts importu | Ano |
+| Members |  Členové objektu získané z ConsortiumManagementContracts importu | Ano |
 | Web3Account | Objekt Web3Account získané z Web3Account importu | Ano |
 | Web3Client | Objekt Web3Client získané z New-Web3Connection | Ano |
 
