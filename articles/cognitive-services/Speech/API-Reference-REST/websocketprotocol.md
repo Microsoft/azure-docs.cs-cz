@@ -154,7 +154,7 @@ Následující hlavičky jsou požadovány pro všechny zprávy klienta pocház�
 |----|----|
 | `Path` | Cesta zprávy, jak je uvedeno v tomto dokumentu |
 | X-RequestId | Identifikátor UUID ve formátu "no-dash" |
-| X-časové razítko | Časové razítko hodiny klienta UTC ve formátu ISO 8601 |
+| X-Timestamp | Časové razítko hodiny klienta UTC ve formátu ISO 8601 |
 
 #### <a name="x-requestid-header"></a>Hlavička X-RequestId
 
