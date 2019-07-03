@@ -26,7 +26,7 @@ Služba Azure branou přináší velké soubory bez limitu velikosti souboru. P�
 
 </br>Po bloku dat dorazí prostředí branou, je uložit do mezipaměti a okamžitě obsluhovat uživateli. Přední dveře pak předem načte další blok paralelně. Tento před načtením zajistí, že obsah zůstane jeden blok před časem uživatele, což snižuje latence. Tento proces pokračuje, dokud se celý soubor se stáhne (je-li požadovány), všechny rozsahů bajtů jsou k dispozici (je-li požadovány), nebo klient ukončí připojení.
 
-</br>Další informace o žádosti o rozsah bajtů, najdete v článku [RFC 7233](https://web.archive.org/web/20171009165003/ http://www.rfc-base.org/rfc-7233.html).
+</br>Další informace o žádosti o rozsah bajtů, najdete v článku [RFC 7233](https://web.archive.org/web/20171009165003/http://www.rfc-base.org/rfc-7233.html).
 Přední dveře ukládá do mezipaměti všechny bloky dat po přijetí, a proto není nutné uložit do mezipaměti, základem je mezipaměť branou celý soubor. Odeslání dalších žádostí o souboru nebo bajt rozsahy se obsluhují z mezipaměti. Není-li všechny bloky dat jsou uložené v mezipaměti, předběžného načítání slouží k vyžádání bloků dat z back-endu. Tato optimalizace se spoléhá na schopnost back-endu podporovat požadavky na zjištění rozsahu bajtů; Pokud back-endu nepodporuje požadavky na zjištění rozsahu bajtů, optimalizací není platná.
 
 ## <a name="file-compression"></a>Komprese souborů
