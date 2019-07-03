@@ -42,10 +42,10 @@ Blockchainové aplikace obsahuje konfigurace metadat, pracovní postupy a uživa
 | Pole | Popis | Požaduje se |
 |-------|-------------|:--------:|
 | ApplicationName | Jedinečný název aplikace. Odpovídající inteligentní smlouvě musíte použít stejné **ApplicationName** pro třídu příslušné smlouvy.  | Ano |
-| displayName | Popisný Zobrazovaný název aplikace. | Ano |
-| Popis | Popis aplikace. | Ne |
+| DisplayName | Popisný Zobrazovaný název aplikace. | Ano |
+| Description | Popis aplikace. | Ne |
 | ApplicationRoles | Kolekce [ApplicationRoles](#application-roles). Role uživatelů, kteří můžou fungovat či k účasti v rámci aplikace.  | Ano |
-| Pracovní postupy | Kolekce [pracovních postupů](#workflows). Každý pracovní postup funguje jako stavového stroje pro řízení toku obchodní logiku. | Ano |
+| Workflows | Kolekce [pracovních postupů](#workflows). Každý pracovní postup funguje jako stavového stroje pro řízení toku obchodní logiku. | Ano |
 
 Příklad najdete v tématu [příkladu konfigurační soubor](#configuration-file-example).
 
