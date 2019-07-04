@@ -1,8 +1,8 @@
-- name: Dokumentace ke službě Analysis Services
+- name: Dokumentace ke službě Azure Analysis Services
   href: index.md
 - name: Přehled
   items:
-    - name: Co je služba Analysis Services?
+    - name: Co je služba Azure Analysis Services?
       href: analysis-services-overview.md
 - name: Šablony Rychlý start
   items:
