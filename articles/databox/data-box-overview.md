@@ -7,14 +7,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 01/18/2019
+ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: ddbb535d386fb90ccb2042e0908e66146e854f00
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: cd2a776988ba27add54c69b0feccbc3fce8337aa
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65603461"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551525"
 ---
 # <a name="what-is-azure-data-box"></a>Co je Azure Data Box?
 
@@ -58,7 +58,7 @@ Zařízení Data Box má v této verzi následující funkce.
 
 | Specifikace                                          | Popis              |
 |---------------------------------------------------------|--------------------------|
-| Váha                                                  | < 23 kg                |
+| Hmotnost                                                  | < 23 kg                |
 | Dimenze                                              | Zařízení – šířka: 309.0 mm Height: Hloubka 430.4 mm: 502.0 mm |            
 | Místo v racku                                              | 7U při umístění do racku na boku (montáž do racku není možná)|
 | Potřebné kabely                                         | 1 napájecí kabel (je součástí balení) <br> 2 kabely RJ45 <br> 2 měděné kabely SFP+ Twinax|
@@ -68,7 +68,7 @@ Zařízení Data Box má v této verzi následující funkce.
 | Média pro přenos dat                                     | RJ45, měděný kabel SFP+ 10 GbE Ethernet  |
 | Zabezpečení                                                | Robustní obal zařízení se šroubky odolnými vůči neoprávněné manipulaci <br> Nálepky odhalující manipulaci na spodní straně zařízení|
 | Rychlost přenosu dat                                      | Až 80 TB za den přes síťové rozhraní 10GbE        |
-| Vedení                                              | Místní webové uživatelské rozhraní – jednorázové počáteční nastavení a konfigurace <br> Azure Portal – každodenní správa zařízení        |
+| Správa                                              | Místní webové uživatelské rozhraní – jednorázové počáteční nastavení a konfigurace <br> Azure Portal – každodenní správa zařízení        |
 
 ## <a name="data-box-components"></a>Součásti Data Boxu
 
@@ -116,6 +116,9 @@ Zařízení data Box můžou přenášet data založená na oblasti, ve kterém 
     - Evropská unie: západní a severní Evropa
     - Spojené království: Velká Británie – jih a Velká Británie – západ
     - Francie: Francie – střed a Francie – jih
+    - Japonsko – Japonsko – východ a Japonsko – západ.
+    - Austrálie – Austrálie – východ a Austrálie – jihovýchod.
+    - Kanada – Kanada – východ a Kanada – střed.
 
 - **Cílové účty úložiště** – účty úložiště, do kterých se ukládají data, jsou dostupné ve všech oblastech Azure, ve kterých je tato služba k dispozici.  
 

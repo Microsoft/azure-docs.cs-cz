@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8de4e785bbe2496ca38b33512da1c85f9ff76f3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bdbdd0253478200d39501444ae649b87b77e65a4
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112779"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509045"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>Rychlý start: Při zjištění ohrožení relace pomocí Azure Active Directory podmíněného přístupu blokovat přístup  
 
@@ -33,11 +33,8 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 K dokončení scénáře v tomto kurzu budete potřebovat:
 
 - **Přístup k Azure AD Premium P2 edice** – Přestože podmíněný přístup je schopnost Azure AD Premium P1, budete potřebovat edici P2, protože scénář v tomto kurzu rychlý start vyžaduje Identity Protection.
-
 - **Ochrana identity** – scénář v tomto kurzu rychlý start vyžaduje, aby byla povolena ochrana Identity. Pokud si nejste jisti, jak povolit Identity Protection, přečtěte si téma [povolení Azure Active Directory Identity Protection](../identity-protection/enable.md).
-
-- **Prohlížeč Tor** – [Tor prohlížeče](https://www.torproject.org/projects/torbrowser.html.en) pomoct můžete zachovat vaše osobní údaje online. Identity Protection zjistí, že přihlášení v prohlížeči Tor jako **přihlášení z anonymních IP adres**, která má úroveň střední riziko. Další informace najdete v tématu věnovaném [rizikovým událostem služby Azure Active Directory](../reports-monitoring/concept-risk-events.md).  
-
+- **Prohlížeč Tor** – [Tor prohlížeče](https://www.torproject.org/projects/torbrowser.html.en) pomoct můžete zachovat vaše osobní údaje online. Identity Protection označí za přihlášení z anonymních IP adres, které mají úroveň střední riziko u přihlášení v prohlížeči sítě Tor. Další informace najdete v tématu věnovaném [rizikovým událostem služby Azure Active Directory](../reports-monitoring/concept-risk-events.md).  
 - **Testovací účet s názvem Alain Charon** – Pokud si nejste jisti, jak vytvořit testovací účet, najdete v článku [přidat cloudové uživatele](../fundamentals/add-users-azure-active-directory.md#add-a-new-user).
 
 ## <a name="test-your-sign-in"></a>Test přihlášení
@@ -67,7 +64,6 @@ Tato část ukazuje, jak vytvořit požadované zásady podmíněného přístup
 **Ke konfiguraci zásady podmíněného přístupu:**
 
 1. Přihlaste se k vaší [webu Azure portal](https://portal.azure.com) jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
-
 1. Na webu Azure Portal, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory**.
 
    ![Azure Active Directory](./media/app-sign-in-risk/02.png)
@@ -93,13 +89,9 @@ Tato část ukazuje, jak vytvořit požadované zásady podmíněného přístup
    ![Podmíněný přístup](./media/app-sign-in-risk/107.png)
 
    1. Klikněte na tlačítko **výběr uživatelů a skupin**a pak vyberte **uživatelů a skupin**.
-
    1. Klikněte na **Vybrat**.
-
    1. Na **vyberte** stránce **Alain Charon**a potom klikněte na tlačítko **vyberte**.
-
    1. Na **uživatelů a skupin** klikněte na **provádí**.
-
 1. Klikněte na tlačítko **cloudové aplikace**.
 
    ![Cloudové aplikace](./media/app-sign-in-risk/08.png)
@@ -109,9 +101,7 @@ Tato část ukazuje, jak vytvořit požadované zásady podmíněného přístup
    ![Podmíněný přístup](./media/app-sign-in-risk/109.png)
 
    1. Klikněte na tlačítko **všechny cloudové aplikace**.
-
    1. Klikněte na **Done** (Hotovo).
-
 1. Klikněte na tlačítko **podmínky**.
 
    ![Řízení přístupu](./media/app-sign-in-risk/19.png)
@@ -121,15 +111,10 @@ Tato část ukazuje, jak vytvořit požadované zásady podmíněného přístup
    ![Úroveň rizika přihlášení](./media/app-sign-in-risk/21.png)
 
    1. Klikněte na tlačítko **rizika přihlašování**.
-
    1. Jako **konfigurovat**, klikněte na tlačítko **Ano**.
-
    1. Jako úroveň rizika přihlášení, vyberte **střední**.
-
    1. Klikněte na **Vybrat**.
-
    1. Na **podmínky** klikněte na **provádí**.
-
 1. V **ovládací prvky přístupu** klikněte na tlačítko **udělení**.
 
    ![Řízení přístupu](./media/app-sign-in-risk/10.png)
@@ -139,9 +124,7 @@ Tato část ukazuje, jak vytvořit požadované zásady podmíněného přístup
    ![Podmíněný přístup](./media/app-sign-in-risk/105.png)
 
    1. Vyberte **blokovat přístup**.
-
    1. Klikněte na **Vybrat**.
-
 1. V **povolit zásady** klikněte na tlačítko **na**.
 
    ![Povolení zásady](./media/app-sign-in-risk/18.png)
@@ -185,7 +168,6 @@ K otestování vašich zásad, zkuste pro přihlášení k vaší [webu Azure po
 Pokud už je nepotřebujete, odstraňte testovacího uživatele, prohlížeč Tor a zásady podmíněného přístupu:
 
 - Pokud si nejste jisti, jak odstranit uživatele služby Azure AD, přečtěte si téma [odstranit uživatele z Azure AD](../fundamentals/add-users-azure-active-directory.md#delete-a-user).
-
 - Pokud chcete odstranit zásady, vyberte zásady a klikněte na **odstranit** v panelu nástrojů Rychlý přístup.
 
    ![Ověřování pomocí služby Multi-Factor Authentication](./media/app-sign-in-risk/33.png)

@@ -5,17 +5,17 @@ services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 04/01/2019
+ms.date: 06/26/2019
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 08745c3ef3d4996340ec40af496f8f0a5e0201c3
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 6d26cedb0dd836846d7e9f00539fe101c944f478
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595739"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442209"
 ---
 # <a name="start-monitoring-your-aspnet-web-application"></a>Zahájení monitorování webové aplikace v ASP.NET
 
@@ -33,7 +33,7 @@ K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="enable-application-insights"></a>Povolit Application Insights
+## <a name="enable-application-insights"></a>Povolení Application Insights
 
 1. Otevřete projekt v aplikaci Visual Studio 2019.
 2. V nabídce Projekt vyberte **Nakonfigurovat Application Insights**. Visual Studio přidá Application Insights SDK do vaší aplikace.
@@ -63,15 +63,15 @@ Teď můžete otevřít Application Insights na webu Azure Portal a prohlédnout
 
 1. Rozbalte **připojené služby** složky (ikona cloudu a moduly) v Průzkumníku řešení klikněte pravým tlačítkem myši na **Application Insights** složky a klikněte na tlačítko **otevřít portál Application Insights** .  Zobrazí se informace o vaší aplikaci a řada různých možností.
 
-    ![Mapa aplikace](media/quick-monitor-portal/4overview.png)
+    ![Mapa aplikace](media/quick-monitor-portal/04-overview.png)
 
 2. Po kliknutí na **Mapa aplikace** se zobrazí rozložení vztahů závislosti mezi komponentami vaší aplikace.  U každé komponenty se zobrazují klíčové ukazatele výkonu, jako je zatížení, výkon, selhání a upozornění.
 
-    ![Mapa aplikace](media/quick-monitor-portal/5appmap.png)
+    ![Mapa aplikace](media/quick-monitor-portal/05-appmap.png)
 
-3. Klikněte na **analýzy aplikací** ikonu ![Mapa aplikace](media/quick-monitor-portal/app-analytics-icon.png) **zobrazit v Analytics** na jednotlivé součásti aplikace. Otevře se **Application Insights – Analytics** s bohatým dotazovacím jazykem pro analýzu všech dat shromážděných službou Application Insights.  V tomto případě jsme za vás vytvořili dotaz, který vykreslí počet požadavků ve formě grafu. Můžete psát své vlastní dotazy pro analýzu dalších dat.
+3. Klikněte na **analýzy aplikací** ikonu ![Mapa aplikace](media/quick-monitor-portal/app-viewinlogs-icon.png) **zobrazit v protokolech (Analytics)** na jednotlivé součásti aplikace. Tím se otevře **protokoly (Analytics)** , která poskytuje Bohatý dotazovací jazyk pro analýzu všech dat shromážděných službou Application Insights. V tomto případě jsme za vás vytvořili dotaz, který vykreslí počet požadavků ve formě grafu. Můžete psát své vlastní dotazy pro analýzu dalších dat.
 
-    ![Analýza](media/quick-monitor-portal/6viewanalytics.png)
+    ![Analýzy](media/quick-monitor-portal/6viewanalytics.png)
 
 4. Klikněte na **Live Metrics Stream** na levé straně v části prozkoumat. Zobrazí se provozní statistika vaší aplikace, protože je spuštěná. Zahrnují mimo jiné údaje o počtu příchozích požadavků, době jejich trvání a všech chybách, ke kterým došlo. Můžete také prohlížet nejdůležitější metriky výkonu, jako je procesor a paměť.
 

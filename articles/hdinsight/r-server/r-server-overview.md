@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: overview
 ms.date: 06/12/2019
-ms.openlocfilehash: 26dd7554cc713d85a9e03649bcb6d41139cbdf27
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.openlocfilehash: a5e4c7acd407cef1bb5fc43d7e40014a6b088a0a
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67137187"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448894"
 ---
 # <a name="what-is-ml-services-in-azure-hdinsight"></a>Co je služba ML v Azure HDInsight
 
@@ -27,7 +27,7 @@ Modely nebo předpovědi, které jsou výsledkem analýzy si můžete stáhnout 
 
 ## <a name="get-started-with-ml-services-on-hdinsight"></a>Začínáme se službou ML v HDInsight
 
-K vytvoření clusteru služby ML ve službě Azure HDInsight, vyberte **služby ML** typ clusteru při vytváření clusteru HDInsight pomocí webu Azure portal. Typ clusteru služby ML obsahuje ML Server na data uzlů v clusteru a na hraničním uzlu, která slouží jako cílová zóna pro analýzy založené na služby ML. Zobrazit [Začínáme se službou ML na HDInsight](r-server-get-started.md) návod, jak vytvořit cluster.
+K vytvoření clusteru služby ML ve službě Azure HDInsight, vyberte **služby ML** typ clusteru při vytváření clusteru HDInsight pomocí webu Azure portal. Typ clusteru služby ML obsahuje ML Server na data uzlů v clusteru a na hraničním uzlu, která slouží jako cílová zóna pro analýzy založené na služby ML. Zobrazit [vytvořit Apache Hadoop clusterů pomocí webu Azure portal](../hdinsight-hadoop-create-linux-clusters-portal.md) návod, jak vytvořit cluster.
 
 ## <a name="why-choose-ml-services-in-hdinsight"></a>Proč zvolit služby ML v HDInsight?
 
@@ -68,13 +68,13 @@ Následující funkce jsou součástí služby ML v HDInsight.
 
 Výchozí úložiště pro systém souborů HDFS clusterů HDInsight může být přidružené k účtu služby Azure Storage nebo Azure Data Lake Storage. Toto přidružení se zajistí, že požadovaná data se nahraje do clusteru se provádí trvalého úložiště během analýzy a data jsou k dispozici i po odstranění clusteru. Existují různé nástroje pro přenosy dat, který vyberete, včetně zařízení nahrávání založené na portálu účtu úložiště, možnosti úložiště a [AzCopy](../../storage/common/storage-use-azcopy.md) nástroj.
 
-Máte možnost povolit přístup k další objektů Blob a ukládá Data lake během procesu bez ohledu na to možnost primární úložiště používá zřizování clusteru. Zobrazit [Začínáme se službou ML na HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-r-server-get-started) informace o přidání přístupu na další účty. Zobrazit [možnosti služby Azure Storage pro služby ML v HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-r-server-storage) článku se dozvíte další informace o použití více účtů úložiště.
+Máte možnost povolit přístup k další objektů Blob a ukládá Data lake během procesu bez ohledu na to možnost primární úložiště používá zřizování clusteru.  Zobrazit [možnosti služby Azure Storage pro služby ML v HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-r-server-storage) článku se dozvíte další informace o použití více účtů úložiště.
 
 Můžete také použít [Azure Files](../../storage/files/storage-how-to-use-files-linux.md) jako řešením úložiště pro použití na hraničním uzlu. Služba soubory Azure umožňuje připojit sdílenou složku, která byla vytvořena ve službě Azure Storage k systému souborů v Linuxu. Další informace o těchto možnostech úložiště dat pro služby ML v clusteru HDInsight najdete v tématu [možnosti služby Azure Storage pro služby ML v HDInsight](r-server-storage.md).
 
 ## <a name="access-ml-services-edge-node"></a>Přístup služby ML hraniční uzel
 
-Můžete se připojit k Microsoft ML Server na hraničním uzlu, pomocí prohlížeče. Ve výchozím nastavení se nainstaluje při vytváření clusteru. Další informace najdete v tématu [získat stared služby ML na HDInsight](r-server-get-started.md). Můžete také připojit k hraničnímu uzlu clusteru z příkazového řádku pomocí SSH nebo PuTTY pro přístup ke konzole R.
+Můžete se připojit k Microsoft ML Server na hraničním uzlu, pomocí prohlížeče. Ve výchozím nastavení se nainstaluje při vytváření clusteru.  Můžete také připojit k hraničnímu uzlu clusteru z příkazového řádku pomocí SSH nebo PuTTY pro přístup ke konzole R.
 
 ## <a name="develop-and-run-r-scripts"></a>Vývoj a spouštění skriptů jazyka R
 
@@ -142,6 +142,6 @@ Ceny, které jsou spojeny s clusterem HDInsight služby ML jsou strukturovaná p
 
 Další informace o tom, jak používat služby ML na clusterech HDInsight, naleznete v následujících tématech:
 
-* [Začínáme s clusterem služby ML v HDInsight](r-server-get-started.md)
+* [Spustit skript R v clusteru služby ML v Azure HDInsight pomocí přihlašovací stránce RStudio serveru](machine-learning-services-quickstart-job-rstudio.md)
 * [Možnosti výpočetního kontextu pro cluster služby ML Services v HDInsight](r-server-compute-contexts.md)
 * [Možnosti úložiště pro cluster služby ML v HDInsight](r-server-storage.md)

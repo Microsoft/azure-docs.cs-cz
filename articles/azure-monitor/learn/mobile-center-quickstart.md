@@ -5,18 +5,18 @@ services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 04/22/2019
+ms.date: 06/26/2019
 ms.service: application-insights
 ms.reviewer: daviste
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 67ddedbaca88d46e706c9a143100b215a0d16a90
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b8ce08c662e1615b62160e0c681a2fe8dbcb2be1
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64683429"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447039"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>Začínáme s analýzou mobilní aplikace pomocí App Center a Application Insights
 
@@ -68,18 +68,18 @@ Pokud chcete ověřit přijímání vlastních událostí, přejděte v App Cent
 Jakmile vaše aplikace odesílá vlastní události a App Center tyto události přijímá, je potřeba na webu Azure Portal vytvořit prostředek Application Insights typu App Center:
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-2. Vyberte **Vytvořit prostředek** > **Nástroje pro správu** > **Application Insights**.
+2. Vyberte **Vytvořit prostředek** > **Vývojářské nástroje** > **Application Insights**.
 
-    ![Přidání prostředku Application Insights](./media/mobile-center-quickstart/add-b.png)
+    > [!NOTE]
+    > Pokud je to poprvé vytváří se prostředek Application Insights Další informace najdete [vytvořte prostředek Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) dokumentu.
 
     Zobrazí se konfigurační pole. K vyplnění vstupních polí použijte následující tabulku.
 
     | Nastavení        |  Hodnota           | Popis  |
    | ------------- |:-------------|:-----|
    | **Název**      | Nějaká globálně jedinečná hodnota, například myApp-iOS | Název identifikující aplikaci, kterou monitorujete |
-   | **Typ aplikace** | Aplikace App Center | Typ aplikace, kterou monitorujete |
-   | **Skupina prostředků**     | Nová skupina prostředků nebo existující skupina prostředků z nabídky | Skupina prostředků, ve které se má vytvořit nový prostředek Application Insights |
-   | **Umístění** | Umístění z nabídky | Vyberte umístění ve vaší blízkosti nebo v blízkosti místa, kde se vaše aplikace hostuje. |
+     | **Skupina prostředků**     | Nová skupina prostředků nebo existující skupina prostředků z nabídky | Skupina prostředků, ve které se má vytvořit nový prostředek Application Insights |
+   | **Location** | Umístění z nabídky | Vyberte umístění ve vaší blízkosti nebo v blízkosti místa, kde se vaše aplikace hostuje. |
 
 3. Klikněte na možnost **Vytvořit**.
 
@@ -89,9 +89,7 @@ Pokud vaše aplikace podporuje více platforem (iOS, Android atd.), je vhodné v
 
 V nový prostředek Application Insights na **přehled** stránky. Zkopírujte klíč instrumentace z vašich prostředků.
 
-   ![Tlačítko Analytics v Application Insights](./media/mobile-center-quickstart/overview-01.png)
-
-V instanci App Center pro vaši aplikaci:
+V [App Center](https://appcenter.ms/) instanci pro vaši aplikaci:
 
 1. Na stránce **Nastavení** klikněte na **Export**.
 2. Zvolte **Nový export**, vyberte **Application Insights** a pak klikněte na **Přizpůsobit**.
@@ -108,13 +106,11 @@ Abyste při prvním připojení měli k dispozici více dat, do Application Insi
 
 Nad rámec analytických nástrojů, které poskytuje App Center, může Application Insights dotazovat, segmentovat, filtrovat a analyzovat vlastní telemetrii událostí z vašich aplikací.
 
-1. **Dotazování vlastní telemetrie událostí.** Na stránce **Přehled** Application Insights zvolte **Analytics**. 
+1. **Dotazování vlastní telemetrie událostí.** Ze služby Application Insights **přehled** zvolte **protokoly (Analytics)** .
 
-   ![Tlačítko Analytics v Application Insights](./media/mobile-center-quickstart/analytics-001.png)
-
-   Otevře se portál Application Insights Analytics přidružený k vašemu prostředku Application Insights. Portál Analytics umožňuje přímo dotazovat data pomocí dotazovacího jazyka Log Analytics, takže můžete pokládat libovolně složité dotazy na vaši aplikaci a její uživatele.
+   Otevře se na portálu Application Insights protokoly (Analytics) přidružené k vašemu prostředku Application Insights. Na portálu protokoly (Analytics) umožňuje přímo dotazovat data pomocí dotazovacího jazyka Log Analytics, takže můžete pokládat libovolně složité dotazy o vaší aplikaci a její uživatele.
    
-   Otevřete novou kartu na portálu Analytics a vložte do ní následující dotaz. Dotaz vrátí počet jedinečných uživatelů, kteří z vaší aplikace odeslali jednotlivé vlastní události za posledních 24 hodin, a výpis seřadí podle tohoto počtu jedinečných uživatelů.
+   Otevřete novou kartu na protokoly (Analytics) portálu a vložte do ní následující dotaz. Dotaz vrátí počet jedinečných uživatelů, kteří z vaší aplikace odeslali jednotlivé vlastní události za posledních 24 hodin, a výpis seřadí podle tohoto počtu jedinečných uživatelů.
 
    ```AIQL
    customEvents
@@ -123,7 +119,7 @@ Nad rámec analytických nástrojů, které poskytuje App Center, může Applica
    | order by dcount_user_Id desc 
    ```
 
-   ![Portál Analytics](./media/mobile-center-quickstart/analytics-portal-001.png)
+   ![Portál protokoly (analýza)](./media/mobile-center-quickstart/analytics-portal-001.png)
 
    1. Vyberte dotaz kliknutím na libovolnou část dotazu v textovém editoru.
    2. Pak dotaz spusťte kliknutím na **Přejít**. 

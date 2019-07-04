@@ -9,16 +9,16 @@ ms.topic: quickstart
 ms.date: 11/14/2018
 ms.author: mhopkins
 ms.reviewer: seguler
-ms.openlocfilehash: f426ee10017533c21021d618d613dc0931767988
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: e2deda6bc9a5d13a631e9917f3020cfa68ee1e10
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149440"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67536164"
 ---
 # <a name="quickstart-upload-download-list-and-delete-blobs-using-azure-storage-v10-sdk-for-javascript"></a>Rychlý start: Nahrání, stažení, seznamu a odstraňování objektů BLOB pomocí služby Azure Storage v10 SDK pro JavaScript
 
-V tomto rychlém startu se dozvíte, jak sadu [Azure Storage v10 SDK pro JavaScript](https://github.com/Azure/azure-storage-js) v Node.js použít k nahrání, stažení, vypsání a odstranění objektů blob a správě kontejnerů.
+V tomto rychlém startu se dozvíte, jak sadu [Azure Storage v10 SDK pro JavaScript](https://github.com/Azure/azure-sdk-for-js) v Node.js použít k nahrání, stažení, vypsání a odstranění objektů blob a správě kontejnerů.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -99,7 +99,7 @@ Přihlašovací údaje se načítají z proměnných prostředí na základě p�
 
 ```javascript
 if (process.env.NODE_ENV !== 'production') {
-    require('dotenv').load();
+    require('dotenv').config();
 }
 ```
 
@@ -238,7 +238,7 @@ K vytvoření kontejneru se používá metoda *create* třídy *ContainerURL*.
 await containerURL.create(aborter);
 console.log(`Container: "${containerName}" is created`);
 ```
-Protože je název kontejneru definovaný při volání *ContainerURL.fromServiceURL(adresa URL služby, název kontejneru)*, stačí k vytvoření kontejneru zavolat metodu *create*.
+Protože je název kontejneru definovaný při volání *ContainerURL.fromServiceURL(adresa URL služby, název kontejneru)* , stačí k vytvoření kontejneru zavolat metodu *create*.
 
 ### <a name="upload-text"></a>Nahrání textu
 K nahrání textu do objektu blob se používá metoda *upload*.

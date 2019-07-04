@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 05/23/2019
+ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 18c6175ede1e8459d3a9ca60f7890cc43d75e5ba
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 8f090a3f07eba529fd39976545eb654083e637eb
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66236282"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561396"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Nejčastější dotazy
 
@@ -53,7 +53,7 @@ A. Data Box má hrubou kapacitu 100 TB a využitelnou kapacitu 80 TB. Můžou p�
 A.  Informace, ve kterých zemích nebo oblastech je k dispozici Data Box, přejděte na [dostupnost v oblastech](data-box-overview.md#region-availability).  
 
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box"></a>Otázka: V jakých oblastech můžu k ukládání dat použít Data Box?
-A. Data Box je podporovaný ve všech oblastech USA, dále v západní Evropě, severní Evropě, Francii a Spojeném království. Podporované jsou jenom oblasti veřejného cloudu Azure. Azure Government ani jiné suverénní cloudy nejsou podporované. Další informace najdete v části [Regionální dostupnost](data-box-overview.md#region-availability).
+A. Data Box je podporován pro všechny oblasti v USA, západní Evropa, Severní Evropa, Francie, Velká Británie, Japonsko, Austrálie a Kanadě. Další informace najdete v části [Regionální dostupnost](data-box-overview.md#region-availability).
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues-with-data-box"></a>Otázka: Na koho se mám obrátit v případě potíží s Data Boxem?
 A. V případě potíží s Data Boxem se prosím [obraťte na podporu Microsoftu](data-box-disk-contact-microsoft-support.md).
@@ -170,7 +170,7 @@ A.  To speed up the copy process:
 
 
 ### <a name="q-can-i-use-multiple-storage-accounts-with-data-box"></a>Otázka: Můžu se zařízením Data Box používat více účtů úložiště?
-A.  Ano. Data Box podporuje maximálně 10 účtů úložišť, úložišť pro obecné účely, klasických úložišť nebo úložišť objektů blob. Podporují se horké i studené objekty blob. Při vydání verze GA jsou podporované účty úložiště ve všech oblastech USA, západní Evropy, severní Evropy, Francie a Spojeného království.
+A.  Ano. Data Box podporuje maximálně 10 účtů úložišť, úložišť pro obecné účely, klasických úložišť nebo úložišť objektů blob. Podporují se horké i studené objekty blob. 
 
 
 ## <a name="ship-device"></a>Dodání zařízení

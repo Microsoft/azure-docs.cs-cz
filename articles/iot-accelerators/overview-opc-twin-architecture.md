@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: d1c10e056de1bc61b5365550bf2543d2cdf61229
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 002e2e06201688638df98e16c45282187f593a3a
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62106826"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444302"
 ---
 # <a name="opc-twin-architecture"></a>Architektura Dvojčete OPC
 
@@ -35,6 +35,6 @@ Následující obrázky znázorňují architektura Dvojčete OPC.
 
    ![Jak funguje Dvojčete OPC](media/overview-opc-twin-architecture/opc-twin3.png)
 
-1. Rozhraní REST služby dvojčete lze také vytvořit v vydavatele OPC monitorované položky a předplatných. Vydavatel OPC umožňuje telemetrie posílaly z serverovými systémy OPC UA do služby IoT Hub. Další informace o vydavateli OPC, najdete v článku [vydavatel OPC](https://github.com/Azure/iot-edge-opc-publisher) úložišti na Githubu.
+1. Rozhraní REST služby dvojčete lze také vytvořit v vydavatele OPC monitorované položky a předplatných. Vydavatel OPC umožňuje telemetrie posílaly z serverovými systémy OPC UA do služby IoT Hub. Další informace o vydavateli OPC, naleznete v tématu [co je vydavatel OPC](overview-opc-publisher.md).
 
    ![Jak funguje Dvojčete OPC](media/overview-opc-twin-architecture/opc-twin4.png)

@@ -11,12 +11,12 @@ ms.date: 11/06/2018
 ms.topic: quickstart
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: a30f9c1a61044c0911a5afc27ad95fc758b4c83e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0be78b444c9af9c5c0a818d790982670d2b68ee8
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60738242"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477604"
 ---
 # <a name="configure-a-linux-virtual-machine-with-desired-state-configuration"></a>Konfigurace virtuálního počítače s Linuxem s využitím konfigurace požadovaného stavu
 
@@ -38,7 +38,7 @@ Existuje celá řada různých metod, jak připojit počítač a povolit konfigu
 
 1. V levém podokně webu Azure Portal vyberte **Účty Automation**. Pokud tuto možnost v levém podokně nevidíte, klikněte na **Všechny služby** a vyhledejte ji ve výsledném zobrazení.
 1. V seznamu vyberte účet Automation.
-1. V levém podokně účtu Automation vyberte **Konfigurace stavu (DSC)**.
+1. V levém podokně účtu Automation vyberte **Konfigurace stavu (DSC)** .
 2. Kliknutím na **Přidat** otevřete stránku pro výběr virtuálního počítače.
 3. Vyhledejte virtuální počítače, pro který chcete povolit DSC. K vyhledání konkrétního virtuálního počítače můžete použít vyhledávací pole a možnosti filtru.
 4. Klikněte na vybraný virtuální počítač a vyberte **Připojit**.

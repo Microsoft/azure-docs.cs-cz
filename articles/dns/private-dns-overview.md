@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: overview
 ms.date: 6/12/2019
 ms.author: victorh
-ms.openlocfilehash: 7012bbe98e41a3eb273b26e7e4ade705a6eaf8e1
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: aedace031eaedf2709993b5185979e8777821759
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147568"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444839"
 ---
 # <a name="what-is-azure-private-dns"></a>Co je Privátní DNS v Azure?
 
@@ -59,6 +59,13 @@ Azure DNS poskytuje následující možnosti:
 * **Přední rozlišení serveru DNS je podporována mezi virtuálními sítěmi, které jsou propojeny s privátní zóny**. Pro různé virtuální síť překlad názvů DNS neexistuje žádná explicitní závislost tak, aby mezi sebou vytvoření partnerského vztahu virtuálních sítí. Však můžete chtít vytvořit partnerský vztah virtuálních sítí pro další scénáře (například přenosy HTTP).
 
 * **Zpětné vyhledávání DNS je podporována v rámci virtuální sítě oboru**. Zpětné vyhledávání DNS pro privátní IP adresu v rámci virtuální sítě, které jsou přiřazeny k privátní zóně vrátí plně kvalifikovaný název domény, který obsahuje název hostitele/záznamu a zóny název jako přípona.
+
+## <a name="known-issues"></a>Známé problémy
+Následující položky jsou známé chyby a problémy ve verzi preview:
+* Pokud odstraníte virtuální sítě propojené s privátní zóny DNS, nedojde k odstranění odkazů na privátní zóny DNS. Odkaz se nezdaří, pokud znovu vytvořte virtuální síť se stejným názvem a skupinu prostředků a zkuste jej znovu připojit k libovolné privátní zóny DNS. Chcete-li tento problém obejít, vytvořte virtuální síť v jiné skupině prostředků nebo s jiným názvem ve stejné skupině prostředků.
+* Pokud přesunete virtuální sítě do jiné skupiny prostředků nebo předplatného, že neaktualizuje odkazy pro privátní zóny DNS. Překlad názvů pro přesunutý virtuální sítě i nadále fungovat, ale uvidíte původní ID ARM ve virtuální síti, když zobrazujete propojení virtuální sítě privátní zóny DNS.
+* V současné době může selhat propojené virtuální sítě, které jsou hostované v Spojené arabské emiráty – sever, střed Spojené arabské emiráty, Jihoafrická republika – Západ, Jihoafrická republika – sever, Kanada – východ, Francie – jih a může se zobrazit přerušované problémy překlad DNS. 
+
 
 ## <a name="other-considerations"></a>Další důležité informace
 

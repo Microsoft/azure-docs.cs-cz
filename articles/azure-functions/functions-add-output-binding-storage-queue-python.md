@@ -11,14 +11,14 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: 4ae22a5cd6ad044a86db88986daf9cc7c05c00a2
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: c2565a5549cbca08b987883e5905f09070b5ab2c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342316"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443208"
 ---
-# <a name="add-an-azure-storage-queue-binding-to-your-function"></a>Přidání vazby fronty Azure Storage do funkce
+# <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>Přidání vazby fronty Azure Storage do funkce Pythonu
 
 Služba Azure Functions vám umožní připojit se službami Azure a dalších prostředků pro funkce bez nutnosti psát vlastní kód integrace. Tyto *vazby*, které představují vstupní a výstupní, jsou deklarované uvnitř definice funkce. Data z vazby je k dispozici funkce jako parametry. Aktivační události je zvláštní druh vstupní vazby. Funkce obsahuje pouze jednu aktivační událost, může mít více vstupní a výstupní vazby. Další informace najdete v tématu [aktivace Azure Functions a vazby koncepty](functions-triggers-bindings.md).
 
@@ -32,7 +32,7 @@ Předtím, než se pustíte do tohoto článku, proveďte kroky v [části 1 toh
 
 ## <a name="download-the-function-app-settings"></a>Stáhněte si nastavení aplikace function app
 
-V předchozím článku rychlý start jste vytvořili aplikaci function app v Azure společně s účtem služby Storage. Připojovací řetězec pro tento účet je bezpečně uložen v nastavení aplikace v Azure. V tomto článku se zápis zpráv do fronty úložiště ve stejném účtu. Pro připojení k účtu úložiště při místním spuštění funkce, je třeba do souboru local.settings.json stáhnout nastavení aplikace. Spuštěním následujícího příkazu Azure Functions Core Tools ke stažení nastavení do souboru local.settings.json, nahrazení `<APP_NAME>` s názvem aplikace function App v předchozím článku:
+V předchozím článku rychlý start jste vytvořili aplikaci function app v Azure společně s vyžaduje účet úložiště. Připojovací řetězec pro tento účet je bezpečně uložen v nastavení aplikace v Azure. V tomto článku se zápis zpráv do fronty úložiště ve stejném účtu. Pro připojení k účtu úložiště při místním spuštění funkce, je třeba do souboru local.settings.json stáhnout nastavení aplikace. Spuštěním následujícího příkazu Azure Functions Core Tools ke stažení nastavení do souboru local.settings.json, nahrazení `<APP_NAME>` s názvem aplikace function App v předchozím článku:
 
 ```bash
 func azure functionapp fetch-app-settings <APP_NAME>
@@ -45,13 +45,19 @@ Možná budete muset přihlásit ke svému účtu Azure.
 
 Danou hodnotu potřebujete `AzureWebJobsStorage`, což je připojovací řetězec účtu úložiště. Toto připojení použijete k ověření, že výstupní vazbu funguje podle očekávání.
 
+## <a name="enable-extension-bundles"></a>Povolení rozšíření sady
+
+[!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
+
+Teď můžete přidat do úložiště výstupní vazby do projektu.
+
 ## <a name="add-an-output-binding"></a>Přidání výstupní vazby
 
 Ve funkcích, každý typ vazby vyžaduje `direction`, `type`a jedinečný `name` byly definovány v souboru function.json. V závislosti na typu vazby může vyžadovat další vlastnosti. [Konfigurace výstupní fronty](functions-bindings-storage-queue.md#output---configuration) popisuje pole, vyžaduje se pro vazbu fronty Azure Storage.
 
 Pokud chcete vytvořit vazbu, přidáte objekt konfigurace vazby na `function.json` souboru. Upravte soubor function.json ve složce HttpTrigger přidání objektu do `bindings` pole, které má následující vlastnosti:
 
-| Vlastnost | Value | Popis |
+| Vlastnost | Hodnota | Popis |
 | -------- | ----- | ----------- |
 | **`name`** | `msg` | Název identifikující vazby parametru odkazovaného v kódu. |
 | **`type`** | `queue` | Vazba je vazbu fronty Azure Storage. |
@@ -133,7 +139,7 @@ func host start
 ```
 
 > [!NOTE]  
-> Protože předchozím článku měli povolit rozšíření sady v host.json, [rozšíření vazby úložiště](functions-bindings-storage-blob.md#packages---functions-2x) byla stažena a nainstalována během spouštění.
+> Protože předchozím článku měli povolit rozšíření sady v host.json, [rozšíření vazby úložiště](functions-bindings-storage-blob.md#packages---functions-2x) byla stažena a nainstalována během spouštění, společně s další rozšíření vazby společnosti Microsoft.
 
 Zkopírujte adresu URL vaší funkce `HttpTrigger` z výstupu modulu runtime a vložte do panelu Adresa vašeho prohlížeče. K této adrese URL připojte řetězec dotazu `?name=<yourname>` a proveďte požadavek. Stejně jako v předchozím článku byste měli vidět stejnou odpověď v prohlížeči.
 

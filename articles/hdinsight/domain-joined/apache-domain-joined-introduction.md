@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: overview
 ms.date: 06/12/2019
-ms.openlocfilehash: ef32fb9615d36d68da613c4cb1b443dfd928e807
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.openlocfilehash: 266d6160562d5a97bde75597216338214f3d988d
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67137380"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441428"
 ---
 # <a name="what-is-enterprise-security-package-in-azure-hdinsight"></a>Co je balíček zabezpečení podniku v Azure HDInsight
 
@@ -49,7 +49,7 @@ Auditu veškerých přístupů k prostředkům clusteru a data, je nezbytné ke 
 
 Správce můžete zobrazit a sestavy o všech přístupech k prostředkům clusteru HDInsight a data. Správce můžete také zobrazit a sestavy o všech změnách v zásadách řízení přístupu, který je vytvořen v Apache Ranger podporované koncové body. 
 
-Cluster HDInsight s ESP používá k prohledávání protokolů auditu známé uživatelské rozhraní Apache Ranger. V rámci back-endu používá Ranger [Apache Solr](http://lucene.apache.org/solr/) pro ukládání a prohledávání protokolů.
+Cluster HDInsight s ESP používá k prohledávání protokolů auditu známé uživatelské rozhraní Apache Ranger. V rámci back-endu používá Ranger [Apache Solr](https://lucene.apache.org/solr/) pro ukládání a prohledávání protokolů.
 
 ## <a name="encryption"></a>Šifrování
 Ochrana dat je důležitá pro organizační požadavky zabezpečení a dodržování předpisů na schůzku. Kromě omezení přístupu k datům neautorizovanými, by ho zašifrovat. 

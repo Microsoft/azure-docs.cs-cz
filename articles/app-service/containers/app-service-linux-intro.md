@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 1/11/2019
-ms.author: msangapu;yili
+ms.author: msangapu;
 ms.custom: seodec18
-ms.openlocfilehash: 90ced740c2554b2364535125241a3ec91f6d899e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8180ddeceb0dcace61b5c3de7e5a45ab75042419
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67063824"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448406"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Seznámení se službou Azure App Service v Linuxu
 
@@ -33,9 +33,9 @@ App Service v Linuxu podporuje řadu integrovaných imagí za účelem zvýšen�
 
 | Jazyk | Podporované verze |
 |---|---|
-| Node.js | 4.4, 4.5, 4.8, 6.2, 6.6, 6.9, 6.10, 6.11, 8.0, 8.1, 8.2, 8.8, 8.9, 8.11, 9.4, 10.1,10.10, 10.14 |
+| Node.js | 4.4, 4.5, 4.8, 6.2, 6.6, 6.9, 6.10, 6.11, 8.0, 8.1, 8.2, 8.8, 8.9, 8.11, 8.12, 9.4, 10.1, 10.10, 10.14 |
 | Java* | Tomcat 8.5, 9.0, Java SE WildFly 14 (všechny spuštěné prostředí JRE 8) |
-| PHP | 5.6, 7.0, 7.2 |
+| PHP | 5.6, 7.0, 7.2, 7.3 |
 | Python | 2.7, 3.6, 3.7 |
 | .NET Core | 1.0, 1.1, 2.0, 2.1, 2.2 |
 | Ruby | 2.3, 2.4, 2.5, 2.6 |
@@ -77,12 +77,7 @@ Podle aktuální omezení pro stejnou skupinu prostředků nejde kombinovat apli
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Pokud se aplikaci nepodaří spustit nebo pokud chcete zkontrolovat protokolování z aplikace, zkontrolujte protokoly Dockeru v adresáři LogFiles. Přístup k tomuto adresáři získáte prostřednictvím webu SCM nebo přes protokol FTP.
-Pokud chcete protokolovat výstupy `stdout` a `stderr` z vašeho kontejneru, musíte povolit **Protokolování kontejneru Dockeru** v části **Diagnostické protokoly**.
-
-![Povolení protokolování][2]
-
-Nastavení se projeví okamžitě. App Service zjistí změnu nastavení a kontejneru automaticky restartuje za vás.
+Pokud se aplikaci nepodaří spustit nebo pokud chcete zkontrolovat protokolování z aplikace, zkontrolujte protokoly Dockeru v adresáři LogFiles. Přístup k tomuto adresáři získáte prostřednictvím webu SCM nebo přes protokol FTP. Do protokolu `stdout` a `stderr` z vašeho kontejneru, je potřeba povolit **protokolování kontejneru Dockeru** pod **protokoly služby aplikace**. Nastavení se projeví okamžitě. Služby App Service změnu zjistí a automaticky restartuje kontejner.
 
 Na web SCM můžete přejít přes možnost **Rozšířené nástroje** v nabídce **Vývojové nástroje**.
 

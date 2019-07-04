@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2019
 ms.author: anavin
-ms.openlocfilehash: 0d6762c8f3034923ddc0fe7dcf0cc2df34bd3629
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 22c1e3050915fc697a62862620ef492ef22f80b8
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67332106"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67542836"
 ---
 # <a name="what-is-azure-virtual-network"></a>Co je Azure Virtual Network?
 
@@ -27,7 +27,7 @@ Azure Virtual Network (VNet) je základním stavebním blokem vaší privátní 
 ## <a name="vnet-concepts"></a>Koncepty virtuální sítě
 
 - **Adresní prostor:** Při vytváření virtuální sítě, je nutné zadat vlastní privátní adresní prostor IP adres pomocí veřejných a privátních (RFC 1918) adres. Azure přiřazuje prostředkům ve virtuální síti privátní IP adresy z přiřazeného adresního prostoru. Například pokud nasadíte virtuální počítač ve virtuální síti s adresním prostorem, 10.0.0.0/16, virtuálnímu počítači přiřadí privátní IP adresa, jako je 10.0.0.4.
-- **Podsítě:** Podsítě umožňují segmentaci virtuální sítě do jedné nebo více dílčích sítí a přidělení části adresního prostoru virtuální sítě ke každé podsíti. Pak můžete nasadit prostředky Azure v určité podsíti. Stejně jako u tradiční sítě, podsítě umožňují rozdělit adresní prostor vaší virtuální sítě do segmentů, které jsou vhodné pro interní síť organizace. To také zlepšuje efektivitu přidělení adresy. Můžete svázat prostředky v rámci podsítě pomocí skupin zabezpečení sítě. Další informace najdete v tématu [skupiny zabezpečení](/security-overview.md).
+- **Podsítě:** Podsítě umožňují segmentaci virtuální sítě do jedné nebo více dílčích sítí a přidělení části adresního prostoru virtuální sítě ke každé podsíti. Pak můžete nasadit prostředky Azure v určité podsíti. Stejně jako u tradiční sítě, podsítě umožňují rozdělit adresní prostor vaší virtuální sítě do segmentů, které jsou vhodné pro interní síť organizace. To také zlepšuje efektivitu přidělení adresy. Můžete svázat prostředky v rámci podsítě pomocí skupin zabezpečení sítě. Další informace najdete v tématu [skupiny zabezpečení](security-overview.md).
 - **Oblasti**: Virtuální síť je vymezen na jednu oblast nebo umístění; ale více virtuálních sítí z různých oblastí může být propojeny pomocí partnerské vztahy virtuálních sítí.
 - **Předplatné:** Virtuální síť je vymezen na předplatné. V každém [předplatném](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) Azure a v každé [oblasti](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#region) Azure můžete implementovat několik virtuálních sítí.
 

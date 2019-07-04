@@ -17,12 +17,12 @@ ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e51437a99217316ead50d4075be52f089225e618
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 16b11636068c2b5fc8d7591fd7e10a686037d9a4
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190867"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509312"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Rychlý start: Přidání přihlašování s Microsoftem do webové aplikace ASP.NET Core
 
@@ -86,6 +86,10 @@ V tomto rychlém startu se dozvíte, jak webové aplikace ASP.NET Core můžete 
     "TenantId": "Enter_the_Tenant_Info_Here"
     ```
 
+> [!div renderon="portal"]
+> > [!NOTE]
+> > Tento rychlý start podporuje Enter_the_Supported_Account_Info_Here.
+
 > [!div renderon="docs"]
 > Kde:
 > - `Enter_the_Application_Id_here` -je **ID aplikace (klient)** pro aplikace, které jste zaregistrovali na webu Azure Portal. Můžete najít **ID aplikace (klient)** aplikace **přehled** stránky.
@@ -95,7 +99,7 @@ V tomto rychlém startu se dozvíte, jak webové aplikace ASP.NET Core můžete 
 >   - Pokud vaše aplikace podporuje režim **Všichni uživatelé účtu Microsoft**, nahraďte tuto hodnotu za `common`.
 >
 > > [!TIP]
-> > Hodnoty **ID aplikace (klienta)**, **ID adresáře (tenanta)** a **Podporované typy účtu** najdete na stránce **Přehled** aplikace na webu Azure Portal.
+> > Hodnoty **ID aplikace (klienta)** , **ID adresáře (tenanta)** a **Podporované typy účtu** najdete na stránce **Přehled** aplikace na webu Azure Portal.
 
 ## <a name="more-information"></a>Další informace
 

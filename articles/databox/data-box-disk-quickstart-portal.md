@@ -9,20 +9,42 @@ ms.topic: quickstart
 ms.date: 02/26/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: a01da3218b07307faa8e94acab1473c82bd86c41
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 65bf4e973ce33b2898abf585fe306a8bc85c64a0
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60306202"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477786"
 ---
+::: zone target="docs"
+
 # <a name="quickstart-deploy-azure-data-box-disk-using-the-azure-portal"></a>Rychlý start: Nasazení disku Azure Data Box pomocí webu Azure portal
+
+::: zone-end
+
+::: zone target="chromeless"
+
+# <a name="get-started-with-azure-data-box-disk-using-azure-portal"></a>Začínáme s Azure Data Box Disk pomocí webu Azure portal
+
+::: zone-end
+
+::: zone target="docs"
 
 Toto rychlé zprovoznění popisuje, jak nasadit Azure Data Box Disk pomocí webu Azure Portal. Obsahuje například postup rychlého vytvoření objednávky, přijetí disků, vybalení, připojení a zkopírování dat na disky, aby se mohla nahrát do Azure.
 
 Pro podrobné podrobný postup nasazení a pokyny pro sledování, přejděte na [kurzu: Objednávka disku Azure Data Box](data-box-disk-deploy-ordered.md). 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+
+::: zone-end
+
+::: zone target="chromeless"
+
+Toto rychlé zprovoznění popisuje, jak nasadit Azure Data Box Disk pomocí webu Azure Portal. Postup zahrnutí kontroly předpokladů, odemknout disky, připojit a kopírovat data na disky, který odešle do služby Azure.
+
+::: zone-end
+
+::: zone target="docs"
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -33,6 +55,23 @@ Než začnete:
 ## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 
 Přihlaste se k webu Azure Portal na adrese [https://aka.ms/azuredataboxfromdiskdocs](https://aka.ms/azuredataboxfromdiskdocs).
+
+::: zone-end
+
+::: zone target="chromeless"
+
+## <a name="prerequisites"></a>Požadavky
+
+- Vaši objednávku na použití disku Data Box jste umístili [kurzu: Objednávka disku Azure Data Box](data-box-disk-deploy-ordered.md).
+- Obdrželi jste disky a stav úlohy na portálu je aktualizovaný na **Dodáno**.
+- Budete mít klientský počítač, který je k dispozici, ze kterého můžete zkopírovat data. Klientský počítač musí splňovat tyto požadavky:
+
+    - Spuštění [s podporovaným operačním systémem](data-box-disk-system-requirements.md#supported-operating-systems-for-clients).
+    - Mít [jiného požadovaného softwaru](data-box-disk-system-requirements.md#other-required-software-for-windows-clients) nainstalován, pokud je klient Windows.
+
+::: zone-end
+
+::: zone target="docs"
 
 ## <a name="order"></a>Objednání
 
@@ -123,3 +162,5 @@ V tomto rychlém zprovoznění jste nasadili Azure Data Box Disk, který umožň
 
 > [!div class="nextstepaction"]
 > [Použití webu Azure Portal ke správě Data Box Disku](data-box-portal-ui-admin.md)
+
+::: zone-end

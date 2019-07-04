@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 11/15/2018
 ms.author: tamram
-ms.openlocfilehash: 3424b46dff8f2904f41d0e8c1acf96788c51773f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 929ba7e28bca608359e76f9eeb130c61ba3235a0
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60391941"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67435805"
 ---
 # <a name="quickstart-use-azure-storage-explorer-to-create-a-blob-in-object-storage"></a>Rychlý start: Vytvoření objektu blob v úložišti objektů pomocí Průzkumníka služby Azure Storage
 
@@ -47,7 +47,7 @@ Po dokončení připojení se Průzkumník služby Azure Storage otevře se zobr
 
 Objekty blob se vždy nahrávají do kontejneru. Díky tomu můžete organizovat skupiny objektů blob podobně, jako organizujete soubory do složek na svém počítači.
 
-Pokud chcete vytvořit kontejner, rozbalte účet úložiště, který jste vytvořili v předchozím kroku. Klikněte pravým tlačítkem na **Kontejnery objektů blob** a vyberte **Vytvořit kontejner objektů blob**. Zadejte název kontejneru objektů blob. V části [Vytvoření kontejneru a nastavení oprávnění](storage-quickstart-blobs-dotnet.md#create-the-container-and-set-permissions) najdete seznam pravidel a omezení pro pojmenování kontejnerů objektů blob. Až budete hotovi, stisknutím **Enter** vytvoříte kontejner objektů blob. Až se kontejner objektů blob úspěšně vytvoří, zobrazí se ve složce **Kontejnery objektů blob** v příslušném účtu úložiště.
+Pokud chcete vytvořit kontejner, rozbalte účet úložiště, který jste vytvořili v předchozím kroku. Klikněte pravým tlačítkem na **Kontejnery objektů blob** a vyberte **Vytvořit kontejner objektů blob**. Zadejte název kontejneru objektů blob. Zobrazit [vytvořte kontejner](storage-quickstart-blobs-dotnet.md#create-a-container) najdete seznam pravidel a omezení pro pojmenování kontejnerů objektů blob. Až budete hotovi, stisknutím **Enter** vytvoříte kontejner objektů blob. Až se kontejner objektů blob úspěšně vytvoří, zobrazí se ve složce **Kontejnery objektů blob** v příslušném účtu úložiště.
 
 ## <a name="upload-blobs-to-the-container"></a>Nahrání objektů blob do kontejneru
 
@@ -57,7 +57,7 @@ Na pásu karet kontejneru vyberte **Nahrát**. Tato operace umožňuje nahrát s
 
 Vyberte soubory nebo složku k nahrání. Vyberte **typ blobu**. K dispozici jsou možnosti **Připojit**, **Stránka** nebo **Blok**.
 
-Pokud chcete nahrát soubor .vhd nebo .vhdx, zvolte **Nahrát soubory .vhd/.vhdx jako objekty blob stránky (doporučeno)**.
+Pokud chcete nahrát soubor .vhd nebo .vhdx, zvolte **Nahrát soubory .vhd/.vhdx jako objekty blob stránky (doporučeno)** .
 
 V poli **Nahrát do složky (volitelné)** zadejte název složky pro uložení souborů nebo složky v rámci kontejneru. Pokud nevyberete žádnou složku, nahrané soubory se uloží přímo do kontejneru.
 
@@ -83,13 +83,13 @@ Průzkumník služby Azure Storage umožňuje vytváření a správu [snímků](
 
 ## <a name="manage-access-policies"></a>Správa zásad přístupu
 
-Průzkumník služby Azure Storage umožňuje spravovat zásady přístupu ke kontejnerům přímo v uživatelském rozhraní. Existují dva typy zásad zabezpečení přístupu (SAS), úroveň služby a úroveň účtu. Zásady na úrovni účtu cílí na účet úložiště a je možné je použít na víc služeb a prostředků. Zásady na úrovni služby jsou definovány pro prostředek v konkrétní službě. Pokud chcete vygenerovat zásadu SAS na úrovni služby, klikněte pravým tlačítkem na kterýkoli kontejner a vyberte **Spravovat zásady přístupu...**. Pokud chcete vygenerovat zásadu SAS na úrovni účtu, klikněte pravým tlačítkem na účet úložiště.
+Průzkumník služby Azure Storage umožňuje spravovat zásady přístupu ke kontejnerům přímo v uživatelském rozhraní. Existují dva typy zásad zabezpečení přístupu (SAS), úroveň služby a úroveň účtu. Zásady na úrovni účtu cílí na účet úložiště a je možné je použít na víc služeb a prostředků. Zásady na úrovni služby jsou definovány pro prostředek v konkrétní službě. Pokud chcete vygenerovat zásadu SAS na úrovni služby, klikněte pravým tlačítkem na kterýkoli kontejner a vyberte **Spravovat zásady přístupu...** . Pokud chcete vygenerovat zásadu SAS na úrovni účtu, klikněte pravým tlačítkem na účet úložiště.
 
 Když vyberete **Přidat**, budete moci vytvořit novou zásadu přístupu a definovat pro ni oprávnění. Až budete hotovi, uložte zásadu přístupu výběrem možnosti **Uložit**. Tato zásada je nyní dostupná pro použití při konfiguraci sdíleného přístupového podpisu (SAS).
 
 ## <a name="work-with-shared-access-signatures"></a>Použití sdílených přístupových podpisů
 
-Sdílené přístupové podpisy (SAS) se dají získat pomocí Průzkumníka služby Storage. Klikněte pravým tlačítkem na účet úložiště, kontejner nebo objekt blob a zvolte **Získat sdílený přístupový podpis...**. Zvolte čas zahájení a ukončení platnosti a oprávnění a vyberte **Vytvořit**. Úplnou adresu URL s řetězcem dotazu a samotný řetězec je možné zkopírovat na další obrazovce.
+Sdílené přístupové podpisy (SAS) se dají získat pomocí Průzkumníka služby Storage. Klikněte pravým tlačítkem na účet úložiště, kontejner nebo objekt blob a zvolte **Získat sdílený přístupový podpis...** . Zvolte čas zahájení a ukončení platnosti a oprávnění a vyberte **Vytvořit**. Úplnou adresu URL s řetězcem dotazu a samotný řetězec je možné zkopírovat na další obrazovce.
 
 ![Průzkumník služby Microsoft Azure Storage – seznam objektů blob v kontejneru](media/storage-quickstart-blobs-storage-explorer/sharedaccesssignature.png)
 

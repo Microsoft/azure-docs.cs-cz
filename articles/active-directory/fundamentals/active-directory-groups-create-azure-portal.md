@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78e83f4a1aea04bbaea12181419de6c5c06034f2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d47c742e4f6d2ba8a96e9897f43231e509e8aa63
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60249481"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476072"
 ---
 # <a name="create-a-basic-group-and-add-members-using-azure-active-directory"></a>Vytvoření základní skupiny a přidání členů pomocí Azure Active Directory
 Základní skupinu můžete vytvořit na portálu Azure Active Directory (Azure AD). Pro účely tohoto článku přidá základní skupinu do jednoho prostředku vlastník prostředku (správce) a skupina zahrnuje konkrétní členy (zaměstnance), kteří k danému prostředku potřebují přístup. Složitější scénáře, které zahrnují dynamická členství a vytváření pravidel, najdete v [dokumentaci ke správě uživatelů ve službě Azure Active Directory](../users-groups-roles/index.yml).
@@ -37,17 +37,17 @@ Vytvořit základní skupinu a přidat do ní členy můžete současně.
 
     ![Stránka nové skupiny s vyplněnými ukázkovými informacemi](media/active-directory-groups-create-azure-portal/new-group-blade.png)
 
-   - **Typ skupiny (vyžadováno)**: Vyberte předdefinovaný typ skupiny. To zahrnuje:
+   - **Typ skupiny (vyžadováno)** : Vyberte předdefinovaný typ skupiny. To zahrnuje:
         
        - **Zabezpečení.** Slouží ke správě členů a přístupu počítače ke sdíleným prostředkům u skupiny uživatelů. Můžete například vytvořit skupinu zabezpečení pro konkrétní zásady zabezpečení. Tímto způsobem můžete udělit sadu oprávnění všem členům najednou a nemusíte přidávat oprávnění členům jednotlivě. Další informace o správě přístupu k prostředkům najdete v článku o [správě přístupu k prostředkům pomocí skupin služby Azure Active Directory](active-directory-manage-groups.md).
         
        - **Office 365**: Poskytuje možnosti spolupráce tím, že umožňuje členům přístup ke sdílené poštovní schránce, kalendáři, souborům, sharepointovému webu a dalším prostředkům. Tato možnost vám také umožňuje udělit přístup ke skupině lidem mimo vaši organizaci. Další informace o skupinách Office 365 najdete v článku o [skupinách Office 365](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2).
 
-   - **Název skupiny (vyžadováno)**: Přidejte název skupiny. Zvolte název, který si zapamatujete a který bude dávat smysl.
+   - **Název skupiny (vyžadováno)** : Přidejte název skupiny. Zvolte název, který si zapamatujete a který bude dávat smysl. Chcete-li zjistit, pokud název se již používá pro jiné skupiny se provede kontrola. Pokud název se už používá, aby předešel duplicitní, budete vyzváni k úpravě název vaší skupiny.
 
    - **Popis skupiny**: Volitelně můžete přidat také popis skupiny.
 
-   - **Typ členství (vyžadováno)**: Vyberte předdefinovaný typ členství. To zahrnuje:
+   - **Typ členství (vyžadováno)** : Vyberte předdefinovaný typ členství. To zahrnuje:
 
      - **Přiřazeno**: Umožňuje přidat konkrétní uživatele jako členy této skupiny s jedinečnými oprávněními. Pro účely tohoto článku používáme tuto možnost.
 

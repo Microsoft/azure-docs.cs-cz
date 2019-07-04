@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 02/06/2018
 ms.author: mhopkins
 ms.reviewer: cbrooks
-ms.openlocfilehash: 41cb37eb9d96752d4732731d2a36d9bc892cbaa5
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: c3743c62dcbdccc2a119cfec570df96c622390c7
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66159819"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67540319"
 ---
 # <a name="quickstart-use-net-to-create-a-queue-in-azure-storage"></a>Rychlý start: Vytvoření fronty ve službě Azure Storage pomocí .NET
 
@@ -187,9 +187,9 @@ Console.WriteLine();
 
 Potom ukázka přidá zprávu do zpět do fronty. 
 
-Zpráva musí být ve formátu, který může být součástí požadavek XML s kódováním UTF-8 a může mít velikost až 64 KB. Pokud zpráva obsahuje binární data, pak společnost Microsoft doporučuje, aby vám kódování Base64 zprávy.
+Zpráva musí být ve formátu, který může být součástí požadavek XML s kódováním UTF-8 a může mít velikost až 64 KB. Pokud zpráva obsahuje binárních dat, doporučujeme vám kódování Base64 zprávy.
 
-Ve výchozím nastavení je nastavena maximální doba TTL pro zprávu do 7 dní. Můžete zadat libovolný kladné číslo pro zprávy time-to-live, a také -1 pro označení, že zpráva, nemá prošlou platnost.
+Ve výchozím nastavení je nastavena maximální doba TTL pro zprávu do 7 dní. Můžete zadat libovolný kladné číslo pro zprávy time-to-live.
 
 ```csharp
 // Create a message and add it to the queue. Set expiration time to 14 days.
@@ -199,6 +199,12 @@ Console.WriteLine("Added message '{0}' to queue '{1}'", message.Id, queue.Name);
 Console.WriteLine("Message insertion time: {0}", message.InsertionTime.ToString());
 Console.WriteLine("Message expiration time: {0}", message.ExpirationTime.ToString());
 Console.WriteLine();
+```
+
+Chcete-li přidat zprávu, která nemá prošlou platnost, použijte `Timespan.FromSeconds(-1)` ve volání [AddMessageAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessageasync).
+
+```csharp
+await queue.AddMessageAsync(message, TimeSpan.FromSeconds(-1), null, null, null);
 ```
 
 ### <a name="peek-a-message-from-the-queue"></a>Náhled zprávy z fronty

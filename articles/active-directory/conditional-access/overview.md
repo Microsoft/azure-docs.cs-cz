@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc03eeaa3c9b793c5ab20c8e4e2dd6d4473eecd3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a5ef72f1db329d04809a1069c1916d1ffcfffe65
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112253"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509387"
 ---
 # <a name="what-is-conditional-access"></a>Co je podmíněný přístup?
 
@@ -40,11 +40,8 @@ Pomocí zásad podmíněného přístupu můžete použít ovládací prvky př�
 Toto jsou některé běžné problémy přístupu, které vám s podmíněným přístupem může pomoct:
 
 - **[Riziko přihlášení](conditions.md#sign-in-risk)** : Azure AD Identity Protection zjistí rizika přihlášení. Jak omezit přístup, pokud zjištěné riziko přihlášení značí pochybného aktéra? Co kdybyste chtěli získat přesvědčivější důkazy o tom, že přihlášení provedl legitimní uživatel? Co když jsou vaše pochybnosti dostatečně silné na to, abyste určitým uživatelům chtěli dokonce zablokovat přístup k aplikaci?  
-
 - **[Síťové umístění](location-condition.md)** : Azure AD je přístupná odkudkoli. Co když k pokusu o získání přístupu dojde ze síťového umístění, které není pod kontrolou vašeho oddělení IT? Kombinace uživatelského jména a hesla může být dostatečným dokladem identity pro pokusy o získání přístupu z vaší podnikové sítě. Co když požadujete silnější doklad identity pro pokusy o získání přístupu, ke kterým dojde z neočekávaných zemí nebo oblastí světa? Co když dokonce chcete zablokovat pokusy o získání přístupu z určitých oblastí?  
-
 - **[Správa zařízení](conditions.md#device-platforms)** : Ve službě Azure AD uživatelé můžou používat cloudové aplikace z širokou škálu zařízení včetně mobilních a také osobní zařízení. Co když požadujete, aby se pokusy o získání přístupu mohly provádět pouze na zařízeních, která spravuje vaše oddělení IT? Co když chcete určitým zařízením dokonce zablokovat přístup ke cloudovým aplikacím ve vašem prostředí?
-
 - **[Klientská aplikace](conditions.md#client-apps)** : V současné době můžete přistupovat mnoho cloudových aplikací s využitím různých typů aplikací jako jsou webové aplikace, mobilní aplikace nebo aplikace klasické pracovní plochy. Co když dojde k pokusu o získání přístupu pomocí typu klientské aplikace, který způsobuje známé problémy? Co když u určitých typů aplikací požadujete použití zařízení, které spravuje vaše oddělení IT?
 
 Tyto otázky a odpovědi související představují běžné situace přístupu pro podmíněný přístup Azure AD.
@@ -62,7 +59,6 @@ Zásady podmíněného přístupu je definice scénáře přístupu pomocí nás
 **When this happens** (Když se stane toto) definuje důvod aktivace vaší zásady. Tento důvod je charakterizování skupinou splněných podmínek. Podmíněný přístup Azure AD přehrávat podmínek přiřazení dva speciální role:
 
 - **[Uživatelé](conditions.md#users-and-groups)** : Uživatelé, provádí se pokus o přístup (**kdo**).
-
 - **[Cloudové aplikace](conditions.md#cloud-apps-and-actions)** : Cíle pokus o přístup (**co**).
 
 Tyto dvě podmínky jsou povinné v zásadách podmíněného přístupu. Kromě těchto dvou povinných podmínek můžete použít také další podmínky, které popisují způsob provedení pokusu o získání přístupu. Mezi běžné příklady patří použití mobilních zařízení nebo oblastí mimo vaši podnikovou síť. Další informace najdete v tématu [podmínky v Azure Active Directory podmíněného přístupu](conditions.md).

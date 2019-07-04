@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 156b26454aad6d6fd3230e19b47a938841331aec
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 9ec1d5fb13d7fb191bfee6194e69a217bcaddbb9
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545709"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482577"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Rychlý start: Registrace aplikace s platformou identity Microsoft
 
@@ -46,7 +46,7 @@ V tomto rychlém startu se dozvíte, jak přidat a registraci aplikace s využit
        | **Účty v libovolném organizačním adresáři** | Tuto možnost vyberte, pokud chcete cílit na všechny zákazníky z řad firem a vzdělávacích institucí.<br><br>Tato možnost se mapuje pouze na účty Azure AD s více tenanty.<br><br>Pokud jste při registraci aplikace použili možnost s účty Azure AD pouze s jedním tenantem, v okně **Ověřování** ji můžete převést na účet Azure AD s více tenanty a zpět na účet Azure AD s jedním tenantem. |
        | **Účty v libovolném organizačním adresáři a osobní účty Microsoft** | Tuto možnost vyberte, pokud chcete cílit na co nejširší okruh zákazníků.<br><br>Tato možnost se mapuje na účty Azure AD s více tenanty a osobní účty Microsoft.<br><br>Pokud jste při registraci aplikace použili možnost s účty Azure AD s více tenanty a osobní účty Microsoft, nemůžete to v uživatelském rozhraní změnit. Místo toho musíte ke změně podporovaných typů účtu použít editor manifestu aplikace. |
 
-   - **Identifikátor URI pro přesměrování (volitelné)** – Vyberte typ vytvářené aplikace: **Web** nebo **Veřejný klient (mobilní a desktopová zařízení)**. Pak pro vaši aplikaci zadejte identifikátor URI pro přesměrování (neboli adresu URL odpovědi).
+   - **Identifikátor URI pro přesměrování (volitelné)** – Vyberte typ vytvářené aplikace: **Web** nebo **Veřejný klient (mobilní a desktopová zařízení)** . Pak pro vaši aplikaci zadejte identifikátor URI pro přesměrování (neboli adresu URL odpovědi).
        - V případě webových aplikací zadejte základní adresu URL vaší aplikace. Například `http://localhost:31544` může být adresa URL pro webovou aplikaci spuštěnou na místním počítači. Uživatelé by se pomocí této adresy URL přihlašovali k webové klientské aplikaci.
        - V případě veřejných klientských aplikací zadejte identifikátor URI, který Azure AD použije k vrácení odpovědí týkajících se tokenu. Zadejte konkrétní hodnotu pro vaši aplikaci, například `myapp://auth`.
 
@@ -54,11 +54,11 @@ V tomto rychlém startu se dozvíte, jak přidat a registraci aplikace s využit
 
 1. Až budete hotovi, vyberte **Zaregistrovat**.
 
-    [![Registrace nové aplikace na webu Azure Portal](./media/quickstart-add-azure-ad-app-preview/new-app-registration-expanded.png)](./media/quickstart-add-azure-ad-app-preview/new-app-registration-expanded.png#lightbox)
+    [![Zobrazí tuto obrazovku na registraci nové aplikace na webu Azure Portal](./media/quickstart-add-azure-ad-app-preview/new-app-registration-expanded.png)](./media/quickstart-add-azure-ad-app-preview/new-app-registration-expanded.png#lightbox)
 
 Azure AD vaší aplikaci přiřadí jedinečné ID aplikace (klienta) a přesměruje vás na stránku **Přehled** vaší aplikace. Pokud chcete do své aplikace přidat další funkce, můžete vybrat další možnosti konfigurace, jako jsou branding, certifikáty a tajné klíče, oprávnění rozhraní API a další.
 
-[![Stránka Přehled nově zaregistrované aplikace](./media/quickstart-add-azure-ad-app-preview/new-app-overview-page-expanded.png)](./media/quickstart-add-azure-ad-app-preview/new-app-overview-page-expanded.png#lightbox)
+[![Příklad stránky přehled nově registrovaná aplikace](./media/quickstart-add-azure-ad-app-preview/new-app-overview-page-expanded.png)](./media/quickstart-add-azure-ad-app-preview/new-app-overview-page-expanded.png#lightbox)
 
 ## <a name="next-steps"></a>Další postup
 

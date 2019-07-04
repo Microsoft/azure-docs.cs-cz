@@ -9,37 +9,31 @@ ms.topic: include
 ms.date: 04/16/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: ec0425ff2188ecf1816d5f5841394c8e32f301d2
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 4f3d31fa25ea5781bc3af7297719b77723597e17
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67174804"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444602"
 ---
 ## <a name="publish-the-project-to-azure"></a>Publikování projektu do Azure
 
 Visual Studio Code umožňuje publikovat projekt funkcí přímo do Azure. Během postupu vytvoříte aplikaci funkcí a související prostředky ve vašem předplatném Azure. Aplikace funkcí poskytuje kontext spuštění pro vaše funkce. Projekt se zabalí a nasadí do nové aplikace funkcí ve vašem předplatném Azure.
 
-Tento článek předpokládá, že vytváříte novou aplikaci funkcí. 
+Ve výchozím nastavení Visual Studio vytvoří všechny prostředky Azure potřebné k vytvoření aplikace function app. Názvy těchto prostředků jsou založeny na název aplikace funkcí, které zvolíte. Pokud potřebujete mít úplnou kontrolu nad vytvořené prostředky, můžete místo toho [publikovat pomocí rozšířené možnosti](../articles/azure-functions/functions-develop-vs-code.md#enabled-publishing-with-advanced-create-options).
+
+V této části se předpokládá, že vytváříte novou aplikaci function app v Azure.
 
 > [!IMPORTANT]
 > Publikování do existující aplikace funkcí přepíše obsah této aplikace v Azure.
 
-1. V **Azure: Funkce** oblasti, vyberte nasazení na ikonu aplikace Function App.
-
-    ![Nastavení aplikace funkcí](./media/functions-publish-project-vscode/function-app-publish-project.png)
+1. Ve Visual Studio Code stisknutím klávesy F1 otevřete paletu příkazů. V paletu příkazů, vyhledejte a vyberte `Azure Functions: Deploy to function app...`.
 
 1. Pokud nejsou přihlášeni, zobrazí se výzva k **přihlášení k Azure**. Můžete také **vytvořit si bezplatný účet Azure**. Po úspěšném přihlášení z prohlížeče přejděte zpět do Visual Studio Code. 
 
 1. Pokud máte více předplatných, **vybrat odběr, který** pro aplikaci function app, klikněte na tlačítko **+ vytvořit novou aplikaci Function App v Azure**.
 
 1. Zadejte globálně jedinečný název, který identifikuje vaši aplikaci funkcí, a stiskněte klávesu Enter. Platné znaky pro název aplikace funkcí jsou `a-z`, `0-9` a `-`.
-
-1. Zvolte **+ Vytvořit novou skupinu prostředků**, zadejte název skupiny prostředků, například `myResourceGroup`, a stiskněte klávesu Enter. Můžete také použít existující skupinu prostředků.
-
-1. Zvolte **+ vytvořit nový účet úložiště**, typ globálně jedinečný název pro nový účet úložiště používá vaše aplikace function app a potom stiskněte klávesu Enter. Názvy účtů úložiště musí mít délku 3 až 24 znaků a můžou obsahovat jenom číslice a malá písmena. Můžete taky použít existující účet.
-
-1. Zvolte umístění v [oblasti](https://azure.microsoft.com/regions/) ve své blízkosti nebo v blízkosti jiných služeb, které vaše funkce využívají.
 
     Při stisknutí klávesy Enter, vytvoří následující prostředky Azure v rámci vašeho předplatného:
 

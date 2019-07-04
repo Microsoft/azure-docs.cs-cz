@@ -8,12 +8,12 @@ ms.custom: hdinsightactive,mvc
 ms.topic: overview
 ms.date: 05/28/2019
 ms.author: hrasheed
-ms.openlocfilehash: 4fd03dc6ebada5b665a0c256e9cedbb646cd2fb6
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: f10a45c7d9d5da4d5bea535e5157d9b96164e1b0
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66297456"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448664"
 ---
 # <a name="what-is-apache-spark-in-azure-hdinsight"></a>Co je Apache Spark ve službě Azure HDInsight
 
@@ -36,7 +36,7 @@ Clustery Spark ve službě HDInsight nabízejí plně spravovanou službu Spark.
 | Rozhraní REST API |Clustery Spark v HDInsight zahrnují [Apache Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server), server úloh Spart založený na rozhraní REST API pro vzdálené odesílání a monitorování úloh. Zobrazit [použití Apache Spark rozhraní REST API odesílat vzdálené úlohy ke clusteru HDInsight Spark](apache-spark-livy-rest-interface.md).|
 | Podpora pro Azure Data Lake Storage | Clustery Spark v HDInsight můžete použít Azure Data Lake Storage jako primární úložiště nebo další úložiště. Další informace o Data Lake Storage najdete v tématu [přehled o Azure Data Lake Storage](../../data-lake-store/data-lake-store-overview.md). |
 | Integrace se službami Azure |Cluster Spark ve službě HDInsight se dodává s konektorem k Azure Event Hubs. Můžete vytvářet aplikace streamování pomocí Event Hubs, kromě [Apache Kafka](https://kafka.apache.org/), která je již k dispozici jako součást Spark. |
-| Podpora pro ML Server | Podpora pro ML Server v HDInsightu je k dispozici jako typ clusteru **ML Services**. Cluster ML Services můžete nastavit pro spouštění distribuovaných výpočtů v R s rychlostí, kterou zajišťuje cluster Spark. Další informace najdete v tématu [Začínáme používat ML Server ve službě HDInsight](../r-server/r-server-get-started.md). |
+| Podpora pro ML Server | Podpora pro ML Server v HDInsightu je k dispozici jako typ clusteru **ML Services**. Cluster ML Services můžete nastavit pro spouštění distribuovaných výpočtů v R s rychlostí, kterou zajišťuje cluster Spark. Další informace najdete v tématu [novinky služby ML v Azure HDInsight](../r-server/r-server-overview.md). |
 | Integrace v prostředí IDE třetích stran | HDInsight poskytuje několik modulů plug-in pro integrovaná vývojová prostředí (IDE), které jsou užitečné k vytváření a odesílání aplikací do clusteru HDInsight Spark. Další informace najdete v tématu [použití sady Azure Toolkit pro IntelliJ IDEA](apache-spark-intellij-tool-plugin.md), [použití HDInsight pro VSCode](../hdinsight-for-vscode.md), a [použití sady Azure Toolkit pro Eclipse](apache-spark-eclipse-tool-plugin.md).|
 | Počet souběžných dotazů |Clustery Spark v HDInsight podporují souběžné dotazy. Tato schopnost umožňuje sdílení stejných prostředků clusteru pro více dotazů od jednoho uživatele nebo více dotazů od různých uživatelů a aplikací. |
 | Ukládání do mezipaměti na SSD |Data do mezipaměti můžete ukládat volitelně buď do paměti nebo na SSD disky připojené k uzlům clusteru. Ukládání do mezipaměti zajišťuje nejlepší výkon dotazů, ale může být nákladné. Ukládání na disky SSD poskytuje skvělou možnost pro zlepšení výkonu dotazů, aniž by bylo nutné vytvořit cluster velikosti, která je potřeba pro umístění celé datové sady do paměti. |

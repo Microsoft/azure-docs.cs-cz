@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: f47735a6e41ae14cb439e10803b82c0dbd3e64d7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 68f24d4d019af873a0ca45792a3cbcc3dd3c3c3f
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67115028"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476043"
 ---
 # <a name="quickstart-use-a-cloud-based-notebook-server-to-get-started-with-azure-machine-learning"></a>Rychlý start: Začínáme s Azure Machine Learning pomocí serveru založené na cloudu poznámkového bloku
 
@@ -74,9 +74,12 @@ Po spuštění virtuálního počítače použijte **virtuálních počítačů 
 
 1. Na webové stránce poznámkového bloku Jupyter hlavní název složky je vaše uživatelské jméno.  Vyberte tuto složku.
 
+    > [!TIP]
+    > Tato složka se nachází na [kontejner úložiště](concept-workspace.md#resources) ve vašem pracovním prostoru, nikoli v poznámkovém bloku Virtuálního počítače.  Můžete odstranit poznámkového bloku virtuálního počítače a tom zachovat veškerou práci.  Když vytvoříte nový poznámkový blok virtuální počítač později, načte stejné složky.
+
 1. Ukázky foldername zahrnuje číslo verze, například **ukázky 1.0.33.1**.  Vyberte složku ukázky.
 
-1. Vyberte **rychlý Start** poznámkového bloku.
+1. Vyberte **rychlý Start** složky.
 
 ## <a name="run-the-notebook"></a>Spuštění poznámkového bloku
 
@@ -115,11 +118,11 @@ Spuštění poznámkového bloku, který odhaduje pi a zaznamená chybu do praco
 
 1. Klikněte na tlačítko **odkaz na webu Azure portal** zobrazíte informace o daném spuštění ve vašem pracovním prostoru.  Tento odkaz otevře pracovní prostor na webu Azure Portal.
 
-1. Vykreslení zaznamenané hodnoty, které se zobrazí automaticky vytvořené v pracovním prostoru. Při každém zaprotokolování více hodnot se stejným parametrem názvu se pro vás automaticky vygeneruje diagram.
+1. Vykreslení zaznamenané hodnoty, které se zobrazí automaticky vytvořené v pracovním prostoru. Při každém zaprotokolování více hodnot se stejným parametrem názvu se pro vás automaticky vygeneruje diagram. Zde naleznete příklad:
 
    ![Zobrazení historie](./media/quickstart-run-cloud-notebook/web-results.png)
 
-Protože kód přibližné PI použije náhodné hodnoty, se zobrazí vaše vykreslení různé hodnoty.  
+Protože kód přibližné PI použije náhodné hodnoty, může vypadat jinak vaše vykreslení.  
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -154,7 +157,9 @@ V tomto rychlém startu jste dokončili tyto úlohy:
 * Spuštění poznámkového bloku.
 * Zobrazte zaznamenané chybové hodnoty v pracovním prostoru.  Tento příklad ukazuje, jak vám pracovní prostor může pomoct udržovat si přehled o informacích generovaných ve skriptu. 
 
-Na webové stránce aplikace Jupyter Notebook projděte si další poznámkových bloků ve složce samples získat další informace o službě Azure Machine Learning.
+Na webové stránce aplikace Jupyter Notebook v **rychlý Start** složky otevřen a spusťte **02.deploy-web-service.ipynb** Poznámkový blok jupyter zjistěte, jak nasadit webovou službu.
+
+Také na webové stránce aplikace Jupyter Notebook, projděte si další poznámkových bloků ve složce samples získat další informace o službě Azure Machine Learning.
 
 Podrobný pracovní postup prostředí postupujte podle kurzů strojového učení a trénování a nasadit model:  
 

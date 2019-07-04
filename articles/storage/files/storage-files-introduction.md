@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6e8e2843ad8e00b1fe334200b9b1a5c8a7c2c5df
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 075a3cea426fd5f54ef142648754fa9a9e2810b4
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64706951"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508306"
 ---
 # <a name="what-is-azure-files"></a>Co je služba Soubory Azure?
 Azure Files nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes standardní [protokol Server Message Block (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Sdílené složky Azure je možné připojit současně do cloudových i místních nasazení systémů Windows, Linux a macOS. Sdílené složky Azure je navíc možné ukládat do mezipaměti ve Windows Serveru pomocí Synchronizace souborů Azure, aby byly rychle přístupné poblíž místa, kde se data používají.
@@ -21,7 +21,7 @@ Azure Files nabízí plně spravované sdílené složky v cloudu, které jsou p
 ## <a name="videos"></a>Videa
 | Představujeme Synchronizaci souborů Azure (2 min) | Soubory Azure se synchronizací (Ignite 2017) (85 min)  |
 |-|-|
-| [![Záznam dění na monitoru videa Představujeme Synchronizaci souborů Azure – kliknutím zahájíte přehrávání](./media/storage-files-introduction/azure-file-sync-video-snapshot.png)](https://www.youtube.com/watch?v=Zm2w8-TRn-o) | [![Záznam dění na monitoru prezentace Soubory Azure se synchronizací – kliknutím zahájíte přehrávání](./media/storage-files-introduction/azure-files-ignite-2017-video.png)](https://www.youtube.com/watch?v=r26jWDGF_rg) |
+| [![Záznam dění na monitoru videa Představujeme Synchronizaci souborů Azure – kliknutím zahájíte přehrávání](./media/storage-files-introduction/azure-file-sync-video-snapshot.png)](https://www.youtube.com/watch?v=Zm2w8-TRn-o) | [![Záznam dění na monitoru prezentace Soubory Azure se synchronizací – kliknutím zahájíte přehrávání](./media/storage-files-introduction/ignite-2018-video.png)](https://www.youtube.com/watch?v=GMzh2M66E9o) |
 
 ## <a name="why-azure-files-is-useful"></a>Proč je služba Soubory Azure užitečná
 Sdílené složky Azure lze použít k těmto činnostem:

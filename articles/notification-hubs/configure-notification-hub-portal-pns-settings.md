@@ -10,16 +10,16 @@ ms.workload: mobile
 ms.topic: quickstart
 ms.date: 02/14/2019
 ms.author: jowargo
-ms.openlocfilehash: ee627a168e6ca9bb758d994a3f75cc6185976971
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 1037d8d4652f238f03d8e80b0c59a5f396ab5605
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65203689"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445720"
 ---
 # <a name="set-up-push-notifications-in-a-notification-hub-in-the-azure-portal"></a>Nastavení nabízených oznámení v centru oznámení na webu Azure Portal
 
-Azure Notification Hubs poskytují, který se snadno používá a horizontálně navýší kapacitu, který modul nabízených oznámení. Pomocí Notification Hubs k odesílání oznámení na jakoukoliv platformu (iOS, Android, Windows, Kindle, Baidu) a z jakéhokoli back-endu (cloudu nebo místně). Další informace najdete v tématu [co je Azure Notification Hubs?](notification-hubs-push-notification-overview.md).
+Azure Notification Hubs poskytují, který se snadno používá a horizontálně navýší kapacitu, který modul nabízených oznámení. Pomocí Notification Hubs k odesílání oznámení na jakoukoliv platformu (iOS, Android, Windows, Baidu) a z jakéhokoli back-endu (cloudu nebo místně). Další informace najdete v tématu [co je Azure Notification Hubs?](notification-hubs-push-notification-overview.md).
 
 V tomto rychlém startu použijete nastavení platformy oznámení systému (PNS) ve službě Notification Hubs nastavení nabízených oznámení na více platformách. Rychlý Start se dozvíte, kroky pro zajištění na webu Azure Portal.
 
@@ -95,17 +95,6 @@ Nastavení pro Windows Phone do Microsoft nabízené služby oznámení (MPNS):
 
 Další informace najdete v tématu [nabízená oznámení do aplikací Windows Phone pomocí Notification Hubs](notification-hubs-windows-mobile-push-notifications-mpns.md).
       
-## <a name="amazon-device-messaging"></a>Amazon Device Messaging
-
-Nastavení nabízených oznámení pro zasílání zpráv zařízení Amazon (ADM):
-
-1. Na webu Azure Portal na **centra oznámení** stránce **Amazon (ADM)** v levé nabídce.
-2. Zadejte hodnoty pro **ID klienta** a **tajný kód klienta**.
-3. Vyberte **Uložit**.
-    
-   ![ADM – snímek obrazovky nastavení na portálu Azure portal](./media/notification-hubs-kindle-get-started/notification-hub-adm-settings.png)
-
-Další informace najdete v tématu [Začínáme s Notification Hubs pro aplikace Kindle](notification-hubs-kindle-amazon-adm-push-notification.md).
 
 ## <a name="baidu-android-china"></a>Baidu (Android China)
 
@@ -131,5 +120,4 @@ Další informace o tom, jak nabízená oznámení pro různé platformy, najdet
 - [Odesílání nabízených oznámení do zařízení s Androidem pomocí Notification Hubs a Google FCM](notification-hubs-android-push-notification-google-fcm-get-started.md)
 - [Odesílání nabízených oznámení do aplikace pro UPW spuštěných v zařízení s Windows](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)
 - [Nabízená oznámení do aplikace pro Windows Phone 8 pomocí MPNS](notification-hubs-windows-mobile-push-notifications-mpns.md)
-- [Odesílání nabízených oznámení do aplikace Kindle](notification-hubs-kindle-amazon-adm-push-notification.md)
 - [Nabízená oznámení pomocí Notification Hubs a Baidu push cloudu](notification-hubs-baidu-china-android-notifications-get-started.md)

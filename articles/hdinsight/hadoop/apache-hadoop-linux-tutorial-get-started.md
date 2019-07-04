@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: 8eb297c555d2d7f95419b2a9aa11a26cf5c7230f
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.openlocfilehash: 89d25c9c0a45b740bfb60a71f6d85bfbf4a4686a
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67137473"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67459870"
 ---
 # <a name="quickstart-create-apache-hadoop-cluster-in-azure-hdinsight-using-resource-manager-template"></a>Rychlý start: Vytvořit cluster Apache Hadoop v Azure HDInsight pomocí šablony Resource Manageru
 
@@ -81,4 +81,4 @@ Po dokončení tohoto rychlého startu, můžete cluster odstranit. Pomocí HDIn
 V tomto rychlém startu jste zjistili, jak vytvořit cluster Apache Hadoop v HDInsight pomocí šablony Resource Manageru. V dalším článku se dozvíte, jak pomocí Hadoopu ve službě HDInsight provést operaci ETL (extrakce, transformace a načítání).
 
 > [!div class="nextstepaction"]
->[Extrakce, transformace a načítání dat pomocí Apache Hive v HDInsight](../hdinsight-analyze-flight-delay-data-linux.md)
+>[Extrakce, transformace a načítání dat pomocí na HDInsight Interactive Query](../interactive-query/interactive-query-tutorial-analyze-flight-data.md)

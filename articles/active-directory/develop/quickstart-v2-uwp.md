@@ -17,12 +17,12 @@ ms.date: 04/12/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be8048c05217fbdb2956e2a67be4eb3e17abed10
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 7702fd220c2100b8e03ac0491e4b3365525a7de5
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341402"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67540748"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Rychlý start: Volání rozhraní Microsoft Graph API z aplikace pro univerzální platformu Windows (UPW)
 
@@ -82,6 +82,9 @@ Tento rychlý Start obsahuje ukázku kódu, který ukazuje, jak aplikace univerz
     ```csharp
     private const string ClientId = "Enter_the_Application_Id_here";
     ```
+> [!div renderon="portal"]
+> > [!NOTE]
+> > Tento rychlý start podporuje Enter_the_Supported_Account_Info_Here.    
 
 > [!div renderon="docs"]
 > Kde:

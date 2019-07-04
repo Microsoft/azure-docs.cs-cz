@@ -17,12 +17,12 @@ ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa400d678fb1e0793ea1a0cfd53bdfb715a5bc77
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 067e2b73ce914860126b66668ca8cbeb28a4d7d1
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65785025"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67540722"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>Rychlý start: Získání tokenu a volat Microsoft Graph API z desktopové aplikace Windows
 
@@ -44,7 +44,7 @@ V tomto rychlém startu se dozvíte, jak napsat desktopovou aplikaci .NET pro Wi
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Option 2: Registraci a ručně konfiguraci vaší aplikace a ukázku kódu
 >
-> #### <a name="step-1-register-your-application"></a>Krok 1: Zaregistrujte svoji aplikaci.
+> #### <a name="step-1-register-your-application"></a>Krok 1: Registrace vaší aplikace
 > Pokud chcete zaregistrovat aplikaci a ručně přidat informace o registraci aplikace ke svému řešení, postupujte následovně:
 >
 > 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
@@ -52,7 +52,7 @@ V tomto rychlém startu se dozvíte, jak napsat desktopovou aplikaci .NET pro Wi
 > 1. Přejděte na Microsoft identity platform pro vývojáře [registrace aplikací](https://aka.ms/MobileAppReg) stránky.
 > 1. Vyberte **registrace nové**.
 >      - V části **Název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, například `Win-App-calling-MsGraph`.
->      - V části **Podporované typy účtu** vyberte **Účty v libovolném organizačním adresáři a osobní účty Microsoft (například Skype, Xbox, Outlook.com)**.
+>      - V části **Podporované typy účtu** vyberte **Účty v libovolném organizačním adresáři a osobní účty Microsoft (například Skype, Xbox, Outlook.com)** .
 >      - Výběrem možnosti **Registrovat** aplikaci vytvořte.
 > 1. V seznamu stránek pro aplikaci vyberte **Ověřování**.
 > 1. Rozbalte **plochy a zařízení** oddílu.  (Pokud **plochy a zařízení** se nezobrazuje, klikněte nejprve na horním banneru se zobrazit náhled zkušenosti s ověřováním)
@@ -82,17 +82,20 @@ V tomto rychlém startu se dozvíte, jak napsat desktopovou aplikaci .NET pro Wi
     private static string ClientId = "Enter_the_Application_Id_here";
     private static string Tenant = "Enter_the_Tenant_Info_Here";
     ```
+> [!div renderon="portal"]
+> > [!NOTE]
+> > Tento rychlý start podporuje Enter_the_Supported_Account_Info_Here.
 
 > [!div renderon="docs"]
 > Kde:
-> - Hodnota `Enter_the_Application_Id_here` je **ID aplikace (klienta)**, kterou jste zaregistrovali.
+> - Hodnota `Enter_the_Application_Id_here` je **ID aplikace (klienta)** , kterou jste zaregistrovali.
 > - Hodnota `Enter_the_Tenant_Info_Here` je nastavená na jednu z následujících možností:
 >   - Pokud vaše aplikace podporuje režim **Účty jen v tomto organizačním adresáři**, nahraďte tuto hodnotu za **ID tenanta** nebo **Název tenanta** (například contoso.microsoft.com).
 >   - Pokud vaše aplikace podporuje režim **Účty v libovolném organizačním adresáři**, nahraďte tuto hodnotu za `organizations`.
 >   - Pokud vaše aplikace podporuje režim **Účty v libovolném organizačním adresáři a osobní účty Mircosoft**, nahraďte tuto hodnotu za `common`.
 >
 > > [!TIP]
-> > Hodnoty **ID aplikace (klienta)**, **ID adresáře (tenanta)** a **Podporované typy účtu** najdete na stránce **Přehled** aplikace na webu Azure Portal.
+> > Hodnoty **ID aplikace (klienta)** , **ID adresáře (tenanta)** a **Podporované typy účtu** najdete na stránce **Přehled** aplikace na webu Azure Portal.
 
 ## <a name="more-information"></a>Další informace
 
@@ -123,7 +126,7 @@ PublicClientApplicationBuilder.Create(ClientId)
 
 > |Kde: ||
 > |---------|---------|
-> | `ClientId` | Je **ID aplikace (klienta)**, kterou jste zaregistrovali na webu Azure Portal. Tuto hodnotu najdete na stránce **Přehled** aplikace na webu Azure Portal. |
+> | `ClientId` | Je **ID aplikace (klienta)** , kterou jste zaregistrovali na webu Azure Portal. Tuto hodnotu najdete na stránce **Přehled** aplikace na webu Azure Portal. |
 
 ### <a name="requesting-tokens"></a>Žádosti o tokeny
 

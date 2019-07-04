@@ -9,15 +9,15 @@ keywords: azure functions, functions, event processing, compute, serverless arch
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: quickstart
-ms.date: 09/07/2018
+ms.date: 06/25/2019
 ms.author: glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: cbe4dbd2ae741f4225cfdc628c31508956cbb95c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: fcf9f1d6420dbbde359d386bc3b67a0866aca30d
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61353208"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444594"
 ---
 # <a name="create-your-first-function-using-visual-studio-code"></a>Vytvoření první funkce pomocí Visual Studio Code
 
@@ -27,25 +27,26 @@ V tomto článku se dozvíte, jak použít [rozšíření Azure Functions pro Vi
 
 ![Kód služby Azure Functions v projektu sady Visual Studio](./media/functions-create-first-function-vs-code/functions-vscode-intro.png)
 
-Rozšíření aktuálně plně podporuje C#, JavaScript a Javu funguje s podpora v jazyce Python aktuálně ve verzi Preview. Kroky v tomto článku se mohou lišit podle vašeho výběru jazyka pro váš projekt Azure Functions. Rozšíření je v současné době ve verzi Preview. Další informace najdete na stránce rozšíření [Rozšíření Azure Functions pro Visual Studio Code].
+Rozšíření v současné době podporuje C#, JavaScript a Javu funguje s podpora v jazyce Python aktuálně ve verzi Preview. Kroky v tomto článku a v článku, který následuje podporují pouze jazyka JavaScript a C# funkce. Zjistěte, jak používat Visual Studio Code k vytvoření a publikování funkce Pythonu, najdete v článku [nasazení Pythonu do služby Azure Functions](https://code.visualstudio.com/docs/python/tutorial-azure-functions). Zjistěte, jak používat Visual Studio Code k vytvoření a publikování funkce Powershellu, najdete v článku [vytvoření první funkce prostředí PowerShell v Azure](functions-create-first-function-powershell.md). 
+
+Rozšíření je v současné době ve verzi Preview. Další informace najdete na stránce rozšíření [Rozšíření Azure Functions pro Visual Studio Code].
 
 ## <a name="prerequisites"></a>Požadavky
 
 K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
-* Nainstalujte [Visual Studio Code](https://code.visualstudio.com/) na jedné z [podporovaných platforem](https://code.visualstudio.com/docs/supporting/requirements#_platforms). Tento článek byl vytvořený a testovaný na zařízení se systémem macOS (High Sierra).
+* Nainstalujte [Visual Studio Code](https://code.visualstudio.com/) na jedné z [podporovaných platforem](https://code.visualstudio.com/docs/supporting/requirements#_platforms).
 
-* Nainstalujte verzi 2.x [nástrojů Azure Functions Core](functions-run-local.md#v2), která je stále ve verzi Preview.
+* Nainstalovat verzi 2.x [nástrojů Azure Functions Core](functions-run-local.md#v2).
 
 * Nainstalujte konkrétní požadavky pro vámi zvolený jazyk:
 
-    | Jazyk | Linka |
+    | Jazyk | Požadavek |
     | -------- | --------- |
-    | **C#** | [C# pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)<br/>[Nástroje .NET Core CLI](https://docs.microsoft.com/dotnet/core/tools/?tabs=netcore2x)*   |
-    | **Java** | [Ladicí program pro Javu](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)<br/>[Java 8](https://aka.ms/azure-jdks)<br/>[Maven 3+](https://maven.apache.org/) |
-    | **JavaScript** | [Node 8.0+](https://nodejs.org/)  |
-
-    \* Také vyžadují nástroje Core.
+    | **C#** | [Rozšíření jazyka C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)  |
+    | **JavaScript** | [Node.js](https://nodejs.org/)<sup>*</sup> | 
+ 
+    <sup>*</sup>Aktivní LTS a údržby LTS verze (8.11.1 a 10.14.1 doporučeno).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -53,47 +54,7 @@ K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
 [!INCLUDE [functions-create-function-app-vs-code](../../includes/functions-create-function-app-vs-code.md)]
 
-## <a name="create-an-http-triggered-function"></a>Vytvoření funkce aktivované protokolem HTTP
-
-1. Z **Azure: Funkce**, zvolte ikonu Create Function.
-
-    ![Vytvoření funkce](./media/functions-create-first-function-vs-code/create-function.png)
-
-1. Vyberte složku s vaším projektem aplikace funkcí a vyberte šablonu funkce **Trigger HTTP**.
-
-    ![Volba šablony triggeru HTTP](./media/functions-create-first-function-vs-code/create-function-choose-template.png)
-
-1. Jako název funkce zadejte `HTTPTrigger`, stiskněte klávesu Enter a pak vyberte **Anonymní** ověřování.
-
-    ![Volba anonymního ověřování](./media/functions-create-first-function-vs-code/create-function-anonymous-auth.png)
-
-    Funkce ve vybraném jazyce se vytvoří pomocí šablony funkce aktivované protokolem HTTP.
-
-    ![Šablona funkce aktivované protokolem HTTP ve Visual Studio Code](./media/functions-create-first-function-vs-code/new-function-full.png)
-
-Můžete přidat vstupní a výstupní vazbu k funkci tak, že upravíte soubor function.json. Další informace najdete v tématu o [koncepcích triggerů a vazeb Azure Functions](functions-triggers-bindings.md).
-
-Teď máte vytvořený projekt funkcí a funkci aktivovanou protokolem HTTP, takže ji můžete otestovat na místním počítači.
-
-## <a name="test-the-function-locally"></a>Místní testování funkce
-
-Nástroje Azure Functions Core umožňují spouštět projekt Azure Functions na místním počítači pro vývoj. K instalaci těchto nástrojů budete vyzváni při prvním spuštění funkce z Visual Studio Code.  
-
-1. Pokud chcete funkci otestovat, nastavte zarážku v kódu funkce a stiskněte klávesu F5, abyste spustili projekt aplikace funkcí. Výstup z nástrojů Tools se zobrazí na panelu **Terminál**.
-
-1. Na panelu **Terminál** zkopírujte adresu URL koncového bodu vaší funkce aktivované protokolem HTTP.
-
-    ![Místní výstup Azure](./media/functions-create-first-function-vs-code/functions-vscode-f5.png)
-
-1. Vložte adresu URL pro požadavek HTTP do panelu adresy prohlížeče. K této adrese URL připojte řetězec dotazu `?name=<yourname>` a proveďte požadavek. Spuštění se při dosažení zarážky pozastaví.
-
-    ![Dosažení zarážky funkce ve Visual Studio Code](./media/functions-create-first-function-vs-code/function-debug-vscode-js.png)
-
-1. Pokud pokračujete v provádění, dále je uvedená ukázka odezvy na požadavek GET v prohlížeči:
-
-    ![Odezva místního hostitele funkce v prohlížeči](./media/functions-create-first-function-vs-code/functions-test-local-browser.png)
-
-1. Pokud chcete zastavit ladění, stiskněte Shift + F5.
+[!INCLUDE [functions-run-function-test-local-vs-code](../../includes/functions-run-function-test-local-vs-code.md)]
 
 Po ověření správného fungování funkce na místním počítači je na čase publikovat projekt do Azure.
 
@@ -101,7 +62,7 @@ Po ověření správného fungování funkce na místním počítači je na čas
 
 [!INCLUDE [functions-publish-project-vscode](../../includes/functions-publish-project-vscode.md)]
 
-## <a name="test-your-function-in-azure"></a>Testování funkce v Azure
+## <a name="run-the-function-in-azure"></a>Spuštění funkce v Azure
 
 1. Zkopírujte adresu URL triggeru HTTP z panelu **Výstup**. Stejně jako dříve nezapomeňte k této adrese URL připojit řetězec dotazu `?name=<yourname>` a provést požadavek.
 
@@ -115,10 +76,10 @@ Po ověření správného fungování funkce na místním počítači je na čas
 
 ## <a name="next-steps"></a>Další postup
 
-Pomocí Visual Studio Code jste vytvořili aplikaci funkcí s jednoduchou funkcí aktivovanou protokolem HTTP. Můžete také zobrazit další informace o [místní testování a ladění z terminálu nebo příkazového řádku](functions-run-local.md) pomocí nástrojů Azure Functions Core.
+Pomocí Visual Studio Code jste vytvořili aplikaci funkcí s jednoduchou funkcí aktivovanou protokolem HTTP. V následujícím článku rozšířit tuto funkci přidáním výstupní vazby. Tuto vazbu zapíše řetězec z požadavku HTTP pro zprávu do fronty úložiště Azure Queue Storage. Další článek také ukazuje, jak vyčistit těchto nových prostředků Azure tak, že odeberete, kterou jste vytvořili skupinu prostředků.
 
 > [!div class="nextstepaction"]
-> [Povolit integraci modulu Application Insights](functions-monitoring.md#manually-connect-an-app-insights-resource)
+> [Přidání vazby fronty Azure Storage do funkce](functions-add-output-binding-storage-queue-vs-code.md)
 
 [Azure Functions Core Tools]: functions-run-local.md
 [Rozšíření Azure Functions pro Visual Studio Code]: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions

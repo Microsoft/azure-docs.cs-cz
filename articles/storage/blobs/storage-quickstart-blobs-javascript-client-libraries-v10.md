@@ -11,12 +11,12 @@ ms.reviewer: seguler
 ms.date: 05/20/2019
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: b16bbeee299f4879c14856a8041e6517968efebf
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: a971f2b4b63b3fd35777d1d890da8451b84bb086
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66481380"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67544048"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -222,7 +222,7 @@ const sasString = "<Add the SAS you generated earlier>";
 const containerName = "testcontainer";
 const containerURL = new azblob.ContainerURL(
     `https://${accountName}.blob.core.windows.net/${containerName}?${sasString}`,
-    azblob.StorageURL.newPipeline(new azblob.AnonymousCredential)));
+    azblob.StorageURL.newPipeline(new azblob.AnonymousCredential));
 ```
 
 Tento kód používá k vytvoření přidružení zabezpečení a informace o účtu [ContainerURL](https://docs.microsoft.com/javascript/api/@azure/storage-blob/ContainerURL) instance, což je užitečné pro vytváření a manipulaci se kontejner úložiště.
@@ -317,7 +317,7 @@ const uploadFiles = async () => {
 }
 
 selectButton.addEventListener("click", () => fileInput.click());
-fileInput.addEventListener("input", uploadFiles);
+fileInput.addEventListener("change", uploadFiles);
 ```
 
 Tento kód se připojí **vyberte a nahrajte soubory** tlačítko skrytého `file-input` elementu. Tímto způsobem, tlačítko `click` událost se aktivuje vstupního souboru `click` událostí a zobrazí se okno pro výběr souboru. Po vybrání soubory a zavřete dialogové okno, `input` dojde k události a `uploadFiles` funkce je volána. Tato funkce volá pouze prohlížeče [uploadBrowserDataToBlockBlob](https://docs.microsoft.com/javascript/api/@azure/storage-blob/#uploadbrowserdatatoblockblob-aborter--blob---arraybuffer---arraybufferview--blockbloburl--iuploadtoblockbloboptions-) funkce pro každý soubor, který jste vybrali. Každé volání vrátí příslib, která se přidá do seznamu tak, aby se mohou všechny ní použít operátor await najednou, způsobí soubory k nahrání paralelně.

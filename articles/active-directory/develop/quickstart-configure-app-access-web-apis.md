@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b434e5b0c4524af642eb1255597cd3e7674571c
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 7e8b0e17248dff3c53b96fd240a7566f09b22fae
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545806"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482687"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>Rychlý start: Konfigurace klientské aplikace pro přístup k webovým rozhraním API
 
@@ -74,14 +74,14 @@ Přidání identifikátorů URI pro přesměrování do aplikace:
 1. Pokud chcete přidat vlastní identifikátor URI pro přesměrování pro webové a veřejné klientské aplikace, postupujte následovně:
 
    1. Vyhledejte část **Identifikátor URI pro přesměrování**.
-   1. Vyberte typ aplikace, kterou vytváříte: **Web** nebo **Veřejný klient (mobilní a desktopová zařízení)**.
+   1. Vyberte typ aplikace, kterou vytváříte: **Web** nebo **Veřejný klient (mobilní a desktopová zařízení)** .
    1. Zadejte URI pro přesměrování pro vaši aplikaci.
       * V případě webových aplikací zadejte základní adresu URL vaší aplikace. Například `http://localhost:31544` může být adresa URL pro webovou aplikaci spuštěnou na místním počítači. Uživatelé by se pomocí této adresy URL přihlašovali k webové klientské aplikaci.
       * V případě veřejných aplikací zadejte identifikátor URI, který Azure AD použije k vrácení odpovědí týkajících se tokenu. Zadejte konkrétní hodnotu pro vaši aplikaci, například https://MyFirstApp.
 
 1. Pokud si chcete vybrat z navrhovaných identifikátorů URI pro veřejné klienty (mobilní, desktopové), postupujte následovně:
 
-    1. Vyhledejte část **Navrhované identifikátory URI pro přesměrování pro veřejné klienty (mobilní, desktopové)**.
+    1. Vyhledejte část **Navrhované identifikátory URI pro přesměrování pro veřejné klienty (mobilní, desktopové)** .
     1. Pomocí zaškrtávacích políček vyberte odpovídající identifikátory URI pro přesměrování pro vaši aplikaci.
 
 ## <a name="add-credentials-to-your-web-application"></a>Přidání přihlašovacích údajů do webové aplikace
@@ -110,7 +110,7 @@ Přidání přihlašovacích údajů do webové aplikace:
 
 ## <a name="add-permissions-to-access-web-apis"></a>Přidání oprávnění pro přístup k webovým rozhraním API
 
-[![Přidání oprávnění rozhraní API](./media/quickstart-update-azure-ad-app-preview/api-permissions-expanded.png)](./media/quickstart-update-azure-ad-app-preview/api-permissions-expanded.png#lightbox)
+[![Zobrazí na obrazovce, ve kterém můžete přidat oprávnění k rozhraní API](./media/quickstart-update-azure-ad-app-preview/api-permissions-expanded.png)](./media/quickstart-update-azure-ad-app-preview/api-permissions-expanded.png#lightbox)
 
 Přidání oprávnění pro přístup k rozhraní API prostředků z klienta:
 

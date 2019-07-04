@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: ea890a49fc7b6a153ece183b153f5bc2a49760b5
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 5ef30fbf647492f79c64508d8306868aa1f6b278
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66496569"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444584"
 ---
 # <a name="create-an-http-triggered-function-in-azure"></a>Vytvoření funkce aktivované protokolem HTTP v Azure
 
@@ -32,7 +32,7 @@ Než začnete, musíte mít následující:
 
 + Nainstalujte [Python 3.6](https://www.python.org/downloads/).
 
-+ Nainstalujte [nástrojů Azure Functions Core](./functions-run-local.md#v2) verze 2.6.666 nebo novější.
++ Nainstalujte [nástrojů Azure Functions Core](./functions-run-local.md#v2) 2.6.1071 nebo novější verzi.
 
 + Nainstalujte [rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli) verze 2.x nebo novější.
 
@@ -44,18 +44,18 @@ Než začnete, musíte mít následující:
 
 Pro místní vývoj a testování funkce Pythonu, musí pracovat v prostředí Python 3.6. Spusťte následující příkazy k vytvoření a aktivace do virtuálního prostředí s názvem `.env`.
 
-### <a name="bash-or-a-terminal-window"></a>Bash nebo okno terminálu:
+### <a name="bash"></a>Bash:
 
 ```bash
-python3.6 -m venv .env
-source .env/bin/activate
+python3.6 -m venv .venv
+source .venv/bin/activate
 ```
 
 ### <a name="powershell-or-a-windows-command-prompt"></a>Nebo příkazový řádek Windows Powershellu:
 
 ```powershell
-py -3.6 -m venv .env
-.env\scripts\activate
+py -3.6 -m venv .venv
+.venv\scripts\activate
 ```
 
 Zbývající příkazy jsou spuštěná ve virtuálním prostředí.
@@ -66,7 +66,7 @@ Projekt Functions je ekvivalentem aplikaci function app v Azure. Může mít ví
 
 Ve virtuálním prostředí, spusťte následující příkaz, výběr **python** jako váš modul runtime pracovního procesu.
 
-```command
+```console
 func init MyFunctionProj
 ```
 
@@ -78,25 +78,17 @@ Složka s názvem _MyFunctionProj_ se vytvoří, který obsahuje následující 
 
 Přejděte do nové složky MyFunctionProj:
 
-```command
+```console
 cd MyFunctionProj
 ```
 
 Dál aktualizujte soubor host.json povolit rozšíření sady.  
 
-## <a name="reference-bindings"></a>Odkaz na vazby
-
-Rozšíření sady usnadňuje přidat rozšíření vazby dolů cestách. Je také eliminuje nutnost instalace .NET Core 2.x SDK. Rozšíření sady vyžaduje verzi 2.6.1071 základní nástroje nebo vyšší verze. 
-
-[!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
-
-Teď můžete přidat funkce do vašeho projektu.
-
 ## <a name="create-a-function"></a>Vytvoření funkce
 
 Přidání funkce do vašeho projektu, spusťte následující příkaz:
 
-```command
+```console
 func new
 ```
 

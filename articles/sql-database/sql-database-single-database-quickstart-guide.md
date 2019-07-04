@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: carlr
 manager: craigg
 ms.date: 02/04/2019
-ms.openlocfilehash: 0dc9d18ea4dae6ea0f45d1a91392eb1994e6e80e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7b52453bab661531461a2bec2f15f7659ec15a1c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60331685"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441710"
 ---
 # <a name="getting-started-with-single-databases-in-azure-sql-database"></a>Začínáme s izolované databáze ve službě Azure SQL Database
 
@@ -51,3 +51,4 @@ V těchto rychlých startech umožňují rychle vytvořit nebo importovat datab�
 - Jak najít pokročilejší-pro uživatele [použití izolované databáze ve službě Azure SQL Database](sql-database-howto-single-database.md).
 - Najít další ukázkové skripty, které jsou napsané v [PowerShell](sql-database-powershell-samples.md) a [rozhraní příkazového řádku Azure](sql-database-cli-samples.md).
 - Další informace o [rozhraní API pro správu](sql-database-single-databases-manage.md) , můžete použít ke konfiguraci vašich databází.
+- [Určení správné Azure SQL Database nebo spravované Instance SKU pro místní databázi](/sql/dma/dma-sku-recommend-sql-db/).

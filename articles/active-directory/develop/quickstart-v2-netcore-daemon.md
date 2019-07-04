@@ -17,12 +17,12 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3851e53bb648811b46ec69d9c4fc91b920ce80fb
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: d64c13a43d1e74e4372e57cf6d5c3054f5effea4
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65784960"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67540715"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-console-app-using-apps-identity"></a>Rychlý start: Získání tokenu a volat Microsoft Graph API z konzoly aplikace pomocí identity aplikace
 
@@ -52,7 +52,7 @@ Tento rychlý start vyžaduje [.NET Core 2.2](https://www.microsoft.com/net/down
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Option 2: Registraci a ručně konfiguraci vaší aplikace a ukázku kódu
 
 > [!div renderon="docs"]
-> #### <a name="step-1-register-your-application"></a>Krok 1: Zaregistrujte svoji aplikaci.
+> #### <a name="step-1-register-your-application"></a>Krok 1: Registrace vaší aplikace
 > Pokud chcete zaregistrovat aplikaci a ručně přidat informace o registraci aplikace ke svému řešení, postupujte následovně:
 >
 > 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
@@ -96,15 +96,19 @@ Tento rychlý start vyžaduje [.NET Core 2.2](https://www.microsoft.com/net/down
     > > [!div renderon="portal" id="certandsecretspage" class="sxs-lookup"]
     > > [Vygenerujte nový tajný kód klienta]()
     
+    > [!div renderon="portal"]
+    > > [!NOTE]
+    > > Tento rychlý start podporuje Enter_the_Supported_Account_Info_Here.
+    
     > [!div renderon="docs"]
     >> Kde:
-    >> * Hodnota `Enter_the_Application_Id_Here` je **ID aplikace (klienta)**, kterou jste zaregistrovali.
+    >> * Hodnota `Enter_the_Application_Id_Here` je **ID aplikace (klienta)** , kterou jste zaregistrovali.
     >> * `Enter_the_Tenant_Id_Here` -Nahraďte tuto hodnotu **Id Tenanta** nebo **název Tenanta** (například contoso.microsoft.com)
     >> * `Enter_the_Client_Secret_Here` -Nahraďte tuto hodnotu s tajným klíčem klienta vytvořili v kroku 1.
 
     > [!div renderon="docs"]
     > > [!TIP]
-    > > Pokud chcete najít hodnoty z **ID aplikace (klient)**, **ID adresáře (tenant)**, přejděte na aplikaci **přehled** stránky na webu Azure Portal. Pokud chcete generovat nový klíč, přejděte na **certifikáty a tajné kódy** stránky.
+    > > Pokud chcete najít hodnoty z **ID aplikace (klient)** , **ID adresáře (tenant)** , přejděte na aplikaci **přehled** stránky na webu Azure Portal. Pokud chcete generovat nový klíč, přejděte na **certifikáty a tajné kódy** stránky.
     
 #### <a name="step-4-admin-consent"></a>Krok 4: Souhlas správce
 
@@ -131,7 +135,7 @@ https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_i
 > [!div renderon="docs"]
 >> Kde:
 >> * `Enter_the_Tenant_Id_Here` -Nahraďte tuto hodnotu **Id Tenanta** nebo **název Tenanta** (například contoso.microsoft.com)
->> * Hodnota `Enter_the_Application_Id_Here` je **ID aplikace (klienta)**, kterou jste zaregistrovali.
+>> * Hodnota `Enter_the_Application_Id_Here` je **ID aplikace (klienta)** , kterou jste zaregistrovali.
 
 > [!NOTE]
 > Může se zobrazit chyba *"AADSTS50011: Pro aplikaci není zaregistrován žádný zpáteční adresu "* po udělení souhlasu do aplikace pomocí předchozí adresou URL. To možné tuto aplikaci a adresu URL přesměrování URI - nemají prosím dokončená, chybu ignorujte.
@@ -157,7 +161,7 @@ Zobrazí se seznam uživatelů v adresáři služby Azure AD jako výsledek.
 
 ### <a name="msalnet"></a>MSAL.NET
 
-Knihovna MSAL ([Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)) je knihovna používaná k přihlášení uživatelů a požádat o tokeny pro přístup k rozhraní API chráněné službou Microsoft identity platform. Jak je popsáno, v tomto rychlém startu požaduje tokeny pomocí vlastní identity aplikace namísto delegovaná oprávnění. Tok ověřování použité v tomto případě se označuje jako  *[údajů klienta oauth tok](v2-oauth2-client-creds-grant-flow.md)*. Další informace o tom, jak pomocí MSAL.NET tok přihlašovacích údajů klienta najdete v tématu [v tomto článku](https://aka.ms/msal-net-client-credentials).
+Knihovna MSAL ([Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)) je knihovna používaná k přihlášení uživatelů a požádat o tokeny pro přístup k rozhraní API chráněné službou Microsoft identity platform. Jak je popsáno, v tomto rychlém startu požaduje tokeny pomocí vlastní identity aplikace namísto delegovaná oprávnění. Tok ověřování použité v tomto případě se označuje jako  *[údajů klienta oauth tok](v2-oauth2-client-creds-grant-flow.md)* . Další informace o tom, jak pomocí MSAL.NET tok přihlašovacích údajů klienta najdete v tématu [v tomto článku](https://aka.ms/msal-net-client-credentials).
 
  Spuštěním následujícího příkazu v sadě Visual Studio můžete nainstalovat MSAL.NET **Konzola správce balíčků**:
 
@@ -193,7 +197,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 > | Kde: ||
 > |---------|---------|
 > | `config.ClientSecret` | Vytvoření tajného klíče klienta pro aplikaci na webu Azure Portal. |
-> | `config.ClientId` | Je **ID aplikace (klienta)**, kterou jste zaregistrovali na webu Azure Portal. Tuto hodnotu najdete na stránce **Přehled** aplikace na webu Azure Portal. |
+> | `config.ClientId` | Je **ID aplikace (klienta)** , kterou jste zaregistrovali na webu Azure Portal. Tuto hodnotu najdete na stránce **Přehled** aplikace na webu Azure Portal. |
 > | `config.Authority`    | (Volitelné) Koncový bod služby tokenů zabezpečení pro uživatele k ověření. Obvykle <https://login.microsoftonline.com/{tenant}> pro veřejný cloud, kde je název vašeho tenanta nebo vaše ID tenanta {klient}|
 
 Další informace najdete v tématu [referenční dokumentaci pro `ConfidentialClientApplication`](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.iconfidentialclientapplication?view=azure-dotnet)

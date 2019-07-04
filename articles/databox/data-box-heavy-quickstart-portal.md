@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: quickstart
 ms.date: 06/04/2019
 ms.author: alkohli
-ms.openlocfilehash: 930da7367b3f5d7e20617afedef007efea97c51a
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 3467b25c085fb86d4aed3918d5446d118f76ffb8
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66518579"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446738"
 ---
 # <a name="quickstart-deploy-azure-data-box-heavy-using-the-azure-portal"></a>Rychlý start: Nasazení Azure Data Box náročné pomocí webu Azure portal
 
@@ -57,7 +57,7 @@ Než začnete, ujistěte se, že:
 
 ## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 
-Přihlaste se k webu Azure Portal na adrese [http://portal.azure.com](http://portal.azure.com).
+Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="order"></a>Objednání
 
@@ -95,7 +95,7 @@ Tento krok trvá asi 10 až 15 minut.
 
 Tento krok trvá 5 až 7 minut.
 
-1. Pokud chcete získat heslo zařízení, přejděte na webu [Azure Portal](http://portal.azure.com) na **Obecné > Podrobnosti o zařízení**. Stejné heslo se používá pro oba uzly zařízení.
+1. Pokud chcete získat heslo zařízení, přejděte na webu [Azure Portal](https://portal.azure.com) na **Obecné > Podrobnosti o zařízení**. Stejné heslo se používá pro oba uzly zařízení.
 2. Adaptér sítě Ethernet na počítači, který používáte pro připojení k datové pole v případě velkého přiřadíte statické IP adresy 192.168.100.5 a podsítě 255.255.255.0. Přejděte do místního webového uživatelského rozhraní zařízení na adrese `https://192.168.100.10`. Připojení zařízení po zapnutí může trvat až 5 minut.
 3. Přihlaste se pomocí hesla z webu Azure Portal. Zobrazí se vám chyba s informacemi k potížím s certifikátem zabezpečení webu. Postupujte podle pokynů pro konkrétní prohlížeč a přejděte tak na webovou stránku.
 4. Ve výchozím nastavení jsou nastavení síťového rozhraní (s výjimkou MGMT) nakonfigurované jako DHCP. V případě potřeby můžete nakonfigurovat tato rozhraní jako statické a zadejte IP adresu.

@@ -4,19 +4,19 @@ description: V tomto rychlém startu zjistěte, jak vytvořit zařízení IoT Ed
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 03/19/2019
+ms.date: 07/02/2019
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 5c790d39ea471a599e8a6b46004b3e350834c318
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 58dc2f5d8862c0b51b36e028d52275b2c8e732be
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64573955"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537553"
 ---
-# <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-device"></a>Rychlý start: Nasazení prvního modulu IoT Edge k Linuxovému zařízení
+# <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-device"></a>Rychlý start: Nasazení prvního modulu IoT Edge na zařízení s Linuxem
 
 Služba Azure IoT Edge posouvá výkon cloudu k zařízením Internetu věcí. V tomto rychlém startu se naučíte používat cloudové rozhraní ke vzdálenému nasazení předem připraveného kódu do zařízení IoT Edge.
 
@@ -55,15 +55,14 @@ Cloudové prostředky:
 
 Zařízení IoT Edge:
 
-* Virtuální počítač nebo zařízení s Linuxem, který bude fungovat jako zařízení IoT Edge. Měli byste použít poskytované společností Microsoft [Azure IoT Edge na Ubuntu](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot_edge.iot_edge_vm_ubuntu) virtuální počítač, který provede vše potřebné pro spuštění na zařízení IoT Edge předinstalaci. Vytvoření tohoto virtuálního počítače pomocí následujícího příkazu:
+* Virtuální počítač nebo zařízení s Linuxem, který bude fungovat jako zařízení IoT Edge. Měli byste použít poskytované společností Microsoft [Azure IoT Edge na Ubuntu](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot_edge.iot_edge_vm_ubuntu) virtuální počítač, který provede vše potřebné pro spuštění na zařízení IoT Edge předinstalaci. Vytvoření tohoto virtuálního počítače pomocí následujících příkazů:
 
    ```azurecli-interactive
+   az vm image accept-terms --urn microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest
    az vm create --resource-group IoTEdgeResources --name EdgeVM --image microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest --admin-username azureuser --generate-ssh-keys --size Standard_DS1_v2
    ```
 
    Může trvat několik minut pro vytvoření a spuštění nového virtuálního počítače.
-
-   Může se zobrazit `MarketplacePurchaseEligibilityFailed` Chyba v tomto okamžiku. Pokud k tomu dojde, musíte přijmout podmínky tak, že přejdete do [Azure IoT Edge na Ubuntu](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot_edge.iot_edge_vm_ubuntu) a kliknete na `Get It Now`. Přihlaste se a přijměte podmínky existuje před opakováním příkazu.
 
    Při vytváření nového virtuálního počítače, poznamenejte si, **publicIpAddress**, který je součástí výstupu příkazu create. Tato veřejná IP adresa bude používat pro připojení k virtuálnímu počítači dále v tomto rychlém startu.
 

@@ -5,17 +5,17 @@ services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 05/22/2019
+ms.date: 06/26/2019
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: a4bbb43cb00eeb5a9e741016e1648ce915935eb9
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 931de532aa6e09b2cd00955df6ba1f05d7e4f42c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66236592"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67428496"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>Zahájení monitorování webové aplikace ASP.NET Core
 
@@ -47,16 +47,16 @@ Application Insights může shromažďovat telemetrická data ze všech aplikac�
 
 1. Vyberte **Vytvořit prostředek** > **Vývojářské nástroje** > **Application Insights**.
 
-   ![Přidání prostředku Application Insights](./media/dotnetcore-quick-start/1createresourceappinsight.png)
+   > [!NOTE]
+   >Pokud je to poprvé vytváří se prostředek Application Insights Další informace najdete [vytvořte prostředek Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) dokumentu.
 
     Zobrazí se konfigurační pole. K vyplnění vstupních polí použijte následující tabulku.
 
-    | Nastavení        |  Hodnota           | Popis  |
+   | Nastavení        |  Hodnota           | Popis  |
    | ------------- |:-------------|:-----|
    | **Název**      | Globálně jedinečná hodnota | Název identifikující aplikaci, kterou monitorujete |
-   | **Typ aplikace** | Webová aplikace ASP.NET | Typ aplikace, kterou monitorujete |
    | **Skupina prostředků**     | myResourceGroup      | Název pro novou skupinu prostředků, která bude hostovat data App Insights |
-   | **Umístění** | USA – východ | Vyberte umístění ve vaší blízkosti nebo v blízkosti místa, kde se vaše aplikace hostuje. |
+   | **Location** | East US | Vyberte umístění ve vaší blízkosti nebo v blízkosti místa, kde se vaše aplikace hostuje. |
 
 2. Klikněte na možnost **Vytvořit**.
 

@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: quickstart
-ms.date: 01/09/2019
+ms.date: 07/02/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 198e7d8d32e7142a266881e2f4ddbc3ed573c521
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e78dd093c4bbf0cf1bdbd5280ffaa63286e585d4
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60533873"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537133"
 ---
 # <a name="quickstart-configure-server-firewall---portal"></a>Rychlý start: Konfigurace brány firewall serveru – portál
 
@@ -33,7 +33,7 @@ V tomto rychlém startu se dozvíte, jak nakonfigurovat firewall pro server slu�
 1. Když kliknete na server, otevře se stránka Přehled. 
 2. V nabídce **NASTAVENÍ** > **Brána firewall** > **Povolit firewall** klikněte na **Zapnuto**.
 3. Pokud chcete povolit přístup DirectQuery ze služby Power BI, u položky **Povolit přístup ze služby Power BI** klikněte na **Zapnuto**.  
-4. (Volitelné) Zadejte jeden nebo více rozsahů IP adres. V každém rozsahu zadejte název a počáteční a koncovou IP adresu. 
+4. (Volitelné) Zadejte jeden nebo více rozsahů IP adres. V každém rozsahu zadejte název a počáteční a koncovou IP adresu. Název pravidla brány firewall by měly být omezené na 128 znaků a může obsahovat jen velká písmena, malá písmena, čísla, podtržítka a pomlčky. Prázdné znaky a speciální znaky nejsou povoleny.
 5. Klikněte na **Uložit**.
 
      ![Nastavení brány firewall](./media/analysis-services-qs-firewall/aas-qs-firewall.png)

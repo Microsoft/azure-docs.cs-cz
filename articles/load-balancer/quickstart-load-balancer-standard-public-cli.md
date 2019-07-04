@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: ebeb7e109584726dcd2505fbd9d4c1d7bfde7aba
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 30e1bcbd63a31a2b4e52ebbc2b2696e205e88cd5
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66387684"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67466849"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-azure-cli"></a>Rychlý start: Vytvoření Load balanceru úrovně Standard pro vyrovnávání zatížení virtuálních počítačů pomocí Azure CLI
 
@@ -68,7 +68,7 @@ Pomocí příkazu [az network lb create](https://docs.microsoft.com/cli/azure/ne
   az network lb create \
     --resource-group myResourceGroupSLB \
     --name myLoadBalancer \
-    --sku standard
+    --sku standard \
     --public-ip-address myPublicIP \
     --frontend-ip-name myFrontEnd \
     --backend-pool-name myBackEndPool       

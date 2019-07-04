@@ -16,12 +16,12 @@ ms.topic: quickstart
 ms.date: 03/27/2019
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: 7c6d5034335a455d24b1f22919b672e2ead2810d
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 09a3ad182ff5ee19a81b03557b3277343912a774
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510862"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67461421"
 ---
 # <a name="quickstart-create-a-java-app-in-app-service-on-linux"></a>Rychlý start: Vytvoření aplikace v Javě ve službě App Service v Linuxu
 
@@ -62,50 +62,69 @@ Pak do elementu `<build>` souboru `pom.xml` přidejte následující definici mo
     <plugin>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>azure-webapp-maven-plugin</artifactId>
-        <version>1.5.4</version>
-        <configuration>
-            <!-- Specify v2 schema -->
-            <schemaVersion>v2</schemaVersion>
-            <!-- App information -->
-            <subscriptionId>${SUBSCRIPTION_ID}</subscriptionId>
-            <resourceGroup>${RESOURCEGROUP_NAME}</resourceGroup>
-            <appName>${WEBAPP_NAME}</appName>
-            <region>${REGION}</region>
-   
-            <!-- Java Runtime Stack for App on Linux-->
-            <runtime>
-                <os>linux</os>
-                <javaVersion>jre8</javaVersion>
-                <webContainer>tomcat 8.5</webContainer>
-            </runtime> 
-            <deployment>
-                <resources>
-                    <resource>
-                        <directory>${project.basedir}/target</directory>
-                        <includes>
-                            <include>*.war</include>
-                        </includes>
-                    </resource>
-                </resources>
-            </deployment>
-        </configuration>
+        <version>1.7.0</version>
     </plugin>
 </plugins>
-```    
+```
 
+Procesu nasazení do služby Azure App Service používá přihlašovací údaje účtu z příkazového řádku Azure. [Přihlaste se pomocí Azure CLI](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) než budete pokračovat.
 
-> [!NOTE] 
+```azurecli
+az login
+```
+
+Pak můžete nakonfigurovat nasazení, spusťte příkaz mavenu `mvn azure-webapp:config` v příkazovém řádku a použít výchozí konfiguraci stisknutím klávesy **ENTER** dokud se nedostanete **potvrzení (Ano/Ne)** výzvu, pak Stisknutím klávesy **"y"** a dokončení konfigurace.
+
+```cmd
+~@Azure:~/helloworld$ mvn azure-webapp:config
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ----------------------< example.demo:helloworld >-----------------------
+[INFO] Building helloworld Maven Webapp 1.0-SNAPSHOT
+[INFO] --------------------------------[ war ]---------------------------------
+[INFO]
+[INFO] --- azure-webapp-maven-plugin:1.6.0:config (default-cli) @ helloworld ---
+[WARNING] The plugin may not work if you change the os of an existing webapp.
+Define value for OS(Default: Linux):
+1. linux [*]
+2. windows
+3. docker
+Enter index to use:
+Define value for javaVersion(Default: jre8):
+1. jre8 [*]
+2. java11
+Enter index to use:
+Define value for runtimeStack(Default: TOMCAT 8.5):
+1. TOMCAT 9.0
+2. jre8
+3. TOMCAT 8.5 [*]
+4. WILDFLY 14
+Enter index to use:
+Please confirm webapp properties
+AppName : helloworld-1558400876966
+ResourceGroup : helloworld-1558400876966-rg
+Region : westeurope
+PricingTier : Premium_P1V2
+OS : Linux
+RuntimeStack : TOMCAT 8.5-jre8
+Deploy to slot : false
+Confirm (Y/N)? : Y
+```
+
+> [!NOTE]
 > V tomto článku pracujeme jenom s aplikacemi Java zabalenými do souborů WAR. Modul plug-in podporuje také webové aplikace JAR. Pokud si to chcete vyzkoušet, přečtěte si téma věnované [nasazení souboru Java SE JAR do služby App Service v Linuxu](https://docs.microsoft.com/java/azure/spring-framework/deploy-spring-boot-java-app-with-maven-plugin?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
 
+Přejděte na `pom.xml` znovu zobrazit, aktualizovat konfiguraci modulu plug-in, můžete upravit další konfigurace pro službu App Service přímo v souboru pom Pokud potřebné, některé běžné ty jsou uvedeny níže:
 
-V konfiguraci modulu plug-in aktualizujte následující zástupné symboly:
-
-| Zástupný symbol | Popis |
-| ----------- | ----------- |
-| `SUBSCRIPTION_ID` | Jedinečné ID předplatného, kterou chcete nasadit aplikaci. ID výchozího předplatného najdete na službě Cloud Shell nebo rozhraní příkazového řádku pomocí `az account show` příkazu. Pro všechna dostupná předplatná, použijte `az account list` příkazu.|
-| `RESOURCEGROUP_NAME` | Název pro novou skupinu prostředků, ve kterém chcete vytvořit aplikaci. Když umístíte všechny prostředky pro aplikaci do skupiny, můžete je spravovat společně. Odstraněním příslušné skupiny prostředků by se například odstranily všechny prostředky, které jsou přidružené k dané aplikaci. Aktualizujte tuto hodnotu zadáním jedinečného názvu nové skupiny prostředků, třeba *TestResources*. Tento název skupiny prostředků použijete v pozdější fázi k vyčištění všech prostředků Azure. |
-| `WEBAPP_NAME` | Část názvu hostitele pro aplikace nasazené do Azure (WEBAPP_NAME.azurewebsites.net) bude mít název aplikace. Aktualizujte tuto hodnotu jedinečný název pro novou aplikaci služby App Service, který bude hostovat aplikaci v Javě, například *contoso*. |
-| `REGION` | Určitá oblast Azure, ve kterém je aplikace hostovaná, například `westus2`. Seznam oblastí můžete získat z Cloud Shellu nebo rozhraní příkazového řádku pomocí příkazu `az account list-locations`. |
+ Vlastnost | Požaduje se | Popis | Version
+---|---|---|---
+`<schemaVersion>` | false | Zadejte verzi schématu konfigurace. Podporované hodnoty jsou: `v1`, `v2`. | 1.5.2
+`<resourceGroup>` | true (pravda) | Skupina prostředků Azure pro vaši webovou aplikaci. | 0.1.0+
+`<appName>` | true (pravda) | Název webové aplikace. | 0.1.0+
+[`<region>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#region) | true (pravda) | Určuje oblast, ve kterém bude hostovat webové aplikace; Výchozí hodnota je **westus**. Všechny platné oblasti na [podporované oblasti](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#region) oddílu. | 0.1.0+
+[`<pricingTier>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme##pricingtier) | false | Cenová úroveň pro vaši webovou aplikaci. Výchozí hodnota je **P1V2**.| 0.1.0+
+[`<runtime>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#runtimesetting) | true (pravda) | Konfigurace prostředí modulu runtime, je možné, uvidíte podrobnosti [tady](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#runtimesetting). | 0.1.0+
+[`<deployment>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#deploymentsetting) | true (pravda) | Konfigurace nasazení je možné, uvidíte podrobnosti [tady](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#deploymentsetting). | 0.1.0+
 
 ## <a name="deploy-the-app"></a>Nasazení aplikace
 
@@ -117,11 +136,19 @@ mvn package azure-webapp:deploy
 
 Po dokončení nasazení přejděte ve webovém prohlížeči pomocí následující adresy URL, například `http://<webapp>.azurewebsites.net`, do nasazené aplikace. 
 
-![Ukázková aplikace spuštěná ve službě Azure](media/quickstart-java/java-hello-world-in-browser-curl.png)
+![Ukázková aplikace spuštěná ve službě Azure](media/quickstart-java/java-hello-world-in-browser.png)
 
 **Blahopřejeme!** Nasadili jste svou první aplikaci v Javě do služby App Service v Linuxu.
 
-[!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+V předchozích krocích jste vytvořili prostředky Azure ve skupině prostředků. Pokud předpokládáte, že už tyto prostředky nebudete potřebovat, odstraňte skupinu prostředků spuštěním následujícího příkazu ve službě Cloud Shell:
+
+```azurecli-interactive
+az group delete --name <your resource group name; for example: helloworld-1558400876966-rg> --yes
+```
+
+Spuštění tohoto příkazu může trvat přibližně minut.
 
 ## <a name="next-steps"></a>Další postup
 

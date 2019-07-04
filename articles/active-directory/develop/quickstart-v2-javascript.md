@@ -16,12 +16,12 @@ ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 305479c8872883e434731b5062b408f97f68cc43
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2182708ea459b578a2a9a94213ab41e76821aefc
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67055924"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67514355"
 ---
 # <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-single-page-application"></a>Rychlý start: Přihlašování uživatelů a získání přístupového tokenu z jednostránkové aplikace v jazyce JavaScript
 
@@ -105,6 +105,11 @@ var msalConfig = {
 };
 
 ```
+> [!div renderon="portal"]
+> > [!NOTE]
+> > Tento rychlý start podporuje Enter_the_Supported_Account_Info_Here.
+
+
 > [!div renderon="docs"]
 >
 > Kde:

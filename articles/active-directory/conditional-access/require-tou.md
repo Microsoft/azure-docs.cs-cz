@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a3523a050a021f3a98c144efe14d692704fba63
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ba684209b497792cd2f520f6b530168959e62d7f
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112219"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67506915"
 ---
 # <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>Rychlý start: Vyžadovat podmínky použití přijmout před přístupem k cloudových aplikací
 
@@ -54,11 +54,8 @@ Tato část obsahuje kroky k vytvoření ukázkové podmínky použití. Když v
 **Chcete-li vytvořit vaše podmínky použití:**
 
 1. V aplikaci Microsoft Word vytvoříte nový textový dokument.
-
 1. Typ **Moje podmínky použití**a potom uložte dokument na počítač jako **mytou.pdf**.
-
 1. Přihlaste se k vaší [webu Azure portal](https://portal.azure.com) jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
-
 1. Na webu Azure Portal, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory**.
 
    ![Azure Active Directory](./media/require-tou/02.png)
@@ -80,17 +77,11 @@ Tato část obsahuje kroky k vytvoření ukázkové podmínky použití. Když v
    ![Podmínky použití](./media/require-tou/112.png)
 
    1. V **název** textové pole, typ **Moje TOU**.
-
    1. V **zobrazovaný název** textové pole, typ **Moje TOU**.
-
    1. Nahrajte vaše podmínky použití souboru PDF.
-
    1. Jako **jazyk**vyberte **Angličtina**.
-
    1. Jako **vyžadují, aby uživatelé rozbalili podmínky použití**vyberte **na**.
-
    1. Jako **vynutit pomocí šablon zásad podmíněného přístupu**vyberte **vlastní zásady pro**.
-
    1. Klikněte na možnost **Vytvořit**.
 
 ## <a name="create-your-conditional-access-policy"></a>Vytvořte zásadu podmíněného přístupu
@@ -114,7 +105,7 @@ V zásadách nastavte:
 
 1. Na **nový** stránku, **název** textové pole, typ **vyžadují podmínky použití pro Isabella**.
 
-   ![Name](./media/require-tou/71.png)
+   ![Název](./media/require-tou/71.png)
 
 1. V **přiřazení** klikněte na tlačítko **uživatelů a skupin**.
 
@@ -125,13 +116,9 @@ V zásadách nastavte:
    ![Uživatelé a skupiny](./media/require-tou/24.png)
 
    1. Klikněte na tlačítko **výběr uživatelů a skupin**a pak vyberte **uživatelů a skupin**.
-
    1. Klikněte na **Vybrat**.
-
    1. Na **vyberte** stránce **Isabella Simonsen**a potom klikněte na tlačítko **vyberte**.
-
    1. Na **uživatelů a skupin** klikněte na **provádí**.
-
 1. Klikněte na tlačítko **cloudové aplikace**.
 
    ![Cloudové aplikace](./media/require-tou/08.png)
@@ -141,13 +128,9 @@ V zásadách nastavte:
    ![Vyberte cloudové aplikace](./media/require-tou/26.png)
 
    1. Klikněte na tlačítko **vyberte aplikace**.
-
    1. Klikněte na **Vybrat**.
-
    1. Na **vyberte** stránce **Microsoft Azure Management**a potom klikněte na tlačítko **vyberte**.
-
    1. Na **cloudové aplikace** klikněte na **provádí**.
-
 1. V **ovládací prvky přístupu** klikněte na tlačítko **udělení**.
 
    ![Řízení přístupu](./media/require-tou/10.png)
@@ -157,11 +140,8 @@ V zásadách nastavte:
    ![Udělení](./media/require-tou/111.png)
 
    1. Vyberte **udělit přístup**.
-
    1. Vyberte **Moje podmínek použití**.
-
    1. Klikněte na **Vybrat**.
-
 1. V **povolit zásady** klikněte na tlačítko **na**.
 
    ![Povolení zásady](./media/require-tou/18.png)
@@ -172,7 +152,7 @@ V zásadách nastavte:
 
 Teď, když jste nakonfigurovali zásady podmíněného přístupu, budete pravděpodobně chtít vědět, jestli funguje podle očekávání. Jako první krok pomocí podmíněného přístupu, nástroj pro co když zásady pro simulaci u přihlášení z testovacího uživatele. Při této simulaci se odhadne dopad přihlášení na vaše zásady a vygeneruje se sestava simulace.  
 
-K inicializaci co, pokud nástroj pro vyhodnocení zásad, nastavit:
+Inicializovat **co když** nastavit nástroj pro vyhodnocení zásad:
 
 - **Isabella Simonsen** jako uživatel
 - **Microsoft Azure Management** jako cloudové aplikace
@@ -199,15 +179,10 @@ Kliknutím na **co když** vytvoří sestavu simulace, která zobrazí:
    ![Cloudové aplikace](./media/require-tou/16.png)
 
    1. Klikněte na tlačítko **cloudové aplikace**.
-
    1. Na **stránky aplikací cloudu**, klikněte na tlačítko **vyberte aplikace**.
-
    1. Klikněte na **Vybrat**.
-
    1. Na **vyberte** stránce **Microsoft Azure Management**a potom klikněte na tlačítko **vyberte**.
-
    1. Na stránce cloudové aplikace, klikněte na tlačítko **provádí**.
-
 1. Klikněte na tlačítko **co když**.
 
 ## <a name="test-your-conditional-access-policy"></a>Otestovat své zásady podmíněného přístupu
@@ -223,7 +198,6 @@ K otestování vašich zásad, zkuste pro přihlášení k vaší [webu Azure po
 Pokud už je nepotřebujete, odstraňte testovacího uživatele a zásady podmíněného přístupu:
 
 - Pokud si nejste jisti, jak odstranit uživatele služby Azure AD, přečtěte si téma [odstranit uživatele z Azure AD](../fundamentals/add-users-azure-active-directory.md#delete-a-user).
-
 - Pokud chcete odstranit zásady, vyberte zásady a klikněte na **odstranit** v panelu nástrojů Rychlý přístup.
 
     ![Ověřování pomocí služby Multi-Factor Authentication](./media/require-tou/33.png)

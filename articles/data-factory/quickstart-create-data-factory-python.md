@@ -13,16 +13,16 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: 264a1200ce78d85181650de716f9898033834bc0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 70a862f51f9e15b8eb26e2ac12b046b76b9a7402
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60311841"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67514329"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>Rychlý start: Vytvoření datové továrny a kanálu pomocí Pythonu
 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, který používáte:"]
 > * [Verze 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Aktuální verze](quickstart-create-data-factory-python.md)
 
@@ -41,7 +41,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 1. Spusťte Poznámkový blok. Zkopírujte následující text a uložte ho na disk jako soubor **input.txt**.
 
-    ```
+    ```text
     John|Doe
     Jane|Doe
     ```
@@ -52,12 +52,12 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 1. Otevřete terminál nebo příkazový řádek s oprávněními správce. 
 2. Nejdřív nainstalujte balíček Pythonu pro prostředky správy Azure:
 
-    ```
+    ```python
     pip install azure-mgmt-resource
     ```
 3. Balíček Pythonu pro službu Data Factory nainstalujete spuštěním následujícího příkazu:
 
-    ```
+    ```python
     pip install azure-mgmt-datafactory
     ```
 
@@ -374,7 +374,7 @@ def main():
         }
     )
 
-    # Monitor the pipeilne run
+    # Monitor the pipeline run
     time.sleep(30)
     pipeline_run = adf_client.pipeline_runs.get(rg_name, df_name, run_response.run_id)
     print("\n\tPipeline run status: {}".format(pipeline_run.status))

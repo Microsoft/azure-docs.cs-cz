@@ -8,17 +8,17 @@ ms.subservice: development
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
-author: AyoOlubeko
-ms.author: ayolubek
+author: Ninarn
+ms.author: ninarn
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/12/2019
-ms.openlocfilehash: b2109afe6760eb87269a33ed74784149c2bf3e03
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/28/2019
+ms.openlocfilehash: 52041ba3c057e871b60f283f293dd79a18f3b21e
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61409025"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508751"
 ---
 # <a name="quickstart-use-the-azure-portals-sql-query-editor-to-connect-and-query-data"></a>Rychlý start: Připojení a dotazování dat pomocí editoru dotazů SQL webu Azure portal
 
@@ -32,14 +32,14 @@ Pro absolvování tohoto kurzu potřebujete:
 
   || Izolovaná databáze |
   |:--- |:--- |
-  | Vytvořit| [Azure Portal](sql-database-single-database-get-started.md) | 
-  || [Rozhraní příkazového řádku](scripts/sql-database-create-and-configure-database-cli.md) | 
-  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | 
-  | Konfigurace | [pravidlo brány firewall na úrovni serveru IP](sql-database-server-level-firewall-rule.md)| 
+  | Vytvořit| [Azure Portal](sql-database-single-database-get-started.md) |
+  || [Rozhraní příkazového řádku](scripts/sql-database-create-and-configure-database-cli.md) |
+  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) |
+  | Konfigurace | [pravidlo brány firewall na úrovni serveru IP](sql-database-server-level-firewall-rule.md)|
   |||
 
 > [!NOTE]
-> Ujistěte se, že **povolit přístup ke službám Azure** je možnost nastavená na **ON** v nastavení brány firewall SQL serveru. Tato možnost poskytuje přístup k editoru dotazů SQL k datovým skladům a databázím.
+> Editor dotazů ke komunikaci používá porty 443 a 1443.  Ujistěte se prosím, že jste povolili odchozí provoz HTTPS na těchto portech. Musíte taky přidat odchozí IP adresa na serveru povolená brána firewall pravidla pro přístup k datovým skladům a databázím.
 
 ## <a name="sign-in-the-azure-portal"></a>Přihlaste se na webu Azure portal
 
@@ -49,13 +49,13 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 1. Vyberte **databází SQL** z nabídky na levé straně a pak vyberte **mySampleDatabase**.
 
-2. V nabídce vlevo najděte a vyberte **editor dotazů (preview)**. **Přihlášení** se zobrazí stránka.
+2. V nabídce vlevo najděte a vyberte **editor dotazů (preview)** . **Přihlášení** se zobrazí stránka.
 
     ![vyhledání editoru dotazů](./media/sql-database-connect-query-portal/find-query-editor.PNG)
 
 3. Z **typ autorizace** rozevírací nabídky vyberte **ověřování serveru SQL Server** a zadejte ID uživatele a heslo účtu správce serveru, který se používá k vytvoření databáze.
 
-    ![Přihlášení](./media/sql-database-connect-query-portal/login-menu.png) 
+    ![Přihlášení](./media/sql-database-connect-query-portal/login-menu.png)
 
 4. Vyberte **OK**.
 
@@ -78,8 +78,8 @@ Konfigurace správce Active Directory (AD) umožňuje používat jednu identitu 
 
 4. Vyberte z panelu nástrojů stránky Správce AD **Uložit**.
 
-5. Přejděte **mySampleDatabase** databáze a v nabídce vlevo vyberte **editor dotazů (preview)**. **Přihlášení** se zobrazí stránka. Pokud jste správce AD, potom na pravé straně v části **služby Active Directory jednotného přihlašování**, zobrazí se zpráva s informacemi o tom budete přihlášeni. 
-   
+5. Přejděte **mySampleDatabase** databáze a v nabídce vlevo vyberte **editor dotazů (preview)** . **Přihlášení** se zobrazí stránka. Pokud jste správce AD, potom na pravé straně v části **služby Active Directory jednotného přihlašování**, zobrazí se zpráva s informacemi o tom budete přihlášeni.
+
 6. Vyberte **OK**.
 
 
@@ -160,7 +160,7 @@ Spusťte následující příkaz [odstranit](https://msdn.microsoft.com/library/
 
 Existuje několik věcí, které při práci s editorem dotazů.
 
-* Editor dotazů k dotazování databáze systému SQL server nelze použít ve virtuální síti.
+* Editor dotazů ke komunikaci používá porty 443 a 1443.  Ujistěte se prosím, že jste povolili odchozí provoz HTTPS na těchto portech. Musíte taky přidat odchozí IP adresa na serveru povolená brána firewall pravidla pro přístup k datovým skladům a databázím.
 
 * Stisknutím klávesy F5 aktualizuje stránku editoru dotazů a dojde ke ztrátě všech dotazů se pracuje.
 

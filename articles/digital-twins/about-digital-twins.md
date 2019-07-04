@@ -3,31 +3,30 @@ title: Přehled služby Azure Digital Twins | Microsoft Docs
 description: V tomto článku najdete další informace o službě Azure Digital Twins, řešení Azure IoT pro prostorovou inteligenci.
 author: julieseto
 ms.author: jseto
-ms.date: 12/14/2018
+ms.date: 05/31/2019
 ms.topic: overview
 ms.service: digital-twins
 services: digital-twins
 manager: bertvanhoof
 ms.custom: mvc
-ms.openlocfilehash: 41a6b040c04c3a212a7ee89897b29f5ec96048d7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0bbbb924cace93e44af84fd96926a2d7153dd5f8
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072181"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67459023"
 ---
 # <a name="overview-of-azure-digital-twins"></a>Přehled služby Azure Digital Twins
 
-Azure Digital Twins je služba Azure IoT, která vytváří komplexní modely fyzického prostředí. Je možné vytvořit prostorové řady grafů pro modelování vztahů a interakce mezi lidmi, mezery a zařízení.
+Azure digitální dvojče ve verzi Preview je služba Azure IoT, která vytvoří komplexní modely fyzických prostředí. Je možné vytvořit prostorové řady grafů pro modelování vztahů a interakce mezi lidmi, mezery a zařízení.
 
-S Azure digitální dvojče se můžete dotazovat data z fyzického místa na disku, nikoli z mnoha různorodých senzorů. Tato služba vám pomůže vytvořit opakovaně použitelný, vysoce škálovatelné a jinými objekty používající prostředí, které jsou propojeny streamovaná data po celém světě digitální i fyzické. Vaše aplikace jsou vylepšené tyto kontextové jednoznačně odpovídající funkce. Azure digitální Dvojčata je možné pro následující příklad úkoly:
+S Azure digitální dvojče se můžete dotazovat data z fyzického místa na disku, nikoli z mnoha různorodých senzorů. Tato služba vám pomůže vytvořit opakovaně použitelný, vysoce škálovatelné a jinými objekty používající prostředí, které jsou propojeny streamovaná data po celém světě digitální i fyzické. Vaše aplikace jsou vylepšené tyto kontextové jednoznačně odpovídající funkce. 
+
+Azure digitální dvojče platí pro všechny typy prostředí, například, sklady, pobočky, školách, nemocnice a bank. Může dokonce sloužit pro stadionech, objekty pro vytváření, parkovací velké, parků, inteligentní mřížky a města. Tady jsou některé scénáře, kde digitální dvojče Azure může být užitečné:
 
 - Předvídejte potřebu údržby pro objekt pro vytváření.
 - Analyzujte požadavky na energie v reálném čase k elektrické mřížky.
 - Optimalizujte využití volného místa pro office.
-
-Azure digitální dvojče platí pro všechny typy prostředí. Jen několik příkladů jsou sklady, pobočky, školách, nemocnice a bank. Může dokonce sloužit pro stadionech, objekty pro vytváření, parkovací velké, parků, inteligentní mřížky a města. Azure digitální Dvojčata je možné v následující příklad scénáře:
-
 - Sledovat denní teploty v rámci více státech.
 - Monitorování zaneprázdněn dronu cest.
 - Identifikujte autonomní vozidel.
@@ -46,15 +45,15 @@ Azure digitální dvojče má následující klíčové funkce.
 
 ### <a name="spatial-intelligence-graph"></a>Graf prostorové inteligence
 
-[ *Prostorové řady grafu*](./concepts-objectmodel-spatialgraph.md), nebo *prostorový graf*, je virtuální reprezentace fyzického prostředí. Můžete ho použít pro modelování vztahů mezi osoby, místa a zařízení.
+[ *Prostorové řady grafu*](./concepts-objectmodel-spatialgraph.md#graph), nebo *prostorový graf*, je virtuální reprezentace fyzického prostředí. Můžete ho použít pro modelování vztahů mezi osoby, místa a zařízení.
 
 Vezměte v úvahu aplikace s inteligentní nástroj, který zahrnuje několik měřiče využití elektrické energie napříč okolí. Inteligentní nástroj společnosti musí přesně sledovat a předpovídat využití elektrické energie a účtování. Každé zařízení a senzorů musí modelovat s kontextem o umístění a Zákazník, který se bude účtovat. Prostorové řady grafu můžete použít k modelování tyto druhy složité vztahy.
 
 ### <a name="digital-twin-object-models"></a>Objektové modely služby Digital Twins
 
-[Digitální dvojče objektové modely](./concepts-objectmodel-spatialgraph.md) jsou předdefinované zařízení protokoly a data schématu. Zařízení vyhovují potřebám vašeho řešení specifického pro doménu k urychlení a zjednodušení vývoje.
+[Digitální dvojče objektové modely](./concepts-objectmodel-spatialgraph.md#model) jsou předdefinované zařízení protokoly a data schématu. Zařízení vyhovují potřebám vašeho řešení specifického pro doménu k urychlení a zjednodušení vývoje.
 
-Příkladem je že aplikace obsazení místa použít předdefinované místo typy jako campus, sestavování, floor a místnosti.
+Aplikace obsazení místa může například použít předdefinované místo typy jako campus, sestavování, floor a místnosti.
 
 ### <a name="multiple-and-nested-tenants"></a>Více tenantů a vnoření tenanti
 

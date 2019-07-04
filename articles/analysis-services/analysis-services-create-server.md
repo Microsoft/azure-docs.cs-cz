@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: quickstart
-ms.date: 04/01/2019
+ms.date: 07/02/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: e54c18eb405ffa36260e9980705784130bc0ca4c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: aae5b87e49b6d64e4c9ee854b65821d65969e66b
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61023707"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67536811"
 ---
 # <a name="quickstart-create-a-server---portal"></a>Rychlý start: Vytvoření serveru – portál
 
@@ -37,7 +37,7 @@ Tento rychlý start popisuje, jak pomocí portálu vytvořit prostředek serveru
 
 2. V části **Analysis Services** vyplňte požadovaná pole a pak stiskněte **Vytvořit**.
    
-   * **Název serveru**: Zadejte jedinečný název, který slouží k odkazování na serveru.
+   * **Název serveru**: Zadejte jedinečný název, který slouží k odkazování na serveru. Název serveru musí začínat znakem znak malého písmene a obsahovat malá písmena a čísla 3 až 128. Prázdné znaky a speciální znaky nejsou povoleny.
    * **Předplatné**: Vyberte předplatné, které budou přidruženy tento server.
    * **Skupina prostředků**: Vytvořte novou skupinu prostředků nebo vyberte ten, který už máte. Skupiny prostředků jsou navržené tak, aby pomáhaly se správou kolekcí prostředků Azure. Další informace najdete v tématu věnovaném [skupinám prostředků](../azure-resource-manager/resource-group-overview.md).
    * **Umístění**: Toto umístění datového centra Azure je hostitelem serveru. Zvolte umístění co nejblíže vaší největší uživatelské základně.

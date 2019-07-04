@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 11/27/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: a5218498b19fe99f810f2dfca8e044c6f9398a94
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 5788f6e699833c606b1bdeaf63a9aac13da2a0e9
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341169"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67513274"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>Rychlý start: Spuštění první úlohy služby Batch pomocí rozhraní Python API
 
@@ -43,7 +43,7 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 
 [Stáhněte nebo naklonujte ukázkovou aplikaci](https://github.com/Azure-Samples/batch-python-quickstart) z GitHubu. K naklonování úložiště ukázkové aplikace pomocí klienta Git použijte následující příkaz:
 
-```
+```bash
 git clone https://github.com/Azure-Samples/batch-python-quickstart.git
 ```
 
@@ -69,7 +69,7 @@ _STORAGE_ACCOUNT_KEY = 'xxxxxxxxxxxxxxxxy4/xxxxxxxxxxxxxxxxfwpbIC5aAWA8wDu+AFXZB
 
 Pokud chcete vidět pracovní postup Batch v akci, spusťte skript:
 
-```
+```bash
 python python_quickstart_client.py
 ```
 
@@ -77,7 +77,7 @@ Po spuštění skriptu se podívejte do kódu a najděte si, co jednotlivé čá
 
 Po spuštění ukázkové aplikace vypadá výstup konzoly zhruba následovně. Během provádění dojde k pozastavení na řádku `Monitoring all tasks for 'Completed' state, timeout in 00:30:00...` a mezitím se spustí výpočetní uzly fondu. Jakmile se spustí první výpočetní uzel, úkoly se zařadí do fronty ke spuštění. Fond, výpočetní uzly, úlohy a úkoly můžete sledovat ve svém účtu Batch na webu [Azure Portal](https://portal.azure.com).
 
-```
+```output
 Sample start: 11/26/2018 4:02:54 PM
 
 Container [input] created.
@@ -92,7 +92,7 @@ Monitoring all tasks for 'Completed' state, timeout in 00:30:00...
 
 Po dokončení úkolů se pro každý úkol zobrazí výstup podobný tomu následujícímu:
 
-```
+```output
 Printing task output...
 Task: Task0
 Node: tvm-2850684224_3-20171205t000401z

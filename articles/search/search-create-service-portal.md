@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/29/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 650dfa7284b41407e9b128a2096548d7acfc1567
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: fd81115f4e811366b6b115d1c73a9be7ca26698b
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393784"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485623"
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>Vytvoření služby Azure Search na portálu
 
@@ -94,7 +94,7 @@ Připněte si službu na řídicí panel, abyste k ní po přihlášení měli s
 
 ## <a name="get-a-key-and-url-endpoint"></a>Získejte klíč a koncový bod adresy URL
 
-S několika výjimkami pomocí nové služby vyžaduje zadání koncového bodu adresy URL a autorizační klíč rozhraní api –. Rychlé starty, kurzy, jako [prozkoumat Azure Search REST API (Postman)](search-fiddler.md) a [jak používat Azure Search z .NET](search-howto-dotnet-sdk.md), ukázky a vlastní kód všechny nutné koncového bodu a klíče ke spuštění pro váš konkrétní prostředek.
+S několika výjimkami pomocí nové služby vyžaduje zadání koncového bodu adresy URL a autorizační klíč rozhraní api –. Rychlé starty, kurzy, jako [prozkoumat Azure Search REST API (Postman)](search-get-started-postman.md) a [jak používat Azure Search z .NET](search-howto-dotnet-sdk.md), ukázky a vlastní kód všechny nutné koncového bodu a klíče ke spuštění pro váš konkrétní prostředek.
 
 1. Na stránce Přehled služby vyhledejte a zkopírujte adresu URL koncového bodu na pravé straně stránky.
 

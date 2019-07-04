@@ -11,12 +11,12 @@ ms.topic: quickstart
 description: Rychlý vývoj Kubernetes s kontejnery, mikroslužby a Java v Azure
 keywords: Docker, Kubernetes, Azure, AKS, službě Azure Kubernetes, kontejnery, Java, Helm, služby sítě, směrování sítě služby, kubectl, k8s
 manager: jeconnoc
-ms.openlocfilehash: 2a7ff71a8143883226c10754afc9757aea310c63
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: b3074fc280098d0aa55292c48a1562b8dfeb3cc0
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393458"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67503085"
 ---
 # <a name="quickstart-develop-with-java-on-kubernetes-using-azure-dev-spaces"></a>Rychlý start: Vývoj v Javě na použití Azure Dev prostorů Kubernetes
 
@@ -195,7 +195,7 @@ return "Hello from webfrontend in Azure while debugging!";
 
 Uložte soubor. Klikněte na tlačítko *ladění* pak *restartujte ladění* nebo *ladění nástrojů*, klikněte na tlačítko *restartujte ladění* tlačítko.
 
-![Aktualizovat ladění](media/get-started-java/debug-action-refresh.png)
+![Aktualizovat ladění](media/common/debug-action-refresh.png)
 
 Otevřete svou službu v prohlížeči a Všimněte si, že se zobrazí aktualizovaná zpráva.
 

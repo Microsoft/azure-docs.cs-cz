@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 06/11/2019
+ms.date: 06/28/2019
 ms.author: alkohli
-ms.openlocfilehash: 438e25a72361866acd449024b6e7e8c06ed6c9c7
-ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.openlocfilehash: 3972f9f93cc6323601102f1a54bb067a8995d9e4
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67144229"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67484758"
 ---
 # <a name="what-is-azure-data-box-edge"></a>Co je Azure Data Box Edge? 
 
@@ -55,7 +55,7 @@ Data Box Edge nabízí následující funkce:
 |Schopnost |Popis  |
 |---------|---------|
 |Vysoký výkon     | Plně automatizovaný a vysoce optimalizovaný přenos dat a šířka pásma.|
-|Podporované protokoly     | Podpora standardních protokolů SMB a NFS pro příjem dat. <br> Další informace o podporovaných verzích najdete v [systémových požadavcích pro Data Box Edge](https://aka.ms/dbe-docs).|
+|Podporované protokoly     | Podpora standardních protokolů SMB a NFS pro příjem dat. <br> Další informace o podporovaných verzích najdete v [systémových požadavcích pro Data Box Edge](data-box-edge-system-requirements.md).|
 |Výpočetní operace       |Umožňuje analýzu, zpracování a filtrování dat.|
 |Přístup k datům     | Přímý přístup k datům z rozšíření Azure Storage Blob a ze souborů Azure pomocí cloudových rozhraní API za účelem dalšího zpracování dat v cloudu.|
 |Rychlý přístup     | Místní mezipaměť na zařízení pro rychlý přístup k naposledy použitým souborům.|
@@ -75,13 +75,13 @@ Data Box Edge nabízí následující funkce:
 
     <!--![The Data Box Edge service in Azure portal](media/data-box-overview/data-box-Edge-service1.png)-->
 
-    Další informace najdete v dokumentu, který se zabývá [použitím služby Data Box Edge ke správě zařízení Data Box Edge](https://aka.ms/dbe-docs).
+    Další informace najdete v části [vytvoření objednávky zařízení Data Box Edge](data-box-edge-deploy-prep.md#create-a-new-resource).
 
 * **Místní webové uživatelské rozhraní Data Box** – můžete ho použít ke spuštění diagnostiky, vypnutí nebo restartování zařízení Data Box Edge, zobrazení protokolů kopírování a kontaktování podpory Microsoftu, aby vytvořila žádost o služby.
 
     <!--![The Data Box Edge local web UI](media/data-box-Edge-overview/data-box-Edge-local-web-ui.png)-->
 
-    Informace o používání uživatelského rozhraní založeného na webu najdete v tématu [Použití uživatelského rozhraní založeného na webu ke správě vašeho zařízení Data Box](https://aka.ms/dbe-docs).
+    Informace o používání uživatelského rozhraní založeného na webu najdete v tématu [Použití uživatelského rozhraní založeného na webu ke správě vašeho zařízení Data Box](data-box-edge-manage-access-power-connectivity-mode.md).
 
 
 ## <a name="region-availability"></a>Dostupnost v oblastech

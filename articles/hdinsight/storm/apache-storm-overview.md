@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: overview
 ms.date: 06/12/2019
 ms.author: hrasheed
-ms.openlocfilehash: fd377d731b9e916414c7d1a568c7267e73d6bf33
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.openlocfilehash: 00c536120ed9507d5ecc6fe930429d12514945b3
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67137240"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67483822"
 ---
 # <a name="what-is-apache-storm-on-azure-hdinsight"></a>Co je Apache Storm ve službě Azure HDInsight?
 
@@ -44,7 +44,7 @@ Storm v HDInsight poskytuje následující funkce:
 
 Seznam společností, které používají pro svá řešení pro analýzu v reálném čase Apache Storm, najdete v tématu [Společnosti využívající Apache Storm](https://storm.apache.org/documentation/Powered-By.html).
 
-Abyste mohli začít používat Storm, najdete v článku [Začínáme s Apache Storm v HDInsight](apache-storm-tutorial-get-started-linux.md).
+Abyste mohli začít používat Storm, najdete v článku [sledování topologie Apache Storm v Azure HDInsight a vytvořit](apache-storm-quickstart.md).
 
 ## <a name="how-does-apache-storm-work"></a>Jak funguje Apache Storm
 
@@ -68,7 +68,7 @@ Výchozí konfigurace pro clustery Apache Storm může obsahovat pouze jeden uze
 
 ## <a name="ease-of-creation"></a>Snadné vytvoření
 
-V HDInsight můžete vytvořit nový cluster Storm během několika minut. Další informace týkající se vytvoření clusteru Storm naleznete v článku [Začínáme se Stormem v HDInsight](apache-storm-tutorial-get-started-linux.md).
+V HDInsight můžete vytvořit nový cluster Storm během několika minut. Další informace týkající se vytvoření clusteru Storm najdete v tématu [vytvořit Apache Hadoop clusterů pomocí webu Azure portal](../hdinsight-hadoop-create-linux-clusters-portal.md).
 
 ## <a name="ease-of-use"></a>Snadné používání
 
@@ -176,5 +176,5 @@ Topologii příkladu, která ukazuje, jak nakonfigurovat protokolování, najdet
 
 Další informace o řešení analýz v reálném čase pomocí Apache Storm v HDInsight:
 
-* [Začínáme s Apache Storm v HDInsight](apache-storm-tutorial-get-started-linux.md)
+* [Vytvořit a monitorovat topologií Apache Storm v Azure HDInsight](apache-storm-quickstart.md)
 * [Příklad topologií pro Apache Storm v HDInsight](apache-storm-example-topology.md)
