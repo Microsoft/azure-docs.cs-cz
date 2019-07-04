@@ -4,17 +4,17 @@ description: Toto řešení správy virtuálního počítače spustí a zastaví
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 05/21/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d4e1ad106b928c41bd6940d7c3713b5fb34afe3a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 39ba577580424bf8283d64198bb3068b82869c51
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66389116"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476875"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Spuštění/zastavení virtuálních počítačů v době mimo špičku řešení ve službě Azure Automation
 
@@ -140,7 +140,7 @@ Proveďte následující kroky pro přidání spouštění/zastavování virtuá
    Sem budete vyzváni k:
    - Zadejte **cílové názvy ResourceGroup**. Tyto hodnoty jsou názvy skupin prostředků obsahujících virtuální počítače, které být spravovány tímto řešením. Můžete zadat více než jeden název a jednotlivé oddělte čárkou (hodnoty nejsou malá a velká písmena). Je podporováno použití zástupného znaku, pokud jsou cílem virtuální počítače ve všech skupinách prostředků v rámci předplatného. Tato hodnota bude uložena v **External_Start_ResourceGroupNames** a **External_Stop_ResourceGroupNames** proměnné.
    - Zadejte **seznamu vyloučení virtuálních počítačů (řetězec)** . Tato hodnota je název jednoho nebo více virtuálních počítačů z cílová skupina prostředků. Můžete zadat více než jeden název a jednotlivé oddělte čárkou (hodnoty nejsou malá a velká písmena). Je podporováno použití zástupného znaku. Tato hodnota bude uložena v **External_ExcludeVMNames** proměnné.
-   - Vyberte **plán**. Tato hodnota je o opakované datum a čas spouštění a zastavování virtuálních počítačů v cílové skupiny prostředků. Ve výchozím nastavení je nakonfigurovaný plán po dobu 30 minut od této chvíle. Vybrat jinou oblast, není k dispozici. Konfigurace plánu na konkrétní časové pásmo po dokončení konfigurace řešení, najdete v článku [Úprava plánů spouštění a vypínání](#modify-the-startup-and-shutdown-schedules).
+   - Vyberte **plán**. Vyberte datum a čas pro váš plán. Od doby, kterou jste vybrali, se vytvoří opakované denní plán. Vybrat jinou oblast, není k dispozici. Konfigurace plánu na konkrétní časové pásmo po dokončení konfigurace řešení, najdete v článku [Úprava plánů spouštění a vypínání](#modify-the-startup-and-shutdown-schedules).
    - Pro příjem **e-mailová oznámení** ze skupiny akcí, přijměte výchozí hodnotu **Ano** a zadejte platnou e-mailovou adresu. Pokud vyberete **ne** , ale později rozhodnete, že chcete dostávat e-mailová oznámení, můžete aktualizovat [skupiny akcí](../azure-monitor/platform/action-groups.md) , který je vytvořen s platnou e-mailové adresy oddělené čárkou. Je také potřeba povolit následující pravidla upozornění:
 
      - AutoStop_VM_Child

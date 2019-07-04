@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 05/21/2019
-ms.openlocfilehash: 2f3d9eeca1404fcae121ae5fead222cbde4037b1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 912c064fb5ca4e7ca311f60ed04a0122809cb0ff
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059256"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442358"
 ---
 # <a name="what-is-an-azure-machine-learning-service-workspace"></a>Co je pracovní prostor služby Azure Machine Learning?
 
@@ -83,7 +83,7 @@ Začínáme se službou tak [vytvoření pracovního prostoru](setup-create-work
 Když vytvoříte nový pracovní prostor, automaticky vytvoří několik prostředků Azure, které se používají v pracovním prostoru:
 
 + [Azure Container Registry](https://azure.microsoft.com/services/container-registry/): Registry kontejnerů dockeru, které použijete během cvičení a nasazení modelu. Chcete-li minimalizovat náklady, je služba ACR **opožděné načtení** dokud se nevytvoří nasazení bitové kopie.
-+ [Účet služby Azure Storage](https://azure.microsoft.com/services/storage/): Slouží jako výchozí úložiště pro pracovní prostor.
++ [Účet služby Azure Storage](https://azure.microsoft.com/services/storage/): Slouží jako výchozí úložiště pro pracovní prostor.  Poznámkové bloky Jupyter, které se používají s Poznámkový blok virtuálních počítačů ukládají zde také.
 + [Azure Application Insights](https://azure.microsoft.com/services/application-insights/): Ukládá informace o vašich modelů monitorování.
 + [Azure Key Vault](https://azure.microsoft.com/services/key-vault/): Tajné klíče úložiště, které jsou používány výpočetní cíle a dalších citlivých údajů, který je nezbytný v pracovním prostoru.
 

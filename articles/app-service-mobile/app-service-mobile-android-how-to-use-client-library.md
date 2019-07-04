@@ -3,7 +3,7 @@ title: Jak používat Azure Mobile Apps SDK pro Android | Dokumentace Microsoftu
 description: Jak používat Azure Mobile Apps SDK pro Android
 services: app-service\mobile
 documentationcenter: android
-author: conceptdev
+author: elamalani
 manager: crdun
 ms.assetid: 5352d1e4-7685-4a11-aaf4-10bd2fa9f9fc
 ms.service: app-service-mobile
@@ -11,16 +11,20 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
-ms.date: 03/07/2019
-ms.author: crdun
-ms.openlocfilehash: 45b5ac0c9b3535e5cc5efdc6827d694b41e0b8dd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: 6a6db136926a7f9d631c717f5cab6c025d97fb48
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60859388"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443541"
 ---
 # <a name="how-to-use-the-azure-mobile-apps-sdk-for-android"></a>Jak používat Azure Mobile Apps SDK pro Android
+
+> [!NOTE]
+> Visual Studio App Center investuje do nové a integrované služby, které jsou centrální při vývoji mobilních aplikací. Vývojáři mohou použít **sestavení**, **testovací** a **rozmístit** služby vytvořit kanál pro průběžnou integraci a doručování. Po nasazení aplikace se můžou vývojáři monitorovat stav a využití své aplikace pomocí **Analytics** a **diagnostiky** služeb a Zaujměte uživatele, kteří používají **Push** Služba. Vývojáři mohou využít i **Auth** k ověření uživatelů a **Data** službu zachovat, synchronizaci dat aplikací v cloudu. Podívejte se na [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-android-how-to-use-client-library) ještě dnes.
+>
 
 Tato příručka ukazuje, jak používat s Androidem klientskou sadou SDK pro Mobile Apps k implementaci běžných scénářů, jako například:
 
@@ -29,11 +33,11 @@ Tato příručka ukazuje, jak používat s Androidem klientskou sadou SDK pro Mo
 * Zpracování chyb.
 * Vlastní nastavení klienta.
 
-Tato příručka se zaměřuje na sady Android SDK na straně klienta.  Další informace o serverové sady SDK pro Mobile Apps naleznete v tématu [pracovat s .NET back-end SDK][10] nebo [použití back-end Node.js SDK][11].
+Tato příručka se zaměřuje na sady Android SDK na straně klienta.  Další informace o sadách SDK na straně serveru pro Mobile Apps, najdete v článku [pracovat s back-endem .NET SDK][10] or [How to use the Node.js backend SDK][11].
 
 ## <a name="reference-documentation"></a>Referenční dokumentace
 
-Můžete najít [reference k rozhraní API Javadocs] [ 12] pro klientské knihovny Androidu na Githubu.
+Můžete najít [reference k rozhraní API Javadocs][12] pro klientské knihovny Androidu na Githubu.
 
 ## <a name="supported-platforms"></a>Podporované platformy
 
@@ -45,7 +49,7 @@ Dokončení [rychlý start Mobile Apps](app-service-mobile-android-get-started.m
 
 Pokud se rozhodnete není pro absolvování tohoto kurzu rychlý start, proveďte následující úkoly:
 
-* [Vytvoření back-end mobilní aplikace] [ 13] pomocí aplikace pro Android.
+* [Vytvoření back-end mobilní aplikace][13] pomocí aplikace pro Android.
 * V nástroji Android Studio [soubory sestavení Gradle aktualizace](#gradle-build).
 * [Povolit oprávnění internet](#enable-internet).
 
@@ -197,17 +201,17 @@ public final void setPriority(Integer priority) {
 }
 ```
 
-Zjistěte, jak vytvořit další tabulky v back-endu Mobile Apps, najdete v článku [jak: Definování řadič tabulek] [ 15] (back-end .NET) nebo [definice tabulky pomocí dynamické schéma] [ 16] (back-end Node.js).
+Zjistěte, jak vytvořit další tabulky v back-endu Mobile Apps, najdete v článku [jak: Definování řadič tabulek][15] (.NET backend) or [Define Tables using a Dynamic Schema][16] (back-end Node.js).
 
 Tabulku back-endu Azure Mobile Apps definuje pět zvláštní pole čtyři z nich jsou dostupné klientům:
 
-* `String id`: Globálně jedinečný Identifikátor záznamu.  Jako osvědčený postup, ujistěte se, id řetězcové vyjádření [UUID] [ 17] objektu.
+* `String id`: Globálně jedinečný Identifikátor záznamu.  Jako osvědčený postup, ujistěte se, id řetězcové vyjádření [UUID][17] objektu.
 * `DateTimeOffset updatedAt`: Datum a čas poslední aktualizace.  Pole updatedAt nastavit server a by nikdy nastavit váš klientský kód.
 * `DateTimeOffset createdAt`: Datum/čas, který byl vytvořen objekt.  Pole createdAt nastavit server a by nikdy nastavit váš klientský kód.
 * `byte[] version`: Obvykle reprezentovaná jako řetězec, verze je také nastavena na serveru.
 * `boolean deleted`: Označuje, že má záznam odstranit ale ještě nebyl vymazán.  Nepoužívejte `deleted` jako vlastnost ve své třídě.
 
-Pole `id` je povinné.  `updatedAt` Pole a `version` pole se používají pro offline synchronizaci (pro přírůstkové synchronizace a ke konfliktu rozlišení v uvedeném pořadí).  `createdAt` Pole je referenční pole a není použito klientem.  Názvy jsou "napříč přenosu" názvy vlastností a nejsou měnitelné.  Však můžete vytvořit mapování mezi objekt a názvy "napříč přenosu" pomocí [gson] [ 3] knihovny.  Příklad:
+Pole `id` je povinné.  `updatedAt` Pole a `version` pole se používají pro offline synchronizaci (pro přírůstkové synchronizace a ke konfliktu rozlišení v uvedeném pořadí).  `createdAt` Pole je referenční pole a není použito klientem.  Názvy jsou "napříč přenosu" názvy vlastností a nejsou měnitelné.  Však můžete vytvořit mapování mezi objekt a názvy "napříč přenosu" pomocí [gson][3] knihovny.  Příklad:
 
 ```java
 package com.example.zumoappname;
@@ -267,7 +271,7 @@ public class ToDoItem
 
 ### <a name="create-a-table-reference"></a>Vytvořit odkaz na tabulku
 
-Chcete-li získat přístup k tabulce, nejprve vytvořte [MobileServiceTable] [ 8] objektu voláním **jít** metodu na [MobileServiceClient] [9].  Tato metoda má dvě přetížení:
+Chcete-li získat přístup k tabulce, nejprve vytvořte [MobileServiceTable][8] objektu voláním **jít** metodu na [MobileServiceClient][9].  Tato metoda má dvě přetížení:
 
 ```java
 public class MobileServiceClient {
@@ -310,7 +314,7 @@ List<MyDataTable> results = mDataTable
     .get()              // Converts the async into a sync result
 ```
 
-V předchozím příkladu vrátí všechny výsledky (až do maximální velikost stránky nastavit server).  `.execute()` Metoda provede dotaz na back-endu.  Dotaz je převedena na [OData v3] [ 19] Dotázat se před přenosem do back-endu Mobile Apps.  Po obdržení back-end Mobile Apps převede dotaz na příkazu SQL před spuštěním na instanci SQL Azure.  Protože nějakou dobu trvá síťové aktivity `.execute()` metoda vrátí hodnotu [ `ListenableFuture<E>` ] [ 18].
+V předchozím příkladu vrátí všechny výsledky (až do maximální velikost stránky nastavit server).  `.execute()` Metoda provede dotaz na back-endu.  Dotaz je převedena na [OData v3][19] Dotázat se před přenosem do back-endu Mobile Apps.  Po obdržení back-end Mobile Apps převede dotaz na příkazu SQL před spuštěním na instanci SQL Azure.  Protože nějakou dobu trvá síťové aktivity `.execute()` metoda vrátí hodnotu [ `ListenableFuture<E>` ][18].
 
 ### <a name="filtering"></a>Filtr vrátil data
 
@@ -697,7 +701,7 @@ mJsonToDoTable = mClient.getTable("ToDoItem");
 Po vytvoření instance **MobileServiceJsonTable**, má téměř stejné rozhraní API k dispozici jako s typem programovací model. V některých případech může trvat metody netypový parametr místo typu parametru.
 
 ### <a name="json_insert"></a>Vložit do netypové tabulky
-Následující kód ukazuje, jak provést vložení. Prvním krokem je vytvoření [JsonObject][1], který je součástí [gson] [ 3] knihovny.
+Následující kód ukazuje, jak provést vložení. Prvním krokem je vytvoření [JsonObject][1] , which is part of the [gson][3] knihovny.
 
 ```java
 JsonObject jsonItem = new JsonObject();
@@ -1003,7 +1007,7 @@ Získat ID přihlášeného uživatele **MobileServiceUser** pomocí **getUserId
 
 ### <a name="caching"></a>Tokeny ověřování mezipaměti
 
-Ukládání do mezipaměti ověřovacích tokenů vyžaduje, abyste pro uložení ID uživatele a ověřovací token místně na zařízení. Při příštím spuštění aplikace, zkontrolujte mezipaměti, a pokud tyto hodnoty jsou k dispozici, můžete přeskočit protokolu v postupu a dosazení klienta s těmito daty. Ale tato data jsou citlivá a by měla být uložena v případě, že telefon odcizen šifrována pro bezpečnost.  Zobrazí se kompletní příklad toho, jak do mezipaměti ověřovacích tokenů v [mezipaměti ověřování tokenů části][7].
+Ukládání do mezipaměti ověřovacích tokenů vyžaduje, abyste pro uložení ID uživatele a ověřovací token místně na zařízení. Při příštím spuštění aplikace, zkontrolujte mezipaměti, a pokud tyto hodnoty jsou k dispozici, můžete přeskočit protokolu v postupu a dosazení klienta s těmito daty. Ale tato data jsou citlivá a by měla být uložena v případě, že telefon odcizen šifrována pro bezpečnost.  Zobrazí se kompletní příklad toho, jak do mezipaměti ověřovacích tokenů v [mezipaměti část ověřování tokenů][7].
 
 Při pokusu o použití tokenu vypršela platnost, se zobrazí *zobrazuje chyba 401 Neautorizováno* odpovědi. Můžete zpracovávat chyby s ověřováním pomocí filtrů.  Filtry zachycení požadavků na back-endu služby App Service. Kód filtru testuje odpovědi na 401, spustí proces přihlašování a potom pokračuje v žádosti, která vygenerovala 401.
 
@@ -1081,7 +1085,7 @@ Nahradit `onSuccess()` metodu cokoli, co kód chcete použít na úspěšném p�
 
 Můžete používat Active Directory Authentication Library (ADAL) pro přihlášení uživatelů do vaší aplikace pomocí Azure Active Directory. Použití toku přihlášení klienta je často vhodnější než použít `loginAsync()` metody, protože obsahuje více přirozený chování uživatelského prostředí a umožňuje další přizpůsobení.
 
-1. Konfigurace back-endu mobilní aplikace pro přihlášení k AAD pomocí následujících [konfigurace služby App Service pro přihlášení služby Active Directory] [ 22] kurzu. Ujistěte se, že k dokončení volitelný krok registrace nativní klientské aplikace.
+1. Konfigurace back-endu mobilní aplikace pro přihlášení k AAD pomocí následujících [konfigurace služby App Service pro přihlášení služby Active Directory][22] kurzu. Ujistěte se, že k dokončení volitelný krok registrace nativní klientské aplikace.
 2. Nainstalujte knihovnu ADAL pomocí úpravy souboru build.gradle zahrnout následující definice:
 
     ```gradle
@@ -1276,7 +1280,7 @@ private class CustomHeaderFilter implements ServiceFilter {
 
 ### <a name="conversions"></a>Konfigurovat automatické serializace
 
-Můžete určit, které platí pro každý sloupec s použitím strategie převodu [gson] [ 3] rozhraní API. Klientské knihovny Androidu používá [gson] [ 3] na pozadí a serializovat objekty Java do formátu JSON data předtím, než se odešlou do služby Azure App Service.  Následující kód používá **setFieldNamingStrategy()** metody nastavte strategie. Tento příklad odstraní počáteční znak ("m") a potom malé další znak, pro každý název pole. Například jej by proměnit "střední" "id".  Strategie převodu na tak snížit potřeba implementovat `SerializedName()` poznámky na většina polí.
+Můžete určit, které platí pro každý sloupec s použitím strategie převodu [gson][3] rozhraní API. Klientské knihovny Androidu používá [gson][3] na pozadí a serializovat objekty Java do formátu JSON data předtím, než se odešlou do služby Azure App Service.  Následující kód používá **setFieldNamingStrategy()** metody nastavte strategie. Tento příklad odstraní počáteční znak ("m") a potom malé další znak, pro každý název pole. Například jej by proměnit "střední" "id".  Strategie převodu na tak snížit potřeba implementovat `SerializedName()` poznámky na většina polí.
 
 ```java
 FieldNamingStrategy namingStrategy = new FieldNamingStrategy() {

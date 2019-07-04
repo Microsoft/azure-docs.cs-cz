@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 06/05/2019
+ms.date: 06/30/2019
 ms.author: juliako
-ms.openlocfilehash: 6b5422e2eb67eb309c086c023df9f733940e5e44
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 937dc6eefbbfc37aaeee0801f410f9f99cb0c787
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66735077"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67488685"
 ---
 # <a name="embed-video-indexer-widgets-into-your-applications"></a>Vložení widgetů Video Indexer do vašich aplikací
 
@@ -29,22 +29,24 @@ Od verze 2, widgetu základní adresa URL obsahuje oblast účtu. Například ge
 
 Widget **Cognitive Insights** zahrnuje všechny vizuální přehledy, které se extrahovaly z indexování videa. Widget přehledů podporuje tyto volitelné parametry adresy URL:
 
-|Name|Definice|Popis|
+|Název|Definice|Popis|
 |---|---|---|
 |widgets|Řetězce oddělené čárkami|Umožňuje řídit, které přehledy chcete vykreslit. <br/>Příklad: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` vykreslí jenom přehledy lidí a značek<br/>Dostupné možnosti: people (lidé), keywords (klíčová slova), annotations (poznámky), brands (značky), sentiments (citová zabarvení), transcript (přepis), search (vyhledávání).<br/>Není podporováno prostřednictvím adresy URL ve version=2<br/><br/>**Poznámka:** Param pomůcky adresa URL není podporováno ve verzi 2. |
+|Národní prostředí|Krátký jazyk kódu|Určuje jazyk insights. Výchozí hodnota je `en`. Například: `language=de`.|
+|tabulátor|Výchozí vybraná karta|Ovládací prvky na kartě insights, který je vykreslen ve výchozím nastavení. `tab=timeline` vykreslí přehledy s vybranou kartou časové osy.|
 
 ### <a name="player-widget"></a>Widget Player
 
 Widget **Player** umožňuje streamovat video pomocí adaptivní přenosové rychlosti. Widget přehrávače podporuje tyto volitelné parametry adresy URL:
 
-|Name|Definice|Popis|
+|Název|Definice|Popis|
 |---|---|---|
-|t|Počet sekund od začátku|Přehrávač začne přehrávat od daného časového bodu.<br/>Příklad: t=60|
-|captions|Kód jazyka|Při načítání widgetu načte titulky v daném jazyce, aby byly k dispozici v nabídce titulků.<br/>Příklad: captions=en-US|
-|showCaptions|Logická hodnota|Přehrávač se načte s už povolenými titulky.<br/>Příklad: showCaptions=true|
-|type||Aktivuje vzhled přehrávače zvuku (video část se odebere).<br/>Příklad: type=audio|
-|autoplay|Logická hodnota|Udává, jestli má přehrávač začít přehrávat video při načtení (výchozí hodnota je true).<br/>Příklad: autoplay=false|
-|language|Kód jazyka|Určuje jazyk přehrávače (výchozí hodnota je en-US)<br/>Příklad: language=de-DE|
+|t|Počet sekund od začátku|Přehrávač začne přehrávat od daného časového bodu.<br/>Příklad: `t=60`.|
+|captions|Kód jazyka|Při načítání widgetu načte titulky v daném jazyce, aby byly k dispozici v nabídce titulků.<br/>Příklad: `captions=en-US`.|
+|showCaptions|Logická hodnota|Přehrávač se načte s už povolenými titulky.<br/>Příklad: `showCaptions=true`.|
+|type||Aktivuje vzhled přehrávače zvuku (video část se odebere).<br/>Příklad: `type=audio`.|
+|autoplay|Logická hodnota|Udává, jestli má přehrávač začít přehrávat video při načtení (výchozí hodnota je true).<br/>Příklad: `autoplay=false`.|
+|language|Kód jazyka|Určuje jazyk přehrávače (výchozí hodnota je en-US)<br/>Příklad: `language=de-DE`.|
 
 ## <a name="embedding-public-content"></a>Vkládání veřejného obsahu
 

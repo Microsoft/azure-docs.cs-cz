@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, justhu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10ac2f4ac83240acf644fc1529c9c14f5e9631a1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3d6ed5c80d5c3241a9a328a2427ed8b920790635
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67111290"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482491"
 ---
 # <a name="authentication-and-authorization-error-codes"></a>Kódy chyb autorizace a ověřování
 
@@ -215,6 +215,7 @@ Hledáte informace o chybových kódech AADSTS, které jsou vráceny od služby 
 | AADSTS90093 | GraphUserUnauthorized - Graph vrátila kód chyby zakázáno pro daný požadavek. |
 | AADSTS90094 | AdminConsentRequired – vyžádáním souhlasu správce. |
 | AADSTS90100 | InvalidRequestParameter – parametr je prázdný nebo není platný. |
+| AADSTS901002 | AADSTS901002: Parametr žádosti "prostředek" se nepodporuje. |
 | AADSTS90101 | InvalidEmailAddress - zadaných dat není platná e-mailovou adresu. E-mailová adresa musí být ve formátu `someone@example.com`. |
 | AADSTS90102 | InvalidUriParameter – hodnota musí být platným absolutním identifikátorem URI. |
 | AADSTS90107 | InvalidXml - požadavku není platný. Zajistěte, aby že vaše data neobsahuje neplatné znaky.|

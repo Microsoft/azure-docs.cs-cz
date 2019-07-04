@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: f75ad287b5f026dea7ba0152b009a60572929148
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 5ab85a8fb56789dbf3ecd6cf1cbc63e338615915
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67329631"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67439127"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-virtual-tpm-on-a-linux-virtual-machine"></a>Vytvoření a zřízení zařízení IoT Edge s virtuální čip TPM na virtuální počítač s Linuxem
 
@@ -107,7 +107,7 @@ Ve virtuálním počítači sestavení SDK pro jazyk C nástroj, který můžete
    sudo ./tpm_device_provision
    ```
    >[!TIP]
-   >Pokud testujete s simulátor TPM, budete muset vložit speciálním parametrem `-Duse_tpm_simulator:BOOL=ON` ho chcete povolit. Celý příkaz bude `cmake -Duse_prov_client:BOOL=ON -Duse_tpm_simulator:BOOL=ON .. `.
+   >Pokud testujete s simulátor TPM, budete muset vložit speciálním parametrem `-Duse_tpm_simulator:BOOL=ON` ho chcete povolit. Celý příkaz bude `cmake -Duse_prov_client:BOOL=ON -Duse_tpm_simulator:BOOL=ON ..`.
 
 5. Zkopírujte hodnoty **ID registrace** a **ověřovací klíč**. Tyto hodnoty použijete k vytvoření jednotlivé registrace pro zařízení do služby Device Provisioning. 
 

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: keithcharlie
-ms.openlocfilehash: 4501a343b406f07b4775f3ad0e84d71825412a4b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d2b44b89443b5e7e82d303e1447533546d27ec9a
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66752735"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445732"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>Aplikace SaaS nabízí průvodce publikováním
 
@@ -94,7 +94,7 @@ Kromě toho Azure Active Directory poskytuje lokality aktualizace služby
 
 ## <a name="using-azure-active-directory-to-enable-trials"></a>Pomocí Azure Active Directory umožníte zkušebních verzí  
 
-Microsoft ověří všechny uživatele Marketplace pomocí Azure AD, proto když ověřený uživatel klikne na svůj výpis zkušební verze na webu Marketplace a přesměruje do vašeho zkušebního prostředí, bez nutnosti můžete zřídit uživatele přímo Další přihlašovacího kroku. Token, který vaše aplikace obdrží z Azure AD během ověřování zahrnuje uživatelské cenné informace, které můžete použít k vytvoření uživatelského účtu ve vaší aplikaci, která vám umožní automatizovat zřizování prostředí a zvýšit pravděpodobnost, že převod. Další informace o tokenu najdete v tématu [ukázka tokeny](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims) .
+Microsoft ověří všechny uživatele Marketplace pomocí Azure AD, takže když ověřený uživatel klikne na svůj výpis zkušební verze na webu Marketplace a přesměruje do vašeho zkušebního prostředí, můžete zřídit uživatele přímo bez nutnosti Další přihlašovacího kroku. Token, který vaše aplikace obdrží z Azure AD během ověřování zahrnuje uživatelské cenné informace, které můžete použít k vytvoření uživatelského účtu ve vaší aplikaci, která vám umožní automatizovat zřizování prostředí a zvýšit pravděpodobnost, že převod. Další informace o tokenu najdete v tématu [ukázka tokeny](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims) .
 
 Pokud chcete povolit ověřování 1 kliknutím do své aplikace nebo zkušební verze pomocí služby Azure AD provádí tyto kroky:  
 * Zjednodušuje zkušenosti z webu Marketplace na zkušební verzi.  
@@ -104,7 +104,7 @@ Pokud chcete povolit ověřování 1 kliknutím do své aplikace nebo zkušební
 
 ## <a name="certifying-your-azure-ad-integration-for-marketplace"></a>Certifikace vašich integrace služby Azure AD pro Marketplace  
 
-Můžete certifikovat několika různými způsoby v závislosti na tom, zda je vaše aplikace jedním tenantem nebo více tenanty, integraci služby Azure AD a, jestli jste ještě na Azure AD jednoduchou federované přihlašování (SSO), nebo již její podporu.  
+Certifikovat integraci Azure AD v několika různými způsoby v závislosti na tom, zda je vaše aplikace jedním tenantem nebo více tenantů a, jestli jste ještě na Azure AD jednoduchou federované přihlašování (SSO), nebo již její podporu.  
 
 **Pro víceklientské aplikace:**  
 

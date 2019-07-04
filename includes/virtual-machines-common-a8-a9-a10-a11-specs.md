@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/29/2018
 ms.author: azcspmt;jonbeck;cynthn;danlep;amverma
 ms.custom: include file
-ms.openlocfilehash: 5cbc19d5aade2bbcc8b8dca277352d1b17d1d35a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 88d9491bae1fcc6acb7ab631514aa4f6244f593d
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66755177"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67538047"
 ---
 ## <a name="deployment-considerations"></a>Aspekty nasazování
 * **Předplatné Azure** – Chcete-li nasadit více než několik výpočetně náročných instancí, zvažte předplatné s průběžnými platbami nebo jiné možnosti nákupu. Pokud používáte [bezplatný účet Azure](https://azure.microsoft.com/free/), můžete použít pouze omezený počet výpočetních jader Azure.
@@ -34,6 +34,6 @@ Podmnožinu výpočetně náročných instancí (A8, A9, H16r, H16mr, HB a hybri
 Toto rozhraní podporuje RDMA podporovat instance komunikovat přes síť InfiniBand (i) v provozu sazby EDR HB, hybridní připojení, díky technologii FDR účtovat sazby platné pro H16r, H16mr a podporou RDMA N-series virtuálních počítačů a QDR sazby za virtuální počítače A8 a a9 pro aplikace. Tyto možnosti přístupu RDMA může zvýšit škálovatelnost a výkon určitých aplikací rozhraní MPI (Message Passing Interface). Další informace o rychlosti najdete v podrobnostech v tabulkách na této stránce.
 
 > [!NOTE]
-> V Azure, IP over IB je podporována pouze u virtuálních počítačů (aktuálně HB a HC) s povoleným rozhraní SR-IOV. RDMA přes IB platí pro všechny instance podporující RDMA.
+> V Azure, IP over IB je podporována pouze u virtuálních počítačů (rozhraní SR-IOV InfiniBand, aktuálně HB a HC) s povoleným rozhraní SR-IOV. RDMA přes IB platí pro všechny instance podporující RDMA.
 >
 

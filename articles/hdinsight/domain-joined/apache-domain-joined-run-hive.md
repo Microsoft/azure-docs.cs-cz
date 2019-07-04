@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: d485799547644ccb3c34a8841e8b20d8a45444bf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8ffe2cfc19a7ce94e47046839f6973793b73c118
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64707360"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441416"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Konfigurace zásad Apache Hivu ve službě HDInsight s balíčkem zabezpečení podniku
 Zjistěte, jak nakonfigurovat zásady Apache Rangeru pro Apache Hive. V tomto článku vytvoříte dvě zásady Ranger pro omezení přístupu k hivesampletable. Hivesampletable je součástí clusterů HDInsight. Po nakonfigurování zásad použijete Excel nebo ovladač ODBC a připojíte se k tabulkám Hivu ve službě HDInsight.
@@ -37,7 +37,7 @@ Zjistěte, jak nakonfigurovat zásady Apache Rangeru pro Apache Hive. V tomto č
     V současné době Ranger funguje pouze s Yarn a Hivem.
 
 ## <a name="create-domain-users"></a>Vytvoření uživatelů domén
-Zobrazit [vytvořit HDInsight cluster s ESP](apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp), informace o tom, jak vytvořit uživatele hiveuser1 a hiveuser2. V tomto kurzu použijete dva uživatelské účty.
+Zobrazit [vytvořit HDInsight cluster s ESP](apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp), informace o tom, jak vytvořit uživatele hiveuser1 a hiveuser2. V tomto článku použijete dva uživatelské účty.
 
 ## <a name="create-ranger-policies"></a>Vytvoření zásad Ranger
 V této části vytvoříte dvě zásady Ranger pro přistupování k hivesampletable. Udělíte oprávnění Vybrat na různé sady sloupců. Oba uživatelé byli vytvořeni pomocí [vytvořit HDInsight cluster s ESP](apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp). V další části tyto dvě zásady otestujete v Excelu.

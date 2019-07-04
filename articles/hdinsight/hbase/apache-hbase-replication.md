@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/15/2018
-ms.openlocfilehash: 95a1055df283765b24322f6f8efe3efcb9b19022
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 38d3c61acee9dca18ab1f863d878e02f7437a600
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64707970"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67433721"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Nastavení replikace clusteru Apache HBase ve virtuálních sítích Azure
 
@@ -21,7 +21,7 @@ Zjistěte, jak nastavit [Apache HBase](https://hbase.apache.org/) replikace v r�
 
 Replikace clusteru používá metodologie zdroj nabízené oznámení. HBase cluster může být zdroj nebo cíl, nebo může najednou splnit obě role. Je asynchronní replikace. Cílem replikace je konečné konzistence. Když zdroj obdrží úpravy do rodiny sloupců po povolení replikace, úpravy se šíří do všech cílových clusterech. Pokud data se replikují z jednoho clusteru do druhého, zdrojový cluster a všechny clustery, které jste už využili data jsou sledovány, aby se zabránilo replikační cykly.
 
-V tomto kurzu nastavíte zdroj cíl replikace. Jiných topologiích clusteru najdete v článku [referenční příručka Apache HBase](https://hbase.apache.org/book.html#_cluster_replication).
+V tomto článku se nastavit zdroj cíl replikace. Jiných topologiích clusteru najdete v článku [referenční příručka Apache HBase](https://hbase.apache.org/book.html#_cluster_replication).
 
 Tady jsou případy využití HBase replikace pro jednu virtuální síť:
 
@@ -39,7 +39,7 @@ Tady jsou případy využití HBase replikace pro dvě virtuální sítě:
 Clustery můžete replikovat pomocí [skript akce](../hdinsight-hadoop-customize-cluster-linux.md) skriptům z [Githubu](https://github.com/Azure/hbase-utils/tree/master/replication).
 
 ## <a name="prerequisites"></a>Požadavky
-Než začnete tento kurz, musíte mít předplatné Azure. Zobrazit [získat bezplatnou zkušební verzi Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
+Před zahájením tohoto článku, musíte mít předplatné Azure. Zobrazit [získat bezplatnou zkušební verzi Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
 ## <a name="set-up-the-environments"></a>Nastavení prostředí
 
@@ -396,7 +396,7 @@ Pokud chcete zakázat replikaci, použijte jiný skript akce skriptu z [Githubu]
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste zjistili, jak nastavit replikaci Apache HBase ve virtuální síti, nebo mezi dvěma virtuálními sítěmi. Další informace o HDInsight a Apache HBase, najdete v těchto článcích:
+V tomto článku jste zjistili, jak nastavit replikaci Apache HBase ve virtuální síti, nebo mezi dvěma virtuálními sítěmi. Další informace o HDInsight a Apache HBase, najdete v těchto článcích:
 
 * [Začínáme s Apache HBase v HDInsight](./apache-hbase-tutorial-get-started-linux.md)
 * [Přehled HDInsight Apache HBase](./apache-hbase-overview.md)

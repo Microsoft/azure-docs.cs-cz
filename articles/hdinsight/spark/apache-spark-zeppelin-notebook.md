@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/04/2019
-ms.openlocfilehash: 9fc18b11b24791c1e154d89d757408da4ab20539
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 219cdeea228ae3e334213a0f0654f904592cb09e
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64709566"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448747"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Použití poznámkových bloků Apache Zeppelin s clusterem Apache Spark v Azure HDInsight
 
@@ -141,7 +141,7 @@ V tomto článku, uvidíte, jak používat [spark csv](https://search.maven.org/
 
 4. Pokud chcete pochopit, jak dorazí na hodnotu klíče zadaného výše, tady je způsob.
    
-    a. Vyhledejte balíček úložiště Maven. Pro účely tohoto kurzu jsme použili [spark csv](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar).
+    a. Vyhledejte balíček úložiště Maven. Pro účely tohoto článku jsme použili [spark csv](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar).
    
     b. Z úložiště, shromážděte hodnoty **GroupId**, **ArtifactId**, a **verze**.
    

@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 05/06/2019
-ms.openlocfilehash: 1ef8c8eec3865f2a6e363e7da1dbda9504b81c05
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f981452b06ec06f2be1b8fe0319cd49a678ccfe0
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65546434"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441584"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Přístup k prostředkům Azure Virtual Network v Azure Logic Apps s využitím prostředí integrační služby (ISEs)
 
@@ -35,7 +35,7 @@ Aplikace logiky teď přímo přístupné systémy, které jsou uvnitř nebo př
 Tento přehled popisuje další podrobnosti o jak ISE poskytuje aplikace logiky a integrace účty přímý přístup ke službě Azure virtual network a porovnává rozdíly mezi ISE a globální služba Logic Apps.
 
 > [!NOTE]
-> Logic apps, integrované aktivačních událostí, integrované akce a konektory, které běží ve vaší ISE cenový plán liší od založenou na skutečné spotřebě cenového plánu. Další informace najdete v tématu [ceny Logic Apps](../logic-apps/logic-apps-pricing.md).
+> Logic apps, integrované aktivačních událostí, integrované akce a konektory, které běží ve vaší ISE cenový plán liší od založenou na skutečné spotřebě cenového plánu. Další informace najdete v tématu [ceny Logic Apps](../logic-apps/logic-apps-pricing.md). Vaše ISE také zvýšilo omezení na doba trvání běhu, uchování úložiště, propustnost, požadavek HTTP a vypršení časového limitu pro odpověď, velikost zpráv a požadavky na vlastní konektor. Další informace najdete v tématu [omezení a konfigurace pro Azure Logic Apps](logic-apps-limits-and-config.md).
 
 <a name="difference"></a>
 
@@ -61,14 +61,14 @@ Rozdíl mezi konektory ISE a jiných ISE je v umístění, kde spouštění trig
 
   ![Výběr konektorů ISE](./media/connect-virtual-network-vnet-isolated-environment-overview/select-ise-connectors.png)
 
+ISE nabízí zvýšení limitů doba trvání běhu, uchování úložiště, propustnost, požadavek HTTP a vypršení časového limitu pro odpověď, velikost zpráv a požadavky vlastního konektoru. Další informace najdete v tématu [omezení a konfigurace pro Azure Logic Apps](logic-apps-limits-and-config.md).
+
 ### <a name="access-to-on-premises-data-sources"></a>Přístup k místním zdrojům dat
 
 Pro místní systémy, které jsou připojené ke službě Azure virtual network vložit ISE do této sítě tak, aby aplikace logiky můžete tyto systémy přístup přímo pomocí některé z těchto položek:
 
 * Konektor ISE-version pro daný systém, například SQL Server
-  
 * Akce HTTP
-  
 * Vlastní konektor
 
   * Pokud máte vlastní konektory, které vyžadují místní brány dat a vytvoříte tyto konektory mimo ISE, aplikace logiky do ISE můžete také použít tyto konektory.

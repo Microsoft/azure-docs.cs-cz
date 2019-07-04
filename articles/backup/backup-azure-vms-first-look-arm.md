@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: raynew
-ms.openlocfilehash: 906024ecb3e95c75c45efddafbbf76944c6aea29
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 80739fac8317014c74c6a86cef9aa23696cfb42e
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67058068"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442999"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>Zálohování virtuálního počítače Azure z nastavení virtuálního počítače
 
@@ -72,7 +72,8 @@ K zálohování virtuálních počítačů Azure, Azure Backup nainstaluje rozš
 
 
 > [!NOTE]
-> Služba Azure Backup vytváří samostatné skupiny prostředků (než je skupina prostředků virtuálního počítače) k uložení snímku s formátem pojmenování **AzureBackupRG_geography_number** (Příklad: AzureBackupRG_northeurope_1). Data v této skupině prostředků se uchovají po dobu trvání ve dnech, jak je uvedeno v části "Doba uchování okamžité obnovení snímku" zásady zálohování virtuálních počítačů Azure. Použití zámek do této skupiny prostředků může způsobit selhání zálohování.
+> Služba Azure Backup vytváří samostatné skupiny prostředků (než je skupina prostředků virtuálního počítače) k uložení snímku s formátem pojmenování **AzureBackupRG_geography_number** (Příklad: AzureBackupRG_northeurope_1). Data v této skupině prostředků se uchovají po dobu trvání ve dnech, jak je uvedeno v části "Doba uchování okamžité obnovení snímku" zásady zálohování virtuálních počítačů Azure. Použití zámek do této skupiny prostředků může způsobit selhání zálohování.<br>
+Tato skupina prostředků má být vyloučen z nějaká omezení název a značku také, jak zásadu omezení by blokovaly vytvoření kolekce bodů prostředků v ní znovu způsobující selhání zálohování.
 
 
 ## <a name="run-a-backup-immediately"></a>Spustit zálohování ihned

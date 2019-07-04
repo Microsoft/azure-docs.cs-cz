@@ -1,20 +1,19 @@
 ---
 title: Azure Stream Analytics na hraničních zařízeních IoT
 description: Vytvořte hraniční úlohy ve službě Azure Stream Analytics a nasazovat je do zařízení s Azure IoT Edge.
-services: stream-analytics
+ms.service: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
-ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 4/2/2019
+ms.date: 07/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4ecea8864a565997b8df119d870e7efee8448143
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 17b9d11b75e2677e22fa2e38c21a69f018a4bee8
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60803979"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508344"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>Azure Stream Analytics na hraničních zařízeních IoT
  
@@ -111,7 +110,7 @@ Tyto kroky jsou popsané v dokumentaci k IoT Edge pro [Windows](https://docs.mic
 
 > [!Note]
 > Azure Stream Analytics během tohoto kroku, vytvoří složku s názvem "EdgeJobs" v kontejneru úložiště (pokud ho ještě neexistuje). U každého nasazení se vytvoří novou podsložku ve složce "EdgeJobs".
-> Pokud chcete nasadit úlohy do hraničních zařízení, Azure Stream Analytics vytvoří sdílený přístupový podpis (SAS) pro soubor s definicí úlohy. Klíč SAS se bezpečně přenášejí do zařízení IoT Edge pomocí dvojčete zařízení. Doba platnosti tohoto klíče má tři roky od jeho vytvoření.
+> Když nasadíte úlohy do hraničních zařízení IoT, Azure Stream Analytics vytvoří sdílený přístupový podpis (SAS) pro soubor s definicí úlohy. Klíč SAS se bezpečně přenášejí do zařízení IoT Edge pomocí dvojčete zařízení. Doba platnosti tohoto klíče má tři roky od jeho vytvoření. Při aktualizaci úlohy služby IoT Edge SAS se změní, ale nedojde ke změně verze image. Jakmile **aktualizovat**, pracovní postup nasazení a oznámení o aktualizaci se protokoluje u zařízení.
 
 
 Další informace o nasazení IoT Edge najdete v tématu [na této stránce](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring).
@@ -203,9 +202,31 @@ Existují dva způsoby, jak aktualizovat referenční data:
 * [Azure Stream Analytics na hraničních zařízeních IoT licence](https://go.microsoft.com/fwlink/?linkid=862827). 
 * [Oznámení třetích stran pro Azure Stream Analytics na hraničních zařízeních IoT](https://go.microsoft.com/fwlink/?linkid=862828).
 
+## <a name="azure-stream-analytics-module-image-information"></a>Informace o bitové kopie modulu Azure Stream Analytics 
+
+Informace o této verzi byl naposledy aktualizován. 2019-06-27:
+
+- Obrázek: `asaedge.azurecr.io/public/azure-stream-analytics/azureiotedge:1.0.3-linux-amd64`
+   - základní image: microsoft/dotnet:2.1.6-runtime-alpine3.7
+   - Platforma:
+      - Architektura: amd64
+      - operační systém: linux
+  
+- Obrázek: `asaedge.azurecr.io/public/azure-stream-analytics/azureiotedge:1.0.3-linux-arm32v7`
+   - základní image: microsoft/dotnet:2.1.6-runtime-bionic-arm32v7
+   - Platforma:
+      - Architektura: arm
+      - operační systém: linux
+  
+- Obrázek: `asaedge.azurecr.io/public/azure-stream-analytics/azureiotedge:1.0.3-windows-amd64`
+   - základní image: microsoft/dotnet:2.1.6-runtime-nanoserver-1809
+   - Platforma:
+      - Architektura: amd64
+      - operační systém: windows
+      
+      
 ## <a name="get-help"></a>Podpora
 Potřebujete další pomoc, zkuste [fóru Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
-
 
 ## <a name="next-steps"></a>Další postup
 

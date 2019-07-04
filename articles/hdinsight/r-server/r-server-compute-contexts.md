@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 9dac7aa19e428c964bd10c3ef62df949393e8d1f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a2c66c5c4f1abe535eb51dba9101757ce6d26157
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64681772"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444345"
 ---
 # <a name="compute-context-options-for-ml-services-on-hdinsight"></a>Možnosti výpočetního kontextu pro služby ML v HDInsight
 
@@ -76,6 +76,5 @@ Můžete také odkazovat na [distribuované výpočetní přehled](https://docs.
 V tomto článku jste se dozvěděli o možnosti, které jsou k dispozici k určení, zda a jak je provádění paralelizována přes jader hraničním uzlu nebo clusteru HDInsight. Další informace o tom, jak používat služby ML s clustery HDInsight, naleznete v následujících tématech:
 
 * [Přehled služby ML pro Apache Hadoop](r-server-overview.md)
-* [Začínáme se službou ML pro Apache Hadoop](r-server-get-started.md)
 * [Možnosti služby Azure Storage pro služby ML v HDInsight](r-server-storage.md)
 

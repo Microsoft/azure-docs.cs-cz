@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: bcd66d1a8077b4cc87c184f34b43cc5846a83f2f
-ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.openlocfilehash: f68f6c366571b8f0f04f8507606c1a4008ab0405
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67144422"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443244"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Vývoj zabezpečených aplikací v Azure
 V tomto článku Představujeme aktivity související se zabezpečením a ovládací prvky, které je třeba zvážit při vývoji aplikací pro cloud. Bezpečnostní otázky a koncepty, které je vhodné zvážit během fáze implementace a ověření Microsoft [Security Development Lifecycle (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) se vztahuje. Cílem je může pomoci určit činností a služeb Azure, které můžete použít k vývoji bezpečnější aplikace.
@@ -139,7 +139,7 @@ V [argumentu neurčité testování](https://cloudblogs.microsoft.com/microsofts
 
 Kontrola útoky po doplňování kódu pomáhá zajistit, že všechny designu nebo implementace změny aplikace nebo považovány za systému. Pomáhá zajistit, že nové vektory útoku, které byly vytvořeny v důsledku změny, včetně modely hrozeb, byly zkontrolován a zmírnit.
 
-Tím, že kontroluje aplikace můžete vytvářet představu o útoku. Společnost Microsoft nabízí nástroj pro analýzu útoku volá [útoku Surface Analyzer](https://www.microsoft.com/download/details.aspx?id=24487). Můžete si vybrat z mnoha komerčních dynamické testování a nástrojů a služeb, včetně zjišťování ohrožení zabezpečení [projektu OWASP Zovaný útoku Proxy](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project), [Arachni](http://arachni-scanner.com/), [Skipfish](http://code.google.com/p/skipfish/), a [w3af](http://w3af.sourceforge.net/). Těchto nástrojů pro vyhledávání procházení vaší aplikace a mapování části aplikace, které jsou dostupné prostřednictvím webu. Můžete také vyhledat na webu Azure Marketplace pro podobné [vývojářské nástroje](https://azuremarketplace.microsoft.com/marketplace/apps/category/developer-tools?page=1).
+Tím, že kontroluje aplikace můžete vytvářet představu o útoku. Společnost Microsoft nabízí nástroj pro analýzu útoku volá [útoku Surface Analyzer](https://www.microsoft.com/download/details.aspx?id=24487). Můžete si vybrat z mnoha komerčních dynamické testování a nástrojů a služeb, včetně zjišťování ohrožení zabezpečení [projektu OWASP Zovaný útoku Proxy](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project), [Arachni](http://arachni-scanner.com/), [Skipfish](https://code.google.com/p/skipfish/), a [w3af](http://w3af.sourceforge.net/). Těchto nástrojů pro vyhledávání procházení vaší aplikace a mapování části aplikace, které jsou dostupné prostřednictvím webu. Můžete také vyhledat na webu Azure Marketplace pro podobné [vývojářské nástroje](https://azuremarketplace.microsoft.com/marketplace/apps/category/developer-tools?page=1).
 
 ### <a name="perform-security-penetration-testing"></a>Provádět testování průniku zabezpečení
 

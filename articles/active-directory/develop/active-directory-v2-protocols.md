@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cfc9c027806cb1a3f65e67eda771894a7250ee67
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b7ffef5c3a7c8dd21654b6364013b1718bea1292
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66417652"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482986"
 ---
 # <a name="microsoft-identity-platform-protocols"></a>Protokoly Microsoft identity platform
 
@@ -36,7 +36,7 @@ Microsoft identity platform koncový bod pro identity-as-a-service pomocí stand
 
 V téměř všechny toky OAuth 2.0 a OpenID Connect existují čtyři strany součástí exchange:
 
-![Role OAuth 2.0](./media/active-directory-v2-flows/protocols-roles.svg)
+![Diagram znázorňující role OAuth 2.0](./media/active-directory-v2-flows/protocols-roles.svg)
 
 * **Autorizační Server** je koncový bod Microsoft identity platform a za zajištění identitu uživatele, poskytování a odvolání přístupu k prostředkům a vydávání tokenů. Autorizační server označované také jako zprostředkovatele identity – bezpečně zpracovává nic, aby se informace o uživateli, jejich přístup a vztahy důvěryhodnosti mezi stranami v toku.
 * **Vlastníka prostředku** je obvykle koncového uživatele. Je stranu, která vlastní data a má možnost povolit třetími stranami pro přístup k této dat nebo prostředek.

@@ -5,15 +5,15 @@ services: networking
 author: anavinahar
 ms.service: networking
 ms.topic: include
-ms.date: 06/13/2019
+ms.date: 06/25/2019
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: bb13ecb2d9014dbf56823734ac28703df9755b4b
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 3e66bf61caf786473d89eab9a6567bb05aff0d19
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67277198"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67457283"
 ---
 <a name="azure-resource-manager-virtual-networking-limits"></a>Síťová omezení – Azure Resource Manageru následující omezení platí pouze pro síťové prostředky spravované přes **Azure Resource Manageru** na oblast a předplatné. Zjistěte, jak [zobrazit aktuální využití prostředků pro vaše předplatné omezení](../articles/networking/check-usage-against-limits.md).
 
@@ -75,7 +75,7 @@ Následující omezení platí pouze pro síťové prostředky spravované přes
 
 | Resource | Výchozí omezení | Maximální omezení |
 | --- | --- | --- |
-| Virtuální sítě |50 |100 |
+| Virtuální sítě |100 |100 |
 | Místní síťové lokality |20 |Kontaktujte podporu. |
 | Servery DNS na virtuální síť |20 |20 |
 | Privátní IP adresy na virtuální síť |4,096 |4,096 |
@@ -84,8 +84,8 @@ Následující omezení platí pouze pro síťové prostředky spravované přes
 | Počet pravidel NSG na skupinu NSG |1 000 |1 000 |
 | Uživatelem definovaná trasa tabulky |200 |200 |
 | Trasy definované uživatelem na směrovací tabulku |400 |400 |
-| Veřejné IP adresy (dynamické) |5 |Kontaktujte podporu |
-| Vyhrazené veřejné IP adresy |20 |Kontaktujte podporu |
+| Veřejné IP adresy (dynamické) |500 |500 |
+| Vyhrazené veřejné IP adresy |500 |500 |
 | Veřejné virtuální IP adresy na nasazení |5 |Kontaktujte podporu |
 | Privátní virtuální IP adresy (interní Vyrovnávání zatížení) na nasazení |1 |1 |
 | Seznamy koncový bod řízení přístupu (ACL) |50 |50 |

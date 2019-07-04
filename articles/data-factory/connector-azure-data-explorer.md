@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 06/24/2019
 ms.author: orspodek
-ms.openlocfilehash: f501257903f3b7c621512f06d1c8c7109e22db1e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 438adcd70c1be308c2b5779de0442486b303cfdd
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60394502"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449635"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-using-azure-data-factory"></a>Kopírování dat do nebo z Průzkumníku dat Azure pomocí Azure Data Factory
 
@@ -140,6 +140,7 @@ Ke zkopírování dat z Průzkumníka služby Azure Data, nastavte **typ** vlast
 | type | **Typ** vlastnost zdroje aktivity kopírování musí být nastavena na: **AzureDataExplorerSource** | Ano |
 | query | Podle požadavku jen pro čtení [KQL formátu](/azure/kusto/query/). Použijte vlastní dotaz KQL jako odkaz. | Ano |
 | queryTimeout | Doba čekání před požadavkem dotazu vyprší časový limit. Výchozí hodnota je 10 minut (00:10:00); povolené maximum je 1 hodina (01: 00:00). | Ne |
+| noTruncation | Označuje, zda došlo ke zkrácení sady výsledků vrácené. Ve výchozím nastavení je výsledek zkrácen po 500 000 záznamů nebo 64MB. Zkrácení se důrazně doporučuje pro správné chování aktivity. |Ne |
 
 >[!NOTE]
 >Azure zdroj Průzkumník dat ve výchozím nastavení má omezení velikosti 500 000 záznamů nebo 64 MB. Pokud chcete načíst všechny záznamy nezkrácený, můžete zadat `set notruncation;` na začátku dotazu. Odkazovat na [dotazování omezení](https://docs.microsoft.com/azure/kusto/concepts/querylimits) na další podrobnosti.

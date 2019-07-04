@@ -8,12 +8,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/22/2019
 ms.author: cawa
-ms.openlocfilehash: 4ee91a91a20cbffebf7453ba573266962aa35806
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f7dd6d3d30f34ba2c69b40111bb28d484ce572e7
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64924744"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508733"
 ---
 # <a name="get-started-with-storage-explorer"></a>Začínáme se Storage Explorerem
 
@@ -65,25 +65,15 @@ Průzkumník služby Azure Storage [zpráva k vydání verze](https://go.microso
 
 ## <a name="connect-to-a-storage-account-or-service"></a>Připojení k účtu úložiště nebo službě
 
-Průzkumník služby Storage nabízí několik způsobů, jak se připojit k účtům úložiště. Můžete například provést následující věci:
+Průzkumník služby Storage nabízí několik způsobů, jak se připojit k účtům úložiště. Obecně máte tyto možnosti:
 
-* Připojit se k účtům úložiště přidruženým k vašim předplatným Azure.
-* Připojit se účtům úložiště a službám, které s vámi sdílí jiná předplatná Azure.
-* Připojit se k místnímu úložišti a spravovat ho pomocí emulátoru úložiště Azure.
+* [Přihlaste se k Azure pro přístup k předplatným a jejich prostředků](#sign-in-to-azure)
+* [Připojit prostředek konkrétní úložiště nebo cosmos DB](#attach-a-specific-resource)
 
-Kromě toho můžete pracovat s účty úložiště v globálním i národním Azure:
-
-* [Připojení k předplatnému Azure](#connect-to-an-azure-subscription): Spravujte prostředky úložiště, které patří k předplatnému Azure.
-* [Práce s místním vývojovým úložištěm](#work-with-local-development-storage): Spravujte místní úložiště pomocí emulátoru úložiště Azure.
-* [Připojení k externímu úložišti](#attach-or-detach-an-external-storage-account): Spravujte prostředky úložiště, která patří do jiného předplatného Azure nebo jiného národního cloudu Azure s použitím názvu, klíče a koncových bodů účtu úložiště.
-* [Připojení účtu úložiště pomocí SAS](#attach-a-storage-account-by-using-a-shared-access-signature-sas): Spravujte prostředky úložiště, které patří do jiného předplatného Azure pomocí sdíleného přístupového podpisu (SAS).
-* [Připojení služby pomocí SAS](#attach-a-service-by-using-a-shared-access-signature-sas): Spravujte konkrétní službu úložiště (kontejner objektů blob, fronty nebo tabulky), který patří do jiného předplatného Azure pomocí SAS.
-* [Připojení k účtu služby Azure Cosmos DB pomocí připojovacího řetězce](#connect-to-an-azure-cosmos-db-account-by-using-a-connection-string): Spravujte účet služby Cosmos DB pomocí připojovacího řetězce.
-
-## <a name="connect-to-an-azure-subscription"></a>Připojení k předplatnému Azure
+### <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 
 > [!NOTE]
-> Pokud nemáte účet Azure, můžete se [zaregistrovat k bezplatné zkušební verzi](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F) nebo si [aktivovat výhody předplatitele Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
+> K úplnému přístupu k prostředkům po přihlášení, vyžaduje Průzkumníka služby Storage management (ARM) a data vrstev oprávnění. To znamená, že budete potřebovat oprávnění Azure AD, které poskytují přístup k účtu úložiště, kontejnerů v účtu a data v kontejnerech. Pokud máte oprávnění pouze na datové vrstvě, zvažte použití [připojit pomocí Azure AD](#add-a-resource-via-azure-ad). Další informace o konkrétní oprávnění vyžaduje Průzkumníka služby Storage, najdete v článku [Průvodce odstraňováním potíží](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#role-based-access-control-permission-issues).
 >
 >
 
@@ -105,180 +95,108 @@ Kromě toho můžete pracovat s účty úložiště v globálním i národním A
 
     ![Vybraná předplatná Azure][4]
 
-## <a name="work-with-local-development-storage"></a>Práce s místním vývojovým úložištěm
+### <a name="attach-a-specific-resource"></a>Připojit konkrétní prostředek
+    
+Existuje široká škála možností pro připojení zdroje do Průzkumníka služby Storage. Můžete:
 
-Pomocí Průzkumníka služby Storage můžete pracovat s místním úložištěm pomocí emulátoru. Tento přístup umožňuje simulovat práci s Azure Storage, aniž byste museli mít nasazený v Azure účet úložiště.
+* [Přidání prostředku přes Azure AD](#add-a-resource-via-azure-ad): Pokud máte oprávnění pouze na datové vrstvě, můžete použít tuto možnost pro přidání kontejneru objektů Blob nebo kontejneru objektů Blob ADLS Gen2.
+* [Použijte připojovací řetězec](#use-a-connection-string): Pokud máte připojovací řetězec pro účet úložiště. Průzkumník služby Storage podporuje oba klíče a [SAS](storage/common/storage-dotnet-shared-access-signature-part-1.md) připojovací řetězce.
+* [Používání identifikátoru URI SAS](#use-a-sas-uri): Pokud máte [SAS](storage/common/storage-dotnet-shared-access-signature-part-1.md) identifikátor URI pro kontejner objektů Blob, sdílené složky, fronty nebo tabulky. Chcete-li získat identifikátor URI SAS, můžete buď používat [Průzkumníka služby Storage](#generate-a-sas-in-storage-explorer) nebo [webu Azure portal](https://portal.azure.com).
+* [Použít název a klíč](#use-a-name-and-key): Pokud znáte jeden z klíčů účtu do svého účtu úložiště, můžete rychle připojit tuto možnost. Klíče účtu úložiště jsou umístěné v účtu úložiště **přístupové klíče** okně na [webu Azure portal](https://portal.azure.com).
+* [Připojit k místní emulátor](#attach-to-a-local-emulator): Pokud pracujete s některou z dostupných emulátory Azure Storage, tuto možnost použijte ke snadnému připojení k vaší emulátoru.
+* [Připojení k účtu služby Azure Cosmos DB pomocí připojovacího řetězce](#connect-to-an-azure-cosmos-db-account-by-using-a-connection-string): Pokud máte připojovací řetězec do instance služby cosmos DB.
+* [Připojení k Azure Data Lake Store pomocí identifikátoru URI](#connect-to-azure-data-lake-store-by-uri): Pokud je třeba identifikátor URI Azure Data Lake Store.
 
-Od verze 1.1.0, podporuje Průzkumník služby Storage pomocí emulátoru lokálního úložiště na všech platformách. Průzkumník služby Storage můžete připojit k libovolné emulované služby naslouchání na jeho výchozí koncové body místní úložiště.
+#### <a name="add-a-resource-via-azure-ad"></a>Přidání prostředku přes Azure AD
 
-[Emulátoru úložiště Azure](storage/common/storage-use-emulator.md) aktuálně běží pouze na Windows. Pro ty, které zvažují emulátor úložiště pro Linux, jednou z možností je komunita zachována, emulátor úložiště opensourcových [Azurite](https://github.com/azure/azurite).
+1. Otevřít **dialogové okno Připojit** kliknutím na **tlačítko pro připojení** na levé straně, svislé nástrojů.
 
-> [!NOTE]
-> Podpora pro funkce a služby úložiště může výrazně lišit podle svého výběru: emulátoru. Zajistěte, aby že vaše emulátor podporuje služby a funkce, které máte v úmyslu pracovat.
+    ![Možnost Připojit k úložišti Azure][9]
 
-1. Konfigurace služby vaší emulátoru možnost naslouchat nepoužitého portu.
+2. Pokud jste tak již neučinili, použijte **přidat účet Azure** pro přihlášení k účtu Azure, který má přístup k prostředku. Po přihlášení na oplátku k **dialogové okno Připojit**.
 
-   Emulované služby | Výchozí koncový bod
-   -----------------|-------------------------
-   Objekty blob            | `http://127.0.0.1:10000`
-   Fronty           | `http://127.0.0.1:10001`
-   Tabulky           | `http://127.0.0.1:10002`
+3. Vyberte **přidat prostředek přes Azure Active Directory (Azure AD)** možnost a klikněte na tlačítko **Další**.
 
-2. Spusťte emulátor.
+4. Vyberte účet Azure, který má přístup k prostředku úložiště, který chcete připojit a předplatné, prostředek je v a pak klikněte na tlačítko **Další**.
+
+5. Vyberte typ prostředku, který chcete připojit a pak zadejte informace potřebné pro připojení. Vstupy na této stránce se změní v závislosti na tom, jaký typ prostředků chcete přidat. Nezapomeňte vybrat správný typ prostředku. Jakmile vyplníte potřebné informace, klikněte na tlačítko **Další**.
+
+6. Zkontrolujte souhrn připojení a ujistěte se, že se všechny informace správné. Pokud všechny informace správné klikněte **připojit**, jinak zpět na předchozí stránky s **zpět** tlačítko a opravte všechny chybné informace.
+
+Po úspěšném přidání připojení strom prostředků bude automaticky přejdete do uzlu představující připojení. Pokud z nějakého důvodu, nevypadá podle **místní a připojené** → **účty úložiště** → **(kontejnery připojené)** → **kontejnery objektů Blob** . Pokud Průzkumník služby Storage se nepodařilo přidat připojení, nebo pokud nelze přistupovat ke svým datům po úspěšném připojení a pak najdete [Průvodce odstraňováním potíží](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) nápovědu.
+
+#### <a name="use-a-connection-string"></a>Použijte připojovací řetězec
+
+1. Otevřít **dialogové okno Připojit** kliknutím na **tlačítko pro připojení** na levé straně, svislé nástrojů.
+
+    ![Možnost Připojit k úložišti Azure][9]
+
+2. Vyberte **použít připojovací řetězec** možnost a klikněte na tlačítko **Další**.
+
+3. Zvolte zobrazované jméno pro připojení a zadejte připojovací řetězec. Pak klikněte na tlačítko **Další**.
+
+4. Zkontrolujte souhrn připojení a ujistěte se, že se všechny informace správné. Pokud všechny informace správné klikněte **připojit**, jinak zpět na předchozí stránky s **zpět** tlačítko a opravte všechny chybné informace.
+
+Po úspěšném přidání připojení strom prostředků bude automaticky přejdete do uzlu představující připojení. Pokud z nějakého důvodu, nevypadá podle **místní a připojené** → **účty úložiště**. Pokud Průzkumník služby Storage se nepodařilo přidat připojení, nebo pokud nelze přistupovat ke svým datům po úspěšném připojení a pak najdete [Průvodce odstraňováním potíží](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) nápovědu.
+
+#### <a name="use-a-sas-uri"></a>Používání identifikátoru URI SAS
+
+1. Otevřít **dialogové okno Připojit** kliknutím na **tlačítko pro připojení** na levé straně, svislé nástrojů.
+
+    ![Možnost Připojit k úložišti Azure][9]
+
+2. Vyberte **pomocí sdíleného přístupového podpisu (SAS) URI** možnost a klikněte na tlačítko **Další**.
+
+3. Zvolte zobrazované jméno pro připojení a zadejte váš identifikátor URI SAS. Koncový bod služby pro typ prostředku, který při připojování by měly automatické vyplňování. Pokud používáte vlastní koncový bod je možné, že nesmí být. Klikněte na **Další**.
+
+4. Zkontrolujte souhrn připojení a ujistěte se, že se všechny informace správné. Pokud všechny informace správné klikněte **připojit**, jinak zpět na předchozí stránky s **zpět** tlačítko a opravte všechny chybné informace.
+
+Po úspěšném přidání připojení strom prostředků bude automaticky přejdete do uzlu představující připojení. Pokud z nějakého důvodu, nevypadá podle **místní a připojené** → **účty úložiště** → **(kontejnery připojené)** → **uzlu služeb pro daný typ kontejner je připojit**. Pokud Průzkumník služby Storage se nepodařilo přidat připojení, nebo pokud nelze přistupovat ke svým datům po úspěšném připojení a pak najdete [Průvodce odstraňováním potíží](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) nápovědu.
+
+#### <a name="use-a-name-and-key"></a>Použít název a klíč
+
+1. Otevřít **dialogové okno Připojit** kliknutím na **tlačítko pro připojení** na levé straně, svislé nástrojů.
+
+    ![Možnost Připojit k úložišti Azure][9]
+
+2. Vyberte **použít název účtu úložiště a klíč** možnost a klikněte na tlačítko **Další**.
+
+3. Zvolte zobrazovaný název vašeho připojení.
+
+4. Zadejte název svého účtu úložiště a jeden z jeho přístupových klíčů.
+
+5. Zvolte **doména úložiště** použít, a potom klikněte na **Další**.
+
+4. Zkontrolujte souhrn připojení a ujistěte se, že se všechny informace správné. Pokud všechny informace správné klikněte **připojit**, jinak zpět na předchozí stránky s **zpět** tlačítko a opravte všechny chybné informace.
+
+Po úspěšném přidání připojení strom prostředků bude automaticky přejdete do uzlu představující připojení. Pokud z nějakého důvodu, nevypadá podle **místní a připojené** → **účty úložiště**. Pokud Průzkumník služby Storage se nepodařilo přidat připojení, nebo pokud nelze přistupovat ke svým datům po úspěšném připojení a pak najdete [Průvodce odstraňováním potíží](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) nápovědu.
+
+#### <a name="attach-to-a-local-emulator"></a>Připojit k místní emulátor
+
+Emulátory podporuje Průzkumník služby Storage na všech platformách. Dva aktuálně oficiální emulátory k dispozici jsou:
+* [Emulátor úložiště Azure](storage/common/storage-use-emulator.md) (jenom Windows)
+* [Azurite](https://github.com/azure/azurite) (Windows, macOS nebo Linux)
+
+Pokud vaše emulátor běží na výchozích portech můžete použít **emulátor – výchozí porty** uzlu, na kterém najdete vždy v části **místní a připojené** → **účty úložiště** , rychle se dostat k vaší emulátoru. Pokud chcete použít jiný název vašeho připojení nebo pokud se vaše emulátor neběží na výchozích portech, postupujte následujících kroků.
+
+1. Spusťte vaše emulátor. Pokud můžete, poznamenejte si, jaké porty emulátor naslouchá pro každý typ služby. Budete potřebovat později tyto informace znát.
+
    > [!IMPORTANT]
    > Storage Explorer nespustí automaticky vaše emulátoru. Je nutné spustit ho sami.
 
-3. V Průzkumníku služby Storage, klikněte na tlačítko **přidat účet** tlačítko. Vyberte **připojit k místní emulátor** a klikněte na tlačítko **Další**.
-
-4. Zadejte čísla portů pro služby, které jste nakonfigurovali výše (ponechte prázdné, pokud se nechystáte používat tuto službu). Klikněte na tlačítko **Další** pak **připojit** k vytvoření připojení.
-
-5. Rozbalte **místní a připojené** > **účty úložiště** > uzlů, pak rozbalte uzly service pod tímto uzlem odpovídající připojení k emulátoru.
-
-   Tento uzel můžete použít k vytváření a práci s místní objekty BLOB, frontám a tabulkám. Zjistěte, jak pracovat s jednotlivými typu účtu úložiště, najdete v následujících příručkách:
-
-   * [Správa prostředků Azure Blob storage](vs-azure-tools-storage-explorer-blobs.md)
-   * [Správa prostředků Azure File storage](vs-azure-tools-storage-explorer-files.md)
-
-## <a name="attach-or-detach-an-external-storage-account"></a>Připojení nebo odpojení externího účtu úložiště
-
-Pomocí Průzkumníka služby Storage můžete připojit k externím účtům úložiště tak, aby se účty úložiště snadno sdílet. Tato část vysvětluje, jak se připojit k externím účtům úložiště (a odpojit se od nich).
-
-### <a name="get-the-storage-account-credentials"></a>Získání přihlašovacích údajů účtu úložiště
-
-Pokud chcete sdílet externí účet úložiště, musí vlastník tohoto účtu nejdřív pro účet získat přihlašovací údaje (název účtu a klíč) a pak sdílejte, že informace o osobě, která chce připojit k říká, že účet. Přihlašovací údaje účtu úložiště pomocí webu Azure portal můžete získat provedením následujících kroků:
-
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-
-2. Vyberte **Procházet**.
-
-3. Vyberte **Účty úložiště**.
-
-4. V seznamu **účty úložiště**, vyberte požadovaný účet úložiště.
-
-5. V části **Nastavení** vyberte **Přístupové klíče**.
-
-    ![Možnost Přístupové klíče][7]
-
-6. Kopírovat **název účtu úložiště** a **key1**.
-
-    ![Přístupové klíče][8]
-
-### <a name="attach-to-an-external-storage-account"></a>Připojení k externímu účtu úložiště
-
-Pokud se chcete připojit k účtu externího úložiště, budete potřebovat název účtu a klíč. Část Získání přihlašovacích údajů účtu úložiště vysvětluje, jak tyto hodnoty získat z webu Azure Portal. Na portálu se ale klíč účtu nazývá **klíč1**. Proto když Storage Explorer vyzve k zadání klíče účtu služby, zadáte **key1** hodnotu.
-
-1. V Průzkumníku služby Storage, otevřete **dialogové okno Připojit**.
+2. Otevřít **dialogové okno Připojit** kliknutím na **tlačítko pro připojení** na levé straně, svislé nástrojů.
 
     ![Možnost Připojit k úložišti Azure][9]
 
-2. V **dialogové okno Připojit**, zvolte **použít název účtu úložiště a klíč**
+3. Vyberte **připojit k místní emulátor** možnost a klikněte na tlačítko **Další**.
 
-    ![Přidat s názvem a možnost klíče][10]
+4. Zvolte zobrazované jméno pro připojení a zadejte porty, které vaše emulátor naslouchá pro každý typ služby. Ve výchozím nastavení bude obsahovat textových polích výchozí hodnoty portů pro většina emulátorů. **Soubory port** také zbývá ve výchozím nastavení prázdné jako ani jeden z oficiální emulátorů v současné době podporují služby soubory. Pokud používáte emulátor podporují i když, potom můžete zadat v port, který se používá. Klikněte na **Další**.
 
-3. Vložte název účtu v **název účtu** text a vložte klíč účtu ( **key1** hodnotu z webu Azure portal) do **klíč účtu** textové pole a pak vyberte **Další**.
+5. Zkontrolujte souhrn připojení a ujistěte se, že se všechny informace správné. Pokud všechny informace správné klikněte **připojit**, jinak zpět na předchozí stránky s **zpět** tlačítko a opravte všechny chybné informace.
 
-    ![Název a klíč stránky][11]
+Po úspěšném přidání připojení strom prostředků bude automaticky přejdete do uzlu představující připojení. Pokud z nějakého důvodu, nevypadá podle **místní a připojené** → **účty úložiště**. Pokud Průzkumník služby Storage se nepodařilo přidat připojení, nebo pokud nelze přistupovat ke svým datům po úspěšném připojení a pak najdete [Průvodce odstraňováním potíží](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) nápovědu.
 
-    > [!NOTE]
-    > Chcete-li použít název a klíč z národního cloudu, použijte **doména koncových bodů úložiště:** rozevíracího seznamu vyberte doménu jednotlivé koncové body:
-    >
-    >
-
-4. V dialogovém okně **Connection Summary** (Souhrn připojení) zkontrolujte zadané informace. Pokud chcete něco změnit, vyberte možnost **Back** (Zpět) a požadovaná nastavení zadejte znovu.
-
-5. Vyberte **Connect** (Připojit).
-
-6. Jakmile účet úložiště byl úspěšně připojen, účet úložiště zobrazí s **(externí)** jeho názvu připojí.
-
-    ![Výsledek připojení k externímu účtu úložiště][12]
-
-### <a name="detach-from-an-external-storage-account"></a>Odpojení od externího účtu úložiště
-
-1. Klikněte pravým tlačítkem myši na externí účet úložiště, který chcete odpojit, a vyberte **Detach** (Odpojit).
-
-    ![Možnost Odpojit od úložiště][13]
-
-2. V potvrzovací zprávě potvrďte výběrem možnosti **Yes** (Ano) odpojení od externího účtu úložiště.
-
-## <a name="attach-a-storage-account-by-using-a-shared-access-signature-sas"></a>Připojení účtu úložiště pomocí sdílený přístupový podpis (SAS)
-
-A sdílený přístupový podpis nebo [SAS](storage/common/storage-dotnet-shared-access-signature-part-1.md), umožňuje správci předplatného Azure udělit dočasný přístup k účtu úložiště, aniž by musel zadávat přihlašovací údaje předplatného Azure.
-
-Ukažme si tento scénář na příkladu. Řekněme, že uživatel A je správcem předplatného Azure a uživatel A chce uživateli B povolit přístup k účtu úložiště po omezenou dobu s určitými oprávněními:
-
-1. Uživatel a vygeneruje připojovací řetězec SAS pro určité časové období a s požadovanými oprávněními.
-
-2. Uživatel a sdílí SAS s osobou (nasdílí uživateli b, v tomto příkladu), který potřebuje přístup k účtu úložiště.
-
-3. UserB používá pro připojení k účtu, který patří do UserA sdíleného přístupového podpisu pomocí Průzkumníka služby Storage.
-
-### <a name="generate-a-sas-query-string-for-the-account-you-want-to-share"></a>Generování řetězce dotazu SAS pro účet, který chcete sdílet
-
-1. V Průzkumníku služby Storage, klikněte pravým tlačítkem na účet úložiště, který chcete sdílet a pak vyberte **získat sdílený přístupový podpis...** .
-
-    ![Možnost místní nabídky Získat sdílený přístupový podpis][14]
-
-2. V **vygenerovat sdílený přístupový podpis** dialogového okna zadejte časový rámec a oprávnění pro účet a potom klikněte na tlačítko **vytvořit** tlačítko.
-
-    ![Získat dialogové okno SAS][15]
-
-3. Vedle položky **řetězec dotazu** textového pole, vyberte **kopírování** zkopírujte do schránky, a potom klikněte na **Zavřít**.
-
-### <a name="attach-to-a-storage-account-by-using-a-sas-connection-string"></a>Připojit k účtu úložiště pomocí připojovacího řetězce SAS
-
-1. V Průzkumníku služby Storage, otevřete **dialogové okno Připojit**.
-
-    ![Možnost Připojit k úložišti Azure][9]
-
-2. V **dialogové okno Připojit** dialogovém okně zvolte **použít připojovací řetězec nebo URI sdíleného přístupového podpisu** a potom klikněte na tlačítko **Další**.
-
-    ![Dialogové okno Připojit k úložišti Azure][16]
-
-3. Zvolte **použít připojovací řetězec** a vložte připojovací řetězec do **připojovací řetězec:** pole. Klikněte na tlačítko **Další** tlačítko.
-
-    ![Dialogové okno Připojit k úložišti Azure][17]
-
-4. V dialogovém okně **Connection Summary** (Souhrn připojení) zkontrolujte zadané informace. Pokud chcete provést změny, vyberte **Back** (Zpět) a zadejte požadovaná nastavení.
-
-5. Vyberte **Connect** (Připojit).
-
-6. Jakmile účet úložiště byl úspěšně připojen, účet úložiště zobrazí s **(SAS)** jeho názvu připojí.
-
-    ![Výsledek připojení k účtu pomocí sdíleného přístupového podpisu (SAS)][18]
-
-## <a name="attach-a-service-by-using-a-shared-access-signature-sas"></a>Připojení služby pomocí sdílený přístupový podpis (SAS)
-
-V části "Připojení účtu úložiště pomocí SAS" vysvětluje, jak může správce předplatného Azure udělit dočasný přístup k účtu úložiště vygenerováním a nasdílením SAS pro účet úložiště. Obdobně SAS můžete vygenerovat pro konkrétní službu (kontejner objektů blob, fronty, tabulky nebo sdílené složky) v rámci účtu úložiště.
-
-### <a name="generate-an-sas-for-the-service-that-you-want-to-share"></a>Vygenerování sdíleného přístupového podpisu (SAS) pro službu, kterou chcete sdílet
-
-V tomto kontextu můžete službu být kontejner objektů blob, queue, table nebo sdílení souborů. Pokud chcete vygenerovat sdílený přístupový podpis (SAS) pro uvedenou službu, přečtěte si:
-
-* [Získání sdíleného přístupového podpisu (SAS) pro kontejner objektů blob](vs-azure-tools-storage-explorer-blobs.md#get-the-sas-for-a-blob-container)
-
-### <a name="attach-to-the-shared-account-service-by-using-a-sas-uri"></a>Připojení ke službě sdíleného účtu pomocí identifikátoru URI SAS
-
-1. V Průzkumníku služby Storage, otevřete **dialogové okno Připojit**.
-
-    ![Možnost Připojit k úložišti Azure][9]
-
-2. V **dialogové okno Připojit** dialogového okna zvolte **použít připojovací řetězec nebo URI sdíleného přístupového podpisu** a potom klikněte na tlačítko **Další**.
-
-    ![Dialogové okno Připojit k úložišti Azure][16]
-
-3. Zvolte **použít identifikátor URI SAS** a vložte váš identifikátor URI do **identifikátor URI:** pole. Klikněte na tlačítko **Další** tlačítko.
-
-    ![Dialogové okno Připojit k úložišti Azure][19]
-
-4. V dialogovém okně **Connection Summary** (Souhrn připojení) zkontrolujte zadané informace. Pokud chcete provést změny, vyberte **Back** (Zpět) a zadejte požadovaná nastavení.
-
-5. Vyberte **Connect** (Připojit).
-
-6. Po služba je úspěšně připojena, objeví se v části **(SAS-Attached služby)** uzlu.
-
-    ![Výsledek připojení ke sdílené službě pomocí sdíleného přístupového podpisu (SAS)][20]
-
-## <a name="connect-to-an-azure-cosmos-db-account-by-using-a-connection-string"></a>Připojení k účtu služby Azure Cosmos DB pomocí připojovacího řetězce
+#### <a name="connect-to-an-azure-cosmos-db-account-by-using-a-connection-string"></a>Připojení k účtu služby Azure Cosmos DB pomocí připojovacího řetězce
 
 Kromě Správa účtů služby Azure Cosmos DB pomocí předplatného Azure, je alternativní způsob připojení ke službě Azure Cosmos DB pomocí připojovacího řetězce. Pomocí následujícího postupu se připojte pomocí připojovacího řetězce.
 
@@ -290,7 +208,7 @@ Kromě Správa účtů služby Azure Cosmos DB pomocí předplatného Azure, je 
 
     ![connection-string][22]
 
-## <a name="connect-to-azure-data-lake-store-by-uri"></a>Připojení k Azure Data Lake Store pomocí identifikátoru URI
+#### <a name="connect-to-azure-data-lake-store-by-uri"></a>Připojení k Azure Data Lake Store pomocí identifikátoru URI
 
 Představte si, že chcete získat přístup k prostředkům, které neexistují ve vašem předplatném. Ostatní vám však udělí oprávnění k získání jejich identifikátoru URI. V takovém případě se po přihlášení můžete připojit ke službě Data Lake Store s použitím tohoto identifikátoru URI. Postup najdete v následujících krocích.
 
@@ -305,6 +223,25 @@ Představte si, že chcete získat přístup k prostředkům, které neexistují
     ![dialogové okno Připojit ke službě Data Lake Store](./media/vs-azure-tools-storage-manage-with-storage-explorer/storageexplorer-adls-uri-attach-dialog.png)
 
     ![výsledek připojení ke službě Data Lake Store](./media/vs-azure-tools-storage-manage-with-storage-explorer/storageexplorer-adls-attach-finish.png)
+
+
+## <a name="generate-a-sas-in-storage-explorer"></a>Generovat SAS v Průzkumníku služby Storage
+
+### <a name="account-level-sas"></a>ZÁSADY na úrovni účtu
+
+1. Klikněte pravým tlačítkem na účet úložiště, který chcete sdílet a pak vyberte **získat sdílený přístupový podpis...** .
+
+    ![Možnost místní nabídky Získat sdílený přístupový podpis][14]
+
+2. V **vygenerovat sdílený přístupový podpis** dialogového okna zadejte časový rámec a oprávnění pro účet a potom klikněte na tlačítko **vytvořit** tlačítko.
+
+    ![Získat dialogové okno SAS][15]
+
+3. Teď můžete kopírovat **připojovací řetězec** nebo nezpracovaný **řetězec dotazu** do schránky.
+
+### <a name="service-level-sas"></a>ZÁSADY na úrovni služby
+
+[Jak získat SAS pro kontejner objektů blob v Průzkumníku služby Storage](vs-azure-tools-storage-explorer-blobs.md#get-the-sas-for-a-blob-container)
 
 ## <a name="search-for-storage-accounts"></a>Vyhledávání účtů úložiště
 

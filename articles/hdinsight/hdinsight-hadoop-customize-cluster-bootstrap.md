@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/19/2019
-ms.openlocfilehash: 7f9100686eaab8c4c75e3d862026b18b6c46ed09
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 50db9a588cd953bbd0e912ec942194a8deeffe4c
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65203709"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67484042"
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>Přizpůsobení clusterů HDInsight pomocí Bootstrap
 
@@ -133,7 +133,7 @@ V šabloně Resource Manageru můžete spuštění:
 ![Přizpůsobí bootstrap šablony Azure Resource Manageru clusteru HDInsight Hadoop](./media/hdinsight-hadoop-customize-cluster-bootstrap/hdinsight-customize-cluster-bootstrap-arm.png)
 
 ## <a name="see-also"></a>Další informace najdete v tématech
-* [Vytvořte clustery systému Apache Hadoop v HDInsight] [ hdinsight-provision-cluster] pokyny o tom, jak vytvořit HDInsight cluster s použitím jiné možnosti vlastního nastavení.
+* [Vytvořte clustery systému Apache Hadoop v HDInsight][hdinsight-provision-cluster] pokyny o tom, jak vytvořit HDInsight cluster s použitím jiné možnosti vlastního nastavení.
 * [Vývoj skriptových akcí skriptů pro HDInsight][hdinsight-write-script]
 * [Nainstalovat a používat Apache Spark v clusterech HDInsight][hdinsight-install-spark]
 * [Instalace a využít Apache Giraph u clusterů HDInsight](hdinsight-hadoop-giraph-install.md).
@@ -149,9 +149,6 @@ V šabloně Resource Manageru můžete spuštění:
 ## <a name="appendix-powershell-sample"></a>Dodatek: Ukázka PowerShellu
 
 Tento skript Powershellu vytvoří HDInsight cluster a přizpůsobí nastavení Hive. Je potřeba zadat hodnoty pro `$nameToken`, `$httpPassword`, a `$sshPassword`.
-
-> [!IMPORTANT]  
-> Hodnoty pro `DefaultStorageAccount`, a `DefaultStorageContainer` nebudou zobrazeny z [Get-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightcluster) při [zabezpečený přenos](../storage/common/storage-require-secure-transfer.md) je povolená v účtu úložiště.
 
 > [!WARNING]  
 > Druh účtu úložiště `BlobStorage` nelze použít pro clustery HDInsight.

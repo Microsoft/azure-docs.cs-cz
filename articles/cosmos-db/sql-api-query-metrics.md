@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
-ms.openlocfilehash: 61bb102e17d9980d991fdf423174d7110cd5433d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d61d3d00de5b46f7dad44625509eabe6836ca7cf
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66237871"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447260"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Ladění výkonu dotazů s využitím služby Azure Cosmos DB
 
@@ -272,7 +272,7 @@ Tady je několik ukázkových dotazů a jak interpretovat některé z metrik vr�
 
 
 ## <a name="next-steps"></a>Další postup
-* Další informace o podporovaných klíčová slova a operátorů dotazu SQL najdete v tématu [dotaz SQL](how-to-sql-query.md). 
+* Další informace o podporovaných klíčová slova a operátorů dotazu SQL najdete v tématu [dotaz SQL](sql-query-getting-started.md). 
 * Další informace o jednotkách žádostí, najdete v článku [jednotky žádostí](request-units.md).
 * Další informace o zásady indexování, naleznete v tématu [zásady indexování](index-policy.md) 
 

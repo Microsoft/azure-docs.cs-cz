@@ -1,33 +1,29 @@
 ---
-title: Vysvětlení faktury za Azure | Dokumentace Microsoftu
-description: Zjistěte, jak číst a využití a vyúčtování předplatného Azure
-services: ''
-documentationcenter: ''
-author: tonguyen10
+title: Vysvětlení faktury za Azure
+description: Zjistěte, jak číst a využití a vyúčtování předplatného Azure.
+author: bandersmsft
 manager: jureid
-editor: ''
 tags: billing
-ms.assetid: 32eea268-161c-4b93-8774-bc435d78a8c9
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/19/2019
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 4303b79a7ee69d029504bf6ca2359f6e6070e5b8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c8b0d6febbffb80cb4e8bcbf62febb51d059282c
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60370151"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490318"
 ---
 # <a name="understand-your-microsoft-azure-bill"></a>Vysvětlení vašeho vyúčtování služeb Microsoft Azure
-Chcete-li vysvětlení vašeho vyúčtování služeb Azure, porovnejte faktuře se podrobný soubor denní využití a sestav služby cost management na webu Azure Portal.
+Chcete-li vysvětlení vašeho vyúčtování služeb Azure, porovnejte faktuře souborem podrobné denního využití a pomocí sestav služby cost management na webu Azure Portal.
 
 Tento článek se nevztahuje na zákazníky Azure se smlouvou Enterprise (EA zákazníci). Pokud jste zákazník EA, přečtěte si téma [vysvětlení vašeho vyúčtování služeb Azure zákazníky se smlouvou Enterprise](billing-understand-your-bill-ea.md).
 
-Tento článek se nevztahuje na zákazníky se smlouvou Microsoft zákazníků Azure. Pokud máte fakturační účet zákaznické smlouvy Microsoft, přečtěte si [pochopit Azure poplatky na faktuře smlouvy zákazníka Microsoftu](billing-mca-understand-your-bill.md).
+Tento článek se nevztahuje na zákazníky Azure s [smlouvy zákazníka Microsoftu](#check-access-to-a-microsoft-customer-agreement). Pokud máte smlouvu zákazníků společnosti Microsoft, přečtěte si téma [pochopit Azure poplatky na faktuře smlouvy zákazníka Microsoftu](billing-mca-understand-your-bill.md).
 
 Vysvětlení toho, jak funguje fakturace v programu Azure Cloud Solution Provider (CSP pro Azure), včetně fakturační cyklus, ceny a využití, viz [fakturační základní informace o Azure CSP](/azure/cloud-solution-provider/billing/azure-csp-billing-overview/).
 
@@ -39,7 +35,7 @@ Pokud je na vaší faktuře, který chcete získat další informace o poplatek,
 
 ### <a name="option-1-compare-usage-and-costs-with-usage-file"></a>Option 1: Porovnání využití a náklady na využití souboru
 
-Soubor CSV podrobné informace o využití zobrazuje poplatky podle fakturačního období a denní využívání. Pokud chcete získat soubor, naleznete v tématu [získat Azure billing invoice a denní data o využití](billing-download-azure-invoice-daily-usage-date.md).
+Soubor CSV podrobné informace o využití zobrazuje poplatky podle fakturačního období a denní využívání. Stažení nebo zobrazení souboru naleznete v tématu [získat Azure billing invoice a denní data o využití](billing-download-azure-invoice-daily-usage-date.md).
 
 Své poplatky za využití se zobrazují na úrovni měřiče. Následující terminologií mají stejný význam v faktury a podrobné informace o použití souboru. Například fakturačního cyklu na faktuře je stejný jako fakturační období, zobrazeny v souboru podrobné informace o využití.
 
@@ -54,7 +50,7 @@ Své poplatky za využití se zobrazují na úrovni měřiče. Následující te
  |Zahrnuje |Zahrnuté množství |
  |Fakturovatelné |Překročené množství |
 
-**Poplatky za využívání** části faktury má celkovou hodnotu pro každého měřiče, které se během fakturačního období. Například následující snímek obrazovky ukazuje využití poplatek za službu Azure Scheduler.
+**Poplatky za využívání** části faktury zobrazí celkovou hodnotu pro každého měřiče, které se během fakturačního období. Například následující obrázek ukazuje využití poplatek za službu Azure Scheduler.
 
 ![Poplatky za využívání faktury](./media/billing-understand-your-bill/1.png)
 
@@ -62,7 +58,7 @@ Své poplatky za využití se zobrazují na úrovni měřiče. Následující te
 
 ![Poplatky za používání sdíleného svazku clusteru](./media/billing-understand-your-bill/2.png)
 
-Chcete-li zobrazit rozpis denní tento poplatek, přejděte **denního využití** část sdílený svazek clusteru. Filtrovat *Plánovač* pod *kategorie měřiče*. Uvidíte, které dny se použil měřič a kolik spotřebovával. *Prostředků* a *skupiny prostředků* informace jsou také uvedeny pro porovnání. *Spotřebovaná* hodnot by měl nasčítá a co se zobrazí na faktuře.
+Chcete-li zobrazit rozpis denní sazba, přejděte **denního využití** části ze souboru CSV. Filtrovat *Plánovač* pod *kategorie měřiče*. Uvidíte, které dny se použil měřič a kolik spotřebovával. *Prostředků* a *skupiny prostředků* informace jsou také zobrazeny pro porovnání. *Spotřebovaná* hodnot by měl přidají a odpovídat, co se zobrazí na faktuře.
 
 ![Části denní využívání ve sdíleném svazku clusteru](./media/billing-understand-your-bill/3.png)
 
@@ -84,7 +80,7 @@ Na webu Azure portal také můžete ověřit poplatky. Získat rychlý přehled 
 
    ![Zobrazení analýza nákladů na webu Azure portal](./media/billing-understand-your-bill/4.png)
 
-1. Vyberte tento řádek zobrazíte denní rozpis nákladů.
+1. Vyberte řádek, který ukazuje náklady na zobrazit rozpis denní náklady.
 
    ![Zobrazení historie nákladů na webu Azure portal](./media/billing-understand-your-bill/5.png)
 
@@ -135,6 +131,9 @@ Kontrola stavu vaše platba [vytvořit lístek podpory](https://portal.azure.com
   - [Celkové náklady na vlastnictví kalkulačky](https://aka.ms/azure-tco-calculator)
   - [Podrobné informace o cenách pro každou službu](https://azure.microsoft.com/pricing/)
 - [Kontrola využití a nákladů pravidelně na webu Azure portal](billing-getting-started.md#costs).
+
+## <a name="check-access-to-a-microsoft-customer-agreement"></a>Kontrola přístupu na základě smlouvy Microsoft
+[!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
 ## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 

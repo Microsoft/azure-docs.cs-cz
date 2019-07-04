@@ -6,15 +6,15 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 06/03/2019
+ms.date: 06/29/2019
 ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: c402b82b91b02f8d9619c851d09c689fd103c9fe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0b8c2b50e00c8e9727b09a454504d214a3060fe4
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67116438"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67502702"
 ---
 # <a name="azure-digital-twins-swagger-reference-documentation"></a>Digitální dvojče Swagger referenční dokumentace k Azure
 
@@ -92,14 +92,12 @@ Příklady také kódy chyb umožňující ladit nebo vylepšit selhání testů
 
 ## <a name="swagger-oauth-20-authorization"></a>Swagger autorizace OAuth 2.0
 
-Další informace o interaktivním testování požadavků, které jsou chráněné pomocí OAuth 2.0, najdete v článku [oficiální dokumentaci](https://swagger.io/docs/specification/authentication/oauth2/).
-
 > [!NOTE]
-> Uživatel instančního objektu, který vytvořil digitální dvojče Azure bude mít přiřazení rolí správce místa a budete moct vytvořit přiřazení dalších rolí pro ostatní uživatele.
+> * Uživatel instančního objektu, který vytvořil digitální dvojče Azure bude mít přiřazení rolí správce místa a budete moct vytvořit přiřazení dalších rolí pro ostatní uživatele. Tyto uživatele a jejich rolí můžete oprávnění k volání rozhraní API.
 
-1. Postupujte podle kroků v [v tomto rychlém startu](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad) k vytvoření aplikace Azure AD typu ***webovou aplikaci nebo API***. Nebo můžete znovu použít existující registraci aplikace.
+1. Postupujte podle kroků v [v tomto rychlém startu](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad) nebo [registraci Azure digitální dvojče aplikace ve službě starší verze služby Azure Active Directory](./how-to-use-legacy-aad.md) vytvořit a nakonfigurovat aplikaci Azure AD. Alternativně můžete znovu použít existující registraci aplikace.
 
-2. Přidejte následující adresa url odpovědi k registraci aplikace:
+1. Přidejte následující adresa url odpovědi k registraci aplikace:
 
     ```plaintext
     https://YOUR_SWAGGER_URL/ui/oauth2-redirect-html
@@ -108,29 +106,23 @@ Další informace o interaktivním testování požadavků, které jsou chráně
     |---------|---------|---------|
     | YOUR_SWAGGER_URL | Vaši adresu URL dokumentace k rozhraní REST API pro správu nalézt v portálu  | `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger` |
 
-3. Udělení oprávnění pro vaši aplikaci pro přístup k digitální dvojče Azure. V části **požadovaná oprávnění**, zadejte `Azure Digital Twins` a vyberte **delegovaná oprávnění**. Potom vyberte **udělit oprávnění**.
-
-    ![Registrace aplikace Azure AD přidat rozhraní api](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)
-
-4. Konfigurace manifestu aplikace povolit implicitní tok OAuth 2.0. Vyberte **Manifest** otevřete manifest aplikace pro vaši aplikaci. Nastavte *oauth2AllowImplicitFlow* k `true`.
-
-    ![Azure AD implicitní tok](../../includes/media/digital-twins-permissions/aad-app-allow-implicit-flow.png)
-
-5. Zkopírujte ID aplikace Azure AD.
+1. Zkopírujte ID aplikace Azure AD.
 
 Po dokončení registrace Azure Active Directory:
 
-6. Vyberte **Authorize** tlačítko na stránce swagger.
+1. Vyberte **Authorize** tlačítko na stránce swagger.
 
     [![Vyberte Swaggeru povolit tlačítko](media/how-to-use-swagger/swagger-select-authorize-btn.png)](media/how-to-use-swagger/swagger-select-authorize-btn.png#lightbox)
 
-7. Vložte do ID aplikace **client_id** pole.
+1. Vložte do ID aplikace **client_id** pole.
 
     [![Pole client_id swagger](media/how-to-use-swagger/swagger-auth-form.png)](media/how-to-use-swagger/swagger-auth-form.png#lightbox)
 
-8. Pak bude přesměrován na modální následující úspěch.
+1. Pak bude přesměrován na modální následující úspěch.
 
-    [![Modální okno přesměrování swagger](media/how-to-use-swagger/swagger_auth_redirect.PNG)](media/how-to-use-swagger/swagger_auth_redirect.PNG#lightbox)
+    [![Modální okno přesměrování swagger](media/how-to-use-swagger/swagger_auth_redirect.png)](media/how-to-use-swagger/swagger_auth_redirect.png#lightbox)
+
+Další informace o interaktivním testování požadavků, které jsou chráněné pomocí OAuth 2.0, najdete v článku [oficiální dokumentaci](https://swagger.io/docs/specification/authentication/oauth2/).
 
 ## <a name="next-steps"></a>Další postup
 

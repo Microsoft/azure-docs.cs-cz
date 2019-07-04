@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/06/2019
 ms.author: iainfou
-ms.openlocfilehash: 43ba7593336372bbbd7a3a4bb9821665a42bbf29
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 52a9ba20b60e8ef6cdb743546cd842e4ee24b3fd
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66752180"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441925"
 ---
 # <a name="preview---limit-egress-traffic-for-cluster-nodes-and-control-access-to-required-ports-and-services-in-azure-kubernetes-service-aks"></a>Ve verzi Preview - omezení odchozí provoz pro uzly clusteru a řízení přístupu k požadované porty a služby ve službě Azure Kubernetes Service (AKS)
 
@@ -30,19 +30,22 @@ Tento článek podrobně popisuje, jaké síťové porty a plně kvalifikované 
 
 Musí mít Azure CLI verze 2.0.66 nebo později nainstalována a nakonfigurována. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][install-azure-cli].
 
-K vytvoření clusteru AKS, které omezuje výchozí přenos, nejprve povolte příznak funkce v rámci předplatného. Tato funkce registrace nakonfiguruje jakémkoli AKS vytvoříte pomocí systému základní Image kontejneru z MCR nebo služby ACR. K registraci *AKSLockingDownEgressPreview* příznak funkce, použijte [az funkce register] [ az-feature-register] příkaz, jak je znázorněno v následujícím příkladu:
+K vytvoření clusteru AKS, které omezuje výchozí přenos, nejprve povolte příznak funkce v rámci předplatného. Tato funkce registrace nakonfiguruje jakémkoli AKS vytvoříte pomocí systému základní Image kontejneru z MCR nebo služby ACR. K registraci *AKSLockingDownEgressPreview* příznak funkce, použijte [az funkce register][az-feature-register] příkaz, jak je znázorněno v následujícím příkladu:
+
+> [!CAUTION]
+> Při registraci funkce v rámci předplatného nelze nyní zrušit registraci této funkce. Po povolení některé funkce ve verzi preview se výchozí hodnoty lze pro všechny clustery AKS, pak jste vytvořili v rámci předplatného. Nepovolí funkce ve verzi preview na předplatná pro produkční prostředí. Testování funkce ve verzi preview a shromažďování zpětné vazby pomocí samostatné předplatné.
 
 ```azurecli-interactive
 az feature register --name AKSLockingDownEgressPreview --namespace Microsoft.ContainerService
 ```
 
-Trvá několik minut, než se stav zobrazíte *registrované*. Můžete zkontrolovat stav registrace pomocí [seznam funkcí az] [ az-feature-list] příkaz:
+Trvá několik minut, než se stav zobrazíte *registrované*. Můžete zkontrolovat stav registrace pomocí [seznam funkcí az][az-feature-list] příkaz:
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKSLockingDownEgressPreview')].{Name:name,State:properties.state}"
 ```
 
-Až to budete mít, aktualizujte registraci *Microsoft.ContainerService* poskytovatele prostředků pomocí [az provider register] [ az-provider-register] příkaz:
+Až to budete mít, aktualizujte registraci *Microsoft.ContainerService* poskytovatele prostředků pomocí [az provider register][az-provider-register] příkaz:
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -54,7 +57,7 @@ Pro účely provozní a správy uzly v clusteru AKS potřebují přístup k urč
 
 Pokud chcete zvýšit zabezpečení vašeho clusteru AKS, můžete chtít omezit výchozí přenos. Cluster je nakonfigurovaný k přetahování imagí kontejneru z MCR nebo ACR základního systému. Pokud uzamknout výchozí přenos tímto způsobem, je nutné definovat konkrétní porty a plně kvalifikovaných názvů domén povolit uzlů AKS správně komunikovat s vyžaduje externí služby. Bez těchto oprávnění portů a plně kvalifikované názvy domény nelze uzly AKS komunikaci se serverem pro rozhraní API nebo nainstalujte základní součásti.
 
-Můžete použít [Brána Firewall služby Azure] [ azure-firewall] nebo zařízení brány firewall 3. stran k zabezpečení provozu odchozího přenosu dat a definovat tyto požadované porty a adresy. AKS neprovádí automatické vytváření těchto pravidel pro vás. Následující porty a adresy jsou pro referenci při vytváření příslušných pravidel brány firewall vaší sítě.
+Můžete použít [Brána Firewall služby Azure][azure-firewall] nebo zařízení brány firewall 3. stran k zabezpečení provozu odchozího přenosu dat a definovat tyto požadované porty a adresy. AKS neprovádí automatické vytváření těchto pravidel pro vás. Následující porty a adresy jsou pro referenci při vytváření příslušných pravidel brány firewall vaší sítě.
 
 Ve službě AKS existují dvě sady porty a adresy:
 
@@ -62,7 +65,7 @@ Ve službě AKS existují dvě sady porty a adresy:
 * [Volitelné doporučené adresy a porty pro AKS clustery](#optional-recommended-addresses-and-ports-for-aks-clusters) se nevyžadují pro všechny scénáře, ale integrace s dalšími službami, jako je Azure Monitor nebude fungovat správně. Projděte si seznam volitelné porty a plně kvalifikované názvy domény a povolit všechny služby a komponenty použité ve vašem clusteru AKS.
 
 > [!NOTE]
-> Omezení výchozí přenos funguje pouze na nové AKS clustery, které jsou vytvořené po povolení registrace příznak funkce. Pro existující clustery [provést operaci upgradu clusteru] [ aks-upgrade] pomocí `az aks upgrade` příkazu před omezit výchozí přenos.
+> Omezení výchozí přenos funguje pouze na nové AKS clustery, které jsou vytvořené po povolení registrace příznak funkce. Pro existující clustery [provést operaci upgradu clusteru][aks-upgrade] pomocí `az aks upgrade` příkazu před omezit výchozí přenos.
 
 ## <a name="required-ports-and-addresses-for-aks-clusters"></a>Požadované porty a adresy pro clustery AKS
 

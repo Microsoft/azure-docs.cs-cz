@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/18/2019
+ms.date: 07/03/2019
 ms.author: jaredr80
-ms.openlocfilehash: 3a29940c4ef904d813fa7400928448a5c48334a4
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: bda5fb8a267fae3309c73678465693e1fef9b838
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205969"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565944"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partneři ExpressRoute a umístění partnerského vztahu
 
@@ -77,9 +77,9 @@ Následující tabulka uvádí umístění připojení a poskytovatele služby p
 | **Location** | **Vlastník umístění partnerského vztahu** | **Místní oblasti Azure** | **Poskytovatelé služeb** |
 | --- | --- | --- | --- |
 | **Amsterdam** | Equinix | Západní Evropa | Aryaka Networks, AT&T NetBond, British Telecom, Colt, Equinix, euNetworks, GÉANT, InterCloud, Interxion, KPN, IX Reach, Level 3 Communications, Megaport, NTT Communications, Orange, Tata Communications, TeleCity Group, Telefonica, Telenor, Telia Carrier, Verizon, Zayo |
-| **Amsterdam2** | Interxion | Západní Evropa | DE-CIX, Interxion, Vodafone |
+| **Amsterdam2** | Interxion | Západní Evropa | CenturyLink Cloud Connect, DE-CIX, Interxion, Vodafone |
 | **Atlanta** | Equinix | neuvedeno | Equinix, Megaport |
-| **Auckland** | Vocus | neuvedeno | Devoli |
+| **Auckland** | Vocus | neuvedeno | Devoli, Megaport |
 | **Busan** |LG CNS | Jižní Korea – jih | LG CNS |
 | **Canberra** | CDC | Austrálie – střed | CDC |
 | **Canberra2** | CDC | Austrálie – střed 2| CDC |
@@ -100,7 +100,7 @@ Následující tabulka uvádí umístění připojení a poskytovatele služby p
 | **Londýn** | Equinix | Velká Británie – jih | AT&T NetBond, British Telecom, Colt, Equinix, InterCloud, Internet Solutions – Cloud Connect, Interxion, Jisc, Level 3 Communications, Megaport, MTN, NTT Communications, Orange, PCCW Global Limited, Tata Communications, Telehouse – KDDI, Telenor, Telia Carrier, Verizon, Vodafone, Zayo |
 | **London2** | Telehouse | Velká Británie – jih | IX Reach, Equinix |
 | **Los Angeles** | CoreSite | neuvedeno | CoreSite, Equinix, Megaport, Neutrona Networks, NTT, Zayo |
-| **Marseille** |Interxion | Francie – jih | Interxion Jaguar sítě |
+| **Marseille** |Interxion | Francie – jih | DE-CIX, Interxion, Jaguar Network |
 | **Melbourne** | NextDC | Austrálie – jihovýchod | AARNet, Devoli, Equinix, Megaport, NEXTDC, Optus, Telstra Corporation, TPG Telecom |
 | **Miami** | Equinix | neuvedeno | C3ntro+, Equinix, Megaport, Neutrona Networks |
 | **Montreal** | Cologix | neuvedeno | Bell Canada, Cologix, Telus, Zayo |
@@ -109,7 +109,7 @@ Následující tabulka uvádí umístění připojení a poskytovatele služby p
 | **New York** | Equinix | neuvedeno | CenturyLink Cloud Connect, Coresite, Equinix, InterCloud, Megaport, Packet, Zayo |
 | **Newport(Wales)** | Next Generation Data | Spojené království – západ | British Telecom, Colt, Level 3 Communications, příští generace |
 | **Ósaka** | Equinix | Japonsko – západ | Equinix, Internet Initiative Japan Inc. – IIJ, NTT Communications, NTT SmartConnect, Softbank |
-| **Paříž** | Interxion | Francie – střed | Colt, Equinix, Intercloud, Interxion, Orange, Telia Carrier, Zayo |
+| **Paříž** | Interxion | Francie – střed | CenturyLink Cloud Connect, Colt, Equinix, Intercloud, Interxion, Orange, Telia Carrier, Zayo |
 | **Perth** | NextDC | neuvedeno | Megaport, NextDC |
 | **Québec** | 4Degrees | Kanada – východ | Bell Canada, Megaport |
 | **San Antonio** | CyrusOne | Středojižní USA | CenturyLink Cloud Connect, Megaport |

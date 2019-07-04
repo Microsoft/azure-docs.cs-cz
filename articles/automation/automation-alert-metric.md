@@ -3,17 +3,17 @@ title: Sledování runbooků Azure Automation se upozornění na metriku
 description: Tento článek vás provede s runbooky Azure Automation na základě metrik monitorování
 services: automation
 ms.service: automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 11/01/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 7932d057a348957d369ba325044055ac8dfe3428
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 142fb84624c2b0d3d92868aae5794792ed90b577
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62119890"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67478013"
 ---
 # <a name="monitoring-runbooks-with-metric-alerts"></a>Monitorování sady runbook pomocí upozornění na metriku
 

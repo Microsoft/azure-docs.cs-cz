@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/30/2019
+ms.date: 06/30/2019
 ms.author: raynew
-ms.openlocfilehash: a02a2be7fb3ed942b1359949e18ba7d3dee824ae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8d1471188999182623a57db50d3205a859c160a2
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399971"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491796"
 ---
 # <a name="fail-over-vms-and-physical-servers"></a>Převzetí služeb při selhání virtuálních počítačů a fyzických serverů 
 
@@ -70,9 +70,9 @@ Virtuální počítače/fyzické servery, chránit pomocí Site Recovery také p
 
 > [!NOTE]
 > Během převzetí služeb při selhání virtuálních počítačů Hyper-v z jedné místní lokality do jiné místní lokality, chcete-li se vrátit do primární místní lokality budete muset nejprve **zpětnou replikaci** virtuální počítač zpět do primární lokality a pak aktivační událost převzetí služeb při selhání. Pokud není k dispozici, pak před spuštěním na primárním virtuálním počítači **zpětnou replikaci** budete muset obnovit virtuální počítač ze zálohy.   
-> 
-> 
-> ## <a name="failover-job"></a>Úlohy převzetí služeb při selhání
+ 
+ 
+## <a name="failover-job"></a>Úlohy převzetí služeb při selhání
 
 ![Převzetí služeb při selhání](./media/site-recovery-failover/FailoverJob.png)
 
@@ -111,7 +111,7 @@ Můžete chtít automatizovat některé akce a převzetím služeb. Můžete pou
 ## <a name="post-failover-considerations"></a>Důležité informace o převzetí služeb při selhání příspěvku
 Účtování převzetí služeb při selhání může být vhodné vzít v úvahu tato doporučení:
 ### <a name="retaining-drive-letter-after-failover"></a>Zachování písmeno jednotky po převzetí služeb při selhání
-Pokud chcete zachovat písmeno jednotky na virtuální počítače po převzetí služeb při selhání, můžete nastavit **zásada SAN** pro virtuální počítač na **OnlineAll**. [Další informace](https://support.microsoft.com/help/3031135/how-to-preserve-the-drive-letter-for-protected-virtual-machines-that-are-failed-over-or-migrated-to-azure).
+Azure Site Recovery zpracovává uchování písmena jednotek. [Přečtěte si další](vmware-azure-exclude-disk.md#example-1-exclude-the-sql-server-tempdb-disk) na tom, jak se provádí, pokud budete chtít vyloučit některé disky.
 
 ## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>Příprava připojení k virtuálním počítačům Azure po převzetí služeb při selhání
 

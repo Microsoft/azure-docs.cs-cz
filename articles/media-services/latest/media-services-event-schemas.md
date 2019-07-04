@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: reference
 ms.date: 02/13/2019
 ms.author: juliako
-ms.openlocfilehash: f9fe689e6911c5e9497ee82132e8b70bd9aada7e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2d1e648a9ea33beb1347a4a635388ee04e46215b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60322229"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449759"
 ---
 # <a name="azure-event-grid-schemas-for-media-services-events"></a>Azure Event Grid schémata událostí služby Media Services
 
@@ -200,7 +200,7 @@ Datový objekt má následující vlastnosti:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| Výstupy | Pole | Načte výstupů úlohu.|
+| outputs | Array | Načte výstupů úlohu.|
 
 ### <a name="joboutputstatechange"></a>JobOutputStateChange
 
@@ -320,7 +320,7 @@ Datový objekt má následující vlastnosti:
 | ingestUrl | string | Ingestování adresy URL poskytnuté živé události. |  
 | encoderIp | string | IP adresa z kodéru. |
 | encoderPort | string | Port kodér, ve kterém je tento datový proud zapnout. |
-| Kód výsledku | string | Z důvodů, proč se požadavek na připojení odmítnut. V následující tabulce jsou uvedeny kódy výsledků. |
+| resultCode | string | Z důvodů, proč se požadavek na připojení odmítnut. V následující tabulce jsou uvedeny kódy výsledků. |
 
 Kódy výsledků jsou:
 
@@ -401,7 +401,7 @@ Datový objekt má následující vlastnosti:
 | ingestUrl | string | Ingestování adresy URL poskytnuté živé události. |  
 | encoderIp | string | IP adresa z kodéru. |
 | encoderPort | string | Port kodér, ve kterém je tento datový proud zapnout. |
-| Kód výsledku | string | Důvod pro kodér odpojení. Může to být řádné odpojit nebo z chyby. V následující tabulce jsou uvedeny kódy výsledků. |
+| resultCode | string | Důvod pro kodér odpojení. Může to být řádné odpojit nebo z chyby. V následující tabulce jsou uvedeny kódy výsledků. |
 
 Kódy výsledků chyby jsou:
 
@@ -459,7 +459,7 @@ Datový objekt má následující vlastnosti:
 | bitrate | integer | S přenosovou rychlostí dráhy. |
 | timestamp | string | Časové razítko datové dávky vyřazen. |
 | timescale | string | Časové razítko. |
-| Kód výsledku | string | Z důvodu rozevírací bloku dat data. **FragmentDrop_OverlapTimestamp** nebo **FragmentDrop_NonIncreasingTimestamp**. |
+| resultCode | string | Z důvodu rozevírací bloku dat data. **FragmentDrop_OverlapTimestamp** nebo **FragmentDrop_NonIncreasingTimestamp**. |
 
 ### <a name="liveeventincomingstreamreceived"></a>LiveEventIncomingStreamReceived
 

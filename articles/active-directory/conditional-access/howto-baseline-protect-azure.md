@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24b54a3645fe97903219841dd148c0942dfcda76
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 203b752f9da67ebf60e373fe7ce0893b4fd7fcb5
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112391"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67560964"
 ---
 # <a name="baseline-policy-require-mfa-for-service-management-preview"></a>Základní zásady: Vyžadovat vícefaktorové ověřování pro službu správy (preview)
 
@@ -31,8 +31,6 @@ Pomocí Azure Resource Manageru pro správu svých služeb je vysoce privilegova
 **Vyžadovat vícefaktorové ověřování pro správu služeb** je [základní zásady](concept-baseline-protection.md) , který bude vyžadovat vícefaktorové ověřování pro všechny uživatele, kteří používají Azure portal, prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure. Tyto zásady platí pro všechny uživatele přístup k Azure Resource Manageru, bez ohledu na to, pokud jsou správci.
 
 Jakmile se povolí tyto zásady v tenantovi, všichni uživatelé přihlásí prostředky správy Azure se samy službou Multi-Factor authentication. Pokud uživatel není zaregistrovaný pro MFA, uživatel bude muset zaregistrovat, chcete-li pokračovat pomocí aplikace Microsoft Authenticator.
-
-![Vyžadovat vícefaktorové ověřování pro Azure Resource Manageru](./media/howto-baseline-protect-azure/baseline-policy-require-mfa-for-service-management.png)
 
 Provádět interaktivní přihlášení pomocí [prostředí Azure Powershell](https://docs.microsoft.com/powershell/azure/authenticate-azureps), použijte [připojit AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) rutiny.
 
@@ -54,17 +52,6 @@ Pokud rozhraní příkazového řádku může spustit výchozí prohlížeč, ud
 
 Vzhledem k tomu, **vyžadovat vícefaktorové ověřování pro správu služeb** zásady platí pro všechny uživatele Azure Resource Manageru, třeba mít na paměti, které jsou potřeba provést zajistit hladký průběh nasazení. Mezi tyto aspekty patří identifikace uživatelů a zásad služby Azure AD, který nelze nebo by neměly provádět vícefaktorové ověřování, jakož i aplikacím a klientům ve své organizaci, které nepodporují moderní ověřování.
 
-### <a name="user-exclusions"></a>Vyloučení uživatele
-
-Tyto zásady na směrný plán poskytuje možnost vyloučit uživatele. Než povolíte zásady pro vašeho tenanta, doporučujeme, abyste kromě následující účty:
-
-* **Nouzový přístup** nebo **skleněné** účty, aby se zabránilo uzamčení účtu celého tenanta. V nepravděpodobném scénáři, které jsou všichni správci zamknutí mimo vašeho tenanta je možné přihlásit tenanta kroky zkuste obnovit přístup k účtu pro správu přístupu nouze.
-   * Další informace najdete v článku, [spravovat účty pro nouzový přístup ve službě Azure AD](../users-groups-roles/directory-emergency-access.md).
-* **Účty služeb** a **služby Principy**, jako je například účet Azure AD Connect Sync. Účty služeb jsou neinteraktivní účty, které nejsou vázané na konkrétního uživatele. Tyto jsou obvykle používány back endové služby a povolit programový přístup k aplikacím. Účty služby by měl vyloučen, protože nelze dokončit vícefaktorové ověřování, prostřednictvím kódu programu.
-   * Pokud má vaše organizace tyto účty používané v skripty a kód, zvažte nahrazení pomocí [spravovaných identit](../managed-identities-azure-resources/overview.md). Jako dočasné řešení můžete vyloučit tyto konkrétní účty ze základní zásady.
-* Uživatelé, kteří nemají nebo nebudete moci používat Smartphone.
-   * Tato zásada vyžaduje, aby uživatelé registrace pro vícefaktorové ověřování pomocí aplikace Microsoft Authenticator.
-
 ## <a name="enable-the-baseline-policy"></a>Povolit zásady směrný plán
 
 Zásady **směrný plán zásad: Vyžadovat vícefaktorové ověřování pro službu správy (preview)** vybavená předem nakonfigurovaným a se zobrazí v horní části, když přejdete do okna podmíněného přístupu na webu Azure portal.
@@ -75,7 +62,6 @@ Tuto zásadu povolit a chránit vaše správce:
 1. Přejděte do **Azure Active Directory** > **podmíněného přístupu**.
 1. V seznamu zásad, vyberte **směrný plán zásad: Vyžadovat vícefaktorové ověřování pro službu správy (preview)** .
 1. Nastavte **povolit zásady** k **použít zásady okamžitě**.
-1. Kliknutím na Přidat všechny uživatele vyloučení **uživatelé** > **vybrat vyloučené uživatele** a výběru uživatelů, které je třeba vyloučit. Klikněte na tlačítko **vyberte** pak **provádí**.
 1. Klikněte na tlačítko **Uložit**.
 
 ## <a name="next-steps"></a>Další postup

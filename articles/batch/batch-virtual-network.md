@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 04/10/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 2583e7e218e765e0d7745978582e19a5a4fe17ce
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ea048c6adbb4e00ae8543810f1dc571376038c62
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60550179"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67436250"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Vytvoření fondu služby Azure Batch ve virtuální síti
 
@@ -56,7 +56,7 @@ Budete muset požadavky ve vaší organizaci přesměrování (vynutit) internet
 
 Pokud chcete mít jistotu, že vaše výpočetní uzly fondu Azure Batch fungovat ve virtuální síti, která má vynucené tunelování povolena, je nutné přidat následující [trasy definované uživatelem](../virtual-network/virtual-networks-udr-overview.md) pro tuto podsíť:
 
-* Služba Batch potřebuje ke komunikaci s fondu výpočetních uzlů pro plánování úloh. Pokud chcete povolit tuto komunikaci, přidejte trasy definované uživatelem pro každou IP adresu, která používá službu Batch v oblasti, které se nachází váš účet Batch. Pokud chcete získat seznam IP adres služby Batch, kontaktujte podporu Azure.
+* Služba Batch potřebuje ke komunikaci s fondu výpočetních uzlů pro plánování úloh. Pokud chcete povolit tuto komunikaci, přidejte trasy definované uživatelem pro každou IP adresu, která používá službu Batch v oblasti, které se nachází váš účet Batch. Zjistěte, jak získat seznam IP adres služby Batch, najdete v článku [značky v místních služeb](../virtual-network/security-overview.md#service-tags-in-on-premises)
 
 * Zkontrolujte, že odchozí provoz do služby Azure Storage (konkrétně adresy URL ve formátu `<account>.table.core.windows.net`, `<account>.queue.core.windows.net`, a `<account>.blob.core.windows.net`) není blokovaný prostřednictvím vaší místní síti zařízení.
 

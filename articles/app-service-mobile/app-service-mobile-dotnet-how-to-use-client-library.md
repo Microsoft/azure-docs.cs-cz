@@ -3,7 +3,7 @@ title: Práce s knihovna spravovaných klientů aplikace App Service Mobile Apps
 description: Další informace o použití klientské knihovny .NET pro Azure App Service Mobile Apps s aplikací pro Windows a Xamarin.
 services: app-service\mobile
 documentationcenter: ''
-author: conceptdev
+author: elamalani
 manager: crdun
 editor: ''
 ms.assetid: 0280785c-e027-4e0d-aaf2-6f155e5a6197
@@ -12,20 +12,25 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/24/2018
-ms.author: crdun
-ms.openlocfilehash: 8f014f1cb40e1a629d1989f00805fc91015a3ae9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: af0a4af2bec29e68175d2e15203a02507f08bfeb
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62119299"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446362"
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>Jak používat spravovaného klienta pro Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
+> [!NOTE]
+> Visual Studio App Center investuje do nové a integrované služby, které jsou centrální při vývoji mobilních aplikací. Vývojáři mohou použít **sestavení**, **testovací** a **rozmístit** služby vytvořit kanál pro průběžnou integraci a doručování. Po nasazení aplikace se můžou vývojáři monitorovat stav a využití své aplikace pomocí **Analytics** a **diagnostiky** služeb a Zaujměte uživatele, kteří používají **Push** Služba. Vývojáři mohou využít i **Auth** k ověření uživatelů a **Data** službu zachovat, synchronizaci dat aplikací v cloudu. Podívejte se na [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-dotnet-how-to-use-client-library) ještě dnes.
+>
+
 ## <a name="overview"></a>Přehled
-Tento průvodce vám ukáže, jak provádět běžné scénáře pomocí spravované klientské knihovny pro Azure App Service Mobile Apps pro Windows a aplikace pro Xamarin. Pokud jste ještě na Mobile Apps, měli byste zvážit nejprve dokončení [Azure Mobile Apps quickstart] [ 1] kurzu. V této příručce se zaměříme na spravované sady SDK na straně klienta. Další informace o sadách SDK na straně serveru pro Mobile Apps, naleznete v dokumentaci k [.NET Server SDK] [ 2] nebo [Node.js Server SDK] [ 3].
+Tento průvodce vám ukáže, jak provádět běžné scénáře pomocí spravované klientské knihovny pro Azure App Service Mobile Apps pro Windows a aplikace pro Xamarin. Pokud jste ještě na Mobile Apps, měli byste zvážit nejprve dokončení [Azure Mobile Apps quickstart][1] kurzu. V této příručce se zaměříme na spravované sady SDK na straně klienta. Další informace o sadách SDK na straně serveru pro Mobile Apps, naleznete v dokumentaci k [.NET Server SDK][2] or the
+[Node.js Server SDK][3].
 
 ## <a name="reference-documentation"></a>Referenční dokumentace
 Referenční dokumentace pro klienta SDK je umístěná tady: [Referenční informace k klienta Azure Mobile Apps pro .NET][4].
@@ -60,9 +65,10 @@ public class TodoItem
 }
 ```
 
-[JsonPropertyAttribute] [ 6] se používá k definování *PropertyName* mapování mezi poli klienta a pole tabulky.
+[JsonPropertyAttribute][6] se používá k definování *PropertyName* mapování mezi poli klienta a pole tabulky.
 
-Informace o vytváření tabulek v back-endu Mobile Apps, najdete v článku [.NET Server SDK tématu] [ 7] nebo [Node.js Server SDK tématu][8]. Pokud jste vytvořili back-endu mobilní aplikace v tomto rychlém startu pomocí webu Azure portal, můžete také použít **jednoduché tabulky** nastavení [Azure Portal].
+Informace o vytváření tabulek v back-endu Mobile Apps, najdete v článku [.NET Server SDK tématu][7]
+or the [Node.js Server SDK topic][8]. Pokud jste vytvořili back-endu mobilní aplikace v tomto rychlém startu pomocí webu Azure portal, můžete také použít **jednoduché tabulky** nastavení [Azure Portal].
 
 ### <a name="how-to-install-the-managed-client-sdk-package"></a>Postup: Instalace balíčku sady SDK spravovaného klienta
 Použijte jednu z následujících metod instalace balíčku sady SDK spravovaného klienta Mobile Apps z [NuGet][9]:
@@ -80,10 +86,11 @@ using Microsoft.WindowsAzure.MobileServices;
 > Upozorňujeme, že všechny balíčky podporu odkazované ve vašem projektu Android musí mít stejnou verzi. Sada SDK má `Xamarin.Android.Support.CustomTabs` závislostí pro platformy Android, tak pokud váš projekt používá novější podporu balíčky je nutné nainstalovat tento balíček s požadovanou verzi přímo, aby nedocházelo ke konfliktům.
 
 ### <a name="symbolsource"></a>Jak: Práce s symboly ladění v sadě Visual Studio
-Symboly pro obor názvů Microsoft.Azure.Mobile jsou k dispozici na [SymbolSource][10].  Odkazovat [SymbolSource pokyny] [ 11] integrovat SymbolSource pomocí sady Visual Studio.
+Symboly pro obor názvů Microsoft.Azure.Mobile jsou k dispozici na [SymbolSource][10] .  Refer to the
+[SymbolSource instructions][11] integrovat SymbolSource pomocí sady Visual Studio.
 
 ## <a name="create-client"></a>Vytvoření klienta Mobile Apps
-Následující kód vytvoří [MobileServiceClient] [ 12] objekt, který se používá pro přístup k back-endu mobilní aplikace.
+Následující kód vytvoří [MobileServiceClient][12] objekt, který se používá pro přístup k back-endu mobilní aplikace.
 
 ```csharp
 var client = new MobileServiceClient("MOBILE_APP_URL");

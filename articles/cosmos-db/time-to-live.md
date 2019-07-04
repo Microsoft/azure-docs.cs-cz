@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 692e0ec575904ff0a70b8c73268d2df62e776bb6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0b32665b09eb02c337a12ac3cfc2b474fa82711a
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65978778"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447248"
 ---
 # <a name="time-to-live-ttl-in-azure-cosmos-db"></a>Hodnota Time to Live (TTL) ve službě Azure Cosmos DB 
 
@@ -45,6 +45,42 @@ Během několika sekund je nastavena hodnotu time to live a je interpretován ja
 * Pokud hodnota TTL kontejneru je nastavena na hodnotu -1, položky v tomto kontejneru, který má time to live nastavenou na n, platnost vyprší po n sekund a zbývající položky nevyprší. 
 
 Odstranění položek podle hodnoty TTL je zdarma. Se neúčtují žádné další poplatky (to znamená, že se spotřebuje žádné další RUs) při odstranění položky v důsledku vypršení hodnoty TTL.
+
+## <a name="examples"></a>Příklady
+
+Tato část ukazuje několik příkladů různých čas TTL hodnoty přiřazené ke kontejneru a položky:
+
+### <a name="example-1"></a>Příklad 1
+
+Interval TTL, ZÍSKÁ v kontejneru je nastavena na hodnotu null (DefaultTimeToLive = null)
+
+|Hodnota TTL na položce| Výsledek|
+|---|---|
+|Hodnota TTL = null|    Hodnota TTL je zakázaná. Položka nikdy nevyprší (výchozí).|
+|Hodnota TTL = -1   |Hodnota TTL je zakázaná. Položka nikdy nevyprší.|
+|Hodnota TTL = 2000 |Hodnota TTL je zakázaná. Položka nikdy nevyprší.|
+
+
+### <a name="example-2"></a>Příklad 2
+
+Hodnota TTL kontejneru je nastavena na hodnotu -1 (DefaultTimeToLive = -1)
+
+|Hodnota TTL na položce| Výsledek|
+|---|---|
+|Hodnota TTL = null |Hodnota TTL je povolená. Položka nikdy nevyprší (výchozí).|
+|Hodnota TTL = -1   |Hodnota TTL je povolená. Položka nikdy nevyprší.|
+|Hodnota TTL = 2000 |Hodnota TTL je povolená. Položka platnost vyprší po 2 000 sekund.|
+
+
+### <a name="example-3"></a>Příklad 3
+
+Hodnota TTL kontejneru je nastavena na hodnotu 1000 (DefaultTimeToLive = 1000)
+
+|Hodnota TTL na položce| Výsledek|
+|---|---|
+|Hodnota TTL = null|    Hodnota TTL je povolená. Položka vyprší za 1 000 sekund (výchozí).|
+|Hodnota TTL = -1   |Hodnota TTL je povolená. Položka nikdy nevyprší.|
+|Hodnota TTL = 2000 |Hodnota TTL je povolená. Položka platnost vyprší po 2 000 sekund.|
 
 ## <a name="next-steps"></a>Další postup
 

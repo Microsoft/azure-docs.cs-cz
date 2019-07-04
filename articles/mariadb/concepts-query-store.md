@@ -5,20 +5,20 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 06/12/2019
-ms.openlocfilehash: 9016fa159e868f649901928cdf2dca2f08725e77
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 06/27/2019
+ms.openlocfilehash: 883f780059e38c53dedda309dd059cc714539f80
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67079389"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67462094"
 ---
 # <a name="monitor-azure-database-for-mariadb-performance-with-query-store"></a>Monitorování – Azure Database pro MariaDB výkon s Query Store
 
 **Platí pro:**  Azure Database pro MariaDB 10.2
 
 > [!NOTE]
-> Query Store je ve verzi preview. Podpora pro Store dotaz na webu Azure Portal se nasazuje a ještě možná není k dispozici ve vaší oblasti.
+> Query Store je ve verzi preview.
 
 Funkce Query Store ve službě Azure Database pro Mariadb poskytuje způsob, jak sledovat výkon dotazu v čase. Store zjednodušuje tím, že vám pomáhá rychle problémů s výkonem dotazů najít dotazy nejdéle probíhající a nejvíce náročné. Query Store automaticky zaznamenává historii dotazů a statistické údaje a uchovávají je po dobu zkontrolovali. Rozděluje data podle časových oken, kde můžete zobrazit způsobů využití databází. Data pro všechny uživatele, databází a dotazů se ukládají v **mysql** schématu databáze ve službě Azure Database pro MariaDB instanci.
 
@@ -29,10 +29,6 @@ Funkce Query Store ve službě Azure Database pro Mariadb poskytuje způsob, jak
 - Zjišťování nižším dotazy
 - Určení, kolikrát dotaz byl proveden v rámci daného časového intervalu
 - Porovnání Průměrná doba provádění dotazu napříč zobrazíte velké rozdíly časových oken
-- Identifikuje nejdelšího spouštění dotazů v minulosti X hodin
-- Určení horních N dotazy, které čekají na prostředky
-- Pochopení povahy čekání dotazu
-- Principy trendy pro prostředek čeká a tam, kde existuje kolize prostředků
 
 ## <a name="enabling-query-store"></a>Povolení Query Store
 

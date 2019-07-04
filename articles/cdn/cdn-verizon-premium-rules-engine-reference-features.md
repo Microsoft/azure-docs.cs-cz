@@ -7,12 +7,12 @@ ms.service: cdn
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: magattus
-ms.openlocfilehash: 3dcce64d86574a3e898531b2e2587b81d04f098d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7e75a6ffe28aa74ea2fad30bbe2728317712d86b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080770"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443497"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-features"></a>Azure CDN od Verizonu prémiové funkce modul pravidel
 
@@ -24,7 +24,7 @@ Třetí část pravidlo je funkce. Funkce definuje typ akce, která se uplatňuj
 
 Tyto funkce jsou určeny k řízení přístupu k obsahu.
 
-Name | Účel
+Název | Účel
 -----|--------
 [Odepřít přístup (403)](#deny-access-403) | Určuje, zda všechny požadavky byly zamítnuty 403 Zakázáno odpovědí.
 [Ověření tokenu](#token-auth) | Určuje, zda je na žádost použito ověřování založené na tokenech.
@@ -66,7 +66,7 @@ Název | Účel
 
 Tato funkce je určena pro poskytnutí dalších informací v rámci pravidla.
 
-Name | Účel
+Název | Účel
 -----|--------
 [Komentář](#comment) | Umožňuje Poznámka k přidají v rámci pravidla.
 
@@ -140,7 +140,7 @@ If the desired site does not appear in the list, then you should edit its config
 
 Tyto funkce jsou určeny k řízení, jak síť CDN komunikuje s původním serveru.
 
-Name | Účel
+Název | Účel
 -----|--------
 [Maximální počet Keep-Alive požadavků](#maximum-keep-alive-requests) | Definuje maximální počet požadavků pro zachování připojení předtím, než je uzavřený.
 [Speciálními záhlavími proxy](#proxy-special-headers) | Definuje sadu hlaviček požadavků specifické pro CDN, které jsou předávány z místní nabídky k serveru původu.
@@ -149,7 +149,7 @@ Name | Účel
 
 Tyto funkce umožňují pokročilé funkce pro zkušené uživatele.
 
-Name | Účel
+Název | Účel
 -----|--------
 [Metody HTTP možné ukládat do mezipaměti](#cacheable-http-methods) | Určuje sadu další metody HTTP, které lze uložit do mezipaměti v síti.
 [Velikost textu požadavku možné ukládat do mezipaměti](#cacheable-request-body-size) | Definuje prahovou hodnotu pro určení, jestli odpověď na příspěvek můžete uložit do mezipaměti.
@@ -159,7 +159,7 @@ Name | Účel
 
 Tyto funkce umožňují požadavek na přesměrování nebo vzniklá jinou adresu URL.
 
-Name | Účel
+Název | Účel
 -----|--------
 [Následovat přesměrování](#follow-redirects) | Určuje, zda požadavky můžete přesměrovat na název hostitele definovaná v hlavičce umístění vrátil server původu zákazníka.
 [Adresa URL pro přesměrování](#url-redirect) | Přesměruje požadavky prostřednictvím hlavička umístění.
@@ -456,7 +456,7 @@ Z důvodu způsobem v mezipaměti, které jsou sledovány nastavení tato funkce
 - IP adresa klienta
 - Parametr souboru cookie
 - Soubor cookie parametr Regex
-- Země
+- Country
 - Zařízení
 - Microsoft Edge Cname
 - Odkaz domény
@@ -588,7 +588,7 @@ Z důvodu způsobem v mezipaměti, které jsou sledovány nastavení tato funkce
 - IP adresa klienta
 - Parametr souboru cookie
 - Soubor cookie parametr Regex
-- Země
+- Country
 - Zařízení
 - Edge Cname
 - Odkaz domény
@@ -715,7 +715,7 @@ Z důvodu způsobem v mezipaměti, které jsou sledovány nastavení tato funkce
 - IP adresa klienta
 - Parametr souboru cookie
 - Soubor cookie parametr Regex
-- Země
+- Country
 - Zařízení
 - Edge Cname
 - Odkaz domény
@@ -799,7 +799,7 @@ Z důvodu způsobem v mezipaměti, které jsou sledovány nastavení tato funkce
 - IP adresa klienta
 - Parametr souboru cookie
 - Soubor cookie parametr Regex
-- Země
+- Country
 - Zařízení
 - Edge Cname
 - Odkaz domény
@@ -867,7 +867,7 @@ Z důvodu způsobem v mezipaměti, které jsou sledovány nastavení tato funkce
 - IP adresa klienta
 - Parametr souboru cookie
 - Soubor cookie parametr Regex
-- Země
+- Country
 - Zařízení
 - Edge Cname
 - Odkaz domény
@@ -1128,7 +1128,7 @@ Tato funkce umožňuje zákazníkovi, adresy serverů původu a zjistěte, IP ad
 
 Ujistěte se, že zadaná hlavička název neodpovídá žádnému z následujících názvů:
 
-- Názvy záhlaví standardní požadavek. Seznam názvů standardní hlavičku nacházely v [dokumentu RFC 2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).
+- Názvy záhlaví standardní požadavek. Seznam názvů standardní hlavičku nacházely v [dokumentu RFC 2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).
 - Názvy vyhrazené záhlaví:
     - forwarded-for
     - host

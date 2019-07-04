@@ -8,12 +8,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: hrasheed
-ms.openlocfilehash: ee9b5b651f440bc7d179b1a06c7ddbd3f9137a0d
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 41313c7d484df5568fbf729b683a0e9df5325abc
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165902"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67433738"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>Použití prázdných hraničních uzlů v clusterech Apache Hadoop v HDInsight
 
@@ -108,7 +108,7 @@ V této části pomocí šablony Resource Manageru k vytvoření clusteru HDInsi
    * **Heslo přihlášení clusteru**: Zadejte heslo uživatele Hadoop HTTP.
    * **Uživatelské jméno SSH**: Zadejte uživatelské jméno SSH. Výchozí název je **sshuser**.
    * **SSH heslo**: Zadejte heslo uživatele SSH.
-   * **Instalace akce skriptu**: Ponechte výchozí hodnotu pro procházení tohoto kurzu.
+   * **Instalace akce skriptu**: Ponechte výchozí hodnotu pro prostřednictvím tohoto článku.
      
      Některé vlastnosti byly pevně zakódované v šabloně: Typ clusteru, počet pracovních uzlů clusteru, velikost uzlu Edge a název uzlu Edge.
 4. Zkontrolujte **vyjadřuji souhlas s podmínkami a ujednáními uvedenými nahoře**a potom klikněte na tlačítko **nákupní** k vytvoření clusteru pomocí hraničního uzlu.

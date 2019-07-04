@@ -2,96 +2,57 @@
 title: Reakce na události úložiště objektů Blob v Azure | Dokumentace Microsoftu
 description: Pomocí služby Azure Event Grid se můžete přihlásit k odběru událostí služby Blob Storage.
 services: storage,event-grid
-author: normesta
-ms.author: normesta
-ms.reviewer: cbrooks
+author: cbrooksmsft
+ms.author: cbrooks
 ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
 ms.subservice: blobs
-ms.openlocfilehash: 146b33c1a52838279f000a7f793902e2f35dbfaa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c0655d02fd5d0d64c22db286236b2a26f9e70619
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65826514"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444684"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Reakce na události služby Blob storage
 
-Události služby Azure Storage umožňují aplikacím reagovat na vytváření a odstraňování objektů BLOB pomocí moderní architektury bez serveru. Dělá to bez nutnosti složité kódu nebo nákladné a neefektivní cyklického dotazování služby.  Místo toho události se nasdílejí [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) pro předplatitele, jako [Azure Functions](https://azure.microsoft.com/services/functions/), [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/), nebo dokonce vlastní naslouchací proces protokolu http vlastní a pouze Plaťte za to co používáte.
+Události služby Azure Storage umožňují aplikacím reagovat na události, jako je například vytváření a odstraňování objektů BLOB s využitím moderní architektury bez serveru. Dělá to bez nutnosti složité kódu nebo nákladné a neefektivní cyklického dotazování služby.
 
-Události služby BLOB storage se spolehlivě odesílají službě mřížky událost, která nabízí spolehlivé doručování aplikací prostřednictvím zásad opakování bohaté a doručování onta nedoručených zpráv. Další informace najdete v tématu [doručování zpráv služby Event Grid a zkuste to znovu](https://docs.microsoft.com/azure/event-grid/delivery-and-retry).
+Místo toho události se nasdílejí [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) pro předplatitele, třeba Azure Functions, Azure Logic Apps, nebo dokonce vlastní naslouchací proces protokolu http a Plaťte jenom za to můžete použít.
 
-Běžné scénáře události úložiště objektů Blob obsahovat obrázek nebo video zpracování, indexování nebo jakýkoli pracovní postup souboru objektově orientovaný.  Nahrávání souborů asynchronní se skvěle hodí k události.  Pokud jsou málo časté změny, ale vaše situace vyžaduje okamžitou odezvu, může být zvláště efektivní architektury založené na události.
+Události služby BLOB storage se spolehlivě odesílají do služby Event Grid, která nabízí spolehlivé doručování aplikací prostřednictvím zásad opakování bohaté a doručování onta nedoručených zpráv.
 
-Podívejte se na [událostí služby směrování Blob storage do vlastního webového koncového bodu – rozhraní příkazového řádku](storage-blob-event-quickstart.md) nebo [událostí služby směrování Blob storage do vlastního webového koncového bodu - PowerShell](storage-blob-event-quickstart-powershell.md) rychlý příklad. 
+Běžné scénáře události úložiště objektů Blob obsahovat obrázek nebo video zpracování, indexování nebo jakýkoli pracovní postup souboru objektově orientovaný. Nahrávání souborů asynchronní se skvěle hodí k události. Pokud jsou málo časté změny, ale vaše situace vyžaduje okamžitou odezvu, může být zvláště efektivní architektury založené na události.
+
+Pokud chcete to teď vyzkoušejte, přečtěte si téma některého z těchto článků rychlý start:
+
+|Pokud chcete tento nástroj použijte:    |Najdete v tomto článku: |
+|--|-|
+|Azure Portal    |[Rychlé zprovoznění: Směrování událostí služby Blob storage do webového koncového bodu pomocí webu Azure portal](https://docs.microsoft.com/azure/event-grid/blob-event-quickstart-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Azure CLI    |[Rychlé zprovoznění: Směrování událostí služby storage do webového koncového bodu pomocí Powershellu](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-quickstart-powershell?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|PowerShell    |[Rychlé zprovoznění: Směrování událostí služby úložiště na webový koncový bod pomocí rozhraní příkazového řádku Azure](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-quickstart?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+
+## <a name="the-event-model"></a>Model událostí
+
+Pomocí služby Event Grid [odběry událostí](../../event-grid/concepts.md#event-subscriptions) pro směrování zpráv událostí pro předplatitele. Tento obrázek ukazuje vztah mezi zdroji událostí, odběry událostí a obslužných rutin událostí.
 
 ![Event Grid modelu](./media/storage-blob-event-overview/event-grid-functional-model.png)
 
-## <a name="blob-storage-accounts"></a>Účty úložiště Blob
-Události služby Blob Storage jsou dostupné v účtech úložiště pro obecné účely verze 2 a v účtech Blob Storage. **Pro obecné účely v2** účty úložiště podporují všechny funkce všech služeb úložiště, včetně objektů BLOB, soubory, fronty a tabulky. **Účet úložiště objektů blob** je specializovaný účet úložiště pro ukládání nestrukturovaných dat v podobě objektů blob do služby Azure Storage. Účty úložiště objektů blob jsou podobné účtům úložiště pro obecné účely a mají stejně vysokou odolnost, dostupnost, škálovatelnost a výkonnost, a navíc mají 100% konzistentnost rozhraní API pro objekty blob bloku a doplňovací objekty blob. Další informace najdete v tématu [Přehled účtu Azure Storage](../common/storage-account-overview.md).
+Nejprve odběru koncový bod na událost. Potom když se aktivuje událost, služby Event Grid bude odesílat data o této události do koncového bodu.
 
-## <a name="available-blob-storage-events"></a>K dispozici události služby Blob storage
-Pomocí služby Event grid [odběry událostí](../../event-grid/concepts.md#event-subscriptions) pro směrování zpráv událostí pro předplatitele.  Odběry událostí pro úložiště objektů BLOB může obsahovat dva typy událostí:  
+Zobrazit [schématu událostí úložiště objektů Blob](../../event-grid/event-schema-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) článku znalostní báze:
 
-> |Název události|Popis|
-> |----------|-----------|
-> |`Microsoft.Storage.BlobCreated`|Je aktivována při vytvoření nebo nahradit prostřednictvím objektu blob `PutBlob`, `PutBlockList`, nebo `CopyBlob` operace|
-> |`Microsoft.Storage.BlobDeleted`|Je aktivována při odstranění objektu blob prostřednictvím `DeleteBlob` operace|
-
-## <a name="event-schema"></a>Schéma událostí
-Události služby BLOB storage obsahovat všechny informace, které je potřeba reagovat na změny ve vašich datech.  Události úložiště objektů Blob můžete identifikovat, protože vlastnost Typ události začíná řetězcem "Microsoft.Storage". Další informace o použití vlastností událostí služby Event Grid je popsána v [schéma událostí služby Event Grid](../../event-grid/event-schema.md).  
-
-> |Vlastnost|Typ|Popis|
-> |-------------------|------------------------|-----------------------------------------------------------------------|
-> |topic|string|Úplné id Azure Resource Manageru z účtu úložiště, který vysílá události.|
-> |subject|string|Prostředků relativní cesta k objektu, který je předmětem události ve formátu stejné rozšířené Azure Resource Manageru, který jsme použili pro popis účtů úložiště, služby a kontejnerů pro Azure RBAC.  Tento formát obsahuje název objektu blob zachování případ.|
-> |eventTime|string|Datum a čas, byla událost vygenerována ve formátu ISO 8601|
-> |eventType|string|"Microsoft.Storage.BlobCreated" nebo "Microsoft.Storage.BlobDeleted"|
-> |ID|string|Jedinečný identifikátor, pokud se tato událost|
-> |dataVersion|string|Verze schématu datového objektu|
-> |metadataVersion|string|Verze schématu vlastnosti nejvyšší úrovně.|
-> |data|objekt|Kolekce dat událostí specifické pro úložiště objektů blob|
-> |data.contentType|string|Typ obsahu objektu blob, protože by být vrácená v hlavičce Content-Type z objektu blob|
-> |data.contentLength|číslo|Velikost objektu blob jako celé číslo představující počet bajtů, protože by být vrácená v hlavičce Content-Length z objektu blob.  Odeslané s BlobCreated událostí, ale ne s BlobDeleted.|
-> |data.url|string|Adresa url objektu, který je předmětem události|
-> |data.eTag|string|Značka etag objektu, když se tato událost aktivuje.  Pro událost BlobDeleted není k dispozici.|
-> |data.api|string|Název operace rozhraní api, který aktivuje tuto událost. Pro události BlobCreated tato hodnota je "PutBlob", "PutBlockList" nebo "CopyBlob". Pro události BlobDeleted tato hodnota je "DeleteBlob". Tyto hodnoty jsou stejné názvy rozhraní api, které se nacházejí v diagnostické protokoly služby Azure Storage. Zobrazit [protokoluje operace a stavové zprávy](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages).|
-> |data.sequencer|string|Hodnota typu neprůhledný řetězec představující logickou posloupnost událostí pro jakýkoli název konkrétního objektu blob.  Uživatele můžete použít standardní porovnání řetězců k pochopení relativního pořadí dvou událostí na stejný název objektu blob.|
-> |data.requestId|string|Id generovaných službou požadavku pro operaci úložiště rozhraní API. Můžete použít ke korelaci do služby Azure Storage diagnostické protokoly pomocí pole "hlavička požadavku id" v protokolech a vrátí se v inicializaci volání rozhraní API v hlavičce "x-ms-request-id". Zobrazit [formát protokolu](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format).|
-> |data.clientRequestId|string|Id žádosti klienta – Pokud pro ukládání operace rozhraní API. Je možné korelovat diagnostické protokoly služby Azure Storage pomocí pole "client-request-id" v protokolech a lze zadat pomocí "x-ms klienta request-id" záhlaví žádosti klientů. Zobrazit [formát protokolu](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format). |
-> |data.storageDiagnostics|objekt|Diagnostická data v některých součástí služby Azure Storage. Pokud je k dispozici, by měl být ignorován příjemci událostí.|
-|data.blobType|string|Typ objektu blob. Platné hodnoty jsou "BlockBlob" nebo "PageBlob".| 
-
-Tady je příklad BlobCreated události:
-```json
-[{
-  "topic": "/subscriptions/319a9601-1ec0-0000-aebc-8fe82724c81e/resourceGroups/testrg/providers/Microsoft.Storage/storageAccounts/myaccount",
-  "subject": "/blobServices/default/containers/testcontainer/blobs/file1.txt",
-  "eventType": "Microsoft.Storage.BlobCreated",
-  "eventTime": "2017-08-16T01:57:26.005121Z",
-  "id": "602a88ef-0001-00e6-1233-1646070610ea",
-  "data": {
-    "api": "PutBlockList",
-    "clientRequestId": "799304a4-bbc5-45b6-9849-ec2c66be800a",
-    "requestId": "602a88ef-0001-00e6-1233-164607000000",
-    "eTag": "0x8D4E44A24ABE7F1",
-    "contentType": "text/plain",
-    "contentLength": 447,
-    "blobType": "BlockBlob",
-    "url": "https://myaccount.blob.core.windows.net/testcontainer/file1.txt",
-    "sequencer": "00000000000000EB000000000000C65A",
-  },
-  "dataVersion": "",
-  "metadataVersion": "1"
-}]
-
-```
-
-Další informace najdete v tématu [schématu událostí úložiště objektů Blob](../../event-grid/event-schema-blob-storage.md).
+> [!div class="checklist"]
+> * Úplný seznam událostí služby Blob storage a jak se aktivuje každá událost.
+> * Příklad dat služby Event Grid bude posílat pro každou z těchto událostí.
+> * Účel každé dvojici klíče a hodnoty, které se zobrazí v datech.
 
 ## <a name="filtering-events"></a>Filtrování událostí
-Odběry událostí objektu BLOB je možné filtrovat podle typu události a tak, že název kontejneru a název objektu blob objektu, který byl vytvořen nebo odstranit.  Filtry lze použít u odběrů událostí buď během [vytváření](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest) odběru události nebo [později](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest). Předmět filtry ve službě Event Grid práci na základě "začíná řetězcem" a "končí řetězcem" shody, takže události s odpovídající předmětem doručovaly do odběratele. 
+
+Odběry událostí objektu BLOB je možné filtrovat podle typu události a tak, že název kontejneru a název objektu blob objektu, který byl vytvořen nebo odstranit.  Filtry lze použít u odběrů událostí buď během [vytváření](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest) odběru události nebo [později](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest). Předmět filtry ve službě Event Grid práci na základě "začíná řetězcem" a "končí řetězcem" shody, takže události s odpovídající předmětem doručovaly do odběratele.
+
+Další informace o tom, jak používat filtry, naleznete v tématu [pro Event Grid umožňuje filtrovat události](https://docs.microsoft.com/azure/event-grid/how-to-filter-events).
 
 Předmět události služby Blob storage používá formát:
 
@@ -122,6 +83,7 @@ Vyhledání události z objektů BLOB v kontejneru pro konkrétní sdílení př
 Vyhledání události z objektů BLOB v kontejneru pro konkrétní příponu objektů blob pro sdílení obsahu vytvoří, `subjectEndsWith` filtr jako ".log" nebo ".jpg". Další informace najdete v tématu [koncepty Event Grid](../../event-grid/concepts.md#event-subscriptions).
 
 ## <a name="practices-for-consuming-events"></a>Postupy pro spotřebovávajících událostí
+
 Aplikace, které zpracovávají události služby Blob storage postupujte podle několik doporučených postupů:
 > [!div class="checklist"]
 > * Směrování událostí na stejný ovladač událostí dá nakonfigurovat několik předplatných, je důležité se předpokládá, že události pocházejí z určitého zdroje, ale ke kontrole tématu zprávy, která se ujistěte, že pocházejí z účtu úložiště, které jste očekávali.
@@ -130,6 +92,7 @@ Aplikace, které zpracovávají události služby Blob storage postupujte podle 
 > * Použijte pole blobType pochopit, jaký typ operace jsou povolené pro objekt blob a která Klientská knihovna typů by měl používat pro přístup k objektu blob. Platné hodnoty jsou buď `BlockBlob` nebo `PageBlob`. 
 > * Použijte pole Adresa url se `CloudBlockBlob` a `CloudAppendBlob` konstruktory pro přístup k objektu blob.
 > * Pole, která nevíte, ignorujte. Tento postup vám pomůže pokračovat je odolné k novým funkcím, které mohou být přidány v budoucnu.
+> * Pokud chcete zajistit, aby **Microsoft.Storage.BlobCreated** událost se aktivuje, jenom když je objekt Blob bloku zcela potvrzeny, filtrovat události pro `CopyBlob`, `PutBlob`, `PutBlockList` nebo `FlushWithClose` REST Volání rozhraní API. Tato aktivační událost volání rozhraní API **Microsoft.Storage.BlobCreated** událostí až po data jsou zcela potvrzeny do objektu Blob bloku. Zjistěte, jak vytvořit filtr, najdete v článku [pro Event Grid umožňuje filtrovat události](https://docs.microsoft.com/azure/event-grid/how-to-filter-events).
 
 
 ## <a name="next-steps"></a>Další postup

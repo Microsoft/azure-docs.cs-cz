@@ -10,36 +10,44 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 04/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: e0181eea2895dbc2b3db3367c850140e3fad21d4
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 2196e375db582202997b838d05c902db95b3a3ad
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67331726"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67461473"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Fungování služby Azure Machine Learning: Architektura a koncepty
 
 Další informace o architektuře, koncepty a pracovních postupů pro službu Azure Machine Learning. Hlavní součástí služby a obecný pracovní postup pro používání služby jsou uvedeny v následujícím diagramu:
 
-[![Architektura služby Azure Machine Learning a pracovní postup](./media/concept-azure-machine-learning-architecture/workflow.png)](./media/concept-azure-machine-learning-architecture/workflow.png#lightbox)
+![Architektura služby Azure Machine Learning a pracovní postup](./media/concept-azure-machine-learning-architecture/workflow.png)
 
 ## <a name="workflow"></a>Pracovní postup
 
-Informace o pracovním postupu počítače následující obecně toto pořadí:
+Strojové učení pracovního postupu modelu obvykle následuje toto pořadí:
 
-1. Vývoj strojového učení trénovací skripty v **Python** nebo vizuální rozhraní.
-1. Vytvoření a konfigurace **cílové výpočetní prostředí**.
-1. **Odeslat skripty** do cílového výpočetního nakonfigurované prostředí pro spuštění v daném prostředí. Při školení, může číst nebo zapisovat do skriptů **datastore**. A záznamy o spuštění se uloží jako **spustí** v **pracovní prostor** seskupené pod **experimenty**.
-1. **Dotazování experiment** pro metrikách zaznamenaných do protokolu běhů aktuálního i staršího. Pokud metriky neindikují požadovaného výsledku, smyčka zpátky ke kroku 1 a iterovat své skripty.
-1. Po uspokojivé spustit je najít, zaregistrujte model trvalého v **modelu registru**.
-1. Vývoj hodnoticí skript, který používá model a **model nasadit** jako **webovou službu** v Azure nebo do **zařízení IoT Edge**.
+1. **Trénování**
+    + Vývoj strojového učení trénovací skripty v **Python** nebo vizuální rozhraní.
+    + Vytvoření a konfigurace **cílové výpočetní prostředí**.
+    + **Odeslat skripty** do cílového výpočetního nakonfigurované prostředí pro spuštění v daném prostředí. Při školení, může číst nebo zapisovat do skriptů **datastore**. A záznamy o spuštění se uloží jako **spustí** v **pracovní prostor** seskupené pod **experimenty**.
 
-Provedením těchto kroků s žádným z následujících akcí:
-+ [Azure Machine Learning sady SDK pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
-+ [Azure Machine Learning CLI](https://docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli)
-+ [Rozšíření Azure Machine Learning VS Code](how-to-vscode-tools.md)
-+  [Vizuální rozhraní pro službu Azure Machine Learning (preview)](ui-concept-visual-interface.md)
+1. **Balíček** – po uspokojivé spustit je najít, zaregistrujte model trvalého v **modelu registru**.
 
+1. **Ověření** - **dotazování experiment** pro metrikách zaznamenaných do protokolu běhů aktuálního i staršího. Pokud metriky neindikují požadovaného výsledku, smyčka zpátky ke kroku 1 a iterovat své skripty.
+
+1. **Nasadit** – vývoj hodnoticí skript, který používá model a **model nasadit** jako **webové služby** v Azure nebo do **zařízení IoT Edge**.
+
+1. **Monitorování** – sledování **data odchylek** mezi trénovací datové sady a odvozování data nasazeného modelu. Pokud je to nezbytné, smyčka zpátky ke kroku 1 programovém přeučení modelů s novými daty školení.
+
+## <a name="tools-for-azure-machine-learning"></a>Nástroje pro Azure Machine Learning 
+
+Pomocí těchto nástrojů pro Azure Machine Learning:
+
++  Interakce se službou v jakémkoli prostředí Python s [Azure Machine Learning SDK pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
++ Automatizace strojového učení aktivity se [příkazového řádku Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli).
++ Psaní kódu ve Visual Studio Code s [rozšíření Azure Machine Learning VS Code](how-to-vscode-tools.md) 
++ Použití [vizuální rozhraní (preview) pro službu Azure Machine Learning](ui-concept-visual-interface.md) k provedení kroků pracovního postupu bez psaní kódu.
 
 ## <a name="glossary-of-concepts"></a>Slovník pojmů
 

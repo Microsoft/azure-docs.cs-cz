@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/13/2017
 ms.author: vidarmsft
-ms.openlocfilehash: 11ff7066019654ce2771bce242f3431d10da44ae
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8c82170cf9cff1870739bb13db9ac0e348a46c07
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66150513"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443067"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>Automatizované řešení zotavení po havárii pomocí Azure Site Recovery pro sdílené složky hostované na StorSimple
 
@@ -171,16 +171,16 @@ V Azure Site Recovery k automatizaci procesu převzetí služeb při selhání s
 1. V účtu automation, klikněte na tlačítko **proměnné** &gt; **přidat proměnnou** a přidejte následující proměnné. Můžete se k šifrování tyto prostředky. Tyto proměnné jsou konkrétní plán obnovení. Pokud v plánu služby recovery, které vytvoříte v dalším kroku název je testovací plány, proměnných by měl být StorSimRegKey testovací plány, testovací plán – AzureSubscriptionName a tak dále.
 
    - **BaseUrl**: Adresa url správce prostředků cloudu Azure. Získáte rutinou **Get AzEnvironment | Název Select-Object, ResourceManagerUrl** rutiny.
-   - *RecoveryPlanName* **-ResourceGroupName**: Skupina Resource Manageru, který se má prostředek StorSimple.
-   - *RecoveryPlanName* **-ManagerName**: StorSimple prostředek, který má zařízení StorSimple.
-   - \* RecoveryPlanName * **- DeviceName**: Zařízení StorSimple, který má být převzetí služeb při selhání.
-   - *RecoveryPlanName* **-DeviceIpAddress**: IP adresa zařízení (lze najít v **zařízení** kartu v části Správce zařízení StorSimple &gt; **nastavení** &gt; **sítě** &gt; **Nastavení DNS** skupiny).
-   - *RecoveryPlanName* **-VolumeContainers**: Čárkou oddělený řetězec kontejnerů svazků, které jsou k dispozici na na zařízení, musí být; převzetí služeb při selhání Příklad: volcon1 volcon2, volcon3.
-   - \* RecoveryPlanName * **- TargetDeviceName**: Řešení StorSimple Cloud Appliance ve kterém mají být převzetí služeb při selhání kontejnerů.
-   - *RecoveryPlanName* **-TargetDeviceIpAddress**: IP adresa cílového zařízení (lze najít v **virtuálního počítače** části &gt; **nastavení** skupiny &gt; **sítě** kartu).
-   - *RecoveryPlanName* **-StorageAccountName**: Název účtu úložiště, ve kterém se uloží skriptu (který se má spouštět se přes virtuální počítač). To může být libovolný účet úložiště, který má nějaké místo k uložení skriptu dočasně.
-   - *RecoveryPlanName* **-StorageAccountKey**: Přístupový klíč pro výše uvedené účtu úložiště.
-   - \* RecoveryPlanName * **- VMGUIDS**: Při ochraně virtuálního počítače, Azure Site Recovery přiřadí každému virtuálnímu počítači jedinečné ID, které poskytuje podrobné informace o se selhání pro virtuální počítač. Chcete-li získat VMGUID, vyberte **služby Recovery Services** kartě a klikněte na tlačítko **chráněné položky** &gt; **skupin ochrany** &gt;  **Počítače** &gt; **vlastnosti**. Pokud máte několik virtuálních počítačů, přidejte identifikátory GUID jako řetězec oddělených čárkou.
+   - _RecoveryPlanName_ **-ResourceGroupName**: Skupina Resource Manageru, který se má prostředek StorSimple.
+   - _RecoveryPlanName_ **-ManagerName**: StorSimple prostředek, který má zařízení StorSimple.
+   - _RecoveryPlanName_ **-DeviceName**: Zařízení StorSimple, který má být převzetí služeb při selhání.
+   - _RecoveryPlanName_ **-DeviceIpAddress**: IP adresa zařízení (lze najít v **zařízení** kartu v části Správce zařízení StorSimple &gt; **nastavení** &gt; **sítě** &gt; **Nastavení DNS** skupiny).
+   - _RecoveryPlanName_ **-VolumeContainers**: Čárkou oddělený řetězec kontejnerů svazků, které jsou k dispozici na na zařízení, musí být; převzetí služeb při selhání Příklad: volcon1 volcon2, volcon3.
+   - _RecoveryPlanName_ **-TargetDeviceName**: Řešení StorSimple Cloud Appliance ve kterém mají být převzetí služeb při selhání kontejnerů.
+   - _RecoveryPlanName_ **-TargetDeviceIpAddress**: IP adresa cílového zařízení (lze najít v **virtuálního počítače** části &gt; **nastavení** skupiny &gt; **sítě** kartu).
+   - _RecoveryPlanName_ **-StorageAccountName**: Název účtu úložiště, ve kterém se uloží skriptu (který se má spouštět se přes virtuální počítač). To může být libovolný účet úložiště, který má nějaké místo k uložení skriptu dočasně.
+   - _RecoveryPlanName_ **-StorageAccountKey**: Přístupový klíč pro výše uvedené účtu úložiště.
+   - _RecoveryPlanName_ **-VMGUIDS**: Při ochraně virtuálního počítače, Azure Site Recovery přiřadí každému virtuálnímu počítači jedinečné ID, které poskytuje podrobné informace o se selhání pro virtuální počítač. Chcete-li získat VMGUID, vyberte **služby Recovery Services** kartě a klikněte na tlačítko **chráněné položky** &gt; **skupin ochrany** &gt;  **Počítače** &gt; **vlastnosti**. Pokud máte několik virtuálních počítačů, přidejte identifikátory GUID jako řetězec oddělených čárkou.
 
      Například, pokud se název plánu obnovení fileServerpredayRP pak vaše **proměnné**, **připojení** a **certifikáty** karta by měla vypadat následovně, po přidání všechny prostředky.
 

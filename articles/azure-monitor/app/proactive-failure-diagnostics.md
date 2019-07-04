@@ -13,17 +13,17 @@ ms.topic: conceptual
 ms.date: 12/18/2018
 ms.reviewer: yossiy
 ms.author: mbullwin
-ms.openlocfilehash: cfa00504cd2a05985fde2af3357418eac8baceeb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 46944603fdf45a2a7a14641086959bf61b3f773e
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61299059"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67465882"
 ---
 # <a name="smart-detection---failure-anomalies"></a>Inteligentní zjišťování – anomálie selhání
 [Application Insights](../../azure-monitor/app/app-insights-overview.md) automaticky upozorní téměř v reálném čase, zda prostředích vašich webových aplikací neobvykle zvýší počet neúspěšných žádostí. Zjistí neobvyklý nárůst míry požadavků protokolu HTTP nebo volání závislostí, které se ohlásí jako neúspěšný. Pro požadavků neúspěšných požadavků jsou obvykle s kódy odpovědí 400 nebo vyšší. Umožňují posuzovat a diagnostikovat potíže, analýzu povaze chyby a související telemetrii najdete v oznámení. Existují také odkazy na portálu služby Application Insights pro další diagnostiku. Funkce potřebuje žádné instalace ani konfigurace, protože používá algoritmy strojového učení k předpovědi normální míra neúspěchů.
 
-Tato funkce funguje pro jazyk Java a ASP.NET webových aplikací hostovaných v cloudu nebo na vašich vlastních serverech. Funguje i pro každou aplikaci, která generuje telemetrická data požadavku nebo závislost – například pokud máte role pracovního procesu, která volá [TrackRequest()](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) nebo [TrackDependency()](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency).
+Tato funkce funguje pro všechny webové aplikace, hostované v cloudu nebo na vašich vlastních serverech, který generuje požadavek nebo závislost telemetrie – například pokud máte role pracovního procesu, která volá [TrackRequest()](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) nebo [TrackDependency()](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency).
 
 Po nastavení [Application Insights pro váš projekt](../../azure-monitor/app/app-insights-overview.md), a pokud vaše aplikace generuje určité minimální množství telemetrických dat, inteligentní detekci anomálií selhání trvá další normálního chování aplikace, než bude 24 hodin Přepnout a odesílání oznámení.
 
@@ -43,6 +43,26 @@ Všimněte si, že musíte:
 * Charakteristické model přidružený k selhání. V tomto příkladu je konkrétní odezvy kód, název požadavku (operace) a verze aplikace. Která okamžitě zjistíte, kde začít hledat ve vašem kódu. Další možnosti může být konkrétní operační systém prohlížeč nebo klienta.
 * Výjimky, trasování protokolu a chyb závislostí (databází nebo dalších externích součástí), který se přidruží charakterizované selhání.
 * Odkazy přímo na relevantní hledání na telemetrická data ve službě Application Insights.
+
+## <a name="failure-anomalies-v2"></a>V2 anomálie selhání
+Teď je k dispozici nová verze pravidlo upozornění na anomálie selhání. Tato nová verze běží na nové výstrahy platformy Azure a přináší širokou škálu vylepšení přes stávající verzi.
+
+### <a name="whats-new-in-this-version"></a>Co je nového v této verzi?
+- Rychlejší detekce problémů
+- Širší nabídku sad akce – se vytvoří pravidlo upozornění s přidruženou [skupiny akcí](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups) s názvem "Application Insights inteligentního zjišťování", který obsahuje akce e-mailu a webhook a je možné rozšířit na aktivaci dalších akcí při upozornění je aktivována.
+- Více zaměřuje oznámení - e-mailová oznámení odeslané z tohoto pravidla upozornění jsou teď ve výchozím nastavení odesílají pro uživatele, které jsou přidruženy k rolím předplatného monitorování Čtenář a Přispěvatel monitorování. Další informace o tomto je k dispozici [tady](https://docs.microsoft.com/azure/azure-monitor/app/proactive-email-notification).
+- Jednodušší konfigurace pomocí šablony ARM – viz příklad [tady](https://docs.microsoft.com/azure/azure-monitor/app/proactive-arm-config).
+- Postupujte podle běžných podpora výstrah schématu – oznámení odesílaných ze toto pravidlo upozornění [společné schéma produktu výstrah](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema).
+- Sjednocené e-mailová šablona - e-mailových oznámení z tohoto pravidla upozornění mít jednotný vzhled & pocit, že se ostatní typy výstrah. Díky této změně už je k dispozici možnost dostávat upozornění na anomálie selhání s podrobné diagnostické informace
+
+### <a name="how-do-i-get-the-new-version"></a>Jak získat novou verzi?
+- Nově vytvořené prostředky Application Insights se nyní opatřen novou verzi pravidlo upozornění na anomálie selhání.
+- Prostředky s klasickou verzi anomálie selhání výstrahy, pravidla se zobrazí nová verze jednou předplatným hostování existující Application Insights je migrovat na novou platformu upozornění jako součást [classic výstrahy procesu vyřazení ](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement).
+
+> [!NOTE]
+> Nová verze, pravidlo upozornění na anomálie selhání zůstává zdarma. Kromě toho emailová a webhooková akce aktivuje přiřazeným "Application Insights inteligentní zjišťování" skupina akcí je také bezplatná.
+> 
+> 
 
 ## <a name="benefits-of-smart-detection"></a>Výhody inteligentního zjišťování
 Běžné [upozornění na metriku](../../azure-monitor/app/alerts.md) říct, pravděpodobně došlo k potížím. Ale inteligentního zjišťování spustí diagnostické práce za vás provádí spoustu analýzy, které by jinak museli dělat sami. Získáte výsledky elegantně zabaleny, pomáhá zajistit, abyste se rychle dostanete se k problému.

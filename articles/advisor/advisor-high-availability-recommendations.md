@@ -8,12 +8,12 @@ ms.author: kasparks
 ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: bdba3f135f852312af1692f77643095d865f1d06
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d78d8a689b860162a742e85c155205f072a3667c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66254673"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446777"
 ---
 # <a name="improve-availability-of-your-application-with-azure-advisor"></a>Zlepšení dostupnosti vaší aplikace s využitím Azure Advisoru
 
@@ -93,6 +93,9 @@ Azure Advisor bude identifikovat účtům Azure Cosmos DB, které používají s
 ## <a name="upgrade-your-azure-cosmos-db-spark-connector-to-the-latest-version-from-maven"></a>Upgrade konektoru Azure Cosmos DB Spark na nejnovější verzi z Mavenu
 
 Azure Advisor bude identifikovat účtům Azure Cosmos DB, které používají staré verze konektoru Cosmos DB Spark a doporučujeme upgradovat na nejnovější verzi z Mavenu pro nejnovější opravy, vylepšení výkonu a novými funkcemi. [Další informace o konektoru Cosmos DB Spark](https://aka.ms/cosmosdb/spark-connector)
+
+## <a name="enable-virtual-machine-replication"></a>Povolení replikace virtuálních počítačů
+Virtuální počítače, které nemají povolenou do jiné oblasti replikaci nejsou odolné vůči regionální výpadky. Jakékoli negativní obchodní dopad replikaci virtuálních počítačů snižuje dobu výpadku oblasti Azure. Poradce zjistí virtuálních počítačů, které nemají replikace povolená a doporučuje povolení replikace, aby v případě výpadku, můžete rychle přinesete si virtuální počítače ve vzdálené oblasti Azure. [Další informace o replikaci virtuálního počítače](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart)
 
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Jak získat přístup k doporučení k vysoké dostupnosti v Advisoru
 

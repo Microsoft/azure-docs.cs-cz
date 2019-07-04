@@ -3,7 +3,7 @@ title: Postup použití iOS SDK pro Azure Mobile Apps
 description: Postup použití iOS SDK pro Azure Mobile Apps
 services: app-service\mobile
 documentationcenter: ios
-author: conceptdev
+author: elamalani
 editor: ''
 ms.assetid: 4e8e45df-c36a-4a60-9ad4-393ec10b7eb9
 ms.service: app-service-mobile
@@ -11,19 +11,24 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 10/01/2016
-ms.author: crdun
-ms.openlocfilehash: b6f93cc3c35ab18ecd50ccd6b3090985497baabf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: 38d992e55a8e1f0a057a96f3e13c93c9dbd0c4a9
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62122451"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67440390"
 ---
 # <a name="how-to-use-ios-client-library-for-azure-mobile-apps"></a>Jak iOS použijte klientskou knihovnu pro Azure Mobile Apps
 
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
+> [!NOTE]
+> Visual Studio App Center investuje do nové a integrované služby, které jsou centrální při vývoji mobilních aplikací. Vývojáři mohou použít **sestavení**, **testovací** a **rozmístit** služby vytvořit kanál pro průběžnou integraci a doručování. Po nasazení aplikace se můžou vývojáři monitorovat stav a využití své aplikace pomocí **Analytics** a **diagnostiky** služeb a Zaujměte uživatele, kteří používají **Push** Služba. Vývojáři mohou využít i **Auth** k ověření uživatelů a **Data** službu zachovat, synchronizaci dat aplikací v cloudu. Podívejte se na [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=/app-service-mobile-ios-how-to-use-client-library) ještě dnes.
+>
+
+## <a name="overview"></a>Přehled
 Tento průvodce vás naučí, provádět běžné scénáře pomocí nejnovější [Azure Mobile Apps iOS SDK][1]. Pokud jste ještě na službu Azure Mobile Apps, nejprve dokončit [Azure Mobile Apps rychlým startem] Pokud chcete vytvořit back-endu, vytvoření tabulky a stáhnete projekt Xcode předem sestavených s Iosem. V této příručce se zaměříme na sadu SDK pro iOS na straně klienta. Další informace o sadě SDK na straně serveru pro back-endu, najdete v článku HOWTOs SDK serveru.
 
 ## <a name="reference-documentation"></a>Referenční dokumentace
@@ -435,7 +440,7 @@ Minimálně `id` atribut musí být nastaven při provádění odstraní.
 
 Vlastní rozhraní API můžete zveřejnit žádné funkce back-endu. Není třeba mapují na operace tabulky. Nejen získáte větší kontrolu nad zasílání zpráv, můžete dokonce pro čtení nebo nastaví záhlaví a změnit formát těla zprávy odpovědi. Zjistěte, jak vytvořit vlastní rozhraní API na back-endu, přečtěte si téma [vlastních rozhraní API](app-service-mobile-node-backend-how-to-use-server-sdk.md#work-easy-apis)
 
-Chcete-li volat vlastní API, zavolejte `MSClient.invokeAPI`. Žádost a odpověď obsahu jsou považovány za JSON. Používat jiné typy médií [, použijte jiné přetížení `invokeAPI` ] [ 5].  Aby `GET` žádost o místo `POST` požadavku sadu parametrů `HTTPMethod` k `"GET"` a parametr `body` k `nil` (protože požadavky GET nemají těla zprávy.) Pokud vaše vlastní rozhraní API podporuje další příkazy HTTP, změňte `HTTPMethod` odpovídajícím způsobem.
+Chcete-li volat vlastní API, zavolejte `MSClient.invokeAPI`. Žádost a odpověď obsahu jsou považovány za JSON. Používat jiné typy médií [, použijte jiné přetížení `invokeAPI` ][5].  Aby `GET` žádost o místo `POST` požadavku sadu parametrů `HTTPMethod` k `"GET"` a parametr `body` k `nil` (protože požadavky GET nemají těla zprávy.) Pokud vaše vlastní rozhraní API podporuje další příkazy HTTP, změňte `HTTPMethod` odpovídajícím způsobem.
 
 **Objective-C**:
 
@@ -516,7 +521,7 @@ Všechna klíčová slova jsou odebrána z požadavku pro zabezpečení.  Přid�
 
 Při volání back-endu mobilní služby Azure App Service obsahuje blok dokončení `NSError` parametru. Pokud dojde k chybě, je tento parametr nemá hodnotu nil. Ve vašem kódu zkontrolujte tento parametr a zpracování chyb podle potřeby, jak je ukázáno v předchozích fragmentů kódu.
 
-Soubor [ `<WindowsAzureMobileServices/MSError.h>` ] [ 6] definuje konstanty `MSErrorResponseKey`, `MSErrorRequestKey`, a `MSErrorServerItemKey`. Pokud chcete získat další data související s chybou:
+Soubor [ `<WindowsAzureMobileServices/MSError.h>` ][6] definuje konstanty `MSErrorResponseKey`, `MSErrorRequestKey`, a `MSErrorServerItemKey`. Pokud chcete získat další data související s chybou:
 
 **Objective-C**:
 
@@ -548,7 +553,7 @@ if (error.code == MSErrorPreconditionFailed) {
 
 Můžete používat Active Directory Authentication Library (ADAL) pro přihlášení uživatelů do vaší aplikace pomocí Azure Active Directory. Tok ověřování klientů pomocí zprostředkovatele identity sada SDK je vhodnější než použít `loginWithProvider:completion:` metody.  Tok ověření klienta obsahuje více přirozený chování uživatelského prostředí a umožňuje další přizpůsobení.
 
-1. Konfigurace back-endu mobilní aplikace pro přihlášení k AAD pomocí následujících [konfigurace služby App Service pro přihlášení služby Active Directory] [ 7] kurzu. Ujistěte se, že k dokončení volitelný krok registrace nativní klientské aplikace. Pro iOS, doporučujeme vám, která má formát identifikátoru URI pro přesměrování `<app-scheme>://<bundle-id>`. Další informace najdete v tématu [rychlý start ADAL iOS][8].
+1. Konfigurace back-endu mobilní aplikace pro přihlášení k AAD pomocí následujících [konfigurace služby App Service pro přihlášení služby Active Directory][7] kurzu. Ujistěte se, že k dokončení volitelný krok registrace nativní klientské aplikace. Pro iOS, doporučujeme vám, která má formát identifikátoru URI pro přesměrování `<app-scheme>://<bundle-id>`. Další informace najdete v tématu [rychlý start ADAL iOS][8].
 2. Nainstalujte knihovnu ADAL pomocí Cocoapods. Upravit Podfile zahrnout následující definice nahrazení **váš projekt** s názvem projektu Xcode:
 
         source 'https://github.com/CocoaPods/Specs.git'
@@ -635,8 +640,8 @@ func authenticate(parent: UIViewController, completion: (MSUser?, NSError?) -> V
 
 Sady SDK Facebooku pro iOS můžete použít pro přihlášení uživatelů do vaší aplikace pomocí služby Facebook.  Tok ověřování klienta je vhodnější než použít `loginWithProvider:completion:` metody.  Tok ověření klienta obsahuje více přirozený chování uživatelského prostředí a umožňuje další přizpůsobení.
 
-1. Konfigurace back-endu mobilní aplikace pro Facebook přihlásit pomocí následujících [konfigurace služby App Service pro přihlášení k Facebooku] [ 9] kurzu.
-2. Nainstalujte sadu SDK Facebooku pro iOS pomocí následujících [Facebook SDK pro iOS – Začínáme] [ 10] dokumentaci. Místo vytváření aplikace, můžete přidat na platformu iOS na existující registraci.
+1. Konfigurace back-endu mobilní aplikace pro Facebook přihlásit pomocí následujících [konfigurace služby App Service pro přihlášení k Facebooku][9] kurzu.
+2. Nainstalujte sadu SDK Facebooku pro iOS pomocí následujících [Facebook SDK pro iOS – Začínáme][10] dokumentaci. Místo vytváření aplikace, můžete přidat na platformu iOS na existující registraci.
 3. Dokumentace ke službě Facebook obsahuje kód Objective-C v delegáta aplikace. Pokud používáte **Swift**, můžete použít následující překlady pro AppDelegate.swift:
 
     ```swift

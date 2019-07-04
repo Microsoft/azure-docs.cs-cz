@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/29/2019
 ms.author: rolyon
 ms.custom: include file
-ms.openlocfilehash: 364d4a11772e6bb72e2e258503f3cce49dc61453
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: d791c4ba46587ac5709d72cb31bc76f087118b03
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175702"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476254"
 ---
 ## <a name="create-one-or-more-access-reviews"></a>Vytvořte jeden nebo více kontroly přístupu
 
@@ -25,7 +25,7 @@ ms.locfileid: "67175702"
 
 1. Nastavte **počáteční datum**. Ve výchozím nastavení kontroly přístupu akce proběhne jednou, spustí stejné chvíli, kdy je vytvořen a končí na jeden měsíc. Můžete změnit počáteční a koncové datum měli přístup zkontrolujte start v budoucnu a poslední představ počtu dnů.
 
-    ![Vytvoření kontroly přístupu – počáteční a koncové datum](./media/active-directory-privileged-identity-management-access-reviews/start-end-dates.png)
+    ![Počáteční datum, četnost, dobu trvání, end, počet, kolikrát a koncové datum](./media/active-directory-privileged-identity-management-access-reviews/start-end-dates.png)
 
 1. Chcete-li opakování kontroly přístupu, změnit **frekvence** nastavení z **jednou** k **týdenní**, **měsíční**,  **Čtvrtletní**, **každoročně**, nebo **částečně annually**. Použití **doba trvání** posuvník nebo textového pole k definování, kolik dní budou každou recenzi řady opakovaných otevřete pro vstup od recenzentů. Maximální doba, po kterou můžete nastavit měsíční kontroly je například 27 dní na překrývající se kontroly.
 
@@ -33,22 +33,22 @@ ms.locfileid: "67175702"
 
 1. V **uživatelé** vyberte jednu nebo víc rolí, které chcete zkontrolovat členství.
 
-    ![Vytvoření kontroly přístupu – uživatelé](./media/active-directory-privileged-identity-management-access-reviews/users.png)
+    ![Obor uživatele zkontrolovat členství role](./media/active-directory-privileged-identity-management-access-reviews/users.png)
 
     > [!NOTE]
     > Výběr více než jednu roli vytvoří více kontroly přístupu. Například výběrem pět rolí vytvoří pět samostatnou přístupovou revize.
 
     Při vytváření kontroly přístupu Azure AD rolí, následuje příklad seznamu kontroly členství.
 
-    ![Vytvoření kontroly přístupu – Zkontrolujte členství v roli](./media/active-directory-privileged-identity-management-access-reviews/review-membership.png)
+    ![Podokno zkontrolovat členství výpis role Azure AD můžete vybrat](./media/active-directory-privileged-identity-management-access-reviews/review-membership.png)
 
     Při vytváření kontroly přístupu z role prostředků Azure, ukazuje následující příklad seznamu kontroly členství.
 
-    ![Vytvoření kontroly přístupu – Zkontrolujte členství v roli](./media/active-directory-privileged-identity-management-access-reviews/review-membership-azure-resource-roles.png)
+    ![Podokno zkontrolovat členství výpis role prostředků Azure můžete vybrat](./media/active-directory-privileged-identity-management-access-reviews/review-membership-azure-resource-roles.png)
 
 1. V **revidující** vyberte jednoho nebo víc uživatelů ke kontrole všech uživatelů. Nebo můžete mít členy kontrolovat svůj vlastní přístup.
 
-    ![Vytvoření kontroly přístupu – kontroloři](./media/active-directory-privileged-identity-management-access-reviews/reviewers.png)
+    ![Seznam revidující vybraným uživatelům nebo členové (vlastní)](./media/active-directory-privileged-identity-management-access-reviews/reviewers.png)
 
     - **Vybraní uživatelé** – tuto možnost použijte, pokud si nejste jisti, který potřebuje přístup. Pomocí této možnosti můžete přiřadit revize vlastník prostředku nebo správce skupiny pro dokončení.
     - **Členové (vlastní)** – pomocí této možnosti můžete mít uživatele, projděte si svoje vlastní přiřazení rolí.
@@ -57,7 +57,7 @@ ms.locfileid: "67175702"
 
 1. Chcete-li určit, co se stane po se kontrola dokončí, rozbalte **nastavení činností po dokončení** oddílu.
 
-    ![Nastavení činností po dokončení](./media/active-directory-privileged-identity-management-access-reviews/upon-completion-settings.png)
+    ![Po dokončení nastavení automatické použití a nesmí odpovídat revize](./media/active-directory-privileged-identity-management-access-reviews/upon-completion-settings.png)
 
 1. Pokud nechcete automaticky odebrat přístup pro uživatele, kteří se zamítla nastavte **automaticky zavést výsledky do prostředku** k **povolit**. Pokud chcete aplikovat ručně výsledky, až se kontrola dokončí, nastavte přepínač na **zakázat**.
 
@@ -72,7 +72,7 @@ ms.locfileid: "67175702"
 
 1. K zadání dalších nastavení, rozbalte **upřesňující nastavení** oddílu.
 
-    ![Upřesnit nastavení](./media/active-directory-privileged-identity-management-access-reviews/advanced-settings.png)
+    ![Upřesňující nastavení zobrazit doporučení, vyžadovat důvod při schválení, e-mailová oznámení a připomenutí](./media/active-directory-privileged-identity-management-access-reviews/advanced-settings.png)
 
 1. Nastavte **zobrazení doporučení** k **povolit** zobrazíte revidující systému doporučení na základě daného uživatele přístup k informacím.
 

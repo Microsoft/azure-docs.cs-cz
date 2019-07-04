@@ -1,18 +1,18 @@
 ---
 title: Optimalizovat náklady na prostředky Azure Cosmos DB pomocí vyhrazené kapacity
 description: Informace o možnostech nákupu služby Azure Cosmos DB vyhrazené kapacity a Ušetřete na svých výpočetních nákladech.
-author: rimman
+author: bandersmsft
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 07/01/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 7944980ec1806d2c8c4ab908c71efd971ee0d7aa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b74fcc2e08f02be7adeeab4cfee5f36d5194392c
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65968954"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508628"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>Optimalizace nákladů s využitím rezervované kapacity ve službě Azure Cosmos DB
 
@@ -24,7 +24,7 @@ Azure Cosmos DB vyhrazené kapacity se věnuje zajištěné propustnosti pro va�
 
 Můžete si koupit službu Azure Cosmos DB vyhrazené kapacity z [webu Azure portal](https://portal.azure.com). Koupit rezervované kapacity:
 
-* Musí být v roli vlastník pro alespoň jeden Enterprise nebo předplatné s průběžnými platbami.  
+* Musí být v roli vlastník pro jeden nebo samostatného předplatného s průběžnými sazbami.  
 * Předplatné Enterprise **přidat Reserved Instances** musí být povolená v [portál EA](https://ea.azure.com). Nebo, pokud je toto nastavení zakázané, musíte být správce EA na předplatné.
 * Programu Cloud Solution Provider (CSP) můžete koupit jenom správce agentů nebo prodejní agenty služby Azure Cosmos DB vyhrazené kapacity.
 
@@ -44,26 +44,29 @@ Velikost rezervace by měla vycházet z celkové množství propustnost, které 
 
 2. Vyberte **všechny služby** > **rezervace** > **přidat**.  
 
-3. Z **vybrat typ produktu** podokně zvolte **služby Azure Cosmos DB** > **vyberte** koupit novou rezervaci.  
+3. Z **rezervace zakoupit** podokně zvolte **služby Azure Cosmos DB** koupit novou rezervaci.  
 
 4. Vyplňte požadovaná pole, jak je popsáno v následující tabulce:
 
-   ![Vyplňte formulář záložní kapacitu](./media/cosmos-db-reserved-capacity/fill_reserved_capacity_form.png)
+   ![Vyplňte formulář záložní kapacitu](./media/cosmos-db-reserved-capacity/fill-reserved-capacity-form.png)
 
    |Pole  |Popis  |
    |---------|---------|
-   |Name   |    Název rezervace. Toto pole se automaticky vyplní `CosmosDB_Reservation_<timeStamp>`. Zadejte jiný název při vytváření rezervace. Nebo můžete ji jakkoli přejmenovat po vytvoření rezervace.      |
-   |Předplatné  |   Předplatné, které se používá k úhradě služby Azure Cosmos DB rezervované kapacity. Způsob platby u vybraného předplatného se používá v účtování pořizovací náklady. Tento typ předplatného musí být jeden z následujících akcí: <br/><br/>  Smlouvy Enterprise (nabízejí čísla: MS-AZR-0017P or MS-AZR-0148P): Předplatné Enterprise jsou poplatky odečteno od zůstatku peněžním závazkem registrace nebo účtovat jako překročení částky. <br/><br/> Průběžné platby (nabízejí čísla: MS-AZR-0003P or MS-AZR-0023P): Pro předplatné s průběžnými platbami se poplatky účtují kreditní kartou nebo fakturou způsobu platby v rámci předplatného.    |
-   |Scope   |   Možnost, která určuje, kolik předplatných fakturační benefit přidružené k rezervaci můžete využít. Také určuje, jak se má rezervace použít na konkrétní předplatné.   <br/><br/>  Pokud vyberete **jedno předplatné**, sleva za rezervaci se použije pro instance služby Azure Cosmos DB ve vybraném předplatném. <br/><br/>  Pokud vyberete **Shared**, sleva za rezervaci se použije pro instance služby Azure Cosmos DB, které běží v kterékoli předplatné v rámci vaší fakturační kontextu. Kontext fakturace je založená na tom, jak jste zaregistrovali službu Azure. Pro podnikové zákazníky sdílený obor je registrace a obsahuje všechna předplatná v rámci registrace. Pro zákazníky s průběžnými platbami sdílený obor je Všechna předplatná s průběžnými platbami, vytváří správce účtu.  <br/><br/> Po nákupu rezervované kapacity můžete změnit obor rezervace.  |
-   |Typ rezervované kapacity   |  Jako jednotky žádostí zřízenou propustnost. Můžete si koupit rezervaci zřízená propustnost pro obě nastavení - jedné oblasti zapíše i více oblastí zápisu.|
-   |Jednotky rezervované kapacity  |      Množství propustnost, které chcete rezervovat. Tuto hodnotu můžete vypočítat tak, že určíte propustnost potřebné pro všechny vaše služby Cosmos DB prostředky (například databáze nebo kontejnery) v jedné oblasti. Můžete pak vynásobit se podle počtu oblastí, které budete přidružíte k databázi Cosmos DB.  <br/><br/> Příklad: Pokud máte pět oblastí s 1 milion RU/s v každé oblasti, vyberte 5 milionů RU/s pro nákup rezervace kapacitu.    |
+   |Scope   |   Možnost, která určuje, kolik předplatných fakturační benefit přidružené k rezervaci můžete využít. Také určuje, jak se má rezervace použít na konkrétní předplatné. <br/><br/>  Pokud vyberete **Shared**, sleva za rezervaci se použije pro instance služby Azure Cosmos DB, které běží v kterékoli předplatné v rámci vaší fakturační kontextu. Kontext fakturace je založená na tom, jak jste zaregistrovali službu Azure. Pro podnikové zákazníky sdílený obor je registrace a obsahuje všechna předplatná v rámci registrace. Pro zákazníky s průběžnými platbami sdílený obor je všechny jednotlivých předplatných s využitím průběžné platby, vytváří správce účtu.  <br/><br/>  Pokud vyberete **jedno předplatné**, sleva za rezervaci se použije pro instance služby Azure Cosmos DB ve vybraném předplatném. <br/><br/> Pokud vyberete **jedna skupina prostředků**, sleva za rezervaci se použije pro instance služby Azure Cosmos DB ve vybraném předplatném a vybrané skupiny prostředků v rámci tohoto předplatného. <br/><br/> Po nákupu rezervované kapacity můžete změnit obor rezervace.  |
+   |Předplatné  |   Předplatné, které se používá k úhradě služby Azure Cosmos DB rezervované kapacity. Způsob platby u vybraného předplatného se používá v účtování pořizovací náklady. Tento typ předplatného musí být jeden z následujících akcí: <br/><br/>  Smlouvy Enterprise (nabízejí čísla: MS-AZR-0017P or MS-AZR-0148P): Předplatné Enterprise jsou poplatky odečteno od zůstatku peněžním závazkem registrace nebo účtovat jako překročení částky. <br/><br/> Samostatného předplatného s průběžnými sazbami (nabízejí čísla: MS-AZR-0003P or MS-AZR-0023P): Pro samostatného předplatného s průběžnými sazbami účtují se poplatky kreditní kartou nebo fakturou způsobu platby v rámci předplatného.    |
+   | Skupina prostředků | Skupina prostředků, ke kterému se sleva záložní kapacitu. |
    |Termín  |   Jeden nebo tři roky.   |
+   |Typ propustnost   |  Propustnost je zřízená jako jednotkách požadavků. Můžete si koupit rezervaci zřízená propustnost pro obě nastavení - jedné oblasti zapíše i více oblastí zápisu. Typ propustnost má dvě hodnoty na výběr: 100 RU/s za hodinu a 100 RU/s několika hlavními uzly za hodinu.|
+   | Jednotky rezervované kapacity| Množství propustnost, které chcete rezervovat. Tuto hodnotu můžete vypočítat tak, že určíte propustnost potřebné pro všechny vaše služby Cosmos DB prostředky (například databáze nebo kontejnery) v jedné oblasti. Můžete pak vynásobit se podle počtu oblastí, které budete přidružíte k databázi Cosmos DB. Příklad: Pokud máte pět oblastí s 1 milion RU/s v každé oblasti, vyberte 5 milionů RU/s pro nákup rezervace kapacitu. |
+ 
 
-5. Sleva a cenu za rezervaci v **náklady** oddílu. Tato rezervace ceny platí pro prostředky Azure Cosmos DB s propustností zřízené ve všech oblastech.  
+5. Po vyplnění formuláře se počítá cena muset zakoupit vyhrazené kapacitu. Výstup zobrazuje také procento slevy, získáte s zvolené možnosti. Klepnutím na tlačítko **vyberte**
 
-6. Vyberte **Koupit**. Po úspěšné nákupu, získáte na následující stránce:
+6. V **rezervace zakoupit** podokně zkontrolujte sleva a cenu za rezervaci. Tato rezervace ceny platí pro prostředky Azure Cosmos DB s propustností zřízené ve všech oblastech.  
 
-   ![Vyplňte formulář záložní kapacitu](./media/cosmos-db-reserved-capacity/reserved_capacity_successful.png)
+   ![Souhrn záložní kapacitu](./media/cosmos-db-reserved-capacity/reserved-capacity-summary.png)
+
+7. Vyberte **revize + nákup** a potom **koupit**. Po úspěšné nákupu, získáte na následující stránce:
 
 Po nákupu rezervace se okamžitě použije na nějaké stávající prostředky Azure Cosmos DB, které odpovídají podmínkám použití rezervace. Pokud nemáte k dispozici nějaké stávající prostředky Azure Cosmos DB, rezervace platit, když nasadíte novou instanci služby Cosmos DB, která odpovídá podmínky rezervace. V obou případech se období rezervace začne hned po úspěšném nákupu.
 

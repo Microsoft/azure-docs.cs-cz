@@ -3,7 +3,7 @@ title: 'Azure Active Directory Domain Services: Příručka věnovaná | Dokumen
 description: Vytvoření organizační jednotce (OU) v Azure AD Domain Services spravované domény
 services: active-directory-ds
 documentationcenter: ''
-author: MikeStephens-MS
+author: iainfoulds
 manager: daveba
 editor: curtand
 ms.assetid: 52602ad8-2b93-4082-8487-427bdcfa8126
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.author: mstephen
-ms.openlocfilehash: e7ff91a87377deed06fa4214cc1e5764e8b2da92
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: iainfou
+ms.openlocfilehash: b2bdad25d676d65494fdd5b6a314f8c3381254de
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66246266"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67473682"
 ---
 # <a name="create-an-organizational-unit-ou-on-an-azure-ad-domain-services-managed-domain"></a>Vytvořit organizační jednotce (OU) ve spravované doméně Azure AD Domain Services
 Spravované domény služby Azure AD Domain Services patří dvě předdefinované kontejnery nazývá "Kontejnery počítače AADDC" a "Uživatelé AADDC" v uvedeném pořadí. Kontejner 'Kontejnery počítače AADDC' obsahuje objekty počítače pro všechny počítače, které jsou připojené ke spravované doméně. Kontejner 'Uživatelé AADDC' obsahuje uživatele a skupiny v tenantovi Azure AD. V některých případech může být potřeba vytvořit účty služeb ve spravované doméně nasazování úloh. K tomuto účelu můžete vytvořit vlastní organizační jednotce (OU) ve spravované doméně a vytvořit účty služeb v rámci dané organizační jednotce. Tento článek ukazuje, jak vytvoření OU ve spravované doméně.

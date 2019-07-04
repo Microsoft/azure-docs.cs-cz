@@ -12,27 +12,31 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/18/2016
+ms.date: 05/21/2019
 ms.author: cawa
-ms.openlocfilehash: f46467871a5ae0147b5dc60881bda4175eabac56
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 56c20c995a95058b5039b7268c7b7b1426e900fa
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60458300"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442985"
 ---
 # <a name="manage-azure-blob-storage-resources-with-storage-explorer"></a>Správa prostředků Azure Blob Storage pomocí Storage Exploreru
+
 ## <a name="overview"></a>Přehled
+
 [Azure Blob Storage](storage/blobs/storage-dotnet-how-to-use-blobs.md) je služba pro ukládání velkých objemů nestrukturovaných dat, jako jsou textová nebo binární data, ke kterým můžete přistupovat odkudkoli na světě prostřednictvím protokolu HTTP nebo HTTPS.
 Službu Blob Storage můžete používat ke zveřejňování dat pro celý svět, nebo k soukromému ukládání dat aplikací. V tomto článku se dozvíte, jak pracovat s kontejnery objektů blob a objekty BLOB pomocí Průzkumníka služby Storage.
 
 ## <a name="prerequisites"></a>Požadavky
+
 K dokončení kroků v tomto článku budete potřebovat následující:
 
 * [Stažení a instalace Průzkumníka služby Storage](https://www.storageexplorer.com)
 * [Připojení k účtu služby Azure storage nebo service](vs-azure-tools-storage-manage-with-storage-explorer.md#connect-to-a-storage-account-or-service)
 
 ## <a name="create-a-blob-container"></a>Vytvoření kontejneru objektů blob
+
 Všechny objekty BLOB se musí nacházet v kontejneru objektů blob, který je jednoduše logické seskupení objektů BLOB. Účet může obsahovat neomezený počet kontejnerů a každý kontejner můžete pojmout neomezený počet objektů BLOB.
 
 Následující postup ukazuje, jak vytvořit kontejner objektů blob v Průzkumníku služby Storage.
@@ -42,7 +46,7 @@ Následující postup ukazuje, jak vytvořit kontejner objektů blob v Průzkumn
 3. Klikněte pravým tlačítkem na **kontejnery objektů Blob**a v místní nabídce – vyberte **vytvořit kontejner objektů Blob**.
 
    ![Vytvořit kontejnery místní nabídka objektu blob][0]
-4. Níže se zobrazí textové pole **kontejnery objektů Blob** složky. Zadejte název kontejneru objektů blob. Zobrazit [vytvoření kontejneru a nastavení oprávnění](storage/blobs/storage-quickstart-blobs-dotnet.md#create-the-container-and-set-permissions) informace o pravidlech a omezení pro pojmenování kontejnerů objektů blob.
+4. Níže se zobrazí textové pole **kontejnery objektů Blob** složky. Zadejte název kontejneru objektů blob. Zobrazit [vytvořte kontejner](storage/blobs/storage-quickstart-blobs-dotnet.md#create-a-container) informace o pravidlech a omezení pro pojmenování kontejnerů objektů blob.
 
    ![Create Blob Containers text box][1]
 5. Stisknutím klávesy **Enter** po dokončení vytvoření kontejneru objektů blob nebo **Esc** zrušit. Po úspěšném vytvoření kontejneru objektů blob se zobrazí v části **kontejnery objektů Blob** složku pro vybraný účet úložiště.
@@ -50,6 +54,7 @@ Následující postup ukazuje, jak vytvořit kontejner objektů blob v Průzkumn
    ![Vytvoření kontejneru objektů BLOB][2]
 
 ## <a name="view-a-blob-containers-contents"></a>Zobrazení obsahu objektů blob v kontejneru
+
 Kontejnery objektů BLOB obsahují objekty BLOB a složky (ty také můžou obsahovat objekty BLOB).
 
 Následující postup ukazuje, jak zobrazit obsah kontejneru objektů blob v Průzkumníku služby Storage:
@@ -66,6 +71,7 @@ Následující postup ukazuje, jak zobrazit obsah kontejneru objektů blob v Pr�
    ![Editor kontejneru objektů BLOB][3]
 
 ## <a name="delete-a-blob-container"></a>Odstranit kontejner objektů blob
+
 Kontejnery objektů BLOB můžete snadno vytvořit a odstranit podle potřeby. (Informace o tom Chcete-li odstranit jednotlivé objekty BLOB, naleznete v části [Správa objektů BLOB v kontejneru objektů blob](#managing-blobs-in-a-blob-container).)
 
 Následující postup ukazuje, jak odstranit kontejner objektů blob v Průzkumníku služby Storage:
@@ -82,6 +88,7 @@ Následující postup ukazuje, jak odstranit kontejner objektů blob v Průzkumn
    ![Odstranění objektů blob v kontejneru potvrzení][5]
 
 ## <a name="copy-a-blob-container"></a>Kopírovat kontejner objektů blob
+
 Průzkumníka služby Storage umožňuje zkopírování kontejner objektů blob do schránky a vložte tento kontejner objektů blob do jiného účtu úložiště. (Informace o tom ke kopírování jednotlivých objektů BLOB najdete v části [Správa objektů BLOB v kontejneru objektů blob](#managing-blobs-in-a-blob-container).)
 
 Následující postup ukazuje, jak kopírovat kontejner objektů blob z jednoho účtu úložiště do druhého.
@@ -97,6 +104,7 @@ Následující postup ukazuje, jak kopírovat kontejner objektů blob z jednoho 
    ![Místní nabídka vložení objektu blob kontejneru][7]
 
 ## <a name="get-the-sas-for-a-blob-container"></a>Získání sdíleného přístupového podpisu (SAS) pro kontejner objektů blob
+
 [Sdílený přístupový podpis (SAS)](storage/common/storage-dotnet-shared-access-signature-part-1.md) poskytuje delegovaný přístup k prostředkům ve vašem účtu úložiště.
 To znamená, že můžete klientovi udělit omezená oprávnění k objektům ve vašem účtu úložiště po stanovené časové období a s konkrétní sadou oprávnění, aniž byste museli sdílet přístupové klíče vašeho účtu.
 
@@ -119,6 +127,7 @@ Následující postup ukazuje, jak vytvořit SAS pro kontejner objektů blob:
 8. Až budete hotovi, vyberte **Zavřít**.
 
 ## <a name="manage-access-policies-for-a-blob-container"></a>Správa zásad přístupu pro kontejner objektů blob
+
 Následující postup ukazuje, jak spravovat (přidávat a odebírat) zásady přístupu pro kontejner objektů blob:
 
 1. Otevřete Průzkumníka služby Storage.
@@ -129,7 +138,7 @@ Následující postup ukazuje, jak spravovat (přidávat a odebírat) zásady p�
    ![Místní nabídka Spravovat zásady přístupu][11]
 5. **Zásady přístupu** dialogového okna se zobrazí seznam zásad přístupu vytvořeny již pro vybrané objektů blob v kontejneru.
 
-   ![Možnosti zásad přístupu][12]        
+   ![Možnosti zásad přístupu][12]
 6. V závislosti na úloze správy zásad přístupu postupujte podle těchto kroků:
 
    * **Přidání nové zásady přístupu:** Vyberte **Přidat**. Po vygenerování se nová zásada přístupu (s výchozím nastavením) zobrazí v dialogovém okně **Zásady přístupu**.
@@ -137,6 +146,7 @@ Následující postup ukazuje, jak spravovat (přidávat a odebírat) zásady p�
    * **Odebrání zásady přístupu:** Vyberte **Odebrat** vedle zásady přístupu, kterou chcete odebrat.
 
 ## <a name="set-the-public-access-level-for-a-blob-container"></a>Nastavte úroveň veřejného přístupu pro kontejner objektů blob
+
 Ve výchozím nastavení každý kontejner objektů blob nastavená na "Žádný veřejný přístup".
 
 Následující postup ukazuje, jak určit úroveň veřejného přístupu pro kontejner objektů blob.
@@ -153,6 +163,7 @@ Následující postup ukazuje, jak určit úroveň veřejného přístupu pro ko
 6. Vyberte **Použít**.
 
 ## <a name="managing-blobs-in-a-blob-container"></a>Správa objektů BLOB v kontejneru objektů blob
+
 Po vytvoření kontejneru objektů blob, můžete nahrát objekt blob do tohoto kontejneru objektů blob, stažení objektu blob na místní počítač, otevřít objekt blob na místním počítači a spoustu dalších věcí.
 
 Následující kroky ukazují, jak spravovat objekty BLOB (a složky) v rámci kontejneru objektů blob.
@@ -175,7 +186,7 @@ Následující kroky ukazují, jak spravovat objekty BLOB (a složky) v rámci k
      2. V dialogovém okně **Nahrát soubory** vyberte tlačítko se třemi tečkami ( **...** ) na pravé straně textového pole **Soubory** a vyberte soubory, které chcete nahrát.
 
         ![Nahrát soubory možnosti][16]
-     3. Zadejte typ **typ blobu**. Zobrazit [vytvoření kontejneru a nastavení oprávnění](storage/blobs/storage-quickstart-blobs-dotnet.md#upload-blobs-to-the-container) Další informace.
+     3. Zadejte typ **typ blobu**. Zobrazit [vytvořte kontejner](storage/blobs/storage-quickstart-blobs-dotnet.md#create-a-container) Další informace.
      4. Volitelně můžete zadejte cílovou složku, do kterého se nahraje vybrané soubory. Pokud cílová složka neexistuje, vytvoří se.
      5. Vyberte **Nahrát**.
    * **Nahrání složky do kontejneru objektů blob**
@@ -186,7 +197,7 @@ Následující kroky ukazují, jak spravovat objekty BLOB (a složky) v rámci k
      2. V dialogovém okně **Nahrát složku** vyberte tlačítko se třemi tečkami ( **...** ) na pravé straně textového pole **Složka** a vyberte složku, jejíž obsah chcete nahrát.
 
         ![Nahrát Možnosti složky][18]
-     3. Zadejte typ **typ blobu**. Zobrazit [vytvoření kontejneru a nastavení oprávnění](storage/blobs/storage-quickstart-blobs-dotnet.md#upload-blobs-to-the-container) Další informace.
+     3. Zadejte typ **typ blobu**. Zobrazit [vytvořte kontejner](storage/blobs/storage-quickstart-blobs-dotnet.md#create-a-container) Další informace.
      4. Volitelně můžete zadat cílovou složku, do které se obsah vybrané složky nahraje. Pokud cílová složka neexistuje, vytvoří se.
      5. Vyberte **Nahrát**.
    * **Stažení objektu blob na místní počítač**
@@ -213,6 +224,7 @@ Následující kroky ukazují, jak spravovat objekty BLOB (a složky) v rámci k
      3. V potvrzovacím dialogovém okně klikněte na **Ano**.
 
 ## <a name="next-steps"></a>Další postup
+
 * Podívejte se na [nejnovější poznámky k verzi a videa pro Průzkumníka služby Storage](https://www.storageexplorer.com).
 * Zjistěte, jak [vytvářet aplikace pomocí objektů blob, tabulek, dotazů a souborů Azure](https://azure.microsoft.com/documentation/services/storage/).
 

@@ -10,12 +10,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha, glenga
-ms.openlocfilehash: fa82725174645a0e5f1d957d8423c97547682542
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 489c94f37b6c88db001dee437cc6ed89383e6053
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67065480"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442186"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Příručka pro vývojáře Azure Functions Powershellu
 
@@ -58,7 +58,7 @@ PSFunctionApp
 
 V kořenovém adresáři projektu neexistuje sdílené [ `host.json` ](functions-host-json.md) soubor, který můžete použít ke konfiguraci aplikace function app. Každá funkce má složku s vlastními souboru s kódem (.ps1) a vazbu konfigurační soubor (`function.json`). Název souboru function.json nadřazený adresář je vždy název vaší funkce.
 
-Některé vazby vyžaduje přítomnost `extensions.csproj` souboru. Vazba rozšíření vyžaduje [verze 2.x](functions-versions.md) funkce modulu runtime, které jsou definovány v `extensions.csproj` souboru se soubory knihovny v `bin` složky. Při vývoji místně, musíte [registraci rozšíření vazby](functions-bindings-register.md#local-development-with-azure-functions-core-tools-and-extension-bundles). Při vytváření funkcí na webu Azure Portal, je tato registrace provede za vás.
+Některé vazby vyžaduje přítomnost `extensions.csproj` souboru. Vazba rozšíření vyžaduje [verze 2.x](functions-versions.md) funkce modulu runtime, které jsou definovány v `extensions.csproj` souboru se soubory knihovny v `bin` složky. Při vývoji místně, musíte [registraci rozšíření vazby](functions-bindings-register.md#extension-bundles). Při vytváření funkcí na webu Azure Portal, je tato registrace provede za vás.
 
 V prostředí PowerShell aplikace Function App, může volitelně obsahovat `profile.ps1` která se spouští při spuštění aplikace function app (jinak znát pod některým z  *[studený start](#cold-start)* . Další informace najdete v tématu [Powershellu profilu](#powershell-profile).
 

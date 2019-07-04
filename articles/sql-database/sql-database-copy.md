@@ -12,16 +12,16 @@ ms.author: sahsan
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 06/03/2019
-ms.openlocfilehash: ba787ccd51bf5ea9ec8e06e341a0f698afb5a7e2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6a4d3fd0f7b670bbb0b01385252b405829a91baa
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66688072"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442316"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>Zkopírujte transakčně konzistentní kopie databáze Azure SQL
 
-Azure SQL Database nabízí několik metod pro vytvoření transakčně konzistentní kopie stávající databázi Azure SQL na stejný server nebo jiný server. Zkopírování databáze SQL pomocí webu Azure portal, Powershellu nebo T-SQL. 
+Azure SQL Database nabízí několik metod pro vytvoření transakčně konzistentní kopie stávající databázi Azure SQL ([izolované databáze](sql-database-single-database.md)) na stejném serveru nebo na jiný server. Zkopírování databáze SQL pomocí webu Azure portal, Powershellu nebo T-SQL. 
 
 ## <a name="overview"></a>Přehled
 
@@ -94,7 +94,7 @@ Tento příkaz zkopíruje databáze 1 na serveru1 do nové databáze s názvem d
 
 ### <a name="copy-a-sql-database-to-a-different-subscription"></a>Kopírování databáze SQL database do jiného předplatného
 
-Descrbed kroků v předchozí části můžete použít ke zkopírování databáze do databáze SQL serveru v jiném předplatném. Ujistěte se, že použijete přihlašovací údaje, která má stejné jméno a heslo jako vlastník databáze zdrojové databáze a je členem dbmanager role nebo je hlavní přihlášení na úrovni serveru. 
+Kopírování databáze do databáze SQL serveru v jiném předplatném můžete použít postup popsaný v předchozí části. Ujistěte se, že použijete přihlašovací údaje, která má stejné jméno a heslo jako vlastník databáze zdrojové databáze a je členem dbmanager role nebo je hlavní přihlášení na úrovni serveru. 
 
 > [!NOTE]
 > [Webu Azure portal](https://portal.azure.com) nepodporuje kopírování do jiného předplatného, protože portál volá rozhraní API ARM a používá certifikáty předplatného pro přístup k oba servery zapojené geografickou replikaci.  

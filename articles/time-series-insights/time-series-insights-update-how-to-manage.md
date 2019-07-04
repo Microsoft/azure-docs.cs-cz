@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 04/30/2019
+ms.date: 06/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6251df2317ceff9dded92f2d829bfab0503fdf1b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f626ce2e009a18afcb4d04b7caa6850ea58c7483
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66237587"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446810"
 ---
 # <a name="provision-and-manage-azure-time-series-insights-preview"></a>Zřízení a správě Azure čas Series Insights ve verzi Preview
 
@@ -45,7 +45,7 @@ Následující kroky popisují, jak vytvořit prostředí Azure čas Series Insi
 
 1. Vyberte **PAYG** tlačítko **SKU** nabídky. Zadat název prostředí a zvolte možnost, která skupina předplatné a skupina prostředků. Vyberte prostředí, které budou hostované v podporovaném umístění.
 
-   [![Vytvoření instance Azure Time Series Insights.](media/v2-update-manage/manage_three.PNG)](media/v2-update-manage/manage_three.PNG#lightbox)
+   [![Vytvoření instance Azure Time Series Insights.](media/v2-update-manage/manage-three.png)](media/v2-update-manage/manage-three.png#lightbox)
 
 1. Zadejte časové řady ID.
 
@@ -56,7 +56,7 @@ Následující kroky popisují, jak vytvořit prostředí Azure čas Series Insi
 
 1. Vytvoření účtu služby Azure storage, že vyberete název účtu úložiště a určování výběru replikace. To proto automaticky vytvoří účet služby Azure Storage pro obecné účely v1. Vytvoří se ve stejné oblasti jako, který jste dříve vybrali prostředí Azure čas Series Insights ve verzi Preview.
 
-    [![Vytvoření účtu služby Azure storage pro vaši instanci](media/v2-update-manage/manage_five.PNG)](media/v2-update-manage/manage_five.PNG#lightbox)
+    [![Vytvoření účtu služby Azure storage pro vaši instanci](media/v2-update-manage/manage-five.png)](media/v2-update-manage/manage-five.png#lightbox)
 
 1. Volitelně můžete přidat zdroje událostí.
 
@@ -67,11 +67,11 @@ Následující kroky popisují, jak vytvořit prostředí Azure čas Series Insi
      > [!TIP]
      > Čas zařazení do fronty zpráv nemusí být nejvhodnější nakonfigurované nastavení používané k události služby batch nebo historická data nahrávání scénáře. Ujistěte se, že k ověření rozhodnout a použít nebo není v takových případech vlastnost časového razítka.
 
-     [![Karta Zdroj události](media/v2-update-manage/manage_two.PNG)](media/v2-update-manage/manage_two.PNG#lightbox)
+     [![Karta Zdroj události](media/v2-update-manage/manage-two.png)](media/v2-update-manage/manage-two.png#lightbox)
 
 1. Potvrďte, že vaše prostředí byly zajišťovaný pomocí požadovaného nastavení.
 
-    [![Zkontrolovat a vytvořit kartu](media/v2-update-manage/manage_three.PNG)](media/v2-update-manage/manage_three.PNG#lightbox)
+    [![Zkontrolovat a vytvořit kartu](media/v2-update-manage/manage-three.png)](media/v2-update-manage/manage-three.png#lightbox)
 
 ## <a name="manage-the-environment"></a>Správa prostředí
 
@@ -88,7 +88,7 @@ Prostředí Azure čas Series Insights ve verzi Preview můžete spravovat pomoc
 
 * Azure portal **odkazují na data** okno byly odebrané v Azure čas Series Insights ve verzi Preview, protože referenčních dat není součástí prostředí průběžné platby.
 
-[![Prostředí Time Series Insights ve verzi Preview na webu Azure Portal](media/v2-update-manage/manage_four.PNG)](media/v2-update-manage/manage_four.PNG#lightbox)
+[![Prostředí Time Series Insights ve verzi Preview na webu Azure Portal](media/v2-update-manage/manage-four.png)](media/v2-update-manage/manage-four.png#lightbox)
 
 ## <a name="next-steps"></a>Další postup
 

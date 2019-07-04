@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9e7441ab9503919fbf1d0890ce69f04259f38986
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d43bef902b66976c32735b6d45029f41bb5e3264
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67065773"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67514036"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Zpráva k vydání verze služby Azure Machine Learning
 
@@ -24,6 +24,57 @@ V tomto článku najdete další informace o vydaných verzích služby Azure Ma
 + Azure Machine Learning [ **sady SDK pro přípravu dat**](https://aka.ms/data-prep-sdk)
 
 Zobrazit [seznam známých problémů](resource-known-issues.md) Další informace o známých chyb a jejich řešení.
+
+
+## <a name="2019-07-01"></a>2019-07-01
+
+### <a name="azure-machine-learning-data-prep-sdk-v117"></a>Sada SDK v1.1.7 pro přípravu dat Azure Machine Learning
+
+Jsme vrátit zpět změny, která vylepšení výkonu, jako že způsobuje problémy pro některé zákazníky pomocí Azure Databricks. Pokud došlo k problému v Azure Databricks, můžete upgradovat na verzi 1.1.7 pomocí jedné z následujících metod:
+1. Spusťte tento skript k upgradu: `%sh /home/ubuntu/databricks/python/bin/pip install azureml-dataprep==1.1.7`
+2. Znovu vytvořte cluster, který nainstaluje nejnovější verzi sady SDK pro Data Prep.
+
+## <a name="2019-06-25"></a>2019-06-25
+
+### <a name="azure-machine-learning-sdk-for-python-v1045"></a>Azure Machine Learning sady SDK pro Python v1.0.45
+
++ **Nové funkce**
+  + Přidání modelu náhradní stromu rozhodnutí tak, aby napodoboval vysvětlení azureml vysvětlují modelu balíčku
+  + Možnost určit verzi CUDA být nainstalovaný na odvozování imagí. Podpora pro CUDA 9.0, 9.1 a 10.0.
+  + Informace o školení Azure ML jsou teď k dispozici na základní image [úložiště GitHub kontejnerů Azure ML](https://github.com/Azure/AzureML-Containers) a [Dockerhubu](https://hub.docker.com/_/microsoft-azureml)
+  + Přidání rozhraní příkazového řádku podporují pro plán kanálu. Spuštění "az ml kanálu -h" Další informace
+  + Přidání parametru oboru názvů vlastních Kubernetes AKS konfigurace nasazení webové služby a rozhraní příkazového řádku.
+  + {{Parametr nepoužívané hash_paths pro všechny kroky kanálu
+  + Model.Register teď podporuje registraci několika jednotlivých souborů jako jeden model s využitím `child_paths` parametru.
+  
++ **Funkce ve verzi Preview**
+    + Hodnoticí explainers teď můžete volitelně uložit conda a pip informace pro spolehlivější serializace a deserializace.
+    + Oprava chyby pro výběr automatické funkce.
+    + Mlflow.azureml.build_image aktualizovat na nové rozhraní api, opravené chyby vystavené novou implementaci.
+
++ **Rozbíjející změny v**
+
++ **Opravy chyb a vylepšení**
+  + Odebrané paramiko závislost z azureml jádry. Upozornění na zastaralost přidání pro cílové výpočetní prostředí starší verze připojení metody.
+  + Zlepšení výkonu při run.create_children
+  + V mimic vysvětlení s binární klasifikátor oprava pořadí pravděpodobnosti při pravděpodobnost učitelů se používá pro škálování okno hodnoty
+  + Vylepšené zpracování chyb a zprávy pro automatické machine learning. 
+  + Byl opraven problém, vypršení časového limitu opakování pro automatické machine learning.
+  + Vylepšený výkon transformace časových řad pro automatické machine learning.
+
+## <a name="2019-06-24"></a>2019-06-24
+
+### <a name="azure-machine-learning-data-prep-sdk-v116"></a>Sada SDK v1.1.6 pro přípravu dat Azure Machine Learning
+
++ **Nové funkce**
+  + Přidat souhrn funkcí pro nejvyšší hodnoty (`SummaryFunction.TOPVALUES`) a hodnot dolní (`SummaryFunction.BOTTOMVALUES`).
+
++ **Opravy chyb a vylepšení**
+  + Výrazně vyšší výkon `read_pandas_dataframe`.
+  + Je opravená chyba, která může způsobit `get_profile()` na toku dat odkazující na binární soubory selhání.
+  + Vystavené `set_diagnostics_collection()` umožňuje programový povolení/zákazu kolekce telemetrie.
+  + Změnit chování `get_profile()`. Hodnoty NaN jsou nyní Min, střední, Std a Sum, která v souladu s chování Pandas ignorovány.
+
 
 ## <a name="2019-06-10"></a>2019-06-10
 
@@ -38,7 +89,6 @@ Zobrazit [seznam známých problémů](resource-known-issues.md) Další informa
     + Featurizer STL pro předpověď
     + KMeans clustering je povolena pro funkci sweeping
   + Kvóta AmlCompute schválení právě začala být rychlejší! Nyní jsme automatizované proces schvalování žádostí kvóta v rámci prahovou hodnotu. Další informace o fungování kvóty, přečtěte si [Správa kvót](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-quotas).
- 
 
 + **Funkce ve verzi Preview**
     + Integrace s [MLflow](https://mlflow.org) 1.0.0 sledování prostřednictvím azureml mlflow balíčku ([poznámkových bloků příklad](https://aka.ms/azureml-mlflow-examples)).

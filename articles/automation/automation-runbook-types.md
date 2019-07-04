@@ -4,17 +4,17 @@ description: 'Popisuje různé typy sad runbook, které můžete v Azure Automat
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 03/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 7a3990366814beda83852fc7c07c896445388c23
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8d90f1c03a9ed892a9dc8a4fecbeb9815c2dd376
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60737155"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476889"
 ---
 # <a name="azure-automation-runbook-types"></a>Typy runbooků Azure Automation
 

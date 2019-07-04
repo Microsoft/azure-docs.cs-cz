@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 06/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: b9fe8ff710cbfe7fbb4a4d8bd351028bb50efcb0
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 137ef1ad78548053f3c5b8f30b7d83f2370f62da
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67331737"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442441"
 ---
 # <a name="what-is-automated-machine-learning"></a>Co je automatické machine learning?
 
@@ -120,7 +120,7 @@ Automatizované ML je také dostupná v dalších řešení Microsoftu, jako:
 
 Podívejte se na příklady a další informace o vytváření modelů pomocí automatizovaných strojového učení:
 
-+ Postupujte podle [kurzu: Automaticky vyškolíme model klasifikace pomocí automatizované Azure Machine Learning](tutorial-auto-train-models.md)
++ Postupujte podle [kurzu: Automaticky trénování regresní model automatizované Azure Machine Learning](tutorial-auto-train-models.md)
 
 + Nakonfigurujte nastavení pro automatické výukového experimentu:
   + V rozhraní Azure portal [postupujte podle tohoto návodu](how-to-create-portal-experiments.md).

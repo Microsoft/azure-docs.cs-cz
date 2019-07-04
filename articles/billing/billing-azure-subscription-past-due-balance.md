@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: banders
-ms.openlocfilehash: 45b5d2c94a72cb23ef2b4a8db100623b0c58b0a9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f58969b167b6c0f0a66d46731ad76c1f6e9acc41
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66023401"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491459"
 ---
 # <a name="resolve-past-due-balance-for-your-azure-subscription"></a>Vyřešit po datu splatnosti zůstatek vašeho předplatného Azure
 
@@ -34,7 +34,7 @@ Pokud jste [správce účtu](billing-subscription-transfer.md#whoisaa), můžete
 ## <a name="resolve-past-due-balance-in-the-azure-portal"></a>Vyřešit po datu splatnosti zůstatek na webu Azure Portal
 
 1. Přihlaste se k [webu Azure portal](https://portal.azure.com) jako správce účtu.
-1. Hledat na **Cost Management a fakturace**.
+1. Vyhledejte **Cost Management a fakturace**.
 1. Na stránce Přehled zobrazí seznam vašich předplatných. Pokud stav předplatného je po datu splatnosti, klikněte na tlačítko **vyrovnat Zůstatek** odkaz.
     ![Snímek obrazovky zobrazující vyrovnat zůstatek odkaz](./media/billing-azure-subscription-past-due-balance/settle-balance-entry-point.png)
 1. Celkový zůstatek odráží napříč všemi službami společnosti Microsoft pomocí neúspěšné platby nezaplacené poplatky.

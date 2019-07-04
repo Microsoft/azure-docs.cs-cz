@@ -1,6 +1,6 @@
 ---
-title: Začínáme s Azure Search v Node.js – Azure Search
-description: Projděte si sestavení vyhledávací aplikace v hostované cloudové vyhledávací službě v Azure pomocí programovacího jazyka Node.js.
+title: 'Rychlý úvod k Node.js: Vytvoření, načtení a dotazování indexů Azure Search REST API – Azure Search pomocí'
+description: Vysvětluje, jak vytvořit index, načtení dat a spouštění dotazů pomocí Node.js a rozhraní REST API Azure Search.
 author: jj09
 manager: jlembicz
 services: search
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.date: 04/26/2017
 ms.author: jjed
 ms.custom: seodec2018
-ms.openlocfilehash: 1b37b3c52abd3750c3452a46bdf5b0c5954de4dd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 44b7f1f49d6764418dcc0e72cb667e17a2b920c6
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61289180"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67450024"
 ---
-# <a name="get-started-with-azure-search-in-nodejs"></a>Začínáme se službou Azure Search v Node.js
+# <a name="quickstart-create-an-azure-search-index-in-nodejs"></a>Rychlý start: Vytvoření indexu Azure Search v Node.js
 > [!div class="op_single_selector"]
 > * [Azure Portal](search-get-started-portal.md)
 > * [.NET](search-howto-dotnet-sdk.md)
@@ -32,7 +32,7 @@ Pokud chcete tuto ukázku spustit, musíte mít službu Azure Search, ke které 
 ## <a name="about-the-data"></a>Informace o datech
 Tato ukázková aplikace používá data agentury [United States Geological Services (USGS)](https://geonames.usgs.gov/domestic/download_data.htm), která jsou filtrovaná pro stát Rhode Island, aby se zmenšila velikost datové sady. Pomocí těchto dat sestavíme vyhledávací aplikaci, která najde významné budovy, například nemocnice a školy, a geologické prvky, jako jsou vodní toky, jezera a vrcholy.
 
-Program **DataIndexer** v této aplikaci sestaví a načte index pomocí konstruktoru [Indexer](https://msdn.microsoft.com/library/azure/dn798918.aspx), přičemž načte filtrovanou sadu dat USGS z veřejné databáze Azure SQL Database. Přihlašovací údaje a informace o připojení k online zdroji dat jsou uvedené v kódu programu. Není potřeba žádná další konfigurace.
+V této aplikaci **DataIndexer** program sestaví a načte index pomocí [Indexer](https://msdn.microsoft.com/library/azure/dn798918.aspx) konstrukce, načítání filtrovanou sadu dat USGS z Azure SQL Database. Přihlašovací údaje a informace o připojení k online zdroji dat jsou uvedené v kódu programu. Není potřeba žádná další konfigurace.
 
 > [!NOTE]
 > U této sady dat jsme použili filtr, abychom dodrželi omezení 10 000 dokumentů pro cenovou úroveň Free. Pokud používáte úroveň Standard, toto omezení neplatí. Podrobnosti týkající se kapacity u jednotlivých cenových úrovní najdete v tématu [Omezení služby Search](search-limits-quotas-capacity.md).

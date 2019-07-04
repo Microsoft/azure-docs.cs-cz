@@ -2,26 +2,21 @@
 title: Azure Active Directory nejčastější dotazy ke správě zařízení | Dokumentace Microsoftu
 description: Azure Active Directory zařízení nejčastější dotazy ke správě.
 services: active-directory
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-ms.assetid: cdc25576-37f2-4afb-a786-f59ba4c284c2
 ms.service: active-directory
 ms.subservice: devices
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/22/2019
+ms.topic: troubleshooting
+ms.date: 06/28/2019
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e29c58c0e9a31b2eb3e3d7e237a3db8173214faf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8802f9e5c84078725675d961ada7f8183c91c0ec
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67110648"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67481752"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory nejčastější dotazy ke správě zařízení
 
@@ -61,17 +56,15 @@ Pokud chcete znovu zaregistrovat, je nutné provést ruční akcí na zařízen�
 
 Vymazat stav spojení z Windows 10 a Windows Server 2016, která jsou připojená k doméně služby Active Directory v místním, proveďte následující kroky:
 
-1.  Otevřete příkazový řádek jako správce.
-
-2.  Zadejte `dsregcmd.exe /debug /leave`.
-
-3.  Odhlaste se a přihlaste se k aktivaci naplánované úlohy, který zaregistruje zařízení s Azure AD. 
+1. Otevřete příkazový řádek jako správce.
+1. Zadejte `dsregcmd.exe /debug /leave`.
+1. Odhlaste se a přihlaste se k aktivaci naplánované úlohy, který zaregistruje zařízení s Azure AD. 
 
 Verze operačního systému Windows nižší úrovně, které jsou přidaní do domény služby Active Directory v místním proveďte následující kroky:
 
-1.  Otevřete příkazový řádek jako správce.
-2.  Zadejte `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /l"`.
-3.  Zadejte `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /j"`.
+1. Otevřete příkazový řádek jako správce.
+1. Zadejte `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /l"`.
+1. Zadejte `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /j"`.
 
 ---
 
@@ -79,13 +72,10 @@ Verze operačního systému Windows nižší úrovně, které jsou přidaní do 
 
 **Odpověď:**
 
--   Pro Windows 10 a Windows Server 2016 opakované pokusy na zrušení služby a znovu se připojit stejném zařízení může způsobit duplicitní položky. 
-
--   Každý uživatel Windows, který používá **přidat pracovní nebo školní účet** vytváří záznam o novém zařízení se stejným názvem zařízení.
-
--   Automatické registrace pro verzí operačního systému Windows nižší úrovně, které jsou přidaní do domény v místním adresáři Azure vytvoří nový záznam zařízení se stejným názvem zařízení pro každého uživatele domény, který se přihlásí k zařízení. 
-
--   Počítače připojeného k Azure AD, který vymaže, přeinstalovat a znovu vstoupit se stejným názvem, zobrazí se jako jiný záznam se stejným názvem zařízení.
+- Pro Windows 10 a Windows Server 2016 opakované pokusy na zrušení služby a znovu se připojit stejném zařízení může způsobit duplicitní položky. 
+- Každý uživatel Windows, který používá **přidat pracovní nebo školní účet** vytváří záznam o novém zařízení se stejným názvem zařízení.
+- Automatické registrace pro verzí operačního systému Windows nižší úrovně, které jsou přidaní do domény v místním adresáři Azure vytvoří nový záznam zařízení se stejným názvem zařízení pro každého uživatele domény, který se přihlásí k zařízení. 
+- Počítače připojeného k Azure AD, který vymaže, přeinstalovat a znovu vstoupit se stejným názvem, zobrazí se jako jiný záznam se stejným názvem zařízení.
 
 ---
 
@@ -110,12 +100,11 @@ Verze operačního systému Windows nižší úrovně, které jsou přidaní do 
 
 **Odpověď:** 
 - K hybridní službě Azure AD. zařízení připojené k doméně, ujistěte se, že chcete vypnout automatické registrace. Pak bude úloha nebude zařízení znovu zaregistrovat. Dále otevřete příkazový řádek jako správce a zadejte `dsregcmd.exe /debug /leave`. Nebo spusťte tento příkaz jako skript napříč několika zařízeními na zrušení služby hromadně.
-
 - Pro službu Azure AD čistě zařízení připojené k doméně, ujistěte se, že máte účet místního správce v režimu offline nebo ho vytvořit. Nemůžete se přihlásit pomocí libovolné přihlašovací údaje uživatele Azure AD. Dále přejděte na **nastavení** > **účty** > **přístup do práce nebo do školy**. Vyberte svůj účet a vyberte **odpojit**. Postupujte podle zobrazených výzev a zadejte přihlašovací údaje místního správce, po zobrazení výzvy. Restartujte zařízení pro dokončení procesu odpojení.
 
 ---
 
-### <a name="q-can-my-users-sign-in-to-azure-ad-joined-devices-that-are-deleted-or-disabled-in-azure-ad"></a>Otázka: Můžete svým uživatelům přihlásit k zařízení připojená k Azure AD, které jsou odstraněny nebo zakázaný ve službě Azure AD?
+### <a name="q-can-my-users-sign-in-to-azure-ad-joined-devices-that-are-deleted-or-disabled-in-azure-ad"></a>Otázka: Můžete Moji uživatelé přihlásit k zařízení připojená k Azure AD, které jsou odstraněny nebo zakázaný ve službě Azure AD?
 
 **Odpověď:** Ano. Windows je uložené v mezipaměti uživatelské jméno a heslo schopností, který umožňuje uživatelům, kteří už přihlásili pro přístup k ploše rychle i bez připojení k síti. 
 
@@ -125,7 +114,7 @@ Uživatelé, kteří se nepovedlo přihlásit dříve nelze přistupovat k zař�
 
 ---
 
-### <a name="q-can-disabled-or-deleted-users-sign-in-to-azure-ad-joined-devices"></a>Otázka: Můžete zakázané nebo odstraněných uživatelů přihlásit k zařízení připojených k Azure AD?
+### <a name="q-can-a-disabled-or-deleted-user-sign-in-to-an-azure-ad-joined-devices"></a>Otázka: Můžete zakázán nebo je odstraněný uživatel přihlásit a zařízeních připojených k Azure AD
 
 **Odpověď:** Ano, ale pouze po omezenou dobu. Když uživatel se odstranil nebo zakázaný ve službě Azure AD, je známo, nikoliv okamžitě do zařízení Windows. Uživatelům, kteří dříve přihlásili tak můžete přístup k ploše v mezipaměti uživatelské jméno a heslo. 
 
@@ -166,7 +155,6 @@ Odstraněné nebo zakázané uživatelé, kteří nepovedlo přihlásit dříve 
 Toto chování:
 
 - Se vztahuje na služby Azure AD připojí a Azure AD registrované zařízení – ale ne pro hybridní služby Azure AD zařízení připojená k.
-
 - Nelze použít s žádným uživatelem, který se přihlásí na toto zařízení. Proto všechny ostatní, kteří přistupují k zařízení získat výzvu ověřování službou Multi-Factor Authentication. Pak bude moct aplikace, které vyžadují ověřování službou Multi-Factor Authentication.
 
 ---
@@ -176,11 +164,8 @@ Toto chování:
 **Odpověď:** Běžné důvody pro tento scénář jsou následující:
 
 - Vaše přihlašovací údaje uživatele už nejsou platné.
-
 - Počítač nemůže komunikovat se službou Azure Active Directory. Vyhledejte všechny problémy se síťovým připojením.
-
 - Federované přihlášení vyžadovat federačním serveru pro podporu WS-Trust koncové body, které jsou povolené a přístupné. 
-
 - Můžete povolit předávací ověřování. Proto musí dočasné heslo změnit při přihlášení.
 
 ---
@@ -209,7 +194,6 @@ Toto chování:
 
 ---
 
-
 ## <a name="hybrid-azure-ad-join-faq"></a>Připojení k hybridní službě Azure AD – nejčastější dotazy
 
 ### <a name="q-where-can-i-find-troubleshooting-information-to-diagnose-hybrid-azure-ad-join-failures"></a>Otázka: Kde můžu najít Poradce při potížích s informací k diagnostice chyb připojení k hybridní službě Azure AD?
@@ -217,7 +201,6 @@ Toto chování:
 **Odpověď:** Informace o odstraňování potíží, najdete v těchto článcích:
 
 - [Zařízení s Windows 10 a Windows serveru 2016 připojená k řešení potíží s hybridní služby Azure Active Directory](troubleshoot-hybrid-join-windows-current.md)
-
 - [Zařízení s nižší úrovně připojená k řešení potíží s hybridní služby Azure Active Directory](troubleshoot-hybrid-join-windows-legacy.md)
  
 ### <a name="q-why-do-i-see-a-duplicate-azure-ad-registered-record-for-my-windows-10-hybrid-azure-ad-joined-device-in-the-azure-ad-devices-list"></a>Otázka: Proč vidím duplicitní Azure AD registrované záznam pro moje Windows 10 hybridní službě Azure AD připojené zařízení v seznamu zařízení služby Azure AD?
@@ -226,27 +209,25 @@ Toto chování:
 
 Připojení k hybridní službě Azure AD má přednost před stavu registrováno v Azure AD. Takže zařízení se považuje za hybridní připojená k Azure AD pro všechny ověřovací a vyhodnocení podmíněného přístupu. Můžete bezpečně odstranit záznam zařízení registrováno v Azure AD z portálu Azure AD. Zjistěte, jak [vyhnout nebo je odstraňte tento duální stav na počítači s Windows 10](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan#review-things-you-should-know). 
 
-
 ---
 
 ### <a name="q-why-do-my-users-have-issues-on-windows-10-hybrid-azure-ad-joined-devices-after-changing-their-upn"></a>Otázka: Proč uživatelé mají problémy na zařízeních připojených k Azure AD s Windows 10 hybridní po změně jejich hlavní název uživatele?
 
-**Odpověď:** Změny hlavního názvu uživatele nyní nejsou plně podporovány s hybridních zařízení připojených k Azure AD. Zatímco uživatelé přihlásit k zařízení a přístupu k místním aplikacím, ověřování pomocí Azure AD nepodaří po změně UPN. V důsledku toho uživatelé mají jednotného přihlašování a podmíněný přístup problémy na svých zařízeních. V tuto chvíli je potřeba odebrat zařízení ze služby Azure AD (spusťte s vyššími oprávněními "dsregcmd /leave") a znovu připojí k (automaticky se stane) k vyřešení daného problému. Na vyřešení tohoto problému pracujeme. Uživatelé přihlášení pomocí Windows Hello pro firmy se však není potýkají tento problém. 
+**Odpověď:** Změny hlavního názvu uživatele nyní nejsou plně podporovány s hybridních zařízení připojených k Azure AD. Zatímco uživatelé přihlásit k zařízení a přístupu k místním aplikacím, ověřování pomocí Azure AD nepodaří po změně UPN. V důsledku toho uživatelé mají jednotného přihlašování a podmíněný přístup problémy na svých zařízeních. V tuto chvíli je potřeba odebrat zařízení ze služby Azure AD (spusťte s vyššími oprávněními "dsregcmd /leave") a znovu se připojit (automaticky se stane) k vyřešení daného problému. Na vyřešení tohoto problému pracujeme. Uživatelé přihlášení pomocí Windows Hello pro firmy se však není potýkají tento problém. 
 
 ---
 
 ### <a name="q-do-windows-10-hybrid-azure-ad-joined-devices-require-line-of-sight-to-the-domain-controller-to-get-access-to-cloud-resources"></a>Otázka: Vyžadují zařízení s Windows 10 hybridní připojená k Azure AD na dohled řadič domény získat přístup ke cloudovým prostředkům?
 
-**Odpověď:** Obecně Ne, s výjimkou případů, kdy se změní heslo uživatele. Dokončení hřívací zařízení Windows 10 hybridní služby Azure AD join a uživatel alespoň jednou přihlásí, zařízení nevyžaduje dohlednost služby k řadiči domény pro přístup k prostředkům cloudu. Windows 10 můžete získat jednotné přihlašování k aplikacím Azure AD z libovolného místa s internetovým připojením, s výjimkou případů, kdy se změnil heslo. Uživatelé, kteří se přihlašují se pomocí Windows Hello pro firmy i nadále získat jednotné Přihlaste se k aplikacím služby Azure AD i po změně hesla i v případě, že nebudou mít dohled jejich řadič domény. 
+**Odpověď:** Ne, s výjimkou případů, kdy se změní heslo uživatele. Po dokončení připojení k Azure AD hybridní Windows 10 a uživatel se přihlásil aspoň jednou, nevyžaduje zařízení dohlednost služby na řadič domény přístup ke cloudovým prostředkům. Windows 10 můžete získat jednotné přihlašování k aplikacím Azure AD z libovolného místa s internetovým připojením, s výjimkou případů, kdy se změnil heslo. Uživatelé, kteří se přihlašují se pomocí Windows Hello pro firmy i nadále získat jednotné přihlašování k aplikacím služby Azure AD i po změně hesla i v případě, že nebudou mít dohled jejich řadič domény. 
 
 ---
 
 ### <a name="q-what-happens-if-a-user-changes-their-password-and-tries-to-login-to-their-windows-10-hybrid-azure-ad-joined-device-outside-the-corporate-network"></a>Otázka: Co se stane, když uživatel změní své heslo a pokusí se přihlásit k hybridní službě Azure AD jejich Windows 10 připojené zařízení mimo podnikovou síť?
 
-**Odpověď:** Heslo se změnil mimo podnikovou síť (například pomocí samoobslužného resetování HESLA Azure AD), se nezdaří přihlášení uživatele pomocí nového hesla. V místní službě Active Directory pro hybridních zařízení připojených k Azure AD, je primární autoritu. Pokud zařízení nemá dohlednost služby k řadiči domény, se nemůže ověřit nové heslo. Ano, uživatel musí k navázání připojení s řadičem domény (buď prostřednictvím sítě VPN nebo je v podnikové síti) než budou moct přihlásit k zařízení pomocí nového hesla. V opačném případě můžete pouze přihlásí svoje staré heslo z důvodu možnosti přihlášení uložené v mezipaměti ve Windows. Však staré heslo zneplatněna službou Azure AD během žádosti o tokeny a proto brání jednotného přihlašování na a všechny zásady podmíněného přístupu na základě zařízení se nezdaří. Tomuto problému nedojde, pokud používáte Windows Hello pro firmy. 
+**Odpověď:** Pokud heslo je změněno mimo podnikovou síť (například pomocí samoobslužného resetování HESLA Azure AD), se nepodaří přihlásit uživatele pomocí nového hesla. V místní službě Active Directory pro hybridních zařízení připojených k Azure AD, je primární autoritu. Pokud zařízení nemá dohlednost služby k řadiči domény, se nemůže ověřit nové heslo. Ano, uživatel musí k navázání připojení s řadičem domény (buď prostřednictvím sítě VPN nebo je v podnikové síti) než budou moct přihlásit k zařízení pomocí nového hesla. V opačném případě můžete pouze přihlásí svoje staré heslo z důvodu přihlášení v mezipaměti v funkce ve Windows. Však staré heslo zneplatněna službou Azure AD během žádosti o tokeny a proto brání jednotného přihlašování a všechny zásady podmíněného přístupu na základě zařízení se nezdaří. Tomuto problému nedojde, pokud používáte Windows Hello pro firmy. 
 
 ---
-
 
 ## <a name="azure-ad-register-faq"></a>Nejčastější dotazy k registrace Azure AD
 
@@ -259,11 +240,15 @@ Připojení k hybridní službě Azure AD má přednost před stavu registrován
 **Odpověď:** Proveďte následující kroky:
 
 1.  [Vytvoření zásad dodržování předpisů](https://docs.microsoft.com/intune/compliance-policy-create-mac-os)
-2.  [Definovat zásady podmíněného přístupu pro zařízení s macOS](../active-directory-conditional-access-azure-portal.md) 
+1.  [Definovat zásady podmíněného přístupu pro zařízení s macOS](../active-directory-conditional-access-azure-portal.md) 
 
 **Poznámky:**
 
 - Uživatelé součástí vašim požadavkům zásad podmíněného přístupu [podporovanou verzi sady Office pro macOS](../conditional-access/technical-reference.md#client-apps-condition) pro přístup k prostředkům. 
-
 - Během prvního pokusu přístup uživatelům výzva k registraci zařízení pomocí portálu společnosti.
 
+## <a name="next-steps"></a>Další postup
+
+- Další informace o [Azure AD zaregistrované zařízení](concept-azure-ad-register.md)
+- Další informace o [zařízení připojená k Azure AD](concept-azure-ad-join.md)
+- Další informace o [zařízení připojená k hybridní službě Azure AD](concept-azure-ad-join-hybrid.md)

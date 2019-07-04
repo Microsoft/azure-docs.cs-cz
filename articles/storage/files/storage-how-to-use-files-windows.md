@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 899bf4bbf201ae785a4f49c7f278de75fb48945e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 02a8b825a513c75ef7c037348ccaecdf5026ded2
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64926263"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67560483"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Použití sdílené složky Azure s Windows
 Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cloudový systém souborů od Microsoftu. Sdílené složky Azure je možné bez problémů používat v systémech Windows a Windows Server. Tento článek popisuje důležité informace o používání sdílené složky Azure s Windows a Windows Serverem.
@@ -234,7 +234,7 @@ Následující tabulka obsahuje podrobné informace o stavu protokolu SMB 1 v je
 
 | Verze systému Windows                           | Výchozí stav protokolu SMB 1 | Metoda zakázání/odebrání       | 
 |-------------------------------------------|----------------------|-----------------------------|
-| Windows Server 2019 (Preview)             | Zakázáno             | Odebrání pomocí funkce Windows |
+| Windows Server 2019                       | Zakázáno             | Odebrání pomocí funkce Windows |
 | Windows Server verze 1709 nebo novější            | Zakázáno             | Odebrání pomocí funkce Windows |
 | Windows 10 verze 1709 nebo novější                | Zakázáno             | Odebrání pomocí funkce Windows |
 | Windows Server 2016                       | Enabled              | Odebrání pomocí funkce Windows |
@@ -246,7 +246,7 @@ Následující tabulka obsahuje podrobné informace o stavu protokolu SMB 1 v je
 | Windows 7                                 | Enabled              | Zakázání pomocí registru       | 
 
 ### <a name="auditing-smb-1-usage"></a>Auditování využití protokolu SMB 1
-> Platí pro Windows Server 2019 (Preview), pololetní kanál Windows Serveru (verze 1709 a 1803), Windows Server 2016, Windows 10 (verze 1507, 1607, 1703, 1709 a 1803), Windows Server 2012 R2 a Windows 8.1.
+> Platí pro 2019 systému Windows Server, pololetní kanál (verze 1709 a 1803) systému Windows Server, Windows Server 2016, Windows 10 (verze 1507, 1607, 1703, 1709 a 1803), Windows Server 2012 R2 a Windows 8.1
 
 Před odebráním protokolu SMB 1 z vašeho prostředí možná budete chtít auditovat jeho využití, abyste zjistili, jestli tato změna nezpůsobí, že někteří klienti přestanou fungovat. Při provedení jakéhokoli požadavku na sdílené složky SMB s použitím protokolu SMB 1 se zaznamená událost auditu do protokolu auditu v části `Applications and Services Logs > Microsoft > Windows > SMBServer > Audit`. 
 
@@ -260,7 +260,7 @@ Set-SmbServerConfiguration –AuditSmb1Access $true
 ```
 
 ### <a name="removing-smb-1-from-windows-server"></a>Odebrání protokolu SMB 1 z Windows Serveru
-> Platí pro Windows Server 2019 (Preview), pololetní kanál Windows Serveru (verze 1709 a 1803), Windows Server 2016 a Windows Server 2012 R2.
+> Platí pro Windows Server 2019, Windows Server pololetní kanál (verze 1709 a 1803), Windows Server 2016, Windows Server 2012 R2
 
 Pokud chcete odebrat protokol SMB 1 z instance Windows Serveru, spusťte v relaci PowerShellu se zvýšenými oprávněními následující rutinu:
 

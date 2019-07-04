@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: f70ca550f1688551abb94bb30ba4f76eb3c36404
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: dabaa06e224c6498c0080c4546c04f40e3919bb6
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67303965"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448535"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge-preview"></a>Store dat na hraničních zařízeních s Azure Blob Storage na hraničních zařízeních IoT (preview)
 
@@ -82,23 +82,24 @@ Slouží k nastavení deviceToCloudUploadProperties a deviceAutoDeleteProperties
 
 Název tohoto nastavení je `deviceToCloudUploadProperties`
 
-| Pole | Možné hodnoty | Vysvětlení |
-| ----- | ----- | ---- |
-| uploadOn | true, false | Ve výchozím nastavení nastavena na `false`, pokud chcete, chcete-li ho na hodnotu `true`|
-| uploadOrder | NewestFirst OldestFirst | Umožňuje vybrat pořadí, ve kterém se data kopírují do Azure. Ve výchozím nastavení nastavena na `OldestFirst`. Pořadí je určeno čas poslední změny objektu Blob |
-| cloudStorageConnectionString |  | `"DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>"` připojovací řetězec, který vám umožní určit účet Azure Storage, do kterého chcete data uložit. Zadejte `Azure Storage Account Name`, `Azure Storage Account Key`, `End point suffix`. Přidejte příslušné EndpointSuffix Azure kde bude nahrávaných dat, se mění globální Azure, Government Azure a Microsoft Azure Stack. |
-| storageContainersForUpload | `"<source container name1>": {"target": "<target container name>"}`,<br><br> `"<source container name1>": {"target": "%h-%d-%m-%c"}`, <br><br> `"<source container name1>": {"target": "%d-%c"}` | Umožňuje zadat názvy kontejnerů, které chcete nahrát do Azure. Tento modul umožňuje zadat zdroj a cíl názvy kontejnerů. Pokud nezadáte název cílového kontejneru, se automaticky přiřadí název kontejneru jako `<IoTHubName>-<IotEdgeDeviceID>-<ModuleName>-<SourceContainerName>`. Můžete vytvořit šablony řetězce pro název cílového kontejneru, podívejte se na sloupec možných hodnot. <br>* %h -> název centra IoT (3 až 50 znaků). <br>* %d -> ID zařízení IoT Edge (1 až 129 znaků). <br>* %m -> název modulu (1 až 64 znaků). <br>* %c -> velikost zdrojového kontejneru (3 až 63 znaků). <br><br>Maximální velikost název kontejneru je 63 znaků při automaticky přiřadí název cílového kontejneru Pokud velikost kontejneru je větší než 63 znaků, které budou trim každý oddíl (IoTHubName IotEdgeDeviceID, název modulu, SourceContainerName) 15 znaky. |
-| deleteAfterUpload | true, false | Ve výchozím nastavení nastavena na `false`. Když je nastaveno na `true`, automaticky odstraní data až po dokončení nahrávání do cloudového úložiště |
+| Pole | Možné hodnoty | Vysvětlení | Proměnná prostředí |
+| ----- | ----- | ---- | ---- |
+| uploadOn | true, false | Ve výchozím nastavení nastavena na `false`, pokud chcete, chcete-li ho na hodnotu `true`| `deviceToCloudUploadProperties__uploadOn={false,true}` |
+| uploadOrder | NewestFirst OldestFirst | Umožňuje vybrat pořadí, ve kterém se data kopírují do Azure. Ve výchozím nastavení nastavena na `OldestFirst`. Pořadí je určeno čas poslední změny objektu Blob | `deviceToCloudUploadProperties__uploadOrder={NewestFirst,OldestFirst}` |
+| cloudStorageConnectionString |  | `"DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>"` připojovací řetězec, který vám umožní určit účet Azure Storage, do kterého chcete data uložit. Zadejte `Azure Storage Account Name`, `Azure Storage Account Key`, `End point suffix`. Přidejte příslušné EndpointSuffix Azure kde bude nahrávaných dat, se mění globální Azure, Government Azure a Microsoft Azure Stack. | `deviceToCloudUploadProperties__cloudStorageConnectionString=<connection string>` |
+| storageContainersForUpload | `"<source container name1>": {"target": "<target container name>"}`,<br><br> `"<source container name1>": {"target": "%h-%d-%m-%c"}`, <br><br> `"<source container name1>": {"target": "%d-%c"}` | Umožňuje zadat názvy kontejnerů, které chcete nahrát do Azure. Tento modul umožňuje zadat zdroj a cíl názvy kontejnerů. Pokud nezadáte název cílového kontejneru, se automaticky přiřadí název kontejneru jako `<IoTHubName>-<IotEdgeDeviceID>-<ModuleName>-<SourceContainerName>`. Můžete vytvořit šablony řetězce pro název cílového kontejneru, podívejte se na sloupec možných hodnot. <br>* %h -> název centra IoT (3 až 50 znaků). <br>* %d -> ID zařízení IoT Edge (1 až 129 znaků). <br>* %m -> název modulu (1 až 64 znaků). <br>* %c -> velikost zdrojového kontejneru (3 až 63 znaků). <br><br>Maximální velikost název kontejneru je 63 znaků při automaticky přiřadí název cílového kontejneru Pokud velikost kontejneru je větší než 63 znaků, které budou trim každý oddíl (IoTHubName IotEdgeDeviceID, název modulu, SourceContainerName) 15 znaky. | `deviceToCloudUploadProperties__storageContainersForUpload__<sourceName>__target: <targetName>` |
+| deleteAfterUpload | true, false | Ve výchozím nastavení nastavena na `false`. Když je nastaveno na `true`, automaticky odstraní data až po dokončení nahrávání do cloudového úložiště | `deviceToCloudUploadProperties__deleteAfterUpload={false,true}` |
+
 
 ### <a name="deviceautodeleteproperties"></a>deviceAutoDeleteProperties
 
 Název tohoto nastavení je `deviceAutoDeleteProperties`
 
-| Pole | Možné hodnoty | Vysvětlení |
-| ----- | ----- | ---- |
-| deleteOn | true, false | Ve výchozím nastavení nastavena na `false`, pokud chcete, chcete-li ho na hodnotu `true`|
-| deleteAfterMinutes | `<minutes>` | Zadejte dobu v minutách. Modul se automaticky odstraní objektů blob z místního úložiště po vypršení této hodnoty |
-| retainWhileUploading | true, false | Ve výchozím nastavení nastavena na `true`, a zachová objekt blob, zatímco je nahrání do cloudového úložiště, když vyprší platnost deleteAfterMinutes. Můžete nastavit na `false` a odstraní data, jakmile vyprší platnost deleteAfterMinutes. Poznámka: Pro tuto vlastnost na práci uploadOn měl být nastaven na hodnotu true|
+| Pole | Možné hodnoty | Vysvětlení | Proměnná prostředí |
+| ----- | ----- | ---- | ---- |
+| deleteOn | true, false | Ve výchozím nastavení nastavena na `false`, pokud chcete, chcete-li ho na hodnotu `true`| `deviceAutoDeleteProperties__deleteOn={false,true}` |
+| deleteAfterMinutes | `<minutes>` | Zadejte dobu v minutách. Modul se automaticky odstraní objektů blob z místního úložiště po vypršení této hodnoty | `deviceAutoDeleteProperties__ deleteAfterMinutes=<minutes>` |
+| retainWhileUploading | true, false | Ve výchozím nastavení nastavena na `true`, a zachová objekt blob, zatímco je nahrání do cloudového úložiště, když vyprší platnost deleteAfterMinutes. Můžete nastavit na `false` a odstraní data, jakmile vyprší platnost deleteAfterMinutes. Poznámka: Pro tuto vlastnost na práci uploadOn měl být nastaven na hodnotu true| `deviceAutoDeleteProperties__retainWhileUploading={false,true}` |
 
 ## <a name="configure-log-files"></a>Konfigurace souborů protokolu
 

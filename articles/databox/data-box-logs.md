@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 108d17d3e0ca5f32648f9d4f6cf4b5f9a2984d0c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ba08cd7fdecda99c04d5bb1007b3e5f61cd1bd5c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66495808"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446771"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy"></a>Sledování a protokolování událostí pro Azure Data Box a Azure Data Box Heavy
 
@@ -29,7 +29,7 @@ Následující tabulka uvádí přehled zařízení Data Box nebo Data Box náro
 | Kopírování dat do zařízení        | [Zobrazení *error.xml* soubory](#view-error-log-during-data-copy) pro kopírování dat                                                             |
 | Příprava k odeslání            | [Kontrola souborů BOM](#inspect-bom-during-prepare-to-ship) nebo soubory manifestu v zařízení                                      |
 | Nahrání dat do Azure       | [Kontrola *copylogs* ](#review-copy-log-during-upload-to-azure) chyby během data nahrát na datové centrum Azure                         |
-| Vymazání dat ze zařízení   | [Zobrazit řetězce sledování postupného předávání protokolů](#get-chain-of-custody-logs-after-data-erasure) včetně protokoly auditu a uspořádat historii                                                   |
+| Vymazání dat ze zařízení   | [Zobrazit řetězce sledování postupného předávání protokolů](#get-chain-of-custody-logs-after-data-erasure) včetně protokoly auditu a uspořádat historii                |
 
 Tento článek podrobně popisuje, různé mechanismy nebo nástroje ke sledování a auditování objednávky zařízení Data Box nebo Data Box náročné. Informace v tomto článku platí pro zařízení Data Box i Data Box náročné. V dalších částech všechny odkazy na zařízení Data Box platí také pro Data Box náročné.
 
@@ -203,7 +203,7 @@ Pro každé objednávky, které se zpracovává, služba Data Box vytvoří *cop
 
 Cyklické zkontrolujte redundance (CRC) výpočet se provádí při nahrávání do Azure. CRC kopírování dat a po nahrání dat porovnávány. Neshoda CRC označuje, že odpovídající soubory se nepodařilo nahrát.
 
-Ve výchozím nastavení se protokoly zapisují na kontejner s názvem copylog. Protokoly se ukládají s následujícími zásadami vytváření názvů:
+Ve výchozím nastavení, protokoly se zapisují do kontejneru s názvem `copylog`. Protokoly se ukládají s následujícími zásadami vytváření názvů:
 
 `storage-account-name/databoxcopylog/ordername_device-serial-number_CopyLog_guid.xml`.
 
@@ -245,7 +245,41 @@ Tady je příklad copylog kde nahrávání dokončeno s chybami:
   <FilesErrored>2</FilesErrored>
 </CopyLog>
 ```
+Tady je příklad `copylog` ve kterém byly přejmenovány kontejnerů, které neodpovídala zásady vytváření názvů Azure během nahrávání dat do Azure.
 
+Nové jedinečné názvy pro kontejnery jsou ve formátu `DataBox-GUID` a dat pro kontejner jsou vloženy do nového kontejneru byl přejmenován. `copylog` Určuje starý a nový název kontejneru pro kontejner.
+
+```xml
+<ErroredEntity Path="New Folder">
+   <Category>ContainerRenamed</Category>
+   <ErrorCode>1</ErrorCode>
+   <ErrorMessage>The original container/share/blob has been renamed to: DataBox-3fcd02de-bee6-471e-ac62-33d60317c576 :from: New Folder :because either the name has invalid character(s) or length is not supported</ErrorMessage>
+  <Type>Container</Type>
+</ErroredEntity>
+```
+
+Tady je příklad `copylog` ve kterém byly přejmenovány objekty BLOB nebo soubory, které neodpovídala pro vytváření názvů, průběhu nahrávání dat do Azure. Nový objekt blob nebo názvů souborů jsou převedeny na hodnotou hash SHA256 relativní cesty ke kontejneru a jsou odeslány do cesty na základě cílového typu. Cílem může být objekty BLOB bloku, objekty BLOB stránky nebo soubory Azure.
+
+`copylog` Určuje starý a nový název objektu blob nebo souboru a cestu v Azure.
+
+```xml
+<ErroredEntity Path="TesDir028b4ba9-2426-4e50-9ed1-8e89bf30d285\Ã">
+  <Category>BlobRenamed</Category>
+  <ErrorCode>1</ErrorCode>
+  <ErrorMessage>The original container/share/blob has been renamed to: PageBlob/DataBox-0xcdc5c61692e5d63af53a3cb5473e5200915e17b294683968a286c0228054f10e :from: Ã :because either name has invalid character(s) or length is not supported</ErrorMessage>
+  <Type>File</Type>
+</ErroredEntity><ErroredEntity Path="TesDir9856b9ab-6acb-4bc3-8717-9a898bdb1f8c\Ã">
+  <Category>BlobRenamed</Category>
+  <ErrorCode>1</ErrorCode>
+  <ErrorMessage>The original container/share/blob has been renamed to: AzureFile/DataBox-0xcdc5c61692e5d63af53a3cb5473e5200915e17b294683968a286c0228054f10e :from: Ã :because either name has invalid character(s) or length is not supported</ErrorMessage>
+  <Type>File</Type>
+</ErroredEntity><ErroredEntity Path="TesDirf92f6ca4-3828-4338-840b-398b967d810b\Ã">
+  <Category>BlobRenamed</Category>
+  <ErrorCode>1</ErrorCode>
+  <ErrorMessage>The original container/share/blob has been renamed to: BlockBlob/DataBox-0xcdc5c61692e5d63af53a3cb5473e5200915e17b294683968a286c0228054f10e :from: Ã :because either name has invalid character(s) or length is not supported</ErrorMessage>
+  <Type>File</Type>
+</ErroredEntity>
+```
 
 ## <a name="get-chain-of-custody-logs-after-data-erasure"></a>Získá řetězec sledování postupného předávání protokolů za výmaz dat
 

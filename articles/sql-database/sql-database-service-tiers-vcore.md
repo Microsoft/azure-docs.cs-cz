@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 manager: craigg
-ms.date: 05/06/2019
-ms.openlocfilehash: 520dba611e6791fca990e21173424a914c3d8e14
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/26/2019
+ms.openlocfilehash: e9d1ce3bcd3bf958be0a7837e8416300af03f5a2
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66693347"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449739"
 ---
 # <a name="choose-among-the-vcore-service-tiers-and-migrate-from-the-dtu-service-tiers"></a>Zvolte mezi úrovněmi služeb vCore a migrovat z jednotek DTU úrovně služeb
 
@@ -28,6 +28,8 @@ Virtuální jádro (vCore) – na základě nákupní model umožňuje nezávisl
 
 Gen4 hardware nabízí podstatně více paměti na vCore. Gen5 hardware však umožňuje vertikálně navýšit kapacitu výpočetních prostředků mnohem vyšší.
 
+> [!IMPORTANT]
+> Nové databáze Gen4 již nejsou podporovány v oblasti AustraliaEast.
 > [!NOTE]
 > Informace o úrovních služeb na základě DTU najdete v tématu [pro nákupní model založený na DTU úrovně služeb](sql-database-service-tiers-dtu.md). Informace o rozdílech mezi úrovněmi služeb pro založený na DTU a modely nákupu založený na virtuálních jádrech najdete v tématu [modely nákupu Azure SQL Database](sql-database-purchase-models.md).
 

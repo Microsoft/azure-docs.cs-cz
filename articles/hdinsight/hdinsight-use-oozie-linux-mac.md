@@ -7,12 +7,12 @@ ms.author: omidm
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 55db43bf3037fcba59e7ad783c6d8c06f1886bdb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8227ff0c56e147db66c4cdc93083d671b08d1d98
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65142834"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67433421"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Použití Apache Oozie s Hadoopem Apache k definování a spuštění workflowu v Azure HDInsight založených na Linuxu
 
@@ -127,7 +127,7 @@ Pomocí následujících kroků vytvořte skript jazyka (HiveQL) dotaz Hive, kte
 
    * `${hiveDataFolder}`: Obsahuje umístění pro uložení souborů dat pro tabulku.
 
-     Soubor definice pracovního postupu, workflow.xml v tomto kurzu se tyto hodnoty předá tento skript HiveQL v době běhu.
+     Soubor definice pracovního postupu, workflow.xml v tomto článku se tyto hodnoty předá tento skript HiveQL v době běhu.
 
 4. K uložení souboru, vyberte kombinaci kláves Ctrl + X, zadejte `Y`a pak vyberte **Enter**.  
 
@@ -708,7 +708,7 @@ Například pro úlohy v tomto dokumentu použijete následující kroky:
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste zjistili, jak definovat pracovní postup Oozie a jak se spouští úloha Oozie. Další informace o tom, jak pracovat s HDInsight, naleznete v následujících článcích:
+V tomto článku jste zjistili, jak definovat pracovní postup Oozie a jak se spouští úloha Oozie. Další informace o tom, jak pracovat s HDInsight, naleznete v následujících článcích:
 
 * [Nahrání dat pro úlohy Apache Hadoop v HDInsight][hdinsight-upload-data]
 * [Použití Apache Sqoop s Apache Hadoop v HDInsight][hdinsight-use-sqoop]

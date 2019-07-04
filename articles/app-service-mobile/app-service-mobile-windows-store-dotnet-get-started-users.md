@@ -3,7 +3,7 @@ title: Přidání ověřování do aplikace pro univerzální platformu Windows 
 description: 'Zjistěte, jak používat Azure App Service Mobile Apps k ověřování uživatelů vaší aplikace univerzální platformy Windows (UPW) pomocí různých poskytovatelů identit, včetně: AAD, Google, Facebook, Twitter a Microsoft.'
 services: app-service\mobile
 documentationcenter: windows
-author: conceptdev
+author: elamalani
 manager: panarasi
 editor: ''
 ms.assetid: 6cffd951-893e-4ce5-97ac-86e3f5ad9466
@@ -12,18 +12,23 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 07/05/2017
-ms.author: panarasi
-ms.openlocfilehash: 7caaa1ca4cdaf7290b7ce05d17c07e565e7b51d1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: 9a3a6a8d063836094c1285a5ab4c17ee403fc347
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62127994"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67440239"
 ---
 # <a name="add-authentication-to-your-windows-app"></a>Přidání ověřování do aplikace pro Windows
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
+> [!NOTE]
+> Visual Studio App Center investuje do nové a integrované služby, které jsou centrální při vývoji mobilních aplikací. Vývojáři mohou použít **sestavení**, **testovací** a **rozmístit** služby vytvořit kanál pro průběžnou integraci a doručování. Po nasazení aplikace se můžou vývojáři monitorovat stav a využití své aplikace pomocí **Analytics** a **diagnostiky** služeb a Zaujměte uživatele, kteří používají **Push** Služba. Vývojáři mohou využít i **Auth** k ověření uživatelů a **Data** službu zachovat, synchronizaci dat aplikací v cloudu. Podívejte se na [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-windows-store-dotnet-get-started-users) ještě dnes.
+>
+
+## <a name="overview"></a>Přehled
 Toto téma ukazuje, jak přidat cloudové ověřování do vaší mobilní aplikace. V tomto kurzu přidáte ověřování do projektu univerzální platformu Windows (UPW) pomocí zprostředkovatele identity, který je podporovaný službou Azure App Service Mobile Apps. Po se úspěšně ověří a autorizuje back-endu mobilní aplikace, zobrazí se hodnota ID uživatele.
 
 Tento kurz je založený na rychlý start Mobile Apps. Musíte nejdřív dokončit tento kurz [Začínáme s Mobile Apps](app-service-mobile-windows-store-dotnet-get-started.md).

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: 3820a5d7becef275ed3408f01cc53ad8590ba60e
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 2966f90dcb381e439c00a6540ef9a01bd24f8743
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67272414"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561178"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Řešení potíží s chybějícími daty v nástroji Application Insights pro .NET
 ## <a name="some-of-my-telemetry-is-missing"></a>Chybí některé telemetrie
@@ -28,13 +28,13 @@ ms.locfileid: "67272414"
 
 *Dochází ke ztrátě dat náhodně.*
 
-* Zaškrtněte, pokud dochází k ztrátu dat na [Telemetrie kanálu](telemetry-channels.md#does-applicationinsights-channel-offer-guaranteed-telemetry-delivery-or-what-are-the-scenarios-where-telemetry-can-be-lost)
+* Zaškrtněte, pokud dochází k ztrátu dat na [Telemetrie kanálu](telemetry-channels.md#does-the-application-insights-channel-guarantee-telemetry-delivery-if-not-what-are-the-scenarios-in-which-telemetry-can-be-lost)
 
 * Vyhledat všechny známé problémy v kanálu Telemetrie [úložiště Github](https://github.com/Microsoft/ApplicationInsights-dotnet/issues)
 
 *Ztráty dat v aplikaci konzoly nebo ve webové aplikaci dochází při aplikaci se chystá ukončit.*
 
-* Kanál sady SDK udržuje telemetrická data ve vyrovnávací paměti a odešle je v dávkách. Pokud se aplikace vypíná, je nutné explicitně volat [vyprázdnění()](api-custom-events-metrics.md#flushing-data). Chování `Flush()` závisí na skutečnou [kanál](telemetry-channels.md#built-in-telemetrychannels) použít.
+* Kanál sady SDK udržuje telemetrická data ve vyrovnávací paměti a odešle je v dávkách. Pokud se aplikace vypíná, je nutné explicitně volat [vyprázdnění()](api-custom-events-metrics.md#flushing-data). Chování `Flush()` závisí na skutečnou [kanál](telemetry-channels.md#built-in-telemetry-channels) použít.
 
 ## <a name="no-data-from-my-server"></a>Žádná data ze svého serveru
 *Mám nainstalovanou aplikaci na webovém serveru a nyní nevidím žádnou telemetrii z něj. OK pracoval na mém počítači vývoje.*
@@ -215,7 +215,9 @@ Postupujte podle těchto pokynů k zachycení protokoly pro řešení potíží 
 
 ### <a name="net-core"></a>.NET Core
 
-1. Nainstalujte [Microsoft.AspNetCore.ApplicationInsights.HostingStartup](https://www.nuget.org/packages/Microsoft.AspNetCore.ApplicationInsights.HostingStartup) balíčku od Nugetu. Verze, kterou instalujete, musí odpovídat aktuální nainstalovaná verze `Microsoft.ApplicationInsights`
+1. Nainstalujte [Microsoft.AspNet.ApplicationInsights.HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) balíčku od Nugetu. Verze, kterou instalujete, musí odpovídat aktuální nainstalovaná verze `Microsoft.ApplicationInsights`
+
+Nejnovější verze Microsoft.ApplicationInsights.AspNetCore je 2.7.1 a odkazuje na verzi 2.10 Microsoft.ApplicationInsights. Proto verze Microsoft.AspNet.ApplicationInsights.HostingStartup instalaci by měl být 2.10.0
 
 2. Upravit `ConfigureServices` metoda ve vaší `Startup.cs` třídy.:
 

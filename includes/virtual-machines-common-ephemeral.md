@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/02/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 3e9885466d422a0428311ed3013e2ab34341cd25
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 24c2bfa4aae94642d3ed66f2cfa6e31ba1e6b19a
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66391439"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67457281"
 ---
 Dočasné disky s operačním systémem jsou vytvořené v místním úložišti virtuální počítač (VM) a není trvalý do vzdáleného úložiště Azure. Dočasné disky s operačním systémem fungují dobře u bezstavových úloh, kdy aplikace jsou odolné proti selhání jednotlivých virtuálních počítačů, ale více jde o dobu potřebnou pro rozsáhlá nasazení nebo dobu obnovení z Image jednotlivých instancí virtuálních počítačů. Je také vhodné pro aplikace nasazené pomocí modelu nasazení classic, přesunout do modelu nasazení Resource Manager. U dočasných disků s operačním systémem se projevuje nižší latence čtení/zápisu na disk s operačním systémem a rychlejší obnovení virtuálního počítače z image. Kromě toho je disk s operačním systémem dočasné zdarma, vám být účtovány žádné náklady na úložiště pro disk s operačním systémem. 
  

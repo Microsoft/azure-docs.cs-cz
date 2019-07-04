@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 0672f25b30bfb34a6ee99b0f4710d01cf0871300
-ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
+ms.openlocfilehash: 6506a93914cfbc10f37980c4b916a93aa9aad75d
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67150329"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67564405"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Plánování nasazení služby Soubory Azure
 
@@ -83,29 +83,24 @@ Standardní sdílené složky se zálohují na jednotky pevných disků (HDD). S
 Standardní sdílené složky maximálně 5 TiB velikosti jsou k dispozici jako nabídka všeobecné dostupnosti. Větší sdílené složky, které jsou všechny sdílené složky, který je větší než 5 TiB až do maximálního počtu 100 TB, které jsou aktuálně k dispozici jako nabídka verze preview.
 
 > [!IMPORTANT]
-> - Je potřeba vytvořit nový účet úložiště obecné účely (nelze rozšířit existující účty úložiště).
-> - Jsou k dispozici pouze při použití úložiště LRS.
-> - Chcete-li k dispozici ve třech oblastech: USA – západ 2, západní Evropa a jihovýchodní Asie oblasti.
-> - LRS na GRS převod účtu nebude možné na všechny nové účty úložiště vytvořené ve verzi Preview větší souborů sdílených složek je přijat předplatné.
+> Zobrazit [připojení k větší sdílené složky (úrovně standard)](#onboard-to-larger-file-shares-standard-tier) části Postup uvedení, stejně jako obor a omezení verze preview.
 
-Pokud chcete připojit k verzi preview tyto větší velikosti sdílené složky souborů, odešlete to [formuláře](https://aka.ms/azurefilesatscalesurvey). 
+### <a name="premium-file-shares"></a>Premium sdílené složky
 
-### <a name="premium-file-shares-preview"></a>Premium sdílené složky (preview)
-
-Premium sdílené složky (preview) jsou zajišťované disky SSD (Solid-State Drive). Sdílené složky Premium poskytují konzistentní vysoký výkon a nízkou latencí v řádu milisekund pro většinu operací vstupně-výstupních operací pro úlohy náročné na vstupně-výstupních operací. Díky tomu je vhodné pro celou řadu úloh, jako jsou databáze, hostování webové stránky, vývojová prostředí atd. Sdílené složky Premium jsou dostupné jenom v zřízené model fakturace. Premium sdílených složek pomocí modelu nasazení, která je oddělená od standardní sdílené složky.
+Premium sdílené složky se zálohují na jednotky SSD (Solid-State Drive). Sdílené složky Premium poskytují konzistentní vysoký výkon a nízkou latencí v řádu milisekund pro většinu operací vstupně-výstupních operací pro úlohy náročné na vstupně-výstupních operací. Díky tomu je vhodné pro celou řadu úloh, jako jsou databáze, hostování webové stránky a vývojových prostředích. Sdílené složky Premium jsou dostupné jenom v zřízené model fakturace. Premium sdílených složek pomocí modelu nasazení, která je oddělená od standardní sdílené složky.
 
 Azure Backup je dostupná pro sdílené složky premium a Azure Kubernetes Service podporuje sdílené složky premium ve verzi 1.13 a vyšší.
 
 Pokud chcete další informace o vytvoření sdílené složky premium, najdete v našem článku k tomuto tématu: [Postup vytvoření účtu služby Azure premium storage soubor](storage-how-to-create-premium-fileshare.md).
 
-V současné době nelze převést přímo mezi standardní sdílené složky a sdílené složky premium. Pokud chcete přepnout na buď vrstvy, musíte vytvořit nové sdílené složky v dané úrovni a ručně zkopírujte data z původní sdílené složky do nové sdílené složky, kterou jste vytvořili. Provedete to jedním z nástroje pro kopírování nepodporuje soubory Azure, například AzCopy.
+V současné době nelze převést přímo mezi standardní sdílené složky a sdílené složky premium. Pokud chcete přepnout na buď vrstvy, musíte vytvořit nové sdílené složky v dané úrovni a ručně zkopírujte data z původní sdílené složky do nové sdílené složky, kterou jste vytvořili. Provedete to jedním z nástroje pro kopírování souborů Azure nepodporuje, například Robocopy nebo AzCopy.
 
 > [!IMPORTANT]
-> Premium sdílené složky jsou stále ve verzi preview, k dispozici pouze při použití úložiště LRS a jsou k dispozici ve většině oblastí, které nabízejí účty úložiště. Pokud jsou premium sdílené složky ve vaší oblasti aktuálně k dispozici, najdete v tématu [dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=storage) stránky pro Azure.
+> Sdílené složky Premium k dispozici pouze při použití úložiště LRS a jsou k dispozici ve většině oblastí, které nabízejí účty úložiště. Pokud jsou premium sdílené složky ve vaší oblasti aktuálně k dispozici, najdete v tématu [dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=storage) stránky pro Azure.
 
 ### <a name="provisioned-shares"></a>Zřízené sdílené složky
 
-Premium sdílené složky (preview) se zřizují podle pevný poměr GiB/IOPS a propustnosti. Pro každý GiB zřízené sdílené složky budou vydány lístky jeden IOPS a propustnost 0,1 MiB/s až po maximální limity jednotlivou sdílenou složku. Minimální povolená zřizování je 100 GB s minimální IOPS a propustnosti.
+Premium sdílené složky se zřizují podle pevný poměr GiB/IOPS a propustnosti. Pro každý GiB zřízené sdílené složky budou vydány lístky jeden IOPS a propustnost 0,1 MiB/s až po maximální limity jednotlivou sdílenou složku. Minimální povolená zřizování je 100 GB s minimální IOPS a propustnosti.
 
 Na jak kapacita systému dovolí můžete převést všechny sdílené složky až tři vstupně-výstupních operací za GiB zřízeném úložišti po dobu 60 minut nebo i delší dobu v závislosti na velikosti sdílené složky. Nových sdílených složek začněte s kreditem úplné burst na základě zřízené kapacity.
 
@@ -137,6 +132,9 @@ Následující tabulka ukazuje několik příkladů tyto vzorce pro velikosti z�
 |51,200      | 51,200  | Až 100 000 | 3,132 | 2,088   |
 |102,400     | 100 000 | Až 100 000 | 6,204 | 4,136   |
 
+> [!NOTE]
+> Výkon sdílených složek souborů se může počítač omezení sítě, dostupnou šířku pásma sítě, velikosti vstupně-výstupních operací, paralelismu mezi řadu dalších faktorů. K dosažení maximálního výkonu, škálování, rozložit zatížení mezi několik virtuálních počítačů. Najdete [Průvodce odstraňováním potíží](storage-troubleshooting-files-performance.md) některé běžné problémy s výkonem a alternativní řešení.
+
 ### <a name="bursting"></a>Shlukování
 
 Premium sdílené složky můžete převést jejich vstupně-výstupních operací až faktor tři. Shlukování je automatizovaná a funguje podle platební systém. Shlukování funguje jak kapacita systému dovolí a burst limit není zárukou, sdílené složky můžete burst *až* limit.
@@ -158,9 +156,9 @@ Nové spuštění sdílené složky souboru s úplnou počtem Kredity v jeho bur
 
 ## <a name="file-share-redundancy"></a>Zálohování sdílené složky souboru
 
-Soubory standardní sdílené složky Azure podporuje tři možnosti redundance dat: místně redundantní úložiště (LRS), zónově redundantní úložiště (ZRS) a geograficky redundantní úložiště (GRS).
+Soubory standardní sdílené složky Azure podporují tři možnosti redundance dat: místně redundantní úložiště (LRS), zónově redundantní úložiště (ZRS) a geograficky redundantní úložiště (GRS).
 
-Azure premium soubory se sdílí jenom podporuje místně redundantní úložiště (LRS).
+Azure premium sdílených složek se podporují jenom místně redundantní úložiště (LRS).
 
 Následující části popisují rozdíly mezi možnostmi různých redundance:
 
@@ -192,6 +190,48 @@ Mějte tyto body při rozhodování o možnosti replikace, kterou chcete použí
 * Zónově redundantní úložiště (ZRS) poskytuje vysokou dostupnost díky synchronní replikaci a může být lepší volbou pro některé scénáře než GRS. Další informace o ZÓNOVĚ najdete v tématu [ZRS](../common/storage-redundancy-zrs.md).
 * Asynchronní replikace zahrnuje zpoždění od okamžiku, data se zapisují do primární oblasti do při replikaci do sekundární oblasti. Regionální havárie mohou být změny, které nebyly dosud replikují do sekundární oblasti ztraceny, pokud tato data nejde obnovit z primární oblasti.
 * S GRS není k dispozici pro čtení nebo zápis repliky, pokud Microsoft nezahájí převzetí služeb při selhání do sekundární oblasti. V případě selhání budete přečetl(a) a přístup pro zápis k těmto datům po převzetí služeb byla dokončena. Další informace najdete v tématu [pokyny pro zotavení po havárii](../common/storage-disaster-recovery-guidance.md).
+
+## <a name="onboard-to-larger-file-shares-standard-tier"></a>Připojení k větší sdílené složky (úrovně standard)
+
+Tato část platí pouze pro standardní sdílené složky. Všechny sdílené složky premium jsou k dispozici 100 TiB jako nabídka všeobecné dostupnosti.
+
+### <a name="restrictions"></a>Omezení
+
+- Je potřeba vytvořit nový účet úložiště obecné účely (nelze rozšířit existující účty úložiště).
+- LRS na GRS převod účtu nebude možné na všechny nové účty úložiště vytvořené ve verzi Preview větší souborů sdílených složek je přijat předplatné.
+
+### <a name="regional-availability"></a>Regionální dostupnost
+
+Standardní sdílené složky jsou k dispozici ve všech oblastech maximálně 5 TiB. V některých oblastech je k dispozici 100 TB omezení, tyto oblasti jsou uvedeny v následující tabulce:
+
+|Oblast  |Podporované redundance  |Podporuje existující účty úložiště  |
+|---------|---------|---------|
+|Jihovýchodní Asie     |LRS|Ne         |
+|Západní Evropa     |LRS|Ne         |
+|Západní USA 2     |LRS, ZRS|Ne         |
+
+
+### <a name="steps-to-onboard"></a>Postup připojení
+
+K registraci předplatného na větší preview sdílené složky souboru, spusťte následující příkazy Powershellu:
+
+```powershell
+Register-AzProviderFeature -FeatureName AllowLargeFileShares -ProviderNamespace Microsoft.Storage
+Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
+```
+Vaše předplatné bude automaticky schválená po obou příkazy se spouští.
+
+Pokud chcete ověřit stav registrace, spustíte následující příkaz:
+
+```powershell
+Get-AzProviderFeature -FeatureName AllowLargeFileShares -ProviderNamespace Microsoft.Storage
+```
+
+Může trvat až 15 minut pro váš status aktualizovat **zaregistrovaný**. Jakmile se stav **zaregistrovaný**, byste měli použít funkci.
+
+### <a name="use-larger-file-shares"></a>Použijte větší sdílené složky
+
+Pokud chcete začít používat větší sdílené složky, vytvořte nový účet úložiště obecné účely v2 a nové sdílené složky.
 
 ## <a name="data-growth-pattern"></a>Vzorek nárůstu dat
 

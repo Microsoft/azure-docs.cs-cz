@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: 06e3178e344ee46f67cfd8a6feaf08d56d3c86e7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: abfbac552cc5cb4449a75c45d0c1ffdbcf6b770c
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64724128"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508103"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-net-sdk"></a>Spravovat clustery systému Apache Hadoop v HDInsight pomocí sady .NET SDK
 
@@ -257,10 +257,6 @@ Zobrazit [ukázky spustit MapReduce v HDInsight](hadoop/apache-hadoop-run-sample
 
 Zobrazit [spouštění Apache dotazů Hive pomocí sady .NET SDK](hadoop/apache-hadoop-use-hive-dotnet-sdk.md).
 
-**Odesílat úlohy Apache Pig**
-
-Zobrazit [Apache Pig spuštění úlohy pomocí sady .NET SDK](hadoop/apache-hadoop-use-pig-dotnet-sdk.md).
-
 **Odesílat úlohy Apache Sqoop**
 
 Zobrazit [použití Apache Sqoop s HDInsight](hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md).
@@ -271,7 +267,7 @@ Zobrazit [použití Apache Oozie s Hadoopem k definování a spuštění workflo
 
 ## <a name="upload-data-to-azure-blob-storage"></a>Nahrání dat do úložiště objektů Blob v Azure
 
-Viz [Nahrání dat do služby HDInsight][hdinsight-upload-data].
+Zobrazit [nahrání dat do HDInsight][hdinsight-upload-data].
 
 ## <a name="see-also"></a>Viz také
 
@@ -280,7 +276,7 @@ Viz [Nahrání dat do služby HDInsight][hdinsight-upload-data].
 * [Správa HDInsight pomocí rozhraní příkazového řádku][hdinsight-admin-cli]
 * [Vytvoření clusterů HDInsight][hdinsight-provision]
 * [Nahrání dat do služby HDInsight][hdinsight-upload-data]
-* [Začínáme se službou Azure HDInsight][hdinsight-get-started]
+* [Začínáme s Azure HDInsight][hdinsight-get-started]
 
 [azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
 [azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/

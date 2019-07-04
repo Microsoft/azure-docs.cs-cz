@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bdd91f8ee1228febe71244530a63fe992df56d9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7582cd8453b25f071c18566f09d2155a6377a0a6
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67110848"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482155"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Platforma identit Microsoft a tok OAuth 2.0 On-Behalf-Of
 
@@ -42,7 +42,7 @@ Předpokládejme, že uživatel byl ověřen na aplikace s využitím [toku udě
 
 Jaké kroky musí provést tvoří tok OBO a jsou vysvětleny díky pomoci následující diagram.
 
-![OAuth 2.0 On-Behalf-Of toku](./media/v2-oauth2-on-behalf-of-flow/protocols-oauth-on-behalf-of-flow.png)
+![Ukazuje, OAuth 2.0 On-Behalf-Of toku](./media/v2-oauth2-on-behalf-of-flow/protocols-oauth-on-behalf-of-flow.png)
 
 1. Klientská aplikace odešle požadavek rozhraní API A s tokenem A (pomocí `aud` deklarace identity a rozhraní API).
 1. Rozhraní API A ověřuje u konkrétního koncového bodu Microsoft identity platform vystavování tokenů a žádá token pro přístup k rozhraní API služby serveru B.

@@ -6,86 +6,49 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 06/30/2019
 ms.author: sutalasi
-ms.openlocfilehash: 7725563a80182be8f8c02d94ef1e6cfa382c04d3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1c44b10b54a5f58dff1aecf36c3633cc8ffbd8f0
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64924852"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491780"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>Nastavení zotavení po havárii pro SQL Server
 
 Tento článek popisuje, jak chránit SQL Server back-endu aplikace pomocí kombinace kontinuity SQL serveru a technologie (BCDR) pro obnovení po havárii, a [Azure Site Recovery](site-recovery-overview.md).
 
-Než začnete, ujistěte se, že rozumíte možnosti zotavení po havárii serveru SQL Server, včetně clustering převzetí služeb při selhání skupiny dostupnosti Always On, zrcadlení databáze a přesouvání protokolu.
+Než začnete, ujistěte se, že chápete, že možnosti zotavení po havárii serveru SQL Server, včetně clustering převzetí služeb při selhání skupiny dostupnosti Always On, zrcadlení databází, přesouvání, aktivní geografické replikace a skupiny – automatické převzetí služeb při selhání protokolu.
 
+## <a name="dr-recommendation-for-integration-of-sql-server-bcdr-technologies-with-site-recovery"></a>Zotavení po Havárii doporučení pro integraci produktů technologiemi BCDR SQL serveru pomocí služby Site Recovery
 
-## <a name="sql-server-deployments"></a>Nasazení SQL serveru
+Volbu technologie BCDR pro obnovení SQL servery by měla být podle svých potřeb RTO a RPO jak je uvedeno následující tabulka. Po provedení široké možnosti volby Site Recovery je možné integrovat s těmito technologiemi, abychom Orchestrace zotavení celé aplikace operaci převzetí služeb při selhání.
 
-Mnoho úloh SQL serveru použít jako základ a dá se integrovat s aplikací, jako jsou SharePoint, Dynamics a SAP, implementovat datové služby.  SQL Server se dá nasadit v několika způsoby:
+**Typ nasazení** | **Technologie BCDR** | **Očekávaný RTO pro SQL** | **Očekávané cíle bodu obnovení pro SQL** |
+--- | --- | --- | ---
+SQL Server na virtuálním počítači Azure IaaS nebo na on-premises| **[Skupina dostupnosti AlwaysOn](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server?view=sql-server-2017)** | Ekvivalent čas potřebný k vytvoření sekundární repliky jako primární | Replikace je asynchronní do sekundární repliky, a proto došlo ztrátě dat.
+SQL Server na virtuálním počítači Azure IaaS nebo na on-premises| **[Převzetí služeb clusteringu (vždy na FCI)](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server?view=sql-server-2017)** | Ekvivalent čas potřebný k převzetí služeb při selhání mezi uzly | Používá sdílené úložiště, a proto zobrazení stejné úložiště instance k dispozici na převzetí služeb při selhání.
+SQL Server na virtuálním počítači Azure IaaS nebo na on-premises| **[Zrcadlení (výkonné režim)](https://docs.microsoft.com/sql/database-engine/database-mirroring/database-mirroring-sql-server?view=sql-server-2017)** | Ekvivalent čas potřebný k vynucení službu, která používá jako záložní pohotovostní server zrcadlový server. | Je asynchronní replikace. Zrcadlové databáze může být prodleva trochu za primární databáze. Rozdíl je obvykle malé howvever, může být značné, pokud je objekt zabezpečení nebo zrcadlový server systému při velkém zatížení.<br></br>Může být dodatek k zrcadlení databáze přesouvání protokolu a uspokojivým alternativu, která umožňuje asynchronní zrcadlení
+SQL jako PaaS v Azure<br></br>(Elastické fondy, servery SQL database) | **Aktivní geografická replikace** | 30 sekund, po jeho aktivaci<br></br>Při aktivaci převzetí služeb při selhání na jednu sekundární databází, všechny ostatní sekundární repliky jsou automaticky propojení se nový primární. | Cíl bodu obnovení 5 sekund<br></br>Aktivní geografická replikace využívá technologii AlwaysOn SQL serveru na asynchronní potvrzené transakce u primární databáze replikace do sekundární databáze pomocí izolace snímku. <br></br>Je zaručeno, že sekundární data nikdy nemůžete mít částečné transakce.
+SQL jako PaaS nakonfigurovaný s aktivní geografickou replikaci v Azure<br></br>(SQL Database Managed Instance, elastické fondy SQL databázové servery) | **Skupiny automatického převzetí služeb při selhání** | RTO 1 hodina | Cíl bodu obnovení 5 sekund<br></br>Automatické převzetí služeb při selhání skupiny poskytují sémantiku skupiny nad aktivní geografickou replikaci, ale používá stejné mechanismu asynchronní replikace.
+SQL Server na virtuálním počítači Azure IaaS nebo na on-premises| **Replikace Azure Site Recovery** | Obvykle méně než 15 minut. [Přečtěte si další](https://azure.microsoft.com/support/legal/sla/site-recovery/v1_2/) Další informace o smlouvě SLA RTO, poskytuje Azure Site Recovery. | 1 hodina pro zajištění konzistence aplikace a 5 minut, než konzistenci při selhání. 
 
-* **Standalone SQL Server**: SQL Server a všechny databáze jsou hostované na jednom počítači (fyzický nebo virtuální). Pokud virtualizovaný, hostitele clustering slouží pro místní vysokou dostupnost. Vysoká dostupnost na úrovni hosta není implementována.
-* **SQL Server Failover Clustering instance (vždy pro FCI)** : Dva nebo více uzlů se systémem SQL Server instance se sdílenými disky jsou konfigurované v clusteru převzetí služeb při selhání Windows. Pokud uzel je vypnutý, clusteru můžete předat serveru SQL Server do jiné instance. Toto nastavení se obvykle používá pro implementaci vysoké dostupnosti v primární lokalitě. Toto nasazení nebude chránit proti selhání nebo kvůli výpadku ve vrstvě sdíleného úložiště. Sdílený disk je možné implementovat pomocí iSCSI, fiber channel nebo sdílený soubor vhdx.
-* **SQL skupin dostupnosti Always On**: Dva nebo více uzlů jsou nastavené ve sdílené nic cluster s databází serveru SQL Server nakonfigurován ve skupině dostupnosti s synchronní replikace a automatické převzetí služeb při selhání.
+> [!NOTE]
+> Několik důležité aspekty při ochraně pracovních zátěží SQL pomocí Azure Site Recovery:
+> * Azure Site Recovery je nezávislý na aplikace, a proto všechny verze systému SQL server, který je nasazen na podporovaný operační systém může být chráněn Azure Site Recovery. [Další informace](vmware-physical-azure-support-matrix.md#replicated-machines).
+> * Můžete pomocí Site Recovery pro každé nasazení v Azure a Hyper-V, VMware nebo fyzické infrastruktuře. Postupujte prosím podle [pokyny](site-recovery-sql.md#how-to-protect-a-sql-server-cluster-standard-editionsql-server-2008-r2) na konci dokumentu o ochraně clusteru SQL serveru pomocí Azure Site Recovery.
+> * Ujistěte se, že data změnit rychlost (zapsané bajty za sekundu) pozorovaný na tento počítač je v rámci [omezení Site Recovery](vmware-physical-azure-support-matrix.md#churn-limits). Pro počítače s windows můžete to zobrazit na kartě výkonu ve Správci úloh. Sledujte zápisu rychlost pro každý disk.
+> * Azure Site Recovery podporuje replikaci instance clusteru převzetí služeb při selhání na prostory úložiště – přímé. [Další informace](azure-to-azure-how-to-enable-replication-s2d-vms.md).
+ 
 
-  V tomto článku využívají následující nativní SQL po havárii obnovení technologie pro obnovení databází do vzdálené lokality:
+## <a name="disaster-recovery-of-application"></a>Zotavení po havárii aplikace
 
-* SQL skupin dostupnosti Always On, zajištění zotavení po havárii pro SQL Server 2012 nebo 2014 Enterprise.
-* SQL zrcadlení databáze v režimu vysoké zabezpečení pro SQL Server Standard edition (libovolná verze) nebo SQL Server 2008 R2.
+**Azure Site Recovery orchestruje testovací převzetí služeb při selhání a převzetí služeb při selhání celé aplikace pomocí plánů obnovení.** 
 
-## <a name="site-recovery-support"></a>Podpora Site Recovery
+Existují některé předpoklady k zajištění, že se že plán obnovení je plně přizpůsobit podle vašim požadavkům. Žádné nasazení systému SQL Server obvykle potřebuje služby Active Directory. Také potřebuje připojení pro aplikační vrstvu.
 
-### <a name="supported-scenarios"></a>Podporované scénáře
-Site Recovery může chránit SQL Server, jak je uvedené v tabulce.
-
-**Scénář** | **Do sekundární lokality** | **Do Azure**
---- | --- | ---
-**Hyper-V** | Ano | Ano
-**VMware** | Ano | Ano
-**Fyzický server** | Ano | Ano
-**Azure** |Není k dispozici| Ano
-
-### <a name="supported-sql-server-versions"></a>Podporované verze systému SQL Server
-Tyto verze systému SQL Server jsou podporovány pro podporované scénáře:
-
-* SQL Server 2016 Enterprise a Standard
-* SQL Server 2014 Enterprise a Standard
-* SQL Server 2012 Enterprise a Standard
-* SQL Server 2008 R2 Enterprise and Standard
-
-### <a name="supported-sql-server-integration"></a>Podporované integrace SQL serveru
-
-Site Recovery je možné integrovat s nativní technologiemi BCDR SQL serveru, které jsou uvedené v tabulce, k poskytování řešení zotavení po havárii.
-
-**Funkce** | **Podrobnosti** | **SQL Server** |
---- | --- | ---
-**Skupiny dostupnosti Always On** | Více samostatných instancí systému SQL Server běží v clusteru převzetí služeb při selhání, který má více uzlů.<br/><br/>Databáze je možné seskupit do skupiny převzetí služeb při selhání, které je možné zkopírovat (zrcadlení) v instancích systému SQL Server tak, že je potřeba žádné sdílené úložiště.<br/><br/>Poskytuje zotavení po havárii mezi primární lokalitou a jeden nebo více sekundárních lokalit. Dva uzly lze nastavit ve sdílené nic cluster s databází serveru SQL Server nakonfigurován ve skupině dostupnosti s synchronní replikace a automatické převzetí služeb při selhání. | SQL Server 2016, SQL Server 2014 & SQL Server 2012 Enterprise edition
-**Převzetí služeb clusteringu (vždy na FCI)** | SQL Server využívá Windows převzetí služeb při selhání clusteringu pro vysokou dostupnost úloh v místním SQL serveru.<br/><br/>Uzly, které běží instance systému SQL Server se sdílenými disky jsou konfigurované v clusteru převzetí služeb při selhání. Pokud instance je mimo provoz clusteru převezme služby při selhání do jiné.<br/><br/>Cluster nebude chránit proti selhání a méně výpadků ve sdíleném úložišti. Je možné implementovat pomocí iSCSI, Fibre channel, sdílený disk, nebo sdílené soubory Vhdx. | SQL Server Enterprise editions<br/><br/>SQL Server Standard edition (omezeno na pouze dva uzly)
-**Zrcadlení (vysokou bezpečnost režim)** | Chrání izolovanou databázi na jednu sekundární kopii. K dispozici v obou vysokou bezpečnost (synchronní) a vysoký výkon (asynchronní) replikace režimy. Nevyžaduje, aby cluster převzetí služeb při selhání. | SQL Server 2008 R2<br/><br/>SQL Server Enterprise všechny edice
-**Standalone SQL Server** | SQL Server a databáze jsou hostované na jeden server (fyzický nebo virtuální). Hostitele clusterů se používá pro zajištění vysoké dostupnosti, pokud je virtuální server. Bez vysoké dostupnosti úrovni hosta. | Edice Enterprise nebo Standard
-
-## <a name="deployment-recommendations"></a>Doporučení pro nasazení
-
-Tato tabulka shrnuje našimi doporučeními k integraci technologiemi BCDR SQL serveru se službou Site Recovery.
-
-| **Verze** | **Edice** | **Nasazení** | **Místního v místním prostředí** | **V místním prostředí do Azure** |
-| --- | --- | --- | --- | --- |
-| SQL Server 2014, 2016 a 2012 |Enterprise |Instance clusteru převzetí služeb při selhání |Skupiny dostupnosti AlwaysOn |Skupiny dostupnosti AlwaysOn |
-|| Enterprise |Skupiny dostupnosti AlwaysOn pro vysokou dostupnost |Skupiny dostupnosti AlwaysOn |Skupiny dostupnosti AlwaysOn |
-|| Standard |Instance clusteru převzetí služeb při selhání (FCI) |Replikace služby Site Recovery s místní zrcadlový svazek |Replikace služby Site Recovery s místní zrcadlový svazek |
-|| Enterprise nebo Standard |Standalone |Replikace služby Site Recovery |Replikace služby Site Recovery |
-| SQL Server 2008 R2 or 2008 |Enterprise nebo Standard |Instance clusteru převzetí služeb při selhání (FCI) |Replikace služby Site Recovery s místní zrcadlový svazek |Replikace služby Site Recovery s místní zrcadlový svazek |
-|| Enterprise nebo Standard |Standalone |Replikace služby Site Recovery |Replikace služby Site Recovery |
-| SQL Server (libovolná verze) |Enterprise nebo Standard |Instance clusteru převzetí služeb při selhání – DTC aplikace |Replikace služby Site Recovery |Nepodporuje se |
-
-## <a name="deployment-prerequisites"></a>Požadavky nasazení
-
-* V místním nasazení systému SQL Server, spuštěna podporovaná verze systému SQL Server. Obvykle budete také potřebovat služby Active Directory pro SQL server.
-* Požadavky na scénář, které chcete nasadit. Další informace o požadavcích na podporu pro [replikaci do Azure](site-recovery-support-matrix-to-azure.md) a [místní](site-recovery-support-matrix.md), a [požadavky na nasazení](site-recovery-prereq.md).
-
-## <a name="set-up-active-directory"></a>Nastavení služby Active Directory
+### <a name="step-1-set-up-active-directory"></a>Krok 1: Nastavení služby Active Directory
 
 Nastavení služby Active Directory v lokalitě sekundární obnovení pro SQL Server, aby běžel bez problémů.
 
@@ -94,10 +57,22 @@ Nastavení služby Active Directory v lokalitě sekundární obnovení pro SQL S
 
 Pokyny v tomto článku předpokládají, že řadič domény je k dispozici v sekundárním umístění. [Přečtěte si další](site-recovery-active-directory.md) o ochraně služby Active Directory pomocí služby Site Recovery.
 
+### <a name="step-2-ensure-connectivity-with-other-application-tiers-and-web-tier"></a>Krok 2: Zajistěte připojení s ostatními úrovně aplikace a webové vrstvy
 
-## <a name="integrate-with-sql-server-always-on-for-replication-to-azure"></a>Integrace s SQL serveru Always On pro replikaci do Azure
+Ujistěte se, že po vytvoření a spuštění je na úrovni databáze v cílové oblasti Azure, máte připojení k aplikaci a webovou vrstvu. Přijmout nezbytná opatření se předem k ověření připojení pomocí testovacího převzetí služeb při selhání.
 
-Zde je, co je potřeba udělat:
+Vysvětlení, jak můžete navrhnout aplikace důležité informace o připojení s několik příkladů:
+* [Návrh aplikace pro zotavení po havárii cloudu](../sql-database/sql-database-designing-cloud-solutions-for-disaster-recovery.md)
+* [Strategie zotavení po havárii elastických fondů](../sql-database/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)
+
+### <a name="step-3-integrate-with-always-on-active-geo-replication-or-auto-failover-groups-for-application-failover"></a>Krok 3: Integrace s Always On, aktivní geografické replikace nebo -automatické převzetí služeb při selhání skupiny převzetí služeb při selhání aplikace
+
+Technologiemi BCDR Always On, aktivní geografické replikace a Automatická – převzetí služeb při selhání skupiny mají sekundárních replik SQL serveru běžícího v cílové oblasti Azure. Prvním krokem pro vaše aplikace převzetí služeb při selhání je proto nastavit tuto repliku jako primární (za předpokladu, že už máte v sekundární řadič domény). Tento krok nemusí být nutné v případě, že zadáte automaticky při selhání. Až po dokončení převzetí služeb při selhání databáze, měli byste převzetí služeb při selhání vaší úrovně web nebo aplikaci.
+
+> [!NOTE] 
+> Pokud jste nastavili ochranu počítače SQL pomocí Azure Site Recovery, stačí vytvořit skupinu obnovení těchto počítačů a přidejte jejich převzetí služeb při selhání v plánu obnovení.
+
+[Vytvořit plán obnovení](site-recovery-create-recovery-plans.md) aplikace a virtuální počítače webové vrstvy. Postupujte podle níže uvedený postup přidání převzetí služeb při selhání databáze vrstvy:
 
 1. Import skriptů do účtu Azure Automation. Tato položka obsahuje skripty pro převzetí služeb při selhání skupiny dostupnosti SQL v [virtuální počítač Resource Manageru](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/asr-automation-recovery/scripts/ASR-SQL-FailoverAG.ps1) a [klasický virtuální počítač](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/asr-automation-recovery/scripts/ASR-SQL-FailoverAGClassic.ps1).
 
@@ -108,9 +83,9 @@ Zde je, co je potřeba udělat:
 
 1. Postupujte podle pokynů k dispozici ve skriptu pro vytvoření proměnné automation k poskytnutí názvu skupiny dostupnosti.
 
-### <a name="steps-to-do-a-test-failover"></a>Postup testovací převzetí služeb při selhání
+### <a name="step-4-conduct-a-test-failover"></a>Krok 4: Chování testovací převzetí služeb při selhání
 
-SQL Always On nenabízí nativní podporu převzetí služeb při selhání testu. Proto doporučujeme následující:
+Některé technologiemi BCDR, jako je SQL Always On nativně nepodporují testovací převzetí služeb při selhání. Proto doporučujeme následující postup **pouze při integraci s tyto technologie**:
 
 1. Nastavit [Azure Backup](../backup/backup-azure-arm-vms.md) na virtuálním počítači, který je hostitelem repliky skupiny dostupnosti v Azure.
 
@@ -134,59 +109,27 @@ SQL Always On nenabízí nativní podporu převzetí služeb při selhání test
 
     ![Vytvoření Load balanceru úrovně – back-endový fond](./media/site-recovery-sql/create-load-balancer2.png)
 
-1. Proveďte testovací převzetí služeb při selhání plánu obnovení.
+1. Přidáte převzetí služeb při selhání aplikační vrstvy, následovaný webové vrstvy v tomto plánu obnovení ve skupinách následné obnovení. 
+1. Proveďte testovací převzetí služeb při selhání plánu obnovení otestovat začátku do konce převzetí služeb při selhání aplikace.
 
-### <a name="steps-to-do-a-failover"></a>Postup proveďte převzetí služeb při selhání
+## <a name="steps-to-do-a-failover"></a>Postup proveďte převzetí služeb při selhání
 
-Po přidání skriptu v plánu obnovení a ověřit tímto způsobem testovací převzetí služeb při selhání plánu obnovení, můžete provést převzetí služeb při selhání plánu obnovení.
+Po přidání skriptu v plánu obnovení v kroku 3 a ověří tímto způsobem testovací převzetí služeb při selhání s specializované přístup v kroku 4, můžete provést převzetí služeb při selhání plánu obnovení vytvořený v kroku 3.
 
+Všimněte si, že postup převzetí služeb při selhání aplikace a webové vrstvy musí být stejná v testovací převzetí služeb při selhání a plány obnovení pro převzetí služeb při selhání.
 
-## <a name="integrate-with-sql-server-always-on-for-replication-to-a-secondary-on-premises-site"></a>Integrace s SQL serveru Always On pro replikaci do sekundární místní lokality
-
-Pokud SQL Server používá skupiny dostupnosti pro vysokou dostupnost (nebo FCI), doporučujeme použít skupiny dostupnosti na webu pro zotavení. Všimněte si, že to platí pro aplikace, které nepoužívají distribuované transakce.
-
-1. [Konfigurovat databáze](https://msdn.microsoft.com/library/hh213078.aspx) do skupiny dostupnosti.
-1. Vytvoření virtuální sítě v sekundární lokalitě.
-1. Nastavte připojení VPN typu site-to-site mezi virtuální sítí a primární lokality.
-1. Vytvoření virtuálního počítače v lokalitě pro obnovení a nainstalujte SQL Server.
-1. Rozšíření stávajících skupin dostupnosti Always On do nového virtuálního počítače SQL serveru. Konfigurace této instanci systému SQL Server jako asynchronní repliky kopie.
-1. Vytvořit naslouchací proces skupiny dostupnosti nebo aktualizovat existující naslouchací proces, který chcete zahrnout virtuální počítač repliky asynchronní.
-1. Ujistěte se, že aplikace farmy se nastavuje pomocí naslouchací proces. Pokud je instalační program pomocí název databázového serveru, aktualizujte ji, aby používat naslouchací proces, takže není nutné k překonfigurování po převzetí služeb.
-
-Pro aplikace, které používají distribuované transakce, doporučujeme nasadit Site Recovery s [replikace site-to-site server VMware/fyzických prostředků](site-recovery-vmware-to-vmware.md).
-
-### <a name="recovery-plan-considerations"></a>Důležité informace o plánu obnovení
-1. Tento ukázkový skript přidáte do knihovny VMM na primárních a sekundárních lokalit.
-
-        Param(
-        [string]$SQLAvailabilityGroupPath
-        )
-        import-module sqlps
-        Switch-SqlAvailabilityGroup -Path $SQLAvailabilityGroupPath -AllowDataLoss -force
-
-1. Když vytvoříte plán obnovení pro aplikaci, přidejte akci pre kroku skupiny-1, skripty, které vyvolá skript pro převzetí služeb při selhání skupiny dostupnosti.
-
-## <a name="protect-a-standalone-sql-server"></a>Ochrana samostatný systém SQL Server
-
-V tomto scénáři doporučujeme použít replikace Site Recovery pro ochranu počítače systému SQL Server. Přesný postup závisí, zda je virtuální počítač nebo fyzický server, SQL Server a zda chcete replikovat do Azure nebo sekundární místní lokality. Další informace o [Site Recovery scénáře](site-recovery-overview.md).
-
-## <a name="protect-a-sql-server-cluster-standard-editionsql-server-2008-r2"></a>Ochraně clusteru SQL serveru (standard edition nebo SQL Server 2008 R2)
+## <a name="how-to-protect-a-sql-server-cluster-standard-editionsql-server-2008-r2"></a>Jak chránit klastr systému SQL Server (standard edition nebo SQL Server 2008 R2)
 
 U clusteru se systémem SQL Server Standard edition nebo SQL Server 2008 R2 doporučujeme že použít replikace Site Recovery pro ochranu serveru SQL Server.
 
-### <a name="on-premises-to-on-premises"></a>Z lokálního prostředí do lokálního prostředí
+### <a name="azure-to-azure-and-on-premises-to-azure"></a>Azure do Azure a místní do Azure
 
-* Pokud aplikace využívá distribuované transakce doporučujeme nasadíte [Site Recovery pomocí replikace sítě SAN](site-recovery-vmm-san.md) pro prostředí Hyper-V nebo [server VMware/fyzických prostředků do VMware](site-recovery-vmware-to-vmware.md) pro prostředí VMware.
-* Pro aplikace bez DTC použijte výše uvedené přístup k obnově clusteru jako samostatný server s využitím místní vysokou bezpečnost zrcadlení databáze.
+Site Recovery neposkytuje hostovaného clusteru podporu při replikaci do oblasti Azure. SQL Server také neposkytuje řešení zotavení po havárii s nízkými náklady pro edici Standard. V tomto scénáři doporučujeme ochraně clusteru SQL serveru do samostatného systému SQL Server v primární lokalitě a obnovit v sekundární.
 
-### <a name="on-premises-to-azure"></a>On-premises do Azure
-
-Site Recovery neposkytuje hostovaného clusteru podporu při replikaci do Azure. SQL Server také neposkytuje řešení zotavení po havárii s nízkými náklady pro edici Standard. V tomto scénáři doporučujeme chránit místní cluster serveru SQL Server do samostatného systému SQL Server a obnovení v Azure.
-
-1. Nakonfigurujte další samostatné instance serveru SQL Server na místní lokalitu.
+1. Nakonfigurujte další samostatné instance serveru SQL Server v primární oblasti Azure nebo v místní lokalitě.
 1. Konfigurace instance, která má sloužit jako zrcadlení pro databáze, které chcete chránit. Konfigurace zrcadlení v režimu vysoké zabezpečení.
-1. Konfigurace pro Site Recovery na webu v místním ([Hyper-V](site-recovery-hyper-v-site-to-azure.md) nebo [virtuální počítače VMware a fyzických serverů)](site-recovery-vmware-to-azure-classic.md).
-1. Pomocí replikace Site Recovery replikovat nové instanci SQL serveru do Azure. Protože jde o kopii zrcadlení vysokou bezpečnost, ji budou synchronizovány s primární clusteru, ale bude možné replikovat do Azure pomocí Site Recovery replikaci.
+1. Konfigurace obnovení lokality v primární lokalitě ([Azure](azure-to-azure-tutorial-enable-replication.md), [Hyper-V](site-recovery-hyper-v-site-to-azure.md) nebo [virtuální počítače VMware a fyzických serverů)](site-recovery-vmware-to-azure-classic.md).
+1. Replikace nové instanci SQL serveru do sekundární lokality pomocí replikace Site Recovery. Protože jde o kopii zrcadlení vysokou bezpečnost, ji budou synchronizovány s primární clusteru, ale se budou replikovat pomocí Site Recovery replikaci.
 
 
 ![Cluster Standard](./media/site-recovery-sql/standalone-cluster-local.png)
@@ -195,5 +138,16 @@ Site Recovery neposkytuje hostovaného clusteru podporu při replikaci do Azure.
 
 Navrácení služeb po obnovení po neplánovaném převzetí služeb při selhání pro SQL Server Standard clustery, vyžaduje zálohování SQL serveru a obnovení z instance zrcadlení pro původní cluster, reestablishment zrcadlení.
 
+## <a name="frequently-asked-questions"></a>Nejčastější dotazy
+
+### <a name="how-does-sql-get-licensed-when-protected-with-azure-site-recovery"></a>Jak SQL získat licenci při ochraně pomocí Azure Site Recovery?
+Na replikaci Azure Site Recovery pro SQL Server se vztahuje výhoda Disaster Recovery programu Software Assurance, a to pro všechny scénáře Azure Site Recovery (zotavení po havárii z místního prostředí do Azure nebo zotavení po havárii IaaS napříč oblastmi Azure). [Další informace](https://azure.microsoft.com/pricing/details/site-recovery/)
+
+### <a name="will-azure-site-recovery-support-my-sql-version"></a>Azure Site Recovery bude podporovat Moje verze SQL?
+Azure Site Recovery je nezávislý na aplikaci. Proto se dá chránit jakékoli verzi systému SQL server, který je nasazen na podporovaný operační systém Azure Site Recovery. [Další informace](vmware-physical-azure-support-matrix.md#replicated-machines)
+
 ## <a name="next-steps"></a>Další postup
-[Další informace](site-recovery-components.md) o architektuře Site Recovery.
+* [Další informace](site-recovery-components.md) o architektuře Site Recovery.
+* Pro servery SQL v Azure, další informace o [řešení s vysokou dostupností](../virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr.md#azure-only-high-availability-solutions) pro obnovení do sekundární oblasti Azure.
+* Pro službu SQL Database v Azure, další informace o [kontinuita podnikových procesů](../sql-database/sql-database-business-continuity.md) a [vysoké dostupnosti](../sql-database/sql-database-high-availability.md) možnosti obnovení v sekundární oblasti Azure.
+* Pro počítače se SQL server on-premises [Další](../virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr.md#hybrid-it-disaster-recovery-solutions) o možnostech vysoké dostupnosti pro obnovení ve službě Azure Virtual Machines.

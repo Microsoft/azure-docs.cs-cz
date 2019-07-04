@@ -3,7 +3,7 @@ title: Přidání ověřování v systému iOS pomocí Azure Mobile Apps
 description: Zjistěte, jak používat Azure Mobile Apps k ověřování uživatelů vaší aplikace pro iOS prostřednictvím různých poskytovatelů identit, včetně AAD, Google, Facebook, Twitter a Microsoft.
 services: app-service\mobile
 documentationcenter: ios
-author: conceptdev
+author: elamalani
 manager: crdun
 editor: ''
 ms.assetid: ef3d3cbe-e7ca-45f9-987f-80c44209dc06
@@ -12,17 +12,21 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/23/2017
-ms.author: crdun
-ms.openlocfilehash: 8c1c52790065015977add7e32a06063057b24dad
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: 88e278ced5cbddb132cdc2f760864df119762088
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62128145"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449124"
 ---
 # <a name="add-authentication-to-your-ios-app"></a>Přidání ověřování do aplikace pro iOS
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
+
+> [!NOTE]
+> Visual Studio App Center investuje do nové a integrované služby, které jsou centrální při vývoji mobilních aplikací. Vývojáři mohou použít **sestavení**, **testovací** a **rozmístit** služby vytvořit kanál pro průběžnou integraci a doručování. Po nasazení aplikace se můžou vývojáři monitorovat stav a využití své aplikace pomocí **Analytics** a **diagnostiky** služeb a Zaujměte uživatele, kteří používají **Push** Služba. Vývojáři mohou využít i **Auth** k ověření uživatelů a **Data** službu zachovat, synchronizaci dat aplikací v cloudu. Podívejte se na [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-ios-get-started-users) ještě dnes.
+>
 
 V tomto kurzu, přidat ověřování [Rychlý start pro iOS] projektu pomocí zprostředkovatele identity podporovaná. Tento kurz je založený na [Rychlý start pro iOS] kurzu, který je třeba nejprve provést.
 
@@ -77,7 +81,7 @@ V Xcode, stiskněte klávesu **spustit** a spusťte aplikaci. Je vyvolána výji
     }
     ```
 
-    Změna *google* k *microsoftaccount*, *twitter*, *facebook*, nebo *windowsazureactivedirectory* Pokud nepoužíváte Google jako zprostředkovatele identity. Pokud používáte sítě Facebook, je nutné [seznamu povolených IP adres služby Facebook domén] [ 1] ve vaší aplikaci.
+    Změna *google* k *microsoftaccount*, *twitter*, *facebook*, nebo *windowsazureactivedirectory* Pokud nepoužíváte Google jako zprostředkovatele identity. Pokud používáte sítě Facebook, je nutné [seznamu povolených IP adres služby Facebook domén][1] ve vaší aplikaci.
 
     Nahradit **urlScheme** s jedinečným názvem aplikace.  UrlScheme by měl být stejný jako schéma adresy URL protokolu, který jste zadali v **povolené externí adresy URL pro přesměrování** pole na webu Azure Portal. UrlScheme používá zpětné volání pro ověřování Pokud chcete přepnout zpět do aplikace po dokončení žádosti o ověření.
 
@@ -163,7 +167,7 @@ V Xcode, stiskněte klávesu **spustit** a spusťte aplikaci. Je vyvolána výji
     }
     ```
 
-    Změna *google* k *microsoftaccount*, *twitter*, *facebook*, nebo *windowsazureactivedirectory* Pokud nepoužíváte Google jako zprostředkovatele identity. Pokud používáte sítě Facebook, je nutné [seznamu povolených IP adres služby Facebook domén] [ 1] ve vaší aplikaci.
+    Změna *google* k *microsoftaccount*, *twitter*, *facebook*, nebo *windowsazureactivedirectory* Pokud nepoužíváte Google jako zprostředkovatele identity. Pokud používáte sítě Facebook, je nutné [seznamu povolených IP adres služby Facebook domén][1] ve vaší aplikaci.
 
     Nahradit **urlScheme** s jedinečným názvem aplikace.  UrlScheme by měl být stejný jako schéma adresy URL protokolu, který jste zadali v **povolené externí adresy URL pro přesměrování** pole na webu Azure Portal. UrlScheme používá zpětné volání pro ověřování Pokud chcete přepnout zpět do aplikace po dokončení žádosti o ověření.
 

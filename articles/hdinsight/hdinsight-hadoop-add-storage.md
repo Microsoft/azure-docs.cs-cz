@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: hrasheed
-ms.openlocfilehash: 6b9577bcf8b527abb0cb7b8720ed83ec8321655b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8a844465f7ba2222acd7efaf100c7b682c15adb2
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64724481"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67433517"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>Přidání dalších účtů úložiště pro HDInsight
 
@@ -196,6 +196,9 @@ Pokud změníte klíč pro účet úložiště HDInsight už mít přístup k ú
 Spuštění skriptu znovu akce nemá __není__ aktualizovat klíč, protože skript zkontroluje, jestli obsahuje položku pro účet úložiště už existuje. Pokud položka již existuje, neprovede žádné změny.
 
 Chcete-li tento problém vyřešit, musíte odebrat existující položku pro účet úložiště. Použijte následující kroky pro odebrání existující položky:
+
+> [!IMPORTANT]  
+> Otáčení klíč úložiště pro účet primární úložiště připojené ke clusteru se nepodporuje.
 
 1. Ve webovém prohlížeči otevřete webové uživatelské rozhraní Ambari pro váš cluster HDInsight. Identifikátor URI je `https://CLUSTERNAME.azurehdinsight.net`. Nahraďte `CLUSTERNAME` názvem svého clusteru.
 

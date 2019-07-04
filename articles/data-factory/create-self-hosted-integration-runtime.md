@@ -11,12 +11,12 @@ ms.date: 06/18/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: ec6177bb353602f20040f05215678e3a8a161ebc
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: 2c90dcf1672a3d3505aaa19aec953ad97f5289bb
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190836"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446218"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Vytvoření a konfigurace místní prostředí integration runtime
 Prostředí integration runtime (IR) je výpočetní infrastruktura, která Azure Data Factory používá pro poskytují funkce integrace dat v různých síťových prostředích. Podrobnosti o prostředí IR najdete v tématu [přehled modulu runtime integrace](concepts-integration-runtime.md).
@@ -74,7 +74,7 @@ Tady je podrobný datový tok pro přehled kroků pro kopírování s místní p
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Jsou verze podporovaný operační systém Windows 7 Service Pack 1, Windows 8.1, Windows 10, Windows Server 2008 R2 SP1, Windows Server 2012, Windows Server 2012 R2 a Windows serveru 2016. Instalace modulu runtime integrace v místním prostředí na řadiči domény není podporována.
+- Jsou verze podporovaný operační systém Windows 7 Service Pack 1, Windows 8.1, Windows 10, Windows Server 2008 R2 SP1, Windows Server 2012, Windows Server 2012 R2, Windows Server 2016 a 2019 systému Windows Server. Instalace modulu runtime integrace v místním prostředí na řadiči domény není podporována.
 - Rozhraní .NET framework 4.6.1 nebo novější je povinný. Pokud instalujete místní prostředí integration runtime na počítači s Windows 7, nainstalujte rozhraní .NET Framework 4.6.1 nebo novější. Zobrazit [rozhraní .NET Framework System Requirements](/dotnet/framework/get-started/system-requirements) podrobnosti.
 - Doporučená konfigurace pro počítač místního prostředí integration runtime je aspoň 2 GHz, 4 jádra, 8 GB paměti RAM a 80GB disk.
 - Pokud hostitelský počítač přejde do režimu spánku, neodpovídá na požadavky na data místní prostředí integration runtime. Nakonfigurujte plán odpovídající power počítače před instalací místní prostředí integration runtime. Pokud je počítač nakonfigurovaný do režimu hibernace, vyzve instalace modulu runtime integrace v místním prostředí zprávu.

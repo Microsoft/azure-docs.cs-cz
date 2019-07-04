@@ -9,12 +9,12 @@ ms.date: 04/12/2018
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
-ms.openlocfilehash: 35fb529be28fc985460421c185872c7e35603341
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 26fca12060363f4ad05baaeceb6fb800a0d76216
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274276"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449272"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Vyberte metodu správné ověřování pro vaše řešení hybridní identity Azure Active Directory 
 
@@ -81,7 +81,7 @@ Podrobnosti o rozhodnutí otázky:
    * Multi-Site místní řešení pro ověřování.
 5. Azure AD Identity Protection vyžaduje synchronizace hodnot Hash hesel bez ohledu na to, jaké metody přihlašování rozhodnete, zadejte *uživatelé s uniklými přihlašovacími údaji* sestavy. Pokud selže primární metodu přihlašování a byl nakonfigurovaný před událostí selhání, můžou organizace převzetí služeb při selhání synchronizace hodnot Hash hesel.
 
->[!NOTE]
+> [!NOTE]
 > Azure AD Identity Protection vyžadují [Azure AD Premium P2](https://azure.microsoft.com/pricing/details/active-directory/) licence.
 
 ## <a name="detailed-considerations"></a>Podrobné pokyny
@@ -94,7 +94,10 @@ Podrobnosti o rozhodnutí otázky:
 
 * **Pokročilé scénáře**. Pokud se rozhodnete organizace, je možné přehledy na základě identit pomocí Azure AD Identity Protection sestavy s Azure AD Premium P2. Příkladem je sestava uniklými přihlašovacími údaji. Má Windows Hello pro firmy [specifické požadavky při použití synchronizace hodnot hash hesel](https://docs.microsoft.com/windows/access-protection/hello-for-business/hello-identity-verification). [Azure AD Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-password-sync) požadovat synchronizaci hodnot hash hesel uživatelů zřizování pomocí svých firemních přihlašovacích údajů ve spravované doméně.
 
-    Organizace, které vyžadují vícefaktorové ověřování se synchronizace hodnot hash hesel, musíte použít vícefaktorové ověřování Azure AD. Tyto organizace nelze použít metody vícefaktorového ověřování třetí strany nebo místně.
+    Organizace, které vyžadují vícefaktorové ověřování se synchronizace hodnot hash hesel, musíte použít vícefaktorové ověřování Azure AD nebo [vlastní ovládací prvky podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/conditional-access/controls#custom-controls). Třetí strany nebo místně metody vícefaktorového ověřování, které spoléhá na federační nelze použít ty organizace.
+
+> [!NOTE]
+> Podmíněný přístup Azure AD vyžadují [Azure AD Premium P1](https://azure.microsoft.com/pricing/details/active-directory/) licence.
 
 * **Kontinuita podnikových procesů**. Synchronizace hodnot hash hesel pomocí cloudového ověřování je Cloudová služba, která se škáluje do všech datových center Microsoftu s vysokou dostupností. Ujistěte se, že synchronizace hodnot hash hesel nedostane mimo provoz delší dobu, nasaďte na druhý server Azure AD Connect v pracovním režimu v pohotovostním režimu konfigurace.
 
@@ -115,7 +118,7 @@ Odkazovat na [implementace synchronizace hodnot hash hesel](https://docs.microso
 
 * **Pokročilé scénáře**. Předávací ověřování vynucuje zásady místního účtu při přihlášení. Například je odepřen přístup při uzamčení účtu místní uživatel stav je zakázán, nebo [vypršení platnosti hesla](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-faq#what-happens-if-my-users-password-has-expired-and-they-try-to-sign-in-by-using-pass-through-authentication) nebo spadá mimo dobu, kdy uživatel může přihlásit. 
 
-    Organizace, které vyžadují vícefaktorové ověřování pomocí předávacího ověřování, musíte použít Azure Multi-Factor Authentication (MFA). Tyto organizace nemůže použít metodu vícefaktorové ověřování třetí strany nebo místně. Pokročilé funkce vyžadují, synchronizaci hodnot hash hesel je nasazený, jestli zvolíte předávací ověřování. Příkladem je sestava uniklými přihlašovacími údaji služby Identity Protection.
+    Organizace, které vyžadují vícefaktorové ověřování pomocí předávacího ověřování, musíte použít Azure Multi-Factor Authentication (MFA) nebo [vlastní ovládací prvky podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/conditional-access/controls#custom-controls). Třetí strany nebo místně metody vícefaktorového ověřování, která závisí na federační nelze použít ty organizace. Pokročilé funkce vyžadují, synchronizaci hodnot hash hesel je nasazený, jestli zvolíte předávací ověřování. Příkladem je sestava uniklými přihlašovacími údaji služby Identity Protection.
 
 * **Kontinuita podnikových procesů**. Doporučujeme vám, že nasadíte dva agenti velmi předávací ověřování. Tyto funkce jsou kromě první agenta na server Azure AD Connect. Tato další nasazení zajišťuje vysokou dostupnost požadavků na ověření. Až budete mít tři agenty nasazení, jeden agent může stále selhat při jiného agenta je mimo provoz kvůli údržbě. 
 
@@ -136,7 +139,7 @@ Odkazovat na [implementace předávací ověřování](https://docs.microsoft.co
 * **Pokročilé scénáře**. Když zákazníci mají požadavku na ověřování, která nenabízí nativní podporu služby Azure AD, je obvykle potřeba řešení federovaného ověřování. Viz podrobné informace, které vám pomůžou [možnost přímo přihlášení](https://blogs.msdn.microsoft.com/samueld/2017/06/13/choosing-the-right-sign-in-option-to-connect-to-azure-ad-office-365/). Vezměte v úvahu následující běžné požadavky:
 
   * Ověřování, které vyžaduje čipové karty ani certifikáty.
-  * Na místních serverech MFA nebo vícefaktorové zprostředkovatelé třetí strany.
+  * Místní MFA servery nebo nutnosti poskytovatele federované identity vícefaktorové poskytovatelů třetích stran.
   * Ověřování pomocí řešení ověřování třetích stran. Zobrazit [seznam kompatibilit pro federaci Azure AD](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-fed-compatibility).
   * Přihlášení, která vyžaduje sAMAccountName, například DOMÉNA\uživatelské_jméno, místo hlavní název uživatele (UPN), například user@domain.com.
 

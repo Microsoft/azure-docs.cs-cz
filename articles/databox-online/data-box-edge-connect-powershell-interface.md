@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 04/25/2019
+ms.date: 06/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 8cd89b21e80662ec50746e0c7721a5544cfbce30
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6af95b7f8bde6e77ba356fec9dde123e26a9a4a8
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64717500"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448629"
 ---
 # <a name="manage-an-azure-data-box-edge-device-via-windows-powershell"></a>Správa Azure Data Box hraničního zařízení pomocí Windows Powershellu
 
@@ -52,8 +52,9 @@ Můžete také nahrát certifikáty IoT Edge umožňuje zabezpečené připojen�
 Následující příklad ukazuje použití této rutiny instalace certifikátů IoT Edge:
 
 ```
-Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cert.pem" -DeviceCertificateFilePath "\\hcfs\device-ca-cert.pem\" -DeviceKeyFilePath "\\hcfs\device-key-cert.pem" -Credential "username/password"
+Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cert.pem" -DeviceCertificateFilePath "\\hcfs\device-ca-cert.pem\" -DeviceKeyFilePath "\\hcfs\device-key-cert.pem" -Credential "username"
 ```
+Při spuštění této rutiny se výzva k zadání hesla pro sdílené síťové složce.
 
 Další informace o certifikátech naleznete v části [certifikáty Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/iot-edge-certs) nebo [nainstalujte certifikáty na bránu](https://docs.microsoft.com/azure/iot-edge/how-to-create-transparent-gateway#install-certificates-on-the-gateway).
 
@@ -75,13 +76,12 @@ Pokud výpočetní roli je nakonfigurovaný na vašem zařízení, můžete tak�
     Následující příklad ukazuje použití této rutiny:
 
     ```powershell
-    Get-AzureDataBoxEdgeComputeRoleLogs -Path "\\hcsfs\logs\myacct" -Credential "username/password" -RoleInstanceName "IotRole" -FullLogCollection
+    Get-AzureDataBoxEdgeComputeRoleLogs -Path "\\hcsfs\logs\myacct" -Credential "username" -FullLogCollection
     ```
 
     Tady je popis parametrů použitých pro tuto rutinu:
     - `Path`: Zadejte síťovou cestu ke sdílené složce, ve kterém chcete vytvořit balíček protokolu výpočetní prostředky.
-    - `Credential`: Zadejte uživatelské jméno a heslo pro sdílené síťové složce.
-    - `RoleInstanceName`: Zadejte tento řetězec `IotRole` pro tento parametr.
+    - `Credential`: Zadejte uživatelské jméno pro sdílené síťové složce. Při spuštění této rutiny je potřeba zadat heslo sdílené složky.
     - `FullLogCollection`: Tento parametr zajišťuje, že balíček protokolu bude obsahovat všechny protokoly výpočetní prostředky. Ve výchozím nastavení balíček protokolu obsahuje pouze podmnožinu protokolů.
 
 ## <a name="monitor-and-troubleshoot-compute-modules"></a>Monitorování a odstraňování potíží výpočetní moduly

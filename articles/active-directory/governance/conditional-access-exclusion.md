@@ -16,12 +16,12 @@ ms.date: 09/25/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8611338acf7a1299e9c3a4f5347fb633604254e7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 880593773ca7801da2874dc2a09a4bddf910a503
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67110400"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67471836"
 ---
 # <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>Kontroly přístupu pomocí služby Azure AD ke správě uživatelů vyloučit ze zásad podmíněného přístupu
 
@@ -36,7 +36,7 @@ Jako IT správce, můžete použít [podmíněného přístupu Azure AD](../cond
 
 Další příklad, můžete použít [pojmenovaná umístění](../conditional-access/location-condition.md) podmíněného přístupu pro konfiguraci funkce set okresech a oblastí, ze kterých nechcete uživatelům povolit přístup k jejich tenanta.
 
-![Pojmenovaná umístění](./media/conditional-access-exclusion/named-locations.png)
+![Pojmenovaná umístění podmíněného přístupu](./media/conditional-access-exclusion/named-locations.png)
 
 V některých případech ale uživatelé můžou mít rozumný důvod k přihlášení z tato blokovaný zemích nebo oblastech. Například uživatelé mohou být na služební cestě pro pracovní nebo osobní důvodů. V tomto příkladu zásady podmíněného přístupu k blokování těchto zemí nebo oblastí může mít vyhrazené cloudové skupiny zabezpečení pro uživatele, kteří jsou ze zásad vyloučení. Uživatelé, kteří potřebují přístup při cestování, sami můžete přidat do skupiny pomocí [Azure AD Samoobslužná správa skupiny](../users-groups-roles/groups-self-service-management.md).
 
@@ -68,7 +68,7 @@ Postupujte podle těchto kroků a vytvořte novou skupinu Azure AD a zásady pod
 
 1. Vyberte uživatele, kteří by měl být součástí této skupiny vyloučení a pak klikněte na tlačítko **vytvořit**.
 
-    ![Podokno nové skupiny](./media/conditional-access-exclusion/new-group.png)
+    ![Nové podokno skupiny v Azure Active Directory](./media/conditional-access-exclusion/new-group.png)
 
 ### <a name="create-a-conditional-access-policy-that-excludes-the-group"></a>Vytvořit zásady podmíněného přístupu, které nezahrnuje skupiny
 
@@ -93,7 +93,7 @@ Nyní můžete vytvořit zásady podmíněného přístupu, který používá tu
 
 1. Pokračujte v nastavení zásad podmíněného přístupu na základě požadavků organizace.
 
-    ![Vybrat vyloučené uživatele](./media/conditional-access-exclusion/select-excluded-users.png)
+    ![Vybrat vyloučené uživatele podokně podmíněného přístupu](./media/conditional-access-exclusion/select-excluded-users.png)
 
 Pojďme zahrnují dva příklady, kde můžete použít kontroly přístupu ke správě vyloučení v rámci zásad podmíněného přístupu.
 
@@ -116,7 +116,7 @@ Pojďme zahrnují dva příklady, kde můžete použít kontroly přístupu ke s
 
 6. Povolte e-mailová oznámení, takže uživatelům se zobrazí oznámení o zahájení a dokončení kontroly přístupu.
 
-    ![Vytvoření kontroly přístupu](./media/conditional-access-exclusion/create-access-review-1.png)
+    ![Vytvoření podokno zkontrolovat přístup například 1](./media/conditional-access-exclusion/create-access-review-1.png)
 
 ## <a name="example-2-access-review-for-users-accessing-with-legacy-authentication"></a>Příklad 2: Kontroly přístupu pro uživatele, kteří používají starší verze ověřování
 
@@ -134,7 +134,7 @@ Pojďme zahrnují dva příklady, kde můžete použít kontroly přístupu ke s
 
 6. Povolte e-mailová oznámení, takže uživatelům se zobrazí oznámení o zahájení a dokončení kontroly přístupu.
 
-    ![Vytvoření kontroly přístupu](./media/conditional-access-exclusion/create-access-review-2.png)
+    ![Vytvořit přístupu k revizi podokno například 2](./media/conditional-access-exclusion/create-access-review-2.png)
 
 **Tipu pro**: Pokud máte mnoho vyloučení skupin a proto potřeba vytvořit několik kontrol přístupu, teď máme rozhraní API v beta verzi Microsoft Graphu koncového bodu, který vám umožní vytvořit a spravovat prostřednictvím kódu programu. Abyste mohli začít, najdete v článku [kontroly přístupu Azure AD, reference k rozhraní API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/accessreviews_root) a [kontroly příklad načítání přístup služby Azure AD prostřednictvím Microsoft Graphu](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/td-p/236096).
 
@@ -148,11 +148,11 @@ Teď, když máte všechno, co v místě, skupiny, zásady podmíněného přís
 
 1. Klikněte na tlačítko **výsledky** zobrazíte, který byl schválen zůstat na seznamu a který byl odebrán.
 
-    ![Výsledky kontroly přístupu](./media/conditional-access-exclusion/access-reviews-results.png)
+    ![Zobrazit výsledky, který byl schválen kontroly přístupu](./media/conditional-access-exclusion/access-reviews-results.png)
 
 1. Pak klikněte na tlačítko **protokoly auditu** zobrazíte akce, které byly během této revize.
 
-    ![Protokoly auditu kontroly přístupu](./media/conditional-access-exclusion/access-reviews-audit-logs.png)
+    ![Protokoly auditu výpis akce kontroly přístupu](./media/conditional-access-exclusion/access-reviews-audit-logs.png)
 
 Jako správce IT víte, že správa vyloučení skupin do zásad je někdy nevyhnutelné. Ale údržbu těchto skupin, je kontrola v pravidelných intervalech majitel firmy a uživatelé sami a auditování, které tyto změny můžete provádět snadněji díky přístupu Azure AD kontroly.
 

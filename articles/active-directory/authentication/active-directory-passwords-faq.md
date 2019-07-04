@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77154ef35242c55724becb77595dbd5ecf8a4da9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f98b72d9b5e59155bb7215181fd1ecd336126ee6
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60359054"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67440972"
 ---
 # <a name="password-management-frequently-asked-questions"></a>Správa hesel – nejčastější dotazy
 
@@ -114,7 +114,7 @@ Tyto nejčastější dotazy je rozdělený do následujících částí:
   >
 * **Otázka:  Jak lze informovat Moji uživatelé o tom, kde přejdete k resetování hesel?**
 
-  > **Odpověď:** Vyzkoušejte některou z návrhů v našich [nasazení samoobslužného resetování HESLA](howto-sspr-deployment.md#sample-communication) článku.
+  > **Odpověď:** Vyzkoušejte některou z návrhů v našich [nasazení samoobslužného resetování HESLA](howto-sspr-deployment.md#communications-plan) článku.
   >
   >
 * **Otázka:  Můžete použít tuto stránku na mobilním zařízení?**

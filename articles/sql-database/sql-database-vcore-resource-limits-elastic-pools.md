@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 05/23/2019
-ms.openlocfilehash: 98bd70d9f6eb70cb7848dfa74e19c78e55a34991
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/26/2019
+ms.openlocfilehash: 4e63e1e477ce82221e5121815b609326cc2c1112
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66240341"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447170"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-based-purchasing-model-limits"></a>Limity pro elastické fondy pomocí omezení založený na virtuálních jádrech nákupní model prostředků
 
@@ -36,6 +36,9 @@ Můžete nastavit úroveň služby, výpočetního prostředí a pomocí velikos
 > Omezení prostředků jednotlivých databází v elastických fondech jsou obvykle stejné jako u izolovaných databází mimo fondy, které má stejnou výpočetní velikost. Maximální počet souběžných pracovních procesů pro databázi GP_Gen4_1 je například 200 pracovních procesů. Maximální počet souběžných pracovních procesů pro databáze ve fondu GP_Gen4_1 je tedy také 200 pracovních procesů. Všimněte si, že se celkový počet souběžných pracovních procesů ve fondu GP_Gen4_1 je 210.
 
 ## <a name="general-purpose-service-tier-storage-sizes-and-compute-sizes"></a>Obecné účely vrstvy služby: Velikosti úložiště a výpočty velikostí
+
+> [!IMPORTANT]
+> Nové databáze Gen4 již nejsou podporovány v oblasti AustraliaEast.
 
 ### <a name="general-purpose-service-tier-generation-4-compute-platform-part-1"></a>Obecné účely vrstvy služby: Výpočetní platforma běžící generace 4 (část 1)
 
@@ -149,6 +152,9 @@ Můžete nastavit úroveň služby, výpočetního prostředí a pomocí velikos
 \* Maximální počet souběžných pracovních procesů (požadavků) pro všechny jednotlivé databáze, najdete v části [jedno omezení prostředků databáze](sql-database-vcore-resource-limits-single-databases.md). Například pokud elastického fondu používá Gen5 a jeho maximální vCore na databázi je 2, maximální počet souběžných pracovních procesů je 200.  Pokud maximální vCore na databázi je 0,5, pak maximální počet souběžných pracovních procesů je 50, protože na Gen5 jsou mít délku maximálně 100 souběžných pracovních procesů na vcore.  Pro další maximální vCore nastavení na databázi, která jsou menší 1 virtuální jádro nebo menší počet maximální počet souběžných pracovních procesů je podobně měřítka.
 
 ## <a name="business-critical-service-tier-storage-sizes-and-compute-sizes"></a>Obchodní vrstvy služby: Velikosti úložiště a výpočty velikostí
+
+> [!IMPORTANT]
+> Nové databáze Gen4 již nejsou podporovány v oblasti AustraliaEast.
 
 ### <a name="business-critical-service-tier-generation-4-compute-platform-part-1"></a>Obchodní vrstvy služby: Výpočetní platforma běžící generace 4 (část 1)
 

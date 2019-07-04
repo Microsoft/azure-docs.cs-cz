@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: crdun
 ms.custom: include file
-ms.openlocfilehash: a7c994f85d90e94d514bb4e4f91a6644ed45432c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a7e543dcad9ad1b016d1244451cd87cda5ad7492
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66455154"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67440221"
 ---
 1. Stáhněte si klienta SDK rychlých startů pro tyto platformy:
     
@@ -100,6 +100,4 @@ ms.locfileid: "66455154"
 
         4. Vyberte **služby App Service** jako cíl publikování, pak klikněte na **vybrat existující**, klikněte **publikovat** tlačítko v dolní části okna.
 
-        5. Budete potřebovat k přihlášení do sady Visual Studio s předplatným Azure nejprve. Vyberte `Subscription`, `Resource Group`a pak vyberte název vaší aplikace. Až budete připravení, klikněte na tlačítko **OK**, to nasadí serverový projekt .NET, který máte místně na back-end služby App Service. Jakmile se nasazení dokončí, budete přesměrováni na `http://{zumoappname}.azurewebsites.net/` v prohlížeči.
-        
-           ![Je back-endu](./media/app-service-mobile-configure-new-backend/backend-is-up.png)
+        5. Budete potřebovat k přihlášení do sady Visual Studio s předplatným Azure nejprve. Vyberte `Subscription`, `Resource Group`a pak vyberte název vaší aplikace. Až budete připravení, klikněte na tlačítko **OK**, to nasadí serverový projekt .NET, který máte místně na back-end služby App Service. Jakmile se nasazení dokončí, budete přesměrováni na `http://{zumoappname}.azurewebsites.net/` v prohlížeči.                   

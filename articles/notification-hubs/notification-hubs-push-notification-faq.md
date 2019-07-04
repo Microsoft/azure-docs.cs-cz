@@ -15,12 +15,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: jowargo
-ms.openlocfilehash: 579d50a95ad0e478f401b7db012e7c743ce58491
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a434101a806a810218927cbf0bc24fa0d22c5628
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66730465"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67488647"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Nabízená oznámení pomocí Azure Notification Hubs: Nejčastější dotazy
 
@@ -69,7 +69,7 @@ Server sady SDK jsou dostupné pro .NET, Java, Node.js, PHP nebo Python. Rozhran
 
 ### <a name="which-client-platforms-do-you-support"></a>Které klientské platformy podporujete?
 
-Nabízená oznámení jsou podporovány pro [iOS](notification-hubs-ios-apple-push-notification-apns-get-started.md), [Android](notification-hubs-android-push-notification-google-fcm-get-started.md), [Windows Universal](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md), [Windows Phone](notification-hubs-windows-mobile-push-notifications-mpns.md), [Kindle](notification-hubs-kindle-amazon-adm-push-notification.md), [Android China (přes Baidu)](notification-hubs-baidu-china-android-notifications-get-started.md), Xamarin ([iOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md) a s Androidem, a [Safari](https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari). Další informace najdete v části [Kurzy Začínáme centra oznámení] stránky.
+Nabízená oznámení jsou podporovány pro [iOS](notification-hubs-ios-apple-push-notification-apns-get-started.md), [Android](notification-hubs-android-push-notification-google-fcm-get-started.md), [Windows Universal](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md), [Windows Phone](notification-hubs-windows-mobile-push-notifications-mpns.md), [(Android China pomocí Baidu)](notification-hubs-baidu-china-android-notifications-get-started.md), Xamarin ([iOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md) a s Androidem, a [Safari](https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari). Další informace najdete v části [Kurzy Začínáme centra oznámení] stránky.
 
 ### <a name="do-you-support-text-message-email-or-web-notifications"></a>Podporujete textových zpráv, e-mailu nebo web oznámení?
 
@@ -85,7 +85,7 @@ Pokud máte existující back-endu mobilní aplikace a chcete přidat pouze mož
 
 Odkazovat [ceník Notification Hubs] stránku Podrobnosti o počtu podporovaných zařízení.
 
-Pokud potřebujete podporu pro registrovaná zařízení víc než 10 milionů, [kontaktujte nás](https://azure.microsoft.com/overview/contact-us/) přímo a pomůžeme vám škálování vlastního řešení.
+Pokud potřebujete podporu pro více než 10 milionů registrovaná zařízení, musí vaše zařízení rozdělit mezi více uzly.
 
 ### <a name="how-many-push-notifications-can-i-send-out"></a>Kolik nabízená oznámení můžete mi posílat?
 

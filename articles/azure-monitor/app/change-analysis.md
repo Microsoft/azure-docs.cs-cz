@@ -10,16 +10,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: cawa
-ms.openlocfilehash: 2a31131b662d01f9841a3f1c5b0a6c459a117e77
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 45df8f9e57223ea60a11c6af2187d362184cae2b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67075368"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443348"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Pomocí analýzy změny aplikace (preview) ve službě Azure Monitor
 
-Pokud dojde k problému živého webu nebo kvůli výpadku, k rychlému určení hlavní příčinou je velmi důležité. Standardní řešení pro monitorování může vás upozorní na problém. Může dokonce označení, která komponenta selhává. Ale tato výstraha nebude vysvětlují vždy okamžitě příčinu jeho selhání. Víte, že se váš web pracoval pěti minutami, a teď je poškozen. Co se změnilo v posledních pět minut? Toto je dotaz, který změnu analýza aplikace je navržená k zodpovězení ve službě Azure Monitor. 
+Pokud dojde k problému živého webu nebo kvůli výpadku, k rychlému určení hlavní příčinou je velmi důležité. Standardní řešení pro monitorování může vás upozorní na problém. Může dokonce označení, která komponenta selhává. Ale tato výstraha nebude vysvětlují vždy okamžitě příčinu jeho selhání. Víte, že se váš web pracoval pěti minutami, a teď je poškozen. Co se změnilo v posledních pět minut? Toto je dotaz, který změnu analýza aplikace je navržená k zodpovězení ve službě Azure Monitor.
 
 Stavíme na sílu [grafu prostředků Azure](https://docs.microsoft.com/azure/governance/resource-graph/overview), změna analýzy poskytuje přehledy o změny aplikace Azure ke zvýšení observability a snížení MTTR (průměrný čas potřebný k opravě).
 
@@ -62,21 +62,18 @@ Ve službě Azure Monitor, změna analýzy aktuálně součástí samoobslužný
 
     ![Snímek obrazovky "Dostupnosti a výkonu" možnosti Poradce při potížích](./media/change-analysis/availability-and-performance.png)
 
-1. Vyberte **selhání aplikace**.
+1. Vyberte **změny aplikace**. Ne, tato funkce je také dostupná v **aplikace spadne**.
 
-   ![Snímek obrazovky tlačítka pro "Aplikaci dojde k chybě"](./media/change-analysis/application-crashes-tile.png)
+   ![Snímek obrazovky tlačítka pro "Aplikaci dojde k chybě"](./media/change-analysis/application-changes.png)
 
 1. Chcete-li změnit analýzy, vyberte **povolit teď**.
 
-   ![Snímek obrazovky s možností "Aplikace dojde k chybě"](./media/change-analysis/application-crashes.png)
+   ![Snímek obrazovky s možností "Aplikace dojde k chybě"](./media/change-analysis/enable-changeanalysis.png)
 
-1. Abyste mohli využívat plnou funkčnost změnu analýzy, zapněte **změnu analýzy**, **vyhledat změny kódu**, a **vždy na**. Potom vyberte **Uložit**.
+1. Zapnout **změnu analýzy** a vyberte **Uložit**.
 
     ![Snímek obrazovky uživatelského rozhraní "Povolit analýzu změnu"](./media/change-analysis/change-analysis-on.png)
 
-    - Povolit **změnu analýzy** ke zjištění změn na úrovni prostředků. 
-    - Povolit **vyhledat změny kódu** soubory nasazení a změn konfigurace lokality. 
-    - Povolit **vždy na** za účelem optimalizace výkonu, změny kontroly. Ale pamatujte, že toto nastavení může mít za následek další poplatky.
 
 1. Pro přístup k Analysis změnit, vyberte **diagnostikovat a řešit problémy** > **dostupnost a výkon** > **aplikace spadne**. Zobrazí se graf, který obsahuje souhrn typů změn v čase spolu s podrobnostmi o těchto změnách:
 
@@ -106,7 +103,7 @@ Pokud vaše předplatné zahrnuje mnoho webových aplikací, povolení služby n
         Get-AzureRmProviderFeature -ProviderNamespace "Microsoft.ChangeAnalysis" -ListAvailable #Check for feature flag availability
         Register-AzureRmProviderFeature -FeatureName PreviewAccess -ProviderNamespace Microsoft.ChangeAnalysis #Register feature flag
         ```
-    
+
 1. Registrace poskytovatele prostředků Analysis změnu pro předplatné.
 
    - Přejděte na **předplatná**a vyberte předplatné, které chcete povolit ve službě změnit. Vyberte poskytovatele prostředků:
@@ -121,12 +118,12 @@ Pokud vaše předplatné zahrnuje mnoho webových aplikací, povolení služby n
 
         ```PowerShell
         Get-AzureRmResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState #Check if RP is ready for registration
-    
+
         Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.ChangeAnalysis" #Register the Change Analysis RP
         ```
 
         Jak nastavit skryté klíčové slovo ve webové aplikaci pomocí prostředí PowerShell, spusťte následující příkaz:
-    
+
         ```powershell
         $webapp=Get-AzWebApp -Name <name_of_your_webapp>
         $tags = $webapp.Tags

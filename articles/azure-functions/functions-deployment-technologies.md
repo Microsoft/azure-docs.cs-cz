@@ -10,12 +10,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: cotresne
-ms.openlocfilehash: 10976c9cf16dfab4c31d0d77c519dc3277204a51
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 118daf02ab59646f2926071763aa4d7e97846e04
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67293048"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508233"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Technologie nasazení ve službě Azure Functions
 
@@ -50,16 +50,18 @@ Než budete pokračovat, je potřeba další některých klíčových koncepcí,
 Pokud změníte některé z vašich triggery, funkce infrastruktura musí být tyto změny. Tuto synchronizaci dojde automaticky pro řadu technologií nasazení. Ale v některých případech je nutné ručně synchronizovat vaše aktivační události. Když nasazujete aktualizace pomocí adresy URL externího balíčku, místního Gitu, cloudové synchronizace nebo FTP, musí být nutné ručně synchronizovat vaše aktivační události. Můžete synchronizovat aktivační události v jednom ze tří způsobů:
 
 * Restartujte aplikaci function app na webu Azure Portal
-* Odeslání požadavku HTTP POST do `https://www.{functionappname}.azurewebsites.net/admin/host/synctriggers?code=<API_KEY>` pomocí [hlavní klíč](functions-bindings-http-webhook.md#authorization-keys).
+* Odeslání požadavku HTTP POST do `https://{functionappname}.azurewebsites.net/admin/host/synctriggers?code=<API_KEY>` pomocí [hlavní klíč](functions-bindings-http-webhook.md#authorization-keys).
 * Odeslání požadavku HTTP POST do `https://management.azure.com/subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP_NAME>/providers/Microsoft.Web/sites/<FUNCTION_APP_NAME>/syncfunctiontriggers?api-version=2016-08-01`. Zástupné symboly nahraďte ID vašeho předplatného, název skupiny prostředků a název vaší aplikace function App.
 
 ## <a name="deployment-technology-details"></a>Podrobnosti o nasazení technologie  
+
+Azure Functions podporuje tyto následujících metod nasazení.
 
 ### <a name="external-package-url"></a>Adresy URL externího balíčku
 
 Umožňuje odkazovat na soubor vzdálené balíček (.zip), který obsahuje vaši aplikaci function app. Soubor se stáhne ze zadané adresy URL a spuštění aplikace [spustit z balíčku](run-functions-from-deployment-package.md) režimu.
 
->__Jak jej používat:__ Přidat `WEBSITE_RUN_FROM_PACKAGE` do nastavení aplikace. Hodnota tohoto nastavení by měla být adresa URL – umístění souboru konkrétní balíček, který chcete spustit. Můžete přidat nastavení buď [na portálu](functions-how-to-use-azure-function-app-settings.md#settings) nebo [pomocí rozhraní příkazového řádku Azure](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set). Pokud pomocí úložiště objektů blob v Azure, měli byste použít privátní kontejneru s [sdíleného přístupového podpisu (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#attach-a-storage-account-by-using-a-shared-access-signature-sas) poskytnout funkcí přístup k balíčku. Kdykoli se aplikace restartuje ho načte kopii tohoto obsahu, což znamená, že váš odkaz musí být platný po dobu životnosti aplikace.
+>__Jak jej používat:__ Přidat `WEBSITE_RUN_FROM_PACKAGE` do nastavení aplikace. Hodnota tohoto nastavení by měla být adresa URL – umístění souboru konkrétní balíček, který chcete spustit. Můžete přidat nastavení buď [na portálu](functions-how-to-use-azure-function-app-settings.md#settings) nebo [pomocí rozhraní příkazového řádku Azure](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set). Pokud pomocí úložiště objektů blob v Azure, měli byste použít privátní kontejneru s [sdíleného přístupového podpisu (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) poskytnout funkcí přístup k balíčku. Kdykoli se aplikace restartuje ho načte kopii tohoto obsahu, což znamená, že váš odkaz musí být platný po dobu životnosti aplikace.
 
 >__Kdy ji použít:__ Toto je metoda nasazení jenom podporována pro službu Azure Functions v Linuxu spuštěnou v plánu Consumption (Preview). Při aktualizaci souboru balíčku, který odkazuje na aplikaci function app, je nutné [ruční synchronizaci triggery](#trigger-syncing) Azure říct, že došlo ke změně vaší aplikace.
 
@@ -88,11 +90,11 @@ Nasaďte image kontejneru Linuxu, která obsahuje vaši aplikaci function app.
 
 ### <a name="web-deploy-msdeploy"></a>Nasazení webu (MSDeploy)
 
-Balíčky a nasazuje aplikace Windows k jakémukoli serveru služby IIS, včetně aplikace funkcí Azure a systémem Windows.
+Balíčky a aplikace Windows k jakémukoli serveru služby IIS, včetně vaší aplikace function App a systémem Windows v Azure nasadí.
 
->__Jak jej používat:__ Použití [Visual Studio tools pro službu Azure Functions](functions-create-your-first-function-visual-studio.md), a nikoli značek `Run from package file (recommended)` zaškrtávací políčko.
+>__Jak jej používat:__ Použití [Visual Studio tools pro službu Azure Functions](functions-create-your-first-function-visual-studio.md)a zrušte zaškrtnutí políčka `Run from package file (recommended)` pole.
 >
->Můžete také volat `MSDeploy.exe` přímo po stažení [webové nasazení 3.6](https://www.iis.net/downloads/microsoft/web-deploy).
+> Můžete také stáhnout [webové nasazení 3.6](https://www.iis.net/downloads/microsoft/web-deploy) a volat `MSDeploy.exe` přímo.
 
 >__Kdy ji použít:__ Tato technologie nasazení je podporováno a nemá žádné problémy, ale o upřednostňovaný postup je nyní [Zip nasazení s využitím spustit z balíčku povolené](#zip-deploy). Další informace najdete [Příručka pro vývojáře v sadě Visual Studio](functions-develop-vs.md#publish-to-azure).
 

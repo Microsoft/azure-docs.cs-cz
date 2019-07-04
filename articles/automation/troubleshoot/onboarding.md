@@ -2,18 +2,18 @@
 title: Řešení potíží s chyby registrace Update Management, Change Tracking a Inventory
 description: Zjistěte, jak řešit potíže s Update Management, Change Tracking a Inventory řešení chybami připojení
 services: automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 012cf227bea7dc24eb85fcd9179a7b1025327dcf
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 3687a2fdcba9c2078bbbd9344089b5a22467682c
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342137"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477486"
 ---
 # <a name="troubleshoot-errors-when-onboarding-solutions"></a>Řešení chyb při registraci řešení
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: iainfou
-ms.openlocfilehash: 2e655627267546d88f76a2487817bca3153ee91d
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 69ec3869f7bfd74b150db537a01e604cae87570f
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "65074023"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441984"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Koncepty zabezpečení pro aplikace a clustery ve službě Azure Kubernetes Service (AKS)
 
@@ -36,7 +36,7 @@ Ve výchozím nastavení na serveru Kubernetes API používá veřejnou IP adres
 
 Uzly AKS jsou virtuální počítače s Azure, které můžete spravovat a udržovat. Spuštění optimalizované distribuce Ubuntu pomocí modulu runtime kontejneru Moby uzly s Linuxem. Uzly Windows serveru (aktuálně ve verzi preview ve službě AKS) spuštění. 2019 optimalizované systému Windows Server verze a také použít modul runtime kontejneru Moby. Při vytváření nebo škálování AKS cluster je nejnovější aktualizace zabezpečení operačního systému a konfigurace se automaticky nasadí uzly.
 
-Platforma Azure automaticky použije opravy zabezpečení operačního systému pro uzly s Linuxem přes noc. Pokud aktualizace zabezpečení operačního systému Linux vyžaduje restartování hostitele, že restartování se neprovádí. Můžete ručně restartovat uzly s Linuxem nebo běžným přístupem je použití [Kured][kured], open source restartování démona pro Kubernetes. Kured pracuje jako [DaemonSet] [ aks-daemonsets] a sleduje každý uzel pro přítomnost souboru, která udává, že je vyžadován restart. Restartování se spravují v clusteru pomocí stejných [kordon a výpusť procesu](#cordon-and-drain) jako upgradu clusteru.
+Platforma Azure automaticky použije opravy zabezpečení operačního systému pro uzly s Linuxem přes noc. Pokud aktualizace zabezpečení operačního systému Linux vyžaduje restartování hostitele, že restartování se neprovádí. Můžete ručně restartovat uzly s Linuxem nebo běžným přístupem je použití [Kured][kured] , an open-source reboot daemon for Kubernetes. Kured runs as a [DaemonSet][aks-daemonsets] a sleduje každý uzel pro přítomnost souboru, která udává, že je vyžadován restart. Restartování se spravují v clusteru pomocí stejných [kordon a výpusť procesu](#cordon-and-drain) jako upgradu clusteru.
 
 Pro uzly Windows serveru (aktuálně ve verzi preview ve službě AKS) Windows Update automaticky spustit a použijte nejnovější aktualizace. V pravidelných intervalech kolem cyklu vydávání verzí Windows Update a procesu ověřování měli byste provést upgrade na fondy uzlů Windows Server ve vašem clusteru AKS. Pomocí tohoto procesu vytvoří uzly, na kterých běží nejnovější image Windows serveru a oprav a pak odstraní starší uzly. Další informace o tomto procesu najdete v tématu [fond uzlů ve službě AKS Upgrade][nodepool-upgrade].
 
@@ -73,7 +73,7 @@ Chcete-li filtrovat toku provozu ve virtuálních sítích, Azure využívá pra
 
 Kubernetes *tajný kód* slouží k vložení citlivá data do podů, jako je například přístup k přihlašovacím údajům nebo klíčům. Nejprve vytvoříte tajného kódu pomocí rozhraní API Kubernetes. Při definování pod nebo nasazení mohou být požadována určitého tajného klíče. Tajné kódy jsou poskytovány pouze pro uzly, které mají naplánované pod, kterého je vyžadováno, a tajný kód je uložen v *tmpfs*není napsaných na disk. Při odstranění posledního podu na uzel, který se vyžaduje tajný kód. tajný kód je odstraněn z tmpfs uzlu. Tajné klíče jsou uložené v daném oboru názvů a je přístupný pouze pomocí podů v rámci stejného oboru názvů.
 
-Použití tajných kódů snižuje citlivých informací, která je definována v podu nebo service YAML manifest. Místo toho si vyžádáte tajného klíče uložené v serveru Kubernetes API jako součást YAML manifestu. Tento přístup poskytuje pouze konkrétní pod přístup k tajný kód.
+Použití tajných kódů snižuje citlivých informací, která je definována v podu nebo service YAML manifest. Místo toho si vyžádáte tajného klíče uložené v serveru Kubernetes API jako součást YAML manifestu. Tento přístup poskytuje pouze konkrétní pod přístup k tajný kód. Mějte prosím na paměti: soubory manifestu raw tajného kódu obsahuje tajných dat ve formátu base64 (najdete v článku [oficiální dokumentaci][secret-risks] další podrobnosti). Proto tento soubor by měl být považován za citlivé informace a nikdy potvrzené do správy zdrojového kódu.
 
 ## <a name="next-steps"></a>Další postup
 
@@ -92,6 +92,7 @@ Další informace o základní Kubernetes a AKS koncepty najdete v následujíc�
 <!-- LINKS - External -->
 [kured]: https://github.com/weaveworks/kured
 [kubernetes-network-policies]: https://kubernetes.io/docs/concepts/services-networking/network-policies/
+[secret-risks]: https://kubernetes.io/docs/concepts/configuration/secret/#risks
 
 <!-- LINKS - Internal -->
 [aks-daemonsets]: concepts-clusters-workloads.md#daemonsets

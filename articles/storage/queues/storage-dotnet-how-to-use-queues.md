@@ -10,12 +10,12 @@ ms.date: 05/21/2019
 ms.author: mhopkins
 ms.reviewer: cbrooks
 ms.subservice: queues
-ms.openlocfilehash: 44f1953d01f827db1cbb65f9029c62569425745e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 59995715ab42b4682befa7d1512b14427740dea2
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67077053"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446854"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>Začínáme s úložištěm Azure Queue pomocí rozhraní .NET
 
@@ -82,7 +82,7 @@ Můžete získat tyto balíčky NuGet. Postupujte následovně:
 > [!NOTE]
 > Balíčky pro knihovny klienta úložiště jsou taky součástí [sady Azure SDK for .NET](https://azure.microsoft.com/downloads/). Doporučujeme však také nainstalujte klientské knihovny úložiště z NuGet, abyste měli jistotu, že vždy máte nejnovější verze.
 >
-> Závislosti ODataLib v klientských knihoven pro úložiště pro .NET jsou vyřešené prostřednictvím balíčků ODataLib, které jsou dostupné na Nugetu, nikoli z datové služby WCF. Knihovny ODataLib můžete stáhnout přímo nebo z odkazu ve vašem kódovém projektu prostřednictvím balíčku NuGet. Konkrétní balíčky ODataLib používané klientské knihovny úložiště jsou [OData](http://nuget.org/packages/Microsoft.Data.OData/), [Edm](http://nuget.org/packages/Microsoft.Data.Edm/), a [Spatial](http://nuget.org/packages/System.Spatial/). Tyto knihovny používají třídy Azure Table storage, ale jsou požadované závislosti pro programování pomocí klientské knihovny pro úložiště.
+> Závislosti ODataLib v klientských knihoven pro úložiště pro .NET jsou vyřešené prostřednictvím balíčků ODataLib, které jsou dostupné na Nugetu, nikoli z datové služby WCF. Knihovny ODataLib můžete stáhnout přímo nebo z odkazu ve vašem kódovém projektu prostřednictvím balíčku NuGet. Konkrétní balíčky ODataLib používané klientské knihovny úložiště jsou [OData](https://nuget.org/packages/Microsoft.Data.OData/), [Edm](https://nuget.org/packages/Microsoft.Data.Edm/), a [Spatial](https://nuget.org/packages/System.Spatial/). Tyto knihovny používají třídy Azure Table storage, ale jsou požadované závislosti pro programování pomocí klientské knihovny pro úložiště.
 
 ### <a name="determine-your-target-environment"></a>Určení cílového prostředí
 

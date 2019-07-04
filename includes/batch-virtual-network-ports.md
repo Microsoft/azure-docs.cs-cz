@@ -15,12 +15,12 @@ ms.workload: ''
 ms.date: 04/10/2019
 ms.author: lahugh
 ms.custom: include file
-ms.openlocfilehash: 711b662c35b5f8fec96f1edee765696bc1028bf8
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: a794852e68fdb2bf52717aaa6441880bd1d51139
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175359"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67436270"
 ---
 ### <a name="general-requirements"></a>Obecné požadavky
 
@@ -71,9 +71,9 @@ Nemusíte zadávat skupiny zabezpečení sítě na úrovni podsítě, protože B
 
 **Odchozí pravidla zabezpečení**
 
-| source | Zdrojové porty | Cíl | Značka cílové služby | Protocol | Akce |
-| --- | --- | --- | --- | --- | --- |
-| Jakýkoli | 443 | [Značka služby](../articles/virtual-network/security-overview.md#service-tags) | `Storage` (ve stejné oblasti jako účet Batch a virtuální síť)  | Jakýkoli | Povolit |
+| source | Zdrojové porty | Cíl | Značka cílové služby | Cílové porty | Protocol | Akce |
+| --- | --- | --- | --- | --- | --- | --- |
+| Jakýkoli | * | [Značka služby](../articles/virtual-network/security-overview.md#service-tags) | `Storage` (ve stejné oblasti jako účet Batch a virtuální síť) | 443 | TCP | Povolit |
 
 ### <a name="pools-in-the-cloud-services-configuration"></a>Fondy v konfigurace služby Cloud Services
 

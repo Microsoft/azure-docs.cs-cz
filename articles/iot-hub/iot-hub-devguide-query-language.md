@@ -1,18 +1,18 @@
 ---
 title: Vysvětlení dotazovací jazyk služby Azure IoT Hub | Dokumentace Microsoftu
 description: Příručka pro vývojáře – popis služby IoT Hub podobném SQL dotazovací jazyk používá k načtení informací o zařízení a modul dvojčata a úlohy ze služby IoT hub.
-author: rezasherafat
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 10/29/2018
-ms.author: rezas
-ms.openlocfilehash: 4fbb731d9908e791a6fce2b087d9b734b98a25cb
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.author: robinsh
+ms.openlocfilehash: 03d2ca0b7d6b53215c5293f84c8b22a2dc0d8297
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67137731"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67450063"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>Dotazovací jazyk služby IoT Hub pro dvojčata zařízení a modul, úlohy a směrování zpráv
 
@@ -328,8 +328,8 @@ SELECT <select_list>
 
 **z < from_specification >** klauzule může převzít jenom tři hodnoty: **ZE zařízení** na dvojčata zařízení dotaz, **z devices.modules** k dotazování dvojčat modulů, nebo **z devices.jobs** na podrobnosti o dotazu úlohy na zařízení.
 
-
 ## <a name="where-clause"></a>Klauzule WHERE
+
 **Kde < filter_condition >** klauzule je volitelný. Určuje, že mají být zahrnuty jako součást výsledku musí splňovat jednu nebo více podmínek, že v kolekci z dokumentů JSON. Jakýkoliv dokument JSON musí být zadané podmínky na "true" mají být zahrnuty ve výsledku.
 
 Povolené podmínky jsou popsány v části [výrazy a podmínky](iot-hub-devguide-query-language.md#expressions-and-conditions).
@@ -366,6 +366,7 @@ SELECT [TOP <max number>] <projection list>
 V současné době výběr klauzule liší od **vyberte*** jsou podporovány pouze v agregačních dotazů na dvojčata zařízení.
 
 ## <a name="group-by-clause"></a>Klauzule GROUP BY
+
 **Group < group_specification >** klauzule je volitelný krok, který se spustí po zadaný v klauzuli WHERE a před projekce určená v seznamu vyberte filtr. Seskupuje dokumentů na základě hodnoty atributu. Tyto skupiny slouží ke generování agregovaných hodnot zadaných v klauzuli SELECT.
 
 Příklad dotazu pomocí GROUP BY je:
@@ -393,9 +394,9 @@ V klauzuli GROUP BY se v současné době podporuje jenom při dotazování dvoj
 > [!IMPORTANT]
 > Termín `group` aktuálně je považován za zvláštní – klíčové slovo v dotazech. V případě použití `group` jako název vlastnosti, vezměte v úvahu okolní infrastrukturou pomocí hranatých závorek, aby nedocházelo k chybám, například `SELECT * FROM devices WHERE tags.[[group]].name = 'some_value'`.
 >
->
 
 ## <a name="expressions-and-conditions"></a>Výrazy a podmínky
+
 Na vysoké úrovni *výraz*:
 
 * Vyhodnotí jako instanci typu JSON (jako je logická hodnota, číslo, řetězec, pole nebo objekt).
@@ -443,6 +444,7 @@ Informace o tom co zastupuje každý symbol v syntaxi výrazů, najdete v násle
 | string_literal |Řetězcové literály jsou reprezentovány posloupnost nula nebo více znaků Unicode nebo řídicí sekvence řetězců v kódu Unicode. Řetězcové literály jsou uzavřeny v jednoduchých uvozovkách nebo dvojité uvozovky. Povolené řídicí sekvence: `\'`, `\"`, `\\`, `\uXXXX` znaků Unicode, které jsou definovány 4 šestnáctkovými číslicemi. |
 
 ### <a name="operators"></a>Operátory
+
 Jsou podporovány následující operátory:
 
 | Řada | Operátory |
@@ -452,6 +454,7 @@ Jsou podporovány následující operátory:
 | Porovnání |=, !=, <, >, <=, >=, <> |
 
 ### <a name="functions"></a>Funkce
+
 Při dotazování na dvojčata a úlohy, které jediný podporovaný je funkce:
 
 | Funkce | Popis |

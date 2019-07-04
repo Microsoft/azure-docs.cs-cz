@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/07/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 00b94174debf915fac3ae5fb37f382c0dc46abfb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 157a421ce2cb4442597bfb0f75ae042a10a8ee03
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66755001"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443759"
 ---
 # <a name="azure-storage-account-overview"></a>Přehled účtu Azure storage
 
@@ -68,7 +68,7 @@ Ve většině případů se doporučuje účty pro obecné účely v2, účty pr
 
 Účty blob storage bloku aktuálně nepodporují výběr vrstvy na horkou, studenou nebo archivní úroveň přístupu.
 
-### <a name="filestorage-preview-storage-accounts"></a>Účty úložiště pro úložiště souborů (preview)
+### <a name="filestorage-storage-accounts"></a>Účty úložiště pro úložiště souborů
 
 Účet úložiště úložiště souborů je specializovaný účet úložiště používá k ukládání a vytvoření sdílených složek premium. Účty úložiště pro úložiště souborů nabízí jedinečné výkonu vyhrazené vlastnosti například shlukování vstupně-výstupních operací. Další informace o těchto vlastnostech najdete v článku [úrovně výkonu sdílené složky souboru](../files/storage-files-planning.md#file-share-performance-tiers) části souborů Průvodce plánováním.
 
@@ -88,7 +88,7 @@ Při pojmenování účtu úložiště mějte na paměti tato pravidla:
 
 Účty blob storage bloku poskytují výkon úrovně premium pro ukládání objektů BLOB bloku a doplňovacích objektů BLOB.
 
-Úložiště souborů (preview) účty úložiště poskytují výkon úrovně premium pro sdílené složky Azure.
+Účty úložiště souborů úložiště poskytují výkon úrovně premium pro sdílené složky Azure.
 
 ## <a name="access-tiers-for-block-blob-data"></a>Úrovně přístupu pro data objektů blob bloku
 

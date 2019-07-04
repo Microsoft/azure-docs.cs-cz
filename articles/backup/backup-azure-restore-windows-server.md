@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 9/7/2018
 ms.author: saurse
-ms.openlocfilehash: d58b51f06c21c787e4aa720c803ab6533544d55c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9c2f8ce0dfb866826de549946bc3ee1acc2b677f
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60238618"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67460257"
 ---
 # <a name="restore-files-to-windows-by-using-the-azure-resource-manager-deployment-model"></a>Obnovení souborů do Windows pomocí modelu nasazení Azure Resource Manageru
 
@@ -97,7 +97,7 @@ Tyto kroky zahrnují následující terminologií:
 * *Ukázka trezor* – trezor Recovery Services do kterého jsou registrované na zdrojovém počítači a cílový počítač. <br/>
 
 > [!NOTE]
-> Zálohování není možné obnovit do cílového počítače, na kterém běží starší verze operačního systému. Například je možné obnovit zálohu z počítače Windows 7 na počítači s Windows 8 (nebo novější). Zálohování provést z počítače se systémem Windows 8 není možné obnovit do počítače Windows 7.
+> Zálohování není možné obnovit do cílového počítače, na kterém běží starší verze operačního systému. Například lze obnovit zálohu z počítače Windows 7 na počítač s Windows 7 (nebo novější). Zálohování provést z počítače se systémem Windows 8 není možné obnovit do počítače Windows 7.
 >
 >
 

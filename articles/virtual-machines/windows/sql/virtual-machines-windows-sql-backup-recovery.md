@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
-ms.openlocfilehash: ab239d0546508d74874c6b6be03f6afc06b08fa7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5c02daef31b29e9a95ddfdedea497604ad0777aa
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60563409"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442644"
 ---
 # <a name="backup-and-restore-for-sql-server-in-azure-virtual-machines"></a>Zálohování a obnovení pro SQL Server v Azure Virtual Machines
 
@@ -35,7 +35,7 @@ Následující tabulka obsahuje informace o různých možnostech zálohování 
 | Strategie | Verze SQL | Popis |
 |---|---|---|
 | [Automatizované zálohování](#automated) | 2014<br/> 2016<br/> 2017 | Automatizované zálohování můžete naplánovat pravidelné zálohování pro všechny databáze na virtuální počítač s SQL serverem. Zálohy jsou uložené v úložišti Azure po dobu až 30 dnů. Od verze SQL serveru 2016, automatizovaného zálohování v2 nabízí další možnosti, jako je například konfigurace ručního plánování a četnost úplný a záloh protokolu. |
-| [Azure Backup pro virtuální počítače SQL](#azbackup) | 2012<br/> 2014<br/> 2016<br/> 2017 | Azure Backup poskytuje možnost zálohování podnikové třídy pro SQL Server spuštěných na virtuálních počítačích Azure. Pomocí této služby můžete centrálně spravovat zálohy pro více serverů a tisíce databází. Můžete obnovit databáze k určitému bodu v čase na portálu. Nabízí zásady uchovávání informací přizpůsobitelné, můžete zachovat zálohy po dobu let. Tato funkce je aktuálně ve verzi public preview. |
+| [Azure Backup pro virtuální počítače SQL](#azbackup) | 2008<br/> 2012<br/> 2014<br/> 2016<br/> 2017 | Azure Backup poskytuje možnost zálohování podnikové třídy pro SQL Server spuštěných na virtuálních počítačích Azure. Pomocí této služby můžete centrálně spravovat zálohy pro více serverů a tisíce databází. Můžete obnovit databáze k určitému bodu v čase na portálu. Nabízí zásady uchovávání informací přizpůsobitelné, můžete zachovat zálohy po dobu let. |
 | [Ruční zálohy](#manual) | Vše | V závislosti na vaší verzi SQL serveru jsou různých technik vytváření ručně zálohování a obnovení SQL serveru běžícího na Virtuálním počítači Azure. V tomto scénáři jste zodpovědní za jak zálohovat vašich databází a umístění úložiště a správy tyto zálohy. |
 
 Následující části popisují jednotlivé možnosti podrobněji. Koncová část tohoto článku poskytuje souhrn ve formě přehled funkcí.

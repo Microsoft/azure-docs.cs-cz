@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/06/2019
 ms.author: v-mohabe
-ms.openlocfilehash: b1280274122800147c442b73b360bc5141530a0e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 86d48360e37f26d19d15c62a8109c030d421c661
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67050601"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551886"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Shromažďování dat ve službě Azure Security Center
 Security Center shromažďuje data z virtuálních počítačů Azure (VM), škálovací sady virtuálních počítačů, kontejnerů IaaS a počítače mimo Azure (včetně místních) k monitorování ohrožení zabezpečení a hrozby. Data se shromažďují pomocí agenta Microsoft Monitoring Agent, který z počítače načítá různé protokoly událostí a konfigurace související se zabezpečením a kopíruje data k analýze do vašeho pracovního prostoru. Příkladem takových dat jsou: operační systém typu a verzi, protokoly operačního systému (protokoly událostí Windows), spuštěné procesy, název počítače, IP adresy a přihlášeného uživatele. Agent Microsoft Monitoring Agent také zkopíruje soubory se stavem systému do pracovního prostoru.
@@ -46,12 +46,12 @@ Při zapnuté automatické zřizování, Security Center zřídí Microsoft Moni
 
 
 Povolení automatického zřizování agenta Microsoft Monitoring Agent:
-1. V hlavní nabídce služby Security Center, vyberte **zásady zabezpečení**.
-2. Klikněte na tlačítko **upravit nastavení** ve sloupci nastavení z požadovaného předplatného v seznamu.
+1. V hlavní nabídce služby Security Center, vyberte **ceny na & stavení**.
+2. Klikněte na příslušný odběr.
 
    ![Výběr předplatného][7]
 
-3. V části **Zásady zabezpečení** vyberte **Shromažďování dat**.
+3. Vyberte **shromažďování dat**.
 4. V části **automatického zřizování**vyberte **na** chcete povolit automatické zřizování.
 5. Vyberte **Uložit**.
 
@@ -131,11 +131,11 @@ Vyberte existující pracovní prostor Log Analytics:
 
 5. Vyberte cenovou úroveň pro požadovaný pracovní prostor máte v úmyslu nastavit Microsoft Monitoring agent. <br>Pokud chcete použít existující pracovní prostor, nastavte cenovou úroveň pracovního prostoru. Tím se nainstaluje security Center řešení v pracovním prostoru, pokud již není k dispozici.
 
-    a.  V hlavní nabídce služby Security Center, vyberte **zásady zabezpečení**.
+    a.  V hlavní nabídce služby Security Center, vyberte **ceny na & stavení**.
      
-    b.  Vyberte požadovaný pracovní prostor, ve kterém chcete připojit agenta kliknutím **upravit nastavení** ve sloupci nastavení z požadovaného předplatného v seznamu.
-        ![Vyberte pracovní prostor][8] c. Nastavte cenovou úroveň.
-        ![Vyberte cenovou úroveň.][9] 
+    b.  Vyberte požadovaný pracovní prostor, ve které máte v úmyslu připojení agenta.
+        ![Vyberte pracovní prostor][7] c. Nastavte cenovou úroveň.
+        ![Vyberte cenovou úroveň.][9]
    
    >[!NOTE]
    >Pokud je pracovní prostor už **zabezpečení** nebo **SecurityCenterFree** povolené žádné řešení, ceny se nastaví automaticky. 
@@ -165,8 +165,8 @@ Tyto sady byly navržených pro typické scénáře. Ujistěte se, že k vyhodno
 
 K určení událostí, které bude patřit **běžné** a **minimální** události sady jsme ve spolupráci se zákazníky a oborové standardy, další informace o nefiltrované četnost každé události a jejich využití. V tomto procesu jsme použili následující pokyny:
 
-- **Minimální** – Ujistěte se, že tato sada zahrnuje pouze události, které mohou uvádět úspěšné porušení zabezpečení a důležité události, které obsahují velmi malé množství. Například tato sada obsahuje úspěšné i neúspěšné přihlášení uživatele (událost ID 4624 4625), ale neobsahuje odhlášení, který je důležitý pro auditování, ale ne smysl pro zjišťování a má relativně velkým objemem. Většina objemu dat této sady se události přihlášení a proces vytvoření události (událost ID 4688).
-- **Běžné** – zadejte úplné uživatelské záznam pro audit v této sadě. Tato sada obsahuje například uživatelských přihlášení a odhlášení uživatele (událost ID 4634). Zahrnujeme auditování akce, jako je změnami skupin zabezpečení, operace protokolu Kerberos řadič klíče domény a další události, které doporučuje organizace odvětví.
+- **Minimální** – Ujistěte se, že tato sada zahrnuje pouze události, které mohou uvádět úspěšné porušení zabezpečení a důležité události, které obsahují velmi malé množství. Například tato sada obsahuje úspěšné i neúspěšné přihlášení uživatele (událost ID 4624 4625), ale neobsahuje znak na více instancí, který je důležitý pro auditování, ale ne smysl pro zjišťování a má relativně velkým objemem. Většina objemu dat této sady se události přihlášení a proces vytvoření události (událost ID 4688).
+- **Běžné** – zadejte úplné uživatelské záznam pro audit v této sadě. Tato sada obsahuje například přihlášení uživatelů a výpisů přihlášení uživatele (událost ID 4634). Zahrnujeme auditování akce, jako je změnami skupin zabezpečení, operace protokolu Kerberos řadič klíče domény a další události, které doporučuje organizace odvětví.
 
 Události, které mají velmi malé množství byly součástí běžnou sadu jako hlavní motivace rozhodnout se, že všechny události přímo je snížit objem a nechcete vyfiltrovat konkrétní události.
 
@@ -191,7 +191,7 @@ Tady je úplný přehled zabezpečení a AppLocker event ID pro každou sadu:
 >
 
 Chcete-li zvolit filtrování zásad:
-1. Na **zásadu zabezpečení shromažďování dat** okně vyberte vaše zásady filtrování v rámci **události zabezpečení**.
+1. Na **shromažďování dat** vyberte vaše zásady filtrování v rámci **události zabezpečení**.
 2. Vyberte **Uložit**.
 
    ![Zvolte zásady filtrování][5]

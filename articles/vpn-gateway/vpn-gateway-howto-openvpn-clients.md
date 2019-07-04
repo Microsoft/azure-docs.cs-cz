@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 06/14/2019
 ms.author: cherylmc
-ms.openlocfilehash: a3806a7f64f30e5073182f96f552b8584cf1ce0c
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: b8f1626da730178d2cd9c2f31c4f9876102b3d46
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147244"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477851"
 ---
 # <a name="configure-openvpn-clients-for-azure-vpn-gateway"></a>Konfigurace klientů OpenVPN pro Azure VPN Gateway
 
@@ -67,9 +67,9 @@ Ověřte, že jste dokončili postup pro konfiguraci OpenVPN pro bránu VPN. Pod
 4. V části klientského certifikátu P2S vyplňte veřejný klíč klientského certifikátu P2S v kódování Base-64. V případě certifikátu s formátem PEM stačí otevřít soubor .cer a zkopírovat klíč Base-64 uvedený mezi hlavičkami certifikátu. Zobrazit [Export veřejného klíče](vpn-gateway-certificates-point-to-site.md#cer) informace o exportování certifikátu se získat kódované veřejný klíč.
 5. V části privátního klíče vyplňte privátní klíč klientského certifikátu P2S v kódování Base-64. Zobrazit [exportovat soukromý klíč](https://openvpn.net/community-resources/how-to/#pki) informace o tom, jak extrahovat privátní klíč.
 6. Ostatní pole ponechte beze změny. S použitím vyplněné konfigurace ve vstupu klienta se připojte k síti VPN.
-7. Poklikejte na soubor profilu a vytvořte profil v tunnelblik.
-8. Spusťte Tunnelblik ze složky aplikace.
-9. Klikněte na ikonu Tunnelblik na hlavním panelu systému a připojit výběru.
+7. Poklikejte na soubor profilu a vytvořte profil v Tunnelblick.
+8. Spusťte Tunnelblick ze složky aplikace.
+9. Klikněte na ikonu Tunnelblick na hlavním panelu systému a připojit výběru.
 
 > [!IMPORTANT]
 >Jenom iOS 11.0 a vyšší a MacOS 10.13 a novější podporují OpenVPN protokolu.

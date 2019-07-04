@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
-ms.openlocfilehash: abbd26779cefaf52c6f2247a5d27db25f280c930
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f2574cc64e157ff0f8a6cb875a832db88cf13dd6
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60395718"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67479801"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Připojení Azure k nástrojům ITSM pomocí IT Service Management Connector
 
@@ -62,7 +62,9 @@ Než vytvoříte připojení, budete muset přidat řešení ITSM konektor.
 
 3. V **pracovní prostor OMS** vyberte pracovní prostor Azure Log Analytics, ve kterém chcete nainstalovat řešení.
    >[!NOTE]
-   >Jako součást probíhající přechod z Microsoft Operations Management Suite (OMS) do Azure monitoru pracovními prostory OMS jsou dnes označovány jako pracovní prostory Log Analytics.
+   > * Jako součást probíhající přechod z Microsoft Operations Management Suite (OMS) do Azure monitoru pracovními prostory OMS jsou dnes označovány jako pracovní prostory Log Analytics.
+   > * Konektor ITSM se dá nainstalovat jenom v pracovních prostorech Log Analytics v těchto oblastech: Východní USA, západní Evropa, jihovýchodní Asie, jihovýchodní Austrálii, západní střed USA, východní Japonsko, Velká Británie – Jih, střed Indie, centrální Kanada.
+
 4. V **nastavení pracovního prostoru OMS** vyberte skupiny prostředků, ve kterém chcete vytvořit řešení prostředků.
 
    ![Pracovní prostor ITSMC](media/itsmc-overview/itsmc-solution-workspace.png)

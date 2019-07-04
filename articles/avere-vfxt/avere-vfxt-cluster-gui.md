@@ -4,14 +4,14 @@ description: Jak se připojit ke clusteru vFXT a založené na prohlížeči Ave
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 06/24/2019
 ms.author: v-erkell
-ms.openlocfilehash: f989f4d103efecf2b6e206287dd8b7b300a1796d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 830be92d37f304598cca05c3ac80973158c38a59
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60794283"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67439975"
 ---
 # <a name="access-the-vfxt-cluster"></a>Přístup ke clusteru vFXT
 
@@ -27,9 +27,11 @@ Protože vFXT cluster nachází v rámci privátní virtuální síť, musíte v
 
 Před připojením, ujistěte se, že veřejného/soukromého páru klíčů SSH, který jste použili při vytváření clusteru kontroleru je nainstalována na místním počítači. Přečtěte si jejich dokumentaci klíče SSH [Windows](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows) nebo [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys) Pokud potřebujete pomoc. (Pokud jste použili heslo místo veřejný klíč, budete vyzváni k jeho zadání, když se připojíte.) 
 
-## <a name="ssh-tunnel-with-a-linux-host"></a>Tunel SSH s hostiteli se systémem Linux
+## <a name="create-an-ssh-tunnel"></a>Vytvoření tunelu SSH 
 
-Pokud používáte klienta se systémem Linux, použijte příkaz v tomto formuláři tunelování SSH: 
+Vytvořením tunelu SSH z příkazového řádku z založenou na Linuxu nebo klienta systému Windows 10. 
+
+Použijte příkaz v tomto formuláři tunelování SSH: 
 
 ssh -L *local_port*:*cluster_mgmt_ip*:443 *controller_username*\@*controller_public_IP*
 
@@ -40,28 +42,6 @@ Příklad:
 ```sh
 ssh -L 8443:10.0.0.5:443 azureuser@203.0.113.51
 ```
-
-Ověřování je automatické, pokud jste použili veřejný klíč SSH k vytvoření clusteru a v klientském systému je nainstalován odpovídajícího klíče. Pokud jste použili heslo, systém vás vyzve k jeho zadání.
-
-## <a name="ssh-tunnel-with-a-windows-host"></a>Tunel SSH s Windows hostitele
-
-Tento příklad používá běžné založené na Windows terminálu nástroj PuTTY.
-
-Vyplňte PuTTY **hostname** pole uživatelské jméno clusteru kontroleru a jeho IP adresu: *your_username*\@*controller_public_IP*.
-
-Příklad: ``azureuser@203.0.113.51``
-
-V **konfigurace** panelu:
-
-1. Rozbalte **připojení** > **SSH** na levé straně. 
-1. Klikněte na tlačítko **tunely**. 
-1. Zadejte zdrojový port, jako je 8443. 
-1. Jako cíl zadejte vFXT cluster IP adresa pro správu a port 443. 
-   Příklad: ``203.0.113.51:443``
-1. Klikněte na tlačítko **Add** (Přidat).
-1. Klikněte na tlačítko **otevřít**.
-
-![Aplikace Putty snímek obrazovky znázorňující, kde klikněte na tlačítko Přidat tunel](media/avere-vfxt-ptty-numbered.png)
 
 Ověřování je automatické, pokud jste použili veřejný klíč SSH k vytvoření clusteru a v klientském systému je nainstalován odpovídajícího klíče. Pokud jste použili heslo, systém vás vyzve k jeho zadání.
 

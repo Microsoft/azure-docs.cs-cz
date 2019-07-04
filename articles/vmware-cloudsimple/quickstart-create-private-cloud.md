@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 8a67cd2f82eb069555bda68e4cb04a6634e3b31d
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 85a8840ccf6f6fe6390b5eeaccd715d87169f157
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164357"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476031"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Rychlý start – konfigurace prostředí privátního cloudu
 
@@ -187,7 +187,10 @@ Plně kvalifikovaný název domény (FQDN) a IP adresa správce NSX najdete na p
 
     ![Najít NSX správce plně kvalifikovaný název domény](media/private-cloud-nsx-manager-fqdn.png)
 
-Chcete-li změnit heslo, postupujte podle pokynů v [NSX Správce instalace](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.2/com.vmware.nsxt.install.doc/GUID-A65FE3DD-C4F1-47EC-B952-DEDF1A3DD0CF.html).
+Chcete-li změnit heslo, postupujte podle pokynů v [spravovat hesla uživatele](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.4/administration/GUID-DB31B304-66A5-4516-9E55-2712D12B4F27.html).
+
+> [!WARNING]
+> Ve výchozím nastavení heslo správce NSX vyprší po 90 dnech.
 
 ## <a name="create-a-port-group"></a>Vytvořte skupinu portů
 

@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: article
-ms.date: 6/13/2019
+ms.date: 6/27/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: d9bbc76fe60a5d363cd05b75df33f6fce00d7e9a
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 2399fcaa683e5807d2a5cd69d3dd3357d804fd28
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67303408"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449955"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Poznámky k verzi pro agenta Azure File Sync
 Synchronizace souborů Azure umožňuje centralizovat sdílené složky organizace ve službě Soubory Azure bez ztráty flexibility, výkonu a kompatibility místního souborového serveru. Vaše instalace Windows Serveru se transformují na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru (včetně SMB, NFS a FTPS). Můžete mít libovolný počet mezipamětí po celém světě.
@@ -26,7 +26,8 @@ Agent Synchronizace souborů Azure podporuje následující verze:
 | Milník | Číslo verze agenta | Datum vydání | Status |
 |----|----------------------|--------------|------------------|
 | V7 Release - [KB4490495](https://support.microsoft.com/help/4490495)| 7.0.0.0 | 19. červnu 2019 | [Publikování testovacích verzí](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#automatic-agent-lifecycle-management) |
-| Červen 2019 kumulativní - [KB4489738](https://support.microsoft.com/help/4489738)| 6.2.0.0 | 13. června 2019 | Podporované (doporučená verze) |
+| Červen 2019 kumulativní - [KB4489739](https://support.microsoft.com/help/4489739)| 6.3.0.0 | 27. června 2019 | Podporované (doporučená verze) |
+| Červen 2019 kumulativní - [KB4489738](https://support.microsoft.com/help/4489738)| 6.2.0.0 | 13. června 2019 | Podporováno |
 | Kumulativní – aktualizace. května 2019 [KB4489737](https://support.microsoft.com/help/4489737)| 6.1.0.0 | 7\. května 2019 | Podporováno |
 | V6 Release - [KB4489736](https://support.microsoft.com/help/4489736)| 6.0.0.0 | 21. dubna 2019 | Podporováno |
 | 2019 dubna kumulativní - [KB4481061](https://support.microsoft.com/help/4481061)| 5.2.0.0 | 4\. dubna 2019 | Podporováno |
@@ -113,6 +114,14 @@ Následující položky se nesynchronizují, ale zbytek systému bude fungovat n
 ### <a name="cloud-tiering"></a>Vrstvení cloudu
 - Pokud se vrstvený soubor zkopíruje do nového umístění pomocí příkazu Robocopy, výsledný soubor nebude vrstvený. Může však mít nastavený atribut offline, protože příkaz Robocopy nesprávně zahrnuje tento atribut do operací kopírování.
 - Při kopírování souborů pomocí příkazu robocopy, použijte možnost/MIR zachovat časová razítka souborů. Tím se zajistí, že starší souborů proběhne rychleji než naposledy použitých souborů.
+
+## <a name="agent-version-6300"></a>Verze agenta 6.3.0.0
+Následující poznámky k verzi platí pro verze 6.3.0.0 agenta Azure File Sync vydáno 27. června 2019. Tyto poznámky doplňují uvedené pro verzi 6.0.0.0 poznámky.
+
+Seznam opravených chybách v této verzi:  
+- Přístup k nebo procházení umístění koncového bodu serveru přes protokol SMB je pomalé v systému Windows Server 2012 R2 
+- Zvýšení využití procesoru po instalaci agenta Azure File Sync v6
+- Vylepšení vrstvení telemetrických dat v cloudu
 
 ## <a name="agent-version-6200"></a>Verze agenta 6.2.0.0
 Následující poznámky k verzi platí pro verze 6.2.0.0 agenta Azure File Sync vydáno 13. června 2019. Tyto poznámky doplňují uvedené pro verzi 6.0.0.0 poznámky.

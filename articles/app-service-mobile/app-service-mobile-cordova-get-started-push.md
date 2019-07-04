@@ -5,29 +5,33 @@ services: app-service\mobile
 documentationcenter: javascript
 manager: crdun
 editor: ''
-author: conceptdev
+author: elamalani
 ms.assetid: 92c596a9-875c-4840-b0e1-69198817576f
 ms.service: app-service-mobile
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-html
 ms.devlang: javascript
 ms.topic: article
-ms.date: 10/30/2016
-ms.author: crdun
-ms.openlocfilehash: 40a7552ffd0bfcab173d2e35c52313a94ec3d0bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: e6755c3fb1fca342d94fdaa96c0dce614d762172
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62114327"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443556"
 ---
 # <a name="add-push-notifications-to-your-apache-cordova-app"></a>Přidání nabízených oznámení do aplikace Apache Cordova
 
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
+> [!NOTE]
+> Visual Studio App Center investuje do nové a integrované služby, které jsou centrální při vývoji mobilních aplikací. Vývojáři mohou použít **sestavení**, **testovací** a **rozmístit** služby vytvořit kanál pro průběžnou integraci a doručování. Po nasazení aplikace se můžou vývojáři monitorovat stav a využití své aplikace pomocí **Analytics** a **diagnostiky** služeb a Zaujměte uživatele, kteří používají **Push** Služba. Vývojáři mohou využít i **Auth** k ověření uživatelů a **Data** službu zachovat, synchronizaci dat aplikací v cloudu. Podívejte se na [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-cordova-get-started-push) ještě dnes.
+>
+
 ## <a name="overview"></a>Přehled
 
-V tomto kurzu přidáte nabízená oznámení [rychlý start pro Apache Cordova] [ 5] projekt tak, aby na zařízení přijde nabízené oznámení pokaždé, když se vložení záznamu.
+V tomto kurzu přidáte nabízená oznámení [rychlý start pro Apache Cordova][5] projekt tak, aby na zařízení přijde nabízené oznámení pokaždé, když se vložení záznamu.
 
 Pokud použijete stažený projekt rychlého spuštění serveru, je nutné balíček rozšíření nabízená oznámení. Další informace najdete v tématu [pracovat s back-end .NET server SDK pro Mobile Apps][1].
 
@@ -37,13 +41,13 @@ V tomto kurzu se předpokládá, že máte aplikaci Apache Cordova, která byla 
 
 Pro absolvování tohoto kurzu potřebujete:
 
-* Počítač s nástrojem [Visual Studio Community 2015] [ 2] nebo novější
+* Počítač s nástrojem [Visual Studio Community 2015][2] nebo novější
 * [Visual Studio Tools for Apache Cordova][4]
 * [Aktivní účet Azure][3]
-* Dokončená [rychlý start pro Apache Cordova] [ 5] projektu
-* (Android) A [účet Google] [ 6] s ověřenou e-mailovou adresu
-* (iOS) [Členství v programu Apple Developer] [ 7] a zařízení se systémem iOS (nabízená oznámení iOS Simulator nepodporuje)
-* (Windows) A [vývojářský účet pro Microsoft Store] [ 8] a zařízení s Windows 10
+* Dokončená [rychlý start pro Apache Cordova][5] projektu
+* (Android) A [účet Google][6] s ověřenou e-mailovou adresu
+* (iOS) [Členství v programu Apple Developer][7] a zařízení se systémem iOS (nabízená oznámení iOS Simulator nepodporuje)
+* (Windows) A [vývojářský účet pro Microsoft Store][8] a zařízení s Windows 10
 
 ## <a name="configure-hub"></a>Konfigurace centra oznámení
 
@@ -70,7 +74,7 @@ Pokud váš projekt používá verzi Apache Cordova, která je starší než ver
 
 #### <a name="install-the-push-plugin"></a>Instalace modulu plug-in nabízených oznámení
 
-Aplikace Apache Cordova nezpracovávají nativně možnosti zařízení nebo v síti.  Tyto možnosti jsou poskytovány buď moduly plug-in, které jsou publikovány na [npm] [ 10] nebo na Githubu. `phonegap-plugin-push` Modulu plug-in zpracovává nabízená oznámení sítě.
+Aplikace Apache Cordova nezpracovávají nativně možnosti zařízení nebo v síti.  Tyto možnosti jsou poskytovány buď moduly plug-in, které jsou publikovány na [npm][10] nebo na Githubu. `phonegap-plugin-push` Modulu plug-in zpracovává nabízená oznámení sítě.
 
 Modul plug-in nabízených oznámení můžete nainstalovat v jednom z následujících způsobů:
 
@@ -242,7 +246,7 @@ Můžete teď nabízená oznámení tak, že aplikaci spustíte a vložení polo
 
 * *Na fyzickém zařízení:* Připojte zařízení s Androidem na vývojovém počítači pomocí kabelu USB.  Místo **emulátor Google Android**vyberte **zařízení**. Visual Studio nasadí aplikaci do zařízení a spuštění aplikace. Pak můžete pracovat s aplikací na zařízení.
 
-  Sdílení obrazovky aplikací, jako [Mobizen] [ 20] vám může pomoci při vývoji aplikací pro Android. Mobizen projekty Android obrazovky do webového prohlížeče ve vašem počítači.
+  Sdílení obrazovky aplikací, jako [Mobizen][20] vám může pomoci při vývoji aplikací pro Android. Mobizen projekty Android obrazovky do webového prohlížeče ve vašem počítači.
 
 * *V emulátoru Androidu:* Existují další kroky konfigurace, které jsou požadovány, pokud používáte emulátor.
 
@@ -266,7 +270,7 @@ Tato část se týká spuštění projektu Cordova na zařízeních s Iosem. Pok
 
 #### <a name="install-and-run-the-ios-remote-build-agent-on-a-mac-or-cloud-service"></a>Instalace a spuštění agenta vzdáleného buildu iOS na Mac nebo cloudovou službu
 
-Před spuštěním aplikace Cordova v iOS pomocí sady Visual Studio, projděte si postup v [iOS Instalační příručka] [ 12] k instalaci a spuštění agenta vzdáleného buildu.
+Před spuštěním aplikace Cordova v iOS pomocí sady Visual Studio, projděte si postup v [iOS nastavení průvodce][12] k instalaci a spuštění agenta vzdáleného buildu.
 
 Ujistěte se, že můžete vytvářet aplikace pro iOS. Kroky v Průvodci instalací se vyžadují pro vytváření aplikací pro iOS ze sady Visual Studio. Pokud nemáte počítač Mac, můžete vytvořit pro iOS pomocí vzdáleného sestavovacího agenta na službě, jako je MacInCloud. Další informace najdete v tématu [spouštět aplikace pro iOS v cloudu][21].
 
@@ -379,8 +383,8 @@ Ověřte, že je přijato oznámení, když je položka přidána.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si informace o [Notification Hubs] [ 17] Další informace o nabízených oznámeních.
-* Pokud jste tak již neučinili, pokračujte podle tohoto kurzu [přidání ověřování] [ 14] do aplikace Apache Cordova.
+* Přečtěte si informace o [Notification Hubs][17] Další informace o nabízených oznámeních.
+* Pokud jste tak již neučinili, pokračujte podle tohoto kurzu [přidání ověřování][14] do aplikace Apache Cordova.
 
 Další informace o použití následujících sad SDK:
 

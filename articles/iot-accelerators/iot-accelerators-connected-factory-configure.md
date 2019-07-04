@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 042277899ff22066cfa890e64f5c6c0f2e0134f9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3ddbf5832424cdafad2c29254f51754203c7f079
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080462"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67428322"
 ---
 # <a name="configure-the-connected-factory-solution-accelerator"></a>Konfigurace akcelerátor řešení připojená továrna
 
@@ -29,7 +29,7 @@ Každý objekt pro vytváření Contoso má výrobní linky, které se skládaj�
 * Testovací stanice
 * Balicí stanice
 
-Tyto servery OPC UA mít uzlů OPC UA a [vydavatel OPC](https://github.com/Azure/iot-edge-opc-publisher) odešle hodnoty z těchto uzlů pro propojenou továrnu. To zahrnuje:
+Tyto servery OPC UA mít uzlů OPC UA a [vydavatel OPC](overview-opc-publisher.md) odešle hodnoty z těchto uzlů pro propojenou továrnu. To zahrnuje:
 
 * Aktuální provozní stav, jako je například aktuální spotřebu energie.
 * Vytváří se produkční informace, jako je počet produktů.
@@ -307,7 +307,7 @@ Pro určité operace, jako je vizualizace poslední hodnotu nebo vytváření do
 
   Určuje hodnotu uzlu na serveru OPC UA. Formát vlastnosti musí být uvedené ve specifikaci OPC UA. V přijaté zprávy, tato vlastnost se odešle jako **NodeId**.
 
-Zkontrolujte [to](https://github.com/Azure/iot-edge-opc-publisher) stránka Githubu pro další informace o tom, jak telemetrická data ingestují pro propojenou továrnu použití vydavatele OPC.
+Zobrazit [co je vydavatel OPC](overview-opc-publisher.md) Další informace o tom, jak telemetrická data ingestují pro propojenou továrnu.
 
 ## <a name="example-how-kpi1-is-calculated"></a>Příklad: Jak se počítá KPI1
 

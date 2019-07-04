@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: ca9b3607041f75b1c866aa2813308312ad5d1017
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8bea47467d141869b1a668668bc57451a882a54b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65023755"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448451"
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>Postupy zpracování a extrahování informací z obrázků ve scénářích kognitivního vyhledávání
 
@@ -30,7 +30,7 @@ Tento článek popisuje podrobněji pro zpracování obrázků a poskytuje pokyn
 
 Jako součást hádání dokumentu jsou nová sada parametry konfigurace indexeru pro zpracování souborů obrázků nebo Image vložené v souborech. Normalizace bitových kopií pro další zpracování příjmu dat se používají tyto parametry. Normalizace imagí je mezi nimi vlastně jednotnější. Velké obrázky se změněnou velikostí maximální výšku a šířku tak, aby byly použitelné. Pro Image poskytování metadat na orientaci otočení obrázku se upraví pro vertikální načítání. Úpravy metadat jsou zachyceny v komplexní typ vytvoří pro každý obrázek. 
 
-Normalizace image se nedá vypnout. Dovednosti, které iterují v imagí očekávat normalizované imagí.
+Normalizace image se nedá vypnout. Dovednosti, které iterují v imagí očekávat normalizované imagí. Povolení image normalizace pro indexer vyžaduje, že dovedností připojit k tento indexer.
 
 | Parametr konfigurace | Popis |
 |--------------------|-------------|

@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 06/25/2019
 ms.author: mbullwin
-ms.openlocfilehash: 479b810c5a66917bde5754d32991fb489ea26c9b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d8ba5b19ad5d8f03203e9a028fbc5aec84e5ec06
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66299279"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565374"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Ve službě Azure Application Insights pro sledování závislostí 
 
@@ -104,7 +104,7 @@ Pro aplikace ASP.NET se shromažďují celý dotaz SQL s nápovědou bajtů kód
 | --- | --- |
 | Webové aplikace Azure |V váš řídicí panel webové aplikace [otevřete okno Application Insights](../../azure-monitor/app/azure-web-apps.md) a povolit SQL příkazy v rámci .NET |
 | Server služby IIS (virtuální počítač Azure, v místním prostředí a atd.) | [Nainstalujte monitorování stavu na vašem serveru, na kterém je aplikace spuštěna](../../azure-monitor/app/monitor-performance-live-website-now.md) a restartujte službu IIS.
-| Cloudové služby Azure |[Úlohy po spuštění použijte](../../azure-monitor/app/cloudservices.md) k [nainstalujte monitorování stavu](monitor-performance-live-website-now.md#download) |
+| Cloudové služby Azure | Přidat [úloha po spuštění instalace StatusMonitor](../../azure-monitor/app/cloudservices.md#set-up-status-monitor-to-collect-full-sql-queries-optional) <br> Vaše aplikace by měla být připojení k sadě SDK ApplicationInsights v okamžiku sestavení podle instalace balíčků NuGet pro [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) nebo [aplikací ASP.NET Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) |
 | Služba IIS Express | Nepodporuje se
 
 Ve výše uvedených případech správný způsob ověřování tento motor instrumentace je správně nainstalována je tím, že ověří, že verze sady SDK shromážděných `DependencyTelemetry` je "rddp". 'rdddsd' nebo "rddf" označuje závislosti jsou shromažďovány prostřednictvím DiagnosticSource nebo EventSource zpětná volání, a proto nebude možné zaznamenat celý dotaz v jazyce SQL.
@@ -113,47 +113,25 @@ Ve výše uvedených případech správný způsob ověřování tento motor ins
 
 * [Mapa aplikace](app-map.md) vizualizuje závislosti mezi vaší aplikací a sousední komponenty.
 * [Diagnostika transakcí](transaction-diagnostics.md) ukazuje unified, korelovaných dat serveru.
-* [Okno prohlížečů](javascript.md#ajax-performance) ukazuje volání AJAX z prohlížečů uživatelů.
+* [Kartu prohlížeče](javascript.md#ajax-performance) ukazuje volání AJAX z prohlížečů uživatelů.
 * Klikněte na z pomalý nebo neúspěšné žádosti ke kontrole jejich voláním závislostí.
-* [Analytics](#analytics) slouží k dotazování na data závislostí.
+* [Analytics](#logs-analytics) slouží k dotazování na data závislostí.
 
 ## <a name="diagnosis"></a> Diagnostika pomalé žádosti
 
 Každý požadavek událost je přidružena volání závislostí, výjimek a dalších událostí, které jsou sledovány během zpracování požadavku aplikace. Proto pokud některé požadavky dělají chybně, najdete si, jestli je z důvodu zpomalení odezvy ze závislostí.
 
-Projděme si příklad, který.
-
 ### <a name="tracing-from-requests-to-dependencies"></a>Trasování požadavků závislostí
 
-Otevřete okno výkon a podívejte se na mřížky požadavků:
+Otevřít **výkonu** kartu a přejít na **závislosti** kartě v horní části stránky vedle operace.
 
-![Seznam požadavků s průměry a počty](./media/asp-net-dependencies/02-reqs.png)
+Klikněte na **název závislosti** podle celkové. Po výběru závislost graf dané závislosti rozložení dob trvání se zobrazí na pravé straně.
 
-Začátek ten trvá dlouho. Podívejme se, pokud jsme můžete zjistit, kde byl stráven čas.
+![Výkonu kartě klikněte na kartu závislosti v horní části stránky klikněte název závislosti v grafu](./media/asp-net-dependencies/2-perf-dependencies.png)
 
-Klikněte na tento řádek a zobrazte jednotlivé žádosti o události:
+Klikněte na modrý **ukázky** tlačítko v pravé dolní části a pak na ukázky a podrobnosti transakce začátku do konce.
 
-![Seznam opakování žádosti](./media/asp-net-dependencies/03-instances.png)
-
-Kliknutím na jakoukoli instanci dlouhotrvající kontrolovat další, a posuňte se dolů volání vzdálené závislosti týkající se této žádosti:
-
-![Volání vzdálených závislostí vyhledat, identifikovat neobvyklé doba trvání](./media/asp-net-dependencies/04-dependencies.png)
-
-Vypadá jako většinu času údržby, které této žádosti se využilo na volání do místní služby.
-
-Vyberte tento řádek, chcete-li získat další informace:
-
-![Proklikejte se k identifikaci nadměrné spotřeby dané vzdálené závislosti](./media/asp-net-dependencies/05-detail.png)
-
-Vypadá to, je tato závislost, čem problém spočívá. My jsme přesně vymezená problém, tak teď jsme právě potřebujete zjistit, proč toto volání je trvá tak dlouho.
-
-### <a name="request-timeline"></a>Časová osa žádosti
-
-V případě různých neexistuje žádná volání závislosti, které je zvláště dlouhý. Ale přepnutím na zobrazení časové osy, můžeme vidět, kde došlo k zpoždění v našich interních zpracování:
-
-![Volání vzdálených závislostí vyhledat, identifikovat neobvyklé doba trvání](./media/asp-net-dependencies/04-1.png)
-
-Zdá velké mezery po volání první závislostí, takže by měl podíváme na naše kódem, abyste viděli, proč je.
+![Klikněte na ukázky a podrobnosti transakce začátku do konce](./media/asp-net-dependencies/3-end-to-end.png)
 
 ### <a name="profile-your-live-site"></a>Profil živého webu
 
@@ -161,35 +139,35 @@ Představu kde čas prochází? [Application Insights profiler](../../azure-moni
 
 ## <a name="failed-requests"></a>Neúspěšné požadavky
 
-Neúspěšné požadavky může být také přidružen neúspěšných volání závislostí. Opět jsme proklikat ke sledování problému.
+Neúspěšné požadavky může být také přidružen neúspěšných volání závislostí.
 
-![Klikněte na graf neúspěšných žádostí](./media/asp-net-dependencies/06-fail.png)
+Můžeme si do **selhání** kartu na levé straně a potom klikněte na **závislosti** kartě v horní části.
 
-Proklikejte se k výskytu neúspěšných požadavků a podívejte se na jeho související události.
+![Klikněte na graf neúspěšných žádostí](./media/asp-net-dependencies/4-fail.png)
 
-![Klikněte na typ požadavku, klikněte na instance, kterou chcete získat do jiného zobrazení stejné instance, klikněte na něj zobrazíte podrobnosti o výjimce.](./media/asp-net-dependencies/07-faildetail.png)
+Tady budete moci zobrazit počet neúspěšných závislostí. Chcete-li získat další podrobnosti o neúspěšných výskytů při kliknutí na název závislosti v tabulce dole. Můžete kliknout na modrý **závislosti** tlačítko v pravé dolní části zobrazíte podrobnosti o transakci začátku do konce.
 
-## <a name="analytics"></a>Analýzy
+## <a name="logs-analytics"></a>Protokoly (analýza)
 
 Můžete sledovat v závislosti [Kusto dotazovací jazyk](/azure/kusto/query/). Zde je několik příkladů:
 
 * Najdete všechna neúspěšná volání:
 
-```
+``` Kusto
 
     dependencies | where success != "True" | take 10
 ```
 
 * Najděte volání AJAX:
 
-```
+``` Kusto
 
     dependencies | where client_Type == "Browser" | take 10
 ```
 
 * Vyhledejte žádosti spotřebují volání závislostí:
 
-```
+``` Kusto
 
     dependencies
     | where timestamp > ago(1d) and  client_Type != "Browser"
@@ -200,17 +178,13 @@ Můžete sledovat v závislosti [Kusto dotazovací jazyk](/azure/kusto/query/). 
 
 * Najít volání AJAX přidružený k zobrazení stránek:
 
-```
+``` Kusto 
 
     dependencies
     | where timestamp > ago(1d) and  client_Type == "Browser"
     | join (browserTimings | where timestamp > ago(1d))
       on operation_Id
 ```
-
-## <a name="video"></a>Video
-
-> [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
@@ -220,7 +194,6 @@ Můžete sledovat v závislosti [Kusto dotazovací jazyk](/azure/kusto/query/). 
 
 ## <a name="open-source-sdk"></a>Open source sad SDK
 Stejně jako každý sadu SDK Application Insights závislostí kolekce modul je také open source. Čtení a přispívání ke kódu nebo hlášení problémů v [oficiální úložiště GitHub se vzorovými](https://github.com/Microsoft/ApplicationInsights-dotnet-server).
-
 
 ## <a name="next-steps"></a>Další postup
 

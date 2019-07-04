@@ -5,20 +5,20 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 06/26/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: dc2beda1ae017b5e81fddf08d0c7e88c785bcdf5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1e29b8e23927ef2ff70416d1adc76e2b2b3f2d8a
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65153878"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443715"
 ---
 # <a name="grant-access-to-azure-blob-and-queue-data-with-rbac-using-azure-cli"></a>Udělení přístupu k Azure data objektů blob a fronty pomocí RBAC pomocí rozhraní příkazového řádku Azure
 
-Azure Active Directory (Azure AD) autorizuje přístupová práva k zabezpečeným prostředkům prostřednictvím [řízení přístupu na základě role (RBAC)](../../role-based-access-control/overview.md). Azure Storage definuje sadu předdefinované role RBAC, které zahrnuje společné sady oprávnění pro přístup k datům objektu blob nebo fronty. 
+Azure Active Directory (Azure AD) autorizuje přístupová práva k zabezpečeným prostředkům prostřednictvím [řízení přístupu na základě role (RBAC)](../../role-based-access-control/overview.md). Azure Storage definuje sadu předdefinované role RBAC, které zahrnuje společné sady oprávnění pro přístup k datům objektu blob nebo fronty.
 
 Když roli RBAC je přiřazena k objektu zabezpečení Azure AD, Azure uděluje přístup k těmto prostředkům pro tento objekt zabezpečení. Přístup se dají vymezit na úrovni předplatného, skupinu prostředků, účet úložiště nebo kontejner nebo fronty. Objekt zabezpečení Azure AD může být uživatel, skupina, instančního objektu aplikace nebo [spravované identity pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md).
 
@@ -52,9 +52,9 @@ Storage Queue Data Message Sender         Allows for sending of Azure Storage qu
 Storage Queue Data Reader                 Allows for read access to Azure Storage queues and queue messages
 ```
 
-## <a name="assign-an-rbac-role-to-a-user"></a>Přiřaďte roli RBAC pro uživatele
+## <a name="assign-an-rbac-role-to-a-security-principal"></a>Přiřaďte roli RBAC k objektu zabezpečení
 
-Pokud chcete uživateli přiřadit roli RBAC, použijte [vytvořit přiřazení role az](/cli/azure/role/assignment#az-role-assignment-create) příkazu. Formát příkazu může lišit v závislosti na rozsah přiřazení. Následující příklady znázorňují způsob přiřazení role uživateli v různých oborech.
+Chcete-li přiřadit roli RBAC objektem zabezpečení, použijte [vytvořit přiřazení role az](/cli/azure/role/assignment#az-role-assignment-create) příkazu. Formát příkazu může lišit v závislosti na rozsah přiřazení. Následující příklady znázorňují způsob přiřazení role uživateli v různých oborech, ale stejný příkaz můžete použít k přiřazení role na libovolný objekt zabezpečení.
 
 ### <a name="container-scope"></a>Kontejner oboru
 

@@ -1,43 +1,40 @@
 ---
-title: Vysvětlení faktury smlouvy zákazníka Microsoftu | Dokumentace Microsoftu
-description: Zjistěte, jak číst a vysvětlení vašeho vyúčtování služeb MCA
-services: ''
-documentationcenter: ''
-author: jureid
+title: Vysvětlení faktury vaše smlouvy zákazníka Microsoftu v Azure
+description: Zjistěte, jak číst a vysvětlení vašeho vyúčtování služeb Microsoft smlouvy zákazníka v Azure
+author: bandersmsft
 manager: jureid
-editor: ''
 tags: billing
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/19/2019
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: aee51793c66ae57f740300797b8fdc1799e685cd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fed658d3f672d6116d7c2b0f3e2e9ad989dd67c6
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65604034"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490641"
 ---
-# <a name="understand-terms-on-your-microsoft-customer-agreement-invoice"></a>Vysvětlení podmínek na faktuře smlouvy zákazníka se společností Microsoft
+# <a name="terms-in-your-microsoft-customer-agreement-invoice"></a>Faktura podmínek ve vaší smlouvě zákazníků společnosti Microsoft
 
-Tento článek se týká fakturační účet Microsoft zákaznické smlouvy. [Zaškrtněte, pokud máte přístup k zákaznické smlouvy Microsoft](#check-access-to-a-microsoft-customer-agreement).
+Tento článek se týká fakturace účtu Azure pro zákaznické smlouvy Microsoft. [Zaškrtněte, pokud máte přístup k zákaznické smlouvy Microsoft](#check-access-to-a-microsoft-customer-agreement).
 
 Vaše faktura poskytuje souhrn nákladů a pokyny pro platbu. Je k dispozici ke stažení v Portable Document Format (PDF) z [webu Azure portal](https://portal.azure.com/) nebo je lze odeslat e-mailem. Další informace najdete v tématu [zobrazit a stáhnout fakturu Microsoft Azure](billing-download-azure-invoice.md).
 
-<!-- ## When am I billed?
+## <a name="billing-period"></a>Fakturační období
 
-You are invoiced on a monthly basis. You can find out which day of the month you receive invoices by checking *invoice date* under billing profile properties in the [Azure portal](https://portal.azure.com/). Charges that occur between the end of the billing period and the invoice date are included in the next month's invoice, since they are in the next billing period. The billing period start and end dates for each invoice are listed in the invoice PDF above **Billing Summary**. -->
+Se fakturují měsíčně. Můžete zjistit, který den v měsíci dostávat faktury kontrolou *datum faktury* pod vlastností profilu ve fakturaci [webu Azure portal](https://portal.azure.com/). Poplatky, ke kterým dochází mezi konci fakturačního období a datum faktury jsou součástí příští měsíc fakturu, protože jsou do dalšího fakturačního období. Fakturační období počáteční a koncové datum pro každý faktury jsou uvedeny v faktury PDF výše **fakturační Souhrn**.
 
 ## <a name="invoice-terms-and-descriptions"></a>Podmínky fakturační a popisy
 
-V následujících částech jsou důležité termíny, které se zobrazují na faktuře a popisy pro každé období.
+V následujících částech Seznam důležité termíny, které najdete v článku na vaší faktuře a popisují ke každému termínu.
 
 ### <a name="invoice-summary"></a>Souhrn faktury
 
-**Souhrnu faktury** je nahoře na stránce první a s informacemi o fakturační profil a jak platit.
+**Souhrnu faktury** je v horní části na první stránce a s informacemi o fakturační profil a jak platit.
 
 ![Oddíl Souhrn faktury](./media/billing-understand-your-invoice-mca/invoicesummary.png)
 
@@ -78,7 +75,6 @@ Podrobnosti zobrazení nákladů na každý oddíl faktury rozdělené podle po�
 
 Celková dlužná částka pro každou řadu service se vypočte tak, že *kredity Azure* z *kredity/poplatky* a přidání *daně*:
 
-<!-- `Total = Charges/Credits - Azure Credit + Tax` -->
 
 ![Podrobnosti faktury z oddílu](./media/billing-understand-your-invoice-mca/invoicesectiondetails.png)
 
@@ -103,7 +99,7 @@ Pokud máte ve vašem vyúčtování služeb třetích stran, název a adresu ka
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Kontrola přístupu na základě smlouvy Microsoft
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
 Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
 

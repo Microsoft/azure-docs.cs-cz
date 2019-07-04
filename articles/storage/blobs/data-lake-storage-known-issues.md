@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: normesta
-ms.openlocfilehash: 446b49cbf3fdf3d4cde37b2a7c4ac2d9f0a811b1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: daf9199104047f714d568bd2796490b836243952
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67061327"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443240"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Známé problémy s Azure Data Lake Storage Gen2
 
@@ -57,7 +57,6 @@ V následující tabulce jsou uvedeny všechny ostatní funkce a nástroje, kter
 | **AzCopy** | Podpora specifické pro verzi <br><br>Použít pouze nejnovější verzi AzCopy ([AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)). Starší verze nástroje AzCopy například AzCopy v8.1 se nepodporují.|
 | **Zásady životního cyklu správy Azure Blob úložiště** | Není dosud podporován. |
 | **Azure Content Delivery Network (CDN)** | Není dosud podporován.|
-| **Azure Event Grid** | Není dosud podporován. |
 | **Služba Azure search** |Není dosud podporován.|
 | **Azure Storage Explorer** | Podpora specifické pro verzi <br><br>Použijte pouze verzi `1.6.0` nebo vyšší. <br>Verze `1.6.0` je k dispozici jako [zdarma ke stažení](https://azure.microsoft.com/features/storage-explorer/).|
 | **Kontejner objektů BLOB seznamy ACL** |Není dosud podporován.|

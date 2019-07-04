@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: allensu
-ms.openlocfilehash: 7aee68ef41b696549aa1db4386d467b55cd2d981
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8df1c29bc5230e925d05be9fd356de050a9b0f06
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071062"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67550357"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Monitorování koncových bodů Traffic Manageru
 
@@ -102,7 +102,7 @@ Koncový bod není v pořádku, když dojde k některé z následujících udál
 - Pokud je monitorovací protokol HTTP nebo HTTPS:
     - Než 200 odpovědi nebo odpovědi, která neobsahuje stav rozsahu zadaného v **byl očekáván stavový kód rozsahy** nastavení, přijetí (včetně kódu různé 2xx nebo přesměrovat 301/302).
 - Pokud je monitorovací protokol TCP: 
-    - V reakci na žádost o SYNCHRONIZACI odeslán Traffic Managerem pokusu o navázání připojení je přijata odpověď než PĚT nebo SYN potvrzení.
+    - V reakci na SYN požadavku odeslaného Traffic Managerem pokusu o navázání připojení je přijata odpověď než PĚT nebo SYN potvrzení.
 - Vypršel časový limit. 
 - Jakékoli jiné potíže s připojením výsledkem je koncový bod se není dostupný.
 

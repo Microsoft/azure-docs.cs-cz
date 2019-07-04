@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 6446919c80e7e3fd379e6e39eb51712f9736ea7e
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 22be5509a93d0713b8113ba17debfda3cf576006
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341210"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508956"
 ---
 # <a name="api-management-policy-expressions"></a>Výrazy zásad rozhraní API Management
 Tento článek popisuje syntaxe výrazy zásad C# 7. Každý výraz má přístup k implicitně zadané [kontextu](api-management-policy-expressions.md#ContextVariables) proměnné a povolený [dílčí](api-management-policy-expressions.md#CLRTypes) typů rozhraní .NET Framework.
@@ -210,13 +210,13 @@ Proměnné s názvem `context` je implicitně k dispozici v každé zásadě [v�
 
 |Kontextové proměnné|Povolené metody, vlastnosti a hodnoty parametrů|
 |----------------------|-------------------------------------------------------|
-|Kontext|[Rozhraní API](#ref-context-api): [IApi](#ref-iapi)<br /><br /> [Nasazení](#ref-context-deployment)<br /><br /> Uplynulý: Časový interval - časový interval mezi hodnotou časového razítka a aktuální čas<br /><br /> [Poslední chyba](#ref-context-lasterror)<br /><br /> [Operace](#ref-context-operation)<br /><br /> [Produkt](#ref-context-product)<br /><br /> [Požadavek](#ref-context-request)<br /><br /> ID žádosti: Identifikátor GUID - požadavek jedinečného identifikátoru<br /><br /> [Odpověď](#ref-context-response)<br /><br /> [Předplatné](#ref-context-subscription)<br /><br /> Časové razítko: Datum a čas - bodu v čase, kdy byl obdržen požadavek<br /><br /> Trasování: bool – označuje, pokud je trasování zapnuto nebo vypnuto <br /><br /> [Uživatel](#ref-context-user)<br /><br /> [Proměnné](#ref-context-variables): IReadOnlyDictionary < string, object ><br /><br /> void Trace(message: string)|
+|context|[Rozhraní API](#ref-context-api): [IApi](#ref-iapi)<br /><br /> [Nasazení](#ref-context-deployment)<br /><br /> Uplynulý: Časový interval - časový interval mezi hodnotou časového razítka a aktuální čas<br /><br /> [Poslední chyba](#ref-context-lasterror)<br /><br /> [Operace](#ref-context-operation)<br /><br /> [Produkt](#ref-context-product)<br /><br /> [Požadavek](#ref-context-request)<br /><br /> ID žádosti: Identifikátor GUID - požadavek jedinečného identifikátoru<br /><br /> [Odpověď](#ref-context-response)<br /><br /> [Předplatné](#ref-context-subscription)<br /><br /> Časové razítko: Datum a čas - bodu v čase, kdy byl obdržen požadavek<br /><br /> Trasování: bool – označuje, pokud je trasování zapnuto nebo vypnuto <br /><br /> [Uživatel](#ref-context-user)<br /><br /> [Proměnné](#ref-context-variables): IReadOnlyDictionary < string, object ><br /><br /> void Trace(message: string)|
 |<a id="ref-context-api"></a>context.Api|ID: řetězec<br /><br /> IsCurrentRevision: bool<br /><br />  Název: řetězec<br /><br /> Cesta: řetězec<br /><br /> Revize: řetězec<br /><br /> ServiceUrl: [IUrl](#ref-iurl)<br /><br /> Verze: řetězec |
 |<a id="ref-context-deployment"></a>context.Deployment|Oblast: řetězec<br /><br /> ServiceName: řetězec<br /><br /> Certifikáty: IReadOnlyDictionary<string, X509Certificate2>|
 |<a id="ref-context-lasterror"></a>kontext. Poslední chyba|Zdroj: řetězec<br /><br /> Důvod: řetězec<br /><br /> Zpráva: řetězec<br /><br /> Obor: řetězec<br /><br /> Část: řetězec<br /><br /> Cesta: řetězec<br /><br /> PolicyId: řetězec<br /><br /> Další informace o kontextu. LastError, naleznete v tématu [zpracování chyb](api-management-error-handling-policies.md).|
 |<a id="ref-context-operation"></a>context.Operation|ID: řetězec<br /><br /> Metoda: řetězec<br /><br /> Název: řetězec<br /><br /> UrlTemplate: řetězec|
 |<a id="ref-context-product"></a>context.Product|Rozhraní API: IEnumerable <[IApi](#ref-iapi)\><br /><br /> ApprovalRequired: bool<br /><br /> Skupiny: IEnumerable <[IGroup](#ref-igroup)\><br /><br /> ID: řetězec<br /><br /> Název: řetězec<br /><br /> Stav: výčtu ProductState {NotPublished, publikováno}<br /><br /> SubscriptionLimit: int?<br /><br /> SubscriptionRequired: bool|
-|<a id="ref-context-request"></a>kontext. Požadavek|Text: [IMessageBody](#ref-imessagebody)<br /><br /> Certifikát: System.Security.Cryptography.X509Certificates.X509Certificate2<br /><br /> [Záhlaví](#ref-context-request-headers): IReadOnlyDictionary < string, string [] ><br /><br /> IP adresa: řetězec<br /><br /> MatchedParameters: IReadOnlyDictionary < string, string ><br /><br /> Metoda: řetězec<br /><br /> OriginalUrl: [IUrl](#ref-iurl)<br /><br /> Adresa URL: [IUrl](#ref-iurl)|
+|<a id="ref-context-request"></a>kontext. Požadavek|Text: [IMessageBody](#ref-imessagebody) nebo `null` Pokud požadavek nemá tělo.<br /><br /> Certifikát: System.Security.Cryptography.X509Certificates.X509Certificate2<br /><br /> [Záhlaví](#ref-context-request-headers): IReadOnlyDictionary < string, string [] ><br /><br /> IP adresa: řetězec<br /><br /> MatchedParameters: IReadOnlyDictionary < string, string ><br /><br /> Metoda: řetězec<br /><br /> OriginalUrl: [IUrl](#ref-iurl)<br /><br /> Adresa URL: [IUrl](#ref-iurl)|
 |<a id="ref-context-request-headers"></a>kontext řetězce. Request.Headers.GetValueOrDefault (Název_hlavičky: řetězec, výchozí hodnota: string)|Název_hlavičky: řetězec<br /><br /> Výchozí hodnota: řetězec<br /><br /> Vrátí hodnoty hlavičky požadavku oddělených čárkou nebo `defaultValue` Pokud hlavička nebyla nalezena.|
 |<a id="ref-context-response"></a>kontext. Odpověď|Text: [IMessageBody](#ref-imessagebody)<br /><br /> [Záhlaví](#ref-context-response-headers): IReadOnlyDictionary < string, string [] ><br /><br /> StatusCode: int<br /><br /> StatusReason: řetězec|
 |<a id="ref-context-response-headers"></a>kontext řetězce. Response.Headers.GetValueOrDefault (Název_hlavičky: řetězec, výchozí hodnota: string)|Název_hlavičky: řetězec<br /><br /> Výchozí hodnota: řetězec<br /><br /> Vrátí hodnoty hlavičky odpovědi oddělených čárkou nebo `defaultValue` Pokud hlavička nebyla nalezena.|

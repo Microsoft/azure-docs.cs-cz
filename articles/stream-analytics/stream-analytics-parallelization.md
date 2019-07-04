@@ -9,19 +9,19 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.openlocfilehash: 55db909f240756200d758fe89aabb217fb380d16
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 4fd862c2442d2637d799a1f690d5f0a091c80562
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67329822"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449198"
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Využití paralelizace dotazů ve službě Azure Stream Analytics
 Tento článek ukazuje, jak využít výhod paralelního zpracování v Azure Stream Analytics. Zjistíte, jak škálovat úlohy Stream Analytics pomocí konfigurace vstupního oddíly a ladění definice dotazu analytics.
 Předpokladem je, můžete chtít znát pojem jednotka streamování je popsáno v [principy a úpravy jednotek streamování](stream-analytics-streaming-unit-consumption.md).
 
 ## <a name="what-are-the-parts-of-a-stream-analytics-job"></a>Jaké jsou součástí úlohy Stream Analytics?
-Definice úlohy Stream Analytics zahrnuje vstupů, dotaz a výstup. Vstupy jsou, kde úloha načte datový proud z. Dotaz je používána pro vstupní datový proud a výstup je, kde úloha odesílá výsledky úlohy.  
+Definice úlohy Stream Analytics zahrnuje vstupů, dotaz a výstup. Vstupy jsou, kde úloha načte datový proud z. Dotaz je používána pro vstupní datový proud a výstup je, kde úloha odesílá výsledky úlohy.
 
 Úlohu streamování dat vyžaduje alespoň jeden vstupní zdroj. Vstupní zdroj dat datový proud může být uložená v Centru událostí Azure nebo ve službě Azure blob storage. Další informace najdete v tématu [Úvod do služby Azure Stream Analytics](stream-analytics-introduction.md) a [začít používat Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md).
 
@@ -248,11 +248,65 @@ Tento dotaz je možné škálovat na 24 su.
 > 
 > 
 
+## <a name="achieving-higher-throughputs-at-scale"></a>Dosáhnout vyšší propustnosti ve velkém měřítku
 
+[Jednoduše paralelně zpracovatelné](#embarrassingly-parallel-jobs) úlohy je nezbytné, ale není dostatek tolerovat vyšší propustnost ve velkém měřítku. Každý systém úložiště a jeho odpovídající výstupní Stream Analytics má o tom, jak dosáhnout propustnosti nejlepší možný zápis variace. Jak se jakýkoli scénář ve velkém měřítku, jsou některé běžné problémy, které je možné řešit s použitím správné konfigurací. Tato část popisuje konfigurace pro několik běžných výstupy a obsahuje ukázky pro udržování ingestování sazby 1 kB, 5 kB a 10 tisíc událostí za sekundu.
 
+Zjištění použijte úlohu Stream Analytics s dotazem bezstavové (průchozí), základní UDF JavaScriptu, který zapisuje do centra událostí, Azure SQL Database nebo Cosmos DB.
 
+#### <a name="event-hub"></a>Centrum událostí
+
+|Rychlost příjmu (událostí za sekundu) | Jednotky streamování | Výstup prostředky  |
+|--------|---------|---------|
+| 1 TISÍC     |    1    |  2 TU   |
+| 5 KB     |    6    |  6 JEDNOTEK PROPUSTNOSTI   |
+| 10 tisíc    |    12   |  10 JEDNOTEK PROPUSTNOSTI  |
+
+[Centra událostí](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-eventhubs) řešení se škáluje lineárně z hlediska streamování (SU) jednotky a propustnosti, díky tomu je nejúčinnější a nejefektivněji k analýze a Streamovat data ze Stream Analytics. Úlohy je možné škálovat až 192 SU, což obecně znamená zpracování až 200 MB/s nebo bilion 19 událostí za den.
+
+#### <a name="azure-sql"></a>Azure SQL
+|Rychlost příjmu (událostí za sekundu) | Jednotky streamování | Výstup prostředky  |
+|---------|------|-------|
+|    1 TISÍC   |   3  |  S3   |
+|    5 KB   |   18 |  P4   |
+|    10 tisíc  |   36 |  P6   |
+
+[Azure SQL](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-azuresql) podporuje zápis paralelně, volaná dědit dělení, ale není povolená ve výchozím nastavení. Povolení dědit dělení, společně s plně paralelní dotaz, ale nemusí být dostatečné pro dosažení vyšší propustnost. Propustnost zápisu SQL podstatně závisí na schématu konfigurace a tabulky databáze SQL Azure. [Výstupní výkon SQL](./stream-analytics-sql-output-perf.md) článek obsahuje další podrobnosti o parametrech, které můžete maximalizovat propustnost zápisu. Jak je uvedeno v [výstupu Azure Stream Analytics ke službě Azure SQL Database](./stream-analytics-sql-output-perf.md#azure-stream-analytics) článku, toto řešení není se škálují lineárně jako plně paralelní kanál nad rámec 8 oddílů a může být nutné oddílů před výstupu SQL (viz [ DO](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count)). SKU úrovně Premium jsou potřeba k udržení vysoké míry vstupně-výstupních operací spolu s režijní náklady ze zálohy protokolu děje každých několik minut.
+
+#### <a name="cosmos-db"></a>Cosmos DB
+|Rychlost příjmu (událostí za sekundu) | Jednotky streamování | Výstup prostředky  |
+|-------|-------|---------|
+|  1 TISÍC   |  3    | 20 TISÍC RU  |
+|  5 KB   |  24   | 60 TIS. RU  |
+|  10 tisíc  |  48   | 120 TIS. RU |
+
+[Cosmos DB](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-cosmosdb) výstup ze Stream Analytics byla aktualizována na používání nativní integrace v rámci [úroveň kompatibility 1.2](./stream-analytics-documentdb-output.md#improved-throughput-with-compatibility-level-12). Úroveň kompatibility 1.2 umožňuje výrazně vyšší výkon a snižuje spotřebu RU 1.1, což je výchozí úroveň kompatibility pro nové úlohy. Toto řešení využívá rozdělit na oddíly na /deviceId kontejnery služby cosmos DB a zbytek řešení je stejně nakonfigurovaná.
+
+Všechny [streamování ve škálování azure ukázky](https://github.com/Azure-Samples/streaming-at-scale) použít dodáni podle zatížení simulaci testovacích klientů jako vstup Centrum událostí. Každá událost vstupu je 1KB dokumentu JSON, což znamená snadno konfigurované ingestování kurzy propustnosti (1MB/s, 5MB/s a 10MB/s). Události simulace zařízení IoT odesílání následující data JSON (v Zkrácený tvar) až 1 kB zařízení:
+
+```
+{
+    "eventId": "b81d241f-5187-40b0-ab2a-940faf9757c0",
+    "complexData": {
+        "moreData0": 51.3068118685458,
+        "moreData22": 45.34076957651598
+    },
+    "value": 49.02278128887753,
+    "deviceId": "contoso://device-id-1554",
+    "type": "CO2",
+    "createdAt": "2019-05-16T17:16:40.000003Z"
+}
+```
+
+> [!NOTE]
+> Tyto konfigurace se může změnit z důvodu různých komponent používané v řešení. Pro přesnější odhad upravit ukázky, aby vyhovovala vašemu scénáři.
+
+### <a name="identifying-bottlenecks"></a>Nalezení problémových míst
+
+Použití pokokna metriky v úloze Azure Stream Analytics identifikovat problémová místa ve vašem kanálu. Kontrola **vstupní a výstupní události** propustnost a ["Vodoznak zpoždění"](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/) nebo **události v Backlogu** zobrazíte, pokud je úloha uchovávání vstupní sazba. Metriky Event Hub, vyhledejte **omezuje požadavky** a odpovídajícím způsobem upravit jednotky prahovou hodnotu. Metriky služby Cosmos DB najdete v tématu **maximální počet spotřebovaných RU/s na rozsah klíče oddílu** pod propustnost pro zajištění rozsahy klíčů oddílů se rovnoměrně spotřebuje. Pro službu Azure SQL DB, sledovat **PROTOKOLOVACÍ** a **procesoru**.
 
 ## <a name="get-help"></a>Podpora
+
 Potřebujete další pomoc, vyzkoušejte naše [fóru Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Další postup

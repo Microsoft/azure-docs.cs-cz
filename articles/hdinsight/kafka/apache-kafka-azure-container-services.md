@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.openlocfilehash: 35ef708cdcedc2d7bafedb8bf3686e4b468177df
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dc2c3e557f295bd3125c09d9b839716159dcf50b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64723682"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446463"
 ---
 # <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>Použití služby Azure Kubernetes s využitím Apache Kafka v HDInsight
 
@@ -35,7 +35,7 @@ Tento dokument předpokládá, že máte zkušenosti s vytvářením a použív�
 * Azure Kubernetes Service
 * Virtuální sítě Azure
 
-Tento dokument předpokládá také, že je třeba projít [kurz služby Azure Kubernetes Service](../../aks/tutorial-kubernetes-prepare-app.md). Tento kurz vytvoří služby kontejneru, vytvoří cluster Kubernetes, registr kontejnerů a nakonfiguruje `kubectl` nástroj.
+Tento dokument předpokládá také, že je třeba projít [kurz služby Azure Kubernetes Service](../../aks/tutorial-kubernetes-prepare-app.md). Tento článek vytvoří služby kontejneru, vytvoří cluster Kubernetes, registr kontejnerů a nakonfiguruje `kubectl` nástroj.
 
 ## <a name="architecture"></a>Architektura
 

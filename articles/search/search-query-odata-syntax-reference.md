@@ -19,16 +19,16 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: cccfb749af07d1deeeda6e94de9c2cd5ce5396f3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ebe41ba61ac5136900328db9c35acb8551dcd5b2
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67079662"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67428661"
 ---
 # <a name="odata-expression-syntax-reference-for-azure-search"></a>Reference k syntaxi výrazů OData pro službu Azure Search
 
-Služba Azure Search používá [výrazů OData](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html) jako parametry v celém rozhraní API. Nejčastěji se používají výrazy prostředí OData pro `$orderby` a `$filter` parametry. Tyto výrazy mohou být složité, který obsahuje více klauzulí, funkce a operátory. Ale i jednoduché výrazy OData jako vlastnost cesty se používají ve mnoho částí rozhraní REST API Azure Search. Například cesta výrazy se používají k odkazování na dílčí pole komplexní polí kdekoli v rozhraní API, jako je například při výpisu dílčí pole v [modulu pro návrhy](index-add-suggesters.md), [vyhodnocování funkce](index-add-scoring-profiles.md), `$select` parametr , nebo dokonce [fielded vyhledávání v dotazů Lucene](query-lucene-syntax.md).
+Služba Azure Search používá [výrazů OData](https://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html) jako parametry v celém rozhraní API. Nejčastěji se používají výrazy prostředí OData pro `$orderby` a `$filter` parametry. Tyto výrazy mohou být složité, který obsahuje více klauzulí, funkce a operátory. Ale i jednoduché výrazy OData jako vlastnost cesty se používají ve mnoho částí rozhraní REST API Azure Search. Například cesta výrazy se používají k odkazování na dílčí pole komplexní polí kdekoli v rozhraní API, jako je například při výpisu dílčí pole v [modulu pro návrhy](index-add-suggesters.md), [vyhodnocování funkce](index-add-scoring-profiles.md), `$select` parametr , nebo dokonce [fielded vyhledávání v dotazů Lucene](query-lucene-syntax.md).
 
 Tento článek popisuje všechny tyto typy výrazů OData pomocí formální gramatiku. K dispozici je také [interaktivním diagramem](#syntax-diagram) umožňující vizuálnímu zkoumání gramatiky.
 

@@ -14,12 +14,12 @@ ms.subservice: pim
 ms.date: 04/09/2019
 ms.author: rolyon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 786b5ed99cce29c7217bfa42446821848ca8e05f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1b9ca4862f129b2da23a1d1ad8bb0b1bd0a5078f
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60288152"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476278"
 ---
 # <a name="discover-azure-resources-to-manage-in-pim"></a>Vyhledejte prostředky Azure ke správě v PIM
 
@@ -37,15 +37,15 @@ Když poprvé nastavujete PIM pro prostředky Azure, budete muset zjistit a vybe
 
     Pokud je toto vaše první přihlášení pomocí PIM pro prostředky Azure, uvidíte podokno zjišťování prostředků.
 
-    ![Vyhledejte prostředky – první](./media/pim-resource-roles-discover-resources/discover-resources-first-run.png)
+    ![Zjišťovat prostředky podokno se žádné prostředky uvedené pro první zkušenosti čas](./media/pim-resource-roles-discover-resources/discover-resources-first-run.png)
 
     Pokud jiný prostředek nebo adresáře správce ve vaší organizaci je už správu prostředků Azure v PIM, zobrazí se vám seznam prostředků, které jsou aktuálně spravován.
 
-    ![Zjistit prostředky podokno](./media/pim-resource-roles-discover-resources/discover-resources.png)
+    ![Zjistit prostředky podokně výpis prostředků, které jsou aktuálně spravován](./media/pim-resource-roles-discover-resources/discover-resources.png)
 
 1. Klikněte na tlačítko **zjistit prostředky** ke spuštění prostředí pro zjišťování.
 
-    ![Podokno zjišťování](./media/pim-resource-roles-discover-resources/discovery-pane.png)
+    ![Podokno zjišťování výpisy seznamů prostředků, které jde spravovat jako jsou předplatná a skupiny pro správu](./media/pim-resource-roles-discover-resources/discovery-pane.png)
 
 1. V podokně zjišťování pomocí **filtr stavu prostředků** a **vyberte typ prostředku** filtrovat správu skupiny nebo předplatného máte oprávnění k zápisu do. To je pravděpodobně nejjednodušším začít **všechny** původně.
 
@@ -58,11 +58,11 @@ Když poprvé nastavujete PIM pro prostředky Azure, budete muset zjistit a vybe
     > [!NOTE]
     > Po nastavení skupiny pro správu nebo předplatného je spravovat, nemůže nespravované. Odebírá se nastavení PIM tomu jiný správce prostředků.
 
-    ![Zjišťování – Správa prostředků](./media/pim-resource-roles-discover-resources/discovery-manage-resource.png)
+    ![Zjišťování podokno s vybraného zdroje a zvýrazněnou možností prostředků spravovat](./media/pim-resource-roles-discover-resources/discovery-manage-resource.png)
 
 1. Pokud se zobrazí zpráva k potvrzení onboarding vybraného prostředku ke správě, klikněte na tlačítko **Ano**.
 
-    ![Zjišťování – Správa prostředků zprávy](./media/pim-resource-roles-discover-resources/discovery-manage-resource-message.png)
+    ![Zpráva s potvrzením připojení vybrané prostředky pro správu](./media/pim-resource-roles-discover-resources/discovery-manage-resource-message.png)
 
 ## <a name="next-steps"></a>Další postup
 

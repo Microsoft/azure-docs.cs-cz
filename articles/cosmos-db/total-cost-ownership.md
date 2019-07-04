@@ -1,5 +1,5 @@
 ---
-title: Celkové náklady na Ownership(TCO) pomocí služby Azure Cosmos DB
+title: Celkové náklady na vlastnictví (TCO) pomocí služby Azure Cosmos DB
 description: Tento článek porovnává celkové náklady na vlastnictví služby Azure Cosmos DB s modelem IaaS a místních databází
 author: rimman
 ms.service: cosmos-db
@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: e603435a49894a9b8faa2df9b49a8572b94eecb5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 861aacb3e4c288ea7f55c5906534b728e9cd22b6
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65965590"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447201"
 ---
-# <a name="total-cost-of-ownershiptco-with-azure-cosmos-db"></a>Celkové náklady na Ownership(TCO) pomocí služby Azure Cosmos DB
+# <a name="total-cost-of-ownership-tco-with-azure-cosmos-db"></a>Celkové náklady na vlastnictví (TCO) pomocí služby Azure Cosmos DB
 
-Azure Cosmos DB je navržená v Pokud potřebujete jemněji odstupňované řízení více tenantů a prostředků. Toto řešení umožňuje službě Azure Cosmos DB moci pracovat s výrazně nižšími náklady a pomáhají tak uživatelům uložit. Azure Cosmos DB aktuálně podporuje více než 280 úloh zákazníka na jednom počítači se průběžně zvýšení hustoty a tisíce úloh zákazníka v rámci clusteru. Se vyrovnává zatížení repliky zákazníkům úloh na různých počítačích v clusteru a napříč více clusterů v datovém centru. Další informace najdete v tématu [služby Azure Cosmos DB: Vkládání hranici globálně distribuované databáze](https://azure.microsoft.com/blog/azure-cosmos-db-pushing-the-frontier-of-globally-distributed-databases/). Z důvodu zásad správného řízení prostředků, více tenantů a nativní integraci se zbytkem infrastrukturu Azure Azure Cosmos DB je v průměru 4 až 6 násobek levnější než MongoDB, Cassandra nebo jiných OSS NoSQL s na IaaS a až 10krát levnější než databáze moduly spuštěná v místním prostředí. Zobrazit na papír [celkové náklady na vlastnictví (ne) cloudové služby databáze NoSQL](https://documentdbportalstorage.blob.core.windows.net/papers/11.15.2017/NoSQL%20TCO%20paper.pdf).
+Azure Cosmos DB je navržená v Pokud potřebujete jemněji odstupňované řízení více tenantů a prostředků. Toto řešení umožňuje službě Azure Cosmos DB moci pracovat s výrazně nižšími náklady a pomáhají tak uživatelům uložit. Azure Cosmos DB aktuálně podporuje více než 280 úloh zákazníka na jednom počítači se průběžně zvýšení hustoty a tisíce úloh zákazníka v rámci clusteru. Se vyrovnává zatížení repliky úloh zákazníků na různých počítačích v clusteru a napříč více clusterů v rámci datového centra. Další informace najdete v tématu [služby Azure Cosmos DB: Vkládání hranici globálně distribuované databáze](https://azure.microsoft.com/blog/azure-cosmos-db-pushing-the-frontier-of-globally-distributed-databases/). Z důvodu zásad správného řízení prostředků, více tenantů a nativní integraci se zbytkem infrastrukturu Azure Azure Cosmos DB je v průměru 4 až 6 násobek levnější než MongoDB, Cassandra nebo jiných OSS NoSQL s na IaaS a až 10krát levnější než databáze moduly spuštěná v místním prostředí. Zobrazit na papír [celkové náklady na vlastnictví (ne) cloudové služby databáze NoSQL](https://documentdbportalstorage.blob.core.windows.net/papers/11.15.2017/NoSQL%20TCO%20paper.pdf).
 
 Řešení databáze OSS NoSQL, jako je například Apache Cassandra, MongoDB, HBase, moduly byly navrženy pro místní. Když se nabízí jako spravovaná služba, že jsou ekvivalentní šablonu Resource Manageru s databází tenantů pro správu clusterů zřízené a sledování podpory. OSS NoSQL architektury vyžadují značné provozní náklady a své znalosti může být těžké a drahé najít. Na druhé straně služby Azure Cosmos DB je plně spravovaná Cloudová služba, která umožňuje vývojářům zaměřit na obchodní inovace a nikoli na správu a údržbu infrastruktury databáze. 
 

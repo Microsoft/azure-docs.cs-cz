@@ -5,13 +5,13 @@ author: jan-eng
 ms.author: janeng
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/01/2019
-ms.openlocfilehash: 726da603b5f583c85f4b7c4262c6e97f565a3678
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.date: 06/27/2019
+ms.openlocfilehash: aab3aaafd410c4f85eba7a246d0922128908bf93
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67339931"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445435"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL cenové úrovně
 
@@ -62,12 +62,12 @@ Omezení úložiště zvyšujeme na naše úrovni obecné účely a optimalizova
 |              | **Obecné účely** | **Optimalizované z hlediska paměti** |
 |:-------------|:--------------------|:---------------------|
 | Typ úložiště | Azure Premium Storage | Azure Premium Storage |
-| Velikost úložiště | 32 GB až 16 TB| 32 až 16 TB |
+| Velikost úložiště | 32 GB až 16 TB| 32 GB až 16 TB |
 | Zvýšení velikosti úložiště | 1 GB | 1 GB |
 | IOPS | 3 IOPS/GB<br/>Minimum 100 vstupně-výstupních operací<br/>Max. 20 000 IOPS| 3 IOPS/GB<br/>Minimum 100 vstupně-výstupních operací<br/>Max. 20 000 IOPS |
 
 > [!IMPORTANT]
-> Rozsáhlá úložiště je aktuálně ve verzi public preview v těchto oblastech: USA – východ, USA – východ 2, střed USA, západní USA, Severní Evropa, západní Evropa, jihovýchodní Asie, Japonsko – východ, Korea – střed, Austrálie – východ.
+> Rozsáhlá úložiště je aktuálně ve verzi public preview v těchto oblastech: USA – východ, USA – východ 2, střed USA, západní USA, Severní Evropa, západní Evropa, Velká Británie – Jih, Velká Británie – Západ, jihovýchodní Asie, východní Asie, Japonsko – východ, Japonsko – Západ, Korea – střed, Korea – Jih, Austrálie – východ, Austrálie – východ – jih.
 >
 > Rozsáhlá úložiště ve verzi preview v současné době nepodporuje:
 >

@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Načtení dat do služby Azure SQL Data Warehouse | Dokumentace Microsoftu'
-description: Kurz používá Azure Portal a SQL Server Management Studio k načtení databáze datového skladu WideWorldImportersDW z veřejného úložiště objektů blob v Azure do služby Azure SQL Data Warehouse.
+description: Kurz používá Azure portal a SQL Server Management Studio k načtení databáze datového skladu WideWorldImportersDW z global Azure blob do služby Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -10,12 +10,12 @@ ms.subservice: load data
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: a8bca6c1e56595e4a7d64f9f388c9daca0b166ac
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a4f52c2bd0040efef9e12a8feec0bfc779105ad4
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66242911"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67461850"
 ---
 # <a name="tutorial-load-data-to-azure-sql-data-warehouse"></a>Kurz: Načtení dat do služby Azure SQL Data Warehouse
 
@@ -38,7 +38,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 Než začnete s tímto kurzem, stáhněte a nainstalujte nejnovější verzi aplikace [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS).
 
-## <a name="log-in-to-the-azure-portal"></a>Přihlášení k portálu Azure Portal
+## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
 Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
@@ -158,7 +158,7 @@ V této části se pomocí aplikace [SQL Server Management Studio](/sql/ssms/dow
 
 4. Klikněte na **Připojit**. V aplikaci SSMS se otevře okno Průzkumníka objektů. 
 
-5. V Průzkumníku objektů rozbalte **Databáze**. Pak rozbalte **Systémové databáze** a uzel **master** a zobrazte objekty v hlavní databázi.  Rozbalte **mySampleDatabase** a zobrazte objekty v nové databázi.
+5. V Průzkumníku objektů rozbalte **Databáze**. Pak rozbalte **Systémové databáze** a uzel **master** a zobrazte objekty v hlavní databázi.  Rozbalte **SampleDW** a zobrazte objekty v nové databázi.
 
     ![databázové objekty](media/load-data-wideworldimportersdw/connected.png) 
 
@@ -217,7 +217,7 @@ Prvním krokem k načítání dat je přihlášení jako LoaderRC60.
 
 Teď jste připraveni zahájit proces načítání dat do svého nového datového skladu. Informace o přesunu dat do úložiště objektů blob v Azure nebo jejich načtení přímo ze zdroje do služby SQL Data Warehouse najdete pro budoucí použití v tématu obsahujícím [přehled načítání](sql-data-warehouse-overview-load.md).
 
-Spuštěním následujících skriptů SQL zadejte informace o datech, která chcete načíst. Tyto informace zahrnují umístění dat, formát obsahu dat a definici tabulky pro data. Data se nacházejí ve veřejném objektu blob Azure.
+Spuštěním následujících skriptů SQL zadejte informace o datech, která chcete načíst. Tyto informace zahrnují umístění dat, formát obsahu dat a definici tabulky pro data. Data se nachází v globální objektů Blob v Azure.
 
 1. V předchozí části jste se do svého datového skladu přihlásili jako LoaderRC60. V aplikaci SSMS klikněte pravým tlačítkem na **SampleDW** v rámci připojení LoaderRC60 a vyberte **Nový dotaz**.  Zobrazí se nové okno dotazu. 
 
@@ -231,7 +231,7 @@ Spuštěním následujících skriptů SQL zadejte informace o datech, která ch
     CREATE MASTER KEY;
     ```
 
-4. Spuštěním následujícího příkazu [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql) definujte umístění objektu blob v Azure. Toto je umístění externích dat taxislužby.  Pokud chcete spustit příkaz, který jste připojili k oknu dotazu, zvýrazněte příkazy, které chcete spustit, a klikněte na **Provést**.
+4. Spuštěním následujícího příkazu [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql) definujte umístění objektu blob v Azure. Toto je umístění po celém světě importers externí data.  Pokud chcete spustit příkaz, který jste připojili k oknu dotazu, zvýrazněte příkazy, které chcete spustit, a klikněte na **Provést**.
 
     ```sql
     CREATE EXTERNAL DATA SOURCE WWIStorage
@@ -540,13 +540,13 @@ Spuštěním následujících skriptů SQL zadejte informace o datech, která ch
     );
     ```
 
-8. V Průzkumníku objektů rozbalte SampleDW a zobrazte seznam externích tabulek, které jste právě vytvořili.
+8. V Průzkumníku objektů rozbalte SampleDW a zobrazte seznam externích tabulek, které jste vytvořili.
 
     ![Zobrazení externích tabulek](media/load-data-wideworldimportersdw/view-external-tables.png)
 
 ## <a name="load-the-data-into-your-data-warehouse"></a>Načtení dat do datového skladu
 
-V této části se použijí externí tabulky, které jste právě definovali, k načtení ukázkových dat z objektu blob Azure do služby SQL Data Warehouse.  
+Tato část používá externí tabulky, které jste definovali, k načtení ukázkových dat z objektu Blob Azure do SQL Data Warehouse.  
 
 > [!NOTE]
 > V tomto kurzu se data načítají přímo do konečné tabulky. V produkčním prostředí budete obvykle používat příkaz CREATE TABLE AS SELECT k načtení dat do pracovní tabulky. Zatímco jsou data v pracovní tabulce, můžete provést všechny potřebné transformace. K připojení dat v pracovní tabulce do provozní tabulky můžete použít příkaz INSERT...SELECT. Další informace najdete v tématu popisujícím [vkládání dat do provozní tabulky](guidance-for-loading-data.md#inserting-data-into-a-production-table).
@@ -554,7 +554,7 @@ V této části se použijí externí tabulky, které jste právě definovali, k
 
 Tento skript pomocí příkazu T-SQL [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) načítá data z Azure Storage Blob do nových tabulek ve vašem datovém skladu. Příkaz CTAS vytvoří novou tabulku na základě výsledků příkazu SELECT. Nová tabulka obsahuje stejné sloupce a datové typy jako výsledky příkazu SELECT. Když příkaz SELECT provádí výběr z externí tabulky, SQL Data Warehouse importuje data do relační tabulky v datovém skladu. 
 
-Tento skript nenačítá data do tabulek wwi.dimension_Date a wwi.fact_Sales. Tyto tabulky se vygenerují v pozdějším kroku, aby mohly obsahovat velké množství řádků.
+Tento skript nenačítá data do tabulek wwi.dimension_Date a wwi.fact_Sale. Tyto tabulky se vygenerují v pozdějším kroku, aby mohly obsahovat velké množství řádků.
 
 1. Spuštěním následujícího skriptu načtěte data do nových tabulek ve svém datovém skladu.
 
@@ -750,7 +750,7 @@ Tento skript nenačítá data do tabulek wwi.dimension_Date a wwi.fact_Sales. Ty
 
 ## <a name="create-tables-and-procedures-to-generate-the-date-and-sales-tables"></a>Vytvoření tabulek a procedur pro vygenerování tabulek Date a Sales
 
-V této části se vytvoří tabulky wwi.dimension_Date a wwi.fact_Sales. Vytvoří se také uložené procedury, které dokáží v tabulkách wwi.dimension_Date a wwi.fact_Sales generovat miliony řádků.
+V této části se vytvoří tabulky wwi.dimension_Date a wwi.fact_Sale. Vytvoří se také uložené procedury, která mohou generovat miliony řádků v tabulkách wwi.dimension_Date a wwi.fact_Sale.
 
 1. Vytvořte tabulky dimension_Date a fact_Sale.  
 
@@ -893,7 +893,7 @@ V této části se vytvoří tabulky wwi.dimension_Date a wwi.fact_Sales. Vytvo�
     DROP table #days;
     END;
     ```
-4. Vytvořte tuto proceduru, která naplní tabulky wwi.dimension_Date a wwi.fact_Sales. Tato procedura volá uloženou proceduru [wwi].[PopulateDateDimensionForYear], která naplní tabulku wwi.dimension_Date.
+4. Vytvořte tuto proceduru, která naplní tabulky wwi.dimension_Date a wwi.fact_Sale. Tato procedura volá uloženou proceduru [wwi].[PopulateDateDimensionForYear], která naplní tabulku wwi.dimension_Date.
 
     ```sql
     CREATE PROCEDURE [wwi].[Configuration_PopulateLargeSaleTable] @EstimatedRowsPerDay [bigint],@Year [int] AS
@@ -949,7 +949,7 @@ V této části se vytvoří tabulky wwi.dimension_Date a wwi.fact_Sales. Vytvo�
     ```
 
 ## <a name="generate-millions-of-rows"></a>Generování milionů řádků
-Uložené procedury, které jste vytvořili, použijte k vygenerování milionů řádků v tabulce wwi.fact_Sales a odpovídajících dat v tabulce wwi.dimension_Date. 
+Pomocí uložených procedur, které jste vytvořili pro vygenerování milionů řádků v tabulce wwi.fact_Sale a odpovídajících dat v tabulce wwi.dimension_Date. 
 
 
 1. Spuštěním této procedury přidejte do [wwi].[seed_Sale] další řádky.
@@ -958,7 +958,7 @@ Uložené procedury, které jste vytvořili, použijte k vygenerování milionů
     EXEC [wwi].[InitialSalesDataPopulation]
     ```
 
-2. Spuštěním této procedury naplňte tabulku wwi.fact_Sales 100 000 řádků za každý den v roce 2000.
+2. Spuštění této procedury naplňte wwi.fact_Sale s 100 000 řádků za každý den v roce 2000.
 
     ```sql
     EXEC [wwi].[Configuration_PopulateLargeSaleTable] 100000, 2000
@@ -1098,7 +1098,7 @@ Pomocí tohoto postupu podle potřeby vyčistěte prostředky.
 
     ![Vyčištění prostředků](media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
-2. Pokud chcete zachovat data v úložišti, můžete pozastavit výpočetní prostředky v době, kdy datový sklad nepoužíváte. Když pozastavíte výpočetní prostředky, bude se vám účtovat pouze úložiště dat, a kdykoli budete připraveni s daty pracovat, můžete výpočetní prostředky zase obnovit. Pokud chcete pozastavit výpočetní prostředky, klikněte na tlačítko **Pozastavit**. Když je datový sklad pozastavený, zobrazí se tlačítko **Spustit**.  Pokud chcete obnovit výpočetní prostředky, klikněte na **Spustit**.
+2. Pokud chcete zachovat data v úložišti, můžete pozastavit výpočetní prostředky v době, kdy datový sklad nepoužíváte. Tím, že pozastavíte výpočetní prostředky, bude pouze poplatky za úložiště dat a výpočetní prostředky můžete obnovit kdykoli budete připraveni s daty pracovat. Pokud chcete pozastavit výpočetní prostředky, klikněte na tlačítko **Pozastavit**. Když je datový sklad pozastavený, zobrazí se tlačítko **Spustit**.  Pokud chcete obnovit výpočetní prostředky, klikněte na **Spustit**.
 
 3. Pokud chcete zamezit budoucím poplatkům, můžete datový sklad odstranit. Pokud chcete odebrat datový sklad, aby se vám neúčtovaly výpočetní prostředky ani prostředky úložiště, klikněte na **Odstranit**.
 

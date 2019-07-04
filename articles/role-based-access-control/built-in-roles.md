@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 05/16/2019
+ms.date: 06/24/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 5a63053cc7fa1c1c86669ce2cea56b68f1a7b4b6
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: b92bc0a6c5d51ad26e069a363619edbdf0daa7c0
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341506"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442872"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Předdefinované role pro prostředky Azure
 
@@ -54,11 +54,17 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 | [Operátor Runbooků Automation](#automation-runbook-operator) | Čtení vlastností Runbooků – aby se daly vytvářet úlohy runbooku. |
 | [Přispěvatel Avere](#avere-contributor) | Můžete vytvářet a spravovat Avere vFXT cluster. |
 | [Avere – operátor](#avere-operator) | Avere vFXT cluster používat ke správě clusteru |
+| [Azure Event Hubs Data Owner (Preview)](#azure-event-hubs-data-owner-preview) | Umožňuje úplný přístup k prostředkům Azure Event Hubs. |
+| [Azure Event Hubs Data Receiver (Preview)](#azure-event-hubs-data-receiver-preview) | Umožňuje získají přístup k prostředkům Azure Event Hubs. |
+| [Azure Event Hubs Data Sender (Preview)](#azure-event-hubs-data-sender-preview) | Umožňuje odeslat přístup k prostředkům Azure Event Hubs. |
 | [Role Správce služby Azure Kubernetes Cluster](#azure-kubernetes-service-cluster-admin-role) | Seznam akcí přihlašovací údaje Správce clusteru. |
 | [Role uživatele Cluster Azure Kubernetes Service](#azure-kubernetes-service-cluster-user-role) | Seznam akce přihlašovacích údajů uživatele clusteru. |
 | [Azure Maps Data Reader (Preview)](#azure-maps-data-reader-preview) | Uděluje přístup ke čtení mapování souvisejících dat z účtu Azure maps. |
+| [Vlastník dat služby Azure Service Bus (Preview)](#azure-service-bus-data-owner-preview) | Umožňuje úplný přístup k prostředkům Azure Service Bus. |
+| [Příjemce dat služby Azure Service Bus (Preview)](#azure-service-bus-data-receiver-preview) | Umožňuje získají přístup k prostředkům Azure Service Bus. |
+| [Azure Service Bus Data Sender (Preview)](#azure-service-bus-data-sender-preview) | Umožňuje odeslat přístup k prostředkům Azure Service Bus. |
 | [Vlastník registrace Azure Stack](#azure-stack-registration-owner) | Umožňuje spravovat registrace Azure Stack. |
-| [Přispěvatel zálohování](#backup-contributor) | Umožňuje spravovat službu zálohování, ale nelze vytvářet trezory a udělovat přístup ostatním uživatelům |
+| [Přispěvatel zálohování](#backup-contributor) | Umožňuje spravovat služba backup, ale nelze vytvářet trezory a udělovat přístup ostatním uživatelům |
 | [Operátor zálohování](#backup-operator) | Umožňuje spravovat služby zálohování, s výjimkou odebírání zálohování, vytváření trezorů a udělování přístupu jiným uživatelům |
 | [Čtenář záloh](#backup-reader) | Může zobrazovat služby zálohování, ale nemůže provádět změny |
 | [Čtenář fakturace](#billing-reader) | Umožňuje přístup pro čtení do fakturačních dat |
@@ -88,7 +94,6 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 | [DevTest Labs User](#devtest-labs-user) | Umožňuje připojení, spuštění, restartování a vypínání virtuálních počítačů ve vaší službě Azure DevTest Labs. |
 | [Přispěvatel zóny DNS](#dns-zone-contributor) | Umožňuje spravovat zóny DNS a sad záznamů v Azure DNS, ale neumožňuje řídit, kdo má přístup k nim. |
 | [Přispěvatel účtů DocumentDB](#documentdb-account-contributor) | Můžete spravovat účty služby Azure Cosmos DB. Azure Cosmos DB je dříve DocumentDB. |
-| [Vlastník dat Event Hubs](#event-hubs-data-owner) | Umožňuje úplný přístup k prostředkům Azure Event Hubs | 
 | [Přispěvatel EventSubscription EventGrid](#eventgrid-eventsubscription-contributor) | Umožňuje spravovat EventGrid operací odběru události. |
 | [Čtečka EventSubscription EventGrid](#eventgrid-eventsubscription-reader) | Umožňuje číst EventGrid odběry událostí. |
 | [HDInsight Cluster – operátor](#hdinsight-cluster-operator) | Umožňuje číst a upravovat konfigurace clusterů HDInsight. |
@@ -119,7 +124,6 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 | [Správce zabezpečení](#security-admin) | Ve službě Security Center jenom: Můžete zobrazit zásady zabezpečení, zobrazení stavu zabezpečení, upravit zásady zabezpečení, zobrazení výstrah a doporučení, Zavřít upozornění a doporučení |
 | [Správce zabezpečení (starší verze)](#security-manager-legacy) | Toto je starší verze role. Místo toho použijte Správce zabezpečení |
 | [Čtenář zabezpečení](#security-reader) | Ve službě Security Center jenom: Můžete zobrazit doporučení a výstrahy, zásady zabezpečení, zobrazit stavy zabezpečení, ale nemůže provádět změny zobrazení |
-| [Vlastník dat služby Service Bus](#service-bus-data-owner) | Umožňuje úplný přístup k prostředkům Azure Service Bus |
 | [Přispěvatel Site Recovery](#site-recovery-contributor) | Umožňuje spravovat službu Site Recovery s výjimkou vytvářet trezory a přiřazovat role. |
 | [Operátor Site Recovery](#site-recovery-operator) | Umožňuje převzetí služeb při selhání a navrácení služeb po obnovení, ale ne provádět jiné operace správy Site Recovery |
 | [Čtenář Site Recovery](#site-recovery-reader) | Umožňuje zobrazit stav služby Site Recovery, ale ne provádět jiné operace správy |
@@ -130,15 +134,15 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 | [Spravovaná Instance Přispěvatel SQL](#sql-managed-instance-contributor) | Umožňuje spravovat spravovaných instancí SQL a požadované konfiguraci sítě, ale nemůže udělovat přístup ostatním uživatelům. |
 | [SQL Security Manager](#sql-security-manager) | Umožňuje spravovat zásady související se zabezpečením SQL servery a databáze, ale ne přístup k nim. |
 | [Přispěvatel SQL serveru](#sql-server-contributor) | Umožňuje spravovat servery a databáze SQL, ale ne přístup, a nikoli jejich zabezpečení-související zásady. |
-| [Přispěvatel účtů úložiště](#storage-account-contributor) | Umožňuje správu účtů úložiště, ale ne přístup k nim. |
-| [Role služby operátor klíčů účtů úložiště](#storage-account-key-operator-service-role) | Jsou operátoři klíčů účtů úložiště můžou vypisovat a znovu generovat klíče pro účty úložiště |
-| [Storage Blob Data Contributor](#storage-blob-data-contributor) | Umožňuje číst, zapisovat a odstraňovat kontejnery objektů blob v Azure Storage a data |
-| [Vlastník dat úložiště objektů Blob](#storage-blob-data-owner) | Umožňuje úplný přístup k kontejnery objektů blob v Azure Storage a data, včetně přiřazování řízení přístupu POSIX. |
-| [Čtenář dat objektu Blob služby Storage](#storage-blob-data-reader) | Umožňuje číst kontejnery objektů blob v Azure Storage a data |
-| [Přispěvatel dat fronty služby Storage](#storage-queue-data-contributor) | Umožňuje pro čtení, zápisu a odstranění přístup do fronty služby Azure Storage a jejich zprávy. |
-| [Zpracovatelem zprávu fronty úložiště](#storage-queue-data-message-processor) | Umožňuje pro náhled, příjem a odstraňovat zprávy fronty Azure Storage |
-| [Odesílatel zprávy Data fronty úložiště](#storage-queue-data-message-sender) | Umožňuje odesílání zpráv fronty Azure Storage |
-| [Čtenář dat fronty služby Storage](#storage-queue-data-reader) | Umožňuje číst fronty služby Azure Storage a jejich zprávy |
+| [Přispěvatel účtů úložiště](#storage-account-contributor) | Umožňuje správu účtů úložiště. Neposkytuje přístup k datům v účtu úložiště. |
+| [Role služby operátor klíčů účtů úložiště](#storage-account-key-operator-service-role) | Povolení výpis a opětovné vygenerování přístupových klíčů účtu úložiště. |
+| [Storage Blob Data Contributor](#storage-blob-data-contributor) | Čtení, zápisu a odstranění služby Azure Storage kontejnerům a objektům BLOB. Další akce, které jsou požadovány pro dané datové operace, najdete v článku [oprávnění pro volání operace s daty objektů blob a fronty](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). |
+| [Vlastník dat úložiště objektů Blob](#storage-blob-data-owner) | Poskytuje úplný přístup ke kontejnery objektů blob v Azure Storage a data, včetně přiřazování řízení přístupu POSIX. Další akce, které jsou požadovány pro dané datové operace, najdete v článku [oprávnění pro volání operace s daty objektů blob a fronty](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). |
+| [Čtenář dat objektu Blob služby Storage](#storage-blob-data-reader) | Čtení a zápis kontejnery služby Azure Storage a objekty BLOB. Další akce, které jsou požadovány pro dané datové operace, najdete v článku [oprávnění pro volání operace s daty objektů blob a fronty](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). |
+| [Přispěvatel dat fronty služby Storage](#storage-queue-data-contributor) | Čtení, zápisu a odstranění fronty Azure Storage a jejich zprávy. Další akce, které jsou požadovány pro dané datové operace, najdete v článku [oprávnění pro volání operace s daty objektů blob a fronty](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). |
+| [Zpracovatelem zprávu fronty úložiště](#storage-queue-data-message-processor) | Náhled, načíst a odstranit zprávu z fronty služby Azure Storage. Další akce, které jsou požadovány pro dané datové operace, najdete v článku [oprávnění pro volání operace s daty objektů blob a fronty](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). |
+| [Odesílatel zprávy Data fronty úložiště](#storage-queue-data-message-sender) | Přidání zpráv do fronty služby Azure Storage. Další akce, které jsou požadovány pro dané datové operace, najdete v článku [oprávnění pro volání operace s daty objektů blob a fronty](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). |
+| [Čtenář dat fronty služby Storage](#storage-queue-data-reader) | Čtení a zápis fronty Azure Storage a jejich zprávy. Další akce, které jsou požadovány pro dané datové operace, najdete v článku [oprávnění pro volání operace s daty objektů blob a fronty](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). |
 | [Přispěvatel žádostí o podporu](#support-request-contributor) | Umožňuje vytvářet a spravovat žádosti o podporu |
 | [Přispěvatel Traffic Manageru](#traffic-manager-contributor) | Umožňuje spravovat profily Traffic Manageru, ale neumožňuje řídit, kdo má přístup k nim. |
 | [Správce uživatelských přístupů](#user-access-administrator) | Umožňuje spravovat přístup uživatelů k prostředkům Azure. |
@@ -548,6 +552,51 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 > | **NotDataActions** |  |
 > | *None* |  |
 
+## <a name="azure-event-hubs-data-owner-preview"></a>Azure Event Hubs Data Owner (Preview)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Popis** | Umožňuje úplný přístup k prostředkům Azure Event Hubs. |
+> | **ID** | f526a384-b230-433a-b45c-95f59c4a2dec |
+> | **Akce** |  |
+> | Microsoft.EventHub/* |  |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | Microsoft.EventHub/* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
+
+## <a name="azure-event-hubs-data-receiver-preview"></a>Azure Event Hubs Data Receiver (Preview)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Popis** | Umožňuje získají přístup k prostředkům Azure Event Hubs. |
+> | **ID** | a638d3c7-ab3a-418d-83e6-5f17a39d4fde |
+> | **Akce** |  |
+> | Microsoft.EventHub/*/eventhubs/consumergroups/read |  |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | Microsoft.EventHub/*/receive/action |  |
+> | **NotDataActions** |  |
+> | *None* |  |
+
+## <a name="azure-event-hubs-data-sender-preview"></a>Azure Event Hubs Data Sender (Preview)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Popis** | Umožňuje odeslat přístup k prostředkům Azure Event Hubs. |
+> | **ID** | 2b629674-e913-4c01-ae53-ef4638d8f975 |
+> | **Akce** |  |
+> | Microsoft.EventHub/*/eventhubs/read |  |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | Microsoft.EventHub/*/send/action |  |
+> | **NotDataActions** |  |
+> | *None* |  |
+
 ## <a name="azure-kubernetes-service-cluster-admin-role"></a>Role Správce služby Azure Kubernetes Cluster
 > [!div class="mx-tableFixed"]
 > | | |
@@ -593,6 +642,55 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 > | **NotDataActions** |  |
 > | *None* |  |
 
+## <a name="azure-service-bus-data-owner-preview"></a>Vlastník dat služby Azure Service Bus (Preview)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Popis** | Umožňuje úplný přístup k prostředkům Azure Service Bus. |
+> | **ID** | 090c5cfd-751d-490a-894a-3ce6f1109419 |
+> | **Akce** |  |
+> | Microsoft.ServiceBus/* |  |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | Microsoft.ServiceBus/* |  |
+> | **NotDataActions** |  |
+> | *None* |  |
+
+## <a name="azure-service-bus-data-receiver-preview"></a>Příjemce dat služby Azure Service Bus (Preview)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Popis** | Umožňuje získají přístup k prostředkům Azure Service Bus. |
+> | **ID** | 4f6d3b9b-027b-4f4c-9142-0e5a2a2247e0 |
+> | **Akce** |  |
+> | Microsoft.ServiceBus/*/queues/read |  |
+> | Microsoft.ServiceBus/*/topics/read |  |
+> | Microsoft.ServiceBus/*/topics/subscriptions/read |  |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | Microsoft.ServiceBus/*/receive/action |  |
+> | **NotDataActions** |  |
+> | *None* |  |
+
+## <a name="azure-service-bus-data-sender-preview"></a>Azure Service Bus Data odesílatele (Preview)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Popis** | Umožňuje odeslat přístup k prostředkům Azure Service Bus. |
+> | **ID** | 69a216fc-b8fb-44d8-bc22-1f3c2cd27a39 |
+> | **Akce** |  |
+> | Microsoft.ServiceBus/*/queues/read |  |
+> | Microsoft.ServiceBus/*/topics/read |  |
+> | Microsoft.ServiceBus/*/topics/subscriptions/read |  |
+> | **notActions** |  |
+> | *None* |  |
+> | **DataActions** |  |
+> | Microsoft.ServiceBus/*/send/action |  |
+> | **NotDataActions** |  |
+> | *None* |  |
+
 ## <a name="azure-stack-registration-owner"></a>Vlastník registrace Azure Stack
 > [!div class="mx-tableFixed"]
 > | | |
@@ -625,7 +723,6 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/refreshContainers/action | Aktualizuje seznam kontejnerů. |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/* | Vytvoření a Správa úloh zálohování |
 > | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | Exportovat úlohy |
-> | Microsoft.RecoveryServices/Vaults/backupJobsExport/operationResults/read |  |
 > | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/* | Vytvoření a správa metadat týkající se správy zálohování |
 > | Microsoft.RecoveryServices/Vaults/backupOperationResults/* | Vytvářet a spravovat výsledky operací správy zálohování |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/* | Vytvoření a Správa zásad zálohování |
@@ -691,7 +788,6 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/refreshContainers/action | Aktualizuje seznam kontejnerů. |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/* | Vytvoření a Správa úloh zálohování |
 > | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | Exportovat úlohy |
-> | Microsoft.RecoveryServices/Vaults/backupJobsExport/operationResults/read |  |
 > | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read |  |
 > | Microsoft.RecoveryServices/Vaults/backupOperationResults/* | Vytvářet a spravovat výsledky operací správy zálohování |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/operationResults/read | Načte výsledky operace zásad. |
@@ -758,7 +854,6 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 > | Microsoft.RecoveryServices/Vaults/backupJobs/operationResults/read | Vrátí výsledek operace úlohy. |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/read | Vrátí všechny objekty úloh. |
 > | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | Exportovat úlohy |
-> | Microsoft.RecoveryServices/Vaults/backupJobsExport/operationResults/read |  |
 > | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read |  |
 > | Microsoft.RecoveryServices/Vaults/backupOperationResults/read | Vrátí výsledek operace zálohování trezoru Recovery Services. |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/operationResults/read | Načte výsledky operace zásad. |
@@ -1409,22 +1504,6 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 > | **NotDataActions** |  |
 > | *None* |  |
 
-## <a name="event-hubs-data-owner"></a>Vlastník dat Event Hubs
-
-> [!div class="mx-tableFixed"]
-> | | |
-> | --- | --- |
-> | **Popis** | Umožňuje úplný přístup k prostředkům Azure Event Hubs. |
-> | **ID** | f526a384-b230-433a-b45c-95f59c4a2dec |
-> | **Akce** |  |
-> | Microsoft.EventHubs/* | Umožňuje úplnou správu přístup k oboru názvů služby Event Hubs |
-> | **notActions** |  |
-> | *None* |  |
-> | **DataActions** |  |
-> | Microsoft.EventHubs/* | Umožňuje úplný přístup k datům na obor názvů služby Event Hubs |
-> | **NotDataActions** |  |
-> | *None* |  |
-
 ## <a name="eventgrid-eventsubscription-contributor"></a>Přispěvatel EventSubscription EventGrid
 > [!div class="mx-tableFixed"]
 > | | |
@@ -1721,9 +1800,9 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 > | **Popis** | Vytvoření, čtení, aktualizace a odstraňování Identity přiřazené uživateli |
 > | **ID** | e40ec5ca-96e0-45a2-b4ff-59039f2c2b59 |
 > | **Akce** |  |
-> | Microsoft.ManagedIdentity/userAssignedIdentities/*/read |  |
-> | Microsoft.ManagedIdentity/userAssignedIdentities/*/write |  |
-> | Microsoft.ManagedIdentity/userAssignedIdentities/*/delete |  |
+> | Microsoft.ManagedIdentity/userAssignedIdentities/read | Získá stávajícímu identity přiřazené uživateli |
+> | Microsoft.ManagedIdentity/userAssignedIdentities/write | Vytvoří nového uživatele přiřadit identity nebo aktualizuje značkám přidruženým ke stávajícímu identity přiřazené uživateli |
+> | Microsoft.ManagedIdentity/userAssignedIdentities/delete | Odstraní stávajícímu identity přiřazené uživateli |
 > | Microsoft.Authorization/*/read | Další role a přiřazení rolí |
 > | Microsoft.Insights/alertRules/* | Vytvoření a Správa pravidel výstrah Insights |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupiny prostředků. |
@@ -2073,22 +2152,6 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 > | *None* |  |
 > | **DataActions** |  |
 > | *None* |  |
-> | **NotDataActions** |  |
-> | *None* |  |
-
-## <a name="service-bus-data-owner"></a>Vlastník dat služby Service Bus
-
-> [!div class="mx-tableFixed"]
-> | | |
-> | --- | --- |
-> | **Popis** | Umožňuje úplný přístup k prostředkům Azure Service Bus. |
-> | **ID** | 090c5cfd-751d-490a-894a-3ce6f1109419 |
-> | **Akce** |  |
-> | Microsoft.ServiceBus/* | Umožňuje úplnou správu přístup k oboru názvů služby Service Bus |
-> | **notActions** |  |
-> | *None* |  |
-> | **DataActions** |  |
-> | Microsoft.ServiceBus/* | Umožňuje úplný přístup k datům na obor názvů služby Service Bus |
 > | **NotDataActions** |  |
 > | *None* |  |
 

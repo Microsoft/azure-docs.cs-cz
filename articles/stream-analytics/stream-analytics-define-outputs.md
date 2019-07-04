@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/31/2019
-ms.openlocfilehash: 4e62ae47de95f95600faa3dc27f6867b065e117b
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 17214bb4904cc540de0a7d6f753b7e70abfa564c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67329980"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443647"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Vysvětlení vytvořené jako výstupy z Azure Stream Analytics
 
@@ -229,7 +229,7 @@ Následující tabulka uvádí názvy vlastností a jejich popisy pro vytvořen�
 Počet oddílů je [na základě skladové položky služby Service Bus a velikosti](../service-bus-messaging/service-bus-partitioning.md). Klíč oddílu je jedinečné celé číslo pro každý oddíl.
 
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
-[Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) je globálně distribuovaná databázová služba, která nabízí neomezené elastické škálování po celém světě, bohaté možnosti dotazů a automatického indexování přes dogmaticky na schématu datové modely. Další informace o možnostech kolekce Azure Cosmos DB pro Stream Analytics, najdete v článku [Stream Analytics pomocí služby Azure Cosmos DB jako výstup](stream-analytics-documentdb-output.md) článku.
+[Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) je globálně distribuovaná databázová služba, která nabízí neomezené elastické škálování po celém světě, bohaté možnosti dotazů a automatického indexování přes dogmaticky na schématu datové modely. Další informace o možnostech kontejneru Azure Cosmos DB pro Stream Analytics, najdete v článku [Stream Analytics pomocí služby Azure Cosmos DB jako výstup](stream-analytics-documentdb-output.md) článku.
 
 Výstup Azure Cosmos DB ze Stream Analytics není aktuálně dostupná v oblastech Azure Germany (T-Systems International) a Azure China 21Vianet.
 
@@ -247,7 +247,7 @@ Následující tabulka popisuje vlastnosti pro vytvoření výstup Azure Cosmos 
 | Account ID | Název nebo identifikátor URI účtu služby Azure Cosmos DB koncového bodu. |
 | Klíč účtu | Sdílený přístupový klíč pro účet služby Azure Cosmos DB. |
 | Databáze | Název databáze Azure Cosmos DB. |
-| Název kolekce | Název kolekce ve službě Azure Cosmos DB. Azure Cosmos DB neomezené kontejnery jsou doporučený postup pro dělení dat, jako Azure Cosmos DB automaticky škáluje oddíly na základě vašich úloh. |
+| Název kontejneru | Název kontejneru se použije, která musí existovat ve službě Cosmos DB. Příklad:  <br /><ul><li> _MyContainer_: Kontejner s názvem "MyContainer", musí existovat.</li>|
 | ID dokumentu |Volitelné. Název pole ve výstupních událostech používaný k určení primárního klíče, na které insert nebo update jsou založené operace.
 
 ## <a name="azure-functions"></a>Azure Functions
@@ -302,10 +302,10 @@ Následující tabulka shrnuje podporu oddílu a počet modulů pro zápis výst
 | Azure Table Storage | Ano | Výstup je sloupec.  | Následuje vstupní dělení pro [plně paralelizovaná dotazy](stream-analytics-scale-jobs.md). |
 | Azure tématu služby Service Bus | Ano | Automaticky zvolí. Počet oddílů je založen na [SKU služby Service Bus a velikost](../service-bus-messaging/service-bus-partitioning.md). Klíč oddílu je jedinečné celé číslo pro každý oddíl.| Stejný jako počet oddílů tématu výstup.  |
 | Fronty Azure Service Bus | Ano | Automaticky zvolí. Počet oddílů je založen na [SKU služby Service Bus a velikost](../service-bus-messaging/service-bus-partitioning.md). Klíč oddílu je jedinečné celé číslo pro každý oddíl.| Stejný jako počet oddílů ve výstupní frontě. |
-| Azure Cosmos DB | Ano | Pomocí tokenu {partition} v vzor názvu kolekce. Hodnota {partition} je založena na klauzuli PARTITION BY v dotazu. | Následuje vstupní dělení pro [plně paralelizovaná dotazy](stream-analytics-scale-jobs.md). |
+| Azure Cosmos DB | Ano | Podle v klauzuli PARTITION BY v dotazu. | Následuje vstupní dělení pro [plně paralelizovaná dotazy](stream-analytics-scale-jobs.md). |
 | Azure Functions | Ne | Žádný | Není k dispozici. |
 
-Pokud adaptér pro výstup není rozdělena na oddíly, chybějící data v jednom oddílu vstupní způsobí zpoždění až pozdní doručení množství času. V takovém případě je výstup sloučeny s jedním zapisujícím procesem, což by mohlo způsobit problémová místa ve vašem kanálu. Další informace o pozdní přijetí zásad najdete v tématu [aspekty pořadí událostí Azure Stream Analytics](stream-analytics-out-of-order-and-late-events.md).
+Počet modulů pro zápis výstupu je možné řídit také pomocí `INTO <partition count>` (viz [INTO](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count)) klauzule v dotazu, které mohou být užitečné při dosažení topologie požadované úlohy. Pokud adaptér pro výstup není rozdělena na oddíly, chybějící data v jednom oddílu vstupní způsobí zpoždění až pozdní doručení množství času. V takovém případě je výstup sloučeny s jedním zapisujícím procesem, což by mohlo způsobit problémová místa ve vašem kanálu. Další informace o pozdní přijetí zásad najdete v tématu [aspekty pořadí událostí Azure Stream Analytics](stream-analytics-out-of-order-and-late-events.md).
 
 ## <a name="output-batch-size"></a>Velikost dávky výstupu
 Azure Stream Analytics používá proměnné velikosti dávky pro zpracování událostí a zápis do výstupů. Obvykle modul Stream Analytics nepodporuje zápis zpráv najednou a používá dávky efektivitu. Když je vysoká míra příchozích a odchozích událostí, Stream Analytics používá větších dávek. Po nízká frekvence odchozího přenosu dat se používá po menších dávkách zachovat s nízkou latencí.

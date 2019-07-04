@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 03/07/2019
 ms.author: brahmnes
-ms.openlocfilehash: 7ff93dffe2dd82bdbba204b4235a297b337438f5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cf06c7c21d30fb107baee0d43b33b221c7da2773
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60784053"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67439889"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-app-service"></a>Povolit Snapshot Debugger pro aplikace .NET v Azure App Service
 
@@ -29,6 +29,8 @@ Pokud chcete povolit Snapshot Debugger pro aplikace, postupujte podle pokynů n�
 * [Služby Azure Service Fabric](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Virtual Machines a virtuálních počítačů škálovací sady](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 * [Místní virtuální nebo fyzické počítače](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
+
+Pokud používáte verzi preview sady .NET Core, postupujte podle pokynů pro [povolit Snapshot Debugger pro jiná prostředí](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) nejprve chcete zahrnout [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet balíček s aplikací a pak dokončete následující pokyny. 
 
 Application Insights Snapshot debuggeru je předinstalovaná jako součást modulu runtime služeb App Services, ale musíte vypnout k získání snímky pro aplikaci služby App Service. Jakmile jste nasadili aplikaci, i v případě, že jste zahrnuli sadu SDK Application Insights ve zdrojovém kódu, postupujte podle postupem uvedeným níže povolte snapshot debugger.
 
@@ -52,7 +54,9 @@ Doporučujeme, abyste měli Snapshot Debugger povolená na všech svých aplikac
 
 ## <a name="next-steps"></a>Další postup
 
-* [Práce s Application Insights v sadě Visual Studio](https://docs.microsoft.com/azure/application-insights/app-insights-visual-studio)
+- Generovat provozu do vaší aplikace, který může vyvolat výjimku. Vyčkejte 10 až 15 minut, než se snímky k odeslání do instance služby Application Insights.
+- Zobrazit [snímky](snapshot-debugger.md?toc=/azure/azure-monitor/toc.json#view-snapshots-in-the-portal) na webu Azure Portal.
+- Vám pomůžou při řešení potíží Snapshot Debugger [řešení potíží s Snapshot Debugger](snapshot-debugger-troubleshoot.md?toc=/azure/azure-monitor/toc.json).
 
 [Enablement UI]: ./media/snapshot-debugger/enablement-ui.png
 [snapshot-debugger-app-setting]:./media/snapshot-debugger/snapshot-debugger-app-setting.png

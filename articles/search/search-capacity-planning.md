@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 03/22/2019
+ms.date: 07/01/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 6879dd975f97ba2746165e87a135e5d90e8b229f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5955b21ae405f15960974fcbc81b8383f3322509
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60308700"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485704"
 ---
 # <a name="scale-partitions-and-replicas-for-query-and-indexing-workloads-in-azure-search"></a>Škálování oddílů a replik pro dotazy a indexování úloh ve službě Azure Search
 Poté co [zvolte cenovou úroveň](search-sku-tier.md) a [při zřizování vyhledávací služby](search-create-service-portal.md), dalším krokem je Volitelně můžete zvýšit počet repliky nebo oddíly, které používá vaše služba. Každá úroveň nabízí pevný počet jednotek fakturace. Tento článek vysvětluje, jak přidělit jednotkách zajistit optimální konfiguraci, která vyrovnává vaše požadavky na spuštění dotazu, indexování a úložiště.
@@ -47,6 +47,7 @@ Chcete-li zvýšit nebo změnit přidělení repliky a oddíly, doporučujeme po
 Obecně platí Hledat aplikace potřebovat víc replik, než má téma oddílů, zejména pokud operace služby jsou upřednostněno dotazu úlohy. V sekci [vysoké dostupnosti](#HA) vysvětluje, proč.
 
 1. Přihlaste se k [webu Azure portal](https://portal.azure.com/) a vyberte vyhledávací službu.
+
 2. V **nastavení**, otevřete **škálování** stránky pro úpravu repliky a oddíly. 
 
    Následující snímek obrazovky ukazuje standardní službu opatřena jednu repliku a oddílu. Vzorce v dolní části označuje, kolik jednotek vyhledávání se používá (1). Pokud je cena ze jednotku se 100 USD (ne skutečná cena), bude měsíční náklady na spuštění této služby 100 USD v průměru.
@@ -108,6 +109,7 @@ Vzhledem k tomu je snadné a poměrně rychlé vertikální navýšení kapacity
 Obecná doporučení pro zajištění vysoké dostupnosti jsou:
 
 * Dvě repliky pro zajištění vysoké dostupnosti úloh jen pro čtení (dotazy)
+
 * Tři nebo více replik pro zajištění vysoké dostupnosti pro čtení a zápis úloh (dotazů a indexování, jak přidat, aktualizovat ani odstranit jednotlivé dokumenty)
 
 Smlouvy o úrovni služeb (SLA) pro službu Azure Search je určená v operacích dotazu a na aktualizace indexu, které se skládají z přidání, aktualizace nebo odstranění dokumentů.

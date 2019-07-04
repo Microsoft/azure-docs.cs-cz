@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 06/18/2019
+ms.date: 06/27/2019
 ms.author: raynew
-ms.openlocfilehash: 3ff6a1a52048e805f9236349d4fc8d45a14b78ea
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 5dc98048099264942552862498b5137b4954c200
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341457"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491646"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Matice podpory pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure
 
@@ -186,8 +186,8 @@ Host/server iSCSI | Ne
 Host/serveru protokolu SMB 3.0 | Ne
 Host/server RDM | Ano<br/><br/> Není k dispozici pro fyzické servery
 Disk Host/serveru > 1 TB | Ano<br/><br/>Až 4 095 GB<br/><br/> Disk musí být větší než 1 024 MB.
-Host/server na disku s velikost fyzického sektoru 4K logické a 4 kB | Ano
-Disk s 4 kB logického typu Host/server a velikost fyzického sektoru 512 bajtů | Ano
+Host/server na disku s velikost fyzického sektoru 4K logické a 4 kB | Ne
+Disk s 4 kB logického typu Host/server a velikost fyzického sektoru 512 bajtů | Ne
 Host/server svazek s prokládané disk > 4 TB <br/><br/>Správa logických svazků (LVM)| Ano
 Host/server – prostory úložiště | Ne
 Disk horké přidávat nebo odebírat hosta/server | Ne
@@ -218,7 +218,7 @@ Objekty blob bloku | Ne
 Premium Storage | Ano
 Služba import/export | Ne
 Bran firewall Azure Storage pro virtuální sítě | Ano.<br/> Konfigurovat na cílový účet úložiště mezipaměti nebo úložiště (sloužící k ukládání dat replikace).
-Účty úložiště pro obecné účely v2 (horkou a studenou úrovní) | Ne
+Účty úložiště pro obecné účely v2 (horkou a studenou úrovní) | Ano (transakční náklady jsou výrazně vyšší v2 ve srovnání s V1)
 
 ## <a name="azure-compute"></a>Výpočetní prostředky Azure
 

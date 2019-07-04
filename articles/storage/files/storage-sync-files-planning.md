@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 2/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9bb33e7d2bb80bcb19087dca6bc21bafc791af2a
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: a745fefa5ceb0f81cf8d66e7af9e308c0ecb40b9
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67303914"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449857"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Plánování nasazení Synchronizace souborů Azure
 Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě soubory Azure, při zachování flexibility, výkonu a kompatibility s místními souborového serveru. Azure File Sync transformuje serveru systému Windows na rychlou mezipaměť sdílené složky Azure. Můžete použít jakýkoli protokol dostupný ve Windows serveru pro přístup k datům místně, včetně SMB, NFS a FTPS. Můžete mít libovolný počet mezipamětí po celém světě potřebujete.
@@ -183,6 +183,12 @@ U svazků, které nemají povolené vrstvení cloudu Azure File Sync podporuje W
 - Pro probíhající úloh optimalizace odstranění duplicit, s datem zásad vrstvení cloudu se získat opožděná. odstranění duplicitních dat [MinimumFileAgeDays](https://docs.microsoft.com/powershell/module/deduplication/set-dedupvolume?view=win10-ps) nastavení, pokud soubor již nebude vrstvený. 
     - Příklad: Pokud MinimumFileAgeDays nastavení je 7 dní a datum zásady vrstvení cloudu je 30 dní, budou zásady datum vrstvy soubory po 37 dnech.
     - Poznámka: Jakmile je soubor vrstvené Azure File Sync, úlohy optimalizace odstranění duplicit soubor přeskočí.
+- Pokud serveru se systémem Windows Server 2012 R2 s nainstalovaným agentem Azure File Sync je upgradovat na Windows Server 2016 nebo Windows Server 2019, následující kroky je potřeba provést k podpoře funkce odstranění duplicitních dat a cloudové ovládání datových vrstev na stejném svazku:  
+    - Odinstalujte agenta Azure File Sync pro Windows Server 2012 R2 a restartujte server.
+    - Stažení agenta Azure File Sync pro nové verze operačního systému serveru (Windows Server 2016 nebo Windows Server 2019).
+    - Instalace agenta Azure File Sync a restartujte server.  
+    
+    Poznámka: Azure File Sync nastavení konfigurace na serveru se zachovají i po odinstalaci a opakované instalaci agenta.
 
 ### <a name="distributed-file-system-dfs"></a>Systém souborů DFS (DFS)
 Azure File Sync podporuje zprostředkovatel komunikace s objekty s obory názvů DFS (DFS-N) a replikace DFS (DFS-R).
@@ -255,7 +261,7 @@ Azure File Sync je k dispozici pouze v těchto oblastech:
 | Střed Indie | Puné |
 | USA – střed | Iowa |
 | Východní Asie | Hongkong – zvláštní administrativní oblast |
-| USA – východ | Virginie |
+| East US | Virginie |
 | USA – východ 2 | Virginie |
 | Korea – střed| Soul |
 | Jižní Korea – jih| Busan |
@@ -314,7 +320,7 @@ Pro podporu integrace převzetí služeb při selhání mezi geograficky redunda
 | USA (Gov) – Virginia      | USA (Gov) – Texas       |
 | Západní Evropa         | Severní Evropa       |
 | Západní střed USA     | Západní USA 2          |
-| Západní USA             | USA – východ            |
+| Západní USA             | East US            |
 | Západní USA 2           | Západní střed USA    |
 
 ## <a name="azure-file-sync-agent-update-policy"></a>Zásady aktualizace agenta Synchronizace souborů Azure

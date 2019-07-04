@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/13/2019
-ms.openlocfilehash: adc5a601a04936a376d7c69b26c2429940ebdf6e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b79efa6ee1f4c052a0037a971fc36d8a9ae0ce58
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66306471"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67458735"
 ---
 # <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Integrace s Azure Active Directory pro Azure Red Hat OpenShift
 
@@ -26,7 +26,7 @@ Microsoft Azure Red Hat OpenShift potřebuje oprávnění k provádění úkolů
 
 V [webu Azure portal](https://portal.azure.com), ujistěte se, že váš tenant se zobrazí v části své uživatelské jméno v horním pravém rohu portálu:
 
-![Snímek obrazovky portálu s tenantem uvedené v pravém horním rohu](./media/howto-create-tenant/tenant-callout.png) Pokud nesprávného tenanta se zobrazí, klikněte na své uživatelské jméno v pravém horním rohu a pak klikněte na tlačítko **přepnout adresář**a vyberte správné tenanta z **všechny Adresáře** seznamu.
+![Snímek obrazovky portálu s tenantem uvedené v pravém horním rohu](./media/howto-create-tenant/tenant-callout.png) Pokud nesprávného tenanta se zobrazí, klikněte na své uživatelské jméno v pravém horním rohu a pak klikněte na **přepnout adresář**a vyberte správné tenanta z **všechny Adresáře** seznamu.
 
 Vytvoření nového uživatele globální správce Azure Active Directory pro přihlášení ke clusteru Azure Red Hat OpenShift.
 
@@ -43,7 +43,7 @@ Vytvoření nového uživatele globální správce Azure Active Directory pro p�
 Pokud chcete udělit přístup pro správu clusteru, členství ve skupině zabezpečení Azure AD synchronizuje OpenShift skupiny "osa--správci zákazníka". Pokud není zadán, budou mít uživatelé přístup správce bez clusteru.
 
 1. Otevřít [skupin Azure Active Directory](https://portal.azure.com/#blade/Microsoft_AAD_IAM/GroupsManagementMenuBlade/AllGroups) okno.
-2. Klikněte na tlačítko **+ nová skupina**
+2. Klikněte na tlačítko **+ nová skupina**.
 3. Zadejte název skupiny a popis.
 4. Nastavte **typ skupiny** k **zabezpečení**.
 5. Nastavte **typ členství** k **přiřazeno**.
@@ -54,7 +54,7 @@ Pokud chcete udělit přístup pro správu clusteru, členství ve skupině zabe
 7. V seznamu členů vyberte uživatele Azure AD, který jste vytvořili výše.
 8. V dolní části portálu klikněte na **vyberte** a potom **vytvořit** vytvořte skupinu zabezpečení.
 
-    Poznamenejte si hodnotu ID skupiny
+    Poznamenejte si hodnotu ID skupiny.
 
 9. Když se skupině, uvidíte seznam všech skupin. Klikněte na novou skupinu.
 10. Na stránce, která se zobrazí, poznamenejte **ID objektu**. Společnost Microsoft bude odkazovat na tuto hodnotu jako `GROUPID` v [vytvoření clusteru Azure Red Hat OpenShift](tutorial-create-cluster.md) kurzu.
@@ -83,17 +83,34 @@ Vygenerujte tajný kód klienta pro ověřování vaší aplikace do Azure Activ
 4. Nastavte **Expires** doby trvání, dáváte přednost, například **2 roky**.
 5. Klikněte na tlačítko **přidat** a hodnota klíče, která se zobrazí v **tajné klíče klienta** části stránky.
 6. Zkopírujte si hodnotu klíče. Společnost Microsoft bude odkazovat na tuto hodnotu jako `SECRET` v [vytvoření clusteru Azure Red Hat OpenShift](tutorial-create-cluster.md) kurzu.
- 
+
 ![Snímek obrazovky podokna certifikátů a tajných kódů](./media/howto-create-tenant/create-key.png)
- 
-Další informace o objekty aplikací Azure, najdete v části [aplikace a instanční objekty v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals).
+
+Další informace o objektech aplikace Azure, najdete v části [aplikace a instanční objekty v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals).
 
 Podrobnosti o vytvoření nové aplikace Azure AD, najdete v článku [registrace aplikace ke koncovému bodu Azure Active Directory verze 1.0](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app).
 
+## <a name="add-api-permissions"></a>Přidání oprávnění pro rozhraní API
+
+1. V **spravovat** klikněte na **oprávnění k rozhraní API**.
+2. Klikněte na tlačítko **přidejte oprávnění** a vyberte **Azure Active Directory Graphu** pak **delegovaná oprávnění**
+3. Rozbalte **uživatele** v níže uvedeném seznamu a ujistěte se, že **User.Read** je povolená.
+4. Posunout nahoru a vyberte **oprávnění aplikace**.
+5. Rozbalte **Directory** v seznamu níže a povolte **Directory.ReadAll**
+6. Klikněte na tlačítko **přidat oprávnění** změny uložte.
+7. Na panelu oprávnění rozhraní API by měl nyní zobrazit obojí *User.Read* a *Directory.ReadAll*. Všimněte si upozornění v **vyžaduje souhlas správce** vedle sloupce *Directory.ReadAll*.
+8. Pokud jste *správcem předplatného Azure*, klikněte na tlačítko **udělit souhlas správce pro *název předplatného***  níže. Pokud nejste *správcem předplatného Azure*, požádat o souhlas správce.
+![Snímek obrazovky panelu oprávnění rozhraní API. Oprávnění User.Read a Directory.ReadAll přidali, vyžaduje souhlas správce pro Directory.ReadAll](./media/howto-aad-app-configuration/permissions-required.png)
+
+> [!IMPORTANT]
+> Synchronizace skupiny administrators clusteru bude fungovat pouze po udělení souhlasu. Zobrazí se zelený kroužek s značka zaškrtnutí a napište zprávu, "udělit *název předplatného*" v *vyžaduje souhlas správce* sloupce.
+
+Podrobnosti o správě správců a dalších rolí najdete v tématu [přidat nebo změnit správce předplatného Azure](https://docs.microsoft.com/azure/billing/billing-add-change-azure-subscription-administrator).
+
 ## <a name="resources"></a>Zdroje a prostředky
 
-* [Aplikace a instanční objekty v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)  
-* [Rychlé zprovoznění: Registrace aplikace ke koncovému bodu Azure Active Directory verze 1.0](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app)  
+* [Aplikace a instanční objekty v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)
+* [Rychlé zprovoznění: Registrace aplikace ke koncovému bodu Azure Active Directory verze 1.0](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app)
 
 ## <a name="next-steps"></a>Další postup
 

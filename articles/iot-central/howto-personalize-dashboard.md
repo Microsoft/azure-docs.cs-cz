@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: a1641c4f3ae4eaa175657db8ff4064fa2202aea6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c048ae8c0daba0e467a9243f4dd83f8d95921e10
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67053015"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67502643"
 ---
 # <a name="create-and-manage-personal-dashboards"></a>Vytvoření a Správa osobních řídicích panelů
 
@@ -38,6 +38,8 @@ Teď když zobrazíte řídicí panel, se zobrazí nová dlaždice s **ventilát
 ![Karta "Řídicí panel" se zobrazené nastavení a vlastnosti pro dlaždici](media/howto-personalize-dashboard/personaldashboard.png)
 
 Můžete prozkoumat další typy dlaždic v knihovně chcete zjistit, jak dále přizpůsobit osobních řídicích panelů.
+
+Další informace o tom, jak používat dlaždice v Azure IoT Central, naleznete v tématu [pomocí dlaždice řídicího panelu](howto-use-tiles.md).
 
 ## <a name="manage-dashboards"></a>Spravovat řídicí panely
 

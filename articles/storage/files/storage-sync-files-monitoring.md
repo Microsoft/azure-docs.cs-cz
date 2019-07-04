@@ -5,45 +5,80 @@ services: storage
 author: roygara
 ms.service: storage
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 06/28/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: abf48f3edc090550647b6865e96afeabe3727cf5
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: 86c4bf328430bbc623d8e493eec5db520d50ef82
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190533"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485978"
 ---
 # <a name="monitor-azure-file-sync"></a>Sledování služby Synchronizace souborů Azure
 
 Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě soubory Azure, při zachování flexibility, výkonu a kompatibility s místními souborového serveru. Azure File Sync transformuje serveru systému Windows na rychlou mezipaměť sdílené složky Azure. Můžete použít jakýkoli protokol dostupný ve Windows serveru pro přístup k datům místně, včetně SMB, NFS a FTPS. Můžete mít libovolný počet mezipamětí po celém světě potřebujete.
 
-Tento článek popisuje, jak sledovat vaše nasazení Azure File Sync s použitím webu Azure portal a Windows Server.
+Tento článek popisuje, jak sledovat vaše nasazení Azure File Sync s použitím Azure Monitor, služba synchronizace úložiště a Windows Server.
 
 Následující možnosti monitorování jsou aktuálně k dispozici.
 
-## <a name="azure-portal"></a>portál Azure
+## <a name="azure-monitor"></a>Azure Monitor
 
-Na webu Azure Portal můžete zobrazit stav registrovaný server, stav koncového bodu serveru (synchronizace stavu) a metriky.
+Použití [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) chcete zobrazit metriky a konfiguraci výstrah pro synchronizaci cloudu ovládání datových vrstev a připojení k serveru.  
 
-### <a name="storage-sync-service"></a>Služba synchronizace úložiště
+### <a name="metrics"></a>Metriky
+
+Metriky pro Azure File Sync jsou ve výchozím nastavení povolené a jsou odeslány do Azure monitoru každých 15 minut.
+
+Pokud chcete zobrazit metriky Azure File Sync ve službě Azure Monitor, vyberte **služby synchronizace úložiště** typ prostředku.
+
+Tyto metriky pro Azure File Sync jsou k dispozici ve službě Azure Monitor:
+
+| Název metriky | Popis |
+|-|-|
+| Bajty synchronizované | Množství přenesených dat (nahrávání a stahování).<br><br>Jednotka: B<br>Typ agregace: Součet<br>Příslušné dimenze: Server koncového bodu název, směr, synchronizace název skupiny synchronizace |
+| Odvolání vrstvení cloudu | Velikost dat odvolána.<br><br>**Poznámka:** Tato metrika se v budoucnu odeberou. Ke sledování velikosti dat připomenout, použijte velikost metriku vrstvení spojené s vracením cloudu.<br><br>Jednotka: B<br>Typ agregace: Součet<br>Příslušné dimenze: Název serveru |
+| Cloud vrstvení spojené s vracením velikost | Velikost dat odvolána.<br><br>Jednotka: B<br>Typ agregace: Součet<br>Příslušné dimenze: Název názvem serveru, skupiny synchronizace |
+| Cloud vrstvení spojené s vracením velikost aplikace | Velikost dat připomenout aplikací.<br><br>Jednotka: B<br>Typ agregace: Součet<br>Příslušné dimenze: Název název aplikace, název serveru, synchronizace skupiny |
+| Propustnost spojené s vracením vrstvení cloudu | Velikost dat spojené s vracením propustnosti.<br><br>Jednotka: B<br>Typ agregace: Součet<br>Příslušné dimenze: Název názvem serveru, skupiny synchronizace |
+| Soubory nesynchronizuje | Počet souborů, které se nedaří synchronizovat.<br><br>Jednotka: Count<br>Typ agregace: Součet<br>Příslušné dimenze: Server koncového bodu název, směr, synchronizace název skupiny synchronizace |
+| Synchronizovat soubory | Počet souborů přenesených (nahrávání a stahování).<br><br>Jednotka: Count<br>Typ agregace: Součet<br>Příslušné dimenze: Server koncového bodu název, směr, synchronizace název skupiny synchronizace |
+| Online stav serveru | Počet prezenčních signálů přijatou ze serveru.<br><br>Jednotka: Count<br>Typ agregace: Maximum<br>Příslušné dimenze: Název serveru |
+| Výsledek relace synchronizace | Synchronizovat výsledek relace (1 = úspěšná synchronizace relace; 0 = selhání synchronizace relace)<br><br>Jednotka: Count<br>Typ agregace: Maximum<br>Příslušné dimenze: Server koncového bodu název, směr, synchronizace název skupiny synchronizace |
+
+### <a name="alerts"></a>Výstrahy
+
+Konfigurace výstrah ve službě Azure Monitor, vyberte službu synchronizace úložiště a pak vyberte [metriky Azure File Sync](https://docs.microsoft.com/azure/storage/files/storage-sync-files-monitoring#metrics) pro výstrahy.  
+
+Následující tabulka uvádí některé ukázkové scénáře pro monitorování a správné metriky pro výstrahy:
+
+| Scénář | Metriky pro výstrahy |
+|-|-|
+| Stav koncového bodu serveru na portálu = chyba | Výsledek relace synchronizace |
+| Soubory se nedaří synchronizovat na server nebo koncový bod v cloudu | Soubory nesynchronizuje |
+| Registrovaný server se nedaří komunikovat se službou synchronizace úložiště | Online stav serveru |
+| Velikost spojené s vracením vrstvení cloudu překročil 500GiB za den  | Cloud vrstvení spojené s vracením velikost |
+
+Další informace o konfiguraci výstrah ve službě Azure Monitor, najdete v článku [přehled výstrah v Microsoft Azure]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview).
+
+## <a name="storage-sync-service"></a>Služba synchronizace úložiště
 
 Chcete-li zobrazit registrovaný server stav, stav koncového bodu serveru a metriky, přejděte na službu synchronizace úložiště na webu Azure Portal. Můžete zobrazit stav registrovaného serveru v **registrované servery** blade a server stavu koncových bodů v **synchronizovat skupiny** okno.
 
-Registrovaný server stavu:
+### <a name="registered-server-health"></a>Registrovaný server stavu
 
 - Pokud **registrovaný server** stav je **Online**, server se úspěšně komunikaci se službou.
 - Pokud **registrovaný server** stav je **se zobrazí v režimu Offline**, ověřte, zda je spuštěn proces monitorování synchronizace úložiště (AzureStorageSyncMonitor.exe) na serveru. Pokud je za bránou firewall nebo proxy server, přečtěte si téma [v tomto článku](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy) ke konfiguraci brány firewall a proxy serveru.
 
-Stav koncového bodu serveru:
+### <a name="server-endpoint-health"></a>Stav koncového bodu serveru
 
 - Synchronizace událostí, které jsou zaznamenány v protokolu událostí Telemetrie na serveru (ID 9102 a 9302) podle stavu koncového bodu serveru na portálu. Pokud relace synchronizace selže z důvodu přechodných chyb, jako je chyba bylo zrušeno, synchronizace může stále zobrazovat v pořádku na portálu tak dlouho, dokud aktuální relace synchronizace je vidět pokrok. ID události 9302 slouží k určení, pokud soubory aplikují. Další informace najdete v tématu [synchronizace stavu](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) a [synchronizovat průběh](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session).
 - Pokud na portálu se zobrazí chyba synchronizace, protože synchronizace není vidět pokrok, přečtěte si článek [dokumentace k řešení problémů](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#common-sync-errors) pokyny.
 
-Metriky:
+### <a name="metric-charts"></a>Grafy metrik
 
-- Zobrazit na portálu služby synchronizace úložiště jsou následující metriky:
+- Následující grafy metrik je možné zobrazit na portálu služby synchronizace úložiště:
 
   | Název metriky | Popis | Název okna |
   |-|-|-|
@@ -57,26 +92,6 @@ Metriky:
 
   > [!Note]  
   > Grafy na portálu služby synchronizace úložiště mají časový rozsah 24 hodin. Chcete-li zobrazit různé časové rozsahy nebo dimenze, použití Azure monitoru.
-
-### <a name="azure-monitor"></a>Azure Monitor
-
-Použití [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) monitorování synchronizace, vrstvení cloudu a připojení k serveru. Metriky pro Azure File Sync jsou ve výchozím nastavení povolené a jsou odeslány do Azure monitoru každých 15 minut.
-
-Pokud chcete zobrazit metriky Azure File Sync ve službě Azure Monitor, vyberte **služby synchronizace úložiště** typ prostředku.
-
-Tyto metriky pro Azure File Sync jsou k dispozici ve službě Azure Monitor:
-
-| Název metriky | Popis |
-|-|-|
-| Bajty synchronizované | Množství přenesených dat (nahrávání a stahování).<br><br>Jednotka: B<br>Typ agregace: Součet<br>Příslušné dimenze: Server koncového bodu název, směr, synchronizace název skupiny synchronizace |
-| Odvolání vrstvení cloudu | Velikost dat odvolána.<br><br>Poznámka: Tato metrika se v budoucnu odeberou. Ke sledování velikosti dat připomenout, použijte velikost metriku vrstvení spojené s vracením cloudu.<br><br>Jednotka: B<br>Typ agregace: Součet<br>Příslušné dimenze: Název serveru |
-| Cloud vrstvení spojené s vracením velikost | Velikost dat odvolána.<br><br>Jednotka: B<br>Typ agregace: Součet<br>Příslušné dimenze: Název názvem serveru, skupiny synchronizace |
-| Cloud vrstvení spojené s vracením velikost aplikace | Velikost dat připomenout aplikací.<br><br>Jednotka: B<br>Typ agregace: Součet<br>Příslušné dimenze: Název název aplikace, název serveru, synchronizace skupiny |
-| Propustnost spojené s vracením vrstvení cloudu | Velikost dat spojené s vracením propustnosti.<br><br>Jednotka: B<br>Typ agregace: Součet<br>Příslušné dimenze: Název názvem serveru, skupiny synchronizace |
-| Soubory nesynchronizuje | Počet souborů, které se nedaří synchronizovat.<br><br>Jednotka: Count<br>Typ agregace: Součet<br>Příslušné dimenze: Server koncového bodu název, směr, synchronizace název skupiny synchronizace |
-| Synchronizovat soubory | Počet souborů přenesených (nahrávání a stahování).<br><br>Jednotka: Count<br>Typ agregace: Součet<br>Příslušné dimenze: Server koncového bodu název, směr, synchronizace název skupiny synchronizace |
-| Online stav serveru | Počet prezenčních signálů přijatou ze serveru.<br><br>Jednotka: Count<br>Typ agregace: Maximum<br>Příslušné dimenze: Název serveru |
-| Výsledek relace synchronizace | Synchronizovat výsledek relace (1 = úspěšná synchronizace relace; 0 = selhání synchronizace relace)<br><br>Jednotka: Počet<br>Typ agregace: Maximum<br>Příslušné dimenze: Server koncového bodu název, směr, synchronizace název skupiny synchronizace |
 
 ## <a name="windows-server"></a>Windows Server
 

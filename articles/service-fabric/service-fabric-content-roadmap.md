@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
 ms.author: atsenthi
-ms.openlocfilehash: a95baeb60ddff38e2aa1e36e7728c012d9d44930
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1227871f2003ded7b9cb92eaf32bd9a984958f9f
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65540706"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537810"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Proto chcete se dozvědět o službě Service Fabric?
 Azure Service Fabric je platforma distribuovaných systémů usnadňující balení, nasazování a spravování škálovatelných a spolehlivých mikroslužeb.  Service Fabric má velký plochy, ale a existuje mnoho dalších informací.  Tento článek poskytuje stručný Service Fabric a popisuje základní koncepty programovacích modelů životního cyklu aplikací, testování, clustery a sledování stavu. Čtení [přehled](service-fabric-overview.md) a [co jsou mikroslužby?](service-fabric-overview-microservices.md) úvod a jak Service Fabric umožňuje vytvářet mikroslužby. Tento článek obsahuje úplný seznam obsahu, ale propojit pro přehled a získávání Začínáme články pro každou oblast Service Fabric. 
@@ -27,16 +27,18 @@ Azure Service Fabric je platforma distribuovaných systémů usnadňující bale
 ## <a name="core-concepts"></a>Základní koncepty
 [Terminologie Service Fabric](service-fabric-technical-overview.md), [aplikační model](service-fabric-application-model.md), a [podporované programovací modely](service-fabric-choose-framework.md) poskytují další koncepty a popisy, ale zde jsou základní informace.
 
-### <a name="design-time-application-type-service-type-application-package-and-manifest-service-package-and-manifest"></a>Návrhu: typ aplikace, typ služby, balíček aplikace a manifest, balíček služby a manifest
-Typ aplikace je název/verze, která je přiřazena ke kolekci typů služeb. Toto je definováno v *ApplicationManifest.xml* soubor, který je vložený v adresáři balíčku aplikace. Balíček aplikace se pak zkopíruje do úložiště imagí clusteru Service Fabric. Pojmenované aplikace si můžete vytvořit z tohoto typu aplikace, které pak spustí v rámci clusteru. 
+### <a name="design-time-service-type-service-package-and-manifest-application-type-application-package-and-manifest"></a>Návrhu: typ služby, balíček služby a manifest, typ aplikace, balíček aplikace a manifest
+Typ služby je název/verze přiřadit balíčky kódu, data balíčky a balíčky pro konfiguraci služby. Toto je definováno v souboru ServiceManifest.xml. Typ služby se skládá z spustitelného kódu a konfigurace nastavení služby, které jsou načteny v době běhu, a statická data, která je využívána služba.
 
-Typ služby je název/verze přiřadit balíčky kódu, data balíčky a balíčky pro konfiguraci služby. Toto je definováno v souboru ServiceManifest.xml, která je integrována do adresáře balíčku služby. Adresář balíčku service se pak odkazuje balíčku aplikace *ApplicationManifest.xml* souboru. V rámci clusteru po vytvoření aplikace s názvem, můžete vytvořit pojmenovanou službu z jednoho z typů služeb typu aplikace. Typ služby je popsán v jeho *ServiceManifest.xml* souboru. Typ služby se skládá z spustitelného kódu a konfigurace nastavení služby, které jsou načteny v době běhu, a statická data, která je využívána služba.
+Balíček služby je disku adresář obsahující soubor ServiceManifest.xml typ služby, který odkazuje na kód, statických dat a balíčky pro konfiguraci pro typ služby. Například může odkazovat na kód, statických dat a balíčky pro konfiguraci, které tvoří databázová služba balíčku služby.
+
+Typ aplikace je název/verze, která je přiřazena ke kolekci typů služeb. Toto je definováno v souboru ApplicationManifest.xml.
 
 ![Typy aplikací Service Fabric a typy služeb][cluster-imagestore-apptypes]
 
-Balíček aplikace je disk adresáře, který obsahuje typ aplikace *ApplicationManifest.xml* soubor, který odkazuje na balíčky služeb pro každý typ služby, který vytvoří typ aplikace. Balíček aplikace pro typ e-mailové aplikace může například obsahovat odkazy na balíček služby front, balíček služby front-endu a balíček služby databáze. Soubory v adresáři balíčku aplikace se zkopírují do úložiště imagí clusteru Service Fabric. 
+Balíček aplikace je disku adresář obsahující soubor ApplicationManifest.xml typ aplikace, který odkazuje na balíčky služeb pro každý typ služby, který vytvoří typ aplikace. Balíček aplikace pro typ e-mailové aplikace může například obsahovat odkazy na balíček služby front, balíček služby front-endu a balíček služby databáze.  
 
-Balíček služby je disk adresáře, který obsahuje typ služby *ServiceManifest.xml* soubor, který odkazuje na kód, statických dat a balíčky pro konfiguraci pro typ služby. Soubory v adresáři balíčku služby odkazuje typ aplikace *ApplicationManifest.xml* souboru. Například může odkazovat na kód, statických dat a balíčky pro konfiguraci, které tvoří databázová služba balíčku služby.
+Soubory v adresáři balíčku aplikace se zkopírují do úložiště imagí clusteru Service Fabric. Pojmenované aplikace si můžete vytvořit z tohoto typu aplikace, které pak spustí v rámci clusteru. Po vytvoření aplikace s názvem, můžete vytvořit pojmenovanou službu z jednoho z typů služeb typu aplikace. 
 
 ### <a name="run-time-clusters-and-nodes-named-applications-named-services-partitions-and-replicas"></a>Čas spuštění: clustery a uzlů s názvem aplikace s názvem služby, oddíly a repliky
 [Cluster Service Fabric](service-fabric-deploy-anywhere.md) je síťově propojená sada virtuálních nebo fyzických počítačů, ve které se nasazují a spravují mikroslužby. Clustery je možné škálovat na tisíce počítačů.

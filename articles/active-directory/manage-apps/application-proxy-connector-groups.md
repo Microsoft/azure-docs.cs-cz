@@ -14,12 +14,12 @@ ms.date: 11/08/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c22d44b02b3cc25c855361cab17132c46fa04794
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d896a45931512b925491e05ff6e5eef8a856d83d
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65783702"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67481328"
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>Publikování aplikací na samostatných sítí a umístění s využitím skupiny konektorů
 
@@ -42,7 +42,7 @@ Pomocí těchto kroků můžete vytvořit libovolný počet skupin konektoru.
 1. Vyberte **Azure Active Directory** > **podnikové aplikace** > **proxy aplikací**.
 2. Vyberte **nová skupina konektorů**. Otevře se okno Nová skupina konektorů.
 
-   ![Vyberte nová skupina konektorů](./media/application-proxy-connector-groups/new-group.png)
+   ![Zobrazí obrazovku a vyberte Nová skupina konektorů](./media/application-proxy-connector-groups/new-group.png)
 
 3. Nová skupina konektorů pojmenujte a pak pomocí rozevírací nabídky vyberte, které konektory patří do této skupiny.
 4. Vyberte **Uložit**.
@@ -74,25 +74,25 @@ Skupiny konektorů pro aplikace nainstalované na IaaS pro přístup k cloudu, p
 
 Provést třeba, že organizace, která má několik virtuální počítače připojené k vlastní IaaS hostované virtuální sítě. Umožňuje uživatelům používat tyto aplikace jsou těchto privátních sítí připojené k podnikové síti prostřednictvím sítě site-to-site VPN. Nabízí kvalitní prostředí pro zaměstnance, kteří se nacházejí na místních. Ale nemusí být ideální pro vzdálení zaměstnanci, protože vyžaduje další místní infrastruktury pro směrování přístup, jak je vidět na následujícím diagramu:
 
-![AzureAD IaaS Network](./media/application-proxy-connector-groups/application-proxy-iaas-network.png)
+![Diagram, který znázorňuje sítě IaaS s nástrojem Azure AD](./media/application-proxy-connector-groups/application-proxy-iaas-network.png)
   
 Pomocí skupiny konektorů Proxy aplikací Azure AD můžete povolit běžné služby k zabezpečení přístupu ke všem aplikacím bez vytvoření další závislosti ve vaší podnikové síti:
 
-![AzureAD IaaS Multiple Cloud Vendors](./media/application-proxy-connector-groups/application-proxy-multiple-cloud-vendors.png)
+![Dodavatele Cloudů IaaS více služby Azure AD](./media/application-proxy-connector-groups/application-proxy-multiple-cloud-vendors.png)
 
 ### <a name="multi-forest--different-connector-groups-for-each-forest"></a>Více doménových struktur – skupiny různých konektorů pro každou doménovou strukturu
 
 Většina zákazníků, kteří mají nasazenou Proxy aplikací používají jeho jednotného přihlašování (SSO) funkce pomocí protokolu Kerberos omezené delegování (KCD). Za tím účelem počítače tento konektor potřeba být připojený k doméně, která může delegovat uživatelů k aplikaci. KCD podporuje možnosti mezi doménovými strukturami. Ale pro společnosti, kteří mají odlišná vícedoménových prostředí bez vztahu důvěryhodnosti mezi nimi, jeden konektor nelze použít pro všechny doménové struktury. 
 
 Konkrétní konektory můžete být v tomto případě nasazení pro každou doménovou strukturu a nastavit k poskytování aplikací, které byly publikovány poskytovat uživatelům této konkrétní doménové struktury. Každá skupina konektorů představuje jiné doménové struktuře. Když tenanta a většina prostředí jednotně pro všechny doménové struktury, uživatelům je možné přiřadit ke svým aplikacím doménové struktury pomocí skupin Azure AD.
- 
+
 ### <a name="disaster-recovery-sites"></a>Servery pro zotavení po havárii
 
 Existují dva různé přístupy, které můžete provést pomocí webu pro zotavení po havárii, v závislosti na tom, jak jsou implementované vaše weby:
 
 * Pokud váš web pro zotavení po Havárii je postavený na režim aktivní – aktivní, kde je úplně stejně jako hlavní lokalitu a má stejné sítě a nastavení služby AD, můžete vytvořit konektory v lokalitě zotavení po Havárii ve stejné skupině konektoru jako hlavní lokalitu. To umožňuje službě Azure AD ke zjišťování převzetí služeb při selhání.
 * Pokud webu zotavení po Havárii je oddělená od hlavní web, můžete vytvořit skupinu jiný konektor v lokalitě zotavení po Havárii a buď (1) mít zálohovací aplikace nebo (2) ručně přesměrovat existující aplikace do skupiny konektor zotavení po Havárii podle potřeby.
- 
+
 ### <a name="serve-multiple-companies-from-a-single-tenant"></a>Poskytování více společností z jednoho tenanta
 
 Existuje mnoho různých způsobů implementace modelu, ve kterém jednoho poskytovatele nasadí a Azure AD udržuje týkající se služby pro více společností. Skupiny konektorů pomoc správci oddělit konektorů a aplikací do různých skupin. Jedním ze způsobů, který je vhodný pro malé společnosti, je použití jedné službě Azure AD tenanta jiné společnosti mají své vlastní název domény a sítě. To platí také pro scénáře M & A a situace, kde jeden IT oddělení slouží několik společností zákonné nebo obchodní důvody. 
@@ -100,32 +100,30 @@ Existuje mnoho různých způsobů implementace modelu, ve kterém jednoho posky
 ## <a name="sample-configurations"></a>Ukázky konfigurace
 
 Mezi příklady, které můžete implementovat, patří následující skupiny konektorů.
- 
+
 ### <a name="default-configuration--no-use-for-connector-groups"></a>Výchozí konfigurace – bez použití pro skupiny konektorů
 
 Pokud nepoužíváte skupiny konektorů, bude konfigurace vypadat takto:
 
-![Azure AD bez skupiny konektorů](./media/application-proxy-connector-groups/application-proxy-sample-config-1.png)
- 
+![Příklad služby Azure AD bez skupiny konektorů](./media/application-proxy-connector-groups/application-proxy-sample-config-1.png)
+
 Tato konfigurace je dostatečná pro malá nasazení a testů. Také bude fungovat, pokud má vaše organizace bez stromové struktury síťové topologie.
- 
+
 ### <a name="default-configuration-and-an-isolated-network"></a>Výchozí konfigurace a izolované síti
 
-Tato konfigurace je vývojem představ o výchozí hodnotu, ve kterém je konkrétní aplikaci, která běží v izolované síti jako jsou například IaaS, virtuální sítě: 
+Tato konfigurace je vývojem představ o výchozí hodnotu, ve kterém je konkrétní aplikaci, která běží v izolované síti jako jsou například IaaS, virtuální sítě:
 
-![Azure AD bez skupiny konektorů](./media/application-proxy-connector-groups/application-proxy-sample-config-2.png)
- 
+![Příklad služby Azure AD bez skupiny konektorů](./media/application-proxy-connector-groups/application-proxy-sample-config-2.png)
+
 ### <a name="recommended-configuration--several-specific-groups-and-a-default-group-for-idle"></a>Doporučená konfigurace – několik konkrétních skupin a výchozí skupiny pro nečinnosti
 
 Doporučenou konfiguraci pro velkých a složitých organizací je výchozí skupina konektorů jako skupina bariéru všechny aplikace, která se používá pro nečinných nebo nově nainstalované konektory. Všechny aplikace jsou obsluhovány pomocí skupin vlastní konektor. To umožňuje všem složitosti scénáře popsané výše.
 
-V následujícím příkladu společnost má dvě datová centra, A a B, s dva konektory, které každé lokality slouží. Každá lokalita má jiné aplikace, které běží na ní. 
+V následujícím příkladu společnost má dvě datová centra, A a B, s dva konektory, které každé lokality slouží. Každá lokalita má jiné aplikace, které běží na ní.
 
-![Azure AD bez skupiny konektorů](./media/application-proxy-connector-groups/application-proxy-sample-config-3.png)
- 
+![Příklad společnosti s 2 datovými centry a 2 konektory](./media/application-proxy-connector-groups/application-proxy-sample-config-3.png)
+
 ## <a name="next-steps"></a>Další postup
 
 * [Principy konektorů Proxy aplikací Azure AD](application-proxy-connectors.md)
 * [Povolení jednoduchého přihlášení](what-is-single-sign-on.md)
-
-

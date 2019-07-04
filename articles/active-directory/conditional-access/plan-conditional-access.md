@@ -2,28 +2,25 @@
 title: Plánování zásad podmíněného přístupu v Azure Active Directory | Dokumentace Microsoftu
 description: V tomto článku se dozvíte, jak naplánovat zásady podmíněného přístupu Azure Active Directory.
 services: active-directory
-author: MicrosoftGuyJFlo
-manager: daveba
-tags: azuread
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.workload: identity
 ms.date: 01/25/2019
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44a64611d4e31767b4705f41e47234af7b0848c0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 56ddc2738305600c611cab1e09d654164f78b3d6
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112226"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509432"
 ---
 # <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>Jak: Plánování nasazení podmíněného přístupu v Azure Active Directory
 
-Plánování nasazení podmíněného přístupu je velmi důležité, abyste měli jistotu, že dosáhnout strategie požadovaný přístup k aplikacím a prostředkům ve vaší organizaci. By měl tráví většinu svého času v průběhu fáze plánování nasazení tak, aby návrh různé zásady, které vyžadují udělit nebo blokovat přístup k vašim uživatelům podmínek, které zvolíte. Tento dokument popisuje kroky, které byste měli provést k implementaci zabezpečené a efektivní zásady podmíněného přístupu. Než začnete, ujistěte se, že rozumíte jak [podmíněného přístupu](overview.md) funguje a kdy byste měli použít.
-
+Plánování nasazení podmíněného přístupu je velmi důležité, abyste měli jistotu, že dosáhnout strategie požadovaný přístup k aplikacím a prostředkům ve vaší organizaci. Využijte většinu svého času v průběhu fáze plánování nasazení tak, aby návrh různé zásady, které vyžadují udělit nebo blokovat přístup k vašim uživatelům podmínek, které zvolíte. Tento dokument popisuje kroky, které byste měli provést k implementaci zabezpečené a efektivní zásady podmíněného přístupu. Než začnete, ujistěte se, že rozumíte jak [podmíněného přístupu](overview.md) funguje a kdy byste měli použít.
 
 ## <a name="what-you-should-know"></a>Co byste měli vědět
 
@@ -34,9 +31,6 @@ Pokud potřebujete další funkce, může být také potřeba získat souvisejí
 Existují dva typy zásad podmíněného přístupu: standardní hodnoty a standard. A [základní zásady](baseline-protection.md) jsou předdefinované zásady podmíněného přístupu. Cílem těchto zásad je Ujistěte se, že máte alespoň o úroveň standardních hodnot zabezpečení povoleno. Zásady na směrný plán. Zásady na směrný plán jsou k dispozici ve všech edicích služby Azure AD a poskytují jenom omezené přizpůsobení možností. Pokud scénář vyžaduje větší flexibilitu, zakažte základní zásady a implementace ve vlastních zásadách pro standardní vašim požadavkům.
 
 Ve standardní zásady podmíněného přístupu můžete upravit všechna nastavení, chcete-li upravit zásady tak, aby vaše obchodní požadavky. Standardní zásady vyžaduje licenci Azure AD Premium P1.
-
-
-
 
 ## <a name="draft-policies"></a>Návrh zásad
 
@@ -62,16 +56,14 @@ Následující příklad šablony můžete vytvářet zásady podmíněného př
 Minimálně **v takovém případě** definuje objekt zabezpečení (**kdo**), který se pokouší získat přístup k Cloudová aplikace (**co**). Pokud třeba, můžete použít také **jak** Probíhá pokus o přístup. Podmíněného přístupu, elementy, které definují kdo, co a jak jsou označovány jako podmínky. Další informace najdete v tématu [jaké jsou podmínky v Azure Active Directory podmíněného přístupu?](conditions.md) 
 
 S **proveďte to**, definujte odpověď zásady pro podmínku přístup. V odpovědi můžete blokovat nebo udělit přístup s další požadavky, například vícefaktorové ověřování (MFA). Úplný přehled najdete v tématu [co jsou přístup ovládací prvky v Azure Active Directory podmíněného přístupu?](controls.md)  
- 
 
 Kombinací podmínek s ovládacími prvky přístup představuje zásad podmíněného přístupu.
 
 ![Důvod a odpovědi](./media/plan-conditional-access/51.png)
 
-
 Další informace najdete v tématu [co potřebná k tomu, aby zásada pracovní](best-practices.md#whats-required-to-make-a-policy-work).
 
-V tomto okamžiku je vhodná doba při rozhodování o standardní pojmenování pro vaše zásady. Standardní pojmenování vám pomůže najít zásady a pochopit jejich účel, aniž byste museli otevírat v portálu pro správu Azure. Byste měli pojmenovat zásadu zobrazit:
+V tomto okamžiku je vhodná doba při rozhodování o standardní pojmenování pro vaše zásady. Standardní pojmenování vám pomůže najít zásady a pochopit jejich účel, aniž byste museli otevírat v portálu pro správu Azure. Pojmenujte zásadu. Chcete-li zobrazit:
 
 - Pořadové číslo
 - Cloudové aplikace, které platí pro
@@ -83,47 +75,32 @@ V tomto okamžiku je vhodná doba při rozhodování o standardní pojmenování
 
 Zatímco popisný název pomáhá udržovat přehled o vaší implementace podmíněného přístupu, pořadové číslo je užitečné, pokud potřebujete odkazovat na zásadu v konverzaci. Například pokud komunikaci ostatními správce po telefonu, můžete požádat je tak, aby zásady EM063 vyřešit nějaký problém.
 
-
-
 Například následující název uvádí, že zásady vyžadují vícefaktorové ověřování pro uživatele na externí sítě pomocí aplikace Dynamics CRP marketingu:
 
 `CA01 - Dynamics CRP: Require MFA For marketing When on external networks`
 
-
 Kromě aktivní zásady, doporučuje se také implementovat zakázané zásady, které se chovají jako sekundární [řízení přístupu na odolná ve scénářích výpadek/nouzovou](../authentication/concept-resilient-controls.md). Vaše standardní pojmenování pro pohotovostní zásad by měl obsahovat několik více položek: 
 
 - `ENABLE IN EMERGENCY` na začátku vytvořit název odlišit se jiné zásady.
-
 - Název přerušení, který se má použít.
-
 - Pořadí číslo sekvence k asistenci správci vědět, v jakém pořadí by měly být povolené zásady. 
 
-
-Například následující název označuje, že tato zásada je první zásady mimo čtyři, které byste měli povolit v případě přerušení vícefaktorové ověřování:
+Například následující název označuje, že tato zásada je první zásady mimo čtyři, které byste měli povolit, pokud dojde přerušení vícefaktorové ověřování:
 
 `EM01 - ENABLE IN EMERGENCY, MFA Disruption[1/4] - Exchange SharePoint: Require hybrid Azure AD join For VIP users`
-
-
-
-
-
-
 
 ## <a name="plan-policies"></a>Zásady plánu
 
 Při plánování řešení zásady podmíněného přístupu, vyhodnoťte, jestli je potřeba vytvořit zásady k dosažení následujících výsledků. 
-
 
 ### <a name="block-access"></a>Blokovat přístup
 
 Možnost blokovat přístup je výkonný protože ji:
 
 - Trumps všechna přiřazení uživatele
-
 - Má schopnost blokování celé organizace přihlašování k vašemu tenantovi
  
 Pokud chcete blokovat přístup pro všechny uživatele, by měl jeden uživatel (obvykle nouzový přístup účty) alespoň vyloučit ze zásad. Další informace najdete v tématu [výběr uživatelů a skupin](block-legacy-authentication.md#select-users-and-cloud-apps).  
-    
 
 ### <a name="require-mfa"></a>Vyžadování MFA
 
@@ -134,7 +111,6 @@ Běžné případy použití vyžádáte vícefaktorové ověřování, jsou př
 - [Správci](howto-baseline-protect-administrators.md)
 - [Na konkrétní aplikace](app-based-mfa.md) 
 - [Z umístění v síti, kterým nedůvěřujete](untrusted-networks.md).
-
 
 ### <a name="respond-to-potentially-compromised-accounts"></a>Reakce na potenciálně ohrožených účtů
 
@@ -149,7 +125,6 @@ Adresování rizika přihlášení jako podmínka je upřednostňuje, protože p
 
 Další informace najdete v tématu [co je Azure Active Directory Identity Protection?](../identity-protection/overview.md) 
 
-
 ### <a name="require-managed-devices"></a>Vyžadování spravovaných zařízení
 
 Růst počtu podporovaných zařízení pro přístup k prostředkům cloudu pomáhá zvýšit produktivitu vašich uživatelů. Na druhou stranu pravděpodobně nebudete chtít určitých prostředků ve vašem prostředí, ke kterým přistupují zařízení s úrovní Neznámý ochrany. Pro ovlivněné prostředky je potřeba povolit, že uživatelé mohou pouze k nim přistupovat pomocí spravovaných zařízení. Další informace najdete v tématu [vyžadování spravovaných zařízení pro přístup k aplikaci cloud s podmíněným přístupem](require-managed-devices.md). 
@@ -158,34 +133,24 @@ Růst počtu podporovaných zařízení pro přístup k prostředkům cloudu pom
 
 Jeden z prvních rozhodnutí, které je třeba provést (BYOD) scénáře typu přineste si vlastní zařízení, je, jestli je potřeba spravovat celé zařízení, nebo jen data na něj. Vaši zaměstnanci používají mobilní zařízení pro osobní a pracovní úkoly. A ujistěte se, vaši zaměstnanci byli produktivní, můžete také chcete zabránit ztrátě dat. S podmíněným přístupem Azure Active Directory (Azure AD) můžete omezit přístup k vašim cloudovým aplikacím na klientem schválených aplikací, které můžete chránit podniková data. Další informace najdete v tématu [jak vyžadovat klientem schválených aplikací pro přístup k aplikaci cloud s podmíněným přístupem](app-based-conditional-access.md).
 
-
 ### <a name="block-legacy-authentication"></a>Blokování starší verze ověřování
 
 Azure AD podporuje některé z nejčastěji používaných ověřovací a autorizační protokoly včetně starší verze ověřování. Jak můžete zabránit aplikacím pomocí starší verze ověřování přístup k prostředkům vašeho tenanta? Doporučuje se jen zablokovat zásadami podmíněného přístupu. V případě potřeby můžete povolit pouze určité uživatele a konkrétní síťová umístění používat aplikace, které jsou založeny na starší verze ověřování. Další informace najdete v tématu [blokování starší verze ověřování do služby Azure AD s podmíněným přístupem](block-legacy-authentication.md).
-
 
 ## <a name="test-your-policy"></a>Vaše zásada testování
 
 Před zavedením zásad do produkčního prostředí, měli byste otestovat ověření, že se chová podle očekávání.
 
 1. Vytvoření testovacích uživatelů
-
-2. Vytvoření testovacího plánu
-
-3. Konfigurace zásad
-
-4. Vyhodnocení Simulovaná přihlášení
-
-5. Vaše zásada testování
-
-6. Vyčištění
-
-
+1. Vytvoření testovacího plánu
+1. Konfigurace zásad
+1. Vyhodnocení Simulovaná přihlášení
+1. Vaše zásada testování
+1. Vyčištění
 
 ### <a name="create-test-users"></a>Vytvoření testovacích uživatelů
 
 K otestování zásady, vytvořte skupinu uživatelů, který je podobný uživatelé ve vašem prostředí. Vytvoření testovacích uživatelů umožňuje ověřit, že vaše zásady fungovat podle očekávání, než dopad na reálné uživatele a může dojít k narušení jejich přístup k aplikacím a prostředkům. 
-
 
 Některé organizace mají tenantů testů pro tento účel. Však může být obtížné znovu vytvořit všechny podmínky a aplikace s testovacím tenantem k plnému otestování výsledku zásady. 
 
@@ -203,19 +168,16 @@ Testovací plán je důležité mít srovnání očekávané výsledky a skuteč
 |[Správa zařízení](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)|Autorizovaný uživatel pokusí přihlásit z neoprávněné zařízení|Přístup zablokován| |
 |[Změna hesla pro rizikoví uživatelé](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-user-risk-policy)|Oprávnění uživatele pokusy o přihlášení pomocí zneužití přihlašovacích údajů (vysoce rizikových přihlášení v)|Uživatel je vyzván ke změně hesla nebo zablokován přístup na základě vašich zásad| |
 
-
 ### <a name="configure-the-policy"></a>Konfigurace zásad
 
 Správa zásad podmíněného přístupu je ruční úloha. Na webu Azure Portal můžete spravovat zásad podmíněného přístupu na jediném místě – stránky podmíněného přístupu. Je jeden vstupní bod na stránku pro podmíněný přístup **zabezpečení** tématu **služby Active Directory** navigačním podokně. 
 
 ![Podmíněný přístup](media/plan-conditional-access/03.png)
 
-
 Pokud chcete získat další informace o tom, jak vytvořit zásady podmíněného přístupu, najdete v článku [vyžadovat vícefaktorové ověřování pro konkrétní aplikace, pomocí Azure Active Directory podmíněného přístupu](app-based-mfa.md). Tento rychlý start vám pomůže:
 
 - Seznamte se s uživatelským rozhraním.
 - Získáte první dojem toho, jak funguje podmíněný přístup. 
-
 
 ### <a name="evaluate-a-simulated-sign-in"></a>Vyhodnocení Simulovaná přihlášení
 
@@ -224,48 +186,33 @@ Teď, když jste nakonfigurovali zásady podmíněného přístupu, budete pravd
 >[!NOTE]
 > Při spuštění simulovaného poskytuje dojem dopad, který má zásady podmíněného přístupu, nenahrazuje skutečný testovacího běhu.
 
-
 ### <a name="test-your-policy"></a>Vaše zásada testování
 
 Spouštění testovacích případů podle plánu testování. V tomto kroku budete procházet začátku do konce testu každé zásady pro vaše testovací uživatele, abyste měli jistotu, že každá zásada pracuje správně. Použijte scénáře k provedení každého testu vytvořili výše.
 
-Je důležité zajistit, aby že testovací kritéria vyloučení zásady. Například může vyloučit uživatele nebo skupiny z zásady, které vyžadují vícefaktorové ověřování. Proto byste otestovat Pokud vyloučení uživatelé se výzva pro vícefaktorové ověřování, protože spojení jiných zásad může vyžadovat vícefaktorové ověřování pro tyto uživatele.
-
+Je důležité zajistit, aby že testovací kritéria vyloučení zásady. Například může vyloučit uživatele nebo skupiny z zásady, které vyžadují vícefaktorové ověřování. Test, pokud vyloučení uživatelé se výzva pro vícefaktorové ověřování, protože spojení jiných zásad může vyžadovat vícefaktorové ověřování pro tyto uživatele.
 
 ### <a name="cleanup"></a>Vyčištění
 
 Postup vyčištění se skládá z následujících kroků:
 
 1. Zakážete zásadu.
-
-2. Odeberte přiřazení uživatelé a skupiny.
-
-3. Odstraňte testovací uživatele.  
-
-
-
+1. Odeberte přiřazení uživatelé a skupiny.
+1. Odstraňte testovací uživatele.  
 
 ## <a name="move-to-production"></a>Přechod k produkčnímu prostředí
 
-Jakmile jsou připravené pro vaše prostředí nové zásady, nasaďte je do fáze::
+Jakmile jsou připravené pro vaše prostředí nové zásady, můžete je nasadíte ve fázích:
 
 - Koncovým uživatelům poskytovat změnit interní komunikace.
-
 - Začněte s menší skupinou uživatelů a ověřte, že zásady chová podle očekávání.
-
 - Když rozšiřujete zásadu, která zahrnují další uživatele, i nadále vyloučit všechny správce. S výjimkou správci zajistí, že jiným stále má přístup k zásadě, pokud je požadována změna.
-
 - Zásady platí pro všechny uživatele, pouze v případě, že je to požadováno.
 
 Jako osvědčený postup vytvořte aspoň jeden uživatelský účet, který je:
 
 - Vyhrazený pro správu zásad
-
 - Vyloučené ze všech zásad
-
- 
-
-
 
 ## <a name="rollback-steps"></a>Postup vrácení zpět
 
@@ -273,16 +220,16 @@ V případě, že je potřeba vrátit zpět nově implementované zásady, použ
 
 1. **Zakázat zásadu** – zakázání zásady zajišťuje, nevztahuje se, když se uživatel pokusí přihlásit. Vždy můžete vrátit a zásadu povolit, pokud chcete použít.
 
-    ![Zakázání zásady](media/plan-conditional-access/07.png)
+   ![Zakázání zásady](media/plan-conditional-access/07.png)
 
-2. **Vyloučit uživatele / skupiny na základě zásady** – Pokud je uživatel nemá přístup k aplikaci, můžete vyloučit ze zásady uživatele
+1. **Vyloučit uživatele / skupiny na základě zásady** – Pokud je uživatel nemá přístup k aplikaci, můžete vyloučit ze zásady uživatele
 
-    ![Uživatelé Exluce](media/plan-conditional-access/08.png)
+   ![Uživatelé Exluce](media/plan-conditional-access/08.png)
 
-    >[!NOTE]
-    > Tato možnost by měly používat střídmě, jenom v situacích, kde uživatel je důvěryhodný. Uživatel, měli byste co nejdříve přidat zpátky do zásad nebo skupiny.
+   > [!NOTE]
+   > Tato možnost by měly používat střídmě, jenom v situacích, kde uživatel je důvěryhodný. Uživatel, měli byste co nejdříve přidat zpátky do zásad nebo skupiny.
 
-3. **Odstranit zásady** – Pokud zásady už nejsou potřeba, odstraňte ho.
+1. **Odstranit zásady** – Pokud zásady už nejsou potřeba, odstraňte ho.
 
 ## <a name="next-steps"></a>Další postup
 

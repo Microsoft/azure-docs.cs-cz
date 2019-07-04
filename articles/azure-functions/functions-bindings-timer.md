@@ -4,7 +4,7 @@ description: Vysvětlení použití aktivačních časovačích ve službě Azur
 services: functions
 documentationcenter: na
 author: craigshoemaker
-manager: jeconnoc
+manager: gwallace
 keywords: Azure functions, funkce, zpracování událostí, dynamické výpočty, architektura bez serveru
 ms.assetid: d2f013d1-f458-42ae-baf8-1810138118ac
 ms.service: azure-functions
@@ -13,12 +13,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
-ms.openlocfilehash: db80155b39602ad5810c83e03913fb0f3ccb4281
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 1a26950f355fd10d9dd502851886a8b8101d4a83
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342218"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508273"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Trigger časovače pro službu Azure Functions 
 
@@ -269,12 +269,7 @@ Každé pole může mít jednu z následujících typů hodnot:
 |Sadu hodnot (`,` operátor)|<nobr>"5,8,10 * * * * *"</nobr>|na hh:mm:05 hh:mm:08 a hh:mm:10, kde je HH: mm každou minutu každou hodinu (3 x minuty)|
 |Hodnota intervalu (`/` operátor)|<nobr>"0 */5 * * * *"</nobr>|mít hh:05:00 hh:10:00 hh:15:00, a tak dále prostřednictvím hh:55:00, kde je hh každou hodinu (12krát větší hodiny)|
 
-Chcete-li určit měsíců nebo i dny můžete číselné hodnoty, názvy nebo jejich zkratky názvů:
-
-* Pro dny číselné hodnoty jsou 0 až 6, kde 0 začíná neděli.
-* Jména jsou v angličtině. Příklad: `Monday`, `January`.
-* Názvy jsou malá a velká písmena.
-* Názvy mohou být zkrácena. Tří písmen je délka doporučené zkratku.  Příklad: `Mon`, `Jan`. 
+[!INCLUDE [functions-cron-expressions-months-days](../../includes/functions-cron-expressions-months-days.md)]
 
 ### <a name="cron-examples"></a>Příklady procesu CRON
 

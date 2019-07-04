@@ -10,12 +10,12 @@ ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 04/03/2019
-ms.openlocfilehash: 999c75d07ef7e24d4d75587b6b42a4ab1b2192cf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3141f3a1d6a9f09261dee4113276af72168e35e8
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65596112"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444692"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Upgrade služby data warehouse na Gen2
 
@@ -43,7 +43,7 @@ Následující tabulka shrnuje podle oblastí, při nižší Gen2 výpočetní v
 | Čína – sever |\* |\* |
 | Čína – sever 2 |K dispozici |Pouze Gen2 |
 | Východní Asie |K dispozici |1\. června 2019 |
-| USA – východ |K dispozici |1\. června 2019 |
+| East US |K dispozici |1\. června 2019 |
 | Východní USA 2 |K dispozici |1\. června 2019 |
 | Francie – střed |\* |1\. června 2019 |
 | Německo – střed |\* |\* |
@@ -67,7 +67,7 @@ Následující tabulka shrnuje podle oblastí, při nižší Gen2 výpočetní v
 
 ## <a name="automatic-upgrade-process"></a>Proces automatického upgradu
 
-Podle výše uvedených graf dostupnosti, jsme budete plánovat automatické upgrady pro vaše instance Gen1. Pokud chcete vyhnout neočekávaným přerušení na dostupnost datového skladu, bude naplánováno automatizované upgrady během vašeho plánu údržby. Schopnost vytvářet nové instance Gen1 se deaktivuje v oblastech prochází automatický upgrade na Gen2. Další informace v rámci plánů najdete v tématu [zobrazit plán údržby](viewing-maintenance-schedule.md)
+Podle výše uvedených graf dostupnosti, jsme budete plánovat automatické upgrady pro vaše instance Gen1. Pokud chcete vyhnout neočekávaným přerušení na dostupnost datového skladu, bude naplánováno automatizované upgrady během vašeho plánu údržby. Schopnost vytvářet nové instance Gen1 se deaktivuje v oblastech prochází automatický upgrade na Gen2. Gen1 se přestanou používat po dokončení automatické upgrady. Další informace v rámci plánů najdete v tématu [zobrazit plán údržby](viewing-maintenance-schedule.md)
 
 Procesu upgradu bude zahrnovat stručný pokles připojení (přibližně 5 minut), jak jsme restartování služby data warehouse.  Po restartování služby data warehouse je plně k dispozici pro použití. Ale můžete setkat snížení výkonu během procesu upgradu nadále upgrade datové soubory na pozadí. Celková doba pro snížení výkonu se budou lišit závisí na velikosti datových souborů.
 

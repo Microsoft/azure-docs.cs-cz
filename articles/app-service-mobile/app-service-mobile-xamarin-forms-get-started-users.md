@@ -3,7 +3,7 @@ title: Začínáme s ověřováním pro Mobile Apps v aplikaci Xamarin Forms | D
 description: Naučte se využívat Mobile Apps k ověřování uživatelů vaší aplikace Xamarin Forms prostřednictvím různých poskytovatelů identit, včetně AAD, Google, Facebook, Twitter a Microsoft.
 services: app-service\mobile
 documentationcenter: xamarin
-author: panarasi
+author: elamalani
 manager: crdun
 editor: ''
 ms.assetid: 9c55e192-c761-4ff2-8d88-72260e9f6179
@@ -12,23 +12,27 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/24/2018
-ms.author: panarasi
-ms.openlocfilehash: 2945cefc18a378b31700104049f1a14a1f320136
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: f1777fcb5a4e7899da982bd9d1d35905cb408ad2
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66019790"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446300"
 ---
 # <a name="add-authentication-to-your-xamarin-forms-app"></a>Přidání ověřování do aplikace Xamarin Forms
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
+
+> [!NOTE]
+> Visual Studio App Center investuje do nové a integrované služby, které jsou centrální při vývoji mobilních aplikací. Vývojáři mohou použít **sestavení**, **testovací** a **rozmístit** služby vytvořit kanál pro průběžnou integraci a doručování. Po nasazení aplikace se můžou vývojáři monitorovat stav a využití své aplikace pomocí **Analytics** a **diagnostiky** služeb a Zaujměte uživatele, kteří používají **Push** Služba. Vývojáři mohou využít i **Auth** k ověření uživatelů a **Data** službu zachovat, synchronizaci dat aplikací v cloudu. Podívejte se na [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-xamarin-forms-get-started-users) ještě dnes.
+>
 
 ## <a name="overview"></a>Přehled
 V tomto tématu se dozvíte, jak ověřovat uživatele aplikace služby App Service Mobile z klientské aplikace. V tomto kurzu přidat ověřování do projektu Xamarin Forms pomocí zprostředkovatele identity, který je podporovaný službou App Service. Poté, co se úspěšně ověří a autorizuje mobilní aplikace, zobrazí se hodnota ID uživatele a bude mít přístup k datům s omezeným přístupem tabulky.
 
 ## <a name="prerequisites"></a>Požadavky
-Pro nejlepší výsledek s tímto kurzem, doporučujeme, abyste nejdříve dokončili [vytvoření aplikace Xamarin Forms] [ 1] kurzu. Po dokončení tohoto kurzu budete mít projekt Xamarin Forms, který je multiplatformní aplikaci seznamu úkolů.
+Pro nejlepší výsledek s tímto kurzem, doporučujeme, abyste nejdříve dokončili [vytvoření aplikace Xamarin Forms][1] kurzu. Po dokončení tohoto kurzu budete mít projekt Xamarin Forms, který je multiplatformní aplikaci seznamu úkolů.
 
 Pokud použijete serverový projekt stažené rychlý start, musíte přidat balíček rozšíření ověřování do projektu. Další informace o balíčcích rozšíření serveru najdete v tématu [pracovat s back-end .NET server SDK pro Azure Mobile Apps][2].
 
@@ -53,7 +57,8 @@ Zabezpečené ověřování, musíte definovat nové schéma adresy URL pro vaš
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
 ## <a name="add-authentication-to-the-portable-class-library"></a>Přidání ověřování do knihovny přenosných tříd
-Mobile Apps využívá [LoginAsync] [ 3] rozšiřující metody na [MobileServiceClient] [ 4] se přihlásit uživatele pomocí služby App Service ověřování. Tato ukázka používá server spravován ověřování tok, který se zobrazí zprostředkovatele přihlášení rozhraní v aplikaci. Další informace najdete v tématu [spravovaného serveru ověřování][5]. Pokud chcete poskytovat lepší prostředí uživatele v aplikaci pro produkčního prostředí, měli byste zvážit namísto použití [klienta spravovat ověřování][6].
+Mobile Apps využívá [LoginAsync][3] extension method on the [MobileServiceClient][4] to sign in a user with App Service authentication. This sample
+uses a server-managed authentication flow that displays the provider's sign-in interface in the app. For more information, see [Server-managed authentication][5]. Pokud chcete poskytovat lepší prostředí uživatele v aplikaci pro produkčního prostředí, měli byste zvážit namísto použití [klienta spravovat ověřování][6].
 
 K ověření s projektem Xamarin Forms, definujte **IAuthenticate** rozhraní v knihovně přenosných tříd pro aplikace. Pak přidejte **přihlášení** tlačítko na uživatelské rozhraní definováno v přenosné knihovně tříd, které kliknete začít ověřování. Data se načtou z back-endu mobilní aplikace po úspěšném ověření.
 

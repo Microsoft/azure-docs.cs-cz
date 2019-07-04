@@ -14,12 +14,12 @@ ms.date: 04/09/2019
 ms.author: rolyon
 ms.custom: pim ; H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6f978612cbbf0c326c3e66f25a0fbf4b749cc73
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: aa4fd850ac2116dc7f353eea87845501fff020bb
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60286928"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476224"
 ---
 # <a name="azure-ad-roles-security-wizard-in-pim"></a>Průvodce zabezpečením role Azure AD v PIM
 
@@ -43,27 +43,27 @@ Druhý krok průvodce vám dává možnost změnit přiřazení rolí správce.
 
 1. Klikněte na tlačítko **role Azure AD** a potom klikněte na tlačítko **průvodce**.
 
-    ![Role Azure AD – Průvodce](./media/pim-security-wizard/wizard-start.png)
+    ![Role Azure AD – Průvodce stránky zobrazující 3 kroky ke spuštění Průvodce](./media/pim-security-wizard/wizard-start.png)
 
 1. Klikněte na tlačítko **1 zjistit privilegované role**.
 
 1. Projděte si seznam privilegovaných rolí, které chcete zjistit, kteří uživatelé jsou trvalé nebo oprávněné.
 
-    ![Objevte privilegované role uživatele](./media/pim-security-wizard/discover-privileged-roles-users.png)
+    ![Zjistit privilegované role – podokno Role zobrazující trvalý a bude možné členy](./media/pim-security-wizard/discover-privileged-roles-users.png)
 
 1. Klikněte na tlačítko **Další** vyberte členy, které chcete nastavit jako oprávněné.
 
-    ![Převést na oprávněné členy](./media/pim-security-wizard/convert-members-eligible.png)
+    ![Převést členy oprávněné stránku s možnostmi a vyberte členy, které chcete nastavit jako oprávněné role](./media/pim-security-wizard/convert-members-eligible.png)
 
 1. Po výběru členů, klikněte na tlačítko **Další**.
 
-    ![Změny vyplývající z revize](./media/pim-security-wizard/review-changes.png)
+    ![Zkontrolujte změny stránky zobrazující členů se přiřazení trvalé rolí, které budou převedeny](./media/pim-security-wizard/review-changes.png)
 
 1. Klikněte na tlačítko **OK** pro převod na trvalé přiřazení oprávněné.
 
     Po dokončení převodu, zobrazí se vám oznámení.
 
-    ![Oznámení](./media/pim-security-wizard/notification-completion.png)
+    ![Oznámení zobrazující stav převodu](./media/pim-security-wizard/notification-completion.png)
 
 Pokud je potřeba převést na oprávněné. ostatní přiřazení privilegovaných rolí, můžete znovu spustit průvodce. Pokud chcete použít rozhraní PIM místo průvodce, přečtěte si téma [přiřazení role Azure AD v PIM](pim-how-to-add-role-to-user.md).
 

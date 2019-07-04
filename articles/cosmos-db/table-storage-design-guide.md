@@ -8,12 +8,12 @@ ms.date: 05/21/2019
 author: wmengmsft
 ms.author: wmeng
 ms.custom: seodec18
-ms.openlocfilehash: af155b5adb2e4b45412a8b84818852ed1b1c5e72
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0812828f8d7c0be38fb03c06f4a10019e2ed153c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65966094"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447297"
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Průvodce návrhem tabulky Azure Storage: Návrh škálovatelných a výkonných tabulek
 
@@ -255,7 +255,7 @@ Služba Table service automaticky indexuje entit pomocí **PartitionKey** a **Ro
 Vrácené služby Table service výsledky dotazu jsou seřazené ve vzestupném pořadí podle **PartitionKey** a potom podle **RowKey**.
 
 > [!NOTE]
-> Výsledky dotazu vrácená rozhraním API tabulky Azure ve službě Azure DB nejsou seřazené podle klíče oddílu a klíče řádku. Podrobný seznam rozdílů funkcí najdete v tématu [rozdíly mezi rozhraní Table API ve službě Azure Cosmos DB a Azure Table storage](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior).
+> Výsledky dotazu vrácená rozhraním API tabulky Azure ve službě Azure Cosmos DB nejsou seřazené podle klíče oddílu a klíče řádku. Podrobný seznam rozdílů funkcí najdete v tématu [rozdíly mezi rozhraní Table API ve službě Azure Cosmos DB a Azure Table storage](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior).
 
 Klíče v tabulce Azure Storage jsou řetězcové hodnoty a aby číselných hodnot řadily správně, musí je převést na pevnou délkou a vyplnění nulami. Například, pokud hodnota id zaměstnance použijete jako **RowKey** je celočíselná hodnota, je třeba id zaměstnance převést **123** k **00000123**. 
 
@@ -723,7 +723,7 @@ Při implementaci tohoto modelu můžou být relevantní také následující mo
 Načíst *n* naposledy přidaný do oddílu s použitím entity **RowKey** hodnotu, která seřadí reverzní datum a čas objednávky.  
 
 > [!NOTE]
-> Výsledky dotazu vrácená rozhraním API tabulky Azure ve službě Azure DB nejsou seřazené podle klíče oddílu a klíče řádku. Proto tento model je vhodný pro Azure Table Storage a ne Azure Cosmos DB. Podrobný seznam rozdílů funkcí najdete v tématu [rozdíly v rozhraní Table API ve službě Azure Cosmos DB a Azure Table Storage](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior).
+> Výsledky dotazu vrácená rozhraním API tabulky Azure ve službě Azure Cosmos DB nejsou seřazené podle klíče oddílu a klíče řádku. Proto tento model je vhodný pro Azure Table Storage a ne Azure Cosmos DB. Podrobný seznam rozdílů funkcí najdete v tématu [rozdíly v rozhraní Table API ve službě Azure Cosmos DB a Azure Table Storage](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior).
 
 #### <a name="context-and-problem"></a>Kontext a problém
 Běžné požadavky, je moct načíst nedávno vytvořené entity, třeba posledních deset výdaje odeslal zaměstnanec deklarací identity. Dotazy podpory **$top** dotazové operace do vrátí první *n* entity ze sady: neexistuje žádná odpovídající dotaz operace vrátit poslední n entity v sadě.  

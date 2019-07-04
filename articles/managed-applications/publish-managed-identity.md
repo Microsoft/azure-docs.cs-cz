@@ -8,12 +8,12 @@ ms.reviewer: ''
 ms.author: jobreen
 author: jjbfour
 ms.date: 05/13/2019
-ms.openlocfilehash: be141e208016784b689262394798012c2212ba5b
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: 9fb5f7a4a62c2d323059f7c0b879482e93feef2f
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67312238"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67434865"
 ---
 # <a name="azure-managed-application-with-managed-identity"></a>Spravované aplikace Azure s využitím spravované Identity
 
@@ -323,7 +323,22 @@ Token spravované aplikace je teď přístupný prostřednictvím `listTokens` r
 
 ``` HTTP
 POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Solutions/applications/{applicationName}/listTokens?api-version=2018-09-01-preview HTTP/1.1
+
+{
+    "authorizationAudience": "https://management.azure.com/",
+    "userAssignedIdentities": [
+        "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{userAssignedIdentityName}"
+    ]
+}
 ```
+
+Parametrů těla zprávy požadavku:
+
+Parametr | Požaduje se | Popis
+---|---|---
+authorizationAudience | *no* | Identifikátor URI aplikace ID cílového prostředku. Je také `aud` deklarace identity (cílová skupina) vydaného tokenu. Výchozí hodnota je "https://management.azure.com/"
+userAssignedIdentities | *no* | Seznam spravovaných uživatelsky přiřazené identity načíst token. Pokud není zadán, `listTokens` vrátí token pro systém přiřadil spravovaná identita.
+
 
 Ukázkové odpovědi může vypadat:
 
@@ -345,6 +360,18 @@ Content-Type: application/json
     ]
 }
 ```
+
+Odpověď bude obsahovat pole v rámci tokenů `value` vlastnost:
+
+Parametr | Popis
+---|---
+access_token | Požadovaný přístupový token.
+expires_in | Počet sekund, po které bude přístupový token platný.
+expires_on | Interval timespan, když vyprší platnost přístupového tokenu. To je reprezentována jako počet sekund od epochy.
+not_before | Interval timespan, když přístupový token se projeví. To je reprezentována jako počet sekund od epochy.
+authorizationAudience | `aud` (Cílová skupina) přístupový token byl požadavek. Jde o stejný, jako je zadán v `listTokens` požadavku.
+resourceId | ID prostředku Azure pro vydaný token. Toto je Identifikátor spravované aplikace nebo ID uživatelsky přiřazené identity.
+token_type | Typ tokenu.
 
 ## <a name="next-steps"></a>Další postup
 

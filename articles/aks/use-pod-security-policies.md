@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/17/2019
 ms.author: iainfou
-ms.openlocfilehash: 881a16501574dc7309eede6b58e270a97bed977a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9da722006651cfc9e9f2a175d5c330ba5df08123
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66235748"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447067"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>Ve verzi Preview – zabezpečení clusteru pomocí pod zásad zabezpečení ve službě Azure Kubernetes Service (AKS)
 
@@ -26,36 +26,40 @@ Pokud chcete zlepšit zabezpečení clusteru AKS, můžete omezit podů, může 
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Tento článek předpokládá, že máte existující cluster AKS. Pokud potřebujete AKS cluster, najdete v tomto rychlém startu AKS [pomocí Azure CLI] [ aks-quickstart-cli] nebo [pomocí webu Azure portal][aks-quickstart-portal].
+Tento článek předpokládá, že máte existující cluster AKS. Pokud potřebujete AKS cluster, najdete v tomto rychlém startu AKS [pomocí Azure CLI][aks-quickstart-cli] or [using the Azure portal][aks-quickstart-portal].
 
 Musí mít Azure CLI verze 2.0.61 nebo později nainstalována a nakonfigurována. Spustit `az --version` k vyhledání verze. Pokud potřebujete instalaci nebo upgrade, naleznete v tématu [instalace Azure CLI][install-azure-cli].
 
 ### <a name="install-aks-preview-cli-extension"></a>Instalace rozšíření aks ve verzi preview rozhraní příkazového řádku
 
-Clustery AKS jsou aktualizované, aby podporovaly pomocí zásad zabezpečení pod *aks ve verzi preview* rozšíření rozhraní příkazového řádku. Nainstalujte *aks ve verzi preview* pomocí rozšíření Azure CLI [přidat rozšíření az] [ az-extension-add] příkaz, jak je znázorněno v následujícím příkladu:
+Použití zásad zabezpečení pod, je nutné *aks ve verzi preview* CLI verze rozšíření 0.4.1 nebo vyšší. Nainstalujte *aks ve verzi preview* pomocí rozšíření Azure CLI [přidat rozšíření az][az-extension-add] command, then check for any available updates using the [az extension update][az-extension-update] příkaz::
 
 ```azurecli-interactive
+# Install the aks-preview extension
 az extension add --name aks-preview
-```
 
-> [!NOTE]
-> Pokud jste dříve nainstalovali *aks ve verzi preview* rozšíření, nainstalujte všechny dostupné aktualizace pomocí `az extension update --name aks-preview` příkazu.
+# Update the extension to make sure you have the latest version installed
+az extension update --name aks-preview
+```
 
 ### <a name="register-pod-security-policy-feature-provider"></a>Zaregistrovat poskytovatele funkce zásad zabezpečení pod
 
-Vytvořit nebo aktualizovat cluster AKS, pokud chcete používat zásady zabezpečení pod, povolte příznak funkce v rámci předplatného. K registraci *PodSecurityPolicyPreview* příznak funkce, použijte [az funkce register] [ az-feature-register] příkaz, jak je znázorněno v následujícím příkladu:
+Vytvořit nebo aktualizovat cluster AKS, pokud chcete používat zásady zabezpečení pod, povolte příznak funkce v rámci předplatného. K registraci *PodSecurityPolicyPreview* příznak funkce, použijte [az funkce register][az-feature-register] příkaz, jak je znázorněno v následujícím příkladu:
+
+> [!CAUTION]
+> Při registraci funkce v rámci předplatného nelze nyní zrušit registraci této funkce. Po povolení některé funkce ve verzi preview se výchozí hodnoty lze pro všechny clustery AKS, pak jste vytvořili v rámci předplatného. Nepovolí funkce ve verzi preview na předplatná pro produkční prostředí. Testování funkce ve verzi preview a shromažďování zpětné vazby pomocí samostatné předplatné.
 
 ```azurecli-interactive
 az feature register --name PodSecurityPolicyPreview --namespace Microsoft.ContainerService
 ```
 
-Trvá několik minut, než se stav zobrazíte *registrované*. Vy můžete zkontrolovat stav registrace pomocí [seznam funkcí az] [ az-feature-list] příkaz:
+Trvá několik minut, než se stav zobrazíte *registrované*. Vy můžete zkontrolovat stav registrace pomocí [seznam funkcí az][az-feature-list] příkaz:
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/PodSecurityPolicyPreview')].{Name:name,State:properties.state}"
 ```
 
-Až to budete mít, aktualizujte registraci *Microsoft.ContainerService* poskytovatele prostředků pomocí [az provider register] [ az-provider-register] příkaz:
+Až to budete mít, aktualizujte registraci *Microsoft.ContainerService* poskytovatele prostředků pomocí [az provider register][az-provider-register] příkaz:
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -77,7 +81,7 @@ Chcete-li zobrazit jak výchozí zásady omezení pod nasazení, v tomto článk
 
 ## <a name="enable-pod-security-policy-on-an-aks-cluster"></a>Povolit zásady zabezpečení pod u clusteru AKS
 
-Můžete povolit nebo zakázat pomocí zásad zabezpečení pod [az aks aktualizovat] [ az-aks-update] příkazu. Následující příklad povolí pod zásady zabezpečení na název clusteru *myAKSCluster* ve skupině prostředků s názvem *myResourceGroup*.
+Můžete povolit nebo zakázat pomocí zásad zabezpečení pod [az aks aktualizovat][az-aks-update] příkazu. Následující příklad povolí pod zásady zabezpečení na název clusteru *myAKSCluster* ve skupině prostředků s názvem *myResourceGroup*.
 
 > [!NOTE]
 > Pro použití reálného světa, není pod zásadu zabezpečení povolit dokud jste definovali vlastní zásady. V tomto článku se povolit zásady zabezpečení pod prvním krokem, pokud chcete zobrazit, jak omezit pod výchozí zásady nasazení.
@@ -93,7 +97,7 @@ az aks update \
 
 Když povolíte zásady zabezpečení pod, AKS vytvoří dvě výchozí zásady s názvem *privilegovaných* a *s omezeným přístupem*. Není upravit nebo odebrat tyto výchozí zásady. Místo toho vytvořte vlastní zásady, které definují nastavení, které chcete do ovládacího prvku. První pohled na tyto výchozí zásady teď jsou, jak by mohly mít dopad pod nasazení.
 
-Chcete-li zobrazit dostupné zásady, použijte [kubectl get psp] [ kubectl-get] příkaz, jak je znázorněno v následujícím příkladu. Jako součást výchozí *s omezeným přístupem* zásad, uživateli je zakázán *PRIV* privilegovaných pod Eskalace a uživatel *MustRunAsNonRoot*.
+Chcete-li zobrazit dostupné zásady, použijte [kubectl get psp][kubectl-get] příkaz, jak je znázorněno v následujícím příkladu. Jako součást výchozí *s omezeným přístupem* zásad, uživateli je zakázán *PRIV* privilegovaných pod Eskalace a uživatel *MustRunAsNonRoot*.
 
 ```console
 $ kubectl get psp
@@ -103,7 +107,7 @@ privileged   true    *      RunAsAny   RunAsAny           RunAsAny    RunAsAny  
 restricted   false          RunAsAny   MustRunAsNonRoot   MustRunAs   MustRunAs   false            configMap,emptyDir,projected,secret,downwardAPI,persistentVolumeClaim
 ```
 
-*s omezeným přístupem* pod zabezpečení zásady platí pro každý ověřený uživatel v clusteru AKS. Toto přiřazení je řízena ClusterRoles a ClusterRoleBindings. Použití [kubectl get clusterrolebindings] [ kubectl-get] příkaz a vyhledejte *výchozí: s omezeným přístupem:* vazby:
+*s omezeným přístupem* pod zabezpečení zásady platí pro každý ověřený uživatel v clusteru AKS. Toto přiřazení je řízena ClusterRoles a ClusterRoleBindings. Použití [kubectl get clusterrolebindings][kubectl-get] příkaz a vyhledejte *výchozí: s omezeným přístupem:* vazby:
 
 ```console
 kubectl get clusterrolebindings default:restricted -o yaml
@@ -132,16 +136,16 @@ Je důležité pochopit, jak tyto zásady výchozí pracovat s uživatelskými p
 
 ## <a name="create-a-test-user-in-an-aks-cluster"></a>Vytvoření zkušebního uživatele v clusteru AKS
 
-Ve výchozím nastavení při použití [az aks get-credentials] [ az-aks-get-credentials] příkazu *správce* přihlašovací údaje pro AKS cluster a přidán do vaší `kubectl` config. Uživatel s rolí správce obchází vynucení zásad zabezpečení pod. Pokud používání integrace služby Azure Active Directory pro své clustery AKS, může zobrazit vynucení zásad v akci Přihlaste se pomocí přihlašovacích údajů uživatele bez oprávnění správce. V tomto článku vytvoříte testovací uživatelský účet v clusteru AKS, který vám pomůže.
+Ve výchozím nastavení při použití [az aks get-credentials][az-aks-get-credentials] příkazu *správce* přihlašovací údaje pro AKS cluster a přidán do vaší `kubectl` config. Uživatel s rolí správce obchází vynucení zásad zabezpečení pod. Pokud používání integrace služby Azure Active Directory pro své clustery AKS, může zobrazit vynucení zásad v akci Přihlaste se pomocí přihlašovacích údajů uživatele bez oprávnění správce. V tomto článku vytvoříte testovací uživatelský účet v clusteru AKS, který vám pomůže.
 
-Vytvoření ukázkové oboru názvů s názvem *psp aks* pro testovací prostředky pomocí [kubectl vytvoření oboru názvů] [ kubectl-create] příkazu. Vytvořte účet služby s názvem *text nonadmin uživatele* pomocí [kubectl vytvořit serviceaccount] [ kubectl-create] příkaz:
+Vytvoření ukázkové oboru názvů s názvem *psp aks* pro testovací prostředky pomocí [kubectl vytvoření oboru názvů][kubectl-create] příkazu. Vytvořte účet služby s názvem *text nonadmin uživatele* pomocí [kubectl vytvořit serviceaccount][kubectl-create] příkaz:
 
 ```console
 kubectl create namespace psp-aks
 kubectl create serviceaccount --namespace psp-aks nonadmin-user
 ```
 
-Dále vytvořte RoleBinding pro *text nonadmin uživatele* provádět základní akce s použitím oboru názvů [kubectl vytvořit rolebinding] [ kubectl-create] příkaz:
+Dále vytvořte RoleBinding pro *text nonadmin uživatele* provádět základní akce s použitím oboru názvů [kubectl vytvořit rolebinding][kubectl-create] příkaz:
 
 ```console
 kubectl create rolebinding \
@@ -184,7 +188,7 @@ spec:
         privileged: true
 ```
 
-Vytvoření s použitím pod [použití kubectl] [ kubectl-apply] příkaz a zadejte název vašeho YAML manifestu:
+Vytvoření s použitím pod [použití kubectl][kubectl-apply] příkaz a zadejte název vašeho YAML manifestu:
 
 ```console
 kubectl-nonadminuser apply -f nginx-privileged.yaml
@@ -217,7 +221,7 @@ spec:
       image: nginx:1.14.2
 ```
 
-Vytvoření s použitím pod [použití kubectl] [ kubectl-apply] příkaz a zadejte název vašeho YAML manifestu:
+Vytvoření s použitím pod [použití kubectl][kubectl-apply] příkaz a zadejte název vašeho YAML manifestu:
 
 ```console
 kubectl-nonadminuser apply -f nginx-unprivileged.yaml
@@ -232,7 +236,7 @@ NAME                 READY   STATUS                       RESTARTS   AGE
 nginx-unprivileged   0/1     CreateContainerConfigError   0          26s
 ```
 
-Použití [kubectl popisují pod] [ kubectl-describe] příkaz podívat se na události pod. Následujícímu zhuštěnému příkladu ukazuje, že kontejner a bitové kopie vyžadují kořenová oprávnění, i v případě, že jsme neměli o ně požádat:
+Použití [kubectl popisují pod][kubectl-describe] příkaz podívat se na události pod. Následujícímu zhuštěnému příkladu ukazuje, že kontejner a bitové kopie vyžadují kořenová oprávnění, i v případě, že jsme neměli o ně požádat:
 
 ```console
 $ kubectl-nonadminuser describe pod nginx-unprivileged
@@ -256,7 +260,7 @@ I v případě, že jsme informace nevyžádali privilegovaný přístup, je pot
 
 Tento příklad ukazuje, že zásady zabezpečení pod výchozí vytvořené službou AKS jsou aktivní a omezit akce, které může uživatel provést. Je důležité pochopit chování těchto výchozích zásad, tak, jak očekáváte nemusí základní NGINX pod kterým bude odepřen.
 
-Teprve potom přejděte další krok odstranit pod tento test pomocí [kubectl odstranit pod] [ kubectl-delete] příkaz:
+Teprve potom přejděte další krok odstranit pod tento test pomocí [kubectl odstranit pod][kubectl-delete] příkaz:
 
 ```console
 kubectl-nonadminuser delete -f nginx-unprivileged.yaml
@@ -281,7 +285,7 @@ spec:
         runAsUser: 2000
 ```
 
-Vytvoření s použitím pod [použití kubectl] [ kubectl-apply] příkaz a zadejte název vašeho YAML manifestu:
+Vytvoření s použitím pod [použití kubectl][kubectl-apply] příkaz a zadejte název vašeho YAML manifestu:
 
 ```console
 kubectl-nonadminuser apply -f nginx-unprivileged-nonroot.yaml
@@ -296,7 +300,7 @@ NAME                         READY   STATUS              RESTARTS   AGE
 nginx-unprivileged-nonroot   0/1     CrashLoopBackOff    1          3s
 ```
 
-Použití [kubectl popisují pod] [ kubectl-describe] příkaz podívat se na události pod. Následujícímu zhuštěnému příkladu zobrazí pod události:
+Použití [kubectl popisují pod][kubectl-describe] příkaz podívat se na události pod. Následujícímu zhuštěnému příkladu zobrazí pod události:
 
 ```console
 $ kubectl-nonadminuser describe pods nginx-unprivileged
@@ -318,7 +322,7 @@ Events:
   Warning  BackOff    105s (x5 over 2m11s)  kubelet, aks-agentpool-34777077-0  Back-off restarting failed container
 ```
 
-Události, které označují, že kontejner byl vytvořen a spustit. Není co hned zjevné, proč chcete pod v chybovém stavu. Pojďme se podívat na protokoly pod pomocí [kubectl protokoly] [ kubectl-logs] příkaz:
+Události, které označují, že kontejner byl vytvořen a spustit. Není co hned zjevné, proč chcete pod v chybovém stavu. Pojďme se podívat na protokoly pod pomocí [kubectl protokoly][kubectl-logs] příkaz:
 
 ```console
 kubectl-nonadminuser logs nginx-unprivileged-nonroot --previous
@@ -337,7 +341,7 @@ nginx: [emerg] mkdir() "/var/cache/nginx/client_temp" failed (13: Permission den
 
 Znovu je důležité porozumět chování výchozí zásady zabezpečení pod. Tato chyba se trochu obtížnější sledování a znovu, nemusí očekáváte, že základní NGINX pod kterým bude odepřen.
 
-Teprve potom přejděte další krok odstranit pod tento test pomocí [kubectl odstranit pod] [ kubectl-delete] příkaz:
+Teprve potom přejděte další krok odstranit pod tento test pomocí [kubectl odstranit pod][kubectl-delete] příkaz:
 
 ```console
 kubectl-nonadminuser delete -f nginx-unprivileged-nonroot.yaml
@@ -370,13 +374,13 @@ spec:
   - '*'
 ```
 
-Vytvoření s použitím zásad [použití kubectl] [ kubectl-apply] příkaz a zadejte název vašeho YAML manifestu:
+Vytvoření s použitím zásad [použití kubectl][kubectl-apply] příkaz a zadejte název vašeho YAML manifestu:
 
 ```console
 kubectl apply -f psp-deny-privileged.yaml
 ```
 
-Chcete-li zobrazit dostupné zásady, použijte [kubectl get psp] [ kubectl-get] příkaz, jak je znázorněno v následujícím příkladu. Porovnání *psp odepření oprávnění* zásady s výchozím *s omezeným přístupem* zásady, které bylo vynuceno v předchozích příkladech vytvoření pod. Použití pouze *PRIV* eskalace odepřen ve vašich zásadách. Neexistují žádná omezení na uživatele nebo skupinu pro *psp odepření oprávnění* zásad.
+Chcete-li zobrazit dostupné zásady, použijte [kubectl get psp][kubectl-get] příkaz, jak je znázorněno v následujícím příkladu. Porovnání *psp odepření oprávnění* zásady s výchozím *s omezeným přístupem* zásady, které bylo vynuceno v předchozích příkladech vytvoření pod. Použití pouze *PRIV* eskalace odepřen ve vašich zásadách. Neexistují žádná omezení na uživatele nebo skupinu pro *psp odepření oprávnění* zásad.
 
 ```console
 $ kubectl get psp
@@ -409,7 +413,7 @@ rules:
   - use
 ```
 
-Vytvoření s použitím ClusterRole [použití kubectl] [ kubectl-apply] příkaz a zadejte název vašeho YAML manifestu:
+Vytvoření s použitím ClusterRole [použití kubectl][kubectl-apply] příkaz a zadejte název vašeho YAML manifestu:
 
 ```console
 kubectl apply -f psp-deny-privileged-clusterrole.yaml
@@ -432,7 +436,7 @@ subjects:
   name: system:serviceaccounts
 ```
 
-Vytvoření pomocí ClusterRoleBinding [použití kubectl] [ kubectl-apply] příkaz a zadejte název vašeho YAML manifestu:
+Vytvoření pomocí ClusterRoleBinding [použití kubectl][kubectl-apply] příkaz a zadejte název vašeho YAML manifestu:
 
 ```console
 kubectl apply -f psp-deny-privileged-clusterrolebinding.yaml
@@ -443,13 +447,13 @@ kubectl apply -f psp-deny-privileged-clusterrolebinding.yaml
 
 ## <a name="test-the-creation-of-an-unprivileged-pod-again"></a>Testování bez oprávnění umožňovala zvlášť pod vytvoření znovu
 
-Použít vlastní pod zásady zabezpečení a vazby pro uživatelský účet na zásady Zkusme znovu vytvořit bez oprávnění umožňovala zvlášť pod. Použijte stejný `nginx-privileged.yaml` manifestu vytvořit pomocí pod [použití kubectl] [ kubectl-apply] příkaz:
+Použít vlastní pod zásady zabezpečení a vazby pro uživatelský účet na zásady Zkusme znovu vytvořit bez oprávnění umožňovala zvlášť pod. Použijte stejný `nginx-privileged.yaml` manifestu vytvořit pomocí pod [použití kubectl][kubectl-apply] příkaz:
 
 ```console
 kubectl-nonadminuser apply -f nginx-unprivileged.yaml
 ```
 
-Pod se úspěšně naplánovala. Při kontrole stavu pod pomocí [kubectl get pods] [ kubectl-get] příkazu je pod *systémem*:
+Pod se úspěšně naplánovala. Při kontrole stavu pod pomocí [kubectl get pods][kubectl-get] příkazu je pod *systémem*:
 
 ```
 $ kubectl-nonadminuser get pods
@@ -460,7 +464,7 @@ nginx-unprivileged   1/1     Running   0          7m14s
 
 Tento příklad ukazuje, jak můžete vytvořit vlastní pod zásady zabezpečení definují přístup k clusteru AKS pro různé uživatele nebo skupiny. Výchozí zásady AKS poskytují přísnou podů, které lze spustit, aby vytvářet vlastní zásady správně definovat omezení, které potřebujete.
 
-Odstranit pomocí NGINX Neprivilegovaný pod [kubectl odstranit] [ kubectl-delete] příkaz a zadejte název vašeho YAML manifestu:
+Odstranit pomocí NGINX Neprivilegovaný pod [kubectl odstranit][kubectl-delete] příkaz a zadejte název vašeho YAML manifestu:
 
 ```console
 kubectl-nonadminuser delete -f nginx-unprivileged.yaml
@@ -468,7 +472,7 @@ kubectl-nonadminuser delete -f nginx-unprivileged.yaml
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Chcete-li zakázat pod zásady zabezpečení, použijte [az aks aktualizovat] [ az-aks-update] příkaz znovu. Následující příklad zakazuje pod zásady zabezpečení na název clusteru *myAKSCluster* ve skupině prostředků s názvem *myResourceGroup*:
+Chcete-li zakázat pod zásady zabezpečení, použijte [az aks aktualizovat][az-aks-update] příkaz znovu. Následující příklad zakazuje pod zásady zabezpečení na název clusteru *myAKSCluster* ve skupině prostředků s názvem *myResourceGroup*:
 
 ```azurecli-interactive
 az aks update \
@@ -484,7 +488,7 @@ kubectl delete -f psp-deny-privileged-clusterrolebinding.yaml
 kubectl delete -f psp-deny-privileged-clusterrole.yaml
 ```
 
-Odstranit zásady sítě pomocí [kubectl odstranit] [ kubectl-delete] příkaz a zadejte název vašeho YAML manifestu:
+Odstranit zásady sítě pomocí [kubectl odstranit][kubectl-delete] příkaz a zadejte název vašeho YAML manifestu:
 
 ```console
 kubectl delete -f psp-deny-privileged.yaml
@@ -525,3 +529,5 @@ Další informace o omezení síťového provozu pod najdete v tématu [zabezpe�
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [aks-support-policies]: support-policies.md
 [aks-faq]: faq.md
+[az-extension-add]: /cli/azure/extension#az-extension-add
+[az-extension-update]: /cli/azure/extension#az-extension-update

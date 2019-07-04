@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.author: iainfou
-ms.openlocfilehash: e7f45a3a0e62b2b559002b71bd8816e050f062ab
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9231b3629c10043e72efad4231111e56fd54c626
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65072652"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447163"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro ukládání a zálohování ve službě Azure Kubernetes Service (AKS)
 
@@ -38,7 +38,6 @@ Následující tabulka uvádí typy úložiště k dispozici a jejich funkce:
 |----------|---------------|-----------------|----------------|-----------------|--------------------|
 | Sdílená konfigurace       | Soubory Azure   | Ano | Ano | Ano | Ano |
 | Strukturovaných dat        | Disky Azure   | Ano | Ne  | Ne  | Ano |
-| Data aplikací, sdílené složky jen pro čtení | [Dysk (preview)][dysk] | Ano | Ano | Ne  | Ne |
 | Nestrukturovaných dat, operace systému souborů | [BlobFuse (preview)][blobfuse] | Ano | Ano | Ano | Ne |
 
 Dva primární typy úložiště k dispozici pro svazky ve službě AKS se zálohují na disky Azure nebo Azure Files. Pro zlepšení zabezpečení použít oba typy úložiště Azure Storage Service Encryption (SSE) ve výchozím nastavení, která šifruje neaktivní uložená data. Disky nelze aktuálně zašifrovaný službou Azure Disk Encryption na úrovni uzlu AKS.
@@ -83,7 +82,7 @@ Trvalý svazek deklarace identity (PVC) umožňuje vytvářet dynamicky úloži�
 
 Koncepty o tom, jak dynamicky vytvářet a používat svazky, naleznete v tématu [trvalé deklarací svazky][aks-concepts-storage-pvcs].
 
-Tyto svazky v akci najdete v tématu Jak dynamicky vytvořit a použít trvalý svazek s [Azure Disks] [ dynamic-disks] nebo [Azure Files][dynamic-files].
+Tyto svazky v akci najdete v tématu Jak dynamicky vytvořit a použít trvalý svazek s [Azure Disks][dynamic-disks] or [Azure Files][dynamic-files].
 
 V rámci definic třídy úložiště, nastavte odpovídající *reclaimPolicy*. Tato reclaimPolicy řídí chování základní prostředek služby Azure storage při pod se odstraní a trvalý svazek již může být nutná. Tento základní prostředek spravovat úložiště můžete odstranit nebo uchovávají pro použití s budoucí pod. Můžete nastavit reclaimPolicy *zachovat* nebo *odstranit*. O vašich potřebách aplikace a implementovat pravidelné kontroly pro úložiště, které chcete-li minimalizovat množství zrušení využité úložiště, který je používán a účtuje se uchovávají.
 
@@ -93,7 +92,7 @@ Další informace o možnostech třídy úložiště, najdete v části [úloži
 
 **Osvědčené postupy pro moduly** – zálohujete svá data pomocí vhodného nástroje pro váš typ úložiště, jako je například Velero nebo Azure Site Recovery. Ověření integrity a zabezpečení, tyto zálohy.
 
-Při ukládání vašich aplikací a využívat data se ukládají na discích nebo v souborech, je potřeba provést pravidelného zálohování nebo snímky tato data. Disky Azure můžete použít předdefinované snímku technologie. Budete muset hook pro vaše aplikace k vyprázdnění zápisy na disk před provedením operace vytvoření snímku. [Velero] [ velero] můžete zálohovat trvalé svazky spolu s prostředky další clusteru a konfiguracemi. Pokud to není možné [odebrání stavu z vašich aplikací][remove-state], zálohování dat z trvalého svazky a pravidelně testujeme funkčnost operací obnovení k ověření integrity dat a procesy nezbytné.
+Při ukládání vašich aplikací a využívat data se ukládají na discích nebo v souborech, je potřeba provést pravidelného zálohování nebo snímky tato data. Disky Azure můžete použít předdefinované snímku technologie. Budete muset hook pro vaše aplikace k vyprázdnění zápisy na disk před provedením operace vytvoření snímku. [Velero][velero] can back up persistent volumes along with additional cluster resources and configurations. If you can't [remove state from your applications][remove-state], zálohování dat z trvalého svazky a pravidelně testujeme funkčnost operací obnovení k ověření integrity dat a procesy nezbytné.
 
 Principy omezení různé přístupy k zálohování dat a pokud je potřeba uvést vaše data před snímku. Zálohování dat není nutně umožnit obnovení prostředí pro vaše aplikace nasazení clusteru. Další informace o těchto scénářích najdete v tématu [osvědčené postupy pro obchodní kontinuity podnikových procesů a zotavení po havárii ve službě AKS][best-practices-multi-region].
 
@@ -103,7 +102,6 @@ Tento článek zaměřuje na úložiště osvědčené postupy ve službě AKS. 
 
 <!-- LINKS - External -->
 [velero]: https://github.com/heptio/velero
-[dysk]: https://github.com/Azure/kubernetes-volume-drivers/tree/master/flexvolume/dysk
 [blobfuse]: https://github.com/Azure/azure-storage-fuse
 
 <!-- LINKS - Internal -->

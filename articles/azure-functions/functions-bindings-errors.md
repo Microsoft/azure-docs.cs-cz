@@ -4,18 +4,18 @@ description: Zjistěte, jak zpracovávat chyby vazeb Azure Functions
 services: functions
 documentationcenter: na
 author: craigshoemaker
-manager: jeconnoc
+manager: gwallace
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
 ms.date: 01/14/2019
 ms.author: cshoe
-ms.openlocfilehash: d7505b7e5798676730ed9882ca3750351cc5c9ed
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 80f10143be54903c5522b17678edbfdd5f073266
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61438142"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67480642"
 ---
 # <a name="handle-azure-functions-binding-errors"></a>Zpracování chyb vazeb Azure Functions
 

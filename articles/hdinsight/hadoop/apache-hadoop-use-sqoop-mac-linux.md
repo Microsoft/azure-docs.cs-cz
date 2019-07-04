@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 6dcb6853daf34fede590011d165c0ba9001cbac6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 02b4eb6c367510e8994aa7723fe3fdd3e43af0e6
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64721632"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67462178"
 ---
 # <a name="use-apache-sqoop-to-import-and-export-data-between-apache-hadoop-on-hdinsight-and-sql-database"></a>Použití Apache Sqoop k importu a exportu dat mezi Apache Hadoop v HDInsight a databází SQL
 
@@ -98,5 +98,5 @@ Z SQL serveru do úložiště Azure.
 Nyní jste se naučili, jak použít Sqoop. Další informace naleznete v tématu:
 
 * [Použití Apache Oozie s HDInsight](../hdinsight-use-oozie-linux-mac.md): Pomocí Sqoop akce v pracovním postupu Oozie.
-* [Analýza zpoždění letů pomocí HDInsight](../hdinsight-analyze-flight-delay-data-linux.md): Analýza zpoždění letů pomocí Apache Hive a potom použít Sqoop k exportování dat do Azure SQL database.
+* [Analýza zpoždění letů pomocí HDInsight](../interactive-query/interactive-query-tutorial-analyze-flight-data.md): Použití interaktivního dotazu k analýze zpoždění letů a potom použít Sqoop k exportování dat do Azure SQL database.
 * [Nahrání dat do HDInsight](../hdinsight-upload-data.md): Najdete další metody pro nahrávání dat do HDInsight nebo Azure Blob storage.

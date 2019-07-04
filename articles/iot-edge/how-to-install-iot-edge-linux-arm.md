@@ -7,14 +7,14 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 03/20/2019
+ms.date: 06/27/2019
 ms.author: kgremban
-ms.openlocfilehash: 6c22680102c57fdfc3d25beb19e5bc9847995b28
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f7004edf2bab0e22d4d1e4c1200d6e8b8ef729b3
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65152731"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485955"
 ---
 # <a name="install-azure-iot-edge-runtime-on-linux-arm32v7armhf"></a>Instalace modulu runtime Azure IoT Edge v Linuxu (ARM32v7/armhf)
 
@@ -27,7 +27,11 @@ V tomto článku jsou uvedené kroky k instalaci modulu runtime Azure IoT Edge n
 >[!NOTE]
 >Balíčky v úložiště softwaru Linux jsou souladu s licenčními podmínkami v jednotlivých balíčků (/ usr/sdílet/doc/*název balíčku*). Přečtěte si licenční podmínky před použitím balíčku. Instalace a použití balíčku se považuje za svůj souhlas s těmito podmínkami. Pokud s licenčními podmínkami nesouhlasíte, nepoužívejte balíček.
 
-## <a name="install-the-container-runtime"></a>Nainstalovat modul runtime kontejneru
+## <a name="install-the-latest-version"></a>Nainstalujte nejnovější verzi
+
+Chcete-li nainstalovat nejnovější verzi služby Azure IoT Edge na zařízeních ARM Linux pomocí následujících částí. 
+
+### <a name="install-the-container-runtime"></a>Nainstalovat modul runtime kontejneru
 
 Azure IoT Edge se může spolehnout [OCI kompatibilní](https://www.opencontainers.org/) kontejner modulu runtime. Pro produkční scénáře, důrazně doporučujeme vám použít [na základě Moby](https://mobyproject.org/) níže uvedený modul. Je modul pouze container oficiálně podporované službou Azure IoT Edge. Image kontejnerů dockeru CE/EE jsou kompatibilní s modulem runtime na základě Moby.
 
@@ -47,7 +51,7 @@ curl -L https://aka.ms/moby-cli-armhf-latest -o moby_cli.deb && sudo dpkg -i ./m
 sudo apt-get install -f
 ```
 
-## <a name="install-the-iot-edge-security-daemon"></a>Instalace démona zabezpečení IoT Edge
+### <a name="install-the-iot-edge-security-daemon"></a>Instalace démona zabezpečení IoT Edge
 
 **Démon zabezpečení IoT Edge** poskytuje a udržuje na zařízení IoT Edge standardy zabezpečení. Proces démon spustí při každé spuštění a bootstraps zařízení spuštěním rest modul runtime IoT Edge. 
 
@@ -66,7 +70,17 @@ curl -L https://aka.ms/iotedged-linux-armhf-latest -o iotedge.deb && sudo dpkg -
 sudo apt-get install -f
 ```
 
-## <a name="connect-your-device-to-an-iot-hub"></a>Připojení zařízení k IoT hubu 
+Po úspěšné instalaci IoT Edge je výstup vás vyzve k aktualizovat konfigurační soubor. Postupujte podle kroků v [konfigurace démona zabezpečení Azure IoT Edge](#configure-the-azure-iot-edge-security-daemon) části na dokončení zřizování zařízení. 
+
+## <a name="install-a-specific-version"></a>Instalace konkrétní verze
+
+Pokud chcete nainstalovat konkrétní verzi služby Azure IoT Edge, můžete směrovat soubory součástí přímo z úložiště IoT Edge GitHub. Použijte stejný `curl` příkazy uvedené v předchozích částech a mějte všechny služby IoT Edge součásti do vašeho zařízení: Moby modul a rozhraní příkazového řádku, libiothsm a nakonec démona zabezpečení IoT Edge. Jediným rozdílem je, že nahradíte **aka.ms** adresy URL s odkazy přímo odkazuje na verzi jednotlivých komponent, které chcete použít.
+
+Přejděte [Azure IoT Edge uvolní](https://github.com/Azure/azure-iotedge/releases)a vyhledejte verzi, kterou chcete cílit. Rozbalte **prostředky** verze a zvolte soubory, které odpovídají IoT Edge architektury zařízení. Obsahuje každá vydaná verze IoT Edge **iotedge** a **libiothsm** soubory. Ne všechny verze zahrnují **moby modul** nebo **moby cli**. Pokud ještě nemáte nainstalovaný modul kontejneru Moby, projděte starší verze najděte, které obsahuje součásti Moby. 
+
+Po úspěšné instalaci IoT Edge je výstup vás vyzve k aktualizovat konfigurační soubor. Postupujte podle kroků v další části a dokončit zřizování zařízení. 
+
+## <a name="configure-the-azure-iot-edge-security-daemon"></a>Nakonfigurujte funkce zabezpečení Azure IoT Edge
 
 Konfigurace modulu runtime IoT Edge k propojení vaší fyzické zařízení s identitou zařízení, která existuje v Azure IoT hub. 
 

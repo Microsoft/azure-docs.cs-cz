@@ -2,48 +2,42 @@
 title: zahrnout soubor
 description: zahrnout soubor
 services: functions
-author: craigshoemaker
+author: ggailey777
 ms.service: functions
 ms.topic: include
-ms.date: 09/25/2018
-ms.author: cshoe
+ms.date: 05/25/2019
+ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: fc5b43dcdee394fea023124171fb42c1a18224dc
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: d62da82b4a4dd35532dd8776a9111689db469201
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67174773"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448370"
 ---
-Ujistěte se, všechny vazby publikované týmem Azure Functions k dispozici prostřednictvím nastavení v rozšíření sady *host.json* souboru. Pro místní vývoj, zajistěte, abyste měli nejnovější verzi [nástrojů Azure Functions Core](../articles/azure-functions/functions-run-local.md#install-the-azure-functions-core-tools).
+## <a name="register-extensions"></a>Registrace rozšíření
 
-Použití rozšíření sady, aktualizujte *host.json* souboru přidejte následující položku pro `extensionBundle`:
+S výjimkou aktivační události HTTP a časovač, funkce vazby modulu runtime verze 2.x jsou implementovány jako balíčky rozšíření. Ve verzi 2.x modulu runtime Azure Functions, je nutné provést explicitně registraci rozšíření pro vazbu typy používané ve vaší funkce. Výjimkou jsou HTTP vazbách a aktivačních událostech časovače, které nevyžadují rozšíření.
 
-```json
-{
-    "version": "2.0",
-    "extensionBundle": {
-        "id": "Microsoft.Azure.Functions.ExtensionBundle",
-        "version": "[1.*, 2.0.0)"
-    }
-}
+Můžete také nainstalovat rozšíření vazby jednotlivě, nebo můžete přidat odkaz na rozšíření sady do souboru projektu host.json. Rozšíření sady odebere riziko s problémy s kompatibilitou balíčků při použití více typů vazeb. Je doporučený postup pro registraci rozšíření vazby. Rozšíření sady také eliminuje nutnost instalace .NET Core 2.x SDK. 
+
+### <a name="extension-bundles"></a>rozšíření sady
+
+[!INCLUDE [Register extensions](functions-extension-bundles.md)]
+
+Další informace najdete v tématu [rozšíření vazby registraci Azure Functions](../articles/azure-functions/functions-bindings-register.md#extension-bundles). Předtím, než přidáte do souboru souboru functions.json vazby, měli byste k host.json přidat rozšíření sady.
+
+### <a name="register-individual-extensions"></a>Rozšíření pro jednotlivé registrace
+
+Pokud je potřeba nainstalovat rozšíření, která nejsou v sadě, můžete ručně registrovat jednotlivá rozšíření balíčků pro konkrétní vazby. 
+
+> [!NOTE]
+> K ruční registraci rozšíření pomocí `func extensions install`, musí mít .NET Core 2.x nainstalované sady SDK.
+
+Po aktualizaci vašich *function.json* soubor zahrnout všechny vazby, které vaše funkce vyžaduje, spusťte následující příkaz ve složce projektu.
+
+```bash
+func extensions install
 ```
 
-- `id` Vlastnost odkazuje na obor názvů pro rozšíření sady Microsoft Azure Functions.
-- `version` Odkazuje na verzi sady.
-
-Zvýšení verze sady prostředků jako balíčky v sadě změn. Hlavní verze změny dojít pouze při balíčky v sadě přesuňte hlavní verze. `version` Používá vlastnost [notation interval pro zadání rozsahu verzí](https://docs.microsoft.com/nuget/reference/package-versioning#version-ranges-and-wildcards). Modul runtime služby Functions vždy vybere maximální povolenou verzi definovaný rozsah verzí nebo intervalu.
-
-Když odkazujete sady rozšíření ve vašem projektu, všechny výchozí vazby jsou k dispozici vaše funkce. K dispozici v vazby [rozšíření sady](https://github.com/Azure/azure-functions-extension-bundles/blob/master/src/Microsoft.Azure.Functions.ExtensionBundle/extensions.json) jsou:
-
-|Balíček  |Version  |
-|---------|---------|
-|Microsoft.Azure.WebJobs.Extensions.CosmosDB|3.0.3|
-|Microsoft.Azure.WebJobs.Extensions.DurableTask|1.8.0|
-|Microsoft.Azure.WebJobs.Extensions.EventGrid|2.0.0|
-|Microsoft.Azure.WebJobs.Extensions.EventHubs|3.0.3|
-|Microsoft.Azure.WebJobs.Extensions.SendGrid|3.0.0|
-|Microsoft.Azure.WebJobs.Extensions.ServiceBus|3.0.3|
-|Microsoft.Azure.WebJobs.Extensions.SignalRService|1.0.0|
-|Microsoft.Azure.WebJobs.Extensions.Storage|3.0.4|
-|Microsoft.Azure.WebJobs.Extensions.Twilio|3.0.0|
+Tento příkaz načte *function.json* souboru a zjistěte jaké balíčky, které potřebujete, nainstaluje je a znovu sestaví projekt rozšíření. Přidá všechny nové vazby na aktuální verzi, ale neaktualizuje existující vazby. Použití `--force` možnost aktualizovat existující vazby na nejnovější verzi při instalaci nové značky.

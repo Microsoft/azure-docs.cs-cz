@@ -2,26 +2,21 @@
 title: Zařízení s Windows 10 a Windows serveru 2016 připojená k řešení potíží s hybridní služby Azure Active Directory | Dokumentace Microsoftu
 description: Řešení potíží s hybridní služby Azure Active Directory připojené zařízení s Windows 10 a Windows serveru 2016.
 services: active-directory
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-ms.assetid: cdc25576-37f2-4afb-a786-f59ba4c284c2
 ms.service: active-directory
 ms.subservice: devices
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 11/08/2017
+ms.topic: troubleshooting
+ms.date: 06/28/2019
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3671623312f0da00c8f6172a101529a5cd12be1b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dfb4b03fb57efecff587a91dfc2ad293be96d9ba
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67110546"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67481611"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-windows-10-and-windows-server-2016-devices"></a>Zařízení s Windows 10 a Windows serveru 2016 připojená k řešení potíží s hybridní služby Azure Active Directory 
 
@@ -35,14 +30,10 @@ Pro ostatní klienty Windows najdete v článku [zařízení s nižší úrovně
 Tento článek předpokládá, že máte [nakonfigurované hybridní služby Azure Active Directory zařízení připojená k](hybrid-azuread-join-plan.md) pro podporu následujících scénářů:
 
 - Podmíněný přístup podle zařízení
-
 - [Podnikový roaming nastavení](../active-directory-windows-enterprise-state-roaming-overview.md)
-
 - [Windows Hello pro firmy](../active-directory-azureadjoin-passport-deployment.md)
 
-
 Tento dokument obsahuje pokyny k odstraňování problémů, o tom, jak vyřešit potenciální problémy. 
-
 
 Pro Windows 10 a Windows Server 2016, hybridní připojení k Azure Active Directory podporuje Windows 10 November 2015 Update a vyšší. Doporučujeme používat Anniversary update.
 
@@ -53,8 +44,6 @@ Pro Windows 10 a Windows Server 2016, hybridní připojení k Azure Active Direc
 1. Otevřete příkazový řádek jako správce
 
 2. Typ **dsregcmd/status**
-
-
 
 ```
 +----------------------------------------------------------------------+
@@ -101,8 +90,6 @@ WamDefaultAuthority: organizations
          AzureAdPrt: YES
 ```
 
-
-
 ## <a name="step-2-evaluate-the-join-status"></a>Krok 2: Vyhodnocení stavu připojení 
 
 Zkontrolujte následující pole a ujistěte se, že očekávané hodnoty:
@@ -114,22 +101,14 @@ Toto pole indikuje, jestli zařízení je spojen s Azure AD. Pokud je hodnota **
 **Možné příčiny:**
 
 - Ověřování počítače pro spojení se nezdařilo.
-
 - Proxy server HTTP je v organizaci, který nelze zjistit počítače
-
 - Počítač nemá přístup k ověřování Azure AD nebo Azure DRS pro registraci.
-
 - Počítač nemusí být v interní síti organizace nebo VPN s přímým přístupem na dohled místní řadič domény služby AD.
-
 - Pokud má počítač čip TPM, může být ve špatném stavu.
-
 - Může být chybná konfigurace ve službách v dokumentu jste si předtím poznamenali, že budete muset znovu ověřit. Obvyklými příklady jsou:
-
-    - Federační server nemá povolené koncové body WS-Trust
-
-    - Federační server nepovoluje příchozí ověřování z počítačů ve vaší síti pomocí integrovaného ověřování Windows.
-
-    - Neexistuje žádný spojovacího bodu služby objektů, který odkazuje na název ověřené domény ve službě Azure AD v doménové struktuře AD, kam počítač patří do
+   - Federační server nemá povolené koncové body WS-Trust
+   - Federační server nepovoluje příchozí ověřování z počítačů ve vaší síti pomocí integrovaného ověřování Windows.
+   - Neexistuje žádný spojovacího bodu služby objektů, který odkazuje na název ověřené domény ve službě Azure AD v doménové struktuře AD, kam počítač patří do
 
 ---
 
@@ -150,9 +129,7 @@ Toto pole indikuje, jestli je zařízení zaregistrované ve službě Azure AD j
 Tato pole označuje, zda uživatel se úspěšně ověřil do služby Azure AD při přihlašování k zařízení. Pokud jsou hodnoty **ne**, může být vypršení platnosti:
 
 - Klíč chybný úložiště (STK) zařízení TPM přidružený k zařízení při registraci (Kontrola KeySignTest při spuštění se zvýšenými oprávněními).
-
 - Alternativním přihlašovacím ID
-
 - Proxy server HTTP nebyla nalezena.
 
 ## <a name="next-steps"></a>Další postup

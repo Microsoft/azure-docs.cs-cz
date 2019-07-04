@@ -1,25 +1,22 @@
 ---
-title: Vysvětlení faktury za Azure enterprise | Dokumentace Microsoftu
-description: Zjistěte, jak číst a porozumět využití a vyúčtování pro smlouvy Azure Enterprise
-services: ''
-documentationcenter: ''
+title: Vysvětlení faktury za Azure enterprise
+description: Zjistěte, jak číst a porozumět využití a vyúčtování pro smlouvy Azure Enterprise.
 author: adpick
 manager: dougeby
-editor: ''
 tags: billing
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/01/2019
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: be20ad0583558949f65b9706f0a478669360bf3d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 02ddaf4878367524291ce54a4e12fc9b4fee4cd2
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64571204"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490289"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>Vysvětlení faktury za Azure Enterprise Agreement
 
@@ -57,9 +54,9 @@ Vaše faktura zobrazí všechny využívání služeb Azure, za nímž následuj
 
 Porovnejte vaše kombinované celkovou velikost na webu Enterprise Portal v **sestavy** > **využití: Souhrn** s faktuře Azure. Částky za **využití: Souhrn** jsou bez daně.
 
-1. Přihlaste se k [Enterprise portal](https://ea.azure.com).
+1. Přihlaste se do [Enterprise portal](https://ea.azure.com).
 1. Vyberte **sestavy**.
-1. V pravém horním rohu karty, přepněte zobrazení z **M** k **C** a odpovídají doby na faktuře.  
+1. V pravém horním rohu na kartě přepněte zobrazení z **M** k **C** a odpovídají doby na faktuře.  
     ![Snímek obrazovky zobrazující M + C možnost v souhrnu využití.](./media/billing-understand-your-bill-ea/ea-portal-usage-sumary-cm-option.png)
 1. Souhrnné množství **celkové využití** a **Azure Marketplace** by měl odpovídat **celkovou velikost rozšířené** na vaší faktuře.
 1. Chcete-li získat další podrobnosti o poplatcích, přejděte na **stáhnout využití**.  
@@ -98,9 +95,9 @@ Ke kontrole a ověřte poplatky na faktuře, musíte být správce podnikové s�
 
 Porovnejte vaše množství celkové využití na webu Enterprise Portal v **sestavy** > **využití: Souhrn** s faktuře za Nadlimitní využití služby. Faktura za Nadlimitní využití služby zahrnuje využití, která překračuje kredit vaší organizace a/nebo služby, které nejsou pokryty všemi uvedeného kreditu. Částky na **využití: Souhrn** jsou bez daně.
 
-1. Přihlaste se k [Enterprise portal](https://ea.azure.com).
+1. Přihlaste se do [Enterprise portal](https://ea.azure.com).
 1. Vyberte **sestavy**.
-1. V pravém horním rohu karty, přepněte zobrazení z **M** k **C** a odpovídají doby na faktuře.  
+1. V pravém horním rohu na kartě přepněte zobrazení z **M** k **C** a odpovídají doby na faktuře.  
     ![Snímek obrazovky zobrazující M + C možnost v souhrnu využití.](./media/billing-understand-your-bill-ea/ea-portal-usage-sumary-cm-option.png)
 1. **Celkové využití** velikost by měla odpovídat **celkovou velikost rozšířené** na vaší faktuře za Nadlimitní využití služby.  
 1. Chcete-li získat další informace o poplatcích, přejděte na **stáhnout využití** > **stažení Rozšířené sestavy**. Sestava neobsahuje, daní a poplatků za rezervace nebo poplatků za marketplace.  
@@ -122,9 +119,9 @@ Tato část se týká pouze pokud jste v Austrálii, Japonska a Singapur.
 
 Porovnejte celkový počet na Azure Marketplace **sestavy** > **využití: Souhrn** na webu Enterprise Portal s vaší faktuře marketplace. Faktura za marketplace je pouze za nákupy a využití na Azure Marketplace. Částky na **využití: Souhrn** jsou bez daně.
 
-1. Přihlaste se k [Enterprise portal](https://ea.azure.com).
+1. Přihlaste se do [Enterprise portal](https://ea.azure.com).
 1. Vyberte **sestavy**.
-1. V pravém horním rohu karty, přepněte zobrazení z **M** k **C** a odpovídají doby na faktuře.  
+1. V pravém horním rohu na kartě přepněte zobrazení z **M** k **C** a odpovídají doby na faktuře.  
      ![Snímek obrazovky zobrazující M + C možnost na využití: Souhrn.](./media/billing-understand-your-bill-ea/ea-portal-usage-sumary-cm-option.png)  
 1. **Azure Marketplace** celkový počet by měl odpovídat **celkový prodej** na vaší faktuře marketplace.
 1. Chcete-li získat další informace o poplatcích podle použití, přejděte na **stáhnout využití**. V části **poplatků za Marketplace**vyberte **Stáhnout**. Tato sestava nezahrnuje daně ani jednorázové nákupy.  

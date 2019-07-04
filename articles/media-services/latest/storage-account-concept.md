@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/11/2019
+ms.date: 06/25/2019
 ms.author: juliako
-ms.openlocfilehash: 9cbb995eb3310a2263185d6fd6dba20efce37f38
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fc5bf052a7677d76c7128404a420f8c886cf3fe1
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65550148"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67439109"
 ---
 # <a name="cloud-upload-and-storage"></a>Nahrávání na cloud a úložiště
 
@@ -24,12 +24,12 @@ Pokud chcete začít, správa, šifrování, kódování, analýza a streamován
 
 Účet Media Services a všechny přidružené účty úložiště musí být ve stejném předplatném Azure. Doporučujeme, aby používaly účty úložiště ve stejném umístění jako účet Media Services, aby se zabránilo další latenci a data náklady na odchozí přenosy
 
-Ke svému účtu Media Services musíte mít přidružený jeden **primární** účet úložiště a libovolný počet **sekundárních** účtů úložiště. Služba Media Services podporuje účty **General-purpose v2** (GPv2) nebo **General-purpose v1** (GPv1). 
+Ke svému účtu Media Services musíte mít přidružený jeden **primární** účet úložiště a libovolný počet **sekundárních** účtů úložiště. Služba Media Services podporuje účty **General-purpose v2** (GPv2) nebo **General-purpose v1** (GPv1). <br/>Účty jen pro objekty blob nejsou povolené jako **primární**. 
 
->[!NOTE]
-> Účty jen pro objekty blob nejsou povolené jako **primární**. 
+Doporučujeme používat účty GPv2, takže můžete využít nejnovější funkce a výkonu. Další informace o účtech úložiště najdete v tématu [přehled účtu Azure Storage](../../storage/common/storage-account-overview.md).
 
-Doporučujeme používat účty GPv2, takže můžete využít vybrat mezi horkou a studenou úrovní úložiště. Další informace o účtech úložiště najdete v tématu [přehled účtu Azure Storage](../../storage/common/storage-account-overview.md). 
+> [!NOTE]
+> Pouze horká vrstva přístupu se podporuje pro použití se službou Azure Media Services, i když další úrovně přístupu je možné snížit náklady na úložiště na obsah, který nebude aktivně používat.
 
 Existují různé skladové položky, které můžete použít pro váš účet úložiště. Další informace najdete v tématu [účty úložiště](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest). Pokud chcete experimentovat s účty úložiště, použijte `--sku Standard_LRS`. Ale při výběru SKU pro produkční prostředí byste měli zvážit, `--sku Standard_RAGRS`, která poskytuje geografické replikace zajišťuje nepřetržitý chod podniků. 
 

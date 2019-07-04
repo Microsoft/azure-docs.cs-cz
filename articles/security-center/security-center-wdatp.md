@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/27/2018
 ms.author: monhaber
-ms.openlocfilehash: d42b929807bf67b73d0587232608efc0cea6d717
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1737856067b2490db4a993b4383b320cb13a7774
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66752568"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551777"
 ---
 # <a name="windows-defender-advanced-threat-protection-with-azure-security-center"></a>Rozšířená ochrana před internetovými útoky pomocí Azure Security Center programu Windows Defender
 
@@ -71,7 +71,7 @@ Na servery připojit ke službě Security Center, klikněte na tlačítko **pře
 
 ## <a name="enable-windows-defender-atp-integration"></a>Povolení integrace ochrany ATP v programu Windows Defender
 
-Chcete-li zobrazit, pokud je povolená ochrana ATP v programu Windows Defender integrace, vyberte **Security center** > **zásady zabezpečení** > **předplatné**  >  **Upravit nastavení**.
+Chcete-li zobrazit, pokud je povolená ochrana ATP v programu Windows Defender integrace, vyberte **Security center** > **ceny na & stavení** > klikněte na předplatné.
 
   ![Správa zásad Azure Security Center](media/security-center-wdatp/policy-management.png)
 

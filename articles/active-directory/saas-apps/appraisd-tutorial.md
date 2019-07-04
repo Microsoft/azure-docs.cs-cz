@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 90a484224c35abd492db2409e6ec8e91c398d71a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 08453928ab000cf906c451fa6c1cd619a00ee4ca
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67106784"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561200"
 ---
 # <a name="tutorial-integrate-appraisd-with-azure-active-directory"></a>Kurz: Appraisd integrovat s Azure Active Directory
 
@@ -89,7 +89,7 @@ Použijte následující postup povolení jednotného přihlašování Azure AD 
     > [!NOTE]
     > Na stránce Konfigurace jednotného přihlašování Appraisd, který je vysvětlen později v tomto kurzu získáte skutečnou hodnotu přihlašovací adresu URL a stav přenosu.
 
-1. Appraisd aplikace očekává, že kontrolní výrazy SAML v určitém formátu, který je potřeba přidat vlastní atribut mapování konfigurace atributy tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů, přičemž **nameidentifier** je namapována na žádnou **user.userprincipalname**. Očekává, že aplikace Appraisd **nameidentifier** namapovat s **user.mail**, takže budete muset kliknout na Upravit mapování atributů **upravit**  ikonu a změnit mapování atributů.
+1. Appraisd aplikace očekává, že kontrolní výrazy SAML v určitém formátu, který je potřeba přidat vlastní atribut mapování konfigurace atributy tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů, přičemž **nameidentifier** je namapována na žádnou **user.userprincipalname**. Očekává, že aplikace Appraisd **nameidentifier** namapovat s **user.mail**, takže budete muset upravit mapování atributů po kliknutí na **upravit** ikonu a změňte mapování atributů.
 
     ![image](common/edit-attribute.png)
 

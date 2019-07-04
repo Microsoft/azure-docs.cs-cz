@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2019
 ms.author: getroyer
-ms.openlocfilehash: 0ac50a5f52682c4315b8d08cf5632c4a6fa5242f
-ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
+ms.openlocfilehash: fe9886429a5e894f40c04b1f65094e412c1dc9e2
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2019
-ms.locfileid: "67357585"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441209"
 ---
 # <a name="use-azure-data-science-virtual-machines"></a>Použijte virtuální počítače pro Azure datové vědy
 
@@ -51,7 +51,7 @@ Tyto hodnoty získat z DSVM stránky na webu Azure Portal.
 
 ## <a name="accessing-azure-notebooks-files-from-the-dsvm"></a>Přístup k souborům poznámkových bloků Azure z datové VĚDY
 
-Přístupu k systému souborů je podporována verze DSVM 19.06.15 nebo novější. Pokud chcete zkontrolovat verzi, nejprve připojte k vaší DSVM přes protokol SSH (IP adresa je k dispozici na webu Azure Portal). Potom spusťte následující příkaz pomocí vaší `<ip_address>`: `curl -H Metadata:true "http://<ip_address>/metadata/instance?api-version=2018-10-01"`. Číslo verze se zobrazí ve výstupu "verze".
+Přístupu k systému souborů je podporována verze DSVM 19.06.15 nebo novější. Pokud chcete zkontrolovat verzi, nejdřív připojit k vaší DSVM přes protokol SSH a pak spuštěním následujícího příkazu: `curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2018-10-01"` (je nutné použít přesnou adresu IP je vidět tady). Číslo verze se zobrazí ve výstupu "verze".
 
 Chcete-li zachovat parity cesty k souborům s **– Compute úrovně Free** úroveň, budete moci otevřít pouze jeden projekt současně v DSVM. Chcete-li otevřít nový projekt, je nutné vypnout otevřít projekt nejprve.
 

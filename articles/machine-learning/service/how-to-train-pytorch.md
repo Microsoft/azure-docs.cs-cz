@@ -11,16 +11,16 @@ author: mx-iao
 ms.reviewer: peterlu
 ms.date: 06/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: fc80fcde8de3fb2d6dd6f59804f6019b76aa8727
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 8def58eb003fcc817c21151416744cf391b5f38f
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295600"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443931"
 ---
 # <a name="train-and-register-pytorch-models-at-scale-with-azure-machine-learning-service"></a>Trénování a registraci PyTorch modely ve velkém měřítku ve službě Azure Machine Learning
 
-Tento článek popisuje, jak pro trénování a zaregistrujte model PyTorch pomocí služby Azure Machine Learning. Je založen na [přenos PyTorch společnosti learning kurzu](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html) , která sestavení klasifikátoru hluboké neuronové sítě (DNN) pro Image rámeček a včel.
+Tento článek popisuje, jak pro trénování a zaregistrujte model PyTorch pomocí služby Azure Machine Learning. Je založen na [přenos PyTorch společnosti learning kurzu](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html) , která sestavení klasifikátoru hluboké neuronové sítě (DNN) pro Image kuřat a krůty.
 
 [PyTorch](https://pytorch.org/) je open source výpočetní platforma běžně používá k vytvoření neuronových sítí (DNN). Pomocí služby Azure Machine Learning můžete rychle škálovat úlohy trénování open source pomocí elastických cloudových výpočetních prostředků. Můžete také sledovat tréninkových spuštění, verze modely nasazení modelů a mnoho dalšího.
 
@@ -75,19 +75,19 @@ ws = Workspace.from_config()
 
 ### <a name="create-an-experiment"></a>Vytvoření experimentu
 
-Vytvoření experimentu a složku pro uložení trénovací skripty. V tomto příkladu vytvoření experimentu nazývá "pytorch hymenoptera".
+Vytvoření experimentu a složku pro uložení trénovací skripty. V tomto příkladu vytvoření experimentu nazývá "pytorch ptáci".
 
 ```Python
-project_folder = './pytorch-hymenoptera'
+project_folder = './pytorch-birds'
 os.makedirs(project_folder, exist_ok=True)
 
-experiment_name = 'pytorch-hymenoptera'
+experiment_name = 'pytorch-birds'
 experiment = Experiment(ws, name=experiment_name)
 ```
 
 ### <a name="get-the-data"></a>Získání dat
 
-Datová sada se skládá z přibližně 120 trénovacích obrázků každý rámeček a včely, pomocí 75 ověřování imagí pro každou třídu. Hymenoptera je v tom pořadí hmyzu, která zahrnuje rámeček a včel. Stažení a extrakci datovou sadu jako součást skriptu školení `pytorch_train.py`.
+Datová sada se skládá z přibližně 120 trénovacích obrázků každý krůty a kuřat, s 100 ověřování imagí pro každou třídu. Budeme stáhnout a extrahovat datovou sadu jako součást skriptu školení `pytorch_train.py`. Bitové kopie jsou podmnožinou [datovou sadu otevřít Imagí v5](https://storage.googleapis.com/openimages/web/index.html).
 
 ### <a name="prepare-training-scripts"></a>Příprava trénovací skripty
 

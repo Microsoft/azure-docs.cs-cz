@@ -1,34 +1,26 @@
 ---
-title: Vytvoření služby Azure Application Gateway – šablony | Dokumentace Microsoftu
-description: Tato stránka obsahuje pokyny pro vytvoření služby Azure Application Gateway pomocí šablony Azure Resource Manageru.
-documentationcenter: na
+title: Vytvoření služby Azure Application Gateway – šablony
+description: Tento článek obsahuje pokyny pro vytvoření služby Azure application gateway pomocí šablony Azure Resource Manageru
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 07/31/2017
+ms.topic: conceptual
+ms.date: 6/26/2019
 ms.author: victorh
-ms.openlocfilehash: 7ff6db5acb150207f975931155386a308c48888b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a762e8c9ed1981173f3729837456ac2cfea081b8
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66134053"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449535"
 ---
-# <a name="create-an-application-gateway-by-using-the-azure-resource-manager-template"></a>Vytvoření služby Application Gateway pomocí šablony Azure Resource Manageru
+# <a name="create-an-application-gateway-using-the-azure-resource-manager-template"></a>Vytvoření služby application gateway pomocí šablony Azure Resource Manageru
 
-Služba Azure Application Gateway je nástroj pro vyrovnávání zatížení vrstvy 7. Poskytuje převzetí služeb při selhání a směrování výkonu požadavků HTTP mezi různými servery, ať už jsou místní nebo v cloudu. Application Gateway poskytuje mnoho funkcí kontroleru doručování aplikací (ADC), včetně vyrovnávání zatížení protokolu HTTP, spřažení relace na základě souborů cookie, přesměrování zpracování SSL (Secure Sockets Layer), vlastních sond stavu, podpory více webů a mnoha dalších. Úplný seznam podporovaných funkcí najdete v tématu [Přehled služby Application Gateway](overview.md)
+Služba Azure Application Gateway je nástroj pro vyrovnávání zatížení vrstvy 7. Poskytuje převzetí služeb při selhání a směrování výkonu požadavků HTTP mezi různými servery, ať už jsou místní nebo v cloudu. Application Gateway poskytuje mnoho funkcí kontroleru doručování aplikací (ADC), včetně vyrovnávání zatížení protokolu HTTP, spřažení relace na základě souborů cookie, přesměrování zpracování SSL (Secure Sockets Layer), vlastních sond stavu, podpory více webů a mnoha dalších. Úplný seznam podporovaných funkcí najdete v tématu [Přehled služby Application Gateway](application-gateway-introduction.md)
 
-Tento článek vás provede stažením a úprava existující [šablony Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md) z webu GitHub a nasazení šablony z Githubu, prostředí PowerShell a rozhraní příkazového řádku Azure.
+Tento článek vás provede stažením a úprava existující [šablony Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md) z webu GitHub a nasazení šablony z Githubu, prostředí Azure PowerShell a rozhraní příkazového řádku Azure.
 
-Pokud jednoduše nasazujete přímo z Githubu beze změn šablony, přejděte k nasazení šablony z Githubu.
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+Pokud nasazujete jednoduše šablony přímo z Githubu beze změn, přejděte k nasazení šablony z Githubu.
 
 ## <a name="scenario"></a>Scénář
 
@@ -42,7 +34,7 @@ V tomto scénáři provedete tyto kroky:
 > [!NOTE]
 > Tato nastavení jsou parametry této šablony. Pro přizpůsobení šablony, můžete změnit pravidla, naslouchací proces, SSL a další možnosti v souboru azuredeploy.json.
 
-![Scénář](./media/create-vmss-template/scenario.png)
+![Scénář](./media/application-gateway-create-gateway-arm-template/scenario.png)
 
 ## <a name="download-and-understand-the-azure-resource-manager-template"></a>Stažení a pochopení šablony Azure Resource Manageru
 
@@ -51,9 +43,9 @@ Z webu GitHub si můžete stáhnout existující šablonu Azure Resource Manager
 1. Přejděte do [vytvořit Application Gateway s firewallem webových aplikací povoleno](https://github.com/Azure/azure-quickstart-templates/tree/master/101-application-gateway-waf).
 1. Klikněte na **azuredeploy.json** a potom klikněte na **RAW**.
 1. Uložte soubor do místní složky v počítači.
-1. Pokud už šablony Azure Resource Manageru znáte, pokračujte krokem 7.
-1. Otevřete soubor, který jste uložili a prohlédněte si jeho obsah v části **parametry** řádku
-1. Parametry šablony Azure Resource Manageru představují zástupce hodnot, které můžete doplnit během nasazování.
+1. Pokud jste obeznámeni s šablonami Azure Resource Manageru, přejděte ke kroku 7.
+2. Otevřete soubor, který jste uložili a prohlédněte si jeho obsah v části **parametry** řádku
+3. Parametry šablony Azure Resource Manageru představují zástupce hodnot, které můžete doplnit během nasazování.
 
    | Parametr | Popis |
    | --- | --- |
@@ -70,7 +62,7 @@ Z webu GitHub si můžete stáhnout existující šablonu Azure Resource Manager
 
    * **type**. Typ prostředku vytvořeného šablonou. V takovém případě je typ `Microsoft.Network/applicationGateways`, který představuje službu application gateway.
    * **name**. Název prostředku. Všimněte si použití `[parameters('applicationGatewayName')]`, což znamená, že název doplníte jako vstup nebo doplněn souborem parametru během nasazení.
-   * **properties**. Seznam vlastností prostředku. Tato šablona používá při vytváření služby Application Gateway virtuální síť a veřejnou IP adresu. Syntaxi JSON a vlastností služby application gateway v šabloně najdete v tématu [Microsoft.Network/applicationGateways](/azure/templates/microsoft.network/applicationgateways).
+   * **properties**. Seznam vlastností prostředku. Tato šablona používá při vytváření služby Application Gateway virtuální síť a veřejnou IP adresu.
 
 1. Přejděte zpět do [ https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-waf/ ](https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-waf).
 1. Klikněte na tlačítko **azuredeploy-parameters.json**a potom klikněte na tlačítko **RAW**.
@@ -116,48 +108,50 @@ Z webu GitHub si můžete stáhnout existující šablonu Azure Resource Manager
      }
      ```
 
-1. Uložte soubor. Šablonu JSON a šablonu parametrů můžete otestovat pomocí online ověřovacích nástrojů JSON, jako je třeba [JSlint.com](https://www.jslint.com/).
+1. Uložte soubor. Můžete otestovat šablonu JSON a šablonu parametrů pomocí online ověřovacích nástrojů JSON, jako je [JSlint.com](https://www.jslint.com/).
 
-## <a name="deploy-the-azure-resource-manager-template-by-using-powershell"></a>Nasazení šablony Azure Resource Manageru pomocí prostředí PowerShell
+## <a name="deploy-the-azure-resource-manager-template-using-azure-powershell"></a>Nasazení šablony Azure Resource Manageru pomocí prostředí Azure PowerShell
 
-Pokud jste prostředí Azure PowerShell nikdy nepoužívali, navštivte: [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/overview) a postupujte podle pokynů k přihlášení do Azure a vyberte své předplatné.
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-1. Přihlaste se k prostředí PowerShell
+Pokud jste prostředí Azure PowerShell nikdy nepoužívali, přečtěte si: [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/overview) a postupujte podle pokynů k přihlášení do Azure a vyberte své předplatné.
 
-    ```powershell
-    Login-AzAccount
+1. Připojení k Azure
+
+    ```azurepowershell
+    Connect-AzAccount
     ```
 
 1. Zkontrolujte předplatná pro příslušný účet.
 
-    ```powershell
+    ```azurepowershell
     Get-AzSubscription
     ```
 
-    Zobrazí se výzva k ověření pomocí přihlašovacích údajů.
+    Budete vyzváni k ověření pomocí přihlašovacích údajů.
 
 1. Zvolte předplatné Azure, které chcete použít.
 
-    ```powershell
+    ```azurepowershell
     Select-AzSubscription -Subscriptionid "GUID of subscription"
     ```
 
-1. Pokud je to potřeba, vytvořte pomocí rutiny **New-AzureResourceGroup** skupinu prostředků. V následujícím příkladu vytvoříte skupinu prostředků s názvem AppgatewayRG v umístění Východní USA.
+1. V případě potřeby vytvořte skupinu prostředků pomocí **New-AzureResourceGroup** rutiny. V následujícím příkladu vytvoříte skupinu prostředků s názvem AppgatewayRG v umístění Východní USA.
 
-    ```powershell
+    ```azurepowershell
     New-AzResourceGroup -Name AppgatewayRG -Location "West US"
     ```
 
 1. Spustit **New-AzResourceGroupDeployment** rutiny nasadíte novou virtuální síť pomocí šablony a parametrů soubory, které jste stáhli a upravili.
     
-    ```powershell
+    ```azurepowershell
     New-AzResourceGroupDeployment -Name TestAppgatewayDeployment -ResourceGroupName AppgatewayRG `
     -TemplateFile C:\ARM\azuredeploy.json -TemplateParameterFile C:\ARM\azuredeploy-parameters.json
     ```
 
-## <a name="deploy-the-azure-resource-manager-template-by-using-the-azure-cli"></a>Nasazení šablony Azure Resource Manageru pomocí rozhraní příkazového řádku Azure
+## <a name="deploy-the-azure-resource-manager-template-using-the-azure-cli"></a>Nasazení šablony Azure Resource Manageru pomocí rozhraní příkazového řádku Azure
 
-K nasazení šablony Azure Resource Manageru, který jste stáhli, pomocí Azure CLI, postupujte podle následujících kroků:
+K nasazení šablony Azure Resource Manageru, kterou jste stáhli, pomocí Azure CLI, postupujte podle následujících kroků:
 
 1. Pokud jste rozhraní příkazového řádku Azure nikdy nepoužívali, přejděte na téma [Instalace a konfigurace rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli) a postupujte podle pokynů až do chvíle, kdy můžete vybrat svůj účet a předplatné Azure.
 
@@ -177,7 +171,7 @@ K nasazení šablony Azure Resource Manageru, který jste stáhli, pomocí Azure
     az group deployment create --resource-group appgatewayRG --name TestAppgatewayDeployment --template-file azuredeploy.json --parameters @azuredeploy-parameters.json
     ```
 
-## <a name="deploy-the-azure-resource-manager-template-by-using-click-to-deploy"></a>Nasazení šablony Azure Resource Manageru pomocí metody Click to Deploy
+## <a name="deploy-the-azure-resource-manager-template-using-click-to-deploy"></a>Nasazení šablony Azure Resource Manageru pomocí, klikněte na tlačítko nasadit
 
 Metoda Click to Deploy je další způsob použití šablon Azure Resource Manageru. Je to snadný způsob, jak používat šablony na webu Azure Portal.
 
@@ -185,21 +179,22 @@ Metoda Click to Deploy je další způsob použití šablon Azure Resource Manag
 
 1. Klikněte na **Deploy to Azure** (Nasadit do Azure).
 
-    ![Nasazení do Azure](./media/create-vmss-template/deploytoazure.png)
+    ![Nasazení do Azure](./media/application-gateway-create-gateway-arm-template/deploytoazure.png)
     
 1. Zadejte na portálu parametry šablony nasazení a klikněte na **OK**.
 
-    ![Parametry](./media/create-vmss-template/ibiza1.png)
+    ![Parametry](./media/application-gateway-create-gateway-arm-template/ibiza1.png)
     
 1. Vyberte **vyjadřuji souhlas s podmínkami a ujednáními uvedenými nahoře** a klikněte na tlačítko **nákupní**.
 
-1. V okně Vlastní nasazení klikněte na **Vytvořit**.
+1. Na stránce vlastní nasazení klikněte na tlačítko **vytvořit**.
 
 ## <a name="providing-certificate-data-to-resource-manager-templates"></a>Poskytuje data certifikátu do šablon Resource Manageru
 
 Při použití protokolu SSL s šablonou, certifikát se musí být zadané ve řetězec ve formátu base64 místo v průběhu nahrávání. K převodu PFX nebo CER na řetězec ve formátu base64 použijte jednu z následujících příkazů. Následující příkazy převést na řetězec ve formátu base64, který je možné poskytnout šablonu certifikátu. Očekávaný výstup je řetězec, který mohou být uložené v proměnné a vložení v šabloně.
 
 ### <a name="macos"></a>macOS
+
 ```bash
 cert=$( base64 <certificate path and name>.pfx )
 echo $cert
@@ -214,9 +209,9 @@ echo $cert
 
 Pokud chcete odstranit všechny prostředky vytvořené v tomto článku, proveďte jeden z následujících kroků:
 
-### <a name="powershell"></a>PowerShell
+### <a name="azure-powershell"></a>Azure PowerShell
 
-```powershell
+```azurepowershell
 Remove-AzResourceGroup -Name appgatewayRG
 ```
 
@@ -228,12 +223,11 @@ az group delete --name appgatewayRG
 
 ## <a name="next-steps"></a>Další postup
 
-Pokud chcete konfigurovat přesměrování zpracování SSL, navštivte: [Konfigurace aplikační brány pro přesměrování zpracování SSL](tutorial-ssl-cli.md).
+Pokud chcete konfigurovat přesměrování zpracování SSL, najdete v článku: [Konfigurace aplikační brány pro přesměrování zpracování SSL](application-gateway-ssl.md).
 
-Pokud chcete provést konfiguraci aplikační brány pro použití s službě interní služby load balancer, navštivte: [Vytvoření služby application gateway se interní nástroj pro vyrovnávání zatížení (ILB)](redirect-internal-site-cli.md).
+Pokud chcete provést konfiguraci aplikační brány pro použití s službě interní služby load balancer, naleznete v tématu: [Vytvoření služby application gateway se interní nástroj pro vyrovnávání zatížení (ILB)](application-gateway-ilb.md).
 
-Pokud chcete získat další informace o obecných možnostech vyrovnávání zatížení, přečtěte si článek:
+Pokud chcete další informace o obecných možnostech vyrovnávání zatížení, přečtěte si část:
 
 * [Nástroj pro vyrovnávání zatížení Azure](https://azure.microsoft.com/documentation/services/load-balancer/)
 * [Azure Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
-

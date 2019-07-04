@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 03/23/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: d96e69fb526cff633c78e9ac8a1679762014cd4b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 14de5283197778464993b80b312a690662e066ab
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67133663"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443742"
 ---
 Azure Storage nabízí několik typů účtů úložiště. Každý typ podporuje různé funkce a má vlastní cenový model. Než vytvoříte účet úložiště a určit typ účtu, který je nejvhodnější pro vaše aplikace, zvažte následující rozdíly. Typy účtů úložiště jsou:
 
 - **Účty pro obecné účely v2**: Typ účtu storage úrovně Basic pro objekty BLOB, soubory, fronty a tabulky. Doporučujeme pro většinu scénářů použití služby Azure Storage.
 - **Účty pro obecné účely v1**: Typ starší verze účtu pro objekty BLOB, soubory, fronty a tabulky. Místo toho použijte účty pro obecné účely v2, pokud je to možné.
 - **Blokovat účty úložiště blob**: Účty úložiště pouze objektů BLOB s charakteristikami výkonu premium. Doporučuje pro scénáře s vysokou transakce plateb, použití menší objektů nebo vyžadování úložiště konzistentně s nízkou latencí.
-- **Úložiště souborů (preview) účty úložiště**: Účty úložiště pouze soubory s charakteristikami výkonu premium. Doporučuje se pro organizace nebo škálování aplikace s vysokým výkonem.
+- **Účty úložiště pro úložiště souborů**: Účty úložiště pouze soubory s charakteristikami výkonu premium. Doporučuje se pro organizace nebo škálování aplikace s vysokým výkonem.
 - **Účty BLOB storage**: Účty úložiště pouze objektů BLOB. Místo toho použijte účty pro obecné účely v2, pokud je to možné.
 
 Následující tabulka popisuje typy účtů úložiště a jejich funkce:
@@ -30,7 +30,7 @@ Následující tabulka popisuje typy účtů úložiště a jejich funkce:
 | Pro obecné účely V2   | Objekt BLOB, soubor, fronty, tabulky a Disk       | Standard, Premium<div role="complementary" aria-labelledby="premium-performance"><sup>5</sup></div> | Horká, studená, archivní<div role="complementary" aria-labelledby="archive"><sup>3</sup></div> | LRS, GRS, RA-GRS, ZRS<div role="complementary" aria-labelledby="zone-redundant-storage"><sup>4</sup></div> | Resource Manager             | Šifrované              |
 | Pro obecné účely V1   | Objekt BLOB, soubor, fronty, tabulky a Disk       | Standard, Premium<div role="complementary" aria-labelledby="premium-performance"><sup>5</sup></div> | neuvedeno                            | LRS, GRS, RA-GRS                  | Resource Manager, Classic    | Šifrované              |
 | Úložiště objektů blob bloku   | Objekt BLOB (objekty BLOB bloku a doplňovacích objektů BLOB jenom) | Premium                       | neuvedeno                            | LRS                               | Resource Manager             | Šifrované              |
-| Úložiště souborů (preview)   | Pouze pro soubory | Premium                       | neuvedeno                            | LRS                               | Resource Manager             | Šifrované              |
+| FileStorage   | Pouze pro soubory | Premium                       | neuvedeno                            | LRS                               | Resource Manager             | Šifrované              |
 | Blob Storage         | Objekt BLOB (objekty BLOB bloku a doplňovacích objektů BLOB jenom) | Standard                      | Horká, studená, archivní<div role="complementary" aria-labelledby="archive"><sup>3</sup></div> | LRS, GRS, RA-GRS                  | Resource Manager             | Šifrované              |
 
 <div id="deployment-model"><sup>1</sup>doporučuje se použít model nasazení Azure Resource Manageru. Účty úložiště pomocí modelu nasazení classic je možné vytvořit i nadále v některých umístěních, a nadále podporovat existující klasické účty. Další informace najdete v tématu <a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model">Azure Resource Manageru a klasického nasazení: Vysvětlení modelů nasazení a stavu prostředků</a>.</div>

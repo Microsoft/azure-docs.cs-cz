@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: shlo
-ms.openlocfilehash: e96e462709ab0c715c831bd10c628869d5c617fe
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 722d77bf27e3cd7eb921b09e0a1d4732a5b5f874
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60319116"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67514410"
 ---
 # <a name="alert-and-monitor-data-factories-using-azure-monitor"></a>Výstrahy a monitorování datové továrny pomocí Azure monitoru
 Cloudové aplikace jsou složité s řadu pohyblivých částí. Monitorování poskytuje data k zajištění, že systém zůstane vaší aplikace v provozu a spuštěná v dobrém stavu. Také pomáhá stave vypnout potenciální problémy a řešení potíží s poslední těch, které jsou. Kromě toho můžete data monitorování získat podrobný přehled o vaší aplikaci. Tyto znalosti můžete dozvíte, jak zlepšit výkon aplikace nebo udržovatelnosti nebo automatizaci akcí, které by jinak vyžadují ruční zásah.
@@ -387,7 +387,7 @@ ADFV2 generuje následující metriky
 
 | **Metrika**           | **Metriky zobrazovaný název**         | **Jednotka** | **Typ agregace** | **Popis**                                       |
 |----------------------|---------------------------------|----------|----------------------|-------------------------------------------------------|
-| PipelineSucceededRun | Úspěšné metriky spuštění kanálu | Počet    | Celkem                | Celkový počet kanálů úspěšných běhů v rámci minut časového období |
+| PipelineSucceededRuns | Úspěšné metriky spuštění kanálu | Počet    | Celkem                | Celkový počet kanálů úspěšných běhů v rámci minut časového období |
 | PipelineFailedRuns   | Se nezdařilo metrika spuštění kanálu    | Počet    | Celkem                | Celkový počet kanálů neúspěšných běhů v rámci minut časového období    |
 | ActivitySucceededRuns | Úspěšné běhy metriky aktivity | Počet    | Celkem                | Spuštění bylo úspěšné. Celkový počet aktivit v rámci minut časového období  |
 | ActivityFailedRuns   | Metriky aktivity spuštění se nezdařilo    | Počet    | Celkem                | Celková aktivita neúspěšných běhů v rámci minut časového období     |
