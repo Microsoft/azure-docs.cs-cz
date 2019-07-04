@@ -63,6 +63,10 @@
               href: google-federation.md
             - name: Ověřování jednorázovým heslem
               href: one-time-passcode.md
+            - name: Přímá federace
+              href: direct-federation.md
+            - name: Příklad přímé federace s využitím AD FS
+              href: direct-federation-adfs.md
             - name: Povolení nebo blokování pozvánek
               href: allow-deny-list.md
             - name: Přidání uživatelů B2B bez pozvánky

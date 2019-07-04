@@ -124,6 +124,8 @@
         - name: Řešení potíží s runbooky
           href: troubleshoot/runbooks.md
           displayName: troubleshoot
+        - name: Spuštění/zastavení virtuálních počítačů
+          href: troubleshoot/start-stop-vm.md
 - name: Update Management
   items:
     - name: Přehled Update Managementu
@@ -313,6 +315,8 @@
   items:
     - name: Předávání dat úloh Azure Automation do Log Analytics
       href: automation-manage-send-joblogs-log-analytics.md
+    - name: Podporované oblasti pro mapování pracovního prostoru Log Analytics
+      href: how-to/region-mappings.md
 - name: Migrace
   items:
     - name: Migrace z Orchestratoru

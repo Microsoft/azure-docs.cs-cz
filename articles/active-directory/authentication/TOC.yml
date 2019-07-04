@@ -144,6 +144,8 @@
               href: active-directory-certificate-based-authentication-ios.md
     - name: Vytváření sestav
       items:
+        - name: Přehledy a využití
+          href: howto-authentication-methods-usage-insights.md
         - name: Sestavy SSPR
           href: howto-sspr-reporting.md
         - name: Sestavy MFA

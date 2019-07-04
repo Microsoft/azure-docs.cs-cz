@@ -8,6 +8,8 @@
       href: sql-database-paas-vs-sql-server-iaas.md
     - name: "Poznámky k\_verzi"
       href: sql-database-release-notes.md
+    - name: Aktualizace migrace IP brány
+      href: sql-database-gateway-migration.md
 - name: Šablony Rychlý start
   expanded: true
   items:
