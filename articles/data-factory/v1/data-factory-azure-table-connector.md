@@ -537,8 +537,8 @@ Zadané mapování typu z Azure Table OData typu na typ .NET, byste definovali v
 
 | Název sloupce | Type |
 | --- | --- |
-| ID uživatele |Edm.Int64 |
-| jméno |Edm.String |
+| userid |Edm.Int64 |
+| name |Edm.String |
 | lastlogindate |Edm.DateTime |
 
 Dále definujte datová sada tabulky Azure následujícím způsobem. Nemusíte určit oddílu "struktura" s informací o typu, protože informace o typu je už zadaná v úložišti podkladová data.
