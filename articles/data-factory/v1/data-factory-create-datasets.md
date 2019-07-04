@@ -195,7 +195,7 @@ Všechny sloupce struktury obsahují následující vlastnosti:
 | --- | --- | --- |
 | name |Název sloupce. |Ano |
 | type |Datový typ sloupce.  |Ne |
-| culture verze |. NET jazykovou verzi na základě používané pro typ je typ .NET: `Datetime` nebo `Datetimeoffset`. Výchozí formát je `en-us`. |Ne |
+| culture |. NET jazykovou verzi na základě používané pro typ je typ .NET: `Datetime` nebo `Datetimeoffset`. Výchozí formát je `en-us`. |Ne |
 | format |Formátovací řetězec se použije, když typ je typ .NET: `Datetime` nebo `Datetimeoffset`. |Ne |
 
 Podle následujících pokynů můžete určit, kdy se mají zahrnout informace o struktuře a co mají být zahrnuty **struktura** oddílu.
