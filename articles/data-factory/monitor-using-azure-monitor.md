@@ -387,12 +387,12 @@ ADFV2 generuje následující metriky
 
 | **Metrika**           | **Metriky zobrazovaný název**         | **Jednotka** | **Typ agregace** | **Popis**                                       |
 |----------------------|---------------------------------|----------|----------------------|-------------------------------------------------------|
-| PipelineSucceededRuns | Úspěšné metriky spuštění kanálu | Počet    | Celkem                | Celkový počet kanálů úspěšných běhů v rámci minut časového období |
-| PipelineFailedRuns   | Se nezdařilo metrika spuštění kanálu    | Počet    | Celkem                | Celkový počet kanálů neúspěšných běhů v rámci minut časového období    |
-| ActivitySucceededRuns | Úspěšné běhy metriky aktivity | Počet    | Celkem                | Spuštění bylo úspěšné. Celkový počet aktivit v rámci minut časového období  |
-| ActivityFailedRuns   | Metriky aktivity spuštění se nezdařilo    | Počet    | Celkem                | Celková aktivita neúspěšných běhů v rámci minut časového období     |
-| TriggerSucceededRuns | Aktivační událost metriky spuštění bylo úspěšné  | Počet    | Celkem                | Celkový počet aktivační událost spouští v rámci minut časového období bylo úspěšné.   |
-| TriggerFailedRuns    | Se nezdařilo metrika spuštění aktivační události     | Počet    | Celkem                | Celkový počet aktivační událost spouští v rámci minut časového období se nezdařilo      |
+| PipelineSucceededRuns | Úspěšné metriky spuštění kanálu | Count    | Celkem                | Celkový počet kanálů úspěšných běhů v rámci minut časového období |
+| PipelineFailedRuns   | Se nezdařilo metrika spuštění kanálu    | Count    | Celkem                | Celkový počet kanálů neúspěšných běhů v rámci minut časového období    |
+| ActivitySucceededRuns | Úspěšné běhy metriky aktivity | Count    | Celkem                | Spuštění bylo úspěšné. Celkový počet aktivit v rámci minut časového období  |
+| ActivityFailedRuns   | Metriky aktivity spuštění se nezdařilo    | Count    | Celkem                | Celková aktivita neúspěšných běhů v rámci minut časového období     |
+| TriggerSucceededRuns | Aktivační událost metriky spuštění bylo úspěšné  | Count    | Celkem                | Celkový počet aktivační událost spouští v rámci minut časového období bylo úspěšné.   |
+| TriggerFailedRuns    | Se nezdařilo metrika spuštění aktivační události     | Count    | Celkem                | Celkový počet aktivační událost spouští v rámci minut časového období se nezdařilo      |
 
 Pro přístup k metriky, postupujte podle pokynů v článku – https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics
 
