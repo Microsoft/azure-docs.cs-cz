@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.workload: tbd
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: eb7cbb80be12498242363eb8141a468e08cba73a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 64995ad0560efd06bfa0084c948527e8a01e1890
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66478327"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443339"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights pro Azure cloud services
-[Application Insights] [ start] můžete monitorovat [aplikací Azure cloud service](https://azure.microsoft.com/services/cloud-services/) pro dostupnost, výkon, chyby a využití díky kombinování dat ze sady SDK služby Application Insights s [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) data z vašich cloudových služeb. Na základě zpětné vazby ohledně výkonu a efektivity vaší aplikace při běžném používání můžete informovaně rozhodovat o směrování návrhu v každé fázi vývoje.
+[Application Insights][start] můžete monitorovat [aplikací Azure cloud service](https://azure.microsoft.com/services/cloud-services/) pro dostupnost, výkon, chyby a využití díky kombinování dat ze sady SDK služby Application Insights s [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics)data z vašich cloudových služeb. Na základě zpětné vazby ohledně výkonu a efektivity vaší aplikace při běžném používání můžete informovaně rozhodovat o směrování návrhu v každé fázi vývoje.
 
 ![Řídicího panelu s přehledem](./media/cloudservices/overview-graphs.png)
 
@@ -80,7 +80,7 @@ Odesílání telemetrických dat do příslušných prostředků, můžete nasta
 
 Pokud jste se rozhodli vytvořit samostatný prostředek pro každou roli, a možná samostatnou sadu pro každou konfiguraci sestavení, je nejjednodušší vytvořit je všechny na portálu služby Application Insights. Pokud vytvoříte prostředků hodně, můžete [automatizaci procesu](../../azure-monitor/app/powershell.md).
 
-1. V [webu Azure portal][portal]vyberte **nový** > **vývojářské služby**  >   **Application Insights**.  
+1. V [webu Azure portal][portal]vyberte **nový** > **vývojářské služby** > **Application Insights**.  
 
     ![Podokno Application Insights](./media/cloudservices/01-new.png)
 
@@ -136,7 +136,38 @@ V sadě Visual Studio nakonfigurujte sadu SDK Application Insights pro každý p
 1. Nastavte *soubor ApplicationInsights.config* souboru se vždy kopíroval do výstupního adresáře.  
     Zpráva v *.config* souboru vás požádá, abyste umístili Instrumentační klíč existuje. Pro cloudové aplikace, je však lepší provést nastavení ze *.cscfg* souboru. Tento přístup zajišťuje, že role je správně identifikovat na portálu.
 
-#### <a name="run-and-publish-the-app"></a>Spuštění a publikování aplikace
+## <a name="set-up-status-monitor-to-collect-full-sql-queries-optional"></a>Nastavení monitorování stavu shromažďovat úplné dotazy SQL (volitelné)
+
+Tento krok je nutný pouze v případě potřebujete zachytit úplné dotazy SQL v rozhraní .NET Framework. 
+
+1. V `\*.csdef` souboru přidat [úloha po spuštění](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks) pro každou roli podobný 
+
+    ```xml
+    <Startup>
+      <Task commandLine="AppInsightsAgent\InstallAgent.bat" executionContext="elevated" taskType="simple">
+        <Environment>
+          <Variable name="ApplicationInsightsAgent.DownloadLink" value="http://go.microsoft.com/fwlink/?LinkID=522371" />
+          <Variable name="RoleEnvironment.IsEmulated">
+            <RoleInstanceValue xpath="/RoleEnvironment/Deployment/@emulated" />
+          </Variable>
+        </Environment>
+      </Task>
+    </Startup>
+    ```
+    
+2. Stáhněte si [InstallAgent.bat](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.bat) a [InstallAgent.ps1](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.ps1), umístí je do proměnné `AppInsightsAgent` složky na každou roli projektu. Nezapomeňte si zkopírovat do výstupního adresáře prostřednictvím vlastnosti souboru v sadě Visual Studio nebo skripty pro sestavení.
+
+3. Na všechny role pracovního procesu přidejte proměnné prostředí: 
+
+    ```xml
+      <Environment>
+        <Variable name="COR_ENABLE_PROFILING" value="1" />
+        <Variable name="COR_PROFILER" value="{324F817A-7420-4E6D-B3C1-143FBED6D855}" />
+        <Variable name="MicrosoftInstrumentationEngine_Host" value="{CA487940-57D2-10BF-11B2-A3AD5A13CBC0}" />
+      </Environment>
+    ```
+    
+## <a name="run-and-publish-the-app"></a>Spuštění a publikování aplikace
 
 1. Spusťte aplikaci a přihlaste se k Azure. 
 
@@ -146,10 +177,10 @@ V sadě Visual Studio nakonfigurujte sadu SDK Application Insights pro každý p
 1. Přidání další telemetrie (viz další části) a pak publikujte svou aplikaci můžete získat zpětnou za využití a Diagnostika. 
 
 Pokud nejsou žádná data, postupujte takto:
-1. Chcete-li zobrazit jednotlivé události, otevřete [hledání] [ diagnostic] dlaždici.
+1. Chcete-li zobrazit jednotlivé události, otevřete [hledání][diagnostic] dlaždici.
 1. V aplikaci otevřete různé stránky tak, aby vygenerování nějaké telemetrie.
 1. Počkejte několik sekund a potom klikněte na tlačítko **aktualizovat**.  
-    Další informace najdete v tématu [Poradce při potížích s][qna].
+    Další informace naleznete v tématu [Poradce při potížích][qna].
 
 ## <a name="view-azure-diagnostics-events"></a>Zobrazení událostí diagnostiky Azure
 Můžete najít [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) informace ve službě Application Insights v následujících umístěních:

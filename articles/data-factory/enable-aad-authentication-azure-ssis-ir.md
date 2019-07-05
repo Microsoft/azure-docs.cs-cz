@@ -12,12 +12,12 @@ ms.date: 5/14/2019
 author: swinarko
 ms.author: sawinark
 manager: craigg
-ms.openlocfilehash: a67436f09d6e28db8d19679e446ac4cf98383709
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f3d0aaee624bdba169f13313bb57a3ebe8075592
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65593795"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490057"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>Povolit ověřování Azure Active Directory pro prostředí Azure-SSIS Integration Runtime
 
@@ -146,17 +146,7 @@ Azure SQL Database Managed Instance podporuje vytvoření databáze pomocí spra
 
 ### <a name="configure-azure-ad-authentication-for-azure-sql-database-managed-instance"></a>Konfigurovat ověřování Azure AD pro Azure SQL Database Managed Instance
 
-1.   Na webu Azure portal, vyberte **všechny služby** -> **SQL servery** v levém navigačním panelu.
-
-2.   Vyberte spravované instanci nakonfigurovat s ověřováním Azure AD.
-
-3.   V **nastavení** části okna vyberte **správce Active Directory**.
-
-4.   Na panelu příkazů vyberte **nastavit správce**.
-
-5.   Vyberte uživatelský účet služby Azure AD provádí správce serveru a potom vyberte **vyberte**.
-
-6.   Na panelu příkazů vyberte **Uložit**.
+Postupujte podle kroků v [zřízení správce Azure Active Directory pro Managed Instance](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure#provision-an-azure-active-directory-administrator-for-your-managed-instance).
 
 ### <a name="add-the-managed-identity-for-your-adf-as-a-user-in-azure-sql-database-managed-instance"></a>Přidat spravovanou identitu pro vaši ADF jako uživatele v Azure SQL Database Managed Instance
 
@@ -164,7 +154,7 @@ Tento další krok, budete potřebovat [Microsoft SQL Server Management Studio]
 
 1.  Spusťte aplikaci SSMS.
 
-2.  Připojte k Managed Instance pomocí účtu správce SQL nebo služba Active Directory.
+2.  Připojit k Managed Instance pomocí účtu systému SQL Server, který je **sysadmin**. Jedná se o dočasné omezení, která bude odebrána po zavedení všeobecné dostupnosti bude objekty serveru Azure AD (přihlášení) pro Azure SQL Database Managed Instance Pokud se pokusíte vytvořit přihlášení pomocí účtu správce Azure AD se zobrazí následující chyba: Msg – 15247, Level 16, State 1 řádek 1 uživatel nemá oprávnění k provedení této akce.
 
 3.  V **Průzkumník objektů**, rozbalte **databází** -> **systémové databáze** složky.
 

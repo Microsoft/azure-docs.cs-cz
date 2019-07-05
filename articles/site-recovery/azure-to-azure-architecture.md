@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: raynew
-ms.openlocfilehash: 25cf3914274e73e0789aa87e9288649d1b0cb1eb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9f985260175e5f54a17799ef07b3a280f42b716e
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399578"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491885"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Architektura zotavení po havárii Azure do Azure
 
@@ -31,7 +31,7 @@ Součásti účastnící se zotavení po havárii pro virtuální počítače Az
 **Virtuální počítače ve zdrojové oblasti** | Jeden z virtuálních počítačů Azure v [podporované zdrojové oblasti](azure-to-azure-support-matrix.md#region-support).<br/><br/> Virtuální počítače může běžet jakýkoli [s podporovaným operačním systémem](azure-to-azure-support-matrix.md#replicated-machine-operating-systems).
 **Úložiště zdrojového virtuálního počítače** | Je možné spravovat virtuální počítače Azure, nebo mají nespravované disky rozprostřené mezi různými účty úložiště.<br/><br/>[Další informace o](azure-to-azure-support-matrix.md#replicated-machines---storage) podporované služby Azure storage.
 **Zdrojové sítě virtuálních počítačů** | Virtuální počítače lze umístit do jedné nebo několika podsítí ve virtuální síti (VNet) ve zdrojové oblasti. [Další informace](azure-to-azure-support-matrix.md#replicated-machines---networking) o požadavky na síť.
-**Účet úložiště mezipaměti** | Budete potřebovat účet úložiště mezipaměti ve zdrojové síti. Během replikace změny virtuálního počítače jsou uloženy v mezipaměti před odesláním do cílového úložiště.<br/><br/> Použití mezipaměti zajistí minimální dopad na produkční aplikace, které jsou spuštěny na virtuálním počítači.<br/><br/> [Další informace](azure-to-azure-support-matrix.md#cache-storage) o požadavcích na úložiště mezipaměti. 
+**Účet úložiště mezipaměti** | Budete potřebovat účet úložiště mezipaměti ve zdrojové síti. Během replikace změny virtuálního počítače jsou uloženy v mezipaměti před odesláním do cílového úložiště.  Účty úložiště mezipaměti musí být Standard.<br/><br/> Použití mezipaměti zajistí minimální dopad na produkční aplikace, které jsou spuštěny na virtuálním počítači.<br/><br/> [Další informace](azure-to-azure-support-matrix.md#cache-storage) o požadavcích na úložiště mezipaměti. 
 **Prostředky cíle** | Cílové prostředky se používají během replikace a dojde k selhání. Site Recovery můžete nastavit cílový prostředek ve výchozím nastavení, nebo můžete vytvořit a přizpůsobit je.<br/><br/> V cílové oblasti zkontrolujte, že budete moct vytvořit virtuální počítače a že vaše předplatné má dostatek prostředků pro podporu velikosti virtuálních počítačů, které se mají provést v cílové oblasti. 
 
 ![Zdroj a cíl replikace](./media/concepts-azure-to-azure-architecture/enable-replication-step-1.png)

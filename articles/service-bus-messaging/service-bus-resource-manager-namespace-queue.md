@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: spelluru
-ms.openlocfilehash: 2952c446e2d66505ebaec42eb82e37be02035483
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6d7e4253d37d5b50fc8c3de1c8c31636e59b2b9c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62111488"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444787"
 ---
 # <a name="create-a-service-bus-namespace-and-a-queue-using-an-azure-resource-manager-template"></a>Vytvoření oboru názvů služby Service Bus a fronty pomocí šablony Azure Resource Manageru
 
@@ -27,7 +27,7 @@ Tento článek ukazuje, jak použít šablonu Azure Resource Manageru, která vy
 
 Další informace o vytváření šablon najdete v tématu [šablon pro vytváření Azure Resource Manageru][Authoring Azure Resource Manager templates].
 
-Úplnou šablonu najdete v článku [šablony obor názvů a frontu služby Service Bus] [ Service Bus namespace and queue template] na Githubu.
+Úplnou šablonu najdete v článku [šablony obor názvů a frontu služby Service Bus][Service Bus namespace and queue template] na Githubu.
 
 > [!NOTE]
 > Následující šablony Azure Resource Manageru jsou k dispozici ke stažení a nasazení.
@@ -37,7 +37,7 @@ Další informace o vytváření šablon najdete v tématu [šablon pro vytvář
 > * [Vytvoření oboru názvů služby Service Bus](service-bus-resource-manager-namespace.md)
 > * [Vytvoření oboru názvů služby Service Bus s tématem, předplatné a pravidla](service-bus-resource-manager-namespace-topic-with-rule.md)
 > 
-> Vyhledat nejnovější šablony, najdete v tématu [šablony pro rychlý start Azure] [ Azure Quickstart Templates] galerie a vyhledejte **služby Service Bus**.
+> Vyhledat nejnovější šablony, najdete v tématu [šablony pro rychlý start Azure][Azure Quickstart Templates] galerie a vyhledejte **služby Service Bus**.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -137,7 +137,9 @@ azure group deployment create \<my-resource-group\> \<my-deployment-name\> --tem
 ```
 
 ## <a name="next-steps"></a>Další postup
-Teď, když jste vytvořili a nasadili prostředky pomocí Azure Resource Manageru, zjistěte, jak tyto zdroje spravovat pomocí těchto článků:
+Najdete v tématu, který ukazuje, jak vytvořit autorizační pravidlo oboru názvů/fronty: [Vytvořit pravidlo autorizace sběrnice pro obor názvů a frontu pomocí šablony Azure Resource Manageru](service-bus-resource-manager-namespace-auth-rule.md)
+
+Zjistěte, jak tyto zdroje spravovat pomocí těchto článků:
 
 * [Správa služby Service Bus pomocí PowerShellu](service-bus-manage-with-ps.md)
 * [Správa prostředků Service Bus pomocí Průzkumníka Service Bus](https://github.com/paolosalvatori/ServiceBusExplorer/releases)

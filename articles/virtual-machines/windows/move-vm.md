@@ -10,20 +10,18 @@ tags: azure-resource-manager
 ms.assetid: 4e383427-4aff-4bf3-a0f4-dbff5c6f0c81
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 07/03/2019
 ms.author: cynthn
-ms.openlocfilehash: ede2092be4e4eaf201e15307a7d9934ea267ae37
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d67f9e9ad99ccd6267de9dbb9fd0c64adb41f0cb
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61481509"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565562"
 ---
 # <a name="move-a-windows-vm-to-another-azure-subscription-or-resource-group"></a>Přesunout do jiného Azure předplatné nebo skupinu prostředků virtuálního počítače s Windows
-Tento článek vás provede postupy přesunout virtuální počítač s Windows (VM) mezi skupinami prostředků nebo předplatná. Přesun mezi předplatnými může být užitečné, pokud původně vytvořili virtuální počítač v rámci osobní předplatného a teď chcete přesunout do předplatného vaší společnosti chcete-li pokračovat v práci.
+Tento článek vás provede postupy přesunout virtuální počítač s Windows (VM) mezi skupinami prostředků nebo předplatná. Přesun mezi předplatnými může být užitečné, pokud původně vytvořili virtuální počítač v rámci osobní předplatného a teď chcete přesunout do předplatného vaší společnosti chcete-li pokračovat v práci. Není potřeba spusťte virtuální počítač, aby bylo možné přesunout a má pokračovat spuštění během přesunu.
 
 > [!IMPORTANT]
 >Nové ID prostředků vytvořených jako součást přesunu. Po přesunutí virtuálního počítače, je potřeba aktualizovat nástroje a skripty, které používaly nové ID prostředků. 
@@ -37,7 +35,7 @@ Tento článek vás provede postupy přesunout virtuální počítač s Windows 
 Chcete-li přesunout virtuální počítač do jiné skupiny prostředků, ujistěte se, že také přesunout všechny závislé prostředky. Chcete-li získat seznam s ID prostředku, každý z těchto prostředků, použijte [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource) rutiny.
 
 ```azurepowershell-interactive
- Get-AzResource -ResourceGroupName <sourceResourceGroupName> | Format-table -Property ResourceId 
+ Get-AzResource -ResourceGroupName <sourceResourceGroupName> | Format-list -wrap -Property ResourceId 
 ```
 
 Výstup předchozího příkazu, můžete použít jako čárkami oddělený seznam ID prostředku pro [přesunout AzResource](https://docs.microsoft.com/powershell/module/az.resources/move-azresource) přesunout do cílového umístění každého prostředku. 
