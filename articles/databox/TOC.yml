@@ -143,6 +143,14 @@
               items:
                 - name: Přes SMB
                   href: data-box-heavy-deploy-copy-data.md
+                - name: Přes NFS
+                  href: data-box-heavy-deploy-copy-data-via-nfs.md
+                - name: Přes REST
+                  href: data-box-heavy-deploy-copy-data-via-rest.md
+                - name: Prostřednictvím služby kopírování dat
+                  href: data-box-heavy-deploy-copy-data-via-copy-service.md
+                - name: Na spravované disky
+                  href: data-box-heavy-deploy-copy-data-from-vhds.md
             - name: '4 – Vrácení, odeslání, ověření'
               href: data-box-heavy-deploy-picked-up.md
         - name: Koncepty

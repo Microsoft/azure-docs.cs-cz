@@ -12,6 +12,6 @@ metadata:
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 03/19/2018
-  ms.author: 'rosh, v-gedod'
+  ms.author: rosh
 abstract:
   description: 'Rozhraní URL Preview API bingu získává stručné informace o cílové adrese URL, včetně popisu, příznaku isFamilyFriendly, reprezentativního obrázku a odkazu na stránku.'

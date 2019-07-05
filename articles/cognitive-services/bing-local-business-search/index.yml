@@ -13,7 +13,7 @@ metadata:
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 08/02/2018
-  ms.author: 'rosh, v-gedod'
+  ms.author: rosh
 abstract:
   description: 'Rozhraní API Bingu pro místní obchodní vyhledávání umožňuje vašim aplikacím vyhledávat kontakty a umístění pro místní podniky, a to na základě vyhledávacích dotazů.'
 sections:
