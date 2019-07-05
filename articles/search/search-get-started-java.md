@@ -1,6 +1,6 @@
 ---
-title: Začínáme s Azure Search v Javě – Azure Search
-description: Jak vytvořit hostovanou cloudovou vyhledávací aplikaci v Azure pomocí programovacího jazyka Java.
+title: 'Rychlý start pro Javu: Vytvoření, načtení a dotazování indexů Azure Search REST API – Azure Search pomocí'
+description: Vysvětluje, jak vytvořit index, načtení dat a spouštění dotazů pomocí Javy a rozhraní REST API Azure Search.
 services: search
 author: jj09
 manager: jlembicz
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.date: 08/26/2018
 ms.author: jjed
 ms.custom: seodec2018
-ms.openlocfilehash: d16f20e3c2dfa3d670006e44f0072a3871d41c3f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 83f41f248d99ce55daef40e168e5f7b175e08107
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61289716"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67450101"
 ---
-# <a name="get-started-with-azure-search-in-java"></a>Začínáme s Azure Search v Javě
+# <a name="quickstart-create-an-azure-search-index-in-java"></a>Rychlý start: Vytvoření indexu Azure Search v Javě
 > [!div class="op_single_selector"]
 > * [Azure Portal](search-get-started-portal.md)
 > * [.NET](search-howto-dotnet-sdk.md)
@@ -36,7 +36,7 @@ Pro vytvoření a testování tohoto příkladu jsme použili následující sof
 ## <a name="about-the-data"></a>Informace o datech
 Tato ukázková aplikace používá data agentury [United States Geological Services (USGS)](https://geonames.usgs.gov/domestic/download_data.htm), která jsou filtrovaná pro stát Rhode Island, aby se zmenšila velikost datové sady. Pomocí těchto dat sestavíme vyhledávací aplikaci, která najde významné budovy, například nemocnice a školy, a geologické prvky, jako jsou vodní toky, jezera a vrcholy.
 
-Program **SearchServlet.java** v této aplikaci sestaví a načte index pomocí konstruktoru [Indexer](https://msdn.microsoft.com/library/azure/dn798918.aspx), přičemž načte filtrovanou sadu dat USGS z veřejné databáze Azure SQL Database. Předdefinované přihlašovací údaje a informace o připojení k online zdroji dat jsou uvedené v kódu programu. Z hlediska přístupu k datům není potřeba žádná další konfigurace.
+V této aplikaci **SearchServlet.java** program sestaví a načte index pomocí [Indexer](https://msdn.microsoft.com/library/azure/dn798918.aspx) konstrukce, načítání filtrovanou sadu dat USGS z Azure SQL Database. Předdefinované přihlašovací údaje a informace o připojení k online zdroji dat jsou uvedené v kódu programu. Z hlediska přístupu k datům není potřeba žádná další konfigurace.
 
 > [!NOTE]
 > U této sady dat jsme použili filtr, abychom dodrželi omezení 10 000 dokumentů pro cenovou úroveň Free. Pokud používáte úroveň Standard, toto omezení se na vás nevztahuje a můžete upravit tento kód, aby používal větší datovou sadu. Podrobnosti týkající se kapacity u jednotlivých cenových úrovní najdete v tématu [Omezení](search-limits-quotas-capacity.md).
@@ -51,15 +51,15 @@ Následující seznam popisuje soubory, které se vztahují k tomuto příkladu.
 * SearchServiceClient.java: Zpracovává požadavky HTTP
 * SearchServiceHelper.java: Pomocná třída, která poskytuje statické metody
 * Document.Java: Poskytuje datový model.
-* config.properties: Nastaví hledání služby adresy URL a klíč api-key
+* config.properties: Nastaví adresu URL služby Search a `api-key`
 * pom.xml: Závislost Maven
 
 <a id="sub-2"></a>
 
-## <a name="find-the-service-name-and-api-key-of-your-azure-search-service"></a>Nalezení názvu služby a klíče API služby Azure Search
-Všechna volání rozhraní API REST služby Azure Search vyžadují, abyste zadali adresu URL služby a klíč api-key. 
+## <a name="find-the-service-name-and-api-key-of-your-azure-search-service"></a>Vyhledání názvu služby a `api-key` vaší služby Azure Search
+Všechna volání rozhraní REST API do Azure Search vyžadují, abyste zadali adresu URL služby a `api-key`. 
 
-1. Přihlaste se k [Portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Na panelu odkazů klikněte na **Služba Search** a zobrazte výpis všech služeb Azure Search zřízených pro předplatné.
 3. Vyberte službu, kterou chcete použít.
 4. Na řídicím panelu služby uvidíte dlaždice se základními informacemi a ikonu klíče pro přístup ke klíčům správce.
@@ -84,10 +84,10 @@ Všechny následné úpravy souborů a spouštěné příkazy se budou provádě
 3. Klikněte na **Dokončit**.
 4. Pomocí **Prohlížeče projektu** můžete zobrazit a upravit soubory. Pokud ještě není otevřený, klikněte na **Okno** > **Zobrazit zobrazení** > **Prohlížeč projektu** nebo ho otevřete pomocí klávesové zkratky.
 
-## <a name="configure-the-service-url-and-api-key"></a>Konfigurace adresy URL služby a klíče api-key
-1. V **Prohlížeči projektu**, dvakrát klikněte na soubor **config.properties**, abyste upravili nastavení konfigurace obsahující název serveru a klíč api-key.
-2. Podívejte se na postup uvedený dříve v tomto článku, kde jste našli adresu URL služby a klíč api-key v [webu Azure Portal](https://portal.azure.com), abyste získali hodnoty, které nyní zadáte do souboru **config.properties**.
-3. V souboru **config.properties** nahraďte položku „Api Key“ klíčem api-key pro vaši službu. Další, název služby (první komponenta adresy URL https://servicename.search.windows.net) nahradí "service name" ve stejném souboru.
+## <a name="configure-the-service-url-and-api-key"></a>Nakonfigurujte adresu URL služby a `api-key`
+1. V **Project Exploreru**, dvakrát klikněte na panel **config.properties** upravit nastavení konfigurace, který obsahuje název serveru a `api-key`.
+2. Otestovat podle kroků výše v tomto článku, kde jste našli adresu URL služby a `api-key` v [webu Azure portal](https://portal.azure.com), abyste získali hodnoty, které nyní zadáte do **config.properties**.
+3. V **config.properties**, nahraďte "API Key" `api-key` pro vaši službu. Další, název služby (první komponenta adresy URL https://servicename.search.windows.net) nahradí "service name" ve stejném souboru.
    
     ![][5]
 

@@ -12,16 +12,18 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 03/07/2019
 ms.author: brahmnes
-ms.openlocfilehash: ac937ddb1bcaed6813a0de4d631f820eff01e26f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0c6ff8696775c0631a173bc44f7d8c67174ad19e
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60783496"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444486"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-service-fabric-cloud-service-and-virtual-machines"></a>Povolit Snapshot Debugger pro aplikace .NET v Azure Service Fabric, cloudové služby a virtuální počítače
 
-Pokud technologie ASP.NET nebo ASP.NET core běhu aplikace ve službě Azure App Service, lze použít také podle následujících pokynů. Pokud vaše aplikace vyžaduje přizpůsobenému konfiguračnímu Snapshot Debugger, důrazně doporučujeme k [povolit prostřednictvím stránky portálu služby Application Insights Snapshot Debugger](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json). Pokud vaše aplikace běží v Azure Service Fabric, cloudové služby, virtuální počítače, nebo místní počítače, postupujte podle následujících pokynů by měla sloužit. 
+Pokud technologie ASP.NET nebo ASP.NET core běhu aplikace ve službě Azure App Service, důrazně doporučujeme k [povolit prostřednictvím stránky portálu služby Application Insights Snapshot Debugger](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json). Nicméně pokud vaše aplikace vyžaduje přizpůsobenému konfiguračnímu Snapshot Debugger nebo předběžnou verzi .NET core, pak tento pokyn byste měli dodržet, ***kromě*** k pokynům pro [povolení prostřednictvím na stránce portálu služby Application Insights](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json).
+
+Pokud vaše aplikace běží v Azure Service Fabric, cloudové služby, virtuální počítače, nebo místní počítače, postupujte podle následujících pokynů by měla sloužit. 
     
 ## <a name="configure-snapshot-collection-for-aspnet-applications"></a>Konfigurace shromažďování snímků pro aplikace ASP.NET
 
@@ -66,7 +68,7 @@ Pokud technologie ASP.NET nebo ASP.NET core běhu aplikace ve službě Azure App
 4. Snímky se shromažďují pouze na výjimky, které se hlásí do Application Insights. V některých případech (například starší verze platformy .NET), možná budete muset [Konfigurovat shromažďování výjimek](../../azure-monitor/app/asp-net-exceptions.md#exceptions) pro zobrazení výjimek pomocí snímků na portálu.
 
 
-## <a name="configure-snapshot-collection-for-aspnet-core-20-applications"></a>Konfigurace shromažďování snímků pro aplikace ASP.NET Core 2.0
+## <a name="configure-snapshot-collection-for-applications-using-aspnet-core-20-or-above"></a>Konfigurace shromažďování snímek dat aplikací pomocí ASP.NET Core 2.0 nebo novější
 
 1. [Povolit Application Insights ve webové aplikaci ASP.NET Core](../../azure-monitor/app/asp-net-core.md), pokud jste to ještě neudělali.
 
@@ -76,52 +78,70 @@ Pokud technologie ASP.NET nebo ASP.NET core běhu aplikace ve službě Azure App
 2. Zahrnout [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) balíčku NuGet ve vaší aplikaci.
 
 3. Upravit svou aplikaci `Startup` třídy přidání a konfigurace procesoru telemetrie Snapshot Collector.
+    1. Pokud [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet verze 1.3.5 balíčku nebo vyšší se používá a potom přidejte následující příkazy using do `Startup.cs`.
 
-    Přidejte následující příkazy using do `Startup.cs`
+       ```csharp
+            using Microsoft.ApplicationInsights.SnapshotCollector;
+       ```
 
-   ```csharp
-   using Microsoft.ApplicationInsights.SnapshotCollector;
-   using Microsoft.Extensions.Options;
-   using Microsoft.ApplicationInsights.AspNetCore;
-   using Microsoft.ApplicationInsights.Extensibility;
-   ```
+       Přidejte následující na konci metoda ConfigureServices `Startup` třídy v `Startup.cs`.
 
-   Přidejte následující `SnapshotCollectorTelemetryProcessorFactory` třídu `Startup` třídy.
+       ```csharp
+            services.AddSnapshotCollector((configuration) =>
+            {
+                IConfigurationSection section = Configuration.GetSection(nameof(SnapshotCollectorConfiguration));
+                if (section.Value != null)
+                {
+                    section.Bind(configuration);
+                }
+            });
 
-   ```csharp
-   class Startup
-   {
-       private class SnapshotCollectorTelemetryProcessorFactory : ITelemetryProcessorFactory
+       ```
+    2. Pokud [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet verze 1.3.4 balíčku nebo níže se používá a potom přidejte následující příkazy using do `Startup.cs`.
+
+       ```csharp
+       using Microsoft.ApplicationInsights.SnapshotCollector;
+       using Microsoft.Extensions.Options;
+       using Microsoft.ApplicationInsights.AspNetCore;
+       using Microsoft.ApplicationInsights.Extensibility;
+       ```
+    
+       Přidejte následující `SnapshotCollectorTelemetryProcessorFactory` třídu `Startup` třídy.
+    
+       ```csharp
+       class Startup
        {
-           private readonly IServiceProvider _serviceProvider;
-
-           public SnapshotCollectorTelemetryProcessorFactory(IServiceProvider serviceProvider) =>
-               _serviceProvider = serviceProvider;
-
-           public ITelemetryProcessor Create(ITelemetryProcessor next)
+           private class SnapshotCollectorTelemetryProcessorFactory : ITelemetryProcessorFactory
            {
-               var snapshotConfigurationOptions = _serviceProvider.GetService<IOptions<SnapshotCollectorConfiguration>>();
-               return new SnapshotCollectorTelemetryProcessor(next, configuration: snapshotConfigurationOptions.Value);
+               private readonly IServiceProvider _serviceProvider;
+    
+               public SnapshotCollectorTelemetryProcessorFactory(IServiceProvider serviceProvider) =>
+                   _serviceProvider = serviceProvider;
+    
+               public ITelemetryProcessor Create(ITelemetryProcessor next)
+               {
+                   var snapshotConfigurationOptions = _serviceProvider.GetService<IOptions<SnapshotCollectorConfiguration>>();
+                   return new SnapshotCollectorTelemetryProcessor(next, configuration: snapshotConfigurationOptions.Value);
+               }
+           }
+           ...
+        ```
+        Přidat `SnapshotCollectorConfiguration` a `SnapshotCollectorTelemetryProcessorFactory` služby pro spuštění kanálu:
+    
+        ```csharp
+           // This method gets called by the runtime. Use this method to add services to the container.
+           public void ConfigureServices(IServiceCollection services)
+           {
+               // Configure SnapshotCollector from application settings
+               services.Configure<SnapshotCollectorConfiguration>(Configuration.GetSection(nameof(SnapshotCollectorConfiguration)));
+    
+               // Add SnapshotCollector telemetry processor.
+               services.AddSingleton<ITelemetryProcessorFactory>(sp => new SnapshotCollectorTelemetryProcessorFactory(sp));
+    
+               // TODO: Add other services your application needs here.
            }
        }
-       ...
-    ```
-    Přidat `SnapshotCollectorConfiguration` a `SnapshotCollectorTelemetryProcessorFactory` služby pro spuštění kanálu:
-
-    ```csharp
-       // This method gets called by the runtime. Use this method to add services to the container.
-       public void ConfigureServices(IServiceCollection services)
-       {
-           // Configure SnapshotCollector from application settings
-           services.Configure<SnapshotCollectorConfiguration>(Configuration.GetSection(nameof(SnapshotCollectorConfiguration)));
-
-           // Add SnapshotCollector telemetry processor.
-           services.AddSingleton<ITelemetryProcessorFactory>(sp => new SnapshotCollectorTelemetryProcessorFactory(sp));
-
-           // TODO: Add other services your application needs here.
-       }
-   }
-   ```
+       ```
 
 4. V případě potřeby přizpůsobit konfiguraci Snapshot Debugger přidáním části SnapshotCollectorConfiguration do souboru appsettings.json. Všechna nastavení v konfiguraci Snapshot Debugger jsou volitelné. Tady je příklad ukazující konfiguraci ekvivalentní výchozí konfigurace:
 
@@ -172,5 +192,5 @@ Pokud technologie ASP.NET nebo ASP.NET core běhu aplikace ve službě Azure App
 ## <a name="next-steps"></a>Další postup
 
 - Generovat provozu do vaší aplikace, který může vyvolat výjimku. Vyčkejte 10 až 15 minut, než se snímky k odeslání do instance služby Application Insights.
-- Zobrazit [snímky](snapshot-debugger.md?toc=/azure/azure-monitor/toc.json) na webu Azure Portal.
-- Vám pomůžou při řešení potíží Profiler [řešení potíží s Snapshot Debugger](snapshot-debugger-troubleshoot.md?toc=/azure/azure-monitor/toc.json).
+- Zobrazit [snímky](snapshot-debugger.md?toc=/azure/azure-monitor/toc.json#view-snapshots-in-the-portal) na webu Azure Portal.
+- Vám pomůžou při řešení potíží Snapshot Debugger [řešení potíží s Snapshot Debugger](snapshot-debugger-troubleshoot.md?toc=/azure/azure-monitor/toc.json).

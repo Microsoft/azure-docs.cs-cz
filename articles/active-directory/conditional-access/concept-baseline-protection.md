@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39a591a335d022ef7b2b99fdec930ddf0496cd47
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 970fdaba1870097e253b51c70e523e399bc88dfc
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112590"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67440770"
 ---
 # <a name="what-are-baseline-policies"></a>Co jsou zásady na směrný plán?
 
@@ -30,18 +30,18 @@ Správa vlastních zásad podmíněného přístupu vyžaduje licenci Azure AD P
 
 Existují čtyři zásady standardních hodnot, které organizacím umožňují:
 
-* [Vyžadovat vícefaktorové ověřování pro správce](howto-baseline-protect-administrators.md)
+* [Vyžadovat vícefaktorové ověřování pro správce (preview)](howto-baseline-protect-administrators.md)
 * [Ochrana koncového uživatele (preview)](howto-baseline-protect-end-users.md)
 * [Blok starší verze ověřování (preview)](howto-baseline-protect-legacy-auth.md)
 * [Vyžadovat vícefaktorové ověřování pro službu správy (preview)](howto-baseline-protect-azure.md)
 
 Všechny čtyři tyto zásady ovlivní toky starší verze ověřování jako POP, IMAP a starší klienti Office klasické pracovní plochy.
 
-### <a name="require-mfa-for-admins"></a>Vyžadování MFA pro správce
+### <a name="require-mfa-for-admins-preview"></a>Vyžadovat vícefaktorové ověřování pro správce (preview)
 
 Kvůli výkonu a přístupu, které mají účty správců by měly zpracovávat s zvláštní pozornost. Je běžným způsobem zlepšit ochranu privilegovaných účtů tak, aby vyžadovala silnější formu ověření účtu, když se používají k přihlášení. Ve službě Azure Active Directory získáte silnější ověření účtu tak, že vyžaduje správcům zaregistrujte a použijte ověřování Azure Multi-Factor Authentication.
 
-[Vyžadovat vícefaktorové ověřování pro správce](howto-baseline-protect-administrators.md) je základní zásady, která vyžaduje vícefaktorové ověřování (MFA) pro následující role adresáře, považuje se nejvíce privilegované role Azure AD:
+[Vyžadovat vícefaktorové ověřování pro správce (preview)](howto-baseline-protect-administrators.md) je základní zásady, která vyžaduje vícefaktorové ověřování (MFA) pro následující role adresáře, považuje se nejvíce privilegované role Azure AD:
 
 * Globální správce
 * Správce SharePointu
@@ -52,7 +52,7 @@ Kvůli výkonu a přístupu, které mají účty správců by měly zpracovávat
 * Správce fakturace
 * Správce uživatelů
 
-Pokud má vaše organizace tyto účty používané v skripty a kód, zvažte nahrazení pomocí [spravovaných identit](../managed-identities-azure-resources/overview.md). Jako dočasné řešení můžete vyloučit konkrétní uživatelské účty z základní zásady.
+Pokud má vaše organizace tyto účty používané v skripty a kód, zvažte nahrazení pomocí [spravovaných identit](../managed-identities-azure-resources/overview.md).
 
 ### <a name="end-user-protection-preview"></a>Ochrana koncového uživatele (preview)
 
@@ -96,7 +96,7 @@ Další informace naleznete v tématu:
 
 * [Zabezpečení vaší infrastruktury identit v pěti krocích](../../security/azure-ad-secure-steps.md)
 * [Co je podmíněný přístup v Azure Active Directory?](overview.md)
-* [Vyžadovat vícefaktorové ověřování pro správce](howto-baseline-protect-administrators.md)
+* [Vyžadovat vícefaktorové ověřování pro správce (preview)](howto-baseline-protect-administrators.md)
 * [Ochrana koncového uživatele (preview)](howto-baseline-protect-end-users.md)
 * [Blok starší verze ověřování (preview)](howto-baseline-protect-legacy-auth.md)
 * [Vyžadovat vícefaktorové ověřování pro službu správy (preview)](howto-baseline-protect-azure.md)

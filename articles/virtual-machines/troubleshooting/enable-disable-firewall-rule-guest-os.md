@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: ed3d89bc15f960947a48ac4364bd14f3fdf50cc2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7a547efb7af69c58f8e04615d24dd7c230f0c8b0
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60505568"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444652"
 ---
 # <a name="enable-or-disable-a-firewall-rule-on-an-azure-vm-guest-os"></a>Povolit nebo zakázat pravidlo brány firewall na operační systém hosta virtuálního počítače Azure
 
@@ -99,7 +99,7 @@ Pokud virtuální počítač je v režimu online a je přístupný jinému virtu
 
 1.  Na virtuálním počítači řešení potíží spusťte Editor registru (regedit.exe) a pak vyberte **souboru** > **připojit síťový registr**.
 
-2.  Otevřít *cílový počítač*\SYSTEM větev a potom zadejte následující hodnoty:
+2.  Otevřít *cílový počítač*\SYSTEM větev a potom zadejte následující hodnoty:
 
     * Chcete-li povolit pravidlo, otevřete následující hodnotu registru:
     
@@ -123,26 +123,26 @@ Pokud virtuální počítač je v režimu online a je přístupný jinému virtu
 
 Pokud virtuální počítač nemá přístup k jakýmkoli způsobem, pomocí rozšíření vlastních skriptů se nezdaří a budete muset pracovat v OFFLINE režimu při práci přímo prostřednictvím systémový disk.
 
-Než budete postupovat podle těchto kroků, pořiďte snímek systémový disk ovlivněných virtuálních počítačů jako záložní. Další informace najdete v tématu [pořízení snímku disku](../windows/snapshot-copy-managed-disk.md).
+Než budete postupovat podle těchto kroků, pořiďte snímek systémový disk ovlivněných virtuálních počítačů jako záložní. Další informace najdete v tématu [pořízení snímku disku](../windows/snapshot-copy-managed-disk.md).
 
 1.  [Připojení disku systému pro virtuální počítač pro obnovení](troubleshoot-recovery-disks-portal-windows.md).
 
 2.  Spusťte připojení ke vzdálené ploše pro virtuální počítač pro obnovení.
 
-3.  Ujistěte se, že disk je označený jako **Online** v konzole Správa disků. Všimněte si, že písmeno jednotky, který je přiřazen k připojený systémový disk.
+3.  Ujistěte se, že disk je označený jako **Online** v konzole Správa disků. Všimněte si, že písmeno jednotky, který je přiřazen k připojený systémový disk.
 
 4.  Než provedete jakékoli úpravy, vytvořte kopii složky \windows\system32\config v případě, že je nutné vrátit zpět změny.
 
 5.  Na virtuálním počítači řešení potíží spusťte Editor registru (regedit.exe).
 
-6.  Zvýrazněte **HKEY_LOCAL_MACHINE** klíče a pak vyberte **souboru** > **načíst Hive** z nabídky.
+6.  Zvýrazněte **HKEY_LOCAL_MACHINE** klíče a pak vyberte **souboru** > **načíst Hive** z nabídky.
 
     ![Příkaz regedit](./media/enable-or-disable-firewall-rule-guest-os/load-registry-hive.png)
 
 7.  Vyhledejte a pak otevřete soubor \windows\system32\config\SYSTEM. 
 
     > [!Note]
-    > Zobrazí se výzva k zadání jména. Zadejte **BROKENSYSTEM**a potom rozbalte **HKEY_LOCAL_MACHINE**. Nyní uvidíte Další klíč, který je pojmenován **BROKENSYSTEM**. Pro toto řešení potíží, jsme se připojení tyto podregistrů problému jako **BROKENSYSTEM**.
+    > Zobrazí se výzva k zadání jména. Zadejte **BROKENSYSTEM**a potom rozbalte **HKEY_LOCAL_MACHINE**. Nyní uvidíte Další klíč, který je pojmenován **BROKENSYSTEM**. Pro toto řešení potíží, jsme se připojení tyto podregistrů problému jako **BROKENSYSTEM**.
 
 8.  Proveďte následující změny ve větvi BROKENSYSTEM:
 
@@ -164,7 +164,7 @@ Než budete postupovat podle těchto kroků, pořiďte snímek systémový disk 
         
         **v2.22 | Akce = Povolit | Aktivní = FALSE | Příkaz dir = In | Protokol = 6 | Profil domény = | Profil = Private | Profil = Public | LPort = 3389 | App=%SystemRoot%\System32\svchost.exe| SVC = inicializace | Název =\@FirewallAPI.dll-28775 | Desc =\@FirewallAPI.dll-28756 | EmbedCtxt =\@FirewallAPI.dll-28752 |**
 
-9.  Zvýrazněte **BROKENSYSTEM**a pak vyberte **souboru** > **Uvolnit podregistr** z nabídky.
+9.  Zvýrazněte **BROKENSYSTEM**a pak vyberte **souboru** > **Uvolnit podregistr** z nabídky.
 
 10. [Odpojení disku a znovu vytvořte virtuální počítač](troubleshoot-recovery-disks-portal-windows.md).
 

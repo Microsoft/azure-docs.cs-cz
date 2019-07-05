@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 06/25/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: b9562a1686c4de4f4e2ef57a7d91bbf18dce63ef
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 7e40af9b2362ee52a1d00f29cdc112d3c2b9a842
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447602"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565851"
 ---
 # <a name="what-is-a-qna-maker-knowledge-base"></a>Co je znalostní bázi nástroje QnA Maker?
 
@@ -40,7 +40,7 @@ Pole metadat se skládá z dvojice klíč hodnota oddělené dvojtečkou **(prod
 
 ## <a name="how-qna-maker-processes-a-user-query-to-select-the-best-answer"></a>Jak QnA Maker zpracovává uživatelské dotaz pro výběr nejlepší odpověď
 
-Trénovaného a [publikované](/quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) QnA Maker znalostní báze obdrží dotaz uživatele, robota nebo jiné klientské aplikace na [GenerateAnswer API](/how-to/metadata-generateanswer-usage.md#get-answer-predictions-with-the-generateanswer-api). Následující obrázek znázorňuje proces, při přijetí uživatelský dotaz.
+Trénovaného a [publikované](/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base#publish-the-knowledge-base) QnA Maker znalostní báze obdrží dotaz uživatele, robota nebo jiné klientské aplikace na [GenerateAnswer API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage). Následující obrázek znázorňuje proces, při přijetí uživatelský dotaz.
 
 ![Proces hodnocení pro uživatelský dotaz](../media/qnamaker-concepts-knowledgebase/rank-user-query-first-with-azure-search-then-with-qna-maker.png)
 
@@ -48,7 +48,7 @@ Proces je vysvětleno v následující tabulce:
 
 |Krok|Účel|
 |--|--|
-|1|Klientská aplikace odešle dotaz na uživatele [GenerateAnswer API](/how-to/metadata-generateanswer-usage.md#get-answer-predictions-with-the-generateanswer-api).|
+|1|Klientská aplikace odešle dotaz na uživatele [GenerateAnswer API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage).|
 |2|Nástroj QnA Maker předzpracování uživatelský dotaz se rozpoznávání jazyka, spellers a moduly pro dělení na slova.|
 |3|Tato předzpracování se používá ke změně uživatelský dotaz pro nejlepší výsledky hledání.|
 |4|Tento upravený dotaz odeslán do indexu Azure Search, přijetí `top` počet výsledků. Pokud správnou odpověď není v těchto výsledky, zvyšte hodnotu `top` mírně. Obecně hodnotu 10 pro `top` funguje v 90 % z dotazů.|

@@ -5,18 +5,18 @@ services: iot-edge
 author: shizn
 manager: philmea
 ms.author: xshi
-ms.date: 05/27/2019
+ms.date: 07/01/2019
 ms.topic: article
 ms.service: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 4014827366afc492d73757a0ac5e1acb64262c51
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 953a549a44d224f9d196c6d6842bdcae04cca975
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66474782"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485917"
 ---
-# <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge-preview"></a>Visual Studio 2019 využívat k vývoji a ladění modulů Azure IoT Edge (Preview)
+# <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>Visual Studio 2019 využívat k vývoji a ladění modulů Azure IoT Edge
 
 Obchodní logiky můžete proměnit moduly pro Azure IoT Edge. V tomto článku se dozvíte, jak používat Visual Studio 2019 jako hlavní nástroje k vývoji a ladění modulů.
 
@@ -40,10 +40,10 @@ Vzhledem k tomu tento článek používá Visual Studio 2019 jako hlavní vývoj
 
 Jakmile vaše aplikace Visual Studio 2019 je připravený, budete potřebovat následující komponenty a nástrojů:
 
-- Stáhněte a nainstalujte [nástroje Azure IoT Edge (Preview)](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) ze sady Visual Studio marketplace pro vytvoření projektu IoT Edge v aplikaci Visual Studio 2019.
+- Stáhněte a nainstalujte [nástroje Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) ze sady Visual Studio marketplace pro vytvoření projektu IoT Edge v aplikaci Visual Studio 2019.
 
 > [!TIP]
-> Pokud používáte Visual Studio 2017, plrease stáhněte a nainstalujte [nástroje Azure IoT Edge (Preview)](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) pro VS 2017 na Visual Studio Marketplace
+> Pokud používáte Visual Studio 2017, plrease stáhněte a nainstalujte [nástroje Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) pro VS 2017 na Visual Studio Marketplace
 
 - Stáhněte a nainstalujte [Docker Community Edition](https://docs.docker.com/install/) na vývojovém počítači sestavení a spuštění vaší bitové kopie modulu. Budete muset nastavit Docker CE pro spuštění v režimu kontejneru Linuxu nebo režimu kontejneru Windows.
 

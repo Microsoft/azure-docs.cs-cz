@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/19/2019
-ms.openlocfilehash: efa4cc070f47174634c8dc67b37f10bc3d112d08
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.date: 06/26/2019
+ms.openlocfilehash: 412ce3c5245f3f22bfb03740a0451670dc6a90a7
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67293211"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448109"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>Rozšíření PostgreSQL v Azure Database for PostgreSQL – jeden Server
 PostgreSQL poskytuje schopnost rozšiřovat funkce vaší databáze pomocí rozšíření. Rozšíření umožňují sdružování více souvisejících objektů SQL společně v jednom balíčku, který může načíst nebo odstranit z databáze pomocí jediného příkazu. Po načtení v databázi, můžou rozšíření fungovat stejně jako integrované funkce. Další informace o rozšíření PostgreSQL, naleznete v tématu [balení souvisejících objektů do rozšíření](https://www.postgresql.org/docs/9.6/static/extend-extensions.html).
@@ -48,7 +48,7 @@ Následující tabulky uvádí standardní PostgreSQL rozšíření, které jsou
 > | [pg\_partman](https://pgxn.org/dist/pg_partman/doc/pg_partman.html) | Spravuje dělené tabulky podle času nebo ID. |
 > | [pg\_trgm](https://www.postgresql.org/docs/9.6/static/pgtrgm.html) | Poskytuje funkce a operátory pro určení podobnost na základě porovnání trigram alfanumerické text. |
 > | [tablefunc](https://www.postgresql.org/docs/9.6/static/tablefunc.html) | Poskytuje funkce, které pracují s celé tabulky, včetně křížového. |
-> | [uuid-ossp](https://www.postgresql.org/docs/9.6/static/uuid-ossp.html) | Generuje univerzálně jedinečné identifikátory (UUID). |
+> | [uuid-ossp](https://www.postgresql.org/docs/9.6/static/uuid-ossp.html) | Generuje univerzálně jedinečné identifikátory (UUID). (Viz níže pro poznámky na toto rozšíření). |
 > | [orafce](https://github.com/orafce/orafce) | Obsahuje některé z funkcí a balíčků emulován z komerční databází. |
 
 ### <a name="full-text-search-extensions"></a>Fulltextové vyhledávání rozšíření
@@ -118,6 +118,10 @@ Je kompromis mezi informace o spuštění dotazu poskytuje pg_stat_statements a 
 dblink a postgres_fdw vám umožní připojit z jednoho serveru PostgreSQL do jiné nebo do jiné databáze na stejném serveru. Přijímající server je potřeba povolit připojení ze serveru pro odesílání prostřednictvím brány firewall. Při použití těchto rozšíření k připojení mezi – Azure Database for postgresql – servery, to můžete udělat tak, že nastavíte "Povolit přístup ke službám Azure" na ON. Pokud chcete, abyste použili rozšíření se ve smyčce zpět na stejný server je také potřeba. Nastavení "Povolit přístup ke službám Azure" najdete na stránce webu Azure portal pro Postgres server v části zabezpečení připojení. Zapnutí "Povolit přístup ke službám Azure" na seznamů povolených všechny IP adresy Azure.
 
 V současné době odchozí připojení ze služby Azure Database for PostgreSQL nejsou podporovány, s výjimkou připojení k jiné – Azure Database for postgresql – servery.
+
+## <a name="uuid"></a>Uuid
+Pokud máte v úmyslu použít `uuid_generate_v4()` z rozšíření uuid ossp, zvažte, výsledkem porovnání s `gen_random_uuid()` z rozšíření pgcrypto pro přinese zlepšení výkonu.
+
 
 ## <a name="timescaledb"></a>TimescaleDB
 TimescaleDB je databáze časových řad, která je zabalena jako rozšíření pro PostgreSQL. TimescaleDB poskytuje objektově orientovaný analytické funkce a optimalizace a škáluje Postgres časovou řadu úloh.

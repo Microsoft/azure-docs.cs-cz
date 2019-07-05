@@ -16,12 +16,12 @@ ms.author: ryanwi
 ms.reviewer: jlu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fe1517cce8a1f9b1024085340ffb927b282f0fb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1cb17109d53c6e08c8607959207e367086032f6d
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65540288"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482712"
 ---
 # <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>Postup: Opětovná aktivace zakázaných oborů názvů služby Access Control Service
 
@@ -90,7 +90,7 @@ Další rozšíření se už být automaticky schvalovat. Pokud budete potřebov
 
 ### <a name="to-request-an-extension"></a>Chcete-li požádat o prodloužení
 
-1. Připojte se k webu Azure portal a vytvoření [novou žádost o podporu](https://portal.azure.com/#create/Microsoft.Support).
+1. Přihlaste se k webu Azure portal a vytvoření [novou žádost o podporu](https://portal.azure.com/#create/Microsoft.Support).
 1. Vyplňte formulář nové žádosti o podporu, jak je znázorněno v následujícím příkladu.
 
     | Pole žádosti o podporu | Hodnota |
@@ -102,7 +102,7 @@ Další rozšíření se už být automaticky schvalovat. Pokud budete potřebov
     | **Typ problému** | `ACS to SAS Migration` |
     | **Předmět** | Popište problém |
 
-   ![Nová žádost o technickou podporu](./media/howto-reactivate-disabled-acs-namespaces/new-technical-support-request.png)
+   ![Ukazuje příklad novou žádost o technickou podporu](./media/howto-reactivate-disabled-acs-namespaces/new-technical-support-request.png)
 
 <!--
 

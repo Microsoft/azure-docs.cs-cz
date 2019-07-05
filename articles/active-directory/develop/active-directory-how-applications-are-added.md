@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: elisol, lenalepa
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b784cafce08634f1026a908e8ccdaaed41b62a42
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e1b92b174d48c710a763857951d66d00956fa0f9
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67111620"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67483076"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>Jak a proč se aplikace přidávají do služby Azure AD
 
@@ -79,8 +79,10 @@ Jako objekty aplikace je možné také vytvářet instanční objekty přes víc
 * Prostřednictvím kódu programu přes Azure AD Graph API nebo Powershellu
 
 ## <a name="how-are-application-objects-and-service-principals-related-to-each-other"></a>Jak jsou objekty aplikací a instanční objekty vzájemně souvisí?
+
 Aplikace obsahuje jeden objekt aplikace v jeho domovského adresáře, který odkazuje jeden nebo více instanční objekty v každém z adresáře, kde pracuje (včetně domovský adresář aplikace).
-![Diagram znázorňující, jak objekty aplikací a instanční objekty komunikovat s sebou a instancí služby Azure AD.][apps_service_principals_directory]
+
+![Ukazuje vztah mezi objekty aplikace a instanční objekty][apps_service_principals_directory]
 
 Na předchozím obrázku, společnost Microsoft spravuje dva adresáře interně (viz vlevo), používá k publikování aplikace:
 
@@ -96,6 +98,7 @@ Aplikace, které přidáte sami sebe (reprezentovány jako **aplikace (vaší)**
 * Aplikace, které jste publikovali pomocí proxy aplikací služby Azure AD
 
 ### <a name="notes-and-exceptions"></a>Poznámky a výjimky
+
 * Ne všechny instanční objekty odkazovat zpět do aplikační objekt. Když Azure AD byl původně sestaven poskytované služby k aplikace byly omezenější a instanční objekt služby byla dostatečná pro vytvoření identity aplikací. Původní instanční objekt se blíže v obrazci k účtu služby Windows Server Active Directory. Z tohoto důvodu je stále možné vytvořit instanční objekty prostřednictvím různé přístupy, například pomocí Azure AD PowerShell, dokud nevytvoříte objekt aplikace. Azure AD Graph API vyžaduje objekt aplikace před vytváření instančního objektu.
 * Ne všechny informace popsané výše je aktuálně přístupný prostřednictvím kódu programu. Následující jsou k dispozici pouze v uživatelském rozhraní:
   * Pravidla transformace deklarací identity
@@ -105,6 +108,7 @@ Aplikace, které přidáte sami sebe (reprezentovány jako **aplikace (vaší)**
   * [Instanční objekt služby](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#serviceprincipal-entity)
 
 ## <a name="why-do-applications-integrate-with-azure-ad"></a>Proč aplikace integrují s Azure AD?
+
 Aplikace se přidají do služby Azure AD využívat jeden nebo více služeb, které nabízí, včetně:
 
 * Aplikace ověřování a autorizace
@@ -116,6 +120,7 @@ Aplikace se přidají do služby Azure AD využívat jeden nebo více služeb, k
 * Publikování aplikací a proxy - publikovat aplikaci v privátní síti k Internetu
 
 ## <a name="who-has-permission-to-add-applications-to-my-azure-ad-instance"></a>Kdo má oprávnění k přidávání aplikací na Moje instance služby Azure AD?
+
 I když existují některé úkoly, jen globální správci můžou provádět (jako je přidání aplikací z Galerie aplikací a konfigurace aplikace pro použití Proxy aplikace) ve výchozím nastavení všichni uživatelé ve vašem adresáři mít práva pro registraci aplikace objekty, které jsou vývoj a podle vlastního uvážení prostřednictvím aplikace, které jsou sdílenou složku/poskytují přístup k datům jejich organizace prostřednictvím souhlasu. Pokud uživatel je první uživatel ve vašem adresáři se přihlásit k aplikaci a udělit souhlas, ve vašem tenantovi; který vytvoření instančního objektu jinak informace o udělení souhlasu se uloží na existující instanční objekt.
 
 Umožňuje uživatelům zaregistrovat se a souhlas s aplikací může zpočátku zvukové týkající se ale mějte na paměti následující:
@@ -132,10 +137,11 @@ Pokud stále chcete zabránit uživatelům ve vašem adresáři v registraci apl
 
 * Chcete uživatelům zabránit v vyjádření souhlasu s aplikací na jejich vlastní účet:
   1. Na webu Azure Portal, přejděte [uživatelská nastavení](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/) části podnikových aplikací.
-  2. Změna **uživatelé můžou udělit souhlas s aplikací, které přistupují k firemním datům jejich jménem** k **ne**. 
+  2. Změna **uživatelé můžou udělit souhlas s aplikací, které přistupují k firemním datům jejich jménem** k **ne**.
      
      > [!NOTE]
-     > Pokud se rozhodnete vypnout souhlas uživatele, bude správce muset vyjádřit souhlas s všechny nové aplikace, které uživatel potřebuje používat.    
+     > Pokud se rozhodnete vypnout souhlas uživatele, bude správce muset vyjádřit souhlas s všechny nové aplikace, které uživatel potřebuje používat.
+
 * Chcete-li uživatelé nemohli registrovat vlastní aplikace:
   1. Na webu Azure Portal, přejděte [uživatelská nastavení](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings) části Azure Active Directory
   2. Změna **uživatelé můžou registrovat aplikace** k **ne**.
@@ -145,4 +151,3 @@ Pokud stále chcete zabránit uživatelům ve vašem adresáři v registraci apl
 
 <!--Image references-->
 [apps_service_principals_directory]:../media/active-directory-how-applications-are-added/HowAppsAreAddedToAAD.jpg
-

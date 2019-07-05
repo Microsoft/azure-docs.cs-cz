@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 5/30/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: f4f10191ea28f73732f81eb9dc25321f82683652
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 796ae0e3be3a2e43d7f27d5932cdba0cf660f36b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66416994"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441911"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Vytvoření a Správa skupin akcí na webu Azure Portal
 ## <a name="overview"></a>Přehled ##
@@ -56,6 +56,8 @@ Informace o tom, jak nakonfigurovat skupiny akcí pomocí šablon Azure Resource
     b. **Typ akce**: Vyberte e-mailu/SMS nebo nabízená/hlasové, aplikace logiky, Webhooku, ITSM nebo Runbooku Automation.
 
     c. **Podrobnosti o**: Závislosti na typu akce, zadejte telefonní číslo, e-mailovou adresu, webhooku identifikátor URI, aplikace Azure, připojení ITSM nebo runbooku Automation. Akce ITSM, kromě určit **pracovní položku** a ostatní pole ITSM nástroj vyžaduje.
+    
+    d. **Společné schéma produktu výstrah**: Můžete povolit [společné schéma produktu výstrah](https://aka.ms/commonAlertSchemaDocs), která nabízí výhodu v podobě jediného rozšiřitelné a sjednocené výstrah datová část mezi všechny výstrahy služby ve službě Azure Monitor.
 
 1. Vyberte **OK** k vytvoření skupiny akcí.
 

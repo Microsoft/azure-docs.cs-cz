@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: tylerfox
-ms.openlocfilehash: a7e129f43b957b271c77f451ab198a9068bb0797
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f7c894bcb3183714a76578a6750c8e85493e3094
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64719001"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508070"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>Spravovat clustery systému Apache Hadoop v HDInsight pomocí Azure Powershellu
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
@@ -150,10 +150,6 @@ Je stejným způsobem jako HTTP udělení nebo odvolání přístupu. Pokud clus
 ## <a name="find-the-default-storage-account"></a>Najít výchozí účet úložiště
 Následující skript prostředí PowerShell ukazuje, jak získat výchozí název účtu úložiště a související informace:
 
-> [!IMPORTANT]  
-> Hodnoty pro `DefaultStorageAccount`, a `DefaultStorageContainer` nebudou zobrazeny z [Get-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightcluster) při [zabezpečený přenos](../storage/common/storage-require-secure-transfer.md) je povolená v účtu úložiště.
-
-
 ```powershell
 #Connect-AzAccount
 $clusterName = "<HDInsight Cluster Name>"
@@ -197,10 +193,6 @@ Zobrazit [spuštění příkladů MapReduce součástí HDInsight](hadoop/apache
 **Odesílat úlohy Apache Hive**
 
 Zobrazit [spouštění Apache dotazů Hive pomocí prostředí PowerShell](hadoop/apache-hadoop-use-hive-powershell.md).
-
-**Odesílat úlohy Apache Pig**
-
-Zobrazit [úloh spustit Apache Pig s využitím Powershellu](hadoop/apache-hadoop-use-pig-powershell.md).
 
 **Odesílat úlohy Apache Sqoop**
 

@@ -15,12 +15,12 @@ ms.date: 05/21/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cd5bbba681acaa0c32e681f7cb4809142fe11f9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b6f73d3bf5e502a758dd46561059c15a2970d9b6
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66113242"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67471833"
 ---
 # <a name="review-access-to-groups-or-applications-in-azure-ad-access-reviews"></a>Zkontrolovat přístup ke skupinám nebo aplikacím ve službě Azure AD kontroly přístupu
 
@@ -40,7 +40,7 @@ Prvním krokem k provádění kontroly přístupu je k vyhledání a otevření 
 
 1. Vyhledejte e-mailu od Microsoftu, která vás vyzve k kontrolovat přístup. Tady je příklad e-mailu ke kontrole přístupu pro skupinu.
 
-    ![Kontrola přístupu k e-mailu](./media/perform-access-review/access-review-email.png)
+    ![Příklad e-mailu od Microsoftu a kontrolovat přístup ke skupině](./media/perform-access-review/access-review-email.png)
 
 1. Klikněte na tlačítko **spuštění kontroly** odkaz k otevření kontroly přístupu.
 
@@ -48,7 +48,7 @@ Pokud nemáte k dispozici v e-mailu, zjistíte, že se čeká na přístup kontr
 
 1. Přihlaste se k portálu MyApps na [ https://myapps.microsoft.com ](https://myapps.microsoft.com).
 
-    ![Portálu MyApps](./media/perform-access-review/myapps-access-panel.png)
+    ![Seznam aplikací, které máte oprávnění k portálu MyApps](./media/perform-access-review/myapps-access-panel.png)
 
 1. V pravém horním rohu stránky klikněte na symbol uživatele. Zobrazí se vaše jméno a výchozí organizace. Pokud se zobrazí více než jedna organizace, vyberte organizaci, která požádala o kontrolu přístupu.
 
@@ -56,7 +56,7 @@ Pokud nemáte k dispozici v e-mailu, zjistíte, že se čeká na přístup kontr
 
     Pokud se dlaždice nezobrazí, pro danou organizaci není potřeba provést žádné kontroly přístupu a v tuto chvíli se nevyžaduje žádná akce.
 
-    ![Seznam kontrol přístupu](./media/perform-access-review/access-reviews-list.png)
+    ![Seznam kontrol přístupu pro aplikace a skupiny](./media/perform-access-review/access-reviews-list.png)
 
 1. Klikněte na tlačítko **začít kontrolu** odkaz pro kontroly přístupu, kterou chcete provést.
 
@@ -66,7 +66,7 @@ Po spuštění kontroly přístupu, zobrazí jména uživatelů, kteří potřeb
 
 Pokud požadavek má-li zkontrolovat svůj vlastní přístup, bude stránka vypadat jiný. Další informace najdete v tématu [zkontrolujte přístup skupinám nebo aplikacím](review-your-access.md).
 
-![Provádění kontroly přístupu](./media/perform-access-review/perform-access-review.png)
+![Kontrola otevřít přístupu seznam uživatelů, kteří potřebují ke kontrole](./media/perform-access-review/perform-access-review.png)
 
 Existují dva způsoby, jak můžete schválit nebo odepřít přístup:
 
@@ -81,7 +81,7 @@ Existují dva způsoby, jak můžete schválit nebo odepřít přístup:
 
 1. Klikněte na tlačítko **schválit** nebo **Odepřít**. Pokud si nejste jistí, můžete kliknout na **Nevím**. To povede uživatele zachování jejich přístup, ale výběr se projeví v protokolech auditování.
 
-    ![Provádění kontroly přístupu](./media/perform-access-review/approve-deny.png)
+    ![Okno Akce, které zahrnuje schválit, Deny a nevíte, možnosti](./media/perform-access-review/approve-deny.png)
 
 1. V případě potřeby zadejte důvod v **důvod** pole.
 
@@ -102,11 +102,11 @@ Chcete-li kontroly přístupu pro vás snadnější a rychlejší, poskytujeme t
 
 1. Na modrém panelu v dolní části stránky klikněte na tlačítko **přijmout doporučení**.
 
-    ![Přijmout doporučení](./media/perform-access-review/accept-recommendations.png)
+    ![Kontrola otevřít přístupu výpis zobrazující tlačítko přijmout doporučení](./media/perform-access-review/accept-recommendations.png)
 
     Zobrazí souhrn doporučené akce.
 
-    ![Přijmout doporučení souhrnu](./media/perform-access-review/accept-recommendations-summary.png)
+    ![Okno, které se zobrazí souhrn doporučené akce](./media/perform-access-review/accept-recommendations-summary.png)
 
 1. Klikněte na tlačítko **Ok** tak, aby přijímal doporučení.
 

@@ -4,7 +4,7 @@ description: Vysvětlení použití Twilio vazby s využitím Azure Functions.
 services: functions
 documentationcenter: na
 author: craigshoemaker
-manager: jeconnoc
+manager: gwallace
 keywords: Azure functions, funkce, zpracování událostí, dynamické výpočty, architektura bez serveru
 ms.service: azure-functions
 ms.devlang: multiple
@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 07/09/2018
 ms.author: cshoe
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cc6ca29af1866c5d26d3b73b26121451440c4dac
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c63b81e5461af5407d260651b79ec80e79fc9b4d
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64511806"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67479972"
 ---
 # <a name="twilio-binding-for-azure-functions"></a>Vazba Twilio pro službu Azure Functions
 

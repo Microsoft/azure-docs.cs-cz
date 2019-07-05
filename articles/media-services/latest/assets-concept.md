@@ -1,5 +1,5 @@
 ---
-title: Prostředky ve službě Media Services – Azure | Dokumentace Microsoftu
+title: Prostředky ve službě Azure Media Services | Dokumentace Microsoftu
 description: Tento článek obsahuje vysvětlení, co jsou prostředky, a jak se používají Azure Media Services.
 services: media-services
 documentationcenter: ''
@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/11/2019
+ms.date: 07/02/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 2afcf2066238414cd08e32901ffccf2a44718b6d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1bd9774cf045d9ed7f16a637fcb2eb1378b48686
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65551757"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565814"
 ---
 # <a name="assets"></a>Prostředky
 
@@ -87,9 +87,22 @@ curl -X PUT \
 
 Úplný příklad naleznete v tématu [vytvořit vstup úlohy z místního souboru](job-input-from-local-file-how-to.md). V Media Services v3, mohou být také vytvořeny vstupu úlohy z adres URL protokolu HTTPS (viz [vytvořit vstup úlohy z adresy URL HTTPS](job-input-from-http-how-to.md)).
 
-## <a name="filtering-ordering-paging"></a>Filtrování, řazení, stránkování
+## <a name="map-v3-asset-properties-to-v2"></a>Mapy – vlastnosti prostředku v3 v2
 
-Zobrazit [filtrování, řazení, stránkování, Media Services entit](entities-overview.md).
+Následující tabulka ukazuje jak [Asset](https://docs.microsoft.com/rest/api/media/assets/createorupdate#asset)na vlastnosti ve verzi 3 mapovat na vlastnosti prostředku ve verzi 2.
+
+|Vlastnosti v3|v2 – vlastnosti|
+|---|---|
+|ID – (jedinečný) úplnou cestu Azure Resource Manageru, viz příklady v [Asset](https://docs.microsoft.com/rest/api/media/assets/createorupdate)||
+|název – (jedinečný) najdete v článku [zásady vytváření názvů](media-services-apis-overview.md#naming-conventions) ||
+|alternateId|AlternateId|
+|assetId|ID – začíná (jedinečné) hodnoty `nb:cid:UUID:` předponu.|
+|Vytvoření|Vytvořeno|
+|description|Název|
+|lastModified|lastModified|
+|storageAccountName|název_účtu_úložiště|
+|storageEncryptionFormat| Možnosti – možnosti vytvoření|
+|type||
 
 ## <a name="storage-side-encryption"></a>Šifrování na straně úložiště
 
@@ -104,6 +117,10 @@ K ochraně vašich prostředků v klidovém stavu, prostředky by se měla šifr
 <sup>1</sup> při Media Services podporuje zpracování obsahu v nezašifrované podobě nebo bez jakéhokoli typu šifrování, učiníte tak se nedoporučuje.
 
 <sup>2</sup> v Media Services v3 šifrování úložiště (šifrování AES-256) je pouze podporována pro zpětné kompatibility při vaše prostředky se vytvořily pomocí Media Services v2. To znamená v3 spolupracuje s existující úložiště šifrované prostředky, ale nebude umožňovat vytváření nových.
+
+## <a name="filtering-ordering-paging"></a>Filtrování, řazení, stránkování
+
+Zobrazit [filtrování, řazení, stránkování, Media Services entit](entities-overview.md).
 
 ## <a name="next-steps"></a>Další postup
 

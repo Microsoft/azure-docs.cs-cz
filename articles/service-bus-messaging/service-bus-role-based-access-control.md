@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/19/2018
 ms.author: aschhab
-ms.openlocfilehash: e4571a8918b7877b728b54129e47ffcf4af9b46a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6f5390162ce56a0e77ef41740d7e88f3546c5530
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65979629"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444735"
 ---
 # <a name="active-directory-role-based-access-control-preview"></a>Aktivní Directory Role-Based řízení přístupu (preview)
 
@@ -33,12 +33,12 @@ Aplikace, která používá Azure AD RBAC není potřeba zpracovat pravidla SAS 
 
 Azure poskytuje níže uvedené vestavěné role RBAC pro autorizaci přístupu k oboru názvů služby Service Bus:
 
-* [Vlastník služby Service Bus dat (preview)](../role-based-access-control/built-in-roles.md#service-bus-data-owner): Umožňuje přístup k datům pro obor názvů služby Service Bus a jeho entit (fronty, témata, odběry a filtry)
+* [Vlastník dat služby Azure Service Bus (Preview)](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner-preview): Umožňuje přístup k datům pro obor názvů služby Service Bus a jeho entit (fronty, témata, odběry a filtry)
 
 >[!IMPORTANT]
 > Dříve podporován spravovanou identitu pro přidání **"Vlastník"** nebo **"Přispěvatel"** role.
 >
-> Nicméně oprávnění pro přístup k datům **"Vlastník"** a **"Přispěvatel"** role se už zachované. Pokud jste používali **"Vlastník"** nebo **"Přispěvatel"** role a ty pak bude muset být přizpůsobena využívat **"Vlastník dat služby Service Bus"** role.
+> Nicméně oprávnění pro přístup k datům **"Vlastník"** a **"Přispěvatel"** role se už zachované. Pokud jste používali **"Vlastník"** nebo **"Přispěvatel"** role a ty pak bude muset být přizpůsobena využívat **"Azure Service Bus vlastník dat (Preview)"** role.
 
 ## <a name="use-service-bus-with-an-azure-ad-domain-user-account"></a>Uživatelský účet domény Azure AD pomocí služby Service Bus
 

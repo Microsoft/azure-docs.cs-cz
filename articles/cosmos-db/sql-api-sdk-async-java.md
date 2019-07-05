@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 3/5/2019
+ms.date: 07/01/2019
 ms.author: moderakh
-ms.openlocfilehash: 356838f16f7f13506657326bae5dbe994d54bdd5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3cafa4d5aecaa4c8f3863c3269ec02793340e3e6
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "57570092"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509259"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB asynchronní Java SDK pro rozhraní SQL API: Zpráva k vydání verze a prostředky
 > [!div class="op_single_selector"]
@@ -43,6 +43,16 @@ SQL API asynchronní Java SDK se liší od sady Java SDK API SQL tím, že posky
 | **Minimální podporovaný modul runtime**|[JDK 8](https://aka.ms/azure-jdks) | 
 
 ## <a name="release-notes"></a>Poznámky k verzi
+
+### <a name="a-name250250"></a><a name="2.5.0"/>2.5.0
+* Režim TCP nyní na ve výchozím nastavení
+* Metriky více oddílů dotazu nyní vrací všechny oddíly
+* Silná globální teď funguje správně
+* Převzetí služeb při selhání pro dotazy opakování není správně pro více hlavních databází
+* Závislost hrboly pro opravy hotfix zabezpečení
+
+### <a name="a-name245245"></a><a name="2.4.5"/>2.4.5
+* Opravu pro podporu Hash V2
 
 ### <a name="a-name243243"></a><a name="2.4.3"/>2.4.3
 * Opravu pro nevrácení prostředků client#close() ([githubu #88](https://github.com/Azure/azure-cosmosdb-java/issues/88)).
@@ -148,20 +158,20 @@ Jakoukoli žádost do služby Cosmos DB pomocí vyřazeno sady SDK budou odmítn
 | --- | --- | --- |
 | [2.4.3](#2.4.3) |5\. března 2019|--- |
 | [2.4.2](#2.4.2) |1\. března 2019|--- |
-| [2.4.1](#2.4.1) |20\. února 2019|--- |
+| [2.4.1](#2.4.1) |20. února 2019|--- |
 | [2.4.0](#2.4.0) |8\. února 2019|--- |
 | [2.4.0-beta-1](#2.4.0-beta-1) |4\. února 2019|--- |
-| [2.3.1](#2.3.1) |15\. ledna 2019|--- |
-| [2.3.0](#2.3.0) |29\. listopadu 2018|--- |
+| [2.3.1](#2.3.1) |15. ledna 2019|--- |
+| [2.3.0](#2.3.0) |29. listopadu 2018|--- |
 | [2.2.2](#2.2.2) |8\. listopadu 2018|--- |
 | [2.2.1](#2.2.1) |2\. listopadu 2018|--- |
-| [2.2.0](#2.2.0) |22\. září 2018|--- |
+| [2.2.0](#2.2.0) |22. září 2018|--- |
 | [2.1.0](#2.1.0) |5\. září 2018|--- |
-| [2.0.1](#2.0.1) |16\. srpna 2018|--- |
-| [2.0.0](#2.0.0) |20\. června 2018|--- |
-| [1.0.2](#1.0.2) |18\. května 2018|--- |
-| [1.0.1](#1.0.1) |20\. dubna 2018|--- |
-| [1.0.0](#1.0.0) |27\. února 2018|--- |
+| [2.0.1](#2.0.1) |16. srpna 2018|--- |
+| [2.0.0](#2.0.0) |20. června 2018|--- |
+| [1.0.2](#1.0.2) |18. května 2018|--- |
+| [1.0.1](#1.0.1) |20. dubna 2018|--- |
+| [1.0.0](#1.0.0) |27. února 2018|--- |
 
 ## <a name="faq"></a>Nejčastější dotazy
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]

@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/20/2019
+ms.date: 07/01/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 717c0f110ebbeee53e2c9b9207350385288d57c3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 699707953ae06afa9cbf3cc7286f94917ba0efca
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65991382"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490115"
 ---
 # <a name="understand-and-work-with-scopes"></a>Vysvětlení a práce s rozsahy
 
@@ -100,19 +100,19 @@ Předplatná Azure jsou vnořené pod registračních účtů. Fakturace uživat
 
 Fakturace uživatelé nemají přístup ke skupinám pro správu, protože není explicitně spadají pod konkrétní fakturační účet. Musí být udělen přístup ke skupinám pro správu explicitně. Souhrnné náklady ze všech vnořených předplatná skupin pro správu. Nicméně pouze patří mezi ně nákupy na základě využití. Patří mezi ně nemusíte nákupy například rezervace a nabídky na webu Marketplace třetích stran. Chcete-li zobrazit tyto náklady, použijte fakturačnímu účtu EA.
 
-## <a name="individual-agreement-pay-as-you-go-scopes"></a>Obory jednotlivých smlouvy (průběžné platby)
+## <a name="individual-agreement-scopes"></a>Obory jednotlivých smlouvy
 
-Předplatná s průběžnými platbami (PAYG), včetně souvisejících typů, jako jsou bezplatné nebo zkušební a nabízí pro vývoj/testování, nemáte výslovného oboru fakturační účet. Místo toho každé předplatné má vlastník účtu nebo správce účtu, jako je vlastník účtu EA.
+Předplatná Azure vytvořená z jednotlivých nabídek, jako jsou typy s průběžnými platbami a související jako bezplatnou zkušební verzi a nabízí pro vývoj/testování, nemáte výslovného oboru fakturační účet. Místo toho každé předplatné má vlastník účtu nebo správce účtu, jako je vlastník účtu EA.
 
 - [**Fakturační účet** ](../billing/billing-view-all-accounts.md) – představuje jeden účet vlastníka pro jeden nebo více předplatných Azure. Je v současné době nepodporuje udělování přístupu k více lidí nebo přístup k zobrazení souhrnné náklady.
 
     Typ prostředku: Neuvedeno
 
-Správci účtu předplatného průběžné platby můžete zobrazit a spravovat fakturačních dat, jako je například faktury a platby, z [centra účtů Azure](https://account.azure.com/subscriptions). Nemůže však zobrazit datům služby cost nebo spravovat prostředky na webu Azure Portal. K udělení přístupu k účtu správce, používání rolí správy nákladů, již bylo zmíněno dříve.
+Správci účtu samostatného předplatného Azure můžete zobrazit a spravovat fakturačních dat, jako je například faktury a platby, z [centra účtů Azure](https://account.azure.com/subscriptions). Nemůže však zobrazit datům služby cost nebo spravovat prostředky na webu Azure Portal. K udělení přístupu k účtu správce, používání rolí správy nákladů, již bylo zmíněno dříve.
 
-Na rozdíl od EA můžete správci účtu předplatného PAYG zobrazit jejich faktury na webu Azure Portal. Uvědomte si, že náklady na správu Čtenář a Přispěvatel náklady na správu role neposkytují přístup k faktury. Další informace najdete v tématu [jak udělit přístup k průběžné platby faktury](../billing/billing-manage-access.md#give-access-to-billing).
+Na rozdíl od EA můžete předplatné Azure účtu správci uvidí jejich faktury na webu Azure Portal. Uvědomte si, že náklady na správu Čtenář a Přispěvatel náklady na správu role neposkytují přístup k faktury. Další informace najdete v tématu [jak udělit přístup na fakturách](../billing/billing-manage-access.md##give-read-only-access-to-billing).
 
-## <a name="customer-agreement-scopes"></a>Obory smlouvy zákazníka
+## <a name="microsoft-customer-agreement-scopes"></a>Obory smlouvy zákazníka se společností Microsoft
 
 Smlouvy zákazníka se společností Microsoft fakturační účty mají následující obory:
 
@@ -148,7 +148,7 @@ Partnery cloud Solution Provider (CSP) nejsou podporovány ve službě Cost Mana
 
 ## <a name="switch-between-scopes-in-cost-management"></a>Přepínání mezi obory ve službě Cost Management
 
-Zahrnout všechna zobrazení Cost Management na webu Azure Portal **oboru** obranné v levé horní části zobrazení. Můžete rychle změnit obor. Klikněte na tlačítko **oboru** obranné otevřete výběr oboru. Zobrazuje fakturační účty, skupiny pro správu kořenového a pokud je jakékoliv předplatné, které nejsou vnořené pod skupinu root management. Chcete-li vybrat rozsah, klikněte na pozadí požadovanou položku zvýrazněte a pak klikněte na tlačítko **vyberte** v dolní části. Přejít do vnořené obory, jako jsou skupiny prostředků v předplatném, klikněte na odkaz název oboru. Pokud chcete vybrat nadřazený obor na libovolné úrovni vnořené, klikněte na tlačítko **tuto možnost vyberte, &lt;oboru&gt;**  v horní části Výběr oboru.
+Zahrnout všechna zobrazení Cost Management na webu Azure Portal **oboru** obranné výběr v levé horní části zobrazení. Můžete rychle změnit obor. Klikněte na tlačítko **oboru** obranné otevřete výběr oboru. Zobrazuje fakturační účty, skupiny pro správu kořenového a pokud je jakékoliv předplatné, které nejsou vnořené pod skupinu root management. Chcete-li vybrat rozsah, klikněte na pozadí požadovanou položku zvýrazněte a pak klikněte na tlačítko **vyberte** v dolní části. Přejít do vnořené obory, jako jsou skupiny prostředků v předplatném, klikněte na odkaz název oboru. Pokud chcete vybrat nadřazený obor na libovolné úrovni vnořené, klikněte na tlačítko **tuto možnost vyberte, &lt;oboru&gt;**  v horní části Výběr oboru.
 
 ## <a name="identify-the-resource-id-for-a-scope"></a>Určení ID prostředku pro obor
 

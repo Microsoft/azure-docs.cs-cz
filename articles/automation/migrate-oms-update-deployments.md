@@ -4,17 +4,17 @@ description: Tento článek popisuje, jak migrovat vaše stávající nasazení 
 services: automation
 ms.service: automation
 ms.subservice: update-management
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 07/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4d11dfcb66a545cbecc80b6bdad558ca6d328ed2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2cc05dc0970211b066d9e431cc7aba06cbd126eb
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60499207"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67478310"
 ---
 # <a name="migrate-your-oms-update-deployments-to-azure"></a>Proveďte migraci vašich nasazení aktualizace OMS do Azure
 
@@ -57,9 +57,9 @@ Chcete-li vytvořit nové aktualizace nasazení, přejděte na portál Azure Por
 
 Pro počítače, které chcete aktualizovat, vyberte uložené výsledky hledání používá existující nasazení OMS.
 
-| Vlastnost | Popis |
+| Vlastnost | Description |
 | --- | --- |
-|Name |Jedinečný název pro identifikaci nasazení aktualizace. |
+|Název |Jedinečný název pro identifikaci nasazení aktualizace. |
 |Operační systém| Vyberte **Linux** nebo **Windows**.|
 |Počítače k aktualizaci |Vyberte uložená hledání, importované skupiny, nebo vybrat počítač z rozevíracího seznamu a vyberte jednotlivé počítače. Pokud zvolíte možnost **Počítače**, ve sloupci **PŘIPRAVENOST AGENTA AKTUALIZACE** se zobrazí připravenost počítačů.</br> Další informace o různých způsobech vytvoření skupiny počítačů v Azure Monitor protokolů, najdete v článku [skupiny počítačů v protokoly Azure monitoru](../azure-monitor/platform/computer-groups.md) |
 |Klasifikacích aktualizací|Vyberte všechny klasifikace aktualizací, které potřebujete. CentOS nepodporuje to úprav.|

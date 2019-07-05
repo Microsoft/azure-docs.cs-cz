@@ -2,29 +2,21 @@
 title: Řešení potíží s Enterprise State Roaming nastavení v Azure Active Directory | Dokumentace Microsoftu
 description: Poskytuje odpovědi na některé dotazy, které správce IT může mít informace o nastavení a synchronizace dat aplikace.
 services: active-directory
-keywords: Enterprise stavu cestovní nastavení cloudu systému windows, nejčastější dotazy k enterprise stav roamingu
-documentationcenter: ''
+ms.service: active-directory
+ms.subservice: devices
+ms.topic: troubleshooting
+ms.date: 06/28/2019
+ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-editor: ''
-ms.subservice: devices
-ms.assetid: f45d0515-99f7-42ad-94d8-307bc0d07be5
-ms.service: active-directory
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 10/25/2018
-ms.author: joflore
 ms.reviewer: tanning
-ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b74be0dda8e5c79987479393ad0d8ef5c3bdd16
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4cceae17b06e8b631dd530b0408008a8222bccbf
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67110672"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67481858"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Řešení potíží s Enterprise State Roaming nastavení v Azure Active Directory
 
@@ -70,12 +62,11 @@ Tato část poskytuje návrhy na řešení potíží a Diagnostikujte problémy 
 
 Enterprise State Roaming vyžaduje zařízení k registraci v Azure AD. I když nejsou specifické pro Enterprise State Roaming, postupujte podle pokynů níže může pomoct potvrdit, že klienta pro Windows 10 je zaregistrován a potvrdit stav kryptografický otisk, adresa URL nastavení služby Azure AD, NGC a další informace.
 
-1.  Otevřete příkazový řádek, který je pozastavené. Pokud chcete udělat ve Windows, otevřete Spouštěč spustit (Win + R) a zadejte "cmd" otevřete.
-2.  Jakmile příkazový řádek se otevře, zadejte " */status dsregcmd.exe*".
-3.  Pro očekávaný výstup **AzureAdJoined** pole hodnota by měla být "Ano", **WamDefaultSet** pole hodnota by měla být "Ano" a **WamDefaultGUID** pole hodnota by měla být identifikátor GUID s "(Azure AD)" na konci.
+1. Otevřete příkazový řádek, který je pozastavené. Pokud chcete udělat ve Windows, otevřete Spouštěč spustit (Win + R) a zadejte "cmd" otevřete.
+1. Jakmile příkazový řádek se otevře, zadejte " */status dsregcmd.exe*".
+1. Pro očekávaný výstup **AzureAdJoined** pole hodnota by měla být "Ano", **WamDefaultSet** pole hodnota by měla být "Ano" a **WamDefaultGUID** pole hodnota by měla být identifikátor GUID s "(Azure AD)" na konci.
 
 **Potenciální problém**: **WamDefaultSet** a **AzureAdJoined** "Ne" mají hodnoty pole, zařízení je připojené k doméně a registrované v Azure AD i ne synchronizaci zařízení. Pokud je to zobrazeno, zařízení mohou muset počkat, než zásady a použít nebo ověřování pro zařízení se nezdařila při připojování ke službě Azure AD. Uživatel může mít počkat několik hodin pro zásadu použít. Při řešení potíží může zahrnovat odhlásit a znovu v opakování pokusu o automatickou registraci, nebo spouštění úloh v Plánovači úloh. V některých případech se systémem "*dsregcmd.exe /leave*" v okně příkazového řádku se zvýšenými oprávněními, restartování a opakovaným pokusem o registraci může pomoct s tímto problémem.
-
 
 **Potenciální problém**: Pole pro **SettingsUrl** je prázdný a není synchronizovaná zařízení. Uživatel může mít naposledy přihlásil k zařízení než Enterprise State Roaming bylo povoleno na portálu Azure Active Directory. Restartujte zařízení a jste přihlášení uživatele. Volitelně můžete na portálu, zkuste s IT správce, přejděte na **Azure Active Directory** > **zařízení** > **Enterprise State Roaming** zakázat a znovu povolit **uživatelé můžou synchronizovat nastavení a data aplikací na zařízeních**. Jednou obnovená, restartujte zařízení a jste přihlášení uživatele. Pokud to problém nevyřeší **SettingsUrl** může být prázdný, v případě certifikát chybná zařízení. V takovém případě spuštění "*dsregcmd.exe /leave*" v okně příkazového řádku se zvýšenými oprávněními, restartování a opakovaným pokusem o registraci může pomoct s tímto problémem.
 

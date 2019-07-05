@@ -15,12 +15,12 @@ ms.date: 04/29/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78e4de5bbc56f95c0e903b1dac4e8481373716f3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0067bd6dc2f47c5460220295d486910d9195782d
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65143532"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476241"
 ---
 # <a name="create-an-access-review-of-azure-resource-roles-in-pim"></a>Vytvoření kontroly přístupu z role prostředků Azure v PIM
 
@@ -44,7 +44,7 @@ Tento článek popisuje, jak vytvořit jeden nebo více kontroly přístupu pro 
 
 1. V části Správa, klikněte na tlačítko **kontrol přístupu**.
 
-    ![Kontroly přístupu k prostředkům Azure –](./media/pim-resource-roles-start-access-review/access-reviews.png)
+    ![Prostředky Azure – kontroly seznamu, který ukazuje stav všech kontrol přístupu](./media/pim-resource-roles-start-access-review/access-reviews.png)
 
 
 [!INCLUDE [Privileged Identity Management access reviews](../../../includes/active-directory-privileged-identity-management-access-reviews.md)]
@@ -54,7 +54,7 @@ Tento článek popisuje, jak vytvořit jeden nebo více kontroly přístupu pro 
 
 Po zadání nastavení pro kontroly přístupu, klikněte na tlačítko **Start**. Kontroly přístupu se zobrazí v seznamu se indikátor stavu.
 
-![Seznam kontrol přístupu](./media/pim-resource-roles-start-access-review/access-reviews-list.png)
+![Kontroly seznamu, který ukazuje stav začít kontrolu přístupu](./media/pim-resource-roles-start-access-review/access-reviews-list.png)
 
 Ve výchozím nastavení Azure AD pošle e-mail revidující krátce po spuštění kontroly. Pokud se rozhodnete odeslat e-mailu se službou Azure AD, nezapomeňte informovat revidující, které čeká na všesměrově jejich dokončení kontroly přístupu. Je možné zobrazit pokyny k [kontrola přístupu pro role prostředků Azure](pim-resource-roles-perform-access-review.md).
 
@@ -62,7 +62,7 @@ Ve výchozím nastavení Azure AD pošle e-mail revidující krátce po spuště
 
 Průběh můžete sledovat, jak recenzenti dokončí své recenze **přehled** stránky kontroly přístupu. Žádné přístupová práva jsou změněny v adresáři, dokud [se kontrola dokončí](pim-resource-roles-complete-access-review.md).
 
-![Průběh kontroly přístupu](./media/pim-resource-roles-start-access-review/access-review-overview.png)
+![Stránka s přehledem zobrazení podrobností revize kontroly přístupu](./media/pim-resource-roles-start-access-review/access-review-overview.png)
 
 Pokud je to jednorázové kontroly, po období kontroly přístupu je nad nebo správce zastavení kontroly přístupu, postupujte podle pokynů v [dokončení kontroly přístupu z role prostředků Azure](pim-resource-roles-complete-access-review.md) chcete zobrazit a použít výsledky.  
 

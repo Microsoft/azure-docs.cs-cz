@@ -8,12 +8,12 @@ ms.date: 01/02/2019
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: cdffbfd11a0f1c7d99818fa00f550965774b9b31
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c32d9954b3c90a5f7e9c5475acdb141f7154cf76
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65190069"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67540354"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>O službě soubory Azure – nejčastější dotazy (FAQ)
 [Služba soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné prostřednictvím standardních průmyslových [zprávy bloku SMB (Server) protokol](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Sdílené složky Azure je možné připojit současně v cloudových i místních nasazení systémů Windows, Linux a macOS. Také můžete ukládat do mezipaměti sdílených složek Azure v počítačích s Windows serverem pomocí Azure File Sync pro rychlý přístup blízko, ve kterém jsou využívány.
@@ -73,10 +73,10 @@ Tento článek obsahuje odpovědi na běžné otázky o Azure Files funkce a fun
 
 * <a id="tier-options"></a>
   **Jaké úroveň úložiště jsou podporovány ve službě soubory Azure?**  
-    Soubory Azure v současné době podporuje pouze na úrovni standard storage. Časové osy pro sdílení pro storage úrovně premium a studeného úložiště podporují v tuto chvíli nemáme. 
+    Služba soubory Azure podporuje dvě úrovně úložiště: premium a standard. Standardní soubor se vytvoří sdílené složky obecně (GPv1 a GPv2) účtech úložiště a vytvoří se premium sdílených složek v účtech úložiště pro úložiště souborů. Další informace o tom, jak vytvořit [standardní sdílené složky](storage-how-to-create-file-share.md) a [premium sdílené složky](storage-how-to-create-premium-fileshare.md). 
     
     > [!NOTE]
-    > Nelze vytvořit sdílené složky Azure, z účtů úložiště pouze objektů blob nebo účty služby premium storage.
+    > Nelze vytvořit sdílené složky Azure v účtech Blob storage nebo *premium* účty úložiště (GPv1 a GPv2) obecné účely. Standardní sdílených složek Azure musí vytvořit v *standardní* účty musí být vytvořeny pouze a premium sdílených složek Azure v úložiště souborů pouze v účtech úložiště pro obecné účely. *Premium* jsou účty úložiště (GPv1 a GPv2) obecné účely pro objekty BLOB stránky úrovně premium pouze. 
 
 * <a id="give-us-feedback"></a>
   **Chci zobrazit konkrétní funkci přidali do služby soubory Azure. Můžete ho přidat?**  
@@ -356,8 +356,8 @@ Tento článek obsahuje odpovědi na běžné otázky o Azure Files funkce a fun
     Informace o škálovatelnost a výkonnostní cíle pro soubory Azure najdete v tématu [škálovatelnost a výkonnostní cíle Azure Files](storage-files-scale-targets.md).
 
 * <a id="need-larger-share"></a>
-**Potřebuji větší sdílení souborů než souborů Azure v současné době nabízí. Můžete zvýšit velikost Moje sdílené složky Azure?**  
-    Ne. Maximální velikost sdílené složky Azure je 5 TiB. V současné době je pevný limit, který jsme nelze upravit. Pracujeme na řešení, které zvýšit velikost sdílené složky na 100 TB, ale časové osy pro sdílení v tuto chvíli nemáme.
+**Jaké velikosti jsou k dispozici pro sdílené složky Azure?**  
+    Velikosti sdílené složky Azure file (premium a standard) můžete škálovat až 100 TB. Jsou k dispozici jako nabídka verze GA velikosti sdílené složky souborů Premium až 100 TB. Sdílené složky standardní soubor o velikosti až 5 TiB jsou k dispozici jako jako GA nabídka, zatímco o velikosti až 100 TB jsou ve verzi preview. Zobrazit [připojení k větší sdílené složky (úrovně standard)](storage-files-planning.md#onboard-to-larger-file-shares-standard-tier) části příručky plánování pro instrukce k onboardingu k souboru větší sdílí ve verzi preview pro úroveň standard.
 
 * <a id="open-handles-quota"></a>
 **Kolik klientů může souběžně přístup ke stejnému souboru?**    

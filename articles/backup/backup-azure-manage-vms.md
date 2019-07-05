@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: sogup
-ms.openlocfilehash: aa953440f03137f3359276bc9e06cb0c73f0ab4a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: add2c72535b5be0edcbc00c077dfe20a6deaa3e0
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61219086"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67434195"
 ---
 # <a name="manage-azure-vm-backups"></a>Správa záloh virtuálních počítačů Azure
 
@@ -103,25 +103,36 @@ Chcete-li sledovat průběh úlohy na řídicím panelu trezoru, vyberte **úloh
 
 Ochranu virtuálního počítače můžete zastavit dvěma způsoby:
 
-- Zastavit všechny budoucí úlohy zálohování a odstranit všechny body obnovení. V takovém případě nebudete schopni obnovit virtuální počítač.
-- Zastavit všechny budoucí úlohy zálohování a zachovat body obnovení. I když se budete muset zaplatit zachovat body obnovení v trezoru, budete moct v případě potřeby obnovte virtuální počítač. Další informace najdete v tématu [ceny služby Azure Backup](https://azure.microsoft.com/pricing/details/backup/).
+* **Zastavení ochrany a zachovat data záloh**. Tato možnost zastaví všechny budoucí úlohy zálohování z chránit svůj virtuální počítač; Služba Azure Backup se však zachovat body obnovení, které se mají zálohovat.  Budete muset zaplatit zachovat body obnovení v trezoru (viz [ceny služby Azure Backup](https://azure.microsoft.com/pricing/details/backup/) podrobnosti). Budete moct v případě potřeby obnovte virtuální počítač. Pokud se rozhodnete pokračovat v ochraně virtuálního počítače, pak můžete použít *obnovit zálohu* možnost.
+* **Zastavení ochrany a odstraňte zálohovaná data**. Tato možnost zastaví všechny budoucí úlohy zálohování z chránit svůj virtuální počítač a odstranit všechny body obnovení. Nebude možné virtuální počítač obnovit ani použít *obnovit zálohu* možnost.
 
 >[!NOTE]
 >Při odstranění zdroje dat bez zastavení zálohování, se nezdaří nových záloh. Podle zásad vyprší platnost starých bodů obnovení, ale jeden poslední bod obnovení bude vždy zachovaná, dokud Zastavit zálohování a odstraňte data.
 >
 
-Zastavení ochrany pro virtuální počítač:
+### <a name="stop-protection-and-retain-backup-data"></a>Zastavení ochrany a zachovat data záloh
+
+Zastavení ochrany a zachovat data virtuálního počítače:
 
 1. Na [položky řídícím panelu trezoru](#view-vms-on-the-dashboard)vyberte **Zastavit zálohování**.
-2. Zvolte, jestli se má uchovat nebo odstranit data zálohy a potvrďte výběr podle potřeby. Pokud chcete přidáte komentář. Pokud si nejste jisti názvem položky, najeďte myší vykřičník, abyste zobrazili jméno.
+2. Zvolte **zachovat zálohovaná Data**a potvrďte výběr podle potřeby. Pokud chcete přidáte komentář. Pokud si nejste jisti názvem položky, najeďte myší vykřičník, abyste zobrazili jméno.
 
-    ![Zastavení ochrany](./media/backup-azure-manage-vms/retain-or-delete-option.png)
+    ![Zachovat zálohování – uložená data](./media/backup-azure-manage-vms/retain-backup-data.png)
 
-     Oznámení vám umožňuje vědět, že byly zastaveny úlohy zálohování.
+Oznámení vám umožňuje vědět, že byly zastaveny úlohy zálohování.
+
+### <a name="stop-protection-and-delete-backup-data"></a>Zastavení ochrany a odstranění zálohovaných dat
+
+K zastavení ochrany a odstranění dat virtuálního počítače:
+
+1. Na [položky řídícím panelu trezoru](#view-vms-on-the-dashboard)vyberte **Zastavit zálohování**.
+2. Zvolte **odstranit zálohovaná Data**a potvrďte výběr podle potřeby. Zadejte název zálohované položky a v případě potřeby přidat komentář.
+
+    ![Odstranění zálohovaných dat](./media/backup-azure-manage-vms/delete-backup-data1.png)
 
 ## <a name="resume-protection-of-a-vm"></a>Pokračovat v ochraně virtuálního počítače
 
-Pokud při zastavení virtuálního počítače se zachovat zálohovaná data, můžete později obnovit ochranu. Při odstranění zálohovaných dat, nelze obnovit ochranu.
+Pokud jste vybrali [zastavení ochrany a zachovat data záloh](#stop-protection-and-retain-backup-data) možnost při zastavení ochrany virtuálního počítače, můžete použít **obnovit zálohu**. Tato možnost není k dispozici, pokud se rozhodnete [zastavení ochrany a odstraňte zálohovaná data](#stop-protection-and-delete-backup-data) možnost nebo [odstranit data zálohy](#delete-backup-data).
 
 Pokud chcete obnovit ochranu pro virtuální počítač:
 
@@ -134,23 +145,25 @@ Pokud chcete obnovit ochranu pro virtuální počítač:
 
 ## <a name="delete-backup-data"></a>Odstranění zálohovaných dat
 
-Můžete odstranit zálohovaná data Virtuálního počítače během **Zastavit zálohování** úlohy nebo po dokončení úlohy zálohování. Než odstraníte data záloh, mějte tyto podrobnosti:
+Existují dva způsoby, jak odstranit data zálohy Virtuálního počítače:
 
-- Může být vhodné čekat dny nebo týdny před odstraněním bodů obnovení.
-- Na rozdíl od procesu pro obnovování bodů obnovení, při odstranit data zálohy, nelze zvolit konkrétní body obnovení odstranit. Pokud jste odstranit zálohovaná data, odstraníte všechny body obnovení přidružené.
+- Z řídicího panelu trezoru položky, vyberte Zastavit zálohování a postupujte podle pokynů pro [zastavení ochrany a odstraňte zálohovaná data](#stop-protection-and-delete-backup-data) možnost.
 
-Po zastavení nebo zakázání úloha zálohování Virtuálního počítače, můžete odstranit zálohovaná data:
+  ![Vyberte Zastavit zálohování](./media/backup-azure-manage-vms/stop-backup-buttom.png)
 
+- Z řídicího panelu trezoru položky vyberte možnost odstranit zálohovaná data. Tato možnost je povolená, pokud jste vybrali k [zastavení ochrany a zachovat data záloh](#stop-protection-and-retain-backup-data) možnost při zastavení ochrany virtuálního počítače
 
-1. Na [řídicího panelu trezoru položky](#view-vms-on-the-dashboard)vyberte **odstranit data zálohy**.
+  ![Vybrat zálohu, která Delete](./media/backup-azure-manage-vms/delete-backup-buttom.png)
 
-    ![Vybrat zálohu, která Delete](./media/backup-azure-manage-vms/delete-backup-buttom.png)
+  - Na [řídicího panelu trezoru položky](#view-vms-on-the-dashboard)vyberte **odstranit data zálohy**.
+  - Zadejte název zálohované položky potvrďte, že chcete odstranit body obnovení.
 
-1. Zadejte název zálohované položky potvrďte, že chcete odstranit body obnovení.
+    ![Odstranění zálohovaných dat](./media/backup-azure-manage-vms/delete-backup-data1.png)
 
-    ![Potvrďte, že chcete odstranit body obnovení](./media/backup-azure-manage-vms/item-verification-box.png)
+  - Chcete-li odstranit zálohovaná data pro položku, vyberte **odstranit**. Zprávu s oznámením poznáte, že záložní data byla odstraněna.
 
-1. Chcete-li odstranit zálohovaná data pro položku, vyberte **odstranit**. Zprávu s oznámením poznáte, že záložní data byla odstraněna.
+  > [!NOTE]
+  > Odstranit zálohovaná data odstraníte všechny body obnovení přidružené. Nemůžete zvolit konkrétní body obnovení odstranit.
 
 ## <a name="next-steps"></a>Další postup
 - Zjistěte, jak [zálohování virtuálních počítačů Azure z nastavení Virtuálního počítače](backup-azure-vms-first-look-arm.md).

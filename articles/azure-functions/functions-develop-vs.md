@@ -10,16 +10,16 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: glenga
-ms.openlocfilehash: c6104a977a02211dcab17a5f232991d0d9cbb852
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8ed3b42c61456f110925e34473dbb326dafc1b80
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67050711"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447717"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Vývoj Azure Functions pomocí sady Visual Studio  
 
-Azure Functions Tools for Visual Studio 2019 je rozšířením pro Visual Studio, která umožňuje vývoj, testování a nasazení C# funkce do Azure. Pokud toto prostředí je první s využitím Azure Functions, další informace najdete v [Úvod do služby Azure Functions](functions-overview.md).
+Nástroje Azure Functions je rozšířením pro Visual Studio, která umožňuje vývoj, testování a nasazení C# funkce do Azure. Pokud toto prostředí je první s využitím Azure Functions, další informace najdete v [Úvod do služby Azure Functions](functions-overview.md).
 
 Nástroje Azure Functions nabízí následující výhody: 
 
@@ -42,13 +42,11 @@ Nástroje Azure Functions je součástí sady funkcí vývoj pro Azure [Visual S
 
 Ujistěte se, že Visual Studio je aktuální a že používáte [nejnovější verzi](#check-your-tools-version) nástrojů Azure Functions.
 
-### <a name="other-requirements"></a>Další požadavky
+### <a name="azure-resources"></a>Prostředky Azure
 
-Vytvoření a nasazení služby functions, budete také muset:
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-* Aktivní předplatné Azure. Pokud nemáte předplatné Azure, [bezplatné účty](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) jsou k dispozici.
-
-* Účet služby Azure Storage. Vytvoření účtu úložiště najdete v tématu [vytvořit účet úložiště](../storage/common/storage-quickstart-create-account.md).
+Další materiály, které potřebujete, jako je například účet služby Azure Storage jsou vytvořeny v rámci vašeho předplatného během procesu publikování.
 
 ### <a name="check-your-tools-version"></a>Zkontrolujte verzi nástroje
 
@@ -80,12 +78,20 @@ Vytvoření a nasazení služby functions, budete také muset:
 
 * **host.json**: Umožňuje konfigurovat funkce hostitele. Tato nastavení platí i při spuštění místně i v Azure. Další informace najdete v tématu [referenční materiály k host.json](functions-host-json.md).
 
-* **local.settings.json**: Udržuje nastavení používaná při místním spuštění funkce. Tato nastavení nejsou používány nástrojem Azure, jsou používány [nástrojů Azure Functions Core](functions-run-local.md). Tento soubor můžete použijte k určení nastavení aplikace pro proměnné prostředí nutné vašich funkcí. Přidat novou položku do **hodnoty** pole pro každé připojení vyžaduje vazby funkce ve vašem projektu. Další informace najdete v tématu [souboru místní nastavení](functions-run-local.md#local-settings-file) v článku o Azure Functions Core Tools.
+* **local.settings.json**: Udržuje nastavení používaná při místním spuštění funkce. Tato nastavení nejsou použity při spuštění v Azure. Další informace najdete v tématu [souboru místní nastavení](#local-settings-file).
 
     >[!IMPORTANT]
     >Protože souboru local.settings.json může obsahovat tajné kódy, musíte ho vyloučit ze správy zdrojových kódů pro váš projekt. **Kopírovat do výstupního adresáře** nastavení pro tento soubor by měl vždy být **kopírovat, pokud je novější**. 
 
 Další informace najdete v tématu [projekt knihovny tříd funkce](functions-dotnet-class-library.md#functions-class-library-project).
+
+[!INCLUDE [functions-local-settings-file](../../includes/functions-local-settings-file.md)]
+
+Nastavení v local.settings.json nejsou automaticky nahraje při publikování tohoto projektu. Pokud chcete mít jistotu, že tato nastavení také existují ve vaší aplikaci function app v Azure, musíte nahrát je po publikování projektu. Další informace najdete v tématu [fungovat nastavení aplikace](#function-app-settings).
+
+Hodnoty v **ConnectionStrings** se nikdy publikováno.
+
+Hodnoty nastavení aplikace funkcí můžete číst také ve vašem kódu jako proměnné prostředí. Další informace najdete v tématu [proměnné prostředí](functions-dotnet-class-library.md#environment-variables).
 
 ## <a name="configure-the-project-for-local-development"></a>Konfigurace projektu pro místní vývoj
 
@@ -133,8 +139,9 @@ V předem zkompilované funkce jsou definovány vazby používá funkci použit�
         }
     }
     ```
+
     Atribut specifické pro vazbu se použije pro každý parametr vazby zadaný pro metodu vstupního bodu. Atribut přijímá informace o vazbě jako parametry. V předchozím příkladu má první parametr **QueueTrigger** atribut, která funkce aktivované frontou. Název fronty a nastavení název připojovacího řetězce jsou předány jako parametry **QueueTrigger** atribut. Další informace najdete v tématu [vazby úložiště front Azure pro službu Azure Functions](functions-bindings-storage-queue.md#trigger---c-example).
-    
+
 Výše uvedený postup slouží k přidání dalších funkcí pro váš projekt aplikace funkcí. Každá funkce v projektu může mít jinou aktivační událost, ale funkce musí mít přesně jeden trigger. Další informace najdete v tématu [aktivace Azure Functions a vazby koncepty](functions-triggers-bindings.md).
 
 ## <a name="add-bindings"></a>Přidat vazby
@@ -183,11 +190,14 @@ Další informace o používání nástrojů Azure Functions Core najdete v tém
 
 ## <a name="publish-to-azure"></a>Publikování do Azure
 
+Při publikování ze sady Visual Studio, se používají jedním ze dvou způsobů nasazení:
+
+* [Webu nasadit](functions-deployment-technologies.md#web-deploy-msdeploy): balíčky a nasadí aplikace Windows k jakémukoli serveru služby IIS.
+* [Zazipovat Deploy with Run-z-Package povolené](functions-deployment-technologies.md#zip-deploy): doporučují pro nasazení Azure Functions.
+
+Použijte následující postup k publikování projektu do aplikace function app v Azure.
+
 [!INCLUDE [Publish the project to Azure](../../includes/functions-vstools-publish.md)]
-
-### <a name="deployment-technology"></a>Technologie nasazení
-
-Při publikování ze sady Visual Studio je jednou ze dvou technologií se používá k provedení nasazení: [Webu nasadit](functions-deployment-technologies.md#web-deploy-msdeploy) a [Zip nasazení s využitím Run-z-Package povolené (doporučeno)](functions-deployment-technologies.md#zip-deploy).
 
 ## <a name="function-app-settings"></a>Nastavení aplikace funkcí
 

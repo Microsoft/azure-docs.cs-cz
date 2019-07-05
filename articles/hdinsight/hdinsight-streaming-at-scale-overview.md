@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: e2b6cbabc9a0c727c9eb0232bd55048493b29128
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 97bc2e585ccce250dd83dc855c3eda5f958186a7
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64696931"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67484058"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>Streamování ve velkém měřítku ve službě HDInsight
 
@@ -64,7 +64,7 @@ Tyto tři parametry lze nastavit na úrovni clusteru pro všechny aplikace, kter
 
 ## <a name="next-steps"></a>Další postup
 
-* [Začínáme s Apache Storm v HDInsight](storm/apache-storm-tutorial-get-started-linux.md)
+* [Vytvořit a monitorovat topologií Apache Storm v Azure HDInsight](storm/apache-storm-quickstart.md)
 * [Příklad topologií pro Apache Storm v HDInsight](storm/apache-storm-example-topology.md)
 * [Úvod do Apache Spark v HDInsight](spark/apache-spark-overview.md)
 * [Začínáme s Apache Kafka v HDInsight](kafka/apache-kafka-get-started.md)

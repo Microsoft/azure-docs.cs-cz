@@ -16,12 +16,12 @@ ms.subservice: pim
 ms.date: 04/09/2019
 ms.author: rolyon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74607f6a746558238ead65036d708b515d370035
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 84bd491d992ed15df288d9226b58bfe832e0692a
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60441319"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476494"
 ---
 # <a name="view-activity-and-audit-history-for-azure-resource-roles-in-pim"></a>Zobrazit historii aktivit a auditu pro role prostředků Azure v PIM
 
@@ -43,11 +43,11 @@ Pokud chcete zjistit, jaké akce v různých prostředků provedli konkrétního
 
     Zobrazí grafické zobrazení akcí uživatele na prostředky Azure podle data. Také ukazuje poslední aktivace rolí za stejné období čas.
 
-    ![Podrobnosti o uživateli](media/azure-pim-resource-rbac/rbac-user-details.png)
+    ![Podrobnosti o uživateli s aktivací aktivity summary a role prostředků](media/azure-pim-resource-rbac/rbac-user-details.png)
 
 1. Kliknutím na konkrétní roli aktivace zobrazit podrobnosti a odpovídající aktivity prostředků Azure, ke které došlo během tento uživatel byl aktivní.
 
-    ![Vyberte aktivace role](media/azure-pim-resource-rbac/rbac-user-resource-activity.png)
+    ![Aktivace role vybrané a podrobnosti o aktivitě zobrazit podle data](media/azure-pim-resource-rbac/rbac-user-resource-activity.png)
 
 ## <a name="export-role-assignments-with-children"></a>Exportovat přiřazení rolí s podřízených objektů
 
@@ -63,11 +63,11 @@ Může mít požadavek na dodržování předpisů, kde je nutné zadat úplný 
 
 1. Klikněte na tlačítko **exportovat** a otevřete tak podokno členství exportu.
 
-    ![Export podokně členství](media/azure-pim-resource-rbac/export-membership.png)
+    ![Export členství v podokně exportovat všechny členy](media/azure-pim-resource-rbac/export-membership.png)
 
 1. Klikněte na tlačítko **exportovat všechny členy** exportovat všechna přiřazení rolí v souboru CSV.
 
-    ![Exportujte soubor CSV](media/azure-pim-resource-rbac/export-csv.png)
+    ![Exportovat přiřazení rolí v souboru CSV jako zobrazované v aplikaci Excel](media/azure-pim-resource-rbac/export-csv.png)
 
 ## <a name="view-resource-audit-history"></a>Zobrazení historie auditu prostředků
 
@@ -83,15 +83,15 @@ Audit prostředků umožňuje zobrazit všechny aktivity role pro prostředek.
 
 1. Historie pomocí předdefinované datové nebo vlastní rozsah filtru.
 
-    ![Filtr auditu prostředků](media/azure-pim-resource-rbac/rbac-resource-audit.png)
+    ![Seznam prostředků auditu s filtry](media/azure-pim-resource-rbac/rbac-resource-audit.png)
 
 1. Pro **typ auditu**vyberte **aktivovat (přiřazeno + aktivováno)** .
 
-    ![Podrobnosti o aktivitě](media/azure-pim-resource-rbac/rbac-audit-activity.png)
+    ![Seznam prostředků auditu, který se filtrují podle typu auditu aktivovat](media/azure-pim-resource-rbac/rbac-audit-activity.png)
 
 1. V části **akce**, klikněte na tlačítko **(aktivita)** pro uživatele zobrazíte podrobnosti o aktivitě uživatele v prostředcích Azure.
 
-    ![Podrobnosti o aktivitě uživatelů](media/azure-pim-resource-rbac/rbac-audit-activity-details.png)
+    ![Podrobnosti o aktivitě uživatele pro určitou akci](media/azure-pim-resource-rbac/rbac-audit-activity-details.png)
 
 ## <a name="view-my-audit"></a>Zobrazit můj audit
 
@@ -107,7 +107,7 @@ Můj audit umožňuje zobrazit vaše osobní role aktivity.
 
 1. Historie pomocí předdefinované datové nebo vlastní rozsah filtru.
 
-    ![Aktivita osobní role](media/azure-pim-resource-rbac/my-audit-time.png)
+    ![Auditování pro aktuálního uživatele](media/azure-pim-resource-rbac/my-audit-time.png)
 
 ## <a name="next-steps"></a>Další postup
 

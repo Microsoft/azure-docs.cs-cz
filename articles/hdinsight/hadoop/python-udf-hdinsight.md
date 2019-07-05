@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 6f3140f412f9d36ca36cef440bd4e60f1a9197d4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d74c40264e8ed535d250e938487885a848ba6b47
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64702227"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67484200"
 ---
 # <a name="use-python-user-defined-functions-udf-with-apache-hive-and-apache-pig-in-hdinsight"></a>Použití Pythonu uživatelem definované funkce (UDF) s Apache Hivu a Apache Pig v HDInsight
 
@@ -161,9 +161,6 @@ V následujících příkazů nahraďte `sshuser` s skutečné uživatelské jm�
     ```
 
 ### <a name="upload-file-powershell"></a>Nahrání souboru (PowerShell)
-
-> [!IMPORTANT]  
-> Tyto skripty Powershellu nebudou fungovat, pokud [zabezpečený přenos](../../storage/common/storage-require-secure-transfer.md) je povolená.  Použít příkazy prostředí nebo zakázání zabezpečeného přenosu.
 
 Prostředí PowerShell také umožňuje vzdáleně spouštět dotazy Hive. Zkontrolujte pracovní adresář je tam, kde `hiveudf.py` nachází.  Pomocí následujícího skriptu prostředí PowerShell ke spuštění dotazu Hive, který používá `hiveudf.py` skriptu:
 
@@ -433,9 +430,6 @@ V následujících příkazů nahraďte `sshuser` s skutečné uživatelské jm�
 
 
 ### <a name="upload-file-powershell"></a>Nahrání souboru (PowerShell)
-
-> [!IMPORTANT]  
-> Tyto skripty Powershellu nebudou fungovat, pokud [zabezpečený přenos](../../storage/common/storage-require-secure-transfer.md) je povolená.  Použít příkazy prostředí nebo zakázání zabezpečeného přenosu.
 
 Prostředí PowerShell také umožňuje vzdáleně spouštět dotazy Hive. Zkontrolujte pracovní adresář je tam, kde `pigudf.py` nachází.  Pomocí následujícího skriptu prostředí PowerShell ke spuštění dotazu Hive, který používá `pigudf.py` skriptu:
 

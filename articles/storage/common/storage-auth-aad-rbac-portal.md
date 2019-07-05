@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: ebb67ff295a934b4e125e298018c27a095adc590
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 959d96a9bc1dd9f28e62d904248cd1f18d73c27d
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65153866"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67563916"
 ---
 # <a name="grant-access-to-azure-blob-and-queue-data-with-rbac-in-the-azure-portal"></a>Udělení přístupu k Azure data objektů blob a fronty pomocí RBAC na webu Azure Portal
 
@@ -42,6 +42,11 @@ Po zjištění vhodný rozsah pro přiřazení role, přejděte k prostředku na
 
 Následující části popisují každou z těchto kroků podrobněji.
 
+> [!NOTE]
+> Jako vlastník účtu služby Azure Storage nejsou automaticky přiřadit oprávnění pro přístup k datům. Je nutné explicitně přiřadit sami roli RBAC pro Azure Storage. Ji můžete přiřadit na úrovni předplatného, skupinu prostředků, účet úložiště, kontejner nebo fronty.
+> 
+> Nelze přiřadit role omezená na kontejneru nebo fronty, pokud má váš účet úložiště hierarchického oboru názvů povolené.
+
 ### <a name="assign-a-built-in-rbac-role"></a>Přiřazení předdefinované role RBAC
 
 Před přiřazením role k objektu zabezpečení, ujistěte se, že jste vezměte v úvahu rozsah oprávnění, která udělujete. Zkontrolujte [určit rozsah prostředků](#determine-resource-scope) části rozhodnout vhodným rozsahem.
@@ -65,11 +70,6 @@ Zde zobrazená procedura přiřadí role omezená na kontejner, ale můžete pou
     ![Snímek obrazovky zobrazující seznam uživatelů, které jsou přiřazeny k roli](media/storage-auth-aad-rbac-portal/container-scoped-role.png)
 
 Můžete použít podobným způsobem přiřazení role omezená na účet úložiště, skupinu prostředků nebo předplatného.
-
-> [!NOTE]
-> Jako vlastník účtu služby Azure Storage nejsou automaticky přiřadit oprávnění pro přístup k datům. Je nutné explicitně přiřadit sami roli RBAC pro Azure Storage. Ji můžete přiřadit na úrovni předplatného, skupinu prostředků, účet úložiště, kontejner nebo fronty.
-> 
-> Nelze přiřadit role omezená na kontejneru nebo fronty, pokud má váš účet úložiště hierarchického oboru názvů povolené.
 
 ### <a name="assign-the-reader-role-for-portal-access"></a>Přiřadit role Čtenář pro přístup k portálu
 

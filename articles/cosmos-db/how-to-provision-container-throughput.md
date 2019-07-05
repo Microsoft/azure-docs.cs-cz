@@ -4,14 +4,14 @@ description: Zjistěte, jak ve službě Azure Cosmos DB zřídit propustnost na 
 author: rimman
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 05/23/2019
+ms.date: 07/03/2019
 ms.author: rimman
-ms.openlocfilehash: dec6d0a65e556e0572bd030617e5b2c30078fce8
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 945bff075828bdbddd2a31642b35a5c592216b93
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66243830"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565892"
 ---
 # <a name="provision-throughput-on-an-azure-cosmos-container"></a>Zřizování propustnosti kontejneru Azure Cosmos
 
@@ -36,14 +36,40 @@ Tento článek vysvětluje, jak zřídit propustnosti na kontejner (kolekci, gra
 ## <a name="provision-throughput-using-azure-cli"></a>Zřízení propustnosti pomocí Azure CLI
 
 ```azurecli-interactive
-# Create a container with a partition key and provision throughput of 1000 RU/s
+# Create a container with a partition key and provision throughput of 400 RU/s
 az cosmosdb collection create \
     --resource-group $resourceGroupName \
     --collection-name $containerName \
     --name $accountName \
     --db-name $databaseName \
     --partition-key-path /myPartitionKey \
-    --throughput 1000
+    --throughput 400
+```
+
+## <a name="provision-throughput-using-powershell"></a>Zřídit propustnost pomocí Powershellu
+
+```azurepowershell-interactive
+# Create a container with a partition key and provision throughput of 400 RU/s
+$resourceGroupName = "myResourceGroup"
+$accountName = "mycosmosaccount"
+$databaseName = "database1"
+$containerName = "container1"
+$resourceName = $accountName + "/sql/" + $databaseName + "/" + $containerName
+
+$ContainerProperties = @{
+    "resource"=@{
+        "id"=$containerName;
+        "partitionKey"=@{
+            "paths"=@("/myPartitionKey");
+            "kind"="Hash"
+        }
+    };
+    "options"=@{ "Throughput"= 400 }
+}
+
+New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databases/containers" `
+    -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName `
+    -Name $resourceName -PropertyObject $ContainerProperties
 ```
 
 Pokud zřizujete propustnosti kontejneru v účtu služby Azure Cosmos, který je nakonfigurovaný pro MongoDB API služby Azure Cosmos DB, použijte `/myShardKey` pro cestu ke klíči oddílů. Pokud zřizujete propustnosti kontejneru v účtu služby Azure Cosmos, který je nakonfigurovaný s rozhraním Cassandra API, použijte `/myPrimaryKey` pro cestu ke klíči oddílů.
@@ -56,7 +82,7 @@ Pokud zřizujete propustnosti kontejneru v účtu služby Azure Cosmos, který j
 ### <a id="dotnet-most"></a>Rozhraní SQL API, MongoDB API, Gremlin API a rozhraní API pro tabulky
 
 ```csharp
-// Create a container with a partition key and provision throughput of 1000 RU/s
+// Create a container with a partition key and provision throughput of 400 RU/s
 DocumentCollection myCollection = new DocumentCollection();
 myCollection.Id = "myContainerName";
 myCollection.PartitionKey.Paths.Add("/myPartitionKey");
@@ -64,17 +90,17 @@ myCollection.PartitionKey.Paths.Add("/myPartitionKey");
 await client.CreateDocumentCollectionAsync(
     UriFactory.CreateDatabaseUri("myDatabaseName"),
     myCollection,
-    new RequestOptions { OfferThroughput = 1000 });
+    new RequestOptions { OfferThroughput = 400 });
 ```
 
 ### <a id="dotnet-cassandra"></a>Rozhraní API Cassandra
 
 ```csharp
-// Create a Cassandra table with a partition (primary) key and provision throughput of 1000 RU/s
+// Create a Cassandra table with a partition (primary) key and provision throughput of 400 RU/s
 session.Execute(CREATE TABLE myKeySpace.myTable(
     user_id int PRIMARY KEY,
     firstName text,
-    lastName text) WITH cosmosdb_provisioned_throughput=1000);
+    lastName text) WITH cosmosdb_provisioned_throughput=400);
 ```
 
 ## <a name="next-steps"></a>Další postup

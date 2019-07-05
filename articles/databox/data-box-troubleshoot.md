@@ -6,22 +6,37 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 05/28/2019
+ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 0c454c5f19ebefc7f91df62511448dbedb93dfc4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bc0681a8ea15f736a7b253d6bd7ba2f7928d2a32
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257291"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67439405"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>Řešit problémy spojené s Azure Data Box a Azure Data Box Heavy
 
-Tento článek podrobně popisuje informace o řešení potíží se může zobrazit při použití Azure Data Boxn nebo Azure Data Box náročné.
+Tento článek podrobně popisuje informace o řešení potíží se může zobrazit při použití Azure Data Box nebo Azure Data Box náročné. Tento článek obsahuje seznam možných chyb, které se zobrazí, pokud data zkopírována do zařízení Data Box nebo nahrávaných dat ze zařízení Data Box.
 
-## <a name="errors-during-data-copy"></a>Chyby během kopírování dat.
+## <a name="error-classes"></a>Třídy chyb
 
-Všechny chyby, které se můžou vyskytnout během kopírování dat, které jsou shrnuty v následující části.
+Chyby v zařízení Data Box a velkým pole Data se dají shrnout takto:
+
+| Chyba kategorie *        | Popis        | Doporučená akce    |
+|----------------------------------------------|---------|--------------------------------------|
+| Názvy kontejnerů nebo sdílené složky | Názvy kontejnerů nebo sdílené složky Azure pravidla pojmenování neřídí.  |Stáhněte si seznam chyb. <br> Přejmenujte kontejnery nebo sdílené složky. [Další informace](#container-or-share-name-errors).  |
+| Omezení velikosti kontejneru nebo sdílené složky | Celkové množství dat v kontejnerech nebo sdílené složky překračuje Azure limit.   |Stáhněte si seznam chyb. <br> Snižte celkové data v kontejneru nebo sdílené složky. [Další informace](#container-or-share-size-limit-errors).|
+| Omezení velikosti objektu nebo souboru | Objekt nebo souborů v kontejnerech nebo sdílené složky překračuje Azure limit.|Stáhněte si seznam chyb. <br> Zmenšete velikost souboru v kontejneru nebo sdílené složky. [Další informace](#object-or-file-size-limit-errors). |    
+| Typ dat nebo souborů | Formát dat nebo typ souboru se nepodporuje. |Stáhněte si seznam chyb. <br> Pro objekty BLOB stránky nebo spravované disky Ujistěte se, že data jsou 512 bajtů zarovnána a zkopírují se na předem vytvořené složky. [Další informace](#data-or-file-type-errors). |
+| Nekritická chyby soubor nebo objekt blob  | Názvy objektů blob nebo soubor neřídí Azure pravidla pojmenování nebo typ souboru se nepodporuje. | Nelze zkopírovat těchto objektů blob nebo souborů nebo názvy mohou být změněny. [Zjistěte, jak tyto chyby opravit](#non-critical-blob-or-file-errors). |
+
+\* První čtyři chyby kategorie jsou kritické chyby a je potřeba opravit, aby bylo možné přejít na přípravu k odeslání.
+
+
+## <a name="container-or-share-name-errors"></a>Kontejner nebo sdílená složka název chyby
+
+Jedná se o chyby související s názvy kontejnerů a sdílené složky.
 
 ### <a name="errorcontainerorsharenamelength"></a>ERROR_CONTAINER_OR_SHARE_NAME_LENGTH     
 
@@ -78,17 +93,9 @@ Všechny chyby, které se můžou vyskytnout během kopírování dat, které js
 
     Další informace najdete v tématu Azure zásady vytváření názvů pro [názvy kontejnerů](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) a [sdílet názvy](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names).
 
-### <a name="errorcontainerorsharenamedisallowedfortype"></a>ERROR_CONTAINER_OR_SHARE_NAME_DISALLOWED_FOR_TYPE
+## <a name="container-or-share-size-limit-errors"></a>Chyby limit velikosti kontejneru nebo sdílené složky
 
-**Popis chyby:** Nesprávné kontejneru názvy jsou určené pro sdílené složky spravovaného disku.
-
-**Navrhované řešení:** Za spravované disky v rámci každé sdílené složky jsou vytvořeny následující složky, které odpovídají kontejnery v účtu úložiště: Premium SSD, HDD standardní a SSD na úrovni Standard. Tyto složky odpovídají úroveň výkonu pro spravovaný disk.
-
-- Ujistěte se, že zkopírujete data objektů blob stránky (VHD) do jedné z těchto existující složky. Jenom data z těchto existující kontejnery se nahraje do Azure.
-- Ostatní složku, která je vytvořena na stejné úrovni jako Premium SSD a standardní HDD, SSD na úrovni Standard neodpovídá na úroveň výkonu platný a nelze jej použít.
-- Odeberte soubory nebo složky, které vytvořil mimo úrovně výkonu.
-
-Další informace najdete v tématu [kopírování na managed disks](data-box-deploy-copy-data-from-vhds.md#connect-to-data-box).
+Jedná se o chyby související s data přesahující velikost dat v kontejneru nebo sdílenou složku povolené.
 
 ### <a name="errorcontainerorsharecapacityexceeded"></a>ERROR_CONTAINER_OR_SHARE_CAPACITY_EXCEEDED
 
@@ -97,6 +104,65 @@ Další informace najdete v tématu [kopírování na managed disks](data-box-de
 **Navrhované řešení:** Na **připojit a Kopírovat** stránky z místního webového uživatelského rozhraní, stáhnout a revidovat chybovým souborům.
 
 Identifikujte složky, které mají tento problém z protokoly chyb a ujistěte se, že soubory v této složce jsou v části 5 TB.
+
+
+## <a name="object-or-file-size-limit-errors"></a>Chyby limit velikosti objektu nebo souboru
+
+Jedná se o chyby související s dat přesahuje maximální velikost objektu nebo soubor, který je povolen v Azure. 
+
+### <a name="errorbloborfilesizelimit"></a>ERROR_BLOB_OR_FILE_SIZE_LIMIT
+
+**Popis chyby:** Velikost souboru překračuje maximální velikost souboru pro nahrání.
+
+**Navrhované řešení:** Objekt blob nebo velikost souborů překročí maximální limit pro nahrávání.
+
+- Na **připojit a Kopírovat** stránky z místního webového uživatelského rozhraní, stáhnout a revidovat chybovým souborům.
+- Ujistěte se, že velikost objektu blob a souboru nepřekračují omezení velikosti objektu Azure.
+
+## <a name="data-or-file-type-errors"></a>Chyby typů dat nebo souborů
+
+Jedná se o chyby související se nepodporovaný typ souboru nebo datový typ v kontejneru nebo sdílené složky. 
+
+### <a name="errorbloborfilesizealignment"></a>ERROR_BLOB_OR_FILE_SIZE_ALIGNMENT
+
+**Popis chyby:** Objekt blob nebo soubor je nesprávně zarovnán.
+
+**Navrhované řešení:** Sdílené složky objektů blob stránky v zařízení Data Box nebo Data Box náročné pouze podporuje soubory, které jsou 512 bajtů zarovnána (třeba VHD/VHDX). Žádná data zkopírován do sdílené složky objektů blob stránky je nahráli do Azure jako objekty BLOB stránky.
+
+Odeberte všechna data – na VHD/VHDX ze sdílené složky objektů blob stránky. Sdílené složky můžete použít pro objekty blob bloku nebo Azure files pro obecná data.
+
+Další informace najdete v tématu [objekty BLOB stránky přehled](../storage/blobs/storage-blob-pageblob-overview.md).
+
+### <a name="errorbloborfiletypeunsupported"></a>ERROR_BLOB_OR_FILE_TYPE_UNSUPPORTED
+
+**Popis chyby:** Nepodporovaný typ souboru se nachází ve sdílené složce spravovaného disku. Jsou povoleny pouze pevné virtuální pevné disky.
+
+**Navrhované řešení:**
+
+- Ujistěte se, že pouze nahrát pevné virtuální pevné disky pro vytvoření spravovaných disků.
+- Soubory VHDX nebo **dynamické** a **rozdílové** virtuální pevné disky nejsou podporovány.
+
+### <a name="errordirectorydisallowedfortype"></a>ERROR_DIRECTORY_DISALLOWED_FOR_TYPE
+
+**Popis chyby:** Adresář není povolen v některém z existující složky pro spravované disky. V těchto složek jsou povoleny pouze pevné virtuální pevné disky.
+
+**Navrhované řešení:** Za spravované disky v rámci každé sdílené složky se vytvoří následující tři složky, které odpovídají kontejnery v účtu úložiště: Premium SSD, HDD standardní a SSD na úrovni Standard. Tyto složky odpovídají úroveň výkonu pro spravovaný disk.
+
+- Ujistěte se, že zkopírujete data objektů blob stránky (VHD) do jedné z těchto existující složky.
+- Složku nebo adresář není povolen v těchto existující složky. Odeberte všechny složky, které jste vytvořili v již existující složky.
+
+Další informace najdete v tématu [kopírování na managed disks](data-box-deploy-copy-data-from-vhds.md#connect-to-data-box).
+
+### <a name="reparsepointerror"></a>REPARSE_POINT_ERROR
+
+**Popis chyby:** Symbolické odkazy nejsou povoleny v systému Linux. 
+
+**Navrhované řešení:** Symbolické odkazy jsou obvykle odkazy, kanálů a dalších takových souborů. Odebrat odkazy, nebo přeložit odkazy a zkopírovat data.
+
+
+## <a name="non-critical-blob-or-file-errors"></a>Nekritická chyby soubor nebo objekt blob
+
+Všechny chyby, které se můžou vyskytnout během kopírování dat, které jsou shrnuty v následující části.
 
 ### <a name="errorbloborfilenamecharactercontrol"></a>ERROR_BLOB_OR_FILE_NAME_CHARACTER_CONTROL
 
@@ -163,42 +229,16 @@ Další informace najdete v tématu Azure zásady vytváření názvů pro názv
 - Na **připojit a Kopírovat** stránky z místního webového uživatelského rozhraní, stáhnout a revidovat chybovým souborům.
 - Ujistěte se, že [názvy objektů blob](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) a [názvy souborů](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names) v souladu s Azure zásady vytváření názvů.
 
-### <a name="errorbloborfilesizelimit"></a>ERROR_BLOB_OR_FILE_SIZE_LIMIT
 
-**Popis chyby:** Velikost souboru překračuje maximální velikost souboru pro nahrání.
+### <a name="errorcontainerorsharenamedisallowedfortype"></a>ERROR_CONTAINER_OR_SHARE_NAME_DISALLOWED_FOR_TYPE
 
-**Navrhované řešení:** Objekt blob nebo velikost souborů překročí maximální limit pro nahrávání.
+**Popis chyby:** Nesprávné kontejneru názvy jsou určené pro sdílené složky spravovaného disku.
 
-- Na **připojit a Kopírovat** stránky z místního webového uživatelského rozhraní, stáhnout a revidovat chybovým souborům.
-- Ujistěte se, že velikost objektu blob a souboru nepřekračují omezení velikosti objektu Azure.
+**Navrhované řešení:** Za spravované disky v rámci každé sdílené složky jsou vytvořeny následující složky, které odpovídají kontejnery v účtu úložiště: Premium SSD, HDD standardní a SSD na úrovni Standard. Tyto složky odpovídají úroveň výkonu pro spravovaný disk.
 
-### <a name="errorbloborfilesizealignment"></a>ERROR_BLOB_OR_FILE_SIZE_ALIGNMENT
-
-**Popis chyby:** Objekt blob nebo soubor je nesprávně zarovnán.
-
-**Navrhované řešení:** Sdílené složky objektů blob stránky v zařízení Data Box nebo Data Box náročné pouze podporuje soubory, které jsou 512 bajtů zarovnána (třeba VHD/VHDX). Žádná data zkopírován do sdílené složky objektů blob stránky je nahráli do Azure jako objekty BLOB stránky.
-
-Odeberte všechna data – na VHD/VHDX ze sdílené složky objektů blob stránky. Sdílené složky můžete použít pro objekty blob bloku nebo Azure files pro obecná data.
-
-Další informace najdete v tématu [objekty BLOB stránky přehled](../storage/blobs/storage-blob-pageblob-overview.md).
-
-### <a name="errorbloborfiletypeunsupported"></a>ERROR_BLOB_OR_FILE_TYPE_UNSUPPORTED
-
-**Popis chyby:** Nepodporovaný typ souboru se nachází ve sdílené složce spravovaného disku. Jsou povoleny pouze pevné virtuální pevné disky.
-
-**Navrhované řešení:**
-
-- Ujistěte se, že pouze nahrát pevné virtuální pevné disky pro vytvoření spravovaných disků.
-- Soubory VHDX nebo **dynamické** a **rozdílové** virtuální pevné disky nejsou podporovány.
-
-### <a name="errordirectorydisallowedfortype"></a>ERROR_DIRECTORY_DISALLOWED_FOR_TYPE
-
-**Popis chyby:** Adresář není povolen v některém z existující složky pro spravované disky. V těchto složek jsou povoleny pouze pevné virtuální pevné disky.
-
-**Navrhované řešení:** Za spravované disky v rámci každé sdílené složky se vytvoří následující tři složky, které odpovídají kontejnery v účtu úložiště: Premium SSD, HDD standardní a SSD na úrovni Standard. Tyto složky odpovídají úroveň výkonu pro spravovaný disk.
-
-- Ujistěte se, že zkopírujete data objektů blob stránky (VHD) do jedné z těchto existující složky.
-- Složku nebo adresář není povolen v těchto existující složky. Odeberte všechny složky, které jste vytvořili v již existující složky.
+- Ujistěte se, že zkopírujete data objektů blob stránky (VHD) do jedné z těchto existující složky. Jenom data z těchto existující kontejnery se nahraje do Azure.
+- Ostatní složku, která je vytvořena na stejné úrovni jako Premium SSD a standardní HDD, SSD na úrovni Standard neodpovídá na úroveň výkonu platný a nelze jej použít.
+- Odeberte soubory nebo složky, které vytvořil mimo úrovně výkonu.
 
 Další informace najdete v tématu [kopírování na managed disks](data-box-deploy-copy-data-from-vhds.md#connect-to-data-box).
 

@@ -10,15 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 02/07/2019
+ms.date: 06/26/2019
 ms.reviewer: mbullwin
 ms.author: harelbr
-ms.openlocfilehash: 3ab50c92543615488d9ced599df433bf7e1e4061
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6bb89eec0b4905e101bed87d3d3fc617dec589e0
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61461557"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477867"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Spravovat pravidla inteligentního zjišťování služby Application Insights pomocí šablon Azure Resource Manageru
 
@@ -29,12 +29,14 @@ Tuto metodu lze použít při nasazování nové prostředky Application Insight
 
 Můžete nakonfigurovat následující nastavení pro pravidlo inteligentní zjišťování:
 - Pokud je pravidlo povolené (výchozí hodnota je **true**.)
-- Pokud mají být e-maily zasílány vlastníkům předplatného, přispěvatelé a čtenáři při detekce nenajde (výchozí hodnota je **true**.)
+- Pokud mají být e-maily zasílány uživatelé přidružení k odběru [Čtenář monitorování](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) a [Přispěvatel monitorování](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) role, když se najde detekce (výchozí hodnota je **true**.)
 - Žádné další e-mailové příjemce, kteří by měl dostat oznámení při zjištění nebyl nalezen.
-- * E-mailové konfigurace není k dispozici pro pravidla inteligentního zjišťování označen jako _ve verzi Preview_.
+    -  E-mailové konfigurace není k dispozici pro pravidla inteligentního zjišťování označen jako _ve verzi preview_.
 
 Pokud chcete povolit, konfigurace nastavení pravidla prostřednictvím Azure Resource Manageru, konfigurace pravidla inteligentního zjišťování je teď dostupná jako vnitřní prostředků v rámci prostředku Application Insights s názvem **ProactiveDetectionConfigs**.
 Pro maximální flexibilitu a každé pravidlo inteligentní zjišťování můžete použít nastavení jedinečné oznámení.
+
+## 
 
 ## <a name="examples"></a>Příklady
 
@@ -136,12 +138,46 @@ Ujistěte se, že chcete nahradit název prostředku Application Insights a k ur
 
 ```
 
+### <a name="failure-anomalies-v2-non-classic-alert-rule"></a>Pravidlo výstrahy v2 (který není klasický) anomálie pro selhání
+
+Tuto šablonu Azure Resource Manageru ukazuje konfiguraci pravidla upozornění anomálie selhání v2 s závažnost 2. Tato nová verze, pravidlo upozornění na anomálie selhání je součástí nové výstrahy platformy Azure a nahradí klasickou verzi, která se vyřazuje jako součást [classic výstrahy procesu vyřazení](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/).
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [
+        {
+            "type": "microsoft.alertsmanagement/smartdetectoralertrules",
+            "apiVersion": "2019-03-01",
+            "name": "Failure Anomalies - my-app",
+            "properties": {
+                  "description": "Detects a spike in the failure rate of requests or dependencies",
+                  "state": "Enabled",
+                  "severity": "2",
+                  "frequency": "PT1M",
+                  "detector": {
+                  "id": "FailureAnomaliesDetector"
+                  },
+                  "scope": ["/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/MyResourceGroup/providers/microsoft.insights/components/my-app"],
+                  "actionGroups": {
+                        "groupIds": ["/subscriptions/00000000-1111-2222-3333-444444444444/resourcegroups/MyResourceGroup/providers/microsoft.insights/actiongroups/MyActionGroup"]
+                  }
+            }
+        }
+    ]
+}
+```
+
+> [!NOTE]
+> Tuto šablonu Azure Resource Manageru je jedinečné pro pravidla upozornění anomálie selhání v2 a se liší od jiných classic pravidla inteligentního zjišťování popsaných v tomto článku.   
+
 ## <a name="smart-detection-rule-names"></a>Názvy pravidel inteligentního zjišťování
 
 Níže je tabulka názvů pravidla inteligentního zjišťování, jak se objeví na portálu společně s jejich interní názvy, které byste měli použít ve šablony Azure Resource Manageru.
 
 > [!NOTE]
-> Pravidla inteligentního zjišťování označený jako ve verzi preview nepodporují e-mailová oznámení. Proto lze nastavit pouze vlastnost enabled pro tato pravidla. 
+> Pravidla inteligentního zjišťování označen jako _ve verzi preview_ nepodporují e-mailová oznámení. Proto lze nastavit pouze _povolené_ vlastnost pro tato pravidla. 
 
 | Název pravidla Azure portal | Interní název
 |:---|:---|
@@ -154,18 +190,7 @@ Níže je tabulka názvů pravidla inteligentního zjišťování, jak se objev�
 | Neobvyklý nárůst počtu výjimek (preview) | extension_exceptionchangeextension |
 | Zjištěna potenciální nevrácená paměť (preview) | extension_memoryleakextension |
 | Zjistil potenciální problém zabezpečení (preview) | extension_securityextensionspackage |
-| Zjistil se problém využití prostředků (preview) | extension_resourceutilizationextensionspackage |
-
-## <a name="who-receives-the-classic-alert-notifications"></a>Kdo přijímá oznámení výstrah (klasické)?
-
-Tato část pouze platí pro klasických upozornění inteligentního zjišťování a pomůže vám optimalizovat vaše oznámení o výstrahách Ujistěte se, že pouze požadované příjemci dostávat oznámení. Bližší informace o rozdílech mezi [klasických upozornění](../platform/alerts-classic.overview.md) a předložit nové prostředí upozornění [výstrahy přehledovém článku](../platform/alerts-overview.md). Inteligentní zjišťování aktuálně upozorní potřebné klasických upozornění prostředí podpory. Jedinou výjimkou je [inteligentního zjišťování výstrah v Azure cloud services](./proactive-cloud-services.md). K řízení oznámení oznámení pro výstrahy funkce Inteligentní zjišťování v cloudu Azure services pomocí [skupiny akcí](../platform/action-groups.md).
-
-* Doporučujeme vám používat konkrétní příjemců oznámení výstrah inteligentní zjišťování/classic.
-
-* Upozornění inteligentního zjišťování **hromadné/skupiny** zaškrtávací políčko, pokud je povoleno, odešle uživatelům s rolí vlastník, Přispěvatel nebo Čtenář v rámci předplatného. V důsledku toho _všechny_ uživatelé s přístupem k předplatnému prostředku Application Insights jsou v rozsahu a budou dostávat oznámení. 
-
-> [!NOTE]
-> Pokud aktuálně používáte službu **hromadné/skupiny** zaškrtávací políčko a zakázat, nebude možné vrátit zpět změny.
+| Neobvyklý nárůst míry denní objem dat (preview) | extension_billingdatavolumedailyspikeextension |
 
 ## <a name="next-steps"></a>Další kroky
 

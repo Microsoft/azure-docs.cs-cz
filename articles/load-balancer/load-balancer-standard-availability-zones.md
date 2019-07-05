@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/27/2018
 ms.author: kumud
-ms.openlocfilehash: 6f33be6e418366f57d243f578035b5c87079c99e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0820285555110e8e85bff814f4774d6da6443f69
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60734452"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491989"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Load Balancer úrovně Standard a zóny dostupnosti
 
@@ -186,7 +186,7 @@ Nástroj pro vyrovnávání zatížení je záměrně flexibilní v rámci zóny
 
 Nástroj pro vyrovnávání zatížení usnadňuje mít jednu IP adresu jako zónově redundantních front-endu. Zónově redundantní IP adresa může bezpečně sloužit zónovým prostředkem v každé zóně a tak dlouho, dokud jednu zónu zůstane v dobrém stavu v rámci oblasti přežijí nejméně jednomu selhání zóny. Naopak oblastmi front-endu je snížení služby na jednu zónu a sdílené složky rozpadu příslušných zónu.
 
-Redundanci zón neznamená hitless datapath nebo rovina řízení;  je výslovně rovina dat. Zónově redundantní toků můžete použít všechny zóny a toků na základě budou používat všechny zóny v pořádku v oblasti. V případě selhání zóny přenosové toky pomocí v dobrém stavu zóny v daném okamžiku v čase vliv.  Přenosové toky pomocí zóny v době selhání zóna může mít vliv, ale můžete obnovit aplikací a tyto toky můžete pokračovat ve zbývajících v dobrém stavu zóny v rámci oblasti opakovaný přenos zpráv nebo reestablishment po Azure se sloučila kolem selhání zóny.
+Redundanci zón neznamená hitless datapath nebo rovina řízení;  je výslovně rovina dat. Zónově redundantní toků můžete použít všechny zóny a toků na základě budou používat všechny zóny v pořádku v oblasti. V případě selhání zóny přenosové toky pomocí v dobrém stavu zóny v daném okamžiku v čase vliv.  Přenosové toky pomocí zóny v době selhání zóna může mít vliv, ale můžete obnovit aplikací. Tyto toky můžete pokračovat ve zbývajících v dobrém stavu zóny v rámci oblasti opakovaný přenos zpráv nebo reestablishment, po Azure se sloučila kolem selhání zóny.
 
 ### <a name="xzonedesign"></a> Překračují hranice zóny
 

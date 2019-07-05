@@ -9,12 +9,12 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: 'Docker, Kubernetes, Azure, AKS, službě Azure Kubernetes, kontejnery, Helm, služby sítě, směrování sítě služby, kubectl, k8s '
-ms.openlocfilehash: e0379bbc7f26ea30f65c5eac73633ca0371aa283
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 651ae9d9f9a622724e1ee606219ba940995aa555
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67331309"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441750"
 ---
 # <a name="troubleshooting-guide"></a>Průvodce odstraňováním potíží
 
@@ -423,3 +423,19 @@ Azure Dev prostory nelze vytvořit řadič ve vašem clusteru AKS, protože nemo
 
 ### <a name="try"></a>Vyzkoušení
 [Aktualizujte konfiguraci barvu](../aks/operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations) ve vašem clusteru AKS, aby aspoň jeden Linux umožňuje plánování podů bez zadání tolerations uzlu. Také se ujistěte, že je alespoň jeden uzel systému Linux, který umožňuje plánování podů bez zadání tolerations v *připravené* stavu. Pokud je uzel trvá příliš dlouho kontaktovat *připravené* stavu, můžete zkusit restartovat uzel.
+
+## <a name="error-azure-dev-spaces-cli-not-installed-properly-when-running-az-aks-use-dev-spaces"></a>Chyba "Azure Dev prostory rozhraní příkazového řádku není správně nainstalován" při spuštění `az aks use-dev-spaces`
+
+### <a name="reason"></a>Reason
+Aktualizace rozhraní příkazového řádku Azure Dev prostory změnit cestu instalace. Pokud používáte verzi rozhraní příkazového řádku Azure starší než 2.0.63, může se zobrazit tato chyba. Pokud chcete zobrazit verzi rozhraní příkazového řádku Azure, použijte `az --version`.
+
+```bash
+$ az --version
+azure-cli                         2.0.60 *
+...
+```
+
+Bez ohledu na chybová zpráva při spuštění `az aks use-dev-spaces` s verzí rozhraní příkazového řádku Azure před 2.0.63, instalace úspěšná. Můžete dál používat `azds` bez problémů.
+
+### <a name="try"></a>Vyzkoušení
+Aktualizovat vaši instalaci [rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli?view=azure-cli-latest) 2.0.63 nebo novější. Vyřeší se chybová zpráva se zobrazí při spuštění `az aks use-dev-spaces`. Alternativně můžete dál používat vaší aktuální verzi rozhraní příkazového řádku Azure a rozhraní příkazového řádku Azure Dev mezery.

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/31/2018
+ms.date: 06/28/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c81a9f3891130f1c6fc2f1a665d7065fb983227
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 150ecbdfcc21ee7ec0bf54fd5b824bc93e0c76ce
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60358110"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67483305"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory inteligentní uzamčení
 
@@ -41,7 +41,9 @@ Inteligentní uzamčení lze integrovat s hybridní nasazení pomocí synchroniz
 Při použití [předávací ověřování](../hybrid/how-to-connect-pta.md), je třeba Ujistěte se, že:
 
 * Prahová hodnota pro uzamčení Azure AD je **méně** než prahovou hodnotu uzamknutí účtu služby Active Directory. Nastavte hodnoty tak, aby prahovou hodnotu uzamknutí účtu služby Active Directory je minimálně dvakrát nebo třikrát déle než prahová hodnota pro uzamčení Azure AD. 
-* Doba trvání uzamčení Azure AD **během několika sekund** je **delší** než Active Directory Vynulovat čítač uzamčení účtu po dobu trvání **minut**.
+* Doba trvání uzamčení Azure AD musí být nastavena déle, než Active Directory Vynulovat čítač uzamčení účtu po dobu trvání. Mějte na paměti, že Azure AD trvání je nastavena v sekundách, během AD doba trvání se nastavuje v minutách. 
+
+Například pokud chcete vaše služby Azure AD čítač vyšší než AD, pak Azure AD by 120 sekund (2 minuty) při na úrovni Premium, AD je nastavený na 1 minutu (60 sekund).
 
 > [!IMPORTANT]
 > Správce aktuálně nedá odemknout účtům cloudových uživatelů, pokud se mají byl uzamčen inteligentním uzamčením schopnosti. Správce musí počkat po dobu trvání uzamknutí vyprší.

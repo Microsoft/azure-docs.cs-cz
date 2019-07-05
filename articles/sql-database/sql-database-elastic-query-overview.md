@@ -11,13 +11,13 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 manager: craigg
-ms.date: 06/13/2019
-ms.openlocfilehash: 2ea1d116de2c435e873c653bbfa0571377c4f5ef
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 07/01/2019
+ms.openlocfilehash: 5188862c50895c8e3f1bdecb4e08d39409bb5f9e
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067056"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491657"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Přehled služby Azure SQL Database elastic query (preview)
 
@@ -143,6 +143,7 @@ Elastický dotaz je zahrnuté do ceny za databází Azure SQL Database. Všimně
 * S výjimkou nvarchar(max) obchodní typy (včetně prostorové typy) nejsou podporovány v definici externí tabulky. Jako alternativní řešení můžete vytvořit zobrazení na vzdálenou databázi, která přetypovává typu LOB do nvarchar(max), definovat externí tabulky zobrazení místo v základní tabulce a přetypujte ji zpět do původního typu LOB v dotazech.
 * Sloupce datového typu nvarchar(max) ve výsledku sady zakázat rozšířené dávkování technika použitý v implementaci elastický dotaz a může mít vliv na výkon dotazu pro řád, nebo dokonce u dvou řádově v jiné kanonické případy použití, kde je velké množství neagregovaná data přenášejí výsledku dotazu.
 * Statistiky sloupce na externí tabulky nejsou aktuálně podporovány. Statistika tabulky jsou podporované, ale musí být vytvořeny ručně.
+* Elastický dotaz funguje pouze s Azure SQL Database. Nelze ho použít pro dotazování na místní SQL Server nebo SQL Server na virtuálním počítači.
 
 ## <a name="feedback"></a>Váš názor
 

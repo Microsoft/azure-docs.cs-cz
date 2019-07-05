@@ -6,17 +6,23 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 12/05/2018
-ms.openlocfilehash: 135f8f1c9c352f9d2307a8bf9ad1bec892aac179
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 6/30/2019
+ms.openlocfilehash: 0f148a97b25afb9135223ff92afb898d4734c586
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399910"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537801"
 ---
 # <a name="visualize-data-from-azure-data-explorer-in-grafana"></a>Vizualizace dat v Průzkumníku dat Azure v Grafana
 
 Grafana je analytická platforma, která umožňuje dotazování a vizualizace dat, pak vytvořit a sdílet řídicí panely založené na vašich vizualizací. Grafana poskytuje Průzkumníka dat Azure *modulu plug-in*, což vám umožní připojit k a vizualizace počítačových dat z Průzkumníku dat Azure. V tomto článku se dozvíte, jak nastavit Průzkumník dat Azure jako zdroj dat pro Grafana, a pak vizualizovat data z ukázkové clusteru.
+
+Pomocí následující video, můžete zjistíte, jak pomocí modulu plug-in pro Grafana Průzkumník dat Azure, nastavit Průzkumník dat Azure jako zdroj dat pro Grafana a potom vizualizují data. 
+
+> [!VIDEO https://www.youtube.com/embed/fSR_qCIFZSA]
+
+Případně můžete [konfigurace zdroje dat](#configure-the-data-source) a [vizualizace dat](#visualize-data) uvedené níže.
 
 ## <a name="prerequisites"></a>Požadavky
 

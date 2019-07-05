@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 6ae271fc464e2a5735ef95a428b3070066058ddc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5234835f5fbfd5617e6b0440ff38fa900051470a
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64696132"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67450111"
 ---
 # <a name="use-hdinsight-tools-for-intellij-with-hortonworks-sandbox"></a>Použití nástrojů HDInsight pro IntelliJ s Hortonworks Sandbox
 
@@ -24,7 +24,7 @@ Naučte se používat nástroje HDInsight pro IntelliJ k vývoji aplikací Apach
 
 ## <a name="prerequisites"></a>Požadavky
 
-Před zahájením tohoto kurzu musíte mít tyto položky:
+Před zahájením tohoto článku, musíte mít následující položky:
 
 - Hortonworks Data Platform (HDP) 2.4 na Hortonworks Sandbox běží na místním počítači. Pokud chcete nastavit HDP, přečtěte si [začít pracovat v ekosystému Apache Hadoop s Hadoop sandbox na virtuálním počítači](apache-hadoop-emulator-get-started.md). 
     > [!NOTE]
@@ -142,7 +142,7 @@ K odeslání projektu na emulátor:
 2. Proveďte následující kroky:
 
     1. V **cluster Spark (pouze Linux)** rozevíracího seznamu vyberte místní Hortonworks Sandbox.
-    2. V **hlavní název třídy** vyberte nebo zadejte název hlavní třídy. Pro účely tohoto kurzu je název **GroupByTest**.
+    2. V **hlavní název třídy** vyberte nebo zadejte název hlavní třídy. Pro účely tohoto článku je název **GroupByTest**.
 
 3. Vyberte **odeslat**. Protokoly odeslání úlohy se zobrazí v panelu nástrojů odeslání Spark.
 

@@ -4,17 +4,17 @@ description: Webhook, který umožňuje klientovi spuštění runbooku ve služb
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 03/19/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 153bb0304102906f7be64ae55dd0e0f6bb8d7146
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6e0e0cdfd5bdda125ed38173df56e0fb7a84f71a
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61304562"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477927"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>Spuštění runbooku Azure Automation s webhooku
 
@@ -30,10 +30,10 @@ Můžete porovnat webhooky k dalším metodám spuštění sady runbook [spušt�
 
 Následující tabulka popisuje vlastnosti, které je nutné nakonfigurovat pro webhook.
 
-| Vlastnost | Popis |
+| Vlastnost | Description |
 |:--- |:--- |
-| Name |Můžete zadat libovolný název, který chcete pro webhook, protože to není vystavený klienta. Používá se pouze pro vás k identifikaci sady runbook ve službě Azure Automation. <br> Jako osvědčený postup musíte by měl pojmenovat webhook související klientovi, který ji používá. |
-| zprostředkovatele identity |Adresa URL webhooku je jedinečná adresa, která volá klienta pomocí metody POST protokolu HTTP pro spuštění sady runbook propojena k webhooku. Je generována automaticky při vytvoření webhooku. Nelze zadat vlastní adresu URL. <br> <br> Adresa URL obsahuje token zabezpečení, která umožňuje sady runbook, který má být volána systémem třetí strany se nevyžaduje další ověřování. Z tohoto důvodu by zpracovávat jako heslo. Z bezpečnostních důvodů můžete jenom zobrazit adresu URL na webu Azure Portal v době, kdy se webhook vytvoří. Poznačte si adresu URL na bezpečném místě pro budoucí použití. |
+| Název |Můžete zadat libovolný název, který chcete pro webhook, protože to není vystavený klienta. Používá se pouze pro vás k identifikaci sady runbook ve službě Azure Automation. <br> Jako osvědčený postup musíte by měl pojmenovat webhook související klientovi, který ji používá. |
+| URL |Adresa URL webhooku je jedinečná adresa, která volá klienta pomocí metody POST protokolu HTTP pro spuštění sady runbook propojena k webhooku. Je generována automaticky při vytvoření webhooku. Nelze zadat vlastní adresu URL. <br> <br> Adresa URL obsahuje token zabezpečení, která umožňuje sady runbook, který má být volána systémem třetí strany se nevyžaduje další ověřování. Z tohoto důvodu by zpracovávat jako heslo. Z bezpečnostních důvodů můžete jenom zobrazit adresu URL na webu Azure Portal v době, kdy se webhook vytvoří. Poznačte si adresu URL na bezpečném místě pro budoucí použití. |
 | Datum vypršení platnosti |Stejně jako certifikát má každý webhooku datum vypršení platnosti, po kterém již slouží. Po vytvoření webhooku tak dlouho, dokud nevyprší platnost webhooku, je možné upravit toto datum vypršení platnosti. |
 | Enabled |Webhook se ve výchozím nastavení povoleno, při jeho vytvoření. Pokud ji nastavíte na hodnotu zakázáno, pak žádný klient ho použít. Můžete nastavit **povoleno** vlastnost při vytváření webhooku nebo kdykoli po jeho vytvoření. |
 

@@ -2,19 +2,19 @@
 title: Vysvětlení výsledky kontroly agenta Windows ve službě Azure Update Management
 description: Informace o řešení potíží s agentem Update Management.
 services: automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 04/22/2019
 ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: 864fe70d7702680f21234a1a15c02515b19f770b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3555ec74b7e7c8a0f7606f24f8c6f2c4fe36b52d
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60597721"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477102"
 ---
 # <a name="understand-the-windows-agent-check-results-in-update-management"></a>Vysvětlení výsledky kontroly agenta Windows v Update Management
 

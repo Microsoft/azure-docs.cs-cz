@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: e80fb136220330ddc53d513b22ebcfa19a35117b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e2aafa195fa463a405e2132cd41fada8d6903961
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66252800"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67450085"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>Vytvoření a čtení zpráv IoT Hubu
 
@@ -55,7 +55,7 @@ V následující tabulce jsou uvedeny sadu vlastností systému v zpráv ve slu�
 | pořadové číslo |Číslo (jedinečný za každou frontu zařízení) ve službě IoT Hub přiřazená každé zprávy typu cloud zařízení. | Ne pro C2D zprávy. v opačném případě Ano. |
 | na |Určení v [typu Cloud-zařízení](iot-hub-devguide-c2d-guidance.md) zprávy. | Ne pro C2D zprávy. v opačném případě Ano. |
 | absolutní čas vypršení platnosti |Datum a čas vypršení platnosti zpráv. | Ano |
-| iothub-enqueuedtime |Datum a čas [typu Cloud-zařízení](iot-hub-devguide-c2d-guidance.md) byla přijata zpráva ve službě IoT Hub. | Ne pro C2D zprávy. v opačném případě Ano. |
+| iothub-enqueuedtime |Datum a čas [typu zařízení-Cloud](iot-hub-devguide-d2c-guidance.md) byla přijata zpráva ve službě IoT Hub. | Ne pro D2C zprávy. v opačném případě Ano. |
 | id korelace |Vlastnost řetězce v odpovědi, který obvykle obsahuje ID zprávy požadavku ve vzorech pro požadavek odpověď. | Ano |
 | id uživatele |ID používané k určení počátku zprávy. Při generování zpráv ve službě IoT Hub, je nastavena na `{iot hub name}`. | Ne |
 | IOT hub objektu ACK. |Generátor zprávy zpětné vazby. Tato vlastnost se používá v zprávy typu cloud zařízení do služby IoT Hub ke generování zpráv se zpětnou vazbou v důsledku spotřeby zprávy požadavku zařízení. Možné hodnoty: **žádný** (výchozí): je vygenerována žádná zpráva zpětnou vazbu, **kladné**: Pokud zpráva byla dokončena, zobrazí se zpráva zpětnou vazbu **negativní**: přijímat zpráva zpětnou vazbu, pokud vypršela platnost zprávy (nebo bylo dosaženo maximální počet doručení) bez dokončení zařízení, nebo **úplné**: kladné a záporné. <!-- robinsh For more information, see [Message feedback][lnk-feedback].--> | Ano |

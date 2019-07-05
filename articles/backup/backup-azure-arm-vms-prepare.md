@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: raynew
-ms.openlocfilehash: 06a7623fed0205d927fca9406469737faeda3a4b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0835c3af52a16e7549698e35b3fded0f64c71dc4
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67076788"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447695"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Zálohování virtuálních počítačů Azure na trezor služby Recovery Services
 
@@ -72,7 +72,9 @@ Kromě toho existuje několik věcí, které možná bude potřeba provést v n�
 ![Seznam trezorů záloh](./media/backup-azure-arm-vms-prepare/rs-list-of-vaults.png)
 
 > [!NOTE]
-> Služba Azure Backup vytváří samostatné skupiny prostředků (než je skupina prostředků virtuálního počítače) k uložení snímku s formátem pojmenování **AzureBackupRG_geography_number** (Příklad: AzureBackupRG_northeurope_1). Data v této skupině prostředků se uchovávají po dobu trvání ve dnech, jak je uvedeno v *zachovat okamžité obnovení snímku* část zásady zálohování virtuálních počítačů Azure.  Použití zámek do této skupiny prostředků může způsobit selhání zálohování.
+> Služba Azure Backup vytváří samostatné skupiny prostředků (než je skupina prostředků virtuálního počítače) k uložení snímku s formátem pojmenování **AzureBackupRG_geography_number** (Příklad: AzureBackupRG_northeurope_1). Data v této skupině prostředků se uchovávají po dobu trvání ve dnech, jak je uvedeno v *zachovat okamžité obnovení snímku* část zásady zálohování virtuálních počítačů Azure.  Použití zámek do této skupiny prostředků může způsobit selhání zálohování.<br>
+Tato skupina prostředků má být vyloučen z nějaká omezení název a značku také, jak zásadu omezení by blokovaly vytvoření kolekce bodů prostředků v ní znovu způsobující selhání zálohování.
+
 
 ### <a name="modify-storage-replication"></a>Úprava replikace úložiště
 

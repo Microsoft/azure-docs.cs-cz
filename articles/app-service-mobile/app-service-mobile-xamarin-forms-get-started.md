@@ -3,7 +3,7 @@ title: Začínáme s funkcí Mobile Apps na platformě Xamarin.Forms
 description: V tomto kurzu začnete používat funkci Mobile Apps pro vývoj s Xamarin.Forms.
 services: app-service\mobile
 documentationcenter: xamarin
-author: conceptdev
+author: elamalani
 manager: crdun
 ms.assetid: 5e692220-cc89-4548-96c8-35259722acf5
 ms.service: app-service-mobile
@@ -11,19 +11,24 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/09/2019
-ms.author: crdun
-ms.openlocfilehash: b47e498754bad6917efca5b7f19f8ebce9cf0330
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: bca0f0de7de321060635459c4435525f650c7467
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67062223"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446322"
 ---
 # <a name="create-a-xamarinforms-app-with-azure"></a>Vytvoření aplikace na platformě Xamarin.Forms s využitím Azure
 
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
 
+> [!NOTE]
+> Visual Studio App Center investuje do nové a integrované služby, které jsou centrální při vývoji mobilních aplikací. Vývojáři mohou použít **sestavení**, **testovací** a **rozmístit** služby vytvořit kanál pro průběžnou integraci a doručování. Po nasazení aplikace se můžou vývojáři monitorovat stav a využití své aplikace pomocí **Analytics** a **diagnostiky** služeb a Zaujměte uživatele, kteří používají **Push** Služba. Vývojáři mohou využít i **Auth** k ověření uživatelů a **Data** službu zachovat, synchronizaci dat aplikací v cloudu. Podívejte se na [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-xamarin-forms-get-started) ještě dnes.
+>
+
+## <a name="overview"></a>Přehled
 V tomto kurzu se dozvíte, jak přidat cloudovou službu back-end do mobilní aplikace na platformě Xamarin.Forms pomocí funkce Mobile Apps služby Azure App Service jako back-endu. Vytvoříte jak nový back-end Mobile Apps, tak jednoduchou aplikaci Xamarin.Forms, která bude představovat seznam úkolů a ukládat data do Azure.
 
 Ve všech dalších kurzech k Mobile Apps týkajících se Xamarin.Forms se předpokládá dokončení tohoto kurzu.
@@ -34,7 +39,7 @@ Pro absolvování tohoto kurzu potřebujete:
 
 * Aktivní účet Azure. Pokud účet nemáte, můžete si zaregistrovat zkušební verzi Azure a získat až 10 bezplatných mobilních aplikací, které můžete používat i po skončení zkušebního období. Další informace najdete na stránce [bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
-* Visual Studio Tools for Xamarin, v sadě Visual Studio 2017 nebo později, nebo Visual Studio pro Mac. Pokyny najdete na [stránce věnované instalaci Xamarinu][Install Xamarin].
+* Visual Studio Tools for Xamarin, v sadě Visual Studio 2017 nebo později, nebo Visual Studio pro Mac. Zobrazit [stránky instalace Xamarin][Install Xamarin] pokyny.
 
 * (Volitelné) K sestavení aplikace pro iOS se vyžaduje Mac s prostředím Xcode 9.0 nebo novějším. Visual Studio for Mac slouží k vývoji aplikací pro iOS nebo Visual Studio 2017 nebo je později použít (Pokud je Mac dostupný v síti).
 
@@ -46,7 +51,7 @@ Pro absolvování tohoto kurzu potřebujete:
 
 ## <a name="run-the-xamarinforms-solution"></a>Spuštění řešení Xamarin.Forms
 
-K otevření řešení se vyžadují nástroje Visual Studio Tools for Xamarin, viz [pokyny k instalaci Xamarinu][Install Xamarin]. Pokud jsou tyto nástroje už nainstalované, použijte ke stažení a otevření tohoto řešení následující postup:
+Visual Studio Tools pro Xamarin se vyžadují k otevření řešení, najdete v článku [pokyny k instalaci Xamarin][Install Xamarin]. Pokud jsou tyto nástroje už nainstalované, použijte ke stažení a otevření tohoto řešení následující postup:
 
 ### <a name="visual-studio-windows-and-mac"></a>Visual Studio (Windows a Mac)
 

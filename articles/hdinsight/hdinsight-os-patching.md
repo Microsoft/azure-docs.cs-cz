@@ -1,18 +1,18 @@
 ---
 title: Konfigurovat plán pro clustery založené na Linuxu HDInsight – Azure oprav operačního systému
 description: Zjistěte, jak nakonfigurovat plán pro clustery HDInsight založené na Linuxu oprav operačního systému.
-author: omidm1
-ms.author: omidm
+author: hrasheed-msft
+ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/24/2019
-ms.openlocfilehash: 3fad8869a31688e9e2413abb350eccf1f871f7dd
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.date: 07/01/2019
+ms.openlocfilehash: a73866a8898042b546fa47d9c3d14ab4e58e9a12
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67330709"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67503237"
 ---
 # <a name="os-patching-for-hdinsight"></a>Opravy operačního systému pro HDInsight 
 

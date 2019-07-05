@@ -4,17 +4,17 @@ description: Popisuje postup vytvoření a načtení výstupu a chybové zprávy
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 12/04/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1cbf91af4e91f41fff30a7edfa869d07a21b881e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 27dd9888d83e01ea522b2532fc1d65284f2fe8d1
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61226909"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476925"
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Sada Runbook výstup a zprávy ve službě Azure Automation
 Většina runbooků služeb automatizace Azure mají určitou formu výstupu. Tento výstup může být chybová zpráva pro uživatele nebo složitý objekt, že máte v úmyslu používat s jinou sadou runbook. Prostředí Windows PowerShell poskytuje [různých datových proudů](/powershell/module/microsoft.powershell.core/about/about_redirection) odesílat výstup ze skriptu nebo pracovního postupu. Azure Automation funguje s každou z těchto datových proudů jinak. Postupujte podle osvědčené postupy pro jejich používání při vytváření sady runbook.

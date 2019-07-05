@@ -12,15 +12,15 @@ ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/11/2019
+ms.date: 07/01/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 033e0865f23034b94e3133e0ba5890eca4e746ea
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1848891a0a37235c9769b3cee18262239e19df5a
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080893"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67502664"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Výběr velikosti virtuálního počítače pro výpočetní uzly ve fondu služby Azure Batch
 
@@ -51,8 +51,8 @@ Všechny propagační nebo velikosti virtuálních počítačů ve verzi preview
 | [Paměťově optimalizované velikosti](../virtual-machines/linux/sizes-memory.md) | Žádný | Není k dispozici. |
 | Fsv2-series | Všechny velikosti | Jakýkoli |
 | H-series | Všechny velikosti | Jakýkoli |
-| HB-Series | Všechny velikosti | Režim předplatného uživatele |
-| HC-Series | Všechny velikosti | Režim předplatného uživatele |
+| Hb-series<sup>2</sup> | Všechny velikosti | Jakýkoli |
+| Hybridní připojení řady<sup>2</sup> | Všechny velikosti | Jakýkoli |
 | Řada Ls | Všechny velikosti | Jakýkoli |
 | Řada Lsv2 | Žádný | Není k dispozici. |
 | M-Series | Standard_M64ms (s nízkou prioritou pouze), Standard_M128s (pouze s nízkou prioritou) | Jakýkoli |  

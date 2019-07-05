@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 services: site-recovery
-ms.date: 05/30/2019
+ms.date: 06/27/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 59be8e0585f0bedcafc868ee42f5113509c9c4ef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 79118fb053c7064fa29730680feb0434f45f031a
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66417771"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491699"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>Běžné dotazy týkající se VMware pro replikaci Azure
 
@@ -85,6 +85,10 @@ Podrobný odhad nákladů, spusťte nástroj Plánovač nasazení pro [VMware](h
 ### <a name="is-there-any-difference-in-cost-between-replicating-to-storage-or-directly-to-managed-disks"></a>Existuje rozdíl nákladů mezi replikace do úložiště nebo přímo na spravované disky?
 
 Spravované disky se účtují trošku jinak z účtů úložiště. [Další informace](https://azure.microsoft.com/pricing/details/managed-disks/) o cenách služby managed Disks.
+
+### <a name="is-there-any-difference-in-cost-when-replicating-to-general-purpose-v2-storage-account"></a>Existuje rozdíl v náklady při replikaci do účtu úložiště pro obecné účely v2?
+
+Zobrazí se obvykle zvýšení transakce náklady na účty úložiště GPv2 od Azure Site Recovery je těžké transakce. [Přečtěte si další](../storage/common/storage-account-upgrade.md#pricing-and-billing) odhadnout změny.
 
 ## <a name="mobility-service"></a>Služba Mobility
 
@@ -293,7 +297,7 @@ Aktualizace pro verze 9,24 a novější zobrazování [stavu procesového server
 
 ### <a name="how-do-i-update-the-process-server-to-version-924-or-later-for-accurate-health-information"></a>Jak aktualizovat procesový server na verzi 9.24 nebo vyšší pro přesné zdravotních informací?
 
-Počínaje [verze 9,24](service-updates-how-to.md#links-to-currently-supported-update-rollups), k označení stavu procesového serveru se přidaly další výstrahy. [Aktualizovat součásti Site Recovery na verzi 9.24 nebo novější] (service-updates-how-to.md#links-to-currently-supported-update-rollups tam) tak, aby všechny výstrahy jsou generovány.
+Počínaje [verze 9,24](service-updates-how-to.md#links-to-currently-supported-update-rollups), k označení stavu procesového serveru se přidaly další výstrahy. [Aktualizovat součásti Site Recovery na verzi 9.24 nebo novější](service-updates-how-to.md#links-to-currently-supported-update-rollups) tak, aby všechny výstrahy jsou generovány.
 
 ## <a name="failover-and-failback"></a>Převzetí služeb při selhání a navrácení služeb po obnovení
 

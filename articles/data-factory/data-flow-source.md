@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 86e30c465a605681519565261beec75d88ccd472
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: 4f77eafd3309d7c1d679c126b1a5eb1ff0e9a28d
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190807"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490098"
 ---
 # <a name="source-transformation-for-mapping-data-flow"></a>Transformace zdroje pro mapování toku dat 
 
@@ -146,6 +146,12 @@ Pokud textový soubor nemá definované schéma, vyberte **rozpoznat datový typ
 Datové typy sloupce v odvozených sloupců transformaci dále můžete upravit. Vyberte transformace použijte k úpravě názvů sloupců.
 
 ![Nastavení pro výchozí datových formátů](media/data-flow/source2.png "výchozí formáty")
+
+### <a name="add-dynamic-content"></a>Přidat dynamický obsah
+
+Po kliknutí na uvnitř polí v nastavení panelu, zobrazí se hypertextový odkaz "Přidat dynamický obsah". Když kliknete sem, spustí se Tvůrce výrazů. Je to, kde můžete nastavit hodnoty pro nastavení dynamicky pomocí výrazů, statické hodnoty literálu nebo parametry.
+
+![Parametry](media/data-flow/params6.png "parametry")
 
 ## <a name="next-steps"></a>Další postup
 

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 982c5dcc052f92afe381235db0bf066262fd82c6
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 357be801914017aceb7e827a3b49960cf7c3e386
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67304288"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565409"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migrace na granulární řízení přístupu na základě rolí pro konfigurace clusteru
 
@@ -121,10 +121,10 @@ Aktualizace na [verze 5.0.0](https://www.nuget.org/packages/Microsoft.Azure.Mana
 
 Aktualizace na [verze 1.0.0](https://pypi.org/project/azure-mgmt-hdinsight/1.0.0/) nebo novější sady HDInsight SDK pro Python. Změny jen minimum kódu mohou být vyžadovány, pokud používáte metodu těmito změnami ovlivněny:
 
-- [`ConfigurationsOperations.get`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurations_operations.configurationsoperations?view=azure-python#get-resource-group-name--cluster-name--configuration-name--custom-headers-none--raw-false----operation-config-) bude **už nevracel citlivé parametry** , jako je úložiště klíčů (základní web) nebo přihlašovací údaje protokolu HTTP (brány).
-    - Pokud chcete načíst všechny konfigurace, včetně citlivé parametrů, použijte [ `ConfigurationsOperations.list` ](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurations_operations.configurationsoperations?view=azure-python#list-resource-group-name--cluster-name--custom-headers-none--raw-false----operation-config-) do budoucna.  Všimněte si, že uživatelé s rolí 'Čtečky' nebude možné použít tuto metodu. Díky tomu umožňuje zajistit detailní kontrolu nad tím, které mohou uživatelé citlivých informací pro cluster. 
-    - Chcete-li načíst jenom přihlašovací údaje brány protokolu HTTP, použijte [ `ConfigurationsOperations.get_gateway_settings` ](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.clusters_operations.clustersoperations?view=azure-python#get-gateway-settings-resource-group-name--cluster-name--custom-headers-none--raw-false----operation-config-).
-- [`ConfigurationsOperations.update`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.clusters_operations.clustersoperations?view=azure-python#update-resource-group-name--cluster-name--tags-none--custom-headers-none--raw-false----operation-config-) je nyní zastaralá a nahradila ji [ `ClusterOperations.update_gateway_settings` ](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.clusters_operations.clustersoperations?view=azure-python#update-gateway-settings-resource-group-name--cluster-name--parameters--custom-headers-none--raw-false--polling-true----operation-config-).
+- [`ConfigurationsOperations.get`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurationsoperations#get-resource-group-name--cluster-name--configuration-name--custom-headers-none--raw-false----operation-config-) bude **už nevracel citlivé parametry** , jako je úložiště klíčů (základní web) nebo přihlašovací údaje protokolu HTTP (brány).
+    - Pokud chcete načíst všechny konfigurace, včetně citlivé parametrů, použijte [ `ConfigurationsOperations.list` ](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurationsoperations#list-resource-group-name--cluster-name--custom-headers-none--raw-false----operation-config-) do budoucna.  Všimněte si, že uživatelé s rolí 'Čtečky' nebude možné použít tuto metodu. Díky tomu umožňuje zajistit detailní kontrolu nad tím, které mohou uživatelé citlivých informací pro cluster. 
+    - Chcete-li načíst jenom přihlašovací údaje brány protokolu HTTP, použijte [ `ClusterOperations.get_gateway_settings` ](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.clustersoperations#get-gateway-settings-resource-group-name--cluster-name--custom-headers-none--raw-false----operation-config-).
+- [`ConfigurationsOperations.update`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurationsoperations#update-resource-group-name--cluster-name--configuration-name--parameters--custom-headers-none--raw-false--polling-true----operation-config-) je nyní zastaralá a nahradila ji [ `ClusterOperations.update_gateway_settings` ](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.clustersoperations#update-gateway-settings-resource-group-name--cluster-name--parameters--custom-headers-none--raw-false--polling-true----operation-config-).
 
 ### <a name="sdk-for-java"></a>Sada SDK pro Javu
 

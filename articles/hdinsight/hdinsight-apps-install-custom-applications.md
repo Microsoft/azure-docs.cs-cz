@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: 0acac29ee49bc94c195d0e13e55fff3a735ad36b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5fbee86f09246684a0e553114e367907ddabfa16
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65859814"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445506"
 ---
 # <a name="install-custom-apache-hadoop-applications-on-azure-hdinsight"></a>Instalace vlastních aplikací Apache Hadoop v Azure HDInsight
 
@@ -107,7 +107,7 @@ Existuje několik způsobů jak odstranit aplikace HDInsight.
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Klikněte na tlačítko **Clustery HDInsight** v levé nabídce.  Pokud ho nevidíte, klikněte na tlačítko **Procházet** a pak klikněte na tlačítko **Clustery HDInsight**.
 3. Klikněte na cluster, kde je nainstalovaná aplikace.
-4. Z okna **Nastavení** klikněte na tlačítko **Aplikace** pod kategorií **Obecné**. Zobrazí se seznam nainstalovaných aplikací. Pro toto školení je položka **hue** uvedena v okně **Nainstalované aplikace**.
+4. Z okna **Nastavení** klikněte na tlačítko **Aplikace** pod kategorií **Obecné**. Zobrazí se seznam nainstalovaných aplikací. Pro účely tohoto článku **hue** uvedené v **nainstalované aplikace** okno.
 5. Klikněte pravým tlačítkem na aplikaci, kterou chcete odebrat, a pak klikněte na tlačítko **Odstranit**.
 6. Pro potvrzení klikněte na tlačítko **Ano**.
 

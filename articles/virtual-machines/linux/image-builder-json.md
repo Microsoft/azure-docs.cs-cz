@@ -7,12 +7,12 @@ ms.date: 05/10/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: jeconnoc
-ms.openlocfilehash: cf8264cbad3c5c88c58cff3b95cb5c68adf0686c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a577a2a2a3b21cb027ba699450631a627f4f7a39
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65538299"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67501874"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Verze Preview: Vytvoření šablony Azure Image Builder 
 
@@ -55,7 +55,7 @@ To je formát základní šablony:
 
 Umístění je oblast, ve kterém se vytvoří vlastní image. Pro Image Builder ve verzi preview se podporují těchto oblastech:
 
-- USA – východ
+- East US
 - Východní USA 2
 - Západní střed USA
 - Západní USA
@@ -331,6 +331,8 @@ To je podporována adresáře Windows a Linuxem cesty, ale existují určité ro
  
  
 Pokud dojde k chybě pokusu o stažení souboru a vložit ho do zadaného adresáře vlastní krok se nezdaří a bude ve customization.log.
+
+>> Poznámka:! Úpravce systému souborů je pouze vhodný pro malý soubor ke stažení, < 20MB. Pro větší stahování souborů pomocí skriptu nebo vložené příkazu, použít kód ke stažení souborů, jako je třeba Linux `wget` nebo `curl`, Windows, `Invoke-WebRequest`.
 
 Soubory v souboru úpravce systému si můžete stáhnout z Azure Storage pomocí [MSI](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage).
 

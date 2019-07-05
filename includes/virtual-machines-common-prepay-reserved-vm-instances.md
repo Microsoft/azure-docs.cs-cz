@@ -3,13 +3,13 @@ author: yashesvi
 ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
-ms.date: 05/14/2019
-ms.openlocfilehash: c7ff7ab0800449c2a3aa9d58bd036981caccaa1c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
-ms.translationtype: MT
+ms.date: 07/01/2019
+ms.openlocfilehash: 9e0caa8b98133dad3af083e8910d0603bbd2563b
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67174975"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67489909"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances-ri"></a>Předplatit si virtuální počítače se službou Azure Reserved VM Instances (RI)
 
@@ -17,7 +17,7 @@ Pro virtuální počítače předem a ušetřete peníze s instancemi Azure Rese
 
 Můžete si koupit rezervované Instance virtuálního počítače [webu Azure portal](https://portal.azure.com). Chcete-li zakoupit instanci:
 
-- Musí být v roli vlastník pro alespoň jeden Enterprise nebo předplatné s průběžnými platbami.
+- Musí být v roli vlastník pro alespoň jedno předplatné Enterprise nebo předplatné s průběžnými platbami rychlostí.
 - Předplatné Enterprise **přidat Reserved Instances** musí být povolená v [portál EA](https://ea.azure.com). Nebo, pokud je toto nastavení zakázané, musíte být správce EA na předplatné.
 - Do programu Cloud Solution Provider (CSP) pouze správce agentů nebo obchodní zástupci koupit rezervace.
 
@@ -68,13 +68,13 @@ Rezervované instance virtuálních počítačů jsou dostupné pro většinu ve
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Vyberte **všechny služby** > **rezervace**.
 3. Vyberte **přidat** koupit novou rezervaci.
-4. Vyplňte požadovaná pole. Instance spuštěného virtuálního počítače, které odpovídají atributy, které jste vybrali kvalifikovat pro získání sleva za rezervaci. Skutečný počet instancí virtuálních počítačů, které získávají slevy závisí na rozsah a množství vybranou.
+4. Zadejte požadovaná pole. Instance spuštěného virtuálního počítače, které odpovídají atributy, které jste vybrali kvalifikovat pro získání sleva za rezervaci. Skutečný počet instancí virtuálních počítačů, které získávají slevy závisí na rozsah a množství vybranou.
 
     | Pole      | Popis|
     |------------|--------------|
-    |Name        |Název této rezervace.|
-    |Předplatné|Předplatné použité k úhradě rezervace. Způsob platby v rámci předplatného účtuje pořizovací náklady pro rezervaci. Tento typ předplatného musí být smlouvu enterprise agreement (nabízejí čísla: MS-AZR-0017P nebo MS-AZR - 0148 P) nebo s průběžnými platbami (nabízejí čísla: MS-AZR-0003P nebo MS-AZR-0023P). V případě předplatného se smlouvou Enterprise se poplatky strhávají z peněžního zůstatku v rámci dané registrace nebo se účtují jako nadlimitní využití. V případě předplatného s průběžnými platbami se poplatky účtují na platební kartu nebo pomocí způsobu platby faktur určeného v předplatném.|    
-    |Scope       |Obor pro rezervaci může vztahovat na jedno předplatné jeden nebo více odběrů (sdíleném oboru). Pokud vyberete: <ul><li>Jedno předplatné – sleva za rezervaci se používá pro virtuální počítače v tomto předplatném. </li><li>Na úrovni Shared – sleva za rezervaci se použijí pro virtuální počítače spuštěné v rámci všech předplatných v rámci kontextu vaší fakturace. Pro podnikové zákazníky sdílený obor je registrace a obsahuje všechna předplatná v rámci registrace. Pro zákazníky s průběžnými platbami sdílený obor je Všechna předplatná s průběžnými platbami, vytváří správce účtu.</li></ul>|
+    |Název        |Název této rezervace.|
+    |Předplatné|Předplatné použité k úhradě rezervace. Způsob platby v rámci předplatného účtuje pořizovací náklady pro rezervaci. Tento typ předplatného musí být smlouvu enterprise agreement (nabízejí čísla: MS-AZR-0017P nebo MS-AZR - 0148 P) nebo samostatného předplatného s průběžnými sazbami (nabízejí čísla: MS-AZR-0003P nebo MS-AZR-0023P). V případě předplatného se smlouvou Enterprise se poplatky strhávají z peněžního zůstatku v rámci dané registrace nebo se účtují jako nadlimitní využití. Pro předplatné s průběžnými sazbami účtují se poplatky kreditní kartou nebo fakturou způsobu platby v rámci předplatného.|    
+    |Scope       |Obor pro rezervaci může vztahovat na jedno předplatné jeden nebo více odběrů (sdíleném oboru). Pokud vyberete: <ul><li>Jedno předplatné – sleva za rezervaci se používá pro virtuální počítače v tomto předplatném. </li><li>Na úrovni Shared – sleva za rezervaci se použijí pro virtuální počítače spuštěné v rámci všech předplatných v rámci kontextu vaší fakturace. Pro podnikové zákazníky sdílený obor je registrace a obsahuje všechna předplatná v rámci registrace. Pro zákazníky s předplatným, které mají tarify průběžných plateb je sdílený obor všech předplatných s využitím průběžné platby, vytváří správce účtu.</li></ul>|
     |Oblast    |Oblast Azure, která je předmětem rezervace.|    
     |Velikost virtuálního počítače     |Velikost instancí virtuálních počítačů.|
     |Optimalizovat pro     |Flexibilita velikost instancí virtuálních počítačů platí sleva za rezervaci pro ostatní virtuální počítače ve stejné [skupině velikostí virtuálních počítačů](https://aka.ms/RIVMGroups). Priorita kapacity upřednostňuje kapacitu datacentra pro vaše nasazení. To nabízí máte ještě větší jistotu budete moct spustit instance virtuálních počítačů, když je potřebujete. Priorita kapacity je k dispozici, pouze pokud obor rezervace je jedno předplatné. |
@@ -96,7 +96,7 @@ Také můžete rozdělit do menších bloků dat a sloučení už rozdělit reze
 Následující typy změn nelze změnit po zakoupení přímo:
 
 - Stávající rezervaci oblasti
-- Skladová jednotka (SKU)
+- SKU
 - Množství
 - Doba trvání
 
@@ -121,7 +121,7 @@ Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](http
     - [Co jsou Azure rezervace?](../articles/billing/billing-save-compute-costs-reservations.md)
     - [Správa rezervací v Azure](../articles/billing/billing-manage-reserved-vm-instance.md)
     - [Vysvětlení, jak se sleva za rezervaci použije](../articles/billing/billing-understand-vm-reservation-charges.md)
-    - [Vysvětlení využití rezervace pro vaše předplatné s průběžnými platbami](../articles/billing/billing-understand-reserved-instance-usage.md)
+    - [Vysvětlení využití rezervace pro předplatné s průběžnými sazbami](../articles/billing/billing-understand-reserved-instance-usage.md)
     - [Vysvětlení využití rezervaci u prováděcí smlouvy Enterprise](../articles/billing/billing-understand-reserved-instance-usage-ea.md)
     - [Náklady na software Windows, které nejsou součástí rezervace](../articles/billing/billing-reserved-instance-windows-software-costs.md)
     - [Rezervace Azure v programu Partnerské centrum Cloud Solution Provider (CSP)](https://docs.microsoft.com/partner-center/azure-reservations)

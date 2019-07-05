@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 0610f57e264189961a6803bee5bb93c1ec9fb103
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7f9df42725e41fb514370dbdb828ad5b1305ea78
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66753998"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485455"
 ---
 # <a name="how-to-index-cosmos-db-using-an-azure-search-indexer"></a>Jak indexovat Cosmos DB pomocí indexeru Azure Search
 
@@ -133,7 +133,7 @@ V účtu služby Cosmos DB můžete, zda chcete automaticky indexuje všechny do
 
 ### <a name="1---assemble-inputs-for-the-request"></a>1 - vstupy pro žádost o sestavení
 
-Pro každý požadavek musíte zadat název služby a klíč správce pro Azure Search (v hlavičce POST) a název účtu úložiště a klíč pro úložiště objektů blob. Můžete použít [Postman](search-fiddler.md) k odesílání požadavků HTTP do služby Azure Search.
+Pro každý požadavek musíte zadat název služby a klíč správce pro Azure Search (v hlavičce POST) a název účtu úložiště a klíč pro úložiště objektů blob. Můžete použít [Postman](search-get-started-postman.md) k odesílání požadavků HTTP do služby Azure Search.
 
 Zkopírujte následující čtyři hodnoty do poznámkového bloku tak, aby vložte je do požadavku:
 

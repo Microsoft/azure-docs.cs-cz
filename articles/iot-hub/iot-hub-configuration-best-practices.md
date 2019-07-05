@@ -3,16 +3,16 @@ title: Osvědčenými postupy konfigurace zařízení pro službu Azure IoT Hub 
 description: Další informace o osvědčené postupy pro konfiguraci zařízení IoT ve velkém měřítku
 author: chrisgre
 ms.author: chrisgre
-ms.date: 06/24/2018
+ms.date: 06/28/2019
 ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: c97395981ea3af90c7b0c590cb049fccc7392304
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 33e77d63b958df292ee9b4ac8ded41f3693cb6bc
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60734826"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485808"
 ---
 # <a name="best-practices-for-device-configuration-within-an-iot-solution"></a>Osvědčené postupy pro konfiguraci zařízení v rámci řešení IoT
 
@@ -64,9 +64,11 @@ Tady jsou osvědčené postupy pro vývojáře řešení IoT, kteří zodpovída
 
 * **Umožňují uspořádejte zařízení pomocí značky dvojčat zařízení:** Řešení by měla umožňovat operátor pro definování okruhy kvality nebo jiné sady založené na různé strategie nasazení, jako je například testovací zařízení. Je možné implementovat zařízení organizace v rámci vašeho řešení pomocí značky dvojčat zařízení a [dotazy](iot-hub-devguide-query-language.md). Zařízení organizace je potřeba povolit pro zavádění konfigurace bezpečně a přesně.
 
-* **Implementace [automatické konfigurace](iot-hub-auto-device-config.md):** Konfigurace automatické nasazení a konfigurace monitorování se změní na velkých sadách zařízení IoT prostřednictvím dvojčata zařízení. Konfigurace automatického zařízení cílit na dvojčata zařízení prostřednictvím sady **cílové podmínce,** což je dotaz na zařízení značky dvojčat nebo ohlášené vlastnosti. **Směrovat obsah** je sada požadované vlastnosti nastavené v rámci dvojčat cílové zařízení. Cíl obsahu by mělo odpovídat definované výrobce hardwaru IoT/integrátor strukturu dvojčete zařízení.
+* **Implementace [automatické konfigurace](iot-hub-auto-device-config.md):** Konfigurace automatické nasazení a konfigurace monitorování se změní na velkých sadách zařízení IoT prostřednictvím dvojčata zařízení.
 
-   **Metriky** jsou ohlášené vlastnosti dotazy na dvojče zařízení a také by mělo odpovídat definované výrobce hardwaru IoT/integrátor strukturu dvojčete zařízení. Konfigurace automatického zařízení také přináší výhody služby IoT Hub provádí operace dvojčete zařízení sazbou se nikdy nepřekročí [limitů omezování](iot-hub-devguide-quotas-throttling.md) pro aktualizace a čtení dvojčat zařízení.
+   Konfigurace automatického zařízení cílit na dvojčata zařízení prostřednictvím sady **cílové podmínce,** což je dotaz na zařízení značky dvojčat nebo ohlášené vlastnosti. **Směrovat obsah** je sada požadované vlastnosti nastavené v rámci dvojčat cílové zařízení. Cíl obsahu by mělo odpovídat definované výrobce hardwaru IoT/integrátor strukturu dvojčete zařízení. **Metriky** jsou dotazy na dvojče zařízení ohlášené vlastnosti a také by mělo odpovídat definované výrobce hardwaru IoT/integrátor strukturu dvojčete zařízení.
+
+   Konfigurace automatické spuštění poprvé krátce po konfiguraci a pak každých pět minut. Můžou taky těžit ze služby IoT Hub provádí operace dvojčete zařízení sazbou se nikdy nepřekročí [limitů omezování](iot-hub-devguide-quotas-throttling.md) pro aktualizace a čtení dvojčat zařízení.
 
 * **Použití [Device Provisioning Service](../iot-dps/how-to-manage-enrollments.md):** Řešení by vývojáři služby Device Provisioning a přiřaďte značky dvojčat zařízení na nová zařízení, tak, aby se automaticky nakonfiguruje **automatické konfigurace** , který cílí na dvojčata s konkrétní značkou. 
 

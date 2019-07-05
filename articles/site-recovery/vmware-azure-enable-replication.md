@@ -3,15 +3,15 @@ title: Povolení replikace virtuálních počítačů VMware pro zotavení po ha
 description: Tento článek popisuje, jak povolit virtuálních počítačů VMware pro replikaci do Azure pro zotavení po havárii pomocí Azure Site Recovery.
 author: Rajeswari-Mamilla
 ms.service: site-recovery
-ms.date: 05/10/2019
+ms.date: 06/28/2019
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: add0f8252bdae6857b28deeb7de4c1d09973e452
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3f4e4afb4d94a7b2e2a6b246a371cf6234577463
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65540765"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491737"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Povolit replikaci do Azure pro virtuální počítače VMware
 
@@ -37,11 +37,13 @@ Při replikaci virtuálních počítačů VMware, mějte tyto informace:
 ## <a name="enable-replication"></a>Povolení replikace
 
 Než budete postupovat podle kroků v této části, mějte na paměti následující informace:
-* Azure Site Recovery replikuje nyní přímo do managed disks pro všechny nové replikace. Procesový server zapíše protokoly replikace do účtu úložiště mezipaměti v cílové oblasti. Tyto protokoly se používají k vytvoření bodů obnovení na spravované disky repliky.
+* Azure Site Recovery replikuje nyní přímo do managed disks pro všechny nové replikace. Procesový server zapíše protokoly replikace do účtu úložiště mezipaměti v cílové oblasti. Tyto protokoly se používají k vytvoření bodů obnovení na spravované disky repliky, které mají asrseeddisk zásadu vytváření názvů.
+* Podpora Powershellu pro replikaci na spravované disky je k dispozici z [Az.RecoveryServices verze modulu 2.0.0 a vyšší](https://www.powershellgallery.com/packages/Az.RecoveryServices/2.0.0-preview) 
 * Během převzetí služeb při selhání vyberete bod obnovení slouží k vytvoření cílového spravovaného disku.
 * Virtuální počítače, které už byly nakonfigurované pro replikaci do cílové účty úložiště nejsou ovlivněny.
 * Replikace do účtů úložiště pro nový virtuální počítač je pouze k dispozici prostřednictvím REST Representational State Transfer () rozhraní API a Powershellu. Použijte rozhraní Azure REST API verze 2016-08-10 nebo 2018-01-10 se replikuje do účtů úložiště.
 
+Postupujte podle následujících kroků k povolení replikace:
 1. Přejděte na **krok 2: Replikovat aplikaci** > **zdroj**. Po povolení replikace pro první vyberte **+ replikovat** v trezoru povolíte replikaci pro další virtuální počítače.
 2. V **zdroj** stránky > **zdroj**, vyberte konfigurační server.
 3. Pro **typ počítače**vyberte **virtuálních počítačů** nebo **fyzické počítače**.

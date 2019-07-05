@@ -4,14 +4,14 @@ description: Použití Azure Resource Manageru k přesunutí prostředků do nov
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 06/24/2019
 ms.author: tomfitz
-ms.openlocfilehash: eb99bec74ae5444320b7098616d4bf2d81b90697
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 6cb2f49113a67a8dc6cea70ae58bd440f420a1d2
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67332029"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442797"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Přesunutí prostředků do nové skupiny prostředků nebo předplatného
 
@@ -49,6 +49,7 @@ Následující seznam obsahuje obecný přehled služby Azure, které lze přesu
 * API Management
 * Aplikace služby App Service (webové aplikace) – viz [omezení App Service](#app-service-limitations)
 * Certifikáty služby App Service – viz [omezení služby App Service Certificate](#app-service-certificate-limitations)
+* Doména služby App Service
 * Automation – sady Runbook musí existovat ve stejné skupině prostředků jako účet služby Automation.
 * Azure Active Directory B2C
 * Mezipaměť Azure pro Redis - li ukládání do mezipaměti Azure pro instanci Redis je nakonfigurovaný s virtuální sítí, instance nelze přesunout do jiného předplatného. Zobrazit [omezení virtuální sítě](#virtual-networks-limitations).

@@ -14,12 +14,12 @@ ms.date: 04/09/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 651dc4efa653e7a4eb77f153280579ffd87fe8f7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 408991ffc3922986234f7d40e1cd589b1d126ba1
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60289911"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476493"
 ---
 # <a name="start-using-pim"></a>Zahájení práce s využitím PIM
 
@@ -56,25 +56,25 @@ Pokud chcete začít používat PIM ve vašem adresáři, musíte nejprve povoli
 
 1. V seznamu, klikněte na tlačítko **souhlas s PIM**.
 
-    ![Souhlas s PIM](./media/pim-getting-started/consent-pim.png)
+    ![Souhlas s PIM povolení PIM](./media/pim-getting-started/consent-pim.png)
 
 1. Klikněte na tlačítko **ověřit moji identitu** ověřit svoji identitu pomocí Azure MFA. Budete vyzváni k výběru účtu.
 
-    ![Vyberte účet](./media/pim-getting-started/pick-account.png)
+    ![Vyberte si oknem účtu k ověření vaší identity](./media/pim-getting-started/pick-account.png)
 
 1. Je-li další informace jsou nezbytné k ověření, provedeme vás procesem. Další informace najdete v tématu [potřebujete pomoc s dvoustupňovým ověřováním](https://go.microsoft.com/fwlink/p/?LinkId=708614).
 
-    ![Další informace požadované](./media/pim-getting-started/more-information-required.png)
+    ![Další informace o požadované okno, pokud vaše organizace potřebuje další informace](./media/pim-getting-started/more-information-required.png)
 
     Například může být požádáni o zadání ověření pomocí telefonu.
 
-    ![Další ověření zabezpečení](./media/pim-getting-started/additional-security-verification.png)
+    ![Další bezpečnostní ověření stránka s dotazem, jak můžete kontaktovat](./media/pim-getting-started/additional-security-verification.png)
 
 1. Po dokončení procesu ověřování, klikněte na tlačítko **souhlas** tlačítko.
 
 1. Ve zprávě, která se zobrazí, klikněte na tlačítko **Ano** souhlas ke službě PIM.
 
-    ![Souhlas s PIM zprávy](./media/pim-getting-started/consent-pim-message.png)
+    ![Souhlas s PIM zprávy k dokončení procesu souhlas](./media/pim-getting-started/consent-pim-message.png)
 
 ## <a name="sign-up-pim-for-azure-ad-roles"></a>Zaregistrovat PIM pro role Azure AD
 
@@ -100,7 +100,7 @@ Jakmile pro svůj adresář povolíte PIM, budete muset zaregistrovat PIM pro ro
 
 Po nastavení PIM můžete provádět úkoly správy identity.
 
-![Úkoly nejvyšší úrovně v PIM – snímek obrazovky](./media/pim-getting-started/pim-quickstart-tasks.png)
+![Navigačním okně v PIM zobrazení úlohy a spravovat možnosti](./media/pim-getting-started/pim-quickstart-tasks.png)
 
 | Úlohy a spravovat | Popis |
 | --- | --- |
@@ -125,11 +125,11 @@ Aby bylo snazší otevřete PIM, měli byste přidat PIM dlaždice na řídicí 
 
 1. Zkontrolujte **Připnout okno na řídicí panel** připnutí v okně rychlého PIM do řídicího panelu.
 
-    ![Připnout okno na řídicí panel](./media/pim-getting-started/pim-quickstart-pin-to-dashboard.png)
+    ![Ikonu připínáčku PIM Připnout okno na řídicí panel](./media/pim-getting-started/pim-quickstart-pin-to-dashboard.png)
 
     Na řídicím panelu Azure se zobrazí dlaždice s tímto způsobem:
 
-    ![Rychlý start PIM dlaždice](./media/pim-getting-started/pim-quickstart-dashboard-tile.png)
+    ![Rychlý start PIM dlaždice na řídicím panelu](./media/pim-getting-started/pim-quickstart-dashboard-tile.png)
 
 ## <a name="next-steps"></a>Další postup
 

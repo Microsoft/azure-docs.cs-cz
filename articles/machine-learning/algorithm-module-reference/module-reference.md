@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 8825f1dc3b66a5c4981ba25a90813aec63975b1f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e73d4ebd3eb05f7cf217573d8112e3dbbe6d3a37
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65145140"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67514072"
 ---
 # <a name="algorithm--module-reference-overview"></a>Přehled modulům a algoritmům
 
@@ -33,8 +33,8 @@ Moduly jsou uspořádané podle funkce:
 | --- |--- | ---- |
 | Převody formátů dat | Převod dat mezi různými formáty souborů používaných pro strojové učení | [Převést na sdílený svazek clusteru](convert-to-csv.md) |
 | Datový vstup a výstup | Přesun dat z cloudových zdrojů do svého experimentu. Zapsat výsledky nebo dočasných dat do služby Azure Storage, SQL database nebo Hivu, při spuštění experimentu, nebo použít cloudové úložiště pro výměnu dat mezi pokusy.  | [Import dat](import-data.md)<br/>[Export dat](export-data.md)<br/>[Ruční zadání dat](enter-data-manually.md) |
-| Transformace dat | Operace s daty, které jsou jedinečné pro strojové učení, jako je například normalizace nebo binning dat, výběr funkce a snížení.| [Výběr sloupců v datové sadě](select-columns-in-dataset.md) <br/> [Upravit Metadata](edit-metadata.md) <br/> [Vyčištění chybějících dat](clean-missing-data.md) <br/> [Přidání sloupců](add-columns.md) <br/> [Přidání řádků](add-rows.md) <br/> [Odebrání duplicitních řádků](remove-duplicate-rows.md) <br/> [Rozdělení dat.](split-data.md) <br/> [Normalizovat Data](normalize-data.md) <br/> [Rozdělení a vzorky](partition-and-sample.md) |
-| Modul Python | Psaní kódu a vložení v modulu integrace Python s experimentu. | [Spusťte skript Pythonu](execute-python-script.md)   <br/> [Create Python Model](create-python-model.md)
+| Transformace dat | Operace s daty, které jsou jedinečné pro strojové učení, jako je například normalizace nebo binning dat, výběr funkce a snížení.| [Výběr sloupců v datové sadě](select-columns-in-dataset.md) <br/> [Upravit Metadata](edit-metadata.md) <br/> [Vyčištění chybějících dat](clean-missing-data.md) <br/> [Přidání sloupců](add-columns.md) <br/> [Přidání řádků](add-rows.md) <br/> [Odebrání duplicitních řádků](remove-duplicate-rows.md) <br/> [Připojit Data](join-data.md) <br/> [Rozdělení dat.](split-data.md) <br/> [Normalizovat Data](normalize-data.md) <br/> [Rozdělení a vzorky](partition-and-sample.md) |
+| Moduly Pythonu a r. | Psaní kódu a vložit do modul Pythonu a r. integrovat experimentu. | [Spusťte skript Pythonu](execute-python-script.md)   <br/> [Create Python Model](create-python-model.md) <br/> [Spustit skript jazyka R](execute-r-script.md)
 |  | **Strojového učení se supervizí**: | |
 | Klasifikace | Předpověď třídu.  Vyberte si z binárního souboru (dvěma třídami) nebo víc tříd algoritmy.| [Rozhodovací les se multiclass](multiclass-decision-forest.md) <br/> [Víc tříd logistické regrese](multiclass-logistic-regression.md)  <br/> [Multiclass Neural Network](multiclass-neural-network.md)  <br/>  [Logistické regrese Two-Class](two-class-logistic-regression.md)  <br/>[Průměrné Perceptron Two-Class](two-class-averaged-perceptron.md) <br/> [Two-Class&nbsp;Boosted&nbsp;rozhodnutí&nbsp;stromu](two-class-boosted-decision-tree.md)  <br/> [Rozhodovací les se dvěma třídami](two-class-decision-forest.md)  <br/> [Two-Class Neuronové sítě](two-class-neural-network.md)  <br/> [Dvě&#8209;třídy&nbsp;podporu&nbsp;vektoru&nbsp;počítače](two-class-support-vector-machine.md) 
 | Vytváření clusterů | Data seskupit dohromady.| [K-Means Clustering](k-means-clustering.md)

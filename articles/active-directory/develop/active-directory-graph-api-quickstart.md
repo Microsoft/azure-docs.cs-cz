@@ -19,12 +19,12 @@ ms.author: ryanwi
 ms.reviewer: sureshja
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05b3d749eb3e2bc767889831b4c1ff01833a3f39
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a2ae83b655bfe607b1061168649ec74f02ab4064
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65544665"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67483179"
 ---
 # <a name="how-to-use-the-azure-ad-graph-api"></a>Postup: Použití Graph API v Azure AD
 
@@ -65,7 +65,7 @@ Azure AD Graph Explorer pro Azure AD Graph API můžete použít k dotazování 
 
 Na následujícím snímku obrazovky je uvidíte, pokud byste chtěli přejděte na Azure AD Graph Explorer, přihlaste se a zadejte výstup `https://graph.windows.net/GraphDir1.OnMicrosoft.com/users?api-version=1.6` zobrazíte všechny uživatele v adresáři uživatele přihlášeného:
 
-![Průzkumník rozhraní api graph služby Azure AD](./media/active-directory-graph-api-quickstart/graph_explorer.png)
+![Příklad výstupu v Azure AD Graph API Explorer](./media/active-directory-graph-api-quickstart/graph_explorer.png)
 
 **Načtení Azure AD Graph Exploreru**: Načíst nástroj, přejděte na [ https://graphexplorer.azurewebsites.net/ ](https://graphexplorer.azurewebsites.net/). Klikněte na tlačítko **přihlášení** a přihlaste se pomocí svých přihlašovacích údajů účtu služby Azure AD pro spuštění vašeho tenanta Azure AD Graph Explorer. Pokud spouštíte skript v vašeho vlastního tenanta Azure AD Graph Explorer, vy nebo váš správce musí vyjádřit souhlas při přihlašování. Pokud máte předplatné Office 365, budete mít automaticky tenanta služby Azure AD. Přihlašovací údaje, které používáte k přihlášení do služeb Office 365 jsou ve skutečnosti, účty služby Azure AD, a tyto přihlašovací údaje můžete použít s Azure AD Graph Exploreru.
 

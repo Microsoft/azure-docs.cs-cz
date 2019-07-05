@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: mamccrea
-ms.openlocfilehash: 42c3f0ce70467c6a90bcc4e2e6b8a21d7570edc4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d560c61339bd608ab9385f99583613526156ca41
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65606187"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508051"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-the-net-sdk"></a>Vytvoření clusterů se systémem Linux v HDInsight pomocí sady .NET SDK
 
@@ -393,7 +393,6 @@ Teď, když úspěšně vytvoříte HDInsight cluster, použijte následující 
 
 ### <a name="run-jobs"></a>Spouštění úloh
 * [Spouštět úlohy Apache Hive v HDInsight pomocí sady .NET SDK](hadoop/apache-hadoop-use-hive-dotnet-sdk.md)
-* [Spouštět úlohy Apache Pig v HDInsight pomocí sady .NET SDK](hadoop/apache-hadoop-use-pig-dotnet-sdk.md)
 * [Spouštět úlohy Apache Sqoop v HDInsight pomocí sady .NET SDK](hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md)
 * [Spouštět úlohy Apache Oozie v HDInsight](hdinsight-use-oozie-linux-mac.md)
 

@@ -8,12 +8,12 @@ ms.service: batch
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: lahugh
-ms.openlocfilehash: 886dea0e53519870aaa27dea721a9eb78515cf86
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 80cba5e1b5e38e31dea2272cc4e33b4a95940e41
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64706325"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565612"
 ---
 # <a name="use-a-custom-image-to-create-a-pool-of-virtual-machines"></a>Použití vlastní image k vytvoření fondu virtuálních počítačů 
 
@@ -49,7 +49,7 @@ V Azure můžete připravit spravované image ze snímků operační systém vir
 
 ### <a name="prepare-a-vm"></a>Příprava virtuálního počítače
 
-Pokud vytváříte nový virtuální počítač pro bitovou kopii, použijte první image Azure Marketplace stran podporované službou Batch jako základní image pro spravované image. Image Microsoftu můžou použít jenom jako základní image. Pokud chcete získat úplný seznam odkazů na obrázky Azure Marketplace podporuje služby Azure Batch, najdete v článku [SKU agenta uzlu seznamu](/rest/api/batchservice/account/listnodeagentskus) operace.
+Pokud vytváříte nový virtuální počítač pro bitovou kopii, použijte první image Azure Marketplace stran podporované službou Batch jako základní image pro spravované image. Image Microsoftu můžou použít jenom jako základní image. Pokud chcete získat úplný seznam odkazů na obrázky Azure Marketplace podporuje služby Azure Batch, najdete v článku [SKU agenta uzlu seznamu](/java/api/com.microsoft.azure.batch.protocol.accounts.listnodeagentskus) operace.
 
 > [!NOTE]
 > Nelze použít bitovou kopii třetí strany, který má další licenci a podmínky nákupu jako základní image. Informace o těchto imagí Marketplace najdete v tématu pokyny pro [Linux](../virtual-machines/linux/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/14/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 722097f1a61a10cd45c0c330e998021cd1abf0c8
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 94aca33b2f12c1c39297221a856296dcca052b0f
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147961"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565799"
 ---
 # <a name="get-started-with-azcopy"></a>Začínáme s AzCopy
 
@@ -61,16 +61,21 @@ Tuto tabulku použijte jako vodítko:
 | Typ úložiště | Aktuálně podporované metody ověřování |
 |--|--|
 |**Blob Storage** | Azure AD & SAS |
-|**Úložiště objektů BLOB (hierarchické oboru názvů)** | Pouze Azure AD |
+|**Úložiště objektů BLOB (hierarchické oboru názvů)** | Azure AD & SAS |
 |**Úložiště souborů** | Pouze SAS |
 
 ### <a name="option-1-use-azure-ad"></a>Option 1: Pomocí služby Azure AD
 
+Pomocí služby Azure AD, můžete zadat přihlašovací údaje jednou, namísto nutnosti připojte SAS token pro každý příkaz.  
+
 Úroveň ověřování, který je třeba vychází Určuje, zda chcete nahrát soubory nebo je právě stáhnout.
 
-Pokud chcete stáhnout soubory, ověřte, že [čtecí modul dat pro úložiště objektů Blob](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader) byla přiřazena vaši identitu.
+Pokud chcete stáhnout soubory, ověřte, že [čtecí modul dat pro úložiště objektů Blob](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader) byla přiřazena identitu uživatele nebo instanční objekt. 
 
-Pokud chcete nahrát soubory a potom ověřte, že jednu z těchto rolí se přiřadila k vaší identitě:
+> [!NOTE]
+> Identity uživatelů a instanční objekty jsou každého typu *objektu zabezpečení*, takže použijeme termín *objektu zabezpečení* pro zbývající část tohoto článku.
+
+Pokud chcete nahrát soubory, ověřte, že jednu z těchto rolí se přiřadila do vašeho objektu zabezpečení:
 
 - [Storage Blob Data Contributor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor)
 - [Vlastník dat úložiště objektů Blob](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)
@@ -84,13 +89,16 @@ Tyto role je možné přiřadit k vaší identity v některém z těchto oborů:
 
 Zjistěte, jak ověřit a přiřazení rolí, najdete v článku [udělit přístup k Azure data objektů blob a fronty pomocí RBAC na webu Azure Portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
-Není nutné mít jednu z těchto rolí přiřadit k vaší identity, pokud vaši identitu se přidá do seznamu řízení přístupu (ACL) cílový kontejner nebo adresáře. V seznamu ACL vaši identitu potřebuje oprávnění k zápisu na cílový adresář a oprávnění spouštět v kontejneru a každý nadřazený adresář.
+> [!NOTE] 
+> Mějte na paměti, která přiřazení rolí pro RBAC může trvat až pět minut na dokončení propagace.
+
+Není nutné mít jednu z těchto rolí přiřadit k vaší objektu zabezpečení, pokud váš objekt zabezpečení se přidá do seznamu řízení přístupu (ACL) cílový kontejner nebo adresáře. V seznamu ACL váš objekt zabezpečení potřebuje oprávnění k zápisu na cílový adresář a oprávnění spouštět v kontejneru a každý nadřazený adresář.
 
 Další informace najdete v tématu [řízení přístupu v Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control).
 
-#### <a name="authenticate-your-identity"></a>Ověření vaší identity
+#### <a name="authenticate-a-user-identity"></a>Ověření identity uživatele
 
-Po ověření, že vaši identitu nebyla zadána potřebnou úroveň oprávnění, otevřete příkazový řádek, zadejte následující příkaz a stiskněte klávesu ENTER.
+Po ověření, že vaši identitu uživatele se dostali potřebnou úroveň oprávnění, otevřete příkazový řádek, zadejte následující příkaz a stiskněte klávesu ENTER.
 
 ```azcopy
 azcopy login
@@ -109,6 +117,72 @@ Tento příkaz vrátí ověřovacího kódu a adresu URL webu. Otevřít web, za
 ![Vytvoření kontejneru](media/storage-use-azcopy-v10/azcopy-login.png)
 
 Zobrazí se okno přihlášení. V tomto okně přihlaste ke svému účtu Azure pomocí přihlašovacích údajů k účtu Azure. Po úspěšném jste přihlášení, můžete zavřít okno prohlížeče a začít používat AzCopy.
+
+<a id="service-principal" />
+
+#### <a name="authenticate-a-service-principal"></a>Ověřování instančního objektu
+
+To je skvělá možnost, pokud máte v plánu pomocí nástroje AzCopy ve skriptu, který běží bez zásahu uživatele. 
+
+Před spuštěním tohoto skriptu budete muset přihlásit interaktivně aspoň jednou tak, aby pomocí přihlašovacích údajů instančního objektu služby můžete zadat AzCopy.  Tyto přihlašovací údaje jsou uloženy v zabezpečené a šifrované souboru tak, aby váš skript nemá k poskytování těchto citlivých informací.
+
+Tajný kód klienta nebo heslo certifikát, který je přidružený k objektu služby registrace aplikace se můžete přihlásit ke svému účtu. 
+
+Další informace o vytvoření instančního objektu služby, najdete v článku [jak: Použití portálu k vytvoření aplikace a instančního objektu, který má přístup k prostředkům Azure AD](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+
+Další obecné informace o instančních objektech najdete v tématu [aplikace a instanční objekty v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)
+
+##### <a name="using-a-client-secret"></a>Pomocí tajného klíče klienta
+
+Začněte tím, že nastavení `AZCOPY_SPA_CLIENT_SECRET` proměnnou prostředí pro tajný kód klienta instančního objektu služby vaší registrace aplikace. 
+
+> [!NOTE]
+> Ujistěte se, nastavte tuto hodnotu z příkazového řádku a ne v prostředí proměnné nastavení operačního systému. Tímto způsobem, hodnota je k dispozici pouze pro aktuální relaci.
+
+Tento příklad ukazuje, jak to může provést v prostředí PowerShell.
+
+```azcopy
+$env:AZCOPY_SPA_CLIENT_SECRET="$(Read-Host -prompt "Enter key")"
+```
+
+> [!NOTE]
+> Zvažte použití výzvu, jak je znázorněno v tomto příkladu. Tímto způsobem tajný klíč klienta nebude zobrazovat v historii příkazů v konzole. 
+
+Dále zadejte následující příkaz a stiskněte klávesu ENTER.
+
+```azcopy
+azcopy login --service-principal --application-id <application-id>
+```
+
+Nahradit `<application-id>` zástupný prvek s ID aplikace instančního objektu služby vaší registrace aplikace.
+
+##### <a name="using-a-certificate"></a>Použití certifikátu
+
+Pokud chcete použít vlastní přihlašovací údaje pro autorizaci, můžete nahrát na server certifikát pro registraci vaší aplikace a pak používají tento certifikát se můžete přihlásit.
+
+Kromě odeslání vašeho certifikátu registrace vaší aplikace, budete také muset mít kopii certifikát uloží do počítače nebo virtuálního počítače, ve kterém bude běžet AzCopy. Tuto kopii certifikátu musí být v. PFX nebo. PEM formátu a musí obsahovat privátní klíč. Privátní klíč by měl být chráněný heslem. Pokud používáte Windows a vaše certifikát existuje pouze v úložišti certifikátů, ujistěte se, že pro export tohoto certifikátu do souboru PFX (včetně privátního klíče). Pokyny najdete v tématu [Export-PfxCertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate?view=win10-ps)
+
+Dále nastavte `AZCOPY_SPA_CERT_PASSWORD` proměnnou prostředí, aby heslo certifikátu.
+
+> [!NOTE]
+> Ujistěte se, nastavte tuto hodnotu z příkazového řádku a ne v prostředí proměnné nastavení operačního systému. Tímto způsobem, hodnota je k dispozici pouze pro aktuální relaci.
+
+Tento příklad ukazuje, jak to může provést v prostředí PowerShell.
+
+```azcopy
+$env:AZCOPY_SPA_CERT_PASSWORD="$(Read-Host -prompt "Enter key")"
+```
+
+Dále zadejte následující příkaz a stiskněte klávesu ENTER.
+
+```azcopy
+azcopy login --service-principal --certificate-path <path-to-certificate-file>
+```
+
+Nahradit `<path-to-certificate-file>` zástupný symbol relativní nebo úplnou cestu k souboru certifikátu. AzCopy uloží cestu k tomuto certifikátu, ale nebude uložení kopie certifikátu, tak zachovat tento certifikát na místě.
+
+> [!NOTE]
+> Zvažte použití výzvu, jak je znázorněno v tomto příkladu. Tímto způsobem, vaše heslo se nezobrazí v historii příkazů v konzole. 
 
 ### <a name="option-2-use-a-sas-token"></a>Option 2: Pomocí tokenu SAS
 
@@ -134,7 +208,11 @@ Příkazy v příkladu najdete v tématu některého z těchto článků.
 
 - [Přenos dat pomocí AzCopy a Amazon S3 intervalů](storage-use-azcopy-s3.md)
 
+- [Přenos dat pomocí AzCopy a Azure Stackem úložiště](https://docs.microsoft.com/azure-stack/user/azure-stack-storage-transfer#azcopy)
+
 ## <a name="use-azcopy-in-a-script"></a>Pomocí AzCopy ve skriptu
+
+Před spuštěním tohoto skriptu budete muset přihlásit interaktivně aspoň jednou tak, aby pomocí přihlašovacích údajů instančního objektu služby můžete zadat AzCopy.  Tyto přihlašovací údaje jsou uloženy v zabezpečené a šifrované souboru tak, aby váš skript nemá k poskytování těchto citlivých informací. Příklady najdete v tématu [ověřování instančního objektu služby](#service-principal) části tohoto článku.
 
 V průběhu času AzCopy [odkaz ke stažení](#download-and-install-azcopy) bude odkazovat na nové verze AzCopy. Pokud váš skript stáhne AzCopy, může být skript přestanou fungovat, pokud změní funkce, které váš skript, závisí na novější verzi AzCopy. 
 

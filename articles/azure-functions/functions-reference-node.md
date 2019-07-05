@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 02/24/2019
 ms.author: glenga
-ms.openlocfilehash: a021ed2be3a94add7500a98d71a962bb580078e9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9a7c186f7c5fb46078eaa5729e79fdcc256ecc6d
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66729469"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67460201"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Příručka pro vývojáře Azure Functions JavaScript
 
@@ -52,7 +52,7 @@ FunctionsProject
 
 V kořenovém adresáři projektu neexistuje sdílené [host.json](functions-host-json.md) soubor, který můžete použít ke konfiguraci aplikace function app. Každá funkce má složku s vlastními souboru s kódem (.js) a vazbu konfigurační soubor (function.json). Název `function.json`jeho nadřazený adresář je vždy název vaší funkce.
 
-Rozšíření vazby vyžaduje [verze 2.x](functions-versions.md) funkce modulu runtime jsou definovány v `extensions.csproj` souboru se soubory knihovny v `bin` složky. Při vývoji místně, musíte [registraci rozšíření vazby](./functions-bindings-register.md#local-development-with-azure-functions-core-tools-and-extension-bundles). Při vytváření funkcí na webu Azure Portal, je tato registrace provede za vás.
+Rozšíření vazby vyžaduje [verze 2.x](functions-versions.md) funkce modulu runtime jsou definovány v `extensions.csproj` souboru se soubory knihovny v `bin` složky. Při vývoji místně, musíte [registraci rozšíření vazby](./functions-bindings-register.md#extension-bundles). Při vytváření funkcí na webu Azure Portal, je tato registrace provede za vás.
 
 ## <a name="exporting-a-function"></a>Funkce exportu
 
@@ -60,7 +60,7 @@ Funkce jazyka JavaScript, musí být exportován prostřednictvím [ `module.exp
 
 Ve výchozím nastavení, modul runtime služby Functions hledá vaši funkci v `index.js`, kde `index.js` sdílí stejné nadřazený adresář jako odpovídající `function.json`. Ve výchozím nastavení, by měl být exportované funkce jenom export z jeho souboru nebo export s názvem `run` nebo `index`. Nakonfigurujte umístění souboru a exportujte název vaší funkce, přečtěte si informace o [konfigurace vstupní bod vaše funkce](functions-reference-node.md#configure-function-entry-point) níže.
 
-Exportované funkce je předána počet argumentů na spuštění. První argument trvá, než je vždy `context` objektu. Pokud vaše funkce je synchronní (nevrátí příslib), musíte předat `context` objektu jako volání funkce `context.done` se vyžaduje pro správné použití.
+Exportované funkce je předána počet argumentů na spuštění. První argument trvá, než je vždy `context` objektu. Pokud je vaše funkce synchronní (nevrací příslib), musíte předat `context` objektu jako volání funkce `context.done` se vyžaduje pro správné použití.
 
 ```javascript
 // You should include context, other arguments are optional
@@ -399,7 +399,7 @@ Při práci s triggerů HTTP, můžete přístup k objektům HTTP požadavků a 
     ```
 + ** _[Pouze odpovědi]_  Voláním `context.res.send(body?: any)`.** Je vytvořen odpověď HTTP se vstupem `body` jako text odpovědi. `context.done()` je implicitně volána.
 
-+ ** _[Pouze odpovědi]_  Voláním `context.done()`.** Zvláštní druh vazby HTTP vrátí odpověď, která je předána `context.done()` metody. Následující HTTP výstupní vazby definuje `$return` výstupní parametr:
++ ** _[Pouze odpovědi]_  Voláním `context.done()`.** Speciálním typem vazby HTTP vrátí odpověď, která je předána `context.done()` metody. Následující HTTP výstupní vazby definuje `$return` výstupní parametr:
 
     ```json
     {
@@ -421,7 +421,7 @@ V následující tabulce jsou uvedeny verze Node.js používá každá hlavní v
 | Verze funkcí | Verze Node.js | 
 |---|---|
 | 1.x | 6.11.2 (uzamčeno modulem runtime) |
-| 2.x  | _Aktivní LTS_ a sudým číslem _aktuální_ verze Node.js (8.11.1 a 10.14.1 doporučeno). Nastavení verze s použitím WEBSITE_NODE_DEFAULT_VERSION [nastavení aplikace, které](functions-how-to-use-azure-function-app-settings.md#settings).|
+| 2.x  | _Aktivní LTS_ a _údržby LTS_ verze Node.js (8.11.1 a 10.14.1 doporučeno). Nastavení verze s použitím WEBSITE_NODE_DEFAULT_VERSION [nastavení aplikace, které](functions-how-to-use-azure-function-app-settings.md#settings).|
 
 Zobrazí aktuální verzi, která používá modul runtime kontrolou nad nastavení aplikace nebo tisk `process.version` z jakékoli funkce.
 
@@ -576,7 +576,7 @@ Tak, jak místní vývoj a nasazení z projektu TypeScript závisí na vývojov�
 
 [Azure Functions pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) rozšíření vám umožní vyvíjet funkce pomocí TypeScript. Základní nástroje je požadavek rozšíření Azure Functions.
 
-Chcete-li vytvořit aplikaci function app TypeScript ve Visual Studio Code, jednoduše klikněte `TypeScript` při vytvoření aplikace function app a vyzváni k volbě jazyka.
+Chcete-li vytvořit aplikaci function app TypeScript ve Visual Studio Code, zvolte `TypeScript` jazyka při vytváření aplikace funkcí.
 
 Když stisknete klávesu **F5** spusťte aplikaci místně, transpilation se provádí před dokončením inicializace hostitele (func.exe). 
 
@@ -584,7 +584,7 @@ Když nasadíte aplikaci function app do Azure s využitím **nasadit do aplikac
 
 ### <a name="azure-functions-core-tools"></a>Nástroje Azure Functions Core
 
-Vytvoření projektu aplikace funkcí TypeScript pomocí základní nástroje, musíte zadat možnost jazyka typescript, když vytvoříte aplikaci function app. Můžete to udělat v jednom z následujících způsobů:
+Vytvoření projektu aplikace funkcí TypeScript pomocí základní nástroje, musíte zadat možnost jazyka TypeScript, když vytvoříte aplikaci function app. Můžete to udělat v jednom z následujících způsobů:
 
 - Spustit `func init` příkaz select `node` jako zásobník jazyka a pak vyberte `typescript`.
 
@@ -614,6 +614,55 @@ Při spuštění vývoj Azure Functions bez serveru hostování modelu cold jsou
 ### <a name="connection-limits"></a>Omezení počtu připojení
 
 Při použití klienta specifickou pro službu v aplikaci Azure Functions, nevytvářejte nový klient se každé volání funkce. Místo toho vytvořte jednu statickou klienta v globálním oboru. Další informace najdete v tématu [Správa připojení ve službě Azure Functions](manage-connections.md).
+
+### <a name="use-async-and-await"></a>Použití `async` a `await`
+
+Při zápisu Azure Functions v JavaScriptu, by měl pište kód pomocí `async` a `await` klíčová slova. Psaní kódu pomocí `async` a `await` místo zpětných volání nebo `.then` a `.catch` s co pomáhá zabránit dvě běžné problémy:
+ - Generování nezachycených výjimek, který [shazovat proces Node.js](https://nodejs.org/api/process.html#process_warning_using_uncaughtexception_correctly), potenciálně by to mělo dopad provedení dalších funkcí.
+ - Neočekávané chování, jako je například chybějící protokoly z context.log způsobené byla zahájena asynchronní volání, které nejsou očekávány správně.
+
+V následujícím příkladu asynchronní metoda `fs.readFile` vyvolání funkce zpětného volání při chybě první jako svůj druhý parametr. Tento kód způsobí, že oba problémy uvedené výše. Výjimka, která není ve správném oboru explicitně zachycena celý proces (problém #1) došlo k chybě. Volání `context.done()` mimo rozsah zpětné volání funkce znamená, že volání funkce může ukončit předtím, než je pro čtení souboru (vydat #2). V tomto příkladu volání `context.done()` protokol příliš brzy výsledků chybějících položek počínaje `Data from file:`.
+
+```javascript
+// NOT RECOMMENDED PATTERN
+const fs = require('fs');
+
+module.exports = function (context) {
+    fs.readFile('./hello.txt', (err, data) => {
+        if (err) {
+            context.log.error('ERROR', err);
+            // BUG #1: This will result in an uncaught exception that crashes the entire process
+            throw err;
+        }
+        context.log(`Data from file: ${data}`);
+        // context.done() should be called here
+    });
+    // BUG #2: Data is not guaranteed to be read before the Azure Function's invocation ends
+    context.done();
+}
+```
+
+Použití `async` a `await` klíčových slov pomáhá zabránit obě tyto chyby. Používejte funkci nástroje Node.js [ `util.promisify` ](https://nodejs.org/api/util.html#util_util_promisify_original) Chcete-li první chyba zpětného volání funkce do očekávatelný funkcí.
+
+V následujícím příkladu všechny neošetřené výjimky vyvolané během spuštění funkce předat jenom jednotlivá volání, která vyvolala výjimku. `await` – Klíčové slovo znamená, že následující kroky `readFileAsync` pouze po provedení `readFile` je dokončena. S `async` a `await`, také není nutné volat `context.done()` zpětného volání.
+
+```javascript
+// Recommended pattern
+const fs = require('fs');
+const util = require('util');
+const readFileAsync = util.promisify(fs.readFile);
+
+module.exports = async function (context) {
+    try {
+        const data = await readFileAsync('./hello.txt');
+    } catch (err) {
+        context.log.error('ERROR', err);
+        // This rethrown exception will be handled by the Functions Runtime and will only fail the individual invocation
+        throw err;
+    }
+    context.log(`Data from file: ${data}`);
+}
+```
 
 ## <a name="next-steps"></a>Další postup
 

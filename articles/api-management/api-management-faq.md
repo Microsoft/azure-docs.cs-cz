@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: edc3c2ddcddaa8a51ae634a7abcd3a61aab530e9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f7e93dc12b9932fed90c7f9fa3145e56a3488b32
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66357256"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448023"
 ---
 # <a name="azure-api-management-faqs"></a>Nejčastější dotazy k Azure API Management
 Získejte odpovědi na běžné dotazy, vzory a osvědčené postupy pro službu Azure API Management.
@@ -65,7 +65,7 @@ Máte několik možností, jak zabezpečit připojení mezi bránou rozhraní AP
 
 * Základní ověřování pomocí protokolu HTTP. Další informace najdete v tématu [Import a publikování vašeho prvního rozhraní API](import-and-publish.md).
 * Používá vzájemné ověřování SSL, jak je popsáno v [zabezpečení back endovým službám pomocí klienta ověření certifikátu ve službě Azure API Management](api-management-howto-mutual-certificates.md).
-* Použijte na seznam povolených IP na back-end služby. Ve všech úrovních služby API Management, IP adresu brány konstantní, s několika [upozornění](#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules). Můžete nastavit vašeho seznamu povolených IP adres, chcete-li povolit tuto IP adresu. Na řídicím panelu na webu Azure Portal můžete získat IP adresu vaší instance služby API Management.
+* Použijte na seznam povolených IP na back-end služby. Ve všech úrovních služby API Management s výjimkou úroveň Consumption, IP adresu brány konstantní, s několika [upozornění](#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules). Můžete nastavit vašeho seznamu povolených IP adres, chcete-li povolit tuto IP adresu. Na řídicím panelu na webu Azure Portal můžete získat IP adresu vaší instance služby API Management.
 * Vaše instance služby API Management se připojte ke službě Azure Virtual Network.
 
 ### <a name="how-do-i-copy-my-api-management-service-instance-to-a-new-instance"></a>Jak můžu zkopírovat Moje instance služby API Management do nové instance?

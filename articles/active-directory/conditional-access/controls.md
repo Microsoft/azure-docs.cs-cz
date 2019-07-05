@@ -2,28 +2,21 @@
 title: Co je řízení přístupu v Azure Active Directory podmíněného přístupu? | Dokumenty Microsoft
 description: Zjistěte, jak řízení přístupu v Azure Active Directory podmíněný přístup do práce.
 services: active-directory
-keywords: Podmíněný přístup k aplikacím, podmíněný přístup s Azure AD, zabezpečený přístup k prostředkům společnosti, zásady podmíněného přístupu
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-editor: ''
-ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: identity
 ms.date: 06/15/2019
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 206b5fef3e4e686bd237fe0f45cfb91dccd4626f
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.openlocfilehash: a5fc672898a56d8b3e1486b1d8d84cf532fa2b6d
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67136496"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509401"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Co je řízení přístupu v Azure Active Directory podmíněného přístupu?
 
@@ -34,7 +27,6 @@ S [podmíněného přístupu Azure Active Directory (Azure AD)](../active-direct
 V souvislosti s podmíněným přístupem
 
 - "**v takovém případě**" se nazývá **podmínky**
-
 - "**Proveďte to**" se nazývá **ovládací prvky přístupu**
 
 Kombinace příkaz podmínky s ovládacími prvky představuje zásad podmíněného přístupu.
@@ -46,7 +38,6 @@ Každý ovládací prvek je požadavek, který musí být splněny osoba nebo sy
 Existují dva typy ovládacích prvků:
 
 - **Udělit řízení** – Pokud chcete přístup k bráně
-
 - **Ovládací prvky relací** – Pokud chcete omezit přístup v rámci relace
 
 Toto téma vysvětluje různé ovládací prvky, které jsou k dispozici v podmíněného přístupu Azure AD. 
@@ -65,7 +56,6 @@ Pomocí udělení ovládacích prvků můžete zablokovat přístup úplně nebo
 Tento ovládací prvek můžete vyžadovat vícefaktorové ověřování pro přístup k zadané cloudové aplikace. Tento ovládací prvek podporuje následující poskytovatele služby Multi-Factor Authentication:
 
 - Azure Multi-Factor Authentication
-
 - Poskytovatele služby Multi-Factor authentication v místním v kombinaci s Active Directory Federation Services (AD FS).
 
 Pomocí služby Multi-Factor authentication pomáhá chránit prostředky přístup neautorizovanému uživateli, který může být získali přístup k primární přihlašovací údaje platného uživatele.
@@ -76,9 +66,11 @@ Můžete nakonfigurovat zásady podmíněného přístupu, které jsou založen�
 
 Vaše zařízení potřebuje k registraci do služby Azure AD, než může být označený jako kompatibilní. Pokud chcete zaregistrovat zařízení, máte tři možnosti: 
 
-- [Podpora k zařízením Azure AD zaregistrované](../devices/overview.md#azure-ad-registered-devices)
-- [Zařízení připojená k Azure AD](../devices/overview.md#azure-ad-joined-devices)  
-- [Zařízení připojená k hybridní službě Azure AD](../devices/overview.md#hybrid-azure-ad-joined-devices)
+- Zařízení zaregistrovaná v Azure AD
+- Zařízení připojená k Azure AD  
+- Hybridní zařízení připojená k Azure AD
+
+Tyto tři možnosti jsou popsány v následujícím článku [co je identita, zařízení?](../devices/overview.md)
 
 Další informace najdete v tématu [vyžadování spravovaných zařízení pro přístup k aplikaci cloud s podmíněným přístupem](require-managed-devices.md).
 
@@ -106,16 +98,11 @@ Vaše zařízení musí být zaregistrované do služby Azure AD, než aplikace 
 
 Seznam podporovaných zásad chráněných klientských aplikací, najdete v části [požadavek zásady ochrany aplikací](technical-reference.md#app-protection-policy-requirement).
 
-
 ### <a name="terms-of-use"></a>Podmínky použití
 
 Uživatel může vyžadovat ve vašem tenantovi vyjádřit souhlas s podmínkami použití před udělením přístupu k prostředku. Jako správce můžete nakonfigurovat a upravit podmínky použití nahráním dokumentu PDF. Pokud uživatel spadá do rozsahu tato řízení přístupu k aplikaci je udělit pouze tehdy, pokud bylo dohodnuto podmínky použití.
 
-### <a name="custom-controls-preview"></a>Vlastní ovládací prvky (preview)
-
-Přidat vlastní ovládací prvky podmíněného přístupu, který přesměrovat uživatele na kompatibilní služby splňovat další požadavky mimo službu Azure Active Directory. To umožňuje vynucení podmíněného přístupu požadavky pomocí určitých externí ověřování službou Multi-Factor Authentication a zprostředkovatelů ověření. Tím se uspokojí tento ovládací prvek, prohlížeče uživatele přesměruje na externí služby, provede všechny požadované ověřování nebo ověřování aktivity a je následně přesměrován zpět do Azure Active Directory. Pokud si uživatel byl úspěšně ověřen nebo ověřit, uživatel bude pokračovat tok podmíněného přístupu. 
-
-## <a name="custom-controls"></a>Vlastní ovládací prvky
+## <a name="custom-controls-preview"></a>Vlastní ovládací prvky (preview)
 
 Vlastní ovládací prvky jsou funkcí edice Azure Active Directory Premium P1. Při použití vlastních ovládacích prvků, vaši uživatelé přesměrovaní na kompatibilní služby splňovat další požadavky mimo službu Azure Active Directory. Tím se uspokojí tento ovládací prvek, prohlížeče uživatele přesměruje na externí služby, provede všechny požadované ověřování nebo ověřování aktivity a je následně přesměrován zpět do Azure Active Directory. Azure Active Directory ověří odpověď, a pokud si uživatel byl úspěšně ověřen nebo ověřit, uživatel bude pokračovat tok podmíněného přístupu.
 
@@ -157,10 +144,8 @@ Kliknutím na **nový vlastní ovládací prvek**, otevře se okno s textové po
 Pokud chcete odstranit vlastní ovládací prvek, musíte nejdřív zajistit, že ho nepoužívá v jakékoli zásady podmíněného přístupu. Po dokončení:
 
 1. Přejděte k seznamu vlastní ovládací prvky
-
-2. Klikněte na tlačítko...  
-
-3. Vyberte **Odstranit**.
+1. Klikněte na tlačítko...  
+1. Vyberte **Odstranit**.
 
 ### <a name="editing-custom-controls"></a>Vlastní ovládací prvky úprav
 
@@ -179,11 +164,9 @@ Tento ovládací prvek můžete použít tak, aby vyžadovala Azure AD k předá
 Další informace naleznete v tématu:
 
 - [Povolení omezený přístup se Sharepointem Online](https://aka.ms/spolimitedaccessdocs)
-
 - [Povolení omezený přístup s Exchangem Online](https://aka.ms/owalimitedaccess)
 
 ## <a name="next-steps"></a>Další postup
 
 - Pokud chcete vědět, jak nakonfigurovat zásady podmíněného přístupu najdete v tématu [vyžadovat vícefaktorové ověřování pro konkrétní aplikace, pomocí Azure Active Directory podmíněného přístupu](app-based-mfa.md).
-
 - Pokud jste připraveni ke konfiguraci zásad podmíněného přístupu pro vaše prostředí, najdete v článku [osvědčené postupy pro podmíněný přístup v Azure Active Directory](best-practices.md).

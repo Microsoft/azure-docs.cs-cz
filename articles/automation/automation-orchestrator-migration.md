@@ -4,17 +4,17 @@ description: Popisuje, jak migrovat sady runbook a integrační balíčky z nás
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ae47cba8f8e9a7cdf914c0b3ea5dfb9fa6c259a9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: eb5a77668cce96ef45a960908612b502f1520e25
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60738209"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477588"
 ---
 # <a name="migrating-from-orchestrator-to-azure-automation-beta"></a>Migrace z nástroje Orchestrator do služby Azure Automation (beta verze)
 Sady Runbook v [System Center Orchestrator](https://technet.microsoft.com/library/hh237242.aspx) jsou založeny na aktivit z integračních balíčků, které jsou napsané konkrétně pro Orchestrátor, zatímco runbooky ve službě Azure Automation jsou založené na prostředí Windows PowerShell.  [Grafické runbooky](automation-runbook-types.md#graphical-runbooks) ve službě Azure Automation mají podobné vzhled, aby runbooky nástroje Orchestrator pomocí jejich aktivity představující rutiny prostředí PowerShell, podřízené runbooky a prostředky.

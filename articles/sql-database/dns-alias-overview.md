@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: genemi, ayolubek, jrasnick
 manager: craigg
-ms.date: 06/19/2019
-ms.openlocfilehash: d15e629343e015af5f83e1d185c6a46fc48fa3c4
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.date: 06/26/2019
+ms.openlocfilehash: bb38f73308fb1eb67be310120cb589cb9412e737
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275200"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67461830"
 ---
 # <a name="dns-alias-for-azure-sql-database"></a>Alias DNS pro službu Azure SQL Database
 
@@ -30,6 +30,7 @@ Mezi běžná použití aliasu DNS patří následujících případech:
 - Vytvoření snadno zapamatovatelné jméno pro Azure SQL Server.
 - Během počáteční vývoje testovací server služby SQL Database najdete váš alias. Když aplikace přejde za provozu, můžete upravit alias pro odkazování na provozním serveru. Přechod z testovacího do produkčního prostředí nevyžaduje žádné změny konfigurace několik klientů, které se připojují k databázovému serveru.
 - Předpokládejme, že jediná databáze ve vaší aplikaci se přesune na jiný server SQL Database. Zde můžete upravit alias aniž byste museli měnit konfiguraci z několika klientů.
+- Během oblastního výpadku geografické obnovení použijte k obnovení databáze na jiný server a oblast. Můžete upravit tak, aby odkazovala na nový server tak, aby stávající klientská aplikace může znovu připojit k němu vaše existující alias. 
 
 ## <a name="domain-name-system-dns-of-the-internet"></a>Domain Name System (DNS) z Internetu
 

@@ -1,28 +1,22 @@
 ---
 title: Povolení služby Enterprise State Roaming v Azure Active Directory | Dokumentace Microsoftu
-description: Nejčastější dotazy ohledně Enterprise State Roaming nastavení v zařízení s Windows. Enterprise State Roaming uživatelům poskytuje jednotné prostředí v jejich zařízeních Windows a snižuje čas potřebný ke konfiguraci nových zařízení.
+description: Nejčastější dotazy ohledně Enterprise State Roaming nastavení v zařízení s Windows.
 services: active-directory
-keywords: Enterprise stav roamingu, cloudu systému windows, jak povolit roaming stavu enterprise
-documentationcenter: ''
-author: tanning
-manager: daveba
-editor: curtand
-ms.subservice: devices
-ms.assetid: f71d66fd-7f9e-45eb-9cfe-5d989870f8a4
 ms.service: active-directory
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 10/25/2018
+ms.subservice: devices
+ms.topic: conceptual
+ms.date: 06/28/2019
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
+ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88e825ebc08b4bfbd65f81b7b2480ead9be314b5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 45c1fc6340df6a5400864b2e1222a2c65e586232
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65954942"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482035"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>Povolení služby Enterprise State Roaming v Azure Active Directory
 Enterprise State Roaming je k dispozici pro všechny organizace s Azure AD Premium nebo Enterprise Mobility + Security (EMS) licence. Další informace o tom, jak získat předplatné Azure AD, najdete v článku [stránce produktu Azure AD](https://azure.microsoft.com/services/active-directory).
@@ -32,9 +26,7 @@ Když povolíte Enterprise State Roaming, vaše organizace je automaticky uděle
 ## <a name="to-enable-enterprise-state-roaming"></a>Chcete-li povolit Enterprise State Roaming
 
 1. Přihlaste se k [centrum pro správu Azure AD](https://aad.portal.azure.com/).
-
 1. Vyberte **Azure Active Directory** &gt; **zařízení** &gt; **Enterprise State Roaming**.
-
 1. Vyberte **uživatelé můžou synchronizovat nastavení a data aplikací na zařízeních**. Další informace najdete v tématu [jak nakonfigurovat nastavení zařízení](https://docs.microsoft.com/azure/active-directory/device-management-azure-portal).
   
    ![Obrázek nastavení zařízení s názvem uživatelé můžou synchronizovat nastavení a data aplikací na zařízeních](./media/enterprise-state-roaming-enable/device-settings.png)
@@ -44,12 +36,12 @@ Pro zařízení s Windows 10 k používání služby Enterprise State Roaming za
 ## <a name="data-storage"></a>Úložiště dat
 Enterprise State Roaming dat je hostovaná v jednom nebo více [oblastí Azure](https://azure.microsoft.com/regions/) , že nejlepší bylo v souladu s země/oblast hodnotu nastavenou v instanci Azure Active Directory. Enterprise State Roaming data jsou rozdělená podle tři hlavní zeměpisné oblasti: Severní Amerika, EMEA a APAC. Enterprise State Roaming dat pro tenanta se nachází na místně geografické oblasti a není replikován napříč oblastmi.  Příklad:
 
-Země/oblast hodnoty | má konání svá data
----------------------|-------------------------
-EMEA země nebo oblast jako je například (Francie) nebo Zambie | Jeden nebo více oblastí Azure v Evropě 
-Severní Ameriky země nebo oblast jako jsou USA nebo Kanadě | jeden nebo více oblastí Azure v rámci USA
-APAC země nebo oblast jako je například Austrálie a Nového Zélandu | jeden nebo více oblastí Azure v rámci Asie
-Jižní Ameriky a Antarktida oblastí | jeden nebo více oblastí Azure v rámci USA
+| Země/oblast hodnoty | má konání svá data |
+| -------------------- | ------------------------ |
+| EMEA země nebo oblast jako je například (Francie) nebo Zambie | Jeden nebo více oblastí Azure v Evropě |
+| Severní Ameriky země nebo oblast jako jsou USA nebo Kanadě | jeden nebo více oblastí Azure v rámci USA |
+| APAC země nebo oblast jako je například Austrálie a Nového Zélandu | jeden nebo více oblastí Azure v rámci Asie |
+| Jižní Ameriky a Antarktida oblastí | jeden nebo více oblastí Azure v rámci USA |
 
 Země/oblast hodnota je nastavena jako součást procesu vytvoření adresáře Azure AD a následně nelze upravit. Pokud potřebujete další podrobnosti na vaše umístění úložiště dat, vytvořte lístek [podpory Azure](https://azure.microsoft.com/support/options/).
 
@@ -57,11 +49,8 @@ Země/oblast hodnota je nastavena jako součást procesu vytvoření adresáře 
 Postupujte podle těchto kroků pro zobrazení zprávy o stavu synchronizace zařízení na uživatele.
 
 1. Přihlaste se k [centrum pro správu Azure AD](https://aad.portal.azure.com/).
-
 1. Vyberte **Azure Active Directory** &gt; **uživatelé** &gt; **všichni uživatelé**.
-
 1. Vyberte uživatele a pak vyberte **zařízení**.
-
 1. V části **zobrazit**vyberte **zařízení, která synchronizují nastavení a data aplikací** zobrazíte stav synchronizace.
   
    ![Obrázek nastavení synchronizace dat zařízení](./media/enterprise-state-roaming-enable/sync-status.png)

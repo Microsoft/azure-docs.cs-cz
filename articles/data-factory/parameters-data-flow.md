@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: ef97f17bf159511ce94f90cd00623e05489acb92
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 0a7140f70db78c8511f3c4da00b2f9c11c368163
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274747"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477699"
 ---
 # <a name="mapping-data-flow-parameters"></a>Mapování parametrů toku dat
 
@@ -37,6 +37,12 @@ Chcete-li přidat parametry do vašeho toku dat, klikněte na prázdné místo p
 Parametry lze využít v jakékoli výraz datového toku. Parametry začínají znakem $ a jsou neměnné. Najdete seznam dostupných parametrů v rámci Tvůrce na kartě "Parametrů".
 
 ![Výraz parametru toku dat](media/data-flow/parameter-expression.png "výraz parametru toku dat")
+
+## <a name="use-parameters-in-your-data-flow"></a>Použití parametrů ve svém toku dat
+
+* Hodnoty parametrů můžete použít ve výrazech transformace. V okně Tvůrce výrazů najdete seznam parametrů na parametry kartě. ![Použití parametrů se předávají Data](media/data-flow/params9.png "toku dat pomocí parametrů")
+
+* Parametry jsou také použít pro konfiguraci dynamické hodnoty zdroje a jímky nastavení transformace. Po kliknutí na uvnitř konfigurovatelné pole, zobrazí se odkaz "Přidat dynamické contect" se zobrazí. Kliknutím zde přejdete na tvůrce výrazů kde parametry můžete použít dynamické hodnoty. ![Dynamický obsah toku dat](media/data-flow/params6.png "dynamický obsah toku dat")
 
 ## <a name="set-mapping-data-flow-parameters-from-pipeline"></a>Nastavit parametry mapování toku dat z kanálu
 

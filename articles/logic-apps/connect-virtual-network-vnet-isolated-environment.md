@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 05/20/2019
-ms.openlocfilehash: bd1f06c93a75673f86f0c52f78cad8a60f7a1a1e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b48257cc8e10deb1ec922806f62a6c435069f66f
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65961448"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67467094"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Připojení k virtuálním sítím Azure z Azure Logic Apps s využitím integrace služby prostředí (ISE)
 
@@ -64,7 +64,7 @@ Další informace o prostředí integrační služby naleznete v tématu [přís
 
 Při použití prostředí integrační služby (ISE) s virtuální sítí běžný problém instalační program má jeden nebo více portů blokované. Konektory, které používáte pro vytvoření připojení mezi vaší ISE a cílový systém také může mít vlastní požadavky na porty. Například pokud komunikovat s FTP systémem pomocí konektoru služby FTP, ujistěte se, že port, který používáte v systému FTP, jako je například 21 portu pro odesílání příkazů, je k dispozici.
 
-Pokud chcete řídit provoz mezi podsítěmi ve virtuální síti, kde nasadíte ISE, můžete nastavit [skupiny zabezpečení sítě](../virtual-network/security-overview.md) podle [filtrování síťového provozu mezi podsítěmi](../virtual-network/tutorial-filter-network-traffic.md). Vaše ISE však musí mít specifické porty otevřete ve virtuální síti, která používá skupiny zabezpečení sítě. Tímto způsobem, vaše ISE zůstane dostupný a může fungovat správně tak, aby neztratili přístup k vaší ISE. Jinak pokud nejsou k dispozici všechny požadované porty, vaše ISE přestane fungovat.
+K řízení provozu mezi podsítěmi virtuální sítě nasadíte kdekoli vašeho ISE, můžete volitelně nastavit [skupiny zabezpečení sítě (Nsg)](../virtual-network/security-overview.md) ve vaší virtuální síti pomocí [filtrování síťového provozu mezi podsítěmi](../virtual-network/tutorial-filter-network-traffic.md). Pokud se rozhodnete tuto trasu, ujistěte se, že vaše ISE otevře určité porty, jak je popsáno v následující tabulce, ve virtuální síti, která používá skupiny zabezpečení sítě. Pokud máte ve virtuální síti existující skupiny Nsg nebo brány firewall, ujistěte se, že otevřete tyto porty. Tímto způsobem, vaše ISE zůstane dostupný a může fungovat správně tak, aby neztratili přístup k vaší ISE. Jinak pokud nejsou k dispozici všechny požadované porty, vaše ISE přestane fungovat.
 
 Tyto tabulky popisují porty ve vaší virtuální síti, která používá vaše ISE a kde získat používají tyto porty. [Značky služeb Resource Manageru](../virtual-network/security-overview.md#service-tags) představuje skupinu předpon IP adres, které pomáhá minimalizovat složitost při vytváření pravidel zabezpečení.
 

@@ -4,14 +4,14 @@ description: Popisuje, jak určit, jestli se má použít režim úplné nebo p�
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 05/14/2019
+ms.date: 07/01/2019
 ms.author: tomfitz
-ms.openlocfilehash: 1ff098bf329979d0702c41f83d8e5f8ee7cceca1
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 8a53ed1eea66c976c46a21378a9c48a1ad5ce902
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206550"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508201"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Režimy nasazení Azure Resource Manageru
 
@@ -22,6 +22,8 @@ Pro oba režimy se pokusí vytvořit všechny prostředky zadané v šabloně Re
 ## <a name="complete-mode"></a>Úplný režim
 
 V dokončení režimu Resource Manageru **odstraní** prostředky, které existují ve skupině prostředků, ale nejsou v šabloně zadané. Prostředky, které jsou v této šabloně specifikovaný, ale není nasazena, protože [podmínku](resource-group-authoring-templates.md#condition) vyhodnotí na hodnotu false, nebudou odstraněny.
+
+Úplný režim s rozvahou [zkopírujte smyčky](resource-group-create-multiple.md). Odstraní se všechny prostředky, které nejsou v této šabloně specifikovaný, po vyřešení kopírovací smyčkou.
 
 Existují určité rozdíly v jak postupovat při odstranění úplný režim typy prostředků. Nadřazené prostředky jsou po není v šabloně, která je nasazena v režimu dokončení automaticky odstraní. Pokud není v šabloně nejsou automaticky odstraněny některé podřízené prostředky. Tyto podřízené prostředky se odstraní, ale pokud se nadřazený prostředek odstraní. 
 

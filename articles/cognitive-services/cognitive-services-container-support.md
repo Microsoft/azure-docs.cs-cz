@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 06/11/2019
 ms.author: dapine
-ms.openlocfilehash: 8ebc3d9f3339e2f703a1f374363b72b86f63d903
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 263a67f885615941624befcb52c408158e680062
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204042"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67566098"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Podpora kontejnerů ve službě Azure Cognitive Services
 
@@ -107,7 +107,7 @@ Jednotlivých kontejnerů může mít vlastní požadavky, včetně serveru a po
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o [kontejneru recepty](/containers/container-reuse-recipe.md) můžete pomocí služeb Cognitive Services.
+Další informace o [kontejneru recepty](/azure/cognitive-services/containers/container-reuse-recipe) můžete pomocí služeb Cognitive Services.
 
 Instalace a prozkoumejte funkce poskytované službou kontejnerů ve službě Azure Cognitive Services:
 

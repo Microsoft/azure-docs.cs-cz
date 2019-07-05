@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 74fe4f7c4c231f80c7555f39f840a85baae310e9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3ea95405f68938906ba010836753cd74ab0f775e
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60809454"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446758"
 ---
 # <a name="balancing-your-service-fabric-cluster"></a>Vyrovnávání vašeho clusteru service fabric
 Service Fabric Cluster Resource Manager podporuje změny dynamického zatížení reakce na přidání nebo odebrání uzlů nebo služby. Také automaticky opraví narušení omezení a proaktivně znovu vytvoří rovnováhu clusteru. Ale jak často pocházejí tyto akce a co je aktivace?
@@ -36,9 +36,9 @@ První sada kontrolních mechanismů kolem vyrovnávání představují sadu ča
 Každý z těchto různých typů opravy, které můžete vytvořit Cluster Resource Manageru se řídí jiné časovače, které řídí jeho četnost. Když se aktivuje každou časovač je naplánován. Ve výchozím nastavení správce prostředků:
 
 * kontrol stavu a aplikuje aktualizace (jako záznam, který je uzel dolů) každých 1/10 sekundy
-* Nastaví příznak Kontrola umístění 
+* Nastaví příznak Kontrola umístění za sekundu
 * Nastaví příznak kontroly omezení za sekundu
-* Nastaví příznak vyrovnávání každých pět sekund.
+* Nastaví příznak vyrovnávání každých pět sekund
 
 Níže jsou příklady konfigurace, kterými se řídí těmito časovače:
 

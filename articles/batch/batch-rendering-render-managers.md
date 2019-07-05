@@ -7,12 +7,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: bcc66a73e3d7986b177b13eb309ad664a006b960
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6878d3b4fc8648db540d016389747eceb45d936a
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62118582"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67436166"
 ---
 # <a name="using-azure-batch-with-render-farm-managers"></a>Azure Batch pomocí vykreslení správci farmy
 
@@ -23,7 +23,7 @@ Azure poskytuje integrovanou podporu nebo doplňky pro oblíbené vykreslení sp
 Podporují se následující správci vykreslování:
 
 * [PipelineFX Qube!](https://www.pipelinefx.com/)
-* [Královská vykreslení](http://www.royalrender.de/)
+* [Královská vykreslení](https://www.royalrender.de/)
 * [Konečný termín Thinkbox](https://deadline.thinkboxsoftware.com/)
 
 ## <a name="using-azure-with-pipelinefx-qube"></a>Používání Azure PipelineFX Qube
@@ -32,7 +32,7 @@ Skripty a pokyny pro povolení služby Azure Batch fondu virtuálních počíta�
 
 ## <a name="using-azure-with-royal-render"></a>Používání Royal vykreslování v Azure
 
-Královská vykreslení integrovaná Azure a Azure Batch integrované, umožňuje rozšířit na vykreslovací farmě pomocí virtuálních počítačů Azure. Souhrn, naleznete v tématu [soubory nápovědy](http://www.royalrender.de/help8/index.html?Cloudrendering.html).
+Královská vykreslení integrovaná Azure a Azure Batch integrované, umožňuje rozšířit na vykreslovací farmě pomocí virtuálních počítačů Azure. Souhrn, naleznete v tématu [soubory nápovědy](https://www.royalrender.de/help8/index.html?Cloudrendering.html).
 
 Příklad Royal vykreslení zákazníka pomocí integrace s Azure, najdete v článku [příběh a obrázky Jellyfish](https://customers.microsoft.com/story/jellyfishpictures).
 

@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: cherylmc
-ms.openlocfilehash: c8a4b09a27325f31e548d1b345b2932c6ab6315c
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: 376b7042a513dd50647dc8f88bf1de70f65bb21c
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67191886"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67478404"
 ---
 # <a name="connect-to-a-windows-virtual-machine-using-azure-bastion-preview"></a>Připojte se k virtuálnímu počítači s Windows pomocí Azure Bastionu (Preview)
 
@@ -34,7 +34,7 @@ Aby bylo možné navázat připojení, následující role jsou povinné:
 
 ## <a name="rdp"></a>Připojení pomocí protokolu RDP
 
-1. V [webu Azure portal](https://aka.ms/BastionHost) Bastionu verze Preview, přejděte k virtuálnímu počítači, který chcete připojit k a potom klikněte na **připojit**. Virtuální počítač by měl být virtuální počítače s Windows pomocí připojení ke vzdálené ploše.
+1. Použití [tento odkaz](https://aka.ms/BastionHost) otevřete stránku portálu ve verzi preview pro Azure Bastionu. Přejděte k virtuálnímu počítači, který chcete připojit k a potom klikněte na tlačítko **připojit**. Virtuální počítač by měl být virtuální počítače s Windows pomocí připojení ke vzdálené ploše.
 
     ![Připojení virtuálního počítače](./media/bastion-connect-vm-rdp/connect.png)
 

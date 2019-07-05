@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: zachowd, lenalepa, jesakowi
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2edbf5548f5e230986f0a1786d67fb4580e574e2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7b9d272c8a01eeed58278a6e7f0cec147b01a10e
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66235451"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482941"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Rozhraní pro udělování souhlasu Azure Active Directory
 
@@ -50,7 +50,7 @@ Následující kroky ukazují, jak souhlasu prostředí funguje pro aplikace pro
 
 1. Až se uživatel přihlásil, určí Azure AD, pokud uživatel musí zobrazit stránka pro odsouhlasení podmínek. Toto rozhodnutí je založená na, jestli uživatel (nebo správce ve vaší organizaci) už udělené souhlasu s aplikací. Pokud ještě nebyl udělený souhlas, Azure AD zobrazí výzvu k souhlasu a zobrazí požadovaná oprávnění, je potřeba pracovat. Sada oprávnění, která se zobrazí v dialogovém okně souhlasu odpovídat vybraných v **delegovaná oprávnění** na webu Azure Portal.
 
-    ![Prostředí pro vyjádření souhlasu uživatele](./media/quickstart-v1-integrate-apps-with-azure-ad/consent.png)
+    ![Ukazuje příklad oprávnění zobrazí v dialogovém okně souhlasu](./media/quickstart-v1-integrate-apps-with-azure-ad/consent.png)
 
 1. Jakmile uživatel udělí svůj souhlas, se vrátí autorizační kód do vaší aplikace, který je k získání přístupového tokenu a obnovovací token uplatnit. Další informace o tomto toku, najdete v části [typ aplikace webového rozhraní API](web-api.md).
 

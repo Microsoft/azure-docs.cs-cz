@@ -12,12 +12,12 @@ ms.date: 10/22/2018
 ms.author: mimart
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd84b44c89c856036640757b7760d7c10bd36173
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4951984d05e75b0271cf6592c77c54ad13678994
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65824849"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476560"
 ---
 # <a name="configure-the-way-end-users-consent-to-an-application-in-azure-active-directory"></a>Nakonfigurovat způsob, jakým koncoví uživatelé souhlas k aplikaci v Azure Active Directory
 Zjistěte, jak nakonfigurovat způsob, jakým uživatelé udělit souhlas s oprávnění aplikace. Činnost koncového uživatele můžete zjednodušit tím, že udělíte souhlas správce. Tento článek poskytuje různé způsoby, jak můžete nakonfigurovat souhlasu uživatele. Metody se vztahují na všechny koncové uživatele ve vašem tenantovi Azure Active Directory (Azure AD). 
@@ -38,9 +38,10 @@ Chcete-li udělit souhlas správce pro podnikové aplikace:
 2. Klikněte na tlačítko **všechny služby** v horní navigační nabídce vlevo. **Rozšíření Azure Active Directory** otevře.
 3. Do vyhledávacího pole filtru zadejte **"Azure Active Directory"** a vyberte **Azure Active Directory** položky.
 4. V navigační nabídce klikněte na **podnikové aplikace**.
-5. Klikněte na tlačítko **udělit souhlas správce**. Budete vyzváni k přihlášení k administraci aplikace.
-6. Přihlaste se pomocí účtu, který má oprávnění udělit souhlas správce pro aplikaci. 
-7. Souhlas s oprávnění aplikace.
+5. Vyberte aplikaci, pro vyjádření souhlasu.
+6. Vyberte **oprávnění** a potom klikněte na tlačítko **udělit souhlas správce**. Budete vyzváni k přihlášení k administraci aplikace.
+7. Přihlaste se pomocí účtu, který má oprávnění udělit souhlas správce pro aplikaci. 
+8. Souhlas s oprávnění aplikace.
 
 Tato možnost funguje jenom v případě aplikace je: 
 
@@ -54,8 +55,8 @@ Chcete-li udělit souhlas správce při registraci aplikace:
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) jako globální správce.
 2. Přejděte **registrace aplikací** okno.
 3. Vyberte žádost o souhlas.
-4. Vyberte **požadovaná oprávnění**.
-5. Klikněte na tlačítko **udělit oprávnění** v horní části okna.
+4. Vyberte **oprávnění k rozhraní API**.
+5. Klikněte na tlačítko **udělit souhlas správce**.
 
 
 ## <a name="grant-admin-consent-through-a-url-request"></a>Udělit souhlas správce prostřednictvím adresy URL požadavku

@@ -9,12 +9,12 @@ ms.date: 4/2/2019
 ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: chackdan
-ms.openlocfilehash: 251611e814f890e3cebf0fda2d33ab548a8ff213
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c2548ea3cf892ebe1a56cbb0909bfa5d5e805acf
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65506449"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67503313"
 ---
 # <a name="manage-service-fabric-mesh-application-secrets"></a>Správa tajných klíčů aplikací Service Fabric sítě
 Sítě pro Service Fabric podporuje tajné kódy jako prostředky Azure. Tajný klíč služby prostředků infrastruktury sítě může být libovolné citlivé textové informace, jako je například úložiště připojovací řetězce, hesla nebo jiné hodnoty, které mají být uloženy a bezpečně přenášet. Tento článek ukazuje, jak pomocí Service Fabric Secure Store Service můžete nasadit a spravovat tajné kódy.
@@ -208,7 +208,7 @@ Předat buď **soubor šablony** nebo **šablona identifikátoru uri** (ale ne o
 
 Příklad:
 - nasazení sítě az vytvořit--c:\MyMeshTemplates\SecretTemplate1.txt
-- Vytvoření nasazení sítě az-- https://www.fabrikam.com/MyMeshTemplates/SecretTemplate1.txt
+- vytvořit nasazení sítě az--https:\//www.fabrikam.com/MyMeshTemplates/SecretTemplate1.txt
 
 ### <a name="show-a-secret"></a>Zobrazit tajný kód.
 Vrací popis tajný kód (ale nikoli hodnotu).

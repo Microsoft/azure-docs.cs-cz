@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/06/2019
 ms.author: hrasheed
-ms.openlocfilehash: 44de565b8c94369c5751938b5df939f0af6e7f36
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c745fceca5efa66b1b23661001d93ddb287fe37b
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67068906"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67460634"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Spravovat clustery systému Apache Hadoop v HDInsight pomocí webu Azure portal
 
@@ -152,7 +152,7 @@ Za cluster služby HDInsight se účtují poplatky, i když se nepoužívá. Vzh
 Existuje mnoho způsobů, které můžete naprogramovat procesu:
 
 * Uživatel Azure Data Factory. Zobrazit [vytvořit na vyžádání založené na Linuxu Apache Hadoop clusterů v HDInsight pomocí Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md) pro vytváření HDInsight na vyžádání propojené služby.
-* Použití Azure Powershellu.  Zobrazit [analyzovat zpoždění letů](hdinsight-analyze-flight-delay-data-linux.md).
+* Použití Azure Powershellu.  Zobrazit [analyzovat zpoždění letů](./interactive-query/interactive-query-tutorial-analyze-flight-data.md).
 * Pomocí Azure CLI. Zobrazit [spravovat Azure HDInsight clusterů pomocí rozhraní příkazového řádku Azure](hdinsight-administer-use-command-line.md).
 * Použití sady HDInsight .NET SDK. Zobrazit [úlohy odeslání Apache Hadoop](hadoop/submit-apache-hadoop-jobs-programmatically.md).
 

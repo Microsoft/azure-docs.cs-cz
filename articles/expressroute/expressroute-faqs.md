@@ -5,15 +5,15 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 06/06/2019
+ms.date: 06/28/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: adffb18272d10c579f8b28bef055813b1074a237
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 02f772d02f5cc6f188d69b5e79debc0013cf1faa
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66754739"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67488500"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – nejčastější dotazy
 
@@ -123,9 +123,13 @@ Pokud jeden z křížové připojení selže, nedojde ke ztrátě připojení. R
 
 Víc okruhů ExpressRoute z různých umístění partnerského vztahu můžete připojené ke stejné virtuální síti zajistit vysokou dostupnost v případě, že jeden okruh, přestane být k dispozici. Pak můžete [přiřaďte vyšší váhu](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-assign-a-high-weight-to-local-connection) místní připojení k upřednostnit preferovali konkrétní okruh. Důrazně doporučujeme, aby zákazníci nastavení jediné body selhání, aby měly aspoň dva okruhy ExpressRoute. 
 
+Zobrazit [tady](https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute) pro návrh pro zajištění vysoké dostupnosti a [tady](https://docs.microsoft.com/azure/expressroute/designing-for-disaster-recovery-with-expressroute-privatepeering) pro návrh pro zotavení po havárii.  
+
 ### <a name="how-i-do-implement-redundancy-on-microsoft-peering"></a>Jak můžu implementovat redundance na partnerský vztah Microsoftu?
 
 Důrazně doporučujeme při zákazníci používají partnerský vztah pro přístup k veřejné služby Azure jako Azure Storage nebo Azure SQL, jakož i zákazníkům, kteří používají partnerský vztah Microsoftu pro Office 365, které implementují víc okruhů v různých partnerský vztah Microsoftu Vyhýbejte se jediným bodů faiure umístění. Zákazníci mohou inzerovat stejné předpony v obou okruzích a použít [předřazení AS PATH](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-use-as-path-prepending) nebo inzerovat různými předponami určit cestu v místním.
+
+Zobrazit [tady](https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute) pro návrh pro zajištění vysoké dostupnosti.
 
 ### <a name="how-do-i-ensure-high-availability-on-a-virtual-network-connected-to-expressroute"></a>Jak můžu zajistit vysokou dostupnost na virtuální síť připojená k ExpressRoute?
 

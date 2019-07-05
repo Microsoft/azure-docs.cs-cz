@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/10/2018
+ms.date: 06/26/2018
 ms.author: jingwang
-ms.openlocfilehash: 49f07b4aaadfd45e9743bde58dc715230e5bc983
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e54a69b6c2b48e50c089f8b6b7458cf91133dd85
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67074065"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443303"
 ---
 # <a name="copy-data-from-sap-table-using-azure-data-factory"></a>Kopírování dat z tabulky SAP pomocí Azure Data Factory
 
@@ -206,16 +206,16 @@ Ke zkopírování dat z tabulky SAP, jsou podporovány následující vlastnosti
 
 | Vlastnost                         | Popis                                                  | Požaduje se |
 | :------------------------------- | :----------------------------------------------------------- | :------- |
-| type                             | Vlastnost type musí být nastavená na **SapTableSource**.       | Ano      |
+| type                             | Vlastnost type musí být nastavená na **SapTableSource**.         | Ano      |
 | Počet řádků                         | Počet řádků, které se mají načíst.                              | Ne       |
 | rfcTableFields                   | Pole pro kopírování z tabulky SAP. Například, `column0, column1`. | Ne       |
 | rfcTableOptions                  | Možnost filtrovat řádky v tabulce SAP. Například, `COLUMN0 EQ 'SOMEVALUE'`. Zobrazit další popis dál v této tabulce. | Ne       |
-| customRfcReadTableFunctionModule | Vlastní funkce modul RFC, který je možné číst data z tabulky SAP. | Ne       |
+| customRfcReadTableFunctionModule | Vlastní funkce modul RFC, který je možné číst data z tabulky SAP.<br>Vlastní modul RFC funkce můžete použít k definování, jak jsou data načtena z vašeho systému SAP a vrátí ADF. While, mějte na paměti, že musí mít podobné rozhraní implementované (import, export, zajišťujeme tabulky), podobně jako jako/SAPDS/RFC_READ_TABLE2, což je ve výchozím nastavení služba ADF používá vlastního funkčního modulu. | Ne       |
 | partitionOption                  | Mechanismus oddílu číst z tabulky SAP. Podporované možnosti patří: <br/>- **None**<br/>- **PartitionOnInt** (normální integer nebo celočíselné hodnoty s nulovou odsazení na levé straně, jako je například 0000012345)<br/>- **PartitionOnCalendarYear** (4 číslic ve formátu "YYYY")<br/>- **PartitionOnCalendarMonth** (6 číslic ve formátu "YYYYMM")<br/>- **PartitionOnCalendarDate** (8 číslic ve formátu "RRRRMMDD") | Ne       |
-| partitionColumnName              | Název sloupce pro rozdělení dat. | Ne       |
+| partitionColumnName              | Název sloupce pro rozdělení dat.                | Ne       |
 | partitionUpperBound              | Maximální hodnota sloupce zadané v `partitionColumnName` , který se použije pro řízení dělení. | Ne       |
 | partitionLowerBound              | Minimální hodnota sloupce zadané v `partitionColumnName` , který se použije pro řízení dělení. | Ne       |
-| maxPartitionsNumber              | Maximální počet oddílů pro rozdělení dat do. | Ne       |
+| maxPartitionsNumber              | Maximální počet oddílů pro rozdělení dat do.     | Ne       |
 
 >[!TIP]
 >- Pokud má vaše tabulka SAP velkého objemu dat, jako je například několik až miliardy řádků, použijte `partitionOption` a `partitionSetting` pro rozdělení dat do malých oddílů, v takovém případě se data načítají oddílů a každý oddíl dat je načten z vašeho serveru SAP prostřednictvím jednom Volání RFC.<br/>

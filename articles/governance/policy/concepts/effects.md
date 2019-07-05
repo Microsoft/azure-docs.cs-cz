@@ -8,25 +8,26 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 6ad6f9414df17f9edff7565752ef3845e0d3c88e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c2bf19a2599d59b9ff2b3d189b26134f1528a878
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66116204"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448574"
 ---
 # <a name="understand-azure-policy-effects"></a>Principy Azure Policy efekty
 
 Každá definice zásady ve službě Azure Policy obsahuje jediný efekt. Tento efekt Určuje, co se stane, když se pravidlo zásad vyhodnotí tak, aby odpovídaly. Účinky chovat jinak, pokud jsou pro nový prostředek, prostředek aktualizované nebo existující prostředek.
 
-Aktuálně existuje šest efekty, které jsou podporovány v definici zásad:
+V definici zásad jsou aktuálně podporovány tyto účinky:
 
-- Připojit
-- Auditování
-- AuditIfNotExists
-- Odepřít
-- DeployIfNotExists
-- Zakázáno
+- [Připojení](#append)
+- [Auditování](#audit)
+- [AuditIfNotExists](#auditifnotexists)
+- [Odepřít](#deny)
+- [DeployIfNotExists](#deployifnotexists)
+- [Disabled](#disabled) (Zakázáno)
+- [EnforceRegoPolicy](#enforceregopolicy) (preview)
 
 ## <a name="order-of-evaluation"></a>Pořadí vyhodnocení
 
@@ -38,6 +39,8 @@ Požadavky na vytvoření nebo aktualizace prostředku prostřednictvím Azure R
 - **Audit** se pak vyhodnocuje před požadavkem na poskytovateli prostředků.
 
 Po poskytovatele prostředků se vrátí kód úspěšnosti, **AuditIfNotExists** a **DeployIfNotExists** hodnocení k určení, pokud je potřeba další dodržování předpisů protokolování nebo akce.
+
+Aktuálně není k dispozici žádné pořadí vyhodnocení **EnforceRegoPolicy** vliv.
 
 ## <a name="disabled"></a>Zakázáno
 
@@ -332,6 +335,58 @@ Příklad: Vyhodnotí jako databáze SQL serveru k určení, zda je povoleno tra
                     }
                 }
             }
+        }
+    }
+}
+```
+
+## <a name="enforceregopolicy"></a>EnforceRegoPolicy
+
+Tento efekt je použít s definicí zásad *režimu* z `Microsoft.ContainerService.Data`. Používá se k předání pravidla pro řízení přístupu definované pomocí [Rego](https://www.openpolicyagent.org/docs/how-do-i-write-policies.html#what-is-rego) k [otevřete agenta zásad](https://www.openpolicyagent.org/) (NEPRŮ) na [Azure Kubernetes Service](../../../aks/intro-kubernetes.md).
+
+> [!NOTE]
+> [Služba Azure Policy pro Kubernetes](rego-for-aks.md) je ve verzi Public Preview a podporuje pouze integrované definice zásad.
+
+### <a name="enforceregopolicy-evaluation"></a>EnforceRegoPolicy hodnocení
+
+Kontroler jejich příchodu otevřete agenta zásad vyhodnotí všechny nový požadavek na clusteru v reálném čase.
+Každých 5 minut, po dokončení úplné prohledávání clusteru a hlásí výsledky ke službě Azure Policy.
+
+### <a name="enforceregopolicy-properties"></a>Vlastnosti EnforceRegoPolicy
+
+**Podrobnosti** podvlastnosti, které popisují pravidlo řízení přístupu Rego má vlastnost EnforceRegoPolicy vliv.
+
+- **Vlastnosti policyId** [povinné]
+  - Jedinečný název předat jako parametr pravidlo řízení přístupu Rego.
+- **zásady** [povinné]
+  - Určuje identifikátor URI pravidlo řízení přístupu Rego.
+- **policyParameters** [volitelný]
+  - Definuje všechny parametry a hodnoty budou předány rego zásad.
+
+### <a name="enforceregopolicy-example"></a>Příklad EnforceRegoPolicy
+
+Příklad: Rego pravidlo řízení přístupu povolit pouze obrázky zadaného kontejneru ve službě AKS.
+
+```json
+"if": {
+    "allOf": [
+        {
+            "field": "type",
+            "equals": "Microsoft.ContainerService/managedClusters"
+        },
+        {
+            "field": "location",
+            "equals": "westus2"
+        }
+    ]
+},
+"then": {
+    "effect": "EnforceRegoPolicy",
+    "details": {
+        "policyId": "ContainerAllowedImages",
+        "policy": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/KubernetesService/container-allowed-images/limited-preview/gatekeeperpolicy.rego",
+        "policyParameters": {
+            "allowedContainerImagesRegex": "[parameters('allowedContainerImagesRegex')]"
         }
     }
 }

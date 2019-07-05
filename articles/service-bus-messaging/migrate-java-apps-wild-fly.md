@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2019
 ms.author: asirveda
-ms.openlocfilehash: 60f4e410c7c4e3854235029acade550c9279c981
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f09f6ac1cb4442657694937e7dd5e5eb109bad05
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66158717"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444158"
 ---
 # <a name="migrate-java-enterprise-edition-ee-apps-to-azure"></a>Migrace aplikací Java enterprise edition (EE) do Azure
 Tento článek vás provede procesem migraci stávajících úloh na platformě Java EE určený k Azure:
@@ -73,7 +73,7 @@ Kromě toho budete potřebovat následující:
 
 - [Azure CLI](/cli/azure/get-started-with-azure-cli) 
 - [Java 8](https://www.azul.com/downloads/azure-only/zulu/) 
-- [Maven 3](http://maven.apache.org/) 
+- [Maven 3](https://maven.apache.org/) 
 - [Git](https://github.com/)
 
 ## <a name="get-started"></a>Začínáme
@@ -344,7 +344,7 @@ mvn clean compile exec:java -Dexec.cleanupDaemonThreads=false
 [INFO] --- exec-maven-plugin:1.6.0:java (default-cli) @ helloworld-jms ---
 SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
 SLF4J: Defaulting to no-operation (NOP) logger implementation
-SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+SLF4J: See https://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
 Feb 10, 2019 9:28:31 AM org.jboss.as.quickstarts.jms.HelloWorldJMSClient main
 INFO: Attempting to acquire connection factory "SBCF"
 Feb 10, 2019 9:28:31 AM org.jboss.as.quickstarts.jms.HelloWorldJMSClient main
@@ -801,7 +801,7 @@ Můžete otestovat ve skriptu Bash spouští na App Service pro Linux podle konf
             \/      \/                  \/ 
     A P P   S E R V I C E   O N   L I N U X
     
-    Documentation: http://aka.ms/webapp-linux
+    Documentation: https://aka.ms/webapp-linux
     
     54cfe2dfa970:/home# ls -al
     total 12
@@ -836,7 +836,7 @@ Můžete otestovat ve skriptu Bash spouští na App Service pro Linux podle konf
     cp /home/site/deployments/tools/jndi.properties /opt/jboss/wildfly/standalone/configuration/^M
     /opt/jboss/wildfly/bin/jboss-cli.sh -c --file=/home/site/deployments/tools/commands.cli^M
     ```
-    Odeberte ty ' ^ M "koncové znaky řádku a soubor uložte. Chcete-li odebrat znaky konce řádku alternativní způsoby. V tématu ([v tomto článku](http://marcelog.github.io/articles/mac_newline_to_unix_eol.html)).
+    Odeberte ty ' ^ M "koncové znaky řádku a soubor uložte. Chcete-li odebrat znaky konce řádku alternativní způsoby. V tématu ([v tomto článku](https://marcelog.github.io/articles/mac_newline_to_unix_eol.html)).
 
 ##### <a name="test-the-startupsh-script"></a>Test startup.sh skriptu
 

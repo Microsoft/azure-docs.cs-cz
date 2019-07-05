@@ -9,12 +9,12 @@ ms.date: 09/06/2017
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: d7debbc760e103046ce9bb1a8bdf25a954d9891c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6d80bc71c01d0f1c887d9161edee5516d6b0925b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65138559"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443686"
 ---
 # <a name="azure-storage-client-tools"></a>Klientské nástroje pro Azure Storage
 Uživatele služby Azure Storage se často chtějí mít možnost zobrazit a pracovat s nimi svá data pomocí nástroje klienta služby Azure Storage. V následující tabulce uvádíme různé nástroje, které vám to umožní. Pokud poskytuje možnost vytvořit výčet nebo přístup k data abstraction máme v každém bloku "X". Tabulka také ukazuje, zda nástroje je zdarma, nebo ne. "Zkušební verze" znamená, že je bezplatná zkušební verze, ale plné verze produktu není zdarma. "A/N" znamená, že verze k dispozici zdarma, zatímco jiné verze se dá koupit.
@@ -178,7 +178,7 @@ Jsme neověřili kvality převzatá podle následujících nástrojů třetích 
     <td></td>
   </tr>
   <tr>
-    <td><a href="http://clumsyleaf.com">Společnosti ClumsyLeaf: AzureXplorer, CloudXplorer, TableXplorer</a></td>
+    <td><a href="https://clumsyleaf.com">Společnosti ClumsyLeaf: AzureXplorer, CloudXplorer, TableXplorer</a></td>
     <td>X</td>
     <td>X</td>
     <td>X</td>

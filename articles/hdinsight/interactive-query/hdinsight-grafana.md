@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: 42429f0e8e541d0481f991761ead63e4751fcc3d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: be804ac1aea76daf5f17e62dd97b8b57b8fdf1fb
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64719719"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67458808"
 ---
 # <a name="access-grafana-in-azure-hdinsight"></a>Grafana přístupu v Azure HDInsight
 
@@ -66,7 +66,7 @@ V této části vytvoříte cluster Interactive Query v HDInsight pomocí šablo
     
 
 > [!NOTE]  
-> Další metody vytváření clusterů a principy vlastnosti používaných v tomto kurzu najdete v části [Vytváření clusterů HDInsight](../hdinsight-hadoop-provision-linux-clusters.md). 
+> Další metody vytváření clusterů a principy vlastnosti používaných v tomto článku, najdete v tématu [clusterů HDInsight vytvořit](../hdinsight-hadoop-provision-linux-clusters.md). 
 
 ## <a name="access-the-grafana-dashboard"></a>Přístup k řídicím panelem Grafana
 
@@ -108,7 +108,7 @@ Jakmile budete s článkem hotovi, můžete cluster odstranit. Pomocí HDInsight
 V tomto článku jste zjistili, jak vytvořit cluster HDInsight se systémem Linux pomocí šablony Resource Manageru a jak provádět základní dotazy Apache Hive. V dalším článku se dozvíte, jak pomocí Hadoopu ve službě HDInsight provést operaci ETL (extrakce, transformace a načítání).
 
 > [!div class="nextstepaction"]
->[Extrakce, transformace a načítání dat pomocí Apache Hive v HDInsight](../hdinsight-analyze-flight-delay-data-linux.md)
+>[Extrakce, transformace a načítání dat pomocí na HDInsight Interactive Query](../interactive-query/interactive-query-tutorial-analyze-flight-data.md)
 
 Pokud chcete začít pracovat s vlastními daty a potřebujete další informace o ukládání dat službou HDInsight nebo o tom, jak data do této služby nahrát, přečtěte si následující články:
 

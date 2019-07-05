@@ -10,12 +10,12 @@ ms.author: minxia
 author: mx-iao
 ms.date: 06/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: e1f587785b06f10bab42a425b0910d4f25fddf9f
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: a13afe56e007e2371b3193003ee95266b0750569
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165545"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67543781"
 ---
 # <a name="train-and-register-tensorflow-models-at-scale-with-azure-machine-learning-service"></a>Trénování a registraci TensorFlow modely ve velkém měřítku ve službě Azure Machine Learning
 
@@ -23,7 +23,7 @@ Tento článek popisuje, jak pro trénování a zaregistrujte model TensorFlow p
 
 TensorFlow je open source výpočetní platforma běžně používá k vytvoření neuronových sítí (DNN). Pomocí služby Azure Machine Learning můžete rychle škálovat úlohy trénování open source pomocí elastických cloudových výpočetních prostředků. Můžete také sledovat tréninkových spuštění, verze modely nasazení modelů a mnoho dalšího.
 
-Ať už vyvíjíte modelu TensorFlow od základů nebo existující model spojili do cloudu, můžete pomocí služby Azure Machine Learning sestavovat modely připravené pro produkční prostředí.
+Ať už vyvíjíte modelu TensorFlow od základů nebo jste spojili [existující model](how-to-deploy-existing-model.md) do cloudu, služby Azure Machine Learning vám umožňují sestavovat modely připravené pro produkční prostředí.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -290,7 +290,7 @@ cluster_spec = tf.train.ClusterSpec(cluster)
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto článku školení a zaregistrován TensorFlow modelu ve službě Azure Machine Learning. Informace o nasazení modelu najdete dál náš model nasazení článkem.
+V tomto článku školení a zaregistrován TensorFlow modelu. Zjistěte, jak model nasadit do clusteru s podporou grafického procesoru, pokračujte článku GPU model nasazení.
 
-> [!div class="nextstepaction"]
-> [Jak a kde nasadit modely](how-to-deploy-and-where.md)
+[Postup nasazení pro odvozování s grafickými procesory](how-to-deploy-inferencing-gpus.md)
+[monitorování s Tensorboard](how-to-monitor-tensorboard.md)

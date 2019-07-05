@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/06/2019
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: f63b705f7967eeddaf522941d6db9be5d9f2719d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 93734045cd06f279f37d7725aa573a59c4ec0be9
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66244994"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67465717"
 ---
 # <a name="create-a-shared-image-gallery-using-the-azure-portal"></a>Vytvořením Galerie sdílené bitové kopie pomocí webu Azure portal
 
@@ -53,6 +53,9 @@ Při nahrazení projdete tohoto článku, skupinu prostředků a virtuální po�
 ## <a name="create-vms-from-an-image"></a>Vytvoření virtuálních počítačů z image
 
 Po dokončení se verze image můžete vytvořit jeden nebo více nových virtuálních počítačů. 
+
+> [!IMPORTANT]
+> Na portálu nelze použít k nasazení virtuálního počítače z image v jiném tenantovi azure. Vytvoření virtuálního počítače pomocí bitové kopie sdíleny mezi klienty, je nutné použít [rozhraní příkazového řádku Azure](../linux/shared-images.md#create-a-vm) nebo [Powershellu](shared-images.md#create-vms-from-an-image).
 
 Tento příklad vytvoří virtuální počítač s názvem *myVMfromImage*v *myResourceGroup* v *USA – východ* datového centra.
 

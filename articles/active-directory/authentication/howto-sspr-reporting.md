@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bc2acaa24637c3297af8e91f01b67e5d30f2931
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 794a99481d9394229e77168e75c48f4110735578
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60357528"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67536930"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Možnosti zasílání zpráv o správě hesel Azure AD
 
@@ -175,6 +175,7 @@ Následující seznam popisuje tato aktivita podrobně:
 
 ## <a name="next-steps"></a>Další postup
 
+* [Využití samoobslužného resetování HESLA a vícefaktorové ověřování a přehled generování sestav](howto-authentication-methods-usage-insights.md)
 * [Jak dokončit úspěšné zavedení SSPR?](howto-sspr-deployment.md)
 * [Resetování nebo změna hesla](../user-help/active-directory-passwords-update-your-own-password.md)
 * [Registrace samoobslužného resetování hesla](../user-help/active-directory-passwords-reset-register.md)

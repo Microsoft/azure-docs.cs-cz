@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: geg
-ms.openlocfilehash: 19b249a76a339ce870609fbcdceaf70bf79a6ea2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 62e10f382882e70d488f9814cb00c2b86b8b9691
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65906504"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67460219"
 ---
 # <a name="restore-azure-vms"></a>Obnovení virtuálních počítačů Azure
 
@@ -185,7 +185,7 @@ Existuje mnoho věcí, abyste Poznámka: po obnovení virtuálního počítače:
 
 - Rozšíření, které jsou k dispozici při konfiguraci zálohování jsou nainstalovány, ale nejsou povolené. Pokud narazíte na problém, přeinstalujte rozšíření.
 - Pokud zálohované virtuální počítač má statickou IP adresu, bude mít obnovený virtuální počítač s dynamickou adresou IP, aby nedošlo ke konfliktu. Je možné [přidat statickou IP adresu pro obnovený virtuální počítač](../virtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm).
-- Obnovený virtuální počítač nemá dostupnosti nastavena. Pokud organizační jednotky použít možnost obnovení disku, můžete [určete skupinu dostupnosti](../virtual-machines/windows/tutorial-availability-sets.md) při vytváření virtuálního počítače z disku s použitím zadané šablony nebo Powershellu.
+- Obnovený virtuální počítač nemá dostupnosti nastavena. Pokud použijete možnost obnovení disku, pak můžete [určete skupinu dostupnosti](../virtual-machines/windows/tutorial-availability-sets.md) při vytváření virtuálního počítače z disku s použitím zadané šablony nebo Powershellu.
 - Pokud používáte cloud-init-based Linuxová distribuce, jako je Ubuntu, z bezpečnostních důvodů hesla blokovaný po obnovení. Použití rozšíření VMAccess na obnovený virtuální počítač [resetovat heslo](../virtual-machines/linux/reset-password.md). Doporučujeme používat klíče SSH na tyto distribuce, takže není nutné k resetování hesla po obnovení.
 
 

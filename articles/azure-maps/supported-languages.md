@@ -3,17 +3,17 @@ title: Podpora lokalizace ve službě Azure Maps | Dokumentace Microsoftu
 description: Další informace o podporovaných jazycích pro služby ve službě Azure Maps
 author: walsehgal
 ms.author: v-musehg
-ms.date: 04/25/2019
+ms.date: 06/26/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: ''
-ms.openlocfilehash: 1928185521419006a487a933e2ecba79894a09d3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+manager: philmea
+ms.openlocfilehash: a9446301cc4bb46c989223ad020c7a8e8b353ad3
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64686790"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446187"
 ---
 # <a name="localization-support-in-azure-maps"></a>Podpora lokalizace ve službě Azure Maps
 
@@ -25,7 +25,7 @@ Azure Maps podporuje různé jazyky a zobrazení podle země/oblast. Tento člá
 Lokalizované Azure Maps v různých jazycích napříč službami. Následující tabulka obsahuje kódy podporovaných jazyků pro každou službu.  
   
 
-| ID         | Name                   |  Maps | Search | Směrování | Provoz incidenty | Mapový ovládací prvek JS | Časové pásmo |
+| id         | Název                   |  Maps | Search | Směrování | Provoz incidenty | Mapový ovládací prvek JS | Časové pásmo |
 |------------|------------------------|:-----:|:------:|:-------:|:-----------------:|:--------------:|:---------:|
 | af-ZA      | Afrikánština              |       |    ✓   |    ✓    |                   |                |     ✓     |
 | ar-SA      | arabština                 |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
@@ -85,7 +85,51 @@ Lokalizované Azure Maps v různých jazycích napříč službami. Následujíc
 
 ## <a name="azure-maps-supported-views"></a>Zobrazení nepodporuje Azure Maps
 
-Azure parametr mapy zobrazení (také označované jako "uživatelské oblasti parametr") je kód země ISO 3166 písmeno 2, které vám ukážou, že správné mapování pro určení, které sada geopoliticky zemi/oblast sporné území ohraničení a popisků se zobrazí na mapě.  Ve výchozím nastavení parametr zobrazení je nastaven na **"Unified"** .  Země nebo oblasti, které nejsou v zobrazení seznamu se ve výchozím nastavení zobrazení "Unified". Je vaší odpovědností zjistit umístění uživatelů a potom nastavit parametr zobrazení správně pro danou lokaci. Parametr zobrazení v Azure Maps je nutné použít v souladu s příslušnými zákony, včetně těch o mapování země, ve kterém mapy, obrázky a další data a třetích stran obsah, který jste oprávnění pro přístup k prostřednictvím Azure Maps je k dispozici.
+> [!Note]
+> Vydáváme Azure Maps na 1. srpna 2019 v následujících zemích nebo oblastech:
+>  * Argentina
+>  * Indie
+>  * Maroko
+>  * Pákistán
+>
+> Po 1. srpna 2019 **zobrazení** nastavení parametru definuje obsah vrácený mapy pro nové oblasti/zemích uvedených výše. Doporučujeme vám zajistit, že nastavíte parametr zobrazení podle potřeby pro rozhraní REST API a sad SDK, které používají služby.
+>  
+>
+>  **Rozhraní REST API:**
+>  
+>  Ujistěte se, že nastavíte parametr zobrazení podle potřeby. Zobrazení parametr určuje, které sada geopoliticky sporné obsahu, která je vrácena prostřednictvím služby Azure Maps. 
+>
+>  Služby REST ovlivněné Azure Maps:
+>    
+>    * Získat Mapovou dlaždici
+>    * Získání obrázku mapy 
+>    * Využijte vyhledávání přibližných shod
+>    * Využijte vyhledávání POI
+>    * Získat kategorie POI vyhledávání
+>    * Využijte vyhledávání blízkých
+>    * Získat adresu vyhledávání
+>    * Získat adresu hledání strukturované
+>    * Získání zpětného hledání adresy
+>    * Získat hledání reverzní napříč ulice
+>    * Hledání příspěvek uvnitř geometrie
+>    * Příspěvek hledání adresy Batch ve verzi Preview
+>    * Odeslat hledání adresa zpětného Batch ve verzi Preview
+>    * Hledání příspěvek trase
+>    * Příspěvek vyhledávání přibližných shod Batch ve verzi Preview
+>
+>    
+>  **Sady SDK:**
+>
+>  Ujistěte se, že nastavíte parametr zobrazení podle potřeby a máte nejnovější verzi aplikace Web SDK a sady Android SDK. Ovlivněné sady SDK:
+>
+>    * Web Azure Maps SDK
+>    * Azure Maps Android SDK
+
+
+Azure Maps **zobrazení** parametr (také označované jako "uživatelské oblasti parametr") je dvě písmena ISO 3166 směrové číslo země, který se zobrazí správný mapy pro určení, které sada geopoliticky zemi/oblast sporné území obsah je Vrátí prostřednictvím služby Azure Maps, včetně ohraničení a popisky zobrazená na mapě. 
+
+Ve výchozím nastavení parametr zobrazení je nastaven na **Unified**i v případě, že jste nedefinovali v požadavku. Je vaší odpovědností zjistit umístění uživatelů a potom nastavit parametr zobrazení správně pro danou lokaci. Případně, máte možnost nastavit "zobrazení = Auto', která vrátí data mapy založené na IP adresu požadavku.  Parametr zobrazení v Azure Maps je nutné použít v souladu s příslušnými zákony, včetně těch o mapování země, ve kterém mapy, obrázky a další data a třetích stran obsah, který jste oprávnění pro přístup k prostřednictvím Azure Maps je k dispozici.
+
 
 Následující tabulka uvádí podporované zobrazení.
 
@@ -107,4 +151,5 @@ Následující tabulka uvádí podporované zobrazení.
 | SA           | Saúdská Arábie (Arabské zobrazení)            |   ✓   |        |     ✓          |
 | SY           | Sýrie (Arabské zobrazení)                   |   ✓   |        |     ✓          |
 | ANO VŠEM           | Jemen (Arabské zobrazení)                   |   ✓   |        |     ✓          |
+| Automaticky         | Vrátí data mapy založené na IP adresu požadavku.|   ✓   |    ✓   |     ✓          |
 | Unifikace      | Sjednocený pohled (ostatní)                  |   ✓   |   ✓     |     ✓          |

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 0c47212e51725e7d4a173c441709dca739d4e357
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4658de97bc8b8a175934286a5be3f074968ff7bd
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65024534"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485362"
 ---
 # <a name="query-examples-using-the-simple-search-syntax-in-azure-search"></a>Příklady dotazů pomocí syntaxe "jednoduchý" vyhledávání ve službě Azure Search
 
@@ -27,7 +27,7 @@ Syntaxe alternativní dotazu je [úplné Lucene](https://docs.microsoft.com/rest
 
 Následující příklady využívají vyhledávací index NYC Jobs skládající se z úlohy nejsou k dispozici na základě datové poskytované [města New York OpenData](https://nycopendata.socrata.com/) iniciativy. Tato data by neměly být zahrnuté v aktuální nebo dokončení. Index je v sandboxu služby od Microsoftu, což znamená, že potřebujete předplatnému Azure nebo Azure Search vyzkoušet tyto dotazy.
 
-Co je třeba je Postman nebo ekvivalentní nástroje pro vydání požadavku HTTP na GET. Další informace najdete v tématu [prozkoumat s využitím klientů REST](search-fiddler.md).
+Co je třeba je Postman nebo ekvivalentní nástroje pro vydání požadavku HTTP na GET. Další informace najdete v tématu [prozkoumat s využitím klientů REST](search-get-started-postman.md).
 
 ### <a name="set-the-request-header"></a>Nastavte hlavičku žádosti
 

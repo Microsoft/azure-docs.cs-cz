@@ -15,12 +15,12 @@ ms.date: 05/21/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ef72f1649c3f3e0af7fba53b2e8dbcee49d4b59
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c83a38b68fcc2e70b4e17bd62e11ac429dd32950
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66734565"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67471907"
 ---
 # <a name="create-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>Vytvoření kontroly přístupu skupin nebo kontrol přístupu aplikací ve službě Azure AD
 
@@ -43,7 +43,7 @@ Další informace najdete v tématu [kteří uživatelé musí mít licence?](ac
 
 1. Klikněte na tlačítko **nová kontrola přístupu** k vytvoření nové kontroly přístupu.
 
-    ![Kontroly přístupu – ovládací prvky](./media/create-access-review/access-reviews.png)
+    ![Podokno v zásady správného řízení identit kontroly přístupu](./media/create-access-review/access-reviews.png)
 
 1. Název kontroly přístupu. Kontrola volitelně zadejte popis. Název a popis se zobrazí pro revidující.
 
@@ -91,7 +91,7 @@ Další informace najdete v tématu [kteří uživatelé musí mít licence?](ac
 
 1. Chcete-li určit, co se stane po se kontrola dokončí, rozbalte **nastavení činností po dokončení** oddílu.
 
-    ![Nastavení činností po dokončení](./media/create-access-review/upon-completion-settings.png)
+    ![Vytvoření kontroly přístupu – nastavení činností po dokončení](./media/create-access-review/upon-completion-settings.png)
 
 1. Pokud nechcete automaticky odebrat přístup pro uživatele, kteří se zamítla nastavte **automaticky zavést výsledky do prostředku** k **povolit**. Pokud chcete aplikovat ručně výsledky, až se kontrola dokončí, nastavte přepínač na **zakázat**.
 
@@ -106,7 +106,7 @@ Další informace najdete v tématu [kteří uživatelé musí mít licence?](ac
 
 1. K zadání dalších nastavení, rozbalte **upřesňující nastavení** oddílu.
 
-    ![Upřesnit nastavení](./media/create-access-review/advanced-settings.png)
+    ![Vytvoření kontroly přístupu – nastavení](./media/create-access-review/advanced-settings.png)
 
 1. Nastavte **zobrazení doporučení** k **povolit** zobrazíte revidující systému doporučení na základě daného uživatele přístup k informacím.
 
@@ -122,7 +122,7 @@ Další informace najdete v tématu [kteří uživatelé musí mít licence?](ac
 
 Po zadání nastavení pro kontroly přístupu, klikněte na tlačítko **Start**. Kontroly přístupu se zobrazí v seznamu se indikátor stavu.
 
-![Seznam kontrol přístupu](./media/create-access-review/access-reviews-list.png)
+![Seznam kontrol přístupu a jejich stav](./media/create-access-review/access-reviews-list.png)
 
 Ve výchozím nastavení Azure AD pošle e-mail revidující krátce po spuštění kontroly. Pokud se rozhodnete odeslat e-mailu se službou Azure AD, nezapomeňte informovat revidující, které čeká na všesměrově jejich dokončení kontroly přístupu. Je možné zobrazit pokyny k [kontrolovat přístup skupinám nebo aplikacím](perform-access-review.md). Pokud kontrolu pro hosty kontrolovat svůj vlastní přístup, je zobrazit pokyny k [zkontrolujte přístup skupinám nebo aplikacím](review-your-access.md).
 

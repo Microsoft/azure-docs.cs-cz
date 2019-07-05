@@ -16,12 +16,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, negoe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ccac719c78ce2844a8dd37a80445e11baa4a488
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 22f3e4cde892a70ec331523524508a50008a4073
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65962872"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67483008"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>Proč aktualizovat na Microsoft identity platform (v2.0)?
 
@@ -46,7 +46,7 @@ Knihovna Microsoft Authentication Library (MSAL) pro Microsoft identity platform
 
 Aplikace s využitím koncového bodu Azure AD verze 1.0 je potřeba zadat jejich požadovaná oprávnění OAuth 2.0 v předstihu, třeba:
 
-![Oprávnění registrace uživatelského rozhraní](./media/azure-ad-endpoint-comparison/app_reg_permissions.png)
+![Příklad zobrazující uživatelské rozhraní oprávnění registrace](./media/azure-ad-endpoint-comparison/app_reg_permissions.png)
 
 Jsou oprávnění nastavená pro registraci aplikace přímo **statické**. Zatímco statické oprávnění aplikace, které jsou definované na portálu Azure portal byl kód zachován, nice a jednoduché, představuje některé informace o možných problémech pro vývojáře:
 

@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: raynew
-ms.openlocfilehash: 4df65819256e6a81a07927d463d130fbfdf9317a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 85e7b40778305395bb0f4a9403b4aeafc4607654
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66255008"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565701"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Zálohování a obnovení virtuálních počítačů Azure pomocí Powershellu
 
@@ -447,7 +447,7 @@ $restorejob
 >
 >
 
-Zadejte další parametr **TargetResourceGroupName** k určení RG, ke kterému se obnovit spravované disky. 
+Zadejte další parametr **TargetResourceGroupName** k určení RG, ke kterému se obnovit spravované disky.
 
 > [!NOTE]
 > Důrazně doporučujeme použít **TargetResourceGroupName** parametr pro obnovení spravovaných disků, protože to má za následek výrazné zlepšení výkonu. Navíc z prostředí Azure Powershell Az modulu 1.0 a vyšší, tento parametr je povinný v případě obnovení se spravovanými disky
@@ -483,6 +483,15 @@ $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob
 ```
 
 Po obnovení disků, přejděte k další části, chcete-li vytvořit virtuální počítač.
+
+## <a name="replace-disks-in-azure-vm"></a>Nahraďte disků ve virtuálním počítači Azure
+
+Pokud chcete nahradit disky a informace o konfiguraci, proveďte následujících kroků:
+
+- Krok 1: [Obnovit disky](backup-azure-vms-automation.md#restore-the-disks)
+- Krok 2: [Odpojení datového disku pomocí prostředí PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/detach-disk#detach-a-data-disk-using-powershell)
+- Krok 3: [Připojení datového disku k virtuálnímu počítači Windows pomocí Powershellu](https://docs.microsoft.com/azure/virtual-machines/windows/attach-disk-ps)
+
 
 ## <a name="create-a-vm-from-restored-disks"></a>Vytvořte virtuální počítač z obnovených disků
 
@@ -718,6 +727,7 @@ V následující části jsou uvedené kroky potřebné k vytvoření virtuáln�
       ```powershell  
       Set-AzVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -KeyEncryptionKeyUrl $kekUrl -KeyEncryptionKeyVaultId $keyVaultId -SkipVmBackup -VolumeType "All"
       ```
+
 
 ## <a name="restore-files-from-an-azure-vm-backup"></a>Obnovení souborů ze zálohy virtuálního počítače Azure
 

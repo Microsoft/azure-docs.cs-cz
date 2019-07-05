@@ -8,18 +8,18 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: howto
 ms.date: 05/09/2019
-ms.openlocfilehash: 7457c06f9f151cb310704a985c79572c7b770859
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: e9cb9a902cf60fbd3b297a72a7dfa836ee18c835
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67166217"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67484588"
 ---
 # <a name="create-and-configure-enterprise-security-package-clusters-in-azure-hdinsight"></a>Vytvoření a konfigurace Enterprise Security Package clustery v Azure HDInsight
 
 Enterprise Security Package pro Azure HDInsight poskytuje přístup k ověřování na základě služby Active Directory, podpora více uživatelů a řízení přístupu na základě rolí pro své clustery Apache Hadoop v Azure. Clustery HDInsight ESP umožňují organizacím, které dodržují přísné firemním zásadám zabezpečení, bezpečně zpracovávat citlivá data.
 
-Cílem této příručky je správně nakonfigurovaný potřebné prostředky, které místní uživatel může přihlásit k ESP povolené clusteru HDInsight. Tento článek vás provede kroky potřebné k vytvoření clusteru Azure HDInsight Enterprise Security Package povolena. Postup se týká vytvoření virtuálního počítače IaaS s Windows pomocí služby Active Directory a služby DNS (Domain Name) povolena. Tento server bude fungovat jako náhrada za vaše **skutečné** v místním prostředí a umožní vám pokračujte kroky instalace a konfigurace, takže je můžete opakovat později ve vašem prostředí. Tato příručka vám také pomůže vytvořit prostředí hybridní identity pomocí synchronizace hodnot hash hesel se službou Azure Active Directory.
+Cílem tohoto průvodce je správně nakonfigurovat potřebné prostředky tak, aby místní uživatelé mohou přihlásit k ESP povolené clusteru HDInsight. Tento článek vás provede kroky potřebné k vytvoření clusteru Azure HDInsight Enterprise Security Package povolena. Postup se týká vytvoření virtuálního počítače IaaS s Windows pomocí služby Active Directory a služby DNS (Domain Name) povolena. Tento server bude fungovat jako náhrada za vaše **skutečné** v místním prostředí a umožní vám pokračujte kroky instalace a konfigurace, takže je můžete opakovat později ve vašem prostředí. Tato příručka vám také pomůže vytvořit prostředí hybridní identity pomocí synchronizace hodnot hash hesel se službou Azure Active Directory.
 
 Tato příručka je určena k doplnění [použití Enterprise Security Package v HDInsight](apache-domain-joined-architecture.md)
 
@@ -208,7 +208,7 @@ Další informace najdete v tématu [povolit Azure Active Directory Domain Servi
 1. Přihlaste se k portálu Azure.
 1. Klikněte na tlačítko **vytvořit prostředek**, zadejte **Domain services** a vyberte **Azure AD Domain Services**.
 1. Na **Základy** obrazovky proveďte následující kroky:
-    1. V části **název adresáře** vyberte Azure Active Directory, které jsou vytvořené pro účely tohoto kurzu **HDIFabrikam**.
+    1. V části **název adresáře** vyberte Azure Active Directory pro účely tohoto článku vytvořili **HDIFabrikam**.
     1. Zadejte **název domény DNS** z **HDIFabrikam.com**.
     1. Vyberte své předplatné.
     1. Zadejte skupinu prostředků **HDIFabrikam CentralUS** a **umístění** z **USA (střed)** .
@@ -219,7 +219,7 @@ Další informace najdete v tématu [povolit Azure Active Directory Domain Servi
 
     ![Vyberte síť](./media/apache-domain-joined-create-configure-enterprise-security-cluster/image086.png)
 
-1. Na **skupiny správců** obrazovky, zobrazí se oznámení, že se vytvoří skupina s názvem **správci AAD DC** již byla vytvořená za účelem správy této skupiny. Volitelně můžete upravit členství této skupiny, ale není nutné k provedení kroků v tomto kurzu. Klikněte na **OK**.
+1. Na **skupiny správců** obrazovky, zobrazí se oznámení, že se vytvoří skupina s názvem **správci AAD DC** již byla vytvořená za účelem správy této skupiny. Volitelně můžete upravit členství této skupiny, ale není nutné k provedení kroků v tomto článku. Klikněte na **OK**.
 
     ![zobrazení správce skupiny](./media/apache-domain-joined-create-configure-enterprise-security-cluster/image088.png)
 

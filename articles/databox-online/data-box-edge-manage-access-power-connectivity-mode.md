@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 06/03/2019
+ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 8937f4c47f0fa84d4ec371e951cff8a2fdaa8481
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2426ecd9c480b0cc236295384ae04c60051f37ce
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66476899"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442954"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-edge"></a>Správa přístupu, napájení a režimu připojení pro Azure Data Box hranici
 
@@ -66,7 +66,7 @@ Při generování aktivační klíč pro zařízení Data Box Edge nebo proveden
 -  Vytvoření sdílené složky pomocí přidružený účet úložiště.
 -  Vytváří se uživatel, který můžete přístup ke sdíleným složkám na zařízení.
 
-Měli byste mít `User` přistupovat k na tenanta Active Directory, musíte být schopni `Read all directory objects`. Uživatel typu Host nemůže být, protože nemají oprávnění k `Read all directory objects`. Pokud jste hosta a operace, jako je aktivace klíče, vytvoření sdílené složky na vašem zařízení Data Box Edge vytvoření uživatele se všechny nezdaří.
+Měli byste mít `User` přistupovat k na tenanta Active Directory, musíte být schopni `Read all directory objects`. Uživatel typu Host nemůže být, protože nemají oprávnění k `Read all directory objects`. Pokud jste hosta a operace, jako je generování aktivace klíče, vytvoření sdílené složky na vaše zařízení Data Box Edge, vytváření uživatele, provedení konfigurace Edge rolí služby compute, resetovat heslo zařízení se všechny nezdaří.
 
 Další informace o tom, jak poskytnout přístup uživatelům k Azure Active Directory Graph API najdete v tématu [výchozí přístupu pro správce, uživatele a uživatele typu Host](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-).
 

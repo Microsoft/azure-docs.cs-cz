@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0534613a9df3177290e9b4b57e9830fe62f9741a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f891642761a2f692158efbd9111ff96444c4269d
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112133"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476188"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Azure Active Directory podmínky použití
 
@@ -74,11 +74,11 @@ Jakmile dokončíte vaše podmínky použití dokumentů, použijte následujíc
 1. Přihlaste se do Azure jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
 1. Přejděte na stránku funkce **Terms of Use** na adrese [https://aka.ms/catou](https://aka.ms/catou).
 
-   ![Okno Terms of Use](./media/terms-of-use/tou-blade.png)
+   ![Podmíněný přístup – podmínky použití okna](./media/terms-of-use/tou-blade.png)
 
 1. Klikněte na **Nové podmínky**.
 
-   ![Přidání podmínek použití](./media/terms-of-use/new-tou.png)
+   ![Nový termín podokno použijte k určení vaše podmínky použití nastavení](./media/terms-of-use/new-tou.png)
 
 1. V **název** pole, zadejte název pro podmínky použití, který se použije na webu Azure Portal.
 1. V **zobrazovaný název** pole, zadejte název, který uživatelé uvidí, když se přihlásí.
@@ -88,7 +88,7 @@ Jakmile dokončíte vaše podmínky použití dokumentů, použijte následujíc
 1. Nastavit tak, aby vyžadovala koncoví uživatelé tak, aby přijímal vaše podmínky použití na všech zařízeních přistupují z **vyžadují, aby uživatelé vyjádřili souhlas na všech zařízeních** k **na**. Další informace najdete v tématu [jednotlivá zařízení podmínky použití](#per-device-terms-of-use).
 1. Pokud chcete ukončit platnost podmínky použití souhlasy podle plánu, nastavte **vyprší souhlasy** k **na**. Pokud nastavíte hodnotu na, jsou zobrazeny dvě další nastavení.
 
-   ![Vypršení platnosti souhlasů](./media/terms-of-use/expire-consents.png)
+   ![Vypršení platnosti souhlasy nastavení a nastavte počáteční datum, četnost a doba trvání](./media/terms-of-use/expire-consents.png)
 
 1. Použít **vypršení platnosti od** a **frekvence** nastavení určete plán, podmínky použití vypršení platnosti. Následující tabulka ukazuje výsledek pro několik příklad nastavení:
 
@@ -102,20 +102,20 @@ Jakmile dokončíte vaše podmínky použití dokumentů, použijte následujíc
    | Uživatel | Nejdřív přijmout data | Nejprve vyprší dne | Za druhé vyprší dne | Třetí vyprší dne |
    | --- | --- | --- | --- | --- |
    | Alice | 1\. ledna | 1\. února | 1\. března | Dubna 1 |
-   | Bob | 15\. ledna | 1\. února | 1\. března | Dubna 1 |
+   | Bob | 15. ledna | 1\. února | 1\. března | Dubna 1 |
 
 1. Použít **dobu trvání než (dnů) vyžaduje opětovné přijetí** nastavení určuje počet dní, než uživatel musí znovu přijali jako podmínky použití. To umožňuje uživatelům, postupovat podle svého vlastního plánu. Například pokud nastavíte dobu trvání na **30** dnů, zde je, jak může dojít k vypršení platnosti dva uživatelé:
 
    | Uživatel | Nejdřív přijmout data | Nejprve vyprší dne | Za druhé vyprší dne | Třetí vyprší dne |
    | --- | --- | --- | --- | --- |
-   | Alice | 1\. ledna | 31\. ledna | Března 2 | Dubna 1 |
-   | Bob | 15\. ledna | 14\. února | Března 16 | Dubna 15 |
+   | Alice | 1\. ledna | 31. ledna | Března 2 | Dubna 1 |
+   | Bob | 15. ledna | 14. února | Března 16 | Dubna 15 |
 
    Je možné použít **vyprší souhlasy** a **dobu trvání než (dnů) vyžaduje opětovné přijetí** nastavení, ale většinou můžete použít jeden z nich.
 
 1. V části **podmíněného přístupu**, použijte **vynutit šablonou zásad podmíněného přístupu** seznam a vyberte šablonu, kterou chcete vynucovat podmínky použití.
 
-   ![Podmíněný přístup šablony](./media/terms-of-use/conditional-access-templates.png)
+   ![Podmíněný přístup rozevíracího seznamu vyberte šablonu zásad](./media/terms-of-use/conditional-access-templates.png)
 
    | Šablona | Popis |
    | --- | --- |
@@ -133,11 +133,11 @@ Jakmile dokončíte vaše podmínky použití dokumentů, použijte následujíc
 
    Pokud jste vybrali vlastní šablonu podmíněného přístupu, pak nová obrazovka se zobrazí, které vám umožní vytvořit vlastní zásady podmíněného přístupu.
 
-   ![Vlastní zásady](./media/terms-of-use/custom-policy.png)
+   ![Nové podokno podmíněného přístupu, pokud jste zvolili vlastní šablony zásad podmíněného přístupu](./media/terms-of-use/custom-policy.png)
 
    Teď byste měli vidět vaše nové podmínky použití.
 
-   ![Přidání podmínek použití](./media/terms-of-use/create-tou.png)
+   ![Nové podmínky použití, které jsou uvedené v podmínkách použití okna](./media/terms-of-use/create-tou.png)
 
 ## <a name="view-report-of-who-has-accepted-and-declined"></a>Zobrazit sestavu z kteří je přijali a odmítli
 
@@ -145,19 +145,19 @@ V okně Terms of Use se zobrazí počet uživatelů, kteří podmínky přijali 
 
 1. Přihlaste se k Azure a přejděte na stránku funkce **Terms of Use** na adrese [https://aka.ms/catou](https://aka.ms/catou).
 
-   ![Okno Terms of Use](./media/terms-of-use/view-tou.png)
+   ![Přijali a odmítli podmínky použití okna výpis počet uživatelů show](./media/terms-of-use/view-tou.png)
 
 1. Podmínky použití, klikněte na čísla v části **přijato** nebo **Odmítnuto** Chcete-li zobrazit aktuální stav pro uživatele.
 
-   ![Souhlasy s podmínkami použití](./media/terms-of-use/accepted-tou.png)
+   ![Podmínky použití v podokně souhlasy seznam uživatelů, kteří souhlasili s](./media/terms-of-use/accepted-tou.png)
 
 1. Chcete-li zobrazit historii pro jednotlivé uživatele, klikněte na tlačítko se třemi tečkami ( **...** ) a potom **zobrazit historii**.
 
-   ![Nabídka zobrazení historie](./media/terms-of-use/view-history-menu.png)
+   ![Místní nabídka zobrazení historie pro uživatele](./media/terms-of-use/view-history-menu.png)
 
    V podokně zobrazení historie, uvidíte historii všech přijme, odmítne a vypršení platnosti.
 
-   ![Podokno zobrazení historie](./media/terms-of-use/view-history-pane.png)
+   ![Zobrazit historii seznamy historie podokně přijme, odmítne a vypršení platnosti pro uživatele](./media/terms-of-use/view-history-pane.png)
 
 ## <a name="view-azure-ad-audit-logs"></a>Protokoly auditu zobrazení služby Azure AD
 
@@ -169,31 +169,31 @@ Začínáme s Azure AD protokoly auditu, použijte následující postup:
 1. Vyberte podmínky použití.
 1. Klikněte na **Zobrazit protokoly auditu**.
 
-   ![Okno Terms of Use](./media/terms-of-use/audit-tou.png)
+   ![Audit podmínek použití okno se zobrazením zvýrazněnou možností protokoly](./media/terms-of-use/audit-tou.png)
 
 1. Obrazovce protokolů auditu v Azure AD, můžete filtrovat informace o použití zadaný seznamů pro cílové konkrétní údaje protokolu auditu.
 
    Můžete také kliknout na **Stáhnout** a stáhnout tyto informace jako soubor .csv pro místní použití.
 
-   ![Protokoly auditu](./media/terms-of-use/audit-logs-tou.png)
+   ![Obrazovky zobrazení data, cíl zásad, inicializuje a aktivitu protokolů auditu Azure AD](./media/terms-of-use/audit-logs-tou.png)
 
    Pokud kliknete na protokol, zobrazí se podokno s podrobnostmi o další aktivity.
 
-   ![Podrobnosti o aktivitě](./media/terms-of-use/audit-log-activity-details.png)
+   ![Podrobnosti o aktivitě pro protokol informacemi o aktivitě, stav aktivity iniciovaných, cílových zásad](./media/terms-of-use/audit-log-activity-details.png)
 
 ## <a name="what-terms-of-use-looks-like-for-users"></a>Jaké podmínky použití pro uživatele vypadá
 
 Po podmínky použití se vytvoří a vynutit, uživatelé, kteří jsou v oboru, zobrazí se následující obrazovka při přihlašování.
 
-![Webové přihlášení](./media/terms-of-use/user-tou.png)
+![Příklad podmínky použití, který se zobrazí, když se uživatel přihlásí](./media/terms-of-use/user-tou.png)
 
 Uživatelé mohou zobrazit podmínky použití a v případě potřeby pomocí tlačítek pro přiblížení a oddálení.
 
-![Zobrazit podmínky pro použití s tlačítky přiblížení](./media/terms-of-use/zoom-buttons.png)
+![Zobrazit podmínky použití s tlačítky přiblížení](./media/terms-of-use/zoom-buttons.png)
 
 Následující obrazovka ukazuje, jak vypadá podmínky použití v mobilních zařízeních.
 
-![Mobilní přihlášení uživatele](./media/terms-of-use/mobile-tou.png)
+![Příklad podmínky použití, který se zobrazí, když se uživatel přihlásí na mobilním zařízení](./media/terms-of-use/mobile-tou.png)
 
 Uživatelé pouze musí přijmout podmínky použití jednou a neuvidí podmínky použití znovu na následující přihlášení.
 
@@ -204,11 +204,11 @@ Uživatele můžete zkontrolovat a zjistit podmínky použití, které jste při
 1. Přihlaste se k webu [https://myapps.microsoft.com](https://myapps.microsoft.com).
 1. V pravém horním rohu klikněte na název a vyberte **profilu**.
 
-   ![Profil](./media/terms-of-use/tou14.png)
+   ![Web MyApps s otevřeným podoknem uživatele](./media/terms-of-use/tou14.png)
 
 1. Na stránce svého profilu klikněte na **Přečíst podmínky použití**.
 
-   ![Profil - přečíst podmínky použití](./media/terms-of-use/tou13a.png)
+   ![Stránka profilu pro uživatele zobrazující kontrola podmínky použití odkazu](./media/terms-of-use/tou13a.png)
 
 1. Tady si můžete přečíst podmínky použití, které jste přijali.
 
@@ -223,7 +223,7 @@ Můžete upravit některé podrobnosti podmínek použití, ale nelze upravit ex
 
    Pokud existují další nastavení chcete změnit, jako je například dokument PDF, vyžadují, aby uživatelé vyjádřili souhlas na všech zařízeních, vyprší souhlasy, doba trvání před reacceptance nebo zásad podmíněného přístupu, je nutné vytvořit nové podmínky použití.
 
-   ![Upravit podmínky použití](./media/terms-of-use/edit-tou.png)
+   ![Upravit podmínky použití podokno zobrazuje název a možnosti $expand](./media/terms-of-use/edit-tou.png)
 
 1. Klikněte na tlačítko **Uložit** uložte provedené změny.
 
@@ -237,12 +237,12 @@ Následující postup popisuje, jak přidat podmínky použití jazyka.
 1. Vyberte podmínky použití, které chcete upravit.
 1. V podokně podrobností klikněte na tlačítko **jazyky** kartu.
 
-   ![Přidání podmínek použití](./media/terms-of-use/languages-tou.png)
+   ![Podmínky použití vybraný a zobrazuje kartu jazyky v podokně podrobností](./media/terms-of-use/languages-tou.png)
 
 1. Klikněte na tlačítko **přidat jazyk**.
 1. V přidat podmínky použití jazyka podokně nahrát lokalizované PDF a vyberte požadovaný jazyk.
 
-   ![Přidání podmínek použití](./media/terms-of-use/language-add-tou.png)
+   ![Přidání podmínek použití jazyka podokno s možnostmi pro nahrání lokalizované soubory PDF](./media/terms-of-use/language-add-tou.png)
 
 1. Klikněte na tlačítko **přidat** přidat jazyk.
 
@@ -273,7 +273,7 @@ Pokud zařízení uživatele není připojený, obdrží zprávu, která se pot�
 
 Pokud uživatel používá Windows 10 a Microsoft Edge, zobrazí zpráva podobná následující [své zařízení připojili](../user-help/user-help-join-device-on-network.md#to-join-an-already-configured-windows-10-device).
 
-![Windows 10 a Microsoft Edge – výzvu zařízení spojení](./media/terms-of-use/per-device-win10-edge.png)
+![Windows 10 a Microsoft Edge – zprávu s informací, zařízení musí být zaregistrovaný](./media/terms-of-use/per-device-win10-edge.png)
 
 V případě, že používáte Chrome, budete vyzváni k instalaci [účty systému Windows 10 rozšíření](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji).
 
@@ -281,7 +281,7 @@ V případě, že používáte Chrome, budete vyzváni k instalaci [účty syst�
 
 Pokud uživatel používá prohlížeč, který není podporován, bude se mu zobrazit výzva k použijte jiný prohlížeč.
 
-![Nepodporovaný prohlížeč](./media/terms-of-use/per-device-browser-unsupported.png)
+![Zprávu s informací, vaše zařízení musí být zaregistrované, ale prohlížeč není podporován.](./media/terms-of-use/per-device-browser-unsupported.png)
 
 ## <a name="delete-terms-of-use"></a>Odstranění podmínek použití
 
@@ -292,7 +292,7 @@ Odstraněním starých podmínek použití, pomocí následujícího postupu.
 1. Klikněte na **Odstranit podmínky**.
 1. Ve zprávě s dotazem, jestli chcete pokračovat, která se zobrazí, klikněte na **Ano**.
 
-   ![Odstranění podmínek použití](./media/terms-of-use/delete-tou.png)
+   ![Zpráva s výzvou k potvrzení odstranění podmínek použití](./media/terms-of-use/delete-tou.png)
 
    Už byste měli vidět vaše podmínky použití.
 
@@ -316,7 +316,7 @@ Většina organizací má proces místo jejich zaměstnanci mohli souhlas s jeji
 
 Podmínky použití se zobrazí pouze tehdy, pokud má uživatel účet hostovaný v Azure AD. SharePoint Online má v současné době [ad hoc externí sdílení příjemce prostředí](/sharepoint/what-s-new-in-sharing-in-targeted-release) sdílení dokumentu nebo složky, která nevyžaduje, aby uživatel měl účet guest. V takovém případě se nezobrazí podmínky použití.
 
-![Všichni uživatelé typu host](./media/terms-of-use/b2b-guests.png)
+![Uživatelé a skupiny podokno – zahrnout zaškrtnutí karta se všechny možnost uživatelů typu Host](./media/terms-of-use/b2b-guests.png)
 
 ## <a name="support-for-cloud-apps-preview"></a>Podpora pro cloudové aplikace (Preview)
 
@@ -326,13 +326,13 @@ Pro jiné cloudové aplikace, jako je Azure Information Protection a Microsoft I
 
 Můžete nakonfigurovat zásady podmíněného přístupu pro aplikace Azure Information Protection a vyžadují podmínky použití, když uživatel přistupuje k chráněný dokument. Tím se aktivuje podmínky použití přijmou uživatele, kteří používají chráněný dokument poprvé.
 
-![Aplikace cloudové služby Azure Information Protection](./media/terms-of-use/cloud-app-info-protection.png)
+![Podokno aplikací cloudu s Microsoft Azure Information Protection vybraných aplikací](./media/terms-of-use/cloud-app-info-protection.png)
 
 ### <a name="microsoft-intune-enrollment"></a>Registrace v Microsoft Intune
 
 Můžete nakonfigurovat zásady podmíněného přístupu pro aplikaci registrace v Microsoft Intune a vyžadují podmínky použití ještě před registrací zařízení v Intune. Další informace najdete v tématu čtení [Volba správného řešení pro vaši organizaci blogový příspěvek podmínky](https://go.microsoft.com/fwlink/?linkid=2010506&clcid=0x409).
 
-![Cloudové aplikace pro Microsoft Intune](./media/terms-of-use/cloud-app-intune.png)
+![Podokno cloudové aplikace s vybrané aplikace pro Microsoft Intune](./media/terms-of-use/cloud-app-intune.png)
 
 > [!NOTE]
 > Registrace do Intune aplikace se nepodporuje pro [jednotlivá zařízení podmínky použití](#per-device-terms-of-use).

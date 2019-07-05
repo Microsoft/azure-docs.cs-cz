@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.custom: seodec2018
-ms.openlocfilehash: 462a99ffab8038f34b1ffd038ce5c8e8ec9a8565
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0a6a5b0e3957141b9ea17a378a7cbeff33a0124e
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65024426"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485205"
 ---
 # <a name="create-a-basic-index-in-azure-search"></a>Vytvoření základní indexu ve službě Azure Search
 
@@ -36,7 +36,7 @@ Při návrhu správné indexu se obvykle dosahuje prostřednictvím několika it
   
    Po kliknutí na **vytvořit**, všechny fyzické struktury podporuje indexu jsou vytvořeny ve vyhledávací službě.
 
-3. Stáhněte si pomocí schématu indexu [získat Index rozhraní REST API služby](https://docs.microsoft.com/rest/api/searchservice/get-index) a nástroje, jako je testování webového [Postman](search-fiddler.md). Teď máte JSON s reprezentací provedených index, který jste vytvořili na portálu. 
+3. Stáhněte si pomocí schématu indexu [získat Index rozhraní REST API služby](https://docs.microsoft.com/rest/api/searchservice/get-index) a nástroje, jako je testování webového [Postman](search-get-started-postman.md). Teď máte JSON s reprezentací provedených index, který jste vytvořili na portálu. 
 
    Přepnutí na přístup založený na kódu v tomto okamžiku. Na portálu není vhodné pro iteraci, protože nelze upravit index, který už je vytvořená. Ale můžete použít nástroje Postman a REST pro zbývající úkoly.
 
@@ -48,7 +48,7 @@ Při návrhu správné indexu se obvykle dosahuje prostřednictvím několika it
 
 Protože fyzické struktury jsou vytvořeny ve službě [vyřadit a znovu vytvořit indexy](search-howto-reindex.md) je nutné pokaždé, když provedete podstatných změn v existující definice pole. To znamená, že během vývoje, měli byste počítat s častými znovu sestavovat. Můžete zvážit, práci s použitím podmnožiny data tak, aby znovu sestaví go rychleji. 
 
-Kód, nikoli portálu přístup se doporučuje pro iterativní návrhu. Pokud se spoléháte na portálu pro definici indexu, budete muset vyplnit definice indexu na každý znovu sestavit. Jako alternativu, nástroje, jako je [Postman a rozhraní REST API](search-fiddler.md) jsou užitečné pro testování konceptu testování vývojové projekty jsou nadále v počátečních fázích. Můžete provádět přírůstkové změny definici indexu do textu žádosti a pak odeslat žádost službě pro opětovné vytvoření indexu pomocí aktualizovaného schématu.
+Kód, nikoli portálu přístup se doporučuje pro iterativní návrhu. Pokud se spoléháte na portálu pro definici indexu, budete muset vyplnit definice indexu na každý znovu sestavit. Jako alternativu, nástroje, jako je [Postman a rozhraní REST API](search-get-started-postman.md) jsou užitečné pro testování konceptu testování vývojové projekty jsou nadále v počátečních fázích. Můžete provádět přírůstkové změny definici indexu do textu žádosti a pak odeslat žádost službě pro opětovné vytvoření indexu pomocí aktualizovaného schématu.
 
 ## <a name="components-of-an-index"></a>Součásti indexu
 
@@ -160,16 +160,22 @@ Při definování schématu musíte zadat název, typ a atributy každého pole 
 Podrobnější informace o [datových typech podporovaných službou Azure Search najdete tady](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types).
 
 ### <a name="index-attributes"></a>Atributy indexu
+
+Právě jedno pole v indexu musí být určené jako **klíč** pole, které jednoznačně identifikuje každý dokument.
+
+Ostatní atributy určují, jak se pole používá v aplikaci. Například **prohledávatelné** atributu je přiřazena k každé pole, které by měl být součástí fulltextové vyhledávání. 
+
+Rozhraní API, které použijete k sestavení indexu mají různé výchozí chování. Pro [rozhraní REST API](https://docs.microsoft.com/rest/api/searchservice/Create-Index), většina atributy jsou povoleny ve výchozím nastavení (například **prohledávatelné** a **retrievable** platí pro pole řetězce) a jejich nastavení, pokud potřebujete často jenom Chcete-li je vypnout. Sady .NET SDK opak má hodnotu true. Všechny vlastnosti, kterou nenastavíte explicitně ve výchozím nastavení je odpovídající hledání chování zakázat, pokud ji specificky nepovolíte.
+
 | Atribut | Popis |
 | --- | --- |
-| *Klíč* |Řetězec obsahující jedinečné ID jednotlivých dokumentů, které slouží k vyhledávání dokumentů. Každý index musí mít jeden klíč. Jenom jedno pole může být klíč a jeho typ musí být nastavený na Edm.String. |
-| *Retrievable* |Určuje, jestli může být pole vrácené ve výsledku hledání. |
-| *Filterable* |Umožňuje použít pole ve filtrovacích dotazech. |
-| *Sortable* |Umožňuje dotazu seřadit výsledky hledání podle tohoto pole. |
-| *Facetable* |Umožňuje použití pole ve struktuře [fasetové navigace](search-faceted-navigation.md) k filtrování, které je řízené samotným uživatelem. Jako fasety obvykle nejlépe fungují pole, která obsahují opakované hodnoty použitelné k seskupení více dokumentů (například více dokumentů, které spadají pod jednu značku nebo kategorii služeb). |
-| *Searchable* |Označí pole jako fulltextově prohledávatelné. |
+| `key` |Řetězec obsahující jedinečné ID jednotlivých dokumentů, které slouží k vyhledávání dokumentů. Každý index musí mít jeden klíč. Jenom jedno pole může být klíč a jeho typ musí být nastavený na Edm.String. |
+| `retrievable` |Určuje, jestli může být pole vrácené ve výsledku hledání. |
+| `filterable` |Umožňuje použít pole ve filtrovacích dotazech. |
+| `Sortable` |Umožňuje dotazu seřadit výsledky hledání podle tohoto pole. |
+| `facetable` |Umožňuje použití pole ve struktuře [fasetové navigace](search-faceted-navigation.md) k filtrování, které je řízené samotným uživatelem. Jako fasety obvykle nejlépe fungují pole, která obsahují opakované hodnoty použitelné k seskupení více dokumentů (například více dokumentů, které spadají pod jednu značku nebo kategorii služeb). |
+| `searchable` |Označí pole jako fulltextově prohledávatelné. |
 
-Podrobnější informace o [atributech indexu služby Azure Search najdete tady](https://docs.microsoft.com/rest/api/searchservice/Create-Index).
 
 ## <a name="storage-implications"></a>Důsledky úložiště
 

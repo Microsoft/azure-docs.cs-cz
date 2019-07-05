@@ -4,17 +4,17 @@ description: Tento článek obsahuje informace o řešení potíží s Desired S
 services: automation
 ms.service: automation
 ms.subservice: ''
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 7cb0d77a266dbe8afd331782965e7e9a44663671
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 53fef426c927c690a3b697055f467f6cd35c532c
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66514464"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477530"
 ---
 # <a name="troubleshoot-desired-state-configuration-dsc"></a>Řešení potíží s Desired State Configuration (DSC)
 
@@ -164,6 +164,24 @@ K této chybě obvykle dochází, když uzlu je přiřazen název konfigurace uz
 
 * Ujistěte se, že jste přiřazení uzlu se název konfigurace uzlu, který přesně odpovídá názvu ve službě.
 * Můžete tak, aby nezahrnovala název konfigurace uzlu, který způsobí registrace uzlu, ale ne přiřazení konfigurace uzlu
+
+### <a name="failure-linux-temp-noexec"></a>Scénář: Aplikování konfigurace v systému Linux, dojde k chybě kvůli obecné chybě
+
+#### <a name="issue"></a>Problém
+
+Při aplikování konfigurace v systému Linux, dojde k selhání, který obsahuje chybu:
+
+```error
+This event indicates that failure happens when LCM is processing the configuration. ErrorId is 1. ErrorDetail is The SendConfigurationApply function did not succeed.. ResourceId is [resource]name and SourceInfo is ::nnn::n::resource. ErrorMessage is A general error occurred, not covered by a more specific error code..
+```
+
+#### <a name="cause"></a>Příčina
+
+Zákazníci identifikovali, že pokud TMP umístění se nastaví na noexec, aktuální verzi DSC nebude možné použít konfigurace.
+
+#### <a name="resolution"></a>Řešení
+
+* Odeberte možnost noexec z TMP umístění.
 
 ## <a name="next-steps"></a>Další postup
 

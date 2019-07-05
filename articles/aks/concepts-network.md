@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: iainfou
-ms.openlocfilehash: 5ce3290f7af32b10e1dfbf9b72686e5d30c885bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: afb7acda67eb5818ace8169dc4e98fb86bdbeaa7
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66431312"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442003"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Koncepty sítě pro aplikace ve službě Azure Kubernetes Service (AKS)
 
@@ -68,25 +68,57 @@ Ve službě AKS můžete nasadit cluster, který používá jednu z následujíc
 
 *Kubenet* sítě možnost je výchozí konfigurace pro vytvoření clusteru AKS. S *kubenet*, uzly získat IP adresu z podsítě virtuální sítě Azure. Podů obdrží IP adresu z logicky jiným adresním prostorem podsítě virtuální sítě Azure z uzlů. Překlad síťových adres (NAT) je nakonfigurovaný tak, aby tyto pody může mít přístup k prostředkům ve službě Azure virtual network. Síťový provoz na IP adresu zdrojového je že NAT by uzlu primární IP adresa.
 
-Použití uzlů [kubenet] [ kubenet] modulu plug-in Kubernetes. Můžete nechat na platformě Azure, vytvořit a konfigurovat virtuální sítě pro vás nebo zvolit pro nasazení clusteru AKS do existující podsítě virtuální sítě. Znovu přijímat pouze uzly směrovatelné IP adresy a podů komunikovat s ostatními prostředky mimo AKS cluster pomocí překladu adres. Tento přístup výrazně snižuje počet IP adres, které je nutné rezervovat v prostoru podů použití vaší sítě.
+Použití uzlů [kubenet][kubenet] modulu plug-in Kubernetes. Můžete nechat na platformě Azure, vytvořit a konfigurovat virtuální sítě pro vás nebo zvolit pro nasazení clusteru AKS do existující podsítě virtuální sítě. Znovu přijímat pouze uzly směrovatelné IP adresy a podů komunikovat s ostatními prostředky mimo AKS cluster pomocí překladu adres. Tento přístup výrazně snižuje počet IP adres, které je nutné rezervovat v prostoru podů použití vaší sítě.
 
 Další informace najdete v tématu [konfigurace sítě pro AKS cluster kubenet][aks-configure-kubenet-networking].
 
 ### <a name="azure-cni-advanced-networking"></a>Sítě Azure CNI (rozšířené)
 
-S Azure CNI každý pod získá IP adresu z podsítě a je přístupný přímo. Tyto IP adresy musí být jedinečný v rámci prostor vaší sítě a je třeba se připravit předem. Každý uzel má parametr konfigurace pro maximální počet podů, které podporuje. Ekvivalentní počet IP adres na jedno uzlu jsou pak ještě před zahájením vyhrazené pro tento uzel. Tento přístup vyžaduje více plánování a často vede k vyčerpání IP adresu nebo nutnosti znovu sestavovat clusterů ve větší podsíť, jak rostou vaše požadavky aplikace růst.
+S Azure CNI každý pod získá IP adresu z podsítě a je přístupný přímo. Tyto IP adresy musí být jedinečný v rámci prostor vaší sítě a je třeba se připravit předem. Každý uzel má parametr konfigurace pro maximální počet podů, které podporuje. Ekvivalentní počet IP adres na jedno uzlu jsou pak ještě před zahájením vyhrazené pro tento uzel. Tento přístup vyžaduje více plánování, protože jinak může vést k vyčerpání IP adresu nebo nutnosti znovu sestavovat clusterů ve větší podsíť, jak rostou vaše požadavky aplikace růst.
 
-Použití uzlů [služby Azure Container síťové rozhraní (CNI)] [ cni-networking] modulu plug-in Kubernetes.
+Použití uzlů [služby Azure Container síťové rozhraní (CNI)][cni-networking] modulu plug-in Kubernetes.
 
 ![Diagram znázorňující dva uzly s mostů propojení každý z nich jedné virtuální sítě Azure][advanced-networking-diagram]
 
-Azure CNI poskytuje následující funkce nad kubenet sítě:
-
-- Každý pod v clusteru je přiřazená IP adresa ve virtuální síti. Tyto pody může komunikovat přímo s dalších podů v clusteru a ostatní uzly ve virtuální síti.
-- Podů v podsíti, které mají povolené koncové body služeb můžete bezpečně připojit ke službám Azure, jako je například Azure Storage a SQL DB.
-- Nemůžete vytvářet trasy definované uživatelem (UDR) tak, aby směrovat provoz z podů na síťové virtuální zařízení.
-
 Další informace najdete v tématu [konfigurovat Azure CNI pro AKS cluster][aks-configure-advanced-networking].
+
+### <a name="compare-network-models"></a>Porovnání modelů sítě
+
+Kubenet i Azure CNI nabízejí připojení k síti pro své clustery AKS. Existují však výhody a nevýhody každé. Na vysoké úrovni platí následující aspekty:
+
+* **kubenet**
+    * Šetří prostor IP adres.
+    * K dosažení podů z mimo cluster používá nástroj pro vyrovnávání zatížení interní nebo externí Kubernetes.
+    * Musíte ručně spravovat a udržovat trasy definované uživatelem (udr).
+    * Maximálně 400 uzly na cluster.
+* **Azure CNI**
+    * Podů získat úplnou virtuální síťové připojení a můžete přímo přejít z mimo cluster.
+    * Vyžaduje další adresní prostor IP adres.
+
+Mezi kubenet a Azure CNI existují následující rozdíly v chování:
+
+| Schopnost                                                                                   | Kubenet   | Azure CNI |
+|----------------------------------------------------------------------------------------------|-----------|-----------|
+| Nasazení clusteru v existující nebo nové virtuální sítě                                            | Není podporována – ručně použil trasy definované uživatelem | Podporováno |
+| Pod pod připojení                                                                         | Podporováno | Podporováno |
+| Pod-VM připojení; Virtuální počítač ve stejné virtuální síti                                          | Funguje při iniciovaných pod | Funguje v obou směrech |
+| Pod-VM připojení; Virtuálního počítače v partnerské virtuální síti                                            | Funguje při iniciovaných pod | Funguje v obou směrech |
+| Přístup k místnímu pomocí připojení VPN nebo Express Route                                                | Funguje při iniciovaných pod | Funguje v obou směrech |
+| Přístup k prostředkům zabezpečené pomocí koncových bodů služby                                             | Podporováno | Podporováno |
+| Vystavení služby Kubernetes pomocí nástroje pro vyrovnávání zatížení řadiče služby, aplikace brány nebo příchozího přenosu dat | Podporováno | Podporováno |
+| Výchozí Azure DNS a privátní zóny                                                          | Podporováno | Podporováno |
+
+### <a name="support-scope-between-network-models"></a>Rozsah podpory mezi modely sítě
+
+Bez ohledu na to síťového modelu, který používáte kubenet i Azure CNI se dá nasadit v jednom z následujících způsobů:
+
+* Platforma Azure můžete automaticky vytvořit a nakonfigurovat prostředky virtuální sítě, při vytváření clusteru AKS.
+* Můžete ručně vytvořit a konfigurovat prostředky virtuální sítě a připojení k těmto prostředkům, při vytváření clusteru AKS.
+
+I když jsou podporované možnosti, jako jsou koncové body služby nebo trasy definované uživatelem kubenet i Azure CNI [podporuje zásady pro AKS][support-policies] definují, jaké změny, můžete provést. Příklad:
+
+* Pokud jste ručně vytvořili prostředky virtuální sítě pro AKS cluster, jsou podporovány při konfiguraci vlastní trasy definované uživatelem nebo koncové body služby.
+* Pokud na platformě Azure automaticky vytvoří prostředky virtuální sítě pro váš cluster AKS, není možné ručně změnit tyto prostředky spravované AKS nakonfigurovat vlastní trasy definované uživatelem nebo koncové body služby.
 
 ## <a name="ingress-controllers"></a>Kontrolery příchozího přenosu dat
 
@@ -116,7 +148,7 @@ Další informace najdete v tématu [zabezpečení přenosu mezi pody pomocí z�
 
 ## <a name="next-steps"></a>Další postup
 
-Začínáme se službou AKS sítí, vytvoření a konfigurace clusteru AKS pomocí vlastní rozsahy IP adres pomocí [kubenet] [ aks-configure-kubenet-networking] nebo [Azure CNI] [ aks-configure-advanced-networking].
+Začínáme se službou AKS sítí, vytvoření a konfigurace clusteru AKS pomocí vlastní rozsahy IP adres pomocí [kubenet][aks-configure-kubenet-networking] or [Azure CNI][aks-configure-advanced-networking].
 
 Přidružené osvědčené postupy, najdete v části [osvědčené postupy pro připojení k síti a zabezpečení ve službě AKS][operator-best-practices-network].
 
@@ -151,3 +183,4 @@ Další informace o základní Kubernetes a AKS koncepty najdete v následujíc�
 [aks-concepts-identity]: concepts-identity.md
 [use-network-policies]: use-network-policies.md
 [operator-best-practices-network]: operator-best-practices-network.md
+[support-policies]: support-policies.md

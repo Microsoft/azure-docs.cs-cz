@@ -6,13 +6,13 @@ manager: evansma
 ms.author: mattwoj
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 05/30/2019
-ms.openlocfilehash: f2787cd74525e7676befb133a6106ce83d9c2a20
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 06/27/2019
+ms.openlocfilehash: dc086bc1252c084b717807213b5ba4c7f9d7bb97
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072634"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67514064"
 ---
 # <a name="create-a-new-saas-offer"></a>Vytvoření nové nabídky SaaS
 
@@ -42,7 +42,9 @@ Příklad: test nabídka-1
 
 Vyberte **Vytvořit**.  **Nabízí přehled** stránka je vytvořena pro tuto nabídku.  
 
-![Nabídka přehled partnerského centra](./media/commercial-marketplace-offer-overview.png)
+<!---
+![Offer overview on Partner Center](./media/commercial-marketplace-offer-overview.png)
+-->
 
 ## <a name="offer-overview"></a>Přehled nabídky
 
@@ -260,11 +262,11 @@ Ručně přidejte e-mailové adresy až deset (10) nebo dvacet (20), pokud chcet
 
 ## <a name="technical-configuration"></a>Technické konfigurace
 
-**Technické konfigurace** kartě definuje technické podrobnosti (cesta adresy URL webhooku, ID tenanta a ID aplikace), použít pro připojení k vaší nabídce. Toto připojení umožňuje nám to zřízení nabídkou jako prostředek v rámci předplatného Azure zákazníkem, pokud se rozhodnete ho získat.
+**Technické konfigurace** kartě definuje technické podrobnosti (cesta adresy URL webhooku, ID tenanta a ID aplikace), použít pro připojení k vaší nabídce. Toto připojení umožňuje nám to zřízení nabídky pro koncového zákazníka, pokud se rozhodnete ho získat. Diagramy s popisem využití shromážděné pole jsou k dispozici v dokumentaci k [splnění SaaS API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2).
 
-- **Adresa URL cílové stránky** (povinné): Definujte lokality adresu URL, která budou mít zákazníci řízené objevil na po získání vaši nabídku z webu marketplace. Tato adresa URL bude také koncového bodu, který bude přijímat připojení rozhraní API pro usnadnění obchodování s Microsoftem.
+- **Adresa URL cílové stránky** (povinné): Definují adresu URL webu, který zákazníkům přesměrováni na po získání vaši nabídku z webu marketplace. Tato adresa URL bude koncovým bodem, který přijme token, když zákazník se směruje na stránku. Tento token může probíhat pro zřizování podrobně popisuje použití vyřešit v plnění rozhraní API. Tyto údaje a všechny ostatní shromážděných může sloužit jako část vytvořené v prostředí zákazníka interaktivní webové stránky k dokončit registraci a aktivaci nákupu.
 
-- **Připojení webhooku** (povinné): Pro všechny asynchronní události, které je potřeba poslat jménem zákazníka Microsoftu (Příklad: Předplatné Azure náramků RFID neplatný), potřebujeme, abyste k poskytování připojení webhooku. Pokud ještě nemáte systému webhooku v místě, je nejjednodušší konfiguraci, aby aplikace logiky koncový bod HTTP, který bude naslouchat žádné události odeslání do ní a odpovídajícím způsobem jejich zpracování (například https:\//prod-1westus.logic.azure.com:443/work). Další informace najdete v tématu [volání triggeru, nebo vnořené pracovní postupy s koncovými body HTTP ve službě logic apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint).
+- **Připojení webhooku** (povinné): Pro všechny asynchronní události, které je potřeba poslat jménem zákazníka Microsoftu (Příklad: Předplatné SaaS náramků RFID neplatný), potřebujeme, abyste k poskytování připojení webhooku. Pokud ještě nemáte systému webhooku v místě, je nejjednodušší konfiguraci, aby aplikace logiky koncový bod HTTP, který bude naslouchat žádné události odeslání do ní a odpovídajícím způsobem jejich zpracování (například https:\//prod-1westus.logic.azure.com:443/work). Další informace najdete v tématu [volání triggeru, nebo vnořené pracovní postupy s koncovými body HTTP ve službě logic apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint).
 
 - **ID tenanta Azure AD** (povinné): Uvnitř webu Azure portal, můžeme požadovat, aby vám [vytvoření aplikace Azure Active Directory (AD)](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) tak, že abychom mohli ověřit připojení mezi naše dvě služby je za ověřené komunikaci. Najít [ID tenanta](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-tenant-id), přejděte do služby Azure Active Directory a vyberte **vlastnosti**, potom se podívejte **ID adresáře** uvedené číslo (např.) 50c464d3-4930-494c-963c-1e951d15360e).
 
@@ -438,7 +440,7 @@ Pokud chcete nasadit na testovací verzi vaším jménem, vytvoření a zajišt�
 
 - **ID aplikace Azure AD** (povinné): Zadejte vaše Azure Active Directory (AD) [ID aplikace](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-application-id-and-authentication-key). Toto ID najít, přihlaste se k [webu Azure portal](https://portal.azure.com/), v nabídce vlevo vyberte kartu Active Directory, vyberte **registrace aplikací**, potom se podívejte **ID aplikace** číslo uvedené (třeba 50c464d3-4930-494c-963c-1e951d15360e).
 
-- **Klíč aplikace Azure AD** (povinné): Zadejte vaše Azure Active Directory (AD) [klíč aplikace](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-application-id-and-authentication-key). Toto ID najít, přihlaste se k [webu Azure portal](https://portal.azure.com/), v nabídce vlevo vyberte kartu Active Directory, vyberte **registrace aplikací** a pak vyberte **nastavení**  >  **Klíče**.
+- **Tajný kód klienta aplikace Azure AD** (povinné): Zadejte vaše aplikace Azure AD [tajný kód klienta](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-application-id-and-authentication-key). Chcete-li tuto hodnotu najít, přihlaste [webu Azure portal](https://portal.azure.com/). Vyberte **Azure Active Directory** v nabídce vlevo vyberte kartu **registrace aplikací**, pak vyberte vaši aplikaci test jednotky. V dalším kroku vyberte **certifikátů a tajných kódů**vyberte **nový tajný kód klienta**, zadejte popis, vyberte **nikdy** pod **Expires**, pak Zvolte **přidat**. Nezapomeňte si poznamenejte hodnotu. (Není stránku opustit předtím, než to uděláte, jinak nebude mít přístup k hodnotě.)
 
 Nezapomeňte **Uložit** přejde k další části!
 

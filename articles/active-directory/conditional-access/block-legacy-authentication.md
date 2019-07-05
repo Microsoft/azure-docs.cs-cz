@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b2120466652db363206ec20c2303ad56670228c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 60fc168a6c15e7cb8d6e4271154d99fb4136226e
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164789"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509035"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Postup: Blok starší verze ověřování do služby Azure AD s podmíněným přístupem   
 
@@ -36,7 +36,6 @@ Tento článek předpokládá, že máte zkušenosti s:
 Azure AD podporuje některé z nejčastěji používaných ověřovací a autorizační protokoly včetně starší verze ověřování. Starší verze ověřování se odkazuje na protokoly, které používají základní ověřování. Obvykle tyto protokoly nelze vynutit libovolného typu ověřování pomocí druhého faktoru. Příkladem aplikací, které jsou založeny na starší verze ověřování jsou:
 
 - Starší aplikace Microsoft Office
-
 - Aplikace pomocí protokolů e-mailu, jako jsou SMTP, POP a IMAP
 
 Jednomu faktoru ověřování (například uživatelské jméno a heslo) není dostatek těchto dnů. Hesla je špatné, jako jsou snadno uhodnutelné a jsme (lidé) je špatné za výběr vhodné hesla. Hesla jsou také citlivé na celou řadu útoků, jako jsou útoky phishing a heslo zařízení. Jedním z nejjednodušší věcí, které vám pomůžou chránit před hesla hrozbami je implementovat vícefaktorové ověřování. Se používá služba MFA i v případě, že útočník získá ve vlastnictví uživatele heslo heslo samostatně není dostatečná k úspěšnému ověření a přístup k datům.
@@ -71,46 +70,34 @@ Zablokovat přístup pro tyto aplikace, budete muset vybrat **blokovat přístup
 
 ![Blokovat přístup](./media/block-legacy-authentication/02.png)
 
-
 ### <a name="select-users-and-cloud-apps"></a>Vyberte uživatele a cloudové aplikace
 
 Pokud chcete blokovat starší verze ověřování pro vaši organizaci, pravděpodobně myslíte, že můžete to udělat tak, že vyberete:
 
 - Všichni uživatelé
-
 - Všechny cloudové aplikace
-
 - Blokovat přístup
- 
 
 ![Přiřazení](./media/block-legacy-authentication/03.png)
-
-
 
 Azure má bezpečnostní funkce, která brání ve vytvoření takovouto zásadu, protože tato konfigurace je v rozporu [osvědčené postupy](best-practices.md) pro zásady podmíněného přístupu.
  
 ![Konfigurace zásad není podporována](./media/block-legacy-authentication/04.png)
 
-
 Funkci bezpečnosti je nezbytné protože *blokovat všechny uživatele a všechny cloudové aplikace* hrozí riziko blokování celé organizace z přihlášení do vašeho tenanta. Je nutné vyloučit aspoň jednoho uživatele splňovat minimální požadavky osvědčených postupů. Může také vyloučit roli adresáře.
 
 ![Konfigurace zásad není podporována](./media/block-legacy-authentication/05.png)
 
-
 Tuto funkci zabezpečení můžou splňovat vyloučením jednoho uživatele z vaší zásady. V ideálním případě byste měli definovat několik [nouzovou přístup pro správu účtů ve službě Azure AD](../users-groups-roles/directory-emergency-access.md) a vyloučit z vašich zásad.
- 
 
 ## <a name="policy-deployment"></a>Nasazení zásad
 
 Před přepnutím do produkčního prostředí zásady, aby se postaral:
  
 - **Účty služeb** -identifikaci uživatelských účtů, které se používají jako účty služeb nebo zařízení, jako jsou telefony místnosti konference. Ujistěte se, že tyto účty používat silná hesla a přidat je do vyloučená skupina.
- 
 - **Přihlašování zprávy** – přihlášení sestavu zkontrolovat a vyhledejte **klienta** provoz. Identifikovat hlavní využití a zjistěte, proč se používá. Obvykle je provoz generovaný starší klienti Office, které nepoužívají moderní ověřování, nebo některých jiných výrobců e-mailové aplikace. Vytvořte plán k přesunutí využití mimo tyto aplikace nebo pokud se s nízkou, uživatelům předem oznámili, že nemohou používat tyto aplikace už.
  
 Další informace najdete v tématu [by měl nasazení nových zásad?](best-practices.md#how-should-you-deploy-a-new-policy).
-
-
 
 ## <a name="what-you-should-know"></a>Co byste měli vědět
 
@@ -120,23 +107,17 @@ Konfigurace zásad pro **ostatní klienty** blokuje určité klientů jako SPCon
 
 Může trvat až 24 hodin pro zásady tak, aby projeví.
 
-Můžete vybrat všechny dostupné udělení ovládacích prvků pro ostatní klienty podmínka. ale činnost koncového uživatele je vždy stejný - blokovaný přístup.
+Můžete vybrat všechny dostupné udělení ovládacích prvků pro **ostatní klienty** podmínky; však činnost koncového uživatele je vždy stejný - blokovaný přístup.
 
-Pokud zablokujete starší verze ověřování s použitím jiných klientů podmínek, můžete také nastavit podmínku zařízení platformy a umístění. Například pokud chcete blokovat starší verze ověřování pro mobilní zařízení, nastavit **platformy zařízení** podmínku tak, že vyberete:
+Pokud zablokujete pomocí starší verze ověřování **ostatní klienty** podmínku, můžete také nastavit podmínku zařízení platformy a umístění. Například pokud chcete blokovat starší verze ověřování pro mobilní zařízení, nastavit **platformy zařízení** podmínku tak, že vyberete:
 
 - Android
-
 - iOS
-
 - telefon se systémem Windows
 
 ![Konfigurace zásad není podporována](./media/block-legacy-authentication/06.png)
 
-
-
-
 ## <a name="next-steps"></a>Další postup
 
 - Pokud nejste obeznámeni s konfigurací zásad podmíněného přístupu ještě, přečtěte si téma [vyžadovat vícefaktorové ověřování pro konkrétní aplikace pomocí Azure Active Directory podmíněného přístupu](app-based-mfa.md) příklad.
-
 - Další informace o podpoře moderní ověřování najdete v tématu [jak moderní ověřování funguje pro klientské aplikace Office 2013 a Office 2016](https://docs.microsoft.com/office365/enterprise/modern-auth-for-office-2013-and-2016) 

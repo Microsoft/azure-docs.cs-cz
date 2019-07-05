@@ -5,15 +5,16 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/05/2019
-ms.openlocfilehash: 3e1597def26c09378d3917ad2d49163ef17732f8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/25/2019
+ms.custom: fasttrack-edit
+ms.openlocfilehash: e4752112acf136d9ffb19a0b7383bc3aff5de5e0
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66732868"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448086"
 ---
-# <a name="limitations-in-azure-database-for-postgresql---single-server"></a>Omezení ve službě Azure Database for PostgreSQL – jeden Server
+# <a name="limits-in-azure-database-for-postgresql---single-server"></a>Omezení ve službě Azure Database for PostgreSQL – jeden Server
 Následující části popisují kapacitu a limity funkční ve službě database. Pokud chcete další informace o úrovních prostředku (compute, paměti, úložišti), najdete v článku [cenové úrovně](concepts-pricing-tiers.md) článku.
 
 
@@ -34,7 +35,7 @@ Maximální počet připojení na cenová úroveň a virtuálními jádry jsou n
 |Paměťově optimalizované| 4| 500|
 |Paměťově optimalizované| 8| 960|
 |Paměťově optimalizované| 16| 1900|
-|Paměťově optimalizované| 32| 1900|
+|Paměťově optimalizované| 32| 1987|
 
 Při připojení překročí limit, může se zobrazit následující chyba:
 > Závažná chyba: je nám líto, už příliš mnoho klientů
@@ -48,6 +49,9 @@ Systému Azure vyžaduje pět připojení ke sledování serveru Azure Database 
 
 ### <a name="server-version-upgrades"></a>Upgrady verze serveru
 - Automatizovaný přenos mezi verzí vyhledávacích strojů hlavní databáze se aktuálně nepodporuje. Pokud chcete upgradovat na novou hlavní verzi, [výpisu a obnovení](./howto-migrate-using-dump-and-restore.md) ho na server, který byl vytvořen v nové verzi modulu.
+
+> Všimněte si, že před PostgreSQL verze 10, [zásad správy verzí PostgreSQL](https://www.postgresql.org/support/versioning/) považovány za _hlavní verze_ upgrade zvýší první _nebo_ druhé číslo (pro Příklad, byla považována za 9.5 k 9.6 _hlavní_ upgradu verze).
+> Od verze 10, jenom o změnu v první číslo je považován za upgrade hlavní verze (například 10.0 k 10.1 je _menší_ upgradu verze a 10: 11 je _hlavní_ upgradu verze).
 
 ### <a name="vnet-service-endpoints"></a>Koncové body služby virtuální sítě
 - Podpora pro koncové body služby virtuální sítě je pouze pro servery pro obecné účely a optimalizovaný pro paměť.

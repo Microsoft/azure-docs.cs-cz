@@ -8,31 +8,25 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 58f50a1a2b90b4b5f9708bf0f1a7cb51db8e47ae
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 7fb0fba519a7833ac318c713dc9eb3c6ac7f8b5b
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275960"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509552"
 ---
 # <a name="set-up-a-device-template"></a>Nastavení šablony zařízení
 
 Šablona zařízení je podrobný plán, který definuje charakteristiky a chování zařízení, která se připojuje k aplikaci Azure IoT Central.
 
-Tvůrce můžete například vytvořit šablonu zařízení pro ventilátor připojené IoT, obsahující a:
+Tvůrce můžete například vytvořit šablonu zařízení pro připojené ventilátor, který má následující vlastnosti:
 
 - Telemetrická data měření teploty
-
+- Umístění měření
 - Ventilátor motor chybová událost měření
-
 - Ventilátor provozní stav měření
-
 - Ventilátor rychlosti
-
-- Vlastnost Location
-
 - Pravidla, které odesílají oznámení
-
 - Řídicí panel, který poskytuje celkový přehled o zařízení
 
 Z této šablony zařízení můžete vytvořit a připojit skutečné ventilátor zařízení s názvy, jako operátor **ventilátor 1** a **ventilátor 2**. Všechny tyto fanoušky mají měření, nastavení, vlastnosti, pravidla a řídicí panel, který uživatelé vaší aplikace můžete monitorovat a spravovat.
@@ -61,6 +55,7 @@ Měření jsou data, která pochází z vašeho zařízení. Více měření mů
 - **Telemetrie** měření jsou číselné datových bodů, které postupně shromažďuje zařízení. Představovaly jste jako nepřetržitý datový proud. Příkladem je teploty.
 - **Událost** měření jsou data bodu v čase, která reprezentuje něco významu na zařízení. Úroveň závažnosti představuje důležitost události. Příkladem je chyba ventilátor motor.
 - **Stav** měření představující stav zařízení nebo její součásti po určitou dobu. Ventilátor režimu lze například definovat tak, že má **operační** a **Zastaveno** jako dva možné stavy.
+- **Umístění** měření jsou souřadnice zeměpisné šířky a délky zařízení po určitou dobu v. Například je ventilátor je přesunout z jednoho umístění do druhého.
 
 ### <a name="create-a-telemetry-measurement"></a>Vytvoření měření telemetrie
 
@@ -78,7 +73,7 @@ ve formátu PNG například můžete přidat nové měření teploty telemetrick
 
 Po výběru **Uložit**, **teploty** měření se zobrazí v seznamu měření. Nějakou dobu vidíte vizualizaci data o teplotě ze simulovaného zařízení.
 
-Při zobrazování telemetrických dat, můžete zvolit jednu z následujících možností agregace: Průměr, Minimum, Maximum, Sum a počet. **Průměrná** je zvolen jako výchozí agregace v grafu. 
+Při zobrazování telemetrických dat, můžete zvolit jednu z následujících možností agregace: Průměr, Minimum, Maximum, Sum a počet. **Průměrná** je zvolen jako výchozí agregace v grafu.
 
 > [!NOTE]
 > Datový typ telemetrických dat měření je plovoucí číslo bodu.
@@ -127,6 +122,32 @@ Pokud zařízení pošle příliš mnoho datových bodů v malých dobu trvání
 > [!NOTE]
 > Datový typ měření stavu je řetězec.
 
+### <a name="create-a-location-measurement"></a>Vytvořit umístění měření
+
+Chcete-li přidat novou míru umístění **a nové měření**, zvolte **umístění** jako měření typ a zadejte podrobnosti **vytvoření měření** formuláře.
+
+Můžete například přidat novou míru telemetrie umístění:
+
+| Zobrazované jméno        | Název pole    |
+| --------------------| ------------- |
+| Umístění prostředku      |  assetloc     |
+
+!["Vytvořit umístění" formulář s podrobnostmi o umístění měření](./media/howto-set-up-template/locationmeasurementsform.png)
+
+Po výběru **Uložit**, **umístění** měření se zobrazí v seznamu měření. Nějakou dobu vidíte vizualizaci dat umístění ze simulovaného zařízení.
+
+Při zobrazení umístění, můžete použít jednu z následujících možností: nejnovější polohu a historii. **Historie umístění** platí jenom za vybrané časové období.
+
+Datový typ měření umístění je objekt, který obsahuje longitude, latitude a volitelné výšku. Následující fragment kódu ukazuje strukturu JavaScript:
+
+```javascript
+assetloc: {
+  lon: floating point number,
+  lat: floating point number,
+  alt?: floating point number
+}
+```
+
 ## <a name="settings"></a>Nastavení
 
 Nastavení řízení zařízení. Umožňují, aby operátoři mohli zadejte vstupy pro zařízení. Můžete přidat více nastavení do šablony zařízení, která se zobrazí jako dlaždice na **nastavení** kartu pro operátory používat. Lze přidat mnoho typů nastavení: číslo, text, datum, přepínací tlačítko, rozevíracího seznamu a popisek oddíl.
@@ -151,12 +172,12 @@ Po výběru **Uložit**, **ventilátor rychlost** nastavení se zobrazí jako dl
 
 ## <a name="properties"></a>Vlastnosti
 
-Vlastnosti jsou metadata, která má přidružený k zařízení, jako je například umístění zařízení a sériové číslo. Přidat do šablony zařízení, která se zobrazí jako dlaždice na více vlastností **vlastnosti** kartu. Vlastnost může mít typ, jako je číslo, text, datum, přepínací tlačítko, vlastnosti zařízení, popisku nebo umístění. Operátor můžete zadat hodnoty vlastností při jejich vytvoření zařízení, a mohli upravit tyto hodnoty v každém okamžiku. Vlastnosti zařízení jsou jen pro čtení a odesílány ze zařízení do aplikace. Operátor nelze změnit vlastnosti zařízení. Po připojení skutečných zařízení, na dlaždici vlastnosti zařízení je aktualizace v aplikaci.
+Vlastnosti jsou metadata, která má přidružený k zařízení, jako je například umístění pevné zařízení a sériové číslo. Přidat do šablony zařízení, která se zobrazí jako dlaždice na více vlastností **vlastnosti** kartu. Vlastnost má typ, jako je číslo, text, datum, přepínací tlačítko, vlastnosti zařízení, popisek nebo pevné umístění. Operátor určuje hodnoty vlastností při jejich vytvoření zařízení, a mohli upravit tyto hodnoty v každém okamžiku. Vlastnosti zařízení jsou jen pro čtení a odesílány ze zařízení do aplikace. Operátor nelze změnit vlastnosti zařízení. Po připojení skutečných zařízení, na dlaždici vlastnosti zařízení aktualizuje v aplikaci.
 
 Vlastnosti se dělí do dvou kategorií:
 
 - _Vlastnosti zařízení_ , která zařízení odesílá do aplikace IoT Central. Vlastnosti zařízení jsou jen pro čtení hodnoty oznámí zařízení a aktualizují v aplikaci po připojení skutečné zařízení.
-- _Vlastnosti aplikace_ , které jsou uloženy v aplikaci a operátor může upravit. Zařízení nedokáže rozpoznat vlastnosti aplikace.
+- _Vlastnosti aplikace_ , které jsou uloženy v aplikaci a operátor může upravit. Vlastnosti aplikace jsou uloženy pouze v aplikaci a nikdy se neprohlédlo zařízení.
 
 Například můžete přidat data poslední obsluhované zařízení jako nový **datum** vlastnosti (vlastnosti aplikace) **vlastnosti** kartu:
 
@@ -170,14 +191,17 @@ Po výběru **Uložit**, poslední Údržba data pro zařízení se zobrazí jak
 
 Po vytvoření dlaždice můžete změnit hodnoty vlastnosti aplikace **Device Explorer**.
 
-### <a name="create-a-location-property-through-azure-maps"></a>Vytvořit vlastnost umístění prostřednictvím Azure Maps
+### <a name="create-a-location-property"></a>Vytvoření vlastnosti umístění
 
-Můžete předat geografický kontext dat o poloze v Azure IoT Central a mapovat všechny souřadnice zeměpisné šířky a délky adresy. Nebo můžete namapovat zeměpisné šířky a délky souřadnice. Azure Maps umožňuje tato funkce v IoT Central.
+Můžete předat geografický kontext dat o poloze v Azure IoT Central a namapovat jakékoli zeměpisná šířka a zeměpisná délka souřadnice nebo adresu. Azure Maps umožňuje tato funkce v IoT Central.
 
 Můžete přidat dva typy vlastností umístění:
 
-- **Umístění jako vlastnost aplikace**, které je uložený v aplikaci. Zařízení nedokáže rozpoznat vlastnosti aplikace.
-- **Umístění jako vlastnost zařízení**, která zařízení odesílá do aplikace.
+- **Umístění jako vlastnost aplikace**, které je uložený v aplikaci. Vlastnosti aplikace jsou uloženy pouze v aplikaci a nikdy se neprohlédlo zařízení.
+- **Umístění jako vlastnost zařízení**, která zařízení odesílá do aplikace. Tento typ vlastnosti je nejvhodnější pro statické umístění.
+
+> [!NOTE]
+> Umístění jako vlastnost nezaznamenává historie. Pokud se požaduje historie, použijte umístění měření.
 
 #### <a name="add-location-as-an-application-property"></a>Přidat umístění jako vlastnost aplikace
 
@@ -190,7 +214,7 @@ Můžete vytvořit umístění vlastnost jako vlastnost aplikace s využitím ma
 3. Konfigurace **zobrazovaný název**, **název pole**a (volitelně) **počáteční hodnota** pro umístění.
 
     | Zobrazované jméno  | Název pole | Počáteční hodnota |
-    | --------------| -----------|---------| 
+    | --------------| -----------|---------|
     | Adresa instalace | installAddress | Microsoft, 1 Microsoft Way, Redmond, WA 98052   |
 
    !["Konfigurace umístění" formulář s podrobnostmi o umístění](./media/howto-set-up-template/locationcloudproperty2.png)
@@ -220,7 +244,7 @@ Můžete vytvořit umístění vlastnost jako vlastnost zařízení, která zař
 
    !["Konfigurace vlastnosti zařízení" formulář s podrobnostmi o umístění](./media/howto-set-up-template/locationdeviceproperty2.png)
 
-Po připojení se skutečné zařízení, umístění, které jste přidali jako vlastnost zařízení se aktualizuje s hodnotou odeslané ze zařízení. Teď, když jste nakonfigurovali váš vlastnost umístění, můžete [přidat mapu, která bude vizualizovat umístění na řídicím panelu zařízení](#add-an-azure-maps-location-in-the-dashboard).
+Po připojení skutečné zařízení umístění můžete přidat, protože vlastnost zařízení se aktualizuje s hodnotou odeslané ze zařízení. Po dokončení konfigurace vašeho vlastnost umístění, můžete [přidat mapu, která bude vizualizovat umístění na řídicím panelu zařízení](#add-a-location-in-the-dashboard).
 
 ## <a name="commands"></a>Příkazy
 
@@ -240,7 +264,7 @@ Například můžete přidat nový **Echo** příkaz tak, že vyberete **příka
 
 !["Příkaz konfigurace" formulář s podrobnostmi o programu echo](./media/howto-set-up-template/commandsecho1.png)
 
-Po výběru **Uložit**, **Echo** příkazu se zobrazí jako dlaždice a je připravený k použití v **Device Explorer** když skutečné zařízení připojí. Názvy polí ve svých rukou musí odpovídat názvům vlastností v odpovídajícím kódu zařízení, aby příkazy úspěšně spustit.
+Po výběru **Uložit**, **Echo** příkazu se zobrazí jako dlaždice a je připravený k použití v **Device Explorer** když skutečné zařízení připojí. Názvy polí ve svých rukou musí odpovídat názvům vlastností v odpovídajícím kódu zařízení v pořadí pro příkazy úspěšně spustit.
 
 ## <a name="rules"></a>Pravidla
 
@@ -250,7 +274,7 @@ Pravidla povolení operátory k monitorování zařízení téměř v reálném 
 
 ## <a name="dashboard"></a>Řídicí panel
 
-Řídicí panel je, kde může použít operátor zobrazit informace o zařízení. Jako tvůrce můžete přidat dlaždice na tuto stránku a operátoři pochopit, jak se zařízení chová. Víc dlaždic řídicího panelu lze přidat do šablony zařízení. Lze přidat mnoho typů dlaždic řídicích panelů, jako je například image, spojnicový graf, pruhový graf, klíčový ukazatel výkonu (KPI), nastavení a vlastnosti a popisek.
+Řídicí panel je, kde operátor dostane zobrazíte informace o zařízení. Jako tvůrce přidání dlaždice na tuto stránku a operátoři pochopit, jak se zařízení chová. Lze přidat mnoho typů dlaždic řídicích panelů, jako je například image, spojnicový graf, pruhový graf, klíčový ukazatel výkonu (KPI), nastavení a vlastnosti a popisek.
 
 Například můžete přidat **nastavením a vlastnostem** zobrazovat výběr aktuálních hodnot nastavení a vlastnosti tak, že vyberete dlaždici **řídicí panel** kartu a na dlaždici z knihovny:
 
@@ -258,27 +282,29 @@ Například můžete přidat **nastavením a vlastnostem** zobrazovat výběr ak
 
 Nyní když operátor zobrazení řídicího panelu **Device Explorer**, zobrazí se dlaždice.
 
-### <a name="add-an-azure-maps-location-in-the-dashboard"></a>Přidat umístění služby Azure Maps na řídicím panelu
+### <a name="add-a-location-in-the-dashboard"></a>Přidat umístění na řídicím panelu
 
-Pokud jste nakonfigurovali vlastnost umístění, můžete vizualizovat umístění pomocí mapování na řídicím panelu zařízení.
+Pokud jste nakonfigurovali měření umístění, můžete místo s mapování vizualizovat na řídicím panelu zařízení.
 
 1. Přejděte **řídicí panel** kartu.
 
 1. Na řídicím panelu zařízení vyberte **mapy** z knihovny.
 
-1. Na mapě pojmenujte. V následujícím příkladu má název **umístění instalace**. Klikněte na tlačítko Vlastnosti umístění, které jste dříve nakonfigurovali na **vlastnosti** kartu. V následujícím příkladu **Adresa instalace** zaškrtnuto.
+1. Na mapě pojmenujte. V následujícím příkladu má název **aktuální umístění zařízení**. Zvolte umístění měření, kterou jste dříve nakonfigurovali na **měření** kartu. V následujícím příkladu **Asset umístění** měření je vybrán:
 
    !["Konfigurace mapování" formulář s podrobnostmi o název a vlastnosti](./media/howto-set-up-template/locationcloudproperty5map.png)
 
-4. Vyberte **Uložit**. Mapovou dlaždici teď zobrazuje umístění, které jste vybrali.
+1. Vyberte **Uložit**. Mapovou dlaždici teď zobrazuje umístění, které jste vybrali.
 
-Na mapě můžete změnit velikost na požadovanou velikost. Nyní když operátor zobrazení řídicího panelu **Device Explorer**, dlaždice řídicího panelu, že jste nakonfigurovali, včetně Mapa umístění jsou viditelné.
+Změnit velikost dlaždice mapy. Když operátor zobrazení řídicího panelu **Device Explorer**, dlaždice řídicího panelu, že jste nakonfigurovali, včetně Mapa umístění jsou viditelné.
+
+Další informace o tom, jak používat dlaždice v Azure IoT Central, naleznete v tématu [pomocí dlaždice řídicího panelu](howto-use-tiles.md).
 
 ## <a name="next-steps"></a>Další postup
 
 Teď, když jsme zjistili, jak nastavit šablonu zařízení v aplikaci Azure IoT Central, můžete:
 
 > [!div class="nextstepaction"]
-> [Vytvoření nové šablony verze zařízení](howto-version-devicetemplate.md)
+> [Vytvoření nové šablony verze zařízení](howto-version-device-template.md)
 > [připojení MXChip IoT DevKit zařízení do aplikace Azure IoT Central](howto-connect-devkit.md)
 > [připojení obecného klienta aplikace do Azure IoT Central aplikace (Node.js)](howto-connect-nodejs.md)

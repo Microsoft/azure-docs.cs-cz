@@ -1,7 +1,6 @@
 ---
-title: Platbu na fakturu za odběr služeb Azure | Dokumentace Microsoftu
-description: Popisuje, jak platbu na fakturu za odběr služeb Azure
-documentationcenter: ''
+title: Platbu na fakturu za odběr služeb Azure
+description: Popisuje, jak platbu na fakturu za odběr služeb Azure.
 author: bandersmsft
 manager: jureid
 tags: billing
@@ -10,23 +9,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/06/2019
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 7af8789d61069f37d34d07653177e839caf35304
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9ca726ef737ce4750018d2461bc4bcd6c7ebb5f5
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67076512"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491239"
 ---
-# <a name="pay-azure-subscription-by-invoice"></a>Platbu předplatného Azure na základě faktury
+# <a name="pay-for-your-azure-subscription-by-invoice"></a>Platba pomocí faktury pro vaše předplatné Azure
 
-Pokud přejdete na platbu na fakturu, znamená to, že platíte vyúčtování do 30 dní od data vystavení faktury. Chcete-li stane oprávněnými o platby fakturami pro vaše předplatné Azure, odešlete žádost o podporu Azure. Po schválení vaší žádosti můžete přepnout předplatné plateb faktur v [webu Azure portal](https://portal.azure.com).
+Pokud přejdete na platbu na fakturu, znamená to, že platíte vyúčtování do 30 dní od data vystavení faktury převodem kontrola/při přenosu. Chcete-li stane oprávněnými o platby fakturami pro vaše předplatné Azure, odešlete žádost o podporu Azure. Po schválení vaší žádosti můžete přepnout na faktuře platby (Kontrola/elektronický převod) v [webu Azure portal](https://portal.azure.com).
 
 > [!IMPORTANT]
-> * Platby faktura je dostupná jenom pro obchodní účty.
+> * Platby faktura (Kontrola/elektronický převod) je dostupná jenom pro obchodní účty.
 > * Než přejdete k faktuře platit musíte zaplatit všechny nezaplacené poplatky.
-> * Po přepnutí na faktuře platit, nebudete moci přepnout zpět na platba kreditní nebo debetní kartou.
 
 ## <a name="request-to-pay-by-invoice"></a>Žádost o platbu na fakturu
 
@@ -70,12 +68,18 @@ Pokud přejdete na platbu na fakturu, znamená to, že platíte vyúčtování d
 
 Pokud bychom někdy potřebovali provést ověřování kredibility kvůli množství kreditu, který potřebujete, pošleme vám kredit ověření.
 
-## <a name="switch-to-invoice-pay"></a>Přepnout na faktuře platby
+## <a name="switch-to-invoice-pay-checkwire-transfer"></a>Přepnout na faktuře platby (Kontrola/elektronický převod)
 
-Po schválení o platby fakturami vašeho předplatného Azure můžete přepnout na platbu pomocí faktur v [webu Azure portal](https://portal.azure.com).
+Po schválení o platby fakturami můžete přepnout na fakturu platby (Kontrola/elektronický převod) na webu Azure Portal.
 
-1. Přihlaste se do [webu Azure portal](https://portal.azure.com) jako správce účtu.
-1. Hledat na **Cost Management a fakturace**.
+Pokud máte účet Microsoft Online Services Program, můžete přepnout předplatného Azure ke vrácení přenos při přenosu. Pokud máte smlouvu Microsoft zákazníka, můžete přepnout váš fakturační profil kontrola přenos při přenosu. [Zjistěte, jak zkontrolovat typ účtu](#check-access-to-a-microsoft-customer-agreement).
+
+### <a name="switch-azure-subscription-to-checkwire-transfer"></a>Přepnout kontrolu převodu při přenosu předplatného Azure
+
+Podle následujících pokynů přejděte vašeho předplatného Azure k faktuře platby (Kontrola/elektronický převod). **Po přepnutí na faktuře platby (Kontrola/elektronický převod), nebudete moci přepnout zpět na platební kartu**.
+
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com) jako správce účtu.
+1. Vyhledejte **Cost Management a fakturace**.
 
     ![Snímek obrazovky zobrazující vyhledávání](./media/billing-how-to-pay-by-invoice/search.png)
 
@@ -85,9 +89,32 @@ Po schválení o platby fakturami vašeho předplatného Azure můžete přepnou
 
     ![Snímek obrazovky zobrazující platbu na fakturu tlačítko](./media/billing-how-to-pay-by-invoice/pay-by-invoice.png)
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás
+### <a name="switch-billing-profile-to-checkwire-transfer"></a>Přepnout fakturační profil k vrácení přenos při přenosu
+
+Podle následujících pokynů přejděte fakturační profil, který Zkontrolujte přenos při přenosu. Mějte prosím na paměti, že pouze osoba, která zaregistrovali službu Azure můžete změnit způsob platby výchozí fakturační profilu.
+
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Hledat na **Cost Management a fakturace**.
+1. V nabídce na levé straně klikněte na **fakturace profily**.
+
+    ![snímek obrazovky zobrazující fakturační profil v nabídce](./media/billing-how-to-pay-by-invoice/billing-profile.png)
+
+1. Vyberte fakturační profil.
+1. V nabídce na levé straně vyberte **způsoby platby**.
+
+   ![Snímek obrazovky zobrazující platby v nabídce](./media/billing-how-to-pay-by-invoice/billing-profile-payment-methods.png)
+
+1. Klikněte na modrý banner s upozorněním, že máte nárok na platit kontroly/elektronický převod.
+
+    ![Snímek obrazovky, který se zobrazí modrý banner přepnout na kontrolu/při přenosu](./media/billing-how-to-pay-by-invoice/customer-led-switch-to-invoice.png)
+
+## <a name="check-access-to-a-microsoft-customer-agreement"></a>Kontrola přístupu na základě smlouvy Microsoft
+[!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
+
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
 Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Další postup
+
 - V případě potřeby aktualizujte vaše fakturační kontaktní informace na [centra účtů Azure](https://account.azure.com/Profile).

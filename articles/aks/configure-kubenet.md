@@ -5,15 +5,15 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 06/03/2019
+ms.date: 06/26/2019
 ms.author: iainfou
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: f57c1af4c497b51f5289559737fad5ce4cf2e85b
-ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
+ms.openlocfilehash: 269dd670ed82234b77e06c389ae1c9a5c294010c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2019
-ms.locfileid: "67358030"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441954"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Použít kubenet práce se sítěmi pomocí vlastní rozsahy IP adres ve službě Azure Kubernetes Service (AKS)
 
@@ -48,7 +48,7 @@ S *Azure CNI*, běžný problémem je přiřazené rozsah IP adres je příliš 
 
 Jako ohrožení zabezpečení, můžete vytvořit cluster AKS, který používá *kubenet* a připojte se k existující podsíti virtuální sítě. Tento přístup umožňuje uzly přijímat definovaných IP adres, aniž by bylo nutné rezervovat velký počet IP adres ještě před zahájením pro všechny potenciální podů, které může běžet v clusteru.
 
-S *kubenet*, můžete použít mnohem menší rozsah IP adres a být schopni poskytovat podporu velkých clusterech a požadavky na aplikace. Například v případě */27* rozsah IP adres, můžete spustit 20 25 uzel clusteru s dostatek místa pro škálování nebo upgradovat. Tato velikost clusteru by podporují až *2 200 2,750* pody (s výchozí maximální hodnoty 110 podů na uzel). Maximální počet podů podle počtu uzlů, které můžete konfigurovat pomocí *kubenet* ve službě AKS je 250.
+S *kubenet*, můžete použít mnohem menší rozsah IP adres a být schopni poskytovat podporu velkých clusterech a požadavky na aplikace. Například v případě */27* rozsah IP adres, můžete spustit 20 25 uzel clusteru s dostatek místa pro škálování nebo upgradovat. Tato velikost clusteru by podporují až *2 200 2,750* pody (s výchozí maximální hodnoty 110 podů na uzel). Maximální počet podů podle počtu uzlů, které můžete konfigurovat pomocí *kubenet* ve službě AKS je 110.
 
 Následující základní výpočty porovnat rozdíl v modelech sítě:
 

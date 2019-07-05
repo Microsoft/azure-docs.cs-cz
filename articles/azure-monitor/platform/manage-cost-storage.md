@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 06/06/2019
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: 3cad3722a9d0a52b1a0e66c760e948ceb3c1671c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b7fa59f4086608a8bacabde21f0c02c108f1f5e8
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67061052"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67466728"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Spravovat využití a nákladů s protokoly Azure monitoru
 
@@ -105,10 +105,12 @@ Následující kroky popisují, jak nakonfigurovat jak dlouho protokol dat se uc
 3. V podokně s pomocí posuvníku zvyšte nebo snižte počet dní a potom klikněte na tlačítko **OK**.  Pokud používáte *bezplatné* úroveň, nebudete moci upravit dobu uchovávání dat a budete muset upgradovat na placenou úroveň cílem kontrolovat, toto nastavení.
 
     ![Změna nastavení uchovávání dat pracovního prostoru](media/manage-cost-storage/manage-cost-change-retention-01.png)
+    
+Uchovávání je možné také [nastavené přes ARM](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) pomocí `dataRetention` parametru. Navíc pokud nastavíte na 30 dnů uchovávání dat, můžete aktivovat okamžité vymazat starších dat pomocí `immediatePurgeDataOn30Days` parametr, který může být užitečné pro scénáře týkající se dodržování předpisů. Tato funkce je dostupná jenom v případě přes ARM. 
 
 ## <a name="legacy-pricing-tiers"></a>Starší verze cenové úrovně
 
-Předplatným, které pracovní prostor Log Analytics nebo prostředek Application Insights byla v něm před 2. dubnem 2018, nebo jsou propojeny do smlouvy Enterprise, které začínají před 1. února 2019, budou mít přístup ke starší verze cenové úrovně: **Bezplatné**, **samostatné (za GB)** a **za uzel (OMS)** .  Pracovní prostory v cenové úrovni Free, budou mít omezený na 500 MB (s výjimkou typů data zabezpečení shromážděná službou Azure Security Center) denní příjem dat a uchovávání dat je omezená na 7 dní. Cenová úroveň Free je určena pouze pro účely vyhodnocení. Pracovní prostory v samostatné nebo cenovými úrovněmi uzlů za obsahují uživatelem konfigurovatelné uchování až 2 roky. 
+Předplatným, které pracovní prostor Log Analytics nebo prostředek Application Insights byla v něm před 2. dubnem 2018, nebo jsou propojeny do smlouvy Enterprise, které začínají před 1. února 2019, budou mít přístup ke starší verze cenové úrovně: **Bezplatné**, **samostatné (za GB)** a **za uzel (OMS)** .  Pracovní prostory v cenové úrovni Free, budou mít omezený na 500 MB (s výjimkou typů data zabezpečení shromážděná službou Azure Security Center) denní příjem dat a uchovávání dat je omezená na 7 dní. Cenová úroveň Free je určena pouze pro účely vyhodnocení. Pracovní prostory v samostatné nebo cenovými úrovněmi uzlů za obsahují uživatelem konfigurovatelné uchování až 2 roky. Pracovní prostory vytvořené před. dubna 2016 také mají přístup k původní **standardní** a **Premium** cenové úrovně. Podrobnosti o cenách úroveň omezení jsou k dispozici [tady](https://docs.microsoft.com/azure/azure-subscription-service-limits#log-analytics-workspaces).
 
 > [!NOTE]
 > Chcete-li používat nároky z nákupu OMS E1 Suite, sadu E2 OMS nebo doplňku OMS pro System Center, zvolte Log Analytics *na jeden uzel* cenovou úroveň.
@@ -126,11 +128,7 @@ Pokud váš pracovní prostor Log Analytics má přístup ke starší verzi ceno
 3. V části **cenová úroveň**, vyberte cenovou úroveň a potom klikněte na tlačítko **vyberte**.  
     ![Vybraná cenový plán](media/manage-cost-storage/workspace-pricing-tier-info.png)
 
-Pokud chcete přesunout do aktuální cenová úroveň pracovního prostoru, budete muset změnit monitorování vašeho předplatného [cenového modelu ve službě Azure Monitor](usage-estimated-costs.md#moving-to-the-new-pricing-model) který změní cenovou úroveň všech pracovních prostorů v tomto předplatném.
-
-> [!NOTE]
-> Další informace o nastavení cenové úrovně při [pomocí šablony Azure Resource Manageru](template-workspace-configuration.md#create-a-log-analytics-workspace) k vytvoření pracovního prostoru a ujistěte se, že nasazení šablony Azure Resource Manageru bude úspěšné bez ohledu na to, jestli se předplatné je ve starší verzi nebo nový cenový model. 
-
+Můžete také [nastavit cenovou úroveň přes ARM](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) pomocí `ServiceTier` parametru. 
 
 ## <a name="troubleshooting-why-log-analytics-is-no-longer-collecting-data"></a>Řešení potíží způsobujících Log Analytics je už shromažďování dat
 

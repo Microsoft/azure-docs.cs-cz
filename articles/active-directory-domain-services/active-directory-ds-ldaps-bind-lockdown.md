@@ -3,7 +3,7 @@ title: Vytvořit vazbu pomocí Secure LDAP (LDAPS) k spravované doméně služb
 description: Vytvořit vazbu k spravované doméně služby Azure AD Domain Services pomocí zabezpečeného protokolu LDAP (LDAPS)
 services: active-directory-ds
 documentationcenter: ''
-author: MikeStephens-MS
+author: iainfoulds
 manager: daveba
 editor: curtand
 ms.assetid: 6871374a-0300-4275-9a45-a39a52c65ae4
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/20/2019
-ms.author: mstephen
-ms.openlocfilehash: 47c9553b4191fe6dbae8d92d75dfae83f191a063
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/28/2019
+ms.author: iainfou
+ms.openlocfilehash: df0b3d27eec478280a33be831a2431eccdf05a74
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66234850"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67483382"
 ---
 # <a name="bind-to-an-azure-ad-domain-services-managed-domain-using-secure-ldap-ldaps"></a>Vytvořit vazbu k spravované doméně služby Azure AD Domain Services pomocí zabezpečeného protokolu LDAP (LDAPS)
 
@@ -35,6 +35,11 @@ Nejprve spustit nástroj LDP a připojte se k spravované doméně. Klikněte na
 
 V dalším kroku vytvoření vazby ke spravované doméně. Klikněte na tlačítko **připojení** a klikněte na tlačítko **vazby...**  v nabídce. Zadejte přihlašovací údaje uživatelského účtu, které patří do skupiny "Správci AAD DC".
 
+> [!IMPORTANT]
+> Uživatelé (a účty služby) nelze provést jednoduché vazby LDAP, pokud jste zakázali synchronizaci hodnot hash hesel protokolů NTLM ve vaší instanci Azure AD Domain Services.  Další informace o zakázání synchronizace hodnot hash hesel protokolů NTLM, najdete v článku [zabezpečení vaší spravované domény služby Azure AD DOmain Services](secure-your-domain.md).
+>
+>
+
 Vyberte **zobrazení**a pak vyberte **stromu** v nabídce. Základní rozlišující název pole ponechte prázdné a klikněte na tlačítko OK. Přejděte do kontejneru, který chcete vyhledat, klikněte pravým tlačítkem na kontejner a vyberte Hledat.
 
 > [!TIP]
@@ -43,7 +48,7 @@ Vyberte **zobrazení**a pak vyberte **stromu** v nabídce. Základní rozlišuj�
 >
 >
 
-Další informace – [základy dotazů protokolu LDAP](https://technet.microsoft.com/library/aa996205.aspx)
+Další informace – [základy dotazů protokolu LDAP](https://docs.microsoft.com/windows/desktop/ad/creating-a-query-filter)
 
 
 ## <a name="task-6-lock-down-secure-ldap-access-to-your-managed-domain-over-the-internet"></a>Krok 6: Zamezit přístup ke spravované doméně secure LDAP přes internet
@@ -66,7 +71,7 @@ Ukázka skupiny zabezpečení sítě v následující tabulce uzamkne protokolu 
 ## <a name="related-content"></a>Související obsah
 * [Azure AD Domain Services – Příručka Začínáme](create-instance.md)
 * [Spravovat domény služby Azure AD Domain Services](manage-domain.md)
-* [Základy dotazů protokolu LDAP](https://technet.microsoft.com/library/aa996205.aspx)
+* [Základy dotazů protokolu LDAP](https://docs.microsoft.com/windows/desktop/ad/creating-a-query-filter)
 * [Správa zásad skupiny pro službu Azure AD Domain Services](manage-group-policy.md)
 * [Skupiny zabezpečení sítě](../virtual-network/security-overview.md)
 * [Vytvořte skupinu zabezpečení sítě](../virtual-network/tutorial-filter-network-traffic.md)

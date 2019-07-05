@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/16/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 499b5ac77728bc14aadd5a2ef235e28b6ca83516
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9e145bc3a6824100409a0f6215152cdf70ec6777
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67133403"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67501221"
 ---
 Paměťově optimalizované velikosti nabídky virtuálních počítačů vysoký poměr paměti procesoru, které jsou velmi vhodné pro servery relačních databází, střední a velké mezipaměti a analýzu v paměti. Tento článek obsahuje informace o počtu virtuálních procesorů, datové disky a síťové adaptéry, jakož i úložiště propustnost a šířku pásma sítě pro jednotlivé velikosti v této skupině. 
 
@@ -48,6 +48,7 @@ Instance ESv3-series jsou založené na procesorech 2,3 GHz Intel XEON® E5-267
 | Standard_E16s_v3&nbsp;<sup>2</sup> | 16     | 128         | 256            | 32             | 32000 / 256 (400)                                                    | 25600 / 384                              | 8 / 8000                                       |
 | Standard_E20s_v3                   | 20     | 160         | 320            | 32             | 40000 / 320 (400)                                                    | 32000 / 480                              | 8 / 10000                                       |
 | Standard_E32s_v3&nbsp;<sup>2</sup> | 32     | 256         | 512            | 32             | 64000 / 512 (800)                                                    | 51200 / 768                              | 8 / 16 000                             |
+| Standard_E48s_v3&nbsp;<sup>2</sup> | 48     | 384         | 768            | 32             | 96000/768 (1200)                                                   | 76800 / 1152                             | 8 / 24000                             |
 | Standard_E64s_v3&nbsp;<sup>2</sup> | 64     | 432         | 864            | 32             | 128000 / 1024 (1600)                                                   | 80000 / 1200                             | 8 / 30000                             |
 | Standard_E64is_v3&nbsp;<sup>3</sup> | 64     | 432         | 864            | 32             | 128000 / 1024 (1600)                                                   | 80000 / 1200                             | 8 / 30000                             |
 
@@ -80,6 +81,7 @@ Instance Ev3-series jsou založené na procesorech 2,3 GHz Intel XEON® E5-2673
 | Standard_E16_v3 | 16        | 128         | 400            | 32             | 24 000 / 375 / 187                                            | 8 / 8000                     |
 | Standard_E20_v3 | 20        | 160         | 500            | 32             | 30000/469/234                                            | 8 / 10000                     |
 | Standard_E32_v3 | 32        | 256         | 800            | 32             | 48 000 / 750 / 375                                            | 8 / 16 000                 |
+| Standard_E48_v3 | 48        | 384         | 1200            | 32             | 96 000 / 1 000 / 500                                            | 8 / 24000                 |
 | Standard_E64_v3 | 64        | 432         | 1600           | 32             | 96 000 / 1 000 / 500                                           | 8 / 30000           |
 | Standard_E64i_v3&nbsp;<sup>2,&nbsp;3</sup> | 64        | 432         | 1600           | 32             | 96 000 / 1 000 / 500                                           | 8 / 30000           |
 
@@ -100,7 +102,7 @@ Akcelerátor zápisu: [Podporuje se](https://docs.microsoft.com/azure/virtual-ma
 
 Mv2 řady funkcí vysokou propustnost, nízká latence, namapuje přímo místní úložiště NVMe, které běží na hyper-threaded Intel® Xeon® Platinum procesoru 8180 M 2,5 GHz (Skylake) prostřednictvím všechny základní základní frekvenci 2,5 GHz a frekvenci maximální turbo 3.8 GHz. Všechny velikosti virtuálních počítačů řady Mv2 můžete využívat trvalé disky úrovně standard a premium. Instance Mv2-series jsou optimalizované pro paměť velikosti virtuálních počítačů nabízí bezkonkurenční výpočetní výkon pro podporu velkých databází v paměti a úlohami. nabízí vysoký poměr paměti procesoru, která je ideální pro servery relačních databází, velkými mezipaměťmi a v paměti Analytics. 
 
-|Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Max. propustnost dočasného úložiště a úložiště v mezipaměti: IOPS / MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku bez mezipaměti: IOPS / MB/s | Maximální počet síťových karet / očekávaný šířka pásma (MB/s) |
+|Size | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Max. propustnost dočasného úložiště a úložiště v mezipaměti: IOPS / MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku bez mezipaměti: IOPS / MB/s | Maximální počet síťových karet / očekávaný šířka pásma (MB/s) |
 |-----------------|------|-------------|----------------|----------------|-----------------------------------------------------------------------|-------------------------------------------|------------------------------|
 | Standard_M208ms_v2<sup>1, 2</sup> | 208 | 5700 | 4 096 | 64 | 80000 / 800 (7040) | 40000 / 1000 | 8 / 16 000 |
 | Standard_M208s_v2<sup>1, 2</sup> | 208 | 2850 | 4 096 | 64 | 80000 / 800 (7040) | 40000 / 1000 | 8 / 16 000 |

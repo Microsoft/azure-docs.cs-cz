@@ -1,23 +1,21 @@
 ---
-title: Správa Azure rezervace | Dokumentace Microsoftu
+title: Správa Azure rezervace
 description: Zjistěte, jak můžete změnit obor předplatného a správa přístupu pro Azure rezervace.
 ms.service: billing
-documentationcenter: ''
-author: yashesvi
+author: bandersmsft
 manager: yashesvi
-editor: ''
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/13/2019
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 9a5b200ffb9441b90875c7764786004ff5f1e8a1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 89279387b3630ea654070eef671f131ec757d55f
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66127139"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491177"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Správa rezervací pro prostředky Azure
 
@@ -54,7 +52,7 @@ Chcete-li aktualizovat obor rezervace, rezervaci:
 
 Pokud změníte z sdílí jeden obor, můžete vybrat pouze pokud jste vlastníkem předplatného. Je možné vybrat pouze předplatná ve stejném kontextu fakturace jako rezervace.
 
-Obor se vztahuje pouze na nabídku průběžných plateb MS-AZR-0003P nebo MS-AZR-0023P, nabídku Enterprise MS-AZR-0017P nebo MS-AZR-0148P nebo předplatná typu CSP.
+Obor platí jenom pro jednotlivé předplatných s využitím průběžné platby (nabídek MS-AZR - 0003P nebo MS-AZR - 0023P), nabídka Enterprise MS-AZR - 0017P nebo MS-AZR - 0148P nebo typy předplatného poskytovatele CSP.
 
 ## <a name="add-or-change-users-who-can-manage-a-reservation"></a>Přidání nebo změna uživatelů, kteří můžou spravovat rezervaci
 

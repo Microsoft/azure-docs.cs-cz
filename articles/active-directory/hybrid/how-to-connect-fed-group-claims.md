@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: 19a8400a076825f17501fabdb3f38ea05915822e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e00e41a34bb28a2569d5922926a8f6c4fbe4bd57
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65138717"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67481420"
 ---
 # <a name="configure-group-claims-for-applications-with-azure-active-directory-public-preview"></a>Konfigurace deklarace skupiny pro aplikace pomocí Azure Active Directory (Public Preview)
 
@@ -137,7 +137,7 @@ Deklarace skupiny může být rovněž konfigurována ve [nepovinných deklarac�
 
 3. Nastavit nepovinné deklarace skupiny název konfigurace.
 
-   Pokud budete chtít do skupin v tokenu obsahovat atributy skupin AD v části nepovinných deklarací identity určit, které typ tokenu volitelnou deklaraci má být použit pro místní, název požadované volitelnou deklaraci a další požadované vlastnosti.  Výpis je možný víc typy tokenů:
+   Pokud chcete skupiny v tokenu obsahující atributy skupin AD v části nepovinných deklarací identity určit, které typ tokenu volitelnou deklaraci má být použit pro místní, název volitelnou deklaraci požadované a další požadované vlastnosti.  Výpis je možný víc typy tokenů:
 
    - idToken pro token OIDC ID
    - accessToken pro přístupový token OAuth/OIDC

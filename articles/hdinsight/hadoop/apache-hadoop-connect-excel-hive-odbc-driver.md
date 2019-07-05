@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: hrasheed
-ms.openlocfilehash: fcb9171d2285efab0f65e6ab424908bc42c0ea2f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 01e7ca184f2be755f23cd402e0694ea282e3b85e
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66391878"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441395"
 ---
 # <a name="connect-excel-to-apache-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Připojení Excelu k systému Apache Hadoop v Azure HDInsight pomocí ovladače Microsoft Hive ODBC
 
@@ -32,7 +32,7 @@ Před zahájením tohoto článku, musíte mít následující položky:
 * Pracovní stanice s Office 2010 Professional Plus nebo novější, nebo aplikaci Excel 2010 nebo novější.
 
 ## <a name="install-microsoft-hive-odbc-driver"></a>Instalace ovladače Microsoft Hive ODBC
-Stáhněte a nainstalujte [ovladače Microsoft Hive ODBC Driver](https://go.microsoft.com/fwlink/?LinkID=286698) verzi, která odpovídá verzi aplikace, kde bude pomocí ovladače ODBC.  V tomto kurzu se používá ovladače pro Office Excel.
+Stáhněte a nainstalujte [ovladače Microsoft Hive ODBC Driver](https://go.microsoft.com/fwlink/?LinkID=286698) verzi, která odpovídá verzi aplikace, kde bude pomocí ovladače ODBC.  Pro účely tohoto článku se používá ovladače pro Office Excel.
 
 ## <a name="create-apache-hive-odbc-data-source"></a>Vytvoření zdroje dat Apache Hive ODBC
 Následující kroky ukazují, jak vytvořit zdroje dat Hive ODBC.

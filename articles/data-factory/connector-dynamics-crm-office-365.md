@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/26/2019
+ms.date: 07/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 481b19d0121e93c84d123579e91bcbfb9fb50815
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3f7bf3ce8c01e82fa69b3b041b573b4b31a719d2
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66356960"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67514085"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Kopírování dat z a do Dynamics 365 (Common Data Service) nebo Dynamics CRM pomocí služby Azure Data Factory
 
@@ -27,7 +27,13 @@ Tento článek popisuje, jak pomocí aktivity kopírování ve službě Azure Da
 
 Můžete kopírovat data z Dynamics 365 (Common Data Service) nebo Dynamics CRM do jakékoli podporovaného úložiště dat jímky. Můžete také můžete kopírovat data ze všech podporovaných zdrojů úložišť dat do Dynamics 365 (Common Data Service) nebo Dynamics CRM. Seznam úložišť dat podporovaných aktivitou kopírování jako zdroje a jímky, najdete v článku [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
 
-Tento konektor Dynamics podporuje následující verze Dynamics a typy ověřování. (IFD je zkratka pro nasazení přístupem k Internetu.)
+Tento konektor Dynamics podporuje Dynamics verzi 7.x 9.x pro obě online nebo místní. Přesněji řečeno,
+
+- Verze 7.x mapuje na Dynamics CRM 2015
+- Verze 8.x mapuje na Dynamics CRM 2016 a starší verzi aplikace Dynamics 365
+- Verze 9.x mapuje na novější verzi Dynamics 365
+
+Naleznete v následující tabulce pro typy podporované metody ověřování a konfigurace pro příslušné verze a produkty Dynamics. (IFD je zkratka pro nasazení přístupem k Internetu.)
 
 | Verze Dynamics | Typy ověřování | Propojená služba ukázky |
 |:--- |:--- |:--- |
@@ -43,6 +49,8 @@ Pro Dynamics 365 konkrétně následující typy aplikací se podporují:
 - Dynamics 365 for Marketing
 
 Třeba finanční jinými typy aplikací a operace, Talentů a podobně nejsou podporované tímto konektorem.
+
+Tento konektor Dynamics je postavený na [nástrojů Dynamics XRM](https://docs.microsoft.com/dynamics365/customer-engagement/developer/build-windows-client-applications-xrm-tools).
 
 >[!TIP]
 >Pro kopírování dat z **Dynamics 365 Finance and Operations**, můžete použít [konektor Dynamics AX](connector-dynamics-ax.md).
@@ -156,7 +164,7 @@ Pro kopírování dat z a do Dynamics, nastavte vlastnost typ datové sady na **
 > [!IMPORTANT]
 >- Při kopírování dat z Dynamics oddílu "struktura" je volitelné, ale vysoce recommanded v Dynamics datovou sadu, aby výsledkem deterministické kopírování. Definuje sloupce název a datový typ dat aplikace Dynamics, který chcete zkopírovat. Další informace najdete v tématu [struktury datové sady](concepts-datasets-linked-services.md#dataset-structure-or-schema) a [mapování datového typu pro Dynamics](#data-type-mapping-for-dynamics).
 >- Při importu schématu při vytváření uživatelského rozhraní, ADF odvodit schéma vzorkováním horní řádky z Dynamics výsledku dotazu inicializovat konstrukce struktury, ve kterém budou vypuštěny případu sloupce s žádné hodnoty. Stejné chování se vztahuje na kopírování spuštění, pokud neexistuje žádná definice explicitní strukturu. Můžete zkontrolovat a přidat další sloupce do Dynamics datovou sadu schémat/struktury podle potřeby, které budou zachované při kopírování modulu runtime.
->- Při kopírování dat do Dynamics "struktura" část je nepovinná v datové sadě Dynamics. Sloupce, které chcete zkopírovat do se určuje podle schématu datového zdroje. Pokud je zdrojem bez záhlaví souboru CSV ve vstupní sadě, zadejte "struktura" se název a datový typ sloupce. Jsou mapovány na pole v souboru CSV postupně v pořadí.
+>- Při kopírování dat do Dynamics "struktura" část je nepovinná v datové sadě Dynamics. Určuje sloupce, které chcete zkopírovat do schématu zdroje dat. Pokud je zdrojem bez záhlaví souboru CSV ve vstupní sadě, zadejte "struktura" se název a datový typ sloupce. Jsou mapovány na pole v souboru CSV postupně v pořadí.
 
 **Příklad:**
 
@@ -341,9 +349,8 @@ Nakonfigurujte odpovídající typ dat Data Factory ve struktuře datové sady z
 | AttributeType.State | Int32 | ✓ | ✓ |
 | AttributeType.Status | Int32 | ✓ | ✓ |
 
-
 > [!NOTE]
-> Datové typy Dynamics AttributeType.CalendarRules a AttributeType.PartyList nejsou podporovány.
+> Datové typy Dynamics AttributeType.CalendarRules, AttributeType.MultiSelectPicklist a AttributeType.PartyList nejsou podporovány.
 
 ## <a name="next-steps"></a>Další postup
 Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).

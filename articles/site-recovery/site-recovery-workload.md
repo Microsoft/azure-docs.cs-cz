@@ -5,14 +5,14 @@ author: rayne-wiselman
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 6/27/2019
 ms.author: raynew
-ms.openlocfilehash: 8f4e78f7e16f775a852b4c8172d1fa9fd70ec341
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6a0e07f338da039be1660e59510b24bcd44eed0c
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66417847"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491746"
 ---
 # <a name="what-workloads-can-you-protect-with-azure-site-recovery"></a>Jaké úlohy je možné chránit pomocí Azure Site Recovery?
 
@@ -35,7 +35,7 @@ Site Recovery pro ochranu a obnovení na úrovni aplikací přináší následuj
 * Nerozlišování aplikací a poskytování replikace pro jakoukoli úlohu spuštěnou na podporovaném počítači
 * Téměř synchronní replikace i při úrovni RPO stanovené na 30 sekund, což odpovídá nárokům nejdůležitějších firemních aplikací
 * Snímky konzistentní s jednovrstvými i vícevrstvými aplikacemi
-* Integrace s SQL Server AlwaysOn a partnerství s jinými technologiemi pro replikaci na úrovni aplikací, jako je replikace AD, SQL AlwaysOn, skupiny dostupnosti databáze Exchange (DAG) a Oracle Data Guard
+* Integrace se službami SQL Server AlwaysOn a partnerství s jinými technologiemi replikace na úrovni aplikace, včetně skupiny dostupnosti databáze replikace AlwaysOn serveru SQL, Exchange AD (DAG).
 * Flexibilní plány obnovení, které vám umožní obnovit celý zásobník aplikací jediným kliknutím, s možností zahrnout do plánu externí skripty a ručně prováděné akce
 * Pokročilá správa sítě v Site Recovery a Azure pro zjednodušení požadavků na aplikační síť, včetně možnosti rezervovat IP adresy, konfigurovat vyrovnávání zatížení a integrace Azure Traffic Manager pro přepínání sítě s cílem dosáhnout nízké úrovně RTO
 * Bohatá automatizační knihovna obsahující předpřipravené skripty specifické pro aplikace, které je možné stáhnout a integrovat do plánů obnovení

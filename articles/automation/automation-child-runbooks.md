@@ -4,17 +4,17 @@ description: Popisuje různé metody pro spuštění sady runbook ve službě Az
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 01/17/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 84f17b76f03c01d0b1441a50b9bcbddc1dfe2ef3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 64d9246284be58c8378ab102db25ab7e5220c9eb
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61081574"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477967"
 ---
 # <a name="child-runbooks-in-azure-automation"></a>Podřízené runbooky ve službě Azure Automation
 

@@ -14,22 +14,22 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: spelluru
-ms.openlocfilehash: 5c6ad222110081cd8f8838208da407e0e1d50f75
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8be34a85cb1a1863ee8a78c7b97af66627612fea
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "54851262"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444750"
 ---
 # <a name="create-a-service-bus-namespace-with-topic-subscription-and-rule-using-an-azure-resource-manager-template"></a>Vytvoření oboru názvů služby Service Bus s tématem, předplatné a pravidla pomocí šablony Azure Resource Manageru
 
 Tento článek ukazuje, jak použít šablonu Azure Resource Manageru, která vytvoří obor názvů služby Service Bus s tématem, předplatné a pravidlo (filtr). Tento článek popisuje, jak k určení prostředků, které jsou nasazené a tom, jak definovat parametry, které jsou zadané při spouštění nasazení. Tuto šablonu můžete použít pro vlastní nasazení nebo ji upravit, aby splňovala vaše požadavky.
 
-Další informace o vytváření šablon najdete v tématu [Tvorba šablon Azure Resource Manageru][Authoring Azure Resource Manager templates].
+Další informace o vytváření šablon najdete v tématu [šablon pro vytváření Azure Resource Manageru][Authoring Azure Resource Manager templates].
 
 Další informace o postupy a vzory na zásady vytváření názvů prostředků Azure najdete v tématu [doporučené zásady vytváření názvů pro prostředky Azure][Recommended naming conventions for Azure resources].
 
-Úplnou šablonu najdete v článku [obor názvů služby Service Bus s tématu, předplatným a pravidlem] [ Service Bus namespace with topic, subscription, and rule] šablony.
+Úplnou šablonu najdete v článku [obor názvů služby Service Bus s tématu, předplatným a pravidlem][Service Bus namespace with topic, subscription, and rule] šablony.
 
 > [!NOTE]
 > Následující šablony Azure Resource Manageru jsou k dispozici ke stažení a nasazení.
@@ -39,7 +39,7 @@ Další informace o postupy a vzory na zásady vytváření názvů prostředků
 > * [Vytvoření oboru názvů služby Service Bus](service-bus-resource-manager-namespace.md)
 > * [Vytvoření oboru názvů služby Service Bus s tématem a předplatným](service-bus-resource-manager-namespace-topic.md)
 > 
-> Vyhledat nejnovější šablony, přejděte [šablony pro rychlý start Azure] [ Azure Quickstart Templates] galerii a vyhledat služby Service Bus.
+> Vyhledat nejnovější šablony, přejděte [šablony pro rychlý start Azure][Azure Quickstart Templates] galerii a vyhledat služby Service Bus.
 > 
 > 
 
@@ -179,7 +179,9 @@ azure group deployment create \<my-resource-group\> \<my-deployment-name\> --tem
 ```
 
 ## <a name="next-steps"></a>Další postup
-Teď, když jste vytvořili a nasadili prostředky pomocí Azure Resource Manageru, zjistěte, jak tyto zdroje spravovat pomocí těchto článků:
+Najdete v tématu, který ukazuje, jak vytvořit filtr předplatných: [Vytvoření oboru názvů služby Service Bus s tématem, předplatné a pravidla pomocí šablony Azure Resource Manageru](service-bus-resource-manager-namespace-topic-with-rule.md)
+
+Zjistěte, jak tyto zdroje spravovat pomocí těchto článků:
 
 * [Správa služby Azure Service Bus](service-bus-management-libraries.md)
 * [Správa služby Service Bus pomocí PowerShellu](service-bus-manage-with-ps.md)

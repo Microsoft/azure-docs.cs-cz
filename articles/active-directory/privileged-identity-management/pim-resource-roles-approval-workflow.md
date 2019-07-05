@@ -15,12 +15,12 @@ ms.date: 04/09/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f645b7077ef43dc7eb4d70261b6b601b5e4af1b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9d2e8b4ae1a01cd299d910c4e88655885c7d00dc
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60288432"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476385"
 ---
 # <a name="approve-or-deny-requests-for-azure-resource-roles-in-pim"></a>Schválit nebo zamítnout žádosti pro role prostředků Azure v PIM
 
@@ -38,15 +38,15 @@ Jako delegovaný schvalovatel obdržíte e-mailové oznámení, když požadavek
 
 1. Klikněte na tlačítko **schvalovat žádosti o**.
 
-    ![Prostředky Azure – schválit žádosti](./media/pim-resource-roles-approval-workflow/resources-approve-requests.png)
+    ![Schválit žádosti – prostředky Azure stránky zobrazující žádosti ke kontrole](./media/pim-resource-roles-approval-workflow/resources-approve-requests.png)
 
     V **žádosti o aktivace rolí** části, zobrazí se vám seznam žádosti čekající na vaše schválení.
 
 ## <a name="approve-requests"></a>Schvalování žádostí
 
-1. Vyhledejte a klikněte na žádost, kterou chcete schválit. Otevře se podokno schválení.
+1. Vyhledejte a klikněte na žádost, kterou chcete schválit. Schválit nebo odmítnout, otevře se podokno.
 
-    ![Schválit žádosti podokno](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png)
+    ![Schválit žádosti – Schvalte nebo zamítněte podokně s podrobnostmi a odůvodnění pole](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png)
 
 1. V **odůvodnění** zadejte důvod.
 
@@ -54,13 +54,13 @@ Jako delegovaný schvalovatel obdržíte e-mailové oznámení, když požadavek
 
     Oznámení se zobrazí vaše schválení.
 
-    ![Schvalte oznámení](./media/pim-resource-roles-approval-workflow/resources-approve-notification.png)
+    ![Schválit oznámení, že žádost byla schválena](./media/pim-resource-roles-approval-workflow/resources-approve-notification.png)
 
 ## <a name="deny-requests"></a>Zamítnout žádosti
 
-1. Vyhledejte a klikněte na tlačítko, které chcete zamítnout žádost. Otevře se podokno schválení.
+1. Vyhledejte a klikněte na tlačítko, které chcete zamítnout žádost. Schválit nebo odmítnout, otevře se podokno.
 
-    ![Schválit žádosti podokno](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png)
+    ![Schválit žádosti – Schvalte nebo zamítněte podokně s podrobnostmi a odůvodnění pole](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png)
 
 1. V **odůvodnění** zadejte důvod.
 

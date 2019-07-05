@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: jingwang
-ms.openlocfilehash: 4cd61db3ec0e8d88c9b1c6d6ba427b120b3f1af1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3c846ab3e81e7ab8a4948aa4ed96cfa75e8eb3f4
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66152417"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449685"
 ---
 # <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>Kopírování dat z řešení SAP Business Warehouse s využitím Azure Data Factory
 
@@ -125,7 +125,7 @@ Na webu Azure Portal přejděte do služby data factory. Vyberte **vytvořit a m
 
     ![Zobrazení podrobností o výstup aktivity](media/load-sap-bw-data/activity-output-details.png)
 
-## <a name="do-an-incremental-copy-from-sap-bw-open-hub"></a>Provést přírůstková kopie ze SAP BW Open centra
+## <a name="incremental-copy-from-sap-bw-open-hub"></a>Přírůstkové kopírování z SAP BW Open centra
 
 > [!TIP]
 > Zobrazit [SAP BW Open centra konektorem delta extrakce](connector-sap-business-warehouse-open-hub.md#delta-extraction-flow) se dozvíte, jak konektor SAP BW Open Hub ve službě Data Factory kopíruje Přírůstková data z SAP BW. Tento článek může taky vám pomůžou pochopit základní konektor configuration.

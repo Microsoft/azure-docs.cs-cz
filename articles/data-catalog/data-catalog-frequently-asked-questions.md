@@ -1,19 +1,17 @@
 ---
 title: Nejčastější dotazy k Azure Data Catalog
 description: Nejčastější dotazy týkající se Azure Data Catalog, včetně možnosti zjišťování zdrojů dat, poznámky a správu.
-services: data-catalog
 author: JasonWHowell
 ms.author: jasonh
-ms.assetid: 5c7e209a-458c-4bb4-96bb-7ed178f9528a
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 01/18/2018
-ms.openlocfilehash: 7c5241b9df23bb0334a39f2c684fd1bdff40b4c2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/01/2019
+ms.openlocfilehash: 6ab5c67129b16cde5ca74e72effdf56ec0a22711
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61004037"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508891"
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Nejčastější dotazy k Azure Data Catalog
 Tento článek obsahuje odpovědi na nejčastější dotazy týkající se služby Azure Data Catalog.
@@ -103,9 +101,6 @@ Chcete-li zprávy o problémech, sdílet informace a zeptejte se a přejděte na
 
 ## <a name="does-the-catalog-work-with-another-data-source-that-im-interested-in"></a>Funguje s jiným zdrojem dat, které zajímá mě katalogu?
 Aktivně pracujeme na přidání více zdrojů dat do služby Data Catalog. Pokud se chcete podívat na konkrétnímu zdroji dat nepodporuje, navrhněte ji (nebo hlasové vaši podporu, pokud již byla navržena) tak, že přejdete [zpětnou vazbu fóra Azure Data Catalog](https://feedback.azure.com/forums/906052-data-catalog).
-
-## <a name="how-is-azure-data-catalog-related-to-the-data-catalog-in-power-bi-for-office-365"></a>Jak Azure Data Catalog souvisí se katalog dat v Power BI pro Office 365?
-Azure Data Catalog si můžete představit jako vývojem představ o katalogu dat v Power BI. Od spring 2017 Azure Data Catalog slouží k povolení sdílení a zjišťování dotazů v Excelu 2016 a Power Query pro Excel. Možnosti katalogu data Catalog v aplikaci Excel jsou dostupné pro uživatele s licencí Power BI Pro.
 
 ## <a name="what-permissions-do-i-need-to-register-assets-with-data-catalog"></a>Jaká oprávnění potřebuji k registraci prostředky ve službě Data Catalog?
 Ke spuštění nástroje pro registraci katalogu Data Catalog, budete potřebovat oprávnění na zdroji dat, který umožňuje číst metadata ze zdroje. Zahrnout také ve verzi preview, musíte mít oprávnění, které umožňují čtení dat z objektů registrována.

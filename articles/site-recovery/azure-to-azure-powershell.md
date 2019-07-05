@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/29/2019
 ms.author: sutalasi
-ms.openlocfilehash: c585b300a65091bee3320a21b7bce7ba94d269ec
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 766b004217d6679dcba00c581ade4fe911b5f8b9
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66258801"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491871"
 ---
 # <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>Nastavení zotavení po havárii pro virtuální počítače Azure pomocí Azure Powershellu
 
@@ -600,6 +600,14 @@ Update-AzRecoveryServicesAsrProtectionDirection -ReplicationProtectedItem $Repli
 ```
 
 Po dokončení opětovného nastavování ochrany můžete spustit převzetí služeb při selhání v opačném směru (západní USA oblast východní USA) a navrácení služeb po obnovení do zdrojové oblasti.
+
+## <a name="disable-replication"></a>Zákaz replikace
+
+Pomocí rutiny Remove-ASRReplicationProtectedItem můžete zakázat replikaci.
+
+```azurepowershell
+Remove-ASRReplicationProtectedItem -ReplicationProtectedItem $ReplicatedItem
+```
 
 ## <a name="next-steps"></a>Další postup
 Zobrazení [Powershellu pro Azure Site Recovery odkaz](https://docs.microsoft.com/powershell/module/az.RecoveryServices) se dozvíte, jak lze provádět další úlohy, jako je například vytváření plánů pro zotavení a testování převzetí služeb při selhání plánů obnovení pomocí prostředí PowerShell.

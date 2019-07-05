@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 83ca0c11ab0065929d939b7345cbd15869740bb3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b56a31a58937ddbea08ff22c3d1c0c71942f47f1
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65024341"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445400"
 ---
 # <a name="data-import-overview---azure-search"></a>Import dat přehled – Azure Search
 
@@ -36,7 +36,7 @@ Pomocí následujících rozhraní API můžete do indexu načíst jeden nebo n�
 
 Vkládání dat prostřednictvím portálu není aktuálně podporováno.
 
-Úvod k jednotlivým metodologiím najdete v tématu [rychlý start: Vytvoření indexu Azure Search pomocí prostředí PowerShell a rozhraní REST API](search-create-index-rest-api.md) nebo [rychlý start: Vytvoření indexu Azure Search v C# ](search-import-data-dotnet.md).
+Úvod k jednotlivým metodologiím najdete v tématu [rychlý start: Vytvoření indexu Azure Search pomocí prostředí PowerShell](search-create-index-rest-api.md) nebo [ C# rychlý start: Vytvoření indexu Azure Search pomocí sady .NET SDK](search-get-started-dotnet.md).
 
 <a name="indexing-actions"></a>
 
@@ -44,9 +44,9 @@ Vkládání dat prostřednictvím portálu není aktuálně podporováno.
 
 Typ akce indexování na základě každý dokument můžete řídit určující, zda dokumentu musí být nahrán úplnou, sloučené s již existujícím obsahem dokumentu nebo odstraněný.
 
-V rozhraní REST API zasílání požadavků HTTP POST s textem žádosti ve formátu JSON na URL koncového bodu indexu Azure Search. Každý objekt JSON v poli "value" obsahuje klíč dokumentu a určuje akci indexování jsou přidání, aktualizace, nebo odstraní obsah dokumentu. Příklad kódu naleznete v tématu [načítat dokumenty](search-create-index-rest-api.md#load-documents).
+V rozhraní REST API zasílání požadavků HTTP POST s textem žádosti ve formátu JSON na URL koncového bodu indexu Azure Search. Každý objekt JSON v poli "value" obsahuje klíč dokumentu a určuje, zda akci indexování přidává, aktualizuje nebo odstraní obsah dokumentu. Příklad kódu naleznete v tématu [načítat dokumenty](search-get-started-dotnet.md#load-documents).
 
-V sadě .NET SDK zabalit vaše data do `IndexBatch` objektu. `IndexBatch` Zapouzdřuje kolekci `IndexAction` objektů, z nichž každý obsahuje dokument a vlastnost, která říká službě Azure Search jaká akce se má provést pro daný dokument. Příklad kódu naleznete v tématu [vytvořit IndexBatch](search-import-data-dotnet.md#construct-indexbatch).
+V sadě .NET SDK zabalit vaše data do `IndexBatch` objektu. `IndexBatch` Zapouzdřuje kolekci `IndexAction` objektů, z nichž každý obsahuje dokument a vlastnost, která říká službě Azure Search jaká akce se má provést pro daný dokument. Příklad kódu, najdete v článku [ C# rychlý Start](search-get-started-dotnet.md).
 
 
 | @search.action | Popis | Potřebná pole pro každý dokument | Poznámky |

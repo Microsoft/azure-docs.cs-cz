@@ -5,14 +5,14 @@ author: msvijayn
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/15/2018
+ms.date: 06/25/2019
 ms.author: vinagara
-ms.openlocfilehash: f25321fa5a13ed5a39a62a4115bb0bc10306d36f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8183c7070b5d42e1c7a96fc0d64974658b2ec7d0
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66244959"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448925"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-using-azure-monitor"></a>Vytvoření, zobrazení a správa pomocí Azure monitoru upozornění protokolu aktivit  
 
@@ -24,16 +24,17 @@ Tyto výstrahy jsou pro prostředky Azure, můžete vytvořit pomocí šablony A
 > [!IMPORTANT]
 > Upozornění na stav služby notification nelze vytvořit pomocí rozhraní pro vytvoření upozornění protokolu aktivit. Další informace o vytváření a používání oznámení o stavu služby, najdete v článku [dostávat upozornění protokolu aktivit na oznámení o stavu služby](alerts-activity-log-service-notifications.md).
 
+Při vytváření pravidel upozornění, zkontrolujte následující:
+
+- Předplatné v oboru není liší od předplatného, kde se vytvoří výstraha.
+- Kritéria musí být úroveň/status/volající / skupiny prostředků nebo id prostředku / typ prostředku / kategorie událostí, ve které je nakonfigurována oznámení.
+- Není žádný "anyOf" podmínky nebo vnořené podmínky v konfiguraci výstrahy JSON (v podstatě u žádné další allOf/anyOf je povoleno pouze jeden allOf).
+- Pokud je kategorie "správce". Musíte zadat alespoň jeden z předchozích kritéria v upozornění. Nelze vytvořit výstrahu, která se aktivuje vždy, když se vytvoří událost v protokolech aktivit.
+
+
 ## <a name="azure-portal"></a>portál Azure
 
-> [!NOTE]
-> 
->  Při vytváření pravidel upozornění, zkontrolujte následující:
-> 
-> - Předplatné v oboru není liší od předplatného, kde se vytvoří výstraha.
-> - Kritéria musí být úroveň/status/volající / skupiny prostředků nebo id prostředku / typ prostředku / kategorie událostí, ve které je nakonfigurována oznámení.
-> - Není žádný "anyOf" podmínky nebo vnořené podmínky v konfiguraci výstrahy JSON (v podstatě u žádné další allOf/anyOf je povoleno pouze jeden allOf).
-> - Pokud je kategorie "správce". Musíte zadat alespoň jeden z předchozích kritéria v upozornění. Nelze vytvořit výstrahu, která se aktivuje vždy, když se vytvoří událost v protokolech aktivit.
+Pomocí webu Azure portal, může uživatele vytvořit a upravit pravidla upozornění protokolu aktivit. A rozhraní je integrovaná s protokolem aktivit Azure - zajistit bezproblémové vytvoření výstrahy pro konkrétní události, které vás zajímají.
 
 ### <a name="create-with-azure-portal"></a>Vytvořit pomocí webu Azure portal
 
@@ -220,11 +221,11 @@ Pokud sampleActivityLogAlert.parameters.json obsahuje hodnoty poskytnutý pro pa
 
 Upozornění protokolu aktivit mít vyhrazené rutiny Powershellu, které jsou k dispozici:
 
-- [Set-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Set-AzActivityLogAlert?view=azps-1.3.0) : Vytvoří novou nebo aktualizovat existující upozornění protokolu aktivit.
-- [Get-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Get-AzActivityLogAlert?view=azps-1.3.0) : Získá jeden nebo více aktivit prostředky upozornění protokolů.
-- [Enable-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Enable-AzActivityLogAlert?view=azps-1.3.0) : Umožňuje existujícího upozornění protokolu aktivit a nastaví její klíčová slova.
-- [Disable-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Disable-AzActivityLogAlert?view=azps-1.3.0) : Zakáže existujícího upozornění protokolu aktivit a nastaví její klíčová slova.
-- [Remove-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Remove-AzActivityLogAlert?view=azps-1.3.0)    : Odebere upozornění protokolu aktivit.
+- [Set-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Set-AzActivityLogAlert) : Vytvoří novou nebo aktualizovat existující upozornění protokolu aktivit.
+- [Get-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Get-AzActivityLogAlert) : Získá jeden nebo více aktivit prostředky upozornění protokolů.
+- [Enable-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Enable-AzActivityLogAlert) : Umožňuje existujícího upozornění protokolu aktivit a nastaví její klíčová slova.
+- [Disable-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Disable-AzActivityLogAlert) : Zakáže existujícího upozornění protokolu aktivit a nastaví její klíčová slova.
+- [Remove-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Remove-AzActivityLogAlert)    : Odebere upozornění protokolu aktivit.
 
 ## <a name="cli"></a>Rozhraní příkazového řádku
 

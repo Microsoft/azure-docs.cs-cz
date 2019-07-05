@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 717607de6d9d193a7373637d0d0fcd879b54fed0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 73b832002d1c15505e8ae845ac2585548c8e080f
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65544870"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482142"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Oprávnění a souhlas v koncovém bodě Microsoft identity platform
 
@@ -89,7 +89,7 @@ Pokud aplikace provádí přihlášení s použitím [OpenID Connect](active-dir
 
 `email` Rozsahu jde použít s `openid` obor a všechny ostatní. Poskytuje přístup k aplikaci primární e-mailovou adresu uživatele v podobě `email` deklarací identity. `email` Deklarací identity je součástí token pouze v případě, že uživatelský účet, který není vždy případ přidružen e-mailovou adresu. Pokud se používá `email` oboru, vaše aplikace by měla být připravena ke zpracování případ, ve kterém `email` deklarace identity v tokenu neexistuje.
 
-### <a name="profile"></a>Profil
+### <a name="profile"></a>profile
 
 `profile` Rozsahu jde použít s `openid` obor a všechny ostatní. Poskytuje přístup k aplikaci k vyžadovat značné množství informací o uživateli. Zahrnuje informace, které má přístup, ale není omezen na uživatele křestní jméno, příjmení, upřednostňované uživatelské jméno a ID objektu. Úplný seznam profilu deklarací, který je k dispozici v parametru id_tokens pro konkrétního uživatele, najdete v článku [ `id_tokens` odkaz](id-tokens.md).
 
@@ -124,7 +124,7 @@ Poté, co uživatel zadá své přihlašovací údaje, koncový bod Microsoft id
 > [!NOTE]
 > V tuto chvíli `offline_access` ("spravovat přístup k datům se jste udělili přístup") a `user.read` ("přihlášení a čtení vašeho profilu") oprávnění jsou automaticky obsažené v počátečním spuštění aplikace.  Tato oprávnění jsou obvykle požadovány pro správné funkce - `offline_access` poskytuje aplikaci přístup k obnovovacích tokenů, kritické pro nativní a webové aplikace, zatímco `user.read` poskytuje přístup k `sub` deklarace identity, povolení klienta nebo aplikaci tak, aby správně Identifikujte uživatele přes čas a přístup k základní uživatelské informace.  
 
-![Pracovní účet souhlas](./media/v2-permissions-and-consent/work_account_consent.png)
+![Ukázkovém snímku obrazovky, která zobrazuje pracovní účet souhlas](./media/v2-permissions-and-consent/work_account_consent.png)
 
 Když uživatel schválí žádost o oprávnění, zaznamenán vyjádření souhlasu a uživatel nebude muset znovu vyjádřili souhlas na následné přihlášení k aplikaci.
 

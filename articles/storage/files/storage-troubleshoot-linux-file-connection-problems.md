@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 16d1739e01061a90d673e4bd79bba7bfe7ec3a90
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 97f737c8d1228bd03baf59f2ebe830f715241299
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295071"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449844"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Řešení potíží s Azure Files v Linuxu
 
@@ -103,7 +103,7 @@ Snižte počet souběžných otevřených popisovačů ukončením některé obs
     - Použití [AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) pro všechny přenosy mezi dvěma sdílenými složkami souborů.
     - Pomocí paralelní cp může zlepšit rychlost kopírování, počet vláken, závisí na případu použití a úloh. Tento příklad používá šest: `find * -type f | parallel --will-cite -j 6 cp {} /mntpremium/ &`.
     - Open source nástroje třetí strany, jako:
-        - [Paralelní GNU](http://www.gnu.org/software/parallel/).
+        - [Paralelní GNU](https://www.gnu.org/software/parallel/).
         - [Fpart](https://github.com/martymac/fpart) – seřadí soubory a balíčky do oddílů.
         - [Fpsync](https://github.com/martymac/fpart/blob/master/tools/fpsync) -využívá Fpart a nástroj pro kopírování spustit víc instancí k migraci dat z src_dir do dst_url.
         - [Více](https://github.com/pkolano/mutil) -vícevláknové cp a md5sum podle GNU coreutils.

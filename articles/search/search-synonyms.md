@@ -10,12 +10,12 @@ ms.date: 05/02/2019
 manager: jlembicz
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: 567124f50745080da12178a458957a0f6c8266b5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 99abcc70a81622e4efbe85722d457bd1846b6e15
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65024321"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485219"
 ---
 # <a name="synonyms-in-azure-search"></a>Synonyma ve službě Azure Search
 
@@ -25,7 +25,7 @@ Ve službě Azure Search se synonyma rozšíření provádí v době zpracován�
 
 ## <a name="create-synonyms"></a>Vytvoření synonyma
 
-Není dostupná podpora portálu pro vytváření synonyma, ale můžete použít rozhraní REST API nebo .NET SDK. Abyste mohli začít s využitím REST, doporučujeme [pomocí nástroje Postman](search-fiddler.md) a možností formulování požadavků pomocí tohoto rozhraní API: [Vytváření map Synonym](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map). Pro C# vývojáři, můžete začít s [přidání synonym ve službě Azure vyhledávání pomocí C# ](search-synonyms-tutorial-sdk.md).
+Není dostupná podpora portálu pro vytváření synonyma, ale můžete použít rozhraní REST API nebo .NET SDK. Abyste mohli začít s využitím REST, doporučujeme [pomocí nástroje Postman](search-get-started-postman.md) a možností formulování požadavků pomocí tohoto rozhraní API: [Vytváření map Synonym](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map). Pro C# vývojáři, můžete začít s [přidání synonym ve službě Azure vyhledávání pomocí C# ](search-synonyms-tutorial-sdk.md).
 
 Případně pokud používáte [klíče spravované zákazníkem](search-security-manage-encryption-keys.md) straně služby šifrování neaktivních, můžete použít tuto ochranu obsahu mapy synonym.
 

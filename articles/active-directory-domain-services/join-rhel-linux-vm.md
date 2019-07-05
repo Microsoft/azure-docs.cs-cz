@@ -3,7 +3,7 @@ title: 'Azure Active Directory Domain Services: Připojit virtuální počítač
 description: Připojení virtuálního počítače s Red Hat Enterprise Linux do Azure AD Domain Services
 services: active-directory-ds
 documentationcenter: ''
-author: MikeStephens-MS
+author: iainfoulds
 manager: daveba
 editor: curtand
 ms.assetid: d76ae997-2279-46dd-bfc5-c0ee29718096
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
-ms.author: mstephen
-ms.openlocfilehash: 5231968f0818d26bb313bd62f45cb5ad2a86b0bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: iainfou
+ms.openlocfilehash: a6e78ea6a4427043bf3c06a4663029585c99e331
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66245981"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67473156"
 ---
 # <a name="join-a-red-hat-enterprise-linux-7-virtual-machine-to-a-managed-domain"></a>Připojení virtuálního počítače Red Hat Enterprise Linux 7 ke spravované doméně
 V tomto článku se dozvíte, jak propojit virtuální počítače s Red Hat Enterprise Linux (RHEL) 7 ke spravované doméně Azure AD Domain Services.

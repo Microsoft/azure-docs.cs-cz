@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 622525705979cd6a7a088c606ac167d28f8f6482
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 636086ce0d055ab8de1d1b95dbbf7e5d96c7d7ef
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65950993"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67483049"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Postup: Přizpůsobení deklarací identity vystavených v tokenu SAML pro podnikové aplikace
 
@@ -35,7 +35,7 @@ Ve výchozím nastavení, Azure AD vydá SAML token pro vaše aplikace, která o
 
 K zobrazení nebo úpravám deklarací identity vystavených v tokenu SAML pro aplikaci, otevřete aplikaci na webu Azure portal. Otevřete **atributy uživatele a deklarace identity** oddílu.
 
-![Části atributy uživatele a deklarace identity](./media/active-directory-saml-claims-customization/sso-saml-user-attributes-claims.png)
+![Otevřete část atributy uživatele a deklarace identity na webu Azure Portal](./media/active-directory-saml-claims-customization/sso-saml-user-attributes-claims.png)
 
 Existují dva možné důvody, proč může být potřeba upravit deklarací identity vystavených v tokenu SAML:
 

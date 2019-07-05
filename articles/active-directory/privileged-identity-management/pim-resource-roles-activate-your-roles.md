@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 04/09/2019
+ms.date: 06/28/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04e8615cc5534255308c35fa1f675ef3a85aa84e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bdce060006f65f2b0fb08023066ee504578bc552
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60438456"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67501665"
 ---
 # <a name="activate-my-azure-resource-roles-in-pim"></a>Aktivovat Moje role prostředků Azure v PIM
 
@@ -38,37 +38,37 @@ Když budete potřebovat k převzetí role prostředků Azure, můžete žádost
 
 1. Klikněte na tlačítko **Moje role**.
 
-    ![Role Azure AD a role prostředků Azure – Moje role](./media/pim-resource-roles-activate-your-roles/resources-my-roles.png)
+    ![Můžete aktivovat Moje role stránky zobrazující role](./media/pim-resource-roles-activate-your-roles/resources-my-roles.png)
 
 1. Klikněte na tlačítko **role prostředků Azure** zobrazíte seznam vaše role oprávněné prostředků Azure.
 
-   ![Role prostředků Azure](./media/pim-resource-roles-activate-your-roles/resources-my-roles-azure-resources.png) 
+   ![Moje role – stránka role prostředků Azure](./media/pim-resource-roles-activate-your-roles/resources-my-roles-azure-resources.png) 
 
 1. V **role prostředků Azure** seznam, vyhledání role, kterou chcete aktivovat.
 
-    ![Role prostředků Azure – Moje seznam rolí](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate.png)
+    ![Role prostředků Azure – Moje seznam oprávněné role](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate.png)
 
 1. Klikněte na tlačítko **aktivovat** a otevřete tak podokno aktivovat.
 
 1. Pokud vaše role se vyžaduje vícefaktorové ověřování (MFA), klikněte na tlačítko **ověřte nejdříve svoji identitu**. Stačí jenom jednou za relace ověřování.
 
-    ![Ověření pomocí vícefaktorového ověřování před aktivaci role](./media/pim-resource-roles-activate-your-roles/resources-my-roles-mfa.png)
+    ![Ověřit moji identitu pomocí MFA před aktivaci role](./media/pim-resource-roles-activate-your-roles/resources-my-roles-mfa.png)
 
 1. Klikněte na tlačítko **ověřit moji identitu** a postupujte podle pokynů a poskytují dodatečné ověření zabezpečení.
 
-    ![Další ověření zabezpečení](./media/pim-resource-roles-activate-your-roles/resources-mfa-enter-code.png)
+    ![Obrazovky poskytnout ověření zabezpečení, jako je kód PIN](./media/pim-resource-roles-activate-your-roles/resources-mfa-enter-code.png)
 
 1. Pokud chcete určit obor nižší, klikněte na tlačítko **oboru** a otevřete tak podokno filtru prostředků.
 
     Je osvědčeným postupem je pouze žádat o přístup k prostředkům, které potřebujete. V podokně filtru prostředků můžete zadat skupiny prostředků nebo prostředky, které potřebují přístup k.
 
-    ![Aktivovat - filtr prostředků](./media/pim-resource-roles-activate-your-roles/resources-my-roles-resource-filter.png)
+    ![Aktivovat – podokno filtru prostředků k určení oboru](./media/pim-resource-roles-activate-your-roles/resources-my-roles-resource-filter.png)
 
 1. V případě potřeby zadejte čas zahájení vlastní aktivace. Člen by byl aktivován po vybraném čase.
 
 1. V **důvod** zadejte důvod pro žádost o aktivaci.
 
-    ![Dokončené aktivovat podokno](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate-done.png)
+    ![Dokončené aktivovat podokna s oboru, počáteční čas, doba trvání a důvod](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate-done.png)
 
 1. Klikněte na tlačítko **aktivovat**.
 
@@ -76,7 +76,7 @@ Když budete potřebovat k převzetí role prostředků Azure, můžete žádost
 
     Pokud [role vyžaduje schválení](pim-resource-roles-approval-workflow.md) k aktivaci, zobrazí se oznámení v pravém horním rohu prohlížeče informování, žádost čeká na schválení.
 
-    ![Žádost čeká na oznámení](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate-notification.png)
+    ![Žádost o aktivaci, je oznámení čeká na schválení](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate-notification.png)
 
 ## <a name="use-a-role-immediately-after-activation"></a>Použijte roli okamžitě po aktivaci
 
@@ -102,7 +102,7 @@ Můžete zobrazit stav vaší žádosti čekající na aktivaci.
 
 1. Klikněte na tlačítko **Moje žádosti** vyžádá seznam role Azure AD a role prostředků Azure.
 
-    ![Role Azure AD a role prostředků Azure – Moje žádosti](./media/pim-resource-roles-activate-your-roles/resources-my-requests.png)
+    ![Moje žádosti – prostředek Azure stránky zobrazující vaše žádosti čekající na vyřízení](./media/pim-resource-roles-activate-your-roles/resources-my-requests.png)
 
 1. Posuňte doprava, abyste viděli **stav žádosti o** sloupce.
 
@@ -118,22 +118,19 @@ Pokud nechcete, aby aktivace role, která vyžaduje schválení, můžete kdykol
 
     Po klepnutí na tlačítko Storno, požadavek bude zrušen. Chcete-li aktivovat roli znovu, budete muset odeslat novou žádost o aktivaci.
 
-   ![Zrušení čekajícího požadavku](./media/pim-resource-roles-activate-your-roles/resources-my-requests-cancel.png)
+   ![Moje žádosti o seznam s zrušit akci zvýrazní](./media/pim-resource-roles-activate-your-roles/resources-my-requests-cancel.png)
 
 ## <a name="troubleshoot"></a>Řešení potíží
 
-### <a name="permissions-not-granted-after-activating-a-role"></a>Oprávnění se neudělilo až po dokončení aktivace role
+### <a name="permissions-are-not-granted-after-activating-a-role"></a>Nejsou udělena oprávnění po aktivaci role
 
-Při aktivaci role v PIM trvá minimálně 10 minut, než můžete přístup k portálu pro správu požadované nebo provádění funkcí v rámci konkrétní úlohy správy. Po dokončení aktivace odhlásit z webu Azure portal a znovu se přihlaste k použití nově aktivovaného role.
+Při aktivaci role v PIM aktivace nemůže okamžitě rozšíří do všech portály, které vyžadují privilegovaných rolí. V některých případech i v případě, že je změna rozšířena, ukládání do mezipaměti webového portálu může způsobit změnu není okamžitou platností. Pokud je zpožděno s aktivací, zde je, co byste měli dělat.
 
-Další postup řešení potíží najdete v tématu [řešení potíží s zvýšenou úroveň oprávnění](https://social.technet.microsoft.com/wiki/contents/articles/37568.troubleshooting-elevated-permissions-with-azure-ad-privileged-identity-management.aspx).
+1. Odhlaste se z webu Azure portal a pak zase přihlásit.
 
-### <a name="cannot-activate-a-role-due-to-a-resource-lock"></a>Nelze aktivovat roli z důvodu uzamčení prostředků
+    Při aktivaci role prostředku Azure, zobrazí se v jednotlivých fázích s aktivací. Po dokončení všech fázích se zobrazí **Odhlásit** odkaz. Tento odkaz můžete odhlásit se. Tím se vyřeší většinu případů pro prodlevu aktivace.
 
-Pokud se zobrazí zpráva, že je uzamčen prostředek Azure při pokusu o aktivaci role, může to být způsobeno prostředků v rámci oboru přiřazení role má zámek prostředku. Zámky prostředků zabránit náhodnému odstranění nebo neočekávaným změnám. Zámek také zabrání PIM odebrat přiřazení role u daného prostředku na konci období aktivace. Protože PIM není schopen správně fungovat, když je nastavený zámek, PIM zabrání uživatelům aktivace role u daného prostředku. Že tento problém můžete vyřešit dvěma způsoby:
-
-- Odstranit zámek, jak je popsáno v [zamknutí prostředků, aby se zabránilo neočekávaným změnám](../../azure-resource-manager/resource-group-lock-resources.md).
-- Pokud chcete zachovat zámek, trvalé přiřazení role nebo použití konec pohotovostní účet.
+1. V PIM ověřte, že jsou uvedeny jako člen role.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 485f79f79c52067e89fa0a606e76a533c312fb84
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 85a32244a9aff9319343fd7d3961941973aa9d9a
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65545097"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482255"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Platforma identit Microsoft a tok přihlašovacích údajů klienta OAuth 2.0
 
@@ -42,7 +42,7 @@ Ve více standardních *OAuth s rameny tři*, klientské aplikace má přidělen
 
 Tok přihlašovacích údajů klienta celý vypadá podobně jako v následujícím diagramu. Každý z kroků dále v tomto článku popisujeme.
 
-![Tok přihlašovacích údajů klienta](./media/v2-oauth2-client-creds-grant-flow/convergence-scenarios-client-creds.svg)
+![Diagram znázorňující tok přihlašovacích údajů klienta](./media/v2-oauth2-client-creds-grant-flow/convergence-scenarios-client-creds.svg)
 
 ## <a name="get-direct-authorization"></a>Získat přímé autorizace
 
@@ -92,7 +92,7 @@ Pokud se uživatel do vaší aplikace, můžete určit organizaci, do které už
 Jakmile budete připraveni k žádosti o oprávnění od správce organizace, můžete přesměrovat uživatele na platformě Microsoft identity *koncový bod souhlas správce*.
 
 > [!TIP]
-> Pokuste se spustit tuto žádost do Postman! (Použít ID aplikace pro dosažení co nejlepších výsledků – kurz aplikace nebude vyžadovat užitečné oprávnění.) [![Spustit v nástroji Postman](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+> Pokuste se spustit tuto žádost do Postman! (Použít ID aplikace pro dosažení co nejlepších výsledků – kurz aplikace nebude vyžadovat užitečné oprávnění.) [![Zkuste spustit tento požadavek v nástroji Postman](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 ```
 // Line breaks are for legibility only.
@@ -154,7 +154,7 @@ Po přijetí úspěšné odpovědi z koncového bodu aplikace zřizování aplik
 Poté, co pro vaši aplikaci, které jste získali nezbytné autorizace, pokračujte získání přístupových tokenů pro rozhraní API. K získání tokenu pomocí klienta udělování přihlašovacích údajů, odešlete požadavek POST do `/token` Microsoft identity platform koncový bod:
 
 > [!TIP]
-> Pokuste se spustit tuto žádost do Postman! (Použít ID aplikace pro dosažení co nejlepších výsledků – kurz aplikace nebude vyžadovat užitečné oprávnění.) [![Spustit v nástroji Postman](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+> Pokuste se spustit tuto žádost do Postman! (Použít ID aplikace pro dosažení co nejlepších výsledků – kurz aplikace nebude vyžadovat užitečné oprávnění.) [![Zkuste spustit tento požadavek v nástroji Postman](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 ### <a name="first-case-access-token-request-with-a-shared-secret"></a>Prvním případě: Žádost o přístupový token s sdílený tajný klíč
 

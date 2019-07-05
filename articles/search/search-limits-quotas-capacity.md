@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 04/17/2019
+ms.date: 07/01/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 419c533aabd67637efa64777387c491dd890596e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b6940be7f64aa9ae16258fa936d197e2715235ab
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65024639"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485400"
 ---
 # <a name="service-limits-in-azure-search"></a>Omezení služby Azure Search
 Maximální omezuje na úložiště, úlohy a množství indexů, dokumenty, a dalších objektů závisí na tom, zda jste [zřízení Azure Search](search-create-service-portal.md) na **Free**, **základní**,  **Standardní**, nebo **optimalizované pro úložiště** cenové úrovně.
@@ -29,7 +29,7 @@ Maximální omezuje na úložiště, úlohy a množství indexů, dokumenty, a d
 + **Optimalizováno pro úložiště** běží na vyhrazených počítačů s více celková velikost úložiště, šířku pásma úložiště a paměti, než je **standardní**. Optimalizováno pro úložiště k dispozici ve dvou úrovních: L1 a L2
 
 > [!NOTE]
-> Úrovně optimalizované pro úložiště služby jsou aktuálně k dispozici ve verzi preview za zlevněné ceny pro účely testování a experimentování s cílem shromažďování zpětné vazby. Chcete zjistit koncové ceny oznámíme později při těchto úrovních jsou obecně dostupné. Nedoporučujeme tyto úrovně používají, aplikacích v produkčním prostředí.
+> Od 1. července všechny úrovně jsou obecně dostupné, včetně úrovně optimalizované pro úložiště. Všechny ceny najdete na [podrobnosti o cenách](https://azure.microsoft.com/pricing/details/search/) stránky.
 
   S3 High Density (S3 HD, High Density) je navržené pro konkrétní úlohy: [víceklientská](search-modeling-multitenant-saas-applications.md) a velké množství malých indexy (1 000 dokumentů na index, tři tisíc indexů na službu). Tato úroveň neposkytuje [indexer funkce](search-indexer-overview.md). Na S3 HD, High Density musí využívat ingestování přístupu nabízených oznámení pomocí volání rozhraní API k odeslání dat ze zdroje do indexu. 
 

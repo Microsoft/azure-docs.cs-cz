@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 04/16/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 2c5491bab9b45df11c2fe81aa933a1a34c49a41b
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 4e0af3b395ec640fd037a1e76365408c10613340
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205938"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477018"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning-service"></a>Vytvořit pracovní prostor pro službu Azure Machine Learning pomocí šablony Azure Resource Manageru
 
@@ -103,6 +103,19 @@ az group deployment create \
 ```
 
 Další informace najdete v tématu [nasazení prostředků pomocí šablon Resource Manageru a Azure CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md) a [nasazení privátní šablony Resource Manageru s tokenem SAS a rozhraní příkazového řádku Azure](../../azure-resource-manager/resource-manager-cli-sas-token.md).
+
+## <a name="azure-key-vault-access-policy-and-azure-resource-manager-templates"></a>Azure zásad přístupu trezoru klíčů a šablon Azure Resource Manageru
+
+Při použití šablony Azure Resource Manageru k vytvoření pracovního prostoru a přidružené prostředky (včetně služby Azure Key Vault), více než jednou. Například pomocí šablony více než jednou se stejnými parametry jako součást průběžné integrace a nasazení kanálu.
+
+Většina operací vytváření prostředků prostřednictvím šablony jsou idempotentní, ale služby Key Vault vymaže zásady přístupu při každém použití této šablony. Vymazává se zásady konce přístupu ke službě Key Vault pro existující pracovní prostor, který jej používá. Například může selhat funkce Stop nebo vytvoření virtuálního počítače Azure, poznámkové bloky.  
+
+K tomuto problému vyhnout, doporučujeme jednu z následujících postupů:
+
+*  Nenasazujte šablony více než jednou pro stejné parametry. Nebo odstraňte existující prostředky před je znovu vytvořit pomocí šablony.
+  
+* Zkontrolujte zásady přístupu trezoru klíčů a potom nastavte vlastnost accessPolicies šablony pomocí těchto zásad.
+* Zkontrolujte, jestli prostředek Key Vault už existuje. Pokud ano, nelze jej znovu vytvořit pomocí šablony. Například přidejte parametr, který umožňuje zakázat vytvoření prostředku služby Key Vault, pokud již existuje.
 
 ## <a name="next-steps"></a>Další postup
 

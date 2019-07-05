@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 06/03/2019
+ms.date: 06/25/2019
 ms.author: cherylmc
-ms.openlocfilehash: 5fbd64d2f001a0fbe91de2d954889816a1819479
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 4a52383e6ab24c6ae1e2be0b67293d65dfa04466
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67339438"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477884"
 ---
 # <a name="create-an-azure-bastion-host-preview"></a>Vytvoření Azure Bastion host (Preview)
 
@@ -33,15 +33,11 @@ Verze public preview je omezená na následující veřejných oblastech Azure:
 
 [!INCLUDE [available regions](../../includes/bastion-regions-include.md)]
 
-Účast v této verzi preview, budete muset zaregistrovat. Pomocí těchto kroků můžete zaregistrovat verzi preview:
-
-[!INCLUDE [register](../../includes/bastion-preview-register-include.md)]
-
 ## <a name="createhost"></a>Vytvoření hostitel typu bašta
 
 Tato část vám pomůže vytvořit nový prostředek Bastionu Azure na webu Azure Portal.
 
-1. Z domovské stránky v [ webu Azure portal – ve verzi preview](https://aka.ms/BastionHost), klikněte na tlačítko **+ vytvořit prostředek**. Ujistěte se, že můžete použít odkaz uvedený pro přístup k portálu pro tuto verzi preview, není regulární webu Azure portal.
+1. Z domovské stránky v [webu Azure portal – ve verzi Preview Bastionu](https://aka.ms/BastionHost), klikněte na tlačítko **+ vytvořit prostředek**. Ujistěte se, že můžete použít odkaz uvedený pro přístup k portálu pro tuto verzi preview, není regulární webu Azure portal.
 
 1. Na **nový** stránku, *Hledat na Marketplace* zadejte **Bastionu**, pak klikněte na tlačítko **Enter** zobrazíte výsledky hledání.
 
@@ -72,7 +68,7 @@ Tato část vám pomůže vytvořit nový prostředek Bastionu Azure na webu Azu
 
 Pokud hostitel typu bašta vytvoříte na portálu s použitím existujícího virtuálního počítače, různá nastavení automaticky výchozí odpovídající virtuální počítač nebo virtuální sítě.
 
-1. V [portálu preview](https://aka.ms/BastionHost), přejděte ke svému virtuálnímu počítači a pak klikněte na tlačítko **připojit**.
+1. V [webu Azure portal – ve verzi Preview Bastionu](https://aka.ms/BastionHost), přejděte ke svému virtuálnímu počítači a pak klikněte na tlačítko **připojit**.
 
     ![Připojení virtuálního počítače](./media/bastion-create-host-portal/vmsettings.png)
 

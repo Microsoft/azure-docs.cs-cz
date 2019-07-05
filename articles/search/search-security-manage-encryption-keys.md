@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.custom: ''
-ms.openlocfilehash: 567f32cba76aaf2d1657b2476c4d11596d44dec5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 949628fa52b4b020d70b75f4a0e7895f1e0f8bba
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66753918"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485324"
 ---
 # <a name="azure-search-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Azure Search šifrování pomocí klíčů spravovaných zákazníkem ve službě Azure Key Vault
 
@@ -41,7 +41,7 @@ V tomto příkladu se používají tyto služby.
 
 + [Prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) nebo [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) se používá pro úlohy konfigurace.
 
-+ [Postman](search-fiddler.md), [prostředí Azure PowerShell](search-create-index-rest-api.md) a [SDK služby Azure Search](https://aka.ms/search-sdk-preview) je možné volat rozhraní REST API ve verzi preview. Neexistuje žádný portál nebo sadu .NET SDK: podpora pro spravované zákazníkem šifrování v tuto chvíli.
++ [Postman](search-get-started-postman.md), [prostředí Azure PowerShell](search-create-index-rest-api.md) a [SDK služby Azure Search](https://aka.ms/search-sdk-preview) je možné volat rozhraní REST API ve verzi preview. Neexistuje žádný portál nebo sadu .NET SDK: podpora pro spravované zákazníkem šifrování v tuto chvíli.
 
 ## <a name="1---enable-key-recovery"></a>1 - povolit obnovení klíče
 

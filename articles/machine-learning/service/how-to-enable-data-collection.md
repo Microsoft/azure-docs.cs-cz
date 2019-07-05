@@ -11,19 +11,19 @@ ms.author: marthalc
 author: marthalc
 ms.date: 12/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: df2f0731aff6c90ef83b26041a9d383ce14974c6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f596fb3a066017f0236de5b79586891dd21efb11
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65024253"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443981"
 ---
 # <a name="collect-data-for-models-in-production"></a>Shromažďování dat modelů v produkčním prostředí
 
 V tomto článku se dozvíte, jak ke shromažďování dat vstupním modelu ze služby Azure Machine Learning, které jste nasadili do služby Azure Kubernetes Cluster (AKS) do služby Azure Blob storage. 
 
 Po povolení tohoto data o vám pomůže:
-* Sledování dat drifts produkčních dat v modelu
+* [Sledování dat drifts](how-to-monitor-data-drift.md) produkčních dat v modelu
 
 * Lepší rozhodování na tom, kdy přeučování nebo optimalizace modelu
 

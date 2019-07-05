@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpfr
-ms.openlocfilehash: 68599a539b3d79b759142d2178aa753f895ea37f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e1e7b91e0808b9e23e653acd43b95f24a46c7d27
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67052940"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67503206"
 ---
 # <a name="use-device-sets-in-your-azure-iot-central-application"></a>Pomocí sady zařízení ve vaší aplikaci Azure IoT Central
 
 Tento článek popisuje, jak, jakožto obsluha používat zařízení nastaví v aplikaci Azure IoT Central.
 
-Sada zařízení je seznam zařízení, které jsou seskupeny vzhledem k tomu, aby všechny odpovídaly některé zadaným kritériím. Nastaví zařízení pomáhají spravovat, vizualizovat a analyzovat zařízení ve velkém měřítku pomocí seskupení zařízení do menších logické skupiny. Například v Praze umožňující technika Seattle najít všechna zařízení, pro které je zodpovědný technik vytvořit seznam všech zařízení klimatizace. V tomto článku se dozvíte, jak vytvořit a nakonfigurovat sady zařízení.
+Sada zařízení je seznam zařízení, které jsou seskupeny vzhledem k tomu, aby odpovídaly některé zadaným kritériím. Nastaví zařízení pomáhají spravovat, vizualizovat a analyzovat zařízení ve velkém měřítku pomocí seskupení zařízení do menších logické skupiny. Můžete například vytvořit zařízení nastavit na seznam všech zařízení klimatizace v Praze umožňující technika najít zařízení, pro které jsou zodpovědné. V tomto článku se dozvíte, jak vytvořit a nakonfigurovat sady zařízení.
 
 ## <a name="create-a-device-set"></a>Vytvoření sady zařízení
 
@@ -44,7 +44,7 @@ Vytvořit sadu zařízení:
 
 ## <a name="configure-the-dashboard-for-your-device-set"></a>Konfigurace řídicího panelu pro vaši sadu zařízení
 
-Po vytvoření sady zařízení, můžete nakonfigurovat jeho **řídicí panel**. **Řídicí panel** je domovská stránka, kde můžete umístit obrázky a odkazy. Můžete také přidat mřížky, které se seznam zařízení v sadě zařízení.
+Po vytvoření sady zařízení, můžete nakonfigurovat jeho **řídicí panel**. **Řídicí panel** je domovská stránka, kde umístit obrázky a odkazy. Můžete také přidat mřížky, které se seznam zařízení v sadě zařízení.
 
 1. Zvolte **sady zařízení** v levé navigační nabídce.
 
@@ -85,19 +85,20 @@ Po vytvoření sady zařízení, můžete nakonfigurovat jeho **řídicí panel*
   
     1. Vyberte **Done** (Hotovo).
 
-### <a name="configuring-location-map-in-your-device-sets-dashboard"></a>Konfigurace mapování umístění vašeho zařízení nastaví řídicí panel
+Další informace o tom, jak používat dlaždice v Azure IoT Central, naleznete v tématu [pomocí dlaždice řídicího panelu](howto-use-tiles.md).
 
-Můžete přidat mapu umístění, která bude vizualizovat umístění zařízení nastaví v objektu Map.
+### <a name="configure-a-location-map-in-your-device-sets-dashboard"></a>Na řídicím panelu sady zařízení nakonfigurovat Mapa umístění
 
-Pokud chcete přidat mapu umístění, která bude zařízení nastaví řídicí panel, musíte mít vlastnost nakonfigurovaného umístění ve vaší šabloně zařízení, najdete v článku [vytvoření vlastnosti umístění používá technologii Azure Maps](howto-set-up-template.md).
+Můžete přidat mapu, která bude vizualizovat umístění zařízení ve vaší sadě zařízení.
 
-1. Na zařízení nastavit řídicím panelu vyberte mapování z knihovny.
-2. Zadejte název a vyberte vlastnost umístění, které jste dříve nakonfigurovali v rámci vlastnosti zařízení.
-3. Uložit a můžete se zobrazí na mapě dlaždici zobrazení umístění zařízení v nastavení zařízení.
-4. Nyní když operátor zobrazení řídicího panelu sady zařízení, operátor, který můžete vidět všechny dlaždice, které jste nakonfigurovali, včetně umístění mapu, která bude vizualizovat všechna umístění zařízení na první pohled!
+Pokud chcete přidat mapu, která vaše zařízení sady řídicí panel, musíte nakonfigurovat měření umístění nebo vlastnost umístění ve vaší šabloně zařízení. Další informace najdete v tématu [vytvořit umístění měření](howto-set-up-template.md) nebo [vytvoření vlastnosti umístění](howto-set-up-template.md).
 
-> [!NOTE]
-> Na mapě můžete změnit velikost na požadovanou velikost. Výběr PIN kód na mapě zobrazí informace o zařízení, název a umístění. Můžete vybrat automaticky otevírané okno, přejděte na stránku vlastností zařízení.
+1. Na vašem zařízení nastavit **řídicí panel**vyberte **mapy** z knihovny.
+2. Přidejte název a zvolte umístění měření nebo vlastnost, kterou jste nakonfigurovali dříve.
+3. Vyberte **Uložit** a mapovou dlaždici zobrazí poslední známé umístění zařízení ve vaší sadě zařízení.
+4. Operátor zobrazení řídicího panelu sady zařízení, operátor, který se zobrazí všechny dlaždice, které jste nakonfigurovali, včetně Mapa umístění.
+
+Mapovou dlaždici na řídicím panelu můžete změnit velikost. Výběr špendlíku na mapě zobrazí informace o zařízení, název a umístění. Vyberte automaticky otevírané okno, přejděte na stránku vlastností zařízení.
 
 ## <a name="configure-the-list-for-your-device-set"></a>Proveďte konfiguraci seznamu pro vaši sadu zařízení
 

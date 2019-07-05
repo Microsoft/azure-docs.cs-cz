@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/10/2019
 ms.author: spelluru
-ms.openlocfilehash: d8892b2d00008c9d67f8bc28d1abb7d562dfd95c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8ffc8ed3f84284ff69e9515cba0982790b823a37
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67079883"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67543771"
 ---
 # <a name="best-practices-for-distributed-and-collaborative-development-of-azure-devtest-labs-resources"></a>Osvědčené postupy pro vývoj distribuovaných a spolupráci zdrojů službě Azure DevTest Labs
 Distribuované spolupráce na vývoji umožňuje různé týmy nebo osoby pro vývoj a údržbu základní kód. K dosažení úspěchu procesu vývoje závisí na schopnost vytvářet, sdílet a integrovat informace. Tento princip vývoje klíče je možné v rámci Azure DevTest Labs. Existuje několik typů prostředků v rámci testovacího prostředí, které jsou obvykle rozdělena mezi různé testovací prostředí v rámci organizace. Různé typy prostředků se zaměřuje na dvě oblasti:
@@ -37,7 +37,7 @@ Můžete mít společný zdroj vlastních imagí, které jsou nasazené do testo
 [Vzorce](devtest-lab-manage-formulas.md) jsou specifické pro testovací prostředí a nemáte mechanismus distribuce. Členové testovacího prostředí provádět všechny vývoj vzorce. 
 
 ## <a name="code-repository-based-resources"></a>Prostředky založené na úložiště kódu
-Existují dva různé funkce, které jsou založeny na úložiště kódu, artefakty a prostředí. Tento článek prochází přes prvky a efektivní nastavení úložiště a pracovní postup umožňuje přizpůsobit prostředí na úrovni organizace nebo na úrovni týmu a k dispozici artefakty.  Tento pracovní postup je založen na standardní [zdrojového kódu řízení strategii větvení](/devops/repos/tfvc/branching-strategies-with-tfvc?view=azure-devops). 
+Existují dva různé funkce, které jsou založeny na úložiště kódu, artefakty a prostředí. Tento článek prochází přes prvky a efektivní nastavení úložiště a pracovní postup umožňuje přizpůsobit prostředí na úrovni organizace nebo na úrovni týmu a k dispozici artefakty.  Tento pracovní postup je založen na standardní [zdrojového kódu řízení strategii větvení](/azure/devops/repos/tfvc/branching-strategies-with-tfvc?view=azure-devops). 
 
 ### <a name="key-concepts"></a>Klíčové koncepty
 Informace o zdroji artefaktů zahrnuje jejich metadata, skripty. Informace o zdroji pro prostředí obsahuje metadata a šablon Resource Manageru s všechny podpůrné soubory, jako jsou skripty prostředí PowerShell, DSC, skripty, soubory Zip a tak dále.  
@@ -49,7 +49,7 @@ Nejběžnější konfigurací pro správu zdrojového kódu (SCC) je nastavení 
 - Obchodní jednotky nebo divize celou prostředky
 - Prostředky specifické pro tým.
 
-Každá z těchto úrovní odkaz na jiném úložišti, ve kterém je musí být produkční kvality v hlavní větvi. [Větví](/devops/repos/git/git-branching-guidance?view=azure-devops) v každém úložišti, které budou platit pro vývoj tyto konkrétní prostředky (artefakty nebo šablony). Tato struktura správně zarovnaná s DevTest Labs, jak můžete snadno připojit více úložišť a několika větví ve stejnou dobu k testovacím prostředím pro organizaci. Název úložiště je součástí uživatelského rozhraní (UI), aby nedocházelo k záměně po stejný název, popis a vydavatele.
+Každá z těchto úrovní odkaz na jiném úložišti, ve kterém je musí být produkční kvality v hlavní větvi. [Větví](/azure/devops/repos/git/git-branching-guidance?view=azure-devops) v každém úložišti, které budou platit pro vývoj tyto konkrétní prostředky (artefakty nebo šablony). Tato struktura správně zarovnaná s DevTest Labs, jak můžete snadno připojit více úložišť a několika větví ve stejnou dobu k testovacím prostředím pro organizaci. Název úložiště je součástí uživatelského rozhraní (UI), aby nedocházelo k záměně po stejný název, popis a vydavatele.
      
 Následující diagram znázorňuje dvě úložišť: společnosti úložiště, který je spravován oddělení IT a dělení úložiště udržuje dělení výzkum a vývoj.
 

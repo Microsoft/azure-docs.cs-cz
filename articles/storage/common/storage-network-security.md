@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 56a25c95d9bc01078b3eff3729a8a693ee3cf510
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f6422bf2ccc42c12d8f2d20a5a7ece8d37e8b48e
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65520258"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449733"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurace virtuálních sítí a bran firewall Azure Storage
 
@@ -23,6 +23,8 @@ Azure Storage poskytuje vrstvený model zabezpečení. Tento model umožňuje za
 Aplikace, který přistupuje k účtu úložiště, když pravidla sítě jsou aktivní, vyžaduje řádné autorizace v požadavku. Autorizace je podporováno pomocí přihlašovacích údajů Azure Active Directory (Azure AD) pro objekty BLOB a fronty, platným účtem přístupový klíč nebo SAS token.
 
 > [!IMPORTANT]
+> Azure File Sync zatím nepodporuje virtuální sítí a bran firewall. Pokud používáte Azure File Sync v účtu úložiště a tyto povolíte, nebude synchronizace Azure File Sync.
+>
 > Ve výchozím nastavení, zapnutí pravidla brány firewall pro váš účet úložiště blokuje příchozí požadavky na data, není-li, požadavky pocházejí z služba, která je zpracovávána v rámci služby Azure Virtual Network (VNet). Požadavky, které jsou blokovány mezi patří zařízení se od ostatních služeb Azure z webu Azure portal, protokolování a metrik služby a tak dále.
 >
 > Můžete udělit přístup ke službám Azure, které pracují z v rámci virtuální sítě tím, že podsíť bude instance služby. Povolit omezený počet scénářů prostřednictvím [výjimky](#exceptions) mechanismus je popsáno v následující části. Pro přístup k webu Azure portal, musíte být na počítači v rámci důvěryhodné hranice (IP nebo virtuální síť), které jste nastavili.

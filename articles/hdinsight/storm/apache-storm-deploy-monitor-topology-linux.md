@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
-ms.openlocfilehash: c8b05886ae338bb73b0f4ddce4d02a1f1a926a45
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ac1a4c77589f4ef88c9ee862cb871b376ca8a0fe
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67078242"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67483850"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Nasazení a správa topologií Apache Storm v Azure HDInsight 
 
@@ -21,11 +21,12 @@ V tomto dokumentu, seznamte se se základy monitorování a správa [Apache Stor
 
 ## <a name="prerequisites"></a>Požadavky
 
-* **Storm se systémem Linux v clusteru HDInsight**: viz [Začínáme s Apache Storm v HDInsight](apache-storm-tutorial-get-started-linux.md) pokyny týkající se vytvoření clusteru
+* Clustery Apache Storm v HDInsight. Zobrazit [vytvořit Apache Hadoop clusterů pomocí webu Azure portal](../hdinsight-hadoop-create-linux-clusters-portal.md) a vyberte **Storm** pro **typ clusteru**.
 
-* (Volitelné) **Znalost SSH a SCP**: Další informace najdete v tématu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-* (Optional) **Visual Studio**: Azure SDK 2.5.1 nebo novější a Data Lake Tools pro Visual Studio. Další informace najdete v tématu [Začínáme pomocí nástrojů Data Lake pro Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md).
+* (Volitelné) Znalost SSH a SCP: Další informace najdete v tématu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
+
+* (Optional) Visual Studio: Azure SDK 2.5.1 nebo novější a Data Lake Tools pro Visual Studio. Další informace najdete v tématu [Začínáme pomocí nástrojů Data Lake pro Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md).
 
     Jeden z následujících verzí sady Visual Studio:
 

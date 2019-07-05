@@ -6,14 +6,14 @@ manager: bruz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 04/13/2018
+ms.date: 06/28/2019
 ms.author: chrisgre
-ms.openlocfilehash: 598bf82e375f472b2f723c3462ba7ba7b4d25fbe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ff4e236569cc728b7011ffa26554277f281397fd
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61333640"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485844"
 ---
 # <a name="automatic-iot-device-management-at-scale-using-the-azure-portal"></a>Automatická správa zařízení IoT ve velkém měřítku pomocí webu Azure portal
 
@@ -29,7 +29,9 @@ Funguje správa zařízení automatické aktualizace sadu dvojčata zařízení 
 
 * **Směrovat obsah** definuje požadované vlastnosti, které chcete přidat ani aktualizovat v dvojčat cílové zařízení. Obsah obsahuje cestu k oddílu požadované vlastnosti změnit.
 
-* **Metriky** definovat souhrnný počet různých stavů konfigurace, jako **úspěch**, **probíhá**, a **chyba**. Vlastní metriky jsou zadané jako dotazy na zařízení ohlášené vlastnosti dvojčete.  Systémové metriky jsou výchozí metrik pro měření stavu aktualizace dvojčete, jako je počet dvojčata zařízení, na kterou cílí a počet dvojčat, které se úspěšně aktualizovaly. 
+* **Metriky** definovat souhrnný počet různých stavů konfigurace, jako **úspěch**, **probíhá**, a **chyba**. Vlastní metriky jsou zadané jako dotazy na zařízení ohlášené vlastnosti dvojčete.  Systémové metriky jsou výchozí metrik pro měření stavu aktualizace dvojčete, jako je počet dvojčata zařízení, na kterou cílí a počet dvojčat, které se úspěšně aktualizovaly.
+
+Konfigurace automatické spuštění poprvé krátce po konfiguraci a pak každých pět minut. Dotazy na metriky spouštět při každém spuštění automatické konfigurace.
 
 ## <a name="implement-device-twins-to-configure-devices"></a>Implementace dvojčata zařízení ke konfiguraci zařízení
 

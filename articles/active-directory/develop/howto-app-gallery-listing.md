@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 005e5c92a16760d8eec5dc37526f4b1f2dbd751c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 41b407b4343db4f594049c4b1027fe4279dab840
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65540532"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482954"
 ---
 # <a name="how-to-list-your-application-in-the-azure-active-directory-application-gallery"></a>Postup: Uvedení aplikace v galerii aplikací služby Azure Active Directory
 
@@ -117,21 +117,21 @@ Aktualizujte nebo odeberte existující aplikace v galerii aplikací Azure AD, m
 
 Zákazníci mohou odeslat žádost o uvedení aplikace kliknutím **aplikace požaduje zákazníci** -> **novou žádost o odeslání**.
 
-![Dlaždici zákazníka požadované aplikace](./media/howto-app-gallery-listing/customer-submit-request.png)
+![Ukazuje zákazníka požadovaný dlaždice aplikace](./media/howto-app-gallery-listing/customer-submit-request.png)
 
 Níže je, že tok zákazníka požadovaná aplikace –
 
-![Odběratel požadoval toku aplikace](./media/howto-app-gallery-listing/customer-request.png)
+![Ukazuje, zákazník požadovaný toku aplikace](./media/howto-app-gallery-listing/customer-request.png)
 
 ## <a name="timelines"></a>Časové osy
 
 Časová osa pro proces uvedení protokol SAML 2.0 nebo WS-Fed aplikace v galerii je 7 až 10 pracovních dní.
 
-   ![Časová osa uvedení aplikace saml do Galerie](./media/howto-app-gallery-listing/timeline.png)
+   ![Časová osa uvedení aplikace SAML do Galerie](./media/howto-app-gallery-listing/timeline.png)
 
 Časová osa pro proces uvedení aplikace v galerii OpenID Connect se 2 až 5 pracovních dní.
 
-   ![Časová osa uvedení aplikace saml do Galerie](./media/howto-app-gallery-listing/timeline2.png)
+   ![Časová osa uvedení aplikace SAML do Galerie](./media/howto-app-gallery-listing/timeline2.png)
 
 ## <a name="escalations"></a>Eskalaci
 

@@ -3,17 +3,17 @@ title: Připojit obecný klientská aplikace Node.js do Azure IoT Central | Doku
 description: Jako vývojář zařízení jak se připojit k aplikaci Azure IoT Central Obecné zařízení Node.js.
 author: dominicbetts
 ms.author: dobett
-ms.date: 04/05/2019
+ms.date: 06/14/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 5497e4956fbdc74eced302867c33a66d07d6a184
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 90e4a061e38fdd3a13a640363069fae3a18e0b49
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60888910"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444221"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Připojení aplikace obecného klienta aplikace Azure IoT Central (Node.js)
 
@@ -62,12 +62,24 @@ Názvy polí zadejte přesně tak, jak je znázorněno v tabulce do šablony za�
 
 Přidejte následující událost na **měření** stránky:
 
-| Zobrazované jméno | Název pole  | Severity |
+| Zobrazované jméno | Název pole  | severity |
 | ------------ | ----------- | -------- |
 | Přehřívání  | overheat    | Chyba    |
 
 > [!NOTE]
 > Datový typ měření událostí je řetězec.
+
+### <a name="location-measurements"></a>Umístění měření
+
+Přidejte následující měření umístění na **měření** stránky:
+
+| Zobrazované jméno | Název pole  |
+| ------------ | ----------- |
+| Location     | location    |
+
+Datový typ se skládá ze dvou umístění měření s plovoucí desetinnou čárkou čísla bodu pro zeměpisnou šířku a délku a volitelné číslo s plovoucí desetinnou pro výšku.
+
+Názvy polí zadejte přesně tak, jak je znázorněno v tabulce do šablony zařízení. Pokud se názvy polí neshodují názvy vlastností v odpovídajícím kódu zařízení, umístění nelze zobrazit v aplikaci.
 
 ### <a name="device-properties"></a>Vlastnosti zařízení
 
@@ -144,12 +156,14 @@ Následující kroky ukazují, jak vytvořit klientskou aplikaci, která impleme
     ```javascript
     var connectionString = '{your device connection string}';
     var targetTemperature = 0;
+    var locLong = -122.1215;
+    var locLat = 47.6740;
     var client = clientFromConnectionString(connectionString);
     ```
 
     Aktualizujte zástupný text `{your device connection string}` s [připojovací řetězec zařízení](tutorial-add-device.md#generate-connection-string). V této ukázce je inicializovat `targetTemperature` na nulu, můžete použít aktuální čtení ze zařízení nebo hodnotu z dvojčete zařízení.
 
-1. K odesílání telemetrických dat, stavu a měření událostí do aplikace Azure IoT Central, přidejte následující funkci k souboru:
+1. K odesílání telemetrických dat, stavu, událostí a měření umístění do aplikace Azure IoT Central, přidejte následující funkci k souboru:
 
     ```javascript
     // Send device measurements.
@@ -158,12 +172,18 @@ Následující kroky ukazují, jak vytvořit klientskou aplikaci, která impleme
       var humidity = 70 + (Math.random() * 10);
       var pressure = 90 + (Math.random() * 5);
       var fanmode = 0;
+      var locationLong = locLong - (Math.random() / 100);
+      var locationLat = locLat - (Math.random() / 100);
       var data = JSON.stringify({
         temperature: temperature,
         humidity: humidity,
         pressure: pressure,
         fanmode: (temperature > 25) ? "1" : "0",
-        overheat: (temperature > 35) ? "ER123" : undefined });
+        overheat: (temperature > 35) ? "ER123" : undefined,
+        location: {
+            lon: locationLong,
+            lat: locationLat }
+        });
       var message = new Message(data);
       client.sendEvent(message, (err, res) => console.log(`Sent message: ${message.getData()}` +
         (err ? `; error: ${err.toString()}` : '') +
@@ -320,6 +340,10 @@ Jako operátor v aplikaci Azure IoT Central pro skutečné zařízení můžete:
 * Zobrazení telemetrických dat na **měření** stránky:
 
     ![Zobrazení telemetrických dat](media/howto-connect-nodejs/viewtelemetry.png)
+
+* Zobrazit na umístění **měření** stránky:
+
+    ![Měření umístění zobrazení](media/howto-connect-nodejs/viewlocation.png)
 
 * Zobrazit hodnoty vlastností zařízení odeslané ze zařízení **vlastnosti** stránky. Vlastnosti dlaždice aktualizace zařízení při připojení zařízení:
 

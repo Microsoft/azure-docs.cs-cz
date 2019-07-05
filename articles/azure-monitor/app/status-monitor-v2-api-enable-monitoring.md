@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: e87bfad11eee5b86d35e6b4f2846b094c467e0ef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e0d5363e253e89b32b5eca14366504f0ace39043
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66734171"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67479631"
 ---
-# <a name="status-monitor-v2-api-enable-applicationinsightsmonitoring-v021-alpha"></a>Rozhraní API v2 monitorování stavu: Enable-ApplicationInsightsMonitoring (v0.2.1 alfa)
+# <a name="status-monitor-v2-api-enable-applicationinsightsmonitoring-v031-alpha"></a>Rozhraní API v2 monitorování stavu: Enable-ApplicationInsightsMonitoring (v0.3.1 alfa)
 
 Tento článek popisuje rutiny, která je členem skupiny [modulu Az.ApplicationMonitor PowerShell](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
 
@@ -68,9 +68,9 @@ V tomto příkladu:
 ```powershell
 PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap 
     @(@{MachineFilter='.*';AppFilter='WebAppExclude'},
-      @{MachineFilter='.*';AppFilter='WebAppOne';InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx1'},
-      @{MachineFilter='.*';AppFilter='WebAppTwo';InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx2'},
-      @{MachineFilter='.*';AppFilter='.*';InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxdefault'})
+      @{MachineFilter='.*';AppFilter='WebAppOne';InstrumentationSettings=@{InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx1'}},
+      @{MachineFilter='.*';AppFilter='WebAppTwo';InstrumentationSettings=@{InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx2'}},
+      @{MachineFilter='.*';AppFilter='.*';InstrumentationSettings=@{InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxdefault'}})
 
 ```
 
@@ -88,7 +88,7 @@ Můžete vytvořit jeden instalační skript pro několik počítačů tak, že 
 > Aplikace bude hledána shoda s pravidly v pořadí, ve kterém jsou k dispozici pravidla. Proto je třeba zadat nejspecifičtější pravidla první a poslední nejvíce obecná pravidla.
 
 #### <a name="schema"></a>Schéma
-`@(@{MachineFilter='.*';AppFilter='.*';InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'})`
+`@(@{MachineFilter='.*';AppFilter='.*';InstrumentationSettings=@{InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'}})`
 
 - **MachineFilter** je požadované C# regulární výraz počítače nebo název virtuálního počítače.
     - ". *" bude odpovídat vše
@@ -107,6 +107,12 @@ Instrumentace stroj přidá režii a je vypnuto ve výchozím nastavení.
 
 ### <a name="-acceptlicense"></a>-AcceptLicense
 **Volitelné.** Použijte tento přepínač tak, aby přijímal příkaz licence a ochrana osobních údajů v bezobslužné instalace.
+
+### <a name="-ignoresharedconfig"></a>-IgnoreSharedConfig
+Až budete mít cluster webové servery, je možné, že používáte [sdílenou konfiguraci](https://docs.microsoft.com/iis/web-hosting/configuring-servers-in-the-windows-web-platform/shared-configuration_211).
+HttpModule nelze vloženy do této sdílené konfigurace.
+Tento skript selže se zprávou, že se vyžadují další instalační kroky.
+Použijte tento přepínač k této kontroly ignorovat a pokračovat v instalaci požadované součásti. Další informace najdete v tématu [známá konflikt s iis sdílené – konfigurace](status-monitor-v2-troubleshoot.md#conflict-with-iis-shared-configuration)
 
 ### <a name="-verbose"></a>-Verbose
 **Společný parametr.** Chcete-li zobrazit podrobné protokoly použijte tento přepínač.

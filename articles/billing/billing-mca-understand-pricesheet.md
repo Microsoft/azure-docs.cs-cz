@@ -1,34 +1,30 @@
 ---
-title: Vysvětlení podmínek vašeho ceníku zákaznické smlouvy Microsoft – Azure | Dokumentace Microsoftu
-description: Zjistěte, jak číst a využití a vyúčtování předplatného Azure
-services: ''
-documentationcenter: ''
-author: jureid
+title: Vysvětlení podmínek vašeho ceníku zákaznické smlouvy Microsoft - Azure
+description: Zjistěte, jak číst a porozumět využití a vyúčtování zákaznické smlouvy společnosti Microsoft.
+author: bandersmsft
 manager: jureid
-editor: ''
 tags: billing
-ms.assetid: 32eea268-161c-4b93-8774-bc435d78a8c9
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/19/2019
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: eb6184e10d38cdcfad7070663e36f6610d009cdb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4d83228fbec395d604e5ce3f988d2a6157f21eed
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60371355"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490651"
 ---
-# <a name="understand-the-terms-in-your-price-sheet-for-a-microsoft-customer-agreement"></a>Vysvětlení podmínek vašeho ceníku zákaznické smlouvy Microsoft
+# <a name="terms-in-your-microsoft-customer-agreement-price-sheet"></a>Podmínky v ceníku vaší smlouvy zákazníka se společností Microsoft
 
-Tento článek se týká fakturační účet Microsoft zákaznické smlouvy. [Zaškrtněte, pokud máte přístup k zákaznické smlouvy Microsoft](#check-access-to-a-microsoft-customer-agreement).
+Tento článek se týká fakturace účtu Azure pro zákaznické smlouvy Microsoft. [Zaškrtněte, pokud máte přístup k zákaznické smlouvy Microsoft](#check-access-to-a-microsoft-customer-agreement).
 
 Pokud jste fakturační profil vlastníkem, přispěvatelem, čtečky nebo správce faktur si můžete stáhnout z webu Azure portal ceníku vaší organizace. Zobrazit [zobrazení a stažení cenových organizaci](billing-ea-pricing.md).
 
-## <a name="detailed-terms-and-descriptions-in-your-microsoft-customer-agreement-price-sheet"></a>Podrobné podmínky a popisy v ceníku vaší smlouvy zákazníka se společností Microsoft
+## <a name="terms-and-descriptions-in-your-price-sheet"></a>Podmínky a popisy v nového ceníku
 
 Následující část popisuje důležité termíny, které jsou zobrazeny v ceníku vaší smlouvy zákazníka se společností Microsoft.
 

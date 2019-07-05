@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/27/2019
 ms.author: v-mohabe
-ms.openlocfilehash: b18267b1443b257a575bf2e1199b9f8fa8c419fc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6a6b5b6e247bd7c105286b86257a6ae11c1d1c60
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65966813"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551864"
 ---
 # <a name="protect-app-service-with-azure-security-center"></a>Ochrana služby App Service pomocí Azure Security Center
 Tento článek vám pomůže používat Azure Security Center k monitorování a chránit vaše aplikace běžící na App Service.
@@ -47,9 +47,8 @@ Security Center je nativně integrováno s App Service, takže odpadá potřeba 
 ## <a name="enabling-monitoring-and-protection-of-app-service"></a>Povolení monitorování a ochranu služby App Service
 
 1. V Azure zvolte Security Center.
-2. Přejděte na **zásady zabezpečení** a zvolte předplatné.
-3. Na konci řádku předplatné, klikněte na tlačítko **upravit nastavení**.
-4. V části **cenová úroveň**v **služby App service** řádek, plán přepnete **povoleno**.
+2. Přejděte na **ceny na & stavení** a zvolte předplatné.
+3. V části **cenová úroveň**v **služby App service** řádek, plán přepnete **povoleno**.
 
 ![Přepnout App service](./media/security-center-app-services/app-services-toggle.png)
 

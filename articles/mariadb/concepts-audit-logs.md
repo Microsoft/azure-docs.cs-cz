@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 06/11/2019
-ms.openlocfilehash: 765db8461465b74ac068782c1b91d3c68b73f7d4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 06/26/2019
+ms.openlocfilehash: 13ea60c62283db35ce4bf9fde6c3b36ba7f88013
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67079519"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67439208"
 ---
 # <a name="audit-logs-in-azure-database-for-mariadb"></a>Protokoly auditu v Azure Database pro MariaDB
 
@@ -44,7 +44,7 @@ Další parametry, které můžete upravit patří:
 
 Protokoly auditu jsou integrované s Azure Monitor diagnostické protokoly. Po povolení protokolů auditu na vašem serveru MariaDB, můžete vygenerovat protokoly Azure monitoru, Event Hubs nebo Azure Storage. Další informace o tom, jak povolit diagnostické protokoly na webu Azure Portal, najdete v článku [portálu článku protokolu auditu](howto-configure-audit-logs-portal.md#set-up-diagnostic-logs).
 
-## <a name="schemas"></a>Schémata
+## <a name="diagnostic-logs-schemas"></a>Schémata pro diagnostické protokoly
 
 Následující části popisují, co je výstupem MariaDB protokolů auditování podle typu události. V závislosti na metodě výstup pole zahrnutá a pořadí, ve kterém jsou uvedeny se mohou lišit.
 
@@ -54,7 +54,7 @@ Následující části popisují, co je výstupem MariaDB protokolů auditován�
 |---|---|
 | `TenantId` | Vaše ID tenanta |
 | `SourceSystem` | `Azure` |
-| `TimeGenerated` [UTC] | Časové razítko, kdy se přihlášení v protokolu ve standardu UTC |
+| `TimeGenerated [UTC]` | Časové razítko, kdy se přihlášení v protokolu ve standardu UTC |
 | `Type` | Typ protokolu. Vždy `AzureDiagnostics` |
 | `SubscriptionId` | Identifikátor GUID pro předplatné, které server patří do |
 | `ResourceGroup` | Název skupiny prostředků, do které patří server |
@@ -64,13 +64,13 @@ Následující části popisují, co je výstupem MariaDB protokolů auditován�
 | `Resource` | Název serveru |
 | `Category` | `MySqlAuditLogs` |
 | `OperationName` | `LogEvent` |
-| `event_class` | `connection_log` |
-| `event_subclass` | `CONNECT`, `DISCONNECT` |
-| `connection_id` | Připojení jedinečné ID vygenerované společností MariaDB |
-| `host` | Prázdné |
-| `ip` | IP adresa připojení klienta k MariaDB |
-| `user` | Jméno uživatele, provádění dotazu |
-| `db` | Název připojení k databázi |
+| `event_class_s` | `connection_log` |
+| `event_subclass_s` | `CONNECT`, `DISCONNECT` |
+| `connection_id_d` | Připojení jedinečné ID vygenerované společností MariaDB |
+| `host_s` | Prázdné |
+| `ip_s` | IP adresa připojení klienta k MariaDB |
+| `user_s` | Jméno uživatele, provádění dotazu |
+| `db_s` | Název připojení k databázi |
 | `\_ResourceId` | Identifikátor URI prostředku |
 
 ### <a name="general"></a>Obecné
@@ -81,7 +81,7 @@ Schéma níže se vztahuje na typy Obecné, DML_SELECT, DML_NONSELECT, DML, DDL,
 |---|---|
 | `TenantId` | Vaše ID tenanta |
 | `SourceSystem` | `Azure` |
-| `TimeGenerated` [UTC] | Časové razítko při cyrilice c protokolu byla zaznamenána v UTC |
+| `TimeGenerated [UTC]` | Časové razítko, kdy se přihlášení v protokolu ve standardu UTC |
 | `Type` | Typ protokolu. Vždy `AzureDiagnostics` |
 | `SubscriptionId` | Identifikátor GUID pro předplatné, které server patří do |
 | `ResourceGroup` | Název skupiny prostředků, do které patří server |
@@ -91,15 +91,16 @@ Schéma níže se vztahuje na typy Obecné, DML_SELECT, DML_NONSELECT, DML, DDL,
 | `Resource` | Název serveru |
 | `Category` | `MySqlAuditLogs` |
 | `OperationName` | `LogEvent` |
-| `event_class` | `general_log` |
-| `event_subclass` | `LOG`, `ERROR`, `RESULT` |
+| `LogicalServerName_s` | Název serveru |
+| `event_class_s` | `general_log` |
+| `event_subclass_s` | `LOG`, `ERROR`, `RESULT` |
 | `event_time` | Spuštění dotazu sekund v UNIXOVÉ časové razítko |
-| `error_code` | Kód chyby, pokud dotaz selhal. `0` znamená, že žádná chybová zpráva |
-| `thread_id` | ID vlákna, který spouští dotaz |
-| `host` | Prázdné |
-| `ip` | IP adresa připojení klienta k MariaDB |
-| `user` | Jméno uživatele, provádění dotazu |
-| `sql_text` | Celý dotaz v textu |
+| `error_code_d` | Kód chyby, pokud dotaz selhal. `0` znamená, že žádná chybová zpráva |
+| `thread_id_d` | ID vlákna, který spouští dotaz |
+| `host_s` | Prázdné |
+| `ip_s` | IP adresa připojení klienta k MariaDB |
+| `user_s` | Jméno uživatele, provádění dotazu |
+| `sql_text_s` | Celý dotaz v textu |
 | `\_ResourceId` | Identifikátor URI prostředku |
 
 ### <a name="table-access"></a>Přístup k tabulce
@@ -108,7 +109,7 @@ Schéma níže se vztahuje na typy Obecné, DML_SELECT, DML_NONSELECT, DML, DDL,
 |---|---|
 | `TenantId` | Vaše ID tenanta |
 | `SourceSystem` | `Azure` |
-| `TimeGenerated` [UTC] | Časové razítko, kdy se přihlášení v protokolu ve standardu UTC |
+| `TimeGenerated [UTC]` | Časové razítko, kdy se přihlášení v protokolu ve standardu UTC |
 | `Type` | Typ protokolu. Vždy `AzureDiagnostics` |
 | `SubscriptionId` | Identifikátor GUID pro předplatné, které server patří do |
 | `ResourceGroup` | Název skupiny prostředků, do které patří server |
@@ -118,12 +119,13 @@ Schéma níže se vztahuje na typy Obecné, DML_SELECT, DML_NONSELECT, DML, DDL,
 | `Resource` | Název serveru |
 | `Category` | `MySqlAuditLogs` |
 | `OperationName` | `LogEvent` |
-| `event_class` | `table_access_log` |
-| `event_subclass` | `READ`, `INSERT`, `UPDATE`, nebo `DELETE` |
-| `connection_id` | Připojení jedinečné ID vygenerované společností MariaDB |
-| `db` | Název databáze, získat přístup |
-| `table` | Název tabulky přístup |
-| `sql_text` | Celý dotaz v textu |
+| `LogicalServerName_s` | Název serveru |
+| `event_class_s` | `table_access_log` |
+| `event_subclass_s` | `READ`, `INSERT`, `UPDATE`, nebo `DELETE` |
+| `connection_id_d` | Připojení jedinečné ID vygenerované společností MariaDB |
+| `db_s` | Název databáze, získat přístup |
+| `table_s` | Název tabulky přístup |
+| `sql_text_s` | Celý dotaz v textu |
 | `\_ResourceId` | Identifikátor URI prostředku |
 
 ## <a name="next-steps"></a>Další postup

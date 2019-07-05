@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/05/2019
-ms.openlocfilehash: bd0e8099be5422d561541aeb8911c9a1610befcb
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 29fdb200075a5b5843944a7a890cc2f8ad61f1ee
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67272764"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67543854"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-image"></a>Nasazení modelu používání vlastní image Dockeru
 
@@ -55,14 +55,14 @@ Informace v této části se předpokládá, že používáte službu Azure Cont
 
     Při použití imagí uložených v __registru kontejneru pro pracovní prostor__, nepotřebujete k ověření do registru. Ověřování zařizuje Služba pracovního prostoru.
 
-    > [!TIP]
-    > Registr pro váš pracovní prostor se vytvoří při prvním trénování nebo nasazení modelu používání pracovního prostoru. Pokud vytvořili nový pracovní prostor, ale nejsou školení nebo vytvořili model, pro pracovní prostor nebude existovat žádné Azure Container Registry.
+    > [!WARNING]
+    > Rzegistry kontejneru Azure pro váš pracovní prostor je __vytvoří při prvním trénování nebo nasazení modelu__ používání pracovního prostoru. Pokud vytvořili nový pracovní prostor, ale nejsou školení nebo vytvořili model, pro pracovní prostor nebude existovat žádné Azure Container Registry.
 
     Informace o načtení název registru kontejneru Azure pro váš pracovní prostor, najdete v článku [název registru kontejneru Get](#getname) části tohoto článku.
 
     Při použití imagí uložených v __samostatné registr__, budete muset nakonfigurovat hlavní název služby, který má alespoň přístup pro čtení. Potom zadáte ID instančního objektu (uživatelské jméno) a heslo pro každý uživatel, který používá Image z registru. Výjimkou je, pokud provedete do registru kontejneru veřejně přístupná.
 
-    Informace o vytvoření soukromého registru kontejnerů Azure najdete v tématu [vytvořit privátní registr](/azure/container-registry/container-registery-get-started-azure-cli).
+    Informace o vytvoření soukromého registru kontejnerů Azure najdete v tématu [vytvořit privátní registr](/azure/container-registry/container-registry-get-started-azure-cli).
 
     Informace o používání instančních objektů se službou Azure Container Registry najdete v tématu [ověřování Azure Container Registry pomocí instančních objektů](/azure/container-registry/container-registry-auth-service-principal).
 
@@ -80,8 +80,8 @@ Informace v této části se předpokládá, že používáte službu Azure Cont
 
 V této části se dozvíte, jak získat název registru kontejneru Azure pro váš pracovní prostor služby Azure Machine Learning.
 
-> [!TIP]
-> Registr pro váš pracovní prostor se vytvoří při prvním trénování nebo nasazení modelu používání pracovního prostoru. Pokud vytvořili nový pracovní prostor, ale nejsou školení nebo vytvořili model, pro pracovní prostor nebude existovat žádné Azure Container Registry.
+> [!WARNING]
+> Azure Container Registry pro váš pracovní prostor je __vytvoří při prvním trénování nebo nasazení modelu__ používání pracovního prostoru. Pokud vytvořili nový pracovní prostor, ale nejsou školení nebo vytvořili model, pro pracovní prostor nebude existovat žádné Azure Container Registry.
 
 Pokud jste už vytrénovaný nebo nasadit modely s využitím služby Azure Machine Learning, registr kontejnerů byl vytvořen pro váš pracovní prostor. Chcete-li najít název registru kontejneru, postupujte následovně:
 
@@ -153,9 +153,9 @@ Kroky v tomto názorném postupu část vytvoření vlastní image Dockeru do sl
     Run ID: cda was successful after 2m56s
     ```
 
-Další informace o vytváření imagí pomocí služby Azure Container Registry, najdete v části [sestavení a spuštění image kontejneru pomocí Azure Container Registry úlohy](/docs.microsoft.com/azure/container-registry/container-registry-quickstart-task-cli.md)
+Další informace o vytváření imagí pomocí služby Azure Container Registry, najdete v části [sestavení a spuštění image kontejneru pomocí Azure Container Registry úlohy](https://docs.microsoft.com/azure/container-registry/container-registry-quickstart-task-cli)
 
-Další informace o nahrávání existující Image do služby Azure Container Registry, najdete v části [nahrání první image do soukromého registru kontejnerů Dockeru](/azure/container-registry/container-registry-get-started-docker-cli.md).
+Další informace o nahrávání existující Image do služby Azure Container Registry, najdete v části [nahrání první image do soukromého registru kontejnerů Dockeru](/azure/container-registry/container-registry-get-started-docker-cli).
 
 ## <a name="use-a-custom-image"></a>Použití vlastní image
 

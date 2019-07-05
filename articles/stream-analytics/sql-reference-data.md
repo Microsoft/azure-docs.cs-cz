@@ -1,5 +1,5 @@
 ---
-title: Využití referenčních dat z databáze serveru SQL pro úlohy Azure Stream Analytics (Preview)
+title: Využití referenčních dat z databáze serveru SQL pro úlohy Azure Stream Analytics
 description: Tento článek popisuje, jak používat SQL Database jako referenčního datového vstupu pro úlohy Azure Stream Analytics na portálu Azure portal a v sadě Visual Studio.
 services: stream-analytics
 author: mamccrea
@@ -8,14 +8,14 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: f0e62c27885e2f6d5097194e1b9d869e167c4a4c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ae1954b99e268e8bc44c4ba29bbc79d7734fda6e
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66304975"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67461736"
 ---
-# <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job-preview"></a>Využití referenčních dat z databáze serveru SQL pro úlohy Azure Stream Analytics (Preview)
+# <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>Využití referenčních dat z databáze serveru SQL pro úlohy Azure Stream Analytics
 
 Azure Stream Analytics podporuje Azure SQL Database jako zdroj vstupu pro referenční data. SQL Database můžete použít jako referenční data pro vaši úlohu Stream Analytics na portálu Azure portal a v sadě Visual Studio pomocí nástroje Stream Analytics. Tento článek ukazuje, jak provést obě metody.
 

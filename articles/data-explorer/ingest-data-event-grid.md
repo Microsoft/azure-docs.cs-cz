@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 7d9c21b46f760055846194f52f1594f25b1ee989
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5854a8974a4d2a9dbc1aa690dc2340fd806f4219
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66494750"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490137"
 ---
 # <a name="ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>Ingestování objekty BLOB do Průzkumníku dat Azure pomocí přihlášení k odběru oznámení služby Event Grid
 
@@ -38,7 +38,7 @@ V tomto článku se dozvíte, jak nastavit [Azure Event Grid](/azure/event-grid/
 
     **Nastavení** | **Navrhovaná hodnota** | **Popis pole**
     |---|---|---|
-    | Name | *test-grid-connection* | Název služby event grid, který chcete vytvořit.|
+    | Název | *test-grid-connection* | Název služby event grid, který chcete vytvořit.|
     | Schéma událostí | *Schéma událostí mřížky* | Schéma, který se má použít pro event grid. |
     | Typ tématu | *Účet úložiště* | Typ tématu event gridu. |
     | Téma prostředků | *gridteststorage* | Název účtu úložiště. |
@@ -112,10 +112,10 @@ Teď připojení do služby event grid z Průzkumníka dat služby Azure, tak, a
      **Nastavení** | **Navrhovaná hodnota** | **Popis pole**
     |---|---|---|
     | Table | *TestTable* | Tabulka, kterou jste vytvořili v databázi **TestDatabase** |
-    | Formát dat | *JSON* | Podporované formáty jsou Avro, CSV, JSON, VÍCEŘÁDKOVÉM formátu JSON, PSV, SOH, SCSV, TSV a TXT. |
+    | Formát dat | *JSON* | Podporované formáty jsou Avro, CSV, JSON, VÍCEŘÁDKOVÉM formátu JSON, PSV, SOH, SCSV, TSV a TXT. Podporované možnosti komprese: ZIP a GZip |
     | Mapování sloupců | *TestMapping* | Mapování, které jste vytvořili v databázi **TestDatabase** a které mapuje příchozí data JSON na názvy sloupců a datové typy tabulky **TestTable**.|
     | | |
-
+    
 ## <a name="generate-sample-data"></a>Generování ukázkových dat
 
 Teď, když jsou připojené Průzkumník dat Azure a účet úložiště, můžete vytvořit ukázková data a nahrajte ho do úložiště objektů blob.

@@ -8,12 +8,12 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: bwren
-ms.openlocfilehash: 17b5c0b459e70909d9f305beb8bf87b83f1cf65c
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 2e2d13e6923535a8993a6477cbbfb921f6092d66
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296519"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565589"
 ---
 # <a name="get-started-with-log-analytics-in-azure-monitor"></a>Začínáme se službou Log Analytics ve službě Azure Monitor
 
@@ -55,7 +55,7 @@ Event | search "error"
 
 Tento dotaz vyhledá _události_ tabulky pro záznamy, které obsahují pojem _chyba_ v jakékoli vlastnosti.
 
-Dotazy můžete spustit buď pomocí názvu tabulky nebo [hledání](/kusto/query/searchoperator) příkazu. Výše uvedený příklad začíná název tabulky _události_, který načte všechny záznamy z tabulky událostí. Znak svislé čáry (|) odděluje příkazy, takže výstup první z nich slouží jako vstup následující příkaz. Můžete přidat libovolný počet příkazů do jednoho dotazu.
+Dotazy můžete spustit buď pomocí názvu tabulky nebo [hledání](/azure/kusto/query/searchoperator) příkazu. Výše uvedený příklad začíná název tabulky _události_, který načte všechny záznamy z tabulky událostí. Znak svislé čáry (|) odděluje příkazy, takže výstup první z nich slouží jako vstup následující příkaz. Můžete přidat libovolný počet příkazů do jednoho dotazu.
 
 Jiný způsob psaní tohoto stejného dotazu by byl:
 

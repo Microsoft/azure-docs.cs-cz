@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: 5b2b7f3cd6bfa219b794edc63d6bf8b2784b713c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 737da27fd8da292b6c1f8997d4bd300bbec8740e
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62120734"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565534"
 ---
 # <a name="azure-functions-developers-guide"></a>Příručka pro vývojáře Azure Functions
 Ve službě Azure Functions konkrétní funkce sdílet několik klíčových technických konceptech a komponenty, bez ohledu na jazyk nebo vazby, kterou používáte. Před přechodem do učení podrobnosti specifické pro daný jazyk nebo vazby, ujistěte se, že jste si tento přehled, který se vztahuje na všechny z nich.
@@ -107,5 +107,5 @@ Další informace najdete v následujících materiálech:
 * [Azure Functions aktivačními událostmi a vazbami](functions-triggers-bindings.md)
 * [Místní psaní kódu a testování funkcí Azure Functions](./functions-develop-local.md)
 * [Osvědčené postupy pro službu Azure Functions](functions-best-practices.md)
-* [Funkce jazyka C# pro vývojáře referenční informace k Azure](functions-reference-csharp.md)
+* [Funkce jazyka C# pro vývojáře referenční informace k Azure](functions-dotnet-class-library.md)
 * [Referenční informace pro vývojáře Azure Functions NodeJS](functions-reference-node.md)

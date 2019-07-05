@@ -2,27 +2,21 @@
 title: Referenční příručka k nastavení roamingu Windows 10 | Dokumentace Microsoftu
 description: Úplný seznam všech nastavení, které budou s roamingem nebo zálohování ve Windows 10.
 services: active-directory
-keywords: roaming, stav Enterprise windows cloud
-documentationcenter: ''
+ms.service: active-directory
+ms.subservice: devices
+ms.topic: troubleshooting
+ms.date: 06/28/2019
+ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-editor: curtand
-ms.subservice: devices
-ms.assetid: 17cffc3e-2928-4235-91f7-a685bd6bdcbf
-ms.service: active-directory
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 01/30/2019
-ms.author: joflore
+ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6c80ee5d2a4d72be131c6a781cf793d1981e780
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9489228b6ba81ae8d09e0f6880634532d0c836c6
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60353218"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67481809"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Referenční informace k nastavení roamingu pro Windows 10
 Následuje úplný seznam všech nastavení, které budou s roamingem nebo zálohování ve Windows 10. 
@@ -184,4 +178,3 @@ Minimální podporovaná verze operačního systému Windows Creators Update (se
 ## <a name="next-steps"></a>Další postup
 
 Přehled najdete v tématu [enterprise stav roamingu přehled](enterprise-state-roaming-overview.md).
-

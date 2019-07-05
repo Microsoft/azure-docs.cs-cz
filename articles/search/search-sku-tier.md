@@ -7,31 +7,31 @@ manager: cgronlun
 tags: azure-portal
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/08/2019
+ms.date: 07/01/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 00422209302bbcc2139be4f6b490f0bb2816c051
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 892a79f898e2448096ad4b252a18e0713bb32e52
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65539275"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485297"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Zvolte cenovou úroveň pro službu Azure Search
 
-Při vytváření služby Azure Search [je prostředek vytvořený](search-create-service-portal.md) na cenové úrovně nebo SKU, který je pevně po dobu životnosti služby. Zahrnuje Free, Basic, Standard a optimalizované pro úložiště. Standardní a optimalizované pro úložiště jsou k dispozici v několika konfiguracích a kapacity.
+Při vytváření služby Azure Search [je prostředek vytvořený](search-create-service-portal.md) na cenovou úroveň (nebo skladové položky), který je pevně po dobu životnosti služby. Zahrnuje Free, Basic, Standard a optimalizované pro úložiště. Standardní a optimalizované pro úložiště jsou k dispozici v několika konfiguracích a kapacity.
 
-Většina zákazníků začíná na úrovni Free, mohou vyhodnotit službu. Potom upgradovat na jednu z vyšší úrovně pro vývoj a provoz nasazení. Všechny rychlých startů a kurzů můžete dokončit pomocí na úrovni Free, včetně těch pro náročné kognitivního vyhledávání.
+Většina zákazníků začíná na úrovni Free, mohou vyhodnotit službu. Po vyhodnocení je běžné vytvořit druhou službu v některém z vyšší úrovně pro vývoj a provoz nasazení. Všechny rychlých startů a kurzů můžete dokončit pomocí na úrovni Free, včetně těch pro náročné kognitivního vyhledávání.
 
 > [!NOTE]
-> Společnost Microsoft aktuálně poskytuje optimalizované pro úložiště úrovně služeb ve verzi preview za zlevněné ceny pro účely testování a experimentování, s cílem shromažďování zpětné vazby. Chcete zjistit koncové ceny oznámíme později při těchto úrovních jsou obecně dostupné. Nedoporučujeme tyto úrovně používají, aplikacích v produkčním prostředí.
+> Od 1. července všechny úrovně jsou obecně dostupné, včetně úrovně optimalizované pro úložiště. Všechny ceny najdete na [podrobnosti o cenách](https://azure.microsoft.com/pricing/details/search/) stránky.
 
 Vrstev odrážejí charakteristiky hardwaru, hostování služby (spíše než funkce) a jsou rozlišené pomocí:
 
 + Počet indexů, které lze vytvořit.
 + Velikost a rychlost oddílů (fyzické úložiště).
 
-Přestože všechny úrovně, včetně na úrovni Free, obecně nabízí paritu funkcí, větší úlohy může diktovat potřebu vyšší úrovně. Například [indexování AI pomocí služeb Cognitive Services](cognitive-search-concept-intro.md) je dlouho běžící dovednosti tento časový limit na bezplatné služby Pokud datová sada je malá.
+Přestože všechny úrovně, včetně na úrovni Free, obecně nabízí paritu funkcí, větší úlohy může diktovat potřebu vyšší úrovně. Například [obohacování AI pomocí služeb Cognitive Services](cognitive-search-concept-intro.md) je dlouho běžící dovednosti tento časový limit na bezplatné služby Pokud datová sada je malá.
 
 > [!NOTE] 
 > Výjimka, která má paritu funkcí je [indexery](search-indexer-overview.md), které nejsou k dispozici na S3 HD, High Density.
@@ -60,7 +60,11 @@ V následující tabulce jsou uvedeny dostupné úrovně. Můžete najít dalš�
 
 ## <a name="how-billing-works"></a>Jak funguje fakturace
 
-Existují tři způsoby, jak vynakládá ve službě Azure Search a existují proměnlivé a dlouhodobý komponent. Tato část popisuje tři komponenty fakturace: základní náklady na službu, poplatky za odchozí přenos dat a AI obohacené indexování.
+Existují tři způsoby, jak vynakládá ve službě Azure Search. Tato část popisuje tři fakturační komponenty: 
+
++ Základní náklady na službu
++ poplatky za výchozí přenos dat (nebo šířky pásma) dat
++ Obohacení AI
 
 ### <a name="core-service-costs-fixed-and-variable"></a>Náklady na službu Core (pevné a proměnné)
 
@@ -98,9 +102,9 @@ Pomocí [indexerů Azure Search](search-indexer-overview.md) může mít vliv na
 
 Poplatky za odchozí data Pokud služby jsou v různých oblastech. Tyto poplatky nejsou ve skutečnosti součástí vyúčtování Azure Search. Zde jsou už uvedených vzhledem k tomu, že pokud používáte data nebo AI obohacené indexování má načítat data z různých oblastí, zobrazí se projeví ve vyúčtování celkové náklady na.
 
-### <a name="ai-enriched-indexing-with-cognitive-services"></a>AI obohacené indexování pomocí služeb Cognitive Services
+### <a name="ai-enrichments-with-cognitive-services"></a>Obohacení AI pomocí služeb Cognitive Services
 
-Pro [indexování AI pomocí služeb Cognitive Services](cognitive-search-concept-intro.md), měli byste naplánovat připojení účtovaných prostředků služeb Azure Cognitive Services, ve stejné oblasti jako Azure Search na cenovou úroveň S0 s průběžnými platbami zpracování. Neexistuje žádné pevné náklady spojené s připojením služby Cognitive Services. Platíte jenom za zpracování, které potřebujete.
+Pro [obohacování AI pomocí služeb Cognitive Services](cognitive-search-concept-intro.md), měli byste naplánovat připojení účtovaných prostředků služeb Azure Cognitive Services, ve stejné oblasti jako Azure Search na cenovou úroveň S0 s průběžnými platbami zpracování. Neexistuje žádné pevné náklady spojené s připojením služby Cognitive Services. Platíte jenom za zpracování, které potřebujete.
 
 Extrakce Image během hádání dokumentu je poplatek za Azure Search. Účtuje se podle počtu imagí, které jsou extrahovány z vašich dokumentů. Extrakce textu je aktuálně zdarma.
 

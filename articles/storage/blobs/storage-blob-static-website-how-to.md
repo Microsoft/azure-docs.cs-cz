@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.author: normesta
 ms.date: 05/28/2019
-ms.openlocfilehash: 61477767c59dd521e3f46db4445238a5a1ea759e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5ab24a99b22fae172b5308ba7477953f27ecfd44
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071439"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67435953"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Hostování statického webu ve službě Azure Storage
 
@@ -44,13 +44,7 @@ Můžete povolit pomocí hostoval statický web [rozhraní příkazového řádk
 
 1. Nejprve otevřete [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest), nebo pokud jste [nainstalované](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) Azure CLI místně, spusťte příkaz konzolové aplikace jako je Windows PowerShell.
 
-2. Z příkazového okna, kterou jste otevřeli instalaci rozšíření úložiště ve verzi preview.
-
-   ```azurecli-interactive
-   az extension add --name storage-preview
-   ```
-
-3. Pokud vaše identity je přidruženo více než jedno předplatné, nastavte vaše aktivní předplatné k odběru účtu úložiště, který bude hostovat váš statický Web.
+2. Pokud vaše identity je přidruženo více než jedno předplatné, nastavte vaše aktivní předplatné k odběru účtu úložiště, který bude hostovat váš statický Web.
 
    ```azurecli-interactive
    az account set --subscription <subscription-id>
@@ -58,7 +52,7 @@ Můžete povolit pomocí hostoval statický web [rozhraní příkazového řádk
 
    Nahradit `<subscription-id>` zástupnou hodnotu ID předplatného.
 
-4. Povolte hostoval statický Web.
+3. Povolte hostoval statický Web.
 
    ```azurecli-interactive
    az storage blob service-properties update --account-name <storage-account-name> --static-website --404-document <error-document-name> --index-document <index-document-name>
@@ -70,7 +64,7 @@ Můžete povolit pomocí hostoval statický web [rozhraní příkazového řádk
 
    * Nahradit `<index-document-name>` zástupný text na název dokumentu indexu. Tento dokument se často "index.html".
 
-5. Nahrání objektů *$web* kontejneru ze zdrojového adresáře.
+4. Nahrání objektů *$web* kontejneru ze zdrojového adresáře.
 
    > [!NOTE]
    > Pokud používáte Azure Cloud Shell, ujistěte se, že chcete přidat `\` řídicí znak k odkazování na `$web` kontejneru (například: `\$web`). Pokud používáte místní instalaci rozhraní příkazového řádku Azure, pak nebudete muset použít řídicí znak.

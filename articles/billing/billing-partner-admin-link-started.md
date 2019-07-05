@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 6bf61e2afd96e3923938ac4f815d34ae08f7c618
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 97866a1f1299c028cdc8f86245308ae4a8b5db88
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64694225"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67502674"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Propojit ID partnera účtů Azure
 
-Jako partner můžete sledovat vliv napříč vaše zákazníky. Propojte své ID partnera k účtům, které se používají ke správě prostředků zákazníka.
+Partneři Microsoftu poskytují služby, které pomáhají zákazníkům dosáhnout obchodních a klíčových cílů používajících produkty společnosti Microsoft. Při jednání jménem zákazníka, správa, konfigurace a podpůrné služby Azure, partner uživatelé potřebovat přístup k prostředí zákazníka. Pomocí odkazu správce partnera, partnery můžete přidružit jeho ID partnera síťové přihlašovací údaje používané k poskytování služeb.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -141,11 +141,11 @@ Odkaz na úrovni účtu uživatele souvisí. Pouze můžete upravit nebo odebrat
 
 **U kterého ID MPN by měl používat když Moje společnost má víc?**
 
-Můžete použít libovolné platné ID MPN s výjimkou virtuální organization(v-org) ID MPN. Většina partneři zvolit MPN ID pro zeměpisné oblasti, kde se zákazník nachází nebo služby jsou distribuována.
+Partner umístění účtů a přidružené ID MPN by měla sloužit pro propojení ID partnera.  Další informace o [partnerské účty](https://docs.microsoft.com/partner-center/account-structure)
 
 **Kde najdu vliv na výnosy vytváření sestav pro ID propojené partnera?**
 
-Můžete najít na generování sestav k nim výnosy [Moje přehledný řídicí panel](https://partner.microsoft.com/membership/reports/myinsights). Musíte vybrat partnerské propojení správce jako typ přidružení partnera.
+Generování sestav produktu výkonu cloudu je k dispozici pro partnery v partnerském centru na [Moje přehledný řídicí panel](https://partner.microsoft.com/membership/reports/myinsights). Musíte vybrat partnerské propojení správce jako typ přidružení partnera.
 
 **Proč nelze zobrazit Moje zákazníka v sestavách?**
 

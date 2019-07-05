@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/22/2019
-ms.openlocfilehash: ca29bfdb381c5cab0625a320679331c82f63c887
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c89aa3b4ecf0c07cfbb579cdc18fac6e822bc047
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67118072"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67536237"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-based-purchasing-model"></a>Omezení prostředků pro izolované databáze pomocí nákupní model založený na virtuálních jádrech
 
@@ -34,6 +34,9 @@ Můžete nastavit úroveň služby, výpočetního prostředí a velikost úlož
 > Škálování pokyny a důležité informace, najdete v části [škálování izolované databáze](sql-database-single-database-scale.md).
 
 ## <a name="general-purpose-service-tier-storage-sizes-and-compute-sizes"></a>Obecné účely vrstvy služby: Velikosti úložiště a výpočty velikostí
+
+> [!IMPORTANT]
+> Nové databáze Gen4 již nejsou podporovány v oblasti AustraliaEast.
 
 ### <a name="general-purpose-service-tier-generation-4-compute-platform-part-1"></a>Obecné účely vrstvy služby: Výpočetní platforma běžící generace 4 (část 1)
 
@@ -157,6 +160,9 @@ Můžete nastavit úroveň služby, výpočetního prostředí a velikost úlož
 
 ## <a name="business-critical-service-tier-for-provisioned-compute-tier"></a>Obchodní vrstvy služby pro vrstvu zřízených výpočetních
 
+> [!IMPORTANT]
+> Nové databáze Gen4 již nejsou podporovány v oblasti AustraliaEast.
+
 ### <a name="business-critical-service-tier-generation-4-compute-platform-part-1"></a>Obchodní vrstvy služby: Výpočetní platforma běžící generace 4 (část 1)
 
 |Vypočítat velikost|BC_Gen4_1|BC_Gen4_2|BC_Gen4_3|BC_Gen4_4|BC_Gen4_5|BC_Gen4_6|
@@ -268,7 +274,7 @@ Můžete nastavit úroveň služby, výpočetního prostředí a velikost úlož
 |Maximální velikost protokolu (TB)|1 |1 |1 |1 |1 |1 |1 |1 |
 |Velikost databáze TempDB (GB)|64|128|256|384|384|384|384|384|
 |Typ úložiště|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|
-|Cíl vstupně-výstupních operací (64 KB)|Chcete-li určit|Chcete-li určit|Chcete-li určit|Chcete-li určit|Chcete-li určit|Chcete-li určit|Chcete-li určit|Chcete-li určit|
+|Cíl vstupně-výstupních operací (64 KB)| [Poznámka: 1](#note-1) |[Poznámka: 1](#note-1)|[Poznámka: 1](#note-1) |[Poznámka: 1](#note-1) |[Poznámka: 1](#note-1) |[Poznámka: 1](#note-1) |[Poznámka: 1](#note-1) | [Poznámka: 1](#note-1) |
 |Vstupně-výstupní latence (přibližné)|Chcete-li určit|Chcete-li určit|Chcete-li určit|Chcete-li určit|Chcete-li určit|Chcete-li určit|Chcete-li určit|Chcete-li určit|
 |Maximální počet souběžných pracovních procesů (požadavků)|200|400|800|1600|2400|3200|4000|8000|
 |Maximální povolené relace|30000|30000|30000|30000|30000|30000|30000|30000|
@@ -278,7 +284,11 @@ Můžete nastavit úroveň služby, výpočetního prostředí a velikost úlož
 |Zahrnuté úložiště zálohování |7|7|7|7|7|7|7|7|
 |||
 
-## <a name="next-steps"></a>Další postup
+### <a name="note-1"></a>Poznámka: 1
+
+Velkokapacitní je architektura vícevrstevných s ukládáním do mezipaměti na různých úrovních. Efektivní IOPS, bude záviset na zatížení.
+
+### <a name="next-steps"></a>Další postup
 
 - Omezení prostředků DTU pro izolovanou databázi, naleznete v tématu [omezení prostředků pro izolované databáze pomocí nákupní model založený na DTU](sql-database-dtu-resource-limits-single-databases.md)
 - VCore omezení prostředků pro elastické fondy najdete v tématu [limity pro elastické fondy pomocí nákupní model založený na virtuálních jádrech prostředků](sql-database-vcore-resource-limits-elastic-pools.md)

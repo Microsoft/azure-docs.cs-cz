@@ -1,24 +1,24 @@
 ---
-title: Nasazení služby Azure container registry do virtuální sítě
+title: Omezení přístupu k registru kontejneru Azure z virtuální sítě
 description: Povolit přístup do služby Azure container registry pouze z prostředků ve virtuální síti Azure nebo z veřejné rozsahy IP adres.
 services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 04/03/2019
+ms.date: 07/01/2019
 ms.author: danlep
-ms.openlocfilehash: dc08fd5cc4abbf5d16f9d49874ec2c70cace165b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 06e45127f940e01de5f3ceeefc354014a88014db
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067971"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67514399"
 ---
 # <a name="restrict-access-to-an-azure-container-registry-using-an-azure-virtual-network-or-firewall-rules"></a>Omezení přístupu ke službě Azure container registry pomocí služby Azure virtual network nebo pravidla brány firewall
 
-[Azure Virtual Network](../virtual-network/virtual-networks-overview.md) poskytuje zabezpečené a privátní sítě pro Azure a místním prostředkům. Nasazením váš privátní registr kontejnerů Azure do služby Azure virtual network můžete zajistit, že pouze prostředky ve virtuální síti přístup k registru. Pro scénáře, mezi různými místy můžete také nakonfigurovat pravidla brány firewall umožňující přístup k registru pouze z konkrétních IP adres.
+[Azure Virtual Network](../virtual-network/virtual-networks-overview.md) poskytuje zabezpečené a privátní sítě pro Azure a místním prostředkům. Omezením přístupu pro váš privátní registr kontejnerů Azure z virtuální sítě Azure, zajistíte tím, že pouze prostředky ve virtuální síti přístup k registru. Pro scénáře, mezi různými místy můžete také nakonfigurovat pravidla brány firewall umožňující přístup k registru pouze z konkrétních IP adres.
 
-Tento článek ukazuje dva scénáře, chcete-li vytvořit pravidla přístupu k síti a omezit tak přístup do služby Azure container registry: z virtuálního počítače nasazené ve stejné síti, nebo z veřejné IP adresy Virtuálního počítače.
+Tento článek ukazuje dva scénáře, chcete-li vytvořit pravidla přístupu k síti a omezit tak přístup do služby Azure container registry: z virtuálním počítači nasazeném ve virtuální síti nebo z veřejné IP adresy Virtuálního počítače.
 
 > [!IMPORTANT]
 > Tato funkce je aktuálně ve verzi preview a některé [platí omezení](#preview-limitations). Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití][terms-of-use]. Některé aspekty této funkce se můžou před zveřejněním změnit.
@@ -30,7 +30,7 @@ Tento článek ukazuje dva scénáře, chcete-li vytvořit pravidla přístupu k
 
 * Pouze [Azure Kubernetes Service](../aks/intro-kubernetes.md) clusteru nebo Azure [virtuálního počítače](../virtual-machines/linux/overview.md) slouží jako hostitel pro přístup k registru kontejneru ve službě virtual network. *Další služby Azure, včetně Azure Container Instances se aktuálně nepodporují.*
 
-* [Úlohy služby ACR](container-registry-tasks-overview.md) operace nejsou aktuálně podporovány v registru kontejneru nasadit do virtuální sítě.
+* [Úlohy služby ACR](container-registry-tasks-overview.md) operace nejsou aktuálně podporovány v registru kontejneru přistupovat ve virtuální síti.
 
 * Každý registr podporuje maximálně 100 pravidel virtuální sítě.
 
@@ -38,7 +38,7 @@ Tento článek ukazuje dva scénáře, chcete-li vytvořit pravidla přístupu k
 
 * Použití Azure CLI kroky v tomto článku, Azure CLI verze 2.0.58 nebo později se vyžaduje. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli].
 
-* Pokud ještě nemáte registr kontejnerů, vytvořte si ho (vyžaduje SKU úrovně Premium) a push Ukázkový obrázek, jako `hello-world` z Docker Hubu. Například použít [webu Azure portal] [ quickstart-portal] nebo [rozhraní příkazového řádku Azure] [ quickstart-cli] vytvořte registr. 
+* Pokud ještě nemáte registr kontejnerů, vytvořte si ho (vyžaduje SKU úrovně Premium) a push Ukázkový obrázek, jako `hello-world` z Docker Hubu. Například použít [webu Azure portal][quickstart-portal] or the [Azure CLI][quickstart-cli] vytvořte registr. 
 
 ## <a name="about-network-rules-for-a-container-registry"></a>O pravidlech sítě pro registr kontejneru
 
@@ -58,7 +58,7 @@ Pravidla protokolu IP sítě, zadejte povolenou internet rozsahy adres pomocí z
 
 ## <a name="create-a-docker-enabled-virtual-machine"></a>Vytvoření virtuálního počítače s podporou Dockeru
 
-Pro účely tohoto článku použijte virtuálního počítače se systémem Ubuntu s podporou Dockeru pro přístup k službě Azure container registry. Chcete-li použít ověřování pomocí Azure Active Directory k registru, také nainstalovat [rozhraní příkazového řádku Azure] [ azure-cli] na virtuálním počítači. Pokud už máte virtuální počítač Azure, přeskočte tento krok vytváření.
+Pro účely tohoto článku použijte virtuálního počítače se systémem Ubuntu s podporou Dockeru pro přístup k službě Azure container registry. Chcete-li použít ověřování pomocí Azure Active Directory k registru, také nainstalovat [rozhraní příkazového řádku Azure][azure-cli] na virtuálním počítači. Pokud už máte virtuální počítač Azure, přeskočte tento krok vytváření.
 
 Můžete použít stejnou skupinu prostředků pro váš virtuální počítač a vašeho registru kontejneru. Tento instalační program usnadňuje vyčištění po uplynutí ale není povinné. Pokud budete chtít vytvořit samostatné skupiny prostředků pro virtuální počítač a virtuální sítě, spusťte [vytvořit skupiny az][az-group-create]. Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v *westcentralus* umístění:
 
@@ -121,7 +121,7 @@ V této části konfigurace vašeho registru kontejneru, pokud chcete povolit p�
 
 #### <a name="add-a-service-endpoint-to-a-subnet"></a>Přidání koncového bodu služby podsítě
 
-Při vytváření virtuálního počítače Azure ve výchozím nastavení vytvoří virtuální síť ve stejné skupině prostředků. Název virtuální sítě je založen na názvu virtuálního počítače. Například, pokud je název vašeho virtuálního počítače *myDockerVM*, výchozí název virtuální sítě je *myDockerVMVNET*, s podsítí *myDockerVMSubnet*. Na webu Azure Portal nebo pomocí to ověřit [az network vnet seznamu] [ az-network-vnet-list] příkaz:
+Při vytváření virtuálního počítače Azure ve výchozím nastavení vytvoří virtuální síť ve stejné skupině prostředků. Název virtuální sítě je založen na názvu virtuálního počítače. Například, pokud je název vašeho virtuálního počítače *myDockerVM*, výchozí název virtuální sítě je *myDockerVMVNET*, s podsítí *myDockerVMSubnet*. Na webu Azure Portal nebo pomocí to ověřit [az network vnet seznamu][az-network-vnet-list] příkaz:
 
 ```azurecli
 az network vnet list --resource-group myResourceGroup --query "[].{Name: name, Subnet: subnets[0].name}"
@@ -138,7 +138,7 @@ Výstup:
 ]
 ```
 
-Použití [az network vnet podsíť aktualizace] [ az-network-vnet-subnet-update] příkaz pro přidání **Microsoft.ContainerRegistry** koncový bod služby pro vaši podsíť. Nahraďte názvy virtuální sítě a podsítě v následujícím příkazu:
+Použití [az network vnet podsíť aktualizace][az-network-vnet-subnet-update] příkaz pro přidání **Microsoft.ContainerRegistry** koncový bod služby pro vaši podsíť. Nahraďte názvy virtuální sítě a podsítě v následujícím příkazu:
 
 ```azurecli
 az network vnet subnet update \
@@ -148,7 +148,7 @@ az network vnet subnet update \
   --service-endpoints Microsoft.ContainerRegistry
 ```
 
-Použití [az network vnet podsíť zobrazit] [ az-network-vnet-subnet-show] příkaz, který načte ID prostředku podsítě. Budete ho potřebovat v pozdějším kroku, a nakonfigurujte pravidlo přístupu k síti.
+Použití [az network vnet podsíť zobrazit][az-network-vnet-subnet-show] příkaz, který načte ID prostředku podsítě. Budete ho potřebovat v pozdějším kroku, a nakonfigurujte pravidlo přístupu k síti.
 
 ```azurecli
 az network vnet subnet show \
@@ -167,7 +167,7 @@ Výstup:
 
 #### <a name="change-default-network-access-to-registry"></a>Změnit výchozí síťový přístup k registru
 
-Ve výchozím nastavení služby Azure container registry umožňuje připojení z hostitele s jakoukoli sítí. Omezení přístupu k vybrané síti, změňte výchozí akce pro odepření přístupu. Nahraďte názvem svého registru v následujícím [az acr update] [ az-acr-update] příkaz:
+Ve výchozím nastavení služby Azure container registry umožňuje připojení z hostitele s jakoukoli sítí. Omezení přístupu k vybrané síti, změňte výchozí akce pro odepření přístupu. Nahraďte názvem svého registru v následujícím [az acr update][az-acr-update] příkaz:
 
 ```azurecli
 az acr update --name myContainerRegistry --default-action Deny
@@ -175,7 +175,7 @@ az acr update --name myContainerRegistry --default-action Deny
 
 #### <a name="add-network-rule-to-registry"></a>Přidat pravidlo sítě do registru
 
-Použití [az acr-pravidlo sítě přidat] [ az-acr-network-rule-add] příkaz pro přidání pravidlo sítě do vašeho registru, který umožňuje přístup z podsítě Virtuálních počítačů. Nahraďte názvem registru kontejneru a ID prostředku podsítě v následujícím příkazu: 
+Použití [az acr-pravidlo sítě přidat][az-acr-network-rule-add] příkaz pro přidání pravidlo sítě do vašeho registru, který umožňuje přístup z podsítě Virtuálních počítačů. Nahraďte názvem registru kontejneru a ID prostředku podsítě v následujícím příkazu: 
 
  ```azurecli
 az acr network-rule add --name mycontainerregistry --subnet <subnet-resource-id>
@@ -222,7 +222,7 @@ V této části konfigurace vašeho registru kontejneru, pokud chcete povolit p�
 
 #### <a name="change-default-network-access-to-registry"></a>Změnit výchozí síťový přístup k registru
 
-Pokud jste tak již neučinili, aktualizujte registr konfigurace k odepření přístupu ve výchozím nastavení. Nahraďte názvem svého registru v následujícím [az acr update] [ az-acr-update] příkaz:
+Pokud jste tak již neučinili, aktualizujte registr konfigurace k odepření přístupu ve výchozím nastavení. Nahraďte názvem svého registru v následujícím [az acr update][az-acr-update] příkaz:
 
 ```azurecli
 az acr update --name myContainerRegistry --default-action Deny
@@ -230,7 +230,7 @@ az acr update --name myContainerRegistry --default-action Deny
 
 #### <a name="remove-network-rule-from-registry"></a>Odebrat pravidlo sítě z registru
 
-Pokud jste přidali dříve, pravidlo sítě pro povolení přístupu z podsítě Virtuálních počítačů, odeberte koncového bodu služby podsítě a sítě pravidlo. Nahraďte názvem registru kontejneru a ID prostředku, který jste získali v dřívějším kroku v podsíti [az acr-pravidlo sítě odebrat] [ az-acr-network-rule-remove] příkaz: 
+Pokud jste přidali dříve, pravidlo sítě pro povolení přístupu z podsítě Virtuálních počítačů, odeberte koncového bodu služby podsítě a sítě pravidlo. Nahraďte názvem registru kontejneru a ID prostředku, který jste získali v dřívějším kroku v podsíti [az acr-pravidlo sítě odebrat][az-acr-network-rule-remove] příkaz: 
 
 ```azurecli
 # Remove service endpoint
@@ -248,7 +248,7 @@ az acr network-rule remove --name mycontainerregistry --subnet <subnet-resource-
 
 #### <a name="add-network-rule-to-registry"></a>Přidat pravidlo sítě do registru
 
-Použití [az acr-pravidlo sítě přidat] [ az-acr-network-rule-add] příkaz pro přidání pravidlo sítě do vašeho registru, který umožňuje přístup z IP adresy Virtuálního počítače. Nahraďte názvem registru kontejneru a veřejnou IP adresu virtuálního počítače v následujícím příkazu.
+Použití [az acr-pravidlo sítě přidat][az-acr-network-rule-add] příkaz pro přidání pravidlo sítě do vašeho registru, který umožňuje přístup z IP adresy Virtuálního počítače. Nahraďte názvem registru kontejneru a veřejnou IP adresu virtuálního počítače v následujícím příkazu.
 
 ```azurecli
 az acr network-rule add --name mycontainerregistry --ip-address <public-IP-address>
@@ -292,7 +292,7 @@ I nadále [ověřit přístup k registru](#verify-access-to-the-registry).
 
 ## <a name="verify-access-to-the-registry"></a>Ověřit přístup k registru
 
-Po čekání na několik minut, než se konfigurace, které chcete aktualizovat, ověřte, že můžete virtuální počítač přístup k registru kontejneru. Vytvořte připojení SSH k virtuálnímu počítači a spusťte [az acr login] [ az-acr-login] příkazu se přihlaste k vašemu registru. 
+Po čekání na několik minut, než se konfigurace, které chcete aktualizovat, ověřte, že můžete virtuální počítač přístup k registru kontejneru. Vytvořte připojení SSH k virtuálnímu počítači a spusťte [az acr login][az-acr-login] příkazu se přihlaste k vašemu registru. 
 
 ```bash
 az acr login --name mycontainerregistry
@@ -320,13 +320,13 @@ Obnovit registru tak, aby ve výchozím nastavení přístup, odeberte pravidla 
 
 #### <a name="remove-network-rules"></a>Odebrat pravidel sítě
 
-Pokud chcete zobrazit seznam pravidel sítě nakonfigurované pro váš registr, spusťte následující příkaz [az acr pravidlo sítě seznamu] [ az-acr-network-rule-list] příkaz:
+Pokud chcete zobrazit seznam pravidel sítě nakonfigurované pro váš registr, spusťte následující příkaz [az acr pravidlo sítě seznamu][az-acr-network-rule-list] příkaz:
 
 ```azurecli
 az acr network-rule list--name mycontainerregistry 
 ```
 
-U jednotlivých pravidel, který je nakonfigurovaný, spusťte [az acr-pravidlo sítě odebrat] [ az-acr-network-rule-remove] příkazu odeberte ji. Příklad:
+U jednotlivých pravidel, který je nakonfigurovaný, spusťte [az acr-pravidlo sítě odebrat][az-acr-network-rule-remove] příkazu odeberte ji. Příklad:
 
 ```azurecli
 # Remove a rule that allows access for a subnet. Substitute the subnet resource ID.
@@ -345,7 +345,7 @@ az acr network-rule remove \
 
 #### <a name="allow-access"></a>Povolit přístup
 
-Nahraďte názvem svého registru v následujícím [az acr update] [ az-acr-update] příkaz:
+Nahraďte názvem svého registru v následujícím [az acr update][az-acr-update] příkaz:
 ```azurecli
 az acr update --name myContainerRegistry --default-action Allow
 ```

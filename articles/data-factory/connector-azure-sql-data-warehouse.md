@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 68d2f126ee32f61d13d170712bf58581101036e8
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 24ee419e5c6eb4b8c148c61c232d2ab7ab07c74b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206077"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449591"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopírování dat do nebo z Azure SQL Data Warehouse pomocí Azure Data Factory 
 > [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, které používáte:"]
@@ -472,7 +472,10 @@ Pokud požadavky nejsou splněny, Azure Data Factory zkontroluje nastavení a au
 
 Pokud vaše zdrojová data nesplňuje kritéria v předchozí části, povolte data kopírování prostřednictvím dočasné instance pracovní úložiště objektů Blob v Azure. Nemůže být Azure Storage úrovně Premium. V tomto případě služby Azure Data Factory automaticky spustí transformace na data, aby splňovala požadavky na formát dat PolyBase. Potom použije PolyBase k načtení dat do SQL Data Warehouse. Nakonec ho vyčistí dočasný data z úložiště objektů blob. Zobrazit [fázovaného kopírování](copy-activity-performance.md#staged-copy) podrobnosti o kopírování dat přes instanci pracovní úložiště objektů Blob v Azure.
 
-Pokud chcete tuto funkci používat, vytvořte [propojenou službu Azure Storage](connector-azure-blob-storage.md#linked-service-properties) , který odkazuje na účet úložiště Azure s prozatímní blob storage. Zadejte `enableStaging` a `stagingSettings` vlastnosti pro aktivitu kopírování, jak je znázorněno v následujícím kódu:
+Pokud chcete tuto funkci používat, vytvořte [propojenou službu Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties) , který odkazuje na účet úložiště Azure s prozatímní blob storage. Zadejte `enableStaging` a `stagingSettings` vlastnosti pro aktivitu kopírování, jak je znázorněno v následujícím kódu.
+
+>[!IMPORTANT]
+>Pokud koncový bod služby virtuální sítě se nakonfigurují přípravného úložiště Azure, je potřeba použít spravovanou identitu ověřování - najdete [dopadu koncové body služby virtuální sítě pomocí služby Azure storage](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). Další požadované konfigurace ve službě Data Factory z [objektů Blob v Azure – spravovaná identita ověřování](connector-azure-blob-storage.md#managed-identity).
 
 ```json
 "activities":[

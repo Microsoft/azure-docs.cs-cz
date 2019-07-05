@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6515f60fb67e52a7924afec2effd0c2001935e5d
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: 5e195a93209875b9eabfaa2ad00772281922443c
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190264"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476111"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>Co je primární aktualizovat Token?
 
@@ -62,7 +62,7 @@ PRT je vydané během ověřování uživatele na zařízení s Windows 10 ve dv
    * Přidání účtu prostřednictvím **používat tento účet všude na tomto zařízení** příkazový řádek po přihlášení k aplikaci (například Outlook)
    * Přidání účtu z **nastavení** > **účty** > **přístup do práce nebo do školy** > **Connect**
 
-V těchto scénářích je modul plug-in Azure AD WAM primární autority pro PRT, protože Windows přihlašování nefunguje s tímto účtem služby Azure AD.
+Ve scénářích zařízení registrováno v Azure AD je modul plug-in Azure AD WAM primární autority pro PRT, protože Windows přihlašování nefunguje s tímto účtem služby Azure AD.
 
 > [!NOTE]
 > 3\. stran zprostředkovatelů identity, musí podporovat protokol WS-Trust umožňující PRT vystavení na zařízeních s Windows 10. Bez WS-Trust, PRT nemůže být vystaveno pro uživatele v hybridní Azure připojené k AD nebo Azure AD připojené zařízení

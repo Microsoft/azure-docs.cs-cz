@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 91dd1ebc457bfeed5c9e8d0d62ecc23740ca5d8d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 398efd36e6c8d82a5090b7446c95abb2d1bfbca1
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65979551"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67428764"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -72,6 +72,10 @@ Všechny ukázky zásady Azure jsou v [ukázek Azure Policy](../samples/index.md
 
 ## <a name="mode"></a>Režim
 
+**Režim** je nakonfigurované v závislosti, pokud jsou zásady je cílen na verzi Azure Resource Manageru nebo vlastnosti zprostředkovatele prostředků.
+
+### <a name="resource-manager-modes"></a>Režimy Resource Manageru
+
 **Režimu** Určuje, jaké typy prostředků, se vyhodnotí zásady. Jsou podporované režimy:
 
 - `all`: vyhodnocení skupiny prostředků a všechny typy prostředků
@@ -80,6 +84,13 @@ Všechny ukázky zásady Azure jsou v [ukázek Azure Policy](../samples/index.md
 Doporučujeme vám, že jste nastavili **režimu** k `all` ve většině případů. Všechny definice zásad, které jsou vytvořené pomocí portálu `all` režimu. Pokud používáte PowerShell nebo rozhraní příkazového řádku Azure, můžete zadat **režimu** parametr ručně. Pokud neobsahuje definici zásady **režimu** hodnota, použije se výchozí `all` v prostředí Azure PowerShell a o `null` v Azure CLI. A `null` režim je stejný jako při použití `indexed` pro podporu zpětné kompatibility.
 
 `indexed` by měla sloužit při vytváření zásad, které vynucují značky nebo umístění. Přestože se nevyžaduje, brání prostředky, které nepodporují značky a umístěním objeví jako nedodržující předpisy ve výsledcích dodržování předpisů. Výjimkou je **skupiny prostředků**. Zásady, které vynucují místa nebo značky na skupinu prostředků, nastavte **režimu** k `all` a konkrétně cíl `Microsoft.Resources/subscriptions/resourceGroups` typu. Příklad najdete v tématu [vynutit značky skupiny prostředků](../samples/enforce-tag-rg.md). Seznam prostředků, které podporují značek najdete v tématu [podporu pro prostředky Azure se značkami](../../../azure-resource-manager/tag-support.md).
+
+### <a name="resource-provider-modes"></a>Režimy poskytovatele prostředků
+
+Je režimu jen pro poskytovatele prostředků aktuálně nepodporuje `Microsoft.ContainerService.Data` pro správu pravidel přijetí kontroleru na [Azure Kubernetes Service](../../../aks/intro-kubernetes.md).
+
+> [!NOTE]
+> [Služba Azure Policy pro Kubernetes](rego-for-aks.md) je ve verzi Public Preview a podporuje pouze integrované definice zásad.
 
 ## <a name="parameters"></a>Parametry
 
@@ -389,6 +400,7 @@ Zásady Azure podporuje následující typy dopadu:
 - **AuditIfNotExists**: povolí auditování Pokud prostředek neexistuje.
 - **DeployIfNotExists**: nasadí prostředek, pokud už neexistuje.
 - **Zakázané**: nevyhodnocuje prostředky pro pravidlo zásad dodržování předpisů
+- **EnforceRegoPolicy**: nakonfiguruje kontroler nemocnicích otevřít zásady agenta ve službě Azure Kubernetes Service (preview)
 
 Pro **připojit**, je nutné zadat následující údaje:
 

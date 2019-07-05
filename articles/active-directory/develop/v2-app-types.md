@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd7055794860398ecc6296d0174a691e7fac4450
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ac3dbd3f2148c14780c380cc0c7f2fab2a41e165
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66235255"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482402"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Typy aplikací pro Microsoft identity platform
 
@@ -55,7 +55,7 @@ https://login.microsoftonline.com/common/oauth2/v2.0/token
 
 V tomto toku aplikace obdrží tokeny přímo v platformě Microsoft identity zajistí autorizaci koncového bodu, bez jakékoli výměny server-to-server. Všechna logika ověřování a relace zpracování trvá umístit zcela v klientovi JavaScript bez přesměrování další stránky.
 
-![Ověřování implicitní tok](./media/v2-app-types/convergence-scenarios-implicit.svg)
+![Znázorňuje tok implicitní ověřování](./media/v2-app-types/convergence-scenarios-implicit.svg)
 
 Pokud chcete zobrazit tento scénář v akci, zkuste použít jeden z ukázky kódu jednostránkové aplikace [platforma identit Microsoft Začínáme](v2-overview.md#getting-started) oddílu.
 
@@ -80,7 +80,7 @@ Další podrobnosti o různých typů tokeny použité v Microsoft identity plat
 
 Ve službě web apps server má tok ověřování přihlášení těchto kroků:
 
-![Tok ověřování webové aplikace](./media/v2-app-types/convergence-scenarios-webapp.svg)
+![Znázorňuje tok ověřování webové aplikace](./media/v2-app-types/convergence-scenarios-webapp.svg)
 
 Zajistíte tím, že ověří ID token pomocí veřejného podpisového klíče přijatého z koncového bodu Microsoft identity platform identitu uživatele. Je nastavena souboru cookie relace, které lze použít k identifikaci uživatele požadavky na dalších stránkách.
 
@@ -106,7 +106,7 @@ Webové rozhraní API můžete uživatelům udělit schopnost vyjádřit výslov
 
 Webové rozhraní API může přijímat tokeny přístup ze všech typů aplikací, včetně aplikací webového serveru, desktop a mobilní aplikace, jednostránkové aplikace, démonů na straně serveru a dokonce i v dalších webových rozhraní API. Základní tok pro webové rozhraní API vypadá takto:
 
-![Tok ověřování webové rozhraní API](./media/v2-app-types/convergence-scenarios-webapi.svg)
+![Ukazuje webové rozhraní API tok ověřování](./media/v2-app-types/convergence-scenarios-webapi.svg)
 
 Zjistěte, jak zabezpečit webové rozhraní API pomocí přístupových tokenů OAuth2, projděte si ukázky kódu webového rozhraní API [platforma identit Microsoft Začínáme](v2-overview.md#getting-started) oddílu.
 
@@ -118,7 +118,7 @@ Zařízení nainstalované aplikace, jako jsou mobilní a desktopové aplikace, 
 
 V tomto toku aplikace obdrží autorizační kód z koncového bodu Microsoft identity platform při přihlášení uživatele. Autorizační kód představuje oprávnění aplikace volat back endové služby jménem uživatele, který je přihlášen. Aplikace si mohou vyměňovat autorizační kód na pozadí pro přístupový token OAuth 2.0 a aktualizační token. Aplikace můžete použít přístupový token k ověření k webovým rozhraním API v požadavcích HTTP a použít obnovovací token k získání nových přístupových tokenů, když vyprší platnost těchto tokenů starší přístup.
 
-![Tok ověřování nativní aplikace](./media/v2-app-types/convergence-scenarios-native.svg)
+![Znázorňuje tok ověřování nativní aplikace](./media/v2-app-types/convergence-scenarios-native.svg)
 
 ## <a name="daemons-and-server-side-apps"></a>Procesy démon a aplikace na straně serveru
 
@@ -126,6 +126,6 @@ Aplikace, které mají dlouho běžící procesy nebo které pracují bez intera
 
 V tomto toku aplikace komunikuje přímo `/token` koncového bodu získat přístup:
 
-![Démon procesu tok ověřování aplikace](./media/v2-app-types/convergence-scenarios-daemon.svg)
+![Znázorňuje tok démon procesu ověřování aplikace](./media/v2-app-types/convergence-scenarios-daemon.svg)
 
 Můžete vytvořit aplikaci, proces démon, najdete v článku [údajů klienta, které dokumentace](v2-oauth2-client-creds-grant-flow.md), nebo to zkuste [ukázkovou aplikaci .NET](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2).
