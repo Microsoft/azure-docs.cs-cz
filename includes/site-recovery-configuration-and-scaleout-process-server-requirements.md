@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 06/10/2018
 ms.author: raynew
 ms.custom: include file
-ms.openlocfilehash: 371cbcc50b574f95e8d9ba4efe79058b2b25a8ba
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 3b4992a16061bef782f012aa7887b248e3423234
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67174714"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67568307"
 ---
 **Požadavky na Configuration/Process server**
 
@@ -49,7 +49,7 @@ https:\//management.azure.com | Používá pro koordinaci a operace správy repl
 time.nist.gov | Používá se ke kontrole synchronizace mezi systémovým a globálním časem.
 time.windows.com | Používá se ke kontrole synchronizace mezi systémovým a globálním časem.
 | <ul> <li> https:\//login.microsoftonline.com </li><li> https:\//secure.aadcdn.microsoftonline-p.com </li><li> https:\//login.live.com </li><li> https:\//graph.windows.net </li><li> https:\//login.windows.net </li><li> https:\//www.live.com </li><li> https:\//www.microsoft.com </li></ul> | Nastavit OVF potřebuje přístup k těmto adresám URL. Používají se pro přístup k řízení a správě identit Azure Active Directory
-protokol https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | K dokončení stahování MySQL
+protokol https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi  | K dokončení stahování MySQL. </br> V několika oblastech může být stažený soubor znovu orientovaného na adresu URL pro CDN. Ujistěte se, že adresa URL CDN je také přidat na seznam povolených, podle potřeby.
 |
 **SOFTWARE PRO INSTALACI** | 
 VMware vSphere PowerCLI | [Nástroj PowerCLI verze 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) by měly být nainstalovány, pokud je konfigurační Server běží na virtuálním počítači VMware.

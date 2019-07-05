@@ -12,12 +12,12 @@ author: jaredmoo
 ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 59e0e4cf82af9851dacf3ec030575ed392571331
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 683297e32c40f73c64dc40b18f279d92e2396e8d
+ms.sourcegitcommit: 3107874d7559ea975e4d55ae33cdf45f4b5485e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61475809"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67568277"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Použití příkazů jazyka Transact-SQL (T-SQL) k vytvoření a správa Elastických úloh databáze
 
@@ -426,7 +426,7 @@ Následující uložené procedury jsou v [úloh databáze](sql-database-job-aut
 
 
 
-### <a name="spaddjob"></a>sp_add_job
+### <a name="sp_add_job"></a>sp_add_job
 
 Přidá novou úlohu. 
   
@@ -492,7 +492,7 @@ Ve výchozím nastavení, členové role pevného serveru správce sysadmin syst
 
 Podrobnosti o oprávněních pracovníci v těchto rolích najdete v části oprávnění v tomto dokumentu. Jenom členové skupiny sysadmin můžete upravit vlastnosti úlohy, které vlastní jiní uživatelé tuto uloženou proceduru.
 
-### <a name="spupdatejob"></a>sp_update_job
+### <a name="sp_update_job"></a>sp_update_job
 
 Aktualizuje existující úlohy.
 
@@ -555,7 +555,7 @@ Podrobnosti o oprávněních pracovníci v těchto rolích najdete v části opr
 
 
 
-### <a name="spdeletejob"></a>sp_delete_job
+### <a name="sp_delete_job"></a>sp_delete_job
 
 Odstraní existující úlohy.
 
@@ -587,7 +587,7 @@ Podrobnosti o oprávněních pracovníci v těchto rolích najdete v části opr
 
 
 
-### <a name="spaddjobstep"></a>sp_add_jobstep
+### <a name="sp_add_jobstep"></a>sp_add_jobstep
 
 Přidá nový krok do úlohy.
 
@@ -713,7 +713,7 @@ Podrobnosti o oprávněních pracovníci v těchto rolích najdete v části opr
 
 
 
-### <a name="spupdatejobstep"></a>sp_update_jobstep
+### <a name="sp_update_jobstep"></a>sp_update_jobstep
 
 Aktualizuje krok úlohy.
 
@@ -838,7 +838,7 @@ Podrobnosti o oprávněních pracovníci v těchto rolích najdete v části opr
 
 
 
-### <a name="spdeletejobstep"></a>sp_delete_jobstep
+### <a name="sp_delete_jobstep"></a>sp_delete_jobstep
 
 Krok úlohy zruší úlohu.
 
@@ -884,7 +884,7 @@ Podrobnosti o oprávněních pracovníci v těchto rolích najdete v části opr
 
 
 
-### <a name="spstartjob"></a>sp_start_job
+### <a name="sp_start_job"></a>sp_start_job
 
 Začne provádět úlohy.
 
@@ -915,7 +915,7 @@ Ve výchozím nastavení, členové role pevného serveru správce sysadmin syst
 
 Podrobnosti o oprávněních pracovníci v těchto rolích najdete v části oprávnění v tomto dokumentu. Jenom členové skupiny sysadmin můžete upravit vlastnosti úlohy, které vlastní jiní uživatelé tuto uloženou proceduru.
 
-### <a name="spstopjob"></a>sp_stop_job
+### <a name="sp_stop_job"></a>sp_stop_job
 
 Zastaví provádění úlohy.
 
@@ -944,7 +944,7 @@ Ve výchozím nastavení, členové role pevného serveru správce sysadmin syst
 Podrobnosti o oprávněních pracovníci v těchto rolích najdete v části oprávnění v tomto dokumentu. Jenom členové skupiny sysadmin můžete upravit vlastnosti úlohy, které vlastní jiní uživatelé tuto uloženou proceduru.
 
 
-### <a name="spaddtargetgroup"></a>sp_add_target_group
+### <a name="sp_add_target_group"></a>sp_add_target_group
 
 Přidá cílovou skupinu.
 
@@ -975,7 +975,7 @@ Ve výchozím nastavení, členové role pevného serveru správce sysadmin syst
 
 Podrobnosti o oprávněních pracovníci v těchto rolích najdete v části oprávnění v tomto dokumentu. Jenom členové skupiny sysadmin můžete upravit vlastnosti úlohy, které vlastní jiní uživatelé tuto uloženou proceduru.
 
-### <a name="spdeletetargetgroup"></a>sp_delete_target_group
+### <a name="sp_delete_target_group"></a>sp_delete_target_group
 
 Odstraní cílovou skupinu.
 
@@ -1003,7 +1003,7 @@ Ve výchozím nastavení, členové role pevného serveru správce sysadmin syst
 
 Podrobnosti o oprávněních pracovníci v těchto rolích najdete v části oprávnění v tomto dokumentu. Jenom členové skupiny sysadmin můžete upravit vlastnosti úlohy, které vlastní jiní uživatelé tuto uloženou proceduru.
 
-### <a name="spaddtargetgroupmember"></a>sp_add_target_group_member
+### <a name="sp_add_target_group_member"></a>sp_add_target_group_member
 
 Přidá do skupiny cílové databázi nebo skupině databází.
 
@@ -1092,7 +1092,7 @@ SELECT * FROM [jobs].target_group_members WHERE target_group_name= N'Servers Mai
 GO
 ```
 
-### <a name="spdeletetargetgroupmember"></a>sp_delete_target_group_member
+### <a name="sp_delete_target_group_member"></a>sp_delete_target_group_member
 
 Odebere z cílová skupina členem cílové skupiny.
 
@@ -1143,7 +1143,7 @@ EXEC jobs.sp_delete_target_group_member
 GO
 ```
 
-### <a name="sppurgejobhistory"></a>sp_purge_jobhistory
+### <a name="sp_purge_jobhistory"></a>sp_purge_jobhistory
 
 Odebere záznamy historie úlohy.
 
@@ -1204,7 +1204,7 @@ Jsou k dispozici v následujících zobrazení [úloh databáze](sql-database-jo
 |[target_group_members](#target_groups_members-view)     |   Zobrazuje všechny členy všechny cílové skupiny.      |
 
 
-### <a name="jobsexecutions-view"></a>jobs_executions zobrazení
+### <a name="jobs_executions-view"></a>jobs_executions zobrazení
 
 [jobs].[jobs_executions]
 
@@ -1251,7 +1251,7 @@ Zobrazí všechny úlohy.
 |**schedule_end_time**| datetime2(7)|   Datum a čas, kdy byl poslední dokončené spuštění úlohy.|
 
 
-### <a name="jobversions-view"></a>job_versions zobrazení
+### <a name="job_versions-view"></a>job_versions zobrazení
 
 [jobs].[job_versions]
 
@@ -1299,13 +1299,13 @@ Zobrazí všechny kroky v aktuální verzi každou úlohu.
 |**max_parallelism**|   int|    Maximální počet databází na každý elastický fond, který krok úlohy poběží současně. Výchozí hodnota je NULL, což znamená bez omezení. |
 
 
-### <a name="jobstepversions-view"></a>jobstep_versions zobrazení
+### <a name="jobstep_versions-view"></a>jobstep_versions zobrazení
 
 [jobs].[jobstep_versions]
 
 Zobrazí všechny kroky ve všech verzích každé úlohy. Schéma je stejný jako [kroky úlohy](#jobsteps-view).
 
-### <a name="targetgroups-view"></a>target_groups view
+### <a name="target_groups-view"></a>target_groups view
 
 [jobs].[target_groups]
 
@@ -1316,7 +1316,7 @@ Uvádí všechny cílové skupiny.
 |**target_group_name**| nvarchar(128)   |Název cílové skupiny, kolekce databází. 
 |**target_group_id**    |uniqueidentifier   |Jedinečné ID cílové skupiny.
 
-### <a name="targetgroupsmembers-view"></a>target_groups_members view
+### <a name="target_groups_members-view"></a>target_groups_members view
 
 [jobs].[target_groups_members]
 

@@ -12,12 +12,12 @@ ms.date: 05/08/2019
 ms.author: celested
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e34e6257b4800387470cdc1b7d624bf3ebd1d3e6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 95b7cbcf4e485dc93d49b9559dcb7d0d4f597ebe
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65989279"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67550351"
 ---
 # <a name="configure-single-sign-on-to-non-gallery-applications-in-microsoft-identity-platform"></a>Nakonfigurovat jednotné přihlašování do aplikace mimo galerii v platforma identit Microsoft
 
@@ -186,7 +186,7 @@ Přiřazení nové uživatele nebo skupinu do vaší aplikace:
 3. Vyberte **uživatelům a skupinám (\<číslo > vybrané)** . **Uživatelů a skupin** se zobrazí stránka zobrazuje seznam dostupných uživatelů a skupin.
 4. Typ nebo přejděte k vyhledání uživatele nebo skupinu, kterou chcete přiřadit ze seznamu.
 5. Vyberte jednotlivé uživatele nebo skupiny, kterou chcete přidat a pak vyberte **vyberte** tlačítko. **Uživatelů a skupin** stránky zmizí.
-6. V **přidat přiřazení** stránce **přiřadit**. **<application name> – Uživatelé a skupiny** se zobrazí stránka s dalšími uživateli v seznamu zobrazí.
+6. V **přidat přiřazení** stránce **přiřadit**. **\<Název aplikace >-uživatelů a skupin** se zobrazí stránka s dalšími uživateli v seznamu zobrazí.
 
    ![Aplikace uživatele a skupiny](./media/configure-single-sign-on-non-gallery-applications/application-users-and-groups.png)
 

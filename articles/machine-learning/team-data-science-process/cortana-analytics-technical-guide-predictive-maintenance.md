@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: e2f0f1e7ac8f510c4ff5be7933c55278fef74694
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: feccaea0451ae36d841aae95ed0baf54f90c2700
+ms.sourcegitcommit: 3107874d7559ea975e4d55ae33cdf45f4b5485e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60715526"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67568265"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace"></a>Technický průvodce do šablony řešení Cortana Intelligence pro prediktivní údržby v leteckém průmyslu
 
@@ -88,7 +88,7 @@ Centrum událostí Azure je obecný; data mohou být účtovány do centra ve fo
 
 Tento dokument nepopisuje přijímat data, ale můžete snadno odesílat události nebo data do centra událostí Azure pomocí rozhraní API centra událostí.
 
-### <a name="azure-stream-analytics"></a>Azure Stream Analytics
+### <a name="azure-stream-analytics-1"></a>Azure Stream Analytics
 Pomocí služby Azure Stream Analytics poskytuje téměř v reálném čase analýzy čtení z datových proudů a výstup dat do libovolného počtu zdrojů.
 
 Prediktivní Údržba leteckých šablony řešení dotazu Azure Stream Analytics se skládá z čtyři sub dotazy, každý dotaz spotřebovávajících událostí ze služby Azure Event Hubs, se výstupy do čtyř různých umístění. Tyto výstupy se skládají ze tří datových sad Power BI a jednoho umístění úložiště Azure.

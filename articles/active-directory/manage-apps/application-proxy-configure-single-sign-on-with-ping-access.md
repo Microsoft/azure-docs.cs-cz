@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab08c93662988655154cf300ac4ee3758fbc7872
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7c43498a7829a43fad331841aca045f52ae680be
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66472802"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67481473"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Ověřování založené na hlavičkách pro jednotné přihlašování s Proxy aplikací a Pingaccessem
 
@@ -76,10 +76,10 @@ Nejprve budete muset aplikaci publikovat. Tato akce zahrnuje:
 Chcete-li publikovat místní aplikace:
 
 1. Pokud jste v poslední části, přihlaste se k [portálu Azure Active Directory](https://aad.portal.azure.com/) jako správce aplikací.
-2. Vyberte **podnikové aplikace** > **novou aplikaci** > **On-premises application**. **Přidat vlastní místní aplikaci** se zobrazí stránka.
+1. Vyberte **podnikové aplikace** > **novou aplikaci** > **On-premises application**. **Přidat vlastní místní aplikaci** se zobrazí stránka.
 
    ![Přidat místní aplikace](./media/application-proxy-configure-single-sign-on-with-ping-access/add-your-own-on-premises-application.png)
-3. Vyplňte požadovaná pole s informacemi o novou aplikaci. Použijte pokyny níže pro nastavení.
+1. Vyplňte požadovaná pole s informacemi o novou aplikaci. Použijte pokyny níže pro nastavení.
 
    > [!NOTE]
    > Podrobnější návod tohoto kroku najdete v tématu [přidat místní aplikace do služby Azure AD](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad).
@@ -89,46 +89,48 @@ Chcete-li publikovat místní aplikace:
       > [!WARNING]
       > Pro tento typ jednotného přihlašování, interní adresa URL musí používat `https` nebo nemůže používat `http`.
 
-   2. **Metoda předběžného ověřování služby**: Zvolte **Azure Active Directory**.
-   3. **Přeložit adresy URL v hlavičkách**: Zvolte **ne**.
+   1. **Metoda předběžného ověřování služby**: Zvolte **Azure Active Directory**.
+   1. **Přeložit adresy URL v hlavičkách**: Zvolte **ne**.
 
    > [!NOTE]
    > Pokud je toto první aplikace, použijte ke spuštění a vrátit zpět a aktualizovat toto nastavení, pokud změníte konfiguraci PingAccess port 3000. Aplikacemi třeba port tak, aby odpovídaly naslouchací proces, který jste nakonfigurovali v PingAccess. Další informace o [naslouchacích procesů v PingAccess](https://documentation.pingidentity.com/pingaccess/pa31/index.shtml#Listeners.html).
-4. Vyberte **Přidat**. Zobrazí se stránka s přehledem pro novou aplikaci.
+
+1. Vyberte **Přidat**. Zobrazí se stránka s přehledem pro novou aplikaci.
 
 Nyní přiřadit uživatele pro testování aplikací a zvolte založeným na hlavičkách jednotné přihlašování:
 
 1. Na bočním panelu aplikace vyberte **uživatelů a skupin** > **přidat uživatele** > **uživatelům a skupinám (\<číslo > vybrané)** . Můžete zvolit z se zobrazí seznam uživatelů a skupin.
 
-   ![Uživatelé a skupiny](./media/application-proxy-configure-single-sign-on-with-ping-access/users-and-groups.png)
-2. Vybrat uživatele pro testování aplikací a vyberte **vyberte**. Ujistěte se, že testovacího účtu má přístup k místní aplikaci.
-3. Vyberte **Přiřadit**.
-4. Na bočním panelu aplikace vyberte **jednotného přihlašování** > **založeným na hlavičkách**.
+   ![Zobrazí seznam uživatelů a skupin](./media/application-proxy-configure-single-sign-on-with-ping-access/users-and-groups.png)
+
+1. Vybrat uživatele pro testování aplikací a vyberte **vyberte**. Ujistěte se, že testovacího účtu má přístup k místní aplikaci.
+1. Vyberte **Přiřadit**.
+1. Na bočním panelu aplikace vyberte **jednotného přihlašování** > **založeným na hlavičkách**.
 
    > [!TIP]
    > Pokud je toto vaše první přihlášení pomocí založeným na hlavičkách jednotného přihlašování, budete muset nainstalovat PingAccess. Ujistěte se, že vaše předplatné Azure je automaticky přiřazen k instalaci PingAccess, použijte odkaz na této stránce jednotné přihlašování ke stažení PingAccess. Můžete teď otevřít server pro stahování nebo vraťte na tuto stránku později.
 
-   ![Přihlašování na základě záhlaví](./media/application-proxy-configure-single-sign-on-with-ping-access/sso-header.png)
-5. Vyberte **Uložit**.
+   ![Zobrazuje založeným na hlavičkách přihlašovací obrazovku a PingAccess](./media/application-proxy-configure-single-sign-on-with-ping-access/sso-header.png)
+
+1. Vyberte **Uložit**.
 
 Pak zajistěte, aby vaše přesměrování, adresa URL je nastavený na externí adresu URL:
 
 1. Z **centra pro správu Azure Active Directory** bočním panelu vyberte **Azure Active Directory** > **registrace aplikací**. Zobrazí se seznam aplikací.
-
-   ![Registrace aplikací](./media/application-proxy-configure-single-sign-on-with-ping-access/app-registrations.png)
-2. Vyberte svou aplikaci.
-3. Vyberte odkaz vedle položky **identifikátory URI přesměrování**, zobrazující počet přesměrování nastavení identifikátorů URI pro webové aplikace a veřejné klienty. **\<Název aplikace >-ověřování** zobrazí se stránka.
-4. Zkontrolujte, zda je externí adresa URL, který jste přiřadili do vaší aplikace dříve v **identifikátory URI přesměrování** seznamu. Pokud tomu tak není, přidejte externí adresu URL teď pomocí typ identifikátoru URI přesměrování **webové**a vyberte **Uložit**.
+1. Vyberte svou aplikaci.
+1. Vyberte odkaz vedle položky **identifikátory URI přesměrování**, zobrazující počet přesměrování nastavení identifikátorů URI pro webové aplikace a veřejné klienty. **\<Název aplikace >-ověřování** zobrazí se stránka.
+1. Zkontrolujte, zda je externí adresa URL, který jste přiřadili do vaší aplikace dříve v **identifikátory URI přesměrování** seznamu. Pokud tomu tak není, přidejte externí adresu URL teď pomocí typ identifikátoru URI přesměrování **webové**a vyberte **Uložit**.
 
 Nakonec nastavte místní aplikaci tak, aby uživatelé mají oprávnění ke čtení a jiné aplikace mají přístup pro čtení/zápis:
 
 1. Z **registrace aplikací** postranního panelu pro vaši aplikaci, vyberte **oprávnění k rozhraní API** > **přidat oprávnění**  >   **Rozhraní API od Microsoftu** > **Microsoft Graphu**. **Žádosti rozhraní API oprávnění** stránce **Microsoft Graphu** se zobrazí, který obsahuje rozhraní API pro Windows Azure Active Directory.
 
-   ![Požádat o oprávnění k rozhraní API](./media/application-proxy-configure-single-sign-on-with-ping-access/required-permissions.png)
-2. Vyberte **delegovaná oprávnění** > **uživatele** > **User.Read**.
-3. Vyberte **oprávnění aplikace** > **aplikace** > **Application.ReadWrite.All**.
-4. Vyberte **přidat oprávnění**.
-5. V **oprávnění k rozhraní API** stránce **udělit souhlas správce pro \<váš název adresáře >** .
+   ![Zobrazuje stránku oprávnění žádosti rozhraní API](./media/application-proxy-configure-single-sign-on-with-ping-access/required-permissions.png)
+
+1. Vyberte **delegovaná oprávnění** > **uživatele** > **User.Read**.
+1. Vyberte **oprávnění aplikace** > **aplikace** > **Application.ReadWrite.All**.
+1. Vyberte **přidat oprávnění**.
+1. V **oprávnění k rozhraní API** stránce **udělit souhlas správce pro \<váš název adresáře >** .
 
 #### <a name="collect-information-for-the-pingaccess-steps"></a>Shromáždit data za PingAccess kroky
 
@@ -143,18 +145,20 @@ Je potřeba shromáždit tyto tři údaje (všechny identifikátory GUID) k nast
 Shromažďování těchto informací:
 
 1. Z **centra pro správu Azure Active Directory** bočním panelu vyberte **Azure Active Directory** > **registrace aplikací**. Zobrazí se seznam aplikací.
-2. Vyberte svou aplikaci. **Registrace aplikací** stránky pro vaše aplikace se zobrazí.
+1. Vyberte svou aplikaci. **Registrace aplikací** stránky pro vaše aplikace se zobrazí.
 
    ![Registrace – přehled pro aplikaci](./media/application-proxy-configure-single-sign-on-with-ping-access/registration-overview-for-an-application.png)
-3. Vedle položky **ID aplikace (klient)** hodnotu, vyberte **kopírování do schránky** ikonu, pak zkopírujte a uložte ho. Dále zadejte tuto hodnotu jako ID PingAccess od klienta.
-4. Další **ID adresáře (tenant)** hodnota a také vybrat **kopírování do schránky**, pak zkopírujte a uložte ho. Můžete zadat tuto hodnotu později jako PingAccess od vystavitele.
-5. Na postranním panelu Nástroje **registrace aplikací** pro vaši aplikaci, vyberte **certifikátů a tajných kódů** > **nový tajný kód klienta**. **Přidat tajný klíč klienta** se zobrazí stránka.
 
-   ![Přidat tajný klíč klienta](./media/application-proxy-configure-single-sign-on-with-ping-access/add-a-client-secret.png)
-6. V **popis**, typ `PingAccess key`.
-7. V části **Expires**, zvolte, jak nastavit klíč PingAccess: **Za 1 rok**, **2 roky**, nebo **nikdy**.
-8. Vyberte **Přidat**. PingAccess klíče se zobrazí v tabulce tajné klíče klienta, řetězec s náhodnou této autofills v **hodnotu** pole.
-9. Vedle PingAccess klíč **hodnotu** pole, vyberte **kopírování do schránky** ikonu, pak zkopírujte a uložte ho. Tuto hodnotu můžete zadat později jako tajný kód klienta PingAccess pro.
+1. Vedle položky **ID aplikace (klient)** hodnotu, vyberte **kopírování do schránky** ikonu, pak zkopírujte a uložte ho. Dále zadejte tuto hodnotu jako ID PingAccess od klienta.
+1. Další **ID adresáře (tenant)** hodnota a také vybrat **kopírování do schránky**, pak zkopírujte a uložte ho. Můžete zadat tuto hodnotu později jako PingAccess od vystavitele.
+1. Na postranním panelu Nástroje **registrace aplikací** pro vaši aplikaci, vyberte **certifikátů a tajných kódů** > **nový tajný kód klienta**. **Přidat tajný klíč klienta** se zobrazí stránka.
+
+   ![Přidat se zobrazí stránka tajného kódu klienta](./media/application-proxy-configure-single-sign-on-with-ping-access/add-a-client-secret.png)
+
+1. V **popis**, typ `PingAccess key`.
+1. V části **Expires**, zvolte, jak nastavit klíč PingAccess: **Za 1 rok**, **2 roky**, nebo **nikdy**.
+1. Vyberte **Přidat**. PingAccess klíče se zobrazí v tabulce tajné klíče klienta, řetězec s náhodnou této autofills v **hodnotu** pole.
+1. Vedle PingAccess klíč **hodnotu** pole, vyberte **kopírování do schránky** ikonu, pak zkopírujte a uložte ho. Tuto hodnotu můžete zadat později jako tajný kód klienta PingAccess pro.
 
 ### <a name="update-graphapi-to-send-custom-fields-optional"></a>Aktualizace GraphAPI k odesílání vlastních polí (volitelné)
 
@@ -173,14 +177,14 @@ PATCH https://graph.windows.net/myorganization/applications/<object_id_GUID_of_y
 **V tomto příkladu [portálu Azure Active Directory](https://aad.portal.azure.com/) aktualizovat `acceptMappedClaims` pole:**
 
 1. Přihlaste se k [portálu Azure Active Directory](https://aad.portal.azure.com/) jako správce aplikací.
-2. Vyberte **Azure Active Directory** > **registrace aplikací**. Zobrazí se seznam aplikací.
-3. Vyberte svou aplikaci.
-4. Na postranním panelu z **registrace aplikací** stránky pro vaši aplikaci, vyberte **Manifest**. Zobrazí se kód JSON manifestu pro registraci vaší aplikace.
-5. Hledat `acceptMappedClaims` pole a změňte hodnotu na `True`.
-6. Vyberte **Uložit**.
-
+1. Vyberte **Azure Active Directory** > **registrace aplikací**. Zobrazí se seznam aplikací.
+1. Vyberte svou aplikaci.
+1. Na postranním panelu z **registrace aplikací** stránky pro vaši aplikaci, vyberte **Manifest**. Zobrazí se kód JSON manifestu pro registraci vaší aplikace.
+1. Hledat `acceptMappedClaims` pole a změňte hodnotu na `True`.
+1. Vyberte **Uložit**.
 
 ### <a name="use-of-optional-claims-optional"></a>Použití nepovinných deklarací identity (volitelné)
+
 Nepovinných deklarací identity umožňuje přidat standard-but-not-included-by-default deklarace identity, které má každý uživatel a tenanta. Úprava manifestu aplikace můžete nakonfigurovat nepovinných deklarací identity pro vaši aplikaci. Další informace najdete v tématu [pochopení článku manifestu aplikace Azure AD](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest/)
 
 Příklad zahrnout e-mailovou adresu do access_token, který bude využívat PingAccess:
@@ -200,6 +204,7 @@ Příklad zahrnout e-mailovou adresu do access_token, který bude využívat Pin
 ```
 
 ### <a name="use-of-claims-mapping-policy-optional"></a>Použití deklarací identity mapování zásad (volitelné)
+
 [Deklarace identity mapování zásady (preview)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-claims-mapping#claims-mapping-policy-properties/) pro atributy, které neexistují v Azure AD. Mapování deklarací umožňuje migrace staré aplikace v místním prostředí do cloudu tak, že přidáte další vlastní deklarace identity, které využívají služby AD FS nebo uživatelské objekty
 
 Chcete-li aplikaci pomocí vlastní deklarace identity a zahrnutí dalších polí, ujistěte se, když jste také [vytvoření vlastní deklarace identity mapování zásad a přiřazené k aplikaci](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment).
@@ -213,10 +218,13 @@ Příklad:
 ```powershell
 $pol = New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema": [{"Source":"user","ID":"employeeid","JwtClaimType":"employeeid"}]}}') -DisplayName "AdditionalClaims" -Type "ClaimsMappingPolicy"
 
-Add-AzureADServicePrincipalPolicy -Id "<<The object Id of the Enterprise Application you published in the previous step, which requires this claim>>" -RefObjectId $pol.Id 
+Add-AzureADServicePrincipalPolicy -Id "<<The object Id of the Enterprise Application you published in the previous step, which requires this claim>>" -RefObjectId $pol.Id
 ```
 
-### <a name="enable-pingaccess-to-use-custom-claims-optional-but-required-if-you-expect-the-application-to-consume-additional-claims"></a>Povolit PingAccess používat vlastní deklarace identity (volitelné, ale vyžaduje, pokud očekáváte, že začala spotřebovávat další deklarace identity aplikace)
+### <a name="enable-pingaccess-to-use-custom-claims"></a>Povolit PingAccess používat vlastní deklarace identity
+
+Povolení PingAccess použití vlastních deklarací identity je volitelný, ale vyžaduje se, pokud očekáváte, že začala spotřebovávat další deklarace identity aplikace.
+
 Když nakonfigurujete PingAccess v následujícím kroku, relace webu, který vytvoříte (Nastavení -> přístup -> webovými relacemi) musí mít **požádat o profilu** vypnutá a **aktualizovat atributy uživatele** Nastavte na **ne**
 
 ## <a name="download-pingaccess-and-configure-your-application"></a>PingAccess stáhnout a nakonfigurovat svoji aplikaci
