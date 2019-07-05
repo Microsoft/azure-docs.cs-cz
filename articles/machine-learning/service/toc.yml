@@ -197,7 +197,7 @@
         - name: Sledování experimentů s využitím MLflow
           displayName: 'log, monitor, metrics'
           href: how-to-use-mlflow.md
-        - name: Vizualizace experimentů s využitím TensorBoardu
+        - name: Vizualizace spuštění s využitím TensorBoardu
           displayName: 'log, monitor, metrics'
           href: how-to-monitor-tensorboard.md
     - name: Automatizace strojového učení

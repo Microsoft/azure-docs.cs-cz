@@ -37,10 +37,12 @@
       items:
         - name: Scénáře
           href: scenarios.md
-        - name: Výběr virtuální sítě
+        - name: Plánování virtuální sítě
           href: network-considerations.md
     - name: Správa Azure AD DS
       items:
+        - name: Povolení událostí auditu zabezpečení (Preview)
+          href: security-audit-events.md
         - name: Kontrola stavu spravované domény
           href: check-health.md
         - name: Konfigurace synchronizace s vymezeným oborem z Azure AD do spravované domény
