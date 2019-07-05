@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc352c6867779fd8f4487acdb1d11c0fabe4b9f7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 51fd5c8f406ea54c7fc8e81c674e41b30d7ad406
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67110994"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482417"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>Služba služba volá tuto identitu uživatele použijte delegovaný v tok On-Behalf-Of
 
@@ -38,7 +38,7 @@ Tok OAuth 2.0 On-Behalf-Of (OBO) umožňuje aplikaci, která vyvolává službu 
 
 OBO tok spustí po ověření uživatele v aplikaci, která se používá [toku udělení autorizačního kódu OAuth 2.0](v1-protocols-oauth-code.md). V tomto okamžiku aplikace odesílá do střední vrstvy webového rozhraní API (rozhraní API A) obsahující deklarace identity uživatele a vyjádření souhlasu pro přístup k rozhraní API a přístupový token (token A) Rozhraní API A Další, zašle ověřený požadavek na podřízené webové rozhraní API (API B).
 
-Tyto kroky tvoří tok On-Behalf-Of: ![OAuth 2.0 On-Behalf-Of toku](./media/v1-oauth2-on-behalf-of-flow/active-directory-protocols-oauth-on-behalf-of-flow.png)
+Tyto kroky tvoří tok On-Behalf-Of: ![Jsou uvedené kroky v OAuth 2.0 On-Behalf-Of toku](./media/v1-oauth2-on-behalf-of-flow/active-directory-protocols-oauth-on-behalf-of-flow.png)
 
 1. Klientská aplikace odešle požadavek rozhraní API A s tokenem A.
 1. Rozhraní API A ověřuje u konkrétního koncového bodu vystavení tokenu Azure AD a žádá token pro přístup k rozhraní API služby serveru B.

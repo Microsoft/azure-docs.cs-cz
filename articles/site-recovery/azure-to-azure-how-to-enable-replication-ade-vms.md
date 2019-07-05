@@ -2,18 +2,18 @@
 title: Konfigurace replikace pro virtuální počítače s podporou Azure Disk Encryption v Azure Site Recovery | Dokumentace Microsoftu
 description: Tento článek popisuje, jak nakonfigurovat replikace pro Azure Disk Encryption virtuální počítače s podporou z jedné oblasti Azure do jiné pomocí Site Recovery.
 services: site-recovery
-author: sujayt
+author: asgang
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 04/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: 4943b730bb46ee00200d84faf95a7ccb069d3aa8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b2e9bf7fbe7d5940b517d97dcc15d21c30835001
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60790972"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449214"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Azure Disk Encryption povolené virtuální počítače replikovat do jiné oblasti Azure
 
@@ -22,23 +22,23 @@ Tento článek popisuje, jak replikovat virtuální počítače s podporou Azure
 >[!NOTE]
 >Azure Site Recovery aktuálně podporuje pouze virtuální počítače Azure, na kterých běží operační systém Windows a, které jsou [povoleno šifrování se službou Azure Active Directory (Azure AD)](https://aka.ms/ade-aad-app).
 
-## <a name="required-user-permissions"></a>Požadovaná uživatelská oprávnění
+## <a id="required-user-permissions"></a> Požadovaná uživatelská oprávnění
 Site Recovery vyžaduje, aby uživatel měl oprávnění k vytvoření služby key vault v cílové oblasti a kopie klíče oblastí.
 
 Pokud chcete povolit replikaci povolené šifrování disků virtuálních počítačů na webu Azure Portal, uživatel potřebuje následující oprávnění:
 
 - Oprávnění služby Key vault
-    - Seznam
+    - List
     - Vytvořit
     - Získat
 
 -   Oprávnění tajného kódu trezoru klíčů
-    - Seznam
+    - List
     - Vytvořit
     - Získat
 
 - Oprávnění klíče služby Key vault (nutné jenom v případě, že virtuální počítače použít šifrovací klíč klíče k šifrování klíče pro šifrování disků)
-    - Seznam
+    - List
     - Získat
     - Vytvořit
     - Šifrování
@@ -139,18 +139,25 @@ Můžete použít [skript](#copy-disk-encryption-keys-to-the-dr-region-by-using-
 
 ## <a id="trusted-root-certificates-error-code-151066"></a>Řešení potíží s trezoru klíčů oprávnění při replikaci virtuálních počítačů Azure do Azure
 
-**1. příčina:** Pravděpodobně jste vybrali v cílové oblasti již vytvořené služby key vault, která nemá požadovaná oprávnění místo Site Recovery, vytvořte si ho. Ujistěte se, jestli má trezor klíčů vyžadují oprávnění, jak je popsáno výše.
+Azure Site Recovery vyžaduje oprávnění nejméně pro čtení v Key vault zdrojové oblasti a oprávnění k zápisu cílové oblasti trezor klíčů pro čtení tajného klíče a zkopírujte jej do trezoru klíčů cílové oblasti. 
+
+**1. příčina:** "GET" oprávnění nemáte k dispozici na **zdrojové oblasti Key vault** ke čtení klíče. </br>
+**Jak vyřešit:** Bez ohledu na to, jestli jste správcem předplatného nebo ne je důležité, abyste měli oprávnění get pro trezor klíčů.
+
+1. Přejděte do služby Key vault zdrojové oblasti, která v tomto příkladu je "ContososourceKeyvault" > **zásady přístupu** 
+2. V části **výběr objektu zabezpečení** přidejte uživatelské jméno, například: "dradmin@contoso.com"
+3. V části **oprávnění klíče** vyberte získat 
+4. V části **tajný kód oprávnění** vyberte získat 
+5. Uložte zásadu přístupu
+
+**2. příčina:** Nemáte požadovaná oprávnění **cílové oblasti Key vault** zapsat klíče. </br>
 
 *Například*: Pokusu o replikaci virtuálního počítače, který má služby key vault *ContososourceKeyvault* ve zdrojové oblasti.
 Máte všechna oprávnění pro trezor klíčů zdrojové oblasti. Ale při ochrany, vyberete už vytvořili trezor klíčů ContosotargetKeyvault, který nemá oprávnění. Dojde k chybě.
 
-**Jak vyřešit:** Přejděte na **Domů** > **Keyvaults** > **ContososourceKeyvault** > **zásady přístupu** a přidejte příslušná oprávnění.
+Oprávnění na [cílové služby Key vault](#required-user-permissions)
 
-**2. příčina:** Pravděpodobně jste vybrali v cílové oblasti již vytvořené služby key vault, který nemá oprávnění místo Site Recovery, vytvořte si ho dešifrovat šifrování. Ujistěte se, že máte dešifrovat šifrují oprávnění v případě, že jste také šifrování klíče ve zdrojové oblasti.</br>
-
-*Například*: Pokusu o replikaci virtuálního počítače, který má trezor klíčů *ContososourceKeyvault* ve zdrojové oblasti. Máte potřebná oprávnění pro trezor klíčů zdrojové oblasti. Ale při ochrany, vyberete už vytvořili trezor klíčů ContosotargetKeyvault, který nemá oprávnění k dešifrování a šifrování. Dojde k chybě.</br>
-
-**Jak vyřešit:** Přejděte na **Domů** > **Keyvaults** > **ContososourceKeyvault** > **zásady přístupu**. Přidání oprávnění v rámci **oprávnění klíče** > **kryptografické operace**.
+**Jak vyřešit:** Přejděte na **Domů** > **Keyvaults** > **ContosotargetKeyvault** > **zásady přístupu** a přidejte příslušná oprávnění.
 
 ## <a name="next-steps"></a>Další postup
 

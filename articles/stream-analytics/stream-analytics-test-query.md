@@ -9,18 +9,18 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 6/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: c0a76ecd12143e0bbaa9997bfc6d7295df9c4ec7
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 1a9caf83c6f4cd4ed15290afc872043c11234552
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67340868"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508703"
 ---
 # <a name="test-a-stream-analytics-query-with-sample-data"></a>Testování dotazu Stream Analytics s ukázkovými daty
 
 Pomocí Azure Stream Analytics můžete ukázková data ze vstupů nebo nahrání ukázkových dat do testování dotazů na webu Azure Portal bez spuštění nebo zastavení úlohy.
 
-## <a name="upload-sample-data-and-test-the-query"></a>Nahrání ukázkových dat a otestujte dotaz
+## <a name="upload-or-sample-data-from-a-live-source-to-test-the-query"></a>Odeslání nebo ukázková data z živého zdroje otestujte dotaz
 
 1. Přihlaste se k portálu Azure. 
 
@@ -30,7 +30,7 @@ Pomocí Azure Stream Analytics můžete ukázková data ze vstupů nebo nahrán�
 
 4. Pokud chcete otestovat dotaz je lze potom buď ukázková data ze živých vstup nebo odeslání ze souboru. Data musí být serializované ve formátu JSON, CSV nebo AVRO. Ukázkový vstup musí být zakódován do kódování UTF-8 a není komprimovaná. Pro testování vstupu sdíleného svazku clusteru na portálu se podporuje jenom oddělovače čárky (,).
 
-    1. Použití živého vstup: klikněte pravým tlačítkem na některý z vašich vstupů. Potom vyberte **ukázková data ze vstupu**. Na další obrazovce můžete nastavit dobu trvání vzorku.
+    1. Použití živého vstup: klikněte pravým tlačítkem na některý z vašich vstupů. Potom vyberte **ukázková data ze vstupu**. Na další obrazovce můžete nastavit dobu trvání vzorku. Odběr událostí z živého zdroje načte až 1 000 událostí nebo 1 MB (podle toho, co nastane dřív), takže data vzorkovány nemusí reprezentovat celou časový interval určený.
 
     1. Pomocí souboru: klikněte pravým tlačítkem na některý z vašich vstupů. Potom vyberte **nahrání ukázkových dat ze souboru**. 
 

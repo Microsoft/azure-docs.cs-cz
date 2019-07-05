@@ -2,18 +2,18 @@
 title: Běžné atributy zabezpečení pro službu Azure Backup
 description: Kontrolní seznam společné atributy zabezpečení za vaše rozhodnutí vyzkoušet Azure Backup
 services: backup
-author: msmbaldwin
+author: utraghuv
 manager: barbkess
 ms.service: backup
 ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 86b8ab96a94a6ffc44c304d8a0a689301560a989
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 595cc4eff70e2df4cb6d7f1d6a0c1a2748b34bf2
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66002802"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565623"
 ---
 # <a name="security-attributes-for-azure-backup"></a>Atributy zabezpečení pro službu Azure Backup
 

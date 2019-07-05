@@ -4,16 +4,16 @@ description: Odpovědi na nejčastější dotazy týkající se ke službě Azur
 services: container-registry
 author: sajayantony
 manager: jeconnoc
-ms.service: container-instances
+ms.service: container-registry
 ms.topic: article
-ms.date: 5/13/2019
+ms.date: 07/02/2019
 ms.author: sajaya
-ms.openlocfilehash: beeb4986750e398071e3afb6c1f04663f858cec1
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: c32d7342aaf1c4cce52ce14abe48ea1bc347fdb3
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67303575"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551590"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Nejčastější dotazy k Azure Container Registry
 
@@ -27,6 +27,7 @@ Tento článek obsahuje nejčastější dotazy a známé problémy, o službě A
 - [Jak získat přihlašovací údaje správce pro službu container registry?](#how-do-i-get-admin-credentials-for-a-container-registry)
 - [Jak získat přihlašovací údaje správce v šabloně Resource Manageru?](#how-do-i-get-admin-credentials-in-a-resource-manager-template)
 - [Odstranění replikace selže s stav Zakázáno, i když se replikace odstraní pomocí Azure CLI nebo Azure Powershellu](#delete-of-replication-fails-with-forbidden-status-although-the-replication-gets-deleted-using-the-azure-cli-or-azure-powershell)
+- [Pravidla brány firewall jsou úspěšně aktualizovány, ale jejich projeví](#firewall-rules-are-updated-successfully-but-they-do-not-take-effect)
 
 ### <a name="can-i-create-an-azure-container-registry-using-a-resource-manager-template"></a>Můžete vytvořit službu Azure Container Registry pomocí šablony Resource Manageru?
 
@@ -34,11 +35,11 @@ Ano. Tady je [šablonu](https://github.com/Azure/azure-cli/blob/master/src/comma
 
 ### <a name="is-there-security-vulnerability-scanning-for-images-in-acr"></a>Existuje ohrožení zabezpečení, vyhledávání obrázků v ACR?
 
-Ano. V dokumentaci od [Twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/) a [Aqua](http://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry).
+Ano. V dokumentaci od [Twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/) a [Aqua](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry).
 
 ### <a name="how-do-i-configure-kubernetes-with-azure-container-registry"></a>Jak nakonfigurovat Kubernetes s Azure Container Registry?
 
-Najdete v dokumentaci k [Kubernetes](http://kubernetes.io/docs/user-guide/images/#using-azure-container-registry-acr) a kroků pro [Azure Kubernetes Service](container-registry-auth-aks.md).
+Najdete v dokumentaci k [Kubernetes](https://kubernetes.io/docs/user-guide/images/#using-azure-container-registry-acr) a kroků pro [Azure Kubernetes Service](container-registry-auth-aks.md).
 
 ### <a name="how-do-i-get-admin-credentials-for-a-container-registry"></a>Jak získat přihlašovací údaje správce pro službu container registry?
 
@@ -90,6 +91,11 @@ Chyba se zobrazí, pokud uživatel nemá oprávnění na registru, ale nemá opr
 ```azurecli  
 az role assignment create --role "Reader" --assignee user@contoso.com --scope /subscriptions/<subscription_id> 
 ```
+
+### <a name="firewall-rules-are-updated-successfully-but-they-do-not-take-effect"></a>Pravidla brány firewall jsou úspěšně aktualizovány, ale jejich projeví
+
+Šíření změny v pravidlech brány firewall na chvíli trvat. Po provedení změny nastavení brány firewall, počkejte prosím pár minut před ověřením tuto změnu.
+
 
 ## <a name="registry-operations"></a>Operace registru
 
@@ -245,8 +251,9 @@ S použitím pouze `AcrPull` nebo `AcrPush` role, pověřené osoby nemá opráv
 
 Obrázek dát do karantény je aktuálně ve verzi preview funkce služby ACR. Můžete povolit režim karantény registru tak, aby pouze Image, které prošly úspěšně kontroly zabezpečení jsou viditelné pro běžné uživatele. Podrobnosti najdete v tématu [úložiště ACR GitHub](https://github.com/Azure/acr/tree/master/docs/preview/quarantine).
 
-## <a name="diagnostics"></a>Diagnostika
+## <a name="diagnostics-and-health-checks"></a>Diagnostika a kontroly stavu
 
+- [Kontrola stavu s `az acr check-health`](#check-health-with-az-acr-check-health)
 - [operace docker pull se nezdaří s chybou: net/http: žádost byla zrušena při čekání na připojení (Client.Timeout překročil během čekání na hlavičky)](#docker-pull-fails-with-error-nethttp-request-canceled-while-waiting-for-connection-clienttimeout-exceeded-while-awaiting-headers)
 - [docker push úspěšné, ale operace docker pull se nezdaří s chybou: neoprávněné: je vyžadováno ověření](#docker-push-succeeds-but-docker-pull-fails-with-error-unauthorized-authentication-required)
 - [Povolit a získat protokoly ladění z démona dockeru](#enable-and-get-the-debug-logs-of-the-docker-daemon) 
@@ -255,16 +262,30 @@ Obrázek dát do karantény je aktuálně ve verzi preview funkce služby ACR. M
 - [Proč nemá na webu Azure portal v seznamu Moje úložiště nebo značky?](#why-does-the-azure-portal-not-list-all-my-repositories-or-tags)
 - [Jak se shromažďovat trasování protokolu http na Windows?](#how-do-i-collect-http-traces-on-windows)
 
+### <a name="check-health-with-az-acr-check-health"></a>Kontrola stavu s `az acr check-health`
+
+Potíží společné prostředí a registru, najdete v článku [Kontrola stavu služby Azure container registry](container-registry-check-health.md).
+
 ### <a name="docker-pull-fails-with-error-nethttp-request-canceled-while-waiting-for-connection-clienttimeout-exceeded-while-awaiting-headers"></a>operace docker pull se nezdaří s chybou: net/http: žádost byla zrušena při čekání na připojení (Client.Timeout překročil během čekání na hlavičky)
 
  - Pokud tato chyba je dočasný problém, bude opakování úspěšné.
- - Pokud `docker pull` nepodaří nepřetržitě, mohlo dojít k potížím s démonem dockeru. Tento problém lze obvykle možné zmírnit restartováním démona dockeru. 
- - Pokud problém přetrvává i po restartování démona dockeru, může být problém některé problémy se síťovým připojením k počítači. Pokud chcete zkontrolovat, pokud obecné sítě na počítači je v pořádku, zkuste příkaz `ping www.bing.com`.
- - Vždy byste měli mít mechanismus opakování pro všechny operace klienta dockeru.
+ - Pokud `docker pull` nepodaří nepřetržitě, mohlo dojít k potížím s démonem Dockeru. Tento problém lze obvykle možné zmírnit restartováním démona Dockeru. 
+ - Pokud problém přetrvává i po restartování démona Dockeru, může být problém některé problémy se síťovým připojením k počítači. Pokud chcete zkontrolovat, pokud je v pořádku obecné sítě na počítači, spusťte následující příkaz k testování připojení koncového bodu. Minimální `az acr` verzi, která obsahuje tento příkaz kontrolu připojení je 2.2.9. Pokud používáte starší verzi, upgrade rozhraní příkazového řádku Azure.
+ 
+   ```azurecli
+    az acr check-health -n myRegistry
+    ```
+ - Vždy byste měli mít mechanismus opakování pro všechny operace klienta Dockeru.
+
+### <a name="docker-pull-is-slow"></a>Operace docker pull je pomalé.
+Použití [to](http://www.azurespeed.com/Azure/Download) nástroj k testování rychlost stahování síťového počítače. Pokud počítač síť pomalý, zvažte použití virtuálního počítače Azure ve stejné oblasti jako váš registr. To obvykle poskytuje vyšší rychlost sítě.
+
+### <a name="docker-push-is-slow"></a>Docker push je pomalé
+Použití [to](http://www.azurespeed.com/Azure/Upload) nástroj k testování rychlost odesílání sítě vašeho počítače. Pokud počítač síť pomalý, zvažte použití virtuálního počítače Azure ve stejné oblasti jako váš registr. To obvykle poskytuje vyšší rychlost sítě.
 
 ### <a name="docker-push-succeeds-but-docker-pull-fails-with-error-unauthorized-authentication-required"></a>docker push úspěšné, ale operace docker pull se nezdaří s chybou: neoprávněné: je vyžadováno ověření
 
-K této chybě může dojít v Red Hat verzi démona dockeru, ve kterém `--signature-verification` je ve výchozím nastavení povolené. Možnosti démona dockeru pro Red Hat Enterprise Linux (RHEL) nebo Fedora můžete zkontrolovat spuštěním následujícího příkazu:
+K této chybě může dojít v Red Hat verzi démona Dockeru, ve kterém `--signature-verification` je ve výchozím nastavení povolené. Možnosti démona Dockeru pro Red Hat Enterprise Linux (RHEL) nebo Fedora můžete zkontrolovat spuštěním následujícího příkazu:
 
 ```bash
 grep OPTIONS /etc/sysconfig/docker
@@ -284,12 +305,12 @@ unauthorized: authentication required
 ```
 
 Chcete-li vyřešit chybu:
-1. Přidat možnost `--signature-verification=false` do konfiguračního souboru démon dockeru `/etc/sysconfig/docker`. Příklad:
+1. Přidat možnost `--signature-verification=false` do konfiguračního souboru démon Dockeru `/etc/sysconfig/docker`. Příklad:
 
   ```
   OPTIONS='--selinux-enabled --log-driver=journald --live-restore --signature-verification=false'
   ```
-2. Restartujte službu démona dockeru spuštěním následujícího příkazu:
+2. Restartujte službu démona Dockeru spuštěním následujícího příkazu:
 
   ```bash
   sudo systemctl restart docker.service
@@ -297,9 +318,9 @@ Chcete-li vyřešit chybu:
 
 Podrobnosti o `--signature-verification` můžete najít spuštěním `man dockerd`.
 
-### <a name="enable-and-get-the-debug-logs-of-the-docker-daemon"></a>Povolit a získat protokoly ladění z démona dockeru  
+### <a name="enable-and-get-the-debug-logs-of-the-docker-daemon"></a>Povolit a získat protokoly ladění z démona Dockeru  
 
-Spustit `dockerd` s `debug` možnost. Nejprve vytvořte konfigurační soubor démona dockeru (`/etc/docker/daemon.json`) Pokud je neexistuje a přidat `debug` možnost:
+Spustit `dockerd` s `debug` možnost. Nejprve vytvořte konfigurační soubor démona Dockeru (`/etc/docker/daemon.json`) Pokud je neexistuje a přidat `debug` možnost:
 
 ```json
 {   
@@ -387,7 +408,7 @@ curl $redirect_url
 
 ### <a name="why-does-the-azure-portal-not-list-all-my-repositories-or-tags"></a>Proč nemá na webu Azure portal v seznamu Moje úložiště nebo značky? 
 
-Pokud používáte prohlížeč Microsoft Edge, zobrazí se maximálně 100 úložiště nebo značky, které jsou uvedeny. Pokud váš registr má více než 100 úložiště nebo značky, doporučujeme použít Firefoxu nebo chromu prohlížeče pro všechny.
+Pokud používáte prohlížeč Microsoft Edge/IE, zobrazí se maximálně 100 úložiště nebo značky. Pokud váš registr má více než 100 úložiště nebo značky, doporučujeme použít Firefoxu nebo chromu prohlížeče pro všechny.
 
 ### <a name="how-do-i-collect-http-traces-on-windows"></a>Jak se shromažďovat trasování protokolu http na Windows?
 
@@ -439,86 +460,6 @@ Toto nastavení platí také pro `az acr run` příkazu.
 
 - [CircleCI](https://github.com/Azure/acr/blob/master/docs/integration/CircleCI.md)
 - [Akce Githubu](https://github.com/Azure/acr/blob/master/docs/integration/github-actions/github-actions.md)
-
-## <a name="error-references-for-az-acr-check-health"></a>Chyba odkazy pro `az acr check-health`
-
-### <a name="dockercommanderror"></a>DOCKER_COMMAND_ERROR
-
-Tato chyba znamená, že tento klient docker pro rozhraní příkazového řádku se nenašel, který vylučuje hledání verze dockeru, vyhodnocování stavu démona dockeru a zajistit, že je možné spustit příkaz docker pull.
-
-*Možná řešení*: instalace klienta dockeru; přidání cestě dockeru k systémovým proměnným.
-
-### <a name="dockerdaemonerror"></a>DOCKER_DAEMON_ERROR
-
-Tato chyba znamená, že stav démona dockeru není k dispozici nebo že to není dosažitelná pomocí rozhraní příkazového řádku. To znamená, že operace dockeru (například přihlášení, o přijetí změn), bude k dispozici prostřednictvím rozhraní příkazového řádku.
-
-*Možná řešení*: Restartujte démona dockeru nebo ověřit, zda je správně nainstalován.
-
-### <a name="dockerversionerror"></a>DOCKER_VERSION_ERROR
-
-Tato chyba znamená, že rozhraní příkazového řádku se nepodařilo spustit příkaz `docker --version`.
-
-*Možná řešení*: Zkuste příkaz spustit ručně, ujistěte se, že máte nejnovější verzi rozhraní příkazového řádku a prozkoumejte chybová zpráva.
-
-### <a name="dockerpullerror"></a>DOCKER_PULL_ERROR
-
-Tato chyba znamená, že rozhraní příkazového řádku nebyl schopen stáhnout ukázkový obrázek do vašeho prostředí.
-
-*Možná řešení*: Ověřte, že jsou všechny komponenty potřebné k vyžádání obrázku správně spuštěna.
-
-### <a name="helmcommanderror"></a>HELM_COMMAND_ERROR
-
-Tato chyba znamená, že tento příkaz helm klient nebyl nalezen pomocí rozhraní příkazového řádku, který vylučuje jiné operace helm.
-
-*Možná řešení*: Ověřte, že helm instalaci klienta, a jeho cesty je přidaný do proměnných prostředí systému.
-
-### <a name="helmversionerror"></a>HELM_VERSION_ERROR
-
-Tato chyba znamená, že rozhraní příkazového řádku nebyl schopen určit nainstalovanou verzi Helm. K tomu může dojít, pokud verze rozhraní příkazového řádku Azure (nebo, pokud verze helm) používá je zastaralý.
-
-*Možná řešení*: aktualizovat na nejnovější verzi rozhraní příkazového řádku Azure nebo na verzi doporučenou helm; ručně spuštěním příkazu a prozkoumat chybová zpráva.
-
-### <a name="connectivitydnserror"></a>CONNECTIVITY_DNS_ERROR
-
-Tato chyba znamená, že DNS pro daného registru přihlašovací server byl příkaz ping, ale nereagovala na, což znamená, že není k dispozici. To může znamenat některé problémy s připojením. Může také znamenat, že registru neexistuje, že uživatel nemá oprávnění k registru (se správně načíst jeho přihlašovací server) nebo, že cíl registru do jiného cloudu než ten, který používá v Azure CLI.
-
-*Možná řešení*: ověření připojení; zkontrolujte pravopis registru a že registru existuje, ověřte, že uživatel má správná oprávnění na něj a, cloudu v registru je stejný, který se používá na rozhraní příkazového řádku Azure.
-
-### <a name="connectivityforbiddenerror"></a>CONNECTIVITY_FORBIDDEN_ERROR
-
-To znamená, že challenge koncový bod pro daného registru odpověděl stavem 403 Zakázáno HTTP. To znamená, že uživatelé nemají přístup k registru, pravděpodobně z důvodu konfigurace virtuální sítě.
-
-*Možná řešení*: odebrání pravidla virtuální sítě a přidání aktuální IP adresu klienta do seznamu povolených aplikací.
-
-### <a name="connectivitychallengeerror"></a>CONNECTIVITY_CHALLENGE_ERROR
-
-Tato chyba znamená, že koncový bod challenge cílového registru nevydala příkaz náročné.
-
-*Možná řešení*: Zkuste za nějakou chvíli znovu. Pokud chyba přetrvává, otevřete prosím am problém na https://aka.ms/acr/issues.
-
-### <a name="connectivityaadloginerror"></a>CONNECTIVITY_AAD_LOGIN_ERROR
-
-Tato chyba znamená, že koncový bod challenge cílového registru vydány složité, ale registru nepodporuje AAD přihlášení.
-
-*Možná řešení*: Zkuste jiným způsobem protokolování služby, například přihlašovací údaje správce. V případě, že uživatel chce, aby se chcete přihlásit pomocí AAD podporu, otevřete prosím problém am na https://aka.ms/acr/issues.
-
-### <a name="connectivityrefreshtokenerror"></a>CONNECTIVITY_REFRESH_TOKEN_ERROR
-
-To znamená, že přihlašovacího serveru registru neodpověděla token obnovení, což znamená, že byl odepřen přístup do registru cíl. To může dojít, pokud uživatel nemá správná oprávnění registru nebo pokud jsou zastaralé přihlašovací údaje uživatele pro Azure CLI.
-
-*Možná řešení*: Ověřte, jestli má uživatel oprávnění na registru; spuštění `az login` aktualizovat oprávnění, tokenů a přihlašovací údaje.
-
-### <a name="connectivityaccesstokenerror"></a>CONNECTIVITY_ACCESS_TOKEN_ERROR
-
-To znamená, že přihlašovacího serveru registru neodpověděl s přístupovým tokenem, což znamená, že byl odepřen přístup do registru cíl. To může dojít, pokud uživatel nemá správná oprávnění registru nebo pokud jsou zastaralé přihlašovací údaje uživatele pro Azure CLI.
-
-*Možná řešení*: Ověřte, jestli má uživatel oprávnění na registru; spuštění `az login` aktualizovat oprávnění, tokenů a přihlašovací údaje.
-
-### <a name="loginservererror"></a>LOGIN_SERVER_ERROR
-
-To znamená, že rozhraní příkazového řádku se nepodařilo najít přihlašovací server daného registru a pro aktuálního cloudu nebyl nalezen žádný výchozí příponou. Tomu může dojít, pokud v registru neexistuje, pokud uživatel nemá správná oprávnění k registru, pokud v registru a aktuální cloudem Azure CLI se neshodují, nebo pokud je zastaralá verze rozhraní příkazového řádku Azure.
-
-*Možná řešení*: Ověřte správnost pravopis a zda registru existovat; ověřte, zda má uživatel oprávnění na registru a, odpovídají cloudy registru a prostředí rozhraní příkazového řádku; aktualizace příkazového řádku Azure na nejnovější verzi.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: celested
 ms.reviewer: japere
-ms.openlocfilehash: 2b6adcf4231aa44a4f28d277e963efa16de8af81
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: afc0bb990f69521efb2557a6a086c0de5126f82c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399333"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67440418"
 ---
 # <a name="understand-and-solve-azure-active-directory-application-proxy-cors-issues"></a>Pochopení a řešení problémů s Azure Active Directory Application Proxy CORS
 
-[Prostředků mezi zdroji (CORS) pro sdílení obsahu](http://www.w3.org/TR/cors/) může někdy nést výzvy pro aplikace a rozhraní API publikujete pomocí Proxy aplikace Azure Active Directory. Tento článek popisuje Azure AD Application Proxy CORS problémy a jejich řešení.
+[Prostředků mezi zdroji (CORS) pro sdílení obsahu](https://www.w3.org/TR/cors/) může někdy nést výzvy pro aplikace a rozhraní API publikujete pomocí Proxy aplikace Azure Active Directory. Tento článek popisuje Azure AD Application Proxy CORS problémy a jejich řešení.
 
 Zabezpečení prohlížeče obvykle chrání webovou stránku bránit odesílání požadavků AJAX na jinou doménu. Toto omezení je volána *zásada stejného zdroje*a brání škodlivým webům ve čtení citlivých dat z jiné lokality. Ale v některých případech můžete chtít nechat ostatních lokalit volání webového rozhraní API. CORS je standard W3C, která umožňuje server zmírnit zásadu stejného zdroje a povolit některé požadavky cross-origin, zatímco jiné odmítnout.
 

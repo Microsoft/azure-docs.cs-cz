@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f80ecf02a7e517300c41e84986659a66cfa11c90
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c0d04db6e9ccedc1e67ed0cdfd914ab42ebea0b1
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60414932"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67536948"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Řešení chybových zpráv z rozšíření NPS pro Azure Multi-Factor Authentication
 
@@ -31,7 +31,7 @@ Pokud narazíte na chyby pomocí rozšíření NPS pro Azure Multi-Factor Authen
 | **ESTS_TOKEN_ERROR** | Postupujte podle pokynů v [řešení potíží s rozšíření MFA NPS](howto-mfa-nps-extension.md#troubleshooting) k prozkoumání klientský certifikát a ADAL token problémy. |
 | **HTTPS_COMMUNICATION_ERROR** | NPS server je schopna přijímat odpovědi z Azure MFA. Ověřte, zda jsou brány firewall otevřít obousměrně pro provoz do a z https://adnotifications.windowsazure.com |
 | **HTTP_CONNECT_ERROR** | Na serveru, na kterém běží server NPS rozšíření, ověřte, že můžete oslovit https://adnotifications.windowsazure.com a https://login.microsoftonline.com/. Pokud se nenačtou těchto webů, řešení potíží s připojením na tomto serveru. |
-| **Rozšíření NPS pro Azure MFA:** <br> Rozšíření NPS pro Azure MFA pro požadavky protokolu Radius ve stavu AccessAccept provádí pouze sekundární ověřování. Žádost o zadání uživatelského jména uživatele se stavem odpovědi AccessReject ignoruje požadavek. | Tato chyba obvykle odráží selhání ověřování ve službě AD nebo NPS server je schopna přijímat odpovědi ze služby Azure AD. Ověřte, zda jsou brány firewall otevřít obousměrně pro provoz do a z https://adnotifications.windowsazure.com a https://login.microsoftonline.com pomocí porty 80 a 443. Je také důležité zkontrolovat, že na kartě DIAL-IN oprávnění přístupu k síti je nastavená na "řízení přístupu pomocí serveru NPS síťové zásady". |
+| **Rozšíření NPS pro Azure MFA:** <br> Rozšíření NPS pro Azure MFA pro požadavky protokolu Radius ve stavu AccessAccept provádí pouze sekundární ověřování. Žádost o zadání uživatelského jména uživatele se stavem odpovědi AccessReject ignoruje požadavek. | Tato chyba obvykle odráží selhání ověřování ve službě AD nebo NPS server je schopna přijímat odpovědi ze služby Azure AD. Ověřte, zda jsou brány firewall otevřít obousměrně pro provoz do a z https://adnotifications.windowsazure.com a https://login.microsoftonline.com pomocí porty 80 a 443. Je také důležité zkontrolovat, že na kartě DIAL-IN oprávnění přístupu k síti je nastavená na "řízení přístupu pomocí serveru NPS síťové zásady". Tato chyba může také spustit, pokud uživatel nemá přiřazenou licenci. |
 | **REGISTRY_CONFIG_ERROR** | Nenašel se klíč v registru pro aplikaci, která může být, že [skript prostředí PowerShell](howto-mfa-nps-extension.md#install-the-nps-extension) po instalaci nespustila. Chybová zpráva by měla obsahovat chybí klíč. Ujistěte se, že máte klíč HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa. |
 | **REQUEST_FORMAT_ERROR** <br> Chybí povinný atribut protokolu Radius userName\Identifier požadavku protokolu RADIUS. Ověřte, že server NPS přijímá požadavky protokolu RADIUS | Tato chyba obvykle odráží potíže s instalací. Rozšíření NPS musí být nainstalován na serverech NPS, které můžou přijímat požadavky protokolu RADIUS. Servery NPS, které se instalují jako závislosti pro služby, jako je RDG a RRAS není přijímal požadavky protokolu radius. Rozšíření serveru NPS nefunguje při instalaci těchto zařízení a chyby, protože jej nelze přečíst podrobnosti ze žádosti o ověření. |
 | **REQUEST_MISSING_CODE** | Ujistěte se, že protokol šifrování hesla mezi servery NPS a server NAS podporuje sekundární ověřování, který používáte. **PAP** podporuje všechny metody ověřování Azure mfa v cloudu: telefonní hovor, jednosměrná textová zpráva, oznámení mobilní aplikace a ověřovací kód z mobilní aplikace. **CHAPV2** a **EAP** podporují telefonních hovorů a oznámení mobilní aplikace. |

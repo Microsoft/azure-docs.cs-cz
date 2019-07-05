@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 4f3fb624f5e6137c9edb0be97adc16d8c808ebd9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f60a41c48b3e78b860dca0e93d399420900dbd46
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65523073"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485441"
 ---
 # <a name="how-to-index-json-blobs-using-azure-search-blob-indexer"></a>Jak indexovat objektů BLOB JSON pomocí indexeru Azure Search Blob
 V tomto článku se dozvíte, jak nakonfigurovat Azure Search blob [indexer](search-indexer-overview.md) extrahujte strukturované obsah z dokumentů JSON ve službě Azure Blob storage a usnadnit prohledávatelná ve službě Azure Search. Tento pracovní postup vytvoří index Azure Search a načte se existující text extrahovaný z objektů BLOB JSON. 
@@ -118,7 +118,7 @@ Rozhraní REST API můžete použít k indexování objektů BLOB JSON následuj
 
 Můžete zkontrolovat [REST ukázkový kód](#rest-example) na konci této části, která ukazuje, jak vytvářet všechny tři objekty. Tato část také obsahuje podrobnosti o [režimy parsování JSON](#parsing-modes), [jednoduché objekty BLOB](#parsing-single-blobs), [pole JSON](#parsing-arrays), a [vnořená pole](#nested-json-arrays).
 
-Založený na kódu JSON indexování, použijte [Postman](search-fiddler.md) a rozhraní REST API k vytvoření těchto objektů:
+Založený na kódu JSON indexování, použijte [Postman](search-get-started-postman.md) a rozhraní REST API k vytvoření těchto objektů:
 
 + [index](https://docs.microsoft.com/rest/api/searchservice/create-index)
 + [Zdroj dat](https://docs.microsoft.com/rest/api/searchservice/create-data-source)
@@ -136,7 +136,7 @@ Objekty BLOB JSON ve službě Azure Blob storage jsou obvykle jednotlivý dokume
 
 ### <a name="1---assemble-inputs-for-the-request"></a>1 - vstupy pro žádost o sestavení
 
-Pro každý požadavek musíte zadat název služby a klíč správce pro Azure Search (v hlavičce POST) a název účtu úložiště a klíč pro úložiště objektů blob. Můžete použít [Postman](search-fiddler.md) k odesílání požadavků HTTP do služby Azure Search.
+Pro každý požadavek musíte zadat název služby a klíč správce pro Azure Search (v hlavičce POST) a název účtu úložiště a klíč pro úložiště objektů blob. Můžete použít [Postman](search-get-started-postman.md) k odesílání požadavků HTTP do služby Azure Search.
 
 Zkopírujte následující čtyři hodnoty do poznámkového bloku tak, aby vložte je do požadavku:
 

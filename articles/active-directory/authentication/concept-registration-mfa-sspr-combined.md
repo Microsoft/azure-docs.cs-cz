@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2d1a5a342bfe4527c15a0721a8f852a269bef67
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fc0e80ec7a378d44000565034ce47d95c78b777e
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67113522"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537016"
 ---
 # <a name="combined-security-information-registration-preview"></a>Informace o registraci kombinované zabezpečení (preview)
 
@@ -136,6 +136,8 @@ Uživatel, který má alespoň jednu metodu, kterou můžete použít k ověřen
 ## <a name="next-steps"></a>Další postup
 
 [Povolení kombinovaná registrace ve vašem tenantovi](howto-registration-mfa-sspr-combined.md)
+
+[Využití samoobslužného resetování HESLA a vícefaktorové ověřování a přehled generování sestav](howto-authentication-methods-usage-insights.md)
 
 [Dostupné metody pro Vícefaktorové ověřování a samoobslužné resetování HESLA](concept-authentication-methods.md)
 

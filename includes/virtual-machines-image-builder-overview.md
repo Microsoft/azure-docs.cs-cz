@@ -5,16 +5,16 @@ ms.date: 04/30/2019
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: jeconnoc
-ms.openlocfilehash: 5884bb5dc389e6abfd4fa23d28dd71ecd16ff423
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 6eedc095f155a77cddf48211dbc4a677bf188112
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67347109"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509825"
 ---
 Image standardizované virtuálních počítačů (VM) umožňují organizacím migrace do cloudu a zajistit konzistenci v nasazení. Image obvykle zahrnují předdefinované nastavení zabezpečení a konfigurace a potřebný software. Nastavení pro vytváření bitových kopií kanálu vyžaduje čas, infrastruktury a nastavení, ale pomocí Tvůrce Image virtuálního počítače Azure, stačí zadat jednoduchou konfiguraci a popis bitové kopie, odeslat ho do služby a bitové kopie vytvořené a distribuovat.
  
-Image Builder pro virtuální počítač Azure (Azure Image Builder) umožňuje začínat Windows nebo bitové kopie založené na Linuxu v Azure Marketplace, existující vlastních imagí nebo Red Hat Enterprise Linux (RHEL) ISO a začít přidávat své vlastní úpravy. Vzhledem k tomu, že Image Builder je postavená na [HashiCorp Packeru](https://packer.io/), můžete také importovat existující skripty zajištění webu Packeru prostředí. Můžete také určit, kde chcete váš obrázky hostované ve sdílené Galerie Imagí Azure (virtual-machines-common-shared-image-galleries.md), jako spravované image nebo virtuální pevný disk.
+Image Builder pro virtuální počítač Azure (Azure Image Builder) umožňuje začínat Windows nebo bitové kopie založené na Linuxu v Azure Marketplace, existující vlastních imagí nebo Red Hat Enterprise Linux (RHEL) ISO a začít přidávat své vlastní úpravy. Vzhledem k tomu, že Image Builder je postavená na [HashiCorp Packeru](https://packer.io/), můžete také importovat existující skripty zajištění webu Packeru prostředí. Můžete také určit, kde chcete váš obrázky hostované v [Galerie Imagí Azure Shared](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries), jako spravované image nebo virtuální pevný disk.
 
 > [!IMPORTANT]
 > Image Builder pro Azure je aktuálně ve verzi public preview.
@@ -35,7 +35,7 @@ Pro verzi preview se podporují tyto funkce:
 
 ## <a name="regions"></a>Regions
 Služba Azure Image Builder bude dostupná ve verzi preview v těchto oblastech. Bitové kopie mohou být distribuovány mimo tyto oblasti.
-- USA – východ
+- East US
 - Východní USA 2
 - Západní střed USA
 - Západní USA
@@ -50,6 +50,12 @@ AIB bude podporovat Azure Marketplace základní Image operačního systému:
 - Windows 2016
 - Windows 2019
 
+AIB bude podporovat RHEL ISO společnosti, jako zdroj pro:
+- RHEL 7.3
+- RHEL 7.4
+- RHEL 7.5
+
+RHEL 7.6 není podporována, ale právě testováno.
 
 ## <a name="how-it-works"></a>Jak to funguje
 

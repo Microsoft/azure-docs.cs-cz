@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.custom: seodec2018
-ms.openlocfilehash: 95f5dde12ad9e34a0a04c988a816538ac30e01e6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 422e9209609eac19b7952557674c99789d9f6088
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65595980"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485174"
 ---
 # <a name="how-to-compose-a-query-in-azure-search"></a>Jak sestavit dotazu ve službě Azure Search
 
@@ -29,7 +29,7 @@ V následující tabulce jsou uvedeny rozhraní API a detekce založené na nás
 | Metodologie | Popis |
 |-------------|-------------|
 | [Průzkumník služby Search (portál)](search-explorer.md) | Poskytuje panel hledání a možnosti pro výběr index a verze api-version. Výsledky jsou vráceny jako dokumenty JSON. <br/>[Další informace](search-get-started-portal.md#query-index) | 
-| [Postman nebo Fiddler](search-fiddler.md) | Testovací nástroje Web jsou skvělou volbou pro formulování volání REST. Rozhraní REST API podporuje všechny možné operace ve službě Azure Search. V tomto článku se naučíte se nastavit hlavičku požadavku HTTP a text pro odesílání požadavků do služby Azure Search.  |
+| [Postman nebo Fiddler](search-get-started-postman.md) | Testovací nástroje Web jsou skvělou volbou pro formulování volání REST. Rozhraní REST API podporuje všechny možné operace ve službě Azure Search. V tomto článku se naučíte se nastavit hlavičku požadavku HTTP a text pro odesílání požadavků do služby Azure Search.  |
 | [SearchIndexClient (.NET)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) | Klient, který můžete použít k dotazování indexu Azure Search.  <br/>[Další informace](search-howto-dotnet-sdk.md#core-scenarios)  |
 | [Hledání dokumentů (REST API)](https://docs.microsoft.com/rest/api/searchservice/search-documents) | V indexu pomocí parametrů dotazu další vstupní metody POST nebo GET.  |
 

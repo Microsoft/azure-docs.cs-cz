@@ -6,14 +6,14 @@ author: sogup
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 06/28/2019
 ms.author: sogup
-ms.openlocfilehash: 5fdf8e6c19711f6ce38d430a9dffab185cad961b
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 0248e169f5d502cce8723f594f438b87ab088f3a
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296174"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551599"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Nejčastější dotazy: zálohování virtuálních počítačů Azure
 
@@ -46,10 +46,6 @@ Pokud jste Přispěvatel virtuálních počítačů, můžete povolit zálohová
 Pokud váš trezor služby Recovery Services a virtuální počítač různých skupin prostředků, ujistěte se, že máte oprávnění k zápisu ve skupině prostředků pro trezor služby Recovery Services.  
 
 
-### <a name="what-azure-vms-can-you-back-up-using-azure-backup"></a>Jaké virtuální počítače Azure můžete zálohovat pomocí služby Azure Backup?
-
-Zkontrolujte [systém podpory replikace z](backup-support-matrix-iaas.md) podrobnosti o podpoře a omezení.
-
 ### <a name="does-an-on-demand-backup-job-use-the-same-retention-schedule-as-scheduled-backups"></a>Úlohu zálohování na vyžádání používat stejný plán uchovávání jako plánovaní zálohování?
 Ne. Zadejte rozsah uchování pro úlohu zálohování na vyžádání. Ve výchozím nastavení se uchovávají po dobu 30 dnů po aktivaci z portálu.
 
@@ -73,17 +69,12 @@ Pokud skupina prostředků vytvoří ve službě Azure Backup Service uzamknete,
 
 Uživatel musí odebrat zámek proti a zrušte zaškrtnutí kolekci bodů obnovení z této skupiny prostředků, aby budoucích zálohování bylo úspěšné, [postupujte podle těchto kroků](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#clean-up-restore-point-collection-from-azure-portal) odebrat kolekci bodů obnovení.
 
-### <a name="does-the-backup-policy-consider-daylight-saving-time-dst"></a>Zásady zálohování za letního času (DST)?
-Ne. Datum a čas v místním počítači je místní s aktuální letní použít. Času nastavenému pro naplánované zálohování se mohou lišit od místního času z důvodu letního času.
-
-### <a name="how-many-data-disks-can-i-attach-to-a-vm-backed-up-by-azure-backup"></a>Kolik datových disků můžete připojit k virtuálnímu počítači zálohovat službou Azure Backup?
-Azure Backup můžete zálohovat virtuální počítače s až 16 disků. Podpora pro 16 disků najdete v [rychlé obnovení](backup-instant-restore-capability.md).
 
 ### <a name="does-azure-backup-support-standard-ssd-managed-disk"></a>Fakturuje se u Azure podporuje zálohování SSD spravovaných disků úrovně standard?
 Azure Backup podporuje [SSD na úrovni standard managed disks](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/). Spravované SSD disků poskytují nový typ trvalého úložiště pro virtuální počítače Azure. Podporu pro disky SSD spravované je součástí [rychlé obnovení](backup-instant-restore-capability.md).
 
 ### <a name="can-we-back-up-a-vm-with-a-write-accelerator-wa-enabled-disk"></a>Můžete nám zálohování virtuálního počítače s diskem WA akcelerátor zápisu povolené?
-Na disku povoleno WA nelze vytvářet snímky. Služba Azure Backup však můžete vyloučit disk WA povolené ze zálohy. Vyloučení disku pro virtuální počítače s podporou WA disky se podporuje jenom pro předplatná upgradovat na rychlé obnovení.
+Na disku povoleno WA nelze vytvářet snímky. Služba Azure Backup však můžete vyloučit disk WA povolené ze zálohy.
 
 ### <a name="i-have-a-vm-with-write-accelerator-wa-disks-and-sap-hana-installed-how-do-i-back-up"></a>Mám virtuálního počítače s disky zápisu akcelerátorů (WA) a nainstalovat SAP HANA. Jak můžu zálohovat?
 Azure Backup nejde zálohovat disk WA povolené, ale můžete vyloučit ze zálohy. Zálohování však nebude poskytovat konzistence databáze, protože na disku povoleno WA informace se nezálohuje. Pokud chcete disk s operačním systémem, zálohování a zálohování disků, které nejsou povolené WA, můžete zálohování disků s touto konfigurací.
@@ -93,6 +84,8 @@ Máme verzi private preview pro zálohování SAP HANA spuštěnou s plánovaný
 ### <a name="what-is-the-maximum-delay-i-can-expect-in-backup-start-time-from-the-scheduled-backup-time-i-have-set-in-my-vm-backup-policy"></a>Jaký je maximální zpoždění očekávané v čas spuštění zálohování od naplánované zálohování, které mají nastavím my zásady zálohování virtuálního počítače?
 Do 2 hodin od plánované doby zálohování se aktivuje plánované zálohování. Pro příklad. Pokud 100 virtuálních počítačů máte čas spuštění zálohování, které jsou naplánovány na 2:00:00, pak ve max. 4:00:00 všechny 100VMs budou mít úlohy zálohování v průběhu. Pokud plánovaného zálohování jsou pozastavené kvůli výpadku a obnovení a opakovat, můžete spustit zálohování mimo toto okno plánované 2 hod.
 
+### <a name="what-is-the-minimum-allowed-retention-range-for-daily-backup-point"></a>Jaký je rozsah minimální povolenou uchování denního bodu zálohy?
+Azure zásady zálohování virtuálního počítače podporuje rozsahu minimální doby uchování 7 dní až 9999 dnů. Jakékoli změny existující zásadu zálohování virtuálního počítače s kratší než 7 dní bude vyžadovat aktualizaci splňují minimální uchování 7 dní.
 
 ## <a name="restore"></a>Obnovení
 

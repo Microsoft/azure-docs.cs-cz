@@ -5,31 +5,23 @@ services: storage
 author: roygara
 ms.service: storage
 ms.topic: include
-ms.date: 03/23/2019
+ms.date: 07/01/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7b75e24e5d59206ee8330c3ca9eaf86eacbad13d
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: e878ca23b9187fe3175ad0af1b4f27e59e1deef6
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175215"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509827"
 ---
 ### <a name="premium-performance-block-blob-storage"></a>Úložiště objektů blob bloku výkon úrovně Premium
 
 Výkon bloku objektů blob v účtu služby premium storage je optimalizovaná pro aplikace, které používají menší, kilobajtů rozsah objektů. Je ideální pro aplikace, které vyžadují vysokou transakční sazby nebo konzistentní úložiště s nízkou latencí. Premium výkonu blokovou službou blob storage je navržená pro škálování s vašimi aplikacemi. Pokud plánujete nasadit tyto aplikace, které vyžadují stovky tisíc požadavků za sekundu nebo petabajty kapacitu úložiště, kontaktujte nás prosím odešlete v žádosti o podporu [webu Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
-### <a name="premium-performance-filestorage-preview"></a>Výkon úrovně Premium úložiště souborů (preview)
+### <a name="premium-performance-filestorage"></a>Výkon úrovně Premium úložiště souborů
 
-Soubory typu Premium, použijte účet jedinečný úložiště s názvem **úložiště souborů (preview)** . Tento typ účtu je navržená pro úlohy s vysokým vstupně-výstupních operací, vysoké propustnosti s konzistentní s nízkou latencí. File storage úrovně Premium se škáluje s velikosti zřízené sdílené složky.
-
-|Oblast  |Target  |
-|---------|---------|
-|Maximální počet zřízení velikost     |100 TiB     |
-|Sdílené složky   |Unlimited  |
-|IOPS     |100 000    |
-|Příchozí přenos dat|4,136 MiB/s     |
-|Výchozí přenos|6,204 MiB/s |
+[!INCLUDE [azure-storage-limits-filestorage](azure-storage-limits-filestorage.md)]
 
  Premium soubor sdílet měřítko cíle, najdete v článku [soubory typu Premium škálování cíle](../articles/storage/common/storage-scalability-targets.md#premium-files-scale-targets) oddílu.
 

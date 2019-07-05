@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a62f44783d63131812794a4b55f0e9f9f3b45f27
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4a51401bcb8d282fef10b0b06e646b652bf5f8e8
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66742487"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67513390"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>Automatické zřizování uživatelů a skupin ze služby Azure Active Directory do aplikací pomocí systému pro mezi doménami Identity Management (SCIM)
 
@@ -259,10 +259,10 @@ Tato část poskytuje příklad SCIM žádosti, protože ho vygeneroval klienta 
 
 #### <a name="get-user"></a>Načíst uživatele
 
-###### <a name="request"></a>Žádost
+###### <a name="request-1"></a>Požadavek
 *GET /Users/5d48a0a8e9f04aa38008* 
 
-###### <a name="response"></a>Odpověď
+###### <a name="response-1"></a>Odpověď
 *HTTP/1.1 200 OK*
 ```json
 {
@@ -290,10 +290,10 @@ Tato část poskytuje příklad SCIM žádosti, protože ho vygeneroval klienta 
 ```
 #### <a name="get-user-by-query"></a>Načíst uživatele podle dotazu
 
-##### <a name="request"></a>Žádost
+##### <a name="request-2"></a>Požadavek
 *GET /Users?filter=userName eq "Test_User_dfeef4c5-5681-4387-b016-bdf221e82081"*
 
-##### <a name="response"></a>Odpověď
+##### <a name="response-2"></a>Odpověď
 *HTTP/1.1 200 OK*
 ```json
 {
@@ -329,10 +329,10 @@ Tato část poskytuje příklad SCIM žádosti, protože ho vygeneroval klienta 
 
 #### <a name="get-user-by-query---zero-results"></a>Načíst uživatele dotazem - nula výsledků
 
-##### <a name="request"></a>Žádost
+##### <a name="request-3"></a>Požadavek
 */ GET uživatelé? filter = eq uživatelské jméno "neexistující uživatel"*
 
-##### <a name="response"></a>Odpověď
+##### <a name="response-3"></a>Odpověď
 *HTTP/1.1 200 OK*
 ```json
 {
@@ -347,7 +347,7 @@ Tato část poskytuje příklad SCIM žádosti, protože ho vygeneroval klienta 
 
 #### <a name="update-user-multi-valued-properties"></a>Aktualizace uživatele [více Vážíme si toho vlastnosti]
 
-##### <a name="request"></a>Žádost
+##### <a name="request-4"></a>Požadavek
 *Oprava/uživatele/6764549bef60420686bc HTTP/1.1*
 ```json
 {
@@ -367,7 +367,7 @@ Tato část poskytuje příklad SCIM žádosti, protože ho vygeneroval klienta 
 }
 ```
 
-##### <a name="response"></a>Odpověď
+##### <a name="response-4"></a>Odpověď
 *HTTP/1.1 200 OK*
 ```json
 {
@@ -396,7 +396,7 @@ Tato část poskytuje příklad SCIM žádosti, protože ho vygeneroval klienta 
 
 #### <a name="update-user-single-valued-properties"></a>Aktualizace uživatele [jednou hodnotou vlastnosti]
 
-##### <a name="request"></a>Žádost
+##### <a name="request-5"></a>Požadavek
 *Oprava/uživatele/5171a35d82074e068ce2 HTTP/1.1*
 ```json
 {
@@ -409,7 +409,7 @@ Tato část poskytuje příklad SCIM žádosti, protože ho vygeneroval klienta 
 }
 ```
 
-##### <a name="response"></a>Odpověď
+##### <a name="response-5"></a>Odpověď
 *HTTP/1.1 200 OK*
 ```json
 {
@@ -439,10 +439,10 @@ Tato část poskytuje příklad SCIM žádosti, protože ho vygeneroval klienta 
 
 #### <a name="delete-user"></a>Odstranit uživatele
 
-##### <a name="request"></a>Žádost
+##### <a name="request-6"></a>Požadavek
 *Odstranit /Users/5171a35d82074e068ce2 HTTP/1.1*
 
-##### <a name="response"></a>Odpověď
+##### <a name="response-6"></a>Odpověď
 *HTTP/1.1 204 žádný obsah.*
 
 ### <a name="group-operations"></a>Operace skupiny
@@ -454,7 +454,7 @@ Tato část poskytuje příklad SCIM žádosti, protože ho vygeneroval klienta 
 
 #### <a name="create-group"></a>Vytvořit skupinu
 
-##### <a name="request"></a>Žádost
+##### <a name="request-7"></a>Požadavek
 */ Groups POST protokolu HTTP/1.1*
 ```json
 {
@@ -468,7 +468,7 @@ Tato část poskytuje příklad SCIM žádosti, protože ho vygeneroval klienta 
 }
 ```
 
-##### <a name="response"></a>Odpověď
+##### <a name="response-7"></a>Odpověď
 *HTTP/1.1 201 vytvořili*
 ```json
 {
@@ -488,10 +488,10 @@ Tato část poskytuje příklad SCIM žádosti, protože ho vygeneroval klienta 
 
 #### <a name="get-group"></a>Získat skupinu
 
-##### <a name="request"></a>Žádost
+##### <a name="request-8"></a>Požadavek
 *GET /Groups/40734ae655284ad3abcc?excludedAttributes=members HTTP/1.1*
 
-##### <a name="response"></a>Odpověď
+##### <a name="response-8"></a>Odpověď
 *HTTP/1.1 200 OK*
 ```json
 {
@@ -509,10 +509,10 @@ Tato část poskytuje příklad SCIM žádosti, protože ho vygeneroval klienta 
 
 #### <a name="get-group-by-displayname"></a>Získat skupinu podle displayName
 
-##### <a name="request"></a>Žádost
+##### <a name="request-9"></a>Požadavek
 */ GET groups? excludedAttributes = členy & filtr = eq displayName "displayName" HTTP/1.1*
 
-##### <a name="response"></a>Odpověď
+##### <a name="response-9"></a>Odpověď
 *HTTP/1.1 200 OK*
 ```json
 {
@@ -536,7 +536,7 @@ Tato část poskytuje příklad SCIM žádosti, protože ho vygeneroval klienta 
 ```
 #### <a name="update-group-non-member-attributes"></a>Aktualizovat skupinu [třetí atributy]
 
-##### <a name="request"></a>Žádost
+##### <a name="request-10"></a>Požadavek
 *Oprava/skupin/fa2ce26709934589afc5 HTTP/1.1*
 ```json
 {
@@ -549,12 +549,12 @@ Tato část poskytuje příklad SCIM žádosti, protože ho vygeneroval klienta 
 }
 ```
 
-##### <a name="response"></a>Odpověď
+##### <a name="response-10"></a>Odpověď
 *HTTP/1.1 204 žádný obsah.*
 
 ### <a name="update-group-add-members"></a>Skupina aktualizací [přidat členy]
 
-##### <a name="request"></a>Žádost
+##### <a name="request-11"></a>Požadavek
 *Oprava/skupin/a99962b9f99d4c4fac67 HTTP/1.1*
 ```json
 {
@@ -570,12 +570,12 @@ Tato část poskytuje příklad SCIM žádosti, protože ho vygeneroval klienta 
 }
 ```
 
-##### <a name="response"></a>Odpověď
+##### <a name="response-11"></a>Odpověď
 *HTTP/1.1 204 žádný obsah.*
 
 #### <a name="update-group-remove-members"></a>Aktualizovat skupinu [odebrat členy]
 
-##### <a name="request"></a>Žádost
+##### <a name="request-12"></a>Požadavek
 *Oprava/skupin/a99962b9f99d4c4fac67 HTTP/1.1*
 ```json
 {
@@ -591,15 +591,15 @@ Tato část poskytuje příklad SCIM žádosti, protože ho vygeneroval klienta 
 }
 ```
 
-##### <a name="response"></a>Odpověď
+##### <a name="response-12"></a>Odpověď
 *HTTP/1.1 204 žádný obsah.*
 
 #### <a name="delete-group"></a>Odstranit skupinu
 
-##### <a name="request"></a>Žádost
+##### <a name="request-13"></a>Požadavek
 *DELETE /Groups/cdb1ce18f65944079d37 HTTP/1.1*
 
-##### <a name="response"></a>Odpověď
+##### <a name="response-13"></a>Odpověď
 *HTTP/1.1 204 žádný obsah.*
 
 

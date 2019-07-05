@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 214462977c160685a943cb64c517da37d96d8e47
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bc67fb216451bd19fe8cfb327c101aa989228b01
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67057362"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67536910"
 ---
 # <a name="ldap-authentication-and-azure-multi-factor-authentication-server"></a>Ověřování pomocí protokolu LDAP a ověřování Azure Multi-Factor Authentication Server
 
@@ -49,6 +49,9 @@ Opakujte tyto kroky pro přidání dalších klientů protokolu LDAP.
 ### <a name="configure-the-ldap-directory-connection"></a>Konfigurace připojení k adresáři LDAP
 
 Pokud je Azure Multi-Factor Authentication nakonfigurováno pro příjem ověřování LDAP, musí směrovat proxy těchto ověřování do adresáře protokolu LDAP. Proto karta Cíl pouze zobrazí jednu zašedlou možnost použití cíle LDAP.
+
+> [!NOTE]
+> Integrace adresáře není zaručeno, že pro práci s adresáři než Active Directory Domain Services.
 
 1. Pro konfiguraci připojení k adresáři LDAP klikněte na ikonu **Integrace adresáře**.
 2. Na kartě Nastavení vyberte přepínač **Použít specifickou konfiguraci LDAP**.

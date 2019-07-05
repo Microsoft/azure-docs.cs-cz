@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2018
 ms.author: pepogors
-ms.openlocfilehash: 680c141e32333c4747ee69919229bd9381f536a4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 60b634b0b927804249148737ee7a99c0e86dd7d6
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60393662"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537756"
 ---
 # <a name="develop-c-service-fabric-applications-with-visual-studio-code"></a>Vývoj C# aplikace Service Fabric pomocí Visual Studio Code
 
@@ -77,6 +77,17 @@ Po vytvoření aplikace, nasadíte ho do místního clusteru.
 4. Po ověření je aplikace spuštěna, spusťte prohlížeč a otevřete tuto stránku: http:\//localhost:31002. To je webový front-end aplikace. Aktualizujte stránku, aby zobrazil aktuální hodnotu čítače, jak zvýší.
 
    ![Čítač aplikace služby v prohlížeči](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-running.png)
+
+## <a name="publish-the-application-to-an-azure-service-fabric-cluster"></a>Publikujte aplikaci do clusteru Azure Service Fabric
+Spolu s nasazením aplikace do místního clusteru, můžete také publikovat aplikaci do vzdáleného clusteru Azure Service Fabric. 
+
+1. Ujistěte se, že jste vytvořili aplikaci pomocí výše uvedených pokynů. Aktualizovat soubor vygenerovanou konfiguraci `Cloud.json` s podrobnostmi o vzdálený cluster, který chcete publikovat.
+
+2. Z **paletu příkazů**, vyberte **Service Fabric: Publikování aplikace příkaz**. Výstup procesu instalace je odeslán integrovaný terminál.
+
+   ![Příkaz aplikace publikovat v nástroji VS Code](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-publish-application.png)
+
+3. Po dokončení nasazení spusťte prohlížeč a otevřete Service Fabric Explorer: `https:<clusterurl>:19080/Explorer`. Měli byste vidět, že je aplikace spuštěná. To může trvat nějakou dobu, tak buďte prosím trpěliví. 
 
 ## <a name="debug-the-application"></a>Ladění aplikace
 Při ladění aplikací v nástroji VS Code, musí být aplikace spuštěná v místním clusteru. Zarážky je potom možné přidat do kódu.

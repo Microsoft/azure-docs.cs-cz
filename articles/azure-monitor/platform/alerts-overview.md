@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/28/2018
 ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: 6fb49baf8ab58ae6cfe7639cedcc4466810c8b96
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c389f2ab9e67cbb1fd1a6a0c9ee274bca7d4c99d
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60347447"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67560426"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Přehled výstrah v Microsoft Azure 
 
@@ -33,7 +33,7 @@ Následující diagram znázorňuje tok výstrah.
 
 ![Tok výstrah](media/alerts-overview/Azure-Monitor-Alerts.svg)
 
-Pravidla upozornění jsou odděleny od výstrahy a akce, která se provede, když se aktivuje upozornění. 
+Pravidla upozornění jsou odděleny od výstrahy a akce, které se provádějí, když se aktivuje upozornění. 
 
 **Pravidlo výstrahy** -pravidlo upozornění zachycuje cíle a kritéria pro generování výstrah. Pravidlo výstrahy může být v povolené nebo zakázané. Upozornění aktivovaly jenom při povolené. 
 
@@ -94,6 +94,8 @@ Inteligentní skupiny jsou agregace výstrah podle algoritmů strojového učen�
 ## <a name="alerts-experience"></a>Prostředí upozornění 
 Výchozí stránky s upozorněními poskytuje souhrn výstrah, které jsou vytvořeny v konkrétním časovém intervalu. Zobrazí celkový počet výstrah pro každý závažnost s sloupce, který určuje celkový počet výstrah v jednotlivých stavech závažnost v každé. Vyberte některou z závažnosti otevřete [všechny výstrahy](#all-alerts-page) stránka se vyfiltruje podle tohoto závažnosti.
 
+Alternativně můžete [prostřednictvím kódu programu vytvořit výčet instancí upozornění ve vašich předplatných vytvořena pomocí rozhraní REST API](#manage-your-alert-instances-programmatically).
+
 Nelze zobrazit nebo sledovat starší [klasických upozornění](#classic-alerts). Můžete změnit předplatná nebo filtrovat parametry aktualizujte stránku. 
 
 ![Stránky s upozorněními](media/alerts-overview/alerts-page.png)
@@ -102,7 +104,7 @@ Toto zobrazení můžete filtrovat výběrem hodnoty v rozevíracích nabídek v
 
 | Sloupec | Popis |
 |:---|:---|
-| Předplatné | Vyberte až o pěti předplatných Azure. Pouze výstrahy ve vybraných předplatných se nastavují v zobrazení. |
+| Předplatné | Vyberte předplatná Azure, pro které chcete zobrazit výstrahy. Volitelně můžete vybrat všechna vaše předplatná. Pouze výstrahy, abyste měli přístup k ve vybraných předplatných se nastavují v zobrazení. |
 | Skupina prostředků | Výběr jedné skupiny prostředků. V zobrazení jsou zahrnuty pouze výstrahy s cíli ve vybrané skupině prostředků. |
 | Časové rozmezí | Pouze výstrahy vyvolané v rámci vybrané časové období se nastavují v zobrazení. Podporované hodnoty jsou uplynulou hodinu, posledních 24 hodin, posledních 7 dní a posledních 30 dní. |
 
@@ -145,7 +147,7 @@ Zobrazení můžete filtrovat výběrem následující hodnoty v rozevíracích 
 
 | Sloupec | Popis |
 |:---|:---|
-| Předplatné | Vyberte až o pěti předplatných Azure. Pouze výstrahy ve vybraných předplatných se nastavují v zobrazení. |
+| Předplatné | Vyberte předplatná Azure, pro které chcete zobrazit výstrahy. Volitelně můžete vybrat všechna vaše předplatná. Pouze výstrahy, abyste měli přístup k ve vybraných předplatných se nastavují v zobrazení. |
 | Skupina prostředků | Výběr jedné skupiny prostředků. V zobrazení jsou zahrnuty pouze výstrahy s cíli ve vybrané skupině prostředků. |
 | Typ prostředku | Vyberte jeden nebo více typů prostředků. Pouze výstrahy s cíli vybraného typu jsou zahrnuty v zobrazení. Tento sloupec je k dispozici pouze po zadal skupinu prostředků. |
 | Prostředek | Vyberte prostředek. V zobrazení jsou zahrnuty pouze výstrahy s tento prostředek jako cíl. Tento sloupec je k dispozici pouze po byl zadán typ prostředku. |
@@ -157,20 +159,47 @@ Zobrazení můžete filtrovat výběrem následující hodnoty v rozevíracích 
 
 Vyberte **sloupce** v horní části stránky a vybrat sloupce, které chcete zobrazit. 
 
-## <a name="alert-detail-page"></a>Stránky podrobností výstrahy
+## <a name="alert-details-page"></a>Stránka Podrobnosti výstrahy
 Když vyberete výstrahu, zobrazí se stránka podrobností výstrahy. Poskytuje podrobnosti upozornění a umožňuje změnit její stav.
 
 ![Podrobnosti upozornění](media/alerts-overview/alert-detail2.png)
 
-Na stránce podrobností výstrahy obsahuje následující části.
+Na stránce podrobností o výstraze obsahuje následující části.
 
-| Sekce | Popis |
+| Section | Popis |
 |:---|:---|
-| Základy | Zobrazí vlastnosti a další důležité informace o výstraze. |
+| Souhrn | Zobrazí vlastnosti a další důležité informace o výstraze. |
 | Historie | Uvádí všechny akce podniknuté upozornění a všechny změny provedené na upozornění. Aktuálně se omezuje na změny stavu. |
-| Inteligentní skupiny | Informace o skupině inteligentní výstraha je součástí. *Počet výstrah* odkazuje na počet výstrah, které jsou součástí inteligentní skupinu. Zahrnuje další výstrahy ve stejné skupině inteligentní, které se vytvořily za posledních 30 dnů bez ohledu na to filtr času v seznamu stránky s upozorněními. Výběrem výstrahy zobrazíte její podrobnosti. |
-| Další podrobnosti | Zobrazí další kontextové informace pro výstrahy, což je obvykle specifický pro typ zdroje, která upozornění vytvořila. |
+| Diagnostika | Informace o skupině inteligentní výstraha je součástí. *Počet výstrah* odkazuje na počet výstrah, které jsou součástí inteligentní skupinu. Zahrnuje další výstrahy ve stejné skupině inteligentní, které se vytvořily za posledních 30 dnů bez ohledu na to filtr času v seznamu stránky s upozorněními. Výběrem výstrahy zobrazíte její podrobnosti. |
 
+## <a name="role-based-access-control-rbac-for-your-alert-instances"></a>Řízení přístupu na základě role (RBAC) pro vaše instance výstrah
+
+Využití a správu instancí upozornění vyžaduje, aby uživatel mít předdefinované role RBAC buď [Přispěvatel monitorování](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) nebo [Čtenář monitorování](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader). Tyto role jsou podporovány v jakékoli Azure Resource Manageru oboru z úrovně předplatného na detailní přiřazení na úrovni prostředků. Například pokud uživatel má přístup Přispěvatel monitorování pro virtuální počítač "ContosoVM1" pouze, pak si můžete využívat a spravovat pouze výstrahy generované v "ContosoVM1".
+
+## <a name="manage-your-alert-instances-programmatically"></a>Spravovat výstrahy instance prostřednictvím kódu programu
+
+Existuje mnoho scénářů, ve kterém chcete programově odeslat dotaz výstrah generovaných ve vašem předplatném. To může být k vytváření vlastních zobrazení mimo na webu Azure portal, nebo pro analýzu upozornění k identifikaci trendů a vzorů.
+
+Můžete zadat dotaz na výstrahy generované proti vašich předplatných, buď pomocí [výstrah rozhraní REST API pro správu](https://aka.ms/alert-management-api) nebo s použitím [prostředků Graph REST API služby Azure pro výstrahy](https://docs.microsoft.com/rest/api/azureresourcegraph/resources/resources).
+
+[Prostředků Graph REST API služby Azure pro výstrahy](https://docs.microsoft.com/rest/api/azureresourcegraph/resources/resources) umožňuje dotazování pro výstrahy instance ve velkém měřítku. To se doporučuje pro scénáře, ve kterém máte ke správě výstrah vygenerovaných mezi mnoha předplatnými. 
+
+Následující ukázkový požadavek na rozhraní API vrátí počet výstrah v rámci jednoho předplatného:
+
+```json
+{
+  "subscriptions": [
+    <subscriptionId>
+  ],
+  "query": "where type =~ 'Microsoft.AlertsManagement/alerts' | summarize count()",
+  "options": {
+            "dataset":"alerts"
+  }
+}
+```
+Upozornění je možné zadávat dotazy pro jejich ["základní"](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-definitions#essentials-fields) pole.
+
+[REST API pro správu upozornění](https://aka.ms/alert-management-api) lze získat další informace o konkrétní výstrahy, včetně jejich ["kontext výstrahy"](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-definitions#alert-context-fields) pole.
 
 ## <a name="classic-alerts"></a>Klasická upozornění 
 

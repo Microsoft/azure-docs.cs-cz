@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
 ms.author: rkarlin
-ms.openlocfilehash: 7ffb9684045031c5bca7a79a15db7cb16fc99e9b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: af7896ec4afaeefda7261542bf593a89a7bb9ae8
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60332367"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551785"
 ---
 # <a name="ueba-for-azure-resources-and-users"></a>UEBA pro uživatele a prostředky Azure 
 
@@ -55,8 +55,8 @@ Security Center podporuje výstrahy detekce anomálií Cloud App Security, jako 
 
 Tyto výstrahy jsou ve výchozím nastavení povolené, ale lze je vypnout:
 
-1. V okně Security Center vyberte **zásady zabezpečení**. Předplatné, které chcete změnit, klikněte na tlačítko **upravit nastavení**.
-2.  Klikněte na tlačítko **detekce hrozeb**.
+1. V okně Security Center vyberte **ceny na & stavení** a vyberte příslušné předplatné.
+2. Klikněte na tlačítko **detekce hrozeb**.
 3. V části **povolovat integrace**, zrušte zaškrtnutí políčka **povolit Microsoft Cloud App Security přístup k data**a klikněte na tlačítko **Uložit**.
 
    ![Výstrahy detekce hrozeb](./media/security-center-ueba-mcas/security-center-mcas-optout.png)

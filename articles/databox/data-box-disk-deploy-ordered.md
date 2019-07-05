@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 06/17/2019
+ms.date: 07/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 5f8fd9b2ecb58b34476bf8ecca7aa08dfc446040
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 39d39b313cd2e65989989080d4cb0729b0be1e65
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273392"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561455"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk"></a>Kurz: Pořadí disku Azure Data Box
 
@@ -47,7 +47,7 @@ Než začnete, ujistěte se, že:
     - Musí na něm běžet [podporovaný operační systém](data-box-disk-system-requirements.md#supported-operating-systems-for-clients).
     - Musí na něm být nainstalovaný [požadovaný software](data-box-disk-system-requirements.md#other-required-software-for-windows-clients), pokud jde o klienta pro Windows.  
 
-## <a name="order-data-box-disk"></a>Objednat Data Box Disk
+## <a name="order-data-box-disk"></a>Objednání služby Data Box Disk
 
 Přihlášení k aplikaci:
 
@@ -82,12 +82,12 @@ Objednávku Data Box Disk, proveďte následující kroky.
 
     |Nastavení|Hodnota|
     |---|---|
-    |Name|Zadejte popisný název pro sledování objednávky.<br> Název může být tvořen 3 až 24 písmeny, číslicemi a spojovníky. <br> Název musí začínat a končit písmenem nebo číslicí. |
+    |Název|Zadejte popisný název pro sledování objednávky.<br> Název může být tvořen 3 až 24 písmeny, číslicemi a spojovníky. <br> Název musí začínat a končit písmenem nebo číslicí. |
     |Skupina prostředků| Použijte existující skupinu prostředků, nebo vytvořte novou. <br> Skupina prostředků je logický kontejner prostředků, které lze spravovat nebo nasadit společně. |
     |Cílová oblast Azure| K účtu úložiště přiřaďte oblast.<br> V současné době se podporují účty úložiště ve všech oblastech USA, Západní Evropě, Severní Evropě, Kanadě a Austrálii. |
     |Odhadovaná velikost dat v TB| Zadejte odhad v TB. <br>Podle objemu dat vám Microsoft pošle odpovídající počet 8TB disků SSD (s využitelnou kapacitou 7 TB). <br>Maximální využitelná kapacita 5 disků je 35 TB. |
     |Klíč pro disky| Pokud zaškrtnete možnost **Použít namísto klíče vygenerovaného službou Azure vlastní klíč**, zadejte klíč pro disky. <br> Zadejte klíč alfanumerické 12 až 32 znaků, který má alespoň jedna číslice a jeden speciální znak. Povolené speciální znaky jsou `@?_+`. <br> Tuto možnost můžete volitelně přeskočit a k odemknutí disků použít klíč vygenerovaný službou Azure.|
-    |Cílové úložiště     | Vyberte si z účtu úložiště, spravované disky nebo obojí. <br> Založené na zadanou oblast Azure, vyberte účet úložiště z filtrovaný seznam existující účet úložiště. Data Box je možné propojit až s 10 účty úložiště. <br> Můžete také vytvořit novou **pro obecné účely v1**, **pro obecné účely v2**, nebo **účtu úložiště objektů Blob**. <br>Nelze použít účty úložiště, které mají nakonfigurovaná pravidla. Účty úložiště musí **povolit přístup ze všech sítí** v části virtuální sítě a brány firewall.|
+    |Cílové úložiště     | Vyberte si z účtu úložiště, spravované disky nebo obojí. <br> Založené na zadanou oblast Azure, vyberte účet úložiště z filtrovaný seznam existující účet úložiště. Data Box Disk nesmí být propojení s účtem úložiště pouze 1. <br> Můžete také vytvořit novou **pro obecné účely v1**, **pro obecné účely v2**, nebo **účtu úložiště objektů Blob**. <br>Účty úložiště s virtuálními sítěmi se podporují. Služba Data Box pro práci s účty úložiště zabezpečené, povolte důvěryhodným službám v nastavení brány firewall sítě účtu úložiště. Další informace najdete v tématu Jak [přidat zařízení Azure Data Box jako důvěryhodné služby](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).|
 
     Pokud používáte účet úložiště jako cílové úložiště, vidíte na následujícím snímku obrazovky:
 
@@ -151,7 +151,7 @@ Pokud chcete odstranit zrušenou objednávku, přejděte do části **Přehled**
 V tomto kurzu jste se dozvěděli o tématech spojených se službou Azure Data Box Disk, jako jsou:
 
 > [!div class="checklist"]
-> * Objednat Data Box Disk
+> * Objednání služby Data Box Disk
 > * Sledování objednávky
 > * Zrušení objednávky
 

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/27/2019
 ms.author: hrasheed
-ms.openlocfilehash: 16041d2b7a971c9ba479c133261930b38d130792
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 77e7aec1797a4b33068430371ba0969d1737746e
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66252782"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508789"
 ---
 # <a name="ports-used-by-apache-hadoop-services-on-hdinsight"></a>Porty používané služby Apache Hadoop v HDInsight
 
@@ -41,7 +41,7 @@ Všechny uzly v clusteru HDInsight se nacházejí ve službě Azure Virtual Netw
 | sshd |23 |SSH |Klienti se připojí k sshd na sekundární hlavní uzel. Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md). |
 | Ambari |443 |HTTPS |Webové uživatelské rozhraní Ambari. Zobrazit [Správa HDInsight pomocí webového uživatelského rozhraní Apache Ambari](hdinsight-hadoop-manage-ambari.md) |
 | Ambari |443 |HTTPS |Ambari REST API. Zobrazit [Správa HDInsight pomocí rozhraní Apache Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md) |
-| WebHCat |443 |HTTPS |HCatalog REST API. Zobrazit [použití Apache Hivu pomocí Curl](hadoop/apache-hadoop-use-pig-curl.md), [pomocí Apache Pig nástroj Curl](hadoop/apache-hadoop-use-pig-curl.md), [použití MapReduce se Curl](hadoop/apache-hadoop-use-mapreduce-curl.md) |
+| WebHCat |443 |HTTPS |HCatalog REST API. Zobrazit [použití MapReduce se Curl](hadoop/apache-hadoop-use-mapreduce-curl.md) |
 | HiveServer2 |443 |ODBC |Se připojí k Hive pomocí ovladače ODBC. Zobrazit [připojení Excelu k HDInsight pomocí ovladače Microsoft ODBC](hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md). |
 | HiveServer2 |443 |JDBC |Se připojí k ApacheHive pomocí JDBC. Zobrazit [připojit k Apache Hive v HDInsight pomocí ovladače Hive JDBC](hadoop/apache-hadoop-connect-hive-jdbc-driver.md) |
 

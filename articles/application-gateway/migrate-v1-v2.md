@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: f55beca65a19ee9e47708000976dd42a6f252e2e
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 0fd605d7d502970dccd37da1f3f70fdadb1094a1
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67154165"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67550455"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Migrace Azure Application Gateway a Firewall webových aplikací z v1 na v2
 
@@ -76,7 +76,8 @@ Spuštění skriptu:
 
 1. Spustit `Get-Help AzureAppGWMigration.ps1` prozkoumat požadované parametry:
 
-   `AzureAppGwMigration.ps1
+   ```
+   AzureAppGwMigration.ps1
     -resourceId <v1 application gateway Resource ID>
     -subnetAddressRange <subnet space you want to use>
     -appgwName <string to use to append>
@@ -84,7 +85,8 @@ Spuštění skriptu:
     -trustedRootCertificates <comma-separated Trusted Root Cert objects as above>
     -privateIpAddress <private IP string>
     -publicIpResourceName <public IP name string>
-    -validateMigration -enableAutoScale`
+    -validateMigration -enableAutoScale
+   ```
 
    Parametry skriptu:
    * **resourceId: [String]: Vyžaduje** – to je ID prostředku Azure pro váš stávající standardní verze 1 nebo v1 brány WAF. Najít tuto hodnotu řetězce, přejděte na web Azure Portal, vyberte aplikační brána nebo zdroj, WAF a klikněte na tlačítko **vlastnosti** odkaz pro bránu. ID prostředku, které se nachází na dané stránce.

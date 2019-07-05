@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/30/2019
+ms.date: 06/28/2019
 ms.author: magoedte
-ms.openlocfilehash: a50f080ee4d72ad098ca87f5b3a62b42f8cd5907
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8f2b74c4c091aed0a1b5889b0a07d44d450d1922
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65142737"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477084"
 ---
 # <a name="configure-service-map-in-azure"></a>Konfigurace řešení Service Map v Azure
 
@@ -29,7 +29,7 @@ Tento článek popisuje podrobnosti o konfiguraci řešení Service Map a připo
 ## <a name="supported-azure-regions"></a>Podporované oblasti Azure
 
 Řešení Service Map je teď dostupná v těchto oblastech Azure:
-- USA – východ
+- East US
 - Západní střed USA
 - Kanada – střed
 - Velká Británie – jih
@@ -100,18 +100,14 @@ Následující část obsahuje seznam podporovaných operačních systémech pro
 | 16.04 | 4.4.\*<br>4.8.\*<br>4.10.\*<br>4.11.\*<br>4.13.\* |
 | 14.04 | 3.13.\*<br>4.4.\* |
 
-### <a name="suse-linux-11-enterprise-server"></a>SUSE Linux 11 Enterprise Server
+#### <a name="suse-linux-12-enterprise-server"></a>SUSE Linux 12 Enterprise Server
 
 | Verze operačního systému | Verze jádra
 |:--|:--|
-| 11 SP4 | 3.0.* |
-
-### <a name="suse-linux-12-enterprise-server"></a>SUSE Linux 12 Enterprise Server
-
-| Verze operačního systému | Verze jádra
-|:--|:--|
-| 12 SP2 | 4.4. * |
-| 12 SP3 | 4.4. * |
+|12 SP2 | 4.4. * |
+|12 SP3 | 4.4. * |
+|12 SP4 | 4.4. * |
+|12 SP4 | Laděná Azure jádra |
 
 ## <a name="dependency-agent-downloads"></a>Soubory ke stažení agenta závislostí
 

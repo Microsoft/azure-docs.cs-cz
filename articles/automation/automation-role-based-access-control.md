@@ -5,17 +5,17 @@ keywords: rbac v automation, řízení přístupu na základě rolí, rbac v azu
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 05/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: bcbda2464a4607aaa0b1bb96ef8f34c8713cb5f1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9b2bcdf3d74c6946b8c9f0dacaeabf28d9c76f94
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60738760"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477723"
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Řízení přístupu na základě role ve službě Azure Automation
 
@@ -232,6 +232,7 @@ V následujících tabulkách minimální požadované oprávnění potřebná p
 |Kontrola stavu registrace – virtuální počítač pro čtení      | Microsoft.Compute/virtualMachines/read         | Virtuální počítač         |
 |Zkontrolovat stav registrace – účet pro čtení      | Microsoft.Automation/automationAccounts/read  |  Účet Automation   |
 | Kontrola registrace pracovní prostor pro virtuální počítač<sup>1</sup>       | Microsoft.OperationalInsights/workspaces/read         | Předplatné         |
+| Registrace poskytovatele Log Analytics |Microsoft.Insights/register/action | Předplatné|
 
 <sup>1</sup> toto oprávnění, je potřeba připojit z portálu virtuálního počítače.
 
@@ -251,6 +252,7 @@ V následujících tabulkách minimální požadované oprávnění potřebná p
 |Vytvořit/upravit uložené hledání     | Microsoft.OperationalInsights/workspaces/write        | Pracovní prostor        |
 |Vytvořit nebo upravit konfiguraci oboru     | Microsoft.OperationalInsights/workspaces/write        | Pracovní prostor        |
 |Řešení odkazu ke konfiguraci oboru      | Microsoft.OperationalInsights/workspaces/intelligencepacks/write         | Řešení         |
+| Registrace poskytovatele Log Analytics |Microsoft.Insights/register/action | Předplatné|
 |**Krok 2 – připojit více virtuálních počítačů**     |         |         |
 |Okno VMOnboarding – rozšíření vytvořit agenta MMA     | Microsoft.Compute/virtualMachines/write           | Virtuální počítač        |
 |Vytvořit / upravit uložené hledání     | Microsoft.OperationalInsights/workspaces/write           | Pracovní prostor        |

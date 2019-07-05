@@ -6,12 +6,12 @@ ms.author: arramac
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2019
-ms.openlocfilehash: 0086327661df637dc0ae60208ed9424b4610ef0e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 28eb7c6a11f71fa87835bcfe78e635753965bac3
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65969489"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561233"
 ---
 # <a name="limits-in-azure-cosmos-db"></a>Omezení ve službě Azure Cosmos DB
 
@@ -37,7 +37,6 @@ Po vytvoření účtu Azure Cosmos v rámci vašeho předplatného, můžete spr
 
 Cosmos kontejneru (nebo sdílené propustnosti databáze), musí mít minimální propustnost 400 RU. S růstem kontejneru minimální podporovaná propustnost také závisí na následujících faktorech:
 
-* Maximální velikost úložiště spotřebované v kontejneru se měří v přírůstcích po 40 jednotek požadavku za GB využité úložiště. Například pokud kontejner obsahuje 100 GB dat, pak propustnost musí být aspoň 4000 ru
 * Maximální propustnost, někdy zřízený v kontejneru. Tato služba podporuje snížit propustnosti kontejneru má 10 % zřízeného maximum. Například pokud propustnost se tak zvýšil na 10000 RU, pak nejnižší možné zřízená propustnost by 1000 ru
 * Celkový počet kontejnerů, které jste již někdy vytvářeli v databázi sdílené propustnost se měří ve 100 ru na kontejner. Například pokud vytvoříte pět kontejnery v rámci sdílené propustnosti databáze, pak propustnost musí být aspoň 500 ru
 
@@ -48,7 +47,6 @@ Aktuální a minimální propustnosti kontejneru nebo databáze můžete získat
 | Minimální jednotek požadavku za kontejner ([režimu zřízenou vyhrazenou propustnost](databases-containers-items.md#azure-cosmos-containers)) | 400 |
 | Minimální jednotek ru na databázi ([sdílené propustnosti zřízené režimu](databases-containers-items.md#azure-cosmos-containers)) | 400 |
 | Minimální jednotek požadavku za kontejner v rámci sdílené propustnosti databáze | 100 |
-| Minimální jednotek požadavku za GB využité úložiště | 40 |
 
 Cosmos DB podporuje elastické škálování propustnosti (ru) za kontejner nebo databáze prostřednictvím sad SDK nebo portálu. Každý kontejner můžete škálovat okamžitě a synchronně do rozsahu stupnice 10 až 100krát mezi minimální a maximální hodnoty. Pokud hodnota požadované propustnosti je mimo rozsah, škálování se provádí asynchronně. Asynchronní škálování může trvat až hodin v závislosti na požadované propustnosti a velikosti úložiště dat v kontejneru.  
 

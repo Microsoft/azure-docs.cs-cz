@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4a0037d46db67460d507c6e92ab550f7d9c2fbe
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 6f33b52255b1401e3595687612610a4688ad026d
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341416"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67461445"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Správa identit zařízení pomocí webu Azure portal
 
@@ -57,14 +57,14 @@ Na stránce nastavení zařízení můžete nakonfigurovat:
 
 ![Správa zařízení s Intune](./media/device-management-azure-portal/21.png)
 
-- **Uživatelé můžou připojovat zařízení do služby Azure AD** – toto nastavení umožňuje vybrat uživatele, kteří mohou registrovat svá zařízení jako [zařízení Azure AD join](overview.md#azure-ad-joined-devices). Výchozí hodnota je **všechny**.
+- **Uživatelé můžou připojovat zařízení do služby Azure AD** – toto nastavení umožňuje vybrat uživatele, kteří mohou registrovat svá zařízení jako zařízení připojených k Azure AD. Výchozí hodnota je **všechny**.
 
 > [!NOTE]
 > **Uživatelé můžou připojovat zařízení do služby Azure AD** nastavení platí jenom pro připojení ke službě Azure AD na Windows 10.
 
 - **Zařízení připojená k další místní správci na Azure AD** – můžete vybrat uživatele, kteří jsou udělena práva místního správce v zařízení. Uživatelé přidaní Zde jsou přidány do *Správci zařízení* role ve službě Azure AD. Globální správci ve službě Azure AD a vlastníci zařízení jsou ve výchozím nastavení udělena práva místního správce. Tato možnost je funkce edice premium, která je dostupná prostřednictvím produktů, jako je Azure AD Premium nebo Enterprise Mobility Suite (EMS).
-- **Uživatelé můžou registrovat svoje zařízení s Azure AD** – budete potřebovat ke konfiguraci tohoto nastavení můžete povolit osobní, iOS, Android a macOs zařízení s Windows 10 bude [zaregistrovaný](overview.md#azure-ad-registered-devices) s Azure AD. Pokud vyberete **žádný**, nejsou povoleny zařízení k registraci ve službě Azure AD. Registrace pomocí Microsoft Intune nebo Správa mobilních zařízení (MDM) pro Office 365 vyžaduje registrace. Pokud jste nakonfigurovali některou z těchto služeb **všechny** je vybraná a **NONE** není k dispozici. Pokud povolíte toto nastavení z Intune pak bude zapnutá možností.
-- **Vyžadovat Vícefaktorové ověřování pro připojení zařízení** – můžete zvolit, jestli musí uživatelé provést poskytnout druhý ověřovací faktor k [spojení](overview.md#azure-ad-joined-devices) své zařízení do služby Azure AD. Výchozí hodnota je **ne**. Doporučujeme, abyste vyžadování vícefaktorového ověřování při registraci zařízení. Před povolením služby Multi-Factor authentication pro tuto službu, musíte zajistit, že ověřování Azure Multi-Factor Authentication je nakonfigurován pro uživatele, kteří zaregistrovat svá zařízení. Další informace najdete v článku [ověřování Azure Multi-Factor Authentication nasazení](../authentication/howto-mfa-getstarted.md). 
+- **Uživatelé můžou registrovat svoje zařízení s Azure AD** – budete potřebovat ke konfiguraci tohoto nastavení můžete povolit osobní, iOS, Android a macOs zařízení s Windows 10 mají být registrována pomocí služby Azure AD. Pokud vyberete **žádný**, nejsou povoleny zařízení k registraci ve službě Azure AD. Registrace pomocí Microsoft Intune nebo Správa mobilních zařízení (MDM) pro Office 365 vyžaduje registrace. Pokud jste nakonfigurovali některou z těchto služeb **všechny** je vybraná a **NONE** není k dispozici.
+- **Vyžadovat Vícefaktorové ověřování pro připojení zařízení** – můžete zvolit, jestli musí uživatelé provést poskytují další faktor ověřování pro připojení zařízení ke službě Azure AD. Výchozí hodnota je **ne**. Doporučujeme, abyste vyžadování vícefaktorového ověřování při registraci zařízení. Před povolením služby Multi-Factor authentication pro tuto službu, musíte zajistit, že je, že ověřování službou Multi-Factor Authentication nakonfigurováno pro uživatele, které registrují svá zařízení. Další informace o službách různé služby Azure Multi-Factor authentication, naleznete v tématu [Začínáme se službou Azure Multi-Factor authentication](../authentication/concept-mfa-whichversion.md). 
 
 > [!NOTE]
 > **Vyžadovat Vícefaktorové ověřování pro připojení zařízení** nastavení se nedá použít u hybridních zařízení připojených k Azure AD.

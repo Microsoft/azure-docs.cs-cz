@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: vinigam
-ms.openlocfilehash: 491f19abfd87c28ede45e98a24f31fe7e599b18b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9a02a56df85c5c6aa9fd177ad42a2f9bfb303e44
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64691416"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491956"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>Agregace schéma a data a analýzy provozu
 
@@ -32,13 +32,57 @@ Analýza provozu je cloudové řešení, která poskytuje přehled o aktivitě u
 
 ### <a name="data-aggregation"></a>Agregace dat
 
-1. Všechny protokoly toku NSG mezi "FlowIntervalStartTime_t" a "FlowIntervalEndTime_t" jsou zachyceny v minutových intervalech v účtu úložiště jako objekty BLOB před zpracováním analýzu provozu. 
+1. Všechny protokoly toku NSG mezi "FlowIntervalStartTime_t" a "FlowIntervalEndTime_t" jsou zachyceny v minutových intervalech v účtu úložiště jako objekty BLOB před zpracováním analýzu provozu.
 2. Výchozí interval zpracování analýzy provozu je 60 minut. To znamená, že každých 60 minut, které analýzu provozu vybere objekty BLOB ze služby storage pro agregaci.
 3. Toky, které mají stejné Zdrojová IP adresa, cílová IP adresa, cílový port, název skupiny zabezpečení sítě, pravidlo NSG, směr toku a Transport layer protocol (TCP nebo UDP) (Poznámka: Zdrojový port je vyloučit z agregace) jsou spouštěný do jediného toku podle analýzy provozu
 4. Tento jeden záznam je upravený (podrobnosti v následující části) a přijaté v Log Analytics provoz Analytics.This proces může trvat až 1 hodinu maximální.
-5. Pole FlowStartTime_t označuje první výskyt takové agregované tok, který (stejné čtyři-řazené kolekce členů) v protokolu toku zpracování interval mezi "FlowIntervalStartTime_t" a "FlowIntervalEndTime_t". 
+5. Pole FlowStartTime_t označuje první výskyt takové agregované tok, který (stejné čtyři-řazené kolekce členů) v protokolu toku zpracování interval mezi "FlowIntervalStartTime_t" a "FlowIntervalEndTime_t".
 6. Pro libovolné prostředky v TA toky uvedené v uživatelském rozhraní jsou celkový počet toků vidět skupiny zabezpečení sítě, ale v protokolu Anlaytics uživateli se zobrazí pouze jeden, snížené záznam. Pokud chcete zobrazit všechny toky, použijte blob_id pole, které lze odkazovat z úložiště. Celkový tok pro Spolehněte se, že záznam bude odpovídat jednotlivých toků v objektu blob.
 
+V následujícím dotazu pomáhá vám vůbec vypadá tok protokoly z místního za posledních 30 dní.
+```
+AzureNetworkAnalytics_CL
+| where SubType_s == "FlowLog" and FlowStartTime_t >= ago(30d) and FlowType_s == "ExternalPublic"
+| project Subnet_s  
+```
+Cesta objektu blob pro toky výše uvedeného dotazu zobrazíte použijte následující dotaz:
+
+```
+let TableWithBlobId =
+(AzureNetworkAnalytics_CL
+   | where SubType_s == "Topology" and ResourceType == "NetworkSecurityGroup" and DiscoveryRegion_s == Region_s and IsFlowEnabled_b
+   | extend binTime = bin(TimeProcessed_t, 6h),
+            nsgId = strcat(Subscription_g, "/", Name_s),
+            saNameSplit = split(FlowLogStorageAccount_s, "/")
+   | extend saName = iif(arraylength(saNameSplit) == 3, saNameSplit[2], '')
+   | distinct nsgId, saName, binTime)
+| join kind = rightouter (
+   AzureNetworkAnalytics_CL
+   | where SubType_s == "FlowLog"  
+   | extend binTime = bin(FlowEndTime_t, 6h)
+) on binTime, $left.nsgId == $right.NSGList_s  
+| extend blobTime = format_datetime(todatetime(FlowIntervalStartTime_t), "yyyy MM dd hh")
+| extend nsgComponents = split(toupper(NSGList_s), "/"), dateTimeComponents = split(blobTime, " ")
+| extend BlobPath = strcat("https://", saName,
+                        "@insights-logs-networksecuritygroupflowevent/resoureId=/SUBSCRIPTIONS/", nsgComponents[0],
+                        "/RESOURCEGROUPS/", nsgComponents[1],
+                        "/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/", nsgComponents[2],
+                        "/y=", dateTimeComponents[0], "/m=", dateTimeComponents[1], "/d=", dateTimeComponents[2], "/h=", dateTimeComponents[3],
+                        "/m=00/macAddress=", replace(@"-", "", MACAddress_s),
+                        "/PT1H.json")
+| project-away nsgId, saName, binTime, blobTime, nsgComponents, dateTimeComponents;
+
+TableWithBlobId
+| where SubType_s == "FlowLog" and FlowStartTime_t >= ago(30d) and FlowType_s == "ExternalPublic"
+| project Subnet_s , BlobPath
+```
+
+Výše uvedeném dotazu vytvoří adresu URL pro přístup k objektu blob přímo. Adresa URL s zástupné znaky je nižší než:
+
+```
+https://{saName}@insights-logs-networksecuritygroupflowevent/resoureId=/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/{resourceGroup}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
+
+```
 
 ### <a name="fields-used-in-traffic-analytics-schema"></a>Pole používá ve schématu analýzy provozu
 
@@ -46,10 +90,10 @@ Analýza provozu je nástavbou Log Analytics, takže můžete spouštět vlastn�
 
 Tady je polí na schéma a jejich místo
 
-| Pole | Formát | Komentáře | 
+| Pole | Formát | Komentáře |
 |:---   |:---    |:---  |
 | TableName | AzureNetworkAnalytics_CL | Tabulka Anlaytics přenosy dat
-| SubType_s | FlowLog | Podtyp pro protokoly toků |
+| SubType_s | FlowLog | Podtyp pro protokoly toků. Používat pouze "FlowLog", jiné hodnoty SubType_s nejsou pro vnitřní činnost produktu |
 | FASchemaVersion_s |   1   | Scehma verze. Neodráží verze protokolů toku NSG |
 | TimeProcessed_t   | Datum a čas ve standardu UTC  | Čas zpracování analýzy provozu nezpracovaná tok protokoly z účtu úložiště |
 | FlowIntervalStartTime_t | Datum a čas ve standardu UTC |  Počáteční čas interval zpracování protokolu toku. To je čas, ze kterého se měří interval toku |
@@ -61,10 +105,10 @@ Tady je polí na schéma a jejich místo
 | DestIP_s | Cílová IP adresa | V případě AzurePublic prázdné a ExternalPublic toky |
 | VMIP_s | IP adresu virtuálního počítače | Používá pro AzurePublic a ExternalPublic toků |
 | PublicIP_s | Veřejné IP adresy | Používá pro AzurePublic a ExternalPublic toků |
-| DestPort_d | Cílový port | Port, na kterém je příchozí provoz | 
-| L4Protocol_s  | * T <br> * U  | Přenosový protokol. T = TCP <br> U = UDP | 
+| DestPort_d | Cílový port | Port, na kterém je příchozí provoz |
+| L4Protocol_s  | * T <br> * U  | Přenosový protokol. T = TCP <br> U = UDP |
 | L7Protocol_s  | Název protokolu | Odvozený od cílový port |
-| FlowDirection_s | * Můžu = příchozí<br> * O = odchozí | Směr toku do/z NSG podle protokolu toku | 
+| FlowDirection_s | * Můžu = příchozí<br> * O = odchozí | Směr toku do/z NSG podle protokolu toku |
 | FlowStatus_s  | * S = povolen pravidlem NSG <br> * D = odepřen pravidlem NSG  | Stav toku povolený/nblocked pomocí skupiny zabezpečení sítě podle protokolu toku |
 | NSGList_s | \<SUBSCRIPTIONID>\/<RESOURCEGROUP_NAME>\/<NSG_NAME> | Skupina zabezpečení sítě (NSG) přidružené k toku |
 | NSGRules_s | \<Index hodnoty 0) >< NSG_RULENAME >\<směr toku >\<tok Stav >\<FlowCount ProcessedByRule > |  Pravidlo skupiny zabezpečení sítě, která povolí nebo zakáže tento tok |
@@ -85,7 +129,7 @@ Tady je polí na schéma a jejich místo
 | Subnet_s | <ResourceGroup_Name>/<VNET_Name>/\<SubnetName> | Podsíť přidružená NIC_s |
 | Subnet1_s | <ResourceGroup_Name>/<VNET_Name>/\<SubnetName> | Podsíť přidružená Zdrojová IP adresa v toku |
 | Subnet2_s | <ResourceGroup_Name>/<VNET_Name>/\<SubnetName>    | Podsíť přidružená cílová IP adresa v toku |
-| ApplicationGateway1_s | \<SubscriptionID>/\<ResourceGroupName>/\<ApplicationGatewayName> | Služba Application gateway, které jsou přidružené k Zdrojová IP adresa v toku | 
+| ApplicationGateway1_s | \<SubscriptionID>/\<ResourceGroupName>/\<ApplicationGatewayName> | Služba Application gateway, které jsou přidružené k Zdrojová IP adresa v toku |
 | ApplicationGateway2_s | \<SubscriptionID>/\<ResourceGroupName>/\<ApplicationGatewayName> | Služba Application gateway, které jsou přidružené k cílová IP adresa v toku |
 | LoadBalancer1_s | \<SubscriptionID>/\<ResourceGroupName>/\<LoadBalancerName> | Nástroj pro vyrovnávání zatížení související s Zdrojová IP adresa v toku |
 | LoadBalancer2_s | \<SubscriptionID>/\<ResourceGroupName>/\<LoadBalancerName> | Nástroj pro vyrovnávání zatížení související s Cílová IP adresa v toku |
@@ -96,7 +140,7 @@ Tady je polí na schéma a jejich místo
 | ConnectingVNets_s | Místo oddělený seznam názvů virtuálních sítí | V případě hvězdicovou topologii virtuální sítě centra naplní se tady |
 | Country_s | Dvoupísmenná směrové číslo země (ISO, alfa 3166-1-2) | Vyplní pro typ toku ExternalPublic. Všechny IP adresy v poli PublicIPs_s bude sdílet stejný kód země |
 | AzureRegion_s | Umístění oblasti Azure | Vyplní pro typ toku AzurePublic. Všechny IP adresy v poli PublicIPs_s podělí o oblasti Azure |
-| AllowedInFlows_d | | Počet příchozích toků, které byly povoleny. To představuje počet toků, které sdílejí stejnou čtyři-n-tice příchozí netweork rozhraní, ve kterém se zaznamenala v toku | 
+| AllowedInFlows_d | | Počet příchozích toků, které byly povoleny. To představuje počet toků, které sdílejí stejnou čtyři-n-tice příchozí netweork rozhraní, ve kterém se zaznamenala v toku |
 | DeniedInFlows_d |  | Počet příchozích toků, které se zamítla. (Příchozí k síťovému rozhraní, ve kterém se zaznamenala v toku) |
 | AllowedOutFlows_d | | Počet odchozích toků, které byly povoleny (odchozí k síťovému rozhraní, ve kterém se zaznamenala v toku) |
 | DeniedOutFlows_d  | | Počet odchozích toků, které se zamítla (odchozí k síťovému rozhraní, ve kterém se zaznamenala v toku) |
@@ -107,27 +151,21 @@ Tady je polí na schéma a jejich místo
 | OutboundBytes_d | Bajtů odeslaných jako zachytí na síťové rozhraní, ve kterém byla použita pravidlo skupiny zabezpečení sítě | To je vyplněný pouze pro schéma verze 2 NSG flow protokolu |
 | CompletedFlows_d  |  | Tím se načtou nenulovou hodnotu pouze pro schéma verze 2 NSG flow protokolu |
 | PublicIPs_s | <PUBLIC_IP>\|\<FLOW_STARTED_COUNT>\|\<FLOW_ENDED_COUNT>\|\<OUTBOUND_PACKETS>\|\<INBOUND_PACKETS>\|\<OUTBOUND_BYTES>\|\<INBOUND_BYTES> | Položky oddělených pruhy |
-    
+
 ### <a name="notes"></a>Poznámky
-    
-1. V případě AzurePublic a ExternalPublic toky zákazník, který vlastní že IP adresa virtuálního počítače Azure jsou v VMIP_s pole vyplněné, zatímco veřejné IP adresy se zatím připravují PublicIPs_s pole. Pro tyto typy dvě toku jsme používali VMIP_s a PublicIPs_s místo SrcIP_s a DestIP_s pole. Pro AzurePublic a ExternalPublicIP adresy jsme agregovat dále tak, aby byla minimální počet záznamů přijaté do pracovního prostoru log analytics zákazníka. (Toto pole bude brzy přestanou používat a jsme měli použít SrcIP_ a DestIP_s v závislosti na tom, jestli byl virtuální počítač azure zdroji nebo cíli v toku) 
-1. Podrobnosti o typech toků: Podle IP adresy používané v toku, jsme kategorizace toků v následující typy toku: 
-1. IntraVNet – obě IP adresy v toku se nachází ve stejné virtuální síti Azure. 
-1. Mezi virtuálními sítěmi – IP adresy v toku se nachází ve dvou různých virtuálních sítí Azure. 
-1. S2S – jeden (S2s) IP adres patří do virtuální sítě Azure při dalších IP adres patří do sítě zákazníka (lokalita) připojené k Azure Virtual Network prostřednictvím brány VPN nebo Express Route. 
+
+1. V případě AzurePublic a ExternalPublic toky zákazník, který vlastní že IP adresa virtuálního počítače Azure jsou v VMIP_s pole vyplněné, zatímco veřejné IP adresy se zatím připravují PublicIPs_s pole. Pro tyto typy dvě toku jsme používali VMIP_s a PublicIPs_s místo SrcIP_s a DestIP_s pole. Pro AzurePublic a ExternalPublicIP adresy jsme agregovat dále tak, aby byla minimální počet záznamů přijaté do pracovního prostoru log analytics zákazníka. (Toto pole bude brzy přestanou používat a jsme měli použít SrcIP_ a DestIP_s v závislosti na tom, jestli byl virtuální počítač azure zdroji nebo cíli v toku)
+1. Podrobnosti o typech toků: Podle IP adresy používané v toku, jsme kategorizace toků v následující typy toku:
+1. IntraVNet – obě IP adresy v toku se nachází ve stejné virtuální síti Azure.
+1. Mezi virtuálními sítěmi – IP adresy v toku se nachází ve dvou různých virtuálních sítí Azure.
+1. S2S – jeden (S2s) IP adres patří do virtuální sítě Azure při dalších IP adres patří do sítě zákazníka (lokalita) připojené k Azure Virtual Network prostřednictvím brány VPN nebo Express Route.
 1. P2S - (bod do lokality) některou z IP adres patří do virtuální sítě Azure při dalších IP adres patří do sítě zákazníka (lokalita) připojené k virtuální síti Azure přes bránu VPN.
-1. AzurePublic - některou z IP adres patří do virtuální sítě Azure při dalších IP adres patří do Azure interní veřejných IP adres ve vlastnictví společnosti Microsoft. Zákazník vlastní veřejné IP adresy nebude součástí tento typ toku. Například každý zákazník, který vlastní odesílání provozu do služby Azure (koncový bod služby Storage) virtuálního počítače by zařazených do kategorií podle typu tohoto toku. 
-1. ExternalPublic - některou z IP adres patří do virtuální sítě Azure IP adresa je veřejná IP adresa, která není v Azure, nebude hlášena jako škodlivou v ASC informační kanály, které využívá analýzy provozu pro zpracování interval mezi " FlowIntervalStartTime_t"a"FlowIntervalEndTime_t". 
-1. MaliciousFlow - některou z IP adres patří do virtuální sítě azure IP adresa je veřejná IP adresa, která není v Azure a hlásí jako škodlivou v ASC informační kanály, které využívá analýzy provozu pro zpracování interval mezi" FlowIntervalStartTime_t"a"FlowIntervalEndTime_t". 
+1. AzurePublic - některou z IP adres patří do virtuální sítě Azure při dalších IP adres patří do Azure interní veřejných IP adres ve vlastnictví společnosti Microsoft. Zákazník vlastní veřejné IP adresy nebude součástí tento typ toku. Například každý zákazník, který vlastní odesílání provozu do služby Azure (koncový bod služby Storage) virtuálního počítače by zařazených do kategorií podle typu tohoto toku.
+1. ExternalPublic - některou z IP adres patří do virtuální sítě Azure IP adresa je veřejná IP adresa, která není v Azure, nebude hlášena jako škodlivou v ASC informační kanály, které využívá analýzy provozu pro zpracování interval mezi " FlowIntervalStartTime_t"a"FlowIntervalEndTime_t".
+1. MaliciousFlow - některou z IP adres patří do virtuální sítě azure IP adresa je veřejná IP adresa, která není v Azure a hlásí jako škodlivou v ASC informační kanály, které využívá analýzy provozu pro zpracování interval mezi" FlowIntervalStartTime_t"a"FlowIntervalEndTime_t".
 1. UnknownPrivate - některou z IP adres patří do virtuální sítě Azure a dalších IP adres patří do rozsah privátních IP adres, jak jsou definovány v dokumentu RFC 1918 nemohly být namapovány analýzu provozu pro vlastní web nebo Azure Virtual Network zákazníka.
 1. Neznámé – nelze mapovat buď IP adresy toky s topologií zákazníků v Azure i místní (lokalita).
 1. Některé názvy polí jsou připojeny _Malá nebo _d. Toto nemusí znamenat zdroj a cíl.
 
 ### <a name="next-steps"></a>Další kroky
 Pokud chcete získat odpovědi na nejčastější dotazy, naleznete v tématu [nejčastější dotazy k analýze provozu](traffic-analytics-faq.md) podrobnosti o funkcích najdete v tématu [dokumentace k analýze provozu](traffic-analytics.md)
-    
-
-
-    
-
-

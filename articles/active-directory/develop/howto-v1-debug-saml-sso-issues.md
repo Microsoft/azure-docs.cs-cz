@@ -16,12 +16,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: luleon, hirsin, smalser
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0273a0d35d2b4d69f74b1acd8bc2b1d7174810cb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4331acf639af90448b5508e3487f4979e9b82c45
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67111490"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482727"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Ladění založené na SAML jednotného přihlašování k aplikacím v Azure Active Directory
 
@@ -37,7 +37,6 @@ Stáhnout a nainstalovat rozšíření Moje aplikace zabezpečené přihlašová
 - [Microsoft Edge](https://go.microsoft.com/fwlink/?linkid=845176)
 - [Firefox](https://go.microsoft.com/fwlink/?linkid=866366)
 
-
 ## <a name="test-saml-based-single-sign-on"></a>Testování založené na SAML jednotného přihlašování
 
 Testování založené na SAML jednotného přihlašování mezi Azure AD a cílová aplikace:
@@ -48,26 +47,24 @@ Testování založené na SAML jednotného přihlašování mezi Azure AD a cíl
 1. Chcete-li otevřít založené na SAML jednotné přihlašování – testovací prostředí, přejděte na **otestovat jednotné přihlašování** (krok 5). Pokud **testovací** tlačítko zašedlé, budete muset nejprve vyplňte a uložte povinné atributy **základní konfiguraci SAML** oddílu.
 1. V **otestovat jednotné přihlašování** okně používat své podnikové přihlašovací údaje pro přihlášení k cílové aplikaci. Můžete přihlásit jako aktuální uživatel nebo jako jiný uživatel. Pokud se přihlásit jako jiný uživatel výzvu vás vyzve k ověření.
 
-    ![Zkušební stránku SAML](./media/howto-v1-debug-saml-sso-issues/test-single-sign-on.png)
-
+    ![Snímek obrazovky testovací stránce SAML SSO](./media/howto-v1-debug-saml-sso-issues/test-single-sign-on.png)
 
 Pokud jste úspěšně přihlášení, má test byl dokončen. V tomto případě Azure AD vystaví token SAML odpovědi do aplikace. Aplikace používá pro úspěšné přihlášení tokenu SAML.
 
 Pokud máte chybu na přihlašovací stránce společnosti nebo aplikace, použijte jednu z následujících částech tuto chybu napravíme.
 
-
 ## <a name="resolve-a-sign-in-error-on-your-company-sign-in-page"></a>Vyřešte chyby přihlášení na přihlašovací stránku vaší společnosti
 
 Při pokusu o přihlášení může zobrazit chyba ve vaší společnosti přihlašovací stránku, která se podobá následujícímu příkladu.
 
-![Chyby přihlášení](./media/howto-v1-debug-saml-sso-issues/error.png)
+![Příklad zobrazující chybu v společnosti přihlašovací stránky](./media/howto-v1-debug-saml-sso-issues/error.png)
 
-Chcete-li ladit tuto chybu, budete potřebovat chybovou zprávu a požadavku SAML. Rozšíření Moje aplikace zabezpečené přihlášení automaticky shromažďuje tyto informace a zobrazí pokyny k řešení v Azure AD. 
+Chcete-li ladit tuto chybu, budete potřebovat chybovou zprávu a požadavku SAML. Rozšíření Moje aplikace zabezpečené přihlášení automaticky shromažďuje tyto informace a zobrazí pokyny k řešení v Azure AD.
 
 ### <a name="to-resolve-the-sign-in-error-with-the-my-apps-secure-sign-in-extension-installed"></a>Chcete-li vyřešit chyby přihlášení s příponou Moje aplikace zabezpečené přihlašování nainstalovaná
 
-1. Pokud dojde k chybě, rozšíření vás přesměruje zpátky do služby Azure AD **otestovat jednotné přihlašování** okno. 
-1. Na **otestovat jednotné přihlašování** okně vyberte **stáhnout si požadavek SAML**. 
+1. Pokud dojde k chybě, rozšíření vás přesměruje zpátky do služby Azure AD **otestovat jednotné přihlašování** okno.
+1. Na **otestovat jednotné přihlašování** okně vyberte **stáhnout si požadavek SAML**.
 1. Měli byste vidět konkrétní řešení pokyny na základě chybu a hodnoty v požadavku SAML.
 1. Zobrazí se **opravit** tlačítko automaticky aktualizovat konfigurace ve službě Azure AD k vyřešení daného problému. Pokud toto tlačítko nevidíte, pak problém přihlášení není kvůli chybné konfiguraci v Azure AD.
 
@@ -88,25 +85,24 @@ Není-li žádné řešení pro chyby přihlášení, doporučujeme používat t
 
 ## <a name="resolve-a-sign-in-error-on-the-application-page"></a>Vyřešte chyby přihlášení na stránce aplikace
 
-Může úspěšně přihlásit a pak na stránce aplikace zobrazí chyba. K tomu dojde, když Azure AD vystaví token do aplikace, ale aplikace nepřijímá žádné odpovědi.   
+Může úspěšně přihlásit a pak na stránce aplikace zobrazí chyba. K tomu dojde, když Azure AD vystaví token do aplikace, ale aplikace nepřijímá žádné odpovědi.
 
 Chcete-li chybu vyřešit, postupujte takto:
 
 1. Pokud je aplikace v galerii Azure AD, ověřte, že jste provedli všechny kroky pro integraci aplikace s Azure AD. Pokyny k integraci vaší aplikace najdete v tématu [seznamu kurzů integrace aplikací SaaS](../saas-apps/tutorial-list.md).
 1. Načte odpověď SAML.
     - Pokud je nainstalovaná rozšíření Moje aplikace zabezpečené přihlašování, z **otestovat jednotné přihlašování** okna, klikněte na tlačítko **stáhnout odpověď SAML**.
-    - Pokud není nainstalovaná rozšíření, použijte nástroj, jako [Fiddler](https://www.telerik.com/fiddler) načíst odpověď SAML. 
+    - Pokud není nainstalovaná rozšíření, použijte nástroj, jako [Fiddler](https://www.telerik.com/fiddler) načíst odpověď SAML.
 1. Všimněte si, že tyto prvky v tokenu SAML odpovědi:
    - Jedinečný identifikátor uživatele NameID hodnota a formátu
    - Deklarací identity vystavených v tokenu
-   - Certifikát použitý k podpisu tokenu. 
+   - Certifikát použitý k podpisu tokenu.
 
      Další informace o odpověď SAML, naleznete v tématu [protokol jednotné přihlašování SAML](single-sign-on-saml-protocol.md).
 
 1. Teď, když si přečtete odpověď SAML, naleznete v tématu [chyba na stránce aplikace po přihlášení](../manage-apps/application-sign-in-problem-application-error.md) pokyny o tom, aby problém pomohl vyřešit. 
 1. Pokud jste pořád nejste schopni úspěšně se přihlásit, požádejte dodavatele aplikace co chybí odpověď SAML.
 
-
 ## <a name="next-steps"></a>Další postup
 
-Teď, když jednotné přihlašování funguje pro aplikace, může [automatizace zřizování uživatelů a jeho rušení pro aplikace SaaS](../manage-apps/user-provisioning.md) nebo [Začínáme s podmíněným přístupem](../conditional-access/app-based-conditional-access.md).
+Teď, když jednotné přihlašování funguje pro aplikace, může [automatizace zřizování uživatelů pro aplikace SaaS a jeho rušení](../manage-apps/user-provisioning.md) nebo [Začínáme s podmíněným přístupem](../conditional-access/app-based-conditional-access.md).

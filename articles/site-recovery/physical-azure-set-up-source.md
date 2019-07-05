@@ -6,14 +6,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 04/14/2019
+ms.date: 07/0/2019
 ms.author: ramamill
-ms.openlocfilehash: 5f0578026e95378065fc68198434e347a87eb1fe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 44588fedd53b363c43a369eeb1917ccaec58d948
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62123910"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508779"
 ---
 # <a name="set-up-the-configuration-server-for-disaster-recovery-of-physical-servers-to-azure"></a>Nastavení konfigurace serveru pro zotavení po havárii fyzických serverů do Azure
 
@@ -24,7 +24,7 @@ Tento článek popisuje, jak nastavit v místním prostředí ke spuštění rep
 Tento článek předpokládá, že již máte:
 - V trezoru služby Recovery Services [webu Azure portal](https://portal.azure.com "webu Azure portal").
 - Fyzický počítač, na kterém se má nainstalovat konfigurační server.
-- Pokud jste jste zakázali protokol TLS 1.0 na počítači, na kterém instalujete konfiguračního serveru, ujistěte se, že je povoleno TLs 1.2, a rozhraní .NET Framework verze 4.6 nebo novější byl nainstalován na počítači (pomocí silného šifrování, zakázáno). [Další informace](https://support.microsoft.com/help/4033999/how-to-resolve-azure-site-recovery-agent-issues-after-disabling-tls-1).
+- Pokud jste jste zakázali protokol TLS 1.0 na počítači, na kterém instalujete konfiguračního serveru, ujistěte se, že je povoleno TLs 1.2, a rozhraní .NET Framework verze 4.6 nebo novější byl nainstalován na počítači (pomocí silného šifrování povolené). [Další informace](https://support.microsoft.com/help/4033999/how-to-resolve-azure-site-recovery-agent-issues-after-disabling-tls-1).
 
 ### <a name="configuration-server-minimum-requirements"></a>Minimální požadavky na konfiguraci serveru
 V následující tabulce jsou uvedeny minimální hardware, software a požadavky na síť pro konfigurační server.

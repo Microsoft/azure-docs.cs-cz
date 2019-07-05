@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmon
 ms.service: multiple
 ms.topic: article
-ms.date: 04/28/2019
+ms.date: 07/01/2019
 ms.author: raynew
-ms.openlocfilehash: 5ed9dc595c537d8a923d3eb056dcb002cf225f7c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 81ba993e6cbe55b45d34325545754bec561ce479
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66427109"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67514471"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Obchodní kontinuity podnikových procesů a zotavení po havárii (BCDR): Spárované oblasti Azure
 
@@ -77,7 +77,7 @@ Jak je uvedeno na obrázku 2.
 
 ![IaaS](./media/best-practices-availability-paired-regions/1Green.png) **Azure Compute (IaaS)** – je třeba zřídit další výpočetní prostředky předem zajistit prostředky jsou k dispozici v jiné oblasti při havárii. Další informace najdete v tématu [technické pokyny k odolnosti Azure](resiliency/resiliency-technical-guidance.md).
 
-![Úložiště](./media/best-practices-availability-paired-regions/2Green.png) **služby Azure Storage** – geograficky redundantní úložiště (GRS) je ve výchozím nastavení nakonfigurované, když se vytvoří účet služby Azure Storage. S GRS data automaticky replikují na třech místech v rámci primární oblasti a třikrát v párované oblasti. Další informace najdete v tématu [možnosti redundance Azure Storage](storage/common/storage-redundancy.md).
+![Úložiště](./media/best-practices-availability-paired-regions/2Green.png) **služby Azure Storage** – Pokud používáte spravované disky, přečtěte si o [záloh mezi různými oblastmi](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region#virtual-machines) pomocí služby Azure Backup a [replikaci virtuálních počítačů](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication) z jedné oblasti do druhého pomocí Azure Site Recovery. Pokud používáte účty úložiště, je při vytvoření účtu služby Azure Storage geograficky redundantní úložiště (GRS) nakonfigurovaná ve výchozím nastavení. S GRS data automaticky replikují na třech místech v rámci primární oblasti a třikrát v párované oblasti. Další informace najdete v tématu [možnosti redundance Azure Storage](storage/common/storage-redundancy.md).
 
 ![Azure SQL](./media/best-practices-availability-paired-regions/3Green.png) **Azure SQL Database** – s Azure SQL Database geografickou replikaci, můžete nakonfigurovat asynchronní replikace transakcí do libovolné oblasti na světě; doporučujeme však nasazování těchto prostředků v Spárované oblasti pro většinu scénářů zotavení po havárii. Další informace najdete v tématu [geografické replikace ve službě Azure SQL Database](sql-database/sql-database-geo-replication-overview.md).
 

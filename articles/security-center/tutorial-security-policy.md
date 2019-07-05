@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/05/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 7f738350743b0b80bf39a322043c514081721def
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7ff05421222ff0f4312d703366cfd443eee06450
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65967841"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551728"
 ---
 # <a name="working-with-security-policies"></a>Práce se zásadami zabezpečení
 
@@ -32,7 +32,7 @@ Pokyny o tom, jak nastavit zásady pomocí Powershellu najdete v tématu [rychl�
 > Security Center začít své integraci s Azure Policy. Stávající zákazníci budou automaticky migrovat na nové integrované podnět ve službě Azure Policy, namísto předchozí zásady zabezpečení ve službě Security Center. Tato změna nebude mít vliv na prostředky nebo prostředí s výjimkou přítomnost nové aktivity ve službě Azure Policy.
 
 ## <a name="what-are-security-policies"></a>Co jsou zásady zabezpečení?
-Zásady zabezpečení definují požadovanou konfiguraci úloh a pomáhají zajišťovat dodržování předpisů společnosti nebo soulad se zákonnými požadavky na zabezpečení. Ve službě Azure Policy můžete definovat zásady pro vaše předplatná Azure a je typu úlohy nebo citlivosti dat. přizpůsobit. Aplikace, které používají regulovaná data, jako jsou identifikovatelné osobní údaje, například může vyžadovat vyšší úroveň zabezpečení než jiné úlohy. Nastavit zásady napříč předplatnými nebo skupin pro správu, je nastavit [Azure Policy](../governance/policy/overview.md).
+Zásady zabezpečení definují požadovanou konfiguraci úloh a pomáhají zajišťovat dodržování předpisů společnosti nebo soulad se zákonnými požadavky na zabezpečení. Ve službě Azure Policy můžete definovat zásady pro vaše předplatná Azure a je typu úlohy nebo citlivosti dat. přizpůsobit. Aplikace, které používají regulovaná data, jako je například osobní údaje nebo zákaznická data, například může vyžadovat vyšší úroveň zabezpečení než jiné úlohy. Nastavit zásady napříč předplatnými nebo skupin pro správu, je nastavit [Azure Policy](../governance/policy/overview.md).
 
 Zásady zabezpečení vliv na doporučení zabezpečení, získáte v Azure Security Center. Můžete monitorovat dodržování zásad v nich můžete najít potenciální nedostatky zabezpečení a zmírnit hrozby. Další informace o tom, jak určit, která možnost je pro vás vhodná, najdete v seznamu [integrované bezpečnostní zásady](security-center-policy-definitions.md).
 
@@ -73,13 +73,6 @@ Zobrazení zásad zabezpečení ve službě Security Center:
    > [!NOTE]
    > - Řídicí panel Security Center může zobrazit větší počet předplatných v rámci **pokrytí předplatného** než počet předplatných, které jsou uvedené v části **Správa zásad**. V části Pokrytí předplatného se zobrazuje počet předplatných úrovně Standard a Free a „nepokrytých“ předplatných. Předplatná "nejsou zahrnuta" nemají povolené Security Center a nejsou zobrazeny v části **Správa zásad**.
    >
-
-   Ve sloupcích tabulky se zobrazuje:
-
-   - **Přiřazení iniciativy zásad** – Security Center [integrované zásady](security-center-policy-definitions.md) a iniciativy, které jsou přiřazeny předplatné nebo skupinu pro správu.
-   - **Pokrytí** – identifikuje cenové úrovně Free nebo Standard, která skupina pro správu, předplatné nebo pracovní prostor běží na.  Další informace o cenových úrovních služby Security Center najdete na stránce s [cenami](security-center-pricing.md).
-   - **Nastavení** – předplatné má odkaz **upravit nastavení**. Výběr **upravit nastavení** vám umožní aktualizovat vaše [nastavení Centra zabezpečení](security-center-policies-overview.md) pro každé předplatné nebo skupinu pro správu.
-   - **Zabezpečené skóre** – [zabezpečené skóre](security-center-secure-score.md) poskytují měřítko zabezpečené stavu zabezpečení vašich úloh a pomůže vám určit prioritu doporučení pro vylepšení.
 
 2. Vyberte předplatné nebo správu skupinu, jejichž zásady, které chcete zobrazit.
 
@@ -132,11 +125,11 @@ Jako součást nativní integrace se službou Azure Policy Azure Security Center
 
 Důležité koncepty ve službě Azure Policy: 
 
-- A **definice zásady** je pravidlo 
+- A **definice zásady** je pravidlo 
 
--  **Iniciativy** je kolekce definic zásad (pravidla) 
+- **Iniciativy** je kolekce definic zásad (pravidla) 
 
--  **Přiřazení** aplikaci iniciativy nebo zásady pro konkrétní obor (skupiny pro správu, předplatné, atd.) 
+- **Přiřazení** aplikaci iniciativy nebo zásady pro konkrétní obor (skupiny pro správu, předplatné, atd.) 
 
 Security Center obsahuje vestavěné iniciativy, která obsahuje všechny jeho zásady zabezpečení. Aby bylo možné vyhodnotit zásady služby Security Center ve vašich prostředcích Azure, měli byste vytvořit přiřazení skupiny pro správu nebo předplatného, které chcete posoudit.  
 

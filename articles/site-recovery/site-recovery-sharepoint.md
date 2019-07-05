@@ -5,14 +5,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 6/27/2019
 ms.author: sutalasi
-ms.openlocfilehash: 5f477cf20b817d7a6c8be856636bf1e3755b5424
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4b4edec43d01878bbc5899487f6ee1d2816eb135
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61472031"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491832"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Nastavení zotavení po havárii pro vícevrstvou aplikaci SharePoint pro zotavení po havárii pomocí Azure Site Recovery
 
@@ -111,7 +111,7 @@ U lokalit, směřujících do Internetu [vytvořit profil služby Traffic Manage
 
 | **kde** | **Zdroj** | **Cíl**|
 | --- | --- | --- |
-| Public DNS | Veřejná služba DNS pro weby služby SharePoint <br/><br/> Příklad: sharepoint.contoso.com | Traffic Manager <br/><br/> contososharepoint.trafficmanager.net |
+| Veřejná služba DNS | Veřejná služba DNS pro weby služby SharePoint <br/><br/> Příklad: sharepoint.contoso.com | Traffic Manager <br/><br/> contososharepoint.trafficmanager.net |
 | On-premises DNS | sharepointonprem.contoso.com | Veřejné IP adresy na farmě místní |
 
 
@@ -196,7 +196,7 @@ Postupujte podle [návod](site-recovery-test-failover-to-azure.md) provést test
 
 Pokyny k provádění testovacího převzetí služeb při selhání pro službu AD a DNS, najdete [testovací převzetí služeb při selhání důležité informace týkající se AD a DNS](site-recovery-active-directory.md#test-failover-considerations) dokumentu.
 
-Pokyny k provádění testovacího převzetí služeb při selhání pro SQL vždy na skupiny dostupnosti, najdete v tématu [provedení testu převzetí služeb při selhání SQL serveru Always On](site-recovery-sql.md#steps-to-do-a-test-failover) dokumentu.
+Pokyny k provádění testovacího převzetí služeb při selhání pro SQL vždy na skupiny dostupnosti, najdete v tématu [provádění aplikace zotavení po Havárii pomocí Azure Site Recovery a provedení testu převzetí služeb při selhání](site-recovery-sql.md#disaster-recovery-of-application) dokumentu.
 
 ## <a name="doing-a-failover"></a>Převzetím služeb
 Postupujte podle [návod](site-recovery-failover.md) plnit převzetí služeb při selhání.

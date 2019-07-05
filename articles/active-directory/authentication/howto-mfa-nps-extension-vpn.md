@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e94b307d562c4317a87713612a62e6da007f9703
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4afe5c89a83f251ee354c955b6dc28b0bccc9e6c
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64570637"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561123"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Integrovat vaše infrastruktura sítě VPN s Azure MFA pomocí rozšíření Server NPS pro Azure
 
@@ -246,7 +246,7 @@ V této části můžete nakonfigurovat VPN serveru na použití ověřování p
 
     b. Pro **sdílený tajný klíč**vyberte **změnu**a pak zadejte sdílený tajný, který jste vytvořili a poznamenali dříve.
 
-    c. V **časový limit (sekundy)** , vyberte hodnotu z **30** prostřednictvím **60**.  
+    c. V **časový limit (sekundy)** zadejte hodnotu **30**.  
     Hodnota časového limitu je nutné vyčkat dostatečně dlouho na dokončení druhý ověřovací faktor.
 
     ![Přidat Server protokolu RADIUS okno Konfigurace časový limit](./media/howto-mfa-nps-extension-vpn/image16.png)
@@ -304,7 +304,7 @@ Při řešení těchto problémů, je ideální místo, kde začít Zkontrolujte
 
 ## <a name="configure-multi-factor-authentication"></a>Konfigurace ověřování službou Multi-Factor Authentication
 
-Pomoc uživatelům konfigurace ověřování službou Multi-Factor Authentication najdete v článcích [vyžadování dvoustupňového ověřování pro uživatele nebo skupinu](howto-mfa-userstates.md) a [nastavit účtu pro dvoustupňové ověřování.](../user-help/multi-factor-authentication-end-user-first-time.md)
+Pomoc uživatelům konfigurace ověřování službou Multi-Factor Authentication najdete v článcích [plánování nasazení cloudového ověřování Azure Multi-Factor Authentication](howto-mfa-getstarted.md#create-conditional-access-policy) a [nastavit účtu pro dvoustupňové ověřování.](../user-help/multi-factor-authentication-end-user-first-time.md)
 
 ## <a name="install-and-configure-the-nps-extension"></a>Instalace a konfigurace rozšíření serveru NPS
 

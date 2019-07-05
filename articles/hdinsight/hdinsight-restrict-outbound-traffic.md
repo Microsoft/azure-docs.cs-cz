@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: howto
 ms.date: 05/30/2019
-ms.openlocfilehash: 542813e0f82a1a52142a2b82bea3fdb101fdec28
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: af5ddd50556b493cddf27d1ebb766d9bf6105107
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67077162"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67433434"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall-preview"></a>Konfigurace odchozího síťového provozu pro clustery Azure HDInsight pomocí brány Firewall (Preview)
 
@@ -89,7 +89,7 @@ Vytvoření pravidel sítě správně nakonfigurovat váš cluster HDInsight.
 
    | **Název** | **Protokol** | **Zdrojová adresa** | **Značky služeb** | **Cílový Port** | **Poznámky** |
    | --- | --- | --- | --- | --- | --- |
-   | Rule_7 | TCP | * | * | `1433,11000-11999,14000-14999` | Konfigurace pravidla sítě v části značky služeb pro SQL, které vám umožní protokolování a auditování SQL provoz, pokud není nakonfigurované koncové body služby pro SQL Server v HDInsight podsítě, která bude obejít bránu firewall. |
+   | Rule_7 | TCP | * | SQL | `1433` | Konfigurace pravidla sítě v části značky služeb pro SQL, které vám umožní protokolování a auditování SQL provoz, pokud není nakonfigurované koncové body služby pro SQL Server v HDInsight podsítě, která bude obejít bránu firewall. |
 
 1. Klikněte na tlačítko **přidat** nezbytných k dokončení vytvoření vaší kolekce pravidel sítě.
 

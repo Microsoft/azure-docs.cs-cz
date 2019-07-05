@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 160799917fb2802689f23d57d6daa9ad0a92c37a
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 2e6ac72a91ae14b6f9c513c84da6f1f06508caef
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273090"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482206"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Platforma identit Microsoft a implicitní tok poskytování
 
@@ -48,7 +48,7 @@ Ale pokud nechcete použít knihovnu v jednostránkové aplikaci a pošlete sami
 
 Následující diagram znázorňuje vypadá celý implicitní přihlášení tok a následující části popisují každý krok podrobněji.
 
-![OpenID Connect plaveckých drah](./media/v2-oauth2-implicit-grant-flow/convergence-scenarios-implicit.svg)
+![Diagram znázorňující implicitním tokem přihlášení](./media/v2-oauth2-implicit-grant-flow/convergence-scenarios-implicit.svg)
 
 ## <a name="send-the-sign-in-request"></a>Odeslat žádost o přihlášení
 

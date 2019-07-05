@@ -11,12 +11,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 05/21/2019
 ms.author: shvija
-ms.openlocfilehash: ae970b9612154a6463c4bf44a65da71a20c81635
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dfdeee9591b5d6ccbadadaef83c6598dd0e850d8
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65978315"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448143"
 ---
 # <a name="active-directory-role-based-access-control-preview"></a>Aktivní Directory Role-Based řízení přístupu (preview)
 
@@ -29,10 +29,10 @@ Aplikace, která používá Azure AD RBAC není potřeba zpracovat pravidla SAS 
 ## <a name="event-hubs-roles-and-permissions"></a>Event Hubs role a oprávnění
 Azure poskytuje následující předdefinované role RBAC pro autorizaci přístupu pro obor názvů služby Event Hubs:
 
-[Event Hubs vlastník dat (Preview)](../role-based-access-control/built-in-roles.md#service-bus-data-owner) role umožňuje přístup k datům na obor názvů služby Event Hubs a jeho entit (fronty, témata, odběry a filtry)
+[Vlastník dat centra událostí Azure (Preview)](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner-preview) role umožňuje přístup k datům na obor názvů služby Event Hubs a jeho entit (fronty, témata, odběry a filtry)
 
 >[!IMPORTANT]
-> Dříve podporován spravované identity k přidání **vlastníka** nebo **Přispěvatel** role. Nicméně oprávnění pro přístup k datům **vlastníka** a **Přispěvatel** role už jsou zachované. Pokud používáte **vlastníka** nebo **Přispěvatel** role, přepínače na **vlastník dat Event Hubs** role.
+> Dříve podporován spravované identity k přidání **vlastníka** nebo **Přispěvatel** role. Nicméně oprávnění pro přístup k datům **vlastníka** a **Přispěvatel** role už jsou zachované. Pokud používáte **vlastníka** nebo **Přispěvatel** role, přepínače na **vlastník dat centra událostí Azure (Preview)** role.
 
 
 ## <a name="use-event-hubs-with-an-azure-ad-domain-user-account"></a>Uživatelský účet domény Azure AD pomocí služby Event Hubs

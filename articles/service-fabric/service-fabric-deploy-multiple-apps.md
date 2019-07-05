@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: 69df9eff85d96c9cc6ca7fa1d3aabd2c54fae416
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 677a9d02493bf5fac1bfcbe8c40ce9efe2040be9
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60583856"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537704"
 ---
 # <a name="deploy-multiple-guest-executables"></a>Nasazení několika hostujících spustitelných souborů
 Tento článek ukazuje, jak balení a nasazení několika hostujících spustitelných souborů do Azure Service Fabric. Vytváření a nasazování jednoho balíčku Service Fabric najdete v návodu k [nasazení spustitelný soubor typu Host do Service Fabric](service-fabric-deploy-existing-app.md).
@@ -33,7 +33,7 @@ Visual Studio můžete použít k vytvoření balíčku aplikace, která obsahuj
 * [Ukázka dvě hosta spustitelných souborů (C# a Node.js) komunikaci přes službu pojmenování pomocí rozhraní REST](https://github.com/Azure-Samples/service-fabric-containers)
 
 ## <a name="manually-package-the-multiple-guest-executable-application"></a>Ručně balíček více aplikace spustitelná hostem
-Případně můžete ručně zabalit spustitelný soubor typu Host. Pro ruční balení, tento článek používá nástroj balíčku Service Fabric, který je k dispozici na [ https://aka.ms/servicefabricpacktool ](https://aka.ms/servicefabricpacktool).
+Případně můžete ručně zabalit spustitelný soubor typu Host. Podrobnosti najdete v tématu [ručně zabalení a nasazení existujícího spustitelného souboru](service-fabric-deploy-existing-app.md#manually-package-and-deploy-an-existing-executable).
 
 ### <a name="packaging-the-nodejs-application"></a>Balení aplikace Node.js
 Tento článek předpokládá, že Node.js není nainstalována na uzlech v clusteru Service Fabric. V důsledku toho budete muset přidat Node.exe do kořenového adresáře aplikace uzlu před balení. Struktura adresářů aplikace Node.js (pomocí webovou architekturu Express a modul šablonovacím) by měla vypadat podobně jako následující:
@@ -207,7 +207,6 @@ New-ServiceFabricApplication -ApplicationName 'fabric:/NodeApp' -ApplicationType
 Po publikování aplikace do místního clusteru je úspěšně, můžete přístup k aplikaci Node.js na portu, který jsme zadali v manifestu služby aplikace Node.js – například http:\//localhost:3000.
 
 V tomto kurzu jste viděli, jak jednoduše zabalit dvě stávajících aplikací jako jedna aplikace Service Fabric. Můžete také se naučili, jak ji nasadit do Service Fabric tak, aby ho využívat některé funkce Service Fabric, jako je vysoká dostupnost a stavu systému integrace.
-
 
 ## <a name="adding-more-guest-executables-to-an-existing-application-using-yeoman-on-linux"></a>Přidání další spustitelné soubory typu Host do existující aplikace v Linuxu pomocí Yeomana
 

@@ -1,5 +1,5 @@
 ---
-title: Metriky Azure Service Bus ve službě Azure Monitor (preview) | Dokumentace Microsoftu
+title: Metriky Azure Service Bus ve službě Azure Monitor | Dokumentace Microsoftu
 description: Použití Azure monitoru ke sledování entit služby Service Bus
 services: service-bus-messaging
 documentationcenter: .NET
@@ -10,14 +10,14 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 11/06/2018
 ms.author: aschhab
-ms.openlocfilehash: fdb0152ef398dbd53a8a2a99a10d90254252908b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 80a4b1e60202b88f6ed3c1574bd4684575a9b153
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65921232"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67538061"
 ---
-# <a name="azure-service-bus-metrics-in-azure-monitor-preview"></a>Metriky Azure Service Bus ve službě Azure Monitor (preview)
+# <a name="azure-service-bus-metrics-in-azure-monitor"></a>Metriky Azure Service Bus ve službě Azure Monitor
 
 Metrik služby Service Bus vám poskytnou stav prostředků ve vašem předplatném Azure. S bohatou sadou dat metrik můžete posouzení celkového stavu vašich prostředků služby Service Bus, pouze na úrovni oboru názvů, ale také na úrovni entity. Ve statistikách může být důležité, protože pomáhají s monitorováním stavu služby Service Bus. Metriky může také pomoct potíží hlavní příčinu, aniž byste museli kontaktovat podporu Azure.
 
@@ -38,7 +38,7 @@ Metriky můžete sledovat v čase [webu Azure portal](https://portal.azure.com).
 
 ![][1]
 
-Můžete také přístup k metrikám přímo prostřednictvím oboru názvů. Uděláte to tak, zvolte svůj obor názvů a pak klikněte na tlačítko **metriky (Preview)** . Pokud chcete zobrazit metriky vyfiltrovaný tak, aby oboru entity, vyberte entitu a pak klikněte na **metriky (preview)** .
+Můžete také přístup k metrikám přímo prostřednictvím oboru názvů. Uděláte to tak, zvolte svůj obor názvů a pak klikněte na tlačítko **metriky**. Pokud chcete zobrazit metriky vyfiltrovaný tak, aby oboru entity, vyberte entitu a pak klikněte na **metriky**.
 
 ![][2]
 
@@ -46,7 +46,9 @@ Pro metrika podporuje dimenze musí filtr s hodnotou požadované dimenzí.
 
 ## <a name="billing"></a>Fakturace
 
-Použití metrik ve službě Azure Monitor je zdarma ve verzi preview. Ale pokud používáte další řešení, která ingestovat data metrik, vám může účtovat podle těchto řešení. Například jste se účtují po Azure Storage při archivaci dat metrik do účtu služby Azure Storage. Můžete se také účtuje se podle protokoly Azure monitoru Pokud streamování dat metriky s protokoly Azure monitoru pro pokročilé analýzy.
+Metriky a výstrahy týkající se Azure Monitor se účtují na základě výstraze. Tyto poplatky musí být k dispozici na portálu, když instalační program je výstraha a před uložením. 
+
+Další řešení, která ingestovat data metriky se účtují přímo po těchto řešení. Například jste se účtují po Azure Storage při archivaci dat metrik do účtu služby Azure Storage. Můžete také účtují se službou Log Analytics Pokud streamování dat metrik do Log Analytics pro pokročilé analýzy.
 
 Následujících metrik získáte přehled o stavu vaší služby. 
 
@@ -61,11 +63,11 @@ Spočítá počet dat a správu požadavků operace.
 
 | Název metriky | Popis |
 | ------------------- | ----------------- |
-| Příchozí žádosti (preview) | Počet požadavků provedených na službu Service Bus v zadaném období. <br/><br/> Jednotka: Count <br/> Typ agregace: Celkem <br/> Dimenze: EntityName|
-|Úspěšné požadavky (preview)|Počet úspěšných požadavků provedených na službu Service Bus v zadaném období.<br/><br/> Jednotka: Počet <br/> Typ agregace: Celkem <br/> Dimenze: EntityName|
-|Chyby serveru (preview)|Počet požadavků není zpracována z důvodu chyby ve službě Service Bus v zadaném období.<br/><br/> Jednotka: Count <br/> Typ agregace: Celkem <br/> Dimenze: EntityName|
-|Chyby uživatele (ve verzi preview – viz následující podčásti)|Počet požadavků není zpracována z důvodu chyby uživatele v zadaném období.<br/><br/> Jednotka: Počet <br/> Typ agregace: Celkem <br/> Dimenze: EntityName|
-|Omezené požadavky (preview)|Počet požadavků, které byly omezené, protože byl překročen využití.<br/><br/> Jednotka: Count <br/> Typ agregace: Celkem <br/> Dimenze: EntityName|
+| Příchozí požadavky| Počet požadavků provedených na službu Service Bus v zadaném období. <br/><br/> Jednotka: Count <br/> Typ agregace: Celkem <br/> Dimenze: EntityName|
+|Úspěšné požadavky|Počet úspěšných požadavků provedených na službu Service Bus v zadaném období.<br/><br/> Jednotka: Count <br/> Typ agregace: Celkem <br/> Dimenze: EntityName|
+|Chyby serveru|Počet požadavků není zpracována z důvodu chyby ve službě Service Bus v zadaném období.<br/><br/> Jednotka: Count <br/> Typ agregace: Celkem <br/> Dimenze: EntityName|
+|Chyby uživatele (viz následující podčásti)|Počet požadavků není zpracována z důvodu chyby uživatele v zadaném období.<br/><br/> Jednotka: Count <br/> Typ agregace: Celkem <br/> Dimenze: EntityName|
+|Omezené požadavky|Počet požadavků, které byly omezené, protože byl překročen využití.<br/><br/> Jednotka: Count <br/> Typ agregace: Celkem <br/> Dimenze: EntityName|
 
 ### <a name="user-errors"></a>Chyby uživatele
 
@@ -79,18 +81,18 @@ Následující dva typy chyb jsou klasifikovány jako chyby uživatele:
 
 | Název metriky | Popis |
 | ------------------- | ----------------- |
-|Příchozí zprávy (preview)|Počet událostí nebo zprávy odeslané do služby Service Bus v zadaném období.<br/><br/> Jednotka: Count <br/> Typ agregace: Celkem <br/> Dimenze: EntityName|
-|Odchozí zprávy (preview)|Počet zpráv přijatých z Service Bus v zadaném období nebo události.<br/><br/> Jednotka: Count <br/> Typ agregace: Celkem <br/> Dimenze: EntityName|
-| Zprávy (preview) | Počet zpráv ve frontě nebo tématu. <br/><br/> Jednotka: Počet <br/> Typ agregace: Průměr <br/> Dimenze: EntityName |
-| ActiveMessages (preview) | Počet aktivních zpráv ve frontě nebo tématu. <br/><br/> Jednotka: Count <br/> Typ agregace: Průměr <br/> Dimenze: EntityName |
-| Dead lettered zprávy (preview) | Počet dead lettered zpráv ve frontě nebo tématu. <br/><br/> Jednotka: Count <br/> Typ agregace: Průměr <br/>Dimenze: EntityName |
-| Plánované zprávy (preview) | Počet naplánovaných zprávy ve frontě nebo tématu. <br/><br/> Jednotka: Count <br/> Typ agregace: Průměr  <br/> Dimenze: EntityName |
+|Příchozí zprávy|Počet událostí nebo zprávy odeslané do služby Service Bus v zadaném období.<br/><br/> Jednotka: Počet <br/> Typ agregace: Celkem <br/> Dimenze: EntityName|
+|Odchozí zprávy|Počet zpráv přijatých z Service Bus v zadaném období nebo události.<br/><br/> Jednotka: Count <br/> Typ agregace: Celkem <br/> Dimenze: EntityName|
+| Zprávy| Počet zpráv ve frontě nebo tématu. <br/><br/> Jednotka: Count <br/> Typ agregace: Průměr <br/> Dimenze: EntityName |
+| ActiveMessages| Počet aktivních zpráv ve frontě nebo tématu. <br/><br/> Jednotka: Počet <br/> Typ agregace: Průměr <br/> Dimenze: EntityName |
+| Dead lettered zprávy| Počet dead lettered zpráv ve frontě nebo tématu. <br/><br/> Jednotka: Count <br/> Typ agregace: Průměr <br/>Dimenze: EntityName |
+| Plánované zprávy| Počet naplánovaných zprávy ve frontě nebo tématu. <br/><br/> Jednotka: Count <br/> Typ agregace: Průměr  <br/> Dimenze: EntityName |
 
 ## <a name="connection-metrics"></a>Metrik připojení
 
 | Název metriky | Popis |
 | ------------------- | ----------------- |
-|ActiveConnections (preview)|Počet aktivních připojení na obor názvů i na entity.<br/><br/> Jednotka: Počet <br/> Typ agregace: Celkem <br/> Dimenze: EntityName|
+|ActiveConnections|Počet aktivních připojení na obor názvů i na entity.<br/><br/> Jednotka: Count <br/> Typ agregace: Celkem <br/> Dimenze: EntityName|
 
 ## <a name="resource-usage-metrics"></a>Metriky využití prostředků
 
@@ -99,8 +101,8 @@ Následující dva typy chyb jsou klasifikovány jako chyby uživatele:
 
 | Název metriky | Popis |
 | ------------------- | ----------------- |
-|Využití CPU na obor názvů (preview)|Procento využití procesoru oboru názvů.<br/><br/> Jednotka: Procento <br/> Typ agregace: Maximum <br/> Dimenze: EntityName|
-|Využití paměti na obor názvů (preview)|Procento využití paměti oboru názvů.<br/><br/> Jednotka: Procento <br/> Typ agregace: Maximum <br/> Dimenze: EntityName|
+|Využití CPU na obor názvů|Procento využití procesoru oboru názvů.<br/><br/> Jednotka: Procento <br/> Typ agregace: Maximum <br/> Dimenze: EntityName|
+|Využití paměti na obor názvů|Procento využití paměti oboru názvů.<br/><br/> Jednotka: Procento <br/> Typ agregace: Maximum <br/> Dimenze: EntityName|
 
 ## <a name="metrics-dimensions"></a>Dimenze metriky
 
@@ -124,7 +126,7 @@ Azure Service Bus podporuje následující dimenze pro metriky ve službě Azure
         ![Výběr oboru názvů](./media/service-bus-metrics-azure-monitor/select-namespace.png)
 1. Vyberte **přidat kritéria**, a proveďte následující akce na **konfigurovat logiku signálů** stránky:
     1. Vyberte **metriky** pro **signalizuje, že typ**. 
-    2. Vyberte signál. Příklad: **Chyby (Preview) služby**. 
+    2. Vyberte signál. Příklad: **Služba chyby**. 
 
         ![Vyberte chyby serveru](./media/service-bus-metrics-azure-monitor/select-server-errors.png)
     1. Vyberte **větší než** pro **podmínku**.

@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 5022d765b5dfa4f1f973b7fb4370d5314bb887b8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 461df93400380ac74fa87eebc81fa06f77d7bf76
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60542861"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551656"
 ---
 # <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>Jak vytvořit image virtuálního počítače nebo virtuálního pevného disku
 
@@ -30,7 +30,9 @@ Chcete-li vytvořit více kopií virtuálního počítače (VM) pro použití v 
 
 Vytvořte kopii existujícího virtuálního počítače s Linuxem pro zálohování nebo pro ladění k nahrání specializovaného VHD z virtuálního počítače v místním systému Linux, najdete v článku [nahrání a vytvoření virtuálního počítače s Linuxem z vlastní image disku](upload-vhd.md).  
 
-Můžete také použít **Packeru** vytvořte vlastní konfiguraci. Další informace najdete v tématu [jak vytvořit Linuxové Image virtuálních počítačů v Azure pomocí Packeru](build-image-with-packer.md).
+Můžete použít **Image Builder pro virtuální počítač Azure (Public Preview)** k vytvoření vlastní image, nemusíte se učit všechny nástroje, služby nebo nastavení vytvářet kanály, jednoduše poskytuje informace o nastavení bitové kopie, a Image Builder vytvoří bitovou kopii. Další informace najdete v tématu [Začínáme se službou Azure VM Image Builder](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview).
+
+Kromě toho používání **Packeru** vytvořte vlastní konfiguraci. Další informace najdete v tématu [jak vytvořit Linuxové Image virtuálních počítačů v Azure pomocí Packeru](build-image-with-packer.md).
 
 Před vytvořením image budete potřebovat tyto položky:
 

@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 manager: craigg
-ms.date: 04/16/2019
-ms.openlocfilehash: c09dd990bb377672cb34ebd73a5aa9e59bbc067f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 06/26/2019
+ms.openlocfilehash: b03f546b992bd9de6092dc0da8ef72aa69aa1da2
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67070398"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447788"
 ---
 # <a name="use-sql-database-advanced-data-security-with-virtual-networks-and-near-100-compatibility"></a>Použití rozšířené zabezpečení dat s virtuálními sítěmi a téměř 100 % kompatibility SQL Database
 
@@ -81,6 +81,9 @@ V modelu virt. jader můžete mezi generacemi hardwaru.
 - **Gen5** logické procesory jsou založeny na Intel E5-2673 v4 (Broadwell) 2.3 GHz procesorech rychlé NVMe SSD, technologie hyper-threaded logické jádro a výpočet velikosti mezi 4 a 80 jádra.
 
 Další informace o rozdílech mezi generacemi hardwaru v [managed instance omezení prostředků](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics).
+
+> [!IMPORTANT]
+> Nové databáze Gen4 již nejsou podporovány v oblasti AustraliaEast.
 
 ## <a name="managed-instance-service-tiers"></a>Spravovaná instanci úrovně služeb
 

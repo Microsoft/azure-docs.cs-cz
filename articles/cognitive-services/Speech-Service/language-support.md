@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 9b8e12220f220bd8183675d13e25bdcab02707fd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c3596f230ace2d19df28d0b43af45c74aaa87836
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65020839"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561300"
 ---
 # <a name="language-and-region-support-for-the-speech-services"></a>Podpora jazyka a oblasti pro hlasové služby
 
@@ -24,7 +24,7 @@ Různé jazyky jsou podporovány pro různé funkce hlasové služby. Následuj�
 
 ## <a name="speech-to-text"></a>Převod řeči na text
 
-Rozpoznávání řeči Microsoft rozhraní API podporuje následující jazyky. Různé úrovně vlastního nastavení jsou k dispozici pro jednotlivé jazyky.
+Rozpoznávání řeči Microsoft sady SDK a rozhraní REST API podporují následující jazyky (národní prostředí). Různé úrovně vlastního nastavení jsou k dispozici pro jednotlivé jazyky.
 
   Kód | Jazyk | [Akustické přizpůsobení](how-to-customize-acoustic-models.md) | [Přizpůsobení jazyka](how-to-customize-language-model.md) | [Výslovnost přizpůsobení](how-to-customize-pronunciation.md)
  ------|----------|---------------------|---------------------|-------------------------

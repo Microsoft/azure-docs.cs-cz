@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: f372c2a85a9a03c7ead779bd4db64722891c9a4c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5b2c153646021aeb8ee0dbb787cfce41af19568d
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60201490"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443678"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Sestavení řešení IoT s použitím Stream Analytics
 
@@ -138,7 +138,8 @@ Existuje několik prostředků, které je možné snadno nasadit do skupiny pros
 10. Po chvíli, zobrazí se upozornění, potvrďte, **nasazení bylo úspěšné**.
 
 ### <a name="review-the-azure-stream-analytics-tollapp-resources"></a>Kontrola prostředků Azure Stream Analytics TollApp
-1. Přihlášení k portálu Azure Portal
+
+1. Přihlášení k webu Azure Portal
 
 2. Vyhledejte skupinu prostředků, kterou jste pojmenovali v předchozí části.
 
@@ -171,7 +172,7 @@ Existuje několik prostředků, které je možné snadno nasadit do skupiny pros
    - **Registrace** vstup je připojení k Azure Blob storage, odkazuje na soubor statické registration.json, používá pro vyhledávání podle potřeby. Tato referenčního datového vstupu se používá v pozdější variace syntaxi dotazu.
 
 4. Zkontrolujte výstupy TollApp ukázkové úlohy.
-   - **Cosmos DB** výstup je kolekce databáze Cosmos, která přijímá události výstupní jímky. Všimněte si, že tento výstup je používán v klauzuli streamování dotazu.
+   - **Cosmos DB** výstup je kontejner databáze Cosmos, který přijímá události výstupní jímky. Všimněte si, že tento výstup je používán v klauzuli streamování dotazu.
 
 ## <a name="start-the-tollapp-streaming-job"></a>Spuštění úlohy streamování TollApp
 Postupujte podle těchto kroků ke spuštění úlohy streamování:

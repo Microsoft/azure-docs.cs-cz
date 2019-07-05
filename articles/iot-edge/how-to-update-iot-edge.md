@@ -5,17 +5,17 @@ keywords: ''
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 03/17/2019
+ms.date: 06/27/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: a3b6327b9e05b039696cc1743fc2d16c5e945e26
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0c461da44d3d9075d66a68fe8994a4e970288fca
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65152636"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67543746"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>Aktualizace zabezpečení démon IoT Edge a modulu runtime
 
@@ -41,12 +41,14 @@ Zkontrolujte verzi démona zabezpečení běžícího ve vašem zařízení s po
 
 ### <a name="linux-devices"></a>Linux zařízení
 
-Na zařízeních s Linuxem použijte k aktualizaci zabezpečení démon apt-get nebo správce odpovídající balíček. 
+Na Linux x64 zařízení použijte k aktualizaci zabezpečení démon apt-get nebo správce odpovídající balíček. 
 
 ```bash
 apt-get update
 apt-get install libiothsm iotedge
 ```
+
+Na zařízeních Linux ARM32, postupujte podle kroků v [modul runtime nainstalovat Azure IoT Edge v Linuxu (ARM32v7/armhf)](how-to-install-iot-edge-linux-arm.md) nainstalujte nejnovější verzi démona zabezpečení. 
 
 ### <a name="windows-devices"></a>Zařízení Windows
 
@@ -62,7 +64,7 @@ Pokud chcete nainstalovat konkrétní verzi démona zabezpečení, stáhněte si
 
 ## <a name="update-the-runtime-containers"></a>Aktualizovat kontejnerů modulu runtime
 
-Způsob, jak aktualizovat agenta IoT Edge a IoT Edge hub kontejnery závisí na, jestli používáte kumulativní značky (třeba 1.0) nebo konkrétní značky (např. 1.0.2) ve vašem nasazení. 
+Způsob, jak aktualizovat agenta IoT Edge a IoT Edge hub kontejnery závisí na, jestli používáte kumulativní značky (třeba 1.0) nebo konkrétní značky (např. 1.0.7) ve vašem nasazení. 
 
 Kontrola verze agenta IoT Edge a moduly IoT Edge hub aktuálně na vašem zařízení pomocí příkazů `iotedge logs edgeAgent` nebo `iotedge logs edgeHub`. 
 
@@ -73,7 +75,7 @@ Kontrola verze agenta IoT Edge a moduly IoT Edge hub aktuálně na vašem zaří
 Agenta IoT Edge a IoT Edge hub obrázky jsou označené verzí IoT Edge, které jsou přidružené. Existují dva různé způsoby použití značky pomocí bitové kopie modulu runtime: 
 
 * **Značky se zajištěním provozu** – pouze první dvě hodnoty čísla verze můžete získat nejnovější image, která odpovídá těchto číslic. 1\.0 je třeba aktualizovat vždycky, když je nová verze tak, aby odkazoval na nejnovější verzi 1.0.x. Pokud modul runtime kontejneru na vašem zařízení IoT Edge znovu stáhne bitovou kopii, moduly runtime jsou aktualizovány na nejnovější verzi. Tento přístup je určeno pro účely vývoje. Nasazení z portálu Azure výchozí značky se zajištěním provozu. 
-* **Konkrétními značkami** -použít všechny tři hodnoty čísla verze explicitně nastavit verzi image. Například 1.0.2 nedojde ke změně po its vitial release. Jakmile budete připraveni k aktualizaci je možné deklarovat nové číslo verze v manifestu nasazení. Tento přístup doporučuje pro produkční účely.
+* **Konkrétními značkami** -použít všechny tři hodnoty čísla verze explicitně nastavit verzi image. Například 1.0.7 nedojde ke změně po its vitial release. Jakmile budete připraveni k aktualizaci je možné deklarovat nové číslo verze v manifestu nasazení. Tento přístup doporučuje pro produkční účely.
 
 ### <a name="update-a-rolling-tag-image"></a>Aktualizovat bitovou kopii postupné značky
 
@@ -92,7 +94,7 @@ Služba IoT Edge o přijetí změn nejnovější verze modulu runtime obrázků 
 
 ### <a name="update-a-specific-tag-image"></a>Aktualizace image s konkrétní značkou
 
-Pokud ve svém nasazení používáte konkrétními značkami (například mcr.microsoft.com/azureiotedge-hub:**1.0.2**) je všechno, co potřebujete udělat, aktualizujte značky v manifestu nasazení a změny aplikujte na vaše zařízení. 
+Pokud ve svém nasazení používáte konkrétními značkami (například mcr.microsoft.com/azureiotedge-hub:**1.0.7**) je všechno, co potřebujete udělat, aktualizujte značky v manifestu nasazení a změny aplikujte na vaše zařízení. 
 
 Na webu Azure Portal, bitové kopie nasazení modulu runtime jsou deklarovány v **konfigurovat rozšířená nastavení modulu Runtime Edge** oddílu. 
 
@@ -105,7 +107,7 @@ V manifestu nasazení JSON, aktualizaci bitové kopie modulu v **systemModules**
   "edgeAgent": {
     "type": "docker",
     "settings": {
-      "image": "mcr.microsoft.com/azureiotedge-agent:1.0.2",
+      "image": "mcr.microsoft.com/azureiotedge-agent:1.0.7",
       "createOptions": ""
     }
   },
@@ -114,12 +116,24 @@ V manifestu nasazení JSON, aktualizaci bitové kopie modulu v **systemModules**
     "status": "running",
     "restartPolicy": "always",
     "settings": {
-      "image": "mcr.microsoft.com/azureiotedge-hub:1.0.2",
+      "image": "mcr.microsoft.com/azureiotedge-hub:1.0.7",
       "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"5671/tcp\":[{\"HostPort\":\"5671\"}], \"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}]}}}"
     }
   }
 },
 ```
+
+## <a name="update-to-a-release-candidate-version"></a>Aktualizace verzi Release candidate
+
+Azure IoT Edge pravidelně vydává nové verze služby IoT Edge. Před každou stabilní verze je jeden nebo více vydání verze Release candidate (RC). Zahrnout všechny plánované funkce pro verzi RC verze, ale jsou stále probíhá testování a ověřování procesy nezbytné pro stabilní verze. Pokud chcete testovat nové funkce již v rané fázi, můžete nainstalovat verzi RC a poskytnou zpětnou vazbu prostřednictvím Githubu. 
+
+Verze Release candidate se řídí stejnou konvencí číslování verzí, ale mají **-rc** plus pořadové číslo příponou. Verze release Candidate ve stejném seznamu můžete zobrazit [Azure IoT Edge uvolní](https://github.com/Azure/azure-iotedge/releases) jako stabilní verze. Například vyhledat **1.0.7-rc1** a **1.0.7-rc2**, dva release Candidate, které byly dodány před **1.0.7**. Uvidíte také, že verze RC jsou označené **předběžné verze** popisky. 
+
+Jako momentálně ve verzi Preview nejsou součástí nejnovější verze release candidate, který cílový regulární instalační programy. Místo toho budete muset ručně cílové prostředky pro verzi RC, který chcete testovat. V závislosti na operačním systému zařízení IoT Edge použijte k aktualizaci IoT Edge na konkrétní verzi v následujících částech:
+
+* [Linux X64](how-to-install-iot-edge-linux.md#install-a-specific-version)
+* [Linux ARM32](how-to-install-iot-edge-linux-arm.md#install-a-specific-version)
+* [Windows](how-to-install-iot-edge-windows.md#offline-installation)
 
 ## <a name="next-steps"></a>Další postup
 

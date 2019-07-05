@@ -6,27 +6,23 @@ author: msmbaldwin
 manager: barbkess
 services: key-vault
 ms.author: mbaldwin
-ms.date: 03/05/2019
+ms.date: 07/06/2019
 ms.topic: conceptual
 ms.service: key-vault
-ms.openlocfilehash: defb67c7e100a50a81d55afee03aa84be8e1e8e9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 79d4254de40ef787b30eb4f483c86383a928ee1f
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64722469"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67566228"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Ověřování služba služba do služby Azure Key Vault pomocí rozhraní .NET
 
-K ověření do služby Azure Key Vault, budete potřebovat pověření Azure Active Directory (AD), sdílený tajný klíč nebo certifikát. Správa těchto přihlašovacích údajů může být obtížné a je lákavé sadu přihlašovacích údajů do aplikace včetně ve zdrojové nebo konfigurační soubory.
+K ověření do služby Azure Key Vault, budete potřebovat pověření Azure Active Directory (AD), sdílený tajný klíč nebo certifikát. 
 
-`Microsoft.Azure.Services.AppAuthentication` Pro knihovny .NET zjednodušuje tento problém. Použije přihlašovací údaje pro vývojáře k ověřování během místního vývoje. Při řešení je později nasadit do Azure, knihovny, automaticky se přepne do aplikace přihlašovacích údajů.  
+Správa těchto přihlašovacích údajů může být obtížné a je lákavé sadu přihlašovacích údajů do aplikace včetně ve zdrojové nebo konfigurační soubory.  `Microsoft.Azure.Services.AppAuthentication` Pro knihovny .NET zjednodušuje tento problém. Použije přihlašovací údaje pro vývojáře k ověřování během místního vývoje. Při řešení je později nasadit do Azure, knihovny, automaticky se přepne do aplikace přihlašovacích údajů.    Pomocí přihlašovacích údajů pro vývojáře při místním vývojovém je bezpečnější, protože není potřeba vytvořit přihlašovací údaje služby Azure AD nebo sdílet přihlašovacích údajů mezi vývojáři.
 
-Pomocí přihlašovacích údajů pro vývojáře při místním vývojovém je bezpečnější, protože není potřeba vytvořit přihlašovací údaje služby Azure AD nebo sdílet přihlašovacích údajů mezi vývojáři.
-
-`Microsoft.Azure.Services.AppAuthentication` Knihovny spravuje ověřování automaticky, která zase umožňuje zaměřit se na řešení, nikoli vaše přihlašovací údaje.
-
-`Microsoft.Azure.Services.AppAuthentication` Knihovna podporuje místní vývoj pomocí sady Microsoft Visual Studio, Azure CLI nebo integrované ověřování Azure AD. Při nasazení na prostředek Azure, který podporuje spravovanou identitu, automaticky používá knihovna [spravovaných identit pro prostředky Azure](../active-directory/msi-overview.md). Nejsou potřeba žádné změny kódu nebo konfigurace. Knihovna také podporuje s přímým přístupem pomocí služby Azure AD [přihlašovací údaje pro klienta](../azure-resource-manager/resource-group-authenticate-service-principal.md) když spravovaná identita není k dispozici, nebo když při místním vývojovém nelze určit kontext zabezpečení pro vývojáře.
+`Microsoft.Azure.Services.AppAuthentication` Knihovny spravuje ověřování automaticky, která zase umožňuje zaměřit se na řešení, nikoli vaše přihlašovací údaje.  Podporuje místní vývoj pomocí sady Microsoft Visual Studio, Azure CLI nebo integrované ověřování Azure AD. Při nasazení na prostředek Azure, který podporuje spravovanou identitu, automaticky používá knihovna [spravovaných identit pro prostředky Azure](../active-directory/msi-overview.md). Nejsou potřeba žádné změny kódu nebo konfigurace. Knihovna také podporuje s přímým přístupem pomocí služby Azure AD [přihlašovací údaje pro klienta](../azure-resource-manager/resource-group-authenticate-service-principal.md) když spravovaná identita není k dispozici, nebo když při místním vývojovém nelze určit kontext zabezpečení pro vývojáře.
 
 ## <a name="using-the-library"></a>Použití knihovny
 
@@ -53,22 +49,9 @@ Pro aplikace .NET, je nejjednodušší způsob, jak pracovat s spravovanou ident
 
 `GetAccessTokenAsync` Metoda vyžaduje identifikátor prostředku. Další informace najdete v tématu [které služby Azure podporují spravované identity pro prostředky Azure](../active-directory/msi-overview.md).
 
-## <a name="samples"></a>Ukázky kódu
-
-Následující ukázky show `Microsoft.Azure.Services.AppAuthentication` knihovny v akci:
-
-1. [Získání tajného klíče ze služby Azure Key Vault za běhu pomocí spravované identity](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet)
-
-2. [Programové nasazení šablony Azure Resource Manageru z virtuálního počítače Azure s využitím spravované identity](https://github.com/Azure-Samples/windowsvm-msi-arm-dotnet).
-
-3. [Volání služby Azure z virtuálního počítače Azure s Linuxem pomocí ukázky .NET Core a spravovaná identita](https://github.com/Azure-Samples/linuxvm-msi-keyvault-arm-dotnet/).
-
 ## <a name="local-development-authentication"></a>Místní vývoj ověřování
 
-Pro místní vývoj existují dva primární ověřování scénáře:
-
-- [Ověřování do služby Azure](#authenticating-to-azure-services)
-- [Ověřování do vlastní služby](#authenticating-to-custom-services)
+Pro místní vývoj, existují dva scénáře primární ověřování: [ověřování do služby Azure](#authenticating-to-azure-services), a [ověřování do vlastní služby](#authenticating-to-custom-services).
 
 ### <a name="authenticating-to-azure-services"></a>Ověřování do služby Azure
 
@@ -114,7 +97,7 @@ Tento příkaz vygeneruje výstup pouze při selhání.  Pokud chcete ověřit n
 az account list
 ```
 
-### <a name="authenticating-with-azure-ad-integrate-authentication"></a>Ověřování pomocí ověřování Azure AD integrace
+### <a name="authenticating-with-azure-ad-authentication"></a>Ověřování pomocí ověřování Azure AD
 
 Pokud chcete používat ověřování Azure AD, ověřte, že:
 
@@ -135,9 +118,8 @@ Při vytváření služby, která volá vlastní službu, použijte přihlašova
 
     2.  Přihlaste se pomocí Azure CLI:
 
-        ```
-        az login --service-principal -u <principal-id> --password <password>
-           --tenant <tenant-id> --allow-no-subscriptions
+        ```azurecli
+        az login --service-principal -u <principal-id> --password <password> --tenant <tenant-id> --allow-no-subscriptions
         ```
 
         Vzhledem k tomu, že instanční objekt služby nemusí mít přístup k předplatnému, použít `--allow-no-subscriptions` argument.
@@ -150,27 +132,36 @@ To platí pouze pro místní vývoj. Pokud vaše řešení je nasadit do Azure, 
 
 ## <a name="running-the-application-using-managed-identity-or-user-assigned-identity"></a>Spuštění aplikace pomocí spravované identity nebo uživatelsky přiřazené identity 
 
-Při spuštění kódu na služby Azure App Service nebo Virtuálním počítači Azure pomocí spravované identity povolené knihovny automaticky použije spravovaná identita. Nejsou potřeba žádné změny kódu. 
+Při spuštění kódu na služby Azure App Service nebo Virtuálním počítači Azure pomocí spravované identity povolené knihovny automaticky použije spravovaná identita. 
 
-Alternativně může ověřovat s identitou uživatelsky přiřazené. Další informace o uživatelsky přiřazené identity najdete v tématu [spravovaných identit pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work). Je zadaný připojovací řetězec v [podpora řetězec připojení](#connection-string-support) níže v části.
+Alternativně může ověřovat s identitou uživatelsky přiřazené. Další informace o uživatelsky přiřazené identity najdete v tématu [spravovaných identit pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work). K ověření uživatelsky přiřazené identity, budete muset zadat ID klienta uživatelsky přiřazené identity v připojovacím řetězci. Je zadaný připojovací řetězec v [podpora řetězec připojení](#connection-string-support) níže v části.
 
 ## <a name="running-the-application-using-a-service-principal"></a>Spuštění aplikace pomocí instančního objektu 
 
 Může být potřeba vytvořit pověření pro ověření klienta služby Azure AD. Mezi běžné příklady patří:
 
-1. Váš kód běží na místním vývojovém prostředí, ale ne pod identitou pro vývojáře.  Service Fabric, například používá [účtu NetworkService](../service-fabric/service-fabric-application-secret-management.md) pro místní vývoj.
+- Váš kód běží na místním vývojovém prostředí, ale ne pod identitou pro vývojáře.  Service Fabric, například používá [účtu NetworkService](../service-fabric/service-fabric-application-secret-management.md) pro místní vývoj.
  
-2. Váš kód běží na místním vývojovém prostředí a ověřování do vlastní služby, takže nelze použít svou identitu pro vývojáře. 
+- Váš kód běží na místním vývojovém prostředí a ověřování do vlastní služby, takže nelze použít svou identitu pro vývojáře. 
  
-3. Váš kód běží na výpočetním prostředkem Azure, která zatím nepodporuje spravované identity pro prostředky Azure, jako je Azure Batch.
+- Váš kód běží na výpočetním prostředkem Azure, která zatím nepodporuje spravované identity pro prostředky Azure, jako je Azure Batch.
 
-Použití certifikátu k přihlašování do služby Azure AD:
+Existují tři primární metody pomocí hlavního názvu služby ke spuštění aplikace. K používání některé z nich, je nutné nejprve [vytvoření instančního objektu](/cli/azure/create-an-azure-service-principal-azure-cli).
 
-1. Vytvoření [certifikátu instančního objektu](../azure-resource-manager/resource-group-authenticate-service-principal.md). 
+### <a name="use-a-certificate-in-local-keystore-to-sign-into-azure-ad"></a>Použít certifikát v místním úložišti klíčů pro přihlášení do služby Azure AD
 
-2. Nasaďte certifikát do buď *LocalMachine* nebo *CurrentUser* ukládat. 
+1. Vytvoření certifikátu instančního objektu služby pomocí Azure CLI [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) příkazu. 
 
-3. Nastavte proměnnou prostředí s názvem **AzureServicesAuthConnectionString** na:
+    ```azurecli
+    az ad sp create-for-rbac --create-cert
+    ```
+
+    Tím se vytvoří soubor .pem (privátní klíč), který se uloží ve svém domovském adresáři. Nasazení tohoto certifikátu buď *LocalMachine* nebo *CurrentUser* ukládat. 
+
+    > [!Important]
+    > Příkaz rozhraní příkazového řádku vygeneruje soubor .pem, ale pouze Windows poskytuje nativní podporu pro certifikáty PFX. Místo toho vytvořte certifikát PFX, použijte příkazy prostředí PowerShell je vidět tady: [Vytvoření instančního objektu s certifikátem podepsaným držitelem](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-self-signed-certificate). Tyto příkazy automaticky nasadit i certifikát.
+
+1. Nastavte proměnnou prostředí s názvem **AzureServicesAuthConnectionString** na:
 
     ```
     RunAs=App;AppId={AppId};TenantId={TenantId};CertificateThumbprint={Thumbprint};
@@ -179,11 +170,11 @@ Použití certifikátu k přihlašování do služby Azure AD:
  
     Nahraďte *{AppId}* , *{TenantId}* , a *{Thumbprint}* s hodnotami, které jsou generovány v kroku 1. Nahraďte *{CertificateStore}* s oběma `LocalMachine` nebo `CurrentUser`, podle plánu nasazení.
 
-4. Spusťte aplikaci. 
+1. Spusťte aplikaci. 
 
-Přihlaste se pomocí Azure AD sdíleného tajného kódu přihlašovacích údajů:
+### <a name="use-a-shared-secret-credential-to-sign-into-azure-ad"></a>Použití sdíleného tajného kódu přihlašovacích údajů k přihlašování do služby Azure AD
 
-1. Vytvoření [instanční objekt s heslem](../azure-resource-manager/resource-group-authenticate-service-principal.md) a jí udělit přístup ke službě Key Vault. 
+1. Vytvoření certifikátu instančního objektu služby pomocí hesla [az ad sp create-for-rbac – heslo](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac). 
 
 2. Nastavte proměnnou prostředí s názvem **AzureServicesAuthConnectionString** na:
 
@@ -197,6 +188,33 @@ Přihlaste se pomocí Azure AD sdíleného tajného kódu přihlašovacích úda
 
 Jakmile je všechno nastavené správně, žádné další změny kódu jsou nezbytné.  `AzureServiceTokenProvider` proměnné prostředí a certifikát, který používá k ověření do služby Azure AD. 
 
+### <a name="use-a-certificate-in-key-vault-to-sign-into-azure-ad"></a>Použít certifikát ve službě Key Vault k přihlašování do služby Azure AD
+
+Tato možnost umožňuje ukládání klientského certifikátu objektu služby ve službě Key Vault a používat ho pro ověřování instančních objektů. Můžete ji používat v následujících scénářích:
+
+* Místní ověřování, ve kterém chcete provést ověření pomocí instančního objektu explicitní a chceme zajistit přihlašovacích údajů instančního objektu služby bezpečně ve službě key vault. Vývojářský účet musí mít přístup k trezoru klíčů. 
+* Ověřování v Azure, kde chcete použít explicitní přihlašovací údaje (např. v případě scénáře napříč tenanty) a chceme zajistit přihlašovacích údajů instančního objektu služby bezpečně ve službě key vault. Spravovaná identita musí mít přístup k trezoru klíčů. 
+
+Spravovaná identita nebo svoji identitu pro vývojáře, musí mít oprávnění k načtení klientského certifikátu ze služby Key Vault. Knihovna AppAuthentication používá načíst certifikát jako pověření klienta instančního objektu.
+
+Chcete-li používat klientský certifikát pro ověřování instančních objektů
+
+1. Vytvoření certifikátu instančního objektu služby a automaticky ji uložit do vašeho trezoru klíčů pomocí Azure CLI [az ad sp create-for-rbac – trezor klíčů <keyvaultname> -cert <certificatename> – vytvořit cert--skip přiřazení](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) příkaz:
+
+    ```azurecli
+    az ad sp create-for-rbac --keyvault <keyvaultname> --cert <certificatename> --create-cert --skip-assignment
+    ```
+    
+    Identifikátor certifikátu bude adresa URL ve formátu `https://<keyvaultname>.vault.azure.net/secrets/<certificatename>`
+
+1. Nahraďte `{KeyVaultCertificateSecretIdentifier}` v tomto řetězci připojení s identifikátorem certifikátu:
+
+```
+RunAs=App;AppId={TestAppId};KeyVaultCertificateSecretIdentifier={KeyVaultCertificateSecretIdentifier}
+```
+
+Pokud například váš trezor klíčů byla volána "myKeyVault" a vytvoří certifikát nazvaný 'myCert', identifikátor certifikátu by `https://myKeyVault.vault.azure.net/secrets/myCert`, a připojovací řetězec bude `RunAs=App;AppId={TestAppId};TenantId={TenantId};KeyVaultCertificateSecretIdentifier=https://myKeyVault.vault.azure.net/secrets/myCert`.
+
 ## <a name="connection-string-support"></a>Podpora řetězců připojení
 
 Ve výchozím nastavení `AzureServiceTokenProvider` používá několik metod načíst token. 
@@ -205,18 +223,27 @@ K řízení procesu, použijte připojovací řetězec předaný `AzureServiceTo
 
 Podporovány jsou následující možnosti:
 
-| Připojení&nbsp;řetězec&nbsp;možnost | Scénář | Komentáře|
+| Možnost připojovacího řetězce | Scénář | Komentáře|
 |:--------------------------------|:------------------------|:----------------------------|
 | `RunAs=Developer; DeveloperTool=AzureCli` | Místní vývoj | AzureServiceTokenProvider AzureCli používá k získání tokenu. |
 | `RunAs=Developer; DeveloperTool=VisualStudio` | Místní vývoj | AzureServiceTokenProvider používá Visual Studio k získání tokenu. |
 | `RunAs=CurrentUser` | Místní vývoj | AzureServiceTokenProvider používá integrované ověřování Azure AD k získání tokenu. |
 | `RunAs=App` | [Spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/index.yml) | AzureServiceTokenProvider používá spravované identity k získání tokenu. |
 | `RunAs=App;AppId={ClientId of user-assigned identity}` | [Uživatelsky přiřazené identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work) | AzureServiceTokenProvider používá uživatelsky přiřazené identity k získání tokenu. |
-| `RunAs=App;AppId={AppId};TenantId={TenantId};CertificateThumbprint={Thumbprint};CertificateStoreLocation={LocalMachine or CurrentUser}`   | Instanční objekt služby | `AzureServiceTokenProvider` certifikát se používá k získání tokenu z Azure AD. |
+| `RunAs=App;AppId={TestAppId};KeyVaultCertificateSecretIdentifier={KeyVaultCertificateSecretIdentifier}` | Vlastních služeb ověřování | KeyVaultCertificateSecretIdentifier = identifikátor tajného kódu certifikátu. |
+| `RunAs=App;AppId={AppId};TenantId={TenantId};CertificateThumbprint={Thumbprint};CertificateStoreLocation={LocalMachine or CurrentUser}`| Instanční objekt služby | `AzureServiceTokenProvider` certifikát se používá k získání tokenu z Azure AD. |
 | `RunAs=App;AppId={AppId};TenantId={TenantId};CertificateSubjectName={Subject};CertificateStoreLocation={LocalMachine or CurrentUser}` | Instanční objekt služby | `AzureServiceTokenProvider` certifikát se používá k získání tokenu z Azure AD|
 | `RunAs=App;AppId={AppId};TenantId={TenantId};AppKey={ClientSecret}` | Instanční objekt služby |`AzureServiceTokenProvider` tajný kód používá k získání tokenu z Azure AD. |
 
+## <a name="samples"></a>Ukázky kódu
 
+Pokud chcete zobrazit `Microsoft.Azure.Services.AppAuthentication` knihovny v akci, naleznete na následující ukázky kódu.
+
+1. [Získání tajného klíče ze služby Azure Key Vault za běhu pomocí spravované identity](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet)
+
+2. [Programové nasazení šablony Azure Resource Manageru z virtuálního počítače Azure s využitím spravované identity](https://github.com/Azure-Samples/windowsvm-msi-arm-dotnet).
+
+3. [Volání služby Azure z virtuálního počítače Azure s Linuxem pomocí ukázky .NET Core a spravovaná identita](https://github.com/Azure-Samples/linuxvm-msi-keyvault-arm-dotnet/).
 
 ## <a name="next-steps"></a>Další postup
 

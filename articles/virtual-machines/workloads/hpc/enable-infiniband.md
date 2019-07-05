@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
-ms.openlocfilehash: 81acb804ed2ebb9e88bc7d8281a7fa52359d4455
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 879b1eed7bf4778d4d49f6f991d6d74214d33823
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66810079"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537667"
 ---
 # <a name="enable-infiniband-with-sr-iov"></a>Povolit InfiniBand s SR-IOV
 
@@ -30,7 +30,7 @@ Chcete-li ručně konfigurovat InfiniBand rozhraní SR-IOV virtuálních počít
 
 ## <a name="manually-install-ofed"></a>Ruční instalace OFED
 
-Nainstalujte nejnovější ovladače MLNX_OFED ConnectX-5 z [Mellanox](http://www.mellanox.com/page/products_dyn?product_family=26).
+Nainstalujte nejnovější ovladače MLNX_OFED ConnectX-5 z [Mellanox](https://www.mellanox.com/page/products_dyn?product_family=26).
 
 Pro RHEL/CentOS (příklad níže pro 7.6):
 ```bash
@@ -42,7 +42,19 @@ tar zxvf MLNX_OFED_LINUX-4.5-1.0.1.0-rhel7.6-x86_64.tgz
 sudo ./MLNX_OFED_LINUX-4.5-1.0.1.0-rhel7.6-x86_64/mlnxofedinstall --add-kernel-support
 ```
 
-Pro Windows, stáhněte a nainstalujte ovladače WinOF-2 pro ConnectX-5 z [Mellanox](http://www.mellanox.com/page/products_dyn?product_family=32&menu_section=34)
+Pro Windows, stáhněte a nainstalujte ovladače WinOF-2 pro ConnectX-5 z [Mellanox](https://www.mellanox.com/page/products_dyn?product_family=32&menu_section=34)
+
+## <a name="enable-ipoib"></a>Povolit IPoIB
+
+```bash
+sudo sed -i 's/LOAD_EIPOIB=no/LOAD_EIPOIB=yes/g' /etc/infiniband/openib.conf
+sudo /etc/init.d/openibd restart
+if [ $? -eq 1 ]
+then
+  sudo modprobe -rv  ib_isert rpcrdma ib_srpt
+  sudo /etc/init.d/openibd restart
+fi
+```
 
 ## <a name="assign-an-ip-address"></a>Přiřaďte IP adresu
 

@@ -4,21 +4,21 @@ description: Zjistěte, jak konfigurovat více hlavních databází ve vašich a
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 07/02/2019
+ms.date: 07/03/2019
 ms.author: mjbrown
-ms.openlocfilehash: 73b4ada713e264aaa2504fe4d4f504e07ae45181
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 646706eabf1b3a33c3143410f0e922a03e6a8ad6
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67538087"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565907"
 ---
 # <a name="configure-multi-master-in-your-applications-that-use-azure-cosmos-db"></a>Konfigurovat více hlavních databází ve vašich aplikacích, které používají službu Azure Cosmos DB
 
 Po vytvoření účtu s využitím více oblastí zápisu povolené, je třeba provést dvě změny v aplikaci ConnectionPolicy pro DocumentClient chcete povolit funkce několika hlavními databázemi a vícenásobné navádění ve službě Azure Cosmos DB. V rámci ConnectionPolicy nastavte na hodnotu true a předejte název oblasti, ve kterém je aplikace nasazená na SetCurrentLocation UseMultipleWriteLocations. To se vyplní vlastnost PreferredLocations podle geografické blízkosti z předané v umístění. Pokud k účtu je později přidat novou oblast, aplikace nebude muset aktualizovat nebo znovu nasadit, automaticky zjistí blíž oblasti a bude automaticky – Domovská stránka k ho musí dojít k místní události.
 
-> [!TIP]
-> Účty cosmos vytvořené nejsou původně nakonfigurované pro více hlavních databází je možné migrovat pomocí nula dolů čas. Další informace najdete tady [nakonfigurovat více oblasti](how-to-manage-database-account.md#configure-multiple-write-regions)
+> [!Note]
+> Účty cosmos počáteční konfigurace s oblast pro jeden zápis lze nakonfigurovat pro více oblastí zápisu (například více hlavních) s hodnotou nula dolů čas. Další informace najdete tady [nakonfigurovat více oblasti](how-to-manage-database-account.md#configure-multiple-write-regions)
 
 ## <a id="netv2"></a>Sady .NET SDK v2
 

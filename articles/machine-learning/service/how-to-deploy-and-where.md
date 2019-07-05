@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 05/31/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: b5a08b9b998f8d0b30091af016af564e836d4651
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: dcb90eb8ee25b8b0c780006f3555a5a9b815ffdd
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67331655"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67514292"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Nasazujte modely pomocí služby Azure Machine Learning
 
@@ -100,6 +100,8 @@ Můžete zaregistrovat externě vytvořené model poskytnutím **místní cesta*
 **Časový odhad**: Přibližně 10 sekund.
 
 Další informace najdete v tématu v referenční dokumentaci [třída modelu](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py).
+
+Další informace o práci s modelů trénovaných mimo službu Azure Machine Learning, najdete v části [jak nasadit existující model](how-to-deploy-existing-model.md).
 
 <a name="target"></a>
 
@@ -259,16 +261,22 @@ Další příklady skriptů najdete v následujících příkladech:
 
 ### <a name="2-define-your-inferenceconfig"></a>2. Definovat vaše InferenceConfig
 
-Odvozování configuration popisuje postup konfigurace modelu k následné predikci. Následující příklad ukazuje, jak vytvořit konfiguraci odvození:
+Odvozování configuration popisuje postup konfigurace modelu k následné predikci. Následující příklad ukazuje, jak vytvořit konfiguraci odvození. Tato konfigurace určuje modul runtime, skript vstupního a (volitelně) soubor prostředí conda:
 
 ```python
-inference_config = InferenceConfig(source_directory="C:/abc",
-                                   runtime= "python",
+inference_config = InferenceConfig(runtime= "python",
                                    entry_script="x/y/score.py",
                                    conda_file="env/myenv.yml")
 ```
 
+Další informace najdete v tématu [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) referenční třídy.
+
+Informace o používání vlastní image Dockeru s odvození konfigurace najdete v tématu [nasadit model použití vlastní image Dockeru](how-to-deploy-custom-docker-image.md).
+
 ### <a name="cli-example-of-inferenceconfig"></a>Příklad rozhraní příkazového řádku InferenceConfig
+
+Následující dokument JSON je příklad konfigurace odvození pro použití se službou machine learning rozhraní příkazového řádku:
+
 ```JSON
 {
    "entryScript": "x/y/score.py",
@@ -277,6 +285,23 @@ inference_config = InferenceConfig(source_directory="C:/abc",
    "sourceDirectory":"C:/abc",
 }
 ```
+
+V tomto souboru jsou platné následující entity:
+
+* __entryScript__: Cesta k místnímu souboru, který obsahuje kód pro spuštění bitové kopie.
+* __Modul runtime__: Které runtime pro bitovou kopii. Aktuální podporované moduly runtime jsou "spark-py" a "python".
+* __condaFile__ (volitelné): Cesta k místní soubor obsahující definici prostředí conda pro bitovou kopii.
+* __extraDockerFileSteps__ (optional): Cesta k místní soubor, který obsahuje další kroky Dockeru pro spuštění při nastavování bitové kopie.
+* __sourceDirectory__ (volitelné): Cesty ke složkám, který obsahuje všechny soubory k vytvoření této image.
+* __enableGpu__ (volitelné): Jestli chcete povolit GPU podporují v bitové kopii. Obrázek GPU musí použít na služby Microsoft Azure, jako je Azure Container Instances, Azure Machine Learning Compute, Azure Virtual Machines a Azure Kubernetes Service. Výchozí hodnota je False.
+* __baseImage__ (volitelné): Vlastní image, která se má použít jako základní image. Pokud není uveden žádný základní image, potom základní image se použije na základě odhlásit z zadaný parametr modulu runtime.
+* __baseImageRegistry__ (optional): Registru imagí, která obsahuje základní image.
+* __cudaVersion__ (volitelné): Verze CUDA instalace bitové kopie, které potřebují podporu GPU. Obrázek GPU musí použít na služby Microsoft Azure, jako je Azure Container Instances, Azure Machine Learning Compute, Azure Virtual Machines a Azure Kubernetes Service. Podporované verze jsou 9.0, 9.1 a 10.0. Pokud "enable_gpu" je nastavena, výchozí hodnota je "9.1".
+
+Tyto entity se mapují na ukazatele [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) třídy.
+
+Thí následující příkaz ukazuje, jak nasadit model s použitím rozhraní příkazového řádku:
+
 ```azurecli-interactive
 az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json
 ```
@@ -287,8 +312,6 @@ V tomto příkladu konfigurace obsahuje následující položky:
 * Vyžaduje tento model Python
 * [Skript vstupního](#script), který se používá pro zpracování webových požadavků odeslaných v nasazené službě
 * Soubor conda, který popisuje balíčky Pythonu potřebné k odvození
-
-Informace o funkcích InferenceConfig najdete v tématu [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) referenční třídy.
 
 Informace o používání vlastní image Dockeru s odvození konfigurace najdete v tématu [nasadit model použití vlastní image Dockeru](how-to-deploy-custom-docker-image.md).
 
@@ -309,9 +332,7 @@ Následující tabulka obsahuje příklad vytvoření konfigurace nasazení pro 
 Následující části ukazují, jak vytvořit konfiguraci nasazení a použít ji k nasazení webové služby.
 
 ### <a name="optional-profile-your-model"></a>Volitelné: Profil modelu
-Před nasazením modelu jako služby, můžete chtít profilujte ji určit optimální využití procesoru a požadavky na paměť.
-
-Můžete provést profilu model pomocí sady SDK nebo rozhraní příkazového řádku.
+Před nasazením modelu jako služby, můžete chtít profilujte ji určit optimální využití procesoru a požadavky na paměť. Můžete provést profilu model pomocí sady SDK nebo rozhraní příkazového řádku.
 
 Další informace si můžete prohlédnout naše dokumentace k sadě SDK tady: https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-
 
@@ -544,6 +565,34 @@ service.update(models = [new_model])
 print(service.state)
 print(service.get_logs())
 ```
+
+## <a name="continuous-model-deployment"></a>Průběžné model nasazení 
+
+Můžete nasazovat modely s pomocí rozšíření Machine Learning pro [Azure DevOps](https://azure.microsoft.com/services/devops/). Pomocí rozšíření Machine Learning pro Azure DevOps můžete aktivovat kanál nasazení při registraci nový model strojového učení v pracovním prostoru služby Azure Machine Learning. 
+
+1. Zaregistrujte si [kanály Azure](https://docs.microsoft.com/azure/devops/pipelines/get-started/pipelines-sign-up?view=azure-devops), což umožňuje průběžnou integraci a doručování do libovolné platformy a všechny aplikace v cloudu. Kanály Azure [se liší od ML kanály](concept-ml-pipelines.md#compare). 
+
+1. [Vytvořte projekt Azure DevOps.](https://docs.microsoft.com/azure/devops/organizations/projects/create-project?view=azure-devops)
+
+1. Nainstalujte [rozšíření Machine Learning pro kanály Azure](https://marketplace.visualstudio.com/items?itemName=ms-air-aiagility.vss-services-azureml&targetId=6756afbe-7032-4a36-9cb6-2771710cadc2&utm_source=vstsproduct&utm_medium=ExtHubManageList) 
+
+1. Použití __služby připojení__ nastavení instančního objektu služby připojení do pracovního prostoru služby Azure Machine Learning pro přístup k všechny artefakty. Přejděte na nastavení projektu, klikněte na připojení služby a vyberte Azure Resource Manageru.
+
+    ![view-service-connection](media/how-to-deploy-and-where/view-service-connection.png) 
+
+1. Definování AzureMLWorkspace jako __určit obor úrovně__ a vyplňte následující parametry.
+
+    ![view-azure-resource-manager](media/how-to-deploy-and-where/resource-manager-connection.png)
+
+1. V dalším kroku průběžně nasadit svůj model strojového učení pomocí Azure kanálů, v části kanálů vyberte __release__. Přidat nové artefaktu, vyberte Model Azure ml artefaktů a připojení služby, který byl vytvořen v dřívějším kroku. Vyberte model a verze, kterou chcete aktivovat nasazení. 
+
+    ![select-AzureMLmodel-artifact](media/how-to-deploy-and-where/enable-modeltrigger-artifact.png)
+
+1. Povolte model aktivační události na váš model artefaktů. Když zapnete aktivační událost, pokaždé, když je uvedena verze (např.) nejnovější verze) tohoto modelu je registrace v pracovním prostoru, se aktivuje kanál pro vydávání verzí Azure DevOps. 
+
+    ![enable-model-trigger](media/how-to-deploy-and-where/set-modeltrigger.png)
+
+Ukázkové projekty a příklady, projděte si [MLOps úložiště](https://github.com/Microsoft/MLOps)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 Chcete-li odstranit nasazenou webovou službu, použijte `service.delete()`.

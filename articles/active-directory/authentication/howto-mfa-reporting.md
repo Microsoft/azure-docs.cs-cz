@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9cf0b848e551d3c0e7d7275af9eb2c8e970dbd9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dd4c6952aab1581a968fc671141792c0e16a7d46
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67113398"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67536964"
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Sestavy v Azure Multi-Factor Authentication
 
@@ -188,5 +188,6 @@ V následující tabulce slouží k řešení potíží s ověřování službou
 
 ## <a name="next-steps"></a>Další postup
 
+* [Využití samoobslužného resetování HESLA a vícefaktorové ověřování a přehled generování sestav](howto-authentication-methods-usage-insights.md)
 * [Pro uživatele](../user-help/multi-factor-authentication-end-user.md)
 * [Pokud chcete nasadit](concept-mfa-whichversion.md)

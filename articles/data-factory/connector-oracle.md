@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 06/25/2019
 ms.author: jingwang
-ms.openlocfilehash: 3fa7612b9e4cd8a714e60879229bd0d39349494f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 04f623a889a87c325b1f53e3b39656ca4b703961
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60405922"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509232"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Kopírování dat z a do databáze Oracle pomocí služby Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, který používáte:"]
@@ -30,13 +30,16 @@ Tento článek ukazuje, jak použít aktivitu kopírování ke kopírování dat
 
 Kopírování dat z databáze Oracle do jakékoli podporovaného úložiště dat jímky. Můžete také můžete kopírovat data ze všech podporovaných zdrojů úložišť dat k databázi Oracle. Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
 
-Konkrétně tento konektor Oracle podporuje následující verze databáze Oracle. Podporuje také ověřování Basic nebo identifikátor objektu:
+Konkrétně tento konektor Oracle podporuje:
 
-- R1 Oracle 12c (12.1)
-- Oracle 11g R1, R2 (11.1, 11.2)
-- Oracle 10g R1, R2 (10,1, 10.2)
-- Oracle 9i R1, R2 (9.0.1, 9.2)
-- Oracle 8i R3 (8.1.7)
+- Následující verze databáze Oracle:
+  - R1 Oracle 12c (12.1)
+  - Oracle 11g R1, R2 (11.1, 11.2)
+  - Oracle 10g R1, R2 (10,1, 10.2)
+  - Oracle 9i R1, R2 (9.0.1, 9.2)
+  - Oracle 8i R3 (8.1.7)
+- Kopírování dat pomocí **základní** nebo **OID** ověření.
+- Paralelní kopírování ze zdroje Oracle. Zobrazit [paralelní kopírování od Oraclu](#parallel-copy-from-oracle) část s podrobnostmi.
 
 > [!Note]
 > Nepodporuje proxy serveru Oracle.
@@ -190,16 +193,24 @@ Pro kopírování dat z a do databáze Oracle, nastavte vlastnost typ datové sa
 
 ### <a name="oracle-as-a-source-type"></a>Oracle jako typ zdroje
 
+> [!TIP]
+>
+> Další informace z [paralelní kopírování Oraclu](#parallel-copy-from-oracle) část o tom, jak načíst data z efektivně pomocí dělení dat Oracle.
+
 Ke zkopírování dat z Oracle, nastavte typ zdroje v aktivitě kopírování do **OracleSource**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** oddílu.
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost type zdroje aktivity kopírování musí být nastavená na **OracleSource**. | Ano |
-| oracleReaderQuery | Použijte vlastní dotaz SQL číst data. Příklad: `"SELECT * FROM MyTable"`. | Ne |
+| oracleReaderQuery | Použijte vlastní dotaz SQL číst data. Příklad: `"SELECT * FROM MyTable"`.<br>Když povolíte dělené zatížení, budete muset připojit odpovídající integrované oddílu parametry v dotazu. Podívejte se na příklady v [paralelní kopírování Oraclu](#parallel-copy-from-oracle) oddílu. | Ne |
+| partitionOptions | Určuje možnosti používané k načtení dat z Oracle pro dělení dat. <br>Povolit hodnoty jsou: **Žádný** (výchozí), **PhysicalPartitionsOfTable** a **DynamicRange**.<br>Pokud je povolená možnost oddílu (ne ' None'), také nakonfigurujte **[ `parallelCopies` ](copy-activity-performance.md#parallel-copy)** nastavení aktivity kopírování, například jako 4, který určuje paralelní míru současně načíst data z Oraclu databáze. | Ne |
+| partitionSettings | Zadejte skupinu nastavení pro dělení dat. <br>Použít, když je možnost rozdělení `None`. | Ne |
+| partitionNames | Seznam fyzických oddílů, které se musí zkopírovat. <br>Použít, když je možnost rozdělení `PhysicalPartitionsOfTable`. Pokud používáte dotaz pro načtení zdrojová data, připojit `?AdfTabularPartitionName` v klauzuli WHERE. Viz příklad v [paralelní kopírování Oraclu](#parallel-copy-from-oracle) oddílu. | Ne |
+| partitionColumnName | Zadejte název zdrojového sloupce **v typu celé číslo** , který se použije rozdělením rozsah pro paralelní kopírování. Pokud není zadán, bude primární klíč tabulky automaticky zjistil a použít jako sloupec oddílu. <br>Použít, když je možnost rozdělení `DynamicRange`. Pokud používáte dotaz pro načtení zdrojová data, připojit `?AdfRangePartitionColumnName` v klauzuli WHERE. Viz příklad v [paralelní kopírování Oraclu](#parallel-copy-from-oracle) oddílu. | Ne |
+| partitionUpperBound | Maximální hodnota sloupce oddílu mohli zkopírovat data. <br>Použít, když je možnost rozdělení `DynamicRange`. Pokud používáte dotaz pro načtení zdrojová data, připojit `?AdfRangePartitionUpbound` v klauzuli WHERE. Viz příklad v [paralelní kopírování Oraclu](#parallel-copy-from-oracle) oddílu. | Ne |
+| PartitionLowerBound | Minimální hodnota sloupce oddílu mohli zkopírovat data. <br>Použít, když je možnost rozdělení `DynamicRange`. Pokud používáte dotaz pro načtení zdrojová data, připojit `?AdfRangePartitionLowbound` v klauzuli WHERE. Viz příklad v [paralelní kopírování Oraclu](#parallel-copy-from-oracle) oddílu. | Ne |
 
-Pokud nezadáte "oracleReaderQuery", sloupce definované v oddílu "struktura" datové sady se používají k vytvoření dotazu (`select column1, column2 from mytable`) ke spuštění databáze Oracle. Pokud není definice datové sady "struktura", jsou vybrány všechny sloupce z tabulky.
-
-**Příklad:**
+**Příklad: kopírování dat pomocí základního dotazu bez oddílů**
 
 ```json
 "activities":[
@@ -230,6 +241,8 @@ Pokud nezadáte "oracleReaderQuery", sloupce definované v oddílu "struktura" d
     }
 ]
 ```
+
+Další příklady naleznete v [paralelní kopírování Oraclu](#parallel-copy-from-oracle) oddílu.
 
 ### <a name="oracle-as-a-sink-type"></a>Oracle jako typ jímky
 
@@ -271,6 +284,54 @@ Pro kopírování dat do databáze Oracle, nastavte typ jímky v aktivitě kopí
         }
     }
 ]
+```
+
+## <a name="parallel-copy-from-oracle"></a>Paralelní kopírování z Oracle
+
+Konektor Oracle data factory poskytuje předdefinované datové dělení ke zkopírování dat z Oracle paralelně s vynikajícím výkonem. Zjistíte, že možnosti dělení dat v aktivitě kopírování -> zdroje Oracle:
+
+![Možnosti oddílu](./media/connector-oracle/connector-oracle-partition-options.png)
+
+Když povolíte dělené kopírování, služby data factory spouští paralelní dotazy Oracle zdroj k načtení dat oddíly. Paralelní míra je nakonfigurovaná a ovládat **[ `parallelCopies` ](copy-activity-performance.md#parallel-copy)** nastavení aktivity kopírování. Například pokud nastavíte `parallelCopies` jako čtyři, současně vytvoří objekt pro vytváření dat a čtyři spouští dotazy založené na zadaný oddíl možnosti a nastavení, všechny části načítání dat z databáze Oracle.
+
+Byly navrženy povolit paralelní kopírování s daty rozdělení do oddílů, zejména v případě, že načtete velké množství dat z databáze Oracle. Tady jsou navrhované konfigurace pro různé scénáře:
+
+| Scénář                                                     | Doporučené nastavení                                           |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Úplné načtení z velké tabulky s fyzickými oddíly          | **Možnost Rozdělit**: Fyzické oddíly tabulky. <br><br/>Během provádění data Factory automaticky zjistit fyzické oddíly a zkopírovat data oddíly. |
+| Úplné načtení z velké tabulky bez fyzických oddílů, zatímco s sloupec celých čísel pro dělení dat | **Možnosti oddílu**: Dynamický rozsah oddílu.<br>**Sloupec oddílu**: Zadejte sloupec použitý k dělení dat. Pokud není zadaný, primární klíčový sloupec se používá. |
+| Načtení velkého objemu dat pomocí vlastního dotazu pod s fyzickými oddíly | **Možnost Rozdělit**: Fyzické oddíly tabulky.<br>**Dotaz**: `SELECT * FROM <TABLENAME> PARTITION("?AdfTabularPartitionName") WHERE <your_additional_where_clause>`.<br>**Název oddílu**: Zadejte názvy oddílů pro kopírování dat z. Pokud není zadán, ADF automaticky zjistí fyzické oddíly pro tabulku, kterou jste zadali v datové sadě Oracle.<br><br>Během provádění, nahraďte objekt pro vytváření dat `?AdfTabularPartitionName` s názvem skutečné oddílu a odeslat Oracle. |
+| Načtení velkého objemu dat pomocí vlastního dotazu pod bez fyzických oddílů při s sloupec celých čísel pro dělení dat | **Možnosti oddílu**: Dynamický rozsah oddílu.<br>**Dotaz**: `SELECT * FROM <TABLENAME> WHERE ?AdfRangePartitionColumnName <= ?AdfRangePartitionUpbound AND ?AdfRangePartitionColumnName >= ?AdfRangePartitionLowbound AND <your_additional_where_clause>`.<br>**Sloupec oddílu**: Zadejte sloupec použitý k dělení dat. Můžete dělit na sloupec s datovým typem celé číslo.<br>**Oddíl horní mez** a **oddílu dolní mez**: Určete, jestli chcete filtrovat proti sloupec oddílu pouze načíst data mezi horní a dolní rozsahu.<br><br>Během provádění, nahraďte objekt pro vytváření dat `?AdfRangePartitionColumnName`, `?AdfRangePartitionUpbound`, a `?AdfRangePartitionLowbound` skutečný název sloupce a hodnotu rozsahy pro každou oddílů a odeslat do databáze Oracle. <br>Například pokud vaše sloupce oddílu "ID" nastavit s dolní mez jako 1 a horní mez jako 80 sadou paralelní kopie jako 4, ADF načíst data 4 oddíly s ID mezi [1,20], [21, 40], [41, 60] a [61, 80]. |
+
+**Příklad: dotaz s fyzický oddíl**
+
+```json
+"source": {
+    "type": "OracleSource",
+    "query": "SELECT * FROM <TABLENAME> PARTITION(\"?AdfTabularPartitionName\") WHERE <your_additional_where_clause>",
+    "partitionOption": "PhysicalPartitionsOfTable",
+    "partitionSettings": {
+        "partitionNames": [
+            "<partitionA_name>",
+            "<partitionB_name>"
+        ]
+    }
+}
+```
+
+**Příklad: dotaz s dynamický rozsah oddílu**
+
+```json
+"source": {
+    "type": "OracleSource",
+    "query": "SELECT * FROM <TABLENAME> WHERE ?AdfRangePartitionColumnName <= ?AdfRangePartitionUpbound AND ?AdfRangePartitionColumnName >= ?AdfRangePartitionLowbound AND <your_additional_where_clause>",
+    "partitionOption": "DynamicRange",
+    "partitionSettings": {
+        "partitionColumnName": "<partition_column_name>",
+        "partitionUpperBound": "<upper_value_of_partition_column>",
+        "partitionLowerBound": "<lower_value_of_partition_column>"
+    }
+}
 ```
 
 ## <a name="data-type-mapping-for-oracle"></a>Mapování pro Oracle datového typu

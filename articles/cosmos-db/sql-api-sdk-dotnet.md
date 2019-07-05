@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/09/2018
 ms.author: sngun
-ms.openlocfilehash: d34da8928e06f04756e24f5cc3e4c430c2892f79
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 4f502984a09f81b5aaf0568c84b75832f8164151
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341590"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67541053"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK pro rozhraní SQL API: Stáhněte si a poznámky k verzi
 > [!div class="op_single_selector"]
@@ -48,13 +48,18 @@ ms.locfileid: "67341590"
 * Podpora pro datové proudy. 
 * Aktualizované CosmosResponseMessage ze serveru vrátit stavový kód a pouze vyvolat výjimku, pokud není vrácena žádná odpověď. 
 
+### <a name="a-name251251"></a><a name="2.5.1"/>2.5.1
+
+* Verze SDK System.Net.Http nyní odpovídá definovaná v balíčku NuGet.
+* Pokud původní jeden server selže, povolit požadavky na zápis pro použití náhradní lokality do jiné oblasti.
+* Přidání relace zásady opakování pro žádost o zápis.
+
 ### <a name="a-name241241"></a><a name="2.4.1"/>2.4.1
 
 * Opravy trasování časování pro dotazy, které způsobily prázdné stránky
 
 ### <a name="a-name240240"></a><a name="2.4.0"/>2.4.0
 
-* Verze SDK System.Net.Http odpovídá definovaná v balíčku NuGet.
 * Zvětšili velikost počet desetinných míst pro LINQ dotazy.
 * Přidání nové třídy CompositePath, CompositePathSortOrder, SpatialSpec, SpatialType a PartitionKeyDefinitionVersion
 * Přidání TimeToLivePropertyPath k DocumentCollection
@@ -379,6 +384,7 @@ Služba odmítne všechny žádosti do služby Azure Cosmos DB pomocí vyřazeno
 
 | Version | Datum vydání | Datum vyřazení z provozu |
 | --- | --- | --- |
+| [2.5.1](#2.5.1) |02. července 2019 |--- |
 | [2.4.1](#2.4.1) |20. června 2019 |--- |
 | [2.4.0](#2.4.0) |05. května 2019 |--- |
 | [2.3.0](#2.3.0) |04. dubna 2019 |--- |

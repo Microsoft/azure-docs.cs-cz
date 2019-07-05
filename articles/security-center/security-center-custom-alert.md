@@ -14,27 +14,28 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2018
 ms.author: rkarlin
-ms.openlocfilehash: ab7165c3315e3a53f90900be8eaf1b9c614a2b07
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 984bd4d5db210679884655721be0cbcdac8c1705
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341130"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485285"
 ---
 # <a name="custom-alert-rules-in-azure-security-center-preview"></a>Vlastní pravidla výstrah v Azure Security Center (Preview)
 Tento dokument vám pomůže vytvořit vlastní pravidla výstrah v Azure Security Center.
 
 > [!NOTE]
-> Vlastní upozornění se vyřadí z provozu 30. června 2019.
+> Vlastní upozornění byl vyřazen ze služby Security Center. 
 
 ## <a name="retirement-of-custom-alert-rules-in-azure-security-center"></a>Vyřazení oznámení na vlastní pravidla ve službě Azure Security Center
 
-Prostředí vlastní upozornění se vyřadí z důvodu vyřazení základní infrastruktury, je založen na 30. června 2019. V časovém rámci až do vyřazení uživatelé budou moci upravit existující vlastní pravidla výstrah ale nebudete moct přidat nové. Po vyřazení se projeví jakékoli vlastní výstrahy definované a výstrahy zabezpečení na základě těchto pravidel vlastní upozornění nevygeneruje.
+Prostředí vlastní upozornění 30. června 2019 byla vyřazena z důvodu vyřazení základní infrastruktury spoléhal na. všechny vlastní výstrahy definované před retriement se neprojeví a se negenerují výstrahy zabezpečení na základě těchto pravidel vlastní upozornění. Můžete si pořád zobrazit vaše vlastní pravidla upozornění dotazy ve službě Security Center Chcete-li je znovu vytvořit v alternativy uvedených níže:
+
 Uživatelé by měli buď:
 - Povolit [Azure Sentinelu](https://azure.microsoft.com/services/azure-sentinel/) a použít jeho integrovaný [analytics](https://docs.microsoft.com/azure/sentinel/tutorial-detect-threats) funkce k opětovnému vytvoření pravidla výstrah
 - Znovu vytvořit s využitím upozornění log Azure Monitor výstrah
                                      
-Chcete-li zachovat existující výstrahy a migrací do Azure Sentinelu, [spusťte Azure Sentinelu](https://portal.azure.com/#create/Microsoft.ASI/preview). Jako první krok vyberte pracovní prostor, kde jsou uložené vaše vlastní výstrahy a poté vyberte položku nabídky "Analytics" nastavit pravidla pro vlastní upozornění. Navštivte prosím [dokumentaci](https://docs.microsoft.com/azure/sentinel/tutorial-detect-threats) pro další informace.
+Chcete-li zachovat existující výstrahy a znovu je vytvořte v Azure Sentinelu, [spusťte Azure Sentinelu](https://portal.azure.com/#create/Microsoft.ASI/preview). Jako první krok vyberte pracovní prostor, kde jsou uložené vaše vlastní výstrahy a poté vyberte položku nabídky "Analytics" nastavit pravidla pro vlastní upozornění. Navštivte prosím [dokumentaci](https://docs.microsoft.com/azure/sentinel/tutorial-detect-threats) pro další informace.
 
 > [!NOTE]
 > Vlastní upozornění pomocí [hledání](https://docs.microsoft.com/azure/azure-monitor/log-query/search-queries) nebo [sjednocení](https://docs-analytics-eus.azurewebsites.net/queryLanguage/query_language_unionoperator.html) nepodporuje příkazy dotazy Sentinelu Azure. Před provedením migrace prosím upravte tyto výstrahy.

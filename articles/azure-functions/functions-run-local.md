@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 6c0732b33608105009eda9bba2e4970e8e12e652
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: dd6259173792585a83effd42c75ff9a7a7d572e4
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67050575"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448380"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Práce s Azure Functions Core Tools
 
@@ -68,6 +68,9 @@ Následující kroky pomocí npm nainstalujte základní nástroje na Windows. M
     ```bash
     npm install -g azure-functions-core-tools
     ```
+
+   Může trvat několik minut, než npm ke stažení a instalaci balíčku Core Tools.
+
 1. Pokud nemáte v plánu používat [rozšíření sady], nainstalujte [.NET Core 2.x sady SDK pro Windows](https://www.microsoft.com/net/download/windows).
 
 #### <a name="brew"></a>MacOS pomocí Homebrew
@@ -82,6 +85,7 @@ Následující kroky pomocí Homebrew v systému macOS nainstalujte základní n
     brew tap azure/functions
     brew install azure-functions-core-tools
     ```
+
 1. Pokud nemáte v plánu používat [rozšíření sady], nainstalujte [.NET Core 2.x sady SDK pro macOS](https://www.microsoft.com/net/download/macos).
 
 
@@ -115,6 +119,7 @@ Následující kroky použijte [APT](https://wiki.debian.org/Apt) instalace nás
     ```bash
     sudo apt-get install azure-functions-core-tools
     ```
+
 1. Pokud nemáte v plánu používat [rozšíření sady], nainstalujte [.NET Core 2.x sady SDK pro Linux](https://www.microsoft.com/net/download/linux).
 
 ## <a name="create-a-local-functions-project"></a>Vytvořte projekt místní funkce
@@ -163,53 +168,16 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 > [!IMPORTANT]
 > Ve výchozím nastavení verze 2.x základní nástroje pro projekty aplikací pro .NET runtime jako vytvoří funkci [třídy projekty jazyka C#](functions-dotnet-class-library.md) (.csproj). Tyto projekty jazyka C#, které je možné použít s Visual Studio nebo Visual Studio Code, jsou zkompilovány při testování a publikování do Azure. Pokud místo toho chcete vytvořit a pracovat stejném skript jazyka C# (.csx) soubory vytvořené ve verzi 1.x a na portálu, musíte zahrnout `--csx` parametr při vytváření a nasazení služby functions.
 
-## <a name="register-extensions"></a>Registrace rozšíření
+[!INCLUDE [functions-core-tools-install-extension](../../includes/functions-core-tools-install-extension.md)]
 
-Ve verzi 2.x modulu runtime Azure Functions, je nutné provést explicitně registraci rozšíření vazby (typy vazby), které používáte ve své aplikaci function app.
+[!INCLUDE [functions-local-settings-file](../../includes/functions-local-settings-file.md)]
 
-[!INCLUDE [Register extensions](../../includes/functions-core-tools-install-extension.md)]
-
-Další informace najdete v tématu [aktivace Azure Functions a vazby koncepty](./functions-bindings-expressions-patterns.md).
-
-## <a name="local-settings-file"></a>Soubor místního nastavení
-
-Soubor local.settings.json ukládá nastavení aplikace, připojovacích řetězců a nastavení pro Azure Functions Core Tools. Nastavení v souboru local.settings.json používají pouze pomocí nástrojů funkce při místním spuštění. Ve výchozím nastavení se nemigrují automaticky při publikování projektu do Azure. Použití `--publish-local-settings` přepnout [při publikování](#publish) k Ujistěte se, že tato nastavení jsou přidány do aplikace function app v Azure. Hodnoty v **ConnectionStrings** se nikdy publikováno. Soubor má následující strukturu:
-
-```json
-{
-  "IsEncrypted": false,
-  "Values": {
-    "FUNCTIONS_WORKER_RUNTIME": "<language worker>",
-    "AzureWebJobsStorage": "<connection-string>",
-    "AzureWebJobsDashboard": "<connection-string>",
-    "MyBindingConnection": "<binding-connection-string>"
-  },
-  "Host": {
-    "LocalHttpPort": 7071,
-    "CORS": "*",
-    "CORSCredentials": false
-  },
-  "ConnectionStrings": {
-    "SQLConnectionString": "<sqlclient-connection-string>"
-  }
-}
-```
-
-| Nastavení      | Popis                            |
-| ------------ | -------------------------------------- |
-| **`IsEncrypted`** | Pokud je nastavena na `true`, všechny hodnoty jsou šifrované pomocí klíče místního počítače. Použít s `func settings` příkazy. Výchozí hodnota je `false`. |
-| **`Values`** | Kolekce nastavení aplikace a připojovacích řetězců použité při místním spuštění. Tyto hodnoty odpovídají nastavení aplikace ve vaší aplikaci function app v Azure, jako například [ `AzureWebJobsStorage` ]. Řada triggerů a vazeb mají vlastnost, která odkazuje na nastavení aplikace řetězec připojení, jako například `Connection` pro [aktivační událost objektů Blob storage](functions-bindings-storage-blob.md#trigger---configuration). Pro tyto vlastnosti definované v nastavení aplikace potřebujete `Values` pole. <br/>[`AzureWebJobsStorage`] Požadovaná aplikace nastavení pro aktivační události než HTTP. <br/>Verze 2.x modul runtime služby Functions vyžaduje [ `FUNCTIONS_WORKER_RUNTIME` ] nastavení, který je generován základní nástroje pro váš projekt. <br/> Pokud máte [emulátoru úložiště Azure](../storage/common/storage-use-emulator.md) nainstalovaný místně, můžete nastavit [ `AzureWebJobsStorage` ] k `UseDevelopmentStorage=true` a základní nástroje pomocí emulátoru. To je užitečné při vývoji, ale měli byste otestovat připojení k skutečného úložiště před nasazením. |
-| **`Host`** | Nastavení v této části přizpůsobit funkce hostitelský proces, při místním spuštění. |
-| **`LocalHttpPort`** | Nastaví výchozí port použitý při spuštění místního hostitele funkce (`func host start` a `func run`). `--port` Možnost příkazového řádku má přednost před tuto hodnotu. |
-| **`CORS`** | Určuje původ, odkud můžou pro [prostředků mezi zdroji (CORS) pro sdílení obsahu](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing). Zdroje jsou dodávány jako seznam oddělený čárkami bez mezer. Hodnota zástupného znaku (\*) je podporován, umožňující žádosti z původu. |
-| **`CORSCredentials`** |  Nastavte na hodnotu true, chcete-li povolit `withCredentials` žádosti |
-| **`ConnectionStrings`** | Nepoužívejte připojovací řetězce, používá funkce vazby této kolekce. Tato kolekce používá pouze rozhraní, které obvykle získat připojovací řetězce z `ConnectionStrings` část konfigurační soubor, třeba [Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx). Připojovací řetězce v tomto objektu jsou přidány do prostředí s typem zprostředkovatele [System.Data.SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx). Položky v této kolekci nejsou publikovány do Azure s jinými nastaveními aplikace. Musíte explicitně přidat tyto hodnoty `Connection strings` kolekce vaše nastavení aplikace function app. Pokud vytváříte [ `SqlConnection` ](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) v kódu funkce, měli byste uložit hodnotu připojovacího řetězce v **nastavení aplikace** na portálu u vašich připojení. |
+Ve výchozím nastavení se nemigrují automaticky při publikování projektu do Azure. Použití `--publish-local-settings` přepnout [při publikování](#publish) k Ujistěte se, že tato nastavení jsou přidány do aplikace function app v Azure. Všimněte si, že hodnoty v **ConnectionStrings** se nikdy publikováno.
 
 Hodnoty nastavení aplikace funkcí můžete číst také ve vašem kódu jako proměnné prostředí. Další informace najdete v sekci proměnných prostředí z těchto témat reference specifická pro jazyk:
 
 * [Předkompilované C#](functions-dotnet-class-library.md#environment-variables)
 * [C# skript (.csx)](functions-reference-csharp.md#environment-variables)
-* [F#skript (.fsx)](functions-reference-fsharp.md#environment-variables)
 * [Java](functions-reference-java.md#environment-variables)
 * [JavaScript](functions-reference-node.md#environment-variables)
 
@@ -439,7 +407,7 @@ Tyto možnosti publikovat platí pro verze, 1.x a 2.x:
 
 | Možnost     | Popis                            |
 | ------------ | -------------------------------------- |
-| **`--publish-local-settings -i`** |  Nastavení publikování v local.settings.json do Azure, s výzvou k přepsání, pokud nastavení už existuje. Pokud používáte emulátor úložiště, můžete změnit nastavení aplikace, které chcete [skutečného úložiště připojení](#get-your-storage-connection-strings). |
+| **`--publish-local-settings -i`** |  Nastavení publikování v local.settings.json do Azure, s výzvou k přepsání, pokud nastavení už existuje. Pokud používáte emulátor úložiště, nejprve změňte nastavení aplikace nastavte [skutečného úložiště připojení](#get-your-storage-connection-strings). |
 | **`--overwrite-settings -y`** | Potlačit výzva k nastavení aplikace přepsat při `--publish-local-settings -i` se používá.|
 
 Následující možnosti publikování jsou podporovány pouze ve verzi 2.x:
@@ -497,4 +465,4 @@ Do souboru žádost chybu nebo funkce [otevřete problém na Githubu](https://gi
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
 [`FUNCTIONS_WORKER_RUNTIME`]: functions-app-settings.md#functions_worker_runtime
 [`AzureWebJobsStorage`]: functions-app-settings.md#azurewebjobsstorage
-[rozšíření sady]: functions-bindings-register.md#local-development-with-azure-functions-core-tools-and-extension-bundles
+[rozšíření sady]: functions-bindings-register.md#extension-bundles

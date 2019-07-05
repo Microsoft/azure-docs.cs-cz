@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c3c97e786e2147f043a63b90b886e01eb5944cb4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0a051b0e853b60dfc1f5b6c3453d9ed8361f1748
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66507675"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67438822"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Přizpůsobení uživatelského rozhraní aplikace pomocí vlastních zásad v Azure Active Directory B2C
 
@@ -31,7 +31,7 @@ Proveďte kroky v [začít pracovat s vlastními zásadami](active-directory-b2c
 
 Pomocí stránky funkce přizpůsobení uživatelského rozhraní můžete přizpůsobit vzhled a chování všech vlastních zásad. Můžete také udržovat konzistenci značky a vizuální konzistenci mezi vaší aplikací a službou Azure AD B2C.
 
-Zde je, jak to funguje: Azure AD B2C kód v prohlížeči vašeho zákazníka a využívá moderní přístup a volá [sdílení prostředků mezi zdroji (CORS)](https://www.w3.org/TR/cors/). Nejprve zadejte adresu URL ve vlastních zásadách přizpůsobený obsah ve formátu HTML. Azure AD B2C sloučí elementy uživatelského rozhraní s obsahem HTML, který je načtený z vaší adresy URL, a pak zobrazí stránku zákazníkovi.
+Funguje to následovně: Azure AD B2C kód v prohlížeči vašeho zákazníka a využívá moderní přístup a volá [sdílení prostředků mezi zdroji (CORS)](https://www.w3.org/TR/cors/). Nejprve zadejte adresu URL ve vlastních zásadách přizpůsobený obsah ve formátu HTML. Azure AD B2C sloučí elementy uživatelského rozhraní s obsahem HTML, který je načtený z vaší adresy URL, a pak zobrazí stránku zákazníkovi.
 
 ## <a name="create-your-html5-content"></a>Vytvoření obsahu vaší HTML5
 
@@ -79,18 +79,19 @@ Chcete-li hostovat tento obsah ve formátu HTML v úložišti objektů Blob, pos
 
 Vytvoření veřejného kontejneru v úložišti objektů Blob, postupujte takto:
 
-1. Klikněte na tlačítko **přehled** kartu.
-2. Klikněte na tlačítko **kontejneru**.
-3. Pro **název**, typ **$root**.
-4. Nastavte **získat přístup k typu** k **Blob**.
-5. Klikněte na tlačítko **$root** otevřete nový kontejner.
+1. V části **službu Blob service** v nabídce vlevo vyberte **objekty BLOB**.
+2. Klikněte na tlačítko **+ kontejner**.
+3. Pro **název**, zadejte *kořenové*. Může to být název podle vlastního výběru, například *Northwind*, ale také používáme *kořenové* v tomto příkladu, pro jednoduchost.
+4. Pro **úroveň veřejného přístupu**vyberte **Blob**, pak **OK**.
+5. Klikněte na tlačítko **kořenové** otevřete nový kontejner.
 6. Klikněte na **Odeslat**.
 7. Klikněte na ikonu složky vedle **vyberte soubor**.
-8. Přejděte na **přizpůsobit ui.html**, který jste vytvořili dříve v části vlastní nastavení uživatelského rozhraní stránky.
-9. Klikněte na **Odeslat**.
-10. Vyberte vlastní ui.html objekt blob, který jste nahráli.
-11. Vedle položky **URL**, klikněte na tlačítko **kopírování**.
-12. V prohlížeči vložte zkopírovanou adresu URL a přejděte na web. Pokud web není přístupný, ujistěte se, že typ přístupu kontejneru je nastaven na **blob**.
+8. Vyhledejte a vyberte **přizpůsobit ui.html** který jste vytvořili dříve v části vlastní nastavení uživatelského rozhraní stránky.
+9. Pokud chcete nahrát do podsložky, rozbalte **Upřesnit** a zadejte název složky v **nahrát do složky**.
+10. Vyberte **Nahrát**.
+11. Vyberte **přizpůsobit ui.html** objekt blob, který jste nahráli.
+12. Napravo od **URL** textového pole, vyberte **kopírování do schránky** ikonu zkopírujte adresu URL do schránky.
+13. Ve webovém prohlížeči přejděte na adresu URL zkopírovanou z klíče k ověření, že je přístupný objekt blob, který jste nahráli. Pokud je nedostupné, například pokud narazíte `ResourceNotFound` chyba, ujistěte se, že typ přístupu kontejneru je nastaven na **blob**.
 
 ## <a name="configure-cors"></a>Konfigurace CORS
 
@@ -159,6 +160,7 @@ Konfigurace přizpůsobení uživatelského rozhraní, je zkopírovat **ContentD
 
 ## <a name="reference"></a>Referenční informace
 
+### <a name="sample-templates"></a>Ukázkové šablony
 Pro přizpůsobení uživatelského rozhraní tady najdete ukázkové šablony:
 
 ```
@@ -174,6 +176,16 @@ Složka sample_templates/wingtip obsahuje následující soubory HTML:
 | *selfasserted.html* | Tento soubor můžete použijte jako šablonu pro stránka registrace sociálního účtu, stránku pro přihlášení místním účtem nebo místní účet přihlašovací stránky. |
 | *unified.html* | Tento soubor můžete použijte jako šablonu pro jednotné stránku registrace nebo přihlášení. |
 | *updateprofile.html* | Tento soubor můžete použijte jako šablonu pro stránku aktualizace profilu. |
+
+Tady je postup, jak používat ukázku. 
+1. Naklonujte úložiště na místním počítači. Zvolte šablonu složce sample_templates. Můžete použít `wingtip` nebo `contoso`.
+2. Nahrání všech souborů v rámci `css`, `fonts`, a `images` složky do úložiště objektů Blob, jak je popsáno v předchozích částech. 
+3. Dále otevřete každý \*soubor HTML v kořenové složce buď `wingtip` nebo `contoso` (podle toho, co jste vybrali v prvním kroku) a nahraďte všechny výskyty "http://localhost" s adresami URL šablony stylů css, obrázky a písma souborů, které jste odeslali v kroku 2.
+4. Uložit \*.html souborů a k jejich nahrávání do úložiště objektů Blob.
+5. Nyní upravit soubor rozšíření, jak je uvedeno dříve v [upravte soubor rozšíření](#modify-the-extensions-file).
+6. Pokud se zobrazí, chybí písma, Image nebo šablon stylů css, Zkontrolujte prosím odkazy v rozšíření zásady a \*soubory HTML.
+
+### <a name="content-defintion-ids"></a>Definici ID obsahu
 
 V změnit váš vlastní zásady registrace / přihlášení části jste nakonfigurovali definici obsahu pro `api.idpselections`. Kompletní obsah ID definice, které jsou rozpoznány modulem pro architekturu rozhraní identit Azure AD B2C a jejich popisy jsou v následující tabulce:
 

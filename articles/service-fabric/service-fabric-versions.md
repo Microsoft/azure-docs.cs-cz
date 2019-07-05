@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: troubleshooting
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/10/2019
+ms.date: 07/03/2019
 ms.author: aljo
-ms.openlocfilehash: 8a548bce6da8b3bae004b0be4f6e8f09c9894025
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 030e57512d10f31ca03dff2f99e57c305de49e97
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67060339"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565978"
 ---
 # <a name="supported-service-fabric-versions"></a>Podporované verze Service Fabric
 
@@ -36,17 +36,17 @@ Následující tabulka uvádí verze aplikace Service Fabric a jejich podpora ko
 
 | Modul runtime Service Fabric v clusteru | Můžete upgradovat přímo z verze clusteru |Kompatibilní verze balíčku sady SDK nebo NuGet | Ukončení podpory |
 | --- | --- |--- | --- |
-| Všechny verze clusteru před 5.3.121 | 5.1.158.* |Menší nebo rovna verzi 2.3 |20\. ledna 2017 |
-| 5.3.* | 5.1.158.* |Menší nebo rovna verzi 2.3 |24\. února 2017 |
-| 5.4.* | 5.1.158.* |Menší nebo rovna verze 2.4 |10\. května 2017       |
+| Všechny verze clusteru před 5.3.121 | 5.1.158.* |Menší nebo rovna verzi 2.3 |20. ledna 2017 |
+| 5.3.* | 5.1.158.* |Menší nebo rovna verzi 2.3 |24. února 2017 |
+| 5.4.* | 5.1.158.* |Menší nebo rovna verze 2.4 |10. května 2017       |
 | 5.5.* | 5.4.164.* |Menší nebo rovna verzi 2.5 |Srpen 10,2017    |
 | 5.6.* | 5.4.164.* |Menší nebo rovna verzi 2.6 |Říjen 13,2017   |
-| 5.7.* | 5.4.164.* |Menší nebo rovna verze 2.7 |15\. prosince 2017  |
-| 6.0.* | 5.6.205.* |Menší nebo rovna verze 2.8 |30\. března 2018     |
-| 6.1.* | 5.7.221.* |Menší nebo rovna verzi 3.0 |15\. července 2018      |
-| 6.2.* | 6.0.232.* |Menší nebo rovna verzi 3.1 |26\. října 2018   |
+| 5.7.* | 5.4.164.* |Menší nebo rovna verze 2.7 |15. prosince 2017  |
+| 6.0.* | 5.6.205.* |Menší nebo rovna verze 2.8 |30. března 2018     |
+| 6.1.* | 5.7.221.* |Menší nebo rovna verzi 3.0 |15. července 2018      |
+| 6.2.* | 6.0.232.* |Menší nebo rovna verzi 3.1 |26. října 2018   |
 | 6.3.* | 6.1.480.* |Menší nebo rovna verzi 3.2 |Do 31. března 2019  |
-| 6.4.* | 6.2.301.* |Menší nebo rovna verze 3.3 |15\. září 2019 |
+| 6.4.* | 6.2.301.* |Menší nebo rovna verze 3.3 |15. září 2019 |
 | 6.5.* | 6.4.617.* |Menší nebo rovna verzi 3.4 |Aktuální verze, tak žádné datum ukončení |
 
 ## <a name="supported-operating-systems"></a>Podporované operační systémy
@@ -104,4 +104,6 @@ Následující tabulka uvádí názvy verzí Service Fabric a jejich odpovídaj�
 | 6.4 CU5 | 6.4.654.9590 | 6.4.649.1 |
 | 6.4 CU6 | 6.4.658.9590 | Není k dispozici |
 | 6.4 CU7 | 6.4.664.9590 | 6.4.661.1 |
+| 6.4 CU8 | 6.4.670.9590 | Není k dispozici |
 | 6.5 RTO | 6.5.639.9590 | 6.5.435.1 |
+| 6.5 CU1 | 6.5.641.9590 | 6.5.454.1 |

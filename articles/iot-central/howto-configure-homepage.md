@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: b1edd4777839c947cf8f60bb6857f939553e2603
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e6947a4f15797028274d49069d9e2787b143860d
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65467638"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67503221"
 ---
 # <a name="configure-the-application-dashboard"></a>Konfigurace řídicí panel aplikací
 
@@ -41,6 +41,8 @@ Teď když operátor zobrazí výchozí řídicí panel aplikací, se zobrazí n
 ![Karta "Řídicí panel" se zobrazené nastavení a vlastnosti pro dlaždici](media/howto-configure-homepage/image4a.png)
 
 Můžete prozkoumat další typy dlaždic v knihovně chcete zjistit, jak dále přizpůsobit výchozí řídicí panel aplikací.
+
+Další informace o tom, jak používat dlaždice v Azure IoT Central, naleznete v tématu [pomocí dlaždice řídicího panelu](howto-use-tiles.md).
 
 ## <a name="next-steps"></a>Další postup
 

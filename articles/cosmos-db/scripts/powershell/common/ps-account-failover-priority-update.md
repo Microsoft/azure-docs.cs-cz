@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: samples
 ms.date: 05/06/2019
 ms.author: mjbrown
-ms.openlocfilehash: 2e6fefbbd3db23a41fc64021b19a412d7a12b322
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 785ca8941c24014fd00d8135b66cefccd99d2951
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66247886"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561221"
 ---
 # <a name="change-failover-priority-for-an-azure-cosmos-account-using-powershell"></a>Změna priority převzetí služeb při selhání pro účet Azure Cosmos pomocí Powershellu
 
@@ -21,7 +21,7 @@ ms.locfileid: "66247886"
 
 ## <a name="sample-script"></a>Ukázkový skript
 
-[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/common/ps-account-failover-priority-update.ps1 "Update failover priority for an Azure Cosmos account")]
+[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-account-failover-priority-update.ps1 "Update failover priority for an Azure Cosmos account")]
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení
 

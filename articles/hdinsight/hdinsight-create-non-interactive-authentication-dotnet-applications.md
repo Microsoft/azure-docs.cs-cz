@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: 8b96c38d5bb24a267ad0203083e485d1780f28c8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9eb83c0c42bb1ba3de1aa81ab3d5f339f4d40233
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66241463"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67433667"
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>Vytvoření aplikace .NET HDInsight pro neinteraktivní ověřování
 Můžete spustit aplikaci Microsoft .NET Azure HDInsight s identitou aplikace vlastní (neinteraktivní) nebo v části identita přihlášeného uživatele (interaktivní) aplikace. V tomto článku se dozvíte, jak vytvořit aplikaci .NET pro připojení k Azure a spravovat HDInsight pro neinteraktivní ověřování. Ukázku interaktivní aplikace najdete v tématu [připojení k Azure HDInsight](hdinsight-administer-use-dotnet-sdk.md#connect-to-azure-hdinsight). 
@@ -28,13 +28,13 @@ Jako neinteraktivní aplikace .NET budete potřebovat:
 * HDInsight cluster. Zobrazit [úvodní kurz](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster).
 
 ## <a name="assign-a-role-to-the-azure-ad-application"></a>Přiřazení role aplikace Azure AD
-Přiřaďte aplikaci Azure AD [role](../role-based-access-control/built-in-roles.md), aby aplikaci udělil oprávnění k provedení akce. Nastavit obor na úrovni předplatného, skupinu prostředků nebo prostředek. Oprávnění se dědí do oboru na nižších úrovních. (Například přidáním aplikace k roli Čtenář pro skupinu prostředků znamená, že aplikace může číst skupinu prostředků a všechny prostředky v ní.) V tomto kurzu nastavit obor na úrovni skupiny prostředků. Další informace najdete v tématu [použití přiřazení rolí ke správě přístupu k prostředkům předplatného Azure](../role-based-access-control/role-assignments-portal.md).
+Přiřaďte aplikaci Azure AD [role](../role-based-access-control/built-in-roles.md), aby aplikaci udělil oprávnění k provedení akce. Nastavit obor na úrovni předplatného, skupinu prostředků nebo prostředek. Oprávnění se dědí do oboru na nižších úrovních. (Například přidáním aplikace k roli Čtenář pro skupinu prostředků znamená, že aplikace může číst skupinu prostředků a všechny prostředky v ní.) V tomto článku nastavit obor na úrovni skupiny prostředků. Další informace najdete v tématu [použití přiřazení rolí ke správě přístupu k prostředkům předplatného Azure](../role-based-access-control/role-assignments-portal.md).
 
 **Přidání role vlastníka do aplikace Azure AD**
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. V levé nabídce vyberte **Skupiny prostředků**.
-3. Vyberte skupinu prostředků, které má cluster HDInsight, na kterém budete spouštět dotaz Hive později v tomto kurzu. Pokud máte velký počet skupin prostředků, můžete použít filtr a vyberte ten, který chcete.
+3. Vyberte skupinu prostředků, které má cluster HDInsight, na kterém budete spouštět dotaz Hive dále v tomto článku. Pokud máte velký počet skupin prostředků, můžete použít filtr a vyberte ten, který chcete.
 4. V nabídce skupiny prostředků, vyberte **řízení přístupu (IAM)** .
 5. Vyberte **přiřazení rolí** kartu pro zobrazení aktuálního přiřazení rolí.
 6. V horní části stránky vyberte **přidat přiřazení role**.

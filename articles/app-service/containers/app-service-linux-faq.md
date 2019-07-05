@@ -4,7 +4,7 @@ description: Azure App Service v Linuxu – nejčastější dotazy.
 keywords: azure app service, web app, faq, linux, oss, web app for containers, multi-container, multicontainer
 services: app-service
 documentationCenter: ''
-author: yili
+author: msangapu-msft
 manager: stefsch
 editor: ''
 ms.assetid: ''
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
-ms.author: yili
+ms.author: msangapu-msft
 ms.custom: seodec18
-ms.openlocfilehash: dbf63ff47b11c2e75966b4a4b91fb1b00b40d216
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d465a93a23b7f0098471e0074240dfcbe9658736
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65594277"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448426"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Azure App Service v Linuxu – nejčastější dotazy
 
@@ -119,10 +119,7 @@ Během nasazení Git, by měl Ano, Kudu rozpoznají, že nasazujete aplikaci PHP
 
 **Používám vlastní vlastní kontejner. Chci, aby platformu, pro připojení sdílené složky SMB do `/home/` adresáře.**
 
-Můžete to udělat tak, že nastavíte `WEBSITES_ENABLE_APP_SERVICE_STORAGE` nastavení aplikace nastavte na *true*. Uvědomte si, že to způsobí, že kontejner se restartuje po úložiště platformy prochází změnu.
-
->[!NOTE]
->Pokud `WEBSITES_ENABLE_APP_SERVICE_STORAGE` nastavení je tento parametr zadán, nebo nastavte *false*, `/home/` adresáře nebude sdílet mezi instancí škálovací a soubory, které jsou zapsány existuje nebude zachován po restartování.
+Pokud `WEBSITES_ENABLE_APP_SERVICE_STORAGE` nastavení je **neurčené** , nebo nastavte *true*, `/home/` directory **se bude sdílet** napříč škálovaných instancí a soubory zapsané **zachová** napříč restartování. Explicitním nastavením `WEBSITES_ENABLE_APP_SERVICE_STORAGE` k *false* dojde k zakázání připojení.
 
 **Moje vlastní kontejner trvá dlouhou dobu spuštění a platformu restartuje kontejner před dokončením spouštění.**
 

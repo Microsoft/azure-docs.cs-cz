@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: anantr
 ms.component: alerts
-ms.openlocfilehash: e29a1f5d1e258ab66540010dc12f9326b8fd57a2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5f351dd7fddb4c15b28954eccf8ada3bfc14dbca
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60775742"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447654"
 ---
 # <a name="common-alert-schema-definitions"></a>Definice běžných schémat upozornění
 
@@ -80,7 +80,7 @@ Popisuje instanci jakékoli výstrahy **prostředek, který ovlivněných** a **
 |:---|:---|
 | alertId | Identifikátor GUID jedinečným způsobem identifikuje instanci výstrahy. |
 | alertRule | Název pravidla výstrahy, které vygenerovalo instanci výstrahy. |
-| Severity | Závažnost výstrahy. Možné hodnoty: Sev0, Sev1, Sev2, Sev3, Sev4 |
+| severity | Závažnost výstrahy. Možné hodnoty: Sev0, Sev1, Sev2, Sev3, Sev4 |
 | signalType | Identifikuje signál, na kterém byl definován pravidlo upozornění. Možné hodnoty: Metriky protokolů, protokolu aktivit |
 | monitorCondition | Když se aktivuje upozornění, stav monitorování výstraha nastavena na "Fired". Pokud základní stav, který způsobil výstrahu, kterou chcete aktivovat vymaže, stav monitorování nastavena na "Vyřešeno".   |
 | monitoringService | Monitorování služby nebo řešení, které upozornění vygenerovalo. Služba monitorování vyplývají z pole pro kontext výstrahy. |
@@ -154,7 +154,8 @@ Popisuje instanci jakékoli výstrahy **prostředek, který ovlivněných** a **
 ### <a name="log-alerts"></a>Upozornění protokolů
 
 > [!NOTE]
-> Pokud použijete vlastní možnost JSON pro vaše existující upozornění protokolů, přizpůsobení nezachová ve společném schématu.
+> + Upozornění protokolů, kde byl definován vlastní datovou část JSON povolení ve společném schématu produktu se vraťte schématu datové části je popsáno níže.
+> + Výstrahy se společným schématem povolený mají limit horní velikost 256 kB k výstraze. **Výsledky hledání nejsou součástí datové části výstrahy protokolu pokud způsobují upozornění velikost mezi touto prahovou hodnotou.** To se dá určit tak, že zkontrolujete příznak "IncludedSearchResults". Ve scénářích, kde nejsou zahrnuty výsledky hledání, doporučujeme použít ve spojení s vyhledávací dotaz [rozhraní API služby Log Analytics](https://docs.microsoft.com/rest/api/loganalytics/query/get). 
 
 #### <a name="monitoringservice--log-analytics"></a>monitoringService = "Log Analytics.
 
@@ -162,21 +163,64 @@ Popisuje instanci jakékoli výstrahy **prostředek, který ovlivněných** a **
 ```json
 {
   "alertContext": {
-      "SearchQuery": "search * \n| where Type == \"Heartbeat\" \n| where Category == \"Direct Agent\" \n| where TimeGenerated > ago(30m) ",
-      "SearchIntervalStartTimeUtc": "3/22/2019 1:36:31 PM",
-      "SearchIntervalEndtimeUtc": "3/22/2019 1:51:31 PM",
-      "ResultCount": 15,
-      "LinkToSearchResults": "https://portal.azure.com#@72f988bf-86f1-41af-91ab-2d7cd011db47/blade/Microsoft_OperationsManagementSuite_Workspace/AnalyticsBlade/initiator/AnalyticsShareLinkToQuery/isQueryEditorVisible/true/scope/%7B%22resources%22%3A%5B%7B%22resourceId%22%3A%22%2Fsubscriptions%<subscription ID>%2FresourceGroups%2Fpipelinealertrg%2Fproviders%2FMicrosoft.OperationalInsights%2Fworkspaces%2FINC-OmsAlertRunner%22%7D%5D%7D/query/search%20%2A%20%0A%7C%20where%20Type%20%3D%3D%20%22Heartbeat%22%20%0A%7C%20where%20Category%20%3D%3D%20%22Direct%20Agent%22%20%0A%7C%20where%20TimeGenerated%20%3E%20%28datetime%282019-03-22T13%3A51%3A31.0000000%29%20-%2030m%29%20%20/isQuerybase64Compressed/false/timespanInIsoFormat/2019-03-22T13%3a36%3a31.0000000Z%2f2019-03-22T13%3a51%3a31.0000000Z",
-      "SeverityDescription": "Warning",
-      "WorkspaceId": "2a1f50a7-ef97-420c-9d14-938e77c2a929",
-      "SearchIntervalDurationMin": "15",
-      "AffectedConfigurationItems": [
-        "INC-Gen2Alert"
+    "SearchQuery": "search * \n| where Type == \"Heartbeat\" \n| where Category == \"Direct Agent\" \n| where TimeGenerated > ago(30m) ",
+    "SearchIntervalStartTimeUtc": "3/22/2019 1:36:31 PM",
+    "SearchIntervalEndtimeUtc": "3/22/2019 1:51:31 PM",
+    "ResultCount": 15,
+    "LinkToSearchResults": "https://portal.azure.com#@72f988bf-86f1-41af-91ab-2d7cd011db47/blade/Microsoft_OperationsManagementSuite_Workspace/AnalyticsBlade/initiator/AnalyticsShareLinkToQuery/isQueryEditorVisible/true/scope/%7B%22resources%22%3A%5B%7B%22resourceId%22%3A%22%2Fsubscriptions%<subscription ID>%2FresourceGroups%2Fpipelinealertrg%2Fproviders%2FMicrosoft.OperationalInsights%2Fworkspaces%2FINC-OmsAlertRunner%22%7D%5D%7D/query/search%20%2A%20%0A%7C%20where%20Type%20%3D%3D%20%22Heartbeat%22%20%0A%7C%20where%20Category%20%3D%3D%20%22Direct%20Agent%22%20%0A%7C%20where%20TimeGenerated%20%3E%20%28datetime%282019-03-22T13%3A51%3A31.0000000%29%20-%2030m%29%20%20/isQuerybase64Compressed/false/timespanInIsoFormat/2019-03-22T13%3a36%3a31.0000000Z%2f2019-03-22T13%3a51%3a31.0000000Z",
+    "SeverityDescription": "Warning",
+    "WorkspaceId": "2a1f50a7-ef97-420c-9d14-938e77c2a929",
+    "SearchIntervalDurationMin": "15",
+    "AffectedConfigurationItems": [
+      "INC-Gen2Alert"
+    ],
+    "SearchIntervalInMinutes": "15",
+    "Threshold": 10000,
+    "Operator": "Less Than",
+    "SearchResult": {
+      "tables": [
+        {
+          "name": "PrimaryResult",
+          "columns": [
+            {
+              "name": "$table",
+              "type": "string"
+            },
+            {
+              "name": "Id",
+              "type": "string"
+            },
+            {
+              "name": "TimeGenerated",
+              "type": "datetime"
+            }
+          ],
+          "rows": [
+            [
+              "Fabrikam",
+              "33446677a",
+              "2018-02-02T15:03:12.18Z"
+            ],
+            [
+              "Contoso",
+              "33445566b",
+              "2018-02-02T15:16:53.932Z"
+            ]
+          ]
+        }
       ],
-      "SearchIntervalInMinutes": "15",
-      "Threshold": 10000,
-      "Operator": "Less Than"
-    }
+      "dataSources": [
+        {
+          "resourceId": "/subscriptions/a5ea27e2-7482-49ba-90b3-60e7496dd873/resourcegroups/nrt-tip-kc/providers/microsoft.operationalinsights/workspaces/nrt-tip-kc",
+          "tables": [
+            "Heartbeat"
+          ]
+        }
+      ]
+    },
+    "IncludedSearchResults": "True",
+    "AlertType": "Number of results"
+  }
 }
 ```
 
@@ -186,17 +230,60 @@ Popisuje instanci jakékoli výstrahy **prostředek, který ovlivněných** a **
 ```json
 {
   "alertContext": {
-      "SearchQuery": "search *",
-      "SearchIntervalStartTimeUtc": "3/22/2019 1:36:33 PM",
-      "SearchIntervalEndtimeUtc": "3/22/2019 1:51:33 PM",
-      "ResultCount": 0,
-      "LinkToSearchResults": "https://portal.azure.com#@72f988bf-86f1-41af-91ab-2d7cd011db47/blade/Microsoft_OperationsManagementSuite_Workspace/AnalyticsBlade/initiator/AnalyticsShareLinkToQuery/isQueryEditorVisible/true/scope/%7B%22resources%22%3A%5B%7B%22resourceId%22%3A%22%2Fsubscriptions%<subscription ID>%2FresourceGroups%2FPipeLineAlertRG%2Fproviders%2Fmicrosoft.insights%2Fcomponents%2FWEU-AIRunner%22%7D%5D%7D/query/search%20%2A/isQuerybase64Compressed/false/timespanInIsoFormat/2019-03-22T13%3a36%3a33.0000000Z%2f2019-03-22T13%3a51%3a33.0000000Z",
-      "SearchIntervalDurationMin": "15",
-      "SearchIntervalInMinutes": "15",
-      "Threshold": 10000,
-      "Operator": "Less Than",
-      "ApplicationId": "8e20151d-75b2-4d66-b965-153fb69d65a6"
-    }
+    "SearchQuery": "search *",
+    "SearchIntervalStartTimeUtc": "3/22/2019 1:36:33 PM",
+    "SearchIntervalEndtimeUtc": "3/22/2019 1:51:33 PM",
+    "ResultCount": 0,
+    "LinkToSearchResults": "https://portal.azure.com#@72f988bf-86f1-41af-91ab-2d7cd011db47/blade/Microsoft_OperationsManagementSuite_Workspace/AnalyticsBlade/initiator/AnalyticsShareLinkToQuery/isQueryEditorVisible/true/scope/%7B%22resources%22%3A%5B%7B%22resourceId%22%3A%22%2Fsubscriptions%<subscription ID>%2FresourceGroups%2FPipeLineAlertRG%2Fproviders%2Fmicrosoft.insights%2Fcomponents%2FWEU-AIRunner%22%7D%5D%7D/query/search%20%2A/isQuerybase64Compressed/false/timespanInIsoFormat/2019-03-22T13%3a36%3a33.0000000Z%2f2019-03-22T13%3a51%3a33.0000000Z",
+    "SearchIntervalDurationMin": "15",
+    "SearchIntervalInMinutes": "15",
+    "Threshold": 10000,
+    "Operator": "Less Than",
+    "ApplicationId": "8e20151d-75b2-4d66-b965-153fb69d65a6",
+    "SearchResult": {
+      "tables": [
+        {
+          "name": "PrimaryResult",
+          "columns": [
+            {
+              "name": "$table",
+              "type": "string"
+            },
+            {
+              "name": "Id",
+              "type": "string"
+            },
+            {
+              "name": "TimeGenerated",
+              "type": "datetime"
+            }
+          ],
+          "rows": [
+            [
+              "Fabrikam",
+              "33446677a",
+              "2018-02-02T15:03:12.18Z"
+            ],
+            [
+              "Contoso",
+              "33445566b",
+              "2018-02-02T15:16:53.932Z"
+            ]
+          ]
+        }
+      ],
+      "dataSources": [
+        {
+          "resourceId": "/subscriptions/a5ea27e2-7482-49ba-90b3-60e7496dd873/resourcegroups/nrt-tip-kc/providers/microsoft.operationalinsights/workspaces/nrt-tip-kc",
+          "tables": [
+            "Heartbeat"
+          ]
+        }
+      ]
+    },
+    "IncludedSearchResults": "True",
+    "AlertType": "Number of results"
+  }
 }
 ```
 
@@ -229,8 +316,80 @@ Popisuje instanci jakékoli výstrahy **prostředek, který ovlivněných** a **
 }
 ```
 
+#### <a name="monitoringservice--servicehealth"></a>monitoringService = 'ServiceHealth'
+
+##### <a name="sample-values"></a>Ukázkové hodnoty
+```json
+{
+  "alertContext": {
+    "authorization": null,
+    "channels": "Admin",
+    "claims": null,
+    "caller": null,
+    "correlationId": "f3cf2430-1ee3-4158-8e35-7a1d615acfc7",
+    "eventSource": "ServiceHealth",
+    "eventTimestamp": "2019-06-24T11:31:19.0312699+00:00",
+    "httpRequest": null,
+    "eventDataId": "<GUID>",
+    "level": "Informational",
+    "operationName": "Microsoft.ServiceHealth/maintenance/action",
+    "operationId": "<GUID>",
+    "properties": {
+      "title": "Azure SQL DW Scheduled Maintenance Pending",
+      "service": "SQL Data Warehouse",
+      "region": "East US",
+      "communication": "<MESSAGE>",
+      "incidentType": "Maintenance",
+      "trackingId": "<GUID>",
+      "impactStartTime": "2019-06-26T04:00:00Z",
+      "impactMitigationTime": "2019-06-26T12:00:00Z",
+      "impactedServices": "[{\"ImpactedRegions\":[{\"RegionName\":\"East US\"}],\"ServiceName\":\"SQL Data Warehouse\"}]",
+      "impactedServicesTableRows": "<tr>\r\n<td align='center' style='padding: 5px 10px; border-right:1px solid black; border-bottom:1px solid black'>SQL Data Warehouse</td>\r\n<td align='center' style='padding: 5px 10px; border-bottom:1px solid black'>East US<br></td>\r\n</tr>\r\n",
+      "defaultLanguageTitle": "Azure SQL DW Scheduled Maintenance Pending",
+      "defaultLanguageContent": "<MESSAGE>",
+      "stage": "Planned",
+      "communicationId": "<GUID>",
+      "maintenanceId": "<GUID>",
+      "isHIR": "false",
+      "version": "0.1.1"
+    },
+    "status": "Active",
+    "subStatus": null,
+    "submissionTimestamp": "2019-06-24T11:31:31.7147357+00:00"
+  }
+}
+```
+#### <a name="monitoringservice--resource-health"></a>monitoringService = "Resource Health.
+
+##### <a name="sample-values"></a>Ukázkové hodnoty
+```json
+{
+  "alertContext": {
+    "channels": "Admin, Operation",
+    "correlationId": "<GUID>",
+    "eventSource": "ResourceHealth",
+    "eventTimestamp": "2019-06-24T15:42:54.074+00:00",
+    "eventDataId": "<GUID>",
+    "level": "Informational",
+    "operationName": "Microsoft.Resourcehealth/healthevent/Activated/action",
+    "operationId": "<GUID>",
+    "properties": {
+      "title": "This virtual machine is stopping and deallocating as requested by an authorized user or process",
+      "details": null,
+      "currentHealthStatus": "Unavailable",
+      "previousHealthStatus": "Available",
+      "type": "Downtime",
+      "cause": "UserInitiated"
+    },
+    "status": "Active",
+    "submissionTimestamp": "2019-06-24T15:45:20.4488186+00:00"
+  }
+}
+```
+
+
 ## <a name="next-steps"></a>Další postup
 
 - [Další informace o ve společném schématu produktu výstrah](https://aka.ms/commonAlertSchemaDocs)
-
+- [Zjistěte, jak vytvořit aplikaci logiky, které využívá připojení ve společném schématu produktu výstrah pro zpracování všech výstrah.](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-integrations) 
 

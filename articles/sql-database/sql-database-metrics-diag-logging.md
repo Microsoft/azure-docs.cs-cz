@@ -11,17 +11,17 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: 089f5335a65151c9c576346995f0bee34b5d10b4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 05/21/2019
+ms.openlocfilehash: 6824a7151a0c007d6fe4ba021f274886a3cf0dcb
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65791908"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447828"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database metrik a protokolování diagnostiky
 
-V tomto tématu se dozvíte, jak nakonfigurovat protokolování telemetrická data diagnostiky pro Azure SQL Database pomocí webu Azure portal, PowerShell, rozhraní příkazového řádku Azure, rozhraní REST API služby Azure Monitor a šablony Azure Resource Manageru. Tyto nástroje pro diagnostiku slouží k vyhodnocení využití prostředků a statistiky provádění dotazu. 
+V tomto tématu se dozvíte, jak nakonfigurovat protokolování telemetrická data diagnostiky pro Azure SQL Database pomocí webu Azure portal, PowerShell, rozhraní příkazového řádku Azure, rozhraní REST API služby Azure Monitor a šablony Azure Resource Manageru. Tyto nástroje pro diagnostiku slouží k vyhodnocení využití prostředků a statistiky provádění dotazu.
 
 Izolované databáze, databáze ve fondu v elastických fondech a instance databáze spravované instance může, streamování protokolů Diagnostika a metriky pro snazší monitorování výkonu. Databáze k přenosu využití prostředků, pracovních procesů a relace a připojení k jednomu z následujících prostředků Azure můžete nakonfigurovat:
 
@@ -119,7 +119,7 @@ Pokud chcete povolit streamování telemetrická data diagnostiky pro prostřede
 1. Kromě toho konfigurace vysílání datového proudu telemetrická data diagnostiky pro každou databázi v rámci elastického fondu, který chcete monitorovat pomocí kroků popsaných v další části.
 
 > [!IMPORTANT]
-> Kromě konfigurace telemetrická data diagnostiky pro elastický fond, budete potřebovat ke konfiguraci diagnostickou telemetrii pro všechny databáze v elastickém fondu, jak je uvedeno níže. 
+> Kromě konfigurace telemetrická data diagnostiky pro elastický fond, budete potřebovat ke konfiguraci diagnostickou telemetrii pro všechny databáze v elastickém fondu, jak je uvedeno níže.
 
 ### <a name="configure-streaming-of-diagnostics-telemetry-for-single-database-or-database-in-elastic-pool"></a>Konfigurace datové proudy telemetrická data diagnostiky pro izolovanou databázi nebo databáze v elastickém fondu
 
@@ -181,7 +181,7 @@ Pokud chcete povolit streamování telemetrická data diagnostiky pro prostřede
 1. Kromě toho konfigurace vysílání datového proudu telemetrická data diagnostiky pro každou instanci databáze ve spravované instanci, kterou chcete monitorovat pomocí následujících kroků popsaných v další části.
 
 > [!IMPORTANT]
-> Kromě konfigurace telemetrická data diagnostiky pro spravovanou instanci, také musíte nakonfigurovat telemetrická data diagnostiky pro každou databázi instance, jak je uvedeno níže. 
+> Kromě konfigurace telemetrická data diagnostiky pro spravovanou instanci, také musíte nakonfigurovat telemetrická data diagnostiky pro každou databázi instance, jak je uvedeno níže.
 
 ### <a name="configure-streaming-of-diagnostics-telemetry-for-instance-databases"></a>Konfigurace datové proudy diagnostickou telemetrii pro instanci databáze
 
@@ -261,6 +261,7 @@ Zadat ID prostředku pracovního prostoru \<$WSID\> jako parametr při spuštěn
     PS C:\> $WSID = "/subscriptions/<subID>/resourcegroups/<RG_NAME>/providers/microsoft.operationalinsights/workspaces/<WS_NAME>"
     PS C:\> .\Enable-AzureRMDiagnostics.ps1 -WSID $WSID
     ```
+
    Nahraďte \<subID\> ID předplatného, \<RG_NAME\> s názvem skupiny prostředků a \<WS_NAME\> s název pracovního prostoru.
 
 ### <a name="azure-cli"></a>Azure CLI
@@ -396,10 +397,6 @@ Název objektu blob pro ukládání dat z elastického fondu vypadá takto:
 ```powershell
 insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription ID}/ RESOURCEGROUPS/{resource group name}/PROVIDERS/Microsoft.SQL/servers/{resource_server}/ elasticPools/{elastic_pool_name}/y={four-digit numeric year}/m={two-digit numeric month}/d={two-digit numeric day}/h={two-digit 24-hour clock hour}/m=00/PT1H.json
 ```
-
-### <a name="download-metrics-and-logs-from-storage"></a>Stažení metrik a protokolů ze služby Storage
-
-Zjistěte, jak [stažení Diagnostika a metriky protokolů ze služby Storage](../storage/blobs/storage-quickstart-blobs-dotnet.md#download-the-sample-application).
 
 ## <a name="data-retention-policy-and-pricing"></a>Zásady uchovávání dat a ceny
 
@@ -719,5 +716,3 @@ Další informace o službě Event Hubs, přečtěte si:
 
 - [Co je Azure Event Hubs?](../event-hubs/event-hubs-what-is-event-hubs.md)
 - [Začínáme s Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
-
-Další informace o službě Azure Storage najdete v tématu [stahování metriky a diagnostické protokoly z úložiště](../storage/blobs/storage-quickstart-blobs-dotnet.md#download-the-sample-application).

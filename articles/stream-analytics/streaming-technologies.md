@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/15/2019
-ms.openlocfilehash: 85d6ed80da93f90e6dc0feaee7081ee3f36f1bf9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f46a35d971c008b61d4899e30101ea562d3cefea
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66242693"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67483405"
 ---
 # <a name="choose-a-real-time-analytics-and-streaming-processing-technology-on-azure"></a>Zvolte analýzy v reálném čase a streamování zpracování technologie v Azure
 
@@ -44,7 +44,7 @@ Azure Stream Analytics obsahuje celou řadu možností out-of-the-box. Můžete 
 
 ### <a name="you-need-to-input-from-or-output-to-kafka"></a>Budete muset ze vstupních nebo výstupních k Kafka
 
-Azure Stream Analytics není máte Apache Kafka vstup nebo výstup adaptér. Pokud máte události doručení nebo nutné odeslat Kafka a není nutné požadavek na spuštění clusteru Kafka, můžete pokračovat k odesílání událostí do služby Event Hubs pomocí rozhraní API Event Hubs Kafka beze změny odesílatele události použití Stream Analytics. Pokud je potřeba spouštět Kafka cluster, můžete použít strukturovaného streamování Sparku, která plně podporuje [Azure Databricks](../azure-databricks/index.yml), nebo Storm na [Azure HDInsight](../hdinsight/storm/apache-storm-tutorial-get-started-linux.md).
+Azure Stream Analytics není máte Apache Kafka vstup nebo výstup adaptér. Pokud máte události doručení nebo nutné odeslat Kafka a není nutné požadavek na spuštění clusteru Kafka, můžete pokračovat k odesílání událostí do služby Event Hubs pomocí rozhraní API Event Hubs Kafka beze změny odesílatele události použití Stream Analytics. Pokud je potřeba spouštět Kafka cluster, můžete použít strukturovaného streamování Sparku, která plně podporuje [Azure Databricks](../azure-databricks/index.yml), nebo Storm na [Azure HDInsight](../hdinsight/storm/apache-storm-overview.md).
 
 ### <a name="you-want-to-write-udfs-udas-and-custom-deserializers-in-a-language-other-than-javascript-or-c"></a>Chcete zadat vlastní deserializers, funkcí UDF a UDA v jiném jazyce než v jazyce JavaScript neboC#
 

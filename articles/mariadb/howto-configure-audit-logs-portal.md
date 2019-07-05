@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 06/11/2019
-ms.openlocfilehash: c9ee106972cc78a08709d2ce55d2dfddc96edbf7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 06/24/2019
+ms.openlocfilehash: 8fadcc8cb418063662df45d4134bef0578ffccda
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67079233"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444818"
 ---
 # <a name="configure-and-access-audit-logs-in-the-azure-portal"></a>Konfigurace a přístup k protokolům auditu na portálu Azure portal
 
@@ -40,7 +40,7 @@ Povolit a konfigurovat protokolování auditu.
 1. Aktualizace **audit_log_enabled** parametr ON.
     ![Povolení protokolů auditu](./media/howto-configure-audit-logs-portal/audit-log-enabled.png)
 
-1. Vyberte události zaznamenávané aktualizací **audit_log_events** parametru.
+1. Vyberte [typy událostí](concepts-audit-logs.md#configure-audit-logging) zaznamenávané aktualizací **audit_log_events** parametru.
     ![Události protokolu auditu](./media/howto-configure-audit-logs-portal/audit-log-events.png)
 
 1. Přidejte všechny uživatele MariaDB, které se mají vyloučit z protokolování aktualizací **audit_log_exclude_users** parametru. Určení uživatelů tím, že poskytuje jejich MariaDB uživatelskému jménu.

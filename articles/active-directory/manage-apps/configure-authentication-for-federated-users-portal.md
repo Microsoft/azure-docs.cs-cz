@@ -15,12 +15,12 @@ ms.date: 04/08/2019
 ms.author: mimart
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18f7f6588cb4fb3b3b480402c3dad13be4a0ed2c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0534037393f4634364b927020595aa21d8e1b7b3
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65781032"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67440374"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>Konfigurace přihlašování Azure Active Directory v chování aplikace s použitím zásad zjišťování domovské sféry
 
@@ -209,7 +209,13 @@ Použití zásad HRD až po jeho vytvoření, ji můžete přiřadit k více ins
 #### <a name="step-2-locate-the-service-principal-to-which-to-assign-the-policy"></a>Krok 2: Vyhledejte objekt služby, ke kterému chcete přiřadit zásady  
 Je nutné **ObjectID** objektů služby, u kterých chcete zásady přiřadit. Existuje několik způsobů, jak najít **ObjectID** objektů služby.    
 
-Můžete na portálu, nebo můžete dát dotaz na [Microsoft Graphu](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity). Můžete také přejít na [Graph Exploreru nástroj](https://developer.microsoft.com/graph/graph-explorer) a přihlaste se ke svému účtu Azure AD budete moct zobrazit všechna firemní instančních objektů. Vzhledem k tomu, že používáte PowerShell, můžete seznam instanční objekty a jejich ID rutinu rutinu get-AzureADServicePrincipal.
+Můžete na portálu, nebo můžete dát dotaz na [Microsoft Graphu](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity). Můžete také přejít na [Graph Exploreru nástroj](https://developer.microsoft.com/graph/graph-explorer) a přihlaste se ke svému účtu Azure AD budete moct zobrazit všechna firemní instančních objektů. 
+
+Vzhledem k tomu, že používáte PowerShell, můžete použít následující rutinu k zobrazení seznamu instanční objekty a jejich ID.
+
+``` powershell
+Get-AzureADServicePrincipal
+```
 
 #### <a name="step-3-assign-the-policy-to-your-service-principal"></a>Krok 3: Přiřaďte zásady instančního objektu služby  
 Až budete mít **ObjectID** objektu služby aplikace, pro kterou chcete provést konfiguraci automatického zrychlení, spusťte následující příkaz. Tento příkaz přidruží zásad HRD, kterou jste vytvořili v kroku 1 se instanční objekt, který jste vyhledali v kroku 2.
@@ -226,7 +232,7 @@ V případě, kde aplikace už má přiřazené zásady HomeRealmDiscovery nebud
 Ke kontrole aplikací, které mají nakonfigurované zásady HRD, použijte **Get-AzureADPolicyAppliedObject** rutiny. Předejte ji **ObjectID** zásad, které chcete zkontrolovat.
 
 ``` powershell
-Get-AzureADPolicyAppliedObject -ObjectId <ObjectId of the Policy>
+Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 ```
 #### <a name="step-5-youre-done"></a>Krok 5: Je to!
 Zkuste aplikace a zjistit, že nové zásady fungují.
@@ -244,7 +250,7 @@ Poznámka: **ObjectID** zásad, které chcete seznam přiřazení.
 #### <a name="step-2-list-the-service-principals-to-which-the-policy-is-assigned"></a>Krok 2: Seznam objektů služby, ke kterým je přiřazené zásady  
 
 ``` powershell
-Get-AzureADPolicyAppliedObject -ObjectId <ObjectId of the Policy>
+Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 ```
 
 ### <a name="example-remove-an-hrd-policy-for-an-application"></a>Příklad: Odeberte zásadu HRD pro aplikaci
@@ -254,13 +260,13 @@ V předchozím příkladu můžete získat **ObjectID** zásad a u aplikace inst
 #### <a name="step-2-remove-the-policy-assignment-from-the-application-service-principal"></a>Krok 2: Odebrat přiřazení zásad z instančního objektu aplikace  
 
 ``` powershell
-Remove-AzureADApplicationPolicy -ObjectId <ObjectId of the Service Principal>  -PolicyId <ObjectId of the policy>
+Remove-AzureADApplicationPolicy -id <ObjectId of the Service Principal>  -PolicyId <ObjectId of the policy>
 ```
 
 #### <a name="step-3-check-removal-by-listing-the-service-principals-to-which-the-policy-is-assigned"></a>Krok 3: Kontrola odebrání uvedením objektů služby, ke kterým je přiřazené zásady 
 
 ``` powershell
-Get-AzureADPolicyAppliedObject -ObjectId <ObjectId of the Policy>
+Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 ```
 ## <a name="next-steps"></a>Další postup
 - Další informace o tom, jak funguje ověřování ve službě Azure AD najdete v tématu [scénáře ověřování pro službu Azure AD](../develop/authentication-scenarios.md).

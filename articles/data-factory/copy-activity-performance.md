@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/10/2019
+ms.date: 07/02/2019
 ms.author: jingwang
-ms.openlocfilehash: 3ea89e9f6a6bb8a4c377c70bbe1b5540d3b74d44
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: face3719f32ccb44e7479150e94417496141f90b
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341252"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509563"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Průvodce laděním a výkonem aktivity kopírování
 > [!div class="op_single_selector" title1="Vyberte verzi služby Azure Data Factory, který používáte:"]
@@ -86,7 +86,8 @@ Minimální DIUs pro spuštění aktivity kopírování jsou dvě. Pokud není z
 | Kopírování | Výchozí DIUs určené služby |
 |:--- |:--- |
 | Kopírovat data mezi úložišti souborů | Mezi 4 a 32 v závislosti na počtu a velikosti souborů |
-| Dalších scénářů kopírování | 4 |
+| Kopírování dat do Azure SQL Database nebo Azure Cosmos DB |Mezi 4 a 16 v závislosti na jímce úrovni Azure SQL Database nebo Cosmos DB (počet Dtu/ru) |
+| Všech dalších scénářů kopírování | 4 |
 
 Chcete-li přepsat toto výchozí nastavení, zadejte hodnotu **dataIntegrationUnits** vlastnost následujícím způsobem. *Povolené hodnoty* pro **dataIntegrationUnits** vlastnost je až 256. *Skutečný počet DIUs* , že operace kopírování používá za běhu je rovna nebo menší než nakonfigurovaná hodnota, v závislosti na vašich dat vzor. Informace o úrovni výkonu, může se zobrazit při konfiguraci víc jednotek pro konkrétní kopírovat zdroje a jímky, najdete v článku [výkonu](#performance-reference).
 
@@ -131,11 +132,11 @@ Pro každé spuštění aktivity kopírování Azure Data Factory určuje počet
 | Kopírování | Výchozí počet paralelních kopií určené služby |
 | --- | --- |
 | Kopírovat data mezi úložišti souborů |Závisí na velikosti souborů a počet DIUs používá ke kopírování dat mezi dvěma cloudovými úložišti dat nebo konfigurace fyzického počítače místní prostředí integration runtime. |
-| Kopírování dat z jakékoli zdrojové úložiště dat do služby Azure Table storage |4 |
+| Kopírování dat z jakékoli zdrojové úložiště Azure Table Storage |4 |
 | Dalších scénářů kopírování |1 |
 
 > [!TIP]
-> Při kopírování dat mezi úložišti souborové výchozí chování obvykle poskytuje nejlepší propustnost. Výchozí chování je určena automaticky.
+> Při kopírování dat mezi úložišti souborové výchozí chování obvykle poskytuje nejlepší propustnost. Výchozí chování je určen automaticky založena na vzoru váš zdrojový soubor.
 
 Řízení zatížení na počítačích, které jsou hostiteli vaše data ukládá, nebo pro optimalizaci výkonu kopírování, můžete přepsat výchozí hodnotu a zadat hodnotu **parallelCopies** vlastnost. Hodnota musí být celé číslo větší než nebo rovno 1. V době běhu pro zajištění nejlepšího výkonu, aktivita kopírování používá hodnotu, která je menší než nebo rovna hodnotě, kterou jste nastavili.
 
@@ -162,9 +163,9 @@ Pro každé spuštění aktivity kopírování Azure Data Factory určuje počet
 **Odkazuje na mějte na paměti:**
 
 * Při kopírování dat mezi úložišti souborové **parallelCopies** určuje paralelismu na úrovni souboru. Bloků v rámci jednoho souboru dojde pod automaticky a transparentně. Je navržena pro použití nejlépe vhodný bloků velikosti pro typ úložiště daného zdroje dat pro načtení dat v paralelní a kolmě **parallelCopies**. Skutečný počet paralelních kopie služba pro přesun dat se používá pro operaci kopírování v době běhu je delší než počet souborů, které máte. Pokud je chování kopírování nastavené **mergeFile**, aktivita kopírování nemůže využívají paralelismus úrovni souboru.
-* Pokud zadáte hodnotu **parallelCopies** vlastnost, zvažte zvýšení zátěže na zdroji a úložiště dat jímky. Také zvažte zvýšení zátěže do místního prostředí integration runtime, pokud aktivita kopírování je možnost, například pro hybridní kopírování. Toto zvýšení zátěže se stane, zejména pokud máte více souběžných spuštění stejného aktivit, které běží na stejné úložiště dat nebo aktivity. Pokud si všimnete, že v úložišti dat nebo místní prostředí integration runtime je zahlcen zatížení, snížit **parallelCopies** hodnota, která má-li snížit zatížení.
-* Při kopírování dat z úložiště, která nejsou na základě souboru do úložišť, které jsou založené na souboru ignoruje služba pro přesun dat **parallelCopies** vlastnost. I v případě, že je zadán paralelismu, není použita v tomto případě.
+* Při kopírování dat z úložiště, která nejsou na základě souboru (s výjimkou jako zdroj s povoleno dělení dat Oracle database) do úložišť, které jsou založené na souboru ignoruje služba pro přesun dat **parallelCopies** vlastnost. I v případě, že je zadán paralelismu, není použita v tomto případě.
 * **ParallelCopies** vlastnost je ortogonální k **dataIntegrationUnits**. Předchozí se počítá přes všechny jednotky integrace Data.
+* Pokud zadáte hodnotu **parallelCopies** vlastnost, zvažte zvýšení zátěže na zdroji a úložiště dat jímky. Také zvažte zvýšení zátěže do místního prostředí integration runtime, pokud aktivita kopírování je možnost, například pro hybridní kopírování. Toto zvýšení zátěže se stane, zejména pokud máte více souběžných spuštění stejného aktivit, které běží na stejné úložiště dat nebo aktivity. Pokud si všimnete, že v úložišti dat nebo místní prostředí integration runtime je zahlcen zatížení, snížit **parallelCopies** hodnota, která má-li snížit zatížení.
 
 ## <a name="staged-copy"></a>Kopírování dvoufázové instalace
 
@@ -182,7 +183,7 @@ Při aktivaci pracovní funkce data se zkopíruje ze zdrojového úložiště da
 
 Při aktivaci přesun dat pomocí přípravné úložiště můžete určit, zda chcete úložištěm dat, aby se komprimoval před přesun dat ze zdrojových dat a jako dočasné nebo úložišti pracovní data a pak dekomprimovat před přesun dat z dočasné nebo pracovních dat úložiště na úložiště dat jímky.
 
-V současné době nelze kopírovat data mezi dvěma v místním úložišti dat pomocí přípravné úložiště.
+V současné době nelze kopírovat data mezi dvě úložiště dat, které jsou připojené přes různé IRs místním s ani bez dvoufázové instalace kopírování. Pro takové scénáře můžete nakonfigurovat dvě aktivity explicitně zřetězené kopírování ke kopírování ze zdroje do přípravného prostředí a z pracovního do jímky.
 
 ### <a name="configuration"></a>Konfigurace
 

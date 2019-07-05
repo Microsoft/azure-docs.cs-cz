@@ -1,158 +1,143 @@
 ---
-title: Vytvořit pracovní postupy založené na události nebo akce – Azure Logic Apps | Dokumentace Microsoftu
-description: Automatizovat pracovní postupy založené na události nebo akce pomocí webhooků a Azure Logic Apps
+title: Vytvoření úkolů na základě událostí a pracovních postupů v Azure Logic Apps
+description: Spuštění, pozastavení a obnovení automatizovaných úloh, procesy a pracovní postupy založené na události, ke kterým dochází na koncový bod pomocí Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
-ms.reviewer: klam, jehollan, LADocs
-ms.assetid: 71775384-6c3a-482c-a484-6624cbe4fcc7
-ms.topic: article
+ms.reviewer: klam, LADocs
+ms.topic: conceptual
+ms.date: 07/05/2019
 tags: connectors
-ms.date: 07/21/2016
-ms.openlocfilehash: c3047000843e054e71ec1a80313118a25e7c4905
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c2658df185d4836210c496d2c46a00a3541257a2
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60447187"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67541353"
 ---
-# <a name="create-event-based-workflows-or-actions-by-using-webhooks-and-azure-logic-apps"></a>Vytvořit pracovní postupy založené na události nebo akce pomocí webhooků a Azure Logic Apps
+# <a name="automate-event-based-tasks-and-workflows-by-using-http-webhooks-in-azure-logic-apps"></a>Automatizace úloh založený na událostech a pracovních postupů pomocí webhooků HTTP v Azure Logic Apps
 
-Pomocí aktivační události a akce webhooku můžete spustit, pozastavit a obnovit toky k provedení těchto úloh:
+S [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a integrovaného konektoru Webhooku protokolu HTTP, můžete automatizovat pracovní postupy, které počkejte a spusťte závislosti na konkrétní události, ke kterým dochází na koncový bod HTTP nebo HTTPS díky vytváření aplikací logiky. Například můžete vytvořit aplikaci logiky, která monitoruje koncového bodu služby tím, že pro určitou událost před aktivuje pracovní postup a spuštění zadaných akcí, spíše než pravidelně kontroluje nebo *dotazování* tohoto koncového bodu.
 
-* Aktivaci [Azure Event Hubs](https://github.com/logicappsio/EventHubAPI) při přijetí položky
-* Čekání na schválení před pokračováním pracovní postup
+Tady jsou některé příklady založené na události pracovních postupů:
 
-Další informace o [jak vytvořit vlastní rozhraní API, které podporují webhooku](../logic-apps/logic-apps-create-api-app.md).
+* Počkejte položky můžete přejít z [Azure Event Hubs](https://github.com/logicappsio/EventHubAPI) před aktivací běh aplikace logiky.
+* Počkejte, než budete pokračovat pracovního postupu schvalování.
 
-## <a name="use-the-webhook-trigger"></a>Pomocí aktivační události webhooku
+## <a name="how-do-webhooks-work"></a>Jak fungují webhooků?
 
-A [ *aktivační událost* ](../connectors/apis-list.md) je událost, která spustí pracovní postup aplikace logiky. Trigger webhooku je založený na událostech, které nejsou závislé na dotazování pro nové položky. Při uložení aplikace logiky s triggerem webhook nebo při změně svou aplikaci logiky ze zakázaného na povolený trigger webhooku *přihlásí* zadaná služba nebo koncový bod tak, že zaregistrujete *adresuURLzpětnéhovolání* s tímto služba nebo koncový bod. Aktivační události potom použije tuto adresu URL pro spuštění aplikace logiky podle potřeby. Podobně jako [triggeru požadavku](connectors-native-reqres.md), aktivuje aplikace logiky se okamžitě, když se stane Očekávaná událost. Aktivační událost *ruší registraci* -li odebrat aktivační událost a uložení aplikace logiky, nebo při změně svou aplikaci logiky z povoleno na zakázáno.
+Aktivační událost webhooku HTTP je založený na událostech, které nejsou závislé na kontrolu nebo dotazování pravidelně pro nové položky. Při uložení aplikace logiky, která se spouští triggerem webhook nebo při změně svou aplikaci logiky ze zakázaného na povolený, trigger webhooku *přihlásí* konkrétní služba nebo koncový bod tak, že zaregistrujete *adresuURLzpětnéhovolání* s tímto služba nebo koncový bod. Aktivační události potom počká tento služba nebo koncový bod pro volání adresu URL, která se spustí aplikace logiky. Podobně jako [triggeru požadavku](connectors-native-reqres.md), aktivuje aplikace logiky se okamžitě, když se stane zadané události. Aktivační událost *ruší registraci* ze služby nebo koncového bodu je-li odebrat aktivační událost a uložte aplikaci logiky nebo při změně svou aplikaci logiky z povoleno na zakázáno.
 
-Tady je příklad, který ukazuje, jak nastavit aktivační událost HTTP v návrháři aplikace logiky. V krocích se předpokládá, že jste již nasadili nebo mají přístup k rozhraní API, která následuje [odběru webhooku a odhlášení odběru model ve službě logic apps](../logic-apps/logic-apps-create-api-app.md#webhook-triggers). 
-
-**Přidání triggeru webhooku**
-
-1. Přidat **HTTP Webhook** aktivační událost jako první krok v aplikaci logiky.
-2. Vyplňte parametry pro přihlášení odběru webhooku a zrušit její volání.
-
-   Tento krok používá stejný vzor jako [akce HTTP](connectors-native-http.md) formátu.
-
-     ![Trigger HTTP](./media/connectors-native-webhook/using-trigger.png)
-
-3. Přidejte alespoň jednu akci.
-4. Klikněte na tlačítko **Uložit** publikovat aplikaci logiky. Tento krok volání koncového bodu přihlásit k odběru se adresa URL zpětného volání, které jsou potřeba k aktivaci tato aplikace logiky.
-5. Vždy, když služba provede `HTTP POST` na adresu URL zpětného volání, aplikace logiky je vyvoláno a zahrnuje všechna data předaná do požadavku.
-
-## <a name="use-the-webhook-action"></a>Pomocí akce webhooku
-
-[ *Akce* ](../connectors/apis-list.md) je operace, která je definována a spustit v pracovním postupu vaší aplikace logiky. Při spuštění akce webhooku, tato akce aplikace logiky *přihlásí* zadaná služba nebo koncový bod tak, že zaregistrujete *adresu URL zpětného volání* s tímto služba nebo koncový bod. Akce webhooku potom počká, dokud, servisní volání adresy URL před obnoví aplikace logiky spuštěná. Aplikace logiky odhlásí služba nebo koncový bod v těchto případech: 
+Akce webhooku HTTP je taky založený na událostech a *přihlásí* konkrétní služba nebo koncový bod tak, že zaregistrujete *adresu URL zpětného volání* s tímto služba nebo koncový bod. Pozastaví pracovní postup aplikace logiky a počká, dokud se služba nebo koncový bod volání adresy URL před obnoví aplikace logiky spuštěná akce webhooku. Akce aplikace logiky *ruší registraci* ze služby nebo koncového bodu v těchto případech:
 
 * Po úspěšném dokončení akce webhooku
 * Pokud se při čekání na odpověď zruší běh aplikace logiky
 * Před logiku aplikace vyprší časový limit
 
-Například [ **odeslat schvalovací e-mail** ](connectors-create-api-office365-outlook.md) akce je příklad akce webhooku, který používá tento vzor. Tento model můžete rozšířit do jakékoli služby prostřednictvím akce webhooku. 
+Například Office 365 Outlook konektoru [ **odeslat schvalovací e-mail** ](connectors-create-api-office365-outlook.md) akce je příklad akce webhooku, který používá tento vzor. Tento model můžete rozšířit na libovolnou službu pomocí akce webhooku.
 
-Tady je příklad, který ukazuje, jak vytvořit akce webhooku v návrháři aplikace logiky. Tento postup předpokládá, že jste již nasadili nebo mají přístup k rozhraní API, která následuje [odběru webhooku a odhlášení odběru používaným ve službě logic apps](../logic-apps/logic-apps-create-api-app.md#webhook-actions). 
+Další informace najdete v těchto tématech:
 
-**Přidání akce webhooku**
+* [Parametry triggeru Webhooku protokolu HTTP](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger)
+* [Webhooky a předplatná](../logic-apps/logic-apps-workflow-actions-triggers.md#webhooks-and-subscriptions)
+* [Vytvoření vlastních rozhraní API, které podporují webhooku](../logic-apps/logic-apps-create-api-app.md)
 
-1. Zvolte **nový krok** > **přidat akci**.
+## <a name="prerequisites"></a>Požadavky
 
-2. Do vyhledávacího pole zadejte "webhooku" Najít **HTTP Webhook** akce.
+* Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
-    ![Výběr akce dotazu](./media/connectors-native-webhook/using-action-1.png)
+* Adresa URL pro koncový bod již nasazenou nebo rozhraní API, které podporuje webhook odběru a vzor pro zrušení odběru [triggerů webhooků v logic apps](../logic-apps/logic-apps-create-api-app.md#webhook-triggers) nebo [akce webhooku v logic apps](../logic-apps/logic-apps-create-api-app.md#webhook-actions) podle potřeby
 
-3. Vyplňte parametry pro přihlášení odběru webhooku a zrušit její volání
+* Základní znalosti o [postup vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
-   Tento krok používá stejný vzor jako [akce HTTP](connectors-native-http.md) formátu.
+* Aplikace logiky, ve které chcete počkat na konkrétní akce na cílový koncový bod. Spustit s triggerem HTTP Webhook [vytvoření prázdné aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Použití akce Webhooku protokolu HTTP, začněte libovolný trigger, který chcete svou aplikaci logiky. Tento příklad používá jako první krok triggeru HTTP.
 
-     ![Akce dokončení dotazu](./media/connectors-native-webhook/using-action-2.png)
-   
-   Aplikace logiky za běhu, zavolá koncový bod přihlásit k odběru po dosažení tohoto kroku.
+## <a name="add-an-http-webhook-trigger"></a>Přidat aktivační událost Webhooku protokolu HTTP
 
-4. Klikněte na tlačítko **Uložit** publikovat aplikaci logiky.
+Tento trigger integrované zaregistruje zadanou službu adresu URL zpětného volání a čeká na tuto službu k odeslání požadavku HTTP POST na tuto adresu URL. Pokud k této události dojde, aktivuje se a okamžitě spustí aplikace logiky.
 
-## <a name="technical-details"></a>Technické podrobnosti
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Otevřete váš prázdné aplikace logiky v návrháři aplikace logiky.
 
-Tady jsou další podrobnosti o aktivační události a akce podporuje tento webhook.
+1. V Návrháři zadejte do vyhledávacího pole "http webhook" jako filtr. Z **triggery** seznamu, vyberte **HTTP Webhook** aktivační události.
 
-## <a name="webhook-triggers"></a>Aktivační události Webhooku
+   ![Vyberte trigger Webhooku protokolu HTTP](./media/connectors-native-webhook/select-http-webhook-trigger.png)
 
-| Akce | Popis |
-| --- | --- |
-| HTTP Webhook |Odběru adresu URL zpětného volání pro službu, která může volat adresu URL, která se aktivuje aplikace logiky podle potřeby. |
+   Tento příklad přejmenuje aktivační události "Trigger Webhooku HTTP" tak, aby měl více popisný název kroku. Také v příkladu později přidá akce Webhooku protokolu HTTP a oba názvy musí být jedinečný.
 
-### <a name="trigger-details"></a>Podrobnosti o triggeru
+1. Zadejte hodnoty pro [parametry aktivační události Webhooku HTTP](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger) , že chcete použít pro přihlásit k odběru a zrušit její volání, například:
 
-#### <a name="http-webhook"></a>HTTP Webhook
+   ![Zadejte parametry aktivační události Webhooku protokolu HTTP](./media/connectors-native-webhook/http-webhook-trigger-parameters.png)
 
-Odběru adresu URL zpětného volání pro službu, která může volat adresu URL, která se aktivuje aplikace logiky podle potřeby.
-\* Znamená, že požadované pole.
+1. Chcete-li přidat další dostupné parametry, otevřete **přidat nový parametr** seznam a vyberte požadované parametry.
 
-| Zobrazované jméno | Název vlastnosti | Popis |
-| --- | --- | --- |
-| Přihlášení odběru metoda * |method |Metoda HTTP pro žádosti o předplatné |
-| Přihlášení odběru URI * |uri |Identifikátor URI HTTP pro žádosti o předplatné |
-| Odhlásit odběr – metoda * |method |Metoda HTTP pro žádost o zrušení odběru |
-| Odhlásit odběr URI * |uri |Identifikátor URI HTTP pro žádost o zrušení odběru |
-| Přihlášení odběru textu |Text |Požadavku HTTP pro přihlášení k odběru |
-| Přihlášení odběru záhlaví |Záhlaví |Hlavičky požadavků HTTP pro přihlášení k odběru |
-| Ověřování přihlášení odběru |ověřování |Ověřování protokolu HTTP pro přihlášení k odběru. [Zobrazit konektor HTTP](connectors-native-http.md#authentication) podrobnosti |
-| Odhlásit odběr textu |Text |Požadavku HTTP pro zrušení odběru |
-| Odhlásit odběr záhlaví |Záhlaví |Hlavičky požadavků HTTP pro zrušení odběru |
-| Odhlásit odběr ověřování |ověřování |Ověřování protokolu HTTP pro zrušení odběru. [Zobrazit konektor HTTP](connectors-native-http.md#authentication) podrobnosti |
+   Další informace o dostupných typech ověřování pro HTTP Webhook najdete v tématu [ověřování protokolu HTTP triggery a akce](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication).
 
-**Podrobnosti výstupu**
+1. Pokračujte v sestavování pracovního postupu aplikace logiky s akcemi, které běží na aktivaci triggeru.
 
-Požadavek Webhooku
+1. Jakmile budete hotovi, budete hotovi, nezapomeňte si uložit aplikaci logiky. Na panelu nástrojů návrháře zvolte **Uložit**.
 
-| Název vlastnosti | Typ dat | Popis |
-| --- | --- | --- |
-| Hlavičky |objekt |Hlavičky požadavku Webhooku |
-| Tělo |objekt |Objekt požadavku Webhooku |
-| Stavový kód |int |Stavový kód žádosti o Webhooku |
+   Uložení aplikace logiky zavolá koncový bod přihlásit k odběru a zaregistruje adresu URL zpětného volání pro spuštění této aplikace logiky.
 
-## <a name="webhook-actions"></a>Akce Webhooku
+1. Vždy, když cílovou službu nyní, odešle `HTTP POST` žádost o adresu URL zpětného volání, aktivuje aplikace logiky a obsahuje všechna data, která se předá prostřednictvím požadavku.
 
-| Akce | Popis |
-| --- | --- |
-| HTTP Webhook |Adresa URL zpětného volání službě, která může volat adresu URL obnovit podle potřeby kroku pracovního postupu odběru. |
+## <a name="add-an-http-webhook-action"></a>Přidání akce Webhooku protokolu HTTP
 
-### <a name="action-details"></a>Podrobnosti akce
+Tato akce integrované zaregistruje zadanou službu adresu URL zpětného volání, pozastaví pracovní postup aplikace logiky a čeká na tuto službu k odeslání požadavku HTTP POST na tuto adresu URL. Pokud k této události dojde, akce obnoví spuštění aplikace logiky.
 
-#### <a name="http-webhook"></a>HTTP Webhook
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Otevření aplikace logiky v návrháři aplikace logiky.
 
-Adresa URL zpětného volání službě, která může volat adresu URL obnovit podle potřeby kroku pracovního postupu odběru.
-\* Znamená, že požadované pole.
+   Tento příklad používá trigger Webhooku HTTP jako první krok.
 
-| Zobrazované jméno | Název vlastnosti | Popis |
-| --- | --- | --- |
-| Přihlášení odběru metoda * |method |Metoda HTTP pro žádosti o předplatné |
-| Přihlášení odběru URI * |uri |Identifikátor URI HTTP pro žádosti o předplatné |
-| Odhlásit odběr – metoda * |method |Metoda HTTP pro žádost o zrušení odběru |
-| Odhlásit odběr URI * |uri |Identifikátor URI HTTP pro žádost o zrušení odběru |
-| Přihlášení odběru textu |Text |Požadavku HTTP pro přihlášení k odběru |
-| Přihlášení odběru záhlaví |Záhlaví |Hlavičky požadavků HTTP pro přihlášení k odběru |
-| Ověřování přihlášení odběru |ověřování |Ověřování protokolu HTTP pro přihlášení k odběru. [Zobrazit konektor HTTP](connectors-native-http.md#authentication) podrobnosti |
-| Odhlásit odběr textu |Text |Požadavku HTTP pro zrušení odběru |
-| Odhlásit odběr záhlaví |Záhlaví |Hlavičky požadavků HTTP pro zrušení odběru |
-| Odhlásit odběr ověřování |ověřování |Ověřování protokolu HTTP pro zrušení odběru. [Zobrazit konektor HTTP](connectors-native-http.md#authentication) podrobnosti |
+1. V části krok, ve které chcete přidat akce Webhooku protokolu HTTP, vyberte **nový krok**.
 
-**Podrobnosti výstupu**
+   Přidání akce mezi kroky, přesuňte ukazatel nad šipku mezi kroky. Vyberte znaménko plus ( **+** ), který se zobrazí a pak vyberte **přidat akci**.
 
-Požadavek Webhooku
+1. V Návrháři zadejte do vyhledávacího pole "http webhook" jako filtr. Z **akce** seznamu, vyberte **HTTP Webhook** akce.
 
-| Název vlastnosti | Typ dat | Popis |
-| --- | --- | --- |
-| Hlavičky |objekt |Hlavičky požadavku Webhooku |
-| Tělo |objekt |Objekt požadavku Webhooku |
-| Stavový kód |int |Stavový kód žádosti o Webhooku |
+   ![Výběr akce Webhooku protokolu HTTP](./media/connectors-native-webhook/select-http-webhook-action.png)
+
+   Tento příklad přejmenuje akci, která se "Akce Webhooku HTTP" tak, aby měl více popisný název kroku.
+
+1. Zadejte hodnoty pro HTTP Webhook parametry akce, které jsou podobné [parametry aktivační události Webhooku HTTP](../logic-apps/logic-apps-workflow-actions-triggers.md##http-webhook-trigger) , že chcete použít pro přihlásit k odběru a zrušit její volání, například:
+
+   ![Zadejte parametry akce Webhooku protokolu HTTP](./media/connectors-native-webhook/http-webhook-action-parameters.png)
+
+   Za běhu aplikace logiky zavolá koncový bod přihlásit k odběru při spuštění této akce. Aplikace logiky pak pozastaví pracovní postup a čeká na cílovou službu k odeslání `HTTP POST` žádost o adresu URL zpětného volání. Pokud se akce dokončí úspěšně, zruší akci z koncového bodu a pokračuje v aplikaci logiky spuštění pracovního postupu.
+
+1. Chcete-li přidat další dostupné parametry, otevřete **přidat nový parametr** seznam a vyberte požadované parametry.
+
+   Další informace o dostupných typech ověřování pro HTTP Webhook najdete v tématu [ověřování protokolu HTTP triggery a akce](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication).
+
+1. Jakmile budete hotovi, nezapomeňte si uložit aplikaci logiky. Na panelu nástrojů návrháře zvolte **Uložit**.
+
+## <a name="connector-reference"></a>Referenční informace ke konektorům
+
+Další informace o parametrech aktivační události a akce, které jsou podobné k sobě navzájem, naleznete v tématu [parametry Webhooku HTTP](../logic-apps/logic-apps-workflow-actions-triggers.md##http-webhook-trigger).
+
+### <a name="output-details"></a>Podrobnosti výstupu
+
+Zde jsou další informace o výstupy z triggeru Webhooku protokolu HTTP nebo akce, které vrací tyto informace:
+
+| Název vlastnosti | Type | Popis |
+|---------------|------|-------------|
+| Záhlaví | objekt | Hlavičky požadavku |
+| Text | objekt | JSON – objekt | Objekt s obsah textu požadavku |
+| Stavový kód | int | Stavový kód z požadavku |
+|||
+
+| Kód stavu | Popis |
+|-------------|-------------|
+| 200 | OK |
+| 202 | Přijato |
+| 400 | Nesprávná žádost |
+| 401 | Neautorizováno |
+| 403 | Zakázáno |
+| 404 | Nebyl nalezen |
+| 500 | Vnitřní chyba serveru. Došlo k neznámé chybě. |
+|||
 
 ## <a name="next-steps"></a>Další postup
 
-* [Vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
-* [Vyhledání dalších konektorů](apis-list.md)
+* Další informace o dalších [konektory Logic Apps](../connectors/apis-list.md)

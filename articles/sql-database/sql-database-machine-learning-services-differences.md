@@ -3,6 +3,7 @@ title: Hlavní rozdíly pro Azure SQL Database Machine Learning Services (previe
 description: Toto téma popisuje hlavní rozdíly mezi Azure SQL Database Machine Learning Services (s jazykem R) a SQL Server Machine Learning Services.
 services: sql-database
 ms.service: sql-database
+ms.subservice: machine-learning
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +12,12 @@ ms.author: davidph
 ms.reviewer: carlrab
 manager: cgronlun
 ms.date: 03/01/2019
-ms.openlocfilehash: 92785015a1ce122b8301b56fa62d122c8d95180c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ee92b598625b1346cf87c661d1867cc1cb012b60
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64725050"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485991"
 ---
 # <a name="key-differences-between-machine-learning-services-in-azure-sql-database-preview-and-sql-server"></a>Hlavní rozdíly mezi služby Machine Learning v Azure SQL Database (preview) a SQL Server
 
@@ -43,12 +44,15 @@ Správa balíčků R a instalace fungovat rozdíly mezi SQL Database a SQL Serve
 - Balíčky nelze provést volání odchozí sítě. Toto omezení je podobný [výchozí pravidla brány firewall pro Machine Learning Services](https://docs.microsoft.com//sql/advanced-analytics/security/firewall-configuration) v systému SQL Server, ale nelze změnit ve službě SQL Database.
 - Není dostupná podpora pro balíčky, které jsou závislé na externích modulů runtime (jako je Java) nebo potřebují přístup k rozhraní API pro operační systém pro instalaci nebo používání.
 
+## <a name="writing-to-a-temporary-table"></a>Zápis do dočasné tabulky
+
+Pokud používáte RODBC ve službě Azure SQL Database, pak nelze zapisovat do dočasné tabulky, zda je vytvořen uvnitř nebo mimo `sp_execute_external_script` relace. Alternativním řešením je použití [RxOdbcData](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxodbcdata) a [rxDataStep](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxdatastep) (s přepsat = FALSE a připojit = "řádků") pro zápis do globální dočasné tabulky vytvořené před `sp_execute_external_script` dotazu.
+
 ## <a name="resource-governance"></a>Zásady správného řízení prostředků
 
 Není možné omezit prostředky R prostřednictvím [správce zdrojů](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) a fondy externích zdrojů.
 
 Ve verzi public preview, R prostředky jsou nastaveny na maximálně 20 % prostředků SQL Database a závisí na jaká úroveň služby zvolíte. Další informace najdete v tématu [modely nákupu Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers).
-
 ### <a name="insufficient-memory-error"></a>Chyba nedostatku paměti
 
 Pokud je pro R k dispozici dostatek paměti, zobrazí se chybová zpráva. Běžné chybové zprávy jsou:

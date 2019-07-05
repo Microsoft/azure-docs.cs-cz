@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 4c51974498539a0305312d6501bcfa9ebc3b2e88
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d48d9e89085e08ac4da9db15458e3a3aa8152bb5
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64573545"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67541221"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Výrazy a funkce ve službě Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, který používáte:"]
@@ -139,6 +139,9 @@ V následujícím příkladu tento kanál dostává **inputPath** a **outputPath
     }
 }
 ```
+#### <a name="tutorial"></a>Kurz
+To [kurzu](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-data-factory-passing-parameters/Azure%20data%20Factory-Whitepaper-PassingParameters.pdf) vás provede postupem pro předání parametrů mezi aktivit a jde o vztah mezi aktivit a kanálu.
+
   
 ## <a name="functions"></a>Funkce  
  Bude možné volat funkce ve výrazech. Následující části obsahují informace o funkcích, které můžete použít ve výrazu.  
@@ -149,9 +152,9 @@ V následujícím příkladu tento kanál dostává **inputPath** a **outputPath
 |Název funkce|Popis|  
 |-------------------|-----------------|  
 |concat|Spojuje dohromady libovolný počet řetězců. Například, pokud má parametr1 hodnotu `foo,` vrátí následující výraz `somevalue-foo-somevalue`:  `concat('somevalue-',pipeline().parameters.parameter1,'-somevalue')`<br /><br /> **Číslo parametru**: 1 ... *n*<br /><br /> **Název**: Řetězec *n*<br /><br /> **Popis**: Povinná hodnota. Řetězce zkombinovat do jednoho řetězce.|  
-|dílčí řetězec|Vrátí podmnožinu znaků z řetězce. Například následující výraz:<br /><br /> `substring('somevalue-foo-somevalue',10,3)`<br /><br /> Vrátí:<br /><br /> `foo`<br /><br /> **Číslo parametru**: 1<br /><br /> **Název**: String<br /><br /> **Popis**: Povinná hodnota. Řetězec, ze kterého má získat podřetězec.<br /><br /> **Číslo parametru**: 2<br /><br /> **Název**: Počáteční index<br /><br /> **Popis**: Povinná hodnota. Index, kde začíná podřetězec v parametru 1.<br /><br /> **Číslo parametru**: 3<br /><br /> **Název**: Délka<br /><br /> **Popis**: Povinná hodnota. Délka podřetězce.|  
+|substring|Vrátí podmnožinu znaků z řetězce. Například následující výraz:<br /><br /> `substring('somevalue-foo-somevalue',10,3)`<br /><br /> Vrátí:<br /><br /> `foo`<br /><br /> **Číslo parametru**: 1<br /><br /> **Název**: String<br /><br /> **Popis**: Povinná hodnota. Řetězec, ze kterého má získat podřetězec.<br /><br /> **Číslo parametru**: 2<br /><br /> **Název**: Počáteční index<br /><br /> **Popis**: Povinná hodnota. Index, kde začíná podřetězec v parametru 1.<br /><br /> **Číslo parametru**: 3<br /><br /> **Název**: Délka<br /><br /> **Popis**: Povinná hodnota. Délka podřetězce.|  
 |nahradit|Nahradí řetězec daným řetězcem. Například výraz:<br /><br /> `replace('the old string', 'old', 'new')`<br /><br /> Vrátí:<br /><br /> `the new string`<br /><br /> **Číslo parametru**: 1<br /><br /> **Název**: řetězec<br /><br /> **Popis**: Povinná hodnota.  Pokud se parametr 2 najde v parametru 1, řetězec, který se hledá parametr 2 a aktualizuje na parametr 3.<br /><br /> **Číslo parametru**: 2<br /><br /> **Název**: Starý řetězec<br /><br /> **Popis**: Povinná hodnota. Řetězec, který má nahradit parametrem 3, když se najde shoda v parametru 1<br /><br /> **Číslo parametru**: 3<br /><br /> **Název**: Nový řetězec<br /><br /> **Popis**: Povinná hodnota. Řetězec, který se používá k nahrazení řetězce v parametru 2, když se najde shoda v parametru 1.|  
-|identifikátor GUID| Vygeneruje globálně jedinečný řetězec (neboli. identifikátor GUID). Například následující výstup nejde generovat `c2ecc88d-88c8-4096-912c-d6f2e2b138ce`:<br /><br /> `guid()`<br /><br /> **Číslo parametru**: 1<br /><br /> **Název**: Formát<br /><br /> **Popis**: Volitelné. Jeden specifikátor formátu, který označuje [jak formátovat hodnotu tohoto Guid](https://msdn.microsoft.com/library/97af8hh4%28v=vs.110%29.aspx). Formát parametru může být "N", "D", "B", "P" nebo "X". Pokud není formát zadaný, použije se "D".|  
+|guid| Vygeneruje globálně jedinečný řetězec (neboli. identifikátor GUID). Například následující výstup nejde generovat `c2ecc88d-88c8-4096-912c-d6f2e2b138ce`:<br /><br /> `guid()`<br /><br /> **Číslo parametru**: 1<br /><br /> **Název**: Formát<br /><br /> **Popis**: Volitelné. Jeden specifikátor formátu, který označuje [jak formátovat hodnotu tohoto Guid](https://msdn.microsoft.com/library/97af8hh4%28v=vs.110%29.aspx). Formát parametru může být "N", "D", "B", "P" nebo "X". Pokud není formát zadaný, použije se "D".|  
 |toLower|Převede řetězec na malá písmena. Například následující vrátí `two by two is four`:  `toLower('Two by Two is Four')`<br /><br /> **Číslo parametru**: 1<br /><br /> **Název**: String<br /><br /> **Popis**: Povinná hodnota. Řetězec, který se má převést na nižší velká a malá písmena. Pokud nemá malým ekvivalentem znaku v řetězci, je zahrnut ve vráceném řetězci beze změny.|  
 |toUpper|Převede řetězec na velká písmena. Například následující výraz vrací `TWO BY TWO IS FOUR`:  `toUpper('Two by Two is Four')`<br /><br /> **Číslo parametru**: 1<br /><br /> **Název**: String<br /><br /> **Popis**: Povinná hodnota. Řetězec, který se má převést na velká písmena. Pokud znak v řetězci nemá velkým ekvivalentem, je zahrnut ve vráceném řetězci beze změny.|  
 |indexof|Najdete insensitively index určité hodnoty v rámci případu řetězce. Například následující výraz vrací `7`: `indexof('hello, world.', 'world')`<br /><br /> **Číslo parametru**: 1<br /><br /> **Název**: String<br /><br /> **Popis**: Povinná hodnota. Řetězec, který může obsahovat hodnotu.<br /><br /> **Číslo parametru**: 2<br /><br /> **Název**: String<br /><br /> **Popis**: Povinná hodnota. Hodnota k vyhledání index.|  
@@ -167,14 +170,14 @@ V následujícím příkladu tento kanál dostává **inputPath** a **outputPath
 |Název funkce|Popis|  
 |-------------------|-----------------|  
 |Obsahuje|Vrátí hodnotu PRAVDA, pokud slovník obsahuje seznam klíčů, obsahuje hodnotu nebo řetězec obsahuje podřetězec. Například následující výraz vrací `true:``contains('abacaba','aca')`<br /><br /> **Číslo parametru**: 1<br /><br /> **Název**: V rámci kolekce<br /><br /> **Popis**: Povinná hodnota. Kolekce, kterou chcete vyhledávat.<br /><br /> **Číslo parametru**: 2<br /><br /> **Název**: Najít objekt<br /><br /> **Popis**: Povinná hodnota. Objekt, který chcete najít **v rámci kolekce**.|  
-|length|Vrátí počet prvků v poli nebo řetězci. Například následující výraz vrací `3`:  `length('abc')`<br /><br /> **Číslo parametru**: 1<br /><br /> **Název**: Kolekce<br /><br /> **Popis**: Povinná hodnota. Kolekce, kterou chcete získat délku.|  
-|Prázdná|Vrátí true, pokud objekt, pole nebo řetězec je prázdný. Například následující výraz vrací `true`:<br /><br /> `empty('')`<br /><br /> **Číslo parametru**: 1<br /><br /> **Název**: Kolekce<br /><br /> **Popis**: Povinná hodnota. Kolekce, kterou chcete zkontrolovat, zda není prázdná.|  
+|length|Vrátí počet prvků v poli nebo řetězci. Například následující výraz vrací `3`:  `length('abc')`<br /><br /> **Číslo parametru**: 1<br /><br /> **Název**: Collection<br /><br /> **Popis**: Povinná hodnota. Kolekce, kterou chcete získat délku.|  
+|Prázdná|Vrátí true, pokud objekt, pole nebo řetězec je prázdný. Například následující výraz vrací `true`:<br /><br /> `empty('')`<br /><br /> **Číslo parametru**: 1<br /><br /> **Název**: Collection<br /><br /> **Popis**: Povinná hodnota. Kolekce, kterou chcete zkontrolovat, zda není prázdná.|  
 |Průnik|Vrátí jedno pole nebo objekt s společné prvky pole nebo objekty do něho předaný. Například tato funkce vrací `[1, 2]`:<br /><br /> `intersection([1, 2, 3], [101, 2, 1, 10],[6, 8, 1, 2])`<br /><br /> Parametry pro funkci může být buď sada objektů, nebo sada polí (ne kombinace). Pokud jsou dva objekty se stejným názvem, zobrazí se do konečného objektu poslední objekt s tímto názvem.<br /><br /> **Číslo parametru**: 1 ... *n*<br /><br /> **Název**: Kolekce *n*<br /><br /> **Popis**: Povinná hodnota. Kolekce k vyhodnocení. Objekt musí být ve všech kolekcích předaná do výsledku.|  
 |sjednocení|Vrátí jedno pole nebo objekt se všemi prvky, které jsou v pole nebo objekt předaný k němu. Například tato funkce vrací `[1, 2, 3, 10, 101]:`<br /><br /> :  `union([1, 2, 3], [101, 2, 1, 10])`<br /><br /> Parametry pro funkci může být buď sada objektů, nebo sada polí (ne kombinace). Pokud existují se stejným názvem v konečném výstupu dva objekty, zobrazí se do konečného objektu poslední objekt s tímto názvem.<br /><br /> **Číslo parametru**: 1 ... *n*<br /><br /> **Název**: Kolekce *n*<br /><br /> **Popis**: Povinná hodnota. Kolekce k vyhodnocení. Objekt, který se zobrazí v některém z kolekce se zobrazí ve výsledku.|  
-|první|Vrátí první prvek v poli nebo předaný řetězec. Například tato funkce vrací `0`:<br /><br /> `first([0,2,3])`<br /><br /> **Číslo parametru**: 1<br /><br /> **Název**: Kolekce<br /><br /> **Popis**: Povinná hodnota. Kolekce, která se má získat první objekt z.|  
-|poslední|Vrátí poslední prvek v poli nebo předaný řetězec. Například tato funkce vrací `3`:<br /><br /> `last('0123')`<br /><br /> **Číslo parametru**: 1<br /><br /> **Název**: Kolekce<br /><br /> **Popis**: Povinná hodnota. Kolekce, která se má získat poslední objekt z.|  
-|Take|Vrátí první **počet** předaný prvky z pole nebo řetězec, například tato funkce vrací `[1, 2]`:  `take([1, 2, 3, 4], 2)`<br /><br /> **Číslo parametru**: 1<br /><br /> **Název**: Kolekce<br /><br /> **Popis**: Povinná hodnota. Kolekce se má získat první **počet** objekty z.<br /><br /> **Číslo parametru**: 2<br /><br /> **Název**: Počet<br /><br /> **Popis**: Povinná hodnota. Počet objektů trvat, než **kolekce**. Musí být kladné celé číslo.|  
-|Přeskočit|Vrátí prvek pole, počínaje indexem **počet**, například tato funkce vrací `[3, 4]`:<br /><br /> `skip([1, 2 ,3 ,4], 2)`<br /><br /> **Číslo parametru**: 1<br /><br /> **Název**: Kolekce<br /><br /> **Popis**: Povinná hodnota. Kolekce, kterou chcete přeskočit první **počet** objekty z.<br /><br /> **Číslo parametru**: 2<br /><br /> **Název**: Count<br /><br /> **Popis**: Povinná hodnota. Počet objektů, které chcete odebrat z přední části **kolekce**. Musí být kladné celé číslo.|  
+|první|Vrátí první prvek v poli nebo předaný řetězec. Například tato funkce vrací `0`:<br /><br /> `first([0,2,3])`<br /><br /> **Číslo parametru**: 1<br /><br /> **Název**: Collection<br /><br /> **Popis**: Povinná hodnota. Kolekce, která se má získat první objekt z.|  
+|poslední|Vrátí poslední prvek v poli nebo předaný řetězec. Například tato funkce vrací `3`:<br /><br /> `last('0123')`<br /><br /> **Číslo parametru**: 1<br /><br /> **Název**: Collection<br /><br /> **Popis**: Povinná hodnota. Kolekce, která se má získat poslední objekt z.|  
+|Take|Vrátí první **počet** předaný prvky z pole nebo řetězec, například tato funkce vrací `[1, 2]`:  `take([1, 2, 3, 4], 2)`<br /><br /> **Číslo parametru**: 1<br /><br /> **Název**: Collection<br /><br /> **Popis**: Povinná hodnota. Kolekce se má získat první **počet** objekty z.<br /><br /> **Číslo parametru**: 2<br /><br /> **Název**: Count<br /><br /> **Popis**: Povinná hodnota. Počet objektů trvat, než **kolekce**. Musí být kladné celé číslo.|  
+|Přeskočit|Vrátí prvek pole, počínaje indexem **počet**, například tato funkce vrací `[3, 4]`:<br /><br /> `skip([1, 2 ,3 ,4], 2)`<br /><br /> **Číslo parametru**: 1<br /><br /> **Název**: Collection<br /><br /> **Popis**: Povinná hodnota. Kolekce, kterou chcete přeskočit první **počet** objekty z.<br /><br /> **Číslo parametru**: 2<br /><br /> **Název**: Počet<br /><br /> **Popis**: Povinná hodnota. Počet objektů, které chcete odebrat z přední části **kolekce**. Musí být kladné celé číslo.|  
   
 ## <a name="logical-functions"></a>Logické funkce  
  Tyto funkce jsou užitečné v podmínkách, slouží k vyhodnocení jakéhokoli typu logiku.  
@@ -200,7 +203,7 @@ V následujícím příkladu tento kanál dostává **inputPath** a **outputPath
   
 -   float  
   
--   Boolean  
+-   boolean  
   
 -   Pole  
   

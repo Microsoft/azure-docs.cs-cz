@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 01/18/2019
 ms.author: junhan
-ms.openlocfilehash: 5b74524a05317cf22160561a4a001e88f9215953
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f8799fcb06235474bb33cdaf0406300065208024
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61440063"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67543824"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>Nástroje pro Azure IoT pro Visual Studio Code k odesílání a příjem zpráv mezi zařízením a centrem IoT
 
@@ -62,11 +62,11 @@ Zjistíte, jak pomocí Azure IoT Tools for Visual Studio Code pro monitorování
 
 Pokud chcete monitorovat zprávy odeslané ze zařízení do služby IoT hub, postupujte takto:
 
-1. Klikněte pravým tlačítkem na zařízení a vyberte **spustit monitorování zpráv D2C**.
+1. Klikněte pravým tlačítkem na zařízení a vyberte **spustit monitorování integrovaných událostí koncový bod**.
 
 2. Sledované zprávy zobrazí ve **výstup** > **Azure IoT Hub Toolkit** zobrazení.
 
-3. Pokud chcete zastavit monitorování, klikněte pravým tlačítkem **výstup** zobrazit a vybrat **zastavit monitorování zpráv D2C**.
+3. Pokud chcete zastavit monitorování, klikněte pravým tlačítkem **výstup** zobrazit a vybrat **zastavit monitorování vestavěné koncový bod událostí**.
 
 ## <a name="send-cloud-to-device-messages"></a>Odesílání zpráv z cloudu do zařízení
 

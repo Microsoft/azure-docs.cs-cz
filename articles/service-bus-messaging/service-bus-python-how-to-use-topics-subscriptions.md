@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: 47cd0621a601e3f1ef53572bc7bb8bc1c7ea76ab
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cd75ba9d407399703a382596019d5f370808b20a
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65991995"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67543662"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-python"></a>Jak používat témata a odběry Service Bus pomocí Pythonu
 
@@ -79,9 +79,9 @@ bus_service.create_topic('mytopic', topic_options)
 Odběry témat taky jsou vytvořeny pomocí **ServiceBusService** objektu. Odběry mají názvy a můžou mít volitelné filtry, který omezuje sadu doručování zpráv do virtuální fronty odběru.
 
 > [!NOTE]
-> Předplatná jsou trvalé a bude pokračovat až do jejich nebo tématu, ke kterému jsou přihlášeni, se odstraní.
+> Ve výchozím nastavení předplatná jsou trvalé a bude pokračovat až do jejich nebo tématu, ke kterému jsou přihlášeni, se odstraní.
 > 
-> 
+> Máte předplatné odstraní automaticky podle nastavení [auto_delete_on_idle vlastnost](https://docs.microsoft.com/python/api/azure-mgmt-servicebus/azure.mgmt.servicebus.models.sbsubscription?view=azure-python).
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>Vytvoření odběru s výchozím filtrem (MatchAll).
 
@@ -95,7 +95,7 @@ bus_service.create_subscription('mytopic', 'AllMessages')
 
 Můžete také Definujte filtry, které vám umožní určit, které zprávy odeslané do tématu se měla zobrazit v konkrétním odběru tématu.
 
-Je nejflexibilnějším typem filtru odběry **SqlFilter**, která implementuje podmnožinu SQL92. Filtry SQL pracují s vlastnostmi zpráv publikované do tématu. Další informace o výrazech, které se dají použít s filtrem SQL, najdete v syntaxi [SqlFilter.SqlExpression][SqlFilter.SqlExpression].
+Je nejflexibilnějším typem filtru odběry **SqlFilter**, která implementuje podmnožinu SQL92. Filtry SQL pracují s vlastnostmi zpráv publikované do tématu. Další informace, které se dají použít s filtrem SQL, najdete v syntaxi [SqlFilter.SqlExpression][SqlFilter.SqlExpression].
 
 Můžete přidat filtry na předplatné s použitím **vytvořit\_pravidlo** metodu **ServiceBusService** objektu. Tato metoda umožňuje přidat nové filtry k existujícímu předplatnému.
 
@@ -178,7 +178,7 @@ V případě, že aplikace spadne po zpracování zprávy, ale předtím, než `
 
 ## <a name="delete-topics-and-subscriptions"></a>Odstranění témat a odběrů
 
-Témata a odběry jsou trvalé a musí být explicitně odstranit prostřednictvím [webu Azure portal] [ Azure portal] nebo prostřednictvím kódu programu. Následující příklad ukazuje, jak odstranit téma s názvem `mytopic`:
+Témata a odběry, které jsou trvalé není-li [vlastnost auto_delete_on_idle](https://docs.microsoft.com/python/api/azure-mgmt-servicebus/azure.mgmt.servicebus.models.sbsubscription?view=azure-python) nastavena. Je možné odstranit, buď prostřednictvím [webu Azure portal][Azure portal] nebo prostřednictvím kódu programu. Následující příklad ukazuje, jak odstranit téma s názvem `mytopic`:
 
 ```python
 bus_service.delete_topic('mytopic')

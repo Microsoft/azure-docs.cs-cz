@@ -11,19 +11,19 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/23/2019
-ms.openlocfilehash: e29ef2616a43223ec582575ca6363f78b26e5f22
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 80137c7f1ecebab4d2da0c4b7ba0ca9292dad22e
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66753061"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443973"
 ---
 # <a name="explore-and-prepare-data-with-the-dataset-class-preview"></a>Prozkoumejte a příprava dat pomocí třídy datové sady (Preview)
 
 Zjistěte, jak zkoumat a příprava dat pomocí Azure ml datových sad balíčku v [SDK služby Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py). [Datovou sadu](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) třídy (preview) umožňuje prozkoumat a připravit data tím, že poskytuje funkce jako například: vzorkování, souhrnné statistiky a inteligentní transformace. Kroky transformace jsou uloženy v [definicích datových sad](how-to-manage-dataset-definitions.md) s vysoce škálovatelnou způsobem zpracovávat několik velkých souborů, různých schémat.
 
 > [!Important]
-> Některé třídy datové sady (preview) mají závislosti [azureml přípravy](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) balíčku (GA). Při transformaci funkcí lze provést přímo s GA'ed [Data Prep funkce](how-to-transform-data.md), doporučujeme obálky balíček datové sady jsou popsané v tomto článku, pokud vytváříte nové řešení. Sady Azure Machine Learning dat (preview) umožňuje nejen transformace dat, ale také [dat snímků](how-to-create-dataset-snapshots.md) a ukládat [definice verzí datové sady](how-to-manage-dataset-definitions.md). Datové sady je další verze sady SDK přípravy dat nabídky Rozšířené funkce pro správu datových sad v řešení AI.
+> Některé třídy datové sady (preview) mají závislosti [azureml přípravy](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) balíčku (GA). Při transformaci funkcí lze provést přímo s GA'ed [Data Prep funkce](how-to-transform-data.md), doporučujeme obálky balíček datové sady jsou popsané v tomto článku, pokud vytváříte nové řešení. Sady Azure Machine Learning dat (preview) umožňuje nejen transformace dat, ale také [dat snímků](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_snapshot.datasetsnapshot?view=azure-ml-py) a ukládat [definice verzí datové sady](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset?view=azure-ml-py). Datové sady je další verze sady SDK přípravy dat nabídky Rozšířené funkce pro správu datových sad v řešení AI.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -63,7 +63,7 @@ top_n_sample_dataset = dataset.sample('top_n', {'n': 5})
 top_n_sample_dataset.to_pandas_dataframe()
 ```
 
-||ID|Číslo případu|Datum|Zablokovat|IUCR|Primární typ|...|
+||id|Číslo případu|Datum|Zablokovat|IUCR|Primární typ|...|
 -|--|-----------|----|-----|----|------------|---
 0|10498554|HZ239907|4/4/2016 23:56|007XX E 111TH ST|1153|PODVODNÝ POSTUPEM|...
 1|10516598|HZ258664|4/15/2016 17:00|082XX LOŽIT MARSHFIELD|890|KRÁDEŽ|...
@@ -80,7 +80,7 @@ simple_random_sample_dataset = dataset.sample('simple_random', {'probability':0.
 simple_random_sample_dataset.to_pandas_dataframe()
 ```
 
-||ID|Číslo případu|Datum|Zablokovat|IUCR|Primární typ|...|
+||id|Číslo případu|Datum|Zablokovat|IUCR|Primární typ|...|
 -|--|-----------|----|-----|----|------------|---
 0|10516598|HZ258664|4/15/2016 17:00|082XX LOŽIT MARSHFIELD|890|KRÁDEŽ|...
 1|10519196|HZ261252|4/15/2016 10:00|104XX LOŽIT SACRAMENTO|1154|PODVODNÝ POSTUPEM|...
@@ -103,7 +103,7 @@ sample_dataset = dataset.sample('stratified', {'columns': ['Primary Type'], 'fra
 sample_dataset.to_pandas_dataframe()
 ```
 
-||ID|Číslo případu|Datum|Zablokovat|IUCR|Primární typ|...|
+||id|Číslo případu|Datum|Zablokovat|IUCR|Primární typ|...|
 -|--|-----------|----|-----|----|------------|---
 0|10516598|HZ258664|4/15/2016 17:00|082XX LOŽIT MARSHFIELD|890|KRÁDEŽ|...
 1|10534446|HZ277630|4/15/2016 10:00|055XX N KEDZIE AVE|890|KRÁDEŽ|...
@@ -119,7 +119,7 @@ dataset.get_profile()
 
 ||Type|Minimum|Maximum|Počet|Chybí počet|Nechybí počet|Procento chybějících|Počet chyb|Prázdný počet|0,1 % Quantile|1 % Quantile|5 % Quantile|25 % Quantile|50 % Quantile|75 % Quantile|95 % Quantile|99 % Quantile|99,9 % Quantile|střední hodnotu|Směrodatná odchylka|Odchylka|Zešikmení|Míra fluktuace
 -|----|---|---|-----|-------------|-----------------|---------------|-----------|-----------|-------------|-----------|-----------|------------|------------|------------|------------|------------|--------------|----|------------------|--------|--------|--------
-ID|FieldType.INTEGER|1.04986e + 07|1.05351e + 07|10.0|0.0|10.0|0.0|0.0|0.0|1.04986e + 07|1.04992e + 07|1.04986e + 07|1.05166e + 07|1.05209e + 07|1.05259e + 07|1.05351e + 07|1.05351e + 07|1.05351e + 07|1.05195e + 07|12302.7|1.51358e + 08|-0.495701|-1.02814
+id|FieldType.INTEGER|1.04986e + 07|1.05351e + 07|10.0|0.0|10.0|0.0|0.0|0.0|1.04986e + 07|1.04992e + 07|1.04986e + 07|1.05166e + 07|1.05209e + 07|1.05259e + 07|1.05351e + 07|1.05351e + 07|1.05351e + 07|1.05195e + 07|12302.7|1.51358e + 08|-0.495701|-1.02814
 Číslo případu|FieldType.STRING|HZ239907|HZ278872|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 Datum|FieldType.DATE|2016-04-04 23:56:00+00:00|2016-04-15 17:00:00+00:00|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 Zablokovat|FieldType.STRING|004XX LOŽIT KILBOURN|113XX LOŽIT PSOUNŮ|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
@@ -162,7 +162,7 @@ ds_def = ds_def.keep_columns(['ID', 'Arrest', 'Latitude', 'Longitude'])
 ds_def.head(3)
 ```
 
-||ID|Zadržení| Zeměpisná šířka|Zeměpisná délka|
+||id|Zadržení| Zeměpisná šířka|Zeměpisná délka|
 -|---------|-----|---------|----------|
 |0|10498554|False|41.692834|-87.604319|
 |1|10516598|False| 41.744107 |-87.664494|
@@ -215,7 +215,7 @@ ds_def.head(3)
 
 Jak je znázorněno v následující tabulce výstup, chybějící šířky byl splněn s `MEAN` hodnotu `Arrest==False` s-87 byl splněn skupiny a chybějící délky.
 
-||ID|Zadržení|Zeměpisná šířka|Zeměpisná délka
+||id|Zadržení|Zeměpisná šířka|Zeměpisná délka
 -|---------|-----|---------|----------
 0|10498554|False|41.692834|-87.604319
 1|10516598|False|41.744107|-87.664494
@@ -228,7 +228,7 @@ dataset = dataset.update_definition(ds_def, 'Impute Missing')
 dataset.head(3)
 ```
 
-||ID|Zadržení|Zeměpisná šířka|Zeměpisná délka
+||id|Zadržení|Zeměpisná šířka|Zeměpisná délka
 -|---------|-----|---------|----------
 0|10498554|False|41.692834|-87.604319
 1|10516598|False|41.744107|-87.664494
@@ -258,7 +258,7 @@ ds_def.get_profile()
 
 ||Type|Minimum|Maximum|Počet|Chybí počet|Nechybí počet|Procento chybějících|Počet chyb|Prázdný počet|0,1 % Quantile|1 % Quantile|5 % Quantile|25 % Quantile|50 % Quantile|75 % Quantile|95 % Quantile|99 % Quantile|99,9 % Quantile|střední hodnotu|Směrodatná odchylka|Odchylka|Zešikmení|Míra fluktuace
 -|----|---|---|-----|-------------|-----------------|---------------|-----------|-----------|-------------|-----------|-----------|------------|------------|------------|------------|------------|--------------|----|------------------|--------|--------|--------
-ID|FieldType.INTEGER|1.04986e + 07|1.05351e + 07|10.0|0.0|10.0|0.0|0.0|0.0|1.04986e + 07|1.04992e + 07|1.04986e + 07|1.05166e + 07|1.05209e + 07|1.05259e + 07|1.05351e + 07|1.05351e + 07|1.05351e + 07|1.05195e + 07|12302.7|1.51358e + 08|-0.495701|-1.02814
+id|FieldType.INTEGER|1.04986e + 07|1.05351e + 07|10.0|0.0|10.0|0.0|0.0|0.0|1.04986e + 07|1.04992e + 07|1.04986e + 07|1.05166e + 07|1.05209e + 07|1.05259e + 07|1.05351e + 07|1.05351e + 07|1.05351e + 07|1.05195e + 07|12302.7|1.51358e + 08|-0.495701|-1.02814
 Zadržení|FieldType.BOOLEAN|False|False|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 Zeměpisná šířka|FieldType.DECIMAL|41.6928|41.9032|10.0|0.0|10.0|0.0|0.0|0.0|41.6928|41.7185|41.6928|41.78|41.78|41.78|41.9032|41.9032|41.9032|41.78|0.0517107|0.002674|0.837593|1,05
 Zeměpisná délka|FieldType.INTEGER|-87|-87|10.0|0.0|10.0|0.0|3.0|0.0|-87|-87|-87|-87|-87|-87|-87|-87|-87|-87|0|0|NaN|NaN
@@ -288,7 +288,7 @@ dataset = Dataset.auto_read_files('./data/crime.csv')
 dataset.head(3)
 ```
 
-||ID|Číslo případu|Datum|Zablokovat|...|
+||id|Číslo případu|Datum|Zablokovat|...|
 -|---------|-----|---------|----|---
 0|10498554|HZ239907|2016-04-04 23:56:00|007XX E 111TH ST|...
 1|10516598|HZ258664|2016-04-15 17:00:00|082XX LOŽIT MARSHFIELD|...
@@ -310,7 +310,7 @@ ds_def.keep_columns(['ID','Date','Date_Time_Range']).head(3)
 
 V následující tabulce Všimněte si, že nový sloupec, Date_Time_Range obsahuje záznamy ve formátu určeném.
 
-||ID|Datum|Date_Time_Range
+||id|Datum|Date_Time_Range
 -|--------|-----|----
 0|10498554|2016-04-04 23:56:00|2016-04-04 10 PM-12 AM
 1|10516598|2016-04-15 17:00:00|2016-04-15, 16: 00 – 18: 00
@@ -376,8 +376,6 @@ dataset = dataset.update_definition(ds_def, 'fuzzy grouping')
 ```
 
 ## <a name="next-steps"></a>Další postup
-
-* [Správa životního cyklu definicích datových sad](how-to-manage-dataset-definitions.md).
 
 * Automatizované strojového učení najdete v článku [kurzu](tutorial-auto-train-models.md) příklad regresní model.
 

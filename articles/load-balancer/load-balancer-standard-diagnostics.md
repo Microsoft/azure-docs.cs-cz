@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/06/2019
+ms.date: 07/03/2019
 ms.author: Kumud
-ms.openlocfilehash: ec68038a5b0fe7edca095e0d9b190d5da09c8e82
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 08670c8aa6d5c9830ab84bc848bac38063bd41c0
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66754701"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67550926"
 ---
 # <a name="metrics-and-health-diagnostics-for-standard-load-balancer"></a>Metriky a stav diagnostiky pro Load balancer úrovně Standard
 
@@ -85,7 +85,7 @@ Chcete-li získat cestu dostupnost dat pro vaše prostředky nástroje pro vyrov
 Metrika je generován aktivní, integrované měření. Zjišťování služby v rámci oblasti mohou být provoz pro měření. Služba se aktivuje, jakmile vytvoříte nasazení s veřejnou front-endem a pokračuje až do odebrání front-endu. 
 
 >[!NOTE]
->Interní front-endů nejsou v tuto chvíli nepodporuje. 
+>Cesta dostupnost dat (virtuální IP adresy dostupnost) není k dispozici pro interní nástroj pro vyrovnávání zatížení front-endů. 
 
 Paket odpovídající front-endu vašeho nasazení a pravidlo se vygeneruje pravidelně. Přenosech oblast ze zdroje do hostitele ve kterém se nachází virtuální počítač v back endového fondu. Infrastruktura nástroje pro vyrovnávání zatížení provede stejné operace překlad a vyrovnávání zatížení, jak funguje pro všechny ostatní přenosy. Tento test je integrovaná na váš koncový bod s vyrovnáváním zatížení. Po testu dorazí na výpočetní prostředky hostitele, kde je umístěn v dobrém stavu virtuálního počítače v back endového fondu, generuje hostitele výpočetního odpověď pro službu zjišťování. Váš virtuální počítač nezobrazuje tento provoz.
 
@@ -208,6 +208,10 @@ Různé stavy stavu prostředků a jejich popisy jsou uvedeny v následující t
 | K dispozici | Váš prostředek nástroje pro vyrovnávání veřejné standardního zatížení je v pořádku a k dispozici. |
 | Není dostupný | Váš prostředek nástroje pro vyrovnávání veřejné standardního zatížení není v pořádku. Diagnostika stavu tak, že vyberete **Azure Monitor** > **metriky**.<br>(*Není k dispozici* stav může také znamenat, že prostředek není spojena s vaší veřejného load balanceru úrovně standard.) |
 | Neznámé | Stav prostředků pro prostředek standardní veřejný nástroj pro vyrovnávání ještě není aktualizovaný.<br>(*Neznámý* stav může také znamenat, že prostředek není spojena s vaší veřejného load balanceru úrovně standard.)  |
+
+## <a name="limitations"></a>Omezení 
+
+- Cesta dostupnost dat (virtuální IP adresy dostupnost) není k dispozici pro interní nástroj pro vyrovnávání zatížení front-endů.
 
 ## <a name="next-steps"></a>Další postup
 

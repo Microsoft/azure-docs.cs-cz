@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: aelnably
 ms.custom: ''
-ms.openlocfilehash: ce57aae1119261c0545b59a037226fdc12ec115f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9806a982982971b1b3ac9c28454e17813b2ad2a5
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67050668"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67479868"
 ---
 # <a name="continuous-delivery-using-azure-devops"></a>Nepřetržité doručování pomocí Azure DevOps
 
@@ -158,6 +158,10 @@ steps:
     azureSubscription: '<Azure service connection>'
     appType: functionApp
     appName: '<Name of function app>'
+    #Uncomment the next lines to deploy to a deployment slot
+    #deployToSlotOrASE: true
+    #resourceGroupName: '<Resource Group Name>'
+    #slotName: '<Slot name>'
 ```
 
 #### <a name="linux-function-app"></a>Linux funkce aplikace
@@ -171,6 +175,11 @@ steps:
     azureSubscription: '<Azure service connection>'
     appType: functionAppLinux
     appName: '<Name of function app>'
+    #Uncomment the next lines to deploy to a deployment slot
+    #Note that deployment slots is not supported for Linux Dynamic SKU
+    #deployToSlotOrASE: true
+    #resourceGroupName: '<Resource Group Name>'
+    #slotName: '<Slot name>'
 ```
 
 ## <a name="template-based-pipeline"></a>Kanál založené na šablonách
@@ -206,9 +215,11 @@ Když vytváříte nový kanál pro vydávání verzí, vyhledejte šablonu vyda
 
 ![](media/functions-how-to-azure-devops/release-template.png)
 
+Nasazení do slotu nasazení se nepodporuje v šabloně verze.
+
 ## <a name="creating-an-azure-pipeline-using-the-azure-cli"></a>Vytvoření kanálu služby Azure pomocí Azure CLI
 
-Použití `az functionapp devops-pipeline create` [příkaz](/cli/azure/functionapp/devops-pipeline#az-functionapp-devops-pipeline-create), budou vytvořeny kanálu služby Azure k sestavení a vydání změny kódu v úložišti. Příkaz vygenerujte nový soubor YAML, který definuje kanál sestavení a vydaných verzí, který se zapsat do úložiště.
+Použití `az functionapp devops-pipeline create` [příkaz](/cli/azure/functionapp/devops-pipeline#az-functionapp-devops-pipeline-create), budou vytvořeny kanálu služby Azure k sestavení a vydání změny kódu v úložišti. Příkaz vygenerujte nový soubor YAML, který definuje kanál sestavení a vydaných verzí, který se zapsat do úložiště. Nasazení do slotu nasazení se nepodporuje příkaz rozhraní příkazového řádku Azure.
 Předpoklady pro tento příkaz v závislosti na umístění kódu:
 
 - Pokud je váš kód v Githubu:

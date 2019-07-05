@@ -1,6 +1,6 @@
 ---
 title: Průvodce odstraňováním potíží Azure souborů výkonu
-description: Známé problémy s výkonem se sdílenými složkami Azure úrovně premium (preview) a přidružené alternativní řešení.
+description: Známé problémy s výkonem se sdílenými složkami Azure a přidružených alternativní řešení.
 services: storage
 author: gunjanj
 ms.service: storage
@@ -8,22 +8,22 @@ ms.topic: article
 ms.date: 04/25/2019
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 5ae0bb736a7cc0bbc38df5905abc5d8a71f60eb9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8c35501f3afbeed519fb5304229f25be1cbd5f9b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65190056"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445675"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>Řešení problémů s výkonem Azure Files
 
-Tento článek uvádí některé běžné problémy související s premium sdílených složek Azure (preview). Pokud nedojde k těmto problémům poskytuje možné příčiny a řešení.
+Tento článek uvádí některé běžné problémy související s sdílených složek Azure. Pokud nedojde k těmto problémům poskytuje možné příčiny a řešení.
 
 ## <a name="high-latency-low-throughput-and-general-performance-issues"></a>Vysoká latence, Nízká propustnost a obecné informace o výkonu problémy
 
 ### <a name="cause-1-share-experiencing-throttling"></a>1\. příčina: K omezení sdílení
 
-Výchozí kvóta ve sdílené složce je 100 GB, která poskytuje 100 standardní hodnoty vstupně-výstupních operací (s potenciálně burst 300 až hodinu). Další informace o zřizování a jeho vztah k vstupně-výstupních operací, najdete v článku [zřízené sdílené složky](storage-files-planning.md#provisioned-shares) části příručky plánování.
+Výchozí kvóta ve sdílené složce premium je 100 GB, která poskytuje 100 standardní hodnoty vstupně-výstupních operací (s potenciálně burst 300 až hodinu). Další informace o zřizování a jeho vztah k vstupně-výstupních operací, najdete v článku [zřízené sdílené složky](storage-files-planning.md#provisioned-shares) části příručky plánování.
 
 Pokud chcete potvrdit, pokud je omezovaná svou sdílenou složku, můžete využít metriky Azure na portálu.
 
@@ -39,7 +39,7 @@ Pokud chcete potvrdit, pokud je omezovaná svou sdílenou složku, můžete vyu�
 
 1. Vyberte **transakce** jako metriku.
 
-1. Přidat filtr pro **hodnotu ResponseType** a zkontrolujte, zda mají všechny žádosti kód odpovědi **SuccessWithThrottling**.
+1. Přidat filtr pro **hodnotu ResponseType** a zkontrolujte, zda mají všechny žádosti kód odpovědi **SuccessWithThrottling** (pro protokol SMB) nebo **ClientThrottlingError** (pro REST).
 
 ![Možnosti metriky pro premium fileshares](media/storage-troubleshooting-premium-fileshares/metrics.png)
 
@@ -72,11 +72,11 @@ Pokud aplikace používá zákazník s jedním vláknem, výsledkem může výra
 
 ### <a name="cause"></a>Příčina
 
-Klientského virtuálního počítače může nacházet v jiné oblasti než premium sdílené složky.
+Klientského virtuálního počítače může nacházet v jiné oblasti než sdílené složky.
 
 ### <a name="solution"></a>Řešení
 
-- Spusťte aplikaci z virtuálního počítače, který je umístěný ve stejné oblasti jako sdílené složky premium.
+- Spusťte aplikaci z virtuálního počítače, který je umístěný ve stejné oblasti jako sdílené.
 
 ## <a name="client-unable-to-achieve-maximum-throughput-supported-by-the-network"></a>Klientovi se nepodařilo dosáhnout maximální propustnost, které jsou podporovány v síti
 
@@ -121,6 +121,10 @@ Hloubka vstupně-výstupní operace větší než jedna nepodporuje CentOS/RHEL.
 
 - Upgrade na CentOS 8 / RHEL 8.
 - Změnit až po Ubuntu.
+
+## <a name="slow-file-copying-to-and-from-azure-files-in-linux"></a>Zpomalit kopírování souborů do a z Azure Files v Linuxu
+
+Pokud máte pomalé kopírování do a z Azure Files, podívejte se na [zpomalit kopírování souborů do a z Azure Files v systému Linux](storage-troubleshoot-linux-file-connection-problems.md#slow-file-copying-to-and-from-azure-files-in-linux) Průvodce části Linux s řešením.
 
 ## <a name="jitterysaw-tooth-pattern-for-iops"></a>Vzor nestabilní/saw-tooth pro vstupně-výstupních operací
 

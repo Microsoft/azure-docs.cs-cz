@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 05/06/2019
-ms.openlocfilehash: 535ae91abc04b2fdcebb6a2083db95ec50f61798
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 49d1e171d4d4b2210a98c59332f4842e23a2f2b9
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275582"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537842"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Nejčastější dotazy týkající se databáze Azure SQL Hyperškálováním
 
@@ -53,7 +53,7 @@ Založený na virtuálních jádrech služby, které úrovně se liší předev�
 | **Typ úložiště** | Vše |Vzdálené úložiště úrovně Premium (za instanci) | Zrušit propojených úložiště místní mezipaměti SSD (za instanci) | Mimořádně rychlým místní SSD storage (za instanci) |
 | **Velikost úložiště** | Izolované databáze nebo elastického fondu | 5 GB – 4 TB | Až 100 TB | 5 GB – 4 TB |
 | | Spravovaná instance  | 32 GB – 8 TB | neuvedeno | 32 GB – 4 TB |
-| **Vstupně-výstupních operací** | Jednu databázi ** | 500 IOPS na vCore s 7000 maximální IOPS | Zatím neznámý | 5000 vstupně-výstupních operací s 200 000 maximální IOPS|
+| **Vstupně-výstupních operací** | Jednu databázi ** | 500 IOPS na vCore s 7000 maximální IOPS | Velkokapacitní je architektura vícevrstevných s ukládáním do mezipaměti na různých úrovních. Efektivní IOPs, bude záviset na zatížení. | 5000 vstupně-výstupních operací s 200 000 maximální IOPS|
 | | Spravovaná instance | Závisí na velikosti souboru | neuvedeno | Spravovanou instanci: Závisí na velikosti souboru|
 |**Dostupnost**|Vše|1 repliky, žádné škálování pro čtení, ne v místní mezipaměti | Víc replik, až 15 škálování pro čtení, částečné místní mezipaměti | 3 repliky, 1 škálování pro čtení, zónově redundantní vysokou dostupnost, úplná místní mezipaměti |
 |**Zálohování**|Vše|RA-GRS, 7 – 35 dní (7 dní ve výchozím nastavení)| RA-GRS, 7 – 35 dní (7 dní ve výchozím nastavení), konstantní čas obnovení bodu v čase (PITR) | RA-GRS, 7 – 35 dní (7 dní ve výchozím nastavení) |
@@ -92,7 +92,7 @@ Velkokapacitní SQL Database nabízí rychlou škálovatelnost podle potřeb va�
   S Hyperškálováním můžete škálovat kapacitu primární výpočetního prostředí z hlediska prostředkům, jako je procesor, paměť a potom kapacitu zase v konstantním času. Vzhledem k tomu, že je sdílené úložiště, vertikální navýšení a snížení kapacity není velikost datové operace.  
 - **Měřítko Zvětšit/zmenšit**
 
-  S Hyperškálováním budete mít také možnost zřizování jeden nebo více dalších výpočetních uzlů, které můžete použít k obsluze žádostí o čtení. To znamená, že vám pomůže těchto dalších výpočetních uzlů jako jen pro čtení uzly přesměrování zpracování úlohy čtení od primární výpočetních prostředků. Kromě jen pro čtení, že tyto uzly slouží také jako hot standby je v případě převzetí přes z primárního serveru.
+  S Hyperškálováním budete mít také možnost zřizování jeden nebo více dalších výpočetních uzlů, které můžete použít k obsluze žádostí o čtení. To znamená, že vám pomůže těchto dalších výpočetních uzlů jako jen pro čtení uzly přesměrování zpracování úlohy čtení od primární výpočetních prostředků. Kromě jen pro čtení, že tyto uzly slouží také jako hot standby je v případě převzetí služeb při selhání z primárního serveru.
 
   Zřizování každé z těchto dalších výpočetních uzlů můžete udělat v konstantním čase a je online operace. Můžete připojit k tyto uzly další výpočetní prostředky jen pro čtení tak, že nastavíte `ApplicationIntent` argument u připojovacího řetězce k `readonly`. Všechna připojení označené `readonly` se automaticky směrují na jednom z uzlů další výpočetní prostředky jen pro čtení.
 
@@ -120,7 +120,7 @@ Velkokapacitní SQL Database podporuje všechny úlohy SQL serveru, ale je prim�
 
 ### <a name="how-can-i-choose-between-azure-sql-data-warehouse-and-sql-database-hyperscale"></a>Jak můžu si zvolit mezi Azure SQL Data Warehouse a velkokapacitní databáze SQL
 
-Pokud v tuto chvíli se spouštění interaktivních analýz dotazů pomocí SQL serveru jako datový sklad, Hyperškálovatelného databáze SQL je skvělou možností vzhledem k tomu může hostovat relativně malé datové sklady (například několik TB až vyšplhat až TB) s nižšími náklady a můžete migrovat data  úlohy skladu k SQL Database Hyperškálovatelného beze změny kódu jazyka T-SQL.
+Pokud aktuálně používáte interaktivních analýz dotazů pomocí SQL serveru jako datový sklad, Hyperškálovatelného databáze SQL je skvělou možností vzhledem k tomu může hostovat relativně malé datové sklady (například několik TB až 10s TB) s nižšími náklady a můžete migrovat vaše data w arehouse pracovního vytížení k SQL Database Hyperškálovatelného beze změny kódu jazyka T-SQL.
 
 Pokud jsou spuštěné analýzy dat ve velkém měřítku s složitých dotazů a pomocí Parallel Data Warehouse (PDW), Teradata nebo jiných masivně paralelní procesoru (MPP)) datové sklady SQL Data Warehouse může být nejlepší volbou.
   
@@ -349,7 +349,7 @@ Koncový uživatel. Nepodporuje automatické.
 
 Ano. Dočasné databáze se škálují automaticky, roste tak výpočetní prostředky.  
 
-### <a name="can-i-provision-multiple-primary-computes-such-as-a-multi-master-system-where-multiple-primary-compute-heads-can-drive-a-higher-level-of-concurrency"></a>Můžete zřídit několik primární výpočetní prostředí, jako je například více hlavních systému, kde můžete několika vedoucích primární výpočetní jednotka vyšší úroveň souběžnosti
+### <a name="can-i-provision-multiple-primary-compute-nodes-such-as-a-multi-master-system-where-multiple-primary-compute-heads-can-drive-a-higher-level-of-concurrency"></a>Můžete zřídit několik primární výpočetních uzlů, jako je například více hlavních systému, kde můžete několika vedoucích primární výpočetní jednotka vyšší úroveň souběžnosti
 
 Ne. Jenom primární výpočetním uzlu přijímá požadavky na čtení/zápis. Sekundární výpočetních uzlů přijímat pouze požadavky jen pro čtení.
 
@@ -369,7 +369,7 @@ Ne. Můžete připojit jenom k replice škálování pro čtení tak, že zadát
 
 ### <a name="does-the-system-do-intelligent-load-balancing-of-the-read-workload"></a>Dělá systém Vyrovnávání zatížení inteligentní čtení úloh
 
-Ne. Čtení pouze úlohy se znovu orientovaného na náhodných repliku škálování pro čtení.
+Ne. Úlohy jen pro čtení je přesměrován na náhodných repliky škálování pro čtení.
 
 ### <a name="can-i-scale-updown-the-secondary-compute-nodes-independently-of-the-primary-compute"></a>Můžete škálovat nahoru/dolů sekundární výpočetních uzlů bez ohledu na jejich primárních výpočetní
 

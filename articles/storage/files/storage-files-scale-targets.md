@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 5/5/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 5e2f7b52ca3cb8a4d472b353e844bdad3aa1b0c1
-ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
+ms.openlocfilehash: 91ec65e17b77ccb3864fce45e30729ff420a48b6
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67150456"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67542650"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure soubory škálovatelnost a výkonnostní cíle
 
@@ -34,15 +34,17 @@ Nadřazený prostředek pro sdílené složky Azure je účet úložiště Azure
 
 ## <a name="azure-files-scale-targets"></a>Azure soubory měřítko cíle
 
-### <a name="premium-scale-targets"></a>Měřítko cíle úrovně Premium
+Existují tři kategorie omezení ke zvážení pro soubory Azure: účty úložiště, sdílené složky a soubory.
 
-Existují tři kategorie omezení ke zvážení premium sdílených složek: účty úložiště, sdílené složky a soubory.
+Příklad: S premium sdílených složek jednu sdílenou složku můžete dosáhnout 100 000 vstupně-výstupních operací a jednoho souboru můžete škálovat až 5000 vstupně-výstupních operací. Takže pokud máte tři soubory v jedné sdílené složky, maximální vstupně-výstupních operací můžete získat z této sdílené složky je 15 000.
 
-Příklad: Jednou sdílenou složkou může dosáhnout 100 000 vstupně-výstupních operací a jednoho souboru můžete škálovat až 5000 vstupně-výstupních operací. Ano Pokud máte tři soubory v jedné sdílené složky, maximální vstupně-výstupních operací můžete získat z této sdílené složky je například 15 000.
+### <a name="standard-storage-account-limits"></a>Limity účtu úložiště úrovně Standard
+
+Najdete v článku [cíle škálování účtu Azure storage](#azure-storage-account-scale-targets) části těchto omezení.
 
 ### <a name="premium-filestorage-account-limits"></a>Limity účtu úložiště souborů úrovně Premium
 
-Premium sdílené složky jsou zřízené v účet speciální úložiště s názvem **úložiště souborů (preview)** . Tento účet má mírně odlišná měřítka cíle než účet úložiště používané pro standardní sdílené složky. Cíle škálování účtu úložiště, najdete v tabulce [cíle škálování účtu Azure storage](#azure-storage-account-scale-targets) oddílu.
+[!INCLUDE [azure-storage-limits-filestorage](../../../includes/azure-storage-limits-filestorage.md)]
 
 > [!IMPORTANT]
 > Omezení účtů úložiště platí pro všechny sdílené složky. Škálování až na maximální počet účtů úložiště souborů je pouze dosažitelný, pokud existuje pouze jedna sdílená složka na jeden účet úložiště souborů.

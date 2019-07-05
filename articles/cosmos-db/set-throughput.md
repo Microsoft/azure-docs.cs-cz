@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/14/2019
 ms.author: rimman
-ms.openlocfilehash: 61f8e93fd82f7da632e0ab7e16ad6fbf4ca25646
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: adf0891203321ca02c47494f1865ca78a833e301
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165042"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561379"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>Zřízení propustnosti u kontejnerů a databází
 
@@ -98,7 +98,6 @@ Zřízená propustnost kontejneru nebo databázi můžete škálovat v každém 
 |---------|---------|---------|
 |Minimální ru |400 (po první čtyři kontejnery, každý další kontejner vyžaduje minimálně 100 ru za sekundu.) |400|
 |Minimální jednotek požadavku za kontejner|100|400|
-|Minimální ru potřeba využívat 1 GB úložiště|40|40|
 |Maximální ru|Neomezeno na databázi.|Neomezené v kontejneru.|
 |RU přiřazené nebo na konkrétní kontejner|Žádné záruky. RU přiřazen k danému kontejneru závisí na vlastnosti. Vlastnosti mohou být volba klíče oddílu kontejnerů, které sdílejí propustnost, distribuci zatížení a počet kontejnerů. |Všechny jednotky ru nakonfigurované v kontejneru jsou rezervovaných exkluzivně pro kontejner.|
 |Maximální velikost úložiště pro kontejner|Neomezený počet.|Neomezený počet.|

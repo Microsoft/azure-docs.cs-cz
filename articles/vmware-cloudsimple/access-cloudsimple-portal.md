@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d6f44005080bbd8583ae2e2fdad31ef2c823c7ca
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 61c3d37f365034984231c780199e181872c010c6
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67154525"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67544128"
 ---
 # <a name="accessing-the-vmware-solution-by-cloudsimple-portal-from-azure-portal"></a>Přístup k řešení VMware s CloudSimple portálu z webu Azure portal
 
@@ -21,7 +21,16 @@ Pro přístup k portálu CloudSimple se podporuje jednotné přihlašování. Po
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Pouze uživatelé s builtin **vlastníka** a **Přispěvatel** role portálu CloudSimple přístup.  Role musí být nakonfigurované u daného předplatného.  Další informace o kontrole vaší role, naleznete v tématu [zobrazit přiřazení rolí](https://docs.microsoft.com/azure/role-based-access-control/check-access) článku.
+Uživatelé s builtin **vlastníka** a **Přispěvatel** role portálu CloudSimple přístup.  Role musí být nakonfigurované ve skupině prostředků, ve kterém je nasazená služba CloudSimple.  Role dá konfigurovat i na CloudSimple objekt služby.  Další informace o kontrole vaší role, naleznete v tématu [zobrazit přiřazení rolí](https://docs.microsoft.com/azure/role-based-access-control/check-access) článku.
+
+Pokud používáte vlastní role, role by měl mít některý z následujících operací v části ```Actions```.  Další informace o vlastních rolích najdete v tématu [vlastní role pro prostředky Azure](https://docs.microsoft.com/azure/role-based-access-control/custom-roles).  Pokud všechny operace, je součástí ```NotActions```, uživatel nemá přístup k portálu CloudSimple. 
+
+```
+Microsoft.VMwareCloudSimple/*
+Microsoft.VMwareCloudSimple/*/write
+Microsoft.VMwareCloudSimple/dedicatedCloudServices/*
+Microsoft.VMwareCloudSimple/dedicatedCloudServices/*/write
+```
 
 ## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 

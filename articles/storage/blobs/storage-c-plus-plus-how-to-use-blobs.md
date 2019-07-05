@@ -9,12 +9,12 @@ ms.date: 03/21/2018
 ms.author: mhopkins
 ms.reviewer: seguler
 ms.subservice: blobs
-ms.openlocfilehash: 519190b6aeb313f25eddd717bce1a72148c8c518
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 32601fc15e6b6a25a1005b6d95499d4aae4fb0d2
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65148452"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67461185"
 ---
 # <a name="how-to-use-blob-storage-from-c"></a>Používání úložiště Blob z jazyka C++
 
@@ -68,7 +68,7 @@ Chcete-li spustit emulátor úložiště Azure, vyberte **Start** tlačítko neb
 
 V následujících ukázkách se předpokládá, že jste pomocí některé z těchto dvou metod získali připojovací řetězec úložiště.  
 
-## <a name="retrieve-your-connection-string"></a>Načtení připojovacího řetězce
+## <a name="retrieve-your-storage-account"></a>Načtení vašeho účtu úložiště
 Můžete použít **cloud_storage_account** pro reprezentaci informace o vašem účtu úložiště. K načtení informací o vašem účtu úložiště z připojovacího řetězce úložiště můžete použít metodu **parse**.  
 
 ```cpp

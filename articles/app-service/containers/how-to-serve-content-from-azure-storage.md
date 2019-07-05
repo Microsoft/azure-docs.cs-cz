@@ -8,16 +8,16 @@ ms.workload: web
 ms.topic: article
 ms.date: 2/04/2019
 ms.author: msangapu-msft
-ms.openlocfilehash: 6b4e145a693aabbf1a00d732e2fd602e7c887a03
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e6284174089419cd201d094bcb1a8c7e865d2892
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65956011"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67484421"
 ---
 # <a name="serve-content-from-azure-storage-in-app-service-on-linux"></a>Poskytování obsahu z Azure Storage ve službě App Service v Linuxu
 
-Tato příručka ukazuje, jak poskytovat statický obsah ve službě App Service v Linuxu pomocí [služby Azure Storage](/azure/storage/common/storage-introduction). Mezi výhody patří zabezpečené obsahu, obsah přenositelnost, přístup k více aplikací a přenosech několik metod. 
+Tato příručka ukazuje, jak poskytovat statický obsah ve službě App Service v Linuxu pomocí [služby Azure Storage](/azure/storage/common/storage-introduction). Mezi výhody patří zabezpečené obsahu, obsah přenositelnost, přístup k více aplikací a přenosech několik metod.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -28,6 +28,8 @@ Tato příručka ukazuje, jak poskytovat statický obsah ve službě App Service
 
 > [!NOTE]
 > Azure Storage je jiné než výchozí úložiště a účtují samostatně, nejsou zahrnuty s webovou aplikací.
+>
+> Používání vlastního úložiště nepodporuje použití konfigurace brány Firewall úložiště z důvodu omezení infrastruktury.
 >
 
 Vytvoření Azure [účtu služby Azure storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-cli).

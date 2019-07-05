@@ -6,14 +6,14 @@ manager: bruz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 04/13/2018
+ms.date: 06/28/2019
 ms.author: chrisgre
-ms.openlocfilehash: 0302146634904ccf1d87220d3a24553149e10372
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d57dbbdd7614d09d52fef0f613c43d4ca1d08136
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61321182"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485870"
 ---
 # <a name="automatic-iot-device-management-at-scale-using-the-azure-cli"></a>Automatická správa zařízení IoT ve velkém měřítku pomocí Azure CLI
 
@@ -29,7 +29,9 @@ Funguje správa zařízení automatické aktualizace sadu dvojčata zařízení 
 
 * **Směrovat obsah** definuje požadované vlastnosti, které chcete přidat ani aktualizovat v dvojčat cílové zařízení. Obsah obsahuje cestu k oddílu požadované vlastnosti změnit.
 
-* **Metriky** definovat souhrnný počet různých stavů konfigurace, jako **úspěch**, **probíhá**, a **chyba**. Vlastní metriky jsou zadané jako dotazy na zařízení ohlášené vlastnosti dvojčete.  Systémové metriky jsou výchozí metrik pro měření stavu aktualizace dvojčete, jako je počet dvojčata zařízení, na kterou cílí a počet dvojčat, které se úspěšně aktualizovaly. 
+* **Metriky** definovat souhrnný počet různých stavů konfigurace, jako **úspěch**, **probíhá**, a **chyba**. Vlastní metriky jsou zadané jako dotazy na zařízení ohlášené vlastnosti dvojčete.  Systémové metriky jsou výchozí metrik pro měření stavu aktualizace dvojčete, jako je počet dvojčata zařízení, na kterou cílí a počet dvojčat, které se úspěšně aktualizovaly.
+
+Konfigurace automatické spuštění poprvé krátce po konfiguraci a pak každých pět minut. Dotazy na metriky spouštět při každém spuštění automatické konfigurace.
 
 ## <a name="cli-prerequisites"></a>Požadavky na rozhraní příkazového řádku
 
@@ -56,7 +58,7 @@ Než začnete vytvářet konfigurace, je nutné zadat zařízení, která chcete
 
 ## <a name="define-the-target-content-and-metrics"></a>Zadejte cíl obsahu a metriky
 
-Cíl obsahu a metriku dotazy jsou definované jako dokumenty JSON, které popisují zařízení dvojčete požadovaných vlastností do sady a ohlášené vlastnosti k měření.  Automatické konfiguraci pomocí Azure CLI vytvoříte uložte cíl obsahu a metriky místně jako soubory s příponou .txt. Když spustíte příkaz pro použití v konfiguraci zařízení použijete v další části cesty k souborům. 
+Cíl obsahu a metriku dotazy jsou definované jako dokumenty JSON, které popisují zařízení dvojčete požadovaných vlastností do sady a ohlášené vlastnosti k měření.  Automatické konfiguraci pomocí Azure CLI vytvoříte uložte cíl obsahu a metriky místně jako soubory s příponou .txt. Když spustíte příkaz pro použití v konfiguraci zařízení použijete v další části cesty k souborům.
 
 Tady je ukázka základní cíl obsahu:
 

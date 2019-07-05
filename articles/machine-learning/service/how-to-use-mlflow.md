@@ -1,5 +1,5 @@
 ---
-title: Jak používat MLflow se službou Azure Machine Learning
+title: MLflow pomocí služby Azure Machine Learning
 titleSuffix: Azure Machine Learning service
 description: Zjistěte, jak protokolování metrik a artefakty pomocí knihovny MLflow do služby Azure Machine Learning
 services: machine-learning
@@ -11,21 +11,21 @@ ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: b64051a4ef7b6a816b03562fef0452cbe9ce949a
-ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.openlocfilehash: d0bc4620d0c55d6e94a3d99c39ab405dab2743e5
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67144027"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67461654"
 ---
-# <a name="how-to-use-mlflow-with-azure-machine-learning-service-preview"></a>Jak používat MLflow službou Azure Machine Learning (Preview)
+# <a name="use-mlflow-with-azure-machine-learning-service-preview"></a>MLflow pomocí služby Azure Machine Learning (Preview)
 
 Tento článek ukazuje, jak používat MLflow na identifikátor URI pro sledování a protokolování rozhraní API, souhrnně označované také jako MLflow sledování, službou Azure Machine Learning, sledování a protokolů, metriky experiment a artefakty v vaše [Azure Machine Learning pracovní prostor služby](https://docs.microsoft.com/azure/machine-learning/service/concept-azure-machine-learning-architecture#workspace). Pokud už používáte MLflow sledování pro své experimenty, tento pracovní prostor poskytuje centralizovaný, zabezpečené a škálovatelné umístění pro uložení školení metriky a modely.
 
 [MLflow](https://www.mlflow.org) open source knihovnu pro správu životního cyklu vaší se strojovým učením. [Sledování MLFlow](https://mlflow.org/docs/latest/quickstart.html#using-the-tracking-api) je součástí MLflow, který se přihlásí a sleduje trénování spustit metriky a model artefakty, zda jsou vaše experimenty místně, spusťte na virtuálním počítači nebo na vzdáleném výpočetní cluster.
 ![mlflow s diagramem azure machine learning](media/how-to-use-mlflow/mlflow-diagram.png)
 
-## <a name="compare-mlflow-and-azure-machine-learning-service-clients"></a>Porovnání služeb klientům MLflow a Azure Machine Learning
+## <a name="compare-mlflow-and-azure-machine-learning-clients"></a>Porovnání klientů MLflow a Azure Machine Learning
 
  Níže uvedená tabulka shrnuje různé klienty využívající službu Azure Machine Learning a jejími funkcemi příslušné funkce.
 

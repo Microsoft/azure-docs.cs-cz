@@ -4,14 +4,14 @@ ms.service: storage
 ms.topic: include
 ms.date: 06/07/2019
 ms.author: rogarana
-ms.openlocfilehash: c9561f868c70920a0ffb80777f1fc57abafb0df9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 368f08272173b019873dfe20e1164d6baf72ff5e
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67073752"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67542666"
 ---
-#### <a name="additional-premium-file-share-limits"></a>Další prémiové sdílenou složku omezuje
+#### <a name="additional-premium-file-share-level-limits"></a>Další prémiové souboru omezení úrovní sdílené složky
 
 |Oblast  |Target  |
 |---------|---------|
@@ -20,12 +20,14 @@ ms.locfileid: "67073752"
 |Shlukování vstupně-výstupních operací    |3 x IOPS za GiB maximálně 100 000|
 |Frekvence odchozího přenosu dat         |60 MiB/s + 0,06 * zřízené GiB        |
 |Rychlost příchozího přenosu dat| 40 MiB/s + 0,04 * zřízené GiB |
-|Maximální počet snímků        |200       |
 
-#### <a name="premium-file-limits"></a>Omezení souboru Premium
+#### <a name="file-level-limits"></a>Omezení na úrovni souboru
 
-|Oblast  |Target  |
-|---------|---------|
-|Velikost                  |1 TiB         |
-|Maximální počet vstupně-výstupních operací na soubor     |5 000         |
-|Souběžné obslužné rutiny    |2 000         |
+|Oblast  |Soubor Premium  |Standardní soubor |
+|---------|---------|---------|
+|Size                  |1 TiB         |1 TiB|
+|Maximální počet vstupně-výstupních operací na soubor     |5 000         |1 000|
+|Souběžné obslužné rutiny    |2 000         |2 000|
+|Příchozí přenos dat  |300 MiB za sekundu|      Zobrazit hodnoty propustnosti standardní soubor|
+|Výchozí přenos   |200 Mib za sekundu| Zobrazit hodnoty propustnosti standardní soubor|
+|Propustnost| Zobrazit hodnoty příchozí a odchozí přenos souboru premium| Až 60 MiB za sekundu|

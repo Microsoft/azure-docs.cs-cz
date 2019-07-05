@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: 58c50eac60f1a8a47aac9a88125bc3e0132ec3db
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8ba4763e8d4835911d33d21c0f5bb431851a649b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059157"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444719"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Plánování kapacity a škálování pro Azure Service Fabric
 
@@ -78,6 +78,8 @@ Vlastnosti uzlu a omezení umístění, které jsou deklarovány proveďte násl
 2. Spustit `Get-ServiceFabricNode` abyste měli jistotu, že uzel přešla na zakázáno. Pokud ne, počkejte, dokud nebude uzel je zakázaná. Může to trvat několik hodin pro každý uzel. Nechcete pokračovat, dokud se uzel přešla na zakázáno.
 3. Snížit počet virtuálních počítačů jednou v tomto typu uzlu. Nejvyšší instance virtuálního počítače se nyní odeberou.
 4. Opakujte kroky 1 až 3 podle potřeby, ale nikdy vertikálně snížit kapacitu počtu instancí ve primárního uzlu typy menší, než co zaručuje úroveň spolehlivosti. Zobrazit [plánování kapacity clusteru Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity) seznam doporučených instancí.
+5. Jakmile se všechny virtuální počítače jsou pryč (reprezentovány jako "Dolů") topologie fabric: / System/InfrastructureService / [název uzlu] Zobrazí chybový stav. Potom můžete aktualizovat prostředek clusteru k odebrání typu uzlu. Můžete buď použít nasazení šablony ARM nebo upravit prostředek clusteru prostřednictvím [Azure resource Manageru](https://resources.azure.com). Tím spustíte upgrade clusteru, který odebere topologie fabric: / System/InfrastructureService / [typ uzlu] služby, který je v chybovém stavu.
+ 6. Po, můžete volitelně můžete odstranit škálovací sady virtuálních počítačů, uzly se stále zobrazí jako "Dolů" v Service Fabric Exploreru zobrazte ale. Posledním krokem by ho PROČISTIT s `Remove-ServiceFabricNodeState` příkazu.
 
 ### <a name="example-scenario"></a>Příklad scénáře
 Je podporovaný scénář, kdy se mají provést operaci vertikální škálování: Chcete provést migraci vašeho clusteru Service Fabric a aplikace z nespravovaných disků na managed disks bez výpadků aplikace. 

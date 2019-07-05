@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: makromer
-ms.openlocfilehash: e75c6290474d876ca22b5888d06b1fc0e4c8cd05
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 24b27c16573a35b1d8749d7ff381fbef970f4bd0
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67077328"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67471661"
 ---
 # <a name="execute-data-flow-activity-in-azure-data-factory"></a>Spuštění aktivity toku dat ve službě Azure Data Factory
 Spuštění toku dat ADF v ladění (sandbox) spuštění kanálu a spuštění kanálu aktivované pomocí aktivity toku dat spouštět.
@@ -80,11 +80,17 @@ Pokud použijete parametry datové sady, nezapomeňte nastavit hodnoty parametr�
 
 ![Spustit parametry toku dat](media/data-flow/params.png "parametry")
 
-### <a name="debugging-parameterized-data-flows"></a>Ladění s parametry datové toky
+## <a name="parameterized-data-flows"></a>Parametry datové toky
 
-Můžete ladit pouze datové toky s parametry datové sady z kanálu ladění spuštěn pomocí aktivity toku dat spouštět. V současné době interaktivní ladicích relací v toku dat ADF nefungují s parametry datové sady. Spuštění kanálu a spuštění ladění bude fungovat s parametry.
+Pokud máte parametry vašeho toku dat, nastavíte dynamické hodnoty tady parametry toku dat v sekci parametrů spuštění toku dat aktivit. Jazyk výrazů kanálu ADF (pouze pro typy parametrů řetězce) nebo jazyk výrazů tok dat můžete použít k nastavení hodnoty parametrů s výrazy dynamické nebo statické hodnoty literálu.
 
-Dobrým postupem je vytvoření toku dat pomocí statické datové sady, abyste měli k dispozici šíření sloupce – plná metadata v době návrhu. Potom nahraďte statické datové sady s datovou sadou dynamické parametry při zprovoznění vašeho kanálu toku dat
+![Spusťte příklad parametr toku dat](media/data-flow/parameter-example.png "parametr příklad")
+
+### <a name="debugging-data-flows-with-parameters"></a>Ladění datové toky s parametry
+
+V tuto chvíli aktuální můžete ladit pouze datové toky s parametry z kanálu ladění spuštěn pomocí aktivity toku dat spouštět. Interaktivní ladicích relací v ADF toku dat je již brzy. Spuštění kanálu a spuštění ladění, ale bude fungovat s parametry.
+
+Dobrým postupem je vytvoření toku dat s statický obsah, abyste měli k dispozici šíření sloupce – plná metadata v době návrhu pro odstraňování poruch. Potom nahraďte statické datové sady s datovou sadou dynamické parametry při zprovoznění vašeho kanálu toku dat
 
 ## <a name="next-steps"></a>Další postup
 Zobrazit další aktivity toku řízení podporovaných službou Data Factory: 

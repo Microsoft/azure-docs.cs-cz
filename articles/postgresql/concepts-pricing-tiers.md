@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: a92017c462ef62cbfb1aa6c2613a502d1cc5ffc6
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 5f60a2786a87f4bd9be1f4a9e2a7a222e097b2e1
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67340740"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448079"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Cenové úrovně ve službě Azure Database for PostgreSQL – jeden Server
 
@@ -64,16 +64,16 @@ Omezení úložiště zvyšujeme na naše úrovni obecné účely a optimalizova
 | Typ úložiště | Azure Premium Storage | Azure Premium Storage |
 | Velikost úložiště | 32 GB až 16 TB| 32 až 16 TB |
 | Zvýšení velikosti úložiště | 1 GB | 1 GB |
-| IOPS | 3 IOPS/GB<br/>Minimum 100 vstupně-výstupních operací<br/>Max. 20 000 IOPS| 3 IOPS/GB<br/>Minimum 100 vstupně-výstupních operací<br/>Max. 20 000 IOPS |
+| IOPS | 3 IOPS/GB<br/>Minimum 100 vstupně-výstupních operací<br/>Max. 20 000 IOPS | 3 IOPS/GB<br/>Minimum 100 vstupně-výstupních operací<br/>Max. 20 000 IOPS |
 
 > [!IMPORTANT]
-> Rozsáhlá úložiště je aktuálně ve verzi public preview v těchto oblastech: USA – východ, USA – východ 2, střed USA, západní USA, Severní Evropa, západní Evropa, jihovýchodní Asie, Japonsko – východ, Korea – střed, Austrálie – východ.
+> Rozsáhlá úložiště je aktuálně ve verzi public preview v těchto oblastech: USA – východ, USA – východ 2, střed USA, západní USA, Severní Evropa, západní Evropa, Velká Británie – Jih, Velká Británie – Západ, jihovýchodní Asie, východní Asie, Japonsko – východ, Japonsko – Západ, Korea – střed, Korea – Jih, Austrálie – východ, Austrálie – východ – jih.
 >
->Rozsáhlá úložiště ve verzi preview v současné době nepodporuje:
+> Rozsáhlá úložiště ve verzi preview v současné době nepodporuje:
 >
 > * Příchozí připojení přes koncové body služeb virtuální sítě
 > * Geograficky redundantní zálohy
-> * Pro různé oblasti replikace
+> * Čtení replik
 
 ### <a name="reaching-the-storage-limit"></a>Dosažení limitu úložiště
 

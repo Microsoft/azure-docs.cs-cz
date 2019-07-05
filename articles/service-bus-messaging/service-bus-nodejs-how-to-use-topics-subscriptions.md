@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: 3b805a80330dd44ac4a65db88950393d3d4d60b7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3dbec81237edd7cbf51e4812e83da068b9a366e0
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65992096"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67540997"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azure-sb-package"></a>Postup použití služby Service Bus témata a odběry s využitím Node.js a balíčku azure-sb
 > [!div class="op_multi_selector" title1="Programovací jazyk" title2="Node.js balíčku"]
@@ -48,7 +48,7 @@ Další informace o tématech a odběrech najdete v tématu [další kroky](#nex
     > Vytvoříte **tématu** a **předplatné** do tématu pomocí **Node.js** v tomto rychlém startu. 
 
 ## <a name="create-a-nodejs-application"></a>Vytvoření aplikace Node.js
-Vytvoření prázdné aplikace v Node.js. Pokyny týkající se vytvoření aplikace Node.js najdete v tématu [vytvoření a nasazení aplikace Node.js na web Azure], [cloudové služby pro Node.js] [ Node.js Cloud Service] pomocí Windows Prostředí PowerShell, nebo webu pomocí Webmatrixu.
+Vytvoření prázdné aplikace v Node.js. Pokyny týkající se vytvoření aplikace Node.js najdete v tématu [vytvoření a nasazení aplikace Node.js na web Azure], [cloudové služby pro Node.js][Node.js Cloud Service] pomocí Windows Powershellu nebo webu pomocí služby WebMatrix.
 
 ## <a name="configure-your-application-to-use-service-bus"></a>Konfigurace aplikace pro použití služby Service Bus
 Použití služby Service Bus, stáhněte si balíček Node.js Azure. Tento balíček obsahuje sadu knihoven, které komunikují se službami REST pro Service Bus.
@@ -148,9 +148,9 @@ var serviceBusService = azure.createServiceBusService().withFilter(retryOperatio
 Odběry témat taky jsou vytvořeny pomocí **ServiceBusService** objektu. Odběry mají názvy a můžou mít volitelné filtry, který omezuje sadu doručování zpráv do virtuální fronty odběru.
 
 > [!NOTE]
-> Předplatná jsou až do buď trvalé nebo téma, které jsou přidružené, se odstraní. Pokud vaše aplikace obsahuje logiku pro vytvoření odběru, měli by nejdřív zkontrolovat, pokud existuje odběr s použitím `getSubscription` metody.
+> Ve výchozím nastavení, předplatná jsou trvalé až do obou nebo téma, které jsou přidružené, se odstraní. Pokud vaše aplikace obsahuje logiku pro vytvoření odběru, měli by nejdřív zkontrolovat, pokud existuje odběr s použitím `getSubscription` metody.
 >
->
+> Máte předplatné odstraní automaticky podle nastavení [AutoDeleteOnIdle vlastnost](https://docs.microsoft.com/javascript/api/azure-arm-sb/sbsubscription?view=azure-node-latest#autodeleteonidle).
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>Vytvoření odběru s výchozím filtrem (MatchAll).
 **MatchAll** filtr je výchozí filtr použitý při přihlášení k odběru. Když použijete filtr **MatchAll**, všechny zprávy publikované do tématu se umístí do virtuální fronty odběru. Následující příklad vytvoří odběr s názvem AllMessages a používá výchozí **MatchAll** filtru.
@@ -166,7 +166,7 @@ serviceBusService.createSubscription('MyTopic','AllMessages',function(error){
 ### <a name="create-subscriptions-with-filters"></a>Vytvoření odběru s filtry
 Můžete taky vytvořit filtry, které umožňují že jste do oboru, které zprávy odeslané do tématu měla zobrazit v konkrétním odběru tématu.
 
-Nejflexibilnější filtr předplatných je **SqlFilter**, která implementuje podmnožinu SQL92. Filtry SQL pracují s vlastnostmi zpráv publikované do tématu. Další informace o výrazech, které lze použít s filtrem SQL, přečtěte si [SqlFilter.SqlExpression] [ SqlFilter.SqlExpression] syntaxe.
+Nejflexibilnější filtr předplatných je **SqlFilter**, která implementuje podmnožinu SQL92. Filtry SQL pracují s vlastnostmi zpráv publikované do tématu. Další informace o výrazech, které lze použít s filtrem SQL, přečtěte si [SqlFilter.SqlExpression][SqlFilter.SqlExpression] syntaxe.
 
 Filtry lze přidat na předplatné s použitím `createRule` metodu **ServiceBusService** objektu. Tato metoda umožňuje přidat nové filtry k existujícímu předplatnému.
 
@@ -314,7 +314,7 @@ Je také vypršení časového limitu zpráva uzamčená v odběru. Pokud se apl
 V případě, že aplikace spadne po zpracování zprávy, ale předtím, než `deleteMessage` metoda je volána, zprávu je víckrát do aplikace při restartování. Toto chování se často nazývá *alespoň jedno zpracování*. To znamená, že každá zpráva se zpracuje alespoň jednou, ale v některých situacích může doručit víckrát. Pokud scénář nemůže tolerovat zpracování, měli byste do vaší aplikace pro zpracování víckrát doručené zprávy přidat logiku. Můžete použít **MessageId** vlastnosti zprávy, která zůstává konstantní pokusu o doručení.
 
 ## <a name="delete-topics-and-subscriptions"></a>Odstranění témat a odběrů
-Témata a odběry jsou trvalé a musí být explicitně odstranit prostřednictvím [webu Azure portal] [ Azure portal] nebo prostřednictvím kódu programu.
+Témata a odběry, které jsou trvalé není-li [autoDeleteOnIdle vlastnost](https://docs.microsoft.com/javascript/api/azure-arm-sb/sbsubscription?view=azure-node-latest#autodeleteonidle) nastavena a musí být explicitně odstranit prostřednictvím [webu Azure portal][Azure portal] nebo prostřednictvím kódu programu.
 Následující příklad ukazuje, jak odstranit téma s názvem `MyTopic`:
 
 ```javascript
@@ -342,8 +342,8 @@ serviceBusService.deleteSubscription('MyTopic', 'HighMessages', function (error)
 Teď, když jste se naučili základy témat sběrnice Service Bus, použijte tyto odkazy na další informace.
 
 * Zobrazit [fronty, témata a odběry][Queues, topics, and subscriptions].
-* Reference k rozhraní API pro [SqlFilter][SqlFilter]
-* Přejděte [sady Azure SDK for Node] [ Azure SDK for Node] úložišti na Githubu.
+* Reference pro API pro [SqlFilter][SqlFilter].
+* Přejděte [sady Azure SDK for Node][Azure SDK for Node] úložišti na Githubu.
 
 [Azure SDK for Node]: https://github.com/Azure/azure-sdk-for-node
 [Azure portal]: https://portal.azure.com

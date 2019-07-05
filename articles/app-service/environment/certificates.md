@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 35193380cc890a93d93c68bf5fc405572b5aa409
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: ba34638bbdb838adc6f1e61b1f8b07a6915815c0
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67339900"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67540782"
 ---
 # <a name="certificates-and-the-app-service-environment"></a>Certifikáty a App Service Environment 
 
@@ -55,7 +55,7 @@ Pokud chcete vytvořit certifikát podepsaný svým rychle pro testování, mů�
 
     $fileName = "exportedcert.pfx"
     Export-PfxCertificate -cert $certThumbprint -FilePath $fileName -Password $password     
-
+Při vytváření svým podepsaný certifikát, musíte zajistit v názvu subjektu formátu CN = {ASE_NAME_HERE} _InternalLoadBalancingASE.
 
 ## <a name="application-certificates"></a>Certifikáty k aplikaci 
 

@@ -1,5 +1,5 @@
 ---
-title: Vyberte stránku smlouvy – Azure Active Directory B2C | Dokumentace Microsoftu
+title: Vyberte stránku smlouvy – Azure Active Directory B2C
 description: Další informace o tom, jak vybrat stránku smlouvy v Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -7,21 +7,25 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/25/2019
+ms.date: 07/04/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 7aab43695f0b11590d8bd2aa011073ba04d95250
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f7098d805b0e3f1527587fc3411cd4c3b234b057
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66512997"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67540395"
 ---
 # <a name="select-a-page-contract-in-azure-active-directory-b2c-using-custom-policies"></a>Vyberte stránku smlouvu v Azure Active Directory B2C pomocí vlastních zásad
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-Kód jazyka JavaScript na straně klienta můžete povolit v Azure Active Directory (Azure AD) B2C zásady, ať už používáte toky uživatelů nebo vlastními zásadami. Pokud chcete povolit JavaScript pro aplikace, je nutné přidat element, který má vaše [vlastní zásady](active-directory-b2c-overview-custom.md), vyberte smlouvy stránky a použijte [b2clogin.com](b2clogin.md) v požadavcích. Kontrakt stránky je sdružení prvky, které poskytuje Azure AD B2C a obsah, který zadáte. Tento článek popisuje, jak vybrat stránku smlouvy v Azure AD B2C nakonfigurováním vlastních zásad.
+Kód jazyka JavaScript na straně klienta můžete povolit v zásadách pro Azure Active Directory (Azure AD) B2C, jestli používáte toky uživatelů nebo vlastními zásadami. Pokud chcete povolit JavaScript pro aplikace, je nutné přidat element, který má vaše [vlastní zásady](active-directory-b2c-overview-custom.md), vyberte smlouvy stránky a použijte [b2clogin.com](b2clogin.md) v požadavcích.
+
+Kontrakt stránky je sdružení prvky, které poskytuje Azure AD B2C a obsah, který zadáte.
+
+Tento článek popisuje, jak vybrat stránku smlouvy v Azure AD B2C nakonfigurováním vlastních zásad.
 
 > [!NOTE]
 > Pokud chcete povolit JavaScript pro toky uživatelů, přečtěte si téma [jazyka JavaScript a stránku smlouvy verze v Azure Active Directory B2C](user-flow-javascript-overview.md).
@@ -42,27 +46,54 @@ Ve vaší vlastní zásady, můžete mít [ContentDefinitions](contentdefinition
 </ContentDefinition>
 ```
 
-Pokud chcete vybrat stránku smlouvy, můžete změnit **parametr** hodnoty v vaše [ContentDefinitions](contentdefinitions.md) v zásady. Přepnutím ze starého **parametr** hodnoty na nové hodnoty, vybíráte nezměnitelný balíček. Výhodou používání tohoto balíčku je, že budete vědět, nelze změnit a způsobit neočekávané chování na stránce. 
+Pokud chcete vybrat stránku smlouvy, můžete změnit **parametr** hodnoty v vaše [ContentDefinitions](contentdefinitions.md) v zásady. Přepnutím ze starého **parametr** hodnoty na nové hodnoty, vybíráte nezměnitelný balíček. Výhodou používání tohoto balíčku je, že budete vědět, nelze změnit a způsobit neočekávané chování na stránce.
 
-Nastavení stránky smlouvy, použijte následující tabulku k vyhledání **parametr** hodnoty. 
+Nastavení stránky smlouvy, použijte následující tabulku k vyhledání **parametr** hodnoty.
 
 | Původní hodnota parametr | Nová hodnota pro parametr |
 | ----------------- | ----------------- |
-| název urn: com:microsoft:aad:b2c:elements:idpselection:1.0.0 | název urn: com:microsoft:aad:b2c:elements:contract:providerselection:1.0.0 |
-| název urn: com:microsoft:aad:b2c:elements:unifiedssd:1.0.0 | název urn: com:microsoft:aad:b2c:elements:contract:unifiedssd:1.0.0 | 
-| název urn: com:microsoft:aad:b2c:elements:claimsconsent:1.0.0 | název urn: com:microsoft:aad:b2c:elements:contract:claimsconsent:1.0.0 |
-| název urn: com:microsoft:aad:b2c:elements:multifactor:1.0.0 | název urn: com:microsoft:aad:b2c:elements:contract:multifactor:1.0.0 |
-| název urn: com:microsoft:aad:b2c:elements:multifactor:1.1.0 | název urn: com:microsoft:aad:b2c:elements:contract:multifactor:1.1.0 |
-| název urn: com:microsoft:aad:b2c:elements:selfasserted:1.0.0 | název urn: com:microsoft:aad:b2c:elements:contract:selfasserted:1.0.0 |
-| název urn: com:microsoft:aad:b2c:elements:selfasserted:1.1.0 | název urn: com:microsoft:aad:b2c:elements:contract:selfasserted:1.1.0 | 
-| název urn: com:microsoft:aad:b2c:elements:unifiedssp:1.0.0 | název urn: com:microsoft:aad:b2c:elements:contract:unifiedssp:1.0.0 |
-| název urn: com:microsoft:aad:b2c:elements:unifiedssp:1.1.0 | název urn: com:microsoft:aad:b2c:elements:contract:unifiedssp:1.1.0 |
-| název urn: com:microsoft:aad:b2c:elements:globalexception:1.0.0 | název urn: com:microsoft:aad:b2c:elements:contract:globalexception:1.0.0 |
-| název urn: com:microsoft:aad:b2c:elements:globalexception:1.1.0 | název urn: com:microsoft:aad:b2c:elements:contract:globalexception:1.1.0 |
+| `urn:com:microsoft:aad:b2c:elements:claimsconsent:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:claimsconsent:1.0.0` |
+| `urn:com:microsoft:aad:b2c:elements:globalexception:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:globalexception:1.0.0` |
+| `urn:com:microsoft:aad:b2c:elements:globalexception:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:globalexception:1.1.0` |
+| `urn:com:microsoft:aad:b2c:elements:idpselection:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.0.0` |
+| `urn:com:microsoft:aad:b2c:elements:multifactor:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.0.0` |
+| `urn:com:microsoft:aad:b2c:elements:multifactor:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.1.0` |
+| `urn:com:microsoft:aad:b2c:elements:selfasserted:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.0.0` |
+| `urn:com:microsoft:aad:b2c:elements:selfasserted:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.1.0` |
+| `urn:com:microsoft:aad:b2c:elements:unifiedssd:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssd:1.0.0` |
+| `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.0.0` |
+| `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.1.0` |
+
+## <a name="version-change-log"></a>Verze protokolu změn
+
+Stránka smlouvy balíčky jsou pravidelně aktualizovány na zahrnovat opravy a vylepšení v jejich prvky stránky. Následující protokol změn určuje změny zavedené v každé verzi.
+
+### <a name="110"></a>1.1.0
+
+- Stránce výjimek (globalexception)
+  - Oprava usnadnění přístupu
+  - Odebrat výchozí zprávu, pokud neexistuje žádný kontakt ze zásad
+  - Výchozí šablony stylů CSS odebrat
+- Stránka MFA (vícefaktorové)
+  - "Potvrdit kód" tlačítko Odebrat
+  - Vstupní pole pro přijímá jenom kód zadávat znaky až šest (6)
+  - Na stránce se automaticky pokusí ověřit kód zadá, když je zadán 6místným číselným kódem, bez jakékoli tlačítko museli být kliknutí
+  - Pokud kód je chybný, že pak je vstupní pole automaticky vymazány
+  - Po tři (3) pokusů o nesprávné kódem odešle B2C chybu zpět do služby
+  - Oprav týkajících se přístupnosti
+  - Výchozí šablony stylů CSS odebrat
+- Stránka s vlastním potvrzením (selfasserted)
+  - Odebrané zrušit upozornění
+  - Třídu šablony stylů CSS pro elementy chyba
+  - Zobrazit/Skrýt chyby logiky vylepšené
+  - Výchozí šablony stylů CSS odebrat
+- Sjednocené SSP (unifiedssp)
+  - Přidání zachovat zůstat přihlášeni ovládacího prvku (políčko zůstat Přihlášeni)
+
+### <a name="100"></a>1.0.0
+
+- Původní vydaná verze
 
 ## <a name="next-steps"></a>Další postup
 
 Další informace o tom, jak můžete přizpůsobit uživatelského rozhraní aplikací v [přizpůsobit uživatelské rozhraní vaší aplikace pomocí vlastních zásad v Azure Active Directory B2C](active-directory-b2c-ui-customization-custom.md).
-
-
-

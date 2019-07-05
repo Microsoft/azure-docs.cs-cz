@@ -7,14 +7,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.tgt_pltfrm: arduino
-ms.date: 04/17/2019
+ms.date: 06/25/2019
 ms.author: wesmc
-ms.openlocfilehash: 2f86b74299b5d47a87ed0b8e89a992f0f91a84be
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4017a3be5e03e1a9b85b4002b8069a1adc3a6b83
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64924631"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551573"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>IoT DevKit AZ3166 se připojit ke službě Azure IoT Hub
 
@@ -30,6 +30,8 @@ Můžete použít [MXChip IoT DevKit](https://microsoft.github.io/azure-iot-deve
 * Jak připravit vývojové prostředí a vývoj aplikací pro IoT DevKit.
 
 DevKit ještě nemáte? Zkuste [DevKit simulátor](https://azure-samples.github.io/iot-devkit-web-simulator/) nebo [nákupu DevKit](https://aka.ms/iot-devkit-purchase).
+
+Můžete najít zdrojový kód pro všechny kurzy DevKit na [IoTDevEnvExamples](https://github.com/IoTDevEnvExamples) úložiště.
 
 ## <a name="what-you-need"></a>Co potřebujete
 
@@ -132,6 +134,11 @@ DevKit se připojí k koncový bod specifický pro zařízení ve službě IoT h
     ![Wi-Fi IP](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/wifi-ip.jpg)
 
     ![Odesílání dat](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/sending-data.jpg)
+
+1. Pokud chcete ověřit telemetrická data poslaná do Azure, spusťte následující příkaz v Azure Cloud Shell:
+    ```bash
+    az iot hub monitor-events --hub-name YourIoTHubName --output table
+    ```
 
 ## <a name="prepare-the-development-environment"></a>Příprava vývojového prostředí
 
@@ -301,7 +308,7 @@ Můžete použít [nástroje Azure IoT](https://marketplace.visualstudio.com/ite
 1. V nástroji VS Code, klikněte na tlačítko `F1`zadejte a vyberte **Azure IoT Hub: Nastavit připojovací řetězec služby IoT Hub**. Zkopírujte připojovací řetězec do něj.
     ![Nastavit připojovací řetězec centra IoT Azure](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/set-iothub-connection-string.png)
 
-1. Rozbalte **zařízení AZURE IOT HUB** podokno na pravé straně, klikněte pravým tlačítkem myši klikněte na název zařízení, které jste vytvořili a vyberte **spustit monitorování zpráv D2C**.
+1. Rozbalte **zařízení AZURE IOT HUB** podokno na pravé straně, klikněte pravým tlačítkem myši klikněte na název zařízení, které jste vytvořili a vyberte **spustit monitorování integrovaných událostí koncový bod**.
     ![Monitorování zprávy D2C](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/monitor-d2c.png)
 
 1. V **výstup** podokně, zobrazí se příchozí zprávy D2C do služby IoT Hub.

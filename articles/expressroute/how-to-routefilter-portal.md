@@ -5,15 +5,15 @@ services: expressroute
 author: ganesr
 ms.service: expressroute
 ms.topic: article
-ms.date: 09/26/2018
+ms.date: 07/01/2019
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 0515b5e85c3bcf56f1f238620d6036d1be0bec7e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 55b5207e4c05712b4d96d4272f9ae193cc4c1720
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60839209"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508602"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-azure-portal"></a>Konfigurace filtrů směrování pro partnerský vztah Microsoftu: portál Azure
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ Pokud budete vyžadovat připojení ke všem službám, jsou velké množství p
 
 Po vytvoření partnerského vztahu Microsoftu je nakonfigurovaná na váš okruh ExpressRoute, hraničním směrovačům Microsoft vytvořit dvojici relací protokolu BGP s hraniční směrovače (té vaší nebo váš poskytovatel připojení). Do vaší sítě se žádné trasy neinzerují. Pokud chcete povolit inzerování tras do vaší sítě, je potřeba k ní přidružit filtr tras.
 
-Filtr tras umožňuje identifikovat služby, které chcete využívat prostřednictvím partnerského vztahu Microsoftu s vaším okruhem ExpressRoute. V podstatě se jedná o seznam všech povolených hodnot komunity protokolu BGP. Po definování prostředku filtru tras a jeho připojení k okruhu ExpressRoute se do vaší sítě budou inzerovat všechny předpony, které se mapují na hodnoty komunity protokolu BGP.
+Filtr tras umožňuje identifikovat služby, které chcete využívat prostřednictvím partnerského vztahu Microsoftu s vaším okruhem ExpressRoute. To je v podstatě seznam všech hodnot komunity protokolu BGP, které chcete povolit. Po definování prostředku filtru tras a jeho připojení k okruhu ExpressRoute se do vaší sítě budou inzerovat všechny předpony, které se mapují na hodnoty komunity protokolu BGP.
 
 Aby bylo možné připojit filtry tras se službami Office 365 s nimi, musíte mít oprávnění k využívání služeb Office 365 přes ExpressRoute. Pokud nemáte oprávnění k využívání služeb Office 365 přes ExpressRoute, operace připojit filtry tras se nezdaří. Další informace o procesu ověřování najdete v tématu [Azure ExpressRoute pro Office 365](https://support.office.com/article/Azure-ExpressRoute-for-Office-365-6d2534a2-c19c-4a99-be5e-33a0cee5d3bd). Připojení ke službám Dynamics 365 nevyžaduje žádné předchozí autorizace.
 
@@ -79,7 +79,7 @@ Je k dispozici v související se službami, které jsou přístupné prostředn
 
 ### <a name="2-make-a-list-of-the-values-that-you-want-to-use"></a>2. Vytvořte seznam hodnot, které chcete použít
 
-Zkontrolujte seznam hodnotami komunity protokolu BGP, které chcete použít ve filtru tras. Jako příklad je hodnota komunity protokolu BGP pro služby Dynamics 365 12076:5040.
+Zkontrolujte seznam [hodnotami komunity protokolu BGP](expressroute-routing.md#bgp) chcete použít ve filtru tras. 
 
 ## <a name="filter"></a>Krok 2: Vytvořit filtr tras a pravidlo filtru
 
@@ -137,7 +137,7 @@ Můžete aktualizovat seznam hodnotami komunity protokolu BGP připojit k okruhu
 
 ### <a name="detach"></a>Chcete-li odpojit filtr tras z okruhu ExpressRoute
 
-Chcete-li odpojit okruh z filtru tras, klikněte pravým tlačítkem na okruh a klikněte na "zrušit".
+Pokud chcete odpojit okruh z filtru tras, klikněte pravým tlačítkem na okruh a klikněte na "zrušit".
 
 ![Vytvořit filtr tras](./media/how-to-routefilter-portal/DetachRouteFilter.png) 
 
@@ -150,4 +150,6 @@ Můžete odstranit filtr tras tak, že vyberete tlačítko Odstranit.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o ExpressRoute najdete v tématu [ExpressRoute – nejčastější dotazy](expressroute-faqs.md).
+* Další informace o ExpressRoute najdete v tématu [ExpressRoute – nejčastější dotazy](expressroute-faqs.md).
+
+* Informace o ukázky konfigurace směrovače, najdete v části [ukázky konfigurace směrovače nastavit a spravovat směrování](expressroute-config-samples-routing.md). 

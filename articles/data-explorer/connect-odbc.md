@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 06/03/2019
-ms.openlocfilehash: 02ae9673f1dc402ee1500b466d7e259263ef3262
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/30/2019
+ms.openlocfilehash: 65795b5b4dea8d2cdeecf5f78f9de751f275dac0
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66494852"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537591"
 ---
 # <a name="connect-to-azure-data-explorer-with-odbc"></a>Připojit do Průzkumníku dat Azure s rozhraním ODBC
 
@@ -20,7 +20,13 @@ Otevřete připojení k databázi ([ODBC](/sql/odbc/reference/odbc-overview)) je
 
 Na pozadí aplikace volat funkce v rozhraní ODBC, které jsou implementovány v modulů specifické pro databázi s názvem *ovladače*. Průzkumník služby Azure Data podporuje podmnožinu komunikační protokol serveru SQL Server ([MS-TDS](/azure/kusto/api/tds/)), takže ho můžete použít ovladač ODBC pro SQL Server.
 
-V tomto článku se dozvíte, jak použít ovladač ODBC systému SQL Server, abyste se mohli připojit do Průzkumníku dat Azure z libovolné aplikace, která podporuje rozhraní ODBC.
+Pomocí následující video, můžete zjistíte, jak vytvořit připojení ODBC. 
+
+> [!VIDEO https://www.youtube.com/embed/qA5wxhrOwog]
+
+Alternativně můžete [konfigurace zdroje dat ODBC](#configure-the-odbc-data-source) uvedené níže. 
+
+V následujícím článku se dozvíte, jak použít ovladač ODBC systému SQL Server, abyste se mohli připojit do Průzkumníku dat Azure z libovolné aplikace, která podporuje rozhraní ODBC. 
 
 ## <a name="prerequisites"></a>Požadavky
 

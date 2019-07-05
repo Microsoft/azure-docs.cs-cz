@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: cephalin
-ms.openlocfilehash: 9bfd6c34d81e193fe31610f840474f1e4c91170d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 02231f86d4ceddd6cde53fd242c2c91158d744a9
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66430927"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67480751"
 ---
 # <a name="configure-a-custom-linux-container-for-azure-app-service"></a>Konfigurace vlastního kontejneru Linuxu pro službu Azure App Service
 
@@ -50,10 +50,10 @@ Můžete použít */home* adresáře v systému souborů vaší aplikace pro uch
 
 Když trvalého úložiště je zakázaný a pak zapíše do `/home` adresáře nejsou trvalé napříč restartování aplikace nebo víc instancí. Jedinou výjimkou je `/home/LogFiles` adresáře, který se používá k ukládání protokolů Dockeru a kontejnerech. Pokud je povolená trvalého úložiště, všechny operace zápisu do `/home` adresáře jsou trvalé a je možný přes všechny instance horizontálním navýšením kapacity aplikace.
 
-Ve výchozím nastavení, je trvalé úložiště *zakázané*. Chcete-li povolit nebo zakázat, nastavte `WEBSITES_ENABLE_APP_SERVICE_STORAGE` nastavení aplikace spuštěním [ `az webapp config appsettings set` ](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) příkazu ve službě Cloud Shell. Příklad:
+Ve výchozím nastavení, je trvalé úložiště *povolené* a toto nastavení není vystaveno v nastavení aplikace. Chcete-li zakázat, nastavte `WEBSITES_ENABLE_APP_SERVICE_STORAGE` nastavení aplikace spuštěním [ `az webapp config appsettings set` ](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) příkazu ve službě Cloud Shell. Příklad:
 
 ```azurecli-interactive
-az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=true
+az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=false
 ```
 
 > [!NOTE]

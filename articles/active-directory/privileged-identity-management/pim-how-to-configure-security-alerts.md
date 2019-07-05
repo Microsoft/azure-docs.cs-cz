@@ -14,18 +14,18 @@ ms.date: 04/09/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce0d99fb283be8cbeba6f8a7954ff49161a2d511
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6875ab8f184c67b02c91d1a8e312959f3ba9553b
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60288500"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476418"
 ---
 # <a name="configure-security-alerts-for-azure-ad-roles-in-pim"></a>Konfigurace výstrah zabezpečení pro role Azure AD v PIM
 
 Privileged Identity Management (PIM) ve Azure Active Directory (Azure AD) generuje výstrahy, když je aktivita podezřelého nebo nebezpečné ve vašem prostředí. Když se aktivuje upozornění, zobrazí na řídicím panelu PIM. Vyberte výstrahu, pokud chcete zobrazit sestavu obsahující seznam uživatelů nebo rolí, které aktivuje výstrahu.
 
-![Upozornění zabezpečení PIM – snímek obrazovky](./media/pim-how-to-configure-security-alerts/pim-directory-alerts.png)
+![Role Azure AD – zobrazení výstrah a závažnost výstrah podokno](./media/pim-how-to-configure-security-alerts/pim-directory-alerts.png)
 
 ## <a name="security-alerts"></a>Výstrahy zabezpečení
 
@@ -122,11 +122,11 @@ Můžete přizpůsobit některé z výstrah zabezpečení ve službě PIM pro pr
 
 1. Klikněte na tlačítko **nastavení** a potom **výstrahy**.
 
-    ![Přejděte do nastavení výstrah zabezpečení](./media/pim-how-to-configure-security-alerts/settings-alerts.png)
+    ![Vybraná role Azure AD – nastavení s výstrahami](./media/pim-how-to-configure-security-alerts/settings-alerts.png)
 
 1. Klikněte na název výstrahy. ke konfiguraci nastavení pro toto upozornění.
 
-    ![Nastavení výstrah zabezpečení](./media/pim-how-to-configure-security-alerts/security-alert-settings.png)
+    ![Pro vybranou výstrahu, podokno nastavení výstrah zabezpečení](./media/pim-how-to-configure-security-alerts/security-alert-settings.png)
 
 ## <a name="next-steps"></a>Další postup
 

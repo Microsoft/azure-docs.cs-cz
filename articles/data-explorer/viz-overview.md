@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 06/03/2019
-ms.openlocfilehash: 85c37b6d626fc9942f5df956e738431d2727d282
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/30/2019
+ms.openlocfilehash: d1c73d8eb65ed5d67d5250b4a3bca3b80450001e
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66481831"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67536721"
 ---
 # <a name="data-visualization-with-azure-data-explorer"></a>Vizualizace dat pomocí Průzkumníka dat služby Azure 
 
@@ -21,22 +21,42 @@ Průzkumník služby Azure Data je služba pro zkoumání dat rychlé a vysoce �
 
 Vizualizace dat a vytváření sestav je kritickým krokem v procesu analýzy data. Průzkumník služby Azure Data podporuje mnoho služeb BI, abyste mohli používat ten, který nejlépe odpovídá vaší situaci a rozpočet.
 
-* Vizualizace Průzkumník dat Azure: Pomocí dotazovacího jazyka Kusto [ `render operator` ](/azure/kusto/query/renderoperator) nabízí různých typů vizualizace ke znázornění výsledků dotazu. Vizualizace dotazů jsou užitečné při detekci anomálií a Prognózování, strojové učení a další.
+## <a name="kusto-query-language-visualizations"></a>Vizualizace jazyk dotaz Kusto
 
-* [Power BI](https://powerbi.microsoft.com): Průzkumník dat Azure poskytuje možnost připojení k Power BI pomocí různých metod: 
+Dotazovací jazyk Kusto [ `render operator` ](/azure/kusto/query/renderoperator) nabízí různé vizualizace, jako například tabulky, výsečové grafy a pruhové grafy ke znázornění výsledků dotazu. Vizualizace dotazů jsou užitečné při detekci anomálií a Prognózování, strojové učení a další.
+
+## <a name="power-bi"></a>Power BI
+
+Průzkumník služby Azure Data poskytuje možnosti pro připojení k [Power BI](https://powerbi.microsoft.com) pomocí různých metod: 
 
   * [Integrované nativní konektor Power BI](/azure/data-explorer/power-bi-connector)
 
   * [Import dotazu z Průzkumníka služby Azure Data do Power BI](/azure/data-explorer/power-bi-imported-query)
  
-  * [Příkaz jazyka SQL](/azure/data-explorer/power-bi-sql-query).
+  * [Dotaz SQL](/azure/data-explorer/power-bi-sql-query)
 
-* [Microsoft Excel](https://products.office.com/excel): Průzkumník služby Azure Data poskytuje možnosti pro připojení k Excelu pomocí integrovaného konektoru nativní aplikace Excel nebo importovat dotaz z Průzkumníka služby Azure Data do aplikace Excel.
+## <a name="microsoft-excel"></a>Microsoft Excel
 
-* [Grafana](https://grafana.com): Grafana poskytuje modulu plug-in Průzkumník dat Azure, která umožňuje vizualizovat data z Průzkumníka služby Azure Data. Můžete [nastavení Průzkumníka služby Azure Data jako zdroj dat pro Grafana a pak data vizualizovat](/azure/data-explorer/grafana)
+Průzkumník služby Azure Data poskytuje možnosti pro připojení k [aplikace Microsoft Excel](https://products.office.com/excel) pomocí předdefinovaných nativní konektor Excelový nebo importujete dotaz z Průzkumníka služby Azure Data do aplikace Excel.
 
-* [Sisense](https://www.sisense.com): Průzkumník služby Azure Data obsahuje funkce pro připojení k Sisense pomocí konektoru rozhraní JDBC. Můžete [nastavení Průzkumníka služby Azure Data jako zdroj dat pro Sisense a pak data vizualizovat](/azure/data-explorer/sisense).
+## <a name="grafana"></a>Grafana
 
-* [Tableau](https://www.tableau.com): Průzkumník služby Azure Data poskytuje možnosti pro připojení k Tableau pomocí [konektor ODBC a vizualizace dat v Tableau](/azure/data-explorer/connect-odbc).
+[Grafana](https://grafana.com) poskytuje modulu plug-in Průzkumník dat Azure, která umožňuje vizualizovat data z Průzkumníka služby Azure Data. Můžete [nastavení Průzkumníka služby Azure Data jako zdroj dat pro Grafana a pak data vizualizovat](/azure/data-explorer/grafana). 
 
-* [Qlik](https://www.qlik.com): Průzkumník služby Azure Data poskytuje možnosti pro připojení k Qlik pomocí [konektor ODBC](/azure/data-explorer/connect-odbc).
+## <a name="odbc-connector"></a>Konektor ODBC
+
+Průzkumník služby Azure Data poskytuje [připojení ODBC (Open Database) konektoru](connect-odbc.md) tak můžete připojit každou aplikaci, která podporuje rozhraní ODBC do Průzkumníku dat Azure.
+
+## <a name="tableau"></a>Tableau
+
+Průzkumník služby Azure Data poskytuje možnosti pro připojení k [Tableau](https://www.tableau.com) pomocí [konektor ODBC](/azure/data-explorer/connect-odbc) a potom [data vizualizovat v Tableau](tableau.md).
+
+## <a name="qlik"></a>Qlik
+
+Průzkumník služby Azure Data poskytuje možnosti pro připojení k [Qlik](https://www.qlik.com) pomocí [konektor ODBC](/azure/data-explorer/connect-odbc) a Qlik Sense vytváření řídicích panelů a vizualizace. Pomocí následující video, další k vizualizaci dat Průzkumník dat Azure s Qlik. 
+
+> [!VIDEO https://www.youtube.com/embed/nhWIiBwxjjU]  
+
+## <a name="sisense"></a>Sisense
+
+Průzkumník služby Azure Data poskytuje možnosti pro připojení k [Sisense](https://www.sisense.com) pomocí konektoru rozhraní JDBC. Můžete [nastavení Průzkumníka služby Azure Data jako zdroj dat pro Sisense a pak data vizualizovat](/azure/data-explorer/sisense).

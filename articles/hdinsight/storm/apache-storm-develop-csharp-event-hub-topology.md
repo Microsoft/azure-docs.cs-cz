@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7f4db76fe2a302dd5acce01b456ef3b676b187c6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: dd1a46ea008ce5f8fb02dd468b27494d231717f0
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67078272"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67483920"
 ---
 # <a name="process-events-from-azure-event-hubs-with-apache-storm-on-hdinsight-c"></a>Zpracování událostí z Azure Event Hubs pomocí Apache Storm v HDInsight (C#)
 
@@ -103,11 +103,11 @@ topologyBuilder.SetJavaBolt(
 
 ## <a name="download-the-completed-project"></a>Stáhnout dokončený projekt
 
-Můžete stáhnout úplnou verzi do projektu vytvořeného v tomto kurzu z [Githubu](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub). Nicméně stále musíte zadat nastavení konfigurace pomocí následujících kroků v tomto kurzu.
+Úplnou verzi do projektu vytvořeného v tomto článku si můžete stáhnout [Githubu](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub). Však stále musíte zadat nastavení konfigurace pomocí kroků v tomto článku.
 
 ### <a name="prerequisites"></a>Požadavky
 
-* [Apache Storm v clusteru HDInsight verze 3.5 a 3.6](apache-storm-tutorial-get-started-linux.md).
+* Clustery Apache Storm v HDInsight. Zobrazit [vytvořit Apache Hadoop clusterů pomocí webu Azure portal](../hdinsight-hadoop-create-linux-clusters-portal.md) a vyberte **Storm** pro **typ clusteru**.
 
     > [!WARNING]  
     > V příkladu v tomto dokumentu vyžaduje Storm v HDInsight verze 3.5 a 3.6. To nebude fungovat se staršími verzemi HDInsight, z důvodu rozbíjející změny názvu třídy. Verzi tohoto příkladu, který pracuje s starší clustery, naleznete v části [Githubu](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub/releases).

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 03/25/2019
 ms.author: genli
-ms.openlocfilehash: 116748d7887ebf2ad821e3159c7c1bdcc2428121
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: e60188496e060eeea14fc7b7f1cc9a662551b286
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "64684760"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485160"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>Chyby spuštění nástroje BitLocker na Virtuálním počítači Azure
 
@@ -48,7 +48,7 @@ Chcete-li vyřešit tento problém, zastavit a zrušit přidělení virtuálníh
 Pokud tato metoda nemá vyřešit problém, soubor klíče BEK obnovit ručně pomocí těchto kroků:
 
 1. Pořízení snímku systémový disk ovlivněných virtuálních počítačů jako záložní. Další informace najdete v tématu [pořízení snímku disku](../windows/snapshot-copy-managed-disk.md).
-2. [Připojení disku systému pro virtuální počítač pro obnovení](troubleshoot-recovery-disks-portal-windows.md) , který je zašifrováno Bitlockeru. To se vyžaduje pro spuštění [příkazu manage-bde](https://docs.microsoft.com/windows-server/administration/windows-commands/manage-bde) příkaz, který je k dispozici pouze na virtuálním počítači šifrované nástrojem BitLocker.
+2. [Připojení disku systému pro virtuální počítač pro obnovení](troubleshoot-recovery-disks-portal-windows.md). Ke spuštění [příkazu manage-bde](https://docs.microsoft.com/windows-server/administration/windows-commands/manage-bde) příkazu v kroku 7, **nástroj BitLocker Drive Encryption** musí být povolena funkce při obnovení virtuálního počítače.
 
     Při připojení spravovaného disku může zobrazit chybová zpráva "obsahuje nastavení šifrování a proto nemůže být použit jako datový disk". V takovém případě spusťte následující skript znovu připojit disk:
 
@@ -106,7 +106,7 @@ Pokud tato metoda nemá vyřešit problém, soubor klíče BEK obnovit ručně p
 
     Pokud **typ obsahu** hodnotu **zabalené klíče BEK**, přejděte na stránku [klíč šifrování klíčů (KEK) scénáře](#key-encryption-key-scenario).
 
-    Teď, když máte název souboru klíče BEK pro disk, budete muset vytvořit název souboru tajný klíč. Soubor klíče BEK pro odemknutí jednotky. 
+    Teď, když máte název souboru klíče BEK pro disk, budete muset vytvořit název souboru tajný klíč. Soubor klíče BEK pro odemknutí jednotky.
 
 6.  Stáhněte si soubor klíče BEK pro obnovení disku. Následující ukázka uloží soubor klíče BEK C:\BEK složky. Ujistěte se, že `C:\BEK\` cesta existuje, před spuštěním skriptů.
 
@@ -120,14 +120,14 @@ Pokud tato metoda nemá vyřešit problém, soubor klíče BEK obnovit ručně p
     [System.IO.File]::WriteAllBytes($path,$bekFileBytes)
     ```
 
-7.  Odemknout pomocí souboru klíče BEK připojený disk, spusťte následující příkaz:
+7.  Odemknout pomocí souboru klíče BEK připojený disk, spusťte následující příkaz.
 
     ```powershell
     manage-bde -unlock F: -RecoveryKey "C:\BEK\EF7B2F5A-50C6-4637-9F13-7F599C12F85C.BEK
     ```
     V této ukázce připojeném disku s operačním systémem je disk F. Ujistěte se, že používáte správné písmeno jednotky. 
 
-    - Pokud disk byl úspěšně odemknout pomocí klíče BEK klíče. považujeme BItLocker problém vyřešit. 
+    - Pokud disk byl úspěšně odemknout pomocí klíče BEK klíče. považujeme BitLocker problém vyřešit. 
 
     - Pokud pomocí klíče BEK klíče není odemknutí disku, můžete pozastavit ochrany dočasně vypnout nástroj BitLocker spuštěním následujícího příkazu
     
@@ -254,7 +254,7 @@ Pro scénář klíčového šifrovacího klíče postupujte takto:
     ```
     V této ukázce připojeném disku s operačním systémem je disk F. Ujistěte se, že používáte správné písmeno jednotky. 
 
-    - Pokud disk byl úspěšně odemknout pomocí klíče BEK klíče. považujeme BItLocker problém vyřešit. 
+    - Pokud disk byl úspěšně odemknout pomocí klíče BEK klíče. považujeme BitLocker problém vyřešit. 
 
     - Pokud pomocí klíče BEK klíče není odemknutí disku, můžete pozastavit ochrany dočasně vypnout nástroj BitLocker spuštěním následujícího příkazu
     

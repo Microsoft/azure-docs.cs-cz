@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: sstein
 manager: craigg
 ms.date: 04/03/2019
-ms.openlocfilehash: ddb115370c62371e769ef98e0031f7e0379bafbf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d861ccb93de7aa0b84b20215afb5fddf49aa94c9
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61075491"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67427951"
 ---
 # <a name="ports-beyond-1433-for-adonet-45"></a>Porty nad 1433 pro ADO.NET 4.5
 
@@ -73,15 +73,15 @@ Tato část vysvětluje zástupných názvů, které odkazují na verze produktu
 
 ## <a name="related-links"></a>Související odkazy
 
-* 20\. července 2015 byla vydána ADO.NET 4.6. Oznámení blogu od týmu .NET je k dispozici [tady](https://blogs.msdn.com/b/dotnet/archive/20../../announcing-net-framework-4-6.aspx).
-* 15\. srpna 2012 byla vydána ADO.NET 4.5. Oznámení blogu od týmu .NET je k dispozici [tady](https://blogs.msdn.com/b/dotnet/archive/20../../announcing-the-release-of-net-framework-4-5-rtm-product-and-source-code.aspx).
+* 20. července 2015 byla vydána ADO.NET 4.6. Oznámení blogu od týmu .NET je k dispozici [tady](https://blogs.msdn.com/b/dotnet/archive/20../../announcing-net-framework-4-6.aspx).
+* 15. srpna 2012 byla vydána ADO.NET 4.5. Oznámení blogu od týmu .NET je k dispozici [tady](https://blogs.msdn.com/b/dotnet/archive/20../../announcing-the-release-of-net-framework-4-5-rtm-product-and-source-code.aspx).
   * Blogový příspěvek o ADO.NET 4.5.1 je k dispozici [tady](https://blogs.msdn.com/b/dotnet/archive/20../../announcing-the-net-framework-4-5-1-preview.aspx).
 
 * Microsoft® ODBC Driver 17 pro SQL Server® – Windows, Linux a macOS https://www.microsoft.com/download/details.aspx?id=56567
 
 * Připojení ke službě Azure SQL Database V12 prostřednictvím přesměrování https://techcommunity.microsoft.com/t5/DataCAT/Connect-to-Azure-SQL-Database-V12-via-Redirection/ba-p/305362
 
-* [Seznam verzí protokolu TDS.](http://www.freetds.org/userguide/tdshistory.htm)
+* [Seznam verzí protokolu TDS.](https://www.freetds.org/userguide/tdshistory.htm)
 * [Přehled vývoje SQL Database](sql-database-develop-overview.md)
 * [Brána firewall služby Azure SQL Database](sql-database-firewall-configure.md)
 * [Postup: Konfigurace nastavení brány firewall pro službu SQL Database](sql-database-configure-firewall-settings.md)

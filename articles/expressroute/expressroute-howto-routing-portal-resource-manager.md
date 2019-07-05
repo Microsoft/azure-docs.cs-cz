@@ -5,15 +5,15 @@ services: expressroute
 author: mialdrid
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 06/28/2019
 ms.author: mialdrid
 ms.custom: seodec18
-ms.openlocfilehash: f6061710fb15d4183bd42a82c4bd269a69fc9be2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 40ecdb3f83dba741d1430a912a3f17500a36da6e
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65964439"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67484333"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit"></a>Vytvoření a úprava partnerského vztahu pro okruh ExpressRoute
 
@@ -55,9 +55,17 @@ Tato část umožňuje vytvořit, získat, aktualizovat a odstranit konfiguraci 
 
 ### <a name="to-create-microsoft-peering"></a>Vytvoření partnerského vztahu Microsoftu
 
-1. Nakonfigurujte okruh ExpressRoute. Než budete dál pokračovat, ujistěte se, že je okruh poskytovatelem připojení plně zřízený. Pokud poskytovatel připojení nabízí spravované služby vrstvy 3, můžete požádat svého poskytovatele připojení partnerského vztahu Microsoftu pro můžete povolit. V takovém případě nebudete muset postupovat podle pokynů uvedených v dalších částech. Ale pokud poskytovatel připojení nespravuje směrování, po vytvoření okruhu, pokračujte v dalších krocích.
+1. Nakonfigurujte okruh ExpressRoute. Zkontrolujte **stav poskytovatele** zajistit, že je okruh plně zřízený poskytovatelem připojení než budete pokračovat dál.
 
-   ![seznam partnerský vztah Microsoftu](./media/expressroute-howto-routing-portal-resource-manager/listprovisioned.png)
+   Pokud poskytovatel připojení nabízí spravované služby vrstvy 3, můžete požádat svého poskytovatele připojení partnerského vztahu Microsoftu pro můžete povolit. V takovém případě nebudete muset postupovat podle pokynů uvedených v dalších částech. Pokud poskytovatel připojení nespravuje směrování, po vytvoření okruhu, pokračujte však tyto kroky.
+
+   **Okruh - stav poskytovatele: Není zajišťováno**
+
+    [![](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-m.png "Stav poskytovatele: Není zajišťováno")](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-m-lightbox.png#lightbox)
+
+   **Okruh - stav poskytovatele: zřízené**
+
+   [![](./media/expressroute-howto-routing-portal-resource-manager/provisioned-m.png "Stav poskytovatele = zřízená")](./media/expressroute-howto-routing-portal-resource-manager/provisioned-m-lightbox.png#lightbox)
 2. Nakonfigurujte partnerský vztah Microsoftu pro okruh. Před pokračováním se ujistěte, že máte k dispozici následující informace.
 
    * Podsíť /30 pro primární propojení. Musí se jednat o platnou předponu veřejné IPv4 adresy, kterou vlastníte a která je registrovaná u RIR/IRR. Z této podsítě bude přiřadit nedodržíte první IP adresu směrovače jak společnost Microsoft používá druhou IP použitelný pro jeho směrovače.
@@ -70,42 +78,35 @@ Tato část umožňuje vytvořit, získat, aktualizovat a odstranit konfiguraci 
    * **Volitelné –** algoritmus hash MD5, pokud se rozhodnete použít.
 3. Můžete vybrat partnerský vztah, který chcete nakonfigurovat, jak je znázorněno v následujícím příkladu. Vyberte řádek partnerského vztahu Microsoftu.
 
-   ![Vyberte řádek partnerského vztahu Microsoftu](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft1.png)
-4. Nakonfigurujte partnerský vztah Microsoftu. Následující obrázek ukazuje příklad konfigurace:
+   [![Vyberte řádek partnerského vztahu Microsoftu](./media/expressroute-howto-routing-portal-resource-manager/select-peering-m.png "vyberte řádek partnerského vztahu Microsoftu")](./media/expressroute-howto-routing-portal-resource-manager/select-peering-m-lightbox.png#lightbox)
+4. Nakonfigurujte partnerský vztah Microsoftu. **Uložit** konfigurace po zadání všech parametrů. Následující obrázek ukazuje příklad konfigurace:
 
-   ![Nakonfigurujte partnerský vztah Microsoftu](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft2.png)
-5. Po zadání všech parametrů uložte konfiguraci.
+   ![Nakonfigurujte partnerský vztah Microsoftu](./media/expressroute-howto-routing-portal-resource-manager/configuration-m.png)
 
-   Pokud váš okruh dostane do "vyžaduje se ověření" stavu (jak je znázorněno na obrázku), musíte otevřít lístek podpory, abyste ukázali důkaz vlastnictví předpon našemu týmu podpory.
+   Pokud váš okruh dostane do "vyžaduje se ověření" stavu, je nutné otevřít lístek podpory, abyste ukázali důkaz vlastnictví předpon našemu týmu podpory. Lístek podpory můžete otevřít přímo z portálu, jak je znázorněno v následujícím příkladu:
 
-   ![Uložit konfiguraci partnerského vztahu Microsoftu](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft5.png)
+   ![Vyžaduje se ověření - lístku podpory](./media/expressroute-howto-routing-portal-resource-manager/ticket-portal-m.png)
 
-   Lístek podpory můžete otevřít přímo z portálu, jak je znázorněno v následujícím příkladu:
+5. Po konfigurace úspěšně přijatá, zobrazí se vám něco podobně jako na následujícím obrázku:
 
-   ![](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft6.png)
-
-
-1. Po konfigurace úspěšně přijatá, zobrazí se vám něco podobně jako na následujícím obrázku:
-
-   ![](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft7.png)
+   ![Stav partnerského vztahu: Nakonfigurované](./media/expressroute-howto-routing-portal-resource-manager/configured-m.png "stav partnerského vztahu: Nakonfigurované")]
 
 ### <a name="getmsft"></a>Chcete-li zobrazit podrobností partnerského vztahu Microsoftu
 
-Můžete zobrazit vlastnosti partnerského vztahu výběrem partnerského vztahu Microsoftu.
+Můžete zobrazit vlastnosti partnerského vztahu tak, že vyberete řádek pro partnerský vztah Microsoftu.
 
-![](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft3.png)
-
+[![Zobrazit vlastnosti partnerského vztahu Microsoftu](./media/expressroute-howto-routing-portal-resource-manager/view-peering-m.png "zobrazit vlastnosti")](./media/expressroute-howto-routing-portal-resource-manager/view-peering-m-lightbox.png#lightbox)
 ### <a name="updatemsft"></a>Aktualizace konfigurace partnerského vztahu Microsoftu
 
-Můžete vybrat řádek pro partnerský vztah a upravit vlastnosti partnerského vztahu.
+Můžete vybrat řádek pro partnerský vztah, který chcete upravit, upravit vlastnosti partnerského vztahu a uložit provedené změny.
 
-![](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft7.png)
+![Vyberte řádek pro partnerský vztah](./media/expressroute-howto-routing-portal-resource-manager/update-peering-m.png)
 
 ### <a name="deletemsft"></a>Odstranění partnerského vztahu Microsoftu
 
-Konfiguraci partnerského vztahu můžete odebrat tak, že vyberete ikonu odstranit, jak je znázorněno na následujícím obrázku:
+Konfiguraci partnerského vztahu můžete odebrat kliknutím na ikonu odstranit, jak je znázorněno na následujícím obrázku:
 
-![](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft4.png)
+![Odstranit partnerský vztah](./media/expressroute-howto-routing-portal-resource-manager/delete-peering-m.png)
 
 ## <a name="private"></a>Soukromý partnerský vztah Azure
 
@@ -113,9 +114,18 @@ Tato část umožňuje vytvořit, získat, aktualizovat a odstranit Azure konfig
 
 ### <a name="to-create-azure-private-peering"></a>Vytvoření soukromého partnerského vztahu Azure
 
-1. Nakonfigurujte okruh ExpressRoute. Než budete pokračovat, ujistěte se, že je okruh poskytovatelem připojení plně zřízený. Pokud poskytovatel připojení nabízí spravované služby vrstvy 3, můžete požádat svého poskytovatele připojení povolit soukromý partnerský vztah Azure za vás. V takovém případě nebudete muset postupovat podle pokynů uvedených v dalších částech. Ale pokud poskytovatel připojení nespravuje směrování, po vytvoření okruhu, pokračujte v dalších krocích.
+1. Nakonfigurujte okruh ExpressRoute. Než budete pokračovat, ujistěte se, že je okruh poskytovatelem připojení plně zřízený. 
 
-   ![list](./media/expressroute-howto-routing-portal-resource-manager/listprovisioned.png)
+   Pokud poskytovatel připojení nabízí spravované služby vrstvy 3, můžete požádat svého poskytovatele připojení povolit soukromý partnerský vztah Azure za vás. V takovém případě nebudete muset postupovat podle pokynů uvedených v dalších částech. Ale pokud poskytovatel připojení nespravuje směrování, po vytvoření okruhu, pokračujte v dalších krocích.
+
+   **Okruh - stav poskytovatele: Není zajišťováno**
+
+   [![](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-p.png "Stav poskytovatele Nezřízeno. =")](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-p-lightbox.png#lightbox)
+
+   **Okruh - stav poskytovatele: zřízené**
+
+   [![](./media/expressroute-howto-routing-portal-resource-manager/provisioned-p.png "Stav poskytovatele = zřízené")](./media/expressroute-howto-routing-portal-resource-manager/provisioned-p-lightbox.png#lightbox)
+
 2. Nakonfigurujte soukromý partnerský vztah Azure pro okruh. Před zahájením dalších kroků se ujistěte, že máte k dispozici následující položky:
 
    * Podsíť /30 pro primární propojení. Podsítě nesmí být součástí žádného adresního prostor vyhrazeného pro virtuální sítě. Z této podsítě bude přiřadit nedodržíte první IP adresu směrovače jak společnost Microsoft používá druhou IP použitelný pro jeho směrovače.
@@ -123,27 +133,27 @@ Tato část umožňuje vytvořit, získat, aktualizovat a odstranit Azure konfig
    * Platné ID sítě VLAN, na kterém se má partnerský vztah vytvořit. Zajistěte, aby žádný jiný partnerský vztah v okruhu nepoužíval stejné ID sítě VLAN. Odkazy na primární a sekundární musí používat stejné ID sítě VLAN.
    * Číslo AS pro partnerský vztah. Můžete použít 2bajtová i 4bajtová čísla AS. Můžete použít soukromé číslo AS pro tento partnerský vztah s výjimkou číslo od 65515 do 65520, (včetně).
    * **Volitelné –** algoritmus hash MD5, pokud se rozhodnete použít.
-3. Vyberte řádek Azure privátní partnerský vztah, jak je znázorněno v následujícím příkladu:
+3. Výběr Azure privátního partnerského vztahu řádku, jak je znázorněno v následujícím příkladu:
 
-   ![privátní](./media/expressroute-howto-routing-portal-resource-manager/rprivate1.png)
-4. Nakonfigurujte soukromý partnerský vztah. Následující obrázek ukazuje příklad konfigurace:
+   [![Vyberte řádek privátní partnerský vztah](./media/expressroute-howto-routing-portal-resource-manager/select-peering-p.png "vyberte řádek privátní partnerský vztah")](./media/expressroute-howto-routing-portal-resource-manager/select-peering-p-lightbox.png#lightbox)
+4. Nakonfigurujte soukromý partnerský vztah. **Uložit** konfigurace po zadání všech parametrů.
 
-   ![Nakonfigurujte soukromý partnerský vztah](./media/expressroute-howto-routing-portal-resource-manager/rprivate2.png)
-5. Po zadání všech parametrů uložte konfiguraci. Po konfigurace úspěšně přijatá, zobrazí se podobná následujícímu příkladu:
+   ![Nakonfigurujte soukromý partnerský vztah](./media/expressroute-howto-routing-portal-resource-manager/configuration-p.png)
+5. Po konfigurace úspěšně přijatá, zobrazí se podobná následujícímu příkladu:
 
-   ![uložit privátní partnerský vztah](./media/expressroute-howto-routing-portal-resource-manager/rprivate3.png)
+   ![uložit soukromý partnerský vztah](./media/expressroute-howto-routing-portal-resource-manager/save-p.png)
 
 ### <a name="getprivate"></a>K zobrazení podrobností soukromého partnerského vztahu Azure
 
 Vlastnosti soukromého partnerského vztahu Azure můžete zobrazit výběrem partnerského vztahu.
 
-![Zobrazit soukromého partnerského vztahu](./media/expressroute-howto-routing-portal-resource-manager/rprivate3.png)
+[![Zobrazit vlastnosti soukromého partnerského vztahu](./media/expressroute-howto-routing-portal-resource-manager/view-p.png "zobrazit vlastnosti soukromého partnerského vztahu")](./media/expressroute-howto-routing-portal-resource-manager/view-p-lightbox.png#lightbox)
 
 ### <a name="updateprivate"></a>Aktualizace konfigurace soukromého partnerského vztahu Azure
 
-Můžete vybrat řádek pro partnerský vztah a upravit vlastnosti partnerského vztahu.
+Můžete vybrat řádek pro partnerský vztah a upravit vlastnosti partnerského vztahu. Po aktualizaci, uložte provedené změny.
 
-![Aktualizovat soukromého partnerského vztahu](./media/expressroute-howto-routing-portal-resource-manager/rprivate2.png)
+![Aktualizovat soukromého partnerského vztahu](./media/expressroute-howto-routing-portal-resource-manager/update-peering-p.png)
 
 ### <a name="deleteprivate"></a>Odstranění soukromého partnerského vztahu Azure
 
@@ -154,7 +164,7 @@ Konfiguraci partnerského vztahu můžete odebrat tak, že vyberete ikonu odstra
 > 
 > 
 
-![Odstranění soukromého partnerského vztahu](./media/expressroute-howto-routing-portal-resource-manager/rprivate4.png)
+![Odstranění soukromého partnerského vztahu](./media/expressroute-howto-routing-portal-resource-manager/delete-p.png)
 
 ## <a name="public"></a>Veřejný partnerský vztah Azure
 
@@ -164,45 +174,17 @@ Tato část umožňuje vytvořit, získat, aktualizovat a odstranit Azure konfig
 > Veřejný partnerský vztah Azure pro nové okruhy je zastaralá. Další informace najdete v tématu [partnerský vztah ExpressRoute](expressroute-circuit-peerings.md).
 >
 
-### <a name="to-create-azure-public-peering"></a>Vytvoření veřejného partnerského vztahu Azure
-
-1. Nakonfigurujte okruh ExpressRoute. Než budete dál pokračovat, ujistěte se, že je okruh poskytovatelem připojení plně zřízený. Pokud poskytovatel připojení nabízí spravované služby vrstvy 3, můžete požádat svého poskytovatele připojení povolit veřejný partnerský vztah Azure za vás. V takovém případě nebudete muset postupovat podle pokynů uvedených v dalších částech. Pokud poskytovatel připojení nespravuje směrování, po vytvoření okruhu, ale dál používat další kroky konfigurace.
-
-   ![seznam veřejného partnerského vztahu](./media/expressroute-howto-routing-portal-resource-manager/listprovisioned.png)
-2. Nakonfigurujte veřejný partnerský vztah Azure pro okruh. Před zahájením dalších kroků se ujistěte, že máte k dispozici následující položky:
-
-   * Podsíť /30 pro primární propojení. Musí se jednat o platnou předponu veřejné IPv4 adresy. Z této podsítě bude přiřadit nedodržíte první IP adresu směrovače jak společnost Microsoft používá druhou IP použitelný pro jeho směrovače. 
-   * Podsíť /30 pro sekundární propojení. Musí se jednat o platnou předponu veřejné IPv4 adresy. Z této podsítě bude přiřadit nedodržíte první IP adresu směrovače jak společnost Microsoft používá druhou IP použitelný pro jeho směrovače.
-   * Platné ID sítě VLAN, na kterém se má partnerský vztah vytvořit. Zajistěte, aby žádný jiný partnerský vztah v okruhu nepoužíval stejné ID sítě VLAN. Odkazy na primární a sekundární musí používat stejné ID sítě VLAN.
-   * Číslo AS pro partnerský vztah. Můžete použít 2bajtová i 4bajtová čísla AS.
-   * **Volitelné –** algoritmus hash MD5, pokud se rozhodnete použít.
-3. Výběr Azure veřejného partnerského vztahu řádku, jak je znázorněno na následujícím obrázku:
-
-   ![Vyberte řádek pro veřejný partnerský vztah](./media/expressroute-howto-routing-portal-resource-manager/rpublic1.png)
-4. Nakonfigurujte veřejný partnerský vztah. Následující obrázek ukazuje příklad konfigurace:
-
-   ![Nakonfigurujte veřejný partnerský vztah](./media/expressroute-howto-routing-portal-resource-manager/rpublic2.png)
-5. Po zadání všech parametrů uložte konfiguraci. Po konfigurace úspěšně přijatá, zobrazí se podobná následujícímu příkladu:
-
-   ![Uložit konfiguraci veřejného partnerského vztahu](./media/expressroute-howto-routing-portal-resource-manager/rpublic3.png)
-
 ### <a name="getpublic"></a>K zobrazení podrobností veřejného partnerského vztahu Azure
 
-Vlastnosti veřejného partnerského vztahu Azure můžete zobrazit výběrem partnerského vztahu.
-
-![Zobrazit vlastnosti veřejného partnerského vztahu](./media/expressroute-howto-routing-portal-resource-manager/rpublic3.png)
+Zobrazte vlastnosti veřejného partnerského vztahu Azure výběrem partnerského vztahu.
 
 ### <a name="updatepublic"></a>Chcete-li aktualizovat konfiguraci veřejného partnerského vztahu Azure
 
-Můžete vybrat řádek pro partnerský vztah a upravit vlastnosti partnerského vztahu.
-
-![Vyberte řádek pro veřejný partnerský vztah](./media/expressroute-howto-routing-portal-resource-manager/rpublic2.png)
+Vyberte řádek pro partnerský vztah a upravit vlastnosti partnerského vztahu.
 
 ### <a name="deletepublic"></a>Odstranění veřejného partnerského vztahu Azure
 
-Konfiguraci partnerského vztahu můžete odebrat tak, že vyberete ikonu odstranit, jak je znázorněno v následujícím příkladu:
-
-![odstranění veřejného partnerského vztahu](./media/expressroute-howto-routing-portal-resource-manager/rpublic4.png)
+Odeberte tak, že vyberete ikonu Odstranit konfiguraci partnerského vztahu.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2019
 ms.author: aschhab
-ms.openlocfilehash: 65c207b4d03e7d156c8c871a3642601fd0489ead
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 57ab281e8d07537c22bd3cf60306dfb1c7e81541
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65991422"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67566068"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>Migrovat existující standardní obory názvů služby Azure Service Bus na úrovni premium
 Azure Service Bus nabízely dříve, obory názvů jenom na úrovni standard. Obory názvů jsou nastavení více tenantů, která jsou optimalizována pro prostředí pro vývojáře a Nízká propustnost. Úroveň premium nabízí vyhrazené prostředky na obor názvů pro předvídatelnou latenci a vyšší propustnost za pevnou cenu. Na úrovni premium je optimalizovaná pro vysokou propustnost a produkční prostředí, které vyžadují další podnikové funkce.
@@ -117,6 +117,28 @@ Migrace s využitím webu Azure portal má stejný logický tok jako migrace pom
 1. Zkontrolujte změny na stránce souhrnu. Vyberte **dokončit migraci** přepnout obory názvů a k dokončení migrace.
     ![Přepnout obor názvů – přepínač nabídky][] po dokončení migrace se zobrazí na stránce potvrzení.
     ![Obor názvů přepínače – úspěch][]
+
+## <a name="caveats"></a>Upozornění
+
+Některé z funkcí poskytovaných službou Azure Service Bus úrovně Standard nepodporují vrstva Azure Service Bus úrovně Premium. Toto jsou záměrné, protože nabízí vyhrazených prostředků pro předvídatelnou propustnost a latenci na úrovni premium.
+
+Tady je seznam nepodporuje Premium a jejich zmírnění – funkce 
+
+### <a name="express-entities"></a>Expresní entity
+
+   Expresní entity, které není žádná data zprávy potvrzení do úložiště nejsou podporovány na úrovni Premium. Zlepšení propustnosti významné přitom zajistit, že data se ukládají, očekávaným z jakékoli Podnikové zasílání zpráv systému k dispozici vyhrazené prostředky.
+   
+   Během migrace některé z vašich expresní entity ve standardním oboru názvů na vytvoří názvový prostor úrovně Premium jako entita ne express.
+   
+   Pokud využíváte šablony Azure Resource Manageru (ARM), ujistěte se prosím odeberte příznak 'enableExpress' z konfigurace nasazení tak, aby vaše zautomatizované pracovní postupy se spustí bez chyb.
+
+### <a name="partitioned-entities"></a>Dělené entity
+
+   Dělené entity byly podporovány na úrovni Standard zajištění lepší dostupnosti v instalačním programu více tenanty. Díky zřizovat vyhrazených prostředcích, které jsou k dispozici na obor názvů na úrovni Premium to už nebude potřeba.
+   
+   Během migrace jakékoli rozdělené entity ve standardním oboru názvů na se vytvoří názvový prostor úrovně Premium jako entita bez oddílů.
+   
+   Pokud šablonu ARM nastaví "enablePartitioning' na 'true' pro konkrétní fronty nebo tématu, potom bude se ignorovat zprostředkovatelem.
 
 ## <a name="faqs"></a>Nejčastější dotazy
 

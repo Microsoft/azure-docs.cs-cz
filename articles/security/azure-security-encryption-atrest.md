@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/07/2019
+ms.date: 07/02/2019
 ms.author: barclayn
-ms.openlocfilehash: d0974b98975b8f7d09760be964024f92e9690a4e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 60f3bedb86304bf7d407710b07d9732afb6e8b05
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65596378"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67566089"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure Data šifrování neaktivních
 
@@ -212,7 +212,7 @@ Software jako služba (SaaS) zákazníkům obvykle třeba šifrování v klidov�
 
 ### <a name="encryption-at-rest-for-paas-customers"></a>Šifrování v klidovém stavu pro zákazníky, kteří PaaS
 
-Platforma jako služba (PaaS) zákaznická data se obvykle nachází v prostředí provádění aplikace a všechny poskytovatele prostředků Azure používá k ukládání dat zákazníka. Pokud chcete zobrazit šifrování v dostupných možnostech rest, zkontrolujte v následující tabulce úložiště a aplikace platformy, které používáte. Pokud je podporováno, odkazy na pokyny k povolení šifrování v klidovém stavu jsou k dispozici pro každý poskytovatel prostředků.
+Platforma jako služba (PaaS) zákaznická data obvykle nachází ve službě úložiště, jako je například úložiště objektů Blob, ale může také být uloženy do mezipaměti nebo uložené v prostředí pro spuštění aplikace, jako je například virtuální počítač. Pokud chcete zobrazit šifrování v dostupných možnostech rest, zkontrolujte v následující tabulce úložiště a aplikace platformy, které používáte.
 
 ### <a name="encryption-at-rest-for-iaas-customers"></a>Šifrování v klidovém stavu pro zákazníky IaaS
 
@@ -220,11 +220,11 @@ Infrastruktura jako služba (IaaS) zákazníkům může mít celou řadu služeb
 
 #### <a name="encrypted-storage"></a>Šifrované úložiště
 
-Jako u PaaS řešení IaaS mohou využívat další služby Azure, které ukládají data v klidovém stavu zašifrovaná. V těchto případech můžete povolit šifrování na webu podpory Rest podle jednotlivých spotřebované služby Azure. Následující tabulka uvádí hlavní úložiště, služby a aplikační platformy a model šifrování v klidovém stavu nepodporuje. Pokud je podporováno, jsou uvedeny odkazy na pokyny k povolení šifrování v klidovém stavu.
+Jako u PaaS řešení IaaS mohou využívat další služby Azure, které ukládají data v klidovém stavu zašifrovaná. V těchto případech můžete povolit šifrování na webu podpory Rest podle jednotlivých spotřebované služby Azure. Následující tabulka uvádí hlavní úložiště, služby a aplikační platformy a model šifrování v klidovém stavu nepodporuje. 
 
 #### <a name="encrypted-compute"></a>Šifrované výpočetní prostředky
 
-Kompletní šifrování v Rest řešení vyžaduje, že je v nezašifrované podobě nikdy trvalá data. Při použití na serveru pro načítání dat v paměti, můžete se data ukládají místně různými způsoby, včetně stránkovací soubor Windows, výpisu a jakékoli protokolování, které může aplikace provádět. Aplikace IaaS zajistěte, aby že tato data se šifrují při nečinnosti, můžou využít Azure Disk Encryption na virtuálním počítači Azure IaaS (Windows nebo Linux) a virtuální disk.
+Všechny spravované disky, snímky a image jsou šifrované pomocí šifrování služby Storage používá klíč spravovaný službou. Úplnější šifrování v Rest řešení zajišťuje, že je v nezašifrované podobě nikdy trvalá data. Při zpracování dat na virtuálním počítači, můžete data ukládají do souboru stránky Windows nebo Linux odkládací soubor výpis stavu systému, nebo do protokolu aplikace. Aplikace IaaS zajistěte, aby že tato data se šifrují při nečinnosti, můžou využít Azure Disk Encryption na virtuálním počítači Azure IaaS (Windows nebo Linux) a virtuální disk.
 
 #### <a name="custom-encryption-at-rest"></a>Vlastní šifrování v klidovém stavu
 
@@ -240,7 +240,7 @@ Každý zákazník se pomocí infrastruktury Azure jako služba (IaaS) funkce m�
 
 #### <a name="azure-storage"></a>Úložiště Azure
 
-Všechny služby Azure Storage (úložiště objektů Blob, Queue storage, Table storage a Azure Files) podporují šifrování na straně serveru v klidovém stavu, se některé služby, podpora klíčů spravovaných zákazníkem a šifrování na straně klienta.  
+Všechny služby Azure Storage (úložiště objektů Blob, Queue storage, Table storage a Azure Files) podporují šifrování na straně serveru v klidovém stavu; Některé služby podporují kromě klíče spravované zákazníkem a šifrování na straně klienta. 
 
 - Na serveru: Všechny služby Azure Storage povolit šifrování na straně serveru ve výchozím nastavení pomocí klíče spravované zákazníkem služby, které je transparentní pro aplikaci. Další informace najdete v tématu [šifrování služby Azure Storage pro neaktivní uložená Data](https://docs.microsoft.com/azure/storage/storage-service-encryption). Azure Blob storage a službou soubory Azure také podporují klíče spravované zákazníkem RSA 2048 bitů ve službě Azure Key Vault. Další informace najdete v tématu [šifrování služby Storage pomocí klíčů spravovaných zákazníkem ve službě Azure Key Vault](https://docs.microsoft.com/azure/storage/common/storage-service-encryption-customer-managed-keys).
 - Na straně klienta: Azure BLOB, tabulky a fronty podporují šifrování na straně klienta. Při použití šifrování na straně klienta, zákazníci šifrování dat a nahrajte data jako zašifrovaný objekt blob. Zákazník se provádí správu klíčů. Další informace najdete v tématu [šifrování na straně klienta a služby Azure Key Vault pro Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/storage-client-side-encryption).
@@ -255,12 +255,12 @@ Podpora pro šifrování serveru aktuálně poskytuje prostřednictvím funkce S
 
 |                                  |                    | **Model šifrování a správy klíčů** |                    |
 |----------------------------------|--------------------|-----------------------------------------|--------------------|
-|                                  | **Na serveru pomocí klíče spravované službou**     | **Na serveru pomocí spravované zákazníkem ve službě Key Vault**             | **Client-Side klienta spravovat pomocí**      |
+|                                  | **Na serveru pomocí klíče spravované službou**     | **Na serveru pomocí klíče spravovaného zákazníkem**             | **Client-Side klienta spravovat pomocí**      |
 | **AI a Machine Learning**      |                    |                    |                    |
 | Azure Search                     | Ano                | -                  | -                  |
 | Služba Azure Machine Learning   | Ano                | -                  | -                  |
 | Azure Machine Learning Studio    | Ano                | Preview, RSA 2048-bit | -               |
-| Power BI                         | Ano                | -                  | -                  |
+| Power BI                         | Ano                | Preview, RSA 2048-bit | -                  |
 | **Analýzy**                    |                    |                    |                    |
 | Azure Stream Analytics           | Ano                | -                  | -                  |
 | Event Hubs                       | Ano                | -                  | -                  |
@@ -269,12 +269,19 @@ Podpora pro šifrování serveru aktuálně poskytuje prostřednictvím funkce S
 | HDInsight                        | Ano                | Ve verzi Preview pro Apache Kafka, všechny délky RSA | -                  |
 | Azure Data Factory               | Ano                | -                  | -                  |
 | Azure Data Lake Store            | Ano                | Ano, RSA 2048 bitů  | -                  |
+| **Containers**                   |                    |                    |                    |
+| Azure Kubernetes Service         | Ano                | -                  | -                  |
+| Container Registry               | Ano                | -                  | -                  |
 | **Compute**                      |                    |                    |                    |
-| Virtuální počítače                 | -                  | Ano, RSA 2048 bitů  | -                  |
-| Škálovací sada virtuálních počítačů        | -                  | Ano, RSA 2048 bitů  | -                  |
+| Virtuální počítače                 | Ano                | Ano, RSA 2048 bitů  | -                  |
+| Škálovací sada virtuálních počítačů        | Ano                | Ano, RSA 2048 bitů  | -                  |
+| SAP HANA                         | Ano                | Ano, RSA 2048 bitů  | -                  |
 | **Databáze**                    |                    |                    |                    |
 | SQL Server na virtuálních počítačích   | Ano                | Ano, RSA 2048 bitů  | Ano                |
 | Azure SQL Database               | Ano                | Ano, RSA 2048 bitů  | Ano                |
+| Azure SQL Database pro MariaDB   | Ano                | -                  | -                  |
+| Azure SQL Database for MySQL     | Ano                | -                  | -                  |
+| Azure SQL Database for PostgreSQL | Ano                | -                  | -                  |
 | Azure SQL Data Warehouse         | Ano                | Ano, RSA 2048 bitů  | Ano                |
 | SQL Server Stretch Database      | Ano                | Ano, RSA 2048 bitů  | Ano                |
 | Table Storage                    | Ano                | -                  | Ano                |
@@ -302,8 +309,9 @@ Podpora pro šifrování serveru aktuálně poskytuje prostřednictvím funkce S
 | File Storage                     | Ano                | Ano, RSA 2048 bitů  | -                  |
 | Queue Storage                    | Ano                | -                  | Ano                |
 | Avere vFXT                       | Ano                | -                  | -                  |
+| Azure NetApp Files               | Ano                | -                  | -                  |
 | Archiv služby Storage                  | Ano                | Ano, RSA 2048 bitů  | -                  |
-| StorSimple                       | Ano                | -                  | Ano                |
+| StorSimple                       | Ano                | Ano, RSA 2048 bitů  | Ano                |
 | Azure Backup                     | Ano                | -                  | Ano                |
 | Data Box                         | Ano                | -                  | Ano                |
 

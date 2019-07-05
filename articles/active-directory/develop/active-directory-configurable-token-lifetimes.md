@@ -12,24 +12,24 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 07/04/2019
 ms.author: ryanwi
 ms.custom: aaddev, annaba
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b1c68d9254b0da2e5296c83d8dd4c95091fde1b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bd9ff2360fce26b77ba0f5be4d5f70103504ec05
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67111809"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67564431"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Konfigurovatelné životností tokenů ve službě Azure Active Directory (Preview)
 
 Můžete určit dobu životnosti tokenu vydaného službou Azure Active Directory (Azure AD). Můžete nastavit Životnost tokenů pro všechny aplikace ve vaší organizaci, aplikaci s více tenanty (více organizace) nebo konkrétní objekt služby ve vaší organizaci.
 
 > [!IMPORTANT]
-> Po sluchu od zákazníků ve verzi preview jsme jste nahrazuje funkci konfigurovatelné životností tokenů s [možnosti správy relace ověřování](https://go.microsoft.com/fwlink/?linkid=2083106) v podmíněného přístupu Azure AD. Tato funkce se přestanou používat 1. listopadu 2019. Pokud používáte zásady konfigurovat doba platnosti tokenu, přepněte na nové funkce podmíněného přístupu. 
+> Po sluchu od zákazníků ve verzi preview jsme implementovali [možnosti správy relace ověřování](https://go.microsoft.com/fwlink/?linkid=2083106) v podmíněného přístupu Azure AD. Konfigurace životností tokenů aktualizovat tak, že nastavíte přihlašování v možnosti četnost můžete použít tuto novou funkci. Po 1. listopadu 2019 nebude možné použít Konfigurovatelný Token doby života zásad Konfigurace obnovovací tokeny, ale stále slouží ke konfiguraci přístupové tokeny.
 
 Objekt zásad ve službě Azure AD, představuje sadu pravidel, která vynucují u jednotlivých aplikací, nebo na všechny aplikace v organizaci. Každý typ zásad obsahuje strukturu jedinečnou sadu vlastností, které se použijí pro objekty, které jsou přiřazeny.
 

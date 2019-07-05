@@ -1,27 +1,24 @@
 ---
-title: Vysvětlení využití Azure rezervace pro předplatné s průběžnými platbami | Dokumentace Microsoftu
-description: Zjistěte, jak číst využití, abyste pochopili, jak použít Azure rezervace pro vaše předplatné s průběžnými platbami.
-services: billing
-documentationcenter: ''
-author: manish-shukla01
-manager: manshuk
-editor: ''
+title: Využití Azure rezervace pro jednotlivé předplatné s průběžnými sazbami
+description: Zjistěte, jak číst využití pochopit, jak použít Azure rezervace pro jednotlivé předplatného pro průběžné platby.
+author: bandersmsft
+manager: yashr
 tags: billing
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/13/2019
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 14bd7b61038bf938f7d370eaf6e16d71b5da43ca
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 11f05c3de50f2f82173b6666d304887fbc2038cc
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60370316"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490361"
 ---
-# <a name="understand-azure-reservation-usage-for-your-pay-as-you-go-subscription"></a>Vysvětlení využití Azure rezervace pro vaše předplatné s průběžnými platbami
+# <a name="understand-azure-reservation-usage-for-your-individual-subscription-with-pay-as-you-go-rates-subscription"></a>Vysvětlení využití Azure rezervace pro jednotlivé předplatného pro předplatné tarify průběžných plateb
 
 Použít ReservationId z [rezervované stránky](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=Reservations&Microsoft_Azure_Reservations=true#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) a používání souboru z [portálu účtů Azure](https://account.azure.com) vyhodnotit využití rezervace.
 
@@ -37,7 +34,7 @@ V dalších částech předpokládají, že používáte virtuální počítač 
 |---| :---: |
 |ReservationId |8117adfb-1d94-4675-be2b-f3c1bca808b6|
 |Množství |1|
-|Skladová jednotka (SKU) | Standard_DS1_v2|
+|SKU | Standard_DS1_v2|
 |Oblast | eastus |
 
 Část hardwaru virtuálního počítače se vztahuje, protože nasazený virtuální počítač odpovídající rezervaci atributy. Jaký software Windows není předmětem rezervované instance virtuálního počítače najdete v tématu [náklady na software Windows instancí virtuálních počítačů rezervy Azure](billing-reserved-instance-windows-software-costs.md)
@@ -62,7 +59,7 @@ Filtrovat podle **Další informace o** a zadejte vaše **ID rezervace**. Násle
 4. **ID měřiče** je ID měřiče pro rezervaci. Náklady na tento měřič je hodnotou 0 USD. Toto id měřiče se zobrazí pro jakýkoli virtuální počítač, který může využít sleva za rezervaci.
 5. Standard_DS1_v2 je jeden virtuální procesor virtuálního počítače a virtuálního počítače se nasazují bez programu Azure Hybrid Benefit. Tedy tento měřič zahrnuje korunu navíc softwaru Windows. Měření odpovídající 1 jádro virtuálních počítačů řady D series najdete v tématu [náklady na software Windows instancí virtuálních počítačů rezervy Azure](billing-reserved-instance-windows-software-costs.md). Pokud máte na program Azure Hybrid Benefit se nepoužije tento další poplatek.
 
-## <a name="usage-for-sql-database--cosmos-db-reserved-capacity-reservations"></a>Využití pro SQL Database a Cosmos DB vyhrazené kapacity rezervace
+## <a name="usage-for-sql-database--cosmos-db-reservations"></a>Využití pro SQL Database a Cosmos DB rezervace
 
 V dalších částech používat Azure SQL Database jako příklad k popisu sestavu využití. Stejný postup můžete použít také zobrazíte využití služby Azure Cosmos DB.
 

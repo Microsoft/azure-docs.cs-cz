@@ -15,12 +15,12 @@ ms.date: 04/09/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73d42c693fae6b538136d1e8c93094a0ea9e2077
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c6da92ccd50707e676a1f5d583fe22ae8b3d8b73
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60288373"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476318"
 ---
 # <a name="configure-azure-resource-role-settings-in-pim"></a>Konfigurace nastavení role prostředků Azure v PIM
 
@@ -38,19 +38,19 @@ Postupujte podle těchto kroků a otevřete nastavení pro roli prostředků Azu
 
 1. Klikněte na prostředek, který chcete spravovat, například předplatné nebo skupinu pro správu.
 
-    ![Seznam prostředků Azure pro správu](./media/pim-resource-roles-configure-role-settings/resources-list.png)
+    ![Stránka výpis prostředků, které je možné spravovat prostředky Azure](./media/pim-resource-roles-configure-role-settings/resources-list.png)
 
 1. Klikněte na tlačítko **nastavení Role**.
 
-    ![Nastavení role](./media/pim-resource-roles-configure-role-settings/resources-role-settings.png)
+    ![Stránka nastavení role výpis role prostředků Azure](./media/pim-resource-roles-configure-role-settings/resources-role-settings.png)
 
 1. Klikněte na roli, jehož nastavení chcete konfigurovat.
 
-    ![Podrobnosti nastavení role](./media/pim-resource-roles-configure-role-settings/resources-role-setting-details.png)
+    ![Stránka Podrobnosti nastavení role výpis několik nastavení přiřazení a aktivace](./media/pim-resource-roles-configure-role-settings/resources-role-setting-details.png)
 
 1. Klikněte na tlačítko **upravit** a otevřete tak podokno nastavení Role.
 
-    ![Upravit nastavení rolí](./media/pim-resource-roles-configure-role-settings/resources-role-settings-edit.png)
+    ![Upravit nastavení stránky role pomocí možnosti aktualizovat nastavení přiřazení a aktivace](./media/pim-resource-roles-configure-role-settings/resources-role-settings-edit.png)
 
     V podokně nastavení Role pro každou roli existuje několik nastavení, která můžete konfigurovat.
 
@@ -109,7 +109,7 @@ Pokud chcete k aktivaci role vyžadovat schválení, postupujte podle těchto kr
 
 1. Klikněte na tlačítko **vybrat schvalovatele** a otevřete tak podokno členů nebo skupin Select.
 
-    ![Vyberte člena nebo skupiny](./media/pim-resource-roles-configure-role-settings/resources-role-settings-select-approvers.png)
+    ![Vyberte člena nebo skupinu podokně můžete vybrat schvalovatele](./media/pim-resource-roles-configure-role-settings/resources-role-settings-select-approvers.png)
 
 1. Vyberte alespoň jeden člen nebo skupinu a potom klikněte na tlačítko **vyberte**. Můžete přidat libovolnou kombinaci členové a skupiny. Musíte vybrat aspoň jeden schvalovatel. Neexistují žádné výchozí schvalovatele.
 

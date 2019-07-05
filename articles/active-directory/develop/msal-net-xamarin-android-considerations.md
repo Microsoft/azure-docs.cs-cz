@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb0cfb06e95cadbb549f669e5d59bdb0d795c896
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 357c83cfd0ae3fed8b13419e72f50fcb90c04186
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65545860"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67550656"
 ---
 # <a name="xamarin-android-specific-considerations-with-msalnet"></a>Důležité informace specifické pro Xamarin Android pomocí MSAL.NET
 Tento článek popisuje konkrétní aspekty při používání Xamarin Android s Microsoft Authentication Library pro .NET (MSAL.NET).
@@ -97,7 +97,7 @@ Při řešení těchto problémů, měli byste provést tyto akce:
 
 ### <a name="error-the-name-authenticationcontinuationhelper-does-not-exist-in-the-current-context"></a>Chyba: Název 'AuthenticationContinuationHelper' v aktuálním kontextu neexistuje.
 
-To je pravděpodobně protože Visual Studio neaktualizovala správně soubor Android.csproj*. Někdy **<HintPath>** filepath obsahuje nesprávně netstandard13 místo **monoandroid90**.
+To je pravděpodobně protože Visual Studio neaktualizovala správně soubor Android.csproj*. Někdy  **\<cestu k nápovědě >** filepath obsahuje nesprávně netstandard13 místo **monoandroid90**.
 
 ```xml
 <Reference Include="Microsoft.Identity.Client, Version=3.0.4.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae,

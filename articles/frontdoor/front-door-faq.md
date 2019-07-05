@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2019
 ms.author: sharadag
-ms.openlocfilehash: b033f463722ddb3a0b7beabdf659900e7d7188df
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 37ec8a611f94b869c8277c135f8e6dc5d2108392
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67330868"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442898"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door-service"></a>Nejčastější dotazy pro Azure branou služby
 
@@ -79,25 +79,34 @@ Azure Service branou je globálně Distribuovaná služba více tenantů. Ano in
 
 ### <a name="is-http-https-redirection-supported"></a>Je HTTP -> přesměrování protokolu HTTPS, které jsou podporovány?
 
-Ano. Ve skutečnosti Azure branou služby podporuje hostitele, cestu a dotaz řetězec přesměrování, stejně jako část adresy URL přesměrování. Další informace o [adresy URL přesměrování](front-door-url-redirect.md). 
+Ano. Ve skutečnosti Azure branou služby podporuje hostitele, cestu a přesměrování řetězec dotazu, jakož i část adresy URL přesměrování. Další informace o [adresy URL přesměrování](front-door-url-redirect.md). 
 
 ### <a name="in-what-order-are-routing-rules-processed"></a>V jakém pořadí se pravidla směrování zpracovávají?
 
 Trasy pro vaše branou nejsou seřazené a konkrétní trasa se vybere na základě nejlepší shody. Další informace o [branou jak odpovídá požadavků na pravidlo směrování](front-door-route-matching.md).
 
-### <a name="how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door-service"></a>Jak uzamknout přístup do své back-endu do pouze branou služby Azure?
+### <a name="how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door"></a>Jak uzamknout přístup do své back-endu na pouze Azure branou?
 
-Můžete nakonfigurovat IP ACLing pro váš back-end tak, aby přijímal pouze provoz z branou služby Azure. Můžete omezit aplikace přijímat příchozí připojení pouze z back-endu adresní prostor IP branou služby Azure. Pracujeme na integraci se službou [rozsahy IP adres Azure a značkami služeb](https://www.microsoft.com/download/details.aspx?id=56519) ale teď se můžete vrátit rozsahy IP adres, jak je uvedeno níže:
+Zamezit aplikace tak, aby přijímal komunikaci pouze z vaší konkrétní branou, je potřeba nastavit seznamy řízení přístupu IP pro back-endu a potom omezíte sada platných hodnot pro hlavičku "X-předané-Host" odeslané službou Azure branou. Tyto kroky jsou podrobně popsané si níže:
+
+- Konfigurace IP ACLing pro váš back-end tak, aby přijímal provoz z back-endu Azure přední dveře adresní prostor IP adres a pouze služby infrastruktury Azure. Pracujeme na integraci se službou [rozsahy IP adres Azure a značkami služeb](https://www.microsoft.com/download/details.aspx?id=56519) ale teď se můžete vrátit rozsahy IP adres, jak je uvedeno níže:
  
-- **IPv4** - `147.243.0.0/16`
-- **IPv6** - `2a01:111:2050::/44`
+    - Přední dveře **IPv4** adresní prostor IP back-endu: `147.243.0.0/16`
+    - Přední dveře **IPv6** adresní prostor IP back-endu: `2a01:111:2050::/44`
+    - Azure [základní infrastruktury služby](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations) prostřednictvím virtualizovaných IP adres hostitele: `168.63.129.16` a `169.254.169.254`
 
-> [!WARNING]
-> Naše adresní prostor IP back-end může později změnit, ale jsme zajistí, aby předtím, než k tomu dojde, můžeme by jste integrovali s [rozsahy IP adres Azure a značkami služeb](https://www.microsoft.com/download/details.aspx?id=56519). Doporučujeme vám, že se přihlásíte k odběru [rozsahy IP adres Azure a značkami služeb](https://www.microsoft.com/download/details.aspx?id=56519) pro změny nebo aktualizace. 
+    > [!WARNING]
+    > Přední dveře adresní prostor IP back-end může později změnit, ale jsme zajistí, aby předtím, než k tomu dojde, můžeme by jste integrovali s [rozsahy IP adres Azure a značkami služeb](https://www.microsoft.com/download/details.aspx?id=56519). Doporučujeme vám, že se přihlásíte k odběru [rozsahy IP adres Azure a značkami služeb](https://www.microsoft.com/download/details.aspx?id=56519) pro změny nebo aktualizace.
+
+-   Filtrováním podle hodnoty pro hlavičku příchozí "**X předané hostiteli**' odeslaný branou. Jediné povolené hodnoty pro hlavičku by měl být všechny hostitele front-endu, jak je definováno v souboru config branou. Ve skutečnosti ještě přesněji řečeno, pouze názvy hostitelů pro které chcete tak, aby přijímal provoz z této konkrétní back-end systému vaší gigantické.
+    - Příklad – můžeme Dejme tomu, že vaše konfigurace branou má následující hostitele front-endu _`contoso.azurefd.net`_ (A), _`www.contoso.com`_ (B), _ (C) a _`notifications.contoso.com`_ (D). Předpokládejme, že máte dva back-EndY X a Y. 
+    - Back-end X by mělo trvat pouze provoz z hostitele A a B. back-endu Y můžete směrují provoz, od C a D.
+    - Ano, v back-end X přijmout byste to měli jenom provoz, který má hlavičky "**X předané hostiteli**' nastaven na hodnotu _`contoso.azurefd.net`_ nebo _`www.contoso.com`_ . Pro všechno ostatní by měl back-end X odmítnout provoz.
+    - Podobně na back-endu Y přijmout byste to měli jenom provoz, který má hlavičky "**X předané hostiteli**" nastaven na hodnotu _`contoso.azurefd.net`_ , _`api.contoso.com`_ nebo  _`notifications.contoso.com`_ . Pro všechno ostatní by měl back-endu Y odmítnout provoz.
 
 ### <a name="can-the-anycast-ip-change-over-the-lifetime-of-my-front-door"></a>IP adresa všesměrového vysílání změnit během životního cyklu Moje branou?
 
-IP adresa všesměrového vysílání front-endu pro vaše branou obvykle neměli měnit a může zůstat statický po dobu životnosti branou. Existují však **žádné záruky** pro stejné. Kdybyste nepřebírají žádné přímé závislosti na IP adresu.  
+IP adresa všesměrového vysílání front-endu pro vaše branou obvykle neměli měnit a může zůstat statický po dobu životnosti branou. Existují však **žádné záruky** pro stejné. Kdybyste nepřebírají žádné přímé závislosti na IP adresu.
 
 ### <a name="does-azure-front-door-service-support-static-or-dedicated-ips"></a>Podporuje služba Azure branou statické nebo vyhrazené IP adresy?
 
@@ -142,10 +151,10 @@ Přední dveře podporuje TLS verze 1.0, 1.1 a 1.2. TLS 1.3 se ještě nepodporu
 Pokud chcete povolit protokol HTTPS pro bezpečné doručování obsahu pro vlastní doménu branou, můžete použít certifikát, který je spravovaný službou Azure branou nebo použít svůj vlastní certifikát.
 Branou spravované ustanovení možnost Standardní certifikát SSL prostřednictvím Digicert a uložená v popředí dveří Key Vault. Pokud budete chtít použít svůj vlastní certifikát, pak můžete připojit certifikát od certifikační Autority podporované a může být standardní protokol SSL, rozšíření ověřování certifikátu nebo dokonce certifikát se zástupným znakem. Certifikáty podepsané svým držitelem nejsou podporovány. Přečtěte si [jak povolit HTTPS pro vlastní doménu](https://aka.ms/FrontDoorCustomDomainHTTPS).
 
-### <a name="does-front-door-support-auto-rotation-of-certificates"></a>Podporuje branou automatická rotace certifikátů?
+### <a name="does-front-door-support-autorotation-of-certificates"></a>Podporuje branou při automatické rotace certifikátů?
 
-Pro vlastní vlastního certifikátu SSL automatické rotace klíčů nepodporuje. Podobně jako u jak se instalační program, pro dané vlastní doménu poprvé, bude potřebujete k bodu branou verze správný certifikát ve službě Key Vault a ujistěte se, že instanční objekt služby pro branou stále má přístup ke službě Key Vault. Tato operace zavedení aktualizovaný certifikát podle branou je zcela atomické a nezpůsobí žádné dopadu na produkční prostředí k dispozici v názvu subjektu nebo nedojde ke změně sítě SAN pro certifikát.
-</br>Možnosti certifikátu branou spravované že jsou certifikáty automaticky otočit o branou.
+Pro volbu certifikátu branou spravovat certifikáty jsou autorotated podle branou. Pokud používáte branou spravovanému certifikátu a podívejte se, že datum vypršení platnosti certifikátu je menší než za 60 dní, lístek podpory.
+</br>Pro vlastní vlastního certifikátu SSL se při automatické rotace nepodporuje. Podobně jako u jak byla nastavena pro dané vlastní doménu poprvé, bude potřebujete k bodu branou verze správný certifikát ve službě Key Vault a ujistěte se, že instanční objekt služby pro branou stále má přístup ke službě Key Vault. Tuto operaci zavedení aktualizovaný certifikát podle branou je atomické a nezpůsobí žádné dopadu na produkční prostředí k dispozici v názvu subjektu nebo nedojde ke změně sítě SAN pro certifikát.
 
 ### <a name="what-are-the-current-cipher-suites-supported-by-azure-front-door-service"></a>Jaké jsou aktuální šifrovací sada podporovaná službou Azure branou?
 

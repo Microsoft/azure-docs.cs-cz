@@ -5,27 +5,27 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/20/2019
+ms.date: 07/01/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: f4c296aeefacc9516303ad75dd8b7d67325e38ee
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4c1c987befe928d316b11c6ecd379be76f8f80d4
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65969055"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490151"
 ---
 # <a name="understand-cost-management-data"></a>Vysvětlení dat služby Cost Management
 
-Tento článek pomůže lépe pochopit, jaká data budou zahrnuta ve službě Azure Cost Management. A vysvětluje, jak často zpracování dat jsou shromažďovány, zobrazené a uzavřené. Bude se vám účtovat využití Azure každý měsíc. Typ vašeho předplatného Azure určuje po fakturačního měsíce ukončení. Jak často Cost Management přijímá využití dat se liší na základě různých faktorů. Tyto faktory zahrnují jak dlouho trvá zpracování dat a jak často služeb Azure generování informací o využití a fakturace systému.
+Tento článek vám pomůže líp pochopit Azure nákladů a využití dat, která je zahrnutá ve službě Azure Cost Management. Vysvětluje, jak často zpracování dat jsou shromažďovány, zobrazené a uzavřené. Bude se vám účtovat využití Azure každý měsíc. I když je fakturační cykly jsou měsíčního období, cyklu počáteční a koncové datum se liší podle typu předplatného. Jak často Cost Management přijímá využití dat se liší na základě různých faktorů. Tyto faktory zahrnují jak dlouho trvá zpracování dat a jak často služeb Azure generování informací o využití a fakturace systému.
 
-Služba Cost Management obsahuje veškeré použití a nákup, včetně rezervace a nabídky třetí strany pro účty Enterprise Agreement (EA). Smlouvy zákazníka Microsoftu (MCA) účtů a předplatných s průběžnými platbami zahrnout pouze pro použití služby Azure a Web Marketplace. Podpora a další náklady nejsou zahrnuty. Náklady se odhadují, dokud se vygeneruje faktury a není zvážit kredity.
+Služba Cost Management obsahuje veškeré použití a nákup, včetně rezervace a nabídky třetí strany pro účty Enterprise Agreement (EA). Smlouvy zákazníka Microsoftu (MCA) účtů a jednotlivých předplatných s průběžnými sazbami zahrnout pouze pro použití služby Azure a Web Marketplace. Podpora a další náklady nejsou zahrnuty. Náklady se odhadují, dokud se vygeneruje faktury a není zvážit kredity.
 
-## <a name="supported-microsoft-offers"></a>Podporované nabídky Microsoftu
+## <a name="supported-microsoft-azure-offers"></a>Podporované nabídky Microsoft Azure
 
-Tyto informace zobrazí aktuálně podporované [Microsoft Azure nabízí](https://azure.microsoft.com/support/legal/offer-details/) ve službě Azure Cost Management.  Nabídky Azure je typ, který máte předplatné Azure.
+Tyto informace zobrazí aktuálně podporované [Microsoft Azure nabízí](https://azure.microsoft.com/support/legal/offer-details/) služba Azure Cost Management. Podepsané smlouvy pro nabídky Azure Určuje typ, který máte předplatné Azure.
 
 | Category  | **Název nabídky** | **ID kvóty** | **Číslo nabídky** |
 | --- | --- | --- | --- |
@@ -49,7 +49,7 @@ Tyto informace zobrazí aktuálně podporované [Microsoft Azure nabízí](https
 | **Visual Studio** | [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p)            | MSDN_2014-09-01 | MS-AZR-0063P |
 | **Visual Studio** | [Visual Studio Enterprise: BizSpark](https://azure.microsoft.com/offers/ms-azr-0064p)  | MSDN_2014-09-01 | MS-AZR-0064P |
 
-Následující tabulka uvádí nepodporované nabídky.
+V následující tabulce jsou uvedeny nabídek Azure, které nejsou podporovány služba Cost Management.
 
 | Category  | **Název nabídky** | **ID kvóty** | **Číslo nabídky** |
 | --- | --- | --- | --- |
@@ -66,7 +66,7 @@ Následující tabulka uvádí nepodporované nabídky.
 | **Plány podpory** | Azure Government pro-Direct Support | Default_2014-09-01 | MS-AZR-USGOV-0042P |
 | **Plány podpory** | Azure Government Developer Support.  | Default_2014-09-01 | MS-AZR-USGOV-0043P |
 
-Pro zákazníky s kategorií nabídky s průběžnými platbami, MSDN a Visual Studio data jsou k dispozici ve službě Cost Management od 10/02/2018. Pro přístup k datům pro vaše předplatné před 10/02/2018, můžete použít [centra účtů Azure](https://account.azure.com/subscriptions) stáhnout využití podrobnosti v souboru CSV, nebo můžete použít [podrobnosti o použití rozhraní API](/rest/api/consumption/usagedetails).
+Pro zákazníky s průběžnými platbami MSDN a Visual Studio nabízí kategoriích, data jsou k dispozici ve službě Cost Management od 10/02/2018. Pro přístup k datům pro vaše předplatné před 10/02/2018, můžete použít [centra účtů Azure](https://account.azure.com/subscriptions) stáhnout využití podrobnosti v souboru CSV, nebo můžete použít [podrobnosti o použití rozhraní API](/rest/api/consumption/usagedetails).
 
 ## <a name="determine-your-offer-type"></a>Určení svůj typ nabídky
 Pokud se vám nezobrazují žádná data k předplatnému a k určení, pokud vaše předplatné spadá pod podporované nabídky, můžete ověřit, že je vaše předplatné nepodporuje. Chcete-li ověřit, že předplatné Azure se podporuje, přihlaste se do [webu Azure portal](https://portal.azure.com). Potom vyberte **všechny služby** na panelu nabídky vlevo. V seznamu služeb vyberte **předplatná**. V nabídce předplatné seznam klikněte na předplatné, pro kterou chcete ověřit. Vaše předplatné se zobrazí na kartě Přehled a zobrazí se **nabízejí** a **ID nabídky**. Příklad ukazuje následující obrázek.
@@ -116,7 +116,7 @@ Předplatná s průběžnými platbami – Pokud daný fakturační měsíc kon�
 
 ### <a name="rerated-data"></a>Rerated dat
 
-Ať už používáte [rozhraní API pro správu nákladů](https://aka.ms/costmgmt/docs), Power BI nebo na webu Azure portal načte data, očekávat aktuálního fakturačního období poplatky ohodnoceny znovu a proto změnit, dokud není zavřena faktury.
+Ať už používáte [rozhraní API pro správu nákladů](index.yml), Power BI nebo na webu Azure portal načte data, očekávat aktuálního fakturačního období poplatky ohodnoceny znovu a proto změnit, dokud není zavřena faktury.
 
 ## <a name="usage-data-update-frequency-varies"></a>Četnost aktualizace dat používání se liší.
 
@@ -129,7 +129,7 @@ Některé služby generování využití častěji než jiné. Ano může se zob
 
 ## <a name="historical-data-might-not-match-invoice"></a>Historická data se nemusí shodovat faktury
 
-Historická data pro nabídky založené na kreditní a platba předem nemusí odpovídat faktuře. Některé nabídky Azure s průběžnými platbami, MSDN a Visual Studio může mít kredity Azure a pokročilé platby použité k faktuře. Historická data zobrazená ve službě Cost Management je však založena na vaše odhadované poplatky pouze. Cost Management historická data neobsahuje, platby a kredity. Historická data pro následující nabídky v důsledku toho nemusí odpovídat přesně s vaší faktuře.
+Historická data pro nabídky založené na kreditní a platba předem nemusí odpovídat faktuře. Některé průběžné platby za Azure MSDN a Visual Studio nabízí, můžete kredity Azure a pokročilé platby použily na fakturu. Historická data zobrazená ve službě Cost Management je však založena na vaše odhadované poplatky pouze. Cost Management historická data neobsahuje, platby a kredity. Historická data pro následující nabídky v důsledku toho nemusí odpovídat přesně s vaší faktuře.
 
 -   MS-AZR-0029P
 -   MS-AZR-0064P

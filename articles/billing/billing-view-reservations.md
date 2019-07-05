@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/13/2019
 ms.author: banders
-ms.openlocfilehash: 872837c774368820527b12778b1a7dd4ddc5c7af
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 21bf96866c14615009a17279ff2fdd04bf4116ad
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60369165"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490272"
 ---
 # <a name="view-azure-reservations-in-the-azure-portal"></a>Zobrazení Azure rezervací na webu Azure Portal
 
@@ -32,7 +32,7 @@ Další informace najdete v tématu [přidání nebo změna uživatelů, kteří
 Chcete-li zobrazit rezervace jako vlastník nebo čtečka otisku prstů,
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Hledat na **rezervace**.
+2. Vyhledejte **rezervace**.
     ![Snímek obrazovky zobrazující Azure search na portálu](./media/billing-view-reservation/portal-reservation-search.png)  
 3. Tento seznam obsahuje všechny rezervace, kde máte roli vlastníka nebo Čtenář. Každá položka zobrazuje procento poslední známé využití.  
     ![Příklad zobrazující seznam rezervací](./media/billing-view-reservation/view-reservations.png)
@@ -49,7 +49,7 @@ Pokud potřebujete změnit obor rezervace, rezervaci dělené tunelové propojen
 Chcete-li zobrazit transakce rezervace na webu Azure portal
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1. Hledat na **Cost Management a fakturace**.
+1. Vyhledejte **Cost Management a fakturace**.
 
     ![Snímek obrazovky zobrazující Azure search na portálu](./media/billing-view-reservation/portal-cm-billing-search.png)
 

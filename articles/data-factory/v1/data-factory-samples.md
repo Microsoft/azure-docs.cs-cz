@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 03127dc777588f669ef07af52c8f73d986bfe0ea
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f7ebc57e09691af1583815ae9672e1afb820145b
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61260014"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67462065"
 ---
 # <a name="azure-data-factory---samples"></a>Azure Data Factory – ukázky
 > [!NOTE]
@@ -30,20 +30,20 @@ ms.locfileid: "61260014"
 
 | Ukázka | Popis |
 |:--- |:--- |
-| [Návod ADF](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFWalkthrough) |Tato ukázka poskytuje návod začátku do konce pro zpracování souborů protokolů pomocí Azure Data Factory, chcete-li k přehledům dat ze souborů protokolů v. <br/><br/>V tomto názorném postupu kanálu služby Data Factory shromažďuje ukázky protokolů, procesy a vylepšuje data z protokolů s referenčními daty a transformuje data pro vyhodnocení účinnosti marketingovou kampaň, která byla nedávno spuštěna. |
-| [Ukázky JSON](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/JSON) |Tato ukázka obsahuje příklady JSON pro běžné scénáře. |
-| [Ukázka pro stahování dat protokolu HTTP](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/HttpDataDownloaderSample) |Tato ukázka představuje stahování dat z koncového bodu HTTP do Azure Blob Storage pomocí vlastní aktivitu .NET. |
-| [Mezi ukázkové Net aktivity AppDomain tečka](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/CrossAppDomainDotNetActivitySample) |Tato ukázka umožňuje vytvářet vlastní aktivitu .NET, který není omezen na verze sestavení používají Spouštěč ADF (třeba ve verzi 4.3.0 WindowsAzure.Storage Newtonsoft.Json v6.0.x, atd.). |
-| [Spustit skript jazyka R](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample) |Tato ukázka obsahuje vlastní aktivity služby Data Factory, který můžete použít k vyvolání RScript.exe. Tento příklad funguje pouze s vlastní cluster HDInsight (ne na vyžádání), který už má nainstalovaný jazyk R na něj. |
-| [Vyvolání Sparkových úloh na clusteru HDInsight Hadoop](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/Spark) |Tento příklad ukazuje, jak pomocí aktivity MapReduce k vyvolání programů Spark. Program sparku právě kopíruje data z jednoho kontejneru objektů Blob v Azure do jiného. |
-| [Analýza twitteru pomocí vyhodnocování aktivita služby Azure Machine Learning služby Batch](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/TwitterAnalysisSample-AzureMLBatchScoringActivity) |Tento příklad ukazuje způsob použití u AzureMLBatchScoringActivity k vyvolání Azure Machine Learning model, který provádí analýza sentimentu na twitteru, vyhodnocování, předpovědi atd. |
-| [Analýza twitteru s využitím vlastní aktivity](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/TwitterAnalysisSample-CustomC%23Activity) |Tento příklad ukazuje, jak použít vlastní aktivitu .NET k vyvolání Azure Machine Learning model, který provádí analýza sentimentu na twitteru, vyhodnocování, předpovědi atd. |
-| [Parametrizované kanály pro Azure Machine Learning](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ParameterizedPipelinesForAzureML/) |Ukázka obsahuje začátku do konce C# kód pro nasazení N kanály pro vyhodnocování a přetrénování každý s parametrem jiné oblasti, kde seznam oblastí pochází z parameters.txt soubor, který je součástí této ukázky. |
-| [Aktualizace dat – referenční dokumentace pro úlohy Azure Stream Analytics](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ReferenceDataRefreshForASAJobs) |Tento příklad ukazuje, jak pomocí Azure Data Factory a Azure Stream Analytics dohromady spouštět dotazy s referenčními daty a nastavit aktualizaci pro referenční data podle plánu. |
-| [Hybridní kanál s Hortonworks místního clusteru Hadoop](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/HybridPipelineWithOnPremisesHortonworksHadoop) |Ukázka používá v místním clusteru Hadoop jako cílové výpočetní prostředí pro spouštění úloh ve službě Data Factory, stejně jako byste přidali další cílových výpočetních prostředí jako HDInsight na základě cluster Hadoop v cloudu. |
-| [Nástroj pro převod formátu JSON](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/JSONConversionTool) |Tento nástroj umožňuje převést JSONs z verze před 2015-07-01-preview nejnovější nebo 2015-07-01-preview (výchozí). |
-| [U-SQL ukázkového vstupního souboru](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/U-SQL%20Sample%20Input%20File) |Tento soubor je ukázkový soubor používá aktivita U-SQL. |
-| [Odstranit soubor objektu blob](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/DeleteBlobFileFolderCustomActivity) | Tato ukázka prezentuje C# souboru, který může sloužit jako součást vlastní aktivitu .net ADF odstranit soubory ze zdrojového umístění objektu Blob Azure, jakmile se soubory zkopírovaly.|
+| [Návod ADF](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ADFWalkthrough) |Tato ukázka poskytuje návod začátku do konce pro zpracování souborů protokolů pomocí Azure Data Factory, chcete-li k přehledům dat ze souborů protokolů v. <br/><br/>V tomto názorném postupu kanálu služby Data Factory shromažďuje ukázky protokolů, procesy a vylepšuje data z protokolů s referenčními daty a transformuje data pro vyhodnocení účinnosti marketingovou kampaň, která byla nedávno spuštěna. |
+| [Ukázky JSON](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/JSON) |Tato ukázka obsahuje příklady JSON pro běžné scénáře. |
+| [Ukázka pro stahování dat protokolu HTTP](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/HttpDataDownloaderSample) |Tato ukázka představuje stahování dat z koncového bodu HTTP do Azure Blob Storage pomocí vlastní aktivitu .NET. |
+| [Mezi ukázkové Net aktivity AppDomain tečka](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/CrossAppDomainDotNetActivitySample) |Tato ukázka umožňuje vytvářet vlastní aktivitu .NET, který není omezen na verze sestavení používají Spouštěč ADF (třeba ve verzi 4.3.0 WindowsAzure.Storage Newtonsoft.Json v6.0.x, atd.). |
+| [Spustit skript jazyka R](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample) |Tato ukázka obsahuje vlastní aktivity služby Data Factory, který můžete použít k vyvolání RScript.exe. Tento příklad funguje pouze s vlastní cluster HDInsight (ne na vyžádání), který už má nainstalovaný jazyk R na něj. |
+| [Vyvolání Sparkových úloh na clusteru HDInsight Hadoop](https://docs.microsoft.com/azure/data-factory/tutorial-transform-data-spark-portal) |Tento příklad ukazuje, jak pomocí aktivity MapReduce k vyvolání programů Spark. Program sparku právě kopíruje data z jednoho kontejneru objektů Blob v Azure do jiného. |
+| [Analýza twitteru pomocí vyhodnocování aktivita služby Azure Machine Learning služby Batch](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-AzureMLBatchScoringActivity) |Tento příklad ukazuje způsob použití u AzureMLBatchScoringActivity k vyvolání Azure Machine Learning model, který provádí analýza sentimentu na twitteru, vyhodnocování, předpovědi atd. |
+| [Analýza twitteru s využitím vlastní aktivity](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-CustomC%23Activity) |Tento příklad ukazuje, jak použít vlastní aktivitu .NET k vyvolání Azure Machine Learning model, který provádí analýza sentimentu na twitteru, vyhodnocování, předpovědi atd. |
+| [Parametrizované kanály pro Azure Machine Learning](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ParameterizedPipelinesForAzureML) |Ukázka obsahuje začátku do konce C# kód pro nasazení N kanály pro vyhodnocování a přetrénování každý s parametrem jiné oblasti, kde seznam oblastí pochází z parameters.txt soubor, který je součástí této ukázky. |
+| [Aktualizace dat – referenční dokumentace pro úlohy Azure Stream Analytics](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ReferenceDataRefreshForASAJobs) |Tento příklad ukazuje, jak pomocí Azure Data Factory a Azure Stream Analytics dohromady spouštět dotazy s referenčními daty a nastavit aktualizaci pro referenční data podle plánu. |
+| [Hybridní kanál s Hortonworks místního clusteru Hadoop](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/HybridPipelineWithOnPremisesHortonworksHadoop) |Ukázka používá v místním clusteru Hadoop jako cílové výpočetní prostředí pro spouštění úloh ve službě Data Factory, stejně jako byste přidali další cílových výpočetních prostředí jako HDInsight na základě cluster Hadoop v cloudu. |
+| [Nástroj pro převod formátu JSON](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/JSONConversionTool) |Tento nástroj umožňuje převést JSONs z verze před 2015-07-01-preview nejnovější nebo 2015-07-01-preview (výchozí). |
+| [U-SQL ukázkového vstupního souboru](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/U-SQL%20Sample%20Input%20File) |Tento soubor je ukázkový soubor používá aktivita U-SQL. |
+| [Odstranit soubor objektu blob](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/DeleteBlobFileFolderCustomActivity) | Tato ukázka prezentuje C# souboru, který může sloužit jako součást vlastní aktivitu .net ADF odstranit soubory ze zdrojového umístění objektu Blob Azure, jakmile se soubory zkopírovaly.|
 
 ## <a name="azure-resource-manager-templates"></a>Šablony Azure Resource Manageru
 Následující šablony Azure Resource Manageru můžete najít pro službu Data Factory na Githubu.

@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 04/02/2018
+ms.date: 06/28/2019
 ms.author: wesmc
-ms.openlocfilehash: 49e0db690818e67f96f5bcefa4f581b1db6da451
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ea7b38f509fcdaa4e41ce17db3beca44b05a59b2
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64697334"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67514478"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Zvolte správné úrovně služby IoT Hub pro vaše řešení
 
@@ -62,6 +62,9 @@ Po vytvoření služby IoT hub, můžete upgradovat z úrovně basic na úroveň
 
 Oddíl konfigurace zůstane beze změny, když migrujete z úrovně basic na úroveň standard.
 
+> [!NOTE]
+> Úroveň free nepodporuje upgrade na úroveň basic nebo standard.
+
 ## <a name="iot-hub-rest-apis"></a>Rozhraní REST API Centra IoT
 
 Rozdíl v podporované možnosti mezi úrovněmi basic a standard služby IoT Hub znamená, že některá volání rozhraní API, nebudou fungovat s hubs úrovně basic. V následující tabulce jsou uvedeny API, které jsou k dispozici:
@@ -70,26 +73,25 @@ Rozdíl v podporované možnosti mezi úrovněmi basic a standard služby IoT Hu
 | --- | ---------- | ------------- |
 | [Odstranění zařízení](https://docs.microsoft.com/rest/api/iothub/service/deletedevice) | Ano | Ano |
 | [Zařízení](https://docs.microsoft.com/rest/api/iothub/service/getdevice) | Ano | Ano |
-| Odstranit modul | Ano | Ano |
-| Získání modulu | Ano | Ano |
+| [Odstranit modul](https://docs.microsoft.com/rest/api/iothub/service/deletemodule) | Ano | Ano |
+| [Získání modulu](https://docs.microsoft.com/rest/api/iothub/service/getmodule) | Ano | Ano |
 | [Získání statistiky registru](https://docs.microsoft.com/rest/api/iothub/service/getdeviceregistrystatistics) | Ano | Ano |
 | [Získání statistiky služby](https://docs.microsoft.com/rest/api/iothub/service/getservicestatistics) | Ano | Ano |
 | [Vytvořit nebo aktualizovat zařízení](https://docs.microsoft.com/rest/api/iothub/service/createorupdatedevice) | Ano | Ano |
-| Vložit modul | Ano | Ano |
+| [Vytvořit nebo aktualizovat modul](https://docs.microsoft.com/rest/api/iothub/service/createorupdatemodule) | Ano | Ano |
 | [Query IoT Hub](https://docs.microsoft.com/rest/api/iothub/service/queryiothub) | Ano | Ano |
-| Moduly dotazu | Ano | Ano |
 | [Vytvoření SAS URI pro nahrání souboru](https://docs.microsoft.com/rest/api/iothub/device/createfileuploadsasuri) | Ano | Ano |
 | [Vázaný oznámení](https://docs.microsoft.com/rest/api/iothub/device/receivedeviceboundnotification) | Ano | Ano |
 | [Odeslat událost zařízení](https://docs.microsoft.com/rest/api/iothub/device/senddeviceevent) | Ano | Ano |
-| Odeslání události modulu | Ano | Ano |
+| Odeslání události modulu | AMQP a protokolu MQTT pouze | AMQP a protokolu MQTT pouze |
 | [Aktualizovat stav nahrávání souboru](https://docs.microsoft.com/rest/api/iothub/device/updatefileuploadstatus) | Ano | Ano |
-| [Operace hromadného zařízení](/rest/api/iot-dps/runbulkenrollmentgroupoperation/runbulkenrollmentgroupoperation) | Ano, s výjimkou funkce IoT Edge | Ano | 
+| [Operace hromadného zařízení](https://docs.microsoft.com/rest/api/iothub/service/bulkcreateorupdatedevices) | Ano, s výjimkou funkce IoT Edge | Ano |
 | [Vyprázdnit frontu příkazů](https://docs.microsoft.com/rest/api/iothub/service/purgecommandqueue) |   | Ano |
 | [Získáte, dvojče zařízení](https://docs.microsoft.com/rest/api/iothub/service/gettwin) |   | Ano |
-| Získáte, dvojče zařízení |   | Ano |
+| [Získáte, dvojče zařízení](https://docs.microsoft.com/rest/api/iothub/service/getmoduletwin) |   | Ano |
 | [Vyvolat metodu zařízení](https://docs.microsoft.com/rest/api/iothub/service/invokedevicemethod) |   | Ano |
-| [Aktualizovat dvojče zařízení](https://docs.microsoft.com/rest/api/iothub/service/updatetwin) |   | Ano | 
-| Aktualizovat dvojče zařízení |   | Ano | 
+| [Aktualizovat dvojče zařízení](https://docs.microsoft.com/rest/api/iothub/service/updatetwin) |   | Ano |
+| [Aktualizovat dvojče zařízení](https://docs.microsoft.com/rest/api/iothub/service/updatemoduletwin) |   | Ano |
 | [Opustit vázán oznámení](https://docs.microsoft.com/rest/api/iothub/device/abandondeviceboundnotification) |   | Ano |
 | [Dokončení zařízení vázán oznámení](https://docs.microsoft.com/rest/api/iothub/device/completedeviceboundnotification) |   | Ano |
 | [Zrušit úlohu](https://docs.microsoft.com/rest/api/iothub/service/canceljob) |   | Ano |

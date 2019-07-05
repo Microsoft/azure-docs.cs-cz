@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 345f492c5b2c754cbbcfa150561ee06b5a4154a5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ede0538e90e9f35797546f34bfed757c2727b194
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64718686"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508872"
 ---
 # <a name="run-apache-sqoop-jobs-in-hdinsight-with-curl"></a>Spouštět úlohy Apache Sqoop v HDInsight pomocí Curl
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -115,4 +115,4 @@ Pro další HDInsight články zahrnující curl:
 * [Vytvořte clustery systému Apache Hadoop pomocí rozhraní Azure REST API](../hdinsight-hadoop-create-linux-clusters-curl-rest.md)
 * [Spustit dotazy Apache Hive s Apache Hadoop v HDInsight pomocí rozhraní REST](apache-hadoop-use-hive-curl.md)
 * [Spuštění úlohy mapreduce je možné s Apache Hadoop v HDInsight pomocí rozhraní REST](apache-hadoop-use-mapreduce-curl.md)
-* [Spuštění úlohy Apache Pig s Apache Hadoop v HDInsight pomocí cURL](apache-hadoop-use-pig-curl.md)
+

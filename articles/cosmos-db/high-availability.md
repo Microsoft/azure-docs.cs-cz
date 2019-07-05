@@ -4,15 +4,15 @@ description: Tento článek popisuje, jak službu Azure Cosmos DB poskytuje vyso
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/29/2019
+ms.date: 06/28/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 23273084826775b47170753dff3e5cf5ed8ae45f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 928c943e21e7d00b87ac1e506b98d47107ac4348
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67063560"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508548"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Vysoká dostupnost s využitím Azure Cosmos DB
 
@@ -54,7 +54,7 @@ Nejsou místních výpadků a Azure Cosmos DB zajišťuje, že vaše databáze b
 
 - Účty v jedné oblasti může dojít ke ztrátě dostupnosti po regionálního výpadku. Vždy doporučujeme nastavit **alespoň dvě oblasti** (pokud možno minimálně dva zapisovat oblastí) pomocí svého účtu Cosmos k zajištění vysoké dostupnosti po celou dobu.
 
-- I v případě vzácné a unfortunate při oblast Azure je trvale nastal neopravitelný není bez ztráty dat. Pokud jsou nakonfigurované výchozí úroveň konzistence účtu Cosmos ve více oblastech *silné*. V případě trvale nezotavitelnou zápisu oblasti, pro více oblastí účty Cosmos nakonfigurovanou konzistenci omezená neaktuálnost, je omezená neaktuálnost okna okno potenciální ztráty dat (*K* nebo *T*); pro relace, konzistentní Předpona a konečný výsledek úrovním, okno potenciální ztráty dat je omezen na maximálně pět sekund. 
+- I v případě vzácné a unfortunate při oblast Azure je trvale nezotavitelnou není bez ztráty dat. Pokud jsou nakonfigurované výchozí úroveň konzistence účtu Cosmos ve více oblastech *silné*. V případě trvale nezotavitelnou zápisu oblasti, pro více oblastí účty Cosmos nakonfigurovanou konzistenci omezená neaktuálnost, je omezená neaktuálnost okna okno potenciální ztráty dat (*K* nebo *T*); pro relace, konzistentní Předpona a konečný výsledek úrovním, okno potenciální ztráty dat je omezen na maximálně pět sekund. 
 
 ## <a name="availability-zone-support"></a>Podpora zóny dostupnosti
 
@@ -70,6 +70,9 @@ Tato funkce je dostupná v těchto oblastech Azure:
 
 * Velká Británie – jih
 * Jihovýchodní Asie 
+* East US
+* Východní USA 2 
+* USA – střed
 
 > [!NOTE] 
 > Povolení zóny dostupnosti pro jednu oblast účet služby Azure Cosmos, bude výsledkem náklady, které jsou ekvivalentní k přidání další oblasti k vašemu účtu. Podrobnosti o cenách najdete v tématu [stránce s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/) a [ve více oblastech nákladů ve službě Azure Cosmos DB](optimize-cost-regions.md) článků. 
@@ -89,7 +92,10 @@ Následující tabulka shrnuje možnost vysoké dostupnosti z různých konfigur
 |Oblastní výpadek – dostupnost  |  Ztráta dostupnosti       |  Ztráta dostupnosti       |  Bez ztráty dostupnosti  |
 |Propustnost    |  Zřízené propustnosti X RU/s      |  Zřízené propustnosti X RU/s       |  2 x zřízená propustnost RU/s <br/><br/> Tento režim konfigurace vyžaduje dvakrát množství propustnost při porovnání do jedné oblasti se zónami dostupnosti, protože existují dvě oblasti.   |
 
-Redundanci zón můžete povolit při přidávání oblasti do nové nebo existující účty služby Azure Cosmos. V současné době můžete jenom povolit redundanci zón s využitím šablon Azure Resource Manageru nebo prostředí PowerShell. Povolit zóny redundance u vašeho účtu Azure Cosmos, byste měli nastavit `isZoneRedundant` příznak `true` pro konkrétní lokalitu. Můžete nastavit tento příznak v rámci vlastnosti umístění. Například následující fragment kódu powershellu umožňuje redundanci zón pro "jihovýchodní Asie":
+> [!NOTE] 
+> Povolení podpory pro zóny dostupnosti, musí mít účet služby Azure Cosmos DB více master/více region zápisu povolené. 
+
+Redundanci zón můžete povolit při přidávání oblasti do nové nebo existující účty služby Azure Cosmos. V současné době můžete povolit jenom redundanci zón s použitím Azure portal, šablon Azure Resource Manageru a Powershellu. Povolit zóny redundance u vašeho účtu Azure Cosmos, byste měli nastavit `isZoneRedundant` příznak `true` pro konkrétní lokalitu. Můžete nastavit tento příznak v rámci vlastnosti umístění. Například následující fragment kódu powershellu umožňuje redundanci zón pro "jihovýchodní Asie":
 
 ```powershell
 $locations = @( 
@@ -97,6 +103,10 @@ $locations = @(
     @{ "locationName"="East US"; "failoverPriority"=1 } 
 ) 
 ```
+
+Zóny dostupnosti můžete povolit pomocí webu Azure portal, při vytváření účtu Azure Cosmos. Když vytvoříte účet, ujistěte se, že chcete povolit **geografickou redundancí**, **zapíše více oblastí**a vyberte oblast, kde se podporují zóny dostupnosti: 
+
+![Povolit zóny dostupnosti pomocí webu Azure portal](./media/high-availability/enable-availability-zones-using-portal.png) 
 
 ## <a name="building-highly-available-applications"></a>Vytváření aplikací s vysokou dostupností
 
@@ -106,7 +116,7 @@ $locations = @(
 
 - I v případě, že je váš účet Cosmos s vysokou dostupností, aplikace nemusí správně navržená k dispozici. K otestování začátku do konce vysokou dostupnost vaší aplikace, pravidelně vyvolat [ruční převzetí služeb při selhání s využitím webu Azure portal nebo rozhraní příkazového řádku Azure](how-to-manage-database-account.md#manual-failover), jako součást vašeho testování aplikace nebo zotavení po havárii (DR) cvičení.
 
-- V prostředí s globálně distribuovanou databázi je přímý vztah mezi konzistence odolnosti úroveň a dat za přítomnosti výpadku celé oblasti. Při vývoji plánu provozní kontinuity musíte pochopit maximální přijatelnou dobu, než úplného obnovení aplikace po ničivé události. Čas potřebný pro aplikaci k plnému obnovení se označuje jako plánovaná doba obnovení (RTO). Také musíte pochopit maximální období posledních aktualizací dat aplikace může tolerovat možnost ztráty při obnovení po ničivé události. Časové období aktualizací, které si může dovolit přijít o se označuje jako cíl bodu obnovení (RPO). RPO a RTO pro službu Azure Cosmos DB najdete v tématu [konzistence úrovně a data odolnosti](consistency-levels-tradeoffs.md#rto)
+- V prostředí s globálně distribuovanou databázi je přímý vztah mezi konzistence odolnosti úroveň a dat za přítomnosti výpadku celé oblasti. Při vývoji plánu provozní kontinuity musíte pochopit maximální přijatelnou dobu, než úplného obnovení aplikace po ničivé události. Čas potřebný pro aplikaci k plnému obnovení se označuje jako plánovaná doba obnovení (RTO). Také musíte pochopit maximální období posledních aktualizací dat aplikace může tolerovat možnost ztráty při obnovení po ničivé události. Časový interval aktualizací, které si můžete dovolit ztratit, se označuje jako cíl bodu obnovení (RPO). RPO a RTO pro službu Azure Cosmos DB najdete v tématu [konzistence úrovně a data odolnosti](consistency-levels-tradeoffs.md#rto)
 
 ## <a name="next-steps"></a>Další postup
 

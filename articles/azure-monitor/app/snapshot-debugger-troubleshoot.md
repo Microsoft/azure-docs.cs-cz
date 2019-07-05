@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 03/07/2019
 ms.author: mbullwin
-ms.openlocfilehash: bf19d4f5ce60411413c21fce12f9fe9d2f391bf1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 25ccf20fc78a9ec00d4dfe23a60e824e96d12945
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60783934"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444548"
 ---
 # <a id="troubleshooting"></a> Poradce při potížích povolení Application Insights Snapshot debuggeru nebo zobrazení snímků
 Je-li povolit Application Insights Snapshot debuggeru pro aplikaci, ale nezobrazují se snímky pro výjimky, můžete použít tyto pokyny k řešení potíží s. Může existovat mnoho různých důvodů, proč se negenerují snímky. Můžete spustit kontrolu stavu snímku k identifikaci některé z běžných příčin.
@@ -38,6 +38,10 @@ Pokud se problém nevyřeší, pak použijte Manuál ke následujících kroků 
 ## <a name="verify-the-instrumentation-key"></a>Ověřte, že Instrumentační klíč
 
 Ujistěte se, že používáte správné Instrumentační klíč v publikované aplikaci. Instrumentační klíč je obvykle čtení ze souboru ApplicationInsights.config. Ověřte, že hodnota je stejná jako Instrumentační klíč pro prostředek služby Application Insights, který se zobrazí na portálu.
+
+## <a name="preview-versions-of-net-core"></a>Verze Preview sady .NET Core
+Pokud aplikace používá verzi preview sady .NET Core a byl zajišťuje Snapshot Debugger [Application Insights podokně](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json) na portálu, pak Snapshot Debugger nespustí. Postupujte podle pokynů na adrese [povolit Snapshot Debugger pro jiná prostředí](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) nejprve chcete zahrnout [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) balíček NuGet s aplikací ***kromě*** se povolí až [Application Insights podokně](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json).
+
 
 ## <a name="upgrade-to-the-latest-version-of-the-nuget-package"></a>Upgrade na nejnovější verzi balíčku NuGet.
 

@@ -2,27 +2,21 @@
 title: Jak naplánovat implementaci připojení k hybridní službě Azure Active Directory v Azure Active Directory (Azure AD) | Dokumentace Microsoftu
 description: Zjistěte, jak nakonfigurovat hybridní zařízení připojená k Azure Active Directory.
 services: active-directory
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-editor: ''
-ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
 ms.subservice: devices
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 04/10/2019
+ms.topic: conceptual
+ms.date: 06/28/2019
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54a1c349ae7cdd66c09db412331c344d6512ecd3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c476c2b326045db37c54a358d68f4b5f8bbaed9a
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67110599"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509603"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Jak: Naplánování vaší implementace připojení k hybridní službě Azure Active Directory
 
@@ -83,7 +77,7 @@ Připojení k hybridní službě Azure AD se aktuálně nepodporuje, pokud vaše
 
 Připojení k hybridní službě Azure AD není aktuálně podporováno při použití infrastruktury virtuálních klientských (počítačů VDI).
 
-Hybridní službě Azure AD se nepodporuje pro čipy TPM kompatibilní se standardem FIPS. Pokud vaše zařízení kompatibilní se standardem FIPS čipy TPM, je nutné zakázat před pokračováním v připojení k hybridní službě Azure AD. Společnost Microsoft neposkytuje žádné nástroje pro zakázání režimu FIPS pro čipy TPM, protože je závislá na výrobce čipu TPM. Obraťte se prosím na hardware pro výrobce OEM pro podporu.
+Připojení k hybridní službě Azure AD se nepodporuje pro čipy TPM kompatibilní se standardem FIPS. Pokud vaše zařízení kompatibilní se standardem FIPS čipy TPM, je nutné zakázat před pokračováním v připojení k hybridní službě Azure AD. Společnost Microsoft neposkytuje žádné nástroje pro zakázání režimu FIPS pro čipy TPM, protože je závislá na výrobce čipu TPM. Obraťte se prosím na hardware pro výrobce OEM pro podporu.
 
 Připojení k hybridní službě Azure AD se nepodporuje pro Windows Server se spuštěnou rolí řadiče domény (DC).
 
@@ -99,13 +93,11 @@ Pokud připojená k vaší doméně Windows 10 už zařízení [registrováno v 
 - Vám může zakázat zařízení připojené k vaší doméně Azure AD registrované přidáním tohoto klíče registru - HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin" = dword: 00000001.
 - Tato změna je teď k dispozici pro verzi Windows 10 1803 s KB4489894 použít. Ale pokud máte Windows Hello pro firmy nakonfigurovaná, uživatel je potřeba re nastavení Windows Hello pro firmy po dvou stavu vyčistit.
 
-
 ## <a name="review-controlled-validation-of-hybrid-azure-ad-join"></a>Zkontrolujte řízené ověřování připojení k hybridní službě Azure AD
 
 Když jsou všechny požadavky na místě, se automaticky zaregistrují zařízení s Windows jako zařízení ve vašem tenantovi Azure AD. Stav těchto identit zařízení ve službě Azure AD se označuje jako připojení k hybridní službě Azure AD. Další informace o konceptech popsaná v tomto článku najdete v článcích [seznámení se správou identit zařízení ve službě Azure Active Directory](overview.md) a [plánování vašeho připojení k hybridní služby Azure Active Directory implementace](hybrid-azuread-join-plan.md).
 
 Organizace může být vhodné provést řízené ověřování připojení k hybridní službě Azure AD, než povolíte napříč celou organizací všechny najednou. Přečtěte si článek [řídí ověřování připojení k hybridní službě Azure AD](hybrid-azuread-join-control.md) pochopit, jak toho dosáhnout.
-
 
 ## <a name="select-your-scenario-based-on-your-identity-infrastructure"></a>Vyberte váš scénář podle vaší infrastruktury identit
 
@@ -135,8 +127,6 @@ Založený na scénáři, který odpovídá vaší infrastruktury identit, nalez
 
 - [Konfigurace hybridních připojení k Azure Active Directory pro federovaném prostředí](hybrid-azuread-join-federated-domains.md)
 - [Konfigurace hybridních připojení k Azure Active Directory pro spravované prostředí](hybrid-azuread-join-managed-domains.md)
-
-
 
 ## <a name="review-on-premises-ad-upn-support-for-hybrid-azure-ad-join"></a>Zkontrolujte místní hlavní název uživatele AD podporu pro připojení k hybridní službě Azure AD
 

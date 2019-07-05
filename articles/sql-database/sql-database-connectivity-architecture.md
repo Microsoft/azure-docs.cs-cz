@@ -1,23 +1,23 @@
 ---
-title: Směruje Azure provoz do Azure SQL Database a SQL Data Warehouse | Dokumentace Microsoftu
-description: Tento dokument popisuje architekturu onnectivity Azcure SQL pro připojení k databázi z Azure nebo z mimo Azure.
+title: Azure SQL Database a SQL Data Warehouse připojení architektury | Dokumentace Microsoftu
+description: Tento dokument popisuje architekturu připojení k Azure SQL pro připojení k databázi z Azure nebo z mimo Azure.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: srdan-bozovic-msft
-ms.author: srbozovi
-ms.reviewer: carlrab
+author: rohitnayakmsft
+ms.author: rohitna
+ms.reviewer: carlrab, vanto
 manager: craigg
-ms.date: 04/03/2019
-ms.openlocfilehash: 4ff6cc0ba18074f353eb5b99af7052edd658a80e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/02/2019
+ms.openlocfilehash: 8441e64981b7157e91a56124a08c0aa02a9b1db0
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66164470"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537929"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Architektura připojení k Azure SQL
 
@@ -57,48 +57,47 @@ Pokud se chcete připojit z mimo Azure, vaše připojení mají zásady připoje
 
 ## <a name="azure-sql-database-gateway-ip-addresses"></a>IP adresy brány Azure SQL Database
 
-Pro připojení k databázi Azure SQL z místních prostředků, budete muset povolit odchozí síťový provoz do Azure SQL Database brány pro vaši oblast Azure. Připojení, jdou pouze přes bránu pro připojení v `Proxy` režim, ve kterém je výchozí nastavení při připojování z místních prostředků.
+Následující tabulka uvádí IP adresy brány podle oblasti. Pro připojení ke službě Azure SQL Database, musíte povolit síťový provoz do a z **všechny** brány pro danou oblast.
 
-V následující tabulce jsou uvedeny primárních a sekundárních IP adresy brány Azure SQL Database pro všechny datové oblasti. V některých oblastech existují dvě IP adresy. V těchto oblastech primární IP adresa je aktuální IP adresu brány a druhou IP adresu je IP adresa převzetí služeb při selhání. Převzetí služeb při selhání adresa je adresa, do kterého jsme může přesunout vašeho serveru, abyste měli vysokou dostupnost služeb. Pro tyto oblasti doporučujeme vám povolit odchozí IP adresy. Druhá IP adresa není ve vlastnictví společnosti Microsoft a není naslouchání žádné služby, dokud je aktivovaná služba Azure SQL Database tak, aby přijímal připojení.
+Od této chvíle, přidáme další brány v jednotlivých oblastech a vyřadit z provozu brány v vyřadit z provozu brány IP adresu ve sloupci v tabulce níže. Další podrobnosti o vyřazení procesu zadaný v následujícím článku: [Provoz migrace do Azure SQL Database k novější brány](sql-database-gateway-migration.md)
 
-| Název oblasti | Primární IP adresu | Sekundární adresa IP |
-| --- | --- |--- |
-| Austrálie – východ | 13.75.149.87 | 40.79.161.1 |
-| Austrálie – jihovýchod | 191.239.192.109 | 13.73.109.251 |
-| Brazílie – jih | 104.41.11.5 | |
-| Kanada – střed | 40.85.224.249 | |
-| Kanada – východ | 40.86.226.166 | |
-| USA – střed | 23.99.160.139 | 13.67.215.62 |
-| Východní Čína 1 | 139.219.130.35 | |
-| Čína – východ 2 | 40.73.82.1 | |
-| Čína – sever 1 | 139.219.15.17 | |
-| Čína – sever 2 | 40.73.50.0 | |
-| Východní Asie | 191.234.2.139 | 52.175.33.150 |
-| USA – východ 1 | 191.238.6.43 | 40.121.158.30 |
-| Východní USA 2 | 191.239.224.107 | 40.79.84.180 * |
-| Francie – střed | 40.79.137.0 | 40.79.129.1 |
-| Německo – střed | 51.4.144.100 | |
-| Severovýchodní Německo | 51.5.144.179 | |
-| Indie – střed | 104.211.96.159 | |
-| Indie – jih | 104.211.224.146 | |
-| Indie – západ | 104.211.160.80 | |
-| Japonsko – východ | 191.237.240.43 | 13.78.61.196 |
-| Japonsko – západ | 191.238.68.11 | 104.214.148.156 |
-| Jižní Korea – střed | 52.231.32.42 | |
-| Jižní Korea – jih | 52.231.200.86 |  |
-| Středoseverní USA | 23.98.55.75 | 23.96.178.199 |
-| Severní Evropa | 191.235.193.75 | 40.113.93.91 |
-| Středojižní USA | 23.98.162.75 | 13.66.62.124 |
-| Jihovýchodní Asie | 23.100.117.95 | 104.43.15.0 |
-| Velká Británie – jih | 51.140.184.11 | |
-| Spojené království – západ | 51.141.8.11| |
-| Západní střed USA | 13.78.145.25 | |
-| Západní Evropa | 191.237.232.75 | 40.68.37.158 |
-| USA – západ 1 | 23.99.34.75 | 104.42.238.205 |
-| Západní USA 2 | 13.66.226.202 | |
-||||
 
-\* **POZNÁMKA:** *USA – východ 2* má také terciární IP adresu z `52.167.104.0`.
+| Název oblasti          | IP adresa brány | Vyřazená z provozu brány </br> IP adresa| Poznámky k vyřazení z provozu | 
+| --- | --- | --- | --- |
+| Austrálie – východ       | 13.75.149.87, 40.79.161.1 | | |
+| Austrálie – jihovýchod | 191.239.192.109, 13.73.109.251 | | |
+| Brazílie – jih         | 104.41.11.5        |                 | |
+| Kanada – střed       | 40.85.224.249      |                 | |
+| Kanada – východ          | 40.86.226.166      |                 | |
+| USA – střed           | 13.67.215.62, 52.182.137.15 | 23.99.160.139 | Žádná připojení po 1. září 2019 |
+| Východní Čína 1         | 139.219.130.35     |                 | |
+| Čína – východ 2         | 40.73.82.1         |                 | |
+| Čína – sever 1        | 139.219.15.17      |                 | |
+| Čína – sever 2        | 40.73.50.0         |                 | |
+| Východní Asie            | 191.234.2.139, 52.175.33.150 |       | |
+| USA – východ 1            | 40.121.158.30, 40.79.153.12 | 191.238.6.43 | Žádná připojení po 1. září 2019 |
+| Východní USA 2            | 40.79.84.180, 52.177.185.181, 52.167.104.0 | 191.239.224.107    | Žádná připojení po 1. září 2019 |
+| Francie – střed       | 40.79.137.0, 40.79.129.1 |           | |
+| Německo – střed      | 51.4.144.100       |                 | |
+| Severovýchodní Německo   | 51.5.144.179       |                 | |
+| Indie – střed        | 104.211.96.159     |                 | |
+| Indie – jih          | 104.211.224.146    |                 | |
+| Indie – západ           | 104.211.160.80     |                 | |
+| Japonsko – východ           | 13.78.61.196, 40.79.184.8, 13.78.106.224 | 191.237.240.43 | Žádná připojení po 1. září 2019 |
+| Japonsko – západ           | 104.214.148.156, 40.74.100.192 | 191.238.68.11 | Žádná připojení po 1. září 2019 |
+| Korea – střed        | 52.231.32.42       |                 | |
+| Jižní Korea – jih          | 52.231.200.86      |                 | |
+| Středoseverní USA     | 23.96.178.199      | 23.98.55.75     | Žádná připojení po 1. září 2019 |
+| Severní Evropa         | 40.113.93.91       | 191.235.193.75  | Žádná připojení po 1. září 2019 |
+| Středojižní USA     | 13.66.62.124       | 23.98.162.75    | Žádná připojení po 1. září 2019 |
+| Jihovýchodní Asie      | 104.43.15.0        | 23.100.117.95   | Žádná připojení po 1. září 2019 |
+| Velká Británie – jih             | 51.140.184.11      |                 | |
+| Spojené království – západ              | 51.141.8.11        |                 | |
+| Západní střed USA      | 13.78.145.25       |                 | |
+| Západní Evropa          | 191.237.232.75, 40.68.37.158 |       | |
+| USA – západ 1            | 23.99.34.75, 104.42.238.205 |        | |
+| Západní USA 2            | 13.66.226.202      |                 | |
+|                      |                    |                 | |
 
 ## <a name="change-azure-sql-database-connection-policy"></a>Změna zásad připojení Azure SQL Database
 
@@ -111,10 +110,7 @@ Chcete-li změnit zásady připojení Azure SQL Database pro server Azure SQL Da
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> Modul Azure PowerShell – Resource Manager je stále podporuje Azure SQL Database, ale všechny budoucí vývoj je Az.Sql modulu. Tyto rutiny najdete v části [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulu Az a moduly AzureRm podstatně totožné.
-
-> [!IMPORTANT]
-> Tento skript vyžaduje [modulu Azure PowerShell](/powershell/azure/install-az-ps).
+> Modul Azure PowerShell – Resource Manager je stále podporuje Azure SQL Database, ale všechny budoucí vývoj je Az.Sql modulu. Tyto rutiny najdete v části [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulu Az a moduly AzureRm podstatně totožné. Tento skript vyžaduje [modulu Azure PowerShell](/powershell/azure/install-az-ps).
 
 Následující skript prostředí PowerShell ukazuje, jak změnit zásady připojení.
 
@@ -137,20 +133,43 @@ Set-AzResource -ResourceId $id -Properties @{"connectionType" = "Proxy"} -f
 > [!IMPORTANT]
 > Tento skript vyžaduje [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
-Následující skript rozhraní příkazového řádku ukazuje, jak změnit zásady připojení.
+### <a name="azure-cli-in-a-bash-shell"></a>Azure CLI v prostředí bash
+
+> [!IMPORTANT]
+> Tento skript vyžaduje [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
+
+Následující skript rozhraní příkazového řádku ukazuje, jak změnit zásady připojení v prostředí bash.
 
 ```azurecli-interactive
 # Get SQL Server ID
 sqlserverid=$(az sql server show -n sql-server-name -g sql-server-group --query 'id' -o tsv)
 
 # Set URI
-id="$sqlserverid/connectionPolicies/Default"
+ids="$sqlserverid/connectionPolicies/Default"
 
 # Get current connection policy
-az resource show --ids $id
+az resource show --ids $ids
 
 # Update connection policy
-az resource update --ids $id --set properties.connectionType=Proxy
+az resource update --ids $ids --set properties.connectionType=Proxy
+```
+
+### <a name="azure-cli-from-a-windows-command-prompt"></a>Rozhraní příkazového řádku Azure z příkazového řádku Windows
+
+> [!IMPORTANT]
+> Tento skript vyžaduje [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
+
+Následující skript rozhraní příkazového řádku ukazuje, jak změnit zásady připojení z příkazového řádku Windows (pomocí Azure CLI nainstalované).
+
+```azurecli
+# Get SQL Server ID and set URI
+FOR /F "tokens=*" %g IN ('az sql server show --resource-group myResourceGroup-571418053 --name server-538465606 --query "id" -o tsv') do (SET sqlserverid=%g/connectionPolicies/Default)
+
+# Get current connection policy
+az resource show --ids %sqlserverid%
+
+# Update connection policy
+az resource update --ids %sqlserverid% --set properties.connectionType=Proxy
 ```
 
 ## <a name="next-steps"></a>Další postup

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e55bf4a66dcd8c1c7cfbc881d6f93c3a12f5dc00
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b8e9ea8956d87e2ec47cc65495e81d8a0f0ad8cb
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112321"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67560923"
 ---
 # <a name="baseline-policy-block-legacy-authentication-preview"></a>Základní zásady: Blok starší verze ověřování (preview)
 
@@ -28,8 +28,6 @@ Azure Active Directory (Azure AD) a poskytovat uživatelům snadný přístup k 
 V současné době většinou všechny tím Ohrozíte pokusů o přihlášení pocházejí ze starší verze ověřování. Starší verze ověřování nepodporuje vícefaktorové ověřování (MFA). I v případě, že máte zásadu vícefaktorového ověřování v adresáři povoleno, chybný actor můžete ověřit pomocí starší verze protokolu a obejít vícefaktorové ověřování.
 
 Nejlepší způsob, jak chránit váš účet ze škodlivých ověřování požadavků od starších verzí protokolů je blokování tyto pokusy všechno dohromady. Aby bylo snazší pro vás k blokování všech žádostí o přihlášení provedených starší protokoly, jsme vytvořili směrný plán zásad, který právě tohle dělá.
-
-![Blok starší verze ověřování s podmíněným přístupem](./media/howto-baseline-protect-legacy-auth/baseline-policy-block-legacy-authentication.png)
 
 **Blok starší verze ověřování** je [základní zásady](concept-baseline-protection.md) , která blokuje všechny žádosti o ověření z starších protokolů. Moderní ověřování, musí využívat pro úspěšné přihlášení pro všechny uživatele. Používá ve spojení se zásadami jiné standardní hodnoty, všechny požadavky přicházející ze starších verzí protokolů se zablokuje a všichni uživatelé budou muset vícefaktorové ověřování pokaždé, když se vyžaduje. Tato zásada nedochází k blokování protokolu Exchange ActiveSync.
 
@@ -111,7 +109,6 @@ Tuto zásadu povolit a chránit vaši organizaci:
 1. Přejděte do **Azure Active Directory** > **podmíněného přístupu**.
 1. V seznamu zásad, vyberte **směrný plán zásad: Blok starší verze ověřování (preview)** .
 1. Nastavte **povolit zásady** k **použít zásady okamžitě**.
-1. Kliknutím na Přidat všechny uživatele vyloučení **uživatelé** > **vybrat vyloučené uživatele** a výběru uživatelů, které je třeba vyloučit. Klikněte na tlačítko **vyberte** pak **provádí**.
 1. Klikněte na tlačítko **Uložit**.
 
 ## <a name="next-steps"></a>Další postup

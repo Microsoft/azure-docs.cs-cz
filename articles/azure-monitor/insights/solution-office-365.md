@@ -10,14 +10,14 @@ ms.service: operations-management-suite
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 05/29/2019
+ms.date: 07/01/2019
 ms.author: bwren
-ms.openlocfilehash: 4c7e1225a8da1e20bc90986d1530b781f7f2c11a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 34c7ecbf235bed838af9ed2f848ca492916583f6
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66357581"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67514209"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Řešení pro správu Office 365 v Azure (Preview)
 
@@ -25,7 +25,7 @@ ms.locfileid: "66357581"
 
 
 > [!NOTE]
-> Povolení doporučovaná metoda pro instalaci a konfiguraci řešení Office 365 [konektor Office 365](../../sentinel/connect-office-365.md) v [Azure Sentinelu](../../sentinel/overview.md) místo pomocí kroků v tomto článku. Toto je řešení pro Office 365 Vylepšená konfigurace prostředí s aktualizovanou verzi. Pokud chcete připojit protokoly Azure AD, použijte [konektor Azure AD pro Azure Sentinel](../../sentinel/connect-azure-active-directory.md), který poskytuje bohatší data protokolů než protokoly správy Office 365. 
+> Povolení doporučovaná metoda pro instalaci a konfiguraci řešení Office 365 [konektor Office 365](../../sentinel/connect-office-365.md) v [Azure Sentinelu](../../sentinel/overview.md) místo pomocí kroků v tomto článku. Toto je řešení pro Office 365 Vylepšená konfigurace prostředí s aktualizovanou verzi. Chcete-li připojit protokoly služby Azure AD, můžete použít buď [Azure ověřovací služby Azure AD connector](../../sentinel/connect-azure-active-directory.md) nebo [nakonfigurovat nastavení diagnostiky služby Azure AD](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md), který nabízí bohatší data protokolu než protokoly pro správu Office 365. 
 >
 > Když jste [Sentinelu připojení Azure](../../sentinel/quickstart-onboard.md), zadejte pracovní prostor Log Analytics, který má nainstalované v řešení sady Office 365. Jakmile povolíte konektor, řešení bude k dispozici v pracovním prostoru a použít stejně jako jakékoli jiné řešení monitorování, který jste si nainstalovali.
 >
@@ -542,7 +542,7 @@ Následující vlastnosti jsou společné pro všechny záznamy Office 365.
 | Vlastnost | Description |
 |:--- |:--- |
 | Type | *OfficeActivity* |
-| Když | IP adresa zařízení použitá při protokolování aktivity. IP adresa se zobrazí ve formátu adresy IPv4 nebo IPv6. |
+| ClientIP | IP adresa zařízení použitá při protokolování aktivity. IP adresa se zobrazí ve formátu adresy IPv4 nebo IPv6. |
 | OfficeWorkload | Služby Office 365, odkazující na záznam.<br><br>AzureActiveDirectory<br>Exchange<br>SharePoint|
 | Operace | Název aktivity uživatele nebo správce.  |
 | Kódu organizace | Identifikátor GUID pro tenanta Office 365 vaší organizace. Tato hodnota bude vždy stejné pro svou organizaci, bez ohledu na služby Office 365, ve kterém se vyskytuje. |

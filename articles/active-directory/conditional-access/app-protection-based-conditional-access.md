@@ -2,28 +2,21 @@
 title: Vyžadovat zásady ochrany aplikací pro přístup k aplikaci cloudu pomocí podmíněného přístupu v Azure Active Directory | Dokumentace Microsoftu
 description: Zjistěte, jak vyžadování zásad ochrany aplikací pro přístup k aplikaci cloudu pomocí podmíněného přístupu v Azure Active Directory.
 services: active-directory
-keywords: Podmíněný přístup k aplikacím, podmíněný přístup s Azure AD, zabezpečený přístup k prostředkům společnosti, zásady podmíněného přístupu
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-editor: ''
-ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: identity
 ms.date: 4/4/2019
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51d209eceec2c7172cf34dc689079e669760149e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9e2e43f13352c56f947f5e560049ab0acf871599
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112745"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509469"
 ---
 # <a name="require-app-protection-policy-for-cloud-app-access-with-conditional-access-preview"></a>Vyžadovat zásady ochrany aplikací pro přístup k aplikaci cloudu pomocí podmíněného přístupu (preview)
 
@@ -55,7 +48,6 @@ Podobně jako na dodržování předpisů, která je ohlášena Intune pro iOS a
 - Uživatelé, kteří nemůže přijímat zásady ochrany aplikací Intune.
 - Intune zásad ochrany aplikací, které nejsou nakonfigurované pro příjem zásad.
 
-
 ## <a name="before-you-begin"></a>Než začnete
 
 Tento článek předpokládá, že už znáte:
@@ -64,7 +56,6 @@ Tento článek předpokládá, že už znáte:
 - [Schválené klientské aplikace požadavek](technical-reference.md#approved-client-app-requirement) technické reference.
 - Základní koncepty [podmíněného přístupu v Azure Active Directory](overview.md).
 - Jak [nakonfigurovat zásady podmíněného přístupu](app-based-mfa.md).
-
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -87,7 +78,7 @@ Tento scénář předpokládá, že uživatel:
 - Obdrží e-mailu, která označuje, že přístup je k dispozici pouze prostřednictvím aplikace Outlook.
 - Soubory ke stažení aplikace s odkazem.
 - Otevře se aplikace Outlook a přihlásí se pomocí přihlašovacích údajů Azure AD.
-- Se zobrazí výzva k instalaci buď Microsoft Authenticator pro iOS použití nebo portál společnosti Intune pro Android pomocí pokračujte.
+- Se zobrazí výzva k instalaci buď **aplikaci Microsoft Authenticator** nebo **portál společnosti Intune** pokračujte.
 - Nainstaluje aplikaci a vrátí do aplikace Outlook, abyste mohli pokračovat.
 - Se zobrazí výzva k registraci zařízení.
 - Můžou přijímat zásady ochrany aplikací Intune.
@@ -104,27 +95,23 @@ Zásady podmíněného přístupu v tomto kroku nakonfigurujte následující ko
 ![Podmíněný přístup](./media/app-protection-based-conditional-access/01.png)
 
 1. Zadejte název své zásady podmíněného přístupu.
+1. V části **přiřazení**v **uživatelů a skupin**, vyberte aspoň jednoho uživatele nebo skupinu pro jednotlivé zásady podmíněného přístupu.
+1. V **cloudové aplikace**vyberte **Office 365 Exchange Online**.
 
-2. V části **přiřazení**v **uživatelů a skupin**, vyberte aspoň jednoho uživatele nebo skupinu pro jednotlivé zásady podmíněného přístupu.
+   ![Podmíněný přístup](./media/app-protection-based-conditional-access/07.png)
 
-3. V **cloudové aplikace**vyberte **Office 365 Exchange Online**.
+1. V **podmínky**, nakonfigurujte **platformy zařízení** a **klientské aplikace (preview)** :
+   1. V **platformy zařízení**vyberte **Android** a **iOS**.
 
-    ![Podmíněný přístup](./media/app-protection-based-conditional-access/07.png)
+      ![Podmíněný přístup](./media/app-protection-based-conditional-access/03.png)
 
-4. V **podmínky**, nakonfigurujte **platformy zařízení** a **klientské aplikace (preview)** :
+   1. V **klientské aplikace (preview)** vyberte **mobilní aplikace a desktopoví klienti** a **klienti moderního ověřování**.
 
-    a. V **platformy zařízení**vyberte **Android** a **iOS**.
+      ![Podmíněný přístup](./media/app-protection-based-conditional-access/91.png)
 
-    ![Podmíněný přístup](./media/app-protection-based-conditional-access/03.png)
+1. V části **ovládací prvky přístupu**vyberte **vyžadovat zásady ochrany aplikací (preview)** .
 
-    b. V **klientské aplikace (preview)** vyberte **mobilní aplikace a desktopoví klienti** a **klienti moderního ověřování**.
-
-    ![Podmíněný přístup](./media/app-protection-based-conditional-access/91.png)
-
-5. V části **ovládací prvky přístupu**vyberte **vyžadovat zásady ochrany aplikací (preview)** .
-
-    ![Podmíněný přístup](./media/app-protection-based-conditional-access/05.png)
- 
+   ![Podmíněný přístup](./media/app-protection-based-conditional-access/05.png)
 
 **Krok 2: Konfigurace zásad podmíněného přístupu Azure AD pro Exchange Online s ActiveSync (EAS)**
 
@@ -133,38 +120,30 @@ Zásady podmíněného přístupu v tomto kroku nakonfigurujte následující ko
 ![Podmíněný přístup](./media/app-protection-based-conditional-access/06.png)
 
 1. Zadejte název své zásady podmíněného přístupu.
+1. V části **přiřazení**v **uživatelů a skupin**, vyberte aspoň jednoho uživatele nebo skupinu pro jednotlivé zásady podmíněného přístupu.
+1. V **cloudové aplikace**vyberte **Office 365 Exchange Online**.
 
-2. V části **přiřazení**v **uživatelů a skupin**, vyberte aspoň jednoho uživatele nebo skupinu pro jednotlivé zásady podmíněného přístupu.
+   ![Podmíněný přístup](./media/app-protection-based-conditional-access/07.png)
 
+1. V **podmínky**, nakonfigurujte **klientské aplikace (preview)** . 
 
-3. V **cloudové aplikace**vyberte **Office 365 Exchange Online**.
+   1. V **klientské aplikace (preview)** vyberte **mobilní aplikace a desktopoví klienti** a **klientů protokolu Exchange ActiveSync**.
 
-    ![Podmíněný přístup](./media/app-protection-based-conditional-access/07.png)
+      ![Podmíněný přístup](./media/app-protection-based-conditional-access/92.png)
 
-4. V **podmínky**, nakonfigurujte **klientské aplikace (preview)** . 
+   1. V části **ovládací prvky přístupu**vyberte **vyžadovat zásady ochrany aplikací (preview)** .
 
-    a. V **klientské aplikace (preview)** vyberte **mobilní aplikace a desktopoví klienti** a **klientů protokolu Exchange ActiveSync**.
-
-    ![Podmíněný přístup](./media/app-protection-based-conditional-access/92.png)
-
-    b. V části **ovládací prvky přístupu**vyberte **vyžadovat zásady ochrany aplikací (preview)** .
-
-    ![Podmíněný přístup](./media/app-protection-based-conditional-access/05.png)
-
+      ![Podmíněný přístup](./media/app-protection-based-conditional-access/05.png)
 
 **Krok 3: Nakonfigurujte zásady ochrany aplikací Intune pro iOS a Android klientské aplikace**
-
 
 ![Podmíněný přístup](./media/app-protection-based-conditional-access/09.png)
 
 Další informace najdete v tématu [ochrana dat a aplikací pomocí Microsoft Intune](https://docs.microsoft.com/intune-classic/deploy-use/protect-apps-and-data-with-microsoft-intune).
 
-
-
 ## <a name="app-protection-based-or-compliant-device-policy-for-exchange-online"></a>Aplikace založené na ochranu nebo kompatibilní zařízení zásady pro Exchange Online
 
 Tento scénář se skládá z aplikace na základě ochrany nebo kompatibilní zařízení s zásady podmíněného přístupu pro přístup k Exchangi Online.
-
 
 ### <a name="scenario-playbook"></a>Scénář playbook
 
@@ -177,7 +156,6 @@ Tento scénář předpokládá, že:
 - Uživatel přístup k e-mailu v Outlooku a zásady ochrany aplikací Intune, pokud není zaregistrovaná.
 - Pokud je zařízení zaregistrované, má uživatel přístup e-mailu v Outlooku.
 
-
 ### <a name="configuration"></a>Konfigurace
 
 **Krok 1: Konfigurace zásad podmíněného přístupu Azure AD pro Exchange Online**
@@ -187,34 +165,27 @@ Zásady podmíněného přístupu v tomto kroku nakonfigurujte následující ko
 ![Podmíněný přístup](./media/app-protection-based-conditional-access/62.png)
 
 1. Zadejte název své zásady podmíněného přístupu.
+1. V části **přiřazení**v **uživatelů a skupin**, vyberte aspoň jednoho uživatele nebo skupinu pro jednotlivé zásady podmíněného přístupu.
+1. V **cloudové aplikace**vyberte **Office 365 Exchange Online**. 
 
-2. V části **přiřazení**v **uživatelů a skupin**, vyberte aspoň jednoho uživatele nebo skupinu pro jednotlivé zásady podmíněného přístupu.
+   ![Podmíněný přístup](./media/app-protection-based-conditional-access/07.png)
 
-3. V **cloudové aplikace**vyberte **Office 365 Exchange Online**. 
-
-     ![Podmíněný přístup](./media/app-protection-based-conditional-access/07.png)
-
-4. V **podmínky**, nakonfigurujte **platformy zařízení** a **klientské aplikace (preview)** . 
+1. V **podmínky**, nakonfigurujte **platformy zařízení** a **klientské aplikace (preview)** . 
  
-    a. V **platformy zařízení**vyberte **Android** a **iOS**.
+   1. V **platformy zařízení**vyberte **Android** a **iOS**.
 
-    ![Podmíněný přístup](./media/app-protection-based-conditional-access/03.png)
+      ![Podmíněný přístup](./media/app-protection-based-conditional-access/03.png)
 
-    b. V **klientské aplikace (preview)** vyberte **mobilní aplikace a desktopoví klienti** a **klienti moderního ověřování**.
+   1. V **klientské aplikace (preview)** vyberte **mobilní aplikace a desktopoví klienti** a **klienti moderního ověřování**.
 
-    ![Podmíněný přístup](./media/app-protection-based-conditional-access/91.png)
+      ![Podmíněný přístup](./media/app-protection-based-conditional-access/91.png)
 
 5. V části **ovládací prvky přístupu**, vyberte následující možnosti:
-
    - **Vyžadovat, aby zařízení bylo označené jako vyhovující**
-
    - **Vyžadovat zásady ochrany aplikací (preview)**
-
    - **Vyžadovat jeden z vybraných ovládacích prvků**   
  
-     ![Podmíněný přístup](./media/app-protection-based-conditional-access/11.png)
-
-
+      ![Podmíněný přístup](./media/app-protection-based-conditional-access/11.png)
 
 **Krok 2: Konfigurace zásad podmíněného přístupu Azure AD pro Exchange Online s ActiveSync**
 
@@ -223,62 +194,48 @@ Zásady podmíněného přístupu v tomto kroku nakonfigurujte následující ko
 ![Podmíněný přístup](./media/app-protection-based-conditional-access/06.png)
 
 1. Zadejte název své zásady podmíněného přístupu.
+1. V části **přiřazení**v **uživatelů a skupin**, vyberte aspoň jednoho uživatele nebo skupinu pro jednotlivé zásady podmíněného přístupu.
+1. V **cloudové aplikace**vyberte **Office 365 Exchange Online**. 
 
-2. V části **přiřazení**v **uživatelů a skupin**, vyberte aspoň jednoho uživatele nebo skupinu pro jednotlivé zásady podmíněného přístupu.
+   ![Podmíněný přístup](./media/app-protection-based-conditional-access/07.png)
 
-3. V **cloudové aplikace**vyberte **Office 365 Exchange Online**. 
+1. V **podmínky**, nakonfigurujte **klientské aplikace (preview)** . 
 
-    ![Podmíněný přístup](./media/app-protection-based-conditional-access/07.png)
+   V **klientské aplikace (preview)** vyberte **mobilní aplikace a desktopoví klienti** a **klientů protokolu Exchange ActiveSync**.
 
-4. V **podmínky**, nakonfigurujte **klientské aplikace (preview)** . 
+   ![Podmíněný přístup](./media/app-protection-based-conditional-access/92.png)
 
-    V **klientské aplikace (preview)** vyberte **mobilní aplikace a desktopoví klienti** a **klientů protokolu Exchange ActiveSync**.
-
-    ![Podmíněný přístup](./media/app-protection-based-conditional-access/92.png)
-
-5. V části **ovládací prvky přístupu**, vyberte následující možnosti:
-
+1. V části **ovládací prvky přístupu**, vyberte následující možnosti:
    - **Vyžadovat, aby zařízení bylo označené jako vyhovující**
-
    - **Vyžadovat zásady ochrany aplikací (preview)**
-
    - **Vyžadovat jeden z vybraných ovládacích prvků**
 
-     ![Podmíněný přístup](./media/app-protection-based-conditional-access/11.png)
-
-
+      ![Podmíněný přístup](./media/app-protection-based-conditional-access/11.png)
 
 **Krok 3: Nakonfigurujte zásady ochrany aplikací Intune pro iOS a Android klientské aplikace**
-
 
 ![Podmíněný přístup](./media/app-protection-based-conditional-access/09.png)
 
 Další informace najdete v tématu [ochrana dat a aplikací pomocí Microsoft Intune](https://docs.microsoft.com/intune-classic/deploy-use/protect-apps-and-data-with-microsoft-intune).
 
-
-
-
-
 ## <a name="app-protection-based-and-compliant-device-policy-for-exchange-online"></a>Aplikace založené na ochranu a vyhovující zařízení zásady pro Exchange Online
 
 Tento scénář se skládá z na základě aplikace ochrany a vyhovující zařízení zásady podmíněného přístupu pro přístup k Exchangi Online.
-
 
 ### <a name="scenario-playbook"></a>Scénář playbook
 
 Tento scénář předpokládá, že uživatel:
  
--   Nastaví e-mailu pro připojení k systému Exchange pomocí nativní poštovní aplikace v Iosu nebo Androidu.
--   Obdrží e-mailu, která označuje, že přístup vyžaduje registraci jejich zařízení.
--   Soubory ke stažení portálu společnosti Intune a přihlásí se k portálu.
--   Ověří e-mailu a se zobrazí výzva, aby používali aplikaci Outlook.
--   Soubory ke stažení aplikace Outlook.
--   Otevře se aplikace Outlook a zadá přihlašovací údaje použité pro registraci.
--   Můžou přijímat zásady ochrany aplikací Intune.
--   Přístup k e-mailu v Outlooku a zásady ochrany aplikací Intune.
+- Nastaví e-mailu pro připojení k systému Exchange pomocí nativní poštovní aplikace v Iosu nebo Androidu.
+- Obdrží e-mailu, která označuje, že přístup vyžaduje registraci jejich zařízení.
+- Soubory ke stažení portálu společnosti Intune a přihlásí se k portálu.
+- Ověří e-mailu a se zobrazí výzva, aby používali aplikaci Outlook.
+- Soubory ke stažení aplikace Outlook.
+- Otevře se aplikace Outlook a zadá přihlašovací údaje použité pro registraci.
+- Můžou přijímat zásady ochrany aplikací Intune.
+- Přístup k e-mailu v Outlooku a zásady ochrany aplikací Intune.
 
 Před udělením přístupu k firemním datům, aktivují se všechny zásady ochrany aplikací Intune. Zásady můžou vyzvat uživatele k restartování aplikace nebo použít další PIN kód. To platí, pokud jsou zásady nakonfigurované pro aplikace a platformy.
-
 
 ### <a name="configuration"></a>Konfigurace
 
@@ -289,34 +246,26 @@ Zásady podmíněného přístupu v tomto kroku nakonfigurujte následující ko
 ![Podmíněný přístup](./media/app-protection-based-conditional-access/01.png)
 
 1. Zadejte název své zásady podmíněného přístupu.
+1. V části **přiřazení**v **uživatelů a skupin**, vyberte aspoň jednoho uživatele nebo skupinu pro jednotlivé zásady podmíněného přístupu.
+1. V **cloudové aplikace**vyberte **Office 365 Exchange Online**. 
 
-2. V části **přiřazení**v **uživatelů a skupin**, vyberte aspoň jednoho uživatele nebo skupinu pro jednotlivé zásady podmíněného přístupu.
+   ![Podmíněný přístup](./media/app-protection-based-conditional-access/07.png)
 
-3. V **cloudové aplikace**vyberte **Office 365 Exchange Online**. 
+1. V **podmínky**, nakonfigurujte **platformy zařízení** a **klientské aplikace (preview)** . 
+   1. V **platformy zařízení**vyberte **Android** a **iOS**.
 
-     ![Podmíněný přístup](./media/app-protection-based-conditional-access/07.png)
+      ![Podmíněný přístup](./media/app-protection-based-conditional-access/03.png)
 
-4. V **podmínky**, nakonfigurujte **platformy zařízení** a **klientské aplikace (preview)** . 
- 
-    a. V **platformy zařízení**vyberte **Android** a **iOS**.
+   1. V **klientské aplikace (preview)** vyberte **mobilní aplikace a desktopoví klienti** a **klienti moderního ověřování**.
 
-    ![Podmíněný přístup](./media/app-protection-based-conditional-access/03.png)
+      ![Podmíněný přístup](./media/app-protection-based-conditional-access/91.png)
 
-    b. V **klientské aplikace (preview)** vyberte **mobilní aplikace a desktopoví klienti** a **klienti moderního ověřování**.
-
-    ![Podmíněný přístup](./media/app-protection-based-conditional-access/91.png)
-
-5. V části **ovládací prvky přístupu**, vyberte následující možnosti:
-
+1. V části **ovládací prvky přístupu**, vyberte následující možnosti:
    - **Vyžadovat, aby zařízení bylo označené jako vyhovující**
-
    - **Vyžadovat zásady ochrany aplikací (preview)**
-
    - **Vyžadovat všechny vybrané ovládací prvky**   
  
-     ![Podmíněný přístup](./media/app-protection-based-conditional-access/13.png)
-
-
+      ![Podmíněný přístup](./media/app-protection-based-conditional-access/13.png)
 
 **Krok 2: Konfigurace zásad podmíněného přístupu Azure AD pro Exchange Online s ActiveSync**
 
@@ -325,44 +274,33 @@ Zásady podmíněného přístupu v tomto kroku nakonfigurujte následující ko
 ![Podmíněný přístup](./media/app-protection-based-conditional-access/06.png)
 
 1. Zadejte název své zásady podmíněného přístupu.
+1. V části **přiřazení**v **uživatelů a skupin**, vyberte aspoň jednoho uživatele nebo skupinu pro jednotlivé zásady podmíněného přístupu.
+1. V **cloudové aplikace**vyberte **Office 365 Exchange Online**. 
 
-2. V části **přiřazení**v **uživatelů a skupin**, vyberte aspoň jednoho uživatele nebo skupinu pro jednotlivé zásady podmíněného přístupu.
+   ![Podmíněný přístup](./media/app-protection-based-conditional-access/07.png)
 
-3. V **cloudové aplikace**vyberte **Office 365 Exchange Online**. 
+1. V **podmínky**, nakonfigurujte **klientské aplikace (preview)** . 
 
-    ![Podmíněný přístup](./media/app-protection-based-conditional-access/07.png)
+   V **klientské aplikace (preview)** vyberte **mobilní aplikace a desktopoví klienti** a **klientů protokolu Exchange ActiveSync**.
 
-4. V **podmínky**, nakonfigurujte **klientské aplikace (preview)** . 
+   ![Podmíněný přístup](./media/app-protection-based-conditional-access/92.png)
 
-    V **klientské aplikace (preview)** vyberte **mobilní aplikace a desktopoví klienti** a **klientů protokolu Exchange ActiveSync**.
-
-    ![Podmíněný přístup](./media/app-protection-based-conditional-access/92.png)
-
-5. V části **ovládací prvky přístupu**, vyberte následující možnosti:
-
+1. V části **ovládací prvky přístupu**, vyberte následující možnosti:
    - **Vyžadovat, aby zařízení bylo označené jako vyhovující**
-
    - **Vyžadovat zásady ochrany aplikací (preview)**
-
    - **Vyžadovat všechny vybrané ovládací prvky**   
  
-     ![Podmíněný přístup](./media/app-protection-based-conditional-access/13.png)
-
-
-
+      ![Podmíněný přístup](./media/app-protection-based-conditional-access/13.png)
 
 **Krok 3: Nakonfigurujte zásady ochrany aplikací Intune pro iOS a Android klientské aplikace**
-
 
 ![Podmíněný přístup](./media/app-protection-based-conditional-access/09.png)
 
 Další informace najdete v tématu [ochrana dat a aplikací pomocí Microsoft Intune](https://docs.microsoft.com/intune-classic/deploy-use/protect-apps-and-data-with-microsoft-intune).
 
-
 ## <a name="app-protection-based-or-app-based-policy-for-exchange-online-and-sharepoint-online"></a>Aplikace na základě ochrany nebo aplikací na zásady pro Exchange Online a SharePoint Online
 
 Tento scénář se skládá ze zásad aplikací na základě ochrany nebo schválených aplikací pro přístup k Exchangi Online a SharePoint Online.
-
 
 ### <a name="scenario-playbook"></a>Scénář playbook
 
@@ -396,45 +334,34 @@ Zásady podmíněného přístupu v tomto kroku nakonfigurujte následující ko
 ![Podmíněný přístup](./media/app-protection-based-conditional-access/62.png)
 
 1. Zadejte název své zásady podmíněného přístupu.
+1. V části **přiřazení**v **uživatelů a skupin**, vyberte aspoň jednoho uživatele nebo skupinu pro jednotlivé zásady podmíněného přístupu.
+1. V **cloudové aplikace**vyberte **Office 365 Exchange Online**. 
 
-2. V části **přiřazení**v **uživatelů a skupin**, vyberte aspoň jednoho uživatele nebo skupinu pro jednotlivé zásady podmíněného přístupu.
+   ![Podmíněný přístup](./media/app-protection-based-conditional-access/02.png)
 
-3. V **cloudové aplikace**vyberte **Office 365 Exchange Online**. 
+1. V **podmínky**, nakonfigurujte **platformy zařízení** a **klientské aplikace (preview)** . 
+   1. V **platformy zařízení**vyberte **Android** a **iOS**.
 
-     ![Podmíněný přístup](./media/app-protection-based-conditional-access/02.png)
+      ![Podmíněný přístup](./media/app-protection-based-conditional-access/03.png)
 
-4. V **podmínky**, nakonfigurujte **platformy zařízení** a **klientské aplikace (preview)** . 
- 
-    a. V **platformy zařízení**vyberte **Android** a **iOS**.
+   1. V **klientské aplikace (preview)** vyberte **mobilní aplikace a desktopoví klienti** a **klienti moderního ověřování**.
 
-    ![Podmíněný přístup](./media/app-protection-based-conditional-access/03.png)
+      ![Podmíněný přístup](./media/app-protection-based-conditional-access/91.png)
 
-    b. V **klientské aplikace (preview)** vyberte **mobilní aplikace a desktopoví klienti** a **klienti moderního ověřování**.
-
-    ![Podmíněný přístup](./media/app-protection-based-conditional-access/91.png)
-
-5. V části **ovládací prvky přístupu**, vyberte následující možnosti:
-
+1. V části **ovládací prvky přístupu**, vyberte následující možnosti:
    - **Vyžadovat klientem schválenou aplikaci**
-
    - **Vyžadovat zásady ochrany aplikací (preview)**
-
    - **Vyžadovat jeden z vybraných ovládacích prvků**
  
-     ![Podmíněný přístup](./media/app-protection-based-conditional-access/12.png)
-
+      ![Podmíněný přístup](./media/app-protection-based-conditional-access/12.png)
 
 **Krok 2: Nakonfigurujte zásady ochrany aplikací Intune pro iOS a Android klientské aplikace**
-
 
 ![Podmíněný přístup](./media/app-protection-based-conditional-access/09.png)
 
 Další informace najdete v tématu [ochrana dat a aplikací pomocí Microsoft Intune](https://docs.microsoft.com/intune-classic/deploy-use/protect-apps-and-data-with-microsoft-intune).
 
-
-
-
 ## <a name="next-steps"></a>Další postup
 
 - Pokud chcete vědět, jak nakonfigurovat zásady podmíněného přístupu najdete v tématu [vyžadovat vícefaktorové ověřování pro konkrétní aplikace, pomocí Azure Active Directory podmíněného přístupu](app-based-mfa.md).
-- Pokud jste připraveni nakonfigurovat zásady podmíněného přístupu pro vaše prostředí, přečtěte si téma [osvědčené postupy pro podmíněný přístup v Azure Active Directory](best-practices.md). 
+- Pokud jste připraveni nakonfigurovat zásady podmíněného přístupu pro vaše prostředí, přečtěte si téma [osvědčené postupy pro podmíněný přístup v Azure Active Directory](best-practices.md).

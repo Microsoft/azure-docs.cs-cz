@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/21/2019
-ms.openlocfilehash: 7d26d4c924ba2b7116b95e0b396652e49ca1b8f2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 218085d8d3969218be1a0557fdc477c730879cbe
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059401"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67543693"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Optimalizovat dotazy Apache Hive v Azure HDInsight
 
@@ -195,7 +195,7 @@ Existují další metody optimalizace, které můžete zvážit, například:
 V tomto článku jste se naučili několik běžných metody optimalizace dotazů Hive. Další informace naleznete v následujících článcích:
 
 * [Použití Apache Hivu ve službě HDInsight](hadoop/hdinsight-use-hive.md)
-* [Analyzovat zpoždění letů pomocí Apache Hive v HDInsight](hdinsight-analyze-flight-delay-data-linux.md)
+* [Analyzovat zpoždění letů pomocí interaktivního dotazu v HDInsight](/azure/hdinsight/interactive-query/interactive-query-tutorial-analyze-flight-data)
 * [Analýza dat Twitteru pomocí Apache Hive v HDInsight](hdinsight-analyze-twitter-data-linux.md)
 
 [image-hdi-optimize-hive-scaleout_1]: ./media/hdinsight-hadoop-optimize-hive-query/scaleout_1.png

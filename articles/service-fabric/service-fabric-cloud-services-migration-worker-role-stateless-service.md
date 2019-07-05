@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 10fb44b0e76282ad78e7687beaa2e50e819e5cd9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e82abd6a7915123a94b4355e24cb94f13f9693c8
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62109997"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67550389"
 ---
 # <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>Příručka k převodu webové a pracovní role pro bezstavové služby Service Fabric
 Tento článek popisuje, jak migrovat Cloud Services – webové a pracovní role do bezstavové služby Service Fabric. Toto je nejjednodušší postupu migrace ze služby Cloud Services do Service Fabric pro aplikace, jejichž architektury se to zůstat přibližně stejná.
@@ -32,7 +32,7 @@ Rozdíl je, že projekt cloudové služby páry v odstupu nasazení aplikace s n
 ![Porovnání projekt Service Fabric a Cloud Services][3]
 
 ## <a name="worker-role-to-stateless-service"></a>Role pracovního procesu pro bezstavové služby
-Role pracovního procesu koncepčně, představuje bezstavovou úlohu, to znamená každou instanci sady funkcí je stejný jako a je možné směrovat požadavky na jakoukoli instanci v každém okamžiku. Každá instance není očekáván pamatovat předchozí žádosti. Stav, který pracuje úlohy se spravuje přes nebo externího stavu úložiště, jako je Azure Table Storage nebo Azure Document DB. V Service Fabric tento typ úlohy je reprezentován bezstavovou službu. Nejjednodušším přístupem při migraci Role pracovního procesu do Service Fabric můžete udělat převedením kód Role pracovního procesu pro bezstavové služby.
+Role pracovního procesu koncepčně, představuje bezstavovou úlohu, to znamená každou instanci sady funkcí je stejný jako a je možné směrovat požadavky na jakoukoli instanci v každém okamžiku. Každá instance není očekáván pamatovat předchozí žádosti. Stav, který pracuje úlohy se spravuje přes nebo externího stavu úložiště, jako je například Azure Table Storage nebo Azure Cosmos DB. V Service Fabric tento typ úlohy je reprezentován bezstavovou službu. Nejjednodušším přístupem při migraci Role pracovního procesu do Service Fabric můžete udělat převedením kód Role pracovního procesu pro bezstavové služby.
 
 ![Role pracovního procesu pro bezstavové služby][4]
 

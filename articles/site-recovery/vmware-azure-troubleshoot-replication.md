@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/14/2019
+ms.date: 06/27/2019
 ms.author: mayg
-ms.openlocfilehash: 3221b2bd18b8b0756f280d88fffc6016d0498b8f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c005dcee78e2a9338dc7a816e06d9a78a2f355b6
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64924827"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491675"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>Řešení problémů replikace pro virtuální počítače VMware a fyzické servery
 
@@ -77,6 +77,13 @@ Prostřednictvím výše zajistit, že existují žádné připojení, šířku 
         - Služba VSS
         - Azure Site Recovery VSS Provider
         - Služba VDS
+
+- Pokud používáte úlohy SQL nebo Exchange, zkontrolujte protokoly tyto aplikace zapisovačů selhání. Častým chybám a jejich řešení jsou zachyceny v následujících článcích:
+    -  [Možnost Automatické ukončení databáze systému SQL Server je nastavena na hodnotu TRUE](https://support.microsoft.com/help/4504104)
+    - [SQL Server 2008 R2 vyvolání-Neopakovatelná chyba](https://support.microsoft.com/help/4504103)
+    - [Známý problém nástroje SQL Server 2016 a 2017](https://support.microsoft.com/help/4493364)
+    - [Běžný problém Exchange servery 2013 a 2016](https://support.microsoft.com/help/4037535)
+
 
 ### <a name="source-machines-with-high-churn-error-78188"></a>Zdrojové počítače s vysokou četností změn dat [Chyba 78188]
 

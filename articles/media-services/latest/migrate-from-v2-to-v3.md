@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 05/01/2019
 ms.author: juliako
-ms.openlocfilehash: b9293dc8be4fb50a657093090b0e6d76de5b5d31
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: b85b06552dcd0fc419302882f05814adbd454f46
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67303520"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67542567"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Pokyny k migraci pro přechod ze služby Media Services v2 na v3
 
@@ -60,6 +60,7 @@ Pokud máte službu poskytování videí dnes vyvinuté v horní části [starš
 * Pro prostředky vytvořené pomocí v3, služba Media Services podporuje pouze [šifrování na straně serveru úložiště Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-service-encryption).
     * Můžete použít rozhraní API v3 s prostředky, které jsou vytvořené pomocí rozhraní API v2, který měl [šifrování úložiště](../previous/media-services-rest-storage-encryption.md) (AES 256) poskytované službou Media Services.
     * Nelze vytvořit nové prostředky pomocí starší verze AES 256 [šifrování úložiště](../previous/media-services-rest-storage-encryption.md) pomocí rozhraní API v3.
+* Vlastnosti prostředku ve verzi 3 se liší od v2, naleznete v tématu [mapování vlastnosti](assets-concept.md#map-v3-asset-properties-to-v2).
 * Sady SDK verze 3 se nyní oddělený od sady SDK služby Storage, což vám dává větší kontrolu nad verzi sady SDK služby Storage použít a správa verzí – potíže se vyhnete. 
 * V rozhraní API v3 kódování přenosové rychlosti jsou všechny bity za sekundu. To se liší od v2, který přednastavení kodéru Media Encoder Standard. Například s přenosovou rychlostí v v2 by byl zadán jako 128 (kb/s), ale ve verzi 3 by bylo 128000 (bitů za sekundu). 
 * Entity AssetFiles AccessPolicies a IngestManifests neexistují ve verzi 3.

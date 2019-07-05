@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: raynew
-ms.openlocfilehash: 5ed41013535e4591d88bff5c017c1fcf4c4053cc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a16ed7134fc9f3c159715f58f116de3fb30e8aca
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65237804"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67481112"
 ---
 # <a name="back-up-an-sap-hana-database"></a>Zálohovat databázi SAP HANA
 
@@ -22,15 +22,13 @@ ms.locfileid: "65237804"
 > [!NOTE]
 > Tato funkce je aktuálně ve verzi public preview. Aktuálně není připraveno na produkční a nemá zaručené smlouvy SLA. 
 
-
 ## <a name="scenario-support"></a>Scénáře podpory
 
 **Podpora** | **Podrobnosti**
 --- | ---
 **Podporované zeměpisných oblastech** | Austrálie – jihovýchod, Austrálie – východ <br> Brazílie – jih <br> Canada Central, Canada East <br> Jihovýchodní Asie, jihovýchodní Asie <br> USA – východ, USA – východ 2, střed USA – Západ, USA – Západ, USA – západ 2, USA (střed) – sever, střed USA, USA (střed) – jih<br> India Central, India South <br> Japonsko – západ, Japonsko – východ<br> Jižní Korea – střed, Jižní Korea – jih <br> Severní Evropa, Západní Evropa <br> Velká Británie – Jih, Velká Británie – západ
 **Podporované operační systémy pro virtuální počítač** | SLES 12 SP2 nebo s aktualizací SP3.
-**Podporované verze HANA** | SSDC on HANA 1.x MDC on HANA 2.x < = SPS03
-
+**Podporované verze HANA** | SDC on HANA 1.x MDC on HANA 2.x < = SPS03
 
 ### <a name="current-limitations"></a>Aktuální omezení
 
@@ -39,12 +37,9 @@ ms.locfileid: "65237804"
 - Zálohovat můžete pouze databáze v režimu vertikálně navýšit kapacitu.
 - Můžete zálohovat databázi protokolů každých 15 minut. Zálohy protokolů pouze začít tok po dokončení úspěšného úplné zálohy databáze.
 - Můžete provést úplné a rozdílové zálohy. Přírůstkové zálohování se momentálně nepodporuje.
-- Zásady zálohování nelze změnit po použití zálohování SAP HANA. Pokud chcete zálohování s různými nastaveními, vytvořte novou zásadu nebo přiřazení různých zásad. 
-    - Chcete-li vytvořit novou zásadu, v trezoru klikněte na tlačítko **zásady** > **zásady zálohování** >  **+ přidat** > **SAP HANA v Virtuální počítač Azure**a zadejte nastavení zásad.
-    - Pro přiřazení různých zásad ve vlastnostech virtuálního počítače s databází, klikněte na název aktuální zásady. Pak na **zásady zálohování** stránky můžete vybrat jinou zásadu pro zálohování.
-
-
-
+- Zásady zálohování nelze změnit po použití zálohování SAP HANA. Pokud chcete zálohování s různými nastaveními, vytvořte novou zásadu nebo přiřazení různých zásad.
+  - Chcete-li vytvořit novou zásadu, v trezoru klikněte na tlačítko **zásady** > **zásady zálohování** >  **+ přidat** > **SAP HANA v Virtuální počítač Azure**a zadejte nastavení zásad.
+  - Pro přiřazení různých zásad ve vlastnostech virtuálního počítače s databází, klikněte na název aktuální zásady. Pak na **zásady zálohování** stránky můžete vybrat jinou zásadu pro zálohování.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -57,14 +52,16 @@ Ujistěte se, že proveďte následující kroky konfigurace zálohování:
 
         ![Možnost instalace balíčku](./media/backup-azure-sap-hana-database/hana-package.png)
 
-2.  Na virtuálním počítači instalace a povolení balíčky ovladačů ODBC z oficiální SLES balíčku/média pomocí zypperu, následujícím způsobem:
+2. Na virtuálním počítači instalace a povolení balíčky ovladačů ODBC z oficiální SLES balíčku/média pomocí zypperu, následujícím způsobem:
 
-    ``` 
+    ```unix
     sudo zypper update
     sudo zypper install unixODBC
     ```
-4.  Povolit připojení z virtuálního počítače k Internetu, takže ho můžete navázat komunikaci s Azure, jak je popsáno v postupu.
 
+3. Povolit připojení z virtuálního počítače k Internetu, takže ho můžete navázat komunikaci s Azure, jak je popsáno v postupu [níže](#set-up-network-connectivity).
+
+4. Spusťte skript před registrací ve virtuálním počítači nainstalovanou HANA jako uživatel root. Skript k dispozici [na portálu](#discover-the-databases) v toku a je potřeba nastavit [klikněte pravým tlačítkem myši oprávnění](backup-azure-sap-hana-database-troubleshoot.md#setting-up-permissions).
 
 ### <a name="set-up-network-connectivity"></a>Nastavit připojení k síti
 
@@ -80,7 +77,7 @@ Připojit k verzi public preview následujícím způsobem:
 - Na portálu pro registraci k poskytovateli služby Recovery Services pomocí ID vašeho předplatného [článku](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-register-provider-errors#solution-3---azure-portal). 
 - Pro prostředí PowerShell spusťte tuto rutinu. By se měla dokončit jako "Registrováno".
 
-    ```
+    ```powershell
     PS C:>  Register-AzProviderFeature -FeatureName "HanaBackup" –ProviderNamespace Microsoft.RecoveryServices
     ```
 
@@ -89,7 +86,6 @@ Připojit k verzi public preview následujícím způsobem:
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
 ## <a name="discover-the-databases"></a>Zjistit databáze
-
 
 1. V trezoru v **Začínáme**, klikněte na tlačítko **zálohování**. V **ve kterém je spuštěná vaše úloha?** vyberte **SAP HANA ve virtuálním počítači Azure**.
 2. Klikněte na tlačítko **spustit vyhledávání**. Tím se zahájí zjišťování nechráněné virtuální počítače s Linuxem v oblasti trezoru.
@@ -104,7 +100,7 @@ Připojit k verzi public preview následujícím způsobem:
 6. Azure Backup zjistí všechny databáze SAP HANA ve virtuálním počítači. Během zjišťování Azure Backup v trezoru zaregistruje virtuální počítač a nainstaluje rozšíření ve virtuálním počítači. V databázi se neinstaluje žádný agent.
 
     ![Zjistit databáze SAP HANA](./media/backup-azure-sap-hana-database/hana-discover.png)
-    
+
 ## <a name="configure-backup"></a>Konfigurace zálohování  
 
 Nyní povolte zálohování.
@@ -116,6 +112,7 @@ Nyní povolte zálohování.
 5. Sledovat průběh na konfiguraci zálohování **oznámení** části portálu.
 
 ### <a name="create-a-backup-policy"></a>Vytvoření zásady zálohování
+
 Zásady zálohování definují, kdy zálohy jsou prováděny, a jak dlouho se uchovávají.
 
 - Zásady se vytvářejí na úrovni trezoru.
@@ -189,6 +186,5 @@ Pokud chcete vytvořit zálohu místní (pomocí nástroje Studio HANA), který 
 
 ## <a name="next-steps"></a>Další postup
 
+[Další informace o](backup-azure-sap-hana-database-troubleshoot.md) řešení potíží s běžnými chybami při používání zálohování SAP HANA ve virtuálních počítačích Azure.
 [Další informace o](backup-azure-arm-vms-prepare.md) zálohování virtuálních počítačů Azure.
-
-

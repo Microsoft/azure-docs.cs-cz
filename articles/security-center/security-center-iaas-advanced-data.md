@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/29/2019
 ms.author: monhaber
-ms.openlocfilehash: 76e691df0a026802682b57ff78496f6b66d7ff79
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: ed94b92a34e2989c9f2226c344ac4d34a279eeac
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67154830"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551845"
 ---
 # <a name="advanced-data-security-for-sql-servers-on-azure-virtual-machines-public-preview"></a>Pokročilé data zabezpečení pro servery SQL Server na virtuálních počítačích Azure (Public Preview)
 Pokročilé data zabezpečení pro servery SQL v Azure Virtual Machines je jednotný balíček pro pokročilé funkce zabezpečení SQL. Aktuálně (ve verzi Public Preview) obsahuje funkce pro zpřístupnění a zmírnění potenciální ohrožení zabezpečení databáze a detekuje neobvyklé aktivity, které může znamenat hrozbu pro vaše databáze. 
@@ -95,7 +95,7 @@ Můžete zobrazit a spravovat své aktuální výstrahy zabezpečení.
 
 Můžete nastavit seznam příjemců pro příjem e-mailové oznámení, když ASC výstrahy jsou generovány. E-mailu obsahuje přímý odkaz na upozornění ve službě Azure Security Center s všechny relevantní informace. 
 
-1. Přejděte na **Security Center** > **zásady zabezpečení** a v řádku kliknutím na příslušné předplatné **upravit nastavení >** .
+1. Přejděte na **Security Center** > **ceny na & stavení** a klikněte na příslušné předplatné
 
     ![Nastavení předplatného](./media/security-center-advanced-iaas-data/subscription-settings.png)
 

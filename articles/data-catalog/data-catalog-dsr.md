@@ -7,12 +7,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 5ffbee1b4fdfc08b111e199e73baae19341b1022
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 85753e788284396262053aad8cf567ad5cd71fee
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65775669"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509284"
 ---
 # <a name="supported-data-sources-in-azure-data-catalog"></a>Podporované zdroje dat ve službě Azure Data Catalog
 
@@ -152,7 +152,7 @@ Metadata můžete publikovat pomocí veřejné rozhraní API nebo kliknutím-jed
       <td></td>
     </tr>
     <tr>
-      <td>Zobrazení SQL Data Warehouse</td>
+      <td>Zobrazení služby Azure SQL Data Warehouse</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -165,7 +165,7 @@ Metadata můžete publikovat pomocí veřejné rozhraní API nebo kliknutím-jed
       <td>✓</td>
       <td>✓</td>
       <td>Aplikace Excel, Power BI Desktopu</td>
-      <td></td>
+      <td>SQL Server 2008 a novějších verzích.</td>
     </tr>
     <tr>
       <td>SQL Server Analysis Services klíčového ukazatele výkonu</td>
@@ -173,7 +173,7 @@ Metadata můžete publikovat pomocí veřejné rozhraní API nebo kliknutím-jed
       <td>✓</td>
       <td>✓</td>
       <td>Aplikace Excel, Power BI Desktopu</td>
-      <td></td>
+      <td>SQL Server 2008 a novějších verzích.</td>
     </tr>
     <tr>
       <td>Míra SQL Server Analysis Services</td>
@@ -181,7 +181,7 @@ Metadata můžete publikovat pomocí veřejné rozhraní API nebo kliknutím-jed
       <td>✓</td>
       <td>✓</td>
       <td>Aplikace Excel, Power BI Desktopu</td>
-      <td></td>
+      <td>SQL Server 2008 a novějších verzích.</td>
     </tr>
     <tr>
       <td>Tabulka SQL Server Analysis Services</td>
@@ -189,15 +189,15 @@ Metadata můžete publikovat pomocí veřejné rozhraní API nebo kliknutím-jed
       <td>✓</td>
       <td>✓</td>
       <td>Aplikace Excel, Power BI Desktopu</td>
-      <td></td>
+      <td>SQL Server 2008 a novějších verzích.</td>
     </tr>
     <tr>
       <td>Sestavy služby SQL Server Reporting Services</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>Prohlížeč</td>
-      <td>Pouze servery v nativním režimu. Režim serveru SharePoint není podporován.</td>
+      <td>Browser</td>
+      <td>Pouze servery v nativním režimu. Režim serveru SharePoint není podporován. SQL Server 2008 a novějších verzích pouze</td>
     </tr>
     <tr>
       <td>Tabulka SQL serveru</td>
@@ -205,7 +205,7 @@ Metadata můžete publikovat pomocí veřejné rozhraní API nebo kliknutím-jed
       <td>✓</td>
       <td>✓</td>
       <td>Nástroje aplikace Excel, Power BI Desktopu, SQL Server data tools</td>
-      <td></td>
+      <td>SQL Server 2008 a novějších verzích.</td>
     </tr>
     <tr>
       <td>Zobrazení systému SQL Server</td>
@@ -213,7 +213,7 @@ Metadata můžete publikovat pomocí veřejné rozhraní API nebo kliknutím-jed
       <td>✓</td>
       <td>✓</td>
       <td>Nástroje aplikace Excel, Power BI Desktopu, SQL Server data tools</td>
-      <td></td>
+      <td>SQL Server 2008 a novějších verzích.</td>
     </tr>
     <tr>
       <td>Tabulka Teradata</td>

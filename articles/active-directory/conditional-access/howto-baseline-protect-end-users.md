@@ -11,20 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5b72be0dbe35cf95eed404c7c1407c53f5f2ecb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f2644e0e35139ac470b89f6af1b95cf510f60a0a
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112349"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561005"
 ---
 # <a name="baseline-policy-end-user-protection-preview"></a>Základní zásady: Ochrana koncového uživatele (preview)
 
 Často Představujeme myslíte, že účty správců jsou to jediné účty, které potřebují ochranu pomocí služby Multi-Factor authentication (MFA). Správci mají široký přístup k citlivým informacím a můžete provádět změny nastavení na úrovni předplatného. Nesprávnými účastníky však mají tendenci cíl koncovým uživatelům. Po získání přístupu, tyto nesprávnými účastníky můžete požádat o přístup k privilegovaným informace jménem původního vlastníka účtu nebo stáhnout celý adresář k provedení útoku phishing v celé organizaci. Jeden běžnou metodu ke zlepšení ochrany pro všechny uživatele je tak, aby vyžadovala silnější formu ověření účtu, jako je například vícefaktorové ověřování (MFA).
 
 K dosažení přiměřené rovnováhu mezi zabezpečení a použitelnost, by neměla uživatelé vyzváni pokaždé, když jeden přihlašuje. Požadavky na ověření, které odpovídají chování běžného uživatele, jako je například přihlášení ze stejného zařízení ze stejného umístění, mají nízké riziko ohrožení zabezpečení. Pouze přihlášení, která se považují za riziková a zobrazit vlastnosti objektu actor chybný měla zobrazit výzva s MFA výzvy.
-
-![Vyžadovat vícefaktorové ověřování pro uživatele](./media/howto-baseline-protect-end-users/baseline-policy-end-user-protection.png)
 
 Ochrana koncového uživatele je MFA na základě rizik [základní zásady](concept-baseline-protection.md) všichni uživatelé v adresáři, včetně všech rolí správce, které chrání. Když se tyto zásady vyžaduje všichni uživatelé k registraci pro vícefaktorové ověřování pomocí ověřovací aplikace. Uživatelé můžou ignorovat řádku registrace MFA za 14 dní, po jejichž uplynutí bude se mu zablokovat přihlášení, dokud se registrace pro vícefaktorové ověřování. Po registraci pro vícefaktorové ověřování, budou uživatelé vyzváni pro vícefaktorové ověřování pouze během rizikové pokusů o přihlášení. Ohrožení uživatelských účtů jsou blokovány, dokud resetovat své heslo a zamítnutou rizikové události.
 
@@ -60,17 +58,6 @@ Poštovní klienti k podání žádostí o ověření používají starší verz
 > [!WARNING]
 > Předtím, než tuto zásadu povolit, ujistěte se, že vaši uživatelé nepoužívají starší ověřovací protokoly. Přečtěte si článek [jak: Blok starší verze ověřování do služby Azure AD s podmíněným přístupem](howto-baseline-protect-legacy-auth.md#identify-legacy-authentication-use) Další informace.
 
-### <a name="user-exclusions"></a>Vyloučení uživatele
-
-Tyto zásady na směrný plán poskytuje možnost vyloučit uživatele. Než povolíte zásady pro vašeho tenanta, doporučujeme, abyste kromě následující účty:
-
-* **Nouzový přístup** nebo **skleněné** účty, aby se zabránilo uzamčení účtu celého tenanta. V nepravděpodobném scénáři, které jsou všichni správci zamknutí mimo vašeho tenanta je možné přihlásit tenanta kroky zkuste obnovit přístup k účtu pro správu přístupu nouze.
-   * Další informace najdete v článku, [spravovat účty pro nouzový přístup ve službě Azure AD](../users-groups-roles/directory-emergency-access.md).
-* **Účty služeb** a **služby Principy**, jako je například účet Azure AD Connect Sync. Účty služeb jsou neinteraktivní účty, které nejsou vázané na konkrétního uživatele. Tyto jsou obvykle používány back endové služby a povolit programový přístup k aplikacím. Účty služby by měl vyloučen, protože nelze dokončit vícefaktorové ověřování, prostřednictvím kódu programu.
-   * Pokud má vaše organizace tyto účty používané v skripty a kód, zvažte nahrazení pomocí [spravovaných identit](../managed-identities-azure-resources/overview.md). Jako dočasné řešení můžete vyloučit tyto konkrétní účty ze základní zásady.
-* Uživatelé, kteří nemají nebo nebudete moci používat Smartphone.
-   * Tato zásada vyžaduje, aby uživatelé registrace pro vícefaktorové ověřování pomocí aplikace Microsoft Authenticator.
-
 ## <a name="enable-the-baseline-policy"></a>Povolit zásady směrný plán
 
 Zásady **směrný plán zásad: Ochrana koncového uživatele (preview)** vybavená předem nakonfigurovaným a se zobrazí v horní části, když přejdete do okna podmíněného přístupu na webu Azure portal.
@@ -81,7 +68,6 @@ Tuto zásadu povolit a chránit uživatele:
 1. Přejděte do **Azure Active Directory** > **podmíněného přístupu**.
 1. V seznamu zásad, vyberte **směrný plán zásad: Ochrana koncového uživatele (preview)** .
 1. Nastavte **povolit zásady** k **použít zásady okamžitě**.
-1. Kliknutím na Přidat všechny uživatele vyloučení **uživatelé** > **vybrat vyloučené uživatele** a výběru uživatelů, které je třeba vyloučit. Klikněte na tlačítko **vyberte** pak **provádí**.
 1. Klikněte na tlačítko **Uložit**.
 
 ## <a name="next-steps"></a>Další postup

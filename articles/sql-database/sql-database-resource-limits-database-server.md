@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 manager: craigg
 ms.date: 04/18/2019
-ms.openlocfilehash: 06e61d30f0d4e598c48f190572b8b4343f351043
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4e4c0a6cd25587b33c06526b57e6acdbebb69c8b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65762793"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445627"
 ---
 # <a name="sql-database-resource-limits-for-azure-sql-database-server"></a>Limity prostředků SQL Database pro server Azure SQL Database
 
@@ -44,6 +44,9 @@ Tento článek obsahuje přehled služby SQL Database omezení prostředků pro 
 > Jako počet databází, které se blíží limitu na serveru služby SQL Database, může dojít následujících:
 > - Zvyšování latence ve spuštěném dotazy v hlavní databázi.  To zahrnuje zobrazení statistik využití prostředků, jako je například sys.resource_stats.
 > - Zvyšuje latenci při operacích správy a vykreslování portálu přehledů, které se týkají databáze na serveru.
+
+### <a name="storage-size"></a>Velikost úložiště
+- Pro izolované databáze rources najdete buď [omezení prostředků na základě DTU](sql-database-dtu-resource-limits-single-databases.md) nebo [omezení prostředků na základě virtuálních jader](sql-database-vcore-resource-limits-single-databases.md) pro omezení velikosti úložiště na cenovou úroveň.
 
 ## <a name="what-happens-when-database-resource-limits-are-reached"></a>Co se stane, když je dosaženo omezení prostředků databáze
 

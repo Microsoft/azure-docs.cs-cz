@@ -1,24 +1,21 @@
 ---
 title: Vysvětlení fakturace správní role pro Microsoft zákaznických smluv – Azure
 description: Další informace o fakturace rolí pro fakturační účty v Azure pro Microsoft zákaznických smluv.
-services: billing
-documentationcenter: ''
 author: amberbhargava
 manager: amberbhargava
-editor: ''
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/28/2019
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 780870cc71e95507a52ba6a9338026f895a96ac1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 12e492fee95192d0af49ff7b6a5be3144398fef8
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60370886"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490439"
 ---
 # <a name="understand-microsoft-customer-agreement-administrative-roles-in-azure"></a>Vysvětlení smlouvy zákazníků společnosti Microsoft pro správu role v Azure
 
@@ -46,7 +43,7 @@ Následující tabulka popisuje fakturace rolí umožňuje spravovat vaše faktu
 
 ## <a name="billing-account-roles-and-tasks"></a>Fakturace účtu role a úlohy
 
-Fakturační účet vám umožní spravovat fakturaci pro vaši organizaci. Fakturační účet můžete uspořádat nákladů, sledování nákladů a faktury a řízení přístupu k fakturaci pro vaši organizaci. Další informace najdete v tématu [pochopit fakturační účet](billing-mca-overview.md#understand-billing-account).
+Fakturační účet vám umožní spravovat fakturaci pro vaši organizaci. Fakturační účet můžete uspořádat nákladů, sledování nákladů a faktury a řízení přístupu k fakturaci pro vaši organizaci. Další informace najdete v tématu [pochopit fakturační účet](billing-mca-overview.md#your-billing-account).
 
 Jakou roli, budete potřebovat k provádění úloh v rámci fakturačního účtu v následujících tabulkách.
 
@@ -92,7 +89,7 @@ Jakou roli, budete potřebovat k provádění úloh v rámci fakturačního úč
 
 ## <a name="billing-profile-roles-and-tasks"></a>Fakturační profil role a úlohy
 
-Fakturační profil vám umožní spravovat faktury a platby. Měsíční faktuře se vygeneruje pro předplatná Azure a další produkty nákupu využít fakturační profil. Pomocí metody platby zaplatit fakturu. Další informace najdete v tématu [pochopit fakturaci profily](billing-mca-overview.md#understand-billing-profiles).
+Fakturační profil vám umožní spravovat faktury a platby. Měsíční faktuře se vygeneruje pro předplatná Azure a další produkty nákupu využít fakturační profil. Pomocí metody platby zaplatit fakturu. Další informace najdete v tématu [pochopit fakturaci profily](billing-mca-overview.md#billing-profiles).
 
 Následující tabulky popisují, jaké role je potřeba dokončit úlohy v rámci fakturační profil.
 
@@ -142,7 +139,7 @@ Následující tabulky popisují, jaké role je potřeba dokončit úlohy v rám
 
 ## <a name="invoice-section-roles-and-tasks"></a>Role části faktury a úlohy
 
-Oddíl faktury umožňuje uspořádat náklady na vaší faktuře. Můžete vytvořit části uspořádat svoje náklady podle oddělení, vývojové prostředí, nebo na základě potřeb vaší organizace. Dalším osobám udělit oprávnění vytvářet předplatná Azure pro oddíl. Poplatky za využívání a nákup předplatných a zobrazit v části faktury. Další informace najdete v tématu [části faktury porozumění](billing-mca-overview.md#understand-invoice-sections).
+Oddíl faktury umožňuje uspořádat náklady na vaší faktuře. Můžete vytvořit části uspořádat svoje náklady podle oddělení, vývojové prostředí, nebo na základě potřeb vaší organizace. Dalším osobám udělit oprávnění vytvářet předplatná Azure pro oddíl. Poplatky za využívání a nákup předplatných a zobrazit v části faktury. Další informace najdete v tématu [části faktury porozumění](billing-mca-overview.md#invoice-sections).
 
 Následující tabulky popisují, jaké role, které potřebujete k provádění úloh v rámci části faktury.
 
@@ -185,7 +182,7 @@ Následující tabulka ukazuje, jakou roli, budete potřebovat k provádění ú
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-2. Hledat na **Cost Management a fakturace**.
+2. Vyhledejte **Cost Management a fakturace**.
 
    ![Snímek obrazovky zobrazující Azure search na portálu](./media/billing-understand-mca-roles/billing-search-cost-management-billing.png)
 

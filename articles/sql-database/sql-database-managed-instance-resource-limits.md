@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 manager: craigg
-ms.date: 06/13/2019
-ms.openlocfilehash: 89df33f453217585e8f0b8ff13d06ee223474fae
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.date: 06/26/2019
+ms.openlocfilehash: a0846a7d03cc2f63af6747c8b8514b563c1d4a5d
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67272238"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447800"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Přehled Azure SQL Database managed instance omezení prostředků
 
@@ -42,6 +42,9 @@ Spravované instance Azure SQL Database je možné nasadit na dvou generacemi ha
 | OLTP v paměti maximální paměti | Instance omezení: 3 GB na vCore<br/>Omezení databáze:<br/> -8 jádry: 8 GB na databázi<br/> -16 jádry: 20 GB na databázi<br/> -24jádra: 36 GB na databázi | Instance omezení: 2,5 GB na vCore<br/>Omezení databáze:<br/> -8 jádry: 13 GB na databázi<br/> -16 jádry: 32 GB na databázi |
 | Maximální místo v úložišti instancí (Obecné) |  8 TB | 8 TB |
 | Maximální velikost úložiště instance (pro důležité obchodní informace) | 1 TB | 1 TB, 2 TB nebo 4 TB, v závislosti na počtu jader |
+
+> [!IMPORTANT]
+> Nové databáze Gen4 již nejsou podporovány v oblasti AustraliaEast.
 
 ### <a name="service-tier-characteristics"></a>Vlastnosti úrovně služeb
 

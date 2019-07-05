@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 06/04/2019
 ms.author: rogirdh
 ms.custom: ''
-ms.openlocfilehash: 8827feaf1d541edc7c0b54d8af951ddab79c5aaa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5a60e41d3195c0f7d88fd3ba14336d693d2f528e
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66808614"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446687"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure-preview"></a>Řešení aplikace Oracle integrace Microsoft Azure a Oracle cloudové infrastruktury (preview)
 
@@ -74,5 +74,7 @@ Identita je jedním z pilířů core partnerství mezi společnostmi Microsoft a
 V současné době Tato integrace vám umožní spravovat na jednom centrálním místě, což je Azure Active Directory. Azure AD synchronizuje všechny změny v adresáři s odpovídající adresář Oracle a slouží pro jednotné přihlašování k cloudu Oracle řešení.
 
 ## <a name="next-steps"></a>Další postup
+
+Začněte [cloudu sítě](configure-azure-oci-networking.md) mezi Azure a OCI. 
 
 Další informace a dokumenty White Paper o OCI, najdete v článku [Oracle cloudu](https://docs.cloud.oracle.com/iaas/Content/home.htm) dokumentaci.

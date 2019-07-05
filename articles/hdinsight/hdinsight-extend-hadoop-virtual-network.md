@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/17/2019
-ms.openlocfilehash: 0dbcc99850d0a8b3b7306fac2bd8f89e6c941e4c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 61a208f3e84125acc2a3cb22d3abccf16587e581
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67163663"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67543678"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Rozšíření Azure HDInsight pomocí Azure Virtual Network
 
@@ -67,9 +67,7 @@ Pomocí kroků v této části zjistíte, jak přidat nové HDInsight do existuj
 
     Jakmile připojený, HDInsight, které jsou nainstalovány v síti správce prostředků může interagovat s prostředky v klasickou síť.
 
-2. Používáte vynucené tunelování? Vynucené tunelování znamená nastavení podsítě, která vynutí odchozí internetový provoz do zařízení pro kontrolu a protokolování. HDInsight nepodporuje vynucené tunelování. Buď odeberte vynucené tunelování před nasazením HDInsight do existující podsítě, nebo vytvořte novou podsíť žádné vynucené tunelování pro HDInsight.
-
-3. Používáte skupiny zabezpečení sítě, tras definovaných uživatelem nebo virtuální síťová zařízení k omezení provozu do nebo ven z virtuální sítě?
+2. Používáte skupiny zabezpečení sítě, tras definovaných uživatelem nebo virtuální síťová zařízení k omezení provozu do nebo ven z virtuální sítě?
 
     HDInsight je spravovaná služba, vyžaduje neomezený přístup k několika IP adresami v datovém centru Azure. Povolit komunikaci se tyto IP adresy, aktualizujte všechny existující skupiny zabezpečení sítě nebo trasy definované uživatelem.
     
@@ -108,7 +106,7 @@ Pomocí kroků v této části zjistíte, jak přidat nové HDInsight do existuj
 
         Další informace najdete v tématu [řešení potíží s trasami](../virtual-network/diagnose-network-routing-problem.md) dokumentu.
 
-4. Vytvoření clusteru HDInsight a vyberte virtuální síť Azure během konfigurace. Vysvětlení procesu vytváření clusteru pomocí kroků v následujících dokumentech:
+3. Vytvoření clusteru HDInsight a vyberte virtuální síť Azure během konfigurace. Vysvětlení procesu vytváření clusteru pomocí kroků v následujících dokumentech:
 
     * [Vytvoření HDInsight pomocí webu Azure Portal](hdinsight-hadoop-create-linux-clusters-portal.md)
     * [Vytvoření HDInsight pomocí Azure PowerShellu](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
@@ -247,14 +245,14 @@ Vynucené tunelování znamená konfigurace směrování definované uživatelem
 
 ## <a id="hdinsight-ip"></a> Požadované IP adresy
 
-> [!IMPORTANT]  
-> Stav a správu služeb Azure musí být schopný komunikovat s HDInsight. Pokud používáte skupiny zabezpečení sítě nebo trasy definované uživatelem, umožňují provoz z IP adresy pro tyto služby k dosažení HDInsight.
->
+Pokud používáte skupiny zabezpečení sítě nebo trasy definované uživatelem pro řízení provozu, musíte povolit přenosy z IP adres pro stavu a Správa služby Azure tak, aby mohly komunikovat s vaším clusterem HDInsight. Některé z IP adresy se liší podle oblastí a některé z nich použít pro všemi oblastmi Azure. Také budete muset povolit přenosy ze služby Azure DNS, pokud nepoužíváte vlastní DNS. Musíte také povolit provoz mezi virtuálními počítači v rámci podsítě. Pokud chcete zjistit IP adresy, které musí být povoleno, postupujte následovně:
+
+> [!Note]  
 > Pokud je velmi riskantní používat skupiny zabezpečení sítě nebo uživatelem definované trasy k řízení provozu, můžete ignorovat tento oddíl.
 
-Pokud používáte skupiny zabezpečení sítě, musí umožňovat provoz ze služeb Azure stavu a správa na HDInsight clusterů na portu 443. Musíte také povolit provoz mezi virtuálními počítači v rámci podsítě. Pokud chcete zjistit IP adresy, které musí být povoleno, postupujte následovně:
+1. Pokud používáte službu DNS poskytnutých platformou Azure, povolit přístup z __168.63.129.16__ na port 53. Další informace najdete v tématu [překlad názvů pro virtuální počítače a Role instancí](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) dokumentu. Pokud používáte vlastní DNS, tento krok přeskočte.
 
-1. Vždy musí povolit provoz z následujících IP adres:
+2. Povolit provoz z následujících IP adres služeb Azure stavu a správy, které platí pro všechny oblasti Azure:
 
     | Zdrojová IP adresa | Cíl  | Direction |
     | ---- | ----- | ----- |
@@ -263,7 +261,7 @@ Pokud používáte skupiny zabezpečení sítě, musí umožňovat provoz ze slu
     | 168.61.48.131 | \*:443 | Příchozí |
     | 138.91.141.162 | \*:443 | Příchozí |
 
-2. Pokud váš cluster HDInsight je v jednom z následujících oblastí, musíte povolit přenosy z IP adresy uvedené pro oblast:
+3. Povolit přenos ze služeb Azure stavu a správa v konkrétní oblasti, kde se nachází vaše prostředky uvedené IP adresy:
 
     > [!IMPORTANT]  
     > Pokud není uveden oblast Azure, které používáte, pak použijte pouze čtyři IP adresy z kroku 1.
@@ -303,8 +301,6 @@ Pokud používáte skupiny zabezpečení sítě, musí umožňovat provoz ze slu
     | &nbsp; | Západní USA 2 | 52.175.211.210</br>52.175.222.222 | \*:443 | Příchozí |
 
     Informace o IP adres k používání pro Azure Government, najdete v článku [Azure Government inteligence a analýza](https://docs.microsoft.com/azure/azure-government/documentation-government-services-intelligenceandanalytics) dokumentu.
-
-3. Musíte také povolit přístup z __168.63.129.16__. Tato adresa je rekurzivní překladače Azure. Další informace najdete v tématu [překlad názvů pro virtuální počítače a Role instancí](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) dokumentu.
 
 Další informace najdete v tématu [řízení síťového provozu](#networktraffic) oddílu.
 

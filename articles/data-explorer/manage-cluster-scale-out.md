@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 04/05/2019
-ms.openlocfilehash: 24bbddd28943adc929fbaea456eeae8165db290c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/30/2019
+ms.openlocfilehash: 882f44683bbdc7f4eb49ff4912ca7a33187afbf8
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60758644"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537905"
 ---
 # <a name="manage-cluster-scale-out-to-accommodate-changing-demand"></a>Správa clusteru škálování tak, aby vyhovovaly měnících se požadavků
 
@@ -76,10 +76,10 @@ Následující obrázek znázorňuje tok následujících několika krocích. Da
 
 Nyní jste nakonfigurovali operace škálování pro váš cluster Průzkumník dat Azure. Přidáte další pravidlo pro operace škálování na méně instancí. Tato konfigurace umožňuje škálovat cluster dynamicky na základě metrik, který zadáte.
 
-Můžete také [spravovat vertikálně navýšit kapacitu clusteru](manage-cluster-scale-up.md) vhodné k určení velikosti clusteru.
-
 Pokud potřebujete pomoc s problémy škálování clusterů [žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) na webu Azure Portal.
 
 ## <a name="next-steps"></a>Další postup
 
-[Sledování výkonu, stavu a využití s metrikami Průzkumník dat Azure](using-metrics.md)
+* [Sledování výkonu, stavu a využití s metrikami Průzkumník dat Azure](using-metrics.md)
+
+* [Správa vertikálně navýšit kapacitu clusteru](manage-cluster-scale-up.md) vhodné k určení velikosti clusteru.

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/08/2018
 ms.author: genli
-ms.openlocfilehash: e828a8fc4211a0f0c4b53a9e18fa1c2fb6f6916b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ca3fe83d7072ba774c8124c5108652ab7223041d
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60593221"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449803"
 ---
 # <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>Windows zobrazí "Kritické služby se nezdařilo" modré obrazovky při dalším spuštění virtuálního počítače Azure
 Tento článek popisuje chybu "Kritické služby se nezdařilo", které můžete narazit při spuštění Windows virtuální počítač (VM) v Microsoft Azure. Poskytuje řešení problémů s kroky pro řešení problémů. 
@@ -30,7 +30,7 @@ Tento článek popisuje chybu "Kritické služby se nezdařilo", které můžete
 
 Virtuální počítač Windows nespustí. Když vrátíte se změnami na snímcích obrazovky spouštěcí [Diagnostika spouštění](./boot-diagnostics.md), uvidíte jednu z následujících chybových zpráv na modrá obrazovka:
 
-- "Počítač narazili na problém a vyžaduje restartování. Je možné restartovat. Další informace o tomto problému a je to možné opravy http://windows.com/stopcode. Při volání pracovníci technické podpory, můžete svým uživatelům umožnit tyto údaje: Zastavte kód: KRITICKÉ SLUŽBY SE NEZDAŘILO" 
+- "Počítač narazili na problém a vyžaduje restartování. Je možné restartovat. Další informace o tomto problému a je to možné opravy https://windows.com/stopcode. Při volání pracovníci technické podpory, můžete svým uživatelům umožnit tyto údaje: Zastavte kód: KRITICKÉ SLUŽBY SE NEZDAŘILO" 
 - "Počítač narazili na problém a vyžaduje restartování. Právě Shromáždíme některé informace o chybě, a jsme budete restartujte za vás. Pokud se chcete dozvědět víc, můžete hledat online později pro tuto chybu: CRITICAL_SERVICE_FAILED"
 
 ## <a name="cause"></a>Příčina

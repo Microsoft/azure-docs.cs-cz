@@ -13,12 +13,12 @@ ms.subservice: pim
 ms.date: 04/09/2019
 ms.author: rolyon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07259d90c7119dec4ca9139e10af2fb20a439425
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e1760d0e0bd356a05d84c07eda005e0526da5d13
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60289315"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476514"
 ---
 # <a name="assign-azure-ad-roles-in-pim"></a>Přiřazení role Azure AD v PIM
 
@@ -42,17 +42,17 @@ Následujícím postupem nastavit uživatele jako oprávněné pro roli správce
 
 1. Klikněte na tlačítko **role** nebo **členy**.
 
-    ![Role Azure AD](./media/pim-how-to-add-role-to-user/pim-directory-roles.png)
+    ![Zvýrazněný role Azure AD s možností nabídky role a členy](./media/pim-how-to-add-role-to-user/pim-directory-roles.png)
 
 1. Klikněte na tlačítko **přidat člena** otevřete přidat spravované členy.
 
 1. Klikněte na tlačítko **vybrat roli**, klikněte na roli, kterou chcete spravovat a pak klikněte na **vyberte**.
 
-    ![Vyberte roli](./media/pim-how-to-add-role-to-user/pim-select-a-role.png)
+    ![Vyberte roli podokno obsahující seznam rolí Azure AD](./media/pim-how-to-add-role-to-user/pim-select-a-role.png)
 
 1. Klikněte na tlačítko **výběr členů**, vyberte uživatele, kterou chcete přiřadit k roli a potom klikněte na tlačítko **vyberte**.
 
-    ![Vyberte roli](./media/pim-how-to-add-role-to-user/pim-select-members.png)
+    ![Vyberte členy podokno, kde můžete vybrat uživatele](./media/pim-how-to-add-role-to-user/pim-select-members.png)
 
 1. V přidat kliknutím na spravované členy **OK** přidejte uživatele k roli.
 
@@ -60,7 +60,7 @@ Následujícím postupem nastavit uživatele jako oprávněné pro roli správce
 
      Pokud se role přiřadí, uživatele, který jste vybrali se zobrazí v seznamu členů jako **oprávněné** pro danou roli.
 
-    ![Oprávněné pro roli uživatele](./media/pim-how-to-add-role-to-user/pim-directory-role-eligible.png)
+    ![Členové role patří spolu s jejich stav aktivace](./media/pim-how-to-add-role-to-user/pim-directory-role-eligible.png)
 
 1. Teď, když uživatel není oprávněný pro roli, informujte je, že si ji můžou aktivovat podle pokynů v [aktivovat Moje role Azure AD v PIM](pim-how-to-activate-role.md).
 
@@ -76,17 +76,17 @@ Ve výchozím nastavení noví uživatelé mají nárok jenom roli správce Azur
 
 1. Klikněte na tlačítko **členy**.
 
-    ![Seznam členů](./media/pim-how-to-add-role-to-user/pim-directory-role-list-members.png)
+    ![Role Azure AD – seznam členů zobrazující stav role a aktivace](./media/pim-how-to-add-role-to-user/pim-directory-role-list-members.png)
 
 1. Klikněte na tlačítko **oprávněné** role, která má být trvalé.
 
 1. Klikněte na tlačítko **Další** a potom klikněte na tlačítko **zkontrolujte oprávnění**.
 
-    ![Trvalé přiřazení role](./media/pim-how-to-add-role-to-user/pim-make-perm.png)
+    ![Otevřete podokno výpis jako uživatel, který má nárok na role s více možností v nabídce](./media/pim-how-to-add-role-to-user/pim-make-perm.png)
 
     Role je nyní uveden jako **trvalé**.
 
-    ![Seznam členů s trvalou změnu](./media/pim-how-to-add-role-to-user/pim-directory-role-list-members-permanent.png)
+    ![Zobrazuje stav role a aktivace, která je teď trvalá seznam členů](./media/pim-how-to-add-role-to-user/pim-directory-role-list-members-permanent.png)
 
 ## <a name="remove-a-user-from-a-role"></a>Odebrání uživatele z role
 
@@ -100,17 +100,17 @@ Následujícím postupem můžete odebrat konkrétní uživatele z role správce
 
 1. Klikněte na tlačítko **členy**.
 
-    ![Seznam členů](./media/pim-how-to-add-role-to-user/pim-directory-role-list-members.png)
+    ![Role Azure AD – členy seznamu stat zobrazující role a aktivace](./media/pim-how-to-add-role-to-user/pim-directory-role-list-members.png)
 
 1. Klikněte na přiřazení role, kterou chcete odebrat.
 
 1. Klikněte na tlačítko **Další** a potom klikněte na tlačítko **odebrat**.
 
-    ![Odebrání role](./media/pim-how-to-add-role-to-user/pim-remove-role.png)
+    ![Otevřete podokno výpis jako uživatel, který má roli trvalé víc možností nabídky](./media/pim-how-to-add-role-to-user/pim-remove-role.png)
 
 1. Ve zprávě s žádostí o potvrzení, klikněte na tlačítko **Ano**.
 
-    ![Odebrání role](./media/pim-how-to-add-role-to-user/pim-remove-role-confirm.png)
+    ![Zpráva s dotazem, pokud chcete odebrání člena z role](./media/pim-how-to-add-role-to-user/pim-remove-role-confirm.png)
 
     Odebrání přiřazení role.
 
@@ -140,13 +140,13 @@ Postupujte podle těchto kroků přiřazení role správce přístupu uživatel�
 
 1. V **vyberte** seznamu vyhledejte a vyberte **MS-PIM** instančního objektu.
 
-   ![Přidání oprávnění pro MS-PIM](./media/pim-how-to-add-role-to-user/ms-pim-add-permissions.png)
+   ![Přidání podokna přiřazení rolí – přidání oprávnění pro instanční objekt MS-PIM](./media/pim-how-to-add-role-to-user/ms-pim-add-permissions.png)
 
 1. Zvolte **Uložit** přiřazení role.
 
    Po chvíli MS-PIM instanční objekt je přiřazena role správce uživatelských přístupů v oboru předplatného.
 
-   ![Role správce přístupu uživatelů pro MS-PIM](./media/pim-how-to-add-role-to-user/ms-pim-user-access-administrator.png)
+   ![Okno pro kontrolu (IAM) přístup správce uživatelských přístupů zobrazující přiřazení role PIM MS](./media/pim-how-to-add-role-to-user/ms-pim-user-access-administrator.png)
 
 
 ## <a name="next-steps"></a>Další postup

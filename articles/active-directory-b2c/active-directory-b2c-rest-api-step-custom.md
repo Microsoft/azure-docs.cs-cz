@@ -1,5 +1,5 @@
 ---
-title: Rozhraní REST API deklarací výměny – Azure Active Directory B2C | Dokumentace Microsoftu
+title: Rozhraní REST API deklarací výměny – Azure Active Directory B2C
 description: Výměna deklarací rozhraní REST API přidejte do vlastních zásad v Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: bc0cea765816bfac066b05aca65f668fbce0c8ef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0bdef508e12a3b11143149b330da73838b53f860
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66508771"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67439014"
 ---
 # <a name="add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>Přidání rozhraní REST API služby výměny deklarací identity do vlastních zásad v Azure Active Directory B2C
 
@@ -28,7 +28,7 @@ Interakce zahrnuje výměna deklarací identit informací mezi deklarace rozhran
 - Může sloužit jako krok Orchestrace.
 - Externí akce můžete aktivovat. To například protokolovat událost v externí databázi.
 - Je možné načíst hodnotu a uloží je v uživatelské databázi.
-- Můžete změnit tok spouštění. 
+- Můžete změnit tok spouštění.
 
 Scénář, který je reprezentován v tomto článku obsahuje následující akce:
 
@@ -45,9 +45,16 @@ Scénář, který je reprezentován v tomto článku obsahuje následující akc
 
 V této části můžete připravit funkce Azure získat hodnotu pro `email`a pak se vraťte hodnotu `city` , který je možné pomocí Azure AD B2C, jako deklarace identity.
 
-Změna souboru run.csx pro funkci Azure, kterou jste vytvořili pomocí následujícího kódu: 
+Změna souboru run.csx pro funkci Azure, kterou jste vytvořili pomocí následujícího kódu:
 
-```
+```csharp
+#r "Newtonsoft.Json"
+
+using System.Net;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Primitives;
+using Newtonsoft.Json;
+
 public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
 {
   log.LogInformation("C# HTTP trigger function processed a request.");
@@ -77,9 +84,9 @@ public class ResponseContent
 
 ## <a name="configure-the-claims-exchange"></a>Konfigurace výměna deklarací identit
 
-Technický profil obsahuje konfiguraci exchange deklarace identity. 
+Technický profil obsahuje konfiguraci exchange deklarace identity.
 
-Otevřít *TrustFrameworkExtensions.xml* a přidejte následující prvky XML uvnitř **ClaimsProvider** elementu.
+Otevřít *TrustFrameworkExtensions.xml* soubor a přidejte následující **ClaimsProvider** – XML element uvnitř **ClaimsProviders** elementu.
 
 ```XML
 <ClaimsProvider>
@@ -134,7 +141,7 @@ Přidání kroku do cesty uživatele úpravy profilu. Jakmile se uživatel ově�
 ```XML
 <OrchestrationStep Order="6" Type="ClaimsExchange">
   <ClaimsExchanges>
-    <ClaimsExchange Id="GetLoyaltyData" TechnicalProfileReferenceId="AzureFunctions-LookUpLoyaltyWebHook" />
+    <ClaimsExchange Id="GetLoyaltyData" TechnicalProfileReferenceId="AzureFunctions-WebHook" />
   </ClaimsExchanges>
 </OrchestrationStep>
 ```
@@ -188,7 +195,7 @@ Poslední XML pro cestu uživatele by měl vypadat jako v tomto příkladu:
     <!-- Add a step 6 to the user journey before the JWT token is created-->
     <OrchestrationStep Order="6" Type="ClaimsExchange">
       <ClaimsExchanges>
-        <ClaimsExchange Id="GetLoyaltyData" TechnicalProfileReferenceId="AzureFunctions-LookUpLoyaltyWebHook" />
+        <ClaimsExchange Id="GetLoyaltyData" TechnicalProfileReferenceId="AzureFunctions-WebHook" />
       </ClaimsExchanges>
     </OrchestrationStep>
     <OrchestrationStep Order="7" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
@@ -204,13 +211,15 @@ Upravit *ProfileEdit.xml* a přidejte `<OutputClaim ClaimTypeReferenceId="city" 
 Po přidání nové deklarace technický profil bude vypadat jako v tomto příkladu:
 
 ```XML
-<DisplayName>PolicyProfile</DisplayName>
-    <Protocol Name="OpenIdConnect" />
-    <OutputClaims>
-      <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
-      <OutputClaim ClaimTypeReferenceId="city" />
-    </OutputClaims>
-    <SubjectNamingInfo ClaimType="sub" />
+<TechnicalProfile Id="PolicyProfile">
+  <DisplayName>PolicyProfile</DisplayName>
+  <Protocol Name="OpenIdConnect" />
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
+    <OutputClaim ClaimTypeReferenceId="tenantId" AlwaysUseDefaultValue="true" DefaultValue="{Policy:TenantObjectId}" />
+    <OutputClaim ClaimTypeReferenceId="city" />
+  </OutputClaims>
+  <SubjectNamingInfo ClaimType="sub" />
 </TechnicalProfile>
 ```
 

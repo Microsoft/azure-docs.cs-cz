@@ -11,26 +11,31 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2018
+ms.date: 06/26/2019
 ms.author: apimpm
-ms.openlocfilehash: e0c02829a2fef6e281794fdba6c9fb5d9b8a736b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6507c39faecfa0e56fc19597e414e9d25d368567
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66241702"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67460876"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Implementace zotavení po havárii pomocí služby zálohování a obnovení ve službě Azure API Management
 
 Díky publikování a správě vašich rozhraní API pomocí Azure API Management, že využití výhod odolnosti proti chybám a funkcí infrastruktury s odolností, které jste měli jinak návrhu, implementaci a správě ručně. Platforma Azure omezuje velká část potenciálních selhání za zlomek nákladů.
 
-Pokud chcete obnovit z problémů s dostupností, které mají vliv oblasti, který je hostitelem služby API Management, být připravena ke znovuvytvoření služby v jiné oblasti kdykoli. V závislosti na dostupnosti a dob obnovení můžete chtít rezervovat zálohování služby v jedné nebo několika oblastech. Taky může snažit udržovat synchronizované se službou active jejich konfigurace a obsahu. Funkce služby "zálohování a obnovení" poskytuje nezbytné stavební blok pro implementaci strategie zotavení po havárii.
+Pokud chcete obnovit z problémů s dostupností, které mají vliv oblasti, který je hostitelem služby API Management, být připravena ke znovuvytvoření služby v jiné oblasti kdykoli. V závislosti na vaše plánovaná doba obnovení můžete chtít zachovat pohotovostní služby v jedné nebo několika oblastech. Taky může snažit udržovat synchronizované se službou active podle vaše cíle bodu obnovení jejich konfigurace a obsahu. Služba zálohování a obnovení funkce poskytuje stavební bloky potřebné pro implementaci strategii zotavení po havárii.
 
-Tato příručka ukazuje, jak ověřování požadavků Azure Resource Manageru. Také ukazuje, jak zálohovat a obnovovat vaše instance služby API Management.
+Operace zálohování a obnovení lze použít také pro replikaci mezi provozní prostředí, třeba vývoj a Fázování konfigurace služby API Management. Mějte na paměti, že dat získaných za běhu, jako jsou uživatelé a předplatná se zkopírují, která nemusí být vždy žádoucí.
 
-> [!NOTE]
-> Proces zálohování a obnovení instance služby API Management pro zotavení po havárii lze použít také pro replikaci instance služby API Management pro scénáře, jako je pracovní.
+Tato příručka ukazuje, jak automatizovat zálohování a obnovení operací a ověřte úspěšné ověření zálohování a obnovení žádosti o Azure Resource Manager.
+
+> [!IMPORTANT]
+> Obnovit operace nedojde ke změně konfigurace vlastní název hostitele z cílových služeb. Doporučujeme použít stejný vlastní název hostitele a certifikát TLS pro aktivní a pohotovostní služby tak, aby po dokončení operace obnovení, přenos může být znovu řízené pohotovostní instancí Jednoduchá změna DNS CNAME.
 >
+> Operace zálohování nezachytává předem agregovat data protokolu se používají v sestavách zobrazí v okně analýzy na webu Azure Portal.
+
+> [!WARNING]
 > Každá záloha vyprší po 30 dnech. Pokud se pokusíte obnovit zálohu po vypršení doby platnosti 30 dnů, obnovení se nezdaří s `Cannot restore: backup expired` zprávy.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -44,9 +49,9 @@ Tato příručka ukazuje, jak ověřování požadavků Azure Resource Manageru.
 
 Všechny úlohy, které můžete provést na prostředky pomocí Azure Resource Manageru, musí být ověřené na Azure Active Directory pomocí následujících kroků:
 
-* Přidání aplikace do tenanta Azure Active Directory.
-* Nastavit oprávnění pro aplikaci, kterou jste přidali.
-* Získání tokenu pro ověření požadavků na Azure Resource Manager.
+-   Přidání aplikace do tenanta Azure Active Directory.
+-   Nastavit oprávnění pro aplikaci, kterou jste přidali.
+-   Získání tokenu pro ověření požadavků na Azure Resource Manager.
 
 ### <a name="create-an-azure-active-directory-application"></a>Vytvoření aplikace Azure Active Directory
 
@@ -55,9 +60,11 @@ Všechny úlohy, které můžete provést na prostředky pomocí Azure Resource 
 
     > [!NOTE]
     > Pokud výchozí adresář Azure Active Directory není viditelné pro váš účet, obraťte se na správce předplatného Azure udělit požadovaná oprávnění k vašemu účtu.
+
 3. Klikněte na **Registrace nové aplikace**.
 
     **Vytvořit** okna se zobrazí na pravé straně. Je to, kde zadejte příslušné informace aplikaci AAD.
+
 4. Zadejte název aplikace.
 5. Typ aplikace vyberte **nativní**.
 6. Zadejte adresu URL zástupného symbolu, jako `http://resources` pro **identifikátor URI pro přesměrování**, jako je povinné pole, ale hodnoty se později nepoužívá. Klikněte na zaškrtávací políčko a uložte aplikaci.
@@ -112,6 +119,7 @@ Nahraďte `{tenant id}`, `{application id}`, a `{redirect uri}` pomocí následu
 1. Nahraďte `{tenant id}` s ID tenanta Azure Active Directory aplikaci, kterou jste vytvořili. ID se zpřístupní po kliknutí **registrace aplikací** -> **koncové body**.
 
     ![Koncové body][api-management-endpoint]
+
 2. Nahraďte `{application id}` s hodnotou, získáte přechodem na **nastavení** stránky.
 3. Nahradit `{redirect uri}` s hodnotou od **identifikátory URI přesměrování** kartu aplikace Azure Active Directory.
 
@@ -142,34 +150,34 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 kde:
 
-* `subscriptionId` – ID předplatného, který obsahuje službu API Management, kterou se snažíte zálohování
-* `resourceGroupName` – Název skupiny prostředků služby Azure API Management
-* `serviceName` – název služby API Management děláte zálohu určit v okamžiku svého vytvoření
-* `api-version` -nahradit `2018-06-01-preview`
+-   `subscriptionId` – ID předplatného, který obsahuje službu API Management, kterou se snažíte zálohování
+-   `resourceGroupName` – Název skupiny prostředků služby Azure API Management
+-   `serviceName` – název služby API Management děláte zálohu určit v okamžiku svého vytvoření
+-   `api-version` -nahradit `2018-06-01-preview`
 
 V textu požadavku zadejte název cílového účtu úložiště Azure, přístupový klíč, název kontejneru objektů blob a název zálohy:
 
 ```json
 {
-  "storageAccount": "{storage account name for the backup}",
-  "accessKey": "{access key for the account}",
-  "containerName": "{backup container name}",
-  "backupName": "{backup blob name}"
+    "storageAccount": "{storage account name for the backup}",
+    "accessKey": "{access key for the account}",
+    "containerName": "{backup container name}",
+    "backupName": "{backup blob name}"
 }
 ```
 
 Nastavte hodnotu `Content-Type` hlavičku požadavku na `application/json`.
 
-Zálohování je dlouho běžící operace, která může trvat déle než minutu.  Pokud požadavek byl úspěšný začal proces zálohování, zobrazí se `202 Accepted` stavový kód odpovědi s `Location` záhlaví.  Ujistěte se, získejte požadavků na adresu URL v `Location` záhlaví pro zjištění stavu operace. Zatímco probíhá zálohování, můžete nadále přijímat '202 přijato' stavový kód. Kód odpovědi `200 OK` označuje úspěšné dokončení operace zálohování.
+Zálohování je dlouho běžící operace, která může trvat déle než minutu. Pokud požadavek byl úspěšný začal proces zálohování, zobrazí se `202 Accepted` stavový kód odpovědi s `Location` záhlaví. Ujistěte se, získejte požadavků na adresu URL v `Location` záhlaví pro zjištění stavu operace. Zatímco probíhá zálohování, můžete nadále přijímat '202 přijato' stavový kód. Kód odpovědi `200 OK` označuje úspěšné dokončení operace zálohování.
 
 Při zálohování požadavku, mějte na paměti následující omezení:
 
-* **Kontejner** zadaná v textu požadavku **musí existovat**.
-* Probíhá zálohování, **zabránit změnám ve službě service management** například upgrade skladové položky nebo přechod na starší verzi, změňte název domény a dalších.
-* Obnovení **zálohování je zaručeno, že pouze po dobu 30 dnů** od okamžiku svého vytvoření.
-* **Data o využití** použitý k vytvoření sestavy analýzy **není zahrnut** v záloze. Použití [REST API služby Azure API Management] [ Azure API Management REST API] pravidelně načíst analytických sestav z bezpečnostních důvodů udržován.
-* Frekvence, se kterým můžete provést zálohování služby vliv na vaše cíle bodu obnovení. Chcete-li minimalizovat, doporučujeme provádění pravidelného zálohování a zálohování na vyžádání po provedení změn na vaši službu API Management.
-* **Změny** provedené v konfiguraci služby, (například rozhraní API, zásady a vzhled portálu pro vývojáře) během zálohování probíhá operace **může vyloučit ze zálohy a dojde ke ztrátě**.
+-   **Kontejner** zadaná v textu požadavku **musí existovat**.
+-   Probíhá zálohování, **zabránit změnám ve službě service management** například upgrade skladové položky nebo přechod na starší verzi, změňte název domény a dalších.
+-   Obnovení **zálohování je zaručeno, že pouze po dobu 30 dnů** od okamžiku svého vytvoření.
+-   **Data o využití** použitý k vytvoření sestavy analýzy **není zahrnut** v záloze. Použití [REST API služby Azure API Management][azure api management rest api] pravidelně načíst analytických sestav z bezpečnostních důvodů udržován.
+-   Frekvence, se kterým můžete provést zálohování služby vliv na vaše cíle bodu obnovení. Chcete-li minimalizovat, doporučujeme provádění pravidelného zálohování a zálohování na vyžádání po provedení změn na vaši službu API Management.
+-   **Změny** provedené v konfiguraci služby, (například rozhraní API, zásady a vzhled portálu pro vývojáře) během zálohování probíhá operace **může vyloučit ze zálohy a dojde ke ztrátě**.
 
 ### <a name="step2"> </a>Obnovení služby API Management
 
@@ -181,19 +189,19 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 kde:
 
-* `subscriptionId` – ID předplatného, který obsahuje službu API Management, kterou obnovujete zálohu do
-* `resourceGroupName` – Název skupiny prostředků, který obsahuje obnovujete zálohu do služby Azure API Management
-* `serviceName` – název služby API Management service, který se má obnovit do zadané v jeho čas vytvoření
-* `api-version` -nahradit `2018-06-01-preview`
+-   `subscriptionId` – ID předplatného, který obsahuje službu API Management, kterou obnovujete zálohu do
+-   `resourceGroupName` – Název skupiny prostředků, který obsahuje obnovujete zálohu do služby Azure API Management
+-   `serviceName` – název služby API Management service, který se má obnovit do zadané v jeho čas vytvoření
+-   `api-version` -nahradit `2018-06-01-preview`
 
 V textu požadavku zadejte umístění záložního souboru. To znamená přidejte název účtu služby Azure storage, přístupový klíč, název kontejneru objektů blob a název zálohy:
 
 ```json
 {
-  "storageAccount": "{storage account name for the backup}",
-  "accessKey": "{access key for the account}",
-  "containerName": "{backup container name}",
-  "backupName": "{backup blob name}"
+    "storageAccount": "{storage account name for the backup}",
+    "accessKey": "{access key for the account}",
+    "containerName": "{backup container name}",
+    "backupName": "{backup blob name}"
 }
 ```
 
@@ -209,24 +217,21 @@ Obnovení je dlouho běžící operace, která může trvat až 30 nebo více mi
 <!-- Dummy comment added to suppress markdown lint warning -->
 
 > [!NOTE]
-> Operace zálohování a obnovení lze provést také pomocí Powershellu *zálohování AzApiManagement* a *obnovení AzApiManagement* příkazy v uvedeném pořadí.
+> Operace zálohování a obnovení lze provést také pomocí Powershellu _zálohování AzApiManagement_ a _obnovení AzApiManagement_ příkazy v uvedeném pořadí.
 
 ## <a name="next-steps"></a>Další postup
 
 Projděte si následující zdroje pro různé návody procesu zálohování a obnovení.
 
-* [Replikovat účty Azure API Management](https://www.returngis.net/en/2015/06/replicate-azure-api-management-accounts/)
-* [Automatizace zálohování a obnovení služby API Management pomocí Logic Apps](https://github.com/Azure/api-management-samples/tree/master/tutorials/automating-apim-backup-restore-with-logic-apps)
-* [Azure API Management: Zálohování a obnovení konfigurace](https://blogs.msdn.com/b/stuartleeks/archive/2015/04/29/azure-api-management-backing-up-and-restoring-configuration.aspx)
-  *přístup podrobné podle Stuart neodpovídá oficiální pokyny, ale je zajímavé.*
+-   [Replikovat účty Azure API Management](https://www.returngis.net/en/2015/06/replicate-azure-api-management-accounts/)
+-   [Automatizace zálohování a obnovení služby API Management pomocí Logic Apps](https://github.com/Azure/api-management-samples/tree/master/tutorials/automating-apim-backup-restore-with-logic-apps)
+-   [Azure API Management: Zálohování a obnovení konfigurace](https://blogs.msdn.com/b/stuartleeks/archive/2015/04/29/azure-api-management-backing-up-and-restoring-configuration.aspx)
+    _přístup podrobné podle Stuart neodpovídá oficiální pokyny, ale je zajímavé._
 
-[Backup an API Management service]: #step1
-[Restore an API Management service]: #step2
-
-[Azure API Management REST API]: https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/api-management-rest
-
+[backup an api management service]: #step1
+[restore an api management service]: #step2
+[azure api management rest api]: https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/api-management-rest
 [api-management-add-aad-application]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-add-aad-application.png
-
 [api-management-aad-permissions]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-aad-permissions.png
 [api-management-aad-permissions-add]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-aad-permissions-add.png
 [api-management-aad-delegated-permissions]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-aad-delegated-permissions.png

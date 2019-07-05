@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: b0a5c9fc5cac441a6680f9f72e3223ace95399f3
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 41fa5a859e738c2bb70e4885aa856f247e922492
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296550"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448998"
 ---
 # <a name="diagnostic-logging-in-azure-cosmos-db"></a>Protokolování diagnostiky ve službě Azure Cosmos DB 
 
@@ -251,7 +251,7 @@ Set-AzDiagnosticSetting -ResourceId $account.ResourceId`
 ```
 
 ### <a id="access"></a>Přístup k protokolům
-Protokoly služby Azure Cosmos DB **DataPlaneRequests** kategorií jsou uloženy v **insights protokoly data roviny – požadavky** kontejneru v účtu úložiště, které jste zadali. 
+Protokoly služby Azure Cosmos DB **DataPlaneRequests** kategorií jsou uloženy v **přehledy. protokoly dataplanerequests** kontejneru v účtu úložiště, které jste zadali. 
 
 Nejprve vytvořte proměnnou pro název kontejneru. Proměnná se používá v rámci návodu.
 

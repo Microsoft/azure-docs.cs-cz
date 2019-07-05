@@ -14,12 +14,12 @@ ms.subservice: report-monitor
 ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 6d461725d0d4c86ee7aa5b450d42c01ca77ffb16
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9433714c06dfad09270a6033f38a99471bcd517a
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67107680"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67513622"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Jak používat Azure Monitor sešity sestav Azure Active Directory
 
@@ -57,7 +57,7 @@ Pro přístup k sešity:
 
 2. V levém navigačním podokně vyberte **Azure Active Directory**.
 
-3. V **monitorování** vyberte **Insights**. 
+3. V **monitorování** vyberte **sešity**. 
 
     ![Select Insights](./media/howto-use-azure-monitor-workbooks/41.png)
 

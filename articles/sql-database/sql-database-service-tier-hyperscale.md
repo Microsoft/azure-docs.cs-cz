@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 05/06/2019
-ms.openlocfilehash: a953af3d9cd5a6748b79465a59b4a4284e58714c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4aeda5612b2b3e9e2073a65320b238266c8bb33a
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67070132"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537859"
 ---
 # <a name="hyperscale-service-tier-for-up-to-100-tb"></a>Velkokapacitní vrstvy služby pro až 100 TB
 
@@ -38,7 +38,7 @@ Azure SQL Database je založené na architektuře databázový stroj SQL serveru
 Úroveň mírou škálování služby ve službě Azure SQL Database poskytuje následující funkce:
 
 - Podpora pro až 100 TB velikosti databáze
-- Téměř okamžité zálohování (podle snímky souborů uložených ve službě Azure Blob storage) databáze bez ohledu na velikost bez jakéhokoli dopadu na vstupně-výstupních operací na výpočetní prostředky   
+- Téměř okamžité zálohování (podle snímky souborů uložených ve službě Azure Blob storage) databáze bez ohledu na velikost bez jakéhokoli dopadu na vstupně-výstupních operací na výpočetní prostředky  
 - Rychlé obnovení databáze (podle snímky) v minutách nikoli hodin nebo dnů (nikoli velikost operace s daty)
 - Vyšší výkon z důvodu větší propustnost v protokolu a kratší doby potvrzení transakce bez ohledu na to datové svazky
 - Rychlé horizontální navýšení kapacity – můžete zřídit jednoho nebo více jen pro čtení uzlů pro přesměrování zpracování úlohy čtení a pro použití jako horkou – možnosti pro případ potřeby
@@ -69,7 +69,7 @@ Velkokapacitní úrovně služeb je k dispozici pouze [modelu virt. jader](sql-d
 
 - **Úložiště**:
 
-  Není nutné zadat velikost maximální dat při konfiguraci databáze hyperškálovatelný systém. Ve vrstvě s hyperškálováním se účtuje úložiště pro databázi podle skutečného využití. Úložiště je alokováno automaticky mezi 10 GB a 100 TB, v přírůstcích po, které jsou dynamicky upravit 10GB až 40GB.  
+  Není nutné zadat velikost maximální dat při konfiguraci databáze hyperškálovatelný systém. Ve vrstvě s hyperškálováním se účtuje úložiště pro databázi podle skutečného využití. Úložiště je alokováno automaticky mezi 10 GB a 100 TB, v krocích, které jsou dynamicky upravit 10 GB až 40 GB.  
 
 Další informace o cenách hyperškálovatelný systém, najdete v části [Azure SQL Database – ceny](https://azure.microsoft.com/pricing/details/sql-database/single/)
 
@@ -161,7 +161,7 @@ Azure SQL Database Hyperškálovatelného úroveň je momentálně dostupná v t
 - Čína – východ 2
 - Čína – sever 2
 - Východní Asie
-- USA – východ
+- East US
 - Východ USA 2
 - Francie – střed
 - Japonsko – východ
@@ -225,7 +225,7 @@ Jedná se o aktuální omezení na vrstvu služby Hyperškálovatelného od obec
 
 | Problém | Popis |
 | :---- | :--------- |
-| V podokně Správa zálohování pro logický server nezobrazují Hyperškálovatelného databáze bude filtrováno z SQL serveru  | Velkokapacitní má samostatné metodě pro správu zálohování a jako takový dlouhodobé uchovávání dat a bod v nastavení uchovávání záloh čas se nevztahují / nejsou zneplatněny. Podle toho Hyperškálovatelného databází se nezobrazují v podokně Správa zálohování. |
+| V podokně Správa zálohování pro logický server nezobrazují Hyperškálovatelného databáze bude filtrováno z SQL serveru  | Velkokapacitní má samostatné metodě pro správu zálohování a jako takový dlouhodobé uchování dat a bod v nastavení uchovávání záloh čas se nevztahují / nejsou zneplatněny. Podle toho Hyperškálovatelného databází se nezobrazují v podokně Správa zálohování. |
 | Obnovení k určitému bodu v čase | Po migraci databáze do vrstvy služby hyperškálovatelný systém se nepodporuje obnovení k určitému bodu v čase před migrací.|
 | Obnovení z jiných – velkokapacitní DB Hypserscale (a naopak) | Velkokapacitní databáze nelze obnovit do databáze hyperškálovatelný systém ani mohli obnovit databáze hyperškálovatelný systém do databáze Hyperškálováním.|
 | Pokud je soubor databáze roste během migrace z důvodu aktivní úlohy a překročí 1 TB za hranice souboru, se migrace nezdaří | Omezení rizik: <br> – Pokud je to možné, migrace databáze, pokud neexistuje žádné aktualizace zátěži.<br> – Zkuste to znovu migrace, bude úspěšné, tak dlouho, dokud není překročí hranice 1 TB během migrace.|

@@ -14,12 +14,12 @@ ms.date: 02/08/2019
 ms.author: rolyon
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1755d627473b0ae47bbc4bc74a3f0d2210e5372b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7413fcf7992195753cba86a50b7d53a144b36023
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60440597"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476427"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Nasazení Azure AD Privileged Identity Management (PIM)
 
@@ -109,7 +109,7 @@ Následující část vám pomůže Identifikujte všechny zúčastněné strany
 
 #### <a name="stakeholders-pim-for-azure-resource-roles"></a>Zúčastněné strany: Role prostředků PIM pro Azure
 
-| Name | Role | Akce |
+| Název | Role | Akce |
 | --- | --- | --- |
 | Jméno a e-mailu | **Předplatné / vlastníka prostředku**<br/>Zástupce z každé předplatné nebo prostředek, který chcete nasadit PIM pro vlastníky IT | SO/R/I |
 | Jméno a e-mailu | **Vlastník zabezpečení**<br/>Zástupce od bezpečnostního týmu, který může PM, plán splňuje požadavky na zabezpečení vaší organizace. | SO/R |
@@ -143,7 +143,7 @@ Použijte následující postup Princip nejnižších oprávnění pro role Azur
 
 1. Seznam, který má privilegované role ve vaší organizaci. Můžete použít [PIM průvodce](pim-security-wizard.md#run-the-wizard) zobrazíte stránku následujícím postupem.
 
-    ![Zjistit privilegované role](./media/pim-deployment-plan/discover-privileged-roles-users.png)
+    ![Objevte privilegované role podokno zobrazuje, kdo má privilegované role](./media/pim-deployment-plan/discover-privileged-roles-users.png)
 
 1. Pro všechny globální správce ve vaší organizaci přečtěte si, proč potřebují roli. Založené na přečtení dokumentace k předchozím, pokud jeden nebo více rolí detailní správce může provádět úlohy osoby, by měly odebrat z role Globální správce a odpovídajícím způsobem vytvoření přiřazení v Azure Active Directory (jako referenci: Microsoft aktuálně obsahuje pouze asi 10 správců s rolí globálního správce. Další informace najdete na [jak Microsoft využívá PIM](https://www.microsoft.com/itshowcase/Article/Content/887/Using-Azure-AD-Privileged-Identity-Management-for-elevated-access)).
 
@@ -151,7 +151,7 @@ Použijte následující postup Princip nejnižších oprávnění pro role Azur
 
 Pokud chcete automatizovat kroky 3 a 4, můžou využívat funkci kontroly přístupu v PIM. Proveďte kroky v [zahájení kontroly přístupu pro role Azure AD v PIM](pim-how-to-start-security-review.md), můžete nastavit kontroly přístupu pro každou roli Azure AD, která má jeden nebo více členů.
 
-![Vytvoření kontroly přístupu](./media/pim-deployment-plan/create-access-review.png)
+![Vytvořit podokno kontroly přístupu pro role Azure AD](./media/pim-deployment-plan/create-access-review.png)
 
 Revidující byste měli nastavit na **členové (vlastní)** . To se rozešle e-mail všem členům role získat, aby ověřil, zda potřebují přístup. Měli byste také zapnout **vyžadovat důvod při schválení** v upřesňujících nastaveních tak, aby uživatelé můžou stát proč potřebují roli. Na základě těchto informací, budete moct odebrat uživatele z nepotřebné role a delegování podrobnější rolí správce v případě globální správci.
 

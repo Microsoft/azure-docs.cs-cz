@@ -9,12 +9,12 @@ ms.date: 11/13/2018
 ms.topic: conceptual
 ms.author: raynew
 manager: carmonm
-ms.openlocfilehash: 83cfd2b7ccdf8ec14e828baec1031e11b28c988c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 21c832235eeb86dcea94e70f34abaf4ec3489c3c
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66427367"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509618"
 ---
 # <a name="azure-backup-server-protection-matrix"></a>Systém ochrany Azure Backup Serveru
 
@@ -79,8 +79,8 @@ Tento článek obsahuje seznam různých serverů a úloh, které můžete chrá
 |Hostitel Hyper-V – agent ochrany DPM na hostitelském serveru Hyper-V, clusteru nebo virtuálního počítače|Windows Server 2012 – Datacenter a Standard|Fyzický server<br /><br />Místní virtuální počítač Hyper-V|Ano|Ano|Ochrana: Počítače Hyper-V, sdílené svazky clusteru (CSV)<br /><br />Obnovení: Virtuální počítač, obnovení na úrovni položek souborů a složky, svazky, virtuální pevné disky|
 |Hostitel Hyper-V – agent ochrany DPM na hostitelském serveru Hyper-V, clusteru nebo virtuálního počítače|Windows Server 2008 R2 SP1 – Enterprise a Standard|Fyzický server<br /><br />Místní virtuální počítač Hyper-V|Ano|Ano|Ochrana: Počítače Hyper-V, sdílené svazky clusteru (CSV)<br /><br />Obnovení: Virtuální počítač, obnovení na úrovni položek souborů a složky, svazky, virtuální pevné disky|
 |Hostitel Hyper-V – agent ochrany DPM na hostitelském serveru Hyper-V, clusteru nebo virtuálního počítače|Windows Server 2008 SP2|Fyzický server<br /><br />Místní virtuální počítač Hyper-V|Ne|Ne|Ochrana: Počítače Hyper-V, sdílené svazky clusteru (CSV)<br /><br />Obnovení: Virtuální počítač, obnovení na úrovni položek souborů a složky, svazky, virtuální pevné disky|
-|Virtuální počítače VMware|VMware vCenter/vSphere ESX/ESXi licenci 5.5/6.0/6.5 verze |Fyzický server <br/>On-premises Hyper-V virtuálního počítače, <br/> Windows virtuální počítač v prostředí VMWare|Ano|Ano|Virtuální počítače VMware na sdílené svazky clusteru (CSV), systém souborů NFS a úložištěm pro sítě SAN<br /> Obnovení na úrovni položek souborů a složek je k dispozici pouze pro virtuální počítače s Windows, se nepodporují aplikace Vapp VMware.|
-|Virtuální počítače VMware|[VMware vSphere 6.7](backup-azure-backup-server-vmware.md#vmware-vsphere-67) |Fyzický server <br/>On-premises Hyper-V virtuálního počítače, <br/> Windows virtuální počítač v prostředí VMWare|Ano|Ne|Virtuální počítače VMware na sdílené svazky clusteru (CSV), systém souborů NFS a úložištěm pro sítě SAN<br /> Obnovení na úrovni položek souborů a složek je k dispozici pouze pro virtuální počítače s Windows, se nepodporují aplikace Vapp VMware.|
+|Virtuální počítače VMware|VMware vCenter/vSphere ESX/ESXi verze licencovaného 5.5/6.0/6.5 |Fyzický server <br/>On-premises Hyper-V virtuálního počítače, <br/> Windows virtuální počítač v prostředí VMWare|Ano|Ano|Virtuální počítače VMware na sdílené svazky clusteru (CSV), systém souborů NFS a úložištěm pro sítě SAN<br /> Obnovení na úrovni položek souborů a složek je k dispozici pouze pro virtuální počítače s Windows, se nepodporují aplikace Vapp VMware.|
+|Virtuální počítače VMware|[VMware vSphere verze 6.7 licenci](backup-azure-backup-server-vmware.md#vmware-vsphere-67) |Fyzický server <br/>On-premises Hyper-V virtuálního počítače, <br/> Windows virtuální počítač v prostředí VMWare|Ano|Ne|Virtuální počítače VMware na sdílené svazky clusteru (CSV), systém souborů NFS a úložištěm pro sítě SAN<br /> Obnovení na úrovni položek souborů a složek je k dispozici pouze pro virtuální počítače s Windows, se nepodporují aplikace Vapp VMware.|
 |Linux|Linux spuštěný jako hosta technologie Hyper-V nebo VMware|Fyzický server <br/>On-premises Hyper-V virtuálního počítače, <br/> Windows virtuální počítač v prostředí VMWare|Ano|Ano|Technologie Hyper-V musí běžet na Windows Server 2012 R2 nebo Windows Server 2016. Ochrana: Celý virtuální počítač<br /><br />Obnovení: Celý virtuální počítač <br/><br/> Úplný seznam podporovaných Linuxových distribucích a verzích, najdete v článku, [Linux v distribucích schválených pro Azure](../virtual-machines/linux/endorsed-distros.md).|
 
 ## <a name="azure-expressroute-support"></a>Podpora Azure ExpressRoute

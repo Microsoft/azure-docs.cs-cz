@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 05/17/2019
-ms.openlocfilehash: 11abbb0494a9771676dcf2436b5e808346c16368
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 488a032e177897caf2897ba6335f4e7f64dc0e4d
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67078557"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67543829"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>Znovu vygenerovat přístupové klíče účtu úložiště
 
@@ -72,7 +72,7 @@ Pokud chcete aktualizovat službu Azure Machine Learning, aby používala nový 
 > [!IMPORTANT]
 > Proveďte všechny kroky, aktualizace i pracovním prostoru pomocí rozhraní příkazového řádku a úložišť pomocí Pythonu. Aktualizuje se jenom jeden z nich může způsobit chyby, dokud obě jsou aktualizována.
 
-1. Znovu vygenerujte klíč. Informace o opětovné generování přístupového klíče najdete v tématu [Správa účtu úložiště](/azure/storage/common/storage-account-manage.md#access-keys) článku. Uložte nový klíč.
+1. Znovu vygenerujte klíč. Informace o opětovné generování přístupového klíče najdete v tématu [Správa účtu úložiště](/azure/storage/common/storage-account-manage#access-keys) článku. Uložte nový klíč.
 
 1. K aktualizaci pracovního prostoru na používání nového klíče, použijte následující kroky:
 

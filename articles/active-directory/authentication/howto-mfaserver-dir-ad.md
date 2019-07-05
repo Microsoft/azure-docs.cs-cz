@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82aa566c5bcd6347a6f62b2f693a7ad796347438
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: eac6cff0f0f12daaf772549f547aafd670600d61
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67056000"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67536979"
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Integrace adresáře mezi Azure MFA Serverem a službou Active Directory
 
@@ -31,6 +31,9 @@ Pro integraci se službou Active Directory nebo jiným adresářem LDAP použijt
 Ve výchozím nastavení je Azure Multi-Factor Authentication (MFA) Server nakonfigurován pro import nebo synchronizaci uživatelů ze služby Active Directory.  Karta Integrace adresáře vám umožní potlačit výchozí chování a vytvořit vazbu na jiný adresář LDAP, adresář ADAM, nebo konkrétní ovladač domény služby Active Directory.  Taky umožňuje použití Ověřování pomocí protokolu LDAP na proxy serveru LDAP nebo pro Vázání protokolu LDAP jako cíl pro RADIUS, předběžné ověření pro Ověřování IIS nebo pro primární ověření pro portál User Portal.  V následující tabulce jsou popsaná jednotlivá nastavení.
 
 ![Upravit konfiguraci LDAP serveru MFA](./media/howto-mfaserver-dir-ad/dirint.png)
+
+> [!NOTE]
+> Integrace adresáře není zaručeno, že pro práci s adresáři než Active Directory Domain Services.
 
 | Funkce | Popis |
 | --- | --- |

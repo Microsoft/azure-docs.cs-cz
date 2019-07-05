@@ -8,22 +8,22 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: qianw211
-ms.openlocfilehash: e7867d5ea95cd3142a6f617a5554858b7a72cbc9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7a6a4c1366f23336072e00d1af59bbaa4bd5c7a4
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64937672"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442052"
 ---
 # <a name="publishing-guide-by-offer-type"></a>Průvodce publikováním podle typu nabídky
 
 Jakmile [při rozhodování o možnost publikování](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type), jste připraveni vyberte typ nabídky, který se použije k prezentaci vaší nabídky. 
 
-Tato nabídka je publikování objektu, který bude vytvářet, publikovat a spravovat [portál partnerů cloudu](https://cloudpartner.azure.com). *Typ nabídky* definuje strukturu nabídky, který obsahuje metadata, artefakty a další obsah se nabídky na webu Marketplace.
+ *Typ nabídky* definuje strukturu nabídky, který obsahuje metadata, artefakty a další obsah se nabídky na webu Marketplace.
 
 Než vytvoříte nabídku, musíte zvolit typ nabídky. Typ nabídky bude odpovídat typu řešení, aplikace, nebo nabídky, kterou chcete publikovat, jakož i jeho zarovnání na produkty a služby Microsoftu. 
 
-Typ jednoho nabídky může být nakonfigurována jinak v portál partnerů cloudu umožňuje různé možnosti publikování, volání k akci, zřizování nebo ceny. Možnost publikování a konfiguraci typu nabídky se také zarovnat na nabídku nárok a technické požadavky. 
+Typ jednoho nabídky může být nakonfigurována jinak umožňuje různé možnosti publikování, volání k akci, zřizování nebo ceny. Možnost publikování a konfiguraci typu nabídky se také zarovnat na nabídku nárok a technické požadavky. 
 
 Nezapomeňte si zkontrolovat storu a nabízejí požadavky zakládající nárok typu a technické požadavky publikování před vytvořením vaší nabídky.
 
@@ -39,8 +39,8 @@ V následující tabulce jsou uvedeny typy nabídek Azure Marketplace.
 | [**Aplikace SaaS**](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide) | Použijte typ nabídky SaaS aplikace umožňující zákazník koupit řešení založené na SaaS, technické jako předplatné. |
 | [**Nabízí kontejner**](https://docs.microsoft.com/azure/marketplace/marketplace-containers) | Typ nabídky kontejneru použijte, pokud vaše řešení je image kontejneru Dockeru Zřizuje se jako služba kontejnerů Azure na základě Kubernetes. |
 | [**Moduly IoT Edge společnosti Microsoft**](https://docs.microsoft.com/azure/marketplace/iot-edge-module) | Moduly Azure IoT Edge jsou nejmenší výpočetní jednotky spravuje IoT Edge a může obsahovat služeb Microsoft (jako je Azure Stream Analytics), 3. stran služby nebo kódu specifické pro řešení. |
-| [**Konzultační služby**](https://docs.microsoft.com/azure/marketplace/consulting-services) | Konzultační služby na webu Azure Marketplace usnadňuje připojení ke službám pro podporu a Rozšiřte své využití Azure pro zákazníky. |
-| [**Nabízí AppSource**](https://docs.microsoft.com/azure/marketplace/appsource-offer-publishing-guide) | AppSource storu zahrnuje nabídek, které vycházejí nebo rozšíření Dynamics 365, Office 365, Power BI a Power Apps. |
+| [**Konzultační služby**](https://docs.microsoft.com/azure/marketplace/consulting-services) | Konzultační služby pomáhají pro připojení k zákazníkům pomocí služeb pro podporu a rozšiřují jejich využívání služeb Azure, Dynamics 365 nebo sady napájení.|
+
 
 A konečně, naleznete v tématu [ **požadavky služby Azure AD** ](https://docs.microsoft.com/azure/marketplace/enable-appsource-marketplace-using-azure-ad) tím, že výpis možností a nabízí další informace o jednotné přihlašování – požadavky na typy.
 
@@ -48,4 +48,4 @@ A konečně, naleznete v tématu [ **požadavky služby Azure AD** ](https://doc
 
 *   Přečtěte si požadavky zakládající nárok v možnosti publikování nabídky typu oddílu k dokončení pro výběr a konfiguraci nabídky.
 *   Zkontrolujte publikování vzory jejich příklady jak řešení mapuje na typ nabídky a konfigurace z prodejních míst.
-*   Přihlaste se k [portál partnerů cloudu](https://cloudpartner.azure.com) k vytvoření a konfiguraci nabídky.
+

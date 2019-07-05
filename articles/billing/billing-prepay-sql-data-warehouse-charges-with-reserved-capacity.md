@@ -1,19 +1,19 @@
 ---
-title: Předem SQL Data Warehouse poplatky za vyhrazené kapacitě Azure | Dokumentace Microsoftu
+title: Předem za SQL Data Warehouse pomocí Azure záložní kapacitu
 description: Zjistěte, jak si můžete Předplatíte SQL Data Warehouse poplatky za vyhrazené kapacitě ještě ušetříte peníze.
 services: billing
 author: yashesvi
 manager: yashar
 ms.service: billing
 ms.topic: conceptual
-ms.date: 04/13/2019
+ms.date: 07/03/2019
 ms.author: banders
-ms.openlocfilehash: 3d56ee99f8056139a234477b6eed93d9fcbe2bbb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cea2c8e6d476c3ea2799337ab2da1f9406731814
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60371185"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565356"
 ---
 # <a name="prepay-for-sql-data-warehouse-charges-with-reserved-capacity"></a>Předem SQL Data Warehouse poplatky za vyhrazené kapacitě
 
@@ -43,14 +43,15 @@ Předpokládejme například, že vaše celková spotřeba služby SQL Data Ware
 
 ## <a name="buy-sql-data-warehouse-reserved-capacity"></a>Nákup SQL Data Warehouse rezervované kapacity
 
-1. Přihlaste se do [webu Azure portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. Vyberte **všechny služby** > **rezervace**.
 3. Vyberte předplatné. Pomocí seznamu předplatného vyberte předplatné, který umožňuje platit za rezervované kapacity. Způsob platby předplatného se účtuje pořizovací náklady pro záložní kapacitu. Tento typ předplatného musí být smlouvu enterprise agreement (nabízejí čísla: MS-AZR-0017P nebo MS-AZR - 0148 P) nebo s průběžnými platbami (nabízejí čísla: MS-AZR-0003P nebo MS-AZR-0023P).
   - V případě předplatného se smlouvou Enterprise se poplatky strhávají z peněžního zůstatku v rámci dané registrace nebo se účtují jako nadlimitní využití.
   - V případě předplatného s průběžnými platbami se poplatky účtují na platební kartu nebo pomocí způsobu platby faktur určeného v předplatném.
 4. Vyberte obor. Pomocí seznamu rozsahů vyberte oboru předplatného.
-  - S **jeden** možnost sleva za rezervaci se použije pro SQL Data Warehouse nasazené ve vybraném předplatném.
-  - S **Shared** možnost sleva za rezervaci se použije pro instance běžící v rámci kontextu vaší fakturace žádné předplatné.
+  - **Jednotného oboru skupiny prostředků** – platí pro odpovídající prostředky ve vybrané skupině prostředků pouze sleva za rezervaci.
+  - **Jednotného oboru předplatného** – sleva za rezervaci se vztahuje na odpovídající prostředkům ve vybraném předplatném.
+  - **Sdílený obor** – sleva za rezervaci se vztahuje na odpovídající zdroje v oprávněné předplatné, které jsou v kontextu fakturace. Pro zákazníky se smlouvou Enterprise je kontext fakturace registraci. Jednotlivých předplatných s průběžnými sazbami fakturační rozsah je všechny oprávněné předplatné vytvořili správce účtu.
     - Pro podnikové zákazníky je kontext fakturace registraci smlouvy Enterprise.
     - Pro zákazníky s průběžnými platbami sdílený obor je Všechna předplatná s průběžnými platbami, vytváří správce účtu.
 5. Vyberte oblast a vyberte oblast Azure, která je předmětem záložní kapacitu.

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: hrasheed
-ms.openlocfilehash: 3462255311eaa6e418f97de5da598eb985b2a935
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: aaa690b62b44f5f21db0861d99d45734cf210db0
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64695066"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448680"
 ---
 # <a name="use-microsoft-cognitive-toolkit-deep-learning-model-with-azure-hdinsight-spark-cluster"></a>Použití sady Microsoft Cognitive Toolkit hloubkového učení modelu s clusterem Azure HDInsight Spark
 
@@ -25,13 +25,13 @@ V tomto článku proveďte následující kroky.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* **Předplatné Azure**. Než začnete tento kurz, musíte mít předplatné Azure. Přečtěte si téma [Bezplatné vytvoření účtu Microsoft Azure ještě dnes](https://azure.microsoft.com/free).
+* **Předplatné Azure**. Před zahájením tohoto článku, musíte mít předplatné Azure. Přečtěte si téma [Bezplatné vytvoření účtu Microsoft Azure ještě dnes](https://azure.microsoft.com/free).
 
 * **Cluster Azure HDInsight Spark**. Pro účely tohoto článku vytvořte cluster Spark 2.0. Pokyny najdete v tématu [clusteru vytvořit Apache Spark v Azure HDInsight](apache-spark-jupyter-spark-sql.md).
 
 ## <a name="how-does-this-solution-flow"></a>Jak toto řešení tok?
 
-Toto řešení je rozdělena mezi v tomto článku a poznámkového bloku Jupyter, který nahrajete v rámci tohoto kurzu. V tomto článku proveďte následující kroky:
+Toto řešení je rozdělena mezi v tomto článku a poznámkového bloku Jupyter, který nahrajete jako součást tohoto článku. V tomto článku proveďte následující kroky:
 
 * Spusťte akci skriptu na clusteru HDInsight Spark, aby instalace sady Microsoft Cognitive Toolkit a balíčky Pythonu.
 * Nahrání poznámkového bloku Jupyter, na kterém běží řešení ke clusteru HDInsight Spark.
@@ -83,7 +83,7 @@ Microsoft Cognitive Toolkit pomocí clusteru Azure HDInsight Spark, je nutné na
 
 4. Klikněte na tlačítko **nahrát** znovu.
 
-5. Po nahrání poznámkového bloku klikněte na název poznámkového bloku a pak postupujte podle pokynů v samotné Poznámkový blok o tom, jak načíst datové sady a provádět v kurzu.
+5. Po nahrání poznámkového bloku klikněte na název poznámkového bloku a pak postupujte podle pokynů v samotné poznámkového bloku v tom, jak načíst datové sady a provádět v článku.
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 * [Přehled: Apache Spark v Azure HDInsight](apache-spark-overview.md)

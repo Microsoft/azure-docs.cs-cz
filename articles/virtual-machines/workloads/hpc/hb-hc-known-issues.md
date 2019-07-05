@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: amverma
-ms.openlocfilehash: ff65f3937069be87e922dad9287ba22380632329
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a41155b90257f7eaec85c3adbd975a0a37e24d91
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66810034"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67560416"
 ---
 # <a name="known-issues-with-hb-series-and-hc-series-vms"></a>Známé problémy s virtuálními počítači řady HB a HC
 
@@ -31,13 +31,13 @@ Virtuální počítače řady HB mohou vystavit pouze 228 GB paměti RAM pro vir
 
 Akcelerované síťové služby Azure není v tuto chvíli povoleno, ale bude jako jsme průběhu období Preview. Když tuto funkci podporuje budeme informovat zákazníky.
 
+## <a name="qp0-access-restriction"></a>qp0 Access Restriction
+
+Aby se zabránilo hardwaru nižší úrovně přístupu, který může vést k ohrožení zabezpečení, dvojice front není přístupná virtuálních počítačů hosta 0. To ovlivňuje pouze akce obvykle spojené se správou síťové karty ConnectX-5 a spouštění diagnostiky některé InfiniBand jako ibdiagnet, ale ne koncový uživatel aplikace sami.
+
 ## <a name="ud-transport"></a>UD přenosu
 
-Při spuštění nepodporuje HB řad dynamicky připojený přenos (DCT). Podpora pro DCT budou prováděny v čase. Jsou podporovány spolehlivé přenosy tohoto připojení (RC) a Datagram nespolehlivých (UD).
-
-## <a name="azure-batch"></a>Azure Batch
-
-Virtuální počítače řady HB jsou ve verzi preview, použijte účet Batch v režimu předplatného uživatele není v režimu služby.
+Při spuštění nepodporují řady hybridní připojení a HB dynamicky připojený přenos (DCT). Podpora pro DCT budou prováděny v čase. Jsou podporovány spolehlivé přenosy tohoto připojení (RC) a Datagram nespolehlivých (UD).
 
 ## <a name="gss-proxy"></a>GSS Proxy
 
