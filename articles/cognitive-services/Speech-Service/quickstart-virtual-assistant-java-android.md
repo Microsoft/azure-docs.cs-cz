@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 5/24/2019
+ms.date: 07/05/2019
 ms.author: travisw
-ms.openlocfilehash: 7e82b2ef9500defe0d08351da1e3487e4671155f
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: c62402faa1995e1e992c8251ed87160a8f33d3a7
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67467045"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67602746"
 ---
 # <a name="quickstart-create-a-voice-first-virtual-assistant-in-java-on-android-by-using-the-speech-sdk"></a>Rychlý start: Vytvoření první hlasové virtuálních asistentů v jazyce Java v Androidu pomocí sadou SDK pro řeč
 

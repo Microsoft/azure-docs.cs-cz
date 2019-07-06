@@ -3,15 +3,15 @@ title: Skript Azure Powershellu – aktualizace Azure Cosmos DB RU/s pro SQL (Co
 description: Skript Azure Powershellu – aktualizace Azure Cosmos DB RU/s pro SQL (Core) rozhraní API
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: samples
+ms.topic: sample
 ms.date: 05/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: 9558579fbdbd2185f6de650547863361ff2b80a4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fae1e7946905a96fbbf00909c96dd3aa99d766d5
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66247331"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603837"
 ---
 # <a name="update-rus-for-a-database-or-container-for-azure-cosmos-db---sql-core-api"></a>Aktualizace RU/s pro databáze nebo kontejneru pro službu Azure Cosmos DB - SQL (Core) rozhraní API
 

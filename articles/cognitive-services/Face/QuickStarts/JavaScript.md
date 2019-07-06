@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 02/07/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: d1aa3e3a23acf82af8435cbb075fac38353500e5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 70c496aef0ff2f34c917fd594767d464cab3e625
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60815578"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603430"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-javascript"></a>Rychlý start: Rozpoznávání tváří v obrázku pomocí rozhraní REST API a JavaScript
 
@@ -41,7 +41,7 @@ Vytvořte nový soubor HTML *detectFaces.html*a přidejte následující kód.
 </html>
 ```
 
-Pak přidejte následující kód `body` element dokumentu. Tím se nastaví základní uživatelské rozhraní s poli Adresa URL, **analyzujte tváře** tlačítko, odpověď podokno a zobrazit podokno obrázku.
+Pak přidejte následující kód `body` element dokumentu. Tento kód nastaví základní uživatelské rozhraní s poli Adresa URL, **analyzujte tváře** tlačítko, odpověď podokno a zobrazit podokno obrázku.
 
 ```html
 <h1>Detect Faces:</h1>
@@ -65,7 +65,7 @@ Image to analyze: <input type="text" name="inputImage" id="inputImage"
 
 ## <a name="write-the-javascript-script"></a>Skript jazyka JavaScript
 
-Přidejte následující kód bezprostředně výše `h1` element v dokumentu. Tím se nastaví kód jazyka JavaScript, která volá rozhraní API pro rozpoznávání tváře.
+Přidejte následující kód bezprostředně výše `h1` element v dokumentu. Tento kód nastaví kód jazyka JavaScript, která volá rozhraní API pro rozpoznávání tváře.
 
 ```html
 <script type="text/javascript">
@@ -140,7 +140,7 @@ Otevřít *detectFaces.html* v prohlížeči. Po kliknutí **analyzujte tváře*
 
 ![GettingStartCSharpScreenshot](../Images/face-detect-javascript.png)
 
-Následuje příklad úspěšné odpovědi JSON.
+Následující text je příkladem úspěšné odpovědi JSON.
 
 ```json
 [

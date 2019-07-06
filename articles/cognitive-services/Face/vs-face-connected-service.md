@@ -1,21 +1,21 @@
 ---
 title: 'Kurz: Rozhraní API pro rozpoznávání tvářeC#'
 titleSuffix: Azure Cognitive Services
-description: Vytvořte jednoduchou aplikaci pro Windows, která využívá rozhraní API pro rozpoznávání tváře služeb Cognitive Services k detekci rysů tváře na obrázku.
+description: Vytvoření aplikace Windows, který používá Cognitive Services Face API pro detekci funkce tváří v obrázku.
 services: cognitive-services
 author: ghogen
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: tutorial
-ms.date: 05/07/2018
+ms.date: 07/03/2019
 ms.author: ghogen
-ms.openlocfilehash: 492161a9a47627db8a06686daf953e99ca652e02
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 7907a79289149d9e165dd6df0c09bee596e624e2
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65827664"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606804"
 ---
 # <a name="connecting-to-cognitive-services-face-api-by-using-connected-services-in-visual-studio"></a>Připojení k rozhraní API pro rozpoznávání tváře služeb Cognitive Services pomocí připojených služeb v sadě Visual Studio
 
@@ -147,9 +147,9 @@ Tento článek a jeho doprovodné články obsahují podrobnosti k použití fun
             });
         }
    ```
-    Kód v tomto kroku sestavuje požadavek HTTP s voláním rozhraní REST API pro rozpoznávání tváře pomocí klíče, který jste přidali při přidání připojené služby.
+    Kód v tomto kroku se vytvoří požadavek HTTP pomocí volání rozhraní REST API pro rozpoznávání tváře, pomocí klíče, které jste přidali při přidání připojené služby.
 
-1. Přidejte funkce pomocných rutin GetImageAsByteArray a JsonPrettyPrint.
+1. Přidejte pomocné funkce GetImageAsByteArray a JsonPrettyPrint.
 
    ```csharp
         /// <summary>
@@ -239,7 +239,7 @@ Tento článek a jeho doprovodné články obsahují podrobnosti k použití fun
 
 Pokud už ji nepotřebujete, odstraňte skupinu prostředků. Tím se odstraní služba Cognitive Services a související prostředky. Odstranění skupiny prostředků přes portál:
 
-1. Do pole Hledat v horní části portálu zadejte název vaší skupiny prostředků. Až se ve výsledcích hledání zobrazí skupina prostředků použitá v tomto rychlém startu, vyberte ji.
+1. Do pole Hledat v horní části portálu zadejte název vaší skupiny prostředků. Jakmile se ve výsledcích hledání zobrazí skupina prostředků použitá v tomto rychlém startu, vyberte ji.
 1. Vyberte **Odstranit skupinu prostředků**.
 1. Do pole **ZADEJTE NÁZEV SKUPINY PROSTŘEDKŮ:** zadejte název vaší skupiny prostředků a vyberte **Odstranit**.
 

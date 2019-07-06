@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 04/24/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 60e39dc18df218cbe89726590e6c072ea9f05b97
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 63b58e5e667d03d7808973b0783ed98ab4cb5447
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592511"
+ms.locfileid: "67605878"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>Rychlý start: Trénování modelu Rozlišovač formuláře a extrahovat data formuláře pomocí rozhraní REST API s využitím Pythonu
 
@@ -40,7 +40,7 @@ K natrénování modelu formuláře Rozlišovač s dokumenty v kontejnerech obje
 
 1. Nahraďte `<Endpoint>` s adresu URL koncového bodu pro formuláře pro rozpoznávání prostředků v oblasti Azure, kde jste získali klíče předplatného.
 1. Nahraďte `<Subscription key>` s klíči předplatného jste zkopírovali v předchozím kroku.
-1. Nahraďte `<SAS URL>` s objektem Blob Azure kontejner úložiště je sdílený přístup k adrese URL podpisu (SAS). K načtení to, otevřete Průzkumníka služby Microsoft Azure Storage, klikněte pravým tlačítkem na kontejner a vyberte **získat sdílený přístupový podpis**. Ujistěte se, že **čtení** a **seznamu** oprávnění se kontroluje a klikněte na tlačítko **vytvořit**. Potom zkopírujte hodnotu v **URL** oddílu. Ji by měl mít formát _služba ._protokol: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
+1. Nahraďte `<SAS URL>` s objektem Blob Azure kontejner úložiště je sdílený přístup k adrese URL podpisu (SAS). Pro získání adresy URL SAS, otevřete Průzkumníka služby Microsoft Azure Storage, klikněte pravým tlačítkem na kontejner a vyberte **získat sdílený přístupový podpis**. Ujistěte se, že **čtení** a **seznamu** oprávnění se kontroluje a klikněte na tlačítko **vytvořit**. Potom zkopírujte hodnotu v **URL** oddílu. Ji by měl mít formát _služba ._protokol: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
 
     ```python
     ########### Python Form Recognizer Train #############

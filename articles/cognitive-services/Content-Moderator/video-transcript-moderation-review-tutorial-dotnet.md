@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 03/11/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 4a28e9f1f911e274f9a53275afa577024405b336
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: b210af2a70a3ce858d8f53102a181c75373b4176
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66474696"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606951"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>Kurz: Moderování videí a přepisů
 
@@ -37,7 +37,7 @@ V tomto kurzu získáte informace o následujících postupech:
 - Zaregistrovat [nástroj pro kontrolu Content Moderator](https://contentmoderator.cognitive.microsoft.com/) webu a vytvořte vlastní značky. Zobrazit [použití značek](Review-Tool-User-Guide/tags.md) Pokud potřebujete pomoc s tímto krokem.
 
     ![snímek obrazovky s vlastní značky moderování videa](images/video-tutorial-custom-tags.png)
-- Spuštění ukázkové aplikace, potřebujete účet Azure, prostředek služby Azure Media Services, prostředek Azure Content Moderator a přihlašovacích údajů Azure Active Directory. Pokyny o tom, jak získat tyto najdete v tématu [rozhraní API pro moderování videa](video-moderation-api.md) průvodce.
+- Spuštění ukázkové aplikace, potřebujete účet Azure, prostředek služby Azure Media Services, prostředek Azure Content Moderator a přihlašovacích údajů Azure Active Directory. Pokyny, jak získat tyto prostředky, najdete v článku [rozhraní API pro moderování videa](video-moderation-api.md) průvodce.
 - Stáhněte si [Video revize konzolovou aplikaci](https://github.com/MicrosoftContentModerator/VideoReviewConsoleApp) z Githubu.
 
 ## <a name="enter-credentials"></a>Zadejte přihlašovací údaje
@@ -225,7 +225,7 @@ Přepis zvuku z videa se vytvoří také při nastavení příznaku `GenerateVTT
 > [!NOTE]
 > Konzolová aplikace používá [rozhraní API služby Azure Media Indexer](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) ke generování přepisů z nahrané zvukové stopy videa. Výsledky jsou k dispozici ve formátu WebVTT. Další informace o tomto formátu najdete v tématu [Formáty sledování textu webového videa](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API).
 
-## <a name="create-a-the-human-in-the-loop-review"></a>Vytvoření kontrola lidských v the smyčky
+## <a name="create-a-human-review"></a>Vytvoření recenze prováděné lidmi
 
 Proces moderování vrátí seznam klíčových snímků z videa společně s přepisem zvukových stop. Dalším krokem je vytvoření kontroly v Nástroji pro kontrolu Content Moderatoru pro moderování prováděné lidmi. Po návratu k metodě `ProcessVideo()` v souboru `Program.cs` vidíte, že se volá metoda `CreateVideoReviewInContentModerator()`. Tato metoda je ve třídě `videoReviewApi`, která je v souboru `VideoReviewAPI.cs`, a je ukázaná tady.
 

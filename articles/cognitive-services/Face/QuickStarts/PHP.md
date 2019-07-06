@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 03/27/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 280143d54e516fb626bb2d5afd01653e03d8a82c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2ed1a20bf47771d927c0d58730fa0eb4471572af
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60815445"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603371"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-php"></a>Rychlý start: Rozpoznávání tváří v obrázku pomocí rozhraní REST API a PHP
 
@@ -43,7 +43,7 @@ Vytvořte nový soubor HTML *detectFaces.html*a přidejte následující kód.
 
 ## <a name="write-the-php-script"></a>Napsat skript pro PHP
 
-Přidejte následující kód `body` element dokumentu. Tím se nastaví základní uživatelské rozhraní s poli Adresa URL, **analyzujte tváře** tlačítko, odpověď podokno a zobrazit podokno obrázku.
+Přidejte následující kód `body` element dokumentu. Tento kód nastaví základní uživatelské rozhraní s poli Adresa URL, **analyzujte tváře** tlačítko, odpověď podokno a zobrazit podokno obrázku.
 
 ```php
 <?php

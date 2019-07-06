@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 05/02/2019
+ms.date: 07/05/2019
 ms.author: fmegen
-ms.openlocfilehash: 3dad2696332f57d9a0dc86927f91caa7352b1d7b
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: dce0a1b2adf20b2301402f37307e7ee1284c9aee
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65884956"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67605155"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-java"></a>Rychlý start: Rozpoznávání řeči se sadou SDK pro řeč pro Javu
 
@@ -61,7 +61,7 @@ Pokud používáte Windows (64-bit), ujistěte se, nainstalujete Microsoft Visua
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-quickstart-java-create-proj.md)]
 
-## <a name="add-sample-code"></a>Přidejte ukázkový kód.
+## <a name="add-sample-code"></a>Přidání ukázkového kódu
 
 1. Pokud chcete do projektu Javy přidat novou prázdnou třídu, vyberte **File** (Soubor)  >  **New** (Nový)  >  **Class** (Třída).
 

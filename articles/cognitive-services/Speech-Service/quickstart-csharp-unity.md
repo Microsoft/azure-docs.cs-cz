@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 2/20/2019
+ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: dd8e760e658715b89bf45718ac571ccaeb5ade96
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: b55c6535184a905790f575b98c1b5a60a83f5daf
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67465570"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606385"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-unity-beta"></a>Rychlý start: Rozpoznávání řeči se sadou SDK pro řeč pro Unity (beta verze)
 
@@ -37,7 +37,7 @@ K dokončení tohoto projektu budete potřebovat:
 
 * [Unity 2018.3 nebo novější](https://store.unity.com/) s [Unity 2019.1 Přidání podpory pro UPW ARM64](https://blogs.unity3d.com/2019/04/16/introducing-unity-2019-1/#universal)
 * [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
-     * Pro podporu ARM64, nainstalujte [volitelné sestavení nástroje pro ARM64 a Windows 10 SDK pro ARM64](https://blogs.windows.com/buildingapps/2018/11/15/official-support-for-windows-10-on-arm-development/) 
+     * Pro podporu ARM64, nainstalujte [volitelné sestavení nástroje pro ARM64 a Windows 10 SDK pro ARM64](https://blogs.windows.com/buildingapps/2018/11/15/official-support-for-windows-10-on-arm-development/)
 * Klíč předplatného pro službu rozpoznávání řeči. [Získat zdarma](get-started.md).
 * Přístup k mikrofonu v počítači.
 

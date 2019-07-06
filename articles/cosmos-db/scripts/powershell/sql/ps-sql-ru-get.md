@@ -3,15 +3,15 @@ title: Skript Azure Powershellu – Azure Cosmos DB získat zřízená propustno
 description: Skript Azure Powershellu – Azure Cosmos DB získat zřízená propustnost (RU/s) pro SQL (Core) rozhraní API
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: samples
+ms.topic: sample
 ms.date: 07/03/2019
 ms.author: mjbrown
-ms.openlocfilehash: f70229e22ae0ef5d761ef456e880f0e96c42643e
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: 75a8ebbb04fd3cbad9f0a1a3f302b40439adbbcc
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67566788"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67602136"
 ---
 # <a name="get-the-provisioned-throughput-rus-for-a-database-or-container-for-azure-cosmos-db---sql-core-api"></a>Získání zřízená propustnost (RU/s) pro databázi nebo kontejneru pro službu Azure Cosmos DB - SQL (Core) rozhraní API
 

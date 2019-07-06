@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 01/18/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 5d31285ca305ba7fefdf31b4a97e3183f58b3e3b
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: dd06330e82850cc44bc0f4d36ba7caf596ace939
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65233804"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603502"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>Kurz: Moderování příspěvků na Facebooku a příkazy s Azure Content Moderator
 
@@ -48,11 +48,11 @@ Odkazovat [zkuste Content Moderator na webu](quick-start.md) rychlý start pro p
 
 ## <a name="configure-image-moderation-workflow"></a>Konfigurace pracovního postupu pro moderování obrázků
 
-Odkazovat [definovat, testování a pracovních postupů pomocí](review-tool-user-guide/workflows.md) průvodce k vytvoření vlastní image pracovního postupu. To vám umožní automaticky zkontrolujte bitové kopie na Facebooku a odesílala některé na nástroj pro kontrolu Content Moderatoru. Poznamenejte si pracovní postup **název**.
+Odkazovat [definovat, testování a pracovních postupů pomocí](review-tool-user-guide/workflows.md) průvodce k vytvoření vlastní image pracovního postupu. Content Moderator použije tento pracovní postup automaticky kontrolu imagí na Facebooku a některé pro nástroj pro recenze odeslat. Poznamenejte si pracovní postup **název**.
 
 ## <a name="configure-text-moderation-workflow"></a>Konfigurace pracovního postupu pro moderování textu
 
-Znovu, odkazovat [definovat, testování a pracovních postupů pomocí](review-tool-user-guide/workflows.md) průvodce; tento čas vytvoření pracovního postupu vlastní text. To vám umožní Content Moderator automatické zjišťování textový obsah. Poznamenejte si pracovní postup **název**.
+Znovu, odkazovat [definovat, testování a pracovních postupů pomocí](review-tool-user-guide/workflows.md) Průvodce; to čas, vytvoření pracovního postupu vlastní text. Content Moderator použije tento pracovní postup k automatické kontrole textový obsah. Poznamenejte si pracovní postup **název**.
 
 ![Konfigurace pracovního postupu textu](images/text-workflow-configure.PNG)
 
@@ -77,7 +77,7 @@ Přihlaste se k [webu Azure portal](https://portal.azure.com/) a postupujte podl
     | cm:TextWorkflow | Název pracovního postupu pro spuštění na textu. |
     | cm:CallbackEndpoint | Adresa URL pro aplikaci funkcí CMListener, kterou vytvoříte později v tomto průvodci |
     | fb:VerificationToken | Tajný token, který vytvoříte, používá k registraci na Facebook informační kanál událostí |
-    | fb:PageAccessToken | Přístupovému tokenu Facebook Graph API nekončí platnost a povoluje se pomocí něho používání funkcí skrytí a odstranění příspěvků vaším jménem. Zobrazí se v pozdějším kroku. |
+    | fb:PageAccessToken | Přístupovému tokenu Facebook Graph API nekončí platnost a povoluje se pomocí něho používání funkcí skrytí a odstranění příspěvků vaším jménem. Zobrazí se tento token v pozdějším kroku. |
 
     Klikněte na tlačítko **Uložit** tlačítko v horní části stránky.
 
@@ -144,7 +144,7 @@ Přihlaste se k [webu Azure portal](https://portal.azure.com/) a postupujte podl
         2. [Postman Environment](https://github.com/MicrosoftContentModerator/samples-fbPageModeration/blob/master/FB%20Page%20Access%20Token%20Environment.postman_environment.json)       
     3. Aktualizujte tyto proměnné prostředí:
     
-        | Klíč | Value   | 
+        | Klíč | Hodnota   | 
         | -------------------- |-------------|
         | appId   | Sem vložte identifikátor vaší aplikace pro Facebooku  | 
         | appSecret | Sem vložte tajný klíč vaší aplikace pro Facebooku | 

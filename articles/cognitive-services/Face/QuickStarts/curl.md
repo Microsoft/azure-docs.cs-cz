@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 02/06/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 212b935e8986731940effe79ec80f52c0d7b64c4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 68cdd147977294954051735d70307305aa5dc0cb
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60815376"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603317"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-curl"></a>Rychlý start: Rozpoznávání tváří v obrázku pomocí rozhraní REST API pro rozpoznávání tváře a cURL
 
@@ -40,7 +40,7 @@ Nahraďte `<Subscription Key>` platný klíč předplatného pro rozpoznávání
 
 ### <a name="face-endpoint-url"></a>Adresa URL koncového bodu pro rozpoznávání tváře
 
-Adresa URL `https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect` Určuje koncový bod Azure pro rozpoznávání tváře do dotazu. Může být nutné změnit první část této adresy URL tak, aby odpovídaly oblasti, která odpovídá váš klíč předplatného (najdete v článku [dokumenty k rozhraní API pro rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) seznam všechny koncové body oblasti).
+Adresa URL `https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect` Určuje koncový bod Azure pro rozpoznávání tváře do dotazu. Budete muset změnit první část této adresy URL tak, aby odpovídaly oblasti, která odpovídá váš klíč předplatného. Zobrazit [dokumenty k rozhraní API pro rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) seznam všechny koncové body oblasti.
 
 ### <a name="url-query-string"></a>Řetězec dotazu adresy URL
 
@@ -57,7 +57,7 @@ Zdrojová adresa URL určuje image chcete použít jako vstup. Můžete změnit 
 https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg
 ``` 
 
-## <a name="run-the-command"></a>Spusťte příkaz
+## <a name="run-the-command"></a>Spuštěním příkazu
 
 Po provedení změny, otevřete příkazový řádek a zadejte nový příkaz. Rozpoznávání tváře informace zobrazené jako data JSON v okně konzoly byste měli vidět. Příklad:
 

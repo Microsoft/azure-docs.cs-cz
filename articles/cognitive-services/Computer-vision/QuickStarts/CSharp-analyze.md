@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 03/27/2019
+ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 7ad03d06325f45aacd53817d92202b07de7c26e9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 941478e8d09ea0a06139ba4ddf3ac14e5b52b9d6
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61346312"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606022"
 ---
-# <a name="quickstart-analyze-a-local-image-using-the-rest-api-and-c-in-computer-vision"></a>Rychlý start: Analýza místní image pomocí rozhraní REST API a C# v počítačové zpracování obrazu
+# <a name="quickstart-analyze-a-local-image-using-the-computer-vision-rest-api-and-c"></a>Rychlý start: Analýza místní image pomocí rozhraní API pro počítačové zpracování obrazu REST aC#
 
 V tomto rychlém startu se analyzovat místně uložený obrázek extrahovat vizuální funkce pomocí rozhraní REST API pro počítačové zpracování obrazu. S [analyzovat Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) metodu, můžete extrahovat informace vizuální funkce na základě obsahu obrázku.
 
@@ -64,7 +64,7 @@ namespace CSHttpClientSample
         // from the West US region, replace "westcentralus" in the URL
         // below with "westus".
         //
-        // Free trial subscription keys are generated in the "westus" region.
+        // Free trial subscription keys are generated in the "westcentralus" region.
         // If you use a free trial subscription key, you shouldn't need to change
         // this region.
         const string uriBase =
@@ -246,10 +246,6 @@ namespace CSHttpClientSample
     }
 }
 ```
-
-## <a name="clean-up-resources"></a>Vyčištění prostředků
-
-Pokud už řešení sady Visual Studio nepotřebujete, odstraňte je. Uděláte to tak, že otevřete Průzkumníka souborů, přejdete ke složce, ve které jste vytvořili řešení sady Visual Studio, a tuto složku odstraníte.
 
 ## <a name="next-steps"></a>Další postup
 

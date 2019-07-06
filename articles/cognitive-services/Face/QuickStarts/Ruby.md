@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 02/07/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 52faef37dbd9a3ce324db9665f04d6ac9b223d9c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6583db5b1403f70593d586a610f4d06be15c729b
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60815315"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603357"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-ruby"></a>Rychlý start: Rozpoznávání tváří v obrázku pomocí rozhraní REST API a Ruby
 
@@ -28,7 +28,7 @@ V tomto rychlém startu použijete rozhraní REST API pro rozpoznávání tvář
 
 ## <a name="write-the-script"></a>Psaní skriptu
 
-Vytvořte nový soubor, _faceDetection.rb_a přidejte následující kód. Pro danou image URL volá rozhraní API pro rozpoznávání tváře.
+Vytvořte nový soubor, _faceDetection.rb_a přidejte následující kód. Tento kód volá rozhraní API pro rozpoznávání tváře pro adresu URL danou image.
 
 ```ruby
 require 'net/http'
@@ -64,7 +64,7 @@ puts response.body
 
 Budete muset aktualizovat `request['Ocp-Apim-Subscription-Key']` hodnotu s váš klíč předplatného a může být nutné změnit `uri` řetězec tak, aby obsahoval oblasti správný identifikátor (naleznete v tématu [dokumenty k rozhraní API pro rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) seznam všechny koncové body oblast) . 
 
-Možná budete také chtít změnit `imageUri` pole tak, aby odkazoval na vlastní vstupního obrázku. Můžete také chtít chang `returnFaceAttributes` pole, která určuje, které pro rozpoznávání tváře atributy pro načtení.
+Možná budete také chtít změnit `imageUri` pole tak, aby odkazoval na vlastní vstupního obrázku. Můžete také chtít změnit `returnFaceAttributes` pole, která určuje, které pro rozpoznávání tváře atributy pro načtení.
 
 ## <a name="run-the-script"></a>Spuštění skriptu
 
@@ -74,7 +74,7 @@ Spusťte skript Ruby pomocí následujícího příkazu:
 ruby faceDetection.rb
 ```
 
-Měli byste vidět řetězec JSON zjištěných pro rozpoznávání tváře dat tisk do konzoly. Následuje příklad úspěšné odpovědi JSON.
+Měli byste vidět řetězec JSON zjištěných pro rozpoznávání tváře dat tisk do konzoly. Následující text je příkladem úspěšné odpovědi JSON.
 
 ```json
 [

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 01/10/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 20920a04c5b85c9eede7d7b249dd6e0548308240
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0fef3bffd30c19d0313e5fce7eb610ae7f6349f5
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60607137"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606994"
 ---
 # <a name="quickstart-analyze-text-content-for-objectionable-material-in-python"></a>Rychlý start: Analýza textový obsah pro nežádoucím v Pythonu
 
@@ -32,7 +32,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Nainstalujte SDK pro Python Content Moderator otevřením příkazového řádku a spuštěním následujícího příkazu:
 
-```
+```bash
 pip install azure-cognitiveservices-vision-contentmoderator
 ```
 

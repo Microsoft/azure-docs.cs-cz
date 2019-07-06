@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 4/03/2019
+ms.date: 07/05/2019
 ms.author: yinhew
-ms.openlocfilehash: 7e9aebd3a49182f84e05473da9ed166499f34a28
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: dfad425d6da2e3dabec138ef4f108957ebea7ee9
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65465714"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67602917"
 ---
 # <a name="quickstart-synthesize-speech-in-c-on-windows-by-using-the-speech-sdk"></a>Rychlý start: Syntetizace řeči v C++ ve Windows s použitím sadou SDK pro řeč
 
@@ -35,7 +35,7 @@ Klíč předplatného hlasové služby k dokončení tohoto rychlého startu pot
 
 [!INCLUDE [Quickstart C++ project](../../../includes/cognitive-services-speech-service-quickstart-cpp-create-proj.md)]
 
-## <a name="add-sample-code"></a>Přidejte ukázkový kód.
+## <a name="add-sample-code"></a>Přidání ukázkového kódu
 
 1. Otevřete zdrojový soubor *helloworld.cpp*. Nahraďte všechen kód pod úvodním příkazem include (`#include "stdafx.h"` nebo `#include "pch.h"`) následujícím kódem:
 

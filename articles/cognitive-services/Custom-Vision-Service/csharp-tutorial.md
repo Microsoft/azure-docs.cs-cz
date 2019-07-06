@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 03/21/2019
+ms.date: 07/03/2019
 ms.author: anroth
-ms.openlocfilehash: 9b6d01908265791a83ee311375fa50fcca995f79
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fd5e46f47169705b9d19397a6b91770beab229dd
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60605616"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604074"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-net-sdk"></a>Rychlý start: Vytvoření projektu klasifikace obrázků s využitím Custom Vision .NET SDK
 
@@ -27,7 +27,7 @@ Tento článek obsahuje informace a vzorový kód, které vám pomůžou začít
 
 ## <a name="get-the-custom-vision-sdk-and-sample-code"></a>Získání sady Custom Vision SDK a vzorového kódu
 
-K napsání aplikace v .NET, která využívá službu Custom Vision, budete potřebovat balíčky NuGet pro službu Custom Vision. Tyto balíčky jsou součástí ukázkového projektu, který si stáhnete, ale tady je můžete získat samostatně.
+K napsání aplikace v .NET, která využívá službu Custom Vision, budete potřebovat balíčky NuGet pro službu Custom Vision. Tyto balíčky jsou součástí ukázkového projektu, které se budou stahovat, ale dostanete je jednotlivě tady.
 
 - [Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training/)
 - [Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction/)
@@ -120,7 +120,7 @@ foreach (var c in result.Predictions)
 
 Když je aplikace spuštěná, mělo by se otevřít okno konzoly s následujícím výstupem:
 
-```
+```console
 Creating new project:
         Uploading images
         Training
@@ -131,7 +131,7 @@ Making a prediction:
         Japanese Cherry: 0.0%
 ```
 
-Pak můžete ověřit správné označení testovacího obrázku (ve složce **Images/Test/**). Aplikaci ukončete stisknutím libovolné klávesy. Můžete se také vrátit na [web služby Custom Vision](https://customvision.ai) a zobrazit aktuální stav nově vytvořeného projektu.
+Pak můžete ověřit správné označení testovacího obrázku (ve složce **Images/Test/** ). Aplikaci ukončete stisknutím libovolné klávesy. Můžete se také vrátit na [web služby Custom Vision](https://customvision.ai) a zobrazit aktuální stav nově vytvořeného projektu.
 
 [!INCLUDE [clean-ic-project](includes/clean-ic-project.md)]
 

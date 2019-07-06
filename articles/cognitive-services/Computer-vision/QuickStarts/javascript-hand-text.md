@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 03/04/2019
+ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: c93271fcd74d1369112a2c5d2bba98fd14ff7c84
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.openlocfilehash: f4e627286f6a32816eafa84e860cb8eb49111f67
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66357198"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604345"
 ---
-# <a name="quickstart-extract-handwritten-text-using-the-rest-api-and-javascript-in-computer-vision"></a>Rychlý start: Extrahujte rukou psaný text pomocí rozhraní REST API a jazyka JavaScript v počítačové zpracování obrazu
+# <a name="quickstart-extract-handwritten-text-using-the-computer-vision-rest-api-and-javascript"></a>Rychlý start: Extrahujte rukou psaný text pomocí REST API pro počítačové zpracování obrazu a JavaScript
 
 V tomto rychlém startu extrahujete rukou psaný text z obrázku pomocí rozhraní REST API počítačového zpracování obrazu. S [čtení dávky](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) rozhraní API a [výsledek operace čtení](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) rozhraní API, můžete zjistit rukou psaný text v obrázku a extrahovat rozpoznané znaky do datového proudu počítačově využitelný znaků.
 
@@ -68,11 +68,11 @@ Pokud chcete vytvořit a spustit ukázku, postupujte takto:
         // from the West US region, replace "westcentralus" in the URL
         // below with "westus".
         //
-        // Free trial subscription keys are generated in the "westus" region.
+        // Free trial subscription keys are generated in the "westcentralus" region.
         // If you use a free trial subscription key, you shouldn't need to change
         // this region.
         var uriBase =
-            "https://westus.api.cognitive.microsoft.com/vision/v2.0/read/core/asyncBatchAnalyze";
+            "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/read/core/asyncBatchAnalyze";
 
         // Display the image.
         var sourceImageUrl = document.getElementById("inputImage").value;
@@ -289,10 +289,6 @@ Image to read:
   ]
 }
 ```
-
-## <a name="clean-up-resources"></a>Vyčištění prostředků
-
-Pokud už soubor nepotřebujete, odstraňte ho.
 
 ## <a name="next-steps"></a>Další postup
 

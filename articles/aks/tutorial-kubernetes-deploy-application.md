@@ -8,19 +8,19 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: twhitney
 ms.custom: mvc
-ms.openlocfilehash: c579aed1acb555a82d5a04308ab4e68f4bfecb8c
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 2583c284b73f4e862172f9c2ecd92ca931c25399
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66305276"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67605177"
 ---
 # <a name="tutorial-run-applications-in-azure-kubernetes-service-aks"></a>Kurz: Spouštění aplikací ve službě Azure Kubernetes Service (AKS)
 
 Kubernetes poskytuje distribuovanou platformu pro kontejnerizované aplikace. Můžete sestavovat vlastní aplikace a služby a nasazovat je do clusteru Kubernetes, který zajistí správu jejich dostupnosti a možností připojení. V tomto kurzu, který je čtvrtou částí sedmidílné série, se ukázková aplikace nasadí do clusteru Kubernetes. Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Aktualizace souborů manifestu Kubernetes
+> * Aktualizujte soubor manifestu Kubernetes
 > * Spuštění aplikace v Kubernetes
 > * Testování aplikace
 
@@ -40,7 +40,7 @@ Tento kurz vyžaduje, že používáte Azure CLI verze 2.0.53 nebo novější. V
 
 V těchto kurzech je image kontejneru pro ukázkovou aplikaci uložená v instanci služby Azure Container Registry (ACR). Pokud chcete aplikaci nasadit, musíte v souboru manifestu Kubernetes aktualizovat název image tak, aby zahrnoval název přihlašovacího serveru ACR.
 
-Název přihlašovacího serveru ACR získáte pomocí příkazu [az acr list][az-acr-list] následujícím způsobem:
+Získat pomocí ACR login pro název serveru [az acr list][az-acr-list] takto:
 
 ```azurecli
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
@@ -72,7 +72,7 @@ Uložte soubor a zavřete ho. V `vi`, použijte `:wq`.
 
 ## <a name="deploy-the-application"></a>Nasazení aplikace
 
-Aplikaci nasadíte pomocí příkazu [kubectl apply][kubectl-apply]. Tento příkaz analyzuje soubor manifestu a vytvoří definované objekty Kubernetes. Zadejte ukázkový soubor manifestu, jak je znázorněno v následujícím příkladu:
+Chcete-li nasadit svou aplikaci, použijte [použití kubectl][kubectl-apply] příkazu. Tento příkaz analyzuje soubor manifestu a vytvoří definované objekty Kubernetes. Zadejte ukázkový soubor manifestu, jak je znázorněno v následujícím příkladu:
 
 ```console
 kubectl apply -f azure-vote-all-in-one-redis.yaml

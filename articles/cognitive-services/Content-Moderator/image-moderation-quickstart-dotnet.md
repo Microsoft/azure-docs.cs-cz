@@ -1,25 +1,25 @@
 ---
 title: 'Rychlý start: Díky analýze obrázků na problematický obsah v C# – Content Moderator'
 titlesuffix: Azure Cognitive Services
-description: Postup analýzy různého problematického materiálu v obsahu obrázků pomocí sady Content Moderator SDK pro .NET
+description: Jak analyzovat obsah image pro různé nevhodných materiálů pomocí sady obsahu Moderator SDK pro .NET
 services: cognitive-services
 author: sanjeev3
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 03/20/2019
+ms.date: 07/03/2019
 ms.author: sajagtap
-ms.openlocfilehash: 9cc18ce1fde5de354e3da5e384c08ada1927d097
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d9a28dcd4af68cf9c00eb3d338c4bd83c8d89ecc
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60699065"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604122"
 ---
 # <a name="quickstart-analyze-images-for-objectionable-content-in-c"></a>Rychlý start: Díky analýze obrázků pro nežádoucí obsah naC#
 
-Tento článek obsahuje informace a vzorové kódy, které vám pomůžou začít používat [sadu Content Moderator SDK pro .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/). Dozvíte se, jak hledat nevhodný obsah nebo obsah pro dospělé, extrahovatelný text a lidské tváře za účelem moderování potenciálně problematického materiálu.
+Tento článek obsahuje informace a vzorové kódy, které vám pomůžou začít používat [sadu Content Moderator SDK pro .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/). Budete se dozvíte, jak vyhledávat obsah pro dospělé nebo pikantní extrahovatelný text a lidské tváře se postarat o moderování potenciálně nežádoucím.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
 
@@ -60,7 +60,7 @@ Do souboru *Program.cs* přidejte následující kód, který pro vaše předpla
 
 ### <a name="set-up-input-and-output-targets"></a>Nastavení vstupních a výstupních cílů
 
-Do třídy **Program** v souboru _Program.cs_ přidejte následující statická pole. Tato pole určují soubory pro vstupní obsah obrázku a výstupní obsah JSON.
+Do třídy **Program** v souboru _Program.cs_ přidejte následující statická pole. Tato pole zadejte soubory pro obsah vstupního obrázku a výstup JSON obsahu.
 
 [!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=49-53)]
 
@@ -86,13 +86,13 @@ Do třídy **Program** přidejte následující metodu. Tato metoda ohodnotí je
 
 ### <a name="load-the-input-images"></a>Načtení vstupních obrázků
 
-Do metody **Main** ve třídě **Program** přidejte následující kód. Tím se program nastaví tak, aby pro všechny adresy URL obrázků ve vstupním souboru načetl data hodnocení. Tato data pak zapíše do jednoho výstupního souboru.
+Do metody **Main** ve třídě **Program** přidejte následující kód. Tento kód nastaví program k načtení dat hodnocení pro každou adresu URL obrázku ve vstupním souboru. Tato data pak zapíše do jednoho výstupního souboru.
 
 [!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=17-46)]
 
 ## <a name="run-the-program"></a>Spuštění programu
 
-Program zapíše řetězcová data JSON do souboru _ModerationOutput.json_. Pro ukázkové obrázky použité v tomto rychlém startu bude výstup následující. Všimněte si, že oba obrázky mají různé části `ImageModeration`, `FaceDetection` a `TextDetection`, které odpovídají třem voláním rozhraní API v metodě **EvaluateImage**.
+Program zapíše řetězcová data JSON do souboru _ModerationOutput.json_. Pro ukázkové obrázky použité v tomto rychlém startu bude výstup následující. Každá image obsahuje různé části pro `ImageModeration`, `FaceDetection`, a `TextDetection`, které odpovídají tři volání rozhraní API v vaše **EvaluateImage** metody.
 
 ```json
 [{

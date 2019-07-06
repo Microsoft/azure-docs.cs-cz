@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 03/27/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 40c9fac27f45699d4c56e57480dcfde1b0ffb64d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 349ae3450b5817b5cfe9c95c41d159e3daca7a39
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60815614"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603393"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-c"></a>Rychlý start: Rozpoznávání tváří v obrázku pomocí rozhraní REST API pro rozpoznávání tváře aC#
 
@@ -77,7 +77,7 @@ namespace DetectFace
 
 ### <a name="receive-image-input"></a>Vstup bitové kopie
 
-Přidejte následující kód, který **hlavní** metodu **Program** třídy. Tato výzva zapisuje do konzoly s dotazem, aby uživatel zadal adresu URL obrázku. Potom volá jinou metodu **MakeAnalysisRequest**, zpracování obrázků v tomto umístění.
+Přidejte následující kód, který **hlavní** metodu **Program** třídy. Tento kód zapíše výzvu ke konzole uživatele zadejte adresu URL obrázku s žádostí. Potom volá jinou metodu **MakeAnalysisRequest**, zpracování obrázků v tomto umístění.
 
 ```csharp
         static void Main(string[] args)
@@ -162,7 +162,7 @@ Pomocné metody budou definovat v následujících krocích.
 
 ### <a name="process-the-input-image-data"></a>Zpracování dat vstupního obrázku
 
-Do třídy **Program** přidejte následující metodu. To převede obrázek ze zadané adresy URL do bajtového pole.
+Do třídy **Program** přidejte následující metodu. Tato metoda převede obrázek ze zadané adresy URL do bajtového pole.
 
 ```csharp
         // Returns the contents of the specified file as a byte array.
@@ -179,7 +179,7 @@ Do třídy **Program** přidejte následující metodu. To převede obrázek ze 
 
 ### <a name="parse-the-json-response"></a>Analyzovat odpověď JSON
 
-Do třídy **Program** přidejte následující metodu. Formát JSON vstupu, aby byly snadněji čitelné. Vaše aplikace zapíše data tento řetězec do konzoly. Potom můžete zavřít třídy a oboru názvů.
+Do třídy **Program** přidejte následující metodu. Tato metoda formátů JSON vstupu, aby byly snadněji čitelné. Vaše aplikace zapíše data tento řetězec do konzoly. Potom můžete zavřít třídy a oboru názvů.
 
 ```csharp
         // Formats the given JSON string by adding line breaks and indents.

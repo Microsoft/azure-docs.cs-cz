@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: overview
-ms.date: 03/21/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 50935aca20af931eec63717921ef7a73267d2373
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8a5dd16948724e3a79863450212702aa8aeb2347
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60996638"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67605146"
 ---
 # <a name="what-is-azure-custom-vision"></a>Co je Azure Custom Vision?
 
@@ -31,9 +31,9 @@ Funkce služby Custom Vision je možné rozdělit do dvou funkcí. **Klasifikace
 
 ### <a name="optimization"></a>Optimalizace
 
-Custom Vision service je optimalizovaná na rychle rozpoznat hlavní rozdíly mezi bitové kopie. To umožňuje začít vytváření prototypů s menším objemem dat modelu. 50 obrázků na popisek jsou obecně o dobrý začátek. To však znamená, že služba není ideální pro rozpoznávání drobných rozdílů na obrázcích (například menší praskliny nebo promáčknutí ve scénářích kontroly kvality).
+Custom Vision service je optimalizovaná na hlavní rozdíly mezi bitové kopie, abyste je mohli začít vytváření prototypů modelu s menším objemem dat rychle rozpoznat. 50 obrázků na popisek jsou obecně o dobrý začátek. Služba však není ideální pro zjišťování lišila imagí (třeba rozpoznání menší praskliny nebo dents ve scénářích kvality assurance).
 
-Kromě toho můžete vybrat z několika typy prvků Custom Vision algoritmus, které jsou optimalizovány pro Image některé materiály, které subjektu&mdash;například zajímavá nebo maloobchodního prodeje položek. Další informace najdete v příručce věnované [sestavení klasifikátoru](getting-started-build-a-classifier.md).
+Kromě toho můžete vybrat z několika typy prvků Custom Vision algoritmus, které jsou optimalizovány pro Image některé materiály, které subjektu&mdash;například zajímavá nebo maloobchodního prodeje položek. Další informace najdete v tématu [sestavení klasifikátoru](getting-started-build-a-classifier.md) průvodce.
 
 ## <a name="what-it-includes"></a>Co zahrnuje
 

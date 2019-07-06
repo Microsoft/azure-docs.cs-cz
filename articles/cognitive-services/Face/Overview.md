@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: overview
-ms.date: 02/20/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: c45fd508c14c368c6c9057b9fdeea8df9d8a52c3
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 4be33f781dec93fd9fe1b1846322672266cd7350
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65905688"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606914"
 ---
 # <a name="what-is-the-azure-face-api"></a>Co je rozhraní API Azure pro rozpoznávání tváře?
 
@@ -59,11 +59,11 @@ Rozhraní API pro seskupování rozdělí sadu neznámých tváří do několika
 
 Rozhraní API pro identifikaci slouží k identifikaci zjištěné rozpoznávání tváře lidí v databázi. Tato funkce může být užitečná pro automatické image značek ve fotografii software pro správu. Předem vytvořit databázi a můžete ho upravit v čase.
 
-Následující obrázek ukazuje příklad databázi s názvem "myfriends." Každá skupina může obsahovat až 1 milión jinou osobu objekty. Každý objekt osob může registrovat až 248 tváří.
+Následující obrázek ukazuje příklad databázi s názvem `"myfriends"`. Každá skupina může obsahovat až 1 milión jinou osobu objekty. Každý objekt osob může registrovat až 248 tváří.
 
 ![Mřížka s tři sloupce pro různé osoby, každý se třemi řádky obrázků pro rozpoznávání tváře](./Images/person.group.clare.jpg)
 
-Po vytvoření databáze a školení, můžete provést identifikace proti skupině s novou zjištěné rozpoznávání tváře. Pokud se tvář identifikuje jako jedna z osob ve skupině, pak se tento objekt osob vrátí.
+Po vytvoření a trénování databázi, můžete provést identifikace proti skupině s novou zjištěné rozpoznávání tváře. Pokud se tvář identifikuje jako jedna z osob ve skupině, pak se tento objekt osob vrátí.
 
 Další informace o rozpoznávání osob, najdete v článku [rozpoznávání tváře](concepts/face-recognition.md) příručka koncepce nebo [identifikovat API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) referenční dokumentaci.
 

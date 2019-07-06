@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: overview
-ms.date: 02/20/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 14cf500cff9f1f7f8b1573862c3060326e6518fa
-ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
+ms.openlocfilehash: d814a943bc8dc789abe84b33583714beb998c0ef
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66688853"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67607017"
 ---
 # <a name="what-is-azure-content-moderator"></a>Co je Azure Content Moderator?
 
@@ -65,7 +65,7 @@ Revize rozhraní API umožňují integrovat svůj kanál moderování lidské re
 
 ## <a name="the-review-tool"></a>Nástroj pro recenze
 
-Služba Content Moderator zahrnuje i webová [nástroj pro recenze](Review-Tool-User-Guide/human-in-the-loop.md), který je hostitelem obsahu kontroly pro lidské moderátory ke zpracování. Lidský přínos neslouží k trénování služby, ale kombinace práce služby a lidského posuzovacího týmu umožní vývojářům dosáhnout správné rovnováhy mezi efektivitou a přesností. Nástroj pro recenze také poskytuje uživatelsky přívětivé front-endu pro širokou škálu prostředků Content Moderatoru.
+Služba Content Moderator zahrnuje i webová [nástroj pro recenze](Review-Tool-User-Guide/human-in-the-loop.md), který je hostitelem obsahu kontroly pro lidské moderátory ke zpracování. Lidský přínos neslouží k trénování služby, ale kombinace práce služby a lidského posuzovacího týmu umožní vývojářům dosáhnout správné rovnováhy mezi efektivitou a přesností. Nástroj pro recenze také poskytuje uživatelsky přívětivé front-endu pro různé prostředky Content Moderatoru.
 
 ![Úvodní stránka nástroje pro kontrolu prováděnou lidmi v Content Moderatoru](images/homepage.PNG)
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 03/13/2019
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 0bb5fa25301fa86564c7f7aadb3285bdd5898a08
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: b81aac4779570f39fcbacda867fe27d902322bc5
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65511163"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67602830"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-net-framework"></a>Rychlý start: Překlad řeči se sadou SDK pro řeč pro rozhraní .NET Framework
 
@@ -36,7 +36,7 @@ K tomuto rychlému startu potřebujete:
 
 [!INCLUDE [Create project](../../../includes/cognitive-services-speech-service-create-speech-project-vs-csharp.md)]
 
-## <a name="add-sample-code"></a>Přidejte ukázkový kód.
+## <a name="add-sample-code"></a>Přidání ukázkového kódu
 
 1. Otevřete soubor `Program.cs` a veškerý kód nahraďte následujícím kódem.
 

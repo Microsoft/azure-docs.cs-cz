@@ -8,18 +8,18 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 03/11/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 51b2cd42fabe6406f88388e99459a6f3dd3e69f5
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: b4b10591069b71a4e70769f5bdcd6149768c5007
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65827657"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604025"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>Kurz: Rozpoznat loga služeb Azure v fotoaparátu
 
-V tomto kurzu prozkoumáte ukázkovou aplikaci, která používá Azure Custom Vision jako součást většího scénáře. Zřizování Visual AI aplikace Xamarin.Forms app pro mobilní platformy, analyzuje obrázky fotoaparát služby Azure log a pak nasadí skutečné služby k účtu uživatele Azure. Zde se dozvíte, jak používá vlastní vize ve spolupráci s ostatními součástmi poskytovat užitečné aplikace začátku do konce. Spustit scénář celá aplikaci sami, nebo jednoduše dokončete Custom Vision součást instalace a prozkoumejte, jak se aplikace používá.
+V tomto kurzu prozkoumáte ukázkovou aplikaci, která používá Azure Custom Vision jako součást většího scénáře. Zřizování Visual AI aplikace Xamarin.Forms app pro mobilní platformy, analyzuje obrázky fotoaparát služby Azure log a pak nasadí skutečné služby k účtu uživatele Azure. Zde se dozvíte, jak používá vlastní vize ve spolupráci s ostatními součástmi poskytovat užitečné aplikace začátku do konce. Můžete spustit scénář celá aplikace sami, nebo můžete dokončit pouze část vizi vlastní nastavení a prozkoumejte, jak se aplikace používá.
 
 V tomto kurzu se dozvíte, jak:
 
@@ -51,7 +51,7 @@ Přihlaste se k [webu Custom Vision](https://customvision.ai/) a vytvořte nový
 
 V dalším kroku učení algoritmu detekce logo nahrávání imagí Azure služba log a označit ručně. Úložiště AIVisualProvision obsahuje sadu trénovacích obrázků, které můžete použít. Na webu, vyberte **přidávat image** tlačítko **Trénovacích obrázků** kartu. Pak přejděte **dokumenty a obrázky/Training_DataSet** složky úložiště. Budete muset ručně označit loga každé Image, proto pokud jenom testujete tento projekt, je vhodné nahrát pouze podmnožinu bitové kopie. Nahrajte aspoň 15 výskyty jednotlivé značky, které chcete použít.
 
-Po odeslání trénovacích obrázků, vyberte první z nich na displeji. Tím se otevře okno značek. Vykreslení polí a přiřazení značek pro obě loga každé Image. 
+Po odeslání trénovacích obrázků, vyberte první z nich na displeji. Objeví se okno značek. Vykreslení polí a přiřazení značek pro obě loga každé Image. 
 
 ![Logo označování na webu Custom Vision](media/azure-logo-tutorial/tag-logos.png)
 
@@ -63,13 +63,13 @@ Po můžete označit image, přejděte vpravo na další značky. Jakmile skonč
 
 ## <a name="train-the-object-detector"></a>Trénování objekt detectoru
 
-V levém podokně, nastavte **značky** přepnout na **značkami** k zobrazení obrázků. Zvolte zelené tlačítko v horní části stránky pro trénování modelu. To se dozvíte, že algoritmus rozpozná stejné značky v nových imagí. Taky otestujete na některé z vašich existujících imagí k vygenerování skóre přesnost modelu.
+V levém podokně, nastavte **značky** přepnout na **značkami** k zobrazení obrázků. Zvolte zelené tlačítko v horní části stránky pro trénování modelu. Algoritmus se trénování rozpoznat stejné značky v nových imagí. Taky otestujete na některé z vašich existujících imagí k vygenerování skóre přesnost modelu.
 
 ![Vize vlastní web na kartě Trénovacích obrázků. Na tomto snímku obrazovky je popsána tlačítko trénování](media/azure-logo-tutorial/train-model.png)
 
 ## <a name="get-the-prediction-url"></a>Získat adresu URL predikcí
 
-Po model se trénuje, jste připraveni k jeho integraci do vaší aplikace. Chcete-li to provést, musíte získat adresu URL koncového bodu (adresa váš model, který bude dotaz na aplikace) a předpovědi klíče (k udělení přístupu aplikací k předpovědi požadavky). Na **výkonu** kartu, vyberte **předpovědi URL** tlačítko v horní části stránky.
+Po model se trénuje, jste připraveni k jeho integraci do vaší aplikace. Budete muset získat adresu URL koncového bodu (adresa váš model, který bude dotaz na aplikace) a předpovědi klíče (k udělení přístupu aplikací k předpovědi požadavky). Na **výkonu** kartu, vyberte **předpovědi URL** tlačítko v horní části stránky.
 
 ![Custom Vision webu, zobrazuje okno Prediction API, který zobrazuje adresu URL a klíč rozhraní API](media/azure-logo-tutorial/cusvis-endpoint.png)
 
@@ -95,7 +95,7 @@ Custom Vision část tohoto kurzu je dokončena. Pokud chcete aplikaci spustit, 
 
 Přihlásit ke službě pro počítačové zpracování obrazu a získejte klíč a koncový bod adresy URL. Nápovědu v tomto kroku naleznete v tématu [získání klíčů předplatného](https://docs.microsoft.com/azure/cognitive-services/computer-vision/vision-api-how-to-topics/howtosubscribe).
 
-![Služba pro počítačové zpracování obrazu na webu Azure Portal, s úvodní nabídky vybrána. Odkaz pro klíče je uvedeno, jako je adresa URL koncového bodu rozhraní API](media/azure-logo-tutorial/comvis-keys.png)
+![Služba pro počítačové zpracování obrazu na portálu Azure s nabídkou rychlý start vybrali. Odkaz pro klíče je uvedeno, jako je adresa URL koncového bodu rozhraní API](media/azure-logo-tutorial/comvis-keys.png)
 
 Dále otevřete *Source\VisualProvision\AppSettings.cs* souboru a naplnit `ComputerVisionEndpoint` a `ComputerVisionKey` proměnné s správné hodnoty.
 

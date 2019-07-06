@@ -3,15 +3,15 @@ title: Skript Azure Powershellu – aktualizace Azure Cosmos DB RU/s pro Apache 
 description: Skript Azure Powershellu – aktualizace Azure Cosmos DB RU/s pro Apache Cassandra API
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: samples
+ms.topic: sample
 ms.date: 05/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: 05ff4379c0a5d5436525f25bd755a7fce46d8121
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9df7884d56acf47d3bb7bdcf7679631713cf2725
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66247916"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67602523"
 ---
 # <a name="update-rus-for-a-keyspace-or-table-for-azure-cosmos-db---cassandra-api"></a>Aktualizovat RU/s pro prostor klíčů nebo tabulky pro službu Azure Cosmos DB – Apache Cassandra API
 

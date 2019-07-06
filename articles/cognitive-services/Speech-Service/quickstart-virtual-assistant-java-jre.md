@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 05/02/2019
+ms.date: 07/05/2019
 ms.author: bidishac
-ms.openlocfilehash: f2cf65f9ee920b50af6242cee6b53cd07e53f0bc
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: 78e80b276a13ee6e27fdf0515f2901fdeaa20c5d
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67467021"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604913"
 ---
 # <a name="quickstart-create-a-voice-first-virtual-assistant-with-the-speech-sdk-java"></a>Rychlý start: Vytvoření první hlasové virtuálních asistentů se sadou SDK pro řeč, jazyk Java
 

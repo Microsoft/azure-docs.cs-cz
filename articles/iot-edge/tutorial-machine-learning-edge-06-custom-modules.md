@@ -8,12 +8,12 @@ ms.date: 06/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6c4636fe370a4046b1c5020aee249529f1498639
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 16c32fc14805ac8ae1412671b2bb400456b4ab7d
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67155525"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603648"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Kurz: Vytvoření a nasazení vlastních modulů IoT Edge
 
@@ -245,7 +245,7 @@ Jak je uvedeno výše, používá modul runtime IoT Edge trasy nakonfigurované 
 3. Dále přidejte trasu pro zprávy z modulu rulClassifier do modulu turbofanRouter:
 
    ```json
-   "classifierToRouter": "FROM /messages/modules/classifier/outputs/amloutput INTO BrokeredEndpoint(\"/modules/turbofanRouter/inputs/rulInput\")"
+   "classifierToRouter": "FROM /messages/modules/turbofanRulClassifier/outputs/amloutput INTO BrokeredEndpoint(\"/modules/turbofanRouter/inputs/rulInput\")"
    ```
 
 #### <a name="outputs"></a>Výstupy
@@ -255,7 +255,7 @@ Přidáte čtyři další trasy k parametru $edgeHub trasy pro zpracování vytv
 1. Soubor program.cs definuje metodu SendMessageToClassifier(), který používá klienta modulu pro odeslání zprávy na zbývající doby životnosti třídění pomocí trasy:
 
    ```json
-   "routerToClassifier": "FROM /messages/modules/turbofanRouter/outputs/classOutput INTO BrokeredEndpoint(\"/modules/classifier/inputs/amlInput\")"
+   "routerToClassifier": "FROM /messages/modules/turbofanRouter/outputs/classOutput INTO BrokeredEndpoint(\"/modules/turbofanRulClassifier/inputs/amlInput\")"
    ```
 
 2. SendRulMessageToIotHub() modulu klienta používá k odesílání jen zbývající doby životnosti data pro zařízení do služby IoT Hub přes trasy:

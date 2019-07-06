@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 03/13/2019
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: bf07e6a2daac7889e11df2cb5d689daef44266f9
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: ff577bc0fe7db05c71aab04f0aaa5525f30b255c
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65465655"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67602896"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-c"></a>Rychlý start: Překlad řeči se sadou SDK pro řeč pro C++
 
@@ -36,7 +36,7 @@ K tomuto rychlému startu potřebujete:
 
 [!INCLUDE [Quickstart C++ project](../../../includes/cognitive-services-speech-service-quickstart-cpp-create-proj.md)]
 
-## <a name="add-sample-code"></a>Přidejte ukázkový kód.
+## <a name="add-sample-code"></a>Přidání ukázkového kódu
 
 1. Otevřete zdrojový soubor *helloworld.cpp*. Nahraďte všechen kód pod úvodním příkazem include (`#include "stdafx.h"` nebo `#include "pch.h"`) následujícím kódem:
 

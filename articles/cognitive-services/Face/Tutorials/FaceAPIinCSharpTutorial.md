@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: tutorial
-ms.date: 02/06/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 6a60afc45894518f92115976876ddd50efa1e410
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 54069fbaa8ad06d257ab835ed3b170fecb76d800
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60815342"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603340"
 ---
 # <a name="tutorial-create-a-wpf-app-to-display-face-data-in-an-image"></a>Kurz: Vytvoření aplikace WPF pro zobrazení dat pro rozpoznávání tváře v obrázku
 
-V tomto kurzu se dozvíte, jak používat rozhraní API pro rozpoznávání tváře Azure prostřednictvím klienta .NET SDK, k rozpoznávání tváří v obrázku a potom prezentovat data v uživatelském rozhraní. Vytvoříte jednoduchou aplikaci Windows Presentation Framework (WPF), který detekuje tváře, nakreslí rámeček kolek každou plochu a zobrazí popis rozhraním pro rozpoznávání tváře ve stavovém řádku. 
+V tomto kurzu se dozvíte, jak používat rozhraní API pro rozpoznávání tváře Azure prostřednictvím klienta .NET SDK, k rozpoznávání tváří v obrázku a potom prezentovat data v uživatelském rozhraní. Vytvoříte aplikace Windows Presentation Framework (WPF), která zjistí tváří, nakreslí rámeček kolek každou plochu a zobrazí popis typ písma ve stavovém řádku. 
 
 V tomto kurzu získáte informace o následujících postupech:
 
@@ -46,7 +46,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Postupujte podle těchto kroků a vytvořte nový projekt aplikace WPF.
 
-1. V sadě Visual Studio otevřete dialogové okno Nový projekt. Rozbalte **nainstalováno**, pak **Visual C#** a pak vyberte **aplikace WPF (.NET Framework)**.
+1. V sadě Visual Studio otevřete dialogové okno Nový projekt. Rozbalte **nainstalováno**, pak **Visual C#** a pak vyberte **aplikace WPF (.NET Framework)** .
 1. Pojmenujte tuto aplikaci **FaceTutorial** a klikněte na **OK**.
 1. Získejte požadované balíčky NuGet. Klikněte pravým tlačítkem na projekt v Průzkumníku řešení a vyberte **spravovat balíčky NuGet**; poté najít a nainstalovat balíček následující:
     - [Microsoft.Azure.CognitiveServices.Vision.Face 2.2.0-preview](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.2.0-preview)
@@ -57,7 +57,7 @@ V této části přidáte základní architekturu pro aplikaci bez jeho funkce s
 
 ### <a name="create-the-ui"></a>Vytvoření uživatelského rozhraní
 
-Otevřít *souboru MainWindow.xaml* a nahraďte jeho obsah následujícím kódem&mdash;tím se vytvoří okno uživatelského rozhraní. Všimněte si, že `FacePhoto_MouseMove` a `BrowseButton_Click` jsou obslužné rutiny událostí, které se definují později.
+Otevřít *souboru MainWindow.xaml* a nahraďte jeho obsah následujícím kódem&mdash;tento kód vytvoří okno uživatelského rozhraní. `FacePhoto_MouseMove` a `BrowseButton_Click` metody jsou obslužné rutiny událostí, které se definují později.
 
 [!code-xaml[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml?range=1-18)]
 
@@ -67,7 +67,7 @@ Otevřít *MainWindow.xaml.cs* a přidejte klientské knihovny obory názvů, sp
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?range=1-12)]
 
-V dalším kroku vložte následující kód **hlavního okna MainWindow** třídy. Tím se vytvoří **FaceClient** instance pomocí klíč předplatného, které je nutné zadat sami. Je nutné nastavit také řetězec oblasti `faceEndpoint` správné oblastí pro vaše předplatné (najdete v článku [dokumenty k rozhraní API pro rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) seznam všechny koncové body oblasti).
+V dalším kroku vložte následující kód **hlavního okna MainWindow** třídy. Tento kód vytvoří **FaceClient** instance pomocí klíč předplatného, které je nutné zadat sami. Je nutné nastavit řetězec oblasti `faceEndpoint` správné oblastí pro vaše předplatné (najdete v článku [dokumenty k rozhraní API pro rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) seznam všechny koncové body oblasti).
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?range=18-46)]
 
@@ -75,7 +75,7 @@ Potom vložte následující kód do **hlavního okna MainWindow** metody.
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?range=50-61)]
 
-Nakonec přidejte **BrowseButton_Click** a **FacePhoto_MouseMove** metody do třídy. Tyto příkazy odpovídají obslužné rutiny událostí, které jsou deklarované v *souboru MainWindow.xaml*. **BrowseButton_Click** metoda vytvoří **OpenFileDialog**, který umožňuje uživateli vybrat obrázek ve formátu .jpg. Pak zobrazí obrázek v hlavním okně. Vloží kód zbývající **BrowseButton_Click** a **FacePhoto_MouseMove** v dalších krocích. Všimněte si také `faceList` odkaz&mdash;seznam **DetectedFace** objekty. To je, kde se vaše aplikace ukládat a volání skutečné tváře data.
+Nakonec přidejte **BrowseButton_Click** a **FacePhoto_MouseMove** metody do třídy. Tyto metody, které odpovídají na obslužné rutiny událostí, které jsou deklarované v *souboru MainWindow.xaml*. **BrowseButton_Click** metoda vytvoří **OpenFileDialog**, který umožňuje uživateli vybrat obrázek ve formátu .jpg. Pak zobrazí obrázek v hlavním okně. Vloží kód zbývající **BrowseButton_Click** a **FacePhoto_MouseMove** v dalších krocích. Všimněte si také `faceList` odkaz&mdash;seznam **DetectedFace** objekty. Tento odkaz je, kde se vaše aplikace ukládat a volání skutečné tváře data.
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?range=64-90,146)]
 
@@ -91,19 +91,19 @@ Stisknutím klávesy **Start** v nabídce otestujte vaši aplikaci. Když se ote
 
 Vaše aplikace bude voláním rozpoznávání tváří **FaceClient.Face.DetectWithStreamAsync** metoda, která zabalí [rozpoznat](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) rozhraní REST API pro nahrávání místní image.
 
-Vložte následující metodu v **hlavního okna MainWindow** třídy níže **FacePhoto_MouseMove** metody. To definuje seznam obličejových atributů k načtení a přečte soubor bitové kopie odeslaných do **Stream**. Pak předá obě tyto objekty **DetectWithStreamAsync** volání metody.
+Vložte následující metodu v **hlavního okna MainWindow** třídy níže **FacePhoto_MouseMove** metody. Tato metoda definuje seznam obličejových atributů k načtení a přečte soubor bitové kopie odeslaných do **Stream**. Pak předá obě tyto objekty **DetectWithStreamAsync** volání metody.
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?range=189-226)]
 
 ## <a name="draw-rectangles-around-faces"></a>Kreslení obdélníků kolem tváří
 
-V dalším kroku přidáte kód pro vykreslení obdélníku kolem každou zjištěnou tvář na obrázku. V **hlavního okna MainWindow** třídy, vložte následující kód na konci **BrowseButton_Click** metoda, poté, co `FacePhoto.Source = bitmapSource` řádku. Tím vyplníte seznam zjištěných tváří z volání **UploadAndDetectFaces**. Nakreslí obdélník kolem každou plochu a upravenou image se zobrazí v hlavním okně.
+V dalším kroku přidáte kód pro vykreslení obdélníku kolem každou zjištěnou tvář na obrázku. V **hlavního okna MainWindow** třídy, vložte následující kód na konci **BrowseButton_Click** metoda, poté, co `FacePhoto.Source = bitmapSource` řádku. Tento kód se naplní seznam zjištěných tváří z volání **UploadAndDetectFaces**. Nakreslí obdélník kolem každou plochu a upravenou image se zobrazí v hlavním okně.
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?range=92-145)]
 
 ## <a name="describe-the-faces"></a>Popište tváří
 
-Přidejte následující metodu do **hlavního okna MainWindow** třídy níže **UploadAndDetectFaces** metody. Načtená obličejových atributů to převede na řetězec, který popisuje typ písma.
+Přidejte následující metodu do **hlavního okna MainWindow** třídy níže **UploadAndDetectFaces** metody. Tato metoda převede načtený obličejových atributů na řetězec, který popisuje typ písma.
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?range=228-286)]
 

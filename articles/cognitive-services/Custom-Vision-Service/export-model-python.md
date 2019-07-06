@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 03/21/2019
+ms.date: 07/03/2019
 ms.author: areddish
-ms.openlocfilehash: babc9f8c7b8a05c4a91ead4990267311e926fd47
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: ba8cf3392ac2bd3d371e5e1910c6671feba9dedf
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66236427"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606871"
 ---
 # <a name="tutorial-run-tensorflow-model-in-python"></a>Kurz: Spuštění modelu TensorFlow v Pythonu
 
@@ -88,7 +88,7 @@ image = update_orientation(image)
 image = convert_to_opencv(image)
 ```
 
-### <a name="deal-with-images-with-a-dimension-1600"></a>Zpracování obrázků s rozměry většími než 1 600 pixelů
+### <a name="handle-images-with-a-dimension-1600"></a>Zpracování imagí pomocí dimenze > 1600
 
 ```Python
 # If the image has either w or h greater than 1600 we resize it down respecting
@@ -172,7 +172,7 @@ def update_orientation(image):
 
 ## <a name="predict-an-image"></a>Předpověď obrázku
 
-Jakmile bude obrázek připravený jako tensor, můžeme ho odeslat do modelu a získat předpověď:
+Jakmile bitová kopie je připravená jako tensor, pošleme ji prostřednictvím modelu pro předpověď:
 
 ```Python
 

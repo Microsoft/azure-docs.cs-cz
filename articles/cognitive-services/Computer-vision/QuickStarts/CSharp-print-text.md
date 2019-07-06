@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 02/11/2019
+ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 6722fa103b3d48a8ca8ff4b96c9d179a4f743608
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 18a00c2aebd05d2ed2da54e436d245c70bf25051
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60409086"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604462"
 ---
-# <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-c35-in-computer-vision"></a>Rychlý start: Extrahovat tištěný text (OCR) pomocí rozhraní REST API a C&#35; v počítačové zpracování obrazu
+# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-c"></a>Rychlý start: Extrahovat tištěný text (OCR) pomocí rozhraní API pro počítačové zpracování obrazu REST aC#
 
 V tomto rychlém startu se extrahovat tištěný text s optické rozpoznávání znaků (OCR) z image pomocí rozhraní REST API pro počítačové zpracování obrazu. S [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) funkce, můžete zjistit tištěný text v obrázku a extrahovat rozpoznané znaky do datového proudu počítačově využitelný znaků.
 
@@ -247,10 +247,6 @@ namespace CSHttpClientSample
     ]
 }
 ```
-
-## <a name="clean-up-resources"></a>Vyčištění prostředků
-
-Pokud už řešení sady Visual Studio nepotřebujete, odstraňte je. Uděláte to tak, že otevřete Průzkumníka souborů, přejdete ke složce, ve které jste vytvořili řešení sady Visual Studio, a tuto složku odstraníte.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -1,25 +1,25 @@
 ---
 title: 'Rychlý start: Analýza textu v obsahu C# – Content Moderator'
 titlesuffix: Azure Cognitive Services
-description: Postup analýzy různého problematického materiálu v obsahu textu pomocí sady Content Moderator SDK pro .NET
+description: Jak analyzovat textový obsah pro různé nevhodných materiálů pomocí sady obsahu Moderator SDK pro .NET
 services: cognitive-services
 author: sanjeev3
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 02/07/2019
+ms.date: 07/03/2019
 ms.author: sajagtap
-ms.openlocfilehash: 09fd58fa33873c06ac5dab4970af199bc3030479
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f848ea0d1c86b9c12d26c59b8f0e92d1e5d70094
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60607094"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604050"
 ---
 # <a name="quickstart-analyze-text-content-for-objectionable-material-in-c"></a>Rychlý start: Analýza pro nežádoucím v textový obsahC#
 
-Tento článek obsahuje informace a vzorové kódy, které vám pomůžou začít používat [sadu Content Moderator SDK pro .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/). Dozvíte se, jak provádět filtrování založené na termínech a klasifikaci obsahu textu za účelem moderování potenciálně problematického materiálu.
+Tento článek obsahuje informace a vzorové kódy, které vám pomůžou začít používat [sadu Content Moderator SDK pro .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/). Budete se dozvíte, jak spustit na základě termín filtrování a klasifikaci obsahu se postarat o potenciálně nežádoucím moderování textu.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
 
@@ -57,11 +57,11 @@ Do souboru *Program.cs* přidejte následující kód, který pro vaše předpla
 
 ### <a name="set-up-input-and-output-targets"></a>Nastavení vstupních a výstupních cílů
 
-Do třídy **Program** v souboru _Program.cs_ přidejte následující statická pole. Tato pole určují soubory pro vstupní textový obsah a výstupní obsah JSON.
+Do třídy **Program** v souboru _Program.cs_ přidejte následující statická pole. Tato pole zadejte soubory pro obsah vstupního textu a výstup JSON obsahu.
 
 [!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/text-moderation-quickstart-dotnet.cs?range=15-19)]
 
-Budete muset vytvořit vstupní soubor *TextFile.txt* a odpovídajícím způsobem aktualizovat jeho cestu (relativní cesty jsou relativní vzhledem k adresáři provádění). Otevřete soubor _TextFile.txt_ a přidejte text, který se má moderovat. V tomto rychlém startu se používá následující ukázkový text:
+Budete muset vytvořit *TextFile.txt* vstupní soubor a aktualizovat jeho cesty (cesty jsou relativní vzhledem k adresáři spuštění). Otevřete soubor _TextFile.txt_ a přidejte text, který se má moderovat. V tomto rychlém startu se používá následující ukázkový text:
 
 ```
 Is this a grabage or crap email abcdef@abcd.com, phone: 6657789887, IP: 255.255.255.255, 1 Microsoft Way, Redmond, WA 98052.

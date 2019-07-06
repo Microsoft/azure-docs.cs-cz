@@ -7,14 +7,14 @@ manager: darosa
 ms.author: aschhab
 ms.date: 11/28/2018
 ms.topic: tutorial
-ms.service: event-hubs-messaging
+ms.service: event-hubs
 ms.custom: mvc
-ms.openlocfilehash: 9eea40a8ad2f08099b2662a0e7539c326d4d143e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0f7c7e348c154aab1deb10273346a5395599b745
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60343584"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67605861"
 ---
 # <a name="tutorial-enable-virtual-networks-integration-and-firewalls-on-event-hubs-namespace"></a>Kurz: Povolení integrace virtuální sítě a brány firewall na obor názvů Event Hubs
 
@@ -53,7 +53,7 @@ Můžeme využít existujícího oboru názvů služby Event Hubs, takže zkontr
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Nejprve přejděte na web [Azure Portal][Azure portal] a přihlaste se pomocí svého předplatného Azure.
+Nejprve přejděte na [webu Azure portal][Azure portal] a přihlaste se pomocí svého předplatného Azure.
 
 ## <a name="select-event-hubs-namespace"></a>Vyberte obor názvů služby Event Hubs
 

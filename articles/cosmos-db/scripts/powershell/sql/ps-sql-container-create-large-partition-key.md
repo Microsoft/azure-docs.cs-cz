@@ -3,15 +3,15 @@ title: Prostředí Azure PowerShell script – vytvořit kontejner s klíči vel
 description: Skript Azure Powershellu ukázkový – vytvořit kontejner s klíči velkých oddílů v účtu služby Azure Cosmos
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: samples
+ms.topic: sample
 ms.date: 07/03/2019
 ms.author: mjbrown
-ms.openlocfilehash: c4e8f26c59312b5216a6834e34c5bbc2bf58563a
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: 1e61640115d1b85c69a1513b043a1a55ac720c19
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67566801"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603854"
 ---
 # <a name="create-a-container-with-a-large-partition-key-in-an-azure-cosmos-account-using-powershell"></a>Vytvořit kontejner s klíči velkých oddílů v účtu služby Azure Cosmos pomocí Powershellu
 

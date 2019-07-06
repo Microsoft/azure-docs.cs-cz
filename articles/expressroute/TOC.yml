@@ -190,6 +190,8 @@
       href: 'https://msdn.microsoft.com/library/azure/mt586720'
     - name: REST (Classic)
       href: 'https://msdn.microsoft.com/library/azure/dn606310'
+    - name: Šablona Resource Manageru
+      href: /azure/templates/microsoft.network/expressroutecircuits
 - name: Zdroje a prostředky
   items:
     - name: ExpressRoute – nejčastější dotazy

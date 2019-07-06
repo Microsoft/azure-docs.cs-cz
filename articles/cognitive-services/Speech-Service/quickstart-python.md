@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 05/02/2019
+ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 30e25fa8ea9e49b3005badc3db8f6ada3c0aed50
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: d6b7cc275fc50fefbe0057620d315d1484c47745
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65885176"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603017"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-python"></a>Rychlý start: Rozpoznávání řeči se sadou SDK pro řeč pro Python
 
@@ -79,7 +79,7 @@ python quickstart.py
 
 Nebo si můžete stáhnout jako tento rychlý úvodní kurz [Jupyter](https://jupyter.org) Poznámkový blok z [sadou SDK pro řeč ukázkové úložiště](https://github.com/Azure-Samples/cognitive-services-speech-sdk/) a spusťte ho jako poznámkový blok.
 
-### <a name="sample-code"></a>Ukázkový kód
+### <a name="sample-code"></a>Ukázka kódu
 
 [!code-python[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/python/quickstart.py#code)]
 

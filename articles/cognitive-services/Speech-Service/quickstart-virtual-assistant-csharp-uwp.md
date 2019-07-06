@@ -8,15 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 05/02/2019
+ms.date: 07/05/2019
 ms.author: travisw
-ms.custom: ''
-ms.openlocfilehash: 4044f8d48efae4e8423f780c85e0f3ccfde12461
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: 22c18b573e7107163f858c79956ca6f5380f6834
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67467060"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604976"
 ---
 # <a name="quickstart-create-a-voice-first-virtual-assistant-with-the-speech-sdk-uwp"></a>Rychlý start: Vytvoření první hlasové virtuálních asistentů se sadou SDK pro řeč, UPW
 
@@ -81,7 +80,7 @@ V tomto rychlém startu popíše krok za krokem, jak vytvořit jednoduchý klien
     </Page>
     ```
 
-1. Otevřít zdrojový soubor kódu na pozadí `MainPage.xaml.cs`. Najdete ji seskupené pod nadpisem `MainPage.xaml`. Nahraďte obsah následujícím kódem. Zde je, co tato ukázka obsahuje: 
+1. Otevřít zdrojový soubor kódu na pozadí `MainPage.xaml.cs`. Najdete ji seskupené pod nadpisem `MainPage.xaml`. Nahraďte obsah následujícím kódem. Zde je, co tato ukázka obsahuje:
 
     * Pomocí příkazů pro zpracování řeči a Speech.Dialog obory názvů
     * Jednoduchá implementace zajistit přístup k mikrofonu, připojené k rutině tlačítka

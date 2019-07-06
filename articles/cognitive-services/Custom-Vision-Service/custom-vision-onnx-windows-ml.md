@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 03/21/2019
+ms.date: 07/03/2019
 ms.author: larryfr
-ms.openlocfilehash: ceb45048d160603a3ee619e3ea0e69a0c188a9ad
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: ee8115a29911d0c3d1ccf87366f939b4184e1ba2
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64725779"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606899"
 ---
 # <a name="tutorial-use-an-onnx-model-from-custom-vision-with-windows-ml-preview"></a>Kurz: Pomocí modelu ONNX ze Custom Vision ML Windows (preview)
 
@@ -57,7 +57,7 @@ Ukázková aplikace je k dispozici na adrese [https://github.com/Azure-Samples/c
 
 Pokud chcete použít vlastní model, postupujte následovně:
 
-1. [Vytvořte a natrénujte](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) klasifikátor pomocí služby Custom Vision. Pokud chcete model exportovat, vyberte __kompaktní__ doménu, jako je například doména **Obecná (kompaktní)**. Pokud chcete exportovat existující klasifikátor, vyberte ikonu ozubeného kolečka v pravém horním rohu a převeďte doménu na kompaktní. V __Nastavení__ zvolte kompaktní model a pak projekt uložte a natrénujte.  
+1. [Vytvořte a natrénujte](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) klasifikátor pomocí služby Custom Vision. Pokud chcete model exportovat, vyberte __kompaktní__ doménu, jako je například doména **Obecná (kompaktní)** . Pokud chcete exportovat existující klasifikátor, vyberte ikonu ozubeného kolečka v pravém horním rohu a převeďte doménu na kompaktní. V __Nastavení__ zvolte kompaktní model a pak projekt uložte a natrénujte.  
 
 1. Přejděte na kartu Výkon a [exportujte model](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model). Vyberte iteraci natrénovanou s použitím kompaktní domény a zobrazí se tlačítko Exportovat. Vyberte *Exportovat*, *ONNX*, *ONNX1.2* a pak *Exportovat*. Jakmile bude soubor připravený, vyberte tlačítko *Stáhnout*.
 
