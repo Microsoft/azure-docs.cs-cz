@@ -7,15 +7,15 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: overview
-ms.date: 05/02/2019
+ms.topic: conceptual
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 055d141cab8ece3fcb462573f6ed4d8941c19751
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 37d68a4d2b7658542ebcfdb5d22a10676a8e4d52
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67064138"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603310"
 ---
 # <a name="speech-services-for-telephony-data"></a>Hlasových služeb pro data telefonního subsystému
 
@@ -36,7 +36,7 @@ Pojďme se podívat na některé technologie a nabídky Azure hlasové služby s
 
 Nad rámec funkční aspekty hlasové služby je jejich hlavním účelem – při použití do call-Centrum – ke zlepšení zkušeností zákazníků. V tomto ohledu existují tři vymazat domény:
 
-* Po volání analytics to znamená, dávkové zpracování záznamů volání 
+* Po volání analytics to znamená, dávkové zpracování záznamů volání
 * Zpracování analýzy v reálném čase zvukový signál k extrahování přehledů různé, protože volání probíhat (s právě případu použití viditelného mínění) a
 * Virtuálních asistentů (robotům), vedení dialog mezi zákazníkem a robota za účelem řešení problému zákazníka s žádné účast agenta systému nebo aplikace AI se protokoly pomáhat agenta.
 
@@ -44,9 +44,9 @@ Diagram typickou architekturu provádění scénář služby batch je znázorně
 
 ## <a name="speech-analytics-technology-components"></a>Komponenty technologie Analytics řeči
 
-Zda je doména po volání nebo v reálném čase, Azure nabízí sadu až po zralé a nově vznikajícími sadu technologií pro zlepšení zkušeností zákazníků. 
+Zda je doména po volání nebo v reálném čase, Azure nabízí sadu až po zralé a nově vznikajícími sadu technologií pro zlepšení zkušeností zákazníků.
 
-### <a name="speech-to-text-stt"></a>Převod řeči na text (STT) 
+### <a name="speech-to-text-stt"></a>Převod řeči na text (STT)
 
 [Převod řeči na text](speech-to-text.md) je nejvíce hledané kombinaci po funkci v žádném volání řešení System center. Protože mnoho analytics podřízené procesy, které využívají přepisována text, míra chyb aplikace word (zasílání) je naprosto. Jeden z klíčových problémů v centru přepis volání je šum, který je běžně se vyskytujícím call-centrum (například jiní agenti pro čtení na pozadí), bohatou řadu národní prostředí a dialekty, jakož i nízká kvalita signál, který se telefonu. Zasílání je vysoce korelují s jak dobře jsou akustických a jazykových modelů trénovaných pro dané národní prostředí, proto ji bude možné přizpůsobení modelu, který má národní prostředí je důležité. Naše nejnovější Unified verze 4.x modely jsou řešení tak, aby určené k transkripci přesnost a latenci. Školení s desítkami tisíc hodin akustických dat a miliardy lexikální informace Unified modely jsou velmi přesné modely na trhu pro přepisy data center volání.
 
@@ -60,9 +60,9 @@ není, 35 procent společností z žebříčku volání podpory být říkáme d
 Některé společnosti jsou experimentování s poskytující přeložený záznamy o studiu hovorů podpory cizích jazyků tak, aby správci doručování by rozuměla na celém světě zkušenosti zákazníků. Naše [překlad](translation.md) možnosti jsou unsurpassed. Zvuk na zvuk nebo zvukový jsme na text přeložit z velkého počtu národní prostředí.
 
 ### <a name="text-to-speech"></a>Převod textu na řeč
-[Převod textu na řeč](text-to-speech.md) je jiné důležité oblasti při implementaci roboty, kteří komunikovat se zákazníky. Typickou cestu je, že zákazník mluví, je přepisována hlasu na text, text je analyzován z hlediska záměry, odpověď je syntetizovat založené na uznávané záměr a pak buď prezentované prostředek zákazníkovi nebo syntetizovaný hlasové odezvy je vygenerovat. Samozřejmě to všechno dojít k žádnému rychle – tedy latence je jejich důležitou součástí úspěchu tyto systémy. 
+[Převod textu na řeč](text-to-speech.md) je jiné důležité oblasti při implementaci roboty, kteří komunikovat se zákazníky. Typickou cestu je, že zákazník mluví, je přepisována hlasu na text, text je analyzován z hlediska záměry, odpověď je syntetizovat založené na uznávané záměr a pak buď prezentované prostředek zákazníkovi nebo syntetizovaný hlasové odezvy je vygenerovat. Samozřejmě to všechno dojít k žádnému rychle – tedy latence je jejich důležitou součástí úspěchu tyto systémy.
 
-Naše začátku do konce latence je poměrně málo zvažování různých technologií, které jsou zahrnuty jako [Speech to text](speech-to-text.md), [LUIS](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/), [Bot Framework](https://dev.botframework.com/), [ Převod textu na řeč](text-to-speech.md). 
+Naše začátku do konce latence je poměrně málo zvažování různých technologií, které jsou zahrnuty jako [Speech to text](speech-to-text.md), [LUIS](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/), [Bot Framework](https://dev.botframework.com/), [ Převod textu na řeč](text-to-speech.md).
 
 Naše nové hlasy jsou také nerozeznatelná od lidí hlasy. Můžete si hlasy Zajistěte svému robotovi jeho jedinečný vzhled.
 

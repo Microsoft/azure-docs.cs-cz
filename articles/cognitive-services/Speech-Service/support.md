@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/26/2018
+ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: 4099bc7bfce6de620504e03be3afc5392281d8d8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9e975bbdcec2b45d67f910ac1a83a71ed252ebda
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072378"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606268"
 ---
 # <a name="support-and-help-options"></a>Možnosti podpory a Nápověda
 
@@ -71,7 +71,7 @@ Pokud nemůžete najít odpověď na váš problém prostřednictvím vyhledáv�
 |Překlad řeči |[[microsoft-cognitive+translation]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+translation)|
 |Speech Intent |[[microsoft-cognitive+luis]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+luis)|
 |Obecné sadou SDK pro řeč |[[microsoft-cognitive+microsoft-speech-api]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+microsoft-speech-api)|
-| Hlasové první virtuálních asistentů (Preview) | [[microsoft-cognitive+virtual-assistant+botframework]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+virtual-assistant+botframework) | 
+| Hlasové první virtuálních asistentů (Preview) | [[microsoft-cognitive+virtual-assistant+botframework]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+virtual-assistant+botframework) |
 
 > [!TIP]
 > Následující příspěvky z přetečení zásobníku obsahuje tipy, jak dotazy formulář a přidejte zdrojový kód. Dodržení těchto pokynů může zvýšit pravděpodobnost, že členové komunity, vyhodnocení a rychle reagovat na vaši otázku:  

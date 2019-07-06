@@ -7,17 +7,17 @@ author: sanjeev3
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: quickstart
-ms.date: 10/10/2018
+ms.topic: conceptual
+ms.date: 07/03/2019
 ms.author: sajagtap
-ms.openlocfilehash: da8ad71ccf8b58ddf3ef7cc6a2f9e9c732913caa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0ab11d8ef9fd481d2b3ea7029664a1ec2778cf4b
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60607648"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604091"
 ---
-# <a name="quickstart-check-text-against-a-custom-term-list-in-c"></a>Rychlý start: Zkontrolujte seznam vlastních termín se v textuC#
+# <a name="check-text-against-a-custom-term-list-in-c"></a>Zkontrolujte seznam vlastních termín se v textuC#
 
 Výchozí globální seznam výrazů v Azure Content Moderatoru je dostačující pro většinu potřeb z hlediska moderování obsahu. Možná ale budete potřebovat vyhledat výrazy, které jsou specifické pro vaši organizaci. Například můžete chtít označit názvy konkurentů k další kontrole. 
 
@@ -40,7 +40,7 @@ Než začnete služby Content Moderatoru prostřednictvím rozhraní REST API ne
 
 ## <a name="create-your-visual-studio-project"></a>Vytvoření projektu Visual Studio
 
-1. Přidejte ke svému řešení nový projekt **Konzolová aplikace (.NET Framework)**.
+1. Přidejte ke svému řešení nový projekt **Konzolová aplikace (.NET Framework)** .
 
 1. Pojmenujte projekt **TermLists**. Projekt vyberte jako jediný spouštěný projekt řešení.
 
@@ -373,7 +373,7 @@ static void DeleteTermList (ContentModeratorClient client, string list_id)
 }
 ```
 
-## <a name="putting-it-all-together"></a>Spojení všech součástí dohromady
+## <a name="compose-the-main-method"></a>Vytvořit metodu Main
 
 Přidejte definici metody **Main** do oboru názvů **TermLists**, třída **Program**. Nakonec zavřete třídu **Program** a obor názvů **TermLists**.
 
@@ -415,9 +415,9 @@ static void Main(string[] args)
 
 ## <a name="run-the-application-to-see-the-output"></a>Zobrazení výstupu spuštěním aplikace
 
-Výstup bude na následujících řádcích, ale data se můžou lišit.
+Výstup na konzole bude vypadat nějak takto:
 
-```
+```console
 Creating term list.
 Term list created. ID: 252.
 Updating information for term list with ID 252.

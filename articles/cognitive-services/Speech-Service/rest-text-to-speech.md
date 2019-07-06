@@ -8,15 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/26/2019
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.custom: seodec18
-ms.openlocfilehash: 08bf1363f3c6c9b68243cc10ffb2785f53e02107
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 684ddcd49d3cd3c3d4f0a8d6f4675e1e27bdb7b9
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342192"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604890"
 ---
 # <a name="text-to-speech-rest-api"></a>Převod textu na řeč REST API
 
@@ -49,7 +48,7 @@ Před použitím tohoto rozhraní API, porozumět:
 | Kanada – střed | `https://canadacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA – střed | `https://centralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Východní Asie | `https://eastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| USA – východ | `https://eastus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| East US | `https://eastus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Východní USA 2 | `https://eastus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Francie – střed | `https://francecentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Indie – střed | `https://centralindia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
@@ -225,7 +224,7 @@ Stavový kód HTTP pro každou odpověď indikuje úspěch nebo běžné chyby.
 | 400 | Chybný požadavek | Povinný parametr nebyl nalezen, prázdný nebo null. Nebo hodnota předaná buď povinný nebo volitelný parametr není platný. Běžné potíže se hlavičku, která je příliš dlouhý. |
 | 401 | Neautorizováno | Požadavek není autorizovaný. Ověřte váš klíč předplatného nebo token je platný a v oblasti správné. |
 | 413 | Příliš velká entita požadavku | Vstup SSML je delší než 1024 znaků. |
-| 415 | Nepodporovaný typ média | Je možné, který chybného `Content-Type` nebyl poskytnut. `Content-Type` musí být nastavená na `application/ssml+xml`. | 
+| 415 | Nepodporovaný typ média | Je možné, který chybného `Content-Type` nebyl poskytnut. `Content-Type` musí být nastavená na `application/ssml+xml`. |
 | 429 | Příliš mnoho žádostí | Překročili jste kvótu nebo počet požadavků pro vaše předplatné povolená. |
 | 502 | Chybná brána | Problém sítě nebo na straně serveru. Může také znamenat neplatné záhlaví. |
 

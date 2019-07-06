@@ -8,15 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/15/2019
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.custom: seodec18
-ms.openlocfilehash: 488cbf1874e023cf3a665bc9f2087900b30b3d3d
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 8285a76f8cd07863874f9c8e8eebe96f1cb968dd
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204914"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604822"
 ---
 # <a name="speech-synthesis-markup-language-ssml"></a>Jazyk SSML (Speech Synthesis Markup Language)
 
@@ -181,7 +180,7 @@ Použití `break` prvek, který chcete vložit pozastavení (nebo konce) mezi sl
 | síla | Určuje relativní doba trvání pozastavení pomocí jedné z následujících hodnot:<ul><li>None</li><li>slabé x</li><li>slabé</li><li>Střední (výchozí)</li><li>Silné</li><li>x-strong</li></ul> | Nepovinné |
 | time | Určuje absolutní dobu pozastavit v řádu sekund a milisekund. Příkladem platné hodnoty jsou 2s a 500 | Nepovinné |
 
-| Síla | Popis |
+| síla | Popis |
 |----------|-------------|
 | Žádné, nebo pokud neexistuje žádná hodnota | 0 ms |
 | slabé x | 250 ms |
@@ -290,7 +289,7 @@ Vzhledem k tomu, že hodnoty stanovují prozodickou atributů se může lišit v
 | contour | Rozvrh není podporována pro Neurální hlasy. Rozvrh představuje změny v výška mluveného obsahu jako pole cílů v zadaném časovém pozic v řečovém výstupu. Každý cíl je definovaná pomocí sad párů parametru. Příklad: <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>První hodnota v každou sadu parametrů určuje umístění změnit výšku jako procentuální hodnotu doby trvání textu. Druhá hodnota určuje dobu, chcete-li zvýšit nebo snížit prvotního pomocí relativní hodnotu nebo hodnoty výčtu pro rozteč (viz `pitch`). | Nepovinné |
 | rozsah  | Hodnota, která představuje řadu výška textu. Může express `range` pomocí stejné hodnoty absolutní, relativní hodnoty nebo hodnoty výčtu používají k popisu `pitch`. | Nepovinné |
 | Frekvence  | Informuje o frekvenci mluvy textu. Může express `rate` jako:<ul><li>Relativní hodnotu vyjádřenou jako číslo, které funguje jako násobitel výchozí. Například hodnota *1* má za následek žádná změna míry. Hodnota *.5* vede halving rychlost. Hodnota *3* vede tripling rychlost.</li><li>Konstantní hodnota:<ul><li>x-slow</li><li>Pomalé</li><li>Střední</li><li>Rychlé</li><li>x-fast</li><li>default</li></ul></li></ul> | Nepovinné |
-| Doba trvání  | Doba, která má uplynout při řeč syntézu (převod textu na ŘEČ) služby přečte text, v sekundách a milisekundách. Například *2s* nebo *1800ms*. | Nepovinné |
+| duration  | Doba, která má uplynout při řeč syntézu (převod textu na ŘEČ) služby přečte text, v sekundách a milisekundách. Například *2s* nebo *1800ms*. | Nepovinné |
 | svazek  | Informuje o úrovni svazku hlasem. Mohou vyjádřit svazku:<ul><li>Absolutní hodnota, vyjádřené jako číslo v rozsahu od 0,0 do 100.0 z *nejtišších* k *omezit*. Například 75. Výchozí hodnota je 100.0.</li><li>Relativní hodnotu, vyjádřené jako číslo předcházet párový příkaz "+" nebo "-", který určuje velikost chcete změnit svazek. Například + 10 nebo-5.5.</li><li>Konstantní hodnota:<ul><li>Tiché</li><li>x-soft</li><li>obnovitelné</li><li>Střední</li><li>loud</li><li>x-loud</li><li>default</li></ul></li></ul> | Nepovinné |
 
 ### <a name="change-speaking-rate"></a>Mluvy frekvence změny

@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Zkontrolujte bitové kopie na základě vlastních seznamů v C# – Content Moderator'
+title: Zkontrolujte bitové kopie na základě vlastních seznamů v C# – Content Moderator
 titlesuffix: Azure Cognitive Services
 description: Návod, jak moderovat obrázky se seznamy vlastních obrázků pomocí sady Content Moderator SDK pro jazyk C#.
 services: cognitive-services
@@ -7,17 +7,17 @@ author: sanjeev3
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: quickstart
-ms.date: 10/10/2018
+ms.topic: conceptual
+ms.date: 07/03/2019
 ms.author: sajagtap
-ms.openlocfilehash: ded5b097e7c8feab56e2d82cb44f92e3127519e2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 49f87b7cf3d7f46a66c0992edf25968b1dbae073
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60699116"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603407"
 ---
-# <a name="quickstart-moderate-with-custom-image-lists-in-c"></a>Rychlý start: Střední s vlastním seznamem obrázků vC#
+# <a name="moderate-with-custom-image-lists-in-c"></a>Střední s vlastním seznamem obrázků vC#
 
 Tento článek obsahuje informace a ukázky kódu, které vám pomůžou začít používat [sadu Content Moderator SDK pro .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) k následujícím účelům:
 - Vytvoření seznamu vlastních obrázků
@@ -32,7 +32,7 @@ Tento článek obsahuje informace a ukázky kódu, které vám pomůžou začít
 > [!NOTE]
 > Limit je maximálně **5 seznamů obrázků** a v každém seznamu může být **maximálně 10 000 obrázků**.
 
-Konzolová aplikace tohoto rychlého startu simuluje některé úlohy, které můžete s rozhraním API seznamu obrázků provádět.
+Konzolové aplikace pro tohoto průvodce simuluje některé úlohy, které můžete provádět pomocí rozhraní API seznamu obrázků.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
 
@@ -42,7 +42,7 @@ Než začnete služby Content Moderatoru prostřednictvím rozhraní REST API ne
 
 ## <a name="create-your-visual-studio-project"></a>Vytvoření projektu Visual Studio
 
-1. Přidejte ke svému řešení nový projekt **Konzolová aplikace (.NET Framework)**.
+1. Přidejte ke svému řešení nový projekt **Konzolová aplikace (.NET Framework)** .
 
    Ve vzorovém kódu pojmenujte tento projekt **ImageLists**.
 
@@ -303,7 +303,7 @@ private static ImageList CreateCustomList(ContentModeratorClient client)
 
 ## <a name="create-a-method-to-add-a-collection-of-images-to-the-list"></a>Vytvoření metody k přidání kolekce obrázků do seznamu
 
-Do třídy **Program** přidejte následující metodu. Tento rychlý start nepředvádí postup přiřazení značek obrázkům na seznamu. 
+Do třídy **Program** přidejte následující metodu. Tento průvodce není ukazují, jak použít značky na obrázky v seznamu. 
 
 ```csharp
 /// <summary>

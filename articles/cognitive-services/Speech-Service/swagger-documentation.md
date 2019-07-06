@@ -7,19 +7,19 @@ author: PanosPeriorellis
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: overview
-ms.date: 04/12/2019
+ms.topic: reference
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 6cf3ab6480900aa763598120e6ff7e308f5044e1
-ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
+ms.openlocfilehash: f6420ea8918816f7356e567ec48cb0f7456065e0
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66743209"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604772"
 ---
 # <a name="swagger-documentation"></a>Dokumentace ke Swaggeru
 
-Hlasové služby nabízejí specifikace Swagger pro interakci s několika rozhraní REST API používá k umožňuje importovat data, vytvářet modely, testování přesnosti modelu, vytvořit vlastní koncové body, fronty batch přepisů a spravovat předplatná. Většinu operací, které jsou k dispozici prostřednictvím portálu pro Custom Speech je možné provést prostřednictvím kódu programu pomocí těchto rozhraní API. 
+Hlasové služby nabízejí specifikace Swagger pro interakci s několika rozhraní REST API používá k umožňuje importovat data, vytvářet modely, testování přesnosti modelu, vytvořit vlastní koncové body, fronty batch přepisů a spravovat předplatná. Většinu operací, které jsou k dispozici prostřednictvím portálu pro Custom Speech je možné provést prostřednictvím kódu programu pomocí těchto rozhraní API.
 
 > [!NOTE]
 > Převod řeči na Text a převod textu na řeč operace jsou podporovány dostupná jako rozhraní REST API, která zase popsané ve specifikaci Swaggeru.

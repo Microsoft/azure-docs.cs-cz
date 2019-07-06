@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Provádění operací image – Python'
+title: Provádění operací image – Python
 titlesuffix: Azure Cognitive Services
 description: Přečtěte si, jak používat rozhraní API pro počítačové zpracování obrazu v Pythonu s poznámkovými bloky Jupyter. K vizualizaci výsledků můžete použít oblíbené knihovny.
 services: cognitive-services
@@ -7,20 +7,20 @@ author: KellyDF
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
-ms.topic: tutorial
-ms.date: 11/06/2018
+ms.topic: conceptual
+ms.date: 07/03/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: b5333557355aa816245b5086836eac980d90540a
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: b18f41db772c1c214bdf48c9bb765b1ce7e6d2c2
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341487"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604153"
 ---
-# <a name="tutorial-computer-vision-api-python"></a>Kurz: Python API pro zpracování obrazu počítače
+# <a name="computer-vision-api-jupyter-notebook"></a>Poznámkový blok Jupyter rozhraní API pro zpracování obrazu počítače
 
-V tomto kurzu se dozvíte, jak používat rozhraní API pro počítačové zpracování obrazu v Pythonu a jak vizualizovat výsledky s využitím oblíbených knihoven. V tomto kurzu použijete Jupyter. Zjistěte, jak začít pracovat s interaktivní poznámkové bloky Jupyter, najdete v tématu [Jupyter dokumentaci](https://jupyter.readthedocs.io/en/latest/index.html).
+Tento průvodce vám ukáže, jak používat rozhraní API pro počítačové zpracování obrazu v Pythonu a tom, jak vizualizovat výsledky pomocí oblíbených knihoven. V tomto kurzu použijete Jupyter. Zjistěte, jak začít pracovat s interaktivní poznámkové bloky Jupyter, najdete v tématu [Jupyter dokumentaci](https://jupyter.readthedocs.io/en/latest/index.html).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak používat rozhraní API pro počítačové zprac
 - Nástroj [pip](https://pip.pypa.io/en/stable/installing/)
 - Nainstalovaný [poznámkový blok Jupyter](https://jupyter.org/install)
 
-## <a name="open-the-tutorial-notebook-in-jupyter"></a>Otevření poznámkového bloku s kurzem v Jupyteru 
+## <a name="open-the-notebook-in-jupyter"></a>Otevřete Poznámkový blok v Jupyter 
 
 1. Přejděte do úložiště [Cognitive Vision Python](https://github.com/Microsoft/Cognitive-Vision-Python) na GitHubu. 
 2. Po kliknutí na zelené tlačítko můžete úložiště naklonovat nebo stáhnout. 
@@ -37,7 +37,7 @@ V tomto kurzu se dozvíte, jak používat rozhraní API pro počítačové zprac
 1. Spuštěním příkazu `jupyter notebook` na příkazovém řádku spusťte Jupyter.
 1. V okně Jupyteru klikněte na _Computer Vision API Example.ipynb_. Otevře se poznámkový blok s kurzem.
 
-## <a name="run-the-tutorial"></a>Spuštění kurzu
+## <a name="run-the-notebook"></a>Spuštění poznámkového bloku
 
 K použití poznámkového bloku potřebujete klíč předplatného k rozhraní API pro počítačové zpracování obrazu. Navštivte [stránku předplatného](https://azure.microsoft.com/try/cognitive-services/) a zaregistrujte se. Na **přihlašovací** stránce se přihlaste pomocí svého účtu Microsoft. Pak si budete moct objednat předplatné a získat bezplatné klíče. Jakmile dokončíte registraci, vložte svůj klíč do části `Variables` v poznámkovém bloku (viz níže). Funguje primární i sekundární klíč. Nezapomeňte dát klíč do uvozovek jako řetězec.
 

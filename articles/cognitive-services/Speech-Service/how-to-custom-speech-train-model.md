@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: e12cef052db6aabad94b47283eda11f60f3b2b13
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7bc1f2adf3d8c38845218681a55e3942aa809db5
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67063920"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603206"
 ---
 # <a name="train-a-model-for-custom-speech"></a>Trénování modelu pro Custom Speech
 

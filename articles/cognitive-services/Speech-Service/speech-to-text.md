@@ -8,21 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.custom: seodec18
-ms.openlocfilehash: fcb09720d188150736dbe7da0c925f5762ff6a10
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: afe69d396c42023df8fcf5e4a6772771afc75c76
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072320"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606252"
 ---
 # <a name="what-is-speech-to-text"></a>Co je převod řeči na text?
 
 Převod řeči na text z Azure hlasové služby, označované také jako převod řeči na text, umožňuje v reálném čase přepisu zvuku datových proudů do textu, které využívají vaše aplikace, nástroje nebo zařízení, zobrazit a provádět akce na jako vstup příkazu. Tato služba používá stejnou technologii rozpoznávání, který společnost Microsoft používá pro produkty Cortana a Office a bez problémů spolupracuje s překlad a převod textu na řeč.  Úplný seznam dostupných jazyků řeči na text, naleznete v tématu [podporované jazyky](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#speech-to-text).
 
-Ve výchozím nastavení používá služba speech to text univerzální jazykový model. Tento model se naučil pomocí dat ve vlastnictví společnosti Microsoft a je nasazena v cloudu. Je ideální pro konverzační a scénáře diktování. Pokud používáte speech to text pro rozpoznávání a přepis v jedinečné prostředí, můžete vytvořit a trénování vlastních akustických, jazyk a výslovnost modelů hluk adresu nebo slovníku specifických pro dané odvětví. 
+Ve výchozím nastavení používá služba speech to text univerzální jazykový model. Tento model se naučil pomocí dat ve vlastnictví společnosti Microsoft a je nasazena v cloudu. Je ideální pro konverzační a scénáře diktování. Pokud používáte speech to text pro rozpoznávání a přepis v jedinečné prostředí, můžete vytvořit a trénování vlastních akustických, jazyk a výslovnost modelů hluk adresu nebo slovníku specifických pro dané odvětví.
 
 Můžete snadno zaznamenat zvuk z mikrofonu, čtení z datového proudu nebo přístup zvukové soubory ze služby storage se sadou SDK pro řeč a rozhraní REST API. Sadou SDK pro řeč podporuje WAV/PCM 16-bit, 16 kHz/8 kHz, zvuk jeden kanál pro rozpoznávání řeči. Další formáty zvuku jsou podporovány při použití [koncový bod REST speech to text](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) nebo [určené k transkripci služba batch](https://docs.microsoft.com/azure/cognitive-services/speech-service/batch-transcription#supported-formats).
 

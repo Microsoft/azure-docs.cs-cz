@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/22/2019
+ms.date: 07/05/2019
 ms.author: wellsi
-ms.openlocfilehash: 1c91cde45a6a420376af36f70487adf7fe0ee83a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 93272520434ea43a94af9441a947239e983c216f
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66751806"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606682"
 ---
 # <a name="release-notes-of-cognitive-services-speech-devices-sdk"></a>Poznámky k verzi sady Cognitive Services zařízení sadou SDK pro řeč
 Následující změny části seznamu v nejnovější vydané verze.
@@ -37,17 +37,17 @@ Následující změny části seznamu v nejnovější vydané verze.
 *   Z důvodu novou technologii wake word je potřeba znovu vytvořit na náš portál slovo vylepšené probuzení všechna slova probuzení. Úplně odebrat starý klíčová slova ze zařízení odinstalujte staré aplikace.
     - adb uninstall com.microsoft.coginitiveservices.speech.samples.sdsdkstarterapp
 
-## <a name="cognitive-services-speech-devices-sdk-140-2019-apr-release"></a>Zařízení řeči služeb cognitive Services SDK 1.4.0: 2019 dubna vydání 
+## <a name="cognitive-services-speech-devices-sdk-140-2019-apr-release"></a>Zařízení řeči služeb cognitive Services SDK 1.4.0: 2019 dubna vydání
 
-* Aktualizuje [sadou SDK pro řeč](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) komponentu verze 1.4.0. Další informace najdete v tématu jeho [poznámky k verzi](https://aka.ms/csspeech/whatsnew). 
+* Aktualizuje [sadou SDK pro řeč](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) komponentu verze 1.4.0. Další informace najdete v tématu jeho [poznámky k verzi](https://aka.ms/csspeech/whatsnew).
 
-## <a name="cognitive-services-speech-devices-sdk-131-2019-mar-release"></a>Zařízení řeči služeb cognitive Services SDK 1.3.1: 2019 března vydání 
+## <a name="cognitive-services-speech-devices-sdk-131-2019-mar-release"></a>Zařízení řeči služeb cognitive Services SDK 1.3.1: 2019 března vydání
 
-* Aktualizuje [sadou SDK pro řeč](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) součásti na verzi 1.3.1. Další informace najdete v tématu jeho [poznámky k verzi](https://aka.ms/csspeech/whatsnew). 
+* Aktualizuje [sadou SDK pro řeč](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) součásti na verzi 1.3.1. Další informace najdete v tématu jeho [poznámky k verzi](https://aka.ms/csspeech/whatsnew).
 *   Aktualizované probuzení slovo zpracování, naleznete v tématu Rozbíjející změny.
 *   Ukázková aplikace přidá výběru jazyka pro rozpoznávání řeči a překladu.
 
-**Rozbíjející změny v** 
+**Rozbíjející změny v**
 
 *   [Instalace aplikace word probuzení](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws) bylo zjednodušené, je teď součástí aplikace a nepotřebuje samostatnou instalaci na zařízení.
 *   Došlo ke změně rozpoznávání probuzení aplikace word a jsou podporovány dvě události.
@@ -55,22 +55,22 @@ Následující změny části seznamu v nejnovější vydané verze.
     - RecognizedKeyword, označuje, že – klíčové slovo rozpoznávání dokončit uznání daným klíčovým slovem.
 
 
-## <a name="cognitive-services-speech-devices-sdk-110-2018-nov-release"></a>Zařízení řeči služeb cognitive Services SDK 1.1.0: Verze v listopadu 2018 
+## <a name="cognitive-services-speech-devices-sdk-110-2018-nov-release"></a>Zařízení řeči služeb cognitive Services SDK 1.1.0: Verze v listopadu 2018
 
-* Aktualizuje [sadou SDK pro řeč](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) součásti na verzi 1.1.0. Další informace najdete v tématu jeho [poznámky k verzi](https://aka.ms/csspeech/whatsnew). 
+* Aktualizuje [sadou SDK pro řeč](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) součásti na verzi 1.1.0. Další informace najdete v tématu jeho [poznámky k verzi](https://aka.ms/csspeech/whatsnew).
 * Vylepšili jsme úplně přesnost rozpoznávání řeči pole s algoritmem naše rozšířené zpracování zvuku.
 * Ukázková aplikace přidat podporou čínský řeči.
 
-## <a name="cognitive-services-speech-devices-sdk-101-2018-oct-release"></a>Zařízení řeči služeb cognitive Services SDK 1.0.1: Verze října 2018 
+## <a name="cognitive-services-speech-devices-sdk-101-2018-oct-release"></a>Zařízení řeči služeb cognitive Services SDK 1.0.1: Verze října 2018
 
-* Aktualizuje [sadou SDK pro řeč](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) součásti na verzi 1.0.1. Další informace najdete v tématu jeho [poznámky k verzi](https://aka.ms/csspeech/whatsnew). 
+* Aktualizuje [sadou SDK pro řeč](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) součásti na verzi 1.0.1. Další informace najdete v tématu jeho [poznámky k verzi](https://aka.ms/csspeech/whatsnew).
 * Pomocí našeho algoritmu vylepšené zpracování zvuku se vylepší přesnost rozpoznávání řeči  
 * Jeden průběžné rozpoznávání zvuku relace opravy chyby.
 
-**Rozbíjející změny v** 
+**Rozbíjející změny v**
 
-* V této verzi představeny počet nejnovější změny. Zkontrolujte prosím [na této stránce](https://aka.ms/csspeech/breakingchanges_1_0_0) podrobnosti týkající se rozhraní API. 
-* Soubory modelu KWS nejsou kompatibilní se sadou SDK pro řeč zařízení 1.0.1. Až nové probuzení slovo soubory jsou zapsány do zařízení se odstraní existující soubory probuzení aplikace Word. 
+* V této verzi představeny počet nejnovější změny. Zkontrolujte prosím [na této stránce](https://aka.ms/csspeech/breakingchanges_1_0_0) podrobnosti týkající se rozhraní API.
+* Soubory modelu KWS nejsou kompatibilní se sadou SDK pro řeč zařízení 1.0.1. Až nové probuzení slovo soubory jsou zapsány do zařízení se odstraní existující soubory probuzení aplikace Word.
 
 ## <a name="cognitive-services-speech-devices-sdk-050-2018-aug-release"></a>Zařízení řeči služeb cognitive Services SDK si verzi 0.5.0: Verze srpna 2018
 

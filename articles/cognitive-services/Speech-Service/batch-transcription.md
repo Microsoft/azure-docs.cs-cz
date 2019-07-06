@@ -8,15 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 2/20/2019
+ms.date: 07/05/2019
 ms.author: panosper
-ms.custom: seodec18
-ms.openlocfilehash: 45ed0167f5a83fa843a224ada35e96672a6752a1
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: b71400c3ae3c1cc6737d9194b4d94bf0b9c7efa9
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67311849"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606745"
 ---
 # <a name="why-use-batch-transcription"></a>Proč používat službu Batch určené k transkripci?
 
@@ -56,7 +55,7 @@ Rozhraní API služby Batch určené k transkripci podporuje následující form
 | MP3 | PCM | 16 bitů | 8 nebo 16 mono, stereo kHz, |
 | OGG | DÍLE | 16 bitů | 8 nebo 16 mono, stereo kHz, |
 
-Přepis rozhraní API služby Batch pro stereo zvukové datové proudy, rozdělí levého a pravého kanálu během přepis. Každé dva soubory JSON s výsledkem jsou vytvořeny z jednoho kanálu. Časová razítka na utterance umožňují vývojářům vytvořit seřazený konečné přepisu. Tento ukázkový požadavek obsahuje vlastnosti pro filtrování vulgárních výrazů, interpunkce a word úrovně časová razítka. 
+Přepis rozhraní API služby Batch pro stereo zvukové datové proudy, rozdělí levého a pravého kanálu během přepis. Každé dva soubory JSON s výsledkem jsou vytvořeny z jednoho kanálu. Časová razítka na utterance umožňují vývojářům vytvořit seřazený konečné přepisu. Tento ukázkový požadavek obsahuje vlastnosti pro filtrování vulgárních výrazů, interpunkce a word úrovně časová razítka.
 
 ### <a name="configuration"></a>Konfigurace
 
@@ -97,7 +96,7 @@ Použijte tyto volitelné vlastnosti konfigurace určené k transkripci:
 
 Služba batch podporuje určené k transkripci [úložiště objektů Blob v Azure](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) pro čtení zvuk a přepisů zápis do úložiště.
 
-## <a name="webhooks"></a>Webhooky 
+## <a name="webhooks"></a>webhooks
 
 Dotazování na stav určené k transkripci nemusí být většina výkonné a poskytují nejlepší uživatelské prostředí. Dotazování na stav, můžete zaregistrovat zpětná volání, které oznámí klient po dokončení dlouho běžící úlohy určené k transkripci.
 
@@ -123,7 +122,7 @@ Budete muset požádat o, pro diarization zpracování vaší žádosti vám př
 }
 ```
 
-Úroveň časová razítka Word by také musel "zapnout" jako parametry v výše uvedeného požadavku označení. 
+Úroveň časová razítka Word by také musel "zapnout" jako parametry v výše uvedeného požadavku označení.
 
 Odpovídající zvuk bude obsahovat přednášející identifikována číslem (aktuálně podporujeme jenom dva hlasů, takže mluvčích budou označeny jako "mluvčího 1 ' a 'Mluvčího 2') následovanou výstupem určené k transkripci.
 
@@ -134,7 +133,7 @@ Všimněte si také, že Diarization není k dispozici v Stereo záznamy. Kromě
 
 ## <a name="sentiment"></a>Mínění
 
-Zabarvení je nová funkce v rozhraní API služby Batch určené k transkripci a je důležité funkce v doméně center volání. Zákazníci můžou využít `AddSentiment` parametry na jejich požadavky na 
+Zabarvení je nová funkce v rozhraní API služby Batch určené k transkripci a je důležité funkce v doméně center volání. Zákazníci můžou využít `AddSentiment` parametry na jejich požadavky na
 
 1.  Získejte přehled o spokojenosti zákazníků
 2.  Získejte přehled o výkonu z agentů (týmu trvá volání)
@@ -187,7 +186,7 @@ Tato funkce používá model mínění, která je aktuálně ve verzi Beta.
 
 Kompletní ukázky jsou k dispozici v [ukázkového úložiště Githubu](https://aka.ms/csspeech/samples) uvnitř `samples/batch` podadresáře.
 
-Budete muset přizpůsobit vzorový kód s informace o vašem předplatném, oblasti služby SAS URI odkazující na zvukový soubor přepisy a modelování ID v případě, že chcete použít vlastní akustických nebo jazyka modelu. 
+Budete muset přizpůsobit vzorový kód s informace o vašem předplatném, oblasti služby SAS URI odkazující na zvukový soubor přepisy a modelování ID v případě, že chcete použít vlastní akustických nebo jazyka modelu.
 
 [!code-csharp[Configuration variables for batch transcription](~/samples-cognitive-services-speech-sdk/samples/batch/csharp/program.cs#batchdefinition)]
 

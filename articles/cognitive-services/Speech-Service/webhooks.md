@@ -8,15 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 04/11/2019
+ms.date: 07/05/2019
 ms.author: panosper
-ms.custom: seodec18
-ms.openlocfilehash: fbe6fe25b5ff0cd5148e3bba22dec4648399510d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a100049ddfc9d4859e303546c1b10e814cf96ebb
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072295"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606206"
 ---
 # <a name="webhooks-for-speech-services"></a>Webhooky pro hlasové služby
 
@@ -24,7 +23,7 @@ Webhooky jsou jako zpětná volání HTTP, které umožňují vaší aplikaci p�
 
 ## <a name="supported-operations"></a>Podporované operace
 
-Hlasové služby podpora webhooků pro všechny dlouho běžící operace. Každou z operací uvedené níže můžete aktivovat zpětné volání HTTP při dokončení. 
+Hlasové služby podpora webhooků pro všechny dlouho běžící operace. Každou z operací uvedené níže můžete aktivovat zpětné volání HTTP při dokončení.
 
 * DataImportCompletion
 * ModelAdaptationCompletion
@@ -37,7 +36,7 @@ V dalším kroku vytvoříme webhooku.
 
 ## <a name="create-a-webhook"></a>Vytvořit webhook
 
-Pojďme vytvořit webhook pro offline přepis. Scénář: uživatel má dlouho spuštěná zvukový soubor, který by chtěli přepisy asynchronně pomocí rozhraní API služby Batch určené k transkripci. 
+Pojďme vytvořit webhook pro offline přepis. Scénář: uživatel má dlouho spuštěná zvukový soubor, který by chtěli přepisy asynchronně pomocí rozhraní API služby Batch určené k transkripci.
 
 Webhooků je možné vytvořit tak, že požadavek POST na https://\<oblasti\>.cris.ai/api/speechtotext/v2.1/transcriptions/hooks.
 
@@ -65,7 +64,7 @@ Vyžadovat všech požadavků POST na rozhraní API služby Batch určené k tra
 
 `Active` Vlastnost se používá k přepnutí zpětné volání do adresy URL a vypnout, aniž by bylo nutné odstranit a znovu vytvořit registrace webhooku. Pokud potřebujete pouze pro zpětné volání jednou po procesu kompletní, poté odstranit webhook a přepínač `Active` vlastnost na hodnotu false.
 
-Typ události `TranscriptionCompletion` je uvedený v poli události. To zavolá zpět do vašeho koncového bodu při určené k transkripci dostane do konečného stavu (`Succeeded` nebo `Failed`). Při zpětné volání registrované adresy URL, bude obsahovat žádost `X-MicrosoftSpeechServices-Event` záhlaví obsahující jeden z typů registrované události. Existuje jeden požadavek na typ registrované události. 
+Typ události `TranscriptionCompletion` je uvedený v poli události. To zavolá zpět do vašeho koncového bodu při určené k transkripci dostane do konečného stavu (`Succeeded` nebo `Failed`). Při zpětné volání registrované adresy URL, bude obsahovat žádost `X-MicrosoftSpeechServices-Event` záhlaví obsahující jeden z typů registrované události. Existuje jeden požadavek na typ registrované události.
 
 Existuje jeden typ události, která se nemůže přihlásit k odběru. Je `Ping` typ události. Požadavek s tímto typem je odeslán na adresu URL po dokončení vytvoření webhooku, při použití příkazu ping adresy URL (viz níže).  
 
@@ -94,7 +93,7 @@ public async Task<IActionResult> PostAsync([FromHeader(Name = EventTypeHeaderNam
             var validated = contentHash.SequenceEqual(storedHash);
         }
     }
- 
+
     switch (eventTypeHeader)
     {
         case WebHookEventType.Ping:
@@ -106,7 +105,7 @@ public async Task<IActionResult> PostAsync([FromHeader(Name = EventTypeHeaderNam
         default:
             break;
     }
- 
+
     return this.Ok();
 }
 
@@ -121,12 +120,12 @@ Chcete-li získat jeden konkrétní webhooku: ZÍSKAT https://westus.cris.ai/api
 
 Chcete-li odebrat jednu konkrétní webhooku: DELETE https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks/:id
 
-> [!Note] 
+> [!Note]
 > V předchozím příkladu je oblast 'westus'. To je třeba nahradit oblasti, kde jste vytvořili váš prostředek hlasové služby na webu Azure Portal.
 
 PŘÍSPĚVEK https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks/:id/ping subjekt: prázdné
 
-Odešle požadavek POST na adresu registrovaný. Požadavek obsahuje `X-MicrosoftSpeechServices-Event` záhlaví pomocí příkazu ping hodnotu. Webhook byl zaregistrován s tajným kódem, bude obsahovat `X-MicrosoftSpeechServices-Signature` záhlaví s algoritmus hash SHA256 datové části s tajným klíčem HMAC klíče. Hodnota hash je kódování Base64. 
+Odešle požadavek POST na adresu registrovaný. Požadavek obsahuje `X-MicrosoftSpeechServices-Event` záhlaví pomocí příkazu ping hodnotu. Webhook byl zaregistrován s tajným kódem, bude obsahovat `X-MicrosoftSpeechServices-Signature` záhlaví s algoritmus hash SHA256 datové části s tajným klíčem HMAC klíče. Hodnota hash je kódování Base64.
 
 PŘÍSPĚVEK https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks/:id/test subjekt: prázdné
 
