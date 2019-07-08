@@ -82,7 +82,7 @@ Aktivita HDInsight Hive ve službě Data Factory [kanálu](data-factory-create-p
 | outputs |Výstupy vytvořená aktivitou Hive |Ano |
 | linkedServiceName |Odkaz na clusteru HDInsight zaregistrovaný jako propojenou službu ve službě Data Factory |Ano |
 | script |Zadejte vložený skript Hive |Ne |
-| script path |Store skriptu Hivu ve službě Azure blob storage a zadejte cestu k souboru. Vlastnost 'script' nebo "scriptPath". Obě nelze použít společně. Název souboru je velká a malá písmena. |Ne |
+| scriptPath |Store skriptu Hivu ve službě Azure blob storage a zadejte cestu k souboru. Vlastnost 'script' nebo "scriptPath". Obě nelze použít společně. Název souboru je velká a malá písmena. |Ne |
 | defines |Zadejte parametry jako páry klíč/hodnota pro odkazování v rámci skriptu Hive pomocí "hiveconf. |Ne |
 
 ## <a name="example"></a>Příklad:
