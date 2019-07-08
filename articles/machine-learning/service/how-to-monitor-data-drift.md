@@ -1,5 +1,5 @@
 ---
-title: Jak detekovat odchylek dat (Preview) v nasazení AKS
+title: Zjišťování odchylek dat (Preview) v nasazení AKS
 titleSuffix: Azure Machine Learning service
 description: Zjistěte, jak detekovat odchylek data ve službě Azure Kubernetes Service nasadit modely ve službě Azure Machine Learning.
 services: machine-learning
@@ -10,21 +10,24 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 06/20/2019
-ms.openlocfilehash: e4deeab28fb643ff32624ba9dd16574e621f508c
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: c446c8236ca64948f0bb6a8354a83579cc6ff24c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67332722"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443944"
 ---
-# <a name="how-to-detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service"></a>Jak detekovat odchylek dat (preview) v modelech nasazení do služby Azure Kubernetes Service
-V tomto článku se dozvíte, jak monitorovat [data odchylek](concept-data-drift.md) mezi trénovací datové sady a odvozování data nasazeného modelu. 
+# <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service"></a>Zjišťování odchylek dat (preview) v modelech nasazení do služby Azure Kubernetes Service
+V tomto článku se dozvíte, jak se budou monitorovat data posun mezi datové sady pro trénování a odvozování data z nasazeného modelu. 
 
-Posun dat jeden z hlavních důvodů je, kde přesnost modelu zhoršení v čase. To se stane, když data obsluhovat modelů v produkčním prostředí se liší od data použitá k natrénování modelu. Služba Azure Machine Learning můžete sledovat data odchylek pomocí detektoru odchylek Data. Pokud se zjistí odchylek služby můžete posílat upozornění.  
+## <a name="what-is-data-drift"></a>Co je odchylek dat?
+
+Data, také označuje jako koncept odchylek jsou jeden z hlavních důvodů kde přesnost modelu zhoršení v čase. To se stane, když data obsluhovat modelů v produkčním prostředí se liší od data použitá k natrénování modelu. Služba Azure Machine Learning můžete sledovat data odchylek a při zjištění odchylek službu poslat e-mailové upozornění.  
 
 > [!Note]
 > Tato služba je ve verzi (Preview) a omezené možnosti konfigurace. Podrobnosti najdete na naší [dokumentace k rozhraní API](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/?view=azure-ml-py) a [zpráva k vydání verze](azure-machine-learning-release-notes.md) podrobnosti a aktualizace. 
 
+## <a name="what-can-i-monitor"></a>Co můžete monitorovat?
 Pomocí služby Azure Machine Learning můžete monitorovat vstupy modelu nasazené v AKS a porovnání těchto dat na trénovací datové sady pro model. V pravidelných intervalech, jsou data odvození [vytváření snímků a Profilovat](how-to-explore-prepare-data.md), pak výpočtech datové sady standardních hodnot k vytvoření analýza odchylek dat, který: 
 
 + Měří velikost dat odchylek, volá koeficient odchylek.
@@ -60,7 +63,7 @@ Podrobnosti o tom, jak se počítají tyto metriky, najdete v článku [data odc
     print(model_name, image_name, service_name, model)
     ```
 
-- Nastavit [shromažďování dat modelu](how-to-enable-data-collection.md) shromažďování dat z modelu nasazení služby AKS a potvrdit data se shromažďují v `modeldata` kontejner objektů blob.
+- [Povolit shromažďování dat modelu](how-to-enable-data-collection.md) shromažďování dat z modelu nasazení služby AKS a potvrdit data se shromažďují v `modeldata` kontejner objektů blob.
 
 ## <a name="import-dependencies"></a>Importujte závislosti 
 Importujte závislosti používané v tomto průvodci:
@@ -85,11 +88,11 @@ datadrift = DataDriftDetector.create(ws, model.name, model.version, services, fr
 print('Details of Datadrift Object:\n{}'.format(datadrift))
 ```
 
-Další informace najdete v tématu [DataDrift](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/?view=azure-ml-py) odkaz.
+Další informace najdete v tématu `[DataDrift](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/?view=azure-ml-py)` třídy referenční dokumentaci.
 
 ## <a name="submit-a-datadriftdetector-run"></a>Odeslat DataDriftDetector spuštění
 
-S DataDriftDetector nakonfigurovaný, můžete odeslat [odchylek data spusťte](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift.datadriftdetector%28class%29?view=azure-ml-py#run-target-date--services--compute-target-name-none--create-compute-target-false--feature-list-none--drift-threshold-none-) v určitém dni pro model. 
+S `DataDriftDetector` objekt nakonfigurovaný, můžete odeslat [odchylek data spusťte](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift.datadriftdetector%28class%29?view=azure-ml-py#run-target-date--services--compute-target-name-none--create-compute-target-false--feature-list-none--drift-threshold-none-) v určitém dni pro model. 
 
 ```python
 # adhoc run today
@@ -107,7 +110,7 @@ dd_run = Run(experiment=exp, run_id=run)
 RunDetails(dd_run).show()
 ```
 
-## <a name="get-data-drift-analysis-results"></a>Výsledky analýzy dat odchylek
+## <a name="visualize-drift-metrics"></a>Vizualizujte metriky odchylek
 
 Následující příklad Python ukazuje, jak k vykreslení metrik odchylek relevantní data. Metriky vrácené můžete použít k vytváření vlastních vizualizací:
 
@@ -120,13 +123,13 @@ drift_metrics = datadrift.get_output(start_time=start, end_time=end)
 drift_figures = datadrift.show(with_details=True)
 ```
 
-![Zobrazit data odchylek](media/how-to-monitor-data-drift/drift_show.png)
+![Zobrazit data odchylek detekovaných službou Azure Machine Learning](media/how-to-monitor-data-drift/drift_show.png)
 
 Podrobnosti o tom, která se zpracovávají, najdete v článku [data odchylek koncept](concept-data-drift.md) článku.
 
-## <a name="schedule-data-drift-detection"></a>Plán zjišťování odchylek dat 
+## <a name="schedule-data-drift-scans"></a>Plán kontrol odchylek dat 
 
-Povolování plánu odchylek dat provádí DataDriftDetector spouštět v zadaných intervalech. Pokud koeficient odchylek překračuje danou prahovou hodnotu, se odešle e-mail. 
+Když povolíte detekce odchylek dat, DataDriftDetector běží frekvencí tyto informace zadané, naplánované. Pokud koeficient odchylek překračuje danou prahovou hodnotu, se odešle e-mail. 
 
 ```python
 datadrift.enable_schedule()
@@ -143,9 +146,9 @@ Chcete-li zobrazit výsledky v uživatelském prostředí služby Azure ML praco
 
 ![Posun dat webu Azure portal](media/how-to-monitor-data-drift/drift_ui.png)
 
-## <a name="setting-up-alerts"></a>Nastavení výstrah 
+## <a name="receiving-drift-alerts"></a>Přijímání oznámení odchylek
 
-Nastavením koeficient odchylek prahová hodnota pro upozornění a poskytuje tak e-mailovou adresu [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) Pokud koeficient odchylek je nad prahovou hodnotou je odesláno e-mailové upozornění. Všechny metriky odchylek data se ukládají v prostředku app insights přidružený pracovnímu prostoru Azure Machine Learning service si můžete nastavit vlastní výstrahy nebo akce. Použijte odkaz v e-mailové upozornění na dotaz app insights.
+Nastavením koeficient odchylek prahová hodnota pro upozornění a poskytuje e-mailovou adresu [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) e-mailové upozornění se automaticky odesílají vždycky, když koeficient odchylek je nad prahovou hodnotou. Aby můžete nastavit vlastní výstrahy a akce všechny metriky odchylek dat ukládají do prostředku Application Insights, který byl vytvořen spolu s pracovního prostoru služby Azure Machine Learning. Použijte odkaz v e-mailové upozornění na dotaz Application Insights.
 
 ![E-mailová upozornění na data odchylek](media/how-to-monitor-data-drift/drift_email.png)
 
