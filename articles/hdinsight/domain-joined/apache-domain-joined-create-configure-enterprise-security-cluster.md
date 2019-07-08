@@ -304,14 +304,14 @@ Ověřte, že je tento certifikát nainstalován v počítači\'s osobním úlo�
 
         | Vlastnost | Hodnota |
         |---|---|
-        | source | Jakýkoli |
-        | Rozsahy zdrojových portů | * |
-        | Cíl | Jakýkoli |
-        | Rozsah cílových portů | 636 |
-        | Protocol | Jakýkoli |
-        | Akce | Povolit |
-        | Priorita | <Desired Number> |
-        | Název | Port_LDAP_636 |
+        | Source | Any |
+        | Source port ranges | * |
+        | Destination | Any |
+        | Destination port range | 636 |
+        | Protocol | Any |
+        | Action | Allow |
+        | Priority | \<Desired Number> |
+        | Name | Port_LDAP_636 |
 
     ![Příchozí pravidlo zabezpečení](./media/apache-domain-joined-create-configure-enterprise-security-cluster/add-inbound-security-rule.png)
 
