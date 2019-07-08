@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: dd0c35d23541512e1ed021a57526ac50f7a68e26
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 43b24bec557d1cc879be9568bea451f1a8b0b310
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67100151"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67625321"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insperity-expensable"></a>Kurz: Integrace Azure Active Directory s Insperity ExpensAble
 
@@ -108,7 +108,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Insperity ExpensAble, prove
     V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce:  `https://server.expensable.com/esapp/Authenticate?companyId=<company ID>`
 
     > [!NOTE]
-    > Hodnota není skutečný. Aktualizujte příslušnou hodnotu skutečné přihlašovací adresa URL. Kontakt [tým podpory ExpensAble klienta Insperity](http://expensable.com/support/support-overview) má být získána hodnota. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+    > Hodnota není skutečný. Aktualizujte příslušnou hodnotu skutečné přihlašovací adresa URL. Kontakt [tým podpory ExpensAble klienta Insperity](https://www.insperity.com/products/expense-management/support/express/) má být získána hodnota. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
 
 5. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **certifikát (Base64)** z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
 
@@ -126,7 +126,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Insperity ExpensAble, prove
 
 ### <a name="configure-insperity-expensable-single-sign-on"></a>Konfigurace Insperity ExpensAble jednotného přihlašování
 
-Ke konfiguraci jednotného přihlašování na **Insperity ExpensAble** straně, je nutné odeslat na stažený **certifikát (Base64)** a vhodné zkopírovaný adresy URL z webu Azure portal [Insperity ExpensAble tým podpory](http://expensable.com/support/support-overview). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+Ke konfiguraci jednotného přihlašování na **Insperity ExpensAble** straně, je nutné odeslat na stažený **certifikát (Base64)** a vhodné zkopírovaný adresy URL z webu Azure portal [Insperity ExpensAble tým podpory](https://www.insperity.com/products/expense-management/support/express/). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
@@ -181,7 +181,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 ### <a name="create-insperity-expensable-test-user"></a>Vytvoření Insperity ExpensAble testovacího uživatele
 
-V této části vytvoříte uživatele v Insperity ExpensAble jako Britta Simon. Práce s [Insperity ExpensAble tým podpory](http://expensable.com/support/support-overview) přidejte uživatele Insperity ExpensAble platformě. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části vytvoříte uživatele v Insperity ExpensAble jako Britta Simon. Práce s [Insperity ExpensAble tým podpory](https://www.insperity.com/products/expense-management/support/express/) přidejte uživatele Insperity ExpensAble platformě. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 

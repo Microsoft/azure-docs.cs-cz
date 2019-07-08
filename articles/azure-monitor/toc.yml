@@ -435,8 +435,6 @@
                   href: app/proactive-exception-volume.md
                 - name: Nevrácená paměť
                   href: app/proactive-potential-memory-leak.md
-                - name: Využití prostředků
-                  href: app/proactive-low-utilization-cloud-resources.md
                 - name: Zjišťování zabezpečení
                   href: app/proactive-application-security-detection-pack.md
                 - name: Azure Cloud Services

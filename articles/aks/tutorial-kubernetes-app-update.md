@@ -2,18 +2,18 @@
 title: Kurz Kubernetes v Azure – Aktualizace aplikace
 description: V tomto kurzu Azure Kubernetes Service (AKS) zjistíte, jak aktualizovat existující nasazení aplikace do AKS o novou verzi kódu aplikace.
 services: container-service
-author: tylermsft
+author: mlearned
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
-ms.author: twhitney
+ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 05eac7e673ad01e9d3e0fb25f261444fd7bc4e6d
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: b645fc9f67229d087a5d1655f733e2f3e50d4471
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66475511"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614378"
 ---
 # <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>Kurz: Aktualizace aplikace ve službě Azure Kubernetes Service (AKS)
 
@@ -57,7 +57,7 @@ Uložte soubor a zavřete ho. V `vi`, použijte `:wq`.
 
 ## <a name="update-the-container-image"></a>Aktualizace image kontejneru
 
-Pokud chcete znovu vytvořit image front-endu a otestovat aktualizovanou aplikaci, použijte příkaz [docker-compose][docker-compose]. Jako instrukce pro Docker Compose, že se má znovu vytvořit image aplikace, se použije argument `--build`:
+Chcete-li znovu vytvořte image front-endu a otestování aktualizované aplikace, použijte [docker-compose][docker-compose]. Jako instrukce pro Docker Compose, že se má znovu vytvořit image aplikace, se použije argument `--build`:
 
 ```console
 docker-compose up --build -d
@@ -85,10 +85,10 @@ K označení image použijte [docker tag][docker-tag]. Nahraďte `<acrLoginServe
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v2
 ```
 
-Teď pomocí příkazu [docker push][docker-push] nahrajte image do registru. Nahraďte `<acrLoginServer>` názvem přihlašovacího serveru ACR.
+Teď pomocí [docker push][docker-push] odešlete image do registru. Nahraďte `<acrLoginServer>` názvem přihlašovacího serveru ACR.
 
 > [!NOTE]
-> Pokud dochází k problémům doručením (push) do registru ACR, ujistěte se, že jste stále přihlášení. Spustit [az acr login] [ az-acr-login] příkazu název vašeho registru kontejneru Azure, které jste vytvořili [vytvoření služby Azure Container Registry](tutorial-kubernetes-prepare-acr.md#create-an-azure-container-registry) kroku. Například, `az acr login --name <azure container registry name>`.
+> Pokud dochází k problémům doručením (push) do registru ACR, ujistěte se, že jste stále přihlášení. Spustit [az acr login][az-acr-login] příkazu název vašeho registru kontejneru Azure, které jste vytvořili [vytvoření služby Azure Container Registry](tutorial-kubernetes-prepare-acr.md#create-an-azure-container-registry) kroku. Například, `az acr login --name <azure container registry name>`.
 
 ```console
 docker push <acrLoginServer>/azure-vote-front:v2
@@ -96,7 +96,7 @@ docker push <acrLoginServer>/azure-vote-front:v2
 
 ## <a name="deploy-the-updated-application"></a>Nasazení aktualizované aplikace
 
-Pokud chcete zadat maximální dobu provozu, musí být spuštěna více instancí podu aplikace. Pomocí příkazu [kubectl get pods][kubectl-get] ověřte počet spuštěných instancí front-endu:
+Pokud chcete zadat maximální dobu provozu, musí být spuštěna více instancí podu aplikace. Zjistit, kolik spuštění front-endových instancí s [kubectl get pods][kubectl-get] příkaz:
 
 ```
 $ kubectl get pods

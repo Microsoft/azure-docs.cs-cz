@@ -7,15 +7,15 @@ author: kegodin
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
-ms.topic: how-to
+ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: c6baa9f8330338c1e5fdc9ee0b5a8cc8b344e871
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 02d63897cffa2ceca46b992e7d07b917dd73bc72
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61436017"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621553"
 ---
 # <a name="project-acoustics-unreal-and-wwise-integration"></a>Projektů Unreal Akustika a Wwise integrace
 Tento návod obsahuje kroky podrobné integrace balíčku modulu plug-in Akustika projektu do existujícího projektu her Unreal a Wwise. 

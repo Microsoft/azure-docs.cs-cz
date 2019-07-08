@@ -2,18 +2,18 @@
 title: Kurz Kubernetes v Azure – Škálování aplikace
 description: V tomto kurzu Azure Kubernetes Service (AKS) zjistíte, jak škálovat uzly a pody v Kubernetes a jak implementovat automatické horizontální škálování podů.
 services: container-service
-author: tylermsft
+author: mlearned
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
-ms.author: twhitney
+ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 062e16c0d196cf91d6e0adde46ed973f1c0d1191
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 5a942aa10f36df55ac232defa610102700e3995b
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66304426"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614199"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>Kurz: Škálování aplikací ve službě Azure Kubernetes Service (AKS)
 
@@ -34,7 +34,7 @@ Tento kurz vyžaduje, že používáte Azure CLI verze 2.0.53 nebo novější. V
 
 ## <a name="manually-scale-pods"></a>Ruční škálování podů
 
-Při nasazení front-endu Azure Vote a instance Redis v předchozích kurzech se vytvořila jedna replika. Pokud chcete zobrazit počet a stav podů ve vašem clusteru, použijte příkaz [kubectl get][kubectl-get] následujícím způsobem:
+Při nasazení front-endu Azure Vote a instance Redis v předchozích kurzech se vytvořila jedna replika. Pokud chcete zobrazit číslo a stav podů v clusteru, použijte [kubectl get][kubectl-get] takto:
 
 ```console
 kubectl get pods
@@ -48,13 +48,13 @@ azure-vote-back-2549686872-4d2r5   1/1       Running   0          31m
 azure-vote-front-848767080-tf34m   1/1       Running   0          31m
 ```
 
-Pokud chcete ručně změnit počet podů v nasazení *azure-vote-front*, použijte příkaz [kubectl scale][kubectl-scale]. Následující příklad zvýší počet podů front-endu na *5*:
+Chcete-li ručně změňte počet podů v *azure-vote-front* nasazení, použijte [kubectl scale][kubectl-scale] příkazu. Následující příklad zvýší počet podů front-endu na *5*:
 
 ```console
 kubectl scale --replicas=5 deployment/azure-vote-front
 ```
 
-Spustit [kubectl get pods] [ kubectl-get] znovu k ověření, že AKS vytvoří budou další pody. Asi za minutu budou další pody dostupné ve vašem clusteru:
+Spustit [kubectl get pods][kubectl-get] znovu k ověření, že AKS vytvoří budou další pody. Asi za minutu budou další pody dostupné ve vašem clusteru:
 
 ```console
 $ kubectl get pods
@@ -70,13 +70,13 @@ azure-vote-front-3309479140-qphz8   1/1       Running   0          3m
 
 ## <a name="autoscale-pods"></a>Automatické škálování podů
 
-Kubernetes podporuje [horizontální automatické škálování podů][kubernetes-hpa] pro úpravu počtu podů v nasazení v závislosti na využití procesoru nebo jiné vybrané metrice. K poskytování využití prostředků v Kubernetes se používá [server metrik][metrics-server], který je automaticky nasazený v clusterech AKS verze 1.10 nebo novější. Pokud chcete zobrazit verzi clusteru AKS, použijte příkaz [az aks show][az-aks-show], jak je znázorněno v následujícím příkladu:
+Kubernetes podporuje [horizontální automatické škálování podů][kubernetes-hpa] to adjust the number of pods in a deployment depending on CPU utilization or other select metrics. The [Metrics Server][metrics-server] slouží k poskytování využití prostředků na Kubernetes a automaticky je nasazen v clusteru AKS verze 1.10 a vyšší. Pokud chcete zobrazit verzi clusteru AKS, použijte [az aks zobrazit][az-aks-show] příkaz, jak je znázorněno v následujícím příkladu:
 
 ```azurecli
 az aks show --resource-group myResourceGroup --name myAKSCluster --query kubernetesVersion
 ```
 
-Pokud je verze vašeho clusteru AKS nižší než *1.10*, nainstalujte server metrik, jinak tento krok přeskočte. Pokud chcete nainstalovat, naklonujte `metrics-server` úložiště GitHub a nainstalovat definice prostředků příklad. Obsah těchto definicí YAML si můžete zobrazit na stránce se [serverem metrik pro Kuberenetes 1.8+][metrics-server-github].
+Pokud je verze vašeho clusteru AKS nižší než *1.10*, nainstalujte server metrik, jinak tento krok přeskočte. Pokud chcete nainstalovat, naklonujte `metrics-server` úložiště GitHub a nainstalovat definice prostředků příklad. Chcete-li zobrazit obsah tyto definice YAML, naleznete v tématu [Server metriky pro Kuberenetes 1.8 +][metrics-server-github].
 
 ```console
 git clone https://github.com/kubernetes-incubator/metrics-server.git
@@ -93,7 +93,7 @@ resources:
      cpu: 500m
 ```
 
-Následující příklad využívá příkaz [kubectl autoscale][kubectl-autoscale] k automatickému škálování počtu podů v nasazení *azure-vote-front*. Pokud využití procesoru přesáhne 50 %, automatického škálování zvýší počet podů až do maximálního počtu *10* instancí. Minimálně *3* instancí je pak definované pro nasazení:
+V následujícím příkladu [kubectl autoscale][kubectl-autoscale] příkazu k automatickému škálování počtu podů v *azure-vote-front* nasazení. Pokud využití procesoru přesáhne 50 %, automatického škálování zvýší počet podů až do maximálního počtu *10* instancí. Minimálně *3* instancí je pak definované pro nasazení:
 
 ```console
 kubectl autoscale deployment azure-vote-front --cpu-percent=50 --min=3 --max=10

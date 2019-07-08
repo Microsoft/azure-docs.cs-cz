@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/08/2018
-ms.author: aljo, dekapur
+ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 11d913264e5920b90ea08d2a29a3651ab101ee64
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 011cac977e44f85b8b183d253e987ff1b38c9834
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61389938"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621913"
 ---
 # <a name="tutorial-monitor-windows-containers-on-service-fabric-using-azure-monitor-logs"></a>Kurz: Monitorování kontejnerů Windows v Service Fabric s využitím protokoly Azure monitoru
 
@@ -86,7 +86,7 @@ Proveďte následující změny v souboru *template.json*.
     "omsSolution": "ServiceFabric"
     ```
 
-3. Přidejte agenta Microsoft Monitoring Agent jako rozšíření virtuálního počítače. Vyhledejte prostředek škálovací sady virtuálních počítačů: *resources* > *"apiVersion": "[variables('vmssApiVersion')]"*. V části *properties* > *virtualMachineProfile* > *extensionProfile* > *extensions* přidejte následující popis rozšíření za rozšíření *ServiceFabricNode*: 
+3. Přidejte agenta Microsoft Monitoring Agent jako rozšíření virtuálního počítače. Vyhledejte prostředek škálovací sady virtuálních počítačů: *resources* >  *"apiVersion": "[variables('vmssApiVersion')]"* . V části *properties* > *virtualMachineProfile* > *extensionProfile* > *extensions* přidejte následující popis rozšíření za rozšíření *ServiceFabricNode*: 
     
     ```json
     {
@@ -212,7 +212,7 @@ Vzhledem k tomu, že agent sbírá protokoly Dockeru, ve výchozím nastavení z
 
 ![Řídicí panel řešení kontejnerů](./media/service-fabric-tutorial-monitoring-wincontainers/container-metrics.png)
 
-Kliknutím na jakýkoli z těchto panelů přejdete na dotaz Kusto, který generuje zobrazenou hodnotu. Změňte dotaz na *\**, aby se zobrazily všechny různé druhy shromažďovaných protokolů. Tady můžete dotazovat nebo filtrovat výkon kontejnerů, protokoly nebo zobrazit události platformy Service Fabric. Vaši agenti také neustále vysílají z každého uzlu prezenční signál, jehož kontrolou se můžete ujistit, že se stále shromažďují data ze všech počítačů, pokud se konfigurace clusteru změní.
+Kliknutím na jakýkoli z těchto panelů přejdete na dotaz Kusto, který generuje zobrazenou hodnotu. Změňte dotaz na *\** , aby se zobrazily všechny různé druhy shromažďovaných protokolů. Tady můžete dotazovat nebo filtrovat výkon kontejnerů, protokoly nebo zobrazit události platformy Service Fabric. Vaši agenti také neustále vysílají z každého uzlu prezenční signál, jehož kontrolou se můžete ujistit, že se stále shromažďují data ze všech počítačů, pokud se konfigurace clusteru změní.
 
 ![Dotaz na kontejner](./media/service-fabric-tutorial-monitoring-wincontainers/query-sample.png)
 

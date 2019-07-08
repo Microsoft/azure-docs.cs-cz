@@ -2,18 +2,18 @@
 title: Kurz Kubernetes v Azure – Upgrade clusteru
 description: V tomto kurzu Azure Kubernetes Service (AKS) se dozvíte, jak upgradovat existující cluster AKS na nejnovější dostupnou verzi Kubernetes.
 services: container-service
-author: tylermsft
+author: mlearned
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
-ms.author: twhitney
+ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 09e3fab67486b4677c5848d81fb39a68e511b6ac
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 90c5a4e18f72d9a8b048ef0f40a5c0b405a584f2
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66305213"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614148"
 ---
 # <a name="tutorial-upgrade-kubernetes-in-azure-kubernetes-service-aks"></a>Kurz: Upgrade Kubernetes ve službě Azure Kubernetes Service (AKS)
 
@@ -110,14 +110,14 @@ myAKSCluster  eastus      myResourceGroup  1.10.9               Succeeded       
 
 ## <a name="delete-the-cluster"></a>Odstranění clusteru
 
-V tomto kurzu je poslední části série, můžete odstranit AKS cluster. Jelikož uzly prostředí Kubernetes běží na virtuálních počítačích v Azure, účtují se za ně poplatky, i když cluster nevyužíváte. Pomocí příkazu [az group delete][az-group-delete] odeberete skupinu prostředků, službu kontejneru a všechny související prostředky.
+V tomto kurzu je poslední části série, můžete odstranit AKS cluster. Jelikož uzly prostředí Kubernetes běží na virtuálních počítačích v Azure, účtují se za ně poplatky, i když cluster nevyužíváte. Použití [odstranění skupiny az][az-group-delete] příkazu k odebrání skupiny prostředků, služby kontejneru a všech souvisejících prostředků.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait
 ```
 
 > [!NOTE]
-> Při odstranění clusteru se neodebere instanční objekt služby Azure Active Directory používaný clusterem AKS. Postup odebrání instančního objektu najdete v tématu věnovaném [aspektům instančního objektu AKS a jeho odstranění][sp-delete].
+> Při odstranění clusteru se neodebere instanční objekt služby Azure Active Directory používaný clusterem AKS. Pokyny o tom, jak odebrat instanční objekt služby, najdete v článku [hlavní aspekty a odstranění služby AKS][sp-delete].
 
 ## <a name="next-steps"></a>Další postup
 

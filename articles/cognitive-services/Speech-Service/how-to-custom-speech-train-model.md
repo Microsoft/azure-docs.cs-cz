@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 7bc1f2adf3d8c38845218681a55e3942aa809db5
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 49195efa54c8e6eca9186a9e2fc33da84ff34413
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603206"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67625387"
 ---
 # <a name="train-a-model-for-custom-speech"></a>Trénování modelu pro Custom Speech
 
@@ -25,12 +25,11 @@ ms.locfileid: "67603206"
 
 Pokud máte problémy s rozpoznávání obsahující váš model, pomocí lidských s názvem bez přípony záznamy o studiu a související data pro další školení může pomoct zlepšit přesnost. Můžete určit, které datové sadě používat k adresování vašich problémů v této tabulce:
 
-| Případ použití | Typ dat | Množství dat |
-|----------|-----------|---------------|
-| Vlastní názvy jsou nesprávně rozpoznána | Text související s (věty/projevy) | 10 MB až 500 MB |
-| Slova jsou nesprávně rozpoznána kvůli upozornění. | Text související s (výslovnost) | Zadejte misrecognized slova |
-| Běžná slova jsou odstraněny nebo nesprávně rozpoznána | Zvuk + lidských s názvem bez přípony záznamy o studiu | přepis 10 až 1 000 hodin |
-
+| Případ použití | Typ dat |
+|----------|-----------|
+| Zlepšit přesnost rozpoznávání na slovník specifických pro dané odvětví a gramatiku, jako jsou lékařské terminologie nebo žargonu IT | Text související s (věty/projevy) |
+| Definujte zapsané ve fonetické a zobrazují se formu slovo nebo termín, který má nestandardní výslovnost, jako jsou názvy produktů nebo zkratky. | Text související s (výslovnost) |
+| Zlepšit přesnost rozpoznávání na mluvený styly, zvýraznění nebo dalších zvuků z konkrétní na pozadí | Zvuk + lidských s názvem bez přípony záznamy o studiu |
 > [!IMPORTANT]
 > Pokud jste nenahráli datové sady, získáte [přípravy a testování datových](how-to-custom-speech-test-data.md). Tento dokument obsahuje pokyny pro nahrání dat a pokyny pro vytváření vysoce kvalitních datové sady.
 

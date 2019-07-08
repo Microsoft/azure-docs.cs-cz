@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 03/19/2019
+ms.date: 7/08/2019
 ms.author: alkohli
-ms.openlocfilehash: 5b43241be4e161cd6051dce02a3574fbdb580f28
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: db0f0ac3073687b7c1cd8ca60e459e4bb3aa03f4
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65606224"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67626355"
 ---
 # <a name="tutorial-return-azure-data-box-and-verify-data-upload-to-azure"></a>Kurz: Vrátí zařízení Azure Data Box a ověřte nahrání dat do Azure
 
@@ -23,7 +23,7 @@ V tomto kurzu se seznámíte například s následujícími tématy:
 
 > [!div class="checklist"]
 > * Požadavky
-> * Připravit k odeslání
+> * Příprava k odeslání
 > * Odeslání Data Boxu do Microsoftu
 > * Ověření nahrání dat do Azure
 > * Vymazání dat z Data Boxu
@@ -35,15 +35,23 @@ Než začnete, ujistěte se, že:
 - Když jste dokončili [kurzu: Kopírování dat do služby Azure Data Box a ověřte](data-box-deploy-copy-data.md). 
 - Kopírování úloh se dokončí. Příprava k odeslání nelze spustit, pokud probíhají úlohy kopírování.
 
-## <a name="prepare-to-ship"></a>Připravit k odeslání
+## <a name="prepare-to-ship"></a>Příprava k odeslání
 
 [!INCLUDE [data-box-prepare-to-ship](../../includes/data-box-prepare-to-ship.md)]
 
 ## <a name="ship-data-box-back"></a>Vrácení Data Boxu
 
-1. Ujistěte se, že je zařízení vypnuté a nejsou k němu zapojené žádné kabely. Smotejte napájecí kabel, který jste dostali se zařízením, a bezpečně ho umístěte do zadní části zařízení.
-2. Ujistěte se, že se na displeji s elektronickým inkoustem zobrazuje expediční štítek, a naplánujte vyzvednutí přepravcem. Pokud popisek poškození nebo ztráty nebo se nezobrazuje na displeji E-ink, obraťte se na Microsoft Support. Pokud podpora navrhuje, pak můžete přejít na **přehled > stáhnout Expediční štítek** na webu Azure Portal. Stáhnout Expediční štítek a opatří na zařízení. 
-3. S UPS vyzvednutí naplánujte, pokud vrácení zařízení. Chcete-li vyzvednutí naplánovat:
+Ujistěte se, že dokončení kopírování dat do zařízení a **přípravu k odeslání** spuštění je úspěšné. Založené na oblasti, ve kterém jsou dodávky zařízení, se liší podle postupu.
+
+
+### <a name="ship-in-us-canada-europe"></a>Dodávání v USA, Kanadě, Evropa
+
+Pokud vrácení zařízení v USA, Kanadě, nebo v Evropě, proveďte následující kroky.
+
+1. Ujistěte se, že zařízení je vypnutý a kabely se odeberou. 
+2. Smotejte napájecí kabel, který jste dostali se zařízením, a bezpečně ho umístěte do zadní části zařízení.
+3. Ujistěte se, že se na displeji s elektronickým inkoustem zobrazuje expediční štítek, a naplánujte vyzvednutí přepravcem. Pokud popisek poškození nebo ztráty nebo se nezobrazuje na displeji E-ink, obraťte se na Microsoft Support. Pokud podpora navrhuje, pak můžete přejít na **přehled > stáhnout Expediční štítek** na webu Azure Portal. Stáhnout Expediční štítek a opatří na zařízení. 
+4. S UPS vyzvednutí naplánujte, pokud vrácení zařízení. Chcete-li vyzvednutí naplánovat:
 
     - Volání místní UPS (specifické pro zemi/oblast bezplatné číslo).
     - Ve volání nabídka zpětné dodávky sledovací číslo, jak je znázorněno v E-ink zobrazení nebo Tisk popisku.
@@ -51,6 +59,72 @@ Než začnete, ujistěte se, že:
 
     Namísto plánování vyzvednutí, můžete také odkládací pole údaj na nejbližší umístění pro odložení.
 4. Jakmile přepravce vyzvedne a naskenuje Data Box, stav objednávky na portálu se změní na **Vyzvednuto**. Zobrazí se také ID sledování.
+
+### <a name="ship-in-asia-pacific-region"></a>Dodávání v oblasti Asie a Tichomoří
+
+#### <a name="ship-in-australia"></a>Dodávání v Austrálii
+
+Datacentra Azure v Austrálii mít oznámení o zvýšení zabezpečení. Všechny příchozí dodávky musí mít oznámení o pokročilé. Proveďte následující kroky k odeslání v Austrálii.
+
+
+1. Zachovat původní pole použitý k dodání zařízení pro zpáteční zásilku.
+2. Ujistěte se, že dokončení kopírování dat do zařízení a **přípravu k odeslání spustit** je úspěšné.
+3. Vypněte zařízení a odeberte kabely.
+4. Zařazování a bezpečné umístění, která byla součástí zařízení zadní zařízení napájecí kabel.
+5. E-mailové řešení Quantium žádost o vyzvednutí. Odkazovat na referenční číslo služby na webu Azure portal. Pomocí následující šablony e-mailu:- *žádost o zpětný Expediční štítek s kódem TAU*. Ujistěte se, že v e-mailu uveďte následující podrobnosti: 
+
+    ```
+    To: Azure@quantiumsolutions.com
+    Subject: Pickup request for Azure｜Reference number：XXX XXX XXX
+    Body: 
+    - Company name：
+    - Address:
+    - Contact name:
+    - Contact number:
+    - Requested pickup date: mm/dd
+    ```
+6. Řešení pro Austrálii Quantium e-mail zpáteční Expediční štítek.
+7. Tisk zpáteční štítek a opatří ho ve službě box přesouvání.
+8. Předá do Kurýrní balíček.
+
+V případě potřeby můžete poslat e-mail podpoře řešení Quantium Azure@quantiumsolutions.com nebo telefon.
+
+
+Pro dotaz týkající se vaší objednávky prostřednictvím telefonu:
+
+- Odešlete e-mailu pro vyzvednutí první.
+- Zadejte název vaší objednávky na telefonu.
+
+#### <a name="ship-in-japan"></a>Dodávejte v Japonsku 
+
+1. Zachovat původní pole použitý k dodání zařízení pro zpáteční zásilku.
+2. Vypněte zařízení a odeberte kabely.
+3. Zařazování a bezpečné umístění, která byla součástí zařízení zadní zařízení napájecí kabel.
+4. Zapsat vaše společnost název a adresu informace v poznámce zásilky jako vaše informace odesílatele.
+5. E-mailu Quantium řešení pomocí následující šablony e-mailu.
+
+    - Pokud Japonsko příspěvek Chakubarai zásilky Poznámka nebyla zahrnuta nebo chybí, Všimněte si, že v tomto e-mailu. Japonsko řešení Quantium požádá o příspěvek Japonsko přenést na vyzvednutí zásilky Poznámka.
+    - Pokud máte více objednávek, e-mailu k zajištění individuální vyzvednutí.
+
+    ```
+    To: Customerservice.JP@quantiumsolutions.com
+    Subject: Pickup request for Azure Data Box｜Job name： 
+    Body: 
+    - Japan Post Yu-Pack tracking number (reference number)：
+    - Requested pickup date：mmdd (Select a requested time slot from below).
+    a. 08：00-13：00 
+    b. 13：00-15：00 
+    c. 15：00-17：00 
+    d. 17：00-19：00 
+    ```
+
+3. Dostávat e-mailové potvrzení z řešení Quantium poté, co jste si vyzvednutí. Potvrzení e-mailu obsahuje také informace v poznámce Chakubarai zásilku.
+
+V případě potřeby můžete požádat podporu řešení Quantium (japonské) na následující informace: 
+
+- E-mailu:Customerservice.JP@quantiumsolutions.com 
+- Telefon: 03-5755-0150 
+
 
 ## <a name="verify-data-upload-to-azure"></a>Ověření nahrání dat do Azure
 
@@ -91,7 +165,7 @@ V tomto kurzu jste se dozvěděli o tématech spojených se službou Azure Data 
 
 > [!div class="checklist"]
 > * Požadavky
-> * Připravit k odeslání
+> * Příprava k odeslání
 > * Odeslání Data Boxu do Microsoftu
 > * Ověření nahrání dat do Azure
 > * Vymazání dat z Data Boxu

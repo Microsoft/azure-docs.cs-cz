@@ -1,5 +1,5 @@
 ---
-title: 'Regresní model kurzu: Automatizované ML'
+title: 'Regresní model kurzu: Automatizované strojové učení'
 titleSuffix: Azure Machine Learning service
 description: Zjistěte, jak generovat modelu strojového učení pomocí automatizovaných machine learningu. Azure Machine Learning můžete provádět předzpracování dat, výběr algoritmů a výběr hyperparameter v automatizovaný způsob, jak za vás. Potom pomocí služby Azure Machine Learning je nasazení finálního modelu.
 services: machine-learning
@@ -11,12 +11,12 @@ ms.author: nilesha
 ms.reviewer: trbye
 ms.date: 04/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 907383c057c0c1eebee6550a0d1e9c75dd88513c
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 8cedf7abf71a772a0b770dd2f82d9a5508f5dd75
+ms.sourcegitcommit: dda9fc615db84e6849963b20e1dce74c9fe51821
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417303"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67622380"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>Kurz: Automatizované machine learningu k vytváření regresní model
 
@@ -1127,6 +1127,8 @@ print(y_predict[:10])
 Vytvoření korelačního diagramu k vizualizaci hodnoty předpokládaných nákladů ve srovnání s hodnotami skutečné náklady. Následující kód používá `distance` funkce jako osu x a o jízdách `cost` jako osy y. Určený k porovnání odchylku předpokládaných nákladů na jednotlivé hodnoty vzdálenost o jízdách prvních 100 předpovídat a skutečné náklady jsou vytvořeny jako samostatné řady. Zkoumání vykreslení ukazuje, že je téměř lineárním relace vzdálenosti a náklady a náklady na předpokládané hodnoty jsou ve většině případů velmi blízko skutečné náklady hodnoty pro stejnou o jízdách vzdálenost.
 
 ```python
+%matplotlib inline
+
 import matplotlib.pyplot as plt
 
 fig = plt.figure(figsize=(14, 10))

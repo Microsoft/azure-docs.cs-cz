@@ -51,6 +51,9 @@
   items:
     - name: Spravovat
       items:
+        - name: Účty
+          displayName: subscription
+          href: media-services-account-concept.md
         - name: Entity
           items:
             - name: .NET
@@ -64,7 +67,7 @@
               href: media-services-portal-manage-streaming-endpoints.md
             - name: .NET
               href: media-services-dotnet-manage-streaming-endpoints.md
-        - name: Úložiště
+        - name: Storage
           items:
             - name: Aktualizace Media Services po postupném zavedení přístupových klíčů k úložišti
               href: media-services-roll-storage-access-keys.md

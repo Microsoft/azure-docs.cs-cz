@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: v-chjenk
-ms.openlocfilehash: 275fec5fb696a7e1352bbddccd288863e984b796
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 9579db9836ef41706f2c6be09570fa7c1459e14f
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67304551"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620460"
 ---
 # <a name="tutorial-deploy-a-management-tool"></a>Kurz: Nasazení nástroje pro správu
 
@@ -57,8 +57,8 @@ Postupujte podle těchto pokynů k nasazení šablony Azure Resource Manageru:
 ### <a name="guidance-for-template-parameters"></a>Pokyny pro parametry šablony
 Tady je postup pro konfiguraci nástroje zadat parametry:
 
-- Toto je adresa URL zprostředkovatele vzdálené plochy:  <https://rdbroker.wvd.microsoft.com/>
-- Toto je adresa URL prostředku:  <https://mrs-prod.ame.gbl/mrs-RDInfra-prod>
+- Toto je adresa URL zprostředkovatele vzdálené plochy: https:\//rdbroker.wvd.microsoft.com/
+- Toto je adresa URL prostředku: https:\//mrs-prod.ame.gbl/mrs-RDInfra-prod
 - Použijte svoje přihlašovací údaje AAD se používá služba MFA zakázané, aby se přihlaste k Azure. Zobrazit [co je potřeba spustit šablonu Azure Resource Manageru](#what-you-need-to-run-the-azure-resource-manager-template).
 - Použijte jedinečný název aplikace, který se zaregistruje ve službě Azure Active Directory pro nástroj pro správu; například Apr3UX.
 

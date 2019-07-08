@@ -2,18 +2,18 @@
 title: Kurz Kubernetes v Azure – Příprava aplikace
 description: V tomto kurzu Azure Kubernetes Service (AKS) se dozvíte, jak pomocí Docker Compose připravit a sestavit vícekontejnerovou aplikaci, kterou pak můžete nasadit do AKS.
 services: container-service
-author: tylermsft
+author: mlearned
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
-ms.author: twhitney
+ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 8fdc36215841348cf62cd61245950be6573a1938
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 2b4ba646a037b2f5561dabf97dee14454c07c573
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66304456"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614228"
 ---
 # <a name="tutorial-prepare-an-application-for-azure-kubernetes-service-aks"></a>Kurz: Příprava aplikace pro Azure Kubernetes Service (AKS)
 
@@ -34,7 +34,7 @@ V dalších kurzech se image kontejneru nahraje do služby Azure Container Regis
 
 V tomto kurzu se předpokládá základní znalost klíčových konceptů Dockeru, jako jsou kontejnery, image kontejnerů a příkazy `docker`. Základní informace o kontejnerech najdete v článku [Get started with Docker][docker-get-started] (Začínáme s Dockerem).
 
-K dokončení tohoto kurzu potřebujete místní vývojové prostředí pro Docker se spuštěnými kontejnery Linuxu. Docker nabízí balíčky pro konfiguraci Dockeru v systému [Mac][docker-for-mac], [Windows][docker-for-windows] nebo [Linux][docker-for-linux].
+K dokončení tohoto kurzu potřebujete místní vývojové prostředí pro Docker se spuštěnými kontejnery Linuxu. Docker nabízí balíčky pro konfiguraci Dockeru na [Mac][docker-for-mac], [Windows][docker-for-windows], nebo [Linux][dockeru pro linux] systému.
 
 Azure Cloud Shell neobsahuje součásti Dockeru nutné pro dokončení všech kroků v těchto kurzech. Proto doporučujeme použít úplné vývojové prostředí pro Docker.
 
@@ -58,7 +58,7 @@ Tento adresář obsahuje zdrojový kód aplikace, předem vytvořený soubor Doc
 
 ## <a name="create-container-images"></a>Vytváření imagí kontejneru
 
-[Docker Compose][docker-compose] je možné použít k automatizaci sestavování imagí kontejnerů a nasazování vícekontejnerových aplikací.
+[Docker Compose][docker-compose] můžete použít k automatizaci vytváření imagí kontejnerů a nasazení vícekontejnerových aplikací.
 
 Pomocí ukázkového souboru `docker-compose.yaml` vytvořte image kontejneru, stáhněte image Redis a spusťte aplikaci:
 
@@ -77,7 +77,7 @@ redis                        latest     a1b99da73d05        7 days ago          
 tiangolo/uwsgi-nginx-flask   flask      788ca94b2313        9 months ago        694MB
 ```
 
-Spuštěním příkazu [docker ps][docker-ps] zobrazte spuštěné kontejnery:
+Spustit [docker ps][docker-ps] příkazu zobrazte spuštěné kontejnery:
 
 ```
 $ docker ps
@@ -97,7 +97,7 @@ Pokud chcete zobrazit spuštěnou aplikaci, zadejte v místním webovém prohlí
 
 Teď, když jste ověřili funkčnost aplikace, můžete zastavit a odebrat spuštěné kontejnery. Neodstraňujte image kontejnerů – v dalším kurzu se image *azure-vote-front* nahraje do instance služby Azure Container Registry.
 
-Zastavte a odeberte instance kontejnerů a související prostředky pomocí příkazu [docker-compose down][docker-compose-down]:
+Zastavit a odstranit instance kontejnerů a prostředky s [docker-compose dolů][docker-compose-down] příkaz:
 
 ```console
 docker-compose down

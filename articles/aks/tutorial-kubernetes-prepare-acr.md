@@ -2,18 +2,18 @@
 title: Kurz Kubernetes v Azure – Vytvoření registru kontejneru
 description: V tomto kurzu Azure Kubernetes Service (AKS) vytvoříte instanci služby Azure Container Registry a nahrajete image kontejneru ukázkové aplikace.
 services: container-service
-author: tylermsft
+author: mlearned
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
-ms.author: twhitney
+ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 1bd41dc464c251a2e7dab3087f3feffb15db785f
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 5089326af1d7f6e057667cd916f35de92bf517ef
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66304414"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614249"
 ---
 # <a name="tutorial-deploy-and-use-azure-container-registry"></a>Kurz: Nasazení a použití služby Azure Container Registry
 
@@ -43,7 +43,7 @@ Vytvořte skupinu prostředků pomocí příkazu [az group create][az-group-crea
 az group create --name myResourceGroup --location eastus
 ```
 
-Vytvořte instanci služby Azure Container Registry pomocí příkazu [az acr create][az-acr-create] a zadejte vlastní název registru. Název registru musí být jedinečný v rámci Azure a musí obsahovat 5 až 50 alfanumerických znaků. Ve zbývající části tohoto kurzu se jako zástupný název registru kontejneru používá `<acrName>`. Zadejte název vlastní jedinečné registru. Skladová položka *Basic* představuje vstupní bod optimalizovaný z hlediska nákladů pro účely vývoje a poskytuje vyváženou kombinaci úložiště a propustnosti.
+Vytvoření instance služby Azure Container Registry s [az acr vytvořit][az-acr-create] příkaz a zadejte vlastní název registru. Název registru musí být jedinečný v rámci Azure a musí obsahovat 5 až 50 alfanumerických znaků. Ve zbývající části tohoto kurzu se jako zástupný název registru kontejneru používá `<acrName>`. Zadejte název vlastní jedinečné registru. Skladová položka *Basic* představuje vstupní bod optimalizovaný z hlediska nákladů pro účely vývoje a poskytuje vyváženou kombinaci úložiště a propustnosti.
 
 ```azurecli
 az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
@@ -51,7 +51,7 @@ az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
 
 ## <a name="log-in-to-the-container-registry"></a>Přihlášení k registru kontejneru
 
-Pokud chcete používat instanci ACR, musíte se nejprve přihlásit. Použijte příkaz [az acr login][az-acr-login] a zadejte jedinečný název, který jste pro registr kontejneru zadali v předchozím kroku.
+Pokud chcete používat instanci ACR, musíte se nejprve přihlásit. Použití [az acr login][az-acr-login] příkaz a zadejte jedinečný název zadaný pro registr kontejneru v předchozím kroku.
 
 ```azurecli
 az acr login --name <acrName>
@@ -61,7 +61,7 @@ Příkaz po dokončení vrátí zprávu *Login Succeeded* (Přihlášení probě
 
 ## <a name="tag-a-container-image"></a>Označení image kontejneru
 
-Seznam aktuálních místních imagí můžete zobrazit pomocí příkazu [docker images][docker-images]:
+Chcete-li zobrazit seznam místních imagí aktuální, použijte [imagí dockeru][docker-images] příkaz:
 
 ```
 $ docker images
@@ -74,7 +74,7 @@ tiangolo/uwsgi-nginx-flask   flask               788ca94b2313        9 months ag
 
 Pokud chcete použít image kontejneru *azure-vote-front* s ACR, musí být image označená pomocí adresy přihlašovacího serveru vašeho registru. Tato značka se používá pro směrování při nahrávání imagí kontejneru do registru imagí.
 
-Pokud chcete získat adresu přihlašovacího serveru, následujícím způsobem použijte příkaz [az acr list][az-acr-list] a odešlete dotaz na *loginServer*:
+Chcete-li získat adresu serveru přihlášení, použijte [az acr list][az-acr-list] příkazů a dotazů pro *loginServer* následujícím způsobem:
 
 ```azurecli
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
@@ -86,7 +86,7 @@ Teď označte místní image *azure-vote-front* pomocí adresy *acrloginServer* 
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v1
 ```
 
-Pokud chcete ověřit, že se značky použily, znovu spusťte příkaz [docker images][docker-images]. Image je označená pomocí adresy instance ACR a čísla verze.
+Chcete-li zkontrolovat, značky se použijí, [imagí dockeru][docker-images] znovu. Image je označená pomocí adresy instance ACR a čísla verze.
 
 ```
 $ docker images
@@ -100,7 +100,7 @@ tiangolo/uwsgi-nginx-flask                           flask         788ca94b2313 
 
 ## <a name="push-images-to-registry"></a>Nahrávání imagí do registru
 
-Vaše Image sestavili a označili, push *azure-vote-front* image do instance služby ACR. Následujícím způsobem použijte příkaz [docker push][docker-push] a jako název image zadejte vlastní adresu *acrLoginServer*:
+Vaše Image sestavili a označili, push *azure-vote-front* image do instance služby ACR. Použití [docker push][docker-push] a zadejte vlastní *acrLoginServer* adresa pro název bitové kopie následujícím způsobem:
 
 ```console
 docker push <acrLoginServer>/azure-vote-front:v1
@@ -110,7 +110,7 @@ Odeslání image do ACR může trvat několik minut.
 
 ## <a name="list-images-in-registry"></a>Vypsání imagí v registru
 
-Pokud chcete vrátit seznam imagí, které se odeslaly do vaší instance ACR, použijte příkaz [az acr repository list][az-acr-repository-list]. Zadejte vlastní hodnotu `<acrName>` následujícím způsobem:
+Pokud chcete vrátit seznam imagí, které byly nahrány do instance služby ACR, použijte [az acr úložiště seznamu][az-acr-repository-list] příkazu. Zadejte vlastní hodnotu `<acrName>` následujícím způsobem:
 
 ```azurecli
 az acr repository list --name <acrName> --output table
@@ -124,7 +124,7 @@ Result
 azure-vote-front
 ```
 
-Pokud chcete zobrazit značky pro konkrétní image, použijte příkaz [az acr repository show-tags][az-acr-repository-show-tags] následujícím způsobem:
+Chcete-li zobrazit značky pro konkrétní image, použijte [az acr úložiště show-tags][az-acr-repository-show-tags] takto:
 
 ```azurecli
 az acr repository show-tags --name <acrName> --repository azure-vote-front --output table

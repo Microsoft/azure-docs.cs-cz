@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/03/2019
-ms.openlocfilehash: f78555b37cc82c1e97a6f51ec504bc47937ee8c4
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: d09ed0585250d078f728aa4e7272cca147a40c38
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66493419"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612364"
 ---
 # <a name="analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>Analýza dat telefonních hovorů pomocí Stream Analytics a vizualizaci výsledků na řídicím panelu Power BI
 
@@ -191,7 +191,7 @@ Posledním krokem je definování výstupní jímky pro úlohu, do které může
 
 ## <a name="define-a-query-to-analyze-input-data"></a>Definování dotazu pro analýzu vstupních dat
 
-Dalším krokem je vytvoření transformace, která v reálném čase analyzuje data. Transformační dotaz definujete pomocí jazyka [Stream Analytics Query Language](https://msdn.microsoft.com/library/dn834998.aspx). Dotaz použitý v tomto kurzu detekuje podvodná volání z dat telefonních hovorů.
+Dalším krokem je vytvoření transformace, která v reálném čase analyzuje data. Transformační dotaz definujete pomocí jazyka [Stream Analytics Query Language](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference). Dotaz použitý v tomto kurzu detekuje podvodná volání z dat telefonních hovorů.
 
 V tomto příkladu podvodná volání provádí stejný uživatel v pětisekundových rozestupech, ale z různých umístění. Například stejný uživatel nemůže legitimně uskutečnit volání z USA a Austrálie současně. Definování transformačního dotazu pro úlohu Stream Analytics:
 
@@ -212,7 +212,7 @@ V tomto příkladu podvodná volání provádí stejný uživatel v pětisekundo
    GROUP BY TumblingWindow(Duration(second, 1))
    ```
 
-   Při kontrole podvodných volání můžete ověřovat spojení sama na sebe ve streamovaných datech podle hodnoty `CallRecTime`. Pak vyhledejte volání záznamy, jejichž `CallingIMSI` hodnota (číslo volajícího) je stejná, ale `SwitchNum` hodnota (země původu) se liší. Když použijete operaci JOIN se streamovanými daty, musí spojení určit nějaké limity, jak daleko mohou být odpovídající řádky vzdáleny v čase. Protože streamování dat je nekonečné, jsou časové hranice pro relaci určené v klauzuli spojení **ON** pomocí funkce [DATEDIFF](https://msdn.microsoft.com/azure/stream-analytics/reference/datediff-azure-stream-analytics).
+   Při kontrole podvodných volání můžete ověřovat spojení sama na sebe ve streamovaných datech podle hodnoty `CallRecTime`. Pak vyhledejte volání záznamy, jejichž `CallingIMSI` hodnota (číslo volajícího) je stejná, ale `SwitchNum` hodnota (země původu) se liší. Když použijete operaci JOIN se streamovanými daty, musí spojení určit nějaké limity, jak daleko mohou být odpovídající řádky vzdáleny v čase. Protože streamování dat je nekonečné, jsou časové hranice pro relaci určené v klauzuli spojení **ON** pomocí funkce [DATEDIFF](https://docs.microsoft.com/stream-analytics-query/datediff-azure-stream-analytics).
 
    Tento dotaz je jako normální spojení SQL, kromě funkce **DATEDIFF**. Funkce **DATEDIFF** použitá v tomto dotazu je specifická pro Stream Analytics a musí se nacházet v rámci klauzule `ON...BETWEEN`.
 
