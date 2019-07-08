@@ -9,7 +9,7 @@ ms.date: 12/10/2018
 ms.author: iainfou
 ms.openlocfilehash: 2bdc18ba4dc77178d5fcc5d2ba6d89aa109d923c
 ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/17/2019
 ms.locfileid: "65192238"
@@ -99,7 +99,7 @@ spec:
          servicePort: 80
 ```
 
-Řadič služby příchozího přenosu dat je proces démon, který běží na uzlu AKS a sleduje pro příchozí požadavky. Provoz je poté distribuován na základě pravidel definovaných v příchozího přenosu dat prostředku. Nejběžnější kontroler příchozího přenosu dat se odvíjí [NGINX]. AKS nebrání můžete k určitému kontroleru, abyste mohli používat ostatní řadiče, jako [rozvrh][contour], [HAProxy][haproxy], nebo [ Traefik][traefik].
+Řadič služby příchozího přenosu dat je proces démon, který běží na uzlu AKS a sleduje pro příchozí požadavky. Provoz je poté distribuován na základě pravidel definovaných v příchozího přenosu dat prostředku. Nejběžnější kontroler příchozího přenosu dat se odvíjí [NGINX]. AKS nebrání můžete k určitému kontroleru, abyste mohli používat ostatní řadiče, jako [rozvrh][contour], [HAProxy][haproxy], nebo [Traefik][traefik].
 
 Příchozí přenos dat řadiče musí být naplánováno na uzlu Linux. Kontroler příchozího přenosu dat se nemůže spouštět uzly Windows serveru (aktuálně ve verzi preview ve službě AKS). Pomocí uzlu selektoru v manifestu YAML nebo nasazení grafu helmu k označení, že prostředek má běžet na uzlech založených na Linuxu. Další informace najdete v tématu [voliče uzlu na ovládací prvek používejte, kde jsou naplánovány podů ve službě AKS][concepts-node-selectors].
 
@@ -108,17 +108,17 @@ Existuje mnoho scénářů pro příchozí přenos dat, včetně následujícíc
 * [Vytvoření základního příchozího přenosu dat řadiče s externí síťové připojení.][aks-ingress-basic]
 * [Vytvoření řadiče příchozího přenosu dat, který se používá soukromé, interní sítě a IP adresy][aks-ingress-internal]
 * [Vytvoření řadiče příchozího přenosu dat, která používá vlastní certifikáty TLS][aks-ingress-own-tls]
-* Vytvoření řadiče příchozího přenosu dat, která používá umožňuje šifrovat automaticky generovat certifikáty TLS [s dynamické veřejné IP adresy] [ aks-ingress-tls] nebo [se statickou veřejnou IP adresu][aks-ingress-static-tls]
+* Vytvoření řadiče příchozího přenosu dat, která používá umožňuje šifrovat automaticky generovat certifikáty TLS [s dynamické veřejné IP adresy][aks-ingress-tls] nebo [se statickou veřejnou IP adresu][aks-ingress-static-tls]
 
 ## <a name="secure-traffic-with-a-web-application-firewall-waf"></a>Zabezpečení provozu pomocí firewallu webových aplikací (WAF)
 
-**Osvědčené postupy pro moduly** – Chcete-li kontrolovat příchozí provoz na potenciální útoky, pomocí firewallu webových aplikací (WAF), jako [Barracuda WAF pro Azure] [ barracuda-waf] nebo služby Azure Application Gateway. Tyto pokročilejší síťové prostředky můžete také směrovat provoz nad rámec pouze připojení HTTP a HTTPS nebo základní ukončení protokolu SSL.
+**Osvědčené postupy pro moduly** – Chcete-li kontrolovat příchozí provoz na potenciální útoky, pomocí firewallu webových aplikací (WAF), jako [Barracuda WAF pro Azure][barracuda-waf] nebo služby Azure Application Gateway. Tyto pokročilejší síťové prostředky můžete také směrovat provoz nad rámec pouze připojení HTTP a HTTPS nebo základní ukončení protokolu SSL.
 
 Řadič služby příchozího přenosu dat, který distribuuje provoz do služeb a aplikací je obvykle prostředek Kubernetes v clusteru AKS. Kontroler spouští se jako démon na uzlu AKS a využívá některé z uzlu prostředků, jako jsou procesor, paměť a šířka pásma sítě. V prostředích s větší často chcete přesměrovat některé této směrování provozu nebo ukončení protokolu TLS k síťovému prostředku mimo AKS cluster. Chcete také zkontrolovat příchozího provozu pro potenciální útoky.
 
 ![Firewall webových aplikací (WAF) jako je například Azure App Gateway můžete chránit a distribuovat provoz pro váš cluster AKS](media/operator-best-practices-network/web-application-firewall-app-gateway.png)
 
-Firewall webových aplikací (WAF) poskytuje další vrstvu zabezpečení pomocí filtrování příchozích přenosů. V otevřené webové aplikace zabezpečení projektu (OWASP) poskytuje sadu pravidel a sledujte útoky jako různé skriptování, nebo soubor cookie (Cache poisoning). [Azure Application Gateway] [ app-gateway] (aktuálně ve verzi preview ve službě AKS) je WAF, která lze integrovat s clustery AKS a zajistit tak tyto funkce zabezpečení před přenosy přicházejí clusteru AKS a aplikace. Jiná řešení třetích stran také provádění těchto funkcí, proto můžete nadále používat stávající investice nebo odbornými znalostmi v daném produktu.
+Firewall webových aplikací (WAF) poskytuje další vrstvu zabezpečení pomocí filtrování příchozích přenosů. V otevřené webové aplikace zabezpečení projektu (OWASP) poskytuje sadu pravidel a sledujte útoky jako různé skriptování, nebo soubor cookie (Cache poisoning). [Azure Application Gateway][app-gateway] (aktuálně ve verzi preview ve službě AKS) je WAF, která lze integrovat s clustery AKS a zajistit tak tyto funkce zabezpečení před přenosy přicházejí clusteru AKS a aplikace. Jiná řešení třetích stran také provádění těchto funkcí, proto můžete nadále používat stávající investice nebo odbornými znalostmi v daném produktu.
 
 Nástroje pro vyrovnávání nebo příchozího přenosu dat prostředků zatížení nadále spuštěna v clusteru AKS pro další upřesnění distribuce provozu. App Gateway můžete centrálně spravovat jako řadič příchozího přenosu dat s definicí prostředků. Abyste mohli začít, [vytvořit řadič služby Application Gateway příchozího přenosu dat][app-gateway-ingress].
 
@@ -158,7 +158,7 @@ Většinu operací ve službě AKS je možné provést pomocí nástroje pro spr
 
 ![Připojte se k uzlů AKS pomocí hostitel typu bašta nebo jump box](media/operator-best-practices-network/connect-using-bastion-host-simplified.png)
 
-By měla být zabezpečená síť pro správu pro hostitele bastionu, příliš. Použití [Azure ExpressRoute] [ expressroute] nebo [VPN gateway] [ vpn-gateway] pro připojení k místní síti a řízení přístupu pomocí zabezpečení sítě skupiny.
+By měla být zabezpečená síť pro správu pro hostitele bastionu, příliš. Použití [Azure ExpressRoute][expressroute] nebo [VPN gateway][vpn-gateway] pro připojení k místní síti a řízení přístupu pomocí zabezpečení sítě skupiny.
 
 ## <a name="next-steps"></a>Další postup
 

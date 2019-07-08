@@ -252,7 +252,7 @@ catch(ServiceException $e){
 }
 ```
 
-Zprávy odeslané do témat Service Bus jsou instance [BrokeredMessage] [ BrokeredMessage] třídy. [BrokeredMessage] [ BrokeredMessage] objekty mají sadu standardních vlastností a metod, jakož i vlastnosti, které můžete použít pro udržení vlastních vlastností specifické pro aplikaci. Následující příklad ukazuje, jak odeslat pět zkušebních zpráv do `mytopic` tématu vytvořili dříve. `setProperty` Metoda se používá k přidání vlastních vlastností (`MessageNumber`) pro každou zprávu. `MessageNumber` Hodnota vlastnosti se liší u každé zprávy (tuto hodnotu můžete použít k určení, které odběry přijmou, jak je znázorněno [vytvoření odběru](#create-a-subscription) části):
+Zprávy odeslané do témat Service Bus jsou instance [BrokeredMessage][BrokeredMessage] třídy. [BrokeredMessage][BrokeredMessage] objekty mají sadu standardních vlastností a metod, jakož i vlastnosti, které můžete použít pro udržení vlastních vlastností specifické pro aplikaci. Následující příklad ukazuje, jak odeslat pět zkušebních zpráv do `mytopic` tématu vytvořili dříve. `setProperty` Metoda se používá k přidání vlastních vlastností (`MessageNumber`) pro každou zprávu. `MessageNumber` Hodnota vlastnosti se liší u každé zprávy (tuto hodnotu můžete použít k určení, které odběry přijmou, jak je znázorněno [vytvoření odběru](#create-a-subscription) části):
 
 ```php
 for($i = 0; $i < 5; $i++){
