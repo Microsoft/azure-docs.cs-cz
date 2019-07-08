@@ -5,16 +5,16 @@ description: V tomto rychlém startu použijete rozhraní REST API pro rozpozná
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
-ms.subservice: form-recognizer
+ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 04/15/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 1990077e6466e08c1b6c463dafe9809b52df6d14
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 3bfffc94bc11f9da2336d6edaeb96bf2e471c4ce
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67537606"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67602603"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Rychlý start: Trénování modelu Rozlišovač formuláře a extrahovat data formuláře pomocí rozhraní REST API pomocí cURL
 
@@ -40,7 +40,7 @@ K natrénování modelu formuláře Rozlišovač s dokumenty v kontejnerech obje
 
 1. Nahraďte `<Endpoint>` s koncovým bodem, který jste získali váš klíč předplatného Rozlišovač formuláře. Vyhledejte ji na váš prostředek formuláře Rozlišovač **přehled** kartu.
 1. Nahraďte `<subscription key>` s klíči předplatného jste zkopírovali v předchozím kroku.
-1. Nahraďte `<SAS URL>` s objektem Blob Azure kontejner úložiště je sdílený přístup k adrese URL podpisu (SAS). K načtení to, otevřete Průzkumníka služby Microsoft Azure Storage, klikněte pravým tlačítkem na kontejner a vyberte **získat sdílený přístupový podpis**. Ujistěte se, že **čtení** a **seznamu** oprávnění se kontroluje a klikněte na tlačítko **vytvořit**. Potom zkopírujte hodnotu v **URL** oddílu. Ji by měl mít formát _služba ._protokol: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
+1. Nahraďte `<SAS URL>` s objektem Blob Azure kontejner úložiště je sdílený přístup k adrese URL podpisu (SAS). Pro získání adresy URL SAS, otevřete Průzkumníka služby Microsoft Azure Storage, klikněte pravým tlačítkem na kontejner a vyberte **získat sdílený přístupový podpis**. Ujistěte se, že **čtení** a **seznamu** oprávnění se kontroluje a klikněte na tlačítko **vytvořit**. Potom zkopírujte hodnotu v **URL** oddílu. Ji by měl mít formát _služba ._protokol: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
 
 ```bash
 curl -X POST "https://<Endpoint>/formrecognizer/v1.0-preview/custom/train" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" --data-ascii "{ \"source\": \""<SAS URL>"\"}"

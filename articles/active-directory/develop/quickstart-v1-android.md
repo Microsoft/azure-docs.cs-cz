@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: brandwe, jmprieur, saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a05d8b9182451fc52dd1860dac1dcce57ba2c55
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 6023e4bd4028cf1679051b6665297afd00b1eba7
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66121999"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482653"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Rychlý start: Přihlašování uživatelů a volání rozhraní Microsoft Graph API z aplikace pro Android
 
@@ -45,11 +45,11 @@ Abyste mohli začít, budete potřebovat tenanta služby Azure AD, ve kterém m�
 
 ## <a name="scenario-sign-in-users-and-call-the-microsoft-graph"></a>Scénář: Přihlašování uživatelů a volání Microsoft Graphu
 
-![Topologie](./media/quickstart-v1-android/active-directory-android-topology.png)
+![Ukazuje Azure AD a s Androidem topologie](./media/quickstart-v1-android/active-directory-android-topology.png)
 
 Tuto aplikaci můžete použít pro všechny účty Azure AD. Podporuje jak scénáře s jedním tenantem, tak i scénáře s více tenanty (popsáno v postupech). Ukazuje, jak můžete sestavit aplikace pro připojení podnikových uživatelů a získání přístupu prostřednictvím Microsoft Graphu k jejich datům Azure a O365. Během autorizačního toku se budou muset koncoví uživatelé přihlásit a vyjádřit souhlas s oprávněními aplikace a v některých případech se může v aplikaci vyžadovat i vyjádření souhlasu správce. Většina logiky v tomto příkladu ukazuje, jak ověřit uživatele a provést základní volání Microsoft Graphu.
 
-## <a name="sample-code"></a>Ukázkový kód
+## <a name="sample-code"></a>Ukázka kódu
 
 Úplnou ukázku kódu lze najít [na Githubu](https://github.com/Azure-Samples/active-directory-android).
 

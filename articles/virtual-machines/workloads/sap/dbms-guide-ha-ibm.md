@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/10/2019
 ms.author: juergent
-ms.openlocfilehash: a74dd1a932cac41081786f76938a5b35de62d878
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7464ea481d4c95856b78a83a875f2cd24c00705b
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64689715"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67503331"
 ---
 [1928533]: https://launchpad.support.sap.com/#/notes/1928533
 [2015553]: https://launchpad.support.sap.com/#/notes/2015553
@@ -77,9 +77,9 @@ Před zahájením instalace, viz následující poznámky SAP a dokumentace:
 | Dokumentace | 
 | --- |
 | [Wiki komunity SAP](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes): Obsahuje všechny požadované poznámky SAP pro Linux |
-| [Azure Virtual Machines, plánování a implementace SAP na platformě Linux] [ planning-guide] Průvodce |
-| [Nasazení virtuálních počítačů Azure pro SAP na platformě Linux] [ deployment-guide] (Tento článek) |
-| [Nasazení správy system(DBMS) pro SAP na platformě Linux databáze Azure Virtual Machines] [ dbms-guide] Průvodce |
+| [Azure Virtual Machines, plánování a implementace SAP na platformě Linux][planning-guide] Průvodce |
+| [Nasazení virtuálních počítačů Azure pro SAP na platformě Linux][deployment-guide] (Tento článek) |
+| [Nasazení správy system(DBMS) pro SAP na platformě Linux databáze Azure Virtual Machines][dbms-guide] Průvodce |
 | [Úloh SAP v Azure kontrolní seznam plánování a nasazení][azr-sap-plancheck] |
 | [SUSE Linux Enterprise Server pro SAP aplikace 12 SP3 osvědčené postupy vodítka][sles-for-sap-bp] |
 | [SUSE Linux Enterprise vysokou dostupnost rozšíření 12 SP3][sles-ha-guide] |
@@ -496,13 +496,12 @@ Pokud jste provedli instalaci teprve vytvořili Db2 HADR konfiguraci, proveďte 
 
 Pomocí nástroje Konfigurace J2EE zkontrolovat nebo aktualizovat adresu URL JDBC. Protože nástroj J2EE Config je grafický nástroj, je potřeba mít X nainstalovaný server:
  
-1. Přihlaste se k primárním aplikačním serveru instance J2EE a spusťte:
-     <pre><code>sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh</code></pre>
+1. Přihlaste se k primárním aplikačním serveru instance J2EE a spusťte:   `sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh`
 1. V levém podokně zvolte **úložiště zabezpečení**.
-1. V rámci správné zvolte klíče jdbc/fond / \ <SAPSID> /URL.
+1. V rámci správné zvolte klíčejdbc/fond/\<SAPSID > / adresa url.
 1. Změňte název hostitele v adrese URL JDBC na název virtuálního hostitele.
-     <pre><code>jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0</code></pre>
-1. Vyberte **přidat**.
+     `jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0`
+1. Vyberte **Přidat**.
 1. Změny uložíte kliknutím na ikonu disku v levém horním rohu.
 1. Ukončete nástroj pro konfiguraci.
 1. Restartujte instanci Java.

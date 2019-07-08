@@ -5,16 +5,16 @@ description: Detekce anomálií kontejneru běhové prostředí je nakonfigurova
 services: cognitive-services
 author: IEvangelist
 ms.service: cognitive-services
-ms.subservice: anomaly-detection
+ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: e6b5bcefb2a8df136d37dad062fbca651c312dc4
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 50f62fa20ea9b52db79160d9d2f3a6fa463079b7
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275497"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593107"
 ---
 # <a name="configure-anomaly-detector-containers"></a>Konfigurace kontejnery detekce anomálií
 

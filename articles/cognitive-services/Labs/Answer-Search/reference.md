@@ -9,13 +9,13 @@ ms.service: cognitive-services
 ms.subservice: answer-search
 ms.topic: reference
 ms.date: 04/13/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 09fab691ea04ad98472abc4f4dee5ecb4d22e660
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: rosh
+ms.openlocfilehash: 4384bf658024f89664c5202ba10d793d7ad734e0
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60721007"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67592908"
 ---
 # <a name="project-answer-search-v7-reference"></a>Odkaz na projekt hledání odpovědí v7
 
@@ -55,7 +55,7 @@ Informace o povolených použití a zobrazení výsledků najdete v tématu [pou
 > Některé hlavičky žádosti, které mají smysl pro jiná rozhraní API pro hledání nemají vliv na Náhled adresy URL
 > - Pragma – volající nemá řídit, jestli ve verzi Preview se adresy URL používá mezipaměť
 > - Cache-Control – volající nemá řídit, jestli ve verzi Preview se adresy URL používá mezipaměť
-> - Uživatelský Agent
+> - User-Agent
 > 
 > Také některé parametry nejsou aktuálně smysl pro adresu URL ve verzi Preview rozhraní API, ale mohou být použity v budoucnosti pro lepší globalizace. 
  
@@ -119,7 +119,7 @@ Definuje chyby, ke které došlo k chybě.
 ### <a name="errorresponse"></a>ErrorResponse  
 Objekt nejvyšší úrovně, který obsahuje odpověď, pokud požadavek selže.  
   
-|Name|Hodnota|Type|  
+|Název|Hodnota|Type|  
 |----------|-----------|----------|  
 |_type|Pomocný parametr typu.|String|  
 |<a name="errors" />Chyby|Seznam chyb, které popisují důvody, proč žádost selhala.|[Chyba](#error)|  
@@ -150,7 +150,7 @@ Definuje smluvní pravidlo pro přiřazení licence.
 ### <a name="link"></a>Odkaz  
 Definuje komponenty hypertextový odkaz.  
   
-|Name|Hodnota|Type|  
+|Název|Hodnota|Type|  
 |----------|-----------|----------|  
 |_type|Pomocný parametr typu.|String|  
 |text|Zobrazení textu.|String|  
@@ -172,7 +172,7 @@ Definuje pravidlo smluvní pro přidělení odkazu.
 ### <a name="mediaattribution"></a>MediaAttribution  
 Definuje smluvní pravidlo pro attribution média.  
   
-|Name|Hodnota|Type|  
+|Název|Hodnota|Type|  
 |----------|-----------|----------|  
 |_type|Typ pomocného parametru, která je nastavena na MediaAttribution.|String|  
 |mustBeCloseToContent|Logická hodnota, která určuje, zda obsah pravidlo musí být umístěn v blízkosti pole, které se pravidlo vztahuje. Pokud **true**, obsah musí být umístěn v těsné blízkosti. Pokud **false**, nebo tato pole neexistuje, můžete umístit obsah na základě vlastního uvážení volajícího.|Boolean|  
@@ -196,12 +196,12 @@ Všimněte si, že vydavatel může zadat jeho název nebo jejich webu nebo oboj
 ### <a name="webpage"></a>Webová stránka  
 Definuje informace o webové stránce ve verzi preview.  
   
-|Name|Hodnota|Type|  
+|Název|Hodnota|Type|  
 |----------|-----------|----------|
 |name|Název stránky, ne tedy nutně Nadpis HTML|String|
 |url|Adresu URL, kterou byl ve skutečnosti procházen (žádosti může provedli přesměrování)|String|  
 |description|Stručný popis stránky a obsahu|String|  
-|isFamilyFriendly|Co nejvíce zpřesnili pro položky v rejstříku web. Tato detekce založené výhradně na adresu URL a obsah stránky se načte v reálném čase|Boolean|
+|isFamilyFriendly|Co nejvíce zpřesnili pro položky v rejstříku web. Tato detekce založené výhradně na adresu URL a obsah stránky se načte v reálném čase|boolean|
 |primaryImageOfPage/contentUrl|Adresa URL reprezentativní image zahrnout ve verzi preview|String| 
   
   
@@ -218,21 +218,21 @@ Definuje kontext dotazu, který používá Bing pro daný požadavek.
 
 ### <a name="identifiable"></a>Údaje
 
-|Name|Hodnota|Type|  
+|Název|Hodnota|Type|  
 |-------------|-----------------|----------|
 |id|Identifikátor prostředku|String|
  
 ### <a name="rankinggroup"></a>RankingGroup
 Definuje skupinu výsledky, jako například mainline.
 
-|Name|Hodnota|Type|  
+|Název|Hodnota|Type|  
 |-------------|-----------------|----------|
 |items|Seznam výsledků hledání pro zobrazení ve skupině.|RankingItem|
 
 ### <a name="rankingitem"></a>RankingItem
 Definuje položku výsledek vyhledávání k zobrazení.
 
-|Name|Hodnota|Type|  
+|Název|Hodnota|Type|  
 |-------------|-----------------|----------|
 |resultIndex|Z nuly vycházející index položky v odpovědi na dotaz k zobrazení. Pokud položka neobsahuje toto pole, zobrazí všechny položky v odpovědi na dotaz. Například zobrazte všechny články o novinkách v zpráv odpovědí.|Integer|
 |answerType|Odpověď obsahující položku k zobrazení. Například příspěvky.<br /><br />Použijte typ odpovědi SearchResponse objektu. Typ je název SearchResponse pole.<br /><br /> Pouze v případě, že tento objekt obsahuje pole hodnoty; však použijte typ odpovědi v opačném případě ji ignorujte.|String|
@@ -242,7 +242,7 @@ Definuje položku výsledek vyhledávání k zobrazení.
 ### <a name="rankingresponse"></a>RankingResponse  
 Definuje, kde na hledání by měl být umístěn obsah stránky výsledků a v jakém pořadí.  
   
-|Name|Hodnota|  
+|Název|Hodnota|  
 |----------|-----------|  
 |<a name="ranking-mainline" />mainline|Výsledky hledání pro zobrazení v hlavní linii.|  
 |<a name="ranking-pole" />pole|Výsledky hledání, které by měl být poskytnuta nejviditelnější zpracování (například zobrazený nad hlavní linie a boční panel).|  
@@ -254,7 +254,7 @@ Definuje objekt nejvyšší úrovně, který obsahuje odpověď po úspěšném 
   
 Všimněte si, že pokud služba má podezření útoku DOS, požadavek bude úspěšné (stavový kód protokolu HTTP je 200 OK); text odpovědi však bude prázdný.  
   
-|Name|Hodnota|Type|  
+|Název|Hodnota|Type|  
 |----------|-----------|----------|  
 |_type|Pomocný parametr typu, který je nastaven na SearchResponse.|String|  
 |Webová stránka|Objekt JSON, který definuje verzi preview|string|  
@@ -263,7 +263,7 @@ Všimněte si, že pokud služba má podezření útoku DOS, požadavek bude ús
 ### <a name="textattribution"></a>TextAttribution  
 Definuje pravidlo smluvní pro attribution prostý text.  
   
-|Name|Hodnota|Type|  
+|Název|Hodnota|Type|  
 |----------|-----------|----------|  
 |_type|Typ pomocného parametru, která je nastavena na TextAttribution.|String|  
 |text|Attribution text.<br /><br /> Text attribution platí pro entity jako celek a měla by se zobrazit okamžitě po prezentace entity. Pokud existuje více textu nebo odkazů attribution pravidla, která není zadejte cíl, by měl je zřetězit a jejich zobrazení pomocí "Data z:" popisek.|String| 

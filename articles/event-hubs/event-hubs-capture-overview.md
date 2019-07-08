@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 47ae3eb41145a74c1726847943df9074a4a75dfe
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 96b9d90ce942b7755feae8298a408f46f20bf04d
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273656"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67461689"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>Zachycení událostí pomocí Azure Event Hubs v Azure Blob Storage nebo Azure Data Lake Storage
 Azure Event Hubs umožňuje automaticky zachytit streamovaná data ve službě Event Hubs do [úložiště objektů Blob v Azure](https://azure.microsoft.com/services/storage/blobs/) nebo [úložiště Azure Data Lake](https://azure.microsoft.com/services/data-lake-store/) účet podle vašeho výběru s flexibilnější určení časový nebo velikostní interval. Nastavení zachytávání je rychlý, neexistují žádné administrativní náklady na spuštění a automaticky se škáluje s Event Hubs [jednotek propustnosti](event-hubs-scalability.md#throughput-units). Funkce Event Hubs Capture představuje nejjednodušší způsob, jak načíst streamovaná data do Azure a vám umožní zaměřit se na zpracování dat a nikoli na sběr dat.
@@ -51,6 +51,8 @@ Všimněte si, že hodnoty data jsou doplněny nulami; Příklad souboru může 
 ```
 https://mystorageaccount.blob.core.windows.net/mycontainer/mynamespace/myeventhub/0/2017/12/08/03/03/17.avro
 ```
+
+V případě, že objektu blob služby Azure storage je dočasně nedostupná, Event Hubs Capture bude uchovávat data po dobu uchovávání dat nakonfigurovat ve službě event hub a zpět vyplnit data, jakmile váš účet úložiště je opět k dispozici.
 
 ### <a name="scaling-to-throughput-units"></a>Škálování s jednotkami propustnosti
 
@@ -135,6 +137,8 @@ Apache Avro má kompletní příručky Začínáme pro [Java][Java] and [Python]
 ## <a name="how-event-hubs-capture-is-charged"></a>Jak funkce Event Hubs Capture se účtuje
 
 Funkce Event Hubs Capture se měří podobně pro jednotky propustnosti: jako hodinovou sazbu. Sazba je přímo úměrný počtu jednotek propustnosti zakoupili pro obor názvů. Jednotky propustnosti jsou zvýšení a snížení, Event Hubs Capture měřiče zvýšit nebo snížit zajistit odpovídající výkonu. Při vytvoření celostní dojde k měřiče. Podrobnosti o cenách najdete v tématu [ceny služby Event Hubs](https://azure.microsoft.com/pricing/details/event-hubs/). 
+
+Všimněte si, že sběr dat nespotřebovává kvóty pro odchozí přenos, jak se fakturuje samostatně. 
 
 ## <a name="integration-with-event-grid"></a>Integrace s využitím služby Event Grid 
 

@@ -5,16 +5,16 @@ description: Pomocí pokročilých algoritmů rozhraní API detekce anomálií m
 services: cognitive-services
 author: IEvangelist
 ms.service: cognitive-services
-ms.subservice: anomaly-detection
+ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 704ea3ecbc309c2328e120d5b6776e659944d254
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 254173df33bdc82b7de87328a715954c1a6993d7
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275027"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593112"
 ---
 # <a name="install-and-run-anomaly-detector-containers"></a>Instalace a spouštění kontejnerů detekce anomálií
 

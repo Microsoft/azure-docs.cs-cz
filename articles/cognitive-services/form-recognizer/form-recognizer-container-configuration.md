@@ -5,16 +5,16 @@ description: Zjistěte, jak konfigurovat kontejner formuláře Rozlišovač anal
 author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
-ms.subservice: form-recognizer
+ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 7e8e7a13cd02a6f3b109a84829dba2a81fd36aaa
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: e4b6a852ece3060ecf866d66d32f213355d99950
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296236"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67592663"
 ---
 # <a name="configure-form-recognizer-containers"></a>Konfigurace formuláře Rozlišovač kontejnery
 

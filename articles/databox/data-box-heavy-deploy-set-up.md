@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: tutorial
-ms.date: 06/19/2019
+ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: d4cdc9b6c31c62080fed5a8528577fef72c01c3f
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 3e6bfe4a93ab8c97bcffb84bda08977f8d811fa8
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67271719"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67592377"
 ---
-# <a name="tutorial-cable-and-connect-to-your-azure-data-box-heavy-preview"></a>Kurz: Zapojení a připojte se k vaší Azure Data Box náročné (preview)
+# <a name="tutorial-cable-and-connect-to-your-azure-data-box-heavy"></a>Kurz: Zapojení a připojte se k vaší Azure Data Box Heavy
 
 
 Tento kurz popisuje, jak pro zapojení, připojení a zapnout váš Azure Data Box náročné.

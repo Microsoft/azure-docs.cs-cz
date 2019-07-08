@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: tutorial
-ms.date: 05/29/2019
+ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 8453a3592c1822489a3724dacdf8f0ff5e8492f1
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: c7fbd37ff8d40f27e0ca18a6f9816d3d96422ab9
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66427905"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67592401"
 ---
-# <a name="tutorial-order-azure-data-box-heavy-preview"></a>Kurz: Pořadí Azure Data Box náročné (preview)
+# <a name="tutorial-order-azure-data-box-heavy"></a>Kurz: Pořadí Azure Data Box náročná na výkon
 
 
 Azure Data Box velké je hybridní řešení, která umožňuje import místních dat do Azure v rámci rychlého, jednoduchý a spolehlivý způsob. Přenos dat se zařízením úložiště poskytované Microsoft 770 TB (přibližná využitelné kapacity) a potom odešlete zařízení zpět. Data se potom nahrají do Azure.

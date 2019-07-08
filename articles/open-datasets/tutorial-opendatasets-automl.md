@@ -4,18 +4,17 @@ titleSuffix: Azure Open Datasets
 description: Zjistěte, jak využít pohodlí otevřít datové sady Azure spolu s výkon služby Azure Machine Learning k vytvoření regresní model k předvídání cen tarif NYC taxislužby.
 services: open-datasets
 ms.service: open-datasets
-ms.subservice: core
 ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 05/02/2019
-ms.openlocfilehash: e753793b5da59d09a21991831046a43899c62ef2
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: a1df79c59ede8cd9ad72a2ebb2edb4bdb64b802a
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65026820"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67588973"
 ---
 # <a name="tutorial-build-a-regression-model-with-automated-machine-learning-and-open-datasets"></a>Kurz: Sestaví model regrese automatizované strojového učení a otevřené datové sady
 
@@ -351,7 +350,7 @@ green_taxi_df.head(10)
       <td>1.0</td>
       <td>0,5</td>
       <td>0.3</td>
-      <td>1,5</td>
+      <td>1.5</td>
       <td>0.0</td>
       <td>NaN</td>
       <td>11.3</td>
@@ -650,7 +649,7 @@ green_taxi_df.head(10)
       <td>40.805729</td>
       <td>-73.939117</td>
       <td>...</td>
-      <td>1,5</td>
+      <td>1.5</td>
       <td>0.0</td>
       <td>NaN</td>
       <td>11.3</td>
@@ -1505,7 +1504,7 @@ taxi_holidays_weather_df.describe()
       <td>0.000000</td>
     </tr>
     <tr>
-      <th>50 %</th>
+      <th>50%</th>
       <td>2.000000</td>
       <td>4.000000</td>
       <td>0.830000</td>
@@ -1693,7 +1692,7 @@ final_df.describe()
       <td>0.000000</td>
     </tr>
     <tr>
-      <th>50 %</th>
+      <th>50%</th>
       <td>2.000000</td>
       <td>1.000000</td>
       <td>1.900000</td>

@@ -5,16 +5,16 @@ description: Naučte se využívat kontejner Rozpoznávání formulářů k anal
 author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
-ms.subservice: form-recognizer
+ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: f38752928832b7dee6a7e55f1d25374a64391bbe
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: a3c7de8f5e86df749ec3b6d9e73e6f6299e94faf
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67441885"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67592681"
 ---
 # <a name="install-and-run-form-recognizer-containers"></a>Instalace a spouštění kontejnerů Rozlišovač formuláře
 Azure pro rozpoznávání formuláře platí technologií pro strojové učení k identifikaci a extrahovat páry klíč hodnota a tabulky z formuláře. Přiřadí hodnoty a položky tabulky s páry klíč hodnota a potom vypíše strukturovanými daty, která obsahuje vztahy v původním souboru. 

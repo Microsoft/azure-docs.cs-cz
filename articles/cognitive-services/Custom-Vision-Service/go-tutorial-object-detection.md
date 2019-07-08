@@ -6,16 +6,16 @@ services: cognitive-services
 author: areddish
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: custom-vision
+ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 03/21/2019
 ms.author: daauld
-ms.openlocfilehash: 77ba3144afcc48d68466341c154bc1d8eef54d3b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 017fdf45da6da29e3b571e5eb03549e5e13feda8
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60609022"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593022"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-go-sdk"></a>Rychlý start: Vytvoření projektu zjišťování objektů s Custom Vision Go SDK
 

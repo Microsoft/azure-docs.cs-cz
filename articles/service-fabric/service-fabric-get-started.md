@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/10/2019
+ms.date: 07/03/2019
 ms.author: aljo
-ms.openlocfilehash: 4d7fb257c932d84d8ddcb6c69e5286373f9b6adf
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 19f5d99fe95e1290cc30dedc8b8172e234bd4642
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067216"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67566058"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Příprava vývojového prostředí ve Windows
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.locfileid: "67067216"
 > 
 > 
 
-Pokud chcete sestavovat a spouštět [aplikace Azure Service Fabric][1] na vývojovém počítači s Windows, nainstalujte modul runtime Service Fabric, sadu SDK a nástroje. Musíte také [povolit spouštění skriptů Windows PowerShellu](#enable-powershell-script-execution), které jsou součástí sady SDK.
+Sestavte a spusťte [aplikace Azure Service Fabric][1] na vývojovém počítači s Windows, nainstalujte modul runtime Service Fabric, sady SDK a nástrojů. Musíte také [povolit spouštění skriptů Windows PowerShellu](#enable-powershell-script-execution), které jsou součástí sady SDK.
 
 ## <a name="prerequisites"></a>Požadavky
 ### <a name="supported-operating-system-versions"></a>Podporované verze operačních systémů
@@ -43,7 +43,7 @@ Pro vývoj jsou podporovány tyto verze operačních systémů:
 
 > [!NOTE]
 > Podpora Windows 7:
-> - Windows 7 ve výchozím nastavení obsahuje jenom prostředí Windows PowerShell 2.0 Rutiny prostředí PowerShell pro Service Fabric vyžadují PowerShell 3.0 nebo novější. Můžete si [stáhnout prostředí Windows PowerShell 5.0][powershell5-download] z webu Microsoft Download Center.
+> - Windows 7 ve výchozím nastavení obsahuje jenom prostředí Windows PowerShell 2.0 Rutiny prostředí PowerShell pro Service Fabric vyžadují PowerShell 3.0 nebo novější. Je možné [stáhnout prostředí Windows PowerShell 5.0][powershell5-download] z webu Microsoft Download Center.
 > - Reverzní proxy Service Fabric není ve Windows 7 k dispozici.
 >
 
@@ -57,21 +57,21 @@ Instalačního programu webové platformy (WebPI) je doporučeným způsobem, ja
 Nástroje Service Fabric Tools jsou součástí sady funkcí Vývoj pro Azure v sadě Visual Studio 2017. Povolte tuto úlohu jako součást instalace sady Visual Studio.
 Kromě toho budete muset pomocí Instalace webové platformy nainstalovat sadu Microsoft Azure Service Fabric SDK a modul runtime.
 
-* [Instalace sady Microsoft Azure Service Fabric SDK][core-sdk]
+* [Nainstalovat sadu Microsoft Azure Service Fabric SDK][core-sdk].
 
 ### <a name="to-use-visual-studio-2015-requires-visual-studio-2015-update-2-or-later"></a>Použití sady Visual Studio 2015 (vyžaduje Visual Studio 2015 Update 2 nebo novější)
 Pro sadu Visual Studio 2015 se nástroje Service Fabric nainstalují společně se sadou SDK a modulem runtime pomocí Instalace webové platformy:
 
-* [Instalace sady Microsoft Azure Service Fabric SDK a nástrojů][full-bundle-vs2015]
+* [Instalace Microsoft Azure Service Fabric SDK a nástrojů][full-bundle-vs2015]
 
 ### <a name="sdk-installation-only"></a>Jenom instalace sady SDK
 Pokud potřebujete jenom sadu SDK, můžete nainstalovat tento balíček:
-* [Instalace sady Microsoft Azure Service Fabric SDK][core-sdk]
+* [Nainstalovat sadu Microsoft Azure Service Fabric SDK][core-sdk].
 
 Aktuální verze jsou:
-* Service Fabric SDK a nástroje 3.4.639
-* Modul runtime Service Fabric 6.5.639
-* Service Fabric Tools pro Visual Studio 2015 2.4.11116.1
+* Service Fabric SDK a nástroje 3.4.641
+* Modul runtime Service Fabric 6.5.641
+* Service Fabric Tools pro Visual Studio 2015 2.5.20615.1
 * Visual Studio 2017 15.9 obsahuje Service Fabric Tools for Visual Studio 2.4.11024.1 
 
 Seznam podporovaných verzí najdete v tématu [verzí Service Fabric](service-fabric-versions.md)

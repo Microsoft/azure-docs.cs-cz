@@ -8,12 +8,12 @@ ms.date: 06/29/2019
 ms.author: dpalled
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: e415c681ae5a35de6e8ff76e09cfef8cc8cc98f8
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 8ee4cd30d5742896df96ccfd714d85ebbab194f9
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67544067"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595703"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-single-page-web-app"></a>Kurz: Vytvoření jednostránkové webové aplikace Azure Time Series Insights
 
@@ -101,7 +101,7 @@ Tento kurz používá také data z prostředí Time Series Insights ukázkovou a
       <link rel="stylesheet" type="text/css" href="../../dist/tsiclient.css"> -->
       ```
 
-   1. Chcete-li nakonfigurovat aplikaci, aby používala registraci ID aplikace Azure AD, změňte `clientID` hodnotu použít **ID aplikace** jste si zkopírovali v **krok 3** při vám [registrované aplikace používání Azure AD](#register-the-application-with-azure-ad). Pokud jste vytvořili **odhlašovací adresa URL** ve službě Azure AD, nastavte tuto hodnotu jako `postLogoutRedirectUri` hodnotu.
+   1. Chcete-li nakonfigurovat aplikaci, aby používala registraci ID aplikace Azure AD, změňte `clientID` hodnotu použít **ID aplikace** jste si zkopírovali v **krok 3** při vám [registrované aplikace pro používání Azure AD](#register-the-application-with-azure-ad). Pokud jste vytvořili **odhlašovací adresa URL** ve službě Azure AD, nastavte tuto hodnotu jako `postLogoutRedirectUri` hodnotu.
 
       [!code-javascript[head-sample](~/samples-javascript/pages/tutorial/index.html?range=147-153&highlight=4-5)]
 

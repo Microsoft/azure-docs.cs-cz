@@ -8,13 +8,13 @@ manager: nitinme
 ms.service: cognitive-services
 ms.topic: article
 ms.date: 11/01/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 82b2f5ca70927856aeac889675b5ec4a54ae034f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: rosh
+ms.openlocfilehash: e96b1959d9e03273a9ca4c549c0f8b0bda6a708b
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65796751"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67592789"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>Odkaz na místní firmy hledání rozhraní API Bingu v7
 
@@ -70,7 +70,7 @@ Níže jsou hlavičky, které mohou zahrnovat požadavek a odpověď.
 Žádost mohou zahrnovat tyto parametry dotazu. Zobrazte požadovaný sloupec pro požadované parametry. Adresa URL musíte zakódovat parametry dotazu.  
   
   
-|Name|Hodnota|Type|Požaduje se|  
+|Název|Hodnota|Type|Požaduje se|  
 |----------|-----------|----------|--------------|
 |<a name="count" />Počet|Počet výsledků k vrácení, počínaje indexem určené `offset` parametru.|String|Ne|   
 |<a name="localCategories" />localCategories|Seznam možností, které definují vyhledávání podle kategorie business.  Zobrazit [prohledávat místní firmy kategorie](local-categories.md)|String|Ne|  
@@ -117,7 +117,7 @@ Objekt nejvyšší úrovně, který obsahuje odpověď, pokud požadavek selže.
 ### <a name="license"></a>Licence  
 Definuje licence, pod kterým mohou být použity text nebo fotografie.  
   
-|Name|Hodnota|Type|  
+|Název|Hodnota|Type|  
 |----------|-----------|----------|  
 |name|Název licence.|String|  
 |url|Adresa URL webu, kde uživatel získat další informace o licenci.<br /><br /> Vytvoření hypertextového odkazu, použijte název a adresu URL.|String|  
@@ -126,7 +126,7 @@ Definuje licence, pod kterým mohou být použity text nebo fotografie.
 ### <a name="link"></a>Odkaz  
 Definuje komponenty hypertextový odkaz.  
   
-|Name|Hodnota|Type|  
+|Název|Hodnota|Type|  
 |----------|-----------|----------|  
 |_type|Pomocný parametr typu.|String|  
 |text|Zobrazení textu.|String|  
@@ -140,7 +140,7 @@ Definuje vydavatele.
   
 Všimněte si, že vydavatel může zadat jeho název nebo jejich webu nebo obojí.  
   
-|Name|Hodnota|Type|  
+|Název|Hodnota|Type|  
 |----------|-----------|----------|  
 |name|Název vydavatele.|String|  
 |url|Adresa URL webu vydavatele.<br /><br /> Všimněte si, že vydavatel nemusí poskytnout webu.|String|  
@@ -150,7 +150,7 @@ Všimněte si, že vydavatel může zadat jeho název nebo jejich webu nebo oboj
 ### <a name="place"></a>Místo  
 Definuje informace o místní firmy, jako je například restaurace nebo hotelu.  
   
-|Name|Hodnota|Type|  
+|Název|Hodnota|Type|  
 |----------|-----------|----------|  
 |_type|Zadejte pokyn, který může být nastaven na jednu z následujících akcí:<br /><br /><ul><li>Hotel</li><li>LocalBusiness<br /></li><li>Restaurace</ul><li>|String|  
 |Adresa|Poštovní adresa ve kterém se entita nachází.|PostalAddress služby Active Directory|  
@@ -181,7 +181,7 @@ Definuje kontext dotazu, který používá Bing pro daný požadavek.
 ### <a name="rankinggroup"></a>RankingGroup
 Definuje skupinu výsledky, jako například mainline.
 
-|Name|Hodnota|Type|  
+|Název|Hodnota|Type|  
 |-------------|-----------------|----------|
 |items|Seznam výsledků hledání pro zobrazení ve skupině.|RankingItem|
 
@@ -198,7 +198,7 @@ Definuje položku výsledek vyhledávání k zobrazení.
 ### <a name="rankingresponse"></a>RankingResponse  
 Definuje, kde na hledání by měl být umístěn obsah stránky výsledků a v jakém pořadí.  
   
-|Name|Hodnota|  
+|Název|Hodnota|  
 |----------|-----------|  
 |<a name="ranking-mainline" />mainline|Výsledky hledání pro zobrazení v hlavní linii.|  
 |<a name="ranking-pole" />pole|Výsledky hledání, které by měl být poskytnuta nejviditelnější zpracování (například zobrazený nad hlavní linie a boční panel).|  
@@ -209,7 +209,7 @@ Definuje objekt nejvyšší úrovně, který obsahuje odpověď po úspěšném 
   
 Všimněte si, že pokud služba má podezření útoku DOS, požadavek bude úspěšné (stavový kód protokolu HTTP je 200 OK); text odpovědi však bude prázdný.  
   
-|Name|Hodnota|Type|  
+|Název|Hodnota|Type|  
 |----------|-----------|----------|  
 |_type|Pomocný parametr typu, který je nastaven na SearchResponse.|String|  
 |Místa|Seznam entit, které odpovídají vyhledávacímu dotazu.|JSON – objekt|  

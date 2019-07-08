@@ -7,7 +7,7 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/14/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 33b47d33262a4968a0eafb9ec70ef73e50975735
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1b67522834497a264d95fc9b80246b16841d6026
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61462769"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594224"
 ---
 # <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>Kurz: Přidat Azure CDN do webové aplikace Azure App Service
 
@@ -76,7 +76,7 @@ Na stránce **Azure Content Delivery Network** zadejte pro **Nový koncový bod*
 | ------- | --------------- | ----------- |
 | **Profil CDN** | myCDNProfile | Profil CDN je kolekce koncových bodů CDN se stejnou cenovou úrovní. |
 | **Cenová úroveň** | Akamai Standard | [Cenová úroveň](cdn-features.md) určuje poskytovatele a dostupné funkce. Tento kurz používá *Akamai úrovně Standard*. |
-| **Název koncového bodu CDN** | Libovolný název, který je jedinečný v doméně azureedge.net | Prostředky uložené v mezipaměti jsou přístupné v doméně *&lt;název_koncového_bodu&gt;*.azureedge.net.
+| **Název koncového bodu CDN** | Libovolný název, který je jedinečný v doméně azureedge.net | Prostředky uložené v mezipaměti jsou přístupné v doméně *&lt;název_koncového_bodu&gt;* .azureedge.net.
 
 Vyberte **Vytvořit** a vytvořte profil CDN.
 

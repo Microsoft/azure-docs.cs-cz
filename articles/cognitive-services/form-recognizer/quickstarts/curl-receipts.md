@@ -5,16 +5,16 @@ description: V tomto rychlém startu použijete rozhraní REST API pro rozpozná
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
-ms.subservice: form-recognizer
+ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/01/2019
 ms.author: pafarley
-ms.openlocfilehash: f9111dcb1f85b28a688282f792540128e7146a6b
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: 0178e53e6a7fde54b988e710a1cabbb7ded69b22
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67566195"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67592577"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-curl"></a>Rychlý start: Extrahování příjmu dat pomocí rozhraní REST API pro rozpoznávání formuláře pomocí cURL
 
