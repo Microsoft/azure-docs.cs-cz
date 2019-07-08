@@ -62,6 +62,8 @@
           href: backup-azure-files-faq.md
         - name: Nejčastější dotazy k zálohování databází SQL Serveru na virtuálních počítačích Azure
           href: faq-backup-sql-server.md
+        - name: Nejčastější dotazy k Azure Backup Serveru a DPM
+          href: backup-azure-dpm-azure-server-faq.md
     - name: Architektura zálohování
       href: backup-architecture.md
     - name: Řízení přístupu na základě rolí

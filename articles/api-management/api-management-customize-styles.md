@@ -57,7 +57,7 @@ V tomto kurzu se naučíte:
     Na stránce se zobrazí všechny elementy, které můžete přizpůsobit pomocí **stylů**.
 5. Do pole **Změna hodnot proměnných pro přizpůsobení vzhledu portálu pro vývojáře** zadejte headings-color.
 
-     **\@Záhlaví color** elementu se zobrazí na stránce. Tato proměnná řídí barvu textu.
+    **\@Záhlaví color** elementu se zobrazí na stránce. Tato proměnná řídí barvu textu.
 
     ![přizpůsobení stylu](./media/modify-developer-portal-style/modify-developer-portal-style02.png)
     

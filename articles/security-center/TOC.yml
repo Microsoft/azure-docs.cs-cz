@@ -35,6 +35,12 @@
       href: security-center-data-security.md
     - name: Použití doporučení k vylepšení zabezpečení
       href: security-center-using-recommendations.md
+    - name: Detekce hrozeb
+      href: security-center-detection-capabilities.md
+    - name: Správa výstrah zabezpečení
+      href: security-center-managing-and-responding-alerts.md
+    - name: Incidenty zabezpečení
+      href: security-center-incident.md
     - name: Reakce na incidenty
       href: security-center-incident-response.md
 - name: Návody
@@ -97,19 +103,24 @@
           href: security-center-file-integrity-monitoring.md
         - name: Adaptivní posilování zabezpečení sítě
           href: security-center-adaptive-network-hardening.md
-    - name: Detekce hrozeb
-      href: security-center-detection-capabilities.md
+    - name: Upozornění detekce hrozeb
       items:
-        - name: Výstrahy zabezpečení
-          href: security-center-managing-and-responding-alerts.md
-        - name: Incidenty zabezpečení
-          href: security-center-incident.md
-        - name: Principy výstrah zabezpečení
-          href: security-center-alerts-type.md
-        - name: Ověřování výstrah
+        - name: Přehled výstrah zabezpečení
+          href: security-center-alerts-overview.md
+        - name: Detekce hrozeb pro virtuální počítače a servery
+          href: security-center-alerts-iaas.md
+        - name: Detekce hrozeb pro cloudové nativní výpočetní prostředí
+          href: security-center-alerts-compute.md
+        - name: Detekce hrozeb pro datové služby
+          href: security-center-alerts-data-services.md
+        - name: Detekce hrozeb pro vrstvu služeb Azure
+          href: security-center-alerts-service-layer.md
+        - name: Integrace s produkty zabezpečení Azure
+          href: security-center-alerts-integration.md
+        - name: Korelace inteligentních výstrah v cloudu (incidenty)
+          href: security-center-alerts-cloud-smart.md
+        - name: Ověřování výstrah (testovací soubor EICAR)
           href: security-center-alert-validation.md
-        - name: UEBA pro uživatele a prostředky Azure
-          href: security-center-ueba-mcas.md
     - name: Archiv
       items:
         - name: Použít šifrování disku
@@ -168,6 +179,10 @@
           href: security-center-search.md
         - name: Plánování a provoz
           href: security-center-planning-and-operations-guide.md
+        - name: Principy výstrah zabezpečení
+          href: security-center-alerts-type.md
+        - name: UEBA pro uživatele a prostředky Azure
+          href: security-center-ueba-mcas.md
 - name: Referenční informace
   items:
     - name: Rozhraní REST API

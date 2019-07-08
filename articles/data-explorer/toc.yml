@@ -100,10 +100,10 @@
           href: manage-database-permissions.md
         - name: Kontrola stavu clusteru
           href: check-cluster-health.md
-        - name: Správa horizontálního rozšíření kapacity clusteru
-          href: manage-cluster-scale-out.md
-        - name: Správa vertikálního rozšíření kapacity clusteru
-          href: manage-cluster-scale-up.md
+        - name: Správa horizontálního škálování clusteru
+          href: manage-cluster-horizontal-scaling.md
+        - name: Správa vertikálního škálování clusteru
+          href: manage-cluster-vertical-scaling.md
         - name: Odstranění dat
           href: delete-data.md
         - name: Řešení duplicitních dat
