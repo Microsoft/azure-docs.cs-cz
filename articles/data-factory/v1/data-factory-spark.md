@@ -351,11 +351,11 @@ Vytvořte následující strukturu složky v úložišti objektů blob odkazuje 
 | ---- | ----------- | -------- | ---- |
 | . | Kořenová cesta úlohy Sparku na propojenou službu storage. | Ano | Složka |
 | &lt;definováno uživatelem &gt; | Cesta, která odkazuje na vstupní soubor úlohy Spark. | Ano | File |
-| . / jars | Všechny soubory v této složce jsou odeslat a umístí na cesta třídy Java clusteru. | Ne | Složka |
-| . / pyFiles | Všechny soubory v této složce jsou nahraje a umístí na PYTHONPATH clusteru. | Ne | Složka |
-| . / soubory | Všechny soubory v této složce jsou odeslány a umístit do pracovního adresáře prováděcího modulu. | Ne | Složka |
-| . / archivů | Všechny soubory v této složce nekomprimované. | Ne | Složka |
-| . / protokoly | Složka, ve kterém jsou uložené protokoly z clusteru Spark.| Ne | Složka |
+| ./jars | Všechny soubory v této složce jsou odeslat a umístí na cesta třídy Java clusteru. | Ne | Složka |
+| ./pyFiles | Všechny soubory v této složce jsou nahraje a umístí na PYTHONPATH clusteru. | Ne | Složka |
+| ./files | Všechny soubory v této složce jsou odeslány a umístit do pracovního adresáře prováděcího modulu. | Ne | Složka |
+| ./archives | Všechny soubory v této složce nekomprimované. | Ne | Složka |
+| ./logs | Složka, ve kterém jsou uložené protokoly z clusteru Spark.| Ne | Složka |
 
 Tady je příklad pro úložiště, který obsahuje dva soubory úlohy Spark ve službě blob storage odkazuje HDInsight propojené služby:
 
