@@ -176,9 +176,9 @@ Tato část popisuje různé způsoby, jak skriptových akcí můžete použít 
     | Vlastnost | Hodnota |
     | --- | --- |
     | Vyberte skript | Chcete-li použít vlastní skript, vyberte __vlastní__. V opačném případě vyberte jednu z poskytnutých skriptů. |
-    | Název |Zadejte název akce skriptu. |
+    | Name |Zadejte název akce skriptu. |
     | URI skriptu bash |Zadejte identifikátor URI skriptu. |
-    | HEAD/Worker/Zookeeper |Zadejte uzly, na kterých je skript spuštěn: **Hlavní**, **pracovního procesu**, nebo **ZooKeeper**. |
+    | HEAD/Worker/ZooKeeper |Zadejte uzly, na kterých je skript spuštěn: **HEAD**, **Worker**, nebo **ZooKeeper**. |
     | Parametry |Zadejte parametry, pokud je to nutné skript. |
 
     Použití __zachovat tuto akci se skripty__ položku a ujistěte se, že skript je použit během operace škálování.
