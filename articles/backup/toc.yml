@@ -64,6 +64,8 @@
           href: faq-backup-sql-server.md
         - name: Nejčastější dotazy k Azure Backup Serveru a DPM
           href: backup-azure-dpm-azure-server-faq.md
+        - name: Nejčastější dotazy k výstrahám monitorování Azure Backupu
+          href: backup-azure-monitor-alert-faq.md
     - name: Architektura zálohování
       href: backup-architecture.md
     - name: Řízení přístupu na základě rolí

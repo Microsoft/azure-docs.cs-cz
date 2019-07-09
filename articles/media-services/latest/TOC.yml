@@ -36,11 +36,16 @@
   items:
     - name: Přehled
       href: concepts-overview.md
-    - name: Nahrávání na cloud a úložiště
+    - name: Účty
       items:
-        - name: Storage
+        - name: Účet Media Services
+          displayName: subscription
+          href: media-services-account-concept.md
+        - name: Účet úložiště
           href: storage-account-concept.md
           displayName: Storage side encryption
+    - name: Nahrávání
+      items:
         - name: Prostředky
           href: assets-concept.md
     - name: Kódování

@@ -58,8 +58,12 @@
           href: virtual-machines-windows-portal-sql-server-provision.md
         - name: Použití Azure Powershell
           href: virtual-machines-windows-ps-sql-create.md
+    - name: Registrace s využitím poskytovatele prostředků
+      href: virtual-machines-windows-sql-register-with-resource-provider.md
     - name: Změna modelu licencování pro virtuální počítač SQL
       href: virtual-machines-windows-sql-ahb.md
+    - name: Změna edice SQL Serveru
+      href: virtual-machines-windows-sql-change-edition.md
     - name: Migrace
       items:
         - name: Migrace databáze SQL Serveru

@@ -127,6 +127,14 @@
           href: sql-data-warehouse-overview-develop.md
         - name: Osvědčené postupy
           href: sql-data-warehouse-best-practices-development.md
+        - name: Materializované zobrazení
+          items:
+            - name: Příkaz Create Materialized View As Select (Transact-SQL)
+              href: /sql/t-sql/statements/create-materialized-view-as-select-transact-sql
+            - name: Příkaz Alter Materialized View As Select (Transact-SQL)
+              href: /sql/t-sql/statements/alter-materialized-view-transact-sql
+        - name: Ukládání sady výsledků dotazu do mezipaměti
+          href: /sql/t-sql/statements/set-result-set-caching-transact-sql
         - name: Tabulky
           items:
             - name: Přehled
