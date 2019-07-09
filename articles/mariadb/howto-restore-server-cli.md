@@ -74,7 +74,7 @@ az mariadb server restore --resource-group myresourcegroup --name mydemoserver-r
 | Nastavení | Navrhovaná hodnota | Popis  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  Skupina prostředků, které se nachází na zdrojovém serveru.  |
-| jméno | mydemoserver-restored | Název nového serveru, který se vytvoří příkazem restore. |
+| name | mydemoserver-restored | Název nového serveru, který se vytvoří příkazem restore. |
 | restore-point-in-time | 2018-03-13T13:59:00Z | Vyberte bod v čase, chcete-li obnovit. Tato datum a čas musí být v rámci doby uchovávání záloh zdrojového serveru. Použijte formát data a času ISO8601. Například můžete použít vlastní místní časové pásmo, jako například `2018-03-13T05:59:00-08:00`. Můžete také použít formát UTC Zulu například `2018-03-13T13:59:00Z`. |
 | source-server | mydemoserver | Název nebo ID zdrojového serveru, ze kterého se má provést obnovení. |
 
@@ -114,7 +114,7 @@ az mariadb server georestore --resource-group newresourcegroup --name mydemoserv
 | Nastavení | Navrhovaná hodnota | Popis  |
 | --- | --- | --- |
 |resource-group| myresourcegroup | Název skupiny prostředků na nový server bude patřit do.|
-|jméno | mydemoserver georestored | Název nového serveru. |
+|name | mydemoserver georestored | Název nového serveru. |
 |source-server | mydemoserver | Název existujícího serveru, jehož geograficky redundantní zálohy se používají. |
 |location | eastus | Umístění nového serveru. |
 |sku-name| GP_Gen5_8 | Tento parametr nastavuje cenové úrovně, generace výpočetních a počet virtuálních jader pro nový server. GP_Gen5_8 mapuje pro obecné účely Gen 5 server s 8 jádry VCORE.|
