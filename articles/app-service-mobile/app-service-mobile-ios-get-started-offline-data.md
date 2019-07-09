@@ -167,7 +167,7 @@ Když použijete funkci offline synchronizace, definujte tři systémové tabulk
 | --- | --- |
 | id | Integer 64 |
 | itemId | String |
-| properties | Binární Data |
+| properties |Binary Data |
 | table | String |
 | tableKind | Integer 16 |
 
