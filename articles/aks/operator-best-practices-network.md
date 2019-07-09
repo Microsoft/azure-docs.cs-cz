@@ -32,8 +32,8 @@ Tento článek o osvědčených postupech se zaměřuje na připojení k síti a
 
 Virtuální sítě poskytují základní připojení pro uzly AKS a zákazníky pro přístup k vaší aplikace. Existují dva různé způsoby nasazování clusteru AKS do virtuální sítě:
 
-* **Sítě Kubenet** -Azure spravuje prostředky virtuální sítě jako cluster nasazuje a používá [kubenet] [ kubenet] modulu plug-in Kubernetes.
-* **Sítě Azure CNI** – nasadí do existující virtuální sítě a použije [Azure Container síťové rozhraní (CNI)] [ cni-networking] modulu plug-in Kubernetes. Podů přijímat jednotlivých IP adres, který může směrovat do jiných síťových služeb nebo místní prostředky.
+* **Sítě Kubenet** -Azure spravuje prostředky virtuální sítě jako cluster nasazuje a používá [kubenet][kubenet] modulu plug-in Kubernetes.
+* **Sítě Azure CNI** – nasadí do existující virtuální sítě a použije [Azure Container síťové rozhraní (CNI)][cni-networking] modulu plug-in Kubernetes. Podů přijímat jednotlivých IP adres, který může směrovat do jiných síťových služeb nebo místní prostředky.
 
 Kontejner síťové rozhraní (CNI) je protokol dodavatelích, který umožňuje provádět požadavky poskytovatele síťových prostředí runtime kontejneru. Azure CNI přiřadí IP adresy k podů a uzly a poskytuje funkce pro správu (IPAM) IP adresy připojit k existující virtuální sítě Azure. Každý uzel a pod prostředků obdrží IP adresu ve virtuální síti Azure a žádné další směrování je potřeba ke komunikaci s ostatními prostředky nebo služby.
 
