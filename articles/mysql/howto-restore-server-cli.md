@@ -110,7 +110,7 @@ az mysql server georestore --resource-group newresourcegroup --name mydemoserver
 | Nastavení | Navrhovaná hodnota | Popis  |
 | --- | --- | --- |
 |resource-group| myresourcegroup | Název skupiny prostředků na nový server bude patřit do.|
-|jméno | mydemoserver georestored | Název nového serveru. |
+|name | mydemoserver georestored | Název nového serveru. |
 |source-server | mydemoserver | Název existujícího serveru, jehož geograficky redundantní zálohy se používají. |
 |location | eastus | Umístění nového serveru. |
 |sku-name| GP_Gen5_8 | Tento parametr nastavuje cenové úrovně, generace výpočetních a počet virtuálních jader pro nový server. GP_Gen5_8 mapuje pro obecné účely Gen 5 server s 8 jádry VCORE.|
