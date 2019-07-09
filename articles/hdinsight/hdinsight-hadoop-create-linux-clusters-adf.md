@@ -189,9 +189,9 @@ V tomto článku nakonfigurujete aktivitu Hive k vytvoření clusteru HDInsight 
 
     |Vlastnost  |Hodnota  |
     |---------|---------|
-    |Název | Zadejte název datové továrny. Tento název musí být globálně jedinečný.|
-    |Předplatné | Vyberte své předplatné Azure. |
-    |Skupina prostředků | Vyberte **použít existující** a pak vyberte skupinu prostředků, kterou jste vytvořili, pomocí Powershellového skriptu. |
+    |Name | Zadejte název datové továrny. Tento název musí být globálně jedinečný.|
+    |Subscription | Vyberte své předplatné Azure. |
+    |Resource group | Vyberte **použít existující** a pak vyberte skupinu prostředků, kterou jste vytvořili, pomocí Powershellového skriptu. |
     |Version | Ponechte **V2**. |
     |Location | Umístění se nastaví automaticky do umístění, které jste zadali při vytváření skupiny prostředků dříve. Pro účely tohoto kurzu, umístění se nastaví **USA – východ**. |
 
