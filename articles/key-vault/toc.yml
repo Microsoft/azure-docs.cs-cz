@@ -164,8 +164,6 @@
       href: common-parameters-and-headers.md
     - name: Zákaznická data
       href: key-vault-customer-data.md
-    - name: Poznámky k verzi
-      href: key-vault-versions.md
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/key-vault/'
     - name: Dostupnost v oblastech

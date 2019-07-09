@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c90d0d2596eb6b8650e2d9809b23bb0e184d97c0
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 4837867188721b13b3f4cb64245ae85a1e32fe50
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62117496"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67656623"
 ---
 # <a name="build-an-aspnet-core-and-sql-database-app-in-azure-app-service-on-linux"></a>Vytvoření aplikace ASP.NET Core a SQL Database ve službě Azure App Service v Linuxu
 
@@ -145,7 +145,7 @@ az sql db create --resource-group myResourceGroup --server <server-name> --name 
 
 ### <a name="create-connection-string"></a>Vytvoření připojovacího řetězce
 
-Nahraďte následujícím řetězci  *\<název serveru >*,  *\<db-username >*, a  *\<db heslo >* vám použili dříve.
+Nahraďte následujícím řetězci  *\<název serveru >* ,  *\<db-username >* , a  *\<db heslo >* vám použili dříve.
 
 ```
 Server=tcp:<server-name>.database.windows.net,1433;Database=coreDB;User ID=<db-username>;Password=<db-password>;Encrypt=true;Connection Timeout=30;
@@ -171,7 +171,7 @@ V tomto kroku nasadíte aplikaci .NET Core připojenou k databázi SQL do služb
 
 ### <a name="configure-an-environment-variable"></a>Konfigurace proměnné prostředí
 
-Pokud chcete nastavit pro svou aplikaci Azure připojovací řetězce, použijte v Cloud Shellu příkaz [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set). V následujícím příkazu nahraďte  *\<název aplikace >*, jakož i  *\<připojovací řetězec >* parametr připojovacím řetězcem, který jste vytvořili dříve.
+Pokud chcete nastavit pro svou aplikaci Azure připojovací řetězce, použijte v Cloud Shellu příkaz [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set). V následujícím příkazu nahraďte  *\<název aplikace >* , jakož i  *\<připojovací řetězec >* parametr připojovacím řetězcem, který jste vytvořili dříve.
 
 ```azurecli-interactive
 az webapp config connection-string set --resource-group myResourceGroup --name <app name> --settings MyDbConnection='<connection-string>' --connection-string-type SQLServer
@@ -362,7 +362,7 @@ Všechny vaše existující položky úkolů jsou nadále zobrazené. Při opět
 
 ## <a name="stream-diagnostic-logs"></a>Streamování diagnostických protokolů
 
-Ukázkový projekt již následuje dokumentaci na webu [ASP.NET Core protokolování v Azure](https://docs.microsoft.com/aspnet/core/fundamentals/logging#logging-in-azure) dvě změny konfigurace:
+Ukázkový projekt již následuje dokumentaci na webu [ASP.NET Core protokolování v Azure](https://docs.microsoft.com/aspnet/core/fundamentals/logging#azure-app-service-provider) dvě změny konfigurace:
 
 - Obsahuje odkaz na `Microsoft.Extensions.Logging.AzureAppServices` v *DotNetCoreSqlDb.csproj*.
 - Volání `loggerFactory.AddAzureWebAppDiagnostics()` v *Startup.cs*.

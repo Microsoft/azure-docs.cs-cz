@@ -146,7 +146,7 @@ Skripty akce skriptu umožňuje použít následující nástroje:
 
 HDInsight poskytuje skriptů v clusterech HDInsight nainstalovat následující komponenty:
 
-| Název | Skript |
+| Name | Skript |
 | --- | --- |
 | Přidání účtu služby Azure Storage |`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`. Zobrazit [přidání dalších účtů úložiště pro HDInsight](hdinsight-hadoop-add-storage.md). |
 | Instalace rozhraní Hue |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`. Zobrazit [instalace a použití rozhraní Hue v HDInsight Hadoop clusterů](hdinsight-hadoop-hue-linux.md). |
@@ -178,7 +178,7 @@ Tato část popisuje různé způsoby, jak skriptových akcí můžete použít 
     | Vyberte skript | Chcete-li použít vlastní skript, vyberte __vlastní__. V opačném případě vyberte jednu z poskytnutých skriptů. |
     | Name |Zadejte název akce skriptu. |
     | URI skriptu bash |Zadejte identifikátor URI skriptu. |
-    | HEAD/Worker/ZooKeeper |Zadejte uzly, na kterých je skript spuštěn: **HEAD**, **Worker**, nebo **ZooKeeper**. |
+    | HEAD/Worker/Zookeeper |Zadejte uzly, na kterých je skript spuštěn: **Hlavní**, **pracovního procesu**, nebo **ZooKeeper**. |
     | Parametry |Zadejte parametry, pokud je to nutné skript. |
 
     Použití __zachovat tuto akci se skripty__ položku a ujistěte se, že skript je použit během operace škálování.
@@ -258,7 +258,7 @@ Přejděte [webu Azure portal](https://portal.azure.com):
     | Vlastnost | Hodnota |
     | --- | --- |
     | Vyberte skript | Chcete-li použít vlastní skript, vyberte __vlastní__. V opačném případě vyberte dodávaného skriptu. |
-    | Název |Zadejte název akce skriptu. |
+    | Name |Zadejte název akce skriptu. |
     | URI skriptu bash |Zadejte identifikátor URI skriptu. |
     | HEAD/Worker/Zookeeper |Zadejte uzly, na kterých je skript spuštěn: **Hlavní**, **pracovního procesu**, nebo **ZooKeeper**. |
     | Parametry |Zadejte parametry, pokud je to nutné skript. |

@@ -1,21 +1,21 @@
 ---
 title: 'Rychlý start: Vytvoření, načtení a dotazování indexu pomocí webu Azure portal – Azure Search'
 description: Použijte Průvodce importem dat na webu Azure portal k vytvoření, načtení a dotazování prvního indexu služby Azure Search.
-author: HeidiSteen
+author: lobrien
 manager: cgronlun
 tags: azure-portal
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 05/02/2019
-ms.author: heidist
+ms.date: 07/01/2019
+ms.author: laobri
 ms.custom: seodec2018
-ms.openlocfilehash: 4a1944c5c5f169274cf45bd3ebfb6df47942dd5a
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 98ca455fd92b0c9ed276082413734c6bc063f310
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485633"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671941"
 ---
 # <a name="quickstart-create-an-azure-search-index-using-the-azure-portal"></a>Rychlý start: Vytvoření indexu Azure Search pomocí webu Azure portal
 > [!div class="op_single_selector"]
@@ -23,7 +23,6 @@ ms.locfileid: "67485633"
 > * [PowerShell](search-howto-dotnet-sdk.md)
 > * [Postman](search-get-started-postman.md)
 > * [C#](search-create-index-dotnet.md)
->*
 
 Pro rychlé Seznamte se s koncepty Azure Search zkuste integrované nástroje na webu Azure Portal. Průvodci a editory neposkytují úplnou paritu s využitím .NET a rozhraní REST API, ale můžete začít rychle s obsahuje úvod bez kódu zápis zajímavé dotazy na ukázková data během několika minut.
 
@@ -48,7 +47,7 @@ Mnoho zákazníků začíná s bezplatnou službou. Tato verze je omezená na t�
 
 Oddíly na řídicím panelu služby zobrazit, kolik indexů, indexerů a zdrojů dat už máte. 
 
-![Seznam indexy, indexery a zdroje dat](media/search-get-started-portal/tiles-indexers-datasources2.png)
+![Seznam indexy, indexery a zdroje dat](media/search-get-started-portal/tiles-indexers-datasources.png)
 
 ## <a name="create-index"></a>Vytvoření indexu a načtení dat
 
@@ -60,11 +59,11 @@ V tomto kurzu použijeme integrovanou ukázkovou datovou sadu, kterou je možné
 
 1. Na řídicím panelu služby Azure Search, klikněte na tlačítko **importovat data** na panelu příkazů pro vytvoření a naplnění indexu vyhledávání.
 
-   ![Příkaz pro import dat](media/search-get-started-portal/import-data-cmd2.png)
+   ![Příkaz pro import dat](media/search-get-started-portal/import-data-cmd.png)
 
-2. V průvodci klikněte na **Připojit se k datům** > **Ukázky** > **realestate-us-sample**. Tento zdroj dat jsou integrované. Pokud vytváříte vlastní zdroj dat, je třeba zadat název, typ a informace o připojení. Po vytvoření se z něj stane „existující zdroj dat“, který je možné využít v dalších operacích importu.
+2. V průvodci klikněte na tlačítko **připojit ke svým datům** > **ukázky** > **hotels-sample**. Tento zdroj dat jsou integrované. Pokud vytváříte vlastní zdroj dat, je třeba zadat název, typ a informace o připojení. Po vytvoření se z něj stane „existující zdroj dat“, který je možné využít v dalších operacích importu.
 
-   ![Výběr ukázkové datové sady](media/search-get-started-portal/import-datasource-sample2.png)
+   ![Výběr ukázkové datové sady](media/search-get-started-portal/import-datasource-sample.png)
 
 3. Přejít na další stránku.
 
@@ -87,7 +86,7 @@ Vytvoření indexu je obvykle založená na kódu cvičení, dokončeno před na
 
 Pole mají datové typy a atributy. Zaškrtávací políčka v horní části jsou *atributy indexu*, které určují způsob použití pole.
 
-* **Retrievable** (Zobrazitelné) znamená, že se zobrazí v seznamu výsledků vyhledávání. Jednotlivá pole můžete označit jako zakázaná pro výsledky hledání zrušením zaškrtnutí tohoto políčka, například když se pole používají jenom ve výrazech filtru.
+* **Retrievable** (Zobrazitelné) znamená, že se zobrazí v seznamu výsledků vyhledávání. Můžete označit jednotlivá pole jako zakázaná pro výsledky hledání zrušením zaškrtnutí tohoto políčka, například pro pole použít jenom ve výrazech filtru.
 * **Klíč** je jedinečný identifikátor dokumentu. Je vždy řetězec a je povinný.
 * **Filterable**, **Sortable**, a **Facetable** určit, zda pole se používají v filtrovat, řadit nebo fasetovou strukturu navigace.
 * **Searchable** (Prohledávatelné) znamená, že je pole součástí fulltextové vyhledávání. Řetězce je možné prohledávat. Číselná pole a logická pole jsou často označena jako neprohledávatelné.
@@ -98,9 +97,9 @@ Ve výchozím nastavení průvodce vyhledá ve zdroji dat jedinečné identifik�
 
 1. Přijměte výchozí hodnoty. 
 
-   Pokud znovu spustíte Průvodce pomocí existujícího zdroje dat realestate podruhé, index nebudou nakonfigurována s výchozí atributy. Budete muset ručně vybrat atributy u budoucích importů.
+   Pokud znovu spustíte průvodce podruhé pomocí existujícího zdroje dat hotely, index nebudou nakonfigurována s výchozí atributy. Budete muset ručně vybrat atributy u budoucích importů. 
 
-   ![Vytvořený index realestate](media/search-get-started-portal/realestateindex2.png)
+   ![Vygenerovaný hotels indexu](media/search-get-started-portal/hotelsindex.png)
 
 2. Přejít na další stránku.
 
@@ -114,7 +113,7 @@ Tento objekt definuje spustitelný proces. Může umístit na plán opakování,
 
 Klikněte na tlačítko **odeslat** vytvořit a současně spustit indexer.
 
-  ![Indxer realestate](media/search-get-started-portal/realestate-indexer2.png)
+  ![Hotels indexeru](media/search-get-started-portal/hotels-indexer.png)
 
 ## <a name="monitor-progress"></a>Sledování průběhu
 
@@ -122,7 +121,7 @@ Průvodce by vám neměl zabrat do seznamu indexery ve kterém můžete sledovat
 
 Může trvat několik minut, než se na portál a aktualizujte stránku, ale byste měli vidět indexer nově vytvořený v seznamu, se stavem indikujícím "Probíhá", nebo úspěch a s počtem indexovaných dokumentů.
 
-   ![Zpráva indexeru o průběhu](media/search-get-started-portal/indexers-inprogress2.png)
+   ![Zpráva indexeru o průběhu](media/search-get-started-portal/indexers-inprogress.png)
 
 ## <a name="view-the-index"></a>Zobrazení indexu
 
@@ -130,7 +129,7 @@ Na stránce hlavní služba obsahuje odkazy na prostředky vytvořené v rámci 
 
    ![Seznam indexů na řídicím panelu služby](media/search-get-started-portal/indexes-list.png)
 
-Z tohoto seznamu, můžete kliknout na *realestate-us-sample* index, který jste právě vytvořili, zobrazit schéma indexu. a volitelně přidat nová pole. 
+Z tohoto seznamu, můžete kliknout na *hotels-sample* index, který jste právě vytvořili, zobrazit schéma indexu. a volitelně přidat nová pole. 
 
 **Pole** karta zobrazuje schéma indexu. Přejděte do dolní části seznamu zadejte nové pole. Ve většině případů nelze změnit existující pole. Existující pole mají v Azure Search fyzickou reprezentaci, takže se nedají změnit, dokonce ani v kódu. K zásadním způsobem mění stávající pole, vytvořte nový index, vyřadit původní.
 
@@ -152,11 +151,11 @@ Teď už byste měli mít vyhledávací index, který je připravený na dotazov
 
 1. Klikněte na **Průzkumník služby Search** na panelu příkazů.
 
-   ![Příkaz průzkumníka služby Search](media/search-get-started-portal/search-explorer-cmd2.png)
+   ![Příkaz průzkumníka služby Search](media/search-get-started-portal/search-explorer-cmd.png)
 
-2. Kliknutím na **Změnit index** na panelu příkazů přejdete k *realestate-us-sample*. Kliknutím na **Nastavit verzi API** na panelu příkazů zobrazíte, která rozhraní REST API jsou dostupná. Pro níže uvedené dotazy použijte obecně dostupnou verzi (2019-05-06).
+2. Z **Index** rozevíracím seznamu zvolte *hotels-sample*. Klikněte na tlačítko **verze rozhraní API** rozevíracího seznamu, abyste zjistili, které jsou k dispozici rozhraní REST API. Pro níže uvedené dotazy použijte obecně dostupnou verzi (2019-05-06).
 
-   ![Příkazy rozhraní API a index](media/search-get-started-portal/search-explorer-changeindex-se2.png)
+   ![Příkazy rozhraní API a index](media/search-get-started-portal/search-explorer-changeindex.png)
 
 3. Do vyhledávacího pole vložte uvedené řetězce dotazu a klikněte na tlačítko **hledání**.
 
@@ -168,29 +167,29 @@ Můžete zadat termínů a frází, podobný může provádět vyhledávání Bi
 
 ### <a name="simple-query-with-top-n-results"></a>Jednoduchý dotaz s horními N výsledky
 
-#### <a name="example-string-query-searchseattle"></a>Příklad (řetězce dotazu): `search=seattle`
+#### <a name="example-string-query-searchspa"></a>Příklad (řetězce dotazu): `search=spa`
 
-* Parametr **search** se používá k zadání klíčového slova pro fulltextové vyhledávání. V tomto případě vrátí výpisy v King County ve státě Washington, které v libovolném prohledávatelném poli dokumentu obsahují text *Seattle*.
+* **Hledání** parametr slouží k zadání klíčového slova pro fulltextové vyhledávání. v takovém případě vracet hotelu data pro uživatele, který obsahuje *spa* v libovolném prohledávatelném poli dokumentu.
 
 * **Průzkumník služby Search** vrátí výsledky ve formátu JSON, který je podrobný a těžko čitelný, pokud mají dokumenty kompaktní strukturu. Je to záměr; Přehled celého dokumentu je důležité pro účely vývoje, zejména při testování. Pokud chcete uživatelské prostředí zlepšit, je potřeba napsat kód, který [zpracuje výsledky hledání](search-pagination-page-layout.md) a vybere z nich důležité elementy.
 
-* Dokumenty se skládají ze všech polí, která mají v indexu označení Zobrazitelné. Chcete-li zobrazit atributy indexu na portálu, klikněte na tlačítko *realestate-us-sample* v **indexy** seznamu.
+* Dokumenty se skládají ze všech polí, která mají v indexu označení Zobrazitelné. Chcete-li zobrazit atributy indexu na portálu, klikněte na tlačítko *hotels-sample* v **indexy** seznamu.
 
-#### <a name="example-parameterized-query-searchseattlecounttruetop100"></a>Příklad (parametrický dotaz): `search=seattle&$count=true&$top=100`
+#### <a name="example-parameterized-query-searchspacounttruetop10"></a>Příklad (parametrický dotaz): `search=spa&$count=true&$top=10`
 
 * Symbol **&** slouží k připojení parametrů vyhledávání, které lze zadat v libovolném pořadí.
 
-* Parametr **$count=true** vrací celkový počet všech vrácených dokumentů. Tato hodnota se zobrazí v horní části výsledků hledání. Monitorováním změn hlášených parametrem **$count=true** můžete ověřovat filtrovací dotazy. Menší počet výsledků naznačuje, že filtr funguje.
+* **$Count = true** parametr vrátí celkový počet všech vrácených dokumentů. Tato hodnota se zobrazí v horní části výsledků hledání. Monitorováním změn hlášených parametrem **$count=true** můžete ověřovat filtrovací dotazy. Menší počet výsledků naznačuje, že filtr funguje.
 
-* Parametr **$top=100** vrací 100 dokumentů s nejvyšším hodnocením. Ve výchozím nastavení vrací služba Azure Search prvních 50 nejlepších shod. Pomocí parametru **$top** můžete tento počet navýšit nebo snížit.
+* **$Top = 10** vrací s nejvyšším hodnocením 10 dokumentů. Ve výchozím nastavení vrací služba Azure Search prvních 50 nejlepších shod. Pomocí parametru **$top** můžete tento počet navýšit nebo snížit.
 
 ### <a name="filter-query"></a>Filtrování dotazu
 
 Filtry se do požadavků hledání zahrnou po připojení parametru **$filter**. 
 
-#### <a name="example-filtered-searchseattlefilterbeds-gt-3"></a>Příklad (filtrovaný): `search=seattle&$filter=beds gt 3`
+#### <a name="example-filtered-searchbeachfilterrating-gt-4"></a>Příklad (filtrovaný): `search=beach&$filter=Rating gt 4`
 
-* Parametr **$filter** vrací výsledky odpovídající kritériím, která jste zadali. V tomto případě víc než 3 ložnice.
+* Parametr **$filter** vrací výsledky odpovídající kritériím, která jste zadali. V tomto případě hodnocení větší než 4.
 
 * Syntaxe parametru Filter je založená na konstruktech jazyka OData. Další informace najdete v tématu věnovaném [syntaxi jazyka OData pro filtry](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search).
 
@@ -198,45 +197,47 @@ Filtry se do požadavků hledání zahrnou po připojení parametru **$filter**.
 
 Součástí požadavků hledání jsou filtry omezující vlastnost. Pomocí parametru facet můžete vrátit celkový počet dokumentů odpovídajících hodnotě omezující vlastnosti, kterou zadáte.
 
-#### <a name="example-faceted-with-scope-reduction-searchfacetcitytop2"></a>Příklad (s omezujícími vlastnostmi a zmenšením rozsahu): `search=*&facet=city&$top=2`
+#### <a name="example-faceted-with-scope-reduction-searchfacetcategorytop2"></a>Příklad (s omezujícími vlastnostmi a zmenšením rozsahu): `search=*&facet=Category&$top=2`
 
-* Parametr **search=** * znamená prázdné vyhledávání. Prázdné vyhledávání prohledává všechno. Jedním z důvodů odeslání prázdného dotazu je použití filtru nebo omezující vlastnosti na kompletní sadu dokumentů. Chcete například, aby se fasetová navigační struktura skládala ze všech měst v indexu.
-
-* Parametr **facet** vrací navigační strukturu, kterou můžete předat ovládacímu prvku uživatelského rozhraní. Vrací kategorie a počet. V tomto případě kategorie závisí na počtu měst. Ve službě Azure Search neexistuje agregace, ale můžete ji odhadnout pomocí parametru `facet`, který vrací počet dokumentů v každé kategorii.
+* Parametr **search=** * znamená prázdné vyhledávání. Prázdné vyhledávání prohledává všechno. Jedním z důvodů odeslání prázdného dotazu je použití filtru nebo omezující vlastnosti na kompletní sadu dokumentů. Například chcete fasetová navigační struktura skládala ze všech hotely v indexu.
+* Parametr **facet** vrací navigační strukturu, kterou můžete předat ovládacímu prvku uživatelského rozhraní. Vrací kategorie a počet. V tomto případě jsou kategorie založené na pole s názvem pohodlně *kategorie*. Ve službě Azure Search neexistuje agregace, ale můžete ji odhadnout pomocí parametru `facet`, který vrací počet dokumentů v každé kategorii.
 
 * Parametr **$top=2** vrací dva dokumenty a ilustruje, že parametr `top` můžete použít ke snížení i navýšení počtu výsledků.
 
-#### <a name="example-facet-on-numeric-values-searchseattlefacetbeds"></a>Příklad (omezující vlastnost číselných hodnot): `search=seattle&facet=beds`**
+#### <a name="example-facet-on-numeric-values-searchspafacetrating"></a>Příklad (omezující vlastnost s číselnými hodnotami): `search=spa&facet=Rating`
 
-* Tento dotaz je omezující vlastností na postele v textovém vyhledávání výrazu *Seattle*. Termín *beds* je možné použít jako omezující vlastnost, protože toto pole je v indexu označené jako Retrievable, Filterable a Facetable (zobrazitelné, filtrovatelné a kategorizovatelné) a hodnoty, které obsahuje (číselné, od 1 do 5), jsou vhodné pro zařazení výpisů do skupin (výpisy se 3 ložnicemi nebo se 4 ložnicemi).
+* Tento dotaz je omezující vlastnost pro hodnocení v textovém vyhledávání *spa*. Termín *hodnocení* lze zadat jako omezující vlastnost, protože pole je označeno jako retrievable, filterable a facetable v indexu a hodnoty, které obsahuje (číselné, od 1 do 5), jsou vhodné pro zařazení výpisů do skupin.
 
 * Kategorizovat je možné pouze filtrovatelná pole. Ve výsledcích je možné vrátit pouze zobrazitelná pole.
+
+* *Hodnocení* pole je dvojité přesnosti s plovoucí desetinnou čárkou a seskupení bude podle přesné hodnoty. Další informace o seskupování podle intervalu (například "3 hodnocení hvězdičkami," "4 hodnocení hvězdičkami," atd.), najdete v článku [jak ve službě Azure Search implementovat fasetovou navigaci](https://docs.microsoft.com/en-us/azure/search/search-faceted-navigation#filter-based-on-a-range).
+
 
 ### <a name="highlight-query"></a> Zvýraznění výsledků hledání
 
 Zvýrazňování shod označuje formátování textu odpovídajícího klíčovému slovu (za předpokladu, že se v konkrétním poli našly shody). Pokud je hledaný termín schovaný v popisu, můžete pomocí zvýrazňování shod usnadnit jeho nalezení.
 
-#### <a name="example-highlighter-searchgranite-countertopshighlightdescription"></a>Příklad (zvýraznění): `search=granite countertops&highlight=description`
+#### <a name="example-highlighter-searchbeachhighlightdescription"></a>Příklad (zvýraznění): `search=beach&highlight=Description`
 
-* V tomto příkladu je formátovaná fráze *granite countertops* v poli popisu lépe viditelná.
+* V tomto příkladu formátovaný slovo *beach* je v poli popisu lépe.
 
-#### <a name="example-linguistic-analysis-searchmicehighlightdescription"></a>Příklad (lingvistická analýza): `search=mice&highlight=description`
+#### <a name="example-linguistic-analysis-searchbeacheshighlightdescription"></a>Příklad (lingvistická analýza): `search=beaches&highlight=Description`
 
-* Fulltextové vyhledávání vyhledá tvary slov s podobnou sémantikou. V tomto případě výsledky hledání obsahují zvýrazněný text „mouse“ u domů se zamořením myšmi, a to v reakci na hledání klíčového slova „mice“. Ve výsledcích se díky lingvistické analýze mohou zobrazit různé tvary téhož slova.
+* Fulltextové vyhledávání rozpozná základní kolísání tvary slov. V tomto případě výsledky hledání obsahují zvýrazněný text "beach" hotely, které jste toto slovo v jejich prohledávatelná pole v reakci na hledání klíčového slova "pláže". Ve výsledcích se díky lingvistické analýze mohou zobrazit různé tvary téhož slova. 
 
 * Azure Search podporuje 56 analyzátorů od společností Lucene a Microsoft. Jako výchozí se pro Azure Search používá standardní analyzátor Lucene.
 
 ### <a name="fuzzy-search"></a> Zkouška vyhledávání přibližných shod
 
-Ve výchozím nastavení, hledaná termíny dotazu, jako je třeba *samamish* při Sammamish v Seattlu, selhání v typickém hledání. Následující příklad nevrátí žádné výsledky.
+Ve výchozím nastavení, hledaná termíny dotazu, jako je třeba *seatle* "Seattle" selhat v typickém hledání. Následující příklad nevrátí žádné výsledky.
 
-#### <a name="example-misspelled-term-unhandled-searchsamamish"></a>Příklad (chybně zadaný termín bez zpracování): `search=samamish`
+#### <a name="example-misspelled-term-unhandled-searchseatle"></a>Příklad (chybně zadaný termín bez zpracování): `search=seatle`
 
 Ke zpracování chybně napsaných slov můžete využít vyhledávání přibližných shod. Vyhledávání přibližných shod se povolí v případě, že použijete úplnou syntaxi dotazů Lucene. K tomu je potřeba provést dvě věci: nastavit v dotazu **queryType=full** a připojit k řetězci dotazu znak **~** .
 
-#### <a name="example-misspelled-term-handled-searchsamamishquerytypefull"></a>Příklad (chybně zadaný termín se zpracováním): `search=samamish~&queryType=full`
+#### <a name="example-misspelled-term-handled-searchseatlequerytypefull"></a>Příklad (chybně zadaný termín se zpracováním): `search=seatle~&queryType=full`
 
-Tento příklad najednou vrací dokumenty, které obsahují shody s termínem „Sammamish“.
+V tomto příkladu nyní vrací dokumenty, které zahrnují odpovídajících položek na "Seattle".
 
 Pokud parametr **queryType** není zadaný, použije se výchozí jednoduchý analyzátor dotazů. Jednoduchý analyzátor dotazů je rychlejší, ale pokud vyžadujete vyhledávání přibližných shod, regulární výrazy, vyhledávání blízkých výrazů nebo jiné pokročilé typy dotazů, budete potřebovat celou syntaxi.
 
@@ -248,7 +249,7 @@ Další informace o scénářích, které umožňuje použít kompletní analyz�
 
 Geoprostorové hledání je podporované prostřednictvím [datového typu edm.GeographyPoint](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) v polích, které obsahují souřadnice. Geoprostorové hledání je typ filtru určený v [syntaxi jazyka OData pro filtry](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search).
 
-#### <a name="example-geo-coordinate-filters-searchcounttruefiltergeodistancelocationgeographypoint-122121513-47673988-le-5"></a>Příklad (filtry geografických souřadnic): `search=*&$count=true&$filter=geo.distance(location,geography'POINT(-122.121513 47.673988)') le 5`
+#### <a name="example-geo-coordinate-filters-searchcounttruefiltergeodistancelocationgeographypoint-12212-4767-le-5"></a>Příklad (filtry geografických souřadnic): `search=*&$count=true&$filter=geo.distance(Location,geography'POINT(-122.12 47.67)') le 5`
 
 Tento vzorový dotaz vyfiltruje všechny výsledky pro poziční data, kde jsou výsledky od daného bodu (zadaného pomocí zeměpisné šířky a délky) vzdálené méně než 5 kilometrů. Přidáním parametru **$count** můžete zobrazit, kolik výsledků se vrátí, když změníte vzdálenost nebo souřadnice.
 

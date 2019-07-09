@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec8c2fc2c2dbbfd2c98184215f696aaf18a87193
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 498650ce8a22f4804773bb66db3d640cd63bab8c
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67105553"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655838"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-webex-meetings"></a>Kurz: Integrace Azure Active Directory s Cisco Webex schůzky
 
@@ -122,13 +122,13 @@ Ke konfiguraci Azure AD jednotné přihlašování s Cisco Webex schůzky, prove
 
     V **přihlašovací adresa URL** textového pole vložte hodnotu **adresy URL odpovědi** které získá automaticky vyplněný odeslání souboru SP metadat.
 
-5. Cisco Webex schůzky aplikace očekává, že kontrolní výrazy SAML v určitém formátu, který je potřeba přidat vlastní atribut mapování konfigurace atributy tokenu SAML. Na následujícím snímku obrazovky se zobrazí v seznamu atributů výchozí. Klikněte na **upravit** ikona přidat atributy.
+5. Cisco Webex schůzky aplikace očekává, že kontrolní výrazy SAML v určitém formátu, který je potřeba přidat vlastní atribut mapování konfigurace atributy tokenu SAML. Na následujícím snímku obrazovky se zobrazí v seznamu atributů výchozí. Klikněte na **upravit** ikona přidat atributy.
 
     ![image](common/edit-attribute.png)
 
 6. Odstranit výchozí atributy z **deklarace identity uživatelů** oddílu a Cisco Webex schůzky aplikace očekává, že několik další atributy se mají předat zpět odpověď SAML. V **deklarace identity uživatelů** části na **atributy uživatele** dialogového okna, proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulka:
     
-    | Name | Zdrojový atribut|
+    | Název | Zdrojový atribut|
     | ---------------|  --------- |
     |   jméno    | user.givenname |
     |   Příjmení    | user.surname |

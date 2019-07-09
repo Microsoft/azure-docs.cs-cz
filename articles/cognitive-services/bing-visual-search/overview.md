@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: overview
 ms.date: 03/27/2019
 ms.author: scottwhi
-ms.openlocfilehash: bd93166cb878fbd961795492ed9a035c919429a8
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 4da4340176259265fd36c55d2b81ecfc3f4ed5f8
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "64916629"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657703"
 ---
 # <a name="what-is-the-bing-visual-search-api"></a>Co je rozhraní API pro vizuální vyhledávání Bingu?
 
@@ -30,7 +30,7 @@ Pokud používáte [API pro vyhledávání obrázků Bingu](../bing-image-search
 
 Je možné zjistit tyto přehledy s využitím vizuálního vyhledávání Bingu:
 
-| Přehled                              | Popis |
+| Insight                              | Popis |
 |--------------------------------------|-------------|
 | Vizuálně podobné obrázky              | Seznam imagí, které jsou vizuálně podobné vstupního obrázku. |
 | Vizuálně podobné produkty            | Produkty, které jsou vizuálně podobné produkt zobrazí.            |
@@ -47,7 +47,7 @@ Výsledky pro vizuální vyhledávání Bingu také obsahovat ohraničující po
 
 Bing API pro vizuální vyhledávání je RESTful webová služba, což usnadňuje volat z libovolného programovacího jazyka, který může vytvářet požadavky HTTP a parsování formátu JSON. Rozhraní REST API nebo sady SDK můžete použít pro službu.
 
-1. Vytvoření [účtu služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přístup k rozhraní API pro vyhledávání Bingu. Pokud nemáte předplatné Azure, můžete si [zdarma vytvořit účet](https://azure.microsoft.com/free/). Můžete získat klíč předplatného z [webu Azure portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#access-your-resource) po vytvoření účtu, nebo [web Azure](https://azure.microsoft.com/try/cognitive-services/my-apis) až po dokončení aktivace bezplatné zkušební verze.
+1. Vytvoření [účtu služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přístup k rozhraní API pro vyhledávání Bingu. Pokud nemáte předplatné Azure, můžete si [zdarma vytvořit účet](https://azure.microsoft.com/free/). Můžete získat klíč předplatného z [webu Azure portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#get-the-keys-for-your-subscription) po vytvoření účtu, nebo [web Azure](https://azure.microsoft.com/try/cognitive-services/my-apis) až po dokončení aktivace bezplatné zkušební verze.
 2. Odeslat požadavek na rozhraní API pomocí platný vyhledávacího dotazu.
 3. Zpracujte odpověď rozhraní API parsováním vrácené zprávy JSON.
 

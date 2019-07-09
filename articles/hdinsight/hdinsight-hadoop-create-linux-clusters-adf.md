@@ -230,7 +230,7 @@ V této části vytvoříte dvě propojené služby v rámci vaší datové tov�
 
     |Vlastnost |Hodnota |
     |---|---|
-    |Název |Zadejte `HDIStorageLinkedService`.|
+    |Name |Zadejte `HDIStorageLinkedService`.|
     |Předplatné Azure |Vyberte své předplatné z rozevíracího seznamu.|
     |Název účtu úložiště |Vyberte účet služby Azure Storage, kterou jste vytvořili jako součást skriptu prostředí PowerShell.|
 
@@ -252,7 +252,7 @@ V této části vytvoříte dvě propojené služby v rámci vaší datové tov�
 
     | Vlastnost | Hodnota |
     | --- | --- |
-    | Název | Zadejte `HDInsightLinkedService`.|
+    | Name | Zadejte `HDInsightLinkedService`.|
     | Type | Vyberte **HDInsight na vyžádání**. |
     | Propojená služba Azure Storage | Vyberte `HDIStorageLinkedService`. |
     | Typ clusteru | Vyberte **hadoop** |
@@ -260,7 +260,7 @@ V této části vytvoříte dvě propojené služby v rámci vaší datové tov�
     | ID instančního objektu | Zadejte ID aplikace pro objekt služby Azure Active Directory, kterou jste vytvořili jako součást požadavků. |
     | Klíč instančního objektu | Zadejte ověřovací klíč instančního objektu služby Azure Active Directory. |
     | Předpona názvu clusteru | Zadejte hodnotu, která bude mu předcházet text pro všechny typy clusteru, které jsou vytvořeny pomocí služby data factory. |
-    |Předplatné |Vyberte své předplatné z rozevíracího seznamu.|
+    |Subscription |Vyberte své předplatné z rozevíracího seznamu.|
     | Výběr skupiny prostředků | Vyberte skupinu prostředků, kterou jste vytvořili jako součást skriptu prostředí PowerShell, který jste použili dříve.|
     |Zvolte oblast | Z rozevíracího seznamu vyberte oblast.|
     | Uživatelské jméno SSH clusteru/typu operačního systému | Zadejte uživatelské jméno SSH, běžně `sshuser`. |

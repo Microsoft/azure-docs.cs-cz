@@ -155,6 +155,8 @@
               href: data-box-heavy-deploy-picked-up.md
         - name: Koncepty
           items:
+            - name: Přečtěte si bezpečnostní pokyny
+              href: data-box-heavy-safety.md
             - name: Kontrola sledování a protokolování
               href: data-box-logs.md
             - name: Kontrola požadavků

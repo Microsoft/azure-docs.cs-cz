@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: b300c40b4a9c832a0df87f7cfc6e6a9558d766f6
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 36d85e11133e7197212ae1b37609628689b68a13
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448234"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657938"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>Kurz: Vytvoření aplikace překladu s WPF
 
@@ -62,7 +62,7 @@ První věc, kterou budeme muset udělat nastaven našem projektu v sadě Visual
 1. Otevřít Visual Studio. Potom vyberte **soubor > Nový > projekt**.
 2. Na panelu vlevo vyhledejte a vyberte **Visual C#** . Vyberte **aplikace WPF (.NET Framework)** panelu System center.
    ![Vytvoření aplikace WPF v sadě Visual Studio](media/create-wpf-project-visual-studio.png)
-3. Pojmenujte svůj projekt, nastavte na verzi rozhraní framework **rozhraní .NET Framework 4.5.2 nebo novější**, pak klikněte na tlačítko **OK**.
+3. Pojmenujte svůj projekt `MSTranslatorTextDemo`, nastavte verzi rozhraní framework **rozhraní .NET Framework 4.5.2 nebo novější**, pak klikněte na tlačítko **OK**.
 4. Váš projekt se vytvořil. Všimněte si, že jsou otevřené dvě karty: `MainWindow.xaml` a `MainWindow.xaml.cs`. V celém tomto kurzu přidáme kód pro tyto dva soubory. První pro uživatelské rozhraní aplikace; Ten Translator Text API a kontrolu pravopisu Bingu naše volání.
    ![Projděte si prostředí](media/blank-wpf-project.png)
 
@@ -82,6 +82,7 @@ Přidejme sestavení do projektu k serializaci a deserializaci objektů a ke spr
    * [System.Runtime.Serialization](https://docs.microsoft.com/dotnet/api/system.runtime.serialization)
    * [System.Web](https://docs.microsoft.com/dotnet/api/system.web)
    * [System.Web.Extensions](https://docs.microsoft.com/dotnet/api/system.web)
+   * [System.Windows](https://docs.microsoft.com/dotnet/api/system.windows)
 3. Po přidání těchto odkazů do vašeho projektu, můžete kliknout na **OK** zavřete **správce odkazů**.
 
 > [!NOTE]
@@ -197,7 +198,7 @@ Všechny naše projektu, je zapouzdřena v `MainWindow : Window` třídy. Začn�
        // authentication options, see: https://docs.microsoft.com/azure/cognitive-services/authentication.
        const string COGNITIVE_SERVICES_KEY = "YOUR_COG_SERVICES_KEY";
        // Endpoints for Translator Text and Bing Spell Check
-       public static readonly string TEXT_TRANSLATION_API_ENDPOINT = "https://api.cognitive.microsofttranslator.com/{0}?api- version=3.0";
+       public static readonly string TEXT_TRANSLATION_API_ENDPOINT = "https://api.cognitive.microsofttranslator.com/{0}?api-version=3.0";
        const string BING_SPELL_CHECK_API_ENDPOINT = "https://westus.api.cognitive.microsoft.com/bing/v7.0/spellcheck/";
        // An array of language codes
        private string[] languageCodes;
@@ -211,7 +212,7 @@ Všechny naše projektu, je zapouzdřena v `MainWindow : Window` třídy. Začn�
        {
            Exception e = (Exception)args.ExceptionObject;
            MessageBox.Show("Caught " + e.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-           System.Windows.app.Current.Shutdown();
+           System.Windows.Application.Current.Shutdown();
        }
        // MainWindow constructor
        public MainWindow()
@@ -224,7 +225,7 @@ Všechny naše projektu, je zapouzdřena v `MainWindow : Window` třídy. Začn�
                MessageBox.Show("One or more invalid API subscription keys.\n\n" +
                    "Put your keys in the *_API_SUBSCRIPTION_KEY variables in MainWindow.xaml.cs.",
                    "Invalid Subscription Key(s)", MessageBoxButton.OK, MessageBoxImage.Error);
-               System.Windows.app.Current.Shutdown();
+               System.Windows.Application.Current.Shutdown();
            }
            else
            {

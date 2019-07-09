@@ -9,12 +9,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 02/26/2019
 ms.author: aahi
-ms.openlocfilehash: d4269a99a8e535692e4897630a7edd9b27347d41
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: f98f16e9996d90b0380f05885e4c2d74e1413f23
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67304039"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657666"
 ---
 # <a name="example-how-to-detect-sentiment-with-text-analytics"></a>Příklad: Rozpoznávání mínění s využitím Analýzy textu
 
@@ -103,7 +103,7 @@ Výstup se vrátí okamžitě. Výsledky můžete streamovat do aplikace, která
 
 Následující příklad ukazuje odpověď pro kolekci dokumentů v tomto článku.
 
-```
+```json
 {
     "documents": [
         {
@@ -130,6 +130,133 @@ Následující příklad ukazuje odpověď pro kolekci dokumentů v tomto člán
     "errors": []
 }
 ```
+
+## <a name="sentiment-analysis-v3-public-preview"></a>Veřejná verze preview V3 analýzy mínění
+
+[Příští verzi analýzu subjektivního hodnocení](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-preview/operations/56f30ceeeda5650db055a3c9) je teď dostupná ve veřejné verzi Preview, poskytuje významná vylepšení v přesnost a podrobné informace o kategorizaci textu rozhraní API a vyhodnocování. 
+
+> [!NOTE]
+> * Formát požadavku v3 analýzy subjektivního hodnocení a [limity dat](../overview.md#data-limits) jsou stejné jako předchozí verze.
+> * V tuto chvíli analýzu subjektivního hodnocení V3: 
+>    * Aktuálně podporuje pouze angličtinu.  
+>    * Je k dispozici v následujících oblastech: `Central US`, `Central Canada`, ` East Asia` 
+
+|Funkce |Popis  |
+|---------|---------|
+|Pro zpřesnění     | Výrazné zlepšení zjišťování kladné, neutrální, záporná a smíšené mínění v textu dokumenty porovnání s předchozími verzemi.           |
+|Dokument a skóre mínění na úrovni vět     | Rozpoznávání mínění dokument a jeho jednotlivé věty. Pokud dokument obsahuje více věty, jednotlivé věty je také přiřazený skóre mínění.         |
+|Kategorie mínění a skóre     | Rozhraní API nyní vrací kategorie mínění (`positive`, `negative`, `neutral` a `mixed`) pro text, kromě skóre mínění.        |
+| Vylepšení výstupu | Analýza subjektivního hodnocení nyní vrací informace pro celý textový dokument a jeho jednotlivé věty. |
+
+### <a name="sentiment-labeling"></a>Označování mínění
+
+Analýza subjektivního hodnocení V3 se můžete vrátit skóre a popisky (`positive`, `negative`, a `neutral`) na úrovni věty a dokumentu. Na úrovni dokumentu `mixed` mínění popisek (ne skóre) lze také vrátit. Mínění dokumentu je určen na základě agregace skóre jeho věty.
+
+| Věty mínění                                                        | Vrátí popisek dokumentu |
+|---------------------------------------------------------------------------|----------------|
+| Alespoň jednu pozitivní větu a zbytek věty je neutrální. | `positive`     |
+| Alespoň jednu negativní větu a zbytek věty je neutrální.  | `negative`     |
+| Alespoň jednu negativní větu a alespoň jednu pozitivní větu.         | `mixed`        |
+| Všechny věty je neutrální.                                                 | `neutral`      |
+
+### <a name="sentiment-analysis-v3-example-request"></a>Příklad žádosti V3 analýzy mínění
+
+Následující kód JSON je příklad požadavku na novou verzi analýzu subjektivního hodnocení. Všimněte si, že žádost o formátování je stejný jako předchozí verze:
+
+```json
+{
+  "documents": [
+    {
+      "language": "en",
+      "id": "1",
+      "text": "Hello world. This is some input text that I love."
+    },
+    {
+      "language": "en",
+      "id": "2",
+      "text": "It's incredibly sunny outside! I'm so happy."
+    }
+  ]
+}
+```
+
+### <a name="sentiment-analysis-v3-example-response"></a>Analýza subjektivního hodnocení V3 příklad odpovědi
+
+Formát požadavku je stejný jako předchozí verze, formát odpovědi se změnila. Následující kód JSON je příklad odpovědi z novou verzi rozhraní API:
+
+```json
+{
+    "documents": [
+        {
+            "id": "1",
+            "sentiment": "positive",
+            "documentScores": {
+                "positive": 0.98570585250854492,
+                "neutral": 0.0001625834556762,
+                "negative": 0.0141316400840878
+            },
+            "sentences": [
+                {
+                    "sentiment": "neutral",
+                    "sentenceScores": {
+                        "positive": 0.0785155147314072,
+                        "neutral": 0.89702343940734863,
+                        "negative": 0.0244610067456961
+                    },
+                    "offset": 0,
+                    "length": 12
+                },
+                {
+                    "sentiment": "positive",
+                    "sentenceScores": {
+                        "positive": 0.98570585250854492,
+                        "neutral": 0.0001625834556762,
+                        "negative": 0.0141316400840878
+                    },
+                    "offset": 13,
+                    "length": 36
+                }
+            ]
+        },
+        {
+            "id": "2",
+            "sentiment": "positive",
+            "documentScores": {
+                "positive": 0.89198976755142212,
+                "neutral": 0.103382371366024,
+                "negative": 0.0046278294175863
+            },
+            "sentences": [
+                {
+                    "sentiment": "positive",
+                    "sentenceScores": {
+                        "positive": 0.78401315212249756,
+                        "neutral": 0.2067587077617645,
+                        "negative": 0.0092281140387058
+                    },
+                    "offset": 0,
+                    "length": 30
+                },
+                {
+                    "sentiment": "positive",
+                    "sentenceScores": {
+                        "positive": 0.99996638298034668,
+                        "neutral": 0.0000060341349126,
+                        "negative": 0.0000275444017461
+                    },
+                    "offset": 31,
+                    "length": 13
+                }
+            ]
+        }
+    ],
+    "errors": []
+}
+```
+
+### <a name="example-c-code"></a>Příklad C# kódu
+
+Příklad můžete nalézt C# aplikaci, která volá tuto verzi analýzu subjektivního hodnocení na [Githubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/dotnet/Language/SentimentV3.cs).
 
 ## <a name="summary"></a>Souhrn
 

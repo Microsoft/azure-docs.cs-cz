@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: c3be09c998399cdca886f207bf5fc621bf51d8dd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d44391624e29d2bdd182bb07452e0e8def2d1407
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67099605"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67656694"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itrp"></a>Kurz: Integrace Azure Active Directory s ITRP
 
@@ -153,9 +153,9 @@ Ke konfiguraci Azure AD jednotné přihlašování s ITRP, proveďte tyto kroky:
 
     1. Vyberte **povolené**.
 
-    1. V **vzdálené odhlašovací adresa URL** pole, vložte **odhlašovací adresa URL** hodnotu, kterou jste zkopírovali z portálu Azure portal.
+    1. V **vzdálené odhlašovací adresa URL** pole, vložte **odhlašovací adresa URL** hodnotu, kterou jste zkopírovali z portálu Azure portal.
 
-    1. V **adresu URL jednotného přihlašování SAML** pole, vložte **přihlašovací adresa URL** hodnotu, kterou jste zkopírovali z portálu Azure portal.
+    1. V **adresu URL jednotného přihlašování SAML** pole, vložte **přihlašovací adresa URL** hodnotu, kterou jste zkopírovali z portálu Azure portal.
 
     1. V **otisku certifikátu** pole, vložte **kryptografický otisk** hodnota certifikátu, který jste zkopírovali z portálu Azure portal.
 

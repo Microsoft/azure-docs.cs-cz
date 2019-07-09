@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/22/2019
 ms.author: juliako
-ms.openlocfilehash: 46a1add812d5721e36d8af030195c42542dc360c
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 5b359b81de694c47151c95254b80f847db828aed
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273240"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67653931"
 ---
 # <a name="tutorial-upload-encode-and-stream-videos"></a>Kurz: Nahrávání, kódování a streamování videí
 
@@ -26,7 +26,7 @@ ms.locfileid: "67273240"
 
 Azure Media Services umožňuje kódování souborů médií do formátů, které můžete přehrát na širokou škálu prohlížečů a zařízení. Například můžete chtít svůj obsah streamovat ve formátu Apple HLS nebo MPEG DASH. Před streamováním je vhodné soubor digitálního média ve vysoké kvalitě zakódovat. Pokyny ke kódování najdete v tématu [Principy kódování](encoding-concept.md). V tomto kurzu se nahraje místní soubor videa a nahraný soubor se zakóduje. Můžete také zakódovat obsah, který zpřístupníte prostřednictvím adresy URL protokolu HTTPS. Další informace najdete v článku o [vytvoření vstupu úlohy z adresy URL protokolu HTTP(S)](job-input-from-http-how-to.md).
 
-![Přehrát video](./media/stream-files-tutorial-with-api/final-video.png)
+![Přehrávání videa](./media/stream-files-tutorial-with-api/final-video.png)
 
 V tomto kurzu získáte informace o následujících postupech:    
 
@@ -86,7 +86,7 @@ Ve službě Media Services v3 slouží k nahrání souborů rozhraní API služb
 Uvedená funkce provede následující akce:
 
 * Vytvoří **Asset** 
-* Získá zapisovatelný [adresy URL SAS](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) do assetu [kontejneru ve službě storage](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet?tabs=windows#upload-blobs-to-the-container)
+* Získá zapisovatelný [adresy URL SAS](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) do assetu [kontejneru ve službě storage](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet#upload-blobs-to-a-container)
 * Přes adresu SAS odešle soubor do kontejneru v úložišti.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateInputAsset)]

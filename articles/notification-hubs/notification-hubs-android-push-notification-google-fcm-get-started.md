@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/30/2019
 ms.author: jowargo
-ms.openlocfilehash: c21b1e38077575fc49221150a61693a23aa408a3
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: f2efa9b7e1e534f93e4ea01ba52740c8c5ac7b02
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509102"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67653848"
 ---
 # <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-firebase-cloud-messaging"></a>Kurz: Odesílání nabízených oznámení do zařízení s Androidem pomocí Azure Notification Hubs a služby Google Firebase Cloud Messaging
 
@@ -88,7 +88,26 @@ Vaše centrum je nyní nakonfigurováno pro práci se službou Firebase Cloud Me
 
 ### <a name="add-google-play-services-to-the-project"></a>Přidejte do projektu služby Google Play
 
-[!INCLUDE [Add Play Services](../../includes/notification-hubs-android-studio-add-google-play-services.md)]
+1. V nástroji Android Studio vyberte **nástroje** v nabídce a potom vyberte **správce sady SDK**. 
+2. Vyberte cílovou verzi sady SDK pro Android, který se používá v projektu. Potom vyberte **zobrazit podrobnosti balíčku**. 
+
+    ![Správce sady Android SDK – vyberte cílovou verzi](./media/notification-hubs-android-studio-add-google-play-services/notification-hubs-android-studio-sdk-manager.png)
+3. Vyberte **rozhraní Google API**, pokud ještě není nainstalovaná.
+
+    ![Správce sady Android SDK – vybrané rozhraní API Google](./media/notification-hubs-android-studio-add-google-play-services/googole-apis-selected.png)
+4. Přepněte **SDK Tools** kartu. Pokud jste ještě nenainstalovali služby Google Play, vyberte **služby Google Play** jak je znázorněno na následujícím obrázku. Potom vyberte **použít** k instalaci. Poznamenejte si cestu k sadě SDK, abyste ji mohli použít později.
+
+    ![Správce sady Android SDK - služby Google Play vybrané](./media/notification-hubs-android-studio-add-google-play-services/google-play-services-selected.png)
+3. Pokud se zobrazí **Potvrdit změnu** dialogu **OK**. Součást instalační program nainstaluje požadované součásti. Vyberte **Dokončit** po instalaci komponenty.
+4. Vyberte **OK** zavřete **nastavení pro nové projekty** dialogové okno.  
+5. Vyberte **synchronizovat nyní** ikonu na panelu nástrojů.
+1. Otevřete soubor AndroidManifest.xml a přidejte následující značky, aby *aplikace* značky.
+
+    ```xml
+    <meta-data android:name="com.google.android.gms.version"
+         android:value="@integer/google_play_services_version" />
+    ```
+
 
 ### <a name="add-azure-notification-hubs-libraries"></a>Přidání knihoven Azure Notification Hubs
 
@@ -354,7 +373,6 @@ Vaše centrum je nyní nakonfigurováno pro práci se službou Firebase Cloud Me
 
         mainActivity = this;
         registerWithNotificationHubs();
-        MyHandler.createChannelAndHandleNotifications(getApplicationContext());
     }
     ```
 
@@ -526,7 +544,7 @@ Kromě toho se ujistěte, že jste přidali účet Google do svého spuštěnéh
 V tomto kurzu použijete k vysílání oznámení pro všechna zařízení s Androidem, které jste zaregistrovali ve službě Firebase Cloud Messaging. Pokud se chcete naučit posílat nabízená oznámení jenom určitým zařízením, pokračujte následujícím kurzem:
 
 > [!div class="nextstepaction"]
->[Kurz: Nabízená oznámení odesílaná konkrétním zařízením s Androidem](notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md)
+>[Kurz: Nabízená oznámení odesílaná konkrétním zařízením s Androidem](push-notifications-android-specific-devices-firebase-cloud-messaging.md)
 
 <!-- Images. -->
 

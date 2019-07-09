@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: dbef7c2cb8de5a1b4bbb3073f694b8f77c9f441b
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: cf2bd694e126acb61ea31e71ff3fd9d15a6db9ef
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65231300"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67656570"
 ---
 # <a name="tutorial-configure-role-based-access-control-rbac-roles-in-azure-kubernetes-service-aks-using-ansible"></a>Kurz: Konfigurace role řízení přístupu na základě role ve službě Azure Kubernetes Service (AKS) pomocí Ansible
 
@@ -39,7 +39,7 @@ AKS může být nakonfigurován pro použití [Azure Active Directory (AD)](/azu
 
 ## <a name="configure-azure-ad-for-aks-authentication"></a>Konfigurace služby Azure AD pro ověřování AKS
 
-Při konfiguraci Azure AD pro ověřování AKS, jsou nakonfigurovány dvě aplikace Azure AD. Tuto operaci musíte dokončit microsoftem nebo správcem tenanta Azure. Další informace najdete v tématu [integrace Azure Active Directory s AKS](/azure/aks/aad-integration#create-server-application). 
+Při konfiguraci Azure AD pro ověřování AKS, jsou nakonfigurovány dvě aplikace Azure AD. Tuto operaci musíte dokončit microsoftem nebo správcem tenanta Azure. Další informace najdete v tématu [integrace Azure Active Directory s AKS](/azure/aks/aad-integration#create-the-server-application). 
 
 Správce tenanta Azure získáte následující hodnoty:
 

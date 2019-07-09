@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 06/26/2019
 ms.author: aahi
-ms.openlocfilehash: 26f7f3ab60347d9ec5f2a144410ad3de436f5b5c
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: acafc2c42c2946632496b646d001c58d6b48c2a6
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67454892"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657714"
 ---
 # <a name="create-a-cognitive-services-account-using-the-azure-command-line-interfacecli"></a>Vytvoření účtu služeb Cognitive Services pomocí Interface(CLI) příkazového řádku Azure
 
@@ -43,7 +43,7 @@ Vaše předplatné služeb Cognitive Services jsou reprezentovány prostředků 
 
 ### <a name="choose-your-resource-group-location"></a>Zvolte umístění skupiny prostředků
 
-Vytvoření prostředku, budete potřebovat jeden z umístění Azure, které je k dispozici pro vaše předplatné. Můžete načíst seznam dostupných umístění s [az účet list-locations](/cli/azure/account#az_account_list) příkazu. Většina služeb Cognitive Services je možný z několika míst. Vyberte si ten, který je nejblíže k vám nebo zjistit, která umístění jsou dostupné pro službu.
+Vytvoření prostředku, budete potřebovat jeden z umístění Azure, které je k dispozici pro vaše předplatné. Můžete načíst seznam dostupných umístění s [az účet list-locations](/cli/azure/account#az-account-list-locations) příkazu. Většina služeb Cognitive Services je možný z několika míst. Vyberte si ten, který je nejblíže k vám nebo zjistit, která umístění jsou dostupné pro službu.
 
 > [!IMPORTANT]
 > * Pamatovat si vaše oblast Azure, protože ji budete potřebovat při volání služeb Azure Cognitive Services.
@@ -55,7 +55,7 @@ az account list-locations \
     --out table
 ```
 
-Až budete mít vaše umístění azure, vytvořte novou skupinu prostředků pomocí Azure CLI [vytvořit skupiny az](/cli/azure/group#az_group_create) příkazu.
+Až budete mít vaše umístění azure, vytvořte novou skupinu prostředků pomocí Azure CLI [vytvořit skupiny az](/cli/azure/group#az-group-create) příkazu.
 
 V následujícím příkladu nahraďte umístění azure `westus2` s jedním z umístění Azure, které je k dispozici pro vaše předplatné.
 

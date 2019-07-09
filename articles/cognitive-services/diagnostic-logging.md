@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 06/14/2019
 ms.author: erhopf
-ms.openlocfilehash: e1a6a44d7ff9d5786388fc47245ef5c79cb9be82
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 3be912f053bf206999546678e1e407548af181bf
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67155728"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657684"
 ---
 # <a name="enable-diagnostic-logging-for-azure-cognitive-services"></a>Povolit protokolování diagnostiky pro Azure Cognitive Services
 
@@ -28,14 +28,14 @@ Pokud chcete povolit protokolování diagnostiky, budete potřebovat někde ukl�
 * [Log Analytics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics) -flexibilní protokol vyhledávání a analýzy nástroj, který umožňuje analýzy nezpracovaných protokolů generovaných prostředku Azure.
 
 > [!NOTE]
-> Další možnosti konfigurace jsou k dispozici. Další informace najdete v tématu [shromažďovat a zpracovávat data protokolu z vašich prostředků Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs).
+> Další možnosti konfigurace jsou k dispozici. Další informace najdete v tématu [shromažďovat a zpracovávat data protokolu z vašich prostředků Azure](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview).
 
 ## <a name="enable-diagnostic-log-collection"></a>Povolit shromažďování diagnostických protokolů  
 
 Začněme tím, že povolíte diagnostiku protokolování pomocí webu Azure portal.
 
 > [!NOTE]
-> Pokud chcete povolit tuto funkci pomocí Powershellu nebo rozhraní příkazového řádku Azure CLI, postupujte podle pokynů v [shromažďovat a zpracovávat data protokolu z vašich prostředků Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs#how-to-enable-collection-of-diagnostic-logs).
+> Pokud chcete povolit tuto funkci pomocí Powershellu nebo rozhraní příkazového řádku Azure CLI, postupujte podle pokynů v [shromažďovat a zpracovávat data protokolu z vašich prostředků Azure](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview#diagnostic-settings).
 
 1. Přejděte na web Azure Portal. Poté vyhledejte a vyberte prostředek služeb Cognitive Services. Například předplatné pro vyhledávání na webu Bingu.   
 2. Potom z nabídky levém navigačním panelu vyhledejte **monitorování** a vyberte **nastavení diagnostiky**. Tato obrazovka obsahuje všechny dříve vytvořené nastavení diagnostiky pro tento prostředek.

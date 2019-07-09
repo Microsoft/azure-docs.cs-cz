@@ -74,6 +74,9 @@
           href: expressroute-howto-circuit-arm.md
         - name: Azure CLI
           href: howto-circuit-cli.md
+        - name: Šablona Azure Resource Manageru
+          displayName: 'ARM,resource manager template'
+          href: expressroute-howto-circuit-resource-manager-template.md
     - name: Vytvoření a změny konfigurace partnerského vztahu
       items:
         - name: portál Azure
@@ -191,6 +194,7 @@
     - name: REST (Classic)
       href: 'https://msdn.microsoft.com/library/azure/dn606310'
     - name: Šablona Resource Manageru
+      displayName: 'ARM,resource manager template'
       href: /azure/templates/microsoft.network/expressroutecircuits
 - name: Zdroje a prostředky
   items:

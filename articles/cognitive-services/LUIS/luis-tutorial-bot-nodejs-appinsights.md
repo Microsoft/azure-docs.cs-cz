@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 06/16/2019
 ms.author: diberry
-ms.openlocfilehash: 5459fb5d8304a35b3f009354c446514a2831c513
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: cfed5477df75350f24e77786117e85b9c728c49a
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67155283"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657758"
 ---
 # <a name="add-luis-results-to-application-insights-from-a-bot-in-nodejs"></a>Přidání LUIS výsledky do Application Insights z robota v Node.js
 V tomto kurzu přidá robotů a Language Understanding informace, které [Application Insights](https://azure.microsoft.com/services/application-insights/) úložiště dat telemetrie. Až budete mít data, můžete ji dotazovat s Kusto jazyka nebo Power BI k analýze, agregovat a vytváření sestav o záměry a entity utterance v reálném čase. Tato analýza pomůže zároveň pomáhá určit, pokud by měl přidat nebo upravit záměry a entity aplikace LUIS.
@@ -205,7 +205,7 @@ Otevřete službu Application Insights zobrazíte položky LUIS. Může trvat n�
     ![Zkontrolujte LUIS vlastní vlastnosti uložené ve službě Application Insights](./media/luis-tutorial-appinsights/application-insights-luis-trace-custom-properties-nodejs.png)
 
 ## <a name="query-application-insights-for-intent-score-and-utterance"></a>Dotaz Application Insights pro záměr, skóre a utterance
-Služba Application Insights poskytuje výkonné nástroje pro dotazování dat pomocí služby [Kusto](https://docs.microsoft.com/azure/application-insights/app-insights-analytics#query-data-in-analytics) jazyka, stejně jako export umožňuje [Power BI](https://powerbi.microsoft.com). 
+Služba Application Insights poskytuje výkonné nástroje pro dotazování dat pomocí služby [Kusto](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview#what-language-do-log-queries-use) jazyka, stejně jako export umožňuje [Power BI](https://powerbi.microsoft.com). 
 
 1. Vyberte **protokolu (Analytics)** . Otevře se okno nové okno dotazu v horní části a okno tabulky dat pod ním. Pokud jste použili databází před, je toto uspořádání zkušenosti. Dotaz představuje váš předchozí filtrovaná data. **CustomDimensions** sloupec má robotů a LUIS informace.
 1. Vyžádá si hlavní záměr, skóre a utterance, přidejte následující přímo nad poslední řádek ( `|top...` řádku) v okně dotazu:

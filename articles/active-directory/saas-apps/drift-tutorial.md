@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88940b40eb309a5fb6ff73c04a47813ec3a47669
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4728ad4fcd44c754a62ec19037562e63d92ec304
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67103862"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67656609"
 ---
 # <a name="tutorial-integrate-drift-with-azure-active-directory"></a>Kurz: Integrace s Azure Active Directory odchylek
 
@@ -88,13 +88,13 @@ Použijte následující postup povolení jednotného přihlašování Azure AD 
 
     d. V **přihlašovací adresa URL** textové pole, zadejte adresu URL: `https://start.drift.com`
 
-6. Vaše aplikace odchylek očekává, že kontrolní výrazy SAML v určitém formátu, který je potřeba přidat vlastní atribut mapování konfigurace atributy tokenu SAML. Na následujícím snímku obrazovky se zobrazí v seznamu atributů výchozí. Klikněte na tlačítko **upravit** ikonu otevřete dialogové okno atributy uživatele.
+6. Vaše aplikace odchylek očekává, že kontrolní výrazy SAML v určitém formátu, který je potřeba přidat vlastní atribut mapování konfigurace atributy tokenu SAML. Na následujícím snímku obrazovky se zobrazí v seznamu atributů výchozí. Klikněte na tlačítko **upravit** ikonu otevřete dialogové okno atributy uživatele.
 
     ![image](common/edit-attribute.png)
 
 7. Kromě toho novější verze odchylek aplikace očekává několik dalších atributů musí být předány zpět odpověď SAML. V části deklarace identity uživatelů v dialogovém okně atributy uživatele, proveďte následující kroky přidat atribut tokenu SAML, jak je znázorněno následující tabulka: 
 
-    | Name | Zdrojový atribut|
+    | Název | Zdrojový atribut|
     | ---------------| --------------- |    
     | Název | user.displayname |
 

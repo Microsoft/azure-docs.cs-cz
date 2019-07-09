@@ -1,17 +1,17 @@
 ---
 title: Informace o správě konzistence ve službě Azure Cosmos DB
 description: Informace o správě konzistence ve službě Azure Cosmos DB
-author: rimman
+author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 05/23/2019
-ms.author: rimman
-ms.openlocfilehash: 1730463829efadb8fc26d90c48e8b770b6e5a3a4
-ms.sourcegitcommit: dda9fc615db84e6849963b20e1dce74c9fe51821
+ms.date: 07/08/2019
+ms.author: mjbrown
+ms.openlocfilehash: 9b26948709b6101fab1143c9d49c82cc0205abca
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/08/2019
-ms.locfileid: "67622427"
+ms.locfileid: "67657545"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Správa úrovní konzistence ve službě Azure Cosmos DB
 
@@ -27,10 +27,10 @@ Tento článek vysvětluje, jak spravovat úrovně konzistence ve službě Azure
 
 ```bash
 # create with a default consistency
-az cosmosdb create --name <name of Cosmos DB Account> --resource-group <resource group name> --default-consistency-level Strong
+az cosmosdb create --name <name of Cosmos DB Account> --resource-group <resource group name> --default-consistency-level Session
 
 # update an existing account's default consistency
-az cosmosdb update --name <name of Cosmos DB Account> --resource-group <resource group name> --default-consistency-level BoundedStaleness
+az cosmosdb update --name <name of Cosmos DB Account> --resource-group <resource group name> --default-consistency-level Eventual
 ```
 
 ### <a name="powershell"></a>PowerShell
@@ -76,7 +76,7 @@ Klienti můžou přepsat výchozí úroveň konzistence nastavenou službou. Úr
 documentClient = new DocumentClient(new Uri(endpoint), authKey, connectionPolicy, ConsistencyLevel.Eventual);
 
 // Override consistency at the request level via request options
-RequestOptions requestOptions = new RequestOptions { ConsistencyLevel = ConsistencyLevel.Strong };
+RequestOptions requestOptions = new RequestOptions { ConsistencyLevel = ConsistencyLevel.Eventual };
 
 var response = await client.CreateDocumentAsync(collectionUri, document, requestOptions);
 ```
@@ -100,7 +100,7 @@ AsyncDocumentClient client =
 ```java
 // Override consistency at the client level
 ConnectionPolicy connectionPolicy = new ConnectionPolicy();
-DocumentClient client = new DocumentClient(accountEndpoint, accountKey, connectionPolicy, ConsistencyLevel.Strong);
+DocumentClient client = new DocumentClient(accountEndpoint, accountKey, connectionPolicy, ConsistencyLevel.Eventual);
 ```
 
 ### <a id="override-default-consistency-javascript"></a>Node.js/JavaScript/TypeScript SDK
@@ -109,7 +109,7 @@ DocumentClient client = new DocumentClient(accountEndpoint, accountKey, connecti
 // Override consistency at the client level
 const client = new CosmosClient({
   /* other config... */
-  consistencyLevel: ConsistencyLevel.Strong
+  consistencyLevel: ConsistencyLevel.Eventual
 });
 
 // Override consistency at the request level via request options
@@ -121,7 +121,7 @@ const { body } = await item.read({ consistencyLevel: ConsistencyLevel.Eventual }
 ```python
 # Override consistency at the client level
 connection_policy = documents.ConnectionPolicy()
-client = cosmos_client.CosmosClient(self.account_endpoint, {'masterKey': self.account_key}, connection_policy, documents.ConsistencyLevel.Strong)
+client = cosmos_client.CosmosClient(self.account_endpoint, {'masterKey': self.account_key}, connection_policy, documents.ConsistencyLevel.Eventual)
 ```
 
 ## <a name="utilize-session-tokens"></a>Využití tokenů relace

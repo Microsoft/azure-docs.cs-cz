@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 20e47b6d3243bb0cccbc42ab0ab904b72922e98b
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 428dba9e8ff5ec072d5172fee357fd5319d04ad8
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604783"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657733"
 ---
 # <a name="what-is-speech-translation"></a>Co je pro překlad řeči?
 
@@ -55,10 +55,7 @@ Ukázkový kód pro zpracování řeči SDK je k dispozici na Githubu. Tyto uká
 
 ## <a name="migration-guides"></a>Průvodce migrací
 
-> [!WARNING]
-> Translator Speech budou vyřazeny z provozu 15. října 2019.
-
-Pokud vaše aplikace, nástroje nebo produkty používáte Translator Speech, jsme vytvořili, kteří vám pomůžeme s migrací hlasové služby.
+Pokud používáte aplikace, nástroje nebo produkty [rozhraní Translator Speech API](https://docs.microsoft.com/azure/cognitive-services/translator-speech/overview), jsme vytvořili, kteří vám pomůžeme s migrací hlasové služby.
 
 * [Migrace z Translator Speech API do hlasové služby](how-to-migrate-from-translator-speech-api.md)
 

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 06/16/2019
 ms.author: diberry
-ms.openlocfilehash: fa7147dd1b5f22ead17a60042c1c35c4b770cd18
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 720352403fd5f5937669f9838f3974cb0d3f8797
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67154905"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657783"
 ---
 # <a name="add-luis-results-to-application-insights-from-a-bot-in-c"></a>Přidání LUIS výsledky do Application Insights z robota vC#
 
@@ -173,7 +173,7 @@ Otevřete službu Application Insights zobrazíte položky LUIS. Může trvat n�
     ![Zkontrolujte LUIS vlastní vlastnosti uložené ve službě Application Insights](./media/luis-tutorial-appinsights/application-insights-luis-trace-custom-properties-csharp.png)
 
 ## <a name="query-application-insights-for-intent-score-and-utterance"></a>Dotaz Application Insights pro záměr, skóre a utterance
-Služba Application Insights poskytuje výkonné nástroje pro dotazování dat pomocí služby [Kusto](https://docs.microsoft.com/azure/application-insights/app-insights-analytics#query-data-in-analytics) jazyka, stejně jako export umožňuje [Power BI](https://powerbi.microsoft.com). 
+Služba Application Insights poskytuje výkonné nástroje pro dotazování dat pomocí služby [Kusto](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview#what-language-do-log-queries-use) jazyka, stejně jako export umožňuje [Power BI](https://powerbi.microsoft.com). 
 
 1. Vyberte **protokolu (Analytics)** . Otevře se okno nové okno dotazu v horní části a okno tabulky dat pod ním. Pokud jste použili databází před, je toto uspořádání zkušenosti. Dotaz představuje váš předchozí filtrovaná data. **CustomDimensions** sloupec má robotů a LUIS informace.
 1. Vyžádá si hlavní záměr, skóre a utterance, přidejte následující přímo nad poslední řádek ( `|top...` řádku) v okně dotazu:

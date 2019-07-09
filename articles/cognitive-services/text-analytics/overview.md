@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: overview
 ms.date: 04/03/2019
 ms.author: aahi
-ms.openlocfilehash: a4f1f75c85c99610ee75eb9fda51114b52bbfac3
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 89a1fa396ff8bc5b954e91e7b08e6d731a81559a
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67304024"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657650"
 ---
 # <a name="what-is-text-analytics-api"></a>Co je API pro analýzu textu?
 
@@ -28,13 +28,13 @@ Rozhraní API je součástí [Azure Cognitive Services](https://docs.microsoft.c
 Analýza textu může znamenat různé věci, ale ve službě Cognitive Services Text Analytics API poskytuje čtyři druhy analýzy, jak je popsáno níže.
 
 ## <a name="sentiment-analysis"></a>Analýza mínění
-Použití [analýzu subjektivního hodnocení](how-tos/text-analytics-how-to-sentiment-analysis.md) a zjistěte, co si vaši zákazníci myslí o vaší značce nebo téma díky analýze nezpracovaný text pro příčiny o pozitivní nebo negativní zabarvení. Toto rozhraní API vrátí pro každý dokument skóre mínění mezi 0 a 1, přičemž 1 je mez pro nejvíce kladné hodnocení.<br /> Modely analýzy jsou předem vytrénované pomocí rozsáhlého textu a technologiemi přirozeného jazyka od Microsoftu. Pro [vybrané jazyky](text-analytics-supported-languages.md) může rozhraní API analyzovat a stanovit skóre jakéhokoliv nezpracovaného textu, který zadáte, přičemž vrátí výsledky přímo do volající aplikace. Můžete použít [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c9) rozhraní API nebo [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#install-the-nuget-sdk-package) SDK.
+Použití [analýzu subjektivního hodnocení](how-tos/text-analytics-how-to-sentiment-analysis.md) a zjistěte, co si vaši zákazníci myslí o vaší značce nebo téma díky analýze nezpracovaný text pro příčiny o pozitivní nebo negativní zabarvení. Toto rozhraní API vrátí pro každý dokument skóre mínění mezi 0 a 1, přičemž 1 je mez pro nejvíce kladné hodnocení.<br /> Modely analýzy jsou předem vytrénované pomocí rozsáhlého textu a technologiemi přirozeného jazyka od Microsoftu. Pro [vybrané jazyky](text-analytics-supported-languages.md) může rozhraní API analyzovat a stanovit skóre jakéhokoliv nezpracovaného textu, který zadáte, přičemž vrátí výsledky přímo do volající aplikace. Můžete použít [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c9) rozhraní API nebo [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#create-the-visual-studio-solution-and-install-the-sdk) SDK.
 
 ## <a name="key-phrase-extraction"></a>Extrakce klíčových frází
-Automaticky [extrakce klíčových frází](how-tos/text-analytics-how-to-keyword-extraction.md) rychle identifikovat hlavní body. Například pro vstupní text „The food was delicious and there were wonderful staff“ (Jídlo bylo výborné a personál byl úžasný),vrací rozhraní API hlavní body: „food“ (jídlo) a „wonderful staff“ (úžasný personál). Můžete použít [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c6) zde rozhraní API nebo [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#install-the-nuget-sdk-package) SDK.
+Automaticky [extrakce klíčových frází](how-tos/text-analytics-how-to-keyword-extraction.md) rychle identifikovat hlavní body. Například pro vstupní text „The food was delicious and there were wonderful staff“ (Jídlo bylo výborné a personál byl úžasný),vrací rozhraní API hlavní body: „food“ (jídlo) a „wonderful staff“ (úžasný personál). Můžete použít [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c6) zde rozhraní API nebo [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#create-the-visual-studio-solution-and-install-the-sdk) SDK.
 
 ## <a name="language-detection"></a>Rozpoznávání jazyka
-Je možné [rozpoznat jazyk, který vstupní text je napsaný v](how-tos/text-analytics-how-to-language-detection.md) a tvorba sestav jeden jazyk kódu pro každý dokument podání žádosti v nejrůznějších jazycích, proměnných typu variant, dialekty a některé jazykové verze nebo místní jazyky. Kód jazyka spárovaný se skóre označuje sílu skóre. Můžete použít [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c7) rozhraní API nebo [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#install-the-nuget-sdk-package) SDK.
+Je možné [rozpoznat jazyk, který vstupní text je napsaný v](how-tos/text-analytics-how-to-language-detection.md) a tvorba sestav jeden jazyk kódu pro každý dokument podání žádosti v nejrůznějších jazycích, proměnných typu variant, dialekty a některé jazykové verze nebo místní jazyky. Kód jazyka spárovaný se skóre označuje sílu skóre. Můžete použít [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c7) rozhraní API nebo [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#create-the-visual-studio-solution-and-install-the-sdk) SDK.
 
 ## <a name="named-entity-recognition"></a>Rozpoznávání pojmenovaných entit
 [Identifikujte a kategorizaci entity](how-tos/text-analytics-how-to-entity-linking.md) text jako lidech, místech, organizace, datum a čas, množství, procenta, měny a další. Také rozpozná známé entity a propojí je s dalšími informacemi na webu. Můžete použít [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634) rozhraní API.

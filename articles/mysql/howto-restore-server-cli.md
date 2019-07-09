@@ -72,7 +72,7 @@ az mysql server restore --resource-group myresourcegroup --name mydemoserver-res
 | Nastavení | Navrhovaná hodnota | Popis  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  Skupina prostředků, které se nachází na zdrojovém serveru.  |
-| jméno | mydemoserver-restored | Název nového serveru, který se vytvoří příkazem restore. |
+| name | mydemoserver-restored | Název nového serveru, který se vytvoří příkazem restore. |
 | restore-point-in-time | 2018-03-13T13:59:00Z | Vyberte bod v čase, chcete-li obnovit. Tato datum a čas musí být v rámci doby uchovávání záloh zdrojového serveru. Použijte formát data a času ISO8601. Například můžete použít vlastní místní časové pásmo, jako například `2018-03-13T05:59:00-08:00`. Můžete také použít formát UTC Zulu například `2018-03-13T13:59:00Z`. |
 | source-server | mydemoserver | Název nebo ID zdrojového serveru, ze kterého se má provést obnovení. |
 

@@ -6,19 +6,19 @@ documentationCenter: ''
 author: rolyon
 manager: mtillman
 editor: ''
-ms.service: role-based-access-control,azure-resource-manager
+ms.service: role-based-access-control
 ms.devlang: ''
 ms.topic: tutorial
 ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 05/15/2019
 ms.author: rolyon
-ms.openlocfilehash: e99a9d2cfa38c9b2ea74f9075b18f81006b34881
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: edb20221862e6439b3bc574995f4037cbc95f8f9
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65791523"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67668883"
 ---
 # <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-resource-manager-template"></a>Kurz: Udělení přístupu uživatelů k prostředkům Azure pomocí šablony Resource Manageru a RBAC
 
@@ -40,7 +40,7 @@ Přidávat a odebírat přiřazení rolí, musíte mít:
 
 * `Microsoft.Authorization/roleAssignments/write` a `Microsoft.Authorization/roleAssignments/delete` oprávnění, jako například [správce uživatelských přístupů](built-in-roles.md#user-access-administrator) nebo [vlastníka](built-in-roles.md#owner)
 
-## <a name="grant-access"></a>Udělit přístup
+## <a name="grant-access"></a>Udělení přístupu
 
 Šablona použitá v tomto rychlém startu je z [šablony rychlý start Azure](https://azure.microsoft.com/resources/templates/101-rbac-builtinrole-resourcegroup/). Povolení Azure související šablony lze nalézt [tady](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Authorization).
 
@@ -65,7 +65,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Otevřete skupinu prostředků, vytvořili v posledním postupu. Výchozí název je název projektu s **rg** připojí.
-1. Z nabídky vlevo vyberte **Řízení přístupu (IAM)**.
+1. Z nabídky vlevo vyberte **Řízení přístupu (IAM)** .
 1. Vyberte **přiřazení rolí**. 
 1. V **název**, zadejte e-mailovou adresu, které jste zadali v posledním postupu. Zobrazí uživatele s e-mailovou adresu má **Přispěvatel virtuálních počítačů** role.
 
