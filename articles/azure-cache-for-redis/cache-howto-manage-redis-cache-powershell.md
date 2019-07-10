@@ -144,7 +144,7 @@ Následující tabulka obsahuje vlastnosti a popisy pro běžně používané pa
 ### <a name="redisconfiguration-properties"></a>Vlastnosti RedisConfiguration
 | Vlastnost | Popis | Cenové úrovně |
 | --- | --- | --- |
-| povolené zálohování RDB |Zda [trvalost dat Redis](cache-how-to-premium-persistence.md) je povoleno |Jenom úrovně Premium |
+| rdb-backup-enabled |Zda [trvalost dat Redis](cache-how-to-premium-persistence.md) je povoleno |Jenom úrovně Premium |
 | rdb-storage-connection-string |Připojovací řetězec pro účet úložiště pro [trvalost dat Redis](cache-how-to-premium-persistence.md) |Jenom úrovně Premium |
 | rdb-backup-frequency |Četnost záloh pro [trvalost dat Redis](cache-how-to-premium-persistence.md) |Jenom úrovně Premium |
 | maxmemory-reserved |Konfiguruje [paměti vyhrazená](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) pro procesy nesouvisející s mezipamětí |Standard a Premium |
@@ -155,7 +155,7 @@ Následující tabulka obsahuje vlastnosti a popisy pro běžně používané pa
 | set-max-intset-entries |Nakonfiguruje [optimalizace paměti](https://redis.io/topics/memory-optimization) pro malé datové agregační typy |Standard a Premium |
 | zset-max-ziplist-entries |Nakonfiguruje [optimalizace paměti](https://redis.io/topics/memory-optimization) pro malé datové agregační typy |Standard a Premium |
 | zset-max-ziplist-value |Nakonfiguruje [optimalizace paměti](https://redis.io/topics/memory-optimization) pro malé datové agregační typy |Standard a Premium |
-| databáze |Konfiguruje počet databází. Tuto vlastnost lze nastavit pouze při vytvoření mezipaměti. |Standard a Premium |
+| databases |Konfiguruje počet databází. Tuto vlastnost lze nastavit pouze při vytvoření mezipaměti. |Standard a Premium |
 
 ## <a name="to-create-an-azure-cache-for-redis"></a>Vytvoření Azure Cache pro Redis
 Novou mezipaměť Azure Redis instance jsou vytvořeny pomocí [New-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/new-azrediscache) rutiny.
