@@ -4,7 +4,7 @@ description: V tomto kurzu se dozvíte, jak používat cloud-init a Key Vault k 
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 8a65b7becc4ec60290670819799e9f8731d55058
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d56aa1c9b86542df3c2a7154669856686823e1dd
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67114255"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67708608"
 ---
 # <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>Kurz: Jak používat cloud-init k přizpůsobení virtuálního počítače s Linuxem v Azure při prvním spuštění počítače
 
@@ -47,11 +47,11 @@ S našimi partnery spolupracujeme na začlenění nástroje cloud-init, aby fung
 
 | Alias | Vydavatel | Nabídka | Skladová jednotka (SKU) | Version |
 |:--- |:--- |:--- |:--- |:--- |
-| UbuntuLTS |Canonical |UbuntuServer |16.04-LTS |nejnovější |
-| UbuntuLTS |Canonical |UbuntuServer |14.04.5-LTS |nejnovější |
-| CoreOS |CoreOS |CoreOS |Stable |nejnovější |
-| | OpenLogic | CentOS | 7-CI | nejnovější |
-| | RedHat | RHEL | 7-RAW-CI | nejnovější |
+| UbuntuLTS |Canonical |UbuntuServer |16.04-LTS |latest |
+| UbuntuLTS |Canonical |UbuntuServer |14.04.5-LTS |latest |
+| CoreOS |CoreOS |CoreOS |Stable |latest |
+| | OpenLogic | CentOS | 7-CI | latest |
+| | RedHat | RHEL | 7-RAW-CI | latest |
 
 
 ## <a name="create-cloud-init-config-file"></a>Vytvoření konfiguračního souboru cloud-init

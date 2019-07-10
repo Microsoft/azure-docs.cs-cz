@@ -10,12 +10,12 @@ ms.subservice: acoustics
 ms.topic: quickstart
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 691f49e9be8aabe9a3e229bfd3b35ab183f9fed9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e4b9f31425c5029cdeb991fbdcdb7ae4a5c749c9
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61432759"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704747"
 ---
 # <a name="project-acoustics-unrealwwise-quickstart"></a>Rychlý start Unreal/Wwise Akustika projektu
 V tomto rychlém startu jste budete experimentovat s projektu Akustika návrh ovládacích prvků pomocí poskytnutý ukázkový obsah pro Unreal Engine a Wwise.
@@ -50,7 +50,7 @@ Projekt Akustika Unreal plugin vyžaduje další chování být zveřejněna př
 
     ![Snímek obrazovky Průzkumníka Windows okno skript, který oprava Wwise project](media/patch-wwise-script.png)
 
-* Pokud nemáte nainstalované rozhraní DirectX SDK, budete muset zakomentovali řádek obsahující DXSDK_DIR v `AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs`
+* Pokud nemáte rozhraní DirectX SDK nainstalované, v závislosti na verzi Wwise používáte, možná budete muset okomentovat řádek, který obsahuje `DXSDK_DIR` v `AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs`:
 
     ![Snímek obrazovky zobrazující DXSDK zakomentované editoru kódu](media/directx-sdk-comment.png)
 
@@ -72,7 +72,7 @@ Pokud **uzavření** multiplikátor je větší než 1 (výchozí hodnota je 1),
 Chcete-li povolit přenos přes wall, přesuňte **přenosu (databáze)** posuvník vypnuto jeho nejnižší úroveň. 
 
 ### <a name="modify-wetness-for-a-source"></a>Upravit wetness zdroje
-Chcete-li změnit, jak rychle mění wetness vzdálenost, použijte **Percepční Warp vzdálenost**. Projekt Akustika vypočítá vlhkou úrovně v rámci místo z simulace, které hladce lišit podle vzdálenosti a poskytují Percepční vzdálenost pomůcky. Podle zvyšující se vzdáleností související vlhkou úroveň zvětšení warp vzdálenost zvýrazní tohoto efektu. Pokřivení hodnoty menší než 1 provést na základě vzdálenosti reverberation změnit složitější. Také je možné upravit tento efekt podrobně citlivější úpravou **Wetness (databáze)**.
+Chcete-li změnit, jak rychle mění wetness vzdálenost, použijte **Percepční Warp vzdálenost**. Projekt Akustika vypočítá vlhkou úrovně v rámci místo z simulace, které hladce lišit podle vzdálenosti a poskytují Percepční vzdálenost pomůcky. Podle zvyšující se vzdáleností související vlhkou úroveň zvětšení warp vzdálenost zvýrazní tohoto efektu. Pokřivení hodnoty menší než 1 provést na základě vzdálenosti reverberation změnit složitější. Také je možné upravit tento efekt podrobně citlivější úpravou **Wetness (databáze)** .
 
 Prodloužit dobu decay v celém prostoru úpravou **Decay časové měřítko**. Vezměte si situaci, kdy výsledek simulace je doba decay 1,5 s. Nastavení **Decay časové měřítko** 2 způsobí decay čas použití ke zdroji 3 s.
 

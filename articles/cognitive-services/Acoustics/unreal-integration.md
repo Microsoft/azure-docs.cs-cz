@@ -10,12 +10,12 @@ ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 02d63897cffa2ceca46b992e7d07b917dd73bc72
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 6207808efb9bee327afd2de21ffa59535acf4e55
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621553"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704792"
 ---
 # <a name="project-acoustics-unreal-and-wwise-integration"></a>Projektů Unreal Akustika a Wwise integrace
 Tento návod obsahuje kroky podrobné integrace balíčku modulu plug-in Akustika projektu do existujícího projektu her Unreal a Wwise. 
@@ -26,7 +26,7 @@ Požadavky na software:
 * [Modul plug-in Wwise pro Unreal](https://www.audiokinetic.com/library/?source=UE4&id=index.html)
   * Pokud používáte přímou integraci sady Wwise SDK namísto použití modulů plug-in Wwise Unreal, naleznete v projektu Akustika Unreal modulu plug-in a upravte volání rozhraní API Wwise.
 
-Pokud chcete pomocí projektu Akustika zvuku modul než Wwise, kontaktujte nás na [projektu Akustika fóra](https://social.msdn.microsoft.com/Forums/en-US/home?forum=projectacoustics). Projekt Akustika Unreal modul plug-in můžete použít k dotazování na data Akustika a volat rozhraní API pro modul.
+Pokud chcete pomocí zvuku modul než Wwise Akustika projektu, ujistěte se, požadavek na rozšíření na [projektu Akustika diskusní fórum](https://github.com/microsoft/ProjectAcoustics/issues). Projekt Akustika Unreal modul plug-in můžete použít k dotazování na data Akustika a volat rozhraní API pro modul.
 
 ## <a name="download-project-acoustics"></a>Stáhněte si Akustika projektu
 Pokud jste tak dosud neučinili, stáhněte si [projektu Akustika Unreal & Wwise balíček modulu plug-in](https://www.microsoft.com/download/details.aspx?id=58090)). 

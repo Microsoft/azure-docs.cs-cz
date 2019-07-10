@@ -10,16 +10,16 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 06/26/2019
 ms.author: dapine
-ms.openlocfilehash: 45a03a0912681b4fc33ef8df88fa00fd5458f720
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 288894705e1108d6dd511b60cd2bc3bcee4c6d41
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67445821"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704353"
 ---
-# <a name="deploy-and-run-container-on-azure-container-instance-aci"></a>Nasazení a spouštění kontejnerů v Azure Container Instance (ACI)
+# <a name="deploy-and-run-container-on-azure-container-instance"></a>Nasazení a spuštění kontejneru na instanci kontejneru Azure
 
-Pomocí následujících kroků škálování aplikací Azure Cognitive Services v cloudu snadno pomocí Azure [instanci kontejneru](https://docs.microsoft.com/azure/container-instances/) (ACI). Díky tomu se můžete soustředit na vytváření aplikací a nemusíte spravovat infrastrukturu.
+Pomocí následujících kroků škálování aplikací Azure Cognitive Services v cloudu snadno pomocí Azure [instanci kontejneru](https://docs.microsoft.com/azure/container-instances/). Díky tomu se můžete soustředit na vytváření aplikací a nemusíte spravovat infrastrukturu.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -35,7 +35,7 @@ Toto řešení funguje s kontejnerem všechny služby Cognitive Services. Na web
 
 Všechny proměnné v lomených závorkách `<>`, je třeba nahradit vlastními hodnotami. Toto nahrazení zahrnuje ostrých závorek.
 
-[!INCLUDE [Create a Text Analytics Containers on Azure Container Instances (ACI)](./includes/create-aci-resource.md)]
+[!INCLUDE [Create a Text Analytics Containers on Azure Container Instances](includes/create-container-instances-resource.md)]
 
 ## <a name="use-the-container-instance"></a>Použijte instanci kontejneru
 

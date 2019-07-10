@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: diberry
-ms.openlocfilehash: 99b20e36163ec8c91fba864706f883b7866de65c
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: ecb9777643296685d0dcc7cd5a177f2fe00d2580
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592900"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704637"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>Přidejte zabezpečenou zdroje dat SharePoint do znalostní báze
 
@@ -32,7 +32,7 @@ Můžete přidat všechny podporované nástroje QnA Maker [typy souborů](../Co
 1. V knihovně s webem služby SharePoint, vyberte tlačítko se třemi tečkami nabídku souboru, `...`.
 1. Zkopírujte adresu URL k souboru.
 
-    ![Získáte adresu URL souboru SharePoint tak, že vyberete tři tečky nabídky Soubor pak zkopírujete adresu URL.](../media/add-sharepoint-datasources/get-sharepoint-file-url.png)
+   ![Získáte adresu URL souboru SharePoint tak, že vyberete tři tečky nabídky Soubor pak zkopírujete adresu URL.](../media/add-sharepoint-datasources/get-sharepoint-file-url.png)
 
 1. Na portálu pro nástroj QnA Maker na **nastavení** stránce [přidejte adresu URL](edit-knowledge-base.md#add-datasource) znalostní báze. 
 
@@ -52,7 +52,7 @@ Při testování pár QnA v panelu interaktivní testu na portálu pro nástroj 
 
 ## <a name="permissions"></a>Oprávnění
 
-Udělení oprávnění se stane, když zabezpečené soubor z webu služby SharePoint je přidán do znalostní báze. V závislosti na tom, jak nastavit SharePoint nahoru a oprávnění uživatele přidání souboru, to může vyžadovat:
+Udělení oprávnění se stane, když zabezpečené soubor ze serveru SharePoint je přidán do znalostní báze. V závislosti na tom, jak nastavit SharePoint nahoru a oprávnění uživatele přidání souboru, to může vyžadovat:
 
 * žádné další kroky – osoba přidávání souboru má všechna potřebná oprávnění.
 * kroky i [znalostní báze správce](#knowledge-base-manager-add-sharepoint-data-source-in-qna-maker-portal) a [Správce služby Active Directory](#active-directory-manager-grant-file-read-access-to-qna-maker).
@@ -76,12 +76,12 @@ Správce služby Active Directory (ne správce nástroje QnA Maker) je potřeba 
 ![Správce Azure Active Directory interaktivně uděluje oprávnění](../media/add-sharepoint-datasources/aad-manager-grants-permission-interactively.png)
 
 <!--
-The Active Directory manager must grant QnA Maker access either by application name, `QnAMakerPortalSharepoint`, or by application ID, `c2c11949-e9bb-4035-bda8-59542eb907a6`. 
+The Active Directory manager must grant QnA Maker access either by application name, `QnAMakerPortalSharePoint`, or by application ID, `c2c11949-e9bb-4035-bda8-59542eb907a6`. 
 -->
 <!--
 ### Grant access from the interactive pop-up window 
 
-The Active Directory manager will get a pop-up window requesting permissions to the `QnAMakerPortalSharepoint` app. The pop-up window includes the QnA Maker Manager email address that initiated the request, an `App Info` link to learn more about **QnAMakerPortalSharepoint**, and a list of permissions requested. Select **Accept** to provide those permissions. 
+The Active Directory manager will get a pop-up window requesting permissions to the `QnAMakerPortalSharePoint` app. The pop-up window includes the QnA Maker Manager email address that initiated the request, an `App Info` link to learn more about **QnAMakerPortalSharePoint**, and a list of permissions requested. Select **Accept** to provide those permissions. 
 
 ![Azure Active Directory manager grants permission interactively](../media/add-sharepoint-datasources/aad-manager-grants-permission-interactively.png)
 -->
@@ -91,7 +91,7 @@ The Active Directory manager will get a pop-up window requesting permissions to 
 
 1. The Active Directory manager signs in to the Azure portal and opens **[App registrations list](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ApplicationsListBlade)**. 
 
-1. Search for and select the **QnAMakerPortalSharepoint** app. Change the second filter box from **My apps** to **All apps**. The app information will open on the right side.
+1. Search for and select the **QnAMakerPortalSharePoint** app. Change the second filter box from **My apps** to **All apps**. The app information will open on the right side.
 
     ![Select QnA Maker app in App registrations list](../media/add-sharepoint-datasources/select-qna-maker-app-in-app-registrations.png)
 
@@ -115,9 +115,9 @@ The Active Directory manager will get a pop-up window requesting permissions to 
 
 1. Správce služby Active Directory přihlásí k webu Azure portal a otevře  **[podnikové aplikace](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps)** . 
 
-1. Vyhledejte `QnAMakerPortalSharepoint` vyberte aplikaci nástroje QnA Maker. 
+1. Vyhledejte `QnAMakerPortalSharePoint` vyberte aplikaci nástroje QnA Maker. 
 
-    [![Vyhledejte QnAMakerPortalSharepoint v seznamu podnikových aplikací](../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png)](../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png#lightbox)
+    [![Vyhledejte QnAMakerPortalSharePoint v seznamu podnikových aplikací](../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png)](../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png#lightbox)
 
 1. V části **zabezpečení**, přejděte na stránku **oprávnění**. Vyberte **udělit souhlas správce služby pro organizaci**. 
 
@@ -165,7 +165,7 @@ Use the **@microsoft.graph.downloadUrl** from the previous section as the `fileu
         {
             "fileUri": "<@microsoft.graph.downloadURL>",
             "fileName": "filename.xlsx",
-            "source": "<sharepoint link>"
+            "source": "<SharePoint link>"
         }
     ],
     "urls": [],

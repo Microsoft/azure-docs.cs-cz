@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5b3c9a0152144ac0d705c7d3f12c18cbc38398f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 817eecce6c2c1be273b47494e8ecc14180394796
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67090154"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705344"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-spotinst"></a>Kurz: Integrace Azure Active Directory s Spotinst
 
@@ -114,7 +114,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Spotinst, proveďte násled
 
     ![Spotinst domény a adresy URL jednotného přihlašování – informace](common/metadata-upload-additional-signon.png)
 
-    V **přihlašovací adresa URL** textové pole, zadejte adresu URL:  `https://console.spotinst.com`
+    V **přihlašovací adresa URL** textové pole, zadejte adresu URL:  `https://console.spotinst.com/auth/saml`
 
     > [!NOTE]
     > Stav přenosu hodnota není skutečný. Stav přenosu hodnota aktualizuje o skutečnou hodnotu stav přenosu, který je vysvětlen později v tomto kurzu.
@@ -125,7 +125,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Spotinst, proveďte násled
 
 7. V **deklarace identity uživatelů** části na **atributy uživatele** dialogovém okně Upravit deklarace identity pomocí **ikonu pro úpravu** nebo přidání deklarace identity pomocí **přidat novou deklaraci**ke konfiguraci atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky: 
 
-    | Name | Zdrojový atribut|
+    | Název | Zdrojový atribut|
     | -----| --------------- |
     | Email | user.mail |
     | FirstName | user.givenname |

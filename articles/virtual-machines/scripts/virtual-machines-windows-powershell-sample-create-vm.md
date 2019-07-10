@@ -4,7 +4,7 @@ description: Ukázkový skript Azure PowerShellu – Vytvoření virtuálního p
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-service-management
 ms.assetid: ''
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/02/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 685f80c5460d631f0092fded76861c709f6554cc
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: a27d4b4d6cfcbe235774335080593a9b9a1f0996
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55983198"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67695961"
 ---
 # <a name="create-a-fully-configured-virtual-machine-with-powershell"></a>Vytvoření plně nakonfigurovaného virtuálního počítače pomocí PowerShellu
 
@@ -31,7 +31,7 @@ Tento skript vytvoří virtuální počítač Azure s Windows Serverem 2016. Po 
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="sample-script"></a>Ukázkový skript
 

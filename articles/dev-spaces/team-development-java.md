@@ -9,13 +9,13 @@ ms.date: 08/01/2018
 ms.topic: tutorial
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: 'Docker, Kubernetes, Azure, AKS, službě Azure Kubernetes, kontejnery, Helm, služby sítě, směrování sítě služby, kubectl, k8s '
-manager: mmontwil
-ms.openlocfilehash: 458cf762b2d24d325a21f2f8032895a0a87f957c
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+manager: gwallace
+ms.openlocfilehash: 7b4785e1fbcc9f7946526920113b453c0a811c42
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65765192"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707175"
 ---
 [!INCLUDE [](../../includes/devspaces-team-development-1.md)]
 
