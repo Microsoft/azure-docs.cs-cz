@@ -8,23 +8,31 @@ metadata:
   author: zr-msft
   ms.service: azure-dev-spaces
   ms.topic: landing-page
-  ms.date: 04/29/2019
+  ms.date: 07/08/2019
   ms.author: zarhoads
-  manager: jeconnoc
+  manager: gwallace
 abstract:
   description: 'Azure Dev Spaces umožňuje testovat a interaktivně vyvíjet kompletní aplikace mikroslužeb v Azure Kubernetes Service (AKS), aniž by bylo potřeba replikovat nebo napodobovat závislosti. Služba Azure Dev Spaces snižuje náročnost a složitost spolupráce vašeho týmu ve sdíleném clusteru Azure Kubernetes Service (AKS) a také spouštění a ladění kontejnerů přímo v AKS. Naučte se využívat Azure Dev Spaces prostřednictvím těchto rychlých zprovoznění.'
 sections:
   - title: Zprovoznění během 5 minut
     items:
       - type: paragraph
-        text: 'Naučte se využívat Azure Dev Spaces pro týmovou spolupráci v AKS:'
+        text: 'Naučte se využívat Azure Dev Spaces v AKS:'
       - type: list
         style: icon48
         items:
           - image:
               src: 'https://docs.microsoft.com/media/common/i_cligeneric.svg'
-            text: Týmový vývoj s využitím Azure CLI
+            text: Vývoj jako součást týmu
             href: quickstart-team-development.md
+          - image:
+              src: 'https://docs.microsoft.com/media/common/i_cligeneric.svg'
+            text: Spuštění aplikace
+            href: quickstart-cli.md
+          - image:
+              src: 'https://docs.microsoft.com/media/common/i_cligeneric.svg'
+            text: Spuštění aplikace s využitím souboru Dockerfile
+            href: quickstart-cli-dockerfile.md
       - type: paragraph
         text: 'Naučte se iterativně vyvíjet a ladit přímo ve službě AKS s využitím Azure Dev Spaces:'
       - type: list

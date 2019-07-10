@@ -209,6 +209,8 @@
           href: sql-database-managed-instance-index.yml
         - name: Možnosti spravované instance
           href: sql-database-managed-instance.md
+        - name: Nejčastější dotazy ke spravované instanci
+          href: sql-database-managed-instance-faq.md
         - name: Referenční informace k rozhraní API pro správu
           href: sql-database-managed-instance-create-manage.md
         - name: Omezení prostředků

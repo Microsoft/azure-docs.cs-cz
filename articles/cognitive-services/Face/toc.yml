@@ -77,6 +77,8 @@
           href: face-how-to-install-containers.md
         - name: Konfigurace kontejnerů
           href: face-resource-container-config.md
+        - name: Použití instancí kontejneru
+          href: Face-API-How-to-Topics/deploy-face-container-on-container-instances.md
     - name: Použití připojené služby rozhraní API pro rozpoznávání tváře
       href: vs-face-connected-service.md
 - name: Referenční informace

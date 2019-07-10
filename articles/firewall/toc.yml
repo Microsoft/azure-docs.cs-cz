@@ -49,6 +49,8 @@
       href: deploy-availability-zone-powershell.md
     - name: Integrace s využitím nástroje pro vyrovnávání zatížení
       href: integrate-lb.md
+    - name: Pravidla aplikací s využitím SQL FQDN
+      href: sql-fqdn-filtering.md
 - name: Referenční informace
   items:
     - name: Azure CLI

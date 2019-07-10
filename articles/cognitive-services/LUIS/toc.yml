@@ -266,6 +266,8 @@
           href: luis-container-howto.md
         - name: Konfigurace kontejnerů
           href: luis-container-configuration.md
+        - name: Použití instancí kontejneru
+          href: deploy-luis-on-container-instances.md
 - name: Referenční informace
   items:
     - name: Ochrana osobních údajů uživatele

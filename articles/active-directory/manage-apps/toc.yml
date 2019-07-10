@@ -49,6 +49,14 @@
       items:
         - name: Co je jednotné přihlašování
           href: what-is-single-sign-on.md
+        - name: Povolení jednotného přihlašování pro aplikaci s více tenanty
+          href: isv-sso-content.md
+        - name: Vytvoření tenanta Azure pro aplikaci s více tenanty
+          href: isv-tenant-multi-tenant-app.md
+        - name: Volba federace s více tenanty
+          href: isv-choose-multi-tenant-federation.md
+        - name: Vytvoření dokumentace pro aplikaci s více tenanty
+          href: isv-create-sso-documentation.md
         - name: Plánování nasazení jednotného přihlašování
           href: plan-sso-deployment.md
     - name: Jednotné přihlašování jedním kliknutím
@@ -73,6 +81,20 @@
           href: tenant-restrictions.md
         - name: Konfigurace šifrování tokenu SAML (Preview)
           href: howto-saml-token-encryption.md
+    - name: Jednotné přihlašování
+      items:
+        - name: Co je jednotné přihlašování
+          href: what-is-single-sign-on.md
+        - name: Plánování nasazení jednotného přihlašování
+          href: plan-sso-deployment.md
+        - name: Povolení jednotného přihlašování pro aplikaci s více tenanty
+          href: isv-sso-content.md
+        - name: Volba vhodného protokolu federace jednotného přihlašování
+          href: isv-choose-multi-tenant-federation.md
+        - name: Vytvoření tenanta Azure pro aplikaci s více tenanty
+          href: isv-tenant-multi-tenant-app.md
+        - name: Vytvoření a publikování dokumentace jednotného přihlašování pro vaši aplikaci
+          href: isv-create-sso-documentation.md
     - name: Portály pro koncové uživatele
       href: end-user-experiences.md
 - name: Návody

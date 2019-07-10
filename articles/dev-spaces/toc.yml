@@ -9,14 +9,18 @@
       items:
         - name: Týmový vývoj
           href: quickstart-team-development.md
-        - name: Java (VS Code a CLI)
+        - name: Spuštění aplikace
+          href: quickstart-cli.md
+        - name: Spuštění aplikace s využitím souboru Dockerfile
+          href: quickstart-cli-dockerfile.md
+        - name: Spuštění a ladění Javy s využitím editoru VS Code
           href: quickstart-java.md
-        - name: .NET Core (VS Code a CLI)
+        - name: Spuštění a ladění .NET Core s využitím editoru VS Code
           href: quickstart-netcore.md
-        - name: .NET Core (Visual Studio)
-          href: quickstart-netcore-visualstudio.md
-        - name: Node.js (VS Code a CLI)
+        - name: Spuštění a ladění Node.js s využitím editoru VS Code
           href: quickstart-nodejs.md
+        - name: Spuštění a ladění .NET Core s využitím sady Visual Studio
+          href: quickstart-netcore-visualstudio.md
     - name: Kurzy
       items:
         - name: Java (VS Code a CLI)
@@ -55,6 +59,8 @@
       items:
         - name: Jak funguje Dev Spaces
           href: how-dev-spaces-works.md
+        - name: Jak funguje VS Code s Dev Spaces
+          href: how-vs-code-works-with-dev-spaces.md
     - name: Postup
       items:
         - name: Vytvoření clusteru Kubernetes pomocí Azure Cloud Shellu

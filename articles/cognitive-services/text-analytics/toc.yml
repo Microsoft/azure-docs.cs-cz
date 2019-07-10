@@ -70,10 +70,10 @@
           href: how-tos/text-analytics-how-to-install-containers.md
         - name: Konfigurace kontejnerů
           href: text-analytics-resource-container-config.md
-        - name: Použití instancí kontejneru (ACI)
+        - name: Použití instancí kontejneru
           items:
             - name: Analýza mínění
-              href: how-tos/use-sentiment-analysis-on-aci.md
+              href: how-tos/deploy-sentiment-analysis-on-container-instances.md
         - name: Použití služby Kubernetes (AKS)
           items:
             - name: Rozpoznávání jazyka

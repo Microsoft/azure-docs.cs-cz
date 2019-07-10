@@ -25,6 +25,8 @@
   items:
     - name: Metody ověřování
       href: concept-authentication-methods.md
+    - name: Ověřování bez hesla
+      href: concept-authentication-passwordless.md
     - name: Kombinovaná registrace
       href: concept-registration-mfa-sspr-combined.md
     - name: Resetování hesla
@@ -131,8 +133,12 @@
       href: howto-password-smart-lockout.md
     - name: Windows Hello pro firmy
       href: 'https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification'
-    - name: Přihlašování telefonem bez hesla
-      href: howto-authentication-phone-sign-in.md
+    - name: Bez hesla
+      items:
+        - name: Povolení bez hesla
+          href: howto-authentication-passwordless-enable.md
+        - name: Přihlašování telefonem bez hesla
+          href: howto-authentication-phone-sign-in.md
     - name: Ověřování pomocí certifikátů
       items:
         - name: Začínáme s ověřováním pomocí certifikátů

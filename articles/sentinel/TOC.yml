@@ -52,6 +52,8 @@
           items:
             - name: Připojení obecného formátu CEF
               href: connect-common-event-format.md
+            - name: Připojení AWS
+              href: connect-aws.md
             - name: Připojení Barracudy
               href: connect-barracuda.md
             - name: Připojení Check Pointu

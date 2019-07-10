@@ -35,6 +35,8 @@
         - name: Konfigurace kontejnerů
           href: form-recognizer-container-configuration.md
           displayName: 'docker, container, run, billing, apikey, logging'
+        - name: Použití instancí kontejneru
+          href: deploy-form-recognizer-on-container-instances.md
 - name: Referenční informace
   items:
     - name: Rozhraní API služby Rozpoznávání formulářů

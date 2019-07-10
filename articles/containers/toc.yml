@@ -62,6 +62,19 @@
           href: 'https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server'
         - name: Informace o kontejnerech Windows
           href: 'https://docs.microsoft.com/virtualization/windowscontainers/about/index'
+    - name: Azure Red Hat OpenShift
+      href: 'https://docs.microsoft.com/azure/openshift/'
+      items:
+        - name: Co je Azure Red Hat OpenShift?
+          href: ../openshift/intro-openshift.md
+        - name: Kurz – Vytvoření a správa clusteru Azure Red Hat OpenShift
+          items:
+            - name: 1. Vytvoření clusteru Azure Red Hat OpenShift
+              href: ../openshift/tutorial-create-cluster.md
+            - name: 2. Škálování clusteru Azure Red Hat OpenShift
+              href: ../openshift/tutorial-scale-cluster.md
+            - name: 3. Odstranění clusteru Azure Red Hat OpenShift
+              href: ../openshift/tutorial-delete-cluster.md
     - name: Referenční informace
       items:
         - name: Azure Container Instances (az container)

@@ -140,6 +140,8 @@
               href: vpn-gateway-howto-openvpn-clients.md
         - name: Přechod na certifikát veřejné brány CA pro P2S
           href: vpn-gateway-point-to-site-gateway-public-ca.md
+        - name: Konfigurace tunelu zařízení VPN AlwaysOn
+          href: vpn-gateway-howto-always-on-device-tunnel.md
     - name: Vytvoření zónově redundantní brány virtuální sítě v zónách dostupnosti Azure
       href: create-zone-redundant-vnet-gateway.md
     - name: Konfigurace zásad IPsec/IKE pro připojení
