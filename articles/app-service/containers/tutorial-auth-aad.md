@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/26/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: ed056bf28881f391ed1ba16a875259e8e420b39d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2c173da9bfb60f74b90a17f4f3c5ea6f930ca528
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66138019"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705833"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service-on-linux"></a>Kurz: Ověřování a autorizaci uživatelů začátku do konce ve službě Azure App Service v Linuxu
 
@@ -101,7 +101,7 @@ az webapp create --resource-group myAuthResourceGroup --plan myAuthAppServicePla
 
 ### <a name="configure-cors"></a>Konfigurace CORS
 
-Tento krok nesouvisí s ověřováním a autorizací. Bude však potřebovat ho provést později k [zavolání back-endového rozhraní API z front-endového kódu v prohlížeči](#call-api-securely-from-browser-code), aby váš prohlížeč povoloval volání rozhraní API mezi doménami z vaší aplikace Angular.js. Služba App Service v Linuxu neobsahuje integrované funkce CORS jako [její protějšek ve Windows](../app-service-web-tutorial-rest-api.md#add-cors-functionality), takže je musíte pro back-endovou aplikaci přidat ručně.
+Tento krok nesouvisí s ověřováním a autorizací. Bude však potřebovat ho provést později k [zavolání back-endového rozhraní API z front-endového kódu v prohlížeči](#call-api-securely-from-browser-code), aby váš prohlížeč povoloval volání rozhraní API mezi doménami z vaší aplikace Angular.js. App Service v Linuxu teď podporuje funkce CORS, jako jsou [jeho protějšek Windows nemá](../app-service-web-tutorial-rest-api.md#add-cors-functionality).
 
 V místním úložišti otevřete soubor _Startup.cs_. Do metody `ConfigureServices(IServiceCollection services)` přidejte následující řádek kódu:
 
@@ -109,7 +109,7 @@ V místním úložišti otevřete soubor _Startup.cs_. Do metody `ConfigureServi
 services.AddCors();
 ```
 
-Na začátek metody `Configure(IApplicationBuilder app)` přidejte následující řádek kódu (*\<front_end_app_name>* nahraďte názvem front-endové aplikace):
+Na začátek metody `Configure(IApplicationBuilder app)` přidejte následující řádek kódu ( *\<front_end_app_name>* nahraďte názvem front-endové aplikace):
 
 ```csharp
 app.UseCors(builder =>
@@ -242,7 +242,7 @@ Jako zprostředkovatele identity použijete Azure Active Directory. Další info
 
 ### <a name="enable-authentication-and-authorization-for-back-end-app"></a>Povolení ověřování a autorizace pro back-endovou aplikaci
 
-V [webu Azure portal](https://portal.azure.com), otevřete stránku správy vaší back endové aplikace klikněte v levé nabídce na: **Skupiny prostředků** > **myAuthResourceGroup** > _\<zpět\_end\_aplikace\_name >_.
+V [webu Azure portal](https://portal.azure.com), otevřete stránku správy vaší back endové aplikace klikněte v levé nabídce na: **Skupiny prostředků** > **myAuthResourceGroup** >  _\<zpět\_end\_aplikace\_name >_ .
 
 ![Rozhraní ASP.NET Core API spuštěné v Azure App Service](./media/tutorial-auth-aad/portal-navigate-back-end.png)
 
@@ -291,7 +291,7 @@ Klikněte na **Spravovat oprávnění** > **Přidat** > **Výběr rozhraní API*
 
 Na stránce **Výběr rozhraní API** zadejte název aplikace AD vaší back-endové aplikace, který je ve výchozím nastavení stejný jako název vaší back-endové aplikace. Vyberte název v seznamu a klikněte na **Vybrat**.
 
-Zaškrtněte políčko u možnosti **Přístup k _&lt;název\_aplikace\_AD>_**. Klikněte na **Vybrat** > **Hotovo**.
+Zaškrtněte políčko u možnosti **Přístup k _&lt;název\_aplikace\_AD>_** . Klikněte na **Vybrat** > **Hotovo**.
 
 ![Rozhraní ASP.NET Core API spuštěné v Azure App Service](./media/tutorial-auth-aad/select-permission-front-end.png)
 
@@ -303,7 +303,7 @@ Přihlaste se k [Azure Resource Exploreru](https://resources.azure.com). V horn�
 
 ![Rozhraní ASP.NET Core API spuštěné v Azure App Service](./media/tutorial-auth-aad/resources-enable-write.png)
 
-V levém prohlížeči klikněte postupně na **subscriptions** (předplatná) > **_&lt;vaše\_předplatné>_** > **resourceGroups** (skupiny prostředků) > **myAuthResourceGroup** > **providers** (zprostředkovatelé) > **Microsoft.Web** > **sites** (weby) > **_\<název\_front\_endové\_aplikace>_** > **config** (konfigurace) > **authsettings** (nastavení ověřování).
+V levém prohlížeči klikněte postupně na **subscriptions** (předplatná) > ** _&lt;vaše\_předplatné>_**  > **resourceGroups** (skupiny prostředků) > **myAuthResourceGroup** > **providers** (zprostředkovatelé) > **Microsoft.Web** > **sites** (weby) >  ** _\<název\_front\_endové\_aplikace>_**  > **config** (konfigurace) > **authsettings** (nastavení ověřování).
 
 V zobrazení **authsettings** (nastavení ověřování) klikněte na **Edit** (Upravit). Nastavte `additionalLoginParams` na následující řetězec JSON s použitím ID aplikace, které jste zkopírovali. 
 

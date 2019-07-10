@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 904a6a2af4c92c374d5afe4148f50e853e5d1fb2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5ec766cea2135f7c00df032ad0df4ada033d6293
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66479605"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67461989"
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>Zpracování a analýza dokumentů JSON pomocí Apache Hive v Azure HDInsight
 
@@ -57,7 +57,7 @@ Zjistěte, jak zpracovávat a analyzovat soubory JavaScript Object Notation (JSO
 
 Soubor můžete najít v `wasb://processjson@hditutorialdata.blob.core.windows.net/`. Další informace o tom, jak používat Azure Blob storage s HDInsight naleznete v tématu [použití HDFS kompatibilního Azure Blob storage s využitím Apache Hadoop v HDInsight](../hdinsight-hadoop-use-blob-storage.md). Zkopírujte soubor do kontejneru výchozí vašeho clusteru.
 
-V tomto kurzu použijete konzolu Apache Hive. Pokyny o tom, jak používat konzolu Hive najdete v tématu [použití Apache Ambari Hive zobrazení s Apache Hadoop v HDInsight](apache-hadoop-use-hive-ambari-view.md).
+V tomto článku můžete použít konzolu Apache Hive. Pokyny o tom, jak používat konzolu Hive najdete v tématu [použití Apache Ambari Hive zobrazení s Apache Hadoop v HDInsight](apache-hadoop-use-hive-ambari-view.md).
 
 ## <a name="flatten-json-documents"></a>Sloučit dokumentů JSON
 Metody uvedené v následující části vyžadovat, že dokument JSON se skládá z jednoho řádku. Ano musíte sloučit dokumentu JSON na řetězec. Pokud už je sloučený dokumentu JSON, můžete tento krok přeskočit a přejít přímo k další části k analýze dat JSON. Pokud chcete sloučit dokumentu JSON, spusťte následující skript:
@@ -141,7 +141,7 @@ Výstup tohoto skriptu v konzole nástroje Hive:
 Json_tuple používá systém souborů UDF [laterální zobrazení](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView) syntaxe v poznámce Hive, která umožňuje json\_řazené kolekce členů k vytvoření virtuální tabulky použitím UDT funkce na každý řádek v původní tabulce. Komplexní JSONs být příliš nepraktické z důvodu opakovaného použití **LATERÁLNÍ zobrazení**. Kromě toho **JSON_TUPLE** nemůže zpracovat vnořené JSONs.
 
 ### <a name="use-a-custom-serde"></a>Použít vlastní SerDe
-SerDe je nejlepší volbou pro potřeby analýzy vnořených dokumentů JSON. Umožňuje definovat schéma JSON a pak můžete použít schéma k analýze dokumenty. Pokyny najdete v tématu [použití vlastní SerDe JSON s Microsoft Azure HDInsight](https://web.archive.org/web/20190217104719/ https://blogs.msdn.microsoft.com/bigdatasupport/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight/).
+SerDe je nejlepší volbou pro potřeby analýzy vnořených dokumentů JSON. Umožňuje definovat schéma JSON a pak můžete použít schéma k analýze dokumenty. Pokyny najdete v tématu [použití vlastní SerDe JSON s Microsoft Azure HDInsight](https://web.archive.org/web/20190217104719/https://blogs.msdn.microsoft.com/bigdatasupport/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight/).
 
 ## <a name="summary"></a>Souhrn
 Na závěr typ operátoru JSON v Hivu, který zvolíte, závisí na váš scénář. Pokud máte jednoduchou dokumentů JSON a máte pouze jedno pole pro vyhledávání, můžete použít get_json_object Hive UDF. Pokud máte více než jeden klíč k vyhledání, můžete použít json_tuple. Pokud máte vnořené dokumentu, měli byste použít JSON SerDe.
@@ -151,5 +151,5 @@ Na závěr typ operátoru JSON v Hivu, který zvolíte, závisí na váš scén�
 Související články naleznete v tématu:
 
 * [Použití Apache Hive a HiveQL s Apache Hadoop v HDInsight k analýze ukázkového souboru Apache log4j](../hdinsight-use-hive.md)
-* [Analyzovat zpoždění letů pomocí Apache Hive v HDInsight](../hdinsight-analyze-flight-delay-data-linux.md)
+* [Analyzovat zpoždění letů pomocí interaktivního dotazu v HDInsight](../interactive-query/interactive-query-tutorial-analyze-flight-data.md)
 * [Analýza dat Twitteru pomocí Apache Hive v HDInsight](../hdinsight-analyze-twitter-data-linux.md)
