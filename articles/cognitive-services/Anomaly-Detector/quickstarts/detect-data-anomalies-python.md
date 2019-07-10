@@ -1,5 +1,6 @@
 ---
-title: 'Rychlý start: Detekuje anomálie jako batch pomocí rozhraní REST API služby detekce anomálií a Python | Dokumentace Microsoftu'
+title: 'Rychlý start: Detekuje anomálie jako batch pomocí rozhraní REST API služby detekce anomálií a Pythonu'
+titleSuffix: Azure Cognitive Services
 description: Zjištění anomálií v datových řad v dávce nebo na streamovaných datech pomocí rozhraní API detekce anomálií.
 services: cognitive-services
 author: aahill
@@ -9,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: quickstart
 ms.date: 03/26/2019
 ms.author: aahi
-ms.openlocfilehash: 0ab39a7bb86671efb6258e3171e3bf7847aa241f
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: c69bc4db35a198d73f9b29ee3ed2fa6b6f71be49
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341746"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67721445"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-python"></a>Rychlý start: Detekovat anomálie ve vašich datech časových řad pomocí rozhraní REST API služby detekce anomálií a Pythonu
 

@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 9b126d5ccbbf3cb1f22163ffb6ac53a8aff61004
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.openlocfilehash: c03568ece97bdaad86f4564debf9f3b2fa14c6ed
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66357336"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786648"
 ---
 # <a name="azure-cognitive-services-computer-vision-sdk-for-python"></a>Azure Cognitive Services pro počítačové zpracování obrazu SDK pro Python
 
@@ -28,7 +28,7 @@ Služba počítačového zpracování obrazu umožňuje vývojářům používat
 * [Získání rukou psaný text z obrázků](#get-text-from-image)
 * [Vygenerování thumbnail](#generate-thumbnail)
 
-Další informace o této službě najdete v tématu [co je pro počítačové zpracování obrazu?] [computervision_docs].
+Další informace o této službě najdete v tématu [co je pro počítačové zpracování obrazu?][computervision_docs].
 
 Hledáte další dokumentaci?
 
@@ -38,11 +38,11 @@ Hledáte další dokumentaci?
 ## <a name="prerequisites"></a>Požadavky
 
 * [Python 3.6 +][python]
-* Bezplatné [klíč pro počítačové zpracování obrazu] [ computervision_resource] a související koncový bod. Tyto hodnoty budete potřebovat při vytváření instance třídy [ComputerVisionClient] [ ref_computervisionclient] objektu klienta. Použijte jednu z následujících metod k získání těchto hodnot.
+* Bezplatné [klíč pro počítačové zpracování obrazu][computervision_resource] and associated endpoint. You need these values when you create the instance of the [ComputerVisionClient][ref_computervisionclient] objektu klienta. Použijte jednu z následujících metod k získání těchto hodnot.
 
 ### <a name="if-you-dont-have-an-azure-subscription"></a>Pokud nemáte předplatné Azure
 
-Vytvořit bezplatný klíč platný po dobu 7 dní s **[vyzkoušet] [ computervision_resource]** prostředí pro službu pro počítačové zpracování obrazu. Když se klíč, zkopírujte název klíče a koncových bodů. Budete ho potřebovat k [vytvoření klienta](#create-client).
+Vytvořit bezplatný klíč platný po dobu 7 dní s **[vyzkoušet][computervision_resource]** prostředí pro službu pro počítačové zpracování obrazu. Když se klíč, zkopírujte název klíče a koncových bodů. Budete ho potřebovat k [vytvoření klienta](#create-client).
 
 Po vytvoření klíče zachovat následující:
 
@@ -51,7 +51,7 @@ Po vytvoření klíče zachovat následující:
 
 ### <a name="if-you-have-an-azure-subscription"></a>Pokud máte předplatné Azure
 
-Nejjednodušším způsobem, jak vytvořit prostředek v rámci vašeho předplatného je používání následujících [rozhraní příkazového řádku Azure] [ azure_cli] příkazu. Tím se vytvoří klíč služby Cognitive Services, který lze použít v rámci mnoha služeb cognitive services. Musíte zvolit _existující_ název skupiny prostředků, například "my-cogserv-group" a nový prostředek pro zpracování obrazu počítač pojmenovat, jako je například "my--pro zpracování obrazu – prostředku v počítači".
+Nejjednodušším způsobem, jak vytvořit prostředek v rámci vašeho předplatného je používání následujících [rozhraní příkazového řádku Azure][azure_cli] příkazu. Tím se vytvoří klíč služby Cognitive Services, který lze použít v rámci mnoha služeb cognitive services. Musíte zvolit _existující_ název skupiny prostředků, například "my-cogserv-group" a nový prostředek pro zpracování obrazu počítač pojmenovat, jako je například "my--pro zpracování obrazu – prostředku v počítači".
 
 ```Bash
 RES_REGION=westeurope
@@ -84,7 +84,7 @@ source cogsrv-vision-env/bin/activate
 
 ### <a name="install-the-sdk"></a>Instalace sady SDK
 
-Nainstalovat Azure Cognitive Services počítače Vision SDK pro Python [balíčku] [ pypi_computervision] s [pip][pip]:
+Nainstalovat Azure Cognitive Services počítače Vision SDK pro Python [balíčku][pypi_computervision] with [pip][pip]:
 
 ```Bash
 pip install azure-cognitiveservices-vision-computervision
@@ -94,7 +94,7 @@ pip install azure-cognitiveservices-vision-computervision
 
 Po vytvoření prostředku pro počítačové zpracování obrazu, budete potřebovat jeho **koncový bod**a jeden z jeho **klíče účtu** pro vytvoření instance objektu klienta.
 
-Tyto hodnoty použít při vytváření instance [ComputerVisionClient] [ ref_computervisionclient] objektu klienta.
+Tyto hodnoty použít při vytváření instance [ComputerVisionClient][ref_computervisionclient] objektu klienta.
 
 Například k nastavení proměnných prostředí použijte Bash terminálu:
 
@@ -107,7 +107,7 @@ ACCT_NAME=<computervision-account-name>
 
 Pokud si nepamatujete koncového bodu a klíče, můžete je najít následující metodu. Pokud je potřeba vytvořit klíč a koncový bod, můžete použít metodu pro [držiteli předplatného Azure](#if-you-have-an-azure-subscription) nebo [uživatelé bez předplatného Azure](#if-you-dont-have-an-azure-subscription).
 
-Použití [rozhraní příkazového řádku Azure] [ cloud_shell] fragment k naplnění dvou proměnných prostředí s účtem pro počítačové zpracování obrazu **koncový bod** a jeden z jeho **klíče**(můžete také najít tyto hodnoty [webu Azure portal][azure_portal]). Fragment kódu je ve formátu pro prostředí Bash.
+Použití [rozhraní příkazového řádku Azure][cloud_shell] fragment k naplnění dvou proměnných prostředí s účtem pro počítačové zpracování obrazu **koncový bod** a jeden z jeho **klíče** (můžete také vyhledat tyto hodnoty [webu Azure portal][azure_portal]). Fragment kódu je ve formátu pro prostředí Bash.
 
 ```Bash
 RES_GROUP=<resourcegroup-name>
@@ -129,7 +129,7 @@ export ACCOUNT_KEY=$(az cognitiveservices account keys list \
 
 ### <a name="create-client"></a>Vytvoření klienta
 
-Získání koncového bodu a klíče z proměnných prostředí a vytvořit [ComputerVisionClient] [ ref_computervisionclient] objektu klienta.
+Získání koncového bodu a klíče z proměnných prostředí a vytvořit [ComputerVisionClient][ref_computervisionclient] objektu klienta.
 
 ```Python
 from azure.cognitiveservices.vision.computervision import ComputerVisionClient
@@ -150,11 +150,11 @@ client = ComputerVisionClient(endpoint, credentials)
 
 ## <a name="examples"></a>Příklady
 
-Je nutné [ComputerVisionClient] [ ref_computervisionclient] objektu klienta před použitím některého z následujících úloh.
+Je nutné [ComputerVisionClient][ref_computervisionclient] objektu klienta před použitím některého z následujících úloh.
 
 ### <a name="analyze-an-image"></a>Analýza obrázku
 
-Můžete analyzovat image pro určité funkce s [ `analyze_image` ] [ ref_computervisionclient_analyze_image]. Použití [ `visual_features` ] [ ref_computervision_model_visualfeatures] vlastnosti chcete nastavit typy analýzy provádět v imagi. Běžné hodnoty jsou `VisualFeatureTypes.tags` a `VisualFeatureTypes.description`.
+Můžete analyzovat image pro určité funkce s [ `analyze_image` ][ref_computervisionclient_analyze_image] . Use the [`visual_features`][ref_computervision_model_visualfeatures] vlastnosti chcete nastavit typy analýzy provádět v imagi. Běžné hodnoty jsou `VisualFeatureTypes.tags` a `VisualFeatureTypes.description`.
 
 ```Python
 url = "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Broadway_and_Times_Square_by_night.jpg/450px-Broadway_and_Times_Square_by_night.jpg"
@@ -167,7 +167,7 @@ for tag in image_analysis.tags:
 
 ### <a name="get-subject-domain-list"></a>Seznam domén předmětu GET
 
-Zkontrolujte domény předmětu, který slouží k analýze bitovou kopii s [ `list_models` ] [ ref_computervisionclient_list_models]. Tyto názvy domény se používají při [analýza image podle domény](#analyze-an-image-by-domain). Je například domény `landmarks`.
+Zkontrolujte domény předmětu, který slouží k analýze bitovou kopii s [ `list_models` ][ref_computervisionclient_list_models]. Tyto názvy domény se používají při [analýza image podle domény](#analyze-an-image-by-domain). Je například domény `landmarks`.
 
 ```Python
 models = client.list_models()
@@ -178,7 +178,7 @@ for x in models.models_property:
 
 ### <a name="analyze-an-image-by-domain"></a>Analýza obrázku podle domény
 
-Můžete analyzovat image podle domény předmětu s [ `analyze_image_by_domain` ] [ ref_computervisionclient_analyze_image_by_domain]. Získejte [seznam podporovaných domény předmětu](#get-subject-domain-list) Chcete-li použít správný název domény.
+Můžete analyzovat image podle domény předmětu s [ `analyze_image_by_domain` ][ref_computervisionclient_analyze_image_by_domain]. Získejte [seznam podporovaných domény předmětu](#get-subject-domain-list) Chcete-li použít správný název domény.
 
 ```Python
 # type of prediction
@@ -199,7 +199,7 @@ for landmark in analysis.result["landmarks"]:
 
 ### <a name="get-text-description-of-an-image"></a>Získat textový popis obrázku
 
-Můžete získat založený na jazyce textový popis image s [ `describe_image` ] [ ref_computervisionclient_describe_image]. Požádat o několik popis s `max_description` vlastnost provádíte analýzu textu pro klíčová slova spojená s touto imagí. Příklady textový popis na následujícím obrázku `a train crossing a bridge over a body of water`, `a large bridge over a body of water`, a `a train crossing a bridge over a large body of water`.
+Můžete získat založený na jazyce textový popis image s [ `describe_image` ][ref_computervisionclient_describe_image]. Požádat o několik popis s `max_description` vlastnost provádíte analýzu textu pro klíčová slova spojená s touto imagí. Příklady textový popis na následujícím obrázku `a train crossing a bridge over a body of water`, `a large bridge over a body of water`, a `a train crossing a bridge over a large body of water`.
 
 ```Python
 domain = "landmarks"
@@ -216,7 +216,7 @@ for caption in analysis.captions:
 
 ### <a name="get-text-from-image"></a>Získat text z obrázků
 
-Rukou psaný nebo tisk text můžete získat z image. To vyžaduje dvě volání sady SDK: [ `batch_read_file` ](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python#batch-read-file-url--mode--custom-headers-none--raw-false----operation-config-) a [ `get_read_operation_result` ](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python#get-read-operation-result-operation-id--custom-headers-none--raw-false----operation-config-). Volání `batch_read_file` je asynchronní. Ve výsledcích `get_read_operation_result` volání, je potřeba zkontrolovat, pokud první volání byla dokončena s [ `TextOperationStatusCodes` ] [ ref_computervision_model_textoperationstatuscodes] před extrahováním textová data. Budou výsledky obsahovat text, jakož i ohraničující pole souřadnic pro text.
+Rukou psaný nebo tisk text můžete získat z image. To vyžaduje dvě volání sady SDK: [ `batch_read_file` ](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python) a [ `get_read_operation_result` ](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python). Volání `batch_read_file` je asynchronní. Ve výsledcích `get_read_operation_result` volání, je potřeba zkontrolovat, pokud první volání byla dokončena s [ `TextOperationStatusCodes` ][ref_computervision_model_textoperationstatuscodes] před extrahováním textová data. Budou výsledky obsahovat text, jakož i ohraničující pole souřadnic pro text.
 
 ```Python
 # import models
@@ -253,7 +253,7 @@ if result.status == TextOperationStatusCodes.succeeded:
 
 ### <a name="generate-thumbnail"></a>Vygenerování thumbnail
 
-Image s Miniatura (JPG) můžete vygenerovat [ `generate_thumbnail` ] [ ref_computervisionclient_generate_thumbnail]. Miniaturu se nemusí být ve stejné rozměry jako původní bitové kopie.
+Image s Miniatura (JPG) můžete vygenerovat [ `generate_thumbnail` ][ref_computervisionclient_generate_thumbnail]. Miniaturu se nemusí být ve stejné rozměry jako původní bitové kopie.
 
 Nainstalujte **Poduškový** používat v tomto příkladu:
 
@@ -286,9 +286,9 @@ image.save('thumbnail.jpg')
 
 ### <a name="general"></a>Obecné
 
-Když budete moct používat [ComputerVisionClient] [ ref_computervisionclient] objektu klienta pomocí sady Python SDK [ `ComputerVisionErrorException` ] [ ref_computervision_computervisionerrorexception] třída se používá Chcete-li vrátit chyby. Chyby vrácené službou odpovídají stejné vrácené stavové kódy HTTP pro požadavky rozhraní REST API.
+Když budete moct používat [ComputerVisionClient][ref_computervisionclient] client object using the Python SDK, the [`ComputerVisionErrorException`][ref_computervision_computervisionerrorexception] třída se používá k vrácení chyby. Chyby vrácené službou odpovídají stejné vrácené stavové kódy HTTP pro požadavky rozhraní REST API.
 
-Například, pokud se pokusíte analyzovat bitovou kopii s neplatný klíč `401` chyba je vrácena. V následujícím fragmentu kódu [chyba] [ ref_httpfailure] řádně zařizuje služba zachycení výjimky a zobrazení dalších informací o chybě.
+Například, pokud se pokusíte analyzovat bitovou kopii s neplatný klíč `401` chyba je vrácena. V následujícím fragmentu kódu [chyba][ref_httpfailure] řádně zařizuje služba zachycení výjimky a zobrazení dalších informací o chybě.
 
 ```Python
 
@@ -312,12 +312,12 @@ except HTTPFailure as e:
 
 ### <a name="handle-transient-errors-with-retries"></a>Zpracování přechodných chyb pomocí opakovaných pokusů
 
-Při práci s [ComputerVisionClient] [ ref_computervisionclient] klienta, může dojít přechodné chyby způsobené [omezení přenosové rychlosti] [ computervision_request_units] vynucuje služby nebo jiné přechodné problémy, jako jsou výpadky sítě. Informace o manipulaci s těmito typy chyb, naleznete v tématu [modelu opakování] [ azure_pattern_retry] v příručce vzory návrhu v cloudu a související [vzoru Circuit Breaker] [azure_pattern_circuit_breaker].
+Při práci s [ComputerVisionClient][ref_computervisionclient] client, you might encounter transient failures caused by [rate limits][computervision_request_units] vynucuje služby nebo jiné přechodné problémy, jako jsou výpadky sítě. Informace o manipulaci s těmito typy chyb, naleznete v tématu [modelu opakování][azure_pattern_retry] v příručce vzory návrhu v cloudu a související [vzoru Circuit Breaker][azure_pattern_circuit_breaker].
 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Nastavení obsahu klíčových slov do bitové kopie](../concept-tagging-images.md)
+> [Používání značek obsahu pro obrázky](../concept-tagging-images.md)
 
 <!-- LINKS -->
 [pip]: https://pypi.org/project/pip/

@@ -1,26 +1,27 @@
 ---
-title: O moderním Reader
-titlesuffix: Azure Cognitive Services
-description: Další informace o moderním čtečky
+title: Co je atraktivní čtečky API?
+titleSuffix: Azure Cognitive Services
+description: Další informace o moderním čtečky rozhraní API.
 services: cognitive-services
 author: metanMSFT
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: overview
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 38056f701b76f3fc2cf1f617a6977321445f78ff
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 4500b6213c549ab9977fe8f2d849ffa8089d04b9
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296815"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718429"
 ---
-# <a name="what-is-immersive-reader"></a>Co je program ke čtení atraktivní?
+# <a name="what-is-immersive-reader"></a>Co je Asistivní čtečka?
 
 [Atraktivní čtečky](https://www.onenote.com/learningtools) je (včetně) navržené nástroj, který implementuje osvědčených postupů a zlepšit míru porozumění čtení pro nově vznikající čtečky inteligentních algoritmů jazyka, uživatelé, kteří se studijním rozdíly, jako jsou problémy s učením.
 
-Můžete použít atraktivní čtečky ve webové aplikaci pomocí sady SDK atraktivní čtečky.
+Asistivní čtečku můžete využít ve vašich webových aplikacích prostřednictvím sady SDK pro Asistivní čtečku.
 
 ## <a name="what-does-immersive-reader-do"></a>Co dělá atraktivní čtečky?
 
@@ -28,7 +29,7 @@ Dokonalé čtečky je navržená tak, aby přístupnější čtení pro všechny
 
 * Zobrazí obsah v zobrazení pro minimální čtení
 
-  ![Dokonalé čtečky](./media/immersive-reader.png)
+  ![Asistivní čtečka](./media/immersive-reader.png)
 
 * Zobrazí obrázky běžně používaných výrazů
 
@@ -56,7 +57,7 @@ Je atraktivní čtečky samostatné webové aplikace, která při vyvolání pom
 
 ## <a name="next-steps"></a>Další postup
 
-Začínáme s atraktivní Reader:
+Začínáme s Asistivní čtečkou:
 
 * Zabývat tím, [rychlý start](./quickstart.md)
 * Prozkoumejte [atraktivní čtečky SDK na Githubu](https://github.com/Microsoft/immersive-reader-sdk)

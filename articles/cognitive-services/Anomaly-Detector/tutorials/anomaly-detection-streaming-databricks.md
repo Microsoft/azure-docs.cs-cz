@@ -1,5 +1,6 @@
 ---
 title: 'Kurz: Detekce anomálií ve streamovaných datech pomocí Azure Databricks'
+titleSuffix: Azure Cognitive Services
 description: Pomocí rozhraní API detekce anomálií a Azure Databricks ke sledování anomálie v datech.
 titlesuffix: Azure Cognitive Services
 services: cognitive-services
@@ -10,12 +11,12 @@ ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 05/08/2019
 ms.author: aahi
-ms.openlocfilehash: 7009771f2b647bb582b3d8091edce99fe901a9f1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8d3f5d0e10fadd31fd8bde77339b872c1b90451f
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080791"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67721471"
 ---
 # <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>Kurz: Detekce anomálií ve streamovaných datech pomocí Azure Databricks
 
@@ -74,7 +75,7 @@ V této části vytvoříte pomocí pracovního prostoru Azure Databricks [webu 
     |**Název pracovního prostoru**     | Zadejte název pracovního prostoru Databricks.        |
     |**Předplatné**     | Z rozevíracího seznamu vyberte své předplatné Azure.        |
     |**Skupina prostředků**     | Určete, jestli chcete vytvořit novou skupinu prostředků, nebo použít existující. Skupina prostředků je kontejner, který obsahuje související prostředky pro řešení Azure. Další informace naleznete v tématu [Přehled skupin prostředků v Azure](../../../azure-resource-manager/resource-group-overview.md). |
-    |**Umístění**     | Vyberte **USA – východ 2** nebo jeden další dostupné oblasti. Zobrazit [dostupné služby Azure podle oblasti](https://azure.microsoft.com/regions/services/) dostupnosti oblast.        |
+    |**Location**     | Vyberte **USA – východ 2** nebo jeden další dostupné oblasti. Zobrazit [dostupné služby Azure podle oblasti](https://azure.microsoft.com/regions/services/) dostupnosti oblast.        |
     |**Cenová úroveň**     |  Zvolte úroveň **Standard** nebo **Premium**. Nevybírejte **zkušební verze**. Další informace o těchto úrovních najdete na [stránce s cenami za Databricks](https://azure.microsoft.com/pricing/details/databricks/).       |
 
     Vyberte **Vytvořit**.
@@ -164,11 +165,11 @@ V tomto kurzu použijete [Azure anomálií detektor API služeb Cognitive Servic
 
     |Hodnota |Popis  |
     |---------|---------|
-    |Name     | Název prostředku detekce anomálií.        |
-    |Předplatné     | Předplatné Azure, které prostředek bude přidružen.        |
+    |Název     | Název prostředku detekce anomálií.        |
+    |Subscription     | Předplatné Azure, které prostředek bude přidružen.        |
     |Location     | Umístění Azure.        |
     |Cenová úroveň     | Cenová úroveň služby. Další informace o cenách detekce anomálií, naleznete v tématu [stránce s cenami](https://azure.microsoft.com/pricing/details/cognitive-services/anomaly-detector/).        |
-    |Skupina prostředků     | Určete, jestli chcete vytvořit novou skupinu prostředků nebo vyberte existující.        |
+    |Resource group     | Určete, jestli chcete vytvořit novou skupinu prostředků nebo vyberte existující.        |
 
 
      Vyberte **Vytvořit**.

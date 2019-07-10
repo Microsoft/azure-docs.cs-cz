@@ -1,7 +1,7 @@
 ---
-title: Co je Personalizer
+title: Co je služba Personalizace?
 titleSuffix: Azure Cognitive Services
-description: Azure Personalizer je Cloudová služba rozhraní API, který umožňuje zvolit nejvhodnější zobrazíte na uživatele, učit se z jejich chování v reálném čase.
+description: Personalizer je Cloudová služba rozhraní API, který umožňuje zvolit nejvhodnější zobrazíte na uživatele, učit se z jejich chování v reálném čase.
 services: cognitive-services
 author: edjez
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 05/07/2019
 ms.author: edjez
-ms.openlocfilehash: 7eb85aa38815b8fcdfbe68518122563e1b579e17
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: e5781af44732782936e1e1a87bf70bd4a9d4804d
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150400"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722291"
 ---
-# <a name="what-is-personalizer"></a>Co je Personalizer?
+# <a name="what-is-personalizer"></a>Co je služba Personalizace?
 
-Azure Personalizer je Cloudová služba rozhraní API, který umožňuje zvolit nejvhodnější zobrazíte na uživatele, učit se z jejich chování v reálném čase.
+Azure Personalizace je cloudová služba rozhraní API umožňující zvolit nejvhodnější prostředí, které se má zobrazovat vašim uživatelům, a učit se z jejich chování v reálném čase.
 
 * Zadání informací o uživatelích a obsahu a přijímat hlavní akce se zobrazí uživatelům. 
 * Není nutné vyčistit a označovat data před použitím Personalizer.

@@ -1,6 +1,6 @@
 ---
-title: Data inkoustu posílat rozhraní API pro rozpoznávání rukopisu
-titlesuffix: Azure Cognitive Services
+title: Odesílání dat do rozhraní API pro rozpoznávání rukopisu
+titleSuffix: Azure Cognitive Services
 description: Další informace o volání rozhraní API pro analyzátor Ink pro různé aplikace
 services: cognitive-services
 author: erhopf
@@ -10,16 +10,16 @@ ms.subservice: ink-recognizer
 ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 5a212c7332d085c15baabef8650572162c47903d
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 23431a6171f9ce4d2550ee62ac84679ce36126de
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027093"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67721777"
 ---
-# <a name="send-ink-data-to-the-ink-recognizer-api"></a>Data inkoustu posílat rozhraní API pro rozpoznávání rukopisu 
+# <a name="send-ink-data-to-the-ink-recognizer-api"></a>Odesílání dat do rozhraní API pro rozpoznávání rukopisu 
 
-Digitální rukopis odkazuje na technologie, které umožňují digitální reprezentace vstup například rukopisu a kreslení. To je obvykle opírá od digitizéru, který zachycuje pohybů vstupní zařízení, jako je stylus. Jak zařízení jsou dál umožněte bohaté digitální rukopisu, umělá inteligence a machine learning umožňuje rozpoznávání písemné formátů a text v libovolném kontextu. Rozhraní API pro rozpoznávání rukopisu umožňuje odeslat inkoustových tahů a získat podrobné informace o nich. 
+Termín digitální rukopis označuje technologie, které umožňují digitální reprezentaci výstupu, jako jsou rukopis a kresby. To je obvykle opírá od digitizéru, který zachycuje pohybů vstupní zařízení, jako je stylus. Zařízení stále víc podporují bohatá prostředí digitálních rukopisů a umělá inteligence a strojové učení umožňují rozpoznávání psaných tvarů a textu v libovolném kontextu. Rozhraní API pro rozpoznávání rukopisu umožňuje odeslat inkoustových tahů a získat podrobné informace o nich. 
 
 ## <a name="the-ink-recognizer-api-vs-ocr-services"></a>Vs rozhraní API pro rozpoznávání rukopisu. OCR služby
 

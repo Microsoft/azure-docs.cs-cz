@@ -167,7 +167,7 @@ Když použijete funkci offline synchronizace, definujte tři systémové tabulk
 | --- | --- |
 | id | Integer 64 |
 | itemId | String |
-| properties |Binary Data |
+| properties | Binary Data |
 | table | String |
 | tableKind | Integer 16 |
 
@@ -180,7 +180,7 @@ Když použijete funkci offline synchronizace, definujte tři systémové tabulk
 | --- | --- |
 | id |String |
 | operationId |Integer 64 |
-| properties |Binární Data |
+| properties |Binary Data |
 | tableKind |Integer 16 |
 
  **MS_TableConfig**

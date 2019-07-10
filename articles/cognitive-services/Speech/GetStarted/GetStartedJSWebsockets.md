@@ -42,7 +42,7 @@ V této části jsme vás provede kroky potřebné ke načíst ukázkovou strán
 
 ### <a name="open-the-sample-directly"></a>Otevřete ukázku přímo
 
-Získejte klíč předplatného, jak je popsáno výše. Otevřete [odkaz na ukázku](https://htmlpreview.github.io/? https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript/blob/preview/samples/browser/Sample.html). Tím se načtou do svého výchozího prohlížeče na stránce (vykreslen pomocí [htmlPreview](https://github.com/htmlpreview/htmlpreview.github.com)).
+Získejte klíč předplatného, jak je popsáno výše. Otevřete [odkaz na ukázku](https://htmlpreview.github.io/?https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript/blob/preview/samples/browser/Sample.html). Tím se načtou do svého výchozího prohlížeče na stránce (vykreslen pomocí [htmlPreview](https://github.com/htmlpreview/htmlpreview.github.com)).
 
 ### <a name="open-the-sample-from-a-local-copy"></a>Otevřete ukázku z místní kopie
 

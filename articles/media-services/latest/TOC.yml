@@ -242,6 +242,12 @@
           href: monitor-events-portal-how-to.md
         - name: Monitorování událostí – rozhraní příkazového řádku
           href: job-state-events-cli-how-to.md
+    - name: Použití Azure Monitoru
+      items:
+        - name: Monitorování metrik
+          href: media-services-metrics-howto.md
+        - name: Monitorování diagnostických protokolů
+          href: media-services-diagnostic-logs-howto.md
     - name: Ochrana obsahu
       items:
         - name: Získání zásad symetrických klíčů – .NET

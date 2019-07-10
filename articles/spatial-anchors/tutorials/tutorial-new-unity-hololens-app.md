@@ -5,15 +5,15 @@ author: julianparismorgan
 manager: vriveras
 services: azure-spatial-anchors
 ms.author: pmorgan
-ms.date: 05/14/2019
+ms.date: 07/05/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: c831e8fdacf5103619374605dd980ab1f6735047
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 57244dd9f3365b3899bcc1dde6382cc3b51719d9
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "67135311"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722928"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-hololens-unity-app-using-azure-spatial-anchors"></a>Kurz: Podrobné pokyny k vytvoření nové aplikace HoloLens Unity pomocí prostorových kotev vztahů Azure
 
@@ -73,13 +73,21 @@ Je potřeba nechat Unity vědí, by měl vytvořit aplikaci, kterou jsme se poku
 3. Najít **Vymazat příznaky** vlastnost a změnit z rozevíracího seznamu **Skybox** k **plnou barvu**.
 4. Klikněte na **pozadí** pole k otevření ovládacího prvku pro výběr barvy.
 5. Nastavte **R, G, B a A** k **0**.
-6. Vyberte **přidat součást** a vyhledejte **prostorových kolidující objekt mapování**.
+6. Vyberte **přidat součást** a vyhledat a přidat **prostorových kolidující objekt mapování**.
 
 **Vytvoření skriptu**
 1. V **projektu** podokno, vytvořte novou složku **skripty**v části **prostředky** složky. 
 2. Klikněte pravým tlačítkem na složku a potom vyberte **vytvořit >** ,  **C# skript**. Název je **AzureSpatialAnchorsScript**. 
 3. Přejděte na **GameObject** -> **vytvořit prázdné**. 
 4. Vyberte ho a v **inspektoru** přejmenovat z **GameObject** k **MixedRealityCloud**. Vyberte **přidat součást** a vyhledat a přidat **AzureSpatialAnchorsScript**.
+
+**Vytvořit kouli prefab**
+1. Přejděte na **GameObject** -> **3D objekt** -> **Sphere**.
+2. V **inspektoru**, nastavte jeho škálování na **0,25, 0,25, 0,25**.
+3. Najít **Sphere** objekt **hierarchie** podokně. Klikněte na něj a přetáhněte ho do **prostředky** složky **projektu** podokně.
+4. Klikněte pravým tlačítkem myši a **odstranit** původní sphere, kterou jste vytvořili v **hierarchie** podokně.
+
+Teď byste měli mít koule prefab ve vašich **projektu** podokně.
 
 ## <a name="trying-it-out"></a>Vyzkoušejte si
 K otestování, zda vše funguje, vytvořte svoji aplikaci **Unity** a nasadit ho z **sady Visual Studio**. Postupujte podle kapitola 6 ze [ **MR základy 100: Začínáme s Unity** kurzu](https://docs.microsoft.com/windows/mixed-reality/holograms-100#chapter-6---build-and-deploy-to-device-from-visual-studio) Uděláte to tak. Měli byste vidět Unity spusťte obrazovku a potom zrušte zaškrtnutí zobrazení.
@@ -93,19 +101,25 @@ Nejprve přidejte následující importy do vaší `Assembly-CSharp (Universal W
 
 Pak přidejte následující proměnné členů do vaší `AzureSpatialAnchorsScript` třídy: 
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=26-37,43-47,55-74)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=26-42,48-52,60-79)]
 
-Dále přidejte následující kód do vašeho `Start()` metody. Tento kód bude připojení `GestureRecognizer`, která zjistí, když dojde klepnutí ve vzduchu a volání `HandleTap`.
+Abychom mohli pokračovat, potřebujeme nastavit na tvar koule prefab že jsme vytvořili v našich spherePrefab členské proměnné. Přejděte zpět na **Unity**.
+1. V **Unity**, vyberte **MixedRealityCloud** objekt **hierarchie** podokně.
+2. Klikněte na **Sphere** prefab, který jste uložili **projektu** podokně. Přetáhněte **Sphere** jste kliknuli na **Sphere Prefab** oblasti **Azure prostorových kotvy skript (skript)** v **inspektoru** podokno .
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=76-85,88&highlight=4-10)]
+Teď byste měli mít **Sphere** nastavit jako prefab na skript. Sestavení z **Unity** a pak otevřete výsledná **sady Visual Studio** řešení, jako je třeba pouze u [zkoušíte](#trying-it-out). 
+
+V **sady Visual Studio**, otevřete `AzureSpatialAnchorsScript.cs` znovu. Přidejte následující kód do vašeho `Start()` metody. Tento kód bude připojení `GestureRecognizer`, která zjistí, když dojde klepnutí ve vzduchu a volání `HandleTap`.
+
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=81-90,93&highlight=4-10)]
 
 Teď máme přidat následující `HandleTap()` metodu `Update()`. Bude dělat ray přetypování a získat přístupů bod, ve kterém se má umístit koule. 
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=264-274,295-297,301-309)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=267-277,299-300,304-312)]
 
 Nyní potřebujeme vytvořit oblasti. Oblasti budou zpočátku bílé, ale tato hodnota se upraví později. Přidejte následující `CreateAndSaveSphere()` metody:
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=311-324,389)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=314-325,390)]
 
 Spuštění aplikace z **sady Visual Studio** abyste ověřili, že ještě jednou. Tentokrát, klepněte na obrazovku k vytváření a umístěte bílé oblasti na plochu podle vašeho výběru.
 
@@ -115,15 +129,15 @@ Při práci s Unity, všechna rozhraní API Unity, například rozhraní API mů
 
 Pojďme přidat členskou proměnnou, dispatchQueue, což je fronty akce. Bude odsuneme akce do fronty a pak odstranění z fronty a spouštět akce na hlavním vlákně. 
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=33-46&highlight=6-9)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=38-51&highlight=6-9)]
 
 V dalším kroku přidejme způsob, jak přidat akci do fronty. Přidat `QueueOnUpdate()` hned po `Update()` :
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=102-112)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=107-117)]
 
 Pojďme teď používá smyčku Update() a zkontrolujte, zda je akce zařadí do fronty. Pokud ano, budeme odstranění z fronty akce a spustíme ji.
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=90-100&highlight=4-10)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=95-105&highlight=4-10)]
 
 ## <a name="get-the-azure-spatial-anchors-sdk"></a>Získat Azure prostorových kotvy SDK
 
@@ -137,29 +151,29 @@ Nyní potřebujeme pro obnovování balíčků Nuget, pokud chcete získat Azure
 
 Ve vaší **sady Visual Studio** řešení, přidejte následující import do vaší `<ProjectName>\Assets\Scripts\AzureSpatialAnchorsScript.cs`:
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=18-21&highlight=1)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=23-26&highlight=1)]
 
 Pak přidejte následující proměnné členů do vaší `AzureSpatialAnchorsScript` třídy:
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=43-58&highlight=6-11)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=48-63&highlight=6-11)]
 
 ## <a name="attach-a-local-azure-spatial-anchor-to-the-local-anchor"></a>Připojení místní prostorových ukotvení Azure k místní ukotvení
 
 Nastavíme CloudSpatialAnchorSession Azure prostorových ukotvení. Začneme tak, že přidáte následující `InitializeSession()` metoda uvnitř vaší `AzureSpatialAnchorsScript` třídy. Po zavolání zajistí relaci prostorových kotvy Azure se vytvoří a správně inicializován během spuštění aplikace.
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=169-197,200-204)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=174-202,205-209)]
 
 Teď musíme napsat kód pro zpracování volání delegáta. Přidáme další k nim, jak budeme dál.
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=206-221)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=211-226)]
 
 Teď můžeme zapojit vaše `initializeSession()` metodu do vaší `Start()` – metoda.
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=76-88&highlight=12)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=81-93&highlight=12)]
 
 Nakonec přidejte následující kód do vašeho `CreateAndSaveSphere()` metody. Místní prostorových ukotvení Azure ho připojí k oblasti, které jsme umísťování v reálném světě.
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=311-337,390&highlight=16-31)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=314-338,390&highlight=14-25)]
 
 Než budete pokračovat dále, budete muset vytvořit prostorových ukotvení Azure účtu identifikátor a klíč, pokud ještě nemáte je. Pomocí postupu v následující části je můžete získat.
 
@@ -171,7 +185,7 @@ Jakmile váš účet Azure prostorových kotvy identifikátor a klíče go a vlo
 
 Nakonec Pojďme integrovat všechno dohromady. Ve vaší `SpawnNewAnchoredObject()` metodu, přidejte následující kód. Se vyvolá `CreateAnchorAsync()` metoda co nejdříve po vytvoření vaší oblasti. Jakmile se metoda vrátí hodnotu, následující kód provede jednu poslední aktualizaci do vaší oblasti, změníte jeho barvu na modrou.
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=311-389&highlight=28-78)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=314-391&highlight=26-77)]
 
 Spuštění aplikace z **sady Visual Studio** ještě jednou. Pohyb hlavě a potom klepnutím ve vzduchu můžete umístit vaší oblasti. Jakmile budeme mít dostatek snímků, oblasti se změní na žlutou barvou a spustí se nahrávání cloudu. Po dokončení nahrávání se modře vaší oblasti. Volitelně můžete také použít v okně výstupu uvnitř **sady Visual Studio** sledovat vaše aplikace odesílá zprávy protokolu. Budete moct sledovat doporučenou pro vytvoření průběh, stejně jako identifikátor anchor, který vrací cloudu po dokončení nahrávání.
 
@@ -186,20 +200,20 @@ Jeden vaše ukotvení je nahraná na cloud, jsme připraveni pokusu o vyhledán�
 * Inicializovat `CloudSpatialAnchorSession` znovu. To provedeme tak jsme si jisti, že anchor, které chceme vyhledejte pochází z cloudu namísto místní anchor, který jsme vytvořili.
 * Vytvoření **sledovacích procesů** , který bude hledat ukotvení jsme nahráli do Azure prostorových ukotvení.
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=264-302&highlight=13-31,34-36)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=267-305&highlight=13-31,35-36)]
 
 Teď přidáme náš `ResetSession()` a `CleanupObjects()` metody. Můžete vložit níže `QueueOnUpdate()`
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=114-167)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=119-172)]
 
 Nyní potřebujeme kód, který bude vyvolán při nachází anchor, který jsme už dotazování pro připojení. Uvnitř `InitializeSession()`, přidejte následující zpětná volání:
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=195-201&highlight=4-5)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=200-206&highlight=4-5)]
 
  
 Pojďme přidat kód, který bude vytvoření & na místě kouli zelené po CloudSpatialAnchor se nachází. Také umožní obrazovky klepněte znovu, takže můžete opakovat celý scénář ještě jednou: vytvořit jiného místního ukotvení, nahrajte ho a znovu ho najít.
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=223-262)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=228-265)]
 
 A to je vše! Spuštění aplikace z **sady Visual Studio** jednou vyzkoušet si celý scénář začátku do konce. Pohyb zařízení a umístěte bílé oblasti. Potom přesouvat hlavě k zaznamenání dat o prostředí, dokud oblasti se změní na žlutou. Nahraje místní ukotvení a bude modře vaší oblasti. A konečně klepněte na obrazovku ještě jednou klikněte tak, aby místní ukotvení se odebere a pak jsme dotaz pro jeho protějšek cloudu. Pokračujte, dokud se nachází vaše cloudové prostorových ukotvení přesouvat zařízení. Zelená koule by se měla objevit ve správném umístění a může zasažení vodou a znovu opakujte celý scénář.
 

@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/17/2019
+ms.date: 07/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cdc605c059857c826056fece782bbb9a9c86a15
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 93c5e473c62dc6b38f0b2c2906560d6099842d49
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275817"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718493"
 ---
 # <a name="tutorial-integrate-mondaycom-with-azure-active-directory"></a>Kurz: Monday.com integrovat s Azure Active Directory
 
@@ -78,7 +78,7 @@ Použijte následující postup povolení jednotného přihlašování Azure AD 
 
    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
 
-4. V **základní konfiguraci SAML** podokně, pokud máte soubor zprostředkovatele metadat služby a chcete provést konfiguraci v **zahájené pomocí IDP** režimu, proveďte následující kroky:
+1. V **základní konfiguraci SAML** podokně, pokud máte soubor zprostředkovatele metadat služby a chcete provést konfiguraci v **zahájené pomocí IDP** režimu, proveďte následující kroky:
 
     1. Vyberte **nahrát soubor metadat**.
 
@@ -89,7 +89,7 @@ Použijte následující postup povolení jednotného přihlašování Azure AD 
        > [!Note]
        > Pokud **identifikátor** a **adresy URL odpovědi** hodnoty získat není vyplněné automaticky a potom zadejte hodnoty ručně. **Identifikátor** a **adresy URL odpovědi** jsou stejné a hodnota je v následujícímu vzoru: `https://<your-domain>.monday.com/saml/saml_callback`
 
-5. Klikněte na tlačítko **nastavit další adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
+1. Klikněte na tlačítko **nastavit další adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
 
     V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce:  `https://<your-domain>.monday.com`
 
@@ -100,19 +100,15 @@ Použijte následující postup povolení jednotného přihlašování Azure AD 
 
     ![Podokno atributy uživatele](common/edit-attribute.png)
 
-6. Kromě toho výše monday.com aplikace očekává, že několik dalších atributů musí být předány zpět odpověď SAML. V **deklarace identity uživatelů** části na **atributy uživatele** dialogového okna, proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulka:
+1. Kromě toho výše monday.com aplikace očekává, že několik dalších atributů musí být předány zpět odpověď SAML. V **deklarace identity uživatelů** části na **atributy uživatele** dialogového okna, proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulka:
 
-    | Name | Zdrojový atribut|
+    | Název | Zdrojový atribut|
     | ---------------| --------------- |
     | Email | user.mail |
     | FirstName | user.givenname |
     | LastName | user.surname |
 
     a. Klikněte na tlačítko **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
-
-    ![image](./media/mondaycom-tutorial/attribute01.png)
-
-    ![image](common/new-attribute-details.png)
 
     b. V **název** textového pole zadejte název atributu, který je zobrazený pro tento řádek.
 
@@ -136,17 +132,25 @@ Použijte následující postup povolení jednotného přihlašování Azure AD 
 
 ### <a name="configure-mondaycom"></a>Konfigurace monday.com
 
-1. V okně jiné webové prohlížeče Přihlaste se k monday.com jako správce.
+1. K automatizaci konfigurace v rámci monday.com, je potřeba nainstalovat **Moje aplikace zabezpečené přihlašování rozšíření prohlížeče** kliknutím **nainstalovat rozšíření**.
 
-2. Přejděte **profilu** v pravém horním rohu stránky a klikněte na kartu **správce**.
+    ![Moje aplikace rozšíření](common/install-myappssecure-extension.png)
 
-     ![Konfigurace Monday.com](./media/mondaycom-tutorial/configuration01.png)
+1. Po přidání rozšíření do prohlížeče, klikněte na **nastavení monday.com** který nasměruje na monday.com aplikace. Odtud zadejte přihlašovací údaje správce pro přihlášení do monday.com. Rozšíření prohlížeče budou automaticky nakonfigurovat aplikaci za vás a automatizovat kroky 3 až 6.
 
-3. Vyberte **zabezpečení** a ujistěte se, že na **otevřít** vedle SAML.
+    ![Nastavení konfigurace](common/setup-sso.png)
+
+1. Pokud chcete nastavit monday.com ručně, otevřete nové okno webového prohlížeče a přihlaste se k monday.com jako správce a proveďte následující kroky:
+
+1. Přejděte **profilu** v pravém horním rohu stránky a klikněte na kartu **správce**.
+
+    ![Konfigurace Monday.com](./media/mondaycom-tutorial/configuration01.png)
+
+1. Vyberte **zabezpečení** a ujistěte se, že na **otevřít** vedle SAML.
 
     ![Konfigurace Monday.com](./media/mondaycom-tutorial/configuration02.png)
 
-4. Zadejte níže uvedené podrobnosti ze svého zprostředkovatele identity.
+1. Zadejte níže uvedené podrobnosti ze svého zprostředkovatele identity.
 
     ![Konfigurace Monday.com](./media/mondaycom-tutorial/configuration03.png)
 

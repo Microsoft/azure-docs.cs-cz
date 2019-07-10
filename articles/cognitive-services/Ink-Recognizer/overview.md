@@ -1,21 +1,21 @@
 ---
 title: Co je nástroj pro rozpoznávání rukopisu? -Rozhraní API pro rozpoznávání inkoustu
-titlesuffix: Azure Cognitive Services
-description: Nástroj pro rozpoznávání rukopisu integrate do vašich aplikací, webů, nástrojů a dalších řešení poskytují...
+titleSuffix: Azure Cognitive Services
+description: Nástroj pro rozpoznávání rukopisu integrate do vašich aplikací, webů, nástrojů a dalších řešení povolit data inkoustu stroke identifikovat a použít jako vstup.
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
-ms.topic: tutorial
+ms.topic: overview
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 0ed1a72a5dc61458200b72c768ad722656b820d8
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 95121523c510e72894086740ad340bdfd33f3c32
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "65027226"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67721400"
 ---
 # <a name="what-is-the-ink-recognizer-api"></a>Co je rozhraní API pro rozpoznávání rukopisu?
 
