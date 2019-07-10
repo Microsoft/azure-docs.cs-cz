@@ -97,7 +97,7 @@
           href: container-instances-monitor.md
         - name: Získání událostí a protokolů kontejneru
           href: container-instances-get-logs.md
-        - name: Protokolování s využitím Azure Log Analytics
+        - name: Protokolování s využitím protokolů Azure Monitoru
           href: container-instances-log-analytics.md
     - name: Řešení potíží
       items:
@@ -137,3 +137,5 @@
       href: 'https://stackoverflow.com/questions/tagged/azure-container-instances'
     - name: Videa
       href: 'https://azure.microsoft.com/resources/videos/index/?services=container-instances&sort=newest'
+    - name: Nejčastější dotazy
+      href: container-instances-faq.md

@@ -256,9 +256,7 @@
             - name: Portál
               href: shared-images-portal.md
             - name: Rozhraní příkazového řádku
-              href: ../linux/shared-images.md
-            - name: Portál
-              href: shared-images-portal.md
+              href: ../linux/shared-images.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
             - name: Sdílení imagí napříč tenanty
               href: share-images-across-tenants.md
             - name: Řešení potíží se sdílenými imagemi
