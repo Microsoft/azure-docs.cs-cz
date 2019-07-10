@@ -9,7 +9,7 @@ ms.date: 07/17/2018
 ms.author: danlep
 ms.openlocfilehash: 13f1fa92365c284ed10bd7c0a1b2fdefef50b29e
 ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "60580272"
@@ -46,7 +46,7 @@ Postup získání ID pracovního prostoru log analytics a primární klíč:
 
 Teď, když máte ID pracovního prostoru log analytics a primární klíč, jste připraveni vytvořit skupinu povoleno protokolování kontejneru.
 
-Následující příklady znázorňují dva způsoby, jak vytvořit skupinu kontejnerů pomocí jediného [fluentd] [ fluentd] kontejneru: Azure CLI a rozhraní příkazového řádku Azure s využitím šablony YAML. Kontejner fluentd ve výchozí konfiguraci produkuje několik řádků výstupu. Tento výstup se odesílá do pracovního prostoru služby Log Analytics, takže se dobře hodí pro ukázku zobrazení a dotazování protokolů.
+Následující příklady znázorňují dva způsoby, jak vytvořit skupinu kontejnerů pomocí jediného [fluentd][fluentd] kontejneru: Azure CLI a rozhraní příkazového řádku Azure s využitím šablony YAML. Kontejner fluentd ve výchozí konfiguraci produkuje několik řádků výstupu. Tento výstup se odesílá do pracovního prostoru služby Log Analytics, takže se dobře hodí pro ukázku zobrazení a dotazování protokolů.
 
 ### <a name="deploy-with-azure-cli"></a>Nasazení s Azure CLI
 

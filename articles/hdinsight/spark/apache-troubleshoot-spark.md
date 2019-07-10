@@ -84,7 +84,7 @@ Tyto změny jsou platné pro celý cluster, ale lze přepsat při odesílání �
 
 ### <a name="additional-reading"></a>Další čtení
 
-[Odeslání úlohy Apache Spark v clusterech HDInsight](https://web.archive.org/web/20190112152841/ https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
+[Odeslání úlohy Apache Spark v clusterech HDInsight](https://web.archive.org/web/20190112152841/https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
 
 ## <a name="how-do-i-configure-an-apache-spark-application-by-using-a-jupyter-notebook-on-clusters"></a>Jak nakonfigurovat aplikaci Apache Sparku s využitím Poznámkový blok Jupyter v clusterech?
 
@@ -98,7 +98,7 @@ Tyto změny jsou platné pro celý cluster, ale lze přepsat při odesílání �
 
 ### <a name="additional-reading"></a>Další čtení
 
-[Odeslání úlohy Apache Spark v clusterech HDInsight](https://web.archive.org/web/20190112152841/ https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
+[Odeslání úlohy Apache Spark v clusterech HDInsight](https://web.archive.org/web/20190112152841/https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
 
 
 ## <a name="how-do-i-configure-an-apache-spark-application-by-using-apache-livy-on-clusters"></a>Jak nakonfigurovat aplikaci Apache Spark pomocí Apache Livy v clusterech?
@@ -115,7 +115,7 @@ Tyto změny jsou platné pro celý cluster, ale lze přepsat při odesílání �
 
 ### <a name="additional-reading"></a>Další čtení
 
-[Odeslání úlohy Apache Spark v clusterech HDInsight](https://web.archive.org/web/20190112152841/ https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
+[Odeslání úlohy Apache Spark v clusterech HDInsight](https://web.archive.org/web/20190112152841/https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
 
 ## <a name="how-do-i-configure-an-apache-spark-application-by-using-spark-submit-on-clusters"></a>Jak nakonfigurovat aplikaci s použitím skriptu spark-submit Apache Spark v clusterech?
 
@@ -131,7 +131,7 @@ Tyto změny jsou platné pro celý cluster, ale lze přepsat při odesílání �
 
 ### <a name="additional-reading"></a>Další čtení
 
-[Odeslání úlohy Apache Spark v clusterech HDInsight](https://web.archive.org/web/20190112152841/ https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
+[Odeslání úlohy Apache Spark v clusterech HDInsight](https://web.archive.org/web/20190112152841/https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
 
 
 ## <a name="what-causes-an-apache-spark-application-outofmemoryerror-exception"></a>Co způsobí, že výjimka OutofMemoryError aplikací Apache Spark?
@@ -216,7 +216,7 @@ Nejpravděpodobnější příčinou této výjimky je, že není dostatek pamět
 ### <a name="additional-reading"></a>Další čtení
 
 - [Přehled správy paměti Apache Sparku](https://spark.apache.org/docs/latest/tuning.html#memory-management-overview)
-- [Ladit aplikace Apache Spark v clusteru služby HDInsight](https://web.archive.org/web/20190112152909/ https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/)
+- [Ladit aplikace Apache Spark v clusteru služby HDInsight](https://web.archive.org/web/20190112152909/https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/)
 
 
 ### <a name="see-also"></a>Viz také
