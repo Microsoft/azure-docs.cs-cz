@@ -66,7 +66,7 @@ Věci, které není možné provádět pomocí hybridních připojení patří:
 
 ## <a name="add-and-create-hybrid-connections-in-your-app"></a>Přidat a vytvořit hybridní připojení v aplikaci ##
 
-Chcete-li vytvořit hybridní připojení, přejděte [webu Azure portal] [ portal] a vyberte svou aplikaci. Vyberte **sítě** > **nakonfigurovat koncové body hybridního připojení**. Tady vidíte hybridní připojení, které jsou nakonfigurované pro vaši aplikaci.  
+Chcete-li vytvořit hybridní připojení, přejděte [webu Azure portal][portal] a vyberte svou aplikaci. Vyberte **sítě** > **nakonfigurovat koncové body hybridního připojení**. Tady vidíte hybridní připojení, které jsou nakonfigurované pro vaši aplikaci.  
 
 ![Snímek obrazovky s hybridní připojení seznamu][2]
 
@@ -197,7 +197,7 @@ Objekt JSON přidružený k hybridní připojení vypadá takto:
       }
     }
 
-Jeden ze způsobů použití těchto informací se armclient, které můžete získat [ARMClient] [ armclient] projektu z Githubu. Tady je příklad existující hybridní připojení se připojuje k vaší aplikace. Vytvořte soubor JSON na výše uvedené schéma jako:
+Jeden ze způsobů použití těchto informací se armclient, které můžete získat [ARMClient][armclient] projektu z Githubu. Tady je příklad existující hybridní připojení se připojuje k vaší aplikace. Vytvořte soubor JSON na výše uvedené schéma jako:
 
     {
       "name": "relay-demo-hc",
