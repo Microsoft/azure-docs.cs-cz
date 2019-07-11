@@ -6,16 +6,16 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
-ms.subservice: text-analytics
+ms.subservice: ink-recognizer
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: aahi
-ms.openlocfilehash: 98962182da86fceb0b6fcc8540422f93bc0058f5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 36f2fa65f47f824ccc3544f5c13b5f5ee9afd21a
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65026296"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67721737"
 ---
 # <a name="language-and-region-support-for-the-ink-recognizer-api"></a>Podpora jazyka a oblasti pro rozhraní API pro rozpoznávání rukopisu
 
@@ -89,7 +89,7 @@ Tento článek vysvětluje, jaké jazyky jsou podporovány pro rozhraní API pro
 | Xhosa                                      |     `xh-ZA`     |
 | Zulu                                       |     `zu-ZA`     |
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
 * [Co je rozhraní API pro rozpoznávání rukopisu?](overview.md)
 * [Odesílání do rozhraní API pro rozpoznávání rukopisu digitální inkoustových tahů](concepts/send-ink-data.md)

@@ -1,5 +1,5 @@
 ---
-title: Konfigurace kontejneru – nástroj pro rozpoznávání formuláře
+title: Konfigurace kontejneru pro nástroj pro rozpoznávání formuláře
 titleSuffix: Azure Cognitive Services
 description: Zjistěte, jak konfigurovat kontejner formuláře Rozlišovač analyzovat data formuláře a tabulek.
 author: IEvangelist
@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: e4b6a852ece3060ecf866d66d32f213355d99950
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 7752b09dd1bf20d796b19d03e62426b098486c39
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592663"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718448"
 ---
 # <a name="configure-form-recognizer-containers"></a>Konfigurace formuláře Rozlišovač kontejnery
 
@@ -45,7 +45,7 @@ Můžete najít tato nastavení na webu Azure Portal, v **správy prostředků m
 
 Můžete najít tato nastavení na webu Azure Portal, v **formuláře Rozlišovač přehled**v části **koncový bod**.
 
-|Požaduje se| Název | Typ dat | Popis |
+|Požadováno| Název | Typ dat | Popis |
 |--|------|-----------|-------------|
 |Ano| `Billing` | Řetězec | Identifikátor URI koncového bodu fakturace<br><br>Příklad:<br>`Billing=https://westus2.api.cognitive.microsoft.com/` |
 
@@ -74,10 +74,10 @@ Kontejner modulu pro rozpoznávání formuláře vyžaduje vstupní připojení 
 
 Syntaxe umístění hostitele připojení se liší v závislosti na operačním systému hostitele. Kromě toho připojení umístění [hostitelský počítač](form-recognizer-container-howto.md#the-host-computer) nemusí být dostupný z důvodu konfliktu mezi oprávnění účtu služby Docker a oprávnění umístění připojení hostitele.
 
-|Nepovinné| Název | Typ dat | Popis |
+|volitelná,| Name | Typ dat | Popis |
 |-------|------|-----------|-------------|
-|Požaduje se| `Input` | String | Cíl vstupní připojení. Výchozí hodnota je `/input`.    <br><br>Příklad:<br>`--mount type=bind,src=c:\input,target=/input`|
-|Požaduje se| `Output` | String | Cíl připojení výstupu. Výchozí hodnota je `/output`.  <br><br>Příklad:<br>`--mount type=bind,src=c:\output,target=/output`|
+|Požadováno| `Input` | Řetězec | Cíl vstupní připojení. Výchozí hodnota je `/input`.    <br><br>Příklad:<br>`--mount type=bind,src=c:\input,target=/input`|
+|Požadováno| `Output` | Řetězec | Cíl připojení výstupu. Výchozí hodnota je `/output`.  <br><br>Příklad:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Spusťte příkazy dockeru příklad
 
@@ -88,7 +88,7 @@ Následující příklady ukazují, jak napsat a použít pomocí nastavení kon
 
 Nahradit {_argument_name_} v tabulce následujících vlastními hodnotami:
 
-| Zástupný symbol | Hodnota |
+| Zástupný symbol | Value |
 |-------------|-------|
 |{BILLING_KEY} | Klíč, který se používá ke spuštění kontejneru. Je k dispozici na webu Azure portal stránky formuláře rozpoznávání klíče.  |
 |{BILLING_ENDPOINT_URI} | Fakturační koncový bod hodnotu identifikátoru URI je k dispozici na portálu Azure portal, stránka s přehledem Rozlišovač formuláře.|

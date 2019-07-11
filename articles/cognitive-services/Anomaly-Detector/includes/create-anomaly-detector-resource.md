@@ -12,8 +12,8 @@ ms.openlocfilehash: b40f1833f08074cb0a8d45fe3afc6bac7cbac7f0
 ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67711678"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67717100"
 ---
 ## <a name="create-an-anomaly-detector-resource"></a>Vytvořte prostředek detekce anomálií
 
@@ -21,9 +21,9 @@ ms.locfileid: "67711678"
 1. Klikněte na tlačítko [vytvořit **detekce anomálií** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) prostředků
 1. Zadejte všechna požadovaná nastavení:
 
-    |Nastavení|Hodnota|
+    |Nastavení|Value|
     |--|--|
-    |Název|Požadovaný název (2-64 znaků)|
+    |Name|Požadovaný název (2-64 znaků)|
     |Subscription|Vyberte odpovídající předplatné|
     |Location|Výběrem kteréhokoli umístění okolí a k dispozici|
     |Cenová úroveň|`F0` -minimální cenová úroveň|

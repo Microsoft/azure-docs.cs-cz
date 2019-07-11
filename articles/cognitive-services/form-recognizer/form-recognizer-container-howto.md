@@ -1,5 +1,5 @@
 ---
-title: Nainstalujte a spusťte kontejner – nástroj pro rozpoznávání formuláře
+title: Jak nainstalovat a spustit kontejner pro nástroj pro rozpoznávání formuláře
 titleSuffix: Azure Cognitive Services
 description: Naučte se využívat kontejner Rozpoznávání formulářů k analýze dat formulářů a tabulek.
 author: IEvangelist
@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: f88cfb1d74897abddeaea6aaec9d7f7b1960be6e
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: a251e97d671c4aad0aebb1d6c3349cdc09444308
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67704243"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718484"
 ---
 # <a name="install-and-run-form-recognizer-containers"></a>Instalace a spouštění kontejnerů Rozlišovač formuláře
 
@@ -32,7 +32,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Před použitím kontejnerů Rozlišovač formuláře, musí splňovat následující požadavky:
 
-|Požaduje se|Účel|
+|Požadováno|Účel|
 |--|--|
 |Modul docker| Je nutné modul Docker nainstalovaný na [hostitelský počítač](#the-host-computer). Docker nabízí balíčky, které nakonfigurují prostředí Dockeru na [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/), a [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Základy Dockeru a kontejnerech základní informace o najdete v článku [přehled Dockeru](https://docs.docker.com/engine/docker-overview/).<br><br> Docker je třeba nastavit umožňující kontejnery a spojte se s odesílat fakturačních dat do Azure. <br><br> Na Windows musí být Docker také nakonfigurované pro podporu kontejnery Linuxu.<br><br>|
 |Znalost Dockeru | Byste měli mít základní znalost konceptů Dockeru, jako je například registry, úložiště, kontejnery a Image kontejnerů a znalost basic `docker` příkazy.|

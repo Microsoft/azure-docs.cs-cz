@@ -7,14 +7,14 @@ author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 06/26/2019
+ms.date: 7/3/2019
 ms.author: dapine
-ms.openlocfilehash: 1d68c08f6dfca74c38973af1686d614f3f10cc28
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: eb2d609c3a7dfd769c6a19854366ac5e45fddb7d
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67455126"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67712433"
 ---
 ## <a name="create-an-azure-kubernetes-service-aks-cluster-resource"></a>Vytvoření prostředku clusteru Azure Kubernetes Service (AKS)
 
@@ -24,8 +24,8 @@ ms.locfileid: "67455126"
 
     |Nastavení|Hodnota|
     |--|--|
-    |Předplatné|Vyberte odpovídající předplatné|
-    |Skupina prostředků|Vyberte skupinu prostředků k dispozici|
+    |Subscription|Vyberte odpovídající předplatné|
+    |Resource group|Vyberte skupinu prostředků k dispozici|
     |Název clusteru Kubernetes|Požadovaný název (malá písmena)|
     |Oblast|Vyberte nejbližší umístění|
     |Verze Kubernetes|1.12.8 (výchozí)|
@@ -37,7 +37,7 @@ ms.locfileid: "67455126"
 1. Na **ověřování** kartu, ponechte *instanční objekt služby* a *povolit RBAC* výchozí hodnoty.
 1. Na **sítě** kartu, zadejte následující možnosti:
 
-    |Nastavení|Hodnota|
+    |Nastavení|Value|
     |--|--|
     |Směrování aplikace HTTP|Ne|
     |Konfigurace sítě|Basic|

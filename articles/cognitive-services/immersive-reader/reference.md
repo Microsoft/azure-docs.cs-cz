@@ -1,20 +1,21 @@
 ---
 title: Odkaz na sadu SDK atraktivní čtečky
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Referenční informace pro atraktivní čtečky SDK
 services: cognitive-services
 author: metanMSFT
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: c128608b3c4a8e1155c3ac962bcfd07f589fbf23
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: 485e8626af4266492e02d4f9fbe4af486e10c082
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67311788"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718387"
 ---
 # <a name="immersive-reader-sdk-reference"></a>Odkaz na sadu SDK atraktivní čtečky
 
@@ -34,10 +35,10 @@ launchAsync(token: string, resourceName: string, content: Content, options?: Opt
 
 #### <a name="parameters"></a>Parametry
 
-| Název | Typ | Popis |
+| Name | Typ | Popis |
 | ---- | ---- |------------ |
-| `token` | string | Přístupový token získaných z volání `issueToken` koncového bodu. |
-| `resourceName` | string | Vyhrazená. Musí být nastaveno na `null`. |
+| `token` | řetězec | Přístupový token získaných z volání `issueToken` koncového bodu. |
+| `resourceName` | řetězec | Vyhrazená. Musí být nastaveno na `null`. |
 | `content` | [Obsah](#content) | Objekt, který obsahuje obsah zobrazený v moderním čtečky. |
 | `options` | [Možnosti](#options) | Možnosti pro konfiguraci určitého chování, atraktivní čtecí zařízení. Volitelné. |
 
@@ -102,7 +103,7 @@ Obsahuje informace o této chybě.
 | Kód | Popis |
 | ---- | ----------- |
 | BadArgument | Zadaný argument je neplatný, naleznete v tématu `message` podrobnosti. |
-| Vypršení časového limitu | Dokonalé čtecí modul se nepodařilo načíst v rámci zadaného časového limitu. |
+| časový limit | Dokonalé čtecí modul se nepodařilo načíst v rámci zadaného časového limitu. |
 | TokenExpired| Platnost zadaného tokenu. |
 
 ## <a name="launching-the-immersive-reader"></a>Spouští se atraktivní čtečky

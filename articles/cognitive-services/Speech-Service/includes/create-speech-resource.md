@@ -12,8 +12,8 @@ ms.openlocfilehash: 3c42bf2b2acc2472741bd603ea9d653a314ecc40
 ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67711821"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67717255"
 ---
 ## <a name="create-a-speech-resource"></a>Vytvořit prostředek řeči
 
@@ -23,7 +23,7 @@ ms.locfileid: "67711821"
 
     |Nastavení|Hodnota|
     |--|--|
-    |Název|Požadovaný název (2-64 znaků)|
+    |Name|Požadovaný název (2-64 znaků)|
     |Subscription|Vyberte odpovídající předplatné|
     |Location|Výběrem kteréhokoli umístění okolí a k dispozici|
     |Cenová úroveň|`F0` -minimální cenová úroveň|

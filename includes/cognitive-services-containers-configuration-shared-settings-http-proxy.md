@@ -1,24 +1,24 @@
 ---
-author: diberry
-ms.author: diberry
+author: IEvangelist
+ms.author: dapine
+ms.date: 06/25/2019
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 05/07/2019
-ms.openlocfilehash: fe1b4699a300831294c26b103d322fb83ad87d3b
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 9911b1c92bdca6c0cdf064ea484cfb603e659467
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175277"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67712484"
 ---
 Pokud je potřeba nakonfigurovat proxy server HTTP pro provedení odchozích požadavků, použijte tyto dva argumenty:
 
-| Název | Typ dat | Popis |
+| Name | Typ dat | Popis |
 |--|--|--|
-|HTTP_PROXY|string|Tento proxy server používat, například `http://proxy:8888`<br>< adresa url proxy serveru >|
-|HTTP_PROXY_CREDS|string|žádné přihlašovací údaje potřebné k ověření vůči proxy serveru, například uživatelské_jméno.|
-|`<proxy-user>`|string|Uživatel pro proxy server.|
-|`proxy-password`|string|Heslo přidružené k `<proxy-user>` pro proxy server.|
+|HTTP_PROXY|řetězec|Tento proxy server používat, například `http://proxy:8888`<br>< adresa url proxy serveru >|
+|HTTP_PROXY_CREDS|řetězec|žádné přihlašovací údaje potřebné k ověření vůči proxy serveru, například uživatelské_jméno.|
+|`<proxy-user>`|řetězec|Uživatel pro proxy server.|
+|`proxy-password`|řetězec|Heslo přidružené k `<proxy-user>` pro proxy server.|
 ||||
 
 

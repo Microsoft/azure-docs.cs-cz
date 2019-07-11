@@ -1,20 +1,21 @@
 ---
-title: Konfigurace kontejnery – detekce anomálií
+title: Konfigurace kontejneru pro rozhraní API detekce anomálií
 titleSuffix: Azure Cognitive Services
-description: Detekce anomálií kontejneru běhové prostředí je nakonfigurovaný nástrojem `docker run` argumenty příkazu. Tento kontejner má několik požadovaná nastavení, společně s pár volitelná nastavení.
+description: Běhové prostředí rozhraní API detekce anomálií kontejneru je nakonfigurovaný nástrojem `docker run` argumenty příkazu. Tento kontejner má několik požadovaná nastavení, společně s pár volitelná nastavení.
 services: cognitive-services
 author: IEvangelist
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 50f62fa20ea9b52db79160d9d2f3a6fa463079b7
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: cb0a12df6696e76050d4c53bd75e07134b3dc27c
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593107"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67721730"
 ---
 # <a name="configure-anomaly-detector-containers"></a>Konfigurace kontejnery detekce anomálií
 
@@ -58,7 +59,7 @@ Toto nastavení najdete v následujícím místě:
 
 * Azure portal: **Detekce anomálií** přehled s popiskem `Endpoint`
 
-|Požaduje se| Název | Typ dat | Popis |
+|Požadováno| Název | Typ dat | Popis |
 |--|------|-----------|-------------|
 |Ano| `Billing` | Řetězec | Identifikátor URI koncového bodu fakturace<br><br>Příklad:<br>`Billing=https://westus2.api.cognitive.microsoft.com` |
 
@@ -87,10 +88,10 @@ Detekce anomálií kontejnery nepoužívejte vstup nebo výstup připojí k ulo�
 
 Syntaxe umístění hostitele připojení se liší v závislosti na operačním systému hostitele. Kromě toho [hostitelský počítač](anomaly-detector-container-howto.md#the-host-computer)na umístění připojení nemusí být přístupné z důvodu konfliktu mezi oprávnění používat účet služby Docker a hostiteli připojit umístění oprávnění. 
 
-|Nepovinné| Název | Typ dat | Popis |
+|volitelná,| Name | Typ dat | Popis |
 |-------|------|-----------|-------------|
-|Nepovoleno| `Input` | String | Kontejnery detekce anomálií Nepoužívejte toto.|
-|Nepovinné| `Output` | String | Cíl připojení výstupu. Výchozí hodnota je `/output`. Toto je umístění protokolů. To zahrnuje protokoly kontejneru. <br><br>Příklad:<br>`--mount type=bind,src=c:\output,target=/output`|
+|Nepovoleno| `Input` | Řetězec | Kontejnery detekce anomálií Nepoužívejte toto.|
+|volitelná,| `Output` | Řetězec | Cíl připojení výstupu. Výchozí hodnota je `/output`. Toto je umístění protokolů. To zahrnuje protokoly kontejneru. <br><br>Příklad:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Spusťte příkazy dockeru příklad 
 

@@ -12,8 +12,8 @@ ms.openlocfilehash: 3886777b283af35e84683480a59097584b537fea
 ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67711579"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67717144"
 ---
 ## <a name="create-an-face-resource"></a>Vytvoření prostředku pro rozpoznávání tváře
 
@@ -21,9 +21,9 @@ ms.locfileid: "67711579"
 1. Klikněte na tlačítko [vytvořit **pro rozpoznávání tváře** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFace) prostředků
 1. Zadejte všechna požadovaná nastavení:
 
-    |Nastavení|Hodnota|
+    |Nastavení|Value|
     |--|--|
-    |Název|Požadovaný název (2-64 znaků)|
+    |Name|Požadovaný název (2-64 znaků)|
     |Subscription|Vyberte odpovídající předplatné|
     |Location|Výběrem kteréhokoli umístění okolí a k dispozici|
     |Cenová úroveň|`F0` -minimální cenová úroveň|

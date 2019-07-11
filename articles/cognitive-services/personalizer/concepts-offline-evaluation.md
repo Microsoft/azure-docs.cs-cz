@@ -7,17 +7,17 @@ author: edjez
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: edjez
-ms.openlocfilehash: 29caea481b1999086440db2021b86d949ce6cbc6
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 3fdedd1af9b683b221dfa4aebad7a30559b7abff
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027233"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722485"
 ---
-# <a name="offline-evaluation"></a>Testování offline
+# <a name="offline-evaluation"></a>Offline vyhodnocení
 
 Metoda, která umožňuje testování a vyhodnocení účinnosti Personalizer služby bez změny kódu nebo by to ovlivnilo činnost koncového uživatele se vyžaduje vyhodnocení za offline. Offline vyhodnocení používá dříve, které jste provedli data odeslaná z aplikace API pořadí pro porovnání jak různé rozměry.
 

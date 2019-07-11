@@ -14,8 +14,8 @@ ms.openlocfilehash: e6c7dcd3015b0b8ab5b3c719ebd2397bc814b81a
 ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67711491"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67717246"
 ---
 ### <a name="text-to-speech-sub-chart-chartstexttospeech"></a>Převod textu na řeč (dílčí graf: grafy/textToSpeech)
 

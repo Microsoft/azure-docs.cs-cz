@@ -13,8 +13,8 @@ ms.openlocfilehash: 38addf4651373ba0f4df411325218a255c835508
 ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67711403"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67717193"
 ---
 ## <a name="create-an-azure-container-instance-resource"></a>Vytvoří prostředek služby Azure Container Instance
 
@@ -22,7 +22,7 @@ ms.locfileid: "67711403"
 
 2. Na **Základy** kartu, zadejte následující údaje:
 
-    |Nastavení|Hodnota|
+    |Nastavení|Value|
     |--|--|
     |Subscription|Vyberte své předplatné.|
     |Resource group|Vyberte skupinu prostředků nebo vytvořte novou, jako `cognitive-services`.|
@@ -35,13 +35,13 @@ ms.locfileid: "67711403"
 
 3. Na **sítě** kartu, zadejte následující údaje:
 
-    |Nastavení|Hodnota|
+    |Nastavení|Value|
     |--|--|
     |Porty|Nastavte TCP port na `5000`. Poskytuje kontejner na portu 5000.|
 
 4. Na **Upřesnit** kartu, zadejte požadované **proměnné prostředí** kontejneru [fakturace nastavení](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-install-containers#billing-arguments) ACI prostředku:
 
-    | Klíč | Hodnota |
+    | Klíč | Value |
     |--|--|
     |`apikey`|Zkopírovány z **klíče** stránce prostředků pro analýzu textu. Jedná se o 32 alfanumerický znak řetězec bez mezery, pomlčky, `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.|
     |`billing`|Zkopírovány z **přehled** stránce prostředků pro analýzu textu. Příklad: `https://northeurope.api.cognitive.microsoft.com/text/analytics/v2.0`|

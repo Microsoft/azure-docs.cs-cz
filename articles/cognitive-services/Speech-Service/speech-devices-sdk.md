@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 561da47aaf0020c80a64d18c935b4086cfca6623
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 341f35d04c7f3f591198acbbf05ac32afe84e95c
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604805"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718539"
 ---
 # <a name="about-the-speech-devices-sdk"></a>Informace o zařízeních řeči SDK
 
@@ -32,6 +32,22 @@ Využívá sadou SDK pro řeč zařízení [sadou SDK pro řeč](speech-sdk.md).
 Sadou SDK pro řeč zařízení můžete použít také k vytváření okolí zařízení, které mají vlastní [přizpůsobit probuzení slovo](speech-devices-sdk-create-kws.md) startovací, který iniciuje interakce s uživatelem je jedinečné pro vlastní značky.
 
 Sadou SDK pro řeč zařízení usnadňuje širokou škálu scénářů hlasové služby, jako například [vlastní hlasové první virtuálních asistentů](https://aka.ms/bots/speech/va), jednotky – do řazení systémy, [konverzace určené k transkripci](conversation-transcription-service.md)a inteligentní přednášející. Může reagovat na uživatele s textem, mluvit zpět na ně ve výchozí nebo [vlastní hlasové](how-to-customize-voice-font.md), poskytovat výsledky vyhledávání [přeložit](speech-translation.md) do jiných jazyků a další. Těšíme se zobrazuje, co je vytvořit!
+
+## <a name="get-the-speech-devices-sdk"></a>Získání sady Speech Devices SDK
+
+### <a name="android"></a>Android
+
+Pro Android zařízení, stáhněte si nejnovější verzi [sadou SDK pro zařízení s Androidem Řeč](https://aka.ms/sdsdk-download-android).
+
+### <a name="windows"></a>Windows
+
+Ukázková aplikace je pro Windows k dispozici jako multiplatformní aplikace v Javě. Stáhněte si nejnovější verzi [prostředí JRE řeči Devices SDK](https://aka.ms/sdsdk-download-JRE).
+Aplikace je sestavená s balíček sadou SDK pro řeč a Java IDE Eclipse (v4) na Windows 64-bit. Běží na 64bitovém prostředí Java 8 Runtime Environment (JRE).
+
+### <a name="linux"></a>Linux
+
+Ukázková aplikace je pro Linux k dispozici jako multiplatformní aplikace v Javě. Stáhněte si nejnovější verzi [prostředí JRE řeči Devices SDK](https://aka.ms/sdsdk-download-JRE).
+Aplikace je sestavená s balíček sadou SDK pro řeč a Java IDE Eclipse (v4) na 64-bit Linux (Ubuntu 16.04, Ubuntu 18.04, Debian 9). Běží na 64bitovém prostředí Java 8 Runtime Environment (JRE).
 
 ## <a name="next-steps"></a>Další postup
 

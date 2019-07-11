@@ -1,38 +1,37 @@
 ---
 title: Použití Kubernetes on-premises
 titleSuffix: Azure Cognitive Services
-description: Definování Image kontejneru řeči na text a převod textu na řeč pomocí Kubernetes (K8s) a Helm, vytvoříme balíček Kubernetes. Tento balíček se nasadí v místním clusteru Kubernetes.
+description: Definování Image řeči na text a převod textu na řeč kontejnerů pomocí Kubernetes a Helm, vytvoříme balíček Kubernetes. Tento balíček se nasadí v místním clusteru Kubernetes.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/03/2019
+ms.date: 7/10/2019
 ms.author: dapine
-ms.openlocfilehash: 1e3afc80abad5f5c1f9b4d57c52ca75449eeb755
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 33d9de956a6d43145fc68f4ec46b09b8e8bf0188
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67711480"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786244"
 ---
 # <a name="use-kubernetes-on-premises"></a>Použití Kubernetes on-premises
 
-Definování Image kontejneru řeči na text a převod textu na řeč pomocí Kubernetes (K8s) a Helm, vytvoříme balíček Kubernetes. Tento balíček se nasadí v místním clusteru Kubernetes. Nakonec se podíváme, jak otestovat nasazených služeb a různé možnosti konfigurace.
+Definování Image řeči na text a převod textu na řeč kontejnerů pomocí Kubernetes a Helm, vytvoříme balíček Kubernetes. Tento balíček se nasadí v místním clusteru Kubernetes. Nakonec se podíváme, jak otestovat nasazených služeb a různé možnosti konfigurace.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tento postup vyžaduje několik nástrojů, které musí být nainstalován a spuštěn místně.
+Před použitím řeči kontejnery v místním, musí splňovat následující požadavky:
 
-* Použijte předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet][free-azure-account] před tím, než začnete.
-* Nainstalujte [rozhraní příkazového řádku Azure][azure-cli] (az).
-* Nainstalujte [příkazového řádku Kubernetes][kubernetes-cli] (kubectl).
-* Nainstalujte [Helm][helm-install] klienta, Správce balíčků Kubernetes.
-    * Nainstalujte server helmu [Tiller][tiller-install].
-* Prostředek Azure s správné cenovou úroveň. Ne všechny cenové úrovně pracovat prostřednictvím těchto imagí kontejneru:
-    * **Rozpoznávání řeči** pouze úrovní prostředků, které F0 nebo standardní ceny.
-    * **Služby cognitive Services** cenová úroveň prostředku s S0.
+|Požadováno|Účel|
+|--|--|
+| Účet Azure | Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet][free-azure-account] před tím, než začnete. |
+| Přístup k registru kontejneru | Aby stažení imagí dockeru do clusteru Kubernetes ji bude potřebovat přístup k registru kontejneru. Je potřeba [žádat o přístup k registru kontejneru][speech-preview-access] první. |
+| Kubernetes CLI | [Příkazového řádku Kubernetes][kubernetes-cli] je nezbytný pro správu sdílené přihlašovací údaje ze služby container registry. Kubernetes je také potřeba před Helm, což je Správce balíčků Kubernetes. |
+| Helm CLI | Jako součást [Helm CLI][helm-install] install, you'll also need to initialize Helm which will install [Tiller][tiller-install]. |
+|Prostředek řeči |Chcete-li použít tyto kontejnery, musíte mít:<br><br>A _řeči_ prostředků Azure můžete získat přidružený klíč účtování a fakturace identifikátor URI koncového bodu. Obě hodnoty jsou k dispozici na webu Azure portal **řeči** stránky přehled a klíče a jsou potřebná ke spuštění kontejneru.<br><br>**{KLÍČ ROZHRANÍ API}** : klíč prostředku<br><br>**{ENDPOINT_URI}** : Příklad identifikátor URI koncového bodu je: `https://westus.api.cognitive.microsoft.com/sts/v1.0`|
 
 ## <a name="the-recommended-host-computer-configuration"></a>Konfigurace počítače se doporučený hostitel
 
@@ -43,19 +42,13 @@ Odkazovat [Speech Service kontejneru hostitelský počítač][speech-container-h
 | **Speech-to-Text** | jeden dekodér vyžaduje minimálně 1,150 jednotkách millicore. Pokud `optimizedForAudioFile` je povolené, pak 1,950 jednotkách millicore jsou povinné. (výchozí: dva dekodérů) | Požadováno: 2 GB<br>Limited:  4 GB |
 | **Text-to-Speech** | jeden souběžný požadavek vyžaduje minimálně jednotkách millicore 500. Pokud `optimizeForTurboMode` je povoleno, 1 000 jednotkách millicore jsou povinné. (výchozí: dvou souběžných požadavků) | Požadováno: 1 GB<br> Limited: 2 GB |
 
-## <a name="request-access-to-the-container-registry"></a>Požádat o přístup k registru kontejneru
-
-Odeslání [formulář žádosti o kontejnerech řeči Cognitive Services][speech-preview-access] chcete požádat o přístup ke kontejneru. 
-
-[!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
-
 ## <a name="connect-to-the-kubernetes-cluster"></a>Připojte se ke clusteru Kubernetes
 
 Hostitelský počítač má mít cluster Kubernetes ve službě k dispozici. Najdete v tomto kurzu na [nasadit Kubernetes cluster](../../aks/tutorial-kubernetes-deploy-cluster.md) pro rámcové informace o tom, jak nasadit Kubernetes cluster na hostitelském počítači.
 
 ### <a name="sharing-docker-credentials-with-the-kubernetes-cluster"></a>Přihlašovací údaje Dockeru pro sdílení obsahu s clusterem Kubernetes
 
-Povolit clusteru Kubernetes do `docker pull` nakonfigurovanou Image z `containerpreview.azurecr.io` registru kontejneru, se musí přenést přihlašovací údaje dockeru do clusteru. Spustit [ `kubectl create` ][kubectl-create] následujícího příkazu vytvořte *tajný klíč registru dockeru* na základě přihlašovacích údajů k dispozici z kontejneru [přístup k registru](#request-access-to-the-container-registry) oddílu.
+Povolit clusteru Kubernetes do `docker pull` nakonfigurovanou Image z `containerpreview.azurecr.io` registru kontejneru, se musí přenést přihlašovací údaje dockeru do clusteru. Spustit [ `kubectl create` ][kubectl-create] následujícího příkazu vytvořte *tajný klíč registru dockeru* na základě přihlašovacích údajů k dispozici z požadovaného softwaru přístup k registru kontejneru.
 
 Z rozhraní příkazového řádku podle vlastní volby, spusťte následující příkaz. Nezapomeňte nahradit `<username>`, `<password>`, a `<email-address>` pomocí přihlašovacích údajů registru kontejneru.
 
