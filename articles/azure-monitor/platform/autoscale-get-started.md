@@ -41,7 +41,7 @@ Pro každý prostředek najdete aktuální počet instancí a stav automatickéh
 
 Pojďme se teď projděte si jednoduchý podrobný postup k vytvoření vaší první zadané nastavení automatického škálování.
 
-1. Otevřít **automatického škálování** okno Azure Monitor a vyberte prostředek, který chcete škálovat. (Následující kroky používají plán služby App Service, který je spojený s webovou aplikací. Je možné [vytvoření vaší první webové aplikace ASP.NET v Azure během 5 minut.] [4])
+1. Otevřít **automatického škálování** okno Azure Monitor a vyberte prostředek, který chcete škálovat. (Následující kroky používají plán služby App Service, který je spojený s webovou aplikací. Je možné [vytvoření vaší první webové aplikace ASP.NET v Azure během 5 minut.][4])
 1. Všimněte si, že je aktuální počet instancí 1. Klikněte na tlačítko **povolit automatické škálování**.
   ![Nastavení škálování pro novou webovou aplikaci][5]
 1. Zadejte název pro nastavení škálování a potom klikněte na tlačítko **přidat pravidlo**. Všimněte si, že pravidla možností škálování, které se otevřou jako kontextovém podokně na pravé straně. Ve výchozím nastavení tím se nastaví možnost škálování vašeho počtu instancí o 1, pokud procento využití procesoru prostředku přesáhne 70 procent. Ponechte jejich výchozí hodnoty a klikněte na tlačítko **přidat**.
