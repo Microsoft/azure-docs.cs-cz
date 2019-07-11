@@ -142,6 +142,9 @@
         - name: Kontrolní seznam zabezpečení
           displayName: 'identity, active directory, password'
           href: azure-ad-secure-steps.md
+        - name: Volba bez hesla
+          displayName: 'identity, active directory, passwordless'
+          href: azure-ad-passwordless.md
         - name: Osvědčené postupy
           displayName: 'password, identity, active directory'
           href: azure-security-identity-management-best-practices.md

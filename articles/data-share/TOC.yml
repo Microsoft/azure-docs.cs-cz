@@ -1,0 +1,39 @@
+- name: Dokumentace ke službě Azure Data Share Preview
+  href: index.yml
+- name: Přehled
+  items:
+    - name: Co je Azure Data Share Preview?
+      href: overview.md
+- name: Kurzy
+  expanded: true
+  items:
+    - name: Sdílení dat
+      href: share-your-data.md
+    - name: Přijetí a získání dat
+      href: subscribe-to-data-share.md
+- name: Koncepty
+  items:
+    - name: Terminologie služby Azure Data Share
+      href: terminology.md
+    - name: Role a požadavky
+      href: concepts-roles-permissions.md
+- name: Návody
+  items:
+    - name: Monitorování
+      href: how-to-monitor.md
+    - name: Konfigurace mapování datové sady
+      href: how-to-configure-mapping.md
+    - name: Řešení potíží
+      href: data-share-troubleshoot.md
+- name: Zdroje a prostředky
+  items:
+    - name: Blog
+      href: 'https://azure.microsoft.com/blog/tag/data-share'
+    - name: Technická komunita Microsoftu
+      href: 'https://techcommunity.microsoft.com/'
+    - name: Zpětná vazba k produktu
+      href: 'https://feedback.azure.com/forums/922759-azure-data-share-public-preview'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing'
+    - name: Aktualizace služeb
+      href: 'https://azure.microsoft.com/updates/?product=data-share'

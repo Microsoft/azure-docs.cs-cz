@@ -105,6 +105,10 @@
           href: web-sites-php-configure.md
         - name: Konfigurace Javy
           href: configure-language-java.md
+        - name: Připojení k místním prostředkům
+          href: web-sites-integrate-with-vnet.md
+        - name: Konfigurace Azure Storage (kontejner)
+          href: configure-connect-to-azure-storage.md
     - name: Nasazení do Azure
       items:
         - name: Nasazení aplikace

@@ -1,0 +1,51 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentace ke službě Azure Data Share Preview
+metadata:
+  title: 'Dokumentace ke službě Azure Data Share Preview – kurzy, praktičtí průvodci'
+  description: Azure Data Share Preview je bezpečná a zabezpečená služba pro sdílení dat s dalšími organizacemi.
+  author: joannapea
+  ms.author: joanpo
+  ms.service: data-share
+  ms.topic: landing-page
+  ms.date: 07/10/2019
+abstract:
+  description: '<p>Azure Data Share Preview je bezpečná a zabezpečená služba pro sdílení dat s dalšími organizacemi. Vyberte datové sady, kterou chcete sdílet, přidejte příjemce a začněte sdílet data. Budete přitom mít možnost řídit, monitorovat a kontrolovat relace sdílení dat. </p><p>Naučte se využívat Azure Data Share prostřednictvím našich kurzů.</p>'
+  aside:
+    image:
+      alt: null
+      height: 110
+      src: media/azure-friday.png
+      width: 250
+    title: Azure Data Share v pořadu Azure Friday
+    href: 'https://channel9.msdn.com/Shows/Azure-Friday/Share-data-simply-and-securely-using-Azure-Data-Share/player?format=ny'
+    width: 250
+sections:
+  - title: Návody
+    items:
+      - type: paragraph
+        text: 'Prostřednictvím jednoho z následujících praktických průvodců se naučíte monitorovat vaši sdílenou datovou složku, konfigurovat mapování datových sad, přidávat příjemce a využívat další funkce:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: /azure/data-share/media/index/portal.svg
+            text: Monitorování služby Azure Data Share
+            href: /azure/data-share/how-to-monitor
+          - image:
+              src: /azure/data-share/media/index/portal.svg
+            text: Konfigurace mapování datové sady
+            href: /azure/data-share/how-to-configure-mapping
+          - image:
+              src: /azure/data-share/media/index/portal.svg
+            text: Řešení potíží se službou Azure Data Share
+            href: /azure/data-share/data-share-troubleshoot
+  - title: Podrobné kurzy
+    items:
+      - type: paragraph
+        text: Naučte se sdílet vaše data s využitím služby Azure Data Share
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="share-your-data">Sdílení dat s využitím služby Azure Data Share</a>
+          - html: <a href="subscribe-to-data-share">Přijetí a získání dat prostřednictvím služby Azure Data Share</a>

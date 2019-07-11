@@ -92,6 +92,10 @@
           href: event-hubs-programming-guide.md
         - name: Příjem událostí pomocí třídy EventProcessorHost
           href: event-hubs-event-processor-host.md
+    - name: Zpracování dat
+      items:
+        - name: Zpracování dat s využitím Azure Stream Analytics
+          href: process-data-azure-stream-analytics.md
     - name: Použití klientských knihoven
       items:
         - name: .NET Framework

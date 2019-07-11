@@ -1,20 +1,21 @@
 ---
-title: 'Rychlý start: Vytvoření webové aplikace, které spouští atraktivní Reader (C#)'
+title: 'Rychlý start: Vytvoření webové aplikace, které spouští atraktivní prstůC#'
 titlesuffix: Azure Cognitive Services
-description: V tomto rychlém startu vytvoření webové aplikace od začátku a přidejte funkce atraktivní čtečky.
+description: V tomto rychlém startu vytvoření webové aplikace od začátku a přidejte funkce atraktivní čtečky rozhraní API.
 services: cognitive-services
 author: metanMSFT
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: quickstart
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: a4da8d23e78fde9b936bcf9258eec137bcdf9231
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 3b408de6b60e7e7704ee228b52c399e5b80e3a9e
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67704141"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718415"
 ---
 # <a name="quickstart-create-a-web-app-that-launches-the-immersive-reader-c"></a>Rychlý start: Vytvoření webové aplikace, které spouští atraktivní Reader (C#)
 
