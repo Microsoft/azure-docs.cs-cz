@@ -10,13 +10,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
-ms.author: sumeet.mittal
-ms.openlocfilehash: b39f365c8b66f7cab074a20bc574803e12f93422
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: sumi
+ms.openlocfilehash: 86726eefb53638036a4e9207c648bf5ffe6c866e
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61033896"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595388"
 ---
 # <a name="virtual-network-service-endpoint-policies-preview"></a>Zásady koncových bodů služby pro virtuální síť (Preview)
 
@@ -45,7 +45,7 @@ Zásady koncových bodů služby pro virtuální síť nabízejí následující
 
    Zásady koncových bodů nabízejí horizontálně škálovatelné, vysoce dostupné řešení, které umožňuje filtrovat přenosy dat služeb Azure ve virtuálních sítích s pomocí koncových bodů služeb. K údržbě centrálních síťových zařízení používaných v provozu virtuálních sítí tak nepotřebujete další režijní prostředky.
 
-## <a name="configuration"></a>Konfigurace
+## <a name="configuration"></a>Konfiguraci
 
 - Zásady koncových bodů můžete nakonfigurovat tak, aby byl provoz virtuální sítě omezen jenom na určité prostředky služeb Azure. Ve verzi Preview podporujeme zásady koncových bodů pro Azure Storage. 
 - Zásady koncových bodů jsou nakonfigurované v podsíti virtuální sítě. Aby zásada platila pro všechny služby Azure, které jsou v ní uvedené, musí být koncové body služby povolené v podsíti.

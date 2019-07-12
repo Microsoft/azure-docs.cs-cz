@@ -7,7 +7,7 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: cbc2ff98-916d-4339-8959-622823c5b772
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 05/24/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: ea4134c486310592f1f0f344ae26a11276143faf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d8e1c3f845af6edf274aa95797523ace07cf820c
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60680080"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594013"
 ---
 # <a name="quickstart-integrate-an-azure-storage-account-with-azure-cdn"></a>Rychlý start: Integrace účtu služby Azure storage s Azure CDN
 V tomto rychlém startu povolíte službě [Azure Content Delivery Network (CDN)](cdn-overview.md), aby obsah ze služby Azure Storage ukládala do mezipaměti. Azure CDN nabízí vývojářům globální řešení pro doručování širokopásmového obsahu. Do mezipaměti může ukládat objekty blob a statický obsah výpočetních instancí ve fyzických uzlech v USA, Evropě, Asii, Austrálii a Jižní Americe.
@@ -55,7 +55,7 @@ K vytvoření účtu úložiště můžete použít několik metod, včetně web
    
     Tato hodnota se stane názvem hostitele v rámci identifikátoru URI, který se používá k adresování prostředků objektů blob, dotazů nebo tabulek daného předplatného. Pokud chcete adresovat prostředek kontejneru v úložišti Blob Storage, použijte identifikátor URI v následujícím formátu:
    
-    http://*&lt;popisek_účtu_úložiště&gt;*.blob.core.windows.net/*&lt;kontejner&gt;*
+    http:// *&lt;popisek_účtu_úložiště&gt;* .blob.core.windows.net/ *&lt;kontejner&gt;*
 
     kde *&lt;popisek_účtu_úložiště&gt;* odkazuje na hodnotu, kterou jste zadali do pole **Název**.
    
@@ -70,7 +70,7 @@ K vytvoření účtu úložiště můžete použít několik metod, včetně web
     | -------- | ----- |
     | **Model nasazení** | Použijte výchozí hodnotu. |
     | **Druh účtu** | Použijte výchozí hodnotu. |
-    | **Umístění**    | V rozevíracím seznamu vyberte **Střed USA**. |
+    | **Location**    | V rozevíracím seznamu vyberte **Střed USA**. |
     | **Replikace** | Použijte výchozí hodnotu. |
     | **Výkon** | Použijte výchozí hodnotu. |
     | **Vyžádání bezpečného přenosu** | Použijte výchozí hodnotu. |
@@ -94,11 +94,11 @@ Azure CDN můžete pro účet úložiště povolit přímo z vašeho účtu úlo
     
 2. Nový koncový bod vytvořte zadáním požadovaných informací uvedených v následující tabulce:
 
-    | Nastavení  | Hodnota |
+    | Nastavení  | Value |
     | -------- | ----- |
     | **Profil CDN** | Vyberte **vytvořit nový** a zadejte název profilu, například *my-cdn-profile-123*. Tento název musí být globálně jedinečný.  |
     | **Cenová úroveň** | V rozevíracím seznamu vyberte **Verizon úrovně Standard**. |
-    | **Název koncového bodu CDN** | Zadejte název hostitele koncového bodu, tj *my-endpoint-123*. Tento název musí být globálně jedinečný. Tento název se používá pro přístup k prostředkům v mezipaměti v doméně _&lt;název_koncového_bodu&gt;_.azureedge.net. |
+    | **Název koncového bodu CDN** | Zadejte název hostitele koncového bodu, tj *my-endpoint-123*. Tento název musí být globálně jedinečný. Tento název se používá pro přístup k prostředkům v mezipaměti v doméně _&lt;název_koncového_bodu&gt;_ .azureedge.net. |
     | **Název počátečního hostitele** | Nový koncový bod CDN používá ve výchozím nastavení název hostitele vašeho účtu úložiště jako server původu. |
 
 3. Vyberte **Vytvořit**. Koncový bod se po vytvoření zobrazí v seznamu koncových bodů.

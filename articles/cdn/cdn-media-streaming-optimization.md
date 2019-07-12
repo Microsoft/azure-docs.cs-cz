@@ -7,19 +7,19 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: magattus
-ms.openlocfilehash: 9802296170f07bb8599058e230798f647e900d4d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c6ed546735058e330368151adb0df7323f943050
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60636221"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593656"
 ---
 # <a name="media-streaming-optimization-with-azure-cdn"></a>S Azure CDN optimalizace streamování médií 
  
@@ -87,7 +87,7 @@ Krátký záporný časový ukládání do mezipaměti je užitečný pro snižo
 |   | Obecné doručování webu | Streamování obecných médií | Streamování médií vod (Video-on-demand)  
 --- | --- | --- | ---
 Caching: Kladné <br> HTTP 200, 203, 300, <br> 301, 302 a 410 | 7 dní |365 dnů | 365 dnů   
-Caching: Záporný <br> HTTP 204, 305, 404, <br> a 405 | Žádný | 1 sekunda | 1 sekunda
+Caching: Záporný <br> HTTP 204, 305, 404, <br> a 405 | Žádné | 1 sekunda | 1 sekunda
  
 ### <a name="deal-with-origin-failure"></a>Řešení selhání původu  
 

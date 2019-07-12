@@ -10,13 +10,14 @@ ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 11/07/2018
-ms.author: azfuncdf, cotresne, glenga
-ms.openlocfilehash: 91b61e88d876f481e74b8f2295b6fffced3f7902
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: glenga
+ms.reviewer: azfuncdf, cotresne
+ms.openlocfilehash: c54a5631222a6de261e9805f284a4dfa2801750f
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67065512"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612911"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>Vytvoření první funkce trvalý v jazyce JavaScript
 
@@ -28,7 +29,7 @@ V tomto článku se dozvíte, jak použít rozšíření Visual Studio Code Azur
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pro absolvování tohoto kurzu potřebujete:
+K provedení kroků v tomto kurzu je potřeba:
 
 * Nainstalujte [Visual Studio Code](https://code.visualstudio.com/download).
 
@@ -157,7 +158,7 @@ Po ověření správného fungování funkce na místním počítači je na čas
 
 2. Vložte tuto novou adresu URL pro požadavek HTTP do panelu Adresa prohlížeče. Měli byste obdržet stejnou odpověď stav jako před při použití publikované aplikace.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Používáte Visual Studio Code k vytvoření a publikování aplikace odolné funkce jazyka JavaScript.
 

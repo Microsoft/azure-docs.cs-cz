@@ -2,17 +2,17 @@
 title: Operátor osvědčené postupy – Správa imagí kontejnerů ve službě Azure Kubernetes služby (AKS)
 description: Podívejte se operátor clusteru osvědčené postupy pro postupy při správě a zabezpečení imagí kontejnerů ve službě Azure Kubernetes Service (AKS)
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.author: iainfou
-ms.openlocfilehash: ea39bceaa6b58e84def9635436d902002e33cd14
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mlearned
+ms.openlocfilehash: 3feadaca361950df2a09f8da33fe380fc3763763
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66514519"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614818"
 ---
 # <a name="best-practices-for-container-image-management-and-security-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro správu image kontejnerů a zabezpečení ve službě Azure Kubernetes Service (AKS)
 
@@ -24,13 +24,13 @@ Tento článek se zaměřuje na tom, jak zabezpečit své kontejnery ve službě
 > * Vyhledání a oprava ohrožení zabezpečení image
 > * Automaticky aktivovat a opětovné nasazení imagí kontejnerů, když dojde k aktualizaci základní image
 
-Můžete si také přečíst osvědčené postupy pro [clusteru zabezpečení] [ best-practices-cluster-security] a [pod zabezpečení][best-practices-pod-security].
+Můžete si také přečíst osvědčené postupy pro [clusteru zabezpečení][best-practices-cluster-security] and for [pod security][best-practices-pod-security].
 
 ## <a name="secure-the-images-and-run-time"></a>Zabezpečení Image a čas spuštění
 
 **Osvědčené postupy pro moduly** – kontrola imagí kontejnerů pro ohrožení zabezpečení a pouze nasazení bitové kopie, které jste předali ověření. Pravidelné aktualizace základní Image a doba spuštění aplikace a potom zopakujte nasazení úloh v clusteru AKS.
 
-Jeden problém s přijetím založených na kontejnerech úlohy je ověření zabezpečení imagí a modul runtime používá k vytváření vlastních aplikací. Jak jste se ujistit, že nezpůsobíte slabá místa zabezpečení do vašeho nasazení? Váš pracovní postup nasazení by měla obsahovat procesu kontrolovat Image kontejnerů pomocí nástrojů, jako [Twistlock] [ twistlock] nebo [Aqua][aqua]a pak Povolte jenom ověřené Image k nasazení.
+Jeden problém s přijetím založených na kontejnerech úlohy je ověření zabezpečení imagí a modul runtime používá k vytváření vlastních aplikací. Jak jste se ujistit, že nezpůsobíte slabá místa zabezpečení do vašeho nasazení? Váš pracovní postup nasazení by měla obsahovat procesu kontrolovat Image kontejnerů pomocí nástrojů, jako [Twistlock][twistlock] or [Aqua][aqua]a potom Povolit jenom ověřené Image k nasazení.
 
 ![Kontrola a napravit imagí kontejnerů, ověření a nasazení](media/operator-best-practices-container-security/scan-container-images-simplified.png)
 
@@ -40,7 +40,7 @@ V příkladu skutečných můžete použít průběžné integrace a průběžn�
 
 **Osvědčené postupy pro moduly** – použijte základní Image pro obrázky aplikace automatizace použít k vytvoření nových imagí při aktualizaci základní image. Jak obvykle tyto základní Image obsahují opravy zabezpečení, aktualizujte všechny aplikace pro příjem dat imagí kontejnerů.
 
-Pokaždé, když se aktualizuje základní image, Image všechny podřízené kontejneru musí také aktualizovat. Tento proces sestavení by měly být zahrnuty do ověření a kanály nasazení, jako [kanály Azure] [ azure-pipelines] nebo Jenkinse. Tyto kanály zajišťuje, že vaše aplikace dál běžet aktualizovaný na základě bitové kopie. Po ověření imagí kontejnerů aplikací AKS nasazení je pak aktualizovat pro spuštění imagí nejnovější, zabezpečené.
+Pokaždé, když se aktualizuje základní image, Image všechny podřízené kontejneru musí také aktualizovat. Tento proces sestavení by měly být zahrnuty do ověření a kanály nasazení, jako [kanály Azure][azure-pipelines] nebo Jenkinse. Tyto kanály zajišťuje, že vaše aplikace dál běžet aktualizovaný na základě bitové kopie. Po ověření imagí kontejnerů aplikací AKS nasazení je pak aktualizovat pro spuštění imagí nejnovější, zabezpečené.
 
 Úkoly v Azure Container Registry lze aktualizovat také automaticky imagí kontejnerů, když dojde k aktualizaci základní image. Tato funkce umožňuje malý počet základní Image, ale taky popustit Novoroční pravidelně aktualizuje opravami chyb a zabezpečení.
 

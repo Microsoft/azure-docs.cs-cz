@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/19/2019
 ms.author: juliako
-ms.openlocfilehash: f26467a250314fa8a6fe401f4ec1d6a999b6bb4d
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: a951ebd46335ad4639b8499283ddd30f13edd64e
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296213"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67605658"
 ---
 # <a name="live-events-and-live-outputs"></a>Živé události a výstupy
 
@@ -142,7 +142,7 @@ Můžete použít buď nejednoduché adresy URL, nebo jednoduché adresy URL.
 
 ## <a name="live-event-preview-url"></a>Náhled adresy URL pro živé události
 
-Jakmile **živá událost** spustí příjem příspěvků datového kanálu, můžete použít svůj koncový bod ve verzi preview pro zobrazení náhledu a ověření, že vám posíláme živého datového proudu před dalším publikování. Po kontrole, že datový proud ve verzi preview je dobré živá událost můžete zpřístupnit živého datového proudu pro doručení prostřednictvím jednoho nebo více (předem vytvořené) **koncové body streamování**. Chcete-li to provést, vytvořte nový [Live výstup](https://docs.microsoft.com/rest/api/media/liveoutputs) na **živá událost**. 
+Až živá událost začne dostávat příspěvků datového kanálu, slouží k zobrazení náhledu a ověření, že vám posíláme živého datového proudu před dalším publikování svůj koncový bod ve verzi preview. Po kontrole, že datový proud ve verzi preview je dobré, můžete zpřístupnit živého datového proudu pro doručení prostřednictvím jednoho nebo více (předem vytvořené) koncové body streamování živá událost. Chcete-li to provést, vytvořte nový [Live výstup](https://docs.microsoft.com/rest/api/media/liveoutputs) na živá událost. 
 
 > [!IMPORTANT]
 > Ujistěte se, že je video směřující do adresy URL náhledu před pokračováním!
@@ -158,11 +158,11 @@ Jakmile se datový proud plyne do živá událost, streamování událostí mů�
 > [!NOTE]
 > Live výstupů spuštění při vytvoření a přestanou při odstranění. Při odstranění výstupní Live nejsou odstraněním podkladových prostředků a obsahu v prostředku. 
 
-Vztah mezi **živá událost** a jeho **Live výstupy** je podobná tradičním televizní vysílání, kterým kanál (**živá událost**) představuje konstantu datový proud videa a nahrávání (**Live výstup**) působí na určité časové segmentů (například večer novinky od 18:30:00 do 19:00:00). Televizi můžete nahrát pomocí videorekordéru. Ekvivalentní funkce u živých událostí se spravuje pomocí vlastnosti **ArchiveWindowLength**. Je formátu ISO 8601 časový interval doba trvání (například PTHH:MM:SS), která určuje kapacitu DVR a můžete nastavit na minimálně 3 minuty, které maximálně 25 hodin.
+Vztah mezi **živá událost** a jeho **Live výstupy** je podobný tradiční televizního vysílání, kterým kanál (živá událost) představuje nepřetržitý datový proud videa a nahrávání (Live Výstup) působí na určité časové segmentů (například večer novinky od 18:30:00 do 19:00:00). Můžete zaznamenat televizoru pomocí záznamu pro digitální Video (DVR) – ekvivalentní funkce v živé události se spravuje přes **archiveWindowLength** vlastnost. Je formátu ISO 8601 časový interval doba trvání (například PTHH:MM:SS), která určuje kapacitu DVR a můžete nastavit na minimálně 3 minuty, které maximálně 25 hodin.
 
-**Live výstup** objektu je jako pásku rekordéru, který bude zachytávat a poznamenejte si live stream do prostředku ve vašem účtu Media Services. Zaznamenaný obsah bude trvale uložit do účtu služby Azure Storage, který je připojený ke svému účtu, do kontejneru definované pomocí prostředků resource. **Live výstup** také umožňuje řídit některé vlastnosti odchozí živého datového proudu, jako je například kolik datového proudu se ukládají v záznamu archivu (například kapacita cloudového DVR) a určuje, jestli můžete spustit prohlížeče sledování živého datového proudu. Archiv na disku je do kruhové archivu "okno", který obsahuje pouze množství obsahu, který je zadán v **archiveWindowLength** vlastnost **Live výstup**. Obsah, který spadá mimo toto okno se automaticky zruší z kontejneru úložiště a nepůjde obnovit. Můžete vytvořit více **Live výstupy** (až tři maximální) na **živá událost** s nastaveními a archivovat různé délky.  
+Za výstupní objekt je jako pásku záznam, který zachytí a záznam živý datový proud do prostředku ve vašem účtu Media Services. Zaznamenaný obsah bude trvale uložit do účtu služby Azure Storage, který je připojený ke svému účtu, do kontejneru definované pomocí prostředků resource. Výstup živého také umožňuje řídit některé vlastnosti odchozí živého datového proudu, jako je například kolik datového proudu se ukládají v záznamu archivu (například kapacita cloudového DVR) a zda prohlížeče můžete spustit sledování živého datového proudu. Archiv na disku je do kruhové archivu "okno", který obsahuje pouze množství obsahu, který je určený ve vlastnosti archiveWindowLength výstupu za provozu. Obsah, který spadá mimo toto okno se automaticky zruší z kontejneru úložiště a nepůjde obnovit. Můžete vytvořit několik výstupů za provozu (maximálně až tři) na živá událost s nastaveními a archivovat různé délky.  
 
-Pokud jste publikovali **Live výstup**společnosti **Asset** pomocí **Lokátor streamování**, **živá událost** (až do délky okna DVR) bude Pokračovat lze zobrazit až do vypršení platnosti nebo odstranění Lokátor streamování, podle toho, co nastane dřív.
+Pokud jste publikovali výstup živého **Asset** pomocí **Lokátor streamování**, budou moci zobrazit až do vypršení platnosti lokátoru streamování nebo odstranění, bude pokračovat živá událost (až do délky okna DVR) podle toho, co nastane dřív.
 
 Další informace najdete v tématu [pomocí cloudového DVR](live-event-cloud-dvr.md).
 

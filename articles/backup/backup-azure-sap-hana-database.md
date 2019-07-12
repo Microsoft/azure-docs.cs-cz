@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: raynew
-ms.openlocfilehash: a16ed7134fc9f3c159715f58f116de3fb30e8aca
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 1c5c38e9af58aa9468fb0e22491327d3a35f0dda
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67481112"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67656650"
 ---
 # <a name="back-up-an-sap-hana-database"></a>Zálohovat databázi SAP HANA
 
@@ -26,7 +26,7 @@ ms.locfileid: "67481112"
 
 **Podpora** | **Podrobnosti**
 --- | ---
-**Podporované zeměpisných oblastech** | Austrálie – jihovýchod, Austrálie – východ <br> Brazílie – jih <br> Canada Central, Canada East <br> Jihovýchodní Asie, jihovýchodní Asie <br> USA – východ, USA – východ 2, střed USA – Západ, USA – Západ, USA – západ 2, USA (střed) – sever, střed USA, USA (střed) – jih<br> India Central, India South <br> Japonsko – západ, Japonsko – východ<br> Jižní Korea – střed, Jižní Korea – jih <br> Severní Evropa, Západní Evropa <br> Velká Británie – Jih, Velká Británie – západ
+**Podporované zeměpisných oblastech** | Austrálie – jihovýchod, Austrálie – východ <br> Brazílie – jih <br> Canada Central, Canada East <br> Jihovýchodní Asie, jihovýchodní Asie <br> USA – východ, USA – východ 2, střed USA – Západ, USA – Západ, USA – západ 2, USA (střed) – sever, střed USA, USA (střed) – jih<br> India Central, India South <br> Japonsko – západ, Japonsko – východ<br> Jižní Korea – střed, Jižní Korea – jih <br> Severní Evropa, Západní Evropa <br> Velká Británie – Jih, Velká Británie – západ
 **Podporované operační systémy pro virtuální počítač** | SLES 12 SP2 nebo s aktualizací SP3.
 **Podporované verze HANA** | SDC on HANA 1.x MDC on HANA 2.x < = SPS03
 

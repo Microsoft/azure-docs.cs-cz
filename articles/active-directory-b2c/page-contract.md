@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/04/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f7098d805b0e3f1527587fc3411cd4c3b234b057
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: c3ee05096b0bfd071ea569105973097ce9727b07
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67540395"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604525"
 ---
 # <a name="select-a-page-contract-in-azure-active-directory-b2c-using-custom-policies"></a>Vyberte stránku smlouvu v Azure Active Directory B2C pomocí vlastních zásad
 
@@ -79,7 +79,7 @@ Stránka smlouvy balíčky jsou pravidelně aktualizovány na zahrnovat opravy a
   - Vstupní pole pro přijímá jenom kód zadávat znaky až šest (6)
   - Na stránce se automaticky pokusí ověřit kód zadá, když je zadán 6místným číselným kódem, bez jakékoli tlačítko museli být kliknutí
   - Pokud kód je chybný, že pak je vstupní pole automaticky vymazány
-  - Po tři (3) pokusů o nesprávné kódem odešle B2C chybu zpět do služby
+  - Po tři (3) pokusů o nesprávné kódem B2C odešle zpět k předávající straně chybu
   - Oprav týkajících se přístupnosti
   - Výchozí šablony stylů CSS odebrat
 - Stránka s vlastním potvrzením (selfasserted)

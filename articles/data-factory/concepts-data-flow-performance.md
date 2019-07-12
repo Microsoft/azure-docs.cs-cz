@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.date: 05/16/2019
-ms.openlocfilehash: bbbc2bc5c47821469ecf15a27195b1bf0c12e6e5
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: 1ee266d7d9846a357dce613817affdb0cde5bfdc
+ms.sourcegitcommit: e6cb7ca206a125c05acfd431b5a64391a8dcc6b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190635"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67569031"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Mapování výkonu toky dat a Průvodce laděním
 
@@ -127,7 +127,18 @@ Klepnutí na tuto ikonu se zobrazí plán provádění a následné výkonu prof
 * To mějte na paměti při výběru této možnosti Oblíbené. Můžete spustit nemá dostatek prostředků uzlu clusteru, pokud kombinujete mnoha velkých zdrojové soubory do oddílu jeden výstupní soubor.
 * Aby se zabránilo vyčerpání prostředků výpočetního uzlu, můžete ponechat výchozí nebo explicitní schéma rozdělení oddílů ve službě ADF, která optimalizuje výkon, a pak přidejte další aktivitu kopírování v kanálu, která sloučí všechny části souborů z výstupní složky do jediného nového soubor. Tato technika v podstatě odděluje akci transformace z sloučení souboru a dosáhne stejného výsledku jako nastavení "výstup do jednoho souboru".
 
-## <a name="next-steps"></a>Další postup
+### <a name="looping-through-file-lists"></a>Opakování ve smyčce prostřednictvím seznamy souborů
+
+Ve většině případů se spustí toky dat ve službě ADF lepší z kanálu, který umožňuje transformace toku zdroje dat k iteraci přes více souborů. Jinými slovy proto se upřednostňuje pomocí zástupných znaků nebo seznamy souborů ve zdroji dat tok, který k iteraci přes seznam velkých souborů pomocí příkazu ForEach v kanálu, volání spuštění toku dat při každé iteraci. Zpracování toku dat tím, že opakování dojde k uvnitř toku dat spustí rychleji.
+
+Například pokud mám seznam datových souborů z července 2019, pomocí které chcete ke zpracování do složky v úložišti objektů Blob, je výkonnější volat aktivitu spuštění toku dat jednou z vašeho kanálu a ve zdroji následujícím způsobem použít zástupný znak :
+
+```DateFiles/*_201907*.txt```
+
+To se poskytují vyšší výkon než vyhledávání na základě Store objektů Blob v kanálu, který pak Iteruje přes všechny odpovídající soubory pomocí aktivity spustit tok dat uvnitř ForEach.
+
+## <a name="next-steps"></a>Další kroky
+
 Zobrazit další toku dat články související s výkonem:
 
 - [Karta Optimalizace toku dat](concepts-data-flow-optimize-tab.md)

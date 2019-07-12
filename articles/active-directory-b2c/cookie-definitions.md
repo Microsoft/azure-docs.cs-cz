@@ -9,19 +9,19 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: marsma
-ms.component: B2C
-ms.openlocfilehash: 1de1734d791608f3262d2af70becc2e082c9f317
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.subservice: B2C
+ms.openlocfilehash: af3244a32e9d02a1ba5053da85547bf614053127
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511149"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67587413"
 ---
 # <a name="cookies-definitions-for-azure-active-directory-b2c"></a>Soubory cookie definice pro Azure Active Directory B2C
 
 V následující tabulce jsou uvedeny soubory cookie se používají v Azure Active Directory B2C.
 
-| Name | Domain (Doména) | vypršení platnosti | Účel |
+| Name | Doména | vypršení platnosti | Účel |
 | ----------- | ------ | -------------------------- | --------- |
 | x-ms-cpim-admin | main.b2cadmin.ext.azure.com | Konec [relaci prohlížeče](active-directory-b2c-token-session-sso.md) | Obsahuje dat o členství uživatele mezi tenanty. Tenanti uživatel je členem sady a úroveň členství (správce nebo uživatel). |
 | x-ms-cpim-slice | Login.microsoftonline.com, b2clogin.com, značkové domény | Konec [relaci prohlížeče](active-directory-b2c-token-session-sso.md) | Používá pro směrování požadavků na vhodné produkční instance. |

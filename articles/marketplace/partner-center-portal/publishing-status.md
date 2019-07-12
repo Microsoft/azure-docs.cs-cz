@@ -7,12 +7,12 @@ ms.author: mattwoj
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 9bf3136969974abbe9a99a5632478e3cbb22307e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ae4840877ae461244a76984ed8ac3edc82d57a38
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66474521"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67653986"
 ---
 # <a name="check-the-publishing-status-of-your-commercial-marketplace-offer"></a>Zkontrolujte stav publikování vaší nabídky komerční Marketplace
 
@@ -75,7 +75,7 @@ Během ověřování obsahu zkontrolují informace zadá, když jste vytvořili 
 - kvalita snímků obrazovky a doprovodných videa; a
 - vysvětlení, jak tuto nabídku využívá platformy Microsoft a nástrojů.
 
-Další informace týkající se obsahu ověřovací kritéria načtením [obecné výpis zásady](https://docs.microsoft.com/legal/marketplace/general-policies#10-general-listing-policies).
+Další informace týkající se obsahu ověřovací kritéria načtením [obecné výpis zásady](https://docs.microsoft.com/legal/marketplace/certification-policies#100-general-policies).
 
 #### <a name="technical-validation"></a>Technické ověření
 
@@ -141,6 +141,6 @@ V tomto kroku zajistíme, že vaše nabídka se stanou veřejně dostupné na we
 
 Pokud chcete provést změny na nabídku, kterou jste už publikovali, musíte nejprve aktualizovat stávající nabídky a pak je znovu publikovat.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Aktualizace stávající nabídky na webu Marketplace obchodní](./update-existing-offer.md)

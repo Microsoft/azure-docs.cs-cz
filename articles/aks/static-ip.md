@@ -2,17 +2,17 @@
 title: Statické IP adresy pomocí nástroje pro vyrovnávání zatížení Azure Kubernetes Service (AKS)
 description: Zjistěte, jak vytvořit a používat statickou IP adresu nástroje pro vyrovnávání zatížení Azure Kubernetes Service (AKS).
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.author: iainfou
-ms.openlocfilehash: d2e4314948eeda0c82c004414f894dafc4d4cff6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mlearned
+ms.openlocfilehash: 9e32715766734bcbb150d70aeed2dc5b06a4bcbb
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61031639"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614468"
 ---
 # <a name="use-a-static-public-ip-address-with-the-azure-kubernetes-service-aks-load-balancer"></a>Statické veřejné IP adresy pomocí nástroje pro vyrovnávání zatížení Azure Kubernetes Service (AKS)
 
@@ -20,9 +20,9 @@ Ve výchozím nastavení veřejná IP adresa přidělená k prostředku nástroj
 
 V tomto článku se dozvíte, jak vytvořit statickou veřejnou IP adresu a přiřaďte ho do služby Kubernetes.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
-Tento článek předpokládá, že máte existující cluster AKS. Pokud potřebujete AKS cluster, najdete v tomto rychlém startu AKS [pomocí Azure CLI] [ aks-quickstart-cli] nebo [pomocí webu Azure portal][aks-quickstart-portal].
+Tento článek předpokládá, že máte existující cluster AKS. Pokud potřebujete AKS cluster, najdete v tomto rychlém startu AKS [pomocí Azure CLI][aks-quickstart-cli] or [using the Azure portal][aks-quickstart-portal].
 
 Také nutné mít Azure CLI verze 2.0.59 nebo později nainstalované a nakonfigurované. Spustit `az --version` k vyhledání verze. Pokud potřebujete instalaci nebo upgrade, naleznete v tématu [instalace Azure CLI][install-azure-cli].
 
@@ -32,7 +32,7 @@ Momentálně se podporuje jenom *základní SKU IP*se podporuje. Práce probíh�
 
 Při vytváření statickou veřejnou IP adresu pro použití službou AKS prostředek IP adresy mají být vytvořeny v **uzel** skupinu prostředků. Pokud chcete samostatné prostředky, viz následující část, která [použijte statickou IP adresu mimo skupinu prostředků uzel](#use-a-static-ip-address-outside-of-the-node-resource-group).
 
-Nejprve získejte název skupiny prostředků uzlu s [az aks zobrazit] [ az-aks-show] příkaz a přidejte `--query nodeResourceGroup` parametr dotazu. Následující příklad získá uzlu skupiny prostředků pro AKS název clusteru *myAKSCluster* v názvu skupiny prostředků *myResourceGroup*:
+Nejprve získejte název skupiny prostředků uzlu s [az aks zobrazit][az-aks-show] příkaz a přidejte `--query nodeResourceGroup` parametr dotazu. Následující příklad získá uzlu skupiny prostředků pro AKS název clusteru *myAKSCluster* v názvu skupiny prostředků *myResourceGroup*:
 
 ```azurecli-interactive
 $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
@@ -40,7 +40,7 @@ $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeR
 MC_myResourceGroup_myAKSCluster_eastus
 ```
 
-Teď Vytvořte statickou veřejnou IP adresu s [vytvoření veřejné IP adresy sítě az] [ az-network-public-ip-create] příkazu. Zadejte název uzlu skupiny prostředků získané v předchozím příkazu, a potom název pro IP adresu vztahují prostředků, jako *myAKSPublicIP*:
+Teď Vytvořte statickou veřejnou IP adresu s [vytvoření veřejné IP adresy sítě az][az-network-public-ip-create] příkazu. Zadejte název uzlu skupiny prostředků získané v předchozím příkazu, a potom název pro IP adresu vztahují prostředků, jako *myAKSPublicIP*:
 
 ```azurecli-interactive
 az network public-ip create \
@@ -64,7 +64,7 @@ IP adresa se zobrazí, jak je znázorněno v následujícím výstupu zhuštěn�
 }
 ```
 
-Později můžete získat na veřejných IP adres pomocí [az network public-ip list] [ az-network-public-ip-list] příkazu. Zadejte název uzlu skupiny prostředků a veřejné IP adresy, které jste vytvořili a dotaz *ipAddress* jak je znázorněno v následujícím příkladu:
+Později můžete získat na veřejných IP adres pomocí [az network public-ip list][az-network-public-ip-list] příkazu. Zadejte název uzlu skupiny prostředků a veřejné IP adresy, které jste vytvořili a dotaz *ipAddress* jak je znázorněno v následujícím příkladu:
 
 ```azurecli-interactive
 $ az network public-ip show --resource-group MC_myResourceGroup_myAKSCluster_eastus --name myAKSPublicIP --query ipAddress --output tsv
@@ -127,7 +127,7 @@ spec:
 
 ## <a name="troubleshoot"></a>Řešení potíží
 
-Pokud podle statickou IP adresu *loadBalancerIP* vlastnost service manifest Kubernetesu neexistuje nebo není vytvořená v uzlu skupiny prostředků a žádná další delegování nakonfigurované, služby Vyrovnávání zatížení vytváření se nezdaří. Řešení potíží, najdete v tématu události vytvoření služby s [kubectl popisují] [ kubectl-describe] příkazu. Zadejte název služby, jak je uvedeno v manifestu YAML, jak je znázorněno v následujícím příkladu:
+Pokud podle statickou IP adresu *loadBalancerIP* vlastnost service manifest Kubernetesu neexistuje nebo není vytvořená v uzlu skupiny prostředků a žádná další delegování nakonfigurované, služby Vyrovnávání zatížení vytváření se nezdaří. Řešení potíží, najdete v tématu události vytvoření služby s [popisují kubectl][kubectl-describe] příkazu. Zadejte název služby, jak je uvedeno v manifestu YAML, jak je znázorněno v následujícím příkladu:
 
 ```console
 kubectl describe service azure-load-balancer
@@ -159,7 +159,7 @@ Events:
 
 ## <a name="next-steps"></a>Další postup
 
-Pro další kontroly nad síťovými přenosy do aplikací, můžete místo toho [vytvořit řadič příchozího přenosu dat][aks-ingress-basic]. Můžete také [vytvořit řadič příchozího přenosu dat se statickou veřejnou IP adresu][aks-static-ingress].
+Pro další kontroly nad síťovými přenosy do aplikací, můžete místo toho [vytvořit řadič příchozího přenosu dat][aks-ingress-basic]. You can also [create an ingress controller with a static public IP address][aks-static-ingress].
 
 <!-- LINKS - External -->
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe

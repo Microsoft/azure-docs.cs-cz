@@ -7,7 +7,7 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: 4ca51224-5423-419b-98cf-89860ef516d2
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 05/24/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: b1e287ee949aedf084d4390fe672f0fe41899c34
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2a3325217c1ec854e4f6cef3facce5580fb06a57
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60684624"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593997"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint"></a>Rychlý start: Vytvoření koncového bodu a profilu Azure CDN
 V tomto rychlém startu povolíte Azure Content Delivery Network (CDN) prostřednictvím vytvoření nového profilu a koncového bodu CDN. Po vytvoření profilu a koncového bodu můžete začít doručovat obsah svým zákazníkům.
@@ -53,7 +53,7 @@ Po vytvoření profilu CDN ho můžete použít k vytvoření koncového bodu.
 
     | Nastavení | Hodnota |
     | ------- | ----- |
-    | **Název** | Jako název hostitele koncového bodu zadejte *my-endpoint-123*. Tento název musí být globálně jedinečný. Pokud se už používá, můžete zadat jiný název. Tento název se používá pro přístup k prostředkům v mezipaměti v doméně _&lt;název_koncového_bodu&gt;_.azureedge.net.|
+    | **Název** | Jako název hostitele koncového bodu zadejte *my-endpoint-123*. Tento název musí být globálně jedinečný. Pokud se už používá, můžete zadat jiný název. Tento název se používá pro přístup k prostředkům v mezipaměti v doméně _&lt;název_koncového_bodu&gt;_ .azureedge.net.|
     | **Typ zdroje** | Vyberte **Úložiště**. | 
     | **Název počátečního hostitele** | Jako název hostitele zadejte *mystorageacct123.blob.core.windows.net*. Tento název musí být globálně jedinečný. Pokud se už používá, můžete zadat jiný název. |
     | **Cesta ke zdroji** | Ponechte prázdné. |

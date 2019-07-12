@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 01/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d2440b638a9c8eb27505b747d26917de8032e6cd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.openlocfilehash: 9d3ce15ac9899fe09d907296976db15ed0babb35
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66510118"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612469"
 ---
 # <a name="link-an-azure-subscription-to-an-azure-active-directory-b2c-tenant"></a>Propojit předplatné Azure s tenantem Azure Active Directory B2C
 
@@ -81,6 +81,14 @@ Můžete použít tento prostředek na:
 - Přesunutí prostředku tenanta Azure AD B2C do jiného předplatného Azure nebo do jiné skupiny prostředků.
 
 ![Nastavení prostředek B2C](./media/active-directory-b2c-how-to-enable-billing/b2cresourcesettings.png)
+
+## <a name="change-the-azure-ad-b2c-tenant-billing-subscription"></a>Změna tenanta Azure AD B2C fakturace předplatného
+
+Klienty Azure AD B2C můžete přesunout do jiného předplatného, pokud zdrojové a cílové předplatné existuje ve stejném tenantovi Azure Active Directory.
+
+Zjistěte, jak přesunout prostředky Azure, například vašeho tenanta Azure AD B2C do jiného předplatného, najdete v článku [přesunutí prostředků do nové skupiny prostředků nebo předplatného](../azure-resource-manager/resource-group-move-resources.md).
+
+Než spustíte funkci přesunu, nezapomeňte si přečíst celý článek, abyste úplně pochopili omezení a požadavky pro tyto přesunout. Kromě pokynů pro přesun prostředků obsahuje důležité informace, jako jsou kontrolní seznam před přesunutí a jak ověřovat v provádění operace přesunutí.
 
 ## <a name="known-issues"></a>Známé problémy
 

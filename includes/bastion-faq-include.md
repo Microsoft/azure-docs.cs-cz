@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/17/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: e29a9265e010c3f442b742faf62b16dae02739fa
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: 29ab9b3c33aae6005510c34b207c7f87714149e5
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67191179"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67608125"
 ---
 ### <a name="preview"></a>Jak účast ve verzi public preview
 
@@ -55,4 +55,8 @@ Aby bylo možné navázat připojení, následující role jsou povinné:
 
 ### <a name="previewbill"></a>Ceny – se mi bude účtovat účast ve verzi preview?
 
-Vám bude účtováno pouze částečně ve verzi public preview. Neexistuje ale žádná smlouva SLA připojené v rámci vašeho nasazení. Další informace najdete na [stránce s cenami](https://aka.ms/BastionHostPricing).
+Vám bude účtováno pouze částečně ve verzi public preview. Neexistuje ale žádná smlouva SLA připojené k vašemu nasazení. Další informace najdete na [stránce s cenami](https://aka.ms/BastionHostPricing).
+
+### <a name="previewbill"></a>Proč se zobrazí chyba "vypršela platnost vaší relace" zprávy před spuštěním relace Bastionu?
+
+Relace měl iniciovat jenom z webu Azure portal. Přihlaste se k webu Azure portal a začít vaši relaci znovu. Pokud přejdete na adresu URL přímo z jiného relaci prohlížeče nebo karty, je tato chyba očekávaná. Pomáhá zajistit, že vaše relace je bezpečnější a že relace je přístupný pouze prostřednictvím webu Azure portal.

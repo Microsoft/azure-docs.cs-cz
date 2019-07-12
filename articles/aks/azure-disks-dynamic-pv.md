@@ -2,17 +2,17 @@
 title: Dynamicky se vytvářejí diskový svazek pro několik podů se ve službě Azure Kubernetes Service (AKS)
 description: Zjistěte, jak dynamicky se vytvářejí trvalého svazku s disky Azure pro použití s více souběžných podů ve službě Azure Kubernetes Service (AKS)
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.author: iainfou
-ms.openlocfilehash: 334e56db97213206d9ab7ed5ef4d1d96ab9325d6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mlearned
+ms.openlocfilehash: 0641d613da86aeffa0c4abb0f82ce93c38283156
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65956474"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67616082"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Dynamické vytváření a používání trvalého svazku s disky Azure ve službě Azure Kubernetes Service (AKS)
 
@@ -23,9 +23,9 @@ Trvalý svazek představuje část úložiště, která byla zřízena pro použ
 
 Další informace o Kubernetes svazky, naleznete v tématu [možnosti úložiště pro aplikace ve službě AKS][concepts-storage].
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
-Tento článek předpokládá, že máte existující cluster AKS. Pokud potřebujete AKS cluster, najdete v tomto rychlém startu AKS [pomocí Azure CLI] [ aks-quickstart-cli] nebo [pomocí webu Azure portal][aks-quickstart-portal].
+Tento článek předpokládá, že máte existující cluster AKS. Pokud potřebujete AKS cluster, najdete v tomto rychlém startu AKS [pomocí Azure CLI][aks-quickstart-cli] or [using the Azure portal][aks-quickstart-portal].
 
 Také nutné mít Azure CLI verze 2.0.59 nebo později nainstalované a nakonfigurované. Spustit `az --version` k vyhledání verze. Pokud potřebujete instalaci nebo upgrade, naleznete v tématu [instalace Azure CLI][install-azure-cli].
 
@@ -42,7 +42,7 @@ Každý cluster AKS obsahuje dvě třídy předem vytvořené úložiště, nako
     
 Tyto výchozí třídy úložiště neumožňuje aktualizace velikosti svazku po vytvoření. Chcete-li povolit tuto možnost, přidejte *allowVolumeExpansion: true* řádek do jedné ze tříd výchozí úložiště nebo vytvořte vlastní vlastní úložiště třídy. Můžete upravit existující pomocí třídy úložiště `kubectl edit sc` příkazu. Další informace o třídách úložiště a vytváření youor vlastní najdete v tématu [možnosti úložiště pro aplikace ve službě AKS][storage-class-concepts].
 
-Použití [kubectl get sc] [ kubectl-get] příkazu naleznete v tématu třídy předem vytvořené úložiště. Následující příklad ukazuje předem vytvořit třídy úložiště k dispozici v rámci clusteru AKS:
+Použití [kubectl get sc][kubectl-get] příkazu naleznete v tématu třídy předem vytvořené úložiště. Následující příklad ukazuje předem vytvořit třídy úložiště k dispozici v rámci clusteru AKS:
 
 ```console
 $ kubectl get sc
@@ -78,7 +78,7 @@ spec:
 > [!TIP]
 > Chcete-li vytvořit disk, který používá služba storage úrovně standard, použijte `storageClassName: default` spíše než *spravované premium*.
 
-Vytvořit deklaraci trvalý svazek s [použití kubectl] [ kubectl-apply] příkaz a zadejte vaše *azure premium.yaml* souboru:
+Vytvořit deklaraci trvalý svazek s [použití kubectl][kubectl-apply] příkaz a zadejte vaše *azure premium.yaml* souboru:
 
 ```console
 $ kubectl apply -f azure-premium.yaml
@@ -117,7 +117,7 @@ spec:
         claimName: azure-managed-disk
 ```
 
-Vytvořte pod s [použití kubectl] [ kubectl-apply] příkaz, jak je znázorněno v následujícím příkladu:
+Vytvořte pod s [použití kubectl][kubectl-apply] příkaz, jak je znázorněno v následujícím příkladu:
 
 ```console
 $ kubectl apply -f azure-pvc-disk.yaml
@@ -163,7 +163,7 @@ NAME                 STATUS    VOLUME                                     CAPACI
 azure-managed-disk   Bound     pvc-faf0f176-8b8d-11e8-923b-deb28c58d242   5Gi        RWO            managed-premium   3m
 ```
 
-Tento název svazku tvoří základní název disku. Dotaz na ID disku s [az disk list] [ az-disk-list] a zadejte název svazku PVC, jak je znázorněno v následujícím příkladu:
+Tento název svazku tvoří základní název disku. Dotaz na ID disku s [az disk list][az-disk-list] a zadejte název svazku PVC, jak je znázorněno v následujícím příkladu:
 
 ```azurecli-interactive
 $ az disk list --query '[].id | [?contains(@,`pvc-faf0f176-8b8d-11e8-923b-deb28c58d242`)]' -o tsv
@@ -190,7 +190,7 @@ Obnovení disku a jeho použití s podu Kubernetes, použijte snímek jako zdroj
 az disk create --resource-group MC_myResourceGroup_myAKSCluster_eastus --name pvcRestored --source pvcSnapshot
 ```
 
-Používat obnoveného disku pod, zadejte ID disku v manifestu. Získání ID disku se [az disk show] [ az-disk-show] příkazu. Následující příklad získá ID disku pro *pvcRestored* vytvořili v předchozím kroku:
+Používat obnoveného disku pod, zadejte ID disku v manifestu. Získání ID disku se [az disk show][az-disk-show] příkazu. Následující příklad získá ID disku pro *pvcRestored* vytvořili v předchozím kroku:
 
 ```azurecli-interactive
 az disk show --resource-group MC_myResourceGroup_myAKSCluster_eastus --name pvcRestored --query id -o tsv
@@ -225,7 +225,7 @@ spec:
         diskURI: /subscriptions/<guid>/resourceGroups/MC_myResourceGroupAKS_myAKSCluster_eastus/providers/Microsoft.Compute/disks/pvcRestored
 ```
 
-Vytvořte pod s [použití kubectl] [ kubectl-apply] příkaz, jak je znázorněno v následujícím příkladu:
+Vytvořte pod s [použití kubectl][kubectl-apply] příkaz, jak je znázorněno v následujícím příkladu:
 
 ```console
 $ kubectl apply -f azure-restored.yaml

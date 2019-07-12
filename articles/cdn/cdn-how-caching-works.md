@@ -7,19 +7,19 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: magattus
-ms.openlocfilehash: f82675f1e93a5471f98c1778e9394f9eaec1a07b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 92d93fbf9fa2f8df15acb62802d7ac53db836dc1
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60636800"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593846"
 ---
 # <a name="how-caching-works"></a>Jak funguje ukládání do mezipaměti
 
@@ -127,7 +127,7 @@ Následující tabulka popisuje výchozí chování pro produkty Azure CDN a jej
 |    | Microsoft: Obecné doručování webu | Verizon: Obecné doručování webu | Verizon: DSA | Akamai: Obecné doručování webu | Akamai: DSA | Akamai: Stahování velkých souborů | Akamai: Obecné nebo streamování médií videa na Vyžádání |
 |------------------------|--------|-------|------|--------|------|-------|--------|
 | **Případném dalším sdílení dodržovat původu**       | Ano    | Ano   | Ne   | Ano    | Ne   | Ano   | Ano    |
-| **Doba trvání mezipaměti CDN** | 2 dny |7 dní | Žádný | 7 dní | Žádný | 1 den | 1 rok |
+| **Doba trvání mezipaměti CDN** | 2 dny |7 dní | Žádné | 7 dní | Žádné | 1 den | 1 rok |
 
 **Případném dalším sdílení dodržovat původu**: Určuje, zda případném dalším sdílení dodržovat podporovaných hlaviček direktiv pro mezipaměť, pokud existují v odpovědi HTTP ze zdrojového serveru.
 

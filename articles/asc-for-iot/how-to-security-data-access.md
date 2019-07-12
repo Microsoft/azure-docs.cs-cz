@@ -2,24 +2,25 @@
 title: Přístup k datům pomocí Azure Security Center pro náhled IoT | Dokumentace Microsoftu
 description: Další informace o tom, jak přistupovat k datům upozornění a doporučení zabezpečení při použití Azure Security Center pro IoT.
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
 ms.assetid: fbd96ddd-cd9f-48ae-836a-42aa86ca222d
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/25/2019
 ms.author: mlottner
-ms.openlocfilehash: 1ec6a174d05f8707bbffcc9fb013a98c2eb9196c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2d3f3c6ad194ff8c9582f0c9e71a29b37ba5d967
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65200543"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67616738"
 ---
 # <a name="access-your-security-data"></a>Přístup k vašim datům zabezpečení 
 
@@ -69,7 +70,7 @@ SecurityAlert
 | take 3
 ```
 
-| TimeGenerated           | IoTHubId                                                                                                       | DeviceId      | AlertSeverity | displayName                           | Popis                                             | ExtendedProperties                                                                                                                                                             |
+| TimeGenerated           | IoTHubId                                                                                                       | DeviceId      | AlertSeverity | DisplayName                           | Popis                                             | ExtendedProperties                                                                                                                                                             |
 |-------------------------|----------------------------------------------------------------------------------------------------------------|---------------|---------------|---------------------------------------|---------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 2018-11-18T18:10:29.000 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | < název_zařízení > | Vysoká          | Útok hrubou silou byla úspěšná           | Útok hrubou silou na zařízení bylo úspěšné        |    {"Úplný zdrojový Address": "[\"10.165.12.18:\"]", "Uživatelská jména": "[\"\"]", "DeviceId": "IoT-Device-Linux" }                                                                       |
 | 2018-11-19T12:40:31.000 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | < název_zařízení > | Vysoká          | Úspěšné místní přihlášení na zařízení      | Bylo zjištěno úspěšné místní přihlášení k zařízení     | {"Vzdálená adresa": "?", "Vzdálený Port": "", "Místní Port": "", "Login prostředí": "/ bin/su", "Id procesu přihlášení": "28207", "uživatelské jméno": "útočník", "DeviceId": "IoT-Device-Linux" } |
@@ -92,7 +93,7 @@ SecurityAlert
     DisplayName
 ```
 
-| IoTHubId                                                                                                       | DeviceId      | AlertSeverity | displayName                           | Count |
+| IoTHubId                                                                                                       | DeviceId      | AlertSeverity | DisplayName                           | Count |
 |----------------------------------------------------------------------------------------------------------------|---------------|---------------|---------------------------------------|-----|
 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | < název_zařízení > | Vysoká          | Útok hrubou silou byla úspěšná           | 9   |   
 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | < název_zařízení > | Střední        | Neúspěšný pokus o místní přihlášení na zařízení  | 242 |    
@@ -116,7 +117,7 @@ SecurityAlert
     DisplayName
 ```
 
-| IoTHubId                                                                                                       | AlertSeverity | displayName                           | CntDevices |
+| IoTHubId                                                                                                       | AlertSeverity | DisplayName                           | CntDevices |
 |----------------------------------------------------------------------------------------------------------------|---------------|---------------------------------------|------------|
 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | Vysoká          | Útok hrubou silou byla úspěšná           | 1          |    
 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | Střední        | Neúspěšný pokus o místní přihlášení na zařízení  | 1          | 
@@ -177,7 +178,7 @@ SecurityRecommendation
 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | < název_zařízení > | Střední        | 4   |
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si ASC pro IoT [– přehled](overview.md)
 - Další informace o ASC pro IoT [architektury](architecture.md)

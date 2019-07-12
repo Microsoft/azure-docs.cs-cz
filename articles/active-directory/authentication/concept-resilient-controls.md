@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 12/19/2018
-ms.author: martincoetzer
+ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff59b93603af61fd8ea571966a3c43a06929ae04
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 831ba47ea4e999219a6d8cf34cb5fb0fdcd1ead8
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67113472"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594958"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Vytvořit strategie správy řízení odolné přístupu v Azure Active Directory
 
@@ -143,7 +143,7 @@ V následujícím příkladu: **Příklad A – řešení nepředvídaných udá
   * Název: EM001 - POVOLIT NOUZOVÉ: MFA přerušení [1/4] - Exchange SharePoint - vyžadovala připojení k hybridní službě Azure AD
   * Uživatelé a skupiny: Zahrnout ContingencyAccess. Vyloučit CoreAdmins a EmergencyAccess
   * Cloudové aplikace: Exchange Online a SharePoint Online
-  * Podmínky: Jakýkoli
+  * Podmínky: Any
   * Udělit řízení: Vyžadovat připojených k doméně
   * Stav: Zakázáno
 * Zásady 2: Blok jiných platformách než Windows
@@ -185,7 +185,7 @@ V tomto příkladu Další **příklad B - zásad podmíněného přístupu ře�
   * Název: EM001 - POVOLIT NOUZOVÉ: Narušení dodržování předpisů zařízení [1/2] - Salesforce – blokovat všechny uživatele kromě SalesforceContingency
   * Uživatelé a skupiny: Zahrňte všechny uživatele. Vyloučit SalesAdmins a SalesforceContingency
   * Cloudové aplikace: Salesforce.
-  * Podmínky: Žádný
+  * Podmínky: Žádné
   * Udělit řízení: Zablokovat
   * Stav: Zakázáno
 * Zásady 2: Blokovat prodejního týmu z jakékoli platformy, než mobilní zařízení (ke snížení plochy útoku)

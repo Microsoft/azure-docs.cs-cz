@@ -6,16 +6,16 @@ author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: load data
+ms.subservice: load-data
 ms.date: 04/26/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: a706fca7f7653c6916efc72d07988e79c9015a43
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c69382ee0bec5586fc247cd0e568f5f48f0eda08
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66244503"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67588590"
 ---
 # <a name="load-data-from-azure-data-lake-storage-to-sql-data-warehouse"></a>Načtení dat ze služby Azure Data Lake Storage do SQL Data Warehouse
 Načtení dat ze služby Azure Data Lake Storage do Azure SQL Data Warehouse pomocí PolyBase externí tabulky. I když můžete spouštět ad hoc dotazy s daty uloženými ve službě Data Lake Storage, doporučujeme importování dat do SQL Data Warehouse pro zajištění nejlepšího výkonu.
@@ -27,7 +27,7 @@ Načtení dat ze služby Azure Data Lake Storage do Azure SQL Data Warehouse pom
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 Než začnete s tímto kurzem, stáhněte a nainstalujte nejnovější verzi aplikace [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS).
 
 Ke spuštění v tomto kurzu, budete potřebovat:
@@ -213,7 +213,7 @@ V následujícím příkladu je dobrým výchozím bodem pro vytváření statis
 ## <a name="achievement-unlocked"></a>Odemknout úspěch!
 Úspěšně jste načetli data do Azure SQL Data Warehouse. Skvělá práce!
 
-## <a name="next-steps"></a>Další postup 
+## <a name="next-steps"></a>Další kroky 
 V tomto kurzu jste vytvořili externí tabulky pro definici struktury dat uložených v Data Lake Storage Gen1 a pak použít příkazu PolyBase CREATE TABLE AS SELECT k načtení dat do datového skladu. 
 
 Provedli jste tyto akce:

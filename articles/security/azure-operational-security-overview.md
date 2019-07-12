@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: tomsh
-ms.openlocfilehash: 38054d6ee3799296887726954ef1f096945aeaeb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ca9feb226a077484ba43bef7cd14d962ea95b37a
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60586845"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67653424"
 ---
 # <a name="azure-operational-security-overview"></a>Přehled provozního zabezpečení Azure
 
@@ -47,7 +47,7 @@ Můžete sloučit data z různých zdrojů a kombinovat data ze služby Azure s 
 
 Azure Backup nabízí součásti, které můžete stáhnout a nasadit v příslušném počítači nebo na serveru nebo v cloudu. Nasazená komponenta nebo agent závisí na tom, co chcete chránit. Všechny komponenty Azure Backup (ať chráníte data dostupná místně nebo v cloudu) slouží k zálohování dat do trezoru služby Azure Recovery Services v Azure. 
 
-Další informace najdete v tématu [tabulce komponent Azure Backup](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup#which-azure-backup-components-should-i-use).
+Další informace najdete v tématu [tabulce komponent Azure Backup](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup#which-backup-agent-should-i-use).
 
 ### <a name="site-recovery"></a>Site Recovery
 

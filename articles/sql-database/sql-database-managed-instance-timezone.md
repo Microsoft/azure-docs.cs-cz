@@ -10,13 +10,13 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
 manager: craigg
-ms.date: 05/22/2019
-ms.openlocfilehash: 8499d99ab82fa89062d74c7dc5db5d7dd11e770c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/05/2019
+ms.openlocfilehash: 05ec49c98c5bcfe40346550f5570c03a8fb3f881
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66016380"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657994"
 ---
 # <a name="time-zones-in-azure-sql-database-managed-instance"></a>Časových pásem v Azure SQL Database Managed Instance
 
@@ -30,7 +30,9 @@ Použití [AT TIME ZONE](https://docs.microsoft.com/sql/t-sql/queries/at-time-zo
 
 ## <a name="supported-time-zones"></a>Podporované časových pásem
 
-Sada podporovaných časových pásem je zděděno od základního operačního systému, spravované instance. Pravidelně se aktualizuje, k získání nových definic časové pásmo a odráží změny do již existující. 
+Sada podporovaných časových pásem je zděděno od základního operačního systému, spravované instance. Pravidelně se aktualizuje, k získání nových definic časové pásmo a odráží změny do již existující.
+
+[Letní čas/časové pásmo změní zásady](https://aka.ms/time) zaručuje historických přesnost z 2010 vpřed.
 
 Seznam s názvy podporované časových pásem je k dispozici prostřednictvím [sys.time_zone_info](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql) systémové zobrazení.
 
@@ -43,7 +45,7 @@ Seznam s názvy podporované časových pásem je k dispozici prostřednictvím 
 
 ### <a name="set-the-time-zone-through-the-azure-portal"></a>Nastavte časové pásmo na webu Azure portal
 
-Při zadávání parametrů pro novou instanci, vyberte ze seznamu podporovaných časových pásem časové pásmo. 
+Při zadávání parametrů pro novou instanci, vyberte ze seznamu podporovaných časových pásem časové pásmo.
   
 ![Nastavení časového pásma během vytvoření instance](media/sql-database-managed-instance-timezone/01-setting_timezone-during-instance-creation.png)
 
@@ -82,7 +84,10 @@ Dokáže obnovit záložní soubor nebo importovat data do spravované instance 
 
 ### <a name="point-in-time-restore"></a>Obnovení k určitému bodu v čase
 
-Když provádíte obnovení bodu v čase, čas k obnovení je interpretován jako čas UTC. Toto nastavení zabrání veškerou nejednoznačnost kvůli letního času a jeho potenciálních změn.
+<del>Když provádíte obnovení bodu v čase, čas k obnovení je interpretován jako čas UTC. Toto nastavení zabrání veškerou nejednoznačnost kvůli letního času a jeho potenciálních změn.<del>
+
+ >[!WARNING]
+  > Aktuální chování není podle výše uvedeného příkazu a čas k obnovení je interpretováno podle časové pásmo zdroje spravovanou instanci, odkud jsou automatické zálohování databází. Pracujeme na opravě tohoto chování k interpretaci Zadaný bod v čase jako čas UTC. Zobrazit [známé problémy](sql-database-managed-instance-timezone.md#known-issues) další podrobnosti.
 
 ### <a name="auto-failover-groups"></a>Skupiny automatického převzetí služeb při selhání
 
@@ -95,6 +100,21 @@ Pomocí stejného časového pásma mezi primární a sekundární instance ve s
 
 - Časové pásmo existující spravovanou instanci nejde změnit.
 - Externí proces spuštěn z úlohy agenta serveru SQL není sledujte časové pásmo instance.
+
+## <a name="known-issues"></a>Známé problémy
+
+Při obnovení bodu v čase (PITR) proběhlo, čas k obnovení je interpretováno podle časovému pásmu nastavenému na spravovanou instanci, kde jsou odebrány automatické zálohování databází, i v případě, že stránka portálu pro PITR naznačuje, že čas je interpretován jako UTC.
+
+Příklad:
+
+Dejme tomu, že tuto instanci, kde se automatické zálohy jsou prováděny z má sadu časové pásmo (východní běžný čas) (UTC – 5).
+Stránka portálu pro obnovení k určitému bodu v čase naznačuje, že čas, kdy zvolíte obnovení je čas UTC:
+
+![PITR pomocí místního času pomocí portálu](media/sql-database-managed-instance-timezone/02-pitr-with-nonutc-timezone.png)
+
+Ale čas k obnovení je ve skutečnosti interpretována jako východní oblast (běžný čas) a v tomto konkrétním příkladu se obnoví databáze do stavu v 9 AM východ (běžný čas) a není čas UTC.
+
+Pokud chcete provést obnovení bodu v čase k určitému bodu v čase UTC, nejdřív výpočet ekvivalentní čas v časovém pásmu instance zdroje dat a pomocí této doby na portálu nebo skript prostředí PowerShell nebo rozhraní příkazového řádku.
 
 ## <a name="list-of-supported-time-zones"></a>Seznam podporovaných časových pásem
 
@@ -239,7 +259,7 @@ Pomocí stejného časového pásma mezi primární a sekundární instance ve s
 | Samoa (běžný čas) | (UTC+13:00) Samoa |
 | Ostrovy Line (běžný čas) | (UTC+14:00) Ostrov Kiritimati |
 
-## <a name="see-also"></a>Další informace najdete v tématech 
+## <a name="see-also"></a>Viz také: 
 
 - [CURRENT_TIMEZONE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-transact-sql)
 - [NA časové pásmo (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/at-time-zone-transact-sql)

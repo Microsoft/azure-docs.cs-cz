@@ -2,24 +2,25 @@
 title: Principy Azure Security Center pro IoT nákladů ve verzi Preview | Dokumentace Microsoftu
 description: Další informace o náklady spojené s Azure Security Center pro Internet věcí a jak je můžete řídit.
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
 ms.assetid: ef839708-4574-4a40-bc45-07005f8e9daf
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2019
 ms.author: mlottner
-ms.openlocfilehash: 40963e0d81ccff21cc625b799833b996547a13b6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dd041cdb1608eab60fa2a5fa756f381656a13a46
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65198321"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67618437"
 ---
 # <a name="pricing-and-associated-costs"></a>Ceny a související náklady
 
@@ -62,7 +63,7 @@ Chcete-li změnit nastavení:
 
 Následující tabulka obsahuje souhrn související náklady a důsledky jednotlivých možností.
 
-|     | Využití | Komentář |
+|     | Použití | Komentář |
 | --- | --- | --- |
 | **Využití kvóty služby IoT Hub** |  |
 | [Export zařízení](https://docs.microsoft.com/azure/iot-hub/iot-hub-bulk-identity-mgmt#export-devices) úlohy (dvojčete export) | Jednou za den | Zakázat _dvojčete kolekci metadat_ |
@@ -82,7 +83,7 @@ Následující tabulka obsahuje souhrn související náklady a důsledky jednot
 | | Podrobnosti o [výstraha](concept-security-alerts.md) a [doporučení](concept-recommendations.md) vyšetřování nejsou k dispozici |
 
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
 - Přístup k vaší [nezpracovaná zabezpečení dat](how-to-security-data-access.md)
 - [Prozkoumat zařízení](how-to-investigate-device.md)

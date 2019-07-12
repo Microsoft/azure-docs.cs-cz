@@ -12,14 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2019
-ms.author: dariagrigoriu;cephalin
+ms.author: cephalin
+ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: e66c625c3f30580715762d2dd3f48eeaa6e548dc
-ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
-ms.translationtype: MT
+ms.openlocfilehash: 9724282a7f5aaaca222960b3c40c5342094b8945
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67143958"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67617199"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Místní nasazení z Gitu do služby Azure App Service
 
@@ -210,7 +211,7 @@ git config --global http.postBuffer 524288000
       NEBO
   * `npm ERR! [modulename@version] preinstall: \make || gmake\`
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
 * [Dokumentace ke službě Project Kudu](https://github.com/projectkudu/kudu/wiki)
 * [Průběžné nasazování do služby Azure App Service](deploy-continuous-deployment.md)

@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 5efbe874bbf3c1c4081eb7a2c76c1be5a3358ec8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b5015f00d3c6dfe0e1e5c2466af777cc0f1bc509
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65518986"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67607156"
 ---
 # <a name="use-azure-sql-vm-cli-to-configure-always-on-availability-group-for-sql-server-on-an-azure-vm"></a>Pomocí Azure CLI virtuálního počítače SQL ke konfiguraci skupiny dostupnosti Always On pro SQL Server na Virtuálním počítači Azure
 Tento článek popisuje způsob použití [příkazového řádku Azure SQL VM](/cli/azure/sql/vm?view=azure-cli-latest/) nasadit Windows Failover Cluster (WSFC) a přidejte virtuální počítače SQL serveru do clusteru, jakož i vytvořit interní nástroj pro vyrovnávání zatížení a naslouchacího procesu pro skupiny dostupnosti Always On.  Skutečné nasazení skupiny dostupnosti Always On se stále provádí ručně přes SQL Server Management Studio (SSMS). 
@@ -28,7 +28,7 @@ Tento článek popisuje způsob použití [příkazového řádku Azure SQL VM](
 K automatizaci instalací skupiny dostupnosti Always On pomocí příkazového řádku virtuálního počítače SQL Azure, musí už máte splněné následující požadavky: 
 - [Předplatného Azure](https://azure.microsoft.com/free/).
 - Skupina prostředků s řadičem domény. 
-- Jeden nebo více připojených k doméně [virtuálních počítačů v Azure spuštěné systému SQL Server 2016 (nebo vyšší) Enterprise edition](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) v *stejné skupiny dostupnosti nebo různých zón dostupnosti* jsou [zaregistrovaný u poskytovatele prostředků SQL VM](virtual-machines-windows-sql-ahb.md#register-sql-server-vm-with-sql-resource-provider).  
+- Jeden nebo více připojených k doméně [virtuálních počítačů v Azure spuštěné systému SQL Server 2016 (nebo vyšší) Enterprise edition](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) v *stejné skupiny dostupnosti nebo různých zón dostupnosti* jsou [zaregistrovaný u poskytovatele prostředků SQL VM](virtual-machines-windows-sql-register-with-resource-provider.md).  
 - [Rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli). 
 - (Není používána entitu) k dispozici dvě IP adresy, jeden pro interní nástroj pro vyrovnávání zatížení a jeden pro naslouchací proces skupiny dostupnosti ve stejné podsíti jako skupiny dostupnosti. Pokud se používá stávajícího nástroje pro vyrovnávání zatížení, je potřeba jenom jeden dostupnou IP adresu pro naslouchací proces skupiny dostupnosti. 
 
@@ -210,7 +210,7 @@ Následující fragment kódu odstraní naslouchacího procesu skupiny dostupnos
 az sql vm group ag-listener delete --group-name <cluster name> --name <listener name > --resource-group <resource group name>
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace najdete v následujících článcích: 
 

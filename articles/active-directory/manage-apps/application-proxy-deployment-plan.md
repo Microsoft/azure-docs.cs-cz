@@ -7,7 +7,7 @@ author: barbaraselden
 manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: baselden
 ms.reviewer: ''
-ms.openlocfilehash: 24429c5596494082b526b9648a1405bc397b9d2f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7d40c0604f0947abe8d536eafe87545790476a98
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67108487"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67625532"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Plánování nasazení služby Azure AD Application Proxy
 
@@ -70,7 +70,8 @@ Aby bylo možné konfigurovat a implementovat Proxy aplikací Azure AD musí bý
 
 * **Veřejný certifikát**: Pokud používáte vlastní názvy domén, musíte pořídit veřejný certifikát vydaný jiného subjektu než Microsoft důvěryhodné certifikační autority. V závislosti na požadavcích organizace získat certifikát může nějakou dobu trvat a doporučujeme zahájením procesu napravovat nejvíce. Proxy aplikací Azure podporuje standard, [zástupný znak](application-proxy-wildcard.md), nebo certifikáty založené na síti SAN.
 
-* **Požadavky na domény**: Jednotné přihlašování pro aplikace publikované pomocí protokolu Kerberos omezené delegování (KCD) vyžaduje, že konektor hostitele je připojený ke stejné doméně AD jako aplikace probíhá publikování. Podrobné informace o tomto tématu najdete v tématu [KCD pro jednotné přihlašování](application-proxy-configure-single-sign-on-with-kcd.md) pomocí Proxy aplikace. Služba konektoru spouští v kontextu místního systému a nesmí být nakonfigurovaný na použití vlastní identitu.
+* **Požadavky na domény**: Jednotné přihlašování pro aplikace publikované pomocí protokolu Kerberos omezené delegování (KCD) vyžaduje, server se službou konektoru a server se službou aplikace jsou připojené k doméně a součástí stejné doméně nebo důvěryhodné domény.
+Podrobné informace o tomto tématu najdete v tématu [KCD pro jednotné přihlašování](application-proxy-configure-single-sign-on-with-kcd.md) pomocí Proxy aplikace. Služba konektoru spouští v kontextu místního systému a nesmí být nakonfigurovaný na použití vlastní identitu.
 
 * **Záznamy DNS pro adresy URL**
 

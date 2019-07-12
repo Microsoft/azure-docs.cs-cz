@@ -2,17 +2,17 @@
 title: Rozhraní API server ověřen rozsahy IP adres ve službě Azure Kubernetes Service (AKS)
 description: Zjistěte, jak zabezpečit cluster pomocí rozsahu IP adres pro přístup k rozhraní API serveru ve službě Azure Kubernetes Service (AKS)
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
-ms.author: iainfou
-ms.openlocfilehash: d425fc3e037b43321a278fb16781e86dfafef15c
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.author: mlearned
+ms.openlocfilehash: 6516bbcb4ea879279812d61d9fe31f1ea4268280
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67441533"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67616244"
 ---
 # <a name="preview---secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Ve verzi Preview - zabezpečený přístup k serveru pomocí rozhraní API oprávnění rozsahy IP adres ve službě Azure Kubernetes Service (AKS)
 
@@ -26,7 +26,7 @@ Tento článek ukazuje, jak používat rozsahy IP adres pomocí rozhraní API se
 > * [Zásady podpory AKS][aks-support-policies]
 > * [Nejčastější dotazy k podpoře Azure][aks-faq]
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Rozhraní API serveru autorizované rozsahy IP adres fungovat pouze pro nové AKS clustery, které vytvoříte. V tomto článku se dozvíte, jak vytvořit cluster AKS pomocí Azure CLI.
 

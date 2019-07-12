@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d41ec1f510b028a2ffe2554bfcbd77bc439c4e79
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 23e6a3d0b533dccc3c3111382b014907d5c026ab
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67272950"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612669"
 ---
 # <a name="an-app-page-shows-an-error-message-after-the-user-signs-in"></a>Na stránce aplikace zobrazí chybová zpráva po přihlášení uživatele
 
@@ -99,7 +99,7 @@ Chcete-li změnit hodnotu identifikátoru uživatele, postupujte podle těchto k
 
 ## <a name="change-the-nameid-format"></a>Změna formátu NameID
 
-Pokud aplikace očekává, že jiný formát pro **NameID** atribut (identifikátor uživatele), najdete v článku [úpravy nameID](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization.md#editing-nameid) změnit formát ID názvu položky.
+Pokud aplikace očekává, že jiný formát pro **NameID** atribut (identifikátor uživatele), najdete v článku [úpravy nameID](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization#editing-nameid) změnit formát ID názvu položky.
 
 Azure AD vybere formát **NameID** atribut (identifikátor uživatele) na základě hodnoty, která je vybrána nebo formátu, který je požadován aplikací v SAML AuthRequest. Další informace najdete v tématu v části "NameIDPolicy" [jednotné přihlašování – protokol SAML](https://docs.microsoft.com/azure/active-directory/develop/single-sign-on-saml-protocol#nameidpolicy).
 

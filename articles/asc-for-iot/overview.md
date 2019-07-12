@@ -2,24 +2,25 @@
 title: Co je Azure Security Center pro náhled IoT | Dokumentace Microsoftu
 description: Další informace o službě Azure Security Center pro funkce IoT a služby.
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
 ms.assetid: 2cf6a49b-5d35-491f-abc3-63ec24eb4bc2
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/29/2019
 ms.author: mlottner
-ms.openlocfilehash: 7efe32039f926ea9b5be3c24fa967dede72cd081
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2e454d3be536d908003ad9163a44089eb3a5eb99
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65192499"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67618046"
 ---
 # <a name="introducing-azure-security-center-for-iot"></a>Představujeme Azure Security Center pro IoT
 
@@ -41,15 +42,15 @@ Azure Security Center (ASC) pro IoT zjednodušuje tím, že poskytuje jednotný 
 
 ### <a name="unified-visibility-and-control"></a>Jednotný přehled a kontrolu
 
-Získejte jednotný přehled o zabezpečení ve všech místních i cloudových úloh, včetně řešení Azure IoT. Automaticky rozpoznávat a připojení nového zařízení a používat zásady zabezpečení napříč vašimi úlohami (zařízení typu list, hraniční zařízení IOT Hub) pro zajištění dodržování bezpečnostních standardů.
+Získejte jednotný přehled o zabezpečení všech místních i cloudových úloh včetně vašeho řešení Azure IoT. Automaticky zjišťujte a připojujte nová zařízení a používejte zásady zabezpečení napříč svými úlohami (zařízení typu list, hraniční zařízení, IoT Hub) pro zajištění dodržování bezpečnostních standardů.
 
 ### <a name="adaptive-threat-prevention"></a>Adaptivní ohrožení ochrany před únikem informací
 
-Průběžně monitorujte zabezpečení počítačů, sítí a služeb Azure, včetně vašeho řešení Azure IoT z hraničních zařízení k aplikacím pomocí ASC pro IoT. Můžete použít ze stovek integrovaných posouzení zabezpečení nebo vytvořit vlastní aplikaci v centrální ASC pro řídicí panel služby IoT Hub. Optimalizace nastavení zabezpečení a vylepšovat vaše skóre zabezpečení s užitečná doporučení mezi virtuální počítače, sítě, aplikace a data. Nově přidané funkce IoT můžete nyní omezíte prostor pro možný útok pro vaše řešení Azure IoT a tyto problémy vyřešit, než bude možné zneužít.
+Průběžně monitorujte zabezpečení počítačů, sítí a služeb Azure, včetně vašeho řešení Azure IoT z hraničních zařízení k aplikacím pomocí ASC pro IoT. Můžete použít ze stovek integrovaných posouzení zabezpečení nebo vytvořit vlastní aplikaci v centrální ASC pro řídicí panel služby IoT Hub. Optimalizujte své nastavení zabezpečení a vylepšete své bezpečnostní skóre s využitím užitečných doporučení pro virtuální počítače, sítě, aplikace a data. Díky nově přidaným možnostem IoT teď můžete omezit možnosti útoku na vaše řešení Azure IoT a vyřešit problémy před tím, než je bude možné zneužít.
 
 ### <a name="intelligent-threat-detection-and-response"></a>Inteligentní detekce hrozeb a reakce
 
-Získejte výhodu nad vyvíjejícími se kybernetickými útoky pomocí pokročilých analýz a grafu inteligentního zabezpečení Microsoftu. Integrované analýzy chování a strojové učení k identifikaci útoků a zneužití nultého dne. Monitorování řešení IoT pro příchozí útoky a aktivitu po porušení zabezpečení. Zjednodušte zařízení průzkumu a nápravy pomocí interaktivních nástrojů a kontextové analýzy hrozeb.
+Získejte výhodu nad vyvíjejícími se kybernetickými útoky pomocí pokročilých analýz a grafu inteligentního zabezpečení Microsoftu. Integrované analýzy chování a strojové učení k identifikaci útoků a zneužití nultého dne. Monitorujte ve svých řešeních IoT příchozí útoky a aktivity po porušení zabezpečení. Zjednodušte zařízení průzkumu a nápravy pomocí interaktivních nástrojů a kontextové analýzy hrozeb.
 
 ## <a name="next-steps"></a>Další postup
 

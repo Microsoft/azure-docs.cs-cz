@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/2/2018
 ms.author: rkarlin
-ms.openlocfilehash: 8cd76909c9ce15a97de4ea5af3b21ac120058dd3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d4ca08a7b757889f79fb7ea5b85d7bc5c1c72259
+ms.sourcegitcommit: 1e347ed89854dca2a6180106228bfafadc07c6e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60705879"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67569356"
 ---
 # <a name="azure-security-center-detection-capabilities"></a>Funkce detekce ve službě Azure Security Center
 Tento dokument popisuje možnosti pokročilé detekce Azure Security Center, která pomáhá identifikovat aktivní hrozby pro vaše prostředky Microsoft Azure – Windows i Linuxem – a poskytne vám informace potřebné pro rychlou reakci na.
@@ -34,7 +34,7 @@ Tento přístup v řadách útočníků vedl k nebývalému růstu úrovně prof
 
 V reakci na tyto hrozby společnosti často nasazují řadu jednotlivých řešení, která se zaměřují na ochranu firemní zóny nebo na koncové body tím, že hledají příznaky známých útoků. Tato řešení často generují velký objem málo specifických výstrah, které pak musí bezpečnostní analytik třídit a prošetřovat. Většina organizací nemá dostatek času a potřebné odborné znalosti, aby si s těmito výstrahami poradily, a mnoho z nich tak zůstane neprošetřených.  Útočníci na druhé straně rozvinuli své metody narušování celé řady typů ochrany založené na detekci příznaků a [přizpůsobili se cloudovým prostředím](https://azure.microsoft.com/blog/detecting-threats-with-azure-security-center/). Je nutné zavést nové přístupy za účelem rychlejší identifikace nově se vynořujících hrozeb a urychlení detekce a reakce na ně.
 
-## <a name="how-azure-security-center-detects-and-responds-to-threats"></a>Jak služba Azure Security Center detekuje hrozby a reaguje na ně
+## Jak Azure Security Center detekuje hrozby a reaguje na ně <a name="asc-detects"></a>
 Výzkumníci v oblasti zabezpečení ze společnosti Microsoft neustále vyhledávají nové hrozby. Mají přístup k rozsáhlé sadě telemetrických údajů získávaných díky globálního prezenci společnosti Microsoft v cloudových i místních prostředích. Tento rozsáhlý a různorodý soubor datových sad umožňuje společnosti Microsoft objevovat nová schémata a trendy útoků v rámci jejích místních produktů pro zákazníky a podniky a rovněž i v rámci online služeb. Díky tomu dokáže Security Center rychle aktualizovat své algoritmy detekce spolu s tím, jak útočníci provádějí nové a stále sofistikovanější kousky. Tento přístup pomáhá udržet krok s rychle se rozvíjejícím prostředím hrozeb.
 
 Detekce hrozeb ve službě Security Center funguje tak, že se automaticky shromažďují informace o zabezpečení ze všech prostředků Azure, ze sítě a připojených partnerských řešení. Za účelem identifikace hrozeb služba tyto informace analyzuje a často přitom koreluje data z různých zdrojů. U výstrah zabezpečení se ve službě Security Center stanoví priority spolu s doporučením, jak danou hrozbu vyřešit.
@@ -78,7 +78,7 @@ Služba Azure Security Center zaměstnává týmy pro výzkum zabezpečení a da
 
 Toto celkové úsilí přineslo nové a vylepšené způsoby detekce, ze kterých budete mít okamžitý prospěch – a nemusíte sami nic dělat.
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 V tomto dokumentu jste zjistili, jak ve službě Azure Security Center funguje detekce. Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:
 
 * [Průvodce plánováním a provozem služby Azure Security Center](security-center-planning-and-operations-guide.md)

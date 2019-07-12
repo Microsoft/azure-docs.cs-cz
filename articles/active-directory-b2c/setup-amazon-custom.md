@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/05/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1fcac4bcfb5cd37ddf8b351514c8f4f1622367c6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 46b58aad8a5cb71744aca9baaa3a27d4d1efe8e2
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66512575"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655262"
 ---
 # <a name="set-up-sign-in-with-an-amazon-account-using-custom-policies-in-azure-active-directory-b2c"></a>Nastavit přihlašování pomocí účtu služby Amazon pomocí vlastních zásad v Azure Active Directory B2C
 
@@ -47,7 +47,7 @@ Potřebujete ukládat tajný kód klienta, který jste si dříve poznamenali ve
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. Ujistěte se, že používáte adresáře, který obsahuje vašeho tenanta Azure AD B2C kliknutím **filtr adresářů a předplatných** v horní nabídce a výběrem adresáře, který obsahuje váš tenant.
 3. Zvolte **všechny služby** v horním levém horním rohu webu Azure portal a poté vyhledejte a vyberte **Azure AD B2C**.
-4. Na stránce s přehledem, vyberte **architekturu rozhraní identit - PREVIEW**.
+4. Na stránce s přehledem, vyberte **architekturu rozhraní identit**.
 5. Vyberte **klíče zásad** a pak vyberte **přidat**.
 6. Pro **možnosti**, zvolte `Manual`.
 7. Zadejte **název** klíče zásad. Například, `AmazonSecret`. Předpona, která `B2C_1A_` je automaticky přidán do názvu klíče.
@@ -57,14 +57,14 @@ Potřebujete ukládat tajný kód klienta, který jste si dříve poznamenali ve
 
 ## <a name="add-a-claims-provider"></a>Přidat zprostředkovatele deklarací identity
 
-Pokud chcete uživatelům umožní přihlásit pomocí účtu, Amazon, musíte definovat účtu jako zprostředkovatele deklarací identity, který Azure AD B2C můžou klienti komunikovat prostřednictvím koncového bodu. Koncový bod poskytuje sadu deklarací identity, které používají Azure AD B2C k ověření, že se ověřil konkrétního uživatele. 
+Pokud chcete uživatelům umožní přihlásit pomocí účtu, Amazon, musíte definovat účtu jako zprostředkovatele deklarací identity, který Azure AD B2C můžou klienti komunikovat prostřednictvím koncového bodu. Koncový bod poskytuje sadu deklarací identity, které používají Azure AD B2C k ověření, že se ověřil konkrétního uživatele.
 
 Účtu Amazon jako poskytovatele deklarací identity můžete definovat tak, že přidáte tak, **ClaimsProviders** prvku v souboru rozšíření zásady.
 
 
 1. Otevřít *TrustFrameworkExtensions.xml*.
 2. Najít **ClaimsProviders** elementu. Pokud neexistuje, přidejte jej pod kořenovým elementem.
-3. Přidat nový **ClaimsProvider** následujícím způsobem:  
+3. Přidat nový **ClaimsProvider** následujícím způsobem:
 
     ```xml
     <ClaimsProvider>
@@ -147,7 +147,7 @@ Teď, když máte tlačítko na místě, budete potřebovat odkázat na akci. Ak
     ```XML
     <ClaimsExchange Id="AmazonExchange" TechnicalProfileReferenceId="Amazon-OAuth" />
     ```
-    
+
     Aktualizujte hodnotu **TechnicalProfileReferenceId** ID technického profilu, který jste vytvořili dříve. Například, `Amazon-OAuth`.
 
 3. Uložit *TrustFrameworkExtensions.xml* souboru a nahrajte ji znovu pro ověření.

@@ -13,14 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2018
-ms.author: apurvajo;cephalin
+ms.author: cephalin
+ms.reviewer: apurvajo
 ms.custom: seodec18
-ms.openlocfilehash: 0febb8fadd973b67ed232d6094d85894fb383d14
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e7768eb29caf66fd8f666a9475ac0787826a47e0
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65955712"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67618898"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Zakoupení a konfigurace certifikátu SSL pro službu Azure App Service
 
@@ -49,10 +50,10 @@ Pomocí následující tabulky můžete nakonfigurovat certifikát. Jakmile bude
 
 | Nastavení | Popis |
 |-|-|
-| Název | Popisný název služby App Service certificate. |
+| Name | Popisný název služby App Service certificate. |
 | Naked Domain Host Name | Pokud zadáte kořenovou doménu, můžete získat certifikát, který zabezpečuje *obě* kořenové domény a `www` subdomény. Pro zabezpečené jakákoli subdoména, zadat pouze plně kvalifikovaný název domény zde poddomény (například `mysubdomain.contoso.com`). |
-| Předplatné | Datacentrum, které je hostitelem webové aplikace. |
-| Skupina prostředků | Skupina prostředků, který obsahuje certifikát. Můžete použít novou skupinu prostředků nebo vyberte stejnou skupinu prostředků jako aplikace služby App Service, třeba. |
+| Subscription | Datacentrum, které je hostitelem webové aplikace. |
+| Resource group | Skupina prostředků, který obsahuje certifikát. Můžete použít novou skupinu prostředků nebo vyberte stejnou skupinu prostředků jako aplikace služby App Service, třeba. |
 | SKU certifikátu | Určuje typ certifikátů k vytvoření, jestli certifikát standardní nebo [certifikát se zástupným znakem](https://wikipedia.org/wiki/Wildcard_certificate). |
 | Právní podmínky | Klikněte na tlačítko potvrďte, že souhlasíte se smluvními podmínkami. Certifikáty jsou získávány z GoDaddy. |
 
@@ -70,8 +71,8 @@ V **Key Vault stav** klikněte na **úložiště Key Vault** a vytvořte nový t
 
 | Nastavení | Popis |
 |-|-|
-| Název | Jedinečný název, který se skládá alfanumerické znaky a pomlčky. |
-| Skupina prostředků | Jako doporučení vyberte stejnou skupinu prostředků jako služby App Service certificate. |
+| Name | Jedinečný název, který se skládá alfanumerické znaky a pomlčky. |
+| Resource group | Jako doporučení vyberte stejnou skupinu prostředků jako služby App Service certificate. |
 | Location | Vyberte stejné umístění jako aplikace služby App Service. |
 | Cenová úroveň | Informace najdete v tématu [podrobnosti o cenách služby Azure Key Vault](https://azure.microsoft.com/pricing/details/key-vault/). |
 | Zásady přístupu| Definuje aplikace a povolený přístup k prostředkům úložiště. Můžete ho nakonfigurovat později, postupujte podle kroků v [udělit několik aplikací přístup k trezoru klíčů](../key-vault/key-vault-group-permissions-for-apps.md). |

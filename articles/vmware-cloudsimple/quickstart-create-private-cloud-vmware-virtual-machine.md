@@ -3,23 +3,23 @@ title: Rychlý start – vytvoření virtuálního počítače s VMware na priv�
 description: Popisuje postup vytvoření a virtuálních počítačů VMware na CloudSimple privátního cloudu
 author: sharaths-cs
 ms.author: b-shsury
-ms.date: 06/03/19
+ms.date: 06/03/2019
 ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 217154578ad11755cd658ff3b106cfbe266277ab
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 33354ce09ad6ba1a9a7c08a8cd3b945f3788011a
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67154624"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595687"
 ---
 # <a name="create-vmware-virtual-machines-on-your-private-cloud"></a>Vytvoření virtuálních počítačů VMware na privátní Cloud
 
 K vytvoření virtuálních počítačů na privátní Cloud, začněte tím, že přístup k portálu CloudSimple z portálu Azure portal.
 
-## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
@@ -160,7 +160,7 @@ Začne úloha spojeným s přidělováním veřejnou IP adresu. Můžete zkontro
 
 Virtuální počítač, do které musí být namapována tato IP adresa je potřeba nakonfigurovat místní adresou výše uvedené. Postup konfigurace IP adresy je specifické pro operační systém virtuálního počítače. V dokumentaci pro váš operační systém virtuálního počítače pro správný postup.
 
-#### <a name="example"></a>Příklad:
+#### <a name="example"></a>Příklad
 
 Například tady jsou uvedené podrobnosti pro Ubuntu 16.04.
 
@@ -219,7 +219,7 @@ Spusťte server http, která naslouchá na portu 80.
 python2.7 -m SimpleHTTPServer 80
 ```
 
-nebo
+or
 
 ```
 python3 -m http.server 80
@@ -242,7 +242,7 @@ Můžete také upravit způsob, jakým je zabezpečený provoz, pomocí funkce p
 
 Pokud chcete nainstalovat řešení, musíte požádat o další oprávnění po omezenou dobu. Zobrazit [zvýšení úrovně oprávnění](https://docs.azure.cloudsimple.com/escalate-private-cloud-privileges).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Využívání virtuálních počítačů VMware v Azure](quickstart-create-vmware-virtual-machine.md)
 * [Připojit k místní síti pomocí Azure ExpressRoute](https://docs.azure.cloudsimple.com/on-premises-connection)
