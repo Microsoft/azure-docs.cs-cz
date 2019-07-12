@@ -212,11 +212,11 @@ Jakákoli vlastnost, která aplikace potřebuje definuje musí být mapováno na
 
 | Název pole | Využití | Název rozhraní API |
 | --- | --- | --- |
-| trvalý |- |- |
-| priorita |- |- |
+| durable |- |- |
+| priority |- |- |
 | ttl |Hodnota Time to live pro tuto zprávu |[TimeToLive](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| první nabyvatel |- |- |
-| Počet doručení |- |[DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| first-acquirer |- |- |
+| delivery-count |- |[DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 
 #### <a name="properties"></a>properties
 
