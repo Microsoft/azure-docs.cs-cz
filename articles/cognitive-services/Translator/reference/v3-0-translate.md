@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: e63670504dedf426829778e154b2d5c2b69d98a0
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 2b08ddb4241a9af7aee31bb51d75dd82ff8255d2
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67435069"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839621"
 ---
 # <a name="translator-text-api-30-translate"></a>Translator Text API 3.0: Translate
 
@@ -42,7 +42,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>
   <tr>
     <td>from</td>
-    <td><em>Volitelný parametr</em>.<br/>Určuje jazyk, který vstupního textu. Najít jazyky, které jsou k dispozici pro převod z vyhledáním <a href="./v3-0-languages.md">podporované jazyky</a> pomocí <code>translation</code> oboru. Pokud <code>from</code> parametr není zadán, automatické rozpoznávání jazyka se použije k určení zdrojového jazyka.</td>
+    <td><em>Volitelný parametr</em>.<br/>Určuje jazyk, který vstupního textu. Najít jazyky, které jsou k dispozici pro převod z vyhledáním <a href="./v3-0-languages.md">podporované jazyky</a> pomocí <code>translation</code> oboru. Pokud <code>from</code> parametr není zadán, automatické rozpoznávání jazyka se použije k určení zdrojového jazyka. <br/><br/>Je nutné použít <code>from</code> parametr, nikoli automatickou detekcí při použití <a href="https://docs.microsoft.com/azure/cognitive-services/translator/dynamic-dictionary">dynamický slovník</a> funkce.</td>
   </tr>
   <tr>
     <td>na</td>
@@ -374,7 +374,7 @@ Pokud chcete předejít vulgárních výrazů v překladu, bez ohledu na příto
 
 <table width="100%">
   <th width="20%">ProfanityAction</th>
-  <th>Akce</th>
+  <th>Action</th>
   <tr>
     <td><code>NoAction</code></td>
     <td>Toto je výchozí chování. Vulgárních výrazů předá ze zdroje do cíle.<br/><br/>

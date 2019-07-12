@@ -7,12 +7,12 @@ ms.date: 05/06/2019
 ms.topic: overview
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 4724789dd1a0893c5ef4ab112306c185f0e87da7
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: d78c640f4269c799d3d371e6dd9db477faf96694
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274376"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807425"
 ---
 # <a name="overview-of-the-azure-resource-graph-service"></a>Přehled služby Azure Graph prostředků
 
@@ -28,6 +28,8 @@ V této dokumentaci si podrobně projdete jednotlivé funkce.
 > [!NOTE]
 > Azure Graph prostředků základem vyhledávacího webu Azure portal, nové procházení "Všechny materiály" prostředí a Azure Policy [historii změn](../policy/how-to/determine-non-compliance.md#change-history-preview)
 > _visual diff_. Je navržena tak, aby pomáhá zákazníkům spravovat prostředí ve velkém měřítku.
+
+[!INCLUDE [service-provider-management-toolkit](../../../includes/azure-lighthouse-supported-service.md)]
 
 ## <a name="how-does-resource-graph-complement-azure-resource-manager"></a>Jak Resource Graph doplňuje Azure Resource Manager
 
