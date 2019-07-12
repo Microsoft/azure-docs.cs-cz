@@ -9,13 +9,14 @@ ms.service: azure-functions
 ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 04/22/2019
-ms.author: tyleonha, glenga
-ms.openlocfilehash: 489c94f37b6c88db001dee437cc6ed89383e6053
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.author: tyleonha
+ms.reviewer: glenga
+ms.openlocfilehash: a75bdaf0e26193a5b2792b52923c085eff89b83f
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442186"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706399"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Příručka pro vývojáře Azure Functions Powershellu
 
@@ -81,11 +82,11 @@ param($MyFirstInputBinding, $MySecondInputBinding, $TriggerMetadata)
 $TriggerMetadata.sys
 ```
 
-| Vlastnost   | Description                                     | Type     |
+| Vlastnost   | Description                                     | type     |
 |------------|-------------------------------------------------|----------|
-| UtcNow     | Pokud ve standardu UTC, funkce aktivovalo        | DateTime |
-| methodName | Název funkce, která byla aktivována.     | string   |
-| RandGuid   | Jedinečný identifikátor guid pro toto spuštění funkce | string   |
+| UtcNow     | Pokud ve standardu UTC, funkce aktivovalo        | Datetime |
+| methodName | Název funkce, která byla aktivována.     | řetězec   |
+| RandGuid   | Jedinečný identifikátor guid pro toto spuštění funkce | řetězec   |
 
 Každý typ aktivační události má jinou sadu metadat. Například `$TriggerMetadata` pro `QueueTrigger` obsahuje `InsertionTime`, `Id`, `DequeueCount`, mimo jiné. Další informace o aktivační událost fronty metadat, přejděte [oficiální dokumentaci pro aktivační procedury řízení front](functions-bindings-storage-queue.md#trigger---message-metadata). Přečtěte si dokumentaci k na [aktivační události](functions-triggers-bindings.md) pracujete, pokud chcete zobrazit, co se dodává v metadatech aktivační události.
 
@@ -133,9 +134,9 @@ Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 
 Následují platné parametry pro volání `Push-OutputBinding`:
 
-| Název | Type | Pozice | Popis |
+| Name | type | Pozice | Popis |
 | ---- | ---- |  -------- | ----------- |
-| **`-Name`** | String | 1 | Název výstupní vazbu chcete nastavit. |
+| **`-Name`** | Řetězec | 1 | Název výstupní vazbu chcete nastavit. |
 | **`-Value`** | Object | 2 | Hodnota výstupní vazbu chcete nastavit, který je přijímán z kanálu ByValue. |
 | **`-Clobber`** | SwitchParameter | s názvem | (Volitelné) -Li zadána, vynutí hodnota k nastavení pro vazby zadaným výstupem. | 
 
@@ -283,7 +284,7 @@ Existuje několik triggerů a vazeb k dispozici pro použití s vaší aplikace 
 Všechny aktivační události a vazby jsou vyjádřené v kódu několik typů reálná data:
 
 * Zatřiďovací tabulka
-* string
+* řetězec
 * Byte
 * int
 * double
@@ -302,14 +303,14 @@ HTTP a triggerů webhooků a HTTP výstupní vazby pomocí žádostí a odpověd
 
 Žádost o objekt, který je předán do skriptu je typu `HttpRequestContext`, který má následující vlastnosti:
 
-| Vlastnost  | Description                                                    | Type                      |
+| Vlastnost  | Description                                                    | type                      |
 |-----------|----------------------------------------------------------------|---------------------------|
 | **`Body`**    | Objekt, který obsahuje text žádosti. `Body` je serializován do nejlepší typ založené na datech. Například pokud jsou data JSON, to je předáno jako zatřiďovací tabulku. Pokud jsou data řetězce, je předán v podobě řetězce. | objekt |
 | **`Headers`** | Slovník, který obsahuje hlavičky požadavku.                | Dictionary < string, string ><sup>*</sup> |
-| **`Method`** | Metoda HTTP požadavku.                                | string                    |
+| **`Method`** | Metoda HTTP požadavku.                                | řetězec                    |
 | **`Params`**  | Objekt, který obsahuje směrování parametry požadavku. | Dictionary < string, string ><sup>*</sup> |
 | **`Query`** | Objekt, který obsahuje parametry dotazu.                  | Dictionary < string, string ><sup>*</sup> |
-| **`Url`** | Adresa URL požadavku.                                        | string                    |
+| **`Url`** | Adresa URL požadavku.                                        | řetězec                    |
 
 <sup>*</sup> Všechny `Dictionary<string,string>` klíče jsou malá a velká písmena.
 
@@ -317,10 +318,10 @@ HTTP a triggerů webhooků a HTTP výstupní vazby pomocí žádostí a odpověd
 
 Objekt odpovědi, který se má odeslat zpět je typu `HttpResponseContext`, který má následující vlastnosti:
 
-| Vlastnost      | Description                                                 | Type                      |
+| Vlastnost      | Description                                                 | type                      |
 |---------------|-------------------------------------------------------------|---------------------------|
 | **`Body`**  | Objekt, který obsahuje text odpovědi.           | objekt                    |
-| **`ContentType`** | Krátký ručně k nastavení typu obsahu pro odpověď. | string                    |
+| **`ContentType`** | Krátký ručně k nastavení typu obsahu pro odpověď. | řetězec                    |
 | **`Headers`** | Objekt, který obsahuje hlavičky odpovědi.               | Slovník nebo zatřiďovací tabulky   |
 | **`StatusCode`**  | Stavový kód HTTP odpovědi.                       | řetězec nebo int             |
 
@@ -602,7 +603,7 @@ Spuštění skriptu na každé vyvolání. Vyhněte se použití `Install-Module
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace najdete v následujících materiálech:
+Další informace naleznete v následujících materiálech:
 
 * [Osvědčené postupy pro službu Azure Functions](functions-best-practices.md)
 * [Referenční informace pro vývojáře Azure Functions](functions-reference.md)

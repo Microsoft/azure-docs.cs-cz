@@ -4,7 +4,7 @@ description: Nasazení SAP IDES EHP7 SP3 pro SAP ERP 6.0 v Azure
 services: virtual-machines-windows
 documentationcenter: ''
 author: hermanndms
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/16/2016
 ms.author: hermannd
-ms.openlocfilehash: 413e449f005d288f66da0257f5b800733e58eb94
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1b2b3d46d0352f72b1ffb513a96c1ab5dc25ad54
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60836428"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707503"
 ---
 # <a name="deploy-sap-ides-ehp7-sp3-for-sap-erp-60-on-azure"></a>Nasazení SAP IDES EHP7 SP3 pro SAP ERP 6.0 v Azure
 Tento článek popisuje, jak nasadit systém SAP IDES provozu s využitím SQL serveru a operačního systému Windows v Azure prostřednictvím SAP Cloud Appliance Library (SAP CAL) 3.0. Snímky obrazovky zobrazit podrobný proces. Pokud chcete nasadit jiné řešení, postupujte podle stejných kroků.

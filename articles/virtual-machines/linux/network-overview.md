@@ -4,7 +4,7 @@ description: Přečtěte si o virtuálních sítí úzce souvisí se základy vy
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 5493e9f7-7d45-4e98-be9a-657a53708746
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: 80b266c1c39debaf5fc70c6538101f2ae1d991be
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 752fb66a07b181e270f4459bfc87dd326ab53573
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66171064"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671159"
 ---
 # <a name="virtual-networks-and-virtual-machines-in-azure"></a>Virtuální sítě a virtuální počítače v Azure 
 

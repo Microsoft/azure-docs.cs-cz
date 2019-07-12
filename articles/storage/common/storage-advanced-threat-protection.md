@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: ed263fec271801ac9c46bbc3125c71ca15b9a330
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8cea4b3fb78f3430fdd92e40552d687501af4be8
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65153972"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621961"
 ---
 # <a name="advanced-threat-protection-for-azure-storage"></a>Advanced Threat Protection pro Azure Storage
 
@@ -111,7 +111,7 @@ Výstrahy jsou generovány a potenciálně nebezpečné pokusy o přístup nebo 
 
 ### <a name="anomalous-access-pattern-alerts"></a>Neobvyklé přístup vzor výstrahy
 
-* **Přístup z neobvyklého umístění**: Tato výstraha se aktivuje, když dojde ke změně vzoru přístupu k účtu úložiště. Například když někdo použil účet úložiště z neobvyklé geografické lokality.
+* **Přístup z neobvyklého umístění**: Tato výstraha se aktivuje, když někdo získal přístup k účtu úložiště z neobvyklé geografické lokality.
 Možné příčiny:
    * Útočník získal přístup k účtu úložiště
    * Oprávněný uživatel přístup k účtu úložiště z nového místa
@@ -120,10 +120,16 @@ Možné příčiny:
    * Útočník má získat přístup k účtu úložiště pomocí nové aplikace.
    * Oprávněný uživatel použil nové aplikace a prohlížeče pro přístup k účtu úložiště.
 
-* **Anonymní přístup**: Tato výstraha indikuje, že dojde ke změně vzoru přístupu k účtu úložiště. Například tento účet byl přistupovat anonymně (tj. bez ověřování), což neočekávaný porovnává se vzorem poslední přístup na tento účet.
+* **Anonymní přístup**: Tato výstraha indikuje, že tento účet byl přistupovat anonymně (tj. bez ověřování), což neočekávaný porovnává se vzorem poslední přístup na tento účet.
 Možné příčiny:
    * Útočník zneužije veřejné oprávnění ke čtení pro kontejner.
    * Veřejné oprávnění ke čtení pro kontejner se používá legitimní uživatel nebo aplikace.
+
+* **Tor anomálií**: Tato výstraha indikuje, že tento účet je úspěšně přistupovat z IP adresy, která se označuje jako aktivní výstupní uzel sítě Tor (anonymizing proxy). Závažnost toto upozornění bude považovat za typ ověřování používaný (pokud existuje), a zda je toto první velikost písmen takový přístup.
+Možné příčiny:
+   * Útočník má získat přístup k účtu úložiště pomocí sítě Tor.
+   * Oprávněný uživatel přístup k účtu úložiště pomocí sítě Tor.
+
 
 ### <a name="anomalous-extractupload-alerts"></a>Výstrahy na neobvyklé extrahování a nahrávání
 

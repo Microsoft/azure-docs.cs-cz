@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ecf5b874345a94e8fd3d3a0783f8e48c7484377d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d84801d6368bcc29f08145f190c2a07c64050ced
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67111253"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67795090"
 ---
 # <a name="desktop-app-that-calls-web-apis---acquire-a-token"></a>Aplikace klasické pracovní plochy, která volá webové rozhraní API – získání tokenu
 
@@ -293,8 +293,9 @@ Můžete také získat token zadáním uživatelského jména a hesla. Tento tok
 
 Tento tok je **ale nedoporučený krok** vzhledem k tomu, že vaše aplikace s žádostí uživatele k zadání hesla není zabezpečený. Další informace o tomto problému najdete v tématu [v tomto článku](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/). Upřednostňované tok pro získání tokenu tiše na počítačích připojených k doméně Windows je [integrované ověřování Windows](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Integrated-Windows-Authentication). Jinak můžete použít také [toku kódu zařízení](https://aka.ms/msal-net-device-code-flow)
 
+> [!NOTE] 
 > I když to je užitečné v některých případech (scénáře DevOps), pokud chcete použít uživatelského jména a hesla v interaktivních scénářů, kde poskytuje vaše onw uživatelského rozhraní, byste ve skutečnosti uvažovat o tom, jak ho přestat používat. Pomocí uživatelského jména a hesla můžete jsou poskytuje up několik věcí:
-
+>
 > - základní tenantů moderního identity: získá podléhá heslo, znovu přehrát. Když máme tento koncept tajného kódu sdílené složky, do které může.
 > To není kompatibilní s passwordless.
 > - Uživatelé, kteří vyžadují vícefaktorové ověřování, nebude možné přihlašovat (protože není žádná interakce s)
@@ -651,7 +652,7 @@ Třídy a rozhraní, které jsou součástí mezipaměť tokenu serializace jsou
 > [!IMPORTANT]
 > MSAL.NET pro vás vytvoří token mezipaměti a nabízí `IToken` ukládat do mezipaměti při volání aplikace `GetUserTokenCache` a `GetAppTokenCache` metody. Nejsou by měl implementovat rozhraní. Vaše odpovědnosti, Pokud implementujete vlastní mezipaměť tokenu serializace, je:
 >
-> - Reakce na ně `BeforeAccess` a `AfterAccess` "události". `BeforeAccess` Delegáta odpovídá k deserializaci do mezipaměti, že `AfterAccess` jeden je zodpovědná za serializaci do mezipaměti.
+> - Reakce na ně `BeforeAccess` a `AfterAccess` "události" (nebo jejich *asynchronní* protějšek). `BeforeAccess` Delegáta odpovídá k deserializaci do mezipaměti, že `AfterAccess` jeden je zodpovědná za serializaci do mezipaměti.
 > - Součástí těchto událostí uložit nebo načíst objekty BLOB, které se předává argument události do jakékoli úložiště, které chcete.
 
 Strategie se liší v závislosti na tom, pokud píšete mezipaměť tokenu serializace pro aplikace veřejným klientem (Desktop) nebo aplikace důvěrnému klientovi (webové aplikace/webové rozhraní API, proces démon aplikace).
@@ -724,6 +725,7 @@ static class TokenCacheHelper
 
 Mezipaměť tokenu kvalitu produktu na základě souboru serializátor pro aplikace veřejným klientem (pro desktopové aplikace běžící na Windows, Mac a linux) je k dispozici ve verzi preview [Microsoft.Identity.Client.Extensions.Msal](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Msal) knihovny Open source. Můžete ho zahrnout do své aplikace z následující balíček nuget: [Microsoft.Identity.Client.Extensions.Msal](https://www.nuget.org/packages/Microsoft.Identity.Client.Extensions.Msal/).
 
+> [!NOTE]
 > Právní omezení. Knihovna Microsoft.Identity.Client.Extensions.Msal je rozšířením přes MSAL.NET. Třídy v těchto knihoven může dostanou do MSAL.NET v budoucnu, jak jsou, nebo s rozbíjející změny.
 
 ### <a name="dual-token-cache-serialization-msal-unified-cache--adal-v3"></a>Duální mezipaměť tokenu serializace (MSAL unified mezipaměti + modul ADAL V3)
@@ -875,7 +877,7 @@ namespace CommonCacheMsalV3
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Volání webového rozhraní API z desktopové aplikace](scenario-desktop-call-api.md)

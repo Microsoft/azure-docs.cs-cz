@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 10/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 5642533fe1015e88c3b27e83139bfd26cb0b1a53
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: b044912fd8f52f3f4fdbe1b3a74b64f9b565ddf0
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67174875"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673295"
 ---
-1. Na [portálu](http://portal.azure.com) přejděte na virtuální síť Resource Manageru, pro kterou chcete vytvořit bránu virtuální sítě.
+1. Na [portálu](https://portal.azure.com) přejděte na virtuální síť Resource Manageru, pro kterou chcete vytvořit bránu virtuální sítě.
 2. Na stránce vaší virtuální sítě v části **Nastavení** kliknutím na **Podsítě** rozbalte stránku **Podsítě**.
 3. Na stránce **Podsítě** kliknutím na **+Podsíť brány** otevřete stránku **Přidat podsíť**. 
 

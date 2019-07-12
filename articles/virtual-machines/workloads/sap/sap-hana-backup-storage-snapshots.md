@@ -4,7 +4,7 @@ description: Existují dvě hlavní zálohování možnosti pro SAP HANA na virt
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -13,12 +13,12 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: rclaus
-ms.openlocfilehash: 74f47344afff630a8633b340ea4ce21db28db7ca
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 875060a59cf70d295534c3a4f56136010a560e74
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60936522"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709929"
 ---
 # <a name="sap-hana-backup-based-on-storage-snapshots"></a>Zálohování SAP HANA založené na snímcích úložiště
 
@@ -147,7 +147,7 @@ To je možné obnovit datové disky virtuálního počítače Azure, jak se vyhn
 
 Pokud bylo možné vypnout SAP HANA než snímky objektů blob, bude postup méně složitý. V takovém případě jeden může přeskočit snímku HANA a, pokud nic dalšího se děje v systému, také přeskočit zablokování systému souborů. Přidaná složitost spolu vaše úloha, když je potřeba dělat všechno, co je online snímky. Zobrazit _konzistence dat SAP HANA při pořizování snímků úložiště_ v příslušném článku [Průvodci zálohováním pro SAP HANA v Azure Virtual Machines](sap-hana-backup-guide.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Průvodce zálohováním pro SAP HANA v Azure Virtual Machines](sap-hana-backup-guide.md) poskytuje přehled a informace pro zahájení práce.
 * [Zálohování SAP HANA založené na úrovni souboru](sap-hana-backup-file-level.md) zahrnuje možnost zálohování souborů.
 * Informace o vytvoření vysoké dostupnosti a plánování zotavení po havárii SAP Hana v Azure (velké instance), najdete v článku [SAP HANA (velké instance) vysokou dostupnost a zotavení po havárii v Azure](hana-overview-high-availability-disaster-recovery.md).

@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: quickstart
-ms.date: 05/16/2019
+ms.date: 07/09/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: b3c5c08e9862d59481573b501045466d6d691a77
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
-ms.translationtype: MT
+ms.openlocfilehash: 69ccf1d558fe6c10e16389ec8eac10d0841f6dc1
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485504"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827606"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-postman-using-rest-apis"></a>Rychlý start: Vytvoření indexu Azure Search v nástroji Postman pomocí rozhraní REST API
 > [!div class="op_single_selector"]
@@ -28,15 +28,15 @@ ms.locfileid: "67485504"
 
 Jeden z nejjednodušších způsobů zkoumání [rozhraní REST API Azure Search](https://docs.microsoft.com/rest/api/searchservice) využívá Postman nebo jiný webový nástroj pro testování k formulování požadavků HTTP a zkontrolovat odpovědi. S využitím správných nástrojů a pokynů můžete odesílat žádosti a zobrazovat odpovědi, ještě než začnete psát kód.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete, a pak si [zaregistrujte službu Azure Search](search-create-service-portal.md).
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Tyto služby a nástroje se používají v tomto rychlém startu. 
 
-+ [Vytvoření služby Azure Search](search-create-service-portal.md) nebo [najít existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) pod vaším aktuálním předplatným. Můžete použít bezplatnou službou pro tento rychlý start. 
++ [Desktopová aplikace postman](https://www.getpostman.com/) slouží k odesílání žádostí do služby Azure Search.
 
-+ [Desktopová aplikace postman](https://www.getpostman.com/) nebo [Telerik Fiddler](https://www.telerik.com/fiddler) slouží k odesílání žádostí do služby Azure Search.
++ [Vytvoření služby Azure Search](search-create-service-portal.md) nebo [najít existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) pod vaším aktuálním předplatným. Můžete použít bezplatnou službou pro tento rychlý start. 
 
 ## <a name="get-a-key-and-url"></a>Získejte klíč a adresy URL
 
@@ -240,7 +240,11 @@ Další informace o tomto rozhraní API najdete v tématu [získat Index statist
 
 ## <a name="clean-up"></a>Vyčištění
 
-Pokud už nepotřebujete vyhledávací službu, je nejrychlejší způsob, jak vydávacích služeb tak, že odstraníte skupinu prostředků obsahující službu Azure Search. Skupina prostředků se natrvalo odstraňuje odstraní všechno, co v ní, včetně služby a všechny uložený obsah. Na portálu najdete název skupiny prostředků na stránce Přehled jednotlivých služeb.
+Pokud pracujete ve svém vlastním předplatném, je vhodné na konci projektu a zjistěte, jestli stále potřebují prostředky, že kterou jste vytvořili. Levé může spuštěné prostředky nákladů peníze. Můžete odstranit prostředky jednotlivě nebo odstranit skupinu prostředků, kterou chcete odstranit celou sadu prostředků.
+
+Můžete najít a spravovat prostředky na portálu pro použití **všechny prostředky** nebo **skupiny prostředků** odkaz v levém navigačním podokně.
+
+Pokud používáte bezplatné služby, mějte na paměti, že jste omezeni na tři indexy, indexery a datového zdroje. Můžete odstranit jednotlivé položky na portálu, abychom dodrželi omezení. 
 
 ## <a name="next-steps"></a>Další postup
 

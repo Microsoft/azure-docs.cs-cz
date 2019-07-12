@@ -4,15 +4,15 @@ description: Jak řešit problémy při konfiguraci klienta a relace hostitele v
 services: virtual-desktop
 author: ChJenk
 ms.service: virtual-desktop
-ms.topic: troubleshoot
-ms.date: 04/08/2019
+ms.topic: troubleshooting
+ms.date: 07/10/2019
 ms.author: v-chjenk
-ms.openlocfilehash: 38d59fb20776470cb683f2a2146838bb217addf7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 96a9d8fc7495ea473b0a3250b34251afc5f30c13
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64928119"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786714"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Vytvoření tenanta a fondu hostitelů
 
@@ -284,6 +284,18 @@ Pokud váš operační systém Microsoft Windows 10, pokračujte podle následuj
     ```
 
 16. Po dokončení rutiny spuštěná, restartujte virtuální počítač s chybně fungující zásobníku vedle sebe.
+
+## <a name="remote-licensing-model-is-not-configured"></a>Není nakonfigurovaný vzdálený modelu licencování
+
+Pokud přihlášení k Windows 10 Enterprise více relací pomocí účtu správce může dostat oznámení, že "není nakonfigurována režimu licencování vzdálené plochy, služby Vzdálená plocha přestane fungovat v X dní. Na serveru zprostředkovatele připojení pomocí Správce serveru určete režim licencování vzdálené plochy." Pokud se zobrazí tato zpráva, znamená to je nutné ručně nakonfigurovat k licencování **uživatele**.
+
+Postup ruční konfigurace licencování:  
+
+1. Přejděte k vaší **nabídky Start** vyhledávacího pole, pak najít a otevřít **gpedit.msc** pro přístup k Editoru místních zásad skupiny. 
+2. Přejděte na **konfigurace počítače** > **šablony pro správu** > **součásti Windows**  >   **Vzdálená plocha** > **hostitel relace vzdálené plochy** > **licencování**. 
+3. Vyberte **nastavit režim licencování vzdálené plochy** a změňte ho na **uživatele**.
+
+Jsme díváte aktuálně do vypršení časového limitu problémy oznámení a období odkladu a plánování, který je vyřeší v budoucí aktualizaci. 
 
 ## <a name="next-steps"></a>Další postup
 

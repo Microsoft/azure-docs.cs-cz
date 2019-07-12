@@ -4,7 +4,7 @@ description: Zjistěte, jak seskupit do clusteru SAP ASCS/SCS instance clusteru 
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 28b3851a52ec5fe69eaa531e2e08f66fb73cb1e0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1d26df6aeb09934408b9081ac077af52ffc24d66
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60936188"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709059"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -310,11 +310,11 @@ Určený horizontální navýšení kapacity sdílené složky systému musí sp
 * Je nutné použít Azure prémiové disky.
 * Doporučujeme použít Azure Managed Disks.
 * Doporučujeme formátovat svazky s využitím odolný systém souborů (ReFS).
-    * Další informace najdete v tématu [1869038 Poznámka SAP - podpory SAP pro systém souborů ReFs] [ 1869038] a [výběr systému souborů] [ planning-volumes-s2d-choosing-filesystem] kapitoly Plánování svazky do prostorů úložiště s přímým článku.
+    * Další informace najdete v tématu [1869038 Poznámka SAP - podpory SAP pro systém souborů ReFs][1869038] and the [Choosing the file system][planning-volumes-s2d-choosing-filesystem] kapitoly článku plánování svazky do prostorů úložiště s přímým.
     * Ujistěte se, že nainstalujete [kumulativní aktualizace pro Microsoft KB4025334][kb4025334].
 * Velikosti řady DS nebo DSv2-Series virtuálních počítačů Azure můžete použít.
 * Výkon dobré sítě mezi virtuálními počítači, které je potřeba pro prostory úložiště – přímé synchronizace disk, použijte typ virtuálního počítače, který má alespoň "vysoká" šířka pásma sítě.
-    Další informace najdete v tématu [DSv2-Series] [ dv2-series] a [řady DS-Series] [ ds-series] specifikace.
+    Další informace najdete v tématu [DSv2-Series][dv2-series] and [DS-Series][ds-series] specifikace.
 * Doporučujeme, abyste si rezervovat některé volné kapacity ve fondu úložiště. Opuštění některé volné kapacity ve fondu úložiště poskytuje prostor svazky pro "místní oprava" proti selhání jednotky. To vylepšuje výkon a zabezpečení dat.  Další informace najdete v tématu [Volba velikosti svazku][choosing-the-size-of-volumes-s2d].
 * Horizontální navýšení kapacity sdílené virtuální počítače Azure se musí nasadit ve vlastní sadě dostupnosti Azure.
 * Není nutné ke konfiguraci nástroje pro vyrovnávání zatížení Azure interní název síťové sdílené složky souboru horizontální navýšení kapacity, například pro \<globální hostitele SAP\>. Týká se \<název virtuálního hostitele ASCS/SCS\> SAP ASCS/SCS instance nebo pro správce databáze. Horizontální navýšení kapacity sdílené horizontálně navyšuje jeho kapacita zatížení mezi všechny uzly clusteru. \<Globální hostitele SAP\> používá místní IP adresu pro všechny uzly clusteru.

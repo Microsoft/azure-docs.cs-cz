@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 398efd36e6c8d82a5090b7446c95abb2d1bfbca1
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 03c7be9112ed22bb43e259fa72581d382a276163
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67428764"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718185"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -105,7 +105,7 @@ Parametry fungovat stejným způsobem jako při vytváření zásad. Včetně pa
 Parametr má následující vlastnosti, které se používají v definici zásad:
 
 - **Název**: Název parametru. Používá `parameters` nasazení funkce v pravidlu zásad. Další informace najdete v tématu [pomocí hodnotu parametru](#using-a-parameter-value).
-- `type`: Určuje, zda je parametr **řetězec** nebo **pole**.
+- `type`: Určuje, zda je parametr **řetězec**, **pole**, **objekt**, **logická**, **celé číslo**, **float**, nebo **data a času**.
 - `metadata`: Definuje objektu třídy subproperties primárně slouží k zobrazení uživatelsky přívětivé informací pomocí webu Azure portal:
   - `description`: Vysvětlení, co tento parametr se používá pro. Je možné příklady přijatelných hodnot.
   - `displayName`: Popisný název na portálu pro parametr nezobrazuje.

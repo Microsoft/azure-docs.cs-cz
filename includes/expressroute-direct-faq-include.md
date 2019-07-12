@@ -5,19 +5,19 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: include
-ms.date: 02/25/2019
+ms.date: 07/09/2019
 ms.author: jaredro
 ms.custom: include file
-ms.openlocfilehash: ab74c331bdc8b72612aa848688e1de080314337a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2e6eb449f4e7a8dcd6c4547162a575d21f303f83
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67133874"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67712506"
 ---
 ### <a name="what-is-expressroute-direct"></a>Co je ExpressRoute přímo?
 
-ExpressRoute Direct poskytuje zákazníkům možnost připojit se přímo ke globální síti Microsoftu v místech partnerských uzlů strategicky rozmístěných po celém světě. Přímé ExpressRoute poskytuje duální 100 GB/s připojením, která podporuje připojení k aktivní/aktivní ve velkém měřítku. 
+ExpressRoute Direct poskytuje zákazníkům možnost připojit se přímo ke globální síti Microsoftu v místech partnerských uzlů strategicky rozmístěných po celém světě. Přímé ExpressRoute poskytuje duální 100 nebo 10 GB/s připojením, která podporuje připojení k aktivní/aktivní ve velkém měřítku. 
 
 ### <a name="how-do-customers-connect-to-expressroute-direct"></a>Jak zákazníci se připojit k přímé ExpressRoute? 
 
@@ -28,22 +28,28 @@ Zákazníci bude nutné spolupracovat s jejich místní prostředníci a poskyto
 K dispozici porty se bude dynamicky a bude k dispozici v prostředí PowerShell, chcete-li zobrazit kapacitu. Zahrnují umístění a *se může změnit závislosti na dostupnosti*:
 
 * Amsterdam
+* Amsterdam2
+* Auckland 
 * Chicago
-* Washington DC
-* Dallas 
+* Dallas
+* Dublin
 * Hongkong – zvláštní administrativní oblast
 * Londýn
 * Los Angeles
+* Melbourne
 * New York City
-* Paříž
 * Perth
-* Toronto
 * San Antonio
 * Seattle
 * Soul
 * Silicon Valley
-* Singapur 
+* Singapur2 
 * Sydney
+* Tchaj-pej
+* Tokio
+* Toronto
+* Washington DC
+* Washington DC2
 
 ### <a name="what-is-the-sla-for-expressroute-direct"></a>Co je smlouva SLA pro přímé ExpressRoute?
 
@@ -51,7 +57,7 @@ ExpressRoute Direct bude využívat stejné [podnikové ExpressRoute](https://az
 
 ### <a name="what-scenarios-should-customers-consider-with-expressroute-direct"></a>Jaké scénáře měli zákazníci zvážit s přímým ExpressRoute?  
 
-Přímé ExpressRoute poskytuje zákazníkům s přímým přístupem 100 GB/s port páry do globální páteřní infrastrukturu Microsoftu. Mezi scénáře, které bude poskytovat zákazníkům s největší výhody patří: Masivní ingestování, fyzické izolace pro regulované trhy a vyhrazenou kapacitu pro scénář zvládání výkonových špiček, jako je vykreslování. 
+Přímé ExpressRoute poskytuje zákazníkům s přímým přístupem 100 10 GB/s port dvojic do globální páteřní infrastrukturu Microsoftu. Mezi scénáře, které bude poskytovat zákazníkům s největší výhody patří: Masivní ingestování, fyzické izolace pro regulované trhy a vyhrazenou kapacitu pro scénář zvládání výkonových špiček, jako je vykreslování. 
 
 ### <a name="what-is-the-billing-model-for-expressroute-direct"></a>Co je fakturační model přímo ExpressRoute? 
 

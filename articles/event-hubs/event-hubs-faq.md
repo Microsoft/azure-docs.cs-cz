@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 05/15/2019
 ms.author: shvija
-ms.openlocfilehash: c5e58f7bc89fbe2d93f6610465abf4a92fd31406
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e1ec6987f1a142e9bf9cd4413cfb4444bde1b7dd
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66476115"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797001"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Nejčastější dotazy k Event Hubs
 
@@ -83,7 +83,7 @@ Najít správné IP adresy na seznamu povolených pro vaše připojení, postupu
     ```
     nslookup <YourNamespaceName>.servicebus.windows.net
     ```
-2. Poznamenejte si IP adresu vrácenou v `Non-authoritative answer`. Tato IP adresa je statická. Pouze bodu v čase, že by došlo ke změně je-li obnovit obor názvů do jiného clusteru.
+2. Poznamenejte si IP adresu vrácenou v `Non-authoritative answer`. Pouze bodu v čase, že by došlo ke změně je-li obnovit obor názvů do jiného clusteru.
 
 Pokud používáte redundanci zón pro váš obor názvů, je třeba provést několik dalších kroků: 
 

@@ -4,7 +4,7 @@ description: Nasadí Azure Disk Encryption pro Linux do virtuálního počítač
 services: virtual-machines-linux
 documentationcenter: ''
 author: ejarvi
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/10/2019
 ms.author: ejarvi
-ms.openlocfilehash: 05d20e75cf8f0c84936ff4e5dfa42d60678f6ffc
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: d544aae33faf60be00a2b4ea0a45f405efcedb39
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295334"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706145"
 ---
 # <a name="azure-disk-encryption-for-linux-microsoftazuresecurityazurediskencryptionforlinux"></a>Azure Disk Encryption pro Linux (Microsoft.Azure.Security.AzureDiskEncryptionForLinux)
 
@@ -141,20 +141,20 @@ Pomocí `AADClientCertificate`:
 | Název | Hodnota / příklad | Typ dat |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.Azure.Security | string |
-| type | AzureDiskEncryptionForLinux | string |
+| publisher | Microsoft.Azure.Security | řetězec |
+| type | AzureDiskEncryptionForLinux | řetězec |
 | typeHandlerVersion | 0.1, 1.1 | int |
-| (schéma 0,1) AADClientID | tomuto: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | identifikátor GUID | 
-| (schéma 0,1) AADClientSecret | password | string |
-| (schéma 0,1) AADClientCertificate | thumbprint | string |
+| (schéma 0,1) AADClientID | tomuto: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
+| (schéma 0,1) AADClientSecret | password | řetězec |
+| (schéma 0,1) AADClientCertificate | thumbprint | řetězec |
 | DiskFormatQuery | {"dev_path":"","name":"","file_system":""} | Slovník JSON |
-| EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | string | 
-| KeyEncryptionAlgorithm | "RSA OAEP", "RSA 256 OAEP", "RSA1_5. | string |
-| KeyEncryptionKeyURL | url | string |
-| KeyVaultURL | url | string |
-| Passphrase | password | string | 
-| SequenceVersion | uniqueidentifier | string |
-| VolumeType | Operačního systému, dat, všechny | string |
+| EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | řetězec | 
+| KeyEncryptionAlgorithm | "RSA OAEP", "RSA 256 OAEP", "RSA1_5. | řetězec |
+| KeyEncryptionKeyURL | url | řetězec |
+| (volitelné) KeyVaultURL | url | řetězec |
+| Passphrase | password | řetězec | 
+| SequenceVersion | uniqueidentifier | řetězec |
+| VolumeType | Operačního systému, dat, všechny | řetězec |
 
 ## <a name="template-deployment"></a>Nasazení šablon
 

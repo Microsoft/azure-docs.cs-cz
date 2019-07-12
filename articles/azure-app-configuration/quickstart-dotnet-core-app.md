@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 0bf4aff8e0bae3e84e6383ec560dbfe67e30b994
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: c42066b3ac02264ee357bac7ed3fdd360e9d5d4a
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65408724"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798419"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>Rychlý start: Vytvoření .NET Core aplikace s konfigurací aplikace
 
@@ -39,9 +39,9 @@ To provedete v tomto rychlém startu, nainstalujete [.NET Core SDK](https://dotn
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Vyberte **Průzkumník konfigurací** > **+ vytvořit** přidáte následující páry klíč hodnota:
+6. Vyberte **Průzkumník konfigurací** >  **+ vytvořit** přidáte následující páry klíč hodnota:
 
-    | Klíč | Value |
+    | Klíč | Hodnota |
     |---|---|
     | TestApp:Settings:Message | Data z konfigurace aplikace Azure |
 
@@ -53,15 +53,15 @@ Můžete použít [rozhraní příkazového řádku .NET Core (CLI)](https://doc
 
 1. Vytvořte novou složku pro váš projekt.
 
-2. V nové složce spuštěním následujícího příkazu vytvořte nový projekt webové aplikace ASP.NET Core MVC:
+2. V nové složce spuštěním následujícího příkazu vytvořte nový projekt konzolové aplikace ASP.NET Core:
 
         dotnet new console
 
 ## <a name="connect-to-an-app-configuration-store"></a>Připojit k úložišti konfigurace aplikace
 
-1. Přidejte odkaz na `Microsoft.Extensions.Configuration.AzureAppConfiguration` balíček NuGet spuštěním následujícího příkazu:
+1. Přidejte odkaz na `Microsoft.Azure.AppConfiguration.AspNetCore` balíček NuGet spuštěním následujícího příkazu:
 
-        dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration --version 1.0.0-preview-008520001
+        dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-009200001-7
 
 2. Spusťte následující příkaz k obnovení balíčků pro váš projekt:
 
@@ -113,7 +113,7 @@ Můžete použít [rozhraní příkazového řádku .NET Core (CLI)](https://doc
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste vytvořili novým úložištěm konfigurace aplikace a použít s konzolovou aplikaci .NET Core prostřednictvím [poskytovatele konfigurace aplikace](https://go.microsoft.com/fwlink/?linkid=2074664). Další informace o tom, jak používat konfiguraci aplikací, pokračujte k dalšímu kurzu, který ukazuje ověření.
 

@@ -1,7 +1,7 @@
 ---
 title: Průvodce řešením problémů s nasazením
 titleSuffix: Azure Machine Learning service
-description: Zjistěte, jak obejít, řešení a řešení potíží s běžnými chybami nasazení Dockeru s AKS a ACI pomocí služby Azure Machine Learning.
+description: Zjistěte, jak obejít, řešení a řešení potíží s běžnými chybami nasazení Dockeru pomocí služby Azure Kubernetes Service a Azure Container Instances pomocí služby Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: conceptual
 author: chris-lauren
 ms.author: clauren
 ms.reviewer: jmartens
-ms.date: 05/02/2018
+ms.date: 07/09/2018
 ms.custom: seodec18
-ms.openlocfilehash: 0fba7c2f5a46e0c5d0e3c5fdd65a03bb77f148d9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e0f4b024d717c08df3514df057abf89d55be1dc9
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67074996"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707039"
 ---
-# <a name="troubleshooting-azure-machine-learning-service-aks-and-aci-deployments"></a>Řešení potíží s nasazením služby AKS a ACI Azure Machine Learning
+# <a name="troubleshooting-azure-machine-learning-service-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Řešení potíží s nasazením služby Azure Kubernetes Service a Azure Container Instances služby Azure Machine Learning
 
 Zjistěte, jak obejít nebo řešit běžné chyby nasazení Dockeru s Azure Container Instances (ACI) a Azure Kubernetes Service (AKS) pomocí služby Azure Machine Learning.
 
@@ -315,7 +315,215 @@ Existují dvě věci, které pomáhají zabránit 503 kódy stavu:
 Další informace o nastavení `autoscale_target_utilization`, `autoscale_max_replicas`, a `autoscale_min_replicas` , najdete v článku [AksWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) odkazu na modul.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="advanced-debugging"></a>Pokročilé ladění
+
+V některých případech budete muset interaktivně ladit kód Pythonu, které jsou obsažené v modelu nasazení. Například, pokud je skript vstupního služeb při selhání a důvod nelze určit podle dodatečné protokolování. Pomocí Visual Studio Code a nástroji Python Tools pro Visual Studio (PTVSD), můžete připojit k kódu běžícím uvnitř kontejneru Docker.
+
+> [!IMPORTANT]
+> Tato metoda ladění nefunguje při použití `Model.deploy()` a `LocalWebservice.deploy_configuration` nasadit model lokálně. Místo toho musíte vytvořit image pomocí [ContainerImage](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.containerimage?view=azure-ml-py) třídy. 
+>
+> Nasazení místní webové služby vyžadují funkční instalace Docker v místním systému. Docker musí běžet, než nasazení místní webové služby. Informace o instalaci a použití Dockeru najdete v tématu [ https://www.docker.com/ ](https://www.docker.com/).
+
+### <a name="configure-development-environment"></a>Konfigurace vývojového prostředí
+
+1. K instalaci nástroje Pythonu pro Visual Studio (PTVSD) ve svém místním vývojovém prostředí VS Code, použijte následující příkaz:
+
+    ```
+    python -m pip install --upgrade ptvsd
+    ```
+
+    Další informace o používání PTVSD s VS Code, naleznete v tématu [vzdálené ladění](https://code.visualstudio.com/docs/python/debugging#_remote-debugging).
+
+1. Konfigurace VS Code pro komunikaci s image Dockeru, vytvořte novou konfiguraci ladění:
+
+    1. VS Code, vyberte __ladění__ nabídky a pak vyberte __otevřete konfigurace__. Soubor s názvem __launch.json__ otevře.
+
+    1. V __launch.json__ souboru, vyhledejte řádek, který obsahuje `"configurations": [`a vložte za něj následující text:
+
+        ```json
+        {
+            "name": "Azure Machine Learning service: Docker Debug",
+            "type": "python",
+            "request": "attach",
+            "port": 5678,
+            "host": "localhost",
+            "pathMappings": [
+                {
+                    "localRoot": "${workspaceFolder}",
+                    "remoteRoot": "/var/azureml-app"
+                }
+            ]
+        }
+        ```
+
+        > [!IMPORTANT]
+        > Pokud v části konfigurace nejsou již další položky, přidejte za kód, který jste vložili čárku (,).
+
+        Tato část se připojí ke kontejneru Dockeru pomocí portu 5678.
+
+    1. Uložit __launch.json__ souboru.
+
+### <a name="create-an-image-that-includes-ptvsd"></a>Vytvořit bitovou kopii, která zahrnuje PTVSD
+
+1. Upravte prostředí conda pro své nasazení tak, že obsahují PTVSD. Následující příklad ukazuje přidání pomocí `pip_packages` parametr:
+
+    ```python
+    from azureml.core.conda_dependencies import CondaDependencies 
+    
+    # Usually a good idea to choose specific version numbers
+    # so training is made on same packages as scoring
+    myenv = CondaDependencies.create(conda_packages=['numpy==1.15.4',            
+                                'scikit-learn==0.19.1', 'pandas==0.23.4'],
+                                 pip_packages = ['azureml-defaults==1.0.17', 'ptvsd'])
+    
+    with open("myenv.yml","w") as f:
+        f.write(myenv.serialize_to_string())
+    ```
+
+1. Pokud chcete spustit PTVSD a čekat na připojení, když se služba spustí, přidejte následující k hornímu okraji vaše `score.py` souboru:
+
+    ```python
+    import ptvsd
+    # Allows other computers to attach to ptvsd on this IP address and port.
+    ptvsd.enable_attach(address=('0.0.0.0', 5678), redirect_output = True)
+    # Wait 30 seconds for a debugger to attach. If none attaches, the script continues as normal.
+    ptvsd.wait_for_attach(timeout = 30)
+    print("Debugger attached...")
+    ```
+
+1. Během ladění, můžete chtít provést změny do souborů v imagi bez nutnosti znovu ho vytvořte. Chcete-li nainstalovat textového editoru (vim) image Dockeru, vytvořte nový textový soubor s názvem `Dockerfile.steps` a následující tabulka obsahuje obsah souboru:
+
+    ```text
+    RUN apt-get update && apt-get -y install vim
+    ```
+
+    Textový editor umožňuje upravovat soubory v rámci image dockeru a otestujte změny bez nutnosti vytvářet novou bitovou kopii.
+
+1. Chcete-li vytvořit bitovou kopii, která se používá `Dockerfile.steps` souboru, použijte `docker_file` parametr při vytváření image. Následující příklad ukazuje, jak to udělat:
+
+    > [!NOTE]
+    > Tento příklad předpokládá, že `ws` odkazuje na váš pracovní prostor Azure Machine Learning a že `model` je model nasazení. `myenv.yml` Soubor obsahuje závislosti systému conda vytvořili v kroku 1.
+
+    ```python
+    from azureml.core.image import Image, ContainerImage
+    image_config = ContainerImage.image_configuration(runtime= "python",
+                                 execution_script="score.py",
+                                 conda_file="myenv.yml",
+                                 docker_file="Dockerfile.steps")
+
+    image = Image.create(name = "myimage",
+                     models = [model],
+                     image_config = image_config, 
+                     workspace = ws)
+    # Print the location of the image in the repository
+    print(image.image_location)
+    ```
+
+Po vytvoření image, zobrazí se umístění image v registru. Umístění je podobný následujícímu textu:
+
+```text
+myregistry.azurecr.io/myimage:1
+```
+
+V tomto příkladu text je název registru `myregistry` a názvem image `myimage`. Verze image je `1`.
+
+### <a name="download-the-image"></a>Stažení bitové kopie
+
+1. Otevřete příkazový řádek, terminál nebo jiné prostředí a pomocí následujících [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) příkazu proveďte ověření pro příslušné předplatné Azure, která obsahuje váš pracovní prostor Azure Machine Learning:
+
+    ```azurecli
+    az login
+    ```
+
+1. K ověření do Azure Container Registry (ACR), který obsahuje image, použijte následující příkaz. Nahraďte `myregistry` s jedním vrácena při registraci na obrázku:
+
+    ```azurecli
+    az acr login --name myregistry
+    ```
+
+1. Chcete-li stáhnout bitovou kopii k místní Dockeru, použijte následující příkaz. Nahraďte `myimagepath` umístěním vrátila při registraci na obrázku:
+
+    ```bash
+    docker pull myimagepath
+    ```
+
+    Cesta k obrázku by měl být podobný `myregistry.azurecr.io/myimage:1`. Kde `myregistry` je vašeho registru, `myimage` je obrázek, a `1` je verze image.
+
+    > [!TIP]
+    > Ověřování z předchozího kroku není poslední navždy. Pokud čekáte dostatečně dlouho mezi příkazem ověřování a o přijetí změn, dojde k selhání ověřování. Pokud k tomu dojde, donutit.
+
+    Čas potřebný k dokončení stahování závisí na rychlosti připojení k Internetu. Během procesu se zobrazí stav stahování. Po dokončení stahování se můžete `docker images` příkazu ověřte, že se má stáhnout.
+
+1. Pro usnadnění práce s imagí, použijte následující příkaz Pokud chcete přidat značku. Nahraďte `myimagepath` umístění hodnotu z kroku 2.
+
+    ```bash
+    docker tag myimagepath debug:1
+    ```
+
+    Pro zbývající kroky, můžete se podívat do místní image jako `debug:1` místo hodnoty cesta úplnou bitovou kopii.
+
+### <a name="debug-the-service"></a>Ladění služby
+
+> [!TIP]
+> Pokud jste nastavili časový limit pro připojení PTVSD `score.py` souboru, VS Code musíte připojit k relaci ladění předtím, než vyprší časový limit. Spusťte VS Code, otevřít místní kopii `score.py`, nastavte zarážku a mít připravené před pomocí kroků v této části.
+>
+> Další informace o ladění a nastavovat zarážky, naleznete v tématu [ladění](https://code.visualstudio.com/Docs/editor/debugging).
+
+1. Pokud chcete začít pomocí image kontejneru Dockeru, použijte následující příkaz:
+
+    ```bash
+    docker run --rm --name debug -p 8000:5001 -p 5678:5678 debug:1
+    ```
+
+1. VS Code můžete připojit k PTVSD uvnitř kontejneru, spusťte VS Code a pomocí F5 klíče nebo vyberte __ladění__. Po zobrazení výzvy vyberte __služby Azure Machine Learning: Ladění docker__ konfigurace. Můžete také vybrat ikonu ladění z bočním panelu __služby Azure Machine Learning: Ladění docker__ položky z rozevírací nabídky ladění a pak použijte ladicí program připojit na zelenou šipku.
+
+    ![Ikona, ladění tlačítko start a selektor konfigurace](media/how-to-troubleshoot-deployment/start-debugging.png)
+
+V tomto okamžiku VS Code se připojí k PTVSD uvnitř kontejneru Docker a zastaví na zarážce, kterou jste dříve nastavili. Můžete teď krokovat kód za běhu, zobrazení, proměnné atd.
+
+Další informace o použití VS Code pro ladění Pythonu najdete v tématu [ladění kódu Python](https://docs.microsoft.com/visualstudio/python/debugging-python-in-visual-studio?view=vs-2019).
+
+<a id="editfiles"></a>
+### <a name="modify-the-container-files"></a>Změňte soubory v kontejneru
+
+Provádět změny souborů na obrázku, můžete připojit ke spuštěnému kontejneru a spusťte prostředí bash. Odtud můžete vim k úpravě souborů:
+
+1. Pokud chcete připojit ke spuštěnému kontejneru a spusťte prostředí bash v kontejneru, použijte následující příkaz:
+
+    ```bash
+    docker exec -it debug /bin/bash
+    ```
+
+1. K vyhledání souborů používaný službou, použijte následující příkaz z prostředí bash v kontejneru:
+
+    ```bash
+    cd /var/azureml-app
+    ```
+
+    Z tohoto místa můžete vim upravit `score.py` souboru. Další informace o používání vim najdete v tématu [pomocí editoru Vim](https://www.tldp.org/LDP/intro-linux/html/sect_06_02.html).
+
+1. Obvykle nejsou trvalé změny do kontejneru. Chcete-li uložit jakékoli změny, které provedete, použijte následující příkaz, před ukončením okna spuštěna v předchozím kroku (to znamená, že v jiném prostředí):
+
+    ```bash
+    docker commit debug debug:2
+    ```
+
+    Tento příkaz vytvoří novou image s názvem `debug:2` , která obsahuje vaše úpravy.
+
+    > [!TIP]
+    > Je potřeba zastavit aktuální kontejneru a začít používat novou verzi předtím, než se změny projevily.
+
+1. Ujistěte se, že chcete zachovat změny provedené do souborů v kontejneru synchronizované s místní soubory, které používá VS Code. V opačném případě prostředí ladicí program nebude fungovat podle očekávání.
+
+### <a name="stop-the-container"></a>Zastavit kontejner
+
+Pokud chcete kontejner zastavit, použijte následující příkaz:
+
+```bash
+docker stop debug
+```
+
+## <a name="next-steps"></a>Další kroky
 
 Další informace o nasazení:
 

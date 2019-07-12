@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
-ms.openlocfilehash: 1bfc0be81d42e922c47755543fb65aa413ec73a9
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 6fbd20c201e1b141b7276e3283599b00cdefd118
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478755"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67795305"
 ---
 # <a name="adding-custom-actions-to-azure-rest-api"></a>Přidání vlastní akce k rozhraní Azure REST API
 
@@ -132,9 +132,9 @@ az resource invoke-action --action {actionName} \
                             }'
 ```
 
-Parametr | Požaduje se | Popis
+Parametr | Požadováno | Popis
 ---|---|---
-action | *Ano* | Název akce definované v **ResourceProvider**.
+Akce | *Ano* | Název akce definované v **ResourceProvider**.
 ids | *Ano* | ID prostředku **ResourceProvider**.
 text žádosti | *no* | Tělo požadavku, který se pošle **koncový bod**.
 
@@ -186,7 +186,7 @@ Ukázkové šablony Azure Resource Manageru:
 }
 ```
 
-Parametr | Požaduje se | Popis
+Parametr | Požadováno | Popis
 ---|---|---
 resourceIdentifier | *Ano* | ID prostředku **ResourceProvider**.
 apiVersion | *Ano* | Verze rozhraní API modulu runtime prostředků. To by měla být vždy "2018-09-01-preview".
@@ -195,5 +195,6 @@ functionValues | *no* | Tělo požadavku, který se pošle **koncový bod**.
 ## <a name="next-steps"></a>Další postup
 
 - [Přehled poskytovatelů vlastního prostředku Azure](./custom-providers-overview.md)
-- [Kurz: Vytvoření vlastního poskytovatele prostředků Azure a nasazení vlastních prostředků](./create-custom-provider.md)
+- [Rychlé zprovoznění: Vytvoření vlastního poskytovatele prostředků Azure a nasazení vlastních prostředků](./create-custom-provider.md)
+- [Kurz: Vytvoření vlastní akce a prostředků v Azure](./tutorial-custom-providers-101.md)
 - [Postup: Přidání vlastních prostředků do Azure REST API](./custom-providers-resources-endpoint-how-to.md)

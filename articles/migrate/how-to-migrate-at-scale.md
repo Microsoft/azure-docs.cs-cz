@@ -6,16 +6,16 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: snehaa
-ms.openlocfilehash: f90140e9464ee72e9ceae8ca140bd060c51aade8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b45a158569b3be8250728293c1bf73c1a860a0f6
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60597117"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67808028"
 ---
 # <a name="scale-migration-of-vms-using-azure-site-recovery"></a>Migrace škálovací sady virtuálních počítačů pomocí Azure Site Recovery
 
-Tento článek vám pomůže porozumět procesu pomocí skriptů pro migraci velkého počtu virtuálních počítačů pomocí Azure Site Recovery. Tyto skripty jsou k dispozici pro stahování na [ukázky Azure Powershellu](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-with-site-recovery) úložišti na Githubu. Skripty lze použít k migraci VMware, AWS, GCP virtuálních počítačů a fyzických serverů do Azure a podpora migrace na spravované disky. Tyto skripty můžete také použít k migraci virtuálních počítačů Hyper-V, pokud provádíte migraci virtuálních počítačů jako s fyzickými servery. Skripty využívají zdokumentované Powershellu pro Azure Site Recovery [tady](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell).
+Tento článek pomáhá pochopit, jak pomocí skriptů můžete migrovat velký počet virtuálních počítačů pomocí Azure Site Recovery. Tyto skripty jsou k dispozici pro stahování na [ukázky Azure Powershellu](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-with-site-recovery) úložišti na Githubu. Skripty lze použít k migraci VMware, AWS, GCP virtuálních počítačů a fyzických serverů do managed disks v Azure. Tyto skripty můžete také použít k migraci virtuálních počítačů Hyper-V, pokud provádíte migraci virtuálních počítačů jako s fyzickými servery. Skripty, které využívají Powershellu pro Azure Site Recovery jsou popsány [tady](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell).
 
 ## <a name="current-limitations"></a>Aktuální omezení:
 - Nepodporuje určení statickou IP adresu jenom pro primární síťové rozhraní cílového virtuálního počítače
@@ -60,7 +60,7 @@ Když sdílený svazek clusteru je připravená, můžete spustit následující
 6 | asr_cleanuptestmigration.ps1 | Po ruční ověření virtuálních počítačů, které byly testování převzetím služeb při selhání, můžete použít tento skript k vyčištění testovacího převzetí služeb virtuálních počítačů
 7 | asr_migration.ps1 | Provedení neplánovaného převzetí služeb při selhání pro virtuální počítače uvedené ve sdíleném svazku clusteru, skript vytvoří výstupu CSV s podrobnostmi o úloze pro každý virtuální počítač. Skript nevypne místní virtuální počítače před aktivací převzetí služeb při selhání pro zajištění konzistence aplikace, je doporučeno, že je ručně vypněte virtuální počítače před spuštěním skriptu.
 8 | asr_completemigration.ps1 | Provedení operace potvrzení na virtuálních počítačích a odstranění entit Azure Site Recovery
-9 | asr_postmigration.ps1 | Pokud hodláte přiřadit skupiny zabezpečení sítě síťových adaptérů post-převzetí služeb při selhání, můžete k tomu tento skript. Přiřadí NSG na všechny jeden síťový adaptér na cílovém virtuálním počítači.
+9 | asr_postmigration.ps1 | Pokud hodláte přiřadit skupiny zabezpečení sítě síťových adaptérů post-převzetí služeb při selhání, můžete k tomu tento skript. Přiřadí skupinu zabezpečení sítě na jakékoli jeden síťový adaptér na cílovém virtuálním počítači.
 
 ## <a name="how-to-migrate-to-managed-disks"></a>Migrace na spravované disky?
 Skript, ve výchozím nastavení, migruje se virtuální počítače na managed disks v Azure. Pokud zadaný cílový účet úložiště je účtem premium storage, budou vytvořeny premium managed disks po migraci. Účet úložiště mezipaměti může být stále standardní účet. Pokud cílový účet úložiště není účet úložiště úrovně standard, disky úrovně standard budou vytvořeny po migraci. 

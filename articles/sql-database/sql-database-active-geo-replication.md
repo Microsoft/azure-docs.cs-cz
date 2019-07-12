@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 06/18/2019
-ms.openlocfilehash: 826944fd3713f5cc3e99f20cb140055bfdb11a14
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.date: 07/09/2019
+ms.openlocfilehash: 4b525c3cbea600859106062ed34dc6df9622dec5
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341436"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807304"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>Vytváření a používání aktivní geografické replikace
 
@@ -43,7 +43,6 @@ Může spravovat replikaci a převzetí služeb při selhání jednotlivých dat
 - [Transact-SQL: Elastický fond nebo izolovanou databázi](/sql/t-sql/statements/alter-database-azure-sql-database)
 - [REST API: Izolované databáze](https://docs.microsoft.com/rest/api/sql/replicationlinks)
 
-Po převzetí služeb při selhání Ujistěte se, že požadavky na ověřování pro server a databáze jsou nakonfigurovány na nový primární. Podrobnosti najdete v tématu [zabezpečení služby SQL Database po zotavení po havárii](sql-database-geo-replication-security-config.md).
 
 Aktivní geografická replikace využívá [Always On](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server) technologie SQL serveru na asynchronní potvrzené transakce u primární databáze replikace do sekundární databáze pomocí izolace snímku. Automatické převzetí služeb při selhání skupiny poskytují sémantiku skupiny nad aktivní geografickou replikaci, ale používá stejné mechanismu asynchronní replikace. Když v libovolném časovém okamžiku sekundární databáze může být mírně za primární databáze, je zaručeno, že sekundární data nikdy nemůžete mít částečné transakce. Redundance mezi oblastmi umožňuje aplikacím rychle obnoven k trvalé ztrátě celého datového centra nebo částí datacentra způsobené přírodními katastrofami, katastrofální lidské chyby nebo škodlivý funguje. Konkrétní cíle bodu obnovení dat lze nalézt v [přehled kontinuity](sql-database-business-continuity.md).
 
@@ -83,12 +82,12 @@ Pro dosažení skutečné obchodní kontinuity podnikových procesů, je přidá
 
 - **Plánované převzetí služeb při selhání**
 
-  Plánované převzetí služeb při selhání provádí úplnou synchronizaci mezi primární a sekundární databáze před přepne sekundární do primární role. Zaručí se tak ztrátě. Plánované převzetí služeb při selhání se používá následujících situacích: (a) provést zotavení po Havárii operací v produkčním prostředí po ztrátě dat je nepřijatelné; (b) k přesunutí databáze do jiné oblasti; a (c) Chcete-li databázi vrátit do primární oblasti, až se výpadek zmírnit (navrácení služeb po obnovení).
+  Plánované převzetí služeb při selhání přepínače role primární a sekundární databáze po dokončení úplné synchronizace. Je online operaci, která nemá za následek ztrátu dat. Čas operace závisí na velikosti protokolů transakcí na primární, kterou je potřeba synchronizovat. Plánované převzetí služeb při selhání je určen pro následující scénáře: (a) provést zotavení po Havárii operací v produkčním prostředí po ztrátě dat je nepřijatelné; (b) k přesunutí databáze do jiné oblasti; a (c) Chcete-li databázi vrátit do primární oblasti, až se výpadek zmírnit (navrácení služeb po obnovení).
 
 - **Neplánované převzetí služeb při selhání**
 
-  Vynucené nebo neplánované převzetí služeb při selhání se okamžitě přepne sekundární do primární role bez jakékoli synchronizace s primární. Tato operace způsobí ztrátu dat. Neplánované převzetí služeb při selhání se používá jako způsob obnovení během výpadků, když primární není dostupný. Když je původní primární zpátky do online režimu, bude automaticky znovu připojit bez synchronizace a stát nový sekundární.
-
+  Vynucené nebo neplánované převzetí služeb při selhání se okamžitě přepne sekundární do primární role bez jakékoli synchronizace s primární. Jakékoli transakce potvrzena na primární, ale nejsou replikovány na sekundární se ztratí. Tato operace je navržen jako způsob obnovení během výpadků, pokud primární není dostupný, ale musíte rychle obnovit databázi dostupnosti. Pokud původní primární je zpátky do online režimu bude automaticky znovu připojit a stát nový sekundární. Všechny nesynchronizované transakce před převzetí služeb při selhání se zachovají v záložním souboru, ale nebudou synchronizovat s novou primární, aby nedocházelo ke konfliktům. Tyto transakce budou muset ručně sloučit s nejnovější verzí primární databáze.
+ 
 - **Více čitelné sekundární databáze**
 
   Pro každý primární můžete vytvořit až 4 sekundárních databází. Pokud existuje pouze jedna sekundární databáze a selže, aplikace je přístupný vyšší riziko dokud se vytvoří nová sekundární databáze. Existuje více sekundární databází, i nadále aplikace chráněn, i v případě, že jedna sekundární databáze se nezdaří. Lze také použít další sekundární databáze k horizontálnímu navýšení kapacity úloh jen pro čtení
@@ -105,21 +104,26 @@ Pro dosažení skutečné obchodní kontinuity podnikových procesů, je přidá
 
   Sekundární databáze lze explicitně přepnout do primární role v každém okamžiku aplikace nebo uživatele. Během výpadku skutečné "neplánované" možnost by měla sloužit, která okamžitě podporuje sekundární jako primární. Při selhání primární obnoví a je opět k dispozici, systém automaticky označí jako sekundární obnovené primární a ji používalo nový primární. Protože potřebujeme asynchronní replikaci malé množství dat může dojít ke ztrátě během neplánované převzetí služeb při selhání selže primární před replikuje nejnovější změny do sekundární. Když primární s více sekundárních replik převezme služby při selhání, systém automaticky změní konfiguraci relace replikace a odkazy zbývající sekundární databáze na primární připojovaly bez nutnosti zásahu uživatele. Po vyřešení výpadek, který způsobil převzetí služeb při selhání může být žádoucí aplikace co nejdříve do primární oblasti. K tomuto účelu by měl vyvolat příkaz převzetí služeb při selhání s parametrem "plánovanou".
 
-- **Udržování synchronizace přihlašovacích údajů a pravidla brány firewall**
+## <a name="preparing-secondary-database-for-failover"></a>Příprava na převzetí služeb při selhání do sekundární databáze
 
-Doporučujeme používat [pravidla firewallu protokolu IP na úrovni databáze](sql-database-firewall-configure.md) pro geograficky replikované databáze, takže tato pravidla se dají replikovat s databází a zkontrolujte všechny sekundární databáze mají stejné pravidla firewallu protokolu IP jako primární. Tento přístup se eliminuje potřeba zákazníkům ručně konfigurovat a spravovat pravidla brány firewall na servery, které hostují jak primární a sekundární databází. Podobně použití [uživatelé databáze s omezením](sql-database-manage-logins.md) dat přístup zajistí primární i sekundární databáze vždy stejné přihlašovací údaje uživatele, takže při selhání, není k dispozici žádné přerušení z důvodu neshody se uživatelská jména a hesla. Přidání [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md), zákazníci můžou spravovat přístup uživatelů k primární i sekundární databáze a eliminují ke správě pověření v databázích úplně se vynechá.
+Aby bylo zajištěno, že vaše aplikace můžete okamžitě přístup k nové primární po převzetí služeb při selhání, zajistěte, aby že požadavky na ověřování pro sekundární server a databáze jsou správně nakonfigurované. Podrobnosti najdete v tématu [zabezpečení služby SQL Database po zotavení po havárii](sql-database-geo-replication-security-config.md). Pokud chcete zajistit dodržování předpisů po převzetí služeb při selhání, ujistěte se, že zásady uchovávání záloh na sekundární databázi se shoduje s primárním. Tato nastavení nejsou součástí databáze a nebudou se replikovat. Ve výchozím nastavení se nakonfigurují sekundární s dobou uchování PITR výchozí sedmi dnů. Podrobnosti najdete v tématu [automatické zálohování SQL Database](sql-database-automated-backups.md).
 
 ## <a name="configuring-secondary-database"></a>Konfigurace aktivní sekundární databáze
 
-Primární a sekundární databáze musí mít stejné úrovně služeb. Také důrazně doporučujeme, že se vytvoří sekundární databáze se stejnou velikostí výpočetní prostředky (počet jednotek Dtu nebo virtuálních jader) jako primární. Pokud primární databáze je zápis náročné úlohy, nemusí být schopné udržovat tempo s ním sekundárního objektu s nižší výpočetní velikost. Způsobí zpoždění opakování na sekundární, potenciální nedostupnost a následně na riziko ztráty podstatné po převzetí služeb. V důsledku toho publikované cíle bodu obnovení = 5 s nemůže být zaručena. Také to může způsobit selhání nebo zablokování z ostatních úloh na primární. 
-
-Důsledkem imbalanced sekundární konfigurace je, že po převzetí služeb při selhání se výkon vaší aplikace mají z důvodu nedostatečné výpočetní kapacitu nový primární. Je potřeba upgradovat na vyšší výpočetní prostředky potřebné úrovně, které nebude možné, dokud je zmírněna výpadek. 
-
-> [!NOTE]
-> V současné době upgradem primární databáze není možné, pokud je offline sekundární. 
+Primární a sekundární databáze musí mít stejné úrovně služeb. Také důrazně doporučujeme, že se vytvoří sekundární databáze se stejnou velikostí výpočetní prostředky (počet jednotek Dtu nebo virtuálních jader) jako primární. Pokud primární databáze je zápis náročné úlohy, nemusí být schopné udržovat tempo s ním sekundárního objektu s nižší výpočetní velikost. To způsobí zpoždění opakování nedostupnost sekundární a potenciální. U sekundární databáze, která zaostává za primární databází, také hrozí rozsáhlá ztráta dat v případě, že je potřeba provést vynucené převzetí služeb při selhání. Pokud chcete toto riziko omezit, efektivní aktivní geografické replikace bude míra primární protokolu umožňující její sekundární databáze dohnat. Důsledkem imbalanced sekundární konfigurace je, že po převzetí služeb při selhání se výkon vaší aplikace mají z důvodu nedostatečné výpočetní kapacitu nový primární. Je potřeba upgradovat na vyšší výpočetní prostředky potřebné úrovně, které nebude možné, dokud je zmírněna výpadek. 
 
 
-Pokud se rozhodnete vytvořit sekundární s menší velikostí výpočetních, graf procento protokolu vstupně-výstupních operací na portálu Azure portal poskytuje vhodný způsob, jak odhadovat velikost minimální výpočetní sekundární databáze, která je nutná pro udržení zatížení replikace. Například, pokud primární databáze je P6 (1 000 DTU) a jeho protokolem procent vstupně-výstupních operací je sekundární musí být nejméně 50 % P4 (500 DTU). Můžete také načíst data protokolu vstupně-výstupních operací s využitím [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) nebo [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) databáze zobrazení.  Další informace o velikostech výpočetních SQL Database najdete v tématu [co jsou úrovně služby SQL Database](sql-database-purchase-models.md).
+> [!IMPORTANT]
+> Publikované cíle bodu obnovení = 5 s nemůže být zaručena, pokud je nakonfigurovaná sekundární databáze se stejnou velikostí výpočetních jako primární. 
+
+
+Pokud se rozhodnete vytvořit sekundární s menší velikostí výpočetních, graf procento protokolu vstupně-výstupních operací na portálu Azure portal poskytuje vhodný způsob, jak odhadovat velikost minimální výpočetní sekundární databáze, která je nutná pro udržení zatížení replikace. Například, pokud primární databáze je P6 (1 000 DTU) a jeho protokolem procent vstupně-výstupních operací je sekundární musí být nejméně 50 % P4 (500 DTU). Můžete také načíst data protokolu vstupně-výstupních operací s využitím [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) nebo [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) databáze zobrazení.  Omezení se hlásí jako HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO stavu čekání [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) a [sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) databáze zobrazení. 
+
+Další informace o velikostech výpočetních SQL Database najdete v tématu [co jsou úrovně služby SQL Database](sql-database-purchase-models.md).
+
+## <a name="keeping-credentials-and-firewall-rules-in-sync"></a>Udržování synchronizace přihlašovacích údajů a pravidla brány firewall
+
+Doporučujeme používat [pravidla firewallu protokolu IP na úrovni databáze](sql-database-firewall-configure.md) pro geograficky replikované databáze, takže tato pravidla se dají replikovat s databází a zkontrolujte všechny sekundární databáze mají stejné pravidla firewallu protokolu IP jako primární. Tento přístup se eliminuje potřeba zákazníkům ručně konfigurovat a spravovat pravidla brány firewall na servery, které hostují jak primární a sekundární databází. Podobně použití [uživatelé databáze s omezením](sql-database-manage-logins.md) dat přístup zajistí primární i sekundární databáze vždy stejné přihlašovací údaje uživatele, takže při selhání, není k dispozici žádné přerušení z důvodu neshody se uživatelská jména a hesla. Přidání [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md), zákazníci můžou spravovat přístup uživatelů k primární i sekundární databáze a eliminují ke správě pověření v databázích úplně se vynechá.
 
 ## <a name="upgrading-or-downgrading-primary-database"></a>Upgrade nebo při downgradu primární databáze
 
@@ -177,7 +181,7 @@ Jak je popsáno výše, aktivní geografickou replikaci můžete také spravovat
 > [!IMPORTANT]
 > Modul Azure PowerShell – Resource Manager je stále podporuje Azure SQL Database, ale všechny budoucí vývoj je Az.Sql modulu. Tyto rutiny najdete v části [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulu Az a moduly AzureRm podstatně totožné.
 
-| Rutina | Popis |
+| Rutiny | Popis |
 | --- | --- |
 | [Get-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabase) |Získá jednu nebo více databází. |
 | [New-AzSqlDatabaseSecondary](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabasesecondary) |Vytvoří sekundární databázi pro existující databázi a spustí replikaci dat. |
@@ -191,7 +195,7 @@ Jak je popsáno výše, aktivní geografickou replikaci můžete také spravovat
 
 ### <a name="rest-api-manage-failover-of-single-and-pooled-databases"></a>REST API: Správa převzetí služeb při selhání jednoho a ve fondu databází
 
-| Rozhraní API | Popis |
+| rozhraní API | Popis |
 | --- | --- |
 | [Vytvořit nebo aktualizovat databázi (createMode = obnovení)](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |Vytvoří, aktualizuje nebo obnoví primární nebo sekundární databáze. |
 | [Získat vytvořit nebo aktualizovat stav databáze](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |Vrátí stav během operace vytvoření. |

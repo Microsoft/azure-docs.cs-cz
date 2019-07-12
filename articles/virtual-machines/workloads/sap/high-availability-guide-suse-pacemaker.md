@@ -4,7 +4,7 @@ description: Nastavení Pacemaker na SUSE Linux Enterprise Server v Azure
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: mssedusch
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 9a23f13947c4c7a77460ff389861e1dcc1de3c7f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 46044c061cca24714d1a951e28cf01ca29f14a7e
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65992109"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707206"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Nastavení Pacemaker na SUSE Linux Enterprise Server v Azure
 
@@ -448,7 +448,7 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
    <pre><code>sudo vi /etc/corosync/corosync.conf
    </code></pre>
 
-   Pokud hodnoty nejsou zde nebo jiné, přidejte do souboru následující tučného písma obsahu. Ujistěte se, že chcete-li změnit token 30000 umožňující Údržba pro zachování paměti. Další informace najdete v tématu [tohoto článku pro Linux] [ virtual-machines-linux-maintenance] nebo [Windows][virtual-machines-windows-maintenance]. Ujistěte se také, chcete-li odebrat mcastaddr parametr.
+   Pokud hodnoty nejsou zde nebo jiné, přidejte do souboru následující tučného písma obsahu. Ujistěte se, že chcete-li změnit token 30000 umožňující Údržba pro zachování paměti. Další informace najdete v tématu [tohoto článku pro Linux][virtual-machines-linux-maintenance] or [Windows][virtual-machines-windows-maintenance]. Ujistěte se také, chcete-li odebrat mcastaddr parametr.
 
    <pre><code>[...]
      <b>token:          30000

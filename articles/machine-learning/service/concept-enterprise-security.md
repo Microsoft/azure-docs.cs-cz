@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 03/10/2019
-ms.openlocfilehash: e9002b96467d6fa3a5c4fb03fb20bde4e1bf87a1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 07/10/2019
+ms.openlocfilehash: 8682baa961ca3270e76614702b51ac50f197e847
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059349"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67795493"
 ---
 # <a name="enterprise-security-for-azure-machine-learning-service"></a>Zabezpečení podnikové třídy pro službu Azure Machine Learning
 
@@ -23,7 +23,7 @@ V tomto článku se dozvíte o funkcích zabezpečení, které jsou dostupné s 
 
 Pokud používáte cloudovou službu, je osvědčeným postupem je omezit přístup jenom na uživatele, kteří ji potřebují. Tím se spustí Pochopením model ověřování a autorizace služba používá. Můžete také chtít omezit přístup k síti, nebo bezpečně připojit k prostředkům ve vaší místní síti s těmi v cloudu. Šifrování dat je také důležité, v klidu i při přesunu dat mezi službami. Nakonec musíte monitorovat službu a vytvoření protokolu auditu všech aktivit.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Ověřování
 Multi-Factor authentication je podporováno, pokud je Azure Active Directory (Azure AD) nakonfigurovaný pro stejné.
 * Klient se přihlásí do služby Azure AD a získá token Azure Resource Manageru.  Uživatelé a instanční objekty jsou plně podporované.
 * Klient prezentuje token na Azure Resource Manager a všechny služby Azure Machine Learning
@@ -51,16 +51,16 @@ print(primary)
 > Pokud je potřeba znovu vygenerovat klíč, použijte [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py)
 
 
-## <a name="authorization"></a>Autorizace
+## <a name="authorization"></a>Authorization
 
 Můžete vytvořit víc pracovních prostorů a každý pracovní prostor může být sdílen více lidí. Když sdílíte s pracovním prostorem, můžete řídit přístup k němu tak, že uživatelům přiřadíte následující role:
-* Vlastník
+* Owner
 * Přispěvatel
 * Čtenář
     
 V následující tabulce jsou uvedeny některé hlavní operace služby Azure Machine Learning a rolí, které můžete provést:
 
-| Služba Azure Machine Learning operace | Vlastník | Přispěvatel | Čtenář |
+| Služba Azure Machine Learning operace | Owner | Přispěvatel | Čtenář |
 | ---- |:----:|:----:|:----:|
 | Vytvoření pracovního prostoru | ✓ | ✓ | |
 | Sdílení pracovního prostoru | ✓ | |  |
@@ -115,7 +115,7 @@ Cvičná data jsou obvykle také uložená v úložišti objektů Blob v Azure t
 
 Informace o obnovování přístupových klíčů pro účty úložiště Azure, které jsou součástí vašeho pracovního prostoru, najdete v článku [opětovné vygenerování přístupových klíčů k úložišti](how-to-change-storage-access-key.md) článku.
 
-#### <a name="cosmos-db"></a>Cosmos DB
+#### <a name="cosmos-db"></a>Databáze Cosmos
 Služba Azure Machine Learning ukládá metriky a metadata pro Cosmos DB, který se nachází v předplatném Microsoft spravovaném službou Azure Machine Learning. Všechna data uložená ve službě Cosmos DB zašifrovaná přinejmenším pomocí Microsoft Managed Keys.
 
 #### <a name="azure-container-registry-acr"></a>Azure Container Registry (ACR)

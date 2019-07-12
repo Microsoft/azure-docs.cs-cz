@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: travisw
-ms.openlocfilehash: 4055b474938e38f653021b46f18200f8e39dd69d
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: c9b85895e701ff74e025d6f7895bc32513bc29a1
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604744"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67806899"
 ---
 # <a name="about-custom-voice-first-virtual-assistants-preview"></a>O vlastní hlasové první virtuální Asistenti ve verzi preview
 
@@ -29,7 +29,7 @@ Přímé řádku řeči a jeho přidružené funkce pro vlastní hlasové první
 
 ## <a name="core-features"></a>Základní funkce
 
-| Category | Funkce |
+| Kategorie | Funkce |
 |----------|----------|
 |[Vlastní probuzení word](speech-devices-sdk-create-kws.md) | Můžete povolit uživatelům začít konverzace s roboty pomocí vlastních klíčových slov, například "Hey Contoso." Provedení této úlohy se modul probuzení vlastní aplikace word v sadě SDK řeči, který se dá nakonfigurovat s vlastní probuzení slovo [, který může vytvořit tady](speech-devices-sdk-create-kws.md). Kanál s přímým přístupem řeči řádku zahrnuje straně služby probuzení slovo ověření, že zvyšují přesnost aktivace slovo probuzení versus zařízení samostatně.
 |[Převod řeči na text](speech-to-text.md) | Kanál s přímým přístupem řeči řádku obsahuje v reálném čase přepisu zvuku do textové rozpoznaných pomocí [Speech to text](speech-to-text.md) z hlasové služby Azure. Tento text je k dispozici pro vašeho robota a klientské aplikace, jako je přepisována.
@@ -43,6 +43,7 @@ Ukázkový kód pro vytváření virtuálních asistentů první hlasu je k disp
 * [Ukázky virtuálních asistentů Voice-first (SDK)](https://aka.ms/csspeech/samples)
 * [Rychlý start: voice první virtuálních asistentů (C#)](quickstart-virtual-assistant-csharp-uwp.md)
 * [Rychlý start: hlasové první virtuálních asistentů (Java)](quickstart-virtual-assistant-java-jre.md)
+* [Přímé řádku řečového klienta (C#, WPF)](https://github.com/Azure-Samples/Cognitive-Services-Direct-Line-Speech-Client)
 
 ## <a name="customization"></a>Přizpůsobení
 
@@ -56,9 +57,9 @@ Hlasové první virtuální Asistenti vyvíjené hlasové služby Azure můžete
 * [Speech SDK](speech-sdk-reference.md)
 * [Azure Bot Service](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Získejte klíč předplatného hlasových služeb zdarma](get-started.md)
 * [Získání sady SDK pro řeč](speech-sdk.md)
-* [Vytvoření a nasazení základního robota](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
+* [Vytvoření a nasazení základního chatbota](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
 * [Získejte virtuální pomocníka řešení a šablony organizace](https://github.com/Microsoft/AI)

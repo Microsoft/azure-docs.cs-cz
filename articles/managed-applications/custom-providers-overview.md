@@ -6,12 +6,12 @@ ms.service: managed-applications
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: jobreen
-ms.openlocfilehash: f418cd6c5470740ce123448ddbbe54cb6e89dabe
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: d25ef00adc307bae57da2c04d4472874f8d67bcd
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67475935"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67796082"
 ---
 # <a name="azure-custom-resource-providers-overview"></a>Přehled poskytovatelů vlastního prostředku Azure
 
@@ -54,7 +54,7 @@ Ukázka koncového bodu:
 }
 ```
 
-Vlastnost | Požaduje se | Popis
+Vlastnost | Požadováno | Popis
 ---|---|---
 name | *Ano* | Název definice koncového bodu. Azure bude vystavovat tento název prostřednictvím jejího rozhraní API v části "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/<br>resourceProviders / {název resourceProviderName} / {endpointDefinitionName}.
 routingType | *no* | Určuje typ kontraktu s **koncový bod**. Pokud není zadán, nastaví se jako výchozí "Proxy".
@@ -125,6 +125,7 @@ Pokud máte dotazy pro poskytovatele prostředků Azure vlastní vývoj, zkuste 
 
 V tomto článku jste se dozvěděli o vlastní poskytovatele. Přejdete na další článek k vytvoření vlastního zprostředkovatele.
 
-- [Kurz: Vytvoření vlastního poskytovatele prostředků Azure a nasazení vlastních prostředků](./create-custom-provider.md)
+- [Rychlé zprovoznění: Vytvoření vlastního poskytovatele prostředků Azure a nasazení vlastních prostředků](./create-custom-provider.md)
+- [Kurz: Vytvoření vlastní akce a prostředků v Azure](./tutorial-custom-providers-101.md)
 - [Postup: Přidání vlastní akce k rozhraní Azure REST API](./custom-providers-action-endpoint-how-to.md)
 - [Postup: Přidání vlastních prostředků do Azure REST API](./custom-providers-resources-endpoint-how-to.md)

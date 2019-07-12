@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 7/13/2018
 ms.author: victorh
-ms.openlocfilehash: c887c5ea72a64828749bfc62756e59a8a22ea9df
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e29966473a467ddf9d7e683a9d198ca692eab338
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66729640"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67785745"
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-azure-powershell"></a>Vytvoření služby application gateway s interním přesměrování pomocí Azure Powershellu
 
@@ -296,11 +296,11 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 
 ## <a name="test-the-application-gateway"></a>Otestování aplikační brány
 
-Do adresního řádku prohlížeče zadejte název domény. Příklad: http://www.contoso.com.
+Do adresního řádku prohlížeče zadejte název domény. Například http\:/ / www.contoso.com.
 
 ![Testování webu Contoso v aplikační bráně](./media/redirect-internal-site-powershell/application-gateway-iistest.png)
 
-Změňte adresu do jiné domény, například http://www.contoso.org a měli byste vidět, že provoz byl přesměrován zpět na naslouchací proces pro www\. contoso.com.
+Změnit adresu do jiné domény, například http\:/ / www.contoso.org a měli byste vidět, že provoz byl přesměrován zpět na naslouchací proces pro www\.contoso.com.
 
 ## <a name="next-steps"></a>Další postup
 

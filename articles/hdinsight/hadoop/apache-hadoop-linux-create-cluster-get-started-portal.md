@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: quickstart
-ms.date: 06/12/2019
+ms.date: 07/02/2019
 ms.author: hrasheed
-ms.openlocfilehash: e178326c4a165a9bebbef6b0162cc79c1f9a0727
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: f92cb247afb25562a96373c28534549a2f16d8c9
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67459511"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67805593"
 ---
 # <a name="quickstart-create-apache-hadoop-cluster-in-azure-hdinsight-using-azure-portal"></a>Rychlý start: Vytvořit cluster Apache Hadoop v Azure HDInsight pomocí webu Azure portal
 
@@ -41,12 +41,12 @@ V této části vytvoříte cluster Hadoop v HDInsight pomocí webu Azure Portal
     |Vlastnost  |Popis  |
     |---------|---------|
     |Název clusteru   | Zadejte název clusteru Hadoop. Vzhledem k tomu, že všechny clustery ve službě HDInsight sdílejí stejný obor názvů DNS, musí být tento název jedinečný. Název může mít až 59 znaků včetně písmena, číslice a pomlčky. První a poslední znak názvu nemůže být pomlčka. |
-    |Předplatné    |  Vyberte své předplatné Azure. |
+    |Subscription    |  Vyberte své předplatné Azure. |
     |Typ clusteru     | Tohle zatím přeskočte. Tuto hodnotu zadáte v dalším kroku postupu.|
     |Uživatelské jméno přihlášení clusteru a heslo    | Výchozí přihlašovací jméno je **admin** (správce). Heslo musí mít minimálně 10 znaků a musí obsahovat alespoň jedno číslo, jedno velké písmeno, jedno malé písmeno a jeden jiný než alfanumerický znak (kromě znaků ' " ` \). **Nezadávejte** běžné heslo, jako je „Pass@word1“.|
     |Uživatelské jméno Secure Shell (SSH) | Výchozí uživatelské jméno je **sshuser** (uživatelssh).  Pro uživatelské jméno SSH můžete zadat jiný název. |
     |Heslo přihlášení clusteru pomocí SSH| Pokud toto políčko zaškrtnete, použije se stejné heslo pro uživatele SSH, jaké jste zadali pro přihlášení uživatele clusteru.|
-    |Skupina prostředků     | Vytvořte skupinu prostředků nebo vyberte existující.  Skupina prostředků je kontejner komponent Azure.  V tomto případě skupina prostředků obsahuje cluster HDInsight a závislý účet služby Azure Storage. |
+    |Resource group     | Vytvořte skupinu prostředků nebo vyberte existující.  Skupina prostředků je kontejner komponent Azure.  V tomto případě skupina prostředků obsahuje cluster HDInsight a závislý účet služby Azure Storage. |
     |Location    | Vyberte umístění Azure, ve kterém chcete cluster vytvořit.  Pro dosažení lepšího výkonu zvolte co nejbližší umístění. |
 
     ![HDInsight Linux začínáme zadání základních hodnot clusteru](./media/apache-hadoop-linux-create-cluster-get-started-portal/quick-create-basics.png "Zadání základních hodnot pro vytvoření clusteru HDInsight")
@@ -68,7 +68,7 @@ V této části vytvoříte cluster Hadoop v HDInsight pomocí webu Azure Portal
     |---------|---------|
     |Typ primárního úložiště    | Pro účely tohoto článku vyberte úložiště Azure pro použití jako výchozí účet úložiště Azure Storage Blob. Jako výchozí úložiště můžete vybrat také úložiště Azure Data Lake. |
     |Metoda výběru     |  Pro účely tohoto článku vyberte **Moje předplatné**, aby se použil účet úložiště z vašeho předplatného Azure. Pokud chcete používat účet úložiště z jiných předplatných, vyberte **Přístupový klíč** a pak zadejte přístupový klíč k účtu. |
-    |Vyberte účet úložiště.   | Vyberte **vyberte účet úložiště** vyberte existující účet úložiště, nebo vyberte **vytvořit nový**.|
+    |Vyberte účet úložiště.   | Vyberte **vyberte účet úložiště** vyberte existující účet úložiště, nebo vyberte **vytvořit nový**. Pokud vytvoříte nový účet, název musí být dlouhý 3 až 24 znaků a může obsahovat jenom číslice a malá písmena.|
 
     Přijměte všechny výchozí hodnoty a pak vyberte **Další** k přechodu na stránce souhrnu.
 

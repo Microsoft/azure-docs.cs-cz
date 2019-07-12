@@ -4,7 +4,7 @@ description: Přesuňte virtuální počítač s Linuxem do jiného Azure předp
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: d635f0a5-4458-4b95-a5f8-eed4f41eb4d4
@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: cynthn
-ms.openlocfilehash: d2d3f36c9b4ee0557f9e060bec762877a94ea637
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7c22fe8beea894bccb311a63a1be70c972188e59
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61473926"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67667288"
 ---
 # <a name="move-a-linux-vm-to-another-subscription-or-resource-group"></a>Přesunout na jiné předplatné nebo skupinu prostředků virtuálního počítače s Linuxem
 Tento článek vás provede přesun virtuálního počítače s Linuxem (VM) mezi skupinami prostředků nebo předplatných. Přesun virtuálního počítače mezi předplatnými může být užitečné, pokud jste vytvořili virtuální počítač v rámci osobní předplatného a teď chcete přesunout do předplatného ve vaší společnosti.
@@ -71,6 +71,6 @@ Pokud budete vyzváni k potvrzení, že chcete přesunout zadané prostředky, z
 
 [!INCLUDE [virtual-machines-common-move-vm](../../../includes/virtual-machines-common-move-vm.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Mnoho různých typů prostředků můžou přesouvat mezi skupinami prostředků a předplatných. Další informace najdete v tématu [přesunutí prostředků do nové skupiny prostředků nebo předplatného](../../resource-group-move-resources.md).    
 

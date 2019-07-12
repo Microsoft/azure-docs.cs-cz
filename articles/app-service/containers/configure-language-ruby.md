@@ -13,14 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.date: 03/28/2019
-ms.author: astay;cephalin;kraigb
+ms.author: cephalin
+ms.reviewer: astay; kraigb
 ms.custom: seodec18
-ms.openlocfilehash: 8a2eaf50a35b25463be3e323d4362b52e2339bf6
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: 95a848ff7d74d35203c7e8377405c709f7fc7bd7
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67550300"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67617398"
 ---
 # <a name="configure-a-linux-ruby-app-for-azure-app-service"></a>Konfigurace aplikace v Ruby v Linuxu pro Azure App Service
 
@@ -57,7 +58,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 > ```
 > Your Ruby version is 2.3.3, but your Gemfile specified 2.3.1
 > ```
-> nebo
+> or
 > ```
 > rbenv: version `2.3.1' is not installed
 > ```

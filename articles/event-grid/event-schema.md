@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 01/20/2019
 ms.author: babanisa
-ms.openlocfilehash: 4a795221790a9d56bcbfe30a50b0c838fb8d9e56
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8a8193d21bbc1d0af933657705e605ce31589cbf
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66304249"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67785855"
 ---
 # <a name="azure-event-grid-event-schema"></a>Schéma událostí služby Azure Event Grid
 
@@ -85,14 +85,14 @@ Všechny události mají stejné nejvyšší úrovně následující data:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| topic | string | Úplné prostředků cesta ke zdroji události. Toto pole není zapisovatelná. Event gridu poskytuje tuto hodnotu. |
-| subject | string | Vydavatel definované cesta předmět události. |
-| eventType | string | Jeden z typů registrované události pro tento zdroj událostí. |
-| eventTime | string | Vygenerování události podle času UTC poskytovatele. |
-| id | string | Jedinečný identifikátor pro událost. |
+| topic | řetězec | Úplné prostředků cesta ke zdroji události. Toto pole není zapisovatelná. Event gridu poskytuje tuto hodnotu. |
+| subject | řetězec | Vydavatel definované cesta předmět události. |
+| eventType | řetězec | Jeden z typů registrované události pro tento zdroj událostí. |
+| eventTime | řetězec | Vygenerování události podle času UTC poskytovatele. |
+| id | řetězec | Jedinečný identifikátor pro událost. |
 | data | objekt | Data události specifické pro poskytovatele prostředků. |
-| dataVersion | string | Verze schématu datového objektu Vydavatel Určuje verzi schématu. |
-| metadataVersion | string | Verze schématu metadat události Event Grid definuje schéma vlastnosti nejvyšší úrovně. Event gridu poskytuje tuto hodnotu. |
+| dataVersion | řetězec | Verze schématu datového objektu. Vydavatel Určuje verzi schématu. |
+| metadataVersion | řetězec | Verze schématu metadat události. Event Grid definuje schéma vlastnosti nejvyšší úrovně. Event gridu poskytuje tuto hodnotu. |
 
 Další informace o vlastnosti datového objektu, naleznete v tématu zdroje událostí:
 
@@ -104,6 +104,7 @@ Další informace o vlastnosti datového objektu, naleznete v tématu zdroje ud�
 * [Media Services](../media-services/latest/media-services-event-schemas.md?toc=%2fazure%2fevent-grid%2ftoc.json)
 * [Skupiny prostředků (operace správy)](event-schema-resource-groups.md)
 * [Service Bus](event-schema-service-bus.md)
+* [Azure SignalR](event-schema-azure-signalr.md)
 
 Zdroj události pro vlastní témata, určuje datový objekt. Nejvyšší úrovně dat by měl mít stejné pole jako standardní událostí definovaných prostředků.
 

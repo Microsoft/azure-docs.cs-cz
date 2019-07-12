@@ -4,7 +4,7 @@ description: Jak znovu nasadit virtuální počítače s Linuxem v Azure a zmír
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: genlin
-manager: jeconnoc
+manager: gwallace
 tags: azure-resource-manager,top-support-issue
 ms.assetid: e9530dd6-f5b0-4160-b36b-d75151d99eb7
 ms.service: virtual-machines-linux
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 1c1ac1a20c1c06db10c1462c95f4d924c5ec09d1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cffed7949eff63484c84f385510baa8cd4244958
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62116938"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67710266"
 ---
 # <a name="redeploy-linux-virtual-machine-to-new-azure-node"></a>Znovu nasadit virtuální počítač s Linuxem do nového uzlu Azure
 Pokud čelí potíží při řešení potíží s SSH nebo přístup k aplikaci pro virtuální počítač s Linuxem (VM) v Azure, znovu se nasazuje virtuální počítač může pomoci. Při opětovném nasazování virtuálního počítače, přesune virtuální počítač do nového uzlu v rámci infrastruktury Azure a pak ji zpět zapne. Možnosti konfigurace a přidružené prostředky zůstanou zachovány. Tento článek ukazuje, jak znovu nasadit virtuální počítač pomocí webu Azure portal nebo rozhraní příkazového řádku Azure.

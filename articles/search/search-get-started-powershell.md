@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý start pro PowerShell: Vytvoření, načtení a dotazování indexů Azure Search REST API – Azure Search pomocí'
 description: Vysvětluje, jak vytvořit index, načtení dat a spouštění dotazů pomocí Powershellu Invoke-RestMethod a rozhraní REST API Azure Search.
-ms.date: 06/10/2019
+ms.date: 07/09/2019
 author: heidisteen
 manager: cgronlun
 ms.author: heidist
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: afd73ee3461fff11019be887dbf3078963644c5b
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
-ms.translationtype: MT
+ms.openlocfilehash: e66223ed953af0c4727d2be92e686b8b50e4769f
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485489"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827962"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-powershell-using-rest-apis"></a>Rychlý start: Vytvoření indexu Azure Search v prostředí PowerShell pomocí rozhraní REST API
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ ms.locfileid: "67485489"
 
 Tento článek vás provede procesem vytvoření, načtení a dotazování indexu Azure Search pomocí prostředí PowerShell a [rozhraní REST API Azure Search](https://docs.microsoft.com/rest/api/searchservice/). Tento článek vysvětluje, jak interaktivně spusťte příkazy Powershellu. Alternativně můžete spustit dokončení skriptu. Stáhnout kopii, přejděte [azure search powershellu ukázky](https://github.com/Azure-Samples/azure-search-powershell-samples/tree/master/Quickstart) úložiště.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete, a pak si [zaregistrujte službu Azure Search](search-create-service-portal.md).
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -394,15 +394,11 @@ $url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quicksta
 ```
 ## <a name="clean-up"></a>Vyčištění 
 
-Index by měl odstranit, pokud ho už nepotřebují. Bezplatná služba je omezena na tři indexy. Můžete chtít odstranit všechny indexy, které nepoužíváte aktivně tak, že můžete pokračovat dalšími tématy.
+Pokud pracujete ve svém vlastním předplatném, je vhodné na konci projektu a zjistěte, jestli stále potřebují prostředky, že kterou jste vytvořili. Levé může spuštěné prostředky nákladů peníze. Můžete odstranit prostředky jednotlivě nebo odstranit skupinu prostředků, kterou chcete odstranit celou sadu prostředků.
 
-```powershell
-# Set the URI to the hotel index
-$url = 'https://mydemo.search.windows.net/indexes/hotels-quickstart?api-version=2019-05-06'
+Můžete najít a spravovat prostředky na portálu pro použití **všechny prostředky** nebo **skupiny prostředků** odkaz v levém navigačním podokně.
 
-# Delete the index
-Invoke-RestMethod -Uri $url -Headers $headers -Method Delete
-```
+Pokud používáte bezplatné služby, mějte na paměti, že jste omezeni na tři indexy, indexery a datového zdroje. Můžete odstranit jednotlivé položky na portálu, abychom dodrželi omezení. 
 
 ## <a name="next-steps"></a>Další postup
 

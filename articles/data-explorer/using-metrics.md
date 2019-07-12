@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/01/2019
-ms.openlocfilehash: a9c9f4d827d21c374bebba9d39e33b0bcad8a83e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cb59fa0fe9094943dfc942d1d6e664891996c9e3
+ms.sourcegitcommit: 1e347ed89854dca2a6180106228bfafadc07c6e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60826768"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67569284"
 ---
 # <a name="monitor-azure-data-explorer-performance-health-and-usage-with-metrics"></a>Sledování výkonu, stavu a využití s metrikami Průzkumník dat Azure
 
@@ -42,13 +42,13 @@ V podokně metriky:
 
     **Metrika** | **Jednotka** | **Agregace** | **Popis metriky**
     |---|---|---|---|
-    | Využití mezipaměti | Procento | Avg, Max, Min | Procento prostředky přidělené mezipaměti aktuálně používané clusterem. Mezipaměť odkazuje na velikost přidělené aktivity uživatelů podle zásad definovaných mezipaměti na SSD. Mezipaměti průměrné využití 80 % nebo méně se do udržitelné stavu pro cluster. Pokud mezipaměti průměrné využití přes 80 %, měl by být clusteru [vertikálně navýšit](manage-cluster-scale-up.md) do úložiště optimalizované cenové úrovně nebo [škálované](manage-cluster-scale-out.md) na více instancí. Můžete také přizpůsobit zásady ukládání do mezipaměti (v mezipaměti menší počet dnů). Pokud je využití mezipaměti více než 100 %, velikost dat do mezipaměti podle zásady ukládání do mezipaměti, je větší, celková velikost mezipaměti v clusteru. |
-    | Procesor | Procento | Avg, Max, Min | Procento přidělených výpočetních prostředků aktuálně používán počítače v clusteru. Průměrné využití procesoru 80 % nebo méně je udržitelné pro cluster. Maximální hodnota využití procesoru je 100 %, což znamená, že neexistují žádné další výpočetní prostředky, které zpracovávají data. Pokud cluster není dobře, zkontrolujte maximální hodnota CPU a určí, jestli je konkrétní procesory, které jsou blokovány. |
+    | Využití mezipaměti | Percent | Avg, Max, Min | Procento prostředky přidělené mezipaměti aktuálně používané clusterem. Mezipaměť odkazuje na velikost přidělené aktivity uživatelů podle zásad definovaných mezipaměti na SSD. Mezipaměti průměrné využití 80 % nebo méně se do udržitelné stavu pro cluster. Pokud mezipaměti průměrné využití přes 80 %, měl by být clusteru [vertikálně navýšit](manage-cluster-vertical-scaling.md) do úložiště optimalizované cenové úrovně nebo [škálované](manage-cluster-horizontal-scaling.md) na více instancí. Můžete také přizpůsobit zásady ukládání do mezipaměti (v mezipaměti menší počet dnů). Pokud je využití mezipaměti více než 100 %, velikost dat do mezipaměti podle zásady ukládání do mezipaměti, je větší, celková velikost mezipaměti v clusteru. |
+    | Procesor | Percent | Avg, Max, Min | Procento přidělených výpočetních prostředků aktuálně používán počítače v clusteru. Průměrné využití procesoru 80 % nebo méně je udržitelné pro cluster. Maximální hodnota využití procesoru je 100 %, což znamená, že neexistují žádné další výpočetní prostředky, které zpracovávají data. Pokud cluster není dobře, zkontrolujte maximální hodnota CPU a určí, jestli je konkrétní procesory, které jsou blokovány. |
     | Události byly zpracovány (pro službu Event Hubs) | Count | Max, Min, součet | Celkový počet událostí čtení ze služby event hubs a zpracovány v clusteru. Události jsou rozděleny do odmítl a události přijal modul clusteru. |
     | Latence příjmu dat | Sekundy | Avg, Max, Min | Latence dat přijatých od okamžiku, kdy data byla přijata v clusteru, dokud nebude připravené pro dotaz. Doby latence příjmu závisí na scénáři příjmu. |
-    | Příjem výsledků | Počet | Počet | Celkový počet operací příjmu, které se nezdařilo a byla úspěšná. Použití **použít rozdělení** vytvoření bloků úspěšné a neúspěšné výsledky a analýza dimenze (**hodnotu** > **stav**).|
-    | Ingestování využití | Procento | Avg, Max, Min | Procento skutečné prostředky používané k ingestování dat z celkové množství prostředků přidělených v zásadách kapacitu, provádět ingestování. Výchozí zásada kapacity je delší než 512 souběžných přijímání operations Console nebo 75 % investovali do ingestování prostředky clusteru. Průměrný příjem využití 80 % nebo méně, je udržitelné stavu pro cluster. Maximální hodnota ingestování využití je 100 %, což znamená, že se používá možnost příjmu všech clusteru a může vést ingestování fronty. |
-    | Ingestování svazek (v MB) | Počet | Max, Min, součet | Celková velikost dat přijatých do clusteru (v MB) před kompresí. |
+    | Příjem výsledků | Count | Count | Celkový počet operací příjmu, které se nezdařilo a byla úspěšná. Použití **použít rozdělení** vytvoření bloků úspěšné a neúspěšné výsledky a analýza dimenze (**hodnotu** > **stav**).|
+    | Ingestování využití | Percent | Avg, Max, Min | Procento skutečné prostředky používané k ingestování dat z celkové množství prostředků přidělených v zásadách kapacitu, provádět ingestování. Výchozí zásada kapacity je delší než 512 souběžných přijímání operations Console nebo 75 % investovali do ingestování prostředky clusteru. Průměrný příjem využití 80 % nebo méně, je udržitelné stavu pro cluster. Maximální hodnota ingestování využití je 100 %, což znamená, že se používá možnost příjmu všech clusteru a může vést ingestování fronty. |
+    | Ingestování svazek (v MB) | Count | Max, Min, součet | Celková velikost dat přijatých do clusteru (v MB) před kompresí. |
     | Zachování | Count | Průměr | Sleduje schopnost reagovat na clusteru. Vrací hodnotu 1, plně interaktivní clusteru a cluster blokované nebo odpojených vrátí hodnotu 0. |
     | Doba trvání dotazu | Sekundy | Počet, Avg, Min, Max, součet | Celkový čas, dokud se výsledky dotazu jsou přijímány (nezahrnuje latenci sítě). |
     | | | |

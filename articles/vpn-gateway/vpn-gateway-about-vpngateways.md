@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: overview
 ms.date: 05/22/2019
 ms.author: cherylmc
-ms.openlocfilehash: 0d4bba41170408b640b4e8d3809c77b7a6443c6a
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: b4ad8697997a8c90a6548c66819bfe790c8235e3
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480047"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798997"
 ---
 # <a name="what-is-vpn-gateway"></a>Co je VPN Gateway?
 
@@ -51,7 +51,7 @@ Následující tabulka vám může pomoci se zvolením nejlepší možnosti při
 
 ## <a name="gwsku"></a>SKU brány
 
-Při vytváření brány virtuální sítě zadáváte jednotku SKU brány, kterou chcete použít. Vyberte jednotku SKU, která splňuje vaše požadavky na základě typů úloh, propustnosti, funkcí a SLA. Další informace o SKU brány, včetně podporovaných funkcí, produkce, vývoje a testování a konfiguračních postupů, najdete v tématu [Skladové jednotky (SKU) brány](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
+Při vytváření brány virtuální sítě zadáváte jednotku SKU brány, kterou chcete použít. Vyberte jednotku SKU, která splňuje vaše požadavky na základě typů úloh, propustnosti, funkcí a SLA. Další informace o SKU, včetně brány nepodporuje funkce, produkčního prostředí a vývoj a testování a kroky konfigurace, najdete v článku [nastavení služby VPN Gateway – skladové položky brány](vpn-gateway-about-vpn-gateway-settings.md#gwsku) článku. Informace o starší verze SKU, naleznete v tématu [práce s starší verze SKU](vpn-gateway-about-skus-legacy.md).
 
 ### <a name="benchmark"></a>SKU brány podle tunelu, připojení a propustnosti
 

@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: bfdebacb4de205fa42fe96ceb9970d2d109536e8
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 1f03f9e68640edd73d2f6bb55cf205a609450658
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296154"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620499"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Stream data jako vstup do Stream Analytics
 
@@ -79,7 +79,7 @@ FROM Input
 ```
 
 > [!NOTE]
-> Při používání centra událostí jako koncový bod pro IoT Hub trasy, lze použít k IoT Hubu pomocí metadat [funkce GetMetadataPropertyValue](https://msdn.microsoft.com/library/azure/mt793845.aspx).
+> Při používání centra událostí jako koncový bod pro IoT Hub trasy, lze použít k IoT Hubu pomocí metadat [funkce GetMetadataPropertyValue](https://docs.microsoft.com/stream-analytics-query/getmetadatapropertyvalue).
 > 
 
 ## <a name="stream-data-from-iot-hub"></a>Stream dat ze služby IoT Hub
@@ -129,7 +129,7 @@ Pro scénáře s velkým množstvím nestrukturovaných dat do úložiště v cl
 
 Zpracování protokolu je běžně používaný scénář pro vstupy úložiště objektů Blob pomocí Stream Analytics. V tomto scénáři telemetrická data souborů ze systému byla zachycena a nutné analyzovat a zpracovat extrahovat smysluplná data.
 
-Výchozí časové razítko události služby Blob storage ve službě Stream Analytics je časové razítko, že byl naposledy upraven objekt blob, který je `BlobLastModifiedUtcTime`. Ke zpracování dat jako datový proud pomocí časového razítka v případě, že datová část, je nutné použít [TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) – klíčové slovo. Úlohu Stream Analytics si vyžádá data z vstup úložiště objektů Blob v Azure každou sekundu Pokud je k dispozici soubor objektu blob. Pokud soubor objektu blob není k dispozici, je exponenciální regresi s maximální doba zpoždění 90 sekund.
+Výchozí časové razítko události služby Blob storage ve službě Stream Analytics je časové razítko, že byl naposledy upraven objekt blob, který je `BlobLastModifiedUtcTime`. Ke zpracování dat jako datový proud pomocí časového razítka v případě, že datová část, je nutné použít [TIMESTAMP BY](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) – klíčové slovo. Úlohu Stream Analytics si vyžádá data z vstup úložiště objektů Blob v Azure každou sekundu Pokud je k dispozici soubor objektu blob. Pokud soubor objektu blob není k dispozici, je exponenciální regresi s maximální doba zpoždění 90 sekund.
 
 Ve formátu CSV vstupy vyžadují řádek záhlaví k definování polí pro datovou sadu a všechna pole záhlaví řádku musí být jedinečný.
 
@@ -175,7 +175,7 @@ SELECT
 FROM Input
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"]
 > [Rychlé zprovoznění: Vytvoření úlohy Stream Analytics pomocí webu Azure portal](stream-analytics-quick-create-portal.md)
 

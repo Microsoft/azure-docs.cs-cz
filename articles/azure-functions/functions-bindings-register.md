@@ -8,14 +8,14 @@ manager: gwallace
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
-ms.date: 02/25/2019
+ms.date: 07/08/2019
 ms.author: cshoe
-ms.openlocfilehash: 88ffd6ec24ed19dd3b1e57277884c8759cdac1f9
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 5969c3e0d270b45347f8132b2d655ba2e56cb2c0
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67480337"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67625901"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Registrace rozšíření vazby Azure Functions
 
@@ -33,8 +33,8 @@ Následující tabulka udává, kdy a jak zaregistrujete vazby.
 |-------------------------|------------------------------------|------------------------------------|
 |portál Azure|Automatické|Automatické|
 |Jazyky mimo rozhraní .NET nebo místním vývojovém základní nástroje pro Azure|Automatické|[Použití nástrojů Azure Functions Core a rozšíření sady](#extension-bundles)|
-|C#knihovny tříd pomocí Visual Studio 2019|[Pomocí nástroje NuGet](#c-class-library-with-visual-studio-2019)|[Pomocí nástroje NuGet](#c-class-library-with-visual-studio-2019)|
-|Knihovny tříd C# pomocí nástroje Visual Studio Code|neuvedeno|[Použití .NET Core CLI](#c-class-library-with-visual-studio-code)|
+|C#knihovny tříd pomocí sady Visual Studio|[Pomocí nástroje NuGet](#vs)|[Pomocí nástroje NuGet](#vs)|
+|Knihovny tříd C# pomocí nástroje Visual Studio Code|Není k dispozici|[Použití .NET Core CLI](#vs-code)|
 
 ## <a name="extension-bundles"></a>Rozšíření sady pro místní vývoj
 
@@ -69,9 +69,9 @@ Aktuální sadu rozšíření nainstalované pomocí výchozí sady jsou uveden�
 
 <a name="local-csharp"></a>
 
-## <a name="c-class-library-with-visual-studio-2019"></a>C\# knihovny tříd pomocí Visual Studio 2019
+## <a name="vs"></a> C\# knihovny tříd pomocí sady Visual Studio
 
-V **Visual Studio 2019**, balíčky můžete nainstalovat z konzoly Správce balíčků pro použití [Install-Package](https://docs.microsoft.com/nuget/tools/ps-ref-install-package) příkaz, jak je znázorněno v následujícím příkladu:
+V **sady Visual Studio**, balíčky můžete nainstalovat z konzoly Správce balíčků pro použití [Install-Package](https://docs.microsoft.com/nuget/tools/ps-ref-install-package) příkaz, jak je znázorněno v následujícím příkladu:
 
 ```powershell
 Install-Package Microsoft.Azure.WebJobs.Extensions.ServiceBus -Version <TARGET_VERSION>
@@ -81,24 +81,25 @@ Název balíčku pro danou vazbu je uvedené v článku odkaz pro danou vazbu. P
 
 Nahraďte `<TARGET_VERSION>` v příkladu nahraďte konkrétní verzi balíčku, jako například `3.0.0-beta5`. Platná verze jsou uvedeny v nějakém balíčku stránkách v [NuGet.org](https://nuget.org). Hlavní verze, které odpovídají modul runtime služby Functions 1.x a 2.x jsou uvedeny v článku odkaz pro vazbu.
 
-## <a name="c-class-library-with-visual-studio-code"></a>Knihovny tříd C# pomocí Visual Studio Code
+Pokud používáte `Install-Package` tak, aby odkazovaly vazby, nepotřebujete používat [rozšíření sady](#extension-bundles). Tento přístup je specifická pro knihovny tříd, které jsou vytvořené v sadě Visual Studio.
+
+## <a name="vs-code"></a> Knihovny tříd C# pomocí Visual Studio Code
 
 > [!NOTE]
 > Doporučujeme používat [rozšíření sady](#extension-bundles) mít funkce automaticky instalovat sady kompatibilní vazbu balíčky rozšíření.
 
-V **Visual Studio Code**, nainstalovat balíčky pro C# projekt knihovny tříd pomocí příkazového řádku [se příkaz dotnet add package](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package) příkaz v rozhraní příkazového řádku .NET Core, jak je znázorněno v následujícím příkladu:
+V **Visual Studio Code**, nainstalovat balíčky pro C# projekt knihovny tříd pomocí příkazového řádku [se příkaz dotnet add package](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package) příkaz v rozhraní příkazového řádku .NET Core. Následující příklad ukazuje, jak přidat vazbu:
 
 ```terminal
-dotnet add package Microsoft.Azure.WebJobs.Extensions.ServiceBus --version <TARGET_VERSION>
+dotnet add package Microsoft.Azure.WebJobs.Extensions.<BINDING_TYPE_NAME> --version <TARGET_VERSION>
 ```
 
 Rozhraní příkazového řádku .NET Core jde použít jenom pro vývoj pro Azure Functions 2.x.
 
-Název balíčku pro danou vazbu je uvedené v článku odkaz pro danou vazbu. Příklad najdete v tématu [balíčky článku odkaz vazby služby Service Bus](functions-bindings-service-bus.md#packages---functions-1x).
+Nahraďte `<BINDING_TYPE_NAME>` s názvem balíčku uvedené v článku odkaz pro požadované vazby. Můžete najít požadované vazby referenční článek v [seznam podporovaných vazby](./functions-triggers-bindings.md#supported-bindings).
 
 Nahraďte `<TARGET_VERSION>` v příkladu nahraďte konkrétní verzi balíčku, jako například `3.0.0-beta5`. Platná verze jsou uvedeny v nějakém balíčku stránkách v [NuGet.org](https://nuget.org). Hlavní verze, které odpovídají modul runtime služby Functions 1.x a 2.x jsou uvedeny v článku odkaz pro vazbu.
 
 ## <a name="next-steps"></a>Další postup
 > [!div class="nextstepaction"]
 > [Příklad aktivační události a vazby Azure – funkce](./functions-bindings-example.md)
-

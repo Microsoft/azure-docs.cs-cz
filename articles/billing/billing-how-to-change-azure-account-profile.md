@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f61396d8fb0f02fe77f5ee35560f45a0c4698a10
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 87de721f596eb4148939c00bc4b4db270a87c24e
+ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65850770"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67724101"
 ---
 # <a name="change-the-profile-information-for-your-azure-account"></a>Změnit informace profilu pro váš účet Azure
 
@@ -87,14 +87,20 @@ Chcete-li vyjádřit výslovný nesouhlas přijímají marketingových e-mailů:
 1. Přejděte [formuláři žádosti o](https://account.microsoft.com/profile/permissions-link-request) odeslat žádost s použitím vašeho profilu e-mailovou adresu. Obdržíte odkaz e-mailem na aktualizujte předvolby.
 2. Vyberte odkaz k otevření **spravovat oprávnění komunikace** stránky. Tato stránka zobrazuje typy marketingovou komunikaci, která e-mailová adresa bude poskytnut souhlas k. Vymazat všechna témata, které chcete optimalizované z a pak vyberte **Uložit**.
 
-
 ![Příklad stránky pro správu oprávnění ve komunikace](./media/billing-how-to-change-azure-account-profile/manage-communication-permissions.png)
 
 Když zakážete marketingovou komunikaci, budete stále dostávat oznámení služby, podle vašeho účtu.
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
+## <a name="change-the-subscription-name"></a>Změnit název předplatného
+
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com)vyberte **předplatné** v levém podokně a pak vyberte předplatné, pro kterou chcete přejmenovat.
+1. Vyberte **přehled**a pak vyberte **přejmenovat** na panelu příkazů.
+    ![Příklad přejmenování předplatného Azure](./media/billing-how-to-change-azure-account-profile/rename-sub.png)
+1. Poté, co jste změnili název, vyberte **Uložit**.
+
+## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
 
 Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - [Zobrazit vaše fakturační účty](billing-view-all-accounts.md)

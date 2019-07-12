@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 225ac86efba8a32b085a5fb7fc41bed48c499eab
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 41637fae5592ac292da22303071d51b43116c78b
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65022169"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671909"
 ---
 # <a name="documentation-resources-for-cognitive-search-workloads"></a>Dokumentační zdroje pro úlohy kognitivního vyhledávání
 
@@ -27,7 +27,7 @@ Následující články jsou kompletní dokumentaci k kognitivního vyhledáván
 + [Co je kognitivního vyhledávání?](cognitive-search-concept-intro.md)
 + [Rychlé zprovoznění: Vyzkoušení kognitivního vyhledávání v portálu](cognitive-search-quickstart-blob.md)
 + [Kurz: Další rozhraní API pro kognitivní vyhledávání](cognitive-search-tutorial-blob.md)
-+ [Příklad: vytvoření vlastní dovednosti](cognitive-search-create-custom-skill-example.md)
++ [Příklad: Vytváření vlastních dovedností pro kognitivního vyhledávání](cognitive-search-create-custom-skill-example.md)
 
 ## <a name="how-to-guidance"></a>Příručky s postupy
 + [Definování dovedností](cognitive-search-defining-skillset.md)
@@ -38,7 +38,7 @@ Následující články jsou kompletní dokumentaci k kognitivního vyhledáván
 + [Definování rozhraní vlastních dovedností](cognitive-search-custom-skill-interface.md)
 + [Rady pro řešení potíží](cognitive-search-concept-troubleshooting.md)
 
-## <a name="reference"></a>Referenční informace
+## <a name="reference"></a>Reference
 
 + [Předdefinované dovednosti](cognitive-search-predefined-skills.md)
   + [Microsoft.Skills.Text.KeyPhraseSkill](cognitive-search-skill-keyphrases.md)
@@ -55,7 +55,7 @@ Následující články jsou kompletní dokumentaci k kognitivního vyhledáván
   + [Create Skillset (api-version=2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
   + [Create Indexer (api-version=2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
 + [REST API služby Azure Search](https://docs.microsoft.com/rest/api/searchservice/)
 + [Indexery ve službě Azure Search](search-indexer-overview.md)

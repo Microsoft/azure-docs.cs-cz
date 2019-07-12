@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 6/27/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 2399fcaa683e5807d2a5cd69d3dd3357d804fd28
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: ba7b8ae5c7e68c22b83583de6cd0b84f621d4b25
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449955"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786655"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Poznámky k verzi pro agenta Azure File Sync
 Synchronizace souborů Azure umožňuje centralizovat sdílené složky organizace ve službě Soubory Azure bez ztráty flexibility, výkonu a kompatibility místního souborového serveru. Vaše instalace Windows Serveru se transformují na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru (včetně SMB, NFS a FTPS). Můžete mít libovolný počet mezipamětí po celém světě.
@@ -23,7 +23,7 @@ Tento článek obsahuje poznámky k podporovaným verzím agenta Synchronizace s
 ## <a name="supported-versions"></a>Podporované verze
 Agent Synchronizace souborů Azure podporuje následující verze:
 
-| Milník | Číslo verze agenta | Datum vydání | Status |
+| Milník | Číslo verze agenta | Datum vydání | Stav |
 |----|----------------------|--------------|------------------|
 | V7 Release - [KB4490495](https://support.microsoft.com/help/4490495)| 7.0.0.0 | 19. červnu 2019 | [Publikování testovacích verzí](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#automatic-agent-lifecycle-management) |
 | Červen 2019 kumulativní - [KB4489739](https://support.microsoft.com/help/4489739)| 6.3.0.0 | 27. června 2019 | Podporované (doporučená verze) |
@@ -40,7 +40,7 @@ Agent Synchronizace souborů Azure podporuje následující verze:
 | Kumulativní aktualizace. září 2018 | 3.3.0.0 | 24. září 2018 | Podporuje se – agenta verze vyprší dne 19. května 2019 |
 | Kumulativní aktualizace. srpna 2018 | 3.2.0.0 | 15. srpna 2018 | Podporuje se – agenta verze vyprší dne 19. května 2019 |
 | Všeobecná dostupnost | 3.1.0.0 | 19. července 2018 | Podporuje se – agenta verze vyprší dne 19. května 2019 |
-| Vypršela platnost agentů | 1.1.0.0 - 3.0.13.0 | neuvedeno | Nepodporuje se – verze agentů platnost 1. října 2018 |
+| Vypršela platnost agentů | 1.1.0.0 - 3.0.13.0 | Není k dispozici | Nepodporuje se – verze agentů platnost 1. října 2018 |
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Zásady aktualizace agenta Synchronizace souborů Azure
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
@@ -62,7 +62,7 @@ Následující poznámky k verzi platí pro verze 7.0.0.0 agenta Azure File Sync
     - Existuje několik vylepšení spolehlivosti a výkonu v této verzi. Některé z nich jsou cíleny na vylepšit efektivnější vrstvení cloudu a Azure File Sync jako celé práce v těchto situacích, až budete mít omezení plánu nastavení šířky pásma.
 
 ### <a name="evaluation-tool"></a>Nástroj pro vyhodnocení
-Před nasazením Azure File Sync, byste měli předem zvážit, jestli je kompatibilní s nástrojem pro vyhodnocení Azure File Sync systémem. Tento nástroj je rutiny Azure Powershellu, který kontroluje potenciální problémy s systému souborů a datové sady, jako jsou nepodporované znaky nebo Nepodporovaná verze operačního systému. Pokyny pro instalaci a použití, naleznete v tématu [nástroj pro vyhodnocení](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-tool) části v Průvodci plánem. 
+Před nasazením Azure File Sync, byste měli předem zvážit, jestli je kompatibilní s nástrojem pro vyhodnocení Azure File Sync systémem. Tento nástroj je rutiny Azure Powershellu, který kontroluje potenciální problémy s systému souborů a datové sady, jako jsou nepodporované znaky nebo Nepodporovaná verze operačního systému. Pokyny pro instalaci a použití, naleznete v tématu [nástroj pro vyhodnocení](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-cmdlet) části v Průvodci plánem. 
 
 ### <a name="agent-installation-and-server-configuration"></a>Instalace agenta a konfigurace serveru
 Další informace o tom, jak nainstalovat a nakonfigurovat agenta Azure File Sync se systémem Windows Server najdete v tématu [plánování nasazení služby Azure File Sync](storage-sync-files-planning.md) a [postup nasazení služby Azure File Sync](storage-sync-files-deployment-guide.md).
@@ -159,7 +159,7 @@ Následující poznámky k verzi platí pro verzi 6.0.0.0 agenta Azure File Sync
 - Různé vyšší spolehlivost pro ovládání datových vrstev a synchronizace cloudu
 
 ### <a name="evaluation-tool"></a>Nástroj pro vyhodnocení
-Před nasazením Azure File Sync, byste měli předem zvážit, jestli je kompatibilní s nástrojem pro vyhodnocení Azure File Sync systémem. Tento nástroj je rutiny Azure Powershellu, který kontroluje potenciální problémy s systému souborů a datové sady, jako jsou nepodporované znaky nebo Nepodporovaná verze operačního systému. Pokyny pro instalaci a použití, naleznete v tématu [nástroj pro vyhodnocení](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-tool) části v Průvodci plánem. 
+Před nasazením Azure File Sync, byste měli předem zvážit, jestli je kompatibilní s nástrojem pro vyhodnocení Azure File Sync systémem. Tento nástroj je rutiny Azure Powershellu, který kontroluje potenciální problémy s systému souborů a datové sady, jako jsou nepodporované znaky nebo Nepodporovaná verze operačního systému. Pokyny pro instalaci a použití, naleznete v tématu [nástroj pro vyhodnocení](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-cmdlet) části v Průvodci plánem. 
 
 ### <a name="agent-installation-and-server-configuration"></a>Instalace agenta a konfigurace serveru
 Další informace o tom, jak nainstalovat a nakonfigurovat agenta Azure File Sync se systémem Windows Server najdete v tématu [plánování nasazení služby Azure File Sync](storage-sync-files-planning.md) a [postup nasazení služby Azure File Sync](storage-sync-files-deployment-guide.md).
@@ -256,7 +256,7 @@ Následující poznámky k verzi platí pro verze 5.0.2.0 agenta Azure File Sync
     - Synchronizace se pokusí pokračovat v přenosu dat spíše než oboustranné při převodu dojde k přerušení pro velké soubory 
 
 ### <a name="evaluation-tool"></a>Nástroj pro vyhodnocení
-Před nasazením Azure File Sync, byste měli předem zvážit, jestli je kompatibilní s nástrojem pro vyhodnocení Azure File Sync systémem. Tento nástroj je rutiny Azure Powershellu, který kontroluje potenciální problémy s systému souborů a datové sady, jako jsou nepodporované znaky nebo Nepodporovaná verze operačního systému. Pokyny pro instalaci a použití, naleznete v tématu [nástroj pro vyhodnocení](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-tool) části v Průvodci plánem. 
+Před nasazením Azure File Sync, byste měli předem zvážit, jestli je kompatibilní s nástrojem pro vyhodnocení Azure File Sync systémem. Tento nástroj je rutiny Azure Powershellu, který kontroluje potenciální problémy s systému souborů a datové sady, jako jsou nepodporované znaky nebo Nepodporovaná verze operačního systému. Pokyny pro instalaci a použití, naleznete v tématu [nástroj pro vyhodnocení](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-cmdlet) části v Průvodci plánem. 
 
 ### <a name="agent-installation-and-server-configuration"></a>Instalace agenta a konfigurace serveru
 Další informace o tom, jak nainstalovat a nakonfigurovat agenta Azure File Sync se systémem Windows Server najdete v tématu [plánování nasazení služby Azure File Sync](storage-sync-files-planning.md) a [postup nasazení služby Azure File Sync](storage-sync-files-deployment-guide.md).
@@ -339,7 +339,7 @@ Seznam opravených chybách v této verzi:
 Následující poznámky k verzi platí pro verze 4.0.1.0 agenta Azure File Sync (vydáno 13. listopadu 2018).
 
 ### <a name="evaluation-tool"></a>Nástroj pro vyhodnocení
-Před nasazením Azure File Sync, byste měli předem zvážit, jestli je kompatibilní s nástrojem pro vyhodnocení Azure File Sync systémem. Tento nástroj je rutiny Azure Powershellu, který kontroluje potenciální problémy s systému souborů a datové sady, jako jsou nepodporované znaky nebo Nepodporovaná verze operačního systému. Pokyny pro instalaci a použití, naleznete v tématu [nástroj pro vyhodnocení](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-tool) části v Průvodci plánem. 
+Před nasazením Azure File Sync, byste měli předem zvážit, jestli je kompatibilní s nástrojem pro vyhodnocení Azure File Sync systémem. Tento nástroj je rutiny Azure Powershellu, který kontroluje potenciální problémy s systému souborů a datové sady, jako jsou nepodporované znaky nebo Nepodporovaná verze operačního systému. Pokyny pro instalaci a použití, naleznete v tématu [nástroj pro vyhodnocení](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-cmdlet) části v Průvodci plánem. 
 
 ### <a name="agent-installation-and-server-configuration"></a>Instalace agenta a konfigurace serveru
 Další informace o tom, jak nainstalovat a nakonfigurovat agenta Azure File Sync se systémem Windows Server najdete v tématu [plánování nasazení služby Azure File Sync](storage-sync-files-planning.md) a [postup nasazení služby Azure File Sync](storage-sync-files-deployment-guide.md).
@@ -415,7 +415,7 @@ Tato verze zahrnuje následující opravy:
 Následující poznámky k verzi platí pro verze 3.1.0.0 agenta Azure File Sync (vydané 19. července 2018).
 
 ### <a name="evaluation-tool"></a>Nástroj pro vyhodnocení
-Před nasazením Azure File Sync, byste měli předem zvážit, jestli je kompatibilní s nástrojem pro vyhodnocení Azure File Sync systémem. Tento nástroj je rutiny Azure Powershellu, který kontroluje potenciální problémy s systému souborů a datové sady, jako jsou nepodporované znaky nebo Nepodporovaná verze operačního systému. Pokyny pro instalaci a použití, naleznete v tématu [nástroj pro vyhodnocení](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-tool) části v Průvodci plánem. 
+Před nasazením Azure File Sync, byste měli předem zvážit, jestli je kompatibilní s nástrojem pro vyhodnocení Azure File Sync systémem. Tento nástroj je rutiny Azure Powershellu, který kontroluje potenciální problémy s systému souborů a datové sady, jako jsou nepodporované znaky nebo Nepodporovaná verze operačního systému. Pokyny pro instalaci a použití, naleznete v tématu [nástroj pro vyhodnocení](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-cmdlet) části v Průvodci plánem. 
 
 ### <a name="agent-installation-and-server-configuration"></a>Instalace agenta a konfigurace serveru
 Další informace o tom, jak nainstalovat a nakonfigurovat agenta Azure File Sync se systémem Windows Server najdete v tématu [plánování nasazení služby Azure File Sync](storage-sync-files-planning.md) a [postup nasazení služby Azure File Sync](storage-sync-files-deployment-guide.md).

@@ -4,7 +4,7 @@ description: Zjistěte, jak zálohovat a obnovit databázi Oracle Database 12c v
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: romitgirdhar
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: c41f13a6437f69121d3bbb387c96d8e13f2be0b3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 461f6127111e745fe4a81958aaa225ed1dc4392a
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60566812"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707720"
 ---
 # <a name="back-up-and-recover-an-oracle-database-12c-database-on-an-azure-linux-virtual-machine"></a>Zálohování a obnovení databáze Oracle Database 12c na virtuálním počítači Azure s Linuxem
 
@@ -562,7 +562,7 @@ Pokud už nepotřebujete, virtuálnímu počítači, můžete k odebrání skupi
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Kurz: Vytvoření vysoce dostupných virtuálních počítačů](../../linux/create-cli-complete.md)
 

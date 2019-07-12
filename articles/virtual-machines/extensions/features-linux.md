@@ -4,7 +4,7 @@ description: Zjistěte, jaká rozšíření jsou dostupná pro Azure virtual mac
 services: virtual-machines-linux
 documentationcenter: ''
 author: roiyz-msft
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-service-management,azure-resource-manager
 ms.assetid: 52f5d0ec-8f75-49e7-9e15-88d46b420e63
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
-ms.openlocfilehash: c83eb1f6525c54bc44386f84498789b50bf19043
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3f22da9eabc6f539ef37009f565f073b9de89319
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64721131"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706746"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Rozšíření virtuálních počítačů a funkce pro Linux
 
@@ -411,6 +411,6 @@ Můžete také odebrat rozšíření na webu Azure Portal následujícím způso
 | Rozšíření Azure Diagnostics |Správa Azure Diagnostics |[Rozšíření Azure Diagnostics](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) |
 | Rozšíření přístupu virtuálních počítačů Azure |Správa uživatelů a přihlašovacích údajů |[Rozšíření přístupu virtuálních počítačů pro Linux](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o rozšíření virtuálních počítačů najdete v tématu [přehled funkcí a rozšíření virtuálních počítačů Azure](overview.md).

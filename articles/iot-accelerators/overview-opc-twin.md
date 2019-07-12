@@ -5,15 +5,15 @@ author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
 ms.topic: overview
-ms.service: iot-industrialiot
+ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 15deadad3b53b64c619933db76d28f012c85d6d1
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d58dc18d5513259d5c01f7ddcc54736796e5c824
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64730266"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603627"
 ---
 # <a name="what-is-opc-twin"></a>Co je OPC Dvojčat?
 
@@ -28,7 +28,7 @@ Dvojče OPC umožňuje objekt pro vytváření operátory pro skenování sítě
 ### <a name="simple-control"></a>Jednoduché ovládací prvek
 Dvojče OPC umožňuje operátorům factory reagovat na události a překonfigurujte jejich factory floor počítačů z cloudu automaticky nebo ručně v reálném čase. Dvojče OPC poskytuje rozhraní REST API můžete volat služby na serveru OPC UA, vyhledejte jeho adresní prostor ke čtení a zápis proměnné a spouštět metody. Například kotel používá teploty klíčový ukazatel výkonu pro řízení výrobní linky. Senzor teploty publikuje změny v datech použití vydavatele OPC. Factory operátora obdrží upozornění, že teplota dosáhla prahová hodnota. Výrobní linky chladí automaticky prostřednictvím OPC Dvojčete. Factory operátora informován o nástrojů dolů.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Ověřování
 Pro jednoduché ověřování a pro jednoduché vývojové prostředí můžete použít dvojče OPC.
 
 ### <a name="simple-authentication"></a>Jednoduché ověřování 

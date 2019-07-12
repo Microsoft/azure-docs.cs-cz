@@ -13,39 +13,27 @@ ms.author: sstein
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/08/2019
-ms.openlocfilehash: ed05748a450d8d2082476aaba0831383e5fb60a0
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 20fdd63939c91f8421048e4904b8a694849570ab
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67441570"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67808061"
 ---
 # <a name="what-is-azure-sql-database-service"></a>Co je služba Azure SQL Database
 
-SQL Database je spravovaná služba relačních databází pro obecné účely v Microsoft Azure, která podporuje struktury, jako jsou relační data, JSON, prostorová data a XML. SQL Database nabízí dynamicky škálovatelný výkon v rámci dva různé modely nákupu: nákupní model založený na virtuálních jádrech a nákupní model založený na DTU. SQL Database také poskytuje možnosti jako [indexy columnstore](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) pro extrémní analytické analýzy a generování sestav nebo [OLTP v paměti](sql-database-in-memory.md) pro extrémní zpracování transakcí. Microsoft zajišťuje bezproblémové opravy a aktualizace základního kódu SQL a odděluje veškerou správu základní infrastruktury.
+Azure SQL Database je relační databáze pro obecné účely spravovaná služba, která vám umožní vytvořit vysoce dostupné a vysoce výkonné datovou vrstvu úložiště pro aplikace a řešení v cloudu Microsoft Azure. SQL Database může být správnou volbou pro nejrůznější moderní cloudové aplikace, protože to umožňuje používat výkonné funkce pro zpracování relačními daty a [nerelačních struktury](sql-database-multi-model-features.md) například grafy, JSON, Prostorová a XML. Je založen na nejnovější stabilní verze [databázovém stroji Microsoft SQL serveru](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation?toc=/azure/sql-database/toc.json) a umožňuje používat bohaté sadě rozšířený dotaz zpracování funkcí, jako [vysoký výkon v začleňování paměťových technologií](sql-database-in-memory.md)a [inteligentní dotaz zpracování](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json). V rámci strategie Microsoftu zaměřené na cloud se nové funkce SQL Serveru uvolňují nejprve do služby SQL Database a až potom do samotného SQL Serveru. Tento přístup vám poskytuje nejnovější funkce SQL Serveru bez režijních nákladů na opravy nebo aktualizace. Kromě toho umožňuje testování těchto funkcí v milionech databází. SQL Database vám umožní snadno definovat a škálovat výkon v rámci dva různé modely nákupu: [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md) a [nákupní model založený na DTU](sql-database-service-tiers-dtu.md). SQL Database je plně spravovaná služba, která má integrované vysoké dostupnosti, zálohy a dalších běžných operací údržby. Společnost Microsoft zpracovává všechny opravy a aktualizace kódu SQL a verze operačního systému bez problémů a odděluje veškerou správu základní infrastruktury.
 
 > [!NOTE]
 > Glosář termínů ve službě Azure SQL Database, najdete v části [SQL Database termíny glosáře](sql-database-glossary-terms.md)
 
 Azure SQL Database poskytuje následující možnosti nasazení databáze Azure SQL:
 
-- Jako [izolované databáze](sql-database-single-database.md) s vlastní sadou prostředků spravovat přes server SQL Database. Izolovaná databáze je podobný [databáze s omezením](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases) v systému SQL Server.
-- [Elastického fondu](sql-database-elastic-pool.md), což je kolekce databází se sdílenou sadou prostředků spravovat přes server SQL Database. Izolované databáze můžete přesunout do a z elastického fondu.
-- [Spravovaná instance](sql-database-managed-instance.md), což je kolekce systémových a uživatelských databází se sdílenou sadou prostředků. Managed instance je podobný instance [databázovém stroji Microsoft SQL serveru](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation).
-
-Následující obrázek ukazuje tyto možnosti nasazení:
-
 ![možnosti nasazení](./media/sql-database-technical-overview/deployment-options.png)
 
-SQL Database sdílí základ kódu s [databázovým strojem Microsoft SQL Serveru](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation). V rámci strategie Microsoftu zaměřené na cloud se nové funkce SQL Serveru uvolňují nejprve do služby SQL Database a až potom do samotného SQL Serveru. Tento přístup vám poskytuje nejnovější funkce SQL Serveru bez režijních nákladů na opravy nebo aktualizace. Kromě toho umožňuje testování těchto funkcí v milionech databází. Pokud se chcete o nových funkcích dozvědět hned po jejich oznámení, podívejte se na:
-
-- **[Plány Azure do budoucna pro službu SQL Database](https://azure.microsoft.com/roadmap/?category=databases)** :
-
-  Místo, kde můžete zjistit, co je nového a co se chystá.
-
-- **[Blog o Azure SQL Database](https://azure.microsoft.com/blog/topics/database)** :
-
-  Místo, kde produktového týmu SQL serveru členy blogu o SQL Database novinkách a funkcích.
+- [Izolované databáze](sql-database-single-database.md) představuje mikroslužeb, potřebujete jeden spolehlivý zdroj dat a plně spravovaná izolované databáze, která je ideální volbou pro moderní cloudové aplikace. Izolovaná databáze je podobný [databáze s omezením](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases?toc=/azure/sql-database/toc.json) v [databázovém stroji Microsoft SQL serveru](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation?toc=/azure/sql-database/toc.json).
+- [Spravovaná instance](sql-database-managed-instance.md) je plně spravovaná instance [databázovém stroji Microsoft SQL serveru](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation?toc=/azure/sql-database/toc.json) obsahující sadu databází, které lze použít společně. Je ideální volbou pro rychlou migraci místních databází SQL serveru do cloudu Azure a aplikace, které je potřeba využít výkonné databázové funkce, které obsahuje databázový stroj SQL serveru.
+- [Elastický fond](sql-database-elastic-pool.md) je kolekce [izolované databáze](sql-database-single-database.md) se sdílenou sadou prostředků, jako jsou procesoru nebo paměti. Izolované databáze můžete přesunout do a z elastického fondu.
 
 > [!IMPORTANT]
 > Funkce rozdíly mezi SQL Database a SQL Server, jakož i rozdíly mezi možnostmi nasazení Azure SQL Database najdete v tématu [funkce SQL](sql-database-features.md).
@@ -54,6 +42,7 @@ SQL Database nabízí předvídatelný výkon s více typů prostředků, úrovn
 
 ## <a name="scalable-performance-and-pools"></a>Škálovatelnost výkonu a fondy
 
+Mají všechny varianty SQL Database vám umožní definovat množství prostředků, které budou přiřazeny. 
 - U izolovaných databází je každá databáze izolovaná od všech ostatních a, každý s vlastní garantováno množství výpočetních, paměťových a úložiště prostředků. SQL Database nabízí různé prostředky výpočetních, paměťových a úložiště pro různé potřeby – a umožňuje dynamicky [škálování izolované databáze prostředků](sql-database-single-database-scale.md) nahoru a dolů. [Úroveň služby hyperškálovatelného](sql-database-service-tier-hyperscale.md) pro izolované databáze umožňuje škálování až na 100 TB, rychlé zálohování a obnovení funkce.
 - S elastickými fondy, můžete vytvářet nové databáze nebo přesuňte izolovaných databází do fondu zdrojů pro maximalizaci využití prostředků a ušetřit peníze - i schopnost dynamicky [škálování elastického fondu prostředků](sql-database-elastic-pool-scale.md) nahoru a dolů.
 - S spravované instance každé managed instance je izolovaná od ostatních instancí mají garantované prostředky. V rámci managed instance, instance databáze sdílejí sadu prostředků – a umožňuje dynamicky [škálovat prostředky spravované instance](sql-database-managed-instance-resource-limits.md) nahoru a dolů.
@@ -65,11 +54,8 @@ Dynamická škálovatelnost se liší od automatického škálování. K automat
 ### <a name="purchasing-models-service-tiers-compute-sizes-and-storage-amounts"></a>Nákupu modely, úrovně služeb, výpočty velikosti a množství úložiště
 
 SQL Database nabízí dva modely nákupu:
-
-- [Nákupní model založený na DTU](sql-database-service-tiers-dtu.md) nabízí výpočetní, paměti, vstupně-VÝSTUPNÍCH prostředků ve třech úrovních služeb pro podporu nejlehčích k těm nejnáročnějším. Výpočetní velikosti na jednotlivých úrovních poskytují různou kombinaci těchto prostředků, na které můžete přidat další prostředky úložiště.
 - [Nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md) umožňuje výběr počtu virtuálních jader, velikost nebo paměti a množství a rychlosti úložiště. Nákupní model založený na virtuálních jádrech také umožňuje používat [zvýhodněné hybridní využití Azure pro SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) získat úspory nákladů. Další informace o programu Azure Hybrid Benefit najdete v tématu [– nejčastější dotazy](#sql-database-frequently-asked-questions-faq).
-
-  
+- [Nákupní model založený na DTU](sql-database-service-tiers-dtu.md) nabízí výpočetní, paměti, vstupně-VÝSTUPNÍCH prostředků ve třech úrovních služeb pro podporu nejlehčích k těm nejnáročnějším. Výpočetní velikosti na jednotlivých úrovních poskytují různou kombinaci těchto prostředků, na které můžete přidat další prostředky úložiště.
 
 ### <a name="elastic-pools-to-maximize-resource-utilization"></a>Elastické fondy pro maximalizaci využití prostředků
 
@@ -88,7 +74,7 @@ Skripty vám můžou pomoct s monitorováním a škálováním elastických fond
 
 Můžete kombinovat izolované databáze s elastickými fondy a rychle a snadno měnit úrovně služeb izolovaných databází a elastických fondů abyste je přizpůsobili své situaci. S výkonem a dostupností, které Azure nabízí, můžete se službou SQL Database kombinovat další služby Azure podle konkrétních potřeb vašich aplikací pro zvýšení ekonomičnosti provozu a efektivity prostředků a otevírat tak zcela nové obchodní příležitosti.
 
-### <a name="extensive-monitoring-and-alerting-capabilities"></a>Rozsáhlé monitorování a možnosti upozorňování
+## <a name="extensive-monitoring-and-alerting-capabilities"></a>Rozsáhlé monitorování a možnosti upozorňování
 
 Můžete využít integrované nástroje pro [monitorování výkonu](sql-database-performance.md) a [upozorňování](sql-database-insights-alerts-portal.md) v kombinaci s hodnocením výkonu. Pomocí těchto nástrojů můžete rychle posoudit dopad vertikálního navýšení nebo snížení kapacity v závislosti na stávajících nebo předpokládaných požadavcích. Kromě toho může SQL Database [generovat metriky a diagnostické protokoly](sql-database-metrics-diag-logging.md) pro snazší monitorování. SQL Database můžete nakonfigurovat pro ukládání využití prostředků, pracovních procesů, relací a možností připojení do jednoho z těchto prostředků Azure:
 
@@ -260,3 +246,8 @@ Zákazníci SQL Database bude mít následující práva spojená s programem Az
 - Řadu ukázek v Azure CLI a PowerShellu najdete tady:
   - [Ukázky v Azure CLI pro službu SQL Database](sql-database-cli-samples.md)
   - [Ukázky v Azure PowerShellu pro službu SQL Database](sql-database-powershell-samples.md)
+
+ - Informace o nové funkce hned po jejich oznámení, naleznete v tématu 
+   - **[Plány Azure do budoucna pro službu SQL Database](https://azure.microsoft.com/roadmap/?category=databases)**  – místo, kde můžete zjistit, co je nového a co se chystá.
+  - **[Blog o Azure SQL Database](https://azure.microsoft.com/blog/topics/database)**  – na místě, kde produktového týmu SQL serveru členy blogu o SQL Database novinkách a funkcích.
+

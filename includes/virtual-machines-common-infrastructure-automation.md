@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/11/2019
 ms.author: cynthn
-ms.openlocfilehash: 81bde837cd78646f1fc59d921246c72978ecb840
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 15724adfc6eb875f3d2d5b6d3ecbbb54135a7265
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67174988"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671438"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>Použití nástrojů automatizace infrastruktury s virtuálními počítači v Azure
 Vytvoření a správa virtuálních počítačů Azure (VM) konzistentním způsobem v měřítku, uvítáte nějakou formu automatizace. Existuje mnoho nástrojů a řešení, která umožňují automatizovat nasazení kompletní infrastrukturu Azure a životního cyklu správy. Tento článek představuje některé z infrastruktury automatizační nástroje, které můžete použít v Azure. Tyto nástroje běžně nevešla do jedné z následujících postupů:
@@ -45,7 +45,7 @@ Naučte se:
 
 
 ## <a name="puppet"></a>Puppet
-[Puppet](https://www.puppet.com) platformu automatizace připraveno pro podniky, která zpracovává proces dodávek a nasazení aplikace. Na cílových počítačích povolit Puppet hlavní ke spuštění manifestů, které definují požadovanou konfiguraci infrastruktury Azure a virtuální počítače jsou nainstalovaní agenti. Puppet můžete integrovat s jinými řešeními, jako je Jenkins a Githubu pro pracovní postup vylepšení devops. Další informace najdete v tématu [funguje jak Puppet](https://puppet.com/product/how-puppet-works).
+[Puppet](https://www.puppet.com) platformu automatizace připraveno pro podniky, která zpracovává proces dodávek a nasazení aplikace. Na cílových počítačích povolit Puppet hlavní ke spuštění manifestů, které definují požadovanou konfiguraci infrastruktury Azure a virtuální počítače jsou nainstalovaní agenti. Puppet můžete integrovat s jinými řešeními, jako je Jenkins a Githubu pro pracovní postup vylepšení devops. Další informace najdete v tématu [funguje jak Puppet](https://puppet.com/products/how-puppet-works).
 
 Naučte se:
 
@@ -53,7 +53,7 @@ Naučte se:
 
 
 ## <a name="cloud-init"></a>Cloud-init
-[Cloud-init](https://cloudinit.readthedocs.io) je široce využívaným přístupem k přizpůsobení virtuálního počítače s Linuxem při jeho prvním spuštění. Pomocí cloud-init můžete instalovat balíčky a zapisovat soubory nebo konfigurovat uživatele a zabezpečení. Protože cloud-init je volána v průběhu procesu prvotního spuštění, nejsou žádné další kroky ani agenty vyžaduje použití vaší konfigurace.  Další informace o tom, jak správně vaše `#cloud-config` soubory, najdete v článku [cloud-init dokumentačním webu](http://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data).  `#cloud-config` soubory jsou textové soubory kódovaný jako base64.
+[Cloud-init](https://cloudinit.readthedocs.io) je široce využívaným přístupem k přizpůsobení virtuálního počítače s Linuxem při jeho prvním spuštění. Pomocí cloud-init můžete instalovat balíčky a zapisovat soubory nebo konfigurovat uživatele a zabezpečení. Protože cloud-init je volána v průběhu procesu prvotního spuštění, nejsou žádné další kroky ani agenty vyžaduje použití vaší konfigurace.  Další informace o tom, jak správně vaše `#cloud-config` soubory, najdete v článku [cloud-init dokumentačním webu](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data).  `#cloud-config` soubory jsou textové soubory kódovaný jako base64.
 
 Cloud-init navíc funguje v různých distribucích. K instalaci balíčku tak například nepoužijete **apt-get install** ani **yum install**. Místo toho můžete definovat seznam balíčků pro instalaci. Cloud-init automaticky použije nativní nástroj pro správu balíčků pro zvolenou distribuci.
 

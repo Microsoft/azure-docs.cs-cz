@@ -4,7 +4,7 @@ description: Zjistěte, jak maximalizovat své výhody programu Software Assuran
 services: virtual-machines-windows
 documentationcenter: ''
 author: xujing
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: 332583b6-15a3-4efb-80c3-9082587828b0
 ms.service: virtual-machines-windows
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing-ms
-ms.openlocfilehash: 64eb89612765f9a47d0eaac2b9cbceb6341c4155
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 739c867171d7b59a68f7e4d11bbf50a189568ce7
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64681288"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722760"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Azure Hybrid Benefit pro Windows Server
 Pro zákazníky s programem Software Assurance programu Azure Hybrid Benefit pro Windows Server vám umožní využít vaše licence v místním systému Windows Server a spusťte Windows virtual machines v Azure s nižšími náklady. Azure Hybrid Benefit pro Windows Server můžete použít k nasazení nových virtuálních počítačů s operačním systémem Windows. Tento článek prochází přes všechny kroky v tom, jak nasadit nové virtuální počítače s programem Azure Hybrid Benefit pro Windows Server a jak můžete aktualizovat existující spouštění virtuálních počítačů. Další informace o programu Azure Hybrid Benefit pro Windows Server najdete v článku úspory licencování a náklady [stránky licencování programu Azure Hybrid Benefit pro Windows Server](https://azure.microsoft.com/pricing/hybrid-use-benefit/).

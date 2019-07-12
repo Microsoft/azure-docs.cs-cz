@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: b-juche
-ms.openlocfilehash: 207fb003eb1fdaafe4f43f7cd41dd4b7662eddf9
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 5b54d8f21f4cb1cdd7bb06871df6ac22d19d1ab6
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67331981"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705207"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Pokyny pro plánování sítě Azure NetApp Files
 
@@ -35,7 +35,7 @@ Při plánování síťových souborů NetApp Azure, měli byste porozumět něk
 
 Následující funkce nejsou aktuálně podporovány pro soubory Azure NetApp: 
 
-* Skupiny zabezpečení sítě (Nsg) v podsíti
+* Skupiny zabezpečení sítě (Nsg) použita na podsíti delegované
 * Trasy definované uživatelem (udr) s dalším segmentem směrování podsítě souborů Azure NetApp
 * Zásady Azure (například vlastní zásady přiřazování názvů) na rozhraní NetApp soubory Azure
 * Nástroje pro vyrovnávání zatížení pro přenosy souborů NetApp Azure
@@ -50,7 +50,7 @@ Platí následující omezení sítě do služby soubory Azure NetApp:
 
 Následující tabulka popisuje síťové topologie, podporovaných souborů NetApp Azure.  Také popisuje alternativní řešení pro nepodporované topologie. 
 
-|    Topologie    |    je podporováno    |     Alternativní řešení:    |
+|    Topologie    |    je podporováno    |     Alternativní řešení    |
 |-------------------------------------------------------------------------------------------------------------------------------|--------------------|-----------------------------------------------------------------------------|
 |    Připojení ke svazku v místní virtuální sítě    |    Ano    |         |
 |    Připojení ke svazku v partnerské virtuální síti (stejné oblasti)    |    Ano    |         |
@@ -99,7 +99,7 @@ Základní scénář je vytvořit nebo připojit k Azure NetApp Files svazku z v
 
 Pokud máte další virtuální sítě ve stejné oblasti, které potřebují přístup k prostředkům druhé strany, virtuální sítě můžou být připojené pomocí [VNet peering](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) povolit zabezpečené připojení přes infrastrukturu Azure. 
 
-Zvažte možnost virtuální sítě 2 a 3 virtuální sítě ve výše uvedeném diagramu. Pokud virtuální počítač 1 potřebuje pro připojení k virtuálnímu počítači 2 a svazek 2, nebo pokud virtuální počítač 2 vyžaduje připojení k virtuální počítač 1 nebo 1 svazek, je potřeba povolit partnerský vztah virtuální sítě 2 až 3 virtuální sítě. 
+Zvažte možnost virtuální sítě 2 a 3 virtuální sítě ve výše uvedeném diagramu. Pokud virtuální počítač 2 potřebuje pro připojení k virtuálnímu počítači 3 nebo svazek 2 nebo 3 virtuálního počítače je potřeba připojit se k virtuálnímu počítači 2 nebo 1 svazek, je potřeba povolit partnerský vztah virtuální sítě 2 až 3 virtuální sítě. 
 
 Kromě toho vezměte v úvahu scénář, kde 1 virtuální sítě je v partnerském vztahu s virtuální sítí 2 a partnerský vztah virtuální sítě 2 s 3 virtuální sítě ve stejné oblasti. Prostředky z virtuální sítě 1 může připojit k prostředkům ve virtuální síti 2, ale se nemůže připojit k prostředkům ve virtuální síti 3, pokud partnerský vztah virtuální sítě 1 a 3 virtuální sítě. 
 
@@ -111,17 +111,17 @@ Následující diagram znázorňuje hybridním prostředí:
 
 ![Hybridní síťové prostředí](../media/azure-netapp-files/azure-netapp-files-network-hybrid-environment.png)
 
-Aplikace z místních datových center v hybridním scénáři potřebují přístup k prostředkům v Azure.  To platí, zda chcete rozšířit svoje datové centrum do Azure, nebo chcete použít nativní služby Azure nebo zotavení po havárii. Zobrazit [VPN Gateway možnosti plánování](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways?toc=%2fazure%2fvirtual-network%2ftoc.json#planningtable) o tom, jak připojit více prostředkům na pracovišti na prostředky v Azure prostřednictvím sítě site-to-site VPN nebo ExpressRoute.
+Aplikace z místních datových centrech v hybridním scénáři potřebují přístup k prostředkům v Azure.  To platí, zda chcete rozšířit svoje datové centrum do Azure, nebo chcete použít nativní služby Azure nebo zotavení po havárii. Zobrazit [VPN Gateway možnosti plánování](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways?toc=%2fazure%2fvirtual-network%2ftoc.json#planningtable) informace o tom, jak se připojit k prostředkům v Azure prostřednictvím sítě site-to-site VPN nebo ExpressRoute více prostředkům na pracovišti.
 
 V hybridní topologii centra s paprsky centrum, virtuální síť v Azure funguje jako ústřední bod připojení k vaší místní síti. Paprsky jsou virtuální sítě v partnerském vztahu s centrem a slouží k izolaci úloh.
 
-V závislosti na konfiguraci. Prostředky můžete připojit z místního na prostředky v centru a aby se paprsky mezi.
+V závislosti na konfiguraci můžete připojit k prostředkům v centru a aby se paprsky mezi místní prostředky.
 
 V topologii uvedená výše a místní sítí se připojila k rozbočovači virtuální síť v Azure a jsou 2 paprsku virtuálních sítí ve stejné oblasti v partnerském vztahu s virtuální síti centra.  V tomto scénáři jsou možnosti připojení, nepodporuje pro soubory Azure NetApp svazky:
 
-* Místní prostředky virtuálních počítačů 1 a 2 virtuálního počítače může připojit k svazku 1 v centru přes síť VPN site-to-site nebo Expressroute. 
+* Místní prostředky virtuálních počítačů 1 a 2 virtuálního počítače může připojit k svazku 1 v centru přes okruh ExpressRoute nebo VPN site-to-site. 
 * Místní prostředky virtuálních počítačů 1 a 2 virtuálního počítače můžete připojit k svazku 2 nebo 3 svazku přes VPN typu site-to-site a místní partnerský vztah virtuální sítě.
-* 3 virtuální počítač v centru virtuální sítě můžete připojit k svazku v paprsku 1 virtuální sítě 2 a 3 svazku v paprsku 2 virtuální sítě.
+* 3 virtuální počítač v centru virtuální sítě můžete připojit k 2 svazku v paprsku 1 virtuální sítě a objem 3 v paprsku 2 virtuální sítě.
 * 4 virtuální počítač v paprsku 1 virtuální síť a 5 virtuálních počítačů z paprskem 2 virtuální sítě můžete připojit k svazku 1 ve virtuální síti centra.
 
 4 virtuální počítač v paprsku 1 virtuální síť nemůže připojit ke svazku 3 v paprsku 2 virtuální sítě. Navíc 5 virtuálních počítačů v paprsku ze sítě VNet2 nemůže připojit ke svazku 2 v paprsku 1 virtuální sítě. To je případ, protože nejsou v partnerském vztahu virtuálních sítí paprsků a _směrování provozu není podporováno přes partnerský vztah virtuální sítě_.

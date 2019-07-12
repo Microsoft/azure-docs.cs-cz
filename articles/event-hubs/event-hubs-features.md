@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 5b2618807a39f20de041a78204dcc40793b22843
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: e0505960a413308283c4e67e33ec495eedd3b092
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275442"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827728"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Funkce a terminologii používané v Azure Event Hubs
 
@@ -66,30 +66,8 @@ Názvy zdrojů není potřeba vytvářet dopředu, při publikování události 
 [Funkce Event Hubs Capture](event-hubs-capture-overview.md) vám umožní automaticky zachytit streamovaná data ve službě Event Hubs a uložte ho do zvoleného účtu Blob storage nebo účet služby Azure Data Lake. Můžete povolit sběr dat z webu Azure portal a zadejte časové okno k provedení sběru a minimální velikost. Pomocí funkce Event Hubs Capture, můžete zadat vlastní účet služby Azure Blob Storage a kontejneru nebo účtu služby Azure Data Lake, jedním z nich se používá k ukládání zachycená data. Zachycená data je zapsána ve formátu Apache Avro.
 
 ## <a name="partitions"></a>Oddíly
+[!INCLUDE [event-hubs-partitions](../../includes/event-hubs-partitions.md)]
 
-Služba Event Hubs poskytuje datový proud zpráv pomocí schématu rozdělujícího datový proud na oddíly pro jednotlivé příjemce. To zajišťuje, aby každý příjemce četl jenom konkrétní podmnožinu nebo oddíl datového proudu zpráv. Toto schéma umožňuje vodorovné škálování zpracování událostí a poskytuje další funkce zaměřené na datový proud, které nejsou ve frontách a tématech k dispozici.
-
-Oddíl je seřazená posloupnost událostí, která se nachází v centru událostí. Události, které nově přichází, se zařazují na konec této posloupnosti. Oddíl si lze představit jako „protokol transakcí“.
-
-![Event Hubs](./media/event-hubs-features/partition.png)
-
-Event Hubs uchovává data dobu uchování nakonfigurované, která se vztahuje na všechny oddíly v centra událostí. Události mizí na základě času, nemůžete je explicitně odstranit. Vzhledem k tomu, že oddíly jsou nezávislé a obsahují vlastní posloupnost dat, často se jejich velikost mění různým tempem.
-
-![Event Hubs](./media/event-hubs-features/multiple_partitions.png)
-
-Počet oddílů je určený při vytvoření a musí být v rozsahu 2 až 32. Počet oddílů není možné měnit. Proto je při nastavování počtu oddílů potřeba uvažovat z dlouhodobého hlediska. Oddíly slouží jako mechanismus pro organizaci dat a souvisí se stupněm paralelismu příjmu dat, který vyžadují přijímací aplikace. Počet oddílů v centru událostí přímo souvisí s počtem souběžných čtenářů, které plánujete mít. Pokud chcete použít vyšší počet oddílů než 32, kontaktujte tým služby Event Hubs.
-
-I když oddíly identifikovat a je možné odeslat přímo, odesílání přímo do oddílu se nedoporučuje. Místo toho můžete použít konstrukce vyšší úrovně počínaje [vydavatel události](#event-publishers) a kapacitu oddílů. 
-
-Oddíly jsou naplněné posloupností dat událostí, která obsahují tělo události, uživatelem definované vlastnosti kontejneru objektů a dat a metadat – například její posun v oddílu a pořadí v posloupnosti datového proudu.
-
-Další informace o oddílech a kompromisu mezi dostupností a spolehlivostí najdete v tématech [Průvodce programováním pro službu Event Hubs](event-hubs-programming-guide.md#partition-key) a [Dostupnost a konzistence ve službě Event Hubs](event-hubs-availability-and-consistency.md).
-
-### <a name="partition-key"></a>Klíč oddílu
-
-[Klíč oddílu](event-hubs-programming-guide.md#partition-key) můžete použít k mapování příchozích dat událostí do konkrétních oddílů pro účely organizace dat. Klíč oddílu je hodnota zadaná odesílatelem, která byla předaná do centra událostí. Zpracovává se pomocí statické hashovací funkce, která vytvoří přiřazení k oddílu. Pokud při publikování události nezadáte klíč oddílu, použije se přiřazení metodou kruhového dotazování.
-
-Zdroj události zná jenom svůj klíč oddílu, a ne oddíl, do kterého se události publikují. Díky tomuto oddělení klíče a oddílu odesílatel toho nepotřebuje vědět o zpracování příjmu dat příliš mnoho. Vhodným klíčem oddílu je jedinečná identita uživatele nebo zařízení, ale k seskupení souvisejících událostí do jednoho oddílu je možné použít i další atributy, například geografickou polohu.
 
 ## <a name="sas-tokens"></a>Tokeny SAS
 

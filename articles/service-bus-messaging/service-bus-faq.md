@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 8461764a3f1f682ffb97420a4efdf2803f518872
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 26609e7b21af8804a4b43039c84c04597035721c
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64707134"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706213"
 ---
 # <a name="service-bus-faq"></a>Nejčastější dotazy k Service Bus
 
@@ -86,7 +86,7 @@ Pokud používáte redundanci zón pro váš obor názvů, je třeba provést n�
 
 ## <a name="best-practices"></a>Osvědčené postupy
 ### <a name="what-are-some-azure-service-bus-best-practices"></a>Jaké jsou některé osvědčené postupy Azure Service Bus?
-Zobrazit [osvědčené postupy pro zlepšení výkonu pomocí služby Service Bus] [ Best practices for performance improvements using Service Bus] – Tento článek popisuje, jak optimalizovat výkon při výměně zpráv.
+Zobrazit [osvědčené postupy pro zlepšení výkonu pomocí služby Service Bus][Best practices for performance improvements using Service Bus] – Tento článek popisuje, jak optimalizovat výkon při výměně zpráv.
 
 ### <a name="what-should-i-know-before-creating-entities"></a>Co bych měl vědět před vytvořením entity?
 Následující vlastnosti frontu a téma jsou neměnné. Při zřizování entity, jak tyto vlastnosti nelze změnit bez vytvoření nové entity nahrazení, zvažte toto omezení.
@@ -134,7 +134,7 @@ Při odstranění oboru názvů z předplatného čeká na 4 hodiny, než se nut
 Seznam možných výjimkách služby Service Bus najdete v tématu [výjimky přehled][Exceptions overview].
 
 ### <a name="what-is-a-shared-access-signature-and-which-languages-support-generating-a-signature"></a>Co je sdílený přístupový podpis a jazyky, které podporují generování podpis?
-Sdílené přístupové podpisy jsou mechanismus ověřování na základě zabezpečené hodnoty hash SHA-256 nebo identifikátory URI. Informace o tom, jak generovat vlastní podpisy v Node.js, PHP, Java a C\#, najdete v článku [sdílené přístupové podpisy] [ Shared Access Signatures] článku.
+Sdílené přístupové podpisy jsou mechanismus ověřování na základě zabezpečené hodnoty hash SHA-256 nebo identifikátory URI. Informace o tom, jak generovat vlastní podpisy v Node.js, PHP, Java a C\#, najdete v článku [sdílené přístupové podpisy][Shared Access Signatures] článku.
 
 ## <a name="subscription-and-namespace-management"></a>Správa předplatného a obor názvů
 ### <a name="how-do-i-migrate-a-namespace-to-another-azure-subscription"></a>Jak migrovat obor názvů do jiného předplatného Azure?
@@ -143,7 +143,7 @@ Můžete přesunout oboru názvů z jednoho předplatného Azure na jiný, buď 
 
 #### <a name="portal"></a>Portál
 
-Chcete-li migrovat obory názvů služby Service Bus do jiného předplatného pomocí webu Azure portal, postupujte podle pokynů [tady](../azure-resource-manager/resource-group-move-resources.md#use-portal). 
+Chcete-li migrovat obory názvů služby Service Bus do jiného předplatného pomocí webu Azure portal, postupujte podle pokynů [tady](../azure-resource-manager/resource-group-move-resources.md#use-the-portal). 
 
 #### <a name="powershell"></a>PowerShell
 

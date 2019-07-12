@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 95ec6a863f951a8c26abd865041c68df333a4e38
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a244883f470f4906879725daf0d37bd1759e65c4
+ms.sourcegitcommit: af31deded9b5836057e29b688b994b6c2890aa79
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65071339"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67812893"
 ---
 # <a name="durable-functions-patterns-and-technical-concepts-azure-functions"></a>Odolné funkce vzory a technických konceptech (Azure Functions)
 
@@ -374,7 +374,7 @@ module.exports = async function (context) {
 };
 ```
 
-## <a name="pattern-6-aggregator-preview"></a>Vzor #6: Agregátoru (preview)
+### <a name="aggregator"></a>Vzor #6: Agregátoru (preview)
 
 Šestý vzor spočívá v agregaci data události po určitou dobu do jediného adresovatelný *entity*. V tomto vzoru data agregují mohou pocházet z několika zdrojů, mohou být dodávány v dávkách nebo mohou být rozmístěny long-časová období. Agregátor potřebovat reagovat na data události po doručení a externí klienti mohou muset dotázat agregovaná data.
 
@@ -385,27 +385,46 @@ Velmi obtížné to při implementaci tohoto modelu s normální, bezstavové fu
 Použití [trvalý Entity funkce](durable-functions-preview.md#entity-functions), jednu implementaci tohoto modelu snadno jako jedinou funkci.
 
 ```csharp
-public static async Task Counter(
-    [EntityTrigger(EntityClassName = "Counter")] IDurableEntityContext ctx)
+[FunctionName("Counter")]
+public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 {
     int currentValue = ctx.GetState<int>();
-    int operand = ctx.GetInput<int>();
 
-    switch (ctx.OperationName)
+    switch (ctx.OperationName.ToLowerInvariant())
     {
         case "add":
+            int amount = ctx.GetInput<int>();
             currentValue += operand;
             break;
-        case "subtract":
-            currentValue -= operand;
-            break;
         case "reset":
-            await SendResetNotificationAsync();
             currentValue = 0;
+            break;
+        case "get":
+            ctx.Return(currentValue);
             break;
     }
 
     ctx.SetState(currentValue);
+}
+```
+
+Trvalý entity mohou také modelovat jako třídy rozhraní .NET. To může být užitečné, pokud velká seznam operací, a pokud je převážně statické. Následující příklad je ekvivalentní provádění `Counter` entity pomocí .NET třídy a metody.
+
+```csharp
+public class Counter
+{
+    [JsonProperty("value")]
+    public int CurrentValue { get; set; }
+
+    public void Add(int amount) => this.CurrentValue += amount;
+    
+    public void Reset() => this.CurrentValue = 0;
+    
+    public int Get() => this.CurrentValue;
+
+    [FunctionName(nameof(Counter))]
+    public static Task Run([EntityTrigger] IDurableEntityContext ctx)
+        => ctx.DispatchAsync<Counter>();
 }
 ```
 
@@ -426,7 +445,7 @@ public static async Task Run(
 }
 ```
 
-Podobně můžou klienti dotazovat pro stav entity funkce pomocí metod na `orchestrationClient` vazby.
+Dynamicky generované proxy jsou také k dispozici pro signalizaci entity jako typově bezpečný. A kromě signalizace, můžou klienti dotazovat také pro stav entity funkce pomocí metod na `orchestrationClient` vazby.
 
 > [!NOTE]
 > Funkce entity jsou aktuálně dostupné jen [náhled odolné Functions 2.0](durable-functions-preview.md).
@@ -484,7 +503,7 @@ Historie provádění pro účty orchestrator je uložen v úložišti tabulek. 
 
 Všechny známé problémy, které mají být sledovány v [problémy Githubu](https://github.com/Azure/azure-functions-durable-extension/issues) seznamu. Pokud narazíte na problém a nejde najít problému v Githubu otevře nový problém. Zahrnout podrobný popis problému.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Durable Functions najdete v tématu [Durable Functions funkce, typy a funkce](durable-functions-types-features-overview.md). 
 

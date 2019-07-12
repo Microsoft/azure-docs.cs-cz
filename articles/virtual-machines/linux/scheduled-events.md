@@ -4,7 +4,7 @@ description: Naplánovat událostí pomocí služby Azure Metadata Service pro s
 services: virtual-machines-windows, virtual-machines-linux, cloud-services
 documentationcenter: ''
 author: ericrad
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: ''
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: 0831f08eaa3e8e6f6a0d3f68bc50cd927167b7ba
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f7691bcd6f9f3137f48bdd52722c887c4777a32c
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65507931"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706534"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Služby Azure Metadata: Naplánované události pro virtuální počítače s Linuxem
 
@@ -75,7 +75,7 @@ Pokud virtuální počítač se vytvoří ve virtuální síti, výchozí příp
 ### <a name="version-and-region-availability"></a>Verze a dostupnost oblastí
 Služba Scheduled Events se systémovou správou verzí. Verze jsou povinné; aktuální verze je `2017-11-01`.
 
-| Version | Typ verze | Oblasti | Poznámky k verzi | 
+| Version | Typ verze | Regions | Poznámky k verzi | 
 | - | - | - | - | 
 | 2017-11-01 | Všeobecná dostupnost | Vše | <li> Přidání podpory pro vyřazení EventType "Preempt" virtuálního počítače s nízkou prioritou<br> | 
 | 2017-08-01 | Všeobecná dostupnost | Vše | <li> Odebrat před podtržítka z názvy prostředků pro virtuální počítače IaaS<br><li>Požadavek na metadata záhlaví vynucovat pro všechny požadavky | 

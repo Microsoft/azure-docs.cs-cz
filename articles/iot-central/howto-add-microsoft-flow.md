@@ -8,12 +8,12 @@ ms.date: 04/25/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: hegate
-ms.openlocfilehash: c50271e28db104522c0e8811508fa882dc316eab
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e8bc8b8d4e3585ea4c0505f2e36abc6d1da7f8eb
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66235811"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797710"
 ---
 # <a name="build-workflows-with-the-iot-central-connector-in-microsoft-flow"></a>Vytváření pracovních postupů s IoT Central konektorem v Microsoft Flow
 
@@ -31,7 +31,8 @@ Podívejte se na [tyto šablony Microsoft Flow](https://aka.ms/iotcentralflowtem
 ## <a name="prerequisites"></a>Požadavky
 
 - Aplikace s průběžnými platbami
-- Microsoft osobní nebo pracovní nebo školní účet pro přihlášení do Flow ([Další informace o plánech Microsoft Flow](https://aka.ms/microsoftflowplans))
+- Microsoft osobní nebo pracovní nebo školní účet, používat Microsoft Flow ([Další informace o plánech Microsoft Flow](https://aka.ms/microsoftflowplans))
+- Pracovní nebo školní účet k používání konektoru Azure IoT Central
 
 ## <a name="trigger-a-workflow"></a>Trigger pracovního postupu
 
@@ -45,7 +46,12 @@ V této části se dozvíte, jak aktivovat mobilní oznámení v mobilní aplika
 
     ![Dostupné šablony Microsoft Flow](media/howto-add-microsoft-flow/flowtemplates1.png)
 
-1. Jste vyzváni k přihlášení ke konektorům v šabloně, kterou jste zvolili. Po přihlášení konektorů budete přesměrováni do návrháře k vytvoření pracovního postupu. Pracovní postup obsahuje aktivační událost IoT Central, která má svoji aplikaci a pravidlo už vytvořilo.
+1. Jste vyzváni k přihlášení ke konektorům v šabloně, kterou jste zvolili. 
+
+    > [!NOTE]
+    > K používání konektoru Azure IoT Central, musíte se přihlásit pomocí účtu služby Azure Active Directory (pracovní nebo školní účet). Osobní účet, jako abc@outlook.com nebo abc@live.com nepodporuje konektoru Azure IoT Central.
+
+    Až se zaregistrujete ke konektorům, budete přesměrováni do návrháře k vytvoření pracovního postupu. Pracovní postup obsahuje aktivační událost IoT Central, která má svoji aplikaci a pravidlo už vytvořilo.
 
 1. Pracovní postup můžete přizpůsobit úpravou informace předány akcí a přidání nové akce. V tomto příkladu "action" je **oznámení – odeslat mobilní oznámení**. Můžete zahrnout *dynamický obsah* z vašeho IoT Central pravidla předávání podél důležité informace, jako je název zařízení a časové razítko oznámení.
 

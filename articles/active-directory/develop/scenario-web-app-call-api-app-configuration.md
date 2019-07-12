@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd7f393f889facf147cf25625d5c3b20f886ddf5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6c78a951258e3c279f96f44ceac469e4c38cf22c
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65784944"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67785560"
 ---
 # <a name="web-app-that-calls-web-apis---code-configuration"></a>Webové aplikace, že volání webových rozhraní API – konfigurace kódu
 
@@ -44,7 +44,7 @@ Knihovny podpůrné tok autorizačního kódu pro Web Apps jsou:
 
 V ASP.NET Core, stane věcí `Startup.cs` souboru. Budete chtít přihlásit k odběru `OnAuthorizationCodeReceived` otevřít ID připojení událostí a z této události, zavolejte MSAL. Metoda společnosti NET `AcquireTokenFromAuthorizationCode` které má vliv na ukládání v mezipaměti tokenů, přístupový token pro požadované obory a obnovovací token, který se použije na obnovení přístupového tokenu, když se nachází blízko vypršení platnosti nebo získat token jménem stejného uživatele , ale pro jiný prostředek.
 
-Komentáře v kódu níže vám pomůže pochopit některé aspekty složité tkaní MSAL.NET a ASP.NET Core
+Komentáře v kódu níže vám pomůže pochopit některé aspekty složité tkaní MSAL.NET a ASP.NET Core. Úplné podrobnosti jsou uvedeny v [přírůstkové výukový program, kapitoly webové aplikace ASP.NET Core aplikace 2](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-1-Call-MSGraph)
 
 ```CSharp
   services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme, options =>
@@ -151,9 +151,7 @@ private void ConfigureAuth(IAppBuilder app)
   Scope = Globals.BasicSignInScopes, // a basic set of permissions for user sign in & profile access
   TokenValidationParameters = new TokenValidationParameters
   {
-  // We'll inject our own issuer validation logic below.
-  ValidateIssuer = false,
-  NameClaimType = "name",
+   NameClaimType = "name",
   },
   Notifications = new OpenIdConnectAuthenticationNotifications()
   {

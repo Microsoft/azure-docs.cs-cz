@@ -16,12 +16,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 833a22635c1d53dce9086aa3e11220d5868a302c
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: af215c80148010d526c951e7a5128d6e4622b1cd
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67471980"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67625572"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Co je nového ve službě Azure Active Directory?
 
@@ -61,7 +61,7 @@ Další informace najdete v tématu [riziko detekce referenční dokumentace roz
 
 V červnu 2019 jsme přidali podporu těchto 22 nové aplikace s federací do Galerie aplikací:
 
-[Sada nástrojů Azure AD SAML](https://docs.microsoft.com/azure/active-directory/saas-apps/saml-toolkit-tutorial), [Otsuka Shokai (大塚商会)](https://docs.microsoft.com/azure/active-directory/saas-apps/otsuka-shokai-tutorial), [ANAQUA](https://docs.microsoft.com/azure/active-directory/saas-apps/anaqua-tutorial), [klienta Azure VPN](https://portal.azure.com/), [ExpenseIn](https://docs.microsoft.com/azure/active-directory/saas-apps/expensein-tutorial), [ Pomocné rutiny pomocné rutiny](https://docs.microsoft.com/azure/active-directory/saas-apps/helper-helper-tutorial), [Costpoint](https://docs.microsoft.com/azure/active-directory/saas-apps/costpoint-tutorial), [GlobalOne](https://docs.microsoft.com/azure/active-directory/saas-apps/globalone-tutorial), [Mercedes Benz automobilu Office](https://me.secure.mercedes-benz.com/), [Skore](https://app.justskore.it/), [ Oracle cloudové infrastruktury konzoly](https://docs.microsoft.com/azure/active-directory/saas-apps/oracle-cloud-tutorial), [ověřování CyberArk SAML](https://docs.microsoft.com/azure/active-directory/saas-apps/cyberark-saml-authentication-tutorial), [Scrible Edu](https://www.scrible.com/sign-in/#/create-account), [PandaDoc](https://docs.microsoft.com/azure/active-directory/saas-apps/pandadoc-tutorial), [Perceptyx ](https://apexdata.azurewebsites.net/docs.microsoft.com/azure/active-directory/saas-apps/perceptyx-tutorial), [Proptimise OS](https://proptimise.co.uk/property-software/), [Vtiger CRM (SAML)](https://docs.microsoft.com/azure/active-directory/saas-apps/vtiger-crm-saml-tutorial), správce přístupu k systému Oracle pro maloobchodní prodej Oracle propagace správce přístupu k systému Oracle pro Oracle E-Business Suite, Oracle IDCS pro E-Business Suite, Oracle IDCS pro PeopleSoft Oracle IDCS pro řešení JD Edwards
+[Sada nástrojů Azure AD SAML](https://docs.microsoft.com/azure/active-directory/saas-apps/saml-toolkit-tutorial), [Otsuka Shokai (大塚商会)](https://docs.microsoft.com/azure/active-directory/saas-apps/otsuka-shokai-tutorial), [ANAQUA](https://docs.microsoft.com/azure/active-directory/saas-apps/anaqua-tutorial), [klienta Azure VPN](https://portal.azure.com/), [ExpenseIn](https://docs.microsoft.com/azure/active-directory/saas-apps/expensein-tutorial), [ Pomocné rutiny pomocné rutiny](https://docs.microsoft.com/azure/active-directory/saas-apps/helper-helper-tutorial), [Costpoint](https://docs.microsoft.com/azure/active-directory/saas-apps/costpoint-tutorial), [GlobalOne](https://docs.microsoft.com/azure/active-directory/saas-apps/globalone-tutorial), [Mercedes Benz automobilu Office](https://me.secure.mercedes-benz.com/), [Skore](https://app.justskore.it/), [ Oracle cloudové infrastruktury konzoly](https://docs.microsoft.com/azure/active-directory/saas-apps/oracle-cloud-tutorial), [ověřování CyberArk SAML](https://docs.microsoft.com/azure/active-directory/saas-apps/cyberark-saml-authentication-tutorial), [Scrible Edu](https://www.scrible.com/sign-in/#/create-account), [PandaDoc](https://docs.microsoft.com/azure/active-directory/saas-apps/pandadoc-tutorial), [Perceptyx ](https://apexdata.azurewebsites.net/docs.microsoft.com/azure/active-directory/saas-apps/perceptyx-tutorial), [Proptimise OS](https://proptimise.co.uk/software/), [Vtiger CRM (SAML)](https://docs.microsoft.com/azure/active-directory/saas-apps/vtiger-crm-saml-tutorial), správce přístupu k systému Oracle pro maloobchodní prodej Oracle propagace správce přístupu k systému Oracle pro Oracle E-Business Suite, Oracle IDCS pro E-Business Suite, Oracle IDCS pro PeopleSoft Oracle IDCS pro řešení JD Edwards
 
 Další informace o aplikacích najdete v tématu [integrace aplikací SaaS pomocí Azure Active Directory](https://aka.ms/appstutorial). Další informace o zobrazení aplikace v galerii aplikací Azure AD najdete v tématu [uvedení aplikace v galerii aplikací Azure Active Directory](https://aka.ms/azureadapprequest).
 
@@ -178,7 +178,7 @@ Další informace o tom, jak lépe zabezpečit svou organizaci prostřednictvím
 ### <a name="identity-secure-score-is-now-available-in-azure-ad-general-availability"></a>Skóre zabezpečení identit je teď dostupná ve službě Azure AD (obecná dostupnost)
 
 **Typ:** Nová funkce  
-**Kategorie služby:** neuvedeno  
+**Kategorie služby:** Není k dispozici  
 **Funkce produktu:** Zabezpečení a ochrana identity
 
 Teď můžete sledovat a vylepšit svou identitu stavu zabezpečení s využitím identity skóre funkce zabezpečení ve službě Azure AD. Identita zabezpečení skóre funkce používá jeden řídicí panel můžete:

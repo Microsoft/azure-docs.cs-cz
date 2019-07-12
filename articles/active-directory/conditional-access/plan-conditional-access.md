@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56ddc2738305600c611cab1e09d654164f78b3d6
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 3fca84a71e1ede572e3889f973248db158115bec
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509432"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655499"
 ---
 # <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>Jak: Plánování nasazení podmíněného přístupu v Azure Active Directory
 
@@ -162,7 +162,7 @@ Testovací plán je důležité mít srovnání očekávané výsledky a skuteč
 |---|---|---|---|
 |[Vyžadovat vícefaktorové ověřování mimo práci](https://docs.microsoft.com/azure/active-directory/conditional-access/untrusted-networks)|Autorizovaný uživatel se přihlásí *aplikace* while v důvěryhodném umístění / práce|Uživatel není vyzván k MFA| |
 |[Vyžadovat vícefaktorové ověřování mimo práci](https://docs.microsoft.com/azure/active-directory/conditional-access/untrusted-networks)|Autorizovaný uživatel se přihlásí *aplikace* while není v důvěryhodném umístění / práce|Uživatel je vyzván, aby MFA a můžete úspěšně přihlásit| |
-|[Vyžadovat vícefaktorové ověřování (pro správce)](https://docs.microsoft.com/azure/active-directory/conditional-access/baseline-protection#require-mfa-for-admins)|Globální správce přihlásí *aplikace*|Správce se zobrazí výzva k MFA| |
+|[Vyžadovat vícefaktorové ověřování (pro správce)](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-baseline-protect-administrators)|Globální správce přihlásí *aplikace*|Správce se zobrazí výzva k MFA| |
 |[Riziková přihlášení](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-sign-in-risk-policy)|Uživatel se přihlásí do *aplikace* pomocí [Tor prohlížeče](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection-playbook)|Správce se zobrazí výzva k MFA| |
 |[Správa zařízení](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)|Ověřený uživatel se pokusí přihlásit pomocí autorizovaného zařízení|Udělení přístupu| |
 |[Správa zařízení](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)|Autorizovaný uživatel pokusí přihlásit z neoprávněné zařízení|Přístup zablokován| |

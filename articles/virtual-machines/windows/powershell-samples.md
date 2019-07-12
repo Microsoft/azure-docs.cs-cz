@@ -4,7 +4,7 @@ description: Ukázky Powershellu pro virtuální počítač Azure
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-service-management
 ms.assetid: ''
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/01/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 576fe268bec12c16c7c2e2076dfa066c908693d5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9aea63b8366bf974fd89c32105bea707ad72c8a5
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60583685"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67719978"
 ---
 # <a name="azure-virtual-machine-powershell-samples"></a>Ukázky Azure Powershellu pro virtuální počítač
 
@@ -50,4 +50,5 @@ Následující tabulka obsahuje odkazy na ukázkové skripty Powershellu pro vyt
 | [Šifrování virtuálního počítače a její datové disky](./../scripts/virtual-machines-windows-powershell-sample-encrypt-vm.md?toc=%2fpowershell%2fazure%2ftoc.json) | Vytvoří služby Azure key vault, šifrovací klíč a hlavního názvu služby a potom šifruje virtuálního počítače. |
 |**Monitorování virtuálních počítačů**||
 | [Monitorování virtuálního počítače pomocí Azure monitoru](./../scripts/virtual-machines-windows-powershell-sample-create-vm-oms.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) | Vytvoří virtuální počítač, nainstaluje se agent Azure Log Analytics a registraci virtuálního počítače v pracovním prostoru Log Analytics.  |
+| [Shromažďování podrobností o všech virtuálních počítačích v rámci předplatného pomocí Powershellu](../scripts/virtual-machines-powershell-sample-collect-vm-details.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) | Vytvoří sdílený svazek clusteru, který obsahuje název název virtuálního počítače, skupiny prostředků, oblast, virtuální sítě, podsítě, privátní IP adresa, typ operačního systému a veřejnou IP adresu virtuálních počítačů v poskytnutém předplatném.
 | | |

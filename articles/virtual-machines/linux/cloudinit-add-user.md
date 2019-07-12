@@ -4,7 +4,7 @@ description: Použití cloud-init k přidání uživatele do virtuálního poč�
 services: virtual-machines-linux
 documentationcenter: ''
 author: rickstercdn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 51de92eb64e9879b769baf7e574ee1dca9355040
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bcea130652789a84d332247445d8e25b2f7ac42e
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60650348"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671791"
 ---
 # <a name="use-cloud-init-to-add-a-user-to-a-linux-vm-in-azure"></a>Použití cloud-init k přidání uživatele do virtuálního počítače s Linuxem v Azure
 V tomto článku se dozvíte, jak používat [cloud-init](https://cloudinit.readthedocs.io) přidání uživatele do virtuálního počítače (VM) nebo virtuálního počítače škálovací sady (VMSS) při zřizování času v Azure. Tento cloud-init skript se spustí při prvním spuštění po Azure se zřizují prostředky. Další informace o tom, jak funguje cloud-init nativně v Azure a podporovaných distribucích systému Linux, najdete v části [přehled cloud-init](using-cloud-init.md).

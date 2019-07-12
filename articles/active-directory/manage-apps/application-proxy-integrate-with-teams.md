@@ -16,19 +16,18 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e9b043b27f624a3d9f38fb2299f9e49f0ffedda
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 037e005993a54e525560571a6d893197af99b6a0
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65783421"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807764"
 ---
 # <a name="access-your-on-premises-applications-through-microsoft-teams"></a>Přístup k místním aplikacím přes Microsoft Teams
 
-Azure Active Directory Application Proxy umožňuje jednotné přihlašování k místním aplikacím bez ohledu na to, kde jsou. Microsoft Teams zjednodušuje váš spolupráci úsilí na jednom místě. Integrace dvou společně znamená, že vaši uživatelé mohli být produktivní s ostatními členy týmu v každé situaci. 
+Azure Active Directory Application Proxy umožňuje jednotné přihlašování k místním aplikacím bez ohledu na to, kde jsou. Microsoft Teams zjednodušuje váš spolupráci úsilí na jednom místě. Integrace dvou společně znamená, že vaši uživatelé mohli být produktivní s ostatními členy týmu v každé situaci.
 
 Uživatelé mohou přidat cloudové aplikace na svých kanálů Teams [pomocí karet](https://support.office.com/article/Video-Using-Tabs-7350a03e-017a-4a00-a6ae-1c9fe8c497b3?ui=en-US&rs=en-US&ad=US), ale co Sharepointových webech nebo plánovací nástroj, který je hostovaný místně? Proxy aplikací je řešení. Můžou přidat aplikace do svých kanálů pomocí stejné externí adresy URL vždy používají vzdálený přístup k jejich aplikace publikované prostřednictvím Proxy aplikací. A protože Proxy aplikace ověřuje prostřednictvím Azure Active Directory, uživatelé získají jednotné přihlašování.
-
 
 ## <a name="install-the-application-proxy-connector-and-publish-your-app"></a>Nainstalujte konektor Proxy aplikací a publikování aplikace
 
@@ -42,19 +41,19 @@ Po publikování aplikace prostřednictvím Proxy aplikací, umožněte svým u�
 
 1. Přejděte do kanálu Teams, kde chcete přidat tuto aplikaci a vyberte **+** přidejte kartu.
 
-   ![Vyberte možnost přidat na kartě](./media/application-proxy-integrate-with-teams/add-tab.png)
+   ![Vyberte a přidejte kartu v Teams](./media/application-proxy-integrate-with-teams/add-tab.png)
 
-2. Vyberte **webu** z možnosti tabulátoru.
+1. Vyberte **webu** z možnosti tabulátoru.
 
-   ![Přidat web](./media/application-proxy-integrate-with-teams/website.png)
+   ![Vyberte web, přidat obrazovku kartu](./media/application-proxy-integrate-with-teams/website.png)
 
-3. Pojmenujte kartu a nastavte adresu URL na externí adresu URL Proxy aplikací. 
+1. Pojmenujte kartu a nastavte adresu URL na externí adresu URL Proxy aplikací.
 
-   ![Konfigurovat název karty a adresu URL](./media/application-proxy-integrate-with-teams/tab-name-url.png)
+   ![Kartě Název a přidejte externí adresu URL](./media/application-proxy-integrate-with-teams/tab-name-url.png)
 
-Jakmile jeden člen týmu přidá na kartu, zobrazí se se pro všechny uživatele v kanálu. Všichni uživatelé, kteří mají přístup k ní získat přístup jednotné přihlašování pomocí přihlašovacích údajů, které používají pro Microsoft Teams. Všichni uživatelé, kteří nemají přístup k aplikaci můžete zobrazit na kartě v týmech, ale jsou blokovány, dokud je poskytnete oprávnění k místní aplikaci a Azure portal publikovanou verzi aplikace. 
+Jakmile jeden člen týmu přidá na kartu, zobrazí se se pro všechny uživatele v kanálu. Všichni uživatelé, kteří mají přístup k ní získat přístup jednotné přihlašování pomocí přihlašovacích údajů, které používají pro Microsoft Teams. Všichni uživatelé, kteří nemají přístup k aplikaci můžete zobrazit na kartě v týmech, ale jsou blokovány, dokud je poskytnete oprávnění k místní aplikaci a Azure portal publikovanou verzi aplikace.
 
 ## <a name="next-steps"></a>Další postup
 
 - Zjistěte, jak [publikovat místní Sharepointové weby](application-proxy-integrate-with-sharepoint-server.md) pomocí Proxy aplikace.
-- Konfigurace vaší aplikace, které používají [vlastních domén](application-proxy-configure-custom-domain.md) pro jejich externí adresu URL. 
+- Konfigurace vaší aplikace, které používají [vlastních domén](application-proxy-configure-custom-domain.md) pro jejich externí adresu URL.

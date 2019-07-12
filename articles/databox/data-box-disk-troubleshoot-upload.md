@@ -6,22 +6,116 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: article
-ms.date: 06/14/2019
+ms.date: 06/17/2019
 ms.author: alkohli
-ms.openlocfilehash: 6f3ac38c3eac968bd2f7ec2aada435466d3ff279
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: deaa9a220ee4d765650779b40742225e300ffdb7
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67148306"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807488"
 ---
 # <a name="understand-logs-to-troubleshoot-data-upload-issues-in-azure-data-box-disk"></a>Vysvětlení protokolů řešit problémy data v disku Azure Data Box
 
 V tomto článku se vztahuje na Microsoft Azure Data Box Disk a popisuje problémy, které se zobrazí při odesílání dat do Azure.
 
-## <a name="data-upload-logs"></a>Nahrát protokoly dat
+## <a name="about-upload-logs"></a>O nahrát protokoly
 
-Při nahrání dat do Azure v datacentru, `_error.xml` a `_verbose.xml` soubory jsou vygenerovány. Tyto protokoly se nahrají do stejného účtu úložiště, který byl použit jak nahrát data. Vzorek `_error.xml` je uveden níže.
+Při nahrání dat do Azure v datacentru, `_error.xml` a `_verbose.xml` soubory jsou vygenerovány pro každý účet úložiště. Tyto protokoly se nahrají do stejného účtu úložiště, který byl použit jak nahrát data. 
+
+Oba protokoly jsou ve stejném formátu a obsahují popisy XML událostí, ke kterým došlo při kopírování dat z disku na účet služby Azure Storage.
+
+Podrobný protokol obsahuje úplné informace o stavu operace kopírování pro každý objekt blob nebo soubor, že v protokolu chyb obsahuje pouze informace pro objekty BLOB nebo soubory, které se vyskytly chyby při nahrávání.
+
+V protokolu chyb má stejnou strukturu jako podrobný protokol, ale filtry úspěšné operace.
+
+## <a name="download-logs"></a>Stáhnout protokoly
+
+Proveďte následující kroky k vyhledání nahrát protokoly.
+
+1. Pokud existují nějaké chyby při odesílání dat do Azure, na portálu zobrazuje cestu ke složce, ve kterém jsou umístěné protokoly diagnostiky.
+
+    ![Odkaz na protokoly na portálu](./media/data-box-disk-troubleshoot-upload/data-box-disk-portal-logs.png)
+
+2. Přejděte na **waies**.
+
+    ![Chyba a podrobné protokoly](./media/data-box-disk-troubleshoot-upload/data-box-disk-portal-logs-1.png)
+
+V obou případech se zobrazí podrobné protokoly a protokoly chyb. Vyberte všechny protokoly a stáhněte si místní kopii.
+
+## <a name="sample-upload-logs"></a>Ukázky nahrávání protokolů
+
+Vzorek `_verbose.xml` je uveden níže. Pořadí v tomto případě byla úspěšně dokončena bez chyb.
+
+```xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<DriveLog Version="2018-10-01">
+  <DriveId>184020D95632</DriveId>
+  <Blob Status="Completed">
+    <BlobPath>$root/botetapageblob.vhd</BlobPath>
+    <FilePath>\PageBlob\botetapageblob.vhd</FilePath>
+    <Length>1073742336</Length>
+    <ImportDisposition Status="Created">rename</ImportDisposition>
+    <PageRangeList>
+      <PageRange Offset="0" Length="4194304" Status="Completed" />
+      <PageRange Offset="4194304" Length="4194304" Status="Completed" />
+      <PageRange Offset="8388608" Length="4194304" Status="Completed" />
+      --------CUT-------------------------------------------------------
+      <PageRange Offset="1061158912" Length="4194304" Status="Completed" />
+      <PageRange Offset="1065353216" Length="4194304" Status="Completed" />
+      <PageRange Offset="1069547520" Length="4194304" Status="Completed" />
+      <PageRange Offset="1073741824" Length="512" Status="Completed" />
+    </PageRangeList>
+  </Blob>
+  <Blob Status="Completed">
+    <BlobPath>$root/botetablockblob.txt</BlobPath>
+    <FilePath>\BlockBlob\botetablockblob.txt</FilePath>
+    <Length>19</Length>
+    <ImportDisposition Status="Created">rename</ImportDisposition>
+    <BlockList>
+      <Block Offset="0" Length="19" Status="Completed" />
+    </BlockList>
+  </Blob>
+  <File Status="Completed">
+    <FileStoragePath>botetaazurefilesfolder/botetaazurefiles.txt</FileStoragePath>
+    <FilePath>\AzureFile\botetaazurefilesfolder\botetaazurefiles.txt</FilePath>
+    <Length>20</Length>
+    <ImportDisposition Status="Created">rename</ImportDisposition>
+    <FileRangeList>
+      <FileRange Offset="0" Length="20" Status="Completed" />
+    </FileRangeList>
+  </File>
+  <Status>Completed</Status>
+</DriveLog>
+```
+
+Pro stejnou objednávku vzorek `_error.xml` je uveden níže.
+
+```xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<DriveLog Version="2018-10-01">
+  <DriveId>184020D95632</DriveId>
+  <Summary>
+    <ValidationErrors>
+      <None Count="3" />
+    </ValidationErrors>
+    <CopyErrors>
+      <None Count="3" Description="No errors encountered" />
+    </CopyErrors>
+  </Summary>
+  <Status>Completed</Status>
+</DriveLog>
+```
+
+Vzorek `_error.xml` je uveden níže where příkazu bylo dokončeno s chybami. 
+
+Chybový soubor v tomto případě má `Summary` a další části, která obsahuje všechny soubor úrovně chyby. 
+
+`Summary` Obsahuje `ValidationErrors` a `CopyErrors`. V tomto případě 8 soubory nebo složky nahraný do Azure a nebyly zjištěny žádné chyby ověření. Když data byla zkopírována do účtu služby Azure Storage, 5 soubory nebo složky se úspěšně nahrál. Zbývající 3 soubory nebo složky byla přejmenování podle konvence pojmenování kontejnerů Azure a úspěšně se nahrál do Azure.
+
+Úroveň stavu souboru jsou v `BlobStatus` , který popisuje všechny akce prováděné na nahrání objektů BLOB. V takovém případě tři kontejnery jsou přejmenovat, protože složky, do které se kopírují data neodpovídala s Azure zásady vytváření názvů pro kontejnery. Pro objekty BLOB nahrané v těchto kontejnerech jsou zahrnuty nový název kontejneru, cesta objektu blob v Azure, původní neplatná cesta k souboru a velikost objektu blob.
     
 ```xml
  <?xml version="1.0" encoding="utf-8"?>
@@ -57,32 +151,17 @@ Při nahrání dat do Azure v datacentru, `_error.xml` a `_verbose.xml` soubory 
     </DriveLog>
 ```
 
-## <a name="download-logs"></a>Stáhnout protokoly
-
-Existují dva způsoby, jak vyhledat a stáhnout protokoly diagnostiky.
-
-- Pokud existují nějaké chyby při odesílání dat do Azure, na portálu zobrazuje cestu ke složce, ve kterém jsou umístěné protokoly diagnostiky.
-
-    ![Odkaz na protokoly na portálu](./media/data-box-disk-troubleshoot-upload/data-box-disk-portal-logs.png)
-
-- Přejděte na účet úložiště přidružený k vaší objednávky zařízení Data Box. Přejděte na **Blob service > Procházet objekty blob** a vyhledejte blob odpovídající účtu úložiště. Přejděte na **waies**.
-
-    ![Kopírování protokolů 2](./media/data-box-disk-troubleshoot/data-box-disk-copy-logs2.png)
-
-V obou případech se zobrazí podrobné protokoly a protokoly chyb. Vyberte všechny protokoly a stáhněte si místní kopii.
-
-
 ## <a name="data-upload-errors"></a>Chyby nahrávání dat
 
 V následující tabulce jsou shrnuté chyb generovaných při nahrávání dat do Azure.
 
-| Kód chyby | Popis                        |
+| Kód chyby | Popis                   |
 |-------------|------------------------------|
 |`None` |  Byla úspěšně dokončena.           |
-|`Renamed` | Úspěšně přejmenovalo objekt blob.  |                                                            |
+|`Renamed` | Úspěšně přejmenovalo objekt blob.   |
 |`CompletedWithErrors` | Nahrávání dokončeno s chybami. Podrobnosti o souborech v chybě jsou zahrnuty v souboru protokolu.  |
 |`Corrupted`|CRC vypočítanou při ingestování neodpovídá kontrolní součet vypočítat při nahrávání.  |  
-|`StorageRequestFailed` | Azure storage požadavek se nezdařil.   |     |
+|`StorageRequestFailed` | Azure storage požadavek se nezdařil.   |     
 |`LeasePresent` | Tato položka je pronajatý a používá jiný uživatel. |
 |`StorageRequestForbidden` |Nešlo nahrát kvůli problémům s ověřování. |
 |`ManagedDiskCreationTerminalFailure` | Nelze uložit jako spravované disky. Soubory jsou k dispozici v přípravného účtu úložiště jako objekty BLOB stránky. Objekty BLOB stránky můžete ručně převést na spravované disky.  |

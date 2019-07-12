@@ -4,7 +4,7 @@ description: Pomocí konzoly sériového portu pro grub ve službě Azure virtua
 services: virtual-machines-linux
 documentationcenter: ''
 author: asinn826
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/08/2019
 ms.author: alsin
-ms.openlocfilehash: 440d917c2ee4a51f2c8ba4b134b50508bdaf4bcb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8a3be6420a91093e060850459ff22fc5823b8cf2
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66735267"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67710586"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Použít pro přístup k GRUB a Jednouživatelský režim konzoly sériového portu
 GRUB je součet Unified spouštěcí zavaděč, který je pravděpodobně první, co se zobrazí, když virtuálního počítače. Vzhledem k tomu, že ji zobrazí předtím, než byl spuštěn operační systém, není přístupná přes protokol SSH. Z GRUB budete moci změnit konfiguraci spuštění pro spuštění do režimu jednoho uživatele, mimo jiné.
@@ -132,7 +132,7 @@ Ve výchozím nastavení nemusí imagemi Ubuntu automaticky zobrazit na obrazovc
 1. Změnit `GRUB_TIMEOUT` hodnotu s nenulovou hodnotou
 1. Otevřít `/etc/default/grub` v textovém editoru podle vašeho výběru
 1. Okomentujte `GRUB_HIDDEN_TIMEOUT=1` řádku
-1. Spusťte `sudo update-grub`.
+1. Spustit `sudo update-grub`
 
 ### <a name="single-user-mode-in-ubuntu"></a>Režimu jednoho uživatele v Ubuntu
 Ubuntu vyřadí je do režimu jednoho uživatele automaticky pokud ji nemůže normálně. Ruční zadání režimu jednoho uživatele, použijte následující pokyny:

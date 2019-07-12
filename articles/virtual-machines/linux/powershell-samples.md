@@ -4,7 +4,7 @@ description: Ukázky Powershellu pro virtuální počítač Azure
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-service-management
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/01/2019
 ms.author: cynthn
-ms.openlocfilehash: 53784c3d74f9e6af5f1e84cc098194113e81333b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2d954bc068693a34ef1d69e4296e972979d4f61b
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60771256"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671016"
 ---
 # <a name="azure-virtual-machine-powershell-samples"></a>Ukázky Azure Powershellu pro virtuální počítač
 
@@ -45,4 +45,5 @@ Následující tabulka obsahuje odkazy na ukázkové skripty Powershellu vytvá�
 |**Monitorování virtuálních počítačů**||
 | [Monitorování virtuálního počítače s protokoly Azure monitoru](./../scripts/virtual-machines-linux-powershell-sample-create-vm-oms.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Vytvoří virtuální počítač, nainstaluje agenta Log Analytics a registraci virtuálního počítače v pracovním prostoru Log Analytics.  |
 | [Zkopírujte spravovaného disku do stejného nebo jiného předplatného](../scripts/virtual-machines-linux-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Zkopíruje spravovaný disk stejné nebo jiné předplatné, který je ve stejné oblasti jako nadřazeného spravovaného disku.
+| [Shromažďování podrobností o všech virtuálních počítačích v rámci předplatného pomocí Powershellu](../scripts/virtual-machines-powershell-sample-collect-vm-details.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Vytvoří sdílený svazek clusteru, který obsahuje název název virtuálního počítače, skupiny prostředků, oblast, virtuální sítě, podsítě, privátní IP adresa, typ operačního systému a veřejnou IP adresu virtuálních počítačů v poskytnutém předplatném.
 | | |

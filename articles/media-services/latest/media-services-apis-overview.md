@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 05/02/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: ca4e343ea4774bbe4ff992ad671575b150b3c045
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a8dac6f38052f176c7a3741a664e174d0a66cbc5
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65890965"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612705"
 ---
 # <a name="developing-with-media-services-v3-apis"></a>Vývoj s využitím Media Services v3 rozhraní API
 
@@ -100,13 +100,12 @@ Služba Media Services má následující dlouho běžící operace:
 * Zastavit StreamingEndpoint
 * Škálování StreamingEndpoint
 
-
 ## <a name="sdks"></a>Sady SDK
 
 > [!NOTE]
 > Sady SDK služby Azure Media Services v3 nemusí být bezpečné pro vlákna. Při vývoji aplikace Vícevláknová, měli byste přidat vlastní logiku synchronizace vlákno při ochraně klienta nebo použít nový objekt AzureMediaServicesClient na vlákno. Také byste měli být opatrní z více vláken problémy spojené s uvedením volitelné objekty poskytované kódu do klienta (například HttpClient instance v rozhraní .NET).
 
-|Sada SDK|Referenční informace|
+|Sada SDK|Reference|
 |---|---|
 |[.NET SDK](https://aka.ms/ams-v3-dotnet-sdk)|[Referenční informace k .NET](https://aka.ms/ams-v3-dotnet-ref)|
 |[Java SDK](https://aka.ms/ams-v3-java-sdk)|[Referenční informace k Javě](https://aka.ms/ams-v3-java-ref)|
@@ -115,7 +114,7 @@ Služba Media Services má následující dlouho běžící operace:
 |[Go SDK](https://aka.ms/ams-v3-go-sdk) |[Referenční informace k jazyku Go](https://aka.ms/ams-v3-go-ref)|
 |[Ruby SDK](https://aka.ms/ams-v3-ruby-sdk)||
 
-### <a name="see-also"></a>Další informace najdete v tématech
+### <a name="see-also"></a>Viz také:
 
 - [EventGrid .NET SDK, která zahrnuje události mediálních služeb](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
 - [Definice událostí Media Services](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/eventgrid/data-plane/Microsoft.Media/stable/2018-01-01/MediaServices.json)
@@ -134,11 +133,11 @@ Zobrazit [filtrování, řazení, stránkování entit Azure Media Services](ent
 
 Podívejte se [komunita Azure Media Services](media-services-community.md) článek a zobrazit různé způsoby můžete klást otázky, poskytnout zpětnou vazbu a aktualizace o Media Services.
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
 [Azure CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Připojit k Media Services s Javou](configure-connect-java-howto.md)
 * [Připojit k Media Services s .NET](configure-connect-dotnet-howto.md)

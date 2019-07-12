@@ -3,15 +3,15 @@ title: Místní vývoj s využitím emulátor služby Azure Cosmos
 description: Emulátor služby Azure Cosmos můžete vyvíjet a testovat aplikace místně pro zdarma, bez vytváření předplatného Azure.
 ms.service: cosmos-db
 ms.topic: tutorial
-author: deborahc
-ms.author: dech
-ms.date: 06/21/2019
-ms.openlocfilehash: d7d9d62525161e6871cafd65cf5cd2c403cf0579
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+author: markjbrown
+ms.author: mjbrown
+ms.date: 07/09/2019
+ms.openlocfilehash: 9649c53f9fc11795449afd78b12fda691239bb18
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67331776"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797327"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Pro místní vývoj a testování používat emulátor služby Azure Cosmos
 
@@ -232,7 +232,7 @@ Z umístění instalace můžete příkazový řádek pro spuštění a zastaven
 
 ### <a name="command-line-syntax"></a>Syntaxe příkazového řádku
 
-    CosmosDB.Emulator.exe [/Shutdown] [/DataPath] [/Port] [/MongoPort] [/DirectPorts] [/Key] [/EnableRateLimiting] [/DisableRateLimiting] [/NoUI] [/NoExplorer] [/?]
+    CosmosDB.Emulator.exe [/Shutdown] [/DataPath] [/Port] [/MongoPort] [/DirectPorts] [/Key] [/EnableRateLimiting] [/DisableRateLimiting] [/NoUI] [/NoExplorer] [/EnableMongoDbEndpoint] [/?]
 
 Pokud chcete zobrazit seznam možností, na příkazovém řádku zadejte `CosmosDB.Emulator.exe /?`.
 
@@ -244,18 +244,19 @@ Pokud chcete zobrazit seznam možností, na příkazovém řádku zadejte `Cosmo
 | Shutdown| Vypne emulátor služby Azure Cosmos.| CosmosDB.Emulator.exe /Shutdown | |
 |DataPath | Určuje cestu, do které chcete uložit datové soubory. Výchozí hodnota je % LocalAppdata%\CosmosDBEmulator. | CosmosDB.Emulator.exe /DataPath=\<datapath\> | \<DataPath\>: Přístupná cesta |
 |Port | Určuje číslo portu pro emulátor. Výchozí hodnota je 8081. |CosmosDB.Emulator.exe /Port=\<port\> | \<Port\>: Jeden port číslo |
-| MongoPort | Určuje číslo portu, který chcete použít pro rozhraní API kompatibility MongoDB. Výchozí hodnota je 10255. |CosmosDB.Emulator.exe /MongoPort= \<mongoport\>|\<mongoport\>: Jeden port číslo|
-| CassandraPort | Udává číslo portu pro koncový bod Cassandra. Výchozí hodnota je 10350. | CosmosDB.Emulator.exe /CassandraPort = \<cassandraport\> | \<cassandraport\>: Jeden port číslo |
 | ComputePort | Zadané číslo portu pro službu Compute brány zprostředkovatele komunikace s objekty. Port testu Koncový bod brány HTTP se počítá jako ComputePort + 79. Proto ComputePort a ComputePort + 79 musí být otevřený a dostupný. Výchozí hodnoty jsou 8900, 8979. | CosmosDB.Emulator.exe /ComputePort = \<computeport\> | \<computeport\>: Jeden port číslo |
+| EnableMongoDbEndpoint | Umožňuje rozhraní MongoDB API | CosmosDB.Emulator.exe /EnableMongoDbEndpoint | |
+| MongoPort | Určuje číslo portu, který chcete použít pro rozhraní API kompatibility MongoDB. Výchozí hodnota je 10255. |CosmosDB.Emulator.exe /MongoPort= \<mongoport\>|\<mongoport\>: Jeden port číslo|
 | EnableCassandraEndpoint | Umožňuje rozhraní Cassandra API | CosmosDB.Emulator.exe /EnableCassandraEndpoint | |
+| CassandraPort | Udává číslo portu pro koncový bod Cassandra. Výchozí hodnota je 10350. | CosmosDB.Emulator.exe /CassandraPort = \<cassandraport\> | \<cassandraport\>: Jeden port číslo |
 | EnableGremlinEndpoint | Umožňuje Gremlin API | CosmosDB.Emulator.exe /EnableGremlinEndpoint | |
 | GremlinPort | Číslo portu pro koncový bod Gremlin. Výchozí hodnota je 8901. | CosmosDB.Emulator.exe /GremlinPort=\<port\> | \<Port\>: Jeden port číslo |
+|EnableTableEndpoint | Umožňuje rozhraní API tabulky Azure | CosmosDB.Emulator.exe /EnableTableEndpoint | |
 |TablePort | Číslo portu pro koncový bod tabulky Azure. Výchozí hodnota je 8902. | CosmosDB.Emulator.exe /TablePort=\<port\> | \<Port\>: Jeden port číslo|
 | KeyFile | Přečíst autorizační klíč ze zadaného souboru. Pomocí možnosti /GenKeyFile generovat keyfile | CosmosDB.Emulator.exe /KeyFile=\<file_name\> | \<název_souboru\>: Cesta k souboru |
 | ResetDataPath | Rekurzivně odstraní všechny soubory v zadané cestě. Pokud cestu nezadáte, použije se výchozí %LOCALAPPDATA%\CosmosDbEmulator | CosmosDB.Emulator.exe /ResetDataPath[=\<path>] | \<Cesta\>: Cesta k souboru  |
 | StartTraces  |  Bylo zahájeno shromažďování protokolů trasování ladění. | CosmosDB.Emulator.exe /StartTraces | |
 | StopTraces     | Zastavte shromažďování protokolů trasování ladění. | CosmosDB.Emulator.exe /StopTraces  | |
-|EnableTableEndpoint | Umožňuje rozhraní API tabulky Azure | CosmosDB.Emulator.exe /EnableTableEndpoint | |
 |FailOnSslCertificateNameMismatch | Ve výchozím nastavení emulátoru obnoví jeho certifikátu SSL podepsaného držitelem, pokud tento certifikát SAN neobsahuje hostitele emulátor název domény, místní IPv4 adresu, "localhost" a "127.0.0.1". Pomocí této možnosti emulátoru se místo toho nezdaří při spuštění. Pomocí možnosti /GenCert byste pak vytvořte a nainstalujte nový certifikát SSL podepsaný svým držitelem. | CosmosDB.Emulator.exe /FailOnSslCertificateNameMismatch  | |
 | GenCert | Vygenerujte a nainstalujte nový certifikát SSL podepsaný svým držitelem. Volitelně včetně čárkou oddělený seznam dalších názvy DNS pro přístup k emulátoru přes síť. | CosmosDB.Emulator.exe /GenCert [ \<čárkami oddělený seznam dalších názvů dns\>] | |
 | DirectPorts |Určuje porty, které chcete použít pro přímé připojení. Výchozí hodnoty jsou 10251,10252,10253,10254. | CosmosDB.Emulator.exe /DirectPorts:\<přímé porty\> | \<directports\>: Čárkami oddělený seznam portů 4 |
@@ -276,11 +277,11 @@ Pokud chcete zobrazit seznam možností, na příkazovém řádku zadejte `Cosmo
 
 Ve výchozím nastavení můžete vytvořit až 25 pevné velikosti kontejnerů (podporovány pouze při použití sady SDK služby Azure Cosmos DB) nebo 5 neomezené kontejnery pomocí emulátoru služby Azure Cosmos. Úpravou **PartitionCount** hodnotu, můžete vytvořit až 250 pevné velikosti kontejnerů nebo 50 neomezené kontejnery nebo libovolnou kombinaci obou, které není delší než 250 pevné velikosti kontejnerů (kde jedna neomezený kontejner = 5 pevné velikosti kontejnery). Ale ne doporučujeme nastavte emulátor pomocí více než 200 pevné velikosti kontejnerů. Z důvodu režie, která se přidá na v/v operace disku, který způsobit neočekávané vypršení časového limitu při použití koncového bodu rozhraní API.
 
-
 Pokud se pokusíte vytvořit kontejner po překročil aktuální počet oddílů, emulátor výjimku ServiceUnavailable, s následující zprávou.
 
 "Je nám líto, ale jsou aktuálně dochází k vysokému zatížení v této oblasti jsme v tuto chvíli se nedá splnit vaše žádost. Jsme neustále pracovat zpřístupnit víc a víc kapacity online a můžete to zkusit znovu.
-Prosím neváhejte k e-mailu askcosmosdb@microsoft.com kdykoli nebo z jakéhokoli důvodu. ID aktivity: 12345678-1234-1234-1234-123456789abc"
+Prosím neváhejte k e-mailu askcosmosdb@microsoft.com kdykoli nebo z jakéhokoli důvodu.
+ID aktivity: 12345678-1234-1234-1234-123456789abc"
 
 Chcete-li změnit počet kontejnerů, které jsou k dispozici v emulátoru služby Azure Cosmos, proveďte následující kroky:
 

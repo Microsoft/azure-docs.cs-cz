@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 09/24/2018
-ms.author: deborahc
-ms.openlocfilehash: b5f79fccf040c893d02ed82a397f361ae9bf3fd2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: dech
+ms.openlocfilehash: d6d3de435537e5e55783f69dfd1dde0fbf8cb26e
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60627571"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67806446"
 ---
 # <a name="azure-cosmos-db-nodejs-examples"></a>Příklady v Node.js pro Azure Cosmos DB
 > [!div class="op_single_selector"]
@@ -48,7 +48,7 @@ Potřebujete také sadu [JavaScript SDK](sql-api-sdk-node.md).
 ## <a name="database-examples"></a>Příklady pro databáze
 Soubor [app.js](https://github.com/Azure/azure-cosmos-js/blob/master/samples/DatabaseManagement/app.js) projektu [DatabaseManagement](https://github.com/Azure/azure-cosmos-js/tree/master/samples/DatabaseManagement) ukazuje, jak provádět následující úlohy. Další informace o databázi Azure Cosmos před spuštěním následující ukázky, naleznete v tématu [práci s databází, kontejnerů a položky](databases-containers-items.md) konceptuální článek. 
 
-| Úkol | API – referenční informace |
+| Úloha | API – referenční informace |
 | --- | --- |
 | [Vytvoření databáze, pokud ještě neexistuje](https://github.com/Azure/azure-cosmos-js/blob/216672a679ab389e5b341280eeacab1cab3691e4/samples/DatabaseManagement/app.js#L35-L37) |[Databases.createIfNotExists](https://docs.microsoft.com/javascript/api/%40azure/cosmos/databases?view=azure-node-latest) |
 | [Výpis databází pro účet](https://github.com/Azure/azure-cosmos-js/blob/216672a679ab389e5b341280eeacab1cab3691e4/samples/DatabaseManagement/app.js#L40-L42) |[Databases.readAll](https://docs.microsoft.com/javascript/api/%40azure/cosmos/databases?view=azure-node-latest) |
@@ -58,7 +58,7 @@ Soubor [app.js](https://github.com/Azure/azure-cosmos-js/blob/master/samples/Dat
 ## <a name="container-examples"></a>Příklady pro kontejnery
 Soubor [app.js](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ContainerManagement/app.js) projektu [ContainerManagement](https://github.com/Azure/azure-cosmos-js/tree/master/samples/ItemManagement) ukazuje, jak provádět následující úlohy. Další informace o kolekcích Azure Cosmos před spuštěním následující ukázky, viz [práci s databází, kontejnerů a položky](databases-containers-items.md) konceptuální článek. 
 
-| Úkol | API – referenční informace |
+| Úloha | API – referenční informace |
 | --- | --- |
 | [Vytvoření kontejneru, pokud ještě neexistuje](https://github.com/Azure/azure-cosmos-js/blob/216672a679ab389e5b341280eeacab1cab3691e4/samples/ContainerManagement/app.js#L36-L37) |[Containers.createIfNotExists](https://docs.microsoft.com/javascript/api/%40azure/cosmos/containers?view=azure-node-latest) |
 | [Výpis kontejnerů pro účet](https://github.com/Azure/azure-cosmos-js/blob/216672a679ab389e5b341280eeacab1cab3691e4/samples/ContainerManagement/app.js#L36-L37) |[Containers.readAll](https://docs.microsoft.com/javascript/api/%40azure/cosmos/containers?view=azure-node-latest) |
@@ -68,7 +68,7 @@ Soubor [app.js](https://github.com/Azure/azure-cosmos-js/blob/master/samples/Con
 ## <a name="item-examples"></a>Příklady pro položky
 Soubor [app.js](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ItemManagement/app.js) projektu [ItemManagement](https://github.com/Azure/azure-cosmos-js/tree/master/samples/ItemManagement) ukazuje, jak provádět následující úlohy. Další informace o dokumenty Azure Cosmos před spuštěním následující ukázky, viz [práci s databází, kontejnerů a položky](databases-containers-items.md) konceptuální článek. 
 
-| Úkol | API – referenční informace |
+| Úloha | API – referenční informace |
 | --- | --- |
 | [Vytvoření položek](https://github.com/Azure/azure-cosmos-js/blob/216672a679ab389e5b341280eeacab1cab3691e4/samples/ItemManagement/app.js#L49-L56) |[Items.create](https://docs.microsoft.com/javascript/api/%40azure/cosmos/items?view=azure-node-latest) |
 | [Čtení všech položek v kontejneru](https://github.com/Azure/azure-cosmos-js/blob/216672a679ab389e5b341280eeacab1cab3691e4/samples/ItemManagement/app.js#L59-L64) |[Items.readAll](https://docs.microsoft.com/javascript/api/%40azure/cosmos/items?view=azure-node-latest) |
@@ -79,10 +79,10 @@ Soubor [app.js](https://github.com/Azure/azure-cosmos-js/blob/master/samples/Ite
 | [Nahrazení položky pomocí podmíněné kontroly ETag](https://github.com/Azure/azure-cosmos-js/blob/216672a679ab389e5b341280eeacab1cab3691e4/samples/ItemManagement/app.js#L139-L160) |[Item.replace](https://docs.microsoft.com/javascript/api/%40azure/cosmos/item?view=azure-node-latest)<br/>[RequestOptions.accessCondition](https://docs.microsoft.com/javascript/api/%40azure/cosmos/requestoptions?view=azure-node-latest#accesscondition) |
 | [Odstranění položky](https://github.com/Azure/azure-cosmos-js/blob/216672a679ab389e5b341280eeacab1cab3691e4/samples/ItemManagement/app.js#L162-L164) |[Item.delete](https://docs.microsoft.com/javascript/api/%40azure/cosmos/item?view=azure-node-latest) |
 
-## <a name="indexing-examples"></a>Příklady pro indexování
+## <a name="indexing-examples"></a>Příklady indexování
 Soubor [app.js](https://github.com/Azure/azure-cosmos-js/blob/master/samples/IndexManagement/app.js) projektu [IndexManagement](https://github.com/Azure/azure-cosmos-js/tree/master/samples/IndexManagement) ukazuje, jak provádět následující úlohy.  Další informace o indexování ve službě Azure Cosmos DB před spuštěním následujících ukázkách najdete v tématu [zásadám indexování](index-policy.md), [indexování typů](index-types.md), a [indexování cesty](index-paths.md) koncepčních článků. 
 
-| Úkol | API – referenční informace |
+| Úloha | API – referenční informace |
 | --- | --- |
 | [Ruční indexování konkrétního dokumentu](https://github.com/Azure/azure-cosmos-js/blob/216672a679ab389e5b341280eeacab1cab3691e4/samples/IndexManagement/app.js#L135-L177) |[RequestOptions.indexingDirective: 'include'](https://docs.microsoft.com/javascript/api/%40azure/cosmos/requestoptions?view=azure-node-latest#indexingdirective) |
 | [Ruční vyloučení konkrétního dokumentu z indexu](https://github.com/Azure/azure-cosmos-js/blob/216672a679ab389e5b341280eeacab1cab3691e4/samples/IndexManagement/app.js#L90-L131) |[RequestOptions.indexingDirective: 'exclude'](https://docs.microsoft.com/javascript/api/%40azure/cosmos/requestoptions?view=azure-node-latest#indexingdirective) |
@@ -95,7 +95,7 @@ Soubor [app.js](https://github.com/Azure/azure-cosmos-js/blob/master/samples/Ind
 ## <a name="server-side-programming-examples"></a>Příklady programování na straně serveru
 Soubor [app.js](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ServerSideScripts/app.js) projektu [ServerSideScripts](https://github.com/Azure/azure-cosmos-js/tree/master/samples/ServerSideScripts) ukazuje, jak provádět následující úlohy. Další informace o programování na straně serveru ve službě Azure Cosmos DB před spuštěním následujících ukázkách najdete v tématu [uložené procedury, triggery a uživatelem definovaných funkcí](stored-procedures-triggers-udfs.md) konceptuální článek. 
 
-| Úkol | API – referenční informace |
+| Úloha | API – referenční informace |
 | --- | --- |
 | [Vytvoření uložené procedury](https://github.com/Azure/azure-cosmos-js/blob/216672a679ab389e5b341280eeacab1cab3691e4/samples/ServerSideScripts/JS/upsert.js#L12-L72) |[StoredProcedures.create](https://docs.microsoft.com/javascript/api/%40azure/cosmos/storedprocedures?view=azure-node-latest) |
 | [Spuštění uložené procedury](https://github.com/Azure/azure-cosmos-js/blob/216672a679ab389e5b341280eeacab1cab3691e4/samples/ServerSideScripts/app.js#L44) |[StoredProcedure.execute](https://docs.microsoft.com/javascript/api/%40azure/cosmos/storedprocedure?view=azure-node-latest) |

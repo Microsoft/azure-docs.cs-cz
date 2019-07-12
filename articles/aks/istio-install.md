@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/19/2019
 ms.author: pabouwer
-ms.openlocfilehash: c7c234e181e10499e532436bfde05ed89bdc7d28
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: 9d973cb2ac210e912d93941a2f81889557379f43
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67465695"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67625982"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>Nainstalovat a používat Istio ve službě Azure Kubernetes Service (AKS)
 
@@ -36,7 +36,7 @@ V tomto článku získáte informace o těchto tématech:
 > * Přístup k doplňky
 > * Odinstalujte Istio z AKS
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Kroky popsané v tomto článku předpokládají, že jste vytvořili AKS cluster (Kubernetes `1.11` a vyšších povolena pomocí RBAC) a navázali `kubectl` připojení ke clusteru. Pokud potřebujete pomoc s libovolnou z těchto položek, přejděte na téma [AKS quickstart][aks-quickstart].
 
@@ -152,14 +152,19 @@ Nyní přejít k další části a [instalace slovníky Istio CRD v AKS](#instal
 
 ### <a name="windows"></a>Windows
 
-K instalaci Istio `istioctl` klienta v binární **Powershellu**– na základě prostředí ve Windows, použijte následující příkazy. Zkopírujte tyto příkazy `istioctl` binární do složky Istio klienta a nastavte ji trvale k dispozici prostřednictvím vaší `PATH`. Není nutné zvýšená oprávnění (správce) pro spuštění těchto příkazů.
+K instalaci Istio `istioctl` klienta v binární **Powershellu**– na základě prostředí ve Windows, použijte následující příkazy. Zkopírujte tyto příkazy `istioctl` binární do složky Istio klienta a potom ji zpřístupněte okamžitě (v aktuálním prostředí) a trvale (v rámci prostředí restartování) prostřednictvím vašeho `PATH`. Není nutné zvýšená oprávnění (správce) pro spuštění těchto příkazů a není nutné restartovat vaše prostředí.
 
 ```powershell
+# Copy istioctl.exe to C:\Istio
 cd istio-$ISTIO_VERSION
 New-Item -ItemType Directory -Force -Path "C:\Istio"
 Copy-Item -Path .\bin\istioctl.exe -Destination "C:\Istio\"
-$PATH = [environment]::GetEnvironmentVariable("PATH", "User")
-[environment]::SetEnvironmentVariable("PATH", $PATH + "; C:\Istio\", "User")
+
+# Add C:\Istio to PATH. 
+# Make the new PATH permanently available for the current User, and also immediately available in the current shell.
+$PATH = [environment]::GetEnvironmentVariable("PATH", "User") + "; C:\Istio\"
+[environment]::SetEnvironmentVariable("PATH", $PATH, "User") 
+[environment]::SetEnvironmentVariable("PATH", $PATH)
 ```
 
 Nyní přejít k další části a [instalace slovníky Istio CRD v AKS](#install-the-istio-crds-on-aks).
@@ -524,7 +529,7 @@ PowerShell
 kubectl get crds -o name | Select-String -Pattern 'istio.io' |% { kubectl delete $_ }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Následující dokumentace popisuje, jak vám pomůže Istio poskytují inteligentního směrování zavedení testovací verze:
 

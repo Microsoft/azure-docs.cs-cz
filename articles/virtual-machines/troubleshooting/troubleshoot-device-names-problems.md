@@ -4,7 +4,7 @@ description: Vysvětluje, proč zařízení virtuálního počítače s Linuxem 
 services: virtual-machines-linux
 documentationcenter: ''
 author: genlin
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: ''
 ms.service: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: d636d5f31e78828a518882091af29b25f7219304
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0350b6bdc990ed6c2de60e3e98c3768b18d0d636
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60362233"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67710422"
 ---
 # <a name="troubleshoot-linux-vm-device-name-changes"></a>Řešení potíží s změny názvu zařízení virtuálního počítače s Linuxem
 
@@ -148,7 +148,7 @@ Pokud chcete získat nejnovější pravidla služby Azure Storage, spusťte nás
     # sudo curl -o /etc/udev/rules.d/66-azure-storage.rules https://raw.githubusercontent.com/Azure/WALinuxAgent/master/config/66-azure-storage.rules
     # sudo udevadm trigger --subsystem-match=block
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
 Další informace najdete v následujících článcích:
 

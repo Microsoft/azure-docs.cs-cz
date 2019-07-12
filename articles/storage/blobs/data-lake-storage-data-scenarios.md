@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: normesta
-ms.openlocfilehash: c5b6287757f6b71cfd60687f463673f142db04d9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fd3875c5c78a02efab1251166ec7113902be3e08
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64939295"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67723235"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>Pro potřeby velkého objemu dat pomocí Azure Data Lake Storage Gen2
 
@@ -39,8 +39,8 @@ A *systém souborů* je kontejner pro soubory a složky. Budete potřebovat ales
 
 |Nástroj | Doprovodné materiály |
 |---|--|
-|Azure Storage Explorer | [Vytvořit systém souborů pomocí Průzkumníka služby Storage](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-explorer#create-a-filesystem) |
-|AzCopy | [Vytvoření kontejneru objektů Blob nebo sdílené složky pomocí AzCopyV10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-a-blob-container-or-file-share)|
+|Azure Storage Explorer | [Vytvořit systém souborů pomocí Průzkumníka služby Storage](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-explorer#create-a-file-system) |
+|AzCopy | [Vytvoření kontejneru objektů Blob nebo sdílené složky pomocí AzCopyV10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10#transfer-files)|
 |Soubor Hadoop System (HDFS) rozhraní příkazového řádku (CLI) s HDInsight |[Vytvořit systém souborů pomocí HDFS s HDInsight](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-hdfs-data-lake-storage?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-a-file-system) |
 |Kód v Azure poznámkového bloku Databricks|[Vytvořit systém souborů (Scala) účet úložiště](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-databricks-account?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-storage-account-file-system) <br><br> [Vytvořit systém souborů a připojit ji (Python)](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-databricks-spark?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-a-file-system-and-mount-it)|
 
@@ -54,11 +54,11 @@ Není k dispozici tři způsoby, jak udělit přístup:
 
 * Přiřadíte jednu z těchto rolí uživatele, skupiny, identita spravované uživatele nebo instanční objekt:
 
-  [Čtenář dat objektu Blob služby Storage](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader-preview)
+  [Čtenář dat objektu Blob služby Storage](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader)
 
-  [Storage Blob Data Contributor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor-preview)
+  [Storage Blob Data Contributor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor)
 
-  [Vlastník dat úložiště objektů Blob](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner-preview)
+  [Vlastník dat úložiště objektů Blob](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)
 
 * Pomocí tokenu sdíleného přístupového podpisu (SAS).
 
@@ -196,4 +196,4 @@ Tady je seznam nástrojů, které vám umožní stáhnout data z Data Lake Stora
 |Nástroj | Doprovodné materiály |
 |---|--|
 |Azure Data Factory | [Aktivita kopírování ve službě Azure Data Factory](https://docs.microsoft.com/azure/data-factory/copy-activity-overview) |
-|Apache DistCop | [Použití DistCp ke kopírování dat mezi objekty BLOB Azure Storage a Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-distcp) |
+|Apache DistCp | [Použití DistCp ke kopírování dat mezi objekty BLOB Azure Storage a Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-distcp) |

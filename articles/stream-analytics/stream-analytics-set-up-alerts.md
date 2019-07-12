@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: 26e8e004f917b1c138bc27389cac1cc52672f3d4
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 0fd489d856a16953a5a450a347c9737fe440ad28
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67329857"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621756"
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>Nastavení upozornění pro úlohy Azure Stream Analytics
 
@@ -60,10 +60,10 @@ Tyto výstrahy se doporučují pro monitorování výkonu vaší úlohy Stream A
 
 |Metrika|Podmínka|Časová agregace|Prahová hodnota|Nápravná opatření|
 |-|-|-|-|-|
-|% Využití SU|Větší než|Maximum|80|Existují několika faktory, které zvyšují % využití SU. Můžete škálovat s využitím paralelizace dotazů nebo zvýšit počet jednotek streamování. Další informace najdete v tématu [Využití paralelizace dotazů v Azure Stream Analytics](stream-analytics-parallelization.md).|
-|Chyby za běhu|Větší než|Celkem|0|Zkontrolujte aktivity nebo diagnostické protokoly a provedli odpovídající změny vstupů, dotaz nebo výstupy.|
-|Zpoždění vodoznak|Větší než|Maximum|Průměrná hodnota této metriky za posledních 15 minut po větší tolerance pozdního přijetí (v sekundách). Pokud jste ještě tolerance pozdního přijetí, výchozí hodnota je nastavena na 5 sekund.|Zkuste zvýšit počet su nebo paralelní provádění dotazu. Další informace o su, naleznete v tématu [principy a úpravy jednotek streamování](stream-analytics-streaming-unit-consumption.md#how-many-sus-are-required-for-a-job). Další informace o paralelní provádění vašeho dotazu, naleznete v tématu [využití paralelizace dotazů ve službě Azure Stream Analytics](stream-analytics-parallelization.md).|
-|Chyby deserializace vstupu|Větší než|Celkem|0|Zkontrolujte aktivity nebo diagnostické protokoly a provedli odpovídající změny na vstup. Další informace o diagnostických protokolech najdete v tématu [Poradce při potížích s Azure Stream Analytics a využívat protokoly diagnostiky](stream-analytics-job-diagnostic-logs.md)|
+|% Využití SU|Je větší než|Maximum|80|Existují několika faktory, které zvyšují % využití SU. Můžete škálovat s využitím paralelizace dotazů nebo zvýšit počet jednotek streamování. Další informace najdete v tématu [Využití paralelizace dotazů v Azure Stream Analytics](stream-analytics-parallelization.md).|
+|Chyby za běhu|Je větší než|Celkem|0|Zkontrolujte aktivity nebo diagnostické protokoly a provedli odpovídající změny vstupů, dotaz nebo výstupy.|
+|Zpoždění vodoznak|Je větší než|Maximum|Průměrná hodnota této metriky za posledních 15 minut po větší tolerance pozdního přijetí (v sekundách). Pokud jste ještě tolerance pozdního přijetí, výchozí hodnota je nastavena na 5 sekund.|Zkuste zvýšit počet su nebo paralelní provádění dotazu. Další informace o su, naleznete v tématu [principy a úpravy jednotek streamování](stream-analytics-streaming-unit-consumption.md#how-many-sus-are-required-for-a-job). Další informace o paralelní provádění vašeho dotazu, naleznete v tématu [využití paralelizace dotazů ve službě Azure Stream Analytics](stream-analytics-parallelization.md).|
+|Chyby deserializace vstupu|Je větší než|Celkem|0|Zkontrolujte aktivity nebo diagnostické protokoly a provedli odpovídající změny na vstup. Další informace o diagnostických protokolech najdete v tématu [Poradce při potížích s Azure Stream Analytics a využívat protokoly diagnostiky](stream-analytics-job-diagnostic-logs.md)|
 
 ## <a name="get-help"></a>Podpora
 
@@ -75,6 +75,6 @@ Potřebujete další pomoc, vyzkoušejte naše [fóru Azure Stream Analytics](ht
 * [Úvod do služby Azure Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-get-started.md)
 * [Škálování služby Stream Analytics](stream-analytics-scale-jobs.md)
-* [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Referenční příručka k rozhraní REST API pro správu služby Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 

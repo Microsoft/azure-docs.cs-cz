@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4dadc68e78fbaa979751d5bcd04ef481c3ab886
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 1bc3c1325e8379082134e2cbec1586f7d338ee61
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67544345"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797938"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Přímé federace se službou AD FS a poskytovatelů třetích stran pro uživatele typu Host (preview)
 |     |
@@ -62,7 +62,7 @@ Například při nastavování přímé federaci pro **fabrikam.com**, adresy UR
 ### <a name="signing-certificate-renewal"></a>Prodloužit platnost podpisového certifikátu
 Pokud zadáte adresu URL metadat v nastavení zprostředkovatele identity, Azure AD po jeho vypršení automaticky obnovit podpisový certifikát. Ale pokud tento certifikát je otočený z jakéhokoli důvodu před časem vypršení platnosti nebo pokud nezadáte adresa URL metadat, Azure AD nebude možné ho obnovíte. V takovém případě budete muset ručně aktualizovat podpisový certifikát.
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
-### <a name="can-i-set-up-direct-federation-with-an-unmanaged-email-verified-tenant"></a>Můžete nastavit přímé federace se službou nespravovaného tenanta (ověřený e-mailem)? 
+### <a name="can-i-set-up-direct-federation-with-a-domain-for-which-an-unmanaged-email-verified-tenant-exists"></a>Můžete nastavit přímé federace s doménou, pro kterou existuje nespravovaného tenanta (ověřený e-mailem)? 
 Ano. Pokud doména není ověřená a neprošlo tenanta [převzetí správce](../users-groups-roles/domains-admin-takeover.md), můžete nastavit federace s přímým přístupem. Nespravované nebo ověřit e-mailové klienty vytvářejí, když uživatel uplatňuje B2B pozvání nebo provede samoobslužnou registraci pro službu Azure AD používáte doménu, která aktuálně neexistuje. Můžete nastavit přímé federace se službou těchto domén. Pokud se pokusíte nastavit přímé federace se službou ověření DNS domény, na webu Azure Portal nebo pomocí Powershellu, zobrazí se vám chyba.
 ### <a name="if-direct-federation-and-email-one-time-passcode-authentication-are-both-enabled-which-method-takes-precedence"></a>Pokud federace s přímým přístupem a ověřování jednorázovým heslem e-mailu jsou povoleny, která metoda má přednost?
 Po vytvoření federace s přímým přístupem se partnerské organizace, má přednost před ověřování jednorázovým heslem e-mailu pro nové uživatele typu Host z této organizace. Pokud uživatel typu Host uplatnit pozvání před nastavením federace s přímým přístupem pomocí ověřování jednorázovým heslem, budete dál používat ověřování jednorázovým heslem. 
@@ -87,7 +87,7 @@ Následující tabulky popisují požadavky na konkrétní atributy a deklarace 
 
 Vyžadované atributy pro odpověď SAML 2.0 ze zprostředkovatele identity:
 
-|Atribut  |Hodnota  |
+|Atribut  |Value  |
 |---------|---------|
 |AssertionConsumerService     |`https://login.microsoftonline.com/login.srf`         |
 |Cílová skupina     |`urn:federation:MicrosoftOnline`         |
@@ -96,7 +96,7 @@ Vyžadované atributy pro odpověď SAML 2.0 ze zprostředkovatele identity:
 
 Požadované deklarace identit pro token SAML 2.0, Vystavitel zprostředkovatele identity:
 
-|Atribut  |Hodnota  |
+|Atribut  |Value  |
 |---------|---------|
 |Formát ID názvu položky     |`urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`         |
 |emailaddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |
@@ -113,7 +113,7 @@ Následující tabulky popisují požadavky na konkrétní atributy a deklarace 
 
 Vyžadované atributy ve zprávě WS-Fed ze zprostředkovatele identity:
  
-|Atribut  |Hodnota  |
+|Atribut  |Value  |
 |---------|---------|
 |PassiveRequestorEndpoint     |`https://login.microsoftonline.com/login.srf`         |
 |Cílová skupina     |`urn:federation:MicrosoftOnline`         |
@@ -121,7 +121,7 @@ Vyžadované atributy ve zprávě WS-Fed ze zprostředkovatele identity:
 
 Požadované deklarace identit pro token WS-Fed Vystavitel zprostředkovatele identity:
 
-|Atribut  |Hodnota  |
+|Atribut  |Value  |
 |---------|---------|
 |ImmutableID     |`http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID`         |
 |emailaddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |

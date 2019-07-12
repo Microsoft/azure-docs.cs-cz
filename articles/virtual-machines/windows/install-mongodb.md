@@ -4,7 +4,7 @@ description: Zjistěte, jak instalace MongoDB na Virtuálním počítači Azure 
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: 53faf630-8da5-4955-8d0b-6e829bf30cba
 ms.service: virtual-machines-windows
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: afd8e6b47fb86985acde062af1fb38ec3af4e902
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1436eadace2ff57bde9d67201d6b38d4aee8f523
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60711399"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722660"
 ---
 # <a name="install-and-configure-mongodb-on-a-windows-vm-in-azure"></a>Instalace a konfigurace MongoDB na virtuálním počítači s Windows v Azure
 [MongoDB](https://www.mongodb.org) je Oblíbené open source a vysoce výkonnou databází NoSQL. Tento článek vás provede instalací a konfigurací MongoDB na virtuálním počítači Windows serveru 2016 (VM) v Azure. Můžete také [instalace MongoDB na virtuální počítač s Linuxem v Azure](../linux/install-mongodb.md).

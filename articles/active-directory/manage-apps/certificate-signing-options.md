@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1baf4af41fd5dcb6723b6ee2827ae91b43b072d9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a084ceb841ea35bc62d9851f2b6c4821f4acb6fd
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65780967"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807722"
 ---
 # <a name="advanced-certificate-signing-options-in-the-saml-token-for-gallery-apps-in-azure-active-directory"></a>Rozšířené možnosti v tokenu SAML pro aplikace z Galerie v Azure Active Directory podepsání certifikátu
 
@@ -57,27 +57,21 @@ Chcete-li změnit možnosti podpisu certifikát SAML aplikace a podpisový algor
 1. V levém podokně vyberte **Podnikové aplikace**. Zobrazí se seznam podnikových aplikací ve vašem účtu.
 1. Vyberte aplikaci. Zobrazí se stránka s přehledem pro aplikaci.
 
-   ![Stránka Přehled aplikace](./media/certificate-signing-options/application-overview-page.png)
+   ![Příklad: Stránka Přehled aplikace](./media/certificate-signing-options/application-overview-page.png)
 
 V dalším kroku změňte možnosti v tokenu SAML pro příslušnou aplikaci podepsání certifikátu:
 
 1. V levém podokně na stránce Přehled aplikace vyberte **jednotného přihlašování**.
+1. Pokud **nastavte si jednotné přihlašování pomocí SAML - Preview** se zobrazí stránka, přejděte ke kroku 5.
+1. Pokud **vybrat jedinou metodu přihlašování** stránka nezobrazuje, vyberte **změnit režim přihlašování** k zobrazení této stránky.
+1. V **vybrat jedinou metodu přihlašování** stránce **SAML** Pokud je k dispozici. (Pokud **SAML** není k dispozici, aplikace nepodporuje SAML a zbývající část tohoto postupu a článek může ignorovat.)
+1. V **nastavte si jednotné přihlašování pomocí SAML - Preview** stránky, vyhledejte **podpisový certifikát SAML** nadpis a vyberte **upravit** ikonu (tužky). **Podpisový certifikát SAML** se zobrazí stránka.
 
-2. Pokud **nastavte si jednotné přihlašování pomocí SAML - Preview** se zobrazí stránka, přejděte ke kroku 5.
+   ![Příklad: Stránka podpisového certifikátu SAML](./media/certificate-signing-options/saml-signing-page.png)
 
-3. Pokud **vybrat jedinou metodu přihlašování** stránka nezobrazuje, vyberte **změnit režim přihlašování** k zobrazení této stránky.
-
-4. V **vybrat jedinou metodu přihlašování** stránce **SAML** Pokud je k dispozici. (Pokud **SAML** není k dispozici, aplikace nepodporuje SAML a zbývající část tohoto postupu a článek může ignorovat.)
-
-5. V **nastavte si jednotné přihlašování pomocí SAML - Preview** stránky, vyhledejte **podpisový certifikát SAML** nadpis a vyberte **upravit** ikonu (tužky). **Podpisový certifikát SAML** se zobrazí stránka.
-
-   ![Stránka podepisování SAML](./media/certificate-signing-options/saml-signing-page.png)
-
-6. V **podepisování možnost** rozevíracím seznamu klikněte na položku **odpověď přihlašování SAML**, **kontrolní výraz SAML přihlašování**, nebo **přihlašování SAML odpověď a kontrolní výraz**. Popis těchto možností se zobrazí výše v tomto článku v [certifikát možnosti podpisu](#certificate-signing-options).
-
-7. V **podpisový algoritmus** rozevíracím seznamu klikněte na položku **SHA-1** nebo **SHA-256**. Popis těchto možností se zobrazí výše v tomto článku v [certifikát Podepisování algoritmy](#certificate-signing-algorithms) oddílu.
-
-8. Pokud jste spokojeni s vaší volby, vyberte **Uložit** použití nového podpisového nastavení certifikátu SAML. Další možností je vybrat **X** chcete zahodit změny.
+1. V **podepisování možnost** rozevíracím seznamu klikněte na položku **odpověď přihlašování SAML**, **kontrolní výraz SAML přihlašování**, nebo **přihlašování SAML odpověď a kontrolní výraz**. Popis těchto možností se zobrazí výše v tomto článku v [certifikát možnosti podpisu](#certificate-signing-options).
+1. V **podpisový algoritmus** rozevíracím seznamu klikněte na položku **SHA-1** nebo **SHA-256**. Popis těchto možností se zobrazí výše v tomto článku v [certifikát Podepisování algoritmy](#certificate-signing-algorithms) oddílu.
+1. Pokud jste spokojeni s vaší volby, vyberte **Uložit** použití nového podpisového nastavení certifikátu SAML. Další možností je vybrat **X** chcete zahodit změny.
 
 ## <a name="next-steps"></a>Další postup
 

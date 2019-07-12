@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: f6b2f4ef9a4f3f1615081a422a16ea9f2e156571
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7db66f6f4efa5e48f2af9380115de8bcfb75cb86
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60861084"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786670"
 ---
 # <a name="migrate-analytics-from-excel-to-azure-machine-learning-studio"></a>Migrace analytics z Excelu do Azure Machine Learning Studio
 
@@ -44,9 +44,9 @@ Můžeme vypočítat *% střední absolutní chyba* a použít ho jako míra vý
 Jsme postupovali podle těchto kroků k vytvoření naší experimentu v nástroji Studio: 
 
 1. Nahrání datové sady jako soubor csv a Studio (velmi malý soubor)
-2. Vytvoří nový experiment a použít [výběr sloupců v datové sadě] [ select-columns] modul se vybere stejné funkce data použít v aplikaci Excel 
-3. Použít [rozdělení dat] [ split] modulu (s *relativní výraz* režimu) rozdělení dat do stejné cvičných datových sad, jako kdyby byla provedena v aplikaci Excel 
-4. Experimentovali s [lineární regrese] [ linear-regression] modulu (výchozí možnosti pouze), zdokumentované a porovnat výsledky pro náš regresní model aplikace Excel
+2. Vytvoří nový experiment a použít [výběr sloupců v datové sadě][select-columns] modul se vybere stejné funkce data použít v aplikaci Excel 
+3. Použít [rozdělení dat][split] modulu (s *relativní výraz* režimu) rozdělení dat do stejné cvičných datových sad, jako kdyby byla provedena v aplikaci Excel 
+4. Experimentovali s [lineární regrese][linear-regression] modulu (výchozí možnosti pouze), zdokumentované a porovnat výsledky pro náš regresní model aplikace Excel
 
 ### <a name="review-initial-results"></a>Počáteční výsledků kontroly
 Zpočátku modelu Excelu jasně překonal modelu Studio: 
@@ -54,14 +54,14 @@ Zpočátku modelu Excelu jasně překonal modelu Studio:
 |  | Excel | Studio |
 | --- |:---:|:---:|
 | Výkon | | |
-| <ul style="list-style-type: none;"><li>Upravit čtverec R</li></ul> |0.96 |neuvedeno |
-| <ul style="list-style-type: none;"><li>Koeficient <br />Stanovení</li></ul> |neuvedeno |0.78<br />(nízké přesnost) |
+| <ul style="list-style-type: none;"><li>Upravit čtverec R</li></ul> |0.96 |Není k dispozici |
+| <ul style="list-style-type: none;"><li>Koeficient <br />Stanovení</li></ul> |Není k dispozici |0.78<br />(nízké přesnost) |
 | Střední absolutní chyba |$9.5 MIN |$ 19.4 M |
 | Střední absolutní chyba (%) |6.03% |12.2% |
 
 Když jsme spustili náš proces a výsledky používají vývojáři a odborníci přes data v týmu Machine Learning, poskytnou rychle několik užitečných tipů. 
 
-* Při použití [lineární regrese] [ linear-regression] modulu v sadě Studio jsou k dispozici dvě metody:
+* Při použití [lineární regrese][linear-regression] modulu v sadě Studio jsou k dispozici dvě metody:
   * Online sestupu: Může být vhodnější pro problémy pracovat ve větším měřítku
   * Běžné čtverců: Toto je metoda, kterou většina lidí si můžete představit při jejich slyšet lineární regrese. Pro malé datové sady může být běžný čtverců více optimální volbou.
 * Vezměte v úvahu úprava parametr L2 Regularizace váha ke zlepšení výkonu. Je ve výchozím nastavení má 0,001, ale pro naše malá datová sada jsme ho nastavte na 0,005 ke zlepšení výkonu. 
@@ -73,13 +73,13 @@ Když jsme použili doporučení, jsme dosáhli stejné základní úroveň výk
 | --- |:---:|:---:|:---:|
 | Hodnota s popiskem |Skutečné hodnoty (číselné) |Stejné |Stejné |
 | Student |Excel -> Data analýzy -> regrese |Lineární regrese. |Lineární regrese |
-| Možnosti learner |neuvedeno |Výchozí hodnoty |běžné čtverců<br />L2 = 0,005 |
+| Možnosti learner |Není k dispozici |Výchozí hodnoty |běžné čtverců<br />L2 = 0,005 |
 | Datové sady |26 řádků, funkce 3, 1 popisek. Všechny číselné. |Stejné |Stejné |
 | Rozdělení: Trénování |Excel trénuje nejprve 18 řádky, testovat na posledních 8 řádků. |Stejné |Stejné |
 | Rozdělení: Test |Excelovému vzorci regrese použitý pro řádky posledních 8 |Stejné |Stejné |
 | **Výkon** | | | |
-| Upravit čtverec R |0.96 |neuvedeno | |
-| Koeficient spolehlivosti |neuvedeno |0.78 |0.952049 |
+| Upravit čtverec R |0.96 |Není k dispozici | |
+| Koeficient spolehlivosti |Není k dispozici |0.78 |0.952049 |
 | Střední absolutní chyba |$9.5 MIN |$ 19.4 M |$9.5 MIN |
 | Střední absolutní chyba (%) |<span style="background-color: 00FF00;"> 6.03%</span> |12.2% |<span style="background-color: 00FF00;"> 6.03%</span> |
 
@@ -109,9 +109,9 @@ S otevřete sešit zkopírujte předdefinované parametry do modré části, jak
 ![Šablona Excelový sešit propojíte s nasazenou webovou službu](./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-2.png)
 
 ### <a name="optimization-and-further-experiments"></a>Optimalizace a další pokusy
-Teď, když jsme měli směrný plán s náš model aplikace Excel, jsme přesunuli dopředu optimalizovat náš Model strojového učení lineární regrese. Jsme použili modulu [výběr součástí na základě filtru] [ filter-based-feature-selection] ke zlepšení našich výběru počáteční data prvky a to nám povedlo dosáhnout zlepšení výkonu 4.6 % znamená absolutní chyba. Pro všechny budoucí projekty budeme používat tuto funkci, která se dá ušetřit nám týdny v iterace v rámci datové atributy k nalezení správné sady funkcí pro modelování. 
+Teď, když jsme měli směrný plán s náš model aplikace Excel, jsme přesunuli dopředu optimalizovat náš Model strojového učení lineární regrese. Jsme použili modulu [výběr součástí na základě filtru][filter-based-feature-selection] ke zlepšení našich výběru počáteční data prvky a to nám povedlo dosáhnout zlepšení výkonu 4.6 % znamená absolutní chyba. Pro všechny budoucí projekty budeme používat tuto funkci, která se dá ušetřit nám týdny v iterace v rámci datové atributy k nalezení správné sady funkcí pro modelování. 
 
-Dále jsme chcete zahrnout další algoritmy, jako je [Bayesova] [ bayesian-linear-regression] nebo [vylepšené rozhodovací stromy] [ boosted-decision-tree-regression] v našich experimentu k porovnání výkon. 
+Dále jsme chcete zahrnout další algoritmy, jako je [Bayesova][bayesian-linear-regression] or [Boosted Decision Trees][boosted-decision-tree-regression] v našich experimentu k porovnání výkonu. 
 
 Pokud chcete experimentovat s regrese, je dobré datovou sadu, která akci ukázkovou datovou sadou energetickou efektivitu regrese, který má spoustu číselné atributy. Datová sada je dodáván jako součást ukázkových datových sad v nástroji Studio. Škály výukových moduly můžete použít k predikci vytápění zatížení nebo chlazení zatížení. Následující graf je že porovnání výkonu různých regrese učí proti předpověď energetickou účinnost datovou sadu pro Cílová proměnná chlazení zatížení: 
 
@@ -123,9 +123,9 @@ Pokud chcete experimentovat s regrese, je dobré datovou sadu, která akci ukáz
 | Lineární regrese (běžný čtverců) |1.428273 |1.984461 |0.163767 |0.042074 |0.957926 |
 
 ## <a name="key-takeaways"></a>Stěžejní zjištění
-Jsme se naučili mnohem ve spuštěné aplikace Excel regrese a experimentů Studio paralelně. Vytvoření základního modelu v Excelu a srovnáním s modely s využitím strojového učení [lineární regrese] [ linear-regression] pomohl nám další Studio a zjistili jsme příležitosti k vylepšení výběr dat a modelu výkon. 
+Jsme se naučili mnohem ve spuštěné aplikace Excel regrese a experimentů Studio paralelně. Vytvoření základního modelu v Excelu a srovnáním s modely s využitím strojového učení [lineární regrese][linear-regression] pomohl nám další Studio a zjistili jsme příležitosti pro zlepšení výkonu při výběru a modelu dat. 
 
-Zjistili jsme také, že je vhodné použít [výběr součástí na základě filtru] [ filter-based-feature-selection] ke zrychlení předpovědi budoucí projekty. S použitím výběr funkcí k vašim datům, můžete vytvořit vylepšené modelu v sadě Studio s lepší výkon. 
+Zjistili jsme také, že je vhodné použít [výběr součástí na základě filtru][filter-based-feature-selection] ke zrychlení předpovědi budoucí projekty. S použitím výběr funkcí k vašim datům, můžete vytvořit vylepšené modelu v sadě Studio s lepší výkon. 
 
 Možnost přenášet prediktivních analytických odhady ze sady Studio do aplikace Excel systemically umožňuje významné zvýšení schopnost úspěšně poskytovat výsledky pro cílovou skupinu široké obchodní uživatele. 
 
@@ -133,7 +133,7 @@ Možnost přenášet prediktivních analytických odhady ze sady Studio do aplik
 Tady jsou některé prostředky pro dokážete pracovat regrese: 
 
 * Regrese v aplikaci Excel. Pokud jste se pokusili nikdy Regrese v Excelu, v tomto kurzu umožňuje snadno: [https://www.excel-easy.com/examples/regression.html](https://www.excel-easy.com/examples/regression.html)
-* Prognózování regrese vs. Tyler Chessman napsal blogový článek s vysvětlením, jak časové řady Prognózování v aplikaci Excel, která obsahuje popis pro začátečníky dobré lineární regrese. [http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts](http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts) 
+* Prognózování regrese vs. Tyler Chessman napsal blogový článek s vysvětlením, jak časové řady Prognózování v aplikaci Excel, která obsahuje popis pro začátečníky dobré lineární regrese. [https://www.itprotoday.com/sql-server/understanding-time-series-forecasting-concepts](https://www.itprotoday.com/sql-server/understanding-time-series-forecasting-concepts) 
 * Běžné nejméně Squares lineární regrese: Chyby, problémy a nástrahy. Úvod a diskuzi o regrese: [https://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/ ](https://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/)
 
 <!-- Module References -->

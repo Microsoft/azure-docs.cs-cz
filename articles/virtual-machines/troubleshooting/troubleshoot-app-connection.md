@@ -4,7 +4,7 @@ description: Podrobný postup řešení použijte k izolování problémů s př
 services: virtual-machines
 documentationcenter: ''
 author: genlin
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
 keywords: nelze spustit aplikaci, program neotevře, naslouchání portu blokované, nelze spustit program, zablokuje port pro naslouchání
@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 81535d51617a419174331dbf9b18ea558913dfa9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9bc528cdd098a2e355c542c3ca8f9bcb0287f339
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60922144"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67710525"
 ---
 # <a name="troubleshoot-application-connectivity-issues-on-virtual-machines-in-azure"></a>Řešení problémů s připojením aplikace na virtuálních počítačích v Azure
 
@@ -37,7 +37,7 @@ Pokud potřebujete další nápovědu v libovolném bodě v tomto článku, mů�
 ## <a name="quick-start-troubleshooting-steps"></a>Rychlý start kroků pro řešení potíží
 Pokud máte potíže s připojením k aplikaci, zkuste následující postup řešení potíží. Po provedení každého kroku zkuste se připojit k vaší aplikaci znovu spustit:
 
-* Restartujte virtuální počítač
+* Restartování virtuálního počítače
 * Znovu vytvořte koncový bod / pravidla brány firewall / network pravidla skupiny zabezpečení (NSG)
   * [Model Resource Manager – Správa skupin zabezpečení sítě](../../virtual-network/manage-network-security-group.md)
   * [Model Classic - koncové body spravovat Cloud Services](../../cloud-services/cloud-services-enable-communication-role-instances.md)
@@ -141,7 +141,7 @@ Pokud přístup k aplikaci, ujistěte se, že povoluje hraniční zařízení na
 
 Další informace najdete v tématu [Přehled monitorování Azure network](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview). 
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 [Řešení potíží s připojeními vzdálené plochy na na základě Windows virtuálním počítači Azure](troubleshoot-rdp-connection.md)
 
 [Řešení potíží s připojením Secure Shell (SSH) k virtuálnímu počítači s Linuxem v Azure](troubleshoot-ssh-connection.md)

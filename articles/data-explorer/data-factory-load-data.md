@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 64856d53168a7676cf279da2d8675ce81e1985f7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2142fbf03daa6667b20db43f9212a2b5e6d7dd44
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60447722"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657535"
 ---
 # <a name="copy-data-to-azure-data-explorer-using-azure-data-factory"></a>Kopírování dat do Průzkumníku dat Azure pomocí Azure Data Factory 
 
@@ -50,7 +50,7 @@ V tomto článku se dozvíte, jak načíst data z Amazonu S3 do Průzkumníku da
     | **Předplatné** | Vyberte své předplatné Azure, ve kterém chcete datovou továrnu vytvořit. |
     | **Skupina prostředků** | Vyberte **vytvořit nový** a zadejte název nové skupiny prostředků. Vyberte **použít existující**, pokud máte existující skupinu prostředků. |
     | **Verze** | Vyberte **V2** |
-    | **Umístění** | Vyberte umístění datové továrny. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložišť dat, které jsou používané datovou továrnou můžou být v jiných umístěních nebo oblastech. |
+    | **Location** | Vyberte umístění datové továrny. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložišť dat, které jsou používané datovou továrnou můžou být v jiných umístěních nebo oblastech. |
     | | |
 
 1. Vyberte oznámení na panelu nástrojů můžete sledovat v procesu vytváření. Po vytvoření se, přejděte do služby data factory, který jste vytvořili. **Služby Data Factory** otevře domovskou stránku.
@@ -141,7 +141,7 @@ Průzkumník dat Nová propojená služba Azure se vytvoří pro kopírování d
     * Vyberte **Dokončit** nezbytných k dokončení vytvoření propojené služby.
 
     > [!NOTE]
-    > Instanční objekt se používá službou Azure Data Factory pro přístup ke službě Průzkumník dat Azure. Pro instanční objekt [vytvořit instanční objekt služby Azure Active Directory (Azure AD)](/azure/azure-stack/azure-stack-create-service-principals#manage-service-principal-for-azure-ad). Nepoužívejte **Azure Key Vault** metody.
+    > Instanční objekt se používá službou Azure Data Factory pro přístup ke službě Průzkumník dat Azure. Pro instanční objekt [vytvořit instanční objekt služby Azure Active Directory (Azure AD)](/azure-stack/operator/azure-stack-create-service-principals#manage-an-azure-ad-service-principal). Nepoužívejte **Azure Key Vault** metody.
 
 1. **Cílového úložiště dat** otevře. Není k dispozici pro použití Průzkumníka služby Azure Data datové připojení, které jste vytvořili. Vyberte **Další** ke konfiguraci připojení.
 
