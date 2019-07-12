@@ -2,25 +2,31 @@
 author: sptramer
 ms.service: azure
 ms.topic: include
-ms.date: 05/31/2019
+ms.date: 06/13/2019
 ms.author: sttramer
-ms.openlocfilehash: 977caddde316384815c8248dffe243d2a7817226
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 8b2a9561a0933e435649c81334706481531c9ce9
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341526"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836867"
 ---
-## <a name="open-azure-cloud-shell"></a>Otevření služby Azure Cloud Shell
+## <a name="use-azure-cloud-shell"></a>Použití služby Azure Cloud Shell
 
-Azure Cloud Shell je interaktivní prostředí prostředí hostovaných v Azure a použít prostřednictvím prohlížeče. Azure Cloud Shell můžete použít buď `bash` nebo `PowerShell` prostředí pro spouštění různých nástrojů pro práci se službami Azure. Azure Cloud Shell je dodávána s příkazy, aby bylo možné spustit obsah tohoto článku nemusíte nic instalovat na vaše místní prostředí.
+Azure je hostitelem Azure Cloud Shell, můžete přes prohlížeč prostředí interaktivní prostředí. Cloud Shell vám umožní používat buď `bash` nebo `PowerShell` pro práci se službami Azure. Předinstalované příkazy službě Cloud Shell můžete použít ke spuštění kódu v tomto článku nemusíte nic instalovat na vaše místní prostředí.
 
-Pokud chcete spustit libovolný kód obsažený v tomto článku v Azure Cloud Shell, otevřete relaci služby Cloud Shell, použijte **kopírování** tlačítko na bloku kódu pro kód zkopírujte a vložte ho do relace Cloud Shellu s __Ctrl + Shift + V__ na Windows a Linux, nebo __Cmd + Shift + V__ v systému macOS. Vložený text není spouštěny automaticky, takže stiskněte **Enter** pro spuštění kódu.
-
-Můžete spustit Azure Cloud Shell pomocí:
+Chcete spustit Azure Cloud Shell:
 
 | Možnost | Příklad nebo propojení |
 |-----------------------------------------------|---|
-| Zvolte **Vyzkoušet** v pravém horním rohu bloku kódu. To __nebude__ automaticky zkopírování textu do Cloud Shellu. | ![Příklad vyzkoušet pro Azure Cloud Shell.](./media/cloud-shell-try-it/cli-try-it.png) |
-| Otevřít [Azure Cloud Shell](https://shell.azure.com) v prohlížeči. | <a href="https://shell.azure.com" title="Spustit Azure Cloud Shell"><img name="launch-cloud-shell" src="https://docs.microsoft.com/azure/includes/media/cloud-shell-try-it/launchcloudshell.png" /></a> |
-| Zvolte **Cloud Shell** v nabídce v pravém horním rohu webu [Azure Portal](https://portal.azure.com). | ![Tlačítko Cloud Shell na webu Azure Portal](./media/cloud-shell-try-it/cloud-shell-menu.png) |
+| Zvolte **Vyzkoušet** v pravém horním rohu bloku kódu. Výběr **vyzkoušet** nebude automaticky zkopírujte kód do služby Cloud Shell. | ![Příklad vyzkoušet pro Azure Cloud Shell.](./media/cloud-shell-try-it/cli-try-it.png) |
+| Přejděte na [ https://shell.azure.com ](https://shell.azure.com) nebo vyberte **spustit Cloud Shell** tlačítko otevřete Cloud Shell v prohlížeči. | <a href="https://shell.azure.com" title="Spustit Azure Cloud Shell"><img name="launch-cloud-shell" src="https://docs.microsoft.com/azure/includes/media/cloud-shell-try-it/launchcloudshell.png" /></a> |
+| Vyberte **Cloud Shell** tlačítko na panelu nabídek v pravé horní části [webu Azure portal](https://portal.azure.com). | ![Tlačítko Cloud Shell na webu Azure Portal](./media/cloud-shell-try-it/cloud-shell-menu.png) |
+
+Chcete-li spustit kód v tomto článku ve službě Azure Cloud Shell:
+
+1. Spusťte Cloud Shell.
+1. Vyberte **kopírování** tlačítko na bloku kódu zkopírovat kód. 
+1. Vložte kód do relace Cloud Shellu s **Ctrl**+**Shift**+**V** ve Windows a Linuxu, nebo **Cmd** + **Shift**+**V** v systému macOS. 
+1. Stisknutím klávesy **Enter** spuštění kódu.
+

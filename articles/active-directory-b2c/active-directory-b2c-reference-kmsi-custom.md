@@ -10,33 +10,33 @@ ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0ae6f19ea9a04aa6b2547fa031dbb09d03b887c3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e99dacbe7ae0f42919616e04e60bf4f21b9bd985
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66509429"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67835372"
 ---
 # <a name="enable-keep-me-signed-in-kmsi-in-azure-active-directory-b2c"></a>Povolení možnosti zůstat přihlášeni v (políčko zůstat Přihlášeni) v Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Můžete povolit funkci zachovat mě podepsán v (políčko zůstat Přihlášeni) pro vaše webové a nativní aplikace v Azure Active Directory (Azure AD) B2C. Tato funkce uděluje přístup k vrácení uživatelé aplikaci bez zobrazení výzvy zadejte své uživatelské jméno a heslo. Tento přístup je odvolat při odhlášení uživatele. 
+Můžete povolit funkci zachovat mě podepsán v (políčko zůstat Přihlášeni) pro vaše webové a nativní aplikace v Azure Active Directory (Azure AD) B2C. Tato funkce uděluje přístup k vrácení uživatelé aplikaci bez zobrazení výzvy zadejte své uživatelské jméno a heslo. Tento přístup je odvolat při odhlášení uživatele.
 
-Uživatelé neměli byste povolit tuto možnost na veřejné počítače. 
+Uživatelé neměli byste povolit tuto možnost na veřejné počítače.
 
-![Povolení možnosti zůstat přihlášeni](./media/active-directory-b2c-reference-kmsi-custom/kmsi.PNG)
+![Příklad zápisu přihlašovací stránky zobrazující zachovat mě přihlášení zaškrtávací políčko](./media/active-directory-b2c-reference-kmsi-custom/kmsi.PNG)
 
 ## <a name="prerequisites"></a>Požadavky
 
 Tenanta služby Azure AD B2C, který je nakonfigurovaný pro místní účet povolit, zaregistrujte se a přihlaste se. Pokud nemáte tenanta, můžete vytvořit pomocí postupu v [kurzu: Vytvoření tenanta Azure Active Directory B2C](tutorial-create-tenant.md).
 
-## <a name="add-a-content-definition-element"></a>Přidat definici obsahu elementu 
+## <a name="add-a-content-definition-element"></a>Přidat definici obsahu elementu
 
-V části **BuildingBlocks** element příponu souboru, přidejte **ContentDefinitions** elementu. 
+V části **BuildingBlocks** element příponu souboru, přidejte **ContentDefinitions** elementu.
 
 1. V části **ContentDefinitions** elementu, přidejte **ContentDefinition** element s identifikátorem `api.signuporsigninwithkmsi`.
-2. V části **ContentDefinition** prvku, přidejte **LoadUri**, **RecoveryUri**, a **parametr** elementy. `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.1.0` Hodnotu **parametr** element je srozumitelné identifikátor počítače, který se zobrazí zaškrtávací políčko políčko zůstat Přihlášeni v přihlašovací stránky. Tato hodnota nesmí být změněna. 
+2. V části **ContentDefinition** prvku, přidejte **LoadUri**, **RecoveryUri**, a **parametr** elementy. `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.1.0` Hodnotu **parametr** element je srozumitelné identifikátor počítače, který se zobrazí zaškrtávací políčko políčko zůstat Přihlášeni v přihlašovací stránky. Tato hodnota nesmí být změněna.
 
     ```XML
     <BuildingBlocks>
@@ -50,15 +50,15 @@ V části **BuildingBlocks** element příponu souboru, přidejte **ContentDefin
           </Metadata>
         </ContentDefinition>
       </ContentDefinitions>
-    </BuildingBlocks>                       
+    </BuildingBlocks>
     ```
 
-## <a name="add-a-sign-in-claims-provider-for-a-local-account"></a>Přidat zprostředkovatele deklarací identity přihlášení pro místní účet  
+## <a name="add-a-sign-in-claims-provider-for-a-local-account"></a>Přidat zprostředkovatele deklarací identity přihlášení pro místní účet
 
 Můžete definovat přihlášení místním účtem jako zprostředkovatele deklarací identity pomocí **ClaimsProvider** prvku v souboru rozšíření zásady:
 
-1. Otevřít *TrustFrameworkExtensions.xml* souboru z pracovního adresáře. 
-2. Najít **ClaimsProviders** elementu. Pokud neexistuje, přidejte jej pod kořenovým elementem. [Starter pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/archive/master.zip) zahrnuje poskytovatele deklarací identity přihlášení místní účet. 
+1. Otevřít *TrustFrameworkExtensions.xml* souboru z pracovního adresáře.
+2. Najít **ClaimsProviders** elementu. Pokud neexistuje, přidejte jej pod kořenovým elementem. [Starter pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/archive/master.zip) zahrnuje poskytovatele deklarací identity přihlášení místní účet.
 3. Přidat **ClaimsProvider** křížkem **DisplayName** a **technický profil** jak je znázorněno v následujícím příkladu:
 
     ```XML
@@ -96,14 +96,14 @@ Přidat identifikátory aplikace *TrustFrameworkExtensions.xml* souboru.
 
 ## <a name="create-a-kmsi-enabled-user-journey"></a>Vytvořit cestu povoleného uživatele políčko zůstat Přihlášeni
 
-Přidáte zprostředkovatele deklarací identity přihlášení pro místní účet do vaší cesty uživatele. 
+Přidáte zprostředkovatele deklarací identity přihlášení pro místní účet do vaší cesty uživatele.
 
 1. Otevřete soubor základní zásady. Například *TrustFrameworkBase.xml*.
 2. Najít **Userjourney** elementu a zkopírujte celý obsah **UserJourney** element, který používá identifikátor `SignUpOrSignIn`.
 3. Otevřete soubor rozšíření. Například *TrustFrameworkExtensions.xml* a najít **Userjourney** elementu. Pokud element neexistuje, přidejte jeden.
 4. Vložit celé **UserJourney** element, který jste zkopírovali jako podřízený objekt **Userjourney** elementu.
 5. Změňte hodnotu identifikátoru pro cestu nového uživatele. Například, `SignUpOrSignInWithKmsi`.
-6. A konečně, změňte hodnotu vlastnosti v prvním kroku Orchestrace **ContentDefinitionReferenceId** k `api.signuporsigninwithkmsi`. Nastavení této hodnoty umožňuje zaškrtávací políčko v cestě uživatele. 
+6. A konečně, změňte hodnotu vlastnosti v prvním kroku Orchestrace **ContentDefinitionReferenceId** k `api.signuporsigninwithkmsi`. Nastavení této hodnoty umožňuje zaškrtávací políčko v cestě uživatele.
 7. Uložte a odešlete soubor rozšíření a ujistěte se, že všechny ověření úspěšné.
 
     ```XML
@@ -150,10 +150,10 @@ Aktualizujte předávající stranu soubor, který iniciuje cesty uživatele, kt
 2. Otevřete nový soubor a aktualizace **PolicyId** atribut pro **TrustFrameworkPolicy** s jedinečnou hodnotu. Toto je název zásady. Například, `SignUpOrSignInWithKmsi`.
 3. Změnit **ReferenceId** atribut pro **DefaultUserJourney** element tak, aby odpovídaly identifikátor nové cesty uživatele, který jste vytvořili. Například, `SignUpOrSignInWithKmsi`.
 
-    Políčko zůstat Přihlášeni je nakonfigurovaný nástrojem **UserJourneyBehaviors** element s **SingleSignOn**, **sessionexpirytype pro**, a **SessionExpiryInSeconds** jako svůj první podřízené prvky. **KeepAliveInDays** atribut určuje, jak dlouho zůstane přihlášený uživatel. V následujícím příkladu, políčko zůstat Přihlášeni relace automaticky vyprší po `7` dnů bez ohledu na to, kolikrát uživatel provádí bezobslužné ověření. Nastavení **KeepAliveInDays** hodnota, která se `0` vypne funkce políčko zůstat Přihlášeni. Ve výchozím nastavení, tato hodnota je `0`. Pokud hodnota **sessionexpirytype pro** je `Rolling`, je políčko zůstat Přihlášeni relace prodloužena `7` dnů pokaždé, když uživatel provádí bezobslužné ověření.  Pokud `Rolling` je vybrána, byste měli mít počet dní, minimální. 
+    Políčko zůstat Přihlášeni je nakonfigurovaný nástrojem **UserJourneyBehaviors** element s **SingleSignOn**, **sessionexpirytype pro**, a **SessionExpiryInSeconds** jako svůj první podřízené prvky. **KeepAliveInDays** atribut určuje, jak dlouho zůstane přihlášený uživatel. V následujícím příkladu, políčko zůstat Přihlášeni relace automaticky vyprší po `7` dnů bez ohledu na to, kolikrát uživatel provádí bezobslužné ověření. Nastavení **KeepAliveInDays** hodnota, která se `0` vypne funkce políčko zůstat Přihlášeni. Ve výchozím nastavení, tato hodnota je `0`. Pokud hodnota **sessionexpirytype pro** je `Rolling`, je políčko zůstat Přihlášeni relace prodloužena `7` dnů pokaždé, když uživatel provádí bezobslužné ověření.  Pokud `Rolling` je vybrána, byste měli mít počet dní, minimální.
 
-    Hodnota **SessionExpiryInSeconds** představuje čas vypršení platnosti relace jednotného přihlašování. To se používá interně službou Azure AD B2C ke kontrole, jestli je platnost relace pro políčko zůstat Přihlášeni, nebo ne. Hodnota **KeepAliveInDays** určuje platnost vyprší, Max-Age hodnotu souboru cookie jednotného přihlašování ve webovém prohlížeči. Na rozdíl od **SessionExpiryInSeconds**, **KeepAliveInDays** umožňuje zabránit uzavřený vymazání souboru cookie prohlížeče. Uživatel může bez upozornění přihlásit jenom v případě, že existuje soubor cookie relace jednotného přihlašování, které řídí **KeepAliveInDays**a ne vypršela platnost, která řídí **SessionExpiryInSeconds**. 
-    
+    Hodnota **SessionExpiryInSeconds** představuje čas vypršení platnosti relace jednotného přihlašování. To se používá interně službou Azure AD B2C ke kontrole, jestli je platnost relace pro políčko zůstat Přihlášeni, nebo ne. Hodnota **KeepAliveInDays** určuje platnost vyprší, Max-Age hodnotu souboru cookie jednotného přihlašování ve webovém prohlížeči. Na rozdíl od **SessionExpiryInSeconds**, **KeepAliveInDays** umožňuje zabránit uzavřený vymazání souboru cookie prohlížeče. Uživatel může bez upozornění přihlásit jenom v případě, že existuje soubor cookie relace jednotného přihlašování, které řídí **KeepAliveInDays**a ne vypršela platnost, která řídí **SessionExpiryInSeconds**.
+
     Pokud uživatel nemá povolení **neodhlašovat** na stránce registrace a přihlášení relace vyprší po času indikován **SessionExpiryInSeconds** uplynutí nebo prohlížeč je zavřený. Pokud uživatel povolí **neodhlašovat**, hodnota **KeepAliveInDays** přepíše hodnotu **SessionExpiryInSeconds** a určí čas vypršení platnosti relace. I v případě, že uživatelé zavřete prohlížeč a znovu otevřete, se můžete stále tiše přihlásit, dokud je v době **KeepAliveInDays**. Doporučuje se, že nastavíte hodnotu **SessionExpiryInSeconds** krátká období (1 200 sekund), při hodnotu **KeepAliveInDays** lze nastavit relativně dlouhou dobu (7 dní), jak je znázorněno Následující příklad:
 
     ```XML

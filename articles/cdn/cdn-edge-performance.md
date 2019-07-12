@@ -7,19 +7,19 @@ author: zhangmanling
 manager: erikre
 editor: ''
 ms.assetid: 8cc596a7-3e01-4f76-af7b-a05a1421517e
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 7dfa252c29121adca2ecc77c08b2fca81d56e575
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b8a65d4ae6aaac78e642c851a66b745a940fa0ad
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61069927"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593901"
 ---
 # <a name="analyze-edge-node-performance-in-microsoft-azure-cdn"></a>Analýza výkonu hraničního uzlu v Microsoft Azure CDN
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
@@ -147,7 +147,7 @@ Každá sestava v tomto modulu obsahuje graf a statistiky o využití šířky p
    
     Zobrazí se obrazovka hraniční uzel analytics sestavy.
 
-| Sestava | Popis |
+| Zpráva | Popis |
 | --- | --- |
 | Denní souhrn |Umožňuje zobrazit trendy každodenní provoz za zadané časové období. Každý řádek v tomto grafu představuje konkrétní datum. Velikost panelu indikuje celkový počet přístupů, ke kterým došlo k tomuto datu. |
 | Hodinový přehled |Umožňuje zobrazit trendy provozu po hodinách za zadané časové období. Každý řádek v tomto grafu představuje jednu hodinu v konkrétní den. Velikost panelu indikuje celkový počet přístupů, ke kterým došlo během dané hodiny. |
@@ -183,7 +183,7 @@ Každá sestava v tomto modulu obsahuje graf a statistiky o využití šířky p
 | 502 chyby |Obsahuje sloupcový graf, který vám umožní zobrazit hlavních 10 požadavků, z kterých vzniklo 502 Chybná brána kód odpovědi. Kód odpovědi 502 Chybná brána nastane, pokud dojde k chybě protokolu HTTP mezi serverem a proxy server HTTP. V případě naší síti CDN 502 Chybná brána kód odpovědi obvykle dochází, když zákazník zdrojový server vrátí neplatnou odpověď na hraniční server. Odpověď je neplatný, pokud ho nelze analyzovat nebo pokud je neúplný. |
 | Chyby 5xx |Obsahuje sloupcový graf, který vám umožní zobrazit hlavních 10 požadavků, z kterých vzniklo kódem odpovědi v rozsahu 500.  Vyloučené z této sestavy jsou 502 – Chybná brána a 504 kódy odpovědí vypršel časový limit brány. |
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 * [Azure CDN – přehled](cdn-overview.md)
 * [Statistiky v reálném čase v Microsoft Azure CDN](cdn-real-time-stats.md)
 * [Přepisování výchozího chování HTTP pomocí stroje pravidel](cdn-rules-engine.md)

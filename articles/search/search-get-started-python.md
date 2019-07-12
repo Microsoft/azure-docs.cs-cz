@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý start Pythonu: Vytvoření, načtení a dotazování indexů Azure Search REST API – Azure Search pomocí'
 description: Vysvětluje, jak vytvořit index, načtení dat a spouštění dotazů pomocí Pythonu, poznámkové bloky Jupyter a rozhraní REST API Azure Search.
-ms.date: 07/09/2019
+ms.date: 07/11/2019
 author: heidisteen
 manager: cgronlun
 ms.author: heidist
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 39ff269c582a2d981d8fb30e09a550813a262eca
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
-ms.translationtype: HT
+ms.openlocfilehash: 123afa2452c3e492b85292514e64f84d3baec390
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798733"
+ms.locfileid: "67840288"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-python-using-jupyter-notebooks"></a>Rychlý start: Vytvoření indexu Azure Search v Pythonu pomocí poznámkových bloků Jupyter
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ ms.locfileid: "67798733"
 > * [Azure Portal](search-create-index-portal.md)
 > 
 
-Vytvoření poznámkového bloku Jupyter, který vytvoří, načte a dotazy index Azure Search pomocí Pythonu a [rozhraní REST API Azure Search](https://docs.microsoft.com/rest/api/searchservice/). Tento článek vysvětluje, jak vytvořit poznámkový blok krok za krokem, od začátku. Alternativně můžete spustit Poznámkový blok dokončení. Stáhnout kopii, přejděte[úložiště azure-search-python-samples](https://github.com/Azure-Samples/azure-search-python-samples).
+Vytvoření poznámkového bloku Jupyter, který vytvoří, načte a dotazy index Azure Search pomocí Pythonu a [rozhraní REST API Azure Search](https://docs.microsoft.com/rest/api/searchservice/). Tento článek vysvětluje, jak vytvořit poznámkový blok krok za krokem. Alternativně můžete [stažení a spuštění poznámkového bloku Jupyter Python dokončení](https://github.com/Azure-Samples/azure-search-python-samples).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 

@@ -14,12 +14,12 @@ ms.author: gamal
 ms.reviewer: maghan
 manager: craigg
 robots: noindex
-ms.openlocfilehash: 5f2627932eb2fd427d934eba322230222b5e6958
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cc880885777cbca67d6fb39b90feadc889339f76
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66002935"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836180"
 ---
 # <a name="troubleshoot-data-factory-issues"></a>Poradce při potížích se službou Data Factory
 > [!NOTE]
@@ -119,14 +119,14 @@ V tématu [ladit kanálu pomocí vlastní aktivity](data-factory-use-custom-acti
 
 ## <a name="use-azure-portal-to-troubleshoot"></a>Řešení potíží pomocí webu Azure portal
 ### <a name="using-portal-blades"></a>Pomocí oken webu portal
-Zobrazit [monitorování kanálu](data-factory-build-your-first-pipeline-using-editor.md#monitor-a-pipeline) kroky.
+Zobrazit [monitorování kanálu](data-factory-monitor-manage-pipelines.md) kroky.
 
 ### <a name="using-monitor-and-manage-app"></a>Pomocí aplikace Monitorování a správa
 Zobrazit [monitorování a Správa kanálů data factory pomocí monitorování a Správa aplikace](data-factory-monitor-manage-app.md) podrobnosti.
 
 ## <a name="use-azure-powershell-to-troubleshoot"></a>Řešení potíží s pomocí Azure Powershellu
 ### <a name="use-azure-powershell-to-troubleshoot-an-error"></a>Řešení potíží s chybu pomocí Azure Powershellu
-Zobrazit [objektu pro vytváření dat monitorování kanálů pomocí Azure Powershellu](data-factory-build-your-first-pipeline-using-powershell.md#monitor-pipeline) podrobnosti.
+Zobrazit [objektu pro vytváření dat monitorování kanálů pomocí Azure Powershellu](data-factory-monitor-manage-pipelines.md) podrobnosti.
 
 [adfgetstarted]: data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
 [use-custom-activities]: data-factory-use-custom-activities.md
