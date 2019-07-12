@@ -7,12 +7,12 @@ ms.service: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: robinsh
-ms.openlocfilehash: 6c0fa0a3166dce5aa6adc71a46555a24d899c96b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 86f8c6e527f58a7c4cfca6233165f0ab05426409
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67441366"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672577"
 ---
 # <a name="iot-hub-device-streams-preview"></a>IoT Hub zařízení datové proudy (preview)
 
@@ -82,7 +82,7 @@ Zařízení i ze strany služby stream zařízení musí být schopen vytvořit 
 
 !["Datový proud zařízení koncových bodů"](./media/iot-hub-device-streams-overview/device-stream-in-portal.png)
 
-Můžete také informace koncové body pomocí se dají načíst pomocí rozhraní příkazového řádku Azure v části Vlastnosti centra konkrétně `property.hostname` a `property.deviceStreams` klíče.
+Můžete také informace o koncových bodech můžete získat pomocí rozhraní příkazového řádku Azure v části Vlastnosti centra konkrétně `property.hostname` a `property.deviceStreams` klíče.
 
 ```azurecli-interactive
 az iot hub devicestream show --name <YourIoTHubName>
@@ -208,7 +208,7 @@ Pomocí odkazů níže pokyny o tom, jak spustit místní proxy programy v jazyc
 
 * [Program pro zařízení jazyka C](quickstart-device-streams-proxy-c.md)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o datových proudů zařízení pomocí odkazů níže.
 

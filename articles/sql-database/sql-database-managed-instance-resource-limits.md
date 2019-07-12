@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 manager: craigg
 ms.date: 06/26/2019
-ms.openlocfilehash: a0846a7d03cc2f63af6747c8b8514b563c1d4a5d
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f4e19b916553912e36f2c3beee3f6a518b244e4d
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447800"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707007"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Přehled Azure SQL Database managed instance omezení prostředků
 
@@ -37,11 +37,11 @@ Spravované instance Azure SQL Database je možné nasadit na dvou generacemi ha
 |   | **Gen4** | **Gen5** |
 | --- | --- | --- |
 | Hardware | Intel E5-2673 v3 (Haswell) 2,4 GHz procesorech připojené SSD vCore = 1 PP (fyzických jader) | Intel E5-2673 v4 (Broadwell) 2.3 GHz procesorech rychlé NVMe SSD, vCore = 1 LP (hyper vlákno) |
-| Virtuální jádra | 8, 16, 24 virtuálních jader | 4, 8, 16, 24, 32, 40, 64, 80 virtuálních jader |
-| Paměť (poměr paměti a jader) | 7 GB na vCore | 5.1 GB na vCore |
+| Počet virtuálních jader | 8, 16, 24 virtuálních jader | 4, 8, 16, 24, 32, 40, 64, 80 virtuálních jader |
+| Maximální velikost paměti (poměr paměti a jader) | 7 GB na vCore<br/>Přidáte další virtuální jádra, chcete-li získat více paměti. | 5.1 GB na vCore<br/>Přidáte další virtuální jádra, chcete-li získat více paměti. |
 | OLTP v paměti maximální paměti | Instance omezení: 3 GB na vCore<br/>Omezení databáze:<br/> -8 jádry: 8 GB na databázi<br/> -16 jádry: 20 GB na databázi<br/> -24jádra: 36 GB na databázi | Instance omezení: 2,5 GB na vCore<br/>Omezení databáze:<br/> -8 jádry: 13 GB na databázi<br/> -16 jádry: 32 GB na databázi |
-| Maximální místo v úložišti instancí (Obecné) |  8 TB | 8 TB |
-| Maximální velikost úložiště instance (pro důležité obchodní informace) | 1 TB | 1 TB, 2 TB nebo 4 TB, v závislosti na počtu jader |
+| Maximální počet instancí vyhrazené úložiště (Obecné) |  8 TB | 8 TB |
+| Maximální počet instancí vyhrazené úložiště (pro důležité obchodní informace) | 1 TB | 1 TB, 2 TB nebo 4 TB, v závislosti na počtu jader |
 
 > [!IMPORTANT]
 > Nové databáze Gen4 již nejsou podporovány v oblasti AustraliaEast.
@@ -53,16 +53,16 @@ Managed instance má dvě úrovně služby: Obecné účely a pro důležité ob
 | **Funkce** | **Obecné účely** | **Pro důležité obchodní informace** |
 | --- | --- | --- |
 | Počet virtuálních jader\* | Gen4: 8, 16, 24<br/>Gen5: 4, 8, 16, 24, 32, 40, 64, 80 | Gen4: 8, 16, 24, 32 <br/> Gen5: 4, 8, 16, 24, 32, 40, 64, 80 |
-| Memory (Paměť) | Gen4: 56 GB - 168 GB (7GB/vCore)<br/>Gen5: 40.8 GB - 408 GB (5.1 GB/vCore) | Gen4: 56 GB - 168 GB (7GB/vCore)<br/>Gen5: 40.8 GB - 408 GB (5.1 GB/vCore) |
-| Maximální velikost úložiště instancí | -2 TB pro 4 virtuální jádra (pouze Gen5)<br/>-8 TB pro ostatní velikosti | Gen4: 1 TB <br/> Gen5: <br/>-1 TB pro 4, 8, 16 virtuálních jader<br/>-2 TB pro 24 virtuálních jader<br/>-4 TB pro 32, 40, 64, 80 virtuálních jader |
-| Max. úložiště na databázi | Určuje maximální velikost úložiště na instanci | Určuje maximální velikost úložiště na instanci |
+| Maximální velikost paměti | Gen4: 56 GB - 168 GB (7GB/vCore)<br/>Gen5: 40.8 GB - 408 GB (5.1 GB/vCore)<br/>Přidáte další virtuální jádra, chcete-li získat více paměti. | Gen4: 56 GB - 168 GB (7GB/vCore)<br/>Gen5: 40.8 GB - 408 GB (5.1 GB/vCore)<br/>Přidáte další virtuální jádra, chcete-li získat více paměti. |
+| Rezervované instance maximální velikost úložiště | -2 TB pro 4 virtuální jádra (pouze Gen5)<br/>-8 TB pro ostatní velikosti | Gen4: 1 TB <br/> Gen5: <br/>-1 TB pro 4, 8, 16 virtuálních jader<br/>-2 TB pro 24 virtuálních jader<br/>-4 TB pro 32, 40, 64, 80 virtuálních jader |
+| Maximální velikost databáze | Určuje maximální velikost úložiště na instanci | Určuje maximální velikost úložiště na instanci |
 | Maximální počet databází na instanci | 100 | 100 |
-| Maximální počet databází na instanci | Až 280 | 32 767 počet souborů v databázi |
-| Data/Log IOPS (přibližné) | 500 – 7 500 na soubor<br/>\*[Závisí na velikosti souboru](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 11 110 tis. (1375/vCore) |
-| Propustnost protokolu | 3 MB/s na vCore<br/>Maximální počet 22 MB/s na instanci | 4 MB/s na vCore<br/>Maximální počet 48 MB/s na instanci|
-| Propustnost dat (přibližné) | 100 – 250 MB/s na souboru<br/>\*[Závisí na velikosti souboru](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | neuvedeno |
-| Vstupně-výstupní latence (přibližné) | 5-10 ms | 1-2 ms |
-| Maximální velikost tempDB | 192 - 1,920 GB (24 GB na vCore) | Bez omezení – limitován velikostí úložiště maximální počet instancí |
+| Maximální počet souborů databáze na instanci | Až 280 | 32 767 počet souborů v databázi |
+| Data/Log IOPS (přibližné) | 500 – 7 500 na soubor<br/>\*[Zvětšit velikost souboru, chcete-li získat další vstupně-výstupních operací](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 11 110 tis. (1375/vCore)<br/>Přidáte další virtuální jádra, chcete-li získat lepší výkon vstupně-výstupních operací. |
+| Limit propustnosti zápisu protokolu | 3 MB/s na vCore<br/>Maximální počet 22 MB/s na instanci | 4 MB/s na vCore<br/>Maximální počet 48 MB/s na instanci|
+| Propustnost dat (přibližné) | 100 – 250 MB/s na souboru<br/>\*[Zvětšit velikost souboru, chcete-li získat lepší výkon vstupně-výstupních operací](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | Není k dispozici |
+| Úložiště vstupně-výstupní latence (přibližné) | 5-10 ms | 1-2 ms |
+| Maximální velikost tempDB | 192 - 1,920 GB (24 GB na vCore)<br/>Přidáte další virtuální jádra k získání dalšího místa v databázi TempDB. | Omezeno daty, která instance maximální velikost úložiště. Velikost souboru protokolu databáze TempDB je aktuálně omezená na 24GB/vCore. |
 | Maximální počet relací | 30000 | 30000 |
 
 > [!NOTE]
@@ -144,7 +144,7 @@ Chcete-li zahájit proces získávání vyšší kvóty:
 6. Na kartě kontaktní informace pro novou žádost o podporu zadejte upřednostňovaný způsob kontaktu (e-mail nebo telefon) a kontaktní údaje.
 7. Klikněte na možnost **Vytvořit**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Další informace o spravované instance najdete v tématu [co je managed instance?](sql-database-managed-instance.md).
 - Informace o cenách najdete v tématu [SQL Database managed instance ceny](https://azure.microsoft.com/pricing/details/sql-database/managed/).

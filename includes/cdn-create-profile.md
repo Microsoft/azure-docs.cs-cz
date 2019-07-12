@@ -3,17 +3,17 @@ title: zahrnout soubor
 description: zahrnout soubor
 services: cdn
 author: SyntaxC4
-ms.service: cdn
+ms.service: azure-cdn
 ms.topic: include
 ms.date: 05/24/2018
 ms.author: cfowler
 ms.custom: include file
-ms.openlocfilehash: c58b226c0f3bd63cb2a54bd3d8c91eb750a26f0a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 8aa6cb3f10b86a6821cd93190ecc2135508739cb
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175352"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593979"
 ---
 ## <a name="create-a-new-cdn-profile"></a>Vytvoření nového profilu CDN
 
@@ -31,11 +31,11 @@ Profil CDN představuje kontejner pro koncové body CDN a určuje cenovou úrove
 
 3. K nastavení profilu CDN použijte hodnoty z následující tabulky:
    
-    | Nastavení  | Hodnota |
+    | Nastavení  | Value |
     | -------- | ----- |
     | **Název** | Jako název profilu zadejte *my-cdn-profile-123*. Tento název musí být globálně jedinečný. Pokud se už používá, můžete zadat jiný název. |
     | **Předplatné** | V rozevíracím seznamu vyberte předplatné Azure. |
-    | **Skupina prostředků** | Vyberte **Vytvořit nový** a jako název skupiny prostředků zadejte *my-resource-group-123*. Tento název musí být globálně jedinečný. Pokud už se používá, můžete zadat jiný název nebo můžete vybrat **Použít existující** a v rozevíracím seznamu zvolit **my-resource-group-123**. | 
+    | **Skupina prostředků** | Vyberte **Vytvořit nový** a jako název skupiny prostředků zadejte *my-resource-group-123*. Pokud už se používá, můžete zadat jiný název nebo můžete vybrat **Použít existující** a v rozevíracím seznamu zvolit **my-resource-group-123**. | 
     | **Umístění skupiny prostředků** | V rozevíracím seznamu vyberte **Střed USA**. |
     | **Cenová úroveň** | V rozevíracím seznamu vyberte **Verizon úrovně Standard**. |
     | **Vytvořte teď nový koncový bod CDN** | Tuto možnost ponechejte nevybranou. |  

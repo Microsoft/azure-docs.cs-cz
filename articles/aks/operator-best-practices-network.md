@@ -2,17 +2,17 @@
 title: Operátor osvědčené postupy – připojení k síti ve službě Azure Kubernetes služby (AKS)
 description: Podívejte se na clusteru – operátor osvědčené postupy pro prostředky virtuální sítě a připojení ve službě Azure Kubernetes Service (AKS)
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.author: iainfou
-ms.openlocfilehash: 2bdc18ba4dc77178d5fcc5d2ba6d89aa109d923c
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
-ms.translationtype: HT
+ms.author: mlearned
+ms.openlocfilehash: d1bc865b38b52c8a7c3ac6ec4dab6408a1d0430c
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "65192238"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614753"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro připojení k síti a zabezpečení ve službě Azure Kubernetes Service (AKS)
 
@@ -108,7 +108,7 @@ Existuje mnoho scénářů pro příchozí přenos dat, včetně následujícíc
 * [Vytvoření základního příchozího přenosu dat řadiče s externí síťové připojení.][aks-ingress-basic]
 * [Vytvoření řadiče příchozího přenosu dat, který se používá soukromé, interní sítě a IP adresy][aks-ingress-internal]
 * [Vytvoření řadiče příchozího přenosu dat, která používá vlastní certifikáty TLS][aks-ingress-own-tls]
-* Vytvoření řadiče příchozího přenosu dat, která používá umožňuje šifrovat automaticky generovat certifikáty TLS [s dynamické veřejné IP adresy][aks-ingress-tls] nebo [se statickou veřejnou IP adresu][aks-ingress-static-tls]
+* Vytvoření řadiče příchozího přenosu dat, která používá umožňuje šifrovat automaticky generovat certifikáty TLS [s dynamické veřejné IP adresy][aks-ingress-tls] or [with a static public IP address][aks-ingress-static-tls]
 
 ## <a name="secure-traffic-with-a-web-application-firewall-waf"></a>Zabezpečení provozu pomocí firewallu webových aplikací (WAF)
 
@@ -158,7 +158,7 @@ Většinu operací ve službě AKS je možné provést pomocí nástroje pro spr
 
 ![Připojte se k uzlů AKS pomocí hostitel typu bašta nebo jump box](media/operator-best-practices-network/connect-using-bastion-host-simplified.png)
 
-By měla být zabezpečená síť pro správu pro hostitele bastionu, příliš. Použití [Azure ExpressRoute][expressroute] nebo [VPN gateway][vpn-gateway] pro připojení k místní síti a řízení přístupu pomocí zabezpečení sítě skupiny.
+By měla být zabezpečená síť pro správu pro hostitele bastionu, příliš. Použití [Azure ExpressRoute][expressroute] or [VPN gateway][vpn-gateway] pro připojení k místní síti a řízení přístupu pomocí skupin zabezpečení sítě.
 
 ## <a name="next-steps"></a>Další postup
 

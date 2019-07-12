@@ -4,24 +4,24 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: cynthn
-ms.openlocfilehash: 073b50011e640bc65cf4887635dd620d9b009df4
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.openlocfilehash: 40f0a667ffa23010ef00ed105454ab305171cc19
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67148404"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67812565"
 ---
 ### <a name="number-of-fault-domains-per-region"></a>Počet domén selhání podle oblastí
 
 | Oblast              | Maximální počet domén selhání  |
 |---------------------|-------------------------|
-| USA – východ             | 3                       |
+| East US             | 3                       |
 | Východní USA 2           | 3                       |
-| Západní USA             | 3                       |
-| Západní USA 2           | 2                       |
-| USA – střed          | 3                       |
-| Středoseverní USA    | 3                       |
-| Středojižní USA    | 3                       |
+| USA – západ             | 3                       |
+| USA – západ 2           | 2                       |
+| Střed USA          | 3                       |
+| Střed USA – sever    | 3                       |
+| Střed USA – jih    | 3                       |
 | Západní střed USA     | 2                       |
 | Kanada – střed      | 3                      |
 | Kanada – východ         | 2                       |
@@ -40,6 +40,7 @@ ms.locfileid: "67148404"
 | Indie – západ          | 2                       |
 | Jižní Korea – střed       | 2                       |
 | Jižní Korea – jih         | 2                       |
+| Spojené arabské emiráty – sever           | 2                       |
 |                     |                         |
 | Austrálie – východ      | 2                       |
 | Austrálie – jihovýchod | 2                       |

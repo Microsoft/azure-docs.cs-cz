@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: cafceb0c7ee6b165ee03727e1dff76db00d2863b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f38f1c313be17457c28c5b30fa743f7a0eae2cc0
+ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67077346"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67621978"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>Ingestovat data z centra událostí do Průzkumníku dat Azure
 
@@ -56,9 +56,9 @@ V tomto článku se generování ukázkových dat a jeho odeslání do centra ud
 
     **Nastavení** | **Navrhovaná hodnota** | **Popis pole**
     |---|---|---|
-    | Předplatné | Vaše předplatné | Vyberte předplatné Azure, které chcete použít pro svoje centrum událostí.|
-    | Skupina prostředků | *test-hub-rg* | Vytvořte novou skupinu prostředků. |
-    | Umístění | *Západní USA* | Vyberte *USA – západ* pro účely tohoto článku. Pro produkční systém vyberte oblast, která nejlépe vyhovuje vašim potřebám. Vytvořte obor názvů centra událostí ve stejném umístění jako cluster Kusto pro zajištění nejlepšího výkonu (nejdůležitější pro obory názvů centra událostí při vysoké propustnosti).
+    | Subscription | Vaše předplatné | Vyberte předplatné Azure, které chcete použít pro svoje centrum událostí.|
+    | Resource group | *test-hub-rg* | Vytvořte novou skupinu prostředků. |
+    | Location | *Západní USA* | Vyberte *USA – západ* pro účely tohoto článku. Pro produkční systém vyberte oblast, která nejlépe vyhovuje vašim potřebám. Vytvořte obor názvů centra událostí ve stejném umístění jako cluster Kusto pro zajištění nejlepšího výkonu (nejdůležitější pro obory názvů centra událostí při vysoké propustnosti).
     | Název oboru názvů | Jedinečný název oboru názvů | Zvolte jedinečný název, který identifikuje váš obor názvů. Například *mytestnamespace*. K názvu, který zadáte, bude připojen název domény *servicebus.windows.net*. Název může obsahovat pouze písmena, číslice a pomlčky. Musí začínat písmenem a končit písmenem nebo číslicí. Počet znaků musí být mezi 6 a 50.
     | Název centra událostí | *test-hub* | Centrum událostí se nachází v rámci oboru názvů, který poskytuje jedinečný kontejner oboru. Název centra událostí musí být v rámci oboru názvů jedinečný. |
     | Název skupiny uživatelů | *test-group* | Skupiny uživatelů umožňují, aby měla každá z aplikací samostatné zobrazení streamu událostí. |
@@ -187,7 +187,7 @@ Když teď aplikace generuje data, můžete zobrazit tok těchto dat z centra ud
     ![Sada výsledků dotazu na zprávy](media/ingest-data-event-hub/message-result-set.png)
 
     > [!NOTE]
-    > Průzkumník služby Azure Data má zásady agregace (dávkování) pro příjem dat, určená k optimalizaci procesu ingestování. U nakonfigurované na 5 minut, může docházet k latenci.
+    > Průzkumník služby Azure Data má zásady agregace (dávkování) pro příjem dat, určená k optimalizaci procesu ingestování. Zásady je 5 minut, ve výchozím nastavení nakonfigurované, takže se můžete setkat latencí. Zobrazit [dávkování zásad](/azure/kusto/concepts/batchingpolicy) možnosti agregace. Zobrazit [streamování zásad](/azure/kusto/concepts/streamingingestionpolicy) za účelem ingestování datových s žádné agregace.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

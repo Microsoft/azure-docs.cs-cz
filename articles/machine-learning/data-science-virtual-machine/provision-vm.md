@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2019
 ms.author: gokuma
-ms.openlocfilehash: 64642da88850e9a0a17173bc50ae9e750cab55a2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 57768fc463f5ea1d2f1ec386f3f0975758220013
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66235089"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67626382"
 ---
 # <a name="provision-a-windows-data-science-virtual-machine-on-azure"></a>Zřízení virtuálního počítače Windows datové vědy v Azure
 
@@ -61,13 +61,13 @@ Odborníci přes data použít několik nástrojů pro tyto úlohy. Může být 
 
 Datové VĚDY jump-starts analytického projektu. Můžete pracovat na úkoly v různých jazycích, včetně R, Python, SQL a C#. Visual Studio nabízí snadno použitelné integrované vývojové prostředí (IDE) pro vývoj a testování kódu. Sady Azure SDK je součástí virtuálního počítače, tak při sestavování aplikací s využitím různých služeb na cloudové platformě Microsoftu.
 
-Neúčtují žádné poplatky softwaru pro image virtuálního počítače Toto datové vědy. Platíte jenom poplatky za využití Azure. Jsou závislé na velikosti virtuálního počítače, které zřizujete. Další podrobnosti o poplatky za výpočetní prostředky jsou v **podrobnosti o cenách** části na [virtuální počítač pro datové vědy](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.windows-data-science-vm?tab=PlansAndPrice) stránky.
+Neúčtují žádné poplatky softwaru pro image virtuálního počítače Toto datové vědy. Platíte jenom poplatky za využití Azure. Jsou závislé na velikosti virtuálního počítače, které zřizujete. Další podrobnosti o poplatky za výpočetní prostředky jsou v **podrobnosti o cenách** části na [virtuální počítač pro datové vědy](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) stránky.
 
 ### <a name="other-dsvm-versions"></a>Jiné verze DSVM
 
 * [Ubuntu](dsvm-ubuntu-intro.md) bitové kopie. Obsahuje celou řadu nástrojů, které jsou podobné pro datové VĚDY a navíc několik dalších hloubkového učení architektury.
 * A [Linux CentOS](linux-dsvm-intro.md) bitové kopie.
-* [Edice systému Windows Server 2012](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.standard-data-science-vm) o virtuální počítač pro datové vědy. Několik nástroje jsou k dispozici pouze v edici Windows serveru 2016. V opačném případě v tomto článku platí také pro edice Windows serveru 2012.
+* [Edice systému Windows Server 2012](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) o virtuální počítač pro datové vědy. Několik nástroje jsou k dispozici pouze v edici Windows serveru 2016. V opačném případě v tomto článku platí také pro edice Windows serveru 2012.
 
 ## <a name="prerequisite"></a>Požadavek
 
@@ -224,7 +224,7 @@ Můžete použít [instalačního programu webové platformy Microsoft](https://
 > [!NOTE]
 > V edici systému Windows Server 2012, edice DSVM a Windows serveru 2016 před březnem 2018 je výchozí prostředí Anaconda Python 2.7. Sekundární prostředí je Python 3.5, umístění **C:\Anaconda\envs\py35**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Prozkoumejte nástroje pro datové vědy virtuálního počítače tak, že vyberete **Start** nabídky.
 * Další informace o službě Azure Machine Learning najdete [co je služba Azure Machine Learning?](../service/overview-what-is-azure-ml.md) a vyzkoušejte si [rychlých startů a kurzů](../service/index.yml) , které jsou k dispozici.

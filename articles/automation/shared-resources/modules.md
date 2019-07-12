@@ -3,18 +3,17 @@ title: Spravovat moduly ve službě Azure Automation
 description: Tento článek popisuje, jak spravovat moduly ve službě Azure Automation
 services: automation
 ms.service: automation
-ms.subservice: shared-resources
 author: bobbytreed
 ms.author: robreed
 ms.date: 06/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 69817d1412aa13d0e7983aa3ad27c15e59185432
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: cd085164fc9804e0c1c822df1c72d3ef94093a07
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478175"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672788"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Spravovat moduly ve službě Azure Automation
 
@@ -71,7 +70,7 @@ Remove-AzureRmAutomationModule -Name <moduleName> -AutomationAccountName <automa
 
 Tady je seznam rutin v interní `Orchestrator.AssetManagement.Cmdlets` modul, který je importován každý účet služby Automation. Tyto rutiny jsou dostupné v runboocích a konfiguracích DSC a bylo možné interagovat s vašimi prostředky v rámci účtu Automation. Kromě toho interní rutiny umožňují načíst tajné kódy z šifrované **proměnné** hodnoty, **přihlašovací údaje**a šifrované **připojení** pole. Rutiny prostředí Azure PowerShell, nebudou se moct k načtení těchto tajných kódů. Tyto rutiny nevyžadují implicitně připojení k Azure při jejich používání. To je užitečné pro scénáře, ve kterém jste připojení, jako je například účet Spustit jako, který je třeba použít pro ověření do Azure.
 
-|Název|Popis|
+|Name|Popis|
 |---|---|
 |Get-AutomationCertificate|`Get-AutomationCertificate [-Name] <string> [<CommonParameters>]`|
 |Get-AutomationConnection|`Get-AutomationConnection [-Name] <string> [-DoNotDecrypt] [<CommonParameters>]` |
@@ -257,6 +256,6 @@ V následující tabulce jsou uvedeny moduly, které jsou ve výchozím nastaven
 | xPowerShellExecutionPolicy | 1.1.0.0 |
 | xRemoteDesktopAdmin | 1.1.0.0 |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Další informace o vytváření modulů PowerShellu najdete v článku [Psaní modulu Windows PowerShellu](https://msdn.microsoft.com/library/dd878310%28v=vs.85%29.aspx)

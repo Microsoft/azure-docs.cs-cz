@@ -4,7 +4,7 @@ description: Automatizaci úloh konfigurace virtuálního počítače s Linuxem 
 services: virtual-machines-linux
 documentationcenter: ''
 author: roiyz-msft
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: cf17ab2b-8d7e-4078-b6df-955c6d5071c2
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: roiyz
-ms.openlocfilehash: b9bc3ef0cf5dd54802d32058afb904800c364c19
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.openlocfilehash: c94c0bdb4979d932049e4b1c1e16fbd9e8096ca3
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64725246"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706062"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Virtuální počítače s Linuxem pomocí Azure Custom Script rozšíření verze 2
 Verze 2 pro rozšíření vlastního skriptu stahuje a spouští skripty na virtuálních počítačích Azure. Toto rozšíření je užitečné pro konfiguraci po nasazení, instalace softwaru nebo jakoukoliv jinou úlohu konfigurace a správy. Skripty si můžete stáhnout z Azure Storage nebo jiné dostupné umístění v Internetu, nebo je lze zadat rozšíření modulu runtime. 
@@ -110,16 +110,16 @@ Tyto položky by měly považovat za citlivá data a zadaný v konfiguraci chrá
 | Název | Hodnota / příklad | Typ dat | 
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.Compute.Extensions | string |
-| type | CustomScript | string |
+| publisher | Microsoft.Compute.Extensions | řetězec |
+| type | CustomScript | řetězec |
 | typeHandlerVersion | 2.0 | int |
 | fileUris (např.) | https://github.com/MyProject/Archive/MyPythonScript.py | array |
-| commandToExecute (např.) | python MyPythonScript.py \<my-param1> | string |
-| script | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo= | string |
-| skipDos2Unix (např.) | false (nepravda) | Boolean |
+| commandToExecute (např.) | python MyPythonScript.py \<my-param1> | řetězec |
+| . | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo= | řetězec |
+| skipDos2Unix (např.) | false | boolean |
 | timestamp (např.) | 123456789 | 32bitové celé číslo |
-| storageAccountName (např.) | examplestorageacct | string |
-| storageAccountKey (např.) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | string |
+| storageAccountName (např.) | examplestorageacct | řetězec |
+| storageAccountKey (např.) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | řetězec |
 
 ### <a name="property-value-details"></a>Podrobnosti o hodnotě vlastnosti
 * `skipDos2Unix`: (volitelné, logická hodnota) přeskočit dos2unix převodu adres URL založených na skriptech souboru nebo skriptu.

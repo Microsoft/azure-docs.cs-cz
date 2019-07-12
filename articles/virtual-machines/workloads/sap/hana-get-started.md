@@ -4,7 +4,7 @@ description: Úvodní příručka k ruční instalaci jedné instance SAP HANA v
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: hermannd
-ms.openlocfilehash: 5091932989849943f00cb71f72378dd17af23a4a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 914da98359d11ff25709164d6301737404b3b011
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60204629"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707667"
 ---
 # <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-virtual-machines"></a>Rychlý start: Ruční instalace jedné instance SAP HANA v Azure Virtual Machines
 ## <a name="introduction"></a>Úvod
@@ -51,7 +51,7 @@ Pro zajištění vysoké dostupnosti SAP HANA, naleznete v tématu [vysoké dost
 
 Pokud chcete získat instance SAP HANA nebo S/4HANA nebo BW/4HANA systému rychle nasadit, zvažte použití [SAP Cloud Appliance Library](https://cal.sap.com). Můžete najít dokumentaci o tom, jak nasadit systém S/4HANA přes SAP Cloud Appliance Library v Azure, například v [Tato příručka](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h). Je vše, co potřebujete předplatné Azure a SAP uživatele, který lze dokument zaregistrovat u SAP Cloud Appliance Library.
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 ### <a name="sap-hana-backup"></a>Zálohování SAP HANA
 Informace o tom, jak zálohovat databáze SAP HANA na virtuálních počítačích Azure najdete tady:
 * [Průvodce zálohováním pro SAP HANA v Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide).
@@ -178,7 +178,7 @@ Tady je příklad toho, jak vyhledat dostupné opravy operačního systému SUSE
 V závislosti na druhu problém opravy dělí podle kategorie a závažnost. Kategorie běžně používané hodnoty jsou: 
 - Zabezpečení
 - Doporučené
-- Nepovinné
+- volitelná,
 - Funkce
 - Dokument
 - yast

@@ -1,5 +1,5 @@
 ---
-title: Nastavení přihlášení pro organizace Azure Active Directory – Azure Active Directory B2C | Dokumentace Microsoftu
+title: Nastavení přihlášení pro organizace Azure Active Directory – Azure Active Directory B2C
 description: Nastavení přihlášení pro konkrétní organizace Azure Active Directory v Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/14/2018
+ms.date: 07/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 28dbf0382ac151857e72d4bb59e207f07c8ad3f3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b867a7f9ffeab3d243c8c094830aa0984cffd04a
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66508426"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67654202"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Nastavení přihlášení pro konkrétní organizace Azure Active Directory v Azure Active Directory B2C
 
@@ -37,7 +37,7 @@ Povolit přihlášení pro uživatele z konkrétní organizace služby Azure AD,
 7. Pro **identifikátor URI pro přesměrování**, přijměte hodnotu **webové**a zadejte následující adresu URL malými písmeny, kde `your-B2C-tenant-name` se nahradí názvem vašeho tenanta Azure AD B2C. Například `https://fabrikam.b2clogin.com/fabrikam.onmicrosoft.com/oauth2/authresp`:
 
     ```
-    https://your--B2C-tenant-name.b2clogin.com/your-B2C-tenant-name.onmicrosoft.com/oauth2/authresp
+    https://your-B2C-tenant-name.b2clogin.com/your-B2C-tenant-name.onmicrosoft.com/oauth2/authresp
     ```
 
     Všechny adresy URL by měla nyní být pomocí [b2clogin.com](b2clogin.md).
@@ -63,10 +63,10 @@ Povolit přihlášení pro uživatele z konkrétní organizace služby Azure AD,
     ```
 
 8. Pro **ID klienta**, zadejte ID aplikace, které jste si dříve poznamenali a **tajný kód klienta**, zadejte tajný kód klienta, který jste si předtím poznamenali.
-9. Volitelně můžete zadat hodnotu pro **Domain_hint**. Například, `ContosoAD`. Jedná se o hodnotu použít k odkazování na tento zprostředkovatelů identity pomocí *domain_hint* v požadavku. 
+9. Volitelně můžete zadat hodnotu pro **Domain_hint**. Například, `ContosoAD`. Jedná se o hodnotu použít k odkazování na tento zprostředkovatelů identity pomocí *domain_hint* v požadavku.
 10. Klikněte na **OK**.
 11. Vyberte **mapování deklarací od zprostředkovatele identity** a nastavte následující deklarace:
-    
+
     - Pro **ID uživatele**, zadejte `oid`.
     - Pro **zobrazovaný název**, zadejte `name`.
     - Pro **křestní jméno**, zadejte `given_name`.

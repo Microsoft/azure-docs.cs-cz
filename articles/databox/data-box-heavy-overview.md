@@ -5,28 +5,27 @@ services: databox
 documentationcenter: NA
 author: alkohli
 ms.service: databox
-ms.subservice: pod
+ms.subservice: heavy
 ms.topic: overview
-ms.date: 06/19/2019
+ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 94ba0040b1de7e1f03825f1cd2ef2a6536343d96
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 0f4657cdd71a104ca111f62a6e9757b5a33b46e8
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67271741"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67592303"
 ---
-# <a name="what-is-azure-data-box-heavy-preview"></a>Co je Azure Data Box Heavy? (Preview)
+# <a name="what-is-azure-data-box-heavy"></a>Co je Azure Data Box Heavy?
 
 Azure Data Box náročné umožňuje odeslat stovky terabajtů dat do Azure v rámci rychlého, cenově dostupné a spolehlivě. Data se přenesou do Azure přenosem dat pole náročné zařízení s kapacitou 1 PB úložiště, který vyplnit s vašimi daty a zasílají zpět společnosti Microsoft. Zařízení má robustní malých a velkých písmen k ochraně a zabezpečení vašich dat během přenosu.
 
-Data Box velké je aktuálně ve verzi preview. Zaregistrujte se na vyžádání pro zařízení pomocí webu Azure portal. Po přijetí zařízení je ve vašem datovém centru, nastavte pomocí místního webového uživatelského rozhraní. Zkopírujte data ze serverů do zařízení a pak ho pošlete zpět do Azure. V datovém centru Azure vaše data nahrávají do vašich účtech úložiště Azure. Můžete sledovat celý proces začátku do konce na webu Azure Portal.
+Po přijetí zařízení je ve vašem datovém centru, nastavte pomocí místního webového uživatelského rozhraní. Zkopírujte data ze serverů do zařízení a pak ho pošlete zpět do Azure. V datovém centru Azure vaše data nahrávají do vašich účtech úložiště Azure. Můžete sledovat celý proces začátku do konce na webu Azure Portal.
 
 
 > [!IMPORTANT]
-> - Data Box Heavy je ve verzi Preview. Před nasazením tohoto řešení si přečtěte [podmínky užívání pro předběžné verze platformy Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-> - Pokud chcete o zařízení požádat, přihlaste se k webu [Azure Portal Preview](https://aka.ms/azuredatabox).
-> - Po dobu platnosti verze Preview je možné zařízení poslat zákazníkům služby Data Box Heavy v USA a Evropské unii. Další informace najdete v části [Regionální dostupnost](#region-availability).
+> - K vyžádání zařízení, přihlásit se [webu Azure portal](https://portal.azure.com).
+
 
 ## <a name="use-cases"></a>Případy použití
 
@@ -115,25 +114,14 @@ Nejnovější informace o dostupnosti oblast pro náročné pole dat, přejděte
 
 ## <a name="sign-up"></a>Registrace
 
-Služba Data Box Heavy je ve verzi Preview a musíte se k ní zaregistrovat. Proveďte následující kroky se zaregistrovat do služby Data Box náročné:
+Proveďte následující kroky se zaregistrovat do služby Data Box náročné:
 
-1. Přihlaste se k webu Azure Portal na adrese: https://aka.ms/azuredatabox.
+1. Přihlaste se k webu Azure Portal na adrese: https://portal.azure.com.
 2. Klikněte na tlačítko **+ vytvořit prostředek** k vytvoření nového prostředku. Vyhledejte **Azure Data Box**. Službu **Azure Data Box** vyberte.
-
-    <!--![The Data Box Heavy sign up 1]()-->
-
 3. Klikněte na možnost **Vytvořit**.
-
-    <!--![The Data Box Heavy sign up 2]()-->
-
-4. Vyberte předplatné, které chcete použít pro Data Box Heavy ve verzi Preview. Vyberte oblast, ve které chcete prostředek Data Box Heavy nasadit. U možnosti **Data Box Heavy** klikněte na **Zaregistrovat se**.
-
-   <!--![The Data Box Heavy sign up 3]()-->
-
+4. Vyberte předplatné, které chcete použít pro Data Box náročné. Vyberte oblast, ve které chcete prostředek Data Box Heavy nasadit. U možnosti **Data Box Heavy** klikněte na **Zaregistrovat se**.
 5. Odpovězte na otázky týkající se dat frekvence přenosu pobytu zemi/oblast, časový rámec, cílové služby Azure pro přenos dat, šířky pásma sítě a data. Projděte si ochranu osobních údajů a podmínky a zaškrtněte políčko, že Microsoft může použít vaši e-mailovou adresu, aby vás kontaktoval.
 
-    <!--![The Data Box Heavy sign up 4]()-->
-
-Jakmile už zaregistrovali a povolit pro verzi preview, můžete si objednat velkým pole Data.
+Po přihlášení můžete objednat velkým pole Data.
 
     

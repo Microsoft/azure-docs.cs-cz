@@ -7,20 +7,21 @@ author: rkarlin
 manager: rkarlin
 editor: ''
 ms.assetid: a3b63cfa-b5fe-4aff-b105-b22b424c418a
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2019
+ms.date: 07/04/2019
 ms.author: rkarlin
-ms.openlocfilehash: 5d8d97aefa2efadae70c976b8a1876b2c7d8f1c1
-ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
+ms.openlocfilehash: 9f64497cdf27729cebc243deca1def9ff1e5c680
+ms.sourcegitcommit: 80aaf27e3ad2cc4a6599a3b6af0196c6239e6918
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65921938"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673859"
 ---
 # <a name="connect-data-sources"></a>Připojení zdrojů dat
 
@@ -32,7 +33,18 @@ ms.locfileid: "65921938"
 
 Do vlaku Sentinelu Azure musíte nejprve připojit ke zdrojům dat. Azure Sentinel se dodává s celou řadou konektorů pro Microsoft solutions, k dispozici z pole a poskytuje v reálném čase, integrace, včetně řešení pro ochranu před internetovými útoky Microsoft a Microsoft 365 zdrojů, včetně Office 365, Azure AD, Azure ATP a Microsoft Cloud App Security a další. Kromě toho jsou integrované konektory do širšího ekosystému zabezpečení pro řešení jiného subjektu než Microsoft. Můžete také použít běžný formát události Syslog nebo rozhraní REST API pro připojení zdroje dat pomocí Azure Sentinelu také.  
 
-![Kolekce dat](./media/collect-data/collect-data-page.png)
+1. V nabídce vyberte **datové konektory**. Tato stránka umožňuje zobrazit úplný seznam konektorů, které poskytuje Azure Sentinelu a jejich stav. Vyberte konektor, kterou chcete připojit a vyberte **stránku otevřít konektoru**. 
+
+   ![Kolekce dat](./media/collect-data/collect-data-page.png)
+
+1. Na stránce speciálního konektoru Ujistěte se, že splnili všechny požadavky a postupujte podle pokynů pro připojení dat k Sentinelu Azure. Může trvat nějakou dobu spuštění synchronizace s Azure ověřovacích protokolů. Až se připojíte, zobrazí se souhrn dat v **Data přijatá** grafu a stavu připojení datových typů.
+
+   ![Připojení kolekce](./media/collect-data/opened-connector-page.png)
+  
+1. Klikněte na tlačítko **další kroky** kartu seznam ověřovacích Azure poskytuje pro konkrétní datový typ obsahu out-of-the-box.
+
+   ![Kolekce dat](./media/collect-data/data-insights.png)
+ 
 
 ## <a name="data-connection-methods"></a>Metody datového připojení
 

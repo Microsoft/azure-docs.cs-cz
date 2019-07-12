@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 manager: craigg
-ms.date: 06/12/2019
-ms.openlocfilehash: afa575c9015cbb21386d23101b74456822dfa33c
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.date: 07/05/2019
+ms.openlocfilehash: 5a1a5ea39c9c0ed8973e1ecfa46977d2d06f83e7
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275464"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603612"
 ---
 # <a name="azure-sql-database-serverless-preview"></a>Azure SQL Database bez serveru (preview)
 
@@ -166,7 +166,7 @@ Vytváří se nová databáze nebo přesunutí že existující databáze do vrs
    |Parametr|Hodnota možnosti|Výchozí hodnota|
    |---|---|---|---|
    |Min virtuálních jader|{0,5, 1, 2, 4} není větší než maximální počet virtuálních jader|0,5 virtuálních jader|
-   |Autopause zpoždění|Minimálně: 360 minut (6 hodin)<br>Maximální počet: 10 080 minut (7 dní)<br>Krocích: 60 minut<br>Zakázat autopause: -1|360 minut|
+   |Autopause zpoždění|Minimálně: 60 minut (1 hodina)<br>Maximální počet: 10 080 minut (7 dní)<br>Krocích: 60 minut<br>Zakázat autopause: -1|60 minut|
 
 > [!NOTE]
 > Pomocí jazyka T-SQL přesunout existující databázi do bez serveru, nebo změňte jeho velikost výpočetních se aktuálně nepodporuje, ale můžete to udělat pomocí webu Azure portal nebo Powershellu.

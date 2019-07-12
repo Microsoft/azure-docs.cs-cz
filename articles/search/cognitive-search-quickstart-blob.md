@@ -6,15 +6,15 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 05/02/2019
+ms.date: 07/09/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: cb029530d2c6cdac82fd0d257e10717386eebf0e
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 8f3a1dadaddb423a83f4c3691a4b5747a5196d2a
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65022101"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67795332"
 ---
 # <a name="quickstart-create-an-ai-indexing-pipeline-using-cognitive-skills-in-azure-search"></a>Rychlý start: Vytvořit kanál indexování AI využitím kognitivních dovedností v Azure Search
 
@@ -79,11 +79,11 @@ Jako další krok přidáte do kanálu indexování kroky pro rozšiřování. P
 
 1. Rozbalte **připojení služeb Cognitive Services** zobrazení možností pro resourcing rozhraní API služeb Cognitive Services. Pro účely tohoto kurzu můžete použít **Free** prostředků.
 
-   ![Připojit Cognitive Services](media/cognitive-search-quickstart-blob/cog-search-attach.png)
+   ![Připojení služeb Cognitive Services](media/cognitive-search-quickstart-blob/cog-search-attach.png)
 
 2. Rozbalte **přidat obohacení** a vyberte znalosti, které provádějí zpracování přirozeného jazyka. Pro tento rychlý start zvolte rozpoznávání entit pro lidi, organizace a lokality.
 
-   ![Připojit Cognitive Services](media/cognitive-search-quickstart-blob/skillset.png)
+   ![Připojení služeb Cognitive Services](media/cognitive-search-quickstart-blob/skillset.png)
 
    Tento portál nabízí integrované znalosti pro zpracování a text analysis optické rozpoznávání znaků. Na portálu sada dovedností pracuje s jedním polem zdroje. To může vypadat jako malý cíl, ale pro objekty blob služby Azure pole `content` obsahuje většinu dokumentu objektu blob (např. wordový dokument nebo powerpointovou sadu karet). Z toho důvodu je toto pole ideální vstup, protože je v něm veškerý obsah objektu blob.
 
@@ -166,13 +166,15 @@ Další důležitý koncept je to, že dovednosti pracují se vstupními poli. N
 
 Nakonec jste zjistili, že k zobrazení výsledků slouží dotazy na index. Azure Search vlastně poskytuje prohledávatelný index, na který můžete poslat dotaz buď pomocí [jednoduché](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search), nebo [plně rozšířené syntaxe dotazů](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search). Index, který obsahuje rozšířená pole, se v ničem neliší od ostatních indexů. Pokud chcete začlenit standardní nebo [vlastní analyzátory](search-analyzers.md), [profily vyhodnocování](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index), [synonyma](search-synonyms.md), [filtry s charakteristikou](search-filters-facets.md), vyhledávání na základě geografických dat nebo jakoukoli jinou funkci služby Azure Search, nic tomu nebrání.
 
-## <a name="clean-up-resources"></a>Vyčištění prostředků
+## <a name="clean-up"></a>Vyčištění
 
-Pokud už jste všechno dostatečně prozkoumali, nejrychlejší způsob, jak vše vyčistit, je odstranit skupinu prostředků, která obsahuje službu Azure Search a službu Azure Blob.  
+Pokud pracujete ve svém vlastním předplatném, je vhodné na konci projektu a zjistěte, jestli stále potřebují prostředky, že kterou jste vytvořili. Levé může spuštěné prostředky nákladů peníze. Můžete odstranit prostředky jednotlivě nebo odstranit skupinu prostředků, kterou chcete odstranit celou sadu prostředků.
 
-Za předpokladu, že jste vložili obě služby do stejné skupiny, odstraňte skupinu prostředků. Tím se trvale odstraní všechno, co v ní je, včetně služeb a veškerého uloženého obsahu, který jste pro toto cvičení vytvořili. Na portálu najdete název skupiny prostředků na stránce Přehled jednotlivých služeb.
+Můžete najít a spravovat prostředky na portálu pro použití **všechny prostředky** nebo **skupiny prostředků** odkaz v levém navigačním podokně.
 
-## <a name="next-steps"></a>Další postup
+Pokud používáte bezplatné služby, mějte na paměti, že jste omezeni na tři indexy, indexery a datového zdroje. Můžete odstranit jednotlivé položky na portálu, abychom dodrželi omezení. 
+
+## <a name="next-steps"></a>Další kroky
 
 V závislosti na tom, jak jste zřídili prostředku služeb Cognitive Services můžete experimentovat s indexování a rozšiřování opětovným spuštěním průvodce, jiné dovednosti a pole datového zdroje. Pokud chcete postup opakovat, odstraňte index a indexer a pak znovu indexer vytvořte s tím, že vyberete novou kombinaci možností.
 

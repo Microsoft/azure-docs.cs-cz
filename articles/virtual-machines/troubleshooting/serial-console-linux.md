@@ -4,7 +4,7 @@ description: Obousměrné sériové konzoly pro virtuální počítače Azure a 
 services: virtual-machines-linux
 documentationcenter: ''
 author: asinn826
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 4fb2fd9503dad4113609b35dbe66496a03272f85
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.openlocfilehash: f3fa646fcca99d5762f480b3fd12c5e249eabaf8
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67137212"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67710583"
 ---
 # <a name="azure-serial-console-for-linux"></a>Azure konzoly sériového portu pro Linux
 
@@ -177,7 +177,7 @@ Pokud je uživatel připojen ke konzole sériového portu a jiný uživatel úsp
 > [!CAUTION]
 > To znamená, že uživatel, který je odpojen nebude odhlášeni. Schopnost Vynutit odhlášení při odpojení (pomocí SIGHUP nebo mechanismus podobný) je stále v se plánuje. Pro Windows se automatické vypršení časového limitu povolené ve speciální správy konzoly (SAC); ale pro Linux můžete nakonfigurovat nastavení terminálu vypršení časového limitu. Chcete-li to provést, přidejte `export TMOUT=600` ve vaší *.bash_profile* nebo *.profile* souboru pro uživatele, který používáte k přihlášení do konzoly. Toto nastavení vyprší časový limit relace po 10 minutách.
 
-## <a name="accessibility"></a>Přístupnost
+## <a name="accessibility"></a>Usnadnění
 Klíče se pro sériové konzoly Azure se pro usnadnění. Za tímto účelem jsme zajistili, že je plně přístupné konzole sériového portu.
 
 ### <a name="keyboard-navigation"></a>Procházení pomocí klávesnice
@@ -248,7 +248,7 @@ A. Ano, je! Zobrazit [konzoly sériového portu pro Škálovací sady virtuáln�
 
 A. Ano. Protože konzole sériového portu nevyžaduje klíče SSH, stačí nastavit kombinace uživatelského jména a hesla. Můžete tak učinit tak, že vyberete **resetovat heslo** webu Azure portal a pomocí těchto přihlašovacích údajů pro přihlášení ke konzole sériového portu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Použití konzole sériového portu [přístup GRUB a režimu jednoho uživatele](serial-console-grub-single-user-mode.md).
 * Použití konzole sériového portu pro [volání NMI a SysRq](serial-console-nmi-sysrq.md).
 * Další informace o použití konzoly sériového portu k [povolit GRUB v různých distribucích](https://blogs.msdn.microsoft.com/linuxonazure/2018/10/23/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/).

@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd44dda06b2f6fc48538f2fb74c0bf8e04d0362b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3624f4e859081e53ee27b6f8415eb3f9b5a2a5fa
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65074632"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67785462"
 ---
 # <a name="web-app-that-calls-web-apis---call-a-web-api"></a>Webovou aplikaci, která volá webové rozhraní API – volání webového rozhraní API
 
@@ -28,7 +28,18 @@ Teď, když máte token, můžete volat chráněné webové rozhraní API.
 
 ## <a name="aspnet-core"></a>ASP.NET Core
 
-Tady je zjednodušené kód akce `HomeController`. Tento kód získá tokenu pro volání Microsoft Graphu. Tento kód se úspěšně přidala ukazující, jak volání Microsoft Graphu jako rozhraní REST API.
+Tady je zjednodušené kód akce `HomeController`. Tento kód získá tokenu pro volání Microsoft Graphu. Tento kód se úspěšně přidala ukazující, jak volání Microsoft Graphu jako rozhraní REST API. Adresa URL pro rozhraní graph API najdete v `appsettings.json` souboru a číst v proměnné s názvem `webOptions`:
+
+```JSon
+{
+  "AzureAd": {
+    "Instance": "https://login.microsoftonline.com/",
+    ...
+  },
+  ...
+  "GraphApiUrl": "https://graph.microsoft.com"
+}
+```
 
 ```CSharp
 public async Task<IActionResult> Profile()

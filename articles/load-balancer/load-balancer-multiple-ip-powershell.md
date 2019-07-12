@@ -12,13 +12,13 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
-ms.author: annahar
-ms.openlocfilehash: 9654fd66faa1f745f25494e8b54625a92eb1745b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: anavin
+ms.openlocfilehash: bbd21ffeffeaf036909b5ab89f1a07909a03c3f0
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66111629"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621714"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-using-powershell"></a>Vyrovnávání zatížení na více konfigurací protokolu IP pomocí Powershellu
 
@@ -141,6 +141,6 @@ Postupujte podle následujících kroků, abyste dosáhli scénář popsaný v t
 
 13. Nakonec musíte nakonfigurovat záznamy prostředků DNS tak, aby odkazoval na IP adresu odpovídající front-endu nástroje pro vyrovnávání zatížení. Může hostovat domény v Azure DNS. Další informace o použití Azure DNS s nástrojem pro vyrovnávání zatížení najdete v tématu [pomocí Azure DNS s ostatními službami Azure](../dns/dns-for-azure-services.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - Další informace o tom, jak kombinací služeb Vyrovnávání zatížení v Azure v [pomocí služby Vyrovnávání zatížení v Azure](../traffic-manager/traffic-manager-load-balancing-azure.md).
 - Zjistěte, jak pomocí různých typů protokolů v Azure pro správu a řešení potíží s nástroj pro vyrovnávání zatížení v [protokoly Azure monitoru pro Azure Load Balancer](../load-balancer/load-balancer-monitor-log.md).

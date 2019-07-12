@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: f7e070788d2fc11addcafc30d9f232f194f44782
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: MT
+ms.openlocfilehash: baca05a9c007849d813b2f4de17378e6d18da4a5
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60318474"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67701740"
 ---
 # <a name="move-data-from-an-http-source-by-using-azure-data-factory"></a>Přesun dat z zdroje HTTP pomocí Azure Data Factory
 
@@ -66,9 +66,9 @@ Podrobnosti o nastavení přihlašovacích údajů pro zdroj dat místní HTTP k
 
 Nastavte **authenticationType** k **základní**, **Digest**, nebo **Windows**. Kromě obecných vlastností konektoru HTTP je popsáno v předchozích částech nastavte následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 | --- | --- | --- |
-| username | Uživatelské jméno pro použití pro přístup ke koncovému bodu HTTP. | Ano |
+| userName | Uživatelské jméno pro použití pro přístup ke koncovému bodu HTTP. | Ano |
 | password | Heslo pro uživatele (**uživatelské jméno**). | Ano |
 
 **Příklad: Používá ověřování Basic, Digest nebo Windows**
@@ -94,7 +94,7 @@ Nastavte **authenticationType** k **základní**, **Digest**, nebo **Windows**. 
 
 Chcete-li použít základní ověřování, nastavte **authenticationType** k **ClientCertificate**. Kromě obecných vlastností konektoru HTTP je popsáno v předchozích částech nastavte následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 | --- | --- | --- |
 | embeddedCertData | Obsah s kódováním Base64 binární data ze souboru PFX. | Zadejte buď **embeddedCertData** nebo **certThumbprint** |
 | certThumbprint | Kryptografický otisk certifikátu, který byl nainstalován na počítači brány úložiště certifikátů. Platí jenom v případě, že kopírování dat z místních zdroje HTTP. | Zadejte buď **embeddedCertData** nebo **certThumbprint** |
@@ -162,7 +162,7 @@ Některé části souboru JSON datové sady, jako je například struktura, dost
 |:--- |:--- |:--- |
 | type | **Typ** datové sady, musí být nastaveno na **Http**. | Ano |
 | relativeUrl | Relativní adresa URL k prostředku, který obsahuje data. Když cestu nezadáte, použije se pouze adresu URL, která je zadána v definici propojené služby. <br><br> K vytvoření dynamické adresy URL, můžete použít [funkce Data Factory a systémové proměnné](data-factory-functions-variables.md). Příklad: **relativeUrl**: **$$Text.Format ("/ Moje/tuto sestavu? měsíc = {0: yyyy} – {0:MM} & fmt = csv", SliceStart)** . | Ne |
-| requestMethod | Metoda HTTP Povolené hodnoty jsou **získat** a **příspěvek**. | Ne <br />(výchozí hodnota je **získat**) |
+| requestMethod | Metoda protokolu HTTP. Povolené hodnoty jsou **získat** a **příspěvek**. | Ne <br />(výchozí hodnota je **získat**) |
 | additionalHeaders | Další hlavičky požadavků HTTP. | Ne |
 | Includesearchresults: true | Obsah žádosti protokolu HTTP. | Ne |
 | format | Pokud chcete *načtení dat z koncového bodu HTTP jako-je* bez je analýza kódu, přejděte **formátu** nastavení. <br><br> Pokud chcete analyzovat obsah odpovědi HTTP při kopírování, jsou podporovány následující typy formátů: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, and **ParquetFormat**. Další informace najdete v tématu [textový formát](data-factory-supported-file-and-compression-formats.md#text-format), [formátu JSON](data-factory-supported-file-and-compression-formats.md#json-format), [formát Avro](data-factory-supported-file-and-compression-formats.md#avro-format), [formát Orc](data-factory-supported-file-and-compression-formats.md#orc-format), a [formát Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format). |Ne |
@@ -221,7 +221,7 @@ Vlastnosti, které jsou k dispozici v **typeProperties** části aktivity se li�
 
 V současné době když zdroj v aktivitě kopírování je **HttpSource** zadejte následující vlastnosti jsou podporovány:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 | -------- | ----------- | -------- |
 | httpRequestTimeout | Časový limit ( **TimeSpan** hodnotu) pro požadavek HTTP získat odpověď. Časový limit je získat odpověď, nevypršel časový limit pro čtení dat odpovědi. | Ne<br />(výchozí hodnota: **00:01:40**) |
 

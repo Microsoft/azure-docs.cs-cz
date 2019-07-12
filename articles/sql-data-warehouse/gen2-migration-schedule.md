@@ -3,19 +3,19 @@ title: Migrujte vaše stávající Azure SQL Data Warehouse na Gen2 | Dokumentac
 description: Pokyny k migraci existujícího datového skladu na Gen2 a migrace plán, podle oblasti.
 services: sql-data-warehouse
 author: mlee3gsd
-ms.author: anumjs
+ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
 ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 04/03/2019
-ms.openlocfilehash: 3141f3a1d6a9f09261dee4113276af72168e35e8
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
-ms.translationtype: MT
+ms.openlocfilehash: e1327ded4b07f379f954ee5594b4eec2b7523ab4
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444692"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621112"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Upgrade služby data warehouse na Gen2
 
@@ -37,7 +37,7 @@ Následující tabulka shrnuje podle oblastí, při nižší Gen2 výpočetní v
 | Brazílie – jih |K dispozici |1\. června 2019 |
 | Kanada – střed |K dispozici |1\. června 2019 |
 | Kanada – východ |\* |\* |
-| USA – střed |K dispozici |1\. června 2019 |
+| Střed USA |K dispozici |1\. června 2019 |
 | Čína – východ |\* |\* |
 | Čína – východ 2 |\* |Pouze Gen2 |
 | Čína – sever |\* |\* |
@@ -52,18 +52,18 @@ Následující tabulka shrnuje podle oblastí, při nižší Gen2 výpočetní v
 | Indie – jih |K dispozici |1\. června 2019 |
 | Japonsko – východ |K dispozici |1\. června 2019 |
 | Japonsko – západ |K dispozici |1\. května 2019 |
-| Korea – střed |K dispozici |1\. června 2019 |
+| Jižní Korea – střed |K dispozici |1\. června 2019 |
 | Jižní Korea – jih |K dispozici |1\. května 2019 |
-| Středoseverní USA |K dispozici |1\. května 2019 |
+| Střed USA – sever |K dispozici |1\. května 2019 |
 | Severní Evropa |K dispozici |1\. června 2019 |
-| Středojižní USA |K dispozici |1\. června 2019 |
+| Střed USA – jih |K dispozici |1\. června 2019 |
 | Jihovýchodní Asie |K dispozici |1\. června 2019 |
 | Velká Británie – jih |K dispozici, 2019 |1\. června 2019 |
 | Spojené království – západ |\*|\* |
 | Západní střed USA |2\. září 2019 |2\. ledna 2020|
 | Západní Evropa |K dispozici |1\. června 2019 |
-| Západní USA |K dispozici |1\. června 2019 |
-| Západní USA 2 |K dispozici |1\. června 2019 |
+| USA – západ |K dispozici |1\. června 2019 |
+| USA – západ 2 |K dispozici |1\. června 2019 |
 
 ## <a name="automatic-upgrade-process"></a>Proces automatického upgradu
 

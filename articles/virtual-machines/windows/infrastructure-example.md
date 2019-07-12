@@ -4,7 +4,7 @@ description: Další informace o klíčových návrh a implementace pokyny pro n
 documentationcenter: ''
 services: virtual-machines-windows
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 7032b586-e4e5-4954-952f-fdfc03fc1980
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ddbaed6704fd32f7fd4fe5a790424cbf829d2f1c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5ff98079c6156783442078546a4783a367863057
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60540373"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722585"
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-windows-vms"></a>Průvodce ukázkovou infrastrukturou Azure pro virtuální počítače s Windows
 Tento článek vás provede vytvoření příkladu infrastruktury aplikace. Můžeme podrobně navrhování infrastruktury pro jednoduché online úložiště, který spojuje všechny zásady a rozhodnutí týkající se vytváření názvů, skupiny dostupnosti, virtuální sítě a nástroje pro vyrovnávání zatížení a skutečného nasazení virtuálních počítačů (VM).
@@ -61,7 +61,7 @@ Všechny výše uvedené použijte tyto zásady vytváření názvů:
 ## <a name="azure-subscriptions-and-accounts"></a>Účtů a předplatných Azure
 Adventure Works Cycles využívá svoje předplatné Enterprise s názvem předplatného Enterprise společnosti Adventure Works k vyúčtování pro danou úlohu IT.
 
-## <a name="storage"></a>Úložiště
+## <a name="storage"></a>Storage
 Adventure Works Cycles určit, že by měl použít Azure Managed Disks. Při vytváření virtuálních počítačů, se používají obou úrovní úložiště k dispozici:
 
 * **Storage úrovně standard** pro webové servery, aplikační servery a řadiče domény a jejich datové disky.

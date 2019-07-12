@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/01/2019
 ms.author: danlep
-ms.openlocfilehash: 06e45127f940e01de5f3ceeefc354014a88014db
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: e6e0cdd73a5a2999f78599a06cc7ee397ecc3b4b
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514399"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67806594"
 ---
 # <a name="restrict-access-to-an-azure-container-registry-using-an-azure-virtual-network-or-firewall-rules"></a>Omezení přístupu ke službě Azure container registry pomocí služby Azure virtual network nebo pravidla brány firewall
 
@@ -39,6 +39,14 @@ Tento článek ukazuje dva scénáře, chcete-li vytvořit pravidla přístupu k
 * Použití Azure CLI kroky v tomto článku, Azure CLI verze 2.0.58 nebo později se vyžaduje. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli].
 
 * Pokud ještě nemáte registr kontejnerů, vytvořte si ho (vyžaduje SKU úrovně Premium) a push Ukázkový obrázek, jako `hello-world` z Docker Hubu. Například použít [webu Azure portal][quickstart-portal] or the [Azure CLI][quickstart-cli] vytvořte registr. 
+
+* Pokud chcete omezit přístup k registru pomocí virtuální sítě v rámci jiného předplatného Azure, musíte se zaregistrovat poskytovatele prostředků pro službu Azure Container Registry v tomto předplatném. Příklad:
+
+  ```azurecli
+  az account set --subscription <Name or ID of subscription of virtual network>
+
+  az provider register --namespace Microsoft.ContainerRegistry
+  ``` 
 
 ## <a name="about-network-rules-for-a-container-registry"></a>O pravidlech sítě pro registr kontejneru
 

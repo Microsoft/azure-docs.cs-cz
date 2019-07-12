@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: ad789a597da759b9a2d58138c7ed441389a12adb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: aed716b01fe748be40ee22e3eba5742983c2a523
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61479979"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620934"
 ---
 # <a name="introduction-to-stream-analytics-geospatial-functions"></a>Úvod do služby Stream Analytics geoprostorové funkce
 
@@ -54,7 +54,7 @@ FROM input
 
  {"type": "LineString", "coordinates": [[20.2321,-87.33], [10.0, 10.0], [10.5, 10.5]]}
 
-Další informace najdete [CreateLineString](https://msdn.microsoft.com/azure/stream-analytics/reference/createlinestring) odkaz.
+Další informace najdete [CreateLineString](https://docs.microsoft.com/stream-analytics-query/createlinestring) odkaz.
 
 ## <a name="createpoint"></a>CreatePoint
 
@@ -81,7 +81,7 @@ FROM input
   
  {"type": "Point", "coordinates": [20.2321,-87.33]}  
 
-Další informace najdete [CreatePoint](https://msdn.microsoft.com/azure/stream-analytics/reference/createpoint) odkaz.
+Další informace najdete [CreatePoint](https://docs.microsoft.com/stream-analytics-query/createpoint) odkaz.
 
 ## <a name="createpolygon"></a>CreatePolygon
 
@@ -108,7 +108,7 @@ FROM input
  
  {"type": "Mnohoúhelníku", "coordinates": [[[20.2321,-87.33], [10.0, 10.0], [10.5, 10.5], [20.2321,-87.33]]]}
 
-Další informace najdete [: CreatePolygon](https://msdn.microsoft.com/azure/stream-analytics/reference/createpolygon) odkaz.
+Další informace najdete [: CreatePolygon](https://docs.microsoft.com/stream-analytics-query/createpolygon) odkaz.
 
 
 ## <a name="stdistance"></a>ST_DISTANCE
@@ -122,7 +122,7 @@ FROM Cars c
 JOIN Station s ON ST_DISTANCE(c.Location, s.Location) < 10 * 1000
 ```
 
-Další informace najdete [ST_DISTANCE](https://msdn.microsoft.com/azure/stream-analytics/reference/st-distance) odkaz.
+Další informace najdete [ST_DISTANCE](https://docs.microsoft.com/stream-analytics-query/st-distance) odkaz.
 
 ## <a name="stoverlaps"></a>ST_OVERLAPS
 `ST_OVERLAPS` Funkce porovná dva mnohoúhelníku. Pokud polygonů překrývají, funkce vrátí hodnotu 1. Funkce vrátí hodnotu 0, pokud polygonů nepřekrývají. 
@@ -143,7 +143,7 @@ FROM Cars c, Storm s
 JOIN Storm s ON ST_OVERLAPS(c.Location, s.Course)
 ```
 
-Další informace najdete [ST_OVERLAPS](https://msdn.microsoft.com/azure/stream-analytics/reference/st-overlaps) odkaz.
+Další informace najdete [ST_OVERLAPS](https://docs.microsoft.com/stream-analytics-query/st-overlaps) odkaz.
 
 ## <a name="stintersects"></a>ST_INTERSECTS
 `ST_INTERSECTS` Funkce porovná dva LineString. Pokud LineString intersect, funkce vrátí hodnotu 1. Funkce vrátí hodnotu 0, pokud LineString nepřekrývají.
@@ -169,7 +169,7 @@ FROM input
   
  0  
 
-Další informace najdete [ST_INTERSECTS](https://msdn.microsoft.com/azure/stream-analytics/reference/st-intersects) odkaz.
+Další informace najdete [ST_INTERSECTS](https://docs.microsoft.com/stream-analytics-query/st-intersects) odkaz.
 
 ## <a name="stwithin"></a>ST_WITHIN
 `ST_WITHIN` Funkce určuje, jestli je v rámci mnohoúhelníku bodu nebo mnohoúhelníku. Obsahuje-li mnohoúhelníku bodu nebo mnohoúhelníku, funkce vrátí hodnotu 1. Funkce vrátí 0, pokud není umístěn v rámci deklarovaný mnohoúhelníku bodu nebo mnohoúhelníku.
@@ -195,12 +195,12 @@ FROM input
   
  1  
 
-Další informace najdete [ST_WITHIN](https://msdn.microsoft.com/azure/stream-analytics/reference/st-within) odkaz.
+Další informace najdete [ST_WITHIN](https://docs.microsoft.com/stream-analytics-query/st-within) odkaz.
 
 ## <a name="next-steps"></a>Další postup
 
 * [Úvod do služby Azure Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Škálování služby Stream Analytics](stream-analytics-scale-jobs.md)
-* [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Referenční příručka k rozhraní REST API pro správu služby Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn835031.aspx)

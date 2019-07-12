@@ -8,19 +8,19 @@ writer: zchia
 manager: beatrizd
 ms.assetid: na
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/3/2019
 ms.author: zchia
-ms.openlocfilehash: 0cfd760eb9d631bf6ab098afef0ef9b66c92cfa6
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: e2e7c27d8cfa79bc7a8f8462def4d46e598cb508
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67168152"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595096"
 ---
 # <a name="tutorial-configure-4me-for-automatic-user-provisioning"></a>Kurz: Konfigurace 4me pro automatické zřizování uživatelů
 
@@ -164,7 +164,7 @@ Další informace o tom, jak číst zřizování protokoly Azure AD najdete v t�
 * 4me vygeneruje tajný klíč tokeny mají datum vypršení platnosti v měsíci z: generace.
 * nepodporuje 4me **odstranit** operace
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

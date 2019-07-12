@@ -4,7 +4,7 @@ description: Obsahuje seznam různých velikostí, které jsou k dispozici pro L
 services: virtual-machines-linux
 documentationcenter: ''
 author: jonbeck7
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/12/2018
 ms.author: jonbeck
-ms.openlocfilehash: 003a14174ff65bab253f27a458d4f3e2c0a1a6db
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 847f25d9be1a8654bbc0435d7874acb0ff793304
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67070001"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67695604"
 ---
 # <a name="high-performance-compute-virtual-machine-sizes"></a>Vysokovýkonné výpočetní velikosti virtuálních počítačů
 
@@ -56,7 +56,15 @@ Tržiště Azure Marketplace nabízí řadu distribucí systému Linux, které p
   "typeHandlerVersion": "1.0",
   } 
   ```
- 
+  
+  Následující příkaz nainstaluje nejnovější verze 1.0 InfiniBandDriverLinux rozšíření pro všechny virtuální počítače podporující RDMA v existující škálovací sady s názvem *myVMSS* nasazených ve skupině prostředků s názvem *myResourceGroup*:
+  ```powershell
+  $VMSS = Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS"
+  Add-AzVmssExtension -VirtualMachineScaleSet $VMSS -Name "InfiniBandDriverLinux" -Publisher "Microsoft.HpcCompute" -Type "InfiniBandDriverLinux" -TypeHandlerVersion "1.0"
+  Update-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "MyVMSS" -VirtualMachineScaleSet $VMSS
+  Update-AzVmssInstance -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS" -InstanceId "*"
+  ```
+  
   > [!NOTE]
   > Pro Image založené na CentOS HPC aktualizace jádra jsou zakázány ve **yumu** konfigurační soubor. Je to proto, že ovladače RDMA Linuxu se distribuují jako balíček RPM a aktualizace ovladačů nemusí fungovat, pokud se aktualizuje jádra.
   >
@@ -82,6 +90,8 @@ Azure poskytuje celou řadu možností pro vytváření clusterů HPC virtuáln�
 * **Virtuální počítače** -nasadit virtuální počítače s podporou RDMA HPC ve stejné skupině dostupnosti (Pokud používáte model nasazení Azure Resource Manageru). Pokud používáte model nasazení classic, nasaďte virtuální počítače ve stejné cloudové službě. 
 
 * **Škálovací sady virtuálních počítačů** - v virtuálního počítače škálovací sady, ujistěte se, že omezíte nasazení do jediné skupiny umístění. Například v šabloně Resource Manageru, nastavte `singlePlacementGroup` vlastnost `true`. 
+
+* **MPI mezi virtuálními počítači** – Pokud MPI komunikace v případě potřeby mezi virtuální počítače (VM), ujistěte se, že virtuální počítače jsou ve stejné skupině dostupnosti nastavena nebo virtuální počítač stejné škálovací sady.
 
 * **Azure CycleCloud** – vytvoření clusteru prostředí HPC v [Azure CycleCloud](/azure/cyclecloud/) ke spouštění úloh MPI na uzly s Linuxem.
 

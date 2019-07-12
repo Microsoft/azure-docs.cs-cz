@@ -4,7 +4,7 @@ description: Jak nastavit službu Key Vault pro použití s virtuálním počít
 services: virtual-machines-linux
 documentationcenter: ''
 author: singhkays
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: bccdd5ab-5ccf-4760-9039-92c6eafb15bd
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 02/24/2017
 ms.author: kasing
-ms.openlocfilehash: 61be027cd1c919897ff62dd8b1beec4c7fb9b420
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 736a30fe83ff26cd1dd4f197de9e7db925b7243b
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65966212"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671387"
 ---
 # <a name="how-to-set-up-key-vault-for-virtual-machines-with-the-azure-cli"></a>Jak nastavit službu Key Vault pro virtuální počítače pomocí Azure CLI
 
@@ -59,5 +59,5 @@ Při použití šablony, je nutné nastavit `enabledForDeployment` vlastnost `tr
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další možnosti, které můžete nakonfigurovat při vytváření služby Key Vault s použitím šablony, najdete v části [vytvořit trezor klíčů](https://azure.microsoft.com/documentation/templates/101-key-vault-create/).

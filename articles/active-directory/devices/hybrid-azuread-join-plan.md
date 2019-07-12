@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c476c2b326045db37c54a358d68f4b5f8bbaed9a
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: abb050eb527e65b4fd31f3251d37fef7d51e867e
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509603"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655981"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Jak: Naplánování vaší implementace připojení k hybridní službě Azure Active Directory
 
@@ -57,7 +57,7 @@ Připojení k hybridní službě Azure AD podporuje široký rozsah Windows zař
 
 - Windows 10
 - Windows Server 2016
-- Windows Server 2019
+- Windows Server. 2019
 
 Pro zařízení s operačním systémem klasické pracovní plochy Windows, podporované verze jsou uvedeny v tomto článku [informace o verzi Windows 10](https://docs.microsoft.com/windows/release-information/). Jako osvědčený postup Microsoft doporučuje že upgradovat na nejnovější verzi Windows 10.
 
@@ -87,7 +87,7 @@ Pokud se spoléháte na nástroj System Preparation (Sysprep), a pokud použijet
 
 Pokud se spoléháte na snímek virtuálního počítače (VM) můžete vytvořit další virtuální počítače, ujistěte se, že tomuto snímku není z virtuálního počítače, který je už zaregistrovaný službou Azure AD jako připojení k hybridní službě Azure AD.
 
-Pokud připojená k vaší doméně Windows 10 už zařízení [registrováno v Azure AD](https://docs.microsoft.com/azure/active-directory/devices/overview#azure-ad-registered-devices) do svého tenanta, důrazně doporučujeme odebrat tento stav před povolením připojení k hybridní službě Azure AD. Od verze Windows 10 1809 se provedly následující změny, aby tento duální stav:
+Pokud připojená k vaší doméně Windows 10 už zařízení [registrováno v Azure AD](https://docs.microsoft.com/azure/active-directory/devices/overview#getting-devices-in-azure-ad) do svého tenanta, důrazně doporučujeme odebrat tento stav před povolením připojení k hybridní službě Azure AD. Od verze Windows 10 1809 se provedly následující změny, aby tento duální stav:
 
 - Všechny stávající stav registrováno v Azure AD by být automaticky odstraněna po zařízení je připojená k hybridní Azure AD.
 - Vám může zakázat zařízení připojené k vaší doméně Azure AD registrované přidáním tohoto klíče registru - HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin" = dword: 00000001.

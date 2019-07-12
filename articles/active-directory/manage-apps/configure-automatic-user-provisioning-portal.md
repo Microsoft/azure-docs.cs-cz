@@ -15,12 +15,12 @@ ms.date: 04/01/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6bf265f51f2fea16f90dd0bcf2891bd9bed5cef8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b994078350aec5657659f8835d228eb907606bb8
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65963568"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807638"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Správa uživatelského účtu zřizování pro podnikové aplikace na webu Azure Portal
 
@@ -31,14 +31,11 @@ Tento článek popisuje způsob použití [webu Azure portal](https://portal.azu
 Pomocí portálu Azure Active Directory pro zobrazení a Správa všech aplikací, které jsou nakonfigurovány pro jednotné přihlašování v adresáři. Podnikové aplikace jsou aplikace, které se nasazují a používané ve vaší organizaci. Použijte následující postup umožňuje zobrazit a spravovat vaše firemní aplikace:
 
 1. Otevřít [portálu Azure Active Directory](https://aad.portal.azure.com).
-
 1. Vyberte **podnikové aplikace** v levém podokně. Se zobrazí seznam všech nakonfigurovaných aplikací, včetně aplikací, které byly přidány z galerie.
-
 1. Vyberte některou aplikaci načíst prostředek podokno, kde můžete zobrazit sestavy a spravovat nastavení aplikace.
-
 1. Vyberte **zřizování** ke správě nastavení pro vybranou aplikaci pro vytváření uživatelského účtu.
 
-   ![Podokno prostředků aplikace](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning.png)
+   ![Zřizování obrazovky ke správě nastavení pro vytváření uživatelského účtu](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning.png)
 
 ## <a name="provisioning-modes"></a>Režim zřizování
 
@@ -68,17 +65,17 @@ Rozbalte **mapování** zobrazit a upravit atributy uživatele, které budou plo
 
 Existuje sada předem nakonfigurované mapování mezi objekty uživatelů Azure AD a uživatelských objektů příslušné aplikace SaaS. Některé aplikace spravovat další typy objektů, jako jsou skupiny nebo kontakty. Vyberte v tabulce, čímž otevřete editor mapování doprava, kde můžete zobrazit a přizpůsobit je mapování.
 
-![Podokno prostředků aplikace](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning-mapping.png)
+![Zobrazí obrazovku pro mapování atributů](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning-mapping.png)
 
 Podporovaná vlastní nastavení patří:
 
 * Povolení a zakázání mapování pro konkrétní objekty, například objekt uživatele Azure AD k objektu uživatele aplikace SaaS.
 * Úprava atributů, které vedou z objektu uživatele Azure AD do objektu uživatele aplikace. Další informace o mapování atributů najdete v tématu [Principy mapování typů atributů](customize-application-attributes.md#understanding-attribute-mapping-types).
-* Filtrování zřizování akce, Azure AD, na kterých běží cílové aplikace. Namísto toho, aby plně synchronizovat objekty služby Azure AD, můžete omezit akce spuštění. 
+* Filtrování zřizování akce, Azure AD, na kterých běží cílové aplikace. Namísto toho, aby plně synchronizovat objekty služby Azure AD, můžete omezit akce spuštění.
 
   Například vybrat jenom **aktualizace** a Azure AD pouze aktualizace stávajících uživatelských účtů v aplikaci, ale nevytvoří nové. Vybrat pouze **vytvořit** a Azure pouze vytvoří nové uživatelské účty, ale neprovede aktualizaci existující aplikace. Tato funkce umožňuje správcům vytvořit jiné mapování pro vytváření účtů a aktualizovat pracovní postupy.
 
-* Přidání nové mapování atributů. Vyberte **přidat nové mapování** v dolní části **mapování atributů** podokně. Vyplňte **Upravit atribut** formulář a vyberte **Ok** do seznamu přidat nové mapování. 
+* Přidání nové mapování atributů. Vyberte **přidat nové mapování** v dolní části **mapování atributů** podokně. Vyplňte **Upravit atribut** formulář a vyberte **Ok** do seznamu přidat nové mapování.
 
 ### <a name="settings"></a>Nastavení
 

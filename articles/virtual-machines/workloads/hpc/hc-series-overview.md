@@ -4,7 +4,7 @@ description: Další informace o podpoře pro velikost series hybridní připoje
 services: virtual-machines
 documentationcenter: ''
 author: vermagit
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines
@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: amverma
-ms.openlocfilehash: f96a1179c103dd9dfb4d358572f9a9adbe24b977
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6cdb539846104f70dabf684925685fb062fea8af
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66809869"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797556"
 ---
 # <a name="hc-series-virtual-machine-overview"></a>Přehled virtuálních počítačů řady hybridní připojení
 
@@ -31,7 +31,7 @@ Výše uvedené topologie se přenesou do konfigurace hypervisoru hybridní při
 
 Virtuální počítač je vůbec nezná, že k němu nebyly zadané pCores 0-1 a 24 25. Proto zpřístupňuje každý vNUMA, jako kdyby byla nativně 22 jader.
 
-Intel Xeon Platinum, zlatá a stříbrná procesory také zavést síť na kostka 2D síť pro komunikaci v rámci a externí soketu procesoru. Důrazně doporučujeme Připnutí proces pro zajištění optimálního výkonu a konzistenci. Připnutí procesu bude fungovat na virtuálních počítačích řady hybridní připojení, protože základní silicon vystavena jako-je na virtuálním počítači hosta. Další informace o Intel Xeon SP architektury na: https://bit.ly/2RCYkiE
+Intel Xeon Platinum, zlatá a stříbrná procesory také zavést síť na kostka 2D síť pro komunikaci v rámci a externí soketu procesoru. Důrazně doporučujeme Připnutí proces pro zajištění optimálního výkonu a konzistenci. Připnutí procesu bude fungovat na virtuálních počítačích řady hybridní připojení, protože základní silicon vystavena jako-je na virtuálním počítači hosta. Další informace najdete v tématu [architektury Intel Xeon SP](https://bit.ly/2RCYkiE).
 
 Následující diagram znázorňuje oddělení jader vyhrazené pro Azure hypervisoru a virtuálních počítačů řady hybridní připojení.
 

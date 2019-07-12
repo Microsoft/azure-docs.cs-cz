@@ -9,24 +9,23 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 06/04/2019
+ms.date: 07/08/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73ca740a4dcca3bdbb1951e55df4061364a5c646
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 623950131769f95b9b8442b2316b1c4fd1c3b831
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67083928"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67656457"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
 Pomocí Azure Active Directory (Azure AD), můžete určit omezenou správci je můžou spravovat identity úkoly v méně privilegovaným rolím. Správci mohou být přiřazeny za účelem přidání nebo změna uživatelů, přiřazení správních rolí, resetovat hesla uživatelů, Správa uživatelských licencí a správa názvů domén. Výchozí oprávnění uživatelů lze změnit pouze v nastavení uživatele ve službě Azure AD.
 
 Globální správce má přístup ke všem funkcím pro správu. Ve výchozím nastavení je osoba, která uživatel zaregistruje do služby pro předplatné Azure přiřadit roli globálního správce adresáře. Jenom globální správci a správci privilegovaných rolí můžete delegovat role správců. Aby se snížilo riziko pro vaši firmu, doporučujeme, že jste tuto roli přiřazovat jenom pár lidí ve vaší společnosti.
-
 
 ## <a name="assign-or-remove-administrator-roles"></a>Přiřazení nebo odebrání rolí správce
 
@@ -853,7 +852,7 @@ Může spravovat všechny aspekty produktu Intune.
 Můžete spravovat nastavení Microsoft Kaizala.  
 
   > [!NOTE]
-  > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
+  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >  
   
@@ -895,7 +894,7 @@ Může spravovat všechny aspekty skypu pro firmy produktu.
 Může číst Centrum zpráv příspěvky, zprávy o ochraně osobních údajů data, skupiny, domény a předplatných.
 
   > [!NOTE]
-  > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
+  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
 
@@ -1044,14 +1043,13 @@ Může číst přihlášení a sestavy auditu.
 | microsoft.aad.directory/auditLogs/allProperties/read | Číst všechny vlastnosti (včetně privileged vlastností) na mají ve službě Azure Active Directory. |
 | microsoft.aad.directory/signInReports/allProperties/read | Číst všechny vlastnosti (včetně privileged vlastností) na signInReports ve službě Azure Active Directory. |
 | microsoft.azure.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat služby Azure Service Health. |
-| microsoft.office365.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat stav služby Office 365. |
 | microsoft.office365.usageReports/allEntities/read | Sestavy využití Office 365 pro čtení. |
 
 ### <a name="search-administrator"></a>Hledat správce
 Můžete vytvořit a spravovat všechny aspekty Microsoft Search nastavení.
 
   > [!NOTE]
-  > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
+  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
 
@@ -1068,7 +1066,7 @@ Můžete vytvořit a spravovat všechny aspekty Microsoft Search nastavení.
 Můžete vytvářet a spravovat redakční obsah, jako je například záložky, Q a jako umístění, prostorové uspořádání.
 
   > [!NOTE]
-  > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
+  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
 
@@ -1111,7 +1109,7 @@ Může číst informace o zabezpečení a sestavy a spravovat konfigurace ve slu
 Vytváří a spravuje události zabezpečení.
 
   > [!NOTE]
-  > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
+  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
 

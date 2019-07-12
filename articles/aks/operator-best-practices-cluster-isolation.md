@@ -2,17 +2,17 @@
 title: Operátor osvědčené postupy – izolace clusteru ve službě Azure Kubernetes služby (AKS)
 description: Podívejte se na clusteru – operátor osvědčené postupy pro izolaci ve službě Azure Kubernetes Service (AKS)
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.author: iainfou
-ms.openlocfilehash: 94aaa72497a8a5f171d6b42f59a3c5b507c71492
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: mlearned
+ms.openlocfilehash: 8150e184f0c7533d5a6e7e4847bf126206f5e6c6
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60465277"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614917"
 ---
 # <a name="best-practices-for-cluster-isolation-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro zajištění izolace clusteru ve službě Azure Kubernetes Service (AKS)
 
@@ -26,7 +26,7 @@ Tento článek o osvědčených postupech se zaměřuje na izolaci pro operátor
 
 ## <a name="design-clusters-for-multi-tenancy"></a>Clustery návrhu pro víceklientské architektury
 
-Kubernetes poskytuje funkce, které logicky oddělit týmy a úlohy ve stejném clusteru. Cíl by měl být k poskytování nejmenší počet oprávnění, omezená na prostředky, každý tým potřebuje. A [Namespace] [ k8s-namespaces] v Kubernetes vytvoří hranici logickou izolaci. Kubernetes další funkce a požadavky na izolaci a víceklientská architektura zahrnovat tyto oblasti:
+Kubernetes poskytuje funkce, které logicky oddělit týmy a úlohy ve stejném clusteru. Cíl by měl být k poskytování nejmenší počet oprávnění, omezená na prostředky, každý tým potřebuje. A [Namespace][k8s-namespaces] v Kubernetes vytvoří hranici logickou izolaci. Kubernetes další funkce a požadavky na izolaci a víceklientská architektura zahrnovat tyto oblasti:
 
 * **Plánování** zahrnuje základní funkce, jako je kvóty prostředků a rozpočet pod přerušení. Další informace o těchto funkcích najdete v tématu [osvědčené postupy pro Plánovač základní funkce ve službě AKS][aks-best-practices-scheduler].
   * Pokročilejší funkce plánovače zahrnovat poskvrnění a tolerations, uzel selektory a spřažení uzlu a pod nebo proti spřažení. Další informace o těchto funkcích najdete v tématu [osvědčené postupy pro Plánovač pokročilé funkce ve službě AKS][aks-best-practices-advanced-scheduler].
@@ -38,7 +38,7 @@ Kubernetes poskytuje funkce, které logicky oddělit týmy a úlohy ve stejném 
 
 **Osvědčené postupy pro moduly** -použít k oddělení týmům a projektům logickou izolaci. Měli snažit minimalizovat počet fyzických clusterů AKS nasadíte do izolovat týmy nebo aplikace.
 
-Logické izolace jeden cluster AKS je možné pro více úloh, týmy nebo prostředí. Kubernetes [obory názvů] [ k8s-namespaces] tvoří logické oddělovací hranice pro úlohy a prostředky.
+Logické izolace jeden cluster AKS je možné pro více úloh, týmy nebo prostředí. Kubernetes [obory názvů][k8s-namespaces] tvoří logické oddělovací hranice pro úlohy a prostředky.
 
 ![Logické izolace cluster Kubernetes v AKS](media/operator-best-practices-cluster-isolation/logical-isolation.png)
 

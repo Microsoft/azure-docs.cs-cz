@@ -4,19 +4,19 @@ description: Azure DevOps Projects umožňuje snadno začít používat Azure. P
 author: shizn
 manager: ''
 ms.author: xshi
-ms.date: 01/22/2019
+ms.date: 07/09/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 02977032c5975de4098600ddbebccfcbb9b0fafd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 109a7e327217a342f485dd61b53115569f2346cd
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60595501"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722975"
 ---
-# <a name="create-a-cicd-pipeline-for-iot-edge-with-azure-devops-projects-preview"></a>Vytvoření kanálu CI/CD pro IoT Edge s projekty Azure DevOps (Preview)
+# <a name="create-a-cicd-pipeline-for-iot-edge-with-azure-devops-projects"></a>Vytvoření kanálu CI/CD pro IoT Edge s projekty Azure DevOps
 
 Konfigurace kontinuální integrace (CI) a průběžné doručování (CD) pro aplikace IoT Edge s projekty DevOps. Projekty DevOps zjednodušuje počáteční konfiguraci sestavení a vydaná verze kanálu v kanálech Azure.
 
@@ -38,7 +38,7 @@ Projekty DevOps vytvoří kanál CI/CD v Azure DevOps. Můžete vytvořit novou 
 
    ![Vyberte jazyk, který chcete vytvořit novou aplikaci](./media/how-to-devops-project/select-language.png)
 
-2. Vyberte **jednoduché IoT (Preview)** jako aplikační platformu a pak vyberte **Další**.
+2. Vyberte **jednoduché IoT** jako aplikační platformu a pak vyberte **Další**.
 
    ![Vyberte architekturu jednoduché IoT](media/how-to-devops-project/select-iot.png)
 

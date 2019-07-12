@@ -5,7 +5,7 @@ keywords: Chyba vzdálené plochy, Chyba připojení ke vzdálené ploše, se ne
 services: virtual-machines-windows
 documentationcenter: ''
 author: roiyz-msft
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
 ms.assetid: 0d740f8e-98b8-4e55-bb02-520f604f5b18
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/23/2018
 ms.author: roiyz
-ms.openlocfilehash: 50adab1eaa199473a8da857d38c3a08c424c677a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 711c5cb8211de8b5ec27cfd76f12c34c84676e64
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64728931"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67710503"
 ---
 # <a name="troubleshoot-remote-desktop-connections-to-an-azure-virtual-machine"></a>Řešení potíží s připojením ke vzdálené ploše na virtuálním počítači Azure
 Připojení RDP (Remote Desktop Protocol) k vašemu virtuálnímu počítači Azure s Windows může z různých důvodů selhat a vy tak k němu můžete ztratit přístup. Problém může být ve službě Vzdálená plocha na virtuálním počítači, v síťovém připojením nebo v klientovi vzdálené plochy na hostitelském počítači. Tento článek vás provede některé z nejběžnějších metody k řešení problémů s připojením RDP. 
@@ -241,7 +241,7 @@ Při pokusu o připojení k vašemu virtuálnímu počítači pomocí protokolu 
 * [Chyba zabezpečení Windows: Vaše přihlašovací údaje nefungovala](troubleshoot-specific-rdp-errors.md#wincred).
 * [Počítač se nemůže připojit ke vzdálenému počítači](troubleshoot-specific-rdp-errors.md#rdpconnect).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 Pokud žádná z těchto chyb došlo k chybě a se pořád nemůžete připojit k virtuálnímu počítači přes vzdálenou plochu, přečtěte si na podrobné [Průvodce odstraňováním potíží pro vzdálenou plochu](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 * Řešení potíží s kroky k používání aplikace běžící na virtuálním počítači, naleznete v tématu [řešení potíží s přístupem k aplikaci spuštěné na Virtuálním počítači Azure](../linux/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 * Pokud máte problémy s použitím Secure Shell (SSH) k připojení k virtuálnímu počítači s Linuxem v Azure, najdete v článku [řešení potíží s připojení SSH k virtuálnímu počítači s Linuxem v Azure](../linux/troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

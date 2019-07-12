@@ -2,17 +2,17 @@
 title: Principy – přístupu a identit ve službě Azure Kubernetes služby (AKS)
 description: Další informace o přístupu a identit ve službě Azure Kubernetes Service (AKS), včetně integrace služby Azure Active Directory, Kubernetes řízení přístupu na základě role (RBAC) a role a vazby.
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
-ms.author: iainfou
-ms.openlocfilehash: 3432ba671431c25b7cd9ee58decc638861e884c3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: mlearned
+ms.openlocfilehash: a1ed1eccd7a10d78cd503559469654e5562cde0c
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60467038"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67615860"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Možnosti přístupu a identit pro službu Azure Kubernetes Service (AKS)
 
@@ -40,9 +40,9 @@ Zabezpečení clusteru AKS dá vylepšit integrací sady Azure Active Directory 
 
 ![Integrace Azure Active Directory s clustery AKS](media/concepts-identity/aad-integration.png)
 
-S využitím clusterů Azure AKS integrované s Active Directory můžete udělit uživatelům nebo skupinám přístup k prostředkům Kubernetes v oboru názvů nebo v clusteru. Získání `kubectl` kontextu konfigurace, může uživatel spouštět [az aks get-credentials] [ az-aks-get-credentials] příkazu. Když uživatel potom komunikuje s clusterem AKS s `kubectl`, zobrazí se výzva k přihlášení pomocí přihlašovacích údajů Azure AD. Tento přístup poskytuje jeden zdroj pro správu účtu uživatele a heslo pověření. Uživatel může pouze k prostředkům, tak jak je definoval správce clusteru.
+S využitím clusterů Azure AKS integrované s Active Directory můžete udělit uživatelům nebo skupinám přístup k prostředkům Kubernetes v oboru názvů nebo v clusteru. Získání `kubectl` kontextu konfigurace, může uživatel spouštět [az aks get-credentials][az-aks-get-credentials] příkazu. Když uživatel potom komunikuje s clusterem AKS s `kubectl`, zobrazí se výzva k přihlášení pomocí přihlašovacích údajů Azure AD. Tento přístup poskytuje jeden zdroj pro správu účtu uživatele a heslo pověření. Uživatel může pouze k prostředkům, tak jak je definoval správce clusteru.
 
-Ověřování Azure AD v clusteru AKS pomocí OpenID Connect, vrstvu identit postavené na protokol OAuth 2.0. Definuje mechanismy získání a přístup k chráněným prostředkům použití přístupových tokenů OAuth 2.0 a OpenID Connect implementuje ověřování jako rozšíření proces autorizace OAuth 2.0. Další informace o OpenID Connect, najdete v článku [Open ID Connect dokumentaci][openid-connect]. Ověření ověřovacích tokenů získaných ze služby Azure AD pomocí OpenID Connect, AKS clustery používají ověřování pomocí tokenu Webhooku Kubernetes. Další informace najdete v tématu [dokumentace k ověřování pomocí tokenu Webhooku][webhook-token-docs].
+Ověřování Azure AD v clusteru AKS pomocí OpenID Connect, vrstvu identit postavené na protokol OAuth 2.0. Definuje mechanismy získání a přístup k chráněným prostředkům použití přístupových tokenů OAuth 2.0 a OpenID Connect implementuje ověřování jako rozšíření proces autorizace OAuth 2.0. Další informace o OpenID Connect, najdete v článku [Open ID Connect dokumentaci][openid-connect]. To verify the authentication tokens obtained from Azure AD through OpenID Connect, AKS clusters use Kubernetes Webhook Token Authentication. For more information, see the [Webhook Token Authentication documentation][webhook-token-docs].
 
 ## <a name="role-based-access-controls-rbac"></a>Řízení přístupu na základě rolí (RBAC)
 

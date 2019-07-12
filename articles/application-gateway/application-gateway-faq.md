@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 6/1/2019
 ms.author: victorh
-ms.openlocfilehash: 25779cd62f70df41a7734d2f8097504923dcb3a3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 71f1beb68171613fe926ba4d87a13ef58cac1edf
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66430884"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655279"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Nejčastější dotazy k Application Gateway
 
@@ -45,7 +45,7 @@ Zobrazit [podpora HTTP/2](https://docs.microsoft.com/azure/application-gateway/c
 
 ### <a name="what-resources-are-supported-as-part-of-a-backend-pool"></a>Které prostředky jsou podporované jako součást back-endový fond?
 
-Zobrazit [podporované back-endovým prostředkům](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#backend-pool).
+Zobrazit [podporované back-endovým prostředkům](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#backend-pools).
 
 ### <a name="in-what-regions-is-application-gateway-available"></a>V jaké oblasti je Application Gateway k dispozici?
 
@@ -135,7 +135,7 @@ Ano. Můžete nastavit vyprázdnění Chcete-li změnit členy v rámci fondu ba
 
 Ano. Azure rozděluje instance mezi aktualizace a domény selhání k zajištění, že instance není selžou všechny najednou. Služba Application Gateway podporuje škálování tak, že přidáte více instancí stejné bráně sdílení zatížení.
 
-## <a name="configuration"></a>Konfigurace
+## <a name="configuration"></a>Konfiguraci
 
 ### <a name="is-application-gateway-always-deployed-in-a-virtual-network"></a>Služba Application Gateway vždy nasazení ve virtuální síti?
 

@@ -10,19 +10,20 @@ ms.topic: tutorial
 ms.date: 07/01/2019
 ms.author: laobri
 ms.custom: seodec2018
-ms.openlocfilehash: 98ca455fd92b0c9ed276082413734c6bc063f310
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 2a4d7435383f740dc386a740062e66cd2d3585b0
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671941"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798903"
 ---
 # <a name="quickstart-create-an-azure-search-index-using-the-azure-portal"></a>Rychlý start: Vytvoření indexu Azure Search pomocí webu Azure portal
 > [!div class="op_single_selector"]
 > * [Azure Portal](search-get-started-portal.md)
-> * [PowerShell](search-howto-dotnet-sdk.md)
+> * [PowerShell](search-get-started-powershell.md)
 > * [Postman](search-get-started-postman.md)
-> * [C#](search-create-index-dotnet.md)
+> * [Python](search-get-started-python.md)
+> * [C#](search-get-started-dotnet.md)
 
 Pro rychlé Seznamte se s koncepty Azure Search zkuste integrované nástroje na webu Azure Portal. Průvodci a editory neposkytují úplnou paritu s využitím .NET a rozhraní REST API, ale můžete začít rychle s obsahuje úvod bez kódu zápis zajímavé dotazy na ukázková data během několika minut.
 
@@ -33,9 +34,9 @@ Pro rychlé Seznamte se s koncepty Azure Search zkuste integrované nástroje na
 > * Zobrazení stávajícího indexu a možnosti pro změnu jeho
 > * Prozkoumejte fulltextové vyhledávání, filtry, omezující vlastnosti, vyhledávání přibližných shod a geografické vyhledávání pomocí **Průzkumníka služby Search**
 
-Pokud jsou příliš omezení nástroje, můžete zvážit [založený na kódu Úvod do programování Azure Search v .NET](search-howto-dotnet-sdk.md) nebo použijte [Postman nebo Fiddler pro volání rozhraní REST API](search-get-started-postman.md).
+Pokud jsou příliš omezení nástroje, můžete zvážit [založený na kódu Úvod do programování Azure Search v .NET](search-howto-dotnet-sdk.md) nebo použijte [Postman pro volání rozhraní REST API](search-get-started-postman.md). Můžete se taky podívat na 6minutovou ukázku kroků v tomto kurzu, která začíná přibližně po prvních třech minutách v tomto [videu s přehledem Azure Search](https://channel9.msdn.com/Events/Connect/2016/138).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. Můžete se taky podívat na 6minutovou ukázku kroků v tomto kurzu, která začíná přibližně po prvních třech minutách v tomto [videu s přehledem Azure Search](https://channel9.msdn.com/Events/Connect/2016/138).
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -210,7 +211,7 @@ Součástí požadavků hledání jsou filtry omezující vlastnost. Pomocí par
 
 * Kategorizovat je možné pouze filtrovatelná pole. Ve výsledcích je možné vrátit pouze zobrazitelná pole.
 
-* *Hodnocení* pole je dvojité přesnosti s plovoucí desetinnou čárkou a seskupení bude podle přesné hodnoty. Další informace o seskupování podle intervalu (například "3 hodnocení hvězdičkami," "4 hodnocení hvězdičkami," atd.), najdete v článku [jak ve službě Azure Search implementovat fasetovou navigaci](https://docs.microsoft.com/en-us/azure/search/search-faceted-navigation#filter-based-on-a-range).
+* *Hodnocení* pole je dvojité přesnosti s plovoucí desetinnou čárkou a seskupení bude podle přesné hodnoty. Další informace o seskupování podle intervalu (například "3 hodnocení hvězdičkami," "4 hodnocení hvězdičkami," atd.), najdete v článku [jak ve službě Azure Search implementovat fasetovou navigaci](https://docs.microsoft.com/azure/search/search-faceted-navigation#filter-based-on-a-range).
 
 
 ### <a name="highlight-query"></a> Zvýraznění výsledků hledání
@@ -267,9 +268,13 @@ Také jste zjistili, jak najít indexy, indexery a zdroje dat na portálu. Pomoc
 
 ## <a name="clean-up"></a>Vyčištění
 
-Pokud v tomto kurzu byla vaše první používání služby Azure Search, odstraňte skupinu prostředků obsahující službu Azure Search. Pokud ne, vyhledejte název odpovídající skupiny prostředků v seznamu služeb a odstraňte ji.
+Pokud pracujete ve svém vlastním předplatném, je vhodné na konci projektu a zjistěte, jestli stále potřebují prostředky, že kterou jste vytvořili. Levé může spuštěné prostředky nákladů peníze. Můžete odstranit prostředky jednotlivě nebo odstranit skupinu prostředků, kterou chcete odstranit celou sadu prostředků.
 
-## <a name="next-steps"></a>Další postup
+Můžete najít a spravovat prostředky na portálu pro použití **všechny prostředky** nebo **skupiny prostředků** odkaz v levém navigačním podokně.
+
+Pokud používáte bezplatné služby, mějte na paměti, že jste omezeni na tři indexy, indexery a datového zdroje. Můžete odstranit jednotlivé položky na portálu, abychom dodrželi omezení. 
+
+## <a name="next-steps"></a>Další kroky
 
 Můžete prozkoumat další funkce služby Azure Search s použitím programových nástrojů:
 

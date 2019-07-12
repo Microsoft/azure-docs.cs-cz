@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 01/03/2018
+ms.date: 07/10/2018
 ms.author: juliako
-ms.openlocfilehash: fd5bf9f7bca9c667191d0d3f83be6e29a96c8dbe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.openlocfilehash: e72085d3ac9815b3ec5fd89c678860bd75761f73
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64926515"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798104"
 ---
 # <a name="azure-media-player-overview"></a>Přehled služby Azure Media Player
 
@@ -30,7 +30,7 @@ Microsoft Azure Media Services umožňuje k přehrávání obsahu obsah tak, aby
 
 ### <a name="start-using"></a>Začněte používat
 
-Můžete použít [stránky ukázku Azure Media Player](https://aka.ms/amp) přehrávání Azure Media Services ukázky nebo vlastní datový proud.  
+Můžete použít [stránky ukázku Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html) přehrávání Azure Media Services ukázky nebo vlastní datový proud.  
 
 Chcete-li přehrát nové video, vložte různé adresy URL a stiskněte klávesu **aktualizace**.
 
@@ -40,7 +40,7 @@ Chcete-li nakonfigurovat různé možnosti přehrávání (například Odborný,
 
 ### <a name="monitor-diagnostics-of-a-video-stream"></a>Monitorování diagnostiky datový proud videa
 
-Můžete použít [stránky ukázku Azure Media Player](https://aka.ms/amp) monitorování diagnostiky datový proud videa. 
+Můžete použít [stránky ukázku Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html) monitorování diagnostiky datový proud videa. 
 
 ![Diagnostika Azure Media Player](./media/azure-media-player/diagnostics.png)
 

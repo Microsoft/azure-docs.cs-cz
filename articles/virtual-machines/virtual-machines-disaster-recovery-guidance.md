@@ -4,7 +4,7 @@ description: Zjistěte, co můžete dělat v případě, že výpadku služby Az
 services: virtual-machines
 documentationcenter: ''
 author: kmouss
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: 65272148-ff06-4bce-91f1-851d706d4d40
 ms.service: virtual-machines
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/31/2017
 ms.author: kmouss;aglick
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dc71e8564b35f4fdd4153a04c66a3d8c5df88c30
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f071e1ae97228a16799d391e226ba44b99f6096e
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61478840"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67721183"
 ---
 # <a name="what-to-do-in-the-event-that-an-azure-service-disruption-impacts-azure-vms"></a>Co dělat v případě, že výpadku služby Azure má vliv na virtuálních počítačích Azure
 V Microsoftu usilovně pracujeme na Ujistěte se, že naše služby jsou vždy k dispozici, a když je potřebujete. Vynutí nad rámec naší ovládací prvek někdy ovlivnit nám takovým způsobem, který způsobit přerušení neplánované služeb.
@@ -44,11 +44,11 @@ Toto je nejlepší, pokud jste nenastavili Azure Site Recovery, geograficky redu
 
 
 > [!NOTE]
-> Mějte na paměti, že nemáte žádné kontrolu nad tento proces a se vztahuje pouze k přerušení služeb na úrovni celé oblasti. Z tohoto důvodu musíte také spoléhat na další specifické pro aplikaci Zálohování strategie pro dosažení nejvyšší úroveň dostupnosti. Další informace najdete v části na [Data strategie zotavení po havárii](https://docs.microsoft.com/azure/architecture/resiliency/disaster-recovery-azure-applications#data-strategies-for-disaster-recovery).
+> Mějte na paměti, že nemáte žádné kontrolu nad tento proces a se vztahuje pouze k přerušení služeb na úrovni celé oblasti. Z tohoto důvodu musíte také spoléhat na další specifické pro aplikaci Zálohování strategie pro dosažení nejvyšší úroveň dostupnosti. Další informace najdete v části na [Data strategie zotavení po havárii](https://docs.microsoft.com/azure/architecture/reliability/disaster-recovery#disaster-recovery-plan).
 >
 >
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Spustit [chrání vaše aplikace spuštěné na virtuálních počítačích Azure](https://aka.ms/a2a-getting-started) pomocí Azure Site Recovery
 

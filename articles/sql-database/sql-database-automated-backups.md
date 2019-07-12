@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 06/27/2019
-ms.openlocfilehash: 1eeb37ce74b3e2f57588197d6bb88f59944c61cf
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: ce16450f7f25e5703cf283c4babb2a935aad21de
+ms.sourcegitcommit: af31deded9b5836057e29b688b994b6c2890aa79
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67460661"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67813047"
 ---
 # <a name="automated-backups"></a>Automatizované zálohy
 
@@ -109,7 +109,11 @@ Pokud vaše databáze je zašifrovaný pomocí šifrování TDE, záloh se šifr
 
 ## <a name="how-does-microsoft-ensure-backup-integrity"></a>Jak Microsoft zajišťují integritu zálohy
 
-Průběžně technický tým Azure SQL Database automaticky ověřuje obnovení automatizovaných záloh databází ve službě. Při obnovení databáze také přijímat kontroly integrity pomocí příkazu DBCC CHECKDB. Žádné problémů zjištěných během kontroly integrity způsobí výstrahy technickému týmu. Další informace o integritě dat ve službě Azure SQL Database najdete v tématu [integritu dat ve službě Azure SQL Database](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/).
+Průběžně Azure SQL Database automaticky inženýrský tým testy obnovení automatizovaných záloh databáze z databáze, umístí se do logických serverů a elastické fondy (není dostupný ve spravované instanci). Při obnovení bodu v čase databáze také přijímat kontroly integrity pomocí příkazu DBCC CHECKDB.
+
+Spravovaná Instance trvá automatické prvotní zálohy se `CHECKSUM` databází obnovit pomocí nativní `RESTORE` příkaz nebo služby migrace dat po dokončení migrace.
+
+Žádné problémů zjištěných během kontroly integrity způsobí výstrahy technickému týmu. Další informace o integritě dat ve službě Azure SQL Database najdete v tématu [integritu dat ve službě Azure SQL Database](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/).
 
 ## <a name="how-do-automated-backups-impact-compliance"></a>Vliv automatizovaných záloh dodržování předpisů
 

@@ -4,7 +4,7 @@ description: Tento článek vás provede platformou podporované migraci prostř
 services: virtual-machines-linux
 documentationcenter: ''
 author: singhkays
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: d6f5a877-05b6-4127-a545-3f5bede4e479
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: 34dad39e3784dd0bc73e3be108d6b31d4f479a1e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0e21a962fb03a42af4cb32fcdf60cd59746a591d
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60543138"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67667366"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-cli"></a>Migrovat prostředky IaaS z modelu nasazení classic do Azure Resource Manageru pomocí rozhraní příkazového řádku Azure
 Tyto kroky ukazují, jak migrovat infrastrukturu jako službu (IaaS) prostředky z modelu nasazení classic do modelu nasazení Azure Resource Manageru pomocí příkazů rozhraní příkazového řádku Azure (CLI). Tento článek vyžaduje [klasické rozhraní příkazového řádku Azure](../../cli-install-nodejs.md). Vzhledem k tomu, že rozhraní příkazového řádku Azure jde použít jenom pro prostředky Azure Resource Manageru, nelze použít pro tuto migraci.
@@ -181,7 +181,7 @@ Pokud připravené konfigurací spokojeni, můžete posunout vpřed a potvrdit p
 
     azure storage account commit-migration <storageAccountName>
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Přehled o platformou podporované migraci prostředků IaaS z modelu classic na Azure Resource Manager](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Podrobné technické informace o platformou podporované migraci z modelu Classic na Azure Resource Manager](migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

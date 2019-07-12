@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: brendm
 ms.custom: seodec18
-ms.openlocfilehash: 51ca597208b582e95fd305886dcf163744825eee
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: af6fd7b99147396a70fccc7b2b11dfef3def15a8
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509642"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786295"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Konfigurace aplikace v Javě v Linuxu pro Azure App Service
 
@@ -133,7 +133,7 @@ S jednou aplikací jeden nasazovací slot v jejich plán služby App Service moh
 
 Při nastavení haldy ladění aplikace, projděte si podrobnosti vašeho plánu služby App Service a vezměte v úvahu více aplikací a slot nasazení je potřeba najít optimální přidělení paměti.
 
-Pokud nasazujete aplikaci JAR, by měly být pojmenovány *app.jar* tak, aby integrované image můžete správně identifikují vaši aplikaci. (Modul plug-in Maven nemá tomto přejmenování automaticky.) Pokud nechcete, aby přejmenovat váš soubor JAR pro *app.jar*, můžete nahrát skript prostředí pomocí příkazu Spustit váš soubor JAR. Vložte úplnou cestu pro tento skript [spouštěcí soubor](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-faq#startup-file) textového pole v části konfigurace na portálu.
+Pokud nasazujete aplikaci JAR, by měly být pojmenovány *app.jar* tak, aby integrované image můžete správně identifikují vaši aplikaci. (Modul plug-in Maven nemá tomto přejmenování automaticky.) Pokud nechcete, aby přejmenovat váš soubor JAR pro *app.jar*, můžete nahrát skript prostředí pomocí příkazu Spustit váš soubor JAR. Vložte úplnou cestu pro tento skript [spouštěcí soubor](app-service-linux-faq.md#built-in-images) textového pole v části konfigurace na portálu.
 
 ### <a name="turn-on-web-sockets"></a>Zapnout webové sokety
 
@@ -170,6 +170,10 @@ Alternativně můžete nakonfigurovat nastavení aplikace pomocí modulu plug-in
 ### <a name="adjust-startup-timeout"></a>Nastavení časového limitu pro spuštění
 
 Pokud vaše aplikace v Javě je zejména velkých, měli byste zvýšit časový limit spuštění. Vytvořit nastavení aplikace, `WEBSITES_CONTAINER_START_TIME_LIMIT` a nastavte ho na počet sekund, po které služby App Service má čekat před vypršením časového limitu. Maximální hodnota je `1800` sekund.
+
+### <a name="pre-compile-jsp-files"></a>Před kompilací soubory JSP
+
+Chcete-li zlepšit výkon aplikací Tomcat, můžete zkompilovat soubory JSP před nasazením do služby App Service. Můžete použít [plug-in Maven](https://sling.apache.org/components/jspc-maven-plugin/plugin-info.html) zadaná vázacích Apache prostředků nebo použití této funkce [soubor sestavení Ant](https://tomcat.apache.org/tomcat-9.0-doc/jasper-howto.html#Web_Application_Compilation).
 
 ## <a name="secure-applications"></a>Zabezpečení aplikací
 

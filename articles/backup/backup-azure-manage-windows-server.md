@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 8/21/2018
+ms.date: 07/08/2019
 ms.author: raynew
-ms.openlocfilehash: f7d97866bb3ae895f83fff248ceec2e83dd60bf9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b447290a6910d144703bb796290908d0fc21b924
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66688910"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705139"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Monitorování a správa trezorů služby Recovery Services
 
@@ -79,7 +79,7 @@ Sestava výstrahy zálohování obsahuje výstrahy pro trezor.
 
 ![Výstrahy záloh](./media/backup-azure-manage-windows-server/backup-alerts.png)
 
-### <a name="alerts"></a>Výstrahy
+### <a name="alerts"></a>Upozornění
 
 Výstrahy zálohování seznamu zobrazí vybrané informace o filtrované výstrahy. V nabídce Backup, upozornění můžete filtrovat výstrahy kritický nebo upozornění.
 
@@ -100,10 +100,10 @@ Ve výchozím nastavení jsou všechny informace, s výjimkou **čas posledního
 * Výstrahy
 * Zálohovaná položka
 * Chráněný Server
-* Severity
+* severity
 * Doba trvání
 * Čas vytvoření
-* Status
+* Stav
 * Čas posledního výskytu
 
 ### <a name="change-the-details-in-alerts-report"></a>Změnit podrobnosti v sestavu výstrah
@@ -228,7 +228,7 @@ Zobrazí se jedné operace nebo všechny operace. Nelze vybrat dvě nebo tři op
 * Zakázat zálohování
 * Odstranění zálohovaných dat
 
-#### <a name="status"></a>Status
+#### <a name="status"></a>Stav
 
 Můžete zobrazit všechny stavy nebo jeden. Nelze vybrat dvě nebo tři stavy. K dispozici stavy jsou:
 
@@ -260,21 +260,6 @@ Export úloh informace do tabulky, klikněte na tlačítko **exportovat úlohy**
 * Použití úložiště LRS cloudové přidružených k trezoru
 * Využití úložiště GRS cloudu přidružených k trezoru
 
-
-## <a name="frequently-asked-questions"></a>Nejčastější dotazy
-
-### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>Jak dlouho trvá stav úlohy agenta Azure backup tak, aby odrážely na portálu?
-Na webu Azure portal může trvat až 15 minut tak, aby odrážel stav úlohy agenta Azure backup.
-
-### <a name="when-a-backup-job-fails-how-long-does-it-take-to-raise-an-alert"></a>Pokud se úloha zálohování nezdaří, jak dlouho trvá vydat výstrahu?
-V rámci 20 minut selhání zálohování Azure je vydána výstraha.
-
-### <a name="is-there-a-case-where-an-email-wont-be-sent-if-notifications-are-configured"></a>Je případ, kdy e-mail neodešle, pokud jsou oznámení nakonfigurovaná?
-Ano. V následujících situacích nedocházelo k jejich odesílání.
-
-* Pokud jsou oznámení nakonfigurovaná každou hodinu a výstraha se vyvolá a vyřeší během hodiny.
-* Když se zruší úlohu
-* Pokud se druhá úloha zálohování se nezdaří, protože probíhá původní úlohy zálohování
 
 ## <a name="troubleshooting-monitoring-issues"></a>Řešení potíží s problémy s monitorováním
 

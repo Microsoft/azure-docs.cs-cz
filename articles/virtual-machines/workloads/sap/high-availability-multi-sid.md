@@ -4,7 +4,7 @@ description: Průvodce konfigurace několika identifikátorů SID s vysokou dost
 services: virtual-machines-windows, virtual-network, storage
 documentationcenter: saponazure
 author: goraco
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 12/09/2016
 ms.author: goraco
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1b27ea761d19eb494895daceff699b2b604eccea
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dadbfb138fb9e3e77cee265c008524b9c424a5dd
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66153857"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709623"
 ---
 # <a name="create-an-sap-netweaver-multi-sid-configuration"></a>Vytvořte konfiguraci několika identifikátorů SID služby SAP NetWeaver
 
@@ -447,7 +447,7 @@ ms.locfileid: "66153857"
 
 V září 2016 společnost Microsoft vydala funkce, kde můžete spravovat víc virtuálních IP adres pomocí [Azure interního nástroje load balancer][load-balancer-multivip-overview]. Tato funkce již existuje v nástroji pro vyrovnávání zatížení Azure externí.
 
-Pokud máte nasazení SAP, jak je uvedeno v, můžete použít interní nástroj pro vytvoření konfigurace clusteru Windows pro SAP ASCS/SCS, [Příručka pro vysokou dostupnost SAP NetWeaver na virtuálních počítačích s Windows] [ sap-ha-guide].
+Pokud máte nasazení SAP, jak je uvedeno v, můžete použít interní nástroj pro vytvoření konfigurace clusteru Windows pro SAP ASCS/SCS, [Příručka pro vysokou dostupnost SAP NetWeaver na virtuálních počítačích s Windows][sap-ha-guide].
 
 Tento článek se zaměřuje na přesunout z jednoho instalačního ASCS/SCS do konfigurace několika identifikátorů SID SAP nainstalováním dalších instancí SAP ASCS/SCS v clusteru do existujícího clusteru Windows Server Failover Clustering (WSFC). Po dokončení tohoto procesu jste nakonfigurovali clusteru s několika SID služby SAP.
 
@@ -457,7 +457,7 @@ Tento článek se zaměřuje na přesunout z jednoho instalačního ASCS/SCS do 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Požadavky
-Cluster služby WSFC, který se používá pro jednu instanci SAP ASCS/SCS, jste už nakonfigurovali, jak je popsáno v [Příručka pro vysokou dostupnost SAP NetWeaver na virtuálních počítačích s Windows] [ sap-ha-guide] a jak je znázorněno v tomto diagramu.
+Cluster služby WSFC, který se používá pro jednu instanci SAP ASCS/SCS, jste už nakonfigurovali, jak je popsáno v [Příručka pro vysokou dostupnost SAP NetWeaver na virtuálních počítačích s Windows][sap-ha-guide] a jak je znázorněno v tomto diagramu.
 
 ![Instanci SAP ASCS/SCS vysoké dostupnosti][sap-ha-guide-figure-6001]
 
@@ -489,7 +489,7 @@ Kompletní prostředí s dvěma systémy vysoké dostupnosti SAP bude vypadat ta
 ## <a name="prepare-the-infrastructure"></a>Příprava infrastruktury
 Připravíte infrastrukturu, můžete nainstalovat další instance SAP ASCS/SCS s následujícími parametry:
 
-| Název parametru | Hodnota |
+| Název parametru | Value |
 | --- | --- |
 | SAP ASCS/SCS SID |pr1-lb-ascs |
 | K SAP DBMS interní nástroj pro vyrovnávání zatížení | PR5 |
@@ -662,9 +662,9 @@ Podrobný postup je následující:
 
 7. [Změnit typ spuštění instance služby Windows Lajících SAP][sap-ha-guide-9.4].
 
-8. [Nainstalovat primární aplikační server SAP] [ sap-ha-guide-9.5] na novém vyhrazený virtuální počítač.
+8. [Nainstalovat primární aplikační server SAP][sap-ha-guide-9.5] na novém vyhrazený virtuální počítač.
 
-9. [Nainstalovat další aplikační server SAP] [ sap-ha-guide-9.6] na novém vyhrazený virtuální počítač.
+9. [Nainstalovat další aplikační server SAP][sap-ha-guide-9.6] na novém vyhrazený virtuální počítač.
 
 10. [Testovací převzetí služeb při selhání SAP ASCS/SCS instance a replikace SIOS][sap-ha-guide-10].
 

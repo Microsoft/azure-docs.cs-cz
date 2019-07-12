@@ -7,19 +7,20 @@ author: rkarlin
 manager: rkarlin
 editor: ''
 ms.assetid: d51d2e09-a073-41c8-b396-91d60b057e6a
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/17/2019
 ms.author: rkarlin
-ms.openlocfilehash: 36d38aa82b4f0ec8d7d9ef6ebb1145b1fcc334df
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: 188febf090ddb3f685f9d3c3b94d822f15bbcfcb
+ms.sourcegitcommit: 80aaf27e3ad2cc4a6599a3b6af0196c6239e6918
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190576"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673769"
 ---
 # <a name="connect-windows-security-events"></a>Připojení událostí zabezpečení systému Windows 
 
@@ -30,10 +31,10 @@ ms.locfileid: "67190576"
 Všechny události zabezpečení z Windows serverů, připojený k pracovnímu prostoru Sentinelu Azure můžete Streamovat. Toto připojení umožňuje zobrazit řídicí panely, vytvářet vlastní výstrahy a zlepšit šetření. To poskytuje lepší přehled o síti vaší organizace a zlepšuje schopnosti operace zabezpečení.  Můžete vybrat události datového proudu:
 
 - **Všechny události** – všechny Windows zabezpečení a událostí nástroje AppLocker.
-- **Běžné** – standardní sadu událostí, pro účely auditování. Záznam pro audit úplné uživatelské je zahrnuta v této sadě. Tato sada obsahuje například uživatelských přihlášení a odhlášení uživatele (událost ID 4634). Zahrnujeme auditování akce, jako je změnami skupin zabezpečení, operace protokolu Kerberos řadič klíče domény a další události, které doporučuje organizace odvětví.
+- **Běžné** – standardní sadu událostí, pro účely auditování. Záznam pro audit úplné uživatelské je zahrnuta v této sadě. Tato sada obsahuje například uživatele přihlášení a odhlášení uživatele událostí (event ID 4634). Zahrnujeme auditování akce, jako je změnami skupin zabezpečení, operace protokolu Kerberos řadič klíče domény a další události, které doporučuje organizace odvětví.
 
 Události, které mají velmi malé množství byly součástí běžnou sadu jako hlavní motivace rozhodnout se, že všechny události přímo je snížit objem a nechcete vyfiltrovat konkrétní události.
-- **Minimální** -malou sadu událostí, které může znamenat potenciální hrozby. Když tuto možnost povolíte, nebudete moci mít úplný záznam pro audit.  Tato sada zahrnuje pouze události, které mohou uvádět úspěšné porušení zabezpečení a důležité události, které obsahují velmi malé množství. Například tato sada obsahuje úspěšné i neúspěšné přihlášení uživatele (událost ID 4624 4625), ale neobsahuje odhlášení, který je důležitý pro auditování, ale ne smysl pro zjišťování a má relativně velkým objemem. Většina objemu dat této sady se události přihlášení a proces vytvoření události (událost ID 4688).
+- **Minimální** -malou sadu událostí, které může znamenat potenciální hrozby. Když tuto možnost povolíte, nebudete moci mít úplný záznam pro audit.  Tato sada zahrnuje pouze události, které mohou uvádět úspěšné porušení zabezpečení a důležité události, které obsahují velmi malé množství. Například tato sada obsahuje úspěšné i neúspěšné přihlášení uživatele (událost ID 4624 4625), ale neobsahuje odhlášení informace, které je důležitý pro auditování, ale ne smysl pro zjišťování a obsahuje relativně velkým objemem. Většina objemu dat této sady se přihlášení v událostech a proces vytvoření události (událost ID 4688).
 - **Žádný** – žádné události zabezpečení ani Applockeru.
 
 > [!NOTE]
@@ -69,7 +70,7 @@ Může trvat přibližně 20 minut, než vaše protokoly spuštění se zobrazí
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V tomto dokumentu jste zjistili, jak se připojit k Azure Sentinelu události zabezpečení Windows. Další informace o Azure Sentinelu, naleznete v následujících článcích:
 - Zjistěte, jak [umožňuje získat přehled vaše data a potenciální hrozby](quickstart-get-visibility.md).
 - Začínáme [detekuje hrozby s využitím Azure Sentinelu](tutorial-detect-threats.md).

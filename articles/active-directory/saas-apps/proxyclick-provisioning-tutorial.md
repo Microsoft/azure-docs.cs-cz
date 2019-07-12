@@ -8,19 +8,19 @@ writer: zchia
 manager: beatrizd
 ms.assetid: na
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/3/2019
-ms.author: zchia
-ms.openlocfilehash: 2117f481d213c14f8feeb23eb8af3670db81cab4
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.author: jeedes
+ms.openlocfilehash: c1656e6cc0c690e5a2bccfd2efab02aa843875b8
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67276636"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672887"
 ---
 # <a name="tutorial-configure-proxyclick-for-automatic-user-provisioning"></a>Kurz: Konfigurace Proxyclick pro automatické zřizování uživatelů
 
@@ -169,7 +169,7 @@ Další informace o tom, jak číst zřizování protokoly Azure AD najdete v t�
 * Vyžaduje Proxyclick **e-mailů** a **uživatelské jméno** mít stejnou hodnotu zdroje. Všechny aktualizace buď atributy upraví jinou hodnotu.
 * Proxyclick nepodporuje zřizování pro skupiny.
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

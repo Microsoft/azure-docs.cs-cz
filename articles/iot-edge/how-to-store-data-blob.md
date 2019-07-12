@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: dabaa06e224c6498c0080c4546c04f40e3919bb6
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: bb6cd43c77c31874115250d13f8d4067b3db7b36
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448535"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67804973"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge-preview"></a>Store dat na hraničních zařízeních s Azure Blob Storage na hraničních zařízeních IoT (preview)
 
@@ -62,13 +62,14 @@ Zařízení Azure IoT Edge:
 
 - Azure Blob Storage na modul IoT Edge podporuje následující konfigurace zařízení:
 
-  | Operační systém | Architektura |
-  | ---------------- | ----- | ----- |
-  | Ubuntu Server 16.04 | AMD64 |
-  | Ubuntu Server 18.04 | AMD64 |
-  | Windows 10 IoT Enterprise | AMD64 |
-  | Windows Server. 2019 | AMD64 |
-  | Raspbian stretch | ARM32 |
+  | Operační systém | AMD64 | ARM32v7 | ARM64 |
+  | ---------------- | ----- | ----- | ---- |
+  | Raspbian stretch | Ne | Ano | Ne |  
+  | Ubuntu Server 16.04 | Ano | Ne | Ano |
+  | Ubuntu Server 18.04 | Ano | Ne | Ano |
+  | Windows 10 IoT Enterprise, build 17763 | Ano | Ne | Ne |
+  | Windows Server 2019, build 17763 | Ano | Ne | Ne |
+  
 
 Cloudové prostředky:
 
@@ -212,7 +213,7 @@ Nepodporovaný:
 
 Tady jsou [poznámky v docker hubu](https://hub.docker.com/_/microsoft-azure-blob-storage) pro tento modul.
 
-## <a name="feedback"></a>Váš názor
+## <a name="feedback"></a>Zpětná vazba
 
 Váš názor je důležitý pro nás, aby tento modul a jeho funkcí užitečné a snadno se používá. Sdělte nám prosím svůj názor a dejte nám vědět, jak můžeme vylepšit.
 

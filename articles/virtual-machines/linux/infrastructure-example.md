@@ -4,7 +4,7 @@ description: Další informace o klíčových návrh a implementace pokyny pro n
 documentationcenter: ''
 services: virtual-machines-linux
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 281fc2c0-b533-45fa-81a3-728c0049c73d
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 00357641f51be703d2e5c52c5b9cc6187ce05ff6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 63bdfa6f419d97696faa6545cbb1017a66cf0e2d
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60543040"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67667539"
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-linux-vms"></a>Průvodce ukázkovou infrastrukturou Azure pro virtuální počítače s Linuxem
 Tento článek vás provede vytvoření příkladu infrastruktury aplikace. Můžeme podrobně navrhování infrastruktury pro jednoduché online úložiště, který spojuje všechny zásady a rozhodnutí týkající se vytváření názvů, skupiny dostupnosti, virtuální sítě a nástroje pro vyrovnávání zatížení a skutečného nasazení virtuálních počítačů (VM).
@@ -61,7 +61,7 @@ Všechny výše uvedené použijte tyto zásady vytváření názvů:
 ## <a name="azure-subscriptions-and-accounts"></a>Účtů a předplatných Azure
 Adventure Works Cycles využívá svoje předplatné Enterprise s názvem předplatného Enterprise společnosti Adventure Works k vyúčtování pro danou úlohu IT.
 
-## <a name="storage"></a>Úložiště
+## <a name="storage"></a>Storage
 Adventure Works Cycles určit, že by měl použít Azure Managed Disks. Při vytváření virtuálních počítačů, se používají obou úrovní úložiště k dispozici úložiště:
 
 * **Storage úrovně standard** pro webové servery, aplikační servery a řadiče domény a jejich datové disky.

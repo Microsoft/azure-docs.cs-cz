@@ -9,12 +9,12 @@ manager: kfile
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/29/2017
-ms.openlocfilehash: abb2a89f41340e8e2e26fa36cc20b790341618d0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f24ad348c681609392f83af894bf774dbee226bc
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60763133"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620843"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>V reálném čase analýza sentimentu na Twitteru ve službě Azure Stream Analytics
 
@@ -232,9 +232,9 @@ Teď, když jsou události tweet streamování v reálném čase z Twitteru, mů
 
 ## <a name="specify-the-job-query"></a>Zadejte dotaz na úlohu
 
-Stream Analytics podporuje jednoduchý a deklarativní dotazu model, který popisuje transformace. Další informace o jazyku, najdete v článku [referenčních informacích k Azure Stream Analytics Query Language](https://msdn.microsoft.com/library/azure/dn834998.aspx).  V tomto kurzu vám pomůže vytvářet a testovat několik dotazů nad daty Twitter.
+Stream Analytics podporuje jednoduchý a deklarativní dotazu model, který popisuje transformace. Další informace o jazyku, najdete v článku [referenčních informacích k Azure Stream Analytics Query Language](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference).  V tomto kurzu vám pomůže vytvářet a testovat několik dotazů nad daty Twitter.
 
-Chcete-li porovnat číslo zmínky mezi témata, můžete použít [aktivační událost pro Přeskakující okno](https://msdn.microsoft.com/library/azure/dn835055.aspx) získat počet zmínky podle témat každých pět sekund.
+Chcete-li porovnat číslo zmínky mezi témata, můžete použít [aktivační událost pro Přeskakující okno](https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics) získat počet zmínky podle témat každých pět sekund.
 
 1. Zavřít **vstupy** okno, pokud jste tak již neučinili.
 
@@ -266,7 +266,7 @@ Chcete-li porovnat číslo zmínky mezi témata, můžete použít [aktivační 
 
     Pokud nepoužili `TwitterStream` jako alias pro vstup, nahraďte váš alias pro `TwitterStream` v dotazu.  
 
-    Tento dotaz používá **TIMESTAMP BY** – klíčové slovo k určení pole časového razítka v datové části pro použití v dočasné výpočty. Pokud toto pole není zadán, oddílová operace se provádí na základě doby, které byly přijaty každé události centra událostí. Další informace najdete v části "Čas doručení vs čas aplikace" [referenční příručka k Stream Analytics Query](https://msdn.microsoft.com/library/azure/dn834998.aspx).
+    Tento dotaz používá **TIMESTAMP BY** – klíčové slovo k určení pole časového razítka v datové části pro použití v dočasné výpočty. Pokud toto pole není zadán, oddílová operace se provádí na základě doby, které byly přijaty každé události centra událostí. Další informace najdete v části "Čas doručení vs čas aplikace" [referenční příručka k Stream Analytics Query](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference).
 
     Tento dotaz také přistupuje pomocí časového razítka na konci každé okno **System.Timestamp** vlastnost.
 
@@ -348,7 +348,7 @@ Můžete použít nástroje, jako je [Průzkumníka služby Azure Storage](https
 
 ## <a name="create-another-query-to-identify-trending-topics"></a>Vytvořit jiný dotaz k identifikaci populárních témat
 
-Je na základě jiný dotaz, můžete použít k pochopení sentimentu Twitter [posuvné okno](https://msdn.microsoft.com/library/azure/dn835051.aspx). Chcete-li identifikace populárních témat, vyhledejte témata, které překračují prahovou hodnotu pro zmínky ve stanoveném čase.
+Je na základě jiný dotaz, můžete použít k pochopení sentimentu Twitter [posuvné okno](https://docs.microsoft.com/stream-analytics-query/sliding-window-azure-stream-analytics). Chcete-li identifikace populárních témat, vyhledejte témata, které překračují prahovou hodnotu pro zmínky ve stanoveném čase.
 
 Pro účely tohoto kurzu vyhledejte témata, která se nachází více než 20krát v posledních 5 sekund.
 
@@ -379,5 +379,5 @@ Potřebujete další pomoc, vyzkoušejte naše [fóru Azure Stream Analytics](ht
 * [Úvod do služby Azure Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Škálování služby Stream Analytics](stream-analytics-scale-jobs.md)
-* [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Referenční příručka k rozhraní REST API pro správu služby Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn835031.aspx)

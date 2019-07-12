@@ -6,14 +6,14 @@ ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.topic: howto
+ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: af5ddd50556b493cddf27d1ebb766d9bf6105107
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 8bb077242c0a989e100c81d4dfefeb53f4bc90c4
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67433434"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620691"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall-preview"></a>Konfigurace odchozího síťového provozu pro clustery Azure HDInsight pomocí brány Firewall (Preview)
 
@@ -65,7 +65,7 @@ Na **přidat kolekci pravidel aplikace** obrazovky, proveďte následující kro
    | Rule_2 | * | https:443 | login.windows.net | Umožňuje Windows přihlašovací aktivita |
    | Rule_3 | * | https:443,http:80 | <storage_account_name.blob.core.windows.net> | Pokud váš cluster zálohovaný WASB, přidejte pravidlo pro WASB. Pro použití protokolu https pouze připojení Ujistěte se, že ["vyžadovat zabezpečený přenos"](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) je povolená v účtu úložiště. |
 
-1. Klikněte na tlačítko **Add** (Přidat).
+1. Klikněte na **Přidat**.
 
    ![Název: Zadejte podrobnosti o aplikaci pravidla kolekce](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
 
@@ -81,7 +81,7 @@ Vytvoření pravidel sítě správně nakonfigurovat váš cluster HDInsight.
    | **Název** | **Protokol** | **Zdrojová adresa** | **Cílová adresa** | **Cílový Port** | **Poznámky** |
    | --- | --- | --- | --- | --- | --- |
    | Rule_1 | UDP | * | * | `123` | Služba Systémový čas |
-   | Rule_2 | Jakýkoli | * | DC_IP_Address_1, DC_IP_Address_2 | `*` | Pokud používáte Enterprise Security Package (ESP), přidejte pravidlo pro sítě v sekci IP adres, který umožňuje komunikaci se službou AAD DS ESP clusterů. IP adresy řadičů domény v části AAD DS můžete najít na portálu | 
+   | Rule_2 | Any | * | DC_IP_Address_1, DC_IP_Address_2 | `*` | Pokud používáte Enterprise Security Package (ESP), přidejte pravidlo pro sítě v sekci IP adres, který umožňuje komunikaci se službou AAD DS ESP clusterů. IP adresy řadičů domény v části AAD DS můžete najít na portálu | 
    | Rule_3 | TCP | * | IP adresa vašeho účtu Data Lake Storage | `*` | Pokud používáte Azure Data Lake Storage, můžete přidat pravidlo pro sítě v části IP adresy k vyřešení problému SNI s ADLS Gen1 a Gen2. Tato možnost bude směrovat provoz do brány firewall, která může mít za následek vyšší náklady na načtení velkých objemů dat, ale provoz bude zaznamenané a auditovatelných v protokolech brány firewall. Určete IP adresu pro váš účet Data Lake Storage. Můžete použít příkaz prostředí powershell například `[System.Net.DNS]::GetHostAddresses("STORAGEACCOUNTNAME.blob.core.windows.net")` vyřešit plně kvalifikovaný název domény na IP adresu.|
    | Rule_4 | TCP | * | * | `12000` | (Volitelné) Pokud používáte Log Analytics, vytvořte pravidlo pro sítě v části IP adresy umožňují komunikaci s pracovního prostoru Log Analytics. |
 

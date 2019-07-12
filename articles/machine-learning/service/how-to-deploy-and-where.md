@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 05/31/2019
+ms.date: 07/08/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: dcb90eb8ee25b8b0c780006f3555a5a9b815ffdd
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: fb23e61142a639420d74c08e5a9a41324acab18b
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514292"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706289"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Nasazujte modely pomocí služby Azure Machine Learning
 
@@ -332,12 +332,9 @@ Následující tabulka obsahuje příklad vytvoření konfigurace nasazení pro 
 Následující části ukazují, jak vytvořit konfiguraci nasazení a použít ji k nasazení webové služby.
 
 ### <a name="optional-profile-your-model"></a>Volitelné: Profil modelu
-Před nasazením modelu jako služby, můžete chtít profilujte ji určit optimální využití procesoru a požadavky na paměť. Můžete provést profilu model pomocí sady SDK nebo rozhraní příkazového řádku.
+Před nasazením modelu jako služby, můžete provádět profilaci ji určit optimální využití procesoru a paměti požadavky pomocí sady SDK nebo rozhraní příkazového řádku.  Model výsledků profilace jsou emitovány jako `Run` objektu. Všechny podrobnosti o [schéma modelu profilu najdete v dokumentaci k rozhraní API](https://docs.microsoft.com/python/api/azureml-core/azureml.core.profile.modelprofile?view=azure-ml-py)
 
-Další informace si můžete prohlédnout naše dokumentace k sadě SDK tady: https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-
-
-Model výsledků profilace jsou emitovány jako objekt spustit.
-Specifika na schéma modelu profilu najdete tady: https://docs.microsoft.com/python/api/azureml-core/azureml.core.profile.modelprofile?view=azure-ml-py
+Další informace najdete na [jak profil model pomocí sady SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-)
 
 ## <a name="deploy-to-target"></a>Nasazení do cíle
 
@@ -356,9 +353,27 @@ Pokud chcete nasadit místně, musíte mít **nainstalovaný Docker** na místn�
 
 + **Pomocí rozhraní příkazového řádku**
 
+    Pokud chcete nasadit, pomocí rozhraní příkazového řádku, použijte následující příkaz. Nahraďte `mymodel:1` s názvem a verzí registrovaného modelu:
+
   ```azurecli-interactive
-  az ml model deploy -m sklearn_mnist:1 -ic inferenceconfig.json -dc deploymentconfig.json
+  az ml model deploy -m mymodel:1 -ic inferenceconfig.json -dc deploymentconfig.json
   ```
+
+    Položky `deploymentconfig.json` rozvržení dokumentu na parametry pro [LocalWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservicedeploymentconfiguration?view=azure-ml-py). Následující tabulka obsahuje mapování mezi entitami v dokumentu JSON a parametry pro metodu:
+
+    | JSON entity | Parametr metody. | Popis |
+    | ----- | ----- | ----- |
+    | `computeType` | Není k dispozici | Cílové výpočetní prostředí. Pro místní, hodnota musí být `local`. |
+    | `port` | `port` | Místní port na kterém se má zveřejnit koncový bod služby HTTP. |
+
+    Následující kód JSON je Ukázková konfigurace nasazení pomocí rozhraní příkazového řádku:
+
+    ```json
+    {
+        "computeType": "local",
+        "port": 32267
+    }
+    ```
 
 ### <a id="aci"></a> Azure Container Instances (DEVTEST)
 
@@ -379,10 +394,44 @@ Kvóty a regionální dostupnosti ACI najdete v tématu [kvóty a dostupnost obl
 
 + **Pomocí rozhraní příkazového řádku**
 
-  ```azurecli-interactive
-  az ml model deploy -m sklearn_mnist:1 -n aciservice -ic inferenceconfig.json -dc deploymentconfig.json
-  ```
+    Pokud chcete nasadit, pomocí rozhraní příkazového řádku, použijte následující příkaz. Nahraďte `mymodel:1` s názvem a verzí registrovanému modelu. Nahraďte `myservice` s název této služby:
 
+    ```azurecli-interactive
+    az ml model deploy -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploymentconfig.json
+    ```
+
+    Položky `deploymentconfig.json` rozvržení dokumentu na parametry pro [AciWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciservicedeploymentconfiguration?view=azure-ml-py). Následující tabulka obsahuje mapování mezi entitami v dokumentu JSON a parametry pro metodu:
+
+    | JSON entity | Parametr metody. | Popis |
+    | ----- | ----- | ----- |
+    | `computeType` | Není k dispozici | Cílové výpočetní prostředí. ACI, musí být hodnota `ACI`. |
+    | `containerResourceRequirements` | Není k dispozici | Obsahuje elementy konfigurace pro využití procesoru a paměti přidělené kontejneru. |
+    | &emsp;&emsp;`cpu` | `cpu_cores` | Počet jader procesoru, přidělení pro tuto webovou službu. Výchozí hodnoty, `0.1` |
+    | &emsp;&emsp;`memoryInGB` | `memory_gb` | Množství paměti (v GB) pro přidělení pro tuto webovou službu. Výchozím `0.5` |
+    | `location` | `location` | Oblasti Azure do této webové služby pro nasazení. Pokud není zadaný pracovní prostor poloha se bude používat. Další informace o dostupných oblastí najdete tady: [ACI oblastí](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=container-instances) |
+    | `authEnabled` | `auth_enabled` | Jestli chcete povolit ověřování pro tuto webovou službu. Výchozí hodnota je False |
+    | `sslEnabled` | `ssl_enabled` | Jestli chcete povolit protokol SSL pro tuto webovou službu. Výchozí hodnota je False. |
+    | `appInsightsEnabled` | `enable_app_insights` | Jestli chcete povolit AppInsights pro tuto webovou službu. Výchozí hodnota je False |
+    | `sslCertificate` | `ssl_cert_pem_file` | Soubor certifikátu nutný v případě, že je povolen protokol SSL |
+    | `sslKey` | `ssl_key_pem_file` | Soubor klíče, který je nutný v případě, že je povolen protokol SSL |
+    | `cname` | `ssl_cname` | Záznam cname pro Pokud je povolen protokol SSL |
+    | `dnsNameLabel` | `dns_name_label` | Popisek názvu dns pro bodovací koncový bod. Pokud není zadaný pro bodovací koncový bod se vygeneruje Popisek názvu dns jedinečný. |
+
+    Následující kód JSON je Ukázková konfigurace nasazení pomocí rozhraní příkazového řádku:
+
+    ```json
+    {
+        "computeType": "aci",
+        "containerResourceRequirements":
+        {
+            "cpu": 0.5,
+            "memoryInGB": 1.0
+        },
+        "authEnabled": true,
+        "sslEnabled": false,
+        "appInsightsEnabled": false
+    }
+    ```
 
 + **Použití VS Code**
 
@@ -414,9 +463,71 @@ Pokud už máte cluster AKS, který je připojený, můžete nasadit do ní. Pok
 
 + **Pomocí rozhraní příkazového řádku**
 
+    Pokud chcete nasadit, pomocí rozhraní příkazového řádku, použijte následující příkaz. Nahraďte `myaks` s názvem AKS cílové výpočetní prostředí. Nahraďte `mymodel:1` s názvem a verzí registrovanému modelu. Nahraďte `myservice` s název této služby:
+
   ```azurecli-interactive
-  az ml model deploy -ct myaks -m mymodel:1 -n aksservice -ic inferenceconfig.json -dc deploymentconfig.json
+  az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploymentconfig.json
   ```
+
+    Položky `deploymentconfig.json` rozvržení dokumentu na parametry pro [AksWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py). Následující tabulka obsahuje mapování mezi entitami v dokumentu JSON a parametry pro metodu:
+
+    | JSON entity | Parametr metody. | Popis |
+    | ----- | ----- | ----- |
+    | `computeType` | Není k dispozici | Cílové výpočetní prostředí. AKS, musí být hodnota `aks`. |
+    | `autoScaler` | Není k dispozici | Obsahuje konfigurační prvky pro automatické škálování. V tabulce automatického škálování. |
+    | &emsp;&emsp;`autoscaleEnabled` | `autoscale_enabled` | Jestli chcete povolit automatické škálování pro webovou službu. Pokud `numReplicas`  =  `0`, `True`; v opačném případě `False`. |
+    | &emsp;&emsp;`minReplicas` | `autoscale_min_replicas` | Minimální počet kontejnerů při použití automatického škálování této webové služby. Výchozí, `1`. |
+    | &emsp;&emsp;`maxReplicas` | `autoscale_max_replicas` | Maximální počet kontejnerů při použití automatického škálování této webové služby. Výchozí, `10`. |
+    | &emsp;&emsp;`refreshPeriodInSeconds` | `autoscale_refresh_seconds` | Jak často automatického škálování se pokusí škálování této webové služby. Výchozí, `1`. |
+    | &emsp;&emsp;`targetUtilization` | `autoscale_target_utilization` | Cílové využití (v procentech ze 100), který automatického škálování má pokusit o udržovat pro tuto webovou službu. Výchozí, `70`. |
+    | `dataCollection` | Není k dispozici | Obsahuje elementy konfigurace pro shromažďování dat. |
+    | &emsp;&emsp;`storageEnabled` | `collect_model_data` | Jestli chcete povolit shromažďování dat modelu pro webovou službu. Výchozí, `False`. |
+    | `authEnabled` | `auth_enabled` | Jestli chcete povolit ověřování pro webovou službu. Výchozí, `True`. |
+    | `containerResourceRequirements` | Není k dispozici | Obsahuje elementy konfigurace pro využití procesoru a paměti přidělené kontejneru. |
+    | &emsp;&emsp;`cpu` | `cpu_cores` | Počet jader procesoru, přidělení pro tuto webovou službu. Výchozí hodnoty, `0.1` |
+    | &emsp;&emsp;`memoryInGB` | `memory_gb` | Množství paměti (v GB) pro přidělení pro tuto webovou službu. Výchozím `0.5` |
+    | `appInsightsEnabled` | `enable_app_insights` | Jestli chcete povolit protokolování Application Insights pro webovou službu. Výchozí, `False`. |
+    | `scoringTimeoutMs` | `scoring_timeout_ms` | Časový limit pro vynucení pro vyhodnocení volání webové služby. Výchozí, `60000`. |
+    | `maxConcurrentRequestsPerContainer` | `replica_max_concurrent_requests` | Maximální počet souběžných požadavků za uzel pro tuto webovou službu. Výchozí, `1`. |
+    | `maxQueueWaitMs` | `max_request_wait_time` | Maximální doba požadavku zůstane v thí fronty (v milisekundách) před 503 chyba je vrácena. Výchozí, `500`. |
+    | `numReplicas` | `num_replicas` | Počet kontejnerů přidělení pro tuto webovou službu. Žádná výchozí hodnota. Pokud tento parametr není nastaven, automatického škálování je standardně povolená. |
+    | `keys` | Není k dispozici | Obsahuje konfigurační prvky pro klíče. |
+    | &emsp;&emsp;`primaryKey` | `primary_key` | Primární ověřovacím klíčem pro účely této webové služby |
+    | &emsp;&emsp;`secondaryKey` | `secondary_key` | Sekundární ověřovací klíč pro použití pro tuto webovou službu |
+    | `gpuCores` | `gpu_cores` | Počet jader GPU pro přidělení pro tuto webovou službu. Výchozí hodnota je 1. |
+    | `livenessProbeRequirements` | Není k dispozici | Obsahuje elementy konfigurace požadavků na test aktivity. |
+    | &emsp;&emsp;`periodSeconds` | `period_seconds` | Jak často (v sekundách) provést test aktivity. Výchozí hodnota 10 sekund. Minimální hodnota je 1. |
+    | &emsp;&emsp;`initialDelaySeconds` | `initial_delay_seconds` | Počet sekund, po spuštění kontejneru předtím, než se zahájí sondy aktivity. Výchozí hodnota je 310 |
+    | &emsp;&emsp;`timeoutSeconds` | `timeout_seconds` | Počet sekund, po kterém test aktivity vyprší časový limit. Výchozí hodnota je 2 sekundy. Minimální hodnota je 1 |
+    | &emsp;&emsp;`successThreshold` | `success_threshold` | Minimální po sobě jdoucích úspěšných pro test aktivity považovat za nevyhovující úspěšné. Výchozí hodnota je 1. Minimální hodnota je 1. |
+    | &emsp;&emsp;`failureThreshold` | `failure_threshold` | Když test aktivity selže, spustí Pod Kubernetes to failureThreshold doby, než se ukončí. Výchozí hodnota je 3. Minimální hodnota je 1. |
+    | `namespace` | `namespace` | Obor názvů Kubernetes nasazenou webovou službu do. Až 63 malé alfanumerické znaky ("a"-"z", "0"-"9") a pomlčka ("-") znaků. První a poslední znak nemůže být pomlčka. |
+
+    Následující kód JSON je Ukázková konfigurace nasazení pomocí rozhraní příkazového řádku:
+
+    ```json
+    {
+        "computeType": "aks",
+        "autoScaler":
+        {
+            "autoscaleEnabled": true,
+            "minReplicas": 1,
+            "maxReplicas": 3,
+            "refreshPeriodInSeconds": 1,
+            "targetUtilization": 70
+        },
+        "dataCollection":
+        {
+            "storageEnabled": true
+        },
+        "authEnabled": true,
+        "containerResourceRequirements":
+        {
+            "cpu": 0.5,
+            "memoryInGB": 1.0
+        }
+    }
+    ```
 
 + **Použití VS Code**
 

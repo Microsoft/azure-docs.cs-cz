@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8e9ea8956d87e2ec47cc65495e81d8a0f0ad8cb
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: d21b54c3bea98a9a1499dc75890f75f28f2f9dc0
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67560923"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655708"
 ---
 # <a name="baseline-policy-block-legacy-authentication-preview"></a>Základní zásady: Blok starší verze ověřování (preview)
 
@@ -27,7 +27,7 @@ Azure Active Directory (Azure AD) a poskytovat uživatelům snadný přístup k 
 
 V současné době většinou všechny tím Ohrozíte pokusů o přihlášení pocházejí ze starší verze ověřování. Starší verze ověřování nepodporuje vícefaktorové ověřování (MFA). I v případě, že máte zásadu vícefaktorového ověřování v adresáři povoleno, chybný actor můžete ověřit pomocí starší verze protokolu a obejít vícefaktorové ověřování.
 
-Nejlepší způsob, jak chránit váš účet ze škodlivých ověřování požadavků od starších verzí protokolů je blokování tyto pokusy všechno dohromady. Aby bylo snazší pro vás k blokování všech žádostí o přihlášení provedených starší protokoly, jsme vytvořili směrný plán zásad, který právě tohle dělá.
+Nejlepší způsob, jak chránit váš účet ze škodlivých ověřování požadavků od starších verzí protokolů je zcela blokování tyto pokusy. Ve snaze pomůžou zabezpečit vaše prostředí vytvořili jsme základní zásady, který blok starší verze ověřování.
 
 **Blok starší verze ověřování** je [základní zásady](concept-baseline-protection.md) , která blokuje všechny žádosti o ověření z starších protokolů. Moderní ověřování, musí využívat pro úspěšné přihlášení pro všechny uživatele. Používá ve spojení se zásadami jiné standardní hodnoty, všechny požadavky přicházející ze starších verzí protokolů se zablokuje a všichni uživatelé budou muset vícefaktorové ověřování pokaždé, když se vyžaduje. Tato zásada nedochází k blokování protokolu Exchange ActiveSync.
 
@@ -78,13 +78,13 @@ SharePoint Online je povolený pro moderní ověřování výchozí. Pro adresá
 
 Pokud chcete zabránit starší verze ověřování žádosti Skype pro firmy, je potřeba povolit moderní ověřování pro Skype for Business Online. Pro adresáře vytvořená po 1. srpna 2017 je ve výchozím nastavení povolené moderní ověřování pro Skype pro firmy.
 
-Pokud chcete povolit moderní ověřování ve Skypu pro firmy, doporučujeme přechod do Microsoft Teams, které podporují moderní ověřování ve výchozím nastavení. Ale pokud jste v tuto chvíli nejde tr, je potřeba povolit moderní ověřování pro Skype for Business Online tak, aby Skype pro firmy klienti spustí používající moderní ověřování. Postupujte podle těchto kroků v článku [Skype pro firmy topologie podporované s moderním ověřováním](https://docs.microsoft.com/skypeforbusiness/plan-your-deployment/modern-authentication/topologies-supported), kde najdete kroky pro povolení moderního ověřování pro Skype pro firmy.
+Doporučujeme přechod do Microsoft Teams, které podporují moderní ověřování ve výchozím nastavení. Ale pokud nemůžete migrovat v tuto chvíli, je potřeba povolit moderní ověřování pro Skype for Business Online tak, aby Skype pro firmy klientů spustit využívající moderní ověřování. Postupujte podle kroků v tomto článku [Skype pro firmy topologie podporované s moderním ověřováním](https://docs.microsoft.com/skypeforbusiness/plan-your-deployment/modern-authentication/topologies-supported), pokud chcete povolit moderní ověřování pro Skype pro firmy.
 
-Kromě povolení moderního ověřování pro Skype for Business Online, doporučujeme moderní ověřování povolit pro Exchange Online při povolení moderního ověřování pro Skype pro firmy. Tento proces vám pomůže synchronizaci stavu moderního ověřování v Exchangi Online a Skype pro firmy online a zabrání více výzvám k přihlášení pro Skype pro firmy klienty.
+Kromě povolení moderního ověřování pro Skype for Business Online, doporučujeme povolit moderní ověřování pro Exchange Online při povolení moderního ověřování pro Skype pro firmy. Tento proces vám pomůže synchronizaci stavu moderního ověřování v Exchangi Online a Skype pro firmy online a zabrání více výzvám k přihlášení pro Skype pro firmy klienty.
 
 ### <a name="step-5-using-mobile-devices"></a>Krok 5: Pomocí mobilních zařízení
 
-Aplikace na mobilním zařízení je třeba zablokovat i starší verze ověřování. Doporučujeme používat aplikaci Outlook pro mobilní zařízení. Outlook Mobile ve výchozím nastavení podporuje moderní ověřování a bude vyhovovat jiných zásad MFA směrného plánu ochrany.
+Aplikace na mobilním zařízení je třeba zablokovat i starší verze ověřování. Doporučujeme používat aplikaci Outlook pro mobilní zařízení. Outlook pro mobilní zařízení ve výchozím nastavení podporuje moderní ověřování a bude vyhovovat jiných zásad MFA směrného plánu ochrany.
 
 Chcete-li použít e-mailového klienta nativní aplikace pro iOS, musíte mít spuštěný systém iOS verze 11.0 nebo novější k zajištění, že byl aktualizován e-mailového klienta blokovat ověřování starší verze.
 
@@ -92,7 +92,8 @@ Chcete-li použít e-mailového klienta nativní aplikace pro iOS, musíte mít 
 
 Pokud jste zákazník hybrid pomocí místního serveru Exchange a Skypu pro firmy v místním, obě služby bude nutné aktualizovat tak, aby povolit moderní ověřování. Při použití moderního ověřování v hybridním prostředí, budete pořád ověřování uživatelů v místním. Scénáře ověřování svůj přístup k prostředkům (soubory nebo e-mailů) změny.
 
-Před zahájením povolení moderního ověřování v místním, ujistěte se, máte splněné theIf splňujete, teď jste připraveni k povolení moderního ověřování místní.
+Před zahájením povolení moderního ověřování v místním, prosím Ujistěte se, že jste splnili požadavky.
+Teď jste připraveni k povolení moderního ověřování místní.
 
 Postup pro povolení moderního ověřování najdete v následujících článcích:
 
@@ -111,7 +112,7 @@ Tuto zásadu povolit a chránit vaši organizaci:
 1. Nastavte **povolit zásady** k **použít zásady okamžitě**.
 1. Klikněte na tlačítko **Uložit**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace naleznete v tématu:
 

@@ -4,15 +4,15 @@ description: Popisuje, jak nastavit automatické škálování skriptu pro hosti
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: how-to
+ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: e9f500e3ab965b9dbfc5e395a6572497c85f6f8f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3b98db361a8ec888eb8bf9e1bf3658a7e38111c6
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66755128"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620420"
 ---
 # <a name="automatically-scale-session-hosts"></a>Automatické škálování hostitelů relace
 
@@ -75,7 +75,7 @@ V dalším kroku budete muset vytvořit bezpečně uložené přihlašovací úd
     Například **proměnná-sady - název KeyPath – globální obor – hodnota "c:\\škálování HostPool1"**
 5. Spustit **New StoredCredential - KeyPath \$KeyPath** rutiny. Po zobrazení výzvy zadejte svoje přihlašovací údaje Windows virtuálního klienta s oprávněními k dotazování fondu hostitele (hostitele fondu je zadán v **config.xml**).
     - Pokud používáte jiný instančních objektů nebo standardního účtu, spusťte **New StoredCredential - KeyPath \$KeyPath** rutina jednou pro každý účet k vytvoření místního uložené přihlašovací údaje.
-6. Spustit **Get StoredCredentials-seznamu** potvrďte přihlašovací údaje byly úspěšně vytvořeny.
+6. Spustit **Get StoredCredential-seznamu** potvrďte přihlašovací údaje byly úspěšně vytvořeny.
 
 ### <a name="configure-the-configxml-file"></a>Konfigurace v souboru config.xml
 

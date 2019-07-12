@@ -5,7 +5,7 @@ keywords: Chyba vzdálené plochy, Chyba připojení ke vzdálené ploše, se ne
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
 ms.assetid: 5feb1d64-ee6f-4907-949a-a7cffcbc6153
@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: f4d733e29d2ba8213e1832f2c604b726283ab3e1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ea8a2fa3a37815f3a7a48078e408e6607dc37eb4
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60318693"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709283"
 ---
 # <a name="troubleshooting-specific-rdp-error-messages-to-a-windows-vm-in-azure"></a>Řešení problémů konkrétních chybových zpráv protokolu RDP k virtuálnímu počítači s Windows v Azure
 Při použití připojení ke vzdálené ploše na Windows virtuální počítač (VM) v Azure, může se zobrazit zpráva konkrétní chyba. Tento článek podrobně popisuje některé z běžnějších chybové zprávy došlo k spolu se řešení potíží s kroky k jejich řešení. Pokud máte problémy s připojením k virtuálnímu počítači pomocí protokolu RDP není ale proveďte dojde k určité chybové zprávě, najdete v článku [Průvodce odstraňováním potíží pro vzdálenou plochu](troubleshoot-rdp-connection.md).

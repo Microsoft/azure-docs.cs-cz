@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
-ms.openlocfilehash: b94d59b55a62797e142768dc84ec499d714bd067
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: a3cd1fe69a0d99f9faf3a451f76a3a420d713711
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67479015"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67795215"
 ---
 # <a name="adding-custom-resources-to-azure-rest-api"></a>Přidání vlastních prostředků do Azure REST API
 
@@ -104,7 +104,7 @@ az resource create --is-full-object \
                     }'
 ```
 
-Parametr | Požaduje se | Popis
+Parametr | Požadováno | Popis
 ---|---|---
 je full-object | *Ano* | Značí, že objekt vlastností obsahuje další možnosti, jako je například umístění, značky, sku nebo plán.
 id | *Ano* | ID prostředku vlastního prostředku. To by měla existovat odhlásit z **ResourceProvider**
@@ -116,7 +116,7 @@ Odstraníte vlastní prostředek Azure:
 az resource delete --id /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/{resourceTypeName}/{customResourceName}
 ```
 
-Parametr | Požaduje se | Popis
+Parametr | Požadováno | Popis
 ---|---|---
 id | *Ano* | ID prostředku vlastního prostředku. To by měla existovat odhlásit z **ResourceProvider**.
 
@@ -126,7 +126,7 @@ Načtěte vlastní prostředek Azure:
 az resource show --id /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/{resourceTypeName}/{customResourceName}
 ```
 
-Parametr | Požaduje se | Popis
+Parametr | Požadováno | Popis
 ---|---|---
 id | *Ano* | ID prostředku vlastního prostředku. To by měla existovat odhlásit z **ResourceProvider**
 
@@ -176,7 +176,7 @@ Ukázkové šablony Azure Resource Manageru:
 }
 ```
 
-Parametr | Požaduje se | Popis
+Parametr | Požadováno | Popis
 ---|---|---
 resourceTypeName | *Ano* | **Název** z **resourceType** podle vlastního zprostředkovatele.
 resourceProviderName | *Ano* | Název instance zprostředkovatele vlastních prostředků.
@@ -185,7 +185,8 @@ customResourceName | *Ano* | Název vlastního prostředku.
 ## <a name="next-steps"></a>Další postup
 
 - [Přehled poskytovatelů vlastního prostředku Azure](./custom-providers-overview.md)
-- [Kurz: Vytvoření vlastního poskytovatele prostředků Azure a nasazení vlastních prostředků](./create-custom-provider.md)
+- [Rychlé zprovoznění: Vytvoření vlastního poskytovatele prostředků Azure a nasazení vlastních prostředků](./create-custom-provider.md)
+- [Kurz: Vytvoření vlastní akce a prostředků v Azure](./tutorial-custom-providers-101.md)
 - [Postup: Přidání vlastní akce k rozhraní Azure REST API](./custom-providers-action-endpoint-how-to.md)
 - [Referenční dokumentace: Odkaz na vlastní prostředek Proxy](./custom-providers-proxy-resource-endpoint-reference.md)
 - [Referenční dokumentace: Odkaz na vlastní prostředek mezipaměti](./custom-providers-proxy-cache-resource-endpoint-reference.md)

@@ -4,7 +4,7 @@ description: Rozšíření Microsoft Azure k instalaci ovladačů NVIDIA GPU do 
 services: virtual-machines-windows
 documentationcenter: ''
 author: vermagit
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-windows
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: roiyz
-ms.openlocfilehash: 5adc86b161770f2502b6ef9cf5ec2189ec3d4f99
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 004d6125de6762303db91f3a5ef9ffa16e6e501f
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60388671"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705958"
 ---
 # <a name="nvidia-gpu-driver-extension-for-windows"></a>Grafický procesor NVIDIA ovladač rozšíření pro Windows
 
@@ -27,6 +27,7 @@ ms.locfileid: "60388671"
 
 Toto rozšíření nainstaluje ovladačů NVIDIA GPU na virtuálních počítačích řady N-series s Windows. V závislosti na řadu virtuálních počítačů nainstaluje rozšíření ovladače CUDA nebo MŘÍŽKA. Při instalaci NVIDIA ovladače, které používají toto rozšíření přijímáte a vyjádření souhlasu s těmito podmínkami [licenční smlouva s koncovým uživatelem NVIDIA](https://go.microsoft.com/fwlink/?linkid=874330). Virtuální počítač může během procesu instalace restartovat k dokončení instalace ovladačů.
 
+Pokyny k ruční instalaci ovladačů a aktuální podporované verze jsou k dispozici [tady](https://docs.microsoft.com/azure/virtual-machines/windows/n-series-driver-setup).
 Rozšíření je také dostupná k instalaci ovladačů NVIDIA GPU na [virtuální počítače s Linuxem řady N-series](hpccompute-gpu-linux.md).
 
 ## <a name="prerequisites"></a>Požadavky
@@ -37,7 +38,7 @@ Toto rozšíření podporuje následující OSs:
 
 | Distribuce | Version |
 |---|---|
-| Windows 10 (až do verze 1803)| Core |
+| Windows 10 | Core |
 | Windows Server 2016 | Core |
 | Windows Server 2012R2 | Core |
 
@@ -71,11 +72,11 @@ Následující kód JSON ukazuje schématu pro rozšíření.
 
 ### <a name="properties"></a>Vlastnosti
 
-| Název | Hodnota / příklad | Typ dat |
+| Name | Hodnota / příklad | Typ dat |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.HpcCompute | string |
-| type | NvidiaGpuDriverWindows | string |
+| publisher | Microsoft.HpcCompute | řetězec |
+| type | NvidiaGpuDriverWindows | řetězec |
 | typeHandlerVersion | 1.2 | int |
 
 

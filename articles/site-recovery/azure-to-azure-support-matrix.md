@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 06/27/2019
+ms.date: 07/07/2019
 ms.author: raynew
-ms.openlocfilehash: 55275144746dbc1a3ead7c7c12a6901ab6f9269e
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: 5b1d5b2b22fac35b2c963d7557c36b8b586d93ea
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514127"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706779"
 ---
 # <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>Matice podpory pro replikaci virtuálních počítačů Azure z jedné oblasti do jiné
 
@@ -24,7 +24,7 @@ Tento článek shrnuje podporu a požadavky při nastavování zotavení po hav�
 **Nasazení** |  **Podpora**
 --- | ---
 **Azure Portal** | Podporuje se.
-**PowerShell** | Podporuje se. [Další informace](azure-to-azure-powershell.md)
+**PowerShell** | Podporuje se. [Víc se uč](azure-to-azure-powershell.md)
 **REST API** | Podporuje se.
 **Rozhraní příkazového řádku** | Aktuálně se nepodporuje.
 
@@ -82,7 +82,7 @@ Site Recovery podporuje replikaci virtuálních počítačů Azure s operačním
 
 **Operační systém** | **Podrobnosti**
 --- | ---
-Windows Server 2019 | Jádro serveru, Server s desktopovým prostředím
+Windows Server. 2019 | Jádro serveru, Server s desktopovým prostředím
 Windows Server 2016  | Jádro serveru, Server s desktopovým prostředím
 Windows Server 2012 R2 |
 Windows Server 2012 |
@@ -112,33 +112,33 @@ Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5 
 
 **Vydání verze** | **Verze služby mobility** | **Verze jádra** |
 --- | --- | --- |
+14.04 LTS | 9.26 | 3.13.0-24-Generic k 3.13.0-170-generic,<br/>3.16.0-25-Generic k 3.16.0-77-generic,<br/>3.19.0-18-Generic k 3.19.0-80-generic,<br/>4.2.0-18-Generic k 4.2.0-42-generic,<br/>4.4.0-21-Generic k 4.4.0-148-generic,<br/>4.15.0-1023-Azure k 4.15.0-1045-azure |
 14.04 LTS | 9.25 | 3.13.0-24-Generic k 3.13.0-169-generic,<br/>3.16.0-25-Generic k 3.16.0-77-generic,<br/>3.19.0-18-Generic k 3.19.0-80-generic,<br/>4.2.0-18-Generic k 4.2.0-42-generic,<br/>4.4.0-21-Generic k 4.4.0-146-generic,<br/>4.15.0-1023-Azure k 4.15.0-1042-azure |
 14.04 LTS | 9.24 | 3.13.0-24-Generic k 3.13.0-167-generic,<br/>3.16.0-25-Generic k 3.16.0-77-generic,<br/>3.19.0-18-Generic k 3.19.0-80-generic,<br/>4.2.0-18-Generic k 4.2.0-42-generic,<br/>4.4.0-21-Generic k 4.4.0-143-generic,<br/>4.15.0-1023-Azure k 4.15.0-1040-azure |
 14.04 LTS | 9.23 | 3.13.0-24-Generic k 3.13.0-165-generic,<br/>3.16.0-25-Generic k 3.16.0-77-generic,<br/>3.19.0-18-Generic k 3.19.0-80-generic,<br/>4.2.0-18-Generic k 4.2.0-42-generic,<br/>4.4.0-21-Generic k 4.4.0-142-generic,<br/>4.15.0-1023-Azure k 4.15.0-1037-azure |
-14.04 LTS | 9.22 | 3.13.0-24-Generic k 3.13.0-164-generic,<br/>3.16.0-25-Generic k 3.16.0-77-generic,<br/>3.19.0-18-Generic k 3.19.0-80-generic,<br/>4.2.0-18-Generic k 4.2.0-42-generic,<br/>4.4.0-21-Generic k 4.4.0-140-generic,<br/>4.15.0-1023-Azure k 4.15.0-1036-azure |
 |||
+16.04 LTS | 9.26 | 4.4.0-21-Generic k 4.4.0-148-generic,<br/>4.8.0-34-Generic k 4.8.0-58-generic,<br/>4.10.0-14-Generic až 4.10.0-42-generic,<br/>4.11.0-13-Generic k 4.11.0-14-generic,<br/>4.13.0-16-Generic k 4.13.0-45-generic,<br/>4.15.0-13-Generic k 4.15.0-50-generic<br/>4.11.0-1009-Azure k 4.11.0-1016-azure,<br/>4.13.0-1005-Azure k 4.13.0-1018-azure <br/>4.15.0-1012-Azure k 4.15.0-1045-azure|
 16.04 LTS | 9.25 | 4.4.0-21-Generic k 4.4.0-146-generic,<br/>4.8.0-34-Generic k 4.8.0-58-generic,<br/>4.10.0-14-Generic až 4.10.0-42-generic,<br/>4.11.0-13-Generic k 4.11.0-14-generic,<br/>4.13.0-16-Generic k 4.13.0-45-generic,<br/>4.15.0-13-Generic k 4.15.0-48-generic<br/>4.11.0-1009-Azure k 4.11.0-1016-azure,<br/>4.13.0-1005-Azure k 4.13.0-1018-azure <br/>4.15.0-1012-Azure k 4.15.0-1042-azure|
 16.04 LTS | 9.24 | 4.4.0-21-Generic k 4.4.0-143-generic,<br/>4.8.0-34-Generic k 4.8.0-58-generic,<br/>4.10.0-14-Generic až 4.10.0-42-generic,<br/>4.11.0-13-Generic k 4.11.0-14-generic,<br/>4.13.0-16-Generic k 4.13.0-45-generic,<br/>4.15.0-13-Generic k 4.15.0-46-generic<br/>4.11.0-1009-Azure k 4.11.0-1016-azure,<br/>4.13.0-1005-Azure k 4.13.0-1018-azure <br/>4.15.0-1012-Azure k 4.15.0-1040-azure|
 16.04 LTS | 9.23 | 4.4.0-21-Generic k 4.4.0-142-generic,<br/>4.8.0-34-Generic k 4.8.0-58-generic,<br/>4.10.0-14-Generic až 4.10.0-42-generic,<br/>4.11.0-13-Generic k 4.11.0-14-generic,<br/>4.13.0-16-Generic k 4.13.0-45-generic,<br/>4.15.0-13-Generic k 4.15.0-45-generic<br/>4.11.0-1009-Azure k 4.11.0-1016-azure,<br/>4.13.0-1005-Azure k 4.13.0-1018-azure <br/>4.15.0-1012-Azure k 4.15.0-1037-azure|
-16.04 LTS | 9.22 | 4.4.0-21-Generic k 4.4.0-140-generic,<br/>4.8.0-34-Generic k 4.8.0-58-generic,<br/>4.10.0-14-Generic až 4.10.0-42-generic,<br/>4.11.0-13-Generic k 4.11.0-14-generic,<br/>4.13.0-16-Generic k 4.13.0-45-generic,<br/>4.15.0-13-Generic k 4.15.0-43-generic<br/>4.11.0-1009-Azure k 4.11.0-1016-azure,<br/>4.13.0-1005-Azure k 4.13.0-1018-azure <br/>4.15.0-1012-Azure k 4.15.0-1036-azure|
 
 #### <a name="supported-debian-kernel-versions-for-azure-virtual-machines"></a>Podporované verze jádra Debian pro Azure virtual machines
 
 **Vydání verze** | **Verze služby mobility** | **Verze jádra** |
 --- | --- | --- |
-Debian 7 | 9.22,9.23,9.24,9.25 | 3.2.0-4-amd64 k 3.2.0-6-amd64, 3.16.0-0.bpo.4-amd64 |
+Debian 7 | 9.23,9.24,9.25,9.26 | 3.2.0-4-amd64 k 3.2.0-6-amd64, 3.16.0-0.bpo.4-amd64 |
 |||
-Debian 8 | 9.25 | 3.16.0-4-amd64 k 3.16.0-8-amd64 4.9.0-0.bpo.4-amd64 k 4.9.0-0.bpo.8-amd64 |
-Debian 8 | 9.22, 9.23, 9.24 | 3.16.0-4-amd64 k 3.16.0-7-amd64 4.9.0-0.bpo.4-amd64 k 4.9.0-0.bpo.8-amd64 |
+Debian 8 | 9.25, 9.26 | 3.16.0-4-amd64 k 3.16.0-8-amd64 4.9.0-0.bpo.4-amd64 k 4.9.0-0.bpo.8-amd64 |
+Debian 8 | 9.23, 9.24 | 3.16.0-4-amd64 k 3.16.0-7-amd64 4.9.0-0.bpo.4-amd64 k 4.9.0-0.bpo.8-amd64 |
 
 #### <a name="supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines"></a>Podporované verze jádra operačního systému SUSE Linux Enterprise Server 12 pro virtuální počítače Azure
 
 **Vydání verze** | **Verze služby mobility** | **Verze jádra** |
 --- | --- | --- |
+SUSE Linux Enterprise Server 12 (s aktualizací SP1, SP2, SP3, SP4) | 9.26 | SP1 3.12.49-11-default k 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default k 3.12.74-60.64.110-default</br></br> 4\.4.21-69-default SP2 do 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default k 4.4.121-92.109-default</br></br>SP3 4.4.73-5-default k 4.4.178-94.91-default</br></br>SP3 4.4.138-4.7-azure k 4.4.178-4.28-azure</br></br>SP4 4.12.14-94.41-default k 4.12.14-95.16-default</br>SP4 4.12.14-6.3-azure k 4.12.14-6.9-azure |
 SUSE Linux Enterprise Server 12 (s aktualizací SP1, SP2, SP3, SP4) | 9.25 | SP1 3.12.49-11-default k 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default k 3.12.74-60.64.107-default</br></br> 4\.4.21-69-default SP2 do 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default k 4.4.121-92.104-default</br></br>SP3 4.4.73-5-default k 4.4.176-94.88-default</br></br>SP3 4.4.138-4.7-azure k 4.4.176-4.25-azure</br></br>SP4 4.12.14-94.41-default k 4.12.14-95.13-default</br>SP4 4.12.14-6.3-azure k 4.12.14-6.9-azure |
 SUSE Linux Enterprise Server 12 (s aktualizací SP1, SP2, SP3, SP4) | 9.24 | SP1 3.12.49-11-default k 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default k 3.12.74-60.64.107-default</br></br> 4\.4.21-69-default SP2 do 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default k 4.4.121-92.104-default</br></br>SP3 4.4.73-5-default k 4.4.176-94.88-default</br></br>SP4 4.12.14-94.41-default k 4.12.14-95.13-default |
 SUSE Linux Enterprise Server 12 (s aktualizací SP1, SP2, SP3, SP4) | 9.23 | SP1 3.12.49-11-default k 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default k 3.12.74-60.64.107-default</br></br> 4\.4.21-69-default SP2 do 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default k 4.4.121-92.101-default</br></br>SP3 4.4.73-5-default k 4.4.162-94.69-default</br></br>SP4 4.12.14-94.41-default k 4.12.14-95.6-default |
-SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.22 | SP1 3.12.49-11-default k 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default k 3.12.74-60.64.107-default</br></br> 4\.4.21-69-default SP2 do 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default k 4.4.121-92.98-default</br></br>SP3 4.4.73-5-default k 4.4.162-94.72-default |
 
 ## <a name="replicated-machines---linux-file-systemguest-storage"></a>Replikované počítače – Linux souboru systému/hostovaného úložiště
 
@@ -151,7 +151,7 @@ SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.22 | SP1 3.12.49-11-default k
 
 **Nastavení** | **Podpora** | **Podrobnosti**
 --- | --- | ---
-Velikost | Libovolná velikost virtuálních počítačů Azure s nejméně 2 jádra procesoru a 1 GB paměti RAM | Ověřte [velikosti virtuálních počítačů Azure](../virtual-machines/windows/sizes.md).
+Size | Libovolná velikost virtuálních počítačů Azure s nejméně 2 jádra procesoru a 1 GB paměti RAM | Ověřte [velikosti virtuálních počítačů Azure](../virtual-machines/windows/sizes.md).
 Skupiny dostupnosti | Podporováno | Pokud povolíte replikaci pro virtuální počítač Azure s výchozími možnostmi, skupinu dostupnosti se vytvoří automaticky, na základě nastavení zdrojové oblasti. Tato nastavení můžete upravit.
 Zóny dostupnosti | Podporováno |
 Program hybrid Use Benefit (HUB) | Podporováno | Pokud zdrojový virtuální počítač má licenci centra povolené, testovací převzetí služeb při selhání nebo převzetí služeb při selhání virtuálního počítače také používá licenci ROZBOČOVAČE.
@@ -246,11 +246,11 @@ Několik IP adres | Nepodporuje se | Když převzetí služeb při selhání vir
 Traffic Manager     | Podporováno | Traffic Manager vám umožňují předem nakonfigurovat tak, aby provoz se směruje do koncového bodu ve zdrojové oblasti v pravidelných intervalech a ke koncovému bodu v cílové oblasti v případě převzetí služeb při selhání.
 Azure DNS | Podporováno |
 Vlastní DNS  | Podporováno |
-Neověřené proxy | Podporováno | [Další informace](site-recovery-azure-to-azure-networking-guidance.md)    
+Neověřené proxy | Podporováno | [Víc se uč](site-recovery-azure-to-azure-networking-guidance.md)    
 Ověřený proxy server | Nepodporuje se | Pokud virtuální počítač používá ověřený proxy server pro odchozí připojení, nelze replikovat, pomocí Azure Site Recovery.    
-Připojení VPN typu site-to-site k místní<br/><br/>(s nebo bez ExpressRoute)| Podporováno | Ujistěte se, že trasy definované uživatelem a skupin zabezpečení sítě jsou nakonfigurovány tak, že není Site Recovery provoz směrován do místní. [Další informace](site-recovery-azure-to-azure-networking-guidance.md)    
-Připojení mezi virtuálními SÍTĚMI | Podporováno | [Další informace](site-recovery-azure-to-azure-networking-guidance.md)  
-Koncové body služby pro virtuální síť | Podporováno | Pokud pro přístup k virtuální síti se omezení pro účty úložiště, ujistěte se, že jsou povolena důvěryhodným službám Microsoftu přístup k účtu úložiště.
+Připojení VPN typu site-to-site k místní<br/><br/>(s nebo bez ExpressRoute)| Podporováno | Ujistěte se, že trasy definované uživatelem a skupin zabezpečení sítě jsou nakonfigurovány tak, že není Site Recovery provoz směrován do místní. [Víc se uč](site-recovery-azure-to-azure-networking-guidance.md)    
+Připojení mezi virtuálními SÍTĚMI | Podporováno | [Víc se uč](site-recovery-azure-to-azure-networking-guidance.md)  
+Koncové body služby virtuální sítě | Podporováno | Pokud pro přístup k virtuální síti se omezení pro účty úložiště, ujistěte se, že jsou povolena důvěryhodným službám Microsoftu přístup k účtu úložiště.
 Urychlení sítě | Podporováno | Akcelerované síťové služby musí být povolené na zdrojovém virtuálním počítači. [Další informace](azure-vm-disaster-recovery-with-accelerated-networking.md).
 
 

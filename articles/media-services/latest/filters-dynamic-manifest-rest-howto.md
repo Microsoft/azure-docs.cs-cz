@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/13/2019
 ms.author: juliako
-ms.openlocfilehash: 447116267e53f8c4df1e882ca30c6a2e906d314c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 76e6e1595cb8bf49dbbc82c3cae5de80ea718aeb
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67114297"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786449"
 ---
 # <a name="creating-filters-with-media-services-rest-api"></a>Vytváření filtrů pomocí REST API služby Media Services
 
@@ -97,7 +97,7 @@ Vyberte **Poslat**.
 
 Filtr se vytvořil.
 
-Další informace najdete v tématu [vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate). Viz také [příklady JSON pro filtry](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate#create_an_account_filter).
+Další informace najdete v tématu [vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate). Viz také [příklady JSON pro filtry](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate#create-an-account-filter).
 
 ## <a name="create-asset-filters"></a>Vytvoření assetu filtrů  
 
@@ -115,7 +115,7 @@ Vyberte **Poslat**.
 
 Filtr prostředků se vytvořila.
 
-Podrobnosti o tom, jak vytvořit nebo aktualizovat prostředek filtry najdete v tématu [vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate). Viz také [příklady JSON pro filtry](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate#create_an_asset_filter). 
+Podrobnosti o tom, jak vytvořit nebo aktualizovat prostředek filtry najdete v tématu [vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate). Viz také [příklady JSON pro filtry](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate#create-an-asset-filter). 
 
 ## <a name="associate-filters-with-streaming-locator"></a>Filtry přidružit Lokátor streamování
 
@@ -129,12 +129,12 @@ Jakmile definujete filtry, klienty je použít v adrese URL streamování. Filtr
 
 V následující tabulce jsou uvedeny příklady adresy URL s filtry:
 
-|Protocol|Příklad:|
+|Protocol|Příklad|
 |---|---|
 |HLS|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=m3u8-aapl,filter=myAccountFilter)`|
 |MPEG DASH|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=mpd-time-csf,filter=myAssetFilter)`|
 |Technologie Smooth Streaming|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(filter=myAssetFilter)`|
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Stream videa](stream-files-tutorial-with-rest.md) 

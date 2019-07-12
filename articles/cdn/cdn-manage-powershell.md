@@ -7,19 +7,19 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: fb6f57a5-6e26-4847-8fd9-b51fb05a79eb
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/13/2018
 ms.author: magattus
-ms.openlocfilehash: 0ad3d1693e2dbf1c4f5329ec23265ea1b3469e2e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 44274c2a46ce51e51d3d8f16d96a0b50c43a3aa1
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66125458"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593694"
 ---
 # <a name="manage-azure-cdn-with-powershell"></a>Správa Azure CDN pomocí Powershellu
 PowerShell poskytuje jednu z metod nejflexibilnější ke správě koncových bodů a profilů CDN.  Interaktivně nebo psaní skriptů můžete použít PowerShell k automatizaci úloh správy.  Tento kurz ukazuje některé z nejčastějších úloh můžete provést pomocí Powershellu ke správě koncových bodů a profilů CDN.

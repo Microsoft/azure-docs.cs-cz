@@ -6,12 +6,12 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: b48d8d74843947c3e40dc80234560b0147be6eea
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 5471bf4041275d5988414def99dd2130f51fbb80
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67542968"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67828023"
 ---
 # <a name="tutorial-mount-the-cluster"></a>Kurz: Připojení ke clusteru
 
@@ -43,7 +43,7 @@ Další informace o clusteru pro vyrovnávání zatížení s kruhovým DNS, př
 
 Jednodušší metodu pro malé instalace je použití skriptu k přiřazování IP adres v celém rozsahu v době připojení klienta. 
 
-Jiné metody vyrovnávání zatížení může být vhodné pro velký nebo komplikovaný systémy. Vyhledejte informace od zástupce Microsoftu nebo žádost o podporu o pomoc. (Nástroj azure Load Balancer je aktuálně *nepodporuje* s Azure FXT hrany vyfiltrovat.)
+Jiné metody vyrovnávání zatížení může být vhodné pro velký nebo komplikovaný systémy. Poraďte Microsoft reprezentativní nebo otevřít [žádost o podporu](fxt-support-ticket.md) nápovědu. (Nástroj azure Load Balancer je aktuálně *nepodporuje* s Azure FXT hrany vyfiltrovat.)
 
 ## <a name="create-the-mount-command"></a>Vytvořit příkaz připojení 
 
@@ -104,7 +104,7 @@ Zajistit bezproblémové klientských připojení předání těchto nastavení 
 --- | --- 
 ``nointr``            | Pokud vaši klienti používat starší jádra operačního systému (před duben 2008), které podporují tuto možnost, použijte ji. Výchozí hodnota je možnost "intr".
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Po připojení klientů můžete otestovat pracovního postupu a začít pracovat s vaším clusterem.
 

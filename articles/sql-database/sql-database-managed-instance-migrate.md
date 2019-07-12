@@ -11,27 +11,31 @@ author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
 manager: craigg
-ms.date: 02/11/2019
-ms.openlocfilehash: 9fe6ab797eaa325ad802702e95f5a0e5b8e4fef4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 11/07/2019
+ms.openlocfilehash: 7cf54b79fac87905117e321574571890c59315e6
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67070414"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827066"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Migrace instance SQL serveru do služby Azure SQL Database managed instance
 
 V tomto článku se dozvíte o metodách migrace systému SQL Server 2005 nebo novější verze instance [Azure SQL Database managed instance](sql-database-managed-instance.md). Informace o migraci na elastický fond nebo izolovanou databázi, naleznete v tématu [migrovat jednu, nebo součástí fondu databáze](sql-database-cloud-migrate.md). Informace o migraci o migraci z jiných platforem, naleznete v tématu [Průvodce migrací databází Azure](https://datamigration.microsoft.com/).
 
+> [!NOTE]
+> Pokud chcete rychle začít a vyzkoušet Managed Instance, můžete chtít přejít na [příručky rychlý start](/sql-database-managed-instance-quickstart-guide.md) místo na této stránce. 
+
 Na vysoké úrovni procesu migrace databáze vypadá takto:
 
 ![Proces migrace](./media/sql-database-managed-instance-migration/migration-process.png)
 
-- [Vyhodnocení kompatibility spravované instance](#assess-managed-instance-compatibility)
-- [Možnost připojení k aplikaci](sql-database-managed-instance-connect-app.md)
-- [Nasazení do optimální velikosti spravované instance](#deploy-to-an-optimally-sized-managed-instance)
-- [Vyberte metodu migrace a migrace](#select-migration-method-and-migrate)
-- [Monitorování aplikací](#monitor-applications)
+- [Vyhodnocení kompatibility spravovanou instanci](#assess-managed-instance-compatibility) kde by měl zajistit, že neexistují žádné blokující problémy, které mohou bránit vaše migrace.
+  - Tento krok zahrnuje také vytváření [základní úrovně výkonu](#create-performance-baseline) určit využití prostředků na zdrojové instanci SQL serveru. Tento krok je nutný, pokud se chcete o nasazení správně velikosti Managed Instance a ověřte, že to nebude mít vliv výkonů po migraci.
+- [Vyberte možnosti připojení k aplikaci](sql-database-managed-instance-connect-app.md)
+- [Nasazení do optimální velikosti spravované instance](#deploy-to-an-optimally-sized-managed-instance) kde zvolíte technické vlastnosti (počet virtuálních jader, velikosti paměti) a úroveň výkonu (pro důležité obchodní informace, obecné účely) Managed Instance.
+- [Vyberte metodu migrace a migrujte](#select-migration-method-and-migrate) kde migrovat vaše databáze s využitím offline migrace (nativní zálohování a obnovení, importe/export databáze) nebo online migrace (Database Migration Service, transakční replikace).
+- [Monitorování aplikací](#monitor-applications) zajistit, že máte očekávaný výkon.
 
 > [!NOTE]
 > Migrace jednotlivých databází do izolované databáze nebo elastického fondu, naleznete v tématu [migrace databáze SQL serveru do služby Azure SQL Database](sql-database-single-database-migrate.md).
@@ -58,7 +62,11 @@ Spravované Instance garance 99,99 % dostupnost i v důležitých scénářů, t
 
 ### <a name="create-performance-baseline"></a>Vytvoření standardních hodnot výkonu
 
-Pokud potřebujete porovnat výkon vašich úloh na Managed Instance pomocí původní úlohy běžící na serveru SQL Server, musíte vytvořit základní úrovně výkonu, který se použije k porovnání. Zde jsou některé parametry, které by bylo nutné měřit na instanci systému SQL Server: 
+Pokud potřebujete porovnat výkon vašich úloh na Managed Instance pomocí původní úlohy běžící na serveru SQL Server, musíte vytvořit základní úrovně výkonu, který se použije k porovnání. 
+
+Základní úrovně výkonu je sada parametrů, jako je průměr/maximální využití procesoru, disku průměr/maximální počet vstupně-výstupní latence, propustnosti a vstupně-výstupních operací, stránka průměr/maximální životnost, průměrná maximální velikost databáze tempdb. Chcete mít podobný nebo dokonce lepší parametry po migraci, proto je důležité pro měření a poznamenejte si hodnoty standardních hodnot těchto parametrů. Kromě parametrů systému je třeba vybrat sadu reprezentativní dotazy a nejdůležitější dotazy do vašeho pracovního vytížení a míru minimální/průměrný a maximální doba trvání, využití procesoru pro vybrané dotazy. Tyto hodnoty by umožňují snadno porovnat úlohu spuštěnou na Managed Instance na původní hodnoty na vaše zdrojového systému SQL Server.
+
+Zde jsou některé parametry, které by bylo nutné měřit na instanci systému SQL Server: 
 - [Monitorování využití procesoru na instanci serveru SQL](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Monitor-CPU-usage-on-SQL-Server/ba-p/680777#M131) a zaznamenávat průměr a využití procesoru ve špičce.
 - [Monitorovat využití paměti na instanci serveru SQL](https://docs.microsoft.com/sql/relational-databases/performance-monitor/monitor-memory-usage) a určit množství paměti používané různých komponent, jako je například fondu vyrovnávací paměti plánování mezipaměti, fondu úložiště sloupce [OLTP v paměti](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage?view=sql-server-2017)atd. Kromě toho byste měli najít průměrné a špičku hodnoty čítače výkonu paměti životnost stránky.
 - Monitorování využití vstupně-výstupních operací disku na instanci systému SQL Server zdroje pomocí [sys.dm_io_virtual_file_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) zobrazení nebo [čítače výkonu](https://docs.microsoft.com/sql/relational-databases/performance-monitor/monitor-disk-usage).
@@ -72,9 +80,10 @@ Jako výsledku této aktivity můžete by měl mít dokumentované průměr a ma
 ## <a name="deploy-to-an-optimally-sized-managed-instance"></a>Nasazení do optimálně dimenzované mi
 
 Spravovaná instance je vytvořený na míru pro místní úlohy, které chcete přesunout do cloudu. Přináší [nové nákupní model](sql-database-service-tiers-vcore.md) , která poskytuje větší flexibilitu při výběru správnou úroveň prostředky pro vaše úlohy. Ve světě v místním jste zvyklí pravděpodobně velikosti tyto úlohy s použitím fyzických jader a šířku pásma vstupně-výstupních operací. Nákupní model pro spravovanou instanci je na základě virtuálních jader, nebo "virtuálních jader, za" s další úložiště a vstupně-výstupní operace k dispozici samostatně. Modelu virt. jader je jednodušší způsob, jak pochopit vaše požadavky na výpočetní výkon v cloudu můžete použít místní ještě dnes. Tento nový model vám umožní k nastavení správné velikosti vaše cílové prostředí v cloudu. Některé obecné pokyny, které vám mohou pomoci při výběru správné úrovně a vlastnosti jsou popsány zde:
-- [Monitorování využití procesoru na instanci serveru SQL](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Monitor-CPU-usage-on-SQL-Server/ba-p/680777#M131) a kontrola kolik výpočetního výkonu, které aktuálně používáte (pomocí zobrazení dynamické správy SQL Server Management Studio a další monitorovací nástroje). Můžete zřídit Managed Instance, která odpovídá počtu jader, které používáte na SQL serveru, s tím, že charakteristiky využití procesoru může být nutné škálovat tak, aby odpovídaly [charakteristik virtuálních počítačů, ve kterém je nainstalovaný Managed Instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#hardware-generation-characteristics).
-- Zkontrolujte velikost dostupné paměti v instanci SQL serveru a zvolte [úroveň služby, který má odpovídající paměti](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#hardware-generation-characteristics). Bylo by užitečné k měření životnost stránky na instanci serveru SQL k určení [je potřeba další paměť](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Do-you-need-more-memory-on-Azure-SQL-Managed-Instance/ba-p/563444).
-- Měření vstupně-výstupní latence subsystému souboru si vybrat mezi úrovně služeb pro obecné účely a pro důležité obchodní informace.
+- Založené na standardních hodnot Managed Instance, která odpovídá počtu jader, které používáte v systému SQL Server můžete zřídit využití procesoru, s v úvahu charakteristiky této využití procesoru může být nutné škálovat tak, aby odpovídaly [charakteristik virtuálních počítačů, ve kterém je Managed Instance nainstalované](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics).
+- Na základě využití paměti směrného plánu vyberte [úroveň služby, který má odpovídající paměti](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics). Množství paměti nelze zvolit přímo, bylo by proto nutné k výběru Managed Instance pomocí množství virtuálních jader, které má odpovídající paměti (například 5.1 GB/vCore v Gen5). 
+- Založené na standardní hodnoty vstupně-výstupních operací latence subsystému souboru vybrat možnost pro obecné účely (latence je větší než doby 5 MS) a pro důležité obchodní informace úrovní služeb (latenci menší než 3 ms).
+- Podle standardních hodnot propustnost předem přidělit velikost dat nebo soubory protokolů, chcete-li získat očekávaný výkon vstupně-výstupních operací.
 
 Můžete také výpočetní prostředky a prostředky úložiště v nasazení čas a pak ji později změnit bez vnášení výpadku pro vaši aplikaci s použitím [webu Azure portal](sql-database-scale-resources.md):
 
@@ -169,6 +178,13 @@ Výsledek porovnání výkonu může být:
 Proveďte požadovanou změnu parametrů, nebo upgradujte úrovně služby a umožňuje konvergovat optimální konfiguraci, dokud se nedostanete na výkon úloh, která nejlépe vyhovuje vašim potřebám.
 
 ### <a name="monitor-performance"></a>Monitorování výkonu
+
+Managed Instance poskytuje mnoho pokročilé nástroje pro monitorování a řešení potíží a jejich použití ke sledování výkonu ve vaší instanci. Některé parametry, které vaše by bylo potřeba monitorovat jsou:
+- Využití procesoru na instance, kterou chcete určit nemá, počet virtuálních jader, které jste zřídili je správné shodu pro vaši úlohu.
+- Životnost stránky na Managed Instance k určení [je potřeba další paměť](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Do-you-need-more-memory-on-Azure-SQL-Managed-Instance/ba-p/563444).
+- Počkejte, statistiky, jako například `INSTANCE_LOG_GOVERNOR` nebo `PAGEIOLATCH` , která vám sdělí máte potíže s úložištěm vstupně-výstupních operací, zejména v úrovni General Purpose, které je potřeba předem přidělit soubory dosahovat vyšších výkonů vstupně-výstupních operací.
+
+## <a name="leverage-advanced-paas-features"></a>Využívejte pokročilé funkce, PaaS
 
 Jakmile jsou na plně spravované platformě a ověříte, že přínos úlohy jsou odpovídající je výkon úloh SQL serveru, využijte výhody, které jsou poskytovány automaticky jako součást služby SQL Database. 
 

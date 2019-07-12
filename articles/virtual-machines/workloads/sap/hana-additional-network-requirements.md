@@ -4,7 +4,7 @@ description: Další síťové požadavky pro SAP HANA v Azure (velké instance)
 services: virtual-machines-linux
 documentationcenter: ''
 author: RicksterCDN
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2f4c74076f2763addc1f2b971d8ea0ca29ce6fd0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 953ee5d40a3a4c49d7cc01de804ae5c76ceedc7a
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60203971"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709797"
 ---
 # <a name="additional-network-requirements-for-large-instances"></a>Další síťové požadavky pro velké instance
 
@@ -67,6 +67,6 @@ K zajištění, že všechno, co odeberete, odstraňte připojení ExpressRoute,
 
 Chcete-li odebrat další SAP HANA v okruhu ExpressRoute Azure (velké instance), otevřete žádost o podporu Azure se SAP HANA v Microsoft Service Management. Žádost o odstranit okruh. V rámci předplatného Azure můžete odstranit nebo ponechat virtuální sítě, podle potřeby. Nicméně je nutné odstranit propojení okruhu ExpressRoute velkých instancích HANA a bránu virtuální sítě propojené.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Instalace a konfigurace SAP HANA (velké instance) v Azure](hana-installation.md)

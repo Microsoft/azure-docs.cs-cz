@@ -2,32 +2,32 @@
 title: Vytvoření kontroleru základního příchozího přenosu dat ve službě Azure Kubernetes Service (AKS)
 description: Zjistěte, jak nainstalovat a nakonfigurovat základní kontroler příchozího přenosu dat NGINX v clusteru služby Azure Kubernetes Service (AKS).
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 05/24/2019
-ms.author: iainfou
-ms.openlocfilehash: b0dfe69a77d236e7a811ca5c7407428327c62ff3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mlearned
+ms.openlocfilehash: 1e5c3aa7ed4ec990dba07fb24830fae243141ad5
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66430997"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67615580"
 ---
 # <a name="create-an-ingress-controller-in-azure-kubernetes-service-aks"></a>Vytvoření řadiče příchozího přenosu dat ve službě Azure Kubernetes Service (AKS)
 
 Řadič služby příchozího přenosu dat je část softwaru, která poskytuje reverzní proxy server, směrování provozu konfigurovatelné a ukončení protokolu TLS pro služby Kubernetes. Prostředky Kubernetesu příchozího přenosu dat se používají ke konfiguraci pravidla příchozího přenosu dat a trasy pro jednotlivé služby Kubernetes. Použití kontroler příchozího přenosu dat a pravidla příchozího přenosu dat, jednu IP adresu je možné směrovat provoz do více služeb v clusteru Kubernetes.
 
-V tomto článku se dozvíte, jak nasadit [kontroler příchozího přenosu dat NGINX] [ nginx-ingress] v clusteru služby Azure Kubernetes Service (AKS). Pak dvě aplikace běží v clusteru AKS, z nichž každý je přístupný přes jednu IP adresu.
+V tomto článku se dozvíte, jak nasadit [kontroler příchozího přenosu dat NGINX][nginx-ingress] v clusteru služby Azure Kubernetes Service (AKS). Pak dvě aplikace běží v clusteru AKS, z nichž každý je přístupný přes jednu IP adresu.
 
 Můžete také:
 
 - [Povolit doplněk směrování aplikace HTTP][aks-http-app-routing]
 - [Vytvoření řadiče příchozího přenosu dat, který se používá soukromé, interní sítě a IP adresy][aks-ingress-internal]
 - [Vytvoření řadiče příchozího přenosu dat, která používá vlastní certifikáty TLS][aks-ingress-own-tls]
-- Vytvoření řadiče příchozího přenosu dat, která používá umožňuje šifrovat automaticky generovat certifikáty TLS [s dynamické veřejné IP adresy] [ aks-ingress-tls] nebo [se statickou veřejnou IP adresu][aks-ingress-static-tls]
+- Vytvoření řadiče příchozího přenosu dat, která používá umožňuje šifrovat automaticky generovat certifikáty TLS [s dynamické veřejné IP adresy][aks-ingress-tls] or [with a static public IP address][aks-ingress-static-tls]
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Tento článek používá Helm k instalaci serveru NGINX kontroler příchozího přenosu dat, správce certifikátů a ukázkovou webovou aplikaci. Musíte mít Helm inicializován v rámci clusteru AKS a pomocí účtu služby pro Tiller. Další informace o konfiguraci a použití Helm, naleznete v tématu [instalace aplikací s nástrojem Helm ve službě Azure Kubernetes Service (AKS)][use-helm].
 
@@ -43,7 +43,7 @@ Kontroler příchozího přenosu dat musí také naplánovat na uzlu systému Li
 > Následující příklad vytvoří Kubernetes obor názvů pro prostředky příchozího přenosu dat s názvem *příchozího přenosu dat basic*. Podle potřeby zadejte obor názvů pro konkrétní prostředí. Pokud váš cluster AKS není povoleno RBAC, přidejte `--set rbac.create=false` k příkazům Helm.
 
 > [!TIP]
-> Pokud chcete povolit [zachování IP klienta zdrojového] [ client-source-ip] požadavky do kontejnerů v clusteru, přidejte `--set controller.service.externalTrafficPolicy=Local` k Helm příkaz instalovat. Zdroj klienta IP je uložen v hlavičce požadavku v rámci *X-předané-pro*. Při použití kontroler příchozího přenosu dat s zachování IP zdrojového klienta povoleno, nebude fungovat předávací protokol SSL.
+> Pokud chcete povolit [zachování IP klienta zdrojového][client-source-ip] požadavky do kontejnerů v clusteru, přidejte `--set controller.service.externalTrafficPolicy=Local` k Helm příkaz instalovat. Zdroj klienta IP je uložen v hlavičce požadavku v rámci *X-předané-pro*. Při použití kontroler příchozího přenosu dat s zachování IP zdrojového klienta povoleno, nebude fungovat předávací protokol SSL.
 
 ```console
 # Create a namespace for your ingress resources
@@ -215,7 +215,7 @@ Můžete také:
 - [Povolit doplněk směrování aplikace HTTP][aks-http-app-routing]
 - [Vytvoření řadiče příchozího přenosu dat, který se používá soukromé, interní sítě a IP adresy][aks-ingress-internal]
 - [Vytvoření řadiče příchozího přenosu dat, která používá vlastní certifikáty TLS][aks-ingress-own-tls]
-- Vytvoření řadiče příchozího přenosu dat, která používá umožňuje šifrovat automaticky generovat certifikáty TLS [s dynamické veřejné IP adresy] [ aks-ingress-tls] nebo [se statickou veřejnou IP adresu][aks-ingress-static-tls]
+- Vytvoření řadiče příchozího přenosu dat, která používá umožňuje šifrovat automaticky generovat certifikáty TLS [s dynamické veřejné IP adresy][aks-ingress-tls] or [with a static public IP address][aks-ingress-static-tls]
 
 <!-- LINKS - external -->
 [helm-cli]: https://docs.microsoft.com/azure/aks/kubernetes-helm

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: raynew
-ms.openlocfilehash: d8ade598e4f1b6331367e8bd04ad59951ef5de8f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 856f45f448aa843e9dc04ec3b6a60841cfe33227
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66242379"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704865"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>Obnovení databází serveru SQL Server na virtuálních počítačích Azure
 
@@ -156,11 +156,11 @@ Pokud jste vybrali **úplné a rozdílové** jako typ obnovení, postupujte takt
 
 ### <a name="restore-databases-with-large-number-of-files"></a>Obnovení databáze s velkým počtem souborů
 
-Pokud je větší než velikost řetězce celkový počet souborů v databázi [určitého limitu](backup-sql-server-azure-troubleshoot.md#files-size-limit-beyond-which-restore-happens-to-default-path), Azure Backup ukládá seznam souborů databáze v různých pit součásti tak, nebudete moci nastavit cílovou cestu obnovení během obnovení operace. Soubory se obnoví na výchozí cestu SQL místo.
+Pokud je větší než velikost řetězce celkový počet souborů v databázi [určitého limitu](backup-sql-server-azure-troubleshoot.md#size-limit-for-files), Azure Backup ukládá seznam souborů databáze v různých pit součásti tak, nebudete moci nastavit cílovou cestu obnovení během obnovení operace. Soubory se obnoví na výchozí cestu SQL místo.
 
   ![Obnovte databázi pomocí velkých souborů](./media/backup-azure-sql-database/restore-large-files.jpg)
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Spravovat a monitorovat](manage-monitor-sql-database-backup.md) databáze systému SQL Server, které se zálohují v Azure Backup.

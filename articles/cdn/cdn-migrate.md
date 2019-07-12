@@ -7,7 +7,7 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/21/2018
 ms.author: magattus
 ms.custom: ''
-ms.openlocfilehash: 7768dde424aedc295b53512db50c9dfc9db9ab8c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c11155223220c075c28769a19875691783cce3bd
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60635631"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593630"
 ---
 # <a name="migrate-an-azure-cdn-profile-from-standard-verizon-to-premium-verizon"></a>Migrace profil Azure CDN od společnosti Verizon Standard do Premium Verizon
 
@@ -49,6 +49,6 @@ Upgrade **Azure CDN Standard od Verizonu** profilu, kontaktujte [Microsoft Suppo
    - [Analýzy v reálném čase](cdn-real-time-alerts.md)
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další informace o stroj pravidel najdete v tématu [referenční informace ke stroji pravidel Azure CDN](cdn-rules-engine-reference.md).
 

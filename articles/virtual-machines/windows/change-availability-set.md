@@ -5,7 +5,7 @@ keywords: ''
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2019
 ms.author: cynthn
-ms.openlocfilehash: 59e28591bda0bada24929fe95fba248d333833e6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9e3aa213b2ba58e2a09e0364ab6cd9bc42d131d8
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64723373"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67719255"
 ---
 # <a name="change-the-availability-set-for-a-windows-vm"></a>Změna skupiny dostupnosti pro virtuální počítač s Windows
 Následující kroky popisují, jak změnit skupinu dostupnosti virtuálního počítače pomocí Azure Powershellu. Virtuální počítač lze přidat pouze do skupiny dostupnosti při jeho vytvoření. Chcete-li změnit dostupnost nastavit, je potřeba odstranit a znovu vytvoříte virtuální počítač. 
@@ -109,7 +109,7 @@ Následující skript představuje příklad shromažďování požadovaných in
        -DisableBginfoExtension
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Přidat další úložiště k vašemu virtuálnímu počítači tak, že přidáte další [datový disk](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

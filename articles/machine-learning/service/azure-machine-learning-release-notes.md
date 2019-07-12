@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: d43bef902b66976c32735b6d45029f41bb5e3264
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: 7aedb0804626d1204121568904763bec5e83e858
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514036"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786271"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Zpráva k vydání verze služby Azure Machine Learning
 
@@ -25,7 +25,70 @@ V tomto článku najdete další informace o vydaných verzích služby Azure Ma
 
 Zobrazit [seznam známých problémů](resource-known-issues.md) Další informace o známých chyb a jejich řešení.
 
+## <a name="2019-07-09"></a>2019-07-09
 
+### <a name="visual-interface"></a>Vizuální rozhraní
++ **Funkce ve verzi Preview**
+  + Přidaný modul "Skriptování spouštění R" ve vizuální rozhraní.
+
+### <a name="azure-machine-learning-sdk-for-python-v1048"></a>Azure Machine Learning sady SDK pro Python v1.0.48
+
++ **Nové funkce**
+  + **azureml-opendatasets**
+    + **Azure ml. contrib opendatasets** je teď dostupná jako **azureml opendatasets**. Starý balíček můžete i nadále fungovat, ale doporučujeme používat **azureml opendatasets** pro širší škálu možností a vylepšení v budoucnu.
+    + Tento nový balíček můžete zaregistrovat jako datovou sadu v pracovním prostoru AML otevřít datové sady a využití jakékoli funkce, které nabízí datové sady.
+    + Zahrnuje také existující možnosti, jako je například používání otevřít datovým sadám jako dataframes Pandas/SPARK, a připojí umístění pro některé datové sady, například počasí.
+
++ **Funkce ve verzi Preview**
+    + HyperDriveConfig teď dokáže přijmout objekt kanálu jako parametr pro podporu hyperparametrů pomocí kanálu.
+
++ **Opravy chyb a vylepšení**
+  + **azureml-train-automl**
+    + Opravili jsme chybu o ztrátu typy sloupců po transformaci.
+    + Opravili jsme chybu umožňující y_query být None (s) na začátku obsahující typ objektu. 
+    + Byl opraven problém, v postupu výběr skupiny stromů, který se zbytečně stále se rozšiřující výsledný komplet i v případě, že skóre zůstala konstantní.
+    + Byl opraven problém s nastavením whitelist_models a blacklist_models v AutoMLStep.
+    + Byl opraven problém, která bránila použití předběžného zpracování při AutoML by byl použit v rámci Azure ML kanály.
+  + **azureml-opendatasets**
+    + Přesunutý azureml-contrib-opendatasets k azureml opendatasets.
+    + Povolené třídy otevřete datovou sadu pro zaregistrovaný do pracovního prostoru AML a bez problémů využívat možnosti AML datové sady.
+    + Vylepšené NoaaIsdWeather výrazně vylepšit výkon v jiné SPARK verze.
+  + **azureml-explain-model**
+    + Aktualizované online dokumentaci pro interpretability objekty.
+    + Přidání batch_size tak, aby napodoboval vysvětlení při include_local = False pro streamování v dávkách ke zlepšení doba provádění DecisionTreeExplainableModel globální vysvětlení.
+    + Byl opraven problém, kdy `explanation.expected_values` někdy vracel plovoucí desetinnou čárkou, ne seznam plovoucí desetinnou čárkou v ní.
+    + Přidání očekávané hodnoty do automl výstup mimic vysvětlení v popisují knihovny modelu.
+    + Oprava permutaci funkce význam při zadán argument transformace zobrazíte nezpracovaná funkce význam.
+    + Přidání batch_size tak, aby napodoboval vysvětlení při include_local = False pro streamování globální vysvětlení v dávkách ke zlepšení doba provádění DecisionTreeExplainableModel knihovny explainability modelu.
+  + **azureml-core**
+    + Přidali jsme možnost připojit DBFS úložišť v Azure ml CLI.
+    + Tento problém opravili pomocí úložiště nahrát, kde se vytvoří prázdnou složku, pokud `target_path` začít `/`.
+    + Povolené porovnání dvě datové sady.
+    + Model a bitové kopie odstranit nyní poskytuje další informace o načítání nadřazeného objektů, které jsou na nich závislé, pokud se odstranění nezdaří z důvodu upstreamové závislosti.
+    + Zastaralé nastavení RunConfiguration nevyužité auto_prepare_environment.
+  + **azureml-mlflow**
+    + Využití prostředků vylepšené ze vzdálených běhů, které používají azureml.mlflow.
+    + Vylepšili jsme dokumentace ke službě Azure ml mlflow balíčku.
+    + Byl opraven problém, kde by mlflow.log_artifacts("my_dir") ukládání artefaktů v části "my_dir /-cesty artefaktů" místo "cesty artefaktů".
+  + **azureml-dataprep**
+    + Tok dat objektů můžete nyní provést iteraci vytváření pořadí záznamů.
+    + Byl opraven problém, kdy `Dataflow.read_pandas_dataframe` selže, když `in_memory` argument je nastaven na hodnotu True.
+    + Vylepšené zpracování pandas datových rámců s indexy sloupců jiné než řetězec.
+    + Vystavené `set_diagnostics_collection()` umožňuje programový povolení/zákazu kolekce telemetrie.
+    + Přidání nejvyšší hodnoty a bottomValues shrnutí.
+  + **azureml-pipeline-core**
+    + Parametr hash_paths u všech postupů kanálu je zastaralá a v budoucnu se odebere. Ve výchozí obsah zdrojovým_adresářem se po zahašování použije (s výjimkou souborů uvedených v .amlignore nebo .gitignore)
+    + Trvalého zlepšování modulu a ModuleStep pro podporu výpočetní typ konkrétní moduly, v rámci přípravy RunConfiguration integrace a další změny k odemknutí jejich použití v kanálech.
+  + **azureml-pipeline-steps**
+    + AzureBatchStep: Vylepšené dokumentaci s ohledem na vstupy/výstupy.
+    + AzureBatchStep: Změnit delete_batch_job_after_finish výchozí hodnotu na true.
+  + **azureml-train-core**
+    + Řetězce jsou nyní přijímány jako cílové výpočetní prostředí pro automatizované Hyperparametrů.
+    + Zastaralé nastavení RunConfiguration nevyužité auto_prepare_environment.
+    + Zastaralé parametry `conda_dependencies_file_path` a `pip_requirements_file_path` nahrazený `conda_dependencies_file` a `pip_requirements_file` v uvedeném pořadí.
+  + **azureml-opendatasets**
+    + Zlepšení NoaaIsdWeather výrazně vylepšit výkon v jiné SPARK verze.
+    
 ## <a name="2019-07-01"></a>2019-07-01
 
 ### <a name="azure-machine-learning-data-prep-sdk-v117"></a>Sada SDK v1.1.7 pro přípravu dat Azure Machine Learning

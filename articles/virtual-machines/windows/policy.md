@@ -4,7 +4,7 @@ description: Jak použít zásady na Azure Resource Manageru Windows virtuální
 services: virtual-machines-windows
 documentationcenter: ''
 author: singhkays
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 0b71ba54-01db-43ad-9bca-8ab358ae141b
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: kasing
-ms.openlocfilehash: 654c23474ebc96a6873f82f51f969da5c7d2d20c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 75a8d5d48d5024b35b39792a481e600692581d95
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60780798"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67719992"
 ---
 # <a name="apply-policies-to-windows-vms-with-azure-resource-manager"></a>Použití zásad k virtuálním počítačům s Windows pomocí Azure Resource Manageru
 Pomocí zásad můžete vynutit organizace různých konvencí a pravidla v rámci podniku. Vynucení požadované chování může pomoci zmírnit rizika při podílení se na úspěch organizace. V tomto článku popisujeme, jak můžete zásady Azure Resource Manageru pro definování požadované chování pro virtuální počítače vaší organizace.

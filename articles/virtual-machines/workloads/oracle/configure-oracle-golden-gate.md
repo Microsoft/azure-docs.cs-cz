@@ -4,7 +4,7 @@ description: Rychlé zprovoznění brány Golden Oracle nahoru v prostředí Azu
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: romitgirdhar
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: c8d2a948dd82fb2c04aceb24815e63be13e35919
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 39d1b8b860fd19261bd39c345d464dd37b48d871
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64722601"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707554"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Implementace brány Golden Oracle na virtuálním počítači Azure s Linuxem 
 
@@ -49,7 +49,7 @@ Následuje souhrn konfigurace prostředí:
 > | **Proces Golden brány** |EXTORA |REPORA|
 
 
-### <a name="sign-in-to-azure"></a>Přihlásit se k Azure 
+### <a name="sign-in-to-azure"></a>Přihlášení k Azure 
 
 Přihlaste se k předplatnému Azure pomocí [az login](/cli/azure/reference-index) příkazu. Potom postupujte podle na obrazovce pokynů.
 

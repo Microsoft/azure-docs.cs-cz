@@ -8,12 +8,12 @@ manager: edprice
 editor: edprice
 tags: ''
 keywords: ''
-ms.openlocfilehash: c6fcb345b49ce6354a24408ebe163fb928990252
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d527b08f3610531bef8e98a11998942411651d27
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64925695"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621354"
 ---
 # <a name="set-up-an-application-developers-controlled-distribution-adcd-in-ibm-zdt-v1"></a>Nastavte si aplikace vývojáři řídit distribuce (ADCD) v IBM zD & T v1
 
@@ -21,13 +21,13 @@ IBM Z prostředí pro vývoj a testovací prostředí (zD & T) můžete spustit 
 
 V tomto článku se dozvíte, jak vytvořit instanci ADCD zD & T prostředí v Azure. Vytvoření ADCDs dokončení implementace operačního systému Z řady pro vývojová a testovací prostředí, které běží v zD & T.
 
-Stejně jako zD & T ADCDs jsou k dispozici jenom pro partnery a zákazníky IBM a jsou určená výhradně pro účely vývoje a testování. Jsou použity pro produkční prostředí. Mnoho IBM instalační balíčky jsou k dispozici ke stažení přes [Passport využívat](https://www.ibm.com/support/knowledgecenter/en/SSTQBD_12.0.0/com.ibm.zsys.rdt.guide.adcd.doc/topics/installation_ps.html) nebo [IBM PartnerWorld](https://www-356.ibm.com/partnerworld/wps/servlet/ContentHandler/isv_com_sys_zos_adcd).
+Stejně jako zD & T ADCDs jsou k dispozici jenom pro partnery a zákazníky IBM a jsou určená výhradně pro účely vývoje a testování. Jsou použity pro produkční prostředí. Mnoho IBM instalační balíčky jsou k dispozici ke stažení přes [Passport využívat](https://www.ibm.com/support/knowledgecenter/en/SSTQBD_12.0.0/com.ibm.zsys.rdt.guide.adcd.doc/topics/installation_ps.html) nebo [IBM PartnerWorld](https://www.ibm.com/partnerworld/public).
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure. Pokud ho nemáte, než začnete, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-- [ZD & T prostředí] [ ibm-install-z] si dříve nastavil v Azure. Tento článek předpokládá, že používáte stejnou bitovou kopii virtuálního počítače s Ubuntu 16.04 vytvořili dříve.
+- [ZD & T prostředí][ibm-install-z] si dříve nastavil v Azure. Tento článek předpokládá, že používáte stejnou bitovou kopii virtuálního počítače s Ubuntu 16.04 vytvořili dříve.
 
 - Přístup k médiím ADCD prostřednictvím IBM PartnerWorld nebo využívat služby Passport.
 
@@ -39,7 +39,7 @@ Stejně jako zD & T ADCDs jsou k dispozici jenom pro partnery a zákazníky IBM 
 
 ## <a name="download-the-installation-packages-from-passport-advantage"></a>Stáhnout instalační balíčky z účtu služby Passport výhody
 
-Přístup k médiím, ADCD je povinný. Následující postup předpokládá se zákazníky IBM a využívat výhody služby Passport. IBM partnery můžete použít [IBM PartnerWorld](https://www-356.ibm.com/partnerworld/wps/servlet/ContentHandler/isv_com_sys_zos_adcd).
+Přístup k médiím, ADCD je povinný. Následující postup předpokládá se zákazníky IBM a využívat výhody služby Passport. IBM partnery můžete použít [IBM PartnerWorld](https://www.ibm.com/partnerworld/public).
 
 > [!NOTE]
 > Tento článek předpokládá, že počítač s Windows se používá pro přístup k webu Azure portal a stahovat média IBM. Pokud používáte počítač Mac nebo Ubuntu plochy, příkazy a proces pro získání IBM média se mohou poněkud lišit.

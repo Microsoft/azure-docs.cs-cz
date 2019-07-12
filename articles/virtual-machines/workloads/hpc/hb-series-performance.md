@@ -4,7 +4,7 @@ description: Další informace o výkonu, výsledky testování pro velikosti vi
 services: virtual-machines
 documentationcenter: ''
 author: vermagit
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines
@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
-ms.openlocfilehash: 9174ed0fbf95a094c363fa1d9aa899d9554b345b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 820aa1d04437a80f72e95fab71f5c8503c59822c
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66809974"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707731"
 ---
 # <a name="hb-series-virtual-machine-sizes"></a>Velikosti virtuálních počítačů HB-series
 
@@ -54,8 +54,8 @@ numactl --physcpubind=[INSERT CORE #]  ib_send_lat -a
 | 256             | 1000            | 3.06            | 18.31           | 3.1             | 3.12            | 0.27            |
 | 512             | 1000            | 3.15            | 7.89            | 3.2             | 3.23            | 0.31            |
 | 1024            | 1000            | 3.27            | 17.62           | 3.31            | 3.33            | 0.22            |
-| 2 048            | 1000            | 3.48            | 7.94            | 3.52            | 3.55            | 0.26            |
-| 4 096            | 1000            | 3.91            | 7.7             | 3.96            | 3.98            | 0.21            |
+| 2048            | 1000            | 3.48            | 7.94            | 3.52            | 3.55            | 0.26            |
+| 4096            | 1000            | 3.91            | 7.7             | 3.96            | 3.98            | 0.21            |
 
 
 ## <a name="osu-mpi-latency-test"></a>Test latencí OSU MPI
@@ -79,8 +79,8 @@ Testování v5.4.3 latencí OSU MPI.
 | 256  | 3.53     | 3.65     | 3.73     | 3.57     |
 | 512  | 3.68     | 3.78     | 3.81     | 3.70     |
 | 1024 | 3.86     | 3.97     | 3.95     | 3.93     |
-| 2 048 | 4.12     | 4.5      | 4.24     | 4.22     |
-| 4 096 | 4.79     | 5.28     | 6.33     | 4.91     |
+| 2048 | 4.12     | 4.5      | 4.24     | 4.22     |
+| 4096 | 4.79     | 5.28     | 6.33     | 4.91     |
 
 
 ## <a name="mpi-bandwidth"></a>Šířka pásma MPI
@@ -103,8 +103,8 @@ Testování šířky pásma OSU MPI v5.4.3.
 | 256              | 486.89           | 3.90             |
 | 512              | 874.24           | 6.99             |
 | 1024             | 1538.47          | 12.31            |
-| 2 048             | 2743.98          | 21.95            |
-| 4 096             | 4194.69          | 33.56            |
+| 2048             | 2743.98          | 21.95            |
+| 4096             | 4194.69          | 33.56            |
 | 8192             | 5657.67          | 45.26            |
 | 16384            | 7618.96          | 60.95            |
 | 32768            | 10333.76         | 82.67            |

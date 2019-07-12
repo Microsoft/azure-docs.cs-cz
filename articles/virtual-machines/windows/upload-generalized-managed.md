@@ -4,7 +4,7 @@ description: Nahrání generalizovaného virtuálního pevného disku do Azure a
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: cynthn
-ms.openlocfilehash: ee2fe91d915faf7e09dee004891edfc6bef38d6f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9846bf7b28f1205f98eb59671553d309fe754d30
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64685405"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707940"
 ---
 # <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>Nahrání generalizovaného virtuálního pevného disku a použít ho k vytvoření nové virtuální počítače v Azure
 
@@ -28,7 +28,7 @@ Tento článek vás provede pomocí prostředí PowerShell k nahrání virtuáln
 
 Vzorový skript najdete v tématu [ukázkový skript k nahrání virtuálního pevného disku do Azure a vytvořit nový virtuální počítač](../scripts/virtual-machines-windows-powershell-upload-generalized-script.md).
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 - Před odesláním jakéhokoli virtuálního pevného disku do Azure, měli byste postupovat podle [Příprava Windows VHD nebo VHDX, který chcete nahrát do Azure](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 - Kontrola [naplánovat migraci do služby Managed Disks](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks) před zahájením migrace na [Managed Disks](managed-disks-overview.md).
@@ -109,7 +109,7 @@ Můžete také nahrát VHD do účtu úložiště pomocí jedné z následujíc�
     Import/Export je možné zkopírovat do účtu úložiště úrovně standard. Bude nutné zkopírovat ze standard storage do účtu služby premium storage pomocí některého nástroje, například AzCopy.
 
 > [!IMPORTANT]
-> Pokud používáte AzCopy pro nahrání vašeho virtuálního pevného disku do Azure, ujistěte se, že jste nastavili [ **/BlobType:page** ](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy#blobtypeblock--page--append) před spuštěním skriptu nahrávání. Pokud není tato možnost zadána, cíl je objekt blob ve výchozím nastavení AzCopy vytvoří objekt blob bloku.
+> Pokud používáte AzCopy pro nahrání vašeho virtuálního pevného disku do Azure, ujistěte se, že jste nastavili [ **/BlobType:page** ](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-blobs#upload-a-file) před spuštěním skriptu nahrávání. Pokud není tato možnost zadána, cíl je objekt blob ve výchozím nastavení AzCopy vytvoří objekt blob bloku.
 > 
 > 
 

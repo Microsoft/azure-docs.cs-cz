@@ -4,7 +4,7 @@ description: SKU pro SAP HANA v Azure (velké instance).
 services: virtual-machines-linux
 documentationcenter: ''
 author: RicksterCDN
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 11/20/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b80f872c82061c0cb87f4f1e2714183e71cf02cd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 043ecdcb83d2ee39e3373f029c00c6237f87601c
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60794027"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709713"
 ---
 # <a name="available-skus-for-hli"></a>Dostupné skladové položky pro HLI
 
@@ -27,7 +27,7 @@ SAP HANA v Azure (velké instance) služba je k dispozici v několika konfigurac
 
 [Velké instance HANA SKU s certifikací SAP HANA](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) seznamu jako:
 
-| Řešení SAP | Procesor | Memory (Paměť) | Úložiště | Dostupnost |
+| Řešení SAP | Procesor | Memory (Paměť) | Storage | Dostupnost |
 | --- | --- | --- | --- | --- |
 | Optimalizováno pro OLAP: SAP BW, BW/4HANA<br /> nebo SAP HANA pro obecné úlohy OLAP | SAP HANA v Azure S72<br /> – 2 x procesor Intel® Xeon® E7-8890 v3<br /> 36 Procesorových jader a 72 vlákna CPU |  768 GB |  3 TB | Nenabízí se už |
 | --- | SAP HANA v Azure S144<br /> – 4 x procesor Intel® Xeon® E7-8890 v3<br /> 72 jader procesoru a 144 vlákna CPU |  1,5 TB |  6 TB | Nenabízí se už |
@@ -50,12 +50,12 @@ V části TDIv5 SAP HANA SAP umožňuje zákaznického velikosti a zákaznické 
 
 V mnoha případech tyto konfigurace specifické pro zákazníka server provádět více paměti, než je server jednotky certifikace SAP. Při práci s řešením SAP, zákazníci mají možnost získat podpory SAP a certifikace pro jejich konfigurace specifické pro zákazníka velikosti serveru. Následující standardní SKU velká Instance HANA v Azure jsou k dispozici a v Microsoftu ceník pro tyto projekty TDIv5 zákaznického velikosti.
 
-| Skladová jednotka (SKU)|Procesor | Memory (Paměť) | Úložiště | Dostupnost |
+| SKU|Procesor | Memory (Paměť) | Storage | Dostupnost |
 | ---| --- | --- | --- | --- |
 | S96 | SAP HANA v Azure S96<br /> – 2 x procesor Intel® Xeon® E7-8890 v4<br /> 48 Procesorových jader a 96 vlákna CPU |  768 GB |  3 TB | K dispozici |
 
 
-| Původní skladovou Položku, kterou může být <br /> Rozšířené v paměti | Procesor | Memory (Paměť) | Úložiště | Dostupnost |
+| Původní skladovou Položku, kterou může být <br /> Rozšířené v paměti | Procesor | Memory (Paměť) | Storage | Dostupnost |
 | --- | --- | --- | --- | --- |
 | S192m je možné rozšířit na | SAP HANA v Azure S192xm<br /> – 4 x procesor Intel® Xeon® E7-8890 v4<br /> 96 jader procesoru a 192 vlákna CPU |  6.0 TB |  16 TB | K dispozici |
 | S384xm je možné rozšířit na | SAP HANA v Azure S384xxm<br /> –. 8 x procesor Intel® Xeon® E7-8890 v4<br /> 192 Procesorových jader a 384 vlákna CPU |  12.0 TB |  28 TB | K dispozici |

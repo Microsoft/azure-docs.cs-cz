@@ -4,7 +4,7 @@ description: Nasazení aplikace do Cloud Foundry v Azure
 services: virtual-machines-linux
 documentationcenter: ''
 author: seanmck
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: ''
 keywords: ''
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/14/2017
 ms.author: seanmck
-ms.openlocfilehash: 5a43ce3f09ce9695fa5add58b52271a46e2a271a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fe510865e687b6a44538627e4ef9025b41416841
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60388475"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67668350"
 ---
 # <a name="deploy-your-first-app-to-cloud-foundry-on-microsoft-azure"></a>Nasazení první aplikace pro Cloud Foundry v Microsoft Azure
 
@@ -31,16 +31,16 @@ ms.locfileid: "60388475"
 
 Existuje několik možností pro vytvoření prostředí Cloud Foundry v Azure:
 
-- Použití [Pivotal Cloud Foundry nabídka] [ pcf-azuremarketplace] na webu Azure Marketplace k vytvoření standardního prostředí, která zahrnuje PCF Ops Manageru a Azure Service Broker. Můžete najít [úplné pokyny] [ pcf-azuremarketplace-pivotaldocs] pro nasazení na webu marketplace nabízí v Pivotal dokumentaci.
+- Použití [Pivotal Cloud Foundry nabídka][pcf-azuremarketplace] in the Azure Marketplace to create a standard environment that includes PCF Ops Manager and the Azure Service Broker. You can find [complete instructions][pcf-azuremarketplace-pivotaldocs] pro nasazení na webu marketplace nabízí v Pivotal dokumentaci.
 - Vytvořte přizpůsobené prostředí podle [ručního nasazení Pivotal Cloud Foundry][pcf-custom].
-- [Nasazení Cloud Foundry balíčků open source přímo] [ oss-cf-bosh] nastavením [BOSH](https://bosh.io) ředitel, virtuální počítač, který koordinuje nasazení prostředí Cloud Foundry.
+- [Nasazení Cloud Foundry balíčků open source přímo][oss-cf-bosh] nastavením [BOSH](https://bosh.io) ředitel, virtuální počítač, který koordinuje nasazení prostředí Cloud Foundry.
 
 > [!IMPORTANT] 
 > Pokud provádíte nasazení PCF z Azure Marketplace, poznamenejte si SYSTEMDOMAINURL a přihlašovací údaje správce vyžadovaných pro přístup k Pivotal Správce aplikací, které jsou popsané v příručce pro nasazení webu marketplace. Tyto jsou potřeba k dokončení tohoto kurzu. Pro nasazení webu marketplace, SYSTEMDOMAINURL je ve formě https://system. *IP adresa*. cf.pcfazure.com.
 
 ## <a name="connect-to-the-cloud-controller"></a>Připojení k řadiči cloudu
 
-Řadič cloudu je primárním vstupním bodem do prostředí Cloud Foundry pro nasazení a správu aplikací. Základní cloudové Kontroleru rozhraní API (CCAPI) je rozhraní REST API, ale je přístupná prostřednictvím různých nástrojů. V takovém případě budeme pracovat s nimi prostřednictvím [Cloud Foundry CLI][cf-cli]. Rozhraní příkazového řádku můžete nainstalovat Linux, MacOS nebo Windows, ale pokud chcete raději nechcete instalovat vůbec, je k dispozici předem nainstalována v [Azure Cloud Shell][cloudshell-docs].
+Řadič cloudu je primárním vstupním bodem do prostředí Cloud Foundry pro nasazení a správu aplikací. Základní cloudové Kontroleru rozhraní API (CCAPI) je rozhraní REST API, ale je přístupná prostřednictvím různých nástrojů. V takovém případě budeme pracovat s nimi prostřednictvím [Cloud Foundry CLI][cf-cli]. You can install the CLI on Linux, MacOS, or Windows, but if you'd prefer not to install it at all, it is available pre-installed in the [Azure Cloud Shell][cloudshell-docs].
 
 K přihlášení, předřaďte `api` k SYSTEMDOMAINURL, který jste získali z webu marketplace nasazení. Protože výchozím nasazení používá certifikát podepsaný svým držitelem, měli byste taky zahrnout `skip-ssl-validation` přepnout.
 
@@ -113,7 +113,7 @@ Pokud chcete zobrazit aplikaci hello-spring cloudem, otevřete v prohlížeči a
 ![Výchozí uživatelské rozhraní pro Hello Spring Cloud][hello-spring-cloud-basic]
 
 > [!NOTE] 
-> Další informace o tom, co se stane během `cf push`, naleznete v tématu [jak, aplikace připravené] [ cf-push-docs] v dokumentaci k Cloud Foundry.
+> Další informace o tom, co se stane během `cf push`, naleznete v tématu [jak, aplikace připravené][cf-push-docs] v dokumentaci k Cloud Foundry.
 
 ## <a name="view-application-logs"></a>Zobrazit protokoly aplikací
 

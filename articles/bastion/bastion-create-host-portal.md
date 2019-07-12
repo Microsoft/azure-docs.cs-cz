@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: cherylmc
-ms.openlocfilehash: 4a52383e6ab24c6ae1e2be0b67293d65dfa04466
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 65116ebbd6a66241a5b35a39f3dfb8f826a3745f
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477884"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594273"
 ---
 # <a name="create-an-azure-bastion-host-preview"></a>Vytvoření Azure Bastion host (Preview)
 
@@ -27,7 +27,7 @@ Existují dva způsoby, které jste vytvořili prostředek Bastion host:
 > Tato verze Public Preview se poskytuje bez smlouvy o úrovni služeb a neměla by se používat pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované, můžou mít omezené možnosti nebo nemusí být dostupné ve všech umístěních Azure. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Verze public preview je omezená na následující veřejných oblastech Azure:
 
@@ -57,7 +57,7 @@ Tato část vám pomůže vytvořit nový prostředek Bastionu Azure na webu Azu
     * **Podsíť**: Podsíť ve vaší virtuální síti, ke které se nový prostředek hostitele Bastionu nasadí. Musíte vytvořit podsíť s použitím hodnoty názvu **AzureBastionSubnet**. Tato hodnota umožňuje Azure vědělo, který podsítě do Bastionu prostředky nasadíte. To se liší od podsíť brány. Důrazně doporučujeme použít aspoň/27 nebo větší podsítě (/ 27, / 26 a tak dále). Vytvořte **AzureBastionSubnet** bez jakékoli skupiny zabezpečení sítě, směrování tabulky nebo delegace.
     * **Veřejná IP adresa**: Veřejné IP adresy Bastionu prostředku, na kterém budou mít přístup RDP/SSH (přes port 443). Vytvořit novou veřejnou IP adresu, nebo použijte již existující. Veřejná IP adresa musí být ve stejné oblasti jako prostředek Bastionu, kterou vytváříte.
     * **Název veřejné IP adresy**: Název prostředku veřejné IP adresy.
-    * **Veřejné IP adresy skladové položky**: Ve výchozím nastavení předem **standardní**.
+    * **Veřejné IP adresy skladové položky**: Ve výchozím nastavení předem **standardní**. Azure Bastionu používá a podporuje pouze standardní veřejné IP skladová jednotka.
     * **Přiřazení**: Ve výchozím nastavení předem **statické**.
 
 1. Když zadáte nastavení, klikněte na tlačítko **revize + vytvořit**. Tato operace ověří hodnoty. Jakmile úspěšně proběhne ověření, můžete začít v procesu vytváření.
@@ -87,6 +87,6 @@ Pokud hostitel typu bašta vytvoříte na portálu s použitím existujícího v
     * **Název veřejné IP adresy**: Název prostředku veřejné IP adresy.
 1. V dialogovém okně ověřování klikněte na tlačítko **vytvořit**. Počkejte přibližně 5 minut, než Bastionu prostředek, který se dají vytvářet a nasazovat.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Přečtěte si [Bastionu – nejčastější dotazy](bastion-faq.md)

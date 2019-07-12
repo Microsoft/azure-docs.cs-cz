@@ -6,14 +6,14 @@ ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.topic: howto
+ms.topic: conceptual
 ms.date: 05/09/2019
-ms.openlocfilehash: e9cb9a902cf60fbd3b297a72a7dfa836ee18c835
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
-ms.translationtype: HT
+ms.openlocfilehash: 98bd222212d616a5d2c608779c607bb431d184b9
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67484588"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657331"
 ---
 # <a name="create-and-configure-enterprise-security-package-clusters-in-azure-hdinsight"></a>Vytvoření a konfigurace Enterprise Security Package clustery v Azure HDInsight
 
@@ -40,7 +40,7 @@ Přehled: V této části použijete šablonu pro rychlé nasazení Azure k vytv
     1. Vyberte **vytvořit nový** vedle **skupiny prostředků** a zadejte název **OnPremADVRG**
     1. Pro zbytek šablony polí zadejte následující údaje:
 
-        * **Umístění**: USA – střed
+        * **Umístění**: Střed USA
         * **Uživatelské jméno správce**: HDIFabrikamAdmin
         * **Heslo správce**: < YOUR_PASSWORD >
         * **Domény**: HDIFabrikam.com
@@ -302,7 +302,7 @@ Ověřte, že je tento certifikát nainstalován v počítači\'s osobním úlo�
     1. V části **nastavení** klikněte na tlačítko **příchozí pravidla zabezpečení** > **přidat**.
     1. Na **přidat příchozí pravidlo zabezpečení** obrazovky, zadejte následující vlastnosti a klikněte na tlačítko **přidat**:
 
-        | Vlastnost | Hodnota |
+        | Vlastnost | Value |
         |---|---|
         | Source | Any |
         | Source port ranges | * |
@@ -310,7 +310,7 @@ Ověřte, že je tento certifikát nainstalován v počítači\'s osobním úlo�
         | Destination port range | 636 |
         | Protocol | Any |
         | Action | Allow |
-        | Priorita | <Desired Number> |
+        | Priorita | \<Požadované číslo\> |
         | Name | Port_LDAP_636 |
 
     ![Příchozí pravidlo zabezpečení](./media/apache-domain-joined-create-configure-enterprise-security-cluster/add-inbound-security-rule.png)
@@ -355,7 +355,7 @@ Tento krok vyžaduje následující předpoklady:
 
     1. V části 2 **zabezpečení a sítě**, proveďte následující kroky:
         1. Klikněte na tlačítko **povolené** pod **Enterprise Security Package**.
-        1. Klikněte na tlačítko **uživatele s rolí Správce clusteru** a vyberte **HDIAdmin** účet, který jste vytvořili dříve jako uživatel s rolí správce v místním prostředí. Klikněte na **Vybrat**.
+        1. Klikněte na tlačítko **uživatele s rolí Správce clusteru** a vyberte **HDIAdmin** účet, který jste vytvořili dříve jako uživatel s rolí správce v místním prostředí. Klikněte na tlačítko **vyberte**.
 
         1. Klikněte na tlačítko **clusteru přístupovou skupinu** a pak vyberte **HDIUserGroup**. Každý uživatel, který se v budoucnu přidat do této skupiny budou mít přístup k clustery HDInsight.
 

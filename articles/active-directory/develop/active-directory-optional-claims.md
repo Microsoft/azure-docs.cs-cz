@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60eeb420c723e22b771b4b86b55c2ce7d6a23659
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 98b0ec2e1defc4701bff798b2fa93900ec8a9a64
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67536831"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595165"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>Postup: Zadejte nepovinných deklarací identity do aplikace Azure AD
 
@@ -42,7 +42,7 @@ I když nepovinných deklarací identity jsou podporované v jak v1.0 a v2.0 for
 
 | Typ účtu | Tokeny V1.0 | Tokeny v2.0  |
 |--------------|---------------|----------------|
-| Osobní účet Microsoft  | neuvedeno  | Podporováno |
+| Osobní účet Microsoft  | Není k dispozici  | Podporováno |
 | Účet Azure AD      | Podporováno | Podporováno |
 
 ## <a name="v10-and-v20-optional-claims-set"></a>Nastavte V1.0 a v2.0 nepovinných deklarací identity
@@ -54,7 +54,7 @@ Sada nepovinných deklarací identity ve výchozím nastavení dostupné pro pou
 
 **Tabulka 2: v1.0 a v2.0 volitelné množině deklarací identity**
 
-| Název                       |  Popis   | Typ tokenu | Typ uživatele | Poznámky  |
+| Name                       |  Popis   | Typ tokenu | Typ uživatele | Poznámky  |
 |----------------------------|----------------|------------|-----------|--------|
 | `auth_time`                | Čas, kdy naposledy ověření uživatele. Specifikace OpenID Connect najdete v tématu.| JWT        |           |  |
 | `tenant_region_scope`      | Oblast prostředku tenanta | JWT        |           | |
@@ -83,7 +83,7 @@ Tyto deklarace jsou vždy součástí v1.0 tokenů Azure AD, ale není součást
 
 **Tabulka 3: pouze pro verze 2.0 nepovinných deklarací identity**
 
-| JWT Claim     | Název                            | Popis                                | Poznámky |
+| JWT Claim     | Name                            | Popis                                | Poznámky |
 |---------------|---------------------------------|-------------|-------|
 | `ipaddr`      | IP adresa                      | IP adresa přihlášení z klienta.   |       |
 | `onprem_sid`  | Identifikátor zabezpečení On-Premises |                                             |       |
@@ -93,7 +93,7 @@ Tyto deklarace jsou vždy součástí v1.0 tokenů Azure AD, ale není součást
 | `nickname`    | Pojmenování                        | Další jméno pro uživatele, nezávisle na první nebo poslední název. | 
 | `family_name` | Příjmení                       | Poskytuje poslední jméno, příjmení nebo příjmení uživatele, jak jsou definovány v objektu user. <br>"family_name": "Lukeš" | Podporované v účet MSA a Azure AD   |
 | `given_name`  | Jméno                      | Nabízí první nebo "zadány" jméno uživatele, jak v objektu user.<br>"given_name": "Frank"                   | Podporované v účet MSA a Azure AD  |
-| `upn`         | Hlavní název uživatele (UPN) | Identifikátor pro uživatele, který lze použít s parametrem username_hint.  Trvalý identifikátor pro uživatele a neměl by se data klíče. | Zobrazit [další vlastnosti](#additional-properties-of-optional-claims) níže pro konfiguraci deklarace identity. |
+| `upn`         | Hlavní název uživatele | Identifikátor pro uživatele, který lze použít s parametrem username_hint.  Trvalý identifikátor pro uživatele a neměl by se data klíče. | Zobrazit [další vlastnosti](#additional-properties-of-optional-claims) níže pro konfiguraci deklarace identity. |
 
 ### <a name="additional-properties-of-optional-claims"></a>Další vlastnosti nepovinných deklarací identity
 
@@ -168,7 +168,7 @@ Deklaruje nepovinných deklarací identity požadovaný aplikací. Aplikace mů�
 
 **Tabulka 5: Vlastnosti typu OptionalClaims**
 
-| Název        | Typ                       | Popis                                           |
+| Name        | Typ                       | Popis                                           |
 |-------------|----------------------------|-------------------------------------------------------|
 | `idToken`     | Kolekce (OptionalClaim) | Nepovinné deklarace vrácené v tokenu JWT ID. |
 | `accessToken` | Kolekce (OptionalClaim) | Nepovinné deklarace vrácené v přístupovém tokenu JWT. |
@@ -181,7 +181,7 @@ Pokud podporovaná konkrétní deklarace identity, můžete také upravit chová
 
 **Tabulka 6: Vlastnosti typu OptionalClaim**
 
-| Název                 | Typ                    | Popis                                                                                                                                                                                                                                                                                                   |
+| Name                 | Typ                    | Popis                                                                                                                                                                                                                                                                                                   |
 |----------------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `name`                 | Edm.String              | Název volitelnou deklaraci.                                                                                                                                                                                                                                                                           |
 | `source`               | Edm.String              | Zdroj (objekt adresáře) deklarace identity. Jsou předdefinované deklarace identity a uživatelem definované vlastnosti rozšíření deklarací identity. Pokud zdrojová hodnota je null, deklarace identity je předdefinovaný volitelnou deklaraci. Pokud zdrojová hodnota je uživatel, je hodnota vlastnosti název vlastnosti rozšíření v objektu user. |
@@ -193,7 +193,7 @@ Kromě sady standardních nepovinných deklarací identity můžete také nakonf
 
 > [!Note]
 > - Rozšíření schématu adresáře jsou Azure AD – pouze funkce, takže pokud manifestu požadavků vaší aplikace do vaší aplikace přihlásí vlastního rozšíření a uživatele MSA, nejsou k dispozici tato rozšíření.
-> - Azure AD volitelné deklarací fungují pouze u rozšíření Azure AD a práci s adresáři rozšíření Microsoft Graphu nefunguje. Vyžadovat obě rozhraní API `Directory.ReadWriteAll` oprávnění, což může být souhlas jenom správci.
+> - Azure AD volitelné deklarací fungují pouze u rozšíření Azure AD a nefunguje s rozšířením adresáře Microsoft Graphu. Vyžadovat obě rozhraní API `Directory.ReadWriteAll` oprávnění, což může být souhlas jenom správci.
 
 ### <a name="directory-extension-formatting"></a>Rozšíření adresáře formátování
 
@@ -254,7 +254,7 @@ Tato část zahrnuje možnosti konfigurace v rámci nepovinných deklarací iden
    }
    ```
 
-   | Schéma nepovinných deklarací identity | Hodnota |
+   | Schéma nepovinných deklarací identity | Value |
    |----------|-------------|
    | **Jméno:** | Musí být "groups" |
    | **Zdroj:** | Nepoužívá se. Vynechat nebo zadat hodnotu null |

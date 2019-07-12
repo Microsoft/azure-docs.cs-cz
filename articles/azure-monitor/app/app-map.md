@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 70d1f54aed5e83801b1d1e249d7a412dd6d9a49a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d69825b947af69a86525a996ed8709472846d9fe
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65964039"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67795676"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Mapa aplikace: Třídění distribuovaných aplikací
 
@@ -82,7 +82,7 @@ Pro dotazování a prozkoumání dalších dat aplikací, klikněte na tlačítk
 
 ![Snímek obrazovky s analytics prostředí](media/app-map/analytics.png)
 
-### <a name="alerts"></a>Výstrahy
+### <a name="alerts"></a>Upozornění
 
 Chcete-li zobrazit aktivní výstrahy a základní pravidla, které způsobují upozornění aktivovat, vyberte **výstrahy**.
 
@@ -119,7 +119,7 @@ namespace CustomInitializer.Telemetry
 }
 ```
 
-**Inicializátor zatížení pro aktivní TelemetryConfiguration**
+**ASP.NET apps: Inicializátor zatížení pro aktivní TelemetryConfiguration**
 
 In ApplicationInsights.config :
 
@@ -132,9 +132,6 @@ In ApplicationInsights.config :
       </TelemetryInitializers>
     </ApplicationInsights>
 ```
-
-> [!NOTE]
-> Přidáváním inicializátoru pomocí `ApplicationInsights.config` není platný pro aplikace ASP.NET Core.
 
 K vytvoření instance inicializátoru v kódu, například v souboru Global.aspx.cs je alternativní metoda pro ASP.NET Web apps:
 
@@ -149,15 +146,20 @@ K vytvoření instance inicializátoru v kódu, například v souboru Global.asp
     }
 ```
 
+> [!NOTE]
+> Přidáváním inicializátoru pomocí `ApplicationInsights.config` nebo pomocí `TelemetryConfiguration.Active` není platný pro aplikace ASP.NET Core. 
+
+**Aplikace ASP.NET Core: Inicializační výraz zatížení TelemetryConfiguration**
+
 Pro [ASP.NET Core](asp-net-core.md#adding-telemetryinitializers) aplikace, přidání nového `TelemetryInitializer` se provádí tak, že přidáte do kontejneru injektáž závislostí, jak je znázorněno níže. To se provádí v `ConfigureServices` metodu vaše `Startup.cs` třídy.
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;
  using CustomInitializer.Telemetry;
  public void ConfigureServices(IServiceCollection services)
-    {
-        services.AddSingleton<ITelemetryInitializer, MyCustomTelemetryInitializer>();
-    }
+{
+    services.AddSingleton<ITelemetryInitializer, MyTelemetryInitializer>();
+}
 ```
 
 ### <a name="nodejs"></a>Node.js

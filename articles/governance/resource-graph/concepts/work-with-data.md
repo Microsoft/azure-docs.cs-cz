@@ -7,12 +7,12 @@ ms.date: 04/01/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 9accdc19062cba7bb313afac3da056798c325a4c
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: d04f46dbc60a7242e44d76915e15281cc6248d20
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274412"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786539"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Práce s datovými sadami velkých prostředků Azure
 
@@ -82,9 +82,9 @@ Search-AzGraph -Query "project id, name | order by id asc" -First 1000 -Skip 300
 > [!IMPORTANT]
 > Dotaz musí **projektu** **id** pole v pořadí pro stránkování pro práci. Pokud je v dotazu nebyl nalezen, nebude obsahovat odpovědi **$skipToken**.
 
-Příklad najdete v tématu [další stránky dotaz](/rest/api/azureresourcegraph/resources/resources#next_page_query) v dokumentaci rozhraní REST API.
+Příklad najdete v tématu [další stránky dotaz](/rest/api/azureresourcegraph/resources/resources#next-page-query) v dokumentaci rozhraní REST API.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Zobrazit jazyk v aplikaci [Starter dotazy](../samples/starter.md).
 - Viz advanced používá v [upřesňujících dotazů](../samples/advanced.md).

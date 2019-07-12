@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 05/30/2019
-ms.openlocfilehash: ae632f7df34ca342a3dcc12bf5f011df0eb61973
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/10/2019
+ms.openlocfilehash: 6c2c8457cee004bf1288656ec9746b703d41aee1
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399324"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67806408"
 ---
 # <a name="visualize-data-using-a-query-imported-into-power-bi"></a>Vizualizovat data pomocí dotazu importované do Power BI
 
@@ -82,4 +82,4 @@ Pokud už nepotřebujete sestavy, kterou jste vytvořili pro účely tohoto čl�
 
 ## <a name="next-steps"></a>Další postup
 
-[Vizualizovat data pomocí importovaných dotazů v Power BI](power-bi-sql-query.md)
+[Vizualizovat data pomocí Průzkumníku dat Azure konektoru pro Power BI](power-bi-connector.md)

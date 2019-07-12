@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 7fb0fba519a7833ac318c713dc9eb3c6ac7f8b5b
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: d27fd9460685c08a2b13936415935f5aaf893797
+ms.sourcegitcommit: dda9fc615db84e6849963b20e1dce74c9fe51821
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509552"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67622413"
 ---
 # <a name="set-up-a-device-template"></a>Nastavení šablony zařízení
 
@@ -65,7 +65,7 @@ Chcete-li přidat novou míru telemetrická data, **a nové měření**, zvolte 
 > Názvy polí v šabloně zařízení musí odpovídat názvům vlastností v odpovídajícím kódu zařízení v pořadí pro měření telemetrická data zobrazit v aplikaci při připojení skutečné zařízení. Totéž při konfiguraci nastavení vlastnosti zařízení a příkazy i další definice šablony zařízení v následujících částech.
 ve formátu PNG například můžete přidat nové měření teploty telemetrická data:
 
-| Zobrazované jméno        | Název pole    |  Jednotky    | Minimum   |Maximum|
+| Zobrazovaný název        | Název pole    |  Jednotky    | Minimum   |Maximum|
 | --------------------| ------------- |-----------|-------|---|
 | Teplota         | temp          |  degC     |  0    |100|
 
@@ -86,7 +86,7 @@ Zadejte **zobrazovaný název**, **název pole**, a **závažnost** podrobnosti 
 
 Například můžete přidat nový **Motor chyba ventilátor** událostí.
 
-| Zobrazované jméno        | Název pole    |  Výchozí závažnost |
+| Zobrazovaný název        | Název pole    |  Výchozí závažnost |
 | --------------------| ------------- |-----------|
 | Chyba motoru ventilátoru     | fanmotorerror |  Chyba    |
 
@@ -109,7 +109,7 @@ Zadejte podrobnosti pro **zobrazovaný název**, **název pole**, a **hodnoty** 
 
 Například můžete přidat nový **ventilátor režimu** stavu, který má dva možné hodnoty, které zařízení může odesílat, **operační** a **Zastaveno**.
 
-| Zobrazované jméno | Název pole    |  Hodnota 1   | Zobrazované jméno | Hodnota 2    |Zobrazované jméno  | 
+| Zobrazovaný název | Název pole    |  Hodnota 1   | Zobrazovaný název | Hodnota 2    |Zobrazovaný název  | 
 | -------------| ------------- |----------- | -------------| -----------| -------------|
 | Režim ventilátoru     | fanmode       |  1         | Funguje    |     0      | Zastaveno      |
 
@@ -128,7 +128,7 @@ Chcete-li přidat novou míru umístění **a nové měření**, zvolte **umíst
 
 Můžete například přidat novou míru telemetrie umístění:
 
-| Zobrazované jméno        | Název pole    |
+| Zobrazovaný název        | Název pole    |
 | --------------------| ------------- |
 | Umístění prostředku      |  assetloc     |
 
@@ -150,7 +150,7 @@ assetloc: {
 
 ## <a name="settings"></a>Nastavení
 
-Nastavení řízení zařízení. Umožňují, aby operátoři mohli zadejte vstupy pro zařízení. Můžete přidat více nastavení do šablony zařízení, která se zobrazí jako dlaždice na **nastavení** kartu pro operátory používat. Lze přidat mnoho typů nastavení: číslo, text, datum, přepínací tlačítko, rozevíracího seznamu a popisek oddíl.
+Nastavení řízení zařízení. Umožňují, aby operátoři mohli zadejte vstupy pro zařízení. Můžete přidat více nastavení do šablony zařízení, která se zobrazí jako dlaždice na **nastavení** kartu pro operátory používat. Lze přidat mnoho typů nastavení: číslo, text, datum, přepínací tlačítko a popisek oddíl.
 
 Nastavení může být v jednom ze tří stavů. Zařízení odesílá tyto stavy.
 
@@ -162,7 +162,7 @@ Nastavení může být v jednom ze tří stavů. Zařízení odesílá tyto stav
 
 Například můžete přidat nové nastavení rychlost ventilátor tak, že vyberete **nastavení** a zadáte na novém **číslo** nastavení:
 
-| Zobrazované jméno  | Název pole    |  Jednotky  | Desetinná místa |Počáteční|
+| Zobrazovaný název  | Název pole    |  Jednotky  | Desetinná místa |Počáteční|
 | --------------| ------------- |---------| ---------|---- |
 | Ventilátor rychlost     | fanSpeed      | OT. / MIN     | 2        | 0   |
 
@@ -181,7 +181,7 @@ Vlastnosti se dělí do dvou kategorií:
 
 Například můžete přidat data poslední obsluhované zařízení jako nový **datum** vlastnosti (vlastnosti aplikace) **vlastnosti** kartu:
 
-| Zobrazované jméno  | Název pole | Počáteční hodnota   |
+| Zobrazovaný název  | Název pole | Počáteční hodnota   |
 | --------------| -----------|-----------------|
 | Last serviced (Poslední údržba)      | lastServiced        | 01/29/2019     |
 
@@ -213,7 +213,7 @@ Můžete vytvořit umístění vlastnost jako vlastnost aplikace s využitím ma
 
 3. Konfigurace **zobrazovaný název**, **název pole**a (volitelně) **počáteční hodnota** pro umístění.
 
-    | Zobrazované jméno  | Název pole | Počáteční hodnota |
+    | Zobrazovaný název  | Název pole | Počáteční hodnota |
     | --------------| -----------|---------|
     | Adresa instalace | installAddress | Microsoft, 1 Microsoft Way, Redmond, WA 98052   |
 
@@ -235,7 +235,7 @@ Můžete vytvořit umístění vlastnost jako vlastnost zařízení, která zař
 
 3. Nakonfigurujte zobrazovaný název a názvu pole a vyberte **umístění** jako datový typ:
 
-    | Zobrazované jméno  | Název pole | Typ dat |
+    | Zobrazovaný název  | Název pole | Typ dat |
     | --------------| -----------|-----------|
     | Device location (Umístění zařízení) | deviceLocation | location  |
 
@@ -258,7 +258,7 @@ Příkazy se používají ke vzdálené správě zařízení. Umožňují, oper�
 
 Například můžete přidat nový **Echo** příkaz tak, že vyberete **příkazy** kartu výběrem **+ nový příkaz**a zadat podrobnosti nového příkazu:
 
-| Zobrazované jméno  | Název pole | Výchozí časový limit | Typ dat |
+| Zobrazovaný název  | Název pole | Výchozí časový limit | Typ dat |
 | --------------| -----------|---------------- | --------- |
 | Příkaz pro zobrazení výsledků  | echo       |  30             | text      |
 

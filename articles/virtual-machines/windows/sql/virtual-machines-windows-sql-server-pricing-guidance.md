@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ce07c6c19c19f134cc322309bb338b94ef11ea85
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d53c1de9678db497a20788d0cab7ee4f0e6f0c9c
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66393859"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67607067"
 ---
 # <a name="pricing-guidance-for-sql-server-azure-vms"></a>Ceny pokyny pro virtuální počítače Azure s SQL serverem
 
@@ -110,7 +110,7 @@ Přenesení vlastní SQL licencování díky mobilitě licencí používat se do
 
 - **Úlohy se známými životnost a škálování**. Například aplikace, která je požadována pro celý rok a byla naplánované který požadavek.
 
-BYOL pomocí virtuálního počítače s SQL serverem, musí mít licenci pro SQL Server Standard nebo Enterprise a [programu Software Assurance](https://www.microsoft.com/en-us/licensing/licensing-programs/software-assurance-default.aspx#tab=1), což je požadované možnost přes několik multilicenčních programů a volitelné nákupu s ostatními. Cenová úroveň poskytuje prostřednictvím multilicenčních programů se liší, na základě typu smlouvy a množství a nebo závazku k systému SQL Server. Ale jako říci, používáním vlastní licence za nepřetržité produkční úlohy má následující výhody:
+BYOL pomocí virtuálního počítače s SQL serverem, musí mít licenci pro SQL Server Standard nebo Enterprise a [programu Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default.aspx#tab=1), což je požadované možnost přes několik multilicenčních programů a volitelné nákupu s ostatními. Cenová úroveň poskytuje prostřednictvím multilicenčních programů se liší, na základě typu smlouvy a množství a nebo závazku k systému SQL Server. Ale jako říci, používáním vlastní licence za nepřetržité produkční úlohy má následující výhody:
 
 | Výhoda BYOL | Popis |
 |-----|-----|

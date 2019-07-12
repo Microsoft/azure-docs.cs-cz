@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 0913e1877c63ed1a8e960676be02a12b45a34a7d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 12fd1b03e58d1c62157c6652ce96d8f0172dadb2
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66240098"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606112"
 ---
 # <a name="deploy-azure-file-sync"></a>Nasazení Synchronizace souborů Azure
 Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě soubory Azure, při zachování flexibility, výkonu a kompatibility s místními souborového serveru. Azure File Sync transformuje serveru systému Windows na rychlou mezipaměť sdílené složky Azure. Můžete použít jakýkoli protokol dostupný ve Windows serveru pro přístup k datům místně, včetně SMB, NFS a FTPS. Můžete mít libovolný počet mezipamětí po celém světě potřebujete.
@@ -25,7 +25,7 @@ Důrazně doporučujeme, abyste si přečetli [plánování nasazení služby so
     - [Dostupnost v oblastech](storage-sync-files-planning.md#region-availability) pro Azure File Sync.
     - [Vytvoření sdílené složky](storage-how-to-create-file-share.md) podrobný popis toho, jak vytvořit sdílenou složku.
 * Alespoň jeden podporované instance systému Windows Server nebo cluster s Windows serverem, synchronizaci se službou Azure File Sync. Další informace o podporovaných verzích systému Windows Server najdete v tématu [vzájemná funkční spolupráce s Windows serverem](storage-sync-files-planning.md#azure-file-sync-system-requirements-and-interoperability).
-* Modul Az PowerShell lze pomocí prostředí PowerShell 5.1 nebo Powershellu 6 +. Pro všechny podporované systémy, včetně systémů než Windows, ale rutinu pro registraci serveru musí být vždy spuštěný přímo na instanci Windows serveru, kterou registrujete může použít modul Az Powershellu pro Azure File Sync. Ve Windows serveru 2012 R2, můžete ověřit, že používáte alespoň prostředí PowerShell 5.1. \* prohlédněte hodnoty **PSVersion** vlastnost **$PSVersionTable** objektu:
+* Modul Az PowerShell lze pomocí prostředí PowerShell 5.1 nebo Powershellu 6 +. Pro všechny podporované systémy, včetně systémů než Windows, ale rutinu pro registraci serveru je potřeba vždy použít na instanci Windows serveru je může použít modul Az Powershellu pro Azure File Sync se registrace (to můžete udělat přímo nebo přes PowerShell Vzdálená komunikace). Ve Windows serveru 2012 R2, můžete ověřit, že používáte alespoň prostředí PowerShell 5.1. \* prohlédněte hodnoty **PSVersion** vlastnost **$PSVersionTable** objektu:
 
     ```powershell
     $PSVersionTable.PSVersion
@@ -39,17 +39,25 @@ Důrazně doporučujeme, abyste si přečetli [plánování nasazení služby so
     > Pokud máte v plánu použít uživatelské rozhraní serveru registrace, spíše než registrace přímo z prostředí PowerShell, je nutné použít prostředí PowerShell 5.1.
 
 * Pokud jste se rozhodli použít prostředí PowerShell 5.1, ujistěte se, že na je nainstalované minimálně rozhraní .NET 4.7.2. Další informace o [rozhraní .NET Framework verze a závislosti](https://docs.microsoft.com/dotnet/framework/migration-guide/versions-and-dependencies) ve vašem systému.
-* Modul Az PowerShell, kterou můžete instalovat podle zde uvedených pokynů: [Instalace a konfigurace Azure Powershellu](https://docs.microsoft.com/powershell/azure/install-Az-ps). 
-* Modul Az.StorageSync, který je aktuálně nainstalované nezávisle na modulu Az:
 
-    ```PowerShell
-    Install-Module Az.StorageSync -AllowClobber
-    ```
+    > [!Important]  
+    > Pokud instalujete .NET 4.7.2+ na jádru Windows serveru, je třeba nainstalovat `quiet` a `norestart` příznaky jinak se instalace nezdaří. Například pokud instalaci .NET 4.8, tento příkaz může vypadat nějak takto:
+    > ```PowerShell
+    > Start-Process -FilePath "ndp48-x86-x64-allos-enu.exe" -ArgumentList "/q /norestart" -Wait
+    > ```
+
+* Modul Az PowerShell, kterou můžete instalovat podle zde uvedených pokynů: [Instalace a konfigurace Azure Powershellu](https://docs.microsoft.com/powershell/azure/install-Az-ps).
+     
+    > [!Note]  
+    > Modul Az.StorageSync je nyní automaticky nainstalován při instalaci modulu Powershellu Az.
 
 ## <a name="prepare-windows-server-to-use-with-azure-file-sync"></a>Příprava Windows Serveru na použití se Synchronizací souborů Azure
 Pro každý server, který chcete používat s Azure File Sync, včetně každého uzlu serveru v clusteru převzetí služeb při selhání, zakázat **konfigurace rozšířeného zabezpečení aplikace Internet Explorer**. To se vyžaduje jenom pro počáteční server registrace. Po zaregistrování serveru můžete tuto možnost znovu povolit.
 
 # <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
+> [!Note]  
+> Pokud nasazujete Azure File Sync na jádru Windows serveru, můžete tento krok přeskočit.
+
 1. Otevřete správce serveru.
 2. Klikněte na tlačítko **místní Server**:  
     !["Místního serveru" v levé části uživatelského rozhraní správce serveru](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-1.PNG)
@@ -62,18 +70,23 @@ Pro každý server, který chcete používat s Azure File Sync, včetně každé
 Pokud chcete zakázat rozšířeného zabezpečení aplikace Internet Explorer, spusťte z relace Powershellu se zvýšenými oprávněními následující:
 
 ```powershell
-# Disable Internet Explorer Enhanced Security Configuration 
-# for Administrators
-Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Active Setup\Installed Components\{A509B1A7-37EF-4b3f-8CFC-4F3A74704073}" -Name "IsInstalled" -Value 0 -Force
+$installType = (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\").InstallationType
 
-# Disable Internet Explorer Enhanced Security Configuration 
-# for Users
-Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Active Setup\Installed Components\{A509B1A8-37EF-4b3f-8CFC-4F3A74704073}" -Name "IsInstalled" -Value 0 -Force
-
-# Force Internet Explorer closed, if open. This is required to fully apply the setting.
-# Save any work you have open in the IE browser. This will not affect other browsers,
-# including Microsoft Edge.
-Stop-Process -Name iexplore -ErrorAction SilentlyContinue
+# This step is not required for Server Core
+if ($installType -ne "Server Core") {
+    # Disable Internet Explorer Enhanced Security Configuration 
+    # for Administrators
+    Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Active Setup\Installed Components\{A509B1A7-37EF-4b3f-8CFC-4F3A74704073}" -Name "IsInstalled" -Value 0 -Force
+    
+    # Disable Internet Explorer Enhanced Security Configuration 
+    # for Users
+    Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Active Setup\Installed Components\{A509B1A8-37EF-4b3f-8CFC-4F3A74704073}" -Name "IsInstalled" -Value 0 -Force
+    
+    # Force Internet Explorer closed, if open. This is required to fully apply the setting.
+    # Save any work you have open in the IE browser. This will not affect other browsers,
+    # including Microsoft Edge.
+    Stop-Process -Name iexplore -ErrorAction SilentlyContinue
+}
 ``` 
 
 ---
@@ -100,7 +113,14 @@ Až budete hotovi, vyberte **vytvořit** nasadit službu synchronizace úložiš
 Nahraďte **< Az_Region >** , **< RG_Name >** , a **< my_storage_sync_service >** pomocí vlastní hodnoty, pak pomocí následujících příkazů vytvořte a nasaďte Služba synchronizace úložiště:
 
 ```powershell
-Connect-AzAccount
+$hostType = (Get-Host).Name
+
+if ($installType -eq "Server Core" -or $hostType -eq "ServerRemoteHost") {
+    Connect-AzAccount -UseDeviceAuthentication
+}
+else {
+    Connect-AzAccount
+}
 
 # this variable holds the Azure region you want to deploy 
 # Azure File Sync into

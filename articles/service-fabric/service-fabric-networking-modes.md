@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: aljo, subramar
-ms.openlocfilehash: ecb7ac4d3359142d3aef247e4b918f517e10c3bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: subramar
+ms.openlocfilehash: 2dcb678e8350ae0de3317db3682f0e51e27ab6f5
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64926136"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621938"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Síťové režimy kontejneru Service Fabric
 
@@ -204,10 +204,10 @@ Pokud služby container service restartuje nebo přesune do jiného uzlu v clust
    | --- | --- | --- |
    |Priorita |2000 | |
    |Name |Custom_Dns  | |
-   |source |VirtualNetwork | |
+   |Source |VirtualNetwork | |
    |Cíl | VirtualNetwork | |
    |Služba | DNS (UDP/53) | |
-   |Akce | Povolit  | |
+   |Action | Allow  | |
    | | |
 
 4. Zadejte síťový režim v manifestu aplikace pro každou službu: `<NetworkConfig NetworkType="Open">`. **Otevřít** sítě výsledky režimu ve službě získat vyhrazenou IP adresu. Je-li režim není zadán, výchozí služba **nat** režimu. V následujícím příkladu manifestu `NodeContainerServicePackage1` a `NodeContainerServicePackage2` služby může každý vlastností listenurimode nastavenou na stejném portu (obě služby naslouchají na `Endpoint1`). Pokud je zadán režim otevření sítě, `PortBinding` nejde zadat konfigurace.

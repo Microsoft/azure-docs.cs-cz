@@ -1,21 +1,20 @@
 ---
-title: Vizualizujte experimenty se službou Azure Machine Learning a TensorBoard
+title: Vizualizace experimentů s využitím TensorBoardu
+titleSuffix: Azure Machine Learning service
 description: Spusťte TensorBoard k vizualizaci historie spuštění experimentu a identifikovat potenciální oblasti pro ladění a přetrénování hyperparameter.
 services: machine-learning
+ms.service: machine-learning
+ms.subservice: core
+ms.topic: article
 author: maxluk
 ms.author: maxluk
-ms.reviewer: nibaccam
-ms.service: machine-learning
-ms.component: core
-ms.workload: data-services
-ms.topic: article
 ms.date: 06/28/2019
-ms.openlocfilehash: babd4cdf8b7ed9e04b4bd975d840688b27439c4f
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: fde2b6d1d298e89227951c376d584452fbff2679
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67560856"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707052"
 ---
 # <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>Vizualizujte dostupných spuštění experimentu a metriky ve službě Azure Machine Learning a TensorBoard
 

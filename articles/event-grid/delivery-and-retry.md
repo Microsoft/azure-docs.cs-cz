@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: spelluru
-ms.openlocfilehash: b4bfdd3e9cdf99314dc55907ba163adc6cd39423
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0945b06f78ac34500f0b16a4a419cff12d1a4734
+ms.sourcegitcommit: af31deded9b5836057e29b688b994b6c2890aa79
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65952884"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67812910"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Doručování zpráv Event Grid a zkuste to znovu
 
@@ -43,6 +43,12 @@ Deterministické chování, nastavte události time to live a maximální počet
 
 Ve výchozím nastavení služby Event Grid vyprší platnost všech událostí, které nejsou doručeny do 24 hodin. Je možné [přizpůsobit zásady opakování](manage-event-delivery.md) při vytváření odběru událostí. Zadejte maximální počet pokusů o doručení (výchozí hodnota je 30) a události time to live (výchozí hodnota je 1440 minut).
 
+## <a name="delayed-delivery"></a>Opožděné dodání
+
+Jako koncový bod dojde k selhání doručování, začne zpoždění doručování a opakované pokusy událostí do tohoto koncového bodu služby Event Grid. Například pokud selže prvních deseti událostí, které publikuje do koncového bodu služby Event Grid bude předpokládají, že koncový bod se setkává s problémy a bude zpozdit všechny následné pokusy *a nové* doručení nechystáte nějakou dobu – v některých případech až několik hodin .
+
+Opožděné dodání slouží funkční pro ochranu koncových bodů není v pořádku, jakož i systém Event Grid. Bez regresní a zpoždění doručování do koncových bodů není v pořádku zásady opakování služby Event Grid a možnosti svazku může snadno zaplnit celou systému.
+
 ## <a name="dead-letter-events"></a>Události onta nedoručených zpráv
 
 Když Event Grid doručit událost, kterou může odesílat nedoručené událostí do účtu úložiště. Tento proces se označuje jako dead-lettering. Ve výchozím nastavení služby Event Grid nebude zapnout dead-lettering. Ho Pokud chcete povolit, musíte zadat účet úložiště pro uložení nedoručené události při vytváření odběru událostí. O přijetí změn události z tohoto účtu úložiště, chcete-li vyřešit doručení.
@@ -63,25 +69,29 @@ Event Grid používá kódy odpovědí protokolu HTTP na vědomí přijetí udá
 
 ### <a name="success-codes"></a>Úspěch kódy
 
-Následující kódy odpovědi HTTP označuje, že událost má úspěšně doručit do vašeho webhooku. Event Grid považovat doručování za dokončený.
+Event Grid bude považovat za **pouze** následující kódy odpovědi HTTP jako úspěšných doručení. Všechny ostatní stavové kódy se považují za neúspěšné doručení a bude opakovat nebo deadlettered podle potřeby. Při přijetí kódu úspěšný stav služby Event Grid považovat za doručování dokončený.
 
 - 200 OK
+- 201 – vytvořeno
 - 202 přijato
+- 203 Bez určujících informací
+- 204 žádný obsah.
 
 ### <a name="failure-codes"></a>Kód selhání
 
-Následující kódy odpovědi HTTP označuje, že pokus o doručení událostí se nezdařilo.
+Všechny ostatní kódy nejsou v sadě výše (200 – 204) se považují za selhání a bude opakovat. Některé mají zásady konkrétní opakování spojený s je uvedeno níže, všechny ostatní použijte standardní exponenciální regresní model. Je důležité si pamatovat, že z důvodu vysoce paralelizované povaha služby Event Grid architektura chování opakování je Nedeterministický. 
 
-- 400 – Chybný požadavek
-- 401 Neautorizováno
-- 404 – Nenalezeno
-- 408 časový limit žádosti
-- Entita 413 požadavku je moc velká
-- Identifikátor URI 414 příliš dlouhý
-- 429 příliš mnoho požadavků
-- Chyba 500 interní Server
-- 503 – Nedostupná služba
-- 504 – Časový limit brány
+| Kód stavu | Chování opakování |
+| ------------|----------------|
+| 400 – Chybný požadavek | Zkuste to znovu za 5 minut nebo déle (nedoručených zpráv okamžitě, pokud instalační program nedoručené zprávy) |
+| 401 Neautorizováno | Zkuste to znovu za 5 minut nebo déle |
+| 403 Zakázáno | Zkuste to znovu za 5 minut nebo déle |
+| 404 – Nenalezeno | Zkuste to znovu za 5 minut nebo déle |
+| 408 – Časový limit žádosti | Zkuste zopakovat, až 2 minut nebo déle |
+| Entita 413 požadavku je moc velká | Zkuste to znovu za 10 sekund nebo více (nedoručených zpráv okamžitě, pokud instalační program nedoručené zprávy) |
+| 503 – Nedostupná služba | Zkuste to znovu za 30 sekund nebo více |
+| Všechny ostatní | Zkuste to znovu za 10 sekund nebo více |
+
 
 ## <a name="next-steps"></a>Další postup
 

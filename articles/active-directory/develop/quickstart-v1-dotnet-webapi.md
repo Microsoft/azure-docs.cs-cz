@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e2eca253bc5d1495d26506e0e6f8a83762e8bc5
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 83f5b08e5fee17c0ea5577d4d56d4d3208a818e3
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66001110"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67625294"
 ---
 # <a name="quickstart-build-a-net-web-api-that-integrates-with-azure-ad-for-authentication-and-authorization"></a>Rychlý start: Vytvoření webového rozhraní .NET API, která se integruje s Azure AD pro ověřování a autorizace
 
@@ -79,7 +79,7 @@ K ověření příchozích požadavků a tokenů musíte nastavit, aby aplikace 
 
 2. Do projektu TodoListService přidejte třídu Startup pro spuštění OWIN s názvem `Startup.cs`.  Pravým tlačítkem myši klikněte na projekt, vyberte **Přidat > Nová položka** a pak vyhledejte **OWIN**. Middleware OWIN při spuštění vaší aplikace vyvolá metodu `Configuration(…)`.
 
-3. Změňte deklaraci třídy na `public partial class Startup`. Část této třídy už jsme pro vás implementovali do jiného souboru. V metodě `Configuration(…)` proveďte volání do `ConfgureAuth(…)`, abyste nastavili ověřování pro vaši webovou aplikaci.
+3. Změňte deklaraci třídy na `public partial class Startup`. Část této třídy už jsme pro vás implementovali do jiného souboru. V metodě `Configuration(…)` proveďte volání do `ConfigureAuth(…)`, abyste nastavili ověřování pro vaši webovou aplikaci.
 
     ```csharp
     public partial class Startup

@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5b2c153646021aeb8ee0dbb787cfce41af19568d
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 4b250a5e14ab37553d93453d05f8ff388bf1ba84
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443678"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620525"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Sestavení řešení IoT s použitím Stream Analytics
 
@@ -164,7 +164,7 @@ Existuje několik prostředků, které je možné snadno nasadit do skupiny pros
 
    Parafrázovat záměru dotazu, Řekněme, že je potřeba vypočítat počet vozidel, které zadejte stánku linka. Protože stánku linka highway obsahuje nepřetržitý datový proud vozidel zadáte, jsou události vstupu jsou obdobou datový proud, který nikdy nezastaví. Kvantifikovat datového proudu, je nutné definovat "určitou dobu" k měření průběhu. Pojďme upřesňování, dále "kolik vozidel zadat linka stánku každé 3 minuty?" To se obvykle označuje jako aktivační událost pro přeskakující count.
 
-   Jak je vidět, Azure Stream Analytics používá dotazovací jazyk, který je například SQL a přidává několik rozšíření k určení souvisejících s časem aspekty dotazu.  Další informace, přečtěte si informace o [Správa času](https://msdn.microsoft.com/library/azure/mt582045.aspx) a [Oddílová](https://msdn.microsoft.com/library/azure/dn835019.aspx) konstrukce použitý v dotazu.
+   Jak je vidět, Azure Stream Analytics používá dotazovací jazyk, který je například SQL a přidává několik rozšíření k určení souvisejících s časem aspekty dotazu.  Další informace, přečtěte si informace o [Správa času](https://docs.microsoft.com/stream-analytics-query/time-management-azure-stream-analytics) a [Oddílová](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics) konstrukce použitý v dotazu.
 
 3. Zkontrolujte vstupy TollApp ukázkové úlohy. V aktuálním dotazu se používá pouze EntryStream vstup.
    - **EntryStream** připojení k Centru událostí, který zařadí do fronty dat, která představují pokaždé, když automobilu zadá tollbooth na komunikacích se vstup. Webové aplikace, která je součástí vzorku vytváří události a je zařazeno do fronty tato data do centra událostí. Všimněte si, že tento vstup je dotazován v klauzuli FROM streamování dotazu.

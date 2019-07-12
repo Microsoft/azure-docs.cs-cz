@@ -8,17 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 07/10/2019
 ms.author: wellsi
-ms.openlocfilehash: 93272520434ea43a94af9441a947239e983c216f
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 1ca6b5265cf97ef551ec0b13b46ac934a372d2c7
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606682"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797915"
 ---
 # <a name="release-notes-of-cognitive-services-speech-devices-sdk"></a>Poznámky k verzi sady Cognitive Services zařízení sadou SDK pro řeč
 Následující změny části seznamu v nejnovější vydané verze.
+
+## <a name="speech-devices-sdk-160"></a>Rozpoznávání řeči zařízení SDK 1.6.0:
+
+*   Podpora [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/) ve Windows a Linuxu s běžnými [ukázkové aplikace](https://aka.ms/sdsdk-download)
+*   Aktualizuje [sadou SDK pro řeč](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) komponentu verze 1.6.0. Další informace najdete v tématu jeho [poznámky k verzi](https://aka.ms/csspeech/whatsnew).
 
 ## <a name="speech-devices-sdk-151"></a>Rozpoznávání řeči zařízení SDK 1.5.1:
 

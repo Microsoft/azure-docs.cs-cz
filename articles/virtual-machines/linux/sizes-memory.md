@@ -4,7 +4,7 @@ description: Obsahuje seznam různých paměťově optimalizované velikosti k d
 services: virtual-machines-linux
 documentationcenter: ''
 author: jonbeck7
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
 keywords: Izolaci virtuálních počítačů, samostatný virtuální počítač, izolaci, izolovaný režim
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/16/2019
 ms.author: jonbeck
-ms.openlocfilehash: 3201183bbd012340575ee2c117b4b2083ceea711
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fdcfe2f78177dba7810c668d280f4f3f5127deb7
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65832145"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67708825"
 ---
 # <a name="memory-optimized-virtual-machine-sizes"></a>Paměťově optimalizované velikosti virtuálních počítačů
 

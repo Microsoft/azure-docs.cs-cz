@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: magottei
 ms.custom: seodec2018
-ms.openlocfilehash: 4ed18b5f83bdb052f2db6847a320c26a8e49f83e
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 1cb3260fa11354de963318a023fec912d082eae4
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147545"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67653401"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-search"></a>Řešení běžných potíží indexeru ve službě Azure Search
 
@@ -41,11 +41,11 @@ Pokud indexer nemá žádné připojené dovednosti, můžete _může_ pokusí [
 
 IP adresu vaší služby search můžete zjistit pomocí příkazu ping jeho plně kvalifikovaný název domény (`<your-search-service-name>.search.windows.net`).
 
-### <a name="cosmos-db"></a>Cosmos DB
+### <a name="cosmos-db"></a>Databáze Cosmos
 
 #### <a name="indexing-isnt-enabled"></a>Indexování není povoleno.
 
-Služba Azure Search má implicitní závislost na indexování Cosmos DB. Pokud vypnete automatické indexování ve službě Cosmos DB, Azure Search vrací úspěšný stav, ale nedokáže index obsahu kontejneru. Pokyny o tom, jak zkontrolovat nastavení a zapnout indexování najdete v tématu [správy indexování ve službě Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#manage-indexing-using-azure-portal).
+Služba Azure Search má implicitní závislost na indexování Cosmos DB. Pokud vypnete automatické indexování ve službě Cosmos DB, Azure Search vrací úspěšný stav, ale nedokáže index obsahu kontejneru. Pokyny o tom, jak zkontrolovat nastavení a zapnout indexování najdete v tématu [správy indexování ve službě Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-azure-portal).
 
 ## <a name="document-processing-errors"></a>Zpracování chyb dokumentu
 

@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58136aba278097e9778cc1361ed77a4512e3d51b
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 0dc4c29d3a12902b3ce01f9505cba5ac02e921eb
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66751912"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67625352"
 ---
 # <a name="evolution-of-microsoft-identity-platform"></a>Rozvoj platformy Microsoft Identity Platform
 
@@ -50,7 +50,7 @@ Na následujícím schématu vidíte používání identit Microsoftu na vysoké
 
 ### <a name="app-registration-experience"></a>Prostředí registrace aplikací
 
-Na webu Azure portal **[registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908)** prostředí je jeden prostředí portálu pro správu všech aplikací, které jste integrovali se službou Microsoft identity platform. Pokud používáte portál pro registraci aplikací, spouští se místo toho použít prostředí registrace aplikace Azure portal.
+Na webu Azure portal **[registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908)** prostředí je jeden prostředí portálu pro správu všech aplikací, které jste integrovali se službou Microsoft identity platform. Pokud používáte portál pro registraci aplikací, začněte používat prostředí registrace aplikace Azure portal místo.
 
 Integrace s Azure AD B2C (při ověřování identity v sociálních sítích nebo místní) budete muset zaregistrovat aplikaci v tenantovi B2C. Toto prostředí je také součástí na webu Azure portal.
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 9c59b98fb615266c193f997c01c83922c18d4408
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: e5148ff9e92a2e550a3117356a4e77cbac8fc6f4
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67174992"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673282"
 ---
 *Zahřívá se do mezipaměti*  
 Disk s použití mezipaměti u hostitele jen pro čtení se schopnost poskytovat vyšší vstupně-výstupních operací než limit na disku. Chcete-li získat tento maximálního výkonu při čtení z mezipaměti hostitele, nejprve je musí zahřívání mezipaměti tento disk. Tím se zajistí, že IOs pro čtení, že nástroj pro srovnávací testy, se bude řídit na čtení z mezipaměti svazku, ve skutečnosti přístupy do mezipaměti a nikoli disk přímo. Výsledek přístupy do mezipaměti v další vstupně-výstupních operací z jedné mezipaměti povolena disku.
@@ -25,7 +25,7 @@ Disk s použití mezipaměti u hostitele jen pro čtení se schopnost poskytovat
 
 ### <a name="iometer"></a>Iometer
 
-[Stáhněte si nástroj Iometer](http://sourceforge.net/projects/iometer/files/iometer-stable/2006-07-27/iometer-2006.07.27.win32.i386-setup.exe/download) na virtuálním počítači.
+[Stáhněte si nástroj Iometer](https://sourceforge.net/projects/iometer/files/iometer-stable/2006-07-27/iometer-2006.07.27.win32.i386-setup.exe/download) na virtuálním počítači.
 
 #### <a name="test-file"></a>Soubor testu
 
@@ -68,7 +68,7 @@ Provedení kroků zahřívání mezipaměti
    | RandomReads\_1 MB |1 MB |100 |100 |
 1. Spusťte test Iometer pro inicializaci mezipaměti disku s následujícími parametry. Použití tří pracovních vláken pro cílový svazek a hloubka fronty 128. Nastavení doby trvání "Doba běhu" testu do 2 hodin na kartě "Nastavení testu".
 
-   | Scénář | Cílový svazek | Název | Doba trvání |
+   | Scénář | Cílový svazek | Name | Doba trvání |
    | --- | --- | --- | --- |
    | Inicializovat Disk mezipaměti |CacheReads |RandomWrites\_1 MB |2 hodin |
 1. Spusťte test Iometer pro zahájení práce s disk mezipaměti s následujícími parametry. Použití tří pracovních vláken pro cílový svazek a hloubka fronty 128. Nastavení doby trvání "Doba běhu" testu do 2 hodin na kartě "Nastavení testu".

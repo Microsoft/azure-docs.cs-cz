@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/10/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7515c061467419412608bb8103136791845ae093
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 742e0028b1f92beb8300cc97f09d8292259fbc0a
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67132942"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67712553"
 ---
 # <a name="enable-and-deploy-azure-ultra-ssds-preview"></a>Povolit a nasadit Azure ultra SSD disky (preview)
 
@@ -33,7 +33,7 @@ Odpověď bude podobná formuláři níže, kde X je pásmo má být použito pr
 
 Zachovat **zóny** hodnota představuje zónu dostupnosti, a budete ho potřebovat za účelem nasazení ultra SSD.
 
-|ResourceType  |Name  |Location  |Zóny  |Omezení  |Schopnost  |Hodnota  |
+|ResourceType  |Name  |Location  |Zóny  |Omezení  |Funkce  |Value  |
 |---------|---------|---------|---------|---------|---------|---------|
 |disks     |UltraSSD_LRS         |eastus2         |X         |         |         |         |
 
@@ -63,7 +63,7 @@ Pokud chcete použít ultra disků SSD, musíte vytvořit virtuální počítač
 Nahraďte nebo nastavit **$vmname**, **$rgname**, **$diskname**, **$location**, **$password**, **$user** proměnné s vlastními hodnotami. Nastavte **$zone** hodnotu zónu dostupnosti, které jste získali z [spuštění tohoto článku](#determine-your-availability-zone). Spusťte následující příkaz rozhraní příkazového řádku k vytvoření ultra povoleno virtuálního počítače:
 
 ```azurecli-interactive
-az vm create --subscription $subscription -n $vmname -g $rgname --image Win2016Datacenter --ultra-ssd-enabled --zone $zone --authentication-type password --admin-password $password --admin-username $user --attach-data-disks $diskname --size Standard_D4s_v3 --location $location
+az vm create --subscription $subscription -n $vmname -g $rgname --image Win2016Datacenter --ultra-ssd-enabled true --zone $zone --authentication-type password --admin-password $password --admin-username $user --attach-data-disks $diskname --size Standard_D4s_v3 --location $location
 ```
 
 ### <a name="create-an-ultra-ssd-using-cli"></a>Vytvoření ultra SSD pomocí rozhraní příkazového řádku

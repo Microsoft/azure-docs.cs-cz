@@ -5,21 +5,19 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 7/2/2019
+ms.date: 7/10/2019
 ms.author: victorh
-ms.openlocfilehash: a5a53766df3338bb36913b589ebda970de55ec94
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: ce47612f18ee64caa3a053001deb5448f7c27bfd
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491935"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67703988"
 ---
 # <a name="deploy-an-azure-firewall-with-multiple-public-ip-addresses-using-azure-powershell"></a>Nasazení brány Firewall Azure s víc veřejných IP adres pomocí Azure Powershellu
 
 > [!IMPORTANT]
-> Brány Azure s víc veřejných IP adres je aktuálně ve verzi public preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
-> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Brány Azure s víc veřejných IP adres je k dispozici prostřednictvím Azure Powershellu, rozhraní příkazového řádku Azure, rozhraní REST a šablony. Portálu uživatelského rozhraní je přidáte do oblastí postupně a budou k dispozici ve všech oblastech po dokončení tohoto uvedení.
 
 Můžete nasadit bránu Firewall Azure s až 100 veřejné IP adresy.
 
@@ -28,49 +26,10 @@ Tato funkce umožňuje následující scénáře:
 - **DNAT** -více instancí standardní port lze přeložit do back-end serverů. Například pokud máte dvě veřejné IP adresy, může překládat TCP port 3389 (RDP) pro obě IP adresy.
 - **SNAT** – další porty jsou k dispozici pro odchozí připojení SNAT, snižuje riziko vyčerpání portů SNAT. Brána Firewall služby Azure v tuto chvíli náhodně vybere zdroj veřejnou IP adresu pro připojení. Pokud máte jakékoli podřízené filtrování ve vaší síti, budete muset povolit všechny veřejné IP adresy přidružené k vaší brány firewall.
 
-Následující příklady Azure Powershellu ukazují, jak můžete přidávat, odebírat a konfigurovat veřejné IP adresy pro bránu Firewall Azure.
+Následující příklady Azure Powershellu ukazují, jak můžete konfigurovat, přidávat a odebírat veřejné IP adresy pro bránu Firewall Azure.
 
 > [!NOTE]
-> Ve verzi public preview je-li přidat nebo odebrat veřejnou IP adresu do spuštěného brány firewall, nemusí existující příchozí připojení pomocí pravidel pro DNAT fungovat 40 – 120 sekund. Nelze odebrat první veřejná IP adresa přiřazená bránu firewall, pokud je brána firewall bylo zrušeno přiřazení nebo odstranit.
-
-## <a name="add-a-public-ip-address-to-an-existing-firewall"></a>Přidejte veřejnou IP adresu pro existující bránu firewall
-
-V tomto příkladu, veřejnou IP adresu *azFwPublicIp1* jako připojené do brány firewall.
-
-```azurepowershell
-$pip = New-AzPublicIpAddress `
-  -Name "azFwPublicIp1" `
-  -ResourceGroupName "rg" `
-  -Sku "Standard" `
-  -Location "centralus" `
-  -AllocationMethod Static
-
-$azFw = Get-AzFirewall `
-  -Name "AzureFirewall" `
-  -ResourceGroupName "rg"
-
-$azFw.AddPublicIpAddress($pip)
-
-$azFw | Set-AzFirewall
-```
-
-## <a name="remove-a-public-ip-address-from-an-existing-firewall"></a>Odebrat veřejnou IP adresu z existující brány firewall
-
-V tomto příkladu, veřejnou IP adresu *azFwPublicIp1* jako odpojené od brány.
-
-```azurepowershell
-$pip = Get-AzPublicIpAddress `
-  -Name "azFwPublicIp1" `
-  -ResourceGroupName "rg"
-
-$azFw = Get-AzFirewall `
-  -Name "AzureFirewall" `
-  -ResourceGroupName "rg"
-
-$azFw.RemovePublicIpAddress($pip)
-
-$azFw | Set-AzFirewall
-```
+> První konfigurace ipConfiguration nelze odebrat ze Brána Firewall služby Azure veřejné IP adresy konfigurace stránky. Pokud chcete upravit IP adresu, můžete pomocí Azure Powershellu.
 
 ## <a name="create-a-firewall-with-two-or-more-public-ip-addresses"></a>Vytvoření brány firewall se dvěma nebo více veřejných IP adres
 
@@ -103,6 +62,45 @@ New-AzFirewall `
   -Location centralus `
   -VirtualNetwork $vnet `
   -PublicIpAddress @($pip1, $pip2)
+```
+
+## <a name="add-a-public-ip-address-to-an-existing-firewall"></a>Přidejte veřejnou IP adresu pro existující bránu firewall
+
+V tomto příkladu, veřejnou IP adresu *azFwPublicIp1* je připojen k bráně firewall.
+
+```azurepowershell
+$pip = New-AzPublicIpAddress `
+  -Name "azFwPublicIp1" `
+  -ResourceGroupName "rg" `
+  -Sku "Standard" `
+  -Location "centralus" `
+  -AllocationMethod Static
+
+$azFw = Get-AzFirewall `
+  -Name "AzureFirewall" `
+  -ResourceGroupName "rg"
+
+$azFw.AddPublicIpAddress($pip)
+
+$azFw | Set-AzFirewall
+```
+
+## <a name="remove-a-public-ip-address-from-an-existing-firewall"></a>Odebrat veřejnou IP adresu z existující brány firewall
+
+V tomto příkladu, veřejnou IP adresu *azFwPublicIp1* je odpojená od brány.
+
+```azurepowershell
+$pip = Get-AzPublicIpAddress `
+  -Name "azFwPublicIp1" `
+  -ResourceGroupName "rg"
+
+$azFw = Get-AzFirewall `
+  -Name "AzureFirewall" `
+  -ResourceGroupName "rg"
+
+$azFw.RemovePublicIpAddress($pip)
+
+$azFw | Set-AzFirewall
 ```
 
 ## <a name="next-steps"></a>Další postup

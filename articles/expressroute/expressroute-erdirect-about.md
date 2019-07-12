@@ -5,19 +5,19 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 02/25/2019
+ms.date: 07/10/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: fb9dc5116ba23d57c7f2fe543e734759e8bbcc7b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e598cc03a1b7b4999719152540866c7168130e03
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60367625"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807484"
 ---
 # <a name="about-expressroute-direct"></a>O službě ExpressRoute Direct
 
-Přímé ExpressRoute poskytuje možnost připojení přímo do globální síti Microsoftu na umístění partnerského vztahu strategicky distribuovaných po celém světě. Přímé ExpressRoute poskytuje připojení duální 100 GB/s, která podporuje připojení k aktivní/aktivní ve velkém měřítku.
+Přímé ExpressRoute poskytuje možnost připojení přímo do globální síti Microsoftu na umístění partnerského vztahu strategicky distribuovaných po celém světě. Přímé ExpressRoute poskytuje duální 100 GB/s nebo 10 GB/s připojením, která podporuje připojení k aktivní/aktivní ve velkém měřítku.
 
 Klíčové funkce, které poskytuje ExpressRoute Direct patří, ale nejsou omezené na:
 
@@ -38,9 +38,9 @@ Před použitím ExpressRoute přímo, musí nejdřív zaregistrovat vaše před
 
 | **ExpressRoute přes poskytovatele služeb** | **Přímé ExpressRoute** | 
 | --- | --- |
-| Využívá poskytovatelů služeb a umožňuje rychlé zprovoznění a možností připojení do stávající infrastruktury | Vyžaduje infrastrukturu 100 GB/s a úplnou správu všech vrstev
+| Využívá poskytovatelů služeb a umožňuje rychlé zprovoznění a možností připojení do stávající infrastruktury | Vyžaduje 100 GB/s a 10 GB/s infrastrukturou a úplnou správu všech vrstev
 | Se integruje s stovky poskytovatelů, včetně Ethernet a MPLS | Přímé/Dedicated kapacitu pro regulované odvětví a masivní ingestování |
-| Skladová jednotka okruhů z 50 MB/s 10 GB/s | Zákazník si může vybrat kombinaci okruh následující SKU: 5 GB/s, 10 GB/s, 40 GB/s, 100 GB/s – omezený na celkem 200 GB/s
+| Skladová jednotka okruhů z 50 MB/s 10 GB/s | Zákazník si může přímo vybrat kombinaci následujících okruh skladové položky na 100 GB/s ExpressRoute: <ul><li>5 Gb/s</li><li>10 Gb/s</li><li>40 Gbps</li><li>100 Gbps</li></ul> Zákazník může vybrat kombinaci následující okruhu skladové položky na ExpressRoute 10 GB/s přímým přístupem:<ul><li>1 Gb/s</li><li>2 Gb/s</li><li>5 Gb/s</li><li>10 Gb/s</li></ul>
 | Optimalizováno pro jednoho tenanta | Optimalizováno pro jednoho tenanta/Cloud Service providers nebo více organizačních jednotek
 
 ## <a name="expressroute-direct-circuits"></a>Okruhy ExpressRoute přímo
@@ -53,7 +53,28 @@ Funkce ve většině případů je stejná jako okruhů, které využívají pos
 
 ## <a name="circuit-skus"></a>SKU okruhu
 
-Přímé ExpressRoute podporuje scénáře ingestování velké objemy dat do služby Azure storage a další velké objemy dat služby. ExpressRoute okruhy na přímé ExpressRoute teď také podporu **40 GB/s** a **100 GB/s** okruh skladové položky. Páry fyzického portu jsou **100 GB/s** pouze a může mít několik virtuálních okruhů s šířek pásma 5 GB/s, 10 GB/s, 40 GB/s, 100 GB/s – až k 200 GB/s v libovolné kombinaci. 
+Přímé ExpressRoute podporuje scénáře ingestování velké objemy dat do služby Azure storage a další velké objemy dat služby. Okruhy ExpressRoute na 100 GB/s ExpressRoute přímé teď také podporují **40 GB/s** a **100 GB/s** okruh skladové položky. Páry fyzického portu jsou **100 nebo 10 GB/s** pouze a může mít několik virtuálních okruhů. Okruh velikosti:
+
+| **Přímé ExpressRoute 100 GB/s** | **Přímé ExpressRoute 10 GB/s** | 
+| --- | --- |
+| **Předplacené šířky pásma**: 200 Gbps | **Předplacené šířky pásma**: 20 Gbps |
+| <ul><li>5 Gb/s</li><li>10 Gb/s</li><li>40 Gbps</li><li>100 Gbps</li></ul> | <ul><li>1 Gb/s</li><li>2 Gb/s</li><li>5 Gb/s</li><li>10 Gb/s</li></ul>
+
+## <a name="technical-requirements"></a>Technické požadavky
+
+* Rozhraní směrovač (MSEE) Microsoft Enterprise Edge:
+    * Duální porty s adaptéry Gigabit Ethernet 10 nebo 100 pouze mezi směrovači pár
+    * Připojení s jednotným režimu Vlákének LR
+    * Protokoly IPv4 a IPv6
+    * IP MTU 1500 bajtů
+
+* Připojení vrstvy 2 nebo vrstvy 3 přepínač nebo směrovač:
+    * Musí podporovat značky 1 802.1Q (Dot1Q) nebo dvě značky 802.1Q (QinQ) označit zapouzdření
+    * Kód Ethertype = 0x8100
+    * Musíte přidat vnější značky sítě VLAN (STAG) na základě ID sítě VLAN určené Microsoft - *vztahuje pouze na QinQ*
+    * Musí podporovat několik relací protokolu BGP (VLAN) na portu a zařízení
+    * Připojení k protokolu IPv4 a IPv6. *Pro protokol IPv6 se nevytvoří žádné další dílčí rozhraní. IPv6 adres se přidají do existující dílčí rozhraní*. 
+    * Volitelné: [Obousměrné předávání detekce (BFD)](https://docs.microsoft.com/azure/expressroute/expressroute-bfd) podpory, který je nakonfigurován ve výchozím nastavení všechny privátní partnerské vztahy okruhy ExpressRoute
 
 ## <a name="vlan-tagging"></a>Označování příznaky VLAN
 
@@ -71,6 +92,6 @@ Přímé ExpressRoute podporuje QinQ a Dot1Q označování příznaky VLAN.
 
 Přímé ExpressRoute poskytuje stejnou smlouvu SLA na podnikové úrovni s aktivní/aktivní redundantní připojení globální síti Microsoftu. Infrastruktura ExpressRoute je redundantní a je redundantní a rozmanitým připojení globální síti Microsoftu a odpovídajícím způsobem se škáluje s požadavky zákazníků. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Konfigurace ExpressRoute přímo](expressroute-howto-erdirect.md)

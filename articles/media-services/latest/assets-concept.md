@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 07/02/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 1bd9774cf045d9ed7f16a637fcb2eb1378b48686
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: d0a81d5d7ce8e7569b77007b6ad9c322cf626f16
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67565814"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67670704"
 ---
 # <a name="assets"></a>Prostředky
 
@@ -98,10 +98,10 @@ Následující tabulka ukazuje jak [Asset](https://docs.microsoft.com/rest/api/m
 |alternateId|AlternateId|
 |assetId|ID – začíná (jedinečné) hodnoty `nb:cid:UUID:` předponu.|
 |Vytvoření|Vytvořeno|
-|description|Název|
+|description|Name|
 |lastModified|lastModified|
 |storageAccountName|název_účtu_úložiště|
-|storageEncryptionFormat| Možnosti – možnosti vytvoření|
+|storageEncryptionFormat| Vytvoření (Možnosti)|
 |type||
 
 ## <a name="storage-side-encryption"></a>Šifrování na straně úložiště

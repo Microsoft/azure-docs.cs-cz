@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/05/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: e57291292d8957fd323f9be03bb7df0492484ea8
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: da10b70b85e284173abbd1779fb1d39f477ca0cd
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341619"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67723227"
 ---
 # <a name="authenticate-with-azure-active-directory-from-an-application-for-access-to-blobs-and-queues"></a>Ověřování pomocí Azure Active Directory z aplikace pro přístup k objektům BLOB a fronty
 
@@ -49,16 +49,16 @@ Další informace o registraci aplikace v Azure AD najdete v tématu [integrace 
 V dalším kroku udělení oprávnění aplikace volat rozhraní API služby Azure Storage. Tento krok umožňuje vaší aplikaci k autorizaci požadavků ve službě Azure Storage s Azure AD.
 
 1. Na **přehled** stránka pro registraci aplikace, vyberte **oprávnění k zobrazení rozhraní API**.
-1. V **oprávnění k rozhraní API** vyberte **přidat oprávnění** a zvolte **naše organizace bude využívat rozhraní API**.
-1. V části **naše organizace bude využívat rozhraní API** části, vyhledejte "Azure Storage" a vyberte **služby Azure Storage** ze seznamu výsledků k zobrazení **žádosti rozhraní API oprávnění** podokno.
+1. V **oprávnění k rozhraní API** vyberte **přidat oprávnění** a zvolte **Microsoft APIs**.
+1. Vyberte **služby Azure Storage** ze seznamu výsledků k zobrazení **žádosti rozhraní API oprávnění** podokně.
+1. V části **jaký typ oprávnění aplikace vyžaduje?** , podívejte se, že je k dispozici oprávnění typu **delegovaná oprávnění**. Ve výchozím nastavení je vybraná tato možnost za vás.
+1. V **vyberte oprávnění** část **žádosti rozhraní API oprávnění** podokně zaškrtněte políčko vedle položky **user_impersonation**, pak klikněte na tlačítko **přidat oprávnění**.
 
     ![Snímek obrazovky znázorňující oprávnění pro úložiště](media/storage-auth-aad-app/registered-app-permissions-1.png)
 
-1. V části **jaký typ oprávnění aplikace vyžaduje?** , podívejte se, že je k dispozici oprávnění typu **delegovaná oprávnění**. Ve výchozím nastavení je vybraná tato možnost za vás.
-1. V **vyberte oprávnění** část **žádosti rozhraní API oprávnění** podokně zaškrtněte políčko vedle položky **user_impersonation**, pak klikněte na tlačítko **přidat oprávnění**.
-1. **Oprávnění k rozhraní API** podokně teď zobrazuje, že vaše aplikace Azure AD má přístup k Microsoft Graph a Azure Storage. Oprávnění jsou udělena pro Microsoft Graph automaticky při první registraci vaší aplikace s Azure AD.
+**Oprávnění k rozhraní API** podokně nyní ukazuje, že vaše registrovaná aplikace Azure AD má přístup k Microsoft Graph a Azure Storage. Oprávnění jsou udělena pro Microsoft Graph automaticky při první registraci vaší aplikace s Azure AD.
 
-    ![Snímek obrazovky registrace oprávnění aplikace](media/storage-auth-aad-app/registered-app-permissions-2.png)
+![Snímek obrazovky registrace oprávnění aplikace](media/storage-auth-aad-app/registered-app-permissions-2.png)
 
 ## <a name="create-a-client-secret"></a>Vytvoření tajného klíče klienta
 

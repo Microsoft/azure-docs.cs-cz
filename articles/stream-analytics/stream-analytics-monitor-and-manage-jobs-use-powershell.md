@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: b7e6201d75556908cc16d97734d1c074efd0a587
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cdc09973a192924c5b9a81cd4ed49b9f36fc0eb1
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66148421"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612298"
 ---
 # <a name="monitor-and-manage-stream-analytics-jobs-with-azure-powershell-cmdlets"></a>Monitorování a správa úlohy Stream Analytics s rutinami Azure Powershellu
 Zjistěte, jak monitorovat a Stream Analytics prostředky spravovat pomocí rutin prostředí Azure PowerShell a skriptů prostředí powershell, které jsou spouštěny základní úlohy Stream Analytics.
@@ -228,7 +228,7 @@ Pokud zadáte vstup, který již existuje a není zadán parametr-Force, rutina 
 
 Pokud zadáte – vynutí parametr a zadejte existující zadejte název, nahradí se vstup bez potvrzení.
 
-Podrobné informace o jak struktura souboru JSON a obsah, najdete [vytvořit vstup (Azure Stream Analytics)] [ msdn-rest-api-create-stream-analytics-input] část [Stream Analytics Management REST API referenční informace Knihovna][stream.analytics.rest.api.reference].
+Podrobné informace jak struktura souboru JSON a obsahu [vytvořit vstup (Azure Stream Analytics)][msdn-rest-api-create-stream-analytics-input] section of the [Stream Analytics Management REST API Reference Library][stream.analytics.rest.api.reference].
 
 **Příklad 1**
 
@@ -287,7 +287,7 @@ Pokud můžete zadat název úlohy, který již existuje a není zadán parametr
 
 Pokud zadáte – vynutí parametr a zadejte název stávající úlohy, nahradí se definice úlohy bez potvrzení.
 
-Podrobné informace jak struktura souboru JSON a obsahu [vytvoření úlohy Stream Analytics] [ msdn-rest-api-create-stream-analytics-job] část [Stream Analytics Management REST API referenční knihovna] [stream.analytics.rest.api.reference].
+Podrobné informace jak struktura souboru JSON a obsahu [vytvoření úlohy Stream Analytics][msdn-rest-api-create-stream-analytics-job] section of the [Stream Analytics Management REST API Reference Library][stream.analytics.rest.api.reference].
 
 **Příklad 1**
 
@@ -330,7 +330,7 @@ Pokud zadáte výstup, který již existuje a není zadán parametr-Force, rutin
 
 Pokud zadáte – vynutí parametr a zadejte existující název výstupu, nahradí se výstup bez potvrzení.
 
-Podrobné informace o jak struktura souboru JSON a obsah, najdete [vytvořit výstup (Azure Stream Analytics)] [ msdn-rest-api-create-stream-analytics-output] část [Stream Analytics Management REST API referenční informace Knihovna][stream.analytics.rest.api.reference].
+Podrobné informace jak struktura souboru JSON a obsahu [vytvořit výstup (Azure Stream Analytics)][msdn-rest-api-create-stream-analytics-output] section of the [Stream Analytics Management REST API Reference Library][stream.analytics.rest.api.reference].
 
 **Příklad 1**
 
@@ -373,7 +373,7 @@ Pokud zadáte transformace, která již existuje a není zadán parametr-Force, 
 
 Pokud zadáte – vynutí parametr a zadejte název existujícího transformace, nahradí se transformace bez potvrzení.
 
-Podrobné informace jak struktura souboru JSON a obsahu [vytvoření transformace (Azure Stream Analytics)] [ msdn-rest-api-create-stream-analytics-transformation] část [rozhraní REST API správy Stream Analytics Referenční knihovna][stream.analytics.rest.api.reference].
+Podrobné informace jak struktura souboru JSON a obsahu [vytvoření transformace (Azure Stream Analytics)][msdn-rest-api-create-stream-analytics-transformation] section of the [Stream Analytics Management REST API Reference Library][stream.analytics.rest.api.reference].
 
 **Příklad 1**
 
@@ -550,7 +550,7 @@ Potřebujete další pomoc, vyzkoušejte naše [fóru Azure Stream Analytics](ht
 * [Úvod do služby Azure Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Škálování služby Stream Analytics](stream-analytics-scale-jobs.md)
-* [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Referenční příručka k rozhraní REST API pro správu služby Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
 [msdn-switch-azuremode]: https://msdn.microsoft.com/library/dn722470.aspx

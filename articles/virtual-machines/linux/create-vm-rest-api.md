@@ -4,7 +4,7 @@ description: Zjistěte, jak vytvořit virtuální počítač s Linuxem v Azure, 
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/05/2018
 ms.author: cynthn
-ms.openlocfilehash: 2b078cd769a9b4e5e66fe132fd4ef73ec4621efc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a7f624bc85d35048a8f9afa0f527ae592a24fbf1
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60391357"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67667949"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>Vytvoření virtuálního počítače s Linuxem, které využívá ověřování SSH pomocí rozhraní REST API
 
@@ -54,8 +54,8 @@ Vyžadují se následující hlavičky:
 
 | Hlavička požadavku   | Popis |
 |------------------|-----------------|
-| *Content-Type:*  | Povinná hodnota. Nastavte na `application/json`. |
-| *Authorization:* | Povinná hodnota. Nastaven na platné `Bearer` [přístupový token](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |
+| *Content-Type:*  | Povinný parametr. Nastavte na `application/json`. |
+| *Authorization:* | Povinný parametr. Nastaven na platné `Bearer` [přístupový token](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |
 
 Obecné informace o práci s požadavky rozhraní REST API najdete v tématu [součástí žádost/odpověď rozhraní REST API](/rest/api/azure/#components-of-a-rest-api-requestresponse).
 
@@ -63,10 +63,10 @@ Obecné informace o práci s požadavky rozhraní REST API najdete v tématu [so
 
 Následující běžné definice slouží k sestavení hlavní část žádosti:
 
-| Name                       | Požaduje se | Typ                                                                                | Popis  |
+| Name                       | Požadováno | Typ                                                                                | Popis  |
 |----------------------------|----------|-------------------------------------------------------------------------------------|--------------|
-| location                   | True     | string                                                                              | Umístění prostředku. |
-| name                       |          | string                                                                              | Název virtuálního počítače. |
+| location                   | Pravda     | řetězec                                                                              | Umístění prostředku. |
+| name                       |          | řetězec                                                                              | Název virtuálního počítače. |
 | properties.hardwareProfile |          | [HardwareProfile](/rest/api/compute/virtualmachines/createorupdate#hardwareprofile) | Určuje nastavení hardwaru pro virtuální počítač. |
 | properties.storageProfile  |          | [StorageProfile](/rest/api/compute/virtualmachines/createorupdate#storageprofile)   | Určuje nastavení úložiště pro disky virtuálních počítačů. |
 | properties.osProfile       |          | [OSProfile](/rest/api/compute/virtualmachines/createorupdate#osprofile)             | Určuje nastavení operačního systému pro virtuální počítač. |

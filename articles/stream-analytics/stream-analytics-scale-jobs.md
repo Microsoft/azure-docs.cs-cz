@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/22/2017
-ms.openlocfilehash: f4307da2e74846507cafb9f767a6ccae855e42a2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fe4d37563af159f566bc3fb03a3cfe136e7cb734
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60816813"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621733"
 ---
 # <a name="scale-an-azure-stream-analytics-job-to-increase-throughput"></a>Škálovat úlohy Azure Stream Analytics pro zvýšení prostupnosti
 Tento článek ukazuje, jak ladit dotazu Stream Analytics pro zvýšení propustnosti pro úlohy Stream Analytics. Následující příručky můžete použít ke škálování úlohy zpracování větší zátěže a využijte výhod více systémových prostředků (například větší šířku pásma, další prostředky procesoru, větší množství paměti).
@@ -85,7 +85,7 @@ Potřebujete další pomoc, vyzkoušejte naše [fóru Azure Stream Analytics](ht
 ## <a name="next-steps"></a>Další postup
 * [Úvod do služby Azure Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
-* [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Referenční příručka k rozhraní REST API pro správu služby Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
 <!--Image references-->

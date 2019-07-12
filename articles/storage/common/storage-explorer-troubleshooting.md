@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: 03cb3f2339dda1bf1dbb510b686882e924a98d74
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.openlocfilehash: cf26455ce069294bd1c5a52306ed21019287a0df
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67118704"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786284"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Průvodce odstraňováním potíží pro Azure Storage Exploreru
 
@@ -59,7 +59,7 @@ Pokud nemáte k dispozici role udělení žádné management oprávnění vrstvy
 
 ### <a name="what-if-i-cant-get-the-management-layer-permissions-i-need-from-my-administrator"></a>Co když mám nelze získat rozhraní pro správu vrstvy oprávnění je třeba Moje správce?
 
-Zatím nemáme řešení související RBAC v tuto chvíli. Jako alternativní řešení, můžete požádat o identifikátor URI SAS pro [připojit k prostředku](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#attach-a-service-by-using-a-shared-access-signature-sas).
+Zatím nemáme řešení související RBAC v tuto chvíli. Jako alternativní řešení, můžete požádat o identifikátor URI SAS pro [připojit k prostředku](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-sas-uri).
 
 ## <a name="error-self-signed-certificate-in-certificate-chain-and-similar-errors"></a>Chyba: Certifikát podepsaný svým držitelem v řetězu certifikátů (a podobné chyby)
 
@@ -247,20 +247,20 @@ Na Ubuntu 18.04, 16.04 a 14.04 se oficiálně podporuje Průzkumník služby Sto
 
 1. Stáhněte si Průzkumníka služby Storage
 2. Nainstalovat modul Runtime .NET Core, je aktuální ověřené verze: [2.0.8](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu18-04/runtime-2.0.8) (pokud už máte nainstalovanou novější verzi, budete muset opravit Průzkumníka služby Storage, najdete níže)
-3. Spusťte `sudo apt-get install libgconf-2-4`.
-4. Spusťte `sudo apt install libgnome-keyring-common libgnome-keyring-dev`.
+3. Spustit `sudo apt-get install libgconf-2-4`
+4. Spustit `sudo apt install libgnome-keyring-common libgnome-keyring-dev`
 
 # <a name="ubuntu-1604tab1604"></a>[Ubuntu 16.04](#tab/1604)
 
 1. Stáhněte si Průzkumníka služby Storage
 2. Nainstalovat modul Runtime .NET Core, je aktuální ověřené verze: [2.0.8](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu16-04/runtime-2.0.8) (pokud už máte nainstalovanou novější verzi, budete muset opravit Průzkumníka služby Storage, najdete níže)
-3. Spusťte `sudo apt install libgnome-keyring-dev`.
+3. Spustit `sudo apt install libgnome-keyring-dev`
 
 # <a name="ubuntu-1404tab1404"></a>[Ubuntu 14.04](#tab/1404)
 
 1. Stáhněte si Průzkumníka služby Storage
 2. Nainstalovat modul Runtime .NET Core, je aktuální ověřené verze: [2.0.8](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu14-04/runtime-2.0.8) (pokud už máte nainstalovanou novější verzi, budete muset opravit Průzkumníka služby Storage, najdete níže)
-3. Spusťte `sudo apt install libgnome-keyring-dev`.
+3. Spustit `sudo apt install libgnome-keyring-dev`
 
 ---
 
@@ -282,8 +282,8 @@ Pokud pro vás nebude fungovat na tlačítko "Otevřít v Průzkumníku" na webu
 * Google Chrome
 * Microsoft Internet Explorer
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud žádná z řešení pro vás nejvhodnější, pak [otevřete problém na Githubu](https://github.com/Microsoft/AzureStorageExplorer/issues). Také rychle na GitHub, můžete získat pomocí tlačítka "Nahlásit problém do Githubu" v levém dolním rohu.
 
-![Váš názor](./media/storage-explorer-troubleshooting/feedback-button.PNG)
+![Zpětná vazba](./media/storage-explorer-troubleshooting/feedback-button.PNG)

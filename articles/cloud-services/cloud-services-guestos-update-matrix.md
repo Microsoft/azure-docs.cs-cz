@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 6/6/2019
+ms.date: 7/8/2019
 ms.author: raiye
-ms.openlocfilehash: bdb3d0af93a69c1d15bd34a4badef5915ec0f01f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 88c3cd0e07e207a8b5ae1c07d39c8829a531c743
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66743031"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67721124"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure verzí hostovaného operačního systému a matice kompatibility sady SDK
 Poskytuje že vám aktuální informace o nejnovější verzi operačního systému hosta Azure uvolní pro cloudové služby. Tyto informace pomohou při plánování způsob upgradu, než je zakázáno hostovaného operačního systému. Je-li konfigurovat vaše role používat *automatické* aktualizace hostovaného operačního systému, jak je popsáno v [nastavení aktualizace operačního systému hosta Azure][Azure Guest OS Update Settings], není důležité, abyste si přečetli tuto stránku.
@@ -39,9 +39,12 @@ Poskytuje že vám aktuální informace o nejnovější verzi operačního syst�
 >
 >
 
-Informace o tom, jak aktualizovat vaše hostovaného operačního systému nejste si jistí? Zkontrolujte [to] [ cloud updates] navýšení kapacity.
+Informace o tom, jak aktualizovat vaše hostovaného operačního systému nejste si jistí? Zkontrolujte [to][cloud updates] navýšení kapacity.
 
 ## <a name="news-updates"></a>Aktualizace zprávy
+
+###### <a name="july-8-2019"></a>**8. července 2019**
+Hostovaný operační systém dne vydala.
 
 ###### <a name="june-6-2019"></a>**6. června 2019**
 Operačního systému hosta mohou vydala.
@@ -78,7 +81,7 @@ Hostovaný operační systém. září vydala.
 ## <a name="family-6-releases"></a>Uvolní řady 6
 **Windows Server 2019**
 
-Nainstalováno rozhraní .NET framework: 3.5, 4.7.2
+Nainstalováno rozhraní .NET framework: 3.5, 4.7.2, 4.8
 
 > [!NOTE]
 > Windows Azure SDK pro .NET – si můžete stáhnout 3.0 [tady][Windows Azure SDK].
@@ -95,18 +98,19 @@ Nainstalováno rozhraní .NET framework: 3.5, 4.7.2
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum |
 | --- | --- | --- |
+| WA-GUEST-OS-6.8_201906-01 |8\. července 2019 |Příspěvek 6.10 |
 | WA-GUEST-OS-6.7_201905-01 |6\. června 2019 |Příspěvek 6.9 |
-| WA-GUEST-OS-6.6_201904-01 |7\. května 2019 |Příspěvek 6.8 |
-|~~WA-GUEST-OS-6.5_201903-01~~ |26\. března 2019 |6\. června 2019 |
-|~~WA-GUEST-OS-6.4_201902-01~~ |12\. března 2019 |7\. května 2019 |
-|~~WA-GUEST-OS-6.3_201901-01~~ |5\. února 2019 |26\. března 2019 |
-|~~WA-GUEST-OS-6.2_201812-01~~ |24\. ledna 2019 |12\. března 2019 |
-|~~WA-GUEST-OS-6.1_201811-01~~ |24\. ledna 2019 |5\. února 2019 |
+|~~WA-GUEST-OS-6.6_201904-01~~ |7\. května 2019 |8\. července 2019 |
+|~~WA-GUEST-OS-6.5_201903-01~~ |26. března 2019 |6\. června 2019 |
+|~~WA-GUEST-OS-6.4_201902-01~~ |12. března 2019 |7\. května 2019 |
+|~~WA-GUEST-OS-6.3_201901-01~~ |5\. února 2019 |26. března 2019 |
+|~~WA-GUEST-OS-6.2_201812-01~~ |24. ledna 2019 |12. března 2019 |
+|~~WA-GUEST-OS-6.1_201811-01~~ |24. ledna 2019 |5\. února 2019 |
 
 ## <a name="family-5-releases"></a>Uvolní řady 5
 **Windows Server 2016**
 
-Nainstalováno rozhraní .NET framework: 3.5, 4.6.2
+Nainstalováno rozhraní .NET framework: 3.5, 4.6.2, 4.7.2, 4.8
 
 > [!NOTE]
 > Hesla protokolu RDP pro řadu OS 5 musí být minimálně 10 znaků.
@@ -115,32 +119,34 @@ Nainstalováno rozhraní .NET framework: 3.5, 4.6.2
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum |
 | --- | --- | --- |
+| WA-GUEST-OS-5.32_201906-01 |8\. července 2019 |Příspěvek 5.34 |
 | WA-GUEST-OS-5.31_201905-01 |6\. června 2019 |Příspěvek 5.33 |
-| WA-GUEST-OS-5.30_201904-01 |7\. května 2019 |Příspěvek 5.32 |
-|~~WA-GUEST-OS-5.29_201903-01~~ |26\. března 2019 |6\. června 2019 |
-|~~WA-GUEST-OS-5.28_201902-01~~ |12\. března 2019 |7\. května 2019 |
-|~~WA-GUEST-OS-5.27_201901-01~~ |5\. února 2019 |26\. března 2019 |
-|~~WA-GUEST-OS-5.26_201812-01~~ |7\. ledna 2019 |12\. března 2019 |
-|~~WA-GUEST-OS-5.25_201811-01~~ |14\. prosince 2018 |5\. února 2019 |
+|~~WA-GUEST-OS-5.30_201904-01~~ |7\. května 2019 |8\. července 2019 |
+|~~WA-GUEST-OS-5.29_201903-01~~ |26. března 2019 |6\. června 2019 |
+|~~WA-GUEST-OS-5.28_201902-01~~ |12. března 2019 |7\. května 2019 |
+|~~WA-GUEST-OS-5.27_201901-01~~ |5\. února 2019 |26. března 2019 |
+|~~WA-GUEST-OS-5.26_201812-01~~ |7\. ledna 2019 |12. března 2019 |
+|~~WA-GUEST-OS-5.25_201811-01~~ |14. prosince 2018 |5\. února 2019 |
 |~~WA-GUEST-OS-5.24_201810-01~~ |8\. listopadu 2018 |7\. ledna 2019 |
-|~~WA-GUEST-OS-5.23_201809-01~~ |12\. října 2018 |14\. prosince 2018 |
+|~~WA-GUEST-OS-5.23_201809-01~~ |12. října 2018 |14. prosince 2018 |
 
 ## <a name="family-4-releases"></a>Uvolní řady 4
 **Windows Server 2012 R2**
 
-Nainstalováno rozhraní .NET framework: 3.5, 4.5.1
+Nainstalováno rozhraní .NET framework: 3.5, 4.5.1, 4.5.2
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum |
 | --- | --- | --- |
+| WA-GUEST-OS-4.67_201906-01 |8\. července 2019 |Příspěvek 4.69 |
 | WA-GUEST-OS-4.66_201905-01 |6\. června 2019 |Příspěvek 4.68 |
-| WA-GUEST-OS-4.65_201904-01 |7\. května 2019 |Příspěvek 4.67 |
-|~~WA-GUEST-OS-4.64_201903-01~~ |26\. března 2019 |6\. června 2019 |
-|~~WA-GUEST-OS-4.63_201902-01~~ |12\. března 2019 |7\. května 2019 |
-|~~WA-GUEST-OS-4.62_201901-01~~ |5\. února 2019 |26\. března 2019 |
-|~~WA-GUEST-OS-4.61_201812-01~~ |7\. ledna 2019 |12\. března 2019 |
-|~~WA-GUEST-OS-4.60_201811-01~~ |14\. prosince 2018 |5\. února 2019 |
+|~~WA-GUEST-OS-4.65_201904-01~~ |7\. května 2019 |8\. července 2019 |
+|~~WA-GUEST-OS-4.64_201903-01~~ |26. března 2019 |6\. června 2019 |
+|~~WA-GUEST-OS-4.63_201902-01~~ |12. března 2019 |7\. května 2019 |
+|~~WA-GUEST-OS-4.62_201901-01~~ |5\. února 2019 |26. března 2019 |
+|~~WA-GUEST-OS-4.61_201812-01~~ |7\. ledna 2019 |12. března 2019 |
+|~~WA-GUEST-OS-4.60_201811-01~~ |14. prosince 2018 |5\. února 2019 |
 |~~WA-GUEST-OS-4.59_201810-01~~ |8\. listopadu 2018 |7\. ledna 2019 |
-|~~WA-GUEST-OS-4.58_201809-01~~ |12\. října 2018 |14\. prosince 2018 |
+|~~WA-GUEST-OS-4.58_201809-01~~ |12. října 2018 |14. prosince 2018 |
 
 ## <a name="family-3-releases"></a>Uvolní řady 3
 **Windows Server 2012**
@@ -149,38 +155,40 @@ Nainstalováno rozhraní .NET framework: 3.5, 4.5
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum |
 | --- | --- | --- |
-| WA-GUEST-OS-3.73_201905-01 |Červen 67. 2019 |Příspěvek je 3,75 operace |
-| WA-GUEST-OS-3.72_201904-01 |7\. května 2019 |Příspěvek 3.74 |
-|~~WA-GUEST-OS-3.71_201903-01~~ |26\. března 2019 |6\. června 2019 |
-|~~WA-GUEST-OS-3.70_201902-01~~ |12\. března 2019 |7\. května 2019 |
-|~~WA-GUEST-OS-3.69_201901-01~~ |5\. února 2019 |26\. března 2019 |
-|~~WA-GUEST-OS-3.68_201812-01~~ |7\. ledna 2019 |12\. března 2019 |
-|~~WA-GUEST-OS-3.67_201811-01~~ |14\. prosince 2018 |5\. února 2019 |
+| WA-GUEST-OS-3.74_201906-01 |8\. července 2019 |Příspěvek 3.76 |
+| WA-GUEST-OS-3.73_201905-01 |6\. června 2019 |Příspěvek je 3,75 operace |
+|~~WA-GUEST-OS-3.72_201904-01~~ |7\. května 2019 |8\. července 2019 |
+|~~WA-GUEST-OS-3.71_201903-01~~ |26. března 2019 |6\. června 2019 |
+|~~WA-GUEST-OS-3.70_201902-01~~ |12. března 2019 |7\. května 2019 |
+|~~WA-GUEST-OS-3.69_201901-01~~ |5\. února 2019 |26. března 2019 |
+|~~WA-GUEST-OS-3.68_201812-01~~ |7\. ledna 2019 |12. března 2019 |
+|~~WA-GUEST-OS-3.67_201811-01~~ |14. prosince 2018 |5\. února 2019 |
 |~~WA-GUEST-OS-3.66_201810-01~~ |8\. listopadu 2018 |7\. ledna 2019 |
-|~~WA-GUEST-OS-3.65_201809-01~~ |12\. října 2018 |14\. prosince 2018 |
+|~~WA-GUEST-OS-3.65_201809-01~~ |12. října 2018 |14. prosince 2018 |
 
 ## <a name="family-2-releases"></a>Uvolní řady 2
 **Windows Server 2008 R2 SP1**
 
-Nainstalováno rozhraní .NET framework: 3.5 (zahrnuje 2.0 a 3.0)
+Nainstalováno rozhraní .NET framework: 3.5 (zahrnuje 2.0 a 3.0), 4.5
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum |
 | --- | --- | --- |
+| WA-GUEST-OS-2.87_201906-01 |8\. července 2019 |Příspěvek 2.89 |
 | WA-GUEST-OS-2.86_201905-01 |6\. června 2019 |Příspěvek 2,88 |
-| WA-GUEST-OS-2.85_201904-01 |7\. května 2019 |Příspěvek 2.87 |
-|~~WA-GUEST-OS-2.84_201903-01~~ |26\. března 2019 |6\. června 2019 |
-|~~WA-GUEST-OS-2.83_201902-01~~ |12\. března 2019 |7\. května 2019 |
-|~~WA-GUEST-OS-2.82_201901-01~~ |5\. února 2019 |26\. března 2019 |
-|~~WA-GUEST-OS-2.81_201812-01~~ |7\. ledna 2019 |12\. března 2019 |
-|~~WA-GUEST-OS-2.80_201811-01~~ |14\. prosince 2018 |5\. února 2019 |
+|~~WA-GUEST-OS-2.85_201904-01~~ |7\. května 2019 |8\. července 2019 |
+|~~WA-GUEST-OS-2.84_201903-01~~ |26. března 2019 |6\. června 2019 |
+|~~WA-GUEST-OS-2.83_201902-01~~ |12. března 2019 |7\. května 2019 |
+|~~WA-GUEST-OS-2.82_201901-01~~ |5\. února 2019 |26. března 2019 |
+|~~WA-GUEST-OS-2.81_201812-01~~ |7\. ledna 2019 |12. března 2019 |
+|~~WA-GUEST-OS-2.80_201811-01~~ |14. prosince 2018 |5\. února 2019 |
 |~~WA-GUEST-OS-2.79_201810-01~~ |8\. listopadu 2018 |7\. ledna 2019 |
-|~~WA-GUEST-OS-2.78_201809-01~~ |12\. října 2018 |14\. prosince 2018 |
+|~~WA-GUEST-OS-2.78_201809-01~~ |12. října 2018 |14. prosince 2018 |
 
 ## <a name="msrc-patch-updates"></a>Aktualizace MSRC
 Seznam oprav, které jsou součástí jednotlivých vydání měsíční aktualizace operačního systému hosta je k dispozici [tady][patches].
 
 ## <a name="sdk-support"></a>Podpora v sadě SDK
-I v případě, [zásady vyřazení z provozu pro sadu Azure SDK] [ retire policy sdk] označuje, že pouze verze nad 2.2 jsou podporované, konkrétní řady hostovaného operačního systému vám umožní použít starší verze. Vždy používejte nejnovější podporované SDK.
+I v případě, [zásady vyřazení z provozu pro sadu Azure SDK][retire policy sdk] označuje, že pouze verze nad 2.2 jsou podporované, konkrétní řady hostovaného operačního systému vám umožní použít starší verze. Vždy používejte nejnovější podporované SDK.
 
 | Řada operačního systému hosta | Kompatibilní verze sady SDK |
 | --- | --- |
@@ -204,7 +212,7 @@ Když **vypršení platnosti** předá data, kteroukoli Cloudovou službu pořá
 * **Řada operačního systému hosta**  
   Verze operačního systému Windows Server, založený na operačním systému hosta. Například *řady 3* je založená na Windows serveru 2012.
 * **Verze operačního systému hosta**  
-  Specifické pro rodinu bitovou kopii operačního systému hosta a relevantní [Microsoft Security Response Center (MSRC)] [ msrc] opravy, které jsou dostupné na datum vygenerované nová verze hostovaného operačního systému. Ne všechny opravy mohou být zahrnuty.
+  Specifické pro rodinu bitovou kopii operačního systému hosta a relevantní [Microsoft Security Response Center (MSRC)][msrc] opravy, které jsou dostupné na datum vygenerované nová verze hostovaného operačního systému. Ne všechny opravy mohou být zahrnuty.
 
     Čísla začínají hodnotou 0 a přírůstek na 1 pokaždé, když se přidá novou sadu aktualizací. Koncové nuly jsou uvedeny pouze pokud je to důležité. To znamená verze 2.10 je jiný, mnohem vyšší verze než verze 2.1.
 * **Vydání hostovaného operačního systému**  
@@ -225,9 +233,9 @@ Microsoft Azure je neustále uvolnění aktualizace. Hostovaný operační syst�
 
 Když se publikuje novou verzi hostovaného operačního systému, může trvat dobu plně rozšíří do Azure. Protože služby jsou aktualizované na novou hostovaného operačního systému, se restartují dodržením aktualizační domény. Služby nastaveno pro použití aktualizací "Automatické" se zobrazí první vydání verze. Po aktualizaci se zobrazí nová verze hostovaného operačního systému, které jsou uvedené pro vaši službu na portálu Azure portal. Během této doby může dojít k opakovaným vydáním. Některé verze mohou být nasazeny delší časová období a automatického upgradu restartování počítače nelze provádět mnoho týdny po datu oficiálním vydáním. Jakmile hostovaného operačního systému je k dispozici, pak explicitně můžete tuto verzi z portálu nebo v konfiguračním souboru.
 
-Značnou cenné informace o restartování a odkazy na další informace o technické podrobnosti aktualizace hosta a hostitelským operačním systémem, najdete v článku MSDN blogový příspěvek s názvem [Role Instance se restartuje kvůli upgrady operačního systému] [ restarts].
+Značnou cenné informace o restartování a odkazy na další informace o technické podrobnosti aktualizace hosta a hostitelským operačním systémem, najdete v článku MSDN blogový příspěvek s názvem [Role Instance se restartuje kvůli upgrady operačního systému][restarts].
 
-Pokud ručně aktualizovat vaše hostovaného operačního systému, najdete v článku [zásady vyřazení z provozu pro hostovaný operační systém] [ retirepolicy] pro další informace.
+Pokud ručně aktualizovat vaše hostovaného operačního systému, najdete v článku [zásady vyřazení z provozu pro hostovaný operační systém][retirepolicy] pro další informace.
 
 ## <a name="guest-os-supportability-and-retirement-policy"></a>Zásady podpory a vyřazení hostovaného operačního systému
 Vysvětlení zásad podpoře a vyřazení hostovaného operačního systému [tady][retirepolicy].

@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alkarche
-ms.openlocfilehash: 6d11961f06a75341e633c7a8963e6b83ed37cf13
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1bc53fadfb622794703deaff560c9083ca6a1a10
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61341627"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67656822"
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>Podpora metadat OpenAPI 2.0 ve službě Azure Functions (preview)
 OpenAPI 2.0 (dříve Swagger) podpora metadat ve službě Azure Functions je funkce ve verzi preview, můžete použít k zápisu definici rozhraní OpenAPI 2.0 v aplikaci function app. Tento soubor pak můžete hostovat pomocí aplikace function app.
@@ -45,7 +45,7 @@ Podrobné pokyny najdete v tématu [úvodní kurz](./functions-api-definition-ge
 
 ### <a name="templates"></a>Dostupné šablony
 
-|Název| Popis |
+|Name| Popis |
 |:-----|:-----|
 |Vygenerovanou definici|Definice OpenAPI s maximální množství informací, které lze odvodit z metadat existující funkce.|
 
@@ -75,7 +75,7 @@ Následující tabulka představuje nastavení portálu Azure portal a odpovída
    1. Nastavte **zdroj definice rozhraní API** k **funkce**.
    1. Klikněte na tlačítko **šablonu definic rozhraní API vygenerovat** a potom **Uložit** k vytvoření definice šablony pro úpravu později.
    1. Poznamenejte si adresu URL definice rozhraní API a klíč.
-1. [Nastavení průběžné integrace a nasazování (CI/CD)](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment#continuous-deployment-requirements).
+1. [Nastavení průběžné integrace a nasazování (CI/CD)](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment#requirements-for-continuous-deployment).
 2. Upravit swagger.json ve správě zdrojového kódu v \site\wwwroot\.azurefunctions\swagger\swagger.json.
 
 Nyní, jsou změny swagger.json ve vašem úložišti hostované aplikace function App na rozhraní API pro definici adresy URL a klíč, který jste si poznamenali v kroku 1.c.

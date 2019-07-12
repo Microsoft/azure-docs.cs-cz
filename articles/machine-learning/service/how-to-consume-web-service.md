@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 12/03/2018
+ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8fd7af7c2a075258e337b51c3aaca3da9e3d497f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 376be43a57783f537df81f0e97f005e2c46a710e
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66692859"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797624"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Využití Azure Machine Learning model nasadit jako webovou službu
 
@@ -491,6 +491,6 @@ Vrácené výsledky jsou podobné následující dokument JSON:
 
 Power BI podporuje využití služby Azure Machine Learning web Services rozšířit data v Power BI s předpovědí. 
 
-Generovat webovou službu, která je podporována pro použití v Power BI, musí podporovat schématu formátu, který vyžaduje Power BI. [Zjistěte, jak vytvořit schéma Power BI nepodporuje](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where#Example-script-with-dictionary-input-Support-consumption-from-Power-BI).
+Generovat webovou službu, která je podporována pro použití v Power BI, musí podporovat schématu formátu, který vyžaduje Power BI. [Zjistěte, jak vytvořit schéma Power BI nepodporuje](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where#example-script-with-dictionary-input-support-consumption-from-power-bi).
 
 Po nasazení webové služby je lze použít z toky dat Power BI. [Informace o využívání webové služby Azure Machine Learning z Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-integration).

@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 672706c97a423819dd26941e0b6e22affa9c2bb8
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: e38f8a923daa210d8aa5b56631e5f8157d4b3f70
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67329841"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620883"
 ---
 # <a name="guarantee-stream-analytics-job-reliability-during-service-updates"></a>Záruka spolehlivosti úlohy Stream Analytics během aktualizace služeb
 
@@ -35,5 +35,5 @@ Doporučuje se obě spárovaných oblastí nasazení stejné úlohy. Měli byste
 * [Úvod do služby Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme se Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Škálovat úlohy Stream Analytics](stream-analytics-scale-jobs.md)
-* [Referenční příručka k Stream Analytics query language](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Referenční příručka k Stream Analytics query language](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Stream Analytics správu reference k rozhraní REST API](https://msdn.microsoft.com/library/azure/dn835031.aspx)

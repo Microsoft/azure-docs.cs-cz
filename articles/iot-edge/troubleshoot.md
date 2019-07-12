@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 00147002317f15345f01c88e81973837d16e6669
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8eedea2e867dd2a5e2d9cf7e92f47c007bc48af1
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65797614"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707088"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Běžné potíže se službou Azure IoT Edge a jejich řešení
 
@@ -343,6 +343,8 @@ Error: Time:Thu Jun  4 19:44:58 2018 File:/usr/sdk/src/c/provisioning_client/ada
 Proces démon IoT Edge vynutí proces identifikace pro všechny moduly propojíte edgeHub z bezpečnostních důvodů. Ověřuje, že všechny zprávy modulem pocházejí z hlavní proces ID modulu. Pokud zpráva je odesíláno modul z ID jiného procesu než původně vytvořeno, odmítne zprávy s 404 chybovou zprávu.
 
 ### <a name="resolution"></a>Řešení
+Od verze 1.0.7 všechny procesy modulu oprávnění pro připojení. Pokud není možné upgradovat na 1.0.7, proveďte následující kroky. Další informace najdete v tématu [1.0.7 verzi protokolu změn](https://github.com/Azure/iotedge/blob/master/CHANGELOG.md#iotedged-1).
+
 Ujistěte se, že stejné ID procesu je vždy používá vlastní modul IoT Edge pro odesílání zpráv edgeHub. Například se ujistěte, že `ENTRYPOINT` místo `CMD` příkaz v souboru Docker, protože `CMD` povede k jeden proces ID modulu a jiné ID procesu pro příkaz prostředí bash s hlavní program, že `ENTRYPOINT` povede k ID jednoho procesu.
 
 

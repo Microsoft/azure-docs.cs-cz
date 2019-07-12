@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 06/28/2019
+ms.date: 07/09/2019
 ms.author: alkohli
-ms.openlocfilehash: 3972f9f93cc6323601102f1a54bb067a8995d9e4
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: bc6b9662a5d67f6ed315c33444bcb061115fe6d4
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67484758"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67701478"
 ---
 # <a name="what-is-azure-data-box-edge"></a>Co je Azure Data Box Edge? 
 
@@ -34,7 +34,7 @@ Azure Data Box Edge je zařízení s hraničními výpočetními funkcemi s podp
     - Vytvoření podmnožin dat potřebných pro podrobnější analýzu v cloudu a jejich přenos
     - Analýza a reakce na události IoT 
 
-- **Odvození Azure Machine Learning** – pomocí Data Box Edge můžete spouštět modely Machine Learning (ML), abyste rychle získali výsledky, u kterých můžete provést akce dříve, než se data odešlou do cloudu. Kompletní data lze přenést dál přeučování a vylepšit své modely ML. Další informace o tom, jak používat Azure ML hardware akcelerované modely na Databox hraniční zařízení, najdete v části [nasazení Azure ML hardware accelerated modely na hraničních zařízeních Databox](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-fpga-web-service#deploy-to-a-local-edge-server).
+- **Odvození Azure Machine Learning** – pomocí Data Box Edge můžete spouštět modely Machine Learning (ML), abyste rychle získali výsledky, u kterých můžete provést akce dříve, než se data odešlou do cloudu. Kompletní data lze přenést dál přeučování a vylepšit své modely ML. Další informace o tom, jak používat Azure ML hardware najdete v článku akcelerované modely v zařízení Data Box Edge [nasazení Azure ML hardware accelerated modely na okraji pole Data](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-fpga-web-service#deploy-to-a-local-edge-server).
 
 - **Přenos dat do Azure přes síť** – Data Box Edge umožňuje snadno a rychle přenášet data do Azure, aby bylo možné provádět další výpočetní operace a analýzy pro účely archivace. 
 
@@ -52,7 +52,7 @@ Data Box Edge má následující výhody:
 
 Data Box Edge nabízí následující funkce:
 
-|Schopnost |Popis  |
+|Funkce |Popis  |
 |---------|---------|
 |Vysoký výkon     | Plně automatizovaný a vysoce optimalizovaný přenos dat a šířka pásma.|
 |Podporované protokoly     | Podpora standardních protokolů SMB a NFS pro příjem dat. <br> Další informace o podporovaných verzích najdete v [systémových požadavcích pro Data Box Edge](data-box-edge-system-requirements.md).|
@@ -88,19 +88,12 @@ Data Box Edge nabízí následující funkce:
 
 Fyzické zařízení Data Box Edge, prostředek Azure a účet cílového úložiště, do kterého přenášíte data, se nemusí nacházet ve stejné oblasti.
 
-- **Dostupnost prostředku** – u této vydané verze je prostředek Data Box Edge dostupný v následujících oblastech:
-    - **Spojené státy** – USA – východ
-    - **Evropská unie** – Západní Evropa
-    - **Asie a Tichomoří** – Jihovýchodní Asie
+- **Dostupnost prostředků** – seznam všech oblastech, kde okraj pole Data prostředku je k dispozici, přejděte na [dostupné produkty Azure podle oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Data Box Edge je také nasadit v cloudu Azure Government. Další informace najdete v tématu [co je Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome).
     
-    Data Box Edge je také nasadit v cloudu Azure Government. Další informace najdete v tématu [co je Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome).
-    
-- **Cílové účty úložiště** – účty úložiště, do kterých se ukládají data, jsou dostupné ve všech oblastech Azure. 
-
-    Oblasti, do kterých účty úložiště ukládají data služby Data Box, by se měly nacházet v blízkosti umístění zařízení, aby byl zajištěn optimální výkon. Účet úložiště umístěný daleko od zařízení bude vykazovat dlouhé latence a nižší výkon. 
+- **Cílové účty úložiště** – účty úložiště, do kterých se ukládají data, jsou dostupné ve všech oblastech Azure. Oblasti, kam ukládat data hrany pole dat účtů úložiště musí být umístěné blízko kde je umístěné pro optimální výkon zařízení. Účet úložiště umístěný daleko od zařízení bude vykazovat dlouhé latence a nižší výkon. 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si [systémové požadavky služby Data Box Edge](data-box-edge-system-requirements.md).
 - Seznamte se s [omezeními služby Data Box Edge](data-box-edge-limits.md).

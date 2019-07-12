@@ -2,24 +2,25 @@
 title: Vyberte a nasazení Azure Security Center pro IoT agenta ve verzi Preview | Dokumentace Microsoftu
 description: Další informace o tom, jak vybrat a nasazení Azure Security Center pro agenty zabezpečení IoT na zařízeních IoT.
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
 ms.assetid: 32a9564d-16fd-4b0d-9618-7d78d614ce76
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2019
 ms.author: mlottner
-ms.openlocfilehash: 5c76cce5a3d9add8a1dcd8acc439a70c4a8655a9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c549e5ccbda9b364b3e7d20c9572eb777c32299e
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65200568"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67616832"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>Vyberte a nasaďte agenta zabezpečení do zařízení IoT
 
@@ -95,7 +96,7 @@ Následující seznam obsahuje všechny aktuálně podporovaných platformách.
 |C#|Windows Server 2016|    X64|
 |C#|Windows 10 IoT Core build 17763 |x64|
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o možnostech konfigurace, pokračujte v Průvodci s postupy pro konfiguraci agenta. 
 > [!div class="nextstepaction"]

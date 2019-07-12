@@ -7,19 +7,19 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: af1cddff-78d8-476b-a9d0-8c2164e4de5d
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2018
 ms.author: magattus
-ms.openlocfilehash: afe959e80b339db5112fa97fd79d0528390e3954
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9f185f58e1d33a3985777cb22bc7578f9f2c4541
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60636958"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593806"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>Vylepšení výkonu prostřednictvím komprimace souborů v Azure CDN
 Komprese souborů je jednoduchou a efektivní způsob zlepšit rychlost přenosu souborů a zvýšení výkonu načítání stránek díky snížení velikosti souboru před odesláním ze serveru. Komprese můžete snížit náklady na šířku pásma a poskytnout pohotovější prostředí pro vaše uživatele.
@@ -165,6 +165,6 @@ Pro koncové body povolené pro Media Services CDN datových proudů komprese po
 - application/vnd.Apple.mpegurl
 - aplikace/f4m + xml 
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 * [Řešení potíží s kompresí souborů v síti CDN](cdn-troubleshoot-compression.md)    
 

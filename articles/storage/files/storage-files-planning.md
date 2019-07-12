@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6506a93914cfbc10f37980c4b916a93aa9aad75d
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: 28487397cbfe70a64b3c403039d7f38270e04dca
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67564405"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827059"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Plánování nasazení služby Soubory Azure
 
@@ -130,7 +130,7 @@ Následující tabulka ukazuje několik příkladů tyto vzorce pro velikosti z�
 |10,240      | 10,240  | 30 až 720  | 675 | 450   |
 |33,792      | 33,792  | Až 100 000 | 2,088 | 1,392   |
 |51,200      | 51,200  | Až 100 000 | 3,132 | 2,088   |
-|102,400     | 100 000 | Až 100 000 | 6,204 | 4,136   |
+|102,400     | 100,000 | Až 100 000 | 6,204 | 4,136   |
 
 > [!NOTE]
 > Výkon sdílených složek souborů se může počítač omezení sítě, dostupnou šířku pásma sítě, velikosti vstupně-výstupních operací, paralelismu mezi řadu dalších faktorů. K dosažení maximálního výkonu, škálování, rozložit zatížení mezi několik virtuálních počítačů. Najdete [Průvodce odstraňováním potíží](storage-troubleshooting-files-performance.md) některé běžné problémy s výkonem a alternativní řešení.
@@ -208,12 +208,22 @@ Standardní sdílené složky jsou k dispozici ve všech oblastech maximálně 5
 |---------|---------|---------|
 |Jihovýchodní Asie     |LRS|Ne         |
 |Západní Evropa     |LRS|Ne         |
-|Západní USA 2     |LRS, ZRS|Ne         |
+|USA – západ 2     |LRS, ZRS|Ne         |
 
+Pokud chcete nám pomohou určit prioritu nových oblastech a funkce, vyplňte tento [průzkumu](https://aka.ms/azurefilesatscalesurvey).
 
 ### <a name="steps-to-onboard"></a>Postup připojení
 
-K registraci předplatného na větší preview sdílené složky souboru, spusťte následující příkazy Powershellu:
+K registraci předplatného na větší preview sdílené složky souborů, budete muset použít Azure PowerShell. Můžete buď používat [Azure Cloud Shell](https://shell.azure.com/) nebo nainstalovat [místně modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps?view=azps-2.4.0) spustit následující příkazy Powershellu:
+
+Nejprve se ujistěte, že je vybraný odběr, který chcete zaregistrovat ve verzi preview:
+
+```powershell
+$context = Get-AzSubscription -SubscriptionId ...
+Set-AzContext $context
+```
+
+Potom zaregistrujte ve verzi preview, pomocí následujících příkazů:
 
 ```powershell
 Register-AzProviderFeature -FeatureName AllowLargeFileShares -ProviderNamespace Microsoft.Storage

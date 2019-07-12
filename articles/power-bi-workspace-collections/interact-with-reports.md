@@ -2,18 +2,18 @@
 title: Interakce se sestavami pomocí rozhraní API pro JavaScript | Dokumentace Microsoftu
 description: Rozhraní API pro JavaScript Power BI umožňuje snadné vkládání sestav Power BI do vašich aplikací.
 services: power-bi-workspace-collections
-ms.service: power-bi-workspace-collections
+ms.service: power-bi-embedded
 author: rkarlin
 ms.author: rkarlin
 ms.topic: conceptual
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.openlocfilehash: 252296af8b2065ae22bed8b421d4d00718b78287
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8203070fa8a48420dd192208701c539dc3ca7f25
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64705525"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67669068"
 ---
 # <a name="interact-with-power-bi-reports-using-the-javascript-api"></a>Interakce se sestavami Power BI pomocí rozhraní API pro JavaScript
 
@@ -126,7 +126,7 @@ Kromě odesílání informací do elementu iframe může aplikace také přijím
 
 [Další informace o zpracování událostí](https://github.com/Microsoft/PowerBI-JavaScript/wiki/Handling-Events)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o rozhraní API pro JavaScript Power BI najdete pod následujícími odkazy:
 

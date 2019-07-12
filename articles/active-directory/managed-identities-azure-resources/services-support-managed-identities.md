@@ -3,19 +3,19 @@ title: Služby Azure, které podporují spravované identity pro prostředky Azu
 description: Seznam služeb, které podporují spravované identity pro prostředky Azure a ověřování Azure AD
 services: active-directory
 author: MarkusVi
-ms.author: priyamo
+ms.author: markvi
 ms.date: 06/19/2019
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22c67f1dad55d5d8710a997394e247793943cd21
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: ca461f3be740c3b0bac18795991bb721a5305240
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67293506"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67611539"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Služby, které podporují spravované identity pro prostředky Azure
 
@@ -172,7 +172,7 @@ Najdete v následujícím seznamu můžete nakonfigurovat přístup k Azure Reso
 - [Přiřadit přístup přes rozhraní příkazového řádku Azure](howto-assign-access-CLI.md)
 - [Přiřazení přístupu pomocí šablony Azure Resource Manageru](../../role-based-access-control/role-assignments-template.md)
 
-| Cloud | ID prostředku | Status |
+| Cloud | ID prostředku | Stav |
 |--------|------------|--------|
 | Azure Global | `https://management.azure.com/`| K dispozici |
 | Azure Government | `https://management.usgovcloudapi.net/` | K dispozici |
@@ -181,7 +181,7 @@ Najdete v následujícím seznamu můžete nakonfigurovat přístup k Azure Reso
 
 ### <a name="azure-key-vault"></a>Azure Key Vault
 
-| Cloud | ID prostředku | Status |
+| Cloud | ID prostředku | Stav |
 |--------|------------|--------|
 | Azure Global | `https://vault.azure.net`| K dispozici |
 | Azure Government | `https://vault.usgovcloudapi.net` | K dispozici |
@@ -190,7 +190,7 @@ Najdete v následujícím seznamu můžete nakonfigurovat přístup k Azure Reso
 
 ### <a name="azure-data-lake"></a>Azure Data Lake 
 
-| Cloud | ID prostředku | Status |
+| Cloud | ID prostředku | Stav |
 |--------|------------|--------|
 | Azure Global | `https://datalake.azure.net/` | K dispozici |
 | Azure Government |  | Není k dispozici |
@@ -199,7 +199,7 @@ Najdete v následujícím seznamu můžete nakonfigurovat přístup k Azure Reso
 
 ### <a name="azure-sql"></a>Azure SQL 
 
-| Cloud | ID prostředku | Status |
+| Cloud | ID prostředku | Stav |
 |--------|------------|--------|
 | Azure Global | `https://database.windows.net/` | K dispozici |
 | Azure Government | `https://database.usgovcloudapi.net/` | K dispozici |
@@ -208,7 +208,7 @@ Najdete v následujícím seznamu můžete nakonfigurovat přístup k Azure Reso
 
 ### <a name="azure-event-hubs"></a>Azure Event Hubs
 
-| Cloud | ID prostředku | Status |
+| Cloud | ID prostředku | Stav |
 |--------|------------|--------|
 | Azure Global | `https://eventhubs.azure.net` | Náhled |
 | Azure Government |  | Není k dispozici |
@@ -217,7 +217,7 @@ Najdete v následujícím seznamu můžete nakonfigurovat přístup k Azure Reso
 
 ### <a name="azure-service-bus"></a>Azure Service Bus
 
-| Cloud | ID prostředku | Status |
+| Cloud | ID prostředku | Stav |
 |--------|------------|--------|
 | Azure Global | `https://servicebus.azure.net`  | Náhled |
 | Azure Government |  | Není k dispozici |
@@ -226,7 +226,7 @@ Najdete v následujícím seznamu můžete nakonfigurovat přístup k Azure Reso
 
 ### <a name="azure-storage-blobs-and-queues"></a>Azure Storage BLOB a fronty
 
-| Cloud | ID prostředku | Status |
+| Cloud | ID prostředku | Stav |
 |--------|------------|--------|
 | Azure Global | `https://storage.azure.com/` | K dispozici |
 | Azure Government | `https://storage.azure.com/` | K dispozici |
@@ -235,7 +235,7 @@ Najdete v následujícím seznamu můžete nakonfigurovat přístup k Azure Reso
 
 ### <a name="azure-analysis-services"></a>Azure Analysis Services
 
-| Cloud | ID prostředku | Status |
+| Cloud | ID prostředku | Stav |
 |--------|------------|--------|
 | Azure Global | `https://*.asazure.windows.net` | K dispozici |
 | Azure Government | `https://*.asazure.usgovcloudapi.net` | K dispozici |

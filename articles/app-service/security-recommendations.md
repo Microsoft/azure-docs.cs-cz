@@ -8,12 +8,13 @@ ms.service: app-service
 ms.topic: conceptual
 ms.date: 06/17/2019
 ms.author: barclayn
-ms.openlocfilehash: f50532a21d11d2f7142fa3ee7ed08f759df36d52
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.custom: security-recommendations
+ms.openlocfilehash: 53cd2b1dde1158a1c46f798e57911dad110dc87e
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67207538"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718261"
 ---
 # <a name="security-recommendations-for-app-service"></a>Doporučení zabezpečení pro službu App Service
 
@@ -59,6 +60,6 @@ Tento článek obsahuje doporučení týkající se zabezpečení pro službu Az
 |-|-|
 |Použití Azure Security Center úrovně standard | [Azure Security Center](../security-center/security-center-app-services.md) je nativně integrováno s Azure App Service. Může spustit posouzení a poskytovat doporučení týkající se zabezpečení. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Obraťte se na svého poskytovatele aplikace, pokud existují další požadavky na zabezpečení. Další informace o vývoji bezpečných aplikací najdete v tématu [zabezpečené dokumentace k vývoji](../security/abstract-develop-secure-apps.md).

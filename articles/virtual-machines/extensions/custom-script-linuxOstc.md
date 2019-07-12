@@ -4,7 +4,7 @@ description: Automatizaci úloh konfigurace virtuálního počítače s Linuxem 
 services: virtual-machines-linux
 documentationcenter: ''
 author: danielsollondon
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: danis
-ms.openlocfilehash: fe3803b7dc75ab13831a5e42d4b1a96f5aa894e5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f4920cde64ae951fa5f234f6ad6d7423429bb907
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60800301"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706032"
 ---
 # <a name="use-the-azure-custom-script-extension-version-1-with-linux-virtual-machines"></a>Virtuální počítače s Linuxem pomocí Azure Custom Script rozšíření verze 1
 
@@ -122,14 +122,14 @@ Tyto položky by měly považovat za citlivá data a zadaný v konfiguraci chrá
 | Název | Hodnota / příklad | Typ dat |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.OSTCExtensions | string |
-| type | CustomScriptForLinux | string |
+| publisher | Microsoft.OSTCExtensions | řetězec |
+| type | CustomScriptForLinux | řetězec |
 | typeHandlerVersion | 1.5 | int |
 | fileUris (např.) | https://github.com/MyProject/Archive/MyPythonScript.py | array |
-| commandToExecute (např.) | python MyPythonScript.py \<Moje param1\> | string |
+| commandToExecute (např.) | python MyPythonScript.py \<Moje param1\> | řetězec |
 | enableInternalDNSCheck | true (pravda) | boolean |
-| storageAccountName (např.) | examplestorageacct | string |
-| storageAccountKey (např.) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | string |
+| storageAccountName (např.) | examplestorageacct | řetězec |
+| storageAccountKey (např.) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | řetězec |
 
 ### <a name="property-value-details"></a>Podrobnosti o hodnotě vlastnosti
 

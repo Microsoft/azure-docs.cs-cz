@@ -7,12 +7,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: hrasheed
-ms.openlocfilehash: f381090e663923ec9f45fba03d0688c9879ab173
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dd639ae7e05309ab4528eb460ce38550db4cffe1
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66427407"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67670762"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Použití Azure Data Lake Storage Gen2 s clustery Azure HDInsight
 
@@ -72,31 +72,40 @@ Přiřazení spravovaných identit k **vlastník dat objektů Blob úložiště*
 
 ## <a name="create-a-cluster-with-data-lake-storage-gen2-through-the-azure-cli"></a>Vytvoření clusteru s Data Lake Storage Gen2 přes rozhraní příkazového řádku Azure
 
-Je možné [stáhnout ukázkový soubor šablony](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/hdinsight-adls-gen2-template.json) a [stáhnout ukázkový soubor parametrů](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/parameters.json). Před použitím šablony, nahraďte řetězec `<SUBSCRIPTION_ID>` s vaším ID skutečné předplatného Azure. Také nahraďte řetězec `<PASSWORD>` pomocí hesla zvolená nastavení i heslo, které budete používat k přihlášení ke clusteru a heslo SSH.
+Je možné [stáhnout ukázkový soubor šablony](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/hdinsight-adls-gen2-template.json) a [stáhnout ukázkový soubor parametrů](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/parameters.json). Před použitím šablony a následující fragment kódu rozhraní příkazového řádku Azure, tyto zástupné názvy nahraďte jejich správné hodnoty:
+
+| Zástupný symbol | Popis |
+|---|---|
+| `<SUBSCRIPTION_ID>` | ID vašeho předplatného Azure |
+| `<RESOURCEGROUPNAME>` | Skupina prostředků, ve kterém chcete nový účet úložiště vytvoří. |
+| `<MANAGEDIDENTITYNAME>` | Název spravovanou identitu, která bude přidělena oprávnění na vašem účtu Azure Data Lake Storage Gen2. |
+| `<STORAGEACCOUNTNAME>` | Nový účet Azure Data Lake Storage Gen2, která bude vytvořena. |
+| `<CLUSTERNAME>` | Název vašeho clusteru HDInsight. |
+| `<PASSWORD>` | Zvolené heslo pro přihlášení ke clusteru pomocí SSH, stejně jako řídicí panel Ambari. |
 
 Následující fragment kódu se provede počáteční takto:
 
 1. Protokoly v ke svému účtu Azure.
 1. Nastaví aktivní předplatné, ve kterém bude provedeno operace vytvoření.
-1. Vytvoří novou skupinu prostředků pro nové aktivity nasazení s názvem `hdinsight-deployment-rg`.
-1. Vytvoří spravovanou identitu přiřazené uživatele s názvem `test-hdinsight-msi`.
+1. Vytvoří novou skupinu prostředků pro nové aktivity nasazení. 
+1. Vytvoří spravovanou identitu uživatele přiřazeny.
 1. Přidá rozšíření rozhraní příkazového řádku Azure pro použití funkcí pro Data Lake Storage Gen2.
-1. Vytvoří nový účet Data Lake Storage Gen2 `hdinsightadlsgen2`, s použitím `--hierarchical-namespace true` příznak.
+1. Vytvoří nový účet Data Lake Storage Gen2 pomocí `--hierarchical-namespace true` příznak. 
 
 ```azurecli
 az login
-az account set --subscription <subscription_id>
+az account set --subscription <SUBSCRIPTION_ID>
 
 # Create resource group
-az group create --name hdinsight-deployment-rg --location eastus
+az group create --name <RESOURCEGROUPNAME> --location eastus
 
 # Create managed identity
-az identity create -g hdinsight-deployment-rg -n test-hdinsight-msi
+az identity create -g <RESOURCEGROUPNAME> -n <MANAGEDIDENTITYNAME>
 
 az extension add --name storage-preview
 
-az storage account create --name hdinsightadlsgen2 \
-    --resource-group hdinsight-deployment-rg \
+az storage account create --name <STORAGEACCOUNTNAME> \
+    --resource-group <RESOURCEGROUPNAME> \
     --location eastus --sku Standard_LRS \
     --kind StorageV2 --hierarchical-namespace true
 ```
@@ -107,7 +116,7 @@ Po přiřazení role pro uživatelsky přiřazené spravovanou identitu, nasazen
 
 ```azurecli
 az group deployment create --name HDInsightADLSGen2Deployment \
-    --resource-group hdinsight-deployment-rg \
+    --resource-group <RESOURCEGROUPNAME> \
     --template-file hdinsight-adls-gen2-template.json \
     --parameters parameters.json
 ```
@@ -136,7 +145,7 @@ Služeb Azure má dva typy spravovaných identit: systém přiřadil a uživatel
 
 K nastavení oprávnění pro uživatele k dotazování dat. Použijte skupiny zabezpečení Azure AD jako přiřazené instanční objekt v seznamech ACL. Nepřiřazovat přímo oprávnění přístupu k souborům na jednotlivé uživatele nebo instanční objekty. Pokud používáte skupiny zabezpečení Azure AD pro řízení toku oprávnění, můžete přidávat a odebírat uživatele nebo instanční objekty bez opětovné použití seznamů ACL celý adresářové struktury. Stačí jenom přidat nebo odebrat uživatele z příslušné skupiny zabezpečení Azure AD. Seznamy ACL nejsou zděděny, tak obnovení seznamů řízení přístupu vyžaduje aktualizaci jejich seznamu ACL u všech souborů a podadresářů.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Aktualizace integrace Azure HDInsight s Data Lake Storage Gen2 preview – řízení přístupu a zabezpečení](https://azure.microsoft.com/blog/azure-hdinsight-integration-with-data-lake-storage-gen-2-preview-acl-and-security-update/)
 * [Úvod do služby Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)

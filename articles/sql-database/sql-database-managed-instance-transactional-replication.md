@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: bcbdd5fd8395cb0a47038595127e9b20118bdf1b
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 1c62fb466774a3599972d6a9cc340cca300eee59
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147711"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67696187"
 ---
 # <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>Transakční replikace s jedním, ve fondu a instanci databáze ve službě Azure SQL Database
 
@@ -92,7 +92,7 @@ Existují různé [typy replikace](https://docs.microsoft.com/sql/relational-dat
 
 ## <a name="requirements"></a>Požadavky
 
-- Připojení pomocí ověřování SQL mezi účastníky replikace. 
+- Při připojování mezi účastníky replikace se používá ověřování SQL. 
 - Sdílení účet úložiště Azure pro pracovní adresář, používané při replikaci. 
 - Port 445 (odchozí TCP) musí být otevřené v pravidlech zabezpečení podsíť Managed Instance pro přístup ke sdílené složce Azure. 
 - Port 1433 (odchozí TCP) je potřeba otevřít, pokud vydavatel/distributora Managed Instance a odběratele je místní.
@@ -139,7 +139,7 @@ V této konfiguraci je Azure SQL Database (jednou, ve fondu a instanci databáze
 
 ## <a name="next-steps"></a>Další postup
 
-1. [Konfigurace transakční replikace pro Managed Instance](replication-with-sql-database-managed-instance.md). 
+1. [Konfigurace replikace mezi dvěma spravované instance](replication-with-sql-database-managed-instance.md). 
 1. [Vytvoření publikace](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication).
 1. [Vytvořit nabízený odběr](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription) pomocí názvu serveru Azure SQL Database jako odběratele (například `N'azuresqldbdns.database.windows.net` a název cílové databáze Azure SQL Database (například **Adventureworks**. )
 

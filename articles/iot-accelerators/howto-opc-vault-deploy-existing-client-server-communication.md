@@ -5,15 +5,15 @@ author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
 ms.topic: conceptual
-ms.service: iot-industrialiot
+ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 5ba2dba02585598b3797dd1b490976ebe34b489e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f170d05c513e7f0cc638c5a35e2264f9e043cbcd
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61450660"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603673"
 ---
 # <a name="secure-opc-ua-client-and-opc-ua-server-application"></a>Zabezpečení OPC UA klienta a aplikačního serveru OPC UA 
 OPC trezor je mikroslužeb, která můžete konfigurovat, registrace a správa životního cyklu certifikátu pro server OPC UA a klientských aplikací v cloudu. Tento článek ukazuje, jak zabezpečit serverové aplikace se nový pár klíčů a certifikátů trezor OPC pomocí klienta OPC UA a OPC UA.
@@ -148,7 +148,7 @@ docker-compose -f testbed.yml up
 - OPC testovacího klienta je prostřednictvím přímé metody volání IOT hub a volání metod OPC konfigurace vydavatele OPC pro publikování a zrušení publikování uzly z testovacího serveru OPC.
 - Podívejte se na výstup pro chybové zprávy.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Teď, když jste se naučili, jak nasazovat trezor OPC do existujícího projektu, je zde navrhované další krok:
 

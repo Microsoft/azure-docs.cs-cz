@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: robinsh
-ms.openlocfilehash: 0d83bdc3fd3f644013a2d2b80128839658524db9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 629342e44af16b6d23f9ed85f8c5306c807b8bfc
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65864447"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621905"
 ---
 # <a name="send-messages-from-the-cloud-to-your-device-with-iot-hub-net"></a>Odesílání zpráv z cloudu do zařízení pomocí IoT Hub (.NET)
 
@@ -22,11 +22,11 @@ ms.locfileid: "65864447"
 
 ## <a name="introduction"></a>Úvod
 
-Azure IoT Hub je plně spravovaná služba, která pomáhá povolit spolehlivou a zabezpečenou obousměrnou komunikaci mezi miliony zařízení a back-endu řešení. [Odesílání telemetrických dat ze zařízení do služby IoT hub... ](quickstart-send-telemetry-dotnet.md) ukazuje vytvoření služby IoT hub, zřídit identitu zařízení v něm a kódu aplikace pro zařízení, která odesílá zprávy typu zařízení cloud.
+Azure IoT Hub je plně spravovaná služba, která pomáhá povolit spolehlivou a zabezpečenou obousměrnou komunikaci mezi miliony zařízení a back-endu řešení. [Odesílání telemetrických dat ze zařízení do služby IoT hub](quickstart-send-telemetry-dotnet.md) rychlý start ukazuje, jak vytvořit IoT hub, zřídit identitu zařízení v ní a kódu aplikace pro zařízení, která odesílá zprávy typu zařízení cloud.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-V tomto kurzu vychází z tohoto rychlého startu [odesílání telemetrických dat ze zařízení do služby IoT hub... ](quickstart-send-telemetry-dotnet.md). To se dozvíte, jak provést následující kroky:
+Tento kurz vychází [odesílání telemetrických dat ze zařízení do služby IoT hub](quickstart-send-telemetry-dotnet.md). To se dozvíte, jak provést následující kroky:
 
 * Z back-end vašeho řešení odesílat zprávy typu cloud zařízení na jediné zařízení prostřednictvím služby IoT Hub.
 
@@ -38,13 +38,13 @@ Můžete najít další informace o zprávy typu cloud zařízení v [C2D zasíl
 
 Na konci tohoto kurzu spusťte dvě konzolové aplikace .NET.
 
-* **SimulatedDevice**, upravenou verzi aplikaci vytvořenou v [odesílání telemetrických dat ze zařízení do služby IoT hub... ](quickstart-send-telemetry-dotnet.md), který se připojí ke službě IoT hub a přijímá zprávy typu cloud zařízení.
+* **SimulatedDevice**, upravenou verzi aplikaci vytvořenou v [odesílání telemetrických dat ze zařízení do služby IoT hub](quickstart-send-telemetry-dotnet.md), který se připojí ke službě IoT hub a přijímá zprávy typu cloud zařízení.
 
 * **SendCloudToDevice**, která odesílá zprávy typu cloud zařízení do aplikace pro zařízení prostřednictvím služby IoT Hub a potom přijímá jeho doručení potvrzení.
 
 > [!NOTE]
 > IoT Hub má sady SDK podporují mnoho platforem zařízení a jazycích (včetně C, Javy a JavaScriptu) prostřednictvím [sady SDK pro zařízení Azure IoT](iot-hub-devguide-sdks.md). Podrobné pokyny o tom, jak připojit zařízení ke kódu v tomto kurzu a obecně pro službu Azure IoT Hub, najdete v článku [Příručka vývojáře pro IoT Hub](iot-hub-devguide.md).
-> 
+>
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -54,7 +54,7 @@ Pro absolvování tohoto kurzu potřebujete:
 
 ## <a name="receive-messages-in-the-device-app"></a>Příjem zpráv do aplikace pro zařízení
 
-V této části upravíte zařízení aplikaci, kterou jste vytvořili v [odesílání telemetrických dat ze zařízení do služby IoT hub... ](quickstart-send-telemetry-dotnet.md) pro příjem zpráv typu cloud zařízení ze služby IoT hub.
+V této části upravíte zařízení aplikaci, kterou jste vytvořili v [odesílání telemetrických dat ze zařízení do služby IoT hub](quickstart-send-telemetry-dotnet.md) pro příjem zpráv typu cloud zařízení ze služby IoT hub.
 
 1. V sadě Visual Studio v **SimulatedDevice** projektu, přidejte následující metodu do **Program** třídy.
 
@@ -138,7 +138,7 @@ Teď můžete napsat konzolovou aplikaci .NET, která odesílá zprávy typu clo
    static string connectionString = "{iot hub connection string}";
    ```
 
-6. Do třídy **Program** přidejte následující metodu. Nastavte název na zařízení použité při definování zařízení v [odesílání telemetrických dat ze zařízení do služby IoT hub... ](quickstart-send-telemetry-dotnet.md).
+6. Do třídy **Program** přidejte následující metodu. Nastavte název na zařízení použité při definování zařízení v [odesílání telemetrických dat ze zařízení do služby IoT hub](quickstart-send-telemetry-dotnet.md).
 
    ``` csharp
    private async static Task SendCloudToDeviceMessageAsync()
@@ -149,7 +149,7 @@ Teď můžete napsat konzolovou aplikaci .NET, která odesílá zprávy typu clo
    }
    ```
 
-   Tato metoda odesílá novou zprávu typu cloud zařízení na zařízení s ID, `myFirstDevice`. Tento parametr měnit, jenom v případě, že jste změnili než jaký se používá v [odesílání telemetrických dat ze zařízení do služby IoT hub... ](quickstart-send-telemetry-dotnet.md).
+   Tato metoda odesílá novou zprávu typu cloud zařízení na zařízení s ID, `myFirstDevice`. Tento parametr měnit, jenom v případě, že jste změnili než jaký se používá v [odesílání telemetrických dat ze zařízení do služby IoT hub](quickstart-send-telemetry-dotnet.md).
 
 7. Nakonec přidejte následující řádky do **hlavní** metody.
 
@@ -217,7 +217,7 @@ V této části můžete změnit **SendCloudToDevice** aplikaci žádost o zpět
    ![Přijímající aplikaci zprávu](./media/iot-hub-csharp-csharp-c2d/sendc2d2.png)
 
 > [!NOTE]
-> Pro saké pro zjednodušení tento kurz neimplementuje žádné zásady opakování. V produkčním kódu by měly implementovat zásady opakování (například exponenciální regresí), jak je navrženo v článku [zpracování přechodných chyb](/azure/architecture/best-practices/transient-faults).
+> Pro zjednodušení tento kurz neimplementuje žádné zásady opakování. V produkčním kódu by měly implementovat zásady opakování (například exponenciální regresí), jak je navrženo v článku [zpracování přechodných chyb](/azure/architecture/best-practices/transient-faults).
 >
 
 ## <a name="next-steps"></a>Další postup

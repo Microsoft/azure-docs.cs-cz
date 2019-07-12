@@ -2,18 +2,18 @@
 title: Začínáme s pomocí ukázky
 description: V tomto článku vám ukážeme k ukázce začnete get kolekce pracovních prostorů Power BI.
 services: power-bi-workspace-collections
-ms.service: power-bi-workspace-collections
+ms.service: power-bi-embedded
 author: rkarlin
 ms.author: rkarlin
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/25/2017
-ms.openlocfilehash: 6cf78bf9c83df0a1255c14499bbd2036a2be5ed6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9b45dd6bcc9aa3abf2d5078b54e51531cae4ec5f
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64714507"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67669125"
 ---
 # <a name="get-started-with-power-bi-workspace-collections-sample"></a>Začínáme s ukázkou kolekce pracovních prostorů Power BI
 
@@ -140,7 +140,7 @@ Pomocí společných server a databáze atributy selhání. Příklad: Server=tc
 
 | Část | Popis |
 | --- | --- |
-| Titul |Název sestavy. |
+| Název |Název sestavy. |
 | Řetězec dotazu |Odkaz na ID sestavy. |
 ```cshtml
 <div id="reports-nav" class="panel-collapse collapse">
@@ -259,7 +259,7 @@ $filter={tableName/fieldName}%20eq%20'{fieldValue}'
 > [!NOTE]
 > V řetězci {tableName/fieldName} nesmí být mezery ani speciální znaky. Na místo položky {FieldValue} je možné vložit jednu hodnotu představující kategorii.  
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
 [Běžné scénáře kolekce pracovních prostorů Microsoft Power BI](scenarios.md)  
 [Ověřování a autorizace v kolekcích Pracovních prostorů Power BI](app-token-flow.md)  

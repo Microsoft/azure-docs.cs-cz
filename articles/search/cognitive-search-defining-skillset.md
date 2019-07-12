@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 010880304c5011bd5a767650aa0ae6b6103bdde2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e5d473cffeefe29febc4f0dfb2a620d917bf238d
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65540864"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672116"
 ---
 # <a name="how-to-create-a-skillset-in-an-enrichment-pipeline"></a>Vytvoření dovedností v kanálu služby rozšíření
 
-Kognitivní vyhledávání extrahuje a vylepšuje data tak, aby s možností vyhledávání ve službě Azure Search. Označujeme je jako kroky extrakce a rozšiřování *kognitivní dovednosti*kombinované do *dovednosti* odkazovat během indexování. Můžete použít dovedností [integrované znalosti](cognitive-search-predefined-skills.md) nebo vlastních dovedností (naleznete v tématu [příklad: vytvoření vlastních dovedností](cognitive-search-create-custom-skill-example.md) Další informace).
+Kognitivní vyhledávání extrahuje a vylepšuje data tak, aby s možností vyhledávání ve službě Azure Search. Označujeme je jako kroky extrakce a rozšiřování *kognitivní dovednosti*kombinované do *dovednosti* odkazovat během indexování. Můžete použít dovedností [integrované znalosti](cognitive-search-predefined-skills.md) nebo vlastních dovedností (naleznete v tématu [příkladu: Vytváření vlastních dovedností pro kognitivního vyhledávání](cognitive-search-create-custom-skill-example.md) Další informace).
 
 V tomto článku se dozvíte, jak vytvořit kanál rozšíření pro dovednosti, které chcete použít. Do služby Azure Search je připojen dovedností [indexer](search-indexer-overview.md). Jednou ze součástí sady kanálu návrhu, popsaná v tomto článku je vytváření dovednosti, samotného. 
 

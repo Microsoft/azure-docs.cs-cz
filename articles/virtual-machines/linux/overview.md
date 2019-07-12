@@ -4,7 +4,7 @@ description: Popis služeb Azure Compute, Storage a síťové služby Azure s po
 services: virtual-machines-linux
 documentationcenter: virtual-machines-linux
 author: rickstercdn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: 7965a80f-ea24-4cc2-bc43-60b574101902
 ms.service: virtual-machines-linux
@@ -15,19 +15,19 @@ ms.workload: infrastructure
 ms.date: 11/29/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: a5203d75e673a7b8206446553414ff933e00b0b6
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 9d33b478cb848724d0b3747761a99a1269d58b6e
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "60542522"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671059"
 ---
 # <a name="azure-and-linux"></a>Azure a Linux
 Microsoft Azure je rostoucí kolekce integrovaných veřejných cloudových služeb včetně analýz, virtuálních počítačů, databází, mobilních a síťových služeb, úložiště a webu &mdash; je tak ideální pro hostování vašich řešení.  Microsoft Azure poskytuje škálovatelnou výpočetní platformu, s kterou můžete platit jenom za to, co používáte a když to potřebujete – nemusíte tak investovat do hardwaru místně ve své firmě.  Platforma Azure dokáže flexibilně reagovat na vaše potřeby. Můžete tak libovolně škálovat kapacitu (vertikálně i horizontálně) pro svá řešení podle požadavků svých klientů.
 
 Pokud už znáte různé funkce Amazon AWS, můžete prozkoumat [dokument věnovaný mapování definic](https://azure.microsoft.com/campaigns/azure-vs-aws/mapping/) Azure oproti AWS.
 
-## <a name="regions"></a>Oblasti
+## <a name="regions"></a>Regions
 Prostředky Microsoft Azure jsou distribuované mezi několik geografických oblastí po celém světě.  „Oblast“ představuje několik datacenter v jedné zeměpisné oblasti. Azure má v současnosti (k srpnu 2018) 42 obecně dostupných oblastí po celém světě a dalších 12 oblastí je oznámených – to je více globálních oblastí než nabízí jakýkoli jiný poskytovatel cloudu. Aktualizovaný seznam stávajících a nově oznámených oblastí najdete na následující stránce:
 
 * [Oblasti Azure](https://azure.microsoft.com/regions/)

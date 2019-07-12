@@ -4,7 +4,7 @@ description: Připojení k nastavení z virtuální sítě pro použití SAP HAN
 services: virtual-machines-linux
 documentationcenter: ''
 author: RicksterCDN
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 05/25/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9cd290f9e5e7819f3dffa2dd1efea9cd0028fc2c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ebe303b24c497fe8ac52ac90a236a23c279ea2e9
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66239471"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709679"
 ---
 # <a name="connect-a-virtual-network-to-hana-large-instances"></a>Připojení virtuální sítě pro velké instance HANA
 
@@ -158,6 +158,6 @@ Data, která je potřeba a klíčová slova, která budete muset použít pro Mi
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Další síťové požadavky pro HLI](hana-additional-network-requirements.md)

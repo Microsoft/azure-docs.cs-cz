@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 9f15431015e847d882e51b8d88c5b8a8c121d0ae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f73ab7b68e56f5303e84d86a2711b53ffc894276
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67115414"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718172"
 ---
 # <a name="migrate-expressroute-associated-virtual-networks-from-classic-to-resource-manager"></a>Migrace virtuální sítě přidružené k ExpressRoute z modelu nasazení classic do Resource Manageru
 
 Tento článek vysvětluje, jak migrovat virtuální sítě přidružené k ExpressRoute z modelu nasazení classic do modelu nasazení Azure Resource Manageru po přesunu okruh ExpressRoute. 
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -41,7 +41,7 @@ Tento článek vysvětluje, jak migrovat virtuální sítě přidružené k Expr
 * Virtuální sítě, bran a navazující nasazení v rámci virtuální sítě, které jsou připojeny k okruhu ExpressRoute v rámci stejného předplatného, můžete migrovat do Resource Manageru prostředí bez jakýchkoli prostojů. Provedením kroků popsaných dále migrovat prostředky, jako jsou virtuální sítě, bran a virtuálních počítačů nasazených v rámci virtuální sítě. Musíte zajistit, že virtuální sítě mají správnou konfiguraci před migrací. 
 * Virtuální sítě, bran a navazující nasazení v rámci virtuální sítě, které nejsou ve stejném předplatném jako okruh ExpressRoute vyžadují určitý výpadek k dokončení migrace. Poslední část dokumentu popisuje kroky, kterými se můžete řídit migrace prostředků.
 * Není možné migrovat virtuální síť s bránu ExpressRoute i bránu VPN.
-* Migrace mezi předplatnými okruhu ExpressRoute není podporována. Další informace najdete v tématu [služby, které nelze přesunout](../azure-resource-manager/resource-group-move-resources.md#services-that-cannot-be-moved).
+* Migrace mezi předplatnými okruhu ExpressRoute není podporována. Další informace najdete v tématu [Microsoft.Network přesunout podporu](../azure-resource-manager/move-support-resources.md#microsoftnetwork).
 
 ## <a name="move-an-expressroute-circuit-from-classic-to-resource-manager"></a>Přesun okruhu ExpressRoute z modelu nasazení classic do Resource Manageru
 Okruh ExpressRoute musí přesunout z classic do Resource Manageru prostředí před pokusem o migraci prostředků, které jsou připojeny k okruhu ExpressRoute. Tento úkol provést, najdete v následujících článcích:

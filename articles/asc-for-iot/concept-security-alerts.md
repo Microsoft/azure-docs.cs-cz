@@ -2,24 +2,25 @@
 title: Výstrahy v Průvodci zabezpečením Azure Security Center pro náhled IoT | Dokumentace Microsoftu
 description: Další informace o výstrahách zabezpečení a doporučené nápravy pro funkce IoT a služby pomocí Azure Security Center.
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
 ms.assetid: a5c25cba-59a4-488b-abbe-c37ff9b151f9
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2019
 ms.author: mlottner
-ms.openlocfilehash: db3a955cd9e572d1daca044aed75048e394e8457
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6168278a51cf5a73fec0387ab61f46e201d158f9
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65200757"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67616948"
 ---
 # <a name="azure-security-center-for-iot-security-alerts"></a>Azure Security Center pro výstrahy zabezpečení IoT
 
@@ -37,7 +38,7 @@ Další podrobnosti najdete v tématu [vytvářet vlastní výstrahy](quickstart
 
 ## <a name="built-in-alerts-for-iot-devices"></a>Předdefinované výstrahy pro zařízení IoT
 
-| Severity | Název                                                   | Zdroj dat | Popis                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| severity | Name                                                   | Zdroj dat | Popis                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 |----------|--------------------------------------------------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Vysoká     | Úspěšné místní přihlášení                                 | Agent       | Zjistila se přihlášení úspěšné místní zařízení                                                                                                                                                                                                                                                                                                                                                                                         |
 | Vysoká     | Úspěšný útok hrubou silou                                  | Agent       | Zjištěn více pokusů neúspěšných přihlášení, za nímž následuje úspěšného přihlášení. Zařízení došlo k útoku Úspěšný útok hrubou silou.                                                                                                                                                                                                                                                                                                              |
@@ -81,7 +82,7 @@ Další podrobnosti najdete v tématu [vytvářet vlastní výstrahy](quickstart
 
 ## <a name="built-in-alerts-for-iot-hub"></a>Předdefinované výstrahy pro službu IoT Hub
 
-| Severity | Name                                                                         | Popis                                                                                                                                                                                                                                                                                                                            |
+| severity | Name                                                                         | Popis                                                                                                                                                                                                                                                                                                                            |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Střední   | Nový certifikát přidán do služby IoT Hub                                    |Nový certifikát přidán do služby IoT hub. Pokud toto přidání neprovedl autorizované stranou, může to znamenat škodlivou aktivitu.                                                                                                                                                                                                    |
 | Střední   | Certifikát odstraněn ze služby IoT Hub                                    | Certifikát odstraněn ze služby IoT hub. Pokud tato akce nebyl provedli autorizované stranou, může to znamenat škodlivou aktivitu.                                                                                                                                                                                                |
@@ -91,7 +92,7 @@ Další podrobnosti najdete v tématu [vytvářet vlastní výstrahy](quickstart
 | Nízká      | Pokus o odstranění nastavení diagnostiky ze služby IoT Hub zjistil       | Pokus o odstranění nastavení diagnostiky služby IoT hub zjištěna. Nastavení diagnostiky umožňuje znovu vytvořit záznamy aktivit za účelem šetření, když dojde k incidentu zabezpečení nebo dojde k ohrožení vaší sítě. Pokud tato akce nebyl provedli autorizované stranou, může to znamenat na škodlivou aktivitu.       |
 |
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
 - [Přehled](overview.md)
 - [Přístup k vašim datům zabezpečení](how-to-security-data-access.md)

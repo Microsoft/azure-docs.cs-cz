@@ -4,7 +4,7 @@ description: Nasazení Chef klienta do virtuálního počítače pomocí Chefu r
 services: virtual-machines-linux
 documentationcenter: ''
 author: roiyz-msft
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: roiyz
-ms.openlocfilehash: 6bd3ea4e664523fe8014be40c51d573ed5158ecf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e72536cc6f9ec3b94016d16de8502e70bc7107aa
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60800278"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706086"
 ---
 # <a name="chef-vm-extension-for-linux-and-windows"></a>Chef rozšíření virtuálního počítače pro systémy Linux a Windows
 
@@ -68,26 +68,26 @@ Následující kód JSON ukazuje schématu pro rozšíření virtuálního poč�
 
 ### <a name="core-property-values"></a>Hodnoty vlastností Core
 
-| Název | Hodnota / příklad | Typ dat
-| ---- | ---- | ---- 
+| Name | Hodnota / příklad | Typ dat
+| ---- | ---- | ----
 | apiVersion | `2017-12-01` | string (date) |
-| publisher | `Chef.Bootstrap.WindowsAzure` | string |
-| type | `LinuxChefClient` (Linux), `ChefClient` (Windows) | string |
+| publisher | `Chef.Bootstrap.WindowsAzure` | řetězec |
+| type | `LinuxChefClient` (Linux), `ChefClient` (Windows) | řetězec |
 | typeHandlerVersion | `1210.12` | string (double) |
 
 ### <a name="settings"></a>Nastavení
 
-| Název | Hodnota / příklad | Typ dat | Požadováno?
+| Name | Hodnota / příklad | Typ dat | Požadováno?
 | ---- | ---- | ---- | ----
 | settings/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | string (url) | Ano |
-| settings/bootstrap_options/validation_client_name | `myorg-validator` | string | Ano |
-| settings/runlist | `recipe[mycookbook::default]` | string | Ano |
+| settings/bootstrap_options/validation_client_name | `myorg-validator` | řetězec | Ano |
+| settings/runlist | `recipe[mycookbook::default]` | řetězec | Ano |
 
 ### <a name="protected-settings"></a>Chráněné nastavení
 
-| Název | Příklad: | Typ dat | Požadováno?
+| Name | Příklad | Typ dat | Požadováno?
 | ---- | ---- | ---- | ---- |
-| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | string | Ano |
+| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | řetězec | Ano |
 
 <!--
 ### Linux-specific settings
@@ -105,7 +105,7 @@ Následující kód JSON ukazuje schématu pro rozšíření virtuálního poč�
 
 Rozšíření virtuálního počítače Azure je možné nasadit s využitím šablon Azure Resource Manageru. Šablony lze nasadit jeden nebo více virtuálních počítačů, nainstalovat klienta Chef, připojit k serveru Chef a provést počáteční konfiguraci serveru podle definice [seznam spuštění](https://docs.chef.io/run_lists.html)
 
-Ukázka šablony Resource Manageru, která zahrnuje Chef rozšíření virtuálního počítače můžete najít na [Galerie Azure rychlý Start](https://github.com/Azure/azure-quickstart-templates/tree/master/chef-json-parameters-linux-vm).
+Ukázka šablony Resource Manageru, která zahrnuje Chef rozšíření virtuálního počítače najdete v [galerii pro rychlý start Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/chef-json-parameters-linux-vm).
 
 JSON konfigurace pro rozšíření virtuálního počítače můžete vnořit do prostředku virtuálního počítače nebo objektu umístěn na kořenový server WSUS nebo nejvyšší úrovni šablony JSON Resource Manageru. Umístění konfigurace JSON má vliv na hodnotu názvu prostředku a typů. Další informace najdete v tématu [nastavte název a typ pro podřízené prostředky](../../azure-resource-manager/resource-manager-template-child-resource.md).
 

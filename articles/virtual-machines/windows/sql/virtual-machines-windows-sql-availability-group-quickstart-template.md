@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 01/04/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: fb09d91bb3204a1ab3dc4f9df71eabd2ee7d2bd1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 406bd11765e4b580849e8719939c3e11c19d99a8
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60591315"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604572"
 ---
 # <a name="use-azure-quickstart-templates-to-configure-always-on-availability-group-for-sql-server-on-an-azure-vm"></a>Konfigurace skupiny dostupnosti Always On pro SQL Server na Virtuálním počítači Azure pomocí šablon rychlého startu Azure
 Tento článek popisuje, jak pomocí šablon Azure Quickstart částečně automatizovat nasazení konfigurace dostupnosti skupin Always On pro SQL Server Virtual Machines v Azure. Existují dvě šablony Quickstart pro Azure, které se používají v tomto procesu. 
@@ -38,7 +38,7 @@ Ostatní části Konfigurace skupiny dostupnosti je nutné provést ručně, nap
 K automatizaci instalací skupiny dostupnosti Always On pomocí šablony pro rychlý start, musí už máte splněné následující požadavky: 
 - [Předplatného Azure](https://azure.microsoft.com/free/).
 - Skupina prostředků s řadičem domény. 
-- Jeden nebo více připojených k doméně [virtuálních počítačů v Azure spuštěné systému SQL Server 2016 (nebo vyšší) Enterprise edition](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) ve stejné sadě nebo dostupnost zóně dostupnosti, které byly [zaregistrované u poskytovatele prostředků SQL VM](virtual-machines-windows-sql-ahb.md#register-sql-server-vm-with-sql-resource-provider).  
+- Jeden nebo více připojených k doméně [virtuálních počítačů v Azure spuštěné systému SQL Server 2016 (nebo vyšší) Enterprise edition](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) ve stejné sadě nebo dostupnost zóně dostupnosti, které byly [zaregistrované u poskytovatele prostředků SQL VM](virtual-machines-windows-sql-register-with-resource-provider.md).  
 - (Není používána entitu) k dispozici dvě IP adresy, jeden pro interní nástroj pro vyrovnávání zatížení a jeden pro naslouchací proces skupiny dostupnosti ve stejné podsíti jako skupiny dostupnosti. Pokud se používá stávajícího nástroje pro vyrovnávání zatížení, je potřeba jenom jeden dostupnou IP adresu.  
 
 ## <a name="permissions"></a>Oprávnění
@@ -56,7 +56,7 @@ Jakmile se vaše virtuální počítače s SQL serverem jste zaregistrovali pomo
 
     Následující tabulka zobrazuje hodnoty potřebné pro šablony: 
 
-   | **Pole** | Hodnota |
+   | **Pole** | Value |
    | --- | --- |
    | **Předplatné** |  Předplatné, kde existují virtuální počítače s SQL serverem. |
    |**Skupina prostředků** | Skupina prostředků, kde jsou umístěné vaše virtuální počítače s SQL serverem. | 
@@ -105,7 +105,7 @@ Always On naslouchací proces skupiny dostupnosti (AG) vyžaduje vnitřní Azure
    | **Privátní IP adresa** | Zadejte dostupnou IP adresu z podsítě. |
    | **Předplatné** |Pokud máte více předplatných, může se zobrazit tato pole. Vyberte předplatné, které chcete přidružit k tomuto prostředku. Je obvykle stejné předplatné jako všechny prostředky pro skupinu dostupnosti. |
    | **Skupina prostředků** |Vyberte skupinu prostředků, instance SQL serveru jsou v. |
-   | **Umístění** |Vyberte oblast Azure, které jsou instance SQL serveru v. |
+   | **Location** |Vyberte oblast Azure, které jsou instance SQL serveru v. |
    | &nbsp; | &nbsp; |
 
 6. Vyberte **Vytvořit**. 
@@ -190,7 +190,7 @@ Tuto chybu může způsobovat jednu ze dvou důvodů. Doménový účet zadaný 
 
     ![Označuje prázdný uživatelský účet, chybí hlavní název uživatele](media/virtual-machines-windows-sql-availability-group-quickstart-template/account-missing-upn.png)
 
-5. Vyplňte **přihlašovací uživatelské jméno** shodovat s názvem uživatele, a vyberte správné domény z rozevíracího seznamu. 
+5. Vyplňte **přihlašovací uživatelské jméno** shodovat s názvem uživatele, a vyberte správnou doménu z rozevíracího seznamu. 
 6. Vyberte **použít** uložte provedené změny a zavřete dialogové okno tak, že vyberete **OK**. 
 
    Jakmile se změny provedou, pokus o nasazení šablony rychlý start Azure ještě jednou. 

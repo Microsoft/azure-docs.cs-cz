@@ -2,23 +2,23 @@
 title: Resetovat přihlašovací údaje pro cluster Azure Kubernetes Service (AKS)
 description: Zjistěte, jak aktualizovat nebo obnovit instanční objekt služby přihlašovací údaje pro cluster Azure Kubernetes Service (AKS)
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
-ms.author: iainfou
-ms.openlocfilehash: 189bcf2ddc7d301c8100f74e51374abd217a144f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mlearned
+ms.openlocfilehash: 5aac941133296d2040d5dd670155b80f5807e1e9
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66475498"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614131"
 ---
 # <a name="update-or-rotate-the-credentials-for-a-service-principal-in-azure-kubernetes-service-aks"></a>Aktualizace nebo otočit přihlašovací údaje pro instanční objekt služby ve službě Azure Kubernetes Service (AKS)
 
 Ve výchozím nastavení AKS clustery jsou vytvořeny pomocí objektu služby, který má čas vypršení platnosti jeden rok. Jak jste téměř datum vypršení platnosti můžete resetovat přihlašovací údaje pro instanční objekt služby rozšířit další dobu. Můžete také chtít aktualizovat nebo otočit, přihlašovací údaje jako součást zásady zabezpečení. Tento článek podrobně popisuje, jak aktualizovat tyto přihlašovací údaje pro AKS cluster.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Musí mít Azure CLI verze 2.0.65 nebo později nainstalována a nakonfigurována. Spustit `az --version` k vyhledání verze. Pokud potřebujete instalaci nebo upgrade, naleznete v tématu [instalace Azure CLI][install-azure-cli].
 
@@ -33,7 +33,7 @@ Pokud chcete vytvořit instanční objekt a potom aktualizovat AKS cluster, zbý
 
 ### <a name="get-the-service-principal-id"></a>Získejte ID instančního objektu služby
 
-Chcete-li aktualizovat přihlašovací údaje pro existující instanční objekt, získejte ID instančního objektu služby clusteru pomocí [az aks zobrazit] [ az-aks-show] příkazu. Následující příklad získá ID pro cluster s názvem *myAKSCluster* v *myResourceGroup* skupinu prostředků. ID instančního objektu služby je nastaven jako proměnnou s názvem *SP_ID* pro použití v další příkaz.
+Chcete-li aktualizovat přihlašovací údaje pro existující instanční objekt, získejte ID instančního objektu služby clusteru pomocí [az aks zobrazit][az-aks-show] příkazu. Následující příklad získá ID pro cluster s názvem *myAKSCluster* v *myResourceGroup* skupinu prostředků. ID instančního objektu služby je nastaven jako proměnnou s názvem *SP_ID* pro použití v další příkaz.
 
 ```azurecli-interactive
 SP_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster \
@@ -54,7 +54,7 @@ Teď pokračujte na [clusteru AKS aktualizace s novými pověřeními](#update-a
 
 Pokud jste se rozhodli aktualizovat existující pověření instančního objektu služby v předchozí části, tento krok přeskočte. I nadále [clusteru AKS aktualizace s novými pověřeními](#update-aks-cluster-with-new-credentials).
 
-Chcete-li vytvořit instanční objekt a potom aktualizovat cluster AKS pomocí těchto nových přihlašovacích údajů, použijte [az ad sp create-for-rbac] [ az-ad-sp-create] příkazu. V následujícím příkladu parametr `--skip-assignment` zakazuje jakékoli další přiřazení výchozích přiřazení:
+Chcete-li vytvořit instanční objekt a potom aktualizovat cluster AKS pomocí těchto nových přihlašovacích údajů, použijte [az ad sp create-for-rbac][az-ad-sp-create] příkazu. V následujícím příkladu parametr `--skip-assignment` zakazuje jakékoli další přiřazení výchozích přiřazení:
 
 ```azurecli-interactive
 az ad sp create-for-rbac --skip-assignment
@@ -71,7 +71,7 @@ Výstup se podobá následujícímu příkladu. Poznamenejte si sami `appId` a `
 }
 ```
 
-Nyní definujte proměnné, služby Hlavní ID a tajný kód klienta pomocí výstupu z vlastní [az ad sp create-for-rbac] [ az-ad-sp-create] příkaz, jak je znázorněno v následujícím příkladu. *SP_ID* je vaše *appId*a *SP_SECRET* je vaše *heslo*:
+Nyní definujte proměnné, služby Hlavní ID a tajný kód klienta pomocí výstupu z vlastní [az ad sp create-for-rbac][az-ad-sp-create] příkaz, jak je znázorněno v následujícím příkladu. *SP_ID* je vaše *appId*a *SP_SECRET* je vaše *heslo*:
 
 ```azurecli-interactive
 SP_ID=7d837646-b1f3-443d-874c-fd83c7c739c5
@@ -80,7 +80,7 @@ SP_SECRET=a5ce83c9-9186-426d-9183-614597c7f2f7
 
 ## <a name="update-aks-cluster-with-new-credentials"></a>Aktualizace clusteru AKS pomocí nových přihlašovacích údajů
 
-Bez ohledu na to, zda jste se rozhodli aktualizovat přihlašovací údaje pro existující instanční objekt nebo vytvořte instanční objekt služby, je nyní aktualizovat AKS cluster pomocí nových přihlašovacích údajů [az aks update-credentials] [ az-aks-update-credentials] příkazu. Proměnné pro *--instanční objekt služby* a *--tajný kód klienta* se používají:
+Bez ohledu na to, zda jste se rozhodli aktualizovat přihlašovací údaje pro existující instanční objekt nebo vytvořte instanční objekt služby, je nyní aktualizovat AKS cluster pomocí nových přihlašovacích údajů [az aks update-credentials][az-aks-update-credentials] příkazu. Proměnné pro *--instanční objekt služby* a *--tajný kód klienta* se používají:
 
 ```azurecli-interactive
 az aks update-credentials \
@@ -93,7 +93,7 @@ az aks update-credentials \
 
 Trvá ještě chvilku na přihlašovací údaje instančního objektu služby v AKS.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto článku se aktualizoval instanční objekt pro samotný cluster AKS. Další informace o tom, jak spravovat identitu pro úlohy v rámci clusteru najdete v tématu [osvědčené postupy pro ověřování a autorizace ve službě AKS][best-practices-identity].
 

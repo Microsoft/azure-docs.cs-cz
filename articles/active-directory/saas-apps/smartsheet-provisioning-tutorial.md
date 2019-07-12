@@ -8,19 +8,19 @@ writer: zchia
 manager: beatrizd
 ms.assetid: na
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2019
-ms.author: zchia
-ms.openlocfilehash: e9d0d996b961c31732642c9476f529bfb7561fbe
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.author: jeedes
+ms.openlocfilehash: f0ca2dfa90e1312db664962e7ffbe6b3f4dd96e1
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67453395"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67670936"
 ---
 # <a name="tutorial-configure-smartsheet-for-automatic-user-provisioning"></a>Kurz: Konfigurace Smartsheet pro automatické zřizování uživatelů
 
@@ -189,7 +189,7 @@ Další informace o tom, jak číst zřizování protokoly Azure AD najdete v t�
 
 * Smartsheet nepodporuje obnovitelné odstranění. Když uživatele **aktivní** atribut je nastaven na hodnotu False, Smartsheet trvale odstraní uživatele.
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

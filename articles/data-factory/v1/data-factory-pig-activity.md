@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 78ee2c1ce402a29f1a9dfdd29f31daef09134eba
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 09fd569ebfe8bc7f287eeb2a0b830399250c3a7a
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60611337"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67701497"
 ---
 # <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>Transformovat data pomocí Pig aktivity ve službě Azure Data Factory
 > [!div class="op_single_selector" title1="Aktivity transformace"]
@@ -83,7 +83,7 @@ Aktivita HDInsight Pig ve službě Data Factory [kanálu](data-factory-create-pi
 
 ## <a name="syntax-details"></a>Podrobnosti o syntaxi
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 | --- | --- | --- |
 | name |Název aktivity |Ano |
 | description |Text popisující, k čemu aktivita slouží |Ne |
@@ -91,11 +91,11 @@ Aktivita HDInsight Pig ve službě Data Factory [kanálu](data-factory-create-pi
 | inputs |Jeden nebo více vstupů spotřebovávané aktivitou Pig |Ne |
 | outputs |Jeden nebo více výstupů produkované aktivitou Pig |Ano |
 | linkedServiceName |Odkaz na clusteru HDInsight zaregistrovaný jako propojenou službu ve službě Data Factory |Ano |
-| script |Zadejte vložený skript Pig |Ne |
+| . |Zadejte vložený skript Pig |Ne |
 | scriptPath |Skript Pig Store ve službě Azure blob storage a zadejte cestu k souboru. Vlastnost 'script' nebo "scriptPath". Obě nelze použít společně. Název souboru je velká a malá písmena. |Ne |
 | defines |Zadejte parametry jako páry klíč/hodnota pro odkazování v rámci skript Pig |Ne |
 
-## <a name="example"></a>Příklad:
+## <a name="example"></a>Příklad
 Zvažte příklad herních protokolů analytics, ve které chcete určit čas strávený hráči, hraní her spustili ve vaší společnosti.
 
 Následující ukázkový herní protokol je soubor oddělených čárkami (,). Obsahuje následující pole – ID profilu, SessionStart, doba trvání, SrcIPAddress a GameType.

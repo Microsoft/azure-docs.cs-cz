@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
-ms.openlocfilehash: 6911e06dc023027ab32b99387b9f7d3f5e708f86
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: fe4ecc237b56575f99844d3ec074225fadb69d3c
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67174686"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673284"
 ---
 ## <a name="configure-your-application-to-access-azure-storage"></a>Konfigurace aplikace pro přístup k úložišti Azure
 Existují dva způsoby, jak ověřování vaší aplikace pro přístup ke službám úložiště:
@@ -38,11 +38,11 @@ Tady je příklad připojovacího řetězce ověření pomocí sdíleného klí�
 
 ### <a name="shared-access-signatures-sas"></a>Sdílené přístupové podpisy (SAS)
 Mobilní aplikace je doporučeným způsobem ověření požadavku pro klienta pro službu Azure Storage s použitím sdílený přístupový podpis (SAS). SAS můžete udělit přístup klienta k prostředku pro zadaný časový úsek, s konkrétní sadou oprávnění.
-Jako vlastník účtu úložiště budete muset vygenerovat SAS pro vaši mobilní klienti využívat. Generovat SAS, budete pravděpodobně chtít zápisu samostatná služba, která generuje SAS pro distribuci do vašim klientům. Pro účely testování můžete použít [Microsoft Azure Storage Explorer](http://storageexplorer.com) nebo [webu Azure Portal](https://portal.azure.com) SAS můžete vygenerovat. Když vytvoříte SAS, můžete zadat časový interval nad tím, které je podpis platný a oprávnění, která uděluje SAS ke klientovi.
+Jako vlastník účtu úložiště budete muset vygenerovat SAS pro vaši mobilní klienti využívat. Generovat SAS, budete pravděpodobně chtít zápisu samostatná služba, která generuje SAS pro distribuci do vašim klientům. Pro účely testování můžete použít [Microsoft Azure Storage Explorer](https://storageexplorer.com) nebo [webu Azure Portal](https://portal.azure.com) SAS můžete vygenerovat. Když vytvoříte SAS, můžete zadat časový interval nad tím, které je podpis platný a oprávnění, která uděluje SAS ke klientovi.
 
 Následující příklad ukazuje, jak generovat SAS pomocí Průzkumníka služby Microsoft Azure Storage.
 
-1. Pokud jste tak dosud neučinili, [instalace Průzkumníka služby Microsoft Azure Storage](http://storageexplorer.com)
+1. Pokud jste tak dosud neučinili, [instalace Průzkumníka služby Microsoft Azure Storage](https://storageexplorer.com)
 2. Připojte se ke svému předplatnému.
 3. Klikněte na tlačítko na vašem účtu úložiště a klikněte na kartu "Akce" vlevo dole. Klikněte na tlačítko "Získat sdílený přístupový podpis" se vygenerovat řetězec"připojení" pro váš SAS.
 4. Tady je příklad připojovacího řetězce SAS, že uděluje oprávnění čtení a zápis na úrovni objektu služby blob service účtu úložiště pro službu kontejneru a.

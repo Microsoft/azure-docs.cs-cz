@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: v-shysun
-ms.openlocfilehash: 5299437dea18510fa5f85ee27240c8afc434d125
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 95ad2ba4798d41f2e5e49ca33735b997859af23f
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61477259"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67658141"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Nejčastější dotazy ke službě SQL Server běžící na virtuálních počítačích Windows v Azure
 
@@ -37,7 +37,7 @@ Tento článek obsahuje odpovědi na některé nejběžnější otázky o spušt
 
 ## <a id="images"></a> Bitové kopie
 
-1. **Jaké Image z Galerie virtuálních počítačů SQL serveru jsou k dispozici?**
+1. **Jaké Image z Galerie virtuálních počítačů SQL serveru jsou k dispozici?** 
 
    Azure udržuje imagí virtuálních počítačů pro všechny podporované hlavní verze systému SQL Server ve všech edicích Windows a Linux. Další informace najdete v tématu úplný seznam [Image virtuálních počítačů s Windows](virtual-machines-windows-sql-server-iaas-overview.md#payasyougo) a [Linuxové Image virtuálních počítačů](../../linux/sql/sql-server-linux-virtual-machines-overview.md#create).
 
@@ -78,7 +78,6 @@ Tento článek obsahuje odpovědi na některé nejběžnější otázky o spušt
 1. **Jak můžu na virtuální počítač Azure nainstalovat licencovanou kopii SQL Serveru?**
 
    Můžete to provést dvěma způsoby. Můžete zřídit některou z [imagí virtuálního počítače s podporou licencí](virtual-machines-windows-sql-server-iaas-overview.md#BYOL), což se také označuje jako model používání vlastní licence (BYOL). Další možností je zkopírovat instalační médium SQL Serveru na virtuální počítač s Windows Serverem a pak na tomto virtuálním počítači nainstalovat SQL Server. Pokud však nainstalujete SQL Server ručně, připravíte se o integraci portálu a podporu rozšíření agenta SQL Server IaaS, takže funkce jako automatizované zálohování a automatizované opravy v tomto scénáři nebudou fungovat. Z tohoto důvodu doporučujeme použít některou z imagí BYOL z galerie. Pokud chcete použít BYOL nebo média systému SQL Server na Virtuálním počítači Azure, musíte mít [mobilitu licencí v rámci programu Software Assurance na Azure](https://azure.microsoft.com/pricing/license-mobility/). Další informace najdete v tématu [Doprovodné materiály k cenám pro virtuální počítače Azure s SQL Serverem](virtual-machines-windows-sql-server-pricing-guidance.md).
-
 
 1. **Musím platit za licenci SQL Serveru na virtuálním počítači Azure, pokud se používá pouze jako pohotovostní nebo pro převzetí služeb při selhání?**
 
@@ -147,9 +146,10 @@ Tento článek obsahuje odpovědi na některé nejběžnější otázky o spušt
    
 ## <a name="updating-and-patching"></a>Aktualizace a opravy chyb
 
-1. **Jak změnit na novou verzi nebo edici systému SQL Server na Virtuálním počítači Azure?**
+1. **Jak změnit na jinou verzi a edici systému SQL Server na Virtuálním počítači Azure?**
 
-   Zákazníci s programem Software Assurance budou moct místní upgrady z jejich SQL serveru běžícího na Virtuálním počítači Azure pomocí instalačního média na portálu Volume Licensing. Ale v současné době neexistuje žádný způsob, jak změnit edici instance systému SQL Server. Vytvořit nový virtuální počítač Azure s požadovanou edici systému SQL Server, a potom migrovat databáze do nového serveru pomocí standardní [technik migrace dat](virtual-machines-windows-migrate-sql.md).
+   Zákazníci mohou měnit jejich verzi nebo edici SQL serveru pomocí instalačního média, který obsahuje jejich požadovanou verzi nebo edici systému SQL Server. Jakmile se změnil na edici, upravte vlastnost edition virtuálního počítače k přesnému vyjádření fakturace pro virtuální počítač pomocí webu Azure portal. Další informace najdete v tématu [změňte verzi virtuálního počítače s SQL serverem](virtual-machines-windows-sql-change-edition.md). 
+
 
 1. **Jak se aktualizace a aktualizace service Pack používají na virtuální počítač s SQL serverem?**
 
@@ -170,7 +170,7 @@ Tento článek obsahuje odpovědi na některé nejběžnější otázky o spušt
 
 1. **Jak nainstalovat nástroje SQL Data na mém virtuálním počítači Azure?**
 
-    Stáhněte a nainstalujte nástroje SQL Data z [Microsoft SQL Server Data Tools – Business Intelligence pro Visual Studio 2013](https://www.microsoft.com/en-us/download/details.aspx?id=42313).
+    Stáhněte a nainstalujte nástroje SQL Data z [Microsoft SQL Server Data Tools – Business Intelligence pro Visual Studio 2013](https://www.microsoft.com/download/details.aspx?id=42313).
 
 1. **Se distribuované transakce MSDTC nepodporuje na virtuální počítače s SQL serverem?**
    

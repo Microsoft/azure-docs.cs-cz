@@ -137,6 +137,8 @@
           href: infrastructure-example.md
         - name: Kvóty virtuálních procesorů
           href: quotas.md
+    - name: Atributy zabezpečení
+      href: virtual-machines-linux-security-attributes.md
 - name: Návody
   items:
     - name: Vytvoření virtuálních počítačů

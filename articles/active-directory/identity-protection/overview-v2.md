@@ -17,12 +17,12 @@ ms.date: 10/03/2018
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b4f8caf03aad339cea3c3fcc732fc1af6086ea7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0f6c2f36e1061243851b37da47659aaf7a18e8d6
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67108886"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673009"
 ---
 # <a name="what-is-azure-active-directory-identity-protection-refreshed"></a>Co je Azure Active Directory Identity Protection (Aktualizovat)?
 
@@ -119,7 +119,7 @@ Riziko uživatele se vypočte tak, že vzhledem k tomu všechna rizika spojená 
 
 ## <a name="how-identity-protection-detects-risk"></a>Zjistí, jak Identity Protection rizikem  
 
-Azure AD pomocí strojového učení detekovat anomálie a podezřelé aktivity, pomocí obou signály zjistil v v reálném čase během přihlášení stejně jako jiné reálném čase signál související pro uživatele a jejich aktivit přihlašování. Na základě těchto dat Identity Protection vypočítá v reálném čase rizika přihlašování při pokaždé, když uživatel přihlásí, a také určení celkového úroveň rizika uživatele pro uživatele dosah. Ochrana identity umožňuje automaticky provádět akce na tyto detekce rizik konfigurace uživatelského rizika Identity Protection a její zásady rizik přihlašování.  
+Azure AD pomocí strojového učení detekovat anomálie a podezřelé aktivity, pomocí obou signály zjistil v v reálném čase během přihlášení stejně jako jiné reálném čase signál související pro uživatele a jejich aktivit přihlašování. Na základě těchto dat Identity Protection vypočítá v reálném čase rizika přihlašování při pokaždé, když uživatel přihlásí, a také určení celkového úroveň rizika uživatele pro každého uživatele. Ochrana identity umožňuje automaticky provádět akce na tyto detekce rizik konfigurace uživatelského rizika Identity Protection a její zásady rizik přihlašování.  
 
  
 
@@ -210,7 +210,7 @@ Další podrobnosti najdete v tématu [přiřazení rolí správce v Azure Activ
 
 
 
-| Schopnost | Azure AD Premium P2 | Azure AD Premium P1 | Azure AD Basic/zdarma |
+| Funkce | Azure AD Premium P2 | Azure AD Premium P1 | Azure AD Basic/zdarma |
 | --- | --- | --- | --- |
 | Zásady rizik uživatelů | Ano | Ne | Ne |
 | Zásady rizik přihlašování | Ano | Ne | Ne |
@@ -224,7 +224,7 @@ Další podrobnosti najdete v tématu [přiřazení rolí správce v Azure Activ
 
 
 
-## <a name="next-steps"></a>Další postup 
+## <a name="next-steps"></a>Další kroky 
 
 Začínáme s Identity Protection, najdete v článku [zásady rizik přihlašování konfigurovat](quickstart-sign-in-risk-policy.md). 
 

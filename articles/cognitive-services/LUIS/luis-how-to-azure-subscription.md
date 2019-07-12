@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 06/18/2019
+ms.date: 07/10/2019
 ms.author: diberry
-ms.openlocfilehash: 7f82bf5a40df0554d4f98b2d835fcbd69279be43
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: dedc498ebc910b448b1684136c288b2045780e00
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204164"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797955"
 ---
 # <a name="using-subscription-keys-with-your-luis-app"></a>Použití klíčů předplatného s aplikací LUIS
 
@@ -32,6 +32,8 @@ Pro účely testování a prototypu pouze úroveň free (F0) můžete použijte.
 
 Můžete vytvořit [předpovědi koncový bod prostředku](get-started-portal-deploy-app.md#create-the-endpoint-resource) na webu Azure Portal. Tento prostředek by měla sloužit pouze pro dotazy předpovědi s koncový bod. Tento prostředek nepoužívají vytváření změny do aplikace.
 
+Můžete vytvořit umožňující porozumět jazyku prostředku nebo prostředku služeb Cognitive Services. Při vytváření prostředku Language Understanding, je vhodné postpend prostředek zadejte název prostředku. 
+
 <a name="programmatic-key" ></a>
 <a name="authoring-key" ></a>
 <a name="endpoint-key" ></a>
@@ -45,6 +47,15 @@ Můžete vytvořit [předpovědi koncový bod prostředku](get-started-portal-de
 <a name="assign-endpoint-key"></a>
 <a name="assign-resource"></a>
 
+### <a name="using-resource-from-luis-portal"></a>Použití prostředků z portálu služby LUIS
+
+Pokud používáte prostředků z portálu služby LUIS, není potřeba znát klíč a umístění. Místo toho je potřeba vědět tenanta prostředků, předplatné a název prostředku.
+
+Jakmile [přiřadit](#assign-resource-key-to-luis-app-in-luis-portal) váš prostředek do vaší aplikace LUIS v portálu LUIS, klíč a umístění jsou k dispozici jako součást dotazu předpovědi koncový bod adresy URL v části Správa **klíče a koncových bodů nastavení** stránky.
+ 
+### <a name="using-resource-from-rest-api-or-sdk"></a>Použití prostředků z rozhraní REST API nebo sady SDK
+
+Pokud používáte prostředku z REST API(s) nebo SDK, je potřeba vědět klíč a umístění. Tyto informace je k dispozici jako součást dotazu předpovědi koncový bod adresy URL v části Správa **klíče a koncových bodů nastavení** stránce i webu Azure portal, na stránkách přehledu a klíče prostředku.
 
 ## <a name="assign-resource-key-to-luis-app-in-luis-portal"></a>Klíč prostředku přiřadit aplikace LUIS portálu LUIS
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 9cd1be26f6832fffb86dfefd0d93d9dbb393c0f0
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 68d0f4f85bc8879191784f038c74fafc40c422b7
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67303878"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604691"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Řešení problémů se Synchronizací souborů Azure
 Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě soubory Azure, při zachování flexibility, výkonu a kompatibility s místními souborového serveru. Azure File Sync transformuje serveru systému Windows na rychlou mezipaměť sdílené složky Azure. Můžete použít jakýkoli protokol dostupný ve Windows serveru pro přístup k datům místně, včetně SMB, NFS a FTPS. Můžete mít libovolný počet mezipamětí po celém světě potřebujete.
@@ -90,7 +90,7 @@ Vytvoření koncového bodu cloudu, váš uživatelský účet musí mít násle
 * Zápis: Vytvořit přiřazení role
 
 Následující předdefinované role mají všechna oprávnění vyžadovaná Authorization společnosti Microsoft:  
-* Vlastník
+* Owner
 * Správce přístupu uživatelů
 
 Chcete-li zjistit, zda vaše uživatelská role účet má potřebná oprávnění:  
@@ -254,7 +254,7 @@ Pokud chcete zobrazit tyto chyby, spusťte **FileSyncErrorsReport.ps1** skript p
 | 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Soubor byl změněn během synchronizace, proto musí znovu synchronizovat. | Není vyžadována žádná akce. |
 
 #### <a name="handling-unsupported-characters"></a>Zpracování nepodporované znaky.
-Pokud **FileSyncErrorsReport.ps1** skript prostředí PowerShell ukazuje selhání kvůli nepodporované znaky (kód chyby: 0x8007007b), by měl neodeberete nebo nepřejmenujete znaky na selhání z názvů příslušných souborů. Prostředí PowerShell pravděpodobně vytiskne tyto znaky jako otazník nebo prázdný obdélníky, protože většina z těchto znaků mít žádné standardní vizuálního kódování. [Nástroj pro vyhodnocení](storage-sync-files-planning.md#evaluation-tool) slouží k identifikaci znaky, které nejsou podporovány.
+Pokud **FileSyncErrorsReport.ps1** skript prostředí PowerShell ukazuje selhání kvůli nepodporované znaky (kód chyby: 0x8007007b), by měl neodeberete nebo nepřejmenujete znaky na selhání z názvů příslušných souborů. Prostředí PowerShell pravděpodobně vytiskne tyto znaky jako otazník nebo prázdný obdélníky, protože většina z těchto znaků mít žádné standardní vizuálního kódování. [Nástroj pro vyhodnocení](storage-sync-files-planning.md#evaluation-cmdlet) slouží k identifikaci znaky, které nejsou podporovány.
 
 Následující tabulka obsahuje všechny znaky unicode, které Azure File Sync zatím nepodporuje.
 
@@ -740,7 +740,7 @@ if ($fileShare -eq $null) {
 
     Pokud **hybridní služby File Sync** nezobrazí v seznamu, proveďte následující kroky:
 
-    - Klikněte na tlačítko **Add** (Přidat).
+    - Klikněte na **Přidat**.
     - V **Role** pole, vyberte **Čtenář a přístup k datům**.
     - V **vyberte** zadejte **hybridní služby File Sync**, vyberte roli a klikněte na tlačítko **Uložit**.
 
@@ -877,7 +877,7 @@ Pokud není problém vyřešen, spusťte nástroj AFSDiag:
 5. Reprodukujte problém. Jakmile budete hotovi, zadejte **D**.
 6. Soubor .zip, který obsahuje protokolů a trasovací soubory se uloží do výstupního adresáře, který jste zadali.
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 - [Monitorování Azure File Sync](storage-sync-files-monitoring.md)
 - [Služba soubory Azure – nejčastější dotazy](storage-files-faq.md)
 - [Řešení potíží se službou Azure Files ve Windows](storage-troubleshoot-windows-file-connection-problems.md)

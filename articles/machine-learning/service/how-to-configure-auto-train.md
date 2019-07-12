@@ -9,14 +9,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9c003ebaed645fcdefb379eb100220ccc2207d82
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 0d9019a6b4a32066480a70f72562bc5a7a9a1e8b
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67202981"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797650"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurace automatizovaného experimentů v ML v Pythonu
 
@@ -40,7 +40,7 @@ Pokud dáváte přednost žádný kód prostředí, můžete také [vaše automa
 
 Než začnete experimentu, byste měli určit druh machine learning problému jsou řešení. Automatizované machine learning podporuje typy úloh klasifikace, regrese a Prognózování.
 
-Automatizované machine learning podporuje tyto algoritmy během automatizace a ladění procesu. Jako uživatel není nutné lze určit algoritmus. Během cvičení jsou k dispozici DNN algoritmy, automatizované ML nesestaví DNN modely.
+Automatizované machine learning podporuje tyto algoritmy během automatizace a ladění procesu. Jako uživatel není nutné lze určit algoritmus. 
 
 Klasifikace | Regrese | Vytváření prognóz časových řad
 |-- |-- |--

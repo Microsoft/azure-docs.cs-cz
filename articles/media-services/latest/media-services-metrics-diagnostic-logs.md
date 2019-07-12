@@ -1,6 +1,6 @@
 ---
-title: Monitorování metrik služby Media Services a diagnostické protokoly prostřednictvím služby Azure Monitor | Dokumentace Microsoftu
-description: Tento článek poskytuje přehled o tom, jak monitorovat metriky služby Media Services a diagnostické protokoly prostřednictvím služby Azure Monitor.
+title: Monitorování služby Azure Media Services metriky a diagnostické protokoly prostřednictvím služby Azure Monitor | Dokumentace Microsoftu
+description: Tento článek poskytuje přehled o tom, jak monitorovat Azure Media Services metriky a diagnostické protokoly prostřednictvím služby Azure Monitor.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,81 +11,106 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/05/2019
+ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: bbf43ecb07947fad8cc1ee064d2038e4a21d4444
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6d26cd809d78bf05f66c9fa03be5063ca4d2d5e4
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65964766"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67806000"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs"></a>Monitorování metrik služby Media Services a diagnostické protokoly
 
 [Azure Monitor](../../azure-monitor/overview.md) umožňuje monitorování metrik a diagnostické protokoly, které vám pomohou pochopit, jaký výkon vašich aplikací. Všechna data shromážděná službou Azure Monitor se vejde do jednoho ze dvou základních typů, metriky a protokoly. Můžete sledovat diagnostické protokoly služby Media Services a vytvořte si upozornění a oznámení o shromážděných metrik a protokolů. Můžete vizualizovat a analyzovat data metrik s využitím [Průzkumníka metrik](../../azure-monitor/platform/metrics-getting-started.md). Můžete odeslat protokoly do [služby Azure Storage](https://azure.microsoft.com/services/storage/), Streamovat je do [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)a exportovat je do [Log Analytics](https://azure.microsoft.com/services/log-analytics/), nebo použít služby 3. stran.
 
-Podrobný přehled najdete v tématu [metrik Azure monitoru](../../azure-monitor/platform/data-platform.md) a [Azure Monitor diagnostické protokoly](../../azure-monitor/platform/diagnostic-logs-overview.md).
+Podrobnější přehled najdete v části [metrik Azure monitoru](../../azure-monitor/platform/data-platform.md) a [Azure Monitor diagnostické protokoly](../../azure-monitor/platform/diagnostic-logs-overview.md).
 
-Toto téma popisuje aktuálně k dispozici [Media Services metriky](#media-services-metrics) a [Media Services diagnostické protokoly](#media-services-diagnostic-logs).
+Toto téma popisuje podporované [Media Services metriky](#media-services-metrics) a [Media Services diagnostické protokoly](#media-services-diagnostic-logs).
 
 ## <a name="media-services-metrics"></a>Metriky služby Media Services
 
-Metriky se budou shromažďovat v pravidelných intervalech, zda hodnoty. Jsou užitečné pro výstrahy, protože můžou být často Vzorkovaná a upozornění můžete aktivuje rychle s relativně jednoduché logikou.
+Metriky se budou shromažďovat v pravidelných intervalech, zda hodnoty. Jsou užitečné pro výstrahy, protože můžou být často Vzorkovaná a upozornění můžete aktivuje rychle s relativně jednoduché logikou. Informace o tom, jak vytvářet upozornění metrik, najdete v tématu [vytvoření, zobrazení a Správa upozornění na metriku pomocí Azure monitoru](../../azure-monitor/platform/alerts-metric.md).
 
-V současné době následující Media Services [koncové body streamování](https://docs.microsoft.com/rest/api/media/streamingendpoints) metriky jsou emitovány Azure:
+Služba Media Services podporuje monitorování metrik pro následující prostředky:
 
-|Metrika|Display name|Popis|
+* Účet
+* Koncový bod streamování
+ 
+### <a name="account"></a>Účet
+
+Můžete monitorovat následující metriky účtu. 
+
+|Název metriky|Display name|Popis|
 |---|---|---|
-|Požadavky|Požadavky|Poskytuje podrobnosti o celkový počet požadavků, které jsou obsluhovány pomocí koncového bodu streamování.|
+|AssetCount|Počet prostředků|Prostředky ve vašem účtu.|
+|AssetQuota|Prostředek kvóty|Prostředek kvóty ve vašem účtu.|
+|AssetQuotaUsedPercentage|Procento využité místo pro prostředek|Procento kvóty prostředků už používá.|
+|ContentKeyPolicyCount|Počet obsahu klíče zásad|Zásady obsahu klíčů ve vašem účtu.|
+|ContentKeyPolicyQuota|Obsahu klíče zásad kvót|Kvóta obsahu zásady klíčů ve vašem účtu.|
+|ContentKeyPolicyQuotaUsedPercentage|Použít procento obsahu klíče zásad kvót|Procento kvóty obsahu zásad klíče už používá.|
+|StreamingPolicyCount|Počet datových proudů zásad|Streamování zásad ve vašem účtu.|
+|StreamingPolicyQuota|Streamování zásad kvót|Streamování zásady kvót ve vašem účtu.|
+|StreamingPolicyQuotaUsedPercentage|Použít procento streamování zásad kvót|Procento kvóty streamování zásady už používá.|
+ 
+Také byste měli revidovat [účtu kvóty a omezení](limits-quotas-constraints.md).
+
+### <a name="streaming-endpoint"></a>Koncový bod streamování
+
+Tyto služby Media [koncové body streamování](https://docs.microsoft.com/rest/api/media/streamingendpoints) metriky jsou podporovány:
+
+|Název metriky|Display name|Popis|
+|---|---|---|
+|Požadavky|Požadavky|Poskytuje celkový počet požadavků HTTP, které jsou obsluhovány koncový bod streamování.|
 |Výchozí přenos|Výchozí přenos|Celkový počet bajtů výchozí přenos. Například bajtů streamují koncový bod streamování.|
-|SuccessE2ELatency|Úspěchu celkovou latencí do| Poskytuje informace o komplexní latence úspěšných požadavků.|
+|SuccessE2ELatency|Úspěchu celkovou latencí do|Doba trvání od přijetí požadavku k odeslání poslední bajt odpovědi koncového bodu streamování.|
 
-Například získat metriky "Výchozí přenos dat" pomocí rozhraní příkazového řádku, spustili byste následující `az monitor metrics` příkazu rozhraní příkazového řádku:
+### <a name="why-would-i-want-to-use-metrics"></a>Proč byste měli použít metriky? 
 
-```cli
-az monitor metrics list --resource \
-   "/subscriptions/<subscription id>/resourcegroups/<resource group name>/providers/Microsoft.Media/mediaservices/<Media Services account name>/streamingendpoints/<streaming endpoint name>" \
-   --metric "Egress"
-```
+Tady jsou příklady, jak monitorování metrik služby Media Services vám pomůžou pochopit, jaký výkon vašich aplikací. Několik otázek, které lze řešit pomocí metrik služby Media Services jsou:
 
-Informace o tom, jak vytvářet upozornění metrik, najdete v tématu [vytvoření, zobrazení a Správa upozornění na metriku pomocí Azure monitoru](../../azure-monitor/platform/alerts-metric.md).
+* Jak můžu monitorovat tento koncový bod streamování Standard při překročení limitů?
+* Jak poznám, že mám dostatek jednotek škálování koncových bodů streamování Premium? 
+* Jak můžete nastavit upozornění, abyste vědět, kdy chcete vertikálně navýšit kapacitu Moje koncové body streamování?
+* Jak nastavím výstrahy vědět, kdy bylo dosaženo maximální nakonfigurovaný na účtu výchozí přenos dat?
+* Jak lze zobrazit rozpis neúspěšných požadavků a co je příčinou selhání?
+* Jak zjistím, kolik požadavků HLS nebo DASH se se berou z Balíčkovače?
+* Jak nastavím výstrahy vědět, kdy bylo dosaženo prahová hodnota počet neúspěšných požadavků? 
+
+### <a name="example"></a>Příklad
+
+Zobrazit [monitorování metrik služby Media Services](media-services-metrics-howto.md)
 
 ## <a name="media-services-diagnostic-logs"></a>Diagnostické protokoly služby Media Services
 
-V současné době můžete získat následující diagnostických protokolů:
+Diagnostické protokoly poskytují bohatou, časté data o provozu prostředku Azure. Další informace najdete v tématu [shromažďovat a zpracovávat data protokolu z vašich prostředků Azure](../../azure-monitor/platform/diagnostic-logs-overview.md).
+
+Služba Media Services podporuje následující protokoly diagnostiky:
+
+* Doručení klíče
+
+### <a name="key-delivery"></a>Doručení klíče
 
 |Name|Popis|
 |---|---|
 |Žádost o doručení klíče služby|Protokoly, které zobrazují informace o žádosti o doručení klíče služby. Další podrobnosti najdete v tématu [schémata](media-services-diagnostic-logs-schema.md).|
 
-Povolit ukládání diagnostických protokolů v účtu úložiště, spustili byste následující `az monitor diagnostic-settings` příkazu rozhraní příkazového řádku: 
+### <a name="why-would-i-want-to-use-diagnostics-logs"></a>Proč byste měli používat protokoly diagnostiky? 
 
-```cli
-az monitor diagnostic-settings create --name <diagnostic name> \
-    --storage-account <name or ID of storage account> \
-    --resource <target resource object ID> \
-    --resource-group <storage account resource group> \
-    --logs '[
-    {
-        "category": <category name>,
-        "enabled": true,
-        "retentionPolicy": {
-            "days": <# days to retain>,
-            "enabled": true
-        }
-    }]'
-```
+Některé věci, které můžete zkontrolovat pomocí klíče doručování diagnostické protokoly jsou:
 
-Příklad:
+* Zobrazit číslo licence poskytované typ DRM
+* Zobrazit číslo licence poskytované zásad 
+* Zobrazit chyby podle typu DRM nebo zásad
+* Zobrazit počet neoprávněné licenční požadavky od klientů
 
-```cli
-az monitor diagnostic-settings create --name amsv3diagnostic \
-    --storage-account storageaccountforamsv3  \
-    --resource "/subscriptions/00000000-0000-0000-0000-0000000000/resourceGroups/amsv3ResourceGroup/providers/Microsoft.Media/mediaservices/amsv3account" \
-    --resource-group "amsv3ResourceGroup" \
-    --logs '[{"category": "KeyDeliveryRequests",  "enabled": true, "retentionPolicy": {"days": 3, "enabled": true }}]'
-```
+### <a name="example"></a>Příklad
+
+Zobrazit [monitorování mediálních služeb diagnostické protokoly](media-services-diagnostic-logs-howto.md)
 
 ## <a name="next-steps"></a>Další postup 
 
-[Tom, jak shromažďovat a zpracovávat data protokolu z vašich prostředků Azure](../../azure-monitor/platform/diagnostic-logs-overview.md).
+* [Tom, jak shromažďovat a zpracovávat data protokolu z vašich prostředků Azure](../../azure-monitor/platform/diagnostic-logs-overview.md)
+* [Vytvořit, zobrazit a spravovat upozornění na metriku pomocí Azure monitoru](../../azure-monitor/platform/alerts-metric.md)
+* [Jak monitorovat metriky služby Media Services](media-services-metrics-howto.md)
+* [Jak monitorovat mediálních služeb diagnostické protokoly](media-services-diagnostic-logs-howto.md)

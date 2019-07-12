@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 09/12/2018
 ms.author: glenga
-ms.openlocfilehash: 2a6d670ba9f2f496cc94d2790eb6f66d46305746
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 30c97eed5f28631bd2583cbda75df5755ffe2e34
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65872785"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67626100"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Funkce jazyka C# pro vývojáře referenční informace k Azure
 
@@ -50,7 +50,7 @@ Při sestavení projektu struktury složek, která vypadá jako v následující
  | - host.json
 ```
 
-Tento adresář je, co se nasadí do vaší aplikace funkcí v Azure. Rozšíření vazby vyžaduje [verze 2.x](functions-versions.md) funkce modulu runtime jsou [přidány do projektu jako balíčky NuGet](./functions-bindings-register.md#c-class-library-with-visual-studio-2019).
+Tento adresář je, co se nasadí do vaší aplikace funkcí v Azure. Rozšíření vazby vyžaduje [verze 2.x](functions-versions.md) funkce modulu runtime jsou [přidány do projektu jako balíčky NuGet](./functions-bindings-register.md#vs).
 
 > [!IMPORTANT]
 > Vytvoří proces sestavení *function.json* souboru pro každou funkci. To *function.json* souboru neměl být upravován přímo. Nelze změnit konfiguraci vazby nebo zakázat funkci úpravou tohoto souboru. Zjistěte, jak zakázat funkce, najdete v článku [zakázání funkce](disable-function.md#functions-2x---c-class-libraries).
@@ -402,7 +402,7 @@ public static class IBinderExampleMultipleAttributes
 
 [!INCLUDE [Supported triggers and bindings](../../includes/functions-bindings.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Další informace o aktivační události a vazby](functions-triggers-bindings.md)

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: ganesr;cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 1d6fc4a54ca600bd094a68e5eaab1306e7e831ac
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e7c3368408b06f13139b9126dfecad0a82857134
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60370258"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657296"
 ---
 # <a name="modify-an-expressroute-circuit-using-powershell-classic"></a>Úprava okruhu ExpressRoute pomocí prostředí PowerShell (classic)
 
@@ -21,6 +21,7 @@ ms.locfileid: "60370258"
 > * [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
+> * [Šablona Azure Resource Manager](expressroute-howto-circuit-resource-manager-template.md)
 > * [Video – Azure portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > * [PowerShell (Classic)](expressroute-howto-circuit-classic.md)
 >
@@ -125,7 +126,7 @@ Můžete upravit některé vlastnosti okruhu ExpressRoute bez dopadu na připoje
 Můžete provádět následující úlohy došlo k výpadku:
 
 * Povolit nebo zakázat doplněk ExpressRoute premium pro váš okruh ExpressRoute.
-* Zvětšete šířku pásma váš okruh ExpressRoute zadaný na portu je k dispozici kapacita. Šířku pásma okruhu downgradu není podporován. 
+* Zvětšete šířku pásma váš okruh ExpressRoute zadaný na portu je k dispozici kapacita. Šířku pásma okruhu downgradu není podporován.
 * Změňte plán monitorování míry využití měření podle objemu dat na neomezená Data. Změna plánu měření z neomezená Data na měření podle objemu dat se nepodporuje.
 * Můžete povolit nebo zakázat *povolit klasické operace*.
 
@@ -154,8 +155,8 @@ Váš okruh teď budou mít funkce doplněk ExpressRoute premium povolené. Co n
 
 > [!IMPORTANT]
 > Tato operace může selhat, pokud používáte prostředky, které jsou větší než co je povolený pro standardní okruh.
-> 
-> 
+>
+>
 
 #### <a name="considerations"></a>Požadavky
 
@@ -189,8 +190,8 @@ Zkontrolujte, [ExpressRoute – nejčastější dotazy](expressroute-faqs.md) pr
 > Bude pravděpodobně nutné znovu vytvořit okruh ExpressRoute, pokud je nedostatečné kapacity na existující port. Pokud v tomto umístění není k dispozici žádné další kapacitu, nemůže upgradovat okruh.
 >
 > Nejde snížit šířku pásma okruhu ExpressRoute bez přerušení. Downgrade šířky pásma je potřeba zrušit zřízení okruhu ExpressRoute a pak znova nezajistíte nového okruhu ExpressRoute.
-> 
-> 
+>
+>
 
 #### <a name="resize-a-circuit"></a>Změna velikosti okruhu
 

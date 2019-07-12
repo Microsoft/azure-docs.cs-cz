@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/17/2019
 ms.author: hrasheed
-ms.openlocfilehash: 3e1f64aa00ea0d78eca8a994814a91600b91239f
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: 9d25996db9c13a12781d369327f2b43a41fb4115
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190694"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786521"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>Instalace aplikací třetích stran Apache Hadoop v Azure HDInsight
 
@@ -38,7 +38,7 @@ Následující seznam uvádí publikované aplikace:
 |[Hvězdice Presto pro Azure HDInsight](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/starburst.starburst-presto) |Hadoop |Presto je rychlé a škálovatelné distribuované modul dotazů SQL. Navržen k oddělení úložiště a výpočetního výkonu, je ideální pro dotazování na data v Azure Data Lake Storage, Azure Blob Storage, SQL a NoSQL databáze a další zdroje dat Presto. |
 |[Kolekce dat StreamSets pro HDInsight Cloud](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/streamsets.streamsets-data-collector-hdinsight) |Hdinsight Hadoop, HBase, Spark, Kafka |StreamSets Data Collector je jednoduchý, výkonný stroj, který datové proudy dat v reálném čase. Pomocí kolekcí dat trasy a zpracování dat v datových proudů. Obsahuje 30denní zkušební licenci. |
 |[Trifacta Wrangler Enterprise](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/trifacta.tr01) |Hadoop, Spark,HBase |Trifacta Wrangler Enterprise pro HDInsight podporuje tahání pro libovolné škálování dat dat na podnikové úrovni. Náklady na provozování Trifacta v Azure je kombinací Trifacta předplatné náklady a náklady na infrastrukturu Azure pro virtuální počítače. |
-|[Unifi datová platforma](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/unifi-software.unifi-data-platform) |Hadoop, HBase, Storm, Spark |Datová platforma Unifi je bezproblémově integrovaná sada samoobslužné dat nástrojů pro posílení produktivity uživatelů business řešit problémy dat přírůstkové výnosy tuto jednotku, snížit náklady a složitost. |
+|[Unifi datová platforma](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/unifi-software.unifi-data-catalog) |Hadoop, HBase, Storm, Spark |Datová platforma Unifi je bezproblémově integrovaná sada samoobslužné dat nástrojů pro posílení produktivity uživatelů business řešit problémy dat přírůstkové výnosy tuto jednotku, snížit náklady a složitost. |
 |[Unraveldata APM](https://azuremarketplace.microsoft.com/marketplace/apps/unravel-data.unravel-app) |Spark |Unravel Data aplikace pro cluster HDInsight Spark. |
 |[Vodoryskou řízené AI Data Catalog](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/waterline_data.waterline_data) |Spark |Vodoryskou katalogů slouží k uspořádání a řídí data auto-tag dat s podmínkami podnikání pomocí AI. Vodoryskou vaší firmy chtějí katalogu je zásadní, součástí úspěch pro samoobslužné analýzy, dodržování předpisů a zásad správného řízení a iniciativy správy IT. |
 
@@ -84,7 +84,7 @@ Portál zobrazuje seznam nainstalovaných aplikací HDInsight pro cluster a vlas
     |Vlastnost | Popis |
     |---|---|
     |App name (Název aplikace) |Název aplikace. |
-    |Status |Stav aplikace. |
+    |Stav |Stav aplikace. |
     |Webová stránka |Adresa URL webové aplikace, kterou jste nasadili do hraničního uzlu. Přihlašovací údaje jsou stejné jako přihlašovací údaje uživatele protokolu HTTP, které jste nakonfigurovali pro cluster. |
     |Koncový bod SSH |SSH můžete použít pro připojení k hraničnímu uzlu. Přihlašovací údaje SSH jsou stejné jako přihlašovací údaje uživatele SSH, které jste nakonfigurovali pro cluster. Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md). |
     |Popis | Popis aplikace. |

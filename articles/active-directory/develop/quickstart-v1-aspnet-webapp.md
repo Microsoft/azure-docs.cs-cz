@@ -14,14 +14,14 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/21/2019
-ms.author: andret
+ms.author: ryanwi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17aaff1a6da2c18e9b1d915f61844635b1ad130b
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: d0a5f9c14e04e9a0b5b8b48524a425ea94ebf3af
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66001445"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67702990"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Rychlý start: Přidání přihlašování s Microsoftem do webové aplikace ASP.NET
 
@@ -32,7 +32,7 @@ V tomto rychlém startu dozvíte, jak implementovat přihlášení u Microsoftu 
 Na konci tohoto rychlého startu přijmete přihlášení pracovního a školního účtu z organizace, která má integrovanou službu Azure Active Directory (Azure AD).
 
 > [!NOTE]
-> Pokud je potřeba povolit přihlášení pro osobní účty kromě pracovním a školním účtům, můžete použít  *[koncového bodu Microsoft identity platform](azure-ad-endpoint-comparison.md)*. Další informace najdete v tématu [tento kurz ASP.NET](tutorial-v2-asp-webapp.md) stejně jako [v tomto článku](active-directory-v2-limitations.md) s vysvětlením, *koncového bodu Microsoft identity platform*.
+> Pokud je potřeba povolit přihlášení pro osobní účty kromě pracovním a školním účtům, můžete použít  *[koncového bodu Microsoft identity platform](azure-ad-endpoint-comparison.md)* . Další informace najdete v tématu [tento kurz ASP.NET](tutorial-v2-asp-webapp.md) stejně jako [v tomto článku](active-directory-v2-limitations.md) s vysvětlením, *koncového bodu Microsoft identity platform*.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -70,7 +70,7 @@ Pokud si místo toho chcete stáhnout projekt sady Visual Studio této ukázky, 
 ## <a name="step-2-create-your-aspnet-project"></a>Krok 2: Vytvoření projektu ASP.NET
 
 1. V sadě Visual Studio přejděte na **Soubor > Nový > Projekt**.
-2. Pro **typ projektu**vyberte **webové**a pak vyberte **webová aplikace ASP.NET (.NET Framework)**.
+2. Pro **typ projektu**vyberte **webové**a pak vyberte **webová aplikace ASP.NET (.NET Framework)** .
 3. Pojmenujte svoji aplikaci a vyberte **vytvořit**.
 4. Vyberte **prázdný** a pak vyberte **MVC** pod **přidat složky a základní odkazy** přidat odkazy na MVC.
 5. Vyberte **Vytvořit**.
@@ -280,7 +280,7 @@ Až budete připraveni kód otestovat, přihlaste se pracovním účtem (Azure A
 
 #### <a name="expected-results"></a>Očekávané výsledky
 
-Po přihlášení uživatele, uživatel je přesměrován na domovskou stránku vašeho webu, což je adresa URL HTTPS, zadaný v informace o registraci vaší aplikace v portálu pro registraci aplikací společnosti Microsoft. Tato stránka nyní zobrazuje *Vítejte, {User}*, odkaz pro odhlášení a odkaz pro zobrazení deklarací identity uživatele. To je odkaz na ověřovací kontroler, který jste vytvořili dříve.
+Po přihlášení uživatele, uživatel je přesměrován na domovskou stránku vašeho webu, což je adresa URL HTTPS, zadaný v informace o registraci vaší aplikace v portálu pro registraci aplikací společnosti Microsoft. Tato stránka nyní zobrazuje *Vítejte, {User}* , odkaz pro odhlášení a odkaz pro zobrazení deklarací identity uživatele. To je odkaz na ověřovací kontroler, který jste vytvořili dříve.
 
 ### <a name="see-users-claims"></a>Zobrazení deklarací identity uživatele
 
@@ -292,7 +292,7 @@ Výběrem odkazu zobrazíte deklarace identity uživatele. Tato akce vás převe
 
 | Vlastnost | Hodnota | Popis |
 |---|---|---|
-| Název | {User Full Name} | Jméno a příjmení uživatele |
+| Name | {User Full Name} | Jméno a příjmení uživatele |
 | Uživatelské jméno | <span>user@domain.com</span> | Uživatelské jméno identifikující přihlášeného uživatele |
 | Subjekt| {Subject} |Řetězec k jednoznačné identifikaci uživatele přihlásit na webu |
 | ID tenanta | {Guid} | Identifikátor *guid*, který jedinečně identifikuje organizaci Azure AD uživatele |

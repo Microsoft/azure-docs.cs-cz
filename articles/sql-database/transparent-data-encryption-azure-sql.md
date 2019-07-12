@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
 ms.date: 04/19/2019
-ms.openlocfilehash: 7066b600cf50df583fbf8e9e674ef17d77b86183
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: dfc48fec948ab0cf3d16a49bb60eb3c274f2864e
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67061388"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67723266"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>Transparentní šifrování dat pro SQL Database a Data Warehouse
 
@@ -33,7 +33,7 @@ SQL Server běžící na virtuálním počítači Azure také můžete použít 
 
 ## <a name="service-managed-transparent-data-encryption"></a>Spravovat službu transparentní šifrování dat
 
-V Azure ve výchozím nastavení transparentní šifrování dat je, že šifrovací klíč databáze je chráněno certifikátem integrovaného serveru. Certifikát integrovaného serveru je jedinečný pro každý server. Pokud je v relaci geografické replikace databáze, primární a geograficky sekundární databáze jsou chráněny primární databáze nadřazeného serveru klíče. Pokud dvě databáze jsou připojené ke stejnému serveru, ale také sdílet stejný certifikát integrované. Microsoft automaticky otočí tyto certifikáty souladu se zásadami zabezpečení interní a je kořenový klíč chráněný přes Microsoft store interní tajného kódu.  Zákazníky můžete ověřovat kompatibilitu databáze SQL s interní bezpečnostním zásadám nezávislého auditu třetích stran sestavy, které jsou k dispozici na [Microsoft Trust Center](https://servicetrust.microsoft.com/).
+V Azure ve výchozím nastavení transparentní šifrování dat je, že šifrovací klíč databáze je chráněno certifikátem integrovaného serveru. Použitý algoritmus šifrování je AES 256 certifikát integrovaného serveru je jedinečný pro každý server. Pokud je v relaci geografické replikace databáze, primární a geograficky sekundární databáze jsou chráněny primární databáze nadřazeného serveru klíče. Pokud dvě databáze jsou připojené ke stejnému serveru, ale také sdílet stejný certifikát integrované.  Microsoft automaticky otočí tyto certifikáty souladu se zásadami zabezpečení interní a je kořenový klíč chráněný přes Microsoft store interní tajného kódu.  Zákazníky můžete ověřovat kompatibilitu databáze SQL s interní bezpečnostním zásadám nezávislého auditu třetích stran sestavy, které jsou k dispozici na [Microsoft Trust Center](https://servicetrust.microsoft.com/).
 
 Microsoft také bezproblémově přesune a spravuje klíče podle potřeby pro geografickou replikaci a obnoví.
 
@@ -93,7 +93,7 @@ Pokud chcete nakonfigurovat transparentní šifrování dat pomocí Powershellu,
 
 Pomocí následujících rutin pro Azure SQL Database a Data Warehouse:
 
-| Rutina | Popis |
+| Rutiny | Popis |
 | --- | --- |
 | [Set-AzSqlDatabaseTransparentDataEncryption](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasetransparentdataencryption) |Povolí nebo zakáže transparentní šifrování dat pro databázi|
 | [Get-AzSqlDatabaseTransparentDataEncryption](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption) |Získá stav šifrování transparentní dat pro databázi |

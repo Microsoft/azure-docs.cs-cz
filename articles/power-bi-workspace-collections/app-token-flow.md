@@ -4,16 +4,16 @@ description: Ověřování a autorizace pomocí kolekcí pracovních prostorů P
 services: power-bi-workspace-collections
 author: rkarlin
 ms.author: rkarlin
-ms.service: power-bi-workspace-collections
+ms.service: power-bi-embedded
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.openlocfilehash: 5fbe08bb9ebc355074a790f7732c9de10eaad859
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 713c56904769c133272db4fb65f8b596ab66804b
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64707102"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672507"
 ---
 # <a name="authenticating-and-authorizing-with-power-bi-workspace-collections"></a>Ověřování a autorizace pomocí kolekcí pracovních prostorů Power BI
 
@@ -144,9 +144,9 @@ Body
 |---|---|---|
 |Vytvoření nové sestavy podle datové sady (v paměti).|Datová sada|Dataset.Read|
 |Vytvoření nové sestavy podle datové sady (v paměti) a uložte sestavu.|Datová sada|* Dataset.Read<br>* Workspace.Report.Create|
-|Zobrazit a prozkoumat nebo upravit (v paměti) existující sestavy. Report.Read znamená Dataset.Read. Report.Read neumožňuje ukládání úprav.|Sestava|Report.Read|
-|Upravit a uložit stávající sestavu.|Sestava|Report.ReadWrite|
-|Uložte kopii sestavy (Uložit jako).|Sestava|* Report.Read<br>* Workspace.Report.Copy|
+|Zobrazit a prozkoumat nebo upravit (v paměti) existující sestavy. Report.Read znamená Dataset.Read. Report.Read neumožňuje ukládání úprav.|Zpráva|Report.Read|
+|Upravit a uložit stávající sestavu.|Zpráva|Report.ReadWrite|
+|Uložte kopii sestavy (Uložit jako).|Zpráva|* Report.Read<br>* Workspace.Report.Copy|
 
 ## <a name="heres-how-the-flow-works"></a>Jak tok funguje
 1. Zkopírování klíče rozhraní API pro vaši aplikaci. Klíče můžete získat **webu Azure portal**.

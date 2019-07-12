@@ -7,19 +7,19 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/21/2018
 ms.author: magattus
-ms.openlocfilehash: 7edf0a9f8d4eb4c01b6d80fd82a1061b6cbb1e35
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 999bffe9650f3d2f2a04dba728a9aa41fa46a6b0
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60324100"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593412"
 ---
 # <a name="using-azure-cdn-with-sas"></a>Používání Azure CDN pomocí SAS
 
@@ -135,7 +135,7 @@ Protože SAS parametry nejsou viditelné pro Azure CDN, Azure CDN nelze změnit 
 
 | Název parametru SAS | Popis |
 | --- | --- |
-| Start | Čas, který Azure CDN získáte přístup k souboru objektu blob. Z důvodu hodin zkreslit (dorazí signál hodiny v různou dobu pro různé součásti), zvolte čas o 15 minut dřívější, pokud chcete asset bude okamžitě k dispozici. |
+| Spustit | Čas, který Azure CDN získáte přístup k souboru objektu blob. Z důvodu hodin zkreslit (dorazí signál hodiny v různou dobu pro různé součásti), zvolte čas o 15 minut dřívější, pokud chcete asset bude okamžitě k dispozici. |
 | End | Doba, po jejímž uplynutí Azure CDN už mít přístup k souboru objektu blob. Dříve soubory uložené do mezipaměti ve službě Azure CDN, jsou stále přístupné. Pokud chcete řídit dobu vypršení platnosti souboru, nastavte čas odpovídající vypršení platnosti tokenu zabezpečení Azure CDN nebo odstranit i asset. |
 | Povolené IP adresy | Volitelné. Pokud používáte **Azure CDN od Verizonu**, tento parametr lze nastavit na rozsahy definované v [Azure CDN od Verizonu rozšíření rozsahy IP adres serveru Edge](/azure/cdn/cdn-pop-list-api). Pokud používáte **Azure CDN od Akamai**, nelze nastavit parametr rozsahy IP, protože nejsou statické IP adresy.|
 | Povolené protokoly | Protokol povolen pro žádost vytvořenou s podpisem SAS účtu. Nastavení protokolu HTTPS se doporučuje.|

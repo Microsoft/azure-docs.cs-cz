@@ -4,7 +4,7 @@ description: Jak používat výhody předplatného sady Visual Studio k nasazen�
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: 91c3880a-cede-44f1-ae25-f8f9f5b6eaa4
 ms.service: virtual-machines-windows
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: f791b17f2729af3efd2dff5d7884a168f8377154
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fcd97b07416526d71d5bee9bc198eb0d912e1c55
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61403057"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67719153"
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>Použití klienta Windows v Azure pro scénáře vývoje/testování
 Můžete použít Windows 7, Windows 8 nebo Windows 10 Enterprise (x64) v Azure pro scénáře vývoje a testování za předpokladu, že máte příslušné předplatné sady Visual Studio (dříve MSDN). Tento článek popisuje, jak požadavky zakládající nárok pro spouštění Windows 7, Windows 8.1, Windows 10 Enterprise v Azure a použití následujících imagí Galerie Azure.
@@ -63,6 +63,6 @@ Můžete také zobrazit ID nabídky z [kartu "Předplatné"](https://account.win
 
 ![Podrobnosti o nabídce ID z portálu účtu Azure](./media/client-images/offer-id-azure-account-portal.png) 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Teď můžete nasadit virtuální počítače pomocí [PowerShell](quick-create-powershell.md), [šablon Resource Manageru](ps-template.md), nebo [sady Visual Studio](../../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
 

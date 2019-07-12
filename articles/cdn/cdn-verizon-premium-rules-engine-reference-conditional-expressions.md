@@ -3,16 +3,16 @@ title: Podmíněné výrazy stroje pravidel Azure CDN od Verizonu Premium | Doku
 description: Referenční dokumentace pro Azure CDN od Verizonu Premium pravidla podmínky shody stroje a funkce.
 services: cdn
 author: mdgattuso
-ms.service: cdn
+ms.service: azure-cdn
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: magattus
-ms.openlocfilehash: c6e49e6fbc0c541ce9a8cd903eb313d61413257c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f790e37ae876c0640d55ebfb51abb43c6a705f04
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66481531"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593225"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-conditional-expressions"></a>Azure CDN od podmíněné výrazy stroje pravidel Verizon Premium
 

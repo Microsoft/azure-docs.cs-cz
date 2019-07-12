@@ -1,6 +1,6 @@
 ---
 title: 'Azure Backup: Monitorování Azure Backup pomocí Azure monitoru'
-description: Monitorování úloh Azure Backup a vytvářet vlastní výstrahy pomocí Azure monitoru
+description: Monitorování úloh Azure Backup a vytvářet vlastní výstrahy pomocí Azure monitoru.
 services: backup
 author: pvrk
 manager: shivamg
@@ -10,261 +10,265 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: pullabhk
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 7c53d8fe0ee5bbfdbe180aa4d18d8c7b7fab29c2
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: e2d4a235737789f2f5852c00218427613db3d558
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295297"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786314"
 ---
-# <a name="monitoring-at-scale-using-azure-monitor"></a>Monitorování ve velkém měřítku pomocí Azure monitoru
+# <a name="monitor-at-scale-by-using-azure-monitor"></a>Monitorování ve velkém měřítku pomocí Azure monitoru
 
-[Integrované monitorování a upozorňování článku](backup-azure-monitoring-built-in-monitor.md) uvedené monitorování a upozorňování v jeden trezor služby Recovery services a která nabízí se bez jakékoli další správu infrastruktury. Integrovaná služba je ale omezený v následujících scénářích.
+Azure Backup poskytuje [integrované monitorování a upozorňování](backup-azure-monitoring-built-in-monitor.md) v trezoru služby Recovery Services. Tyto možnosti jsou k dispozici bez jakékoli další správu infrastruktury. Ale této integrované služby je omezený v následujících scénářích:
 
-- Monitorování dat z více trezorů RS napříč předplatnými
-- Pokud e-mailu není upřednostňovaný oznámení kanálu
-- Pokud uživatelé chtějí upozorněni a pro další scénáře
-- Pokud chcete zobrazit informace z místní komponenty, jako je System Center DPM (SC-DPM) v Azure, který není uveden v [úlohy zálohování](backup-azure-monitoring-built-in-monitor.md#backup-jobs-in-recovery-services-vault) nebo [výstrahy zálohování](backup-azure-monitoring-built-in-monitor.md#backup-alerts-in-recovery-services-vault) portálu.
+- Pokud monitorování dat z více trezorů služby Recovery Services napříč předplatnými
+- Pokud je kanál oznámení upřednostňované *není* e-mailu
+- Pokud uživatelé chtějí upozornění pro další scénáře
+- Pokud chcete zobrazit informace z komponentu v místním, jako je System Center Data Protection Manager v Azure, které na portálu se nezobrazí v [ **úlohy zálohování** ](backup-azure-monitoring-built-in-monitor.md#backup-jobs-in-recovery-services-vault) nebo [  **Výstrahy záloh**](backup-azure-monitoring-built-in-monitor.md#backup-alerts-in-recovery-services-vault)
 
-## <a name="using-log-analytics-workspace"></a>Použití pracovního prostoru Log Analytics
-
-> [!NOTE]
-> Do pracovního prostoru Log Analytics přes nastavení diagnostiky se právě přijímat data ze záloh virtuálních počítačů Azure, MAB Agent, System Center DPM (SC-DPM), zálohování SQL na virtuálních počítačích Azure a zálohování sdílených složek Azure. Podpora pro Microsoft Azure Backup Server (MABS) je již brzy.
-
-Můžeme se využívá k tomu možnosti ze dvou služeb Azure – **nastavení diagnostiky** (k odesílání dat z několika prostředků Azure Resource Manageru k jinému zdroji) a **Log Analytics** (LA - ke generování vlastní upozornění, ve kterém můžete definovat další kanály oznámení pomocí skupiny akcí) pro monitorování ve velkém měřítku. Následující části podrobně popisují, jak používat LA pro monitorování Azure Backup ve velkém měřítku.
-
-### <a name="configuring-diagnostic-settings"></a>Konfigurace nastavení diagnostiky
-
-Prostředek Azure Resource Manageru, jako je Azure Recovery services vault zaznamenává všechny možné informace o naplánované operace a uživatel aktivuje operace jako diagnostická data. Klikněte na "nastavení diagnostiky" v části monitorování a určete cíl pro diagnostická data z trezoru RS.
-
-![Trezor RS nastavení diagnostiky s LA jako cíl](media/backup-azure-monitoring-laworkspace/rs-vault-diagnostic-setting.png)
-
-Pracovní prostor služby LA můžete vybrat z jiného předplatného jako cíl. *Výběrem stejného pracovního prostoru LA pro více trezorů RS můžete monitorovat trezory napříč předplatnými na jednom místě.* Vyberte "AzureBackupReport" jako protokolu kanálu všechny informace do pracovního prostoru LA související s Azure Backup.
-
-> [!IMPORTANT]
-> Po dokončení konfigurace čekat na dokončení počáteční datová oznámení po dobu 24 hodin. Po tomto datu všechny události se nasdílejí, jak je uvedeno v [části četnost](#diagnostic-data-update-frequency).
-
-### <a name="deploying-solution-to-log-analytics-workspace"></a>Nasazení řešení do pracovního prostoru Log Analytics
-
-Jakmile jsou data v prostoru LA [nasazení šablony Githubu](https://azure.microsoft.com/resources/templates/101-backup-oms-monitoring/) na LA k vizualizaci dat. Ujistěte se, že vám poskytnou stejné skupiny prostředků, název pracovního prostoru a umístění pracovního prostoru správně identifikovat pracovní prostor a pak na něj nainstalovat tuto šablonu.
+## <a name="using-log-analytics-workspace"></a>Používání pracovního prostoru Log Analytics
 
 > [!NOTE]
-> Uživatelé, kteří nemají upozornění nebo úlohy zálohování a obnovení v jejich pracovním prostoru LA může zobrazit chyba s kódem "BadArgumentError" na portálu. Uživatelé mohou tuto chybu ignorovat a pokračovat v používání řešení. Po spuštění odpovídající typ dat odesílaných do pracovního prostoru vizualizace, bude odrážet že stejné a uživatelé neuvidí tato chyba už.
+> Do pracovního prostoru Log Analytics přes nastavení diagnostiky se přijímat data ze záloh virtuálních počítačů Azure, Azure Backup agent, System Center Data Protection Manager, zálohování SQL na virtuálních počítačích Azure a zálohování sdílené složky Azure Files. 
 
-### <a name="view-azure-backup-data-using-log-analytics-la"></a>Zobrazení dat Azure Backup pomocí Log Analytics (LA)
+Pokud chcete sledovat ve velkém měřítku, potřebujete možnosti ze dvou služeb Azure. *Nastavení diagnostiky* Neodesílat data z několika prostředků Azure Resource Manageru do jiného prostředku. *Log Analytics* vygeneruje vlastní upozornění, kde můžete použít skupiny akcí k definování dalších kanálů oznámení. 
 
-Po nasazení šablony řešení pro monitorování Azure Backup se zobrazí v oblasti souhrnu pracovního prostoru. Můžete procházet přes
+Následující části podrobně popisují, jak používat službu Log Analytics pro monitorování Azure Backup ve velkém měřítku.
 
-- Azure Monitor -> "Informace" v části "Přehled" a vyberte odpovídající pracovní prostor nebo
-- Pracovní prostory log Analytics -> vyberte prostoru souhrnné části Obecné -> relevantní pracovní prostor.
+### <a name="configure-diagnostic-settings"></a>Konfigurace nastavení diagnostiky
 
-![AzureBackupLAMonitoringTile](media/backup-azure-monitoring-laworkspace/la-azurebackup-azuremonitor-tile.png)
+Prostředky Azure Resource Manageru, jako je například trezor služby Recovery Services zaznamenávejte informace o tom uživatel aktivuje operace a naplánované operace jako diagnostická data. 
 
-Po kliknutí na dlaždici na návrháře šablona se otevře několik grafů týkající se základního monitorování dat z Azure Backup, jako
+V části monitorování zvolte **nastavení diagnostiky** a určete cíl pro trezor služby Recovery Services diagnostická data.
 
-#### <a name="all-backup-jobs"></a>Všechny úlohy zálohování
+![Nastavení diagnostiky trezoru služby Recovery Services, cílení na Log Analytics](media/backup-azure-monitoring-laworkspace/rs-vault-diagnostic-setting.png)
 
-![LABackupJobs](media/backup-azure-monitoring-laworkspace/la-azurebackup-allbackupjobs.png)
-
-#### <a name="restore-jobs"></a>Úlohy obnovení
-
-![LARestoreJobs](media/backup-azure-monitoring-laworkspace/la-azurebackup-restorejobs.png)
-
-#### <a name="inbuilt-azure-backup-alerts-for-azure-resources"></a>Integrované upozornění Azure Backup pro prostředky Azure
-
-![LAInbuiltAzureBackupAlertsForAzureResources](media/backup-azure-monitoring-laworkspace/la-azurebackup-activealerts.png)
-
-#### <a name="inbuilt-azure-backup-alerts-for-on-prem-resources"></a>Integrované upozornění Azure Backup k místním prostředkům
-
-![LAInbuiltAzureBackupAlertsForOnPremResources](media/backup-azure-monitoring-laworkspace/la-azurebackup-activealerts-onprem.png)
-
-#### <a name="active-datasources"></a>Aktivní zdroje dat
-
-![LAActiveBackedUpEntities](media/backup-azure-monitoring-laworkspace/la-azurebackup-activedatasources.png)
-
-#### <a name="rs-vault-cloud-storage"></a>RS Vault Cloud Storage
-
-![LARSVaultCloudStorage](media/backup-azure-monitoring-laworkspace/la-azurebackup-cloudstorage-in-gb.png)
-
-Výše uvedené grafy jsou poskytovány se šablonou a zákazník je můžete upravit nebo přidat další grafy.
+Můžete cílit pracovnímu prostoru Log Analytics z jiného předplatného. K monitorování trezory napříč předplatnými na jednom místě, vyberte stejný pracovní prostor Log Analytics pro více trezorů služby Recovery Services. Na webu channel všechny informace, které souvisí s Azure Backup do pracovního prostoru Log Analytics, vyberte **AzureBackupReport** jako protokolu.
 
 > [!IMPORTANT]
-> Při nasazování šablony v podstatě vytvoří zámek jen pro čtení a je třeba odebrat ji upravit šablonu a uložit. Odebrat zámky, podívejte se v podokně "Zámky" pracovního prostoru Log Analytics v části "Nastavení".
+> Po dokončení konfigurace byste měli počkat po dobu 24 hodin počáteční datová oznámení na dokončení. Po počáteční, který datová oznámení, všechny události se nasdílejí, jak je popsáno dále v tomto článku v [části četnost](#diagnostic-data-update-frequency).
 
-### <a name="create-alerts-using-log-analytics"></a>Vytvoření výstrah pomocí Log Analytics
+### <a name="deploy-a-solution-to-the-log-analytics-workspace"></a>Nasazení řešení do pracovního prostoru Log Analytics
 
-Azure Monitor umožňuje uživatelům vytvářet své vlastní oznámení z pracovního prostoru LA, kde můžete *využití skupin akcí Azure a vyberte váš mechanismus upřednostňované oznámení*. Kliknutím na některé z výše uvedené části "Protokoly" pracovního prostoru LA otevřít grafy ***ve kterém můžete upravit dotazy a vytvářet výstrahy nad nich***.
+Po data jsou v pracovním prostoru Log Analytics [nasazení šablony Githubu](https://azure.microsoft.com/resources/templates/101-backup-oms-monitoring/) ke službě Log Analytics, která bude vizualizovat data. Správně identifikovat pracovní prostor, ujistěte se, že jí přiřadit stejnou skupinu prostředků, název pracovního prostoru a umístění pracovního prostoru. Nainstalujte tuto šablonu v pracovním prostoru.
 
-![LACreateAlerts](media/backup-azure-monitoring-laworkspace/la-azurebackup-customalerts.png)
+> [!NOTE]
+> Pokud nemáte upozornění, úlohy zálohování nebo obnovení úlohy ve vašem pracovním prostoru Log Analytics, může se zobrazit "BadArgumentError" kód chyby: na portálu. Tuto chybu ignorovat a pokračovat v používání řešení. Po odpovídající datový typ spuštění toku do pracovního prostoru, vizualizace bude odrážet stejné a už se nebude zobrazí chyba.
 
-Kliknutím na "Nové pravidlo výstrah" jak je znázorněno výše se otevře obrazovka vytvoření výstrahy Azure Monitor.
+### <a name="view-azure-backup-data-by-using-log-analytics"></a>Zobrazit Azure zálohování – uložená data pomocí Log Analytics
 
-Jak si můžete níže, prostředek je již označen jako pracovního prostoru LA a integraci skupin akce je k dispozici.
+Po nasazení šablony řešení pro monitorování Azure Backup se zobrazí v oblasti souhrnu pracovního prostoru. Přejít na souhrn, proveďte jeden z těchto cest:
 
-![LAAzureBackupCreateAlert](media/backup-azure-monitoring-laworkspace/inkedla-azurebackup-createalert.jpg)
+- **Azure Monitor**: V **Insights** vyberte **Další** a potom vyberte příslušné pracovní prostor.
+- **Pracovní prostory log Analytics**: Vyberte relevantní pracovní prostor a potom v části **Obecné**vyberte **shrnutí pracovního prostoru**.
+
+![Dlaždice monitorování Log Analytics](media/backup-azure-monitoring-laworkspace/la-azurebackup-azuremonitor-tile.png)
+
+Při výběru dlaždice monitorování návrháře šablony otevře řady grafů týkající se základního monitorování dat z Azure Backup. Tady jsou některé z grafů, které se zobrazí:
+
+* Všechny úlohy zálohování
+
+   ![Log Analytics grafů pro úlohy zálohování](media/backup-azure-monitoring-laworkspace/la-azurebackup-allbackupjobs.png)
+
+* Úlohy obnovení
+
+   ![Graf analýzy protokolů pro úlohy obnovení](media/backup-azure-monitoring-laworkspace/la-azurebackup-restorejobs.png)
+
+* Předdefinovaná upozornění Azure Backup pro prostředky Azure
+
+   ![Log Analytics grafu pro předdefinované výstrahy Azure Backup pro prostředky Azure](media/backup-azure-monitoring-laworkspace/la-azurebackup-activealerts.png)
+
+* Předdefinované výstrahy zálohování Azure pro místní prostředky
+
+   ![Log Analytics grafu pro předdefinované výstrahy zálohování Azure pro místní prostředky](media/backup-azure-monitoring-laworkspace/la-azurebackup-activealerts-onprem.png)
+
+* Aktivní zdroje dat.
+
+   ![Graf analýzy protokolů pro aktivní zálohovanou entity](media/backup-azure-monitoring-laworkspace/la-azurebackup-activedatasources.png)
+
+* Cloudové úložiště pro trezor služby Recovery Services
+
+   ![Graf analýzy protokolů pro cloudové úložiště trezor služby Recovery Services](media/backup-azure-monitoring-laworkspace/la-azurebackup-cloudstorage-in-gb.png)
+
+Tyto grafy jsou poskytovány s šablonou. Můžete upravit v grafech nebo pokud potřebujete přidat další grafy.
 
 > [!IMPORTANT]
-> Mějte prosím na paměti, že je k dispozici odpovídající dopad vytvoření tohoto dotazu [tady](https://azure.microsoft.com/pricing/details/monitor/).
+> Při nasazení šablony, kterou vytváříte v podstatě zámek jen pro čtení. Upravit a uložit šablonu, budete muset odebrat zámek. Odebrat zámek v **nastavení** části pracovní prostor Log Analytics na **uzamkne** podokně.
+
+### <a name="create-alerts-by-using-log-analytics"></a>Vytvoření výstrah pomocí Log Analytics
+
+Ve službě Azure Monitor můžete vytvořit vlastní výstrahy v pracovním prostoru Log Analytics. V pracovním prostoru, použijte *skupiny akcí Azure* vyberte váš mechanismus upřednostňované oznámení. 
+
+> [!IMPORTANT]
+> Informace na náklady na vytvoření tohoto dotazu naleznete v tématu [ceny Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/).
+
+Vyberte libovolné grafy, otevřete **protokoly** části pracovní prostor Log Analytics. V **protokoly** části, upravte dotazy a vytvářet upozornění na ně.
+
+![Vytvořit upozornění v pracovním prostoru Log Analytics](media/backup-azure-monitoring-laworkspace/la-azurebackup-customalerts.png)
+
+Když vyberete **nové pravidlo upozornění**, otevře stránka vytvoření výstrahy Azure Monitor, jak je znázorněno na následujícím obrázku. Zde je prostředek již označen jako pracovní prostor Log Analytics a je k dispozici integrace skupiny akcí.
+
+![Na stránce vytváření upozornění Log Analytics](media/backup-azure-monitoring-laworkspace/inkedla-azurebackup-createalert.jpg)
 
 #### <a name="alert-condition"></a>Podmínku upozornění
 
-Klíčovým aspektem je spouštěcí podmínka výstrahy. Kliknutím na "Podmínku" se automaticky načtou dotaz Kusto na obrazovce 'Logs' jak je znázorněno níže, a můžete upravit tak, aby odpovídal vašemu scénáři. Několik ukázkových dotazů Kusto jsou součástí [níže v části](#sample-kusto-queries).
+Charakteristickým výstrahy je jeho spouštěcí podmínkou. Vyberte **podmínku** automaticky načíst dotaz Kusto na **protokoly** stránce, jak je znázorněno na následujícím obrázku. Tady můžete upravit podmínku tak, aby odpovídala vašim potřebám. Další informace najdete v tématu [Kusto ukázkové dotazy](#sample-kusto-queries).
 
-![LAAzureBackupAlertCondition](media/backup-azure-monitoring-laworkspace/la-azurebackup-alertlogic.png)
+![Nastavení podmínku upozornění](media/backup-azure-monitoring-laworkspace/la-azurebackup-alertlogic.png)
 
-V případě potřeby upravit dotaz Kusto, vyberte správné prahovou hodnotu (která se rozhodnout, kdy bude vyvoláno upozornění), správné období (časový interval pro niž je proveden dotaz) a četnost. Příklad: Pokud je prahová hodnota větší než 0, doba je 5 minut a četnost je 5 minut, pak toto pravidlo je přeložen jako "Spustit dotaz pro posledních 5 minut každých 5 minut a pokud počet výsledků, které je větší než 0, upozornit mě zprávou skupině vybranou akci"
+V případě potřeby můžete upravit dotaz Kusto. Zvolte prahovou hodnotu, tečka a četnost. Prahová hodnota určuje, kdy bude vyvolána výstraha. Období je okno čas spuštění dotazu. Například pokud je prahová hodnota větší než 0, období je 5 minut a četnost je 5 minut, pak toto pravidlo spustí dotaz každých 5 minut, kontrola předchozí 5 minut. Pokud počet výsledků, které je větší než 0, zobrazí se oznámení prostřednictvím skupiny vybrané akce.
 
-#### <a name="action-group-integration"></a>Integrace skupiny akcí
+#### <a name="alert-action-groups"></a>Akce upozornění skupiny
 
-Skupiny akcí zadejte kanály oznámení, která je k dispozici pro uživatele. Kliknutím na "Vytvořit nový" v části "Skupiny akcí" část zobrazuje seznam dostupných mechanismy oznámení.
+Pomocí skupiny akcí můžete určit kanál oznámení. V části zobrazíte mechanismy oznámení o dostupnosti **skupiny akcí**vyberte **vytvořit nový**.
 
-![LAAzureBackupNewActionGroup](media/backup-azure-monitoring-laworkspace/LA-AzureBackup-ActionGroup.png)
+![Oznámení o dostupnosti mechanismů v okně "Přidat skupinu akcí"](media/backup-azure-monitoring-laworkspace/LA-AzureBackup-ActionGroup.png)
 
-Další informace o [oznámení z pracovního prostoru LA](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log) a asi [skupiny akcí](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups) dokumentaci ke službě Azure Monitor.
+Splňujete všechny výstrahy a monitorování požadavky od Log Analytics, samostatně nebo Log Analytics můžete použít k doplnění integrovaná oznámení.
 
-Proto můžete splňovat všechny výstrahy a monitorování požadavky z LA samostatně nebo ho použít jako doplňkové techniku, která umožňuje oznámení integrované mechanismy.
+Další informace najdete v tématu [vytvoření, zobrazení a Správa upozornění protokolů pomocí Azure monitoru](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log) a [vytvořit a spravovat skupiny akcí na webu Azure Portal](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups).
 
 ### <a name="sample-kusto-queries"></a>Ukázkové dotazy Kusto
 
-Výchozí grafy by vám poskytlo Kusto dotazy pro základní scénáře, ve které můžete vytvářet výstrahy. Můžete také upravit, abyste získali data, která chcete na problém upozorněni. Tady vám nabízíme několik ukázkových dotazů Kusto, které můžete vložit v okně "Protokoly" a pak vytvořte výstrahu na dotazu.
+Výchozích grafů získáte Kusto dotazy pro základní scénáře, ve které můžete vytvářet výstrahy. Můžete také upravit dotazy k získání dat, že který chcete být upozorněni na. Vložte následující ukázkové dotazy Kusto v **protokoly** stránce a pak vytvořte upozornění na dotazy:
 
-#### <a name="all-successful-backup-jobs"></a>Všechny úspěšné úlohy zálohování
+* Všechny úspěšné úlohy zálohování
 
-````Kusto
-AzureDiagnostics
-| where Category == "AzureBackupReport"
-| where SchemaVersion_s == "V2"
-| where OperationName == "Job" and JobOperation_s == "Backup"
-| where JobStatus_s == "Completed"
-````
-
-#### <a name="all-failed-backup-jobs"></a>Všechny neúspěšné úlohy zálohování
-
-````Kusto
-AzureDiagnostics
-| where Category == "AzureBackupReport"
-| where SchemaVersion_s == "V2"
-| where OperationName == "Job" and JobOperation_s == "Backup"
-| where JobStatus_s == "Failed"
-````
-
-#### <a name="all-successful-azure-vm-backup-jobs"></a>Všechny úspěšné úlohy zálohování virtuálních počítačů Azure
-
-````Kusto
-AzureDiagnostics
-| where Category == "AzureBackupReport"
-| where SchemaVersion_s == "V2"
-| extend JobOperationSubType_s = columnifexists("JobOperationSubType_s", "")
-| where OperationName == "Job" and JobOperation_s == "Backup" and JobStatus_s == "Completed" and JobOperationSubType_s != "Log" and JobOperationSubType_s != "Recovery point_Log"
-| join kind=inner
-(
+    ````Kusto
     AzureDiagnostics
     | where Category == "AzureBackupReport"
-    | where OperationName == "BackupItem"
     | where SchemaVersion_s == "V2"
-    | where BackupItemType_s == "VM" and BackupManagementType_s == "IaaSVM"
-    | distinct BackupItemUniqueId_s, BackupItemFriendlyName_s
-    | project BackupItemUniqueId_s , BackupItemFriendlyName_s
-)
-on BackupItemUniqueId_s
-| extend Vault= Resource
-| project-away Resource
-````
+    | where OperationName == "Job" and JobOperation_s == "Backup"
+    | where JobStatus_s == "Completed"
+    ````
+    
+* Všechny neúspěšné úlohy zálohování
 
-#### <a name="all-successful-sql-log-backup-jobs"></a>Všechny úspěšné úlohy zálohování protokolu SQL
-
-````Kusto
-AzureDiagnostics
-| where Category == "AzureBackupReport"
-| where SchemaVersion_s == "V2"
-| extend JobOperationSubType_s = columnifexists("JobOperationSubType_s", "")
-| where OperationName == "Job" and JobOperation_s == "Backup" and JobStatus_s == "Completed" and JobOperationSubType_s == "Log"
-| join kind=inner
-(
+    ````Kusto
     AzureDiagnostics
     | where Category == "AzureBackupReport"
-    | where OperationName == "BackupItem"
     | where SchemaVersion_s == "V2"
-    | where BackupItemType_s == "SQLDataBase" and BackupManagementType_s == "AzureWorkload"
-    | distinct BackupItemUniqueId_s, BackupItemFriendlyName_s
-    | project BackupItemUniqueId_s , BackupItemFriendlyName_s
-)
-on BackupItemUniqueId_s
-| extend Vault= Resource
-| project-away Resource
-````
+    | where OperationName == "Job" and JobOperation_s == "Backup"
+    | where JobStatus_s == "Failed"
+    ````
+    
+* Všechny úspěšné úlohy zálohování virtuálních počítačů Azure
 
-#### <a name="all-successful-mab-agent-backup-jobs"></a>Všechny úspěšné úlohy zálohování agenta MAB
-
-````Kusto
-AzureDiagnostics
-| where Category == "AzureBackupReport"
-| where SchemaVersion_s == "V2"
-| extend JobOperationSubType_s = columnifexists("JobOperationSubType_s", "")
-| where OperationName == "Job" and JobOperation_s == "Backup" and JobStatus_s == "Completed" and JobOperationSubType_s != "Log" and JobOperationSubType_s != "Recovery point_Log"
-| join kind=inner
-(
+    ````Kusto
     AzureDiagnostics
     | where Category == "AzureBackupReport"
-    | where OperationName == "BackupItem"
     | where SchemaVersion_s == "V2"
-    | where BackupItemType_s == "FileFolder" and BackupManagementType_s == "MAB"
-    | distinct BackupItemUniqueId_s, BackupItemFriendlyName_s
-    | project BackupItemUniqueId_s , BackupItemFriendlyName_s
-)
-on BackupItemUniqueId_s
-| extend Vault= Resource
-| project-away Resource
-````
+    | extend JobOperationSubType_s = columnifexists("JobOperationSubType_s", "")
+    | where OperationName == "Job" and JobOperation_s == "Backup" and JobStatus_s == "Completed" and JobOperationSubType_s != "Log" and JobOperationSubType_s != "Recovery point_Log"
+    | join kind=inner
+    (
+        AzureDiagnostics
+        | where Category == "AzureBackupReport"
+        | where OperationName == "BackupItem"
+        | where SchemaVersion_s == "V2"
+        | where BackupItemType_s == "VM" and BackupManagementType_s == "IaaSVM"
+        | distinct BackupItemUniqueId_s, BackupItemFriendlyName_s
+        | project BackupItemUniqueId_s , BackupItemFriendlyName_s
+    )
+    on BackupItemUniqueId_s
+    | extend Vault= Resource
+    | project-away Resource
+    ````
+
+* Všechny úspěšné protokolu zálohování úloh SQL
+
+    ````Kusto
+    AzureDiagnostics
+    | where Category == "AzureBackupReport"
+    | where SchemaVersion_s == "V2"
+    | extend JobOperationSubType_s = columnifexists("JobOperationSubType_s", "")
+    | where OperationName == "Job" and JobOperation_s == "Backup" and JobStatus_s == "Completed" and JobOperationSubType_s == "Log"
+    | join kind=inner
+    (
+        AzureDiagnostics
+        | where Category == "AzureBackupReport"
+        | where OperationName == "BackupItem"
+        | where SchemaVersion_s == "V2"
+        | where BackupItemType_s == "SQLDataBase" and BackupManagementType_s == "AzureWorkload"
+        | distinct BackupItemUniqueId_s, BackupItemFriendlyName_s
+        | project BackupItemUniqueId_s , BackupItemFriendlyName_s
+    )
+    on BackupItemUniqueId_s
+    | extend Vault= Resource
+    | project-away Resource
+    ````
+
+* Všechny úspěšné úlohy agenta Azure Backup
+
+    ````Kusto
+    AzureDiagnostics
+    | where Category == "AzureBackupReport"
+    | where SchemaVersion_s == "V2"
+    | extend JobOperationSubType_s = columnifexists("JobOperationSubType_s", "")
+    | where OperationName == "Job" and JobOperation_s == "Backup" and JobStatus_s == "Completed" and JobOperationSubType_s != "Log" and JobOperationSubType_s != "Recovery point_Log"
+    | join kind=inner
+    (
+        AzureDiagnostics
+        | where Category == "AzureBackupReport"
+        | where OperationName == "BackupItem"
+        | where SchemaVersion_s == "V2"
+        | where BackupItemType_s == "FileFolder" and BackupManagementType_s == "MAB"
+        | distinct BackupItemUniqueId_s, BackupItemFriendlyName_s
+        | project BackupItemUniqueId_s , BackupItemFriendlyName_s
+    )
+    on BackupItemUniqueId_s
+    | extend Vault= Resource
+    | project-away Resource
+    ````
 
 ### <a name="diagnostic-data-update-frequency"></a>Četnost aktualizace diagnostických dat
 
-Diagnostická data z trezoru je přijímat do pracovního prostoru LA s některých zpoždění. Každé události dorazí do pracovního prostoru LA ***s prodlení 20 – 30 minut po odesílána z trezoru RS.***
+Diagnostická data z trezoru je přijímat do pracovního prostoru Log Analytics s některých zpoždění. Každé události dorazí na pracovní prostor Log Analytics *20 až 30 minut* po odesílána z trezoru služby Recovery Services. Tady jsou další podrobnosti o je zpoždění:
 
-- Předdefinované výstrahy služby backup (v rámci všech řešení) se nasdílejí ihned po jejich vytvoření. Což znamená, že jsou obvykle zobrazena v pracovním prostoru LA po prodlení 20 – 30 minut.
-- Úlohy zálohování ad hoc a obnovení úloh (v rámci všech řešení) se nasdílejí co nejdříve, jakmile ***jsou dokončeny***.
-- Naplánované úlohy zálohování z všechna řešení (s výjimkou SQL backup), jakmile brzy vložení ***jsou dokončeny***.
-- Pro zálohování SQL protože budeme mít zálohy protokolu každých 15 minut, pro všechny dokončené naplánovaných úloh zálohování, včetně protokolů, informace se dávce a vloženo každých 6 hodin.
-- Všechny informace, jako je například zálohovaná položka, zásada, body obnovení, úložiště atd. ve všech řešení se nasdílejí **alespoň jednou za den.**
-- Změna v konfiguraci zálohování, jako je například změna úpravy zásad atd. zásad spustí zablokovaly všechny související informace o zálohování.
+- Ve všech řešení jsou vloženy předdefinované výstrahy služby zálohování ihned po jejich vytvoření. Proto se obvykle zobrazují v pracovním prostoru Log Analytics po 20 až 30 minut.
+- Ve všech řešení, ad hoc úlohy zálohování a obnovení úlohy se nasdílejí co nejdříve, jakmile *Dokončit*.
+- U všech řešení s výjimkou zálohování SQL, naplánované úlohy zálohování se nasdílejí co nejdříve, jakmile *Dokončit*.
+- Pro zálohování SQL protože zálohy protokolu každých 15 minut, může dojít, informace o všech dokončených naplánovaných úloh zálohování, včetně protokolů, je dávce a vloženo každých 6 hodin.
+- Ve všech řešení, další informace, jako je zálohovaná položka, zásada, body obnovení, úložiště a tak dále se vloží alespoň *jednou za den.*
+- Změna v konfiguraci zálohování (jako je například změna zásad nebo úprava zásad) spustí zablokovaly všechny související informace o zálohování.
 
-## <a name="using-rs-vaults-activity-logs"></a>Pomocí trezoru RS protokoly aktivit
-
-Protokoly aktivit můžete také pro události, například úspěšnosti zálohování, které dostanete oznámení.
+## <a name="using-the-recovery-services-vaults-activity-logs"></a>Pomocí trezoru služby Recovery Services protokolů aktivit
 
 > [!CAUTION]
-> **Upozorňujeme, že to platí pouze pro zálohy virtuálních počítačů Azure.** Toto nelze použít pro ostatní řešení, jako je Azure Backup Agent záloh SQL v Azure, Azure souborů atd.
+> Následující postup se vztahuje pouze na *záloh virtuálních počítačů Azure.* Nelze použít tyto kroky pro řešení, jako je Azure Backup agent, záloh SQL v Azure nebo Azure Files.
 
-### <a name="sign-in-into-azure-portal"></a>Přihlásit k webu Azure portal
+Protokoly aktivit můžete také pro události, například úspěšnosti zálohování, které dostanete oznámení. Pokud chcete začít, postupujte podle těchto kroků:
 
-Přihlaste se na web Azure Portal a přejít k příslušné trezor služeb zotavení Azure a klikněte na část "Protokol aktivit" ve vlastnostech.
+1. Přihlaste se na web Azure Portal.
+1. Otevřete příslušné trezoru služby Recovery Services. 
+1. Ve vlastnostech v trezoru, otevřete **protokolu aktivit** oddílu.
 
-### <a name="identify-appropriate-log-and-create-alert"></a>Určit příslušný protokol a vytvořit upozornění
+K identifikaci příslušný protokol a vytvořte výstrahu:
 
-Použijte filtry, které je znázorněno na následujícím obrázku ověřit, jestli jste obdrželi, protokoly aktivit pro úspěšné zálohování. Chcete-li zobrazit záznamy časový interval odpovídajícím způsobem měnit.
+1. Ověřte, že jste dostali protokolů aktivit pro zálohování bude probíhat úspěšně, použití filtrů je znázorněno na následujícím obrázku. Změnit **Timespan** hodnoty podle potřeby zobrazit záznamy.
 
-![Protokoly aktivit pro zálohy virtuálních počítačů Azure](media/backup-azure-monitoring-laworkspace/activitylogs-azurebackup-vmbackups.png)
+   ![Filtrování protokolů aktivit pro zálohy virtuálních počítačů Azure](media/backup-azure-monitoring-laworkspace/activitylogs-azurebackup-vmbackups.png)
 
-Klikněte na název operace se zobrazí, operace a související podrobnosti o.
+1. Vyberte název operace zobrazíte relevantní podrobnosti.
+1. Vyberte **nové pravidlo upozornění** otevřít **vytvořit pravidlo** stránky. 
+1. Vytvořit upozornění podle postupu v [vytvoření, zobrazení a Správa upozornění protokolu aktivit s využitím Azure monitoru](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log).
 
-![Nové pravidlo upozornění](media/backup-azure-monitoring-laworkspace/new-alert-rule.png)
+   ![Nové pravidlo upozornění](media/backup-azure-monitoring-laworkspace/new-alert-rule.png)
 
-Klikněte na tlačítko **nové pravidlo upozornění** otevřít **vytvořit pravidlo** obrazovky, můžete tady vytvořit upozornění, pomocí kroků popsaných v tomto [článku](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log).
+Zde je prostředek samotný trezor služby Recovery Services. U všech trezorů, ve kterých chcete být upozorněni v protokolech aktivit musí opakujte stejný postup. Podmínka nebudou mít prahovou hodnotu, tečkou ani frekvence, protože tato výstraha se zakládá na událostech. Poté, co se vygeneruje protokol aktivit relevantní, je vyvolána výstraha.
 
-Zde je prostředek samotný trezor služby Recovery Services a proto je nutné opakovat stejnou akci pro všechny tyto trezory, ve kterých chcete oznámení prostřednictvím protokolů aktivit. Podmínka nebude mít žádné prahové hodnoty, období, frekvence vzhledem k tomu, že toto je upozornění založeného na událostech. Poté, co se vygeneruje protokol aktivit relevantní, je vyvolána výstraha.
+## <a name="using-log-analytics-to-monitor-at-scale"></a>Používat službu Log Analytics k monitorování ve velkém měřítku
 
-## <a name="recommendation"></a>Doporučení
+Můžete zobrazit všechny výstrahy vytvořené z protokolů aktivit a pracovní prostory Log Analytics ve službě Azure Monitor. Stačí otevřít **výstrahy** podokna na levé straně.
 
-***Všechny výstrahy vytvořené na základě protokolů aktivit a pracovní prostory LA lze zobrazit ve službě Azure Monitor v podokně "Upozornění" vlevo.***
+I když můžete dostávat oznámení v protokolech aktivit, důrazně doporučujeme použití Log Analytics, spíše než protokoly aktivit monitorování ve velkém měřítku. Tady jsou důvody:
 
-Oznámení přes protokoly aktivit můžete využít, ***služby Azure Backup se důrazně doporučuje použít LA pro monitorování na škálování a ne protokolů aktivit z následujících důvodů***.
+- **Omezené scénáře**: Oznámení v protokolech aktivit se vztahují pouze na záloh virtuálních počítačů Azure. Oznámení musíte nastavit pro každý trezor služby Recovery Services.
+- **Podle definice**: Naplánované zálohování aktivity nevejde se nejnovější definice protokolů aktivit. Místo toho souladu s [diagnostické protokoly](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview#what-you-can-do-with-diagnostic-logs). Toto uspořádání způsobí, že neočekávané účinky data, která prochází přes aktivity přihlášení kanálu změn.
+- **Problémy s kanálem protokolu aktivit**: Protokoly aktivit, které budou přijímat z Azure Backup v trezorech služby Recovery Services, postupujte podle nového modelu. Tato změna ovlivní bohužel generování protokoly aktivit v Azure Government, Azure Germany a Azure China 21Vianet. Pokud uživatelé z těchto cloudových služeb vytvořit nebo konfigurovat žádné výstrahy na základě protokolů aktivit ve službě Azure Monitor, nejsou aktivované výstrahy. Ve všech veřejných oblastech Azure, pokud uživatel [do pracovního prostoru Log Analytics shromažďuje protokoly aktivit služby Recovery Services](https://docs.microsoft.com/azure/azure-monitor/platform/collect-activity-logs), tyto protokoly se nezobrazí.
 
-- **Omezeném počtu scénářů:** Vztahuje se jenom zálohy virtuálních počítačů Azure a je potřeba zopakovat pro každý trezor RS.
-- **Podle definice:** Naplánované zálohování aktivity nevejde se nejnovější definice protokolů aktivit a v souladu s [diagnostické protokoly](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview#what-you-can-do-with-diagnostic-logs). Tato vést k neočekávaným dopad při změně dat – čerpání přes kanál protokolu aktivit, jak níže.
-- **Problémy s kanálem protokolu činnosti:** Jsme přesunuli na nový model čerpání protokoly aktivit z Azure Backup na trezory služby Recovery Services. Přesunutí bohužel má vliv na generování protokolů aktivit v suverénních Cloudech Azure. Pokud uživatelé suverénní Cloud Azure vytvořili/nakonfigurované všechny výstrahy na základě protokolů aktivit prostřednictvím služby Azure Monitor, nebylo aktivované. Ve všech veřejných oblastech Azure, pokud uživatel je shromažďování protokolů aktivit služby obnovení do pracovního prostoru analýzy protokolů jak už bylo zmíněno [tady](https://docs.microsoft.com/azure/azure-monitor/platform/collect-activity-logs), neobjevila by se také tyto protokoly.
-
-Proto se důrazně doporučujeme používat pracovní prostor analýzy protokolů pro monitorování a upozorňování v různém rozsahu pro všechny Azure Backup chráněných pracovních vytížení.
+Použití pracovního prostoru Log Analytics pro monitorování a upozorňování v různém rozsahu pro všechny úlohy, které jsou chráněné službou Azure Backup.
 
 ## <a name="next-steps"></a>Další postup
 
-- Odkazovat na [datový model Log analytics](backup-azure-log-analytics-data-model.md) k vytvoření vlastních dotazů.
+Vytvoření vlastních dotazů najdete v tématu [datový model Log Analytics](backup-azure-log-analytics-data-model.md).

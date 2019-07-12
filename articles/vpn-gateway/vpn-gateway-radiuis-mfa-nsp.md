@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 4e11b1bc16f874f892288f9677a71023f483de7c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8e10151cd117a3400893f94559b2c9892de9f3c7
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60458082"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67666216"
 ---
 # <a name="integrate-azure-vpn-gateway-radius-authentication-with-nps-server-for-multi-factor-authentication"></a>Integrace ověření služby RADIUS brány Azure VPN se serverem NPS pro ověřování službou Multi-Factor Authentication 
 
@@ -52,18 +52,18 @@ Jak zapnout MFA, uživatelé musí být v Azure Active Directory (Azure AD), kte
 ### <a name="step-2-configure-the-nps-for-azure-mfa"></a>Krok 2 konfigurace serveru NPS pro Azure MFA
 
 1. Na serveru NPS [nainstalovat rozšíření NPS pro Azure MFA](../active-directory/authentication/howto-mfa-nps-extension.md#install-the-nps-extension).
-2. Otevřete konzolu poskytovatelů síťových služeb, klikněte pravým tlačítkem na **RADUIS klienti**a pak vyberte **nový**. Vytvoření klienta RADUIS tak, že zadáte následující nastavení:
+2. Otevřete konzoly serveru NPS, klikněte pravým tlačítkem na **klientů RADIUS**a pak vyberte **nový**. Vytvořte klienta RADIUS zadáním následující nastavení:
 
     - **Popisný název**: Zadejte libovolný název.
     - **Adresa (IP nebo DNS)** : Zadejte podsíť brány, kterou jste vytvořili v kroku 1.
     - **Sdílený tajný klíč**: Zadejte jakékoli tajný klíč a nezapomeňte ho pro pozdější použití.
 
-      ![Obrázek nastavení RADUIS klientů](./media/vpn-gateway-radiuis-mfa-nsp/create-radius-client1.png)
+      ![Obrázek o nastavení klienta protokolu RADIUS](./media/vpn-gateway-radiuis-mfa-nsp/create-radius-client1.png)
 
  
 3.  Na **Upřesnit** kartu, nastavte název dodavatele **RADIUS Standard** a ujistěte se, že **další možnosti** není zaškrtnuté políčko.
 
-    ![Obrázek o pokročilé nastavení RADUIS klienta](./media/vpn-gateway-radiuis-mfa-nsp/create-radius-client2.png)
+    ![Obrázek o pokročilé nastavení klienta protokolu RADIUS](./media/vpn-gateway-radiuis-mfa-nsp/create-radius-client2.png)
 
 4. Přejděte na **zásady** > **zásady sítě**, dvakrát klikněte na panel **připojení k serveru Microsoft Routing a vzdálený přístup** zásad, vyberte  **Udělení přístupu**a potom klikněte na tlačítko **OK**.
 

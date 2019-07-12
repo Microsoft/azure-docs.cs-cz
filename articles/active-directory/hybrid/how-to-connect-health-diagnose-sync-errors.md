@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
-ms.author: zhiweiw
+ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbdeef7c591221756ad206bf2f3dd78ac3d26c4f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b1fd5f9746299d72ed58a3209013822505b19b56
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60349912"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67702557"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>Diagnostikovat a opravovat chyby synchronizace duplicitním atributem
 
@@ -67,7 +67,7 @@ Postupujte podle kroků na webu Azure Portal a zúžit podrobnosti o chybě sync
 Na webu Azure Portal proveďte několik kroků k identifikaci konkrétní opravitelné scénáře:  
 1.  Zkontrolujte, **diagnostikovat stav** sloupce. Stav se zobrazí, pokud je možný způsob, jak opravit chybu při synchronizaci přímo ze služby Azure Active Directory. Jinými slovy, řešení problémů s tok existuje, který můžete zúžit případě chyba a potenciálně ho opravit.
 
-| Status | Co znamená? |
+| Stav | Co znamená? |
 | ------------------ | -----------------|
 | Nezahájeno | Jste nenavštívili tento proces diagnostiku. V závislosti na výsledek diagnostiky je potenciální způsob, jak opravit chybu synchronizace přímo z portálu. |
 | Vyžaduje se Ruční oprava | Chyba nevejde kritéria dostupných oprav z portálu. Buď konfliktní typy objektů nejsou uživatelů, nebo jste už provedli postup diagnostiky a nemusí se řešit oprava nebyl k dispozici z portálu. V takovém případě oprava ze strany místní je stále jedno z řešení. [Přečtěte si víc o místní opravy](https://support.microsoft.com/help/2647098). | 
@@ -107,8 +107,8 @@ Pro **osamocený objekt scénář**, pouze jednoho uživatele **Joe Johnsonem** 
 ### <a name="do-both-of-these-accounts-belong-to-the-same-user"></a>Obě tyto účty patří do stejného uživatele?
 Tento dotaz kontroluje příchozí konfliktní uživatele a existující objekt uživatele ve službě Azure AD, pokud chcete zobrazit, pokud patří do stejného uživatele.  
 1. Konfliktní objekt je nově synchronizovat do Azure Active Directory. Porovnání atributů objektů:  
-   - Zobrazované jméno
-   - Hlavní název uživatele (UPN)
+   - Zobrazovaný název
+   - Hlavní název uživatele
    - ID objektu
 2. Pokud Azure AD nepodaří porovnat, zkontrolujte, zda služba Active Directory obsahuje objekty pomocí zadaných **názvy userPrincipalName**. Odpověď **ne** Pokud zjistíte, jak.
 

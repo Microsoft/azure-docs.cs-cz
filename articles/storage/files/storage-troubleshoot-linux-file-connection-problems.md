@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 97f737c8d1228bd03baf59f2ebe830f715241299
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 232b4ca2ee4f3137069ed155cc82a5c5e3251420
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449844"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807277"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Řešení potíží s Azure Files v Linuxu
 
@@ -94,19 +94,30 @@ Používá se kvóta 2 000 otevřenými popisovači v jednom souboru. Až budete
 
 Snižte počet souběžných otevřených popisovačů ukončením některé obslužné rutiny a pak zkuste operaci zopakovat.
 
+Chcete-li zobrazit otevřených popisovačů pro sdílenou složku, adresář nebo soubor, použijte [Get-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) rutiny Powershellu.  
+
+Chcete-li zavřít otevřených popisovačů pro sdílenou složku, adresář nebo soubor, použijte [zavřít AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) rutiny Powershellu.
+
+> [!Note]  
+> Rutiny Get-AzStorageFileHandle a zavřít AzStorageFileHandle jsou součástí Az modul PowerShell verze 2.4 nebo vyšší. Pokud chcete nainstalovat nejnovější modul Powershellu Az, naleznete v tématu [instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
+
 <a id="slowfilecopying"></a>
 ## <a name="slow-file-copying-to-and-from-azure-files-in-linux"></a>Zpomalit kopírování souborů do a z Azure Files v Linuxu
 
 - Pokud nemáte konkrétní požadavek minimální velikost vstupně-výstupních operací, doporučujeme použít 1 MiB jako velikost vstupně-výstupní operace pro zajištění optimálního výkonu.
-- Pokud znáte konečné velikosti souboru, který jste rozšířit pomocí zápisy a software nebude vyzkoušejte problémy s kompatibilitou při nepsaná tail na tento soubor obsahuje nulami, nastavte velikost souboru předem místo provedení při každém zápisu rozšiřování zápisu.
 - Použijte metodu pravé kopie:
     - Použití [AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) pro všechny přenosy mezi dvěma sdílenými složkami souborů.
-    - Pomocí paralelní cp může zlepšit rychlost kopírování, počet vláken, závisí na případu použití a úloh. Tento příklad používá šest: `find * -type f | parallel --will-cite -j 6 cp {} /mntpremium/ &`.
+    - Pomocí paralelní prohlášení cp nebo dd může zlepšit rychlost kopírování, počet vláken, závisí na případu použití a úloh. Následující příklady používají šest: 
+    - Příklad CP (cp použije výchozí velikost bloku systému souborů jako velikost deduplikačního bloku dat): `find * -type f | parallel --will-cite -j 6 cp {} /mntpremium/ &`.
+    - Příklad dd (Tento příkaz explicitně nastaví velikost deduplikačního bloku dat na 1 MiB): `find * -type f | parallel --will-cite-j 6 dd if={} of=/mnt/share/{} bs=1M`
     - Open source nástroje třetí strany, jako:
         - [Paralelní GNU](https://www.gnu.org/software/parallel/).
         - [Fpart](https://github.com/martymac/fpart) – seřadí soubory a balíčky do oddílů.
         - [Fpsync](https://github.com/martymac/fpart/blob/master/tools/fpsync) -využívá Fpart a nástroj pro kopírování spustit víc instancí k migraci dat z src_dir do dst_url.
         - [Více](https://github.com/pkolano/mutil) -vícevláknové cp a md5sum podle GNU coreutils.
+- Nastavení velikosti souboru předem, místo provedení při každém zápisu rozšiřování zápisu, pomáhá zlepšit rychlost kopie ve scénářích, kde se označuje velikost souboru. Pokud rozšíření potřeba zápisy se jim vyhnout, můžete nastavit velikost souborů omezená nějakou cíl s `truncate - size <size><file>` příkazu. Potom `dd if=<source> of=<target> bs=1M conv=notrunc`příkaz zkopíruje zdrojový soubor bez nutnosti opakovaně aktualizovat velikost cílového souboru. Například můžete nastavit velikost cílového souboru pro každý soubor, který chcete zkopírovat (Předpokládejme sdílené složky se připojí pod/mnt/sdílené složky):
+    - `$ for i in `` find * -type f``; do truncate --size ``stat -c%s $i`` /mnt/share/$i; done`
+    - a - zkopírujte soubory bez rozšíření zápisy paralelně: `$find * -type f | parallel -j6 dd if={} of =/mnt/share/{} bs=1M conv=notrunc`
 
 <a id="error115"></a>
 ## <a name="mount-error115-operation-now-in-progress-when-you-mount-azure-files-by-using-smb-30"></a>"Připojit error(115): Nyní probíhá operace"Když připojíte soubory Azure pomocí protokolu SMB 3.0
@@ -140,6 +151,23 @@ Přejděte do účtu úložiště, kde se nachází sdílená složka Azure, kli
 ### <a name="solution-for-cause-2"></a>Řešení příčiny 2
 
 Ověřte, že virtuální sítě a pravidel brány firewall jsou správně nakonfigurovány v účtu úložiště. Pokud chcete otestovat, pokud virtuální síť nebo brána firewall pravidla je příčinou problému, dočasně změnit nastavení pro účet úložiště na **povolit přístup ze všech sítí**. Další informace najdete v tématu [virtuální sítí a bran firewall nakonfigurovat služby Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security).
+
+<a id="open-handles"></a>
+## <a name="unable-to-delete-a-file-or-directory-in-an-azure-file-share"></a>Nepovedlo se odstranit soubor nebo adresář, do sdílené složky Azure
+
+### <a name="cause"></a>Příčina
+Tomuto problému obvykle dochází, pokud soubor nebo adresář má otevřený popisovač. 
+
+### <a name="solution"></a>Řešení
+
+Pokud klienti SMB nemusela uzavřít všechny otevřené popisovače a problém přetrvává, postupujte takto:
+
+- Použití [Get-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) rutiny Powershellu, chcete-li zobrazit otevřených popisovačů.
+
+- Použití [zavřít AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) rutinu Powershellu zavřete otevřené popisovače. 
+
+> [!Note]  
+> Rutiny Get-AzStorageFileHandle a zavřít AzStorageFileHandle jsou součástí Az modul PowerShell verze 2.4 nebo vyšší. Pokud chcete nainstalovat nejnovější modul Powershellu Az, naleznete v tématu [instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
 
 <a id="slowperformance"></a>
 ## <a name="slow-performance-on-an-azure-file-share-mounted-on-a-linux-vm"></a>Nízký výkon na sdílenou složku Azure připojit na virtuálním počítači s Linuxem
@@ -183,7 +211,7 @@ Na platformách Linux/Unix **cp -p** příkaz selže, pokud různí uživatelé 
 
 Příznak force **f** v COPYFILE výsledkem provádění **cp -p -f** v systému Unix. Tento příkaz také selže zachovat časové razítko souboru, kterou nevlastníte.
 
-### <a name="workaround"></a>Alternativní řešení:
+### <a name="workaround"></a>Alternativní řešení
 
 Použijte uživatelský účet úložiště pro kopírování souborů:
 
@@ -191,40 +219,6 @@ Použijte uživatelský účet úložiště pro kopírování souborů:
 - `Passwd [storage account name]`
 - `Su [storage account name]`
 - `Cp -p filename.txt /share`
-
-## <a name="cannot-connect-to-or-mount-an-azure-file-share"></a>Nelze se připojit k nebo připojení sdílené složky Azure
-
-### <a name="cause"></a>Příčina
-
-Mezi běžné příčiny tohoto problému patří:
-
-- Používáte klientem nekompatibilní distribuce Linuxu. Doporučujeme použít následující Linuxových distribucí pro připojení sdílené složky Azure:
-
-    |   | SMB 2.1 <br>(Připojení na virtuálních počítačích v rámci stejné oblasti Azure) | SMB 3.0 <br>(Připojení z místního a mezi oblastmi) |
-    | --- | :---: | :---: |
-    | Ubuntu Server | 14.04+ | 16.04+ |
-    | RHEL | 7+ | 7.5+ |
-    | CentOS | 7+ |  7.5+ |
-    | Debian | 8+ |   |
-    | openSUSE | 13.2+ | 42.3+ |
-    | SUSE Linux Enterprise Server | 12 | 12 SP3+ |
-
-- V klientském počítači nejsou nainstalované nástroje CIFS (cifs utils).
-- Minimální verze protokolu SMB/CIFS, 2.1, není nainstalována na straně klienta.
-- Šifrování SMB 3.0 se nepodporuje na straně klienta. Šifrování SMB 3.0 je k dispozici v Ubuntu 16.4 a novějších verzích, společně s operačním systémem SUSE 12.3 a novějších verzích. Ostatní distribuce vyžadují jádra 4.11 a novějších verzích.
-- Pokoušíte se připojit k účtu úložiště přes port TCP 445, což není podporováno.
-- Pokoušíte se připojit ke sdílené složky Azure z virtuálního počítače Azure a virtuální počítač není ve stejné oblasti jako účet úložiště.
-- Pokud [vyžadovat zabezpečený přenos]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) pro účet úložiště je povolené nastavení, soubory Azure vám umožní pouze připojení využívající šifrování protokolu SMB 3.0.
-
-### <a name="solution"></a>Řešení
-
-Chcete-li problém vyřešit, použijte [řešení potíží s nástrojem pro soubory Azure chyby připojení v Linuxu](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089). Tento nástroj:
-
-* Umožňuje ověření klienta, spouštění prostředí.
-* Zjistí nekompatibilní klienta konfigurace, která může způsobit selhání přístupu pro soubory Azure.
-* Poskytuje doporučený postup na místním řešení.
-* Shromažďuje trasování diagnostiky.
-
 
 ## <a name="ls-cannot-access-ltpathgt-inputoutput-error"></a>ls: Nelze získat přístup k '&lt;cesta&gt;": Chyba vstupu/výstupu
 
@@ -291,12 +285,12 @@ Tento problém opětovným připojením v linuxového jádra je opravená jako s
 
 Však nemusí být tyto změny přenést ještě do Linuxových distribucí. Tato oprava a ostatní opravy opětovné připojení najdete v [minimální doporučené verze s odpovídající možností připojení (SMB verze 2.1 nebo SMB verze 3.0)](storage-how-to-use-files-linux.md#minimum-recommended-versions-with-corresponding-mount-capabilities-smb-version-21-vs-smb-version-30) část [použít soubory Azure s Linuxem](storage-how-to-use-files-linux.md)článku. Tato oprava můžete získat díky upgradu na některou z těchto verzí doporučené jádra.
 
-### <a name="workaround"></a>Alternativní řešení:
+### <a name="workaround"></a>Alternativní řešení
 
 Tento problém můžete vyřešit tak, že zadáte pevné připojení. Pevné připojení vynutí klient čekat, dokud se naváže spojení nebo dokud explicitně je přerušeno. Můžete ji chcete-li zabránit chybám z důvodu vypršení časových limitů sítě. Toto řešení však může způsobit neomezené čekání. Buďte připraveni zastavit připojení podle potřeby.
 
 Pokud nelze upgradovat na nejnovější verze jádra, můžete tento problém vyřešit tím, že soubor do sdílené složky Azure, který píšete na každých 30 sekund nebo méně. Toto musí být operace zápisu, jako je například přepisování vytvořené nebo upravené datum na tento soubor. V opačném případě se mohou zobrazovat výsledky uložené v mezipaměti, a operace nemusí aktivovat obnovení připojení.
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktujte podporu.
+## <a name="need-help-contact-support"></a>Potřebujete pomoct? Kontaktujte podporu.
 
 Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) získat rychlé vyřešení problému.

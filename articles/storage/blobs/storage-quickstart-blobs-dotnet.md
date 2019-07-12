@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 06/20/2019
 ms.author: mhopkins
 ms.subservice: blobs
-ms.openlocfilehash: c5e9981c6854ff778775631f1d671189830e564b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 70afb39be696b660d3f85ae0c4b2c108bceb318c
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67435756"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67625686"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-for-net"></a>Rychlý start: Azure Blob storage Klientská knihovna pro .NET
 
@@ -179,7 +179,7 @@ Použijte následující třídy .NET pro interakci s těmito prostředky:
 * [CloudStorageAccount](/dotnet/api/microsoft.azure.storage.cloudstorageaccount): **CloudStorageAccount** třída reprezentuje svůj účet úložiště Azure. Tato třída slouží k autorizaci přístupu k Blob storage pomocí přístupové klíče vašeho účtu.
 * [CloudBlobClient](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient): **CloudBlobClient** třída poskytuje bod přístup ke službě objektů Blob ve vašem kódu.
 * [CloudBlobContainer](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer): **CloudBlobContainer** třída reprezentuje kontejner objektů blob ve vašem kódu.
-* [CloudBlockBlob](//dotnet/api/microsoft.azure.storage.blob.cloudblockblob): **CloudBlockBlob** objekt představuje objekt blob bloku v kódu. Objekty blob bloku se skládají z bloků dat, které můžete spravovat jednotlivě.
+* [CloudBlockBlob](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob): **CloudBlockBlob** objekt představuje objekt blob bloku v kódu. Objekty blob bloku se skládají z bloků dat, které můžete spravovat jednotlivě.
 
 ## <a name="code-examples"></a>Příklady kódu
 

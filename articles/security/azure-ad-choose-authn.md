@@ -4,17 +4,17 @@ description: Tento průvodce pomůže CEOs, vedoucí, CISOs, Chief Identity arch
 services: active-directory
 keywords: ''
 author: martincoetzer
-ms.author: martincoetzer
+ms.author: martinco
 ms.date: 04/12/2018
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
-ms.openlocfilehash: 26fca12060363f4ad05baaeceb6fb800a0d76216
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: c0faeb211860391c93563200f509d60876a504b9
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449272"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786698"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Vyberte metodu správné ověřování pro vaše řešení hybridní identity Azure Active Directory 
 
@@ -94,7 +94,7 @@ Podrobnosti o rozhodnutí otázky:
 
 * **Pokročilé scénáře**. Pokud se rozhodnete organizace, je možné přehledy na základě identit pomocí Azure AD Identity Protection sestavy s Azure AD Premium P2. Příkladem je sestava uniklými přihlašovacími údaji. Má Windows Hello pro firmy [specifické požadavky při použití synchronizace hodnot hash hesel](https://docs.microsoft.com/windows/access-protection/hello-for-business/hello-identity-verification). [Azure AD Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-password-sync) požadovat synchronizaci hodnot hash hesel uživatelů zřizování pomocí svých firemních přihlašovacích údajů ve spravované doméně.
 
-    Organizace, které vyžadují vícefaktorové ověřování se synchronizace hodnot hash hesel, musíte použít vícefaktorové ověřování Azure AD nebo [vlastní ovládací prvky podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/conditional-access/controls#custom-controls). Třetí strany nebo místně metody vícefaktorového ověřování, které spoléhá na federační nelze použít ty organizace.
+    Organizace, které vyžadují vícefaktorové ověřování se synchronizace hodnot hash hesel, musíte použít vícefaktorové ověřování Azure AD nebo [vlastní ovládací prvky podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/conditional-access/controls#custom-controls-preview). Třetí strany nebo místně metody vícefaktorového ověřování, které spoléhá na federační nelze použít ty organizace.
 
 > [!NOTE]
 > Podmíněný přístup Azure AD vyžadují [Azure AD Premium P1](https://azure.microsoft.com/pricing/details/active-directory/) licence.
@@ -118,7 +118,7 @@ Odkazovat na [implementace synchronizace hodnot hash hesel](https://docs.microso
 
 * **Pokročilé scénáře**. Předávací ověřování vynucuje zásady místního účtu při přihlášení. Například je odepřen přístup při uzamčení účtu místní uživatel stav je zakázán, nebo [vypršení platnosti hesla](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-faq#what-happens-if-my-users-password-has-expired-and-they-try-to-sign-in-by-using-pass-through-authentication) nebo spadá mimo dobu, kdy uživatel může přihlásit. 
 
-    Organizace, které vyžadují vícefaktorové ověřování pomocí předávacího ověřování, musíte použít Azure Multi-Factor Authentication (MFA) nebo [vlastní ovládací prvky podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/conditional-access/controls#custom-controls). Třetí strany nebo místně metody vícefaktorového ověřování, která závisí na federační nelze použít ty organizace. Pokročilé funkce vyžadují, synchronizaci hodnot hash hesel je nasazený, jestli zvolíte předávací ověřování. Příkladem je sestava uniklými přihlašovacími údaji služby Identity Protection.
+    Organizace, které vyžadují vícefaktorové ověřování pomocí předávacího ověřování, musíte použít Azure Multi-Factor Authentication (MFA) nebo [vlastní ovládací prvky podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/conditional-access/controls#custom-controls-preview). Třetí strany nebo místně metody vícefaktorového ověřování, která závisí na federační nelze použít ty organizace. Pokročilé funkce vyžadují, synchronizaci hodnot hash hesel je nasazený, jestli zvolíte předávací ověřování. Příkladem je sestava uniklými přihlašovacími údaji služby Identity Protection.
 
 * **Kontinuita podnikových procesů**. Doporučujeme vám, že nasadíte dva agenti velmi předávací ověřování. Tyto funkce jsou kromě první agenta na server Azure AD Connect. Tato další nasazení zajišťuje vysokou dostupnost požadavků na ověření. Až budete mít tři agenty nasazení, jeden agent může stále selhat při jiného agenta je mimo provoz kvůli údržbě. 
 
@@ -177,7 +177,7 @@ Následující diagramy popisují základní architektura služby komponent pot�
 |Posouzení|Synchronizace hodnot hash hesel a bezproblémového jednotného přihlašování|Předávací ověřování a bezproblémové jednotné přihlašování|Federace se službou AD FS|
 |:-----|:-----|:-----|:-----|
 |Pokud ověření proběhne?|V cloudu|V cloudu po serveru exchange zabezpečené heslo ověření pomocí místního ověřování agenta|Lokálně|
-|Jaké jsou požadavky na místní server nad rámec systému zřizování: Azure AD Connect?|Žádný|Jeden server pro každý další ověřovací agent|Dva nebo víc serverů služby AD FS<br><br>Dva nebo víc serverů WAP v hraniční/DMZ sítě|
+|Jaké jsou požadavky na místní server nad rámec systému zřizování: Azure AD Connect?|Žádné|Jeden server pro každý další ověřovací agent|Dva nebo víc serverů služby AD FS<br><br>Dva nebo víc serverů WAP v hraniční/DMZ sítě|
 |Jaké jsou požadavky na místní Internet a sítí nad rámec zřizování systému?|Žádný|[Odchozí internetový přístup](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-quick-start) ze serverů spuštěných agentů ověřování|[Příchozí přístup k Internetu](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-requirements) pro servery WAP v hraniční síti<br><br>Příchozí síťový přístup k serverům AD FS z servery WAP v hraniční síti<br><br>Vyrovnávání zatížení sítě|
 |Existuje požadavek na certifikát SSL?|Ne|Ne|Ano|
 |Je k dispozici řešení pro monitorování stavu?|Nepožaduje se|Stav agenta poskytované [centra pro správu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/hybrid/tshoot-connect-pass-through-authentication)|[Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-adfs)|

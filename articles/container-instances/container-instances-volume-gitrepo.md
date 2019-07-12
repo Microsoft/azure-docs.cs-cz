@@ -7,19 +7,19 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 06/15/2018
 ms.author: danlep
-ms.openlocfilehash: 70593bffbf30b3a0c0978e56c2af1a856a22f2ec
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 86f8c099061cd3b75b77330c567f34dea2b34928
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60563015"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657602"
 ---
 # <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>Připojit svazek gitRepo ve službě Azure Container Instances
 
 Zjistěte, jak připojit *gitRepo* svazku naklonujte úložiště Git do instancí kontejneru.
 
 > [!NOTE]
-> Připojení *gitRepo* svazek je momentálně omezené jenom na Linuxové kontejnery. Pracujeme na tom, aby všechny funkce byly dostupné i pro kontejnery Windows. Aktuální rozdíly pro tyto platformy najdete v tématu věnovaném [kvótám a dostupnosti oblastí pro Azure Container Instances](container-instances-quotas.md).
+> Připojení *gitRepo* svazek je momentálně omezené jenom na Linuxové kontejnery. Pracujeme na všechny funkce byly do kontejnerů Windows, můžete najít aktuální rozdíly pro tyto platformy v [přehled](container-instances-overview.md#linux-and-windows-containers).
 
 ## <a name="gitrepo-volume"></a>gitRepo svazku
 
@@ -27,7 +27,7 @@ Zjistěte, jak připojit *gitRepo* svazku naklonujte úložiště Git do instanc
 
 Když připojíte *gitRepo* svazku, můžete nastavit tři vlastnosti konfigurace svazku:
 
-| Vlastnost | Požaduje se | Popis |
+| Vlastnost | Požadováno | Popis |
 | -------- | -------- | ----------- |
 | `repository` | Ano | Úplnou adresu URL, včetně `http://` nebo `https://`, ke klonování úložiště Git.|
 | `directory` | Ne | Adresář, do kterého by měl klonovat úložiště. Cesta nesmí obsahovat ani začínat "`..`".  Pokud zadáte "`.`", úložiště se naklonovalo do adresáře svazku. V opačném případě naklonování úložiště Git do podadresáře v adresáři svazek se zadaným názvem. |
@@ -35,9 +35,9 @@ Když připojíte *gitRepo* svazku, můžete nastavit tři vlastnosti konfigurac
 
 ## <a name="mount-gitrepo-volume-azure-cli"></a>GitRepo připojení svazku: Azure CLI
 
-Připojení svazku gitRepo při nasazování instancí kontejnerů s [rozhraní příkazového řádku Azure](/cli/azure), poskytují `--gitrepo-url` a `--gitrepo-mount-path` parametrů [az container vytvořit] [ az-container-create] příkazu. Volitelně můžete zadat adresář na svazku naklonovat do (`--gitrepo-dir`) a hodnota hash zápisu revize ke klonování (`--gitrepo-revision`).
+Připojení svazku gitRepo při nasazování instancí kontejnerů s [rozhraní příkazového řádku Azure](/cli/azure), poskytují `--gitrepo-url` a `--gitrepo-mount-path` parametry se mají [az container vytvořit][az-container-create] příkazu. Volitelně můžete zadat adresář na svazku naklonovat do (`--gitrepo-dir`) a hodnota hash zápisu revize ke klonování (`--gitrepo-revision`).
 
-Příkaz v tomto příkladu duplicity Microsoft [aci-helloworld] [ aci-helloworld] ukázkové aplikace do `/mnt/aci-helloworld` v instanci kontejneru:
+Příkaz v tomto příkladu duplicity Microsoft [aci-helloworld][aci-helloworld] ukázkové aplikace do `/mnt/aci-helloworld` v instanci kontejneru:
 
 ```azurecli-interactive
 az container create \
@@ -50,7 +50,7 @@ az container create \
     --gitrepo-mount-path /mnt/aci-helloworld
 ```
 
-Pokud chcete ověřit, gitRepo svazek byl připojen, spusťte prostředí v kontejneru s [az container exec] [ az-container-exec] a výpis adresáře:
+Pokud chcete ověřit, gitRepo svazek byl připojen, spusťte prostředí v kontejneru s [az container exec][az-container-exec] a výpis adresáře:
 
 ```console
 $ az container exec --resource-group myResourceGroup --name hellogitrepo --exec-command /bin/sh

@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/24/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6fceee819762e10809a94f72d944e7625cb7e67c
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 49b8554f6064f036d4305cf7a5c1450c2f18c48d
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478555"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798482"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Správa účtů služby Automation spustit jako pro Azure
 
@@ -45,7 +45,7 @@ Existují dva typy účtů spustit jako:
 
 Vytvořit nebo aktualizovat účet Spustit jako, musí mít specifické oprávnění a oprávnění. Globální správce ve službě Azure Active Directory a vlastníka předplatného může dokončení všech úloh. V situaci, kdy máte oddělení povinností následující tabulka uvádí seznam úkolů, ekvivalentní rutinu a potřebná oprávnění:
 
-|Úkol|Rutina  |Minimální oprávnění  |Pokud nastavíte oprávnění|
+|Úloha|Rutiny  |Minimální oprávnění  |Pokud nastavíte oprávnění|
 |---|---------|---------|---|
 |Vytvoření aplikace Azure AD|[New-AzureRmADApplication](/powershell/module/azurerm.resources/new-azurermadapplication)     | Role pro vývojáře aplikací<sup>1</sup>        |[Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Domů > Azure Active Directory > Registrace aplikací |
 |Přidání přihlašovacích údajů k aplikaci.|[New-AzureRmADAppCredential](/powershell/module/AzureRM.Resources/New-AzureRmADAppCredential)     | Správce aplikace nebo globální správce<sup>1</sup>         |[Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Domů > Azure Active Directory > Registrace aplikací|
@@ -104,7 +104,7 @@ Tento skript PowerShellu zahrnuje podporu následujících konfigurací:
 
 1. Uložte následující skript do počítače. V tomto příkladu ho uložte s názvem *New-RunAsAccount.ps1*.
 
-   Tento skript využívá více rutiny Azure Resource Manageru k vytváření prostředků. Následující tabulka uvádí rutiny a jejich potřebná oprávnění.
+   Tento skript využívá více rutiny Azure Resource Manageru k vytváření prostředků. Předchozí [oprávnění](#permissions) tabulka uvádí rutiny a jejich potřebná oprávnění.
 
     ```powershell
     #Requires -RunAsAdministrator
@@ -370,13 +370,35 @@ Pokud chcete certifikát obnovit, postupujte takto:
 
 ## <a name="limiting-run-as-account-permissions"></a>Omezení oprávnění účtu spustit jako
 
-K řízení cílení služby automation s prostředky ve službě Azure Automation, účet Spustit jako ve výchozím nastavení je povoleno oprávněním přispěvatele v předplatném. Pokud potřebujete omezit, co můžete dělat instančního objektu RunAs, můžete odebrat účet z role přispěvatele k předplatnému a přidat jako přispěvatelé do skupiny prostředků, kterou chcete zadat.
+Pokud chcete řídit cílení služby automation s prostředky v Azure, můžete spustit [AutomationRunAsAccountRoleAssignments.ps1 aktualizace](https://aka.ms/AA5hug8) skript v galerii prostředí PowerShell, chcete-li změnit váš existující účet Spustit jako instančního objektu pro Vytvoření a použití definice vlastních rolí. Tato role bude mít oprávnění ke všem prostředkům kromě [služby Key Vault](https://docs.microsoft.com/azure/key-vault/). 
 
-Na webu Azure Portal, vyberte **předplatná** a zvolte předplatné účtu Automation. Vyberte **řízení přístupu (IAM)** a pak vyberte **přiřazení rolí** kartu. Hledání pro instanční objekt pro svůj účet Automation (vypadá jako \<AutomationAccountName\>_unique identifikátor). Vyberte účet a klikněte na tlačítko **odebrat** odebrat z předplatného.
+> [!IMPORTANT]
+> Po spuštění `Update-AutomationRunAsAccountRoleAssignments.ps1` skriptů, sady runbook, které přístup k trezoru klíčů pomocí účtů spustit jako už nebude fungovat. Měli byste zkontrolovat sady runbook ve vašem účtu pro volání do Azure Key Vaultu.
+>
+> Umožňuje přístup k trezoru klíčů pomocí runbooků Azure Automation je třeba [přidat účet Spustit jako s oprávněními pro trezor klíčů](#add-permissions-to-key-vault).
 
-![Přispěvatelé předplatného](media/manage-runas-account/automation-account-remove-subscription.png)
+Pokud potřebujete omezit, co instančního objektu RunAs můžete dělat dál, můžete přidat další typy prostředků, aby `NotActions` definice vlastních rolí. Následující příklad omezuje přístup k `Microsoft.Compute`. Pokud chcete přidat tuto hodnotu na **NotActions** definice role této role nebudou moct dostat k jakýmkoliv prostředkům výpočetní prostředky. Další informace o definicích rolí najdete v tématu [pochopení definic rolí pro prostředky Azure](../role-based-access-control/role-definitions.md).
 
-Přidání instančního objektu do skupiny prostředků, vyberte skupinu prostředků v Azure portal a vyberte **řízení přístupu (IAM)** . Vyberte **přidat přiřazení role**, tím se otevře **přidat přiřazení role** stránky. Pro **Role**vyberte **Přispěvatel**. V **vyberte** textového pole zadejte název objektu služby pro účet Spustit jako a vyberte ho ze seznamu. Kliknutím na **Uložit** uložte změny. Proveďte tyto kroky pro skupiny prostředků, kterou chcete přidělit Azure Automation spustit jako službu objektu zabezpečení přístup k.
+```powershell
+$roleDefinition = Get-AzureRmRoleDefinition -Name 'Automation RunAs Contributor'
+$roleDefinition.NotActions.Add("Microsoft.Compute/*")
+$roleDefinition | Set-AzureRMRoleDefinition
+```
+
+K určení, zda je objekt služby používá účet Spustit jako v **Přispěvatel** nebo definice vlastních rolí, přejděte na svůj účet Automation a v části **nastavení účtu**vyberte **spustit jako účty** > **účet Spustit jako**. V části **Role** najdete definice role, která se používá. 
+
+[![](media/manage-runas-account/verify-role.png "Ověření účtu spustit jako role")](media/manage-runas-account/verify-role-expanded.png#lightbox)
+
+K určení definice role, použít účty služby Automation spustit jako pro více předplatných nebo účty služby Automation, můžete použít [kontrola AutomationRunAsAccountRoleAssignments.ps1](https://aka.ms/AA5hug5) skript v galerii prostředí PowerShell.
+
+### <a name="add-permissions-to-key-vault"></a>Přidání oprávnění ke Key Vault
+
+Pokud chcete povolit službě Azure Automation pro správu služby Key Vault a váš účet Spustit jako pro instanční objekt je pomocí definice vlastních rolí, musíte provést další kroky, chcete-li povolit toto chování:
+
+* Udělit oprávnění ke službě Key Vault
+* Nastavit zásady přístupu
+
+Můžete použít [rozšířit AutomationRunAsAccountRoleAssignmentToKeyVault.ps1](https://aka.ms/AA5hugb) skript v galerii prostředí PowerShell poskytnout oprávnění účtu spustit jako k trezoru klíčů, nebo navštívit [udělit přístup aplikace k trezoru klíčů ](../key-vault/key-vault-group-permissions-for-apps.md) podrobné informace o nastavení oprávnění pro trezor klíčů.
 
 ## <a name="misconfiguration"></a>Chybná konfigurace
 

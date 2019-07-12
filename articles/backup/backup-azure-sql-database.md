@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: raynew
-ms.openlocfilehash: 5dbdeeba68ae75069b61bd6dc069279ec3c5e5de
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 8e7e5d871fa1bb557de4e6fce22658115bf0fe94
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443010"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67806981"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Informace o zálohování SQL Serverů ve virtuálních počítačích Azure
 
@@ -48,7 +48,7 @@ Než začnete, ověřte, níže:
 **Podporované nasazení** | Virtuální počítače Azure Marketplace SQL a mimo Marketplace (ručně nainstalovat SQL Server) se podporují virtuální počítače.
 **Podporované zeměpisných oblastech** | Austrálie – jihovýchod (ASE), Východní Austrálie (AE) <br> Brazílie – jih (BRS)<br> Kanada – střed (CNC), Kanada – východ (CE)<br> Jihovýchodní Asie (SEA), východní Asie (EA) <br> USA – východ (EUS), východní USA 2 (EUS2), střed USA – západ (WCUS), USA – západ (WUS); Západní USA 2 (WUS 2) – sever (NCUS) střed USA střed USA (CUS) střed USA – Jih (SCUS) <br> India Central (INC), India South (INS) <br> Japonsko – východ (JPE), Japonsko – západ (JPW) <br> Korea – střed (KRC), Korea – Jih (KRS) <br> Severní Evropa (NE), západní Evropa <br> Velká Británie – Jih (UKS), Velká Británie – západ (UKW)
 **Podporované operační systémy** | Windows Server 2016, Windows Server 2012 R2, Windows Server 2012<br/><br/> Linux se momentálně nepodporuje.
-**Podporované verze systému SQL Server** | SQL Server 2017; SQL Server 2016, SQL Server 2014, SQL Server 2012.<br/><br/> Enterprise, Standard, Web, Developer, Express.
+**Podporované verze systému SQL Server** | SQL Server 2017 jako podrobné [tady](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017), SQL Server 2016 a aktualizace Service packu, jak je uvedeno [tady](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack), SQL Server 2014, SQL Server 2012.<br/><br/> Enterprise, Standard, Web, Developer, Express.
 **Podporované verze rozhraní .NET** | Rozhraní .NET framework 4.5.2 a vyšších nainstalovala do virtuálního počítače
 
 ### <a name="support-for-sql-server-2008-and-sql-server-2008-r2"></a>Podpora pro SQL Server 2008 a SQL Server 2008 R2
@@ -95,7 +95,7 @@ Zálohy jsou prováděny z určitého uzlu (primární nebo sekundární), v zá
     --- | ---
     Úplná | Primární
     Rozdílové | Primární
-    Protokol |  Primární
+    protokol |  Primární
     Úplné copy-Only |  Primární
 
 - **Předvolby zálohování: Jenom sekundární**
@@ -104,7 +104,7 @@ Zálohy jsou prováděny z určitého uzlu (primární nebo sekundární), v zá
 --- | ---
 Úplná | Primární
 Rozdílové | Primární
-Protokol |  Sekundární
+protokol |  Sekundární
 Úplné copy-Only |  Sekundární
 
 - **Předvolby zálohování: Sekundární**
@@ -113,7 +113,7 @@ Protokol |  Sekundární
 --- | ---
 Úplná | Primární
 Rozdílové | Primární
-Protokol |  Sekundární
+protokol |  Sekundární
 Úplné copy-Only |  Sekundární
 
 - **Žádná předvolba zálohování**
@@ -122,7 +122,7 @@ Protokol |  Sekundární
 --- | ---
 Úplná | Primární
 Rozdílové | Primární
-Protokol |  Sekundární
+protokol |  Sekundární
 Úplné copy-Only |  Sekundární
 
 ## <a name="set-vm-permissions"></a>Nastavit oprávnění pro virtuální počítač

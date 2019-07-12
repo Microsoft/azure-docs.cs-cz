@@ -11,19 +11,19 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/29/2017
 ms.author: bwren
-ms.openlocfilehash: c3732dd2fa87b00eec38f88ab828605b33567235
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 46a4544b86648ee99a751d4793013f6104d1d9df
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60396515"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807034"
 ---
 # <a name="automate-azure-monitor-log-processes-with-the-connector-for-microsoft-flow"></a>Automatizace procesů Azure Monitor protokolu pomocí konektoru pro Microsoft Flow
 [Microsoft Flow](https://ms.flow.microsoft.com) můžete vytvářet automatizované pracovní postupy pomocí stovek akce pro širokou škálu služeb. Výstup z jedné akce můžete použít jako vstup do druhé umožňuje vytvářet integrace mezi různými službami.  Azure Log Analytics connector pro Microsoft Flow umožňují vytvářet pracovní postupy, které obsahují data načíst pomocí dotazů na protokoly z pracovního prostoru Log Analytics ve službě Azure Monitor.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-Například můžete použít Microsoft Flow používat LAzure monitorování protokolu data v e-mailové oznámení z Office 365, vytvořit chybu ve službě Azure DevOps nebo publikovat zprávu Slack.  Pracovní postup můžete aktivovat podle jednoduchého plánu nebo z některé akce propojené služby, například při přijetí e-mailu nebo tweet.  
+Například můžete použít Microsoft Flow používat Azure Monitor protokolu data v e-mailové oznámení z Office 365, vytvořit chybu ve službě Azure DevOps nebo publikovat zprávu Slack.  Pracovní postup můžete aktivovat podle jednoduchého plánu nebo z některé akce propojené služby, například při přijetí e-mailu nebo tweet.  
 
 Kurz v tomto článku se dozvíte, jak vytvořit tok, který automaticky odesílá výsledky dotazu protokolu Azure Monitor e-mailem, pouze jeden příklad použití konektoru Log Analytics v Microsoft Flow. 
 

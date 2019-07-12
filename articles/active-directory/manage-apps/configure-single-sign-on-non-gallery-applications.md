@@ -12,12 +12,12 @@ ms.date: 05/08/2019
 ms.author: celested
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95b7cbcf4e485dc93d49b9559dcb7d0d4f597ebe
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: a72cb7bc7feeba984d568a0465d4f23a494496e8
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67550351"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807653"
 ---
 # <a name="configure-single-sign-on-to-non-gallery-applications-in-microsoft-identity-platform"></a>Nakonfigurovat jednotné přihlašování do aplikace mimo galerii v platforma identit Microsoft
 
@@ -50,13 +50,14 @@ K registraci aplikací s použitím všechny ostatní typy [podporované mechani
 K připojení neuvedené aplikace pomocí šablony integrace aplikace, proveďte tyto kroky:
 
 1. Přihlaste se k [portálu Azure Active Directory](https://aad.portal.azure.com/) pomocí účtu Microsoft identity platform správce.
-2. Vyberte **podnikové aplikace** > **novou aplikaci**.
-3. (Volitelné, ale doporučené) V **přidat z Galerie** vyhledávací pole, zadejte zobrazovaný název aplikace. Pokud se daná aplikace se zobrazí ve výsledcích hledání, vyberte ho a přeskočit zbývající část tohoto postupu.
-4. Vyberte **aplikace mimo galerii**. **Přidat vlastní aplikaci** se zobrazí stránka.
+1. Vyberte **podnikové aplikace** > **novou aplikaci**.
+1. (Volitelné, ale doporučené) V **přidat z Galerie** vyhledávací pole, zadejte zobrazovaný název aplikace. Pokud se daná aplikace se zobrazí ve výsledcích hledání, vyberte ho a přeskočit zbývající část tohoto postupu.
+1. Vyberte **aplikace mimo galerii**. **Přidat vlastní aplikaci** se zobrazí stránka.
 
-   ![Přidání aplikace](./media/configure-single-sign-on-non-gallery-applications/add-your-own-application.png)
-5. Zadejte zobrazovaný název pro novou aplikaci.
-6. Vyberte **Přidat**.
+   ![Ukazuje přidání stránky aplikace](./media/configure-single-sign-on-non-gallery-applications/add-your-own-application.png)
+
+1. Zadejte zobrazovaný název pro novou aplikaci.
+1. Vyberte **Přidat**.
 
 Tak, že přidáte aplikaci tak, poskytují předem integrovaných aplikací fungují na podobném principu obrazovku k dispozici. Nejprve vyberte **jednotného přihlašování** z postranního panelu aplikace. Na další stránku (**vybrat jedinou metodu přihlašování**) nabízí možnosti pro konfiguraci jednotného přihlašování:
 
@@ -64,7 +65,7 @@ Tak, že přidáte aplikaci tak, poskytují předem integrovaných aplikací fun
 - **Založené na heslech**
 - **Propojené**
 
-![Vyberte metodu jednotné přihlašování](./media/configure-single-sign-on-non-gallery-applications/select-a-single-sign-on-method.png)
+![Ukazuje vyberte stránku jednotné přihlašování – metoda](./media/configure-single-sign-on-non-gallery-applications/select-a-single-sign-on-method.png)
 
 Další informace o těchto možnostech najdete v následující části tohoto článku.
 
@@ -72,7 +73,7 @@ Další informace o těchto možnostech najdete v následující části tohoto 
 
 Vyberte **SAML** možnost nakonfigurovat ověřování pro aplikaci na základě SAML. (Tato možnost vyžaduje, aby podporoval aplikace SAML 2.0.) **Nastavte si jednotné přihlašování pomocí SAML** se zobrazí stránka.
 
-![Nastavení jednotného přihlašování pomocí SAML](./media/configure-single-sign-on-non-gallery-applications/set-up-single-sign-on-with-saml.png)
+![Zobrazuje nastavení jednotného přihlašování pomocí SAML, stránce](./media/configure-single-sign-on-non-gallery-applications/set-up-single-sign-on-with-saml.png)
 
 Tato stránka obsahuje pět různých položek:
 
@@ -90,7 +91,7 @@ Nyní můžete shromážděte informace o tom, jak používat funkce SAML aplika
 
 Nastavení Azure AD, přejít na **základní konfiguraci SAML** nadpis a vyberte jeho **upravit** ikonu (tužky). Můžete ručně zadat hodnoty nebo nahrát soubor metadat a extrahovat hodnotu pole.
 
-![Základní konfigurace SAML](./media/configure-single-sign-on-non-gallery-applications/basic-saml-configuration.png)
+![Ukazuje, na stránce konfigurace základní SAML](./media/configure-single-sign-on-non-gallery-applications/basic-saml-configuration.png)
 
 Následující dvě pole jsou požadovány:
 
@@ -141,7 +142,7 @@ K zobrazení nebo úpravám deklarací identity odesílají v tokenu SAML pro ap
 
 - Přejděte **atributy uživatele a deklarace identity** nadpis a vyberte **upravit** ikonu. **Atributy uživatele a deklarace identity** se zobrazí stránka.
 
-![Atributy uživatele a deklarace identity](./media/configure-single-sign-on-non-gallery-applications/user-attributes-and-claims.png)
+![Zobrazuje stránku atributech a deklaracích identit uživatelů](./media/configure-single-sign-on-non-gallery-applications/user-attributes-and-claims.png)
 
 Je třeba upravit deklarací identity vystavených v tokenu SAML pro dva důvody:
 
@@ -158,7 +159,7 @@ Ze služby Azure AD si můžete stáhnout aktivní certifikát ve formátu Base6
 
 Pokud chcete zobrazit, vytvořit nebo stáhnout certifikáty (aktivní nebo neaktivní), přejděte na **podpisový certifikát SAML** nadpis a vyberte **upravit** ikonu. **Podpisový certifikát SAML** se zobrazí.
 
-![Podpisový certifikát SAML](./media/configure-single-sign-on-non-gallery-applications/saml-signing-certificate.png)
+![Zobrazuje stránku podpisový certifikát SAML](./media/configure-single-sign-on-non-gallery-applications/saml-signing-certificate.png)
 
 Ověřte, zda je certifikát:
 
@@ -182,13 +183,13 @@ Po dokončení konfigurace aplikace pro používání služby Azure AD jako zpro
 Přiřazení nové uživatele nebo skupinu do vaší aplikace:
 
 1. Na bočním panelu aplikace vyberte **uživatelů a skupin**. **\<Název aplikace >-uživatelů a skupin** se zobrazí stránka, která obsahuje aktuální seznam přiřazení uživatelé a skupiny.
-2. Vyberte **přidat uživatele**. **Přidat přiřazení** zobrazí se stránka.
-3. Vyberte **uživatelům a skupinám (\<číslo > vybrané)** . **Uživatelů a skupin** se zobrazí stránka zobrazuje seznam dostupných uživatelů a skupin.
-4. Typ nebo přejděte k vyhledání uživatele nebo skupinu, kterou chcete přiřadit ze seznamu.
-5. Vyberte jednotlivé uživatele nebo skupiny, kterou chcete přidat a pak vyberte **vyberte** tlačítko. **Uživatelů a skupin** stránky zmizí.
-6. V **přidat přiřazení** stránce **přiřadit**. **\<Název aplikace >-uživatelů a skupin** se zobrazí stránka s dalšími uživateli v seznamu zobrazí.
+1. Vyberte **přidat uživatele**. **Přidat přiřazení** zobrazí se stránka.
+1. Vyberte **uživatelům a skupinám (\<číslo > vybrané)** . **Uživatelů a skupin** se zobrazí stránka zobrazuje seznam dostupných uživatelů a skupin.
+1. Typ nebo přejděte k vyhledání uživatele nebo skupinu, kterou chcete přiřadit ze seznamu.
+1. Vyberte jednotlivé uživatele nebo skupiny, kterou chcete přidat a pak vyberte **vyberte** tlačítko. **Uživatelů a skupin** stránky zmizí.
+1. V **přidat přiřazení** stránce **přiřadit**. **\<Název aplikace >-uživatelů a skupin** se zobrazí stránka s dalšími uživateli v seznamu zobrazí.
 
-   ![Aplikace uživatele a skupiny](./media/configure-single-sign-on-non-gallery-applications/application-users-and-groups.png)
+   ![Zobrazuje stránku Uživatelé a skupiny aplikací](./media/configure-single-sign-on-non-gallery-applications/application-users-and-groups.png)
 
 Z tohoto seznamu můžete:
 
@@ -213,26 +214,29 @@ Tuto možnost použijte ke konfiguraci [založené na heslech jednotného přihl
 
 Po výběru **založené na heslech**, výzva k zadání adresy URL vaší aplikace webové přihlašovací stránky.
 
-![Založené na heslech jednotného přihlašování](./media/configure-single-sign-on-non-gallery-applications/password-based-sso.png)
+![Ukazuje, zadejte adresu URL přihlašovací stránky přihlašovací adresa URL](./media/configure-single-sign-on-non-gallery-applications/password-based-sso.png)
 
 Proveďte tyto kroky:
 
 1. Zadejte adresu URL. Tento řetězec musí být na stránce, který obsahuje vstupní pole uživatelské jméno.
-2. Vyberte **Uložit**. Azure AD se pokusí analyzovat přihlašovací stránku pro zadání uživatelského jména a hesla vstup.
-3. Pokud Azure AD v analýze pokus selže, vyberte **konfigurovat \<název_aplikace > Nastavení hesla jednotného přihlašování** zobrazíte **nakonfigurovat přihlašování** stránky. (Pokud tento pokus úspěšný, můžete ignorovat zbývající část tohoto postupu.)
-4. Vyberte **ručně zjišťovat pole pro přihlášení**. Zobrazí se další pokyny popisující Ruční zjišťování pole.
+1. Vyberte **Uložit**. Azure AD se pokusí analyzovat přihlašovací stránku pro zadání uživatelského jména a hesla vstup.
+1. Pokud Azure AD v analýze pokus selže, vyberte **konfigurovat \<název_aplikace > Nastavení hesla jednotného přihlašování** zobrazíte **nakonfigurovat přihlašování** stránky. (Pokud tento pokus úspěšný, můžete ignorovat zbývající část tohoto postupu.)
+1. Vyberte **ručně zjišťovat pole pro přihlášení**. Zobrazí se další pokyny popisující Ruční zjišťování pole.
 
    ![Ruční konfigurace založené na heslech jednotného přihlašování](./media/configure-single-sign-on-non-gallery-applications/password-configure-sign-on.png)
-5. Vyberte **zachytit pole pro přihlášení**. Stránka stavu zachytávání se otevře na nové kartě zprávou, která **zachycují metadata právě probíhá**.
-6. Pokud **vyžaduje přístup k panelu rozšíření** na nové kartě, zobrazí se pole vyberte **nainstalovat** k instalaci **Moje aplikace zabezpečené přihlašování rozšíření** rozšíření prohlížeče. (Rozšíření prohlížeče vyžaduje Microsoft Edge, Chrome nebo Firefox.) Potom nainstalovat, spustit a povolit rozšíření a aktualizujte stránku zachycení stavu.
+
+1. Vyberte **zachytit pole pro přihlášení**. Stránka stavu zachytávání se otevře na nové kartě zprávou, která **zachycují metadata právě probíhá**.
+1. Pokud **vyžaduje přístup k panelu rozšíření** na nové kartě, zobrazí se pole vyberte **nainstalovat** k instalaci **Moje aplikace zabezpečené přihlašování rozšíření** rozšíření prohlížeče. (Rozšíření prohlížeče vyžaduje Microsoft Edge, Chrome nebo Firefox.) Potom nainstalovat, spustit a povolit rozšíření a aktualizujte stránku zachycení stavu.
 
    Rozšíření prohlížeče pak otevře jinou kartu, která zobrazuje zadaná adresa URL.
-7. Na kartě s zadaná adresa URL projděte si proces přihlašování. Vyplňte pole uživatelské jméno a heslo a zkuste se přihlásit. (Není nutné zadat správné heslo.)
+
+1. Na kartě s zadaná adresa URL projděte si proces přihlašování. Vyplňte pole uživatelské jméno a heslo a zkuste se přihlásit. (Není nutné zadat správné heslo.)
 
    Zobrazí výzva s dotazem k uložení zaznamenané pole přihlášení.
-8. Vyberte **OK**. Na kartě se zavře, rozšíření prohlížeče aktualizuje zachycení stavové stránce se zprávou **metadat byl aktualizován pro aplikaci**a také kartu zavře prohlížeče.
-9. Ve službě Azure AD **nakonfigurovat přihlašování** stránce **Ok, povedlo se přihlásit k aplikaci úspěšně**.
-10. Vyberte **OK**.
+
+1. Vyberte **OK**. Na kartě se zavře, rozšíření prohlížeče aktualizuje zachycení stavové stránce se zprávou **metadat byl aktualizován pro aplikaci**a také kartu zavře prohlížeče.
+1. Ve službě Azure AD **nakonfigurovat přihlašování** stránce **Ok, povedlo se přihlásit k aplikaci úspěšně**.
+1. Vyberte **OK**.
 
 Po zachycení přihlašovací stránku, může přiřadit uživatele a skupiny, a můžete nastavit zásady přihlašovacích údajů, stejně jako normální [heslem jednotného přihlašování aplikace](what-is-single-sign-on.md).
 

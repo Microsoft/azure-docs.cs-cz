@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 73979ec3bd1d667453a186ea1f20bbeddc12db8f
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 435ad986a9f0b96d42c88d450f40e5900ad33b7c
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273310"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67653254"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Nejčastější dotazy k Azure Spatial Anchors
 
@@ -120,11 +120,11 @@ Začínáme s [vývoj zde](index.yml).
 
 **Otázka: Funguje s Unreal?**
 
-**Odpověď:** Očekáváme, že mají podporu pro Unreal brzy.
+**Odpověď:** Podpora pro Unreal se budou považovat za v budoucnu.
 
 **Otázka: Funguje se Xamarinem?**
 
-**Odpověď:** Ano. Protože neposkytujeme sada Xamarin SDK, Očekáváme, že vývojáři mohou použít prostorová kotvy Azure ve svých aplikacích Xamarin díky integraci s Azure API prostorových kotvy vztahů.
+**Odpověď:** Podpora pro Xamarin se budou považovat za v budoucnu.
 
 **Otázka: Jaké porty a protokoly, používá prostorových kotvy Azure?**
 

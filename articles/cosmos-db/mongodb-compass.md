@@ -7,14 +7,14 @@ ms.topic: overview
 ms.date: 06/24/2019
 author: roaror
 ms.author: roaror
-ms.openlocfilehash: ad302df3144787fd231166c7052ecfde268f4086
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 102d3fdc2e36f812e9a86286383a06f9930a1947
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67451035"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67665919"
 ---
-# <a name="use-compass-to-connect-to-your-cosmos-db-account"></a>Použít Compass pro připojení k účtu služby Cosmos DB
+# <a name="use-mongodb-compass-to-connect-to-azure-cosmos-dbs-api-for-mongodb"></a>Použít MongoDB Compass pro připojení k rozhraní API služby Azure Cosmos DB pro MongoDB 
 
 Tento kurz ukazuje, jak používat [MongoDB Compass](https://www.mongodb.com/products/compass) při ukládání a správu dat v databázi Cosmos DB. Tohoto návodu používáme rozhraní API Azure Cosmos DB pro MongoDB. Neznáte, Compass je grafické uživatelské rozhraní pro MongoDB. Běžně slouží k vizualizaci dat, spouštění dotazů ad-hoc, spolu s spravovat vaše data. 
 
@@ -50,7 +50,7 @@ Připojení účtu Cosmos DB k Compass, můžete postupovat podle následující
 
 6. Klikněte na **připojit** v dolní části stránky. Účet služby Cosmos DB a databáze by měla nyní být viditelné v rámci MongoDB Compass.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Zjistěte, jak [použití studia 3T](mongodb-mongochef.md) s rozhraním API služby Azure Cosmos DB pro MongoDB.
 - Prozkoumejte MongoDB [ukázky](mongodb-samples.md) s rozhraním API služby Azure Cosmos DB pro MongoDB.

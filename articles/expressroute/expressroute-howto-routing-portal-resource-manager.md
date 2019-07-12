@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: mialdrid
 ms.custom: seodec18
-ms.openlocfilehash: 40ecdb3f83dba741d1430a912a3f17500a36da6e
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 08d8103c4b35148a87d347e31b11c7c8c968598b
+ms.sourcegitcommit: dda9fc615db84e6849963b20e1dce74c9fe51821
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67484333"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67622332"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit"></a>Vytvoření a úprava partnerského vztahu pro okruh ExpressRoute
 
@@ -132,6 +132,7 @@ Tato část umožňuje vytvořit, získat, aktualizovat a odstranit Azure konfig
    * Podsíť /30 pro sekundární propojení. Podsítě nesmí být součástí žádného adresního prostor vyhrazeného pro virtuální sítě. Z této podsítě bude přiřadit nedodržíte první IP adresu směrovače jak společnost Microsoft používá druhou IP použitelný pro jeho směrovače.
    * Platné ID sítě VLAN, na kterém se má partnerský vztah vytvořit. Zajistěte, aby žádný jiný partnerský vztah v okruhu nepoužíval stejné ID sítě VLAN. Odkazy na primární a sekundární musí používat stejné ID sítě VLAN.
    * Číslo AS pro partnerský vztah. Můžete použít 2bajtová i 4bajtová čísla AS. Můžete použít soukromé číslo AS pro tento partnerský vztah s výjimkou číslo od 65515 do 65520, (včetně).
+   * Trasy z vaší místní hraniční směrovač musí Inzerovat do Azure přes protokol BGP při nastavování soukromého partnerského vztahu.
    * **Volitelné –** algoritmus hash MD5, pokud se rozhodnete použít.
 3. Výběr Azure privátního partnerského vztahu řádku, jak je znázorněno v následujícím příkladu:
 

@@ -7,19 +7,19 @@ author: mdgattuso
 manager: danielgi
 editor: sohamnchatterjee
 ms.assetid: 0b50230b-fe82-4740-90aa-95d4dde8bd4f
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/17/2019
 ms.author: magattus
-ms.openlocfilehash: 94d9fb0878458f3de0a64fac57af4a70e1875112
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ff877810cb32d22cffd2af79880b6223c41d7d73
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65909678"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593532"
 ---
 # <a name="purge-an-azure-cdn-endpoint"></a>Vyprázdnění koncového bodu Azure CDN
 ## <a name="overview"></a>Přehled
@@ -73,7 +73,7 @@ Tento kurz vás provede vyprázdnění prostředků z koncového bodu všech hra
 > 
 > 
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 * [Předběžné načtení prostředků v koncovém bodu Azure CDN](cdn-preload-endpoint.md)
 * [Reference rozhraní REST API služby CDN Azure – mazání nebo předběžné načtení koncový bod](/rest/api/cdn/endpoints)
 

@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 821143d39f8a4c06501ee38ef598a9d06d267d72
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: b7ba6ae188c098e85573503a1518ba65480d713a
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273111"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807212"
 ---
 # <a name="authentication-flows"></a>Toky ověřování
 
@@ -166,7 +166,7 @@ IWA je pro aplikace napsané pro platformy .NET Framework, .NET Core a univerzá
 
 IWA nebude obejít ověřování Multi-Factor Authentication. Pokud je nakonfigurováno ověřování pomocí služby Multi-Factor Authentication, IWA může selhat, pokud výzva ověřování službou Multi-Factor Authentication je povinný. Ověřování službou Multi-Factor Authentication vyžaduje zásah uživatele.
 
-Nemáte kontrolu, když poskytovatel identity požádá o dvojúrovňové ověřování, která se má provést. Správce tenanta nepodporuje. Dvoufaktorové ověřování je obvykle vyžaduje při přihlášení z jiné země, pokud nejste připojeni přes síť VPN k podnikové síti a někdy i když jste připojení přes síť VPN. Azure AD používá AI průběžně další, pokud vyžádáním dvoufaktorového ověřování. Pokud IWA selže, které by měl vrátit zpět k výzvy uživateli (https://aka.ms/msal-net-interactive).
+Nemáte kontrolu, když poskytovatel identity požádá o dvojúrovňové ověřování, která se má provést. Správce tenanta nepodporuje. Dvoufaktorové ověřování je obvykle vyžaduje při přihlášení z jiné země, pokud nejste připojeni přes síť VPN k podnikové síti a někdy i když jste připojení přes síť VPN. Azure AD používá AI průběžně další, pokud vyžádáním dvoufaktorového ověřování. Pokud selže IWA vám by měl vrátit zpět k [interaktivní uživatelské výzvy] (#interactive).
 
 Autorita předávané při vytváření aplikace veřejným klientem musí být jedna z následujících akcí:
 - Klienty (ve formátu `https://login.microsoftonline.com/{tenant}/` kde `tenant` je buď identifikátor guid představující ID tenanta nebo domény přidružené k tenantovi).

@@ -4,7 +4,7 @@ description: Příručka ke kontrole a řešení potíží komplexní SAP HANA h
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermannd
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
-ms.openlocfilehash: 4483a7f53e084be5f245840829f4c9c95648b1af
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b794b045efa4be20a63e9996425d69f0212ae0d7
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60477051"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707240"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>Ověřte a řešení potíží s nastavením vysoké dostupnosti SAP HANA horizontální navýšení kapacity na SLES 12 SP3 
 
@@ -94,7 +94,7 @@ Následující doporučení pro síť SAP HANA byly vytvořeny tři podsítě v 
 
 Informace o SAP HANA konfigurace související s používáním více sítí najdete v tématu [SAP HANA global.ini](#sap-hana-globalini).
 
-Každý virtuální počítač v clusteru má tři virtuální síťové adaptéry, které odpovídají počtu podsítí. [Jak vytvořit virtuální počítač s Linuxem v Azure s několika síťových karet] [ azure-linux-multiple-nics] popisuje potenciální problém směrování v Azure, při nasazování virtuálního počítače s Linuxem. Tento konkrétní směrování článek se týká pouze pro použití víc karet Vnic. Problém je vyřešen podle operačního systému SUSE na výchozím nastavení v SLES 12 SP3. Další informace najdete v tématu [s více síťovými Kartami s cloudu netconfig EC2 a Azure][suse-cloud-netconfig].
+Každý virtuální počítač v clusteru má tři virtuální síťové adaptéry, které odpovídají počtu podsítí. [Jak vytvořit virtuální počítač s Linuxem v Azure s několika síťových karet][azure-linux-multiple-nics] describes a potential routing issue on Azure when deploying a Linux VM. This specific routing article applies only for use of multiple vNICs. The problem is solved by SUSE per default in SLES 12 SP3. For more information, see [Multi-NIC with cloud-netconfig in EC2 and Azure][suse-cloud-netconfig].
 
 
 Pokud chcete ověřit, že SAP HANA je správně nakonfigurován na používání více sítí, spusťte následující příkazy. Nejprve zkontrolujte na úrovni operačního systému, že všechny tři interních IP adres pro všechny tři podsítě jsou aktivní. Pokud jste definovali podsítě pomocí různých rozsahů IP adres, je nutné přizpůsobit příkazy:
@@ -726,7 +726,7 @@ Transition Summary:
 ## <a name="planned-maintenance"></a>Plánovaná údržba 
 
 Při rozhodování o plánované údržbě existují různé případy použití. Jedna otázka je, zda je právě údržbu infrastruktury jako změny na úrovni operačního systému a konfigurace disku nebo upgradu HANA.
-Další informace najdete v dokumentech od společnosti SUSE jako [směrem k nule výpadek] [ sles-zero-downtime-paper] nebo [SAP HANA SR výkonu optimalizované scénář] [ sles-12-for-sap]. Tyto dokumenty také obsahovat ukázky, které ukazují, jak ručně provést migraci primární.
+Další informace najdete v dokumentech od společnosti SUSE jako [směrem k nule výpadek][sles-zero-downtime-paper] or [SAP HANA SR Performance Optimized Scenario][sles-12-for-sap]. Tyto dokumenty také obsahovat ukázky, které ukazují, jak ručně provést migraci primární.
 
 Velký interní testování bylo provedeno ověření případ použití údržbu infrastruktury. Aby se zabránilo veškeré problémy související s primární migrací, jsme se rozhodli vždy migrovat primární před přepnutím clusteru do režimu údržby. Díky tomu není nutné provádět clusteru, nemusíte zabývat bývalé situaci: které straně byl primární a která byla sekundární.
 
@@ -977,7 +977,7 @@ Tento poslední snímek obrazovky ukazuje **podrobnosti** část jeden přechod.
 ![Jeden přechod HAWK](media/hana-vm-scale-out-HA-troubleshooting/hawk-5.png)
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Tento průvodce odstraňováním potíží popisuje vysokou dostupnost pro SAP HANA v konfiguraci horizontální navýšení kapacity. Kromě databázi je jiné důležité součásti v prostředí SAP SAP NetWeaver zásobníku. Další informace o [vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích s Azure, které používají operačního systému SUSE Enterprise Linux Server][sap-nw-ha-guide-sles].
 

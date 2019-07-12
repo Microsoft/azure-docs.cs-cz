@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 70cb7f53032dca2b0fedbf4581b88aea07960515
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 5fa8e54a6a665b1bad91a87ca8e58f873df1ae8a
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67294889"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672321"
 ---
 # <a name="azure-disk-encryption-prerequisites-previous-release"></a>Požadavky Azure Disk Encryption (předchozí verze)
 
@@ -32,10 +32,13 @@ Dříve než povolíte pro podporované scénáře, které byly zmíněny v Azur
 
 ### <a name="windows"></a>Windows
 
-- Verze Windows serveru: Jádra systému Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2, Windows serveru 2016, jádra serveru systému Windows Server 2012 R2 a Windows serveru 2016.
-Pro Windows Server 2008 R2 musíte mít rozhraní .NET Framework 4.5 nainstalované před povolením šifrování v Azure. Nainstalujte ji z webu Windows Update, s volitelnou aktualizaci Microsoft .NET Framework 4.5.2 systémů Windows Server 2008 R2 x64 (KB2901983).
-- Jádro systému Windows Server 2012 R2 a jádra Windows serveru 2016 podporuje Azure Disk Encryption po na virtuálním počítači je nainstalována součást bdehdcfg.
-- Verze klientů Windows: Klient Windows 8 a Windows 10 klient.
+- Klient Windows: Windows 8 nebo novější.
+- Windows Server: Windows Server 2008 R2 nebo novější.  
+ 
+> [!NOTE] 
+> Windows Server 2008 R2 vyžaduje rozhraní .NET Framework 4.5 nainstalované pro šifrování. Nainstalujte ji z webu Windows Update, s volitelnou aktualizaci Microsoft .NET Framework 4.5.2 x64 systémů Windows Server 2008 R2 ([KB2901983](https://www.catalog.update.microsoft.com/Search.aspx?q=KB2901983)).  
+>  
+> Jádro systému Windows Server 2012 R2 a Windows Server 2016 Core vyžaduje bdehdcfg součásti nainstalovat na virtuální počítač pro šifrování.
 
 ### <a name="linux"></a>Linux 
 
@@ -106,7 +109,7 @@ Příklad příkazy, které je možné připojit datové disky a vytvořte nezby
 
 
 **Zásady skupiny:**
- - Řešení Azure Disk Encryption používá ochrana externí klíče nástroje BitLocker pro virtuální počítače IaaS s Windows. Pro virtuální počítače připojené k doméně, push nemáte žádné zásady skupiny, které vynucují ochrany pomocí čipu TPM. Informace o zásadách skupiny na "Povolit BitLocker bez kompatibilního čipu TPM" najdete v tématu [odkaz zásad skupiny Bitlockeru](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#a-href-idbkmk-unlockpol1arequire-additional-authentication-at-startup).
+ - Řešení Azure Disk Encryption používá ochrana externí klíče nástroje BitLocker pro virtuální počítače IaaS s Windows. Pro virtuální počítače připojené k doméně, push nemáte žádné zásady skupiny, které vynucují ochrany pomocí čipu TPM. Informace o zásadách skupiny na "Povolit BitLocker bez kompatibilního čipu TPM" najdete v tématu [odkaz zásad skupiny Bitlockeru](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#bkmk-unlockpol1).
 
 -  Zásady nástroje BitLocker na virtuálních počítačích připojených k doméně pomocí zásad vlastní skupiny, musí obsahovat následující nastavení: [Konfigurace úložiště uživatele bitlockeru informace recovery -> Povolit 256bitový obnovovací klíč](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings). Azure Disk Encryption selže, když jsou nekompatibilní nastavení zásad vlastní skupiny pro BitLocker. Na počítačích, které nebyly k dispozici nastavení správné zásady, použijí nové zásady vynutí nové zásady aktualizace (gpupdate.exe/Force) a následného restartování může být nutné.  
 

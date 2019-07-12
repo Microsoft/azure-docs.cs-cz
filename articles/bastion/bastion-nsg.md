@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: cherylmc
-ms.openlocfilehash: e7210b2b1be072f5326070d768d5fe12c386ee0b
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: 5312ad2593e732f4c84eb67ed263bc9e4666a67a
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67191600"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594196"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion-preview"></a>Práce s přístupem k NSG a Bastionu Azure (Preview)
 
@@ -44,9 +44,9 @@ V tomto diagramu:
 
 Pokud použijete skupiny Nsg k **AzureBastionSubnet**, povolit následující dvě značky služeb pro rovina řízení Azure a infrastrukturou:
 
-* **GatewayManager (pouze Resource Manager)** : Tato značka označuje předpony adres služeb Azure Správce brány. Pokud zadáte hodnotu GatewayManager, provoz je povolený nebo zakázaný pro GatewayManager.
+* **GatewayManager (pouze Resource Manager)** : Tato značka označuje předpony adres služeb Azure Správce brány. Pokud zadáte hodnotu GatewayManager, provoz je povolený nebo zakázaný pro GatewayManager.  Při vytváření skupin zabezpečení sítě na AzureBastionSubnet, povolte GatewayManager značky pro příchozí provoz.
 
-* **AzureCloud (pouze Resource Manager)** : Tato značka označuje adresní prostor IP adres pro Azure, včetně všech datových center veřejné IP adresy. Pokud zadáte hodnotu AzureCloud, provoz je povolený nebo zakázaný k veřejným IP adresám Azure. Pokud chcete povolit přístup k AzureCloud v konkrétní oblasti, můžete zadat tuto oblast. Například pokud chcete povolit přístup pouze k AzureCloud Azure v oblasti východní USA, můžete jako značku služby zadat AzureCloud.EastUS.
+* **AzureCloud (pouze Resource Manager)** : Tato značka označuje adresní prostor IP adres pro Azure, včetně všech datových center veřejné IP adresy. Pokud zadáte hodnotu AzureCloud, provoz je povolený nebo zakázaný k veřejným IP adresám Azure. Pokud chcete povolit přístup pouze k AzureCloud v konkrétní oblasti, můžete zadat tuto oblast. Například pokud chcete povolit přístup pouze k AzureCloud Azure v oblasti východní USA, můžete jako značku služby zadat AzureCloud.EastUS. Při vytváření skupin zabezpečení sítě na AzureBastionSubnet, povolte AzureCloud značky pro odchozí provoz.
 
 ## <a name="next-steps"></a>Další postup
 

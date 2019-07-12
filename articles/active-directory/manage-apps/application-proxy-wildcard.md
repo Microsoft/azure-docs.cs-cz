@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8cd29fc00a1c25a7c092393591060ca7e2938155
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 5d3b8176566593c5c9e9ff63a6ccbafcb2a35cd5
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67481275"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827992"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Aplikace se zástupnými znaky v proxy aplikací Azure Active Directory
 
@@ -45,7 +45,9 @@ Aplikace se zástupnými znaky můžete publikovat, pokud obě, interní a exter
 
 > http(s)://*.\<domain\>
 
-Například: `http(s)://*.adventure-works.com`. Během interní a externí adresy URL můžete použít jako osvědčený postup různých doménách, musí být stejné. Při publikování aplikace, se zobrazí chyba, pokud jedna z adres URL neobsahuje zástupný znak.
+Například: `http(s)://*.adventure-works.com`.
+
+Během interní a externí adresy URL můžete použít jako osvědčený postup různých doménách, musí být stejné. Při publikování aplikace, se zobrazí chyba, pokud jedna z adres URL neobsahuje zástupný znak.
 
 Pokud máte další aplikace s různá nastavení konfigurace, je nutné tyto výjimky publikovat jako samostatné aplikace přepsat výchozí nastavení pro zástupný znak. Aplikace bez zástupný znak vždy přednost aplikace se zástupnými znaky. Z hlediska konfigurace jsou "pouze" běžné aplikace.
 
@@ -60,7 +62,7 @@ Abyste mohli začít, zkontrolujte, zda že splnění těchto požadavků.
 Zatímco [vlastních domén](application-proxy-configure-custom-domain.md) jsou volitelné pro všechny ostatní aplikace, jsou předpokladem pro aplikace se zástupnými znaky. Vytváří se vlastní domény vyžaduje, abyste:
 
 1. Vytvořte ověřené domény v Azure.
-2. Nahrajte certifikát SSL ve formátu PFX na vaše proxy aplikací.
+1. Nahrajte certifikát SSL ve formátu PFX na vaše proxy aplikací.
 
 Měli byste zvážit použití certifikát se zástupným znakem tak, aby odpovídaly aplikaci, kterou chcete vytvořit. Alternativně můžete také použít certifikát, který je uveden pouze konkrétní aplikace. Jenom aplikace uvedené v certifikátu v tomto případě bude přístupné prostřednictvím této aplikaci se zástupnými znaky.
 
@@ -82,11 +84,11 @@ Tady jsou některé aspekty, které byste měli vzít v úvahu pro aplikace se z
 
 Pro aplikace se zástupnými znaky **interní adresa URL** musí být ve formátu `http(s)://*.<domain>`.
 
-![Pro interní adresa URL, použijte formát http :/ / *. < doména >](./media/application-proxy-wildcard/22.png)
+![Pro interní adresa URL, použijte formát http :/ / *. \<domény >](./media/application-proxy-wildcard/22.png)
 
 Při konfiguraci **externí adresa URL**, je nutné použít následující formát: `https://*.<custom domain>`
 
-![Externí adresa URL, pomocí domény https://*.<custom Formát >](./media/application-proxy-wildcard/21.png)
+![Pro externí adresu URL pomocí formátu https://*. \<vlastní domény >](./media/application-proxy-wildcard/21.png)
 
 Další pozice zástupný znak, více zástupných znaků nebo jiných řetězců regulárního výrazu nejsou podporovány a jsou příčinou chyby.
 
@@ -95,11 +97,11 @@ Další pozice zástupný znak, více zástupných znaků nebo jiných řetězc�
 Aplikace můžete vyloučit z aplikací se zástupnými znaky podle
 
 - Publikování aplikace výjimek jako regulární aplikace
-- Povolení zástupný znak pouze pro určité aplikace prostřednictvím nastavení serveru DNS  
+- Povolení zástupný znak pouze pro určité aplikace prostřednictvím nastavení serveru DNS
 
 Publikování aplikace jako regulární aplikace je upřednostňovanou metodou k vyloučení z zástupný znak. Měli byste publikovat vyloučené aplikace před aplikace se zástupnými znaky zajistit, že vaše výjimky se vynucují od začátku. Nejspecifičtější aplikaci bude vždy přednost – publikovat jako aplikaci `budgets.finance.adventure-works.com` má přednost před aplikace `*.finance.adventure-works.com`, která naopak má přednost před aplikace `*.adventure-works.com`.
 
-Můžete také omezit zástupný znak a fungují jenom pro určité aplikace přes správu DNS. Jako osvědčený postup byste měli vytvořit záznam CNAME, který obsahuje zástupný znak a odpovídá formátu externí adresu URL, které jste nakonfigurovali. Adresy URL konkrétní aplikace, ale můžete místo toho přejděte na zástupné znaky. Například namísto z `*.adventure-works.com`, bodu `hr.adventure-works.com`, `expenses.adventure-works.com` a `travel.adventure-works.com individually` k `000aa000-11b1-2ccc-d333-4444eee4444e.tenant.runtime.msappproxy.net`. 
+Můžete také omezit zástupný znak a fungují jenom pro určité aplikace přes správu DNS. Jako osvědčený postup byste měli vytvořit záznam CNAME, který obsahuje zástupný znak a odpovídá formátu externí adresu URL, které jste nakonfigurovali. Adresy URL konkrétní aplikace, ale můžete místo toho přejděte na zástupné znaky. Například namísto z `*.adventure-works.com`, bodu `hr.adventure-works.com`, `expenses.adventure-works.com` a `travel.adventure-works.com individually` k `000aa000-11b1-2ccc-d333-4444eee4444e.tenant.runtime.msappproxy.net`.
 
 Pokud použijete tuto možnost, budete také potřebovat jiný záznam CNAME pro hodnotu `AppId.domain`, například `00000000-1a11-22b2-c333-444d4d4dd444.adventure-works.com`také Unified do stejného umístění. Můžete najít **AppId** na stránce vlastnosti aplikace aplikací se zástupnými znaky:
 
@@ -110,7 +112,7 @@ Pokud použijete tuto možnost, budete také potřebovat jiný záznam CNAME pro
 Aplikaci se zástupnými znaky je reprezentován jedním dlaždice v [MyApps panel](https://myapps.microsoft.com). Ve výchozím nastavení je skrytý tuto dlaždici. Zobrazit dlaždici a pozemního uživatelů na konkrétní stránce:
 
 1. Postupujte podle pokynů pro [nastavení adresa URL domovské stránky](application-proxy-configure-custom-home-page.md).
-2. Nastavte **zobrazit aplikace** k **true** na stránce vlastností aplikace.
+1. Nastavte **zobrazit aplikace** k **true** na stránce vlastností aplikace.
 
 ### <a name="kerberos-constrained-delegation"></a>Omezené delegování protokolu Kerberos
 

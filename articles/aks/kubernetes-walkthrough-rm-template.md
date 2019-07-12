@@ -2,18 +2,18 @@
 title: Rychlý start – vytvoření clusteru Azure Kubernetes Service (AKS)
 description: Zjistěte, jak rychle vytvořit cluster Kubernetes pomocí šablony Azure Resource Manageru a nasazení aplikace ve službě Azure Kubernetes Service (AKS)
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: quickstart
 ms.date: 04/19/2019
-ms.author: iainfou
+ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 524eb97a2c865a14800cf503edd7f506151521bb
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: e7cc9b63768385e4665e330b2b02a884b84c2188
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64920210"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67615386"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-an-azure-resource-manager-template"></a>Rychlý start: Nasaďte cluster Azure Kubernetes Service (AKS) pomocí šablony Azure Resource Manageru
 
@@ -47,7 +47,7 @@ Další informace o vytváření klíčů SSH najdete v tématu [vytvořit a spr
 
 ### <a name="create-a-service-principal"></a>Vytvoření instančního objektu
 
-Aby mohl cluster AKS pracovat a komunikovat s jinými prostředky Azure, používá se instanční objekt služby Azure Active Directory. Vytvoření instančního objektu služby pomocí [az ad sp create-for-rbac] [ az-ad-sp-create-for-rbac] příkazu. Parametr `--skip-assignment` nastavuje omezení, aby už nešla přidělovat žádná další oprávnění. Ve výchozím nastavení tento instanční objekt je platný jeden rok.
+Aby mohl cluster AKS pracovat a komunikovat s jinými prostředky Azure, používá se instanční objekt služby Azure Active Directory. Vytvořte instanční objekt pomocí příkazu [az ad sp create-for-rbac][az-ad-sp-create-for-rbac]. Parametr `--skip-assignment` nastavuje omezení, aby už nešla přidělovat žádná další oprávnění. Ve výchozím nastavení tento instanční objekt je platný jeden rok.
 
 ```azurecli-interactive
 az ad sp create-for-rbac --skip-assignment
@@ -69,7 +69,7 @@ Poznamenejte si *appId* a *password*. Tyto hodnoty se použijí v dalších kroc
 
 ## <a name="create-an-aks-cluster"></a>Vytvoření clusteru AKS
 
-Šablona použitá v tomto rychlém startu je [Nasaďte cluster Azure Kubernetes Service](https://azure.microsoft.com/resources/templates/101-aks/). Další ukázky AKS najdete v tématu [šablony pro rychlý start AKS] [ aks-quickstart-templates] lokality.
+Šablona použitá v tomto rychlém startu je [Nasaďte cluster Azure Kubernetes Service](https://azure.microsoft.com/resources/templates/101-aks/). Další ukázky AKS najdete v tématu [šablony pro rychlý start AKS][aks-quickstart-templates] lokality.
 
 1. Vyberte následující obrázek a přihlaste se k Azure a otevřete šablonu.
 
@@ -98,13 +98,13 @@ Trvá několik minut pro vytvoření clusteru AKS. Počkejte klastru, aby byl ú
 
 ## <a name="connect-to-the-cluster"></a>Připojení ke clusteru
 
-Ke správě clusteru Kubernetes použijete [kubectl][kubectl], klienta příkazového řádku Kubernetes. Pokud používáte Azure Cloud Shell, `kubectl` je již nainstalována. Chcete-li nainstalovat `kubectl` místně, použijte [az aks install-cli] [ az-aks-install-cli] příkaz:
+Ke správě clusteru Kubernetes použijete [kubectl][kubectl], klienta příkazového řádku Kubernetes. Pokud používáte Azure Cloud Shell, `kubectl` je již nainstalována. Chcete-li nainstalovat `kubectl` místně, použijte [az aks install-cli][az-aks-install-cli] příkaz:
 
 ```azurecli
 az aks install-cli
 ```
 
-Pomocí příkazu [az aks get-credentials][az-aks-get-credentials] nakonfigurujte klienta `kubectl` pro připojení k vašemu clusteru Kubernetes. Tento příkaz stáhne přihlašovací údaje a nakonfiguruje rozhraní příkazového řádku Kubernetes pro jejich použití.
+Ke konfiguraci `kubectl` pro připojení k vašemu clusteru Kubernetes, použijte [az aks get-credentials][az-aks-get-credentials] příkazu. Tento příkaz stáhne přihlašovací údaje a nakonfiguruje rozhraní příkazového řádku Kubernetes pro jejich použití.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
@@ -127,10 +127,10 @@ aks-agentpool-41324942-2   Ready    agent   6m45s   v1.12.6
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
-Soubor manifestu Kubernetes definuje požadovaný stav clusteru, například jaké kontejneru obrázků ke spuštění. V tomto rychlém startu manifest slouží k vytvoření všech objektů potřebných ke spuštění aplikace Azure Vote. Tento manifest zahrnuje dva [nasazení Kubernetes] [ kubernetes-deployment] – jednu pro ukázkové aplikace Azure Vote Python a druhé pro instanci Redis. Dvě [služby Kubernetes] [ kubernetes-service] také vytvářejí – interní služba pro instanci Redis a externí služby pro přístup k aplikaci Azure Vote z Internetu.
+Soubor manifestu Kubernetes definuje požadovaný stav clusteru, například jaké kontejneru obrázků ke spuštění. V tomto rychlém startu manifest slouží k vytvoření všech objektů potřebných ke spuštění aplikace Azure Vote. Tento manifest zahrnuje dva [nasazení Kubernetes][kubernetes-deployment] - one for the sample Azure Vote Python applications, and the other for a Redis instance. Two [Kubernetes Services][kubernetes-service] také vytvářejí – interní služba pro instanci Redis a externí služby pro přístup k aplikaci Azure Vote z Internetu.
 
 > [!TIP]
-> V tomto rychlém startu ručně vytvoříte manifest aplikace a nasadíte ho do clusteru AKS. V reálnějších situacích můžete k rychlé iteraci a ladění kódu přímo v clusteru AKS použít [Azure Dev Spaces][azure-dev-spaces]. Dev Spaces můžete používat na různých platformách operačních systémů a v různých vývojových prostředích a spolupracovat s ostatními členy vašeho týmu.
+> V tomto rychlém startu ručně vytvoříte manifest aplikace a nasadíte ho do clusteru AKS. Ve více scénářích reálného světa, můžete použít [Azure Dev prostory][azure-dev-spaces] rychle iterovat a ladění kódu přímo v clusteru AKS. Dev Spaces můžete používat na různých platformách operačních systémů a v různých vývojových prostředích a spolupracovat s ostatními členy vašeho týmu.
 
 Vytvořte soubor s názvem `azure-vote.yaml` a zkopírujte do následující definice YAML. Pokud používáte Azure Cloud Shell, můžete tento soubor vytvořit pomocí `vi` nebo `nano` stejně jako kdybyste pracovali na virtuálním nebo fyzickém systému:
 
@@ -219,7 +219,7 @@ spec:
     app: azure-vote-front
 ```
 
-Nasazení aplikace pomocí [použití kubectl] [ kubectl-apply] příkaz a zadejte název vašeho YAML manifestu:
+Nasazení aplikace pomocí [použití kubectl][kubectl-apply] příkaz a zadejte název vašeho YAML manifestu:
 
 ```azurecli-interactive
 kubectl apply -f azure-vote.yaml
@@ -263,14 +263,14 @@ Pokud chcete zobrazit aplikaci Azure Vote v akci, otevřete webový prohlížeč
 
 ## <a name="delete-cluster"></a>Odstranění clusteru
 
-Pokud už cluster nepotřebujete, použijte k odebrání skupiny prostředků, služby kontejneru a všech souvisejících prostředků příkaz [az group delete][az-group-delete].
+Pokud už cluster nepotřebujete, použijte [odstranění skupiny az][az-group-delete] příkazu k odebrání skupiny prostředků, služby kontejneru a všech souvisejících prostředků.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait
 ```
 
 > [!NOTE]
-> Při odstranění clusteru se neodebere instanční objekt služby Azure Active Directory používaný clusterem AKS. Postup odebrání instančního objektu najdete v tématu věnovaném [aspektům instančního objektu AKS a jeho odstranění][sp-delete].
+> Při odstranění clusteru se neodebere instanční objekt služby Azure Active Directory používaný clusterem AKS. Pokyny o tom, jak odebrat instanční objekt služby, najdete v článku [hlavní aspekty a odstranění služby AKS][sp-delete].
 
 ## <a name="get-the-code"></a>Získání kódu
 
@@ -280,7 +280,7 @@ V tomto rychlém startu předem vytvořené Image kontejnerů byly použity k vy
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto rychlém startu jste nasadili cluster Kubernetes a do něj jste nasadili vícekontejnerovou aplikaci. [Přístup k řídicímu panelu Kubernetes webové] [ kubernetes-dashboard] pro cluster, který jste vytvořili.
+V tomto rychlém startu jste nasadili cluster Kubernetes a do něj jste nasadili vícekontejnerovou aplikaci. [Přístup k řídicímu panelu Kubernetes webové][kubernetes-dashboard] pro cluster, který jste vytvořili.
 
 Další informace o službě AKS a podrobné vysvětlení kompletního příkladu od kódu až po nasazení najdete v kurzu clusteru Kubernetes.
 

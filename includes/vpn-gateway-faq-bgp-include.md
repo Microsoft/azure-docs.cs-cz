@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/12/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 192a6f4841e9dc3a478da5e4b53594362955ca71
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 7c1f3fc7861f5e1b895423d502218b9b07302c1c
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67174825"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67659780"
 ---
 ### <a name="is-bgp-supported-on-all-azure-vpn-gateway-skus"></a>Je protokol BGP podporován ve všech SKU služby Azure VPN Gateway?
 Ne, protokol BGP se podporuje v branách VPN Azure úrovně **VpnGw1**, **VpnGw2**, **VpnGw3**, **Standard** a **HighPerformance**. Pro SKU **Basic** NENÍ podporován.
@@ -85,7 +85,7 @@ Ano, ale alespoň jedna z bran virtuální sítě musí být v konfiguraci aktiv
 Ano. 
 
 ### <a name="what-address-does-azure-vpn-gateway-use-for-bgp-peer-ip"></a>Jakou adresu služba Azure VPN Gateway používá pro IP adresu partnera BGP?
-Služba Azure VPN Gateway přidělí jednu IP adresu z rozsahu GatewaySubnet definovaného pro virtuální síť. Ve výchozím nastavení se jedná o předposlední adresu v rozsahu. Pokud například používáte rozsah GatewaySubnet 10.12.255.0/27 v intervalu 10.12.255.0 až 10.12.255.31, IP adresa partnera BGP ve službě Azure VPN Gateway bude 10.12.255.30. Tyto informace můžete získat zobrazením informací služby Azure VPN Gateway.
+Azure VPN gateway přidělí jednu IP adresu z rozsahu GatewaySubnet pro brány VPN typu aktivní pohotovostní nebo dvě IP adresy pro brány VPN typu aktivní aktivní. Můžete získat skutečný BGP IP adresy přidělené pomocí Powershellu (Get-AzVirtualNetworkGateway, vyhledejte vlastnost "bgpPeeringAddress.") nebo na webu Azure Portal (v části "Konfigurace protokolu BGP číslo ASN" vlastnost na stránce konfigurace brány).
 
 ### <a name="what-are-the-requirements-for-the-bgp-peer-ip-addresses-on-my-vpn-device"></a>Jaké jsou požadavky na IP adresu partnera BGP v zařízení VPN?
 Vaše místní adresa partnera BGP **NESMÍ** být stejná, jako veřejná IP adresa vašeho zařízení VPN. Jako místní adresu partnera BGP v zařízení VPN použijte jinou IP adresu. Může se jednat o adresu přiřazenou k rozhraní zpětné smyčky na zařízení, ale mějte na paměti, že se nemůže jednat o adresu APIPA (169.254.x.x). Adresu zadejte v odpovídající bráně místní sítě reprezentující umístění.

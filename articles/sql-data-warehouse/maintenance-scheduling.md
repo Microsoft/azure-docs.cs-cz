@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 03/13/2019
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: b97e27b86ecad1f7f87a6de4d43b09d69c167c6f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ab6efb858cc86495c687055ce3049cfc0cca7433
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61075314"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807897"
 ---
 # <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>Umožňuje spravovat aktualizace služby a údržbu a plány údržby
 
@@ -34,6 +34,9 @@ Pokud chcete používat tuto funkci je potřeba určit primární a sekundární
 Integrace s oznámení o stavu služby a zkontrolujte monitorování stavu prostředků umožňuje zákazníkům tak neustále informováni brzké činnosti údržby. Nové služby automation využívá Azure Monitor. Můžete se rozhodnout, způsob, jak mají být informováni o nadcházejícím události údržby. Také rozhodněte, které automatizované toky vám může pomoct spravovat prostoje a minimalizovat dopad na vaše operace.
 
 24 hodin předběžných oznámeních předchází všechny události údržby s aktuální výjimkou DW400c a nižší úrovně. Minimalizovat tak prostoje instance, ujistěte se, že váš datový sklad nemá žádné dlouhotrvající transakce před zvolený udržovací období. Při zahájení údržby, zruší se všechny aktivní relace. Bez potvrzené transakce bude vrácena zpět a datového skladu dojde k krátký ke ztrátě připojení. Ihned po dokončení údržby na váš datový sklad, budete upozorněni.
+
+> [!NOTE]
+> V případě, že jsme se vyžaduje k nasazení čas důležitou aktualizaci, může výrazně snížit oznámení s týdenním časy.
 
 Pokud jste dostali předběžná oznámení, že údržba bude probíhat, ale SQL Data Warehouse nemůže provést údržbu během této doby, obdržíte oznámení o zrušení. Údržba se pak obnoví během dalšího období naplánované údržby.
 

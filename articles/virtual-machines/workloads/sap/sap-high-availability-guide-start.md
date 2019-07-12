@@ -4,7 +4,7 @@ description: Příručka pro vysokou dostupnost pro SAP NetWeaver na virtuální
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7de46a534ea7920bcae4a5b2a3316117f090a7bf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5e5493b3688c4de9dab971d58b58f85d00f8003b
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60935865"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709031"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>Azure Virtual Machines vysoká dostupnost pro SAP NetWeaver
 
@@ -193,7 +193,7 @@ Tato série článků popisuje:
 * Postup instalace SAP pro nasazování systémů SAP s vysokou dostupností v Azure pomocí modelu nasazení Azure Resource Manageru.
 
     > [!IMPORTANT]
-    > Důrazně doporučujeme použít model nasazení Azure Resource Manageru pro vaše instalace SAP. Nabízí řadu výhod, které nejsou k dispozici v modelu nasazení classic. Další informace o Azure [modely nasazení][virtual-machines-azure-resource-manager-architecture-benefits-arm].   
+    > Důrazně doporučujeme použít model nasazení Azure Resource Manageru pro vaše instalace SAP. Nabízí řadu výhod, které nejsou k dispozici v modelu nasazení classic. Další informace o [modelech nasazení][virtual-machines-azure-resource-manager-architecture-benefits-arm] Azure.   
     >
 * Vysoká dostupnost SAP na:
   * ![Windows][Logo_Windows]**Windows**s použitím **systému Windows Server Failover Cluster (WSFC)**

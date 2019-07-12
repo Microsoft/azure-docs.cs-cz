@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 904058c2c98c8ded2ea9c91e8aa7ec595aa49b05
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: eb824eb67e84ec4bdb93bc355ac6a6afa844ceb9
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66481441"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67701152"
 ---
 # <a name="offer-creation-checklist"></a>Kontrolní seznam k vytvoření nabídky
 
@@ -38,12 +38,12 @@ Položky, které je nutné zadat nebo zadejte uvedený níže. Některé oblasti
 
 ## <a name="new-offer-modal"></a>Nová nabídka modální okno 
 
-První řadu informací, které budete požádáni o zadání jsou název a ID nabídky. 
+První řadu informací, které budete požádáni o zadání představují ID a alias pro vaši nabídku. 
 
 | **Název pole**    | **Poznámky**   |  
 | :---------------- | :-----------| 
 | ID nabídky  | Povinné, po vytvoření nelze změnit. Max. 50 znaků a musí obsahovat jenom malá písmena, alfanumerické znaky, pomlčky nebo podtržítka. |
-| Název nabídky  | Povinná hodnota. |
+| Nabídka alias  | Povinný parametr. |
 
 ## <a name="offer-setup-page"></a>Stránka nastavení nabídky
 
@@ -51,7 +51,7 @@ Na stránce nastavení nabídky je kde je můžete začít používat různé ka
 
 | **Název pole**    | **Poznámky**   | 
 | :---------------- | :-----------|  
-| Chcete prodávat prostřednictvím společnosti Microsoft?  | Povinná hodnota. Výchozí hodnota: Ano |
+| Chcete prodávat prostřednictvím společnosti Microsoft?  | Povinný parametr. Výchozí hodnota: Ano |
 | Jak chcete potenciálních zákazníků pro interakci s nabídkou výpis? (Výzva k akci)  | Vyžaduje, pokud není prodej prostřednictvím společnosti Microsoft. Výchozí hodnota: Bezplatnou zkušební verzi, možnosti: "Stáhnout", "Bezplatné zkušební verze", "Mě kontaktovat." |
 | Adresa URL zkušební verze  | Vyžaduje, pokud je vybrána "Bezplatné zkušební verze", jak zákazníci způsob, jak by měl pracovat s výpis nabídky. |
 | Adresa URL nabídky  | Vyžaduje-li "Získat ji nyní" je vybráno, jako způsob, jak zákazníci měli pracovat s výpis nabídky |
@@ -68,7 +68,7 @@ Na stránce vlastností je tady můžete definovat kategorie a průmysl použív
 | :---------------- | :-----------|  
 | Kategorie a podkategorie | Vyžaduje 1 a maximální velikosti 3. Výchozí hodnota: Nic nevybráno. |
 | Odvětví a subindustries | Volitelné. Max. 2 L1 odvětví a max. 2 subindustries v rámci každé L1 odvětví, výchozí: Nic není vybrané |
-| verze aplikace  | Volitelné. Výchozí hodnota: Žádné |
+| verze aplikace  | Volitelné. Výchozí hodnota: Žádné. |
 | Použít standardní kontraktu  | Volitelné. Výchozí hodnota: není vybraný.  | |
 | Podmínky použití  | Povinné, pokud není vybrána standardní kontraktu.  |
 
@@ -78,13 +78,13 @@ Stránce je, ve kterém můžete zadat text a obrázky, které zákazníkům zob
 
 | **Název pole**    | **Poznámky**   |
 | :---------------- | :-----------| 
-| Název  | Povinné, max. 50 znaků. |
+| Name  | Povinné, max. 50 znaků. |
 | Souhrn  | Povinné, max. 100 znaků. | 
 | Popis  | Povinné, max 3000 znaků. |
 | Začínáme se službou pokyny  | Povinné, max 3000 znaků. |
 | Začínáme se službou pokyny  | Povinné, max 3000 znaků. |
 | Klíčová slova pro vyhledávání  | Volitelné, doporučujeme maximální 3 klíčová slova. |
-| Adresa URL zásad ochrany osobních údajů  | Povinná hodnota. |
+| Adresa URL zásad ochrany osobních údajů  | Povinný parametr. |
 | URL materiály Marketing programu CSP  | Volitelné. |
 | Užitečné odkazy, název a adresu URL  | Volitelné. |
 | Podklady titul + souboru  | Vyžaduje min 1 a max 3. Musí být ve formátu souboru PDF. |
@@ -92,7 +92,7 @@ Stránce je, ve kterém můžete zadat text a obrázky, které zákazníkům zob
 | Logo pro Store (malá, střední, velké, celou, Hero)  | Malý (48 X 48) a velké (216 X 216) nevyžaduje. Další velikosti volitelný, ale doporučené: Střední (90 x 90) širokou (255 x 115) a Hero (815 x 290). Musí být ve formátu PNG. |
 | Název videa + adresa URL miniatury  | Volitelný parametr, doporučeno maximálně 4 videa. Miniatura musí být 1280 × 720 ve formátu PNG. Video musí být hostovaný ve YouTube nebo Vimeo. |
 | Kontakty (programu CSP, inženýrství, podpora)  | Konstrukce a kontakt podpory nevyžaduje (jméno, e-mailu a telefonní číslo). Kontakt programu CSP je sice volitelný, ale doporučený. |
-| Adresa URL podpory  | Povinná hodnota. |
+| Adresa URL podpory  | Povinný parametr. |
 
 ## <a name="preview-page"></a>Stránka ve verzi Preview
 
@@ -137,9 +137,9 @@ Na stránce ceny a dostupnost plánu je tady můžete definovat obchodní charak
 | **Název pole**    | **Poznámky**   | 
 | :---------------- | :-----------| 
 | Dostupnost na trhu  | Povinné, min 1 a max 141. |
-| Cenový model  | Povinná hodnota. Výchozí hodnota: Paušální sazba. Možnosti: Paušální sazba za uživatele. |
+| Cenový model  | Povinný parametr. Výchozí hodnota: Paušální sazba. Možnosti: Paušální sazba za uživatele. |
 | Minimální a maximální licencovaných míst  | Volitelné, dostupné, pouze pokud založené na pracovní stanici ceny vybraného modelu. |
-| Fakturační období  | Povinná hodnota. Výchozí hodnota: Měsíční. Možnosti: Měsíční, roční. |
+| Fakturační období  | Povinný parametr. Výchozí hodnota: Měsíční. Možnosti: Měsíční, roční. |
 | Cena  | Požadované USD za měsíc, pokud měsíční fakturace termín zaškrtnuto. nebo USD za rok Pokud roční fakturace vybrané období. |
 | Plánování cílové skupiny  | Volitelné. Výchozí hodnota: Veřejný plán. Možnosti: Public, Private podle ID tenanta |
 | Omezené plánování cílová skupina (ID tenanta a popis)  | Povinné, pokud vybraná privátní plánu. Min 1 a max 10 ID tenanta, je-li zadat ručně. Maximální počet 20000, je-li import souboru CSV. |
@@ -150,7 +150,7 @@ K dispozici pouze pokud vyberete nabízí testovací verze pro vaši nabídku. Z
 
 | **Název pole**    | **Poznámky**   | 
 | :---------------- | :-----------| 
-| Popis  | Povinná hodnota. |
+| Popis  | Povinný parametr. |
 | Uživatelské jméno ruční + souboru  | Povinné, max. 1 dokumentu. Musí být ve formátu PDF. |
 | Název videa, adresa URL + miniaturu  | Volitelné, doporučujeme. Miniatura musí být 533 x 324 ve formátu JPGP nebo PNG. Video musí být hostovaný ve YouTube nebo Vimeo. |
 

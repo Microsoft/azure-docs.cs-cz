@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: tyfox
-ms.openlocfilehash: 459de569916af14b0efea0ff08b92e5c93ed2369
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 195999ba685828042fc958e8aed7e67bad694657
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64718912"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786564"
 ---
 # <a name="how-to-monitor-cluster-availability-with-ambari-and-azure-monitor-logs"></a>Jak monitorovat dostupnost clusteru pomocí protokolů Ambari a Azure Monitor
 
@@ -123,7 +123,7 @@ Jako příklad, spusťte **míry dostupnosti** ukázkový dotaz kliknutím **spu
 > [!NOTE] 
 > Dostupnost rychlost se měří po dobu 24 hodin, tak váš cluster potřebuje ke spuštění pro nejméně 24 hodin, než uvidíte přesný dostupnost sazby.
 
-V této tabulce na sdílený řídicí panel můžete připnout kliknutím **Pin** v pravém horním rohu. Pokud nemáte žádné zapisovatelné sdílené řídicí panely, můžete zjistit, jak ho vytvořit tady: [Vytvářejte a sdílejte řídicí panely na webu Azure Portal](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards#publish-a-dashboard-and-manage-access-control).
+V této tabulce na sdílený řídicí panel můžete připnout kliknutím **Pin** v pravém horním rohu. Pokud nemáte žádné zapisovatelné sdílené řídicí panely, můžete zjistit, jak ho vytvořit tady: [Vytvářejte a sdílejte řídicí panely na webu Azure Portal](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards#publish-and-share-a-dashboard).
 
 ### <a name="azure-monitor-alerts"></a>Azure Monitor výstrah
 

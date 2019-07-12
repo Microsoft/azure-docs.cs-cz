@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 11/20/2018
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 9b7bc043c748000f03a98a28f856299527015388
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e7a049c8def0a5014aeb8a0e7a16aaa8def28009
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66397814"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705703"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>Použití služby Key Vault odkazy pro App Service a Azure Functions (preview)
 
@@ -38,6 +38,8 @@ Za účelem čtení tajných kódů z trezoru klíčů, budete muset vytvořit t
    > Key Vault odkazuje na aktuálně jenom podporu systém přiřadil spravovaných identit. Uživatelsky přiřazené identity nelze použít.
 
 1. Vytvoření [zásady ve službě Key Vault přístupu](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies) pro identitu aplikací, které jste vytvořili dříve. Povolte oprávnění tajného kódu "Get" na tuto zásadu. Neprovádějte konfiguraci "oprávnění aplikace" nebo `applicationId` nastavení, jako to není kompatibilní s spravovanou identitu.
+
+    Udělení přístupu k aplikaci identity ve službě key vault je jednorázová operace a zůstane stejný pro všechna předplatná Azure. Můžete ji nasadit libovolný počet certifikátů, jak chcete. 
 
 ## <a name="reference-syntax"></a>Odkaz syntaxe
 

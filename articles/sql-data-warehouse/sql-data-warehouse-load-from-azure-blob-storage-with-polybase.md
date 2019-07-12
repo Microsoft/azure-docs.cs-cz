@@ -6,16 +6,16 @@ author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: load data
+ms.subservice: load-data
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: eb52169fc522ba323f82c42d9505571b18f49f1b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b96b65b7dd38900fccb8d5d3a9133f37ee93949f
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66244482"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595524"
 ---
 # <a name="load-contoso-retail-data-to-azure-sql-data-warehouse"></a>Načtení dat maloobchodního prodeje Contoso do služby Azure SQL Data Warehouse
 
@@ -27,7 +27,7 @@ V tomto kurzu provedete následující:
 2. Načíst veřejná data do databáze
 3. Po dokončení zatížení, proveďte optimalizace.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 Ke spuštění v tomto kurzu, budete potřebovat účet Azure, který už má SQL Data Warehouse. Pokud nemáte zřízené datový sklad, přečtěte si téma [vytvořit SQL Data Warehouse a nastavit pravidlo brány firewall na úrovni serveru][Create a SQL Data Warehouse].
 
 ## <a name="1-configure-the-data-source"></a>1. Konfigurace zdroje dat
@@ -72,7 +72,7 @@ WITH (
 ```
 
 ### <a name="12-create-the-external-data-source"></a>1.2. Vytvoření externího zdroje dat.
-Použijte tento [CREATE EXTERNAL DATA SOURCE] [ CREATE EXTERNAL DATA SOURCE] příkaz k uložení umístění dat a typu dat. 
+Použijte tento [CREATE EXTERNAL DATA SOURCE][CREATE EXTERNAL DATA SOURCE] příkaz k uložení umístění dat a typu dat. 
 
 ```sql
 CREATE EXTERNAL DATA SOURCE AzureStorage_west_public
@@ -89,7 +89,7 @@ WITH
 > 
 
 ## <a name="2-configure-data-format"></a>2. Konfigurovat formát dat
-Data uložená v textových souborů ve službě Azure blob storage a každé pole je oddělené oddělovačem. V aplikaci SSMS, spusťte následující příkaz [CREATE EXTERNAL FILE FORMAT] [ CREATE EXTERNAL FILE FORMAT] příkaz k určení formátu dat v textových souborech. Nekomprimovaná data společnosti Contoso a oddělené kanálu.
+Data uložená v textových souborů ve službě Azure blob storage a každé pole je oddělené oddělovačem. V aplikaci SSMS, spusťte následující příkaz [CREATE EXTERNAL FILE FORMAT][CREATE EXTERNAL FILE FORMAT] příkaz k určení formátu dat v textových souborech. Nekomprimovaná data společnosti Contoso a oddělené kanálu.
 
 ```sql
 CREATE EXTERNAL FILE FORMAT TextFileFormat 
@@ -213,7 +213,7 @@ GO
 ```
 
 ### <a name="42-load-the-data-into-new-tables"></a>4.2. Načtení dat do nové tabulky
-Načtení dat z Azure blob storage do tabulky datového skladu, použijte [CREATE TABLE AS SELECT (Transact-SQL)] [ CREATE TABLE AS SELECT (Transact-SQL)] příkazu. Načítání s CTAS využívá silného typu externí tabulky, kterou jste vytvořili. Chcete-li do nové tabulky načíst data, použijte jednu [CTAS] [ CTAS] příkaz jednu tabulku. 
+Načtení dat z Azure blob storage do tabulky datového skladu, použijte [CREATE TABLE AS SELECT (Transact-SQL)][CREATE TABLE AS SELECT (Transact-SQL)] statement. Loading with CTAS leverages the strongly typed external tables you've created. To load the data into new tables, use one [CTAS][CTAS] příkaz jednu tabulku. 
  
 Funkce CTAS vytvoří novou tabulku a naplní ji výsledky příkazu select. Funkce CTAS definuje novou tabulku pro mají stejné sloupce a datové typy jako výsledky příkazu select. Je-li vybrat všechny sloupce z externí tabulky, bude nová tabulka repliky sloupců a datové typy v externí tabulky.
 
@@ -276,12 +276,12 @@ ALTER INDEX ALL ON [cso].[DimProduct]               REBUILD;
 ALTER INDEX ALL ON [cso].[FactOnlineSales]          REBUILD;
 ```
 
-Další informace o zachování indexy columnstore, najdete v článku [spravovat indexy columnstore] [ manage columnstore indexes] článku.
+Další informace o zachování indexy columnstore, najdete v článku [spravovat indexy columnstore][manage columnstore indexes] článku.
 
 ## <a name="6-optimize-statistics"></a>6. Optimalizace statistiky
 Doporučujeme vytvořit jednosloupcovou statistiku okamžitě po zatížení. Pokud víte, že některé sloupce se bude v predikátech dotazu, můžete přeskočit vytvoření statistiky pro tyto sloupce. Pokud vytvoříte jednosloupcovou statistiku pro každý sloupec, může trvat dlouhou dobu znovu sestavit všechny statistiky. 
 
-Pokud se rozhodnete vytvořit jednosloupcovou statistiku pro každý sloupec každé tabulky, můžete použít vzorek kódu uloženou proceduru `prc_sqldw_create_stats` v [statistiky] [ statistics] článku.
+Pokud se rozhodnete vytvořit jednosloupcovou statistiku pro každý sloupec každé tabulky, můžete použít vzorek kódu uloženou proceduru `prc_sqldw_create_stats` v [statistiky][statistics] článku.
 
 V následujícím příkladu je dobrým výchozím bodem pro vytváření statistik. Vytvoří jednosloupcovou statistiku pro každý sloupec v tabulce dimenzí a pro každý sloupec spojovacího v tabulkách faktů. Můžete vždy přidat jeden nebo více sloupci statistiky ostatním sloupcům tabulky faktů později.
 

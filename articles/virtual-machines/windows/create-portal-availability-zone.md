@@ -4,7 +4,7 @@ description: Vytvoření virtuálního počítače s Windows v zóně dostupnost
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: dlepow
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/27/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: e813b26a91d25fbaa1298acd455f27d2cac705f6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 15dd81b6d222c811fe26ec693927355ebdeb47ee
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61403631"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67719033"
 ---
 # <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-the-azure-portal"></a>Vytvoření virtuálního počítače s Windows v zóně dostupnosti s využitím webu Azure portal
 
@@ -29,7 +29,7 @@ Tento článek obsahuje kroky k vytvoření virtuálního počítače v zóně d
 
 Pokud chcete využít zóny dostupnosti, vytvořte virtuální počítač v [podporované oblasti Azure](../../availability-zones/az-overview.md#services-support-by-region).
 
-## <a name="sign-in-to-azure"></a>Přihlásit se k Azure 
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure 
 
 Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
@@ -73,6 +73,6 @@ Můžete potvrdit nastavení zón pro tyto prostředky na portálu.
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto článku jste zjistili, jak vytvořit virtuální počítač v zóně dostupnosti. Přečtěte si další informace o [oblastech a dostupnosti](regions-and-availability.md) pro virtuální počítače Azure.

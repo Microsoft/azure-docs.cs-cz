@@ -6,14 +6,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 01/08/2019
+ms.date: 07/07/2019
 ms.author: dacurwin
-ms.openlocfilehash: c4e79d166d92a88934e5c5330ca852da8900c6f3
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: aecad4273493cd573935c78cae51bd0f59461e2e
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275561"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67806968"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – nejčastější dotazy
 Tento článek obsahuje odpovědi na běžné dotazy týkající se služby Azure Backup.
@@ -51,37 +51,6 @@ Ne. Trezor služby Recovery Services můžete pouze změnit možnosti úložišt
 - Pro agenta pro zálohování Azure file složky, najdete v tomto [nejčastější dotazy k](backup-azure-file-folder-backup-faq.md).
 
 
-## <a name="vmware-and-hyper-v-backup"></a>Zálohování VMware a Hyper-V
-
-### <a name="can-i-back-up-vmware-vcenter-servers-to-azure"></a>Je možné zálohovat servery VMware vCenter do Azure?
-Ano. Použití Azure Backup serveru k zálohování serveru VMware vCenter a ESXi do Azure.
-
-- [Další informace](backup-mabs-protection-matrix.md) informace o podporovaných verzích.
-- [Postupujte podle těchto kroků](backup-azure-backup-server-vmware.md) k zálohování serveru VMware.
-
-### <a name="do-i-need-a-separate-license-to-recover-an-full-on-premises-vmwarehyper-v-cluster"></a>Potřebuji obnovit cluster VMware nebo Hyper-V úplná místní samostatné licence?
-Není potřebujete samostatné licencování pro ochranu VMware nebo Hyper-V.
-
-- Pokud jste zákazníkem produktu System Center, použijte System Center Data Protection Manager (DPM) k ochraně virtuálních počítačů VMware.
-- Pokud si nejste zákazník System Center, můžete použít Azure Backup serveru (průběžné platby) k ochraně virtuálních počítačů VMware.
-
-## <a name="dpm-and-azure-backup-server-backup"></a>Zálohování aplikace DPM a Azure Backup Server
-
-### <a name="which-dpm-versions-are-supported"></a>Které aplikace DPM verze se podporují?
-Podporované verze DPM jsou shrnuté v [systém podpory replikace z](backup-azure-dpm-introduction.md#prerequisites-and-limitations). Doporučujeme nainstalovat nejnovější aktualizace aplikace DPM a spustit [nejnovější verzi](https://aka.ms/azurebackup_agent) agenta Azure Backup na serveru DPM.
-
-### <a name="can-i-register-the-server-to-multiple-vaults"></a>Můžete zaregistrovat server pro více trezorů?
-Ne. Na server DPM nebo Azure Backup lze zaregistrovat pouze pro jeden trezor.
-
-### <a name="can-i-use-azure-backup-server-to-create-a-bare-metal-recovery-bmr-backup-for-a-physical-server-br"></a>Mohu použít server Azure Backup k vytvoření zálohy úplného obnovení (BMR) pro fyzický server? <br/>
-Ano.
-
-### <a name="can-i-use-dpm-to-back-up-apps-in-azure-stack"></a>Můžete použít aplikace DPM k zálohování aplikace ve službě Azure Stack?
-Ne. Azure Backup můžete použít k ochraně služby Azure Stack, Azure Backup nepodporuje použití DPM k zálohování aplikace ve službě Azure Stack.
-
-### <a name="if-ive-installed-azure-backup-agent-to-protect-my-files-and-folders-can-i-install-system-center-dpm-to-back-up-on-premises-workloads-to-azure"></a>Pokud je nainstalován agent Azure Backup chránit soubory a složky, je možné nainstalovat System Center DPM k zálohování místních úloh do Azure?
-Ano. Ale doporučujeme nejprve nastavení aplikace DPM a potom nainstalovat agenta Azure Backup.  Instalují se součásti v tomto pořadí zajistí, že Azure Backup agent bude fungovat s DPM. Instalace agenta před instalací aplikace DPM se nedoporučuje nebo nepodporuje.
-
 ## <a name="general-backup"></a>Obecné zálohování
 
 ### <a name="are-there-limits-on-backup-scheduling"></a>Existují omezení pro plánování zálohování?
@@ -118,7 +87,7 @@ Zálohování virtuálních počítačů Azure s Linuxem, Azure Backup podporuje
 Omezení velikosti jsou následující:
 
 / Počítači s operačním systémem | Maximální velikost zdroje dat
---- | --- 
+--- | ---
 Windows 8 nebo novější | 54 400 GB
 Windows 7 |1700 GB
 Windows Server 2012 nebo novější | 54 400 GB
@@ -185,7 +154,7 @@ Na jednu chráněnou instanci je možné vytvořit až 9 999 bodů obnovení. C
 - Další informace o [zálohování a uchovávání](./backup-overview.md#backup-and-retention).
 
 
-### <a name="how-many-times-can-i-recovery-data-thats-backed-up-to-azure"></a>Tom, kolikrát je možné obnovení dat zálohovaných do Azure?
+### <a name="how-many-times-can-i-recover-data-thats-backed-up-to-azure"></a>Jak často můžu obnovit data, která se zálohuje do Azure?
 Počet obnovení z Azure Backup není omezený.
 
 ### <a name="when-restoring-data-do-i-pay-for-the-egress-traffic-from-azure"></a>Platí se za výchozí přenos z Azure při obnovování dat?

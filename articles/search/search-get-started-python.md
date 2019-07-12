@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý start Pythonu: Vytvoření, načtení a dotazování indexů Azure Search REST API – Azure Search pomocí'
 description: Vysvětluje, jak vytvořit index, načtení dat a spouštění dotazů pomocí Pythonu, poznámkové bloky Jupyter a rozhraní REST API Azure Search.
-ms.date: 06/20/2019
+ms.date: 07/09/2019
 author: heidisteen
 manager: cgronlun
 ms.author: heidist
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 613879abd4c5c09450b690b793500a99428cff29
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
-ms.translationtype: MT
+ms.openlocfilehash: 39ff269c582a2d981d8fb30e09a550813a262eca
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485474"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798733"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-python-using-jupyter-notebooks"></a>Rychlý start: Vytvoření indexu Azure Search v Pythonu pomocí poznámkových bloků Jupyter
 > [!div class="op_single_selector"]
@@ -295,26 +295,13 @@ Tento krok ukazuje, jak zadávat dotazy na index pomocí [REST API služby Searc
    searchstring = '&search=pool&$orderby=Address/City&$select=HotelId, HotelName, Address/City, Address/StateProvince, Tags'
    ```
 
-## <a name="clean-up"></a>Vyčištění 
+## <a name="clean-up"></a>Vyčištění
 
-Index by měl odstranit, pokud ho už nepotřebují. Bezplatná služba je omezena na tři indexy. Odstraňte všechny indexy, které nepoužíváte aktivně aby uvolnil prostor pro další kurzy.
+Pokud pracujete ve svém vlastním předplatném, je vhodné na konci projektu a zjistěte, jestli stále potřebují prostředky, že kterou jste vytvořili. Levé může spuštěné prostředky nákladů peníze. Můžete odstranit prostředky jednotlivě nebo odstranit skupinu prostředků, kterou chcete odstranit celou sadu prostředků.
 
-Nejjednodušší způsob, jak odstranit objekty je prostřednictvím portálu, ale protože Python quickstart, syntaxi vrací stejný výsledek:
+Můžete najít a spravovat prostředky na portálu pro použití **všechny prostředky** nebo **skupiny prostředků** odkaz v levém navigačním podokně.
 
-   ```python
-  url = endpoint + "indexes/hotels-quickstart" + api_version
-  response  = requests.delete(url, headers=headers)
-   ```
-
-Odstranění indexu můžete ověřit tak, že probíhá vyžádání seznamu stávající indexy. Pokud je pryč hotels-quickstart, víte vaše žádost byla úspěšná.
-
-```python
-url = endpoint + "indexes" + api_version + "&$select=name"
-
-response  = requests.get(url, headers=headers)
-index_list = response.json()
-pprint(index_list)
-```
+Pokud používáte bezplatné služby, mějte na paměti, že jste omezeni na tři indexy, indexery a datového zdroje. Můžete odstranit jednotlivé položky na portálu, abychom dodrželi omezení. 
 
 ## <a name="next-steps"></a>Další postup
 

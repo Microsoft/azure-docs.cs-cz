@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bd117b79c2d103225e8f1f29b63eb6ae341031d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3b4879093ed80a554219b053cc5a2bc895126725
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64917662"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67702895"
 ---
 # <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Azure AD ochrana heslem v místním – nejčastější dotazy
 
@@ -26,7 +26,7 @@ ms.locfileid: "64917662"
 
 Aktuální pokyny Microsoftu k tomuto tématu najdete na následující odkaz:
 
-[Pokyny Microsoftu heslo](https://www.microsoft.com/en-us/research/publication/password-guidance)
+[Pokyny Microsoftu heslo](https://www.microsoft.com/research/publication/password-guidance)
 
 **Otázka: Je místní ochrana hesel Azure AD nepodporuje v jiných veřejných cloudech?**
 
@@ -43,6 +43,10 @@ Změna hesla se, když uživatel vybere nové heslo po prokázání, že budou m
 Nastavení hesla (říká se jim resetování hesla) je, když správce nahrazuje heslo pro účet s novým heslem, například pomocí nástroje správy Active Directory Users and Computers. Tato operace vyžaduje vysokou úroveň oprávnění (obvykle správce domény) a osoba provádějící operaci obvykle nemá žádné znalosti o staré heslo. Scénáře technické podpory to často udělat, například když pomáhám uživatel, který se zapomněl svoje heslo. Zobrazí se také, že události, kdy je úplně nový uživatelský účet se vytváří první přihlášení pomocí hesla nastavené heslo.
 
 Zásady ověření hesla se chová stejně bez ohledu na to, jestli se provádí změny hesla nebo set. Služba agenta ochrany DC hesel služby Azure AD protokolovat různé události do poznáte, zda změna hesla nebo bylo provedeno operaci set.  Zobrazit [ochrana hesel Azure AD, monitorování a protokolování](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-monitor).
+
+**Otázka: Proč se používají při pokusu o nastavení slabé heslo do protokolu zaznamenána události zamítnutí duplicitní hesla Active Directory Users and Computers modul snap-in Správa?**
+
+Uživatelé služby Active Directory a modul snap-in správy počítače se nejdřív pokusí použít pro nastavení nového hesla pomocí protokolu Kerberos. Po selhání modulu snap-in způsobí, že druhý pokus o nastavení hesla pomocí starší verze protokolu (SAM vzdáleného volání Procedur) (konkrétní protokolů nejsou důležité). Pokud nové heslo je považován za slabé ochrana hesel Azure AD, výsledkem bude dvě sady právě protokolované události zamítnutí resetování hesla.
 
 **Otázka: Je podporováno nainstalovat ochranu hesel služby Azure AD souběžně s jinými produkty pomocí filtru hesla?**
 

@@ -8,18 +8,18 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/31/2019
-ms.openlocfilehash: 17214bb4904cc540de0a7d6f753b7e70abfa564c
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: ef2a55b377c2ca48b9417310926a014a82f679d7
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443647"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621881"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Vysvětlení vytvořené jako výstupy z Azure Stream Analytics
 
 Tento článek popisuje typy výstupy, které jsou k dispozici pro úlohy Azure Stream Analytics. Výstupy umožňují ukládat a uložit výsledky úlohy Stream Analytics. Když použijete výstupní data, můžete provést další obchodní analýzy a skladování dat vaše data.
 
-Při návrhu dotazu Stream Analytics, odkazovat na název výstupu pomocí [klauzule INTO](https://msdn.microsoft.com/azure/stream-analytics/reference/into-azure-stream-analytics). Můžete použít jeden výstup na úlohu nebo více výstupů na úlohu streamování (Pokud je potřebujete) tím, že poskytuje více klauzulí INTO v dotazu.
+Při návrhu dotazu Stream Analytics, odkazovat na název výstupu pomocí [klauzule INTO](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics). Můžete použít jeden výstup na úlohu nebo více výstupů na úlohu streamování (Pokud je potřebujete) tím, že poskytuje více klauzulí INTO v dotazu.
 
 K vytváření, úpravám a testovací úlohy Stream Analytics výstupy, můžete použít [webu Azure portal](stream-analytics-quick-create-portal.md#configure-job-output), [prostředí Azure PowerShell](stream-analytics-quick-create-powershell.md#configure-output-to-the-job), [rozhraní .NET API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations?view=azure-dotnet), [rozhraní REST API](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-output), a [sady Visual Studio](stream-analytics-quick-create-vs.md).
 
@@ -37,7 +37,7 @@ Následující tabulka uvádí názvy vlastností a jejich popisy nakonfigurovat
 | Název vlastnosti | Popis |
 | --- | --- |
 | Alias pro výstup | Popisný název používaný v dotazech na přímé dotazování výstup do Data Lake Store. |
-| Předplatné | Předplatné obsahující účet Azure Data Lake Storage. |
+| Subscription | Předplatné obsahující účet Azure Data Lake Storage. |
 | Název účtu | Název účtu Data Lake Store, které e-mail posíláte výstupu. Zobrazí se rozevírací seznam účtů Data Lake Store, které jsou k dispozici v rámci vašeho předplatného. |
 | Vzor předpony cesty | Cesta k souboru, který se používá k zápisu souborů v rámci zadaného účtu Data Lake Store. Můžete zadat jednu nebo víc instancí {date} a {time} proměnné:<br /><ul><li>Příklad 1: složku1/logs / {date} / {time}</li><li>Příklad 2: složku1/logs / {date}</li></ul><br />Časové razítko struktura vytvořená složka se řídí není místním časem a UTC.<br /><br />Pokud vzor cesty souboru nemůže obsahovat koncové lomítko (/), je považován za předponu názvu souboru poslední vzorek v cestě k souboru. <br /><br />Vytvoří se nové soubory v těchto případech:<ul><li>Změna v schéma výstupu</li><li>Externí nebo interní restartovat úlohy</li></ul> |
 | Formát data | Volitelné. Pokud v předponová cesta se používá token kalendářního data, můžete vybrat formát data, ve kterém jsou uspořádány souborů. Příklad: RRRR/MM/DD |
@@ -149,7 +149,7 @@ Power BI používá first-in FIFO (FIFO) zásady uchovávání informací. V tab
 ### <a name="convert-a-data-type-from-stream-analytics-to-power-bi"></a>Převést typ dat ze služby Stream Analytics na Power BI
 Azure Stream Analytics aktualizuje datový model dynamicky za běhu, pokud se změní schéma výstupu. Změny názvů sloupců, změny typu sloupce a přidání nebo odebrání sloupců jsou všechny sledovány.
 
-Tato tabulka popisuje převody typů dat z [Stream Analytics datové typy](https://msdn.microsoft.com/library/azure/dn835065.aspx) do Power BI [typy Entity Data Model (EDM)](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model), pokud neexistují tabulky a datová sada Power BI.
+Tato tabulka popisuje převody typů dat z [Stream Analytics datové typy](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics) do Power BI [typy Entity Data Model (EDM)](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model), pokud neexistují tabulky a datová sada Power BI.
 
 Ze služby Stream Analytics | Do Power BI
 -----|-----
@@ -169,8 +169,8 @@ Předchozí nebo aktuální | Int64 | Řetězec | Datum a čas | Double
 -----------------|-------|--------|----------|-------
 Int64 | Int64 | Řetězec | Řetězec | Double
 Double | Double | Řetězec | Řetězec | Double
-Řetězec | Řetězec | Řetězec | Řetězec | Řetězec 
-Datum a čas | Řetězec | Řetězec |  Datum a čas | String
+Řetězec | String | String | String | Řetězec 
+Datum a čas | Řetězec | Řetězec |  Datum a čas | Řetězec
 
 ## <a name="table-storage"></a>Úložiště Table
 

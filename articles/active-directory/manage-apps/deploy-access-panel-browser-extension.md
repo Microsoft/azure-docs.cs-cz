@@ -15,12 +15,12 @@ ms.date: 11/08/2018
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf665362e2d20f26c17e8a4ae9da29fc30cb47ce
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 71c342ede77349b3f6c22093e5877ad5f5ce6549
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67481293"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807685"
 ---
 # <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>Postup: Nasazení rozšíření přístupový Panel pro aplikaci Internet Explorer pomocí zásad skupiny
 
@@ -43,9 +43,11 @@ Nejprve je nutné umístit je balíček Instalační služby v umístění v sí
 1. V **správce serveru** okno, přejděte na **soubory a služby úložiště**.
 
     ![Otevřené soubory a služby úložiště](./media/deploy-access-panel-browser-extension/files-services.png)
+
 1. Přejděte **sdílené složky** kartu. Pak klikněte na tlačítko **úlohy** > **novou sdílenou složku...**
 
-    ![Otevřené soubory a služby úložiště](./media/deploy-access-panel-browser-extension/shares.png)
+    ![Snímek obrazovky ukazuje, kde se mají hledat novou sdílenou složku z obrazovky úlohy](./media/deploy-access-panel-browser-extension/shares.png)
+
 1. Dokončení **Průvodce vytvořením nové sdílené složky** a nastavit oprávnění a ujistěte se, že byla přístupná z vašich uživatelů počítačů. [Další informace o sdílených složek.](https://technet.microsoft.com/library/cc753175.aspx)
 1. Stáhněte následující balíček Instalační služby systému Windows (soubor .msi): [Access Panel Extension.msi](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)
 1. Zkopírujte instalační balíček do požadovaného umístění ve sdílené složce.
@@ -80,13 +82,14 @@ Nejprve je nutné umístit je balíček Instalační služby v umístění v sí
 
    * `Computer Configuration/Policies/Software Settings/`
    * `User Configuration/Policies/Software Settings/`
+
 1. Klikněte pravým tlačítkem na **instalace softwaru**a pak vyberte **nový** > **balíčku...**
 1. Přejděte do sdílené složky, která obsahuje balíček instalačního programu z [krok 1: Vytvoření distribučního bodu](#step-1-create-the-distribution-point), vyberte soubor MSI a klikněte na tlačítko **otevřít**.
 
    > [!IMPORTANT]
    > Pokud je na tomto serveru stejné sdílené složce, ověřte, že při přístupu k souboru MSI přes síťovou cestu souboru, nikoli cestu k místnímu souboru.
 
-    ![Vyberte instalační balíček ze sdílené složky.](./media/deploy-access-panel-browser-extension/select-package.png)
+    ![Vyberte instalační balíček ze sdílené složky](./media/deploy-access-panel-browser-extension/select-package.png)
 
 1. V **nasazením softwaru** příkazový řádek, vyberte **přiřazeno** pro metodu nasazení. Pak klikněte na **OK**.
 
@@ -100,6 +103,7 @@ Kromě spuštění instalačního programu, každý pro aplikaci Internet Explor
 
    * `Computer Configuration/Policies/Administrative Templates/Windows Components/Internet Explorer/Security Features/Add-on Management`
    * `User Configuration/Policies/Administrative Templates/Windows Components/Internet Explorer/Security Features/Add-on Management`
+
 1. Klikněte pravým tlačítkem na **seznam doplňků**a vyberte **upravit**.
 
     ![Klikněte pravým tlačítkem myši klikněte na tlačítko "Doplněk seznam" a vyberte "Edit"](./media/deploy-access-panel-browser-extension/edit-add-on-list.png)
@@ -111,8 +115,8 @@ Kromě spuštění instalačního programu, každý pro aplikaci Internet Explor
 1. V **zobrazit obsah** okno, proveďte následující kroky:
 
    1. První sloupec ( **název hodnoty** pole), zkopírujte a vložte následující ID třídy: `{030E9A3F-7B18-4122-9A60-B87235E4F59E}`
-   2. Pro druhý sloupec ( **hodnotu** pole), zadejte následující hodnotu: `1`
-   3. Klikněte na tlačítko **OK** zavřete **zobrazit obsah** okno.
+   1. Pro druhý sloupec ( **hodnotu** pole), zadejte následující hodnotu: `1`
+   1. Klikněte na tlačítko **OK** zavřete **zobrazit obsah** okno.
 
       ![Vyplňte následující hodnoty, jak je uvedeno v předchozím kroku](./media/deploy-access-panel-browser-extension/show-contents.png)
 
@@ -160,7 +164,7 @@ Postupujte podle kroků níže. Tím ověříte, jestli rozšíření nasazení 
 1. Po restartování počítače, otevřete **aplikace Internet Explorer**. V pravém horním rohu okna, klikněte na **nástroje** (ikona ozubeného kolečka) a pak vyberte **spravovat doplňky**.
 1. V **spravovat doplňky** okna, ověřte, že **rozšíření přístupového panelu** byla nainstalována a že jeho **stav** byla nastavena na **povoleno**.
 
-   ![Ověřte, že rozšíření přístupového panelu je nainstalován a povolen.](./media/deploy-access-panel-browser-extension/verify-install.png)
+   ![Ověřte, že je nainstalovaný a povolený rozšíření přístupového panelu](./media/deploy-access-panel-browser-extension/verify-install.png)
 
 ## <a name="learn-more"></a>Víc se uč
 

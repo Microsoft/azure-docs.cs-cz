@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: mbullwin
-ms.openlocfilehash: 7fe5a4f5a5d1d254918f1b4f997acfb9cf67a75b
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 5ea7ec41ccc721e8eafda56aa7463505ba089845
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67272441"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827813"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights pro aplikace ASP.NET Core
 
@@ -177,7 +177,7 @@ Pokud projekt neobsahuje `_Layout.cshtml`, můžete přesto přidat [monitorová
 Můžete přizpůsobit sadu Application Insights SDK pro ASP.NET Core, chcete-li změnit výchozí konfiguraci. Uživatele sadu SDK Application Insights technologie ASP.NET pravděpodobně znáte změna konfigurace s použitím `ApplicationInsights.config` nebo úpravou `TelemetryConfiguration.Active`. Můžete změnit konfiguraci pro ASP.NET Core. Přidat do aplikace ASP.NET Core SDK a konfigurovat pomocí ASP.NET Core integrované [injektáž závislostí](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection). Provést téměř všechny změny konfigurace v `ConfigureServices()` metodu vaše `Startup.cs` třídy, pokud jste přesměrováni jinak. Následující části poskytují další informace.
 
 > [!NOTE]
-> V aplikacích ASP.NET Core, změna konfigurace tak, že upravíte `TelemetryConfiguration.Active` se nedoporučuje.
+> V aplikacích ASP.NET Core, změna konfigurace tak, že upravíte `TelemetryConfiguration.Active` se nepodporuje.
 
 ### <a name="using-applicationinsightsserviceoptions"></a>Using ApplicationInsightsServiceOptions
 
@@ -314,6 +314,23 @@ using Microsoft.ApplicationInsights.Channel;
     }
 ```
 
+### <a name="disable-telemetry-dynamically"></a>Zakázat telemetrii dynamicky
+
+Pokud chcete zakázat telemetrii podmíněně a dynamicky, lze vyřešit `TelemetryConfiguration` instanci s ASP.NET Core kontejneru pro vkládání závislosti kdekoli v kódu a nastavte `DisableTelemetry` příznak na něj.
+
+```csharp
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddApplicationInsightsTelemetry();
+    }
+
+    public void Configure(IApplicationBuilder app, IHostingEnvironment env, TelemetryConfiguration configuration)
+    {
+        configuration.DisableTelemetry = true;
+        ...
+    }
+```
+
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
 ### <a name="how-can-i-track-telemetry-thats-not-automatically-collected"></a>Jak mohu sledovat telemetrická data, která se automaticky shromažďují?
@@ -408,3 +425,4 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 * [Konfigurace shromažďování snímků](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger) zobrazíte stav zdrojového kódu a proměnné v tuto chvíli dojde k výjimce.
 * [Použití rozhraní API](../../azure-monitor/app/api-custom-events-metrics.md) k odesílání vlastních událostí a metrik pro podrobné zobrazení výkonu a využití vaší aplikace.
 * Použití [testy dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md) ke kontrole neustále z aplikace po celém světě.
+* [Injektáž závislostí v ASP.NET Core](https://docs.microsoft.com/aspnet/fundamentals/dependency-injection)

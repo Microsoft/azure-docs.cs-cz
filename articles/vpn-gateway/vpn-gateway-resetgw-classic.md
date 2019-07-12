@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 02/14/2019
+ms.date: 07/05/2019
 ms.author: cherylmc
-ms.openlocfilehash: 54b89b74017b8d5d6e4bd1b52c6b3986d2802702
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9744a4b7bc5d2e9ce22bfa14ea33a2b11dacda85
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60457197"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612453"
 ---
 # <a name="reset-a-vpn-gateway"></a>Resetování brány VPN Gateway
 
@@ -24,7 +24,7 @@ Brány VPN se skládá ze dvou instancí virtuálních počítačů, které jsou
 
 Když vydáte příkaz k resetování brány, se okamžitě resetuje právě aktivní instance brány Azure VPN. Během převzetí služeb můžete pohotovostní instancí od aktivní instance (která se resetuje), bude ke krátké prodlevě. Prodleva by neměla být delší než jedna minuta.
 
-Pokud po prvním resetování nedojde k obnovení připojení, znovu vydejte stejný příkaz pro resetování druhé instance virtuálního počítače (nové aktivní brány). Pokud se vyžadují dvě restartování za sebou, bude doba, po kterou se obě instance virtuálního počítače (aktivní a pohotovostní) restartují, trochu delší. To způsobí delší prodlevu propojování VPN – 2 až 4 minuty, než se dokončí resetování virtuálních počítačů.
+Pokud po prvním resetování nedojde k obnovení připojení, znovu vydejte stejný příkaz pro resetování druhé instance virtuálního počítače (nové aktivní brány). Pokud se vyžadují dvě restartování za sebou, bude doba, po kterou se obě instance virtuálního počítače (aktivní a pohotovostní) restartují, trochu delší. To způsobí delší prodlevu propojování VPN – až 30 až 45 minut, než se dokončí resetování virtuálních počítačů.
 
 Po dvou resetováních Pokud stále máte problémy s připojením mezi různými místy, otevřete prosím prostřednictvím žádosti o podporu z portálu Azure portal.
 

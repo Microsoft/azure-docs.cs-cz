@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: aadfae9a7b74986fd0ac8857669dd3ccaf62af1f
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: ebc41fc74d24708a177bf554029df8384c49df05
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67166147"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657237"
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>Použití Azure HDInsight Tools pro Visual Studio Code
 
@@ -304,20 +304,20 @@ Odešlete soubor, Všimněte si, že složka .vscode je automaticky přidán do 
     | name | description | type | 
     | :- | :- | :- | 
     | file | Soubor obsahující aplikaci k provedení | Cesta (povinné) | 
-    | proxyUser | Uživatel k zosobnění při spuštění úlohy | string | 
-    | className | Hlavní třída Java/Spark aplikace | string |
+    | proxyUser | Uživatel k zosobnění při spuštění úlohy | řetězec | 
+    | className | Hlavní třída Java/Spark aplikace | řetězec |
     | args | Argumenty příkazového řádku pro aplikaci | seznam řetězců | 
     | jars | Kromě souborů JAR pro použití v této relaci | Seznam řetězců | 
     | pyFiles | Soubory Pythonu, který se má použít v této relaci | Seznam řetězců |
     | files | soubory, který se má použít v této relaci | Seznam řetězců |
-    | driverMemory | Velikost paměti pro účely driver procesu | string |
+    | driverMemory | Velikost paměti pro účely driver procesu | řetězec |
     | driverCores | Počet jader pro účely driver procesu | int |
-    | executorMemory | Množství paměti podle proces prováděcího modulu | string |
+    | executorMemory | Množství paměti podle proces prováděcího modulu | řetězec |
     | executorCores | Počet jader pro každý prováděcího modulu | int |
     | numExecutors | Počtu prováděcích procesů ke spuštění pro tuto relaci | int |
     | archives | Archivuje se použije v této relaci | Seznam řetězců |
-    | queue | Název fronty YARN, ke které odeslání | string |
-    | name | Název této relace | string |
+    | queue | Název fronty YARN, ke které odeslání | řetězec |
+    | name | Název této relace | řetězec |
     | conf | Vlastnosti konfigurace Spark | Mapování klíč = val |
 
     Text odpovědi   
@@ -326,10 +326,10 @@ Odešlete soubor, Všimněte si, že složka .vscode je automaticky přidán do 
     | name | description | type | 
     | :- | :- | :- | 
     | id | Id relace | int | 
-    | appId | Id aplikace pro tuto relaci |  String |
+    | appId | Id aplikace pro tuto relaci |  Řetězec |
     | appInfo | Informace o podrobné aplikace | Mapování klíč = val |
     | log | Řádky protokolu | seznam řetězců |
-    | state |   Stav služby batch | string |
+    | state |   Stav služby batch | řetězec |
 
 >[!NOTE]
 >Přiřazené konfigurace livy se zobrazí v podokně výstupů když odešlete skript.
@@ -436,7 +436,7 @@ Po odeslání úlohy do clusteru služby HDInsight pomocí ADLS Gen2, zobrazí s
 
 > [!NOTE]
 > 
->Přístupový klíč pro účet úložiště můžete získat z webu Azure portal. Informace najdete v tématu [zobrazení a kopírování přístupových klíčů](https://docs.microsoft.com/azure/storage/common/storage-account-manage#view-and-copy-access-keys).
+>Přístupový klíč pro účet úložiště můžete získat z webu Azure portal. Informace najdete v tématu [zobrazení a kopírování přístupových klíčů](https://docs.microsoft.com/azure/storage/common/storage-account-manage#access-keys).
 
 ## <a name="unlink-cluster"></a>Zrušit propojení clusteru
 

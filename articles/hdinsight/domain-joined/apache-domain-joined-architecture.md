@@ -8,12 +8,12 @@ ms.reviewer: omidm
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/24/2019
-ms.openlocfilehash: c227abce5adcefd16a41c5590e3ff490d138c424
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 8b8c200979b70e145fca64746547b37dee558848
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67441440"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67720433"
 ---
 # <a name="use-enterprise-security-package-in-hdinsight"></a>Použít balíček zabezpečení podniku v HDInsight
 
@@ -37,7 +37,7 @@ Automaticky vytvoří následující věci:
 
 Souhrnně řečeno, musíte nastavit prostředí pomocí:
 
-- Domény služby Active Directory (spravované službou Azure AD DS).
+- Domény služby Active Directory (spravované službou Azure AD DS). **Název domény musí být 39 znaků nebo méně pro práci s Azure HDInsight.**
 - Zabezpečený LDAP (LDAPS) povolena ve službě Azure AD DS.
 - Správné síťové připojení z virtuální sítě HDInsight do Azure AD DS virtuální sítě, pokud se rozhodnete pro ně samostatné virtuální sítě. Virtuální počítač ve virtuální síti HDInsight by měl mít dohled do služby Azure AD DS prostřednictvím partnerského vztahu virtuální sítě. Pokud HDInsight a Azure AD DS jsou nasazené ve stejné virtuální síti, připojení se automaticky k dispozici a není potřeba žádná další akce.
 
@@ -109,7 +109,7 @@ Pokud federace se právě používá a jsou správnou synchronizaci hodnot hash 
         -refObjectID $policy.ID
    ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Konfigurace clusterů HDInsight s ESP](apache-domain-joined-configure-using-azure-adds.md)
 * [Konfigurace zásad Apache Hivu pro clustery HDInsight s ESP](apache-domain-joined-run-hive.md)

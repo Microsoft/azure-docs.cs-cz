@@ -2,24 +2,25 @@
 title: Vysvětlení doporučení zabezpečení IoT ve verzi Preview pro Azure Security Center | Dokumentace Microsoftu
 description: Další informace o konceptu doporučení týkající se zabezpečení a jak se používají ve službě Azure Security Center pro IoT.
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
 ms.assetid: 02ced504-d3aa-4770-9d10-b79f80af366c
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2019
 ms.author: mlottner
-ms.openlocfilehash: 122a1585abf43d1aedc7f329cd7e41a6228f8c3e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1ee71bbacdba7a14e94de41563a04be9c0f00d13
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65200673"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67618415"
 ---
 # <a name="security-recommendations"></a>Doporučení zabezpečení
 
@@ -35,7 +36,7 @@ V tomto článku najdete seznam doporučení, která se dá spouštět na váš 
 
 Doporučení zařízení poskytují přehledy a návrhy a zlepšit stav zabezpečení zařízení. 
 
-| Severity | Name                                                      | Zdroj dat | Popis                                                                                                                                                                                           |
+| severity | Name                                                      | Zdroj dat | Popis                                                                                                                                                                                           |
 |----------|-----------------------------------------------------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Střední   | Otevření portů na zařízení                                      | Agent       | Koncový bod naslouchající našla na zařízení                                                                                                                                                          |
 | Střední   | Zásady firewallu povolující nalezeny v jednom z řetězců. | Agent       | Povolené zásady brány firewall najít (vstup/výstup). Zásady brány firewall by měla odepřít veškerý provoz ve výchozím nastavení a definovat pravidla, která povolí nezbytné komunikaci ze zařízení.                               |
@@ -47,7 +48,7 @@ Doporučení zařízení poskytují přehledy a návrhy a zlepšit stav zabezpe�
 
 Provozní doporučení poskytují přehledy a návrhy pro zlepšení zabezpečení konfigurace agenta.
 
-| Severity | Name                                    | Zdroj dat | Popis                                                                       |
+| severity | Name                                    | Zdroj dat | Popis                                                                       |
 |----------|-----------------------------------------|-------------|-----------------------------------------------------------------------------------|
 | Nízká      | Agent odesílá zemědělsky nevyužitá zprávy          | Agent       | 10 % nebo více zpráv zabezpečení byly menší než 4kb během posledních 24 hodin.  |
 | Nízká      | Není optimální konfigurace dvojčete zabezpečení | Agent       | Konfigurace zabezpečení dvojčete není ideální.                                        |
@@ -58,7 +59,7 @@ Provozní doporučení poskytují přehledy a návrhy pro zlepšení zabezpečen
 
 Doporučení výstrahy poskytují přehledy a návrhy pro akce a zlepšit stav zabezpečení vašeho prostředí.  
 
-| Severity | Název                                                     | Zdroj dat | Popis                                                                                                                                                                                                             |
+| severity | Name                                                     | Zdroj dat | Popis                                                                                                                                                                                                             |
 |----------|----------------------------------------------------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Vysoká     | Stejné ověřování přihlašovacích údajů, které používá více zařízení | IoT Hub     | Přihlašovací údaje pro ověření služby IoT Hub se používají ve více zařízeních. To může znamenat zařízení s nezákonných zosobnění legitimní zařízení. Použití přihlašovacích údajů duplicitní zvyšují riziko zosobnění zařízení podle škodlivý objekt actor. |
 | Střední   | Výchozí zásady filtru IP by měly odepřít.                  | IoT Hub     | Konfigurace IP adresy filtru by měl mít nastavená pravidla definovaná pro povolený provoz a měli byste ve výchozím nastavení, ve výchozím nastavení zakazují všechny ostatní provoz.                                                                                                     |

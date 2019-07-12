@@ -5,15 +5,15 @@ keywords: ansible, azure, devops, bash, cloudshell, playbook, bash
 ms.topic: quickstart
 ms.service: ansible
 author: tomarchermsft
-manager: jeconnoc
+manager: gwallace
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 60cefe24feab9de4262e81eb1bc313aeadc7eb05
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: d3302d999dd70a83be18ce610b9c3d44992c865c
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65409242"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671850"
 ---
 # <a name="quickstart-install-ansible-on-linux-virtual-machines-in-azure"></a>Rychlý start: Ansible nainstalovat na virtuální počítače s Linuxem v Azure
 
@@ -155,7 +155,7 @@ V této části exportujete hodnoty instančního objektu služby tak, aby nakon
     export AZURE_TENANT=<security-principal-tenant>
     ```
 
-## <a name="verify-the-configuration"></a>Zkontrolujte konfiguraci
+## <a name="verify-the-configuration"></a>Ověření konfigurace
 
 Pokud chcete ověřit úspěšné konfiguraci, použijte Ansible k vytvoření skupiny prostředků Azure.
 

@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/16/2019
-ms.openlocfilehash: b0f513462f1e09718dc18e9ce454b82e8978961f
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 88df7ae0d4e6054d82302ad5f0adabcf656cb0f5
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67329612"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620801"
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>Příklady pro běžné vzory využití Stream Analytics dotazů
 
@@ -35,7 +35,7 @@ Komplexní typy, jako jsou vnořené objekty (záznamy) nebo pole může obsahov
 
 **Vstup**:
 
-| Vytvoření | Čas | Hmotnost |
+| Vytvoření | Time | Hmotnost |
 | --- | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |"1000" |
 | Honda |2015-01-01T00:00:02.0000000Z |"2000" |
@@ -68,7 +68,7 @@ Třeba zkontrolujte, že výsledek vrátí talířů licence, které začínají
 
 **Vstup**:
 
-| Vytvoření | LicensePlate | Čas |
+| Vytvoření | LicensePlate | Time |
 | --- | --- | --- |
 | Honda |ABC-123 |2015-01-01T00:00:01.0000000Z |
 | Toyota |AAA-999 |2015-01-01T00:00:02.0000000Z |
@@ -76,7 +76,7 @@ Třeba zkontrolujte, že výsledek vrátí talířů licence, které začínají
 
 **Výstup**:
 
-| Vytvoření | LicensePlate | Čas |
+| Vytvoření | LicensePlate | Time |
 | --- | --- | --- |
 | Toyota |AAA-999 |2015-01-01T00:00:02.0000000Z |
 | Nissan |ABC-369 |2015-01-01T00:00:03.0000000Z |
@@ -100,7 +100,7 @@ Třeba zkontrolujte, že výsledek vrátí talířů licence, které začínají
 
 **Vstup**:
 
-| Vytvoření | Čas |
+| Vytvoření | Time |
 | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |
 | Toyota |2015-01-01T00:00:02.0000000Z |
@@ -108,7 +108,7 @@ Třeba zkontrolujte, že výsledek vrátí talířů licence, které začínají
 
 **Výstup**:
 
-| CarsPassed | Čas |
+| CarsPassed | Time |
 | --- | --- |
 | 1 Honda |2015-01-01T00:00:10.0000000Z |
 | 2 Toyotas |2015-01-01T00:00:10.0000000Z |
@@ -137,7 +137,7 @@ Třeba zkontrolujte, že výsledek vrátí talířů licence, které začínají
 
 **Vstup**:
 
-| Vytvoření | Čas |
+| Vytvoření | Time |
 | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |
 | Honda |2015-01-01T00:00:02.0000000Z |
@@ -147,7 +147,7 @@ Třeba zkontrolujte, že výsledek vrátí talířů licence, které začínají
 
 **Output1**:
 
-| Vytvoření | Čas |
+| Vytvoření | Time |
 | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |
 | Honda |2015-01-01T00:00:02.0000000Z |
@@ -157,7 +157,7 @@ Třeba zkontrolujte, že výsledek vrátí talířů licence, které začínají
 
 **Output2**:
 
-| Vytvoření | Čas | Count |
+| Vytvoření | Time | Count |
 | --- | --- | --- |
 | Toyota |2015-01-01T00:00:10.0000000Z |3 |
 
@@ -211,7 +211,7 @@ Příklad:
 
 **Vstup**:
 
-| Vytvoření | Čas |
+| Vytvoření | Time |
 | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |
 | Honda |2015-01-01T00:00:02.0000000Z |
@@ -221,7 +221,7 @@ Příklad:
 
 **Výstup:**
 
-| CountMake | Čas |
+| CountMake | Time |
 | --- | --- |
 | 2 |2015-01-01T00:00:02.000Z |
 | 1 |2015-01-01T00:00:04.000Z |
@@ -247,14 +247,14 @@ GROUP BY
 
 **Vstup**:
 
-| Vytvoření | Čas |
+| Vytvoření | Time |
 | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |
 | Toyota |2015-01-01T00:00:02.0000000Z |
 
 **Výstup**:
 
-| Vytvoření | Čas |
+| Vytvoření | Time |
 | --- | --- |
 | Toyota |2015-01-01T00:00:02.0000000Z |
 
@@ -278,7 +278,7 @@ GROUP BY
 
 **Vstup**:
 
-| LicensePlate | Vytvoření | Čas |
+| LicensePlate | Vytvoření | Time |
 | --- | --- | --- |
 | DXE 5291 |Honda |2015-07-27T00:00:05.0000000Z |
 | YZK 5704 |Ford |2015-07-27T00:02:17.0000000Z |
@@ -290,7 +290,7 @@ GROUP BY
 
 **Výstup**:
 
-| LicensePlate | Vytvoření | Čas |
+| LicensePlate | Vytvoření | Time |
 | --- | --- | --- |
 | DXE 5291 |Honda |2015-07-27T00:00:05.0000000Z |
 | QYF 9358 |Honda |2015-07-27T00:12:02.0000000Z |
@@ -310,7 +310,7 @@ GROUP BY
 
 Teď můžeme změnit problém a najít první auto konkrétní značku v každé každých 10 minut.
 
-| LicensePlate | Vytvoření | Čas |
+| LicensePlate | Vytvoření | Time |
 | --- | --- | --- |
 | DXE 5291 |Honda |2015-07-27T00:00:05.0000000Z |
 | YZK 5704 |Ford |2015-07-27T00:02:17.0000000Z |
@@ -337,7 +337,7 @@ Teď můžeme změnit problém a najít první auto konkrétní značku v každ�
 
 **Vstup**:
 
-| LicensePlate | Vytvoření | Čas |
+| LicensePlate | Vytvoření | Time |
 | --- | --- | --- |
 | DXE 5291 |Honda |2015-07-27T00:00:05.0000000Z |
 | YZK 5704 |Ford |2015-07-27T00:02:17.0000000Z |
@@ -349,7 +349,7 @@ Teď můžeme změnit problém a najít první auto konkrétní značku v každ�
 
 **Výstup**:
 
-| LicensePlate | Vytvoření | Čas |
+| LicensePlate | Vytvoření | Time |
 | --- | --- | --- |
 | VFE 1616 |Toyota |2015-07-27T00:09:31.0000000Z |
 | MDR 6128 |BMW |2015-07-27T00:13:45.0000000Z |
@@ -386,7 +386,7 @@ Například 2 po sobě jdoucích auta ze stejné značky zadali silniční linka
 
 **Vstup**:
 
-| Vytvoření | LicensePlate | Čas |
+| Vytvoření | LicensePlate | Time |
 | --- | --- | --- |
 | Honda |ABC-123 |2015-01-01T00:00:01.0000000Z |
 | Honda |AAA-999 |2015-01-01T00:00:02.0000000Z |
@@ -395,7 +395,7 @@ Například 2 po sobě jdoucích auta ze stejné značky zadali silniční linka
 
 **Výstup**:
 
-| Vytvoření | Čas | CurrentCarLicensePlate | FirstCarLicensePlate | FirstCarTime |
+| Vytvoření | Time | CurrentCarLicensePlate | FirstCarLicensePlate | FirstCarTime |
 | --- | --- | --- | --- | --- |
 | Honda |2015-01-01T00:00:02.0000000Z |AAA-999 |ABC-123 |2015-01-01T00:00:01.0000000Z |
 
@@ -422,9 +422,9 @@ Například 2 po sobě jdoucích auta ze stejné značky zadali silniční linka
 
 **Vstup**:  
 
-| Uživatel | Funkce | Událost | Čas |
+| Uživatel | Funkce | Událost | Time |
 | --- | --- | --- | --- |
-| user@location.com |RightMenu |Start |2015-01-01T00:00:01.0000000Z |
+| user@location.com |RightMenu |Spustit |2015-01-01T00:00:01.0000000Z |
 | user@location.com |RightMenu |End |2015-01-01T00:00:08.0000000Z |
 
 **Výstup**:  
@@ -456,7 +456,7 @@ Předpokládejme například, že chyby výsledkem všech auta mají nesprávnou
 
 **Vstup**:
 
-| Vytvoření | Čas | Hmotnost |
+| Vytvoření | Time | Hmotnost |
 | --- | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |2000 |
 | Toyota |2015-01-01T00:00:02.0000000Z |25000 |
@@ -619,7 +619,7 @@ WHERE
 
 **Vstup**:
 
-| LicensePlate | Vytvoření | Čas | TollID |
+| LicensePlate | Vytvoření | Time | TollID |
 | --- | --- | --- | --- |
 | DXE 5291 |Honda |2015-07-27T00:00:01.0000000Z | 1 |
 | YHN 6970 |Toyota |2015-07-27T00:00:05.0000000Z | 1 |
@@ -632,7 +632,7 @@ WHERE
 
 **Výstup**:
 
-| TollID | Počet |
+| TollID | Count |
 | --- | --- |
 | 1 | 2 |
 | 2 | 2 |
@@ -660,7 +660,7 @@ GROUP BY TUMBLINGWINDOW(second, 5), TollId
 
 **Vstup**:  
 
-| DeviceId | Čas | Atribut | Value |
+| DeviceId | Time | Atribut | Value |
 | --- | --- | --- | --- |
 | 1 |2018-07-27T00:00:01.0000000Z |Teplota |50 |
 | 1 |2018-07-27T00:00:01.0000000Z |Teplota |50 |
@@ -718,6 +718,6 @@ Potřebujete další pomoc, vyzkoušejte naše [fóru Azure Stream Analytics](ht
 * [Úvod do služby Azure Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Škálování služby Stream Analytics](stream-analytics-scale-jobs.md)
-* [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Referenční příručka k rozhraní REST API pro správu služby Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 

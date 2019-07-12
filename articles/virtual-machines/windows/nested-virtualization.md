@@ -4,19 +4,19 @@ description: Povolení vnořené virtualizace ve službě Azure Virtual Machines
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 ms.author: cynthn
 ms.date: 10/09/2017
 ms.topic: conceptual
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.openlocfilehash: acb44a34eae84d8a5718ebcc0003d3cf50b9d43a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 843dfa64cdf0af3ad6cfd3a9f83c16f0ce85fcd0
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65510038"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67720208"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Povolení vnořené virtualizace ve Virtuálním počítači Azure
 
@@ -120,6 +120,10 @@ New-NetNat -Name "InternalNat" -InternalIPInterfaceAddressPrefix 192.168.0.0/24
 
 ## <a name="create-the-guest-virtual-machine"></a>Vytvoření virtuálního počítače hosta
 
+>[!IMPORTANT] 
+>
+>Agent hosta Azure není podporována na vnořených virtuálních počítačích a na hostitele a vnořených virtuálních počítačů, může způsobit problémy. Neinstalujte na vnořených virtuálních počítačích agenta služby Azure a nepoužívejte image pro vytváření vnořených virtuálních počítačů, které už je nainstalovaný agent hosta Azure.
+
 1. Otevřete Správce technologie Hyper-V a vytvoření nového virtuálního počítače. Nakonfigurujte virtuální počítač a použít nový interní síti, kterou jste vytvořili.
     
     ![NetworkConfig](./media/virtual-machines-nested-virtualization/configure-networking.png)
@@ -145,7 +149,7 @@ Postupujte podle následujících kroků, abyste konfigurace DHCP na hostiteli v
   
 3. Kliknutím vyberte **DHCP Server** zaškrtávacího políčka, klikněte na tlačítko **přidat funkce**a potom klikněte na tlačítko **Další** až do dokončení průvodce.
   
-4. Klikněte na **Nainstalovat**.
+4. Klikněte na tlačítko **nainstalovat**.
 
 #### <a name="configure-a-new-dhcp-scope"></a>Konfigurace nového oboru DHCP
 
@@ -168,7 +172,7 @@ Pokud jste nenakonfigurovali DHCP v dynamicky přiřadit IP adresu na hostované
 
 2. Klikněte pravým tlačítkem na hostovaném virtuálním počítači a kliknete na připojit.
 
-3. Přihlaste se virtuálním počítači hosta.
+3. Přihlaste se k virtuálnímu počítači hosta.
 
 4. Na hostovaném virtuálním počítači otevřete Centrum sítí a sdílení.
 

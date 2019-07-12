@@ -9,33 +9,20 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: article
 ms.date: 12/07/2017
-ms.openlocfilehash: 2bcbf9d145d9b8b5a3c42893235906d24516405c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d36a2c6379a95cc67a55c2cc266ced94b4a0179a
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65792621"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672237"
 ---
 # <a name="microsoft-genomics-common-questions"></a>Microsoft Genomics: Časté dotazy
 
 Tento článek obsahuje nejčastější dotazy, které může mít související s Microsoft Genomics. Další informace o službě Microsoft Genomics, najdete v části [co je služba Microsoft Genomics?](overview-what-is-genomics.md). Další informace o odstraňování potíží naleznete v tématu naše [Průvodce odstraňováním potíží](troubleshooting-guide-genomics.md). 
 
-## <a name="what-is-the-microsoft-genomics-service-gatk-4-promotion"></a>Co je podpora GATK 4 služby Microsoft Genomics?
-Až do 30. června 2019 ve službě Microsoft Genomics je nabídka 20 WGS spuštění s GATK4 bez poplatků. K účasti v registru této nabídky [tady](https://aka.ms/msgatk4). 
 
-### <a name="what-are-the-common-issues-i-might-encounter-while-running-the-microsoft-genomics-service-gatk4-promotion"></a>Jaké jsou běžné problémy, které můžu může dojít při spuštění Microsoft Genomics služby GATK4 povýšení
-Tady je seznam běžných chyb, které se můžete setkat a jejich doporučená řešení:
-
-| **Zpráva**                                                                                                                                                                                    | **Příčina**                                                                                                    | **Řešení**                                                                                                                                                                                                       |
-|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `gatk4-promo` pro váš účet není povoleno. Další informace najdete v tématu https://docs.microsoft.com/azure/genomics/frequently-asked-questions-genomics                               | Pokoušíte se spustit GATK4 pracovní postupy ve službě Microsoft Genomics bez aktivace.       | Navštivte prosím [tady](https://aka.ms/msgatk4) aktivovat svůj účet. Všimněte si, že platnost zkušební verze vyprší 30. června 2019. Nebudete moci uživatel aktivovat svůj účet propagační spuštění po tomto datu. |
-| Děkujeme za vyzkoušení `gatk4-promo`. Vaše zkušební období skončilo. Další informace https://docs.microsoft.com/azure/genomics/frequently-asked-questions-genomics                  | Vypršela platnost zkušební verze GATK4 na konci kalendářní rok a pokoušíte se vyvolat `gatk4-promo` název_procesu.  | Přepnout parametr název_procesu, `gatk4`, namísto `gatk4-promo`. Toto je oficiální gatk4 verze a jejich pracovního postupu se účtuje, pokud použijete tento parametr.                                         |
-| Děkujeme za vyzkoušení `gatk4-promo` jste už použili všechny přidělené spuštění. Další informace najdete v tématu https://docs.microsoft.com/azure/genomics/frequently-asked-questions-genomics | Úspěšně jste odeslali všech vašich 20 propagační spuštění pro GATK4.                               | Odešlete všechny nové gatk4 běží s argumentem název_procesu nastaveným na hodnotu `gatk4` místo `gatk4-promo`. Použijete-li tento parametr se bude účtovat pracovního postupu.                                                          |        
-
-
-## <a name="can-i-run-gatk4-workflows-on-microsoft-genomics-without-signing-up-for-the-gatk4-promotion"></a>Můžu spouštět pracovní postupy GATK4 na Microsoft Genomics bez nutnosti registrace GATK4 podporu?
-Ano, v souboru config.txt ve službě Microsoft Genomics, zadejte název_procesu k `gatk4`. Všimněte si, že vám budou účtovány za běžné fakturační sazby a 20 free spouští se nevztahuje k vašemu účtu Microsoft Genomics.
-
+## <a name="how-do-i-run-gatk4-workflows-on-microsoft-genomics"></a>Jak můžu spouštět pracovní postupy GATK4 na Microsoft Genomics?
+V souboru config.txt ve službě Microsoft Genomics, zadejte název_procesu k `gatk4`. Všimněte si, že vám budou fakturovat podle sazeb regulární fakturace.
 
 
 ## <a name="what-is-the-sla-for-microsoft-genomics"></a>Co je smlouva SLA pro Microsoft Genomics?
@@ -74,7 +61,7 @@ Klíč účtu úložiště se používá k vytvoření krátkodobé přístupov�
 
 Podporují se tyto odkazy:
 
- |Referenční informace              | Hodnota `-pa/--process-args` |
+ |Reference              | Hodnota `-pa/--process-args` |
  |:-------------         |:-------------                 |
  |b37                    | `R=b37m1`                     |
  |hg38                   | `R=hg38m1`                    |      

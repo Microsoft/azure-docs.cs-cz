@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/14/2019
 ms.author: thweiss
-ms.openlocfilehash: 3f19668cc4fb4f4f4a900c157aa79de83ad1b79b
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 791779bfc2262bb13dc2c3a192d9c74ae69cb30e
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67163731"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722546"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Zásady indexování ve službě Azure Cosmos DB
 
@@ -73,6 +73,8 @@ Například jsme zahrnuli `/headquarters/employees/?` cesty a určit, že `Range
 - Vylučte kořenovou cestou za účelem selektivně zahrnout cesty, které je třeba indexovat.
 
 - Pro cesty se pravidelně znaky, které zahrnují: alfanumerické znaky a _ (podtržítko), nemusíte řídicí řetězec cesty kolem dvojité uvozovky (například "/ cesta /?"). Pro cesty s jinými speciální znaky, je potřeba řídicí řetězec cesty kolem dvojité uvozovky (například "/\"cesta abc\"/?"). Pokud očekáváte, speciální znaky v zadané cestě, může uniknout každá cesta pro zabezpečení. Funkčně nevyužívá žádné rozdíly, pokud escape každá cesta Vs pouze ty, které mají speciální znaky.
+
+- Systémová vlastnost "etag" je vyloučený z indexování ve výchozím nastavení, pokud značka etag je přidán do zahrnuté cesty pro indexování.
 
 Zobrazit [v této části](how-to-manage-indexing-policy.md#indexing-policy-examples) indexování příklady zásad.
 

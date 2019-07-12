@@ -2,17 +2,17 @@
 title: Integrace služby Azure Active Directory s Azure Kubernetes Service
 description: Zjistěte, jak pomocí Azure CLI k vytvoření a clusteru s podporou Azure Active Directory Azure Kubernetes Service (AKS)
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 04/16/2019
-ms.author: iainfou
-ms.openlocfilehash: afb554307fd255d1863fc1508cef3703d4dc9f9e
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.author: mlearned
+ms.openlocfilehash: 5b99d76ef20c288d6ae0bd33e1e2b6a75a359d3a
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67561168"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67616278"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli"></a>Integrace Azure Active Directory s Azure Kubernetes Service pomocí Azure CLI
 
@@ -26,7 +26,7 @@ Platí následující omezení:
 
 - Azure AD jde Povolit jenom při vytváření nové, RBAC s podporou clusteru. Nejde povolit Azure AD v existujícím clusteru AKS.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Musí mít Azure CLI verze 2.0.61 nebo později nainstalována a nakonfigurována. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][install-azure-cli].
 

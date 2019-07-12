@@ -9,14 +9,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 12/04/2018
+ms.date: 07/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: cf9ac0271e140d719da9a72424e1c01021fdf6c4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e9d20b6c9f240ee5cff734333cb8b739508068b4
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65957420"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827396"
 ---
 # <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning-service"></a>Vyladění hyperparameters pro modelu pomocí služby Azure Machine Learning
 
@@ -98,7 +98,7 @@ Můžete také zadat parametr metody vzorkování na používání přes definic
 
 #### <a name="random-sampling"></a>Náhodný vzorkování
 
-V náhodných vzorkování, jsou hodnoty hyperparameter náhodně vybrané z definovaných hledání prostoru. Výběrová umožňuje zahrnout diskrétních a souvislých hyperparameters prostoru pro hledání.
+V náhodných vzorkování, jsou hodnoty hyperparameter náhodně vybrané z definovaných hledání prostoru. [Výběrová](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.randomparametersampling?view=azure-ml-py) umožňuje zahrnout diskrétních a souvislých hyperparameters prostoru pro hledání.
 
 ```Python
 from azureml.train.hyperdrive import RandomParameterSampling
@@ -112,7 +112,7 @@ param_sampling = RandomParameterSampling( {
 
 #### <a name="grid-sampling"></a>Vzorkování mřížky
 
-Mřížka vzorkování provádí jednoduché tabulky vyhledávání přes všechny možné hodnoty v prostoru definované vyhledávání. Lze použít pouze s hyperparameters zadat pomocí `choice`. Celkem šest vzorků, které se má například následujícím prostoru:
+[Mřížka vzorkování](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.gridparametersampling?view=azure-ml-py) provádí jednoduché tabulky vyhledávání všech proveditelné hodnot v prostoru pro definovaný hledání. Lze použít pouze s hyperparameters zadat pomocí `choice`. Celkem šest vzorků, které se má například následujícím prostoru:
 
 ```Python
 from azureml.train.hyperdrive import GridParameterSampling
@@ -125,7 +125,7 @@ param_sampling = GridParameterSampling( {
 
 #### <a name="bayesian-sampling"></a>Bayesova vzorkování
 
-Bayesova vzorkování je založená na algoritmus pro optimalizaci Bayesův a díky inteligentní možnosti na hodnoty hyperparameter ukázkový dále. Použije vzorek podle jak předchozí ukázky provádí, například, že nové ukázkové zlepšuje ohlášené primární metriku.
+[Vzorkování Bayesova](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.bayesianparametersampling?view=azure-ml-py) je založená na algoritmus pro optimalizaci Bayesova a díky inteligentní možnosti na hodnoty hyperparameter ukázkový dále. Použije vzorek podle jak předchozí ukázky provádí, například, že nové ukázkové zlepšuje ohlášené primární metriku.
 
 Při použití Bayesova vzorkování, počtu souběžných spuštění má dopad na efektivitu ladění procesu. Obvykle menší počet souběžných spuštění může vést k lepší vzorkování konvergence, protože zvyšuje počet běhů, které využívají samosprávné předchozí dokončená spuštění menší míru paralelismu.
 
@@ -147,7 +147,7 @@ param_sampling = BayesianParameterSampling( {
 
 ## <a name="specify-primary-metric"></a>Zadejte primární metriku
 
-Zadejte primární metriku chcete hyperparameter experiment optimalizovat pro ladění. Každé spuštění školení se vyhodnocuje pro primární metriku. Nedostatečný výkon spuštění (kde primární metriku nesplňuje kritéria stanovená zásadou předčasné ukončení) bude ukončena. Kromě primární název metriky cíle optimalizace - také určit, jestli se má Maximalizace nebo minimalizace primární metriku.
+Zadejte [primární metriku](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.primarymetricgoal?view=azure-ml-py) chcete hyperparameter experiment optimalizovat pro ladění. Každé spuštění školení se vyhodnocuje pro primární metriku. Nedostatečný výkon spuštění (kde primární metriku nesplňuje kritéria stanovená zásadou předčasné ukončení) bude ukončena. Kromě primární název metriky cíle optimalizace - také určit, jestli se má Maximalizace nebo minimalizace primární metriku.
 
 * `primary_metric_name`: Název primárního metriky pro optimalizaci. Název primárního metriky musí přesně shodovat s názvem metrika zapsané podle cvičný skript. Zobrazit [protokolu metriky pro hyperparametrů](#log-metrics-for-hyperparameter-tuning).
 * `primary_metric_goal`: Může být buď `PrimaryMetricGoal.MAXIMIZE` nebo `PrimaryMetricGoal.MINIMIZE` a určuje, zda bude primární metriku maximalizované nebo minimalizovaná při vyhodnocování spuštění. 
@@ -179,7 +179,7 @@ Vypočítá cvičný skript `val_accuracy` a zaznamená jako "přesnost", který
 
 ## <a name="specify-early-termination-policy"></a>Zadejte zásady předčasné ukončení
 
-Ukončete nedostatečný výkon spuštění automaticky k zásadám předčasné ukončení. Ukončení snižuje plýtvání zbytečně velký počet prostředků a místo toho použije tyto prostředky pro zkoumání konfigurace dalších parametrů.
+Ukončit nedostatečný výkon spuštění automaticky k zásadám [předčasné ukončení. Ukončení snižuje plýtvání zbytečně velký počet prostředků a místo toho použije tyto prostředky pro zkoumání konfigurace dalších parametrů.
 
 Při použití zásady předčasné ukončení, můžete nakonfigurovat, které řídí, kdy se použije zásada na následující parametry:
 
@@ -190,7 +190,7 @@ Služba Azure Machine Learning podporuje následující zásady předčasné uko
 
 ### <a name="bandit-policy"></a>Bandit zásad
 
-Bandit je ukončení zásad na základě intervalu slacku faktor/slack velikost a vyhodnocení. Zásady se již v rané fázi ukončí všechny běhy, kde primární metriky není v rámci zadaný slackový faktor / slacku velikost s ohledem na nejvýkonnější školení spuštění. Trvá následující parametry konfigurace:
+[Bandit](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy?view=azure-ml-py#definition) zásady ukončení podle intervalu slacku faktor/slack velikost a vyhodnocení. Zásady se již v rané fázi ukončí všechny běhy, kde primární metriky není v rámci zadaný slackový faktor / slacku velikost s ohledem na nejvýkonnější školení spuštění. Trvá následující parametry konfigurace:
 
 * `slack_factor` nebo `slack_amount`: slack povolené s ohledem na nejvýkonnější školení spustit. `slack_factor` Určuje povolené slack jako poměr. `slack_amount` Určuje povolené slack jako absolutní hodnota, namísto poměr.
 
@@ -208,7 +208,7 @@ V tomto příkladu předčasné ukončení zásady se použijí na každý inter
 
 ### <a name="median-stopping-policy"></a>Střední zastavení zásad
 
-Střední zastavení je předčasné ukončení zásady podle systémem průměry primární metriky hlášených spuštění. Tato zásada vypočítá spuštěné průměry přes všechny tréninkových spuštění a ukončí spuštění, jehož výkon je horší než medián spuštěné průměry. Tyto zásady mají následující parametry konfigurace:
+[Střední zastavení](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.medianstoppingpolicy?view=azure-ml-py) je předčasné ukončení zásady založené na spuštění průměry primární metriky hlášených spuštění. Tato zásada vypočítá spuštěné průměry přes všechny tréninkových spuštění a ukončí spuštění, jehož výkon je horší než medián spuštěné průměry. Tyto zásady mají následující parametry konfigurace:
 * `evaluation_interval`: frekvence pro použití zásady (nepovinný parametr).
 * `delay_evaluation`: zpoždění první vyhodnocení zásad pro zadaný počet intervalů (nepovinný parametr).
 
@@ -222,7 +222,7 @@ V tomto příkladu předčasné ukončení zásad se použije na každý interva
 
 ### <a name="truncation-selection-policy"></a>Výběr zásad zkrácení
 
-Zruší výběr zkrácení příslušné procento nejnižší provádění běží v každém intervalu hodnocení. Spuštění porovnání na základě jejich výkonu na primární metriku a nejnižší X % budou ukončeny. Trvá následující parametry konfigurace:
+[Výběr zkrácení](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.truncationselectionpolicy?view=azure-ml-py) zruší příslušné procento nejnižší provádění běží v každém intervalu hodnocení. Spuštění porovnání na základě jejich výkonu na primární metriku a nejnižší X % budou ukončeny. Trvá následující parametry konfigurace:
 
 * `truncation_percentage`: spustí procento nejnižší provádění ukončení v každém intervalu hodnocení. Zadejte celočíselnou hodnotu mezi 1 a 99.
 * `evaluation_interval`: frekvence pro použití zásady (nepovinný parametr).
@@ -253,7 +253,7 @@ Pokud není zadána žádná zásada, umožní hyperparameter ladění služby v
 
 ## <a name="allocate-resources"></a>Přidělit prostředky
 
-Řízení rozpočtu prostředků pro váš hyperparameter ladění tak, že zadáte maximální celkový počet tréninkových spuštění experimentu.  Volitelně můžete zadejte maximální dobu trvání vaše hyperparameter ladění experimentu.
+Řízení rozpočtu prostředků pro váš hyperparameter ladění experiment tak, že zadáte [maximální celkový počet tréninkových spuštění]().  Volitelně můžete zadejte maximální dobu trvání vaše hyperparameter ladění experimentu.
 
 * `max_total_runs`: Maximální počet tréninkových spuštění, které budou vytvořeny. Horní mez – může mít méně spuštění, například místo hyperparameter je však konečný a má menší počet vzorků. Musí být číslo v rozsahu od 1 do 1000.
 * `max_duration_minutes`: Maximální dobu v minutách hyperparameter ladění experimentu. Parametr je nepovinný a pokud jsou k dispozici, se automaticky zruší všechny běhy, které by být spuštěny po této hodnotě duration.
@@ -279,7 +279,7 @@ Tento kód nastaví hyperparameter optimalizace pro experiment použít maximál
 
 ## <a name="configure-experiment"></a>Konfigurace testu
 
-Konfigurace vašeho hyperparameter ladění experimentu s využitím definované hyperparameter prostoru pro hledání, předčasné ukončení zásad, primární metriky a přidělení prostředků z výše uvedených částech. Kromě toho poskytují `estimator` vzorky hyperparameters, která bude volána. `estimator` Popisuje cvičný skript spustíte, zdroje na jednu úlohu (jeden nebo více grafickými procesory) a cílové výpočetní prostředí používat. Protože souběžnost pro vaše hyperparameter ladění experiment jsou závislé na prostředcích, které jsou k dispozici, aby se cílového výpočetního prostředí v `estimator` má dostatek prostředků pro požadovanou souběžnosti. (Další informace o odhady, naleznete v tématu [trénování modelů](how-to-train-ml-models.md).)
+[Konfigurace vašeho hyperparametrů](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.hyperdriverunconfig?view=azure-ml-py) experimentování s využitím definované hyperparameter prostoru pro hledání, předčasné ukončení zásad, primární metriky a přidělení prostředků z výše uvedených částech. Kromě toho poskytují `estimator` vzorky hyperparameters, která bude volána. `estimator` Popisuje cvičný skript spustíte, zdroje na jednu úlohu (jeden nebo více grafickými procesory) a cílové výpočetní prostředí používat. Protože souběžnost pro vaše hyperparameter ladění experiment jsou závislé na prostředcích, které jsou k dispozici, aby se cílového výpočetního prostředí v `estimator` má dostatek prostředků pro požadovanou souběžnosti. (Další informace o odhady, naleznete v tématu [trénování modelů](how-to-train-ml-models.md).)
 
 Konfigurovat vaše hyperparameter ladění testu:
 
@@ -296,7 +296,7 @@ hyperdrive_run_config = HyperDriveConfig(estimator=estimator,
 
 ## <a name="submit-experiment"></a>Odeslání experimentu
 
-Jakmile definujete váš hyperparameter vyladění konfigurace, odeslání experimentu:
+Jakmile definujete váš hyperparameter vyladění konfigurace, [odeslání experimentu](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment%28class%29?view=azure-ml-py#submit-config--tags-none----kwargs-):
 
 ```Python
 from azureml.core.experiment import Experiment
@@ -308,7 +308,7 @@ hyperdrive_run = experiment.submit(hyperdrive_run_config)
 
 ## <a name="visualize-experiment"></a>Vizualizujte experimentu
 
-Sada SDK Azure Machine Learning poskytuje spustí Poznámkový blok widget, který vizualizuje průběh trénování. Následující fragment kódu vizualizuje vaše hyperparameter ladění se spustí v poznámkového bloku Jupyter na jednom místě:
+Poskytuje sadu SDK Azure Machine Learning [Poznámkový blok widgetu](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets.rundetails?view=azure-ml-py) , který vizualizuje průběh tréninkových spuštění. Následující fragment kódu vizualizuje vaše hyperparameter ladění se spustí v poznámkového bloku Jupyter na jednom místě:
 
 ```Python
 from azureml.widgets import RunDetails
@@ -333,7 +333,7 @@ Můžete vizualizovat váš hyperparameter ladění spuštění portálu Azure w
 
 ## <a name="find-the-best-model"></a>Vyhledání nejvhodnějšího modelu
 
-Po všech hyperparameter ladění spuštění dokončili, identifikujte ty nejvýkonnější konfigurace a odpovídající hyperparameter hodnoty:
+Jakmile se všechny hyperparameter ladění spuštění dokončila, [Identifikujte ty nejvýkonnější konfigurace](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.hyperdriverun?view=azure-ml-py#get-best-run-by-primary-metric-include-failed-true--include-canceled-true-) a odpovídající hyperparameter hodnoty:
 
 ```Python
 best_run = hyperdrive_run.get_best_run_by_primary_metric()
@@ -348,9 +348,8 @@ print('\n batch size:',parameter_values[7])
 ```
 
 ## <a name="sample-notebook"></a>Ukázka poznámkového bloku
-Přečtěte si na tyto poznámkové bloky:
-* [How-to-use-azureml/Training-with-Deep-Learning/Train-hyperparameter-Tune-Deploy-with-pytorch](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch) 
-* [How-to-use-azureml/Training-with-Deep-Learning/Train-hyperparameter-Tune-Deploy-with-tensorflow](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-tensorflow)
+Odkazovat tak moct trénovat - hyperparameter-* poznámkových bloků v této složce:
+* [How-to-use-azureml/Training-with-Deep-Learning](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 4b622a5925aebd140fed2ac74eaf7cc186803b90
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a63ef969f17fc48145174d99fec53e77b61885a4
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60236160"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827976"
 ---
 # <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>Transformace dat pomocí aktivity Hivu ve službě Azure Data Factory 
 > [!div class="op_single_selector" title1="Aktivity transformace"]
@@ -73,7 +73,7 @@ Aktivita HDInsight Hive ve službě Data Factory [kanálu](data-factory-create-p
 }
 ```
 ## <a name="syntax-details"></a>Podrobnosti o syntaxi
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 | --- | --- | --- |
 | name |Název aktivity |Ano |
 | description |Text popisující, k čemu aktivita slouží |Ne |
@@ -81,11 +81,11 @@ Aktivita HDInsight Hive ve službě Data Factory [kanálu](data-factory-create-p
 | inputs |Vstupy spotřebovávané aktivitou Hivu |Ne |
 | outputs |Výstupy vytvořená aktivitou Hive |Ano |
 | linkedServiceName |Odkaz na clusteru HDInsight zaregistrovaný jako propojenou službu ve službě Data Factory |Ano |
-| script |Zadejte vložený skript Hive |Ne |
+| . |Zadejte vložený skript Hive |Ne |
 | scriptPath |Store skriptu Hivu ve službě Azure blob storage a zadejte cestu k souboru. Vlastnost 'script' nebo "scriptPath". Obě nelze použít společně. Název souboru je velká a malá písmena. |Ne |
 | defines |Zadejte parametry jako páry klíč/hodnota pro odkazování v rámci skriptu Hive pomocí "hiveconf. |Ne |
 
-## <a name="example"></a>Příklad:
+## <a name="example"></a>Příklad
 Zvažte příklad herních protokolů analytics, ve které chcete určit čas strávený uživatelé hraní her spustili ve vaší společnosti. 
 
 Následující protokol je ukázkový herní protokol, což je čárkou (`,`) oddělené a obsahuje následující pole – ID profilu, SessionStart, doba trvání, SrcIPAddress a GameType.

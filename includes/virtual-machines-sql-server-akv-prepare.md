@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/30/2018
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: 1e96431af575533566786341750e17e7a7f446e0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c1a6a53e6db883c63164a6367012faf32ed75519
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67076039"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673287"
 ---
 ## <a name="prepare-for-akv-integration"></a>Příprava pro integrace se službou AZURE
 Konfigurace virtuálního počítače s SQL serverem pomocí integrace Azure Key Vaultu, existuje několik požadavků: 
@@ -38,7 +38,7 @@ Ujistěte se, že jste nainstalovali nejnovější modul Azure PowerShell. Dalš
 
 Nejprve je potřeba mít [Azure Active Directory](https://azure.microsoft.com/trial/get-started-active-directory/) (AAD) v rámci vašeho předplatného. Mezi řadu výhod díky tomu můžete udělit oprávnění k trezoru klíčů pro určité uživatele nebo aplikace.
 
-V dalším kroku registrace aplikace v AAD. Tím získáte účet instančního objektu, který má přístup k trezoru klíčů, který váš virtuální počítač potřebovat. V Azure Key Vault článku najdete postup v [registraci aplikace v Azure Active Directory](../articles/key-vault/key-vault-manage-with-cli2.md#registering-an-application-with-azure-active-directory) oddílu, nebo můžete zobrazit kroky, snímky obrazovky v **získat identitu pro části aplikace**  z [tento příspěvek na blogu](http://blogs.technet.com/b/kv/archive/2015/01/09/azure-key-vault-step-by-step.aspx). Před dokončením těchto kroků, potřebujete shromažďovat následující informace během této registrace, který je budete později potřebovat při povolení integrace se službou Azure Key Vault na váš virtuální počítač SQL.
+V dalším kroku registrace aplikace v AAD. Tím získáte účet instančního objektu, který má přístup k trezoru klíčů, který váš virtuální počítač potřebovat. V Azure Key Vault článku najdete postup v [registraci aplikace v Azure Active Directory](../articles/key-vault/key-vault-manage-with-cli2.md#registering-an-application-with-azure-active-directory) oddílu, nebo můžete zobrazit kroky, snímky obrazovky v **získat identitu pro části aplikace**  z [tento příspěvek na blogu](https://blogs.technet.com/b/kv/archive/2015/01/09/azure-key-vault-step-by-step.aspx). Před dokončením těchto kroků, potřebujete shromažďovat následující informace během této registrace, který je budete později potřebovat při povolení integrace se službou Azure Key Vault na váš virtuální počítač SQL.
 
 * Po přidání aplikace najít **ID aplikace** na **registrovaná aplikace** okno.
     ID aplikace je přiřazena později **$spName** parametru (název instančního objektu) ve skriptu Powershellu k povolení integrace se službou Azure Key Vault.

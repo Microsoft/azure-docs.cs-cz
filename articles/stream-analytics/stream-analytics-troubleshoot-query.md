@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 7a1e440a8dc8f518e272df9e126771df54390ed5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 586ddb237144daddf0cbfd19785fcba7658469a0
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60762384"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621478"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Řešení potíží s dotazy Azure Stream Analytics
 
@@ -25,11 +25,11 @@ Tento článek popisuje běžné problémy s vývojem dotazů Stream Analytics a
     - Na **dotazu** kartu, vyberte možnost **Test**. Použijte stažené ukázková data do [otestujte dotaz](stream-analytics-test-query.md). Zkontrolujte případné chyby a pokuste se je opravit.   
     - Můžete také [otestovat dotaz přímo na živé vstupní](stream-analytics-live-data-local-testing.md) pomocí Stream Analytics tools pro Visual Studio.
 
-2.  Pokud používáte [ **Timestamp By**](https://msdn.microsoft.com/library/azure/mt573293.aspx), ověřte, že všechny události mají časové razítko větší, než [úlohy počáteční čas](stream-analytics-out-of-order-and-late-events.md).
+2.  Pokud používáte [ **Timestamp By**](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics), ověřte, že všechny události mají časové razítko větší, než [úlohy počáteční čas](stream-analytics-out-of-order-and-late-events.md).
 
 3.  Vylučte běžné nástrahy, jako například:
-    - A [ **kde** ](https://msdn.microsoft.com/library/azure/dn835048.aspx) klauzule v dotazu vyfiltrovala všechny události, brání generován žádný výstup.
-    - A [ **PŘETYPOVÁNÍ** ](https://msdn.microsoft.com/azure/stream-analytics/reference/cast-azure-stream-analytics) selže, což způsobí selhání úlohy funkce. Aby se zabránilo selhání přetypování typu, použijte [ **TRY_CAST** ](https://msdn.microsoft.com/azure/stream-analytics/reference/try-cast-azure-stream-analytics) místo.
+    - A [ **kde** ](https://docs.microsoft.com/stream-analytics-query/where-azure-stream-analytics) klauzule v dotazu vyfiltrovala všechny události, brání generován žádný výstup.
+    - A [ **PŘETYPOVÁNÍ** ](https://docs.microsoft.com/stream-analytics-query/cast-azure-stream-analytics) selže, což způsobí selhání úlohy funkce. Aby se zabránilo selhání přetypování typu, použijte [ **TRY_CAST** ](https://docs.microsoft.com/stream-analytics-query/try-cast-azure-stream-analytics) místo.
     - Při použití funkcí okna, počkejte po dobu celé okno výstup z dotazu.
     - Časové razítko pro události předchází časem spuštění úlohy, a proto se události vypustí.
 
@@ -99,5 +99,5 @@ Potřebujete další pomoc, vyzkoušejte naše [fóru Azure Stream Analytics](ht
 * [Úvod do služby Azure Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Škálování služby Stream Analytics](stream-analytics-scale-jobs.md)
-* [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Referenční příručka k rozhraní REST API pro správu služby Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn835031.aspx)

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: hrasheed
-ms.openlocfilehash: c910ed9f1160d30e1d4bda2e85b029eb2ad85b02
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bd2284211c2fdc5a346c6ffb113f89fe311a358c
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66237157"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786496"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Plánování kapacity pro clustery HDInsight
 
@@ -82,7 +82,7 @@ Velikost virtuálního počítače a typ se určuje podle procesoru, výkon, vel
 
 V závislosti na typu vašeho clusteru zvýšit počet pracovních uzlů přidá další výpočetní kapacity (například více jader), ale může také přidat do celkové množství paměti požadované pro celý cluster pro podporu v paměti úložiště dat, zpracování. Stejně jako volba velikosti virtuálního počítače a typ výběru správné clusteru škálování je obvykle spojit empirických, simulované zatížení nebo testovací dotazy.
 
-Můžete horizontálně navýšit požadavkům zatížení ve špičce, pak škálovat zase snížit, když už nejsou potřeba tato další uzly clusteru. Další informace najdete v tématu [clusterů HDInsight škálování](hdinsight-scaling-best-practices.md).
+Můžete horizontálně navýšit požadavkům zatížení ve špičce, pak škálovat zase snížit, když už nejsou potřeba tato další uzly clusteru. [Funkce automatického škálování](hdinsight-autoscale-clusters.md) vám umožní automaticky škálování na základě vašeho clusteru předdefinovány metriky a časování. Další informace o ruční škálování clusterů najdete v tématu [clusterů HDInsight škálování](hdinsight-scaling-best-practices.md).
 
 ### <a name="cluster-lifecycle"></a>Životního cyklu clusteru
 
@@ -126,7 +126,7 @@ Je možné [obraťte se na podporu požádat o zvýšení kvóty](https://docs.m
 
 Ale existují některá omezení pevné kvóty, například v rámci jednoho předplatného Azure může mít maximálně 10 000 jader. Podrobnosti o těchto omezeních najdete v tématu [předplatného Azure a limity, kvóty a omezení](https://docs.microsoft.com/azure/azure-subscription-service-limits).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Nastavení clusterů v HDInsight se Apache Hadoop, Spark, Kafka a další](hdinsight-hadoop-provision-linux-clusters.md): Zjistěte, jak vytvořit a nakonfigurovat clusterů v HDInsight se Apache Hadoop, Spark, Kafka, Interactive Hive, HBase, služby ML nebo Storm.
 * [Monitorování výkonu clusteru](hdinsight-key-scenarios-to-monitor.md): Další informace o klíčových scénářích monitorování pro cluster HDInsight, které můžou ovlivnit kapacitu vašeho clusteru.

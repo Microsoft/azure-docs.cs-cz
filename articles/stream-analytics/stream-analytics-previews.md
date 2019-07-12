@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/29/2019
-ms.openlocfilehash: e63937cedf44b1642e091a4744d898a26422be10
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 587304968cdf3a3763e47b9f8b614fe67aebf534
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66393692"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798036"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Funkce Azure Stream Analytics ve verzi preview
 
@@ -23,7 +23,10 @@ Tento článek shrnuje všechny funkce aktuálně ve verzi preview pro Azure Str
 
 Následující funkce jsou ve verzi public preview. Můžete využít výhod těchto funkcích ještě dnes, ale nemusíte používat v produkčním prostředí.
 
-### <a name="visual-studio-code-for-azure-stream-analytics-released-may-2019"></a>Visual Studio Code pro Azure Stream Analytics (všeobecně dostupné. května 2019)
+### <a name="one-click-integration-with-event-hubs"></a>Jedním kliknutím integraci s Event Hubs 
+Tato integrace teď bude možné vizualizaci příchozích dat a začít psát dotazu Stream Analytics s jedním kliknutím na portálu centra událostí. Když váš dotaz je připravená, budou moct productize několika kliknutími a začít získat přehledy v reálném čase. Tím se výrazně snížit čas a náklady na vývoj řešení analýz v reálném čase. Dokumentace je k dispozici [tady](https://docs.microsoft.com/azure/event-hubs/process-data-azure-stream-analytics).
+
+### <a name="visual-studio-code-for-azure-stream-analytics"></a>Visual Studio Code pro Azure Stream Analytics
 
 Úlohy Azure Stream Analytics se můžou vytvořit ve Visual Studio Code. Najdete v našich [VS Code úvodní kurz](https://docs.microsoft.com/azure/stream-analytics/quick-create-vs-code).
 
@@ -49,19 +52,13 @@ Pomocí .NET standard uživatelem definované funkce můžete spustit .NET Stand
 
 ## <a name="other-previews"></a>Jiné verze Preview
 
-Následující funkce jsou také k dispozici ve verzi preview.
+Následující funkce jsou také k dispozici ve verzi preview na vyžádání.
 
-### <a name="c-custom-deserializer-for-azure-stream-analytics-on-iot-edge-and-cloud-announced-may-2019"></a>C#vlastní deserializátor pro Azure Stream Analytics na hraničních zařízeních IoT a cloudem (Announced. května 2019)
+### <a name="c-custom-deserializer-for-azure-stream-analytics-on-iot-edge-and-cloud"></a>C#vlastní deserializátor pro Azure Stream Analytics na hraničních zařízeních IoT a cloudem
 
 Vývojáři můžou implementovat vlastní deserializers v C# k deserializaci událostí přijatých službou Azure Stream Analytics. Příklady formátů, které lze deserializovat: Parquet, Protobuf, XML nebo libovolný binární formát. Zaregistrovat v této verzi preview [tady](https://aka.ms/asapreview1).
 
-### <a name="parquet-output-announced-may-2019"></a>Výstup parquet (oznámili. května 2019)
-Parquet je sloupcovém formátu, která umožňuje efektivní zpracování velkých objemů dat. Ve výstupu data ve formátu Parquet ve službě data lake, můžete využít Azure Stream Analytics streaming ETL velkého rozsahu power a spustit dávkové zpracování, trénování algoritmů strojového učení nebo spouštění interaktivních dotazů na historická data. Zaregistrovat v této verzi preview [tady](https://aka.ms/asapreview1).
-
-### <a name="one-click-integration-with-event-hubs-announced-may-2019"></a>Jedním kliknutím integraci s Event Hubs (Announced. května 2019) 
-Tato integrace teď bude možné vizualizaci příchozích dat a začít psát dotazu Stream Analytics s jedním kliknutím na portálu centra událostí. Když váš dotaz je připravená, budou moct productize několika kliknutími a začít získat přehledy v reálném čase. Tím se výrazně snížit čas a náklady na vývoj řešení analýz v reálném čase. Zaregistrovat v této verzi preview [tady](https://aka.ms/asapreview1).
-
-### <a name="support-for-azure-stack-announced-may-2019"></a>Podpora pro Azure Stack (oznámili. května 2019)
+### <a name="support-for-azure-stack"></a>Podpora pro Azure Stack
 Tato funkce povolena na modul runtime Azure IoT Edge, využívá vlastní funkce služby Azure Stack, jako je nativní podporu pro místní vstupy a výstupy spuštěná ve službě Azure Stack (například služby Event Hubs, služby IoT Hub, Blob Storage). Tato nová integrace vám umožní sestavovat hybridní architektury, které můžete analyzovat vaše data co nejblíž místu jejího vygenerování, což snižuje latenci a maximalizovat insights.
 Zaregistrovat v této verzi preview [tady](https://aka.ms/asapreview1).
 

@@ -2,17 +2,17 @@
 title: Operátor osvědčené postupy – základní Plánovač funkcí ve službě Azure Kubernetes služby (AKS)
 description: Přečtěte si operátor clusteru doporučené postupy pro používání scheduleru základní funkce, jako jsou kvóty prostředků a pod rozpočty přerušení ve službě Azure Kubernetes Service (AKS)
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.author: iainfou
-ms.openlocfilehash: f6e370442c9c359a38025762fb90269119ec0ea6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mlearned
+ms.openlocfilehash: 3ce59784b2c7c1d145d99786b10927c230146c8b
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65074132"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614624"
 ---
 # <a name="best-practices-for-basic-scheduler-features-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro Plánovač základní funkce ve službě Azure Kubernetes Service (AKS)
 
@@ -124,9 +124,9 @@ Další informace o používání pod přerušení rozpočty, naleznete v témat
 
 **Osvědčené postupy pro moduly** – pravidelně používat nejnovější verzi `kube-advisor` open source nástroj a detekujte problémy ve vašem clusteru. Pokud použijete kvóty prostředků v existujícím clusteru AKS, spusťte `kube-advisor` nejprve k vyhledání podů, které nemají definovaná omezení a požadavky prostředků.
 
-[Kube advisor] [ kube-advisor] nástroj je přidružené AKS opensourcový projekt, který prohledá Kubernetes cluster a zprávy o problémech, které nalezne. Jeden užitečné se identifikovat podů, které nemají omezení a požadavky na zdroje v místě.
+[Kube advisor][kube-advisor] nástroj je přidružené AKS opensourcový projekt, který prohledá Kubernetes cluster a zprávy o problémech, které nalezne. Jeden užitečné se identifikovat podů, které nemají omezení a požadavky na zdroje v místě.
 
-Nástroj kube advisor může podávat požadavkem na prostředky a omezení v aplikacích PodSpecs pro Windows, jakož i Linuxové aplikace chybí, ale vlastního nástroje kube advisor musí být naplánováno na Linuxu pod. Můžete naplánovat podu spustit na fond uzlů s konkrétním použití operačního systému [uzlu selektoru] [ k8s-node-selector] v konfiguraci pod.
+Nástroj kube advisor může podávat požadavkem na prostředky a omezení v aplikacích PodSpecs pro Windows, jakož i Linuxové aplikace chybí, ale vlastního nástroje kube advisor musí být naplánováno na Linuxu pod. Můžete naplánovat podu spustit na fond uzlů s konkrétním použití operačního systému [uzlu selektoru][k8s-node-selector] v konfiguraci pod.
 
 V clusteru AKS, který je hostitelem více vývojových týmů a aplikace může být obtížné sledovat podů bez těchto prostředků požadavky a omezení sady. Jako osvědčený postup, pravidelně spouštět `kube-advisor` v clusterech služby AKS, zejména v případě, že kvóty prostředků nepřiřazovat k obory názvů.
 

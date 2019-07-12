@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: c0584a69349c2785b5b6bce1d17c023c95b36151
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0b6bdc884107a522c81d100c0a05018cbc9d0a70
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66136178"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718282"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>Řešení potíží s doménou a problémy s certifikátem protokolu SSL ve službě Azure App Service
 
@@ -301,7 +301,7 @@ Není to povinné k migraci do Azure DNS hostování. Pokud chcete migrovat do A
 
 **Chci koupit doménu z doména App Service, ale můžete hostovat Moje domény GoDaddy místo Azure DNS?**
 
-24\. července 2017, od domény služby App Service zakoupené na portálu jsou hostované na Azure DNS. Pokud upřednostňujete použití jiného poskytovatele hostitelských služeb, musí přejít na web příslušného vydavatele získat řešení hostování domény.
+24. července 2017, od domény služby App Service zakoupené na portálu jsou hostované na Azure DNS. Pokud upřednostňujete použití jiného poskytovatele hostitelských služeb, musí přejít na web příslušného vydavatele získat řešení hostování domény.
 
 **Musím platit za ochranu osobních údajů pro Moje doména?**
 
@@ -325,7 +325,6 @@ I v případě, že webová aplikace služby App Service nemáte, můžete sprav
 
 **Můžu přesunout webové aplikace s vlastní doménou do jiného předplatného nebo ze služby App Service Environment v1 na V2?**
 
-Ano, můžete přesunout vaši webovou aplikaci napříč předplatnými. Postupujte podle pokynů v [přesunutí prostředků v Azure](../azure-resource-manager/resource-group-move-resources.md). Při přesunu webovou aplikaci existuje několik omezení. Další informace najdete v tématu [omezení pro přesun prostředků App Service](../azure-resource-manager/resource-group-move-resources.md#app-service-limitations
-).
+Ano, můžete přesunout vaši webovou aplikaci napříč předplatnými. Postupujte podle pokynů v [přesunutí prostředků v Azure](../azure-resource-manager/resource-group-move-resources.md). Při přesunu webovou aplikaci existuje několik omezení. Další informace najdete v tématu [omezení pro přesun prostředků App Service](../azure-resource-manager/move-limitations/app-service-move-limitations.md).
 
 Po přesunutí webové aplikace, by měl vazby názvu hostitele z domén v rámci vlastních domén nastavení zůstávají stejné. Žádné další kroky jsou nutné ke konfiguraci vazby názvu hostitele.

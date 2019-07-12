@@ -9,12 +9,12 @@ ms.date: 05/21/2019
 ms.author: mhopkins
 ms.reviewer: yzheng
 ms.subservice: common
-ms.openlocfilehash: 50eb62b20be66337c819372fa3d97eae4d7214b8
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 43a673621aa3c114f99479a6da97153dae44990d
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67435744"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67696098"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Správa životního cyklu úložiště objektů Blob v Azure
 
@@ -31,7 +31,7 @@ Představte si třeba situaci, kdy data získá časté přístup během raných
 
 ## <a name="storage-account-support"></a>Podpora účtu úložiště
 
-Zásady správy životního cyklu je k dispozici obě obecné účely v2 (GPv2) účty a účty Blob storage. Na webu Azure Portal můžete upgradovat stávající účet pro obecné účely (GPv1) na účet GPv2. Další informace o účtech úložiště najdete v [přehledu účtu Azure Storage](../common/storage-account-overview.md).  
+Zásady správy životního cyklu je k dispozici s obecné účely v2 (GPv2) účty, účty služby Blob storage a účty úložiště objektů Blob bloku Premium. Na webu Azure Portal můžete upgradovat stávající účet pro obecné účely (GPv1) na účet GPv2. Další informace o účtech úložiště najdete v [přehledu účtu Azure Storage](../common/storage-account-overview.md).  
 
 ## <a name="pricing"></a>Ceny
 
@@ -39,7 +39,7 @@ Funkce správy životního cyklu je zdarma. Zákazníkům se poplatky účtují 
 
 ## <a name="regional-availability"></a>Regionální dostupnost
 
-Funkce správy životního cyklu je k dispozici ve všech oblastech Azure globální.
+Funkce správy životního cyklu je k dispozici ve všech globálních oblastí Azure a Azure Government.
 
 ## <a name="add-or-remove-a-policy"></a>Přidání nebo odebrání zásady
 
@@ -197,12 +197,12 @@ Kolekce pravidel se zásada:
 
 Každé pravidlo v rámci zásady má několik parametrů:
 
-| Název parametru | Typ parametru | Poznámky | Požaduje se |
+| Název parametru | Typ parametru | Poznámky | Požadováno |
 |----------------|----------------|-------|----------|
-| `name`         | String |Název pravidla může obsahovat až 256 znaků. Název pravidla je velká a malá písmena.  Musí být jedinečný v rámci zásady. | True |
-| `enabled`      | Boolean | Nepovinný datový typ boolean Povolit pravidlo, které se dočasné zakázán. Výchozí hodnota je hodnota true, pokud není nastaven. | False | 
-| `type`         | Hodnoty výčtu | Je aktuální platný typ `Lifecycle`. | True |
-| `definition`   | Objekt, který definuje pravidlo životního cyklu | Každá definice se skládá sada filtru a skupinu akcí. | True |
+| `name`         | Řetězec |Název pravidla může obsahovat až 256 znaků. Název pravidla je velká a malá písmena.  Musí být jedinečný v rámci zásady. | Pravda |
+| `enabled`      | Logická hodnota | Nepovinný datový typ boolean Povolit pravidlo, které se dočasné zakázán. Výchozí hodnota je hodnota true, pokud není nastaven. | False | 
+| `type`         | Hodnoty výčtu | Je aktuální platný typ `Lifecycle`. | Pravda |
+| `definition`   | Objekt, který definuje pravidlo životního cyklu | Každá definice se skládá sada filtru a skupinu akcí. | Pravda |
 
 ## <a name="rules"></a>Pravidla
 
@@ -262,7 +262,7 @@ Akce se použijí na filtrované objektů BLOB při spuštění podmínka je spl
 
 Správa životního cyklu podporuje vrstvení a odstraňování objektů BLOB a odstranění snímků objektů blob. Definujte aspoň jednu akci u jednotlivých pravidel pro objekty BLOB nebo snímky objektů blob.
 
-| Akce        | Základní objekt Blob                                   | Snímek      |
+| Action        | Základní objekt Blob                                   | Snímek      |
 |---------------|---------------------------------------------|---------------|
 | tierToCool    | Podpora objektů BLOB momentálně na vrstvu hot         | Nepodporuje se |
 | tierToArchive | Podpora objektů BLOB momentálně na horké nebo studené úrovni | Nepodporuje se |

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 5/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 8dffc5b87aefe23953d3a74f1d96b5ee03e0315d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 88171487fd180931d4659390f0db3c8619fb2d62
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65597385"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67653460"
 ---
 # <a name="how-to-build-a-facet-filter-in-azure-search"></a>Jak vytvořit filtr omezující vlastnosti ve službě Azure Search 
 
@@ -82,7 +82,7 @@ Atributy indexu, které řídí, jak se pole používá jsou přidány do defini
 
 ## <a name="build-and-load-an-index"></a>Vytvoření a načtení indexu
 
-Na krok zprostředkující (a možná zřejmé) je, že budete muset [vytvořit a naplnit index](https://docs.microsoft.com/azure/search/search-create-index-dotnet#3---construct-index) před formulování dotazu. Jsme zmínili, tento krok zde pro úplnost. Jedním ze způsobů k určení, zda index je k dispozici je seznam indexů vrácení se změnami [portál](https://portal.azure.com).
+Na krok zprostředkující (a možná zřejmé) je, že budete muset [vytvořit a naplnit index](https://docs.microsoft.com/azure/search/search-get-started-dotnet#1---create-index) před formulování dotazu. Jsme zmínili, tento krok zde pro úplnost. Jedním ze způsobů k určení, zda index je k dispozici je seznam indexů vrácení se změnami [portál](https://portal.azure.com).
 
 ## <a name="add-facet-filters-to-a-query"></a>Přidat do dotazu filtry omezující vlastnost
 
@@ -122,7 +122,7 @@ Jedním z problémů s omezující vlastnost navigace ve službě Azure Search j
 
 Přestože je toto běžným případem použití, není něco struktuře Fasetové navigace v současné době poskytuje out-of-the-box. Vývojáři, kteří mají obvykle statické omezující vlastnosti obejít omezení pomocí dvou filtrovaných dotazů: jeden rozsah výsledky, druhé používá k vytvoření Statický seznam omezující vlastnosti pro účely navigace.
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
 + [Filtry ve službě Azure Search](search-filters.md)
 + [Vytvoření indexu REST API](https://docs.microsoft.com/rest/api/searchservice/create-index)

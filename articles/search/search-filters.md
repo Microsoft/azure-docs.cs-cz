@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 8676ad48bc4fab6149db00d778349ac1acd7223d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4b5d198506473c598f058c881f781a06e191df88
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67062386"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67653445"
 ---
 # <a name="filters-in-azure-search"></a>Filtry ve službě Azure Search 
 
@@ -97,7 +97,7 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
 
 ## <a name="filter-usage-patterns"></a>Filtr vzory využití
 
-Následující příklady znázorňují několik vzory využití pro scénáře filtru. Další informace najdete v článku [syntaxe výrazů OData > Příklady](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search#filter-examples).
+Následující příklady znázorňují několik vzory využití pro scénáře filtru. Další informace najdete v článku [syntaxe výrazů OData > Příklady](https://docs.microsoft.com/azure/search/search-query-odata-filter#examples).
 
 + Samostatné **$filter**, bez řetězce dotazu, užitečné, pokud výraz filtru je možné k plnému určení dokumenty, které vás zajímají. Bez řetězce dotazu neexistuje žádná lexikální nebo jazyková analýza, žádné bodování a žádné řazení. Všimněte si, že se že hledaný řetězec je právě hvězdičky, což znamená, že "odpovídat všechny dokumenty".
 
@@ -195,9 +195,9 @@ search=John Leclerc&$count=true&$select=source,city,postCode,baths,beds&$filter=
 search=John Leclerc&$count=true&$select=source,city,postCode,baths,beds&$filter=city gt 'Seattle'
 ```
 
-Práci s další příklady naleznete v tématu [syntaxe výrazů filtru OData > Příklady](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search#filter-examples).
+Práci s další příklady naleznete v tématu [syntaxe výrazů filtru OData > Příklady](https://docs.microsoft.com/azure/search/search-query-odata-filter#examples).
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
 + [Jak funguje fulltextové vyhledávání ve službě Azure Search](search-lucene-query-architecture.md)
 + [Hledání dokumentů rozhraní REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)

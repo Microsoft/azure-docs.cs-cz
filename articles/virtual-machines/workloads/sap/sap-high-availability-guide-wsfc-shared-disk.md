@@ -4,7 +4,7 @@ description: Zjistěte, jak seskupit do clusteru SAP ASCS/SCS instance clusteru 
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 987cd1e5860b0fe340ba8a5163d844bec29b541c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: aef5c67786726790c5841c1ce4ddff8b67bdf21b
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65205107"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709047"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -274,7 +274,7 @@ _**Obrázek 5:** Konfigurace v Azure se SIOS Datakeeperem clusteringu Windows v 
 > Není nutné sdílené disky pro zajištění vysoké dostupnosti s některými DBMS produkty, jako je SQL Server. Technologie AlwaysOn systému SQL Server na místním disku jiný uzel clusteru replikuje DBMS dat a souborů protokolu z místního disku jednom uzlu clusteru. V takovém případě konfigurace clusteru Windows nemusí sdíleného disku.
 >
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Příprava infrastruktury Azure pro SAP HA pomocí Windows cluster převzetí služeb při selhání a sdíleného disku pro instanci SAP ASCS/SCS][sap-high-availability-infrastructure-wsfc-shared-disk]
 

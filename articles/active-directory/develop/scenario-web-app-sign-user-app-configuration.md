@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82e6cbcd01c87ddffb7eac8d0ea0faef85f41a13
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b7484b627d3bc3f26fa01d4c38ee96047c70d007
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66254012"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67785485"
 ---
 # <a name="web-app-that-signs-in-users---code-configuration"></a>Webová aplikace, které přihlásí uživatelé - konfigurace kódu
 
@@ -36,6 +36,8 @@ Knihovny použitým k zamknutí webovou aplikaci (a webové rozhraní API) jsou:
 | ![.NET](media/sample-v2-code/logo_net.png) | [Rozšíření modelu identit pro .NET](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | Rozšíření identit společnosti Microsoft pro .NET použít přímo v rámci ASP.NET a ASP.NET Core, navrhne sadu knihoven DLL systémem i rozhraní .NET Framework a .NET Core. Z ASP.NET/ASP.NET základní webové aplikace, můžete řídit pomocí ověřování tokenů **parametry tokenvalidationparameters** třídy (zejména v některých scénářích nezávislý výrobce softwaru) |
 
 ## <a name="aspnet-core-configuration"></a>Konfigurace ASP.NET Core
+
+Fragmenty kódu v tomto článku a následující se extrahují z [přírůstkové výukový program, kapitoly webové aplikace ASP.NET Core aplikace 1](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-1-MyOrg). Můžete chtít najdete v tomto kurzu o úplnou implementaci.
 
 ### <a name="application-configuration-files"></a>Konfigurační soubory aplikace
 

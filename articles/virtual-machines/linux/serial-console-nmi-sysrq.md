@@ -4,7 +4,7 @@ description: Pomocí konzoly sériového portu pro SysRq a NMI volá ve službě
 services: virtual-machines-linux
 documentationcenter: ''
 author: asinn826
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 5a97a40ba48db9f73471d5fd778ceb5cb9070964
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 87db223465c0d6680b8d60807bf90afc81e52554
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60542641"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67708328"
 ---
 # <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>Použít pro volání SysRq a NMI konzoly sériového portu
 
@@ -127,7 +127,7 @@ Další informace o konfiguraci jádra systému Linux, včetně `unknown_nmi_pan
 ### <a name="coreos"></a>CoreOS 
 - [Shromažďování údajů o protokoly chyb](https://coreos.com/os/docs/latest/collecting-crash-logs.html)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Na hlavní stránce dokumentace sériové konzoly Linux se nachází [tady](serial-console.md).
 * Přihlásit se pomocí konzoly sériového portu [kontrole a do režimu jednoho uživatele](serial-console-grub-single-user-mode.md)
 * Je taky dostupná ke konzole sériového portu [Windows](../windows/serial-console.md) virtuálních počítačů

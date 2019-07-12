@@ -4,7 +4,7 @@ description: Monitorování a řešení potíží s ze strany HANA na systému S
 services: virtual-machines-linux
 documentationcenter: ''
 author: RicksterCDN
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 15b3fb4ae483e5b0e4f930d0dc08de6d198d0e5f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f25218156157f626b667c474de1674d1d8509a24
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61128843"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705814"
 ---
 # <a name="monitoring-and-troubleshooting-from-hana-side"></a>Sledování a řešení potíží na straně HANA
 
@@ -106,7 +106,7 @@ Navíc pomocí open source [IPERF](https://iperf.fr/) nástroje (nebo podobnou) 
 
 Odkazovat [SAP, řešení potíží s HANA: Výkon sítě a potíže s připojením k](https://help.sap.com/saphelp_hanaplatform/helpdata/en/a3/ccdff1aedc4720acb24ed8826938b6/content.htm?frameset=/en/dc/6ff98fa36541e997e4c719a632cbd8/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=142&amp;show_children=false) lokality podrobné kroky pro řešení potíží.
 
-## <a name="storage"></a>Úložiště
+## <a name="storage"></a>Storage
 
 Z pohledu koncového uživatele aplikace (systém jako celek) běží pomalu, přestane reagovat nebo může dokonce zdát přestane reagovat, pokud dojde k problémům s výkonem vstupně-výstupních operací. V **svazky** kartu v sadě Studio SAP HANA, můžete zobrazit připojené svazky a svazky, které jsou používány jednotlivých služeb.
 

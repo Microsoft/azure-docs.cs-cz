@@ -4,7 +4,7 @@ description: Zjistěte, jak otevřít port / vytvořit koncový bod k virtuáln�
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: f7cf0319-5ee7-435e-8f94-c484bf5ee6f1
 ms.service: virtual-machines-windows
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: cac17403425f53593d4f48692b4216a92c8624e3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cf85bfd8be146cb599ced61eaa2126ee9e12538b
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61481712"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67723069"
 ---
 # <a name="how-to-open-ports-to-a-virtual-machine-with-the-azure-portal"></a>Postup otevření portů k virtuálnímu počítači pomocí webu Azure portal
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
 
 
-## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 ## <a name="create-a-network-security-group"></a>Vytvoření skupiny zabezpečení sítě
@@ -82,7 +82,7 @@ Příkazů popsaných v tomto článku vám umožňují rychle zajistit provoz k
 
 U vysoce dostupných webových aplikací zvažte umístění virtuálních počítačů za služby Azure load balancer. Nástroje pro vyrovnávání zatížení distribuuje provoz do virtuálních počítačů, se skupinou zabezpečení sítě, která poskytuje filtrování provozu. Další informace najdete v tématu [vyrovnávat zatížení virtuálních počítačů Windows v Azure za účelem vytvoření vysoce dostupné aplikace](tutorial-load-balancer.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V tomto článku jste vytvořili skupinu zabezpečení sítě, vytvoří příchozí pravidlo, které umožní provoz protokolu HTTP na portu 80 a toto pravidlo potom přidružené k podsíti. 
 
 Můžete najít informace o vytváření podrobnější prostředí v následujících článcích:

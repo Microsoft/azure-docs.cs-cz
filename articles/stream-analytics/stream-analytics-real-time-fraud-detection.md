@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: cfb7dc8ef41c8829caebed6fff2d881093dbbe4d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c45c42077d6f07ef847d2b95d4c24310f51abca4
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67076242"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621828"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Začínáme používat Azure Stream Analytics: Zjišťování možných podvodů v reálném čase
 
@@ -188,7 +188,7 @@ Teď, když máte stream událostí volání, můžete nastavit úlohu Stream An
    |**Nastavení**  |**Navrhovaná hodnota**  |**Popis**  |
    |---------|---------|---------|
    |Alias vstupu  |  CallStream   |  Zadejte název pro identifikaci vstupu úlohy.   |
-   |Předplatné   |  \<Vaše předplatné\> |  Vyberte předplatné Azure, který má centra událostí, které jste vytvořili.   |
+   |Subscription   |  \<Vaše předplatné\> |  Vyberte předplatné Azure, který má centra událostí, které jste vytvořili.   |
    |Obor názvů centra událostí  |  asa-eh-ns-demo |  Zadejte název pro obor názvů centra událostí.   |
    |Název centra událostí  | asa-eh-frauddetection-demo | Vyberte název vašeho centra událostí.   |
    |Název zásad centra událostí  | asa-policy-manage-demo | Vyberte zásady přístupu, který jste vytvořili dříve.   |
@@ -207,7 +207,7 @@ Jednoduchý dotaz může jen číst všechna příchozí data. Ale často vytvo�
 
 Dotazy, které tady vytvoříte se zobrazí jenom Transformovaná data na obrazovku. V další části budete konfigurovat výstupní jímky a dotaz, který zapíše Transformovaná data do tohoto jímky.
 
-Další informace o jazyku, najdete v článku [referenčních informacích k Azure Stream Analytics Query Language](https://msdn.microsoft.com/library/dn834998.aspx).
+Další informace o jazyku, najdete v článku [referenčních informacích k Azure Stream Analytics Query Language](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference).
 
 ### <a name="get-sample-data-for-testing-queries"></a>Načíst ukázková data pro účely testování dotazů
 
@@ -289,11 +289,11 @@ Pro tuto transformaci chcete posloupnost dočasné windows, které se nepřekrý
         GROUP BY TUMBLINGWINDOW(s, 5), SwitchNum
         ```
 
-    Tento dotaz používá `Timestamp By` – klíčové slovo v `FROM` klauzule, která určíte, které pole časového razítka v vstupního datového proudu k definování aktivační událost pro Přeskakující okno. V tomto případě okno rozděluje data do segmentů podle `CallRecTime` v záznamech. (Pokud není zadána žádná pole, operace oddílová používá čas, který každé události dorazí na Centrum událostí. Naleznete v části "Čas aplikace Vs čas doručení" v [Stream Analytics Query Language Reference](https://msdn.microsoft.com/library/azure/dn834998.aspx). 
+    Tento dotaz používá `Timestamp By` – klíčové slovo v `FROM` klauzule, která určíte, které pole časového razítka v vstupního datového proudu k definování aktivační událost pro Přeskakující okno. V tomto případě okno rozděluje data do segmentů podle `CallRecTime` v záznamech. (Pokud není zadána žádná pole, operace oddílová používá čas, který každé události dorazí na Centrum událostí. Naleznete v části "Čas aplikace Vs čas doručení" v [Stream Analytics Query Language Reference](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference). 
 
     Projekce zahrnuje `System.Timestamp`, který vrátí časové razítko na konci každé okno. 
 
-    Chcete-li určit, že chcete použít aktivační událost pro Přeskakující okno, můžete použít [TUMBLINGWINDOW](https://msdn.microsoft.com/library/dn835055.aspx) fungovat v `GROUP BY` klauzuli. Ve funkci zadejte časovou jednotku (od úrovni mikrosekund na den) a velikost okna (kolik jednotek). V tomto příkladu aktivační událost pro Přeskakující okno se skládá z 5 intervalech, proto se zobrazí počet podle země nebo oblasti pro každých 5 sekund za volání.
+    Chcete-li určit, že chcete použít aktivační událost pro Přeskakující okno, můžete použít [TUMBLINGWINDOW](https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics) fungovat v `GROUP BY` klauzuli. Ve funkci zadejte časovou jednotku (od úrovni mikrosekund na den) a velikost okna (kolik jednotek). V tomto příkladu aktivační událost pro Přeskakující okno se skládá z 5 intervalech, proto se zobrazí počet podle země nebo oblasti pro každých 5 sekund za volání.
 
 2. Klikněte na tlačítko **Test** znovu. Ve výsledcích, Všimněte si, že časová razítka v rámci **WindowEnd** jsou v přírůstcích po 5 sekund.
 
@@ -358,7 +358,7 @@ Pokud máte existující účet úložiště objektů blob, můžete použít, k
    |**Nastavení**  |**Navrhovaná hodnota**  |**Popis**  |
    |---------|---------|---------|
    |Alias pro výstup  |  CallStream-FraudulentCalls   |  Zadejte název pro identifikaci výstupu úlohy.   |
-   |Předplatné   |  \<Vaše předplatné\> |  Zadejte předplatné Azure vytvořeného účtu úložiště. Účet úložiště můžete využívat v rámci stejného, ale i jiného předplatného. V tomto příkladu se předpokládá, že jste účet vytvořili v rámci stejného předplatného. |
+   |Subscription   |  \<Vaše předplatné\> |  Zadejte předplatné Azure vytvořeného účtu úložiště. Účet úložiště můžete využívat v rámci stejného, ale i jiného předplatného. V tomto příkladu se předpokládá, že jste účet vytvořili v rámci stejného předplatného. |
    |Účet úložiště  |  asaehstorage |  Zadejte název účtu úložiště, který jste vytvořili. |
    |Kontejner  | asa-fraudulentcalls-demo | Zvolte možnost vytvořit novou a zadejte název kontejneru. |
 
@@ -418,5 +418,5 @@ Další informace o Stream Analytics obecně platí, najdete v těchto článcí
 
 * [Úvod do služby Azure Stream Analytics](stream-analytics-introduction.md)
 * [Škálování služby Stream Analytics](stream-analytics-scale-jobs.md)
-* [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Referenční příručka k rozhraní REST API pro správu služby Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn835031.aspx)

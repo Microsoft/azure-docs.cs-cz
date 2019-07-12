@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 6/13/2019
 ms.author: victorh
-ms.openlocfilehash: 6aad0502b5739906d1fa8fa896f8d0af8cc38e30
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 8e79fd1a839113cad5a3a36c01855d98793d7032
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205002"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655311"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Automatické škálování a zónově redundantní služba Application Gateway v2 
 
@@ -35,7 +35,7 @@ Nové SKU v2 zahrnuje následující vylepšení:
 
 ## <a name="supported-regions"></a>Podporované oblasti
 
-Standard_v2 a WAF_v2 SKU je k dispozici v následujících oblastech: USA (střed) – sever, střední část jihu USA, USA – Západ, USA – západ 2, USA – východ, USA – východ 2, střed USA, Severní Evropa, západní Evropa, jihovýchodní Asie, Francie – střed, Velká Británie – Západ, Japonsko – východ, Japonsko – západ. V budoucnu přibudou další oblasti.
+Standard_v2 a WAF_v2 SKU je k dispozici v následujících oblastech: USA (střed) – sever, střed USA – Jih, USA – Západ, USA – západ 2, USA – východ, USA – východ 2, střed USA, Severní Evropa, západní Evropa, jihovýchodní Asie, Francie – střed, Velká Británie – Západ, Japonsko – východ, Japonsko – Západ, Austrálie – východ, Austrálie – jihovýchod, Kanada – střed, Kanada – východ, Asie – východ, Korea Střed, Korea – Jih, Indie – Jih, Velká Británie – Jih, střed Indie, Indie – Západ, Indie – jih.
 
 ## <a name="pricing"></a>Ceny
 

@@ -7,25 +7,26 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 06/11/2019
+ms.date: 07/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 63aa93e72d76d430fc7e026478d91e496f27eae6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 82c1be335bfd39d641f0203116e68a4cb4c0a674
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67055113"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67654216"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-microsoft-account-using-azure-active-directory-b2c"></a>Nastavení registrace a přihlášení pomocí účtu Microsoft pomocí Azure Active Directory B2C
 
 ## <a name="create-a-microsoft-account-application"></a>Vytvoření aplikace účtu Microsoft
 
-Chcete-li použít účet Microsoft jako [zprostředkovatele identity](active-directory-b2c-reference-oidc.md) v Azure Active Directory (Azure AD) B2C, budete potřebovat k vytvoření aplikace ve vašem tenantovi, který ho zastupuje. Pokud ještě nemáte účet Microsoft, získáte ji na [ https://www.live.com/ ](https://www.live.com/).
+Chcete-li použít účet Microsoft jako [zprostředkovatele identity](active-directory-b2c-reference-oidc.md) v Azure Active Directory (Azure AD) B2C, budete muset vytvořit aplikaci v tenantovi Azure AD. Tenant Azure AD není stejný jako vašeho tenanta Azure AD B2C. Pokud ještě nemáte účet Microsoft, můžete jej získat na [ https://www.live.com/ ](https://www.live.com/).
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-1. Vyberte **všechny služby** v horním levém horním rohu webu Azure portal a poté vyhledejte a vyberte **registrace aplikací**.
-1. Vyberte **nové registrace**
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Ujistěte se, že používáte adresáře, který obsahuje váš tenant Azure AD kliknutím **filtr adresářů a předplatných** v horní nabídce a výběrem adresáře, který obsahuje váš tenant Azure AD.
+1. Zvolte **všechny služby** v horním levém horním rohu webu Azure portal a poté vyhledejte a vyberte **registrace aplikací**.
+1. Vyberte **registrace nové**.
 1. Zadejte **název** pro vaši aplikaci. Například *MSAapp1*.
 1. V části **podporovaných typů účtu**vyberte **účty v jakékoli organizaci adresáři a osobní účty Microsoft (třeba Skype, Xbox, Outlook.com)** . Tuto možnost, zaměřuje nejširší sadu identit společnosti Microsoft.
 

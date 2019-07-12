@@ -10,12 +10,12 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b486c30827ee67b58cbdc0027c8221cceed02e51
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a5d4657f87b0a6cbae0699c5a2f95773ff55f633
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66235946"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798450"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Přehled Azure Automation stavu konfigurace
 
@@ -49,7 +49,7 @@ Při použití Azure Automation stavu Configuration (DSC), zvažte následujíc�
 
 Pro uzly s Windows se podporují následující verze:
 
-- Windows Server 2019
+- Windows Server. 2019
 - Windows Server 2016
 - Windows Server 2012R2
 - Windows Server 2012
@@ -82,6 +82,10 @@ Pokud uzly jsou umístěny v privátní síti, jsou požadovány pro stav konfig
 * Global URL of US Gov Virginia: *.azure-automation.us
 * Služba agenta: https://\<ID pracovního prostoru\>.agentsvc.azure-automation.net
 
+To poskytuje připojení k síti pro spravovaných uzlů pro komunikaci s Azure Automation.
+Pokud používáte prostředky DSC, které komunikaci mezi uzly, například [WaitFor * prostředky](https://docs.microsoft.com/powershell/dsc/reference/resources/windows/waitForAllResource), musíte také povolit přenos mezi uzly.
+Najdete v dokumentaci pro jednotlivé prostředky DSC pochopit tyto požadavky na síť.
+
 #### <a name="proxy-support"></a>Podpora proxy
 
 Podpora proxy agenta DSC je dostupná ve Windows verze 1809 a novější.
@@ -99,7 +103,7 @@ Pokud máte účet Automation, který je definován pro konkrétní oblasti, mů
 | **Oblast** | **DNS record** |
 | --- | --- |
 | Západní střed USA | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice-prod-1.azure-automation.net |
-| Středojižní USA |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |
+| Střed USA – jih |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |
 | Východní USA 2 |eus2-jobruntimedata-prod-su1.azure-automation.net</br>eus2-agentservice-prod-1.azure-automation.net |
 | Kanada – střed |cc-jobruntimedata-prod-su1.azure-automation.net</br>cc-agentservice-prod-1.azure-automation.net |
 | Západní Evropa |we-jobruntimedata-prod-su1.azure-automation.net</br>we-agentservice-prod-1.azure-automation.net |

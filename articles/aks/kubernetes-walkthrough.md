@@ -2,18 +2,18 @@
 title: Rychlý start – vytvoření clusteru Azure Kubernetes Service (AKS)
 description: Zjistěte, jak rychle vytvořit Kubernetes cluster, nasazení aplikace a sledování výkonu ve službě Azure Kubernetes Service (AKS) pomocí Azure CLI.
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: quickstart
 ms.date: 05/20/2019
-ms.author: iainfou
+ms.author: mlearned
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: a7558308d668fc153b5ac9561efbdf68777ae09f
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: 2079144cf6cb36870645d3182aabdecccfcbadd0
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514385"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67615076"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Rychlý start: Nasazení clusteru služby Azure Kubernetes Service (AKS) pomocí rozhraní příkazového řádku Azure
 
@@ -272,7 +272,7 @@ V tomto rychlém startu předem vytvořené Image kontejnerů byly použity k vy
 
 [https://github.com/Azure-Samples/azure-voting-app-redis][azure-vote-app]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste nasadili cluster Kubernetes a do něj jste nasadili vícekontejnerovou aplikaci. Můžete také [přístup k řídicímu panelu Kubernetes webové][kubernetes-dashboard] pro váš cluster AKS.
 

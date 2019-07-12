@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 08/29/2017
 ms.author: yizhon
-ms.openlocfilehash: dd3b693271326c85688a275a65b67ad6257220e3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ff766375dd9ad7cb3bbdf1ef686abb77d1206099
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60400690"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797872"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-iothubclient"></a>Pro zařízení Azure IoT SDK pro jazyk C – Další informace pro IoTHubClient
 
@@ -264,7 +264,7 @@ IoTHubClient_LL_SetOption(iotHubClientHandle, "timeout", &timeout);
 
 Máte několik možností, které se běžně používají:
 
-* **SetBatching** (bool) – Pokud **true**, odesílání dat do služby IoT Hub je odeslaný v dávkách. Pokud **false**, pak jsou zprávy odesílány jednotlivě. Výchozí hodnota je **false**. Všimněte si, **SetBatching** možnost platí jenom pro protokol HTTPS a nechcete protokol MQTT nebo AMQP.
+* **SetBatching** (bool) – Pokud **true**, odesílání dat do služby IoT Hub je odeslaný v dávkách. Pokud **false**, pak jsou zprávy odesílány jednotlivě. Výchozí hodnota je **false**. Dávkování přes protokol AMQP / AMQP WS, jakož i přidáním vlastnosti systému na D2C zprávy, se podporuje.
 
 * **Časový limit** (unsigned int) – Tato hodnota je vyjádřena v milisekundách. Pokud odesílá požadavek HTTPS a příjem odpovědí trvá déle, než tuto chvíli a pak připojení vyprší časový limit.
 

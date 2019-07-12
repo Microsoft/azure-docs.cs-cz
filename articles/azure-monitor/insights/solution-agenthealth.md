@@ -7,18 +7,18 @@ author: MGoedtel
 manager: carmonm
 editor: ''
 ms.assetid: ''
-ms.service: operations-management-suite
+ms.service: azure-monitor
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/19/2017
 ms.author: magoedte
-ms.openlocfilehash: 568ff99364923c43b7199bed1dacd32cf0d18ab9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e9e27e224e42bf3f65fadcac22210fda314445fa
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64571148"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67665984"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Řešení Agent Health v monitorování Azure
 Řešení Agent Health v Azure vám pomůže pochopit, u všech agentů odesílajících sestavy přímo do pracovního prostoru Log Analytics ve službě Azure Monitor nebo skupinu pro správu System Center Operations Manager připojené k monitorování Azure, které jsou reagovat a odesílá se provozní data.  Můžete také sledovat, kolik agentů je nasazených a jak jsou geograficky distribuováni, a provádět další dotazy, abyste si udrželi přehled o distribuci agentů nasazených v Azure, dalších cloudových prostředích nebo místně.    
@@ -37,7 +37,7 @@ Pokud vaší skupině pro správu System Center Operations Manageru je připojen
 
 Další informace o způsobu, jakým se aktualizují sady pro správu řešení, najdete v tématu [Připojení Operations Manageru ke službě Log Analytics](../../azure-monitor/platform/om-agents.md).
 
-## <a name="configuration"></a>Konfigurace
+## <a name="configuration"></a>Konfiguraci
 Přidejte řešení Agent Health do pracovního prostoru Log Analytics pomocí postupu popsaného v [přidat řešení](solutions.md). Není nutná žádná další konfigurace.
 
 

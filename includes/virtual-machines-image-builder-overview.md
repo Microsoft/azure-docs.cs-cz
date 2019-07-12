@@ -5,12 +5,12 @@ ms.date: 04/30/2019
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: jeconnoc
-ms.openlocfilehash: 6eedc095f155a77cddf48211dbc4a677bf188112
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
+ms.openlocfilehash: 55d73b2602a9a862375ca3e72dee4597c1d6f1d6
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509825"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67659781"
 ---
 Image standardizované virtuálních počítačů (VM) umožňují organizacím migrace do cloudu a zajistit konzistenci v nasazení. Image obvykle zahrnují předdefinované nastavení zabezpečení a konfigurace a potřebný software. Nastavení pro vytváření bitových kopií kanálu vyžaduje čas, infrastruktury a nastavení, ale pomocí Tvůrce Image virtuálního počítače Azure, stačí zadat jednoduchou konfiguraci a popis bitové kopie, odeslat ho do služby a bitové kopie vytvořené a distribuovat.
  
@@ -38,8 +38,8 @@ Služba Azure Image Builder bude dostupná ve verzi preview v těchto oblastech.
 - East US
 - Východní USA 2
 - Západní střed USA
-- Západní USA
-- Západní USA 2
+- USA – západ
+- USA – západ 2
 
 ## <a name="os-support"></a>Podporu operačního systému
 AIB bude podporovat Azure Marketplace základní Image operačního systému:
@@ -55,7 +55,7 @@ AIB bude podporovat RHEL ISO společnosti, jako zdroj pro:
 - RHEL 7.4
 - RHEL 7.5
 
-RHEL 7.6 není podporována, ale právě testováno.
+Soubory ISO 7.6 RHEL se nepodporují, ale jsou testovány.
 
 ## <a name="how-it-works"></a>Jak to funguje
 

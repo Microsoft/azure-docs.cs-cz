@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cff3c57c31526119ab81225a1c70b163173be937
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: 7d41e32065e3de37eb8f01ab1b836040e7f57b12
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514435"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657877"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Převést vlastnictví fakturace předplatného Azure na jiný účet
 
@@ -38,7 +38,7 @@ Pokud jste zákazníkem Agreement(EA) organizace, může správce organizace př
 
 1. Vyberte **předplatná** v levém podokně. V závislosti na přístup, budete muset vybrat fakturační obor a pak vyberte **předplatná** nebo **předplatná Azure**.
 
-1. Vyberte **přenos do jiného účtu** pro předplatné, které chcete převést. 
+1. Vyberte **převést vlastnictví fakturace** pro předplatné, které chcete převést. 
 
    ![Vyberte předplatné pro přenos](./media/billing-subscription-transfer/billing-select-subscription-to-transfer.png)
 
@@ -210,7 +210,7 @@ Bohužel není podporováno všemi typy předplatných fakturační přenos vlas
 Pokud se snažíte převod předplatného Microsoft Azure plánování a nemáte potřebná oprávnění, zobrazí se tato chyba. Na převod předplatného plánu Microsoft Azure, musíte být vlastníkem nebo přispěvatelem části faktury, ke kterému se účtuje předplatné. Další informace najdete v tématu [spravovat předplatná pro části faktury](billing-understand-mca-roles.md#manage-subscriptions-for-invoice-section).
 
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
+## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
 
 Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
 

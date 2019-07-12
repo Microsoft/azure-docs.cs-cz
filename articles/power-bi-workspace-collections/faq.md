@@ -2,18 +2,18 @@
 title: Power BI pracovního prostoru kolekce – nejčastější dotazy
 description: Nejčastější dotazy související s kolekcí pracovních prostorů Power BI.
 services: power-bi-workspace-collections
-ms.service: power-bi-workspace-collections
+ms.service: power-bi-embedded
 author: rkarlin
 ms.author: rkarlin
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/25/2017
-ms.openlocfilehash: e3c28cc28261e65e945887d7ad9bfa5fd3984605
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b737c7753ce374d0360738e37d83609d1db995b1
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64701588"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672425"
 ---
 # <a name="power-bi-workspace-collections-faq"></a>Power BI pracovního prostoru kolekce – nejčastější dotazy
 
@@ -98,7 +98,7 @@ Můžete přejít [stránce dokumentace s kolekcí pracovních prostorů Power B
 
 Můžete začít zdarma teď! Pokud máte předplatné Azure, můžete nyní zřídit kolekce pracovních prostorů Power BI na webu Azure Portal přímo. Můžete také vytvořit váš [bezplatný účet Azure](https://azure.microsoft.com/free/). Jakmile zřídíte služba kolekce pracovních prostorů Power BI, můžete snadno používat rozhraní REST API Power BI přímo, nebo použít developer SDK, které jsou k dispozici na [Githubu](https://go.microsoft.com/fwlink/?LinkID=746472). Ukázky jsou k dispozici na tom, jak využít pro vývojáře sady SDK.
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
 [Co je kolekce pracovních prostorů Power BI Microsoft](what-are-power-bi-workspace-collections.md)
 [začít pracovat s kolekcí pracovních prostorů Power BI Microsoft](get-started.md)

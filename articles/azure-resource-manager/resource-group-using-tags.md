@@ -4,14 +4,14 @@ description: Ukazuje způsob použití značek k uspořádání prostředků Azu
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 04/26/2019
+ms.date: 07/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: 861e108efa6da3668f529e0324fd0de19fe84328
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 77175738a0cae5c6185a8ac74e51e9b91b685235
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206479"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827943"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>Používání značek k uspořádání prostředků Azure
 

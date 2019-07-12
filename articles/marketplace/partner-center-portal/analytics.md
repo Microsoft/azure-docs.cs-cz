@@ -7,12 +7,12 @@ ms.author: shthota
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/31/2019
-ms.openlocfilehash: 0da95dbdca52232b4b24ad921bf2d9c78dc76d56
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e467def33eb2980e58611d50c314a1206877e3b0
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66247721"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67619688"
 ---
 # <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>Analýza pro komerční Marketplace v partnerském centru
 
@@ -138,7 +138,7 @@ Prvních 50 zákazníkům s nejvyšší počet objednávek se zobrazí na *tabul
 
 - **Fakturuje v rámci Azure**: Microsoft účtuje zákazníkům vaším jménem při výběru [prodej vaší nabídky Microsoftu](./create-new-saas-offer.md#sell-through-microsoft) s tímto typem licence. Způsoby platby zahrnují průběžné platby prostřednictvím platební kartu nebo fakturaci Enterprise.
 - **Používání vlastní licence**: Microsoft není fakturovat zákazníků za využití tohoto typu nabídky marketplace. Uvedené jako **[získat (Free)](./create-new-saas-offer.md#get-it-now-free)** na webu Marketplace.
-- **Bezplatné**: Microsoft není fakturovat zákazníků za využití tohoto typu nabídky marketplace. Uvedené jako **[bezplatnou zkušební verzi](./create-new-saas-offer.md#free-trial)** na webu Marketplace.
+- **Bezplatné**: Microsoft není fakturovat zákazníků za využití tohoto typu nabídky marketplace. Uvedené jako **[bezplatnou zkušební verzi](./create-new-saas-offer.md##free-trial-listing)** na webu Marketplace.
 - **Microsoft jako prodejce**: Představuje nabídek prodávaných prodejci v systému Microsoft jako součást  **[programu Cloud Solution Provider (CSP)](./create-new-saas-offer.md#csp-program-opt-in)** .
 
 ![Partnerské centrum analyzovat objednávky podle typ licence](./media/analyze-license-type.png)
@@ -259,7 +259,7 @@ Zobrazí se místní oznámení a e-mailu, který obsahuje odkaz na **stáhne** 
 | Typ licence Marketplace| Objednání| Metodu fakturace nabídky Marketplace.||
 | Typ licence Marketplace: Fakturuje v rámci Azure| Objednání| Společnost Microsoft je agenta pro tuto nabídku Marketplace a účtuje zákazníkům vaším jménem. (Průběžné platby platební karty nebo faktury Enterprise)||
 | Typ licence Marketplace: Používání vlastní licence | Objednání| Virtuální počítač vyžaduje licenční klíč zákazníka k nasazení k dispozici. Microsoft zákazníkům fakturovat není pro výpis jejich nabídky tímto způsobem prostřednictvím webu marketplace.||
-| Typ licence Marketplace: Free| Objednání| Nabídka je nakonfigurovaný to bude zdarma pro všechny uživatele. Microsoft není fakturovat zákazníků pro jejich použití v rámci této nabídky.||
+| Typ licence Marketplace: Zdarma| Objednání| Nabídka je nakonfigurovaný to bude zdarma pro všechny uživatele. Microsoft není fakturovat zákazníků pro jejich použití v rámci této nabídky.||
 | Typ licence Marketplace: Microsoft jako prodejce  | Objednání| Společnost Microsoft se pro tuto nabídku Marketplace svého prodejce.|  |
 | ID předplatného Marketplace | Zákazník, pořadí | Jedinečný identifikátor spojený s předplatným Azure zákazníka použít k nákupu nabídky Marketplace. ID bylo dříve GUID předplatného Azure.||
 | Název nabídky  | Objednání| Název nabídky Marketplace.|| |
@@ -283,5 +283,5 @@ Zobrazí se místní oznámení a e-mailu, který obsahuje odkaz na **stáhne** 
 | ORDER Status: zrušeno | Objednání| Zákazník jste dříve zakoupili pořadí a následně bylo zrušeno jejich pořadí.||
 | Poskytovatele e-mailu| Zákazníka| E-mailovou adresu poskytovatele účastnící se vztahu mezi společnostmi Microsoft a koncového zákazníka. Pokud má zákazník organizace prostřednictvím prodejce, bude prodejce. Pokud se jedná o Cloud Solution Provider (CSP), bude poskytovatel CSP.|
 | Název poskytovatele| Zákazníka| Název zprostředkovatele účastnící se vztahu mezi zákazníky Microsoftu a end. Pokud má zákazník organizace prostřednictvím prodejce, bude prodejce. Pokud se jedná o Cloud Solution Provider (CSP), bude poskytovatel CSP.|
-| Skladová jednotka (SKU)| Objednání| Název skladové položky definované během publikování. Nabídka může mít mnoho skladové položky, ale SKU může být přidružen pouze jediné nabídky.||
+| SKU| Objednání| Název skladové položky definované během publikování. Nabídka může mít mnoho skladové položky, ale SKU může být přidružen pouze jediné nabídky.||
 | Zkušební verze koncové datum| Objednání| Data zkušební období pro tuto objednávku se ukončí nebo skončila.||

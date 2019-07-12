@@ -6,12 +6,12 @@ ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: e7395c69d99884a5c662e545a69778ed195aec55
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: e6afd90c4e5a1b0759b3de7789ec37db4c04f2c7
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67543136"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827445"
 ---
 # <a name="monitor-azure-fxt-edge-filer-hardware-status"></a>Monitorování Azure FXT hrany Filer stavu hardwaru
 
@@ -58,7 +58,7 @@ Levé přední ovládacího panelu má různé indikátory stavu LED (1) a indik
 
 Indikátory stavu vlevo zobrazit solid oranžové světlo, pokud dojde k chybě v daném systému. Následující tabulka popisuje možné příčiny a řešení pro chyby. 
 
-Pokud chyba stále ještě máte po vyzkoušení těchto řešení, obraťte se na podporu o pomoc. 
+Pokud chyba stále ještě máte po vyzkoušení tato řešení [obraťte se na podporu](fxt-support-ticket.md) nápovědu. 
 
 | Ikona | Popis | Chybový stav | Možná řešení |
 |----------------|---------------|--------------------|----------------------|
@@ -79,7 +79,7 @@ Stiskněte tlačítko ID přepínat mezi režimem ID systému a stav systému a 
 |-------------------------------------------|-----------------------------------------------|
 | Plné modrá | Normálního provozu: systém zapnutý, normálně, a režim ID systému není aktivní. <br/>Stisknutím klávesy stavu systému a ID tlačítko, pokud chcete přepnout do režimu ID systému. |
 | Bliká vám kontrolka modrá | Režim ID systému je aktivní. Stisknutím klávesy stavu systému a systém ID tlačítko, pokud chcete přepnout na režim stavu systému. |
-| Plné oranžová | Systém je v pohotovostním režimu. Pokud se problém nevyřeší, obraťte se na Microsoft zákaznický servis a podporu. |
+| Plné oranžová | Systém je v pohotovostním režimu. Pokud se problém nevyřeší, [obraťte se na Microsoft zákaznický servis a podporu](fxt-support-ticket.md). |
 | Bliká vám kontrolka oranžová | Selhání systému. Zkontrolujte protokol událostí systému pro specifické chybové zprávy. Informace o události a chybové zprávy generované firmware systému a agenty, které monitorují součásti systému naleznete na stránce vyhledávání kódu chyby na qrl.dell.com. |
 
 

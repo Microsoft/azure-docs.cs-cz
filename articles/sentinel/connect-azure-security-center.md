@@ -7,19 +7,20 @@ author: rkarlin
 manager: rkarlin
 editor: ''
 ms.assetid: d28c2264-2dce-42e1-b096-b5a234ff858a
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 7f2f85f8b68efadf1dc0a35d1a8e6bda2655f53b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 697983000f84f9e4efe7e2c8ef9dbb2f636e0735
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65207302"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620574"
 ---
 # <a name="connect-data-from-azure-security-center"></a>Připojení dat ze služby Azure Security Center
 
@@ -49,7 +50,7 @@ Azure Sentinel vám umožní připojit výstrahy z [Azure Security Center](../se
 
 4. Použít příslušné schéma v Log Analytics pro výstrahy Azure Security Center, vyhledejte **SecurityEvent**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V tomto dokumentu jste zjistili, jak se připojit k Azure Sentinelu Azure Security Center. Další informace o Azure Sentinelu, naleznete v následujících článcích:
 - Zjistěte, jak [umožňuje získat přehled vaše data a potenciální hrozby](quickstart-get-visibility.md).
 - Začínáme [detekuje hrozby s využitím Azure Sentinelu](tutorial-detect-threats.md).

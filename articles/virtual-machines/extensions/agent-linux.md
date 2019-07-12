@@ -4,7 +4,7 @@ description: Zjistěte, jak nainstalovat a nakonfigurovat agenta pro Linux (waag
 services: virtual-machines-linux
 documentationcenter: ''
 author: roiyz-msft
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-service-management,azure-resource-manager
 ms.assetid: e41de979-6d56-40b0-8916-895bf215ded6
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: roiyz
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1defa08b0eb9ede2adec3b7ac12c873522dd6c37
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 59a0cdd29e50501f023faf323948a400f325df0b
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60800209"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706164"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>Princip a používání agenta Azure Linux
 
@@ -132,7 +132,7 @@ V dokumentaci [agenta Azure Linux úložišti na Githubu](https://github.com/Azu
 * Démon procesu: Spusťte waagent jako démon ke správě interakci s platformou. Tento argument je určena k waagent ve skriptu waagent init.
 * Spusťte: Spustit waagent jako proces na pozadí
 
-## <a name="configuration"></a>Konfigurace
+## <a name="configuration"></a>Konfiguraci
 Konfigurační soubor (/ etc/waagent.conf) řídí akce waagent. Následuje ukázkový soubor konfigurace:
 
     ```

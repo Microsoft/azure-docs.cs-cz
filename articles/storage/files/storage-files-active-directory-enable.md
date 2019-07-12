@@ -5,14 +5,14 @@ services: storage
 author: roygara
 ms.service: storage
 ms.topic: article
-ms.date: 06/19/2019
+ms.date: 07/05/2019
 ms.author: rogarana
-ms.openlocfilehash: 80d871bdc17c3f93e113b08201d6c53f29bfeff0
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: cd4c952caa336f2602d3c30e0db3e10ebee59cb9
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295620"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67696127"
 ---
 # <a name="enable-azure-active-directory-domain-service-authentication-over-smb-for-azure-files-preview"></a>Povolit ověřování Azure Active Directory Domain Services přes protokol SMB pro soubory Azure (Preview)
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -22,16 +22,16 @@ Přehled ověřování Azure AD prostřednictvím protokolu SMB pro soubory Azur
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="overview-of-the-workflow"></a>Přehled pracovního postupu
-Před povolením služby Azure AD prostřednictvím protokolu SMB pro soubory Azure, ověřte, že služby Azure AD a prostředích Azure Storage jsou správně nakonfigurované. Doporučuje se, že si projdete [požadavky](#prerequisites) abyste měli jistotu, že jste provedli všechny požadované kroky. 
+Než povolíte ověřování Azure AD DS přes protokol SMB pro soubory Azure, ověřte, že služby Azure AD a prostředích Azure Storage jsou správně nakonfigurované. Doporučuje se, že si projdete [požadavky](#prerequisites) abyste měli jistotu, že jste provedli všechny požadované kroky. 
 
 V dalším kroku udělte přístup k prostředkům soubory Azure pomocí přihlašovacích údajů Azure AD pomocí následujících kroků: 
 
-1. Povolte ověřování Azure AD prostřednictvím protokolu SMB pro váš účet úložiště k registraci účtu úložiště přidruženého nasazení služby Azure AD Domain Services.
+1. Povolte ověřování Azure AD DS přes protokol SMB pro váš účet úložiště k registraci účtu úložiště přidruženého nasazení služby Azure AD Domain Services.
 2. Přiřadíte přístupová oprávnění pro sdílenou složku do identity Azure AD (uživatele, skupiny nebo instanční objekt služby).
 3. Nakonfigurujte oprávnění NTFS pro adresářů a souborů přes protokol SMB.
 4. Připojení sdílené složky Azure z virtuálního počítače připojené k doméně.
 
-Následující diagram znázorňuje – komplexní pracovní postup pro povolení ověřování Azure AD prostřednictvím protokolu SMB pro soubory Azure. 
+Následující diagram znázorňuje – komplexní pracovní postup pro povolení ověřování Azure AD DS přes protokol SMB pro soubory Azure. 
 
 ![Diagram znázorňující Azure AD prostřednictvím protokolu SMB pro pracovní postup službě soubory Azure](media/storage-files-active-directory-enable/azure-active-directory-over-smb-workflow.png)
 
@@ -56,7 +56,7 @@ Před povolením služby Azure AD prostřednictvím protokolu SMB pro soubory Az
     Pro přístup ke sdílené složce pomocí přihlašovacích údajů Azure AD z virtuálního počítače, musí být váš virtuální počítač připojený k doméně do Azure AD Domain Services. Další informace o tom, jak připojení k doméně virtuálního počítače, naleznete v tématu [připojení virtuálního počítače s Windows serverem do spravované domény](../../active-directory-domain-services/join-windows-vm.md).
 
     > [!NOTE]
-    > Ověřování Azure AD prostřednictvím protokolu SMB se soubory Azure je podporován pouze na virtuálních počítačích Azure, které běží na verze operačního systému Windows 7 nebo Windows Server 2008 R2.
+    > Ověřování Azure AD DS přes protokol SMB se soubory Azure je podporován pouze na virtuálních počítačích Azure, které běží na verze operačního systému Windows 7 nebo Windows Server 2008 R2.
 
 4.  **Vyberte nebo vytvořte sdílenou složku Azure.**
 
@@ -67,15 +67,15 @@ Před povolením služby Azure AD prostřednictvím protokolu SMB pro soubory Az
 
     Pokud chcete ověřit, zda jsou správně nakonfigurovány virtuální počítač a sdílenou složku, zkuste připojení sdílené složky pomocí klíče účtu úložiště. Další informace najdete v tématu [připojení sdílené složky Azure a přístup do sdílené složky ve Windows](storage-how-to-use-files-windows.md).
 
-## <a name="enable-azure-ad-authentication-for-your-account"></a>Povolit ověřování Azure AD pro váš účet
+## <a name="enable-azure-ad-ds-authentication-for-your-account"></a>Povolit ověřování Azure AD DS pro váš účet
 
-Pokud chcete povolit ověřování Azure AD pro soubory Azure přes protokol SMB, můžete nastavit vlastnost na účty úložiště vytvořené po 24. září 2018, pomocí webu Azure portal, prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure. Nastavení této vlastnosti zaregistruje účet úložiště se přidružené nasazení služby Azure AD Domain Services. Ověřování Azure AD prostřednictvím protokolu SMB potom zapnutá pro všechny nové a existující sdílené složky v účtu úložiště. 
+Pokud chcete povolit ověřování Azure AD DS přes protokol SMB pro soubory Azure, můžete nastavit vlastnost na účty úložiště vytvořené po 24. září 2018, pomocí webu Azure portal, prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure. Nastavení této vlastnosti zaregistruje účet úložiště se přidružené nasazení služby Azure AD Domain Services. Ověřování Azure AD DS přes protokol SMB je pak povolená pro všechny nové a existující sdílené složky v účtu úložiště. 
 
-Uvědomte si, že až poté, co jste úspěšně nasadili Azure AD Domain Services pro vašeho tenanta Azure AD, můžete povolit ověřování Azure AD prostřednictvím protokolu SMB. Další informace najdete [požadavky](#prerequisites).
+Uvědomte si, že až poté, co jste úspěšně nasadili Azure AD Domain Services pro vašeho tenanta Azure AD, můžete povolit ověřování Azure AD DS přes protokol SMB. Další informace najdete [požadavky](#prerequisites).
 
 ### <a name="azure-portal"></a>portál Azure
 
-Chcete-li povolit ověřování Azure AD pomocí protokolu SMB [webu Azure portal](https://portal.azure.com), postupujte podle těchto kroků:
+Pokud chcete povolit ověřování Azure AD DS přes pomocí protokolu SMB [webu Azure portal](https://portal.azure.com), postupujte podle těchto kroků:
 
 1. Na webu Azure Portal, přejděte na svůj existující účet úložiště, nebo [vytvořit účet úložiště](../common/storage-quickstart-create-account.md).
 2. V **nastavení** vyberte **konfigurace**.
@@ -87,13 +87,13 @@ Následující obrázek ukazuje, jak povolit ověřování Azure AD prostřednic
   
 ### <a name="powershell"></a>PowerShell  
 
-Pokud chcete povolit ověřování Azure AD prostřednictvím protokolu SMB v Azure Powershellu, nejprve nainstalovat sestavení ve verzi preview `Az.Storage` modulu s podporou služby Azure AD. Další informace o instalaci Powershellu najdete v tématu [nainstalujte prostředí Azure PowerShell ve Windows pomocí Správce balíčků PowerShellGet](https://docs.microsoft.com/powershell/azure/install-Az-ps):
+Povolení ověřování Azure AD DS přes protokol SMB pomocí Azure Powershellu: Nejprve nainstalujte nejnovější modul Az (2.4 nebo novější) nebo modulu Az.Storage (1.5 nebo novější). Další informace o instalaci Powershellu najdete v tématu [nainstalujte prostředí Azure PowerShell ve Windows pomocí Správce balíčků PowerShellGet](https://docs.microsoft.com/powershell/azure/install-Az-ps):
 
 ```powershell
 Install-Module -Name Az.Storage -AllowPrerelease -Force -AllowClobber
 ```
 
-Dále vytvořte nové úložiště účtu a potom voláním [Set-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/set-azstorageaccount) a nastavit **EnableAzureFilesAadIntegrationForSMB** parametr **true**. V následujícím příkladu nezapomeňte nahradit zástupné hodnoty vlastními hodnotami.
+Dále vytvořte nové úložiště účtu a potom voláním [Set-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/set-azstorageaccount) a nastavit **EnableAzureActiveDirectoryDomainServicesForFile** parametr **true**. V následujícím příkladu nezapomeňte nahradit zástupné hodnoty vlastními hodnotami. (Pokud jste používali předchozí modul ve verzi Preview, je parametr k povolení funkce **EnableAzureFilesAadIntegrationForSMB**.)
 
 ```powershell
 # Create a new storage account
@@ -102,8 +102,17 @@ New-AzStorageAccount -ResourceGroupName "<resource-group-name>" `
     -Location "<azure-region>" `
     -SkuName Standard_LRS `
     -Kind StorageV2 `
-    -EnableAzureFilesAadIntegrationForSMB $true
+    -EnableAzureActiveDirectoryDomainServicesForFile $true
 ```
+Pokud chcete povolit tuto funkci na existujících účtů úložiště, použijte následující příkaz:
+
+```powershell
+# Update a storage account
+Set-AzStorageAccount -ResourceGroupName "<resource-group-name>" `
+    -Name "<storage-account-name>" `
+    -EnableAzureActiveDirectoryDomainServicesForFile $true
+```
+
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -122,98 +131,36 @@ az storage account create -n <storage-account-name> -g <resource-group-name> --f
 
 ## <a name="assign-access-permissions-to-an-identity"></a>Přiřadit přístupová oprávnění identitě 
 
-Pro přístup k prostředkům soubory Azure pomocí přihlašovacích údajů Azure AD, identitu (uživatele, skupiny nebo instanční objekt služby), musí mít potřebná oprávnění na úrovni sdílené složky. Pokyny v této části ukazuje, jak přiřadit číst, zapsat nebo odstranit oprávnění pro sdílenou složku na identitu.
+Pro přístup k prostředkům soubory Azure pomocí přihlašovacích údajů Azure AD, identitu (uživatele, skupiny nebo instanční objekt služby), musí mít potřebná oprávnění na úrovni sdílené složky. Tento proces je podobný zadání oprávnění ke sdílení Windows, kde zadáte typ přístupu, která má určitý uživatel ke sdílené složce. Pokyny v této části ukazuje, jak přiřadit číst, zapsat nebo odstranit oprávnění pro sdílenou složku na identitu.
+
+Zavedli jsme dvě Azure předdefinované role pro udělování oprávnění na úrovni sdílené složky pro uživatele: Úložiště souboru dat SMB sdílené složky Čtenář a Přispěvatel sdílené složky SMB dat souboru služby Storage. 
+
+- **Čtenář sdílené složky SMB dat soubor Storage** umožňuje přístup pro čtení v Azure Storage sdílené složky přes protokol SMB
+- **Přispěvatel sdílené složky SMB dat soubor Storage** umožňuje čtení, zápisu a odstranění přístupu v Azure Storage sdílené složky přes protokol SMB
 
 > [!IMPORTANT]
 > Úplné řízení pro správu sdílené složky, včetně možnosti přiřazení role na identitu, vyžaduje použití klíče účtu úložiště. Přihlašovací údaje služby Azure AD nepodporuje administrativní řízení. 
 
-### <a name="define-a-custom-role"></a>Definovat vlastní roli
+Webu Azure portal, Powershellu nebo rozhraní příkazového řádku Azure můžete přiřadit předdefinované role Azure AD identity uživatele pro udělování oprávnění na úrovni sdílené složky. 
 
-Udělení oprávnění na úrovni sdílené složky, definovat vlastní roli RBAC a přiřaďte ho do identity, oborů do sdílené složky konkrétní. Tento proces je podobný zadání oprávnění ke sdílení Windows, kde zadáte typ přístupu, která má určitý uživatel ke sdílené složce.  
+#### <a name="azure-portal"></a>portál Azure
+Přiřazení RBAC role do identity Azure AD, pomocí [webu Azure portal](https://portal.azure.com), postupujte podle těchto kroků:
 
-Šablony je znázorněno v následující části poskytují číst nebo změnit oprávnění pro sdílenou složku. Pokud chcete definovat vlastní roli, vytvořte soubor JSON a zkopírujte příslušnou šablonu do tohoto souboru. Další informace o definování vlastní role RBAC najdete v tématu [vlastní role v Azure](../../role-based-access-control/custom-roles.md).
-
-**Definice role pro oprávnění na úrovni sdílení změn**  
-Následující šablony vlastní role poskytuje oprávnění změnit na úrovni sdílené složky, poskytování identity čtení, zápisu a odstranění přístup ke sdílené složce.
-
-```json
-{
-  "Name": "<Custom-Role-Name>",
-  "Id": null,
-  "IsCustom": true,
-  "Description": "Allows for read, write and delete access to Azure File Share over SMB",
-  "Actions": [
-    "Microsoft.Storage/storageAccounts/fileServices/*"
-  ],
-  "DataActions": [
-    "Microsoft.Storage/storageAccounts/fileServices/*"
-  ],
-  "NotDataActions": [
-    "Microsoft.Storage/storageAccounts/fileServices/fileshares/files/modifypermissions/action",
-    "Microsoft.Storage/storageAccounts/fileServices/fileshares/files/actassuperuser/action"
-  ],
-  "AssignableScopes": [
-        "/subscriptions/<Subscription-ID>"
-  ]
-}
-```
-
-**Definice role pro oprávnění ke čtení úrovni sdílené složky**  
-Následující šablony vlastní role poskytuje oprávnění ke čtení úrovni sdílené složky, udělení přístupu pro čtení identity ke sdílené složce.
-
-```json
-{
-  "Name": "<Custom-Role-Name>",
-  "Id": null,
-  "IsCustom": true,
-  "Description": "Allows for read access to Azure File Share over SMB",
-  "Actions": [
-    "Microsoft.Storage/storageAccounts/fileServices/*/read"
-  ],
-  "DataActions": [
-    "Microsoft.Storage/storageAccounts/fileServices/*/read"
-  ],
-  "AssignableScopes": [
-        "/subscriptions/<Subscription-ID>"
-  ]
-}
-```
-
-### <a name="create-the-custom-role"></a>Vytvořit vlastní roli
-
-Chcete-li vytvořit vlastní roli, pomocí Powershellu nebo rozhraní příkazového řádku Azure. 
+1. Na webu Azure Portal, přejděte do sdílené složky nebo [vytvoření sdílené složky ve službě soubory Azure](storage-how-to-create-file-share.md).
+2. Vyberte **řízení přístupu (IAM)** .
+3. Vyberte **přidat přiřazení role**
+4. V **přidat přiřazení role** okno, vyberte odpovídající předdefinovaná role (čtenář sdílené složky SMB dat souboru služby Storage, Přispěvatel sdílené složky SMB dat souboru služby Storage) ze **Role** rozevíracího seznamu. Zachovat **přiřadit přístup k** jako výchozí: "Azure AD uživatele, skupinu nebo instanční objekt služby" a vyberte cíl identity Azure AD podle jména nebo e-mailové adresy. 
+5. Nakonec vyberte **Uložit** k dokončení operace přiřazení role.
 
 #### <a name="powershell"></a>PowerShell
 
-Následující příkaz Powershellu vytvoří vlastní roli na základě jedné z ukázkových šablon.
-
-```powershell
-#Create a custom role based on the sample template above
-New-AzRoleDefinition -InputFile "<custom-role-def-json-path>"
-```
-
-#### <a name="cli"></a>Rozhraní příkazového řádku 
-
-Následující příkaz Azure CLI vytvoří vlastní roli na základě jedné z ukázkových šablon.
-
-```azurecli-interactive
-#Create a custom role based on the sample templates above
-az role definition create --role-definition "<Custom-role-def-JSON-path>"
-```
-
-### <a name="assign-the-custom-role-to-the-target-identity"></a>Přiřazení vlastní role cílové
-
-V dalším kroku pomocí Powershellu nebo rozhraní příkazového řádku Azure přiřazení vlastní role do identity Azure AD. 
-
-#### <a name="powershell"></a>PowerShell
-
-Následující příkaz prostředí PowerShell ukazuje, jak seznamu k dispozici vlastní role a potom přiřadit vlastní roli identity Azure AD, na základě názvu přihlášení. Další informace o přiřazení role RBAC pomocí Powershellu najdete v tématu [správě přístupu pomocí RBAC a prostředí Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md).
+Následující příkaz prostředí PowerShell ukazuje, jak přiřadit roli RBAC identity Azure AD, na základě názvu přihlášení. Další informace o přiřazení role RBAC pomocí Powershellu najdete v tématu [správě přístupu pomocí RBAC a prostředí Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md).
 
 Při spuštění následující ukázkový skript, nezapomeňte nahradit zástupné hodnoty, včetně závorkách a s vlastními hodnotami.
 
 ```powershell
 #Get the name of the custom role
-$FileShareContributorRole = Get-AzRoleDefinition "<role-name>"
+$FileShareContributorRole = Get-AzRoleDefinition "<role-name>" #Use one of the built-in roles: Storage File Data SMB Share Reader, Storage File Data SMB Share Contributor
 #Constrain the scope to the target file share
 $scope = "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/fileServices/default/fileshare/<share-name>"
 #Assign the custom role to the target identity with the specified scope.
@@ -222,15 +169,13 @@ New-AzRoleAssignment -SignInName <user-principal-name> -RoleDefinitionName $File
 
 #### <a name="cli"></a>Rozhraní příkazového řádku
   
-Následující příkaz rozhraní příkazového řádku 2.0 ukazuje, jak seznamu k dispozici vlastní role a potom přiřadit vlastní roli identity Azure AD, na základě názvu přihlášení. Další informace o přiřazení role RBAC pomocí rozhraní příkazového řádku Azure najdete v tématu [správě přístupu pomocí RBAC a rozhraní příkazového řádku Azure](../../role-based-access-control/role-assignments-cli.md). 
+Následující příkaz rozhraní příkazového řádku 2.0 ukazuje, jak přiřadit roli RBAC identity Azure AD, na základě názvu přihlášení. Další informace o přiřazení role RBAC pomocí rozhraní příkazového řádku Azure najdete v tématu [správě přístupu pomocí RBAC a rozhraní příkazového řádku Azure](../../role-based-access-control/role-assignments-cli.md). 
 
 Při spuštění následující ukázkový skript, nezapomeňte nahradit zástupné hodnoty, včetně závorkách a s vlastními hodnotami.
 
 ```azurecli-interactive
-#List the custom roles
-az role definition list --custom-role-only true --output json | jq '.[] | {"roleName":.roleName, "description":.description, "roleType":.roleType}'
-#Assign the custom role to the target identity
-az role assignment create --role "<custom-role-name>" --assignee <user-principal-name> --scope "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/fileServices/default/fileshare/<share-name>"
+#Assign the built-in role to the target identity: Storage File Data SMB Share Reader, Storage File Data SMB Share Contributor
+az role assignment create --role "<role-name>" --assignee <user-principal-name> --scope "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/fileServices/default/fileshare/<share-name>"
 ```
 
 ## <a name="configure-ntfs-permissions-over-smb"></a>Konfigurace oprávnění NTFS přes protokol SMB 

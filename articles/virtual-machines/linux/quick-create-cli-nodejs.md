@@ -4,7 +4,7 @@ description: Vytvoření virtuálního počítače s Linuxem v Azure pomocí Azu
 services: virtual-machines-linux
 documentationcenter: ''
 author: vlivech
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: facb1115-2b4e-4ef3-9905-330e42beb686
 ms.service: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/15/2016
 ms.author: v-livech
-ms.openlocfilehash: 569e90c7908ce435689a80f7917b20275703f537
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a757e156d48eb27a9e4d9b38cb08d5417f1e35b6
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61473735"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671079"
 ---
 # <a name="create-a-linux-vm-using-the-azure-classic-cli"></a>Vytvoření virtuálního počítače s Linuxem pomocí Azure classic CLI
 
@@ -52,12 +52,12 @@ Rychlým způsobem, jak zvolit distribuci, je použít aliasy rozhraní příkaz
 
 | Alias | Vydavatel | Nabídka | Skladová jednotka (SKU) | Version |
 |:--- |:--- |:--- |:--- |:--- |
-| CentOS |OpenLogic |CentOS |7.2 |nejnovější |
-| CoreOS |CoreOS |CoreOS |Stable |nejnovější |
-| Debian |credativ |Debian |8 |nejnovější |
-| openSUSE |SUSE |openSUSE |13.2 |nejnovější |
-| RHEL |Red Hat |RHEL |7.2 |nejnovější |
-| UbuntuLTS |Canonical |Ubuntu Server |14.04.4-LTS |nejnovější |
+| CentOS |OpenLogic |CentOS |7.2 |latest |
+| CoreOS |CoreOS |CoreOS |Stable |latest |
+| Debian |credativ |Debian |8 |latest |
+| openSUSE |SUSE |openSUSE |13.2 |latest |
+| RHEL |Red Hat |RHEL |7.2 |latest |
+| UbuntuLTS |Canonical |Ubuntu Server |14.04.4-LTS |latest |
 
 V následujících částech se používá alias `UbuntuLTS` pro možnost **ImageURN** (`-Q`) k nasazení serveru Ubuntu 14.04.4 LTS.
 
@@ -67,7 +67,7 @@ V předchozím příkladu `quick-create` se příznak `-M` využíval jenom k id
 * název virtuálního počítače
 * umístění (vhodné výchozí hodnoty jsou `westus` nebo `westeurope`)
 * linux (aby se v Azure vědělo, který operační systém chcete)
-* username jméno
+* username
 
 V následujícím příkladu jsou všechny tyto hodnoty zadané, takže už není potřeba zobrazovat žádné další výzvy. Pokud jako soubor veřejného klíče ve formátu ssh-rsa používáte `~/.ssh/id_rsa.pub`, funguje tak, jak je:
 

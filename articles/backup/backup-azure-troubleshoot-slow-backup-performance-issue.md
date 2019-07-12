@@ -6,14 +6,14 @@ author: saurabhsensharma
 manager: saurabhsensharma
 ms.service: backup
 ms.topic: troubleshooting
-ms.date: 10/31/2018
-ms.author: saurabhsensharma
-ms.openlocfilehash: 1bc9c7b4f6e2a4f2a7c712d966caac74b73518df
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.date: 07/05/2019
+ms.author: saurse
+ms.openlocfilehash: 592a46077bb9e3469f3a42a95173af1b6db93510
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67565666"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704941"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Řešení potíží s pomalým zálohováním souborů a složek ve službě Azure Backup
 Tento článek obsahuje pokyny k odstraňování problémů, které vám pomohou diagnostikovat příčiny pomalého výkonu zálohování souborů a složek, při použití Azure Backup. Pokud používáte agenta Azure Backup k zálohování souborů, záložní proces může trvat déle než obvykle. Toto zpoždění může být způsobena jednou nebo více z následujících akcí:
@@ -38,7 +38,7 @@ Windows poskytuje integrované nástroje, která je volána [sledování výkonu
 
 Tady jsou některé čítače výkonu a rozsahy, které může být užitečné při diagnostice problémová místa pro optimální zálohování.
 
-| Čítač | Status |
+| Čítač | Stav |
 | --- | --- |
 | Logický Disk (fyzického disku)--% nečinnosti |• 100 % nečinnosti na 50 % nečinný = v pořádku</br>• 49 % nečinnosti 20 % nečinnosti = upozornění nebo monitorování</br>• 19 % nečinnosti na 0 % nečinný = důležité aktualizace nebo z specifikace |
 | Logický Disk (fyzického disku)--% střední Disku čtení nebo zápisu |• 0,001 ms pro 0,015 ms = v pořádku</br>• 0,015 ms pro 0,025 ms = upozornění nebo monitorování</br>• 0.026 ms nebo už = důležité aktualizace nebo z specifikace |
@@ -88,8 +88,8 @@ author: saurabhsensharma
 manager: saurabhsensharma
 ms.service: backup
 ms.topic: troubleshooting
-ms.date: 10/31/2018
-ms.author: saurabhsensharma
+ms.date: 07/05/2019
+ms.author: saurse
 ---
 # Troubleshoot slow backup of files and folders in Azure Backup
 This article provides troubleshooting guidance to help you diagnose the cause of slow backup performance for files and folders when you're using Azure Backup. When you use the Azure Backup agent to back up files, the backup process might take longer than expected. This delay might be caused by one or more of the following:

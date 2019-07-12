@@ -3,16 +3,15 @@ title: Azure Data Factory mapování odchylek schématu toku dat
 description: Vytváření odolných toky dat ve službě Azure Data Factory pomocí schématu odchylek
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: aadab68185347dc0a12e0802f675efe13ecea545
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6fd610afc0a21a97a8544b9e4b173f207f5fb50f
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61261875"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722879"
 ---
 # <a name="mapping-data-flow-schema-drift"></a>Mapování datového toku schématu odchylek
 
@@ -34,7 +33,7 @@ Pokud chcete chránit proti schématu odchylek, je důležité mít zařízení 
 
 * Když vyberete tuto možnost, všechny příchozí pole se načtou ze zdroje na každého spuštění toku dat a bude celý tok má předat do jímky.
 
-* Nezapomeňte použít "Auto-Map" mapovat všechna nová pole v transformaci jímky tak, aby všechna nová pole získat výběru nahoru a dostali se do cíl:
+* Nezapomeňte použít "Auto-Map" tak, aby všechna nová pole získat výběru nahoru a dostali se do vaší cílové mapovat všechna nová pole v transformaci jímky.
 
 <img src="media/data-flow/automap.png" width="400">
 

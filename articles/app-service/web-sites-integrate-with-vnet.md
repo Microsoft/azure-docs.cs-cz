@@ -11,20 +11,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/14/2019
+ms.date: 07/09/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: b269c75be7fec55fb77afecc6d04b86266c74a6f
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 940163d01e562d5a7d9107e8d893ba981fa0f84a
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147301"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67795924"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrujte svou aplikaci s Azure Virtual Network
-Tento dokument popisuje funkci integrace virtuální sítě Azure App Service a jak ho nastavit s aplikacemi v [služby Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). [Azure Virtual Networks] [ VNETOverview] (Vnet) umožňuje umístit řadu prostředků Azure v síti bez Internetu možnosti směrování.  
+Tento dokument popisuje funkci integrace virtuální sítě Azure App Service a jak ho nastavit s aplikacemi v [služby Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). [Azure Virtual Networks][VNETOverview] (Vnet) umožňuje umístit řadu prostředků Azure v Internetu jiných směrovatelné síti.  
 
-Azure App Service má dvě formy. 
+Azure App Service má dvě varianty. 
 
 1. Víceklientské systémy, které podporují celou škálu cenové plány s výjimkou izolovaný režim
 2. App Service Environment (ASE), která nasadí do vaší virtuální sítě a podporuje s izolovanou cenou plánu aplikace
@@ -34,14 +34,14 @@ Tento dokument prochází dvě funkce integrace virtuální sítě, který je ur
 Existují dva typy k funkci integrace virtuální sítě
 
 1. Jedna verze umožňuje integraci s virtuálními sítěmi ve stejné oblasti. Tato forma funkci vyžaduje velikost podsítě ve virtuální síti ve stejné oblasti. Tato funkce je stále ve verzi preview, ale se podporuje pro úlohy v produkčním prostředí aplikace Windows s některé upozornění níže uvedené.
-2. Jiné verze umožňuje integraci s virtuálními sítěmi v jiných oblastech nebo s klasickými virtuálními sítěmi. Tato verze funkce vyžaduje nasazení brány virtuální sítě do virtuální sítě. Toto je funkce point-to-site VPN na základě.
+2. Jiné verze umožňuje integraci s virtuálními sítěmi v jiných oblastech nebo s klasickými virtuálními sítěmi. Tato verze funkce vyžaduje nasazení brány virtuální sítě do virtuální sítě. To je funkce založená na VPN typu point-to-site a je podporován pouze s aplikacemi pro Windows.
 
 Aplikace lze použít pouze jednu formu funkci integrace virtuální sítě v čase. Pak otázkou je, které funkce byste měli použít. Můžete použít buď pro řadu věcí. Vymazat rozdíly ale jsou:
 
 | Problém  | Řešení | 
 |----------|----------|
 | Chcete přístup adrese RFC 1918 (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) ve stejné oblasti | místní integrace virtuální sítě |
-| Chcete dosáhnout klasickou virtuální síť nebo virtuální sítě v jiné oblasti | Brána vyžaduje integrace virtuální sítě |
+| Chcete mít přístup k prostředkům v klasické virtuální sítě nebo virtuální sítě v jiné oblasti | Brána vyžaduje integrace virtuální sítě |
 | Chcete kontaktovat koncové body RFC 1918 přes ExpressRoute | místní integrace virtuální sítě |
 | Chcete mít přístup k prostředkům napříč koncovými body služby | místní integrace virtuální sítě |
 
@@ -78,12 +78,14 @@ Tato funkce je ve verzi preview, ale podporují ji pro produkční aplikace Wind
 * budete mít přístup k prostředkům napříč globální partnerské vztahy virtuálních sítí
 * Nelze nastavit trasy na provoz přicházející z vaší aplikace do virtuální sítě
 * Tato funkce je jen k dispozici novější jednotek škálování služby App Service, které podporují plány služby App Service PremiumV2.
+* Integrace podsítě jde použít jenom ve jenom jeden plán služby App Service
 * Tuto funkci nelze použít plán Isolated aplikace, které jsou ve službě App Service Environment
-* Tato funkce vyžaduje nevyužité podsíť s alespoň 32 adres ve vaší virtuální síti správce prostředků.
+* Tato funkce vyžaduje nevyužité podsíť, která je/27 s 32 adres nebo větší ve vaší virtuální síti správce prostředků
 * Aplikace a virtuální síť musí být ve stejné oblasti
-* Jedna adresa se používá pro všechny instance plánu služby App Service. Protože se po přiřazení nelze změnit velikost podsítě, použijte podsíť, která může zahrnovat více než maximální měřítko. Možnost/27 s 32 adres je doporučená velikost, která by odpovídala plán služby App Service, který je škálovat, aby 20 instancí.
 * Nelze odstranit virtuální síť, která integrované aplikace. Je nutné nejprve odebrat integrace 
 * Může mít pouze jeden místní integrace virtuální sítě na plán služby App Service. Více aplikací v rámci stejného plánu služby App Service můžete použít stejné virtuální síti. 
+
+Jedna adresa se používá pro všechny instance plánu služby App Service. Pokud můžete škálovat aplikaci tak, aby 5 instancí, je to 5 adresy, které používá. Protože se po přiřazení nelze změnit velikost podsítě, je nutné použít podsíť dostatečně velký, aby libovolně škálovat kapacitu vaší aplikace může dosáhnout. Možnost/27 s 32 adres je doporučená velikost, která by odpovídala plán služby App Service Premium, který je škálovat, aby 20 instancí.
 
 Tato funkce je také pro Linux ve verzi preview. Jak používat funkci integrace virtuální sítě pomocí virtuální sítě Resource Manageru ve stejné oblasti:
 
@@ -101,11 +103,15 @@ Jakmile vaše aplikace je integrovaný s vaší virtuální sítě, bude použí
 
 Chcete-li vaše aplikace se odpojí z virtuální sítě, vyberte **odpojit**. Tato operace restartuje vaše webová aplikace. 
 
-Novou funkci integrace virtuální sítě vám umožní použít koncové body služby.  Koncové body služby s vaší aplikací, použití nově zavedené integraci virtuální sítě pro připojení k vybrané virtuální síti a potom nakonfigurujte koncové body služby v podsíti, který jste použili pro integraci. 
 
 #### <a name="web-app-for-containers"></a>Web App for Containers
 
 Pokud používáte služby App Service v Linuxu pomocí integrovaných imagí, místní funkci integrace virtuální sítě funguje bez jakýchkoli dalších změn. Pokud použijete Web App for Containers, musíte upravit image dockeru, aby bylo možné používat integrace virtuální sítě. Do své image dockeru pomocí proměnné prostředí PORT jako port pro naslouchání hlavní webový server, namísto použití pevně zakódované číslo portu. Proměnná prostředí portu je automaticky nastavena podle platformy App Service v době spuštění kontejneru.
+
+### <a name="service-endpoints"></a>Koncové body služeb
+
+Novou funkci integrace virtuální sítě vám umožní použít koncové body služby.  Koncové body služby s vaší aplikací, použití nově zavedené integraci virtuální sítě pro připojení k vybrané virtuální síti a potom nakonfigurujte koncové body služby v podsíti, který jste použili pro integraci. 
+
 
 ### <a name="how-vnet-integration-works"></a>Jak funguje integrace virtuální sítě
 
@@ -113,7 +119,7 @@ Aplikace ve službě App Service jsou hostované na role pracovních procesů. Z
 
 ![Integrace virtuální sítě](media/web-sites-integrate-with-vnet/vnet-integration.png)
 
-Při zapnuté funkci integrace virtuální sítě, aplikace bude stále volání odchozí internetové stejnou cestou jako za normálních okolností. Odchozí adresy, které jsou uvedeny na vlastnosti portálu aplikace jsou stále adresy používané v aplikaci. Co jsou změny provedené u vaší aplikace, službám zabezpečeným přes službu volání koncového bodu služby, nebo RFC 1918 adres přejde do vaší virtuální sítě. 
+Při zapnuté funkci integrace virtuální sítě, aplikace bude stále volání odchozí internetové stejnou cestou jako za normálních okolností. Odchozí adresy, které jsou uvedeny na vlastnosti portálu aplikace jsou stále adresy používané v aplikaci. Co jsou změny pro vaši aplikaci, volání koncového bodu služby, služby nebo RFC 1918 adresy zabezpečené přejde do vaší virtuální sítě. 
 
 Funkce se podporuje jenom jeden virtuální rozhraní za pracovního procesu.  Jeden virtuální rozhraní za pracovního procesu znamená, že jeden místní integrace virtuální sítě na plán služby App Service. Všechny aplikace v rámci stejného plánu služby App Service můžete použít stejné integrace virtuální sítě, ale pokud potřebujete aplikaci připojit k další síti, musíte vytvořit jiný plán služby App Service. Virtuální rozhraní použité není prostředek, který zákazníci mají přímý přístup k.
 
@@ -149,7 +155,7 @@ Tady jsou některé možnosti brát v úvahu před připojením vaší webové a
 Pokud jste již bránu nakonfigurovanou adresu point-to-site, můžete přeskočit ke konfiguraci integrace virtuální sítě s vaší aplikací.  
 Pokud chcete vytvořit bránu:
 
-1. [Vytvořit podsíť brány] [ creategatewaysubnet] ve vaší virtuální síti.  
+1. [Vytvořit podsíť brány][creategatewaysubnet] ve vaší virtuální síti.  
 
 1. [Vytvořte bránu VPN][creategateway]. Vyberte typ sítě VPN založené na směrování.
 
@@ -203,7 +209,7 @@ K dosažení integrace rozhraní ASP virtuální sítě, otevřete uživatelské
 
 Integrace rozhraní ASP virtuální sítě se zobrazí všechny virtuálních sítí, které jsou používány aplikací ve vaší ASP. Chcete-li zobrazit podrobnosti o každé virtuální síti, klikněte na virtuální sítě, které vás zajímají. Existují dvě akce, můžete tady provádět.
 
-* **Synchronizovat síť**. Síťové operace synchronizace je jenom pro brány závislé funkci integrace virtuální sítě. Provádění síťové operace synchronizace zajišťuje, že jsou certifikáty a informace o síti synchronizované. Je-li přidat nebo změnit DNS virtuální sítě, je třeba provést **synchronizovat síť** operace. Tato operace restartuje všechny aplikace s využitím této virtuální síti.
+* **Synchronizovat síť**. Síťové operace synchronizace je jenom pro funkci integrace virtuální sítě brány závislé. Provádění síťové operace synchronizace zajišťuje, že jsou certifikáty a informace o síti synchronizované. Je-li přidat nebo změnit DNS virtuální sítě, je třeba provést **synchronizovat síť** operace. Tato operace restartuje všechny aplikace s využitím této virtuální síti.
 * **Přidání tras** přidání trasy, se bude řídit odchozí provoz do vaší virtuální sítě.
 
 **Směrování** trasy, které jsou definovány ve virtuální síti se používají ke směrování provozu do vaší virtuální sítě z vaší aplikace. Pokud je nutné odeslat další odchozí provoz do virtuální sítě, můžete přidat tyto bloky adres tady. Tato funkce funguje pouze s bránou vyžaduje integrace virtuální sítě.
@@ -217,7 +223,7 @@ Aplikace můžou přistupovat k místním prostředkům díky integraci s virtu�
 Neexistuje žádná další konfigurace požadované pro místní funkci integrace virtuální sítě k dosažení prostřednictvím vaší virtuální síti a k místnímu. Chcete-li propojit vaši virtuální síť k místní pomocí ExpressRoute nebo VPN typu site-to-site. 
 
 > [!NOTE]
-> Brána požadované funkci integrace virtuální sítě není integrovat aplikace s virtuální sítí, která má bránu ExpressRoute. I v případě, že je brána ExpressRoute nakonfigurovaná v [koexistence režimu] [ VPNERCoex] nefunguje integrace virtuální sítě. Pokud potřebujete přístup k prostředkům pomocí připojení ExpressRoute, můžete použít místní funkci integrace virtuální sítě nebo s [služby App Service Environment][ASE], která se spouští ve vaší virtuální síti. 
+> Brána požadované funkci integrace virtuální sítě není integrovat aplikace s virtuální sítí, která má bránu ExpressRoute. I v případě, že je brána ExpressRoute nakonfigurovaná v [koexistence režimu][VPNERCoex] the VNet Integration doesn't work. If you need to access resources through an ExpressRoute connection, then you can use the regional VNet Integration feature or an [App Service Environment][ASE], která se spouští ve vaší virtuální síti. 
 > 
 > 
 
@@ -238,7 +244,7 @@ Existují tři související poplatky za využívání funkci integrace virtuál
 
 * ASP cenovou úroveň poplatky – vaše aplikace musí být v Standard, Premium nebo plán služby PremiumV2 App Service. Můžete zobrazit další podrobnosti o těchto náklady na: [Ceny služeb App Service][ASPricing]. 
 * Náklady na přenos dat – tady je poplatek za odchozí přenos dat i v případě, že virtuální sítě je ve stejném datovém centru. Tyto poplatky jsou popsány v [Data Transfer podrobnosti o cenách][DataPricing]. 
-* Náklady na VPN Gateway – Zde jsou náklady k bráně virtuální sítě, která je požadována pro síť point-to-site VPN. Podrobnosti jsou na [ceny služby VPN Gateway] [ VNETPricing] stránky.
+* Náklady na VPN Gateway – Zde jsou náklady k bráně virtuální sítě, která je požadována pro síť point-to-site VPN. Podrobnosti jsou na [ceny služby VPN Gateway][VNETPricing] stránky.
 
 
 ## <a name="troubleshooting"></a>Řešení potíží

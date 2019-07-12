@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/14/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 529c536d9ea3b898745f03c80b63702b2af485da
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 53ff318dcc034fb11e2d554f9ad8e8814eb32879
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165580"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672586"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Uložené procedury, triggery a uživatelem definovaných funkcí
 
@@ -37,7 +37,7 @@ Zápis v jazyce JavaScript uložené procedury, triggery a uživatelem definovan
 * **Zapouzdření protokolu:** Uložené procedury lze použít k seskupení logiku na jednom místě. Zapouzdření přidá abstraktní vrstvu nad daty, která umožňuje vyvíjet aplikace nezávisle na data. Tato vrstva abstrakce je užitečné, když data bez schématu a není nutné spravovat, přidáte další logiku přímo do vaší aplikace. Abstrakce vám umožní vaší zajistit zabezpečení dat tak, že usnadňuje přístup ze skriptů.
 
 > [!TIP]
-> Uložené procedury jsou nejvhodnější pro operace, které jsou zápisu náročná na výkon. Při rozhodování, kam pouze pomocí uložených procedur, optimalizujte kolem zapouzdření maximální dobu, možná zápisy. Obecně řečeno uložené procedury nejsou nejúčinnější způsob plnit velkým počtem operací čtení, proto vrátí klientovi pomocí uložené procedury pro batch velký počet čtení nepřinese požadovanou výhodu.
+> Uložené procedury jsou nejvhodnější pro operace, které jsou náročné na zápis a vyžadují transakci napříč hodnotu klíče oddílu. Při rozhodování o tom, jestli chcete používat uložené procedury, optimalizujte kolem zapouzdření maximální dobu, možná zápisy. Obecně řečeno uložené procedury nejsou nejúčinnější způsob plnit velkým počtem operací čtení nebo dotaz, tak pomocí uložené procedury pro velké množství čtení se vraťte do klienta batch nepřinese požadovanou výhodu. Pro zajištění nejlepšího výkonu by měli provádět tyto operace náročné na čtení na straně klienta, pomocí sady SDK Cosmos. 
 
 ## <a name="transactions"></a>Transakce
 
@@ -96,7 +96,7 @@ Uživatelem definované funkce (UDF) slouží k rozšíření syntaxe jazyka dot
 
 Kromě vydávat dotazy pomocí rozhraní SQL API syntaxe dotazů, [SDK na straně serveru](https://azure.github.io/azure-cosmosdb-js-server) umožňuje provádět dotazy pomocí rozhraní JavaScript bez znalosti jazyka SQL. Dotaz jazyka JavaScript API můžete programově vytvářet dotazy předáním predikátu funkce sekvenci volání funkce. Dotazy jsou analyzovány pomocí modulu runtime jazyka JavaScript a jsou spouštěny efektivně ve službě Azure Cosmos DB. Další informace o podpoře dotazů rozhraní API jazyka JavaScript, najdete v článku [práce s jazykem JavaScript integrovaná rozhraní API pro dotazy](javascript-query-api.md) článku. Příklady najdete v tématu [jak psát uložených procedur a aktivačních událostí pomocí rozhraní API pro Javascript dotazy](how-to-write-javascript-query-api.md) článku.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Zjistěte, jak napsat a použít uložené procedury, triggery a uživatelem definovaných funkcí ve službě Azure Cosmos DB najdete v následujících článcích:
 

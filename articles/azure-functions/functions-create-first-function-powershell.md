@@ -5,17 +5,18 @@ services: functions
 keywords: ''
 author: joeyaiello
 manager: jeconnoc
-ms.author: jaiello, glenga
+ms.author: jaiello
+ms.reviewer: glenga
 ms.date: 04/25/2019
 ms.topic: quickstart
 ms.service: azure-functions
 ms.devlang: powershell
-ms.openlocfilehash: 1fc541f1236d17e1c2ffbf64ddb0340dcf5c0b9a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cb175191cb080cffb6feb52b724c29568fd549a5
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67063479"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706518"
 ---
 # <a name="create-your-first-powershell-function-in-azure-preview"></a>Vytvoření první funkce prostředí PowerShell v Azure (preview)
 

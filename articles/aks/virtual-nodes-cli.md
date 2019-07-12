@@ -2,17 +2,17 @@
 title: Vytvořit virtuální uzly pomocí Azure CLI ve službě Azure Kubernetes služby (AKS)
 description: Zjistěte, jak pomocí Azure CLI k vytvoření clusteru služby Azure Kubernetes (AKS), který používá ke spuštění podů virtuální uzly.
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.topic: conceptual
 ms.service: container-service
 ms.date: 05/06/2019
-ms.author: iainfou
-ms.openlocfilehash: b149ba2bccb4bfb6f459b177096afcccbbfc3051
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mlearned
+ms.openlocfilehash: a6acdd6255278123ff13a8597cadd2a386536bd4
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66742792"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67613779"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Vytvoření a konfigurace clusteru služby Azure Kubernetes služby (AKS) používat virtuální uzly pomocí Azure CLI
 
@@ -20,11 +20,11 @@ Rychlé škálování úloh aplikací v clusteru služby Azure Kubernetes Servic
 
 Tento článek ukazuje, jak vytvořit a konfigurovat prostředky virtuální sítě a clusteru AKS a potom povolit virtuální uzly.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Virtuální uzly povolit síťovou komunikaci mezi pody spuštěné v ACI a AKS clusteru. Pro tuto komunikaci, se vytvoří podsíť virtuální sítě a jsou přiřazeny delegovaná oprávnění. Virtuální uzly fungovat jenom s clustery AKS vytvořeného *pokročilé* sítě. Ve výchozím nastavení, AKS clustery jsou vytvořeny pomocí *základní* sítě. Tento článek ukazuje, jak vytvořit virtuální síť a podsítě a pak Nasaďte cluster AKS, který používá rozšířeného sítě.
 
-Pokud jste dříve nepoužili ACI, zaregistrujte poskytovatele služeb s vaším předplatným. Můžete zkontrolovat stav registrace poskytovatele ACI pomocí [az provider list] [ az-provider-list] příkaz, jak je znázorněno v následujícím příkladu:
+Pokud jste dříve nepoužili ACI, zaregistrujte poskytovatele služeb s vaším předplatným. Můžete zkontrolovat stav registrace poskytovatele ACI pomocí [az provider list][az-provider-list] příkaz, jak je znázorněno v následujícím příkladu:
 
 ```azurecli-interactive
 az provider list --query "[?contains(namespace,'Microsoft.ContainerInstance')]" -o table
@@ -38,7 +38,7 @@ Namespace                    RegistrationState
 Microsoft.ContainerInstance  Registered
 ```
 
-Pokud poskytovatel zobrazí jako *NotRegistered*, zaregistrujte poskytovatele pomocí [az provider register] [ az-provider-register] jak je znázorněno v následujícím příkladu:
+Pokud poskytovatel zobrazí jako *NotRegistered*, zaregistrujte poskytovatele pomocí [az provider register][az-provider-register] jak je znázorněno v následujícím příkladu:
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerInstance
@@ -89,7 +89,7 @@ az group create --name myResourceGroup --location westus
 
 ## <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 
-Vytvoření virtuální sítě pomocí [az network vnet vytvořit] [ az-network-vnet-create] příkazu. Následující příklad vytvoří název virtuální sítě *myVnet* s předponou adresy *10.0.0.0/8*a podsíť s názvem *myAKSSubnet*. Výchozí hodnota předpony adresy dané podsítě *10.240.0.0/16*:
+Vytvoření virtuální sítě pomocí [az network vnet vytvořit][az-network-vnet-create] příkazu. Následující příklad vytvoří název virtuální sítě *myVnet* s předponou adresy *10.0.0.0/8*a podsíť s názvem *myAKSSubnet*. Výchozí hodnota předpony adresy dané podsítě *10.240.0.0/16*:
 
 ```azurecli-interactive
 az network vnet create \
@@ -100,7 +100,7 @@ az network vnet create \
     --subnet-prefix 10.240.0.0/16
 ```
 
-Teď vytvořte další podsítě pro virtuální uzly pomocí [az podsíti virtuální sítě vytvořit] [ az-network-vnet-subnet-create] příkazu. Následující příklad vytvoří podsíť s názvem *myVirtualNodeSubnet* s předponou adresy *10.241.0.0/16*.
+Teď vytvořte další podsítě pro virtuální uzly pomocí [az podsíti virtuální sítě vytvořit][az-network-vnet-subnet-create] příkazu. Následující příklad vytvoří podsíť s názvem *myVirtualNodeSubnet* s předponou adresy *10.241.0.0/16*.
 
 ```azurecli-interactive
 az network vnet subnet create \
@@ -114,7 +114,7 @@ az network vnet subnet create \
 
 Aby mohl cluster AKS pracovat a komunikovat s jinými prostředky Azure, používá se instanční objekt služby Azure Active Directory. Tento instanční objekt se dá automaticky vytvořit pomocí rozhraní příkazového řádku Azure nebo portálu, nebo si ho můžete předem vytvořit a přiřadit další oprávnění.
 
-Vytvoření instančního objektu služby pomocí [az ad sp create-for-rbac] [ az-ad-sp-create-for-rbac] příkazu. Parametr `--skip-assignment` nastavuje omezení, aby už nešla přidělovat žádná další oprávnění.
+Vytvořte instanční objekt pomocí příkazu [az ad sp create-for-rbac][az-ad-sp-create-for-rbac]. Parametr `--skip-assignment` nastavuje omezení, aby už nešla přidělovat žádná další oprávnění.
 
 ```azurecli-interactive
 az ad sp create-for-rbac --skip-assignment
@@ -144,7 +144,7 @@ Nejprve Získejte ID prostředku virtuální sítě pomocí [az network vnet sho
 az network vnet show --resource-group myResourceGroup --name myVnet --query id -o tsv
 ```
 
-Poskytnout správný přístup pro cluster AKS používat virtuální síť vytvořit přiřazení role pomocí [vytvořit přiřazení role az] [ az-role-assignment-create] příkazu. Nahraďte `<appId`> a `<vnetId>` hodnotami získanými v předchozích dvou krocích.
+Poskytnout správný přístup pro cluster AKS používat virtuální síť vytvořit přiřazení role pomocí [vytvořit přiřazení role az][az-role-assignment-create] příkazu. Nahraďte `<appId`> a `<vnetId>` hodnotami získanými v předchozích dvou krocích.
 
 ```azurecli-interactive
 az role assignment create --assignee <appId> --scope <vnetId> --role Contributor
@@ -158,7 +158,7 @@ Nasaďte cluster AKS do AKS podsíť vytvořená v předchozím kroku. Získejte
 az network vnet subnet show --resource-group myResourceGroup --vnet-name myVnet --name myAKSSubnet --query id -o tsv
 ```
 
-Pomocí příkazu [az aks create][az-aks-create] vytvořte cluster AKS. Následující příklad vytvoří cluster *myAKSCluster* s jedním uzlem. Nahraďte `<subnetId>` s ID, kterou jste získali v předchozím kroku a potom `<appId>` a `<password>` s 
+Použití [az aks vytvořit][az-aks-create] příkaz pro vytvoření clusteru AKS. Následující příklad vytvoří cluster *myAKSCluster* s jedním uzlem. Nahraďte `<subnetId>` s ID, kterou jste získali v předchozím kroku a potom `<appId>` a `<password>` s 
 
 ```azurecli-interactive
 az aks create \
@@ -178,7 +178,7 @@ Po několika minutách se příkaz dokončí a vrátí informace o clusteru ve 
 
 ## <a name="enable-virtual-nodes-addon"></a>Povolit doplněk virtuální uzly
 
-Povolit virtuální uzly, teď můžete [az aks enable-addons] [ az-aks-enable-addons] příkazu. V následujícím příkladu používá podsíť s názvem *myVirtualNodeSubnet* vytvořili v předchozím kroku:
+Povolit virtuální uzly, teď můžete [az aks enable-addons][az-aks-enable-addons] příkazu. V následujícím příkladu používá podsíť s názvem *myVirtualNodeSubnet* vytvořili v předchozím kroku:
 
 ```azurecli-interactive
 az aks enable-addons \
@@ -190,7 +190,7 @@ az aks enable-addons \
 
 ## <a name="connect-to-the-cluster"></a>Připojení ke clusteru
 
-Pomocí příkazu [az aks get-credentials][az-aks-get-credentials] nakonfigurujte klienta `kubectl` pro připojení k vašemu clusteru Kubernetes. Tímto krokem se stáhnou přihlašovací údaje a nakonfiguruje rozhraní příkazového řádku Kubernetes pro jejich použití.
+Ke konfiguraci `kubectl` pro připojení k vašemu clusteru Kubernetes, použijte [az aks get-credentials][az-aks-get-credentials] příkazu. Tímto krokem se stáhnou přihlašovací údaje a nakonfiguruje rozhraní příkazového řádku Kubernetes pro jejich použití.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
@@ -214,7 +214,7 @@ aks-agentpool-14693408-0      Ready     agent     32m       v1.11.2
 
 ## <a name="deploy-a-sample-app"></a>Nasaďte ukázkovou aplikaci
 
-Vytvořte soubor s názvem `virtual-node.yaml` a zkopírujte do následující kód YAML. Naplánování kontejneru na uzlu, [nodeSelector] [ node-selector] a [toleration] [ toleration] jsou definovány.
+Vytvořte soubor s názvem `virtual-node.yaml` a zkopírujte do následující kód YAML. Naplánování kontejneru na uzlu, [nodeSelector][node-selector] and [toleration][toleration] jsou definovány.
 
 ```yaml
 apiVersion: apps/v1
@@ -247,13 +247,13 @@ spec:
         effect: NoSchedule
 ```
 
-Spusťte aplikaci [použití kubectl] [ kubectl-apply] příkazu.
+Spusťte aplikaci [použití kubectl][kubectl-apply] příkazu.
 
 ```console
 kubectl apply -f virtual-node.yaml
 ```
 
-Použití [kubectl get pods] [ kubectl-get] příkazů `-o wide` argument do výstupního seznam podů a plánované uzlu. Všimněte si, že `aci-helloworld` pod byla naplánována na `virtual-node-aci-linux` uzlu.
+Použití [kubectl get pods][kubectl-get] příkazů `-o wide` argument do výstupního seznam podů a plánované uzlu. Všimněte si, že `aci-helloworld` pod byla naplánována na `virtual-node-aci-linux` uzlu.
 
 ```
 $ kubectl get pods -o wide
@@ -303,7 +303,7 @@ Zavřete relaci Terminálové služby pro váš test pod s `exit`. Po ukončení
 
 ## <a name="remove-virtual-nodes"></a>Odebrat virtuální uzly
 
-Pokud již nechcete používat virtuální uzly, můžete je zakázat pomocí [az aks disable-addons] [ az aks disable-addons] příkazu. 
+Pokud již nechcete používat virtuální uzly, můžete je zakázat pomocí [az aks disable-addons][az aks disable-addons] příkazu. 
 
 Nejprve odstraňte spuštěný na virtuální uzel pod helloworld:
 
@@ -345,7 +345,7 @@ az resource delete --ids $SAL_ID --api-version 2018-07-01
 az network vnet subnet update --resource-group $RES_GROUP --vnet-name $AKS_VNET --name $AKS_SUBNET --remove delegations 0
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto článku pod byla naplánována na virtuální uzel a přiřazenou IP adresu privátní a interní. Místo toho byste třeba vytvořit nasazení služby a směrovat provoz do podu prostřednictvím nástroje pro vyrovnávání zatížení nebo kontroler příchozího přenosu dat. Další informace najdete v tématu [vytvoříte řadič základního příchozího přenosu dat ve službě AKS][aks-basic-ingress].
 

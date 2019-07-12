@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 3d6a102b794ca9c43e1dd18f923f6ce224596499
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 5197358e3bd8a3052fbf71cafc2f1e3acda46b26
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296265"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67721145"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-powershell"></a>Správa skupin prostředků Azure Resource Manageru pomocí prostředí Azure PowerShell
 
@@ -89,7 +89,7 @@ Tato funkce se také označuje jako *vrácení zpět při chybě*. Další infor
 
 ## <a name="move-to-another-resource-group-or-subscription"></a>Přesunout do jiné skupiny prostředků nebo předplatného
 
-Prostředky ve skupině můžete přesunout do jiné skupiny prostředků. Další informace najdete v tématu, které se zabývá [přesunutím prostředků do nové skupiny prostředků nebo předplatného](./resource-group-move-resources.md#move-resources).
+Prostředky ve skupině můžete přesunout do jiné skupiny prostředků. Další informace najdete v tématu, které se zabývá [přesunutím prostředků do nové skupiny prostředků nebo předplatného](./resource-group-move-resources.md).
 
 ## <a name="lock-resource-groups"></a>Skupiny prostředků zámku
 

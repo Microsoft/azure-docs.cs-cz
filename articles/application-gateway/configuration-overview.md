@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 6/1/2019
 ms.author: absha
-ms.openlocfilehash: c5cc39c2f2a7f2a79b8d6bc2bd95506ee5532a84
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 86b41bb2554dbefeaeb724e746bcaf757463f8ae
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67073968"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67795903"
 ---
 # <a name="application-gateway-configuration-overview"></a>Přehled konfigurace služby Application Gateway
 
@@ -297,6 +297,7 @@ Toto nastavení umožňuje nakonfigurovat cestu k volitelné vlastního předáv
   | / home/secondhome /          | /pathrule*      | /override/            | / přepsání/home/secondhome /   |
   | /pathrule/home /            | / parametru pathrule/Domovská stránka * | /override/            | /override/                   |
   | / parametru pathrule/home/secondhome / | / parametru pathrule/Domovská stránka * | /override/            | / Přepsat/secondhome /        |
+  | /pathrule/                 | /pathrule/      | /override/            | /override/                   |
 
 ### <a name="use-for-app-service"></a>Použití pro službu app service
 
@@ -343,7 +344,7 @@ Službu application gateway monitoruje stav všech prostředků v back-endu ve v
 > [!NOTE]
 > Po vytvoření sondy stavu vlastní musíte přidružit k nastavení HTTP back-end. Vlastní test paměti nebude monitorování stavu back endového fondu, pokud není explicitně přidružené naslouchací proces odpovídající nastavení HTTP.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Teď už víte o součástech Application Gateway, můžete:
 

@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: d714756c19b94eafc40cc0dbeffbc07704e8f94e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: efed981b500ff14a66c2355a1d14bd762000622f
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65787814"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606166"
 ---
 # <a name="sample-4---classification-predict-credit-risk-cost-sensitive"></a>Ukázka 4 – klasifikace: Předpovědět úvěrové riziko (náklady na citlivé)
 
@@ -164,3 +164,4 @@ Prozkoumejte službu k dispozici pro vizuální rozhraní ukázky:
 - [Ukázka 2 - regrese: Porovnání algoritmy pro předpověď cen automobilů](ui-sample-regression-predict-automobile-price-compare-algorithms.md)
 - [Ukázka 3 – klasifikace: Předpovědět úvěrové riziko](ui-sample-classification-predict-credit-risk-basic.md)
 - [Ukázka 5 – klasifikace: Předpověď výpovědi](ui-sample-classification-predict-churn.md)
+- [Ukázka 6 – klasifikace: Předpověď zpoždění letu](ui-sample-classification-predict-flight-delay.md)

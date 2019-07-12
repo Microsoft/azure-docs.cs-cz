@@ -9,13 +9,13 @@ services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 06/20/2019
-ms.openlocfilehash: a5cbd2036f92c27709d92d0cf415cc9837645fb8
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
-ms.translationtype: MT
+ms.date: 07/09/2019
+ms.openlocfilehash: c551be807c76f3a5a1dace96ef583aa99cf0e681
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485603"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827580"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-c-using-the-net-sdk"></a>Rychlý start: Vytvoření indexu Azure Search v C# pomocí sady .NET SDK
 > [!div class="op_single_selector"]
@@ -39,7 +39,7 @@ Následující služby, nástroje a data se používají v tomto rychlém startu
 
 + [Visual Studio](https://visualstudio.microsoft.com/downloads/), všechny edice. Ukázky kódu a instrukce byly testovány v bezplatná edice Community.
 
-+ Ukázkový index a dokumenty jsou uvedené v tomto článku, stejně jako v [řešení sady Visual Studio](https://github.com/Azure-Samples/azure-search-dotnet-samples/quickstart) pro tento rychlý start.
++ Ukázkový index a dokumenty jsou uvedené v tomto článku, stejně jako v [řešení sady Visual Studio](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart) pro tento rychlý start.
 
 + [Vytvoření služby Azure Search](search-create-service-portal.md) nebo [najít existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) pod vaším aktuálním předplatným. Můžete použít bezplatnou službou pro tento rychlý start.
 
@@ -195,11 +195,14 @@ Jednoduché a komplexní polí, kde je jednoduché pole "HotelName" nebo "Popis"
     }
     ```
 
-    Atributy pole určují, jak se používají v aplikaci. Například `IsSearchable` atributu je přiřazena k každé pole, které by měl být součástí fulltextové vyhledávání. V sadě .NET SDK ve výchozím nastavení je zakázat chování pole, které nejsou explicitně povolená.
+    Atributy pole určují, jak se používají v aplikaci. Například `IsSearchable` atributu se musí přiřadit každé pole, které by měl být součástí fulltextové vyhledávání. 
+    
+    > [!NOTE]
+    > V sadě .NET SDK, musí být explicitně atributy polí retrievable a searchable [ `IsSearchable` ](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.issearchable?view=azure-dotnet), [ `IsFilterable` ](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet), [ `IsSortable` ](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.issortable?view=azure-dotnet), a [ `IsFacetable` ](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfacetable?view=azure-dotnet). Toto chování je rozdíl od rozhraní REST API, která implicitně umožňuje přiřazení na základě datového typu (například jednoduchým řetězcem pole jsou automaticky prohledávatelné).
 
     Právě jedno pole v indexu typu `string` musí být *klíč* pole jednoznačné identifikaci každého dokumentu. V tomto schématu, že klíč je `HotelId`.
 
-    V tomto indexu pole Popis vlastnost volitelné analyzátor, zadat, pokud chcete přepsat výchozí standardní analyzátor Lucene. `description_fr` Pole používá analyzátor Lucene francouzština ([FrLucene](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername.frlucene?view=azure-dotnet)) vzhledem k tomu, že ukládá francouzského textu. `description` Používá volitelné analyzátor jazyka Microsoft ([EnMicrosoft](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername.enmicrosoft?view=azure-dotnet)).
+    V indexu, použijte volitelný popis pole [ `analyzer` ](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.analyzer?view=azure-dotnet) zadaná vlastnost, pokud chcete přepsat výchozí standardní analyzátor Lucene. `description_fr` Pole používá analyzátor Lucene francouzština ([FrLucene](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername.frlucene?view=azure-dotnet)) vzhledem k tomu, že ukládá francouzského textu. `description` Používá volitelné analyzátor jazyka Microsoft ([EnMicrosoft](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername.enmicrosoft?view=azure-dotnet)).
 
 1. V souboru Program.cs vytvořte instanci [ `SearchServiceClient` ](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient?view=azure-dotnet) třídy pro připojení ke službě pomocí hodnoty, které jsou uložené v konfiguračním souboru aplikace (appsettings.json). 
 
@@ -550,13 +553,11 @@ Tato část přidá dva druhy funkce: logiku dotazu a výsledky. Pro dotazy, pou
 
 ## <a name="clean-up"></a>Vyčištění
 
-Pokud jste s indexem hotovi a chcete ho odstranit, zavolejte `Indexes.Delete` metodu na vaše `SearchServiceClient`.
+Pokud pracujete ve svém vlastním předplatném, je vhodné na konci projektu a zjistěte, jestli stále potřebují prostředky, že kterou jste vytvořili. Levé může spuštěné prostředky nákladů peníze. Můžete odstranit prostředky jednotlivě nebo odstranit skupinu prostředků, kterou chcete odstranit celou sadu prostředků.
 
-```csharp
-serviceClient.Indexes.Delete("hotels");
-```
+Můžete najít a spravovat prostředky na portálu pro použití **všechny prostředky** nebo **skupiny prostředků** odkaz v levém navigačním podokně.
 
-Pokud budete také mít ve službě search, můžete odstranit prostředky z webu Azure portal.
+Pokud používáte bezplatné služby, mějte na paměti, že jste omezeni na tři indexy, indexery a datového zdroje. Můžete odstranit jednotlivé položky na portálu, abychom dodrželi omezení. 
 
 ## <a name="next-steps"></a>Další postup
 

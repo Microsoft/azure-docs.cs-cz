@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/23/2016
 ms.author: mbullwin
-ms.openlocfilehash: 062b565369c3b6e877d36f883a152ca6c013e0cf
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: d1c4005651518eb27eebde0005bd70b4adad6432
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67479657"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798353"
 ---
 # <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Filtrování a předběžné zpracování telemetrie v Application Insights SDK
 
@@ -96,7 +96,10 @@ public class SuccessfulDependencyFilter : ITelemetryProcessor
     }
 }
 ```
-3. V souboru ApplicationInsights.config, vložte toto:
+
+3. Přidat procesor
+
+**ASP.NET apps** vložte tento v souboru ApplicationInsights.config:
 
 ```xml
 <TelemetryProcessors>
@@ -129,6 +132,26 @@ builder.Build();
 ```
 
 TelemetryClients vytvořili od této chvíle budou používat procesorů.
+
+**Aplikace ASP.NET Core**
+
+> [!NOTE]
+> Přidáváním inicializátoru pomocí `ApplicationInsights.config` nebo pomocí `TelemetryConfiguration.Active` není platný pro aplikace ASP.NET Core. 
+
+
+Pro [ASP.NET Core](asp-net-core.md#adding-telemetry-processors) aplikace, přidání nového `TelemetryInitializer` se provádí tak, že přidáte do kontejneru injektáž závislostí, jak je znázorněno níže. To se provádí v `ConfigureServices` metodu vaše `Startup.cs` třídy.
+
+```csharp
+    public void ConfigureServices(IServiceCollection services)
+    {
+        // ...
+        services.AddApplicationInsightsTelemetry();
+        services.AddApplicationInsightsTelemetryProcessor<SuccessfulDependencyFilter>();
+
+        // If you have more processors:
+        services.AddApplicationInsightsTelemetryProcessor<AnotherProcessor>();
+    }
+```
 
 ### <a name="example-filters"></a>Příklad filtrů
 #### <a name="synthetic-requests"></a>Umělé požadavky
@@ -237,7 +260,7 @@ namespace MvcWebRole.Telemetry
 }
 ```
 
-**Načíst vaše inicializátor**
+**ASP.NET apps: Načíst vaše inicializátor**
 
 In ApplicationInsights.config:
 
@@ -257,15 +280,27 @@ In ApplicationInsights.config:
 protected void Application_Start()
 {
     // ...
-    TelemetryConfiguration.Active.TelemetryInitializers
-    .Add(new MyTelemetryInitializer());
+    TelemetryConfiguration.Active.TelemetryInitializers.Add(new MyTelemetryInitializer());
 }
 ```
 
-
 [Další informace naleznete v této ukázky.](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/MvcWebRole)
 
-<a name="js-initializer"></a>
+**Aplikace ASP.NET Core: Načíst vaše inicializátor**
+
+> [!NOTE]
+> Přidáváním inicializátoru pomocí `ApplicationInsights.config` nebo pomocí `TelemetryConfiguration.Active` není platný pro aplikace ASP.NET Core. 
+
+Pro [ASP.NET Core](asp-net-core.md#adding-telemetryinitializers) aplikace, přidání nového `TelemetryInitializer` se provádí tak, že přidáte do kontejneru injektáž závislostí, jak je znázorněno níže. To se provádí v `ConfigureServices` metodu vaše `Startup.cs` třídy.
+
+```csharp
+ using Microsoft.ApplicationInsights.Extensibility;
+ using CustomInitializer.Telemetry;
+ public void ConfigureServices(IServiceCollection services)
+{
+    services.AddSingleton<ITelemetryInitializer, MyTelemetryInitializer>();
+}
+```
 
 ### <a name="java-telemetry-initializers"></a>Inicializátory telemetrie Java
 

@@ -7,20 +7,20 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/19/2018
 ms.author: kgremban
-ms.openlocfilehash: e7e8d12af92a566753d8f3d7baf5019bae44de2c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6bb95bf887837fffc4196bca8d761239ac430a1a
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60398894"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620176"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-ios"></a>Odesílání zpráv typu cloud zařízení pomocí služby IoT Hub (iOS)
 
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
 
-Azure IoT Hub je plně spravovaná služba, která pomáhá povolit spolehlivou a zabezpečenou obousměrnou komunikaci mezi miliony zařízení a back-endu řešení. [Odesílání telemetrických dat ze zařízení do služby IoT hub](quickstart-send-telemetry-ios.md) článek popisuje, jak k vytvoření služby IoT hub, zřídit identitu zařízení v něm a kódu aplikace simulovaného zařízení, která odesílá zprávy typu zařízení cloud.
+Azure IoT Hub je plně spravovaná služba, která pomáhá povolit spolehlivou a zabezpečenou obousměrnou komunikaci mezi miliony zařízení a back-endu řešení. [Odesílání telemetrických dat ze zařízení do služby IoT hub](quickstart-send-telemetry-ios.md) rychlý start ukazuje, jak vytvoření služby IoT hub, zřídit identitu zařízení v něm a kódu aplikace simulovaného zařízení, která odesílá zprávy typu zařízení cloud.
 
-Tento článek vám ukáže, jak do:
+V tomto kurzu získáte informace o následujících postupech:
 
 * Z back-end vašeho řešení odesílat zprávy typu cloud zařízení na jediné zařízení prostřednictvím služby IoT Hub.
 
@@ -41,15 +41,15 @@ Na konci tohoto článku spustíte dvě Swift projekty iOS:
 
 Pro absolvování tohoto kurzu potřebujete:
 
-- Aktivní účet Azure. (Pokud účet nemáte, můžete vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) během několika minut.)
+* Aktivní účet Azure. (Pokud účet nemáte, můžete vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) během několika minut.)
 
-- Aktivním centrem IoT v Azure. 
+* Aktivním centrem IoT v Azure.
 
-- Ukázkový kód z [ukázky v Azure](https://github.com/Azure-Samples/azure-iot-samples-ios/archive/master.zip) .
+* Ukázkový kód z [ukázky v Azure](https://github.com/Azure-Samples/azure-iot-samples-ios/archive/master.zip).
 
-- Nejnovější verze [XCode](https://developer.apple.com/xcode/) používající nejnovější verzi sady SDK pro iOS. Tento rychlý start byl testován s XCode 9.3 a iOS 11.3.
+* Nejnovější verze [XCode](https://developer.apple.com/xcode/) používající nejnovější verzi sady SDK pro iOS. Tento rychlý start byl testován s XCode 9.3 a iOS 11.3.
 
-- Nejnovější verze [CocoaPods](https://guides.cocoapods.org/using/getting-started.html).
+* Nejnovější verze [CocoaPods](https://guides.cocoapods.org/using/getting-started.html).
 
 ## <a name="simulate-an-iot-device"></a>Simulace zařízení IoT
 
@@ -73,11 +73,11 @@ Ujistěte se, že je XCode zavřené, a pak spuštěním následujícího přík
 pod install
 ```
 
-Kromě instalace požadovaných podů pro váš projekt příkaz k instalaci vytvořil také soubor pracovního prostoru XCode, který je předem nakonfigurovaný tak, aby používal pody pro závislosti. 
+Kromě instalace požadovaných podů pro váš projekt příkaz k instalaci vytvořil také soubor pracovního prostoru XCode, který je předem nakonfigurovaný tak, aby používal pody pro závislosti.
 
-### <a name="run-the-sample-device-application"></a>Spuštění ukázkové aplikace zařízení 
+### <a name="run-the-sample-device-application"></a>Spuštění ukázkové aplikace zařízení
 
-1. Načtení připojovacího řetězce pro vaše zařízení. Můžete zkopírovat tento řetězec z [webu Azure portal](https://portal.azure.com) v okně podrobností o zařízení je nebo načtěte pomocí následujícího příkazu rozhraní příkazového řádku: 
+1. Načtení připojovacího řetězce pro vaše zařízení. Můžete zkopírovat tento řetězec z [webu Azure portal](https://portal.azure.com) v okně podrobností o zařízení je nebo načtěte pomocí následujícího příkazu rozhraní příkazového řádku:
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id {YourDeviceID} --output table
@@ -97,13 +97,13 @@ Kromě instalace požadovaných podů pro váš projekt příkaz k instalaci vyt
 
 5. Uložte provedené změny. 
 
-6. Spusťte projekt v emulátoru zařízení pomocí tlačítka **Build and run** (Sestavit a spustit) nebo kombinace kláves **command + r**. 
+6. Spusťte projekt v emulátoru zařízení pomocí tlačítka **Build and run** (Sestavit a spustit) nebo kombinace kláves **command + r**.
 
    ![Spuštění projektu](media/iot-hub-ios-swift-c2d/run-sample.png)
 
 ## <a name="simulate-a-service-device"></a>Simulace zařízení služby
 
-V této části můžete simulovat druhé zařízení s iOS s využitím aplikace Swift, která odesílá zprávy typu cloud zařízení prostřednictvím služby IoT hub. Tato konfigurace je užitečná pro scénáře IoT, ve kterých je jeden Iphonu nebo Ipadu fungovat jako řadič pro ostatní zařízení se systémem iOS připojené do služby IoT hub. 
+V této části můžete simulovat druhé zařízení s iOS s využitím aplikace Swift, která odesílá zprávy typu cloud zařízení prostřednictvím služby IoT hub. Tato konfigurace je užitečná pro scénáře IoT, ve kterých je jeden Iphonu nebo Ipadu fungovat jako řadič pro ostatní zařízení se systémem iOS připojené do služby IoT hub.
 
 ### <a name="install-cocoapods"></a>Instalace CocoaPods
 
@@ -143,13 +143,13 @@ Kromě instalace požadovaných podů pro váš projekt příkaz k instalaci vyt
 
 5. Hledat **connectionString** proměnné a aktualizujte její hodnotu připojovacím řetězcem služby, který jste zkopírovali dříve.
 
-6. Uložte provedené změny. 
+6. Uložte provedené změny.
 
-7. V Xcode změňte nastavení emulátoru na různých iOS zařízení než na kolik máte použitý ke spuštění zařízení IoT. XCode nelze spustit více emulátory stejného typu. 
+7. V Xcode změňte nastavení emulátoru na různých iOS zařízení než na kolik máte použitý ke spuštění zařízení IoT. XCode nelze spustit více emulátory stejného typu.
 
    ![Změnit zařízení emulátoru](media/iot-hub-ios-swift-c2d/change-device.png)
 
-8. Spusťte projekt v emulátoru zařízení pomocí **sestavíte a spustíte** tlačítko nebo kombinace kláves **Command + r**. 
+8. Spusťte projekt v emulátoru zařízení pomocí **sestavíte a spustíte** tlačítko nebo kombinace kláves **Command + r**.
 
    ![Spuštění projektu](media/iot-hub-ios-swift-c2d/run-app.png)
 
@@ -157,13 +157,13 @@ Kromě instalace požadovaných podů pro váš projekt příkaz k instalaci vyt
 
 Nyní jste připraveni používat dvě aplikace odesílat a přijímat zprávy typu cloud zařízení.
 
-1. V **Ukázka aplikace pro iOS** aplikaci spuštěnou v simulovaném zařízení IoT, klikněte na tlačítko **Start**. Aplikace spustí, odesílání zpráv typu zařízení cloud, ale také začne naslouchat pro zprávy typu cloud zařízení. 
+1. V **Ukázka aplikace pro iOS** aplikaci spuštěnou v simulovaném zařízení IoT, klikněte na tlačítko **Start**. Aplikace spustí, odesílání zpráv typu zařízení cloud, ale také začne naslouchat pro zprávy typu cloud zařízení.
 
    ![Zobrazit ukázkovou aplikaci v zařízení IoT](media/iot-hub-ios-swift-c2d/view-d2c.png)
 
 2. V **ukázka klienta služby IOT hub** aplikaci spuštěnou v service s Simulovaná zařízení, zadejte ID zařízení IoT, který chcete odeslat zprávu. 
 
-3. Zapsat zprávu ve formátu prostého textu a pak klikněte na **odeslat**. 
+3. Zapsat zprávu ve formátu prostého textu a pak klikněte na **odeslat**.
 
     Několik akcí dojít také klikněte na tlačítko Odeslat. Ukázka služby odešle zprávu do vašeho IoT hub, který má aplikace přístup k kvůli připojení k službě řetězec, který jste za předpokladu. Služby IoT hub kontroluje ID zařízení, odešle zprávu do cílového zařízení a odešle oznámení o potvrzení na zdrojové zařízení. Aplikaci spuštěnou na zařízení IoT s Simulovaná kontroluje pro zprávy ze služby IoT Hub a vytiskne text z nejaktuálnějšího na obrazovce.
 
@@ -171,10 +171,9 @@ Nyní jste připraveni používat dvě aplikace odesílat a přijímat zprávy t
 
    ![Zobrazit zprávy typu cloud zařízení](media/iot-hub-ios-swift-c2d/view-c2d.png)
 
-
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste zjistili, jak posílat a přijímat zprávy typu cloud zařízení. 
+V tomto kurzu jste zjistili, jak posílat a přijímat zprávy typu cloud zařízení.
 
 Příklady kompletní řešení začátku do konce, které používají služby IoT Hub najdete v tématu [akcelerátory řešení Azure IoT](https://azure.microsoft.com/documentation/suites/iot-suite/) dokumentaci.
 

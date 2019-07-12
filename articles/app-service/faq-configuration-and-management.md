@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 88051c45f21bdf11807ffcc63d8248cba81ae70b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ec2580f0c71c98c7a03f3326cb1b8ff539109ee0
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66137071"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67720029"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Konfigurace a správa nejčastější dotazy ke službě Web Apps v Azure
 
@@ -30,7 +30,7 @@ Tento článek obsahuje odpovědi na nejčastější dotazy (FAQ) o konfiguraci 
 
 ## <a name="are-there-limitations-i-should-be-aware-of-if-i-want-to-move-app-service-resources"></a>Existují omezení, který bych měl(a) vědět když budu chtít přesunout prostředky App Service?
 
-Pokud budete chtít přesunout prostředky App Service pro novou skupinu prostředků nebo předplatného, existuje několik omezení je potřeba vědět. Další informace najdete v tématu [omezení App Service](../azure-resource-manager/resource-group-move-resources.md#app-service-limitations).
+Pokud budete chtít přesunout prostředky App Service pro novou skupinu prostředků nebo předplatného, existuje několik omezení je potřeba vědět. Další informace najdete v tématu [omezení App Service](../azure-resource-manager/move-limitations/app-service-move-limitations.md).
 
 ## <a name="how-do-i-use-a-custom-domain-name-for-my-web-app"></a>Použití vlastního názvu domény pro svou webovou aplikaci
 
@@ -56,11 +56,11 @@ Zjistěte, jak zakoupit a nastavit certifikát SSL pro webovou aplikaci služby 
 
 Azure Application Insights v současné době nepodporuje operaci přesunutí. Pokud váš původním skupina prostředků obsahuje prostředek Application Insights, se nedá přesunout tento prostředek. Zadáte-li prostředek Application Insights při pokusu o přesunutí aplikaci služby App Service, přesunout celé operace se nezdaří. Ale služba Application Insights a plán služby App Service nemusíte být ve stejné skupině prostředků jako aplikace pro aplikaci fungovat správně.
 
-Další informace najdete v tématu [omezení App Service](../azure-resource-manager/resource-group-move-resources.md#app-service-limitations).
+Další informace najdete v tématu [omezení App Service](../azure-resource-manager/move-limitations/app-service-move-limitations.md).
 
 ## <a name="where-can-i-find-a-guidance-checklist-and-learn-more-about-resource-move-operations"></a>Kde můžu najít kontrolní pokyny a další informace o prostředku přesunout operations?
 
-[Omezení služby App Service](../azure-resource-manager/resource-group-move-resources.md#app-service-limitations) ukazuje, jak prostředky přesunout do nového předplatného nebo do nové skupiny prostředků ve stejném předplatném. Můžete získat informace o kontrolní seznam přesunutí prostředku, další služby, které podporují operace přesunu a další informace o omezení App Service a dalšími tématy.
+[Omezení služby App Service](../azure-resource-manager/move-limitations/app-service-move-limitations.md) ukazuje, jak prostředky přesunout do nového předplatného nebo do nové skupiny prostředků ve stejném předplatném. Můžete získat informace o kontrolní seznam přesunutí prostředku, další služby, které podporují operace přesunu a další informace o omezení App Service a dalšími tématy.
 
 ## <a name="how-do-i-set-the-server-time-zone-for-my-web-app"></a>Jak nastavit časové pásmo serveru pro svou webovou aplikaci?
 

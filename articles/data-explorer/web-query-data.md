@@ -1,20 +1,20 @@
 ---
-title: 'Rychlý start: Dotazování dat v Průzkumníku dat Azure'
-description: V tomto rychlém startu se naučíte dotazovat na data v Azure Data Exploreru a sdílet je v něm.
+title: 'Rychlý start: Dotazování dat ve službě Azure Data Explorer webového uživatelského rozhraní'
+description: V tomto rychlém startu se dozvíte, jak pro dotazování a sdílet data v Azure Data Explorer webového uživatelského rozhraní.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 09/24/2018
-ms.openlocfilehash: 6b371cf9aeb55a92fc72357ad7dc6b2cbddcc058
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 07/04/2019
+ms.openlocfilehash: 145e452a3a914e1026d6da11f2ce38e85fa724f0
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60775488"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797195"
 ---
-# <a name="quickstart-query-data-in-azure-data-explorer"></a>Rychlý start: Dotazování dat v Průzkumníku dat Azure
+# <a name="quickstart-query-data-in-azure-data-explorer-web-ui"></a>Rychlý start: Dotazování dat ve službě Azure Data Explorer webového uživatelského rozhraní
 
 Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Azure Data Explorer poskytuje webovou aplikaci, která umožňuje spouštět a sdílet dotazy. Aplikace je dostupná na portálu Azure Portal a jako samostatná webová aplikace. V tomto článku pracujete v samostatné verzi, která umožňuje připojení k více clusterům a sdílení přímých odkazů na vaše dotazy.
 
@@ -191,5 +191,4 @@ V tomto rychlém startu jste nevytvořili žádné prostředky, ale pokud byste 
 
 ## <a name="next-steps"></a>Další postup
 
-> [!div class="nextstepaction"]
-> [Psaní dotazů pro Azure Data Explorer](write-queries.md)
+[Psaní dotazů pro Azure Data Explorer](write-queries.md)

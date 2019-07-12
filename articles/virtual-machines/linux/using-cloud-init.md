@@ -4,7 +4,7 @@ description: Přehled cloud-init funkcí v Microsoft Azure
 services: virtual-machines-linux
 documentationcenter: ''
 author: rickstercdn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 195c22cd-4629-4582-9ee3-9749493f1d72
@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 377ad49ae3a5ae0f61cd0fd93b68dd817d617397
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 057f7c42c037dac4cb2be686df09287de7113f0d
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67050813"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67695388"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Podpora cloud-init pro virtuální počítače v Azure
 Tento článek vysvětluje, zda existuje pro podporu [cloud-init](https://cloudinit.readthedocs.io) ke konfiguraci virtuálního počítače (VM) nebo virtuální počítače škálovacích sad (VMSS) zřizování času v Azure. Tyto skripty cloud-init spustit při prvním spuštění, jakmile se zřizují prostředky Azure.  
@@ -34,8 +34,8 @@ Cloud-init navíc funguje v různých distribucích. K instalaci balíčku tak n
 
 | Vydavatel | Nabídka | Skladová jednotka (SKU) | Verze | Připraveno na cloud-init |
 |:--- |:--- |:--- |:--- |:--- |
-|Canonical |UbuntuServer |18.04-LTS |nejnovější |ano | 
-|Canonical |UbuntuServer |17.10 |nejnovější |ano | 
+|Canonical |UbuntuServer |18.04-LTS |latest |ano | 
+|Canonical |UbuntuServer |17.10 |latest |ano | 
 |Canonical |UbuntuServer |16.04-LTS |nejnovější |ano | 
 |Canonical |UbuntuServer |14.04.5-LTS |nejnovější |ano |
 |CoreOS |CoreOS |Stable |nejnovější |ano |
@@ -94,7 +94,7 @@ Po zřízení virtuálního počítače, cloud-init spustí prostřednictvím v�
 
 Další podrobnosti protokolování cloud-init najdete [dokumentace k cloud-init](https://cloudinit.readthedocs.io/en/latest/topics/logging.html) 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Příklady cloud-init změny konfigurace naleznete v následujících dokumentech:
  
 - [Přidání dalších uživatelů Linuxu na virtuální počítač](cloudinit-add-user.md)

@@ -6,14 +6,14 @@ author: kasinh
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 08/18/2017
+ms.date: 07/09/2019
 ms.author: kasinh
-ms.openlocfilehash: d1fb3434f0d3954a07980963866bcd7cce004379
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 770baeeacb5f3808eba05f9e262bcbca75c6baad
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60650806"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705214"
 ---
 # <a name="recover-data-from-azure-backup-server"></a>Obnovení dat z Azure Backup Serveru
 Použití Azure Backup serveru k obnovení dat, které jste zálohovali pro trezor služby Recovery Services. Proces pro to tak je integrovaná Konzola pro správu Azure Backup serveru a je podobný postupu obnovení pro jiné komponenty Azure Backup.
@@ -83,21 +83,13 @@ Chcete-li obnovit data ze Azure Backup serveru:
 | Ne. | Chybová zpráva | Postup při řešení potíží |
 |:---:|:--- |:--- |
 | 1. |Tento server není registrovaný pro trezor určený přihlašovacími údaji. |**Příčina:** Tato chyba se zobrazí, když vybraný soubor přihlašovacích údajů trezoru nepatří do trezoru služby Recovery Services, které jsou spojené s Azure Backup Server, na kterém dojde k pokusu o obnovení. <br> **Řešení:** Stáhněte si soubor s přihlašovacími údaji trezoru z trezoru služby Recovery Services, na které je registrované Azure Backup serveru. |
-| 2. |Buď obnovitelná data nejsou k dispozici, nebo vybraný server není DPM server. |**Příčina:** Nejsou že žádné jiné servery Azure Backup zaregistrované do trezoru služby Recovery Services, nebo na serverech ještě nepřidali metadata nebo vybraný server není Server služby Azure Backup (označuje se také jako Windows Server nebo klienta Windows). <br> **Řešení:** Pokud jsou že servery Azure Backup zaregistrované do trezoru služby Recovery Services, ujistěte se, že je nainstalovaný nejnovější agent Azure Backup. <br>Pokud jsou že servery Azure Backup zaregistrované do trezoru služby Recovery Services, počkejte po instalaci zahájit proces obnovení za den. Noční úlohu odešlete metadata pro všechny chráněné zálohování do cloudu. Data budou k dispozici pro obnovení. |
+| 2. |Buď obnovitelná data nejsou k dispozici, nebo vybraný server není DPM server. |**Příčina:** Nejsou že žádné jiné servery Azure Backup zaregistrované do trezoru služby Recovery Services, nebo na serverech ještě nepřidali metadata nebo vybraný server není Server služby Azure Backup (s použitím Windows serveru nebo klienta Windows). <br> **Řešení:** Pokud jsou že servery Azure Backup zaregistrované do trezoru služby Recovery Services, ujistěte se, že je nainstalovaný nejnovější agent Azure Backup. <br>Pokud jsou že servery Azure Backup zaregistrované do trezoru služby Recovery Services, počkejte po instalaci zahájit proces obnovení za den. Noční úlohu odešlete metadata pro všechny chráněné zálohování do cloudu. Data budou k dispozici pro obnovení. |
 | 3. |Žádným jiným serverem aplikace DPM je registrované k tomuto trezoru. |**Příčina:** Nejsou žádné další Azure Backup servery, které jsou zaregistrované do trezoru, ze kterého je Probíhá pokus o obnovení.<br>**Řešení:** Pokud jsou že servery Azure Backup zaregistrované do trezoru služby Recovery Services, ujistěte se, že je nainstalovaný nejnovější agent Azure Backup.<br>Pokud jsou že servery Azure Backup zaregistrované do trezoru služby Recovery Services, počkejte po instalaci zahájit proces obnovení za den. Noční úlohu ukládání metadat pro všechny chráněné zálohování do cloudu. Data budou k dispozici pro obnovení. |
 | 4. |Zadané šifrovací heslo neodpovídá heslu přidruženému k následujícímu serveru:  **\<název serveru >** |**Příčina:** Šifrovací heslo použít Probíhá šifrování dat od Azure Backup Server, který se obnovuje neodpovídá zadané šifrovací heslo. Agent se nemůže data dešifrovat. Proto obnovení není úspěšné.<br>**Řešení:** Zadejte prosím přesné stejné šifrovací heslo přidružené k Azure Backup serveru, jehož data obnovena. |
 
-## <a name="frequently-asked-questions"></a>Nejčastější dotazy
+## <a name="next-steps"></a>Další kroky
 
-### <a name="why-cant-i-add-an-external-dpm-server-after-installing-ur7-and-latest-azure-backup-agent"></a>Proč nelze přidat externí DPM server po instalaci UR7 a nejnovější verzi agenta Azure Backup?
+Přečtěte si další nejčastější dotazy:
 
-Pro servery aplikace DPM se zdroji dat, které jsou chráněné do cloudu (s použitím kumulativní aktualizace starší než kumulativní aktualizace 7), musíte počkat aspoň jeden den po instalaci UR7 a nejnovější verzi agenta Azure Backup, aby vám začali **přidat externí DPM server**. Jeden den časové období, je potřeba nahrát metadat skupiny ochrany DPM do Azure. Při prvním průchodu noční úlohu nahraje metadat skupiny ochrany.
-
-### <a name="what-is-the-minimum-version-of-the-microsoft-azure-recovery-services-agent-needed"></a>Co je minimální verze agenta Microsoft Azure Recovery Services potřeby?
-
-Minimální verze systému Microsoft Azure Recovery Services agenta a agenta Azure Backup, nutné k povolení této funkce je 2.0.8719.0.  Chcete-li zobrazit verze agenta: Otevřete ovládací panely **>** všech ovládacích panelů **>** programy a funkce **>** Agent Microsoft Azure Recovery Services. Pokud je verze nižší než 2.0.8719.0, stáhněte a nainstalujte [nejnovější verzi agenta Azure Backup](https://go.microsoft.com/fwLink/?LinkID=288905).
-
-![Vymazat externí DPM](./media/backup-azure-alternate-dpm-server/external-dpm-azurebackupagentversion.png)
-
-## <a name="next-steps"></a>Další kroky:
-• [Azure Backup – nejčastější dotazy](backup-azure-backup-faq.md)
+- [Běžné otázky](backup-azure-vm-backup-faq.md) o záloh virtuálních počítačů Azure
+- [Běžné otázky](backup-azure-file-folder-backup-faq.md) o agenta Azure Backup

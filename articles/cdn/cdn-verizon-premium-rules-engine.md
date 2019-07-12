@@ -3,16 +3,16 @@ title: Potlačení chování HTTP pomocí Azure CDN od Verizonu Premium stroj pr
 description: Stroj pravidel umožňuje přizpůsobit zpracování požadavků HTTP pomocí Azure CDN od Verizonu Premium, třeba blokování doručování určitého typu obsahu, definovat zásady ukládání do mezipaměti a změnit hlavičky protokolu HTTP.
 services: cdn
 author: mdgattuso
-ms.service: cdn
+ms.service: azure-cdn
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: magattus
-ms.openlocfilehash: 81af3073d64e4379972568a57907a7fb2f82356d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fa08f59f3b69395d548649bb131e04c5071c053d
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66481726"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593187"
 ---
 # <a name="override-http-behavior-using-the-azure-cdn-from-verizon-premium-rules-engine"></a>Potlačení chování HTTP pomocí Azure CDN od Verizonu Premium stroje pravidel
 
@@ -93,7 +93,7 @@ Pro přístup k stroj pravidel, musíte nejprve vybrat **spravovat** od horního
    >
    >
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
 - [Přehled služby Azure CDN](cdn-overview.md)
 - [Referenční informace ke stroji pravidel](cdn-verizon-premium-rules-engine-reference.md)

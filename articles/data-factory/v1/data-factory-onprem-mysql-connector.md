@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 06/06/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: de1263d68e96a23bd6b5eca4297e74b56ba22e40
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.openlocfilehash: 2468fc0cbdcee9088aa9acb387af396dd448ad0a
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60823942"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67701678"
 ---
 # <a name="move-data-from-mysql-using-azure-data-factory"></a>Přesun dat z MySQL pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, který používáte:"]
@@ -82,7 +82,7 @@ Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro
 
 **TypeProperties** oddílu se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti. TypeProperties části datové sady typu **RelationalTable** (což zahrnuje datová sada MySQL) má následující vlastnosti
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 | --- | --- | --- |
 | tableName |Název tabulky instance databáze MySQL, propojená služba odkazuje na. |Ne (Pokud **dotazu** z **RelationalSource** určena) |
 
@@ -93,7 +93,7 @@ Vzhledem k tomu, k dispozici ve vlastnosti **typeProperties** části aktivity s
 
 Když zdroj v aktivitě kopírování je typu **RelationalSource** (která zahrnuje MySQL), v části typeProperties jsou k dispozici následující vlastnosti:
 
-| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
+| Vlastnost | Popis | Povolené hodnoty | Požadováno |
 | --- | --- | --- | --- |
 | query |Použijte vlastní dotaz číst data. |Řetězec dotazu SQL. Příklad: vybrat * z MyTable. |Ne (Pokud **tableName** z **datovou sadu** určena) |
 
@@ -305,41 +305,41 @@ Při přesouvání dat k MySQL, se používají následující mapování z typ�
 | bigint |Int64 |
 | bit |Decimal |
 | blob |Byte[] |
-| bool |Boolean |
-| char |String |
-| date |DateTime |
-| datetime |DateTime |
+| bool |Logická hodnota |
+| char |Řetězec |
+| date |Datetime |
+| datetime |Datetime |
 | decimal |Decimal |
 | dvojitou přesností |Double |
 | double |Double |
-| Výčet |String |
+| Výčet |Řetězec |
 | float |Single |
 | int unsigned |Int64 |
 | int |Int32 |
 | celé číslo bez znaménka |Int64 |
 | integer |Int32 |
 | dlouhé varbinary |Byte[] |
-| Long varchar |String |
+| Long varchar |Řetězec |
 | longblob |Byte[] |
-| longtext |String |
+| longtext |Řetězec |
 | mediumblob |Byte[] |
 | mediumint bez znaménka |Int64 |
 | mediumint |Int32 |
-| mediumtext |String |
+| mediumtext |Řetězec |
 | numeric |Decimal |
 | real |Double |
-| set |String |
+| set |Řetězec |
 | smallint bez znaménka |Int32 |
 | smallint |Int16 |
-| text |String |
+| text |Řetězec |
 | time |TimeSpan |
-| časové razítko |DateTime |
+| timestamp |Datetime |
 | tinyblob |Byte[] |
 | tinyint bez znaménka |Int16 |
 | tinyint |Int16 |
-| tinytext |String |
-| varchar |String |
-| za rok |Int |
+| tinytext |Řetězec |
+| varchar |Řetězec |
+| rok |Int |
 
 ## <a name="map-source-to-sink-columns"></a>Mapování zdroje do jímky sloupce
 Další informace o mapování sloupců v datové sadě zdroje do sloupců v datové sadě jímky, najdete v článku [mapování sloupců v datové sadě ve službě Azure Data Factory](data-factory-map-columns.md).

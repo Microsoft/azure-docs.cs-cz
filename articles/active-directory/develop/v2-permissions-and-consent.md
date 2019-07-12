@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73b832002d1c15505e8ae845ac2585548c8e080f
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 032cc0edaa140d82124a7369232cb82bf6c00c10
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482142"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67702711"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Oprávnění a souhlas v koncovém bodě Microsoft identity platform
 
@@ -53,7 +53,7 @@ Totéž platí pro všechny prostředky třetích stran, které integrovaly s pl
 
 Definováním těchto typů oprávnění prostředek má detailní kontrolu nad jeho data a jak rozhraní API funkce jsou dostupné. Aplikace třetí strany můžete požádat tato oprávnění uživatelům a správcům, kteří musí schválit žádost o dříve, než aplikace můžete získat přístup k datům nebo jednat jménem uživatele. Podle bloků funkce prostředku do menších sady oprávnění, aplikace třetích stran se dají s žádostí o pouze konkrétní oprávnění, které potřebují k provedení jejich funkce. Uživatelé a správci můžou znáte přesně jaká data aplikace má přístup k a je možné si větší jistotu, že se nechová se zlými úmysly. Vývojáři by měla vždy dodržováním konceptu nejnižších oprávnění žádá o oprávnění, které potřebují pro své aplikace fungovat.
 
-Tyto typy oprávnění OAuth 2.0, se nazývají *obory*. Se také často označují jako *oprávnění*. Oprávnění je vyjádřena v platformě Microsoft identity jako hodnotu řetězce. Budete pokračovat s ukázkou Microsoft Graphu, Řetězcová hodnota pro každé oprávnění je:
+Tyto typy oprávnění OAuth 2.0, se nazývají *obory*. Že se také často označují jako *oprávnění*. Oprávnění je vyjádřena v platformě Microsoft identity jako hodnotu řetězce. Budete pokračovat s ukázkou Microsoft Graphu, Řetězcová hodnota pro každé oprávnění je:
 
 * Číst kalendář uživatele pomocí `Calendars.Read`
 * Zápis do kalendáře uživatele s použitím `Calendars.ReadWrite`
@@ -167,7 +167,8 @@ Souhlas správce nepřijímá parametr oboru, takže žádná oprávnění žád
 #### <a name="to-configure-the-list-of-statically-requested-permissions-for-an-application"></a>Ke konfiguraci seznamu staticky požadovaná oprávnění pro aplikaci
 
 1. Přejděte do vaší aplikace v [webu Azure portal – registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) prostředí, nebo [vytvořit aplikaci](quickstart-register-app.md) Pokud jste tak již neučinili.
-2. Vyhledejte **oprávnění Microsoft Graphu** a pak přidejte oprávnění, která vaše aplikace vyžaduje.
+2. Vyhledejte **oprávnění k rozhraní API** části a v rámci oprávnění rozhraní API klikněte na tlačítko Přidat oprávnění.
+3. Vyberte **Microsoft Graphu** ze seznamu dostupných rozhraní API a pak přidejte oprávnění, která vaše aplikace vyžaduje.
 3. **Uložit** registraci aplikace.
 
 ### <a name="recommended-sign-the-user-into-your-app"></a>Doporučené: Přihlášení uživatele do vaší aplikace
@@ -199,9 +200,9 @@ https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49
 
 | Parametr | Podmínka | Popis |
 | --- | --- | --- |
-| `tenant` | Požaduje se | Tenantu Active directory, kterou chcete požádat o oprávnění. Můžete zadat ve formátu popisný název nebo identifikátor GUID nebo obecně odkazovaný adresou `common` jak je znázorněno v příkladu. |
-| `client_id` | Požaduje se | **ID aplikace (klient)** , který [webu Azure portal – registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) prostředí přiřazené vaší aplikaci. |
-| `redirect_uri` | Požaduje se |Identifikátor URI pro přesměrování místo, kam chcete odpověď k odeslání pro vaši aplikaci ke zpracování. Musí odpovídat přesně jeden z identifikátorů URI, které jste zaregistrovali v portálu pro registraci aplikace pro přesměrování. |
+| `tenant` | Požadováno | Tenantu Active directory, kterou chcete požádat o oprávnění. Můžete zadat ve formátu popisný název nebo identifikátor GUID nebo obecně odkazovaný adresou `common` jak je znázorněno v příkladu. |
+| `client_id` | Požadováno | **ID aplikace (klient)** , který [webu Azure portal – registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) prostředí přiřazené vaší aplikaci. |
+| `redirect_uri` | Požadováno |Identifikátor URI pro přesměrování místo, kam chcete odpověď k odeslání pro vaši aplikaci ke zpracování. Musí odpovídat přesně jeden z identifikátorů URI, které jste zaregistrovali v portálu pro registraci aplikace pro přesměrování. |
 | `state` | Doporučené | Hodnota v požadavku, která se také vrátit v odpovědi tokenu. Může být řetězec s žádný obsah, který chcete. Použijte ke kódování informace o stavu uživatele v aplikaci předtím, než požadavek na ověření došlo k chybě, například stránky nebo zobrazení, které byly na stav. |
 
 V tuto chvíli Azure AD vyžaduje správce tenantů pro přihlášení k dokončení požadavku. Správce se zobrazí výzva ke schválení všechna oprávnění, které jste si vyžádali pro vaši aplikaci v portálu pro registraci aplikace.

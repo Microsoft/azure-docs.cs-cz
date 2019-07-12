@@ -1,43 +1,44 @@
 ---
-title: Připojení dat společnosti Symantec ICDX Sentinelu ve verzi Preview Azure | Dokumentace Microsoftu
-description: Informace o připojení k Azure Sentinelu Symantec ICDX data.
+title: Připojení dat společnosti Symantec ICDx Sentinelu ve verzi Preview Azure | Dokumentace Microsoftu
+description: Informace o připojení k Azure Sentinelu Symantec ICDx data.
 services: sentinel
 documentationcenter: na
 author: rkarlin
 manager: rkarlin
 editor: ''
 ms.assetid: d068223f-395e-46d6-bb94-7ca1afd3503c
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/23/2019
+ms.date: 07/04/2019
 ms.author: rkarlin
-ms.openlocfilehash: 3b21371d6321b208b19ca8b2524308736c3ceca9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 74169b4bd2654fb0ff7ec4cdb2f2b02c0f4cc6e8
+ms.sourcegitcommit: 80aaf27e3ad2cc4a6599a3b6af0196c6239e6918
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66244343"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673755"
 ---
-# <a name="connect-your-symantec-icdx-appliance"></a>Připojit zařízení Symantec ICDX 
+# <a name="connect-your-symantec-icdx-appliance"></a>Připojit zařízení Symantec ICDx 
 
 > [!IMPORTANT]
 > Azure Sentinel je aktuálně ve verzi public preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Symantec ICDX konektoru můžete snadno připojit všechny protokoly řešení Symantec zabezpečení s vaší Azure Sentinelu zobrazení řídicích panelů, vytvářet vlastní výstrahy a zlepší. To poskytuje lepší přehled o síti vaší organizace a zlepšuje schopnosti operace zabezpečení. Integrace mezi Symantec ICDX a Sentinelu Azure využívá rozhraní REST API.
+Symantec ICDx konektoru můžete snadno připojit všechny protokoly řešení Symantec zabezpečení s vaší Azure Sentinelu zobrazení řídicích panelů, vytvářet vlastní výstrahy a zlepší. To poskytuje lepší přehled o síti vaší organizace a zlepšuje schopnosti operace zabezpečení. Integrace mezi Symantec ICDx a Sentinelu Azure využívá rozhraní REST API.
 
 
 > [!NOTE]
 > Data se uloží v zeměpisné oblasti pracovního prostoru, na kterém je spuštěný Sentinelu Azure.
 
-## <a name="configure-and-connect-symantec-icdx"></a>Konfigurace a připojení Symantec ICDX 
+## <a name="configure-and-connect-symantec-icdx"></a>Konfigurace a připojení Symantec ICDx 
 
-Integrace a exportovat protokoly přímo do Azure Sentinelu Symantec ICDX.
+Integrace a exportovat protokoly přímo do Azure Sentinelu Symantec ICDx.
 
-1. Otevřete konzolu pro správu ICDX přidání serverů pro předávání Microsoft Azure Sentinelu (Log Analytics).
+1. Otevřete konzolu pro správu ICDx přidání serverů pro předávání Microsoft Azure Sentinelu (Log Analytics).
 2. Klikněte na navigačním panelu ICDx **konfigurace**. 
 3. V horní části **konfigurace** obrazovce, klikněte na tlačítko **předávání**.
 4. V části **předávání**, vedle Microsoft Azure Sentinelu (Log Analytics), klikněte na tlačítko **přidat**. 
@@ -66,7 +67,7 @@ Integrace a exportovat protokoly přímo do Azure Sentinelu Symantec ICDX.
     - **Název vlastního protokolu**: Zadejte název vlastního protokolu Microsoft Azure portal pracovní prostor Log Analytics ke které se chystáte události. Výchozí hodnota je SymantecICDx. Toto pole je povinné.
 8. Klikněte na tlačítko *Uložit* dokončete konfiguraci předávání. 
 9. Spusťte předávání, v části **možnosti**, klikněte na tlačítko **Další** a potom **Start**.
-10. Chcete-li použít příslušné schéma v Log Analytics pro události Symantec ICDX, vyhledejte **SymantecICDX_CL**.
+10. Chcete-li použít příslušné schéma v Log Analytics pro události Symantec ICDx, vyhledejte **SymantecICDx_CL**.
 
 
 ## <a name="validate-connectivity"></a>Ověření připojení
@@ -76,7 +77,7 @@ Může trvat upwards of 20 minut, než vaše protokoly spuštění se zobrazí v
 
 
 ## <a name="next-steps"></a>Další postup
-V tomto dokumentu jste zjistili, jak se připojit k Azure Sentinelu Symantec ICDX. Další informace o Azure Sentinelu, naleznete v následujících článcích:
+V tomto dokumentu jste zjistili, jak se připojit k Azure Sentinelu Symantec ICDx. Další informace o Azure Sentinelu, naleznete v následujících článcích:
 - Zjistěte, jak [umožňuje získat přehled vaše data a potenciální hrozby](quickstart-get-visibility.md).
 - Začínáme [detekuje hrozby s využitím Azure Sentinelu](tutorial-detect-threats.md).
 

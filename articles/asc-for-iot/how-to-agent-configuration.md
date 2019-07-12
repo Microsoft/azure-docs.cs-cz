@@ -2,24 +2,25 @@
 title: Konfigurace pro agenta IoT ve verzi Preview Azure Security Center | Dokumentace Microsoftu
 description: Zjistěte, jak nakonfigurovat agenty pro použití s Azure Security Center pro IoT.
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
 ms.assetid: f95c445a-4f0d-4198-9c6c-d01446473bd0
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 311a867c863cbd72292d8e34b4f7abdb949b12c6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 39539bb14877208e5f6af957e735a136b077f16a
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65198442"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67618282"
 ---
 # <a name="tutorial-configure-security-agents"></a>Kurz: Konfigurace agentů zabezpečení
 
@@ -107,7 +108,7 @@ Následující tabulka obsahuje nastavitelných vlastností ASC pro agenty zabez
 
 Výchozí hodnoty jsou k dispozici ve správné schéma v [Githubu](https://aka.ms/iot-security-module-default).
 
-| Název| Status | Platné hodnoty| Výchozí hodnoty| Popis |
+| Name| Stav | Platné hodnoty| Výchozí hodnoty| Popis |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
 |highPriorityMessageFrequency|Povinné: false |Platné hodnoty: Doba trvání ve formátu ISO 8601 |Výchozí hodnota: PT7M |Maximální doba před zprávy s vysokou prioritou se odesílají.|
 |lowPriorityMessageFrequency |Povinné: false|Platné hodnoty: Doba trvání ve formátu ISO 8601 |Výchozí hodnota: PT5H |Maximální doba před zprávy s nízkou prioritou jsou odeslány.| 
@@ -122,18 +123,18 @@ Výchozí hodnoty jsou k dispozici ve správné schéma v [Githubu](https://aka.
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
 |Diagnostické události|eventPriorityDiagnostic| Vypnuto| False| Diagnostické události týkající se agenta. Tuto událost použijte pro podrobné protokolování.| 
 |Chyba konfigurace |eventPriorityConfigurationError |Nízká |False |Analýza konfigurace agenta se nezdařila. Ověřte konfiguraci proti schématu.| 
-|Události vynechané statistiky |eventPriorityDroppedEventsStatistics |Nízká |True|Statistika událostí týkající se agenta. |
-|Statistika zpráv|eventPriorityMessageStatistics |Nízká |True |Agent související statistiky zpráv. |
-|Připojené hardwaru|eventPriorityConnectedHardware |Nízká |True |Snímek veškerý hardware připojené k zařízení.|
-|Naslouchající porty|eventPriorityListeningPorts |Vysoká |True |Snímek všech otevřených naslouchající porty na zařízení.|
+|Události vynechané statistiky |eventPriorityDroppedEventsStatistics |Nízká |Pravda|Statistika událostí týkající se agenta. |
+|Statistika zpráv|eventPriorityMessageStatistics |Nízká |Pravda |Agent související statistiky zpráv. |
+|Připojené hardwaru|eventPriorityConnectedHardware |Nízká |Pravda |Snímek veškerý hardware připojené k zařízení.|
+|Naslouchající porty|eventPriorityListeningPorts |Vysoká |Pravda |Snímek všech otevřených naslouchající porty na zařízení.|
 |Vytvoření procesu |eventPriorityProcessCreate |Nízká |False |Vytvoření zařízení procesu audity.|
 |Ukončit proces|eventPriorityProcessTerminate |Nízká |False |Audity zpracování ukončení na zařízení.| 
-|Systémové informace |eventPrioritySystemInformation |Nízká |True |Snímek informace o systému (například: Operační systém nebo procesor).| 
-|Místní uživatele| eventPriorityLocalUsers |Vysoká |True|Snímek registrovaných místních uživatelů v rámci systému. |
+|Systémové informace |eventPrioritySystemInformation |Nízká |Pravda |Snímek informace o systému (například: Operační systém nebo procesor).| 
+|Místní uživatele| eventPriorityLocalUsers |Vysoká |Pravda|Snímek registrovaných místních uživatelů v rámci systému. |
 |Přihlásit|  eventPriorityLogin |Vysoká|False|Kontrola událostí přihlášení k zařízení (místní a vzdálené přihlášení).|
 |Vytvoření připojení |eventPriorityConnectionCreate|Nízká|False|Audity připojení TCP vytvořili do a ze zařízení. |
-|Konfigurace brány firewall| eventPriorityFirewallConfiguration|Nízká|True|Snímek konfigurace brány firewall na zařízení (pravidla brány firewall). |
-|Směrným plánem operačního systému| eventPriorityOSBaseline| Nízká|True|Zkontrolujte snímek směrným plánem operačního systému zařízení.|
+|Konfigurace brány firewall| eventPriorityFirewallConfiguration|Nízká|Pravda|Snímek konfigurace brány firewall na zařízení (pravidla brány firewall). |
+|Směrným plánem operačního systému| eventPriorityOSBaseline| Nízká|Pravda|Zkontrolujte snímek směrným plánem operačního systému zařízení.|
  
 
 ## <a name="next-steps"></a>Další postup

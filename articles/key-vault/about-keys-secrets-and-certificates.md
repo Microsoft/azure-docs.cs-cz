@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: b50f98c4abaeda3ac1805b73aa18fe6c29596426
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 52a0bc1b07ebf1aed55551e37ecc122ff393c0f7
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64708692"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67703915"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Informace o klíčích, tajných kódů a certifikátů
 
@@ -198,7 +198,7 @@ Můžete zadat další metadata specifická pro aplikaci ve formě značek. Key 
 
 Řízení přístupu pro klíče spravované službou Key Vault je zadaná na úrovni, která funguje jako kontejner klíčů služby Key Vault. Zásada řízení přístupu pro klíče, se liší od zásad řízení přístupu pro tajné kódy ve stejné službě Key Vault. Uživatelé mohou vytvořit jeden nebo více trezorů pro uložení klíče a jsou nutné k údržbě scénář odpovídající segmentaci a správu klíčů. Řízení přístupu pro klíče je nezávislé na řízení přístupu pro tajné kódy.  
 
-Tato oprávnění lze udělit, na za uživatele / service základem v položky řízení přístupu klíče v trezoru. Tato oprávnění úzce zrcadlí přípustné na klíče objektu operace:  
+Tato oprávnění lze udělit, na za uživatele / service základem v položky řízení přístupu klíče v trezoru. Tato oprávnění úzce zrcadlí přípustné na klíče objektu operace.  Udělení přístupu instančnímu objektu ve službě key vault je jednorázová operace a zůstane stejný pro všechna předplatná Azure. Můžete ji nasadit libovolný počet certifikátů, jak chcete. 
 
 - Oprávnění pro operace správy klíčů
   - *get*: Přečtěte si části veřejný klíč a jeho atributy
@@ -363,14 +363,14 @@ Následující tabulka představuje mapování x509 zásady použití klíče pr
 
 |**X509 příznaky použití klíče**|**Ops klíčů služby Key Vault**|**Výchozí chování**|
 |----------|--------|--------|
-|DataEncipherment|šifrování, dešifrování| neuvedeno |
-|DecipherOnly|dešifrování| neuvedeno  |
+|DataEncipherment|šifrování, dešifrování| Není k dispozici |
+|DecipherOnly|dešifrování| Není k dispozici  |
 |Bity DigitalSignature|podepsání, ověření| Výchozí služby Key Vault bez specifikace využití v okamžiku vytvoření certifikátu | 
-|EncipherOnly|encrypt| neuvedeno |
-|KeyCertSign|podepsání, ověření|neuvedeno|
+|EncipherOnly|encrypt| Není k dispozici |
+|KeyCertSign|podepsání, ověření|Není k dispozici|
 |KeyEncipherment|wrapKey, unwrapKey| Výchozí služby Key Vault bez specifikace využití v okamžiku vytvoření certifikátu | 
-|Nepopiratelnosti odpovědnosti|podepsání, ověření| neuvedeno |
-|crlsign|podepsání, ověření| neuvedeno |
+|Nepopiratelnosti odpovědnosti|podepsání, ověření| Není k dispozici |
+|crlsign|podepsání, ověření| Není k dispozici |
 
 ### <a name="certificate-issuer"></a>Vystavitel certifikátu
 
@@ -476,5 +476,4 @@ Další informace najdete v tématu [operace účtů úložiště v referenci ro
 ## <a name="see-also"></a>Viz také
 
 - [Ověřování, požadavky a odpovědi](authentication-requests-and-responses.md)
-- [Verze služby Key Vault](key-vault-versions.md)
 - [Průvodce vývojáře pro službu Key Vault](/azure/key-vault/key-vault-developers-guide)

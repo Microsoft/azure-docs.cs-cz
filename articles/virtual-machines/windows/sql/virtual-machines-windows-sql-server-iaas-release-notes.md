@@ -13,16 +13,31 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 2/13/2019
-ms.openlocfilehash: ee3aeb9f44d1b98d6307c6a72d1e4786ea1ec664
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 47578d5b6bb4a0094ba1a2e9e7dc7f92d0b0e231
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67076904"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67607091"
 ---
 # <a name="sql-server-on-azure-virtual-machine-release-notes"></a>SQL Server na virtuálním počítači Azure zpráva k vydání verze
 
 Azure umožňuje nasadit virtuální počítač pomocí image vytvořené systému SQL Server. Tento článek shrnuje nové funkce a vylepšení v posledních verzích [systému SQL Server na virtuálních počítačích Azure](https://azure.microsoft.com/services/virtual-machines/sql-server/). V článku jsou uvedeny také důležité aktualizace obsahu, které jsou přímo související s vydáním ale publikovat ve stejném časovém rámci. Vylepšení k jiným službám Azure, najdete v části [aktualizace služeb](https://azure.microsoft.com/updates)
+
+
+## <a name="june-2019"></a>2019 dne
+
+### <a name="service-improvements"></a>Vylepšení služby
+
+| Vylepšení služby | Podrobnosti |
+| --- | --- |
+| **Nové způsoby instalace SQL IaaS** | Nyní je možné nainstalovat rozšíření SQL IaaS v [zjednodušeném režimu](virtual-machines-windows-sql-server-agent-extension.md) nechcete-li restartovat službu systému SQL Server.  |
+| **Změna edice systému SQL Server** | Nyní můžete změnit [vlastnost edition](virtual-machines-windows-sql-change-edition.md) pro virtuální počítač s SQL serverem. |
+| **Změny RP virtuálního počítače SQL** | Je možné [registraci virtuálního počítače s SQL serverem s poskytovatelem prostředků pro virtuální počítač s SQL](virtual-machines-windows-sql-register-with-resource-provider.md#register-with-sql-vm-resource-provider) – dokonce i [imagí Windows 2008](virtual-machines-windows-sql-register-with-resource-provider.md#register-sql-server-2008r2-on-windows-server-2008-vms) -pomocí nové režimů SQL IaaS. |
+| **Image BYOL AHUB** | Teď můžete přepnout BYOL Image nasadit z webu marketplace jejich [licence typu na "Průběžné platby"](virtual-machines-windows-sql-ahb.md#remarks).| 
+| &nbsp; | &nbsp; |
+
+
 
 ## <a name="may-2019"></a>. Května 2019.
 
@@ -41,7 +56,9 @@ Azure umožňuje nasadit virtuální počítač pomocí image vytvořené systé
 | &nbsp; | &nbsp; |
 
 
-## <a name="april-2019"></a>2019\. dubna
+
+
+## <a name="april-2019"></a>2019. dubna
 
 ### <a name="service-improvements"></a>Vylepšení služby
 
@@ -51,11 +68,11 @@ Azure umožňuje nasadit virtuální počítač pomocí image vytvořené systé
 | &nbsp; | &nbsp; |
 
 
-## <a name="march-2019"></a>2019\. března
+## <a name="march-2019"></a>2019. března
 
 | Vylepšení služby | Podrobnosti |
 | --- | --- |
-| **Možnosti podpory pro vlastní image** | Teď si můžete nainstalovat [rozšíření SQL IaaS](virtual-machines-windows-sql-server-agent-extension.md#installation) vlastních imagí operačního systému a SQL, který nabízí omezené funkce [flexibilní licencování](virtual-machines-windows-sql-ahb.md). Při registraci vlastní image u poskytovatele prostředků SQL, zadejte typ licence jako "AHUB" jako v opačném případě registrace selže.  | 
+| **Možnosti podpory pro vlastní image** | Teď si můžete nainstalovat [rozšíření SQL IaaS](virtual-machines-windows-sql-server-agent-extension.md#installation) vlastních imagí operačního systému a SQL, který nabízí omezené funkce [flexibilní licencování](virtual-machines-windows-sql-ahb.md). Při registraci vlastní image u poskytovatele prostředků SQL, zadejte typ licence jako "AHUB" jako v opačném případě registrace selže. | 
 | **Možnosti podpory pojmenovaná instance** | Teď můžete využít [rozšíření SQL IaaS](virtual-machines-windows-sql-server-agent-extension.md#installation) pomocí pojmenované instance, pokud výchozí instanci správně odinstaloval. | 
 | **Rozšíření portálu** | Azure portal ještě neznáte pro nasazení virtuálního počítače s SQL serverem má bylo přepracované použitelnosti. Další informace najdete v tématu zadání [rychlý Start](quickstart-sql-vm-create-portal.md) a důkladnější [postupy](virtual-machines-windows-portal-sql-server-provision.md) příručka k nasazení virtuálního počítače s SQL serverem.|
 | &nbsp; | &nbsp; |
@@ -65,7 +82,7 @@ Azure umožňuje nasadit virtuální počítač pomocí image vytvořené systé
 
 | Vylepšení služby | Podrobnosti |
 | --- | --- |
-| **Zlepšení portálu** | Nyní je možné změnit licenční model virtuálního počítače serveru SQL z modelu průběžné platby pomocí přineste svůj – používání vlastní licence [webu Azure portal](virtual-machines-windows-sql-ahb.md#with-the-azure-portal-1).|
+| **Zlepšení portálu** | Nyní je možné změnit licenční model virtuálního počítače serveru SQL z modelu průběžné platby pomocí přineste svůj – používání vlastní licence [webu Azure portal](virtual-machines-windows-sql-ahb.md#change-license-for-vms-already-registered-with-resource-provider)|
 |**Zjednodušení nasazení skupinu dostupnosti pomocí Azure CLI virtuálního počítače SQL** | Je teď snadnější než někdy k nasazení skupiny dostupnosti do virtuálního počítače s SQL serverem v Azure. [Azure CLI pro virtuální počítač SQL](/cli/azure/sql/vm?view=azure-cli-2018-03-01-hybrid) vám umožní vytvořit naslouchacího procesu ILB služby WSFC a AG vše z příkazového řádku a záznamů včas! Další informace najdete v tématu [pomocí příkazového řádku virtuálního počítače SQL Azure ke konfiguraci skupiny dostupnosti Always On pro SQL Server na Virtuálním počítači Azure](virtual-machines-windows-sql-availability-group-cli.md). | 
 | &nbsp; | &nbsp; |
 
@@ -76,7 +93,7 @@ Azure umožňuje nasadit virtuální počítač pomocí image vytvořené systé
 | --- | --- |
 | **Nový poskytovatel prostředků skupiny clusteru SQL** | Nového poskytovatele prostředků (Microsoft.SqlVirtualMachine/SqlVirtualMachineGroups), který definuje metadata clusteru převzetí služeb při selhání Windows. Připojení virtuálního počítače s SQL serverem na *SqlVirtualMachineGroups* bootstraps služba Windows Failover Cluster a připojí se virtuální počítač do clusteru.  |
 |**Automatizace nastavení nasazení skupiny dostupnosti s využitím šablon Azure Quickstart** |Nyní je možné vytvořit Cluster převzetí služeb při selhání Windows, připojení k němu virtuální počítače s SQL serverem, vytvořte naslouchací proces a konfigurace interního nástroje pro vyrovnávání zatížení s dvě šablony Quickstart pro Azure. Další informace najdete v tématu [šablonu pro rychlý start Azure použijte ke konfiguraci skupiny dostupnosti Always On pro SQL Server na Virtuálním počítači Azure](virtual-machines-windows-sql-availability-group-quickstart-template.md). | 
-| **Registrace poskytovatele prostředků automatické virtuálního počítače SQL** | Virtuální počítače SQL serveru nasadit po tento měsíc jsou automaticky registrované nového poskytovatele prostředků SQL serveru. SQL Server virtuální počítače nasazené před tento měsíc stále potřeba ručně zaregistrovat. Další informace najdete v tématu [zaregistrovat existující virtuální počítač SQL s poskytovatelem prostředků pro virtuální počítač SQL](virtual-machines-windows-sql-ahb.md#register-sql-server-vm-with-sql-resource-provider).|
+| **Registrace poskytovatele prostředků automatické virtuálního počítače SQL** | Virtuální počítače SQL serveru nasadit po tento měsíc jsou automaticky registrované nového poskytovatele prostředků SQL serveru. SQL Server virtuální počítače nasazené před tento měsíc stále potřeba ručně zaregistrovat. Další informace najdete v tématu [zaregistrovat existující virtuální počítač SQL s poskytovatelem prostředků pro virtuální počítač SQL](virtual-machines-windows-sql-register-with-resource-provider.md).|
 | &nbsp; | &nbsp; |
 
 
@@ -84,12 +101,12 @@ Azure umožňuje nasadit virtuální počítač pomocí image vytvořené systé
 
 | Vylepšení služby | Podrobnosti |
 | --- | --- |
-| **Nový poskytovatel prostředků virtuálního počítače SQL** |  Nového poskytovatele prostředků pro virtuální počítače SQL serveru (Microsoft.SqlVirtualMachine), která poskytuje lepší správu vašeho virtuálního počítače s SQL serverem. Další informace o registraci vašeho virtuálního počítače najdete v tématu [zaregistrovat existující virtuální počítač SQL s poskytovatelem prostředků pro nové](virtual-machines-windows-sql-ahb.md#register-sql-server-vm-with-sql-resource-provider). |
-|**Přepnout licenčního modelu** |Teď můžete přepínat mezi model plateb za využití a přinést vlastní licenci pro váš virtuální počítač SQL s použitím Azure CLI nebo Powershellu. Další informace najdete v tématu [jak změnit licenční model virtuálního počítače SQL](virtual-machines-windows-sql-ahb.md). | 
+| **Nový poskytovatel prostředků virtuálního počítače SQL** |  Nového poskytovatele prostředků pro virtuální počítače SQL serveru (Microsoft.SqlVirtualMachine), která poskytuje lepší správu vašeho virtuálního počítače s SQL serverem. Další informace o registraci vašeho virtuálního počítače najdete v tématu [zaregistrovat existující virtuální počítač SQL s poskytovatelem prostředků pro nové](virtual-machines-windows-sql-register-with-resource-provider.md). |
+|**Přepnout licenčního modelu** | Teď můžete přepínat mezi model plateb za využití a přinést vlastní licenci pro váš virtuální počítač SQL s použitím Azure CLI nebo Powershellu. Další informace najdete v tématu [jak změnit licenční model virtuálního počítače SQL](virtual-machines-windows-sql-ahb.md). | 
 | &nbsp; | &nbsp; |
 
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
 **Virtuální počítače s Windows**:
 

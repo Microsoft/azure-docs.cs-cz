@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 2b0892fb107827cd9060a36855e9b8bf4416463c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d3c547fbc09aeb034df5b7ed579639e1ff4bc0b4
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67069438"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705805"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Omezení přístupu službě Azure App Service #
 
@@ -98,7 +98,7 @@ Kromě toho, že řídit přístup k vaší aplikaci, můžete taky omezit pří
 
 ## <a name="programmatic-manipulation-of-access-restriction-rules"></a>Programovou manipulaci se pravidla pro omezení přístupu ##
 
-Aktuálně neexistuje žádná prostředí PowerShell nebo rozhraní příkazového řádku pro nové možnosti omezení přístupu, ale hodnoty můžete nastavit ručně pomocí operace PUT v konfiguraci aplikace ve službě Správce prostředků. Například můžete použít resources.azure.com a upravit blok ipSecurityRestrictions přidat požadované JSON.
+Aktuálně neexistuje žádná prostředí PowerShell nebo rozhraní příkazového řádku pro nové možnosti omezení přístupu, ale hodnoty můžete nastavit ručně pomocí [rozhraní Azure REST API](https://docs.microsoft.com/rest/api/azure/) operace PUT v konfiguraci aplikace ve službě Správce prostředků. Například můžete použít resources.azure.com a upravit blok ipSecurityRestrictions přidat požadované JSON.
 
 Umístění těchto informací v Resource Manageru je:
 
@@ -106,15 +106,19 @@ Management.Azure.com/subscriptions/**ID předplatného**/resourceGroups/**skupin
 
 Syntaxe JSON předchozího příkladu je:
 
-    "ipSecurityRestrictions": [
-      {
-        "ipAddress": "131.107.159.0/24",
-        "action": "Allow",
-        "tag": "Default",
-        "priority": 100,
-        "name": "allowed access"
+    {
+      "properties": {
+        "ipSecurityRestrictions": [
+          {
+            "ipAddress": "122.133.144.0/24",
+            "action": "Allow",
+            "tag": "Default",
+            "priority": 100,
+            "name": "IP example rule"
+          }
+        ]
       }
-    ],
+    }
 
 ## <a name="function-app-ip-restrictions"></a>Omezení IP adres aplikace – funkce
 

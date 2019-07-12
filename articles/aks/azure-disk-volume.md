@@ -2,17 +2,17 @@
 title: Vytvoření statické svazku pro podů ve službě Azure Kubernetes Service (AKS)
 description: Zjistěte, jak ručně vytvořit svazek pomocí disků v Azure pro použití s pod ve službě Azure Kubernetes Service (AKS)
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.author: iainfou
-ms.openlocfilehash: b166f70186b063782fb2c2245e351d6dfca6f978
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mlearned
+ms.openlocfilehash: 9017c8cf721fbb9c493dc18da769b9d6e83ddf05
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65072157"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67616142"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Ruční vytváření a používání svazku s disky Azure ve službě Azure Kubernetes Service (AKS)
 
@@ -23,9 +23,9 @@ Kontejnerových aplikací často potřebují přístup k a zachovat data ve svaz
 
 Další informace o Kubernetes svazky, naleznete v tématu [možnosti úložiště pro aplikace ve službě AKS][concepts-storage].
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
-Tento článek předpokládá, že máte existující cluster AKS. Pokud potřebujete AKS cluster, najdete v tomto rychlém startu AKS [pomocí Azure CLI] [ aks-quickstart-cli] nebo [pomocí webu Azure portal][aks-quickstart-portal].
+Tento článek předpokládá, že máte existující cluster AKS. Pokud potřebujete AKS cluster, najdete v tomto rychlém startu AKS [pomocí Azure CLI][aks-quickstart-cli] or [using the Azure portal][aks-quickstart-portal].
 
 Také nutné mít Azure CLI verze 2.0.59 nebo později nainstalované a nakonfigurované. Spustit `az --version` k vyhledání verze. Pokud potřebujete instalaci nebo upgrade, naleznete v tématu [instalace Azure CLI][install-azure-cli].
 
@@ -33,7 +33,7 @@ Také nutné mít Azure CLI verze 2.0.59 nebo později nainstalované a nakonfig
 
 Při vytváření disku Azure pro použití službou AKS, můžete vytvořit prostředek disku v **uzel** skupinu prostředků. Tento přístup umožňuje přístup a Správa prostředků disku clusteru AKS. Pokud místo toho vytvořit na disku v samostatné skupiny prostředků, je nutné udělit instanční objekt služby Azure Kubernetes Service (AKS) pro váš cluster `Contributor` role do skupiny prostředků na disku.
 
-Pro účely tohoto článku vytvořte na disku ve skupině prostředků uzlu. Nejprve získejte název skupiny prostředků s [az aks zobrazit] [ az-aks-show] příkaz a přidejte `--query nodeResourceGroup` parametr dotazu. Následující příklad získá uzlu skupiny prostředků pro AKS název clusteru *myAKSCluster* v názvu skupiny prostředků *myResourceGroup*:
+Pro účely tohoto článku vytvořte na disku ve skupině prostředků uzlu. Nejprve získejte název skupiny prostředků s [az aks zobrazit][az-aks-show] příkaz a přidejte `--query nodeResourceGroup` parametr dotazu. Následující příklad získá uzlu skupiny prostředků pro AKS název clusteru *myAKSCluster* v názvu skupiny prostředků *myResourceGroup*:
 
 ```azurecli-interactive
 $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
@@ -41,7 +41,7 @@ $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeR
 MC_myResourceGroup_myAKSCluster_eastus
 ```
 
-Teď vytvořte disk s využitím [az disk vytvořit] [ az-disk-create] příkazu. Zadejte název skupiny prostředků uzlu získaný v předchozím příkazem a pak název prostředku disku, jako *myAKSDisk*. Následující příklad vytvoří *20*GiB disku a výstupy ID disku po vytvoření. Pokud potřebujete k vytvoření disku pro použití s kontejnery Windows serveru (aktuálně ve verzi preview ve službě AKS), přidejte `--os-type windows` parametr správně a disk naformátujte.
+Teď vytvořte disk s využitím [az disk vytvořit][az-disk-create] příkazu. Zadejte název skupiny prostředků uzlu získaný v předchozím příkazem a pak název prostředku disku, jako *myAKSDisk*. Následující příklad vytvoří *20*GiB disku a výstupy ID disku po vytvoření. Pokud potřebujete k vytvoření disku pro použití s kontejnery Windows serveru (aktuálně ve verzi preview ve službě AKS), přidejte `--os-type windows` parametr správně a disk naformátujte.
 
 ```azurecli-interactive
 az disk create \
@@ -124,7 +124,7 @@ Events:
 [...]
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Přidružené osvědčené postupy, najdete v části [osvědčené postupy pro ukládání a zálohování ve službě AKS][operator-best-practices-storage].
 

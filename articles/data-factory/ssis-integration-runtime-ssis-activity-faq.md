@@ -12,12 +12,12 @@ author: wenjiefu
 ms.author: wenjiefu
 ms.reviewer: sawinark
 manager: craigg
-ms.openlocfilehash: 68a5d5278e1181695695647cff187d4b95624b40
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 05723a90725992e6b955524a2d35c82d3378ee3d
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67537642"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621841"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>Řešení potíží s spouštění balíčku v prostředí SSIS integration runtime
 
@@ -57,11 +57,33 @@ Možnou příčinou je, že poskytovatele ADO.NET použité v balíku není nain
 
 Tuto chybu může způsobovat známý problém ve starších verzích systému SQL Server Management Studio (SSMS). Pokud balíček obsahuje vlastní součásti (například součásti služby SSIS Azure Feature Pack nebo partnerem), která není nainstalovaná na počítači použití SSMS provedete nasazení, aplikace SSMS se odebrat komponentu a způsobit chybu. Upgrade [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) na nejnovější verzi, která má tento problém opravili.
 
+### <a name="error-messagessis-executor-exit-code--1073741819"></a>Chybová zpráva: "prováděcí modul služby SSIS ukončovací kód: -1073741819."
+
+* Možná příčina a doporučená akce:
+  * Tato chyba mohla vzniknout z důvodu omezení pro Excel zdrojových a cílových při více Excelové zdroje nebo cíle jsou spuštěny paralelně ve více vláken. Můžete vyřešit toto omezení podle změnit komponentami vaší aplikace Excel na spouštění v pořadí, nebo je rozdělit do různých balíčcích a aktivovat prostřednictvím "Úloha spuštění balíčku" ExecuteOutOfProcess vlastnost nastavena jako True.
+
 ### <a name="error-message-there-is-not-enough-space-on-the-disk"></a>Chybová zpráva: "Není dostatek místa na disku"
 
 Tato chyba znamená, že v uzlu integration runtime služby SSIS je použít na místní disk. Zkontrolujte, zda balíček nebo vlastní nastavení spotřebovává velké množství místa na disku:
 * Pokud disk je využívána vašeho balíčku, ho uvolní po dokončení spouštění balíčku.
 * Pokud disk spotřebují vaše vlastní nastavení, je budete potřebovat zastavit prostředí SSIS integration runtime, váš skript upravit a znovu spusťte modul runtime integrace. Kontejner objektů blob v Azure celou, který jste zadali pro vlastní nastavení se zkopírují do uzlu integration runtime služby SSIS, tak zkontrolujte, jestli všechny nepotřebný obsah v tomto kontejneru.
+
+### <a name="error-message-failed-to-retrieve-resource-from-master-microsoftsqlserverintegrationservicesscalescaleoutcontractcommonmasterresponsefailedexception-code300004-descriptionload-file--failed"></a>Chybová zpráva: "Nepovedlo se načíst prostředek z hlavní větve. Microsoft.SqlServer.IntegrationServices.Scale.ScaleoutContract.Common.MasterResponseFailedException: Kód: 300004. Popis: načíst soubor "***" se nezdařilo. "
+
+* Možná příčina a doporučená akce:
+  * Pokud aktivita služby SSIS je spuštění balíčku ze systému souborů (soubor balíčku nebo souboru projektu), se tato chyba nastane, pokud projekt, balíček nebo konfigurační soubor není přístupný s pověřením přístup k balíčku, který jste zadali v rámci aktivity SSIS
+    * Pokud používáte Azure File:
+      * Cesta k souboru by měla začínat řetězcem \\ \\ \<název účtu úložiště\>. file.core.windows.net\\\<cesta sdílení souborů\>
+      * Doména by měl být "Azure"
+      * Uživatelské jméno by měly být \<název účtu úložiště\>
+      * Heslo by měl být \<přístupový klíč k úložišti\>
+    * Pokud se pomocí místního souboru, Zkontrolujte prosím, pokud virtuální síť, přihlašovací údaje pro přístup k balíčku a oprávnění jsou správně nakonfigurované tak, aby prostředí Azure-SSIS integration runtime můžete přístup k místní sdílené složce
+
+### <a name="error-message-the-file-name--specified-in-the-connection-was-not-valid"></a>Chybová zpráva: "Název souboru '...' zadaný v připojení nebyla platná "
+
+* Možná příčina a doporučená akce:
+  * Je zadaný neplatný název souboru
+  * Ujistěte se, že používáte plně kvalifikovaný název domény (plně kvalifikovaný název typu domény) místo krátkého formátu času v Správce připojení
 
 ### <a name="error-message-cannot-open-file-"></a>Chybová zpráva: "Nelze otevřít soubor"..."
 

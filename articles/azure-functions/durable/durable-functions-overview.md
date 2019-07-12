@@ -9,13 +9,14 @@ ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: overview
 ms.date: 12/22/2018
-ms.author: azfuncdf, glenga
-ms.openlocfilehash: 2228f3fe05e1021d0f87ce0b0d33a8287f048a8c
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.author: glenga
+ms.reviewer: azfuncdf
+ms.openlocfilehash: 6e1acf5f605d7f6fb42d24e6e7ec624a317b0e31
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65872811"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612864"
 ---
 # <a name="what-are-durable-functions"></a>Co jsou odolná služba Functions?
 
@@ -43,8 +44,8 @@ Případem primárního použití pro Durable Functions je zjednodušuje složit
 
 Odolná služba Functions nyní podporuje následující jazyky:
 
-* **C#**: oba [předkompilované knihovny tříd](../functions-dotnet-class-library.md) a [ C# skript](../functions-reference-csharp.md).
-* **F#**: předkompilované knihovny tříd a F# skriptu. F#skript se podporuje jenom pro verzi 1.x modulu runtime Azure Functions.
+* **C#** : oba [předkompilované knihovny tříd](../functions-dotnet-class-library.md) a [ C# skript](../functions-reference-csharp.md).
+* **F#** : předkompilované knihovny tříd a F# skriptu. F#skript se podporuje jenom pro verzi 1.x modulu runtime Azure Functions.
 * **JavaScript**: podporuje jenom pro verzi 2.x modulu runtime Azure Functions. Vyžaduje verzi 1.7.0 rozšíření Durable Functions nebo novější. 
 
 Odolná služba Functions je cílem podporovat všechny [Azure Functions jazyky](../supported-languages.md). Najdete v článku [seznam problémů Durable Functions](https://github.com/Azure/azure-functions-durable-extension/issues) nejnovější stav práce pro podporu dalších jazyků.
@@ -64,7 +65,7 @@ Můžete začít s Durable Functions za méně než 10 minut provedením násled
 
 V obou šablon rychlý start místně vytvořit a otestovat trvalý funkci "hello world". Kód funkce potom publikujete do Azure. Funkce, které vytvoříte orchestruje a zřetězí společně volání dalších funkcí.
 
-## <a name="learn-more"></a>Další informace
+## <a name="learn-more"></a>Víc se uč
 
 V následujícím videu najdete výhody Durable Functions:
 
@@ -72,7 +73,7 @@ V následujícím videu najdete výhody Durable Functions:
 
 Protože je pokročilá rozšíření pro Durable Functions [Azure Functions](../functions-overview.md), není vhodná pro všechny aplikace. Další informace o Durable Functions najdete v tématu [Durable Functions vzory a technických konceptech](durable-functions-concepts.md). Porovnání s jinými technologiemi Azure orchestration najdete v tématu [porovnání Azure Functions a Azure Logic Apps](../functions-compare-logic-apps-ms-flow-webjobs.md#compare-azure-functions-and-azure-logic-apps).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Odolné funkce vzory a technické koncepty](durable-functions-concepts.md)

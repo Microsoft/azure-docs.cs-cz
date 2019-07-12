@@ -7,19 +7,19 @@ author: rkarlin
 manager: barbkess
 editor: ''
 ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
-ms.service: operations-management-suite
+ms.service: security-center
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/20/2018
 ms.author: rkarlin
-ms.openlocfilehash: bec9be627937913c268d65bb6cdadcf68c7a3fb4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1fd979be117104186b2dfce47cc79947a092eb9e
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60909209"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672328"
 ---
 # <a name="manage-user-data-found-in-an-azure-security-center-investigation"></a>Spravovat uživatelská data v Azure Security Center šetření
 Tento článek obsahuje informace o tom, jak spravovat uživatelská data v Azure Security Center funkci šetření. Šetření data jsou uložena v [protokoly Azure monitoru](../log-analytics/log-analytics-overview.md) a vystavené ve službě Security Center. Správa uživatelských dat zahrnuje možnost odstranit nebo exportovat data.
@@ -56,6 +56,6 @@ https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{reso
 ## <a name="exporting-personal-data"></a>Exportování osobních údajů
 Security Center uživatel přiřazenou roli vlastník, Přispěvatel, nebo účet správce může exportovat informace šetření. Pokud chcete exportovat informace šetření, přejděte na **entity** kartu kopírovat a vkládat příslušné informace.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další informace o správě uživatelských dat, naleznete v tématu [správu dat uživatele ve službě Azure Security Center](security-center-privacy.md).
 Další informace o odstraňování soukromým datům v Azure Monitor protokoly najdete v tématu [jak exportovat a odstranění dat soukromých](../azure-monitor/platform/personal-data-mgmt.md#how-to-export-and-delete-private-data).

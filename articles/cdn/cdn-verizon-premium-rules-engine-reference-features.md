@@ -3,16 +3,16 @@ title: Funkce stroje pravidel Azure CDN od Verizonu Premium | Dokumentace Micros
 description: Funkce stroje pravidel referenční dokumentaci pro Azure CDN od Verizonu Premium.
 services: cdn
 author: mdgattuso
-ms.service: cdn
+ms.service: azure-cdn
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: magattus
-ms.openlocfilehash: 7e75a6ffe28aa74ea2fad30bbe2728317712d86b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 9177ac544c83305ae95ad681d3dc9f84ac64ea36
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443497"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593242"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-features"></a>Azure CDN od Verizonu prémiové funkce modul pravidel
 
@@ -24,7 +24,7 @@ Třetí část pravidlo je funkce. Funkce definuje typ akce, která se uplatňuj
 
 Tyto funkce jsou určeny k řízení přístupu k obsahu.
 
-Název | Účel
+Name | Účel
 -----|--------
 [Odepřít přístup (403)](#deny-access-403) | Určuje, zda všechny požadavky byly zamítnuty 403 Zakázáno odpovědí.
 [Ověření tokenu](#token-auth) | Určuje, zda je na žádost použito ověřování založené na tokenech.
@@ -36,7 +36,7 @@ Název | Účel
 
 Tyto funkce jsou navržené tak, přizpůsobit a jak se obsah ukládá do mezipaměti.
 
-Název | Účel
+Name | Účel
 -----|--------
 [Parametry šířky pásma](#bandwidth-parameters) | Určuje, zda jsou parametry omezení šířky pásma (například ec_rate a ec_prebuf) aktivní.
 [Omezení šířky pásma](#bandwidth-throttling) | Omezuje šířku pásma pro odpověď v poskytnuté v point-of-presence (POP).
@@ -66,7 +66,7 @@ Název | Účel
 
 Tato funkce je určena pro poskytnutí dalších informací v rámci pravidla.
 
-Název | Účel
+Name | Účel
 -----|--------
 [Komentář](#comment) | Umožňuje Poznámka k přidají v rámci pravidla.
 
@@ -74,7 +74,7 @@ Název | Účel
 
 Tyto funkce slouží k přidání, úprava nebo odstranění hlaviček ze žádosti nebo odpovědi.
 
-Název | Účel
+Name | Účel
 -----|--------
 [Hlavička odpovědi věk](#age-response-header) | Určuje, zda hlavičku odpovědi věk je součástí odpověď odesílanou žadateli.
 [Ladění hlavičky odpovědi v mezipaměti](#debug-cache-response-headers) | Určuje, jestli odpověď může obsahovat hlavičku odpovědi X-ES-ladění, která poskytuje informace o zásady ukládání do mezipaměti pro požadovaný prostředek.
@@ -86,7 +86,7 @@ Název | Účel
 
 Tyto funkce slouží k přizpůsobení dat uložených v nezpracovaných souborů protokolu.
 
-Název | Účel
+Name | Účel
 -----|--------
 [Protokol vlastní pole 1](#custom-log-field-1) | Určuje formát a obsah, který je přiřazen poli vlastní protokol v nezpracovaných souborů protokolu.
 [Řetězec dotazu protokolu](#log-query-string) | Určuje, zda řetězec dotazu je uložen spolu s adresy URL v přístup k protokolům.
@@ -140,7 +140,7 @@ If the desired site does not appear in the list, then you should edit its config
 
 Tyto funkce jsou určeny k řízení, jak síť CDN komunikuje s původním serveru.
 
-Název | Účel
+Name | Účel
 -----|--------
 [Maximální počet Keep-Alive požadavků](#maximum-keep-alive-requests) | Definuje maximální počet požadavků pro zachování připojení předtím, než je uzavřený.
 [Speciálními záhlavími proxy](#proxy-special-headers) | Definuje sadu hlaviček požadavků specifické pro CDN, které jsou předávány z místní nabídky k serveru původu.
@@ -149,7 +149,7 @@ Název | Účel
 
 Tyto funkce umožňují pokročilé funkce pro zkušené uživatele.
 
-Název | Účel
+Name | Účel
 -----|--------
 [Metody HTTP možné ukládat do mezipaměti](#cacheable-http-methods) | Určuje sadu další metody HTTP, které lze uložit do mezipaměti v síti.
 [Velikost textu požadavku možné ukládat do mezipaměti](#cacheable-request-body-size) | Definuje prahovou hodnotu pro určení, jestli odpověď na příspěvek můžete uložit do mezipaměti.
@@ -159,7 +159,7 @@ Název | Účel
 
 Tyto funkce umožňují požadavek na přesměrování nebo vzniklá jinou adresu URL.
 
-Název | Účel
+Name | Účel
 -----|--------
 [Následovat přesměrování](#follow-redirects) | Určuje, zda požadavky můžete přesměrovat na název hostitele definovaná v hlavičce umístění vrátil server původu zákazníka.
 [Adresa URL pro přesměrování](#url-redirect) | Přesměruje požadavky prostřednictvím hlavička umístění.
@@ -173,7 +173,7 @@ Název | Účel
 
 **Účel**: Určuje, zda hlavičku odpovědi věk je součástí odpověď odesílanou žadateli.
 
-Hodnota|Výsledek
+Value|Výsledek
 --|--
 Enabled | Hlavička odpovědi věk je zahrnutý v odpovědi odeslané žadateli.
 Zakázáno | Hlavička odpovědi věk je vyloučen z odpověď odesílanou žadateli.
@@ -192,7 +192,7 @@ Zakázáno | Hlavička odpovědi věk je vyloučen z odpověď odesílanou žada
 
 Parametry pro omezování šířky pásma určit, jestli rychlost přenosu dat pro požadavek klienta jsou omezená na vlastní míry.
 
-Hodnota|Výsledek
+Value|Výsledek
 --|--
 Enabled|Umožňuje bodů POP případném dalším sdílení dodržovat požadavky omezení šířky pásma.
 Zakázáno|Způsobí, že se vezme Ignorovat omezení parametry šířky pásma. Požadovaný obsah obsluhuje normálně (to znamená bez omezení šířky pásma).
@@ -228,7 +228,7 @@ Prebuf sekund|Tuto možnost nastavte počet sekund pro bodů POP počkat, až se
 
 **Účel:** Určuje, zda by měl žádost nepoužívat ukládání do mezipaměti.
 
-Hodnota|Výsledek
+Value|Výsledek
 --|--
 Enabled|I v případě, že obsah byl dříve uložené v mezipaměti POP způsobí, že všechny požadavky na předáno na zdrojový server.
 Zakázáno|Způsobí, že POP k prostředků do mezipaměti podle zásady ukládání do mezipaměti definované v jeho hlavičkách odpovědi.
@@ -320,7 +320,7 @@ Informace o klíči:
 - Zadejte jeden nebo více názvy parametrů řetězce dotazu a název každého parametru oddělte mezerou.
 - Tato funkce určuje, zda parametry řetězce dotazu jsou zahrnuty nebo vyloučeny ze klíče mezipaměti. Další informace jsou poskytovány pro jednotlivé možnosti v následující tabulce.
 
-Type|Popis
+type|Popis
 --|--
  Zahrnout|  Označuje, že každý zadaný parametr by měl být součástí klíče mezipaměti. Jedinečný klíč mezipaměti je vygenerována pro každý požadavek, který obsahuje jedinečná hodnota pro parametr řetězce dotazu definovaný v této funkci.
  Zahrnout všechny  |Označuje, že je vytvořen jedinečný klíč mezipaměti pro každý požadavek na prostředek, který obsahuje řetězec dotazu jedinečný. Tento typ konfigurace se nedoporučuje obvykle, protože to může vést k malé procento přístupů k mezipaměti. Nízký počet přístupů k mezipaměti zvyšuje zatížení na původním serveru, protože ho musí poskytovat více požadavků. Tato konfigurace duplikuje chování ukládání do mezipaměti, které jsou známé jako "jedinečná mezipaměti" na stránce ukládání do mezipaměti řetězce dotazu.
@@ -441,7 +441,7 @@ Neúspěšný přístup do částečné mezipaměti obvykle dochází, jakmile u
 
 Zachovat výchozí konfiguraci pro platformu HTTP velké, protože snižuje zatížení serveru původu zákazníků a větší rychlost, jakou vaši zákazníci stažení vašeho obsahu.
 
-Hodnota|Výsledek
+Value|Výsledek
 --|--
 Enabled|Obnoví výchozí chování. Výchozí chování je vynutit POP k zahájení načítání na pozadí prostředku ze zdrojového serveru. A asset bude v místní mezipaměti serveru POP.
 Zakázáno|Místní nabídky brání v provádění načítání na pozadí pro asset. Výsledkem je, že další požadavek pro tento prostředek z dané oblasti způsobí, že místní nabídky k vyžádání ze zdrojového serveru zákazníka.
@@ -551,7 +551,7 @@ Ladění odpověď mezipaměti, které mohou být vyžádány záhlaví zahrnut�
 
 X-ES-ladění: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state
 
-Hodnota|Výsledek
+Value|Výsledek
 -|-
 Enabled|Požadavky pro hlavičky odpovědi mezipaměti ladění vrátí odpověď obsahující hlavičku X-ES-ladění.
 Zakázáno|Hlavička X-ES-Debug odpovědi budou vyloučeny z odpovědi.
@@ -612,7 +612,7 @@ Z důvodu způsobem v mezipaměti, které jsou sledovány nastavení tato funkce
 
 **Účel**: Určuje, zda všechny požadavky byly zamítnuty 403 Zakázáno odpovědí.
 
-Hodnota | Výsledek
+Value | Výsledek
 ------|-------
 Enabled| Způsobí, že všechny požadavky, které splňují kritéria přiřazování zamítnutí 403 Zakázáno odpovědí.
 Zakázáno| Obnoví výchozí chování. Výchozí chování je povolit zdrojový server určit typ odpovědi, který bude vrácen.
@@ -634,7 +634,7 @@ Zakázáno| Obnoví výchozí chování. Výchozí chování je povolit zdrojov�
 
 Nejjednodušší způsob, jak dosáhnout tohoto typu konfigurace je umístit externí Max-Age a vyprší platnost zpracování záhlaví funkce ve stejném příkazu.
 
-Hodnota|Výsledek
+Value|Výsledek
 --|--
 Přepsat|Zajišťuje proběhne následující akce:<br/>-Přepíše `Expires` hlaviček generovaných zdrojový server.<br/>– Přidá `Expires` záhlaví vytvořený pomocí funkce externí Max-Age do odpovědi.
 Předávání|Zajišťuje, `Expires` záhlaví vytvořený pomocí funkce externí Max-Age se nikdy přidá do odpovědi. <br/> Pokud zdrojový server vytvoří `Expires` záhlaví, bude procházet pro koncového uživatele. <br/>Pokud zdrojový server nevytváří `Expires` záhlaví, pak se tato možnost může způsobit, že nebude obsahovat hlavičku odpovědi `Expires` záhlaví.
@@ -758,7 +758,7 @@ Informace o klíči:
 
 Žádost o no-cache nastane, pokud klient HTTP odešle `Cache-Control: no-cache` a/nebo `Pragma: no-cache` hlavičky v požadavku HTTP.
 
-Hodnota|Výsledek
+Value|Výsledek
 --|--
 Enabled|Umožňuje klienta HTTP no-cache vyžádá předávány na původním serveru, a zdrojový server vrátí hlavičky odpovědi a text přes POP zpět do klienta protokolu HTTP.
 Zakázáno|Obnoví výchozí chování. Výchozí chování je zabránit no-cache požadavky předávané na zdrojový server.
@@ -934,7 +934,7 @@ Změny provedené při této funkce bude odrážet požadavků, které jsou pře
 
 V hlavičce žádosti lze provést jednu z následujících akcí:
 
-Možnost|Popis|Příklad:
+Možnost|Popis|Příklad
 -|-|-
 Připojit|Zadaná hodnota bude přidán na konec existující hodnota hlavičky žádosti.|**Hodnota hlavičky požadavku (klient):**<br/>Hodnota1<br/>**Hodnota hlavičky požadavku (stroj pravidel):**<br/>Hodnota2 <br/>**Nová hodnota hlavičky žádosti:** <br/>Value1Value2
 Přepsat|Hodnota hlavičky požadavku se nastaví na zadanou hodnotu.|**Hodnota hlavičky požadavku (klient):**<br/>Hodnota1<br/>**Hodnota hlavičky požadavku (stroj pravidel):**<br/>Hodnota2<br/>**Nová hodnota hlavičky žádosti:**<br/> Hodnota2 <br/>
@@ -974,7 +974,7 @@ Ve výchozím nastavení jsou definovány hodnoty hlavičky odpovědi serveru p�
 
 V hlavičce odpovědi lze provést jednu z následujících akcí:
 
-Možnost|Popis|Příklad:
+Možnost|Popis|Příklad
 -|-|-
 Připojit|Zadaná hodnota bude přidán na konec existující hodnota hlavičky odpovědi.|**Hodnota hlavičky odpovědi (klient):**<br />Hodnota1<br/>**Hodnota hlavičky odpovědi (stroj pravidel):**<br/>Hodnota2<br/>**Nová hodnota hlavičky odpovědi:**<br/>Value1Value2
 Přepsat|Hodnota hlavičky odpovědi se nastaví na zadanou hodnotu.|**Hodnota hlavičky odpovědi (klient):**<br/>Hodnota1<br/>**Hodnota hlavičky odpovědi (stroj pravidel):**<br/>Hodnota2 <br/>**Nová hodnota hlavičky odpovědi:**<br/>Hodnota2 <br/>
@@ -1148,7 +1148,7 @@ Ujistěte se, že zadaná hlavička název neodpovídá žádnému z následují
 
 **Účel:** Určuje, zda vypršela platnost, že obsah uložený v mezipaměti budou doručeny, když dojde k chybě během Revalidace mezipaměti nebo při načítání požadovaného obsahu ze zdrojového serveru zákazníka.
 
-Hodnota|Výsledek
+Value|Výsledek
 -|-
 Enabled|Když dojde k chybě při připojování k serveru původu starý obsah obsluhuje žadateli.
 Zakázáno|Chyba serveru původu předá žadateli.
@@ -1192,7 +1192,7 @@ Pokud je povoleno ověřování založené na tokenech, se uplatní pouze požad
 
 Tato funkce má přednost před většinu funkcí s výjimkou funkce přepisování adres URL.
 
-Hodnota | Výsledek
+Value | Výsledek
 ------|---------
 Enabled | Chrání požadovaný obsah pomocí ověřování založeného na tokenech. Pouze požadavky od klientů, kteří poskytují platný token a musí splňovat požadavky budou zachované. FTP transakce jsou vyloučeny z ověřování založené na tokenech.
 Zakázáno| Obnoví výchozí chování. Výchozí chování je umožnit konfiguraci ověřování na základě tokenu k určení, zda budou zabezpečené žádost.
@@ -1240,7 +1240,7 @@ Adresa URL přesměrování jde použít jenom pro kódy odpovědí 3xx.
 
 Volitelná hodnota hlavičky možnost podporuje alfanumerické znaky, uvozovky a mezery.
 
-#### <a name="authentication"></a>Authentication
+#### <a name="authentication"></a>Ověřování
 
 Tato funkce podporuje možnost zahrnout do odpovědi k neautorizovanému požadavku pro obsah chráněný pomocí ověřování na základě tokenu hlavičky WWW-Authenticate. Pokud hlavička WWW-Authenticate byla nastavena na "základní" v konfiguraci, pak neoprávněný uživatel zobrazí výzva k zadání přihlašovacích údajů účtu.
 

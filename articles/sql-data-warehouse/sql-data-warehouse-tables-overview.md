@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 03/15/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 06bdd21363aee8202ce7178f157f01a5c26e3a52
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c22caa4b3da69d46241dfbaa7556d0209130415c
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65851578"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67626133"
 ---
 # <a name="designing-tables-in-azure-sql-data-warehouse"></a>Navrhování tabulek ve službě Azure SQL Data Warehouse
 
@@ -42,7 +42,7 @@ Chcete-li zobrazit uspořádání tabulek v SQL Data Warehouse, že můžete pou
 
 | WideWorldImportersDW tabulky  | Typ tabulky | SQL Data Warehouse |
 |:-----|:-----|:------|:-----|
-| Město | Dimenze | wwi.DimCity |
+| City | Dimenze | wwi.DimCity |
 | Objednání | Fakt | wwi.FactOrder |
 
 
@@ -107,7 +107,7 @@ Ve výchozím nastavení SQL Data Warehouse ukládá tabulku jako s clusterovan�
 Seznam funkcí columnstore, naleznete v tématu [co je nového v případě indexů columnstore](/sql/relational-databases/indexes/columnstore-indexes-what-s-new). Ke zlepšení výkonu index columnstore, naleznete v tématu [maximalizuje kvality skupiny řádků v případě indexů columnstore](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
 
 ## <a name="statistics"></a>Statistika
-Optimalizace dotazů používá Statistika na úrovni sloupce při vytváření plánu pro provedení dotazu. Pokud chcete zlepšit výkon dotazů, je důležité mít statistiky pro jednotlivé sloupce, zejména sloupce použité v dotazu spojení. [Vytvoření statistiky](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistics) probíhá automaticky.  Ale aktualizaci statistiky neprobíhá automaticky. Aktualizujte statistiku po velký počet řádků jsou přidány nebo změněny. Například aktualizujte statistiku po zatížení. Další informace najdete v tématu [statistiky pokyny](sql-data-warehouse-tables-statistics.md).
+Optimalizace dotazů používá Statistika na úrovni sloupce při vytváření plánu pro provedení dotazu. Pokud chcete zlepšit výkon dotazů, je důležité mít statistiky pro jednotlivé sloupce, zejména sloupce použité v dotazu spojení. [Vytvoření statistiky](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistic) probíhá automaticky.  Ale aktualizaci statistiky neprobíhá automaticky. Aktualizujte statistiku po velký počet řádků jsou přidány nebo změněny. Například aktualizujte statistiku po zatížení. Další informace najdete v tématu [statistiky pokyny](sql-data-warehouse-tables-statistics.md).
 
 ## <a name="commands-for-creating-tables"></a>Příkazů pro vytvoření tabulky
 Vytvořit tabulku jako nové prázdné tabulky. Můžete také vytvořit a vyplnit tabulku s výsledky příkazu select. Dále jsou uvedené příkazy jazyka T-SQL pro vytvoření tabulky.

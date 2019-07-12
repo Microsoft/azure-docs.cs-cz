@@ -4,7 +4,7 @@ description: Omezení chyby, opakovaných pokusů a omezení rychlosti v Azure C
 services: virtual-machines
 documentationcenter: ''
 author: changov
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.service: virtual-machines
@@ -13,12 +13,12 @@ ms.topic: troubleshooting
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: vashan, rajraj, changov
-ms.openlocfilehash: efa10f5beae64105857b00b186683d491edb00f5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a9e0f2620bf6ff163207fc16ee24a327936ec4bf
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65233786"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709201"
 ---
 # <a name="troubleshooting-api-throttling-errors"></a>Řešení potíží s chybami omezení rozhraní API 
 
@@ -32,7 +32,7 @@ Když klienta aplikace Azure API získá omezení chybu, je stav protokolu HTTP 
 
 ## <a name="call-rate-informational-response-headers"></a>Hlavičky odpovědi informační frekvence volání 
 
-| Záhlaví                            | Formát hodnoty                           | Příklad:                               | Popis                                                                                                                                                                                               |
+| Záhlaví                            | Formát hodnoty                           | Příklad                               | Popis                                                                                                                                                                                               |
 |-----------------------------------|----------------------------------------|---------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | x-ms-ratelimit-remaining-resource |```<source RP>/<policy or bucket>;<count>```| Microsoft.Compute/HighCostGet3Min;159 | Zbývající počet volání rozhraní API pro zásady omezování pokrývající kontejneru nebo operace skupinu prostředků včetně cíl této žádosti                                                                   |
 | x-ms-request-charge               | ```<count>```                             | 1                                     | Počet volání vrátí "účtovat" pro tento požadavek HTTP směrem k příslušné zásady omezení. Toto je nejčastěji 1. Požadavky služby batch, například škálování škálovací sady virtuálních počítačů může účtovat více počty. |
@@ -98,6 +98,6 @@ Rutiny Powershellu jsou pomocí rozhraní API REST služby, které je možné je
 - Pokud klientský kód potřebuje virtuální počítače, disky nebo snímky z určitého umístění Azure, založená na poloze formulář dotazu použít namísto dotaz na odběr všechny virtuální počítače a následného filtrování podle polohy na straně klienta: `GET /subscriptions/<subId>/providers/Microsoft.Compute/locations/<location>/virtualMachines?api-version=2017-03-30` dotazu na místní poskytovatele výpočetních prostředků Koncové body. 
 -   Při vytváření nebo aktualizaci rozhraní API prostředky zejména, virtuální počítače a škálovací sady virtuálních počítačů, je mnohem efektivnější než dotazování na adrese URL prostředku, samotný sledovat vrácený asynchronní operace do konce (na základě `provisioningState`).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o pokyny k opakování pro ostatní služby v Azure najdete v tématu [pokyny pro opakování pro určité služby](https://docs.microsoft.com/azure/architecture/best-practices/retry-service-specific)

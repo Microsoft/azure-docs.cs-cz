@@ -2,15 +2,16 @@
 title: Nastavit Micro fokus CICS BankDemo Micro fokus Enterprise Developer 4.0 ve službě Azure Virtual Machines
 description: Spusťte aplikaci BankDemo Micro fokus na Azure Virtual Machines (VMs) se naučíte, jak používat Micro fokus Enterprise Server a podnikový vývojář.
 author: sread
+ms.author: sread
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: 7afe29cb98a294b2a30020ad48f8b27264386746
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4491fc137c2c85e2be605f5e58fde6fd422efbbe
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66304756"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621340"
 ---
 # <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>Nastavit Micro fokus CICS BankDemo Micro fokus Enterprise Developer 4.0 v Azure
 
@@ -181,7 +182,7 @@ Dotaz by měl spustit bez chyb. Po dokončení mít ukázkovou databázi pro apl
 
      ![Definujte oblasti – název oblasti: BANKDEMO](media/08-demo-cics.png)
 
-7. Klikněte na **Dokončit**.
+7. Klikněte na tlačítko **Dokončit**.
 
 ## <a name="create-xa-resource-definitions"></a>Vytvoření definic prostředků XA
 

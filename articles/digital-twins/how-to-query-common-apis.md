@@ -6,14 +6,14 @@ manager: philmea
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 1/7/2019
+ms.date: 07/09/2019
 ms.author: v-adgera
-ms.openlocfilehash: 57abb005f70661d23ea90eaf801b8e5407340bb7
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: eca355a51b516311d060df09905c1df769037ec5
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67462041"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722850"
 ---
 # <a name="how-to-query-azure-digital-twins-apis-for-common-tasks"></a>Jak provádět dotazy digitální dvojče API služby Azure pro běžné úlohy
 
@@ -238,4 +238,4 @@ Tato část ukazuje několik ukázkových dotazů rozhraní API pro správu uži
 
 Zjistěte, jak ověřování pomocí rozhraní API pro správu, přečtěte si téma [ověřování pomocí rozhraní API](./security-authenticating-apis.md).
 
-Pokud chcete zobrazit všechny koncové body rozhraní API, přečtěte si [použití digitální dvojče Swagger](./how-to-use-swagger.md).
+Další informace o vašich koncových bodů rozhraní API, [použití digitální dvojče Swagger](./how-to-use-swagger.md).

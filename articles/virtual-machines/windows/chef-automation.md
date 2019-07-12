@@ -4,7 +4,7 @@ description: Zjistěte, jak pomocí nástroje Chef provedete nasazení automatiz
 services: virtual-machines-windows
 documentationcenter: ''
 author: diegoviso
-manager: jeconnoc
+manager: gwallace
 tags: azure-service-management,azure-resource-manager
 editor: ''
 ms.assetid: 0b82ca70-89ed-496d-bb49-c04ae59b4523
@@ -13,17 +13,16 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-multiple
 ms.devlang: na
 ms.topic: article
-ms.date: 05/30/2017
+ms.date: 07/09/2019
 ms.author: diviso
-ms.openlocfilehash: 9cb7172fb529d8f0cd8650db7c06a78176ef342d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 74b92c277b1d6eaa0984e55a70459bad59c2bf84
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64729551"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67719271"
 ---
 # <a name="automating-azure-virtual-machine-deployment-with-chef"></a>Automatizace nasazení virtuálních počítačů Azure pomocí Chefu
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 Chef je skvělým nástrojem k zajištění automatizace a požadované konfigurace stavu.
 
@@ -55,9 +54,24 @@ Chef také používá koncepty "Návody" a "Recepty", které jsou zásady jsme d
 
 Pracovní stanice pro přípravu nejprve vytvoříte adresář pro uložení konfiguračních souborů Chef a návody.
 
-Vytvořte adresář s názvem C:\chef.
+Vytvořte adresář s názvem C:\Chef.
 
-Stáhněte si prostředí Azure PowerShell [nastavení publikování](https://docs.microsoft.com/dynamics-nav/how-to--download-and-import-publish-settings-and-subscription-information).
+Stáhněte a nainstalujte nejnovější [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) verze k pracovní stanici.
+
+## <a name="configure-azure-service-principal"></a>Konfigurace instančního objektu Azure
+
+V nejjednodušší podmínek a instanční objekt Azure je účet služby.   Jsme nám vytváření prostředků Azure z našich Chef pracovní stanice pomocí instančního objektu.  Chcete-li vytvořit odpovídající objekt služby s požadovanými oprávněními potřebujeme spusťte následující příkazy powershellu:
+ 
+```powershell
+Login-AzureRmAccount
+Get-AzureRmSubscription
+Select-AzureRmSubscription -SubscriptionName "<yourSubscriptionName>"
+$myApplication = New-AzureRmADApplication -DisplayName "automation-app" -HomePage "https://chef-automation-test.com" -IdentifierUris "https://chef-automation-test.com" -Password "#1234p$wdchef19"
+New-AzureRmADServicePrincipal -ApplicationId $myApplication.ApplicationId
+New-AzureRmRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $myApplication.ApplicationId
+```
+
+Věnujte prosím poznamenejte si ID předplatného, ID Tenanta, ID klienta a tajný klíč klienta (heslo, které jste nastavili výše), budete ho potřebovat později. 
 
 ## <a name="setup-chef-server"></a>Nastavte Chef Server
 
@@ -86,7 +100,7 @@ Po vytvoření vaší organizaci, stáhněte si starter kit.
 
 Tento soubor zip starter kit obsahuje vaše organizace konfigurační soubory a klíče uživatele v `.chef` adresáře.
 
-`organization-validator.pem` Musí stáhnout samostatně, protože je privátní klíč a privátní klíče by neměly být uloženy na serveru Chef. Z [Chef spravovat](https://manage.chef.io/) a vyberte možnost "Obnovit ověřovací klíč", který poskytuje soubor si můžete stáhnout samostatně. Uložte soubor do c:\chef.
+`organization-validator.pem` Musí stáhnout samostatně, protože je privátní klíč a privátní klíče by neměly být uloženy na serveru Chef. Z [Chef spravovat](https://manage.chef.io/), přejděte do části Správa a vyberte možnost "Obnovit ověřovací klíč", který poskytuje soubor si můžete stáhnout samostatně. Uložte soubor do c:\chef.
 
 ### <a name="configuring-your-chef-workstation"></a>Konfigurace pracovní stanice Chef
 
@@ -138,19 +152,20 @@ validation_client_name "myorg ověření"
 
 validation_key "#{current_dir}/myorg.pem"
 
-Také přidejte následující řádek, odráží název vašeho Azure souboru s nastavením publikování.
+knife[:azure_tenant_id] =         "0000000-1111-aaaa-bbbb-222222222222"
 
-    knife[:azure_publish_settings_file] = "yourfilename.publishsettings"
+knife[:azure_subscription_id] =   "11111111-bbbbb-cccc-1111-222222222222"
 
-Upravit "cookbook_path" tak, že odeberete /.. / z cesty, takže se zobrazí jako:
+knife[:azure_client_id] =         "11111111-bbbbb-cccc-1111-2222222222222"
 
-    cookbook_path  ["#{current_dir}/cookbooks"]
+knife[:azure_client_secret] =     "#1234p$wdchef19"
 
-Tyto řádky zajistí, že odkazuje na adresář návody v c:\chef\cookbooks nůž a také používá naše soubor nastavení publikování v Azure během operací Azure.
+
+Tyto řádky zajistí, že odkazuje na adresář návody v c:\chef\cookbooks nůž a také používá Azure instanční objekt, který jste vytvořili během operací Azure.
 
 Váš soubor knife.rb by teď měl vypadat podobně jako v následujícím příkladu:
 
-![][6]
+![][14]
 
 <!--- Giant problem with this section: Chef 12 uses a config.rb instead of knife.rb
 // However, the starter kit hasn't been updated
@@ -159,17 +174,19 @@ Váš soubor knife.rb by teď měl vypadat podobně jako v následujícím pří
 <!--- update image [6] knife.rb -->
 
 ```rb
-knife.rb
 current_dir = File.dirname(__FILE__)
 log_level                :info
 log_location             STDOUT
-node_name                "mynode"
-client_key               "#{current_dir}/user.pem"
-chef_server_url          "https://api.chef.io/organizations/myorg"
+node_name                "myorg"
+client_key               "#{current_dir}/myorg.pem"
 validation_client_name   "myorg-validator"
-validation_key           ""#{current_dir}/myorg.pem"
-cookbook_path            ["#{current_dir}/cookbooks"]
-knife[:azure_publish_settings_file] = "yourfilename.publishsettings"
+validation_key           "#{current_dir}/myorg-validator.pem"
+chef_server_url          "https://api.chef.io/organizations/myorg"
+cookbook_path            ["#{current_dir}/../cookbooks"]
+knife[:azure_tenant_id] = "0000000-1111-aaaa-bbbb-222222222222"
+knife[:azure_subscription_id] = "11111111-bbbbb-cccc-1111-222222222222"
+knife[:azure_client_id] = "11111111-bbbbb-cccc-1111-2222222222222"
+knife[:azure_client_secret] = "#1234p$wdchef19"
 ```
 
 ## <a name="install-chef-workstation"></a>Nainstalujte pracovní stanice Chef
@@ -182,13 +199,13 @@ Na ploše uvidíte "Powershellu SH", což je prostředí načteny pomocí nástr
 `chef --version` by měla vrátit vypadat:
 
 ```
-Chef Workstation: 0.2.29
-  chef-run: 0.2.2
-  Chef Client: 14.6.47x
-  delivery-cli: master (6862f27aba89109a9630f0b6c6798efec56b4efe)
-  berks: 7.0.6
-  test-kitchen: 1.23.2
-  inspec: 3.0.12
+Chef Workstation: 0.4.2
+  chef-run: 0.3.0
+  chef-client: 15.0.300
+  delivery-cli: 0.0.52 (9d07501a3b347cc687c902319d23dc32dd5fa621)
+  berks: 7.0.8
+  test-kitchen: 2.2.5
+  inspec: 4.3.2
 ```
 
 > [!NOTE]
@@ -218,7 +235,7 @@ Je pravděpodobné, že počet závislostí se nainstaluje taky ve stejnou dobu.
 
 K zajištění, že je všechno správně nastavené, spusťte následující příkaz.
 
-    knife azure image list
+    knife azurerm server list
 
 Pokud je vše nastaveno správně, zobrazí se seznam dostupných imagí Azure procházení.
 
@@ -273,32 +290,50 @@ V tomto kroku provedete kopii Cookbook, které jste vytvořili v místním poč�
 ## <a name="deploy-a-virtual-machine-with-knife-azure"></a>Nasazení virtuálního počítače s nůž Azure
 Nasazení virtuálního počítače Azure a použít kuchařka "Webový server", který se nainstaluje na webové služby a výchozí webová stránka služby IIS.
 
-Chcete-li to provést, použijte **vytvořit server azure nůž** příkazu.
+Chcete-li to provést, použijte **server nůž azurerm vytvořit** příkazu.
 
 Příklad příkazu se zobrazí další.
 
-    knife azure server create --azure-dns-name 'diegotest01' --azure-vm-name 'testserver01' --azure-vm-size 'Small' --azure-storage-account 'portalvhdsxxxx' --bootstrap-protocol 'cloud-api' --azure-source-image 'a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-Datacenter-201411.01-en.us-127GB.vhd' --azure-service-location 'Southeast Asia' --winrm-user azureuser --winrm-password 'myPassword123' --tcp-endpoints 80,3389 --r 'recipe[webserver]'
+    knife azurerm server create `
+    --azure-resource-group-name rg-chefdeployment `
+    --azure-storage-account store `
+    --azure-vm-name chefvm `
+    --azure-vm-size 'Standard_DS2_v2' `
+    --azure-service-location 'westus' `
+    --azure-image-reference-offer 'WindowsServer' `
+    --azure-image-reference-publisher 'MicrosoftWindowsServer' `
+    --azure-image-reference-sku '2016-Datacenter' `
+    --azure-image-reference-version 'latest' `
+    -x myuser -P myPassword123 `
+    --tcp-endpoints '80,3389' `
+    --chef-daemon-interval 1 `
+    -r "recipe[webserver]"
 
-Parametry není potřeba vysvětlovat. Nahraďte konkrétní proměnných a spustit.
+
+Výše uvedený příklad vytvoří Standard_DS2_v2 virtuálního počítače s Windows serverem 2016 nainstalovaný v oblasti západní USA. Nahraďte konkrétní proměnných a spustit.
 
 > [!NOTE]
-> Pomocí příkazového řádku můžu jsem také automatizace pravidel filtru koncový bod sítě s použitím parametru – tcp koncových bodů. Můžu otevřeli porty 80 a 3389 a zajistit tak přístup do své webové stránky a relaci protokolu RDP.
+> Pomocí příkazového řádku můžu jsem také automatizace pravidel filtru koncový bod sítě s použitím parametru – tcp koncových bodů. Můžu otevřeli porty 80 a pro poskytování přístupu k webové stránce a relaci RDP 3389.
 >
 >
 
 Po spuštění příkazu přejdete na web Azure Portal najdete v článku váš počítač zahájit zřizování.
 
-![][13]
+![][15]
 
 Příkazový řádek se následně zobrazí.
 
-![][10]
+![][16]
 
-Po dokončení nasazení by mělo být nebude moct připojit k webové službě přes port 80, protože při zřizování virtuálního počítače pomocí příkazu nůž Azure se otevře port. Tento virtuální počítač je jediným virtuálního počítače v této cloudové službě, lze k němu připojte pomocí adresy url služby cloud.
+Po dokončení nasazení veřejnou IP adresu nového virtuálního počítače se zobrazí po dokončení nasazení, můžete zkopírovat to a vložte ji do webového prohlížeče a zobrazit web, který jste nasadili. Když jsme nasadili virtuální počítač otevřeme port 80, měla by být dostupná externě.   
 
 ![][11]
 
 Tento příklad používá creative kódu HTML.
+
+Můžete také zobrazit uzlu stav [Chef spravovat](https://manage.chef.io/). 
+
+![][17]
 
 Nezapomeňte, že můžete také připojit přes relaci protokolu RDP z portálu Azure portal přes port 3389.
 
@@ -316,6 +351,10 @@ Děkuju! Přejděte a začněte infrastruktury jako kódu cestě s Azure ještě
 [10]: media/chef-automation/10.png
 [11]: media/chef-automation/11.png
 [13]: media/chef-automation/13.png
+[14]: media/chef-automation/14.png
+[15]: media/chef-automation/15.png
+[16]: media/chef-automation/16.png
+[17]: media/chef-automation/17.png
 
 
 <!--Link references-->

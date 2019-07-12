@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 13eb1a8fcea2f74cda5921a51b8c2e8816be975f
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: e8e6276a38f06b5c6ebb24c89f3733b9fd7220f7
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67303688"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612828"
 ---
 # <a name="stream-azure-diagnostic-logs-to-log-analytics-workspace-in-azure-monitor"></a>Diagnostické protokoly Azure Stream do pracovního prostoru Log Analytics ve službě Azure Monitor
 
@@ -99,6 +99,30 @@ Můžete přidat další kategorie pro protokol diagnostiky tak, že přidáte s
 
 V okně protokoly na portálu Azure Monitor můžete dotazovat diagnostické protokoly jako součást řešení Správa protokolů ve složce AzureDiagnostics tabulky. Existují také [několik řešení monitorování pro prostředky Azure](../../azure-monitor/insights/solutions.md) instalací získat okamžitý přehled o data protokolu odesílají do služby Azure Monitor.
 
+### <a name="examples"></a>Příklady
+
+```Kusto
+// Resources that collect diagnostic logs into this Log Analytics workspace, using Diagnostic Settings
+AzureDiagnostics
+| distinct _ResourceId
+```
+```Kusto
+// Resource providers collecting diagnostic logs into this Log Analytics worksapce, with log volume per category
+AzureDiagnostics
+| summarize count() by ResourceProvider, Category
+```
+```Kusto
+// Resource types collecting diagnostic logs into this Log Analytics workspace, with number of resources onboarded
+AzureDiagnostics
+| summarize ResourcesOnboarded=dcount(_ResourceId) by ResourceType
+```
+```Kusto
+// Operations logged by specific resource provider, in this example - KeyVault
+AzureDiagnostics
+| where ResourceProvider == "MICROSOFT.KEYVAULT"
+| distinct OperationName
+```
+
 ## <a name="azure-diagnostics-vs-resource-specific"></a>Azure vs. diagnostiky specifické podle prostředků  
 Po povolení cílového Log Analytics v konfiguraci diagnostiky Azure existují dva různé způsoby, které se zobrazí data ve vašem pracovním prostoru:  
 - **Diagnostika Azure** – Toto je metoda starší verzi ještě dnes používá většina služeb Azure. V tomto režimu se všechna data z libovolné nastavení diagnostiky odkazovala na daný pracovní prostor v skončí _AzureDiagnostics_ tabulky. 
@@ -109,7 +133,7 @@ Po povolení cílového Log Analytics v konfiguraci diagnostiky Azure existují 
 
     V tabulce AzureDiagnostics bude vypadat následovně, s ukázkovými daty:  
 
-    | ResourceProvider | Category | A | B | C | D | E | F | G | H | I |
+    | ResourceProvider | Kategorie | A | B | C | D | E | F | G | H | I |
     | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
     | Microsoft.Resource1 | AuditLogs | x1 | y1 | z1 |
     | Microsoft.Resource2 | ErrorLogs | | | | q1 | w1 | e1 |
@@ -124,7 +148,7 @@ Po povolení cílového Log Analytics v konfiguraci diagnostiky Azure existují 
     V předchozím příkladu by výsledkem vytváří tři tabulky: 
     - Tabulka _mají_ následujícím způsobem:
 
-        | ResourceProvider | Category | A | B | C |
+        | ResourceProvider | Kategorie | A | B | C |
         | -- | -- | -- | -- | -- |
         | Microsoft.Resource1 | AuditLogs | x1 | y1 | z1 |
         | Microsoft.Resource1 | AuditLogs | x5 | y5 | z5 |
@@ -132,7 +156,7 @@ Po povolení cílového Log Analytics v konfiguraci diagnostiky Azure existují 
 
     - Tabulka _nepřenesl_ následujícím způsobem:  
 
-        | ResourceProvider | Category | D | E | F |
+        | ResourceProvider | Kategorie | D | E | F |
         | -- | -- | -- | -- | -- | 
         | Microsoft.Resource2 | ErrorLogs | q1 | w1 | e1 |
         | Microsoft.Resource2 | ErrorLogs | q2 | w2 | e2 |
@@ -140,7 +164,7 @@ Po povolení cílového Log Analytics v konfiguraci diagnostiky Azure existují 
 
     - Tabulka _DataFlowLogs_ následujícím způsobem:  
 
-        | ResourceProvider | Category | G | H | I |
+        | ResourceProvider | Kategorie | G | H | I |
         | -- | -- | -- | -- | -- | 
         | Microsoft.Resource3 | DataFlowLogs | j1 | k1 | l1|
         | Microsoft.Resource3 | DataFlowLogs | j3 | k3 | l3|
@@ -176,7 +200,7 @@ Krátká období, dokud se všechny služby Azure povolené v režimu specifick�
 Dlouhodobější, Diagnostika Azure bude přechází k všech služeb Azure podporuje režim specifické podle prostředků. Doporučujeme, abyste přesunutí do tohoto režimu co nejdříve pro snížení potenciálu ně neměly vliv toto omezení 500 sloupce.  
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Další informace o diagnostických protokolech Azure](diagnostic-logs-overview.md)
 

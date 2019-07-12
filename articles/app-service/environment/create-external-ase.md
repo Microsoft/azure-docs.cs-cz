@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: eef13c5a4e3757b0eafd77c0915717175c2dbd8c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e04dfa4148213e88aa46e464a31cdd9b6125e0bf
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60768987"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705766"
 ---
 # <a name="create-an-external-app-service-environment"></a>Vytvoření externí App Service environment
 
@@ -33,15 +33,15 @@ Služba App Service Environment (ASE) se dá nasadit dvěma způsoby:
 - Pomocí virtuální IP adresy na externí IP adresu – často se označuje jako externí služba ASE
 - Pomocí virtuální IP adresy na interní IP adresa často se označuje ILB ASE protože interním koncovým bodem je interní zatížení Balancer (ILB).
 
-Tento článek ukazuje, jak vytvořit externí služby ASE. Přehled služby ASE najdete v tématu [Úvod do služby App Service Environment][Intro]. Informace o tom, jak vytvořit prostředí ILB ASE najdete v tématu [vytvoření a použití prostředí ILB ASE][MakeILBASE].
+Tento článek ukazuje, jak vytvořit externí služby ASE. Přehled služby ASE najdete v tématu [Úvod do služby App Service Environment][Intro]. For information on how to create an ILB ASE, see [Create and use an ILB ASE][MakeILBASE].
 
 ## <a name="before-you-create-your-ase"></a>Před vytvořením služby ASE
 
 Po vytvoření služby ASE, nelze změnit následující:
 
 - Location
-- Předplatné
-- Skupina prostředků
+- Subscription
+- Resource group
 - Použít virtuální síť
 - Podsíť používá
 - Velikost podsítě
@@ -72,7 +72,7 @@ Vytvoření služby ASE, při vytváření plánu služby App Service:
 
 2. Vyberte své předplatné. Aplikace a služby ASE se vytvoří ve stejném předplatném.
 
-3. Vyberte nebo vytvořte skupinu prostředků. Se skupinami prostředků můžete spravovat související prostředky Azure jako celek. Skupiny prostředků také jsou užitečné, když vytvořit pravidla řízení přístupu na základě rolí pro vaše aplikace. Další informace najdete v tématu [přehled Azure Resource Manageru][ARMOverview].
+3. Vyberte nebo vytvořte skupinu prostředků. Se skupinami prostředků můžete spravovat související prostředky Azure jako celek. Skupiny prostředků také jsou užitečné, když vytvořit pravidla řízení přístupu na základě rolí pro vaše aplikace. Další informace najdete v tématu [Přehled Azure Resource Manageru][ARMOverview].
 
 4. Vyberte svůj operační systém (Windows, Linuxu a Dockeru). 
 
@@ -96,7 +96,7 @@ Vytvoření služby ASE, při vytváření plánu služby App Service:
 
     b. Zadejte název nové podsítě.
 
-    c. Vyberte velikost podsítě. *Nezapomeňte vybrat velikost dostatečně velký pro přizpůsobení budoucímu růstu vaší služby ase.* Doporučujeme `/25`, která nabízí 128 adres a dokáže zpracovat maximální velikost služby ASE. Nedoporučujeme ale `/28`, například, protože nejsou k dispozici pouze 16 adres. Infrastruktura používá minimálně sedm adres a sítě Azure používá jiný 5. V `/28` podsítě, se připojíme maximálně pouze 3 a 4 instancí plánu služby App Service pro externí služby ASE škálování instance plánu služby App Service pro službu ASE.
+    c. Vyberte velikost podsítě. *Nezapomeňte vybrat velikost dostatečně velký pro přizpůsobení budoucímu růstu vaší služby ase.* Doporučujeme `/24`, která nabízí 128 adres a dokáže zpracovat maximální velikost služby ASE. Nedoporučujeme ale `/28`, například, protože nejsou k dispozici pouze 16 adres. Infrastruktura používá minimálně sedm adres a sítě Azure používá jiný 5. V `/28` podsítě, se připojíme maximálně pouze 3 a 4 instancí plánu služby App Service pro externí služby ASE škálování instance plánu služby App Service pro službu ASE.
 
     d. Vyberte rozsah IP adres podsítě.
 
@@ -110,7 +110,7 @@ Vytvoření služby ASE, při vytváření plánu služby App Service:
 
 1. Vyberte své předplatné. Aplikace a služby ASE se vytvoří ve stejném předplatném.
 
-1. Vyberte nebo vytvořte skupinu prostředků. Se skupinami prostředků můžete spravovat související prostředky Azure jako celek. Skupiny prostředků také jsou užitečné, když vytvořit pravidla řízení přístupu na základě rolí pro vaše aplikace. Další informace najdete v tématu [přehled Azure Resource Manageru][ARMOverview].
+1. Vyberte nebo vytvořte skupinu prostředků. Se skupinami prostředků můžete spravovat související prostředky Azure jako celek. Skupiny prostředků také jsou užitečné, když vytvořit pravidla řízení přístupu na základě rolí pro vaše aplikace. Další informace najdete v tématu [Přehled Azure Resource Manageru][ARMOverview].
 
 1. Vyberte plán služby App Service a pak vyberte **vytvořit nový**. Linuxové webové aplikace a webové aplikace Windows nemůžou být ve stejném plánu služby App Service, ale může být ve stejné službě App Service Environment. 
 
@@ -132,7 +132,7 @@ Vytvoření služby ASE, při vytváření plánu služby App Service:
 
     b. Zadejte název nové podsítě.
 
-    c. Vyberte velikost podsítě. *Nezapomeňte vybrat velikost dostatečně velký pro přizpůsobení budoucímu růstu vaší služby ase.* Doporučujeme `/25`, která nabízí 128 adres a dokáže zpracovat maximální velikost služby ASE. Nedoporučujeme ale `/28`, například, protože nejsou k dispozici pouze 16 adres. Infrastruktura používá minimálně sedm adres a sítě Azure používá jiný 5. V `/28` podsítě, se připojíme maximálně pouze 3 a 4 instancí plánu služby App Service pro externí služby ASE škálování instance plánu služby App Service pro službu ASE.
+    c. Vyberte velikost podsítě. *Nezapomeňte vybrat velikost dostatečně velký pro přizpůsobení budoucímu růstu vaší služby ase.* Doporučujeme `/24`, která nabízí 128 adres a dokáže zpracovat maximální velikost služby ASE. Nedoporučujeme ale `/28`, například, protože nejsou k dispozici pouze 16 adres. Infrastruktura používá minimálně sedm adres a sítě Azure používá jiný 5. V `/28` podsítě, se připojíme maximálně pouze 3 a 4 instancí plánu služby App Service pro externí služby ASE škálování instance plánu služby App Service pro službu ASE.
 
     d. Vyberte rozsah IP adres podsítě.
 
@@ -176,7 +176,7 @@ Pokud vytvoříte samostatné služby ASE, nemá žádné v ní. Prázdný služ
 
 Přesto vytvořit instance první verzi služby App Service Environment (ASEv1). Chcete-li spustit tento proces, na Marketplace vyhledejte **služby App Service Environment v1**. Vytvoření služby ASE stejným způsobem, který vytvoříte samostatné služby ASE. Po dokončení, vaše ASEv1 obsahuje dva front-endů a dva pracovní procesy. ASEv1 musí spravovat front-endů a pracovních procesů. Přidávají se automaticky při vytváření vašich plánech služby App Service. Front-endů fungovat jako koncové body HTTP/HTTPS a odesílat provoz do zaměstnanců. Zaměstnanci jsou role, které jsou hostiteli vaše aplikace. Počet front-endů a pracovních procesů můžete upravit po vytvoření služby ASE. 
 
-Další informace o verzi ASEv1 najdete v tématu [Úvod do služby App Service Environment v1][ASEv1Intro]. Další informace o škálování, správu a sledování ASEv1, naleznete v tématu [konfigurace služby App Service Environment][ConfigureASEv1].
+Další informace o verzi ASEv1 najdete v tématu [Úvod do služby App Service Environment v1][ASEv1Intro]. For more information on scaling, managing, and monitoring ASEv1, see [How to configure an App Service Environment][ConfigureASEv1].
 
 <!--Image references-->
 [1]: ./media/how_to_create_an_external_app_service_environment/createexternalase-create.png

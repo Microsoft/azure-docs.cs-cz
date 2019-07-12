@@ -7,14 +7,14 @@ ms.reviewer: kgremban
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 03/29/2019
+ms.date: 07/09/2019
 ms.author: gregman
-ms.openlocfilehash: 7062bd2dbd8c375b8dd3fad348e5cc26de8f36d2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8275bceca1a18f49eb7eeece66a3866d77c47635
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60595130"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67796159"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>Spusťte Azure IoT Edge na virtuálních počítačích se systémem Ubuntu
 
@@ -45,11 +45,7 @@ Při prvním spuštění provede Azure IoT Edge na virtuální počítač s Ubun
 Na webu Azure Portal, vyhledejte "Azure IoT Edge" a vyberte **Ubuntu Server 16.04 LTS a modul runtime Azure IoT Edge** zahájíte pracovní postup vytvoření virtuálního počítače. Odtud proveďte kroky 3 a 4 ve výše uvedených pokynů "Nasazení z Azure Marketplace".
 
 ## <a name="deploy-from-azure-cli"></a>Nasazení z příkazového řádku Azure
-1. Pokud je to poprvé nasazení virtuálního počítače z příkazového řádku, budete muset povolit programové nasazení u předplatného Azure:
-   1. Otevřít [Azure IoT Edge na Ubuntu](https://aka.ms/azure-iot-edge-ubuntuvm) nabídky Marketplace
-   1. Vyberte **získat** a **pokračovat** na následující dialogové okno
-   1. Vyberte **chcete nasadit prostřednictvím kódu programu? Začínáme** v dolní části dialogového okna portálu
-   1. Klikněte na **povolit** tlačítko **konfigurovat programové nasazení** stránce a potom klikněte na **uložit**
+
 1. Pokud používáte rozhraní příkazového řádku Azure na pracovní ploše, začněte přihlášením:
 
    ```azurecli-interactive
@@ -63,8 +59,9 @@ Na webu Azure Portal, vyhledejte "Azure IoT Edge" a vyberte **Ubuntu Server 16.0
       az account list --output table
       ```
     
-   1. Kopírování z pole ID předplatného pro předplatné, které chcete použít
-   1. S ID, které jste zkopírovali, spusťte tento příkaz:
+   1. Kopírování z pole ID předplatného pro předplatné, které chcete použít.
+
+   1. Nastavení předplatného pracovní ID, které jste právě zkopírovali:
     
       ```azurecli-interactive 
       az account set -s {SubscriptionId}
@@ -75,11 +72,17 @@ Na webu Azure Portal, vyhledejte "Azure IoT Edge" a vyberte **Ubuntu Server 16.0
    ```azurecli-interactive
    az group create --name IoTEdgeResources --location westus2
    ```
-    
+
+1. Přijměte podmínky použití pro virtuální počítač. Pokud budete chtít nejdřív přečíst podmínky, postupujte podle kroků v [nasadit z webu Azure Marketplace](#deploy-from-the-azure-marketplace).
+
+   ```azurecli-interactive
+   az vm image accept-terms --urn microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest
+   ```
+
 1. Vytvoření nového virtuálního počítače:
 
    ```azurecli-interactive
-   az vm create --resource-group IoTEdgeResources --name EdgeVM –-image microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest --admin-username azureuser --generate-ssh-keys --size Standard_DS1_v2
+   az vm create --resource-group IoTEdgeResources --name EdgeVM --image microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest --admin-username azureuser --generate-ssh-keys
    ```
 
 1. Nastavit připojovací řetězec zařízení (provedením [pomocí Azure CLI zaregistrujte nové zařízení Azure IoT Edge](how-to-register-device-cli.md) příručce s postupy, pokud nejste obeznámeni s tímto procesem):

@@ -4,7 +4,7 @@ description: V tomto rychlém startu zjistíte, jak pomocí webu Azure Portal vy
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 10/12/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 693f9144d1cb454b0a9dd98b5ae63938abd7d26d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f491a160e0f4f72f072dc43c46571f96dd19a297
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61473805"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671044"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>Rychlý start: Vytvoření virtuálního počítače s Linuxem na webu Azure Portal
 
@@ -51,7 +51,7 @@ Podrobnější informace o vytváření párů klíčů SSH, včetně použití 
 
 Pokud pár klíčů SSH vytvoříte pomocí služby Cloud Shell, uloží se do sdílené složky Azure, kterou služba [Cloud Shell automaticky připojí](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage). Tuto sdílenou složku ani účet úložiště neodstraňujte,dokud nenačtete své klíče, jinak ztratíte přístup k virtuálnímu počítači. 
 
-## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
@@ -73,7 +73,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
     ![Účet správce](./media/quick-create-portal/administrator-account.png)
 
-1. V části **Pravidla portů pro příchozí spojení** > **Veřejné příchozí porty** zvolte **Povolit vybrané porty** a potom z rozevíracího seznamu vyberte **SSH (22)** a **HTTP (80)**. 
+1. V části **Pravidla portů pro příchozí spojení** > **Veřejné příchozí porty** zvolte **Povolit vybrané porty** a potom z rozevíracího seznamu vyberte **SSH (22)** a **HTTP (80)** . 
 
     ![Otevřené porty pro protokoly RDP a HTTP](./media/quick-create-portal/inbound-port-rules.png)
 
@@ -122,7 +122,7 @@ V libovolném webovém prohlížeči zobrazte výchozí úvodní stránku server
 
 Pokud už je nepotřebujete, můžete odstranit skupinu prostředků, virtuální počítač a všechny související prostředky. Provedete to tak, že vyberete skupinu prostředků pro příslušný virtuální počítač, vyberete **Odstranit** a pak potvrdíte název skupiny prostředků, kterou chcete odstranit.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste nasadili jednoduchý virtuální počítač, vytvořili jste skupinu zabezpečení sítě a pravidlo a nainstalovali jste základní webový server. Další informace o virtuálních počítačích Azure najdete v kurzu pro virtuální počítače s Linuxem.
 

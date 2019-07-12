@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 2/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: a745fefa5ceb0f81cf8d66e7af9e308c0ecb40b9
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: e9e790ac8ac67478a0e7b5143a5b2f1fdd9c790c
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449857"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798661"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Plánování nasazení Synchronizace souborů Azure
 Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě soubory Azure, při zachování flexibility, výkonu a kompatibility s místními souborového serveru. Azure File Sync transformuje serveru systému Windows na rychlou mezipaměť sdílené složky Azure. Můžete použít jakýkoli protokol dostupný ve Windows serveru pro přístup k datům místně, včetně SMB, NFS a FTPS. Můžete mít libovolný počet mezipamětí po celém světě potřebujete.
@@ -31,7 +31,7 @@ Služba synchronizace úložiště je prostředek Azure nejvyšší úrovně pro
 ### <a name="sync-group"></a>Skupina synchronizace
 Skupina synchronizace definuje topologii synchronizace sady souborů. Koncové body v rámci skupiny synchronizace se mezi sebou synchronizují. Pokud máte například dvě různé sady souborů, které chcete spravovat pomocí služby Azure File Sync, by vytvořit dvě skupiny synchronizace a přidání různých koncových bodů do všech skupin synchronizace. Služba synchronizace úložiště může být hostitelem libovolný počet skupin synchronizace podle potřeby.  
 
-### <a name="registered-server"></a>Zaregistrovaný server
+### <a name="registered-server"></a>Registrovaný server
 Objekt registrovaný server představuje vztah důvěryhodnosti mezi serverem (nebo clusteru) a služba synchronizace úložiště. Může zaregistrovat libovolný počet serverů do instance služby synchronizace úložiště má. Ale serveru (nebo v clusteru) lze dokument zaregistrovat u pouze jedna služba synchronizace úložiště po jednom.
 
 ### <a name="azure-file-sync-agent"></a>Agenta Azure File Sync
@@ -69,25 +69,12 @@ Cloud ovládání datových vrstev je volitelná funkce služby Azure File Sync,
 ## <a name="azure-file-sync-system-requirements-and-interoperability"></a>Požadavky na systém Azure File Sync a vzájemná funkční spolupráce 
 Tato část popisuje požadavky na systém pro agenta Azure File Sync a vzájemná funkční spolupráce s funkcí Windows serveru a role a řešení třetích stran.
 
-### <a name="evaluation-tool"></a>Nástroj pro vyhodnocení
-Před nasazením Azure File Sync, byste měli předem zvážit, jestli je kompatibilní s nástrojem pro vyhodnocení Azure File Sync systémem. Tento nástroj je rutiny Azure Powershellu, který kontroluje potenciální problémy s systému souborů a datové sady, jako jsou nepodporované znaky nebo Nepodporovaná verze operačního systému. Všimněte si, že jeho kontroly se týkají nejvíce, ale ne všechny funkce uvedené níže; Doporučujeme, abyste že si přečíst postupujte podle zbývajících kroků této části pečlivě, ujistěte se, že vaše nasazení přejde plynule. 
+### <a name="evaluation-cmdlet"></a>Rutiny hodnocení
+Před nasazením Azure File Sync, byste měli předem zvážit, jestli je kompatibilní s systémem pomocí rutiny hodnocení Azure File Sync. Tato rutina vyhledá potenciální problémy s systému souborů a datové sady, jako jsou nepodporované znaky nebo Nepodporovaná verze operačního systému. Všimněte si, že jeho kontroly se týkají nejvíce, ale ne všechny funkce uvedené níže; Doporučujeme, abyste že si přečíst postupujte podle zbývajících kroků této části pečlivě, ujistěte se, že vaše nasazení přejde plynule. 
 
-#### <a name="download-instructions"></a>Pokyny ke stažení
-1. Ujistěte se, že máte nejnovější verzi modulu PackageManagement a modul PowerShellGet nainstalovaný (díky tomu můžete nainstalovat moduly ve verzi preview)
-    
-    ```powershell
-        Install-Module -Name PackageManagement -Repository PSGallery -Force
-        Install-Module -Name PowerShellGet -Repository PSGallery -Force
-    ```
- 
-2. Restartujte prostředí PowerShell
-3. Instalace modulů
-    
-    ```powershell
-        Install-Module -Name Az.StorageSync -AllowPrerelease -AllowClobber -Force
-    ```
+Vyhodnocení rutiny mohou být nainstalovány pomocí instalace modulu prostředí PowerShell Az, kterou můžete instalovat podle zde uvedených pokynů: [Instalace a konfigurace Azure Powershellu](https://docs.microsoft.com/powershell/azure/install-Az-ps).
 
-#### <a name="usage"></a>Využití  
+#### <a name="usage"></a>Použití  
 Nástroj pro vyhodnocení můžete vyvolat několika různými způsoby: můžete provádět kontrolu systému, kontroly datovou sadu nebo obojí. K provedení kontroly systému a datové sady: 
 
 ```powershell
@@ -110,16 +97,16 @@ Chcete-li zobrazit výsledky ve sdíleném svazku clusteru:
     $errors | Select-Object -Property Type, Path, Level, Description | Export-Csv -Path <csv path>
 ```
 
-### <a name="system-requirements"></a>Systémové požadavky
+### <a name="system-requirements"></a>Požadavky na systém
 - Serveru se systémem Windows Server 2012 R2, Windows serveru 2016 nebo Windows Server 2019:
 
-    | Verze | Podporované skladové položky | Možnosti podporovaného nasazení |
+    | Version | Podporované skladové položky | Možnosti podporovaného nasazení |
     |---------|----------------|------------------------------|
-    | Windows Server 2019 | Datacenter a Standard | Úplné (server s uživatelským rozhraním) |
-    | Windows Server 2016 | Datacenter a Standard | Úplné (server s uživatelským rozhraním) |
-    | Windows Server 2012 R2 | Datacenter a Standard | Úplné (server s uživatelským rozhraním) |
+    | Windows Server. 2019 | Datacenter a Standard | Úplné a jádro |
+    | Windows Server 2016 | Datacenter a Standard | Úplné a jádro |
+    | Windows Server 2012 R2 | Datacenter a Standard | Úplné a jádro |
 
-    Budoucí verze Windows serveru se přidají při jejich vydání. Starší verze Windows mohou být přidány na základě zpětné vazby uživatelů.
+    Budoucí verze Windows serveru se přidají při jejich vydání.
 
     > [!Important]  
     > Doporučujeme všechny servery, které používáte s Azure File Sync aktuální s nejnovějšími aktualizacemi ze služby Windows Update. 
@@ -159,7 +146,7 @@ Chcete-li zobrazit výsledky ve sdíleném svazku clusteru:
 | \*.laccdb | Zamykací soubor Access DB|
 | 635D02A9D91C401B97884B82B3BCDAEA.* | Interní synchronizace souboru|
 | \\Informací o systémovém svazku | Složka specifická pro svazek |
-| $RECYCLE. KOŠ| Složka |
+| $RECYCLE. KOŠ| Folder |
 | \\SyncShareState | Složka pro synchronizaci |
 
 ### <a name="failover-clustering"></a>Clustering převzetí služeb při selhání
@@ -169,8 +156,12 @@ Windows Server Failover Clustering je podporována službou Azure File Sync mož
 > Musí být agent Azure File Sync nainstalovaný na všech uzlech v clusteru převzetí služeb při selhání pro synchronizaci správně fungovat.
 
 ### <a name="data-deduplication"></a>Odstranění duplicitních dat
-**Verze agenta 5.0.2.0**   
-Odstranění duplicitních dat se nepodporuje u svazků s cloudem ovládání datových vrstev na Windows serveru 2016 a Windows Server 2019 zapnout. Povolení odstranění duplicitních dat na svazku s povoleno vrstvení cloudu umožňuje ukládat do mezipaměti další soubory lokálně bez zřizování úložiště. Všimněte si, že tyto úspory svazku platí pouze v místním; nebude zajištěná data ve službě soubory Azure. 
+**Verze agenta 5.0.2.0 nebo novější**   
+Odstranění duplicitních dat se nepodporuje u svazků s cloudem ovládání datových vrstev na Windows serveru 2016 a Windows Server 2019 zapnout. Povolení odstranění duplicitních dat na svazku s povoleno vrstvení cloudu umožňuje bez zajišťování úložiště mezipaměti další soubory v místním. 
+
+Když odstranění duplicitních dat je povolené ve svazku s cloudem ovládání datových vrstev na povoleno, odstranění duplicitních dat optimalizovaná souborů v rámci umístění koncového bodu serveru bude být rozvrstvena podobně jako normální soubor založený na cloudu ovládání datových vrstev na nastavení zásad. Jednou odstraňování duplicitních dat mít byl vrstvený optimalizovaných souborů, úlohu uvolňování paměti odstranění duplicitních dat se spustí automaticky k uvolnění místa na disku odebráním nepotřebných bloků dat, které se už neodkazuje ostatní soubory na svazku.
+
+Všimněte si, že úspor svazku se vztahují jenom na serveru. nebude zajištěná datům ve sdílené složky Azure.
 
 **Windows Server 2012 R2 nebo starší verzí agenta**  
 U svazků, které nemají povolené vrstvení cloudu Azure File Sync podporuje Windows Server povoleným odstraněním duplicitních dat se na svazku.
@@ -220,7 +211,7 @@ Protože antivirové ochrany v programu funguje tak, že prohledávání soubor�
 Společnosti Microsoft interní antivirových řešení, program Windows Defender a System Center Endpoint Protection (SCEP), i automatické přeskočení čtení souborů, které mají tento atribut nastavit. Jsme otestovali je a identifikovat jeden menší problém: Když přidáte server do existující skupiny synchronizace, soubory menší než 800 bajtů se odvolání (Stáhnout) na novém serveru. Tyto soubory zůstanou na novém serveru a nebude vrstvený, protože nesplňují požadavek vrstvení velikost (> 64 kb).
 
 > [!Note]  
-> Antivirového můžete zkontrolovat kompatibilitu mezi svých produktů a Azure File Sync pomocí [Azure souboru synchronizace antivirové ochrany v programu kompatibility sady testů.] (https://www.microsoft.com/download/details.aspx?id=58322), což je k dispozici ke stažení na webu Microsoft Download Center.
+> Antivirového můžete zkontrolovat kompatibilitu mezi produktu a pomocí Azure File Sync [Azure souboru synchronizace antivirové ochrany v programu kompatibility testovací sady](https://www.microsoft.com/download/details.aspx?id=58322), což je k dispozici ke stažení na webu Microsoft Download Center.
 
 ### <a name="backup-solutions"></a>Řešení zálohování
 Jako jsou antivirové řešení řešení pro zálohování může způsobit odvolání vrstvené soubory. Doporučujeme použít zálohování sdílené složky Azure místo produktu pro zálohování místních řešení cloudového zálohování.
@@ -259,17 +250,18 @@ Azure File Sync je k dispozici pouze v těchto oblastech:
 | Kanada – střed | Toronto |
 | Kanada – východ | Québec |
 | Střed Indie | Puné |
-| USA – střed | Iowa |
+| Střed USA | Iowa |
 | Východní Asie | Hongkong – zvláštní administrativní oblast |
 | East US | Virginie |
 | USA – východ 2 | Virginie |
-| Korea – střed| Soul |
+| Francie – střed | Paříž |
+| Jižní Korea – střed| Soul |
 | Jižní Korea – jih| Busan |
 | Japonsko – východ | Tokio, Saitama |
 | Japonsko – západ | Ósaka |
-| Středoseverní USA | Illinois |
+| Střed USA – sever | Illinois |
 | Severní Evropa | Irsko |
-| Středojižní USA | Texas |
+| Střed USA – jih | Texas |
 | Indie – jih | Čennaj |
 | Jihovýchodní Asie | Singapur |
 | Velká Británie – jih | Londýn |
@@ -279,8 +271,8 @@ Azure File Sync je k dispozici pouze v těchto oblastech:
 | USA (Gov) – Virginia | Virginie |
 | Západní Evropa | Nizozemsko |
 | Západní střed USA | Wyoming |
-| Západní USA | Kalifornie |
-| Západní USA 2 | Washington |
+| USA – západ | Kalifornie |
+| USA – západ 2 | Washington |
 
 Azure File Sync podporuje synchronizaci pouze u sdílené složky Azure, který je ve stejné oblasti jako služba synchronizace úložiště.
 
@@ -296,21 +288,22 @@ Pro podporu integrace převzetí služeb při selhání mezi geograficky redunda
 |---------------------|--------------------|
 | Austrálie – východ      | Austrálie – jihovýchod|
 | Austrálie – jihovýchod | Austrálie – východ     |
-| Brazílie – jih        | Středojižní USA   |
+| Brazílie – jih        | Střed USA – jih   |
 | Kanada – střed      | Kanada – východ        |
 | Kanada – východ         | Kanada – střed     |
 | Střed Indie       | Indie – jih        |
-| USA – střed          | Východní USA 2          |
+| Střed USA          | Východní USA 2          |
 | Východní Asie           | Jihovýchodní Asie     |
-| USA – východ             | Západní USA            |
-| Východ USA 2           | USA – střed         |
+| East US             | USA – západ            |
+| Východ USA 2           | Střed USA         |
+| Francie – střed      | Francie – jih       |
 | Japonsko – východ          | Japonsko – západ         |
 | Japonsko – západ          | Japonsko – východ         |
-| Korea – střed       | Jižní Korea – jih        |
-| Jižní Korea – jih         | Korea – střed      |
+| Jižní Korea – střed       | Jižní Korea – jih        |
+| Jižní Korea – jih         | Jižní Korea – střed      |
 | Severní Evropa        | Západní Evropa        |
-| Středoseverní USA    | Středojižní USA   |
-| Středojižní USA    | Středoseverní USA   |
+| Střed USA – sever    | Střed USA – jih   |
+| Střed USA – jih    | Střed USA – sever   |
 | Indie – jih         | Střed Indie      |
 | Jihovýchodní Asie      | Východní Asie          |
 | Velká Británie – jih            | Spojené království – západ            |
@@ -319,9 +312,9 @@ Pro podporu integrace převzetí služeb při selhání mezi geograficky redunda
 | US Gov – Iowa         | USA (Gov) – Virginia    |
 | USA (Gov) – Virginia      | USA (Gov) – Texas       |
 | Západní Evropa         | Severní Evropa       |
-| Západní střed USA     | Západní USA 2          |
-| Západní USA             | East US            |
-| Západní USA 2           | Západní střed USA    |
+| Západní střed USA     | USA – západ 2          |
+| USA – západ             | East US            |
+| USA – západ 2           | Západní střed USA    |
 
 ## <a name="azure-file-sync-agent-update-policy"></a>Zásady aktualizace agenta Synchronizace souborů Azure
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]

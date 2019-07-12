@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68be46b406e7a5caaabbc0726a6aece0fd0423ce
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: a6935d2a89968b55dec1626d23b3f290261cf66f
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67472186"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655444"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archiv co je nového? ve službě Azure Active Directory
 
@@ -63,7 +63,7 @@ Tato oprava proto zabraňuje s přímým přístupem aktualizace u atributu Immu
 
 - **Rematch místní uživatel s existujícím uživatelem ve službě Azure AD** například uživatel, který je znovu vytvořit ve službě AD DS vygeneruje duplicitní v účtu služby Azure AD namísto rematching s existující účet služby Azure AD (osamocený objekt). Řešení: Přemapujte zdrojové ukotvení/ImmutableID pomocí Azure AD Connect Health na webu Azure Portal. Další informace najdete v tématu [Orphaned objekt scénář](/azure/active-directory/hybrid/how-to-connect-health-diagnose-sync-errors#orphaned-object-scenario).
 
-### <a name="breaking-change-updates-to-the-audit-and-sign-in-logs-schema-through-azure-monitor"></a>Zásadní změna: Aktualizace auditu a protokolů přihlášení schématu prostřednictvím služby Azure Monitor
+### <a name="breaking-change-updates-to-the-audit-and-sign-in-logs-schema-through-azure-monitor"></a>Změna způsobující chybu: Aktualizace auditu a protokolů přihlášení schématu prostřednictvím služby Azure Monitor
 
 **Typ:** Změněná funkce  
 **Kategorie služby:** Vytváření sestav  
@@ -79,7 +79,7 @@ Ve schématu auditu se mění následující pole:
 
 |Název pole|Co se změnilo|Staré hodnoty|Nové hodnoty|
 |----------|------------|----------|----------|
-|Category|To bylo **název služby** pole. Je teď **kategorií auditu** pole. **Název služby** byl přejmenován na **loggedByService** pole.|<ul><li>Zřizování účtů</li><li>Základní adresář</li><li>Samoobslužné resetování hesla</li></ul>|<ul><li>Správa uživatelů</li><li>Správa skupin</li><li>Správa aplikací</li></ul>|
+|Kategorie|To bylo **název služby** pole. Je teď **kategorií auditu** pole. **Název služby** byl přejmenován na **loggedByService** pole.|<ul><li>Zřizování účtů</li><li>Základní adresář</li><li>Samoobslužné resetování hesla</li></ul>|<ul><li>Správa uživatelů</li><li>Správa skupin</li><li>Správa aplikací</li></ul>|
 |targetResources|Zahrnuje **TargetResourceType** na nejvyšší úrovni.|&nbsp;|<ul><li>Zásada</li><li>Aplikace</li><li>Uživatel</li><li>Skupina</li></ul>|
 |loggedByService|Obsahuje název služby, která vygeneruje protokol auditu.|Null|<ul><li>Zřizování účtů</li><li>Základní adresář</li><li>Samoobslužné resetování hesla</li></ul>|
 |Výsledek|Poskytuje výsledek funkce protokolů auditu. Dříve to bylo uvedené, ale zobrazujeme skutečnou hodnotu.|<ul><li>0</li><li>1</li></ul>|<ul><li>Úspěch</li><li>Selhání</li></ul>|
@@ -832,7 +832,7 @@ Další informace najdete v tématu [udělit oprávnění](https://docs.microsof
 ### <a name="configure-tls-settings-to-connect-to-azure-ad-services-for-pci-dss-compliance"></a>Konfigurace nastavení protokolu TLS pro připojení ke službám Azure AD pro dodržování předpisů PCI DSS
 
 **Typ:** Nová funkce  
-**Kategorie služby:** neuvedeno  
+**Kategorie služby:** Není k dispozici  
 **Funkce produktu:** Platforma
 
 Zabezpečení TLS (Transport Layer) je protokol, který poskytuje ochranu osobních údajů a integrita dat mezi dvěma aplikacemi komunikaci a je nejčastěji nasazené zabezpečení protokol použitý ještě dnes.
@@ -2213,7 +2213,7 @@ Díky těmto novým funkcím byly dostupné sestavy rozhraní API v rámci konco
 **Kategorie služby:** Moje aplikace  
 **Funkce produktu:** Jednotné přihlašování  
 
-Azure AD podporuje zjišťování pole automatické přihlašování pro aplikace, které vykreslují pole HTML uživatelské jméno a heslo. Tyto kroky jsou popsané v [automaticky zachycení pole přihlášení pro aplikaci](https://docs.microsoft.com/azure/active-directory/application-config-sso-problem-configure-password-sso-non-gallery#how-to-manually-capture-sign-in-fields-for-an-application). Tuto možnost můžete najít tak, že přidáte *mimo galerii* aplikace na **podnikové aplikace** stránku [webu Azure portal](https://aad.portal.azure.com). Kromě toho můžete nakonfigurovat **Single Sign-on** režimu zobrazení na tuto novou aplikaci do **založené na heslech Single Sign-on**, zadejte adresu URL webu a potom uložte na stránce.
+Azure AD podporuje zjišťování pole automatické přihlašování pro aplikace, které vykreslují pole HTML uživatelské jméno a heslo. Tyto kroky jsou popsané v [automaticky zachycení pole přihlášení pro aplikaci](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-password-single-sign-on-non-gallery-applications-problems#manually-capture-sign-in-fields-for-an-app). Tuto možnost můžete najít tak, že přidáte *mimo galerii* aplikace na **podnikové aplikace** stránku [webu Azure portal](https://aad.portal.azure.com). Kromě toho můžete nakonfigurovat **Single Sign-on** režimu zobrazení na tuto novou aplikaci do **založené na heslech Single Sign-on**, zadejte adresu URL webu a potom uložte na stránce.
  
 Kvůli problému služba byla tato funkce dočasně zakázané. Tento problém byl vyřešen a zjišťování pole Automatické přihlášení je opět k dispozici.
 

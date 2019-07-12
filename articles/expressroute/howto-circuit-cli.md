@@ -6,13 +6,14 @@ author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/07/2018
-ms.author: anzaman;cherylmc
-ms.openlocfilehash: 556589aa7a0a577b9b1a010cf4811922ebc6de52
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: cherylmc
+ms.reviewer: anzaman
+ms.openlocfilehash: e42190814b9365c7db054eb2b5f1842581b64009
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60837806"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657070"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-cli"></a>Vytvoření a úprava okruhu ExpressRoute pomocí rozhraní příkazového řádku
 
@@ -23,9 +24,10 @@ Tento článek popisuje, jak vytvořit okruh Azure ExpressRoute pomocí rozhran�
 > * [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
+> * [Šablona Azure Resource Manager](expressroute-howto-circuit-resource-manager-template.md)
 > * [Video – Azure portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > * [PowerShell (Classic)](expressroute-howto-circuit-classic.md)
-> 
+>
 
 ## <a name="before-you-begin"></a>Před zahájením
 
@@ -127,8 +129,8 @@ Nyní jste připraveni vytvořit okruh ExpressRoute.
 
 > [!IMPORTANT]
 > Váš okruh ExpressRoute se účtují od okamžiku, kdy vydáním klíče služby. Tuto operaci proveďte, pokud poskytovatel připojení je připraveno ke zřízení okruhu.
-> 
-> 
+>
+>
 
 Pokud ještě nemáte skupinu prostředků, můžete musí vytvořit před vytvořením váš okruh ExpressRoute. Vytvořte skupinu prostředků spuštěním následujícího příkazu:
 
@@ -136,7 +138,7 @@ Pokud ještě nemáte skupinu prostředků, můžete musí vytvořit před vytvo
 az group create -n ExpressRouteResourceGroup -l "West US"
 ```
 
-Následující příklad ukazuje, jak vytvořit okruh ExpressRoute prostřednictvím Equinix 200 MB/s v Silicon Valley. Pokud používáte jiného poskytovatele a jiné nastavení, dosaďte tyto informace při podat žádost. 
+Následující příklad ukazuje, jak vytvořit okruh ExpressRoute prostřednictvím Equinix 200 MB/s v Silicon Valley. Pokud používáte jiného poskytovatele a jiné nastavení, dosaďte tyto informace při podat žádost.
 
 Ujistěte se, že jste zadali správnou úroveň skladové položky a skladová položka rodina:
 
@@ -267,8 +269,8 @@ Podrobné pokyny najdete v tématu [konfigurace směrování pro okruh ExpressRo
 
 > [!IMPORTANT]
 > Tyto pokyny platí jenom pro okruhy vytvořené s poskytovateli služeb, které nabízejí vrstvy 2 připojení služby. Pokud používáte poskytovatele služeb, který nabízí spravované vrstvy 3 služby (obvykle IP sítě VPN, např. MPLS), svého poskytovatele připojení, konfiguruje a spravuje směrování za vás.
-> 
-> 
+>
+>
 
 ### <a name="8-link-a-virtual-network-to-an-expressroute-circuit"></a>8. Propojení virtuální sítě k okruhu ExpressRoute
 
@@ -279,7 +281,7 @@ V dalším kroku propojení virtuální sítě pro váš okruh ExpressRoute. Pou
 Můžete upravit některé vlastnosti okruhu ExpressRoute bez dopadu na připojení. Můžete provést následující změny bez jakéhokoli výpadku:
 
 * Můžete povolit nebo zakázat doplněk ExpressRoute premium pro váš okruh ExpressRoute.
-* Zadaný port je k dispozici kapacity můžete zvýšit šířku pásma váš okruh ExpressRoute. Ale není podporované downgradu šířku pásma okruhu. 
+* Zadaný port je k dispozici kapacity můžete zvýšit šířku pásma váš okruh ExpressRoute. Ale není podporované downgradu šířku pásma okruhu.
 * Měření podle objemu dat můžete změnit měření plán pro neomezená Data. Však změna měření plánu z neomezená Data na měřený objem dat se nepodporuje.
 * Můžete povolit nebo zakázat *povolit klasické operace*.
 
@@ -299,8 +301,8 @@ Okruh teď má funkce doplněk ExpressRoute premium povolené. Začneme, jakmile
 
 > [!IMPORTANT]
 > Tato operace může selhat, pokud používáte prostředky, které jsou větší než co je povolený pro standardní okruh.
-> 
-> 
+>
+>
 
 Před zakázáním doplněk ExpressRoute premium, seznamte s následujícími kritérii:
 

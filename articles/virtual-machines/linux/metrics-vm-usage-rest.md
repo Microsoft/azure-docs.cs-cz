@@ -4,18 +4,18 @@ description: Použijte rozhraní Azure REST API pro shromažďování metrik vyu
 services: virtual-machines
 author: rloutlaw
 ms.reviewer: routlaw
-manager: jeconnoc
+manager: gwallace
 ms.service: load-balancer
 ms.custom: REST
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: routlaw
-ms.openlocfilehash: 924154a64673b4ff646f3b6ece373b278ee37181
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 53e93d20f4a8c4877374d8242521ca97d481e15d
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60773260"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67667459"
 ---
 # <a name="get-virtual-machine-usage-metrics-using-the-rest-api"></a>Získat metriky využití virtuálního počítače pomocí rozhraní REST API
 
@@ -37,8 +37,8 @@ Vyžadují se následující hlavičky:
 
 |Hlavička požadavku|Popis|  
 |--------------------|-----------------|  
-|*Content-Type:*|Povinná hodnota. Nastavte na `application/json`.|  
-|*Authorization:*|Povinná hodnota. Nastaven na platné `Bearer` [přístupový token](/rest/api/azure/#authorization-code-grant-interactive-clients). |  
+|*Content-Type:*|Povinný parametr. Nastavte na `application/json`.|  
+|*Authorization:*|Povinný parametr. Nastaven na platné `Bearer` [přístupový token](/rest/api/azure/#authorization-code-grant-interactive-clients). |  
 
 ### <a name="uri-parameters"></a>Parametry identifikátoru URI
 

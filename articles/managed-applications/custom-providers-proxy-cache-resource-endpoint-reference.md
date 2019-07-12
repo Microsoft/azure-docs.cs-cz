@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
-ms.openlocfilehash: 6a3d570d9695516a293b601b3d34c2bcba6b058d
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 2970e69e825dacb6f548b3e66a830f221ece0b1c
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478885"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67795231"
 ---
 # <a name="custom-resource-cache-reference"></a>Odkaz na vlastní prostředek mezipaměti
 
@@ -237,6 +237,7 @@ Content-Type: application/json; charset=utf-8
 ## <a name="next-steps"></a>Další postup
 
 - [Přehled poskytovatelů vlastního prostředku Azure](./custom-providers-overview.md)
-- [Kurz: Vytvoření vlastního poskytovatele prostředků Azure a nasazení vlastních prostředků](./create-custom-provider.md)
+- [Rychlé zprovoznění: Vytvoření vlastního poskytovatele prostředků Azure a nasazení vlastních prostředků](./create-custom-provider.md)
+- [Kurz: Vytvoření vlastní akce a prostředků v Azure](./tutorial-custom-providers-101.md)
 - [Postup: Přidání vlastní akce k rozhraní Azure REST API](./custom-providers-action-endpoint-how-to.md)
 - [Referenční dokumentace: Odkaz na vlastní prostředek Proxy](./custom-providers-proxy-resource-endpoint-reference.md)

@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/15/2018
-ms.author: sumeet.mittal
+ms.author: sumi
 ms.custom: ''
-ms.openlocfilehash: 54178ae8988266c751ae0e23ae8c5e6ef7a16f20
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: e36e1ca17b5106c79076d1c62e737ba60907ab19
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67544163"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67666460"
 ---
 # <a name="virtual-network-service-endpoints"></a>Koncové body služby virtuální sítě
 
@@ -39,11 +39,12 @@ Tato funkce je dostupná pro následující služby a oblasti Azure:
 - **[Azure Service Bus](../service-bus-messaging/service-bus-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** : Obecně dostupné ve všech oblastech Azure.
 - **[Azure Event Hubs](../event-hubs/event-hubs-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** : Obecně dostupné ve všech oblastech Azure.
 - **[Azure Data Lake Store 1. generace](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** : Obecně dostupné ve všech oblastech Azure, kde je k dispozici ADLS Gen1.
+- **[Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions)** : Obecně dostupné ve všech oblastech Azure, kde je k dispozici služby App service
 
 **Ve verzi Public Preview**
 
 - **[Azure Container Registry](../container-registry/container-registry-vnet.md)** : Ve všech oblastech Azure, kde je Azure Container Registry dostupná ve verzi Preview k dispozici.
-- **[Azure App Service](https://docs.microsoft.com/en-us/azure/app-service/app-service-ip-restrictions)** : Ve verzi Preview k dispozici ve všech oblastech Azure, kde je k dispozici služby App service.
+.
 
 Nejaktuálnější oznámení najdete na stránce [Aktualizace služby Azure Virtual Network](https://azure.microsoft.com/updates/?product=virtual-network).
 

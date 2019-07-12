@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 05/23/2019
 ms.author: mjbrown
-ms.openlocfilehash: b5eb57562dac498c0e5bf2960007f52ad1117ac2
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 618e7e19b20f361aa0a8c668e9621a29db43772d
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244770"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797750"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>Nakonfigurujte čas TTL ve službě Azure Cosmos DB
 
@@ -35,6 +35,11 @@ Následujícím postupem povolte TTL kontejneru bez časového omezení. Povolte
    * Kliknutím na **Uložit** uložte změny.
 
    ![Nakonfigurujte čas TTL na webu Azure portal](./media/how-to-time-to-live/how-to-time-to-live-portal.png)
+
+
+- Když DefaultTimeToLive má hodnotu null. potom čas TTL je vypnuté
+- Když je DefaultTimeToLive -1, pak svého času živé nastavení je zapnuto (žádná výchozí)
+- Když DefaultTimeToLive má jakoukoli jinou hodnotu Int (s výjimkou 0) svého času živé nastavení je na
 
 ## <a name="enable-time-to-live-on-a-container-using-sdk"></a>Povolit TTL kontejneru pomocí sady SDK
 

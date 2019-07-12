@@ -2,24 +2,25 @@
 title: Principy dvojčat Azure Security Center pro modul IoT zabezpečení ve verzi Preview | Dokumentace Microsoftu
 description: Další informace o konceptu dvojčaty modulů zabezpečení a jak se používají ve službě Azure Security Center pro IoT.
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
 ms.assetid: a5c25cba-59a4-488b-abbe-c37ff9b151f9
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: de0f21fbd847ff801308523f48e9d0c8a91880fa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8f964fd2b121c6232081673666f5babb160e1721
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65198382"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67618314"
 ---
 # <a name="security-module"></a>Modul zabezpečení
 
@@ -46,7 +47,7 @@ Vlastnosti zabezpečení zařízení jsou zachována ve dvojčete modulu vyhraze
 V tématu [dvojče zařízení zabezpečení vytvořit](quickstart-create-security-twin.md) a [konfigurace zabezpečení agentů](how-to-agent-configuration.md) se naučíte vytvářet, upravovat a konfigurovat dvojčeti. Zobrazit [Principy dvojčat modulů](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-module-twins) získat další informace o konceptu dvojčaty modulů ve službě IoT Hub. 
  
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 - [ASC pro IoT ve verzi Preview](overview.md)
 - [Nasazení agentů zabezpečení](how-to-deploy-agent.md)
 - [Metody ověřování zabezpečení agenta](concept-security-agent-authentication-methods.md)

@@ -5,21 +5,23 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: overview
-ms.date: 06/11/2019
+ms.date: 06/28/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 7ee6b2dd07a89de4f5347e82bde19990dbb6c995
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 46f3f87fac5b65229e03ee91d8f2b93b1a1590e8
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67077548"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67795284"
 ---
 # <a name="what-is-azure-virtual-wan"></a>Co je Azure Virtual WAN?
 
 Azure virtuální síť WAN je síťová služba, která poskytuje větev optimalizované a automatické připojení k a prostřednictvím Azure. Oblasti Azure, které slouží jako rozbočovačů, které můžete zvolit připojení větvích. Můžete využít páteřní síť Azure také připojit větví a využijte připojení větev to-VNet. Máme seznam partnerů, které podporují připojení automation s Azure VPN virtuální sítě WAN. Další informace najdete v tématu [virtuální sítě WAN partneři a umístění](virtual-wan-locations-partners.md) článku.
 
-Azure virtuální sítě WAN spojuje mnoho připojení k Azure cloudové služby jako site-to-site VPN (obecně dostupné), ExpressRoute (Preview), uživatel point-to-site VPN (Preview) do jediného provozní rozhraní. Navázat připojení k virtuálním sítím Azure pomocí připojení k virtuální síti.
+Azure virtuální sítě WAN spojuje mnoho cloudových připojení služeb Azure například VPN typu site-to-site, ExpressRoute a uživatel point-to-site VPN do jediného provozní rozhraní. Navázat připojení k virtuálním sítím Azure pomocí připojení k virtuální síti.
+
+ExpressRoute a uživatel point-to-site VPN pro virtuální sítě WAN jsou aktuálně ve verzi Preview.
 
 ![Diagram virtuální sítě WAN](./media/virtual-wan-about/virtualwan1.png)
 

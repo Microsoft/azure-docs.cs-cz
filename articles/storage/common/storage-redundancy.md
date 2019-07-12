@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 01/18/2019
+ms.date: 07/10/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 078c62913b903eafe9e0fcfcef4189f5ca735d0f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b4b9e913363938f98999c6a769ba83efbd625b69
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66002826"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798324"
 ---
 # <a name="azure-storage-redundancy"></a>Azure redundance úložiště
 
@@ -46,12 +46,14 @@ Následující tabulka poskytuje rychlý přehled o oboru odolnosti a dostupnost
 | Smlouva SLA o dostupnosti pro požadavky na čtení | Minimálně 99,9 % (99 % pro vrstvu přístupu cool) | Minimálně 99,9 % (99 % pro vrstvu přístupu cool) | Minimálně 99,9 % (99 % pro vrstvu přístupu cool) | Minimálně 99,99 % (99,9 % pro vrstvu přístupu Cool) |
 | Smlouva SLA o dostupnosti pro požadavky na zápis | Minimálně 99,9 % (99 % pro vrstvu přístupu cool) | Minimálně 99,9 % (99 % pro vrstvu přístupu cool) | Minimálně 99,9 % (99 % pro vrstvu přístupu cool) | Minimálně 99,9 % (99 % pro vrstvu přístupu cool) |
 
+Všechna data ve vašem účtu úložiště replikují, včetně objekty BLOB bloku a doplňovacích objektů BLOB, objekty BLOB stránky, fronty, tabulky a soubory. Všechny typy účtů úložiště se replikují, i když ZRS vyžaduje účet úložiště pro obecné účely v2.
+
 Informace o cenách pro jednotlivé možnosti redundance, naleznete v tématu [ceny za Azure Storage](https://azure.microsoft.com/pricing/details/storage/). 
 
 Informace o službě Azure Storage záruky dostupnosti a odolnosti najdete v článku [SLA pro Azure Storage](https://azure.microsoft.com/support/legal/sla/storage/).
 
 > [!NOTE]
-> Premium Storage podporuje jen místně redundantní úložiště (LRS).
+> Azure Premium Storage podporuje jen místně redundantní úložiště (LRS).
 
 ## <a name="changing-replication-strategy"></a>Změna strategie replikace
 Strategie replikace účtu úložiště můžete změnit pomocí [webu Azure portal](https://portal.azure.com/), [prostředí Azure Powershell](storage-powershell-guide-full.md), [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), nebo jeden z [klient služby Azure knihovny](https://docs.microsoft.com/azure/index#pivot=sdkstools). Změna typu replikace účtu úložiště nemá za následek časové prodlevy.
@@ -66,7 +68,7 @@ Pokud váš účet úložiště z GRS se převést na LRS, se neúčtují žádn
 
 Pokud převedete účtu úložiště RA-GRS na GRS nebo LRS, tento účet se účtuje jako RA-GRS dalších 30 dní po datu, který byl převeden.
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
 - [Místně redundantní úložiště (LRS): Redundanci dat s nízkými náklady pro službu Azure Storage](storage-redundancy-lrs.md)
 - [Zónově redundantní úložiště (ZRS): Vysoce dostupné aplikace služby Azure Storage](storage-redundancy-zrs.md)

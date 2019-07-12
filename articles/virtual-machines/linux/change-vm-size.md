@@ -4,7 +4,7 @@ description: Jak škálovat nahoru nebo dolů virtuálního počítače s Linuxe
 services: virtual-machines-linux
 documentationcenter: na
 author: mikewasson
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: ''
 ms.assetid: e163f878-b919-45c5-9f5a-75a64f3b14a0
@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/10/2017
 ms.author: mwasson
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8bd8136c61a277e730c07c8789afd1bf3214bd7c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 46baa3d4dbcd466944d7a91e446e380c89f53f2b
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62127068"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671744"
 ---
 # <a name="resize-a-linux-virtual-machine-using-azure-cli"></a>Změna velikosti virtuálního počítače s Linuxem pomocí Azure CLI 
 
@@ -55,7 +55,7 @@ Změna velikosti virtuálního počítače, budete potřebovat nejnovější [ro
    > [!WARNING]
    > Rušení přidělení virtuálního počítače uvolní také všechny dynamické IP adresy přiřazené k virtuálnímu počítači. Operační systém a datové disky nejsou ovlivněny.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Pro dodatečnou škálovatelnost spusťte několik instancí virtuálních počítačů a horizontální navýšení kapacity. Další informace najdete v tématu [automatické škálování počítačů s Linuxem ve Škálovací sadě virtuálních počítačů][scale-set]. 
 
 <!-- links -->

@@ -9,12 +9,12 @@ ms.reviewer: jamesbak
 ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 57cda4d07315c6c37c2ce51f530fb081949b628c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: abe3f67141011c765f9de93bcf51998ddae002cb
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64939501"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67696141"
 ---
 # <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Ovladač systému souborů Azure Blob (ABFS): Vyhrazené ovladač Azure Storage pro Hadoop
 
@@ -43,7 +43,7 @@ hdfs dfs -put flight_delays.csv abfs://fileanalysis@myanalytics.dfs.core.windows
 
 Interně ovladač ABFS přeloží zadaný v identifikátoru URI k souborům a adresářům nebo prostředky a provede volání REST API služby Azure Data Lake Storage s odkazy.
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Ověřování
 
 Ovladač ABFS podporuje dva typy ověřování tak, aby aplikaci Hadoop může zabezpečený přístup k prostředků obsažených v rámci účtu Data Lake Storage Gen2 podporuje. Úplné podrobnosti o dostupných ověřovací schémata jsou k dispozici v [Průvodci zabezpečením Azure Storage](../common/storage-security-guide.md). Jsou to tyto:
 
@@ -51,7 +51,7 @@ Ovladač ABFS podporuje dva typy ověřování tak, aby aplikaci Hadoop může z
 
 - **Tokenu nosiče OAuth Azure Active Directory:** Azure AD nosné tokeny jsou získaných a aktualizovat ovladač pomocí buď identitě koncového uživatele nebo instančního objektu nakonfigurované. Pomocí tohoto modelu ověřování, autorizaci veškerý přístup na základě za volání pomocí identity přidružené k zadaného tokenu a vyhodnotit proti přiřazené POSIX přístupu ovládacího prvku seznam (ACL).
 
-### <a name="configuration"></a>Konfigurace
+### <a name="configuration"></a>Konfiguraci
 
 Všechny konfigurace pro ovladač ABFS je uložená v <code>core-site.xml</code> konfigurační soubor. V distribucích systému Hadoop s [Ambari](https://ambari.apache.org/), konfigurace může spravovat také pomocí webového portálu nebo rozhraní Ambari REST API.
 
@@ -59,7 +59,7 @@ Podrobnosti o všech položek podporované konfigurace, které jsou určené v [
 
 ### <a name="hadoop-documentation"></a>Dokumentace ke službě Hadoop
 
-Ovladač ABFS je plně dokumentovány v článku [Hadoop oficiální dokumentaci](https://hadoop.apache.org/docs/current/hadoop-azure/index.html)
+Ovladač ABFS je plně dokumentovány v článku [Hadoop oficiální dokumentaci](https://github.com/apache/hadoop/blob/trunk/hadoop-tools/hadoop-azure/src/site/markdown/abfs.md)
 
 ## <a name="next-steps"></a>Další postup
 

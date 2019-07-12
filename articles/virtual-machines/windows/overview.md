@@ -4,7 +4,7 @@ description: Zjistěte, jak vytvářet a spravovat virtuální počítače s Win
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: fbae9c8e-2341-4ed0-bb20-fd4debb2f9ca
@@ -16,12 +16,12 @@ ms.topic: conceptual
 ms.date: 10/04/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 604a47ef73d50a2d127d1569b0b6a240a7a27d73
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7bb87713f1f7d1f41f68f3743b2504784b37bb23
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65506831"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67723054"
 ---
 # <a name="overview-of-windows-virtual-machines-in-azure"></a>Přehled virtuálních počítačů s Windows v Azure
 
@@ -101,7 +101,7 @@ Pomocí rozšíření můžete provádět tyto běžné úlohy:
 ### <a name="related-resources"></a>Související prostředky
 Prostředky v této tabulce používá virtuální počítač a je nutné, aby existovaly nebo byly vytvořeny při vytváření virtuálního počítače.
 
-| Prostředek | Požaduje se | Popis |
+| Prostředek | Požadováno | Popis |
 | --- | --- | --- |
 | [Skupina prostředků](../../azure-resource-manager/resource-group-overview.md) |Ano |Virtuální počítač musí být součástí skupiny prostředků. |
 | [Účet úložiště](../../storage/common/storage-create-storage-account.md) |Ano |Virtuální počítač potřebuje účet úložiště k ukládání svých virtuálních pevných disků. |

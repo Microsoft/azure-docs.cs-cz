@@ -2,29 +2,29 @@
 title: Zobrazit protokoly kontroleru Azure Kubernetes Service (AKS)
 description: Další informace o povolení a zobrazení protokolů pro hlavní uzel Kubernetes ve službě Azure Kubernetes Service (AKS)
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 01/03/2019
-ms.author: iainfou
-ms.openlocfilehash: 256101cce5588f56a8094a7a9a98e5fe69e6ec73
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mlearned
+ms.openlocfilehash: ef77b991461c5d9640cbab9d53f8393540f47c9b
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66497255"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67613923"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Povolit a zkontrolovat Kubernetes hlavní uzel protokolů ve službě Azure Kubernetes Service (AKS)
 
 S Azure Kubernetes Service (AKS), hlavní součásti, jako *kube apiserver* a *správce kontroléru kube* jsou k dispozici jako spravovaná služba. Vytvořit a spravovat uzly, které běží *kubelet* a kontejner modulu runtime a nasadit vaše aplikace prostřednictvím spravovaného serveru Kubernetes API. K řešení potíží se vaše aplikace a služby, můžete zobrazit protokoly generované tyto hlavní součásti. Tento článek popisuje, jak používat Azure Monitor protokoly k povolení a dotazování protokolů z hlavní součásti Kubernetes.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
-Tento článek vyžaduje existující cluster AKS spuštěné v účtu Azure. Pokud již nemáte AKS cluster, vytvořte ji pomocí [rozhraní příkazového řádku Azure] [ cli-quickstart] nebo [webu Azure portal][portal-quickstart]. Azure Monitor protokoly funguje s oběma RBAC a není RBAC povolené AKS clustery.
+Tento článek vyžaduje existující cluster AKS spuštěné v účtu Azure. Pokud již nemáte AKS cluster, vytvořte ji pomocí [rozhraní příkazového řádku Azure][cli-quickstart] or [Azure portal][portal-quickstart]. Azure Monitor protokoly funguje s oběma RBAC a není RBAC povolené AKS clustery.
 
 ## <a name="enable-diagnostics-logs"></a>Povolení diagnostických protokolů
 
-Ke shromáždění a data kontroly z více zdrojů protokoly Azure monitoru poskytuje dotazovací jazyk a analytický modul, který poskytuje přehledy pro vaše prostředí. Pracovní prostor se používá k porovnání a analyzovat data a můžete integrovat s dalšími službami Azure, jako je například služba Application Insights a Security Center. Pokud chcete použít k analýze protokolů různé platformy, místo toho můžete odesílání diagnostických protokolů do služby Azure storage účet nebo event hub. Další informace najdete v tématu [co je Azure Monitor protokoly?] [log-analytics-overview].
+Ke shromáždění a data kontroly z více zdrojů protokoly Azure monitoru poskytuje dotazovací jazyk a analytický modul, který poskytuje přehledy pro vaše prostředí. Pracovní prostor se používá k porovnání a analyzovat data a můžete integrovat s dalšími službami Azure, jako je například služba Application Insights a Security Center. Pokud chcete použít k analýze protokolů různé platformy, místo toho můžete odesílání diagnostických protokolů do služby Azure storage účet nebo event hub. Další informace najdete v tématu [co je Azure Monitor protokoly?][log-analytics-overview].
 
 Protokoly služby Azure Monitor jsou povolit a spravovat na webu Azure Portal. Pokud chcete povolit shromažďování protokolů pro Kubernetes hlavní součásti v clusteru AKS, otevřete ve webovém prohlížeči na webu Azure portal a proveďte následující kroky:
 
@@ -37,15 +37,15 @@ Protokoly služby Azure Monitor jsou povolit a spravovat na webu Azure Portal. P
 1. Až to budete mít, vyberte **Uložit** povolení kolekce vybraných protokolů.
 
 > [!NOTE]
-> AKS zaznamená pouze protokoly auditu pro clustery, které jsou vytvořeny nebo upgradovat po povolení příznak funkce v rámci předplatného. K registraci *AKSAuditLog* příznak funkce, použijte [az funkce register] [ az-feature-register] příkaz, jak je znázorněno v následujícím příkladu:
+> AKS zaznamená pouze protokoly auditu pro clustery, které jsou vytvořeny nebo upgradovat po povolení příznak funkce v rámci předplatného. K registraci *AKSAuditLog* příznak funkce, použijte [az funkce register][az-feature-register] příkaz, jak je znázorněno v následujícím příkladu:
 >
 > `az feature register --name AKSAuditLog --namespace Microsoft.ContainerService`
 >
-> Počkejte na zobrazení stavu *registrované*. Vy můžete zkontrolovat stav registrace pomocí [seznam funkcí az] [ az-feature-list] příkaz:
+> Počkejte na zobrazení stavu *registrované*. Vy můžete zkontrolovat stav registrace pomocí [seznam funkcí az][az-feature-list] příkaz:
 >
 > `az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKSAuditLog')].{Name:name,State:properties.state}"`
 >
-> Až to budete mít, aktualizovat registraci poskytovatele prostředků AKS pomocí [az provider register] [ az-provider-register] příkaz:
+> Až to budete mít, aktualizovat registraci poskytovatele prostředků AKS pomocí [az provider register][az-provider-register] příkaz:
 >
 > `az provider register --namespace Microsoft.ContainerService`
 
@@ -77,7 +77,7 @@ spec:
     - containerPort: 80
 ```
 
-Vytvořte pod s [kubectl vytvořit] [ kubectl-create] příkaz a zadejte svůj soubor YAML, jak je znázorněno v následujícím příkladu:
+Vytvořte pod s [kubectl vytvořit][kubectl-create] příkaz a zadejte svůj soubor YAML, jak je znázorněno v následujícím příkladu:
 
 ```
 $ kubectl create -f nginx.yaml
@@ -131,9 +131,9 @@ A pomáhá tak analyzovat data protokolu, následující tabulka obsahuje podrob
 | *properties.pod*         | Pod názvem, která v protokolu pochází z |
 | *properties.containerID* | ID, které tento protokol pochází z kontejneru dockeru |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste zjistili, jak povolit a zkontrolovat protokoly pro Kubernetes hlavní součásti v clusteru AKS. Ke sledování a řešení potíží s další, můžete také [zobrazení protokolů Kubelet] [ kubelet-logs] a [povolit přístup k uzlu SSH][aks-ssh].
+V tomto článku jste zjistili, jak povolit a zkontrolovat protokoly pro Kubernetes hlavní součásti v clusteru AKS. Ke sledování a řešení potíží s další, můžete také [zobrazení protokolů Kubelet][kubelet-logs] and [enable SSH node access][aks-ssh].
 
 <!-- LINKS - external -->
 [kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create

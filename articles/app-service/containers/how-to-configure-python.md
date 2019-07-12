@@ -13,14 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.date: 03/28/2019
-ms.author: astay;cephalin;kraigb
+ms.author: cephalin
+ms.reviewer: astay; kraigb
 ms.custom: seodec18
-ms.openlocfilehash: ad2ea32749c6556d17460b2a16ed41bbaa2ec62e
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: fb90122f7277687886a6579fdb729b7f91660ed6
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956152"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67617275"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Konfigurace aplikace v Pythonu s Linuxem pro Azure App Service
 
@@ -131,7 +132,7 @@ Pokud je hlavní modul v podsložce, například `website`, zadejte tuto složku
 gunicorn --bind=0.0.0.0 --timeout 600 --chdir website hello:myapp
 ```
 
-Můžete také přidat libovolné další argumenty pro Gunicorn k  *\<vlastního příkazu >*, jako například `--workers=4`. Další informace najdete v [Running Gunicorn (Spuštění serveru Gunicorn)](https://docs.gunicorn.org/en/stable/run.html) (docs.gunicorn.org).
+Můžete také přidat libovolné další argumenty pro Gunicorn k  *\<vlastního příkazu >* , jako například `--workers=4`. Další informace najdete v [Running Gunicorn (Spuštění serveru Gunicorn)](https://docs.gunicorn.org/en/stable/run.html) (docs.gunicorn.org).
 
 Použití bez Gunicorn serveru, jako například [aiohttp](https://aiohttp.readthedocs.io/en/stable/web_quickstart.html), můžete nahradit  *\<vlastního příkazu >* kód podobný tomuto:
 
@@ -181,7 +182,7 @@ Oblíbené webové architektury umožněte přístup `X-Forwarded-*` informace o
 - Zkontrolujte, že má aplikace strukturu, kterou služba App Service očekává u aplikací [Django](#django-app) nebo [Flask](#flask-app), nebo použijte [vlastní spouštěcí příkaz](#customize-startup-command).
 - [Přístup k datovému proudu protokolů](#access-diagnostic-logs).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Kurz: Aplikace v Pythonu s PostgreSQL](tutorial-python-postgresql-app.md)

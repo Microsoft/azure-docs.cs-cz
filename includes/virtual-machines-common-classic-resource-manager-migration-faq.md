@@ -2,18 +2,18 @@
 title: zahrnout soubor
 description: zahrnout soubor
 services: virtual-machines
-author: jpconnock
+author: singhkays
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 05/18/2018
-ms.author: jeconnoc
+ms.author: kasing
 ms.custom: include file
-ms.openlocfilehash: 74496cd3d4cd01be326baae870b075eb923983af
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: c4f9334a91e99c92e74af060d84308a8aaccc6e7
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67174982"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671261"
 ---
 # <a name="frequently-asked-questions-about-classic-to-azure-resource-manager-migration"></a>Nejčastější dotazy ohledně migrace z modelu Classic na Azure Resource Manager
 
@@ -82,7 +82,7 @@ Problémy a dotazy týkající se migrace zveřejněte na našem [fóru k virtu�
 
 ## <a name="what-if-i-dont-like-the-names-of-the-resources-that-the-platform-chose-during-migration"></a>Co když se mi nelíbí názvy prostředků, které platforma zvolila během migrace? 
 
-Všechny prostředky, pro které jste explicitně zadali název v modelu nasazení Classic, se během migrace zachovají. V některých případech se vytvoří nové prostředky. Příklad: pro každý virtuální počítač se vytvoří síťové rozhraní. Aktuálně nepodporujeme možnost upravovat názvy těchto nových prostředků vytvořených během migrace. Hlasujte pro tuto funkci na [fóru Azure pro názory](http://feedback.azure.com).
+Všechny prostředky, pro které jste explicitně zadali název v modelu nasazení Classic, se během migrace zachovají. V některých případech se vytvoří nové prostředky. Příklad: pro každý virtuální počítač se vytvoří síťové rozhraní. Aktuálně nepodporujeme možnost upravovat názvy těchto nových prostředků vytvořených během migrace. Hlasujte pro tuto funkci na [fóru Azure pro názory](https://feedback.azure.com).
 
 ## <a name="can-i-migrate-expressroute-circuits-used-across-subscriptions-with-authorization-links"></a>Je možné migrovat okruhy ExpressRoute používané napříč předplatnými pomocí autorizačních odkazů? 
 

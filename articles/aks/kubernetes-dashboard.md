@@ -2,17 +2,17 @@
 title: Správa clusteru s řídicím panelu webové služby Azure Kubernetes
 description: Zjistěte, jak použít integrovaný řídicí panel Kubernetes webového uživatelského rozhraní pro správu clusteru služby Azure Kubernetes Service (AKS)
 services: container-service
-author: tylermsft
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 10/08/2018
-ms.author: twhitney
-ms.openlocfilehash: 80c0bd630ba2263696b72b003e27c53f1e457704
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mlearned
+ms.openlocfilehash: 0de2f285b5eca88a098a2d7cfe1608ad2f0db71b
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66304528"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67615241"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>Přístup k řídicímu panelu Kubernetes web ve službě Azure Kubernetes Service (AKS)
 
@@ -20,7 +20,7 @@ Kubernetes zahrnuje webové řídicí panel, který lze použít pro operací z�
 
 Další informace na řídicí panel Kubernetes najdete v tématu [řídicí panel Kubernetes webové uživatelské rozhraní][kubernetes-dashboard].
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Kroky popsané v tomto dokumentu předpokládají, že jste vytvořili AKS cluster a navázali `kubectl` připojení ke clusteru. Pokud potřebujete k vytvoření clusteru AKS, přečtěte si [AKS quickstart][aks-quickstart].
 
@@ -28,7 +28,7 @@ Také musíte mít nainstalované a nakonfigurované rozhraní Azure CLI verze 2
 
 ## <a name="start-the-kubernetes-dashboard"></a>Spustit řídicí panel Kubernetes
 
-Chcete-li spustit řídicí panel Kubernetes, použijte [az aks Procházet] [ az-aks-browse] příkazu. Následující příklad otevře řídicí panel pro cluster s názvem *myAKSCluster* ve skupině prostředků s názvem *myResourceGroup*:
+Chcete-li spustit řídicí panel Kubernetes, použijte [az aks Procházet][az-aks-browse] příkazu. Následující příklad otevře řídicí panel pro cluster s názvem *myAKSCluster* ve skupině prostředků s názvem *myResourceGroup*:
 
 ```azurecli
 az aks browse --resource-group myResourceGroup --name myAKSCluster
@@ -42,7 +42,7 @@ Tento příkaz vytvoří proxy mezi váš vývojový systém a rozhraní API Kub
 
 Pokud váš cluster AKS používá RBAC, *ClusterRoleBinding* , musíte vytvořit řídicí panel můžete přistupovat správně. Ve výchozím nastavení řídicí panel Kubernetes je nasazen s minimálním přístupem pro čtení a zobrazí chyby přístup RBAC. Řídicí panel Kubernetes aktuálně nepodporuje uživatelem zadané přihlašovací údaje k určení úrovně přístupu, místo toho použije rolí udělit účtu služby. Správce clusteru může rozhodnout udělit další přístup k *řídicí panel kubernetes* účtu, služby, ale může to být vektor pro zvýšení úrovně oprávnění. Můžete také integrovat ověřování Azure Active Directory poskytují podrobnější úroveň přístupu.
 
-Chcete-li vytvořit vazbu, použijte [kubectl vytvořit clusterrolebinding] [ kubectl-create-clusterrolebinding] příkaz, jak je znázorněno v následujícím příkladu. 
+Chcete-li vytvořit vazbu, použijte [kubectl vytvořit clusterrolebinding][kubectl-create-clusterrolebinding] příkaz, jak je znázorněno v následujícím příkladu. 
 
 > [!WARNING]
 > Tato ukázka vazba se nevztahují žádné další ověření součásti a může vést k nezabezpečeného použití. Řídicí panel Kubernetes je otevřené všem uživatelům přístup k adrese URL. Veřejně nezveřejňujte řídicí panel Kubernetes.
@@ -53,7 +53,7 @@ Chcete-li vytvořit vazbu, použijte [kubectl vytvořit clusterrolebinding] [ ku
 kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard
 ```
 
-Můžete teď přístup k řídicímu panelu Kubernetes v clusteru s podporou RBAC. Chcete-li spustit řídicí panel Kubernetes, použijte [az aks Procházet] [ az-aks-browse] příkaz podle popisu v předchozím kroku.
+Můžete teď přístup k řídicímu panelu Kubernetes v clusteru s podporou RBAC. Chcete-li spustit řídicí panel Kubernetes, použijte [az aks Procházet][az-aks-browse] příkaz podle popisu v předchozím kroku.
 
 ## <a name="create-an-application"></a>Vytvoření aplikace
 

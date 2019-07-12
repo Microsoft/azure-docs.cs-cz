@@ -5,15 +5,15 @@ author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
 ms.topic: conceptual
-ms.service: iot-industrialiot
+ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 990b13d362b796f5e71f1bd41eb35fce9720fff4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 73588d8c84525cf70de9fac312b0a485055b0a2c
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65835151"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67605711"
 ---
 # <a name="deploy-opc-vault-from-scratch"></a>Nasazení služby OPC Vault od nuly
 
@@ -131,7 +131,7 @@ Poskytujeme také [verze Javy](https://github.com/Azure/iot-opc-gds-service-dotn
 Tady jsou některé z prostředí IDE, můžete použít pro práci na počítačích s Azure IoT:
 
 - [Visual Studio](https://www.visualstudio.com)
-- [Visual Studio pro Mac](https://www.visualstudio.com/vs/visual-studio-mac)
+- [Visual Studio for Mac](https://www.visualstudio.com/vs/visual-studio-mac)
 - [IntelliJ Rider](https://www.jetbrains.com/rider)
 - [Visual Studio Code](https://code.visualstudio.com)
 

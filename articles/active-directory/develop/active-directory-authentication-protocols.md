@@ -2,7 +2,7 @@
 title: Protokoly ověřování pro Azure Active Directory | Dokumentace Microsoftu
 description: Přehled ověřování protokolů podporovaných službou Azure Active Directory (AD)
 documentationcenter: dev-center-name
-author: ryanwi
+author: rwike77
 services: active-directory
 manager: CelesteDG
 editor: ''
@@ -14,16 +14,16 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/27/2017
-ms.author: rwike77
+ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d36e4304c4775ac335c1cc405ee8c6a0208da52a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f964c5882432ae0637039e32ca961008e8223b6b
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65546224"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612586"
 ---
 # <a name="azure-active-directory-authentication-protocols"></a>Protokoly ověřování pro Azure Active Directory
 Azure Active Directory (Azure AD) podporuje některé z nejčastěji používaných ověřovací a autorizační protokoly. Témata v této části popisují podporované protokoly a jejich provádění ve službě Azure AD. V tématech zahrnuté kontrolu podporované typy deklarací identity, úvod do používání federačních metadat, podrobné OAuth 2.0. a referenční dokumentaci protokol SAML 2.0 a část s řešením potíží.

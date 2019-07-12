@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
-ms.date: 06/25/2019
+ms.date: 07/02/2019
 ms.author: hrasheed
 ms.custom: hdinsightactive,mvc
-ms.openlocfilehash: 403e165d7ebe8365ffa0fd2f5f3779d3b4fab68f
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: fbab8502c088c2ae7a4b8e87285d7e4cac1de4c0
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67543630"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807387"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>Kurz: Extrakce, transformace a načítání dat pomocí interaktivního dotazu v Azure HDInsight
 
@@ -42,7 +42,7 @@ Tento kurz se zabývá následujícími úkony:
 
 2. Na stránce zrušte zaškrtnutí všech polí a pak vyberte následující hodnoty:
 
-   | Název | Hodnota |
+   | Name | Hodnota |
    | --- | --- |
    | Filter Year (Filtr roku) |2019 |
    | Filter Period (Filtr období) |January (Leden) |
@@ -59,6 +59,8 @@ Do úložiště přidruženého ke clusteru HDInsight můžete data nahrát mnoh
     ```cmd
     scp FILENAME.zip sshuser@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.zip
     ```
+
+    Pokud budete vyzváni k zadání Ano nebo Ne, chcete-li pokračovat, Ano zadejte na příkazovém řádku a stiskněte klávesu enter. Text není zobrazená v okně během psaní.
 
 2. Po dokončení nahrávání se ke clusteru připojte pomocí SSH. Upravte následující příkaz tak, že nahradíte `CLUSTERNAME` s názvem clusteru HDInsight. Potom zadejte následující příkaz:
 
@@ -291,7 +293,7 @@ Po dokončení kurzu můžete cluster odstranit. Pomocí HDInsight jsou vaše da
 
 Odstranění clusteru, naleznete v tématu [odstranění clusteru HDInsight pomocí prohlížeče, Powershellu nebo rozhraní příkazového řádku Azure](../hdinsight-delete-cluster.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste provedli nezpracovaná data souboru CSV, importovat do úložiště clusteru HDInsight a pak Transformovaná data v Azure HDInsight Interactive Query.  Přejděte k dalšímu kurzu se dozvíte o konektoru skladu Apache Hive.
 

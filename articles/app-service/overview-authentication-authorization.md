@@ -13,14 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
 ms.date: 08/24/2018
-ms.author: mahender,cephalin
+ms.author: cephalin
+ms.reviewer: mahender
 ms.custom: seodec18
-ms.openlocfilehash: d914e3ad3043b2671e154d1616c6800f34415c11
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.openlocfilehash: 1e8bd60eab5853b121b9c08622914b9c62449f8f
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60835570"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67618771"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Ověřování a autorizace v prostředí Azure App Service
 
@@ -152,9 +153,9 @@ Průvodce postupy specifickým pro zprostředkovatele:
 
 * [Konfigurace aplikace pro použití přihlášení Azure Active Directory][AAD]
 * [Konfigurace aplikace pro použití přihlášení k Facebooku][Facebook]
-* [Jak nakonfigurovat aplikaci pro použití přihlášení k Google][Google]
-* [Konfigurace aplikace pro použití Microsoft Account login][MSA]
-* [Jak nakonfigurovat aplikaci pro použití přihlášení k Twitteru][Twitter]
+* [Konfigurace aplikace pro použití přihlášení ke Googlu][Google]
+* [Konfigurace aplikace pro použití přihlášení k účtu Microsoft][MSA]
+* [Konfigurace aplikace pro použití přihlášení k Twitteru][Twitter]
 * [Postup: Použití vlastního ověřování pro vaši aplikaci][custom-auth]
 
 [AAD]: configure-authentication-provider-aad.md

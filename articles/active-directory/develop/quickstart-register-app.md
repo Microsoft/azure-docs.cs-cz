@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ec1d5fb13d7fb191bfee6194e69a217bcaddbb9
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 541253cf3a8f2628ea0e76f1115ddc4a290daf62
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482577"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655483"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Rychlý start: Registrace aplikace s platformou identity Microsoft
 
@@ -50,7 +50,7 @@ V tomto rychlém startu se dozvíte, jak přidat a registraci aplikace s využit
        - V případě webových aplikací zadejte základní adresu URL vaší aplikace. Například `http://localhost:31544` může být adresa URL pro webovou aplikaci spuštěnou na místním počítači. Uživatelé by se pomocí této adresy URL přihlašovali k webové klientské aplikaci.
        - V případě veřejných klientských aplikací zadejte identifikátor URI, který Azure AD použije k vrácení odpovědí týkajících se tokenu. Zadejte konkrétní hodnotu pro vaši aplikaci, například `myapp://auth`.
 
-     Konkrétní příklady webových nebo nativních aplikací najdete v našich [rychlých startech](https://docs.microsoft.com/azure/active-directory/develop/#quickstarts).
+     Konkrétní příklady webových nebo nativních aplikací najdete v našich [rychlých startech](https://docs.microsoft.com/azure/active-directory/develop).
 
 1. Až budete hotovi, vyberte **Zaregistrovat**.
 
@@ -67,6 +67,6 @@ Azure AD vaší aplikaci přiřadí jedinečné ID aplikace (klienta) a přesmě
     - [Konfigurace klientské aplikace pro přístup k webovým rozhraním API](quickstart-configure-app-access-web-apis.md)
     - [Konfigurace aplikace pro zveřejnění webových rozhraní API](quickstart-configure-app-expose-web-apis.md)
     - [Úprava účtů podporovaných aplikací](quickstart-modify-supported-accounts.md)
-- Vyberte si [rychlý start](https://docs.microsoft.com/azure/active-directory/develop/#quickstarts), který vám pomůže rychle vytvořit aplikaci a přidat funkce, jako jsou získání tokenů, aktualizace tokenů, přihlášení uživatele, zobrazení některých informací o uživateli a další.
+- Vyberte si [rychlý start](https://docs.microsoft.com/azure/active-directory/develop), který vám pomůže rychle vytvořit aplikaci a přidat funkce, jako jsou získání tokenů, aktualizace tokenů, přihlášení uživatele, zobrazení některých informací o uživateli a další.
 - Další informace o dvou objektech Azure AD, které představují zaregistrovanou aplikaci, a vztahu mezi nimi, najdete v článku o [objektech aplikací a instančních objektech](app-objects-and-service-principals.md).
 - Další informace o pokynech pro branding, kterými byste se měli řídit při vývoji aplikací, najdete v článku [Pokyny pro branding aplikací](howto-add-branding-in-azure-ad-apps.md).

@@ -4,7 +4,7 @@ description: Seznamte se s imagí Red Hat Enterprise Linux v Microsoft Azure
 services: virtual-machines-linux
 documentationcenter: ''
 author: BorisB2015
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 6/6/2019
 ms.author: borisb
-ms.openlocfilehash: b40f62a90dbe7c822b95476abe6ec25cf3fb21d6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f7ae82b0376489e21b35e4e94dce32805bea69c6
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67070030"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67708386"
 ---
 # <a name="red-hat-enterprise-linux-images-in-azure"></a>Image Red Hat Enterprise Linux v Azure
 Tento článek popisuje dostupných imagí Red Hat Enterprise Linux (RHEL) na webu Azure Marketplace spolu s zásady po jejich názvy a uchování.
@@ -105,13 +105,13 @@ Podverze |Obrázek EUS – příklad              |Stav EUS                     
 RHEL 7.4      |RedHat:RHEL:7.4:7.4.2019041718 | Imagí publikovaných dubna 2019 a později bude EUS ve výchozím nastavení|
 RHEL 7.5      |RedHat:RHEL:7.5:7.5.2019060305 | Imagí publikovaných 2019 dne a později bude EUS ve výchozím nastavení |
 RHEL 7.6      |RedHat:RHEL:7.6:7.6.2019052206 | Obrázky publikovaná. května 2019 a později bude EUS ve výchozím nastavení  |
-RHEL 8.0      |neuvedeno                            | Žádné EUS aktuálně aktuálně dostupných imagí                 |
+RHEL 8.0      |Není k dispozici                            | Žádné EUS aktuálně aktuálně dostupných imagí                 |
 
 
 ## <a name="list-of-rhel-images-available"></a>Seznam dostupných imagí RHEL
 Tyto nabídky jsou že skladové položky jsou aktuálně k dispozici pro obecné použití:
 
-Nabídka| Skladová jednotka (SKU) | Dělení | Zřizování | Poznámky
+Nabídka| SKU | Dělení | Zřizování | Poznámky
 :----|:----|:-------------|:-------------|:-----
 RHEL          | NEZPRACOVANÁ 7    | RAW    | Linuxový agent | RHEL 7 řady imagí. <br> Ve výchozím nastavení nejsou připojené k EUS úložišť.
 |             | 7-LVM    | LVM    | Linuxový agent | RHEL 7 řady imagí. <br> Ve výchozím nastavení nejsou připojené k EUS úložišť.
@@ -152,6 +152,6 @@ Aktualizujeme pouze aktuální podverzi řady danou image. S vydáním novějš�
 ## <a name="image-retention-policy"></a>Zásady uchovávání informací bitové kopie
 Zachovat všechny dříve publikované Image je naše aktuální zásady. Vyhrazujeme si právo odebrat bitové kopie, které způsobují problémy jakéhokoli druhu. Například může být nesprávná konfigurace z důvodu následující platformy nebo aktualizace součástí odebrán. Postupujte podle imagí, které se můžou odebrat aktuální zásady Marketplace k poskytování oznámení až na 30 dní, než odebrání image.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Další informace o Azure Red Hat Update Infrastructure [tady](https://aka.ms/rhui-update).
 * Informace o zásadách podpory Red Hat pro všechny verze systému RHEL můžete najít na [Red Hat Enterprise Linux životního cyklu](https://access.redhat.com/support/policy/updates/errata) stránky.

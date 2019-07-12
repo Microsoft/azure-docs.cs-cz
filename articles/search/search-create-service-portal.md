@@ -6,19 +6,19 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 05/29/2019
+ms.date: 07/09/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: fd81115f4e811366b6b115d1c73a9be7ca26698b
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: d0d1dbb81f00f500f3eb95c605ed0c15c634f624
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485623"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706824"
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>Vytvoření služby Azure Search na portálu
 
-Azure Search je samostatný prostředek, který se používá k vyhledávání ve vlastních aplikacích. Přestože Azure Search se snadno integruje s dalšími službami Azure, můžete také použít samostatně, s aplikacemi na síťové servery, nebo pomocí softwaru, která běží na jiných cloudových platformách.
+Azure Search je samostatný prostředek, který se používá k vyhledávání ve vlastních aplikacích. I když Azure Search se snadno integruje s dalšími službami Azure, můžete ho použít jako samostatné komponenty nebo ji integrovat s aplikací na servery nebo pomocí softwaru, která běží na jiných cloudových platformách.
 
 V tomto článku se dozvíte, jak a vytvoří prostředek Azure Search v [webu Azure portal](https://portal.azure.com/).
 
@@ -73,10 +73,10 @@ Protože se jedná o službu Azure, je Azure Search možné hostovat v datových
 
 Pokud se indexování dat poskytuje další Azure service (Azure storage, Azure Cosmos DB, Azure SQL Database), doporučujeme vytvořit služby Azure Search ve stejné oblasti, aby se zabránilo poplatky za šířku pásma. Když jsou ve stejné oblasti služby nejsou žádné poplatky za odchozí data.
 
-Pokud používáte obohacení AI kognitivního vyhledávání, vytvoření služby ve stejné oblasti jako váš prostředek služeb Cognitive Services. Společné umístění služeb představuje požadavek pro rozšiřování AI.
+Pokud používáte obohacení AI kognitivního vyhledávání, vytvoření služby ve stejné oblasti jako váš prostředek služeb Cognitive Services. *Společné umístění Azure Search a Cognitive Services ve stejné oblasti je požadavek na rozšíření AI*.
 
 > [!Note]
-> Střed Indie je nyní k dispozici pro nové služby. Pro služby již v střed Indie můžete vertikálně navýšit kapacitu bez omezení a vaše služba je plně podporovaný v dané oblasti. Omezení v této oblasti je dočasný a při delší platil odebíráme tato poznámka.
+> Střed Indie je nyní k dispozici pro nové služby. Pro služby již v střed Indie můžete vertikálně navýšit kapacitu bez omezení a vaše služba je plně podporovaný v dané oblasti. Omezení v této oblasti je dočasný a omezené na jenom nové služby. Pokud už neplatí omezení odebíráme tuto poznámku.
 
 ## <a name="select-a-pricing-tier-sku"></a>Výběr cenové úrovně (SKU)
 
@@ -88,27 +88,29 @@ Po vytvoření služby nelze cenovou úroveň změnit. Pokud budete později pot
 
 ## <a name="create-your-service"></a>Vytvoření služby
 
-Připněte si službu na řídicí panel, abyste k ní po přihlášení měli snadno přístup.
+Zadejte nezbytné vstupy pro vytvoření služby. 
 
-![Připnout na řídicí panel](./media/search-create-service-portal/new-service3.png "Připnutí prostředků na řídicí panel pro pohodlný přístup")
+![Zkontrolujte a vytvořte službu](./media/search-create-service-portal/new-service3.png "revize a vytvoření služby")
+
+Během několika minut, které můžete sledovat prostřednictvím oznámení Azure je vaše služba nasazená. Vezměte v úvahu Připnutí na řídicí panel služby pro usnadnění přístupu v budoucnu.
+
+![Monitorování a připnout službu](./media/search-create-service-portal/monitor-notifications.png "monitorování a kód pin služby")
 
 ## <a name="get-a-key-and-url-endpoint"></a>Získejte klíč a koncový bod adresy URL
 
-S několika výjimkami pomocí nové služby vyžaduje zadání koncového bodu adresy URL a autorizační klíč rozhraní api –. Rychlé starty, kurzy, jako [prozkoumat Azure Search REST API (Postman)](search-get-started-postman.md) a [jak používat Azure Search z .NET](search-howto-dotnet-sdk.md), ukázky a vlastní kód všechny nutné koncového bodu a klíče ke spuštění pro váš konkrétní prostředek.
+Pokud používáte portál, přístup k nové službě vyžaduje zadání koncového bodu adresy URL a ověřování klíč api-key.
 
 1. Na stránce Přehled služby vyhledejte a zkopírujte adresu URL koncového bodu na pravé straně stránky.
 
-   ![Stránka s přehledem služby pomocí koncového bodu adresy URL](./media/search-create-service-portal/url-endpoint.png "koncový bod adresy URL a další podrobnosti služby")
-
 2. V levém navigačním podokně vyberte **klíče** a potom zkopírujte jednu z klíčů správce (jsou ekvivalentní). Správce klíče api Key jsou požadovány pro vytváření, aktualizaci a odstraňování objektů ve službě service.
 
-   ![Klíče stránce zobrazující primární a sekundární klíče](./media/search-create-service-portal/admin-api-keys.png "klíče rozhraní api správce pro autorizaci")
+   ![Stránka s přehledem služby pomocí koncového bodu adresy URL](./media/search-create-service-portal/get-url-key.png "koncový bod adresy URL a další podrobnosti služby")
 
-Koncového bodu a klíče nejsou potřebné pro úlohy založené na portálu. Na portálu je už propojený prostředek Azure Search pomocí oprávnění správce. Portálu kurz začněte [kurzu: Import, index a dotazů ve službě Azure Search](search-get-started-portal.md).
+Koncového bodu a klíče nejsou potřebné pro úlohy založené na portálu. Na portálu je už propojený prostředek Azure Search pomocí oprávnění správce. Pro portálem, začněte s [rychlý start: Vytvoření indexu Azure Search na portálu](search-get-started-portal.md).
 
 ## <a name="scale-your-service"></a>Škálování služby
 
-Vytvoření služby může trvat několik minut (15 minut nebo déle v závislosti na úrovni). Po zřízení můžete službu škálovat tak, aby vyhovovala vašim potřebám. Protože jste pro službu Azure Search zvolili úroveň Standard, můžete škálovat dvě dimenze: repliky a oddíly. Pokud byste zvolili úroveň Basic, mohli byste přidávat pouze repliky. Při zřízení bezplatné služby škálování není k dispozici.
+Po zřízení můžete službu škálovat tak, aby vyhovovala vašim potřebám. Pokud jste zvolili úroveň Standard služby Azure Search, službu můžete škálovat ve dvou dimenzích: repliky a oddíly. Pokud byste zvolili úroveň Basic, mohli byste přidávat pouze repliky. Při zřízení bezplatné služby škálování není k dispozici.
 
 ***Oddíly***: Umožňují službě ukládat a prohledávat více dokumentů.
 
@@ -126,7 +128,7 @@ Přidáním prostředků se zvýší vaše měsíční náklady. [Cenová kalkul
 ![Přidat kapacitu](./media/search-create-service-portal/settings-scale.png "navyšovat kapacitu pomocí repliky a oddíly")
 
 > [!Note]
-> Každá úroveň má jiné [limity](search-limits-quotas-capacity.md) pro celkový počet jednotek vyhledávání povolených v jedné službě (repliky * oddíly = celkový počet jednotek vyhledávání).
+> Oddílu úložiště a rychlost zvýší na vyšší úrovně. Další informace najdete v tématu [kapacitu a limity](search-limits-quotas-capacity.md).
 
 ## <a name="when-to-add-a-second-service"></a>Přidání druhé služby
 
@@ -148,4 +150,4 @@ Druhá služba není potřebná pro zajištění vysoké dostupnosti. Vysoká do
 Po zřízení služby Azure Search, můžete pokračovat v portálu k vytvoření prvního indexu služby.
 
 > [!div class="nextstepaction"]
-> [Kurz: Import dat, index a spouštění dotazů na portálu](search-get-started-portal.md)
+> [Rychlé zprovoznění: Vytvoření indexu Azure Search na portálu](search-get-started-portal.md)

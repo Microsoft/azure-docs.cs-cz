@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/20/2019
 ms.subservice: hybrid
-ms.author: martincoetzer
+ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 96b5e8ab63c1784ff073c7ba38cd4a6319db43c5
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: a20a1a1009949aa2e6de8586040e918ae15c8d39
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67452732"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655946"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>Třeba provést čtyři kroky základ využívá silné identity s Azure Active Directory
 
@@ -147,7 +147,7 @@ Podobně [samoobslužné správy hesel sestavy](https://docs.microsoft.com/azure
 
 ### <a name="self-service-app-management"></a>Správa samoobslužných služeb aplikací
 
-Předtím, než vaši uživatelé samoobslužných můžete objevovat aplikace z jejich přístupovém panelu, je potřeba povolit [samoobslužného přístupu k aplikacím](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-manage-self-service-access) pro všechny aplikace, které chcete povolit uživatelům samoobslužné zjišťování a žádat o přístup k. Samoobslužný přístup k aplikacím je skvělý způsob, jak povolit uživatelům samoobslužné zjišťování aplikací a volitelně povolit obchodní skupiny schvalovat přístup k těmto aplikacím. Můžete povolit obchodní skupiny pro správu přiřazené těmto uživatelům pro přihlašovací údaje [heslo jednotné přihlašování v aplikacích](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-password-sso-gallery#configure-the-application-for-password-single-sign-on) přímo ze svých přístupových panelech.
+Předtím, než vaši uživatelé samoobslužných můžete objevovat aplikace z jejich přístupovém panelu, je potřeba povolit [samoobslužného přístupu k aplikacím](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-manage-self-service-access) pro všechny aplikace, které chcete povolit uživatelům samoobslužné zjišťování a žádat o přístup k. Samoobslužný přístup k aplikacím je skvělý způsob, jak povolit uživatelům samoobslužné zjišťování aplikací a volitelně povolit obchodní skupiny schvalovat přístup k těmto aplikacím. Můžete povolit obchodní skupiny pro správu přiřazené těmto uživatelům pro přihlašovací údaje [heslo jednotné přihlašování v aplikacích](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-password-sso-gallery#configure-password-sso-for-an-azure-ad-gallery-app) přímo ze svých přístupových panelech.
 
 ### <a name="self-service-group-management"></a>Samoobslužná správa skupin
 
@@ -265,7 +265,7 @@ Doporučujeme vám vytisknout následující kontrolní seznam pro referenci pod
 ||Sledování využití aplikací k získání přehledů|
 ||Pochopení vašeho ovladače volání podpory|
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Zjistěte, jak můžete zvýšit tak zabezpečené stav pomocí možností Azure Active Directory a kontrolní seznam pěti krocích - [zabezpečení vaší infrastruktury identit v pěti krocích](https://aka.ms/securitysteps).
 

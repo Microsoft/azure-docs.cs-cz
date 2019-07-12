@@ -7,12 +7,12 @@ ms.author: mattwoj
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: dc086bc1252c084b717807213b5ba4c7f9d7bb97
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: db1074046adc52ad859a325c2b875da84dbdb0cd
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514064"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67701399"
 ---
 # <a name="create-a-new-saas-offer"></a>Vytvoření nové nabídky SaaS
 
@@ -20,7 +20,7 @@ Zahajte proces vytváření softwaru, jako služba (SaaS) nabízí, ujistěte se
 
 ![Komerční řídicího panelu webu Marketplace na partnerské Centrum](./media/new-offer-overview.png)
 
-Vyberte + **vytvořit novou...** tlačítko a pak vyberte **Software jako služba** položky nabídky. 
+Vyberte + **nová nabídka...** tlačítko a pak vyberte **Software jako služba** položky nabídky. 
 
 Pokud vyberete jednu z ostatních typů nabídky, budete přesměrováni na starší [portál partnerů cloudu](https://cloudpartner.azure.com/).  V tuto chvíli jsou k dispozici v komerční Marketplace portál na partnerském centru jenom nabídky SaaS. 
 
@@ -31,13 +31,14 @@ Pokud vyberete jednu z ostatních typů nabídky, budete přesměrováni na star
 ![Dialogové okno Nová nabídka](./media/new-offer-popup.png)
 
 
-## <a name="offer-id-and-name"></a>Název a ID nabídky
+## <a name="offer-id-and-alias"></a>ID nabídky a alias
 
-- **ID nabídky**: Vytvořte jedinečný identifikátor pro každou nabídku ve vašem účtu. Toto ID se nebude zobrazovat na zákazníky v adresu URL pro tuto nabídku marketplace a šablon Azure Resource Manageru (pokud existuje). ID nabídky musí být malými písmeny, alfanumerické znaky (včetně spojovníky a podtržítka, ale bez mezer). To je omezen na 50 znaků a nedá se aktualizovat po výběru vytvořit.  
+- **ID nabídky**: Jedinečný identifikátor pro každou nabídku, ve vašem účtu. Toto ID se nebude zobrazovat na zákazníky v adresu URL pro tuto nabídku marketplace a šablon Azure Resource Manageru (pokud existuje). ID nabídky musí být malými písmeny, alfanumerické znaky (včetně spojovníky a podtržítka, ale bez mezer). To je omezen na 50 znaků a nedá se změnit po výběru *vytvořit*.  
 Příklad: test nabídka-1
 <br>Výsledkem je adresa URL: `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`
 
-- **Název nabídky**: Oficiální název SaaS aplikace nabídky, konzistentní v rámci celého publikací, oznámení o inzerovaných programech a weby.  Tento název může být obchodní značkou.  Nabízejí název nesmí obsahovat prázdné znaky, emoji (pokud jsou ochranné známky nebo copyright symbol) a musí být maximálně 50 znaků.
+- **Alias nabízejí**: Název používaný k odkazování na nabídku v rámci portálu partnerského centra. Tento název se nepoužije na webu Marketplace a se liší od *název nabídky* a jiné hodnoty, které se zobrazí pro zákazníky. Tuto hodnotu nelze změnit po výběru *vytvořit*.
+
 <br>Příklad: Nabídka testování 1&#8482;
 
 Vyberte **Vytvořit**.  **Nabízí přehled** stránka je vytvořena pro tuto nabídku.  
@@ -115,8 +116,8 @@ Tím, že vytvoříte tržišti propagaci vašeho podnikání s Microsoftem. Vý
 ##### <a name="get-it-now-free"></a>Získat (zdarma)
 Seznam vaší nabídky zákazníkům zdarma tím, že poskytuje platnou adresu URL (začíná http nebo https), ve kterém přístup k aplikaci.  Příklad: `https://contoso.com/saas-app`
 
-##### <a name="free-trial"></a>Bezplatná zkušební verze
-Seznam vaší nabídky zákazníkům na bezplatné vyzkoušení tím, že poskytuje platnou adresu URL (začíná http nebo https), ve kterém přístup k aplikaci.  Příklad: `https://contoso.com/trial/saas-app`
+##### <a name="free-trial-listing"></a>Bezplatná zkušební verze (výpisu)
+Seznam vaší nabídky zákazníkům s odkazem na bezplatnou zkušební verzi tím, že poskytuje platnou adresu URL (začíná http nebo https), ve kterém přístup k aplikaci.  Například: `https://contoso.com/trial/saas-app`. Nabídky bezplatné zkušební verze se vytvářejí a spravované a konfigurace v rámci služby a proveďte není mají předplatné spravované microsoftem.
 
 ##### <a name="contact-me"></a>Kontaktujte mě
 Shromážděte kontaktní údaje zákazníků propojením váš systém řízení vztahů se zákazníky (CRM). Zákazník budete vyzváni k zadání oprávnění ke sdílení svých informací. Tyto podrobnosti o zákazníkovi, společně se název nabídky, ID a marketplace zdroj, kde najdou vaši nabídku, se odešlou do systému CRM, které jste nakonfigurovali. Další informace o konfiguraci CRM, naleznete v tématu [Správa potenciálních zákazníků připojit](#connect-lead-management). 
@@ -174,7 +175,7 @@ Nezapomeňte **Uložit** přejde k další části!
 
 Vyberte **Uložit** po dokončení těchto polí. 
 
-### <a name="category"></a>Category
+### <a name="category"></a>Kategorie
 Vyberte minimálně z jedné (1) a maximálně tři (3) kategorií určena k seskupování vaší nabídky do oblasti vyhledávání odpovídající marketplace. Požádejte o tom, jak vaši nabídku podporuje tyto kategorie v popis nabídky. 
 
 ### <a name="industry"></a>Odvětví
@@ -204,6 +205,9 @@ Nezapomeňte **Uložit** přejde k další části!
 ## <a name="offer-listing"></a>Výpis nabídky
 
 Nabídky zobrazí kartu jazyky (a trhy), kde je k dispozici vaší nabídky, aktuálně Angličtina (Spojené státy) je k dispozici pouze umístění. Kromě toho tato stránka zobrazuje stav výpis specifické pro jazyk a datum a čas, který byl přidán. Budete muset zadat podrobnosti marketplace (nabízejí název, popis, hledané termíny, atd.) pro jednotlivé jazyky / uvedení na trh.
+
+> [!NOTE]
+> Nabídky obsah (například popis nabídky, dokumenty, snímky obrazovky, podmínky použití a ochrana osobních údajů zásad) nemusí být v angličtině, dokud popis nabídky začíná věta, "Tato aplikace je k dispozici pouze v [jiném než anglickém jazyce]." Je také k poskytování přijatelné *užitečný odkaz URL* nabízel obsah v jiném jazyce než jaký se používá v zveřejněné obsah nabídky.
 
 ### <a name="offer-listings"></a>: Výpisy nabídek
 
@@ -268,9 +272,9 @@ Ručně přidejte e-mailové adresy až deset (10) nebo dvacet (20), pokud chcet
 
 - **Připojení webhooku** (povinné): Pro všechny asynchronní události, které je potřeba poslat jménem zákazníka Microsoftu (Příklad: Předplatné SaaS náramků RFID neplatný), potřebujeme, abyste k poskytování připojení webhooku. Pokud ještě nemáte systému webhooku v místě, je nejjednodušší konfiguraci, aby aplikace logiky koncový bod HTTP, který bude naslouchat žádné události odeslání do ní a odpovídajícím způsobem jejich zpracování (například https:\//prod-1westus.logic.azure.com:443/work). Další informace najdete v tématu [volání triggeru, nebo vnořené pracovní postupy s koncovými body HTTP ve službě logic apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint).
 
-- **ID tenanta Azure AD** (povinné): Uvnitř webu Azure portal, můžeme požadovat, aby vám [vytvoření aplikace Azure Active Directory (AD)](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) tak, že abychom mohli ověřit připojení mezi naše dvě služby je za ověřené komunikaci. Najít [ID tenanta](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-tenant-id), přejděte do služby Azure Active Directory a vyberte **vlastnosti**, potom se podívejte **ID adresáře** uvedené číslo (např.) 50c464d3-4930-494c-963c-1e951d15360e).
+- **ID tenanta Azure AD** (povinné): Uvnitř webu Azure portal, můžeme požadovat, aby vám [vytvoření aplikace Azure Active Directory (AD)](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) tak, že abychom mohli ověřit připojení mezi naše dvě služby je za ověřené komunikaci. Najít [ID tenanta](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in), přejděte do služby Azure Active Directory a vyberte **vlastnosti**, potom se podívejte **ID adresáře** uvedené číslo (např.) 50c464d3-4930-494c-963c-1e951d15360e).
 
-- **ID aplikace Azure AD** (povinné): Budete také potřebovat vaše [ID aplikace](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-application-id-and-authentication-key) a ověřovací klíč. K získání těchto hodnot, přejděte na Azure Active Directory a vyberte **registrace aplikací**, potom se podívejte **ID aplikace** číslo uvedené (třeba 50c464d3-4930-494c-963c-1e951d15360e). Pokud chcete najít ověřovací klíč, přejděte na **nastavení** a vyberte **klíče**. Je potřeba zadat popis a dobu trvání a pak bude třeba zadat číselnou hodnotu.
+- **ID aplikace Azure AD** (povinné): Budete také potřebovat vaše [ID aplikace](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) a ověřovací klíč. K získání těchto hodnot, přejděte na Azure Active Directory a vyberte **registrace aplikací**, potom se podívejte **ID aplikace** číslo uvedené (třeba 50c464d3-4930-494c-963c-1e951d15360e). Pokud chcete najít ověřovací klíč, přejděte na **nastavení** a vyberte **klíče**. Je potřeba zadat popis a dobu trvání a pak bude třeba zadat číselnou hodnotu.
 
  Všimněte si, že je ID aplikace Azure přidružené k ID vydavatele, proto se ujistěte, že stejné ID aplikace se používá v všechny nabídky.
 
@@ -306,6 +310,22 @@ Vyberte **Uložit** po dokončení těchto polí.
 #### <a name="plan-pricing-and-availability"></a>Ceny plánu a dostupnost
 
 **Ceny a dostupnost** karta vám umožní nakonfigurovat trhy, které budou k dispozici v tomto plánu požadované finanční zhodnocení modelu, ceny a fakturační období. Kromě toho můžete určit, zda má být plán viditelné pro všechny uživatele nebo pouze pro konkrétní zákazníky (privátní cílové skupiny).
+
+##### <a name="enabling-free-trials"></a>Povolení bezplatné zkušební verze
+
+Nabídky SaaS z komerční Tržiště umožňují poskytovat měsíční bezplatné zkušební verze při prodeji prostřednictvím společnosti Microsoft. Pro všechny fakturační modely a podmínky s výjimkou plánů Účtovaná podle objemu dat se podporují bezplatné zkušební verze. Tato možnost umožňuje zákazníkům mají nízké barrier k položce až jeden měsíc bezplatný přístup.  Pokud budete chtít povolit bezplatnou zkušební verzi pro plány v rámci vaší nabídky, zákazník nebude možné převést na placené předplatné před koncem počáteční měsíčního období.  Během této doby můžete zakoupení vaší nabídky zákazníkům vyzkoušet si některé z podporovaných plány, které mají bezplatnou zkušební verzi povolená a převodu mezi nimi.  Převod na placené předplatné se automaticky provádí na konci období.
+
+>[!Note]
+>Pokud zákazník vybere pro převod na plán bez bezplatné zkušební verze, převod se provede, ale bezplatné zkušební verze se ztratí okamžitě.  Také Jakmile zákazník začne platit za plán, už měli bezplatnou zkušební verzi ve stejném předplatném, i v případě, že se převést na SKU, které podporuje bezplatné zkušební verze.
+
+Umožňuje nakonfigurovat bezplatnou zkušební verzi je k dispozici pro každý plán ve vaší nabídce. Jednoduše přejděte do ceny a dostupnosti pro každou nabídku a zaškrtněte políčko pro povolení k měsíční zkušební verzi.
+
+![Bezplatná zkušební verze políčko jeden měsíc](./media/free-trial-enable.png)
+
+Pokud chcete získat informace o zákazníkovi aktuálně součástí bezplatné zkušební verze předplatného, použijte vlastnost nové rozhraní API `isFreeTrial`, které budou označeny jako true nebo false. Zobrazit [SaaS získat předplatné API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#get-subscription) Další informace.
+
+>[!Note]
+>Bezplatné zkušební verze nejsou podporovány pro plány, které využívají službu monitorování míry využití webu marketplace.
 
 #### <a name="markets"></a>Trhy
 
@@ -434,13 +454,13 @@ Pokud chcete nasadit na testovací verzi vaším jménem, vytvoření a zajišt�
 
 - **ID předplatného Azure** (povinné pro Azure Resource Manageru a Logic apps): Zadejte ID předplatného pro udělení přístupu k vašim službám účtu Azure pro využití prostředků, vytváření sestav a fakturaci. Doporučujeme vám zvážit [vytvoření samostatné předplatné Azure](https://docs.microsoft.com/azure/billing/billing-create-subscription) má použít pro testovací verze, pokud již nemáte. ID vašeho předplatného Azure najdete po přihlášení k [webu Azure portal](https://portal.azure.com/) a přejdete do **předplatná** kartu v levé nabídce. Výběrem karty zobrazí ID vašeho předplatného (třeba "a83645ac-1234-5ab6-6789-1h234g764ghty").
 
-- **ID tenanta Azure AD** (povinné): Zadejte vaše Azure Active Directory (AD) [ID tenanta](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-tenant-id). Toto ID najít, přihlaste se k [webu Azure portal](https://portal.azure.com/), v nabídce vlevo vyberte kartu Active Directory, vyberte **vlastnosti** , potom se podívejte **ID adresáře** uvedené číslo (např.) 50c464d3-4930-494c-963c-1e951d15360e). Můžete také vyhledat pomocí váš název domény adresy URL v ID tenanta vaší organizace: [ https://www.whatismytenantid.com ](https://www.whatismytenantid.com).
+- **ID tenanta Azure AD** (povinné): Zadejte vaše Azure Active Directory (AD) [ID tenanta](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in). Toto ID najít, přihlaste se k [webu Azure portal](https://portal.azure.com/), v nabídce vlevo vyberte kartu Active Directory, vyberte **vlastnosti** , potom se podívejte **ID adresáře** uvedené číslo (např.) 50c464d3-4930-494c-963c-1e951d15360e). Můžete také vyhledat pomocí váš název domény adresy URL v ID tenanta vaší organizace: [ https://www.whatismytenantid.com ](https://www.whatismytenantid.com).
 
 - **Název tenanta Azure AD** (vyžadováno pro Dynamics 365): Zadejte název vaší služby Azure Active Directory (AD). Zjištění názvu, přihlaste se k [webu Azure portal](https://portal.azure.com/), v pravém horním rohu se zobrazí název tenanta pod názvem vašeho účtu.
 
-- **ID aplikace Azure AD** (povinné): Zadejte vaše Azure Active Directory (AD) [ID aplikace](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-application-id-and-authentication-key). Toto ID najít, přihlaste se k [webu Azure portal](https://portal.azure.com/), v nabídce vlevo vyberte kartu Active Directory, vyberte **registrace aplikací**, potom se podívejte **ID aplikace** číslo uvedené (třeba 50c464d3-4930-494c-963c-1e951d15360e).
+- **ID aplikace Azure AD** (povinné): Zadejte vaše Azure Active Directory (AD) [ID aplikace](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in). Toto ID najít, přihlaste se k [webu Azure portal](https://portal.azure.com/), v nabídce vlevo vyberte kartu Active Directory, vyberte **registrace aplikací**, potom se podívejte **ID aplikace** číslo uvedené (třeba 50c464d3-4930-494c-963c-1e951d15360e).
 
-- **Tajný kód klienta aplikace Azure AD** (povinné): Zadejte vaše aplikace Azure AD [tajný kód klienta](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-application-id-and-authentication-key). Chcete-li tuto hodnotu najít, přihlaste [webu Azure portal](https://portal.azure.com/). Vyberte **Azure Active Directory** v nabídce vlevo vyberte kartu **registrace aplikací**, pak vyberte vaši aplikaci test jednotky. V dalším kroku vyberte **certifikátů a tajných kódů**vyberte **nový tajný kód klienta**, zadejte popis, vyberte **nikdy** pod **Expires**, pak Zvolte **přidat**. Nezapomeňte si poznamenejte hodnotu. (Není stránku opustit předtím, než to uděláte, jinak nebude mít přístup k hodnotě.)
+- **Tajný kód klienta aplikace Azure AD** (povinné): Zadejte vaše aplikace Azure AD [tajný kód klienta](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#certificates-and-secrets). Chcete-li tuto hodnotu najít, přihlaste [webu Azure portal](https://portal.azure.com/). Vyberte **Azure Active Directory** v nabídce vlevo vyberte kartu **registrace aplikací**, pak vyberte vaši aplikaci test jednotky. V dalším kroku vyberte **certifikátů a tajných kódů**vyberte **nový tajný kód klienta**, zadejte popis, vyberte **nikdy** pod **Expires**, pak Zvolte **přidat**. Nezapomeňte si poznamenejte hodnotu. (Není stránku opustit předtím, než to uděláte, jinak nebude mít přístup k hodnotě.)
 
 Nezapomeňte **Uložit** přejde k další části!
 

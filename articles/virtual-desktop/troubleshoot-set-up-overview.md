@@ -4,15 +4,15 @@ description: Přehled pro řešení potíží při nastavování prostředí vir
 services: virtual-desktop
 author: ChJenk
 ms.service: virtual-desktop
-ms.topic: troubleshoot
+ms.topic: troubleshooting
 ms.date: 04/08/2019
 ms.author: v-chjenk
-ms.openlocfilehash: 43f940c3c5b0fcf06fb5aa9be268f85db19fc8a6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b349d7f384c801e95d745f7a18535f9f5d13cf86
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67077669"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67605212"
 ---
 # <a name="troubleshooting-overview-feedback-and-support"></a>Přehled řešení potíží, zpětná vazba a podpora
 
@@ -45,7 +45,7 @@ V následující tabulce můžete identifikovat a řešit problémy, na které m
 | Rychlost odezvy vzdálené aplikace nebo plochy                                      | Pokud problémy jsou vázané na konkrétní aplikaci nebo produktu, obraťte se na tým odpovědný za konkrétního produktu. |
 | Licencování zprávy a chyby                                                          | Pokud problémy jsou vázané na konkrétní aplikaci nebo produktu, obraťte se na tým odpovědný za konkrétního produktu. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Řešení potíží při vytváření fondu tenanta a hostitele v prostředí virtuálního klienta Windows, naleznete v tématu [Tenanta a hostitele fondu vytváření](troubleshoot-set-up-issues.md).
 - Řešení potíží při konfiguraci virtuálního počítače (VM) v virtuální plochy Windows, naleznete v tématu [konfigurace virtuálního počítače hostitele relací](troubleshoot-vm-configuration.md).

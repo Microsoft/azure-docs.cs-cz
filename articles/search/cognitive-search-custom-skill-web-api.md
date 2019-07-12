@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seojan2018
-ms.openlocfilehash: e5f7ee172563a81d45e3a35da2cfc7e8731de48d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e1ca8a5ce7b615ed8d84c91d8a0d72098c175c44
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65023860"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672135"
 ---
 # <a name="custom-web-api-skill"></a>Vlastních dovedností webového rozhraní API
 
@@ -201,8 +201,8 @@ Kromě webového rozhraní API za následek nedostupné nebo odesílání navý�
 
 Pro případy, když webového rozhraní API není k dispozici nebo vrátí chybu HTTP popisná chybová se všechny dostupné podrobnosti o chybě HTTP se přidají do historie spuštění indexeru.
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
 + [Definování dovedností](cognitive-search-defining-skillset.md)
 + [Přidání vlastních dovedností kognitivního vyhledávání](cognitive-search-custom-skill-interface.md)
-+ [Vytvoření vlastních dovedností pomocí rozhraní API převede Text](cognitive-search-create-custom-skill-example.md)
++ [Příklad: Vytváření vlastních dovedností pro kognitivního vyhledávání](cognitive-search-create-custom-skill-example.md)

@@ -4,7 +4,7 @@ description: Zjistěte, jak připravit infrastrukturu Azure pro SAP HA pomocí W
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ae3d1b36b89bb1bce1ff384bfa12a1bf643614fd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b4e107da9d8e5019ba51769d283f3faa34839380
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65408777"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709243"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>Připravit infrastrukturu Azure pro SAP HA pomocí Windows cluster převzetí služeb při selhání a sdíleného disku pro SAP ASCS/SCS
 
@@ -224,7 +224,7 @@ _**Obrázek 1:** Nastavení parametrů Azure Resource Manageru vysoké dostupnos
 >
 
 ## <a name="c87a8d3f-b1dc-4d2f-b23c-da4b72977489"></a> Nasazení virtuálních počítačů s připojením k podnikové síti (mezi různými místy) pro použití v produkčním prostředí
-Pro produkční systémy SAP, nasaďte virtuální počítače Azure s [připojení k podnikové síti (mezi různými místy)] [ planning-guide-2.2] pomocí Azure VPN Gateway nebo Azure ExpressRoute.
+Pro produkční systémy SAP, nasaďte virtuální počítače Azure s [připojení k podnikové síti (mezi různými místy)][planning-guide-2.2] pomocí Azure VPN Gateway nebo Azure ExpressRoute.
 
 > [!NOTE]
 > Vaše instance Azure Virtual Network můžete použít. Virtuální síť a podsíť již byly vytvořeny a připraveny.
@@ -295,7 +295,7 @@ Následující části obsahují více podrobností o šablonách a parametry, k
 
 Šablona ASCS/SCS nasadí dva virtuální počítače, které můžete použít k vytvoření clusteru převzetí služeb při selhání Windows serveru, který je hostitelem více instancí ASCS/SCS.
 
-Nastavení v šabloně několika identifikátorů SID ASCS/SCS [šablony s několika SID ASCS/SCS] [ sap-templates-3-tier-multisid-xscs-marketplace-image] nebo [ASCS/SCS několika identifikátorů SID šablony s použitím spravovaných disků] [ sap-templates-3-tier-multisid-xscs-marketplace-image-md], zadejte hodnoty následujících parametrů:
+Nastavení v šabloně několika identifikátorů SID ASCS/SCS [šablony s několika SID ASCS/SCS][sap-templates-3-tier-multisid-xscs-marketplace-image] or [ASCS/SCS multi-SID template by using Managed Disks][sap-templates-3-tier-multisid-xscs-marketplace-image-md], zadejte hodnoty následujících parametrů:
 
 - **Předpona prostředků**:  Nastavte zdroj předpona, která se používá jako předpona všechny prostředky, které jsou vytvořeny během nasazení. Protože prostředky nepatří do jediného systému SAP, předpona prostředku není identifikátor SID jednoho systému SAP.  Předpona, která musí být mezi tři až šest znaků.
 - **Stack – typ**: Vyberte typ zásobníku systému SAP. V závislosti na typu zásobníku Azure Load Balancer má jeden (ABAP a Java pouze) nebo dvě (ABAP + Java) privátních IP adres na systému SAP.
@@ -333,7 +333,7 @@ Nástroje pro vyrovnávání zatížení je nakonfigurován na použití násled
 
 Databáze šablona nasadí jeden nebo dva virtuální počítače, které můžete použít k instalaci systému pro správu relačních databází (RDBMS) pro jeden systému SAP. Například pokud nasadíte šablonu ASCS/SCS pro pět systémů SAP, musíte nasadit tuto šablonu pětkrát.
 
-V šabloně několika identifikátorů SID databázi nastavit [šablona databází s několika SID] [ sap-templates-3-tier-multisid-db-marketplace-image] nebo [databáze s několika SID šablony s použitím spravovaných disků] [ sap-templates-3-tier-multisid-db-marketplace-image-md], zadejte hodnoty následujících parametrů:
+V šabloně několika identifikátorů SID databázi nastavit [šablona databází s několika SID][sap-templates-3-tier-multisid-db-marketplace-image] or [database multi-SID template by using Managed Disks][sap-templates-3-tier-multisid-db-marketplace-image-md], zadejte hodnoty následujících parametrů:
 
 - **Id systému SAP**: Zadejte ID systému SAP systému SAP, který chcete nainstalovat. ID se používá jako předpona pro prostředky, které jsou nasazené.
 - **Typ operačního systému**: Vyberte operační systém z virtuálních počítačů.
@@ -350,7 +350,7 @@ V šabloně několika identifikátorů SID databázi nastavit [šablona databáz
 
 Šablona servery aplikace nasadí dvě nebo více virtuálních počítačů, které může sloužit jako aplikační Server SAP instance systému SAP jeden. Například pokud nasadíte šablonu ASCS/SCS pro pět systémů SAP, musíte nasadit tuto šablonu pětkrát.
 
-Nastavení v šabloně několika identifikátorů SID servery aplikace [šablony s několika SID servery aplikace] [ sap-templates-3-tier-multisid-apps-marketplace-image] nebo [šablona s několika SID servery aplikací pomocí Managed Disks] [ sap-templates-3-tier-multisid-apps-marketplace-image-md], zadejte hodnoty následujících parametrů:
+V šabloně několika identifikátorů SID servery aplikace nastavit [šablony s několika SID servery aplikace][sap-templates-3-tier-multisid-apps-marketplace-image] or [application servers multi-SID template  by using Managed Disks][sap-templates-3-tier-multisid-apps-marketplace-image-md], zadejte hodnoty následujících parametrů:
 
   -  **Id systému SAP**: Zadejte ID systému SAP systému SAP, který chcete nainstalovat. ID se používá jako předpona pro prostředky, které jsou nasazené.
   -  **Typ operačního systému**: Vyberte operační systém z virtuálních počítačů.
@@ -373,7 +373,7 @@ V našem příkladu je instance Azure Virtual Network adresní prostor 10.0.0.0/
 Chcete-li nastavit požadované DNS IP adresy, proveďte následující kroky:
 
 1. Na webu Azure Portal v **servery DNS** podokno, ujistěte se, že vaše virtuální síť **servery DNS** je možnost nastavená na **vlastního DNS**.
-2. Vyberte nastavení na základě typu sítě, které máte. Další informace najdete v následujících materiálech:
+2. Vyberte nastavení na základě typu sítě, které máte. Další informace naleznete v následujících materiálech:
    * [Připojení k podnikové síti (mezi různými místy)][planning-guide-2.2]: Přidejte IP adresy na místních serverech DNS.  
    Můžete rozšířit místní servery DNS pro virtuální počítače, na kterých běží v Azure. V tomto scénáři můžete přidat IP adresy virtuálních počítačů Azure na které spouštíte službu DNS.
    * Pro nasazení virtuálních počítačů, které jsou izolovány v Azure: Nasaďte další virtuální počítač ve stejné virtuální síti instanci, která slouží jako DNS server. Přidání IP adresy virtuální počítače Azure, které jste nastavili až do spuštění služby DNS.
@@ -566,7 +566,7 @@ Pak přidejte tato položka registru Windows na oba uzly clusteru Windows pro SA
 | --- | --- |
 | Název proměnné |`KeepAliveInterval` |
 | Typ proměnné |REG_DWORD (decimální) |
-| Hodnota |120000 |
+| Value |120000 |
 | Odkaz na dokumentaci |[https://technet.microsoft.com/library/cc957548.aspx](https://technet.microsoft.com/library/cc957548.aspx) |
 
 **Tabulka 4:** Změňte druhý parametr protokolu TCP/IP
@@ -889,6 +889,6 @@ Po instalaci SIOS DataKeeper na oba uzly spusťte konfiguraci. Cíl konfigurace 
 
    _**Obrázek 45:** Správce clusteru převzetí služeb při selhání se zobrazí na disku, který DataKeeper replikovaná_
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Instalace SAP NetWeaver HA pomocí Windows cluster převzetí služeb při selhání a sdíleného disku pro instanci SAP ASCS/SCS][sap-high-availability-installation-wsfc-shared-disk]

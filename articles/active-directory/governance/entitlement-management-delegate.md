@@ -3,8 +3,8 @@ title: Delegovat úkoly ve správě oprávnění Azure AD (Preview) – Azure Ac
 description: Další informace o rolích, které můžete přiřadit k delegování úkolů ve službě Azure Active Directory management oprávnění.
 services: active-directory
 documentationCenter: ''
-author: rolyon
-manager: mtillman
+author: msaburnley
+manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 06/07/2019
-ms.author: rolyon
+ms.date: 07/10/2019
+ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fa0be8e2af7644564ba27e6d58fda09b1ae7bc7
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: d4c4933847a39a56084894e5bbd40e166e6b73b6
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67191496"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798638"
 ---
 # <a name="delegate-tasks-in-azure-ad-entitlement-management-preview"></a>Delegovat úkoly ve správě služby Azure AD oprávnění (Preview)
 
@@ -77,14 +77,14 @@ Kromě toho určeného schvalovatele a žadatele o přístup k balíčku mít ro
 
 V následující tabulce jsou uvedeny úlohy, které můžete provádět tyto role.
 
-| Úkol | Tvůrce katalogu | Vlastník katalogu | Správce přístupu k balíčku | Schvalovatele |
+| Úloha | Tvůrce katalogu | Vlastník katalogu | Správce přístupu k balíčku | Schvalovatele |
 | --- | :---: | :---: | :---: | :---: |
 | [Vytvořit nový katalog](entitlement-management-catalog-create.md) | :heavy_check_mark: |  |  |  |
 | [Přidejte prostředek do katalogu](entitlement-management-catalog-create.md#add-resources-to-a-catalog) | | :heavy_check_mark: | | |
 | [Upravit katalogu](entitlement-management-catalog-create.md#edit-a-catalog) |  | :heavy_check_mark: |  |  |
 | [Odstranit katalog](entitlement-management-catalog-create.md#delete-a-catalog) |  | :heavy_check_mark: |  |  |
 | [Přidat katalog vlastník nebo správce přístupu k balíčku do katalogu](#add-a-catalog-owner-or-an-access-package-manager) |  | :heavy_check_mark: |  |  |
-| [Vytvořit nový balíček pro přístup do katalogu](entitlement-management-access-package-create.md) |  | :heavy_check_mark: |  |  |
+| [Vytvořit nový balíček pro přístup do katalogu](entitlement-management-access-package-create.md) |  | :heavy_check_mark:  | :heavy_check_mark:  |  |
 | [Spravovat role prostředků, přístup k balíčku](entitlement-management-access-package-edit.md) |  | :heavy_check_mark: | :heavy_check_mark: |  |
 | [Zadejte, kdo žádosti přístup k balíčku](entitlement-management-access-package-edit.md#add-a-new-policy) |  | :heavy_check_mark: | :heavy_check_mark: |  |
 | [Přímo přiřadit uživatele přístupu k balíčku](entitlement-management-access-package-edit.md#directly-assign-a-user) |  | :heavy_check_mark: | :heavy_check_mark: |  |
@@ -128,7 +128,7 @@ Pokud chcete delegovat vytvoření katalogu, přidat uživatele k roli Tvůrce k
 
 1. V **delegovat správu oprávnění** klikněte na tlačítko **přidat autory katalogu** vybrat uživatele nebo skupiny, kteří budou členy této role správy oprávnění.
 
-1. Klikněte na **Vybrat**.
+1. Klikněte na tlačítko **vyberte**.
 
 1. Klikněte na **Uložit**.
 
@@ -148,7 +148,7 @@ Pokud chcete delegovat správu katalogu nebo přístup balíčků v katalogu, p�
 
 1. Klikněte na tlačítko **vyberte** pro přidání těchto členů.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Přidání schvalovatele](entitlement-management-access-package-edit.md#policy-request)
 - [Přidat prostředky do katalogu](entitlement-management-catalog-create.md#add-resources-to-a-catalog)

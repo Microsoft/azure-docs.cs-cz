@@ -4,7 +4,7 @@ description: Přečtěte si o označování virtuálního počítače s Linuxem 
 services: virtual-machines-linux
 documentationcenter: ''
 author: mmccrory
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ca0e17e5-d78e-42e6-9dad-c1e8f1c58027
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/28/2017
 ms.author: memccror
-ms.openlocfilehash: 297d3bc201b4bc9d9db0b0bed7a364769fa72859
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 290105b4e5e3ac3337b0be1b7d437601223bdf68
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62115970"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67708732"
 ---
 # <a name="how-to-tag-a-linux-virtual-machine-in-azure"></a>Jak označit virtuální počítač s Linuxem v Azure
 Tento článek popisuje různé způsoby, jak označit virtuální počítač s Linuxem v Azure prostřednictvím modelu nasazení Resource Manager. Značky jsou páry klíč/hodnota definovaná uživatelem, které je možné použít přímo na prostředek nebo skupinu prostředků. Azure v současné době podporuje až 15 značek na prostředek a skupinu prostředků. Značky může být umístěné na zdroje v době vytvoření nebo přidat do existujícího prostředku. Mějte prosím na paměti, značky jsou podporované pro prostředky vytvořené prostřednictvím modelu nasazení Resource Manager pouze.
@@ -57,8 +57,8 @@ Teď, když jsme použili značek k prostředkům, naše rozhraní příkazovéh
 [!INCLUDE [virtual-machines-common-tag-usage](../../../includes/virtual-machines-common-tag-usage.md)]
 
 ## <a name="next-steps"></a>Další postup
-* Další informace o označování prostředků Azure najdete v tématu [přehled Azure Resource Manageru] [ Azure Resource Manager Overview] a [pomocí značek k uspořádání prostředků Azure] [ Using Tags to organize your Azure Resources].
-* Jak značky vám pomůže se správou vašeho využití prostředků Azure najdete v tématu [vysvětlení vašeho vyúčtování Azure] [ Understanding your Azure Bill] a [získání přehledů o spotřebě prostředků Microsoft Azure] [Gain insights into your Microsoft Azure resource consumption].
+* Další informace o označování prostředků Azure najdete v tématu [přehled Azure Resource Manageru][Azure Resource Manager Overview] and [Using Tags to organize your Azure Resources][Using Tags to organize your Azure Resources].
+* Jak značky vám pomůže se správou vašeho využití prostředků Azure najdete v tématu [vysvětlení vašeho vyúčtování Azure][Understanding your Azure Bill] and [Gain insights into your Microsoft Azure resource consumption][Gain insights into your Microsoft Azure resource consumption].
 
 [Azure CLI environment]: ../../azure-resource-manager/xplat-cli-azure-resource-manager.md
 [Azure Resource Manager Overview]: ../../azure-resource-manager/resource-group-overview.md

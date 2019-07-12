@@ -4,7 +4,7 @@ description: Zjistěte, jak konfigurace LVM v Linuxu v Azure.
 services: virtual-machines-linux
 documentationcenter: na
 author: szarkos
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tag: azure-service-management,azure-resource-manager
 ms.assetid: 7f533725-1484-479d-9472-6b3098d0aecc
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 09/27/2018
 ms.author: szark
 ms.subservice: disks
-ms.openlocfilehash: 08f98775360b8c0a82f68f322053cb71f0e79af3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0feac4844f5d65119e74713c21f58fb29e3a7956
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60739076"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671692"
 ---
 # <a name="configure-lvm-on-a-linux-vm-in-azure"></a>Konfigurace LVM na virtuální počítač s Linuxem v Azure
 Tento dokument popisuje ke konfiguraci Správce logických svazků (LVM) ve virtuálním počítači Azure. LVM může být použita na disk s operačním systémem nebo datové disky ve virtuálních počítačích Azure, ale ve výchozím nastavení většina cloudových imagí nemá LVM nakonfigurované na disk s operačním systémem. Následující postup se zaměří na konfigurace LVM pro datové disky.

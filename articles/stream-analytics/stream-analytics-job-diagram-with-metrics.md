@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/01/2017
-ms.openlocfilehash: 4a6d359b27b9a2e52d71ed5f8547041645147605
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 472d7fcbca1a221b69d681ce33d39978b53a3204
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61479914"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620953"
 ---
 # <a name="data-driven-debugging-by-using-the-job-diagram"></a>S daty ladění s použitím diagram úloh
 
@@ -87,5 +87,5 @@ Další pomoc, vyzkoušejte naše [fóru Azure Stream Analytics](https://social.
 * [Úvod do služby Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme se Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Škálovat úlohy Stream Analytics](stream-analytics-scale-jobs.md)
-* [Referenční příručka k Stream Analytics query language](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Referenční příručka k Stream Analytics query language](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Stream Analytics správu reference k rozhraní REST API](https://msdn.microsoft.com/library/azure/dn835031.aspx)

@@ -3,15 +3,15 @@ title: Architektura připojení ve službě Azure Database for PostgreSQL
 description: Popisuje architekturu připojení pro váš server Azure Database for PostgreSQL.
 author: kummanish
 ms.author: manishku
-ms.service: PostgreSQL
+ms.service: postgresql
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.openlocfilehash: 73c23c471cb12ca3a3a7df4380779b464b8d86d4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0d91458c555c819c4bcf97215a712719ebc5eb71
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66735733"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67588945"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>Architektura připojení ve službě Azure Database for PostgreSQL
 Azure Database for PostgreSQL připojení i architektura Tento článek vysvětluje, jak provoz se směřuje do Azure Database for PostgreSQL instance databáze od klientů v rámci i mimo Azure.
@@ -33,7 +33,7 @@ V následující tabulce jsou uvedeny primárních a sekundárních IP adres Azu
 | Brazílie – jih | 104.41.11.5 | |
 | Kanada – střed | 40.85.224.249 | |
 | Kanada – východ | 40.86.226.166 | |
-| USA – střed | 23.99.160.139 | 13.67.215.62 |
+| Střed USA | 23.99.160.139 | 13.67.215.62 |
 | Východní Čína 1 | 139.219.130.35 | |
 | Čína – východ 2 | 40.73.82.1 | |
 | Čína – sever 1 | 139.219.15.17 | |
@@ -50,15 +50,15 @@ V následující tabulce jsou uvedeny primárních a sekundárních IP adres Azu
 | Japonsko – západ | 191.238.68.11 | 104.214.148.156 |
 | Jižní Korea – střed | 52.231.32.42 | |
 | Jižní Korea – jih | 52.231.200.86 |  |
-| Středoseverní USA | 23.98.55.75 | 23.96.178.199 |
+| Střed USA – sever | 23.98.55.75 | 23.96.178.199 |
 | Severní Evropa | 191.235.193.75 | 40.113.93.91 |
-| Středojižní USA | 23.98.162.75 | 13.66.62.124 |
+| Střed USA – jih | 23.98.162.75 | 13.66.62.124 |
 | Jihovýchodní Asie | 23.100.117.95 | 104.43.15.0 |
 | Velká Británie – jih | 51.140.184.11 | |
 | Spojené království – západ | 51.141.8.11| |
 | Západní Evropa | 191.237.232.75 | 40.68.37.158 |
 | USA – západ 1 | 23.99.34.75 | 104.42.238.205 |
-| Západní USA 2 | 13.66.226.202 | |
+| USA – západ 2 | 13.66.226.202 | |
 ||||
 
 > [!NOTE]

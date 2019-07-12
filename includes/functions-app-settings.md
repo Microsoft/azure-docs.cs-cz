@@ -4,17 +4,17 @@ description: zahrnout soubor
 services: functions
 author: ggailey777
 manager: jeconnoc
-ms.service: functions
+ms.service: azure-functions
 ms.topic: include
 ms.date: 08/15/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: a8ef570674e2abea3337e5278810d583c7b721a6
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: a20fdb2ddefbd0cd89c655d29c6c4309f73e9d35
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67174769"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67608126"
 ---
 Existuje několik způsobů, jak můžete přidat, aktualizovat a odstranit nastavení aplikace function app:
 

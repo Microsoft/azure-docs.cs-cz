@@ -14,15 +14,15 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/26/2019
-ms.author: dadobali
+ms.author: ryanwi
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45252cc4d45e96c2bde4a4600630ea578a8d3009
-ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
+ms.openlocfilehash: 547eafac8cc1acf2b60416f93804e819a1c549b0
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64946728"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67702758"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Rychlý start: Přihlašování uživatelů a volání rozhraní Microsoft Graph API z aplikace pro Android
 
@@ -188,7 +188,7 @@ Knihovna MSAL používá k získání tokenů dvě metody: `acquireToken` a `acq
 
 #### <a name="acquiretoken-getting-a-token-interactively"></a>acquireToken: Při získávání tokenu interaktivně
 
-Některé situace vyžadují uživatelům interakci s platformou identity Microsoft. V těchto případech se koncový uživatel může být nutné zvolit svůj účet, zadejte své přihlašovací údaje nebo oprávnění, která vaše aplikace vyžaduje vyjádřit souhlas. Například: 
+Některé situace vyžadují uživatelům interakci s platformou identity Microsoft. V těchto případech se koncový uživatel může být nutné zvolit svůj účet, zadejte své přihlašovací údaje nebo oprávnění, která vaše aplikace vyžaduje vyjádřit souhlas. Například 
 
 * Při prvním přihlášení uživatele k aplikaci
 * Pokud uživatel obnoví svoje heslo, bude nutné k zadání přihlašovacích údajů 

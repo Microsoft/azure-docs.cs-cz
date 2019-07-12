@@ -4,7 +4,7 @@ description: Přehled podpory Azure pro virtuální počítače generace 2
 services: virtual-machines-linux
 documentationcenter: ''
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2019
 ms.author: lahugh
-ms.openlocfilehash: 352df275742c38307065252d2f65bb4253d78e5d
-ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
+ms.openlocfilehash: 653d4baa89e28255f11df1c5e2d813d37535793a
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67151261"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67667550"
 ---
 # <a name="support-for-generation-2-vms-preview-on-azure"></a>Podpora generace 2 virtuální počítače (preview) v Azure
 
@@ -40,7 +40,7 @@ Virtuální počítače generace 1 podporuje všechny velikosti virtuálních po
 * [Dsv2-series](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general#dsv2-series) a [Dsv3-series](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general#dsv3-series-1)
 * [Esv3-series](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory#esv3-series)
 * [Fsv2-series](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-compute#fsv2-series-1)
-* [Řady GS-series](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory#gs-series)
+* [Řady GS-series](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-previous-gen#gs-series)
 * [Řada ls-series](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-previous-gen#ls-series) a [Lsv2-series](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-storage#lsv2-series)
 * [Mv2-series](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory#mv2-series)
 
@@ -77,7 +77,7 @@ Azure v současné době nepodporuje některé funkce, které on-premises Hyper-
 
 ### <a name="generation-1-vs-generation-2-capabilities"></a>Generace 1 a generace 2 možnosti
 
-| Schopnost | 1\. generace | 2\. generace |
+| Funkce | 1\. generace | 2\. generace |
 |------------|--------------|--------------|
 | Operační systém na disku > 2 TB                    | : x:.                        | :heavy_check_mark: |
 | Vlastní/image/prohození disků operačního systému         | :heavy_check_mark:         | :heavy_check_mark: |
@@ -144,6 +144,6 @@ Můžete také vytvořit generace 2 virtuální počítače pomocí škálovací
 * **Můžu migrovat virtuální počítač z 1. generace do 2. generace?**  
     Ne, nelze změnit generaci virtuálního počítače po jeho vytvoření. Pokud je potřeba přepnout mezi generací virtuálních počítačů, vytvořte nový virtuální počítač z jiné generace.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Další informace o [2. generace virtuálních počítačů Hyper-v](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).

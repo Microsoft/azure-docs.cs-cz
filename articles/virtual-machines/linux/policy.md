@@ -4,7 +4,7 @@ description: Tom, jak aplikovat zásady pro Azure Resource Manageru virtuálníh
 services: virtual-machines-linux
 documentationcenter: ''
 author: singhkays
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 06778ab4-f8ff-4eed-ae10-26a276fc3faa
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: kasing
-ms.openlocfilehash: 92aa81281c8b0a6accdcc7b76afefe4fef0488ef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0c7b1488921e0708a71caade4599cef367b4b3eb
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65966185"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67667238"
 ---
 # <a name="apply-policies-to-linux-vms-with-azure-resource-manager"></a>Použít zásady pro virtuální počítače s Linuxem pomocí Azure Resource Manageru
 Pomocí zásad můžete vynutit organizace různých konvencí a pravidla v rámci podniku. Vynucení požadované chování může pomoci zmírnit rizika při podílení se na úspěch organizace. V tomto článku popisujeme, jak můžete zásady Azure Resource Manageru pro definování požadované chování pro virtuální počítače vaší organizace.

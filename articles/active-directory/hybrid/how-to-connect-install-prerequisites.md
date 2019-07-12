@@ -16,12 +16,12 @@ ms.date: 05/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2916c9aba7d404ff4ad380d249bd507fadf71ea
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: b0392a40ef948d96e613da9127629f52b02deb97
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67310081"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655822"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Požadavky pro Azure AD Connect
 Toto téma popisuje požadavky a požadavky na hardware pro Azure AD Connect.
@@ -49,7 +49,7 @@ Před instalací Azure AD Connect, existuje několik věcí, které potřebujete
 
 ### <a name="azure-ad-connect-server"></a>Server Azure AD Connect
 >[!IMPORTANT]
->Server Azure AD Connect obsahuje data kritické identity a mají být považována za součást vrstvy 0, jak je uvedeno v [model vrstvy pro správu služby Active Directory](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#ADATM_BM)
+>Server Azure AD Connect obsahuje data kritické identity a mají být považována za součást vrstvy 0, jak je uvedeno v [model vrstvy pro správu služby Active Directory](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)
 
 * Azure AD Connect nejde nainstalovat na Small Business Server nebo Windows serveru Essentials před 2019 (podporuje se Windows Server Essentials 2019). Server musí používat Windows Server standard nebo vyšší.
 * Instalace Azure AD Connect na řadiči domény se nedoporučuje kvůli postupy zabezpečení a víc omezující nastavení, které mohou zabránit v instalaci správně Azure AD Connect.

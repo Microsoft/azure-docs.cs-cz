@@ -1,6 +1,6 @@
 ---
-title: Nahrávání a úložiště pomocí Azure Media Services v cloudu | Dokumentace Microsoftu
-description: Tento článek cloudu nahrávání a koncepty úložiště.
+title: Účty Azure Storage s účty služby Azure Media Services | Dokumentace Microsoftu
+description: Při vytváření účtu Media Services je nutné zadat název prostředku účtu Azure Storage. Zadaný účet úložiště se připojí k vašemu účtu Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -9,16 +9,16 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 06/25/2019
+ms.date: 07/01/2019
 ms.author: juliako
-ms.openlocfilehash: fc5bf052a7677d76c7128404a420f8c886cf3fe1
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 5c5bfa224b87040f5142663e6adab01072c6e6ba
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67439109"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67619301"
 ---
-# <a name="cloud-upload-and-storage"></a>Nahrávání na cloud a úložiště
+# <a name="azure-storage-accounts"></a>Účty služby Azure Storage
 
 Pokud chcete začít, správa, šifrování, kódování, analýza a streamování médií obsahu v Azure, budete muset vytvořit účet Media Services. Při vytváření účtu Media Services je nutné zadat název prostředku účtu Azure Storage. Zadaný účet úložiště se připojí k vašemu účtu Media Services. 
 

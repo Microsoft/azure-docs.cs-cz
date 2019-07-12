@@ -7,13 +7,13 @@ ms.service: app-service
 ms.workload: web
 ms.topic: article
 ms.date: 2/04/2019
-ms.author: msangapu-msft
-ms.openlocfilehash: e6284174089419cd201d094bcb1a8c7e865d2892
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.author: msangapu
+ms.openlocfilehash: 15cb31a3157b034089b1518a4e70eeb93ecc449e
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67484421"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67617096"
 ---
 # <a name="serve-content-from-azure-storage-in-app-service-on-linux"></a>Poskytování obsahu z Azure Storage ve službě App Service v Linuxu
 

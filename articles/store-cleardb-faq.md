@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 10/27/2016
 ms.author: sumuth
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 1838dbb627a6dec46f817101fc1d0cca0961ef77
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7b6d38f7755ebd97791959a5a414b09fe4ac769b
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64574178"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718015"
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>Nejčastější dotazy k databázím ClearDB MySQL ve službě Azure App Service
 Tyto nejčastější dotazy odpovědi na běžné dotazy týkající se použití a nakupování databází ClearDB MySQL pro Azure Web Apps.
@@ -80,7 +80,7 @@ Ne. Nelze vytvořit další uživatele, ale můžete vytvořit další databáz�
 Ano, základní řadu, kterou databáze může být upgradována místě (až 500 základní základní 60). Seriál pro profesionály může být místně upgradovány (Pro 125 až Pro 1000) s výjimkou Pro 60. Probíhá upgrade databáze Pro 60 aktuálně nepodporujeme. 
 
 ## <a name="when-i-migrate-my-resources-from-one-subscription-to-another-does-my-cleardb-mysql-database-get-migrated-as-well"></a>Když Moje prostředky můžu migrovat z jednoho předplatného do druhého, se Moje databáze ClearDB MySQL migrují také?
-Když provádíte migraci prostředků napříč předplatnými, některé [omezení](azure-resource-manager/resource-group-move-resources.md#app-service-limitations) použít. Databáze ClearDB MySQL je služba třetí strany a proto nejsou migrována během migrace předplatného Azure. Pokud nespravujete migraci databáze MySQL před migrací prostředků Azure, je možné zakázat databází ClearDB MySQL. Nejprve ručně migrovat vaše databáze a pak proveďte migraci předplatného Azure pro vaši webovou aplikaci. 
+Když provádíte migraci prostředků napříč předplatnými, některé [omezení](azure-resource-manager/move-support-resources.md) použít. Databáze ClearDB MySQL je služba třetí strany a proto nejsou migrována během migrace předplatného Azure. Pokud nespravujete migraci databáze MySQL před migrací prostředků Azure, je možné zakázat databází ClearDB MySQL. Nejprve ručně migrovat vaše databáze a pak proveďte migraci předplatného Azure pro vaši webovou aplikaci. 
 
 ## <a name="i-hit-the-spending-limit-on-my-subscription-i-removed-the-limit-and-my-app-service-is-online-however-the-database-is-not-accessible-how-do-i-re-enable-the-cleardb-database"></a>V rámci mého předplatného dosáhnu limitu útraty. Po odebrání limitu a Moje služby App Service je online, ale databáze není dostupná. Jak znovu povolit databázi ClearDB?
 Kontakt [podporu ClearDB](https://www.cleardb.com/developers/help/support) databázi znovu povolit. Jim poskytnout vaše předplatné Azure informace a název databáze.

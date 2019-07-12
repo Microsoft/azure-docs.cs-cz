@@ -7,19 +7,20 @@ author: rkarlin
 manager: rkarlin
 editor: ''
 ms.assetid: 77af84f9-47bc-418e-8ce2-4414d7b58c0c
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/17/2019
 ms.author: rkarlin
-ms.openlocfilehash: 4e6ed18a49a77f8061c975bdf3ecb085ebf71317
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: 1c79aad557efb85a8797584c33c74983ef645d07
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190769"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67611317"
 ---
 # <a name="connect-your-domain-name-server"></a>Připojení serveru název domény
 
@@ -72,7 +73,7 @@ Následující tabulka popisuje připojené zdroje, které podporují toto řeš
 
 Ve službě Log Analytics vyhledejte schématu **DnsEvents** a ujistěte se, že existují události.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V tomto dokumentu jste zjistili, jak se připojit na místním zařízení DNS k Sentinelu Azure. Další informace o Azure Sentinelu, naleznete v následujících článcích:
 - Zjistěte, jak [umožňuje získat přehled vaše data a potenciální hrozby](quickstart-get-visibility.md).
 - Začínáme [detekuje hrozby s využitím Azure Sentinelu](tutorial-detect-threats.md).

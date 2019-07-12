@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 03/22/2019
+ms.date: 07/10/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5919eebccad8d7f9e048ae07be296eaaaf8428eb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 535842989ef49ee13a5ddee7c4349a3b819f741c
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112112"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797842"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Referenční informace k nastavení Azure Active Directory podmíněného přístupu
 
@@ -91,7 +91,7 @@ V zásadách podmíněného přístupu můžete nakonfigurovat podmínku platfor
 
 - Android
 - iOS
-- telefon se systémem Windows
+- Windows Phone
 - Windows
 - macOS
 
@@ -101,7 +101,7 @@ V zásadách podmíněného přístupu můžete nakonfigurovat podmínku platfor
 
 Ve své zásady podmíněného přístupu můžete nakonfigurovat [klientské aplikace](conditions.md#client-apps) podmínku a jejich zapojení zásady tak, aby klientská aplikace, který inicioval pokus o přístup. Nastavení klienta aplikace podmínku udělit nebo blokovat přístup, když je proveden pokus o přístup z následujících typů klientských aplikací:
 
-- Prohlížeč
+- Browser
 - Mobilní aplikace a desktopové aplikace
 
 ![Řízení přístupu pro klientské aplikace.](./media/technical-reference/03.png)
@@ -114,14 +114,14 @@ Ve své zásady podmíněného přístupu můžete vybrat **prohlížeče** jako
 
 Toto nastavení funguje u všech prohlížečů. Tím se uspokojí zásady pro zařízení, jako je zařízení kompatibilní s požadavkem, následující operační systémy a prohlížeče jsou však podporovány:
 
-| Operační systém                     | Prohlížeče                                      |
+| OS                     | Prohlížeče                                      |
 | :--                    | :--                                           |
 | Windows 10             | Internet Explorer, Microsoft Edge, Chrome     |
 | Windows 8 nebo 8.1        | Internet Explorer, Chrome                     |
 | Windows 7              | Internet Explorer, Chrome                     |
 | iOS                    | Safari, Microsoft Edge, Intune Managed Browser |
 | Android                | Chrome, Microsoft Edge, Intune Managed Browser |
-| telefon se systémem Windows          | Internet Explorer, Microsoft Edge             |
+| Windows Phone          | Internet Explorer, Microsoft Edge             |
 | Windows Server 2016    | Internet Explorer, Microsoft Edge             |
 | Windows Server 2016    | Chrome                                        |
 | Windows Server 2012 R2 | Internet Explorer, Chrome                     |
@@ -134,7 +134,7 @@ Azure AD ve Windows 7, iOS, Android a macOS Určuje zařízení používají kli
 
 #### <a name="chrome-support"></a>Podpora Chrome
 
-Chrome podpoře v **Windows 10 Creators Update (verze 1703)** nebo později, nainstalujte [toto rozšíření](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji).
+Chrome podpoře v **Windows 10 Creators Update (verze 1703)** nebo později, nainstalujte [účty systému Windows 10 rozšíření](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji). Toto rozšíření je povinné, když zásady podmíněného přístupu vyžaduje konkrétní podrobnosti o zařízení.
 
 Toto rozšíření automaticky nasazovat do prohlížečů Chrome, vytvořte následující klíč registru:
 
@@ -142,7 +142,7 @@ Toto rozšíření automaticky nasazovat do prohlížečů Chrome, vytvořte ná
 | --- | --- |
 | `Path` | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
 | Name | 1 |
-| Type | REG_SZ (String) |
+| type | REG_SZ (String) |
 | Data | ppnbnpeolgkicgegkbkbjmhlideopiji; https://clients2.google.com/service/update2/crx |
 
 Chrome podpoře v **Windows 8.1 a 7**, vytvořte následující klíč registru:
@@ -151,7 +151,7 @@ Chrome podpoře v **Windows 8.1 a 7**, vytvořte následující klíč registru:
 | --- | --- |
 | `Path` | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
 | Name | 1 |
-| Type | REG_SZ (String) |
+| type | REG_SZ (String) |
 | Data | {"vzor": "https://device.login.microsoftonline.com filtr","": {"VYSTAVITELE": {"CN": "MS-organizace přístup"}}} |
 
 Tyto prohlížeče podporují ověřování zařízení umožňuje identifikovat a ověřovat na zásady zařízení. Kontrola zařízení selže, pokud je spuštěn prohlížeč v privátním režimu.
@@ -249,7 +249,7 @@ Toto nastavení platí pro následující klientské aplikace:
 - **Vyžadovat zásady ochrany aplikací** požadavky:
     - Podporuje jenom pro iOS a Android pro [podmínku platformy zařízení](#device-platform-condition).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Přehled podmíněného přístupu najdete v tématu [co je podmíněný přístup v Azure Active Directory?](../active-directory-conditional-access-azure-portal.md)
 - Pokud jste připraveni ke konfiguraci zásad podmíněného přístupu ve vašem prostředí, najdete v článku [doporučené postupy pro podmíněný přístup v Azure Active Directory](best-practices.md).

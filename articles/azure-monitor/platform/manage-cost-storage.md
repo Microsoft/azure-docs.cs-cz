@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 06/06/2019
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: b7fa59f4086608a8bacabde21f0c02c108f1f5e8
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: bcfefc9698f7f251e99531750e19e7c06395e064
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67466728"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655691"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Spravovat využití a nákladů s protokoly Azure monitoru
 
@@ -87,7 +87,7 @@ Abyste mohli začít, zde jsou doporučené nastavení pro upozornění:
    - Název signálu: Vlastní protokol hledání
    - Vyhledávací dotaz: Operace | má-li podrobnosti "nadměrnou.
    - Na základě: Počet výsledků
-   - Podmínka: Větší než
+   - Podmínka: Je větší než
    - Prahová hodnota: 0
    - Období: 5 (minuty)
    - Frekvence: 5 (minuty)
@@ -413,7 +413,7 @@ Pokud obdržíte upozornění, pomocí kroků v následující části můžete 
 
 ## <a name="limits-summary"></a>Souhrn omezení
 
-Existují některé další omezení Log Analytics, z nichž některé závisí na cenové úrovni Log Analytics. Ty jsou popsány [tady](https://docs.microsoft.com/azure/azure-subscription-service-limits#log-analytics-limits).
+Existují některé další omezení Log Analytics, z nichž některé závisí na cenové úrovni Log Analytics. Ty jsou popsány [tady](https://docs.microsoft.com/azure/azure-subscription-service-limits#log-analytics-workspaces).
 
 
 ## <a name="next-steps"></a>Další postup

@@ -13,12 +13,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: spelluru
-ms.openlocfilehash: b6bba4ed45530ba66a1adde274022a80091cd199
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0c4beede2508104fc9af934d3f9a2bbcce791292
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60747995"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67626187"
 ---
 # <a name="process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Zpracování událostí Apache Kafka pro Event Hubs s využitím Stream Analytics 
 Tento článek popisuje, jak Streamovat data do služby Event Hubs povolené Kafka a zpracovat je s Azure Stream Analytics. Provede vás provede následujícími kroky: 
@@ -163,7 +163,7 @@ Dotaz v úloze Stream Analytics data prochází bez provádění jakékoli anal�
  
 
 ### <a name="define-a-query"></a>Definování dotazu na
-Po dokončení nastavení úlohy Stream Analytics pro čtení příchozího datového streamu je dalším krokem vytvoření transformace, která analyzuje data v reálném čase. Transformační dotaz definujete pomocí jazyka [Stream Analytics Query Language](https://msdn.microsoft.com/library/dn834998.aspx). V tomto podrobném návodu definujete dotaz, který prochází data bez provedení jakékoli transformace.
+Po dokončení nastavení úlohy Stream Analytics pro čtení příchozího datového streamu je dalším krokem vytvoření transformace, která analyzuje data v reálném čase. Transformační dotaz definujete pomocí jazyka [Stream Analytics Query Language](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference). V tomto podrobném návodu definujete dotaz, který prochází data bez provedení jakékoli transformace.
 
 1. Vyberte **dotazu**.
 2. V okně dotazu nahraďte `[YourOutputAlias]` se alias pro výstup jste vytvořili dříve.

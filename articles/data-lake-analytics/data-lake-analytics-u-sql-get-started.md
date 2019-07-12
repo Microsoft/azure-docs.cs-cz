@@ -9,12 +9,12 @@ ms.assetid: 57143396-ab86-47dd-b6f8-613ba28c28d2
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/23/2017
-ms.openlocfilehash: 9de5c7228944bd0448d9dfa833ef223140ccf0e8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2a138801ba13c6008880e3d24c89d1c23323b853
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60813844"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67626222"
 ---
 # <a name="get-started-with-u-sql-in-azure-data-lake-analytics"></a>Začínáme s jazykem U-SQL ve službě Azure Data Lake Analytics
 U-SQL je jazyk, který spojuje deklarativní SQL pomocí imperativního jazyka C# umožňuje zpracovávat data v libovolném měřítku. Prostřednictvím funkce škálovatelné a distribuované dotazu U-SQL můžete efektivně analyzovat data napříč relačními úložišť, jako je Azure SQL Database. Pomocí U-SQL můžete zpracovávání nestrukturovaných dat použitím schéma při čtení a vložení vlastní logiky a uživatelem definovanými funkcemi. Navíc U-SQL obsahuje rozšíření, která umožňuje velice přesně kontrolovat, jak provádět ve velkém měřítku. 
@@ -22,7 +22,7 @@ U-SQL je jazyk, který spojuje deklarativní SQL pomocí imperativního jazyka C
 ## <a name="learning-resources"></a>Studijní materiály
 
 * [Kurzu U-SQL](https://aka.ms/usqltutorial) poskytuje návod většinu jazyk U-SQL. Tento dokument se doporučuje pro všechny vývojáře, kteří chtějí naučit jazyk U-SQL pro čtení.
-* Podrobné informace o **syntaxi jazyka U-SQL**, najdete v článku [referenční příručka jazyka U-SQL](https://go.microsoft.com/fwlink/p/?LinkId=691348).
+* Podrobné informace o **syntaxi jazyka U-SQL**, najdete v článku [referenční příručka jazyka U-SQL](https://docs.microsoft.com/u-sql/).
 * K pochopení **filozofie návrhu U-SQL**, najdete v příspěvku blogu Visual Studio [Představujeme jazyk U-SQL – objekt, který usnadňuje velké objemy dat zpracování](https://blogs.msdn.microsoft.com/visualstudio/2015/09/28/introducing-u-sql-a-language-that-makes-big-data-processing-easy/).
 
 ## <a name="prerequisites"></a>Požadavky
@@ -224,6 +224,6 @@ Klauzule HAVING U-SQL je možné omezit výstup do skupin, které splňují zada
 
 Pro scénáře pokročilých agregace, naleznete v referenční dokumentaci U-SQL pro [agregovat, analýzy a odkazují na funkce](/u-sql/built-in-functions)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Přehled služby Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)
 * [Vývoj skriptů U-SQL pomocí nástrojů Data Lake pro Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)

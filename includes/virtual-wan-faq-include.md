@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/07/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 9d8482fdf8e914801fb77e2ab1712145fa3ccea0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9cad403e39239ea92aa432ef3234c5388bfa95c7
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67077496"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673278"
 ---
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpngateway"></a>Jaký je rozdíl mezi bránou virtuální sítě Azure (VPN Gateway) a Azure Virtual WAN vpngateway?
 
@@ -109,7 +109,7 @@ Ano.
 
 ### <a name="how-is-virtual-wan-different-from-the-existing-azure-virtual-network-gateway"></a>Jak se Virtual WAN liší od existující brány virtuální sítě Azure?
 
-Síť VPN brány virtuální sítě je omezená na 30 tunelů. Pro připojení byste měli pro rozsáhlé sítě VPN používat Virtual WAN. Až 1 000 připojení pro větev se můžete spojit s 2 GB/s v Centru pro všechny oblasti s výjimkou oblasti západní střed. Pro oblast USA – středozápad je dostupná rychlost 20 GB/s. V budoucnu budeme postupně zavádět rychlost 20 GB/s i do dalších oblastí. Připojení je tunel typu aktivní-aktivní z místního zařízení VPN do virtuálního rozbočovače. V jedné oblasti, což znamená, že připojíte více než 1000 větví napříč centry může mít jednoho rozbočovače.
+Síť VPN brány virtuální sítě je omezená na 30 tunelů. Pro připojení byste měli pro rozsáhlé sítě VPN používat Virtual WAN. Až 1 000 připojení pro větev se můžete spojit s 20 GB/s v Centru pro všechny oblasti. Připojení je tunel typu aktivní-aktivní z místního zařízení VPN do virtuálního rozbočovače. V jedné oblasti, což znamená, že připojíte více než 1000 větví napříč centry může mít jednoho rozbočovače.
 
 ### <a name="how-is-virtual-wan-supporting-sd-wan-devices"></a>Jak se virtuální sítě WAN podporu SD-WAN zařízení?
 

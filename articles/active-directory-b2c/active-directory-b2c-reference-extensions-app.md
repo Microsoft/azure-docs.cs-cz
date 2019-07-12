@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 9/06/2017
+ms.date: 09/06/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d9fbceee8fb0e565df668406f09df27272318dd0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e5d38d8d791c6b932d8a28a898f2e2b80caff7ac
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66509486"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67654071"
 ---
 # <a name="azure-ad-b2c-extensions-app"></a>Azure AD B2C: Aplikace rozšíření
 
@@ -40,7 +40,7 @@ Pokud omylem odstranili b2c-extensions-app, je nutné 30 dnů, abyste ho mohli o
 1. Přihlaste se k webu jako globální správce adresáře Azure AD B2C, který chcete obnovit odstraněné aplikace pro. Tento globální správce, musí mít e-mailovou adresu, která je podobný následujícímu: `username@{yourTenant}.onmicrosoft.com`.
 1. Vydat HTTP GET na adresu URL `https://graph.windows.net/myorganization/deletedApplications` s verzí api-version = 1.6. Tato operace se zobrazí všechny aplikace, které se odstranily za posledních 30 dnů.
 1. Vyhledat aplikaci v seznamu, kde název začíná řetězcem "aplikace b2c rozšíření" a zkopírujte její `objectid` hodnotu vlastnosti.
-1. Vydání požadavku HTTP POST na adresu URL `https://graph.windows.net/myorganization/deletedApplications/{OBJECTID}/restore`. Nahradit `{OBJECTID}` část adresy URL se `objectid` z předchozího kroku. 
+1. Vydání požadavku HTTP POST na adresu URL `https://graph.windows.net/myorganization/deletedApplications/{OBJECTID}/restore`. Nahradit `{OBJECTID}` část adresy URL se `objectid` z předchozího kroku.
 
 Nyní byste měli být schopni [obnovené aplikace zobrazit](#verifying-that-the-extensions-app-is-present) na webu Azure Portal.
 

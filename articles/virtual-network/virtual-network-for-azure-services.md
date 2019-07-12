@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: malop;kumud
-ms.openlocfilehash: e5481b0e262021e28a398b72b5ad022673947609
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 357122abba483a96dd9f2d602a793ee06e80b245
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65409510"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67785554"
 ---
 # <a name="virtual-network-integration-for-azure-services"></a>Integrace virtuální sítě pro služby Azure
 
@@ -43,11 +43,11 @@ Nasazení služby v rámci virtuální sítě poskytuje následující možnosti
 - Instance služby, které se nasazují do podsítě ve virtuální síti. Příchozí a odchozí síťový přístup pro podsíť musí být otevřeny prostřednictvím [skupiny zabezpečení sítě](security-overview.md#network-security-groups), podle pokynů poskytovaných službou.
 - Některé služby také omezení na podsíť, ve které se nasadí, omezení uplatnění zásad, trasy nebo kombinování virtuálních počítačů a prostředky služeb ve stejné podsíti. Obraťte se na každou službu na konkrétní omezení, jak můžou časem změnit. Příklady těchto služeb se soubory Azure NetApp, vyhrazené HSM, Azure Container Instances, App Service. 
 - Volitelně může vyžadovat služby [delegovaný podsítě](virtual-network-manage-subnet.md#add-a-subnet) jako explicitní identifikátor, že podsíť může hostovat konkrétní službu. Delegování, služby mít explicitní oprávnění k vytváření prostředků specifické pro služby v podsíti delegovaný.
-- Viz příklad odpověď rozhraní REST API na [virtuální síť s podsítí delegované](https://docs.microsoft.com/rest/api/virtualnetwork/virtualnetworks/get#get_virtual_network_with_a_delegated_subnet). Úplný seznam služeb, které používají model delegované podsítě můžete získat přes [dostupné delegace](https://docs.microsoft.com/rest/api/virtualnetwork/availabledelegations/list) rozhraní API.
+- Viz příklad odpověď rozhraní REST API na [virtuální síť s podsítí delegované](https://docs.microsoft.com/rest/api/virtualnetwork/virtualnetworks/get#get-virtual-network-with-a-delegated-subnet). Úplný seznam služeb, které používají model delegované podsítě můžete získat přes [dostupné delegace](https://docs.microsoft.com/rest/api/virtualnetwork/availabledelegations/list) rozhraní API.
 
 ### <a name="services-that-can-be-deployed-into-a-virtual-network"></a>Služby, které je možné nasadit do virtuální sítě
 
-|Category|Služba| Dedicated¹ podsítě
+|Kategorie|Služba| Dedicated¹ podsítě
 |-|-|-|
 | Compute | Virtuální počítače: [Linux](../virtual-machines/linux/infrastructure-networking-guidelines.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo [Windows](../virtual-machines/windows/infrastructure-networking-guidelines.md?toc=%2fazure%2fvirtual-network%2ftoc.json) <br/>[Škálovací sady virtuálních počítačů](../virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-existing-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Cloudová služba](https://msdn.microsoft.com/library/azure/jj156091): Virtuální síť (klasická) pouze<br/> [Azure Batch](../batch/batch-api-basics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-network-vnet-and-firewall-configuration)| Ne <br/> Ne <br/> Ne <br/> No²
 | Síť | [Application Gateway - WAF](../application-gateway/application-gateway-ilb-arm.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Brány Firewall na Azure](../firewall/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) <br/>[Síťová virtuální zařízení](/windows-server/networking/sdn/manage/use-network-virtual-appliances-on-a-vn) | Ano <br/> Ano <br/> Ano <br/> Ne

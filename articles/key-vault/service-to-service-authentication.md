@@ -9,12 +9,12 @@ ms.author: mbaldwin
 ms.date: 07/06/2019
 ms.topic: conceptual
 ms.service: key-vault
-ms.openlocfilehash: 79d4254de40ef787b30eb4f483c86383a928ee1f
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: 6a748031f9d35e26eeb544f154477ea3449903f5
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67566228"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67796105"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Ověřování služba služba do služby Azure Key Vault pomocí rozhraní .NET
 
@@ -209,11 +209,16 @@ Chcete-li používat klientský certifikát pro ověřování instančních obje
 
 1. Nahraďte `{KeyVaultCertificateSecretIdentifier}` v tomto řetězci připojení s identifikátorem certifikátu:
 
-```
-RunAs=App;AppId={TestAppId};KeyVaultCertificateSecretIdentifier={KeyVaultCertificateSecretIdentifier}
-```
+    ```
+    RunAs=App;AppId={TestAppId};KeyVaultCertificateSecretIdentifier={KeyVaultCertificateSecretIdentifier}
+    ```
 
-Pokud například váš trezor klíčů byla volána "myKeyVault" a vytvoří certifikát nazvaný 'myCert', identifikátor certifikátu by `https://myKeyVault.vault.azure.net/secrets/myCert`, a připojovací řetězec bude `RunAs=App;AppId={TestAppId};TenantId={TenantId};KeyVaultCertificateSecretIdentifier=https://myKeyVault.vault.azure.net/secrets/myCert`.
+    Pokud například váš trezor klíčů byla volána "myKeyVault" a vytvoří certifikát nazvaný 'myCert', by se identifikátor certifikátu:
+
+    ```
+    RunAs=App;AppId={TestAppId};KeyVaultCertificateSecretIdentifier=https://myKeyVault.vault.azure.net/secrets/myCert
+    ```
+
 
 ## <a name="connection-string-support"></a>Podpora řetězců připojení
 

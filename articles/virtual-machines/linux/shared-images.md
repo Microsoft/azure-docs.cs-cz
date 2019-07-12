@@ -4,7 +4,7 @@ description: V tomto článku se dozvíte, jak používat rozhraní příkazové
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: axayjo
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
@@ -14,14 +14,15 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/06/2019
-ms.author: akjosh; cynthn
+ms.author: akjosh
+ms.reviewer: cynthn
 ms.custom: ''
-ms.openlocfilehash: bb6db6e5d5e33b7c7b5ba5a8711a06d6394b71f2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5001e6a58bb309ddf9446b1a56b31eb9f37a138d
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66226007"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67708897"
 ---
 # <a name="create-a-shared-image-gallery-with-the-azure-cli"></a>Vytvoření galerie sdílené bitové kopie pomocí Azure CLI
 

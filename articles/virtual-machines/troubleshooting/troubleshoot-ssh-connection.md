@@ -5,7 +5,7 @@ keywords: SSH připojení se odmítlo, ssh chyba, azure ssh, připojení SSH se 
 services: virtual-machines-linux
 documentationcenter: ''
 author: genlin
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
 ms.assetid: dcb82e19-29b2-47bb-99f2-900d4cfb5bbb
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 05/30/2017
 ms.author: genli
-ms.openlocfilehash: 81e00c4a3b9490a05667d58952f7bdf8945bacdb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 190aab1f321aa9014eea95a63d525b394288b03b
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61405215"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709258"
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>Řešení potíží s připojením SSH k virtuálnímu počítači Azure Linux, který selže, chyby, nebo bylo odmítnuto
 Tento článek vám pomůže najít a opravit problémy, které jsou způsobeny chybami Secure Shell (SSH), selhání připojení SSH, nebo SSH byla odmítnuta, při pokusu o připojení pro virtuální počítač s Linuxem (VM). Webu Azure portal, rozhraní příkazového řádku Azure, nebo rozšíření přístupu virtuálních počítačů pro Linux můžete odstraňovat potíže a řešit problémy s připojením.
@@ -269,7 +269,7 @@ Zkuste tyto kroky k řešení nejběžnějších chyb připojení SSH pro virtu�
 * Kontrola stavu prostředků Virtuálních počítačů v případě problémů platformy.<br>
      Vyberte svůj virtuální počítač a přejděte dolů **nastavení** > **zkontrolovat stav**.
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 * Pokud jste stále nemáte přístup k SSH k virtuálnímu počítači po provedení kroků po, přečtěte si téma [podrobný postup řešení potíží](detailed-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) zkontrolovat další kroky k vyřešení vašeho problému.
 * Další informace o řešení potíží s přístupu k aplikacím, najdete v části [řešení potíží s přístupem k aplikaci spuštěné na virtuálním počítači Azure](../windows/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * Další informace o řešení potíží s virtuálním počítačům, které byly vytvořeny pomocí modelu nasazení classic najdete v tématu [resetování hesla nebo klíče SSH pro virtuální počítače se systémem Linux](../linux/classic/reset-access-classic.md).

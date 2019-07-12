@@ -4,7 +4,7 @@ description: Azure Disk Encryption nasadí do virtuálního počítače s Window
 services: virtual-machines-windows
 documentationcenter: ''
 author: ejarvi
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-windows
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: ejarvi
-ms.openlocfilehash: ff77f9fc017627143b14544af03d0d5e80813db9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9a3e135172f0744c053da816b3c77762dbe783c3
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67051705"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706098"
 ---
 # <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>Azure Disk Encryption pro Windows (Microsoft.Azure.Security.AzureDiskEncryption)
 
@@ -144,20 +144,20 @@ Pomocí `AADClientCertificate`:
 | Název | Hodnota / příklad | Typ dat |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.Azure.Security | string |
-| type | AzureDiskEncryptionForLinux | string |
+| publisher | Microsoft.Azure.Security | řetězec |
+| type | AzureDiskEncryptionForLinux | řetězec |
 | typeHandlerVersion | 0.1, 1.1 | int |
-| (schéma 0,1) AADClientID | tomuto: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | identifikátor GUID | 
-| (schéma 0,1) AADClientSecret | password | string |
-| (schéma 0,1) AADClientCertificate | thumbprint | string |
+| (schéma 0,1) AADClientID | tomuto: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
+| (schéma 0,1) AADClientSecret | password | řetězec |
+| (schéma 0,1) AADClientCertificate | thumbprint | řetězec |
 | DiskFormatQuery | {"dev_path":"","name":"","file_system":""} | Slovník JSON |
-| EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | string | 
-| KeyEncryptionAlgorithm | "RSA OAEP", "RSA 256 OAEP", "RSA1_5. | string |
-| KeyEncryptionKeyURL | url | string |
-| KeyVaultURL | url | string |
-| (volitelné) Passphrase | password | string | 
-| SequenceVersion | uniqueidentifier | string |
-| VolumeType | Operačního systému, dat, všechny | string |
+| EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | řetězec | 
+| KeyEncryptionAlgorithm | "RSA OAEP", "RSA 256 OAEP", "RSA1_5. | řetězec |
+| KeyEncryptionKeyURL | url | řetězec |
+| KeyVaultURL | url | řetězec |
+| (volitelné) Passphrase | password | řetězec | 
+| SequenceVersion | uniqueidentifier | řetězec |
+| VolumeType | Operačního systému, dat, všechny | řetězec |
 
 ## <a name="template-deployment"></a>Nasazení šablon
 Příklad nasazení šablony najdete v tématu [ vytvořit nový virtuální počítač šifrovaný Windows z image z Galerie](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image).

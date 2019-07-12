@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 04/19/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 1ce4e9c47bf6f885417b6c06c6036d3cadcaef7b
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 99559c0c77c3e4b29badec1c0be2d741df1f0621
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706451"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798379"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>Kurz: Použití příznaků funkcí v aplikaci ASP.NET Core
 
@@ -86,30 +86,42 @@ public class Startup
 
 Doporučujeme zachovat příznaků funkcí mimo aplikaci a spravovat samostatně. To můžete kdykoli upravit příznak stavy a se tyto změny se projeví v aplikaci hned. Konfigurace aplikace poskytuje centrálním umístění pro uspořádání a řízení všech příznaků funkcí přes vyhrazené uživatelské rozhraní portálu. Konfigurace aplikace také nabízí příznaky do vaší aplikace přímo prostřednictvím klienta .NET Core knihovny.
 
-Nejjednodušší způsob, jak připojit aplikaci ASP.NET Core do konfigurace aplikace je prostřednictvím poskytovatele konfigurace `Microsoft.Extensions.Configuration.AzureAppConfiguration`. Použití tohoto balíčku NuGet, přidejte následující kód, který *Program.cs* souboru:
+Nejjednodušší způsob, jak připojit aplikaci ASP.NET Core do konfigurace aplikace je prostřednictvím poskytovatele konfigurace `Microsoft.Azure.AppConfiguration.AspNetCore`. Použijte následující postup použijte tento balíček NuGet.
 
-```csharp
-using Microsoft.Extensions.Configuration.AzureAppConfiguration;
+1. Otevřít *Program.cs* a přidejte následující kód.
 
-public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-    WebHost.CreateDefaultBuilder(args)
-           .ConfigureAppConfiguration((hostingContext, config) => {
-               var settings = config.Build();
-               config.AddAzureAppConfiguration(options => {
-                   options.Connect(settings["ConnectionStrings:AppConfig"])
-                          .UseFeatureFlags();
-                });
-           })
-           .UseStartup<Startup>();
-```
+   ```csharp
+   using Microsoft.Extensions.Configuration.AzureAppConfiguration;
 
-Očekává se, že hodnoty příznak funkce v průběhu času měnit. Ve výchozím nastavení funkce Správce aktualizuje hodnoty příznak funkce každých 30 sekund. Následující kód ukazuje, jak změnit interval cyklického dotazování na 5 minut `options.UseFeatureFlags()` volání:
+   public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+       WebHost.CreateDefaultBuilder(args)
+              .ConfigureAppConfiguration((hostingContext, config) => {
+                  var settings = config.Build();
+                  config.AddAzureAppConfiguration(options => {
+                      options.Connect(settings["ConnectionStrings:AppConfig"])
+                             .UseFeatureFlags();
+                   });
+              })
+              .UseStartup<Startup>();
+   ```
+
+2. Otevřít *Startup.cs* a aktualizovat `Configure` způsob, jak přidat middleware pro povolení funkce hodnot příznaku se aktualizují v opakovaných intervalech při ASP.NET Core webová aplikace i nadále přijímat požadavky.
+
+   ```csharp
+   public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+   {
+       app.UseAzureAppConfiguration();
+       app.UseMvc();
+   }
+   ```
+
+Očekává se, že hodnoty příznak funkce v průběhu času měnit. Ve výchozím nastavení hodnoty příznaků funkcí jsou uložené v mezipaměti po dobu 30 sekund, takže operace aktualizace aktivuje, když middleware obdrží žádost by aktualizovat hodnotu, dokud nevyprší hodnota uložená v mezipaměti. Následující kód ukazuje, jak změnit čas vypršení platnosti mezipaměti nebo interval cyklického dotazování na 5 minut `options.UseFeatureFlags()` volání.
 
 ```csharp
 config.AddAzureAppConfiguration(options => {
     options.Connect(settings["ConnectionStrings:AppConfig"])
            .UseFeatureFlags(featureFlagOptions => {
-                featureFlagOptions.PollInterval = TimeSpan.FromSeconds(300);
+                featureFlagOptions.CacheExpirationTime = TimeSpan.FromMinutes(5);
            });
 });
 ```

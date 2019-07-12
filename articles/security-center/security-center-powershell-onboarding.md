@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/2/2018
 ms.author: rkarlin
-ms.openlocfilehash: 73043680ea7b8b63a329d0a457449b635b7b80f2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9bf2704fbbaa2c7a469dcefa3dc3f3cd7e4d5504
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60703587"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67626266"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>Automatizace registrace služby Azure Security Center pomocí Powershellu
 
@@ -98,10 +98,10 @@ Nyní můžete tyto rutiny prostředí PowerShell se skripty pro automatizaci pr
 
 
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 Další informace o použití Powershellu k automatizaci připojování ke službě Security Center, najdete v následujícím článku:
 
-* [Az.Security](https://github.com/Azure/azure-powershell/blob/master/src/ResourceManager/Security/Commands.Security/help/Az.Security.md).
+* [Az.Security](https://docs.microsoft.com/powershell/module/az.security).
 
 Další informace o službě Security Center, najdete v následujícím článku:
 

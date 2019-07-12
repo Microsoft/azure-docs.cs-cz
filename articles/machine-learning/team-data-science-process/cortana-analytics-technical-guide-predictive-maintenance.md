@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: feccaea0451ae36d841aae95ed0baf54f90c2700
-ms.sourcegitcommit: 3107874d7559ea975e4d55ae33cdf45f4b5485e4
+ms.openlocfilehash: 37acd88dbfe8ed1790f1bfa68d5e9762a861ddc7
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67568265"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67626404"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace"></a>Technický průvodce do šablony řešení Cortana Intelligence pro prediktivní údržby v leteckém průmyslu
 
@@ -103,7 +103,7 @@ Dotaz Azure Stream Analytics můžete zobrazit tak:
   * ***DOTAZ*** zobrazíte samotný dotaz
   * ***VYPÍŠE*** Chcete-li zobrazit různé výstupy
 
-Informace o Azure Stream Analytics konstrukce dotazů najdete v [referenční příručka k Stream Analytics Query](https://msdn.microsoft.com/library/azure/dn834998.aspx) na webové stránce MSDN.
+Informace o Azure Stream Analytics konstrukce dotazů najdete v [referenční příručka k Stream Analytics Query](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) na webové stránce MSDN.
 
 Dotazy v tomto řešení výstupní tři datové sady s téměř v reálném čase analýzy informace o příchozí datový proud na řídicí panel Power BI poskytuje jako součást Tato šablona řešení. Protože implicitní znalosti o formátu příchozí data se tyto dotazy musí být změněn podle datový formát.
 

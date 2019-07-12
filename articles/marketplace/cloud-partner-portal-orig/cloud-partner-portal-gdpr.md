@@ -7,17 +7,17 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 221f559dde2017c9b5d13dd4e06a140a6bcb5e2e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 91db369f9a2a0439bdbaf8600d1b329f0da00aa0
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935428"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786475"
 ---
 <a name="cloud-partner-portal-gdpr-compliance"></a>Dodržování předpisů GDPR portál partnerů cloudu
 ====================================
 
-[Obecné nařízení (GDPR)](https://ec.europa.eu/justice/data-protection/reform/index_en.htm)je zákon ochrany a soukromí dat Evropské unie (EU). GDPR ukládá pravidla pro společnosti, státních úřadů, – neziskové organizace a jinými organizacemi, které nabízejí zboží a služby lidem v EU, nebo že shromažďovat a analyzovat data svázaná s pobytem v EU.
+[Obecné nařízení (GDPR)](https://ec.europa.eu/info/law/law-topic/data-protection/reform_en/) je zákon ochrany a soukromí dat Evropské unie (EU). GDPR ukládá pravidla pro společnosti, státních úřadů, – neziskové organizace a jinými organizacemi, které nabízejí zboží a služby lidem v EU, nebo že shromažďovat a analyzovat data svázaná s pobytem v EU.
 
 Portál partnerů cloudu poskytuje podrobné informace týkající se zpracování zákaznických dat a bezpečnostních opatření použitým k zamknutí tato data. Tyto informace jsou přístupné přes svého prostředí v rámci produktu.
 

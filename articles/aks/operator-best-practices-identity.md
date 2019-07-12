@@ -2,17 +2,17 @@
 title: Osvědčené postupy – operátor - Identity ve službě Azure Kubernetes služby (AKS)
 description: Přečtěte si osvědčené postupy clusteru operátor jak spravovat ověřování a autorizace pro clustery ve službě Azure Kubernetes Service (AKS)
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.author: iainfou
-ms.openlocfilehash: f98e38556458b8d8a675d1e3f985aacfca022082
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.author: mlearned
+ms.openlocfilehash: 82bf59dddeecab0addf00a935f55be8d1d7952d3
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "65074163"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614783"
 ---
 # <a name="best-practices-for-authentication-and-authorization-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro ověřování a autorizace ve službě Azure Kubernetes Service (AKS)
 
@@ -48,7 +48,7 @@ Vytvoření clusteru AKS, který používá Azure AD najdete v tématu [integrac
 
 **Osvědčené postupy pro moduly** – použití Kubernetes RBAC k definování, které uživatele nebo skupiny mají oprávnění k prostředkům v clusteru. Vytvoření role a vazby, které přiřazují nejmenší rozsah oprávnění nutných. Integrace s Azure AD tak, aby změnu stavu uživatele nebo členství ve skupině se automaticky aktualizuje a přístup k prostředkům clusteru je aktuální.
 
-V systému Kubernetes můžete zadat podrobné řízení přístupu k prostředkům v clusteru. Oprávnění lze definovat na úrovni clusteru nebo na konkrétní obory názvů. Můžete definovat, jaké prostředky je možné spravovat a s jakým oprávněním. Tyto role jsou použitého k uživatelům nebo skupinám s vazbou. Další informace o *role*, *ClusterRoles*, a *vazby*, naleznete v tématu [možnosti přístupu a identit pro službu Azure Kubernetes Service (AKS)] [aks-concepts-identity].
+V systému Kubernetes můžete zadat podrobné řízení přístupu k prostředkům v clusteru. Oprávnění lze definovat na úrovni clusteru nebo na konkrétní obory názvů. Můžete definovat, jaké prostředky je možné spravovat a s jakým oprávněním. Tyto role jsou použitého k uživatelům nebo skupinám s vazbou. Další informace o *role*, *ClusterRoles*, a *vazby*, naleznete v tématu [možnosti přístupu a identit pro službu Azure Kubernetes Service (AKS)][aks-concepts-identity].
 
 Například můžete vytvořit Role, která uděluje plný přístup k prostředkům v oboru názvů s názvem *finanční aplikace*, jak je znázorněno v následujícím příkladu YAML manifestu:
 
@@ -84,7 +84,7 @@ roleRef:
 
 Když *developer1\@contoso.com* ověření pro cluster AKS, mají úplná oprávnění k prostředkům v *finanční aplikace* oboru názvů. V tomto, které logicky oddělená a ovládací prvek přístup k prostředkům. Kubernetes RBAC byste měli použít ve spojení s Azure AD – integrace, jak je popsáno v předchozí části.
 
-Jak používat skupiny Azure AD k řízení přístupu k prostředkům Kubernetes pomocí RBAC najdete v tématu [řízení přístupu k prostředkům clusteru pomocí Azure Active Directory identity a řízení přístupu na základě role ve službě AKS] [ azure-ad-rbac].
+Jak používat skupiny Azure AD k řízení přístupu k prostředkům Kubernetes pomocí RBAC najdete v tématu [řízení přístupu k prostředkům clusteru pomocí Azure Active Directory identity a řízení přístupu na základě role ve službě AKS][azure-ad-rbac].
 
 ## <a name="use-pod-identities"></a>Používat pod identity
 

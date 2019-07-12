@@ -9,12 +9,12 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: conceptual
 ms.date: 03/02/2018
-ms.openlocfilehash: 7c51a0934457a2fcc03f9be1535712e97ac91a1e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 833067f53f53f347ce091a64702d44a78cde836f
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60781163"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657102"
 ---
 # <a name="submit-a-workflow-to-microsoft-genomics-using-a-sas-instead-of-a-storage-account-key"></a>Odeslání pracovního postupu do služby Microsoft Genomics pomocí SAS místo klíče účtu úložiště 
 
@@ -58,7 +58,7 @@ Rozsah SAS pro vstupní soubory musí být omezený na konkrétní vstupní soub
 
 ### <a name="set-up-create-a-sas-programmatically"></a>Nastavení: Vytvoření SAS prostřednictvím kódu programu
 
-Informace o vytvoření SAS pomocí sady SDK služby Azure Storage najdete ve stávající dokumentaci v různých jazycích, včetně [.NET](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2#generate-a-shared-access-signature-uri-for-a-blob), [Pythonu](https://docs.microsoft.com/azure/storage/blobs/storage-python-how-to-use-blob-storage) a [Node.js](https://docs.microsoft.com/azure/storage/blobs/storage-nodejs-how-to-use-blob-storage). 
+Informace o vytvoření SAS pomocí sady SDK služby Azure Storage najdete ve stávající dokumentaci v různých jazycích, včetně [.NET](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1), [Pythonu](https://docs.microsoft.com/azure/storage/blobs/storage-python-how-to-use-blob-storage) a [Node.js](https://docs.microsoft.com/azure/storage/blobs/storage-nodejs-how-to-use-blob-storage). 
 
 Pokud chcete vytvořit SAS bez sady SDK, můžete řetězec dotazu SAS včetně všech informací potřebných k ověření SAS vytvořit přímo. Podrobný popis součástí řetězce dotazu SAS a způsobu jeho vytvoření najdete v těchto [pokynech](https://docs.microsoft.com/rest/api/storageservices/constructing-a-service-sas). Požadovaný podpis SAS se vytvoří vygenerováním kódu HMAC s použitím ověřovacích informací o objektu blob nebo kontejneru, jak je popsáno v těchto[ pokynech](https://docs.microsoft.com/rest/api/storageservices/service-sas-examples).
 

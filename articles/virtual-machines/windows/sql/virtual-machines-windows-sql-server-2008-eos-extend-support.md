@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/08/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ecb7030fa3652525a36ce15d66ea6e5daf9c3296
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: b16fecd6db1f4bed319c832795a2252f8de96c6c
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67304228"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67607134"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>Rozšíření podpory pro SQL Server 2008 a SQL Server 2008 R2 s Azure
 
@@ -43,7 +43,7 @@ Image nasazené prostřednictvím webu Marketplace dodávají s předinstalovan�
 ## <a name="licensing"></a>Licencování
 Nasazení s průběžnými platbami SQL serveru 2008 R2 můžete převést na [Azure Hybrid Benefit (AHB)](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
-Licenci na Software Assurance (SA) na základě převést na průběžné platby, zákazníci měli zaregistrovat s virtuálním Počítačem SQL [poskytovatele prostředků](virtual-machines-windows-sql-ahb.md#register-sql-server-vm-with-sql-resource-provider). Jakmile zaregistrované u poskytovatele prostředků SQL VM, bude typ licence SQL zaměnitelné mezi AHB a s průběžnými platbami.
+Licenci na Software Assurance (SA) na základě převést na průběžné platby, zákazníci měli zaregistrovat s virtuálním Počítačem SQL [poskytovatele prostředků](virtual-machines-windows-sql-register-with-resource-provider.md). Jakmile zaregistrované u poskytovatele prostředků SQL VM, bude typ licence SQL zaměnitelné mezi AHB a s průběžnými platbami.
 
 Samoobslužné nainstalované instance systému SQL Server 2008 nebo SQL Server 2008 R2 na virtuálním počítači Azure můžete zaregistrovat poskytovatele prostředků SQL a jejich typ licence přejděte k průběžným platbám.
 
@@ -69,7 +69,7 @@ Snímky konzistentní s Azure Site Recovery k zajištění obnovení; vyžaduje 
 - **Azure Site Recovery**: Mezi zónami a oblastí prostřednictvím replikace Azure Site Recovery můžete replikovat virtuální počítač. SQL Server vyžaduje snímky konzistentní s aplikací pro zajištění obnovení v případě havárie. Azure Site Recovery nabízí minimální cíle bodu obnovení za 1 hodinu a dvouhodinový + doba obnovení systému SQL Server RTO pro SESTAVENÁ SQL Server zotavení po Havárii.
 
 ## <a name="security-patching"></a>Opravy chyb zabezpečení
-Aktualizace rozšířené zabezpečení pro virtuální počítače s SQL serverem budou doručeny prostřednictvím kanálů Microsoft Update, jakmile se virtuální počítač SQL Server byl zaregistrován u SQL [poskytovatele prostředků](virtual-machines-windows-sql-ahb.md#register-sql-server-vm-with-sql-resource-provider). Opravy si můžete stáhnout buď ručně nebo automaticky.
+Aktualizace rozšířené zabezpečení pro virtuální počítače s SQL serverem budou doručeny prostřednictvím kanálů Microsoft Update, jakmile se virtuální počítač SQL Server byl zaregistrován u SQL [poskytovatele prostředků](virtual-machines-windows-sql-register-with-resource-provider.md). Opravy si můžete stáhnout buď ručně nebo automaticky.
 
 **Automatizované opravy** jsou ve výchozím nastavení povolené. Automatizované opravy umožňují na platformě Azure automaticky opravovat SQL Server a operační systém. Den v týdnu, čas a dobu trvání časového období údržby můžete určit, pokud je nainstalované rozšíření SQL IaaS. V té době pak Azure nainstaluje potřebné opravy. V rámci plánování intervalu údržby se pro čas používá národní prostředí virtuálních počítačů.  Další informace najdete v tématu [Automatizované opravy pro SQL Server v Azure Virtual Machines](virtual-machines-windows-sql-automated-patching.md).
 

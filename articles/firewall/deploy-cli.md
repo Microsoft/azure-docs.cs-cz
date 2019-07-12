@@ -4,15 +4,15 @@ description: V tomto článku se dozvíte, jak nasadit a nakonfigurovat Firewall
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.date: 06/11/2019
+ms.date: 7/10/2019
 ms.author: victorh
 ms.topic: article
-ms.openlocfilehash: b40ac789fbc331e779e85462724e5c8a8e9bce47
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 24954eecde58c978fa3e14bb3a2d411d708687a3
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67083350"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707165"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-cli"></a>Nasazení a konfiguraci brány Firewall Azure pomocí Azure CLI
 
@@ -20,7 +20,7 @@ ms.locfileid: "67083350"
 
 Jedním ze způsobů, jak můžete řídit odchozí síťový přístup z podsítě Azure, je použít Azure Firewall. Azure Firewall umožňuje nakonfigurovat:
 
-* Pravidla aplikace, která definují plně kvalifikované názvy domén, ke kterým je možné získat přístup z podsítě.
+* Pravidla aplikace, která definují plně kvalifikované názvy domén, ke kterým je možné získat přístup z podsítě. Plně kvalifikovaný název lze také [zahrnují instance SQL](sql-fqdn-filtering.md).
 * Pravidla sítě, která definují zdrojovou adresu, protokol, cílový port a cílovou adresu.
 
 Síťový provoz podléhá nakonfigurovaným pravidlům brány firewall, když ho směrujete na bránu firewall jako na výchozí bránu podsítě.
@@ -54,6 +54,13 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 ### <a name="azure-cli"></a>Azure CLI
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, spusťte Azure CLI verze 2.0.4 nebo novější. Pokud chcete zjistit verzi, spusťte **příkaz az--verze**. Informace o instalaci nebo upgradu najdete v tématu [instalace Azure CLI]( /cli/azure/install-azure-cli).
+
+Instalace rozšíření Brána Firewall služby Azure:
+
+```azurecli-interactive
+az extension add -n azure-firewall
+```
+
 
 ## <a name="set-up-the-network"></a>Nastavit síť
 

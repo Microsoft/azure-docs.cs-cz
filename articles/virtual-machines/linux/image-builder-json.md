@@ -6,13 +6,13 @@ ms.author: cynthn
 ms.date: 05/10/2019
 ms.topic: article
 ms.service: virtual-machines-linux
-manager: jeconnoc
-ms.openlocfilehash: a577a2a2a3b21cb027ba699450631a627f4f7a39
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
+manager: gwallace
+ms.openlocfilehash: 16ad2a93c9ff035166a738edba40c99075a6e7ba
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67501874"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671457"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Verze Preview: Vytvoření šablony Azure Image Builder 
 
@@ -58,8 +58,8 @@ Umístění je oblast, ve kterém se vytvoří vlastní image. Pro Image Builder
 - East US
 - Východní USA 2
 - Západní střed USA
-- Západní USA
-- Západní USA 2
+- USA – západ
+- USA – západ 2
 
 
 ```json
@@ -270,7 +270,7 @@ Podpora operačního systému: Windows
  
 Přizpůsobení vlastností:
 - **Typ**: WindowsRestart
-- **restartCommand** -příkaz k provedení restartu (volitelné). Výchozí formát je `'shutdown /r /f /t 0 /c \"packer restart\"'`.
+- **restartCommand** -příkaz k provedení restartu (volitelné). Výchozí hodnota je `'shutdown /r /f /t 0 /c \"packer restart\"'`.
 - **restartCheckCommand** – příkaz a zkontrolujte, pokud restartování proběhlo úspěšně (volitelné). 
 - **restartTimeout** – restartování časový limit zadaný jako řetězec velikosti a jednotku. Například `5m` (5 minut) nebo `2h` (2 hodiny). Výchozí hodnota je: "5 min.
 

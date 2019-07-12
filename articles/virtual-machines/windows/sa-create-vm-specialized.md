@@ -4,7 +4,7 @@ description: Vytvoření nového virtuálního počítače připojením speciali
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 3b7d3cd5-e3d7-4041-a2a7-0290447458ea
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: f2110a749c41f59b11a6d400faa2e42e751305fe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8833ddf487c36446b5e5b4ce1d6cfc6363d3ceeb
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64693815"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67710392"
 ---
 # <a name="create-a-vm-from-a-specialized-vhd-in-a-storage-account"></a>Vytvoření virtuálního počítače ze specializovaného VHD v účtu úložiště
 
@@ -110,7 +110,7 @@ V závislosti na připojení k síti a velikost souboru virtuálního pevného d
 
 Virtuální pevný disk můžete zkopírovat do jiného účtu úložiště má použít při vytváření nového virtuálního počítače duplicitní.
 
-### <a name="before-you-begin"></a>Než začnete
+### <a name="before-you-begin"></a>Před zahájením
 Ujistěte se, že jste:
 
 * Mít informace o **zdrojové a cílové účty úložiště**. Pro zdrojový virtuální počítač musíte mít názvy účet a kontejner úložiště. Obvykle bude mít název kontejneru **virtuální pevné disky**. Také musíte mít cílový účet úložiště. Pokud již nemáte, můžete vytvořit pomocí buď na portálu (**všechny služby** > účty úložiště > Přidat) nebo pomocí [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) rutiny. 

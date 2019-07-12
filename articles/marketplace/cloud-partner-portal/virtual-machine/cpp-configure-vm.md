@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: pabutler
-ms.openlocfilehash: 3d38efadfb8ad13d072056ef851be99d9540ad4b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0637491a1d7799bcaef594123aab53f89690c86f
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938437"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67654036"
 ---
 # <a name="configure-the-azure-hosted-vm"></a>Konfigurace virtuálních počítačů hostovaných v Azure
 
@@ -66,7 +66,7 @@ Disky s operačním systémem Windows jsou zobecněn pomocí [nástroje sysprep]
 > [!WARNING]
 >  Protože aktualizace může běžet automaticky, až spustíte sysprep, měli byste vypnout virtuální počítač, dokud je nasazená.  Toto vypnutí zabrání následné aktualizace v provádění změn instancí operačního systému virtuálního pevného disku nebo služby nainstalovány.
 
-Další informace o spuštění příkazu sysprep najdete v tématu [postup generalizace virtuálního pevného disku](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image#steps-to-generalize-a-vhd)
+Další informace o spuštění příkazu sysprep najdete v tématu [postup generalizace virtuálního pevného disku](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource#generalize-the-windows-vm-using-sysprep)
 
 ### <a name="linux"></a>Linux
 

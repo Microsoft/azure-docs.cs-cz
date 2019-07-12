@@ -6,13 +6,13 @@ author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.date: 3/28/2019
-ms.author: amitsriva
-ms.openlocfilehash: a8b0ee159b1c4a4072ce5a86f9fb925744a415b3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: victorh
+ms.openlocfilehash: 39317c0448168bc2ed8fdd0455a210254887d496
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67048713"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655390"
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Stav back endu, diagnostické protokoly a metriky pro službu Application Gateway
 
@@ -157,7 +157,7 @@ Ve výchozím nastavení vygeneruje protokol aktivit Azure. Protokoly jsou zacho
 
 Přístup protokolu se vytvoří pouze v případě, že jste ho povolili pro každou instanci Application Gateway, jak je uvedeno v předchozích krocích. Data se ukládají v účtu úložiště, který jste zadali při povolování protokolování. Každý přístup ke službě Application Gateway se protokoluje ve formátu JSON, jak je znázorněno v následujícím příkladu v1:
 
-|Hodnota  |Popis  |
+|Value  |Popis  |
 |---------|---------|
 |instanceId     | Instance služby Application Gateway, který žádost zpracoval.        |
 |Když     | Původní IP adresa pro žádost.        |
@@ -197,7 +197,7 @@ Přístup protokolu se vytvoří pouze v případě, že jste ho povolili pro ka
 ```
 Služba Application Gateway a WAF v2 najdete v protokolech zobrazuje ještě pár informací:
 
-|Hodnota  |Popis  |
+|Value  |Popis  |
 |---------|---------|
 |instanceId     | Instance služby Application Gateway, který žádost zpracoval.        |
 |Když     | Původní IP adresa pro žádost.        |
@@ -237,7 +237,7 @@ Služba Application Gateway a WAF v2 najdete v protokolech zobrazuje ještě pá
         "receivedBytes": 65,
         "sentBytes": 553,
         "timeTaken": 205,
-        "sslEnabled": "off"
+        "sslEnabled": "off",
         "sslCipher": "",
         "sslProtocol": "",
         "serverRouted": "104.41.114.59:80",
@@ -253,7 +253,7 @@ Služba Application Gateway a WAF v2 najdete v protokolech zobrazuje ještě pá
 V protokolu výkonu se vygeneruje pouze v případě, že je povolená pro každou instanci Application Gateway, jak je uvedeno v předchozích krocích. Data se ukládají v účtu úložiště, který jste zadali při povolování protokolování. Data protokolu výkonu je generován v intervalech po 1 minutu. Se protokolují tato data:
 
 
-|Hodnota  |Popis  |
+|Value  |Popis  |
 |---------|---------|
 |instanceId     |  Instance služby Application Gateway pro které výkonu data jsou generována. Pro bránu aplikace s více instancí je jeden řádek pro každou instanci.        |
 |healthyHostCount     | Počet v dobrém stavu hostitelů ve fondu back-end.        |
@@ -299,10 +299,10 @@ Brány firewall protokolu se vytvoří pouze v případě, že je povolená pro 
 |ruleSetType     | Typ sady pravidel. Je k dispozici hodnota OWASP.        |
 |ruleSetVersion     | Verze se používá sada pravidel. Dostupné jsou hodnoty 2.2.9 a 3.0.     |
 |RuleId     | ID pravidla spouštěcí události.        |
-|message     | Uživatelsky přívětivé zprávu pro aktivační událost. Další podrobnosti jsou uvedeny v části Podrobnosti.        |
-|action     |  Akce v požadavku. Dostupné jsou hodnoty blokováno a povolené.      |
+|zpráva     | Uživatelsky přívětivé zprávu pro aktivační událost. Další podrobnosti jsou uvedeny v části Podrobnosti.        |
+|Akce     |  Akce v požadavku. Dostupné jsou hodnoty blokováno a povolené.      |
 |Lokality     | Web, pro který byl vygenerován v protokolu. V současné době pouze globální je uvedené, protože pravidla jsou globální.|
-|Podrobnosti     | Podrobnosti o spouštěcí události.        |
+|details     | Podrobnosti o spouštěcí události.        |
 |details.Message     | Popis pravidla.        |
 |details.data     | Konkrétní data uvedená v požadavku, který odpovídá pravidlo.         |
 |details.File     | Konfigurační soubor, který obsahoval pravidlo.        |

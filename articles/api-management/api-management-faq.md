@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: f7e93dc12b9932fed90c7f9fa3145e56a3488b32
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f4140754afa8de994b227dc187cd73c9ccfa86f9
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448023"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67666018"
 ---
 # <a name="azure-api-management-faqs"></a>Nejčastější dotazy k Azure API Management
 Získejte odpovědi na běžné dotazy, vzory a osvědčené postupy pro službu Azure API Management.
@@ -87,7 +87,7 @@ Zde je, jak můžete přidat uživatele do skupiny správců:
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Přejděte do skupiny prostředků, který má instance služby API Management, kterou chcete aktualizovat.
-3. Ve službě API Management, přiřaďte **Přispěvatel správy rozhraní Api** role pro uživatele.
+3. Ve službě API Management, přiřaďte **Přispěvatel služby Api Management** role pro uživatele.
 
 Teď nově přidané Přispěvatel můžete použít Azure PowerShell [rutiny](https://docs.microsoft.com/powershell/azure/overview). Tady je postup přihlášení jako správce:
 

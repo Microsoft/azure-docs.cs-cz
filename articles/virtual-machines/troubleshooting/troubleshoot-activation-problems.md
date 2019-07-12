@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: bc058cb3f27545b9e4ad8ef1062ca4d2fa4c9fa8
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 46f52cb0478b47f8f6b45356815bc4c74e7cc800
+ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67155148"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67724121"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Poradce při potížích aktivace virtuálního počítače Windows Azure
 
@@ -84,7 +84,6 @@ Pro virtuální počítač, který je vytvořen z vlastní image musíte nakonfi
 
 3. Ujistěte se, že je virtuální počítač nakonfigurovaný tak, aby používal správný server Azure KMS. Chcete-li to provést, spusťte následující příkaz:
   
-
     ```powershell
     Invoke-Expression "$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /skms kms.core.windows.net:1688"
     ```
@@ -93,29 +92,26 @@ Pro virtuální počítač, který je vytvořen z vlastní image musíte nakonfi
 
 4. Ověřte pomocí Pspingu, že máte připojení k serveru služby správy KLÍČŮ. Přejděte do složky, do které jste extrahovali stažený soubor Pstools.zip, a spusťte následující:
   
-
     ```
     \psping.exe kms.core.windows.net:1688
     ```
-
-  
    Ujistěte se, že se na předposledním řádku výstupu zobrazí následující: Odeslání = 4, přijaté = 4, bylo ztraceno = 0 (ztráty 0 %).
 
    Pokud bylo ztraceno je větší než 0 (nula), virtuální počítač nemá připojení k serveru služby správy KLÍČŮ. V takovém případě pokud je virtuální počítač ve virtuální síti a má vlastní server DNS zadán, je nutné tento server DNS je schopen převést kms.core.windows.net. Nebo změnit DNS server, který kms.core.windows.net vyřešit.
 
    Všimněte si, že pokud odeberete všechny servery DNS z virtuální sítě, virtuální počítače používají interní služba DNS Azure. Tato služba dokáže přeložit kms.core.windows.net.
   
-Dál ověřte, že není nakonfigurovaná brána firewall hosta způsobem, který se bude blokovat pokusy o aktivaci.
+    Také se ujistěte, že odchozí síťový provoz na koncový bod služby správy KLÍČŮ se 1688 port není blokován branou firewall ve virtuálním počítači.
 
-1. Po ověření úspěšného připojení k kms.core.windows.net, spusťte následující příkaz v tomto řádku se zvýšenými oprávněními prostředí Windows PowerShell. Tento příkaz se několikrát pokusí o aktivaci.
+5. Po ověření úspěšného připojení k kms.core.windows.net, spusťte následující příkaz v tomto řádku se zvýšenými oprávněními prostředí Windows PowerShell. Tento příkaz se několikrát pokusí o aktivaci.
 
     ```powershell
-    1..12 | ForEach-Object { Invoke-Expression “$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /ato” ; start-sleep 5 }
+    1..12 | ForEach-Object { Invoke-Expression "$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /ato" ; start-sleep 5 }
     ```
 
-Po úspěšné aktivaci se vrátí podobné informace:
-
-**Aktivace Windows(R) ServerDatacenter edition (12345678-1234-1234-1234-12345678)... Produkt se úspěšně aktivoval.**
+    Po úspěšné aktivaci se vrátí podobné informace:
+    
+    **Aktivace Windows(R) ServerDatacenter edition (12345678-1234-1234-1234-12345678)...  Produkt se úspěšně aktivoval.**
 
 ## <a name="faq"></a>Nejčastější dotazy 
 
@@ -135,6 +131,6 @@ Ano.
  
 Po období odkladu vypršelo a ještě není aktivováno Windows, Windows Server 2008 R2 a novějších verzích Windows se zobrazí další oznámení o aktivaci služby Azure. Zůstane černé tapetu plochy a Windows Update budou instalovat zabezpečení a pouze kritické aktualizace, ale ne volitelné aktualizace. V části upozornění v dolní části [licenční podmínky](https://technet.microsoft.com/library/ff793403.aspx) stránky.   
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktujte podporu.
+## <a name="need-help-contact-support"></a>Potřebujete pomoct? Kontaktujte podporu.
 
 Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.

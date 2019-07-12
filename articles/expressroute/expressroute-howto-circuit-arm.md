@@ -8,18 +8,19 @@ ms.topic: article
 ms.date: 02/20/2019
 ms.author: ganesr;cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 7594261fc8af4e7b392e2f229b28cfee36a52115
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 06f49dc00b83ee2190f6361ebb8e6f052384402a
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60366313"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657309"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-powershell"></a>Vytvoření a úprava okruhu ExpressRoute pomocí prostředí PowerShell
 > [!div class="op_single_selector"]
 > * [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
+> * [Šablona Azure Resource Manager](expressroute-howto-circuit-resource-manager-template.md)
 > * [Video – Azure portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > * [PowerShell (Classic)](expressroute-howto-circuit-classic.md)
 >
@@ -78,8 +79,8 @@ Ujistěte se, že jste zadali správnou úroveň skladové položky a skladová 
 
 > [!IMPORTANT]
 > Váš okruh ExpressRoute se účtují od okamžiku, kdy vydáním klíče služby. Ujistěte se provést tuto operaci, pokud poskytovatel připojení je připraveno ke zřízení okruhu.
-> 
-> 
+>
+>
 
 Odpověď obsahuje klíč služby. Podrobný popis všech parametrů můžete získat spuštěním následujícího příkazu:
 
@@ -208,8 +209,8 @@ Podrobné pokyny najdete v tématu [konfigurace směrování pro okruh ExpressRo
 
 > [!IMPORTANT]
 > Tyto pokyny platí jenom pro okruhy vytvořené s poskytovateli služeb, které nabízejí vrstvy 2 připojení služby. Pokud používáte poskytovatele služeb, který nabízí spravované vrstvy 3 služby (obvykle IP sítě VPN, např. MPLS), svého poskytovatele připojení, konfiguruje a spravuje směrování za vás.
-> 
-> 
+>
+>
 
 ### <a name="8-link-a-virtual-network-to-an-expressroute-circuit"></a>8. Propojení virtuální sítě k okruhu ExpressRoute
 V dalším kroku propojení virtuální sítě pro váš okruh ExpressRoute. Použití [propojení virtuálních sítí s okruhy ExpressRoute](expressroute-howto-linkvnet-arm.md) článek při práci s modelem nasazení Resource Manager.
@@ -291,7 +292,7 @@ Můžete upravit některé vlastnosti okruhu ExpressRoute bez dopadu na připoje
 Můžete provádět následující úlohy došlo k výpadku:
 
 * Povolit nebo zakázat doplněk ExpressRoute premium pro váš okruh ExpressRoute.
-* Zvětšete šířku pásma váš okruh ExpressRoute zadaný na portu je k dispozici kapacita. Šířku pásma okruhu downgradu není podporován. 
+* Zvětšete šířku pásma váš okruh ExpressRoute zadaný na portu je k dispozici kapacita. Šířku pásma okruhu downgradu není podporován.
 * Změňte plán monitorování míry využití měření podle objemu dat na neomezená Data. Změna plánu měření z neomezená Data na měření podle objemu dat se nepodporuje.
 * Můžete povolit nebo zakázat *povolit klasické operace*.
 
@@ -314,8 +315,8 @@ Okruh teď má funkce doplněk ExpressRoute premium povolené. Začneme, jakmile
 ### <a name="to-disable-the-expressroute-premium-add-on"></a>Chcete-li zakázat doplněk ExpressRoute premium
 > [!IMPORTANT]
 > Pokud používáte prostředky, které jsou větší než co je povolený pro standardní okruh, tato operace může selhat.
-> 
-> 
+>
+>
 
 Všimněte si následujících informací:
 
@@ -341,7 +342,7 @@ Pro možnosti podporované šířky pásma pro vašeho poskytovatele, zkontroluj
 > Bude pravděpodobně nutné znovu vytvořit okruh ExpressRoute, pokud je nedostatečné kapacity na existující port. Pokud v tomto umístění není k dispozici žádné další kapacitu, nemůže upgradovat okruh.
 >
 > Nejde snížit šířku pásma okruhu ExpressRoute bez přerušení. Downgrade šířky pásma je potřeba zrušit zřízení okruhu ExpressRoute a pak znova nezajistíte nového okruhu ExpressRoute.
-> 
+>
 
 Až se rozhodnete, jaké velikosti budete potřebovat, použijte následující příkaz pro změnu velikosti okruhů:
 
@@ -369,7 +370,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
 ### <a name="to-control-access-to-the-classic-and-resource-manager-environments"></a>Řízení přístupu k classic a Resource Manageru prostředí
-Přečtěte si pokyny v [okruhy ExpressRoute přesunout z klasického modelu nasazení Resource Manageru](expressroute-howto-move-arm.md).  
+Přečtěte si pokyny v [okruhy ExpressRoute přesunout z klasického modelu nasazení Resource Manageru](expressroute-howto-move-arm.md).
 
 ## <a name="delete"></a>Zrušení zřízení a odstranění okruhu ExpressRoute
 Všimněte si následujících informací:

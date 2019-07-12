@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/27/2018
+ms.date: 07/09/2019
 ms.author: chackdan
-ms.openlocfilehash: bd76658c939496f27bf3751060c18d17968acd15
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6b11a3ba4fbffe1d35b590f2e5c47f19b6fb028c
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60386788"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718129"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Co zvážit při plánování kapacity clusteru Service Fabric
 Pro každého produkčního nasazení plánování kapacity je důležitý krok. Tady jsou některé položky, které musíte zvážit jako součást tohoto procesu.
@@ -77,8 +77,8 @@ V clusteru s více typy uzlů jeden primární typ uzlu a zbývající jsou jin�
 | Úroveň odolnosti  | Požadované minimální počet virtuálních počítačů | SKU podporovaných virtuálních počítačů                                                                  | Aktualizace, které provedete na vaši škálovací sadu virtuálních počítačů                               | Aktualizace a údržba iniciované platformou Azure                                                              | 
 | ---------------- |  ----------------------------  | ---------------------------------------------------------------------------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
 | Zlatá             | 5                              | SKU plně uzlu vyhrazený pro jediného zákazníka (například L32s GS5, G5, DS15_v2, D15_v2) | Může zpozdit až do schválení clusterem Service Fabric | Můžete pozastavit po dobu 2 hodin na UD počkejte na další repliky pro obnovení z předchozích chyb |
-| Stříbrný           | 5                              | Virtuální počítače s jedním jádrem nebo vyšší                                                        | Může zpozdit až do schválení clusterem Service Fabric | Nejde zpozdit žádné významné časové období                                                    |
-| Bronzová           | 1                              | Vše                                                                                | Nebude zpozdit clusteru Service Fabric           | Nejde zpozdit žádné významné časové období                                                    |
+| Silver           | 5                              | Virtuální počítače s jedním jádrem nebo novější s minimálně 50 GB místní disk SSD                      | Může zpozdit až do schválení clusterem Service Fabric | Nejde zpozdit žádné významné časové období                                                    |
+| Bronzová           | 1                              | Virtuální počítače s minimálně 50 GB místní disk SSD                                              | Nebude zpozdit clusteru Service Fabric           | Nejde zpozdit žádné významné časové období                                                    |
 
 > [!WARNING]
 > Získat typy uzlů s bronzovou odolnosti _žádná oprávnění_. To znamená, že úlohy infrastruktury, které ovlivnit Bezstavová zatížení nebude mohly zastavit nebo zpoždění, které může mít vliv na vaše úlohy. Použijte bronzová pouze pro typy uzlů, na kterých běží pouze Bezstavová zatížení. Pro produkční úlohy Silver spuštěna nebo k výše se doporučuje. 
@@ -108,10 +108,10 @@ Použít stříbrné nebo zlaté úrovně odolnosti pro všechny typy uzlů, kte
 ### <a name="operational-recommendations-for-the-node-type-that-you-have-set-to-silver-or-gold-durability-level"></a>Provozní doporučení pro uzel typu, že jste nastavili na odolnost stříbrné nebo zlaté úrovně.
 
 - Zachovat cluster a aplikace jsou v pořádku po celou dobu a ujistěte se, že aplikace reagovat na všechny [služby události životního cyklu repliky](service-fabric-reliable-services-lifecycle.md) (jako jsou repliky v sestavení se zasekne) včas.
-- Přijmout bezpečnější způsobů, jak vytvořit skladovou Položku virtuálního počítače změnit (škálování směrem nahoru nebo dolů): Změna skladovou Položku virtuálního počítače škálovací sady virtuálních počítačů je ze své podstaty nebezpečné operace a mělo by se proto vyhnout Pokud je to možné. Tady je proces, můžete provést, abyste se vyhnuli běžných problémů.
+- Přijmout bezpečnější způsobů, jak vytvořit skladovou Položku virtuálního počítače změnit (škálování směrem nahoru nebo dolů): Změna skladovou Položku virtuálního počítače škálovací sady virtuálního počítače vyžaduje několik kroků a důležité informace. Tady je proces, můžete provést, abyste se vyhnuli běžných problémů.
     - **Pro typy jiné než primární uzlů:** Je doporučeno vytvořit novou škálovací sadu virtuálních počítačů, změnit omezení umístění služby zahrnout nový typ virtuálního počítače škálovací sady/uzlu a pak omezit starého virtuálního počítače škálovací sady počet instancí na hodnotu nula, jeden uzel v čase (tím se jistotu, že odebrání uzlů nemají vliv spolehlivosti clusteru).
-    - **Pro primární typ uzlu:** Doporučujeme neměnit skladovou Položku virtuálního počítače z primární typ uzlu. Změna typu primárního uzlu SKU se nepodporuje. Je-li důvodem pro novou skladovou Položku kapacity, doporučujeme přidat více instancí. Pokud to není možné vytvořit nový cluster a [obnovit stav aplikace](service-fabric-reliable-services-backup-restore.md) (Pokud je k dispozici) z původního clusteru. Není potřeba obnovit jakékoli služby stavu systému, že se opětovně vytvoří při nasazení aplikací do nového clusteru. Pokud bezstavové aplikace běží v clusteru, nasazení aplikací do nového clusteru.  Nemáte nic k obnovení. Pokud se rozhodnete přejít nepodporované trasy a chcete změnit skladovou Položku virtuálního počítače, Model definice tak, aby odrážely novou skladovou Položku sady škálování virtuálního počítače pak provedete změny. Pokud váš cluster má pouze jeden uzel typu, ujistěte se, že všechny stavové aplikace reagovat na všechny [služby události životního cyklu repliky](service-fabric-reliable-services-lifecycle.md) (jako jsou repliky v sestavení se zasekne) a včasné a repliku služby sestavení Doba trvání je méně než pět minut (pro úroveň Silver odolnosti). 
-    
+    - **Pro primární typ uzlu:** Pokud chcete změnit na vyšší skladovou Položku virtuálního počítače skladovou Položku virtuálního počítače, které jste vybrali, je plně využívá kapacitu, postupujte podle naše doprovodné materiály na [vertikální škálování pro typ primárního uzlu](https://docs.microsoft.com/azure/service-fabric/service-fabric-scale-up-node-type). 
+
 - Udržujte minimální počet pět uzlů pro všechny škálovací sady virtuálních počítačů, která má úroveň odolnosti Gold a Silver povolena.
 - Škálovací sady s úroveň odolnosti stříbrné nebo zlaté úrovně jednotlivých virtuálních počítačů musí být namapovaný na svůj vlastní typ uzlu v clusteru Service Fabric. Mapování více škálovací sady virtuálních počítačů na jeden uzel typu zabrání koordinaci mezi clusterem Service Fabric a infrastrukturu Azure funguje správně.
 - Není odstranit náhodné instancí virtuálních počítačů, vždy použijte škálovací sadu virtuálních počítačů škálovací dolů funkce. Odstranění instancí virtuálních počítačů náhodné má potenciál vytváření rozdílů v instanci virtuálního počítače, které jsou rozděleny mezi UD a FD. Tuto míru nevyrovnaného může nepříznivě ovlivnit systémů správně načíst rovnováhu mezi instance/služby repliky služby.
@@ -143,7 +143,7 @@ Tady je doporučení na výběr úrovně spolehlivosti.  Počet uzlů počáteč
 | --- | --- |
 | 1 |Nezadávejte parametr úroveň spolehlivosti, systém vypočítá ho |
 | 3 |Bronzová |
-| 5 nebo 6|Stříbrný |
+| 5 nebo 6|Silver |
 | 7 nebo 8 |Zlatá |
 | 9 a vyšší |Platinum |
 
@@ -160,11 +160,11 @@ Protože kapacitu clusteru se určuje podle úlohy, které máte v úmyslu spust
 Pro produkční úlohy: 
 
 - Doporučujeme vyhradit clusterům primární NodeType systémové služby a omezení umístění používá k nasazení aplikace na sekundární NodeTypes.
-- Doporučené skladovou Položku virtuálního počítače je Standard D3 nebo standardní D3_V2 nebo ekvivalentní s minimálně 14 GB místní disk SSD.
-- Minimální podporované použití skladovou Položku virtuálního počítače je Standard D1 nebo standardní D1_V2 nebo ekvivalentní s minimálně 14 GB místní disk SSD. 
-- Místní disk SSD 14 GB je minimální požadavek. Naše doporučení je minimálně 50 GB. Pro vaše úlohy, zejména při spouštění kontejnerů Windows se vyžaduje větších disků. 
+- Doporučené skladovou Položku virtuálního počítače je standardní D2_V2 nebo ekvivalentní s minimálně 50 GB místní disk SSD.
+- Minimální podporované použití skladovou Položku virtuálního počítače je Standard_D2_V3 nebo standardní D1_V2 nebo ekvivalentní s minimálně 50 GB místní disk SSD. 
+- Naše doporučení je minimálně 50 GB. Pro vaše úlohy, zejména při spouštění kontejnerů Windows se vyžaduje větších disků. 
 - Částečné core skladové položky virtuálních počítačů jako standardní instance A0 nejsou podporovány pro produkční úlohy.
-- Standardní A1 SKU není podporována pro produkční úlohy z důvodů výkonu.
+- Řada SKU virtuálních počítačů nejsou podporovány pro produkční úlohy z důvodů výkonu.
 - Virtuální počítače s nízkou prioritou se nepodporují.
 
 > [!WARNING]
@@ -182,10 +182,10 @@ Proto pro produkční úlohy, minimální doporučené bez primárního uzlu typ
 
 Pro produkční úlohy 
 
-- Doporučené skladovou Položku virtuálního počítače je Standard D3 nebo standardní D3_V2 nebo ekvivalentní s minimálně 14 GB místní disk SSD.
-- Minimální podporované použití skladovou Položku virtuálního počítače je Standard D1 nebo standardní D1_V2 nebo ekvivalentní s minimálně 14 GB místní disk SSD. 
+- Doporučené skladovou Položku virtuálního počítače je standardní D2_V2 nebo ekvivalentní s minimálně 50 GB místní disk SSD.
+- Minimální podporované použití skladovou Položku virtuálního počítače je Standard_D2_V3 nebo standardní D1_V2 nebo ekvivalentní s minimálně 50 GB místní disk SSD. 
 - Částečné core skladové položky virtuálních počítačů jako standardní instance A0 nejsou podporovány pro produkční úlohy.
-- Standardní A1 SKU není podporována pro produkční úlohy z důvodů výkonu.
+- Řada SKU virtuálních počítačů nejsou podporovány pro produkční úlohy z důvodů výkonu.
 
 ## <a name="non-primary-node-type---capacity-guidance-for-stateless-workloads"></a>Typ uzlu non-primary - pokyny kapacity u bezstavových zatížení
 
@@ -197,10 +197,10 @@ Tento návod bezstavových úloh, které jsou spuštěny na jiné než primárn�
 
 Pro produkční úlohy 
 
-- Doporučené skladovou Položku virtuálního počítače je Standard D3 nebo standardní D3_V2 nebo ekvivalentní. 
+- Doporučené skladovou Položku virtuálního počítače je standardní D2_V2 nebo ekvivalentní. 
 - Minimální podporované použití skladovou Položku virtuálního počítače je Standard D1 nebo standardní D1_V2 nebo ekvivalentní. 
 - Částečné core skladové položky virtuálních počítačů jako standardní instance A0 nejsou podporovány pro produkční úlohy.
-- Standardní A1 SKU není podporována pro produkční úlohy z důvodů výkonu.
+- Řada SKU virtuálních počítačů nejsou podporovány pro produkční úlohy z důvodů výkonu.
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 

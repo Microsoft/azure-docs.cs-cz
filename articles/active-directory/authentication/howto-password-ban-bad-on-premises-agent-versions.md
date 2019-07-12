@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60ce66b079942944176540826c7f3e7a91b070d2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c024954053588537ac3363703876f716a38f41d9
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60358204"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67702936"
 ---
 # <a name="azure-ad-password-protection-agent-version-history"></a>Historie verze agenta Azure AD ochrana heslem
 
@@ -38,7 +38,7 @@ Datum vydání: 3/13/2019
   * Verze softwaru a data Azure tenanta se pouze k dispozici pro řadič domény agenty a servery proxy verzí 1.2.116.0 nebo novější.
   * Data tenanta Azure nemusí být hlášena až do opětovné registraci (nebo prodloužení platnosti) proxy server nebo doménové struktury došlo k chybě.
 * Proxy služba teď vyžaduje, aby nainstalované rozhraní .NET 4.7.
-  * .NET 4.7 musí již nainstalován na serveru Windows Server kompletně aktualizovaný. Pokud to není tento případ, stáhněte a spusťte instalační program na [offline instalační program .NET Framework 4.7 pro Windows](https://support.microsoft.com/en-us/help/3186497/the-net-framework-4-7-offline-installer-for-windows).
+  * .NET 4.7 musí již nainstalován na serveru Windows Server kompletně aktualizovaný. Pokud to není tento případ, stáhněte a spusťte instalační program na [offline instalační program .NET Framework 4.7 pro Windows](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows).
   * V systémech jádra serveru může být potřeba předat příznakem /q do instalačního programu .NET 4.7 její úspěšné.
 * Služba proxy server nyní podporuje automatický upgrade. Automatický upgrade používá Microsoft Azure AD Connect agenta aktualizační služby, která je nainstalovaná – souběžně se službou Proxy. Ve výchozím nastavení zapnutý automatický upgrade.
 * Automatický upgrade může být povoleno nebo zakázáno, pomocí rutiny Set-AzureADPasswordProtectionProxyConfiguration. Aktuální nastavení může být dotázán pomocí rutiny Get-AzureADPasswordProtectionProxyConfiguration.

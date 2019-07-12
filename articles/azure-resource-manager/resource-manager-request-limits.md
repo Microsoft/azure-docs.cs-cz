@@ -4,19 +4,19 @@ description: Popisuje způsob použití omezení požadavků Azure Resource Mana
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 05/14/2019
+ms.date: 07/09/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: b382b9ae35d492b4c779b8f7ee360fb378d54e08
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 36e881fb9ba3ab81611b94a36ef0beed8748d5b1
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399716"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705123"
 ---
 # <a name="throttling-resource-manager-requests"></a>Omezování požadavků Resource Manageru
 
-Pro každé předplatné Azure a tenanta Resource Manager umožňuje až 12 000 požadavků za hodinu na čtení a zápis 1 200 žádosti za hodinu. Tato omezení jsou omezená požadavků ID objektu zabezpečení a ID předplatného nebo tenanta ID. Pokud vaše požadavky pocházejí z více než jeden ID instančního objektu, je větší než 12 000 a 1 200 za hodinu limitu vašeho předplatného nebo tenanta.
+Pro každé předplatné Azure a tenanta Resource Manager umožňuje až 12 000 požadavků za hodinu na čtení a zápis 1 200 žádosti za hodinu. Tato omezení jsou omezená na objekt zabezpečení (uživatele nebo aplikace) žádosti a ID předplatného nebo tenanta ID. Pokud vaše požadavky pocházejí z více než objekt zabezpečení, je větší než 12 000 a 1 200 za hodinu limitu vašeho předplatného nebo tenanta.
 
 Požadavky se použijí pro vaše předplatné nebo vašeho tenanta. Žádosti jsou ty, které zahrnují předání ID vašeho předplatného, třeba načítání skupin prostředků ve vašem předplatném. Požadavky klientů jsou ID vašeho předplatného, třeba načítání platných umístění Azure.
 

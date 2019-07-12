@@ -2,24 +2,25 @@
 title: Využijte Azure Security Center pro služby ve verzi Preview centra IoT Azure IoT | Dokumentace Microsoftu
 description: Zjistěte, jak povolit Azure Security Center pro službu IoT ve službě IoT Hub.
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
 ms.assetid: 670e6d2b-e168-4b14-a9bf-51a33c2a9aad
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/16/2019
 ms.author: mlottner
-ms.openlocfilehash: 7030ae1c3a28cdd74671dc95dce59cf86cacf4c9
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: f81fb7aeed1b704ebdd82c1f5b83c33a4b05e9ca
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65786163"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67618004"
 ---
 # <a name="quickstart-enable-service-in-iot-hub"></a>Rychlý start: Povolit službu ve službě IoT Hub
 
@@ -35,13 +36,13 @@ Tento článek obsahuje vysvětlení, jak povolit Azure Security Center (ASC) pr
 
 ## <a name="prerequisites-for-enabling-the-service"></a>Požadavky pro povolení služby
 
-- Pracovní prostor Log Analytics
+- Pracovní prostor log Analytics
   - Dva druhy informace jsou uloženy ve výchozím nastavení v pracovním prostoru Log Analytics služba ASC pro IoT; **výstrahy zabezpečení** a **doporučení**. 
   - Můžete také přidat další informace o typu, úložiště **nezpracovaných událostí**. Všimněte si, že ukládání **nezpracovaných událostí** v Log Analytics představuje náklady na další úložiště. 
 - IoT Hub (úrovně standard)
 - Splňovat všechna [požadované součásti služby](service-prerequisites.md) 
 - Oblasti podporované služby
-  - USA – střed
+  - Střed USA
   - Severní Evropa
   - Jihovýchodní Asie
 
@@ -59,7 +60,7 @@ Pokud chcete povolit zabezpečení ve službě IoT Hub, postupujte takto:
 
 Blahopřejeme! Dokončení povolení ASC pro IoT ve službě IoT Hub. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Přejděte k dalším článku se naučíte, jak nakonfigurovat řešení...
 

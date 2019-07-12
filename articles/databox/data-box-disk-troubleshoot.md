@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 06/14/2019
 ms.author: alkohli
-ms.openlocfilehash: f725f38a335972ae8e0a8b8402a99202caa54a70
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: f8116ec0836623adf803991017950ddc7f960923
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147088"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67805711"
 ---
 # <a name="use-logs-to-troubleshoot-validation-issues-in-azure-data-box-disk"></a>Řešení potíží s problémy s ověřováním v Azure Data Box Disk pomocí protokolů
 
@@ -90,10 +90,10 @@ Chyby obsažené v *error.xml* s odpovídajícím doporučené akce, které jsou
 | `InvalidBlobNameFormat` | Cesta k souboru není namapován na platný objekt blob cestu v cloudu podle konvence pojmenování objektu Blob Azure.|Přejmenujte soubor tak, že vyhovuje [zásady vytváření názvů Azure](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions). Opakujte ověření. |
 | `InvalidFileNameFormat` | Cesta k souboru není namapován na platnou cestu k souboru v cloudu podle konvence pojmenování souborů Azure. |Přejmenujte soubor tak, že vyhovuje [zásady vytváření názvů Azure](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions). Opakujte ověření. |
 | `InvalidDiskNameFormat` | Cesta k souboru nelze mapovat na název platný disk v cloudu podle zásady vytváření názvů Azure Managed Disks. |Přejmenujte soubor tak, že vyhovuje [zásady vytváření názvů Azure](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions). Opakujte ověření.       |
-| `NotPartOfFileShare` | Nelze nahrát soubory, protože cesta pro uložení není platný. Nahrajte soubory do složky ve službě soubory Azure.   | Odebrat soubory chybu a odeslání těchto souborů do vytvořených složky. Opakujte ověření. |
-| `NonVhdFileNotSupportedForManagedDisk` | Virtuálního pevného disku soubor nelze odeslat jako spravovaný disk. |Soubory – virtuální pevný disk odeberte, protože ty nejsou podporovány. Opakujte ověření. |
+| `NotPartOfFileShare` | Cesta pro uložení souborů není platný. Nahrajte soubory do složky ve službě soubory Azure.   | Odebrat soubory chybu a odeslání těchto souborů do vytvořených složky. Opakujte ověření. |
+| `NonVhdFileNotSupportedForManagedDisk` | Virtuálního pevného disku soubor nelze odeslat jako spravovaný disk. |Odebrání souborů – virtuální pevný disk z `ManagedDisk` složky jako ty nejsou podporovány nebo přesunutí těchto souborů do `PageBlob` složky. Opakujte ověření. |
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Řešení potíží s [chyby při odesílání dat](data-box-disk-troubleshoot-upload.md).

@@ -4,7 +4,7 @@ description: Zjistěte, jak povolit InfiniBand s SR-IOV.
 services: virtual-machines
 documentationcenter: ''
 author: vermagit
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines
@@ -12,27 +12,26 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
-ms.openlocfilehash: 879b1eed7bf4778d4d49f6f991d6d74214d33823
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 2e28627359f339a3bf818a15d6a5c8e456fb554a
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67537667"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797528"
 ---
 # <a name="enable-infiniband-with-sr-iov"></a>Povolit InfiniBand s SR-IOV
-
 
 Doporučený a nejjednodušší způsob, jak nakonfigurovat vlastní image virtuálního počítače s InfiniBand (IB) je přidání rozšíření InfiniBandDriverLinux nebo InfiniBandDriverWindows virtuálních počítačů k nasazení.
 Další informace o použití těchto rozšíření virtuálních počítačů se [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc#rdma-capable-instances) a [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#rdma-capable-instances)
 
-Chcete-li ručně konfigurovat InfiniBand rozhraní SR-IOV virtuálních počítačů (aktuálně řady HB a HC) s povoleným, použijte následující postup. Tyto kroky jsou k dispozici pouze pro RHEL nebo CentOS. Ubuntu (16.04 a 18.04) a SLES (12 SP4 a 15) ovladače Doručená pošta fungovat dobře. Pro Ubuntu 
-
+Chcete-li ručně konfigurovat InfiniBand rozhraní SR-IOV virtuálních počítačů (aktuálně řady HB a HC) s povoleným, použijte následující postup. Tyto kroky jsou k dispozici pouze pro RHEL nebo CentOS. Ubuntu (16.04 a 18.04) a SLES (12 SP4 a 15) ovladače Doručená pošta fungovat dobře.
 
 ## <a name="manually-install-ofed"></a>Ruční instalace OFED
 
 Nainstalujte nejnovější ovladače MLNX_OFED ConnectX-5 z [Mellanox](https://www.mellanox.com/page/products_dyn?product_family=26).
 
 Pro RHEL/CentOS (příklad níže pro 7.6):
+
 ```bash
 sudo yum install -y kernel-devel python-devel
 sudo yum install -y redhat-rpm-config rpm-build gcc-gfortran gcc-c++
@@ -83,6 +82,6 @@ NEBO
     systemctl restart waagent
     ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o [HPC](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) v Azure.

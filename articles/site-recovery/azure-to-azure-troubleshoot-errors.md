@@ -2,18 +2,18 @@
 title: Azure Site Recovery pro odstraňování potíží v potíže s replikací z Azure do Azure a chyby | Dokumentace Microsoftu
 description: Řešení potíží s chyb a problémů při replikaci virtuálních počítačů Azure pro zotavení po havárii
 services: site-recovery
-author: sujayt
+author: asgang
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 04/08/2019
-ms.author: sujayt
-ms.openlocfilehash: 3c87e159022b6dcf13daf2a2659c88c0529a8f48
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: asgang
+ms.openlocfilehash: 1e0450554597d99aa99d6df51f22bfc90c0d92ad
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65796431"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798560"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Řešení potíží s replikací virtuálních počítačů Azure do Azure
 
@@ -156,7 +156,7 @@ U replikace Site Recovery pro práci, odchozí připojení ke konkrétní adresy
 
 ### <a name="issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195-br"></a>Úkol 1: Nepovedlo se zaregistrovat virtuální počítač Azure s využitím Site Recovery (151195) </br>
 - **Možná příčina** </br>
-  - Nelze navázat připojení ke koncovým bodům obnovení lokality kvůli chybě rozlišení DNS.
+  - Nelze navázat připojení ke koncovým bodům Site Recovery kvůli chybě rozlišení DNS.
   - To je často viděli při opětovné ochrany když budete mít převzetí služeb při selhání virtuálního počítače, ale DNS server není dostupný z oblasti pro zotavení po Havárii.
 
 - **Řešení**
@@ -175,7 +175,7 @@ U replikace Site Recovery pro práci, odchozí připojení ke konkrétní adresy
       - Pokud do Azure Active Directory (AAD) se přidají nové adresy v budoucnu, musíte vytvořit nová pravidla skupiny zabezpečení sítě.
 
 > [!NOTE]
-> Pokud jsou virtuální počítače za bránou **standardní** interního nástroje load balancer pak nebude mít přístup k O365 IP adresy tj Login.micorsoftonline.com ve výchozím nastavení. Buď změňte ji na **základní** vnitřní typ nástroje pro vyrovnávání zatížení nebo vytváření out vázané přístupu, jak je uvedeno v [článku](https://aka.ms/lboutboundrulescli).
+> Pokud jsou virtuální počítače za bránou **standardní** interního nástroje load balancer pak nebude mít přístup k O365 IP adresy tj Login.microsoftonline.com ve výchozím nastavení. Buď změňte ji na **základní** vnitřní typ nástroje pro vyrovnávání zatížení nebo vytváření out vázané přístupu, jak je uvedeno v [článku](https://aka.ms/lboutboundrulescli).
 
 ### <a name="issue-3-site-recovery-configuration-failed-151197"></a>Úkol 3: (151197) se nepovedlo nakonfigurovat službu Site Recovery
 - **Možná příčina** </br>
@@ -187,23 +187,23 @@ U replikace Site Recovery pro práci, odchozí připojení ke konkrétní adresy
 
 ### <a name="issue-4-a2a-replication-failed-when-the-network-traffic-goes-through-on-premises-proxy-server-151072"></a>Úkol 4: Pokud síťový provoz prochází skrz místní proxy server (151072) se nezdařila replikace A2A
 - **Možná příčina** </br>
-  - Nastavení vlastní proxy server jsou neplatné a agenta služby Mobility Azure Site Recovery bez automatického rozpoznávání nastavení proxy serveru z Internet Exploreru
+  - Nastavení vlastní proxy server jsou neplatné a agenta Azure Site Recovery Mobility Service bez automatického rozpoznávání nastavení proxy serveru z Internet Exploreru
 
 
 - **Řešení**
   1. Agent služby mobility zjišťuje nastavení proxy serveru z aplikace Internet Explorer ve Windows a /etc/environment v Linuxu.
-  2. Pokud chcete nastavit proxy server pouze pro služby Mobility Azure Site Recovery, můžete zadat podrobnosti o serveru proxy v ProxyInfo.conf umístění:</br>
+  2. Pokud chcete nastavit proxy server jenom pro Azure Site Recovery Mobility Service, můžete zadat podrobnosti o serveru proxy v ProxyInfo.conf umístění:</br>
      - ``/usr/local/InMage/config/`` na ***Linux***
      - ``C:\ProgramData\Microsoft Azure Site Recovery\Config`` na ***Windows***
   3. ProxyInfo.conf by měl mít nastavení proxy serveru v následujícím formátu INI.</br>
                 *proxy [Server]*</br>
                 *Adresa =http://1.2.3.4*</br>
                 *Port = 567*</br>
-  4. Agenta služby Mobility Azure Site Recovery podporuje pouze ***neověřené proxy servery***.
+  4. Agent Azure Site Recovery Mobility Service podporuje pouze ***neověřené proxy servery***.
 
 
 ### <a name="fix-the-problem"></a>Tento problém vyřešit
-Na seznam povolených [požadované adresy URL](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) nebo [požadované rozsahy IP adres](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges), postupujte podle kroků v [sítě dokument s pokyny](site-recovery-azure-to-azure-networking-guidance.md).
+Povolit [požadované adresy URL](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) nebo [požadované rozsahy IP adres](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges), postupujte podle kroků v [sítě dokument s pokyny](site-recovery-azure-to-azure-networking-guidance.md).
 
 ## <a name="disk-not-found-in-the-machine-error-code-150039"></a>Nebyl nalezen v počítači (kód chyby: 150039)
 
@@ -232,17 +232,42 @@ Buď můžete k ochraně disky nebo ignorovat upozornění opět stav replikace 
  ![add_disks](./media/azure-to-azure-troubleshoot-errors/add-disk.png)
 2. Chcete-li zrušit upozornění. Přejděte na replikované položky > virtuální počítač > klikněte na Zavřít výstrahu v části Přehled.
 ![dismiss_warning](./media/azure-to-azure-troubleshoot-errors/dismiss-warning.png)
-## <a name="unable-to-see-the-azure-vm-or-resource-group--for-selection-in-enable-replication"></a>Virtuálním počítači Azure nebo skupinu prostředků pro výběr v "povolit replikaci" se nezobrazuje
 
- **1. příčina:  Skupinu prostředků a zdrojový virtuální počítač jsou v různém umístění** <br>
-Azure Site Recovery aktuálně pověření, které zdrojové oblasti, skupiny prostředků a virtuální počítače by měl být ve stejném umístění. Pokud to není případ pak jste nemohli najít virtuální počítač v době ochrany. Jako alternativní řešení můžete povolit replikaci z virtuálního počítače namísto trezor služby Recovery services. Přejděte k virtuálnímu počítači Sourece > Vlastnosti > zotavení po havárii a povolení replikace.
 
-**2. příčina: Skupina prostředků není součástí vybrané předplatné** <br>
-Není možné najít skupinu prostředků v době provedení ochrany, pokud není součástí dané předplatné. Ujistěte se, že skupina prostředků patří do předplatného, který se používá.
+## <a name="remove-the-virtual-machine-from-the-vault-completed-with-information--error-code-150225"></a>Odeberte virtuální počítač z trezoru dokončeno s informacemi (kód chyby: 150225)
+Azure Site Recovery v době ochrany virtuálního počítače vytvoří několik odkazů na zdrojovém virtuálním počítači. Pokud ochranu odebrat nebo zakázat replikaci, Azure Site Recovery odeberte tyto odkazy jako součást úlohy čištění. V případě, že virtuální počítač má zámek prostředku úlohy dokončí s informacemi. Sdělí, že virtuální počítač byl odebrán z trezoru služby Recovery services, ale některé zastaralých odkazy nepovedlo se vyčistit ze zdrojového počítače.
 
- **3. důvod: Zastaralou konfiguraci** <br>
-Pokud chcete povolit replikaci virtuálního počítače, to může být z důvodu stálou konfiguraci Site Recovery zůstat na virtuálním počítači Azure. Zastaralou konfiguraci by mohla zůstat na Virtuálním počítači Azure v následujících případech:
+Toto upozornění můžete ignorovat, pokud nikdy úmyslu chránit tento virtuální počítač znovu v budoucnosti. Ale pokud máte pro novější ochranu tohoto virtuálního počítače pak by měl vyčistit odkazy uvedené v následujících krocích. 
 
+**Pokud neprovedete se čištění potom:**
+
+1.  Během této doby povolíte replikaci pomocí trezoru služby Recovery services nebudou uvedené virtuální počítač. 
+2.  Pokud se pokusíte ochranu virtuálního počítače prostřednictvím **virtuální počítač > Nastavení > zotavení po havárii** bude selhalo s chybou "*nejde povolit replikaci, protože existující zastaralých odkazy na virtuálním počítači*".
+
+
+### <a name="fix-the-problem"></a>Tento problém vyřešit
+
+>[!NOTE]
+>
+>Azure Site Recovery nepodporuje odstranění zdrojového virtuálního počítače nebo ovlivnit žádným způsobem při provádění následujících kroků.
+>
+
+1. Odeberte Zámek z virtuálního počítače nebo virtuální počítač skupinu prostředků. Příklad: Pod virtuální počítač má název "MoveDemo" zámek prostředku, kterou je potřeba odstranit.
+
+   ![Network_Selection_greyed_out](./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png)
+2. Stáhněte si skript [odebrat zastaralou konfiguraci Azure Site Recovery](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1).
+3. Spusťte skript *Cleanup-stale-asr-config-Azure-VM.ps1*.
+4. Zadejte název předplatného, ID, skupina prostředků virtuálního počítače a virtuální počítač jako parametr.
+5. Pokud se zobrazí dotaz přihlašovací údaje Azure, poskytují a zkontrolujte, že se skript provede bez jakýchkoliv. 
+
+
+## <a name="replication-cannot-be-enabled-because-of-the-existing-stale-resource-links-on-the-vm-error-code-150226"></a>Nejde povolit replikaci, protože existující zastaralých odkazy na virtuálním počítači (kód chyby: 150226)
+
+**Příčina: Virtuální počítač má zastaralé konfigurace z předchozí ochrany Site Recovery**
+
+Zastaralou konfiguraci by mohla zůstat na Virtuálním počítači Azure v následujících případech:
+
+- Povolení replikace pro virtuální počítač Azure s využitím Site Recovery a potom zakázat replikaci ale **zdrojový virtuální počítač má zámek prostředku**.
 - Povolení replikace pro virtuální počítač Azure s využitím Site Recovery a pak odstranit trezor Site Recovery bez explicitně zakázat replikaci na virtuálním počítači.
 - Povolení replikace pro virtuální počítač Azure s využitím Site Recovery a pak odstranit skupinu prostředků obsahující trezor Site Recovery bez explicitně zakázat replikaci na virtuálním počítači.
 
@@ -250,9 +275,52 @@ Pokud chcete povolit replikaci virtuálního počítače, to může být z důvo
 
 >[!NOTE]
 >
->Ujistěte se, že modul "" azurerm.resources zavedla"" aktualizace před použitím níže uvedený skript.
+>Azure Site Recovery nepodporuje odstranění zdrojového virtuálního počítače nebo ovlivnit žádným způsobem při provádění následujících kroků.
 
-Můžete použít [odebrat zastaralé skript pro konfiguraci Azure Site Recovery](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1) a odebrat zastaralou konfiguraci Site Recovery na virtuálním počítači Azure. Byste měli vidět tento virtuální počítač po odebrání zastaralou konfiguraci.
+
+1. Odeberte Zámek z virtuálního počítače nebo virtuální počítač skupinu prostředků, pokud tam nějaké jsou. *Příklad:* Pod virtuální počítač má název "MoveDemo" zámek prostředku, kterou je potřeba odstranit.
+   
+   ![Network_Selection_greyed_out](./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png)
+2. Stáhněte si skript [odebrat zastaralou konfiguraci Azure Site Recovery](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1).
+3. Spusťte skript *Cleanup-stale-asr-config-Azure-VM.ps1*.
+4. Zadejte název předplatného, ID, skupina prostředků virtuálního počítače a virtuální počítač jako parametr.
+5. Pokud se zobrazí dotaz přihlašovací údaje Azure, poskytují a zkontrolujte, že se skript provede bez jakýchkoliv.  
+
+## <a name="unable-to-see-the-azure-vm-or-resource-group--for-selection-in-enable-replication"></a>Virtuálním počítači Azure nebo skupinu prostředků pro výběr v "povolit replikaci" se nezobrazuje
+
+ **1. příčina:  Skupinu prostředků a zdrojový virtuální počítač jsou v různém umístění**
+ 
+Azure Site Recovery aktuálně pověření, které zdrojové oblasti, skupiny prostředků a virtuální počítače by měl být ve stejném umístění. Pokud to není případ pak jste nemohli najít virtuální počítač nebo skupinu prostředků v době ochrany. 
+
+**Jako alternativní řešení**, můžete povolit replikaci z virtuálního počítače namísto trezor služby Recovery services. Přejděte do zdrojového virtuálního počítače > Vlastnosti > zotavení po havárii a povolení replikace.
+
+**2. příčina: Skupina prostředků není součástí vybrané předplatné**
+
+Není možné najít skupinu prostředků v době provedení ochrany, pokud není součástí dané předplatné. Ujistěte se, že skupina prostředků patří do předplatného, který se používá.
+
+ **3. důvod: Zastaralou konfiguraci**
+ 
+Pokud chcete povolit replikaci virtuálního počítače, to může být z důvodu stálou konfiguraci Site Recovery zůstat na virtuálním počítači Azure. Zastaralou konfiguraci by mohla zůstat na Virtuálním počítači Azure v následujících případech:
+
+- Povolení replikace pro virtuální počítač Azure s využitím Site Recovery a pak odstranit trezor Site Recovery bez explicitně zakázat replikaci na virtuálním počítači.
+- Povolení replikace pro virtuální počítač Azure s využitím Site Recovery a pak odstranit skupinu prostředků obsahující trezor Site Recovery bez explicitně zakázat replikaci na virtuálním počítači.
+
+- Povolení replikace pro virtuální počítač Azure s využitím Site Recovery a potom zakázat replikaci, ale zdrojový virtuální počítač má zámek prostředku.
+
+### <a name="fix-the-problem"></a>Tento problém vyřešit
+
+> [!NOTE]
+>
+> Ujistěte se, že modul "" azurerm.resources zavedla"" aktualizace před použitím níže uvedený skript. Azure Site Recovery nepodporuje odstranění zdrojového virtuálního počítače nebo ovlivnit žádným způsobem při provádění následujících kroků.
+>
+
+1. Odeberte Zámek z virtuálního počítače nebo virtuální počítač skupinu prostředků, pokud tam nějaké jsou. *Příklad:* Pod virtuální počítač má název "MoveDemo" zámek prostředku, kterou je potřeba odstranit.
+
+   ![Network_Selection_greyed_out](./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png)
+2. Stáhněte si skript [odebrat zastaralou konfiguraci](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1).
+3. Spusťte skript *Cleanup-stale-asr-config-Azure-VM.ps1*.
+4. Zadejte název předplatného, ID, skupina prostředků virtuálního počítače a virtuální počítač jako parametr.
+5. Pokud se zobrazí dotaz přihlašovací údaje Azure, poskytují a zkontrolujte, že se skript provede bez jakýchkoliv.
 
 ## <a name="unable-to-select-virtual-machine-for-protection"></a>Nelze vybrat pro ochranu virtuálního počítače
  **1. příčina:  Virtuální počítač má některá rozšíření nainstalované ve stavu selhání nebo nereaguje** <br>
@@ -294,7 +362,7 @@ Pokud chcete povolit replikaci na virtuálním počítači, by měla být stav z
 
 **Kód chyby:** | **Možné příčiny** | **Recommendations** (Doporučení)
 --- | --- | ---
-151025<br></br>**Zpráva**: Rozšíření služby Site recovery se nepodařilo nainstalovat | -Služba "aplikace modelu COM + systému" zakázána.</br></br>-Služba Stínová kopie svazku je zakázaná.| Nastavte služby "aplikace modelu COM + systému" a Stínová kopie svazku na automatický nebo ruční režim spouštění.
+151025<br></br>**Zpráva**: Rozšíření služby Site Recovery se nepodařilo nainstalovat | -Služba "aplikace modelu COM + systému" zakázána.</br></br>-Služba Stínová kopie svazku je zakázaná.| Nastavte služby "aplikace modelu COM + systému" a Stínová kopie svazku na automatický nebo ruční režim spouštění.
 
 ### <a name="fix-the-problem"></a>Tento problém vyřešit
 
@@ -362,8 +430,8 @@ Few examples: </br>
 
 If the LVM device doesn't exist, fix either by creating it or remove the parameter for the same from the GRUB configuration files and then retry the enable protection. </br>
 
-## Site recovery mobility service update completed with warnings ( error code 151083)
-Site Recovery mobility service has many components, one of which is called filter driver. Filter driver gets loaded into system memory only at a time of system reboot. Whenever there are  site recovery mobility service updates that has filter driver changes, we update the machine but still gives you warning that some fixes require a reboot. It means that the filter driver fixes can only be realized when a new filter driver is loaded which can happen only at the time of system reboot.<br>
+## Site Recovery mobility service update completed with warnings ( error code 151083)
+Site Recovery mobility service has many components, one of which is called filter driver. Filter driver gets loaded into system memory only at a time of system reboot. Whenever there are  Site Recovery mobility service updates that has filter driver changes, we update the machine but still gives you warning that some fixes require a reboot. It means that the filter driver fixes can only be realized when a new filter driver is loaded which can happen only at the time of system reboot.<br>
 **Please note** that this is just a warning and existing replication keeps on working even after the new agent update. You can choose to reboot anytime you want to get the benefits of new filter driver but if you don't reboot than also old filter driver keeps on working. Apart from filter driver, **benefits of  any other enhancements and fixes in mobility service get realized without any reboot when the agent gets updated.**  
 
 

@@ -4,15 +4,15 @@ description: Jak se připojit k verzi Preview virtuální plochy Windows z webov
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: how-to
+ms.topic: conceptual
 ms.date: 04/12/2019
 ms.author: helohr
-ms.openlocfilehash: d99f20efcebc3c9d97c5e2228e8b55bfd3f432b5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4f6bb7c414c38eaa605d259195218c461ddb0ca7
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65834017"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620164"
 ---
 # <a name="connect-from-a-web-browser"></a>Připojení z webového prohlížeče
 
@@ -25,7 +25,7 @@ Webový klient umožňuje přístup k prostředkům Windows Preview virtuální 
 
 Zatímco by mělo fungovat libovolný prohlížeč HTML5 umožňující oficiálně podporuje následující operační systémy a prohlížeče.
 
-| Prohlížeč           | Podporovaný operační systém                     | Poznámky               |
+| Browser           | Podporovaný operační systém                     | Poznámky               |
 |-------------------|----------------------------------|---------------------|
 | Microsoft Edge    | Windows                          |                     |
 | Internet Explorer | Windows                          |                     |

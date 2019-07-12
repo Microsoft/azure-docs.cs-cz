@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 1bf42e5f418f99f5e5327d790c1adffe2357b84e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e181aab3d92d8111a0a7d1d41bbddac20687a547
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65021936"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67668856"
 ---
 # <a name="how-to-add-a-custom-skill-to-a-cognitive-search-pipeline"></a>Přidání vlastních dovedností do kanálu kognitivního vyhledávání
 
 A [kanál indexování kognitivního vyhledávání](cognitive-search-concept-intro.md) ve službě Azure Search lze sestavit z [předdefinované dovednosti](cognitive-search-predefined-skills.md) stejně jako [vlastních dovedností](cognitive-search-custom-skill-web-api.md) , které sami vytvoříte a přidáte do kanál. V tomto článku najdete informace o vytváření vlastních dovedností, který zpřístupňuje rozhraní, díky kterému jej mají být zahrnuty v kanálu kognitivního vyhledávání. 
 
-Vytváření vlastních dovedností poskytuje způsob, jak vložit transformace, které jsou jedinečné pro váš obsah. Vlastní dovednosti spustí nezávisle na sobě použití libovolné rozšíření kroku budete potřebovat. Může například definovat vlastní entity specifické pro pole, vytvářet vlastní klasifikace modely k rozlišení firmy a finanční smlouvy a dokumenty nebo přidání rozpoznávání řeči odbornost umožňují hlubší analýzu zvuku relevantní obsah souboru. Podrobný příklad naleznete v tématu [příklad: vytváření vlastních dovedností](cognitive-search-create-custom-skill-example.md).
+Vytváření vlastních dovedností poskytuje způsob, jak vložit transformace, které jsou jedinečné pro váš obsah. Vlastní dovednosti spustí nezávisle na sobě použití libovolné rozšíření kroku budete potřebovat. Může například definovat vlastní entity specifické pro pole, vytvářet vlastní klasifikace modely k rozlišení firmy a finanční smlouvy a dokumenty nebo přidání rozpoznávání řeči odbornost umožňují hlubší analýzu zvuku relevantní obsah souboru. Podrobný příklad naleznete v tématu [příkladu: Vytváření vlastních dovedností pro kognitivního vyhledávání](cognitive-search-create-custom-skill-example.md).
 
  Jakýkoli vlastní funkce budete potřebovat, je k dispozici jednoduchý a jasný rozhraní pro připojení k obohacení zbytku vlastních dovedností. Jediným požadavkem pro zařazení [dovednosti](cognitive-search-defining-skillset.md) je možnost přijímat vstupy a výstupy způsoby, které nejsou použitelné v rámci dovednosti jako celek vysílat. Hlavním cílem tohoto článku je na vstupních a výstupních formátů, které vyžaduje rozšíření kanálu.
 
@@ -154,9 +154,9 @@ Při vytváření enricher webového rozhraní API můžete popsat hlavičky pro
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-+ [Příklad: Vytváření vlastních dovedností pro rozhraní API pro překlad textu](cognitive-search-create-custom-skill-example.md)
++ [Příklad: Vytváření vlastních dovedností pro kognitivního vyhledávání](cognitive-search-create-custom-skill-example.md)
 + [Definování dovedností](cognitive-search-defining-skillset.md)
 + [Vytvoření dovedností (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
 + [Způsob mapování polí bohatších možností](cognitive-search-output-field-mapping.md)

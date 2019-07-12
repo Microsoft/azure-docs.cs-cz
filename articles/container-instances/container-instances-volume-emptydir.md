@@ -7,19 +7,19 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: danlep
-ms.openlocfilehash: 98a72123a05fa7d8dc16be7ddb787f2a2cf7e4d1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d91706da898e84effc6194a74dce69a66be0f4ac
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60563116"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657605"
 ---
 # <a name="mount-an-emptydir-volume-in-azure-container-instances"></a>Připojení svazku emptyDir ve službě Azure Container Instances
 
 Zjistěte, jak připojit *emptyDir* svazku ke sdílení dat mezi kontejnery ve skupině kontejnerů ve službě Azure Container Instances.
 
 > [!NOTE]
-> Připojení *emptyDir* svazek je momentálně omezené jenom na Linuxové kontejnery. Pracujeme na tom, aby všechny funkce byly dostupné i pro kontejnery Windows. Aktuální rozdíly pro tyto platformy najdete v tématu věnovaném [kvótám a dostupnosti oblastí pro Azure Container Instances](container-instances-quotas.md).
+> Připojení *emptyDir* svazek je momentálně omezené jenom na Linuxové kontejnery. Pracujeme na všechny funkce byly do kontejnerů Windows, můžete najít aktuální rozdíly pro tyto platformy v [přehled](container-instances-overview.md#linux-and-windows-containers).
 
 ## <a name="emptydir-volume"></a>emptyDir svazku
 

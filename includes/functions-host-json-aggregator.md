@@ -4,17 +4,17 @@ description: zahrnout soubor
 services: functions
 author: ggailey777
 manager: jeconnoc
-ms.service: functions
+ms.service: azure-functions
 ms.topic: include
 ms.date: 10/19/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: da0cbab59d9c801419ac4b3704fee3275f337fd9
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 4d0a61bf7f4ee9e441a49e21ce6535dc3bff0edc
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175161"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67608132"
 ---
 Určuje, kolik obsahující záznamy volání funkcí jsou při agregované [výpočet metrik pro službu Application Insights](../articles/azure-functions/functions-monitoring.md#configure-the-aggregator). 
 

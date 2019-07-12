@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: b5ed614fdd378b36d8f95fc90ce7ff98d63ef31a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8357a53ee065812922b5df53fbdef7c14e5f0ff7
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60761819"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621028"
 ---
 # <a name="troubleshoot-input-connections"></a>Řešení potíží s připojeními vstupu
 
@@ -29,7 +29,7 @@ Tato stránka popisuje běžné problémy s vstupní připojení a postupy jejic
         
     Použití [ **ukázková Data** ](stream-analytics-sample-data-input.md) pro každý vstupní tlačítko a stáhněte ukázková vstupní data.
         
-    Zkontrolujte ukázková data a porozumět struktuře dat: schéma a [datové typy](https://msdn.microsoft.com/library/azure/dn835065.aspx).
+    Zkontrolujte ukázková data a porozumět struktuře dat: schéma a [datové typy](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics).
 
 ## <a name="malformed-input-events-causes-deserialization-errors"></a>Chyby deserializace způsobí, že vstupní události nemají správný formát 
 Deserializace potíže jsou způsobeny, když vstupní datový proud vaší úlohy Stream Analytics obsahuje špatně vytvořené zprávy. Například může být způsobeno poškozená zpráva. chybí pravá závorka. nebo závorka v objektu JSON nebo nesprávný časové razítko formátu v poli Doba. 
@@ -145,5 +145,5 @@ Potřebujete další pomoc, vyzkoušejte naše [fóru Azure Stream Analytics](ht
 * [Úvod do služby Azure Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Škálování služby Stream Analytics](stream-analytics-scale-jobs.md)
-* [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Referenční příručka k rozhraní REST API pro správu služby Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn835031.aspx)

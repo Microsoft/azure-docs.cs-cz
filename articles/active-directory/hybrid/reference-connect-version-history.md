@@ -16,12 +16,12 @@ ms.date: 05/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fafd853250ed76b49b66b86ffda9c91240c8ce48
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b13b23e59595acf8c637a2ef58c8098256920bea
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67109161"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67654043"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historie vydaných verzí
 Tým služby Azure Active Directory (Azure AD) pravidelně aktualizuje s novými funkcemi a funkce služby Azure AD Connect. Ne všechny položky se vztahují na všechny cílové skupiny.
@@ -50,8 +50,8 @@ Ne všechny verze služby Azure AD Connect bude k dispozici pro automatický upg
 > To je potřeba importovat vyřešit **AdSync** modul a poté spusťte`Set-ADSyncDirSyncConfiguration` rutiny prostředí powershell na serveru služby Azure AD Connect.  Můžete použít následující kroky:
 >
 >1. Otevřete prostředí Powershell v režimu správce
->2. Spusťte `Import-Module "ADSync"`.
->3. Spusťte `Set-ADSyncDirSyncConfiguration -AnchorAttribute ""`.
+>2. Spustit `Import-Module "ADSync"`
+>3. Spustit `Set-ADSyncDirSyncConfiguration -AnchorAttribute ""`
  
 
 
@@ -408,18 +408,18 @@ Uzamčení přístupu k účtu služby AD DS díky implementaci následující z
 *   Odeberte všechny položky řízení přístupu pro daný objekt, s výjimkou ACE konkrétní sama na sebe. Chcete zachovat beze změny výchozích oprávnění, pokud jde o sama na sebe.
 *   Přiřadíte tato konkrétní oprávnění:
 
-Type     | Name                          | Access               | Platí pro
+type     | Name                          | Access               | Platí pro
 ---------|-------------------------------|----------------------|--------------|
-Povolit    | SYSTÉM                        | Úplné řízení         | Tento objekt  |
-Povolit    | Enterprise Admins             | Úplné řízení         | Tento objekt  |
-Povolit    | Domain Admins                 | Úplné řízení         | Tento objekt  |
-Povolit    | Správci                | Úplné řízení         | Tento objekt  |
-Povolit    | Enterprise Domain Controllers | Seznam obsahu        | Tento objekt  |
-Povolit    | Enterprise Domain Controllers | Číst všechny vlastnosti  | Tento objekt  |
-Povolit    | Enterprise Domain Controllers | Oprávnění ke čtení     | Tento objekt  |
-Povolit    | Ověření uživatelé           | Seznam obsahu        | Tento objekt  |
-Povolit    | Ověření uživatelé           | Číst všechny vlastnosti  | Tento objekt  |
-Povolit    | Ověření uživatelé           | Oprávnění ke čtení     | Tento objekt  |
+Allow    | SYSTÉM                        | Úplné řízení         | Tento objekt  |
+Allow    | Enterprise Admins             | Úplné řízení         | Tento objekt  |
+Allow    | Domain Admins                 | Úplné řízení         | Tento objekt  |
+Allow    | Správci                | Úplné řízení         | Tento objekt  |
+Allow    | Enterprise Domain Controllers | Seznam obsahu        | Tento objekt  |
+Allow    | Enterprise Domain Controllers | Číst všechny vlastnosti  | Tento objekt  |
+Allow    | Enterprise Domain Controllers | Oprávnění ke čtení     | Tento objekt  |
+Allow    | Ověření uživatelé           | Seznam obsahu        | Tento objekt  |
+Allow    | Ověření uživatelé           | Číst všechny vlastnosti  | Tento objekt  |
+Allow    | Ověření uživatelé           | Oprávnění ke čtení     | Tento objekt  |
 
 Chcete-li posílit nastavení pro účet služby AD DS, můžete spustit [tento skript Powershellu](https://gallery.technet.microsoft.com/Prepare-Active-Directory-ef20d978). Skript prostředí PowerShell přiřadí oprávnění uvedená výše pro účet služby AD DS.
 
@@ -889,7 +889,7 @@ Synchronizace služby Azure AD Connect
 * Ve svém tenantovi Azure AD se konfigurace služby, která určuje, zda funkce Synchronizace hesla je povoleno pro vašeho tenanta, nebo ne. Dříve je snadné pro konfiguraci služby, chcete-li být nesprávně nakonfigurování Azure AD Connect, pokud máte aktivní a pracovní server. Teď by Azure AD Connect se pokusí uchovat konfiguraci služby konzistentní s aktivních pouze server Azure AD Connect.
 * Průvodce teď detekuje a vrátí upozornění, pokud Azure AD Connect místní AD nemá Koš služby Active Directory povolena.
 * Dříve Export do služby Azure AD vyprší a selže, pokud celková velikost objektů v dávce překročí určitou prahovou hodnotu. Synchronizační služba se nyní znovu pokusí znovu odeslat objekty v samostatné, menší dávky, pokud tento problém nastává.
-* Správa synchronizace služby klíč aplikace byla odebrána v nabídce Windows Start. Správa šifrovací klíč bude nadále být podporovány prostřednictvím rozhraní příkazového řádku pomocí miiskmu.exe. Informace o správě šifrovací klíč, najdete v článku [nastavuje Azure AD Connect Sync šifrovací klíč](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-change-serviceacct-pass#abandoning-the-azure-ad-connect-sync-encryption-key).
+* Správa synchronizace služby klíč aplikace byla odebrána v nabídce Windows Start. Správa šifrovací klíč bude nadále být podporovány prostřednictvím rozhraní příkazového řádku pomocí miiskmu.exe. Informace o správě šifrovací klíč, najdete v článku [nastavuje Azure AD Connect Sync šifrovací klíč](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-change-serviceacct-pass#abandoning-the-adsync-service-account-encryption-key).
 * Dříve Pokud změníte heslo účtu služby Azure AD Connect sync, synchronizační služba nebude možné start správně opuštěných šifrovacího klíče a znovu inicializovat heslo účtu služby Azure AD Connect sync. Tento proces se teď už nevyžaduje.
 
 Jednotného přihlašování
@@ -1270,5 +1270,5 @@ Vydáno: Září 2014
 
 **Počáteční verze služby Azure AD Sync.**
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Přečtěte si další informace o [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md).

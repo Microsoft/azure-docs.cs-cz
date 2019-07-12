@@ -4,7 +4,7 @@ description: Postup instalace SAP HANA v SAP HANA v Azure (velké instance).
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 03/05/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 96acb2e7af797f2777cc751417f50eb21faa46da
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bbbfad7f9fa1c5515b187114277f054f7c5ea84b
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60202929"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709564"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Instalace a konfigurace SAP HANA (velké instance) v Azure
 
@@ -141,7 +141,7 @@ Existují některé podrobnosti stojí za zmínku o možnostech sítě jedné je
 
 Další informace o Ethernet podrobnosti o architektuře, najdete v článku [HLI Podporované scénáře](hana-supported-scenario.md).
 
-## <a name="storage"></a>Úložiště
+## <a name="storage"></a>Storage
 
 Rozložení úložiště pro SAP HANA v Azure (velké instance) je nakonfigurována ve SAP HANA na Azure service management prostřednictvím SAP Doporučené pokyny. Tyto pokyny jsou dokumentovány v článku [požadavky na úložiště SAP HANA](https://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) dokument white paper. 
 

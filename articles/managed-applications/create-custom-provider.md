@@ -7,20 +7,20 @@ ms.service: managed-applications
 ms.topic: tutorial
 ms.date: 05/01/2019
 ms.author: evanhi
-ms.openlocfilehash: e4196cf59537be5194ceb510a1b7b066c97de19a
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 41200139ef55fa1ae441192e2d81b5228cf29bad
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65410227"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67795317"
 ---
-# <a name="tutorial-create-custom-provider-and-deploy-custom-resources"></a>Kurz: Vytvoření vlastního zprostředkovatele a nasazení vlastních prostředků
+# <a name="quickstart-create-custom-provider-and-deploy-custom-resources"></a>Rychlý start: Vytvoření vlastního zprostředkovatele a nasazení vlastních prostředků
 
-V tomto kurzu vytvoříte poskytovatele prostředků a nasazovat vlastní typy prostředků pro daného poskytovatele prostředků. Další informace o vlastních poskytovatelů najdete v tématu [přehled Azure Vlastní zprostředkovatelé Preview](custom-providers-overview.md).
+V tomto rychlém startu vytvoříte poskytovatele prostředků a nasazovat vlastní typy prostředků pro daného poskytovatele prostředků. Další informace o vlastních poskytovatelů najdete v tématu [přehled Azure Vlastní zprostředkovatelé Preview](custom-providers-overview.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení kroků v tomto kurzu, budete muset volání operací REST. Existují [různé způsoby odesílání požadavků REST](/rest/api/azure/). Pokud ještě nemáte nástroj pro operace REST, nainstalujte [ARMClient](https://github.com/projectkudu/ARMClient). Je nástroj příkazového řádku open source, který zjednodušuje volání rozhraní API Azure Resource Manageru.
+K dokončení kroků v tomto rychlém startu, potřebujete volání operací REST. Existují [různé způsoby odesílání požadavků REST](/rest/api/azure/). Pokud ještě nemáte nástroj pro operace REST, nainstalujte [ARMClient](https://github.com/projectkudu/ARMClient). Je nástroj příkazového řádku open source, který zjednodušuje volání rozhraní API Azure Resource Manageru.
 
 ## <a name="deploy-custom-provider"></a>Nasazení vlastního zprostředkovatele
 
@@ -122,7 +122,7 @@ Obdržíte odpovědi:
 
 ## <a name="create-resource-type"></a>Vytvořit typ prostředku
 
-Pokud chcete vytvořit vlastní prostředek typu, můžete nasadit prostředků v šabloně. Tento přístup je zobrazena v šabloně, kterou jste nasadili v tomto kurzu. Můžete také odeslat požadavek PUT pro typ prostředku.
+Pokud chcete vytvořit vlastní prostředek typu, můžete nasadit prostředků v šabloně. Tento přístup je zobrazena v šabloně, kterou jste nasadili v tomto rychlém startu. Můžete také odeslat požadavek PUT pro typ prostředku.
 
 ```
 PUT https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<rg-name>/providers/Microsoft.CustomProviders/resourceProviders/<provider-name>/users/<resource-name>?api-version=2018-09-01-preview

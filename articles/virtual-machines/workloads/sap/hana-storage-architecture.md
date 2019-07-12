@@ -4,7 +4,7 @@ description: Architektura úložiště nasazení SAP HANA v Azure (velké instan
 services: virtual-machines-linux
 documentationcenter: ''
 author: RicksterCDN
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 03/05/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 02272ee16cf3303890a8ba6d35d38676e98c788c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a2cfe9dc02e69f3b47c99e01bc70bffc942338fd
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60478646"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707257"
 ---
 # <a name="sap-hana-large-instances-storage-architecture"></a>Architektura úložiště SAP HANA (velké instance)
 
@@ -79,7 +79,7 @@ Je možné k hostování více než jeden aktivní instanci SAP HANA na jednotk�
 
 Několik příkladů spouštění více instancí SAP HANA může vypadat nějak takto.
 
-| Skladová jednotka (SKU) | Velikost paměti | Velikost úložiště | Velikosti více databází |
+| SKU | Velikost paměti | Velikost úložiště | Velikosti více databází |
 | --- | --- | --- | --- |
 | S72 | 768 GB | 3 TB | 1 x 768 GB instance HANA<br /> nebo instance 1 x 512 GB + 1 x 256 GB instance<br /> nebo 3 x 256 GB instance | 
 | S72m | 1,5 TB | 6 TB | instance HANA 3x512GB<br />nebo instance 1 x 512 GB + 1 x 1 TB instance<br />nebo instance 6 x 256 GB<br />nebo instance 1x1.5 TB | 

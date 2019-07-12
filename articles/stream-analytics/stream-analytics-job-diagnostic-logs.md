@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: a41c3f60d4b949f78c0755f97c9ef7e6302d78d8
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 68c40cf893bf150756f0a03056473e82cff5754f
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67330001"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620959"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-diagnostics-logs"></a>Řešení potíží s Azure Stream Analytics s využitím diagnostických protokolů
 
@@ -117,7 +117,7 @@ Protokoly spuštění obsahují informace o události, ke kterým došlo během 
 
 Všechny chyby, ke které dojde během úlohy zpracování dat je v této kategorii protokolů. Nejčastěji tyto protokoly se vytvoří během data načtená, serializaci a operace zápisu. Tyto protokoly neobsahují chyby připojení. K chybám připojení jsou považovány za obecné události. Další informace o příčině různých různých [vstupní a výstupní data chyby](https://docs.microsoft.com/azure/stream-analytics/data-errors).
 
-Název | Popis
+Name | Popis
 ------- | -------
 Zdroj | Název úlohy vstup nebo výstup, kde došlo k chybě.
 Zpráva | Zpráva přidružená k chybě.
@@ -150,5 +150,5 @@ ID korelace | [Identifikátor GUID](https://en.wikipedia.org/wiki/Universally_un
 * [Úvod do služby Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme se Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Škálovat úlohy Stream Analytics](stream-analytics-scale-jobs.md)
-* [Referenční příručka k Stream Analytics query language](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Referenční příručka k Stream Analytics query language](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Stream Analytics data chyby](https://docs.microsoft.com/azure/stream-analytics/data-errors)

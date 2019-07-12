@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/30/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 835f23f98ebe56e0b19081f07dc3302ef93b27b9
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: a601b0c40f84832101e97a7abf7dd7418a0a5c69
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67174849"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673291"
 ---
 Pomocí následujících kroků můžete vytvořit virtuální síť pomocí modelu nasazení Resource Manager a webu Azure portal. Další informace o virtuálních sítích najdete v tématu [Přehled služby Virtual Network](../articles/virtual-network/virtual-networks-overview.md).
 
@@ -22,7 +22,7 @@ Pomocí následujících kroků můžete vytvořit virtuální síť pomocí mod
 >
 >
 
-1. Přihlaste se k [webu Azure portal](http://portal.azure.com) a vyberte **vytvořit prostředek**. **Nový** otevře se stránka.
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com) a vyberte **vytvořit prostředek**. **Nový** otevře se stránka.
 
 2. V **Hledat na marketplace** zadejte *virtuální sítě* a vyberte **virtuální síť** z vráceném seznamu. **Virtuální síť** otevře se stránka.
 

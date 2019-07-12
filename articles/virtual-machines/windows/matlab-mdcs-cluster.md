@@ -4,7 +4,7 @@ description: Pomocí Microsoft Azure virtual machines k vytvoření clusterů MA
 services: virtual-machines-windows
 documentationcenter: ''
 author: mscurrell
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: e9980ce9-124a-41f1-b9ec-f444c8ea5c72
 ms.service: virtual-machines-windows
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Windows
 ms.workload: infrastructure-services
 ms.date: 05/09/2016
 ms.author: markscu
-ms.openlocfilehash: 49824741facc8822a9417306794f1028fc180e16
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 857382c09192e71d9727a91274993091f2f903b2
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60555085"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718690"
 ---
 # <a name="create-matlab-distributed-computing-server-clusters-on-azure-vms"></a>Vytvoření MATLAB distribuovaný Server výpočetních clusterů na virtuálních počítačích Azure
 Pomocí Microsoft Azure virtual machines můžete vytvořit jeden nebo více MATLAB distribuované výpočetní clustery spouštět úlohy náročné na výpočetní paralelní MATLAB. Nainstalovat software serveru distribuované výpočetní MATLAB na virtuálním počítači používat jako základní image a použít šablonu Azure pro rychlý start nebo skriptu Azure Powershellu (k dispozici na [Githubu](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster)) k nasazení a správě clusteru. Po nasazení připojte se ke clusteru pro spouštění vašich úloh.

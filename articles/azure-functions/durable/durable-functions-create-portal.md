@@ -9,13 +9,14 @@ ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/23/2018
-ms.author: azfuncdf, glenga
-ms.openlocfilehash: 705a43f1ef35f953d1b87c7c44bbc45fcb4334be
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: glenga
+ms.reviewer: azfuncdf
+ms.openlocfilehash: 4670dd37facf341e355d736a72b4d71f27237fda
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65872866"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612908"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Vytvoření Durable Functions pomocí webu Azure portal
 
@@ -136,7 +137,7 @@ Pokud vytváříte odolné funkce jazyka JavaScript, budete muset nainstalovat [
 
 První odolné funkce je teď vytvořená a spuštěná v Azure.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Další informace o běžných vzorech trvalý – funkce](durable-functions-concepts.md)

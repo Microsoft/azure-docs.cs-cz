@@ -9,12 +9,12 @@ ms.date: 10/17/2018
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: a0043ca886bf6c92ab26d76b3678bf8a2764846a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: fbb8101bdb46dd037dbba1f56be440ef9ce60688
+ms.sourcegitcommit: af31deded9b5836057e29b688b994b6c2890aa79
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60563588"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67812957"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>Rychlý start: Směrování událostí služby Blob storage do webového koncového bodu pomocí webu Azure portal
 
@@ -105,7 +105,7 @@ Událost pro úložiště objektů blob aktivujete nahráním souboru. Soubor ne
 1. Právě jste aktivovali událost a služba Event Grid odeslala zprávu do koncového bodu, který jste nakonfigurovali při přihlášení k odběru. Zobrazte svou webovou aplikaci a všimněte si, že se přijala událost vytvoření objektu blob. 
 
    ```json
-   {
+   [{
     "topic": "/subscriptions/{subscription-id}/resourceGroups/eventgroup/providers/Microsoft.Storage/storageAccounts/demoblob0625",
     "subject": "/blobServices/default/containers/eventcontainer/blobs/testfile.txt",
     "eventType": "Microsoft.Storage.BlobCreated",
@@ -127,7 +127,7 @@ Událost pro úložiště objektů blob aktivujete nahráním souboru. Soubor ne
     },
     "dataVersion": "",
     "metadataVersion": "1"
-   }
+   }]
    ```
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků

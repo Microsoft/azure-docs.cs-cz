@@ -2,24 +2,25 @@
 title: Vytvoření vlastních výstrah pro Azure Security Center pro IoT ve verzi Preview | Dokumentace Microsoftu
 description: Vytvoření a přiřazení vlastního zařízení výstrah pro Azure Security Center pro IoT.
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
 ms.assetid: d1757868-da3d-4453-803a-7e3a309c8ce8
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2019
 ms.author: mlottner
-ms.openlocfilehash: 3b4c5e4700b0ef718a6b079ecc6ab3ad80f4eab6
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 12559af013d49e557ba0132bef24867867745c16
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65786186"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67618032"
 ---
 # <a name="quickstart-create-custom-alerts"></a>Rychlý start: Vytvořit vlastní upozornění
 
@@ -62,27 +63,27 @@ Pomocí skupin zabezpečení k seskupení zařízení do logických kategorií. 
 
 Následující tabulka nabízí souhrn výstrah, které jsou k dispozici pro přizpůsobení.
 
-| Severity | Název                                                                                                    | Zdroj dat | Popis                                                                                                                                     |
+| severity | Name                                                                                                    | Zdroj dat | Popis                                                                                                                                     |
 |----------|---------------------------------------------------------------------------------------------------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
-| Nízký      | Vlastní výstraha – počet cloudu na zařízení zprávy v protokolu AMQP není v povoleném rozsahu          | IoT Hub     | Množství cloudu do zařízení zpráv (AMQP protocol) v časové okno není v nakonfigurovaných povolený rozsah                                  |
-| Nízký      | Vlastní upozornění - počet odmítnutých cloudu na zařízení zprávy v protokolu AMQP není v povoleném rozsahu | IoT Hub     | Velikost zprávy typu zařízení (protokolu AMQP), které byly odmítnuty přenosem zařízení v časové okno v cloudu se nenachází v nakonfigurovaných povolený rozsah |
-| Nízký      | Vlastní výstraha – počet zařízení na cloud zprávy v protokolu AMQP není v povoleném rozsahu          | IoT Hub     | Množství zařízení na cloud zprávy (protokolu AMQP) v časové okno není v nakonfigurovaných povolený rozsah                                  |
-| Nízký      | Vyvolá vlastní výstraha – počet přímé metody není v povoleném rozsahu                              | IoT Hub     | Vyvolá množství přímé metody v okamžiku okno není v nakonfigurovaných povolený rozsah                                                     |
-| Nízký      | Vlastní výstraha – počet nahrávání souborů není v povoleném rozsahu                                       | IoT Hub     | Množství nahrávání souborů v časové okno není v nakonfigurovaných povolený rozsah                                                              |
-| Nízký      | Vlastní výstraha – počet cloudu na zařízení zprávy v protokolu HTTP není v povoleném rozsahu          | IoT Hub     | Množství cloudu na zařízení zprávy (protokol HTTP) v časové okno není v nakonfigurovaných povolený rozsah                                  |
-| Nízký      | Vlastní upozornění - počet odmítnutých cloudu na zařízení zprávy v protokolu HTTP není v povoleném rozsahu | IoT Hub     | Velikost zprávy typu zařízení (protokol HTTP), které byly odmítnuty přenosem zařízení v časové okno v cloudu se nenachází v nakonfigurovaných povolený rozsah |
-| Nízký      | Vlastní výstraha – počet zařízení na cloud zprávy v protokolu HTTP není v povoleném rozsahu          | IoT Hub     | Množství zařízení na cloud zprávy (protokol HTTP) v časové okno není v nakonfigurovaných povolený rozsah                                  |
-| Nízký      | Vlastní výstraha – počet cloudu na zařízení zprávy v protokolu MQTT není v povoleném rozsahu          | IoT Hub     | Množství cloudu na zařízení zprávy (protokolu MQTT) v časové okno není v nakonfigurovaných povolený rozsah                                  |
-| Nízký      | Vlastní upozornění - počet odmítnutých cloudu na zařízení zprávy v protokolu MQTT není v povoleném rozsahu | IoT Hub     | Velikost zprávy typu zařízení (protokolu MQTT), které byly odmítnuty přenosem zařízení v časové okno v cloudu se nenachází v nakonfigurovaných povolený rozsah |
-| Nízký      | Vlastní výstraha – počet zařízení na cloud zprávy v protokolu MQTT není v povoleném rozsahu          | IoT Hub     | Množství zařízení na cloud zprávy (protokolu MQTT) v časové okno není v nakonfigurovaných povolený rozsah                                  |
-| Nízký      | Vlastní výstraha – počet vymazat frontu příkaz není v povoleném rozsahu                               | IoT Hub     | Vymaže množství frontu příkazů v čase, které okno není v nakonfigurovaných povolený rozsah                                                      |
-| Nízký      | Vlastní výstraha – počet aktualizace dvojčat není v povoleném rozsahu                                       | IoT Hub     | Množství aktualizace dvojčat v časové okno není v nakonfigurovaných povolený rozsah                                                              |
-| Nízký      | Vlastní výstraha – počet neautorizovaných operací není v povoleném rozsahu                            | IoT Hub     | Množství neautorizovaných operací v časové okno není v nakonfigurovaných povolený rozsah                                                   |
-| Nízký      | Vlastní výstraha – počet aktivních připojení není v povoleném rozsahu                                        | Agent       | Počet aktivních připojení v časové okno není v nakonfigurovaných povolený rozsah                                                        |
-| Nízký      | Vytvoření vlastní výstraha – odchozí připojení pro integrační balíček, který není povolen                              | Agent       | Odchozí připojení pro integrační balíček, který není povolen, někdo vytvořil                                                                                  |
-| Nízký      | Vlastní výstrahy – počet neúspěšných přihlášení místní není v povoleném rozsahu                                | Agent       | Množství neúspěšných místní přihlášení v časové okno není v nakonfigurovaných povolený rozsah                                                       |
-| Nízký      | Vlastní výstraha – přihlašovací jméno uživatele, který není povolen                                                      | Agent       | Místní uživatel, který není povoleno přihlášení k zařízení                                                                                        |
-| Nízký      | Vlastní výstraha – spuštění procesu, který není povolen                                               | Agent       | Spustil se proces, který není povolen v zařízení |          |
+| Nízká      | Vlastní výstraha – počet cloudu na zařízení zprávy v protokolu AMQP není v povoleném rozsahu          | IoT Hub     | Množství cloudu do zařízení zpráv (AMQP protocol) v časové okno není v nakonfigurovaných povolený rozsah                                  |
+| Nízká      | Vlastní upozornění - počet odmítnutých cloudu na zařízení zprávy v protokolu AMQP není v povoleném rozsahu | IoT Hub     | Velikost zprávy typu zařízení (protokolu AMQP), které byly odmítnuty přenosem zařízení v časové okno v cloudu se nenachází v nakonfigurovaných povolený rozsah |
+| Nízká      | Vlastní výstraha – počet zařízení na cloud zprávy v protokolu AMQP není v povoleném rozsahu          | IoT Hub     | Množství zařízení na cloud zprávy (protokolu AMQP) v časové okno není v nakonfigurovaných povolený rozsah                                  |
+| Nízká      | Vyvolá vlastní výstraha – počet přímé metody není v povoleném rozsahu                              | IoT Hub     | Vyvolá množství přímé metody v okamžiku okno není v nakonfigurovaných povolený rozsah                                                     |
+| Nízká      | Vlastní výstraha – počet nahrávání souborů není v povoleném rozsahu                                       | IoT Hub     | Množství nahrávání souborů v časové okno není v nakonfigurovaných povolený rozsah                                                              |
+| Nízká      | Vlastní výstraha – počet cloudu na zařízení zprávy v protokolu HTTP není v povoleném rozsahu          | IoT Hub     | Množství cloudu na zařízení zprávy (protokol HTTP) v časové okno není v nakonfigurovaných povolený rozsah                                  |
+| Nízká      | Vlastní upozornění - počet odmítnutých cloudu na zařízení zprávy v protokolu HTTP není v povoleném rozsahu | IoT Hub     | Velikost zprávy typu zařízení (protokol HTTP), které byly odmítnuty přenosem zařízení v časové okno v cloudu se nenachází v nakonfigurovaných povolený rozsah |
+| Nízká      | Vlastní výstraha – počet zařízení na cloud zprávy v protokolu HTTP není v povoleném rozsahu          | IoT Hub     | Množství zařízení na cloud zprávy (protokol HTTP) v časové okno není v nakonfigurovaných povolený rozsah                                  |
+| Nízká      | Vlastní výstraha – počet cloudu na zařízení zprávy v protokolu MQTT není v povoleném rozsahu          | IoT Hub     | Množství cloudu na zařízení zprávy (protokolu MQTT) v časové okno není v nakonfigurovaných povolený rozsah                                  |
+| Nízká      | Vlastní upozornění - počet odmítnutých cloudu na zařízení zprávy v protokolu MQTT není v povoleném rozsahu | IoT Hub     | Velikost zprávy typu zařízení (protokolu MQTT), které byly odmítnuty přenosem zařízení v časové okno v cloudu se nenachází v nakonfigurovaných povolený rozsah |
+| Nízká      | Vlastní výstraha – počet zařízení na cloud zprávy v protokolu MQTT není v povoleném rozsahu          | IoT Hub     | Množství zařízení na cloud zprávy (protokolu MQTT) v časové okno není v nakonfigurovaných povolený rozsah                                  |
+| Nízká      | Vlastní výstraha – počet vymazat frontu příkaz není v povoleném rozsahu                               | IoT Hub     | Vymaže množství frontu příkazů v čase, které okno není v nakonfigurovaných povolený rozsah                                                      |
+| Nízká      | Vlastní výstraha – počet aktualizace dvojčat není v povoleném rozsahu                                       | IoT Hub     | Množství aktualizace dvojčat v časové okno není v nakonfigurovaných povolený rozsah                                                              |
+| Nízká      | Vlastní výstraha – počet neautorizovaných operací není v povoleném rozsahu                            | IoT Hub     | Množství neautorizovaných operací v časové okno není v nakonfigurovaných povolený rozsah                                                   |
+| Nízká      | Vlastní výstraha – počet aktivních připojení není v povoleném rozsahu                                        | Agent       | Počet aktivních připojení v časové okno není v nakonfigurovaných povolený rozsah                                                        |
+| Nízká      | Vytvoření vlastní výstraha – odchozí připojení pro integrační balíček, který není povolen                              | Agent       | Odchozí připojení pro integrační balíček, který není povolen, někdo vytvořil                                                                                  |
+| Nízká      | Vlastní výstrahy – počet neúspěšných přihlášení místní není v povoleném rozsahu                                | Agent       | Množství neúspěšných místní přihlášení v časové okno není v nakonfigurovaných povolený rozsah                                                       |
+| Nízká      | Vlastní výstraha – přihlašovací jméno uživatele, který není povolen                                                      | Agent       | Místní uživatel, který není povoleno přihlášení k zařízení                                                                                        |
+| Nízká      | Vlastní výstraha – spuštění procesu, který není povolen                                               | Agent       | Spustil se proces, který není povolen v zařízení |          |
 
 ## <a name="next-steps"></a>Další postup
 
