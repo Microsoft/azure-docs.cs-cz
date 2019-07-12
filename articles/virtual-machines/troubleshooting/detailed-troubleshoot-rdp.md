@@ -4,7 +4,7 @@ description: Projděte si podrobný postup řešení potíží pro vzdálené pl
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
 keywords: nejde se připojit k vzdálené ploše, řešit problémy se vzdálenou plochu, nemůže připojit ke vzdálené ploše, vzdálené plochy chyby, řešení potíží vzdálené plochy, potížích se vzdálenou plochou
@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 4b4d2e2099f0d49c7dd9a150ac659ffde62eaa21
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 56fa1363e9737a2ce06ba5f0215235a84ee70ce6
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "64693085"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709917"
 ---
 # <a name="detailed-troubleshooting-steps-for-remote-desktop-connection-issues-to-windows-vms-in-azure"></a>Podrobný Poradce při potížích kroky pro připojení ke vzdálené ploše pro virtuální počítače s Windows v Azure
 Tento článek obsahuje podrobný postup řešení potíží, Diagnostika a řešení složitých chybami ke vzdálené ploše pro založené na Windows Azure virtual machines.
@@ -192,7 +192,7 @@ Exit-PSSession
 
 Ověřte, že koncový bod vzdálené plochy pro virtuální počítač Azure je rovněž na portu TCP. 3398 jako jeho interní port. Restartujte virtuální počítač Azure a zkuste to znovu připojení ke vzdálené ploše.
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 [Jak obnovit heslo nebo službu Vzdálená plocha pro virtuální počítače s Windows](../windows/reset-rdp.md)
 
 [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/overview)

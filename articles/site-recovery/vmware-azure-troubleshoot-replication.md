@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 06/27/2019
 ms.author: mayg
-ms.openlocfilehash: c005dcee78e2a9338dc7a816e06d9a78a2f355b6
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: ed04c21fc5f3aecb91483dbd1eb7ca5fbf47c3e9
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491675"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67805961"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>Řešení problémů replikace pro virtuální počítače VMware a fyzické servery
 
@@ -133,7 +133,63 @@ To se stane, když agenta Azure Site Recovery Mobility na hlavním cíli nekomun
         
           C:\Program Files (X86)\Microsoft Azure Site Recovery\agent\svagents*log
 
+## <a name="error-id-78144---no-app-consistent-recovery-point-available-for-the-vm-in-the-last-xxx-minutes"></a>ID chyby 78144 - nejsou k dispozici pro virtuální počítač během posledních několika minut "XXX" žádný bod obnovení konzistentní vzhledem k aplikaci
 
+Níže jsou uvedeny některé z nejběžnějších problémů
+
+#### <a name="cause-1-known-issue-in-sql-server-20082008-r2"></a>1\. příčina: Známý problém v systému SQL server 2008 a 2008 R2 
+**K vyřešení** : Existuje známý problém se systémem SQL server 2008 a 2008 R2. Naleznete v tomto článku znalostní BÁZE [agenta Azure Site Recovery nebo jiné ne komponentu VSS zálohování se nezdaří pro server hostující SQL Server 2008 R2](https://support.microsoft.com/help/4504103/non-component-vss-backup-fails-for-server-hosting-sql-server-2008-r2)
+
+#### <a name="cause-2-azure-site-recovery-jobs-fail-on-servers-hosting-any-version-of-sql-server-instances-with-autoclose-dbs"></a>2\. příčina: Selhání úlohy Azure Site Recovery na servery, které hostují všechny verze instance SQL serveru s databází AUTO_CLOSE 
+**K vyřešení** : Přečtěte si Kb [článku](https://support.microsoft.com/help/4504104/non-component-vss-backups-such-as-azure-site-recovery-jobs-fail-on-ser) 
+
+
+#### <a name="cause-3-known-issue-in-sql-server-2016-and-2017"></a>3\. důvod: Známý problém nástroje SQL Server 2016 a 2017
+**K vyřešení** : Přečtěte si Kb [článku](https://support.microsoft.com/help/4493364/fix-error-occurs-when-you-back-up-a-virtual-machine-with-non-component) 
+
+
+### <a name="more-causes-due-to-vss-related-issues"></a>Další možné příčiny kvůli VSS související problémy:
+
+Chcete-li pokračovat v řešení potíží, zkontrolujte soubory na zdrojovém počítači získat přesné informace o chybě kód chyby:
+    
+    C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\Application Data\ApplicationPolicyLogs\vacp.log
+
+Jak najít chyby v souboru?
+Vyhledejte řetězec "vacpError" tak, že otevřete soubor vacp.log v editoru
+        
+    Ex: vacpError:220#Following disks are in FilteringStopped state [\\.\PHYSICALDRIVE1=5, ]#220|^|224#FAILED: CheckWriterStatus().#2147754994|^|226#FAILED to revoke tags.FAILED: CheckWriterStatus().#2147754994|^|
+
+V předchozím příkladu **2147754994** je chybový kód, který vás informuje o selhání, jak je znázorněno níže
+
+#### <a name="vss-writer-is-not-installed---error-2147221164"></a>Zapisovač VSS není nainstalováno – chyba 2147221164 
+
+*K vyřešení*: Ke generování značka konzistence aplikací, Azure Site Recovery používá Microsoft Stínová kopie svazku Service (VSS). Nainstaluje zprostředkovatele služby VSS pro svou pořizovat snímky konzistence aplikace. Tento zprostředkovatel stínové kopie svazku je nainstalována jako služba. V případě, že není nainstalována služba poskytovatelem služby VSS, vytvoření snímku konzistence aplikací se nezdaří s id chyby 0x80040154 "Třídy není registrováno". </br>
+Přečtěte si [článek pro řešení potíží instalace zapisovače VSS](https://docs.microsoft.com/azure/site-recovery/vmware-azure-troubleshoot-push-install#vss-installation-failures) 
+
+#### <a name="vss-writer-is-disabled---error-2147943458"></a>Zapisovač VSS je zakázáno – chyba 2147943458
+
+**K vyřešení**: Ke generování značka konzistence aplikací, Azure Site Recovery používá Microsoft Stínová kopie svazku Service (VSS). Nainstaluje zprostředkovatele služby VSS pro svou pořizovat snímky konzistence aplikace. Tento zprostředkovatel stínové kopie svazku je nainstalována jako služba. V případě, že je služba poskytovatel služby VSS zakázána, vytvoření snímku konzistence aplikací se nezdaří s id chybového "Zadaná služba je zakázána a nemůže být started(0x80070422)". </br>
+
+- Pokud se stínové kopie svazku je zakázaná,
+    - Zkontrolujte, že typ spouštění služby poskytovatelem služby VSS je rovno **automatické**.
+    - Restartuje následující služby:
+        - Služba VSS
+        - Azure Site Recovery VSS Provider
+        - Služba VDS
+
+####  <a name="vss-provider-notregistered---error-2147754756"></a>NOT_REGISTERED zprostředkovatele služby VSS – chyba 2147754756
+
+**K vyřešení**: Ke generování značka konzistence aplikací, Azure Site Recovery používá Microsoft Stínová kopie svazku Service (VSS). Zkontrolujte, jestli je nebo není nainstalovaná služba Azure Site Recovery VSS Provider. </br>
+
+- Opakovaný pokus o instalaci poskytovatele pomocí následujících příkazů:
+- Odinstalace stávajícího poskytovatele: C:\Program soubory (x86) \Microsoft Azure Site Recovery\agent\InMageVSSProvider_Uninstall.cmd
+- Znovu nainstalujte: C:\Program soubory (x86) \Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd
+ 
+Zkontrolujte, že typ spouštění služby poskytovatelem služby VSS je rovno **automatické**.
+    - Restartuje následující služby:
+        - Služba VSS
+        - Azure Site Recovery VSS Provider
+        - Služba VDS
 
 ## <a name="next-steps"></a>Další postup
 

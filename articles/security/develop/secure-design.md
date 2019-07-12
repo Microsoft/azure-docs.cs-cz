@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: b637f547de06d9347a1c74ad7da560be97f16881
-ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.openlocfilehash: 12b9793cabb261368c437bd2ae2dbb39cf078bef
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67144435"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67653286"
 ---
 # <a name="design-secure-applications-on-azure"></a>Návrh zabezpečených aplikací v Azure
 V tomto článku Představujeme aktivity související se zabezpečením a ovládací prvky, které je třeba zvážit při návrhu aplikací pro cloud. Školení prostředků spolu s bezpečnostní otázky a koncepty, které je vhodné zvážit během požadavky a navrhnout fáze Microsoft [Security Development Lifecycle (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) se vztahuje. Cílem je může pomoci určit činností a služeb Azure, které slouží k návrhu bezpečnější aplikace.
@@ -39,7 +39,7 @@ Použijte následující zdroje během fáze školení, seznamte se se službami
 
   - [Sady SDK a nástroje](https://docs.microsoft.com/azure/index#pivot=sdkstools) popisuje nástroje, které jsou k dispozici v Azure.
 
-  - [Služby Azure DevOps](https://docs.microsoft.com/azure/devops/?view=vsts#pivot=index&panel=indexA) poskytuje vývojové nástroje pro spolupráci. Tyto nástroje zahrnují vysoce výkonných kanálů, bezplatná úložiště Git, konfigurovatelné karty kanban a rozsáhlé automatizované a cloudové zátěžové testování.
+  - [Služby Azure DevOps](https://docs.microsoft.com/azure/devops/) poskytuje vývojové nástroje pro spolupráci. Tyto nástroje zahrnují vysoce výkonných kanálů, bezplatná úložiště Git, konfigurovatelné karty kanban a rozsáhlé automatizované a cloudové zátěžové testování.
     [DevOps Resource Center](https://docs.microsoft.com/azure/devops/learn/) spojuje naše materiály pro seznámení s DevOps postupy Git správy verzí, agilní metodologie, jak Pracujeme s DevOps v Microsoftu a jak můžete vyhodnotit vlastní postup DevOps.
 
   - [Prvních 5 pět položek zabezpečení, které je třeba zvážit před doručením (push) do produkčního prostředí](https://docs.microsoft.com/learn/modules/top-5-security-items-to-consider/index?WT.mc_id=Learn-Blog-tajanca) ukazuje, jak pomoci zabezpečit vaše webové aplikace v Azure a Chraňte své aplikace před webovými útoky aplikace nejběžnější a nebezpečné.
@@ -152,12 +152,12 @@ Modelování návrhu aplikace a vytváření výčtů [STRIDE](https://docs.goog
 
 | Před internetovými útoky | Vlastnost zabezpečení | Ke zmírnění potenciální platformou Azure. |
 | ---------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Falšování identity               | Authentication        | [Vyžadovat připojení prostřednictvím protokolu HTTPS](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio). |
+| Falšování identity               | Ověřování        | [Vyžadovat připojení prostřednictvím protokolu HTTPS](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio). |
 | Manipulace              | Integrita             | Ověřte certifikáty SSL/TLS. Aplikace, které používají protokol SSL/TLS plně ověřte certifikáty X.509 entity, které se připojují. Použití certifikátů v Azure Key Vault [spravovat vaše x509 certifikáty](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates). |
 | odmítnutí            | Nepopiratelnost odpovědnosti       | Povolení služby Azure [monitorováním a diagnostikou](https://docs.microsoft.com/azure/architecture/best-practices/monitoring).|
 | Zpřístupnění informací | Důvěrnost       | Šifrovat citlivá data [v klidovém stavu](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest) a [přenášená](https://docs.microsoft.com/azure/security/azure-security-data-encryption-best-practices#protect-data-in-transit). |
 | Odepření služby      | Dostupnost          | Monitorovat metriky výkonu pro potenciální odmítnutí podmínek služby. Implementace připojení filtry. [Azure DDoS protection](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview#next-steps), v kombinaci s osvědčené postupy pro navrhování aplikací, poskytuje ochranu před útoky DDoS.|
-| Zvýšení oprávnění | Autorizace         | Použití Azure Active Directory <span class="underline"> </span> [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure).|
+| Zvýšení oprávnění | Authorization         | Použití Azure Active Directory <span class="underline"> </span> [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure).|
 
 ### <a name="reduce-your-attack-surface"></a>Snižte útoky
 

@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 06/11/2019
 ms.author: tvoellm
 ms.reviewer: sngun
-ms.openlocfilehash: eb8c98df0f015244adf06a9b57f2223509f1f081
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cc39cc09259c1ae681e1fee070777575e2788323
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67082960"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827849"
 ---
-# <a name="certificate-based-authentication-for-an-azure-ad-identity-to-access-keys-from-an-azure-cosmos-account"></a>Ověřování pomocí certifikátů pro identitu služby Azure AD pro přístup ke klíčům z účtu služby Azure Cosmos
+# <a name="certificate-based-authentication-for-an-azure-ad-identity-to-access-keys-from-an-azure-cosmos-db-account"></a>Ověřování pomocí certifikátů pro identitu služby Azure AD pro přístup ke klíčům z účtu služby Azure Cosmos DB
 
-Ověřování pomocí certifikátů umožňuje klientská aplikace mohla ověřit pomocí služby Azure Active Directory (Azure AD) pomocí klientského certifikátu. Na počítači, kde je třeba identity, jako je místní počítač nebo virtuální počítač v Azure můžete provádět ověřování pomocí certifikátů. Aplikace pak můžete přečíst klíče Azure Cosmo DB bez nutnosti klíče přímo v aplikaci. Tento článek popisuje, jak vytvořit ukázková aplikace Azure AD, ho nakonfigurovat k ověřování pomocí certifikátu, přihlášení do Azure pomocí nové identity aplikace a pak načte klíče ze svého účtu Azure Cosmos. Tento článek používá prostředí Azure PowerShell k nastavení identity a poskytuje C# ukázkovou aplikaci, která ověřuje a má přístup k klíče z vašeho účtu Azure Cosmos.  
+Ověřování pomocí certifikátů umožňuje klientská aplikace mohla ověřit pomocí služby Azure Active Directory (Azure AD) pomocí klientského certifikátu. Na počítači, kde je třeba identity, jako je místní počítač nebo virtuální počítač v Azure můžete provádět ověřování pomocí certifikátů. Aplikace pak můžete přečíst klíče služby Azure Cosmos DB bez nutnosti klíče přímo v aplikaci. Tento článek popisuje, jak vytvořit ukázková aplikace Azure AD, ho nakonfigurovat k ověřování pomocí certifikátu, přihlášení do Azure pomocí nové identity aplikace a pak načte klíče ze svého účtu Azure Cosmos. Tento článek používá prostředí Azure PowerShell k nastavení identity a poskytuje C# ukázkovou aplikaci, která ověřuje a má přístup k klíče z vašeho účtu Azure Cosmos.  
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -26,7 +26,7 @@ Ověřování pomocí certifikátů umožňuje klientská aplikace mohla ověři
 
 ## <a name="register-an-app-in-azure-ad"></a>Registrace aplikace ve službě Azure AD
 
-V tomto kroku se zaregistrujte ukázkovou webovou aplikaci ve vašem účtu Azure AD. Tuto aplikaci se později používá ke čtení klíče z vašeho účtu Azure Cosmos. Použijte následující postup pro registraci aplikace: 
+V tomto kroku se zaregistrujte ukázkovou webovou aplikaci ve vašem účtu Azure AD. Tuto aplikaci se později používá ke čtení klíče z vašeho účtu služby Azure Cosmos DB. Použijte následující postup pro registraci aplikace: 
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 

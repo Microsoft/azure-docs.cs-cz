@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 1e30490dbd51f541afd0b7036769cfc638a75877
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 79446e6676a35a1b51e5e0839eb539d730b499da
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66514371"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807116"
 ---
-# <a name="status-monitor-v2-api-enable-instrumentationengine-v021-alpha"></a>Rozhraní API v2 monitorování stavu: Enable-InstrumentationEngine (v0.2.1 alfa)
+# <a name="status-monitor-v2-api-enable-instrumentationengine-v040-alpha"></a>Rozhraní API v2 monitorování stavu: Enable-InstrumentationEngine (v0.4.0 alfa)
 
 Tento článek popisuje rutiny, která je členem skupiny [modulu Az.ApplicationMonitor PowerShell](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
 
@@ -71,7 +71,7 @@ Configuring IIS Environment for instrumentation engine...
 Configuring registry for instrumentation engine...
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
   Zobrazení telemetrických dat:
  - [Zkoumání metrik](../../azure-monitor/app/metrics-explorer.md) pro monitorování výkonu a využití.

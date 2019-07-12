@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 07/04/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 76b6f013333113d5a24b744bc962d36b1c0e21b3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: de5019e0f91c92829082aed962bb9633da52b4a9
+ms.sourcegitcommit: af31deded9b5836057e29b688b994b6c2890aa79
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60731107"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67812847"
 ---
 # <a name="durable-functions-types-and-features-azure-functions"></a>Odolné funkce typy a funkce (Azure Functions)
 
@@ -27,7 +27,7 @@ Tento článek obsahuje přehled typů funkcí, které můžete použít v Orche
 
 ## <a name="types-of-durable-functions"></a>Typy odolná služba functions
 
-Můžete použít tři typy trvalý funkcí ve službě Azure Functions: aktivita, orchestrator a klienta.
+Můžete použít čtyři typy trvalý funkcí ve službě Azure Functions: aktivita, orchestrator, entit a klienta.
 
 ### <a name="activity-functions"></a>Funkce aktivity
 
@@ -43,7 +43,7 @@ Další informace a příklady najdete v tématu [funkce aktivity](durable-funct
 
 ### <a name="orchestrator-functions"></a>Funkce nástroje Orchestrator
 
-Funkce nástroje Orchestrator popisují, jak akce spustí a pořadí, ve kterém jsou provedení akce. Orchestrace v kódu popisují funkce produktu Orchestrator (C# nebo JavaScript) jak je znázorněno v [Durable Functions vzory a technických konceptech](durable-functions-concepts.md). Orchestrace může mít mnoho různých typů akcí, včetně [funkce aktivity](#activity-functions), [dílčí Orchestrace](#sub-orchestrations), [čekající na externí události](#external-events)a [časovače](#durable-timers). 
+Funkce nástroje Orchestrator popisují, jak akce spustí a pořadí, ve kterém jsou provedení akce. Orchestrace v kódu popisují funkce produktu Orchestrator (C# nebo JavaScript) jak je znázorněno v [Durable Functions vzory a technických konceptech](durable-functions-concepts.md). Orchestrace může mít mnoho různých typů akcí, včetně [funkce aktivity](#activity-functions), [dílčí Orchestrace](#sub-orchestrations), [čekající na externí události](#external-events)a [časovače](#durable-timers). Funkce nástroje Orchestrator může zasahovat rovněž [funkce entity](#entity-functions).
 
 Funkce orchestrátoru musí být aktivované [Orchestrace trigger](durable-functions-bindings.md#orchestration-triggers).
 
@@ -51,11 +51,18 @@ Orchestrátor je tím, že [orchestrator klienta](#client-functions). Můžete s
 
 Další informace a příklady najdete v tématu [Orchestrace triggery](durable-functions-bindings.md#orchestration-triggers).
 
+###  <a name="entity-functions"></a>Funkce entity (preview)
+
+Funkce entity definování operací pro čtení a aktualizaci malých kousků stav, označuje jako *trvalý entity*. Podobně jako funkce nástroje orchestrator, funkce entity jsou funkce s typem speciální aktivační událost *entity trigger*. Na rozdíl od funkce nástroje orchestrator a funkce entity nemají omezeními konkrétního kódu. Funkce entity také spravovat stav explicitně místo implicitně představující stav prostřednictvím toku řízení.
+
+> [!NOTE]
+> Funkce entity a související funkce je dostupná jenom v trvalé Functions 2.0 a vyšší.
+
+Další informace o funkcích entity, najdete v článku [funkce Entity](durable-functions-preview.md#entity-functions) dokumentaci k funkci ve verzi preview.
+
 ### <a name="client-functions"></a>Funkce klienta
 
-Funkce klienta jsou aktivované funkce, které vytvářejí nové instance Orchestrace. Funkce klienta jsou vstupní bod pro vytvoření instance Orchestrace Durable Functions. Můžete aktivovat funkci klienta z libovolného zdroje (HTTP, fronty, datového proudu událostí). Funkce klienta můžete napsat v jakémkoli jazyce, který aplikace podporuje. 
-
-Funkce klienta je navíc [klient Orchestrace](durable-functions-bindings.md#orchestration-client) vazby. Funkce klienta může použít klient Orchestrace vazby můžete vytvářet a spravovat trvalé Orchestrace. 
+Klient funkce jsou aktivované funkce, které vytváření a správa instancí Orchestrace a entit. Jsou efektivní vstupní bod pro interakci s Durable Functions. Můžete aktivovat funkci klienta z libovolného zdroje (HTTP, fronty, datového proudu událostí atd.). Funkce klienta používá [klient Orchestrace vazby](durable-functions-bindings.md#orchestration-client) vytvářet a spravovat trvalé Orchestrace a entity.
 
 Základní příklad funkce klienta je funkci aktivovanou protokolem HTTP, spuštění funkce orchestrátoru, který vrátí odpověď stavu zaškrtnutí. Příklad najdete v tématu [zjišťování adresy URL rozhraní API HTTP](durable-functions-http-api.md#http-api-url-discovery).
 
@@ -208,7 +215,7 @@ module.exports = async function(context, statusUrl) {
 };
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Abyste mohli začít, vytvoření první funkce trvalý v [ C# ](durable-functions-create-first-csharp.md) nebo [JavaScript](quickstart-js-vscode.md).
 

@@ -10,12 +10,12 @@ ms.subservice: acoustics
 ms.topic: quickstart
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: e4b9f31425c5029cdeb991fbdcdb7ae4a5c749c9
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: a78df2d4d84487399da10ca722550639a92e71bf
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67704747"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798144"
 ---
 # <a name="project-acoustics-unrealwwise-quickstart"></a>Rychlý start Unreal/Wwise Akustika projektu
 V tomto rychlém startu jste budete experimentovat s projektu Akustika návrh ovládacích prvků pomocí poskytnutý ukázkový obsah pro Unreal Engine a Wwise.
@@ -57,7 +57,9 @@ Projekt Akustika Unreal plugin vyžaduje další chování být zveřejněna př
 ### <a name="open-the-unreal-project"></a>Otevřete Unreal projekt. 
 Budete dotázáni, můžete nově sestavit moduly; Klikněte na tlačítko Ano.
 
-Pokud otevřete projekt na selhání sestavení selže, zkontrolujte, že jste nainstalovali modul plug-in Wwise Akustika projektu na stejnou verzi Wwise používá v projektu vzorku Akustika projektu.
+>Pokud otevřete projekt na selhání sestavení selže, zkontrolujte, že jste nainstalovali modul plug-in Wwise Akustika projektu na stejnou verzi Wwise používá v projektu vzorku Akustika projektu.
+
+>Pokud nepoužíváte [AudioKinetic Wwise](https://www.audiokinetic.com/products/wwise/) 2018.1.6, budete muset znovu vygenerovat zvukové bank předtím, než v ukázkový projekt se přehraje zvuk.
 
 ## <a name="experiment-with-project-acoustics-design-controls"></a>Experimentujte s ovládacími prvky návrhu Akustika projektu
 Jak scéně podle názvu dalo čekat po kliknutí na tlačítko Přehrát v editoru Unreal naslouchat. Ve stolním počítači, použijte W, A, S, D a myší uspořádat jinak. Pokud zobrazit klávesové zkratky dalších možností ovládání, stiskněte klávesu **F1**. Tady jsou některé aktivity návrhu vyzkoušet:

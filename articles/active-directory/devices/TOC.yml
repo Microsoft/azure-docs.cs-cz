@@ -43,7 +43,7 @@
       href: hybrid-azuread-join-plan.md
     - name: Řízené ověřování hybridního připojení k Azure AD
       href: hybrid-azuread-join-control.md
-    - name: Správa identity zařízení
+    - name: Správa identit zařízení
       href: device-management-azure-portal.md
     - name: Správa zastaralých zařízení
       href: manage-stale-devices.md

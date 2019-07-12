@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/14/2019
-ms.author: aljo, mikhegn
-ms.openlocfilehash: 15f288d5400b49ec05c9ffb936fd2097cc61bae8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mikhegn
+ms.openlocfilehash: 07df215d9c3435d5ca3668b3c8d1587dbb99dca1
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66428142"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621954"
 ---
 # <a name="how-to-debug-windows-containers-in-azure-service-fabric-using-visual-studio-2019"></a>Postup: Ladění kontejnerů Windows v Azure Service Fabric pomocí Visual Studio 2019
 
@@ -80,5 +80,5 @@ Tady je seznam známých omezení ladění kontejnerů v Service Fabric a jejich
 
     Visual Studio podporuje konzoly a typy projektů ASP.NET pro .NET a .NET Core.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další informace o možnostech služby Service Fabric a kontejnery, naleznete v tématu overview](service-fabric-containers-overview.md) kontejnerů Service Fabric.

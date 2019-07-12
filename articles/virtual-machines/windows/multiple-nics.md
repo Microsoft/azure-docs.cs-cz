@@ -4,7 +4,7 @@ description: Zjistěte, jak vytvářet a spravovat virtuální počítač Window
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: 9bff5b6d-79ac-476b-a68f-6f8754768413
 ms.service: virtual-machines-windows
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: cynthn
-ms.openlocfilehash: d6387fc0f2f7342eb7a1fda25fcf1272889d13f7
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: a89d77e47f8a7ffd7072e8f93c19ec6266f261b3
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "64698140"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67720167"
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>Vytvoření a Správa virtuálního počítače Windows, který má více síťových rozhraní
 Virtuální počítače (VM) v Azure může mít více adaptéry virtuální sítě (NIC) připojených k nim. Běžný scénář, kdy je, aby různé podsítě pro front-endu a back-end připojení k síti. Můžete přiřadit více síťových adaptérů na virtuálním počítači s několika podsítěmi, ale tyto podsítě musí nacházet ve stejné virtuální síti (vNet). Tento článek podrobně popisuje, jak vytvořit virtuální počítač s více síťovými kartami připojenými k němu. Také se dozvíte, jak k přidání nebo odebrání síťových rozhraní z existujícího virtuálního počítače. Různé [velikosti virtuálních počítačů](sizes.md) podporují různé počet síťových adaptérů, proto odpovídajícím způsobem upravit velikost virtuálního počítače.

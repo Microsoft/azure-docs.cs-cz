@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 07/19/2018
 ms.author: danlep
-ms.openlocfilehash: 3c1c83bb0c3e46a7eaab519050d9c556e2cc1a7a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2be640c8c7773ebd1fb5c83e67e3f0762d011e85
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60563082"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657575"
 ---
 # <a name="mount-a-secret-volume-in-azure-container-instances"></a>Připojit tajný svazek ve službě Azure Container Instances
 
@@ -21,11 +21,11 @@ Použití *tajný kód* svazek k poskytování citlivé informace do kontejnerů
 Všechny *tajný kód* svazky se zálohují na [tmpfs][tmpfs], systém souborů zajišťuje RAM; jejich obsah se nikdy zapisují na stálé úložiště.
 
 > [!NOTE]
-> *Tajný kód* jsou momentálně omezené jenom na Linuxové kontejnery svazků. Zjistěte, jak předat proměnné zabezpečené prostředí pro kontejnery Windows i Linuxu v [nastavit proměnné prostředí](container-instances-environment-variables.md). Pracujeme na všechny funkce byly do kontejnerů Windows, můžete najít aktuální rozdíly pro tyto platformy v [kvóty a dostupnost oblastí pro Azure Container Instances](container-instances-quotas.md).
+> *Tajný kód* jsou momentálně omezené jenom na Linuxové kontejnery svazků. Zjistěte, jak předat proměnné zabezpečené prostředí pro kontejnery Windows i Linuxu v [nastavit proměnné prostředí](container-instances-environment-variables.md). Pracujeme na všechny funkce byly do kontejnerů Windows, můžete najít aktuální rozdíly pro tyto platformy v [přehled](container-instances-overview.md#linux-and-windows-containers).
 
 ## <a name="mount-secret-volume---azure-cli"></a>Připojit tajný svazek – rozhraní příkazového řádku Azure
 
-Nasazení kontejneru s tajnými kódy jeden nebo více pomocí rozhraní příkazového řádku Azure, patří `--secrets` a `--secrets-mount-path` parametry v [vytvořit az container] [ az-container-create] příkazu. Tento příklad připojí *tajný kód* skládající se z dva tajné kódy, "mysecret1" a "mysecret2," na svazku `/mnt/secrets`:
+Nasazení kontejneru s tajnými kódy jeden nebo více pomocí rozhraní příkazového řádku Azure, patří `--secrets` a `--secrets-mount-path` parametry v [vytvořit az container][az-container-create] příkazu. Tento příklad připojí *tajný kód* skládající se z dva tajné kódy, "mysecret1" a "mysecret2," na svazku `/mnt/secrets`:
 
 ```azurecli-interactive
 az container create \
@@ -36,7 +36,7 @@ az container create \
     --secrets-mount-path /mnt/secrets
 ```
 
-Následující [az container exec] [ az-container-exec] výstup ukazuje otevření prostředí v spuštěný kontejner, vypisování souborů v rámci tajný svazek a zobrazení jejich obsahu:
+Následující [az container exec][az-container-exec] výstup ukazuje otevření prostředí v spuštěný kontejner, vypisování souborů v rámci tajný svazek a zobrazení jejich obsahu:
 
 ```console
 $ az container exec --resource-group myResourceGroup --name secret-volume-demo --exec-command "/bin/sh"
@@ -60,7 +60,7 @@ Při nasazení pomocí šablony YAML, musí být hodnoty tajných kódů **s kó
 Následující šablony YAML definuje skupinu kontejnerů s jeden kontejner, který připojí *tajný kód* svazek v `/mnt/secrets`. Tajný svazek má dva tajné kódy, "mysecret1" a "mysecret2."
 
 ```yaml
-apiVersion: '2018-06-01'
+apiVersion: '2018-10-01'
 location: eastus
 name: secret-volume-demo
 properties:
@@ -88,7 +88,7 @@ tags: {}
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-K nasazení pomocí šablony YAML, uložit do souboru s názvem předchozí YAML `deploy-aci.yaml`, provádějí [az container vytvořit] [ az-container-create] příkazů `--file` parametr:
+K nasazení pomocí šablony YAML, uložit do souboru s názvem předchozí YAML `deploy-aci.yaml`, provádějí [az container vytvořit][az-container-create] příkazů `--file` parametr:
 
 ```azurecli-interactive
 # Deploy with YAML template
@@ -108,7 +108,7 @@ Následující šablony Resource Manageru definuje skupinu kontejnerů s jeden k
 <!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-secret.json -->
 [!code-json[volume-secret](~/azure-docs-json-samples/container-instances/aci-deploy-volume-secret.json)]
 
-K nasazení pomocí šablony Resource Manageru uložit do souboru s názvem výše uvedeného kódu JSON `deploy-aci.json`, provádějí [vytvořit nasazení skupiny pro az] [ az-group-deployment-create] příkazů `--template-file` parametr:
+K nasazení pomocí šablony Resource Manageru uložit do souboru s názvem výše uvedeného kódu JSON `deploy-aci.json`, provádějí [vytvořit nasazení skupiny pro az][az-group-deployment-create] příkazů `--template-file` parametr:
 
 ```azurecli-interactive
 # Deploy with Resource Manager template

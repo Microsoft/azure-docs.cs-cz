@@ -2,18 +2,18 @@
 title: Vložení sestavy do kolekce pracovních prostorů Power BI Azure | Dokumentace Microsoftu
 description: Zjistěte, jak pro vložení sestavy, která je v kolekcích pracovních prostorů Power BI do vaší aplikace.
 services: power-bi-workspace-collections
-ms.service: power-bi-workspace-collections
+ms.service: power-bi-embedded
 author: rkarlin
 ms.author: rkarlin
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.openlocfilehash: a7d6ccc2360d63b888dc46badc742f2618a08dac
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4e125e57c290688d5a65f6d70143100cbd3462cb
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64724616"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67669054"
 ---
 # <a name="embed-a-report-in-power-bi-workspace-collections"></a>Vložení sestavy do kolekce pracovních prostorů Power BI
 
@@ -143,7 +143,7 @@ var report = powerbi.embed($reportContainer.get(0), embedConfiguration);
 
 Sestava bude automaticky vložen v závislosti na velikosti svého kontejneru. Pokud chcete přepsat výchozí velikost vloženou položku, jednoduše přidejte třídy atributu nebo vložené styly CSS pro šířku a výšku.
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
 [Začínáme s ukázkou](get-started-sample.md)  
 [Ověřování a autorizace v kolekcích Pracovních prostorů Power BI](app-token-flow.md)  

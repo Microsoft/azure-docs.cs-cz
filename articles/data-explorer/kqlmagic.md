@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 12/19/2018
-ms.openlocfilehash: 896a5d13279c15f0035f214da3d5a7d7e6f1861f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/10/2019
+ms.openlocfilehash: a894052e54bd1ca9f8316342f714074c92753448
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60758411"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67806347"
 ---
 # <a name="use-a-jupyter-notebook-and-kqlmagic-extension-to-analyze-data-in-azure-data-explorer"></a>Analýza dat v Průzkumníku dat Azure pomocí Poznámkový blok Jupyter a Kqlmagic rozšíření
 
@@ -126,7 +126,7 @@ df = _kql_raw_result_.to_dataframe()
 df.head(10)
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 V mnoha scénářích analytics můžete vytvářet opakovaně použitelné poznámkových bloků, které obsahují mnoho dotazů a vrátit výsledky z jednoho dotazu do dalších dotazů. Následující příklad používá proměnnou Python `statefilter` filtrovat data.
 
@@ -164,6 +164,9 @@ V mnoha scénářích analytics můžete vytvářet opakovaně použitelné pozn
     ```python
     %kql --help "help"
     ```
+
+> [!TIP]
+> Získat informace o použití všechny dostupné konfigurace `%config KQLmagic`. K odstranění potíží a zachycení chyb Kusto, jako je například nesprávné dotazy a problémy s připojením k použití `%config Kqlmagic.short_errors=False`
 
 ## <a name="next-steps"></a>Další postup
 

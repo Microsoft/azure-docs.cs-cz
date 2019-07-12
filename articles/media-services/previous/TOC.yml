@@ -254,7 +254,7 @@
         - name: Zpracování dlouhotrvajících operací
           href: media-services-dotnet-long-operations.md
         - name: Specifikace živého ingestování fragmentovaného MP4
-          href: media-services-fmp4-live-ingest-overview.md
+          href: ../media-services-fmp4-live-ingest-overview.md
         - name: Začínáme
           href: media-services-azure-media-clipper-getting-started.md
         - name: Načtení videa
@@ -458,11 +458,11 @@
     - name: Specifikace
       items:
         - name: Živé ingestování – specifikace živého ingestování fragmentovaného MP4
-          href: media-services-fmp4-live-ingest-overview.md
+          href: ../media-services-fmp4-live-ingest-overview.md
         - name: Živé ingestování – signalizace časovaných metadat v živém streamování
-          href: media-services-specifications-live-timed-metadata.md
+          href: ../media-services-specifications-live-timed-metadata.md
         - name: Smooth Streaming HEVC
-          href: media-services-specifications-ms-sstr-amendment-hevc.md
+          href: ../media-services-specifications-ms-sstr-amendment-hevc.md
 - name: Zdroje a prostředky
   items:
     - name: Komunita Azure Media Services

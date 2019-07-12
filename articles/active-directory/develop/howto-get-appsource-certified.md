@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b820068f7bd59941346c8d2a3e8ede15252d58b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cc42ab8a8cfb0d182c69bd0940e23cffdb2be0af
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65540267"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807238"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>Získání certifikace AppSource pro Azure Active Directory
 
@@ -56,19 +56,19 @@ Aplikace pro jednoho tenanta můžete povolit *Kontaktujte mě* prostředí, ale
 
 ## <a name="appsource-trial-experiences"></a>Zkušební prostředí AppSource
 
-### <a name="free-trial-customer-led-trial-experience"></a>Bezplatná zkušební verze (vedené zákazníka zkušební prostředí) 
+### <a name="free-trial-customer-led-trial-experience"></a>Bezplatná zkušební verze (vedené zákazníka zkušební prostředí)
 
-Zkušební verze vedené zákazníků je prostředí, který AppSource se doporučuje, protože nabízí přístup jedním kliknutím pro vaši aplikaci. Následující ilustraci toho, jak toto prostředí vypadá takto:<br/><br/>
+Zkušební verze vedené zákazníků je prostředí, který AppSource se doporučuje, protože nabízí přístup jedním kliknutím pro vaši aplikaci. Následující příklad ukazuje, jak toto prostředí vypadá:
 
 <table >
 <tr>
-    <td valign="top" width="33%">1.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step1.png" width="85%"/><ul><li>Uživatel vyhledá aplikace na webu AppSource</li><li>Vybere možnost "bezplatnou zkušební verzi.</li></ul></td>
-    <td valign="top" width="33%">2.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step2.png" width="85%" /><ul><li>AppSource přesměruje uživatele na adresu URL webu</li><li>Spuštění vaší webové stránky <i>single-sign-on</i> zpracovat automaticky (při načtení stránky)</li></ul></td>
-    <td valign="top" width="33%">3.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step3.png" width="85%"/><ul><li>Uživatel je přesměrován na stránku přihlašování společnosti Microsoft</li><li>Uživatel zadá přihlašovací údaje pro přihlášení</li></ul></td>
+    <td valign="top" width="33%">1.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step1.png" width="85%" alt-text="Shows Free trial for customer-led trial experience"/><ul><li>Uživatel vyhledá aplikace na webu AppSource</li><li>Vybere možnost "bezplatnou zkušební verzi.</li></ul></td>
+    <td valign="top" width="33%">2.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step2.png" width="85%" alt-text="Shows how user is redirected to a URL in your web site"/><ul><li>AppSource přesměruje uživatele na adresu URL webu</li><li>Spuštění vaší webové stránky <i>single-sign-on</i> zpracovat automaticky (při načtení stránky)</li></ul></td>
+    <td valign="top" width="33%">3.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step3.png" width="85%" alt-text="Shows the Microsoft sign-in page"/><ul><li>Uživatel je přesměrován na stránku přihlašování společnosti Microsoft</li><li>Uživatel zadá přihlašovací údaje pro přihlášení</li></ul></td>
 </tr>
 <tr>
-    <td valign="top" width="33%">4.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step4.png" width="85%"/><ul><li>Uživatel dává souhlas pro vaši aplikaci</li></ul></td>
-    <td valign="top" width="33%">5.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step5.png" width="85%"/><ul><li>Přihlásit se dokončí a uživatel je přesměrován zpět na web</li><li>Spuštění bezplatné zkušební verze</li></ul></td>
+    <td valign="top" width="33%">4.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step4.png" width="85%" alt-text="Example: Consent page for an application"/><ul><li>Uživatel dává souhlas pro vaši aplikaci</li></ul></td>
+    <td valign="top" width="33%">5.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step5.png" width="85%" alt-text="Shows the experience the user sees when redirected back to your site"/><ul><li>Přihlásit se dokončí a uživatel je přesměrován zpět na web</li><li>Spuštění bezplatné zkušební verze</li></ul></td>
     <td></td>
 </tr>
 </table>
@@ -79,20 +79,20 @@ Při ruční nebo dlouhodobé operaci musí dojít ke zřízení uživatele/spol
 
 <table valign="top">
 <tr>
-    <td valign="top" width="33%">1.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step1.png" width="85%"/><ul><li>Vyhledá uživatele vaší aplikace na webu AppSource</li><li>Vybere možnost "Kontaktujte Me"</li></ul></td>
-    <td valign="top" width="33%">2.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step2.png" width="85%"/><ul><li>Vyplňování formuláře s kontaktní informace</li></ul></td>
+    <td valign="top" width="33%">1.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step1.png" width="85%" alt-text="Shows Contact me for partner-led trial experience"/><ul><li>Vyhledá uživatele vaší aplikace na webu AppSource</li><li>Vybere možnost "Kontaktujte Me"</li></ul></td>
+    <td valign="top" width="33%">2.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step2.png" width="85%" alt-text="Shows an example form with contact info"/><ul><li>Vyplňování formuláře s kontaktní informace</li></ul></td>
      <td valign="top" width="33%">3.<br/><br/>
         <table bgcolor="#f7f7f7">
         <tr>
-            <td><img src="media/active-directory-devhowto-appsource-certified/UserContact.png" width="55%"/></td>
+            <td><img src="media/active-directory-devhowto-appsource-certified/UserContact.png" width="55%" alt-text="Shows placeholder for user information"/></td>
             <td>Zobrazí informace o uživateli</td>
         </tr>
         <tr>
-            <td><img src="media/active-directory-devhowto-appsource-certified/SetupEnv.png" width="55%"/></td>
+            <td><img src="media/active-directory-devhowto-appsource-certified/SetupEnv.png" width="55%" alt-text="Shows placeholder for setup environment info"/></td>
             <td>Nastavení prostředí</td>
         </tr>
         <tr>
-            <td><img src="media/active-directory-devhowto-appsource-certified/ContactCustomer.png" width="55%"/></td>
+            <td><img src="media/active-directory-devhowto-appsource-certified/ContactCustomer.png" width="55%" alt-text="Shows placeholder for trial info"/></td>
             <td>Požádejte uživatele s informací o zkušební verzi</td>
         </tr>
         </table><br/><br/>
@@ -100,9 +100,9 @@ Při ruční nebo dlouhodobé operaci musí dojít ke zřízení uživatele/spol
     </td>
 </tr>
 <tr>
-    <td valign="top" width="33%">4.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step3.png" width="85%"/><ul><li>Uživatel má přístup k aplikaci a dokončit proces jednotného přihlašování</li></ul></td>
-    <td valign="top" width="33%">5.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step4.png" width="85%"/><ul><li>Uživatel dává souhlas pro vaši aplikaci</li></ul></td>
-    <td valign="top" width="33%">6.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step5.png" width="85%"/><ul><li>Přihlásit se dokončí a uživatel je přesměrován zpět na web</li><li>Spuštění bezplatné zkušební verze</li></ul></td>
+    <td valign="top" width="33%">4.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step3.png" width="85%" alt-text="Shows the application sign-in screen"/><ul><li>Uživatel má přístup k aplikaci a dokončit proces jednotného přihlašování</li></ul></td>
+    <td valign="top" width="33%">5.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step4.png" width="85%" alt-text="Shows an example consent page for an application"/><ul><li>Uživatel dává souhlas pro vaši aplikaci</li></ul></td>
+    <td valign="top" width="33%">6.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step5.png" width="85%" alt-text="Shows the experience the user sees when redirected back to your site"/><ul><li>Přihlásit se dokončí a uživatel je přesměrován zpět na web</li><li>Spuštění bezplatné zkušební verze</li></ul></td>
    
 </tr>
 </table>
@@ -110,16 +110,15 @@ Při ruční nebo dlouhodobé operaci musí dojít ke zřízení uživatele/spol
 ### <a name="more-information"></a>Další informace
 
 Další informace o AppSource zkušební prostředí, najdete v části [toto video](https://aka.ms/trialexperienceforwebapps). 
- 
+
 ## <a name="next-steps"></a>Další kroky
 
 - Další informace o vytváření aplikací, které podporují přihlášení Azure AD najdete v tématu [scénáře ověřování pro službu Azure AD](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios).
 - Informace o tom, jak uvedení SaaS aplikace v AppSource, najdete v tématu [informace o partnerovi AppSource](https://appsource.microsoft.com/partners)
 
-
 ## <a name="get-support"></a>Získat podporu
 
-Integrace služby Azure AD, používáme [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource) s komunitou k poskytování podpory. 
+Integrace služby Azure AD, používáme [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource) s komunitou k poskytování podpory.
 
 Důrazně doporučujeme nejprve pokládání otázek na Stack Overflow a Procházet zobrazíte, pokud někdo položil dotaz před stávající problémy. Ujistěte se, že jsou označené svoje dotazy nebo připomínky [ `[azure-active-directory]` a `[appsource]` ](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource).
 
@@ -131,6 +130,5 @@ Pomocí následujícího oddílu pro komentáře na svůj názor a Pomozte nám 
 [AAD-Dev-Guide]: v1-overview.md
 [AAD-Howto-Multitenant-Overview]: howto-convert-app-to-be-multi-tenant.md
 [AAD-QuickStart-Web-Apps]: v1-overview.md#get-started
-
 
 <!--Image references-->

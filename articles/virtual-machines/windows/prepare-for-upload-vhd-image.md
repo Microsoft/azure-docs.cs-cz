@@ -4,7 +4,7 @@ description: Zjistěte, jak připravit Windows VHD nebo VHDX, který chcete nahr
 services: virtual-machines-windows
 documentationcenter: ''
 author: glimoli
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 7802489d-33ec-4302-82a4-91463d03887a
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: cc942aeb34d17e8dff064c6a21a3c7b2099c742a
-ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
+ms.openlocfilehash: f40b3e0d2a49f6522149a977572d4f3c12e34255
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67151033"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67720063"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Příprava Windows VHD nebo VHDX, který chcete nahrát do Azure
 
@@ -200,7 +200,7 @@ Ujistěte se, že následující nastavení jsou správně nakonfigurovány pro 
 
 9. Pokud virtuální počítač součástí domény, zkontrolujte tyto zásady, abyste měli jistotu, že se nevrátí původní nastavení. 
     
-    | Cíl                                     | Zásada                                                                                                                                                       | Hodnota                                                                                    |
+    | Cíl                                     | Zásada                                                                                                                                                       | Value                                                                                    |
     |------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|
     | Je povolen protokol RDP                           | Počítače\Zásady\Nastavení Settings\Administrative Templates\Components\Remote plocha\Hostitel relace vzdálené plochy\Připojení         | Umožní uživatelům vzdáleně připojit pomocí vzdálené plochy                                  |
     | Zásady skupiny NLA                         | Settings\Administrative Templates\Components\Remote plocha\Hostitel relace plochy plochy\Zabezpečení                                                    | Vyžadovat ověření uživatele pro vzdálený přístup s použitím NLA |
@@ -346,9 +346,9 @@ Ujistěte se, že virtuální počítač je v pořádku, zabezpečené a dostupn
 ### <a name="install-windows-updates"></a>Instalace aktualizací Windows
 V ideálním případě byste měli mít na počítači aktualizovat i obsah *úroveň oprav*. Pokud to není možné, ujistěte se, že jsou nainstalované následující aktualizace:
 
-| Komponenta               | Binární hodnota         | Windows 7 SP1, Windows Server 2008 R2 SP1 | Windows 8, Windows Server 2012               | Windows 8.1, Windows Server 2012 R2 | Windows 10 v1607, Windows Server 2016 v1607 | Windows 10 v1703    | Windows 10 v1709, Windows Server 2016 v1709 | Windows 10 v1803, Windows Server 2016 v1803 |
+| Komponenta               | Binary         | Windows 7 SP1, Windows Server 2008 R2 SP1 | Windows 8, Windows Server 2012               | Windows 8.1, Windows Server 2012 R2 | Windows 10 v1607, Windows Server 2016 v1607 | Windows 10 v1703    | Windows 10 v1709, Windows Server 2016 v1709 | Windows 10 v1803, Windows Server 2016 v1803 |
 |-------------------------|----------------|-------------------------------------------|---------------------------------------------|------------------------------------|---------------------------------------------------------|----------------------------|-------------------------------------------------|-------------------------------------------------|
-| Úložiště                 | disk.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17638 / 6.2.9200.21757 - KB3137061 | 6.3.9600.18203 - KB3137061         | -                                                       | -                          | -                                               | -                                               |
+| Storage                 | disk.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17638 / 6.2.9200.21757 - KB3137061 | 6.3.9600.18203 - KB3137061         | -                                                       | -                          | -                                               | -                                               |
 |                         | storport.sys   | 6.1.7601.23403 - KB3125574                | 6.2.9200.17188 / 6.2.9200.21306 - KB3018489 | 6.3.9600.18573 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.332             | -                                               | -                                               |
 |                         | ntfs.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17623 / 6.2.9200.21743 - KB3121255 | 6.3.9600.18654 - KB4022726         | 10.0.14393.1198 - KB4022715                             | 10.0.15063.447             | -                                               | -                                               |
 |                         | Iologmsg.dll   | 6.1.7601.23403 - KB3125574                | 6.2.9200.16384 - KB2995387                  | -                                  | -                                                       | -                          | -                                               | -                                               |

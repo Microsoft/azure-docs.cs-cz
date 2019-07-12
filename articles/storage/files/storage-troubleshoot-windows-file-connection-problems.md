@@ -9,21 +9,21 @@ ms.topic: article
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 7bc7f3631748f4ac74a76e9e67aa2aef2c8f9a71
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1241a6ee5a49504619c377fa3f7006320def14ec
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66480322"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67805911"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Řešení potíží s Azure Files problémy ve Windows
 
 Tento článek uvádí běžné problémy, které se vztahují k Microsoft Azure Files, když se připojíte z klientů Windows. Poskytuje také možné příčiny a řešení těchto problémů. Kromě použijte kroky v tomto článku, můžete také použít [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) a ujistěte se, že v prostředí klienta Windows mají správné požadavky. AzFileDiagnostics automatizuje zjišťování většiny příznaků uvedených v tomto článku a pomáhá nastavení prostředí, abyste získali optimální výkon. Můžete také najít tyto informace [Azure sdíleným složkám Poradce při potížích](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares) , který vysvětluje, jak vám pomoci problémy připojení/mapování nebo připojení Azure sdíleným složkám.
 
-<a id="error5"></a>
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
+<a id="error5"></a>
 ## <a name="error-5-when-you-mount-an-azure-file-share"></a>Chyba 5, když připojíte sdílenou složku Azure
 
 Při pokusu o připojení sdílené složky, může dojít k následující chybě:
@@ -108,7 +108,6 @@ Práce s oddělením IT nebo poskytovatele internetových služeb pro otevření
 #### <a name="solution-4---use-rest-api-based-tools-like-storage-explorerpowershell"></a>Řešení 4 - nástroje jako je Storage Explorer/Powershell založené na použití rozhraní REST API
 Služba soubory Azure podporuje také REST kromě protokolu SMB. Přístup REST funguje přes port 443 (standardní tcp). Existují různé nástroje, které jsou napsané pomocí rozhraní REST API, které umožňují bohaté možnosti uživatelského rozhraní. [Průzkumník služby Storage](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows) je jedním z nich. [Stažení a instalace Storage Exploreru](https://azure.microsoft.com/features/storage-explorer/) a připojení ke sdílené složce se opírá o službě soubory Azure. Můžete také použít [Powershellu](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-powershell) které také uživatelské rozhraní REST API.
 
-
 ### <a name="cause-2-ntlmv1-is-enabled"></a>2\. příčina: NTLMv1 je povolená.
 
 Systémová chyba 53 nebo systémové chybě 87 může dojít, pokud je povolená komunikace NTLMv1 na straně klienta. Služba soubory Azure podporuje jenom ověřování NTLMv2. S NTLMv1 povolené vytvoří klienta méně bezpečné. Proto se zablokovat komunikaci pro soubory Azure. 
@@ -136,6 +135,13 @@ Chyba 1816 se stane při dosažení horní limit počtu souběžných otevřený
 
 Snižte počet souběžných otevřených popisovačů ukončením některé obslužné rutiny a pak zkuste to znovu. Další informace najdete v tématu [kontrolní seznam výkonu a škálovatelnosti Microsoft Azure Storage](../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
+Chcete-li zobrazit otevřených popisovačů pro sdílenou složku, adresář nebo soubor, použijte [Get-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) rutiny Powershellu.  
+
+Chcete-li zavřít otevřených popisovačů pro sdílenou složku, adresář nebo soubor, použijte [zavřít AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) rutiny Powershellu.
+
+> [!Note]  
+> Rutiny Get-AzStorageFileHandle a zavřít AzStorageFileHandle jsou součástí Az modul PowerShell verze 2.4 nebo vyšší. Pokud chcete nainstalovat nejnovější modul Powershellu Az, naleznete v tématu [instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
+
 <a id="authorizationfailureportal"></a>
 ## <a name="error-authorization-failure-when-browsing-to-an-azure-file-share-in-the-portal"></a>Chyba "Ověření se nezdařilo" při přechodu na sdílené složky Azure na portálu
 
@@ -155,6 +161,23 @@ Přejděte do účtu úložiště, kde se nachází sdílená složka Azure, kli
 ### <a name="solution-for-cause-2"></a>Řešení příčiny 2
 
 Ověřte, že virtuální sítě a pravidel brány firewall jsou správně nakonfigurovány v účtu úložiště. Pokud chcete otestovat, pokud virtuální síť nebo brána firewall pravidla je příčinou problému, dočasně změnit nastavení pro účet úložiště na **povolit přístup ze všech sítí**. Další informace najdete v tématu [virtuální sítí a bran firewall nakonfigurovat služby Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security).
+
+<a id="open-handles"></a>
+## <a name="unable-to-delete-a-file-or-directory-in-an-azure-file-share"></a>Nepovedlo se odstranit soubor nebo adresář, do sdílené složky Azure
+
+### <a name="cause"></a>Příčina
+Tomuto problému obvykle dochází, pokud soubor nebo adresář má otevřený popisovač. 
+
+### <a name="solution"></a>Řešení
+
+Pokud klienti SMB nemusela uzavřít všechny otevřené popisovače a problém přetrvává, postupujte takto:
+
+- Použití [Get-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) rutiny Powershellu, chcete-li zobrazit otevřených popisovačů.
+
+- Použití [zavřít AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) rutinu Powershellu zavřete otevřené popisovače. 
+
+> [!Note]  
+> Rutiny Get-AzStorageFileHandle a zavřít AzStorageFileHandle jsou součástí Az modul PowerShell verze 2.4 nebo vyšší. Pokud chcete nainstalovat nejnovější modul Powershellu Az, naleznete v tématu [instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
 
 <a id="slowfilecopying"></a>
 ## <a name="slow-file-copying-to-and-from-azure-files-in-windows"></a>Zpomalit kopírování souborů do a z Azure souborů ve Windows
@@ -183,7 +206,7 @@ Pokud je nainstalována oprava hotfix, se zobrazí následující výstup:
 > Bitové kopie systému Windows Server 2012 R2 na webu Azure Marketplace nainstalována oprava hotfix nainstalovaná ve výchozím nastavení, KB3114025 od prosince 2015.
 
 <a id="shareismissing"></a>
-## <a name="no-folder-with-a-drive-letter-in-my-computer"></a>Žádná složka s písmenem jednotky v **tento počítač**
+## <a name="no-folder-with-a-drive-letter-in-my-computer-or-this-pc"></a>Žádná složka s písmenem jednotky v "My" nebo "Tento počítače"
 
 Při mapování sdílené složky Azure jako správce pomocí příkazu net use, sdílené složky pravděpodobně chybí.
 
@@ -245,7 +268,7 @@ Při kopírování v síti, je soubor dešifrovat na zdrojovém počítači, př
 ### <a name="cause"></a>Příčina
 Tomuto problému může dojít, pokud používáte systém souborů EFS (ENCRYPTING File System). Šifrované nástrojem BitLocker soubory je možné zkopírovat do soubory Azure. Soubory Azure nepodporuje systém souborů EFS systému souborů NTFS.
 
-### <a name="workaround"></a>Alternativní řešení:
+### <a name="workaround"></a>Alternativní řešení
 Kopírování souboru přes síť, můžete jej nejprve dešifrovat. Použijte jednu z následujících metod:
 
 - Použití **zkopírujte /d** příkazu. To umožňuje šifrované soubory, které chcete uložit jako dešifrované soubory v cílovém umístění.
@@ -286,5 +309,5 @@ Povolení služby AAD DS v tenantovi AAD, který se nasazuje se do účtu úlož
 
 [!INCLUDE [storage-files-condition-headers](../../../includes/storage-files-condition-headers.md)]
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktujte podporu.
+## <a name="need-help-contact-support"></a>Potřebujete pomoct? Kontaktujte podporu.
 Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) získat rychlé vyřešení problému.

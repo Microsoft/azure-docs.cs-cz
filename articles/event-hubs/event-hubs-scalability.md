@@ -14,12 +14,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 06/18/2019
 ms.author: shvija
-ms.openlocfilehash: 3eb20013a6b3afaddce10f2e4652add0edf22a9a
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: c46b333f2cc304cc12ddf78670b60940c7bc0db3
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67276779"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827669"
 ---
 # <a name="scaling-with-event-hubs"></a>Škálování pomocí služby Event Hubs
 
@@ -48,14 +48,14 @@ Služba Event Hubs se zvyšuje propustnost při zvýšení zátěže ze strany n
 Další informace o automatické rozšiřování funkcí, přečtěte si téma [automatické škálování jednotek propustnosti](event-hubs-auto-inflate.md).
 
 ## <a name="partitions"></a>Oddíly
+[!INCLUDE [event-hubs-partitions](../../includes/event-hubs-partitions.md)]
 
-Oddíly umožňují přizpůsobit pro příjem dat zpracování. Z důvodu modelu oddělených příjemců je pravidlo, které nabízí Služba Event Hubs s oddíly které můžete horizontální navýšení kapacity při zpracování událostí současně. Centra událostí můžete mít až 32 oddíly.
+### <a name="partition-key"></a>Klíč oddílu
 
-Doporučujeme, abyste vyvážili jednotky propustnosti 1:1 a oddíly, abyste dosáhli optimálního škálování. Jednoho oddílu dovoluje zaručené příchozí a výchozí přenos maximálně jednu jednotku propustnosti. Přestože je možné dosáhnout vyšší propustnost na oddíl, není zaručeno, že výkon. To je důvod, proč důrazně doporučujeme, že počet oddílů v Centru událostí být větší než nebo rovna počtu jednotek propustnosti.
+[Klíč oddílu](event-hubs-programming-guide.md#partition-key) můžete použít k mapování příchozích dat událostí do konkrétních oddílů pro účely organizace dat. Klíč oddílu je hodnota zadaná odesílatelem, která byla předaná do centra událostí. Zpracovává se pomocí statické hashovací funkce, která vytvoří přiřazení k oddílu. Pokud při publikování události nezadáte klíč oddílu, použije se přiřazení metodou kruhového dotazování.
 
-Zadaný celkovou propustnost, kterou plánujete nutnosti, víte, že počet jednotek propustnosti, které vyžadujete a minimální počet oddílů, ale počet oddílů byste měli mít? Vyberte počet oddílů podle stupněm paralelismu příjmu dat, které chcete dosáhnout, jakož i vašim potřebám propustnosti budoucí. Neplatí žádné poplatky pro počet oddílů, které máte v rámci centra událostí.
+Zdroj události zná jenom svůj klíč oddílu, a ne oddíl, do kterého se události publikují. Díky tomuto oddělení klíče a oddílu odesílatel toho nepotřebuje vědět o zpracování příjmu dat příliš mnoho. Vhodným klíčem oddílu je jedinečná identita uživatele nebo zařízení, ale k seskupení souvisejících událostí do jednoho oddílu je možné použít i další atributy, například geografickou polohu.
 
-Podrobné informace o cenách služby Event Hubs najdete na stránce [Ceny služby Event Hubs](https://azure.microsoft.com/pricing/details/event-hubs/).
 
 ## <a name="next-steps"></a>Další postup
 Další informace o službě Event Hubs najdete na následujících odkazech:

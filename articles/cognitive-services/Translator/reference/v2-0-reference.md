@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/15/2018
 ms.author: swmachan
-ms.openlocfilehash: a29e123c44ca198ce19db451ee4c624b6f993538
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: c18c062d5537603284acb37081ac0a4eb8d2fd20
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705430"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797818"
 ---
 # <a name="translator-text-api-v20"></a>Translator Text API v2.0
 
@@ -27,7 +27,7 @@ Verze 2 rozhraní Translator Text API je možné bez problémů integrovat do va
 ## <a name="getting-started"></a>Začínáme
 Chcete-li získat přístup k rozhraní Translator Text API, je potřeba [zaregistrovat do Microsoft Azure](../translator-text-how-to-signup.md).
 
-## <a name="authentication"></a>Authentication 
+## <a name="authentication"></a>Ověřování 
 Všechna volání rozhraní Translator Text API vyžadují klíč předplatného pro ověřování. Rozhraní API podporuje tři metody ověřování:
 
 - Přístupový token. Klíč předplatného, který je odkazováno v kroku 9 použijte k vytvoření přístupového tokenu tím, že požadavek POST k ověřovací službě. Viz podrobnosti naleznete v dokumentaci služby tokenů. Přístupový token předat službě Translator pomocí `Authorization` záhlaví nebo `access_token` parametr dotazu. Přístupový token je platný 10 minut. Získejte nový přístupový token každých 10 minut a mohli dál využívat stejný přístup token pro opakované požadavky během 10 minut.
@@ -49,7 +49,7 @@ Službu Translator za normálních okolností si zachovají vulgárních výraz�
 Pokud chcete, aby se zabránilo vulgárních výrazů v překladu i v případě, že je ve zdrojovém textu, můžete použít vulgárních výrazů pro metody, které ji podporují možnost filtrování. Možnost můžete zvolit, jestli chcete zobrazit vulgárních výrazů odstraněn nebo označené odpovídající značky nebo zda chcete povolit vulgárních výrazů v cílové. Přijímané hodnoty `ProfanityAction` jsou `NoAction` (výchozí), `Marked`, a `Deleted`.
 
 
-|ProfanityAction    |Akce |Příklad zdroje (japonština)  |Příklad překladu (v angličtině)  |
+|ProfanityAction    |Action |Příklad zdroje (japonština)  |Příklad překladu (v angličtině)  |
 |:--|:--|:--|:--|
 |NoAction   |Default (Výchozí). Stejně jako nastavit možnost. Vulgárních výrazů předá ze zdroje do cíle.        |彼はジャッカスです。     |Je jackass.   |
 |Označené     |Urážlivá slova umístí značky XML \<vulgárních výrazů > a \</profanity >.       |彼はジャッカスです。 |Je \<vulgárních výrazů > jackass\</profanity >.  |
@@ -77,7 +77,7 @@ Pokud jste dříve používali `AddTranslation` nebo `AddTranslationArray` zadat
 
 ### <a name="response-class-status-200"></a>Třída odpovědi (stav 200)
 
-string
+řetězec
 
 Typ obsahu odpovědi: application/xml
 
@@ -85,14 +85,14 @@ Typ obsahu odpovědi: application/xml
 
 |Parametr|Hodnota|Popis    |Typ parametru|Datový typ|
 |:--|:--|:--|:--|:--|
-|appid  |(prázdné)    |Povinná hodnota. Pokud `Authorization` nebo `Ocp-Apim-Subscription-Key` záhlaví se používá, ponechte `appid` prázdné pole. V opačném případě obsahovat řetězec, který obsahuje `"Bearer" + " " + "access_token"`.|query|string|
-|text|(prázdné)   |Povinná hodnota. Řetězec, který reprezentuje text k přeložení. Text nemůže obsahovat víc než 10 000 znaků.|query|string|
-|from|(prázdné)   |Volitelné. Řetězec, který představuje kód jazyka textu, který je překládán. Například en pro angličtinu.|query|string|
-|na|(prázdné) |Povinná hodnota. Řetězec, který představuje kód jazyka můžete přeložit text do.|query|string|
-|contentType|(prázdné)    |Volitelné. Formát textu, který je překládán. Podporované formáty jsou `text/plain` (výchozí) a `text/html`. Elementy HTML musí být ve správném formátu, dokončení prvky.|query|string|
-|category|(prázdné)   |Volitelné. Řetězec, který obsahuje kategorie překladu (domény). Výchozí formát je `general`.|query|string|
-|Autorizace|(prázdné)  |Vyžaduje se, pokud obě `appid` pole a `Ocp-Apim-Subscription-Key` záhlaví jsou prázdné. Autorizační token: `"Bearer" + " " + "access_token"`.|záhlaví|string|
-|OCP-Apim-Subscription-Key|(prázdné)  |Vyžaduje se, pokud obě `appid` pole a `Authorization` záhlaví jsou prázdné.|záhlaví|string|
+|appid  |(prázdné)    |Povinný parametr. Pokud `Authorization` nebo `Ocp-Apim-Subscription-Key` záhlaví se používá, ponechte `appid` prázdné pole. V opačném případě obsahovat řetězec, který obsahuje `"Bearer" + " " + "access_token"`.|query|řetězec|
+|text|(prázdné)   |Povinný parametr. Řetězec, který reprezentuje text k přeložení. Text nemůže obsahovat víc než 10 000 znaků.|query|řetězec|
+|from|(prázdné)   |Volitelné. Řetězec, který představuje kód jazyka textu, který je překládán. Například en pro angličtinu.|query|řetězec|
+|na|(prázdné) |Povinný parametr. Řetězec, který představuje kód jazyka můžete přeložit text do.|query|řetězec|
+|contentType|(prázdné)    |Volitelné. Formát textu, který je překládán. Podporované formáty jsou `text/plain` (výchozí) a `text/html`. Elementy HTML musí být ve správném formátu, dokončení prvky.|query|řetězec|
+|category|(prázdné)   |Volitelné. Řetězec, který obsahuje kategorie překladu (domény). Výchozí hodnota je `general`.|query|řetězec|
+|Authorization|(prázdné)  |Vyžaduje se, pokud obě `appid` pole a `Ocp-Apim-Subscription-Key` záhlaví jsou prázdné. Autorizační token: `"Bearer" + " " + "access_token"`.|záhlaví|řetězec|
+|OCP-Apim-Subscription-Key|(prázdné)  |Vyžaduje se, pokud obě `appid` pole a `Authorization` záhlaví jsou prázdné.|záhlaví|řetězec|
 
 
 ### <a name="response-messages"></a>Zprávy odpovědi
@@ -136,17 +136,17 @@ Tady je formát textu požadavku:
 Tyto prvky jsou v `TranslateArrayRequest`:
 
 
-* `AppId`: Povinná hodnota. Pokud `Authorization` nebo `Ocp-Apim-Subscription-Key` záhlaví se používá, ponechte `AppId` prázdné pole. V opačném případě obsahovat řetězec, který obsahuje `"Bearer" + " " + "access_token"`.
+* `AppId`: Povinný parametr. Pokud `Authorization` nebo `Ocp-Apim-Subscription-Key` záhlaví se používá, ponechte `AppId` prázdné pole. V opačném případě obsahovat řetězec, který obsahuje `"Bearer" + " " + "access_token"`.
 * `From`: Volitelné. Řetězec, který představuje kód jazyka textu, který je překládán. Pokud toto pole necháte prázdné, bude odpověď zahrnout výsledek automatické rozpoznávání jazyka.
 * `Options`: Volitelné. `Options` Objekt, který obsahuje následující hodnoty. Jsou nepovinné a nejběžnější nastavení ve výchozím nastavení. Zadané elementy musí být uvedeny v abecedním pořadí.
-    - `Category`: Řetězec, který obsahuje kategorie překladu (domény). Výchozí formát je `general`.
+    - `Category`: Řetězec, který obsahuje kategorie překladu (domény). Výchozí hodnota je `general`.
     - `ContentType`: Formát textu, který je překládán. Podporované formáty jsou `text/plain` (výchozí), `text/xml`, a `text/html`. Elementy HTML musí být ve správném formátu, dokončení prvky.
     - `ProfanityAction`: Určuje, jak se zpracovává profanities, jak je vysvětleno výše. Platné hodnoty jsou `NoAction` (výchozí), `Marked`, a `Deleted`.
     - `State`: Stav uživatele ke korelaci žádostí a odpovědí. Vrátí se stejným obsahem v odpovědi.
     - `Uri`: Filtrovat výsledky podle tohoto identifikátoru URI. Výchozí hodnota: `all`.
     - `User`: Filtrovat výsledky podle tohoto uživatele. Výchozí hodnota: `all`.
-* `Texts`: Povinná hodnota. Pole obsahující text pro překlad. Všechny řetězce musí být ve stejném jazyce. Celkový součet veškerého textu k převodu může mít maximálně 10 000 znaků. Maximální počet elementů pole je 2 000.
-* `To`: Povinná hodnota. Řetězec, který představuje kód jazyka můžete přeložit text do.
+* `Texts`: Povinný parametr. Pole obsahující text pro překlad. Všechny řetězce musí být ve stejném jazyce. Celkový součet veškerého textu k převodu může mít maximálně 10 000 znaků. Maximální počet elementů pole je 2 000.
+* `To`: Povinný parametr. Řetězec, který představuje kód jazyka můžete přeložit text do.
 
 Volitelné prvky, můžete vynechat. Prvky, které jsou přímo podřízené `TranslateArrayRequest` musí být uvedeny v abecedním pořadí.
 
@@ -182,16 +182,16 @@ Tady je formát těla odpovědi:
 ### <a name="response-class-status-200"></a>Třída odpovědi (stav 200)
 Úspěšná odpověď obsahuje celou řadu `TranslateArrayResponse` pole ve formátu, je popsáno výše.
 
-string
+řetězec
 
 Typ obsahu odpovědi: application/xml
 
 ### <a name="parameters"></a>Parametry
 
-|Parametr|Hodnota|Popis|Typ parametru|Typ dat|
+|Parametr|Value|Popis|Typ parametru|Datový typ|
 |:--|:--|:--|:--|:--|
-|Autorizace|(prázdné)  |Vyžaduje se, pokud obě `appid` pole a `Ocp-Apim-Subscription-Key` záhlaví jsou prázdné. Autorizační token: `"Bearer" + " " + "access_token"`.|záhlaví|string|
-|OCP-Apim-Subscription-Key|(prázdné)|Vyžaduje se, pokud obě `appid` pole a `Authorization` záhlaví jsou prázdné.|záhlaví|string|
+|Authorization|(prázdné)  |Vyžaduje se, pokud obě `appid` pole a `Ocp-Apim-Subscription-Key` záhlaví jsou prázdné. Autorizační token: `"Bearer" + " " + "access_token"`.|záhlaví|řetězec|
+|OCP-Apim-Subscription-Key|(prázdné)|Vyžaduje se, pokud obě `appid` pole a `Authorization` záhlaví jsou prázdné.|záhlaví|řetězec|
 
 ### <a name="response-messages"></a>Zprávy odpovědi
 
@@ -223,18 +223,18 @@ Text požadavku obsahuje pole řetězců, který představuje kódů ISO 639-1 j
 ### <a name="response-class-status-200"></a>Třída odpovědi (stav 200)
 Pole řetězců obsahující názvy jazyků podporovaných službu Translator, lokalizován do požadovaný jazyk.
 
-string
+řetězec
 
 Typ obsahu odpovědi: application/xml
  
 ### <a name="parameters"></a>Parametry
 
-|Parametr|Hodnota|Popis|Typ parametru|Typ dat|
+|Parametr|Value|Popis|Typ parametru|Datový typ|
 |:--|:--|:--|:--|:--|
-|appid|(prázdné)|Povinná hodnota. Pokud `Authorization` nebo `Ocp-Apim-Subscription-Key` záhlaví se používá, ponechte `appid` prázdné pole. V opačném případě obsahovat řetězec, který obsahuje `"Bearer" + " " + "access_token"`.|query|string|
-|Národní prostředí|(prázdné) |Povinná hodnota. Řetězec, který představuje jeden z těchto možností použít k lokalizování názvy jazyků: <ul><li>Kombinace kód ISO 639 dvoupísmenné malá jazykové verze přidružený jazyk a kód ISO 3166 subkulturu dvoupísmenné velká písmena. <li>Kód ISO 639 malými písmeny samostatně.|query|string|
-|Autorizace|(prázdné)  |Vyžaduje se, pokud obě `appid` pole a `Ocp-Apim-Subscription-Key` záhlaví jsou prázdné. Autorizační token: `"Bearer" + " " + "access_token"`.|záhlaví|string|
-|OCP-Apim-Subscription-Key|(prázdné)  |Vyžaduje se, pokud obě `appid` pole a `Authorization` záhlaví jsou prázdné.|záhlaví|string|
+|appid|(prázdné)|Povinný parametr. Pokud `Authorization` nebo `Ocp-Apim-Subscription-Key` záhlaví se používá, ponechte `appid` prázdné pole. V opačném případě obsahovat řetězec, který obsahuje `"Bearer" + " " + "access_token"`.|query|řetězec|
+|Národní prostředí|(prázdné) |Povinný parametr. Řetězec, který představuje jeden z těchto možností použít k lokalizování názvy jazyků: <ul><li>Kombinace kód ISO 639 dvoupísmenné malá jazykové verze přidružený jazyk a kód ISO 3166 subkulturu dvoupísmenné velká písmena. <li>Kód ISO 639 malými písmeny samostatně.|query|řetězec|
+|Authorization|(prázdné)  |Vyžaduje se, pokud obě `appid` pole a `Ocp-Apim-Subscription-Key` záhlaví jsou prázdné. Autorizační token: `"Bearer" + " " + "access_token"`.|záhlaví|řetězec|
+|OCP-Apim-Subscription-Key|(prázdné)  |Vyžaduje se, pokud obě `appid` pole a `Authorization` záhlaví jsou prázdné.|záhlaví|řetězec|
 
 ### <a name="response-messages"></a>Zprávy odpovědi
 
@@ -257,17 +257,17 @@ URI žádosti je `https://api.microsofttranslator.com/V2/Http.svc/GetLanguagesFo
 ### <a name="response-class-status-200"></a>Třída odpovědi (stav 200)
 Pole řetězců obsahující kód jazyka služba Translator podporuje.
 
-string
+řetězec
 
 Typ obsahu odpovědi: application/xml
  
 ### <a name="parameters"></a>Parametry
 
-|Parametr|Hodnota|Popis|Typ parametru|Typ dat|
+|Parametr|Hodnota|Popis|Typ parametru|Datový typ|
 |:--|:--|:--|:--|:--|
-|appid|(prázdné)|Povinná hodnota. Pokud `Authorization` nebo `Ocp-Apim-Subscription-Key` záhlaví se používá, ponechte `appid` prázdné pole. V opačném případě obsahovat řetězec, který obsahuje `"Bearer" + " " + "access_token"`.|query|string|
-|Autorizace|(prázdné)  |Vyžaduje se, pokud obě `appid` pole a `Ocp-Apim-Subscription-Key` záhlaví jsou prázdné. Autorizační token: `"Bearer" + " " + "access_token"`.|záhlaví|string|
-|OCP-Apim-Subscription-Key|(prázdné)|Vyžaduje se, pokud obě `appid` pole a `Authorization` záhlaví jsou prázdné.|záhlaví|string|
+|appid|(prázdné)|Povinný parametr. Pokud `Authorization` nebo `Ocp-Apim-Subscription-Key` záhlaví se používá, ponechte `appid` prázdné pole. V opačném případě obsahovat řetězec, který obsahuje `"Bearer" + " " + "access_token"`.|query|řetězec|
+|Authorization|(prázdné)  |Vyžaduje se, pokud obě `appid` pole a `Ocp-Apim-Subscription-Key` záhlaví jsou prázdné. Autorizační token: `"Bearer" + " " + "access_token"`.|záhlaví|řetězec|
+|OCP-Apim-Subscription-Key|(prázdné)|Vyžaduje se, pokud obě `appid` pole a `Authorization` záhlaví jsou prázdné.|záhlaví|řetězec|
 
 ### <a name="response-messages"></a>Zprávy odpovědi
 
@@ -290,17 +290,17 @@ URI žádosti je `https://api.microsofttranslator.com/V2/Http.svc/GetLanguagesFo
 ### <a name="response-class-status-200"></a>Třída odpovědi (stav 200)
 Pole řetězců obsahující kód jazyka nepodporuje službu Translator pro syntézu řeči.
 
-string
+řetězec
 
 Typ obsahu odpovědi: application/xml
 
 ### <a name="parameters"></a>Parametry
 
-|Parametr|Hodnota|Popis|Typ parametru|Typ dat|
+|Parametr|Value|Popis|Typ parametru|Datový typ|
 |:--|:--|:--|:--|:--|
-|appid|(prázdné)|Povinná hodnota. Pokud `Authorization` nebo `Ocp-Apim-Subscription-Key` záhlaví se používá, ponechte `appid` prázdné pole. V opačném případě obsahovat řetězec, který obsahuje `"Bearer" + " " + "access_token"`.|query|string|
-|Autorizace|(prázdné)|Vyžaduje se, pokud obě `appid` pole a `Ocp-Apim-Subscription-Key` záhlaví jsou prázdné. Autorizační token: `"Bearer" + " " + "access_token"`.|záhlaví|string|
-|OCP-Apim-Subscription-Key|(prázdné)|Vyžaduje se, pokud obě `appid` pole a `Authorization` záhlaví jsou prázdné.|záhlaví|string|
+|appid|(prázdné)|Povinný parametr. Pokud `Authorization` nebo `Ocp-Apim-Subscription-Key` záhlaví se používá, ponechte `appid` prázdné pole. V opačném případě obsahovat řetězec, který obsahuje `"Bearer" + " " + "access_token"`.|query|řetězec|
+|Authorization|(prázdné)|Vyžaduje se, pokud obě `appid` pole a `Ocp-Apim-Subscription-Key` záhlaví jsou prázdné. Autorizační token: `"Bearer" + " " + "access_token"`.|záhlaví|řetězec|
+|OCP-Apim-Subscription-Key|(prázdné)|Vyžaduje se, pokud obě `appid` pole a `Authorization` záhlaví jsou prázdné.|záhlaví|řetězec|
  
 ### <a name="response-messages"></a>Zprávy odpovědi
 
@@ -328,15 +328,15 @@ Typ obsahu odpovědi: application/xml
 
 ### <a name="parameters"></a>Parametry
 
-|Parametr|Hodnota|Popis|Typ parametru|Typ dat|
+|Parametr|Value|Popis|Typ parametru|Datový typ|
 |:--|:--|:--|:--|:--|
-|appid|(prázdné)|Povinná hodnota. Pokud `Authorization` nebo `Ocp-Apim-Subscription-Key` záhlaví se používá, ponechte `appid` prázdné pole. V opačném případě obsahovat řetězec, který obsahuje `"Bearer" + " " + "access_token"`.|query|string|
-|text|(prázdné)   |Povinná hodnota. Řetězec, který obsahuje jeden nebo více věty a používaný pro datový proud v daném jazyce. Text nesmí být delší než 2 000 znaků.|query|string|
-|language|(prázdné)   |Povinná hodnota. Řetězec, který představuje kód podporovaného jazyka jazyk, ve kterém řeči text. Kód musí být některý z kódů vrácený metodou `GetLanguagesForSpeak`.|query|string|
-|format|(prázdné)|Volitelné. Řetězec, který určuje ID typu obsahu. V současné době `audio/wav` a `audio/mp3` jsou k dispozici. Výchozí hodnota je `audio/wav`.|query|string|
-|options|(prázdné)    |Volitelné. Řetězec, který určuje vlastnosti syntetizovaný řeči:<ul><li>`MaxQuality` a `MinSize` určuje kvalitu zvukový signál. `MaxQuality` nabízí nejvyšší kvality. `MinSize` poskytuje nejmenší velikost souboru. Výchozí hodnota je `MinSize`.</li><li>`female` a `male` zadejte požadovaný pohlaví hlasu. Výchozí formát je `female`. Použít svislá čára (<code>\|</code>) zahrnout více možností. Například `MaxQuality|Male`.</li></li></ul>  |query|string|
-|Autorizace|(prázdné)|Vyžaduje se, pokud obě `appid` pole a `Ocp-Apim-Subscription-Key` záhlaví jsou prázdné. Autorizační token: `"Bearer" + " " + "access_token"`.|záhlaví|string|
-|OCP-Apim-Subscription-Key|(prázdné)  |Vyžaduje se, pokud obě `appid` pole a `Authorization` záhlaví jsou prázdné.|záhlaví|string|
+|appid|(prázdné)|Povinný parametr. Pokud `Authorization` nebo `Ocp-Apim-Subscription-Key` záhlaví se používá, ponechte `appid` prázdné pole. V opačném případě obsahovat řetězec, který obsahuje `"Bearer" + " " + "access_token"`.|query|řetězec|
+|text|(prázdné)   |Povinný parametr. Řetězec, který obsahuje jeden nebo více věty a používaný pro datový proud v daném jazyce. Text nesmí být delší než 2 000 znaků.|query|řetězec|
+|jazyk|(prázdné)   |Povinný parametr. Řetězec, který představuje kód podporovaného jazyka jazyk, ve kterém řeči text. Kód musí být některý z kódů vrácený metodou `GetLanguagesForSpeak`.|query|řetězec|
+|format|(prázdné)|Volitelné. Řetězec, který určuje ID typu obsahu. V současné době `audio/wav` a `audio/mp3` jsou k dispozici. Výchozí hodnota je `audio/wav`.|query|řetězec|
+|options|(prázdné)    |Volitelné. Řetězec, který určuje vlastnosti syntetizovaný řeči:<ul><li>`MaxQuality` a `MinSize` určuje kvalitu zvukový signál. `MaxQuality` nabízí nejvyšší kvality. `MinSize` poskytuje nejmenší velikost souboru. Výchozí hodnota je `MinSize`.</li><li>`female` a `male` zadejte požadovaný pohlaví hlasu. Výchozí hodnota je `female`. Použít svislá čára (<code>\|</code>) zahrnout více možností. Například `MaxQuality|Male`.</li></li></ul>  |query|řetězec|
+|Authorization|(prázdné)|Vyžaduje se, pokud obě `appid` pole a `Ocp-Apim-Subscription-Key` záhlaví jsou prázdné. Autorizační token: `"Bearer" + " " + "access_token"`.|záhlaví|řetězec|
+|OCP-Apim-Subscription-Key|(prázdné)  |Vyžaduje se, pokud obě `appid` pole a `Authorization` záhlaví jsou prázdné.|záhlaví|řetězec|
 
 ### <a name="response-messages"></a>Zprávy odpovědi
 
@@ -358,18 +358,18 @@ URI žádosti je `https://api.microsofttranslator.com/V2/Http.svc/Detect`.
 
 ### <a name="response-class-status-200"></a>Třída odpovědi (stav 200)
 
-string
+řetězec
 
 Typ obsahu odpovědi: application/xml
 
 ### <a name="parameters"></a>Parametry
 
-|Parametr|Hodnota|Popis|Typ parametru|Typ dat|
+|Parametr|Value|Popis|Typ parametru|Datový typ|
 |:--|:--|:--|:--|:--|
-|appid|(prázdné)  |Povinná hodnota. Pokud `Authorization` nebo `Ocp-Apim-Subscription-Key` záhlaví se používá, ponechte `appid` prázdné pole. V opačném případě obsahovat řetězec, který obsahuje `"Bearer" + " " + "access_token"`.|query|string|
-|text|(prázdné)|Povinná hodnota. Řetězec, který obsahuje text, jehož jazyk je možné identifikovat. Text nesmí být delší než 10 000 znaků.|query|  string|
-|Autorizace|(prázdné)|Vyžaduje se, pokud obě `appid` pole a `Ocp-Apim-Subscription-Key` záhlaví jsou prázdné. Autorizační token: `"Bearer" + " " + "access_token"`.|záhlaví|string|
-|OCP-Apim-Subscription-Key  |(prázdné)    |Vyžaduje se, pokud obě `appid` pole a `Authorization` záhlaví jsou prázdné.|záhlaví|string|
+|appid|(prázdné)  |Povinný parametr. Pokud `Authorization` nebo `Ocp-Apim-Subscription-Key` záhlaví se používá, ponechte `appid` prázdné pole. V opačném případě obsahovat řetězec, který obsahuje `"Bearer" + " " + "access_token"`.|query|řetězec|
+|text|(prázdné)|Povinný parametr. Řetězec, který obsahuje text, jehož jazyk je možné identifikovat. Text nesmí být delší než 10 000 znaků.|query|  řetězec|
+|Authorization|(prázdné)|Vyžaduje se, pokud obě `appid` pole a `Ocp-Apim-Subscription-Key` záhlaví jsou prázdné. Autorizační token: `"Bearer" + " " + "access_token"`.|záhlaví|řetězec|
+|OCP-Apim-Subscription-Key  |(prázdné)    |Vyžaduje se, pokud obě `appid` pole a `Authorization` záhlaví jsou prázdné.|záhlaví|řetězec|
 
 ### <a name="response-messages"></a>Zprávy odpovědi
 
@@ -414,17 +414,17 @@ Tady je formát těla odpovědi:
 ### <a name="response-class-status-200"></a>Třída odpovědi (stav 200)
 `DetectArray` bylo úspěšné. Vrátí pole řetězců obsahující kód jazyka dvou znaků pro každý řádek vstupního pole.
 
-string
+řetězec
 
 Typ obsahu odpovědi: application/xml
  
 ### <a name="parameters"></a>Parametry
 
-|Parametr|Hodnota|Popis|Typ parametru|Typ dat|
+|Parametr|Value|Popis|Typ parametru|Datový typ|
 |:--|:--|:--|:--|:--|
-|appid|(prázdné)|Povinná hodnota. Pokud `Authorization` nebo `Ocp-Apim-Subscription-Key` záhlaví se používá, ponechte `appid` prázdné pole. V opačném případě obsahovat řetězec, který obsahuje `"Bearer" + " " + "access_token"`.|query|string|
-|Autorizace|(prázdné)|Vyžaduje se, pokud obě `appid` pole a `Ocp-Apim-Subscription-Key` záhlaví jsou prázdné.  Autorizační token: `"Bearer" + " " + "access_token"`.|záhlaví|string|
-|OCP-Apim-Subscription-Key|(prázdné)|Vyžaduje se, pokud obě `appid` pole a `Authorization` záhlaví jsou prázdné.|záhlaví|string|
+|appid|(prázdné)|Povinný parametr. Pokud `Authorization` nebo `Ocp-Apim-Subscription-Key` záhlaví se používá, ponechte `appid` prázdné pole. V opačném případě obsahovat řetězec, který obsahuje `"Bearer" + " " + "access_token"`.|query|řetězec|
+|Authorization|(prázdné)|Vyžaduje se, pokud obě `appid` pole a `Ocp-Apim-Subscription-Key` záhlaví jsou prázdné.  Autorizační token: `"Bearer" + " " + "access_token"`.|záhlaví|řetězec|
+|OCP-Apim-Subscription-Key|(prázdné)|Vyžaduje se, pokud obě `appid` pole a `Authorization` záhlaví jsou prázdné.|záhlaví|řetězec|
 
 ### <a name="response-messages"></a>Zprávy odpovědi
 
@@ -448,26 +448,26 @@ URI žádosti je `https://api.microsofttranslator.com/V2/Http.svc/AddTranslation
 
 ### <a name="response-class-status-200"></a>Třída odpovědi (stav 200)
 
-string
+řetězec
 
 Typ obsahu odpovědi: aplikace: xml
  
 ### <a name="parameters"></a>Parametry
 
-|Parametr|Hodnota|Popis|Typ parametru|Typ dat   |
+|Parametr|Value|Popis|Typ parametru|Datový typ   |
 |:--|:--|:--|:--|:--|
-|appid|(prázdné)|Povinná hodnota. Pokud `Authorization` nebo `Ocp-Apim-Subscription-Key` záhlaví se používá, ponechte `appid` prázdné pole. V opačném případě obsahovat řetězec, který obsahuje `"Bearer" + " " + "access_token"`.|query|string|
-|originalText|(prázdné)|Povinná hodnota. Řetězec, který obsahuje text k přeložení. Maximální délka řetězce je 1 000 znaků.|query|string|
-|translatedText|(prázdné) |Povinná hodnota. Řetězec, který obsahuje text převést na cílový jazyk. Maximální délka řetězce je 2 000 znaků.|query|string|
-|from|(prázdné)   |Povinná hodnota. Řetězec, který představuje kód jazyka původního jazyk textu. Třeba cs pro angličtinu a de pro němčinu.|query|string|
-|na|(prázdné)|Povinná hodnota. Řetězec, který představuje kód jazyka jazyk pro překlad textu do.|query|string|
+|appid|(prázdné)|Povinný parametr. Pokud `Authorization` nebo `Ocp-Apim-Subscription-Key` záhlaví se používá, ponechte `appid` prázdné pole. V opačném případě obsahovat řetězec, který obsahuje `"Bearer" + " " + "access_token"`.|query|řetězec|
+|originalText|(prázdné)|Povinný parametr. Řetězec, který obsahuje text k přeložení. Maximální délka řetězce je 1 000 znaků.|query|řetězec|
+|translatedText|(prázdné) |Povinný parametr. Řetězec, který obsahuje text převést na cílový jazyk. Maximální délka řetězce je 2 000 znaků.|query|řetězec|
+|from|(prázdné)   |Povinný parametr. Řetězec, který představuje kód jazyka původního jazyk textu. Třeba cs pro angličtinu a de pro němčinu.|query|řetězec|
+|na|(prázdné)|Povinný parametr. Řetězec, který představuje kód jazyka jazyk pro překlad textu do.|query|řetězec|
 |rating|(prázdné) |Volitelné. Celé číslo, které představuje hodnocení kvality pro řetězec. Hodnotu od -10 do 10. Výchozí hodnota je 1.|query|integer|
-|contentType|(prázdné)    |Volitelné. Formát textu, který je překládán. Podporované formáty jsou `text/plain` a `text/html`. Elementy HTML musí být ve správném formátu, dokončení prvky.    |query|string|
-|category|(prázdné)|Volitelné. Řetězec, který obsahuje kategorie překladu (domény). Výchozí formát je `general`.|query|string|
-|uživatel|(prázdné)|Povinná hodnota. Řetězec, který se používá ke sledování odesílatel požadavku dostane informaci odeslání.|query|string|
-|uri|(prázdné)|Volitelné. Řetězec, který obsahuje umístění obsahu překladu.|query|string|
-|Autorizace|(prázdné)|Vyžaduje se, pokud obě `appid` pole a `Ocp-Apim-Subscription-Key` záhlaví jsou prázdné.  Autorizační token: `"Bearer" + " " + "access_token"`.  |záhlaví|string|
-|OCP-Apim-Subscription-Key|(prázdné)|Vyžaduje se, pokud obě `appid` pole a `Authorization` záhlaví jsou prázdné.|záhlaví|string|
+|contentType|(prázdné)    |Volitelné. Formát textu, který je překládán. Podporované formáty jsou `text/plain` a `text/html`. Elementy HTML musí být ve správném formátu, dokončení prvky.    |query|řetězec|
+|category|(prázdné)|Volitelné. Řetězec, který obsahuje kategorie překladu (domény). Výchozí hodnota je `general`.|query|řetězec|
+|uživatel|(prázdné)|Povinný parametr. Řetězec, který se používá ke sledování odesílatel požadavku dostane informaci odeslání.|query|řetězec|
+|uri|(prázdné)|Volitelné. Řetězec, který obsahuje umístění obsahu překladu.|query|řetězec|
+|Authorization|(prázdné)|Vyžaduje se, pokud obě `appid` pole a `Ocp-Apim-Subscription-Key` záhlaví jsou prázdné.  Autorizační token: `"Bearer" + " " + "access_token"`.  |záhlaví|řetězec|
+|OCP-Apim-Subscription-Key|(prázdné)|Vyžaduje se, pokud obě `appid` pole a `Authorization` záhlaví jsou prázdné.|záhlaví|řetězec|
 
 ### <a name="response-messages"></a>Zprávy odpovědi
 
@@ -516,27 +516,27 @@ Tady je formát textu požadavku:
 
 Tyto prvky jsou v `AddtranslationsRequest`:
 
-* `AppId`: Povinná hodnota. Pokud `Authorization` nebo `Ocp-Apim-Subscription-Key` záhlaví se používá, ponechte `AppId` prázdné pole. V opačném případě obsahovat řetězec, který obsahuje `"Bearer" + " " + "access_token"`.
-* `From`: Povinná hodnota. Řetězec, který obsahuje kód jazyka zdroje jazyka. Musí být jeden z těchto jazyků vrácené `GetLanguagesForTranslate` metody.
-* `To`: Povinná hodnota. Řetězec, který obsahuje kód jazyka v cílovém jazyce. Musí být jeden z těchto jazyků vrácené `GetLanguagesForTranslate` metody.
-* `Translations`: Povinná hodnota. Pole překlady pro přidání do paměti překladu. Každý překlad musí obsahovat `OriginalText`, `TranslatedText`, a `Rating`. Maximální velikost každého `OriginalText` a `TranslatedText` je 1 000 znaků. Celkový součet všech `OriginalText` a `TranslatedText` prvky nemůže být delší než 10 000 znaků. Maximální počet elementů pole je 100.
-* `Options`: Povinná hodnota. Sadu možností, včetně `Category`, `ContentType`, `Uri`, a `User`. `User` je vyžadován. `Category`, `ContentType`, a `Uri` jsou volitelné. Zadané elementy musí být uvedeny v abecedním pořadí.
+* `AppId`: Povinný parametr. Pokud `Authorization` nebo `Ocp-Apim-Subscription-Key` záhlaví se používá, ponechte `AppId` prázdné pole. V opačném případě obsahovat řetězec, který obsahuje `"Bearer" + " " + "access_token"`.
+* `From`: Povinný parametr. Řetězec, který obsahuje kód jazyka zdroje jazyka. Musí být jeden z těchto jazyků vrácené `GetLanguagesForTranslate` metody.
+* `To`: Povinný parametr. Řetězec, který obsahuje kód jazyka v cílovém jazyce. Musí být jeden z těchto jazyků vrácené `GetLanguagesForTranslate` metody.
+* `Translations`: Povinný parametr. Pole překlady pro přidání do paměti překladu. Každý překlad musí obsahovat `OriginalText`, `TranslatedText`, a `Rating`. Maximální velikost každého `OriginalText` a `TranslatedText` je 1 000 znaků. Celkový součet všech `OriginalText` a `TranslatedText` prvky nemůže být delší než 10 000 znaků. Maximální počet elementů pole je 100.
+* `Options`: Povinný parametr. Sadu možností, včetně `Category`, `ContentType`, `Uri`, a `User`. `User` je vyžadován. `Category`, `ContentType`, a `Uri` jsou volitelné. Zadané elementy musí být uvedeny v abecedním pořadí.
 
 ### <a name="response-class-status-200"></a>Třída odpovědi (stav 200)
 `AddTranslationArray` Metoda byla úspěšná. 
 
 Po 31. ledna 2018 odesílání věty, nebude změna přijata. Služba bude reagovat s kódem chyby 410.
 
-string
+řetězec
 
 Typ obsahu odpovědi: application/xml
  
 ### <a name="parameters"></a>Parametry
 
-|Parametr|Hodnota|Popis|Typ parametru|Typ dat|
+|Parametr|Value|Popis|Typ parametru|Datový typ|
 |:--|:--|:--|:--|:--|
-|Autorizace|(prázdné)|Vyžaduje se, pokud obě `appid` pole a `Ocp-Apim-Subscription-Key` záhlaví jsou prázdné.  Autorizační token: `"Bearer" + " " + "access_token"`.|záhlaví|string|
-|OCP-Apim-Subscription-Key|(prázdné)|Vyžaduje se, pokud obě `appid` pole a `Authorization` záhlaví jsou prázdné.|záhlaví|string|
+|Authorization|(prázdné)|Vyžaduje se, pokud obě `appid` pole a `Ocp-Apim-Subscription-Key` záhlaví jsou prázdné.  Autorizační token: `"Bearer" + " " + "access_token"`.|záhlaví|řetězec|
+|OCP-Apim-Subscription-Key|(prázdné)|Vyžaduje se, pokud obě `appid` pole a `Authorization` záhlaví jsou prázdné.|záhlaví|řetězec|
 
 ### <a name="response-messages"></a>Zprávy odpovědi
 
@@ -566,13 +566,13 @@ Typ obsahu odpovědi: application/xml
 
 ### <a name="parameters"></a>Parametry
 
-|Parametr|Hodnota|Popis|Typ parametru|Typ dat|
+|Parametr|Value|Popis|Typ parametru|Datový typ|
 |:--|:--|:--|:--|:--|
-|appid|(prázdné)  |Povinná hodnota. Pokud `Authorization` nebo `Ocp-Apim-Subscription-Key` záhlaví se používá, ponechte `appid` prázdné pole. V opačném případě obsahovat řetězec, který obsahuje `"Bearer" + " " + "access_token"`.|query| string|
-|text|(prázdné)   |Povinná hodnota. Řetězec, který představuje text, který má rozdělení na věty. Maximální velikost textu je 10 000 znaků.|query|string|
-|language   |(prázdné)    |Povinná hodnota. Řetězec, který představuje kód jazyka vstupního textu.|query|string|
-|Autorizace|(prázdné)|Vyžaduje se, pokud obě `appid` pole a `Ocp-Apim-Subscription-Key` záhlaví jsou prázdné. Autorizační token: `"Bearer" + " " + "access_token"`.   |záhlaví|string|
-|OCP-Apim-Subscription-Key|(prázdné)|Vyžaduje se, pokud obě `appid` pole a `Authorization` záhlaví jsou prázdné.|záhlaví|string|
+|appid|(prázdné)  |Povinný parametr. Pokud `Authorization` nebo `Ocp-Apim-Subscription-Key` záhlaví se používá, ponechte `appid` prázdné pole. V opačném případě obsahovat řetězec, který obsahuje `"Bearer" + " " + "access_token"`.|query| řetězec|
+|text|(prázdné)   |Povinný parametr. Řetězec, který představuje text, který má rozdělení na věty. Maximální velikost textu je 10 000 znaků.|query|řetězec|
+|jazyk   |(prázdné)    |Povinný parametr. Řetězec, který představuje kód jazyka vstupního textu.|query|řetězec|
+|Authorization|(prázdné)|Vyžaduje se, pokud obě `appid` pole a `Ocp-Apim-Subscription-Key` záhlaví jsou prázdné. Autorizační token: `"Bearer" + " " + "access_token"`.   |záhlaví|řetězec|
+|OCP-Apim-Subscription-Key|(prázdné)|Vyžaduje se, pokud obě `appid` pole a `Authorization` záhlaví jsou prázdné.|záhlaví|řetězec|
 
 ### <a name="response-messages"></a>Zprávy odpovědi
 
@@ -605,7 +605,7 @@ Text žádosti obsahuje volitelný `TranslationOptions` objektu, který má tent
 
 `TranslateOptions` Objekt obsahuje hodnoty z následujícího seznamu. Jsou nepovinné a nejběžnější nastavení ve výchozím nastavení. Zadané elementy musí být uvedeny v abecedním pořadí.
 
-* `Category`: Řetězec, který obsahuje kategorie překladu (domény). Výchozí formát je `general`.
+* `Category`: Řetězec, který obsahuje kategorie překladu (domény). Výchozí hodnota je `general`.
 * `ContentType`: Jedinou podporovanou možností a ve výchozím nastavení, je `text/plain`.
 * `IncludeMultipleMTAlternatives`: Logický příznak k určení, zda má být vrácen více než jeden alternativní MT modul. Platné hodnoty jsou `true` a `false` (malá a velká písmena). Výchozí hodnota je `false`, který vrátí pouze jeden alternativní. Nastavení příznaku `true` umožňuje vytvořit umělý alternativy, plně integrovaná s Collaborative Translation Framework (CTF). Tato funkce umožňuje vracející alternativy na věty, které mají žádné překlady v CTF přidáním umělé alternativy ze *n*– nejlepší seznamu dekodéru.
     - Hodnocení. Hodnocení se použijí následujícím způsobem: 
@@ -657,21 +657,21 @@ Tato odpověď obsahuje `GetTranslationsResponse` element, který obsahuje násl
 ### <a name="response-class-status-200"></a>Třída odpovědi (stav 200)
 A `GetTranslationsResponse` objektu ve formátu, je popsáno výše.
 
-string
+řetězec
 
 Typ obsahu odpovědi: application/xml
  
 ### <a name="parameters"></a>Parametry
 
-|Parametr|Hodnota|Popis|Typ parametru|Typ dat|
+|Parametr|Value|Popis|Typ parametru|Datový typ|
 |:--|:--|:--|:--|:--|
-|appid|(prázdné)|Povinná hodnota. Pokud `Authorization` nebo `Ocp-Apim-Subscription-Key` záhlaví se používá, ponechte `appid` prázdné pole. V opačném případě obsahovat řetězec, který obsahuje `"Bearer" + " " + "access_token"`.|query|string|
-|text|(prázdné)|Povinná hodnota. Řetězec, který reprezentuje text k přeložení. Maximální velikost textu je 10 000 znaků.|query|string|
-|from|(prázdné)|Povinná hodnota. Řetězec, který představuje kód jazyka textu, který je překládán.|query|string|
-|na |(prázdné)    |Povinná hodnota. Řetězec, který představuje kód jazyka jazyk pro překlad textu do.|query|string|
-|maxTranslations|(prázdné)|Povinná hodnota. Celé číslo, které představuje maximální počet překlady se vraťte.|query|integer|
-|Autorizace| (prázdné)|Vyžaduje se, pokud obě `appid` pole a `Ocp-Apim-Subscription-Key` záhlaví jsou prázdné. Autorizační token: `"Bearer" + " " + "access_token"`.|string|  záhlaví|
-|OCP-Apim-Subscription-Key|(prázdné)  |Vyžaduje se, pokud obě `appid` pole a `Authorization` záhlaví jsou prázdné.|záhlaví|string|
+|appid|(prázdné)|Povinný parametr. Pokud `Authorization` nebo `Ocp-Apim-Subscription-Key` záhlaví se používá, ponechte `appid` prázdné pole. V opačném případě obsahovat řetězec, který obsahuje `"Bearer" + " " + "access_token"`.|query|řetězec|
+|text|(prázdné)|Povinný parametr. Řetězec, který reprezentuje text k přeložení. Maximální velikost textu je 10 000 znaků.|query|řetězec|
+|from|(prázdné)|Povinný parametr. Řetězec, který představuje kód jazyka textu, který je překládán.|query|řetězec|
+|na |(prázdné)    |Povinný parametr. Řetězec, který představuje kód jazyka jazyk pro překlad textu do.|query|řetězec|
+|maxTranslations|(prázdné)|Povinný parametr. Celé číslo, které představuje maximální počet překlady se vraťte.|query|integer|
+|Authorization| (prázdné)|Vyžaduje se, pokud obě `appid` pole a `Ocp-Apim-Subscription-Key` záhlaví jsou prázdné. Autorizační token: `"Bearer" + " " + "access_token"`.|řetězec|  záhlaví|
+|OCP-Apim-Subscription-Key|(prázdné)  |Vyžaduje se, pokud obě `appid` pole a `Authorization` záhlaví jsou prázdné.|záhlaví|řetězec|
 
 ### <a name="response-messages"></a>Zprávy odpovědi
 
@@ -713,11 +713,11 @@ Tady je formát textu požadavku:
 
 `GetTranslationsArrayRequest` zahrnuje tyto prvky:
 
-* `AppId`: Povinná hodnota. Pokud `Authorization` záhlaví se používá, ponechte `AppId` prázdné pole. V opačném případě obsahovat řetězec, který obsahuje `"Bearer" + " " + "access_token"`.
-* `From`: Povinná hodnota. Řetězec, který představuje kód jazyka textu, který je překládán.
-* `MaxTranslations`: Povinná hodnota. Celé číslo, které představuje maximální počet překlady se vraťte.
+* `AppId`: Povinný parametr. Pokud `Authorization` záhlaví se používá, ponechte `AppId` prázdné pole. V opačném případě obsahovat řetězec, který obsahuje `"Bearer" + " " + "access_token"`.
+* `From`: Povinný parametr. Řetězec, který představuje kód jazyka textu, který je překládán.
+* `MaxTranslations`: Povinný parametr. Celé číslo, které představuje maximální počet překlady se vraťte.
 * `Options`: Volitelné. `Options` Objekt, který obsahuje následující hodnoty. Jsou nepovinné a nejběžnější nastavení ve výchozím nastavení. Zadané elementy musí být uvedeny v abecedním pořadí.
-    - `Category`: Řetězec, který obsahuje kategorie překladu (domény). Výchozí formát je `general`.
+    - `Category`: Řetězec, který obsahuje kategorie překladu (domény). Výchozí hodnota je `general`.
     - `ContentType`: Jedinou podporovanou možností a ve výchozím nastavení, je `text/plain`.
     - `IncludeMultipleMTAlternatives`: Logický příznak k určení, zda má být vrácen více než jeden alternativní MT modul. Platné hodnoty jsou `true` a `false` (malá a velká písmena). Výchozí hodnota je `false`, který vrátí pouze jeden alternativní. Nastavení příznaku `true` povolí generování umělé alternativy v překladu, plně integrovaná s spolupráci překlady Framework (CTF). Tato funkce umožňuje vracející alternativy na věty, které mají žádné alternativy CTF přidáním umělé alternativy ze *n*– nejlepší seznamu dekodéru.
         - Hodnocení hodnocení se použijí následujícím způsobem:
@@ -729,8 +729,8 @@ Tady je formát textu požadavku:
 * `State`: Stav uživatele ke korelaci žádostí a odpovědí. Vrátí se stejným obsahem v odpovědi.
 * `Uri`: Filtrovat výsledky podle tohoto identifikátoru URI. Pokud není nastavena žádná hodnota, výchozí hodnota je `all`.
 * `User`: Filtrovat výsledky podle tohoto uživatele. Pokud není nastavena žádná hodnota, výchozí hodnota je `all`.
-* `Texts`: Povinná hodnota. Pole obsahující text pro překlad. Všechny řetězce musí být ve stejném jazyce. Celkový součet veškerého textu k převodu může mít maximálně 10 000 znaků. Maximální počet elementů pole je 10.
-* `To`: Povinná hodnota. Řetězec, který představuje kód jazyka jazyk pro překlad textu do.
+* `Texts`: Povinný parametr. Pole obsahující text pro překlad. Všechny řetězce musí být ve stejném jazyce. Celkový součet veškerého textu k převodu může mít maximálně 10 000 znaků. Maximální počet elementů pole je 10.
+* `To`: Povinný parametr. Řetězec, který představuje kód jazyka jazyk pro překlad textu do.
 
 Volitelné prvky, můžete vynechat. Prvky, které jsou přímo podřízené `GetTranslationsArrayRequest` musí být uvedeny v abecedním pořadí.
 
@@ -780,16 +780,16 @@ Každý `GetTranslationsResponse` prvek obsahuje tyto hodnoty:
 
 ### <a name="response-class-status-200"></a>Třída odpovědi (stav 200)
 
-string
+řetězec
 
 Typ obsahu odpovědi: application/xml
  
 ### <a name="parameters"></a>Parametry
 
-|Parametr|Hodnota|Popis|Typ parametru|Typ dat|
+|Parametr|Value|Popis|Typ parametru|Datový typ|
 |:--|:--|:--|:--|:--|
-|Autorizace  |(prázdné)    |Vyžaduje se, pokud obě `appid` pole a `Ocp-Apim-Subscription-Key` záhlaví jsou prázdné.  Autorizační token: `"Bearer" + " " + "access_token"`.|záhlaví|string|
-|OCP-Apim-Subscription-Key|(prázdné)  |Vyžaduje se, pokud obě `appid` pole a `Authorization` záhlaví jsou prázdné.|záhlaví|string|
+|Authorization  |(prázdné)    |Vyžaduje se, pokud obě `appid` pole a `Ocp-Apim-Subscription-Key` záhlaví jsou prázdné.  Autorizační token: `"Bearer" + " " + "access_token"`.|záhlaví|řetězec|
+|OCP-Apim-Subscription-Key|(prázdné)  |Vyžaduje se, pokud obě `appid` pole a `Authorization` záhlaví jsou prázdné.|záhlaví|řetězec|
 
 ### <a name="response-messages"></a>Zprávy odpovědi
 
@@ -803,6 +803,6 @@ Typ obsahu odpovědi: application/xml
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Migrujte na Translator Text API v3 ](../migrate-to-v3.md)
+> [Migrujte na Translator Text API v3](../migrate-to-v3.md)
 
 

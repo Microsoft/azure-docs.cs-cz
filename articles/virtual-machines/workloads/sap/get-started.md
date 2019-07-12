@@ -14,15 +14,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/10/2019
+ms.date: 07/10/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8b4ed11b5a0f463afee0dae149820bb546db0c53
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 27e12b5f33f2e3c0024d5caa6a9bee5e9576a45a
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67058714"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67805833"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Použití Azure k hostování a spuštění scénáře úloh řešení SAP
 
@@ -36,10 +36,12 @@ Hostování scénáře úloh řešení SAP v Azure můžete vytvořit také pož
 
 ## <a name="latest-changes"></a>Nejnovější změny
 
+- Verzi novou příručku pro [IBM Db2 HADR v Red Hat Enterprise Server](high-availability-guide-rhel-ibm-db2-luw.md)
+- Verzi [vysoká dostupnost pro SAP NetWeaver na Red Hat Enterprise Linux s Azure Files NetApp pro aplikace SAP](high-availability-guide-rhel-netapp-files.md)
 - Zavedení ExpressRoute rychlé cesty a globální dosah pro velké instance HANA v [Síťová architektura SAP HANA (velké instance)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture) a související dokumenty
 - Verzi [velké instance Azure HANA řídit prostřednictvím webu Azure portal](hana-li-portal.md)
 - Verzi [vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise serveru s Azure Files NetApp pro aplikace SAP](high-availability-guide-suse-netapp-files.md)
-- Vysvětlení **operačního systému Linux parametr net.ipv4.tcp_timestamps** nástroj pro vyrovnávání zatížení nastavení ve spojení s Azure
+
 
 
 

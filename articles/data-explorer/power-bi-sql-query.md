@@ -6,15 +6,15 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 05/30/2019
-ms.openlocfilehash: 13cec67a690239204bfc52d04b7cf03fd571148a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/10/2019
+ms.openlocfilehash: 5378a49ba5a4f3770ec9d9b3f723c063b4ef1a61
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399276"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67806417"
 ---
-# <a name="visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>Vizualizovat data pomocí Průzkumníku dat Azure konektoru pro Power BI
+# <a name="visualize-data-from-azure-data-explorer-using-a-sql-query-in-power-bi"></a>Vizualizace dat v Průzkumníku dat Azure pomocí jazyka SQL v Power BI
 
 Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Power BI je řešení obchodní analýzy, které umožňuje vizualizovat data a sdílet výsledky v rámci organizace.
 
@@ -84,4 +84,4 @@ Pokud už nepotřebujete sestavy, kterou jste vytvořili pro účely tohoto čl�
 
 ## <a name="next-steps"></a>Další postup
 
-[Vizualizovat data pomocí importovaných dotazů v Power BI](power-bi-connector.md)
+[Vizualizovat data pomocí Průzkumníku dat Azure konektoru pro Power BI](power-bi-connector.md)
