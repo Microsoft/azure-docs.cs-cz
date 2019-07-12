@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/11/2019
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: 17247b6dfac18a841a35e97496ec8f84f0cdeb8f
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
-ms.translationtype: HT
+ms.openlocfilehash: 099bca7483100da1a4ee2f8f10057c416ad145b0
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/11/2019
-ms.locfileid: "67827922"
+ms.locfileid: "67841491"
 ---
 Použití značek k prostředkům Azure poskytuje metadata pro jejich logické uspořádání do taxonomie. Každá značka se skládá z názvu a hodnoty pár. Můžete například použít název Prostředí a hodnotu Produkční na všechny prostředky v produkčním prostředí.
 
@@ -24,7 +24,7 @@ Taxonomii zvažte metadat samoobslužné označování strategie kromě strategi
 Na značky se vztahují následující omezení:
 
 * Ne všechny typy prostředků podporují značky. Pokud chcete zjistit, pokud použijete značku u typu prostředku, naleznete v tématu [podporu pro prostředky Azure se značkami](../articles/azure-resource-manager/tag-support.md).
-* Každý prostředek nebo skupina prostředků může mít maximálně 15 párů název/hodnota značek. Toto omezení se vztahuje pouze na značky použité přímo na prostředek nebo skupinu prostředků. Skupina prostředků může obsahovat řadu prostředků, z nichž každý má 15 párů název/hodnota značek. Pokud k prostředku potřebujete přidružit více než 15 hodnot, použijte jako hodnotu značky řetězec JSON. Řetězec JSON může obsahovat mnoho hodnot, které se použijí pro jeden název značky. Tento článek ukazuje příklad přiřazení řetězce JSON ke značce.
+* Každý prostředek nebo skupina prostředků může mít maximálně 50 párů název/hodnota značek. V současné době pro účty úložiště podporují jenom 15 značek, ale toto omezení se zvýší na 50 v budoucí verzi. Pokud potřebujete použít další značky, než maximální povolený počet, použijte pro hodnotu značky řetězec JSON. Řetězec JSON může obsahovat mnoho hodnot, které se použijí pro jeden název značky. Skupina prostředků může obsahovat řadu prostředků, mít 50 párů název/hodnota značek.
 * Název značky je omezen na 512 znaků a hodnota značky je omezena na 256 znaků. Pro účty úložiště je název značky omezen na 128 znaků a hodnota značky je omezena na 256 znaků.
 * Zobecněný virtuální počítače s omezenou podporou značky.
 * Prostředky ve skupině prostředků nedědí značky použité na danou skupinu prostředků.

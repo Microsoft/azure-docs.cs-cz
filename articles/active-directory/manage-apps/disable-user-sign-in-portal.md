@@ -16,17 +16,19 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 90000f34ff247fdd5939dc19971c170aa4b70386
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7256791c0b6bfbc72a26f6093cdd3c39410f702f
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65824660"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807590"
 ---
 # <a name="disable-user-sign-ins-for-an-enterprise-app-in-azure-active-directory"></a>Zakázat přihlášení uživatele pro podnikové aplikace v Azure Active Directory
+
 Je snadné zakázat podniková aplikace, aby žádní uživatelé můžou přihlásit k němu ve službě Azure Active Directory (Azure AD). Budete potřebovat příslušná oprávnění ke správě podnikové aplikace. A vy musíte být globální správce adresáře.
 
 ## <a name="how-do-i-disable-user-sign-ins"></a>Jak zakázat přihlášení uživatelů?
+
 1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com) prostřednictvím účtu, který má k adresáři oprávnění globálního správce.
 1. Vyberte **všechny služby**, zadejte **Azure Active Directory** v textovém poli a pak vyberte **Enter**.
 1. Na **Azure Active Directory** -  ***NazevAdresare*** podokno (to znamená Azure AD Directory spravujete), vyberte **podnikové aplikace**.
@@ -35,7 +37,8 @@ Je snadné zakázat podniková aplikace, aby žádní uživatelé můžou přihl
 1. Na ***appname*** - **vlastnosti** vyberte **ne** pro **mohou se uživatelé přihlásit?** .
 1. Vyberte **Uložit** příkazu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
+
 * [Zobrazit všechny moje skupiny](../fundamentals/active-directory-groups-view-azure-portal.md)
 * [Přiřadit uživatele nebo skupiny k podnikové aplikace](assign-user-or-group-access-portal.md)
 * [Odebrání uživatele nebo skupiny přiřazení podnikové aplikace](remove-user-or-group-access-portal.md)

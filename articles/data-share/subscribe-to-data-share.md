@@ -6,12 +6,12 @@ ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/10/2019
 ms.author: joanpo
-ms.openlocfilehash: 2dc4994d88fc03c23a6d5722d6018c926e7d6b8c
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: fc63c1a0b3b496de8e5ecea58f79f1db9d872e80
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67788161"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67838427"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share-preview"></a>Kurz: Přijmout a přijímat data pomocí Azure Data sdílené složky ve verzi Preview
 
@@ -31,6 +31,8 @@ Zajistěte, aby byly všechny požadavky kompletní před přijímá se Pozvánk
 * Předplatné Azure: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 * Účet služby Azure Storage: Pokud již nemáte, můžete vytvořit [účtu služby Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account). 
 * Pozvání ke sdílení dat: Pozvánka z Microsoft Azure s předmětem s názvem "sdílené složky služby Azure Data pozvání **<yourdataprovider@domain.com>** ".
+* Oprávnění k přidání do účtu úložiště, který se nachází v přiřazení role *Microsoft.Authorization/role přiřazení a zápis* oprávnění. Toto oprávnění, existuje v roli vlastník. 
+* Registrace poskytovatele prostředků pro Microsoft.DataShare. Najdete v článku [poskytovatele prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) dokumentaci, informace o tom, jak to provést. 
 
 > [!IMPORTANT]
 > Přijmout a přijímat Data sdílené složky Azure, musíte se nejprve zaregistrovat poskytovatele prostředků Microsoft.DataShare a vy musíte být vlastníkem, který můžete přijímat data do účtu úložiště. Postupujte podle pokynů uvedených v [Poradce při potížích s Azure Data sdílet Náhled](data-share-troubleshoot.md) zaregistrujte poskytovatele prostředků sdílet data také přidejte sami sebe jako vlastníka účtu úložiště. 

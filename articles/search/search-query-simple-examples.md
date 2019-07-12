@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 4658de97bc8b8a175934286a5be3f074968ff7bd
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 6b7451371fe1562a6763643cd90e5646bd255018
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485362"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67653528"
 ---
 # <a name="query-examples-using-the-simple-search-syntax-in-azure-search"></a>Příklady dotazů pomocí syntaxe "jednoduchý" vyhledávání ve službě Azure Search
 
@@ -119,7 +119,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs/9E1E3AF9-0660-4E0
 
 ## <a name="example-3-filter-queries"></a>Příklad 3: Filtrování dotazů
 
-[Syntaxe filtru](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search#filter-examples) je výraz OData, který vám pomůže s **hledání** nebo samostatně. Filtr samostatné bez parametrů vyhledávání, je užitečná, pokud výraz filtru je možné k plnému určení dokumenty, které vás zajímají. Bez řetězce dotazu, neexistuje žádná lexikální nebo jazyková analýza bez výsledků (všechny hodnoty jsou 1) a žádné řazení. Všimněte si, že se že hledaný řetězec je prázdný.
+[Syntaxe filtru](https://docs.microsoft.com/azure/search/search-query-odata-filter) je výraz OData, který vám pomůže s **hledání** nebo samostatně. Filtr samostatné bez parametrů vyhledávání, je užitečná, pokud výraz filtru je možné k plnému určení dokumenty, které vás zajímají. Bez řetězce dotazu, neexistuje žádná lexikální nebo jazyková analýza bez výsledků (všechny hodnoty jsou 1) a žádné řazení. Všimněte si, že se že hledaný řetězec je prázdný.
 
 ```http
 POST /indexes/nycjobs/docs/search?api-version=2019-05-06
@@ -147,7 +147,7 @@ Další efektivní způsob, jak kombinovat filtru a vyhledávání je prostředn
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,business_title,agency&search=&$filter=search.ismatch('plan*', 'business_title', 'full', 'any')
 ```
 
-Další informace o této funkci najdete v části [search.ismatch v "Příklady filtrů"](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search#filter-examples).
+Další informace o této funkci najdete v části [search.ismatch v "Příklady filtrů"](https://docs.microsoft.com/azure/search/search-query-odata-full-text-search-functions#examples).
 
 ## <a name="example-4-range-filters"></a>Příklad 4: Filtry rozsahu
 
@@ -198,7 +198,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 
 ## <a name="example-5-geo-search"></a>Příklad 5: Geografické vyhledávání
 
-Ukázkového indexu zahrnuje pole geo_location pomocí zeměpisné šířky a délky. V tomto příkladu [geo.distance funkce](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search#filter-examples) , která filtruje na dokumenty v rámci obvod výchozí bod odhlašování libovolné vzdálenosti (v kilometrech), který zadáte. Můžete upravit poslední hodnotu v dotazu (4), zmenšit nebo zvětšit plochu dotazu.
+Ukázkového indexu zahrnuje pole geo_location pomocí zeměpisné šířky a délky. V tomto příkladu [geo.distance funkce](https://docs.microsoft.com/azure/search/search-query-odata-geo-spatial-functions#examples) , která filtruje na dokumenty v rámci obvod výchozí bod odhlašování libovolné vzdálenosti (v kilometrech), který zadáte. Můžete upravit poslední hodnotu v dotazu (4), zmenšit nebo zvětšit plochu dotazu.
 
 V následujícím příkladu je ve formátu POST pro lepší čitelnost:
 
@@ -285,7 +285,7 @@ Pokud chcete získat další 5, přeskočte první dávky:
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title&$top=5&$skip=5
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Zkuste zadat dotazy ve vašem kódu. Následující odkazy popisují, jak nastavit vyhledávacích dotazů pro .NET a rozhraní REST API pomocí jednoduché syntaxe výchozí.
 
 * [Dotazování indexu Azure Search pomocí .NET SDK](search-query-dotnet.md)

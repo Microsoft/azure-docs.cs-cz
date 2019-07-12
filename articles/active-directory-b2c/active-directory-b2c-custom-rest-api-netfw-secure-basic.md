@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 08aebf698a7a00729a0e37b57cb15938853e4185
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
+ms.openlocfilehash: 8c1251056ad816af664f95abcd18d50ceca4619d
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67501630"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67835265"
 ---
 # <a name="secure-your-restful-services-by-using-http-basic-authentication"></a>Zabezpečení služby RESTful pomocí základního ověřování protokolu HTTP
 
@@ -76,12 +76,12 @@ Přidat `ClientAuthMiddleware.cs` třídy v rámci *App_Start* složky. Postup:
 
 2. V **název** zadejte **ClientAuthMiddleware.cs**.
 
-   ![Vytvoření nové třídy C#](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-OWIN-startup-auth2.png)
+   ![Vytvoření nového C# třídy v dialogovém okně Přidat novou položku v sadě Visual Studio](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-OWIN-startup-auth2.png)
 
 3. Otevřít *App_Start\ClientAuthMiddleware.cs* souboru a nahraďte souboru obsahu s následujícím kódem:
 
     ```csharp
-    
+
     using Microsoft.Owin;
     using System;
     using System.Collections.Generic;
@@ -91,7 +91,7 @@ Přidat `ClientAuthMiddleware.cs` třídy v rámci *App_Start* složky. Postup:
     using System.Text;
     using System.Threading.Tasks;
     using System.Web;
-    
+
     namespace Contoso.AADB2C.API
     {
         /// <summary>
@@ -101,12 +101,12 @@ Přidat `ClientAuthMiddleware.cs` třídy v rámci *App_Start* složky. Postup:
         {
             private static readonly string ClientID = ConfigurationManager.AppSettings["WebApp:ClientId"];
             private static readonly string ClientSecret = ConfigurationManager.AppSettings["WebApp:ClientSecret"];
-    
+
             /// <summary>
             /// Gets or sets the next owin middleware
             /// </summary>
             private Func<IDictionary<string, object>, Task> Next { get; set; }
-    
+
             /// <summary>
             /// Initializes a new instance of the <see cref="ClientAuthMiddleware"/> class.
             /// </summary>
@@ -115,7 +115,7 @@ Přidat `ClientAuthMiddleware.cs` třídy v rámci *App_Start* složky. Postup:
             {
                 this.Next = next;
             }
-    
+
             /// <summary>
             /// Invoke client authentication middleware during each request.
             /// </summary>
@@ -125,7 +125,7 @@ Přidat `ClientAuthMiddleware.cs` třídy v rámci *App_Start* složky. Postup:
             {
                 // Get wrapper class for the environment
                 var context = new OwinContext(environment);
-    
+
                 // Check whether the authorization header is available. This contains the credentials.
                 var authzValue = context.Request.Headers.Get("Authorization");
                 if (string.IsNullOrEmpty(authzValue) || !authzValue.StartsWith("Basic ", StringComparison.OrdinalIgnoreCase))
@@ -133,21 +133,21 @@ Přidat `ClientAuthMiddleware.cs` třídy v rámci *App_Start* složky. Postup:
                     // Process next middleware
                     return Next(environment);
                 }
-    
+
                 // Get credentials
                 var creds = authzValue.Substring("Basic ".Length).Trim();
                 string clientId;
                 string clientSecret;
-    
+
                 if (RetrieveCreds(creds, out clientId, out clientSecret))
                 {
                     // Set transaction authenticated as client
                     context.Request.User = new GenericPrincipal(new GenericIdentity(clientId, "client"), new string[] { "client" });
                 }
-    
+
                 return Next(environment);
             }
-    
+
             /// <summary>
             /// Retrieve credentials from header
             /// </summary>
@@ -159,7 +159,7 @@ Přidat `ClientAuthMiddleware.cs` třídy v rámci *App_Start* složky. Postup:
             {
                 string pair;
                 clientId = clientSecret = string.Empty;
-    
+
                 try
                 {
                     pair = Encoding.UTF8.GetString(Convert.FromBase64String(credentials));
@@ -172,16 +172,16 @@ Přidat `ClientAuthMiddleware.cs` třídy v rámci *App_Start* složky. Postup:
                 {
                     return false;
                 }
-    
+
                 var ix = pair.IndexOf(':');
                 if (ix == -1)
                 {
                     return false;
                 }
-    
+
                 clientId = pair.Substring(0, ix);
                 clientSecret = pair.Substring(ix + 1);
-    
+
                 // Return whether credentials are valid
                 return (string.Compare(clientId, ClientAuthMiddleware.ClientID) == 0 &&
                     string.Compare(clientSecret, ClientAuthMiddleware.ClientSecret) == 0);
@@ -195,14 +195,14 @@ Přidat `ClientAuthMiddleware.cs` třídy v rámci *App_Start* složky. Postup:
 Přidání třídy pro spuštění OWIN s názvem `Startup.cs` rozhraní API. Postup:
 1. Klikněte pravým tlačítkem na projekt, vyberte **přidat** > **nová položka**a poté vyhledejte **OWIN**.
 
-   ![Přidání třídy pro spuštění OWIN](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-OWIN-startup.png)
+   ![Vytvoření třídy pro spuštění OWIN v dialogovém okně Přidat novou položku v sadě Visual Studio](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-OWIN-startup.png)
 
 2. Otevřít *Startup.cs* souboru a nahraďte souboru obsahu s následujícím kódem:
 
     ```csharp
     using Microsoft.Owin;
     using Owin;
-    
+
     [assembly: OwinStartup(typeof(Contoso.AADB2C.API.Startup))]
     namespace Contoso.AADB2C.API
     {
@@ -241,7 +241,7 @@ Poté, co vaše služba RESTful ochrání ID klienta (uživatelské jméno) a ta
 
 4. Pro **možnosti**vyberte **ruční**.
 
-5. Pro **název**, typ **B2cRestClientId**.  
+5. Pro **název**, typ **B2cRestClientId**.
     Předpona, která *B2C_1A_* může být automaticky přidán.
 
 6. V **tajný kód** zadejte ID aplikace, kterou jste definovali dříve.
@@ -262,7 +262,7 @@ Poté, co vaše služba RESTful ochrání ID klienta (uživatelské jméno) a ta
 
 4. Pro **možnosti**vyberte **ruční**.
 
-5. Pro **název**, typ **B2cRestClientSecret**.  
+5. Pro **název**, typ **B2cRestClientSecret**.
     Předpona, která *B2C_1A_* může být automaticky přidán.
 
 6. V **tajný kód** zadejte tajný kód aplikace, kterou jste definovali dříve.
@@ -297,8 +297,8 @@ Poté, co vaše služba RESTful ochrání ID klienta (uživatelské jméno) a ta
     ```
 
     Po přidání fragmentu kódu, technický profil by měl vypadat jako v následujícím kódu XML:
-    
-    ![Přidání prvků XML základní ověřování](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-add-1.png)
+
+    ![Přidat základní ověřování XML elementů na technický profil](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-add-1.png)
 
 ## <a name="step-5-upload-the-policy-to-your-tenant"></a>Krok 5: Odeslání zásady do vašeho tenanta
 
@@ -323,12 +323,12 @@ Poté, co vaše služba RESTful ochrání ID klienta (uživatelské jméno) a ta
 
 2. Otevřít **B2C_1A_signup_signin**, předávající stranu vlastní zásady, které jste nahráli a pak vyberte **spustit nyní**.
 
-3. Testování procesu tak, že zadáte **testovací** v **křestní jméno** pole.  
+3. Testování procesu tak, že zadáte **testovací** v **křestní jméno** pole.
     Azure AD B2C zobrazí chybovou zprávu v horní části okna.
 
-    ![Otestování rozhraní API vaší identity](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-test.png)
+    ![Testování ověření vstupu křestní jméno vaší identity rozhraní API](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-test.png)
 
-4. V **křestní jméno** zadejte název (jiné než "Test").  
+4. V **křestní jméno** zadejte název (jiné než "Test").
     Azure AD B2C zaregistruje uživatele a potom číslo věrnostní odesílá do vaší aplikace. Poznamenejte si číslo v tomto příkladu:
 
     ```
@@ -357,6 +357,6 @@ Poté, co vaše služba RESTful ochrání ID klienta (uživatelské jméno) a ta
 * Po dokončení [začít pracovat s vlastními zásadami](active-directory-b2c-get-started-custom.md) návodu, doporučujeme vám vytvořit váš scénář s využitím vlastních zásad pro soubory. Pro srovnání si uvádíme [ukázkové soubory zásad](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw-secure-basic).
 * Můžete stáhnout kompletní kód z [řešení sady Visual Studio ukázkový pro referenci](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw-secure-basic).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Použití klientských certifikátů k zabezpečení rozhraní RESTful API](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)

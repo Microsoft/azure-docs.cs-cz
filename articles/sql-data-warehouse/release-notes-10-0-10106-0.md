@@ -5,17 +5,17 @@ services: sql-data-warehouse
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 05/13/2019
+ms.date: 07/03/2019
 author: anumjs
 ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
-ms.openlocfilehash: 9e5f10c2b4c2108626db79ad9821a8b07e57a2e3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ee01ebad9e03aaa34911db49ce344d51b6a756d8
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66417714"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798708"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Poznámky k verzi Azure SQL Data Warehouse
 
@@ -25,22 +25,33 @@ Tento článek shrnuje nové funkce a vylepšení v posledních verzích [Azure 
 
 Jak nové funkce se nasazuje pro všechny oblasti, zkontrolujte verzi nasazení vaší instance a nejnovější poznámky k verzi Azure SQL data Warehouse pro dostupnosti funkce. Pokud chcete zkontrolovat verzi Azure SQL data Warehouse, připojte se ke svému datovému skladu přes SQL Server Management Studio (SSMS) a spusťte `SELECT @@VERSION AS 'SQL Data Warehouse';` vrátí aktuální verzi Azure SQL data Warehouse.
 
-Příklad výstupu: ![Verze SQL Data Warehouse](./media/release-notes/sql_data_warehouse_version.png)
+Příklad výstupu:
+
+![Verze SQL Data Warehouse](./media/release-notes/sql_data_warehouse_version.png)
 
 Použití data identifikovat pro potvrzení, který uvolní se nastavily pro váš datový Sklad SQL Azure.
+
+## <a name="july-2019"></a>2019 dne
+
+| Vylepšení služby | Podrobnosti |
+| --- | --- |
+|**Materializované zobrazení (Preview)**|Materializovaného zobrazení uchovává data vrácená z dotazu definice zobrazení a automaticky aktualizována při změně dat v podkladové tabulky. To zlepšuje výkon složitých dotazů (obvykle dotazů s spojování a agregaci) nabízejí jednoduchý údržbu. Další informace naleznete v tématu: </br> - [VYTVOŘIT zobrazení AS MATERIALIZED vyberte &#40;Transact-SQL&#41;](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest)</br> - [ALTER MATERIALIZED VIEW &#40;Transact-SQL&#41;](/sql/t-sql/statements/alter-materialized-view-transact-sql?view=azure-sqldw-latest) </br> - [Příkazy jazyka T-SQL podporované ve službě Azure SQL Data Warehouse](/azure/sql-data-warehouse/sql-data-warehouse-reference-tsql-statements)|
+|**Další podpora T-SQL**|Zařízení surface oblasti jazyka T-SQL pro SQL Data Warehouse rozšířilo a zahrnuje podporu pro: </br> - [NA ČASOVÉ PÁSMO](/sql/t-sql/queries/at-time-zone-transact-sql?view=azure-sqldw-latest)</br> - [STRING_AGG](/sql/t-sql/functions/string-agg-transact-sql?view=azure-sqldw-latest)|
+|**Sady výsledků dotazu do mezipaměti (Preview)**|Příkazy DBCC přidali ke správě jsme už dříve uvedli výsledek nastavení mezipaměti. Další informace naleznete v tématu: </br> - [Příkaz DBCC DROPRESULTSETCACHE &#40;Transact-SQL&#41;](/sql/t-sql/database-console-commands/dbcc-dropresultsetcache-transact-sql?view=azure-sqldw-latest)  </br> - [Příkaz DBCC SHOWRESULTCACHESPACEUSED &#40;Transact-SQL&#41;](/sql/t-sql/database-console-commands/dbcc-showresultcachespaceused-transact-sql?view=azure-sqldw-latest) </br></br> Také zobrazit nový sloupec result_set_cache v [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest) , že po provedeného dotazu použít výsledek se zobrazí nastavení mezipaměti.|
+|**Seřazené clusterovaný index columnstore (Preview)**|Nový sloupec, column_store_order_ordinal přidán do [sys.index_columns](/sql/relational-databases/system-catalog-views/sys-index-columns-transact-sql?view=azure-sqldw-latest) k identifikaci pořadí sloupců v indexu seřazený Clusterované columnstore.|
 
 ## <a name="may-2019"></a>. Května 2019.
 
 | Vylepšení služby | Podrobnosti |
 | --- | --- |
-|**(Preview) maskování dynamických dat**|Dynamické maskování dat (DDM) tak, že maskuje ho na průběžné ve výsledcích dotazu na základě vámi definovaných pravidel maskování brání neoprávněnému přístupu k citlivým datům ve vašem datovém skladu. Další informace najdete v tématu [maskování dynamických dat SQL Database](/azure/sql-database/sql-database-dynamic-data-masking-get-started).|
-|**Důležitost úlohy nyní obecně dostupná**|Klasifikace úlohy správy a význam poskytují možnost k ovlivnění pořadí spuštění dotazů. Další informace o důležitosti pracovního vytížení, najdete v článku [klasifikace](sql-data-warehouse-workload-classification.md) a [význam](sql-data-warehouse-workload-importance.md) přehledové články v dokumentaci. Podívejte se [vytvořit ÚLOHU třídění](/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest) doc také.<br/><br/>Zobrazit úlohy význam v akci v následující videa:<br/> -[Koncepty správy úloh](https://www.youtube.com/embed/QcCRBAhoXpM)<br/> -[Scénáře správy úloh](https://www.youtube.com/embed/_2rLMljOjw8)|
+|**(Preview) maskování dynamických dat**|Dynamické maskování dat (DDM) brání neoprávněnému přístupu k citlivým datům v datovém skladu tím, že je za běhu maskuje ve výsledcích dotazů na základě nadefinovaných pravidel maskování. Další informace najdete v tématu [maskování dynamických dat SQL Database](/azure/sql-database/sql-database-dynamic-data-masking-get-started).|
+|**Důležitost úlohy nyní obecně dostupná**|Klasifikace správy a důležitost úloh poskytují možnost ovlivnit pořadí spouštění dotazů. Další informace o důležitosti pracovního vytížení, najdete v článku [klasifikace](sql-data-warehouse-workload-classification.md) a [význam](sql-data-warehouse-workload-importance.md) přehledové články v dokumentaci. Podívejte se [vytvořit ÚLOHU třídění](/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest) doc také.<br/><br/>Zobrazit úlohy význam v akci v následující videa:<br/> -[Koncepty správy úloh](https://www.youtube.com/embed/QcCRBAhoXpM)<br/> -[Scénáře správy úloh](https://www.youtube.com/embed/_2rLMljOjw8)|
 |**Další podpora T-SQL**|Zařízení surface oblasti jazyka T-SQL pro SQL Data Warehouse rozšířilo a zahrnuje podporu pro: </br> - [TRIM](/sql/t-sql/functions/trim-transact-sql?view=azure-sqldw-latest)|
 |**Funkce JSON**|Obchodní analytici teď můžete použít dobře známého jazyka T-SQL k dotazování a manipulaci s dokumenty, které jsou formátovány jako data JSON pomocí následující nové funkce JSON ve službě Azure Data Warehouse:</br> - [ISJSON](/sql/t-sql/functions/isjson-transact-sql?view=azure-sqldw-latest)</br> - [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?view=azure-sqldw-latest)</br> -  [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?view=azure-sqldw-latest)</br> -  [JSON_MODIFY](/sql/t-sql/functions/json-modify-transact-sql?view=azure-sqldw-latest)</br> - [OPENJSON](/sql/t-sql/functions/openjson-transact-sql?view=azure-sqldw-latest)|
 |**Sady výsledků dotazu do mezipaměti (Preview)**|Ukládání do mezipaměti sady výsledků umožňuje rychlé pomalejší doby odezvy při snížení čas strávený při vytváření přehledů pro specialisty na obchodní analýzu a generování sestav uživatelů. Další informace naleznete v tématu:</br> - [ALTER DATABASE (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql?view=azure-sqldw-latest)</br> - [Příkaz ALTER DATABASE nastavit možnosti (Transact SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest)</br> - [Sada výsledků dotazu nastavení ukládání do mezipaměti (Transact-SQL)](/sql/t-sql/statements/set-result-set-caching-transact-sql?view=azure-sqldw-latest)</br> - [SET Statement (Transact-SQL)](/sql/t-sql/statements/set-statements-transact-sql)</br> - [sys.databases (Transact-SQL)](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql?view=azure-sqldw-latest)|
-|**Seřazené clusterovaný index columnstore (Preview)**|Columnstore je klíčem k ukládání a efektivní dotazování na velké objemy dat. Pro každou tabulku rozdělí příchozích dat do skupiny řádků a každý sloupec skupina řádků formulářů Segment na disku.  Seřazené Clusterované columnstore optimalizovat indexy další spuštění dotazu povolením odstranění efektivní segmentu.   Další informace naleznete v tématu:</br> -  [Vytvoření tabulky (Azure SQL Data Warehouse)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?view=azure-sqldw-latest)</br> -  [CREATE COLUMNSTORE INDEX (Transact-SQL)](/sql/t-sql/statements/create-columnstore-index-transact-sql?view=azure-sqldw-latest).|
+|**Seřazené clusterovaný index columnstore (Preview)**|Columnstore je zcela zásadní pro ukládání a efektivní dotazování velkých objemů dat. U každé tabulky rozdělí příchozí data do skupin řádků a pro každý sloupec skupiny řádků se vytvoří segment na disku.  Uspořádané clusterované indexy columnstore dále optimalizují spouštění dotazů tím, že umožňují efektivní odstraňování segmentů.   Další informace naleznete v tématu:</br> -  [Vytvoření tabulky (Azure SQL Data Warehouse)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?view=azure-sqldw-latest)</br> -  [CREATE COLUMNSTORE INDEX (Transact-SQL)](/sql/t-sql/statements/create-columnstore-index-transact-sql?view=azure-sqldw-latest).|
 
-## <a name="march-2019"></a>2019\. března
+## <a name="march-2019"></a>2019. března
 
 | Vylepšení služby | Podrobnosti |
 | --- | --- |
@@ -58,7 +69,7 @@ Použití data identifikovat pro potvrzení, který uvolní se nastavily pro vá
 | --- | --- |
 | | |
 
-## <a name="january-2019"></a>2019\. ledna
+## <a name="january-2019"></a>2019. ledna
 
 ### <a name="service-improvements"></a>Vylepšení služby
 
@@ -66,7 +77,7 @@ Použití data identifikovat pro potvrzení, který uvolní se nastavily pro vá
 | --- | --- |
 |**Vrátí pořadí podle optimalizace**|VYBERTE... Klauzule ORDER BY dotazů získat zvýšení výkonu v této verzi.   Nyní všechny výpočetní uzly odesílat své výsledky do jednoho výpočetního uzlu. Tento uzel sloučí a řadí výsledky a vrátí uživateli.  Slučování přes jeden výpočetní uzel, výsledkem zvýšení výkonu, když obsahuje velký počet řádků sady výsledků dotazu. Prováděcí modul dotazu dříve by pořadí výsledky na jednotlivých výpočetních uzlech. Výsledky by jim Streamovat řídicímu uzlu. Řídicí uzel by pak sloučit výsledky.|
 |**Vylepšení přesunu dat pro PartitionMove a BroadcastMove**|V Azure SQL Data Warehouse Gen2, kroky pro přesun dat typu ShuffleMove, pomocí technik přesunu dat rychlé.  Další informace najdete v tématu [blogu vylepšení výkonu](https://azure.microsoft.com/blog/lightning-fast-query-performance-with-azure-sql-data-warehouse/). V této verzi PartitionMove a BroadcastMove jsou nyní používá stejné postupy přesunu rychlé data. Uživatelské dotazy, které používají tyto typy kroky pro přesun dat se spustí s vyšším výkonem. Žádné změny kódu je potřebné k využití těchto vylepšení výkonu.|
-|**Důležité chyby**|Nesprávná verze Azure SQL Data Warehouse – `SELECT @@VERSION` může vrátit nesprávné verze 10.0.9999.0. 10\.0.10106.0 je správná verze na aktuální vydání. Tato chyba byla nahlášena a je pod kontrolu.
+|**Důležité chyby**|Nesprávná verze Azure SQL Data Warehouse – `SELECT @@VERSION` může vrátit nesprávné verze 10.0.9999.0. 10.0.10106.0 je správná verze na aktuální vydání. Tato chyba byla nahlášena a je pod kontrolu.
 | | |
 
 ### <a name="documentation-improvements"></a>Dokumentace k vylepšení

@@ -8,12 +8,12 @@ ms.date: 07/10/2019
 ms.author: girobins
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: e2c6c9d22672028d7af547235c6fcd1738654828
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
-ms.translationtype: HT
+ms.openlocfilehash: 079e8677febfe6683d4f0e60a0e7ba6b06ea549d
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/11/2019
-ms.locfileid: "67811216"
+ms.locfileid: "67835841"
 ---
 # <a name="troubleshoot-query-performance-for-azure-cosmos-db"></a>Řešení potíží s výkonem dotazů pro službu Azure Cosmos DB
 Tento článek popisuje, jak k identifikaci, diagnostice a řešení potíží s Azure Cosmos DB SQL dotazu. Pokud chcete dosáhnout optimálního výkonu za dotazy na službu Azure Cosmos DB, použijte následující postup řešení potíží. 
@@ -22,7 +22,7 @@ Tento článek popisuje, jak k identifikaci, diagnostice a řešení potíží s
 Nejnižší možnou latenci se dosahuje tím, že zajišťuje, že je volající aplikace umístěné ve stejné oblasti Azure jako koncový bod zřízené služby Azure Cosmos DB. Seznam dostupných oblastí naleznete v tématu [oblastí Azure](https://azure.microsoft.com/global-infrastructure/regions/#services) článku.
 
 ## <a name="check-consistency-level"></a>Zkontrolujte úroveň konzistence
-Úroveň konzistence může ovlivnit výkon a náklady. Zajistěte, aby že úroveň konzistence je vhodný pro daný scénář. Další podrobnosti najdete v tématu [Volba úrovně konzistence](https://docs.microsoft.com/azure/cosmos-db/consistency-levels-choosing).
+[Úroveň konzistence](consistency-levels.md) může mít vliv na výkon a náklady. Zajistěte, aby že úroveň konzistence je vhodný pro daný scénář. Další podrobnosti najdete v tématu [Volba úrovně konzistence](consistency-levels-choosing.md).
 
 ## <a name="log-query-metrics"></a>Protokolujte metriky dotazu
 Použití `QueryMetrics` řešení potíží s dotazy pomalé nebo nákladné. 
@@ -46,7 +46,7 @@ Použití `QueryMetrics` řešení potíží s dotazy pomalé nebo nákladné.
       * Využití jednotlivých opakované fared (najdete v článku `Partition Execution Timeline` z řetězcové reprezentace `QueryMetrics`). 
       * Určuje, zda dotaz spotřebované zátěž vysokou žádostí. 
 
-Další podrobnosti najdete v tématu [získání metriky spouštění dotazů SQL](https://docs.microsoft.com/azure/cosmos-db/profile-sql-api-query) článku.
+Další podrobnosti najdete v tématu [získání metriky spouštění dotazů SQL](profile-sql-api-query.md) článku.
       
 ## <a name="tune-query-feed-options-parameters"></a>Vyladění parametry kanálu možnosti dotazu 
 Výkon dotazů můžete ladit prostřednictvím požadavku [možnosti datového kanálu](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.feedoptions?view=azure-dotnet) parametry. Zkuste níže uvedených možností:
@@ -131,12 +131,16 @@ Tady je seznam funkce řetězce, které mohou využívat index:
     ```
 
     Druhý dotaz bude výkonnější jako nevyžaduje provádění transformací na všechny hodnoty, aby bylo možné porovnat hodnoty, které mají "Jan".
-   
+
+Další funkce systému podrobnosti najdete v tématu [systémové funkce](sql-query-system-functions.md) článku.
+
 ## <a name="check-indexing-policy"></a>Zkontrolujte zásady indexování
-Chcete-li ověřit, zda aktuální [zásady indexování]((https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy)) optimální:
+Chcete-li ověřit, zda aktuální [zásady indexování](index-policy.md) optimální:
 
   * Ujistěte se, že jsou všechny cesty JSON v dotazech použít pro rychlejší čtení součástí zásady indexování.
   * Vylučte cesty není možné použít v dotazech u další zápisy výkonné.
+
+Další podrobnosti najdete v tématu [jak chcete spravovat zásady indexování](how-to-manage-indexing-policy.md) článku.
 
 ## <a name="spatial-data-check-ordering-of-points"></a>Prostorová data: Zkontrolujte řazení bodů
 Body v rámci mnohoúhelníku musí zadat v pořadí proti směru hodinových ručiček. Mnohoúhelník zadat v pořadí po směru hodinových ručiček představuje inverzní oblasti v rámci něj.
@@ -160,18 +164,11 @@ Poddotazy s více hodnotami lze optimalizovat `JOIN` výrazy formou predikáty p
 Zkontrolujte, že zřízená propustnost může zpracovávat úlohy. Zvyšte rozpočtu RU pro ovlivněné kolekce.
 
 ## <a name="try-upgrading-to-the-latest-sdk-version"></a>Zkuste ho upgradovat na nejnovější verzi sady SDK
-Chcete-li zjistit nejnovější sady SDK najdete [stažení sady SDK a release notes](https://docs.microsoft.com/azure/cosmos-db/sql-api-sdk-dotnet) článku.
+Chcete-li zjistit nejnovější sady SDK najdete [stažení sady SDK a release notes](sql-api-sdk-dotnet.md) článku.
 
-## <a name="recommended-documents"></a>Doporučené dokumenty
+## <a name="next-steps"></a>Další postup
 Podívejte se na tom, jak měřit ru každý dotaz, získat statistiky provádění vyladit vaše dotazy a další dokumenty:
 
-* [Získat metriky spouštění dotazů SQL pomocí sady .NET SDK](https://docs.microsoft.com/azure/cosmos-db/profile-sql-api-query)
-* [Ladění výkonu dotazů pomocí služby Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/sql-api-sql-query-metrics)
-* [Informační kanál možnosti pro sadu .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.feedoptions?view=azure-dotnet)
-* [Zásady indexování](https://docs.microsoft.com/azure/cosmos-db/indexing-policies)
-* [Jak spravovat zásady indexování](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy)
-* [Úrovně konzistence – přehled](https://docs.microsoft.com/azure/cosmos-db/consistency-levels)
-* [Volba úrovně konzistence](https://docs.microsoft.com/azure/cosmos-db/consistency-levels-choosing)
-* [Tipy ke zvýšení výkonu pro sadu .NET SDK](https://docs.microsoft.com/azure/cosmos-db/performance-tips)
-* [Začínáme s dotazy SQL](https://docs.microsoft.com/azure/cosmos-db/sql-api-sql-query)
-* [Nejnovější sadu SDK](https://docs.microsoft.com/azure/cosmos-db/sql-api-sdk-dotnet)
+* [Získat metriky spouštění dotazů SQL pomocí sady .NET SDK](profile-sql-api-query.md)
+* [Ladění výkonu dotazů pomocí služby Azure Cosmos DB](sql-api-sql-query-metrics.md)
+* [Tipy ke zvýšení výkonu pro sadu .NET SDK](performance-tips.md)

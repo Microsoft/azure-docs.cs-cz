@@ -14,17 +14,16 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: d9d9e68b7e74ba7725e97162d01e1a35314fdd0f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 552c89cd3294567e8203b69f81c1ac24716a8b1b
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60564578"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839441"
 ---
 # <a name="tutorial-build-your-first-pipeline-to-transform-data-using-hadoop-cluster"></a>Kurz: Vytvoření prvního kanálu, který umožňuje transformovat data pomocí clusteru Hadoop
 > [!div class="op_single_selector"]
 > * [Přehled a požadavky](data-factory-build-your-first-pipeline.md)
-> * [Azure Portal](data-factory-build-your-first-pipeline-using-editor.md)
 > * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 > * [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 > * [Šablona Resource Manageru](data-factory-build-your-first-pipeline-using-arm.md)
@@ -36,7 +35,7 @@ ms.locfileid: "60564578"
 
 V tomto kurzu sestavíte svou první datovou továrnu Azure s datovým kanálem. Kanál transformuje vstupní data pomocí skriptu Hive v clusteru Azure HDInsight (Hadoop) a generuje výstupní data.  
 
-Tento článek obsahuje přehled a požadavky pro tento kurz. Po dokončení požadavků můžete udělat kurz pomocí jedné z následujících nástrojů nebo sad SDK: Azure portal, sady Visual Studio, PowerShell, šablony Resource Manageru, rozhraní REST API. Vyberte jednu z možností v rozevíracím seznamu v odkazech na konci tohoto článku, pokud chcete udělat kurz pomocí jedné z těchto možností začátek (nebo).    
+Tento článek obsahuje přehled a požadavky pro tento kurz. Po dokončení požadavků můžete udělat kurz pomocí jedné z následujících nástrojů nebo sad SDK: Visual Studio, PowerShell, šablony Resource Manageru, rozhraní REST API. Vyberte jednu z možností v rozevíracím seznamu v odkazech na konci tohoto článku, pokud chcete udělat kurz pomocí jedné z těchto možností začátek (nebo).    
 
 ## <a name="tutorial-overview"></a>Přehled kurzu
 V tomto kurzu budete provádět následující kroky:
@@ -93,13 +92,12 @@ Je nutné, abyste před zahájením tohoto kurzu splňovali následující poža
 
 Po dokončení požadavků, vyberte jednu z následujících nástrojů nebo sad SDK chcete kurz absolvovat: 
 
-- [Azure Portal](data-factory-build-your-first-pipeline-using-editor.md)
 - [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 - [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 - [Šablona Resource Manageru](data-factory-build-your-first-pipeline-using-arm.md)
 - [REST API](data-factory-build-your-first-pipeline-using-rest-api.md)
 
-Azure portal a Visual Studio poskytují grafickým uživatelským rozhraním způsob vytváření datových továren. Vzhledem k tomu, možnosti prostředí PowerShell, šablony Resource Manageru a rozhraní REST API pro skriptování a programování způsob vytváření datových továren.
+Visual Studio poskytuje grafické uživatelské rozhraní způsob vytváření datových továren. Vzhledem k tomu, možnosti prostředí PowerShell, šablony Resource Manageru a rozhraní REST API pro skriptování a programování způsob vytváření datových továren.
 
 > [!NOTE]
 > Datový kanál v tomto kurzu transformuje vstupní data, aby vytvořil výstupní data. Nekopíruje data ze zdrojového úložiště dat do cílového úložiště dat. Kurz předvádějící způsoby kopírování dat pomocí Azure Data Factory najdete v tématu [kurzu: Kopírování dat z Blob Storage do SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).

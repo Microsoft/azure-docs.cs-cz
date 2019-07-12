@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 06/24/2019
+ms.date: 07/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: de1aa81e8c98ba5f8e210072344beab21f1a4ae5
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
-ms.translationtype: HT
+ms.openlocfilehash: 9e0d29770aa36f8e79bf08b7c5435ea2dbc4ae38
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/11/2019
-ms.locfileid: "67809705"
+ms.locfileid: "67840370"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Příprava pro vyhodnocení a migraci virtuálních počítačů Hyper-V do Azure
 
@@ -100,7 +100,7 @@ Tenanta nebo globální správce může udělit oprávnění následujícím zp�
 
 #### <a name="assign-application-developer-role"></a>Přiřazení role aplikace pro vývojáře 
 
-Tenanta nebo globální správce může přiřadit roli vývojář aplikace k účtu. [Další informace](https://docs.microsoft.comazure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal).
+Tenanta nebo globální správce může přiřadit roli vývojář aplikace k účtu. [Další informace](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal).
 
 
 ## <a name="prepare-for-hyper-v-assessment"></a>Příprava na posouzení Hyper-V

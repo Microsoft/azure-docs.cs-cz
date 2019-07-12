@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 37d43dbdd8de66a10a94827e313679dc6ffd220d
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: b0c7c38ebabfdd142394152f735d40320a98dced
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67490387"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798155"
 ---
 # <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>Získat smlouvu Enterprise rezervace nákladů a využití
 
@@ -119,9 +119,9 @@ Získání dat Amortizovaných nákladů a filtrování pro používání objedn
 Můžete použít vrácení peněz rezervace pro jiné organizace podle předplatného, skupiny prostředků nebo značky. Amortizované náklady dat poskytuje peněžní hodnoty rezervaci využití na následující typy dat:
 
 - Prostředky (například virtuální počítač)
-- Skupina prostředků
+- Resource group
 - Tags
-- Předplatné
+- Subscription
 
 ### <a name="get-the-blended-rate-for-chargeback"></a>Získání kombinaci rychlost pro vrácení peněz
 
@@ -139,15 +139,15 @@ Získání dat Amortized náklady a filtrovat data pro rezervované instance. Po
 2. Získejte náklady na rezervaci. Součet _náklady_ hodnoty k získání peněžní hodnoty za rezervovanou instanci. Zahrnuje náklady na použité a nevyužité rezervace.
 3. Odečte náklady na rezervaci z odhadované platili s průběžnými platbami, chcete-li získat Odhadované úspory.
 
-## <a name="reservation-purchases-and-amortization-in-azure-cost-analysis"></a>Nákup rezervace a amortizace analýzy nákladů na Azure
+## <a name="reservation-purchases-and-amortization-in-cost-analysis"></a>Nákup rezervace a amortizace v analýzy nákladů
 
-Náklady na rezervovanou instanci je k dispozici v [režim náhledu analýzy nákladů na Azure](https://preview.portal.azure.com/?feature.canmodifystamps=true&amp;microsoft_azure_costmanagement=stage2&amp;Microsoft_Azure_CostManagement_arm_canary=true&amp;Microsoft_Azure_CostManagement_apiversion=2019-04-01-preview&amp;Microsoft_Azure_CostManagement_amortizedCost=true#blade/Microsoft_Azure_CostManagement/Menu/costanalysis). Ve výchozím nastavení zobrazení dat nákladů je pro skutečné náklady. Můžete přepnout na amortizované náklady. Tady je příklad.
+Náklady na rezervaci jsou k dispozici v [analýza nákladů](https://aka.ms/costanalysis). Ve výchozím nastavení, cost analysis zobrazí **skutečné náklady**, což je způsob ceny budou zobrazovat ve vašem vyúčtování. Chcete-li zobrazit nákup rezervace rozdělit a přidružené prostředky, které používají výhody, přepněte **Amortizovaných nákladů**:
 
 ![Příklad znázorňující, kde můžete vybrat amortizované náklady v analýzy nákladů](./media/billing-understand-reserved-instance-usage-ea/portal-cost-analysis-amortized-view.png)
 
-Použijte filtry zobrazíte poplatky podle typu rezervace nebo poplatku. Seskupit podle název rezervace zobrazíte náklady porušena rezervace.
+Seskupit podle typu za poplatek za účelem zobrazit rozpis využití, nákupy a finanční prostředky; nebo rezervace rozpis nákladů rezervace a na vyžádání. Mějte na paměti, že pouze rezervace náklady, které se zobrazí ve skutečné náklady na nákup, ale náklady se přidělí jednotlivé prostředky, které používají benfit při prohlížení amortizované náklady. Zobrazí se také novou **UnusedReservation** účtovat typ při prohlížení amortizovaných nákladů.
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
+## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
 
 Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
 

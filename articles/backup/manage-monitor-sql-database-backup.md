@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/14/2018
 ms.author: raynew
-ms.openlocfilehash: d850cb222b0028f862cdba302140ce12af8576db
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 913140a51603429e003f04f860bca9b4ddb1c214
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66492744"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704883"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Správa a monitorování zálohovat databáze SQL serveru
 
@@ -145,7 +145,7 @@ Po zakázání ochrany, ale před odstraněním trezoru, zrušit registraci inst
 
 V některých případech může mít vliv rozšíření úlohy na virtuálním počítači pro jedním z důvodů, nebo druhé. V takovém případě budou všechny operace na virtuálním počítači aktivovat začnou být neúspěšné. Pak budete muset znovu zaregistrovat příponu na virtuálním počítači. **Znovu zaregistrovat** operace přeinstaluje rozšíření úlohy zálohování na virtuálním počítači pro operace, abyste mohli pokračovat.  <br>
 
-Doporučujeme tuto možnost používejte s opatrností; Při aktivaci na virtuálním počítači s příponou už v pořádku, tato operace způsobí rozšíření k získání restartování. Výsledkem může být všechny probíhající úlohy nezdaří. Zkontrolujte pro jeden nebo více [příznaky](backup-sql-server-azure-troubleshoot.md#symptoms) před aktivací operace znovu zaregistrovat.
+Doporučujeme tuto možnost používejte s opatrností; Při aktivaci na virtuálním počítači s příponou už v pořádku, tato operace způsobí rozšíření k získání restartování. Výsledkem může být všechny probíhající úlohy nezdaří. Zkontrolujte pro jeden nebo více [příznaky](backup-sql-server-azure-troubleshoot.md#re-registration-failures) před aktivací operace znovu zaregistrovat.
 
 ## <a name="next-steps"></a>Další postup
 

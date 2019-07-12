@@ -9,13 +9,13 @@ services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 07/09/2019
-ms.openlocfilehash: c551be807c76f3a5a1dace96ef583aa99cf0e681
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
-ms.translationtype: HT
+ms.date: 07/11/2019
+ms.openlocfilehash: ddbe517510a3f7d1295c8970c13020baa3efacf0
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/11/2019
-ms.locfileid: "67827580"
+ms.locfileid: "67840299"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-c-using-the-net-sdk"></a>Rychlý start: Vytvoření indexu Azure Search v C# pomocí sady .NET SDK
 > [!div class="op_single_selector"]
@@ -559,7 +559,7 @@ Můžete najít a spravovat prostředky na portálu pro použití **všechny pro
 
 Pokud používáte bezplatné služby, mějte na paměti, že jste omezeni na tři indexy, indexery a datového zdroje. Můžete odstranit jednotlivé položky na portálu, abychom dodrželi omezení. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto C# rychlém startu jste nepracovali prostřednictvím řady úloh k vytvoření indexu načíst s dokumenty a spouštět dotazy. V různých fázích nám trvalo klávesové zkratky pro zjednodušení kódu pro lepší čitelnost procházením a porozuměním. Pokud jste obeznámeni se základními koncepty, doporučujeme, abyste dalším článku pro vysvětlení přístupy a koncepty, které budou prohloubit své znalosti v oblasti. 
 

@@ -16,12 +16,12 @@ ms.date: 08/24/2018
 ms.author: cephalin
 ms.reviewer: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 1e8bd60eab5853b121b9c08622914b9c62449f8f
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
-ms.translationtype: HT
+ms.openlocfilehash: 42d925a77de20392459081e6669706da330ba7fa
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67618771"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836715"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Ověřování a autorizace v prostředí Azure App Service
 
@@ -56,7 +56,7 @@ Modul spouští samostatně od kódu aplikace a je nakonfigurovaný pomocí nast
 
 ### <a name="user-claims"></a>Deklarace identity uživatelů
 
-Pro všechny jazykových rozhraní služby App Service zpřístupňuje deklarací identity uživatele do kódu vkládání do hlavičky žádosti. Pro aplikace ASP.NET 4.6, naplní služby App Service [ClaimsPrincipal.Current](/dotnet/api/system.security.claims.claimsprincipal.current) díky deklaracím identity ověřeného uživatele, takže můžete postupovat podle standardního vzorek kódu .NET, včetně `[Authorize]` atribut. Podobně pro aplikace v PHP, naplní služby App Service `_SERVER['REMOTE_USER']` proměnné.
+Pro všechny jazykových rozhraní služby App Service zpřístupňuje deklarací identity uživatele do kódu vkládání do hlavičky žádosti. Pro aplikace ASP.NET 4.6, naplní služby App Service [ClaimsPrincipal.Current](/dotnet/api/system.security.claims.claimsprincipal.current) díky deklaracím identity ověřeného uživatele, takže můžete postupovat podle standardního vzorek kódu .NET, včetně `[Authorize]` atribut. Podobně pro aplikace v PHP, naplní služby App Service `_SERVER['REMOTE_USER']` proměnné. Pro aplikace v Javě, deklarace identity jsou [přístupné Tomcat servlet](containers/configure-language-java.md#authenticate-users).
 
 Pro [Azure Functions](../azure-functions/functions-overview.md), `ClaimsPrincipal.Current` není HYDRATOVANÝ pro kód .NET, ale stále můžete najít deklarace identity uživatelů v hlavičce požadavku.
 
@@ -156,7 +156,7 @@ Průvodce postupy specifickým pro zprostředkovatele:
 * [Konfigurace aplikace pro použití přihlášení ke Googlu][Google]
 * [Konfigurace aplikace pro použití přihlášení k účtu Microsoft][MSA]
 * [Konfigurace aplikace pro použití přihlášení k Twitteru][Twitter]
-* [Postup: Použití vlastního ověřování pro vaši aplikaci][custom-auth]
+* [Postupy: Použití vlastního ověřování pro vaši aplikaci][custom-auth]
 
 [AAD]: configure-authentication-provider-aad.md
 [Facebook]: configure-authentication-provider-facebook.md

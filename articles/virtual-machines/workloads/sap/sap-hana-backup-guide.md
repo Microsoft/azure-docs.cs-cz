@@ -4,7 +4,7 @@ description: Průvodce zálohováním pro SAP HANA obsahuje dvě hlavní možnos
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -13,12 +13,12 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: rclaus
-ms.openlocfilehash: 89896fab7b1c359007ed23d4f9d9771e366ca68a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 91671b39e6ac33e16636cc924f5c0aa5e3fcbf3b
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60936965"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709944"
 ---
 # <a name="backup-guide-for-sap-hana-on-azure-virtual-machines"></a>Průvodce zálohováním pro SAP HANA na Azure Virtual Machines
 
@@ -231,7 +231,7 @@ Podle následující tabulky popisují výhody a nevýhody řešení pro záloho
 |Služba Azure Backup                               | Umožňuje zálohování virtuálních počítačů podle snímky objektů blob | Pokud nepoužíváte obnovení na úrovni souboru, vyžaduje vytvoření nového virtuálního počítače pro proces obnovení, který potom vyplývá potřeba nový licenční klíč SAP HANA|
 |Snímky objektů blob ručně                              | Možnost vytvoření a obnovení konkrétní disky virtuálních počítačů beze změny jedinečné ID virtuálního počítače|Všechny ručně prováděné činnosti, což je třeba provést zákazníkem|
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [SAP HANA Azure Backup na úrovni souborů](sap-hana-backup-file-level.md) popisuje souborové záložní možnost.
 * [Zálohování SAP HANA založené na snímcích úložiště](sap-hana-backup-storage-snapshots.md) popisuje zálohování možnost založených na snímcích úložiště.
 * Informace o vytvoření vysoké dostupnosti a plánování zotavení po havárii SAP Hana v Azure (velké instance), najdete v článku [SAP HANA (velké instance) vysokou dostupnost a zotavení po havárii v Azure](hana-overview-high-availability-disaster-recovery.md).

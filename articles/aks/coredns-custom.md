@@ -6,36 +6,36 @@ author: jnoller
 ms.service: container-service
 ms.topic: article
 ms.date: 03/15/2019
-ms.author: jnoller
-ms.openlocfilehash: 9f3a62c5782724f14f10b5875fc8db31dbffe67c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: jenoller
+ms.openlocfilehash: 247665f58dd064565f0e9aebc9859e97ce0ab0c0
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66693386"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836980"
 ---
 # <a name="customize-coredns-with-azure-kubernetes-service"></a>Přizpůsobení CoreDNS pomocí služby Azure Kubernetes
 
-Využívá Azure Kubernetes Service (AKS) [CoreDNS] [ coredns] projektu pro správu DNS clusteru a řešení se všemi *1.12.x* a větší clustery. Dříve byl použit projekt kube-dns. Tento projekt kube-dns je nyní zastaralá. Další informace o přizpůsobení CoreDNS a Kubernetes najdete v článku [oficiální dokumentaci nadřazeného][corednsk8s].
+Využívá Azure Kubernetes Service (AKS) [CoreDNS][coredns] projektu pro správu DNS clusteru a řešení se všemi *1.12.x* a větší clustery. Dříve byl použit projekt kube-dns. Tento projekt kube-dns je nyní zastaralá. Další informace o přizpůsobení CoreDNS a Kubernetes najdete v článku [oficiální dokumentaci nadřazeného][corednsk8s].
 
 AKS je spravovaná služba, nelze změnit hlavní konfiguraci CoreDNS ( *CoreFile*). Místo toho použít Kubernetes *ConfigMap* chcete přepsat výchozí nastavení. Pokud chcete zobrazit výchozí AKS CoreDNS ConfigMaps, použijte `kubectl get configmaps coredns -o yaml` příkazu.
 
 Tento článek ukazuje, jak používat ConfigMaps pro základní přizpůsobení možností CoreDNS ve službě AKS.
 
 > [!NOTE]
-> `kube-dns` nabízí různé [možnosti přizpůsobení] [ kubednsblog] přes mapu config Kubernetes. Je CoreDNS **není** zpětně kompatibilní s kube-dns. Pro použití s CoreDNS musí aktualizovat všechna vlastní nastavení, které jste použili dříve.
+> `kube-dns` nabízí různé [možnosti přizpůsobení][kubednsblog] přes mapu config Kubernetes. Je CoreDNS **není** zpětně kompatibilní s kube-dns. Pro použití s CoreDNS musí aktualizovat všechna vlastní nastavení, které jste použili dříve.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
-Tento článek předpokládá, že máte existující cluster AKS. Pokud potřebujete AKS cluster, najdete v tomto rychlém startu AKS [pomocí Azure CLI] [ aks-quickstart-cli] nebo [pomocí webu Azure portal][aks-quickstart-portal].
+Tento článek předpokládá, že máte existující cluster AKS. Pokud potřebujete AKS cluster, najdete v tomto rychlém startu AKS [pomocí Azure CLI][aks-quickstart-cli] or [using the Azure portal][aks-quickstart-portal].
 
 ## <a name="what-is-supportedunsupported"></a>Co je podporované/nepodporované
 
-Všechny integrované moduly plug-in CoreDNS jsou podporovány. Žádné moduly plug-in na add, třetích stran nejsou podporovány.
+Všechny integrované moduly plug-in CoreDNS jsou podporovány. Žádné moduly plug-in na add, třetích stran nejsou podporovány. 
 
 ## <a name="rewrite-dns"></a>Rewrite DNS
 
-Jeden scénář, ke kterým máte je provést na průběžné přepisů název DNS. V následujícím příkladu nahraďte `<domain to be written>` s vlastní plně kvalifikovaný název domény. Vytvořte soubor s názvem `corednsms.json` a vložte následující ukázková konfigurace:
+Jeden scénář, ke kterým máte je provést na průběžné přepisů název DNS. V následujícím příkladu nahraďte `<domain to be written>` s vlastní plně kvalifikovaný název domény. Vytvořte soubor s názvem `corednsms.yaml` a vložte následující ukázková konfigurace:
 
 ```yaml
 apiVersion: v1
@@ -53,19 +53,19 @@ data:
     }
 ```
 
-Vytvoření s použitím ConfigMap [kubectl použít configmap] [ kubectl-apply] příkaz a zadejte název vašeho YAML manifestu:
+Vytvoření s použitím ConfigMap [kubectl použít configmap][kubectl-apply] příkaz a zadejte název vašeho YAML manifestu:
 
 ```console
-kubectl apply -f corednsms.json
+kubectl apply -f corednsms.yaml
 ```
 
-K ověření se provedly úpravy, použijte [kubectl get configmaps] [ kubectl-get] a určete vaše *coredns vlastní* ConfigMap:
+K ověření se provedly úpravy, použijte [kubectl get configmaps][kubectl-get] a určete vaše *coredns vlastní* ConfigMap:
 
 ```
 kubectl get configmaps --namespace=kube-system coredns-custom -o yaml
 ```
 
-Nyní vynuťte CoreDNS znovu načte ConfigMap. [Kubectl odstranit pod] [ kubectl delete] příkazu není destruktivní a nezpůsobí časové prodlevy. `kube-dns` Podů se odstraní a Plánovač Kubernetes potom znovu vytvoří je. Tyto nové podů obsahovat změnu v hodnotě hodnotu TTL.
+Nyní vynuťte CoreDNS znovu načte ConfigMap. [Kubectl odstranit pod][kubectl delete] příkazu není destruktivní a nezpůsobí časové prodlevy. `kube-dns` Podů se odstraní a Plánovač Kubernetes potom znovu vytvoří je. Tyto nové podů obsahovat změnu v hodnotě hodnotu TTL.
 
 ```console
 kubectl delete pod --namespace kube-system -l k8s-app=kube-dns
@@ -76,7 +76,7 @@ kubectl delete pod --namespace kube-system -l k8s-app=kube-dns
 
 ## <a name="custom-proxy-server"></a>Vlastní proxy server
 
-Pokud je třeba zadat proxy server pro síťový provoz, můžete vytvořit ConfigMap přizpůsobení DNS. V následujícím příkladu, aktualizujte `proxy` název a adresu hodnotami pro vlastní prostředí. Vytvořte soubor s názvem `corednsms.json` a vložte následující ukázková konfigurace:
+Pokud je třeba zadat proxy server pro síťový provoz, můžete vytvořit ConfigMap přizpůsobení DNS. V následujícím příkladu, aktualizujte `proxy` název a adresu hodnotami pro vlastní prostředí. Vytvořte soubor s názvem `corednsms.yaml` a vložte následující ukázková konfigurace:
 
 ```yaml
 apiVersion: v1
@@ -91,10 +91,10 @@ data:
     }
 ```
 
-Stejně jako v předchozích příkladech, vytvořte pomocí ConfigMap [kubectl použít configmap] [ kubectl-apply] příkaz a zadejte název manifestu YAML. Pak vynutit CoreDNS k opětovnému načtení pomocí ConfigMap [kubectl odstranit pod] [ kubectl delete] pro Plánovač Kubernetes je znovu vytvořit:
+Stejně jako v předchozích příkladech, vytvořte pomocí ConfigMap [kubectl použít configmap][kubectl-apply] command and specify the name of your YAML manifest. Then, force CoreDNS to reload the ConfigMap using the [kubectl delete pod][kubectl delete] pro Plánovač Kubernetes je znovu vytvořit:
 
 ```console
-kubectl apply -f corednsms.json
+kubectl apply -f corednsms.yaml
 kubectl delete pod --namespace kube-system --label k8s-app=kube-dns
 ```
 
@@ -102,7 +102,7 @@ kubectl delete pod --namespace kube-system --label k8s-app=kube-dns
 
 Můžete chtít nakonfigurovat vlastní domény, které lze vyřešit pouze interně. Například můžete chtít vyřešit vlastní doménu *puglife.local*, která není platnou doménu nejvyšší úrovně. Bez vlastní doménu ConfigMap clusteru AKS nejde přeložit adresu.
 
-V následujícím příkladu aktualizace vlastní domény a IP adresu směrovat přenos dat na hodnoty pro konkrétní prostředí. Vytvořte soubor s názvem `corednsms.json` a vložte následující ukázková konfigurace:
+V následujícím příkladu aktualizace vlastní domény a IP adresu směrovat přenos dat na hodnoty pro konkrétní prostředí. Vytvořte soubor s názvem `corednsms.yaml` a vložte následující ukázková konfigurace:
 
 ```yaml
 apiVersion: v1
@@ -119,16 +119,16 @@ data:
     }
 ```
 
-Stejně jako v předchozích příkladech, vytvořte pomocí ConfigMap [kubectl použít configmap] [ kubectl-apply] příkaz a zadejte název manifestu YAML. Pak vynutit CoreDNS k opětovnému načtení pomocí ConfigMap [kubectl odstranit pod] [ kubectl delete] pro Plánovač Kubernetes je znovu vytvořit:
+Stejně jako v předchozích příkladech, vytvořte pomocí ConfigMap [kubectl použít configmap][kubectl-apply] command and specify the name of your YAML manifest. Then, force CoreDNS to reload the ConfigMap using the [kubectl delete pod][kubectl delete] pro Plánovač Kubernetes je znovu vytvořit:
 
 ```console
-kubectl apply -f corednsms.json
+kubectl apply -f corednsms.yaml
 kubectl delete pod --namespace kube-system --label k8s-app=kube-dns
 ```
 
 ## <a name="stub-domains"></a>Zástupné domény
 
-CoreDNS lze také nakonfigurovat zástupné domény. V následujícím příkladu aktualizace vlastní domény a IP adresy hodnotami pro vlastní prostředí. Vytvořte soubor s názvem `corednsms.json` a vložte následující ukázková konfigurace:
+CoreDNS lze také nakonfigurovat zástupné domény. V následujícím příkladu aktualizace vlastní domény a IP adresy hodnotami pro vlastní prostředí. Vytvořte soubor s názvem `corednsms.yaml` a vložte následující ukázková konfigurace:
 
 ```yaml
 apiVersion: v1
@@ -151,16 +151,16 @@ data:
 
 ```
 
-Stejně jako v předchozích příkladech, vytvořte pomocí ConfigMap [kubectl použít configmap] [ kubectl-apply] příkaz a zadejte název manifestu YAML. Pak vynutit CoreDNS k opětovnému načtení pomocí ConfigMap [kubectl odstranit pod] [ kubectl delete] pro Plánovač Kubernetes je znovu vytvořit:
+Stejně jako v předchozích příkladech, vytvořte pomocí ConfigMap [kubectl použít configmap][kubectl-apply] command and specify the name of your YAML manifest. Then, force CoreDNS to reload the ConfigMap using the [kubectl delete pod][kubectl delete] pro Plánovač Kubernetes je znovu vytvořit:
 
 ```console
-kubectl apply -f corednsms.json
+kubectl apply -f corednsms.yaml
 kubectl delete pod --namespace kube-system --label k8s-app=kube-dns
 ```
 
 ## <a name="hosts-plugin"></a>Modul plug-in hostitele
 
-Jako jsou podporovány všechny integrované moduly plug-in to znamená, že CoreDNS [hostitele] [ coredns hosts] modul plug-in je k dispozici pro přizpůsobení stejně:
+Jako jsou podporovány všechny integrované moduly plug-in to znamená, že CoreDNS [hostitele][coredns hosts] modul plug-in je k dispozici pro přizpůsobení stejně:
 
 ```yaml
 apiVersion: v1

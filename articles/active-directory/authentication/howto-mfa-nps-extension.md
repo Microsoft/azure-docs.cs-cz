@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4dbe3039845b1c9160e4f4fa3007cad1f588f71e
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: ca6f79b5febdbf12c80ab85d07117bf937babef0
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67560761"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798214"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Integrace vaší stávající infrastruktury NPS pomocí ověřování Azure Multi-Factor Authentication
 
@@ -76,14 +76,14 @@ Při instalaci rozšíření, musíte pro vašeho tenanta Azure AD directory ID 
 
 NPS server musí být schopný komunikovat s následujícími adresami URL přes porty 80 a 443.
 
-- [https://adnotifications.windowsazure.com](https://adnotifications.windowsazure.com)
-- [https://login.microsoftonline.com](https://login.microsoftonline.com)
+- https:\//adnotifications.windowsazure.com
+- https:\//login.microsoftonline.com
 
 Kromě toho je potřeba připojení k následujícím adresám URL dokončení [instalační program adaptéru pomocí skriptu prostředí PowerShell](#run-the-powershell-script)
 
-- [https://login.microsoftonline.com](https://login.microsoftonline.com)
-- [https://provisioningapi.microsoftonline.com](https://provisioningapi.microsoftonline.com)
-- [https://aadcdn.msauth.net](https://aadcdn.msauth.net)
+- https:\//login.microsoftonline.com
+- https:\//provisioningapi.microsoftonline.com
+- https:\//aadcdn.msauth.net
 
 ## <a name="prepare-your-environment"></a>Příprava prostředí
 
@@ -221,7 +221,7 @@ Jakmile povolíte MFA pro klienta RADIUS pomocí rozšíření serveru NPS, veš
 
 Pokud máte uživatele, která nejsou zaregistrovaná pro vícefaktorové ověřování, můžete určit, co se stane při pokusu o ověření. Pomocí nastavení registru *REQUIRE_USER_MATCH* v cestě registru *HKLM\Software\Microsoft\AzureMFA* můžete řídit chování funkce. Toto nastavení nemá možnost jediné konfiguraci:
 
-| Klíč | Hodnota | Výchozí |
+| Klíč | Value | Výchozí |
 | --- | ----- | ------- |
 | REQUIRE_USER_MATCH | TRUE NEBO FALSE | Není nastavený (ekvivalentní na hodnotu TRUE) |
 
@@ -230,6 +230,14 @@ Pokud máte uživatele, která nejsou zaregistrovaná pro vícefaktorové ověř
 Můžete k vytvoření tohoto klíče a nastavte na hodnotu FALSE, při připojování jsou vaši uživatelé a všechny je možné zaregistrovat pro Azure MFA ještě. Ale protože klíče umožňuje uživatelům, která nejsou zaregistrovaná pro vícefaktorové ověřování pro přihlášení, byste měli odstranit tento klíč před přechodem do produkčního prostředí.
 
 ## <a name="troubleshooting"></a>Řešení potíží
+
+### <a name="nps-extension-health-check-script"></a>Skript kontroly stavu rozšíření serveru NPS
+
+V Galerii TechNet provést základní stavu zaškrtnutí kroky při řešení potíží s rozšíření NPS je k dispozici následující skript.
+
+[MFA_NPS_Troubleshooter.ps1](https://gallery.technet.microsoft.com/Azure-MFA-NPS-Extension-648de6bb)
+
+---
 
 ### <a name="how-do-i-verify-that-the-client-cert-is-installed-as-expected"></a>Jak můžu ověřit, že klientský certifikát je nainstalovaný podle očekávání?
 
@@ -308,7 +316,7 @@ Doporučuje se, že starší nebo slabší šifrovací sady být vypnuto nebo od
 
 Další řešení problémů s pokyny a jejich možná řešení najdete v článku [řešení chybových zpráv z rozšíření NPS pro Azure Multi-Factor Authentication](howto-mfa-nps-extension-errors.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Konfigurovat alternativní ID přihlášení nebo nastavit seznam výjimek pro IP adresy, která by neměla provést dvoustupňové ověřování v [rozšířených možnostech konfigurace pro rozšíření NPS pro ověřování službou Multi-Factor Authentication](howto-mfa-nps-extension-advanced.md)
 

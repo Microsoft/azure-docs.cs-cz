@@ -10,12 +10,12 @@ ms.subservice: load-data
 ms.date: 04/26/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 2e7e2048c70cab48ca81b3ebd6bd06779a7bdaeb
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
-ms.translationtype: HT
+ms.openlocfilehash: 5f2830b524c554a6988bfc873cd0f6c54e5c56a4
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595678"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839679"
 ---
 # <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>Kurz: Načtení dat taxislužby města New York do služby Azure SQL Data Warehouse
 
@@ -603,7 +603,7 @@ Načítání při použití technologie PolyBase a ověřování pomocí spravov
         
    1. Dotaz jako normální použití [externí tabulky](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql).
 
-Přečtěte si následující [dokumentace] (https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview ) Pokud chcete nastavit koncové body služeb virtuální sítě pro službu SQL Data Warehouse. 
+Přečtěte si následující [dokumentaci](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) Pokud chcete nastavit koncové body služeb virtuální sítě pro službu SQL Data Warehouse. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

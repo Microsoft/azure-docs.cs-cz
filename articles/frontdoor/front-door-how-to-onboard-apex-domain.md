@@ -3,16 +3,16 @@ title: Připojení z kořenové nebo vrcholu domény do existující branou pomo
 description: Zjistěte, jak chcete připojit z kořenové nebo vrcholu domény do existující branou pomocí webu Azure portal.
 services: front-door
 author: sharad4u
-ms.service: front-door
+ms.service: frontdoor
 ms.topic: article
 ms.date: 5/21/2019
 ms.author: sharadag
-ms.openlocfilehash: 464c38b0ece274d2ea7df89ab9fd7c0a60dc4b58
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 8fe8da95a61d2f2bb35095236131670cb6ef0e70
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67332889"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67605781"
 ---
 # <a name="onboard-a-root-or-apex-domain-on-your-front-door"></a>Připojení z kořenové nebo vrcholu domény na přední dveře
 Záznamy CNAME branou Azure používá k ověření vlastnictví domény pro připojení vlastních domén. Také branou nezveřejňuje IP adresu front-endu, který je přidružený k profilu branou, a proto nelze mapovat vaši doménu vrcholu na IP adresu, pokud je cílem připojit se k Azure branou.

@@ -5,14 +5,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 07/02/2019
+ms.date: 07/09/2019
 ms.author: dacurwin
-ms.openlocfilehash: d4d1044a30d4ebc551cf1305993aba2a201c4c94
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: dd800c0eeb18fe45b44a72aeb58b500623b2b366
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514449"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705080"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>Běžné dotazy týkající se zálohování souborů a složek
 
@@ -88,9 +88,19 @@ Toto upozornění se může zobrazit i v případě, že nakonfigurujete zásady
 Velikost složky mezipaměti určuje množství dat, která zálohujete.
 - Svazky složka mezipaměti musí mít volné místo, které se rovná aspoň 5 až 10 % celkové velikosti dat zálohy.
 - Pokud svazek obsahuje méně než 5 % volné místo, zvětšete svazek nebo přesuňte složku mezipaměti na svazek s dostatkem místa.
-- Pokud jste zálohu stavu systému Windows, bude nutné dalších 30 – 35 GB volného místa ve svazku obsahujícím složky mezipaměti
-### <a name="how-do-i-change-the-cache-location-for-the-mars-agent"></a>Změna umístění mezipaměti pro agenta MARS
+- Pokud jste zálohu stavu systému Windows, bude nutné dalších 30 – 35 GB volného místa ve svazku, který obsahuje složku mezipaměti.
 
+### <a name="how-to-check-if-scratch-folder-is-valid-and-accessible"></a>Jak zkontrolovat, zda je pomocnou složku platná a dostupná?
+
+1. Ve výchozím nastavení se nachází v odkládací složce `\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
+2. Ujistěte se, že cesta umístění odkládací složky se shoduje s hodnotami klíče položky registru je uvedeno níže:
+
+  | Cesta k registru | Klíč registru | Value |
+  | --- | --- | --- |
+  | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*Nové umístění složky mezipaměti* |
+  | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*Nové umístění složky mezipaměti* |
+
+### <a name="how-do-i-change-the-cache-location-for-the-mars-agent"></a>Změna umístění mezipaměti pro agenta MARS
 
 1. V příkazovém řádku se zvýšenými oprávněními na zastavte modul zálohování spuštěním tohoto příkazu:
 
@@ -99,7 +109,7 @@ Velikost složky mezipaměti určuje množství dat, která zálohujete.
 2. Soubory nepřesouvejte. Místo toho zkopírujte složku mezipaměti místo na jinou jednotku, která má dost volného místa.
 3. Aktualizujte následující položky registru cesty nové složky mezipaměti.<br/>
 
-    | Cesta k registru | Klíč registru | Hodnota |
+    | Cesta k registru | Klíč registru | Value |
     | --- | --- | --- |
     | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*Nové umístění složky mezipaměti* |
     | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*Nové umístění složky mezipaměti* |

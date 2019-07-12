@@ -9,12 +9,12 @@ ms.date: 04/19/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 41ca1c5f413e5e15691f336d203edb918f21dc1a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3fe142439dc80af660d286e5913fee13d4de8e86
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65147299"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67625663"
 ---
 # <a name="run-azure-cli-or-powershell-commands-with-azure-ad-credentials-to-access-blob-or-queue-data"></a>Spusťte příkazy prostředí PowerShell nebo rozhraní příkazového řádku Azure pomocí přihlašovacích údajů Azure AD pro přístup k datům objektu blob nebo fronty
 
@@ -26,7 +26,7 @@ Můžete přiřadit oprávnění k datům objektu blob a fronty k objektu zabezp
 
 Rozšíření jsou podporovány pro operace s kontejnery a fronty. Operace, které může volat závisí na oprávněních udělených k objektu zabezpečení služby Azure AD, se kterým přihlásíte k Azure CLI nebo Powershellu. Oprávnění pro kontejnery služby Azure Storage nebo fronty jsou přiřazeny prostřednictvím řízení přístupu na základě role (RBAC). Například, pokud jste přiřadili **Čtenář dat objektu Blob** roli a potom spuštěním příkazů skriptu, které načítají data z kontejneru nebo fronty. Pokud jste přiřadili **Přispěvatel dat objektu Blob** role, pak je můžete spustit příkazy skriptu, které číst, zapsat nebo odstranit kontejner nebo fronty nebo data obsahují. 
 
-Podrobnosti o oprávněních požadovaných pro každou operaci služby Azure Storage v kontejneru nebo fronty, naleznete v tématu [oprávnění pro volání operace REST](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations).  
+Podrobnosti o oprávněních požadovaných pro každou operaci služby Azure Storage v kontejneru nebo fronty, naleznete v tématu [volání operací úložiště pomocí tokenů OAuth](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#call-storage-operations-with-oauth-tokens).  
 
 ## <a name="call-cli-commands-using-azure-ad-credentials"></a>Volání příkazů rozhraní příkazového řádku pomocí přihlašovacích údajů Azure AD
 

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/30/2019
 ms.reviewer: lmolkova
 ms.author: mbullwin
-ms.openlocfilehash: 602cd9696271931babad9aa962638c5b646c80ac
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0c2a28462633d47ad1d3f247793e3fcf6f4d40c0
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60901837"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67795443"
 ---
 # <a name="application-insights-for-net-console-applications"></a>Application Insights pro .NET konzolové aplikace
 [Application Insights](../../azure-monitor/app/app-insights-overview.md) umožňuje monitorovat webové aplikace z hlediska dostupnosti, výkonu a využití.
@@ -27,14 +27,16 @@ Musíte mít předplatné s [Microsoft Azure](https://azure.com). Přihlaste se 
 
 ## <a name="getting-started"></a>Začínáme
 
-* Na webu [Azure Portal](https://portal.azure.com) [vytvořte prostředek Application Insights](../../azure-monitor/app/create-new-resource.md ). Typ aplikace vyberte **Obecné**.
+* Na webu [Azure Portal](https://portal.azure.com) [vytvořte prostředek Application Insights](../../azure-monitor/app/create-new-resource.md). Typ aplikace vyberte **Obecné**.
 * Zkopírujte klíč instrumentace. Vyhledejte klíč v **Essentials** rozevíracího seznamu nový prostředek vytvořený. 
 * Nainstalujte nejnovější [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) balíčku.
 * Nastavení klíče instrumentace v kódu před sledování žádnou telemetrii (nebo nastavte proměnnou prostředí APPINSIGHTS_INSTRUMENTATIONKEY). Potom byste měli mít ručně sledovat telemetrii a podívejte se na webu Azure portal
 
 ```csharp
-TelemetryConfiguration.Active.InstrumentationKey = " *your key* ";
-var telemetryClient = new TelemetryClient();
+// you may use different options to create configuration as shown later in this article
+TelemetryConfiguration configuration = TelemetryConfiguration.CreateDefault();
+configuration.InstrumentationKey = " *your key* ";
+var telemetryClient = new TelemetryClient(configuration);
 telemetryClient.TrackTrace("Hello World!");
 ```
 
@@ -46,7 +48,6 @@ Může inicializace a konfigurace Application Insights z kódu nebo použití `A
 > Odkaz na pokyny **soubor ApplicationInsights.config** platí pouze pro aplikace, které cílí na rozhraní .NET Framework a neplatí pro aplikace .NET Core.
 
 ### <a name="using-config-file"></a>Pomocí konfiguračního souboru
-
 Ve výchozím nastavení, Application Insights SDK hledá `ApplicationInsights.config` souboru v pracovním adresáři při `TelemetryConfiguration` se vytváří
 
 ```csharp
@@ -94,6 +95,8 @@ Další informace najdete v tématu [odkaz na soubor konfigurace](configuration-
 ```
 
 ### <a name="configuring-telemetry-collection-from-code"></a>Konfigurace shromažďování telemetrie z kódu
+> [!NOTE]
+> Čtení konfiguračního souboru není podporován v rozhraní .NET Core. Můžete zvážit použití [Application Insights SDK pro ASP.NET Core](../../azure-monitor/app/asp-net-core.md)
 
 * Při spuštění aplikace vytvořit a nakonfigurovat `DependencyTrackingTelemetryModule` instance – musí být typu singleton a pro dobu životnosti aplikace musí být zachovány.
 
@@ -118,14 +121,18 @@ module.Initialize(configuration);
 * Přidat inicializátory běžné telemetrie
 
 ```csharp
-// stamps telemetry with correlation identifiers
-TelemetryConfiguration.Active.TelemetryInitializers.Add(new OperationCorrelationTelemetryInitializer());
-
 // ensures proper DependencyTelemetry.Type is set for Azure RESTful API calls
-TelemetryConfiguration.Active.TelemetryInitializers.Add(new HttpDependenciesParsingTelemetryInitializer());
+configuration.TelemetryInitializers.Add(new HttpDependenciesParsingTelemetryInitializer());
 ```
 
-* Pro aplikace Windows .NET Framework, můžete také nainstalovat a inicializovat modul čítače výkonu kolekcí, jak je popsáno [zde](https://apmtips.com/blog/2017/02/13/enable-application-insights-live-metrics-from-code/)
+Pokud jste vytvořili konfiguraci s prostým `TelemetryConfiguration()` konstruktor, musíte kromě povolení podpory korelace. **Není potřeba** Pokud čtení konfigurace ze souboru používá `TelemetryConfiguration.CreateDefault()` nebo `TelemetryConfiguration.Active`.
+
+```csharp
+configuration.TelemetryInitializers.Add(new OperationCorrelationTelemetryInitializer());
+```
+
+* Můžete také chtít nainstalovat a inicializovat modul čítače výkonu kolekcí, jak je popsáno [zde](https://apmtips.com/blog/2017/02/13/enable-application-insights-live-metrics-from-code/)
+
 
 #### <a name="full-example"></a>Úplný příklad
 
@@ -142,10 +149,9 @@ namespace ConsoleApp
     {
         static void Main(string[] args)
         {
-            TelemetryConfiguration configuration = TelemetryConfiguration.Active;
+            TelemetryConfiguration configuration = TelemetryConfiguration.CreateDefault();
 
             configuration.InstrumentationKey = "removed";
-            configuration.TelemetryInitializers.Add(new OperationCorrelationTelemetryInitializer());
             configuration.TelemetryInitializers.Add(new HttpDependenciesParsingTelemetryInitializer());
 
             var telemetryClient = new TelemetryClient();

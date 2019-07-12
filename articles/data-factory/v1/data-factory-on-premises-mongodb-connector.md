@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 433a8b2f9fb1f4c4599afbb807e9270992a98a52
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e7a84d74e1bda6de8549c79dab1bec8c2515e213
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60824180"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839063"
 ---
 # <a name="move-data-from-mongodb-using-azure-data-factory"></a>Přesun dat z MongoDB pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, který používáte:"]
@@ -49,7 +49,7 @@ Vytvoření kanálu s aktivitou kopírování, který přesouvá data z úloži�
 
 Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Zobrazit [kurzu: Vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním data.
 
-Tyto nástroje můžete také použít k vytvoření kanálu: **Azure portal**, **sady Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru**, **rozhraní .NET API**a  **Rozhraní REST API**. Zobrazit [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování.
+Tyto nástroje můžete také použít k vytvoření kanálu: **Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru**, **rozhraní .NET API**, a **rozhraní REST API**. Zobrazit [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování.
 
 Ať už používáte, nástrojů nebo rozhraní API, proveďte následující kroky k vytvoření kanálu pro přesouvání dat ze zdrojového úložiště dat do úložiště dat jímky:
 
@@ -75,14 +75,14 @@ Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro
 | authSource |Název databáze MongoDB, kterou chcete použít ke kontrole přihlašovacích údajů pro ověřování. |Nepovinné (Pokud se používá základní ověřování). Výchozí: používá účet správce a databáze určená vlastnost databaseName. |
 | databaseName |Název databáze MongoDB, které chcete získat přístup. |Ano |
 | gatewayName |Název brány, který přistupuje k úložišti. |Ano |
-| encryptedCredential |Přihlašovací údaje zašifrované pomocí brány. |Nepovinné |
+| encryptedCredential |Přihlašovací údaje zašifrované pomocí brány. |volitelná, |
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 Úplný seznam oddílů & vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [vytváření datových sad](data-factory-create-datasets.md) článku. Oddíly, jako je například struktura, dostupnost a zásad JSON datové sady jsou podobné pro všechny datové sady typy (Azure SQL, Azure blob, tabulky Azure, atd.).
 
 **TypeProperties** oddílu se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti. TypeProperties části datové sady typu **MongoDbCollection** má následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 | --- | --- | --- |
 | collectionName |Název kolekce v databázi MongoDB. |Ano |
 
@@ -93,14 +93,14 @@ K dispozici ve vlastnosti **typeProperties** části aktivity se liší na druh�
 
 Pokud je zdroj typu **MongoDbSource** v části typeProperties jsou k dispozici následující vlastnosti:
 
-| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
+| Vlastnost | Popis | Povolené hodnoty | Požadováno |
 | --- | --- | --- | --- |
 | query |Použijte vlastní dotaz číst data. |Řetězec dotazu SQL 92. Příklad: vybrat * z MyTable. |Ne (Pokud **collectionName** z **datovou sadu** určena) |
 
 
 
 ## <a name="json-example-copy-data-from-mongodb-to-azure-blob"></a>Příklad JSON: Kopírování dat z MongoDB do objektů Blob v Azure
-V tomto příkladu obsahuje ukázky JSON definice, které můžete použít k vytvoření kanálu pomocí [webu Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md) nebo [sady Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) nebo [prostředí Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Ukazuje, jak kopírovat data z MongoDB s místními ke službě Azure Blob Storage. Ale data je možné zkopírovat do libovolné jímky uvedeno [tady](data-factory-data-movement-activities.md#supported-data-stores-and-formats) pomocí aktivit kopírování ve službě Azure Data Factory.
+V tomto příkladu obsahuje ukázky JSON definice, které můžete použít k vytvoření kanálu pomocí [sady Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) nebo [prostředí Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Ukazuje, jak kopírovat data z MongoDB s místními ke službě Azure Blob Storage. Ale data je možné zkopírovat do libovolné jímky uvedeno [tady](data-factory-data-movement-activities.md#supported-data-stores-and-formats) pomocí aktivit kopírování ve službě Azure Data Factory.
 
 Ukázka obsahuje následující entit datové továrny:
 
@@ -295,14 +295,14 @@ Při přesouvání dat až po MongoDB se používají následující mapování 
 
 | Typ MongoDB | Typ rozhraní .NET framework |
 | --- | --- |
-| Binární hodnota |Byte[] |
-| Boolean |Boolean |
-| Datum |DateTime |
+| Binary |Byte[] |
+| Logická hodnota |Logická hodnota |
+| Date |Datetime |
 | NumberDouble |Double |
 | NumberInt |Int32 |
 | NumberLong |Int64 |
-| ObjectID |String |
-| Řetězec |String |
+| ID objektu |Řetězec |
+| String |Řetězec |
 | UUID |Guid |
 | Object |Renormalized do sloučit sloupce s "_" jako vnořené oddělovač |
 
@@ -321,19 +321,19 @@ Virtuální tabulky odkazují na data v tabulce skutečné, povolení ovladače 
 
 Můžete použít [Průvodce kopírováním](data-factory-data-movement-activities.md#create-a-pipeline-with-copy-activity) intuitivně zobrazit seznam tabulek v databázi MongoDB, včetně virtuální tabulky a zobrazte náhled dat uvnitř. Můžete také vytvořit dotaz v Průvodci kopírováním a ověření k zobrazení výsledku.
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 Například "ExampleTable" níže je tabulka MongoDB, která má jeden sloupec s polem objektů v každé buňce – faktury a jeden sloupec s polem skalárních typů – hodnocení.
 
 | ID _ovládacího | Jméno zákazníka | Faktury | Úroveň služby | Hodnocení |
 | --- | --- | --- | --- | --- |
-| 1111 |ABC |[{invoice_id: "123", položka: "toaster"; price: "456", slevy: "0.2"}, {invoice_id: "124", položka: "sušárně"; price: slevy "1235": "0.2"}] |Stříbrný |[5,6] |
+| 1111 |ABC |[{invoice_id: "123", položka: "toaster"; price: "456", slevy: "0.2"}, {invoice_id: "124", položka: "sušárně"; price: slevy "1235": "0.2"}] |Silver |[5,6] |
 | 2222 |XYZ |[{invoice_id: položky "135": "ledničky"; price: "12543", slevy: "0,0"}] |Zlatá |[1,2] |
 
 Ovladač vygeneruje více virtuální tabulky k reprezentaci této jediné tabulce. První virtuální tabulky je základní tabulku s názvem "ExampleTable" je uvedeno níže. Základní tabulka obsahuje všechna data v původní tabulce, ale data z pole byl vynechán a rozbalen virtuální tabulky.
 
 | ID _ovládacího | Jméno zákazníka | Úroveň služby |
 | --- | --- | --- |
-| 1111 |ABC |Stříbrný |
+| 1111 |ABC |Silver |
 | 2222 |XYZ |Zlatá |
 
 Následující tabulky popisují virtuální tabulky, které představují původní pole v příkladu. Tyto tabulky obsahují následující:

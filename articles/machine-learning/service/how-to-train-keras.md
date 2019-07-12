@@ -6,16 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: minxia
-author: mx-iao
+ms.author: maxluk
+author: maxluk
+ms.reviewer: peterlu
 ms.date: 06/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: e070b80f86cb6c8b1d9e7575e19022b5cb08f340
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 9d405b454d755e0c848e9422c8d4cf6e7c505b68
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165558"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67840050"
 ---
 # <a name="train-and-register-keras-models-at-scale-with-azure-machine-learning-service"></a>Trénování a registraci Keras modely ve velkém měřítku ve službě Azure Machine Learning
 
@@ -198,7 +199,7 @@ for f in run.get_file_names():
         run.download_file(name=f, output_file_path=output_file_path)
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto článku školení a zaregistrován Keras modelu ve službě Azure Machine Learning. Informace o nasazení modelu najdete dál náš model nasazení článkem.
 

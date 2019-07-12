@@ -3,7 +3,7 @@ title: Optimalizace výkonu na virtuální počítače Azure řady Lsv2 – Stor
 description: Zjistěte, jak optimalizovat výkon pro vaše řešení na virtuálních počítačích řady Lsv2.
 services: virtual-machines-linux
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/17/2019
 ms.author: joelpell
-ms.openlocfilehash: 7be86c8934b8766217f9fca432327d254204f0c4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 26c474419a096741f544eb21cff3837afd8a60dd
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60738940"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67708663"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>Optimalizace výkonu na virtuálních počítačích řady Lsv2
 
@@ -105,6 +105,6 @@ Další informace o možnostech zálohování dat v místním úložišti, najde
 
    Všimněte si také, že získáte nejlepší výkon při vstupně-výstupní operace se provádí přímo do každé z nezpracované zařízení NVMe s nejsou žádné oddíly, žádné systémy souborů bez RAID 0 konfigurace atd. Před zahájením relaci testování, zkontrolujte konfigurace je do známého stavu čerstvé/clean spuštěním `blkdiscard` na každém zařízení NVMe.
    
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * V tématu Specifikace pro všechny [virtuální počítače optimalizované pro výkon úložiště](sizes-storage.md) v Azure

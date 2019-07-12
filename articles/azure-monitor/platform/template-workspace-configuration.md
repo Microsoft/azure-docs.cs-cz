@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/21/2019
+ms.date: 07/11/2019
 ms.author: magoedte
-ms.openlocfilehash: 39dbb504603544a468907d87d236338cb95e39a3
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: a55a4b2f3045aac8dfe9e46a50074585ab3ef491
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67441635"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827793"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Správa pracovního prostoru Log Analytics pomocí šablon Azure Resource Manageru
 
@@ -40,26 +40,19 @@ Můžete použít [šablon Azure Resource Manageru](../../azure-resource-manager
 Tento článek poskytuje ukázkové šablony, které znázorňují některé konfigurace, které můžete provést pomocí šablon.
 
 ## <a name="api-versions"></a>Verze rozhraní API
+
 Následující tabulka uvádí verze rozhraní API pro prostředky používané v tomto příkladu.
 
-| Resource | Typ prostředku | Verze API |
+| Resource | Typ prostředku | Verze rozhraní API |
 |:---|:---|:---|
 | Pracovní prostor   | workspaces    | 2017-03-15-preview |
-| Search      | savedSearches | 2015-03-20 |
+| Hledat      | savedSearches | 2015-03-20 |
 | Zdroj dat | zdroje dat   | 2015-11-01-preview |
 | Řešení    | solutions     | 2015-11-01-preview |
 
 ## <a name="create-a-log-analytics-workspace"></a>Vytvoření pracovního prostoru Log Analytics
-Následující příklad vytvoří pracovní prostor pomocí šablony ze svého místního počítače. Šablona JSON je nakonfigurován pouze s výzvou k zadání názvu pracovního prostoru a určí výchozí hodnotu pro parametry, které se pravděpodobně použije jako standardní konfigurace ve vašem prostředí.  
 
-Následující parametry nastavení výchozí hodnoty:
-
-* umístění – výchozí hodnota je USA – východ
-* Skladová položka – výchozí hodnota je novou cenovou úroveň Per GB vydáno v dubnu 2018 cenový model
-
-> [!NOTE]
->Pokud vytváříte nebo konfigurace pracovního prostoru Log Analytics v rámci předplatného, který je zapojen do nové platný od dubna 2018 cenový model, platné pouze v Log Analytics cenová úroveň je **PerGB2018**.  
->Pokud máte některá předplatná [cenový model pre dubna 2018](https://docs.microsoft.com/azure/azure-monitor/platform/usage-estimated-costs#new-pricing-model), můžete zadat **samostatné** cenová úroveň a to bude úspěšné pro obě předplatného v cenovém modelu pre dubna 2018 a předplatná na novém ceny. Pro pracovní prostory v předplatných, které přijaly nový model proicing cenová úroveň bude nastavena na **PerGB2018**. 
+Následující příklad vytvoří pracovní prostor pomocí šablony ze svého místního počítače. Šablonu JSON je nakonfigurovaný tak, aby vyžadovala pouze na název a umístění nový pracovní prostor (pomocí výchozích hodnot pro ostatní pracovní prostor parametry, jako je například cenová úroveň a uchovávání).  
 
 ### <a name="create-and-deploy-template"></a>Vytvoření a nasazení šablony
 
@@ -79,26 +72,35 @@ Následující parametry nastavení výchozí hodnoty:
         "location": {
             "type": "String",
             "allowedValues": [
-              "eastus",
-              "westus"
+              "australiacentral", 
+              "australiaeast", 
+              "australiasoutheast", 
+              "brazilsouth",
+              "canadacentral", 
+              "centralindia", 
+              "centralus", 
+              "eastasia", 
+              "eastus", 
+              "eastus2", 
+              "francecentral", 
+              "japaneast", 
+              "koreacentral", 
+              "northcentralus", 
+              "northeurope", 
+              "southafricanorth", 
+              "southcentralus", 
+              "southeastasia", 
+              "uksouth", 
+              "ukwest", 
+              "westcentralus", 
+              "westeurope", 
+              "westus", 
+              "westus2" 
             ],
-            "defaultValue": "eastus",
             "metadata": {
               "description": "Specifies the location in which to create the workspace."
             }
-        },
-        "sku": {
-            "type": "String",
-            "allowedValues": [
-              "Standalone",
-              "PerNode",
-              "PerGB2018"
-            ],
-            "defaultValue": "PerGB2018",
-            "metadata": {
-            "description": "Specifies the service tier of the workspace: Standalone, PerNode, Per-GB"
         }
-          }
     },
     "resources": [
         {
@@ -107,9 +109,6 @@ Následující parametry nastavení výchozí hodnoty:
             "apiVersion": "2015-11-01-preview",
             "location": "[parameters('location')]",
             "properties": {
-                "sku": {
-                    "Name": "[parameters('sku')]"
-                },
                 "features": {
                     "searchVersion": 1
                 }
@@ -118,26 +117,28 @@ Následující parametry nastavení výchozí hodnoty:
        ]
     }
     ```
-2. Upravte šablonu podle svých požadavků.  Kontrola [Microsoft.OperationalInsights/workspaces šablony](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces) referenční dokumentace se dozvíte, jaké vlastnosti a hodnoty jsou podporovány. 
+
+2. Upravte šablonu podle svých požadavků. Kontrola [Microsoft.OperationalInsights/workspaces šablony](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces) referenční dokumentace se dozvíte, jaké vlastnosti a hodnoty jsou podporovány. 
 3. Uložte soubor jako **deploylaworkspacetemplate.json** do místní složky.
-4. Jste připraveni k nasazení této šablony. Vytvořit pracovní prostor používáte PowerShell nebo příkazového řádku.
+4. Jste připraveni k nasazení této šablony. Pomocí Powershellu nebo příkazového řádku k vytvoření pracovního prostoru, zadáte název pracovního prostoru a umístění jako součást příkazu.
 
    * Pro prostředí PowerShell ze složky obsahující šablonu použijte následující příkazy:
    
         ```powershell
-        New-AzResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile deploylaworkspacetemplate.json
+        New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateFile deploylaworkspacetemplate.json -workspaceName <workspace-name> -location <location>
         ```
 
    * Pro příkazový řádek ze složky obsahující šablonu použijte následující příkazy:
 
         ```cmd
         azure config mode arm
-        azure group deployment create <my-resource-group> <my-deployment-name> --TemplateFile deploylaworkspacetemplate.json
+        azure group deployment create <my-resource-group> <my-deployment-name> --TemplateFile deploylaworkspacetemplate.json --workspaceName <workspace-name> --location <location>
         ```
 
 Dokončení nasazení může trvat několik minut. Po dokončení se zobrazí zpráva podobná následující, který obsahuje výsledek:<br><br> ![Příklad výsledků po dokončení nasazení](./media/template-workspace-configuration/template-output-01.png)
 
 ## <a name="configure-a-log-analytics-workspace"></a>Konfigurovat pracovní prostor Log Analytics
+
 Následující šablony ukázka ilustruje způsob:
 
 1. Přidání řešení do pracovního prostoru
@@ -161,19 +162,21 @@ Následující šablony ukázka ilustruje způsob:
         "description": "Workspace name"
       }
     },
-    "serviceTier": {
+    "pricingTier": {
       "type": "string",
       "allowedValues": [
+        "PerGB2018",
         "Free",
         "Standalone",
         "PerNode",
-        "PerGB2018"
+        "Standard",
+        "Premium"
       ],
       "defaultValue": "PerGB2018",
       "metadata": {
-        "description": "Pricing tier: PerGB2018 or legacy tiers (Free, Standalone or PerNode) which are not available to all customers"
-    }
-      },
+        "description": "Pricing tier: PerGB2018 or legacy tiers (Free, Standalone, PerNode, Standard or Premium) which are not available to all customers."
+      }
+    },
     "dataRetention": {
       "type": "int",
       "defaultValue": 30,
@@ -187,17 +190,40 @@ Následující šablony ukázka ilustruje způsob:
     "immediatePurgeDataOn30Days": {
       "type": "bool",
       "metadata": {
-        "description": "If set to true when changing retention to 30 days, older data will be immediately deleted. This only applies when retention is being set to 30 days."
+        "description": "If set to true when changing retention to 30 days, older data will be immediately deleted. Use this with extreme caution. This only applies when retention is being set to 30 days."
       }
     },
     "location": {
       "type": "string",
       "allowedValues": [
-        "East US",
-        "West Europe",
-        "Southeast Asia",
-        "Australia Southeast"
-      ]
+        "australiacentral", 
+        "australiaeast", 
+        "australiasoutheast", 
+        "brazilsouth",
+        "canadacentral", 
+        "centralindia", 
+        "centralus", 
+        "eastasia", 
+        "eastus", 
+        "eastus2", 
+        "francecentral", 
+        "japaneast", 
+        "koreacentral", 
+        "northcentralus", 
+        "northeurope", 
+        "southafricanorth", 
+        "southcentralus", 
+        "southeastasia", 
+        "uksouth", 
+        "ukwest", 
+        "westcentralus", 
+        "westeurope", 
+        "westus", 
+        "westus2"
+      ],
+      "metadata": {
+        "description": "Specifies the location in which to create the workspace."
+      }
     },
     "applicationDiagnosticsStorageAccountName": {
         "type": "string",
@@ -235,7 +261,10 @@ Následující šablony ukázka ilustruje způsob:
       "location": "[parameters('location')]",
       "properties": {
         "sku": {
-          "Name": "[parameters('serviceTier')]"
+          "name": "[parameters('pricingTier')]"
+          "features": {
+            "immediatePurgeDataOn30Days": "[parameters('immediatePurgeDataOn30Days')]"
+          }
         },
     "retentionInDays": "[parameters('dataRetention')]"
       },
@@ -494,6 +523,10 @@ Následující šablony ukázka ilustruje způsob:
       "type": "int",
       "value": "[reference(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), '2015-11-01-preview').retentionInDays]"
     },
+    "immediatePurgeDataOn30Days": {  
+      "type": "bool",
+      "value": "[reference(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), '2015-11-01-preview').features.immediatePurgeDataOn30Days]"
+    },
     "portalUrl": {
       "type": "string",
       "value": "[reference(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), '2015-11-01-preview').portalUrl]"
@@ -503,6 +536,7 @@ Následující šablony ukázka ilustruje způsob:
 
 ```
 ### <a name="deploying-the-sample-template"></a>Nasazení ukázkové šablony
+
 Nasazení ukázkové šablony:
 
 1. Připojené ukázkové uložit do souboru, například `azuredeploy.json` 
@@ -510,17 +544,20 @@ Nasazení ukázkové šablony:
 3. Pokud chcete nasadit šablonu pomocí Powershellu nebo příkazového řádku
 
 #### <a name="powershell"></a>PowerShell
+
 ```powershell
 New-AzResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile azuredeploy.json
 ```
 
 #### <a name="command-line"></a>Příkazový řádek
+
 ```cmd
 azure config mode arm
 azure group deployment create <my-resource-group> <my-deployment-name> --TemplateFile azuredeploy.json
 ```
 
 ## <a name="example-resource-manager-templates"></a>Šablony Resource Manageru příklad
+
 Galerie šablon rychlý start Azure obsahuje několik šablon pro Log Analytics, včetně:
 
 * [Nasazení virtuálního počítače s Windows pomocí rozšíření virtuálního počítače Log Analytics](https://azure.microsoft.com/documentation/templates/201-oms-extension-windows-vm/)
@@ -530,5 +567,7 @@ Galerie šablon rychlý start Azure obsahuje několik šablon pro Log Analytics,
 * [Přidat existující účet úložiště do služby Log Analytics](https://azure.microsoft.com/resources/templates/oms-existing-storage-account/)
 
 ## <a name="next-steps"></a>Další postup
+
 * [Nasazení agenta Windows na virtuální počítače Azure pomocí šablony Resource Manageru](../../virtual-machines/extensions/oms-windows.md).
+
 * [Nasazení linuxového agenta na virtuální počítače Azure pomocí šablony Resource Manageru](../../virtual-machines/extensions/oms-linux.md).

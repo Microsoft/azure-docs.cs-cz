@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: aac1ed82a01477b081f4bc146f199eba87d97859
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d33172727d4c654614463f69b83f7802cf7fb905
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60309142"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839615"
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>Přesun dat pomocí služby Azure Data Factory ze služby Salesforce
 > [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, který používáte:"]
@@ -52,7 +52,7 @@ Vytvoření kanálu s aktivitou kopírování, který přesouvá data z produktu
 
 Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Zobrazit [kurzu: Vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním data.
 
-Tyto nástroje můžete také použít k vytvoření kanálu: **Azure portal**, **sady Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru**, **rozhraní .NET API**a  **Rozhraní REST API**. Zobrazit [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování.
+Tyto nástroje můžete také použít k vytvoření kanálu: **Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru**, **rozhraní .NET API**, a **rozhraní REST API**. Zobrazit [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování.
 
 Ať už používáte, nástrojů nebo rozhraní API, proveďte následující kroky k vytvoření kanálu pro přesouvání dat ze zdrojového úložiště dat do úložiště dat jímky:
 
@@ -80,7 +80,7 @@ Následující tabulka obsahuje popis JSON prvky, které jsou specifické pro Sa
 
 **TypeProperties** oddílu se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti. V části datové sady typu typeProperties **RelationalTable** má následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 | --- | --- | --- |
 | tableName |Název tabulky v Salesforce. |Ne (Pokud **dotazu** z **RelationalSource** určena) |
 
@@ -96,7 +96,7 @@ Vlastnosti, které jsou k dispozici v části typeProperties aktivity se liší 
 
 V aktivitě kopírování, pokud je zdroj typu **RelationalSource** (který zahrnuje Salesforce), v části typeProperties jsou k dispozici následující vlastnosti:
 
-| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
+| Vlastnost | Popis | Povolené hodnoty | Požadováno |
 | --- | --- | --- | --- |
 | query |Použijte vlastní dotaz číst data. |Dotaz SQL 92 nebo [Salesforce objektu dotazu jazyka (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) dotazu. Například: `select * from MyTable__c`. |Ne (Pokud **tableName** z **datovou sadu** určena) |
 
@@ -118,13 +118,13 @@ Když zadat dotaz SOQL nebo SQL, věnujte pozornost tomu rozdíl formátu data a
 Zadáním dotazu, protože může načítat data ze sestav Salesforce `{call "<report name>"}`, např. `"query": "{call \"TestReport\"}"`.
 
 ### <a name="retrieving-deleted-records-from-salesforce-recycle-bin"></a>Načítání odstraní záznamy ze Salesforce odpadkový koš
-Chcete-li prohledávat obnovitelně odstraněné záznamy z odpadkového koše služby Salesforce, můžete zadat **"IsDeleted = 1"** v dotazu. Například:
+Chcete-li prohledávat obnovitelně odstraněné záznamy z odpadkového koše služby Salesforce, můžete zadat **"IsDeleted = 1"** v dotazu. Například
 
 * Chcete-li prohledávat pouze odstraněné záznamy, zadejte "vybrat * z MyTable__c **kde IsDeleted = 1**"
 * Chcete-li prohledávat všechny záznamy, včetně stávající a Odstraněná, zadejte "vybrat * z MyTable__c **kde IsDeleted = 0 nebo IsDeleted = 1**"
 
 ## <a name="json-example-copy-data-from-salesforce-to-azure-blob"></a>Příklad JSON: Kopírování dat ze Salesforce do objektů Blob v Azure
-Následující příklad obsahuje ukázky JSON definice, které můžete použít k vytvoření kanálu pomocí [webu Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md), [sady Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md), nebo [prostředí Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Zobrazí se kopírování dat ze Salesforce do Azure Blob Storage. Ale data je možné zkopírovat do libovolné jímky uvedeno [tady](data-factory-data-movement-activities.md#supported-data-stores-and-formats) pomocí aktivit kopírování ve službě Azure Data Factory.
+Následující příklad obsahuje ukázky JSON definice, které můžete použít k vytvoření kanálu pomocí [sady Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) nebo [prostředí Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Zobrazí se kopírování dat ze Salesforce do Azure Blob Storage. Ale data je možné zkopírovat do libovolné jímky uvedeno [tady](data-factory-data-movement-activities.md#supported-data-stores-and-formats) pomocí aktivit kopírování ve službě Azure Data Factory.
 
 Tady jsou artefaktů služby Data Factory, které je potřeba vytvořit k implementaci scénáře. Následující části seznamu zadejte podrobnosti o těchto krocích.
 
@@ -286,25 +286,25 @@ Zobrazit [vlastnosti typu RelationalSource](#copy-activity-properties) pro sezna
 
 | Typ Salesforce | . NET podle typu |
 | --- | --- |
-| Auto Number |String |
-| Checkbox |Boolean |
-| Měna |Decimal |
-| Datum |DateTime |
-| Datum a čas |DateTime |
-| Email |String |
-| ID |String |
-| Lookup Relationship |String |
-| Multi-Select Picklist |String |
-| Číslo |Decimal |
-| Procento |Decimal |
-| Telefon |String |
-| Picklist |String |
-| Text |String |
-| Text Area |String |
-| Text Area (Long) |String |
-| Text Area (Rich) |String |
-| Text (Encrypted) |String |
-| zprostředkovatele identity |String |
+| Auto Number |Řetězec |
+| Checkbox |Logická hodnota |
+| Currency |Decimal |
+| Date |Datetime |
+| Date/Time |Datetime |
+| Email |Řetězec |
+| Id |Řetězec |
+| Lookup Relationship |Řetězec |
+| Multi-Select Picklist |Řetězec |
+| Number |Decimal |
+| Percent |Decimal |
+| Phone |Řetězec |
+| Picklist |Řetězec |
+| Text |Řetězec |
+| Text Area |Řetězec |
+| Text Area (Long) |Řetězec |
+| Text Area (Rich) |Řetězec |
+| Text (Encrypted) |Řetězec |
+| URL |Řetězec |
 
 > [!NOTE]
 > Pokud chcete namapovat sloupce ze zdrojové datové sady na sloupce z datové sady jímky, najdete v článku [mapování sloupců v datové sadě ve službě Azure Data Factory](data-factory-map-columns.md).

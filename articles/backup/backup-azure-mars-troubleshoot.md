@@ -3,17 +3,17 @@ title: Řešení potíží s agentem Azure Backup
 description: Řešení potíží instalace a registrace agenta Azure Backup
 services: backup
 author: saurabhsensharma
-manager: shivamg
+manager: sivan
 ms.service: backup
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 07/05/2019
 ms.author: saurse
-ms.openlocfilehash: 1c4c2ed6265bdb3c29986fb0b90c3d85d32aadca
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 437b175efad081b8382d80be8427aa074920fd3e
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67434008"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705057"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>Řešení potíží s agentem Microsoft Azure Recovery Services (MARS)
 
@@ -46,7 +46,7 @@ Doporučujeme, abyste před zahájením řešení potíží s Microsoft Azure Re
 | Příčina | Doporučené akce |
 | ---     | ---    |
 | **Neplatných přihlašovacích údajů trezoru** <br/> <br/> Soubory přihlašovacích údajů trezoru je pravděpodobně být poškozen nebo vypršela. (Například jejich může být stažené víc než 48 hodin, než čas registrace.)| Stáhněte si nové přihlašovací údaje z trezoru služby Recovery Services na webu Azure portal. (Přejděte ke kroku 6 v [stáhnout agenta MARS](https://docs.microsoft.com/azure/backup/backup-configure-vault#download-the-mars-agent) části.) Pak proveďte tyto kroky, podle potřeby: <ul><li> Pokud jste již nainstalován a registrován MARS, otevřete konzolu pro Microsoft Azure Backup Agent konzoly MMC a potom vyberte **zaregistrovat Server** v **akce** k dokončení registrace se nové podokno přihlašovací údaje. <br/> <li> Pokud se nová instalace nezdaří, zkuste přeinstalovat novými přihlašovacími údaji.</ul> **Poznámka:** Pokud byly staženy soubory s více přihlašovacích údajů trezoru, pouze nejnovější soubor je platný pro další 48 hodin. Doporučujeme vám, stáhněte si nový soubor přihlašovacích údajů trezoru.
-| **Proxy server nebo brána firewall neblokuje registraci** <br/>nebo <br/>**Bez připojení k Internetu** <br/><br/> Pokud váš počítač nebo proxy server má omezené připojení k Internetu a nemusíte zajistit přístup pro potřeby adresy URL, registrace selže.| Proveďte tyto kroky:<br/> <ul><li> Práce s pracovníky IT, ujistěte se, že systém má připojení k Internetu.<li> Pokud nemáte proxy server, ujistěte se, že není vybraná možnost proxy serveru, při registraci agenta. [Zkontrolujte vaše nastavení proxy serveru](#verifying-proxy-settings-for-windows).<li> Pokud máte brány firewall nebo proxy server, spolupracujte s týmem sítě, aby tyto adresy URL a IP adresy mají přístup:<br/> <br> **Adresy URL**<br> www.msftncsi.com <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>**IP adresy**<br>  20.190.128.0/18 <br>  40.126.0.0/18 <br/></ul></ul>Zkuste registraci znovu po dokončení předchozích kroků řešení potíží.
+| **Proxy server nebo brána firewall neblokuje registraci** <br/>or <br/>**Bez připojení k Internetu** <br/><br/> Pokud váš počítač nebo proxy server má omezené připojení k Internetu a nemusíte zajistit přístup pro potřeby adresy URL, registrace selže.| Proveďte tyto kroky:<br/> <ul><li> Práce s pracovníky IT, ujistěte se, že systém má připojení k Internetu.<li> Pokud nemáte proxy server, ujistěte se, že není vybraná možnost proxy serveru, při registraci agenta. [Zkontrolujte vaše nastavení proxy serveru](#verifying-proxy-settings-for-windows).<li> Pokud máte brány firewall nebo proxy server, spolupracujte s týmem sítě, aby tyto adresy URL a IP adresy mají přístup:<br/> <br> **Adresy URL**<br> `www.msftncsi.com` <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>**IP adresy**<br>  20.190.128.0/18 <br>  40.126.0.0/18 <br/></ul></ul>Zkuste registraci znovu po dokončení předchozích kroků řešení potíží.
 | **Antivirový software blokuje registrace** | Pokud máte antivirový software nainstalovaný na serveru, přidejte pravidla vyloučení potřeby antivirovou kontrolu pro tyto soubory a složky: <br/><ui> <li> CBengine.exe <li> CSC.exe<li> Odkládací složky. Jeho výchozí umístění je C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch. <li> Složky bin na C:\Program Files\Microsoft Azure Recovery Services Agent\Bin.
 
 ### <a name="additional-recommendations"></a>Další doporučení
@@ -89,13 +89,13 @@ Doporučujeme, abyste před zahájením řešení potíží s Microsoft Azure Re
 
 | Chyba  | Možné příčiny | Doporučené akce |
 |---------|---------|---------|
-|<br />Aktivace nebyla úspěšně dokončena. Aktuální operace selhala kvůli vnitřní chybě služby [0x1FC07]. Po nějaké době operaci opakujte. Pokud se problém opakuje, obraťte se prosím na podporu Microsoftu.     | <li> Odkládací složka se nachází na svazku, který nemá dostatek místa. <li> Nesprávně se přesunulo pomocnou složku. <li> Chybí soubor OnlineBackup.KEK.         | <li>Upgrade na [nejnovější verzi](https://aka.ms/azurebackup_agent) agenta MARS.<li>Přesuňte pomocné umístění složky nebo mezipaměti na svazek s volným místem, který je mezi 5 a 10 % celkové velikosti dat zálohy. Správně přesuňte umístění mezipaměti, použijte postup v [běžné otázky týkající se zálohování souborů a složek](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#backup).<li> Ujistěte se, že soubor OnlineBackup.KEK je k dispozici. <br>*Výchozí umístění pro odkládací složce nebo cestu k mezipaměti je C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.        |
+|<br />Aktivace nebyla úspěšně dokončena. Aktuální operace selhala kvůli vnitřní chybě služby [0x1FC07]. Po nějaké době operaci opakujte. Pokud se problém opakuje, obraťte se prosím na podporu Microsoftu.     | <li> Odkládací složka se nachází na svazku, který nemá dostatek místa. <li> Nesprávně se přesunulo pomocnou složku. <li> Chybí soubor OnlineBackup.KEK.         | <li>Upgrade na [nejnovější verzi](https://aka.ms/azurebackup_agent) agenta MARS.<li>Přesuňte pomocné umístění složky nebo mezipaměti na svazek s volným místem, který je mezi 5 a 10 % celkové velikosti dat zálohy. Správně přesuňte umístění mezipaměti, použijte postup v [běžné otázky týkající se zálohování souborů a složek](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#manage-the-backup-cache-folder).<li> Ujistěte se, že soubor OnlineBackup.KEK je k dispozici. <br>*Výchozí umístění pro odkládací složce nebo cestu k mezipaměti je C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.        |
 
 ## <a name="encryption-passphrase-not-correctly-configured"></a>Šifrovací heslo není správně nakonfigurované
 
 | Chyba  | Možné příčiny | Doporučené akce |
 |---------|---------|---------|
-| <br />Došlo k chybě 34506. Šifrovací heslo uložené na tomto počítači není správně nakonfigurovaný.    | <li> Odkládací složka se nachází na svazku, který nemá dostatek místa. <li> Nesprávně se přesunulo pomocnou složku. <li> Chybí soubor OnlineBackup.KEK.        | <li>Upgrade na [nejnovější verzi](https://aka.ms/azurebackup_agent) agenta MARS.<li>Přesuňte pomocné umístění složky nebo mezipaměti na svazek s volným místem, který je mezi 5 a 10 % celkové velikosti dat zálohy. Správně přesuňte umístění mezipaměti, použijte postup v [běžné otázky týkající se zálohování souborů a složek](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#backup).<li> Ujistěte se, že soubor OnlineBackup.KEK je k dispozici. <br>*Výchozí umístění pro odkládací složce nebo cestu k mezipaměti je C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.         |
+| <br />Došlo k chybě 34506. Šifrovací heslo uložené na tomto počítači není správně nakonfigurovaný.    | <li> Odkládací složka se nachází na svazku, který nemá dostatek místa. <li> Nesprávně se přesunulo pomocnou složku. <li> Chybí soubor OnlineBackup.KEK.        | <li>Upgrade na [nejnovější verzi](https://aka.ms/azurebackup_agent) agenta MARS.<li>Přesuňte pomocné umístění složky nebo mezipaměti na svazek s volným místem, který je mezi 5 a 10 % celkové velikosti dat zálohy. Správně přesuňte umístění mezipaměti, použijte postup v [běžné otázky týkající se zálohování souborů a složek](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#manage-the-backup-cache-folder).<li> Ujistěte se, že soubor OnlineBackup.KEK je k dispozici. <br>*Výchozí umístění pro odkládací složce nebo cestu k mezipaměti je C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.         |
 
 
 ## <a name="backups-dont-run-according-to-schedule"></a>Zálohy nemusíte spouštět automaticky podle plánu
@@ -165,7 +165,7 @@ Azure Backup nemusí úspěšně připojit svazek pro obnovení, dokonce i po n�
 
 Pokud obnovení pořád selže, restartujte server nebo klienta. Pokud nechcete, aby k restartování, nebo pokud obnovení pořád selže i po restartování serveru, zkuste [obnovení z jiného počítače](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine).
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktujte podporu
+## <a name="need-help-contact-support"></a>Potřebujete pomoct? Kontaktujte podporu
 Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) získat rychlé vyřešení problému.
 
 ## <a name="next-steps"></a>Další postup

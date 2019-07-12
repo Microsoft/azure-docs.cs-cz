@@ -5,14 +5,14 @@ ms.service: hdinsight
 author: msft-tacox
 ms.author: tacox
 ms.reviewer: jasonh
-ms.topic: howto
+ms.topic: conceptual
 ms.date: 04/24/2019
-ms.openlocfilehash: b39279e560cb1738ff9b33ec587562efd2ed4e8d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c1809885c930c4d22dff3f30d6e874aacf0b540e
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65800948"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672557"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Migrace úloh Hive ke službě Azure HDInsight 3.6 do HDInsight 4.0
 

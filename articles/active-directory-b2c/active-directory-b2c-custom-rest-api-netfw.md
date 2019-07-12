@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/30/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b3b896b2c423f2f9155ddb7803e59e719bd027cf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 466d5eff27d9a8105fb840ce4ba79571b6207092
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66510723"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67835512"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>Integrace rozhraní REST API služby výměny deklarací identity na vaší cestě uživatele Azure AD B2C jako ověření vstupu uživatele
 
@@ -64,11 +64,11 @@ Proveďte kroky v [Začínáme s vlastními zásadami](active-directory-b2c-get-
 
 3. V **název** zadejte název aplikace (například *Contoso.AADB2C.API*) a pak vyberte **OK**.
 
-    ![Vytvořit nový projekt sady visual studio](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-create-project.png)
+    ![Vytvoření nového projektu sady Visual Studio v sadě Visual Studio](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-create-project.png)
 
 4. V **nová webová aplikace ASP.NET** okně **webového rozhraní API** nebo **aplikace Azure API** šablony.
 
-    ![Výběr šablony webové rozhraní API](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-select-web-api.png)
+    ![Výběr šablony webové rozhraní API v sadě Visual Studio](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-select-web-api.png)
 
 5. Ujistěte, že ověřování je nastavena na **bez ověřování**.
 
@@ -138,15 +138,15 @@ Ve webovém rozhraní API _řadič_ je objekt, který zpracovává požadavky HT
 
 1. V Průzkumníku řešení klikněte pravým tlačítkem na složku **Kontrolery**, vyberte **Přidat** a pak vyberte **Kontroler**.
 
-    ![Přidat nový kontroler](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-controller-1.png)
+    ![Přidání nového řadiče v sadě Visual Studio](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-controller-1.png)
 
 2. V **přidat vygenerované uživatelské rozhraní** okně **Kontroleru webového rozhraní API – prázdný**a pak vyberte **přidat**.
 
-    ![Prázdný kontroler – vyberte webového rozhraní API 2](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-controller-2.png)
+    ![Výběr webového rozhraní API 2 prázdný kontroler – v sadě Visual Studio](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-controller-2.png)
 
 3. V **přidat kontroler** okna, názvu kontroleru **IdentityController**a pak vyberte **přidat**.
 
-    ![Zadejte název řadiče](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-controller-3.png)
+    ![Zadání název řadiče v sadě Visual Studio](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-controller-3.png)
 
     Základní kostry aplikace vytvoří soubor s názvem *IdentityController.cs* v *řadiče* složky.
 
@@ -206,11 +206,11 @@ Ve webovém rozhraní API _řadič_ je objekt, který zpracovává požadavky HT
 ## <a name="step-3-publish-the-project-to-azure"></a>Krok 3: Publikování projektu do Azure
 1. V Průzkumníku řešení klikněte pravým tlačítkem myši **Contoso.AADB2C.API** projektu a pak vyberte **publikovat**.
 
-    ![Publikování do Microsoft Azure App Service](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-publish-to-azure-1.png)
+    ![Publikování do Microsoft Azure App Service pomocí sady Visual Studio](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-publish-to-azure-1.png)
 
 2. V **publikovat** okně **Microsoft Azure App Service**a pak vyberte **publikovat**.
 
-    ![Vytvořit novou službu Microsoft Azure App Service](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-publish-to-azure-2.png)
+    ![Vytvořit novou službu Microsoft Azure App Service pomocí sady Visual Studio](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-publish-to-azure-2.png)
 
     **Vytvořit službu App Service** otevře se okno. V něm můžete vytvořit všechny prostředky Azure potřebné ke spuštění webové aplikace ASP.NET v Azure.
 
@@ -219,9 +219,9 @@ Ve webovém rozhraní API _řadič_ je objekt, který zpracovává požadavky HT
 
 3. V **název webové aplikace** zadejte jedinečný název aplikace (platné znaky jsou a – z, 0-9 a spojovníky (-). Adresa URL webové aplikace je http://<app_name>.azurewebsites.NET, kde *app_name* je název vaší webové aplikace. Můžete přijmout automaticky vygenerovaný název, který je jedinečný.
 
-    ![Zadat vlastnosti služby App Service](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-publish-to-azure-3.png)
+    ![Konfigurace vlastností služby App Service](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-publish-to-azure-3.png)
 
-4. Chcete-li začít vytvářet prostředky Azure, vyberte **vytvořit**.  
+4. Chcete-li začít vytvářet prostředky Azure, vyberte **vytvořit**.
     Po vytvoření webové aplikace ASP.NET, Průvodce publikuje ji do Azure a pak aplikaci spustí ve výchozím prohlížeči.
 
 6. Zkopírujte adresu URL webové aplikace.
@@ -262,7 +262,7 @@ Vyhledejte `<ClaimsProviders>` uzel a potom přidejte následující fragment k�
 <ClaimsProvider>
   <DisplayName>REST APIs</DisplayName>
   <TechnicalProfiles>
-    
+
     <!-- Custom Restful service -->
     <TechnicalProfile Id="REST-API-SignUp">
       <DisplayName>Validate user's input data and return loyaltyNumber claim</DisplayName>
@@ -347,14 +347,14 @@ Po přidání nových deklarací identity, předávající strana kódu vypadá 
 
 2. Otevřít **B2C_1A_signup_signin**, předávající stranu vlastní zásady, které jste nahráli a pak vyberte **spustit nyní**.
 
-    ![V okně B2C_1A_signup_signin](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-run.png)
+    ![Na stránce vlastní zásadu B2C_1A_signup_signin na webu Azure Portal](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-run.png)
 
-3. Testování procesu tak, že zadáte **testovací** v **křestní jméno** pole.  
+3. Testování procesu tak, že zadáte **testovací** v **křestní jméno** pole.
     Azure AD B2C zobrazí chybovou zprávu v horní části okna.
 
-    ![Vaše zásada testování](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-test.png)
+    ![Testování ověření vstupu křestní jméno na registrační stránku přihlášení](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-test.png)
 
-4. V **křestní jméno** zadejte název (jiné než "Test").  
+4. V **křestní jméno** zadejte název (jiné než "Test").
     Azure AD B2C přihlásí uživatele a pak loyaltyNumber odesílá do vaší aplikace. Všimněte si čísla ve tento token JWT.
 
 ```

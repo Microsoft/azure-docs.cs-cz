@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 05/22/2019
+ms.date: 07/11/2019
 ms.author: alkohli
-ms.openlocfilehash: 3bce5dd1dd34c53276c5486cc255c4cd93bb6080
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e232ad131b1c0930afcf5e7e78b386aba2c9490b
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66242185"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839747"
 ---
 # <a name="azure-data-box-system-requirements"></a>Požadavky na systém Azure Data Box
 
@@ -52,6 +52,13 @@ Požadavky na software také informace o podporovaných operačních systémů, 
 ## <a name="networking-requirements"></a>Požadavky na síť
 
 Vaše datacentrum má přístup k vysokorychlostní síti. Důrazně doporučujeme, abyste měli připojení minimálně 10 GbE. Pokud 10 GbE připojení není k dispozici, 1 GbE dat propojení lze použít ke zkopírování dat, ale kopie, které se to týká rychlosti.
+
+### <a name="port-requirements"></a>Požadavky na porty
+
+Následující tabulka uvádí porty, které je potřeba otevřít v bráně firewall pro povolení provozu SMB nebo NFS. V této tabulce *v* nebo *příchozí* odkazuje na směru, které mají přístup příchozí požadavky klienta na vaše zařízení. *Navýšení kapacity* nebo *odchozí* odkazuje na směru, ve kterém vaše zařízení Data Box odesílá data externě, nad rámec nasazení: pro příklad, odchozí k Internetu.
+
+[!INCLUDE [data-box-port-requirements](../../includes/data-box-port-requirements.md)]
+
 
 ## <a name="next-steps"></a>Další postup
 

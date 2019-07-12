@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 07/11/2019
 ms.author: juliako
-ms.openlocfilehash: 95315007186b209a618337749662a1921f5a05e1
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
-ms.translationtype: HT
+ms.openlocfilehash: ee0200f7c007b437a27b8e9d0f36becc13b8f611
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/11/2019
-ms.locfileid: "67827623"
+ms.locfileid: "67835818"
 ---
 # <a name="pre-filtering-manifests-by-using-dynamic-packager"></a>Předem filtrování manifesty pomocí dynamické Packager
 
@@ -48,7 +48,7 @@ Příklad REST, naleznete v tématu [nahrávání, kódování a streamování s
 
 ### <a name="monitor-the-bitrate-of-a-video-stream"></a>Monitorování s přenosovou rychlostí streamu videa
 
-Můžete použít [stránky ukázku Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html) monitorování přenosové rychlosti datový proud videa. Ukázka stránka zobrazuje diagnostické informace na **diagnostiky** kartu:
+Můžete použít [stránky ukázku Azure Media Player](http://aka.ms/azuremediaplayer) monitorování přenosové rychlosti datový proud videa. Ukázka stránka zobrazuje diagnostické informace na **diagnostiky** kartu:
 
 ![Diagnostika Azure Media Player][amp_diagnostics]
  
@@ -149,7 +149,7 @@ Další informace najdete v tématu [tento příspěvek na blogu](https://azure.
     - Chcete-li zjistit vlastnosti v prostředku, která sleduje [získat a zkontrolujte soubor manifestu](#get-and-examine-manifest-files).
     - Vzorce můžete nastavit vlastnosti časového razítka filtru asset je: <br/>startTimestamp = &lt;čas spuštění v manifestu&gt; +  &lt;očekávaný čas zahájení filtru v řádu sekund&gt; * časové osy
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Následující články popisují, jak programově vytvářet filtry:  
 

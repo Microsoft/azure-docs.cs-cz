@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: a758cce85645e72bfd9434a69393133d3da6b57d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 39f38af601888f847cd1a82da9e2e03e6893c28e
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60591519"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67607288"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Konfigurace Instance clusteru převzetí služeb při selhání SQL serveru na virtuálních počítačích Azure
 
@@ -54,7 +54,7 @@ Ve službě Azure Virtual Machines můžete licence SQL serveru pomocí průbě�
 
 Instance clusteru převzetí služeb při selhání (FCI) systému SQL Server na virtuálních počítačích Azure s průběžnými PLATBAMI licencování, neúčtují poplatky za pro všechny uzly FCI, včetně pasivní uzly. Další informace najdete v tématu [ceník funkce SQL Server Enterprise Virtual Machines](https://azure.microsoft.com/pricing/details/virtual-machines/sql-server-enterprise/). 
 
-Zákazníci se smlouvou Enterprise s programem Software Assurance mají právo používat jeden bezplatný pasivní uzel FCI pro každý aktivní uzel. Abyste mohli využívat tuto výhodu v Azure, používat Image virtuálních počítačů BYOL a potom použijte stejné licence na aktivními a pasivními uzly FCI. Další informace najdete v tématu [smlouvy Enterprise](https://www.microsoft.com/en-us/Licensing/licensing-programs/enterprise.aspx).
+Zákazníci se smlouvou Enterprise s programem Software Assurance mají právo používat jeden bezplatný pasivní uzel FCI pro každý aktivní uzel. Abyste mohli využívat tuto výhodu v Azure, používat Image virtuálních počítačů BYOL a potom použijte stejné licence na aktivními a pasivními uzly FCI. Další informace najdete v tématu [smlouvy Enterprise](https://www.microsoft.com/Licensing/licensing-programs/enterprise.aspx).
 
 Můžete porovnat průběžné platby a BYOL licencování pro SQL Server na virtuálních počítačích Azure najdete v článku [Začínáme s virtuálními počítači SQL](virtual-machines-windows-sql-server-iaas-overview.md#get-started-with-sql-vms).
 
@@ -64,7 +64,7 @@ Kompletní informace o licencování SQL serveru najdete v tématu [ceny](https:
 
 Celé řešení v Azure můžete vytvořit ze šablony. Příklad šablony je k dispozici na Githubu [šablony pro rychlý start Azure](https://github.com/MSBrett/azure-quickstart-templates/tree/master/sql-server-2016-fci-existing-vnet-and-ad). V tomto příkladu není určená nebo testování pro jakékoli konkrétní úlohy. Můžete spustit šablonu pro vytváření SQL Server FCI s S2D úložiště připojené k vaší doméně. Můžete vyhodnotit šablony a upravit pro vaše záměry.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Existuje několik věcí, které potřebujete znát a několik věcí, které budete potřebovat na místě, než budete pokračovat.
 
@@ -419,7 +419,7 @@ Pokud chcete vytvořit nástroj pro vyrovnávání zatížení:
    - **Back-endový port**: Tato hodnota používá stejný port jako **Port** hodnotu, pokud povolíte **plovoucí IP (přímá odpověď ze serveru vrácené)** .
    - **Back-endový fond**: Použijte název fondu back-end, který jste nakonfigurovali v předchozích krocích.
    - **Sonda stavu**: Použijte sondu stavu, který jste nakonfigurovali v předchozích krocích.
-   - **Trvalost relace**: Žádné
+   - **Trvalost relace**: Žádné.
    - **Časový limit (minuty) nečinnosti**: 4.
    - **Plovoucí IP adresa (přímá odpověď ze serveru vrácené)** : Enabled
 
