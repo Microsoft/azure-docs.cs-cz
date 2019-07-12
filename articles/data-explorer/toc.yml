@@ -66,6 +66,8 @@
           href: write-queries.md
         - name: Dotazování na data ve službě Azure Data Lake
           href: data-lake-query-data.md
+        - name: Dotazování na data ve službě Azure Monitor
+          href: query-monitor-data.md
         - name: Python
           href: python-query-data.md
         - name: Strojové učení a analýzy časových řad

@@ -2,18 +2,18 @@
 title: Konfigurace kubenet sítě ve službě Azure Kubernetes Service (AKS)
 description: Zjistěte, jak konfigurovat sítě kubenet (základní) ve službě Azure Kubernetes Service (AKS) k nasazení clusteru AKS na existující virtuální síť a podsíť.
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 06/26/2019
-ms.author: iainfou
+ms.author: mlearned
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 269dd670ed82234b77e06c389ae1c9a5c294010c
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: e1279261de8e26b9e11f55100ce01277650e251b
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67441954"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67615765"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Použít kubenet práce se sítěmi pomocí vlastní rozsahy IP adres ve službě Azure Kubernetes Service (AKS)
 
@@ -26,7 +26,7 @@ V tomto článku se dozvíte, jak používat *kubenet* sítě a vytvořit podsí
 > [!WARNING]
 > Pokud chcete používat fondy uzlů Windows serveru (aktuálně ve verzi preview ve službě AKS), je nutné použít Azure CNI. Použití kubenet jako model pro sítě není k dispozici pro kontejnery Windows serveru.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Musí mít Azure CLI verze 2.0.65 nebo později nainstalována a nakonfigurována. Spustit `az --version` k vyhledání verze. Pokud potřebujete instalaci nebo upgrade, naleznete v tématu [instalace Azure CLI][install-azure-cli].
 

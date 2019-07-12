@@ -41,10 +41,14 @@
   items:
     - name: Skladové položky služby Container Registry
       href: container-registry-skus.md
+    - name: 'Registry, úložiště a image'
+      href: container-registry-concepts.md
     - name: Úložiště obrázků
       href: container-registry-storage.md
     - name: Formáty obsahu
       href: container-registry-image-formats.md
+    - name: Označení a verze imagí
+      href: container-registry-image-tag-version.md
     - name: Geografická replikace
       href: container-registry-geo-replication.md
     - name: Osvědčené postupy registru

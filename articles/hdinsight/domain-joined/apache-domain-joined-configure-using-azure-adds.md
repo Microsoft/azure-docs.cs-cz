@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 04/23/2019
-ms.openlocfilehash: 8699533cd64e6b1778c5e78b8c51eb1efe518c75
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 81f14fa54303911a34b334f41b5f7f6b0f9f394b
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67126218"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67720625"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>Konfigurace clusteru HDInsight s Balíčkem zabezpečení podniku pomocí služby Azure Active Directory Domain Services
 
@@ -34,6 +34,8 @@ V tomto článku se dozvíte, jak konfigurace clusteru HDInsight s ESP pomocí A
 Povolení služby Azure AD DS je předpokladem předtím, než vytvoříte HDInsight cluster s ESP. Další informace najdete v tématu [povolit Azure Active Directory Domain Services pomocí webu Azure portal](../../active-directory-domain-services/create-instance.md). 
 
 Pokud Azure AD – DS je povolena, všichni uživatelé a objekty zahájením z Azure Active Directory (AAD) do Azure AD – DS ve výchozím nastavení. Operace synchronizace závisí na počtu objektů ve službě Azure AD. Synchronizace může trvat několik dní pro stovky tisíc objektů. 
+
+Název domény, který používáte s Azure AD – DS musí být 39 znaků nebo méně práce s HDInsight.
 
 Můžete synchronizovat jenom skupiny, kteří potřebují přístup ke clusterům HDInsight. Tato možnost synchronizaci pouze určité skupiny se nazývá *obor synchronizace*. Zobrazit [konfigurace s rozsahem synchronizace ze služby Azure AD do spravované domény](../../active-directory-domain-services/scoped-synchronization.md) pokyny.
 

@@ -126,6 +126,8 @@
   items:
     - name: Tvorba šablon
       href: /azure/azure-resource-manager/resource-group-authoring-templates?toc=%2fazure%2fnetworking%2ftoc.json
+    - name: Poskytovatelé
+      href: networking-partners-msp.md
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/?category=networking'
     - name: Komunitní šablony

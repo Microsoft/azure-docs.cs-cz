@@ -1,7 +1,9 @@
 - name: Dokumentace k vysokovýkonnému výpočetnímu prostředí (HPC)
   items:
     - name: Přehled
-      href: 'https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/'
+      items:
+        - name: Prostředí HPC pro virtuální počítače řady H
+          href: overview.md
     - name: Konfigurace
       items:
         - name: Optimalizace pro Linux

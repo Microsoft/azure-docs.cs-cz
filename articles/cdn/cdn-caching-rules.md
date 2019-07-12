@@ -6,19 +6,19 @@ documentationcenter: ''
 author: mdgattuso
 manager: danielgi
 editor: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: magattus
-ms.openlocfilehash: 3a94b8252feb7c5c345d678579c477fce02d6e03
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d4ab3ca32f229e92ae6bae5906c6c70593e9f9d3
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60679166"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594039"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-caching-rules"></a>Ovládací prvek Azure CDN s ukládáním do mezipaměti pravidla chování ukládání do mezipaměti
 
@@ -113,7 +113,7 @@ Pokud jsou nastavena, žádost o  _&lt;název hostitele koncového bodu&gt;_ .az
 > - Pro **Azure CDN Standard od Verizonu** profily, šíření obvykle hotové během 10 minut.  
 >
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
 - [Jak funguje ukládání do mezipaměti](cdn-how-caching-works.md)
 - [Kurz: Nastavte pravidla ukládání do mezipaměti Azure CDN](cdn-caching-rules-tutorial.md)

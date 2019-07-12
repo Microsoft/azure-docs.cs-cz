@@ -3,45 +3,97 @@
 - name: Přehled
   items:
     - name: Informace o službě Azure Migrate
-      href: migrate-overview.md
+      href: migrate-services-overview.md
+    - name: Co je nového
+      href: whats-new.md
 - name: Kurzy
   items:
-    - name: Zkoumání a posouzení virtuálních počítačů VMware
-      href: tutorial-assessment-vmware.md
+    - name: Vyhodnocení a migrace virtuální počítačů VMware
+      items:
+        - name: Příprava virtuálních počítačů VMware na vyhodnocení a migraci
+          href: tutorial-prepare-vmware.md
+        - name: Posouzení virtuálních počítačů VMware pro migraci
+          href: tutorial-assess-vmware.md
+        - name: Migrace virtuálních počítačů VMware
+          items:
+            - name: Možnosti migrace pro virtuální počítače VMware
+              href: server-migrate-overview.md
+            - name: Migrace virtuálních počítačů VMware bez agentů
+              href: tutorial-migrate-vmware.md
+            - name: Migrace virtuálních počítačů VMware založená na agentech
+              href: tutorial-migrate-vmware-agent.md
+    - name: Vyhodnocení a migrace Hyper-V
+      items:
+        - name: Příprava Hyper-V na vyhodnocení a migraci
+          href: tutorial-prepare-hyper-v.md
+        - name: Posouzení virtuálních počítačů Hyper-V pro migraci
+          href: tutorial-assess-hyper-v.md
+        - name: Migrace virtuálních počítačů Hyper-V
+          href: tutorial-migrate-hyper-v.md
+    - name: Migrace fyzických serverů a virtuálních počítačů
+      href: tutorial-migrate-physical-virtual-machines.md
 - name: Koncepty
   items:
-    - name: Informace o kolektoru
-      href: concepts-collector.md
-    - name: Upgrady verze kolektoru
-      href: concepts-collector-upgrade.md
+    - name: Časté dotazy
+      href: resources-faq.md
+    - name: Matice podpory
+      items:
+        - name: Matice podpory pro Azure Migrate
+          href: migrate-support-matrix.md
+        - name: Matice podpory pro vyhodnocení a migraci VMware
+          href: migrate-support-matrix-vmware.md
+        - name: Matice podpory pro vyhodnocení a migraci Hyper-V
+          href: migrate-support-matrix-hyper-v.md
+    - name: Architektura migrace Hyper-V
+      href: hyper-v-migration-architecture.md
+    - name: Architektura migrace založené na agentech
+      href: agent-based-migration-architecture.md
+    - name: Zařízení Azure Migrate
+      href: migrate-appliance.md
+    - name: Zařízení pro replikaci Azure Migrate
+      href: migrate-replication-appliance.md
+    - name: Osvědčené postupy pro vyhodnocení
+      href: best-practices-assessment.md
     - name: Výpočty hodnocení
       href: concepts-assessment-calculation.md
-    - name: Informace o vizualizaci závislostí
+    - name: Vizualizace závislostí
       href: concepts-dependency-visualization.md
 - name: Návody
   items:
     - name: Příklady migrace – série Contoso
       href: contoso-migration-overview.md
-    - name: Zkoumání a posouzení rozsáhlého prostředí
-      href: how-to-scale-assessment.md
-    - name: Seskupení počítačů
-      href: how-to-create-a-group.md
-    - name: Seskupení počítačů s využitím závislostí počítačů
-      href: how-to-create-group-machine-dependencies.md
-    - name: Upřesnění skupiny s využitím závislostí skupin
-      href: how-to-create-group-dependencies.md
+    - name: Nasazení zařízení pro vyhodnocení/migraci VMware (bez agentů)
+      href: how-to-set-up-appliance-vmware.md
+    - name: Nasazení zařízení pro vyhodnocení/migraci Hyper-V
+      href: how-to-set-up-appliance-hyper-v.md
+    - name: První přidání nástroje pro vyhodnocení/migraci
+      href: how-to-add-tool-first-time.md
+    - name: Přidání nástrojů pro vyhodnocení
+      href: how-to-assess.md
+    - name: Přidání nástrojů pro migraci
+      href: how-to-migrate.md
+    - name: Seskupení počítačů pro vyhodnocení
+      items:
+        - name: Vytvoření skupiny
+          href: how-to-create-a-group.md
+        - name: Seskupení počítačů s využitím závislostí počítačů
+          href: how-to-create-group-machine-dependencies.md
+        - name: Upřesnění skupiny s využitím závislostí skupin
+          href: how-to-create-group-dependencies.md
     - name: Přizpůsobení posouzení
       href: how-to-modify-assessment.md
-    - name: Migrace počítačů po posouzení
-      href: how-to-get-migration-tool.md
-    - name: Automatizace migrace velkého počtu virtuálních počítačů
-      href: how-to-migrate-at-scale.md
+    - name: Vyhodnocení a migrace ve velkém měřítku
+      items:
+        - name: Přístup k velkému počtu virtuálních počítačů VMware
+          href: scale-vmware-assessment.md
+        - name: Přístup k velkému počtu virtuálních počítačů Hyper-V
+          href: scale-hyper-v-assessment.md
+        - name: Automatizace migrace velkého počtu virtuálních počítačů
+          href: how-to-migrate-at-scale.md
     - name: Řešení problémů s Azure Migrate
       href: troubleshooting-general.md
 - name: Zdroje a prostředky
   items:
-    - name: Nejčastější dotazy
-      href: resources-faq.md
     - name: Migrace v architektuře přechodu na cloud
       href: 'https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/index'
     - name: REST API

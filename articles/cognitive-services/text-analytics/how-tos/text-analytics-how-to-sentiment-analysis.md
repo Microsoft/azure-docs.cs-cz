@@ -9,12 +9,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 02/26/2019
 ms.author: aahi
-ms.openlocfilehash: f98f16e9996d90b0380f05885e4c2d74e1413f23
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: e17b68dfd63952d0c8c81415b090b047c5808e2e
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657666"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797793"
 ---
 # <a name="example-how-to-detect-sentiment-with-text-analytics"></a>Příklad: Rozpoznávání mínění s využitím Analýzy textu
 
@@ -139,7 +139,7 @@ Následující příklad ukazuje odpověď pro kolekci dokumentů v tomto člán
 > * Formát požadavku v3 analýzy subjektivního hodnocení a [limity dat](../overview.md#data-limits) jsou stejné jako předchozí verze.
 > * V tuto chvíli analýzu subjektivního hodnocení V3: 
 >    * Aktuálně podporuje pouze angličtinu.  
->    * Je k dispozici v následujících oblastech: `Central US`, `Central Canada`, ` East Asia` 
+>    * Je k dispozici v následujících oblastech: `Central US`, `Central Canada`, `East Asia` 
 
 |Funkce |Popis  |
 |---------|---------|
@@ -267,7 +267,7 @@ V tomto článku jste se seznámili s koncepty a pracovním postupem analýzy m�
 + Žádost POST je určená pro koncový bod `/sentiment` a používá individuální [přístupový klíč a koncový bod](text-analytics-how-to-access-key.md), které jsou platné pro dané předplatné.
 + Výstup odpovědi, který tvoří skóre mínění pro jednotlivá ID dokumentu, lze streamovat do libovolné aplikace, která přijímá JSON, včetně například Excelu a Power BI.
 
-## <a name="see-also"></a>Další informace najdete v tématech 
+## <a name="see-also"></a>Viz také: 
 
  [Přehled rozhraní API pro analýzu textu](../overview.md)  
  [Nejčastější dotazy](../text-analytics-resource-faq.md)</br>

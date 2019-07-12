@@ -14,17 +14,16 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 964e6235923402814879fe59a204985b8aaac2b4
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 2a7e2f9e5018bdad2a1ed2c6edcb727a2ffdcddd
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64573821"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839116"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>Kurz: Sestavení prvního objektu pro vytváření dat s využitím webu Azure portal
 > [!div class="op_single_selector"]
 > * [Přehled a požadavky](data-factory-build-your-first-pipeline.md)
-> * [Azure Portal](data-factory-build-your-first-pipeline-using-editor.md)
 > * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 > * [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 > * [Šablona Azure Resource Manager](data-factory-build-your-first-pipeline-using-arm.md)
@@ -33,6 +32,9 @@ ms.locfileid: "64573821"
 
 > [!NOTE]
 > Tento článek se týká verze 1 služby Azure Data Factory, která je všeobecně dostupná. Pokud používáte aktuální verzi služby Data Factory, přečtěte si [rychlý start: Vytvoření datové továrny pomocí služby Data Factory](../quickstart-create-data-factory-dot-net.md).
+
+> [!WARNING]
+> Editor JSON webu Azure Portal pro vytváření a nasazování ADF v1, bude kanály vypnuto 31. července 2019. Po 31. července 2019, můžete dál používat [rutiny Powershellu v1 ADF](https://docs.microsoft.com/powershell/module/az.datafactory/?view=azps-2.4.0&viewFallbackFrom=azps-2.3.2), [ADF v1 .net SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.datafactories.models?view=azure-dotnet), [rozhraní REST API ADF v1](https://docs.microsoft.com/rest/api/datafactory/) k vytváření a nasazení vaší ADF v1 kanály.
 
 V tomto článku se dozvíte, jak pomocí webu [Azure Portal](https://portal.azure.com/) vytvořit první datovou továrnu. Pokud chcete kurz absolvovat s použitím jiných nástrojů nebo sad SDK, vyberte některou z možností z rozevíracího seznamu. 
 
@@ -435,7 +437,7 @@ V tomto kurzu jste vytvořili datovou továrnu, která zpracovává data pomocí
 ## <a name="next-steps"></a>Další postup
 V tomto článku jste vytvořili kanál s aktivitou transformace (aktivita HDInsight), která v clusteru HDInsight na vyžádání spouští skript Hive. Jak používat aktivitu kopírování ke kopírování dat z úložiště objektů blob do služby SQL database najdete v tématu [kurzu: Kopírování dat z úložiště objektů Blob do služby SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 | Téma | Popis |
 |:--- |:--- |
 | [Kanály](data-factory-create-pipelines.md) |Tento článek vám pomůže pochopit kanály a aktivity ve službě Data Factory a porozumět tomu, jak se dají ve vaší situaci nebo firmě použít k sestavení kompletních pracovních postupů založených na datech. |

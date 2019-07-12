@@ -67,6 +67,7 @@ sections:
         style: unordered
         items:
           - html: <a href="/azure/azure-app-configuration/enable-dynamic-configuration-aspnet-core">Povolení dynamické konfigurace v ASP.NET Core</a>
+          - html: <a href="/azure/azure-app-configuration/enable-dynamic-configuration-dotnet-core">Povolení dynamické konfigurace v aplikaci .NET Core</a>
           - html: <a href="/azure/azure-app-configuration/use-feature-flags-dotnet-core">Použití příznaků funkcí v aplikaci .NET Core</a>
           - html: <a href="/azure/azure-app-configuration/manage-feature-flags">Správa příznaků funkcí</a>
           - html: <a href="/azure/azure-app-configuration/integrate-ci-cd-pipeline">Integrace s kanálem CI/CD</a>

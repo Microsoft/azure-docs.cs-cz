@@ -224,9 +224,9 @@
         - name: Kde a jak nasadit
           displayName: publish azure kubernetes azure container instances
           href: how-to-deploy-and-where.md
-        - name: Grafické procesory
+        - name: Odvozování GPU
           href: how-to-deploy-inferencing-gpus.md
-        - name: FPGA
+        - name: Odvozování FPGA
           href: how-to-deploy-fpga-web-service.md
         - name: IoT Edge
           href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/service/context/ml-context
@@ -235,7 +235,7 @@
         - name: Nasazování existujících modelů
           displayName: publish existing model
           href: how-to-deploy-existing-model.md
-        - name: Řešení potíží
+        - name: Řešení potíží a ladění
           href: how-to-troubleshoot-deployment.md
     - name: Využívání webových služeb
       items:

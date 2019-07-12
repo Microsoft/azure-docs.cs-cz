@@ -7,6 +7,20 @@
   href: video-indexer/
 - name: Přehrávač médií Azure
   href: 'https://amp.azure.net/libs/amp/latest/docs/index.html'
+- name: Specifikace
+  items:
+    - name: Časovaná metadata
+      items:
+        - name: RTMP a Smooth Streaming
+          href: media-services-specifications-live-timed-metadata.md
+    - name: Protokoly
+      items:
+        - name: Smooth Streaming (MS-SSTR)
+          items:
+            - name: Podpora HEVC
+              href: media-services-specifications-ms-sstr-amendment-hevc.md
+            - name: Ingestování technologie Smooth Streaming
+              href: media-services-fmp4-live-ingest-overview.md
 - name: Zdroje a prostředky
   items:
     - name: Plány Azure do budoucna

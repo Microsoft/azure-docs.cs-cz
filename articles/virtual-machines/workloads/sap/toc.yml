@@ -128,6 +128,8 @@
           href: dbms_guide_ibm.md
         - name: Vysoká dostupnost IBM DB2 LUW ve virtuálních počítačích Azure na SUSE Linux Enterprise Serveru
           href: dbms-guide-ha-ibm.md
+        - name: Vysoká dostupnost IBM DB2 LUW ve virtuálních počítačích Azure na linuxovém serveru Red Hat Enterprise
+          href: high-availability-guide-rhel-ibm-db2-luw.md
         - name: Nasazení DBMS v počítačích Azure Virtual Machines se SAP ASE pro úlohy SAP
           href: dbms_guide_sapase.md
         - name: 'Nasazení SAP MaxDB, liveCache a Content Serveru v Azure'

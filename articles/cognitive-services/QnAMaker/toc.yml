@@ -52,6 +52,10 @@
               href: Quickstarts/get-answer-from-knowledge-base-nodejs.md
             - name: Python
               href: Quickstarts/get-answer-from-knowledge-base-python.md
+    - name: S využitím sad SDK
+      items:
+        - name: 'C#'
+          href: ./Quickstarts/create-publish-kb-csharp-sdk.md
 - name: Kurzy
   items:
     - name: Vytvoření a odpovědi z KB
@@ -169,7 +173,9 @@
       items:
         - name: 'C#'
           items:
-            - name: NuGet
+            - name: Referenční dokumentace
+              href: 'https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker?view=azure-dotnet'
+            - name: Balíček NuGet
               href: 'https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Knowledge.QnAMaker/'
         - name: Přejít
           items:

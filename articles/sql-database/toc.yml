@@ -30,6 +30,8 @@
       items:
         - name: Pravidla firewallu protokolu IP na úrovni serveru
           href: sql-database-server-level-firewall-rule.md
+        - name: Konfigurace veřejného koncového bodu ve spravované instanci
+          href: sql-database-managed-instance-public-endpoint-configure.md
         - name: Připojení klientského virtuálního počítače ke spravované instanci
           href: sql-database-managed-instance-configure-vm.md
         - name: Připojení typu point-to-site ke spravované instanci
@@ -512,8 +514,6 @@
           href: sql-database-managed-instance-threat-detection.md
         - name: Připojení aplikací
           href: sql-database-managed-instance-connect-app.md
-        - name: Konfigurace veřejného koncového bodu
-          href: sql-database-managed-instance-public-endpoint-configure.md
     - name: Načtení a přesun dat
       items:
         - name: Kopírování databáze v rámci Azure

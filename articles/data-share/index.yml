@@ -10,7 +10,7 @@ metadata:
   ms.topic: landing-page
   ms.date: 07/10/2019
 abstract:
-  description: '<p>Azure Data Share Preview je bezpečná a zabezpečená služba pro sdílení dat s dalšími organizacemi. Vyberte datové sady, kterou chcete sdílet, přidejte příjemce a začněte sdílet data. Budete přitom mít možnost řídit, monitorovat a kontrolovat relace sdílení dat. </p><p>Naučte se využívat Azure Data Share prostřednictvím našich kurzů.</p>'
+  description: '<p>Azure Data Share Preview je bezpečná a zabezpečená služba pro sdílení dat s dalšími organizacemi. Vyberte datové sady, kterou chcete sdílet, přidejte příjemce a začněte sdílet data. Budete přitom mít možnost řídit, monitorovat a kontrolovat relace sdílení dat. </p><p>Naučte se prostřednictvím našich kurzů a praktických průvodců využívat Azure Data Share.</p>'
   aside:
     image:
       alt: null
