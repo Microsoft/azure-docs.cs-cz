@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: d4321f8aef6e754d8a1c5b16ac82b4fa62c40949
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e8d516cfd764f947bd2fe7fc25f6394c313c0d9a
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65873613"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595505"
 ---
 # <a name="views-in-azure-sql-data-warehouse"></a>Zobrazení ve službě Azure SQL Data Warehouse
 Tipy pro používání zobrazení jazyka T-SQL ve službě Azure SQL Data Warehouse pro vývoj řešení. 
@@ -23,12 +23,18 @@ Tipy pro používání zobrazení jazyka T-SQL ve službě Azure SQL Data Wareho
 ## <a name="why-use-views"></a>Proč používat zobrazení?
 Zobrazení lze použít různými způsoby a zlepšovat tak kvalitu vašeho řešení.  Tento článek se soustředí na několik příkladů toho, jak rozšířit vaše řešení s zobrazení, jakož i omezení, které je potřeba považovat za.
 
+
+> [!IMPORTANT]
+> Zobrazit novou syntaxi materializované zobrazení na [vytvoření MATERIALIZOVANÉHO zobrazení AS SELECT](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest).  Další informace najdete v tématu [poznámky k verzi](/azure/sql-data-warehouse/release-notes-10-0-10106-0).
+>
+
+
 > [!NOTE]
 > Syntaxe pro příkaz CREATE VIEW není popsané v tomto článku. Další informace najdete v tématu [příkaz CREATE VIEW](/sql/t-sql/statements/create-view-transact-sql) dokumentaci.
 > 
-> 
 
 ## <a name="architectural-abstraction"></a>Abstrakce architektury
+
 Běžným aplikačním postupem je vytvořit znovu vytvořit TABLE AS SELECT (CTAS) následované objekt přejmenování vzor při načítání dat pomocí tabulek.
 
 Následující příklad přidá nové datum záznamy do dimenze kalendářního data. Všimněte si, jak je nová tabulka DimDate_New, vytvoření a potom přejmenovat k nahrazení původní verze v tabulce.

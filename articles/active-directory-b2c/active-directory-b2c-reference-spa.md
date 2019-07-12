@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1d415686e4d8a10043df59aa6bf58a5ed4be0149
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: a9eadabcedc9d5fd1baedb6cd893e6f7829c5ca8
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67154021"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67835732"
 ---
 # <a name="single-page-sign-in-using-the-oauth-20-implicit-flow-in-azure-active-directory-b2c"></a>Jednostránková přihlášení pomocí implicitního toku OAuth 2.0 v Azure Active Directory B2C
 
@@ -31,7 +31,7 @@ Azure AD B2C rozšiřuje standardní implicitního toku OAuth 2.0 k více než j
 
 Implicitní tok přihlášení vypadá podobně jako na následujícím obrázku. Každý krok je podrobně popsáno v později v tomto článku.
 
-![OpenID Connect plaveckých drah](../media/active-directory-v2-flows/convergence_scenarios_implicit.png)
+![Plavecká dráha – vizuální styl diagram zobrazující implicitní tok OpenID Connect](../media/active-directory-v2-flows/convergence_scenarios_implicit.png)
 
 ## <a name="send-authentication-requests"></a>Odesílat požadavky na ověřování
 
@@ -79,7 +79,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &p=b2c_1_edit_profile
 ```
 
-| Parametr | Požaduje se | Popis |
+| Parametr | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | client_id | Ano | ID aplikace, které [webu Azure portal](https://portal.azure.com/) přiřazené pro vaši aplikaci. |
 | response_type | Ano | Musí zahrnovat `id_token` pro přihlášení OpenID Connect. Typ odpovědi také může obsahovat `token`. Pokud používáte `token`, vaše aplikace může přitom druhou žádost do koncového bodu authorize okamžitě přijímat přístupový token z koncového bodu authorize.  Pokud používáte `token` typ odpovědi `scope` parametr musí obsahovat obor, který označuje, který prostředek se má token vydat. |
@@ -193,16 +193,16 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 
 | Parametr | Požadováno? | Popis |
 | --- | --- | --- |
-| client_id |Požaduje se |ID aplikace přiřazené vaší aplikaci v [webu Azure portal](https://portal.azure.com). |
-| response_type |Požaduje se |Musí zahrnovat `id_token` pro přihlášení OpenID Connect.  Může taky obsahovat typ odpovědi `token`. Pokud používáte `token` tady, vaše aplikace může okamžitě přijímat přístupový token z koncového bodu authorize přitom druhou žádost do koncového bodu authorize. Pokud používáte `token` typ odpovědi `scope` parametr musí obsahovat obor, který označuje, který prostředek se má token vydat. |
+| client_id |Požadováno |ID aplikace přiřazené vaší aplikaci v [webu Azure portal](https://portal.azure.com). |
+| response_type |Požadováno |Musí zahrnovat `id_token` pro přihlášení OpenID Connect.  Může taky obsahovat typ odpovědi `token`. Pokud používáte `token` tady, vaše aplikace může okamžitě přijímat přístupový token z koncového bodu authorize přitom druhou žádost do koncového bodu authorize. Pokud používáte `token` typ odpovědi `scope` parametr musí obsahovat obor, který označuje, který prostředek se má token vydat. |
 | redirect_uri |Doporučené |Identifikátor URI přesměrování vaší aplikace, kde můžete odesílat a přijímat aplikací pro žádosti o ověření. Se musí přesně odpovídat jednu registraci na portálu pro identifikátory URI přesměrování s tím rozdílem, že musí být kódovaná adresou URL. |
-| scope |Požaduje se |Seznam oborů oddělených mezerami.  Jak získat tokeny, zahrnují všechny obory, které požadujete pro požadovaný prostředek. |
+| scope |Požadováno |Seznam oborů oddělených mezerami.  Jak získat tokeny, zahrnují všechny obory, které požadujete pro požadovaný prostředek. |
 | response_mode |Doporučené |Určuje metodu, která se používá k odesílání výsledný token zpátky do vaší aplikace.  Může být `query`, `form_post`, nebo `fragment`. |
 | state |Doporučené |Hodnota v požadavku, který je vrácený v odpovědi tokenu.  Může být řetězec jakéhokoli obsahu, který chcete použít.  Obvykle, náhodně generované, jedinečné je použita hodnota, aby se zabránilo útokům padělání žádosti více webů.  Stav se také používá ke kódování informace o stavu uživatele v aplikaci předtím, než požadavek na ověření došlo k chybě. Například stránky nebo zobrazení uživatel byl v. |
-| nonce |Požaduje se |Hodnota zahrnutý v požadavku, vygenerované aplikaci, která je součástí výsledný token ID jako deklarace identity.  Aplikace pak můžete ověřit tuto hodnotu a zmírnění útoků opětovného přehrání tokenu. Hodnota je obvykle náhodného, jedinečný řetězec, který identifikuje původcem požadavku. |
-| řádek |Požaduje se |Chcete-li obnovit a získat tokeny v skrytý element iframe, použijte `prompt=none` zajistíte, že iframe není zablokuje na přihlašovací stránku a vrátí hodnotu okamžitě. |
-| login_hint |Požaduje se |Aktualizace a získat tokeny v skrytý element iframe, zahrňte uživatelské jméno uživatele, tato Nápověda k rozlišení mezi více relací, které uživatel může mít v daném okamžiku. Uživatelské jméno se dají extrahovat z předchozí znak v s použitím `preferred_username` deklarací identity. |
-| domain_hint |Požaduje se |Může být `consumers` nebo `organizations`.  Pro aktualizaci a získávání tokenů v skrytý element iframe, zahrnout `domain_hint` hodnota v požadavku.  Extrahovat `tid` deklarací z tokenu ID starší sign-in Chcete-li zjistit, jaká hodnota se má použít.  Pokud `tid` deklarace identity, je hodnota `9188040d-6c67-4c5b-b112-36a304b66dad`, použijte `domain_hint=consumers`.  Jinak použijte `domain_hint=organizations`. |
+| nonce |Požadováno |Hodnota zahrnutý v požadavku, vygenerované aplikaci, která je součástí výsledný token ID jako deklarace identity.  Aplikace pak můžete ověřit tuto hodnotu a zmírnění útoků opětovného přehrání tokenu. Hodnota je obvykle náhodného, jedinečný řetězec, který identifikuje původcem požadavku. |
+| řádek |Požadováno |Chcete-li obnovit a získat tokeny v skrytý element iframe, použijte `prompt=none` zajistíte, že iframe není zablokuje na přihlašovací stránku a vrátí hodnotu okamžitě. |
+| login_hint |Požadováno |Aktualizace a získat tokeny v skrytý element iframe, zahrňte uživatelské jméno uživatele, tato Nápověda k rozlišení mezi více relací, které uživatel může mít v daném okamžiku. Uživatelské jméno se dají extrahovat z předchozí znak v s použitím `preferred_username` deklarací identity. |
+| domain_hint |Požadováno |Může být `consumers` nebo `organizations`.  Pro aktualizaci a získávání tokenů v skrytý element iframe, zahrnout `domain_hint` hodnota v požadavku.  Extrahovat `tid` deklarací z tokenu ID starší sign-in Chcete-li zjistit, jaká hodnota se má použít.  Pokud `tid` deklarace identity, je hodnota `9188040d-6c67-4c5b-b112-36a304b66dad`, použijte `domain_hint=consumers`.  Jinak použijte `domain_hint=organizations`. |
 
 Tím, že nastavíte `prompt=none` parametr, tento požadavek buď uspěje nebo selže okamžitě a vrátí do vaší aplikace.  Úspěšné odpovědi odeslané do vaší aplikace na adrese zadaný identifikátor URI pro přesměrování, pomocí metody popsané v `response_mode` parametru.
 
@@ -258,10 +258,10 @@ p=b2c_1_sign_in
 
 | Parametr | Požadováno? | Popis |
 | --- | --- | --- |
-| p |Požaduje se |Zásadu, který se má použít pro přihlášení uživatele z vaší aplikace. |
+| p |Požadováno |Zásadu, který se má použít pro přihlášení uživatele z vaší aplikace. |
 | post_logout_redirect_uri |Doporučené |Adresu URL, kterou uživatel by měl být přesměrován na po úspěšném odhlášení. Pokud neuvedete, Azure AD B2C zobrazí obecná zpráva uživateli. |
 
 > [!NOTE]
 > Směruje uživatele `end_session_endpoint` vymaže část jednotné přihlašování – stav uživatele v Azure AD B2C. Ale odhlášeni uživatele mimo relaci zprostředkovatele sociální identity uživatele. Pokud si uživatel vybere stejné identifikovat zprostředkovatele během následné přihlášení, uživatel k novému ověření, bez nutnosti zadávat své přihlašovací údaje. Pokud chce uživatel se odhlásit z aplikace Azure AD B2C, neznamená nutně, že chtějí zcela odhlásit z jejich účtu na Facebooku, např. Ale pro místní účty uživatelské relace bude ukončena správně.
-> 
+>
 

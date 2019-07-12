@@ -14,17 +14,16 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 2d816ab2f14be8574f77491807d4dbd071487f42
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f3c4fc379ac932e66c5d02e08e72ef4d16db638b
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66164014"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836700"
 ---
 # <a name="tutorial-create-a-data-factory-by-using-visual-studio"></a>Kurz: Vytvoření datové továrny pomocí sady Visual Studio
 > [!div class="op_single_selector" title="Tools/SDKs"]
 > * [Přehled a požadavky](data-factory-build-your-first-pipeline.md)
-> * [Azure Portal](data-factory-build-your-first-pipeline-using-editor.md)
 > * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 > * [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 > * [Šablona Resource Manageru](data-factory-build-your-first-pipeline-using-arm.md)
@@ -124,8 +123,8 @@ S využitím propojené služby HDInsight na vyžádání se cluster HDInsight a
 
     Vlastnost | Popis
     -------- | ----------- 
-    ClusterSize | Určuje velikost clusteru HDInsight Hadoop.
-    TimeToLive | Určuje dobu nečinnosti před odstraněním clusteru HDInsight.
+    clusterSize | Určuje velikost clusteru HDInsight Hadoop.
+    timeToLive | Určuje dobu nečinnosti před odstraněním clusteru HDInsight.
     linkedServiceName | Určuje účet úložiště, který se používá k ukládání protokolů generovaných clusterem HDInsight Hadoop. 
 
     > [!IMPORTANT]
@@ -173,7 +172,7 @@ V tomto kroku vytvoříte datové sady, které představují vstupní a výstupn
 
     Vlastnost | Popis |
     -------- | ----------- |
-    Typ |Vlastnost type je nastavená na hodnotu **AzureBlob**, protože se data nachází ve službě Azure Blob Storage.
+    type |Vlastnost type je nastavená na hodnotu **AzureBlob**, protože se data nachází ve službě Azure Blob Storage.
     linkedServiceName | Odkazuje na službu AzureStorageLinkedService1, kterou jste vytvořili předtím.
     fileName |Tato vlastnost je nepovinná. Pokud ji vynecháte, vyberou se všechny soubory v cestě folderPath. V tomto případě se zpracovává jenom soubor input.log.
     type | Soubory protokolů jsou v textovém formátu, takže použijeme hodnotu TextFormat. |

@@ -4,15 +4,15 @@ description: Postup konfigurace výstrah pro metriky brány sítě VPN
 services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
-ms.topic: conceptional
+ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: alzam
-ms.openlocfilehash: e54dadbda0582095e8152ea30376d369177bfd86
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d57663f683ba4e2107ec6813a19fac7b2dcdd26a
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65509907"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67605232"
 ---
 # <a name="set-up-alerts-on-vpn-gateway-metrics"></a>Nastavte si upozornění na metriky brány sítě VPN
 
@@ -27,7 +27,7 @@ Tento článek vám pomůže nastavit upozornění na metriky Azure VPN Gateway.
 |**TunnelAverageBandwidth** | Bajty/s    | 5 minut  | Průměrné využití šířky pásma tunely vytvořené v bráně. |
 |**TunnelEgressBytes** | B | 5 minut | Odchozí přenosy na tunely vytvořené v bráně.   |
 |**TunnelEgressPackets** | Count | 5 minut | Počet odchozích paketů v tunely vytvořené v bráně.   |
-|**TunnelEgressPacketDropTSMismatch** | Počet | 5 minut | Počet odchozích paketů přesunuta tunely způsobené neshoda selektor provozu. |
+|**TunnelEgressPacketDropTSMismatch** | Count | 5 minut | Počet odchozích paketů přesunuta tunely způsobené neshoda selektor provozu. |
 |**TunnelIngressBytes** | B | 5 minut | Příchozí provoz na tunely vytvořené v bráně.   |
 |**TunnelIngressPackets** | Count | 5 minut | Počet příchozích paketů na tunely vytvořené v bráně.   |
 |**TunnelIngressPacketDropTSMismatch** | Count | 5 minut | Počet příchozích paketů na tunely způsobené neshoda selektor provozu. |

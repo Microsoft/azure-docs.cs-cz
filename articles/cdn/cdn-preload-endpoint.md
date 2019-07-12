@@ -7,19 +7,19 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: 5ea3eba5-1335-413e-9af3-3918ce608a83
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: magattus
-ms.openlocfilehash: 0d34985c8d83e8adad43aeec36ead939d8b22132
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d91507ad2cb271b23b588ef7da88e6e6712915b1
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60627380"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593586"
 ---
 # <a name="pre-load-assets-on-an-azure-cdn-endpoint"></a>Předběžné načtení prostředků v koncovém bodu Azure CDN
 [!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
@@ -66,7 +66,7 @@ Tento kurz vás provede předběžné načtení obsahu v mezipaměti na všechny
 > 
 > 
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 * [Vyprázdnění koncového bodu Azure CDN](cdn-purge-endpoint.md)
 * [Rozhraní REST API služby CDN referenční informace k Azure: Předběžné načtení obsahu na koncový bod](https://docs.microsoft.com/rest/api/cdn/endpoints/loadcontent)
 * [Rozhraní REST API služby CDN referenční informace k Azure: Vymazání obsahu z koncového bodu](https://docs.microsoft.com/rest/api/cdn/endpoints/purgecontent)

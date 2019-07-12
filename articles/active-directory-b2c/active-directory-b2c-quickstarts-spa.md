@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 10/24/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: dff1716e8886d1ef72f4d2ad4fbca4bcab86a348
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 47df2cbdf0b083cf672353471d1ef51e03507475
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66509780"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67835342"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-single-page-app-using-azure-active-directory-b2c"></a>Rychlý start: Nastavení přihlášení pro jednostránkové aplikace pomocí Azure Active Directory B2C
 
@@ -36,7 +36,7 @@ Azure Active Directory (Azure AD) B2C poskytuje správu cloudových identit pro 
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
-1. Spuštěním následujících příkazů na příkazovém řádku Node.js spusťte server: 
+1. Spuštěním následujících příkazů na příkazovém řádku Node.js spusťte server:
 
     ```
     cd active-directory-b2c-javascript-msal-singlepageapp
@@ -56,23 +56,23 @@ Azure Active Directory (Azure AD) B2C poskytuje správu cloudových identit pro 
 
 1. Kliknutím na **Login** (Přihlášení) spusťte pracovní postup.
 
-    ![Ukázková aplikace v prohlížeči](media/active-directory-b2c-quickstarts-spa/sample-app-spa.png)
+    ![Jednostránková aplikace ukázková aplikace zobrazená v prohlížeči](media/active-directory-b2c-quickstarts-spa/sample-app-spa.png)
 
-    Ukázka podporuje několik možností registrace, včetně použití zprostředkovatele sociální identity nebo vytvoření místního účtu pomocí e-mailové adresy. Pro účely tohoto rychlého startu použijte účet zprostředkovatele sociální identity Facebook, Google, Microsoft nebo Twitter. 
+    Ukázka podporuje několik možností registrace, včetně použití zprostředkovatele sociální identity nebo vytvoření místního účtu pomocí e-mailové adresy. Pro účely tohoto rychlého startu použijte účet zprostředkovatele sociální identity Facebook, Google, Microsoft nebo Twitter.
 
 2. Azure AD B2C zobrazí v ukázkové webové aplikaci vlastní přihlašovací stránku pro fiktivní značku Wingtip Toys. Pokud se chcete přihlásit pomocí zprostředkovatele sociální identity, klikněte na tlačítko zprostředkovatele sociální identity, kterého chcete použít.
 
-    ![Zprostředkovatel registrace nebo přihlašování](media/active-directory-b2c-quickstarts-spa/sign-in-or-sign-up-spa.png)
+    ![Přihlásit nebo zaregistrovat stránky zobrazující tlačítka zprostředkovatele identity](media/active-directory-b2c-quickstarts-spa/sign-in-or-sign-up-spa.png)
 
-    Ověřování (přihlášení) se pomocí přihlašovacích údajů vašeho účtu na sociální síti a autorizujete aplikaci ke čtení informací z vašeho účtu na sociální síti. Díky udělení přístupu může aplikace z účtu na sociální síti načíst informace o profilu, jako je vaše jméno a město. 
+    Ověřování (přihlášení) se pomocí přihlašovacích údajů vašeho účtu na sociální síti a autorizujete aplikaci ke čtení informací z vašeho účtu na sociální síti. Díky udělení přístupu může aplikace z účtu na sociální síti načíst informace o profilu, jako je vaše jméno a město.
 
 3. Dokončete proces přihlašování příslušného zprostředkovatele identity.
 
 ## <a name="access-a-protected-api-resource"></a>Přístup k chráněnému prostředku rozhraní API
 
-Klikněte na **Call Web API** (Zavolat webové rozhraní API), aby se ze zavolání webového rozhraní API vrátilo vaše zobrazované jméno jako objekt JSON. 
+Klikněte na **Call Web API** (Zavolat webové rozhraní API), aby se ze zavolání webového rozhraní API vrátilo vaše zobrazované jméno jako objekt JSON.
 
-![Odpověď rozhraní API](media/active-directory-b2c-quickstarts-spa/call-api-spa.png)
+![Ukázková aplikace v prohlížeči a zobrazí webové odpovědi rozhraní API](media/active-directory-b2c-quickstarts-spa/call-api-spa.png)
 
 Ukázková jednostránková aplikace do požadavku na chráněný prostředek webového rozhraní API zahrne přístupový token.
 

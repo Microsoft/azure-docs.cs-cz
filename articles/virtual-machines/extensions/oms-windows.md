@@ -4,7 +4,7 @@ description: Nasaďte agenta Log Analytics na virtuálním počítači Windows p
 services: virtual-machines-windows
 documentationcenter: ''
 author: roiyz-msft
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: feae6176-2373-4034-b5d9-a32c6b4e1f10
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/29/2019
 ms.author: roiyz
-ms.openlocfilehash: fb931d5ce72b21cb17abbcd11095dbc8d611f0c9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b9d0e582b77dc06e1655a7bdb57ee232c603bc86
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67064425"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706667"
 ---
 # <a name="azure-monitor-virtual-machine-extension-for-windows"></a>Rozšíření virtuálního počítače Azure Monitor pro Windows
 
@@ -34,7 +34,7 @@ Protokoly Azure monitoru poskytuje funkce sledování v rámci cloudových a mí
 
 Rozšíření agenta Log Analytics pro Windows podporuje následující verze operačního systému Windows:
 
-- Windows Server 2019
+- Windows Server. 2019
 - Windows Server 2008 R2, 2012, 2012 R2, 2016, verze 1709 a 1803
 
 ### <a name="agent-and-vm-extension-version"></a>Verze agenta a rozšíření virtuálního počítače

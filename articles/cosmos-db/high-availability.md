@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 928c943e21e7d00b87ac1e506b98d47107ac4348
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 904994134db28a8244f15ff42e0104e8565c68dd
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508548"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839800"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Vysoká dostupnost s využitím Azure Cosmos DB
 
@@ -42,7 +42,7 @@ Cosmos DB jakožto globálně distribuovaná databáze, poskytuje komplexní sml
 
 ## <a name="high-availability-with-cosmos-db-in-the-event-of-regional-outages"></a>Vysoká dostupnost s využitím Cosmos DB v případě místních výpadků
 
-Nejsou místních výpadků a Azure Cosmos DB zajišťuje, že vaše databáze budou vždy s vysokou dostupností. Následující podrobnosti o zachycení Cosmos DB chování během výpadku, v závislosti na konfiguraci vašeho účtu Cosmos:
+Oblastní výpadky nejsou nijak neobvyklé a služba Azure Cosmos DB zajišťuje, aby vaše databáze byla vždy vysoce dostupná. Následující podrobnosti o zachycení Cosmos DB chování během výpadku, v závislosti na konfiguraci vašeho účtu Cosmos:
 
 - Pomocí služby Cosmos DB než je potvrzení operace zápisu do klienta, data odolném potvrzení podle kvorum replik v rámci oblasti, která přijímá operace zápisu.
 
@@ -72,7 +72,7 @@ Tato funkce je dostupná v těchto oblastech Azure:
 * Jihovýchodní Asie 
 * East US
 * Východní USA 2 
-* USA – střed
+* Střed USA
 
 > [!NOTE] 
 > Povolení zóny dostupnosti pro jednu oblast účet služby Azure Cosmos, bude výsledkem náklady, které jsou ekvivalentní k přidání další oblasti k vašemu účtu. Podrobnosti o cenách najdete v tématu [stránce s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/) a [ve více oblastech nákladů ve službě Azure Cosmos DB](optimize-cost-regions.md) článků. 
@@ -93,7 +93,8 @@ Následující tabulka shrnuje možnost vysoké dostupnosti z různých konfigur
 |Propustnost    |  Zřízené propustnosti X RU/s      |  Zřízené propustnosti X RU/s       |  2 x zřízená propustnost RU/s <br/><br/> Tento režim konfigurace vyžaduje dvakrát množství propustnost při porovnání do jedné oblasti se zónami dostupnosti, protože existují dvě oblasti.   |
 
 > [!NOTE] 
-> Povolení podpory pro zóny dostupnosti, musí mít účet služby Azure Cosmos DB více master/více region zápisu povolené. 
+> Pokud chcete povolit podpora zóny dostupnosti pro více oblastí účet služby Azure Cosmos, účet musí mít multimasterovou zápisu povolené.
+
 
 Redundanci zón můžete povolit při přidávání oblasti do nové nebo existující účty služby Azure Cosmos. V současné době můžete povolit jenom redundanci zón s použitím Azure portal, šablon Azure Resource Manageru a Powershellu. Povolit zóny redundance u vašeho účtu Azure Cosmos, byste měli nastavit `isZoneRedundant` příznak `true` pro konkrétní lokalitu. Můžete nastavit tento příznak v rámci vlastnosti umístění. Například následující fragment kódu powershellu umožňuje redundanci zón pro "jihovýchodní Asie":
 

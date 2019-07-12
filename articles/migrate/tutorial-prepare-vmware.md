@@ -4,15 +4,15 @@ description: Popisuje postup přípravy pro vyhodnocení a migraci místních vi
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 05/26/2019
+ms.date: 07/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 246df4109beaa218f735416b8e95e27e95058cf2
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
-ms.translationtype: HT
+ms.openlocfilehash: 10f559295ff0598dea26fb30b089f020e2985889
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/11/2019
-ms.locfileid: "67809110"
+ms.locfileid: "67840348"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>Příprava virtuálních počítačů VMware pro vyhodnocení a migraci do Azure
 
@@ -84,7 +84,7 @@ Tenanta nebo globální správce může udělit oprávnění následujícím zp�
 
 #### <a name="assign-application-developer-role"></a>Přiřazení role aplikace pro vývojáře 
 
-Tenanta nebo globální správce může přiřadit roli vývojář aplikace k účtu. [Další informace](https://docs.microsoft.comazure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal).
+Tenanta nebo globální správce může přiřadit roli vývojář aplikace k účtu. [Další informace](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal).
 
 ## <a name="assign-role-assignment-permissions"></a>Přiřadit oprávnění k přiřazení role
 

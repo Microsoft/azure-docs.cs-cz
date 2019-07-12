@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: aed341c50332b424a1149c129629cd451a4e5133
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0c4f961dda273c7f3885159818dabf228abced42
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66146902"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839467"
 ---
 # <a name="move-data-to-and-from-azure-table-using-azure-data-factory"></a>Přesun dat do a z Azure Table pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, který používáte:"]
@@ -39,7 +39,7 @@ Vytvoření kanálu s aktivitou kopírování, která přesouvání dat do a z A
 
 Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Zobrazit [kurzu: Vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním data.
 
-Tyto nástroje můžete také použít k vytvoření kanálu: **Azure portal**, **sady Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru**, **rozhraní .NET API**a  **Rozhraní REST API**. Zobrazit [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování. 
+Tyto nástroje můžete také použít k vytvoření kanálu: **Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru**, **rozhraní .NET API**, a **rozhraní REST API**. Zobrazit [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování. 
 
 Ať už používáte, nástrojů nebo rozhraní API, proveďte následující kroky k vytvoření kanálu pro přesouvání dat ze zdrojového úložiště dat do úložiště dat jímky: 
 
@@ -61,7 +61,7 @@ Existují dva typy propojené služby, které lze použít k propojení služby 
 
 V části typeProperties se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti. **TypeProperties** části datové sady typu **AzureTable** má následující vlastnosti.
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 | --- | --- | --- |
 | tableName |Název tabulky instance databáze tabulky Azure, který odkazuje propojenou službu. |Ano. Pokud tableName je zadán bez azureTableSourceQuery, všechny záznamy z tabulky se zkopírují do cíle. Pokud je určena azureTableSourceQuery také záznamy z tabulky, která odpovídá dotazu se zkopírují do cíle. |
 
@@ -80,7 +80,7 @@ Vlastnosti v části typeProperties aktivity se liší na druhé straně s jedno
 
 **AzureTableSource** v části typeProperties podporuje následující vlastnosti:
 
-| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
+| Vlastnost | Popis | Povolené hodnoty | Požadováno |
 | --- | --- | --- | --- |
 | azureTableSourceQuery |Použijte vlastní dotaz číst data. |Řetězec dotazu, tabulky Azure. Příklady naleznete v další části. |Ne. Pokud tableName je zadán bez azureTableSourceQuery, všechny záznamy z tabulky se zkopírují do cíle. Pokud je určena azureTableSourceQuery také záznamy z tabulky, která odpovídá dotazu se zkopírují do cíle. |
 | azureTableSourceIgnoreTableNotFound |Označuje, zda spolknout výjimka tabulka neexistuje. |HODNOTA TRUE<br/>FALSE |Ne |
@@ -100,7 +100,7 @@ Pokud je tabulka Azure sloupec typu datum a čas:
 
 **AzureTableSink** v části typeProperties podporuje následující vlastnosti:
 
-| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
+| Vlastnost | Popis | Povolené hodnoty | Požadováno |
 | --- | --- | --- | --- |
 | azureTableDefaultPartitionKeyValue |Výchozí hodnota klíče oddílu, který je možné jímkou. |Hodnotu řetězce. |Ne |
 | azureTablePartitionKeyName |Zadejte název sloupce, jejichž hodnoty se používají jako klíče oddílu. Pokud není zadán, AzureTableDefaultPartitionKeyValue slouží jako klíč oddílu. |Název sloupce. |Ne |
@@ -131,7 +131,7 @@ DivisionID je zadán jako klíč oddílu.
 }
 ```
 ## <a name="json-examples"></a>Příklady pro JSON
-Následující příklady popisují ukázkový JSON definice, které můžete použít k vytvoření kanálu pomocí [webu Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md) nebo [sady Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) nebo [prostředí Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Zobrazí se kopírování dat do a z Azure Table Storage a databáze objektů Blob v Azure. Nicméně je možné zkopírovat data **přímo** z jakéhokoli zdroje na jakýkoli z podporovaných jímky. Další informace najdete v oddílu "podporovaná úložiště dat a formáty" v [přesun dat pomocí aktivity kopírování](data-factory-data-movement-activities.md).
+Následující příklady popisují ukázkový JSON definice, které můžete použít k vytvoření kanálu pomocí [sady Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) nebo [prostředí Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Zobrazí se kopírování dat do a z Azure Table Storage a databáze objektů Blob v Azure. Nicméně je možné zkopírovat data **přímo** z jakéhokoli zdroje na jakýkoli z podporovaných jímky. Další informace najdete v oddílu "podporovaná úložiště dat a formáty" v [přesun dat pomocí aktivity kopírování](data-factory-data-movement-activities.md).
 
 ## <a name="example-copy-data-from-azure-table-to-azure-blob"></a>Příklad: Kopírování dat z Azure Table do objektů Blob v Azure
 Následující příklad ukazuje:
@@ -479,12 +479,12 @@ Při přesunu dat do a z Azure Table, následující [mapování, které jsou de
 | --- | --- | --- |
 | Edm.Binary |Byte |Pole bajtů až 64 KB. |
 | Edm.Boolean |bool |Logická hodnota. |
-| Edm.DateTime |DateTime |Hodnota 64-bit, vyjádřené jako koordinovaný univerzální čas (UTC). Podporovaný rozsah data a času počínaje 12:00 hodin 1 dne 1601 N.L. (C.E.), UTC. Rozsah končí 31. prosince 9999. |
+| Edm.DateTime |Datetime |Hodnota 64-bit, vyjádřené jako koordinovaný univerzální čas (UTC). Podporovaný rozsah data a času počínaje 12:00 hodin 1 dne 1601 N.L. (C.E.), UTC. Rozsah končí 31. prosince 9999. |
 | Edm.Double |double |Bod hodnotu s plovoucí desetinnou čárkou 64bitové. |
 | Edm.Guid |Guid |128bitové globálně jedinečný identifikátor. |
 | Edm.Int32 |Int32 |32bitové celé číslo. |
 | Edm.Int64 |Int64 |64bitové celé číslo. |
-| Edm.String |String |Hodnota kódování UTF-16. Řetězcové hodnoty může mít až 64 KB. |
+| Edm.String |Řetězec |Hodnota kódování UTF-16. Řetězcové hodnoty může mít až 64 KB. |
 
 ### <a name="type-conversion-sample"></a>Ukázka typ převodu
 Následující příklad je pro kopírování dat z objektu Blob Azure do Azure Table s převody typu.
@@ -535,7 +535,7 @@ Zadané mapování typu z Azure Table OData typu na typ .NET, byste definovali v
 
 **Schéma tabulky Azure:**
 
-| Název sloupce | Type |
+| Název sloupce | type |
 | --- | --- |
 | userid |Edm.Int64 |
 | name |Edm.String |

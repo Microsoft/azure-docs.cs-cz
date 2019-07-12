@@ -4,15 +4,15 @@ description: Postup konfigurace výstrah pro VPN Gateway diagnostický protokol 
 services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
-ms.topic: conceptional
+ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: alzam
-ms.openlocfilehash: 6c85f47a2e3691306d59c5c44856fd08c07f2d36
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 4f18581b9ca5770b89be8ca37529c09d635dfb25
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67202896"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67607112"
 ---
 # <a name="set-up-alerts-on-diagnostic-log-events-from-vpn-gateway"></a>Nastavení výstrah u diagnostický protokol událostí ze služby VPN Gateway
 
@@ -88,6 +88,6 @@ Následující příklady postupu vytvoří výstrahu pro událost odpojení, kt
 
     ![Vybrané možnosti pro vytvoření pravidla](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert11.png  "vyberte")
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Konfigurace upozornění na metriky tunelové propojení, najdete v článku [nastavení upozornění na metriky brány VPN](vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md).

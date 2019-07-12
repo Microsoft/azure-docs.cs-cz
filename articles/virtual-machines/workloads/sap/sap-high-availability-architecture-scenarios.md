@@ -4,7 +4,7 @@ description: Architektura pro vysokou dostupnost a scénáře pro SAP NetWeaver 
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 01/21/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 37f5040585681a53743fb3426b7f7ffac36de51c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f6c329a2b50c946e873391db431c1cd5ff30ab4f
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60936224"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709073"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>Architektura pro vysokou dostupnost a scénáře pro SAP NetWeaver
 
@@ -254,7 +254,7 @@ Zajištění vysoké dostupnosti SAP v Azure je možné rozdělit na tři typy:
     * Redundantní aplikační servery SAP.
     * Jedinečné komponenty. Příkladem může být kritickým prvkem způsobujícím selhání (SPOF) komponenty, jako je například systém správy databáze (DBMS) nebo instance SAP ASCS/SCS.
 
-Zajištění vysoké dostupnosti SAP v Azure se liší od SAP vysoké dostupnosti v místním fyzickém nebo virtuálním prostředí. Následující dokument [vysoké dostupnosti SAP NetWeaver a plynulost obchodních procesů ve virtuálních prostředích VMware a Hyper-V v Microsoft Windows] [ sap-ha-bc-virtual-env-hyperv-vmware-white-paper] popisuje standardní vysoké dostupnosti SAP konfigurace ve virtualizovaných prostředích na Windows.
+Zajištění vysoké dostupnosti SAP v Azure se liší od SAP vysoké dostupnosti v místním fyzickém nebo virtuálním prostředí. Následující dokument [vysoké dostupnosti SAP NetWeaver a plynulost obchodních procesů ve virtuálních prostředích VMware a Hyper-V v Microsoft Windows][sap-ha-bc-virtual-env-hyperv-vmware-white-paper] popisuje standardní konfigurace vysoké dostupnosti SAP v virtualizované prostředí ve Windows.
 
 Neexistuje Konfigurace vysoké dostupnosti integrované sapinst SAP pro Linux, je pro Windows. Informace o SAP vysoké dostupnosti v místním pro Linux najdete v tématu [informace o partnerovi vysoké dostupnosti][sap-ha-partner-information].
 
@@ -359,7 +359,7 @@ Je nutné umístit všechny virtuální počítače, které hostitele SAP aplika
 * Všechny virtuální počítače jsou součástí stejné aktualizační domény.  
     Aktualizační domény zajistí, že virtuální počítače nejsou aktualizovány ve stejnou dobu, během plánované údržby výpadků.
 
-    Základní funkce, který je založen na jiné aktualizační a domén selhání v rámci Azure škálovací jednotky, již byla zavedena v [aktualizačními doménami] [ planning-guide-3.2.2] oddílu.
+    Základní funkce, který je založen na jiné aktualizační a domén selhání v rámci Azure škálovací jednotky, již byla zavedena v [aktualizačními doménami][planning-guide-3.2.2] oddílu.
 
 * Všechny virtuální počítače jsou součástí stejné domény selhání.  
     Doména selhání zajistí nasazení virtuálních počítačů, aby žádný jediný bod selhání má vliv na dostupnost všech virtuálních počítačů.
@@ -373,7 +373,7 @@ Pokud nasadíte několik instancí SAP aplikačních serverů v jejich vyhrazen�
 
 Další informace najdete v tématu [Správa dostupnosti virtuálních počítačů s Windows v Azure][azure-virtual-machines-manage-availability].
 
-Další informace najdete v tématu [skupinami dostupnosti Azure] [ planning-guide-3.2.3] část virtuálních počítačů Azure plánování a implementace SAP Netweaveru dokumentu.
+Další informace najdete v tématu [skupinami dostupnosti Azure][planning-guide-3.2.3] část virtuálních počítačů Azure plánování a implementace SAP Netweaveru dokumentu.
 
 **Nespravované disky jenom:** Účet úložiště Azure je možné jediný bod selhání, a proto je důležité mít aspoň dva účty úložiště Azure, ve kterých se distribuují alespoň dva virtuální počítače. V ideální nastavení discích jednotlivých virtuálních počítačů, na kterém běží instance SAP dialogové okno se nasazuje do jiného účtu úložiště.
 
@@ -396,7 +396,7 @@ Chcete-li chránit instanci SAP ASCS/SCS, můžete použít řešení služby WS
 
 > ![Linux][Logo_Linux] Linux
 > 
-> Další informace o clusteringu SAP ASCS/SCS instance s použitím rozhraní clusteru SLES najdete v tématu [vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise Server pro aplikace SAP] [ sap-suse-ascs-ha]. Pro alternativní architektura HA na SLES, který nevyžaduje, aby vysoce dostupný systém souborů NFS, naleznete v tématu [Příručka pro vysokou dostupnost pro SAP NetWeaver na SUSE Linux Enterprise serveru s Azure Files NetApp pro aplikace SAP] [ sap-suse-ascs-ha-anf].
+> Další informace o clusteringu SAP ASCS/SCS instance s použitím rozhraní clusteru SLES najdete v tématu [vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise Server pro aplikace SAP][sap-suse-ascs-ha]. For alternative HA architecture on SLES, which doesn't require highly available NFS see [High-availability guide for SAP NetWeaver on SUSE Linux Enterprise Server with Azure NetApp Files for SAP applications][sap-suse-ascs-ha-anf].
 
 Další informace o clusteringu SAP ASCS/SCS instance s použitím rozhraní clusteru Red Hat, naleznete v tématu [Azure Virtual Machines vysoká dostupnost pro SAP NetWeaver na Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel)
 

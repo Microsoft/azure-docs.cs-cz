@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 6b16b6c4de8c8d2d7a821dd476f07c8ab1135408
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f88d83a851ad878ac9ee9b0195816d2ca35e4c13
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60487248"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839378"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Datové sady ve službě Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, který používáte:"]
@@ -79,13 +79,13 @@ Datové sady ve službě Data Factory je definovaná ve formátu JSON následuj�
 
 Následující tabulka popisuje vlastnosti v výše uvedený text JSON:
 
-| Vlastnost | Popis | Požaduje se | Výchozí |
+| Vlastnost | Popis | Požadováno | Výchozí |
 | --- | --- | --- | --- |
 | name |Název datové sady. Zobrazit [Azure Data Factory – pravidla pojmenování](data-factory-naming-rules.md) pravidla pojmenování. |Ano |Není k dispozici |
 | type |Typ datové sady. Zadejte jeden z typů podporovaných službou Data Factory (například: AzureBlob, AzureSqlTable). <br/><br/>Podrobnosti najdete v tématu [typ datové sady](#Type). |Ano |Není k dispozici |
 | structure |Schéma datové sady.<br/><br/>Podrobnosti najdete v tématu [struktury datové sady](#Structure). |Ne |Není k dispozici |
 | typeProperties | Vlastnosti typu se liší pro každý typ (například: Azure Blob, tabulky Azure SQL). Podrobnosti o podporovaných typech a jejich vlastností najdete v tématu [typ datové sady](#Type). |Ano |Není k dispozici |
-| external | Logický příznak k určení, zda datové sady je explicitně vytvořen kanál datové továrny nebo ne. Pokud není aktuální kanál vytvoří vstupní datovou sadu pro aktivitu, můžete tento příznak nastavte na hodnotu true. Tento příznak nastavte na hodnotu true pro vstupní datové sady první aktivity v kanálu.  |Ne |false (nepravda) |
+| external | Logický příznak k určení, zda datové sady je explicitně vytvořen kanál datové továrny nebo ne. Pokud není aktuální kanál vytvoří vstupní datovou sadu pro aktivitu, můžete tento příznak nastavte na hodnotu true. Tento příznak nastavte na hodnotu true pro vstupní datové sady první aktivity v kanálu.  |Ne |false |
 | availability | Definuje okno zpracování (například každou hodinu nebo každý den) nebo řezů model pro produkční prostředí datové sady. Každá jednotka data využívaná a produkovaná spuštění aktivity se nazývá datový řez. Pokud dostupnost výstupní datovou sadu je nastavena na hodnotu denně (frekvence - den, interval - 1), řez každý den. <br/><br/>Podrobnosti najdete v tématu dostupnosti datové sady. <br/><br/>Podrobnosti o datové sady, model dělení časového, najdete v článku [plánování a provádění](data-factory-scheduling-and-execution.md) článku. |Ano |Není k dispozici |
 | policy |Definuje kritéria nebo podmínky, které musí splnit řezy datové sady. <br/><br/>Podrobnosti najdete v tématu [datovou sadu zásad](#Policy) oddílu. |Ne |Není k dispozici |
 
@@ -191,11 +191,11 @@ structure:
 
 Všechny sloupce struktury obsahují následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 | --- | --- | --- |
 | name |Název sloupce. |Ano |
 | type |Datový typ sloupce.  |Ne |
-| culture |. NET jazykovou verzi na základě používané pro typ je typ .NET: `Datetime` nebo `Datetimeoffset`. Výchozí formát je `en-us`. |Ne |
+| culture |. NET jazykovou verzi na základě používané pro typ je typ .NET: `Datetime` nebo `Datetimeoffset`. Výchozí hodnota je `en-us`. |Ne |
 | format |Formátovací řetězec se použije, když typ je typ .NET: `Datetime` nebo `Datetimeoffset`. |Ne |
 
 Podle následujících pokynů můžete určit, kdy se mají zahrnout informace o struktuře a co mají být zahrnuty **struktura** oddílu.
@@ -233,7 +233,7 @@ Výstupní datová sada vytváří každou hodinu v rámci kanálu počáteční
 
 Následující tabulka popisuje vlastnosti, které můžete použít v části dostupnosti:
 
-| Vlastnost | Popis | Požaduje se | Výchozí |
+| Vlastnost | Popis | Požadováno | Výchozí |
 | --- | --- | --- | --- |
 | frequency |Určuje časovou jednotku pro produkční prostředí řez datové sady.<br/><br/><b>Podporované frekvence</b>: Minuta, hodina, den, týden, měsíc |Ano |Není k dispozici |
 | interval |Určuje multiplikátor pro četnost.<br/><br/>"Interval četnosti x" Určuje, jak často se řez. Například pokud potřebujete datové sady na průřezem podle počtu hodin, nastavíte <b>frekvence</b> k <b>hodinu</b>, a <b>interval</b> k <b>1</b>.<br/><br/>Všimněte si, že pokud zadáte **frekvence** jako **minutu**, byste měli nastavit interval na menší než 15. |Ano |Není k dispozici |
@@ -280,10 +280,10 @@ Následující datová sada je měsíční a je vytvořen na 3. v každém měs�
 **Zásady** oddíl v definici datové sady definuje kritéria nebo podmínky, které musí splnit řezy datové sady.
 
 ### <a name="validation-policies"></a>Ověření zásad
-| Název zásady | Popis | Použít na | Požaduje se | Výchozí |
+| Název zásad | Popis | Použít na | Požadováno | Výchozí |
 | --- | --- | --- | --- | --- |
 | minimumSizeMB |Ověří, jestli data v **úložiště objektů Blob v Azure** splňuje požadavky na minimální velikost (v megabajtech). |Azure Blob Storage |Ne |Není k dispozici |
-| minimumRows |Ověří, jestli data v **Azure SQL database** nebo **tabulek v Azure** obsahuje minimální počet řádků. |<ul><li>Databáze Azure SQL</li><li>Tabulka Azure</li></ul> |Ne |Není k dispozici |
+| minimumRows |Ověří, jestli data v **Azure SQL database** nebo **tabulek v Azure** obsahuje minimální počet řádků. |<ul><li>Databáze SQL Azure</li><li>Tabulka Azure</li></ul> |Ne |Není k dispozici |
 
 #### <a name="examples"></a>Příklady
 **minimumSizeMB:**
@@ -316,7 +316,7 @@ Externích datových sad, jsou ty, které nejsou od spuštění kanálu v datov�
 
 Pokud datové sady se vytvořil objekt pro vytváření dat, by měla být označena jako **externí**. Toto nastavení platí obecně pro vstupy první aktivitu v kanálu, pokud používá aktivitu nebo řetězení kanálu.
 
-| Name | Popis | Požaduje se | Výchozí hodnota |
+| Name | Popis | Požadováno | Výchozí hodnota |
 | --- | --- | --- | --- |
 | dataDelay |Doba zpoždění kontroly dostupnosti externích dat pro danou řez. Například můžete kontrolu hodinové pozdržet pomocí tohoto nastavení.<br/><br/>Toto nastavení platí pouze pro aktuální čas. Například pokud je 1:00 PM hned teď a tato hodnota je 10 minut, ověření se spustí v 13:10.<br/><br/>Všimněte si, že toto nastavení nemá vliv na kolekce obsahuje nějaké řezy v minulosti. Řezy s **koncový čas řezu** + **dataDelay** < **nyní** zpracovávají bez jakéhokoli zpoždění.<br/><br/>Krát větší než 23:59 hodin zadat pomocí `day.hours:minutes:seconds` formátu. Například pokud chcete zadat 24 hodin, nepoužívejte 24:00:00. Místo toho použijte 1.00:00:00. Pokud používáte 24:00:00, je považován za 24 dní (24.00:00:00). 1 den a 4 hodiny zadejte 1:04:00:00. |Ne |0 |
 | retryInterval |Doba čekání mezi selhání a dalším pokusem. Toto nastavení platí pro aktuální čas. Pokud předchozí akci se nezdařilo, je dalším pokusu o po **retryInterval** období. <br/><br/>Pokud je 1:00 PM teď začneme první pokus. Pokud doba trvání dokončení první ověření je 1 minuta a operace se nezdařila, další opakování je v 1:00 + 1 min (doba trvání) + 1 minuta (interval opakování) = 1:02 odp. <br/><br/>Řezy v minulosti neexistuje žádné zpoždění. Opakování dojde okamžitě. |Ne |00:01:00 (1 minuta) |
@@ -328,7 +328,6 @@ Pokud datové sady se vytvořil objekt pro vytváření dat, by měla být ozna�
 Datové sady můžete vytvořit pomocí některého z těchto nástrojů nebo sad SDK:
 
 - Průvodce kopírováním
-- portál Azure
 - Visual Studio
 - PowerShell
 - Šablona Azure Resource Manageru
@@ -444,6 +443,6 @@ Můžete vytvořit datové sady, které jsou omezená na kanálu pomocí **datov
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - Další informace o kanálech najdete v tématu [vytvářet kanály](data-factory-create-pipelines.md).
 - Další informace o tom, jak jsou kanály naplánovala a provést, najdete v části [plánování a provádění ve službě Azure Data Factory](data-factory-scheduling-and-execution.md).

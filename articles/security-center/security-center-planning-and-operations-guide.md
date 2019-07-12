@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/11/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 04cfe489e9eea53bf58dd64e0eac3e5a95033bcc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ca96ba4c6b0de8ad39866a0783e7091fb4755164
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65966837"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706234"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Průvodce plánováním a provozem služby Azure Security Center
 Tento průvodce je určený odborníkům na informační technologie (IT), IT architektům, analytikům zabezpečení informací a správcům cloudů, jejichž společnosti hodlají začít používat Azure Security Center.
@@ -87,21 +87,21 @@ Použití osob uvedených v předchozím diagramu vyžaduje následující nasta
 
 **Jeff (vlastník úloh)**
 
-* Vlastník/spolupracovník skupiny prostředků
+* Skupina prostředků vlastníka nebo přispěvatele
 
 **David (zabezpečení IT)**
 
-* Vlastník/spolupracovník předplatného nebo správce zabezpečení
+* Předplatné vlastníkem nebo přispěvatelem nebo správcem zabezpečení
 
 **Judy (pracovnice oddělení zabezpečení)**
 
 * Čtenář předplatného nebo čtenář zabezpečení s oprávněním zobrazovat výstrahy
-* Vlastník/spolupracovník předplatného nebo správce zabezpečení potřebný k rušení výstrah
+* Vlastníka nebo přispěvatele předplatného nebo správce zabezpečení potřebný k rušení výstrah
 
 **Sam (analytik zabezpečení)**
 
 * Čtenář předplatného s oprávněním zobrazovat výstrahy
-* Vlastník/spolupracovník předplatného potřebný k rušení výstrah
+* Vlastník nebo Přispěvatel předplatného potřebný k rušení výstrah
 * Může být vyžadován přístup k pracovnímu prostoru
 
 Další informace, které je potřeba vzít v úvahu:
@@ -134,7 +134,7 @@ Security Center automaticky vytváří výchozí zásady zabezpečení pro každ
 Než začnete konfigurovat zásady zabezpečení, prostudujte si všechna [doporučení zabezpečení](https://docs.microsoft.com/azure/security-center/security-center-recommendations) a zkontrolujte, jestli jsou dané zásady vhodné pro vaše předplatné a skupiny prostředků. Je také důležité pochopit, jaká akce by se měla provést pro řešení doporučení zabezpečení a kdo z organizace bude zodpovědný za monitorování nových doporučení a provádění potřebných kroků.
 
 ## <a name="data-collection-and-storage"></a>Shromažďování dat a úložiště
-Azure Security Center používá agenta Microsoft Monitoring Agent – to je stejný agent, kterého používá služba Azure Monitor – ke shromažďování dat zabezpečení z virtuálních počítačů. [Shromážděná data](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection) z tohoto agenta se budou ukládat v pracovních prostorech Log Analytics.
+Azure Security Center používá agenta Microsoft Monitoring Agent – to je stejný agent, kterého používá služba Azure Monitor – ke shromažďování dat zabezpečení z virtuálních počítačů. [Shromážděná data](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection) z tohoto agenta se budou ukládat v pracovních prostorech služby Log Analytics.
 
 ### <a name="agent"></a>Agent
 

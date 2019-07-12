@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: baca05a9c007849d813b2f4de17378e6d18da4a5
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
-ms.translationtype: HT
+ms.openlocfilehash: 22d6999b2a69aceb4421cea070d784f693bdf9c4
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67701740"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839282"
 ---
 # <a name="move-data-from-an-http-source-by-using-azure-data-factory"></a>Přesun dat z zdroje HTTP pomocí Azure Data Factory
 
@@ -45,7 +45,7 @@ Vytvoříte kanál s aktivitou kopírování pro přesun dat z zdroje HTTP pomoc
 
 - Pomocí Průvodce kopírování dat je nejjednodušší způsob, jak vytvořit kanál. Rychlý postup vytvoření kanálu pomocí Průvodce kopírování dat, najdete v části [kurzu: Vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md).
 
-- Tyto nástroje můžete také použít k vytvoření kanálu: **webu Azure portal**, **sady Visual Studio**, **prostředí Azure PowerShell**, **Azure Resource Manageru Šablona**, **rozhraní .NET API**, nebo **rozhraní REST API**. Podrobné pokyny k vytvoření kanálu obsahujícího aktivitu kopírování, najdete v článku [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). JSON – ukázky této kopírování dat z HTTP zdroje do služby Azure Blob storage, najdete v části [JSON příklady](#json-examples).
+- Tyto nástroje můžete také použít k vytvoření kanálu: **sady Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru**, **rozhraní .NET API** , nebo **rozhraní REST API**. Podrobné pokyny k vytvoření kanálu obsahujícího aktivitu kopírování, najdete v článku [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). JSON – ukázky této kopírování dat z HTTP zdroje do služby Azure Blob storage, najdete v části [JSON příklady](#json-examples).
 
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 
@@ -231,7 +231,7 @@ Zobrazit [formáty souborů a komprese ve službě Azure Data Factory](data-fact
 
 ## <a name="json-examples"></a>Příklady pro JSON
 
-Následující příklady popisují ukázkový JSON definice, které můžete použít k vytvoření kanálu pomocí [webu Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md), [sady Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md), nebo [prostředí Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Příklady ukazují, jak kopírovat data z HTTP zdroje do úložiště objektů Blob v Azure. Nicméně je možné zkopírovat data *přímo* z jakéhokoli zdroje, které chcete některý z jímky [, které jsou podporované](data-factory-data-movement-activities.md#supported-data-stores-and-formats) pomocí aktivity kopírování ve službě Azure Data Factory.
+Následující příklady popisují ukázkový JSON definice, které můžete použít k vytvoření kanálu pomocí [sady Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) nebo [prostředí Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Příklady ukazují, jak kopírovat data z HTTP zdroje do úložiště objektů Blob v Azure. Nicméně je možné zkopírovat data *přímo* z jakéhokoli zdroje, které chcete některý z jímky [, které jsou podporované](data-factory-data-movement-activities.md#supported-data-stores-and-formats) pomocí aktivity kopírování ve službě Azure Data Factory.
 
 **Příklad: Kopírování dat z HTTP zdroje do úložiště objektů Blob v Azure**
 

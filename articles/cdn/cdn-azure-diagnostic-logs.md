@@ -7,19 +7,19 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2018
 ms.author: magattus
-ms.openlocfilehash: a5fab3e2bf9908fa35cf5f5485df3116b7718d8c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 86696ed6715b4e43a9d02232c013eb64feb61f67
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66125924"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594211"
 ---
 # <a name="azure-diagnostic-logs"></a>Diagnostické protokoly Azure
 
@@ -189,14 +189,14 @@ Základní protokoly analýzy se generují každou hodinu a data se shromažďuj
 
 **Popis pole:**
 
-|Hodnota|Popis|
+|Value|Popis|
 |-------|---------|
 |ID předplatného    |ID předplatného Azure ve formátu Guid.|
 |Název skupiny prostředků |Název skupiny prostředků, do které patří prostředků CDN.|
 |Profile Name (Název profilu) |Název profilu CDN|
 |Název koncového bodu |Název koncového bodu CDN|
 |Rok|  Reprezentace čtyřmístný rok, například 2017|
-|Měsíc| Dvěma číslicemi reprezentuje číslo měsíce. 01\. ledna =... 12. prosince =|
+|Měsíc| Dvěma číslicemi reprezentuje číslo měsíce. 01. ledna =... 12. prosince =|
 |Den|   Dvěma číslicemi vyjádření dne v měsíci|
 |PT1H.json| Skutečný soubor JSON je ukládat analytics data|
 
@@ -221,7 +221,7 @@ Pokud chcete používat Azure Monitor, je nutné [povolit protokolování](#enab
 
  Následující diagram znázorňuje architekturu vstupy a výstupy úložiště:
 
-![Pracovní prostor Log Analytics](./media/cdn-diagnostics-log/12_Repo-overview.png)
+![Pracovní prostor log Analytics](./media/cdn-diagnostics-log/12_Repo-overview.png)
 
 *Obrázek 3 – úložiště Log Analytics*
 
@@ -441,7 +441,7 @@ Příklad vlastnosti:
 
 ```
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
 * [Diagnostické protokoly Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
 * [Základní analýza přes doplňkový portál Azure CDN](https://docs.microsoft.com/azure/cdn/cdn-analyze-usage-patterns)

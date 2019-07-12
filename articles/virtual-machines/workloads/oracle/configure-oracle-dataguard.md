@@ -4,7 +4,7 @@ description: Rychle zprovoznit Oracle Data Guard nahoru v prostředí Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: romitgirdhar
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: c98e59cd0e547381d6b173b3a4b91c3a3e27b3a8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4329ce7fb74c61a601a37646a398c46940e22ffa
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60771715"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707514"
 ---
 # <a name="implement-oracle-data-guard-on-an-azure-linux-virtual-machine"></a>Implementace Oracle Data Guard na virtuálním počítači Azure s Linuxem 
 
@@ -38,7 +38,7 @@ Pokud chcete nainstalovat Oracle Data Guard, je potřeba vytvořit dva virtuáln
 
 Image Marketplace, který použijete k vytvoření virtuálních počítačů je Oracle: Oracle – databáze-Ee:12.1.0.2:latest.
 
-### <a name="sign-in-to-azure"></a>Přihlásit se k Azure 
+### <a name="sign-in-to-azure"></a>Přihlášení k Azure 
 
 Přihlaste se ke svému předplatnému Azure pomocí [az login](/cli/azure/reference-index) příkaz a postupujte podle pokynů na obrazovce pokynů.
 
@@ -686,7 +686,7 @@ Pokud už nepotřebujete, virtuálnímu počítači, můžete k odebrání skupi
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Kurz: Vytvoření virtuálních počítačů s vysokou dostupností](../../linux/create-cli-complete.md)
 
