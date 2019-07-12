@@ -7,7 +7,8 @@ author: rkarlin
 manager: rkarlin
 editor: ''
 ms.assetid: 10cce91a-421b-4959-acdf-7177d261f6f2
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: overview
 ms.custom: mvc
@@ -15,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 7d64f02c7bebb6d4326281ba87d118eab075eba9
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 2c730c240ed5ff68a1d48ef17d15de1aaa73ab1e
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65228597"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67619907"
 ---
 # <a name="what-is-azure-sentinel-preview"></a>Co je Azure Sentinelu Preview?
 
@@ -60,7 +61,7 @@ Po připojení zdroje dat můžete vybrat z Galerie [odborně vytvořit řídic�
 
 ![Řídicí panely](./media/overview/dashboards.png)
 
-## <a name="analytics"></a>Analýza
+## <a name="analytics"></a>Analýzy
 
 Můžete omezit informační šum a minimalizovat počet výstrah, budete muset zkontrolovat a zjistit, Sentinelu Azure používá [analytics ke korelaci výstrahy do případů](tutorial-detect-threats.md). **Případy** jsou skupiny souvisejících výstrah, které vytvářejí společně možností reakce možné hrozbu, kterou můžete prozkoumat a vyřešit. Použít pravidla vestavěné korelace jako-je nebo je používat jako výchozí bod k vytvoření vlastních. Azure Sentinel také nabízí machine learning pravidla pro mapování chování vaší sítě a potom vyhledejte anomálie napříč vašimi prostředky. Tyto analýzy propojení významů, kombinací málo specifických výstrah o různé entity do potenciální přesné bezpečnostní incidenty v oblasti.
 

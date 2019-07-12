@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3bb372c4c3ddb79429df20c24c691c847e927e2a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d8637a2711c0301d9e9f409e169ed04fb3d65783
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60567346"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839546"
 ---
 # <a name="copy-data-to-and-from-data-lake-storage-gen1-by-using-data-factory"></a>Kopírování dat do a z Data Lake Storage Gen1 pomocí služby Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, který používáte:"]
@@ -54,7 +54,7 @@ Vytvoření kanálu s aktivitou kopírování, která přesunuje data ze Azure D
 
 Nejjednodušší způsob, jak vytvořit kanál ke zkopírování dat je použít **Průvodce kopírováním**. Kurz týkající se vytvoření kanálu pomocí Průvodce kopírováním, najdete v tématu [kurzu: Vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md).
 
-Tyto nástroje můžete také použít k vytvoření kanálu: **Azure portal**, **sady Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru**, **rozhraní .NET API**a  **Rozhraní REST API**. Zobrazit [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování.
+Tyto nástroje můžete také použít k vytvoření kanálu: **Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru**, **rozhraní .NET API**, a **rozhraní REST API**. Zobrazit [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování.
 
 Ať už používáte, nástrojů nebo rozhraní API, proveďte následující kroky k vytvoření kanálu pro přesouvání dat ze zdrojového úložiště dat do úložiště dat jímky:
 
@@ -70,7 +70,7 @@ Následující části obsahují podrobnosti o vlastnostech JSON, které se pou�
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 Propojená služba propojuje úložiště dat do služby data factory. Vytvoření propojené služby typu **AzureDataLakeStore** propojení vašich dat v Data Lake Store se svou datovou továrnou. Následující tabulka popisuje elementy JSON, které jsou specifické pro Data Lake Store propojené služby. Můžete zvolit instančního objektu a ověření přihlašovacích údajů uživatele.
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 |:--- |:--- |:--- |
 | **type** | Vlastnost type musí být nastavená na **AzureDataLakeStore**. | Ano |
 | **dataLakeStoreUri** | Informace o účtu Azure Data Lake Store. Tyto informace má jednu z následujících formátů: `https://[accountname].azuredatalakestore.net/webhdfs/v1` nebo `adl://[accountname].azuredatalakestore.net/`. | Ano |
@@ -91,7 +91,7 @@ Pokud chcete používat ověřování instančních objektů, entity aplikaci za
 
 Použijte ověřování instančních objektů zadáním následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 |:--- |:--- |:--- |
 | **servicePrincipalId** | Zadejte ID klienta vaší aplikace. | Ano |
 | **servicePrincipalKey** | Zadejte klíč aplikace. | Ano |
@@ -118,7 +118,7 @@ Použijte ověřování instančních objektů zadáním následující vlastnos
 ### <a name="user-credential-authentication"></a>Ověření přihlašovacích údajů uživatele
 Alternativně můžete ověření přihlašovacích údajů uživatele ke kopírování z nebo do Data Lake Store tak, že zadáte následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 |:--- |:--- |:--- |
 | **Autorizace** | Klikněte na tlačítko **Authorize** tlačítko v editoru služby Data Factory a zadejte svoje přihlašovací údaje, které přiřadí adresu URL pro autorizaci automaticky generované této vlastnosti. | Ano |
 | **ID relace** | ID relace OAuth z autorizační relace OAuth. Každé ID relace je jedinečný a může být použit pouze jednou. Toto nastavení není automaticky vygenerován při použití editoru služby Data Factory. | Ano |
@@ -213,7 +213,7 @@ Podrobnosti o třídách služby Data Factory používá v kódu, najdete v čl�
     3. Klikněte na tlačítko **přidat přiřazení role**
     4. Nastavte **Role** jako **čtečky**a vyberte uživatele nebo instanční objekt služby, které budete používat pro kopírování k udělení přístupu
 
-3. Pokud nechcete, aby udělit **čtečky** role u uživatele nebo instanční objekt, alternativní [explicitně zadat umístění pro spuštění](data-factory-data-movement-activities.md#global) v kopírování activitywith umístění vaše Data Lake Store. Příklad:
+3. Pokud nechcete, aby udělit **čtečky** role u uživatele nebo instanční objekt, alternativní [explicitně zadat umístění pro spuštění](data-factory-data-movement-activities.md#global) v aktivitě kopírování s umístěním vaše Data Lake Store. Příklad:
 
     ```json
     {
@@ -237,7 +237,7 @@ K určení datové sady reprezentující vstupní data v Data Lake Store, může
 
 **TypeProperties** části datové sady typu **AzureDataLakeStore** obsahuje následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 |:--- |:--- |:--- |
 | **folderPath** |Cesta k kontejner a složku v Data Lake Store. |Ano |
 | **fileName** |Název souboru v Azure Data Lake Store. **FileName** vlastnost je volitelná a malá a velká písmena. <br/><br/>Pokud zadáte **fileName**, aktivity (včetně kopie) funguje na konkrétní soubor.<br/><br/>Když **fileName** není zadán, zahrnuje kopírování všech souborů v **folderPath** ve vstupní sadě.<br/><br/>Když **fileName** pro výstupní datovou sadu není zadána a **preserveHierarchy** není zadán v jímky aktivity, je název generovaného souboru ve formátu `Data._Guid_.txt`. Příklad: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. |Ne |
@@ -281,13 +281,13 @@ K dispozici ve vlastnosti **typeProperties** části aktivity se liší s jednot
 
 **AzureDataLakeStoreSource** podporuje následující vlastnost **typeProperties** části:
 
-| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
+| Vlastnost | Popis | Povolené hodnoty | Požadováno |
 | --- | --- | --- | --- |
 | **rekurzivní** |Určuje, jestli se data číst rekurzivně z podsložky nebo pouze z určené složky. |True, False (výchozí hodnota) |Ne |
 
 **AzureDataLakeStoreSink** podporuje následující vlastnosti v **typeProperties** části:
 
-| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
+| Vlastnost | Popis | Povolené hodnoty | Požadováno |
 | --- | --- | --- | --- |
 | **copyBehavior** |Určuje chování kopírování. |<b>PreserveHierarchy</b>: Zachová hierarchií souborů v cílové složce. Relativní cesta zdrojového souboru do zdrojové složky je stejný jako relativní cesta cílový soubor do cílové složky.<br/><br/><b>FlattenHierarchy</b>: Všechny soubory ze zdrojové složky vytvořené v první úroveň cílové složky. Cílové soubory se vytvoří s automaticky generované názvy.<br/><br/><b>MergeFiles</b>: Sloučí všechny soubory ze zdrojové složky do jednoho souboru. Pokud není zadán název souboru nebo objekt blob, je název souboru sloučeného se zadaným názvem. Název souboru, jinak se automaticky generuje. |Ne |
 
@@ -307,7 +307,7 @@ Tato část popisuje výsledné chování pro různé kombinace hodnot rekurzivn
 Podrobnosti najdete v tématu [formáty souborů a komprese ve službě Azure Data Factory](data-factory-supported-file-and-compression-formats.md) článku.
 
 ## <a name="json-examples-for-copying-data-to-and-from-data-lake-store"></a>Příklady JSON pro kopírování dat do a z Data Lake Store
-Následující příklady popisují ukázková definice JSON. Tyto ukázkové definice můžete použít k vytvoření kanálu pomocí [webu Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md), [sady Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md), nebo [prostředí Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Příklady ukazují, jak kopírovat data do a z Data Lake Store a Azure Blob storage. Nicméně je možné zkopírovat data _přímo_ z jakéhokoli zdroje na jakýkoli z podporovaných jímky. Další informace najdete v oddílu "podporovaná úložiště dat a formáty" v [přesun dat pomocí aktivity kopírování](data-factory-data-movement-activities.md) článku.
+Následující příklady popisují ukázková definice JSON. Tyto ukázkové definice můžete použít k vytvoření kanálu pomocí [sady Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) nebo [prostředí Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Příklady ukazují, jak kopírovat data do a z Data Lake Store a Azure Blob storage. Nicméně je možné zkopírovat data _přímo_ z jakéhokoli zdroje na jakýkoli z podporovaných jímky. Další informace najdete v oddílu "podporovaná úložiště dat a formáty" v [přesun dat pomocí aktivity kopírování](data-factory-data-movement-activities.md) článku.
 
 ### <a name="example-copy-data-from-azure-blob-storage-to-azure-data-lake-store"></a>Příklad: Kopírování dat z Azure Blob Storage do Azure Data Lake Store
 Příklad kódu v této části ukazuje:

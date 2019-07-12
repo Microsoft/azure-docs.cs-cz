@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2e590e4765f4795123e219f8da4b3e62bc79ca30
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e8de1d27d92ac57f478b7615144dba166f420d27
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511349"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807228"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Nakonfigurujte tok přihlašovacího hesla vlastníka prostředku v Azure AD B2C
 
@@ -108,7 +108,7 @@ Vytvoření volání POST podobný tomu vidíte tady pomocí informací v násle
 
 `https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-| Klíč | Hodnota |
+| Klíč | Value |
 | --- | ----- |
 | grant_type | refresh_token |
 | response_type | id_token |
@@ -135,6 +135,8 @@ Vytvoření volání POST podobný tomu vidíte tady pomocí informací v násle
     "refresh_token_expires_in": 1209600
 }
 ```
+> [!NOTE]
+> Při vytváření uživatele přes rozhraní Graph API, aplikace musí mít "openid", "offline_access" a "profil" oprávnění v Microsoft Graphu.
 
 ## <a name="implement-with-your-preferred-native-sdk-or-use-app-auth"></a>Implementace s upřednostňované nativní sadou SDK nebo použít ověřování aplikace
 

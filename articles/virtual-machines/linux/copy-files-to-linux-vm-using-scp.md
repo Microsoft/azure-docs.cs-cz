@@ -4,7 +4,7 @@ description: Bezpečně přesunout soubory do a z virtuálního počítače s Li
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: dlepow
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: danlep
 ms.subservice: disks
-ms.openlocfilehash: 7d5b2d2ee7e7320fb8bf91c8a62a0f46c403c977
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 13a2c889ac648e2847d1cc58a60a7b1c0f1fc1e2
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60328761"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671657"
 ---
 # <a name="move-files-to-and-from-a-linux-vm-using-scp"></a>Přesuňte soubory do a z virtuálního počítače s Linuxem pomocí spojovacího bodu služby
 
@@ -75,6 +75,6 @@ scp -r azureuser@myserver.eastus.cloudapp.com:/home/azureuser/logs/. /tmp/
 
 `-r` Rozhraní příkazového řádku příznak nastaví spojovací bod služby se rekurzivně kopírovat soubory a adresáře z bodu adresář uvedený v příkazu.  Všimněte si také, že se podobá syntaxi příkazového řádku `cp` zkopírujte příkaz.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Spravovat uživatele, SSH a kontrola nebo opravte disků v Azure s Linuxem pomocí rozšíření VMAccess](using-vmaccess-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

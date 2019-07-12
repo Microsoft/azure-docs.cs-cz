@@ -5,16 +5,16 @@ services: event-grid
 keywords: ''
 author: spelluru
 ms.author: spelluru
-ms.date: 10/17/2018
+ms.date: 07/11/2019
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: fbb8101bdb46dd037dbba1f56be440ef9ce60688
-ms.sourcegitcommit: af31deded9b5836057e29b688b994b6c2890aa79
-ms.translationtype: HT
+ms.openlocfilehash: a11e04a92375f5b52849257124344673301739e5
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/11/2019
-ms.locfileid: "67812957"
+ms.locfileid: "67839155"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>Rychlý start: Směrování událostí služby Blob storage do webového koncového bodu pomocí webu Azure portal
 
@@ -102,7 +102,7 @@ Událost pro úložiště objektů blob aktivujete nahráním souboru. Soubor ne
 
 1. Přejděte k testovacímu souboru a nahrajte ho.
 
-1. Právě jste aktivovali událost a služba Event Grid odeslala zprávu do koncového bodu, který jste nakonfigurovali při přihlášení k odběru. Zobrazte svou webovou aplikaci a všimněte si, že se přijala událost vytvoření objektu blob. 
+1. Právě jste aktivovali událost a služba Event Grid odeslala zprávu do koncového bodu, který jste nakonfigurovali při přihlášení k odběru. Zpráva je uložena ve formátu JSON a obsahuje pole obsahující jeden nebo více událostí. V následujícím příkladu zpráva JSON obsahuje pole obsahující jednu událost. Zobrazte svou webovou aplikaci a všimněte si, že se přijala událost vytvoření objektu blob. 
 
    ```json
    [{

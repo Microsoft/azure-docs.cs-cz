@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 134ab2a5f0b1b1569cdf4747f5bbe3f895ba4e8f
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 8487f82b123b42f9d6a6f0fbd6d6cbb240bf9fdc
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67293017"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67785527"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Nasazení ochrany hesel Azure AD
 
@@ -44,7 +44,7 @@ Za běhu funkci v režimu auditování přiměřené dobu, můžete přepnout ko
    > Nasazení služby proxy serveru je nezbytnou podmínkou pro nasazení služby Azure AD hesla protection i v případě, že řadič domény může mít odchozí přímé připojení k Internetu. 
    >
 * Všechny počítače s nainstalovanou službu Proxy ochrana hesel Azure AD musí mít nainstalovaný .NET 4.7.
-  .NET 4.7 musí již nainstalován na serveru Windows Server kompletně aktualizovaný. Pokud to není tento případ, stáhněte a spusťte instalační program na [offline instalační program .NET Framework 4.7 pro Windows](https://support.microsoft.com/en-us/help/3186497/the-net-framework-4-7-offline-installer-for-windows).
+  .NET 4.7 musí již nainstalován na serveru Windows Server kompletně aktualizovaný. Pokud to není tento případ, stáhněte a spusťte instalační program na [offline instalační program .NET Framework 4.7 pro Windows](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows).
 * Všechny počítače, včetně řadičů domény, které byly nainstalovány součásti ochrany hesla Azure AD musíte mít Universal C Runtime nainstalovaný. Modul runtime můžete získat tak, že všechny aktualizace ze služby Windows Update. Nebo můžete ho získat balíček aktualizací specifické pro operační systém. Další informace najdete v tématu [aktualizace pro Universal C Runtime ve službě Windows](https://support.microsoft.com/help/2999226/update-for-uniersal-c-runtime-in-windows).
 * Připojení k síti musí existovat mezi aspoň jeden řadič domény v každé doméně a alespoň jeden server, který hostuje službu proxy serveru pro ochranu heslem. Toto připojení musí umožňovat řadič domény pro přístup k vzdálené volání Procedur endpoint mapper port 135 a port serveru RPC na službu proxy serveru. Ve výchozím nastavení, je port serveru RPC dynamický port vzdáleného volání Procedur, ale lze nastavit na [použití statického portu](#static).
 * Všechny počítače, které hostují službu proxy musí mít přístup k síti pro následující koncové body:

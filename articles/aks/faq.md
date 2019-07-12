@@ -2,18 +2,18 @@
 title: Nejčastější dotazy pro Azure Kubernetes Service (AKS)
 description: Najděte odpovědi na některé běžné otázky o Azure Kubernetes Service (AKS).
 services: container-service
-author: iainfoulds
+author: mlearned
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 07/03/2019
-ms.author: iainfou
-ms.openlocfilehash: d4fa365e1ed055fa8ddeb8fd475e152af84a3b71
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.date: 07/08/2019
+ms.author: mlearned
+ms.openlocfilehash: 495f182ed450d0fac69b31ea2996bacc60863fea
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67560448"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672782"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Nejčastější dotazy o Azure Kubernetes Service (AKS)
 
@@ -62,30 +62,28 @@ Pro uzly Windows serveru (aktuálně ve verzi preview ve službě AKS) Windows U
 Každé nasazení služby AKS zahrnuje dvě skupiny prostředků:
 
 1. Můžete vytvořit první skupinu prostředků. Tato skupina obsahuje pouze příslušný prostředek služby Kubernetes. Poskytovatel prostředků pro AKS automaticky vytvoří druhé skupině prostředků během nasazování. Příkladem druhého skupina prostředků je *MC_myResourceGroup_myAKSCluster_eastus*. Informace o tom, jak zadat název této druhé skupině prostředků najdete v další části.
-1. Skupina druhý prostředků, jako například *MC_myResourceGroup_myAKSCluster_eastus*, obsahuje všechny prostředky infrastruktury přidružené ke clusteru. Tyto prostředky zahrnují virtuální počítače uzlu Kubernetes, virtuální sítě a úložiště. Účelem této skupiny prostředků je zjednodušit vyčištění prostředků.
+1. Druhá skupiny prostředků, označované jako *uzlu skupiny prostředků*, obsahuje všechny prostředky infrastruktury přidružené ke clusteru. Tyto prostředky zahrnují virtuální počítače uzlu Kubernetes, virtuální sítě a úložiště. Ve výchozím nastavení, uzlu skupiny prostředků má název, například *MC_myResourceGroup_myAKSCluster_eastus*. AKS automaticky odstraní uzlu prostředku pokaždé, když se při odstranění clusteru, takže by měl používat pouze pro prostředky, které sdílejí životní cyklus clusteru.
 
-Pokud jste vytvořili prostředky pro použití s vaším clusterem AKS, jako je například účty úložiště nebo vyhrazené veřejné IP adresy, je umístíte ve skupině automaticky generované prostředků.
+## <a name="can-i-provide-my-own-name-for-the-aks-node-resource-group"></a>Můžete zadat vlastní název pro skupinu prostředků uzlů AKS?
 
-## <a name="can-i-provide-my-own-name-for-the-aks-infrastructure-resource-group"></a>Můžete zadat vlastní název pro skupinu prostředků infrastruktury AKS?
-
-Ano. Ve výchozím nastavení, poskytovatel prostředků pro AKS automaticky vytvoří skupinu prostředků sekundární (například *MC_myResourceGroup_myAKSCluster_eastus*) během nasazení. Pro dosažení souladu s firemní zásady, můžete zadat vlastní název pro tento spravovaný cluster (*MC_* ) skupina prostředků.
+Ano. Ve výchozím nastavení, bude AKS nazvěte skupinu prostředků v uzlu *MC_clustername_resourcegroupname_location*, ale můžete taky zadat vlastní název.
 
 Chcete-li zadat vlastní název skupiny prostředků, nainstalujte [aks ve verzi preview][aks-preview-cli] verze rozšíření Azure CLI *0.3.2* nebo novější. Při vytváření clusteru AKS pomocí [az aks vytvořit][az-aks-create] příkazu, použijte *– node-resource-group* parametr a zadejte název pro skupinu prostředků. Pokud jste [pomocí šablony Azure Resource Manageru][aks-rm-template] Pokud chcete nasadit AKS cluster, můžete definovat pomocí názvu skupiny prostředků *nodeResourceGroup* vlastnost.
 
 * Poskytovatel prostředků Azure ve svém vlastním předplatném automaticky vytvoří skupinu sekundární prostředků.
 * Název skupiny prostředků vlastní můžete zadat jenom při vytváření clusteru.
 
-Při práci s *MC_* skupinu prostředků, uvědomte si, že není možné:
+Při práci s vybranou skupinou prostředků uzlu, mějte na paměti, která není možné:
 
-* Zadejte existující skupinu prostředků pro *MC_* skupiny.
-* Zadejte jiné předplatné pro *MC_* skupinu prostředků.
-* Změnit *MC_* název skupiny prostředků po vytvoření clusteru.
-* Zadejte názvy pro spravované prostředky v rámci *MC_* skupinu prostředků.
-* Úprava nebo odstranění značek v rámci spravovaných prostředků *MC_* skupinu prostředků. (Viz další informace v následující části.)
+* Zadejte existující skupinu prostředků pro skupinu prostředků uzlu.
+* Zadejte jiné předplatné pro skupinu prostředků uzlu.
+* Změňte název skupiny prostředků uzlu po vytvoření clusteru.
+* Zadejte názvy pro spravované prostředky v rámci uzlu skupiny prostředků.
+* Úpravy nebo odstranění značky spravované prostředky v rámci uzlu skupiny prostředků. (Viz další informace v následující části.)
 
-## <a name="can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-mc-resource-group"></a>Můžete upravit značky a dalších vlastností AKS prostředky ve skupině prostředků MC_?
+## <a name="can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-node-resource-group"></a>Můžete upravit značky a dalších vlastností AKS prostředky ve skupině prostředků uzel?
 
-Pokud upravíte nebo odstraníte Azure vytvořené značky a jiné vlastnosti prostředku v *MC_* skupinu prostředků, může dojít, jako je například škálování a upgradu chyby neočekávané výsledky. AKS umožňuje vytvářet a upravovat vlastní značky. Můžete vytvořit nebo upravit vlastní značky, například, přiřadit obchodní jednotky nebo nákladů centra. Změnou prostředky v rámci *MC_* v clusteru AKS přerušit cíle úrovně služeb (SLO). Další informace najdete v tématu [nemá AKS nabízí smlouvu o úrovni služeb?](#does-aks-offer-a-service-level-agreement)
+Pokud upravíte nebo odstraníte Azure vytvořené značky a dalších vlastností prostředků ve skupině prostředků uzel, může získat neočekávané výsledky, jako je například škálování a upgradu chyby. AKS umožňuje vytvářet a upravovat vlastní značky. Můžete vytvořit nebo upravit vlastní značky, například, přiřadit obchodní jednotky nebo nákladů centra. Změnou prostředky ve skupině prostředků uzlu v clusteru AKS přerušit cíle úrovně služeb (SLO). Další informace najdete v tématu [nemá AKS nabízí smlouvu o úrovni služeb?](#does-aks-offer-a-service-level-agreement)
 
 ## <a name="what-kubernetes-admission-controllers-does-aks-support-can-admission-controllers-be-added-or-removed"></a>Jaké řadiče jejich příchodu Kubernetes AKS podporuje? Můžete jejich příchodu řadiče přidat nebo odebrat?
 

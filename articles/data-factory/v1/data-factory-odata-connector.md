@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: b2c665de94750c4c6f41bda47960fdb9ba17e819
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 840a839f7d3259de0473937de9c9970fcb95227c
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60824027"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839081"
 ---
 # <a name="move-data-from-an-odata-source-using-azure-data-factory"></a>Přesun dat z OData zdroji pomocí služby Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, který používáte:"]
@@ -46,7 +46,7 @@ Vytvoření kanálu s aktivitou kopírování, která přesunuje data ze zdroje 
 
 Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Zobrazit [kurzu: Vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním data.
 
-Tyto nástroje můžete také použít k vytvoření kanálu: **Azure portal**, **sady Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru**, **rozhraní .NET API**a  **Rozhraní REST API**. Zobrazit [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování.
+Tyto nástroje můžete také použít k vytvoření kanálu: **Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru**, **rozhraní .NET API**, a **rozhraní REST API**. Zobrazit [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování.
 
 Ať už používáte, nástrojů nebo rozhraní API, proveďte následující kroky k vytvoření kanálu pro přesouvání dat ze zdrojového úložiště dat do úložiště dat jímky:
 
@@ -146,7 +146,7 @@ Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro
 
 **TypeProperties** oddílu se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti. TypeProperties části datové sady typu **ODataResource** (která zahrnuje datovou sadu OData) má následující vlastnosti
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 | --- | --- | --- |
 | path |Cesta k prostředku OData |Ne |
 
@@ -157,7 +157,7 @@ Vlastnosti v části typeProperties aktivity se liší na druhé straně s jedno
 
 Pokud je zdroj typu **RelationalSource** (která zahrnuje OData) v části typeProperties jsou k dispozici následující vlastnosti:
 
-| Vlastnost | Popis | Příklad: | Požaduje se |
+| Vlastnost | Popis | Příklad | Požadováno |
 | --- | --- | --- | --- |
 | query |Použijte vlastní dotaz číst data. |"?$select=Name, Description&$top=5" |Ne |
 
@@ -174,7 +174,7 @@ Při přesunu dat z protokolu OData, se používají následující mapování z
 | Edm.Binary |Byte[] |
 | Edm.Boolean |Bool |
 | Edm.Byte |Byte[] |
-| Edm.DateTime |DateTime |
+| Edm.DateTime |Datetime |
 | Edm.Decimal |Decimal |
 | Edm.Double |Double |
 | Edm.Single |Single |
@@ -185,13 +185,13 @@ Při přesunu dat z protokolu OData, se používají následující mapování z
 | Edm.SByte |Int16 |
 | Edm.String |String |
 | Edm.Time |TimeSpan |
-| Edm.DateTimeOffset |Datetimeoffset |
+| Edm.DateTimeOffset |DateTimeOffset |
 
 > [!Note]
 > OData komplexní datové typy třeba objektu nejsou podporovány.
 
 ## <a name="json-example-copy-data-from-odata-source-to-azure-blob"></a>Příklad JSON: Kopírování dat ze zdroje OData do objektů Blob v Azure
-V tomto příkladu obsahuje ukázky JSON definice, které můžete použít k vytvoření kanálu pomocí [webu Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md) nebo [sady Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) nebo [prostředí Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Zobrazí se kopírování dat ze zdroje OData ke službě Azure Blob Storage. Ale data je možné zkopírovat do libovolné jímky uvedeno [tady](data-factory-data-movement-activities.md#supported-data-stores-and-formats) pomocí aktivit kopírování ve službě Azure Data Factory. Ukázka obsahuje následující entity služby Data Factory:
+V tomto příkladu obsahuje ukázky JSON definice, které můžete použít k vytvoření kanálu pomocí [sady Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) nebo [prostředí Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Zobrazí se kopírování dat ze zdroje OData ke službě Azure Blob Storage. Ale data je možné zkopírovat do libovolné jímky uvedeno [tady](data-factory-data-movement-activities.md#supported-data-stores-and-formats) pomocí aktivit kopírování ve službě Azure Data Factory. Ukázka obsahuje následující entity služby Data Factory:
 
 1. Propojené služby typu [OData](#linked-service-properties).
 2. Propojené služby typu [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).

@@ -10,12 +10,12 @@ ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 04/03/2019
-ms.openlocfilehash: e1327ded4b07f379f954ee5594b4eec2b7523ab4
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
-ms.translationtype: HT
+ms.openlocfilehash: cef3036b01709847016d9523a5770febb8ff1134
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621112"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839663"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Upgrade služby data warehouse na Gen2
 
@@ -39,13 +39,13 @@ Následující tabulka shrnuje podle oblastí, při nižší Gen2 výpočetní v
 | Kanada – východ |\* |\* |
 | Střed USA |K dispozici |1\. června 2019 |
 | Čína – východ |\* |\* |
-| Čína – východ 2 |\* |Pouze Gen2 |
+| Čína – východ 2 |K dispozici |Pouze Gen2 |
 | Čína – sever |\* |\* |
 | Čína – sever 2 |K dispozici |Pouze Gen2 |
 | Východní Asie |K dispozici |1\. června 2019 |
 | East US |K dispozici |1\. června 2019 |
 | Východní USA 2 |K dispozici |1\. června 2019 |
-| Francie – střed |\* |1\. června 2019 |
+| Francie – střed |K dispozici |1\. června 2019 |
 | Německo – střed |\* |\* |
 | Německo – středozápad |1\. září 2019|2\. ledna 2020 |
 | Indie – střed |K dispozici |1\. června 2019 |
@@ -56,10 +56,12 @@ Následující tabulka shrnuje podle oblastí, při nižší Gen2 výpočetní v
 | Jižní Korea – jih |K dispozici |1\. května 2019 |
 | Střed USA – sever |K dispozici |1\. května 2019 |
 | Severní Evropa |K dispozici |1\. června 2019 |
+| Jižní Afrika – sever |12. července 2019 |Pouze Gen2 |
 | Střed USA – jih |K dispozici |1\. června 2019 |
 | Jihovýchodní Asie |K dispozici |1\. června 2019 |
-| Velká Británie – jih |K dispozici, 2019 |1\. června 2019 |
-| Spojené království – západ |\*|\* |
+| Spojené arabské emiráty – sever |20. července 2019 |Pouze Gen2 |
+| Velká Británie – jih |K dispozici |1\. června 2019 |
+| Spojené království – západ |K dispozici |Pouze Gen2 |
 | Západní střed USA |2\. září 2019 |2\. ledna 2020|
 | Západní Evropa |K dispozici |1\. června 2019 |
 | USA – západ |K dispozici |1\. června 2019 |

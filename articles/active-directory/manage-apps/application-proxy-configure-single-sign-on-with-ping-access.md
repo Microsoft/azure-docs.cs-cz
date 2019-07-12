@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c43498a7829a43fad331841aca045f52ae680be
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 54a99d001f8cb59af3042ce8b6849a2cd9480e99
+ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67481473"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67723994"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Ověřování založené na hlavičkách pro jednotné přihlašování s Proxy aplikací a Pingaccessem
 
@@ -53,10 +53,11 @@ Pokud jste povolili Proxy aplikace povolená a již nainstalovaný konektor, mů
 Konektor Proxy aplikací je služba Windows Server, která směruje provoz z vzdálení zaměstnanci k publikovaným aplikacím. Podrobnější pokyny k instalaci najdete v článku [kurzu: Přidat místní aplikace pro vzdálený přístup prostřednictvím Proxy aplikací v Azure Active Directory](application-proxy-add-on-premises-application.md).
 
 1. Přihlaste se k [portálu Azure Active Directory](https://aad.portal.azure.com/) jako správce aplikací. **Centra pro správu Azure Active Directory** se zobrazí stránka.
-2. Vyberte **Azure Active Directory** > **proxy aplikací** > **stáhnout službu konektoru**. **Stažení konektoru Proxy aplikace** se zobrazí stránka.
+1. Vyberte **Azure Active Directory** > **proxy aplikací** > **stáhnout službu konektoru**. **Stažení konektoru Proxy aplikace** se zobrazí stránka.
 
    ![Stažení konektoru proxy aplikace](./media/application-proxy-configure-single-sign-on-with-ping-access/application-proxy-connector-download.png)
-3. Postupujte podle pokynů k instalaci.
+
+1. Postupujte podle pokynů k instalaci.
 
 Stažení konektoru by měl automaticky povolí Proxy aplikace pro svůj adresář, ale pokud ne, můžete vybrat **povolení Proxy aplikace**.
 
@@ -205,7 +206,7 @@ Příklad zahrnout e-mailovou adresu do access_token, který bude využívat Pin
 
 ### <a name="use-of-claims-mapping-policy-optional"></a>Použití deklarací identity mapování zásad (volitelné)
 
-[Deklarace identity mapování zásady (preview)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-claims-mapping#claims-mapping-policy-properties/) pro atributy, které neexistují v Azure AD. Mapování deklarací umožňuje migrace staré aplikace v místním prostředí do cloudu tak, že přidáte další vlastní deklarace identity, které využívají služby AD FS nebo uživatelské objekty
+[Deklarace identity mapování zásady (preview)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-claims-mapping#claims-mapping-policy-properties) pro atributy, které neexistují v Azure AD. Mapování deklarací umožňuje migrace staré aplikace v místním prostředí do cloudu tak, že přidáte další vlastní deklarace identity, které využívají služby AD FS nebo uživatelské objekty
 
 Chcete-li aplikaci pomocí vlastní deklarace identity a zahrnutí dalších polí, ujistěte se, když jste také [vytvoření vlastní deklarace identity mapování zásad a přiřazené k aplikaci](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment).
 

@@ -3,17 +3,17 @@ title: Zabezpečení služeb CloudSimple
 description: Popisuje modely sdílená odpovědnost u zabezpečení CloudSimple služeb
 author: sharaths-cs
 ms.author: b-shsury
-ms.date: 4/27/19
+ms.date: 04/27/2019
 ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: db093f6aef4f1bdb28a96bf89b3013d359a7b796
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 325915aae43c905236910382f650730a6daa127a
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67154112"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595325"
 ---
 # <a name="cloudsimple-security-overview"></a>Přehled zabezpečení CloudSimple
 
@@ -88,7 +88,7 @@ CloudSimple podporuje volitelná konfigurace zdroj identity pro vCenter privátn
 
 Ve výchozím nastavení disponují zákazníci oprávnění, které jsou nezbytné pro každodenní operace vCenter v rámci privátního cloudu. Tuto úroveň oprávnění neobsahuje přístup správce k serveru vCenter. Pokud se dočasně vyžaduje přístup správce, můžete si [eskalovat oprávnění](https://docs.azure.cloudsimple.com/escalate-private-cloud-privileges) po omezenou dobu při dokončování úlohy správy.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Zjistěte, jak [v Azure vytvořit službu CloudSimple](quickstart-create-cloudsimple-service.md).
 * Zjistěte, jak [vytvoření privátního cloudu](https://docs.azure.cloudsimple.com/create-private-cloud/).

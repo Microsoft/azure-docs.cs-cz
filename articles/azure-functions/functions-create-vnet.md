@@ -7,13 +7,14 @@ manager: jeconnoc
 ms.service: azure-functions
 ms.topic: article
 ms.date: 5/03/2019
-ms.author: alkarche, glenga
-ms.openlocfilehash: 55cce60ab3d1cda3cb870afd2f6214f917a04189
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: alkarche
+ms.reviewer: glenga
+ms.openlocfilehash: 0a31b58a3c843a2add0c84dc1a3ad4ab6417815e
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67063277"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612888"
 ---
 # <a name="tutorial-integrate-functions-with-an-azure-virtual-network"></a>Kurz: integrate funkce do služby Azure virtual network
 
@@ -68,7 +69,7 @@ Dále vytvořte předem nakonfigurovaných virtuálních počítačů, na které
     | **Předplatné** | Vaše předplatné | Předplatné, ve kterém se prostředky vytvoří. | 
     | **[Skupina prostředků](../azure-resource-manager/resource-group-overview.md)**  | myResourceGroup | Zvolte `myResourceGroup`, nebo skupinu prostředků, který jste vytvořili pomocí aplikace function app. Stejnou skupinu prostředků pro aplikace function app, WordPress virtuálního počítače a plán hostování usnadňuje vyčištění prostředků po dokončení tohoto kurzu. |
     | **Název virtuálního počítače** | VNET-Wordpress | Název virtuálního počítače musí být jedinečný ve skupině prostředků |
-    | **[Region](https://azure.microsoft.com/regions/)** | (Evropa) Západní Evropa | Zvolte oblast blízko vás nebo blízko ní. funkce, které přistupují k virtuálnímu počítači. |
+    | **[Region](https://azure.microsoft.com/regions/)** | (Evropa) Evropa – západ | Zvolte oblast blízko vás nebo blízko ní. funkce, které přistupují k virtuálnímu počítači. |
     | **Velikost** | B1s | Zvolte **změnit velikost** a potom vyberte image standardní B1s, který má 1 virtuálních procesorů a 1 GB paměti. |
     | **Typ ověřování** | Heslo | Pokud chcete použít ověřování pomocí hesla, musíte zadat také **uživatelské jméno**, zabezpečené **heslo**a potom **potvrzení hesla**. V tomto kurzu nebudete potřebovat k přihlášení k virtuálnímu počítači, pokud potřebujete řešit. |
 

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/02/2019
-ms.openlocfilehash: 41a57d1ad5d216797fc60ea13acff346734fdef8
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 7885b03e9f92fc8e8c5b2c78049760cbed8d4dc7
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67433635"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67703959"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Přizpůsobení clusterů Azure HDInsight pomocí skriptových akcí
 
@@ -178,7 +178,7 @@ Tato část popisuje různé způsoby, jak skriptových akcí můžete použít 
     | Vyberte skript | Chcete-li použít vlastní skript, vyberte __vlastní__. V opačném případě vyberte jednu z poskytnutých skriptů. |
     | Name |Zadejte název akce skriptu. |
     | URI skriptu bash |Zadejte identifikátor URI skriptu. |
-    | HEAD/Worker/Zookeeper |Zadejte uzly, na kterých je skript spuštěn: **Hlavní**, **pracovního procesu**, nebo **ZooKeeper**. |
+    | HEAD/Worker/ZooKeeper |Zadejte uzly, na kterých je skript spuštěn: **Hlavní**, **pracovního procesu**, nebo **ZooKeeper**. |
     | Parametry |Zadejte parametry, pokud je to nutné skript. |
 
     Použití __zachovat tuto akci se skripty__ položku a ujistěte se, že skript je použit během operace škálování.
@@ -255,7 +255,7 @@ Přejděte [webu Azure portal](https://portal.azure.com):
 
     Následující tabulka popisuje prvky ve formuláři:
 
-    | Vlastnost | Hodnota |
+    | Vlastnost | Value |
     | --- | --- |
     | Vyberte skript | Chcete-li použít vlastní skript, vyberte __vlastní__. V opačném případě vyberte dodávaného skriptu. |
     | Name |Zadejte název akce skriptu. |
@@ -468,7 +468,7 @@ Pokud se vytvoření clusteru se nepovedlo kvůli chybě skriptu, protokoly se u
 
 * Je možné, opakovaně vytvořit cluster akce skriptu se stejným názvem. V takovém případě lze rozlišit relevantní protokoly na základě **datum** název složky. Například strukturu složek pro cluster, **mycluster**, které byly vytvořeny na různá data se zobrazí podobná následující položky protokolu:
 
-    `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\mycluster\2015-10-04` `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\mycluster\2015-10-05`
+    `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\mycluster\2015-10-04``\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\mycluster\2015-10-05`
 
 * Pokud vytvoříte cluster akce skriptu se stejným názvem v jednom dni, můžete k identifikaci příslušných protokolových souborů jedinečnou předponu.
 

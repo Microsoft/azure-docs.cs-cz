@@ -2,17 +2,17 @@
 title: Principy – základy Kubernetes pro služby Azure Kubernetes (AKS)
 description: Naučte se základní cluster a zatížení součástí Kubernetes a jak souvisejí s funkcí ve službě Azure Kubernetes Service (AKS)
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.author: iainfou
-ms.openlocfilehash: ab818c0bded71b4566173f4a6a720fce9bc539c3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mlearned
+ms.openlocfilehash: 5f387310e737982b824d0ac9662822d9a74f39e9
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66514531"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67616005"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Základní koncepty Kubernetes pro Azure Kubernetes Service (AKS)
 
@@ -132,7 +132,7 @@ Používá Kubernetes *podů* ke spuštění instance vaší aplikace. Pod před
 
 Při vytváření podu můžete definovat *omezení prostředků* požádat o určitý objem prostředků procesoru nebo paměti. Plánovač Kubernetes pokusí se naplánovat podů pro spuštění na uzel s prostředky pro splnění požadavku. Můžete také zadat omezení maximální prostředků, které brání v dané pod ve využívání příliš mnoho výpočetních prostředků z podkladové uzlu. Osvědčeným postupem je zahrnují omezení prostředků pro všechny podů umožňující plánovači Kubernetes porozumět, které prostředky jsou potřebné a povolené.
 
-Další informace najdete v tématu [podů Kubernetes] [ kubernetes-pods] a [Kubernetes pod životního cyklu][kubernetes-pod-lifecycle].
+Další informace najdete v tématu [podů Kubernetes][kubernetes-pods] and [Kubernetes pod lifecycle][kubernetes-pod-lifecycle].
 
 Pod je logický prostředků, ale kontejnery jsou, ve kterém se spouští úlohy aplikací. Podů jsou obvykle dočasné, uvolnitelné prostředky a jednotlivě naplánované podů neproběhly některé vysokou dostupnost a redundance funkcí, které poskytuje Kubernetes. Místo toho se nasazují a spravují pomocí Kubernetes podů obvykle *řadiče*, jako je například nasazení Kontroleru.
 

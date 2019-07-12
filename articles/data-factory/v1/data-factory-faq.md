@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 518e3fa842c5283dc20a6111773bd55451f026b6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f33a59105d1be94ccd4fb24ae3d962b36c2efbdd
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60486828"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839358"
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Azure Data Factory – nejčastější dotazy
 > [!NOTE]
@@ -35,7 +35,7 @@ Data Factory umožňuje vytvářet pracovní postupy řízené daty pro přesun 
 Další informace najdete v tématu [přehled a klíčové koncepty](data-factory-introduction.md).
 
 ### <a name="where-can-i-find-pricing-details-for-azure-data-factory"></a>Kde najdu informace o cenách pro Azure Data Factory?
-Zobrazit [stránce s podrobnostmi ceny za Data Factory] [ adf-pricing-details] pro podrobnosti o cenách pro službu Azure Data Factory.  
+Zobrazit [stránce s podrobnostmi ceny za Data Factory][adf-pricing-details] pro podrobnosti o cenách pro službu Azure Data Factory.  
 
 ### <a name="how-do-i-get-started-with-azure-data-factory"></a>Jak můžu začít pracovat s Azure Data Factory?
 * Přehled služby Azure Data Factory najdete v tématu [Úvod do služby Azure Data Factory](data-factory-introduction.md).
@@ -51,11 +51,10 @@ Zobrazit **omezení datové továrny Azure** část [předplatné Azure a limity
 ### <a name="what-is-the-authoringdeveloper-experience-with-azure-data-factory-service"></a>Co je pro tvorbu/vývojářské prostředí pomocí služby Azure Data Factory?
 Můžete vytvořit/vytvářet datové továrny pomocí jedné z následujících nástrojů nebo sad SDK:
 
-* **Azure portal** okna Data Factory na webu Azure Portal poskytuje bohaté možnosti uživatelského rozhraní pro vytvoření datové továrny ad propojené služby. **Editoru služby Data Factory**, což je také součástí portálu, můžete snadno vytvářet propojené služby, tabulky, datové sady a kanály zadáním definice JSON pro tyto artefakty. Zobrazit [vytvoření prvního kanálu dat pomocí webu Azure portal](data-factory-build-your-first-pipeline-using-editor.md) příklad použití portal/editoru pro vytváření a nasazování datové továrny.
 * **Visual Studio** sady Visual Studio můžete použít k vytvoření datové továrny Azure. Zobrazit [vytvoření prvního kanálu dat pomocí sady Visual Studio](data-factory-build-your-first-pipeline-using-vs.md) podrobnosti.
-* **Prostředí Azure PowerShell** naleznete v tématu [vytvořit a monitorovat datové továrny Azure pomocí Azure Powershellu](data-factory-build-your-first-pipeline-using-powershell.md) kurzu/návod pro vytvoření datové továrny pomocí prostředí PowerShell. Zobrazit [Reference k rutinám Data Factory] [ adf-powershell-reference] obsahu v knihovně MSDN úplnou dokumentaci o rutinách služby Data Factory.
-* **Knihovna tříd rozhraní .NET** můžete programově vytvářet datové továrny pomocí Data Factory .NET SDK. Zobrazit [vytvářet, monitorovat a spravovat datové továrny pomocí sady .NET SDK](data-factory-create-data-factories-programmatically.md) návod k vytvoření datové továrny pomocí sady .NET SDK. Zobrazit [Reference knihovny tříd pro objekt pro vytváření dat] [ msdn-class-library-reference] úplnou dokumentaci o Data Factory .NET SDK.
-* **Rozhraní REST API** rozhraní REST API, který je zveřejněn prostřednictvím služby Azure Data Factory můžete použít také k vytváření a nasazování datové továrny. Zobrazit [referencích rozhraní API REST služby Data Factory] [ msdn-rest-api-reference] úplnou dokumentaci o rozhraní REST API služby Data Factory.
+* **Prostředí Azure PowerShell** naleznete v tématu [vytvořit a monitorovat datové továrny Azure pomocí Azure Powershellu](data-factory-build-your-first-pipeline-using-powershell.md) kurzu/návod pro vytvoření datové továrny pomocí prostředí PowerShell. Zobrazit [Reference k rutinám Data Factory][adf-powershell-reference] obsahu v knihovně MSDN úplnou dokumentaci o rutinách služby Data Factory.
+* **Knihovna tříd rozhraní .NET** můžete programově vytvářet datové továrny pomocí Data Factory .NET SDK. Zobrazit [vytvářet, monitorovat a spravovat datové továrny pomocí sady .NET SDK](data-factory-create-data-factories-programmatically.md) návod k vytvoření datové továrny pomocí sady .NET SDK. Zobrazit [Reference knihovny tříd pro objekt pro vytváření dat][msdn-class-library-reference] úplnou dokumentaci o Data Factory .NET SDK.
+* **Rozhraní REST API** rozhraní REST API, který je zveřejněn prostřednictvím služby Azure Data Factory můžete použít také k vytváření a nasazování datové továrny. Zobrazit [referencích rozhraní API REST služby Data Factory][msdn-rest-api-reference] úplnou dokumentaci o rozhraní REST API služby Data Factory.
 * **Šablona Azure Resource Manageru** naleznete v tématu [kurzu: Sestavit svou první datovou továrnu Azure pomocí šablony Azure Resource Manageru](data-factory-build-your-first-pipeline-using-arm.md) fo podrobnosti.
 
 ### <a name="can-i-rename-a-data-factory"></a>Můžete přejmenovat objekt pro vytváření dat?
@@ -178,7 +177,7 @@ Můžete znovu spustit určitý řez v jednom z následujících způsobů:
     ```powershell
     Set-AzDataFactorySliceStatus -Status Waiting -ResourceGroupName $ResourceGroup -DataFactoryName $df -TableName $table -StartDateTime "02/26/2015 19:00:00" -EndDateTime "02/26/2015 20:00:00"
     ```
-  Zobrazit [Set-AzDataFactorySliceStatus] [ set-azure-datafactory-slice-status] podrobné informace o rutině.
+  Zobrazit [Set-AzDataFactorySliceStatus][set-azure-datafactory-slice-status] podrobné informace o rutině.
 
 ### <a name="how-long-did-it-take-to-process-a-slice"></a>Jak dlouho to trvala zpracovat určitý řez?
 Použití Průzkumníku okna aktivity v monitorování a Správa aplikace vědět, jak dlouho trvalo zpracování datový řez. Zobrazit [Průzkumníku okna aktivity](data-factory-monitor-manage-app.md#activity-window-explorer) podrobnosti.

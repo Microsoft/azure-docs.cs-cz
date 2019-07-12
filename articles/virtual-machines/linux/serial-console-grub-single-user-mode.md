@@ -4,7 +4,7 @@ description: Pomocí konzoly sériového portu pro grub ve službě Azure virtua
 services: virtual-machines-linux
 documentationcenter: ''
 author: asinn826
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: a249cf96981957de2c445079c0172b9c0c2ce543
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5ff87e761bbe5243a478a00ca90d4be03fdbc6d4
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60799474"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706568"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Použít pro přístup k GRUB a Jednouživatelský režim konzoly sériového portu
 GRUB je součet spouštěcí zavaděč Unified. Z GRUB budete moci změnit konfiguraci spuštění pro spuštění do režimu jednoho uživatele, mimo jiné.
@@ -126,7 +126,7 @@ Ve výchozím nastavení imagemi Ubuntu nezobrazí automaticky GRUB obrazovky. T
 1. Změnit `GRUB_TIMEOUT` hodnotu s nenulovou hodnotou
 1. Otevřít `/etc/default/grub` v textovém editoru podle vašeho výběru
 1. Okomentujte `GRUB_HIDDEN_TIMEOUT=1` řádku
-1. Spusťte `sudo update-grub`.
+1. Spustit `sudo update-grub`
 
 ### <a name="single-user-mode-in-ubuntu"></a>Režimu jednoho uživatele v Ubuntu
 Ubuntu vyřadí je do režimu jednoho uživatele automaticky pokud ji nemůže normálně. Ruční zadání režimu jednoho uživatele, použijte následující pokyny:

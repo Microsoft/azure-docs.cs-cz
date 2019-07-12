@@ -8,19 +8,19 @@ writer: zhchia
 manager: beatrizd-msft
 ms.assetid: na
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2019
-ms.author: v-ant
-ms.openlocfilehash: 4e028429ca8a22915eff2b90ca63c6d05a67741b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: jeedes
+ms.openlocfilehash: f168e2746afa278880ad7ceb21f78666151d5aa1
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64692240"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672709"
 ---
 # <a name="tutorial-configure-atlassian-cloud-for-automatic-user-provisioning"></a>Kurz: Konfigurace cloudu od společnosti Atlassian pro automatické zřizování uživatelů
 
@@ -165,7 +165,7 @@ Další informace o tom, jak číst zřizování protokoly Azure AD najdete v t�
 * Cloud od společnosti Atlassian nepodporuje přejmenuje skupinu ještě dnes. To znamená, že jakékoli změny zobrazovaným názvem skupiny ve službě Azure AD nebude aktualizuje a projeví v cloudu od společnosti Atlassian.
 * Hodnota **e-mailu** atribut uživatele ve službě Azure AD je vyplněný pouze, když má uživatel poštovní schránky Microsoft Exchange. Pokud uživatel nemá jeden, se doporučuje pro mapování jinou požadovaný atribut pro **e-mailů** atribut v cloudu od společnosti Atlassian.
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

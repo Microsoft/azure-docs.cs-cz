@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c188c23f87715b6ba5b90f6015b59f2a347ec0cf
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bfb15e717e3cb726aba782d9a9506330d7ea39fe
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60486914"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839321"
 ---
 # <a name="move-data-by-using-copy-activity"></a>Přesun dat pomocí aktivity kopírování
 > [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, který používáte:"]
@@ -95,21 +95,21 @@ Když jsou zdroje a jímky úložiště dat v cloudu, datová továrna použív�
 
 | Geografie cílové úložiště dat | Oblast cílového úložiště dat. | Oblasti používané pro přesun dat |
 |:--- |:--- |:--- |
-| Spojené státy | Východ USA | Východ USA |
+| Spojené státy | East US | East US |
 | &nbsp; | Východní USA 2 | Východní USA 2 |
-| &nbsp; | Střední USA | Střední USA |
-| &nbsp; | Středoseverní USA | Středoseverní USA |
-| &nbsp; | Středojižní USA | Středojižní USA |
+| &nbsp; | Střed USA | Střed USA |
+| &nbsp; | Střed USA – sever | Střed USA – sever |
+| &nbsp; | Střed USA – jih | Střed USA – jih |
 | &nbsp; | Západní střed USA | Západní střed USA |
-| &nbsp; | Západní USA | Západní USA |
-| &nbsp; | Západní USA 2 | Západní USA 2 |
-| Kanada | Východní Kanada | Střední Kanada |
-| &nbsp; | Střední Kanada | Střední Kanada |
+| &nbsp; | USA – západ | USA – západ |
+| &nbsp; | USA – západ 2 | USA – západ 2 |
+| Kanada | Kanada – východ | Kanada – střed |
+| &nbsp; | Kanada – střed | Kanada – střed |
 | Brazílie | Brazílie – jih | Brazílie – jih |
 | Evropa | Severní Evropa | Severní Evropa |
 | &nbsp; | Západní Evropa | Západní Evropa |
-| Spojené království | Spojené království – západ | Spojené království – jih |
-| &nbsp; | Spojené království – jih | Spojené království – jih |
+| Spojené království | Spojené království – západ | Velká Británie – jih |
+| &nbsp; | Velká Británie – jih | Velká Británie – jih |
 | Asie a Tichomoří | Jihovýchodní Asie | Jihovýchodní Asie |
 | &nbsp; | Východní Asie | Jihovýchodní Asie |
 | Austrálie | Austrálie – východ | Austrálie – východ |
@@ -138,7 +138,7 @@ Vytvoření kanálu s aktivitou kopírování několika způsoby:
 Průvodce kopírováním služby Data Factory vám pomůže vytvořit kanál s aktivitou kopírování. Tento kanál umožňuje kopírovat data z podporovaných zdrojů do cílů *aniž byste museli napsat JSON* definice propojené služby, datové sady a kanály. Zobrazit [Průvodce kopírováním služby Data Factory](data-factory-copy-wizard.md) podrobné informace o průvodci.  
 
 ### <a name="by-using-json-scripts"></a>Pomocí skriptů JSON
-Editor služby Data Factory webu Azure portal, sady Visual Studio nebo prostředí Azure PowerShell slouží k vytvoření definici JSON kanálu (pomocí aktivity kopírování). Pak můžete nasadit ho k vytvoření kanálu ve službě Data Factory. Zobrazit [kurzu: Použití aktivity kopírování v kanálu Azure Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) kurz s podrobnými pokyny.    
+Data Factory Editor v sadě Visual Studio nebo Azure PowerShell slouží k vytvoření definici JSON kanálu (pomocí aktivity kopírování). Pak můžete nasadit ho k vytvoření kanálu ve službě Data Factory. Zobrazit [kurzu: Použití aktivity kopírování v kanálu Azure Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) kurz s podrobnými pokyny.    
 
 Vlastnosti JSON (například název, popis, vstupní a výstupní tabulky a zásady) jsou k dispozici pro všechny typy aktivit. Vlastnosti, které jsou k dispozici v `typeProperties` části aktivity se liší s jednotlivými typu aktivity.
 
@@ -211,6 +211,6 @@ Různých úložišť dat mají různé nativní typ systémy. Aktivita kopírov
 
 Mapování ze systému nativní typ na typ .NET pro úložiště dat je v článku příslušné datové úložiště. (Klikněte na odkaz v tabulce úložiště dat podporované). Tato mapování můžete použít k určení odpovídající typy při vytváření tabulek, takže aktivita kopírování provádí převody vpravo.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Další informace o aktivitě kopírování najdete v tématu [kopírování dat z Azure Blob storage do Azure SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 * Další informace o přesun dat z do místního úložiště dat do cloudového úložiště dat, naleznete v tématu [přesun dat z místních úložišť dat v cloudu](data-factory-move-data-between-onprem-and-cloud.md).

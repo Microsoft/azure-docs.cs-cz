@@ -11,209 +11,156 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/14/2019
-ms.author: cephalin
+ms.date: 06/18/2019
+ms.author: dariagrigoriu;cephalin
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 9724282a7f5aaaca222960b3c40c5342094b8945
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
-ms.translationtype: HT
+ms.openlocfilehash: fa961e43408fed014be2266c14c7972d39435b97
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67617199"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836919"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Místní nasazení z Gitu do služby Azure App Service
 
-Tato příručka ukazuje, jak nasadíte tak svůj kód do [služby Azure App Service](overview.md) z úložiště Git v místním počítači.
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+Tato příručka ukazuje, jak nasadit aplikaci do [služby Azure App Service](overview.md) z úložiště Git v místním počítači.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Postupovat podle kroků v této příručce s postupy:
 
-* [Nainstalovat Git](https://www.git-scm.com/downloads).
-* Spravovat místní úložiště Git s kódem, který chcete nasadit.
-
-Použití ukázkové úložiště Pokud chcete postupovat s námi, spusťte následující příkaz v okně místního terminálu:
-
-```bash
-git clone https://github.com/Azure-Samples/nodejs-docs-hello-world.git
-```
+- [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+  
+- [Nainstalovat Git](https://www.git-scm.com/downloads).
+  
+- Máte místní úložiště Git s kódem, který chcete nasadit. Pokud chcete stáhnout ukázkové úložiště, spusťte následující příkaz v okně místního terminálu:
+  
+  ```bash
+  git clone https://github.com/Azure-Samples/nodejs-docs-hello-world.git
+  ```
 
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="deploy-with-kudu-builds"></a>Nasazení pomocí Kudu sestavení
+## <a name="deploy-with-kudu-build-server"></a>Nasazení pomocí Kudu serveru sestavení
 
-Nejjednodušší způsob, jak povolit místní nasazení Gitu pro svou aplikaci pomocí Kudu server sestavení je použití Cloud Shell.
+Nejjednodušší způsob, jak povolit místní nasazení Gitu pro aplikace s využitím Kudu App Service server sestavení je chcete použít Azure Cloud Shell. 
 
 ### <a name="configure-a-deployment-user"></a>Konfigurace uživatele nasazení
 
 [!INCLUDE [Configure a deployment user](../../includes/configure-deployment-user-no-h.md)]
 
-> [!NOTE]
-> Místo přihlašovací údaje na úrovni účtu můžete také nasadit pomocí přihlašovací údaje na úrovni aplikace, které jsou automaticky generovány pro každou aplikaci.
->
+### <a name="get-the-deployment-url"></a>Získat adresu URL nasazení
 
-### <a name="enable-local-git-with-kudu"></a>Povolení místního Gitu pomocí Kudu
-
-Pokud chcete povolit místní nasazení Gitu pro svou aplikaci pomocí Kudu sestavovací server, spusťte [ `az webapp deployment source config-local-git` ](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-local-git) ve službě Cloud Shell.
+Pokud chcete získat adresu URL pro povolení místního nasazení Gitu pro existující aplikace, spusťte [ `az webapp deployment source config-local-git` ](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-local-git) ve službě Cloud Shell. Nahraďte \<název aplikace > a \<skupiny name > s názvy vaší aplikace a jeho skupina prostředků Azure.
 
 ```azurecli-interactive
 az webapp deployment source config-local-git --name <app-name> --resource-group <group-name>
 ```
 
-Pokud chcete místo toho vytvořte aplikaci s podporou Git, spusťte [ `az webapp create` ](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) ve službě Cloud Shell s `--deployment-local-git` parametru.
+Nebo pokud chcete vytvořit novou aplikaci s podporou Git, spusťte [ `az webapp create` ](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) ve službě Cloud Shell s `--deployment-local-git` parametru. Nahraďte \<název aplikace >, \<název skupiny >, a \<plán name > s názvy pro novou aplikaci Git, jeho skupina prostředků Azure a její plán služby App Service.
 
 ```azurecli-interactive
 az webapp create --name <app-name> --resource-group <group-name> --plan <plan-name> --deployment-local-git
 ```
 
-### <a name="deploy-your-project"></a>Nasazení projektu
+Buď příkaz vrátí adresu URL podobnou této: `https://<deployment-username>@<app-name>.scm.azurewebsites.net/<app-name>.git`. Pomocí této adresy URL pro nasazení vaší aplikace v dalším kroku.
 
-Zpět v _okně místního terminálu_ přidejte vzdálené úložiště Azure do místního úložiště Git. Nahraďte  _\<uživatelské jméno >_ s uživateli nasazení [konfigurace uživatele nasazení](#configure-a-deployment-user) a  _\<název aplikace >_ názvem aplikace z [Umožňují Git pro vaši aplikaci](#enable-local-git-with-kudu).
+Nemusíte používat tuto adresu URL na úrovni účtu, můžete také povolit místního Gitu s použitím přihlašovací údaje na úrovni aplikace. Azure App Service automaticky generuje tyto přihlašovací údaje pro každou aplikaci. 
 
-```bash
-git remote add azure https://<username>@<app-name>.scm.azurewebsites.net/<app-name>.git
+Získání přihlašovacích údajů aplikaci spuštěním následujícího příkazu ve službě Cloud Shell. Nahraďte \<název aplikace > a \<skupiny name > s názvem vaší aplikace a název skupiny prostředků Azure.
+
+```azurecli-interactive
+az webapp deployment list-publishing-credentials --name <app-name> --resource-group <group-name> --query scmUri --output tsv
 ```
 
-> [!NOTE]
-> Místo toho nasazení přihlašovací údaje na úrovni aplikace, získejte přihlašovací údaje specifické pro vaši aplikaci spuštěním následujícího příkazu ve službě Cloud Shell:
->
-> ```azurecli-interactive
-> az webapp deployment list-publishing-credentials -n <app-name> -g <group-name> --query scmUri --output tsv
-> ```
->
-> Potom použijte výstup spuštění příkazu `git remote add azure <url>` jako výše.
+Použijte adresu URL, která se vrátí k nasazení své aplikace v dalším kroku.
 
-Nasaďte aplikaci do vzdáleného úložiště Azure pomocí následujícího příkazu. Po zobrazení výzvy k zadání hesla, ujistěte se, že zadáváte heslo, které jste vytvořili v [konfigurace uživatele nasazení](#configure-a-deployment-user), ne heslo, které používáte pro přihlášení k webu Azure portal.
+### <a name="deploy-the-web-app"></a>Nasazení webové aplikace
 
-```bash
-git push azure master
-```
+1. Otevřete okně místního terminálu do místního úložiště Git a přidejte vzdálené prostředí Azure. V následujícím příkazu nahraďte \<url > adresa URL nasazení konkrétního uživatele nebo adresa URL konkrétní aplikace, které jste získali v předchozím kroku.
+   
+   ```bash
+   git remote add azure <url>
+   ```
+   
+1. Nasdílením změn do Azure pomocí vzdáleného `git push azure master`. 
+   
+1. V **Git Credential Manageru** okno, zadejte vaše [heslo uživatele nasazení](#configure-a-deployment-user), ne Azure přihlášení pomocí hesla.
+   
+1. Zkontrolujte výstup. Automatizace specifické pro modul runtime, jako je MSBuild pro technologii ASP.NET, může se zobrazit `npm install` pro Node.js, a `pip install` pro Python. 
+   
+1. Přejděte do vaší aplikace na webu Azure Portal ověřte, zda je obsah nasazeny.
 
-Automatizace specifické pro modul runtime ve výstupu, jako je MSBuild pro technologii ASP.NET, může se zobrazit `npm install` pro Node.js, a `pip install` pro Python. 
+## <a name="deploy-with-azure-pipelines-builds"></a>Nasazení s využitím Azure kanály sestavení
 
-Přejděte do své aplikace a zkontrolujte, že obsah nasazení.
+Pokud váš účet nemá potřebná oprávnění, můžete nastavit kanály Azure (Preview) umožňující místní nasazení přes Git pro vaši aplikaci. 
 
-## <a name="deploy-with-azure-devops-builds"></a>Nasazení s využitím Azure DevOps sestavení
+- Váš účet Azure musí mít oprávnění k zápisu do služby Azure Active Directory a vytvořte službu. 
+  
+- Musí mít váš účet Azure **vlastníka** role ve vašem předplatném Azure.
 
-> [!NOTE]
-> Pro službu App Service k vytváření kanálů nezbytné Azure ve vaší organizaci Azure DevOps služby, musí váš účet Azure mít roli **vlastníka** ve vašem předplatném Azure.
->
+- Musíte být správcem v projektu Azure DevOps, které chcete použít.
 
-Pokud chcete povolit místní nasazení Gitu pro svou aplikaci pomocí Kudu sestavovací server, přejděte do vaší aplikace v [webu Azure portal](https://portal.azure.com).
+Pokud chcete povolit místní nasazení přes Git pro vaši aplikaci s kanály Azure (Preview):
 
-V levém navigačním panelu na stránce vaší aplikace, klikněte na tlačítko **Deployment Center** > **místního Gitu** > **pokračovat**.
+1. Přejděte na stránku aplikace služby Azure App Service v [webu Azure portal](https://portal.azure.com)a vyberte **Deployment Center** v levé nabídce.
+   
+1. Na **Deployment Center** stránce **místního Gitu**a pak vyberte **pokračovat**. 
+   
+   ![Vyberte místní Git a pak vyberte pokračovat](media/app-service-deploy-local-git/portal-enable.png)
+   
+1. Na **sestavení zprostředkovatele** stránce **kanály Azure (Preview)** a pak vyberte **pokračovat**. 
+   
+   ![Vyberte kanály Azure (Preview) a pak vyberte pokračovat.](media/app-service-deploy-local-git/pipeline-builds.png)
 
-![](media/app-service-deploy-local-git/portal-enable.png)
+1. Na **konfigurovat** nakonfigurujte novou organizaci Azure DevOps, nebo zadejte existující organizace a pak vyberte **pokračovat**.
+   
+   > [!NOTE]
+   > Pokud není uvedená vaše stávající organizace Azure DevOps, budete muset propojit se svým předplatným Azure. Další informace najdete v tématu [definovat kanál pro vydávání verzí CD](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps#cd).
+   
+1. V závislosti na plánu služby App Service [cenovou úroveň](https://azure.microsoft.com/pricing/details/app-service/plans/), může se zobrazit **nasazení do přípravného prostředí** stránky. Zvolte, jestli se má [povolí sloty nasazení](deploy-staging-slots.md)a pak vyberte **pokračovat**.
+   
+1. Na **Souhrn** stránky, zkontrolujte nastavení a pak vyberte **Dokončit**.
+   
+1. Při zřetězení příkazů Azure je připraveno, zkopírujte adresu URL úložiště Git **Deployment Center** stránku pro použití v dalším kroku. 
+   
+   ![Zkopírujte adresu URL úložiště Git](media/app-service-deploy-local-git/vsts-repo-ready.png)
 
-Klikněte na tlačítko **kanály Azure (Preview)**  > **pokračovat**.
-
-![](media/app-service-deploy-local-git/pipeline-builds.png)
-
-V **konfigurovat** stránce, nakonfigurovat novou organizaci Azure DevOps nebo zadejte existující organizace. Až budete hotovi, klikněte na tlačítko **pokračovat**.
-
-> [!NOTE]
-> Pokud chcete použít existující organizaci Azure DevOps, která není uvedená, budete muset [propojení organizace služby Azure DevOps s předplatným Azure](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App).
-
-V závislosti na [cenovou úroveň](https://azure.microsoft.com/pricing/details/app-service/plans/) plánu služby App Service, může se zobrazit také **nasazení do přípravného prostředí** stránky. Zvolte, jestli se má povolit sloty nasazení a pak klikněte na **pokračovat**.
-
-V **Souhrn** stránky, zkontrolujte možnosti a klikněte na tlačítko **Dokončit**.
-
-Trvá několik minut, než Azure DevOps služby organizace až bude připravená. Až to bude hotové, zkopírujte adresu URL úložiště Git v Centru pro nasazení.
-
-![](media/app-service-deploy-local-git/vsts-repo-ready.png)
-
-Zpět v _okně místního terminálu_ přidejte vzdálené úložiště Azure do místního úložiště Git. Nahraďte  _\<url >_ s adresou URL, které jste získali v posledním kroku.
-
-```bash
-git remote add vsts <url>
-```
-
-Nasaďte aplikaci do vzdáleného úložiště Azure pomocí následujícího příkazu. Po zobrazení výzvy ve Správci přihlašovacích údajů Git, přihlaste se pomocí vaší uživatelské visualstudio.com. Další metody ověřování, najdete v části [Přehled ověřování služby Azure DevOps](/vsts/git/auth-overview?view=vsts).
-
-```bash
-git push vsts master
-```
-
-Jakmile se nasazení dokončí, můžete najít průběh sestavení na `https://<vsts_account>.visualstudio.com/<project_name>/_build` a průběh nasazení na `https://<vsts_account>.visualstudio.com/<project_name>/_release`.
-
-Přejděte do své aplikace a zkontrolujte, že obsah nasazení.
+1. V okně místního terminálu přidejte vzdálené úložiště Azure do místního úložiště Git. V příkazu nahraďte \<url > s adresou URL úložiště Git, které jste získali v předchozím kroku.
+   
+   ```bash
+   git remote add azure <url>
+   ```
+   
+1. Nasdílením změn do Azure pomocí vzdáleného `git push azure master`. 
+   
+1. Na **Git Credential Manageru** stránce, přihlaste se pomocí své uživatelské jméno visualstudio.com. Jiné metody ověřování, najdete v části [Přehled ověřování služby Azure DevOps](/vsts/git/auth-overview?view=vsts).
+   
+1. Jakmile se nasazení dokončí, zobrazit průběh sestavení na `https://<azure_devops_account>.visualstudio.com/<project_name>/_build`a průběh nasazení na `https://<azure_devops_account>.visualstudio.com/<project_name>/_release`.
+   
+1. Přejděte do vaší aplikace na webu Azure Portal ověřte, zda je obsah nasazeny.
 
 [!INCLUDE [What happens to my app during deployment?](../../includes/app-service-deploy-atomicity.md)]
 
-## <a name="troubleshooting-kudu-deployment"></a>Řešení potíží s nasazením Kudu
+## <a name="troubleshoot-deployment"></a>Řešení potíží s nasazení
 
-Tady jsou běžné chyby nebo problémy při použití Git k publikování pro aplikaci služby App Service v Azure:
+Při publikování pro aplikaci služby App Service v Azure pomocí Gitu, může se zobrazit následující běžné chybové zprávy:
 
----
-**Příznak**: `Unable to access '[siteURL]': Failed to connect to [scmAddress]`
-
-**Příčina:** K této chybě může dojít, pokud nebude funkční ani po aplikaci.
-
-**Rozlišení**: Spusťte aplikaci na webu Azure Portal. Nasazení z Gitu není dostupná, když webová aplikace zastavená.
-
----
-**Příznak**: `Couldn't resolve host 'hostname'`
-
-**Příčina:** K této chybě může dojít, pokud bylo nesprávné informace o adrese zadali při vytváření vzdáleného "azure".
-
-**Rozlišení**: Použití `git remote -v` příkazu zobrazte výpis všech Vzdálená úložiště, spolu s přidružené adresy URL. Ověřte správnost adresy URL pro "azure" vzdálené. V případě potřeby odebrat a znovu vytvořit toto vzdálené používá správnou adresu URL.
-
----
-**Příznak**: `No refs in common and none specified; doing nothing. Perhaps you should specify a branch such as 'master'.`
-
-**Příčina:** K této chybě může dojít, pokud nechcete zadat větev během `git push`, nebo pokud jste nenastavili `push.default` hodnota v `.gitconfig`.
-
-**Rozlišení**: Spustit `git push` znovu, určení hlavní větve. Příklad:
-
-```bash
-git push azure master
-```
-
----
-**Příznak**: `src refspec [branchname] does not match any.`
-
-**Příčina:** K této chybě může dojít, pokud se pokusíte vložit pouze hlavní větve na "azure" vzdálené.
-
-**Rozlišení**: Spustit `git push` znovu, určení hlavní větve. Příklad:
-
-```bash
-git push azure master
-```
-
----
-**Příznak**: `RPC failed; result=22, HTTP code = 5xx.`
-
-**Příčina:** Této chybě může dojít, pokud se pokusíte úložiště velké git push přes protokol HTTPS.
-
-**Rozlišení**: Změna konfigurace git v místním počítači lze zviditelnit postBuffer větší
-
-```bash
-git config --global http.postBuffer 524288000
-```
-
----
-**Příznak**: `Error - Changes committed to remote repository but your web app not updated.`
-
-**Příčina:** K této chybě může dojít, pokud nasazení aplikace v Node.js s _package.json_ soubor, který určuje další požadované moduly.
-
-**Rozlišení**: Další zprávy pomocí "npm ERR!" před tato chyba se mají protokolovat a poskytnete další kontext při selhání. Následující seznam uvádí známé příčiny této chyby a odpovídající "npm ERR!" zpráva:
-
-* **Soubor package.json poškozený**: npm ERR! Nelze číst závislosti.
-* **Nativní modul, který nemá binární distribuce pro Windows**:
-
-  * `npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1`
-
-      NEBO
-  * `npm ERR! [modulename@version] preinstall: \make || gmake\`
+|Message|Příčina|Řešení
+---|---|---|
+|`Unable to access '[siteURL]': Failed to connect to [scmAddress]`|Aplikace nebude funkční ani po.|Spusťte aplikaci na webu Azure Portal. Nasazení z Gitu není k dispozici, když se zastaví webovou aplikaci.|
+|`Couldn't resolve host 'hostname'`|Informace o adrese pro "azure" vzdálené je nesprávný.|Použití `git remote -v` příkazu zobrazte výpis všech Vzdálená úložiště, spolu s přidružené adresy URL. Ověřte správnost adresy URL pro "azure" vzdálené. V případě potřeby odebrat a znovu vytvořit toto vzdálené používá správnou adresu URL.|
+|`No refs in common and none specified; doing nothing. Perhaps you should specify a branch such as 'master'.`|Jste neurčili, nevložily větve během `git push`, nebo jste nenastavili `push.default` hodnota v `.gitconfig`.|Spustit `git push` znovu, určení hlavní větve: `git push azure master`.|
+|`src refspec [branchname] does not match any.`|Pokusili jste se nasdílením změn do větve pouze hlavní na "azure" vzdáleného prostředí.|Spustit `git push` znovu, určení hlavní větve: `git push azure master`.|
+|`RPC failed; result=22, HTTP code = 5xx.`|Této chybě může dojít, pokud se pokusíte úložiště velké git push přes protokol HTTPS.|Změna konfigurace git v místním počítači lze zviditelnit `postBuffer` větší. Například: `git config --global http.postBuffer 524288000`.|
+|`Error - Changes committed to remote repository but your web app not updated.`|Nasadili jste aplikaci Node.js s _package.json_ soubor, který určuje další požadované moduly.|Zkontrolujte `npm ERR!` chybové zprávy před tuto chybu pro další kontext při selhání. Toto jsou známé příčiny této chyby a odpovídající `npm ERR!` zprávy:<br /><br />**Soubor package.json poškozený**: `npm ERR! Couldn't read dependencies.`<br /><br />**Nativní modul nemá binární distribuce pro Windows**:<br />`npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1` <br />or <br />"npm ERR! [modulename@version] předinstalovat: \make || gmake\`|
 
 ## <a name="additional-resources"></a>Další zdroje
 
-* [Dokumentace ke službě Project Kudu](https://github.com/projectkudu/kudu/wiki)
-* [Průběžné nasazování do služby Azure App Service](deploy-continuous-deployment.md)
-* [Ukázka: Vytvoření webové aplikace a nasazení kódu z místního úložiště Git (Azure CLI)](./scripts/cli-deploy-local-git.md?toc=%2fcli%2fazure%2ftoc.json)
-* [Ukázka: Vytvoření webové aplikace a nasazení kódu z místního úložiště Git (PowerShell)](./scripts/powershell-deploy-local-git.md?toc=%2fpowershell%2fmodule%2ftoc.json)
+- [Dokumentace ke službě Project Kudu](https://github.com/projectkudu/kudu/wiki)
+- [Průběžné nasazování do služby Azure App Service](deploy-continuous-deployment.md)
+- [Ukázka: Vytvoření webové aplikace a nasazení kódu z místního úložiště Git (Azure CLI)](./scripts/cli-deploy-local-git.md?toc=%2fcli%2fazure%2ftoc.json)
+- [Ukázka: Vytvoření webové aplikace a nasazení kódu z místního úložiště Git (PowerShell)](./scripts/powershell-deploy-local-git.md?toc=%2fpowershell%2fmodule%2ftoc.json)

@@ -1,17 +1,17 @@
 ---
 title: Monitorování v Azure Database pro MariaDB
 description: Tento článek popisuje metriky pro monitorování a výstrah pro službu Azure Database pro MariaDB, včetně statistiky CPU, úložiště a připojení.
-author: andrela
-ms.author: ajlam
+author: ajlam
+ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 06/12/2019
-ms.openlocfilehash: 8625441f836256028362fc327873383f5b46620c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fb998edffed290bb7bc59945163f0fd48c55cbf5
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67065732"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612533"
 ---
 # <a name="monitoring-in-azure-database-for-mariadb"></a>Monitorování v Azure Database pro MariaDB
 Data o vašich serverech monitorování vám pomůže řešit a optimalizovat pro vaši úlohu. Azure Database pro MariaDB poskytuje různé metriky, které poskytují přehled o chování vašeho serveru.
@@ -26,12 +26,12 @@ Tyto metriky jsou k dispozici pro službu Azure Database pro MariaDB:
 
 |Metrika|Metriky zobrazovaný název|Jednotka|Popis|
 |---|---|---|---|
-|cpu_percent|Procento CPU|Procento|Procento procesoru používá.|
-|memory_percent|Paměť v procentech|Procento|Procento paměti používá.|
-|io_consumption_percent|V/v úrovně procent|Procento|Procentuální podíl vstupně-výstupní operace používá.|
-|storage_percent|Procento úložiště|Procento|Je maximální procento využité místo mimo server.|
+|cpu_percent|Procento CPU|Percent|Procento procesoru používá.|
+|memory_percent|Paměť v procentech|Percent|Procento paměti používá.|
+|io_consumption_percent|V/v úrovně procent|Percent|Procentuální podíl vstupně-výstupní operace používá.|
+|storage_percent|Procento úložiště|Percent|Je maximální procento využité místo mimo server.|
 |storage_used|Využité úložiště|B|Množství využívaného úložiště. Úložiště využívané ve službě mohou být soubory databáze, protokoly transakcí a v protokolech serveru.|
-|serverlog_storage_percent|Procento úložiště protokolů serveru|Procento|Procento úložiště protokolů serveru používat úložiště protokolů maximální server na server.|
+|serverlog_storage_percent|Procento úložiště protokolů serveru|Percent|Procento úložiště protokolů serveru používat úložiště protokolů maximální server na server.|
 |serverlog_storage_usage|Využité úložiště protokolů serveru|B|Množství využívaného úložiště protokolu serveru.|
 |serverlog_storage_limit|Limit úložiště protokolů serveru|B|Maximální serverové úložiště protokolu pro tento server.|
 |storage_limit|Limit úložiště.|B|Maximální velikost úložiště pro tento server.|

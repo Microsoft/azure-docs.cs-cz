@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 474aad3b4b2019c9f79f8f1316dd88769e0fabbd
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: c84f336d11a512435e6d8eea814b41e9213eeb13
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66508204"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67835702"
 ---
 # <a name="tutorial-enable-authentication-in-a-native-client-application-using-azure-active-directory-b2c"></a>Kurz: Povolení ověřování v nativní klientské aplikace pomocí Azure Active Directory B2C
 
@@ -32,7 +32,7 @@ V tomto kurzu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-- [Vytvořit toky uživatelů](tutorial-create-user-flows.md) umožňující činnosti koncových uživatelů ve vaší aplikaci. 
+- [Vytvořit toky uživatelů](tutorial-create-user-flows.md) umožňující činnosti koncových uživatelů ve vaší aplikaci.
 - Nainstalujte [Visual Studio 2019](https://www.visualstudio.com/downloads/) s **vývoj desktopových aplikací .NET** a **vývoj pro ASP.NET a web** úlohy.
 
 ## <a name="add-the-native-client-application"></a>Přidat nativní klientskou aplikaci
@@ -83,12 +83,12 @@ Stisknutím klávesy **F5** k sestavení a spuštění ukázky.
 ### <a name="sign-up-using-an-email-address"></a>Registrace pomocí e-mailové adresy
 
 1. Klikněte na tlačítko **Sign In** se zaregistrujte jako uživatel. Tady se používá **B2C_1_signupsignin1** tok uživatele.
-2. Azure AD B2C zobrazí přihlašovací stránku s odkazem na registraci. Protože ještě nemáte účet, klikněte na odkaz **Sign up now** (Zaregistrovat se). 
+2. Azure AD B2C zobrazí přihlašovací stránku s odkazem na registraci. Protože ještě nemáte účet, klikněte na odkaz **Sign up now** (Zaregistrovat se).
 3. Pracovní postup registrace zobrazí stránku pro shromáždění a ověření identity uživatele pomocí e-mailové adresy. Pracovní postup registrace shromažďuje také heslo uživatele a požadované atributy definované v toku uživatele.
 
-    Použijte platnou e-mailovou adresu a proveďte ověření pomocí ověřovacího kódu. Nastavte heslo. Zadejte hodnoty požadovaných atributů. 
+    Použijte platnou e-mailovou adresu a proveďte ověření pomocí ověřovacího kódu. Nastavte heslo. Zadejte hodnoty požadovaných atributů.
 
-    ![Pracovní postup registrace](media/active-directory-b2c-tutorials-desktop-app/sign-up-workflow.png)
+    ![Registrační stránku zobrazí jako součást pracovního postupu přihlašování – ve registrace/přihlášení](media/active-directory-b2c-tutorials-desktop-app/sign-up-workflow.PNG)
 
 4. Kliknutím na **Create** (Vytvořit) vytvořte místní účet v tenantovi Azure AD B2C.
 

@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: article
-ms.date: 05/22/2019
+ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: b9e249885bd0e930773d4b374f85d72e60abdbdc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6097dba9193fce4c8158137b488080107881994a
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66427741"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839780"
 ---
-# <a name="azure-data-box-heavy-system-requirements-preview"></a>Azure Data Box náročné požadavky na systém (preview)
+# <a name="azure-data-box-heavy-system-requirements"></a>Azure Data Box náročné požadavky na systém
 
 Tento článek popisuje důležité systémové požadavky pro vaše zařízení Azure Data Box náročné a pro připojení klientů k zařízení. Doporučujeme, abyste že si pečlivě přečetli informace předtím, než nasadíte vaše náročné pole dat a poté vraťte se k němu podle potřeby během nasazení a následná operace.
 
@@ -51,6 +51,12 @@ Požadavky na software také informace o podporovaných operačních systémů, 
 ## <a name="networking-requirements"></a>Požadavky na síť
 
 Vaše datacentrum má přístup k vysokorychlostní síti. Pro nejrychlejší kopírování rychlosti můžete využít dvě připojení k 40 10GbE paralelně (jeden na uzel). Pokud nemáte k dispozici 40 10GbE, doporučujeme, že máte alespoň dva 10 GbE připojení (jeden do každého uzlu).
+
+### <a name="port-requirements"></a>Požadavky na porty
+
+Následující tabulka uvádí porty, které je potřeba otevřít v bráně firewall pro povolení provozu SMB nebo NFS. V této tabulce *v* nebo *příchozí* odkazuje na směru, které mají přístup příchozí požadavky klienta na vaše zařízení. *Navýšení kapacity* nebo *odchozí* odkazuje na směru, ve kterém zařízení Data Box náročné odesílá data externě, nad rámec nasazení: pro příklad, odchozí k Internetu.
+
+[!INCLUDE [data-box-port-requirements](../../includes/data-box-port-requirements.md)]
 
 ## <a name="next-steps"></a>Další postup
 

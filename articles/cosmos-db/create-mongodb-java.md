@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 12/26/2018
 ms.author: rimman
-ms.openlocfilehash: 2a5cfc417f75e5bb08e416b3243903badcf572e1
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 1e1cfe7f0e3af72de819ed09dcd0a6d190f239ab
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480483"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839813"
 ---
 # <a name="quickstart-build-a-web-app-using-azure-cosmos-dbs-api-for-mongodb-and-java-sdk"></a>Rychlý start: Vytvoření webové aplikace pomocí rozhraní API služby Azure Cosmos DB pro MongoDB a sady Java SDK
 
@@ -33,7 +33,7 @@ Tento rychlý start ukazuje, jak vytvořit účet Cosmos s [rozhraní API služb
 ## <a name="prerequisites"></a>Požadavky
 
 Než budete moct tuto ukázku spustit, je potřeba splnit následující požadavky:
-* [Nainstalujte sadu JDK pro Azure a Azure Stack JDK verze 8] (https://aka.ms/azure-jdks)
+* [Nainstalujte sadu JDK pro Azure a Azure Stack JDK verze 8](https://aka.ms/azure-jdks)
 * Maven (pokud nemáte Maven, spusťte `apt-get install maven`)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -133,7 +133,7 @@ Teď můžete provádět dotazy a úpravy a pracovat s těmito novými daty v pr
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste zjistili, jak vytvořit účet Cosmos, vytvoření kolekce a spustíte aplikaci konzoly. Teď můžete importovat další data k databázi Cosmos.
 

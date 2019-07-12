@@ -6,12 +6,12 @@ ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/10/2019
 ms.author: joanpo
-ms.openlocfilehash: ebd60607f9a24074e0fa985973dfc35674f0d66c
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 01888f3656765b922c1b646e7ca8e07d81e799f3
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67788224"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67838419"
 ---
 # <a name="tutorial-share-your-data-using-azure-data-share-preview"></a>Kurz: Sdílejte svá data pomocí Azure Data sdílené složky ve verzi Preview
 
@@ -29,6 +29,8 @@ V tomto kurzu se naučíte:
 
 * Předplatné Azure: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 * Účet služby Azure Storage: Pokud již nemáte, můžete vytvořit [účtu služby Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+* Oprávnění k přidání do účtu úložiště, který se nachází v přiřazení role *Microsoft.Authorization/role přiřazení a zápis* oprávnění. Toto oprávnění, existuje v roli vlastník. 
+* Vaši příjemci přihlášení k Azure e-mailovou adresu (pomocí své e-mailová adresa nebude fungovat).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 

@@ -11,16 +11,16 @@ ms.workload: integration
 ms.topic: article
 ms.date: 06/18/2018
 ms.author: apimpm
-ms.openlocfilehash: fe77361c4c9bed9310f8443ed4ff37faf7ea53a9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c39c585d9947422260868734ec89814d8a510089
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60658283"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836953"
 ---
 # <a name="capacity-of-an-azure-api-management-instance"></a>Kapacita instance Azure API Management
 
-**Kapacita** je jednoduchá nejdůležitější [metrik Azure monitoru](api-management-howto-use-azure-monitor.md#view-metrics-of-your-apis) umožňující informovaná rozhodnutí, jestli se má škálování instance služby API Management tak, aby vyhovovaly větší zatížení. Konstrukce je složité a ukládá určité chování.
+**Kapacita** je nejdůležitější [metrik Azure monitoru](api-management-howto-use-azure-monitor.md#view-metrics-of-your-apis) umožňující informovaná rozhodnutí, jestli se má škálování instance služby API Management tak, aby vyhovovaly větší zatížení. Konstrukce je složité a ukládá určité chování.
 
 Tento článek vysvětluje, co **kapacity** je a jak se chová. Ukazuje, jak přistupovat k **kapacity** metrik na webu Azure Portal a navrhne, při které byste měli zvážit vertikální nebo upgradu vaší instance služby API Management.
 
@@ -40,12 +40,14 @@ Chcete-li postupujte podle kroků v tomto článku, budete potřebovat:
 
 ![Metrika kapacity](./media/api-management-capacity/capacity-ingredients.png)
 
-**Kapacita** je indikátor zatížení na instanci služby APIM. Odráží využití prostředků (procesor, paměť) a délky front sítě. Využití procesoru a paměti odhalí spotřeba prostředků:
+**Kapacita** je indikátor zatížení na instanci služby API Management. Odráží využití prostředků (procesor, paměť) a délky front sítě. Využití procesoru a paměti odhalí spotřeba prostředků:
 
-+ Služby APIM, jako je akce nebo abychom si vyžádali správu zpracování, který může obsahovat předává požadavky nebo spuštění zásady
++ Služby API Management, jako je akce nebo abychom si vyžádali správu zpracování, který může obsahovat předává požadavky nebo spuštění zásady
 + Vybrat procesy operačního systému, včetně procesů, které zahrnují náklady na počet metod handshake SSL u nového připojení.
 
 Celkový počet **kapacity** hodnota průměrem těchto vlastních hodnot z každé jednotky instance služby API Management.
+
+I když **metriku kapacity** je navržen pro surface problémy s vaší instancí služby API Management, existují případy, když problémy se neprojeví v změny v **metriku kapacity**.
 
 ## <a name="capacity-metric-behavior"></a>Kapacitní metriky chování
 
@@ -63,6 +65,8 @@ Složitějších operací na požadavky jsou, tím vyšší **kapacity** za spot
 ![Kapacitní metriky špičky](./media/api-management-capacity/capacity-spikes.png)
 
 **Kapacita** můžete také vystoupat přerušovaně nebo být větší než nula, i v případě, že neexistují žádné požadavky na zpracování. Dochází z důvodu akcí systému nebo platformu a by se neměl brát v úvahu při rozhodování, jestli se má změnit velikost instance.
+
+Nízká **metriku kapacity** nemusí nutně znamenat, že vaše instance služby API Management nedochází k problémům.
   
 ## <a name="use-the-azure-portal-to-examine-capacity"></a>Zkontrolujte kapacitu pomocí webu Azure Portal
   

@@ -4,7 +4,7 @@ description: Přehled podpory Azure pro virtuální počítače generace 2
 services: virtual-machines-windows
 documentationcenter: ''
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2019
 ms.author: lahugh
-ms.openlocfilehash: d8991a6e3137953aae18b91f9cc19e81f0440c75
-ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
+ms.openlocfilehash: 7abc1b7cd3be775af03aeaf558f631060cc6f81c
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67151219"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722728"
 ---
 # <a name="support-for-generation-2-vms-preview-on-azure"></a>Podpora generace 2 virtuální počítače (preview) v Azure
 
@@ -41,7 +41,7 @@ Virtuální počítače generace 1 podporuje všechny velikosti virtuálních po
 * [Dsv2-series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dsv2-series) a [Dsv3-series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dsv3-series-1)
 * [Esv3-series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#esv3-series)
 * [Fsv2-series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-compute#fsv2-series-1)
-* [Řady GS-series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#gs-series)
+* [Řady GS-series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#gs-series)
 * [Řada ls-series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#ls-series) a [Lsv2-series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-storage#lsv2-series)
 * [Mv2-series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#mv2-series)
 
@@ -78,7 +78,7 @@ Azure v současné době nepodporuje některé funkce, které on-premises Hyper-
 
 ### <a name="generation-1-vs-generation-2-capabilities"></a>Generace 1 a generace 2 možnosti
 
-| Schopnost | 1\. generace | 2\. generace |
+| Funkce | 1\. generace | 2\. generace |
 |------------|--------------|--------------|
 | Operační systém na disku > 2 TB                    | : x:.                        | :heavy_check_mark: |
 | Vlastní/image/prohození disků operačního systému         | :heavy_check_mark:         | :heavy_check_mark: |

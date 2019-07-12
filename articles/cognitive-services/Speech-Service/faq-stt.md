@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: panosper
-ms.openlocfilehash: 73e53e47576b0697c0d09b386bb3e830d976dd04
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: a437927f6ad43f4c3a90433faa5b9fa6f964aa5c
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606661"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839236"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Převod řeči na Text – nejčastější dotazy
 
@@ -83,7 +83,12 @@ Kontakt [podporu řeči](mailto:speechsupport@microsoft.com?subject=Request%20fo
 
 **A**: Rozhraní REST API omezuje požadavky na 25 na 5 sekund. Podrobnosti najdete na naší stránce pro [převod řeči na text](speech-to-text.md).
 
-Pokud máte další aspekty ochrany osobních údajů, které neumožňují pomocí custom Speech service, obraťte se na jednu z kanály podpory.
+**Otázka: Jak se mi účtují duální kanálu zvuk?**
+
+**A**: Pokud odešlete každý kanál samostatně (každý kanál ve vlastním souboru), účtuje se za dobu trvání jednotlivých souborů. Pokud publikujete jeden soubor s každý kanál multiplexní společně, pak vám bude účtovat po dobu trvání jeden soubor.
+
+> [!IMPORTANT]
+> Pokud máte další aspekty ochrany osobních údajů, které neumožňují pomocí custom Speech service, obraťte se na jednu z kanály podpory.
 
 ## <a name="importing-data"></a>Importing data
 

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: e275411f9fd9dfb672bb0815e83e37bcd5d1dda9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 50a653648f3ae4b40e0bfe2c6f168cfb890bcc59
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60825284"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839092"
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>Načtení 1 TB do Azure SQL Data Warehouse pomocí služby Data Factory v oblasti 15 minut
 > [!NOTE]
@@ -41,7 +41,7 @@ Tento článek obsahuje podrobné pokyny pro přesouvání dat do Azure SQL Data
 > [!NOTE]
 >  Obecné informace o možnostech služby Data Factory v přesunu dat do a z Azure SQL Data Warehouse najdete v tématu [přesun dat do a z Azure SQL Data Warehouse pomocí Azure Data Factory](data-factory-azure-sql-data-warehouse-connector.md) článku.
 >
-> Můžete také vytvořit pomocí webu Azure portal, Visual Studio, PowerShell, kanály atd. Zobrazit [kurzu: Kopírování dat z objektů Blob v Azure do Azure SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) rychlý návod s podrobnými pokyny pro používání aktivita kopírování ve službě Azure Data Factory.  
+> Můžete také vytvářet kanály pomocí aplikace Visual Studio, PowerShell, atd. Zobrazit [kurzu: Kopírování dat z objektů Blob v Azure do Azure SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) rychlý návod s podrobnými pokyny pro používání aktivita kopírování ve službě Azure Data Factory.  
 >
 >
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c15d315d186af5622d9fa988945750d93e8eb11f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ae6d55180785c9407662776a95fcba31f8ba5275
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66507565"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67835209"
 ---
 #  <a name="add-claims-and-customize-user-input-using-custom-policies-in-azure-active-directory-b2c"></a>Přidání deklarace identity a přizpůsobení vstupu uživatele s použitím vlastních zásad v Azure Active Directory B2C
 
@@ -79,7 +79,7 @@ Tyto prvky se používají k definování deklarace identity:
 
 #### <a name="dropdownsingleselect"></a>DropdownSingleSelect
 
-![Snímek obrazovky s rozevírací seznam možností](./media/active-directory-b2c-configure-signup-self-asserted-custom/dropdown-menu-example.png)
+![Jedním výběrem ukazující několik možností, jak ovládací prvek dropdown](./media/active-directory-b2c-configure-signup-self-asserted-custom/dropdown-menu-example.png)
 
 ```xml
 <ClaimType Id="city">
@@ -96,7 +96,7 @@ Tyto prvky se používají k definování deklarace identity:
 
 #### <a name="checkboxmultiselect"></a>CheckboxMultiSelect
 
-![Snímek obrazovky s možností vícenásobného výběru](./media/active-directory-b2c-configure-signup-self-asserted-custom/multiselect-menu-example.png)
+![Vícenásobný výběr checkbox – ovládací prvek zobrazení několika možností](./media/active-directory-b2c-configure-signup-self-asserted-custom/multiselect-menu-example.png)
 
 ```xml
 <ClaimType Id="city">
@@ -235,7 +235,7 @@ Tyto prvky se používají k definování deklarace identity:
       <IncludeTechnicalProfile ReferenceId="AAD-Common" />
     </TechnicalProfile>
     ```
-   
+
 4. Přidat `<OutputClaim ClaimTypeReferenceId="city" />` deklaraci identity pro soubor SignUporSignIn.xml tak, aby tento požadavek je odeslat do aplikace v tokenu po cesty uživatele úspěšné.
 
     ```xml

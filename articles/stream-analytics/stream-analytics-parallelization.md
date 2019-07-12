@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.openlocfilehash: 4fd862c2442d2637d799a1f690d5f0a091c80562
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 5eba5601a50640261fa1b488d959f606d4514737
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449198"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612217"
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Využití paralelizace dotazů ve službě Azure Stream Analytics
 Tento článek ukazuje, jak využít výhod paralelního zpracování v Azure Stream Analytics. Zjistíte, jak škálovat úlohy Stream Analytics pomocí konfigurace vstupního oddíly a ladění definice dotazu analytics.
@@ -273,7 +273,7 @@ Zjištění použijte úlohu Stream Analytics s dotazem bezstavové (průchozí)
 
 [Azure SQL](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-azuresql) podporuje zápis paralelně, volaná dědit dělení, ale není povolená ve výchozím nastavení. Povolení dědit dělení, společně s plně paralelní dotaz, ale nemusí být dostatečné pro dosažení vyšší propustnost. Propustnost zápisu SQL podstatně závisí na schématu konfigurace a tabulky databáze SQL Azure. [Výstupní výkon SQL](./stream-analytics-sql-output-perf.md) článek obsahuje další podrobnosti o parametrech, které můžete maximalizovat propustnost zápisu. Jak je uvedeno v [výstupu Azure Stream Analytics ke službě Azure SQL Database](./stream-analytics-sql-output-perf.md#azure-stream-analytics) článku, toto řešení není se škálují lineárně jako plně paralelní kanál nad rámec 8 oddílů a může být nutné oddílů před výstupu SQL (viz [ DO](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count)). SKU úrovně Premium jsou potřeba k udržení vysoké míry vstupně-výstupních operací spolu s režijní náklady ze zálohy protokolu děje každých několik minut.
 
-#### <a name="cosmos-db"></a>Cosmos DB
+#### <a name="cosmos-db"></a>Databáze Cosmos
 |Rychlost příjmu (událostí za sekundu) | Jednotky streamování | Výstup prostředky  |
 |-------|-------|---------|
 |  1 TISÍC   |  3    | 20 TISÍC RU  |
@@ -312,7 +312,7 @@ Potřebujete další pomoc, vyzkoušejte naše [fóru Azure Stream Analytics](ht
 ## <a name="next-steps"></a>Další postup
 * [Úvod do služby Azure Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
-* [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Referenční příručka k rozhraní REST API pro správu služby Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
 <!--Image references-->

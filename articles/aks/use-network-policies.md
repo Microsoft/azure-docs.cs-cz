@@ -2,17 +2,17 @@
 title: Zabezpečený pody zásadami sítě ve službě Azure Kubernetes Service (AKS)
 description: Informace o zabezpečení provozu přenášeného do a z podů s použitím zásad sítě Kubernetes ve službě Azure Kubernetes Service (AKS)
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
-ms.author: iainfou
-ms.openlocfilehash: a0512806ec797f43fc54d8a28a7cbadf86faf1d9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mlearned
+ms.openlocfilehash: c9bf2c2c459999813c7fc30f95be653168d270ad
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65230008"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67613956"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Zabezpečení přenosu mezi pody pomocí zásady sítě ve službě Azure Kubernetes Service (AKS)
 
@@ -20,7 +20,7 @@ Když spustíte moderních aplikací založených na mikroslužbách v Kubernete
 
 V tomto článku se dozvíte, jak nainstalovat modul zásad sítě a vytvářet zásady sítě Kubernetes pro řízení toku přenosů mezi pody ve službě AKS. Zásady sítě by měla sloužit pouze pro uzly založené na Linuxu a podů ve službě AKS.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Musí mít Azure CLI verze 2.0.61 nebo později nainstalována a nakonfigurována. Spustit `az --version` k vyhledání verze. Pokud potřebujete instalaci nebo upgrade, naleznete v tématu [instalace Azure CLI][install-azure-cli].
 
@@ -29,7 +29,7 @@ Musí mít Azure CLI verze 2.0.61 nebo později nainstalována a nakonfigurován
 > 
 > Pokud chcete pokračovat v používání existujícího testovacích clusterů, které používají zásady sítě ve verzi preview, cluster upgradovat na nové verze Kubernetes pro nejnovější verze GA a pak nasaďte manifest následující YAML opravit havarujícímu metrik serveru a Kubernetes řídicí panel. Tato oprava je pouze požadovaná pro clustery, které používá modul Calico síťových zásad.
 >
-> Z hlediska zabezpečení je nejvhodnější [zkontrolovat obsah manifestu YAML] [ calico-aks-cleanup] pochopit, co se nasadí do clusteru AKS.
+> Z hlediska zabezpečení je nejvhodnější [zkontrolovat obsah manifestu YAML][calico-aks-cleanup] pochopit, co se nasadí do clusteru AKS.
 >
 > `kubectl delete -f https://raw.githubusercontent.com/Azure/aks-engine/master/docs/topics/calico-3.3.1-cleanup-after-upgrade.yaml`
 
@@ -57,7 +57,7 @@ Zásady sítě funguje jenom s možností Azure CNI (rozšířené). Implementac
 
 ### <a name="differences-between-azure-and-calico-policies-and-their-capabilities"></a>Rozdíly mezi Azure a Calico zásad a jejich funkce
 
-| Schopnost                               | Azure                      | Calico                      |
+| Funkce                               | Azure                      | Calico                      |
 |------------------------------------------|----------------------------|-----------------------------|
 | Podporované platformy                      | Linux                      | Linux                       |
 | Podporované možnosti sítě             | Azure CNI                  | Azure CNI                   |
@@ -76,7 +76,7 @@ Zobrazit zásady sítě v akci, Pojďme vytvořit a potom rozbalte na zásadu, k
 
 Nejprve vytvoříme cluster AKS, který podporuje zásady sítě. Funkce zásad sítě lze povolit pouze při vytváření clusteru. Nelze povolit zásady sítě v existujícím clusteru AKS.
 
-Zásady sítě pomocí AKS cluster, je nutné použít [modul plug-in Azure CNI] [ azure-cni] a definovat vlastní virtuální sítě a podsítě. Podrobné informace o tom, jak naplánovat rozsahy požadované podsítě, naleznete v tématu [konfiguraci rozšířeného sítě][use-advanced-networking].
+Zásady sítě pomocí AKS cluster, je nutné použít [modul plug-in Azure CNI][azure-cni] and define your own virtual network and subnets. For more detailed information on how to plan out the required subnet ranges, see [configure advanced networking][use-advanced-networking].
 
 Následující ukázkový skript:
 
@@ -138,7 +138,7 @@ az aks create \
     --network-policy azure
 ```
 
-Vytvoření clusteru bude trvat několik minut. Když bude cluster připravený, nakonfigurujte `kubectl` pro připojení k vašemu clusteru Kubernetes pomocí [az aks get-credentials] [ az-aks-get-credentials] příkazu. Tento příkaz stáhne přihlašovací údaje a nakonfiguruje rozhraní příkazového řádku Kubernetes pro jejich použití:
+Vytvoření clusteru bude trvat několik minut. Když bude cluster připravený, nakonfigurujte `kubectl` pro připojení k vašemu clusteru Kubernetes pomocí [az aks get-credentials][az-aks-get-credentials] příkazu. Tento příkaz stáhne přihlašovací údaje a nakonfiguruje rozhraní příkazového řádku Kubernetes pro jejich použití:
 
 ```azurecli-interactive
 az aks get-credentials --resource-group $RESOURCE_GROUP_NAME --name $CLUSTER_NAME
@@ -207,7 +207,7 @@ spec:
   ingress: []
 ```
 
-Použít zásady sítě pomocí [použití kubectl] [ kubectl-apply] příkaz a zadejte název vašeho YAML manifestu:
+Použít zásady sítě pomocí [použití kubectl][kubectl-apply] příkaz a zadejte název vašeho YAML manifestu:
 
 ```azurecli-interactive
 kubectl apply -f backend-policy.yaml
@@ -265,7 +265,7 @@ spec:
 > [!NOTE]
 > Použije tyto zásady sítě *namespaceSelector* a *podSelector* – element pro příchozí pravidlo. Je důležité pro pravidla příchozího přenosu dat bude syntaxe YAML sčítání. V tomto příkladu musí odpovídat oba prvky pro příchozí pravidlo použít. Kubernetes verzí starších než *1.12* nemusí správně interpretovat tyto prvky a omezit síťový provoz podle očekávání. Další informace o tomto chování najdete v tématu [chování z do a z selektory][policy-rules].
 
-Použít zásady sítě aktualizované pomocí [použití kubectl] [ kubectl-apply] příkaz a zadejte název vašeho YAML manifestu:
+Použít zásady sítě aktualizované pomocí [použití kubectl][kubectl-apply] příkaz a zadejte název vašeho YAML manifestu:
 
 ```azurecli-interactive
 kubectl apply -f backend-policy.yaml
@@ -388,7 +388,7 @@ spec:
 
 V příkladech složitější, můžete definovat více pravidel příchozího přenosu dat, jako je třeba *namespaceSelector* a pak *podSelector*.
 
-Použít zásady sítě aktualizované pomocí [použití kubectl] [ kubectl-apply] příkaz a zadejte název vašeho YAML manifestu:
+Použít zásady sítě aktualizované pomocí [použití kubectl][kubectl-apply] příkaz a zadejte název vašeho YAML manifestu:
 
 ```azurecli-interactive
 kubectl apply -f backend-policy.yaml
@@ -446,7 +446,7 @@ exit
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-V tomto článku jsme vytvořili dva obory názvů a použije zásady sítě. K uvolnění těchto prostředků, použijte [kubectl odstranit] [ kubectl-delete] příkaz a zadejte názvy prostředků:
+V tomto článku jsme vytvořili dva obory názvů a použije zásady sítě. K uvolnění těchto prostředků, použijte [kubectl odstranit][kubectl-delete] příkaz a zadejte názvy prostředků:
 
 ```console
 kubectl delete namespace production
