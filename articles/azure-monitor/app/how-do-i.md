@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/04/2017
 ms.author: mbullwin
-ms.openlocfilehash: 5e22a3f3b362811fd87460ec41b61a990f4d83fb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9f80edf18a531d6c2850658ddef9c7007edb350f
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60902027"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67795513"
 ---
 # <a name="how-do-i--in-application-insights"></a>Jak mám udělat ... pomocí Application Insights?
 ## <a name="get-an-email-when-"></a>Získejte e-mailu při...
@@ -83,8 +83,8 @@ Některé body ke zvážení:
 ## <a name="separate-telemetry-from-different-versions"></a>Samostatné telemetrická data z různých verzí
 
 * Více rolí v aplikaci: Použít na jeden prostředek Application Insights a vyfiltrujte [cloud_Rolename](../../azure-monitor/app/app-map.md).
-* Oddělení vývoje, testování a vydání verze: Použijte různé prostředky Application Insights. Sbírání instrumentačních klíčů ze souboru web.config. [Další informace](../../azure-monitor/app/separate-resources.md)
-* Vytváření sestav verze sestavení: Přidání vlastnosti pomocí inicializátoru telemetrie. [Další informace](../../azure-monitor/app/separate-resources.md)
+* Oddělení vývoje, testování a vydání verze: Použijte různé prostředky Application Insights. Sbírání instrumentačních klíčů ze souboru web.config. [Víc se uč](../../azure-monitor/app/separate-resources.md)
+* Vytváření sestav verze sestavení: Přidání vlastnosti pomocí inicializátoru telemetrie. [Víc se uč](../../azure-monitor/app/separate-resources.md)
 
 ## <a name="monitor-backend-servers-and-desktop-apps"></a>Monitorování back-end serverů a aplikací klasické pracovní plochy
 [Použít modul Windows Server SDK](../../azure-monitor/app/windows-desktop.md).
@@ -137,16 +137,25 @@ Další informace o [ceny a kvóty](../../azure-monitor/app/pricing.md).
 ## <a name="disable-telemetry"></a>Zakázat telemetrii
 K **dynamicky zastavení a spuštění** shromažďování a předávání telemetrických dat ze serveru:
 
-```
+### <a name="aspnet-classic-applications"></a>Technologie ASP.NET, klasická aplikace
 
+```csharp
     using  Microsoft.ApplicationInsights.Extensibility;
 
     TelemetryConfiguration.Active.DisableTelemetry = true;
 ```
 
+### <a name="other-applications"></a>Další aplikace
+Nedoporučuje se používat `TelemetryConfiguration.Active` jednotlivý prvek v konzole nebo aplikace ASP.NET Core.
+Pokud jste vytvořili `TelemetryConfiguration` instance sami – nastavte `DisableTelemetry` k `true`.
 
+Pro aplikace ASP.NET Core může přistupovat k `TelemetryConfiguration` instance pomocí [injektáž závislostí ASP.NET Core](/aspnet/core/fundamentals/dependency-injection/). Podrobnosti v [ApplicationInsights pro aplikace ASP.NET Core](../../azure-monitor/app/asp-net-core.md) článku.
 
-K **zakázat vybrané standardní Kolektory** – například čítače výkonu, požadavky HTTP nebo závislosti – odstranit nebo okomentovat odpovídající řádky v [soubor ApplicationInsights.config](../../azure-monitor/app/api-custom-events-metrics.md). Může to provedete, například pokud chcete poslat TrackRequest data.
+## <a name="disable-selected-standard-collectors"></a>Zakázat vybrané standardní kolekce
+Můžete zakázat standardní kolekce (například čítače výkonu, požadavky HTTP nebo závislosti)
+
+* **Aplikace ASP.NET** – odstranit nebo okomentovat relevantní vstupující [soubor ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md)
+* **Aplikace ASP.NET Core** – postupujte podle možností konfigurace telemetrie moduly v [ApplicationInsights ASP.NET Core](../../azure-monitor/app/asp-net-core.md#configuring-or-removing-default-telemetrymodules)
 
 ## <a name="view-system-performance-counters"></a>Zobrazit čítače výkonu systému
 Mezi metriky, které můžete zobrazit v Průzkumníku metrik představují sadu systému čítače výkonu. Není předdefinovanou okno s názvem **servery** , který zobrazí několik z nich.

@@ -15,12 +15,12 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: bc5266bc37a0b58913feb08452e173949b64c112
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 129127a2a43cd9a86e0a1e1cf538358b62381257
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67061608"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706227"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Odesílání nabízených oznámení pomocí Azure Notification Hubs a Node.js
 
@@ -37,8 +37,8 @@ Mezi popsané scénáře patří odesílání nabízených oznámení do aplikac
 
 - Android
 - iOS
-- Univerzální platforma Windows
-- telefon se systémem Windows
+- Univerzální platforma pro Windows
+- Windows Phone
 
 ## <a name="notification-hubs"></a>Notification Hubs
 
@@ -46,7 +46,7 @@ Azure Notification Hubs poskytuje snadno použitelné, multiplatformní a škál
 
 ## <a name="create-a-nodejs-application"></a>Vytvoření aplikace v Node.js
 
-Prvním krokem v tomto kurzu je vytvoření nové prázdné aplikace Node.js. Pokyny týkající se vytvoření aplikace Node.js najdete v tématu [vytvoření a nasazení aplikace Node.js na Azure web][nodejswebsite], [cloudové služby pro Node.js] [ Node.js Cloud Service] pomocí Windows Powershellu nebo [webu pomocí Webmatrixu][webmatrix].
+Prvním krokem v tomto kurzu je vytvoření nové prázdné aplikace Node.js. Pokyny týkající se vytvoření aplikace Node.js najdete v tématu [vytvoření a nasazení aplikace Node.js na Azure web][nodejswebsite] , [Node.js Cloud Service][Node.js Cloud Service] pomocí Windows Powershellu nebo [webu pomocí Webmatrixu] [webmatrix].
 
 ## <a name="configure-your-application-to-use-notification-hubs"></a>Konfigurace aplikace pro použití Notification Hubs
 
@@ -106,7 +106,7 @@ Získat připojení `connectionstring` hodnotu [Azure Portal] provedením násle
 - **Datová část** -JSON nebo nezpracovaného řetězce datovou část zprávy.
 - **Zpětné volání** – funkce zpětného volání.
 
-Další informace o formátu datové části, najdete v článku **datové části** část [implementace serveru GCM](https://developers.google.com/cloud-messaging/) dokumentu.
+Další informace o formátu datové části, najdete v článku [datové části dokumentace](https://distriqt.github.io/ANE-PushNotifications/m.FCM-GCM%20Payload).
 
 Následující kód používá `GcmService` instance vystavené `NotificationHubService` k odesílání nabízených oznámení na všechny registrované klienty.
 

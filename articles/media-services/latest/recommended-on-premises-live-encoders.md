@@ -9,12 +9,12 @@ ms.author: johndeu
 ms.date: 06/12/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 1bede8ff7c33988a4e11a84d3a51ca098a608f33
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e31ad51121b1b198e2d444e70c3f482b208ef105
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67055283"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67840143"
 ---
 # <a name="recommended-live-streaming-encoders"></a>Doporučené datové proudy kodéry
 
@@ -97,7 +97,7 @@ Jako partner Azure Media Services místní kodér Media Services podporuje váš
 10. Adresa URL v kroku 8 kombinovat s názvem hostitele v kroku 9 získat úplnou adresu URL.
 11. Spusťte váš kodér služby live Encoding přibližně 10 minut.
 12. Zastavte živou událost. 
-13. Například použijte přehrávač [Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html) sledovat archivovaný asset, který k zajištění přehrávání nemá žádné viditelné potížím s vykreslováním na všech úrovních kvality. Nebo, sledovat a ověřit prostřednictvím adresy URL náhledu během živé relace.
+13. Například použijte přehrávač [Azure Media Player](http://aka.ms/azuremediaplayer) sledovat archivovaný asset, který k zajištění přehrávání nemá žádné viditelné potížím s vykreslováním na všech úrovních kvality. Nebo, sledovat a ověřit prostřednictvím adresy URL náhledu během živé relace.
 14. ID assetu, publikované streamovací adresa URL pro živý archív a nastavení a verze se používá z váš kodér služby live Encoding záznamu.
 15. Obnovit stav živá událost po vytvoření každý vzorek.
 16. Opakujte kroky 5 až 15 u všech konfigurací s nepodporuje váš kodér (s opakováním a bez signalizace ad, titulky nebo různými rychlostmi kódování).
@@ -116,14 +116,14 @@ Jako partner Azure Media Services místní kodér Media Services podporuje váš
 10. Adresa URL v kroku 8 kombinovat s názvem hostitele v kroku 9 získat úplnou adresu URL.
 11. Spusťte váš kodér služby live Encoding přibližně 10 minut.
 12. Zastavte živou událost.
-13. Například použijte přehrávač [Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html) sledovat archivovaný asset, který k zajištění přehrávání histogramu úplně bez viditelné pro všechny úrovně kvality. Nebo, sledovat a ověřit prostřednictvím adresy URL náhledu během živé relace.
+13. Například použijte přehrávač [Azure Media Player](http://aka.ms/azuremediaplayer) sledovat archivovaný asset, který k zajištění přehrávání histogramu úplně bez viditelné pro všechny úrovně kvality. Nebo, sledovat a ověřit prostřednictvím adresy URL náhledu během živé relace.
 14. ID assetu, publikované streamovací adresa URL pro živý archív a nastavení a verze se používá z váš kodér služby live Encoding záznamu.
 15. Obnovit stav živá událost po vytvoření každý vzorek.
 16. Opakujte kroky 5 až 15 u všech konfigurací s nepodporuje váš kodér (s opakováním a bez signalizace ad, titulky nebo různými rychlostmi kódování).
 
 ### <a name="longevity-verification"></a>Životnost ověření
 
-Postupujte stejným způsobem jako v [živá událost předávací ověřování](#pass-through-live-event-verification) s výjimkou kroku 11. <br/>Místo 10 minut spusťte váš kodér služby live Encoding pro jeden týden nebo i delší dobu. Například použijte přehrávač [Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html) sledovat živé streamování z času na čas (nebo archivovaný asset) k zajištění přehrávání nemá žádné viditelné potížím s vykreslováním.
+Postupujte stejným způsobem jako v [živá událost předávací ověřování](#pass-through-live-event-verification) s výjimkou kroku 11. <br/>Místo 10 minut spusťte váš kodér služby live Encoding pro jeden týden nebo i delší dobu. Například použijte přehrávač [Azure Media Player](http://aka.ms/azuremediaplayer) sledovat živé streamování z času na čas (nebo archivovaný asset) k zajištění přehrávání nemá žádné viditelné potížím s vykreslováním.
 
 ### <a name="email-your-recorded-settings"></a>Zaznamenané nastavení e-mailu
 

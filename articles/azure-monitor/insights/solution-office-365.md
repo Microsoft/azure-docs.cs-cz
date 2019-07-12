@@ -6,18 +6,18 @@ documentationcenter: ''
 author: bwren
 manager: carmonm
 editor: ''
-ms.service: operations-management-suite
+ms.service: azure-monitor
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/01/2019
 ms.author: bwren
-ms.openlocfilehash: 34c7ecbf235bed838af9ed2f848ca492916583f6
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: 3f4b0ad8b7aad01472a76db67f2c07e03e978e41
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514209"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673043"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Řešení pro správu Office 365 v Azure (Preview)
 
@@ -101,7 +101,7 @@ Prvním krokem je vytvoření aplikace v Azure Active Directory, řešení pro s
     ![Nastavení multitenant](media/solution-office-365/settings-multitenant.png)
 
 1. Vyberte **požadovaná oprávnění** v **nastavení** nabídky a pak klikněte na tlačítko **přidat**.
-1. Klikněte na tlačítko **vyberte rozhraní API** a potom **rozhraní API pro správu Office 365**. Klikněte na tlačítko **rozhraní API pro správu Office 365**. Klikněte na **Vybrat**.
+1. Klikněte na tlačítko **vyberte rozhraní API** a potom **rozhraní API pro správu Office 365**. Klikněte na tlačítko **rozhraní API pro správu Office 365**. Klikněte na tlačítko **vyberte**.
 
     ![Vybrat rozhraní API](media/solution-office-365/select-api.png)
 
@@ -541,7 +541,7 @@ Následující vlastnosti jsou společné pro všechny záznamy Office 365.
 
 | Vlastnost | Description |
 |:--- |:--- |
-| Type | *OfficeActivity* |
+| type | *OfficeActivity* |
 | ClientIP | IP adresa zařízení použitá při protokolování aktivity. IP adresa se zobrazí ve formátu adresy IPv4 nebo IPv6. |
 | OfficeWorkload | Služby Office 365, odkazující na záznam.<br><br>AzureActiveDirectory<br>Exchange<br>SharePoint|
 | Operace | Název aktivity uživatele nebo správce.  |
@@ -550,7 +550,7 @@ Následující vlastnosti jsou společné pro všechny záznamy Office 365.
 | ResultStatus | Určuje, zda byla akce (zadaná ve vlastnosti Operation) úspěšná. Možné hodnoty jsou Succeeded, částečně úspěšném nebo Failed. Pro aktivitu správy serveru Exchange, hodnotu buď True nebo False. |
 | UserId | Hlavní název uživatele (hlavní název uživatele) uživatele, který provedl akci, jejímž výsledkem bylo zaprotokolování záznamu například my_name@my_domain_name. Všimněte si, že záznamy aktivity prováděné systémovými účty (například SHAREPOINT\system nebo NTAUTHORITY\SYSTEM) jsou zahrnuté také. | 
 | UserKey | Alternativní ID pro uživatele identifikovaného ve vlastnosti ID uživatele.  Například tato vlastnost naplní jedinečné ID účtu služby passport (PUID) pro události prováděné uživateli na Sharepointu, Onedrivu pro firmy a serveru Exchange. Tato vlastnost může také zadejte stejnou hodnotu jako vlastnost ID uživatele pro události, ke kterým dochází v jiných službách a akcích prováděné systémovými účty|
-| UserType | Typ uživatele, který provedl operaci.<br><br>Správa<br>Aplikace<br>DcAdmin<br>Pravidelné<br>Vyhrazeno<br>ServicePrincipal<br>Systémový |
+| UserType | Typ uživatele, který provedl operaci.<br><br>Správce<br>Aplikace<br>DcAdmin<br>Pravidelné<br>Vyhrazeno<br>ServicePrincipal<br>Systém |
 
 
 ### <a name="azure-active-directory-base"></a>Azure Active Directory base
@@ -681,7 +681,7 @@ Tyto záznamy jsou vytvořeny při skupiny Exchange se provedly změny nebo dopl
 | DestMailboxOwnerSid | Nastaví jenom v případě, že parametr CrossMailboxOperations má hodnotu True. Určuje identifikátor SID cílové poštovní schránky. |
 | DestMailboxOwnerUPN | Nastaví jenom v případě, že parametr CrossMailboxOperations má hodnotu True. Určuje hlavní název uživatele vlastníka cílové poštovní schránky. |
 | DestFolder | Cílová složka pro operace, jako je přesunout. |
-| Složka | Složka, ve kterém se nachází skupina položek. |
+| Folder | Složka, ve kterém se nachází skupina položek. |
 | Složky |     Informace o zapojenou do činnosti; zdrojové složky například, pokud jsou vybraná a pak odstranit složky. |
 
 

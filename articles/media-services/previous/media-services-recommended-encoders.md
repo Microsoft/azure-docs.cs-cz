@@ -9,12 +9,12 @@ ms.author: johndeu
 ms.date: 03/20/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 373ce1d10af87603b1bdd6339c94891187c35d8c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ec881d190de719c2a7dbedcbf28b0b3ea57140d8
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60332648"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67840116"
 ---
 # <a name="recommended-on-premises-encoders"></a>Doporučené místní kodéry
 Když živého streamování pomocí služby Azure Media Services, můžete zadat, jak chcete, aby váš kanál pro příjem vstupního datového proudu. Pokud se rozhodnete použít kodér v místním prostředí pomocí živého kódování kanálu, by měl váš kodér push datový proud s jednou přenosovou rychlostí vysoce kvalitní jako výstup. Pokud budete chtít pomocí kodéru on premises průchozích kanálů, by měl váš kodér push datového proudu s více přenosovými rychlostmi jako výstup s všechny požadované výstupu kvality. Další informace najdete v tématu [živé streamování pomocí na místních kodérů](media-services-live-streaming-with-onprem-encoders.md).
@@ -54,7 +54,7 @@ Předávání ověření kanálu
 4. Vytvořit publikované živou událost
 5. Spusťte váš kodér služby live Encoding přibližně 10 minut
 6. Zastavit živou událost
-7. Vytvoření, spuštění koncového bodu streamování, například použijte přehrávač [Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html) sledovat archivovaný asset, který k zajištění přehrávání histogramu úplně bez viditelné pro všechny úrovně kvality (nebo můžete také sledovat a ověřit prostřednictvím adresy URL náhledu během živé relace před krokem 6)
+7. Vytvoření, spuštění koncového bodu streamování, například použijte přehrávač [Azure Media Player](http://aka.ms/azuremediaplayer) sledovat archivovaný asset, který k zajištění přehrávání histogramu úplně bez viditelné pro všechny úrovně kvality (nebo můžete také sledovat a ověřit prostřednictvím adresy URL náhledu během živé relace před krokem 6)
 8. ID Assetu, záznamu, publikovat adresu URL streamování pro živý archív a nastavení a verze se používá z váš kodér služby live Encoding
 9. Resetuje stav kanálu po vytvoření každý vzorek
 10. Opakujte kroky 3 až 9 u všech konfigurací s nepodporuje váš kodér (s opakováním a bez ad signalizace/titulky/jiné kódování rychlost)
@@ -66,7 +66,7 @@ Předávání ověření kanálu
 4. Vytvořit publikované živou událost
 5. Spusťte váš kodér služby live Encoding přibližně 10 minut
 6. Zastavit živou událost
-7. Vytvoření, spuštění koncového bodu streamování, například použijte přehrávač [Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html) sledovat archivovaný asset, který k zajištění přehrávání histogramu úplně bez viditelné pro všechny úrovně kvality (nebo můžete také sledovat a ověřit prostřednictvím adresy URL náhledu během živé relace před krokem 6)
+7. Vytvoření, spuštění koncového bodu streamování, například použijte přehrávač [Azure Media Player](http://aka.ms/azuremediaplayer) sledovat archivovaný asset, který k zajištění přehrávání histogramu úplně bez viditelné pro všechny úrovně kvality (nebo můžete také sledovat a ověřit prostřednictvím adresy URL náhledu během živé relace před krokem 6)
 8. ID Assetu, záznamu, publikovat adresu URL streamování pro živý archív a nastavení a verze se používá z váš kodér služby live Encoding
 9. Resetuje stav kanálu po vytvoření každý vzorek
 10. Opakujte kroky 3 až 9 u všech konfigurací s nepodporuje váš kodér (s opakováním a bez ad signalizace/titulky nebo různých kódování rychlost)
@@ -77,7 +77,7 @@ Předávání ověření kanálu
 3. Konfigurovat váš kodér tak, aby nabízel živý datový proud s více přenosovými rychlostmi.
 4. Vytvořit publikované živou událost
 5. Jeden týden nebo i delší dobu spouštění váš kodér služby live Encoding
-6. Například použijte přehrávač [Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html) sledovat živé streamování z času na čas (nebo archivovaný asset, který) k zajištění přehrávání nemá žádné viditelné chyb
+6. Například použijte přehrávač [Azure Media Player](http://aka.ms/azuremediaplayer) sledovat živé streamování z času na čas (nebo archivovaný asset, který) k zajištění přehrávání nemá žádné viditelné chyb
 7. Zastavit živou událost
 8. ID Assetu, záznamu, publikovat adresu URL streamování pro živý archív a nastavení a verze se používá z váš kodér služby live Encoding
 

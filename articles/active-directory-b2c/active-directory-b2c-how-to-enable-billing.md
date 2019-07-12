@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 01/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 9d3ce15ac9899fe09d907296976db15ed0babb35
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
-ms.translationtype: HT
+ms.openlocfilehash: 5cc6c8b4947f8c5ebeb27be2dc82f323f84a6902
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612469"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67835419"
 ---
 # <a name="link-an-azure-subscription-to-an-azure-active-directory-b2c-tenant"></a>Propojit předplatné Azure s tenantem Azure Active Directory B2C
 
@@ -45,9 +45,9 @@ Přejděte do tenanta služby Azure AD, který zobrazuje vaše předplatné Azur
 
 ## <a name="find-azure-ad-b2c-in-the-azure-marketplace"></a>Azure AD B2C můžete vyhledat v Azure Marketplace
 
-Klikněte na tlačítko **vytvořit prostředek** tlačítko. Do pole **Hledat na Marketplace** zadejte `B2C`.
+Klikněte na tlačítko **vytvořit prostředek** tlačítko. V **Hledat na Marketplace** zadejte `Active Directory B2C`.
 
-![Zvýrazněné tlačítko Přidat a text Azure AD B2C do vyhledávacího pole marketplace](../../includes/media/active-directory-b2c-create-tenant/find-azure-ad-b2c.png)
+![Portálu snímek obrazovky s "Active Directory B2C: ve vyhledávání na webu Marketplace](../../includes/media/active-directory-b2c-create-tenant/find-azure-ad-b2c.png)
 
 V seznamu výsledků vyberte **Azure AD B2C**.
 
@@ -67,7 +67,7 @@ Pro předplatné vyberte aktivní předplatné Azure, která se na správce.
 
 Vyberte skupinu prostředků a umístění skupiny prostředků. Zvolený nemá žádný vliv na umístění tenanta Azure AD B2C, výkon nebo stav fakturace.
 
-![Vytvořit prostředek B2C](./media/active-directory-b2c-how-to-enable-billing/createresourceb2c.png)
+![Stránce vytváření prostředku Azure AD B2C na webu Azure portal](./media/active-directory-b2c-how-to-enable-billing/createresourceb2c.png)
 
 ## <a name="manage-your-azure-ad-b2c-tenant-resources"></a>Správa prostředků tenanta Azure AD B2C
 
@@ -80,7 +80,7 @@ Můžete použít tento prostředek na:
 - Odeslání žádosti o podporu
 - Přesunutí prostředku tenanta Azure AD B2C do jiného předplatného Azure nebo do jiné skupiny prostředků.
 
-![Nastavení prostředek B2C](./media/active-directory-b2c-how-to-enable-billing/b2cresourcesettings.png)
+![Stránka nastavení prostředek B2C na webu Azure Portal](./media/active-directory-b2c-how-to-enable-billing/b2cresourcesettings.PNG)
 
 ## <a name="change-the-azure-ad-b2c-tenant-billing-subscription"></a>Změna tenanta Azure AD B2C fakturace předplatného
 

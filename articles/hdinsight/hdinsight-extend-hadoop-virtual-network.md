@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 06/17/2019
-ms.openlocfilehash: 61a208f3e84125acc2a3cb22d3abccf16587e581
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.date: 07/10/2019
+ms.openlocfilehash: dab4262e5412c8ef3cd1e0d2ef8203d7f289693f
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67543678"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839189"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Rozšíření Azure HDInsight pomocí Azure Virtual Network
 
@@ -25,7 +25,9 @@ Zjistěte, jak používat HDInsight s [Azure Virtual Network](../virtual-network
 * Přímý přístup k [Apache Hadoop](https://hadoop.apache.org/) služby, které nejsou k dispozici veřejně přes internet. Například [Apache Kafka](https://kafka.apache.org/) rozhraní API nebo [Apache HBase](https://hbase.apache.org/) rozhraní Java API.
 
 > [!IMPORTANT]  
-> 28. února 2019 síťové prostředky (jako jsou síťové karty, LBs atd.) pro nový clustery, které jsou vytvořené ve virtuální síti se zřídí ve stejné skupině prostředků clusteru HDInsight. Tyto prostředky byly dříve zřízeny ve skupině prostředků virtuální sítě. Není žádná změna aktuální spuštěné clustery a tyto clustery, které jsou vytvořené bez virtuální sítě.
+> Vytváření clusteru HDInsight ve virtuální síti vytvoříte několik síťových prostředků, jako jsou síťové karty a nástroje pro vyrovnávání zatížení. Proveďte **není** odstranit tyto síťové prostředky, jako jsou potřeba pro váš cluster fungovat správně s virtuální sítí.
+>
+> 28. února 2019 tyto síťové prostředky (jako jsou síťové karty, LBs atd.) pro nový clustery, které jsou vytvořené ve virtuální síti se zřídí ve stejné skupině prostředků clusteru HDInsight. Tyto prostředky byly dříve zřízeny ve skupině prostředků virtuální sítě. Není žádná změna aktuální spuštěné clustery a tyto clustery, které jsou vytvořené bez virtuální sítě.
 
 ## <a name="prerequisites-for-code-samples-and-examples"></a>Požadavky na ukázky a příklady
 
@@ -266,12 +268,11 @@ Pokud používáte skupiny zabezpečení sítě nebo trasy definované uživatel
     > [!IMPORTANT]  
     > Pokud není uveden oblast Azure, které používáte, pak použijte pouze čtyři IP adresy z kroku 1.
 
-    | Země | Oblast | Povolené zdrojové IP adresy | Povolené cílové | Direction |
+    | Country | Oblast | Povolené zdrojové IP adresy | Povolené cílové | Direction |
     | ---- | ---- | ---- | ---- | ----- |
     | Asie | Východní Asie | 23.102.235.122</br>52.175.38.134 | \*:443 | Příchozí |
     | &nbsp; | Jihovýchodní Asie | 13.76.245.160</br>13.76.136.249 | \*:443 | Příchozí |
-    | Austrálie | Austrálie – střed | 20.36.36.33</br>20.36.36.196 | \*:443 | Příchozí |
-    | &nbsp; | Austrálie – východ | 104.210.84.115</br>13.75.152.195 | \*:443 | Příchozí |
+    | Austrálie | Austrálie – východ | 104.210.84.115</br>13.75.152.195 | \*:443 | Příchozí |
     | &nbsp; | Austrálie – jihovýchod | 13.77.2.56</br>13.77.2.94 | \*:443 | Příchozí |
     | Brazílie | Brazílie – jih | 191.235.84.104</br>191.235.87.113 | \*:443 | Příchozí |
     | Kanada | Kanada – východ | 52.229.127.96</br>52.229.123.172 | \*:443 | Příchozí |
@@ -293,12 +294,12 @@ Pokud používáte skupiny zabezpečení sítě nebo trasy definované uživatel
     | &nbsp; | Jižní Korea – jih | 52.231.203.16</br>52.231.205.214 | \*:443 | Příchozí
     | Spojené království | Spojené království – západ | 51.141.13.110</br>51.141.7.20 | \*:443 | Příchozí |
     | &nbsp; | Velká Británie – jih | 51.140.47.39</br>51.140.52.16 | \*:443 | Příchozí |
-    | Spojené státy | USA – střed | 13.89.171.122</br>13.89.171.124 | \*:443 | Příchozí |
-    | &nbsp; | USA – východ | 13.82.225.233</br>40.71.175.99 | \*:443 | Příchozí |
-    | &nbsp; | Středoseverní USA | 157.56.8.38</br>157.55.213.99 | \*:443 | Příchozí |
+    | Spojené státy | Střed USA | 13.89.171.122</br>13.89.171.124 | \*:443 | Příchozí |
+    | &nbsp; | East US | 13.82.225.233</br>40.71.175.99 | \*:443 | Příchozí |
+    | &nbsp; | Střed USA – sever | 157.56.8.38</br>157.55.213.99 | \*:443 | Příchozí |
     | &nbsp; | Západní střed USA | 52.161.23.15</br>52.161.10.167 | \*:443 | Příchozí |
-    | &nbsp; | Západní USA | 13.64.254.98</br>23.101.196.19 | \*:443 | Příchozí |
-    | &nbsp; | Západní USA 2 | 52.175.211.210</br>52.175.222.222 | \*:443 | Příchozí |
+    | &nbsp; | USA – západ | 13.64.254.98</br>23.101.196.19 | \*:443 | Příchozí |
+    | &nbsp; | USA – západ 2 | 52.175.211.210</br>52.175.222.222 | \*:443 | Příchozí |
 
     Informace o IP adres k používání pro Azure Government, najdete v článku [Azure Government inteligence a analýza](https://docs.microsoft.com/azure/azure-government/documentation-government-services-intelligenceandanalytics) dokumentu.
 

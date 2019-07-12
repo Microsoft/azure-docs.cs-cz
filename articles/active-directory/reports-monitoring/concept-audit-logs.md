@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3da96c09026baff3965e0a90d1f461fd948a3a50
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 59f716ccd7b2e02c9064f13cf1ffd6e8180858c9
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60441022"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827916"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Sestavy aktivit auditu na portálu Azure Active Directory 
 
@@ -41,7 +41,7 @@ Tento článek obsahuje přehled sestavy auditu.
  
 ## <a name="who-can-access-the-data"></a>Kdo má přístup k datům?
 
-* Uživatelé v **zabezpečení uživatelské**, **Čtenář zabezpečení**, **čtenáře sestav** nebo **globálního správce** role
+* Uživatelé v **správce zabezpečení**, **Čtenář zabezpečení**, **čtenáře sestav** nebo **globálního správce** role
 * Kromě toho všichni uživatelé (bez oprávnění správce) mohou zobrazit své vlastní aktivity auditu
 
 ## <a name="audit-logs"></a>Protokoly auditu
@@ -79,9 +79,9 @@ Vyberte položku v zobrazení seznamu zobrazíte podrobnější informace.
 Můžete filtrovat data auditu pro následující pole:
 
 - Služba
-- Category
+- Kategorie
 - Aktivita
-- Status
+- Stav
 - Target
 - Spustil(a) (činitel)
 - Rozsah dat
@@ -111,8 +111,8 @@ Můžete filtrovat data auditu pro následující pole:
 - Vše
 - AdministrativeUnit
 - ApplicationManagement
-- Authentication
-- Autorizace
+- Ověřování
+- Authorization
 - Kontakt
 - Zařízení
 - DeviceConfiguration
@@ -140,7 +140,7 @@ Seznam všech aktivit auditu můžete získat pomocí Graph API https://graph.wi
 **Iniciovaných** filtr umožňuje definovat jméno prvek "actor" nebo univerzální hlavní název (UPN). Název a hlavní název uživatele jsou malá a velká písmena.
 
 **Rozsah kalendářních dat** filtr umožňuje definovat časový rámec pro vracená data.  
-Možné hodnoty:
+Možné hodnoty jsou:
 
 - 1 měsíc
 - 7 dní

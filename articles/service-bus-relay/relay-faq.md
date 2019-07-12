@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2018
 ms.author: spelluru
-ms.openlocfilehash: 2433f4b3563cc8b301d1815cccf5ab24406e8662
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c6ea5e72f70620004b4b00be0c779893a3b2ad90
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66111471"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706187"
 ---
 # <a name="azure-relay-faqs"></a>Nejčastější dotazy k Azure Relay
 
@@ -42,7 +42,7 @@ Dříve pojmenovanou službu předávání přes Service Bus se teď nazývá [W
 Tato část odpovídá na některé časté otázky ke správě přenosu Cenová struktura. Také můžete zobrazit [nejčastější dotazy k podpoře Azure](https://azure.microsoft.com/support/faq/) obecné informace o cenách Azure. Úplné informace o cenách služby Relay, najdete v části [podrobnosti o cenách služby Service Bus][Pricing overview].
 
 ### <a name="how-do-you-charge-for-hybrid-connections-and-wcf-relay"></a>Jak jste za hybridní připojení a WCF Relay?
-Úplné informace o cenách služby Relay, najdete v článku [hybridními připojeními a přenosy WCF] [ Pricing overview] tabulky na stránce s podrobnostmi o cenách služby Service Bus. Kromě ceny uvedené na této stránce bude vám účtována přidružené datové přenosy pro výchozí přenos dat mimo datové centrum, ve které je zřízená vaší aplikace.
+Úplné informace o cenách služby Relay, najdete v článku [hybridními připojeními a přenosy WCF][Pricing overview] tabulky na stránce s podrobnostmi o cenách služby Service Bus. Kromě ceny uvedené na této stránce bude vám účtována přidružené datové přenosy pro výchozí přenos dat mimo datové centrum, ve které je zřízená vaší aplikace.
 
 ### <a name="how-am-i-billed-for-hybrid-connections"></a>Jak se fakturují pro hybridní připojení?
 Tady jsou tři ukázkové fakturační scénáře pro hybridní připojení:
@@ -83,7 +83,7 @@ Přenosy, které jsou otevřeny pomocí **netTCPRelay** vazby WCF zpracovávat z
 | Název kvóty | Scope |  Poznámky | Hodnota |
 | --- | --- | --- | --- |
 | Souběžné naslouchacích procesů na přenos |Entita |Odeslání dalších žádostí o další připojení budou odmítnuty a volající kód obdrží výjimku. |25 |
-| Předávání souběžných připojení za všechny koncové body relay v oboru názvů služby |Obor názvů |- |5 000 |
+| Předávání souběžných připojení za všechny koncové body relay v oboru názvů služby |Obor názvů |- |5,000 |
 | Obor názvů služby Relay koncových bodů |Obor názvů |- |10,000 |
 | Velikost pro zprávy [NetOnewayRelayBinding](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) a [NetEventRelayBinding](/dotnet/api/microsoft.servicebus.neteventrelaybinding) přenosu |Obor názvů |Odmítne příchozí zprávy, které přesahují tyto kvóty a obdrží výjimku ve volajícím kódu. |64 kB |
 | Velikost pro zprávy [HttpRelayTransportBindingElement](/dotnet/api/microsoft.servicebus.httprelaytransportbindingelement) a [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) přenosu |Obor názvů |Žádné omezení velikosti zpráv. |Unlimited |
@@ -106,7 +106,7 @@ Obor názvů přesunout z jednoho předplatného Azure do jiného předplatného
 
 #### <a name="azure-portal"></a>portál Azure
 
-Pomocí webu Azure portal migrovat z jednoho předplatného Azure Relay obory názvů do jiného předplatného, najdete v článku [přesunutí prostředků do nové skupiny prostředků nebo předplatného](../azure-resource-manager/resource-group-move-resources.md#use-portal). 
+Pomocí webu Azure portal migrovat z jednoho předplatného Azure Relay obory názvů do jiného předplatného, najdete v článku [přesunutí prostředků do nové skupiny prostředků nebo předplatného](../azure-resource-manager/resource-group-move-resources.md#use-the-portal). 
 
 #### <a name="powershell"></a>PowerShell
 
@@ -128,7 +128,7 @@ Move-AzResource -DestinationResourceGroupName 'targetRG' -DestinationSubscriptio
 Popis výjimky běžné a doporučené akce můžete provést, naleznete v tématu [přenosu výjimek][Relay exceptions].
 
 ### <a name="what-is-a-shared-access-signature-and-which-languages-can-i-use-to-generate-a-signature"></a>Co je podpis sdíleného přístupu a jaké jazyky můžu použít k generovat signaturu?
-Sdílených přístupových podpisů (SAS) je mechanismus ověřování na základě zabezpečené hodnoty hash SHA-256 nebo identifikátory URI. Informace o tom, jak generovat vlastní podpisy v Node, PHP, Java, C a C# najdete v tématu [ověřování služby Service Bus pomocí signatur sdíleného přístupu][Shared Access Signatures].
+Sdílených přístupových podpisů (SAS) je mechanismus ověřování na základě zabezpečené hodnoty hash SHA-256 nebo identifikátory URI. Informace o tom, jak generovat vlastní podpisy v Node, PHP, Java, C a C#, naleznete v tématu [ověřování služby Service Bus pomocí signatur sdíleného přístupu][Shared Access Signatures].
 
 ### <a name="is-it-possible-to-whitelist-relay-endpoints"></a>Je možné ke koncovým bodům seznamu povolených IP adres relay?
 Ano. Přenosový klient vytvoří připojení ke službě Azure Relay s použitím plně kvalifikované názvy domény. Zákazníky můžete přidat záznam pro `*.servicebus.windows.net` na bránách firewall, které podporují DNS na seznam povolených.

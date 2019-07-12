@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/02/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 4aba7aadbe92b6c4f0ab417785e230bb6a6823df
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5d043072244ede5b1d7bd28d4628ffe3cf4961d8
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60486579"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836324"
 ---
 # <a name="move-data-from-an-ftp-server-by-using-azure-data-factory"></a>Přesun dat pomocí služby Azure Data Factory ze serveru FTP
 > [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, který používáte:"]
@@ -45,7 +45,7 @@ Vytvoření kanálu s aktivitou kopírování, který přesouvá data z FTP zdro
 
 Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním služby Data Factory**. Zobrazit [kurzu: Vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) rychlý návod.
 
-Tyto nástroje můžete také použít k vytvoření kanálu: **Azure portal**, **sady Visual Studio**, **PowerShell**, **šablony Azure Resource Manageru**, **rozhraní .NET API**a **Rozhraní REST API**. Zobrazit [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování.
+Tyto nástroje můžete také použít k vytvoření kanálu: **Visual Studio**, **PowerShell**, **šablony Azure Resource Manageru**, **rozhraní .NET API**, a **rozhraní REST API**. Zobrazit [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování.
 
 Ať už používáte, nástrojů nebo rozhraní API, proveďte následující kroky k vytvoření kanálu pro přesouvání dat ze zdrojového úložiště dat do úložiště dat jímky:
 
@@ -63,7 +63,7 @@ Následující části obsahují podrobnosti o vlastnostech JSON, které se pou�
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 Následující tabulka popisuje elementy JSON jsou specifické pro službu FTP propojené.
 
-| Vlastnost | Popis | Požaduje se | Výchozí |
+| Vlastnost | Popis | Požadováno | Výchozí |
 | --- | --- | --- | --- |
 | type |Nastavte na Server_ftp. |Ano |&nbsp; |
 | host |Zadejte název nebo IP adresu serveru FTP. |Ano |&nbsp; |
@@ -153,7 +153,7 @@ Následující tabulka popisuje elementy JSON jsou specifické pro službu FTP p
 
 **TypeProperties** oddílu se liší pro každý typ datové sady. Poskytuje informace, které jsou specifické pro daný typ datové sady. **TypeProperties** části datové sady typu **sdílení souborů** má následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 | --- | --- | --- |
 | folderPath |Podřízená cesta ke složce. Použijte řídicí znak "\" pro zvláštní znaky v řetězci. Viz ukázka propojené služby a datové sady definice příklady.<br/><br/>Můžete zkombinovat tato vlastnost se **partitionBy** cesty ke složkám podle řez start a end data a časy. |Ano |
 | fileName |Zadejte název souboru **folderPath** Pokud má tabulka, která má odkazovat na konkrétní soubor ve složce. Pokud je nezadávejte žádnou hodnotu pro tuto vlastnost, v tabulce odkazuje na všechny soubory ve složce.<br/><br/>Když **fileName** není zadaný pro výstupní datovou sadu, název generovaného souboru je v následujícím formátu: <br/><br/>`Data.<Guid>.txt` (Příklad: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |Ne |
@@ -204,14 +204,14 @@ K dispozici ve vlastnosti **typeProperties** části aktivity, na druhé straně
 
 V aktivitě kopírování, pokud je zdroj typu **FileSystemSource**, následující vlastnost je k dispozici v **typeProperties** části:
 
-| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
+| Vlastnost | Popis | Povolené hodnoty | Požadováno |
 | --- | --- | --- | --- |
 | recursive |Určuje, jestli se data číst rekurzivně z podsložky, nebo jenom ze zadané složky. |Hodnota TRUE, False (výchozí) |Ne |
 
 ## <a name="json-example-copy-data-from-ftp-server-to-azure-blob"></a>Příklad JSON: Kopírování dat ze serveru FTP do objektů Blob v Azure
 Tato ukázka předvádí, jak kopírovat data ze serveru FTP do úložiště objektů Blob v Azure. Ale data se dají zkopírovat přímo do libovolné jímky uvádí [podporovaných úložišť dat a formáty](data-factory-data-movement-activities.md#supported-data-stores-and-formats), s využitím aktivity kopírování ve službě Data Factory.
 
-Následující příklady popisují ukázkový JSON definice, které můžete použít k vytvoření kanálu pomocí [webu Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md), [sady Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md), nebo [Powershellu](data-factory-copy-activity-tutorial-using-powershell.md):
+Následující příklady popisují ukázkový JSON definice, které můžete použít k vytvoření kanálu pomocí [sady Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md), nebo [Powershellu](data-factory-copy-activity-tutorial-using-powershell.md):
 
 * Propojené služby typu [Server_ftp](#linked-service-properties)
 * Propojené služby typu [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)

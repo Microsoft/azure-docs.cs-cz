@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 4ff7f92d1d13966be5d17f37210bef961f64faf2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 51fae63b6db99f28a5b3bed056dadc0c2513ff0f
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61462381"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839936"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Kopírování dat do nebo z Oracle místní pomocí služby Azure Data Factory
 
@@ -83,7 +83,7 @@ Můžete vytvořit kanál, který obsahuje aktivitu kopírování. Kanál přeso
 
 Nejjednodušší způsob, jak vytvořit kanál, je použití Průvodce kopírováním. Zobrazit [kurzu: Vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) rychlý návod k vytvoření kanálu pomocí Průvodce kopírování dat.
 
-Jeden z následujících nástrojů můžete také použít k vytvoření kanálu: **webu Azure portal**, **sady Visual Studio**, **prostředí Azure PowerShell**, **Azure Resource Manageru Šablona**, **rozhraní .NET API**, nebo **rozhraní REST API**. Najdete v článku [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) pro podrobné pokyny k vytvoření kanálu obsahujícího aktivitu kopírování.
+Jeden z následujících nástrojů můžete použít k vytvoření kanálu: **Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru**, **rozhraní .NET API**, nebo **rozhraní REST API**. Najdete v článku [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) pro podrobné pokyny k vytvoření kanálu obsahujícího aktivitu kopírování.
 
 Ať už používáte, nástrojů nebo rozhraní API, proveďte následující kroky k vytvoření kanálu pro přesouvání dat ze zdrojového úložiště dat do úložiště dat jímky:
 
@@ -151,7 +151,7 @@ Další informace o povolených formátech, naleznete v tématu [poskytovatel da
 
 **TypeProperties** oddílu se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti. **TypeProperties** části datové sady typu **OracleTable** má následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 | --- | --- | --- |
 | tableName |Název tabulky v databázi Oracle, který odkazuje propojenou službu. |Ne (Pokud **oracleReaderQuery** nebo **OracleSource** určena) |
 
@@ -170,7 +170,7 @@ Vlastnosti, které jsou k dispozici v **typeProperties** části aktivity se li�
 
 V aktivitě kopírování, pokud je zdroj **OracleSource** typu, jsou k dispozici v následujících vlastností **typeProperties** části:
 
-| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
+| Vlastnost | Popis | Povolené hodnoty | Požadováno |
 | --- | --- | --- | --- |
 | oracleReaderQuery |Použijte vlastní dotaz číst data. |Řetězec dotazu SQL. Například "vyberte \* z **MyTable**". <br/><br/>Pokud není zadán, je proveden tento příkaz SQL: "vyberte \* z **MyTable**" |Ne<br />(Pokud **tableName** z **datovou sadu** určena) |
 
@@ -178,7 +178,7 @@ V aktivitě kopírování, pokud je zdroj **OracleSource** typu, jsou k dispozic
 
 **Třídě OracleSink** podporuje následující vlastnosti:
 
-| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
+| Vlastnost | Popis | Povolené hodnoty | Požadováno |
 | --- | --- | --- | --- |
 | writeBatchTimeout |Doba čekání pro dávku vložte na dokončení před vypršením časového limitu operace. |**timespan**<br/><br/> Příklad: 00:30:00 (30 minut) |Ne |
 | writeBatchSize |Vloží data do tabulky SQL, když velikost vyrovnávací paměti dosáhne hodnoty **writeBatchSize**. |Celé číslo (počet řádků) |Ne (výchozí: 100) |
@@ -187,7 +187,7 @@ V aktivitě kopírování, pokud je zdroj **OracleSource** typu, jsou k dispozic
 
 ## <a name="json-examples-for-copying-data-to-and-from-the-oracle-database"></a>Příklady JSON pro kopírování dat do a z databáze Oracle
 
-Následující příklady popisují ukázkový JSON definice, které můžete použít k vytvoření kanálu pomocí [webu Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md), [sady Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md), nebo [prostředí Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Příklady ukazují, jak kopírovat data z nebo k databázi Oracle a do a z úložiště objektů Blob v Azure. Nicméně data je možné zkopírovat do libovolné jímky uvedené v [podporovaných úložišť dat a formáty](data-factory-data-movement-activities.md#supported-data-stores-and-formats) pomocí aktivity kopírování ve službě Azure Data Factory.
+Následující příklady popisují ukázkový JSON definice, které můžete použít k vytvoření kanálu pomocí [sady Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) nebo [prostředí Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Příklady ukazují, jak kopírovat data z nebo k databázi Oracle a do a z úložiště objektů Blob v Azure. Nicméně data je možné zkopírovat do libovolné jímky uvedené v [podporovaných úložišť dat a formáty](data-factory-data-movement-activities.md#supported-data-stores-and-formats) pomocí aktivity kopírování ve službě Azure Data Factory.
 
 **Příklad: Kopírování dat z Oracle do Azure Blob storage**
 
@@ -599,27 +599,27 @@ Při přesunu dat od Oraclu, se od Oracle datového typu na typ formátu .NET a 
 | --- | --- |
 | BFILE |Byte[] |
 | BLOB |Byte[]<br/>(podporováno pouze ve Oracle 10g a novějších verzích při použití ovladač Microsoft) |
-| CHAR |String |
-| CLOB |String |
-| DATE |DateTime |
+| CHAR |Řetězec |
+| CLOB |Řetězec |
+| DATE |Datetime |
 | FLOAT |Decimal, String (Pokud přesnost > 28) |
 | INTEGER |Decimal, String (Pokud přesnost > 28) |
 | INTERVAL ROK MĚSÍC |Int32 |
 | DEN INTERVALU SEKUNDY. |TimeSpan |
-| LONG |String |
+| LONG |Řetězec |
 | LONG RAW |Byte[] |
-| NCHAR |String |
-| NCLOB |String |
+| NCHAR |Řetězec |
+| NCLOB |Řetězec |
 | NUMBER |Decimal, String (Pokud přesnost > 28) |
-| NVARCHAR2 |String |
+| NVARCHAR2 |Řetězec |
 | RAW |Byte[] |
-| ROWID |String |
-| TIMESTAMP |DateTime |
-| TIMESTAMP WITH LOCAL TIME ZONE |DateTime |
-| TIMESTAMP WITH TIME ZONE |DateTime |
+| ROWID |Řetězec |
+| TIMESTAMP |Datetime |
+| TIMESTAMP WITH LOCAL TIME ZONE |Datetime |
+| TIMESTAMP WITH TIME ZONE |Datetime |
 | UNSIGNED INTEGER |Number |
-| VARCHAR2 |String |
-| XML |String |
+| VARCHAR2 |Řetězec |
+| XML |Řetězec |
 
 > [!NOTE]
 > Datové typy **INTERVALU roku a měsíce na** a **INTERVALU dne do druhé** nejsou podporovány při použití ovladače Microsoft.

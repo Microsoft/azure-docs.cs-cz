@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: f68f6c366571b8f0f04f8507606c1a4008ab0405
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f4add4bf07178aa616e86f8a64b313630466824f
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443244"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67653268"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Vývoj zabezpečených aplikací v Azure
 V tomto článku Představujeme aktivity související se zabezpečením a ovládací prvky, které je třeba zvážit při vývoji aplikací pro cloud. Bezpečnostní otázky a koncepty, které je vhodné zvážit během fáze implementace a ověření Microsoft [Security Development Lifecycle (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) se vztahuje. Cílem je může pomoci určit činností a služeb Azure, které můžete použít k vývoji bezpečnější aplikace.
@@ -88,7 +88,7 @@ To znamená, že máte přístup k reálným datům, což snižuje útoky menš�
 
 Se chránit před útoky hrubou silou a na základě slovníku opakovaně uhodnout, je nutné implementovat zásady silných hesel k zajištění, že uživatelé vytvářet složité heslo (například minimální délku 12 znaků a vyžadování alfanumerické a speciální znaky).
 
-Můžete vytvářet a vynucovat zásady pro hesla rozšiřovatelnou platformu pro identitu. Azure AD B2C vám pomůže se správou hesel poskytnutím [integrované zásady](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies#create-a-password-reset-policy), [samoobslužné resetování hesla](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-sspr)a provádění dalších akcí.
+Můžete vytvářet a vynucovat zásady pro hesla rozšiřovatelnou platformu pro identitu. Azure AD B2C vám pomůže se správou hesel poskytnutím [integrované zásady](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows#create-a-password-reset-user-flow), [samoobslužné resetování hesla](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-sspr)a provádění dalších akcí.
 
 Se chránit před útoky zaměřenými na výchozích účtů, ověřte, že jsou všechny klíče a hesla nahraditelné a, že se jedná o vygenerované nebo nahradit po instalaci prostředky.
 

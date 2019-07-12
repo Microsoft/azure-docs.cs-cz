@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 4ca26c7b8fbfebbce8cfcb9915a7db12e5ad2352
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 82d1114451b677880b0b02234546d9cdb2e743e2
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60337404"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593050"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Přehled certifikátů pro Azure Cloud Services
 Certifikáty se používají v Azure pro cloudové služby ([služby certifikátů](#what-are-service-certificates)) a pro ověřování pomocí rozhraní API pro správu ([certifikáty pro správu](#what-are-management-certificates)). Toto téma obsahuje obecný přehled o oba typy certifikátů, jak k [vytvořit](#create) a jejich nasazení do Azure.
@@ -39,7 +39,7 @@ Certifikáty služby můžete nahrát do Azure, buď pomocí webu Azure portal n
 Certifikáty služeb se dají spravovat nezávisle z vašich služeb a může být spravován různí jednotlivci. Například vývojář může nahrát balíček služby, který odkazuje na certifikát, který správce IT má byl dříve odeslán do Azure. Správce IT můžete spravovat a obnovit tento certifikát (a změníte konfiguraci této služby) bez nutnosti k nahrání nového balíčku služby. Aktualizace bez nového balíčku služby je možné, protože logický název, název úložiště a umístění certifikátu naleznete v souboru definice služby a kryptografický otisk certifikátu je zadané v konfiguračním souboru služby. Pokud chcete aktualizovat certifikát, je pouze potřeba nahrát nový certifikát a změňte hodnotu kryptografického otisku v konfiguračním souboru služby.
 
 >[!Note]
->[Cloud Services – nejčastější dotazy](cloud-services-faq.md) článek má některé užitečné informace o certifikátech.
+>[Cloud Services – nejčastější dotazy – konfigurace a správa](cloud-services-configuration-and-management-faq.md) článek má některé užitečné informace o certifikátech.
 
 ## <a name="what-are-management-certificates"></a>Co jsou certifikáty pro správu?
 Certifikáty pro správu umožňují ověření pomocí modelu nasazení classic. Mnoho programech a nástrojích (např. Visual Studio nebo pomocí sady SDK Azure) použijte tyto certifikáty k automatizaci konfigurace a nasazení různých služeb Azure. Tyto nemá relaci ve skutečnosti ke cloudovým službám. 

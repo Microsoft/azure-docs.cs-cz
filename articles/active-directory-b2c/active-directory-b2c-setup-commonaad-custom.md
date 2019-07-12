@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 72d01d6927ee421d01a831244acf65c44a084354
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1938164e957daa84b22fa83e9cb9fa8d51ffeb15
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66508671"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67654084"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>Nastavení přihlášení pro více tenantů Azure Active Directory pomocí vlastních zásad v Azure Active Directory B2C
 
@@ -45,7 +45,7 @@ Povolit přihlášení pro uživatele z konkrétní organizace služby Azure AD,
     ```
     https://yourtenant.b2clogin.com/your-tenant.onmicrosoft.com/oauth2/authresp
     ```
-    
+
 8. Klikněte na možnost **Vytvořit**. Kopírovat **ID aplikace** pro pozdější použití.
 9. Vyberte aplikaci a pak vyberte **nastavení**.
 10. Vyberte **klíče**, zadejte popis klíče, vyberte dobu trvání a potom klikněte na tlačítko **Uložit**. Zkopírujte hodnotu klíče, který se zobrazí pro pozdější použití.
@@ -57,7 +57,7 @@ Potřebujete k uložení klíče aplikace, kterou jste vytvořili ve vašem tena
 
 1. Ujistěte se, že používáte adresáře, který obsahuje vašeho tenanta Azure AD B2C kliknutím **filtr adresářů a předplatných** v horní nabídce a výběrem adresáře, který obsahuje váš tenant.
 2. Zvolte **všechny služby** v horním levém horním rohu webu Azure portal a poté vyhledejte a vyberte **Azure AD B2C**.
-3. Na stránce s přehledem, vyberte **architekturu rozhraní identit - PREVIEW**.
+3. Na stránce s přehledem, vyberte **architekturu rozhraní identit**.
 4. Vyberte **klíče zásad** a pak vyberte **přidat**.
 5. Pro **možnosti**, zvolte `Manual`.
 6. Zadejte **název** klíče zásad. Například, `ContosoAppSecret`.  Předpona, která `B2C_1A_` je automaticky přidán do názvu klíče.
@@ -67,7 +67,7 @@ Potřebujete k uložení klíče aplikace, kterou jste vytvořili ve vašem tena
 
 ## <a name="add-a-claims-provider"></a>Přidat zprostředkovatele deklarací identity
 
-Pokud chcete uživatelům umožní přihlásit pomocí Azure AD, musíte definovat Azure AD jako poskytovatele deklarací identity, který Azure AD B2C můžou klienti komunikovat prostřednictvím koncového bodu. Koncový bod poskytuje sadu deklarací identity, které používají Azure AD B2C k ověření, že se ověřil konkrétního uživatele. 
+Pokud chcete uživatelům umožní přihlásit pomocí Azure AD, musíte definovat Azure AD jako poskytovatele deklarací identity, který Azure AD B2C můžou klienti komunikovat prostřednictvím koncového bodu. Koncový bod poskytuje sadu deklarací identity, které používají Azure AD B2C k ověření, že se ověřil konkrétního uživatele.
 
 Azure AD jako poskytovatele deklarací identity můžete definovat tak, že přidáte Azure AD, aby **ClaimsProvider** prvku v souboru rozšíření vašich zásad.
 
@@ -93,7 +93,7 @@ Azure AD jako poskytovatele deklarací identity můžete definovat tak, že při
             <Item Key="response_mode">form_post</Item>
             <Item Key="HttpBinding">POST</Item>
             <Item Key="DiscoverMetadataByTokenIssuer">true</Item>
-        
+
             <!-- The key below allows you to specify each of the Azure AD tenants that can be used to sign in. Update the GUIDs below for each tenant. -->
             <Item Key="ValidTokenIssuerPrefixes">https://sts.windows.net/00000000-0000-0000-0000-000000000000,https://sts.windows.net/11111111-1111-1111-1111-111111111111</Item>
 
@@ -178,7 +178,7 @@ Teď, když máte tlačítko na místě, budete potřebovat odkázat na akci. Ak
     ```XML
     <ClaimsExchange Id="AzureADExchange" TechnicalProfileReferenceId="Common-AAD" />
     ```
-    
+
     Aktualizujte hodnotu **TechnicalProfileReferenceId** k **Id** technického profilu, který jste vytvořili dříve. Například, `Common-AAD`.
 
 3. Uložit *TrustFrameworkExtensions.xml* souboru a nahrajte ji znovu pro ověření.

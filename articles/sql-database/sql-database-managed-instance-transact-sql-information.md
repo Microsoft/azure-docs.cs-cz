@@ -10,14 +10,14 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 manager: craigg
-ms.date: 03/13/2019
+ms.date: 07/07/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 2ca2e4e98f56f7df5e81217bcda00179f05ff69e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6b0e10ce48088853090958dca9d8c1fad20780e7
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67070355"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67723253"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Rozdíly ve službě Azure SQL Database Managed Instance T-SQL z SQL serveru
 
@@ -186,7 +186,7 @@ Managed instance nemají přístup k souborům, takže zprostředkovatelé krypt
 - [Záloha hlavního klíče služby](https://docs.microsoft.com/sql/t-sql/statements/backup-service-master-key-transact-sql) se nepodporuje (spravované službou SQL Database).
 - [Obnovení hlavního klíče služby](https://docs.microsoft.com/sql/t-sql/statements/restore-service-master-key-transact-sql) se nepodporuje (spravované službou SQL Database).
 
-## <a name="configuration"></a>Konfigurace
+## <a name="configuration"></a>Konfiguraci
 
 ### <a name="buffer-pool-extension"></a>Rozšíření fondu vyrovnávací paměti
 
@@ -293,18 +293,18 @@ Další informace najdete v tématu [ALTER DATABASE](https://docs.microsoft.com/
   - SQL Server Analysis Services nejsou podporovány.
 - Oznámení jsou podporovány jen částečně.
 - E-mailové oznámení se podporuje, i když ji vyžaduje, abyste nakonfigurovali profil databázového e-mailu. Agent systému SQL Server můžete použít jenom jeden profil databázového e-mailu a musí být volána `AzureManagedInstance_dbmail_profile`. 
-  - Operátor není podporován. 
+  - Operátor není podporován.
   - Příkazu není podporován.
   - Výstrahy se zatím nepodporují.
-  - Nepodporuje proxy servery. 
+  - Nepodporuje proxy servery.
 - Protokol událostí se nepodporuje.
 
-Následující funkce v současné době nejsou podporované, ale bude v budoucnu povoleno:
+Aktuálně nejsou podporovány následující funkce agenta SQL:
 
 - Proxy servery
 - Plánování úloh na nečinnosti procesoru
 - Povolení nebo zakázání agenta
-- Výstrahy
+- Upozornění
 
 Informace o agenta systému SQL Server najdete v tématu [agenta systému SQL Server](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent).
 
@@ -398,7 +398,13 @@ Externí tabulky tento odkaz, nejsou podporované soubory v HDFS nebo Azure Blob
 
 ### <a name="replication"></a>Replikace
 
-Replikace je dostupná ve veřejné verzi preview pro Managed Instance. Informace o replikaci najdete v tématu [replikace systému SQL Server](https://docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance).
+[Transakční replikace](sql-database-managed-instance-transactional-replication.md) dostupná ve veřejné verzi preview na spravované instanci s určitými omezeními:
+- Al typy replikace účastníky (vydavatele, distributora, o přijetí změn odběratele a Push předplatitele) mohou být umístěny na Managed Instance, ale vydavateli a distributorovi nelze umístit na různé instance.
+- Jsou podporovány typy transakční snímku a obousměrnou replikaci. Slučovací replikace, replikace Peer-to-peer a aktualizovatelné odběry nejsou podporovány.
+- Spravovaná Instance může komunikovat s nejnovější verzí systému SQL Server. V tématu podporované verze [tady](sql-database-managed-instance-transactional-replication.md#supportability-matrix-for-instance-databases-and-on-premises-systems).
+- Transakční replikace má některé [další požadavky na síť](sql-database-managed-instance-transactional-replication.md#requirements).
+
+Informace o konfiguraci replikace najdete v tématu [replikace kurzu](replication-with-sql-database-managed-instance.md).
 
 ### <a name="restore-statement"></a>OBNOVENÍ – příkaz 
 
@@ -459,7 +465,7 @@ Různé instance služby Service broker se nepodporuje:
 
 ## <a name="Environment"></a>Omezení prostředí
 
-### <a name="subnet"></a>Podsíť
+### <a name="subnet"></a>Subnet
 - V podsíti vyhrazená pro vaši Managed Instance nelze umístit všechny další prostředky (například virtuální počítače). Tyto prostředky umístěte do jiné podsítě.
 - Podsíť musí mít dostatečný počet dostupných [IP adresy](sql-database-managed-instance-connectivity-architecture.md#network-requirements). Minimální hodnota je 16, zatímco doporučení je k dispozici alespoň 32 IP adres v podsíti.
 - [Koncové body služeb nelze přidružit podsíť spravované instance](sql-database-managed-instance-connectivity-architecture.md#network-requirements). Ujistěte se, že při vytváření virtuální sítě je zakázána možnost koncových bodů služby.
@@ -486,7 +492,7 @@ Následující proměnné, funkce a zobrazení vrátí odlišné výsledky:
 
 ### <a name="tempdb-size"></a>Velikost databáze TEMPDB
 
-Maximální velikost souboru z `tempdb` nemůže být větší než 24 GB na jádro v úrovni General Purpose. Maximální počet `tempdb` velikost na vrstvu pro důležité obchodní informace je omezena s velikostí úložiště instancí. `tempdb` Databáze je vždy rozdělit na 12 datových souborů. Tento maximální velikost jednoho souboru se nedá změnit, a nové soubory nelze přidat do `tempdb`. Některé dotazy může vrátit chybu, pokud je nutné více než 24 GB na jádro v `tempdb`. `tempdb` je vždy znovu vytvořen jako prázdná databáze při spuštění instance nebo převzetí služeb při selhání a jakékoli změně v `tempdb` se nezachová. 
+Maximální velikost souboru z `tempdb` nemůže být větší než 24 GB na jádro v úrovni General Purpose. Maximální počet `tempdb` velikost na vrstvu pro důležité obchodní informace je omezena s velikostí úložiště instancí. `tempdb` velikost souboru protokolu je omezena na 120 GB na obecné účely a pro důležité obchodní informace úrovně. `tempdb` Databáze je vždy rozdělit na 12 datových souborů. Tento maximální velikost jednoho souboru se nedá změnit, a nové soubory nelze přidat do `tempdb`. Některé dotazy může vrátit chybu, pokud je nutné více než 24 GB na jádro v `tempdb` nebo pokud vytvářejí více než 120 GB protokolu. `tempdb` je vždy znovu vytvořit, protože při spuštění instance prázdnou databázi nebo převzetí služeb při selhání a všechny změnit v `tempdb` se nezachová. 
 
 ### <a name="cant-restore-contained-database"></a>Nelze obnovit databáze s omezením
 
@@ -585,6 +591,11 @@ Moduly CLR umístí do managed instance a propojené servery nebo distribuované
 Nelze provést `BACKUP DATABASE ... WITH COPY_ONLY` na databázi, která je zašifrovaná pomocí spravované službou transparentní šifrování dat (TDE). Transparentní šifrování dat spravovaným službou vynutí zálohy šifrované s vnitřním klíčem TDE. Klíč nelze exportovat, abyste nelze obnovit zálohování.
 
 **Alternativní řešení:** Použít automatické zálohování a obnovení k určitému bodu v čase, nebo [spravovaného zákazníkem (BYOK) TDE](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#customer-managed-transparent-data-encryption---bring-your-own-key) místo. Také můžete zakázat šifrování v databázi.
+
+### <a name="point-in-time-restore-follows-time-by-the-time-zone-set-on-the-source-instance"></a>Obnovení k určitému bodu v čase následuje čas časovému pásmu nastavenému na zdrojovou instanci
+
+Obnovení bodu v čase aktuálně interpretuje obnovit pomocí následující časové pásmo zdroje instance místo toho pomocí následujících UTC.
+Zkontrolujte [Managed Instance časové pásmo známé problémy](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-timezone#known-issues) další podrobnosti.
 
 ## <a name="next-steps"></a>Další postup
 

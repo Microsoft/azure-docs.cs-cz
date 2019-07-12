@@ -3,18 +3,18 @@ title: Ověřování pomocí služby Azure Maps | Dokumentace Microsoftu
 description: Ověřování pomocí služby Azure Maps.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 02/12/2019
+ms.date: 07/11/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 22aba19e16e4349a5b495b307c9906f7ded5a636
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a4608d0631c9a590fdde583e399883a023275c30
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66393676"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67838038"
 ---
 # <a name="authentication-with-azure-maps"></a>Ověřování s využitím Azure Maps
 
@@ -31,7 +31,7 @@ Informace o zobrazování svoje klíče najdete v tématu [zobrazit podrobnosti 
 
 ## <a name="authentication-with-azure-active-directory-preview"></a>Ověřování pomocí Azure Active Directory (Preview)
 
-Azure nyní nabízí mapy [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) integrace pro ověření žádosti o služby Azure Maps. Azure AD poskytuje ověřování na základě identity, včetně [řízení přístupu na základě role (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview), udělit úrovni uživatelů nebo aplikací přístup k prostředkům Azure Maps. Následující části můžete vám pomůže pochopit pojmy a komponenty služby Azure Maps integrace se službou Azure AD.
+Azure nyní nabízí mapy [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) integrace pro ověření žádosti o služby Azure Maps. Azure AD poskytuje ověřování na základě identity, včetně [řízení přístupu na základě role (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview), udělit uživatele, skupiny úrovni a úrovni aplikace přístup k prostředkům Azure Maps. Následující části můžete vám pomůže pochopit pojmy a komponenty služby Azure Maps integrace se službou Azure AD.
 
 ## <a name="authentication-with-oauth-access-tokens"></a>Ověřování pomocí přístupových tokenů OAuth
 
@@ -57,7 +57,7 @@ Po přijetí tokenu z Azure AD, je možné odeslat žádost o k Azure Maps záhl
 | Hlavička požadavku    |    Hodnota    |
 |:------------------|:------------|
 | x-ms-client-id    | 30d7cc….9f55|
-| Autorizace     | Nosiče eyJ0e... HNIVN |
+| Authorization     | Nosiče eyJ0e... HNIVN |
 
 > [!Note]
 > `x-ms-client-id` je založené na účtu GUID Azure Maps se zobrazí na stránce ověřování Azure Maps.
@@ -75,9 +75,9 @@ Informace o zobrazení ID klienta najdete v tématu [zobrazit podrobnosti o ově
 
 ## <a name="control-access-with-rbac"></a>Řízení přístupu pomocí RBAC
 
-Azure AD umožňuje řídit přístup k prostředkům zabezpečeného pomocí RBAC. Po vytvoření účtu Azure Maps a zaregistrujte si vaši aplikaci Azure Maps Azure AD v rámci vašeho tenanta Azure AD, můžete nastavit RBAC pro uživatele, aplikace nebo prostředků Azure na stránce portálu účtu Azure Maps.
+Azure AD umožňuje řídit přístup k prostředkům zabezpečeného pomocí RBAC. Po vytvoření účtu Azure Maps a zaregistrujte si vaši aplikaci Azure Maps Azure AD v rámci vašeho tenanta Azure AD, můžete nastavit RBAC pro uživatele, skupiny, aplikace nebo prostředků Azure na stránce portálu účtu Azure Maps.
 
-Azure Maps podporuje řízení přístupu pro čtení pro jednotlivé uživatele Azure AD, aplikací a služeb Azure pomocí spravované identity pro prostředky Azure.
+Azure Maps podporuje řízení přístupu pro čtení pro jednotlivé uživatele Azure AD, skupiny, aplikace nebo služby Azure pomocí spravované identity pro prostředky Azure.
 
 ![Azure Maps Data Reader (Preview)](./media/azure-maps-authentication/concept.png)
 
@@ -87,7 +87,7 @@ Informace o zobrazování nastavení RBAC najdete v tématu [konfigurace RBAC pr
 
 [Spravované identity pro prostředky Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) poskytování služeb Azure (Azure App Service, Azure Functions, Azure Virtual Machines a tak dále) se automaticky spravovaná identita, která lze udělit oprávnění pro přístup ke službám Azure Maps.  
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Další informace o ověření aplikace v Azure AD a Azure Maps, naleznete v tématu [spravovat ověřování ve službě Azure Maps](https://review.docs.microsoft.com/azure/azure-maps/how-to-manage-authentication).
 

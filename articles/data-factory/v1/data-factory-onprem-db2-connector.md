@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 72c88ef10bf1df217ec6e24ac744d0b30386b4a3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e473858ed02afce89313c0bfeffd95c785120d40
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60824010"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839040"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Přesun dat z databáze DB2 pomocí aktivity kopírování objekt pro vytváření dat Azure
 > [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, který používáte:"]
@@ -64,7 +64,7 @@ Konektor Data Factory DB2 podporuje následující platformy IBM DB2 a verze s v
 Vytvoření kanálu s aktivitou kopírování pro přesun dat z úložiště dat DB2 lokálně pomocí různých nástrojů a rozhraní API: 
 
 - Nejjednodušší způsob, jak vytvořit kanál, je použití Průvodce kopírováním služby Azure Data Factory. Rychlý postup k vytvoření kanálu pomocí Průvodce kopírováním, najdete v části [kurzu: Vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md). 
-- Nástroje můžete také použít k vytvoření kanálu, včetně webu Azure portal, sady Visual Studio, Azure PowerShell, šablony Azure Resource Manageru, rozhraní API pro .NET a rozhraní REST API. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v tématu [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). 
+- Nástroje můžete také použít k vytvoření kanálu, včetně sady Visual Studio, Azure PowerShell, šablony Azure Resource Manageru, rozhraní API pro .NET a rozhraní REST API. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v tématu [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). 
 
 Ať už používáte, nástrojů nebo rozhraní API, proveďte následující kroky k vytvoření kanálu pro přesouvání dat ze zdrojového úložiště dat do úložiště dat jímky:
 
@@ -79,7 +79,7 @@ Následující části obsahují podrobnosti o vlastnostech JSON, které se pou�
 ## <a name="db2-linked-service-properties"></a>Vlastnosti DB2 propojené služby
 V následující tabulce jsou uvedeny vlastnosti JSON, které jsou specifické pro DB2 propojené služby.
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 | --- | --- | --- |
 | **type** |Tato vlastnost musí být nastavená na **OnPremisesDb2**. |Ano |
 | **server** |Název serveru DB2. |Ano |
@@ -95,7 +95,7 @@ Seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové s
 
 **TypeProperties** oddílu se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti. **TypeProperties** části datové sady typu **RelationalTable**, která obsahuje datové sady DB2, má následující vlastnost:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 | --- | --- | --- |
 | **tableName** |Název tabulky instance databáze DB2, propojená služba odkazuje na. Tato vlastnost je velká a malá písmena. |Ne (Pokud **dotazu** vlastnost aktivity kopírování typu **RelationalSource** určena) |
 
@@ -104,7 +104,7 @@ Seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivity 
 
 Pro aktivitu kopírování, pokud je zdroj typu **RelationalSource** (která zahrnuje DB2), jsou k dispozici v následujících vlastností **typeProperties** části:
 
-| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
+| Vlastnost | Popis | Povolené hodnoty | Požadováno |
 | --- | --- | --- | --- |
 | **query** |Použijte vlastní dotaz číst data. |Řetězec dotazu SQL. Příklad: `"query": "select * from "MySchema"."MyTable""` |Ne (Pokud **tableName** je zadána vlastnost datové sady) |
 
@@ -112,7 +112,7 @@ Pro aktivitu kopírování, pokud je zdroj typu **RelationalSource** (která zah
 > Schéma a tabulku názvy jsou malá a velká písmena. V příkazu dotazu, uzavřete názvy vlastností s použitím "" (dvojité uvozovky).
 
 ## <a name="json-example-copy-data-from-db2-to-azure-blob-storage"></a>Příklad JSON: Kopírování dat z databáze DB2 do úložiště objektů Blob v Azure
-V tomto příkladu obsahuje ukázky JSON definice, které můžete použít k vytvoření kanálu pomocí [webu Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md), [sady Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md), nebo [prostředí Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). V příkladu se dozvíte, jak kopírovat data z databáze DB2 do úložiště objektů Blob. Nicméně je možné zkopírovat data do [všechna podporovaná data ukládat typ jímky](data-factory-data-movement-activities.md#supported-data-stores-and-formats) pomocí aktivity kopírování objekt pro vytváření dat Azure.
+V tomto příkladu obsahuje ukázky JSON definice, které můžete použít k vytvoření kanálu pomocí [sady Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md), nebo [prostředí Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). V příkladu se dozvíte, jak kopírovat data z databáze DB2 do úložiště objektů Blob. Nicméně je možné zkopírovat data do [všechna podporovaná data ukládat typ jímky](data-factory-data-movement-activities.md#supported-data-stores-and-formats) pomocí aktivity kopírování objekt pro vytváření dat Azure.
 
 Ukázka obsahuje následující entity služby Data Factory:
 
@@ -317,23 +317,23 @@ Aktivitu kopírování, která převádí data z databáze DB2 typu na typ .NET 
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
 | Numeric |Decimal |
-| Datum |DateTime |
-| Čas |TimeSpan |
-| Timestamp |DateTime |
+| Date |Datetime |
+| Time |TimeSpan |
+| Timestamp |Datetime |
 | Xml |Byte[] |
-| Char |String |
-| VarChar |String |
-| LongVarChar |String |
-| DB2DynArray |String |
-| Binární hodnota |Byte[] |
+| Char |Řetězec |
+| VarChar |Řetězec |
+| LongVarChar |Řetězec |
+| DB2DynArray |Řetězec |
+| Binary |Byte[] |
 | VarBinary |Byte[] |
 | LongVarBinary |Byte[] |
-| Graphic |String |
-| VarGraphic |String |
-| LongVarGraphic |String |
-| Clob |String |
-| Objekt blob |Byte[] |
-| DbClob |String |
+| Graphic |Řetězec |
+| VarGraphic |Řetězec |
+| LongVarGraphic |Řetězec |
+| Clob |Řetězec |
+| Blob |Byte[] |
+| DbClob |Řetězec |
 | SmallInt |Int16 |
 | Integer |Int32 |
 | BigInt |Int64 |
@@ -343,11 +343,11 @@ Aktivitu kopírování, která převádí data z databáze DB2 typu na typ .NET 
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
 | Numeric |Decimal |
-| Datum |DateTime |
-| Čas |TimeSpan |
-| Timestamp |DateTime |
+| Date |Datetime |
+| Time |TimeSpan |
+| Timestamp |Datetime |
 | Xml |Byte[] |
-| Char |String |
+| Char |Řetězec |
 
 ## <a name="map-source-to-sink-columns"></a>Mapování zdroje do jímky sloupce
 Další postup mapování sloupců v datové sadě zdroje do sloupců v datové sadě jímky najdete v tématu [mapování sloupců v datové sadě ve službě Azure Data Factory](data-factory-map-columns.md).

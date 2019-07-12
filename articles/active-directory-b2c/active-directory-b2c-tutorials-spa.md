@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 6824cc84c24b41fd82afd39ead3029a212173948
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.openlocfilehash: 496cf801a44638af61306b43791abce9466e2cb2
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67624798"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67835686"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-using-azure-active-directory-b2c"></a>Kurz: Povolení ověřování v jednostránkové aplikace pomocí Azure Active Directory B2C
 
@@ -121,7 +121,7 @@ Ukázka podporuje registraci a přihlašování, úpravy profilu a resetování 
 
     Použijte platnou e-mailovou adresu a proveďte ověření pomocí ověřovacího kódu. Nastavte heslo. Zadejte hodnoty požadovaných atributů.
 
-    ![Pracovní postup registrace](media/active-directory-b2c-tutorials-desktop-app/sign-up-workflow.png)
+    ![Registrační stránku předložený tok přihlašování – v registrace/přihlášení uživatele](./media/active-directory-b2c-tutorials-desktop-app/sign-up-workflow.PNG)
 
 1. Kliknutím na **Create** (Vytvořit) vytvořte místní účet v adresáři Azure AD B2C.
 
@@ -139,7 +139,7 @@ Tato chyba se zobrazí, protože se pokouší o přístup k prostředku z adres�
 
 Pokračovat k dalšímu kurzu v této sérii (viz [další kroky](#next-steps)) k vytvoření chráněného webového rozhraní API pro svůj adresář.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto článku jste zjistili, jak:
 

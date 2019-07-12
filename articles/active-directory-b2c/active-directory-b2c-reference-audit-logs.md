@@ -11,12 +11,12 @@ ms.date: 08/04/2017
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 2c1bfd9e2659127ab77e9db661b54fde18a8d25c
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 216f5413ce3dae1f2d040643a30a4d7db4a879b8
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205351"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67835413"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Přístup k protokolům auditu Azure AD B2C
 
@@ -33,45 +33,45 @@ Azure Active Directory B2C (Azure AD B2C) vysílá protokoly auditu obsahující
 
 |Typ aktivity |Popis  |
 |---------|---------|
-|Autorizace |Aktivity týkající se povolení uživatele B2C přístup k prostředkům (například správce přístup k seznamu zásad B2C)         |
-|Adresář |Aktivity související s atributy adresáře, načíst, když se správce přihlásí pomocí webu Azure Portal |
+|Authorization |Aktivity týkající se povolení uživatele B2C přístup k prostředkům (například správce přístup k seznamu zásad B2C)         |
+|Adresář |Aktivity související s atributy adresáře, načíst, když se správce přihlásí pomocí webu Azure portal |
 |Aplikace | Operace CRUD s aplikace B2C |
 |Klíč |Operací CRUD u klíčů uložených v kontejneru klíčů B2C |
 |Resource |Operace CRUD s B2C prostředky (například, zásady a zprostředkovatele identity)
-|Authentication |Ověření přihlašovacích údajů uživatele a vydávání tokenů|
+|Ověřování |Ověření přihlašovacích údajů uživatele a vydávání tokenů|
 
 > [!NOTE]
 > Aktivity CRUD objekt uživatele, najdete **základní adresář** kategorie.
 
 ## <a name="example-activity"></a>Ukázkové aktivity
-Následující příklad ukazuje data zaznamenaná, když se uživatel přihlásí pomocí externího zprostředkovatele identity: ![Protokoly auditu – příklad](./media/active-directory-b2c-reference-audit-logs/audit-logs-example.png)
+Následující příklad ukazuje data zaznamenaná, když se uživatel přihlásí pomocí externího zprostředkovatele identity: ![Příklad stránky s podrobnostmi aktivit protokolů auditu na webu Azure portal](./media/active-directory-b2c-reference-audit-logs/audit-logs-example.png)
 
 Panel podrobností aktivity obsahuje následující důležité informace:
 
 |Section|Pole|Popis|
 |-------|-----|-----------|
 | Aktivita | Name | Jaké aktivity došlo. Například "vydání tokentu id_token pro aplikaci" (který končí přihlášení skutečné uživatele). |
-| Iniciátor (Actor) | ObjectId | **ID objektu** aplikace B2C, které se uživatel přihlašuje (Tento identifikátor se nezobrazuje na portálu Azure Portal, ale je třeba přístupná přes rozhraní Graph API). |
+| Iniciátor (Actor) | ObjectId | **ID objektu** aplikace B2C, které se uživatel přihlašuje (Tento identifikátor se nezobrazuje na portálu Azure portal, ale je třeba přístupná přes rozhraní Graph API). |
 | Iniciátor (Actor) | Spn | **ID aplikace** aplikace B2C, které se uživatel přihlašuje. |
 | Cíle | ObjectId | **ID objektu** uživatele, který se přihlašuje. |
 | Další podrobnosti | TenantId | **ID Tenanta** tenanta Azure AD B2C. |
 | Další podrobnosti | `PolicyId` | **ID zásad** toku uživatele. (zásady) se používá k přihlášení uživatele. |
 | Další podrobnosti | ApplicationId | **ID aplikace** aplikace B2C, které se uživatel přihlašuje. |
 
-## <a name="accessing-audit-logs-through-the-azure-portal"></a>Přístup k protokolům auditu na webu Azure Portal
+## <a name="accessing-audit-logs-through-the-azure-portal"></a>Přístup k protokolům auditu na webu Azure portal
 1. Přejděte na [Azure Portal](https://portal.azure.com). Ujistěte se, že máte ve svém adresáři B2C.
 2. Klikněte na **Azure Active Directory** na panel Oblíbené položky na levé straně
-    
-    ![Protokoly auditu – tlačítko AAD](./media/active-directory-b2c-reference-audit-logs/audit-logs-portal-aad.png)
+
+    ![Azure Active Directory tlačítko zvýrazněno nabídky na levé straně portálu](./media/active-directory-b2c-reference-audit-logs/audit-logs-portal-aad.png)
 
 1. V části **aktivity**, klikněte na **protokolů auditu**
 
-    ![Protokoly auditu - části protokoly](./media/active-directory-b2c-reference-audit-logs/audit-logs-portal-section.png)
+    ![Tlačítkem protokoly auditu v části aktivity služby nabídky](./media/active-directory-b2c-reference-audit-logs/audit-logs-portal-section.png)
 
 2. V **kategorie** dropboxu, vyberte **B2C**
 3. Klikněte na **použít**
 
-    ![Protokoly auditu – kategorie](./media/active-directory-b2c-reference-audit-logs/audit-logs-portal-category.png)
+    ![Kategorie a tlačítko použít zvýrazněné filtr protokolu auditu](./media/active-directory-b2c-reference-audit-logs/audit-logs-portal-category.png)
 
 Zobrazí se seznam aktivit přihlášení za posledních sedm dní.
 - Použití **typ prostředku aktivity** rozevírací seznam můžete filtrovat podle typů aktivit uvedených výše

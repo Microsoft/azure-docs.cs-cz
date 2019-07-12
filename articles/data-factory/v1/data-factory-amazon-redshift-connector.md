@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: dc72ec9bf2e7e7c5c77685368167357a0108f2d3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3a1497211cc42c702537cbbdfea32ff71a400c7c
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60335419"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836684"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Přesun dat z Amazon Redshift pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, který používáte:"]
@@ -44,7 +44,7 @@ Vytvoření kanálu s aktivitou kopírování pro přesun dat z zdroje Amazon Re
 
 Nejjednodušší způsob, jak vytvořit kanál, je použití Průvodce kopírováním služby Azure Data Factory. Rychlý postup k vytvoření kanálu pomocí Průvodce kopírováním, najdete v části [kurzu: Vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md).
 
-Kanál můžete vytvořit také pomocí webu Azure portal, sady Visual Studio, prostředí Azure PowerShell nebo jiných nástrojů. Šablony Azure Resource Manageru, rozhraní API pro .NET nebo REST API můžete také použít k vytvoření kanálu. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v tématu [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+Kanál můžete vytvořit také pomocí sady Visual Studio, Azure Powershellu nebo jiných nástrojů. Šablony Azure Resource Manageru, rozhraní API pro .NET nebo REST API můžete také použít k vytvoření kanálu. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v tématu [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 Ať už používáte, nástrojů nebo rozhraní API, proveďte následující kroky k vytvoření kanálu pro přesouvání dat ze zdrojového úložiště dat do úložiště dat jímky:
 
@@ -60,7 +60,7 @@ Následující části popisují vlastnosti JSON, které se používají k defin
 
 Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro služby Amazon Redshift propojený.
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 | --- | --- | --- |
 | **type** |Tato vlastnost musí být nastavená na **AmazonRedshift**. |Ano |
 | **server** |IP adresu nebo název hostitele serveru Amazon Redshift. |Ano |
@@ -75,7 +75,7 @@ Seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové s
 
 **TypeProperties** oddílu se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti. **TypeProperties** části datové sady typu **RelationalTable**, což zahrnuje datová sada Amazon Redshift má následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 | --- | --- | --- |
 | **tableName** |Název tabulky v databázi Amazon Redshift, která odkazuje propojenou službu. |Ne (Pokud **dotazu** vlastnost aktivity kopírování typu **RelationalSource** určena) |
 
@@ -85,7 +85,7 @@ Seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivit n
 
 Pro aktivitu kopírování, pokud je zdroj typu **AmazonRedshiftSource**, následující vlastnosti jsou k dispozici v **typeProperties** části:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 | --- | --- | --- |
 | **query** | Použijte vlastní dotaz číst data. |Ne (Pokud **tableName** je zadána vlastnost datové sady) |
 | **redshiftUnloadSettings** | Při použití Redshift obsahuje skupiny vlastností **uvolnění** příkazu. | Ne |
@@ -94,7 +94,7 @@ Pro aktivitu kopírování, pokud je zdroj typu **AmazonRedshiftSource**, násle
 
 Alternativně můžete použít **RelationalSource** typ, který zahrnuje Amazon Redshift, s následující vlastností v **typeProperties** oddílu. Poznámka: Tento typ zdroje nepodporuje Redshift **uvolnění** příkazu.
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 | --- | --- | --- |
 | **query** |Použijte vlastní dotaz číst data. | Ne (Pokud **tableName** je zadána vlastnost datové sady) |
 
@@ -336,12 +336,12 @@ Aktivitu kopírování, která převádí data z Amazon Redshift typu na typ .NE
 | DECIMAL |Decimal |
 | REAL |Single |
 | DOUBLE PRECISION |Double |
-| BOOLEAN |String |
-| CHAR |String |
-| VARCHAR |String |
-| DATE |DateTime |
-| TIMESTAMP |DateTime |
-| TEXT |String |
+| BOOLEAN |Řetězec |
+| CHAR |Řetězec |
+| VARCHAR |Řetězec |
+| DATE |Datetime |
+| TIMESTAMP |Datetime |
+| TEXT |Řetězec |
 
 ## <a name="map-source-to-sink-columns"></a>Mapování zdroje do jímky sloupce
 Další postup mapování sloupců v datové sadě zdroje do sloupců v datové sadě jímky najdete v tématu [mapování sloupců v datové sadě ve službě Azure Data Factory](data-factory-map-columns.md).
@@ -352,5 +352,5 @@ Při kopírování dat z relační datové úložiště, mějte opakovatelnosti 
 ## <a name="performance-and-tuning"></a>Výkon a ladění
 Další informace o klíčových faktorů, které ovlivňují výkon aktivitu kopírování a způsoby, jak optimalizovat výkon [průvodci laděním a výkonem aktivity kopírování](data-factory-copy-activity-performance.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Podrobné pokyny pro vytvoření kanálu s aktivitou kopírování najdete v tématu [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).

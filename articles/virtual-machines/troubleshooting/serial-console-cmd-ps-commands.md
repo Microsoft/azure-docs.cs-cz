@@ -4,7 +4,7 @@ description: Jak používat příkazy CMD a prostředí PowerShell v rámci SAC 
 services: virtual-machines-windows
 documentationcenter: ''
 author: alsin
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 55b7e45bb9e600267e1dad0e36e9a97eca9a7d40
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f286881341e527d3f01e57768cd48405c85a9a69
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60306879"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67710615"
 ---
 # <a name="windows-commands---cmd-and-powershell"></a>Příkazy Windows - CMD a prostředí PowerShell
 
@@ -71,13 +71,13 @@ Za znaménko rovná se vyžádáním mezerou.
 ### <a name="start-service"></a>Spustit službu
 `net start termservice`
 
-nebo
+or
 
 `sc start termservice`
 ### <a name="stop-service"></a>Zastavit službu
 `net stop termservice`
 
-nebo
+or
 
 `sc stop termservice`
 ## <a name="manage-networking-features"></a>Spravovat síťovým funkcím
@@ -211,11 +211,11 @@ Cesta při použití `/restore` musí být nadřazená složka složky, které j
 ### <a name="show-os-version"></a>Zobrazit verzi operačního systému
 `ver`
 
-nebo 
+or 
 
 `wmic os get caption,version,buildnumber /format:list`
 
-nebo 
+or 
 
 `systeminfo  find /i "os name"`
 
@@ -223,7 +223,7 @@ nebo
 ### <a name="view-os-install-date"></a>Datum instalace operačního systému zobrazení
 `systeminfo | find /i "original"`
 
-nebo 
+or 
 
 `wmic os get installdate`
 ### <a name="view-last-boot-time"></a>Zobrazit čas posledního spuštění
@@ -231,7 +231,7 @@ nebo
 ### <a name="view-time-zone"></a>Zobrazení časové pásmo
 `systeminfo | find /i "time zone"`
 
-nebo
+or
 
 `wmic timezone get caption,standardname /format:list`
 ### <a name="restart-windows"></a>Restartovat Windows
@@ -296,7 +296,7 @@ Při použití účtu služby jiné než `NT AUTHORITY\LocalService`, `NT AUTHOR
 ### <a name="show-nic-properties"></a>Zobrazit vlastnosti síťového adaptéru
 `get-netadapter | where {$_.ifdesc.startswith('Microsoft Hyper-V Network Adapter')} |  format-list status,name,ifdesc,macadDresS,driverversion,MediaConNectState,MediaDuplexState`
 
-nebo 
+or 
 
 `get-wmiobject win32_networkadapter -filter "servicename='netvsc'" |  format-list netenabled,name,macaddress`
 
@@ -306,7 +306,7 @@ nebo
 ### <a name="enable-nic"></a>Povolení síťové karty
 `get-netadapter | where {$_.ifdesc.startswith('Microsoft Hyper-V Network Adapter')} | enable-netadapter`
 
-nebo
+or
 
 `(get-wmiobject win32_networkadapter -filter "servicename='netvsc'").enable()`
 
@@ -320,7 +320,7 @@ nebo
 ### <a name="ping"></a>Ping
 `test-netconnection`
 
-nebo
+or
 
 `get-wmiobject Win32_PingStatus -Filter 'Address="8.8.8.8"' | format-table -autosize IPV4Address,ReplySize,ResponseTime`
 
@@ -328,7 +328,7 @@ nebo
 ### <a name="port-ping"></a>Port Ping
 `test-netconnection -ComputerName bing.com -Port 80`
 
-nebo
+or
 
 `(new-object Net.Sockets.TcpClient).BeginConnect('bing.com','80',$null,$null).AsyncWaitHandle.WaitOne(300)`
 
@@ -336,7 +336,7 @@ nebo
 ### <a name="test-dns-name-resolution"></a>Otestujte překlad DNS názvu
 `resolve-dnsname bing.com` 
 
-nebo 
+or 
 
 `[System.Net.Dns]::GetHostAddresses('bing.com')`
 
@@ -346,7 +346,7 @@ nebo
 ### <a name="show-windows-firewall-rule-by-port"></a>Zobrazit Windows pravidlo brány firewall na portu
 `get-netfirewallportfilter | where {$_.localport -eq 3389} | foreach {Get-NetFirewallRule -Name $_.InstanceId} | format-list Name,Enabled,Profile,Direction,Action`
 
-nebo
+or
 
 `(new-object -ComObject hnetcfg.fwpolicy2).rules | where {$_.localports -eq 3389 -and $_.direction -eq 1} | format-table Name,Enabled`
 
@@ -361,7 +361,7 @@ nebo
 ### <a name="verify-user-account-is-enabled"></a>Ověřte, že uživatelský účet je povolená.
 `(get-localuser | where {$_.SID -like "S-1-5-21-*-500"}).Enabled`
 
-nebo 
+or 
 
 `(get-wmiobject Win32_UserAccount -Namespace "root\cimv2" -Filter "SID like 'S-1-5-%-500'").Disabled`
 
@@ -375,13 +375,13 @@ Tento příklad povolí předdefinovaný účet místního správce, který má 
 ### <a name="view-user-account-properties"></a>Zobrazení vlastností uživatelského účtu
 `get-localuser | where {$_.SID -like "S-1-5-21-*-500"} | format-list *`
 
-nebo 
+or 
 
 `get-wmiobject Win32_UserAccount -Namespace "root\cimv2" -Filter "SID like 'S-1-5-%-500'" |  format-list Name,Disabled,Status,Lockout,Description,SID`
 
 `Get-LocalUser` je k dispozici na 2012 +. 2008R2 použít `Get-WmiObject`. Tento příklad ukazuje předdefinovaný účet místního správce, který má vždy SID `S-1-5-21-*-500`.
 ### <a name="view-local-groups"></a>Zobrazení místních skupin
-`(get-localgroup).name | sort` `(get-wmiobject win32_group).Name | sort`
+`(get-localgroup).name | sort``(get-wmiobject win32_group).Name | sort`
 
 `Get-LocalUser` je k dispozici na 2012 +. 2008R2 použít `Get-WmiObject`.
 ## <a name="manage-the-windows-event-log"></a>Správa protokolu událostí Windows

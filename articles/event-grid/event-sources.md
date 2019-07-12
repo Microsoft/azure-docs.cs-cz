@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 3611072759c62f42294730405f1dc402c496acce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ad9bb5c135684c4573195298fb8e55a08208f6b6
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66735009"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67785819"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Zdroje událostí ve službě Azure Event Grid
 
@@ -24,7 +24,7 @@ Tento článek obsahuje odkazy na obsah pro každý zdroj událostí.
 
 Přihlášení k odběru předplatného Azure událostí reakce na změny v prostředcích v předplatném Azure.
 
-|Titul |Popis  |
+|Název |Popis  |
 |---------|---------|
 | [Kurz: Automatizace v Azure pomocí služby Event Grid a Microsoft Teams](ensure-tags-exists-on-new-virtual-machines.md) |Vytvořte virtuální počítač, který odešle událost. Událost se aktivuje runbook služby Automation, značky virtuální počítač, který aktivuje zprávu, která je odeslána do kanálu Microsoft Teams. |
 | [Postupy: přihlášení k odběru událostí prostřednictvím portálu](subscribe-through-portal.md) | Použití portálu k přihlášení k odběru událostí předplatného Azure. |
@@ -36,7 +36,7 @@ Přihlášení k odběru předplatného Azure událostí reakce na změny v pros
 
 Přihlášení k odběru Container Registry událostí reakce na změny v obrázcích.
 
-|Titul |Popis  |
+|Název |Popis  |
 |---------|---------|
 | [Rychlý start: odeslání události registru kontejneru](../container-registry/container-registry-event-grid-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Ukazuje, jak odesílat události Container Registry pomocí Azure CLI. |
 | [Schéma událostí](event-schema-container-registry.md) | Zobrazí pole v událostech Container Registry. |
@@ -45,7 +45,7 @@ Přihlášení k odběru Container Registry událostí reakce na změny v obráz
 
 Přihlásit k vlastní témata pro reakci na události aplikace.
 
-|Titul  |Popis  |
+|Název  |Popis  |
 |---------|---------|
 | [Rychlý start: vytvoření a směrování vlastních událostí pomocí Azure CLI](custom-event-quickstart.md) | Ukazuje, jak používat rozhraní příkazového řádku Azure k odesílání vlastních událostí. |
 | [Rychlý start: vytvoření a směrování vlastních událostí pomocí Azure Powershellu](custom-event-quickstart-powershell.md) | Ukazuje, jak pomocí prostředí Azure PowerShell k odesílání vlastních události. |
@@ -65,7 +65,7 @@ Přihlásit k vlastní témata pro reakci na události aplikace.
 
 Přihlášení k odběru služby Event Hubs událostí reagovat pro zachycení událostí souborů. Event Hubs může fungovat jako zdroj událostí nebo obslužnou rutinu události. Následující články popisují, jak používat Event Hubs jako zdroj.
 
-|Titul  |Popis  |
+|Název  |Popis  |
 |---------|---------|
 | [Kurz: streamování velkých objemů dat do datového skladu](event-grid-event-hubs-integration.md) | Když Event Hubs vytvoří zachytávací soubor, služby Event Grid odešle událost pro aplikaci function app. Aplikace načte zachytávací soubor a migraci dat do datového skladu. |
 | [Schéma událostí](event-schema-event-hubs.md) | Zobrazí pole v událostech služby Event Hubs. |
@@ -76,7 +76,7 @@ Příklady služby Event Hubs jako obslužná rutina, najdete v článku [obslu�
 
 Přihlášení k odběru událostí služby IoT Hub na zařízení se vytvořilo odstraněné, připojené, odpojené a telemetrie událostí.
 
-|Titul  |Popis  |
+|Název  |Popis  |
 |---------|---------|
 | [Odeslání e-mailová oznámení o událostech služby Azure IoT Hub pomocí Logic Apps](publish-iot-hub-events-to-logic-apps.md) | Aplikace logiky odešle e-mailové oznámení pokaždé, když zařízení do služby IoT Hub. |
 | [Reakce na události služby IoT Hub s využitím služby Event Grid pro aktivaci akcí](../iot-hub/iot-hub-event-grid.md) | Přehled integrace služby IoT Hub s využitím služby Event Grid. |
@@ -87,7 +87,7 @@ Přihlášení k odběru událostí služby IoT Hub na zařízení se vytvořilo
 
 Přihlásit k odběru služby Media Services události pro reakci na události stavu úloh.
 
-|Titul  |Popis  |
+|Název  |Popis  |
 |---------|---------|
 | [Přehled: reakce na události služby Media Services](../media-services/latest/reacting-to-media-services-events.md) | Přehled integrace služby Media Services pomocí služby Event Grid. |
 | [Kurz: Směrování událostí služby Azure Media Services do vlastního webového koncového bodu pomocí rozhraní příkazového řádku](../media-services/latest/job-state-events-cli-how-to.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Ukazuje, jak odesílat události ze služby Media Services. |
@@ -97,7 +97,7 @@ Přihlásit k odběru služby Media Services události pro reakci na události s
 
 Přihlášení odběru událostí skupiny prostředků reakce na změny v prostředky ve skupině prostředků.
 
-|Titul  |Popis  |
+|Název  |Popis  |
 |---------|---------|
 | [Kurz: monitorování změn virtuálního počítače pomocí Azure Event Grid a Logic Apps](monitor-virtual-machine-changes-event-grid-logic-app.md) | Aplikace logiky monitoruje změny k virtuálnímu počítači a odešle e-mailů o těchto změnách. |
 | [Azure CLI: přihlášení k odběru událostí skupiny prostředků](./scripts/event-grid-cli-resource-group.md)| Ukázkový skript, který se přihlásí odběru událostí skupiny prostředků. Odesílá události do Webhooku. |
@@ -111,17 +111,17 @@ Přihlášení odběru událostí skupiny prostředků reakce na změny v prost�
 
 Přihlášení k odběru služby Service Bus událostí reagovat na zprávy bez aktivní naslouchací proces.
 
-|Titul  |Popis  |
+|Název  |Popis  |
 |---------|---------|
 | [Kurz: Azure Service Bus do příklady integrace služby Azure Event Grid](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Event Grid odesílá zprávy z tématu Service Bus fungování aplikace a aplikaci logiky. |
 | [Přehled: Azure Service Bus k integraci služby Event Grid](../service-bus-messaging/service-bus-to-event-grid-integration-concept.md) | Přehled integrace služby Service Bus s využitím služby Event Grid. |
 | [Schéma událostí](event-schema-service-bus.md) | Zobrazí pole v událostech služby Service Bus. |
 
-## <a name="storage"></a>Úložiště
+## <a name="storage"></a>Storage
 
 Přihlášení k odběru úložiště objektů Blob událostí reagovat na události vytvořené a odstraněných objektů blob.
 
-|Titul  |Popis  |
+|Název  |Popis  |
 |---------|---------|
 | [Rychlý start: Směrování událostí služby Blob storage do vlastního webového koncového bodu pomocí Azure CLI](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Ukazuje, jak používat rozhraní příkazového řádku Azure k odesílání událostí služby blob storage do Webhooku. |
 | [Rychlý start: Směrování událostí služby Blob storage do vlastního webového koncového bodu pomocí Powershellu](../storage/blobs/storage-blob-event-quickstart-powershell.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Ukazuje, jak používat Azure PowerShell k odesílání událostí služby blob storage do Webhooku. |
@@ -135,7 +135,7 @@ Přihlášení k odběru úložiště objektů Blob událostí reagovat na udál
 ## <a name="maps"></a>Maps
 Přihlásit k odběru Azure Maps události pro reakci na události monitorové geografické zóny. Aplikace může například doručení e-mailové oznámení pokaždé, když zařízení přejde do nebo ji opustí monitorové geografické zóny.
 
-|Titul  |Popis  |
+|Název  |Popis  |
 |---------|---------|
 | [Reagujte na události Azure Maps pomocí služby Event Grid](../azure-maps/azure-maps-event-grid-integration.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Přehled integrace Azure Maps pomocí služby Event Grid. |
 | [Kurz: Nastavení monitorové geografické zóny](../azure-maps/tutorial-geofence.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Tento kurz vás provede kroky základní informace o nastavení monitorové geografické zóny s využitím map Azure. Pomocí Azure Event Grid streamování výsledků monitorové geografické zóny a nastavení oznámení na základě výsledků monitorové geografické zóny. |
@@ -144,11 +144,21 @@ Přihlásit k odběru Azure Maps události pro reakci na události monitorové g
 ## <a name="app-configuration"></a>App Configuration
 Přihlásit k odběru konfiguraci aplikací Azure události pro reakci na události změny klíč hodnota.
 
-|Titul | Popis |
+|Název | Popis |
 |---------|---------|
 | [Reagujte na události konfigurace aplikace pro Azure s využitím služby Event Grid](../azure-app-configuration/concept-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Přehled integrace konfiguraci aplikací Azure pomocí služby Event Grid. |
 | [Rychlý start: Směrování událostí služby konfigurace aplikací v Azure do vlastního webového koncového bodu pomocí Azure CLI](../azure-app-configuration/howto-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Ukazuje, jak používat rozhraní příkazového řádku Azure k odesílání událostí konfigurace aplikací v Azure do Webhooku. |
 | [Schéma událostí](event-schema-app-configuration.md) | Zobrazí pole v událostech konfiguraci aplikací Azure. |
+
+## <a name="azure-signalr"></a>Azure SignalR
+Přihlásit k odběru služby Azure SignalR události pro reakci na události připojení klienta.
+
+|Název | Popis |
+|---------|---------|
+| [Reagujte na události služby Azure SignalR s využitím služby Event Grid](../azure-signalr/signalr-concept-event-grid-integration.md) | Přehled integrace služby Azure SignalR pomocí služby Event Grid. |
+| [Jak odesílat události služby Azure SignalR do služby Event Grid](../azure-signalr/signalr-howto-event-grid-integration.md) | Ukazuje, jak odesílat události služby Azure SignalR k aplikaci prostřednictvím služby Event Grid. |
+| [Schéma událostí](event-schema-azure-signalr.md) | Zobrazí pole v událostech služby Azure SignalR. |
+
 
 
 ## <a name="next-steps"></a>Další postup

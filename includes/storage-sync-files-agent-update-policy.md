@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 12/11/2018
 ms.author: tamram
-ms.openlocfilehash: 57ba55ce284030a4103077553b0dcfce01a93678
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9b8812b1fca6a72a69f06a6c0278da8ee4d4c852
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67125757"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67841528"
 ---
 Aktualizace agenta Azure File Sync pravidelně přidávat nové funkce a řešit problémy. Doporučujeme, abyste že konfiguraci získat aktualizace pro agenta Azure File Sync, jako jsou k dispozici služby Microsoft Update.
 
@@ -31,7 +31,7 @@ Existují čtyři schválení a testovat způsobů, jak nainstalovat aktualizace
 #### <a name="automatic-agent-lifecycle-management"></a>Správa životního cyklu agentů pro automatickou diagnostiku
 Agent verze 6 přináší týmu synchronizace souboru funkci Automatický upgrade agenta. Můžete vybrat jednu ze dvou režimů používaných a určete časové období údržby, ve kterém se pokus o upgrade na serveru. Tato funkce slouží k pomáhají se správou životního cyklu agenta tím, že poskytuje lanovým brání agenta z vypršení platnosti nebo umožňující bezproblémové, zůstat aktuální nastavení.
 1. **Výchozí nastavení** se pokusí o zabránit agenta z vypršení platnosti. V rámci odeslaných vypršení platnosti agenta na 21 dnů agent se pokusí místním upgradu. Pokus o upgrade jednou za týden do 21 dnů před vypršením platnosti a v okně vybrané údržby spustí. **Tato možnost není eliminuje nutnost provádění pravidelných opravy Microsoft Update.**
-2. Volitelně můžete vybrat, že agenta bude automaticky sám sebe aktualizovat poté, co bude k dispozici nová verze agenta (aktuálně není k dispozici do clusterovaných serverů). Tato aktualizace bude ke kterým došlo během časového období údržby vybrané a povolit vašeho serveru, abyste využili výhod nových funkcí a vylepšení, jakmile budou obecně dostupné. Toto je doporučené, bez obav nastavení, která bude poskytovat verze hlavní agentů, jakož i opravy pravidelné aktualizace na server. Každý agent vydané je ve verzi GA kvality. Pokud vyberete tuto možnost, Microsoft bude testovat na nejnovější verzi agenta pro vás. Nevylučují se servery v clusteru. Po dokončení publikování testovacích verzí agenta bude také k dispozici na [Microsoft Download Center](https://go.microsoft.com/fwlink/?linkid=858257) aka.ms/AFS/agent.
+2. Volitelně můžete vybrat, že agenta bude automaticky sám sebe aktualizovat poté, co bude k dispozici nová verze agenta (aktuálně není k dispozici do clusterovaných serverů). Tato aktualizace bude ke kterým došlo během časového období údržby vybrané a povolit vašeho serveru, abyste využili výhod nových funkcí a vylepšení, jakmile budou obecně dostupné. Toto je doporučené, bez obav nastavení, která bude poskytovat verze hlavní agentů, jakož i opravy pravidelné aktualizace na server. Každý agent vydané je ve verzi GA kvality. I když vyberete automaticky aktualizovat při nové verze bude k dispozici možnost, nemusí nabízet aktualizace hned po vydání. Nové agenty se nejdříve dostupné na malý počet serverů a pak jsme rozbalte položku nabídky postupně. Po dokončení publikování testovacích verzí agenta bude také k dispozici ve službě Microsoft Update a [Microsoft Download Center](https://go.microsoft.com/fwlink/?linkid=858257).
 
 #### <a name="agent-lifecycle-and-change-management-guarantees"></a>Zaručuje správy životního cyklu a změnit agenta
 Azure File Sync je Cloudová služba, která průběžně zavádí nové funkce a vylepšení. To znamená, že konkrétní verzi agenta Azure File Sync může podporovat jenom po omezenou dobu. Následující pravidla pro usnadnění nasazení, zajistit, že máte dostatek času a oznámení tak, aby vyhovovaly agenta aktualizace a upgrady v procesu správy změn:

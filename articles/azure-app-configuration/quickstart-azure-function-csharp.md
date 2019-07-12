@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure Functions
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: c09cb0f93f05a9574543ebabb398148638092c73
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: a4900964fb6feeb4c7cb0f147d3681031cac6a7b
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65864779"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798426"
 ---
 # <a name="quickstart-create-an-azure-function-with-app-configuration"></a>Rychlý start: Vytvoření funkce Azure s konfigurací aplikace
 
@@ -39,9 +39,9 @@ V tomto rychlém startu provedete instalaci [Visual Studio 2019](https://visuals
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Vyberte **Průzkumník konfigurací** > **+ vytvořit** přidáte následující páry klíč hodnota:
+6. Vyberte **Průzkumník konfigurací** >  **+ vytvořit** přidáte následující páry klíč hodnota:
 
-    | Klíč | Hodnota |
+    | Klíč | Value |
     |---|---|
     | TestApp:Settings:Message | Data z konfigurace aplikace Azure |
 
@@ -56,7 +56,7 @@ V tomto rychlém startu provedete instalaci [Visual Studio 2019](https://visuals
 1. Klikněte pravým tlačítkem na projekt a vyberte **spravovat balíčky NuGet**. Na **Procházet** kartu, vyhledávání a přidejte následující balíčky NuGet do projektu. Pokud je nemůžete najít, vyberte **zahrnout předběžné verze** zaškrtávací políčko.
 
     ```
-    Microsoft.Extensions.Configuration.AzureAppConfiguration 1.0.0 preview or later
+    Microsoft.Extensions.Configuration.AzureAppConfiguration 2.0.0-preview-009200001-1437 or later
     ```
 
 2. Otevřít *Function1.cs*a přidejte odkaz na poskytovatele konfigurace pro aplikace .NET Core.

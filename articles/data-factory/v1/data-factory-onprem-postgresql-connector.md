@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: bd39b0aae5b76f37e2153f8e4c4502be994fa5b5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a652e157ec0e7e33c8dce7be2f4af2c240edac9e
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61461999"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839917"
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>Přesun dat z PostgreSQL pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, který používáte:"]
@@ -50,7 +50,6 @@ Vytvoření kanálu s aktivitou kopírování, který přesouvá data z úloži�
 
 - Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Zobrazit [kurzu: Vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním data.
 - Tyto nástroje můžete také použít k vytvoření kanálu:
-  - portál Azure
   - Visual Studio
   - Azure PowerShell
   - Šablona Azure Resource Manageru
@@ -78,7 +77,7 @@ Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro
 | server |Název serveru PostgreSQL. |Ano |
 | database |Název databáze PostgreSQL. |Ano |
 | schema |Název schématu databáze. Název schématu je velká a malá písmena. |Ne |
-| authenticationType |Typ ověřování používaný pro připojení k databázi PostgreSQL. Možné hodnoty: Anonymní, základní a Windows. |Ano |
+| authenticationType |Typ ověřování používaný pro připojení k databázi PostgreSQL. Možné hodnoty jsou: Anonymní, základní a Windows. |Ano |
 | username |Zadejte uživatelské jméno, pokud se používá ověřování Basic nebo Windows. |Ne |
 | password |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |Ne |
 | gatewayName |Název brány, který služba Data Factory měla použít pro připojení k místní databázi PostgreSQL. |Ano |
@@ -88,7 +87,7 @@ Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro
 
 V části typeProperties se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti. TypeProperties části datové sady typu **RelationalTable** (která zahrnuje PostgreSQL datovou sadu) má následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 | --- | --- | --- |
 | tableName |Název tabulky instance databáze PostgreSQL, propojená služba odkazuje na. TableName je velká a malá písmena. |Ne (Pokud **dotazu** z **RelationalSource** určena) |
 
@@ -99,7 +98,7 @@ Vzhledem k tomu, vlastnosti v části typeProperties aktivity se liší s jednot
 
 Pokud je zdroj typu **RelationalSource** (která zahrnuje PostgreSQL), v části typeProperties jsou k dispozici následující vlastnosti:
 
-| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
+| Vlastnost | Popis | Povolené hodnoty | Požadováno |
 | --- | --- | --- | --- |
 | query |Použijte vlastní dotaz číst data. |Řetězec dotazu SQL. Například: `"query": "select * from \"MySchema\".\"MyTable\""`. |Ne (Pokud **tableName** z **datovou sadu** určena) |
 
@@ -111,7 +110,7 @@ Pokud je zdroj typu **RelationalSource** (která zahrnuje PostgreSQL), v části
  `"query": "select * from \"MySchema\".\"MyTable\""`
 
 ## <a name="json-example-copy-data-from-postgresql-to-azure-blob"></a>Příklad JSON: Kopírování dat z PostgreSQL do objektů Blob v Azure
-V tomto příkladu obsahuje ukázky JSON definice, které můžete použít k vytvoření kanálu pomocí [webu Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md) nebo [sady Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) nebo [prostředí Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Zobrazí se kopírování dat z databáze PostgreSQL do služby Azure Blob Storage. Ale data je možné zkopírovat do libovolné jímky uvedeno [tady](data-factory-data-movement-activities.md#supported-data-stores-and-formats) pomocí aktivit kopírování ve službě Azure Data Factory.
+V tomto příkladu obsahuje ukázky JSON definice, které můžete použít k vytvoření kanálu pomocí [sady Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) nebo [prostředí Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Zobrazí se kopírování dat z databáze PostgreSQL do služby Azure Blob Storage. Ale data je možné zkopírovat do libovolné jímky uvedeno [tady](data-factory-data-movement-activities.md#supported-data-stores-and-formats) pomocí aktivit kopírování ve službě Azure Data Factory.
 
 > [!IMPORTANT]
 > Tato ukázka poskytuje fragmenty kódu JSON. Neobsahuje podrobné pokyny pro vytvoření datové továrny. Zobrazit [přesun dat mezi místními umístěními a cloudu](data-factory-move-data-between-onprem-and-cloud.md) najdete podrobné pokyny.
@@ -306,46 +305,46 @@ Při přesouvání dat k PostgreSQL, se používají následující mapování z
 
 | Typ databáze PostgreSQL | Aliasy PostgresSQL | Typ rozhraní .NET framework |
 | --- | --- | --- |
-| abstime | |DateTime |
+| abstime | |Datetime |
 | bigint |int8 |Int64 |
 | bigserial |serial8 |Int64 |
 | bit [(n)] | |Byte [], řetězce |
 | bit různou [(n)] |varbit |Byte [], řetězce |
-| Boolean |bool |Boolean |
+| boolean |bool |Logická hodnota |
 | box | |Byte [], řetězce |
 | bytea | |Byte [], řetězce |
-| znak [(n)] |char [(n)] |String |
-| znak různé [(n)] |varchar [(n)] |String |
-| CID | |String |
-| cidr | |String |
+| znak [(n)] |char [(n)] |Řetězec |
+| znak různé [(n)] |varchar [(n)] |Řetězec |
+| CID | |Řetězec |
+| cidr | |Řetězec |
 | Kruh | |Byte [], řetězce |
-| date | |DateTime |
-| DateRange | |String |
+| date | |Datetime |
+| DateRange | |Řetězec |
 | dvojitou přesností |float8 |Double |
 | inet | |Byte [], řetězce |
-| intarry | |String |
-| int4range | |String |
-| int8range | |String |
+| intarry | |Řetězec |
+| int4range | |Řetězec |
+| int8range | |Řetězec |
 | integer |int, int4 |Int32 |
-| Interval [pole] [(p).] | |Časový interval |
-| json | |String |
+| Interval [pole] [(p).] | |Timespan |
+| json | |Řetězec |
 | jsonb | |Byte[] |
-| řádek | |Byte [], řetězce |
+| Řádek | |Byte [], řetězce |
 | lseg | |Byte [], řetězce |
 | macaddr | |Byte [], řetězce |
 | money | |Decimal |
 | numerické [(p, s)] |desetinné číslo [(p, s)] |Decimal |
-| numrange | |String |
+| numrange | |Řetězec |
 | oid | |Int32 |
 | path | |Byte [], řetězce |
 | pg_lsn | |Int64 |
-| bod | |Byte [], řetězce |
+| Bod | |Byte [], řetězce |
 | Mnohoúhelník | |Byte [], řetězce |
 | real |FLOAT4 |Single |
 | smallint |int2 |Int16 |
 | smallserial |serial2 |Int16 |
-| sériové |serial4 |Int32 |
-| text | |String |
+| sériového portu |serial4 |Int32 |
+| text | |Řetězec |
 
 ## <a name="map-source-to-sink-columns"></a>Mapování zdroje do jímky sloupce
 Další informace o mapování sloupců v datové sadě zdroje do sloupců v datové sadě jímky, najdete v článku [mapování sloupců v datové sadě ve službě Azure Data Factory](data-factory-map-columns.md).
