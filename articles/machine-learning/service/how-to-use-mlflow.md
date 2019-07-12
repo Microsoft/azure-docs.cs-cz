@@ -11,16 +11,16 @@ ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: d0bc4620d0c55d6e94a3d99c39ab405dab2743e5
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 2f3ec9792a7af0398da770286b805be4d1f25589
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67461654"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657966"
 ---
 # <a name="use-mlflow-with-azure-machine-learning-service-preview"></a>MLflow pomocí služby Azure Machine Learning (Preview)
 
-Tento článek ukazuje, jak používat MLflow na identifikátor URI pro sledování a protokolování rozhraní API, souhrnně označované také jako MLflow sledování, službou Azure Machine Learning, sledování a protokolů, metriky experiment a artefakty v vaše [Azure Machine Learning pracovní prostor služby](https://docs.microsoft.com/azure/machine-learning/service/concept-azure-machine-learning-architecture#workspace). Pokud už používáte MLflow sledování pro své experimenty, tento pracovní prostor poskytuje centralizovaný, zabezpečené a škálovatelné umístění pro uložení školení metriky a modely.
+Tento článek ukazuje, jak používat MLflow na identifikátor URI pro sledování a protokolování rozhraní API, souhrnně označované také jako MLflow sledování, službou Azure Machine Learning, sledování a protokolů, metriky experiment a artefakty v vaše [Azure Machine Learning pracovní prostor služby](https://docs.microsoft.com/azure/machine-learning/service/concept-azure-machine-learning-architecture#workspaces). Pokud už používáte MLflow sledování pro své experimenty, tento pracovní prostor poskytuje centralizovaný, zabezpečené a škálovatelné umístění pro uložení školení metriky a modely.
 
 [MLflow](https://www.mlflow.org) open source knihovnu pro správu životního cyklu vaší se strojovým učením. [Sledování MLFlow](https://mlflow.org/docs/latest/quickstart.html#using-the-tracking-api) je součástí MLflow, který se přihlásí a sleduje trénování spustit metriky a model artefakty, zda jsou vaše experimenty místně, spusťte na virtuálním počítači nebo na vzdáleném výpočetní cluster.
 ![mlflow s diagramem azure machine learning](media/how-to-use-mlflow/mlflow-diagram.png)
@@ -147,6 +147,6 @@ Pokud nemáte v úmyslu použít zaznamenané metriky a artefaktů ve vašem pra
 
 [MLflow s poznámkovými bloky Azure ML](https://aka.ms/azureml-mlflow-examples) ukazuje koncepty v tomto článku.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Nasazení modelu](how-to-deploy-and-where.md).

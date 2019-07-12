@@ -8,12 +8,12 @@ ms.date: 02/17/2019
 ms.topic: conceptual
 ms.author: raynew
 manager: carmonm
-ms.openlocfilehash: 0f99042d91738c88a8b673444bb3d4a40602b012
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 85e65c36a0d636d94a9ef9070c21ab047542d8f4
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204176"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594261"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Matice podpory pro zálohování pomocí Microsoft Azure Backup Server nebo System Center DPM
 
@@ -55,7 +55,7 @@ Další informace:
 
 **Scénář** | **Agent** | **Location**
 --- | --- | ---
-**Zálohování místních počítačů a úloh** | Agent ochrany aplikace DPM nebo MABS běží na počítačích, které chcete zálohovat.<br/><br/> Agenta MARS na serveru aplikace DPM nebo MABS. | Aplikace DPM nebo MABS musí být spuštěn v místním prostředí.
+**Zálohování místních počítačů a úloh** | Agent ochrany aplikace DPM nebo MABS běží na počítačích, které chcete zálohovat.<br/><br/> Agenta MARS na serveru aplikace DPM nebo MABS.<br/> Minimální verze systému Microsoft Azure Recovery Services agenta a agenta Azure Backup, nutné k povolení této funkce je 2.0.8719.0.  | Aplikace DPM nebo MABS musí být spuštěn v místním prostředí.
 **Zálohování virtuálních počítačů a úloh v Azure** | Agent ochrany aplikace DPM nebo MABS na chráněný počítač.<br/><br/> Agenta MARS na serveru aplikace DPM nebo MABS. | Aplikace DPM nebo MABS musí být spuštěná na Virtuálním počítači Azure.
 
 ## <a name="supported-deployments"></a>Podporované nasazení
@@ -152,7 +152,7 @@ Z aplikace DPM 2016/MABS v2 (se systémem Windows Server 2016) a novější, mů
 - MB zálohy jsou uložené na disku pro odolný systém souborů (ReFS).
 - MB používá ReFS blokové klonování rychlejší zálohování a zefektivnit tak využívání prostoru úložiště.
 - Když přidáte svazky do místního fondu úložiště DPM nebo MABS, můžete nakonfigurovat písmena jednotek. Potom můžete nakonfigurovat úlohy úložiště v různých svazcích.
-- Při vytváření skupiny ochrany a zálohování dat do DPM nebo MABS, vyberte jednotku, kterou chcete použít. Například může ukládání záloh SQL nebo jinou vysoké zatížení vysoce výkonné jednotku vstupně-výstupních operací a ukládání úlohy, které se zálohují méně často na nižší výkon disku.
+- Při vytváření skupiny ochrany a zálohování dat do DPM nebo MABS, vyberte jednotku, kterou chcete použít. Například může ukládání záloh SQL nebo jiných vysoké vstupně-výstupních operací úloh na jednotku vysoce výkonné a ukládání úlohy, které se zálohují méně často na nižší výkon disku.
 
 
 ## <a name="supported-backups-to-mabs"></a>Podporované záloh MABS
@@ -206,12 +206,12 @@ Následující tabulka shrnuje, co je možné zálohovat do aplikace DPM z míst
 **Virtuální počítače VMware: vCenter nebo vSphere ESXi 5.5/6.0/6.5** | MABS v3, v2 <br/><br/> Aplikace DPM 2012 R2 vyžaduje kumulativní aktualizaci 1 System Center) <br/><br/>Místní. | Zálohování virtuálních počítačů VMware na úložiště sdílených svazků clusteru, systém souborů NFS a po síti SAN.<br/><br/> Obnovte celý virtuální počítač.<br/><br/> Zálohování Windows/Linux.<br/><br/> Obnovení na úrovni položek složky nebo soubory pro virtuální počítače s Windows jenom.<br/><br/> Aplikace Vapp VMware nejsou podporovány.<br/><br/> Obnovení pro virtuální počítače s Linuxem je pro celý počítač.
 
 
-- Všimněte si, že Clusterované úlohy zálohovat pomocí DPM nebo MABS musí být ve stejné doméně jako aplikace DPM nebo MABS nebo v podřízené nebo důvěryhodné doméně.
+- Pracovní postupy clusteru zálohovat pomocí DPM nebo MABS musí být ve stejné doméně jako aplikace DPM nebo MABS nebo v podřízené nebo důvěryhodné doméně.
 - Ověřování NTLM/certifikát můžete použít k zálohování dat v nedůvěryhodných doménách nebo pracovních skupinách.
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Další informace](backup-architecture.md#architecture-back-up-to-dpmmabs) o architektuře MABS.
 - [Kontrola](backup-support-matrix-mars-agent.md) co je podporováno pro agenta MARS.

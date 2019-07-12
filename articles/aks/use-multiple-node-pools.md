@@ -2,17 +2,17 @@
 title: Použití více fondy uzlů ve službě Azure Kubernetes Service (AKS)
 description: Zjistěte, jak vytvářet a spravovat více fondy uzlů pro cluster Azure Kubernetes Service (AKS)
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 05/17/2019
-ms.author: iainfou
-ms.openlocfilehash: 48fdb251fa0302c2755281644a804c74ae80a63e
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.author: mlearned
+ms.openlocfilehash: 2c4a0f57edb49ca2b2bc13bd9240b01c2b0556d3
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491546"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67613980"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Ve verzi Preview – vytváření a správě více fondy uzlů pro cluster Azure Kubernetes Service (AKS)
 
@@ -26,7 +26,7 @@ V tomto článku se dozvíte, jak vytvořit a spravovat více fondy uzlů v clus
 > * [Zásady podpory AKS][aks-support-policies]
 > * [Nejčastější dotazy k podpoře Azure][aks-faq]
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Musí mít Azure CLI verze 2.0.61 nebo později nainstalována a nakonfigurována. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][install-azure-cli].
 
@@ -440,7 +440,7 @@ Chcete-li odstranit samotného clusteru, použijte [odstranění skupiny az][az-
 az group delete --name myResourceGroup --yes --no-wait
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto článku jste zjistili, jak vytvořit a spravovat více fondy uzlů v clusteru AKS. Další informace o tom, jak řídit podů mezi fondy uzlů najdete v tématu [osvědčené postupy pro Plánovač pokročilé funkce ve službě AKS][operator-best-practices-advanced-scheduler].
 

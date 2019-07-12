@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36429feed99c421984ed55d4e506954aa30f0040
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 4332c921af770cb47e9a9a779d0bd148153fcd31
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482134"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67666144"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Postup: Plánování implementace připojení ke službě Azure AD
 
@@ -70,7 +70,7 @@ Federovaném prostředí by měl mít zprostředkovatele identity, která podpor
 - **WS-Fed:** Tento protokol je potřeba připojit zařízení k Azure AD.
 - **WS-Trust:** Tento protokol se vyžaduje pro přihlášení k zařízení připojené k doméně Azure AD. 
 
-Pokud váš zprostředkovatel identity nepodporuje tyto protokoly, nefunguje připojení k Azure AD nativně. Od verze Windows 10 1809, vaši uživatelé můžete přihlásit k zařízení připojené k doméně Azure AD pomocí zprostředkovatele identity založené na SAML prostřednictvím [webové přihlášení ve Windows 10](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1809#web-sign-in-to-windows-10). V současné době webové přihlášení je pouze ve verzi preview funkce.
+Pokud váš zprostředkovatel identity nepodporuje tyto protokoly, nefunguje připojení k Azure AD nativně. Od verze Windows 10 1809, vaši uživatelé můžete přihlásit k zařízení připojené k doméně Azure AD pomocí zprostředkovatele identity založené na SAML prostřednictvím [webové přihlášení ve Windows 10](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1809#web-sign-in-to-windows-10). Webové přihlášení v současné době je funkce ve verzi preview a nedoporučuje se používat v produkčních prostředích.
 
 ### <a name="smartcards-and-certificate-based-authentication"></a>Čipové karty a ověřování na základě certifikátu
 

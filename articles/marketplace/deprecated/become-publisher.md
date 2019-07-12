@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 5e691dde92ac05b653cdafb22db9276c7a566008
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dd9aa28703003d2e286197d57e9f00361e2b460d
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66258951"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67654004"
 ---
 # <a name="become-a-cloud-marketplace-publisher"></a>Stát vydavatelem cloudové Tržiště
 
@@ -22,11 +22,11 @@ Tento článek se týká registrace jako vydavatele na webu marketplace cloudu. 
 
 |  | Krok registrace | Doba trvání | Podrobnosti |  
 |:--- |:--- |:--- |:--- |  
-| 1 | Registrace v programu Microsoft Partner Network | 15 min | [Registrace v programu Microsoft Partner Network](https://docs.microsoft.com/azure/marketplace/become-publisher#1-register-in-microsoft-partner-network) |  
-| 2 | Vytvoření účtu Microsoft <ul>(požadovaných pro Azure Marketplace transact nabídek; doporučuje pro ostatní uživatele)</ul> | 15 min | [Vytvoření ID Microsoftu](https://docs.microsoft.com/azure/marketplace/become-publisher#2-create-a-microsoft-account) |  
-| 3 | Vytvořte účet v partnerském centru | 15 min | [Vytvořte účet v partnerském centru](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) |  
-| 4 |  Přihlaste se k portálu Cloud Partner | 1 – 3 dny | [Přihlaste se k portálu Cloud Partner](https://docs.microsoft.com/azure/marketplace/become-publisher#4-sign-into-cloud-partner-portal) |  
-| 5 | Registrace v Microsoft Developer Center (Centrum pro vývojáře) (pro Azure Marketplace transact nabídky) | 5 až 10 dnů | [Registrace na webu Dev Center](https://docs.microsoft.com/azure/marketplace/become-publisher#5-register-in-dev-center-for-transact-publishing-option-only) |  
+| 1 | Registrace v programu Microsoft Partner Network | 15 min | [Registrace v programu Microsoft Partner Network](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account#register-for-an-account-using-the-enrollment-page) |  
+| 2 | Vytvoření účtu Microsoft <ul>(požadovaných pro Azure Marketplace transact nabídek; doporučuje pro ostatní uživatele)</ul> | 15 min | [Vytvoření ID Microsoftu](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) |  
+| 3 | Vytvořte účet v partnerském centru | 15 min | [Vytvoření účtu v Partnerském centru](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) |  
+| 4 |  Přihlaste se k portálu Cloud Partner | 1 – 3 dny | [Přihlaste se k portálu Cloud Partner](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account#sign-in-with-a-work-account) |  
+| 5 | Registrace v Microsoft Developer Center (Centrum pro vývojáře) (pro Azure Marketplace transact nabídky) | 5 až 10 dnů | [Registrace na webu Dev Center](/azure/marketplace/deprecated/register-dev-center) |  
 
 
 ## <a name="1-register-in-microsoft-partner-network"></a>1. Registrace v programu Microsoft Partner Network  
@@ -50,9 +50,9 @@ Vytvořit lístek s Microsoftem [partnerská podpora](https://partner.microsoft.
 [! [Důležité] nezapomeňte prosím, že účet Microsoft spojený s pracovní e-mailu vám neumožní přístup k portálu.
 
 > [!Note]
-> Pokud už máte účet Microsoft, přečtěte si [pokyny k tvorbě ID Microsoftu ke správě účtu marketplace](https://docs.microsoft.com/azure/marketplace/guidelines#guidelines-for-creating-a-microsoft-id-to-manage-a-marketplace-account) k určení, pokud lze použít pro publikování na webu marketplace. 
+> Pokud už máte účet Microsoft, přečtěte si [pokyny k tvorbě ID Microsoftu ke správě účtu marketplace](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account#manage-tenants) k určení, pokud lze použít pro publikování na webu marketplace. 
 > 
-> Uživatelé s podnikovým účtem Azure Active Directory federated byste si přečíst [v tomto článku](https://docs.microsoft.com/azure/marketplace/guidelines#issue-microsoft-id-in-an-azure-ad-federated-domain) než se pokusíte vytvořit nebo použít existující Account Microsoft.
+> Uživatelé s podnikovým účtem Azure Active Directory federated byste si přečíst [v tomto článku](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account#manage-users) než se pokusíte vytvořit nebo použít existující Account Microsoft.
 
 *   Nápovědu k vytváření a správě vašeho účtu Microsoft, přejděte [stránky podpory nápovědy účtu Microsoft](https://support.microsoft.com/products/microsoft-account?category=manage-account).
 
