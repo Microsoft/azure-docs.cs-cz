@@ -10,12 +10,12 @@ ms.date: 03/24/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 6ec429bc7c1598e947b798c30e7992e3d357d00c
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: d75e4c3e2b6f28dfbde670406854ac87790dd090
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66303814"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67850113"
 ---
 # <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-for-linux-devices"></a>Kurz: Vývoj a nasazení modulu Python IoT Edge pro zařízení s Linuxem
 
@@ -67,27 +67,17 @@ K vývoji modul IoT Edge v jazyce Python, nainstalujte na svém vývojovém poč
 ## <a name="create-a-module-project"></a>Vytvoření modulu projektu
 Následující kroky vytvoření modul IoT Edge Python pomocí Visual Studio Code a nástroje Azure IoT.
 
-### <a name="create-a-new-project"></a>Vytvořit nový projekt
+### <a name="create-a-new-project"></a>Vytvoření nového projektu
 
-Pomocí balíčku Python **cookiecutter** vytvořte šablonu řešení Python, na jejímž základě můžete tvořit. 
+Použití VS Code k vytvoření šablony řešení Pythonu, který může vytvořit nahoře. 
 
 1. Ve Visual Studio Code vyberte **Zobrazit** > **Terminál**, aby se otevřel integrovaný terminál VS Code.
 
-2. V terminálu zadejte následující příkaz k instalaci (nebo aktualizaci) **cookiecutter**, který použijete k vytvoření šablony řešení IoT Edge:
+1. Výběrem **View** (Zobrazit)  > **Command Palette** (Paleta příkazů) otevřete paletu příkazů VS Code. 
 
-    ```cmd/sh
-    pip install --upgrade --user cookiecutter
-    ```
-   >[!Note]
-   >Zkontrolujte adresář nainstalovanou cookiecutter aby bylo možné vyvolat z příkazového řádku je v CESTĚ k vašemu prostředí. Adresář je součástí výstupu instalační skript, například `C:\Users\{user}\AppData\Roaming\Python\Python{version}\Scripts`.
-   >
-   >Restartujte Visual Studio Code, aby přebíral změny do cesty. 
+1. V paletu příkazů zadejte a spusťte příkaz **Azure: Přihlaste se** a postupujte podle pokynů k přihlášení účtu Azure. Pokud už přihlášení jste, můžete tento krok přeskočit.
 
-3. Výběrem **View** (Zobrazit)  > **Command Palette** (Paleta příkazů) otevřete paletu příkazů VS Code. 
-
-4. V paletu příkazů zadejte a spusťte příkaz **Azure: Přihlaste se** a postupujte podle pokynů k přihlášení účtu Azure. Pokud už přihlášení jste, můžete tento krok přeskočit.
-
-5. V paletu příkazů zadejte a spusťte příkaz **Azure IoT Edge: Nové řešení IoT Edge**. Postupujte podle zobrazených výzev a zadejte následující informace potřebné k vytvoření řešení:
+1. V paletu příkazů zadejte a spusťte příkaz **Azure IoT Edge: Nové řešení IoT Edge**. Postupujte podle zobrazených výzev a zadejte následující informace potřebné k vytvoření řešení:
 
    | Pole | Hodnota |
    | ----- | ----- |

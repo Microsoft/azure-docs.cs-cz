@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/22/2017
+ms.date: 07/12/2019
 ms.author: apimpm
-ms.openlocfilehash: b1602af59cd46b4bbcefa6f1df3cd84c0d342b71
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a2d71330dcdac7054b20e0a6222b542fd8815705
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60236507"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849570"
 ---
 # <a name="import-an-openapi-specification"></a>Import specifikace OpenAPI
 
@@ -61,6 +61,9 @@ Projděte si následující rychlý start: [Vytvoření instance Azure API Manag
 
 4. Vyberte **Vytvořit**.
 
+> [!NOTE]
+> Omezení importu rozhraní API jsou dokumentovány v článku [jiného článku](api-management-api-import-restrictions.md).
+
 ## <a name="test-the-new-apim-api-in-the-azure-portal"></a>Testování nového rozhraní API služby APIM na portálu Azure Portal
 
 Operaci můžete volat přímo z portálu Azure Portal, který nabízí pohodlný způsob pro zobrazení a testování operací v rozhraní API.
@@ -100,7 +103,7 @@ Pokud chcete otestovat rozhraní API, můžete operace volat také z **Portálu 
 
 [!INCLUDE [api-management-define-api-topics.md](../../includes/api-management-define-api-topics.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Transformace a ochrana publikovaného rozhraní API](transform-api.md)

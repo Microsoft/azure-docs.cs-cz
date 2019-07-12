@@ -4,7 +4,7 @@ description: Využívat infrastrukturu Azure restartování virtuálního počí
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cda0b1c0774ed33bf550e0edf329cc22a2807be3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d99f704d05dea88f7fa29afea99cbbdb00d09c24
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60825633"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709873"
 ---
 # <a name="utilize-azure-infrastructure-vm-restart-to-achieve-higher-availability-of-an-sap-system"></a>Využívat infrastrukturu Azure restartování virtuálního počítače k dosažení "vysoké dostupnosti" systému SAP
 
@@ -239,13 +239,13 @@ Pro kritické komponenty SAP vy jste dosáhli následující zatím:
 
 * Vysoká dostupnost aplikační servery SAP
 
-    Instance serveru aplikace SAP jsou redundantní komponenty. Každá instance aplikace serveru SAP je nasazen na své vlastní virtuální počítač, který běží v různých Azure selhání a upgradovací domény. Další informace najdete v tématu [domén selhání] [ planning-guide-3.2.1] a [Upgradovacích doménách] [ planning-guide-3.2.2] oddíly. 
+    Instance serveru aplikace SAP jsou redundantní komponenty. Každá instance aplikace serveru SAP je nasazen na své vlastní virtuální počítač, který běží v různých Azure selhání a upgradovací domény. Další informace najdete v tématu [domén selhání][planning-guide-3.2.1] and [Upgrade domains][planning-guide-3.2.2] oddíly. 
 
-    Tuto konfiguraci můžete zajistit pomocí skupin dostupnosti Azure. Další informace najdete v tématu [skupinami dostupnosti Azure] [ planning-guide-3.2.3] oddílu. 
+    Tuto konfiguraci můžete zajistit pomocí skupin dostupnosti Azure. Další informace najdete v tématu [skupinami dostupnosti Azure][planning-guide-3.2.3] oddílu. 
 
     Potenciální plánované nebo neplánované nedostupnost upgradu domény nebo selhání Azure způsobí nedostupnost omezenému počtu virtuálních počítačů s jejich instancí SAP aplikačních serverů.
 
-    Každá instance serveru aplikace SAP, nachází ve vlastní účet úložiště Azure. Potenciální nedostupnosti jednoho účtu úložiště Azure způsobí nedostupnost jenom jeden virtuální počítač s instancí serveru aplikace SAP. Nezapomínejte, že je limit pro počet účtů úložiště Azure v rámci jednoho předplatného Azure. Aby se zajistilo automatické spuštění instance ASCS/SCS po restartování virtuálního počítače, nastavte parametr automatické spouštění v profilu spuštění instance ASCS/SCS, který je popsán v [pomocí automatické spuštění pro instance SAP] [ planning-guide-11.5] oddíl.
+    Každá instance serveru aplikace SAP, nachází ve vlastní účet úložiště Azure. Potenciální nedostupnosti jednoho účtu úložiště Azure způsobí nedostupnost jenom jeden virtuální počítač s instancí serveru aplikace SAP. Nezapomínejte, že je limit pro počet účtů úložiště Azure v rámci jednoho předplatného Azure. Aby se zajistilo automatické spuštění instance ASCS/SCS po restartování virtuálního počítače, nastavte parametr automatické spouštění v profilu spuštění instance ASCS/SCS, který je popsán v [pomocí automatické spuštění pro instance SAP][planning-guide-11.5] oddílu.
   
     Další informace najdete v tématu [vysoká dostupnost pro aplikační servery SAP][planning-guide-11.4.1].
 
@@ -255,7 +255,7 @@ Pro kritické komponenty SAP vy jste dosáhli následující zatím:
 
     V tomto scénáři využijte restartování virtuálního počítače Azure k ochraně virtuálního počítače s nainstalovanou instanci SAP ASCS/SCS. V případě plánované nebo neplánované výpadky servery služby Azure restartují se virtuální počítače na jiný server k dispozici. Jak už bylo zmíněno dříve, restartování virtuálního počítače Azure primárně chrání virtuální počítače a *není* aplikace v tomto případě instanci ASCS/SCS. Prostřednictvím restartování virtuálního počítače dostanete nepřímo "vyšší dostupnost" instanci SAP ASCS/SCS. 
 
-    Aby se zajistilo automatické spuštění instance ASCS/SCS po restartování virtuálního počítače, nastavte parametr automatické spouštění v profilu spuštění instance ASCS/SCS, a jak je popsáno v [pomocí automatické spuštění pro instance SAP] [ planning-guide-11.5] oddílu . Toto nastavení znamená, že instance ASCS/SCS jako jediný bod selhání (SPOF) spuštěná v jednom virtuálním počítači určí dostupnost celé prostředí SAP.
+    Aby se zajistilo automatické spuštění instance ASCS/SCS po restartování virtuálního počítače, nastavte parametr automatické spouštění v profilu spuštění instance ASCS/SCS, a jak je popsáno v [pomocí automatické spuštění pro instance SAP][planning-guide-11.5] oddílu. Toto nastavení znamená, že instance ASCS/SCS jako jediný bod selhání (SPOF) spuštěná v jednom virtuálním počítači určí dostupnost celé prostředí SAP.
 
 * *Zajištění vyšší dostupnosti* serveru DBMS
 

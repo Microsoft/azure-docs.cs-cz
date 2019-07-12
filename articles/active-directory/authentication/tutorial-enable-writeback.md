@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dabe0ad1a556ee43f3e6cae0e1cd421db5cde0fd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1efb67df6c31a3b03fdc45fffc0564fb09e39faf
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60413946"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67853037"
 ---
 # <a name="tutorial-enabling-password-writeback"></a>Kurz: Povolení zpětného zápisu hesla
 
@@ -56,9 +56,9 @@ Zapnutí funkce zpětného zápisu hesla ve službě Azure AD Connect je pouze p
 4. U možnosti **Povolit uživatelům odemčení účtů bez resetování hesel?** také nastavte **Ano**.
 5. Klikněte na **Uložit**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste zapnuli zpětný zápis hesla pro prostředí samoobslužného resetování hesla. Nechte okno s webem Azure Portal otevřené a pokračujte k dalšímu kurzu, ve kterém nakonfigurujete další nastavení související se samoobslužným resetováním hesla, než toto řešení zavedete v pilotním nasazení.
 
 > [!div class="nextstepaction"]
-> [Resetování hesla Azure AD z přihlašovací obrazovky](tutorial-sspr-windows.md)
+> [Hodnocení rizika při přihlášení](tutorial-risk-based-sspr-mfa.md)

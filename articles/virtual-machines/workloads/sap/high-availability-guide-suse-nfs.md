@@ -4,7 +4,7 @@ description: Vysoká dostupnost pro NFS na virtuálních počítačích Azure na
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: mssedusch
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: ed92be0c1968d8f8a931d59d2dadefbbb12f2100
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 93644b9a3487906a27db70bfe82cceccdc7ab45c
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64925745"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707232"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>Vysoká dostupnost pro NFS na virtuálních počítačích Azure na SUSE Linux Enterprise Server
 
@@ -52,7 +52,7 @@ ms.locfileid: "64925745"
 [sap-hana-ha]:sap-hana-high-availability.md
 
 Tento článek popisuje, jak nasadit virtuální počítače, konfigurace virtuálních počítačů, nainstalujte rozhraní clusteru a nainstalujte systém souborů NFS server s vysokou dostupností, který slouží k ukládání sdílených dat s vysokou dostupností systému SAP.
-Tato příručka popisuje, jak vytvořit vysoce dostupný server systému souborů NFS, který se používá dva systémy SAP NW1 a NW2. Názvy prostředků (například virtuální počítače, virtuální sítě) v příkladu se předpokládá, že jste použili [šablony serveru SAP souboru] [ template-file-server] s předponou prostředků **produkční**.
+Tato příručka popisuje, jak vytvořit vysoce dostupný server systému souborů NFS, který se používá dva systémy SAP NW1 a NW2. Názvy prostředků (například virtuální počítače, virtuální sítě) v příkladu se předpokládá, že jste použili [šablony serveru SAP souboru][template-file-server] s předponou prostředků **produkční**.
 
 Přečtěte si následující poznámky SAP a Paper nejprve
 
@@ -110,7 +110,7 @@ Nasadit všechny požadované prostředky Azure, včetně virtuálních počíta
 Na webu Azure Marketplace obsahuje bitovou kopii operačního systému SUSE Linux Enterprise Server pro 12 aplikací SAP, který můžete použít k nasazení nových virtuálních počítačů.
 Můžete některou ze šablon quickstart na Githubu nasadit všechny požadované prostředky. Šablona nasadí virtuální počítače, nástroj pro vyrovnávání zatížení, dostupnosti, atd. Postupujte podle těchto kroků a nasaďte šablonu:
 
-1. Otevřít [šablony serveru SAP souboru] [ template-file-server] na webu Azure Portal   
+1. Otevřít [šablony serveru SAP souboru][template-file-server] na webu Azure Portal   
 1. Zadejte následující parametry
    1. Předpona prostředků  
       Zadejte předponu, kterou chcete použít. Hodnota se používá jako předpona pro prostředky, které jsou nasazené.

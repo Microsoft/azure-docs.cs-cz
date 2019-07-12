@@ -4,7 +4,7 @@ description: Příručka pro vysokou dostupnost pro SAP NetWeaver na SUSE Linux 
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: mssedusch
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/30/2019
 ms.author: sedusch
-ms.openlocfilehash: 44f99ed1af65eb1e487295c11077fd558ce4285c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 16f88790d96a1e46f60db368f69155b3ad7afbef
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65142956"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797491"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise Server pro aplikace SAP
 
@@ -54,7 +54,7 @@ ms.locfileid: "65142956"
 [nfs-ha]:high-availability-guide-suse-nfs.md
 
 Tento článek popisuje, jak nasadit virtuální počítače, konfigurace virtuálních počítačů, instalaci rozhraní clusteru a instalace s vysokou dostupností systému SAP NetWeaver 7.50.
-V ukázkové konfigurace příkazy instalace atd. Číslo instance ASCS 00 Lajících instance číslo 02 a používá se ID NW1 systému SAP. Názvy prostředků (například virtuální počítače, virtuální sítě) v příkladu se předpokládá, že jste použili [konvergované šablony] [ template-converged] systému SAP ID NW1 vytvoříte prostředky.
+V ukázkové konfigurace příkazy instalace atd. Číslo instance ASCS 00 Lajících instance číslo 02 a používá se ID NW1 systému SAP. Názvy prostředků (například virtuální počítače, virtuální sítě) v příkladu se předpokládá, že jste použili [konvergované šablony][template-converged] systému SAP ID NW1 vytvoříte prostředky.
 
 Přečtěte si následující poznámky SAP a Paper nejprve
 
@@ -76,7 +76,7 @@ Přečtěte si následující poznámky SAP a Paper nejprve
 * [Azure Virtual Machines, plánování a implementace SAP na platformě Linux][planning-guide]
 * [Nasazení virtuálních počítačů Azure pro SAP na platformě Linux][deployment-guide]
 * [Nasazení Azure Virtual Machines DBMS pro SAP na platformě Linux][dbms-guide]
-* [SUSE SAP HA příručky s osvědčenými postupy] [ suse-ha-guide] vodítka obsahovat všechny požadované informace k nastavení Netweaver HA a SAP HANA System Replication místní. Pomocí těchto návodů jako obecné směrného plánu. Poskytují mnohem podrobnější informace.
+* [SUSE SAP HA příručky s osvědčenými postupy][suse-ha-guide] vodítka obsahovat všechny požadované informace k nastavení Netweaver HA a SAP HANA System Replication místní. Pomocí těchto návodů jako obecné směrného plánu. Poskytují mnohem podrobnější informace.
 * [Zpráva k vydání verze s aktualizací SP3 SUSE vysokou dostupnost rozšíření 12][suse-ha-12sp3-relnotes]
 
 ## <a name="overview"></a>Přehled
@@ -98,7 +98,7 @@ Server systému souborů NFS, SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeav
   * Připojení k primární síťová rozhraní všech virtuálních počítačů, které by měla být součástí (A) SCS/Lajících clusteru
 * Port testu
   * Port 620<strong>&lt;nr&gt;</strong>
-* Načtení 
+* Načítání 
 * pravidla vyrovnávání
   * 32<strong>&lt;nr&gt;</strong> TCP
   * 36<strong>&lt;nr&gt;</strong> TCP
@@ -125,7 +125,7 @@ Server systému souborů NFS, SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeav
 
 ## <a name="setting-up-a-highly-available-nfs-server"></a>Nastavení vysoce dostupný server pro systém souborů NFS
 
-SAP NetWeaver vyžaduje sdílené úložiště pro přenos a profil adresář. Čtení [vysoká dostupnost pro NFS na virtuálních počítačích Azure na SUSE Linux Enterprise Server] [ nfs-ha] o tom, jak nastavit serverem NFS pro SAP NetWeaver.
+SAP NetWeaver vyžaduje sdílené úložiště pro přenos a profil adresář. Čtení [vysoká dostupnost pro NFS na virtuálních počítačích Azure na SUSE Linux Enterprise Server][nfs-ha] o tom, jak nastavit serverem NFS pro SAP NetWeaver.
 
 ## <a name="setting-up-ascs"></a>Nastavení (A) SCS
 
@@ -137,8 +137,8 @@ Na webu Azure Marketplace obsahuje bitovou kopii operačního systému SUSE Linu
 
 Můžete některou ze šablon quickstart na Githubu nasadit všechny požadované prostředky. Šablona nasadí virtuální počítače, nástroj pro vyrovnávání zatížení, dostupnosti, atd. Postupujte podle těchto kroků a nasaďte šablonu:
 
-1. Otevřít [šablony ASCS/SCS více SID] [ template-multisid-xscs] nebo [konvergované šablony] [ template-converged] na portálu Azure portal. 
-   Šablona ASCS/SCS pouze vytvoří pravidla Vyrovnávání zatížení pro SAP NetWeaver ASCS/SCS a instance Lajících (pouze Linux), zatímco sblížené Šablona také vytvoří pravidla Vyrovnávání zatížení pro databázi (třeba Microsoft SQL Server nebo SAP HANA). Pokud máte v plánu pro instalaci systému SAP NetWeaver na základě a také chtít nainstalovat databázi na stejných počítačů, použijte [konvergované šablony][template-converged].
+1. Otevřít [šablony ASCS/SCS více SID][template-multisid-xscs] or the [converged template][template-converged] on the Azure portal. 
+   The ASCS/SCS template only creates the load-balancing rules for the SAP NetWeaver ASCS/SCS and ERS (Linux only) instances whereas the converged template also creates the load-balancing rules for a database (for example Microsoft SQL Server or SAP HANA). If you plan to install an SAP NetWeaver based system and you also want to install the database on the same machines, use the [converged template][template-converged].
 1. Zadejte následující parametry
    1. Předpona prostředků (pouze šablona ASCS/SCS více SID)  
       Zadejte předponu, kterou chcete použít. Hodnota se používá jako předpona pro prostředky, které jsou nasazené.
@@ -512,7 +512,7 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
 
 1. **[A]**  Konfigurace zachování
 
-   Komunikace mezi aplikační server SAP NetWeaver a ASCS/SCS je směrován přes nástroj pro vyrovnávání zatížení softwaru. Nástroje pro vyrovnávání zatížení odpojí neaktivní připojení po Konfigurovatelný časový limit. Chcete-li tomu zabránit, budete muset nastavit parametr v SAP NetWeaver ASCS/SCS profilu a změnit nastavení systému Linux. Čtení [1410736 Poznámka SAP] [ 1410736] Další informace.
+   Komunikace mezi aplikační server SAP NetWeaver a ASCS/SCS je směrován přes nástroj pro vyrovnávání zatížení softwaru. Nástroje pro vyrovnávání zatížení odpojí neaktivní připojení po Konfigurovatelný časový limit. Chcete-li tomu zabránit, budete muset nastavit parametr v SAP NetWeaver ASCS/SCS profilu a změnit nastavení systému Linux. Čtení [1410736 Poznámka SAP][1410736] Další informace.
 
    ASCS/SCS profilu parametr modul/encni/set_so_keepalive byl již přidán v posledním kroku.
 
@@ -710,7 +710,7 @@ Kroky zmeškáte Předpokládejme, že nainstalujete aplikační server na serve
 
 ## <a name="install-database"></a>Instalace databáze
 
-V tomto příkladu je nainstalován SAP NetWeaver na systému SAP HANA. Všechny podporované databáze můžete použít pro tuto instalaci. Další informace o tom, jak instalace SAP HANA v Azure najdete v tématu [vysoké dostupnosti systému SAP HANA v Azure Virtual Machines (VM)][sap-hana-ha]. Seznam podporovaných databází najdete v tématu [SAP 1928533 Poznámka][1928533].
+V tomto příkladu je nainstalován SAP NetWeaver na systému SAP HANA. Všechny podporované databáze můžete použít pro tuto instalaci. Další informace o tom, jak instalace SAP HANA v Azure najdete v tématu [vysoké dostupnosti systému SAP HANA v Azure Virtual Machines (VM)][sap-hana-ha]. For a list of supported databases, see [SAP Note 1928533][1928533].
 
 1. Spuštění instalace instancí databáze SAP
 
@@ -887,6 +887,9 @@ Následující testy jsou kopie testovacích případů v příručkách osvěd�
    # run as root
    # Remove failed actions for the ERS that occurred as part of the migration
    nw1-cl-0:~ # crm resource cleanup rsc_sap_NW1_ERS02
+   # Remove migration constraints
+   nw1-cl-0:~ # crm resource clear rsc_sap_NW1_ASCS00
+   #INFO: Removed migration constraints for rsc_sap_NW1_ASCS00
    </code></pre>
 
    Stav prostředku po testu:

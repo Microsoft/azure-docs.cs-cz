@@ -4,7 +4,7 @@ description: Informace o nasazení softwaru SAP na virtuálních počítačích 
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: MSSedusch
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/26/2018
 ms.author: sedusch
-ms.openlocfilehash: 82ab400c89cb57f3cf72cfb9196ea7c6402808fe
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 23f2d9add5838fc0c9ac5764921a2f3cc6ae7ab7
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203918"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709903"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Nasazení virtuálních počítačů pro SAP NetWeaver v Azure
 
@@ -360,7 +360,7 @@ Následující informace o určení velikosti SAP vědět:
 
 ### <a name="resource-groups"></a>Skupiny prostředků
 
-V Azure Resource Manageru pro správu všech prostředků aplikace ve vašem předplatném Azure můžete použít skupiny prostředků. Další informace najdete v tématu [přehled Azure Resource Manageru][resource-group-overview].
+V Azure Resource Manageru pro správu všech prostředků aplikace ve vašem předplatném Azure můžete použít skupiny prostředků. Další informace naleznete v tématu [Přehled Azure Resource Manager][resource-group-overview].
 
 ## <a name="resources"></a>Zdroje a prostředky
 
@@ -427,21 +427,21 @@ Průvodce vás provede nastavením povinné parametry pro vytvoření virtuáln�
    * **Uživatelské jméno a heslo** nebo **veřejný klíč SSH**: Zadejte uživatelské jméno a heslo uživatele, který se vytvoří během zřizování. Pro virtuální počítač s Linuxem můžete zadat veřejný klíč Secure Shell (SSH), který používáte k přihlášení k počítači.
    * **Předplatné**: Vyberte předplatné, pro kterou chcete použít ke zřízení nového virtuálního počítače.
    * **Skupina prostředků**: Název skupiny prostředků pro virtuální počítač. Můžete zadat název nové skupiny prostředků nebo název skupiny prostředků, který již existuje.
-   * **Umístění**: Kde nasadíte nový virtuální počítač. Pokud chcete virtuální počítač připojit k vaší místní sítě, ujistěte se, že vyberete umístění virtuální sítě, která se připojuje k vaší místní síti Azure. Další informace najdete v tématu [síťových služeb Microsoft Azure] [ planning-guide-microsoft-azure-networking] v [Azure Virtual Machines plánování a implementace SAP Netweaveru] [ planning-guide].
+   * **Umístění**: Kde nasadíte nový virtuální počítač. Pokud chcete virtuální počítač připojit k vaší místní sítě, ujistěte se, že vyberete umístění virtuální sítě, která se připojuje k vaší místní síti Azure. Další informace najdete v tématu [síťových služeb Microsoft Azure][planning-guide-microsoft-azure-networking] in [Azure Virtual Machines planning and implementation for SAP NetWeaver][planning-guide].
 1. **Velikost**:
 
-     Seznam podporovaných typů virtuálních počítačů, viz poznámka SAP [1928533]. Ujistěte se, zda že jste vybrali správný typ virtuálního počítače, pokud chcete používat Azure Premium Storage. Ne všechny typy virtuálních počítačů podporují službu Premium Storage. Další informace najdete v tématu [úložiště: Microsoft Azure Storage a datové disky] [ planning-guide-storage-microsoft-azure-storage-and-data-disks] a [Azure Premium Storage] [ planning-guide-azure-premium-storage] v [Azure Virtual Machines plánování a implementace pro SAP NetWeaver][planning-guide].
+     Seznam podporovaných typů virtuálních počítačů, viz poznámka SAP [1928533]. Ujistěte se, zda že jste vybrali správný typ virtuálního počítače, pokud chcete používat Azure Premium Storage. Ne všechny typy virtuálních počítačů podporují službu Premium Storage. Další informace najdete v tématu [úložiště: Microsoft Azure Storage a datové disky][planning-guide-storage-microsoft-azure-storage-and-data-disks] and [Azure Premium Storage][planning-guide-azure-premium-storage] v [Azure Virtual Machines plánování a implementace SAP Netweaveru][Příručka plánování].
 
 1. **Nastavení**:
    * **Storage**
      * **Typ disku**: Vyberte typ disku disk s operačním systémem. Pokud chcete používat Premium Storage pro datové disky, doporučujeme používat Premium Storage pro disk s operačním systémem i.
-     * **Použití spravovaných disků**: Pokud chcete používat službu Managed Disks, vyberte Ano. Další informace o službě Managed Disks, naleznete v kapitole [Managed Disks] [ planning-guide-managed-disks] v Průvodci plánem.
+     * **Použití spravovaných disků**: Pokud chcete používat službu Managed Disks, vyberte Ano. Další informace o službě Managed Disks, naleznete v kapitole [Managed Disks][planning-guide-managed-disks] v Průvodci plánem.
      * **Účet úložiště**: Vyberte existující účet úložiště nebo vytvořte novou. Ne všechny typy úložišť fungovat pro provozování aplikací SAP. Další informace o typech úložiště najdete v tématu [strukturu úložiště virtuálního počítače pro nasazení relační databázový systém](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64).
    * **Sítě**
      * **Virtuální síť** a **podsítě**: Virtuální počítač integrovat intranetu, vyberte virtuální síť, který je připojený k vaší místní síti.
      * **Veřejná IP adresa**: Vyberte veřejnou IP adresu, kterou chcete použít, nebo zadejte parametry pro vytvoření nové veřejné IP adresy. Veřejné IP adresy můžete použít pro přístup k virtuálnímu počítači přes Internet. Ujistěte se, že vytvoříte skupinu zabezpečení sítě můžete líp zabezpečit přístup k vašemu virtuálnímu počítači.
      * **Skupina zabezpečení sítě**: Další informace najdete v tématu [řízení toku provozu sítě s použitím skupin zabezpečení sítě][virtual-networks-nsg].
-   * **Rozšíření**: Jejich přidáním do nasazení, můžete nainstalovat rozšíření virtuálního počítače. Nemusíte přidávat rozšíření v tomto kroku. Rozšíření vyžadované pro podporu SAP jsou nainstalovány později. Naleznete v kapitole [konfigurovat rozšířené monitorování rozšíření Azure pro SAP] [ deployment-guide-4.5] v této příručce.
+   * **Rozšíření**: Jejich přidáním do nasazení, můžete nainstalovat rozšíření virtuálního počítače. Nemusíte přidávat rozšíření v tomto kroku. Rozšíření vyžadované pro podporu SAP jsou nainstalovány později. Naleznete v kapitole [konfigurovat rozšířené monitorování rozšíření Azure pro SAP][deployment-guide-4.5] v této příručce.
    * **Vysoká dostupnost**: Vyberte skupinu dostupnosti, nebo zadejte parametry pro vytvoření nové skupiny dostupnosti. Další informace najdete v tématu [skupinami dostupnosti Azure][planning-guide-3.2.3].
    * **Monitorování**
      * **Diagnostika spouštění**: Můžete vybrat **zakázat** pro diagnostiku spouštění.
@@ -455,7 +455,7 @@ Nasazení virtuálního počítače ve skupině prostředků, kterou jste vybral
 
 #### <a name="create-a-virtual-machine-by-using-a-template"></a>Vytvoření virtuálního počítače pomocí šablony
 
-Virtuální počítač můžete vytvořit pomocí jedné z šablony SAP publikované v [úložišti GitHub šablon pro rychlý start azure –][azure-quickstart-templates-github]. Můžete také můžete ručně vytvořit virtuální počítač pomocí [webu Azure portal][virtual-machines-windows-tutorial], [PowerShell][virtual-machines-ps-create-preconfigure-windows-resource-manager-vms], nebo [příkazovéhořádkuAzure] [virtual-machines-linux-tutorial].
+Virtuální počítač můžete vytvořit pomocí jedné z šablony SAP publikované v [úložišti GitHub šablon pro rychlý start azure –][azure-quickstart-templates-github]. You also can manually create a virtual machine by using the [Azure portal][virtual-machines-windows-tutorial], [PowerShell] [ Virtual-Machines-PS-Create-preconfigure-Windows-Resource-Manager-VMS], nebo [rozhraní příkazového řádku Azure][virtual-machines-linux-tutorial].
 
 * [**Šablona dvouvrstvé konfigurace (jenom jeden virtuální počítač)** (sap-2úroveň--image marketplace)][sap-templates-2-tier-marketplace-image]
 
@@ -513,11 +513,11 @@ V závislosti na konfiguraci místní sítě můžete potřebovat nastavit proxy
 
 #### <a name="join-a-domain-windows-only"></a>Připojte se k doméně (jenom Windows)
 
-Pokud nasazení vašeho řešení Azure je připojené k místní službě Active Directory nebo DNS instance prostřednictvím Azure připojení site-to-site VPN nebo ExpressRoute (tomu se říká *mezi různými místy* v [plánování virtuálních počítačů Azure a implementaci SAP Netweaveru][planning-guide]), očekává se, že virtuální počítač připojuje k místní doméně. Další informace o aspektech týkajících se pro tuto úlohu, naleznete v tématu [připojení virtuálního počítače k doméně místní (jen Windows)][deployment-guide-4.3].
+Pokud nasazení vašeho řešení Azure je připojené k místní službě Active Directory nebo DNS instance prostřednictvím Azure připojení site-to-site VPN nebo ExpressRoute (tomu se říká *mezi různými místy* v [plánování virtuálních počítačů Azure a implementaci SAP Netweaveru][planning-guide]), it is expected that the VM is joining an on-premises domain. For more information about considerations for this task, see [Join a VM to an on-premises domain (Windows only)][deployment-guide-4.3].
 
 #### <a name="ec323ac3-1de9-4c3a-b770-4ff701def65b"></a>Konfigurace monitorování
 
-Opravdu SAP podporuje prostředí nastavit rozšíření monitorování Azure pro SAP, jak je popsáno v [konfigurovat rozšířené monitorování rozšíření Azure pro SAP][deployment-guide-4.5]. Kontrola předpokladů pro monitorování SAP a požadované minimální verze jádra SAP a SAP hostitele agenta, v prostředcích uvedených v [SAP prostředky][deployment-guide-2.2].
+Opravdu SAP podporuje prostředí nastavit rozšíření monitorování Azure pro SAP, jak je popsáno v [konfigurovat rozšířené monitorování rozšíření Azure pro SAP][deployment-guide-4.5]. Check the prerequisites for SAP monitoring, and required minimum versions of SAP Kernel and SAP Host Agent, in the resources listed in [SAP resources][deployment-guide-2.2].
 
 #### <a name="monitoring-check"></a>Kontrola monitorování
 
@@ -541,12 +541,12 @@ Použijete jiný postup k vytvoření privátní image pro Linux, než se vytvo�
 >
 > ![Linux][Logo_Linux] Linux
 >
-> K přípravě image Linuxu, který vám umožní nasadit více virtuálních počítačů, musí být některá nastavení Linux abstrahovaná nebo na místní virtuální počítač generalizovaný. Můžete použít `waagent -deprovision` provedete to tak. Další informace najdete v tématu [zachytit virtuální počítač s Linuxem běžících v Azure] [ virtual-machines-linux-capture-image] a [uživatelská příručka agenta Azure Linux][virtual-machines-linux-agent-user-guide-command-line-options].
+> K přípravě image Linuxu, který vám umožní nasadit více virtuálních počítačů, musí být některá nastavení Linux abstrahovaná nebo na místní virtuální počítač generalizovaný. Můžete použít `waagent -deprovision` provedete to tak. Další informace najdete v tématu [zachytit virtuální počítač s Linuxem běžících v Azure][virtual-machines-linux-capture-image] and the [Azure Linux agent user guide][virtual-machines-linux-agent-user-guide-command-line-options].
 >
 >
 
 ---
-Můžete připravit a vytvořit vlastní image a použijte ji k vytvoření více nových virtuálních počítačů. To je popsáno v [Azure Virtual Machines plánování a implementace SAP Netweaveru][planning-guide]. Nastavení databáze obsahu instalace nového systému SAP (záloha databáze obnoví z disku, který je připojen k virtuálnímu počítači) pomocí Správce zřizování softwaru SAP nebo přímo obnovení zálohy databáze ze služby Azure storage, pokud váš systém DBMS podporuje. Další informace najdete v tématu [nasazení DBMS virtuálních počítačů Azure pro SAP NetWeaver][dbms-guide]. Pokud jste již nainstalovali systémem SAP na vaše místní virtuální počítač (hlavně u dvouvrstvé systémy), můžete upravit nastavení systému SAP po nasazení virtuálního počítače Azure postupem přejmenovat systému podporována službou SAP Software zřizování správce (SAP Mějte na paměti [1619720]). Jinak můžete nainstalovat SAP software po nasazení virtuálního počítače Azure.
+Můžete připravit a vytvořit vlastní image a použijte ji k vytvoření více nových virtuálních počítačů. To je popsáno v [Azure Virtual Machines plánování a implementace SAP Netweaveru][planning-guide]. Set up your database content either by using SAP Software Provisioning Manager to install a new SAP system (restores a database backup from a disk that's attached to the virtual machine) or by directly restoring a database backup from Azure storage, if your DBMS supports it. For more information, see [Azure Virtual Machines DBMS deployment for SAP NetWeaver][dbms-guide]. Pokud jste již nainstalovali systémem SAP na vaše místní virtuální počítač (hlavně u dvouvrstvé systémy), můžete upravit nastavení systému SAP po nasazení virtuálního počítače Azure postupem přejmenovat systému podporována službou SAP Software zřizování správce (SAP Mějte na paměti [1619720]). Jinak můžete nainstalovat SAP software po nasazení virtuálního počítače Azure.
 
 Následující diagram ukazuje specifické pro SAP postupně jednotlivé kroky k nasazení virtuálních počítačů z vlastní image:
 
@@ -567,20 +567,20 @@ Průvodce vás provede nastavením povinné parametry pro vytvoření virtuáln�
    * **Uživatelské jméno a heslo** nebo **veřejný klíč SSH**: Zadejte uživatelské jméno a heslo uživatele, který se vytvoří během zřizování. Pro virtuální počítač s Linuxem můžete zadat veřejný klíč Secure Shell (SSH), který používáte k přihlášení k počítači.
    * **Předplatné**: Vyberte předplatné, pro kterou chcete použít ke zřízení nového virtuálního počítače.
    * **Skupina prostředků**: Název skupiny prostředků pro virtuální počítač. Můžete zadat název nové skupiny prostředků nebo název skupiny prostředků, který již existuje.
-   * **Umístění**: Kde nasadíte nový virtuální počítač. Pokud chcete virtuální počítač připojit k vaší místní sítě, ujistěte se, že vyberete umístění virtuální sítě, která se připojuje k vaší místní síti Azure. Další informace najdete v tématu [síťových služeb Microsoft Azure] [ planning-guide-microsoft-azure-networking] v [Azure Virtual Machines plánování a implementace SAP Netweaveru] [ planning-guide].
+   * **Umístění**: Kde nasadíte nový virtuální počítač. Pokud chcete virtuální počítač připojit k vaší místní sítě, ujistěte se, že vyberete umístění virtuální sítě, která se připojuje k vaší místní síti Azure. Další informace najdete v tématu [síťových služeb Microsoft Azure][planning-guide-microsoft-azure-networking] in [Azure Virtual Machines planning and implementation for SAP NetWeaver][planning-guide].
 1. **Velikost**:
 
-     Seznam podporovaných typů virtuálních počítačů, viz poznámka SAP [1928533]. Ujistěte se, zda že jste vybrali správný typ virtuálního počítače, pokud chcete používat Azure Premium Storage. Ne všechny typy virtuálních počítačů podporují službu Premium Storage. Další informace najdete v tématu [úložiště: Microsoft Azure Storage a datové disky] [ planning-guide-storage-microsoft-azure-storage-and-data-disks] a [Azure Premium Storage] [ planning-guide-azure-premium-storage] v [Azure Virtual Machines plánování a implementace pro SAP NetWeaver][planning-guide].
+     Seznam podporovaných typů virtuálních počítačů, viz poznámka SAP [1928533]. Ujistěte se, zda že jste vybrali správný typ virtuálního počítače, pokud chcete používat Azure Premium Storage. Ne všechny typy virtuálních počítačů podporují službu Premium Storage. Další informace najdete v tématu [úložiště: Microsoft Azure Storage a datové disky][planning-guide-storage-microsoft-azure-storage-and-data-disks] and [Azure Premium Storage][planning-guide-azure-premium-storage] v [Azure Virtual Machines plánování a implementace SAP Netweaveru][Příručka plánování].
 
 1. **Nastavení**:
    * **Storage**
      * **Typ disku**: Vyberte typ disku disk s operačním systémem. Pokud chcete používat Premium Storage pro datové disky, doporučujeme používat Premium Storage pro disk s operačním systémem i.
-     * **Použití spravovaných disků**: Pokud chcete používat službu Managed Disks, vyberte Ano. Další informace o službě Managed Disks, naleznete v kapitole [Managed Disks] [ planning-guide-managed-disks] v Průvodci plánem.
+     * **Použití spravovaných disků**: Pokud chcete používat službu Managed Disks, vyberte Ano. Další informace o službě Managed Disks, naleznete v kapitole [Managed Disks][planning-guide-managed-disks] v Průvodci plánem.
    * **Sítě**
      * **Virtuální síť** a **podsítě**: Virtuální počítač integrovat intranetu, vyberte virtuální síť, který je připojený k vaší místní síti.
      * **Veřejná IP adresa**: Vyberte veřejnou IP adresu, kterou chcete použít, nebo zadejte parametry pro vytvoření nové veřejné IP adresy. Veřejné IP adresy můžete použít pro přístup k virtuálnímu počítači přes Internet. Ujistěte se, že vytvoříte skupinu zabezpečení sítě můžete líp zabezpečit přístup k vašemu virtuálnímu počítači.
      * **Skupina zabezpečení sítě**: Další informace najdete v tématu [řízení toku provozu sítě s použitím skupin zabezpečení sítě][virtual-networks-nsg].
-   * **Rozšíření**: Jejich přidáním do nasazení, můžete nainstalovat rozšíření virtuálního počítače. Nepotřebujete přidat rozšíření v tomto kroku. Rozšíření vyžadované pro podporu SAP jsou nainstalovány později. Naleznete v kapitole [konfigurovat rozšířené monitorování rozšíření Azure pro SAP] [ deployment-guide-4.5] v této příručce.
+   * **Rozšíření**: Jejich přidáním do nasazení, můžete nainstalovat rozšíření virtuálního počítače. Nepotřebujete přidat rozšíření v tomto kroku. Rozšíření vyžadované pro podporu SAP jsou nainstalovány později. Naleznete v kapitole [konfigurovat rozšířené monitorování rozšíření Azure pro SAP][deployment-guide-4.5] v této příručce.
    * **Vysoká dostupnost**: Vyberte skupinu dostupnosti, nebo zadejte parametry pro vytvoření nové skupiny dostupnosti. Další informace najdete v tématu [skupinami dostupnosti Azure][planning-guide-3.2.3].
    * **Monitorování**
      * **Diagnostika spouštění**: Můžete vybrat **zakázat** pro diagnostiku spouštění.
@@ -594,7 +594,7 @@ Nasazení virtuálního počítače ve skupině prostředků, kterou jste vybral
 
 #### <a name="create-a-virtual-machine-by-using-a-template"></a>Vytvoření virtuálního počítače pomocí šablony
 
-Vytvoření nasazení s použitím privátní image operačního systému z webu Azure portal, použijte jednu z následujících šablon SAP. Tyto šablony jsou zveřejněné v [úložišti GitHub šablon pro rychlý start azure –][azure-quickstart-templates-github]. Můžete také můžete ručně vytvořit virtuální počítač pomocí [PowerShell][virtual-machines-upload-image-windows-resource-manager].
+Vytvoření nasazení s použitím privátní image operačního systému z webu Azure portal, použijte jednu z následujících šablon SAP. Tyto šablony jsou zveřejněné v [úložišti GitHub šablon pro rychlý start azure –][azure-quickstart-templates-github]. You also can manually create a virtual machine, by using [PowerShell][virtual-machines-upload-image-windows-resource-manager].
 
 * [**Šablona dvouvrstvé konfigurace (jenom jeden virtuální počítač)** (sap-2úroveň uživatel image)][sap-templates-2-tier-user-image]
 
@@ -651,7 +651,7 @@ Použití šablon je popsáno v předchozí části, agenta pro Linux musí už 
 
 #### <a name="join-a-domain-windows-only"></a>Připojte se k doméně (jenom Windows)
 
-Pokud nasazení vašeho řešení Azure je připojené k místní službě Active Directory nebo DNS instance prostřednictvím Azure připojení k síti VPN site-to-site nebo Azure ExpressRoute (tomu se říká *mezi různými místy* v [Azure Virtual Machines plánování a implementace SAP Netweaveru][planning-guide]), očekává se, že virtuální počítač připojuje k místní doméně. Další informace o aspektech týkajících se pro tento krok najdete v tématu [připojení virtuálního počítače k doméně místní (jen Windows)][deployment-guide-4.3].
+Pokud nasazení vašeho řešení Azure je připojené k místní službě Active Directory nebo DNS instance prostřednictvím Azure připojení k síti VPN site-to-site nebo Azure ExpressRoute (tomu se říká *mezi různými místy* v [Azure Virtual Machines plánování a implementace SAP Netweaveru][planning-guide]), it is expected that the VM is joining an on-premises domain. For more information about considerations for this step, see [Join a VM to an on-premises domain (Windows only)][deployment-guide-4.3].
 
 #### <a name="configure-proxy-settings"></a>Konfigurace nastavení proxy serveru
 
@@ -659,7 +659,7 @@ V závislosti na konfiguraci místní sítě můžete potřebovat nastavit proxy
 
 #### <a name="configure-monitoring"></a>Konfigurace sledování
 
-Opravdu SAP podporuje prostředí nastavit rozšíření monitorování Azure pro SAP, jak je popsáno v [konfigurovat rozšířené monitorování rozšíření Azure pro SAP][deployment-guide-4.5]. Kontrola předpokladů pro monitorování SAP a požadované minimální verze jádra SAP a SAP hostitele agenta, v prostředcích uvedených v [SAP prostředky][deployment-guide-2.2].
+Opravdu SAP podporuje prostředí nastavit rozšíření monitorování Azure pro SAP, jak je popsáno v [konfigurovat rozšířené monitorování rozšíření Azure pro SAP][deployment-guide-4.5]. Check the prerequisites for SAP monitoring, and required minimum versions of SAP Kernel and SAP Host Agent, in the resources listed in [SAP resources][deployment-guide-2.2].
 
 #### <a name="monitoring-check"></a>Kontrola monitorování
 
@@ -741,7 +741,7 @@ Pokud nepoužíváte šablony je popsáno v předchozí části, můžete také 
 
 #### <a name="join-a-domain-windows-only"></a>Připojte se k doméně (jenom Windows)
 
-Pokud nasazení vašeho řešení Azure je připojené k místní službě Active Directory nebo DNS instance prostřednictvím Azure připojení site-to-site VPN nebo ExpressRoute (tomu se říká *mezi různými místy* v [plánování virtuálních počítačů Azure a implementaci SAP Netweaveru][planning-guide]), očekává se, že virtuální počítač připojuje k místní doméně. Další informace o aspektech týkajících se pro tuto úlohu, naleznete v tématu [připojení virtuálního počítače k doméně místní (jen Windows)][deployment-guide-4.3].
+Pokud nasazení vašeho řešení Azure je připojené k místní službě Active Directory nebo DNS instance prostřednictvím Azure připojení site-to-site VPN nebo ExpressRoute (tomu se říká *mezi různými místy* v [plánování virtuálních počítačů Azure a implementaci SAP Netweaveru][planning-guide]), it is expected that the VM is joining an on-premises domain. For more information about considerations for this task, see [Join a VM to an on-premises domain (Windows only)][deployment-guide-4.3].
 
 #### <a name="configure-proxy-settings"></a>Konfigurace nastavení proxy serveru
 
@@ -749,7 +749,7 @@ V závislosti na konfiguraci místní sítě můžete potřebovat nastavit proxy
 
 #### <a name="configure-monitoring"></a>Konfigurace sledování
 
-Opravdu SAP podporuje prostředí nastavit rozšíření monitorování Azure pro SAP, jak je popsáno v [konfigurovat rozšířené monitorování rozšíření Azure pro SAP][deployment-guide-4.5]. Kontrola předpokladů pro monitorování SAP a požadované minimální verze jádra SAP a SAP hostitele agenta, v prostředcích uvedených v [SAP prostředky][deployment-guide-2.2].
+Opravdu SAP podporuje prostředí nastavit rozšíření monitorování Azure pro SAP, jak je popsáno v [konfigurovat rozšířené monitorování rozšíření Azure pro SAP][deployment-guide-4.5]. Check the prerequisites for SAP monitoring, and required minimum versions of SAP Kernel and SAP Host Agent, in the resources listed in [SAP resources][deployment-guide-2.2].
 
 #### <a name="monitoring-check"></a>Kontrola monitorování
 
@@ -928,9 +928,9 @@ Další informace o trasách definovaných uživatelem najdete v tématu [trasy 
 
 ### <a name="d98edcd3-f2a1-49f7-b26a-07448ceb60ca"></a>Konfigurovat rozšíření Azure rozšířené monitorování pro SAP
 
-Pokud jste připravili virtuálního počítače, jak je popsáno v [scénáře nasazení virtuálních počítačů pro SAP v Azure][deployment-guide-3], Agent virtuálního počítače Azure je nainstalovaný na virtuálním počítači. Dalším krokem je nasazení rozšířené monitorování rozšíření Azure pro SAP, která je k dispozici v úložišti Azure rozšíření v globálních datových centrech Azure. Další informace najdete v tématu [Azure Virtual Machines plánování a implementace SAP Netweaveru][planning-guide-9.1].
+Pokud jste připravili virtuálního počítače, jak je popsáno v [scénáře nasazení virtuálních počítačů pro SAP v Azure][deployment-guide-3], the Azure VM Agent is installed on the virtual machine. The next step is to deploy the Azure Enhanced Monitoring Extension for SAP, which is available in the Azure Extension Repository in the global Azure datacenters. For more information, see [Azure Virtual Machines planning and implementation for SAP NetWeaver][planning-guide-9.1].
 
-Prostředí PowerShell nebo rozhraní příkazového řádku Azure můžete použít k instalaci a konfiguraci rozšířené monitorování rozšíření Azure pro SAP. Chcete-li nainstalovat rozšíření virtuálního počítače s Linuxem a Windows s použitím počítače s Windows, naleznete v tématu [prostředí Azure PowerShell][deployment-guide-4.5.1]. Chcete-li nainstalovat rozšíření virtuálního počítače s Linuxem pomocí plochy Linux, najdete v článku [rozhraní příkazového řádku Azure][deployment-guide-4.5.2].
+Prostředí PowerShell nebo rozhraní příkazového řádku Azure můžete použít k instalaci a konfiguraci rozšířené monitorování rozšíření Azure pro SAP. Chcete-li nainstalovat rozšíření virtuálního počítače s Linuxem a Windows s použitím počítače s Windows, naleznete v tématu [prostředí Azure PowerShell][deployment-guide-4.5.1]. To install the extension on a Linux VM by using a Linux desktop, see [Azure CLI][deployment-guide-4.5.2].
 
 #### <a name="987cf279-d713-4b4c-8143-6b11589bb9d4"></a>Prostředí Azure PowerShell pro systémy Linux a virtuální počítače s Windows
 
@@ -1027,7 +1027,7 @@ Instalace rozšířené monitorování rozšíření Azure pro SAP pomocí Azure
 
 Po nasazení virtuálního počítače Azure a nastavit příslušné monitorování infrastruktury Azure, zkontrolujte, zda jsou všechny komponenty Azure Enhanced Monitoring rozšíření funguje podle očekávání.
 
-Spuštění kontroly připravenosti pro Azure Enhanced Monitoring rozšíření pro SAP, jak je popsáno v [kontroly připravenosti pro Azure Enhanced Monitoring rozšíření pro SAP][deployment-guide-5.1]. Pokud jsou všechny výsledky kontroly připravenosti kladné a zobrazí všechny relevantní čítače OK, monitorování Azure byl úspěšně nastaven. Instalace agenta hostitele SAP může pokračovat, jak je popsáno v poznámkách k SAP v [SAP prostředky][deployment-guide-2.2]. Pokud kontrolu připravenosti označuje, že nebyly nalezeny čítače, spusťte kontrolu stavu pro monitorování infrastruktury Azure, jak je popsáno v [Kontrola stavu pro konfiguraci Azure monitorování infrastruktury] [ deployment-guide-5.2]. Více možností pro řešení potíží, najdete v části [monitorování řešení potíží s Azure pro SAP][deployment-guide-5.3].
+Spuštění kontroly připravenosti pro Azure Enhanced Monitoring rozšíření pro SAP, jak je popsáno v [kontroly připravenosti pro Azure Enhanced Monitoring rozšíření pro SAP][deployment-guide-5.1]. If all readiness check results are positive and all relevant performance counters appear OK, Azure monitoring has been set up successfully. You can proceed with the installation of SAP Host Agent as described in the SAP Notes in [SAP resources][deployment-guide-2.2]. Pokud kontrolu připravenosti označuje, že nebyly nalezeny čítače, spusťte kontrolu stavu pro monitorování infrastruktury Azure, jak je popsáno v [Kontrola stavu pro konfiguraci Azure monitorování infrastruktury] [ Deployment-guide-5.2]. Více možností pro řešení potíží, najdete v části [monitorování řešení potíží s Azure pro SAP][deployment-guide-5.3].
 
 ### <a name="bb61ce92-8c5c-461f-8c53-39f5e5ed91f2"></a>Kontrola připravenosti pro Azure Enhanced Monitoring rozšíření pro SAP
 
@@ -1074,7 +1074,7 @@ Výsledné hodnoty interpretujte takto:
 | **Stav** |Vrátit pouze OK if ukazuje stav **OK**. |
 | **Diagnostika** |Podrobné informace o stavu. |
 
-Pokud **stav** hodnota není **OK**, postupujte podle pokynů v [Kontrola stavu pro konfiguraci Azure monitorování infrastruktury] [ deployment-guide-5.2].
+Pokud **stav** hodnota není **OK**, postupujte podle pokynů v [Kontrola stavu pro konfiguraci Azure monitorování infrastruktury][deployment-guide-5.2].
 
 #### <a name="run-the-readiness-check-on-a-linux-vm"></a>Spustit kontrolu připravenosti na virtuální počítač s Linuxem
 
@@ -1082,15 +1082,15 @@ Pokud **stav** hodnota není **OK**, postupujte podle pokynů v [Kontrola stavu 
 
 1. Zkontrolujte výstup Azure Enhanced Monitoring rozšíření.
 
-   a.  Spusťte `more /var/lib/AzureEnhancedMonitor/PerfCounters`.
+   a.  Spustit `more /var/lib/AzureEnhancedMonitor/PerfCounters`
 
    **Očekávaný výsledek**: Vrátí seznam čítačů výkonu. Soubor by neměl být prázdný.
 
-   b. Spusťte `cat /var/lib/AzureEnhancedMonitor/PerfCounters | grep Error`.
+   b. Spustit `cat /var/lib/AzureEnhancedMonitor/PerfCounters | grep Error`
 
    **Očekávaný výsledek**: Vrátí jeden řádek, kde je chyba **žádný**, například **3; konfigurace; Chyba; 0; 0; NONE; 0; 1456416792; tst servercs;**
 
-   c. Spusťte `more /var/lib/AzureEnhancedMonitor/LatestErrorRecord`.
+   c. Spustit `more /var/lib/AzureEnhancedMonitor/LatestErrorRecord`
 
    **Očekávaný výsledek**: Vrací jako prázdný nebo neexistuje.
 
@@ -1098,29 +1098,29 @@ Pokud se předchozí kontrola neproběhne úspěšně, spusťte tyto další kon
 
 1. Ujistěte se, že je waagent nainstalován a povolen.
 
-   a.  Spusťte `sudo ls -al /var/lib/waagent/`.
+   a.  Spustit `sudo ls -al /var/lib/waagent/`
 
      **Očekávaný výsledek**: Obsahuje seznam obsahu waagent adresáře.
 
-   b.  Spusťte `ps -ax | grep waagent`.
+   b.  Spustit `ps -ax | grep waagent`
 
    **Očekávaný výsledek**: Zobrazí jednu položku podobně jako: `python /usr/sbin/waagent -daemon`
 
 1. Ujistěte se, že Azure Enhanced Monitoring rozšíření je nainstalovaná a spuštěná.
 
-   a.  Spusťte `sudo sh -c 'ls -al /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-*/'`.
+   a.  Spustit `sudo sh -c 'ls -al /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-*/'`
 
    **Očekávaný výsledek**: Obsahuje seznam obsahu adresáře rozšíření rozšířené monitorování Azure.
 
-   b. Spusťte `ps -ax | grep AzureEnhanced`.
+   b. Spustit `ps -ax | grep AzureEnhanced`
 
    **Očekávaný výsledek**: Zobrazí jednu položku podobně jako: `python /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-2.0.0.2/handler.py daemon`
 
 1. Nainstalujte agenta hostitele SAP, jak je popsáno v Poznámka SAP [1031096]a zkontrolujte výstup `saposcol`.
 
-   a.  Spusťte `/usr/sap/hostctrl/exe/saposcol -d`.
+   a.  Spustit `/usr/sap/hostctrl/exe/saposcol -d`
 
-   b.  Spusťte `dump ccm`.
+   b.  Spustit `dump ccm`
 
    c.  Zkontrolujte, zda **Virtualization_Configuration\Enhanced monitorování přístupu** metrika **true**.
 
@@ -1130,7 +1130,7 @@ Pokud některý z těchto kontrol selhání a podrobné informace o tom, jak zno
 
 ### <a name="e2d592ff-b4ea-4a53-a91a-e5521edb6cd1"></a>Kontroly stavu pro konfiguraci Azure monitorování infrastruktury
 
-Když některé z monitorování data se doručí správně, je určeno test popsaný v [kontroly připravenosti pro Azure Enhanced Monitoring for SAP][deployment-guide-5.1], spusťte `Test-AzVMAEMExtension` rutiny ke kontrole, jestli Monitorování infrastruktury a rozšíření monitorování pro SAP Azure, které jsou nakonfigurované správně.
+Když některé z monitorování data se doručí správně, je určeno test popsaný v [kontroly připravenosti pro Azure Enhanced Monitoring for SAP][deployment-guide-5.1], spusťte `Test-AzVMAEMExtension` rutiny ke kontrole, jestli monitorování Azure infrastrukturu a rozšíření monitorování pro SAP jsou správně nakonfigurované.
 
 1. Ujistěte se, že jste nainstalovali nejnovější verzi rutin Azure Powershellu, jak je popsáno v [rutin nasazení prostředí Azure PowerShell][deployment-guide-4.1].
 1. Spusťte následující rutinu Azure PowerShellu. Seznam dostupných prostředí, spusťte rutinu `Get-AzEnvironment`. Chcete-li použít globální Azure, vyberte **AzureCloud** prostředí. Azure v Číně, vyberte **AzureChinaCloud**.
@@ -1149,7 +1149,7 @@ Když některé z monitorování data se doručí správně, je určeno test pop
 
    ![Výstup úspěšné testovací infrastruktury pro monitorování Azure pro SAP][deployment-guide-figure-1300]
 
-Zajistěte, aby byl každý výsledek kontroly stavu **OK**. Pokud se nezobrazují některé kontroly **OK**, spusťte rutinu aktualizace, jak je popsáno v [konfigurovat rozšířené monitorování rozšíření Azure pro SAP][deployment-guide-4.5]. Počkejte 15 minut a opakujte kontroly podle [kontroly připravenosti pro Azure Enhanced Monitoring for SAP] [ deployment-guide-5.1] a [Kontrola stavu pro monitorování infrastruktury konfigurace Azure] [deployment-guide-5.2]. Pokud kontroly stále indikovat problém s některé nebo všechny čítače, přečtěte si téma [Poradce při potížích Azure monitorování infrastruktury SAP][deployment-guide-5.3].
+Zajistěte, aby byl každý výsledek kontroly stavu **OK**. Pokud se nezobrazují některé kontroly **OK**, spusťte rutinu aktualizace, jak je popsáno v [konfigurovat rozšířené monitorování rozšíření Azure pro SAP][deployment-guide-4.5] . Wait 15 minutes, and repeat the checks described in [Readiness check for Azure Enhanced Monitoring for SAP][deployment-guide-5.1] a [Kontrola stavu pro Azure Monitorování infrastruktury konfigurace][deployment-guide-5.2]. Pokud kontroly stále indikovat problém s některé nebo všechny čítače, přečtěte si téma [Poradce při potížích Azure monitorování infrastruktury SAP][deployment-guide-5.3].
 
 > [!Note]
 > Upozornění v případech, kdy používat spravované disky Azure úrovně Standard může docházet. Upozornění se zobrazí místo testy, vrácení "OK". To je normální a určené v případě typu disku. Viz také najdete [řešení potíží s Azure monitorování infrastruktury pro SAP][deployment-guide-5.3]
@@ -1243,4 +1243,4 @@ Metriky výkonu v Azure byly shromážděny sadou démona, která načte data z 
 
 Nejúplnější a nejaktuálnější seznam známých problémů, viz poznámka SAP [1999351], který obsahuje další informace o odstraňování potíží pro rozšířené monitorování Azure pro SAP.
 
-Pokud tento poradce potíže s použitím Poznámka SAP [1999351] neobsahuje problém vyřešit, spusťte znovu `Set-AzVMAEMExtension` konfigurační skript, jak je popsáno v [konfigurovat rozšířené monitorování rozšíření Azure pro SAP] [deployment-guide-4.5]. Budete muset počkat na hodinu, protože storage analytics nebo diagnostiky čítačů nemusí být vytvářeny ihned poté, co jsou povoleny. Pokud se problém nevyřeší, otevřete zprávu SAP Zákaznická podpora na komponentu BC OP NT AZR pro Windows nebo BC-OP – LNX-AZR pro virtuální počítač s Linuxem.
+Pokud tento poradce potíže s použitím Poznámka SAP [1999351] neobsahuje problém vyřešit, spusťte znovu `Set-AzVMAEMExtension` konfigurační skript, jak je popsáno v [konfigurovat rozšířené monitorování rozšíření Azure pro SAP][deployment-guide-4.5]. Budete muset počkat na hodinu, protože storage analytics nebo diagnostiky čítačů nemusí být vytvářeny ihned poté, co jsou povoleny. Pokud se problém nevyřeší, otevřete zprávu SAP Zákaznická podpora na komponentu BC OP NT AZR pro Windows nebo BC-OP – LNX-AZR pro virtuální počítač s Linuxem.

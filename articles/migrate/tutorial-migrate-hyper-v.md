@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 0d4ab3225501c2573b07f27e40a8f42508a4df88
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 4a88e9dddd492d5c24698bcde8c3a1fd942eaf66
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67809537"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67854191"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>Migrace virtuálních počítačů s Hyper-V do Azure 
 
@@ -30,7 +30,7 @@ Tento kurz je třetí webinář z řady, který ukazuje, jak vyhodnocovat a migr
 > * Nastavení cílové environmen...
 > * Povolení replikace.
 > * Spuštění testu migrace, abyste měli jistotu, že všechno funguje podle očekávání.
-> * Spustit plné migraci do Azure.
+> * Spusťte úplné migrace do Azure.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) před tím, než začnete.
 

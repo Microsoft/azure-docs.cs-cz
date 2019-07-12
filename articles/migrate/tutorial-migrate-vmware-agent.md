@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/08/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 78edd22502bbf08fda8d1828413bbc0b0f8aa9c7
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: fe83cd5f38e8c091ee72875da370b6929a99b727
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67809334"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67854143"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>Migrace virtuálních počítačů VMware do Azure (založené na agentovi)
 
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte:
 > * Nastavení zásady replikace.
 > * Povolení replikace.
 > * Spuštění testu migrace, abyste měli jistotu, že všechno funguje podle očekávání.
-> * Spustit plné migraci do Azure.
+> * Spusťte úplné migrace do Azure.
 
 > [!NOTE]
 > Kurzy vám ukážou, nejjednodušší způsob nasazení pro scénář tak, že můžete rychle nastavit testování konceptu. Kurzy použijte výchozí možnosti, kde je to možné a nezobrazovat všechna možná nastavení a cesty. Podrobné pokyny najdete v tématu postupy pro VMware vyhodnocení a migraci.

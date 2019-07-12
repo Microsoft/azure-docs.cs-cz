@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 8dc3b485d83f7bc55ca913e2c706164d4953ee61
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 006f7270570eba17fb44421b1c181d9ad68ad2ee
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67809600"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67854182"
 ---
 # <a name="migrate-physical-or-virtualized-servers-to-azure"></a>Migrujte fyzické nebo virtualizované servery do Azure 
 
@@ -38,7 +38,7 @@ V tomto kurzu se naučíte:
 > * Instalace služby Mobility na počítačích, které chcete migrovat.
 > * Povolení replikace.
 > * Spuštění testu migrace, abyste měli jistotu, že všechno funguje podle očekávání.
-> * Spustit plné migraci do Azure.
+> * Spusťte úplné migrace do Azure.
 
 > [!NOTE]
 > Kurzy vám ukážou, nejjednodušší způsob nasazení pro scénář tak, že můžete rychle nastavit testování konceptu. Kurzy použijte výchozí možnosti, kde je to možné a nezobrazovat všechna možná nastavení a cesty. Podrobné pokyny najdete v tématu postupy pro Azure Migrate.
@@ -385,6 +385,6 @@ Po ověření, že testovací migrace funguje podle očekávání, můžete migr
     - Zvažte nasazení služby [Azure Cost Management](https://docs.microsoft.com/azure/cost-management/overview), která bude monitorovat využití prostředků a útratu.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Prozkoumat [cesty k migraci do cloudu](https://docs.microsoft.com/azure/architecture/cloud-adoption/getting-started/migrate) v rámci přechodu na Cloud Azure.

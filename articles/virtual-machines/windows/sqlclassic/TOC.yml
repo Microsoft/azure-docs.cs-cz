@@ -50,14 +50,6 @@
           href: virtual-machines-windows-classic-sql-automated-backup.md
         - name: Použití služby Azure Storage pro zálohování a obnovení
           href: ../sql/virtual-machines-windows-use-storage-sql-server-backup-restore.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json
-    - name: Business Intelligence
-      items:
-        - name: SQL Server Business Intelligence ve virtuálních počítačích Azure
-          href: virtual-machines-windows-classic-ps-sql-bi.md
-        - name: Použití ReportVieweru na webu hostovaném v Azure
-          href: virtual-machines-windows-classic-sql-server-reportviewer.md
-        - name: Použití Azure PowerShellu k vytvoření virtuálního počítače Azure se serverem sestav
-          href: virtual-machines-windows-classic-ps-sql-report.md
     - name: Osvědčené postupy z hlediska výkonu
       href: ../sql/virtual-machines-windows-sql-performance.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json
     - name: Vzory aplikací

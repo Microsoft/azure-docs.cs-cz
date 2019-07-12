@@ -3,17 +3,17 @@ title: Přizpůsobení zobrazení operátora v Azure IoT Central | Microsoft Doc
 description: Jako tvůrce můžete přizpůsobit zobrazení operátora ve vaší aplikaci Azure IoT Central.
 author: sandeeppujar
 ms.author: sandeepu
-ms.date: 03/26/2019
+ms.date: 07/09/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 7fc42b24090b5fc68176fea2c7b993643ea24200
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ced771002ca9f542f89dbf74ba4a4745ad2a0339
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60747164"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67850179"
 ---
 # <a name="tutorial-customize-the-azure-iot-central-operators-view"></a>Kurz: Přizpůsobení zobrazení operátora Azure IoT Central
 
@@ -54,11 +54,11 @@ Jako tvůrce můžete definovat, které informace se zobrazí na řídicím pane
 
     Při definování klíčového ukazatele výkonu použijte informace v následující tabulce:
 
-    | Nastavení     | Hodnota |
+    | Nastavení     | Value |
     | ----------- | ----- |
-    | Název        | Maximální teplota |
+    | Name        | Maximální teplota |
     | Časové rozmezí  | Poslední 1 týden |
-    | Typ měření | Telemetrická data |
+    | Typ měrné jednotky | Telemetrická data |
     | Měření | Teplota |
     | Agregace | Maximum |
     | Viditelnost  | Enabled |
