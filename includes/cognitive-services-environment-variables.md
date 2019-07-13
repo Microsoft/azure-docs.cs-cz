@@ -4,18 +4,18 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/24/2019
 ms.author: aahi
-ms.openlocfilehash: 734fce2c01614d5dca73f171fb59f25f39d13705
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 6d6451d50a00569eb1da8f5b0a0dc10d3c6b1115
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67461493"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67841391"
 ---
 ## <a name="configure-an-environment-variable-for-authentication"></a>Konfigurace proměnné prostředí pro ověřování
 
-Aplikace potřebují k ověření přístupu k jejich použití služeb Cognitive Services. Pokud chcete ověřit, doporučujeme vytvořit proměnnou prostředí k uložení klíče ve vašich prostředcích Azure. 
+Aplikace potřebují k ověření přístupu k jejich použití služeb Cognitive Services. Pokud chcete ověřit, doporučujeme vytvořit proměnnou prostředí pro ukládání klíčů pro vaše prostředky Azure. 
 
-Až budete mít klíč zapisovat do nové proměnné prostředí v místním počítači spustíte aplikaci. Proměnnou prostředí nastavíte tak, že otevřete okno konzoly a budete postupovat podle pokynů pro váš operační systém. Nahraďte `your-key` přístupovým klíčem vašeho detektor anomálií:
+Až budete mít klíč zapisovat do nové proměnné prostředí v místním počítači spustíte aplikaci. Proměnnou prostředí nastavíte tak, že otevřete okno konzoly a budete postupovat podle pokynů pro váš operační systém. Nahraďte `your-key` s jedním z klíčů pro váš prostředek.
 
 * Windows
 

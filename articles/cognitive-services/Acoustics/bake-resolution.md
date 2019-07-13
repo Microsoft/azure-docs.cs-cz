@@ -9,13 +9,13 @@ ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 04/05/2019
-ms.author: KyleStorck
-ms.openlocfilehash: 8684cf16e41c763db01c064242cc5466b1c83f01
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.author: kylesto
+ms.openlocfilehash: c4f4581beb26eb63392644b40b1e5f16dae0481d
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621397"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849961"
 ---
 # <a name="project-acoustics-bake-resolution"></a>Projekt Akustika která má označení vytvoření řešení
 Tento přehled popisuje rozdíl mezi hrubý a bez problémů řešení při pečení Akustika. Toto nastavení během kroku sondy pečení pracovního postupu, vyberte.

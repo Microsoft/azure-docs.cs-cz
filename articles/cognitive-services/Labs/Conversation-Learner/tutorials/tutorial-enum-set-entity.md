@@ -9,13 +9,13 @@ ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: e990ebe89f4446a0226aa0e0f73ffd900e5b021a
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.author: nolachar
+ms.openlocfilehash: ed18d30a0c3f5d51cb3a07b8948863cdda16c1ae
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592943"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67845953"
 ---
 # <a name="when-to-use-enum-entities-and-set-entity-actions"></a>Kdy použít výčet entit a nastavit ENTITY akcí
 
@@ -40,7 +40,7 @@ Existují případy v konverzacích, kde význam slova závisí na kontextu.  Ob
 
 Představte si overhear součástí konverzaci mezi lidmi poblíž a uslyšíte slovo "Ano". Byste vlastně nevěděli o "Ano" vstupem do nebo potvrzení od vás žádnou odpověď na otázku požádáni před ní. Otázka před je kontext, který poskytuje význam k odpovědi. Podobně od "Ano" je běžné odpovědí na mnoha různých dotazy se tím, že poskytuje příklady, jako byste to udělali s [vlastní Trénovaného](04-introduction-to-entities.md) entity vzhledem k tomu, pak se by se naučíte, jak označit každý "Ano" jako entity.
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 Pojďme se dále upřesnit v následujícím příkladu:
 
@@ -71,7 +71,7 @@ Když jsou možné hodnoty entity otevřený a neopraveno, potřebujete použít
 
 Příklad: Bot: Jak se jmenuješ?
 Uživatel: Matt Bot: Co je Oblíbené barvu?
-Uživatel: Stříbrný
+Uživatel: Silver
 
 Tyto výzvy jsou považovány za otevřený, protože by mohly být zodpovězeny libovolné hodnoty.
 
