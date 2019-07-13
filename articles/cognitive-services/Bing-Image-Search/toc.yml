@@ -55,7 +55,8 @@
     - name: Procházení obrázků
       href: paging-images.md
     - name: Změna velikosti a oříznutí miniatur
-      href: resize-and-crop-thumbnails.md
+      maintainContext: true
+      href: ../bing-web-search/resize-and-crop-thumbnails.md
     - name: Upgrade z v5 na v7
       href: bing-image-upgrade-guide-v5-to-v7.md
 - name: Koncepty
