@@ -58,7 +58,8 @@
     - name: Získání přehledů s využitím tokenu
       href: use-insights-token.md
     - name: Změna velikosti a oříznutí miniatur
-      href: resize-and-crop-thumbnails.md
+      maintainContext: true
+      href: ../bing-web-search/resize-and-crop-thumbnails.md
     - name: Hledání obrázků s využitím přehledových tokenů obrázků
       href: tutorial-visual-search-insights-token.md
     - name: Vytvoření jednostránkové webové aplikace

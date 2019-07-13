@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: tutorial
-ms.date: 06/19/2019
+ms.date: 07/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 144ad8761b4d462012963e040b7699e38587831b
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 10798b471012d53b5820b078b4be7c9c648d3233
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67272789"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67868364"
 ---
 # <a name="tutorial-create-a-single-page-web-app"></a>Kurz: Vytvoření jednostránkové webové aplikace
 
@@ -101,7 +101,7 @@ Následující obrázek znázorňuje textové pole dotazu a možnosti, které de
 
 Formulář HTML obsahuje prvky s těmito názvy:
 
-|Element|Popis|
+|Prvek|Popis|
 |-|-|
 | `where` | Rozevírací nabídka pro výběr trhu (polohy a jazyka) pro vyhledávání. |
 | `query` | Textového pole k zadání hledaných termínů. |
@@ -271,7 +271,7 @@ function handleBingResponse() {
 
 Velká část kódu v obou předchozích funkcích je vyhrazená zpracování chyb. V následujících fázích můžou nastat chyby:
 
-|Stage|Potenciální chyby|Čím se zpracuje|
+|Fáze|Potenciální chyby|Čím se zpracuje|
 |-|-|-|
 |Vytváření javascriptového objektu požadavku|Neplatná adresa URL|Blok `try`/`catch`|
 |Provedení žádosti|Chyby sítě, přerušená připojení|Obslužné rutiny událostí `error` a `abort`|
@@ -381,7 +381,7 @@ Funkce rendereru zpráv:
 > * Vytvoří značky HTML `<a>`, které odkazují na obrázek a na stránku, která ho obsahuje.
 > * Vytvoří popis, který zobrazuje informace o obrázku a webu, na kterém se nachází.
 
-Velikost miniatury se používá ve značce `<img>` i v polích `h` a `w` v adrese URL miniatury. [Služba miniatur Bingu](resize-and-crop-thumbnails.md) pak poskytne miniaturu přesně této velikosti.
+Velikost miniatury se používá ve značce `<img>` i v polích `h` a `w` v adrese URL miniatury. [Služba miniatur Bingu](../bing-web-search/resize-and-crop-thumbnails.md) pak poskytne miniaturu přesně této velikosti.
 
 ## <a name="persisting-client-id"></a>Zachování ID klienta
 Odpovědi z rozhraní API pro vyhledávání Bingu můžou zahrnovat hlavičku `X-MSEdge-ClientID`, která by se měla odesílat zpět do rozhraní API v následných požadavcích. Pokud se používá více rozhraní API pro vyhledávání Bingu, mělo by se pro všechny používat stejné ID klienta, pokud je to možné.
@@ -397,7 +397,7 @@ Zásady zabezpečení prohlížeče (CORS) můžou bránit tomu, aby byla hlavi�
 > [!NOTE]
 > V produkční webové aplikaci byste měli požadavek provádět na straně serveru. Jinak musí být klíč rozhraní API pro vyhledávání Bingu součástí webové stránky, kde je k dispozici každému, kdo si zobrazí zdroj. Účtuje se vám veškeré využívání vašeho klíče předplatného rozhraní API, dokonce i požadavky provedené neoprávněnými stranami, proto je důležité klíč nezveřejňovat.
 
-Pro účely vývoje můžete požadavek na rozhraní API Bingu pro vyhledávání na webu provést prostřednictvím proxy serveru CORS. Odpověď z takového proxy serveru má hlavičku `Access-Control-Expose-Headers`, která přidává hlavičky odpovědí na seznam povolených a zpřístupňuje je pro JavaScript.
+Pro účely vývoje můžete požadavek na rozhraní API Bingu pro vyhledávání na webu provést prostřednictvím proxy serveru CORS. Odpověď od takový proxy server má `Access-Control-Expose-Headers` hlavičku, která umožňuje hlavičky odpovědi a zpřístupňuje je pro jazyk JavaScript.
 
 Nainstalovat proxy server CORS a povolit naší ukázkové aplikaci přístup k hlavičce ID klienta je snadné. Nejdřív [nainstalujte Node.js](https://nodejs.org/en/download/), pokud jste to ještě neudělali. Pak zadejte v příkazovém okně tento příkaz:
 

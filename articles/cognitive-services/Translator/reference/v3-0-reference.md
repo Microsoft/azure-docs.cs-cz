@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: swmachan
-ms.openlocfilehash: 9b8f3894062c34e743a39f28b5f079a67a285c84
-ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
+ms.openlocfilehash: 8956aff86777e2a2570c6a555a9bd0882f328a77
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2019
-ms.locfileid: "67357684"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67868399"
 ---
 # <a name="translator-text-api-v30"></a>Translator Text API v3.0
 
@@ -31,10 +31,10 @@ Verze 3 rozhraní Translator Text API poskytuje moderní webové API založené 
 
 ## <a name="base-urls"></a>Základní adresy URL
 
-Microsoft Translator je provádět z více umístění datového centra. Aktuálně jsou umístěny v 6 [zeměpisných oblastech Azure](https://azure.microsoft.com/global-infrastructure/regions):
+Microsoft Translator je provádět z více umístění datového centra. Aktuálně jsou umístěny v 10 [zeměpisných oblastech Azure](https://azure.microsoft.com/global-infrastructure/regions):
 
-* **Jižní Americe:** Západní USA 2 a střed USA – západ 
-* **Asie a Tichomoří:** Jihovýchodní Asie a Korea – jih
+* **Jižní Americe:** USA – východ, USA (střed) – Jih, střed USA – západ a USA – západ 2 
+* **Asie a Tichomoří:** Korea – Jih, Japonsko – východ, Asie – jihovýchod a Austrálie – východ
 * **Evropa:** Severní Evropa a západní Evropa
 
 Požadavky na rozhraní Microsoft Translator Text API jsou ve většině případů zpracovat datacenter, která je nejblíž k původu žádosti. V případě datacenter selhání může být žádost směrována mimo Azure zeměpisné oblasti.
@@ -49,7 +49,7 @@ Pokud chcete vynutit požadavek na zpracovat určité zeměpisné oblasti Azure,
 |Azure|Asie a Tichomoří|    api-apc.cognitive.microsofttranslator.com|
 
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Ověřování
 
 Přihlaste se k rozhraní Translator Text API odběru nebo [více služeb Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) Microsoft Cognitive Services a použít k ověření klíče (k dispozici na webu Azure Portal) vašeho předplatného. 
 
@@ -58,7 +58,7 @@ Existují tři hlavičky, které můžete použít k ověření vašeho předpla
 |Hlavičky|Popis|
 |:----|:----|
 |OCP-Apim-Subscription-Key|*Použít s předplatným služeb Cognitive Services, Pokud předáváte tajný klíč*.<br/>Hodnota je Azure tajný klíč pro vaše předplatné Translator Text API.|
-|Autorizace|*Použít s předplatným služeb Cognitive Services, Pokud předáváte ověřovací token.*<br/>Hodnota je nosný token: `Bearer <token>`.|
+|Authorization|*Použít s předplatným služeb Cognitive Services, Pokud předáváte ověřovací token.*<br/>Hodnota je nosný token: `Bearer <token>`.|
 |OCP-Apim předplatné – oblasti|*Pokud předáváte více služeb tajný klíč, pomocí předplatného víc služeb Cognitive Services.*<br/>Hodnota je oblasti pro víc služeb předplatného. Tato hodnota je volitelná, kdy se nepoužívá víc služeb předplatného.|
 
 ###  <a name="secret-key"></a>Tajný klíč

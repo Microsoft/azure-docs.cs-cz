@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: tutorial
-ms.date: 01/31/2019
+ms.date: 07/12/2019
 ms.author: aahi
-ms.openlocfilehash: 6ba777754990560526d7981ef497ea7f0441e1b0
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: a14954de1f8ae073780098f9286aa70502472dcd
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65798459"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67867869"
 ---
 # <a name="tutorial-single-page-video-search-app"></a>Kurz: Vyhledávání videí jednostránkové aplikace
 Rozhraní API Bingu pro vyhledávání videí umožňuje hledat na webu a získávat výsledky videí relevantní pro vyhledávací dotaz. V tomto kurzu sestavíme jednostránkovou webovou aplikaci, která používá rozhraní API pro vyhledávání Bingu k zobrazení výsledků hledání na stránce. Aplikace zahrnuje komponenty HTML, CSS a JavaScriptu.
@@ -100,7 +100,7 @@ Následující obrázek znázorňuje textové pole dotazu a možnosti, které de
 
 Formulář HTML obsahuje prvky s těmito názvy:
 
-|Element|Popis|
+|Prvek|Popis|
 |-|-|
 | `where` | Rozevírací nabídka pro výběr trhu (polohy a jazyka) pro vyhledávání. |
 | `query` | Textového pole k zadání hledaných termínů. |
@@ -308,7 +308,7 @@ Výsledky hledání se v odpovědi JSON vrátí jako objekt `value` nejvyšší 
 
 Rozhraní API Bingu pro vyhledávání zpráv vrátí až čtyři různé druhy souvisejících výsledků, každý ve vlastním objektu nejvyšší úrovně. Jsou to tyto:
 
-|Vztah|Popis|
+|Relace|Popis|
 |-|-|
 |`pivotSuggestions`|Dotazy, které nahradí pivotové slovo v původním vyhledávání jiným. Pokud třeba vyhledáváte „červené květiny“, pivotové slovo může být „červené“ a pivotový návrh může být „žluté květiny“.|
 |`queryExpansions`|Dotazy, které původní hledání zúží přidáním dalších výrazů. Pokud třeba vyhledáváte „Microsoft Surface“, rozšíření dotazu může být „Microsoft Surface Pro“.|
@@ -319,7 +319,7 @@ Jak jste už viděli v `renderSearchResults()`, vykreslujeme jenom návrhy `rela
 
 ## <a name="rendering-result-items"></a>Vykreslování položek výsledků
 
-V kódu JavaScriptu může objekt, `searchItemRenderers`, obsahovat funkce *renderers:*, které generují kód HTML pro každý druh výsledku hledání. Stránka vyhledávání videí využívá jenom `videos`. Různé typy rendererů najdete v dalších kurzech.
+V kódu JavaScriptu může objekt, `searchItemRenderers`, obsahovat funkce *renderers:* , které generují kód HTML pro každý druh výsledku hledání. Stránka vyhledávání videí využívá jenom `videos`. Různé typy rendererů najdete v dalších kurzech.
 
 ```javascript
 searchItemRenderers = {
@@ -373,7 +373,7 @@ Funkce rendereru:
 > * Vytvoří značky HTML `<a>`, které odkazují na obrázek a na stránku, která ho obsahuje.
 > * Vytvoří popis, který zobrazuje informace o obrázku a webu, na kterém se nachází.
 
-Velikost miniatury se používá ve značce `<img>` i v polích `h` a `w` v adrese URL miniatury. [Služba miniatur Bingu](resize-and-crop-thumbnails.md) pak poskytne miniaturu přesně této velikosti.
+Velikost miniatury se používá ve značce `<img>` i v polích `h` a `w` v adrese URL miniatury. Bing vrátí [miniaturu](../bing-web-search/resize-and-crop-thumbnails.md) přesně zadané velikosti.
 
 ## <a name="persisting-client-id"></a>Zachování ID klienta
 Odpovědi z rozhraní API pro vyhledávání Bingu můžou zahrnovat hlavičku `X-MSEdge-ClientID`, která by se měla odesílat zpět do rozhraní API v následných požadavcích. Pokud se používá více rozhraní API pro vyhledávání Bingu, mělo by se pro všechny používat stejné ID klienta, pokud je to možné.
@@ -389,7 +389,7 @@ Zásady zabezpečení prohlížeče (CORS) můžou bránit tomu, aby byla hlavi�
 > [!NOTE]
 > V produkční webové aplikaci byste měli požadavek provádět na straně serveru. Jinak musí být klíč rozhraní API pro vyhledávání Bingu součástí webové stránky, kde je k dispozici každému, kdo si zobrazí zdroj. Účtuje se vám veškeré využívání vašeho klíče předplatného rozhraní API, dokonce i požadavky provedené neoprávněnými stranami, proto je důležité klíč nezveřejňovat.
 
-Pro účely vývoje můžete požadavek na rozhraní API Bingu pro vyhledávání na webu provést prostřednictvím proxy serveru CORS. Odpověď z takového proxy serveru má hlavičku `Access-Control-Expose-Headers`, která přidává hlavičky odpovědí na seznam povolených a zpřístupňuje je pro JavaScript.
+Pro účely vývoje můžete požadavek na rozhraní API Bingu pro vyhledávání na webu provést prostřednictvím proxy serveru CORS. Odpověď od takový proxy server má `Access-Control-Expose-Headers` hlavičku, která umožňuje hlavičky odpovědi a zpřístupňuje je pro jazyk JavaScript.
 
 Nainstalovat proxy server CORS a povolit naší ukázkové aplikaci přístup k hlavičce ID klienta je snadné. Nejdřív [nainstalujte Node.js](https://nodejs.org/en/download/), pokud jste to ještě neudělali. Pak zadejte v příkazovém okně tento příkaz:
 

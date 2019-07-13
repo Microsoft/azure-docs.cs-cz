@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 07/11/2019
-ms.author: raynew
-ms.openlocfilehash: 5dc1a05e93bf1e82269a4291f147bac6e8ba657a
-ms.sourcegitcommit: af31deded9b5836057e29b688b994b6c2890aa79
+ms.date: 07/12/2019
+ms.author: hamusa
+ms.openlocfilehash: 5f70037b1e6ce284b55ff5ff0ae38eb50c320122
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67813003"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67868657"
 ---
 # <a name="assess-vmware-vms-with-azure-migrate-server-assessment"></a>Posouzení virtuálních počítačů VMware pomocí Azure Migrate: Server Assessment
 
@@ -85,6 +85,7 @@ Azure Migrate: Spustí server Assessment jednoduchý virtuální počítač VMwa
     - Stáhnout soubor OVA šablony a importovat ho do systému vCenter Server.
     - Toto zařízení vytvoříte tak a zkontrolujte, že se může připojit k Azure Migrate Server Assessment.
     - Konfigurace zařízení poprvé a zaregistrujte je v projektu Azure Migrate.
+- Můžete nastavit více zařízení pro jeden projekt Azure Migrate. Ve všech zařízení, což je podporováno zjišťování až 35 000 virtuálních počítačů. Maximálně 10 000 servery můžete zjistit na zařízení.
 
 ### <a name="download-the-ova-template"></a>Stáhnout šablonu pro soubory OVA
 
@@ -171,12 +172,24 @@ Nastavení zařízení pomocí následujících kroků.
 Nyní připojení ze zařízení do systému vCenter Server a spusťte zjišťování virtuálních počítačů.
 
 1. V **zadejte podrobnosti vCenter serveru**, zadejte název (FQDN) nebo IP adresu vcenter serveru. Můžete ponechat výchozí port, nebo zadat vlastní port, na kterém vCenter Server naslouchá.
-2. V **uživatelské jméno** a **heslo**, zadejte přihlašovací údaje účtu jen pro čtení, které zařízení použije ke zjištění virtuálních počítačů na serveru vCenter. Ujistěte se, že účet má [požadovaná oprávnění pro zjišťování](migrate-support-matrix-vmware.md#assessment-vcenter-server-permissions).
+2. V **uživatelské jméno** a **heslo**, zadejte přihlašovací údaje účtu jen pro čtení, které zařízení použije ke zjištění virtuálních počítačů na serveru vCenter. Ujistěte se, že účet má [požadovaná oprávnění pro zjišťování](migrate-support-matrix-vmware.md#assessment-vcenter-server-permissions). Můžete omezit rozsah zjišťování tím, že omezíte přístup k účtu vCenter. Další informace o rozsahu zjišťování [tady](tutorial-assess-vmware.md#scoping-discovery).
 3. Klikněte na tlačítko **ověřit připojení** abyste měli jistotu, že zařízení může připojit k serveru vCenter.
 4. Jakmile se naváže připojení, klikněte na tlačítko **uložit a spustit zjišťování**.
 
-
 Tím se spustí zjišťování. Trvá přibližně 15 minut metadat zjištěných virtuálních počítačů se na portálu.
+
+### <a name="scoping-discovery"></a>Rozsah zjišťování
+
+Obor zjišťování lze nastavit omezením přístupu účet vCenter použitý pro zjišťování. Nastavit obor na vCenter serveru datacentra, clustery, složka clustery hostitelů, složku hostitele nebo jednotlivé virtuální počítače. 
+
+> [!NOTE]
+> V současné době není možné ke zjištění virtuálních počítačů, pokud má účet vCenter přístupu na úrovni složky virtuálního počítače vCenter Server Assessment. Pokud chcete určit obor zjišťování složkami virtuálního počítače, můžete toho dosáhnout tím, že zajišťuje vCenter účet má oprávnění jen pro čtení přiřazené na úrovni virtuálního počítače.  Toto jsou pokyny, jak to udělat:
+>
+> 1. Přiřadíte oprávnění jen pro čtení pro všechny virtuální počítače ve složkách virtuálních počítačů, u kterých chcete určit obor zjišťování. 
+> 2. Udělit přístup jen pro čtení do všech nadřazených objektů, kde jsou hostované virtuální počítače. Všechny nadřazené objekty - hostitel, složky hostitelů, cluster, složka clusterů – v hierarchii až po datové centrum se mají být zahrnuty. Nemusíte šíření oprávnění pro všechny podřízené objekty.
+> 3. Použijte pověření pro zjišťování výběr datového centra jako *rozsah kolekce*. RBAC nastavení zajistí, že odpovídající vCenter uživatel bude mít přístup k virtuálním počítačům pouze specifickým pro tenanta.
+>
+> Mějte na paměti tuto složku hostitelů a clusterů se nepodporuje.
 
 ### <a name="verify-vms-in-the-portal"></a>Kontrola virtuálních počítačů na portálu
 

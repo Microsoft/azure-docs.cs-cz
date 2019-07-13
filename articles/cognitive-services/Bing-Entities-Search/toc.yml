@@ -45,7 +45,8 @@
 - name: Návody
   items:
     - name: Změna velikosti a oříznutí miniatur
-      href: resize-and-crop-thumbnails.md
+      maintainContext: true
+      href: ../bing-web-search/resize-and-crop-thumbnails.md
 - name: Koncepty
   items:
     - name: Hledání entit

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: overview
-ms.date: 06/19/2019
+ms.date: 06/24/2019
 ms.author: aahi
-ms.openlocfilehash: 71d7ebb8cb797e2166fc91fdfdefdba5f22d82ec
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: bf0f74fe76ec7a83e0ce23ca83141276a677a5df
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67272701"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67868090"
 ---
 # <a name="search-for-videos-with-the-bing-video-search-api"></a>Hledání videí s API pro vyhledávání videí Bingu
 
@@ -98,7 +98,7 @@ Odpověď obsahuje objekt [Videos](https://docs.microsoft.com/rest/api/cognitive
 
 ## <a name="video-thumbnails"></a>Miniatury videa
 
-Můžete zobrazit všechny, nebo podmnožinu miniatury videa vrácený Video API Bingu pro vyhledávání. Pokud zobrazíte podmnožinu, poskytněte uživateli možnost zobrazit zbývající videa. jako součást rozhraní API Bingu pro [použít a zobrazit požadavky](../UseAndDisplayRequirements.md), je třeba zobrazit videa v pořadí poskytnutém v odpovědi. Informace o změně velikosti miniatury najdete v tématu [Změna velikosti a oříznutí miniatur](../resize-and-crop-thumbnails.md). 
+Můžete zobrazit všechny, nebo podmnožinu miniatury videa vrácený Video API Bingu pro vyhledávání. Pokud zobrazíte podmnožinu, poskytněte uživateli možnost zobrazit zbývající videa. jako součást rozhraní API Bingu pro [použít a zobrazit požadavky](../UseAndDisplayRequirements.md), je třeba zobrazit videa v pořadí poskytnutém v odpovědi. Informace o změně velikosti miniatury najdete v tématu [Změna velikosti a oříznutí miniatur](../../bing-web-search/resize-and-crop-thumbnails.md). 
 
 Pokud uživatel najede myší na miniaturu, může pomocí [motionThumbnailUrl](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-motionthumbnailurl) spustit přehrávání miniatury videa. Ujistěte se, že je při zobrazení přiřazená filmová miniatura.
 

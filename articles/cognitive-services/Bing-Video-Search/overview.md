@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: overview
 ms.date: 06/26/2019
 ms.author: scottwhi
-ms.openlocfilehash: 7b17c03b464ed7ccc13de2221c8e4cb36be05c3f
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 64d6613a5bfb9b13500d2263d2f826d342972639
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442714"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67867847"
 ---
 # <a name="what-is-the-bing-video-search-api"></a>Co je rozhraní API Bingu pro vyhledávání videí?
 
@@ -27,7 +27,7 @@ Video API Bingu pro vyhledávání umožňuje snadno přidat video možnosti vyh
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [Navrhování hledaných termínů v reálném čase](concepts/sending-requests.md#suggest-search-terms-with-the-bing-autosuggest-api) | Pomocí [rozhraní API pro automatické návrhy Bingu](../bing-autosuggest/get-suggested-search-terms.md) můžete vylepšit prostředí své aplikace tak, aby se při psaní zobrazovaly návrhy hledaných termínů. |
 | [Filtrování a omezit výsledky videa.](concepts/get-videos.md#filtering-videos)                      | Filtrování videí vrátil tak, že upravíte parametry dotazu.                                                                                                       |
-| [Ořezávání, změna velikosti a zobrazování miniatur](resize-and-crop-thumbnails.md)                                                | Upravit a zobrazit náhledy pro videa, která vrácený API Bingu pro vyhledávání videí.                                                                                      |
+| [Ořezávání, změna velikosti a zobrazování miniatur](../bing-web-search/resize-and-crop-thumbnails.md)                                                | Upravit a zobrazit náhledy pro videa, která vrácený API Bingu pro vyhledávání videí.                                                                                      |
 | [Získat populární videa](trending-videos.md) | Hledání populárních videí z celého světa.                                                                                                          |
 | [Získejte nové poznatky z videí](video-insights.md) | Upravte vyhledávání populárních videí z celého světa.                                                                                                          |
 
@@ -48,7 +48,7 @@ Jakmile budete připraveni volat rozhraní API, vytvořte si [účet rozhraní A
 
 Použití [rychlý Start](csharp.md) rychle začít s první žádosti o rozhraní API.
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
 * [API Bingu pro vyhledávání videí v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference) referenční stránka obsahuje seznam koncových bodů, hlaviček a parametrů dotazu používaná pro požádání o výsledcích hledání.
 

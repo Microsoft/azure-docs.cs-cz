@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: tutorial
-ms.date: 03/04/2019
+ms.date: 07/12/2019
 ms.author: aahi
-ms.openlocfilehash: 10bcbb4c1957735b0ddad6c97325c32be19ddcdb
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 7b530b3d415761956cbdb45fdc92bfed55a1bae5
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66383402"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67868260"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>Kurz: Vytvoření jednostránkové aplikace pomocí rozhraní API Bingu pro vyhledávání obrázků
 
@@ -369,7 +369,7 @@ Parametry `index` a `count` se používají k vyjádření počtu výsledků, ge
     }, // relatedSearches renderer omitted
 ```
 
-`height` a `width` obrázku miniatury se používají ve značce `<img>` i v polích `h` a `w` v adrese URL miniatury. To Bingu umožňuje vrátit [miniaturu](resize-and-crop-thumbnails.md) přesně této velikosti.
+`height` a `width` obrázku miniatury se používají ve značce `<img>` i v polích `h` a `w` v adrese URL miniatury. To Bingu umožňuje vrátit [miniaturu](../bing-web-search/resize-and-crop-thumbnails.md) přesně této velikosti.
 
 ## <a name="persisting-client-id"></a>Zachování ID klienta
 
@@ -386,7 +386,7 @@ Zásady zabezpečení prohlížeče (CORS) můžou bránit tomu, aby byla hlavi�
 > [!NOTE]
 > Při tvorbě webové aplikace byste měli požadavek provádět na straně serveru tak jako tak. Jinak musí být klíč rozhraní API Bingu pro vyhledávání součástí webové stránky, kde je k dispozici každému, kdo si zobrazí zdroj. Účtuje se vám veškeré využívání vašeho klíče předplatného rozhraní API, dokonce i požadavky provedené neoprávněnými stranami, proto je důležité klíč nezveřejňovat.
 
-Pro účely vývoje můžete požadavek na rozhraní API Bingu pro vyhledávání na webu provést prostřednictvím proxy serveru CORS. Odpověď z takového proxy serveru má hlavičku `Access-Control-Expose-Headers`, která přidává hlavičky odpovědí na seznam povolených a zpřístupňuje je pro JavaScript.
+Pro účely vývoje můžete požadavek na rozhraní API Bingu pro vyhledávání na webu provést prostřednictvím proxy serveru CORS. Odpověď od takový proxy server má `Access-Control-Expose-Headers` hlavičku, která umožňuje hlavičky odpovědi a zpřístupňuje je pro jazyk JavaScript.
 
 Nainstalovat proxy server CORS a povolit naší ukázkové aplikaci přístup k hlavičce ID klienta je snadné. Nejdřív [nainstalujte Node.js](https://nodejs.org/en/download/), pokud jste to ještě neudělali. Pak zadejte v příkazovém okně tento příkaz:
 
@@ -407,6 +407,6 @@ Při používání ukázkové aplikace nechte příkazové okno otevřené. Zav�
 > [!div class="nextstepaction"]
 > [Extrahování podrobností o obrázku pomocí rozhraní API Bingu pro vyhledávání obrázků](tutorial-image-post.md)
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
 * [Referenční informace k rozhraní API Bingu pro vyhledávání obrázků](//docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)
