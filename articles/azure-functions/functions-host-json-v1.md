@@ -213,7 +213,7 @@ Ovládací prvky filtrování protokolů autorem [objektu ILogger](functions-mon
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------| 
 |categoryFilter|neuvedeno|Určuje filtrování podle kategorie| 
-|defaultLevel|Informace|Pro všechny kategorie, není zadáno v `categoryLevels` pole, odeslat protokoly na této úrovni a novější do služby Application Insights.| 
+|defaultLevel|Information|Pro všechny kategorie, není zadáno v `categoryLevels` pole, odeslat protokoly na této úrovni a novější do služby Application Insights.| 
 |categoryLevels|neuvedeno|Pole kategorií, které určuje úroveň protokolu minimální k odeslání do Application Insights pro každou kategorii. Kategorie tady zadané, řídí všechny kategorie, které začínají stejnou hodnotu a delší hodnoty přednost. V předchozím příkladu *host.json* soubor, všechny kategorie, které začínají řetězcem "Host.Aggregator" protokolu v `Information` úroveň. Všechny kategorie, které začínají řetězcem "Hostitel", jako je například "Host.Executor" protokolu `Error` úroveň.| 
 
 ## <a name="queues"></a>fronty
