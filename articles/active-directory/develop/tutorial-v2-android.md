@@ -16,12 +16,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71c6b0d4cd664b12dbd0fbd4e9423240c8dbebb3
-ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
+ms.openlocfilehash: cb1e322e0424debc14a29ad8a516c95acea54714
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67723816"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67872099"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-android-app"></a>Přihlašování uživatelů a volání Microsoft Graphu z aplikace pro Android
 
@@ -33,61 +33,57 @@ Po dokončení průvodce bude vaše aplikace akceptovat přihlášení osobní �
 
 ![Ukazuje, jak ukázková aplikace vygenerované v tomto kurzu funguje](../../../includes/media/active-directory-develop-guidedsetup-android-intro/android-intro.svg)
 
-Aplikace v této ukázce se přihlásit uživatele a jejich jménem získat data.  Tato data budete přistupovat prostřednictvím chráněné rozhraní API (Microsoft Graph API), který vyžaduje ověření.
+Aplikace v tomto kurzu se přihlásit uživatele a jejich jménem získat data.  Tato data budete přistupovat prostřednictvím chráněné rozhraní API (Microsoft Graph API), který vyžaduje ověření a je chráněn platforma identit Microsoft.
 
 A konkrétně:
 
 * Vaše aplikace se přihlásit uživatele buď prostřednictvím prohlížeče nebo Microsoft Authenticator a portál společnosti Intune.
-* Koncový uživatel přijme oprávnění, která vyžaduje vaše aplikace. 
+* Koncový uživatel přijme oprávnění, která vyžaduje vaše aplikace.
 * Vaše aplikace budou vydány lístky přístupového tokenu pro rozhraní Microsoft Graph API.
 * Požadavek HTTP do webového rozhraní API zahrne přístupový token.
 * Zpracování odpovědi Microsoft Graphu.
 
-Tato ukázka používá Microsoft Authentication library pro Android (MSAL) pro implementaci ověřování. Knihovna MSAL bude automaticky obnovit tokeny, poskytovat jednotné přihlašování (SSO) mezi jinými aplikacemi na zařízení a spravovat účty.
+Tato ukázka používá Microsoft Authentication library pro Android (MSAL) k implementaci ověřování: [com.microsoft.identity.client](https://javadoc.io/doc/com.microsoft.identity.client/msal).
+
+ Knihovna MSAL bude automaticky obnovit tokeny, poskytovat jednotné přihlašování (SSO) mezi jinými aplikacemi na zařízení a spravovat účty.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Tento instalační program s asistencí používá Android Studio.
-* Vyžaduje se Android 16 nebo novější (19 + je doporučeno).
-
-## <a name="library"></a>Knihovna
-
-Tato příručka používá následující knihovny pro ověřování:
-
-|Knihovna|Popis|
-|---|---|
-|[com.microsoft.identity.client](https://javadoc.io/doc/com.microsoft.identity.client/msal)|Microsoft Authentication Library (MSAL)|
+* Tento kurz vyžaduje Android Studio verze 16 nebo novější (19 + je doporučeno).
 
 ## <a name="create-a-project"></a>Vytvoření projektu
 
 V tomto kurzu se vytvoří nový projekt. Pokud chcete stáhnout dokončený kurzu místo toho [stáhnout kód](https://github.com/Azure-Samples/active-directory-android-native-v2/archive/master.zip).
 
-1. Otevřete Android Studio a vyberte **spusťte nový projekt Android Studio**
-2. Vyberte **základní aktivity** a klikněte na tlačítko **Další**.
-3. Pojmenujte svoji aplikaci
-4. Uložte název balíčku. Zadáte ho později na webu Azure portal. 
+1. Otevřete Android Studio a vyberte **spusťte nový projekt Android Studio**.
+2. Vyberte **základní aktivity** a vyberte **Další**.
+3. Pojmenujte svoji aplikaci.
+4. Uložte název balíčku. Zadáte ho později na webu Azure portal.
 5. Nastavte **úroveň rozhraní API minimální** k **API 19** nebo vyšší a klikněte na tlačítko **Dokončit**.
 6. V zobrazení projektu zvolte **projektu** v rozevírací nabídce pro zobrazení zdroje a projekt jinými než zdrojovými soubory, otevřete **app/build.gradle** a nastavte `targetSdkVersion` k `27`.
 
 ## <a name="register-your-application"></a>Registrace vaší aplikace
 
-1. Přejděte na web [Azure Portal](https://aka.ms/MobileAppReg).
+1. Přejděte na [Azure Portal](https://aka.ms/MobileAppReg).
 2. Otevřít [okně registrace aplikace](https://ms.portal.azure.com/?feature.broker=true#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview) a klikněte na tlačítko **+ registrace nové**.
 3. Zadejte **název** pro vaši aplikaci a pak, aniž byste museli nastavovat identifikátor URI přesměrování, klikněte na **zaregistrovat**.
 4. V **spravovat** podokně, které se zobrazí, vyberte v části **ověřování** >  **+ přidat platformu** > **Android**.
 5. Zadejte název balíčku projektu. Pokud jste stáhli kód, tato hodnota je `com.azuresamples.msalandroidapp`.
-6. V **hodnoty hash podpisu** část **konfigurace aplikace pro Android** klikněte na **generování vývoj hodnoty Hash podpisu.** a zkopírujte tento příkaz KeyTool určený pro vaši platformu. Mějte na paměti, KeyTool.exe je nainstalován jako součást sady Java Development Kit (JDK) a musíte mít také nainstalovaný nástroj OpenSSL ke spuštění příkazu KeyTool.
+6. V **hodnoty hash podpisu** část **konfigurace aplikace pro Android** klikněte na **generování vývoj hodnoty Hash podpisu.** a zkopírujte tento příkaz KeyTool určený pro vaši platformu.
+
+   > [!Note]
+   > KeyTool.exe je nainstalován jako součást sady Java Development Kit (JDK). Také musíte nainstalovat OpenSSL nástroj k provedení příkazu KeyTool.
+
 7. Zadejte **hodnoty hash podpisu** generovaných KeyTool.
 8. Klikněte na tlačítko `Configure` a uložit **MSAL konfigurace** , který se zobrazí v **konfigurace pro Android** stránce mohli zadat, při konfiguraci aplikace později.  Klikněte na **Done** (Hotovo).
 
 ## <a name="build-your-app"></a>Sestavení aplikace
 
-### <a name="configure-your-android-app"></a>Konfigurace aplikace pro Android
+### <a name="add-your-app-registration"></a>Přidat registraci vaší aplikace
 
 1. V podokně projektu Android Studio, přejděte na **app\src\main\res**.
 2. Klikněte pravým tlačítkem na **res** a zvolte **nový** > **Directory**. Zadejte `raw` jako nový název adresáře a klikněte na **OK**.
 3. V **aplikace** > **src** > **res** > **nezpracovaná**, vytvoření nového souboru JSON s názvem `auth_config.json`a vložte do něj MSAL konfiguraci, který jste předtím uložili. Zobrazit [MSAL konfigurace pro další informace o](https://github.com/AzureAD/microsoft-authentication-library-for-android/wiki/Configuring-your-app).
-   <!-- Workaround for Docs conversion bug -->
 4. V **aplikace** > **src** > **hlavní** > **AndroidManifest.xml**, přidejte `BrowserTabActivity`aktivity níže. Tato položka umožňuje společnosti Microsoft pro zpětné volání do aplikace po dokončení ověřování:
 
     ```xml
@@ -118,7 +114,7 @@ V tomto kurzu se vytvoří nový projekt. Pokud chcete stáhnout dokončený kur
 ### <a name="create-the-apps-ui"></a>Vytvoření uživatelského rozhraní aplikace
 
 1. V okně projektu Android Studio, přejděte na **aplikace** > **src** > **hlavní** > **res**  >  **rozložení** a otevřete **activity_main.xml** a otevřete **Text** zobrazení.
-2. Změna rozložení aktivity, například `<androidx.coordinatorlayout.widget.CoordinatorLayout` k `<androidx.coordinatorlayout.widget.LinearLayout`.
+2. Změna rozložení aktivity, například: `<androidx.coordinatorlayout.widget.CoordinatorLayout` k `<androidx.coordinatorlayout.widget.LinearLayout`.
 3. Přidat `android:orientation="vertical"` vlastnost `LinearLayout` uzlu.
 4. Vložte následující kód do `LinearLayout` uzlu, nahraďte aktuálním obsahu:
 
@@ -186,7 +182,7 @@ V tomto kurzu se vytvoří nový projekt. Pokud chcete stáhnout dokončený kur
 ### <a name="use-msal"></a>Použití MSAL
 
 Teď provádět změny v `MainActivity.java` přidat a používat knihovna MSAL ve vaší aplikaci.
-V okně projektu Android Studio, přejděte na **aplikace** > **src** > **hlavní** > **java**  >  **com.example.msal**a otevřete `MainActivity.java`
+V okně projektu Android Studio, přejděte na **aplikace** > **src** > **hlavní** > **java**  >  **com.example.msal**a otevřete `MainActivity.java`.
 
 #### <a name="required-imports"></a>Požadované importy
 
@@ -464,7 +460,7 @@ Po obdržení tokenu, můžeme vytvořit žádost o [Microsoft Graph API](https:
 
 | Klíč hlavičky    | value                 |
 | ------------- | --------------------- |
-| Autorizace | Bearer \<access-token> |
+| Authorization | Bearer \<access-token> |
 
 Přidejte následující dvě metody uvnitř `MainActivity` třídy volání grafu a aktualizaci uživatelského rozhraní:
 

@@ -1,6 +1,6 @@
 ---
-title: Analýza mínění s využitím rozhraní Text Analytics z Azure Cognitive Services | Dokumentace Microsoftu
-description: Přečtěte si, jak zjistit mínění pomocí rozhraní REST API pro analýzu textu.
+title: Analýza subjektivního hodnocení s využitím REST API pro analýzu textu z Azure Cognitive Services | Dokumentace Microsoftu
+description: Zjistěte, jak rozpoznávání mínění s využitím REST API pro analýzu textu.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -9,37 +9,37 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 02/26/2019
 ms.author: aahi
-ms.openlocfilehash: e17b68dfd63952d0c8c81415b090b047c5808e2e
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: c3004dd3910dd5fdafc933efa213c9f097310e87
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67797793"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68001713"
 ---
-# <a name="example-how-to-detect-sentiment-with-text-analytics"></a>Příklad: Rozpoznávání mínění s využitím Analýzy textu
+# <a name="example-detect-sentiment-with-text-analytics"></a>Příklad: Rozpoznávání mínění pomocí analýzy textu
 
-[Rozhraní API pro analýzu mínění](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) vyhodnocuje textový vstup a vrací skóre mínění pro každý dokument v rozsahu 0 (negativní) až 1 (pozitivní).
+[Rozhraní API pro analýzu subjektivního hodnocení Azure](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) textové zadání vyhodnotí a vrátí skóre mínění pro každý dokument. Skóre v rozsahu od 0 (negativní) až 1 (pozitivní).
 
-Tato možnost je užitečná pro rozpoznání pozitivního a negativního mínění v sociálních médiích, zákaznických recenzích a diskuzních fórech. Obsah pochází od vás, modely a trénovací data poskytuje služba.
+Tato možnost je užitečná pro rozpoznání pozitivního a negativního mínění v sociálních médiích, zákaznických recenzích a diskuzních fórech. Obsah poskytujete vy. Modelů a tréninkových dat. poskytovaných službou.
 
-Pro analýzu mínění se momentálně podporuje angličtina, němčina, španělština a francouzština. Další jazyky jsou ve verzi Preview. Další informace najdete v tématu [Podporované jazyky](../text-analytics-supported-languages.md).
+Rozhraní API pro analýzu mínění v současné době podporuje angličtina, němčina, španělština a francouzštinu. Další jazyky jsou ve verzi Preview. Další informace najdete v tématu [Podporované jazyky](../text-analytics-supported-languages.md).
 
 > [!TIP]
-> Rozhraní text Analytics také poskytuje Dockeru založených na Linuxu image kontejneru pro analýzu mínění, což vám umožní [nainstalovat a spustit kontejner pro analýzu textu](text-analytics-how-to-install-containers.md) blízko datům.
+> Rozhraní API pro analýzu textu Azure také poskytuje Dockeru založených na Linuxu image kontejneru pro analýzu mínění, což vám umožní [nainstalovat a spustit kontejner pro analýzu textu](text-analytics-how-to-install-containers.md) blízko datům.
 
 ## <a name="concepts"></a>Koncepty
 
-Analýza textu vygeneruje pomocí algoritmu pro klasifikaci strojového učení skóre mínění v rozsahu 0 až 1. Skóre blížící se 1 značí pozitivní mínění, zatímco skóre blížící se 0 značí negativní mínění. Model je předem natrénovaný pomocí velkého počtu textů s přidruženími mínění. V současné době není možné dodat vlastní trénovací data. Při analýze textu model používá různé postupy, například zpracování textu, analýzu částí řeči, rozmístění slov a asociace slov. Další informace o tomto algoritmu najdete v [základních informacích o analýze textu](https://blogs.technet.microsoft.com/machinelearning/2015/04/08/introducing-text-analytics-in-the-azure-ml-marketplace/).
+Analýza textu vygeneruje pomocí algoritmu pro klasifikaci strojového učení skóre mínění v rozsahu 0 až 1. Skóre blížící se 1 značí pozitivní mínění, zatímco skóre blížící se 0 značí negativní mínění. Model je předem natrénovaný pomocí velkého počtu textů s přidruženími mínění. V současné době není možné poskytnout vlastní trénovací data. Model využívá kombinaci postupů při analýze textu. Mezi dostupné techniky patří zpracování textu, část řeči analýzy, umístění aplikace word a přidružení aplikace word. Další informace o tomto algoritmu najdete v [základních informacích o analýze textu](https://blogs.technet.microsoft.com/machinelearning/2015/04/08/introducing-text-analytics-in-the-azure-ml-marketplace/).
 
-Analýza mínění se provádí pro celý dokument, ne jako extrakce mínění u konkrétní entity v textu. Dá se říct, že v praxi bývá skóre přesnější, když dokumenty obsahují jednu nebo dvě věty, a ne rozsáhlý blok textu. Během fáze hodnocení objektivity model určuje, jestli je dokument jako celek objektivní, nebo obsahuje subjektivní mínění. Dokument, který je převážně objektivní, nepřechází do fáze rozpoznávání mínění, dále se nezpracovává a jeho výsledné skóre bude 0,5. Pro dokumenty pokračující do další fáze se vygeneruje skóre vyšší nebo nižší než 0,5 v závislosti na míře subjektivního mínění rozpoznané v daném dokumentu.
+Analýza mínění se provádí pro celý dokument, ne jako extrakce mínění u konkrétní entity v textu. V praxi existuje určitá tendence pro vyhodnocování přesnost pro zlepšení, když dokumenty obsahují jednu nebo dvě věty spíše než velkou část textu. Během fáze hodnocení objektivity model určuje, jestli je dokument jako celek objektivní, nebo obsahuje subjektivní mínění. Dokument, který je ve většině případů cíle nepodporuje průběh na fázi zjišťování mínění, což vede k 0,50 skóre, které se žádné další zpracování. Pro dokumenty, které pokračují v kanálu vygeneruje další fázi skóre nad nebo pod 0,50. Skóre závisí na míru mínění v dokumentu.
 
 ## <a name="preparation"></a>Příprava
 
-Výsledky analýzy mínění jsou kvalitnější pro menší bloky textu. Je to tedy přesně naopak než u extrakce klíčových frází, která vrací lepší výsledky pro větší bloky textu. Zvažte podle toho možnost restrukturalizace vstupů, abyste z obou operací získali co nejlepší výsledky.
+Analýza subjektivního hodnocení vytváří výsledek, kvalitnější při jí přiřadit menší bloky textu pro práci na. Je to tedy přesně naopak než u extrakce klíčových frází, která vrací lepší výsledky pro větší bloky textu. Zvažte podle toho možnost restrukturalizace vstupů, abyste z obou operací získali co nejlepší výsledky.
 
-Dokumenty JSON musí mít v tomto formátu: ID, text, jazyk
+Dokumenty JSON musí mít v tomto formátu: ID, text a jazyk.
 
-Velikost dokumentu musí být v jednom dokumentu v části 5 120 znaků a může mít až 1 000 položek (ID) na kolekci. Kolekce se posílá v textu žádosti. Následuje příklad obsahu, který můžete odeslat pro analýzu mínění.
+Velikost dokumentu musí být v jednom dokumentu v části 5 120 znaků. Můžete mít až 1 000 položek (ID) na kolekci. Kolekce se posílá v textu žádosti. Následující příklad je příkladem obsah, který může odeslat pro analýzu subjektivního hodnocení:
 
 ```
     {
@@ -75,33 +75,33 @@ Velikost dokumentu musí být v jednom dokumentu v části 5 120 znaků a může
 
 ## <a name="step-1-structure-the-request"></a>Krok 1: Struktura žádosti
 
-Podrobnosti o definici žádosti najdete v článku o [volání rozhraní API pro analýzu textu](text-analytics-how-to-call-api.md). Pro usnadnění znovu uvádíme následující body:
+Další informace o definici požadavku, najdete v části [volání rozhraní Text Analytics API](text-analytics-how-to-call-api.md). Pro usnadnění znovu uvádíme následující body:
 
-+ Vytvořte žádost **POST**. Projděte si dokumentaci k rozhraní API pro tuto žádost: [Rozhraní API pro analýzu mínění](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)
++ Vytvořte požadavek POST. Projděte si dokumentaci k rozhraní API pro tuto žádost, najdete v článku [rozhraní API pro analýzu mínění](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9).
 
-+ Nastavení koncového bodu HTTP pro analýzu mínění, pomocí prostředek pro analýzu textu v Azure nebo instance [kontejneru pro analýzu textu](text-analytics-how-to-install-containers.md). Musí obsahovat prostředek `/sentiment`: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment`.
++ Nastavení koncového bodu HTTP pro analýzu mínění pomocí prostředků pro analýzu textu v Azure nebo vytvořenou instanci [kontejneru pro analýzu textu](text-analytics-how-to-install-containers.md). Musí zahrnovat `/sentiment` prostředků: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment`.
 
-+ Nastavte hlavičku žádosti tak, aby obsahovala přístupový klíč pro operace analýzy textu. Další informace najdete v článku, který se věnuje [vyhledání koncových bodů a přístupových klíčů](text-analytics-how-to-access-key.md).
++ Nastavte hlavičku žádosti tak, aby obsahovala přístupový klíč pro operace analýzy textu. Další informace najdete v tématu [najít koncových bodů a přístupové klíče](text-analytics-how-to-access-key.md).
 
 + V textu požadavku zadejte kolekci dokumentů JSON, kterou jste si připravili pro tuto analýzu.
 
 > [!Tip]
-> Použijte aplikaci [Postman](text-analytics-how-to-call-api.md) nebo otevřete **konzolu pro testování rozhraní API** v [dokumentaci](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) a vytvořte strukturu žádosti a pomocí příkazu POST ji odešlete do služby.
+> Použití [Postman](text-analytics-how-to-call-api.md) nebo otevřít **testovací rozhraní API konzoly** v [dokumentaci](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) struktury požadavku a publikuje je do služby.
 
 ## <a name="step-2-post-the-request"></a>Krok 2: Odeslat žádost
 
-Analýza se provede po přijetí žádosti. Najdete v článku [limity dat](../overview.md#data-limits) části v přehledu o velikosti a počtu požadavky můžete odesílat za minutu a sekundu.
+Analýza se provede po přijetí žádosti. Informace o velikosti a počtu požadavky můžete odesílat za minutu a sekundu, najdete v článku [limity dat](../overview.md#data-limits) části v přehledu.
 
 Nezapomeňte, že služba je bezstavová. Ve vašem účtu se neukládají žádná data. Výsledky se vrátí okamžitě v odpovědi.
 
 
-## <a name="step-3-view-results"></a>Krok 3: Zobrazení výsledků
+## <a name="step-3-view-the-results"></a>Krok 3: Zobrazení výsledků
 
-Analýza mínění klasifikuje text jako převážně pozitivní nebo negativní a přiřadí mu skóre v rozsahu 0 až 1. Hodnoty blížící se 0,5 představují neutrální nebo neurčité mínění. Skóre 0,5 indikuje neutralitu. Pokud u řetězce nelze analyzovat mínění nebo v něm žádné mínění není, bude skóre vždycky přesně 0,5. Když například zadáte řetězec ve španělštině s kódem jazyka pro angličtinu, je skóre 0,5.
+Analýza subjektivního hodnocení klasifikuje text jako převážně kladné nebo záporné. Přiřadí skóre v rozsahu od 0 do 1. Hodnoty blížící se 0,5 představují neutrální nebo neurčité mínění. Skóre 0,5 indikuje neutralitu. Pokud řetězec nelze analyzovat mínění, nebo nemá žádné mínění, skóre je vždy 0,5 přesně. Když například zadáte řetězec ve španělštině s kódem jazyka pro angličtinu, je skóre 0,5.
 
-Výstup se vrátí okamžitě. Výsledky můžete streamovat do aplikace, která přijímá JSON, nebo můžete výstup uložit do souboru v místním systému a potom ho naimportovat do aplikace, která umožňuje řadit a vyhledávat data a pracovat s nimi.
+Výstup se vrátí okamžitě. Můžete Streamovat výsledky do aplikace, která přijímá JSON nebo uložte výstup do souboru v místním systému. Importujte výstup do aplikace, která slouží k řazení, hledání a manipulaci s daty.
 
-Následující příklad ukazuje odpověď pro kolekci dokumentů v tomto článku.
+Následující příklad ukazuje odpověď pro kolekce dokumentů, v tomto článku:
 
 ```json
 {
@@ -131,26 +131,26 @@ Následující příklad ukazuje odpověď pro kolekci dokumentů v tomto člán
 }
 ```
 
-## <a name="sentiment-analysis-v3-public-preview"></a>Veřejná verze preview V3 analýzy mínění
+## <a name="sentiment-analysis-v3-public-preview"></a>Zabarvení analýzy v3 ve verzi public preview
 
-[Příští verzi analýzu subjektivního hodnocení](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-preview/operations/56f30ceeeda5650db055a3c9) je teď dostupná ve veřejné verzi Preview, poskytuje významná vylepšení v přesnost a podrobné informace o kategorizaci textu rozhraní API a vyhodnocování. 
+[Příští verzi analýzu subjektivního hodnocení](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-preview/operations/56f30ceeeda5650db055a3c9) je teď dostupná ve veřejné verzi preview. Poskytuje významná vylepšení v přesnost a podrobné informace o kategorizaci text a vyhodnocování rozhraní API. 
 
 > [!NOTE]
-> * Formát požadavku v3 analýzy subjektivního hodnocení a [limity dat](../overview.md#data-limits) jsou stejné jako předchozí verze.
-> * V tuto chvíli analýzu subjektivního hodnocení V3: 
->    * Aktuálně podporuje pouze angličtinu.  
->    * Je k dispozici v následujících oblastech: `Central US`, `Central Canada`, `East Asia` 
+> * Formát požadavku v3 analýzu subjektivního hodnocení a [limity dat](../overview.md#data-limits) jsou stejné jako předchozí verze.
+> * V tuto chvíli analýzu subjektivního hodnocení v3: 
+>    * V současné době podporuje pouze angličtinu.  
+>    * Je k dispozici v následujících oblastech: `Central US`, `Central Canada`, a `East Asia`.
 
 |Funkce |Popis  |
 |---------|---------|
-|Pro zpřesnění     | Výrazné zlepšení zjišťování kladné, neutrální, záporná a smíšené mínění v textu dokumenty porovnání s předchozími verzemi.           |
-|Dokument a skóre mínění na úrovni vět     | Rozpoznávání mínění dokument a jeho jednotlivé věty. Pokud dokument obsahuje více věty, jednotlivé věty je také přiřazený skóre mínění.         |
-|Kategorie mínění a skóre     | Rozhraní API nyní vrací kategorie mínění (`positive`, `negative`, `neutral` a `mixed`) pro text, kromě skóre mínění.        |
+|Pro zpřesnění     | Výrazné zlepšení při rozpoznávání pozitivního, neutrálního, negativního a smíšeného mínění v textových dokumentech oproti předchozím verzím.           |
+|Dokumentu a na úrovni věty skóre mínění     | Rozpoznávání mínění v dokumentu i v jednotlivých větách. Pokud dokument obsahuje více vět, každé větě se také přiřadí skóre mínění.         |
+|Kategorie mínění a skóre     | Rozhraní API nyní vrací kategorie mínění textu, kromě skóre mínění. Kategorie jsou `positive`, `negative`, `neutral`, a `mixed`.       |
 | Vylepšení výstupu | Analýza subjektivního hodnocení nyní vrací informace pro celý textový dokument a jeho jednotlivé věty. |
 
 ### <a name="sentiment-labeling"></a>Označování mínění
 
-Analýza subjektivního hodnocení V3 se můžete vrátit skóre a popisky (`positive`, `negative`, a `neutral`) na úrovni věty a dokumentu. Na úrovni dokumentu `mixed` mínění popisek (ne skóre) lze také vrátit. Mínění dokumentu je určen na základě agregace skóre jeho věty.
+V3 analýzy subjektivního hodnocení se můžete vrátit skóre a popisky na úrovni věty a dokumentu. Skóre a popisky jsou `positive`, `negative`, a `neutral`. Na úrovni dokumentu `mixed` mínění popisek (ne skóre) také může být vrácen. Mínění dokument je určen na základě agregace skóre vět.
 
 | Věty mínění                                                        | Vrátí popisek dokumentu |
 |---------------------------------------------------------------------------|----------------|
@@ -159,9 +159,9 @@ Analýza subjektivního hodnocení V3 se můžete vrátit skóre a popisky (`pos
 | Alespoň jednu negativní větu a alespoň jednu pozitivní větu.         | `mixed`        |
 | Všechny věty je neutrální.                                                 | `neutral`      |
 
-### <a name="sentiment-analysis-v3-example-request"></a>Příklad žádosti V3 analýzy mínění
+### <a name="sentiment-analysis-v3-example-request"></a>Požadavek příklad v3 analýzy mínění
 
-Následující kód JSON je příklad požadavku na novou verzi analýzu subjektivního hodnocení. Všimněte si, že žádost o formátování je stejný jako předchozí verze:
+Následující kód JSON je příklad požadavku na novou verzi analýzu subjektivního hodnocení. Žádost o formátování je stejný jako předchozí verze:
 
 ```json
 {
@@ -180,7 +180,7 @@ Následující kód JSON je příklad požadavku na novou verzi analýzu subjekt
 }
 ```
 
-### <a name="sentiment-analysis-v3-example-response"></a>Analýza subjektivního hodnocení V3 příklad odpovědi
+### <a name="sentiment-analysis-v3-example-response"></a>Odpověď příklad v3 analýzy mínění
 
 Formát požadavku je stejný jako předchozí verze, formát odpovědi se změnila. Následující kód JSON je příklad odpovědi z novou verzi rozhraní API:
 
@@ -260,12 +260,12 @@ Příklad můžete nalézt C# aplikaci, která volá tuto verzi analýzu subjekt
 
 ## <a name="summary"></a>Souhrn
 
-V tomto článku jste se seznámili s koncepty a pracovním postupem analýzy mínění pomocí funkce Analýza textu ve službě Cognitive Services. Souhrn:
+V tomto článku jste zjistili, koncepty a pracovní postup pro analýzu subjektivního hodnocení s využitím rozhraní Text Analytics v Azure Cognitive Services. Souhrn:
 
 + [Rozhraní API pro analýzu mínění](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) je k dispozici pro vybrané jazyky.
 + Dokumenty JSON v textu požadavku zahrnují ID, text a jazyka kódu.
-+ Žádost POST je určená pro koncový bod `/sentiment` a používá individuální [přístupový klíč a koncový bod](text-analytics-how-to-access-key.md), které jsou platné pro dané předplatné.
-+ Výstup odpovědi, který tvoří skóre mínění pro jednotlivá ID dokumentu, lze streamovat do libovolné aplikace, která přijímá JSON, včetně například Excelu a Power BI.
++ Je požadavek POST `/sentiment` koncový bod s použitím přizpůsobeného [přístup ke key a koncového bodu](text-analytics-how-to-access-key.md) , který je platný pro vaše předplatné.
++ Výstup odezvy, který se skládá z skóre mínění pro každé ID dokumentu, můžete Streamovat do jakékoli aplikaci, která přijímá JSON. Příklad aplikace patří aplikace Excel a Power BI, pár.
 
 ## <a name="see-also"></a>Viz také: 
 

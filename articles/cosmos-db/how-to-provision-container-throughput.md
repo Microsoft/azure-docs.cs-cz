@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 07/03/2019
 ms.author: rimman
-ms.openlocfilehash: 945bff075828bdbddd2a31642b35a5c592216b93
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: f195eaa0f5d22160de8c1e9e2f429073de001828
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67565892"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67986026"
 ---
 # <a name="provision-throughput-on-an-azure-cosmos-container"></a>Zřizování propustnosti kontejneru Azure Cosmos
 
@@ -80,6 +80,7 @@ Pokud zřizujete propustnosti kontejneru v účtu služby Azure Cosmos, který j
 > Pomocí sady SDK Cosmos pro rozhraní SQL API služby zřizování propustnosti pro všechny API Cosmos DB, s výjimkou rozhraní Cassandra API.
 
 ### <a id="dotnet-most"></a>Rozhraní SQL API, MongoDB API, Gremlin API a rozhraní API pro tabulky
+### <a name="net-v2-sdk"></a>.Net V2 SDK
 
 ```csharp
 // Create a container with a partition key and provision throughput of 400 RU/s
@@ -93,6 +94,9 @@ await client.CreateDocumentCollectionAsync(
     new RequestOptions { OfferThroughput = 400 });
 ```
 
+### <a name="net-v3-sdk"></a>.Net V3 SDK
+[!code-csharp[](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos/tests/Microsoft.Azure.Cosmos.Tests/SampleCodeForDocs/ContainerDocsSampleCode.cs?name=ContainerCreateWithThroughput)]
+
 ### <a id="dotnet-cassandra"></a>Rozhraní API Cassandra
 
 ```csharp
@@ -103,7 +107,7 @@ session.Execute(CREATE TABLE myKeySpace.myTable(
     lastName text) WITH cosmosdb_provisioned_throughput=400);
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Zobrazit další informace o zřizování propustnosti ve službě Azure Cosmos DB v následujících článcích:
 

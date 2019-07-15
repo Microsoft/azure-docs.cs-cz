@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-author: sihhu
-ms.author: MayMSFT
+author: MayMSFT
+ms.author: sihhu
 ms.reviewer: trbye
-ms.date: 03/29/2019
+ms.date: 07/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8b7bf5a0ece3927c7dbafdec9716b7c6f8dfbc0e
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 355927dd8c1bb81265dfa728561ad83a75b0d51d
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66474707"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67871708"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>Kurz: Příprava dat pro regresní modelování
 
@@ -320,7 +320,7 @@ combined_df.keep_columns(columns=[
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Type</th>
+      <th>type</th>
       <th>Minimum</th>
       <th>Maximum</th>
       <th>Počet</th>
@@ -472,7 +472,7 @@ latlong_filtered_df.keep_columns(columns=[
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Type</th>
+      <th>type</th>
       <th>Minimum</th>
       <th>Maximum</th>
       <th>Počet</th>
@@ -606,7 +606,7 @@ latlong_filtered_df.keep_columns(columns='store_forward').get_profile()
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Type</th>
+      <th>type</th>
       <th>Minimum</th>
       <th>Maximum</th>
       <th>Počet</th>

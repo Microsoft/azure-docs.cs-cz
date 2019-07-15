@@ -7,14 +7,14 @@ manager: rajvijan
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 12/21/2018
-ms.author: pryerram
+ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 5129af1f34f8a2604e7b70c9638b370c7cad029a
-ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.openlocfilehash: 805893d6b5756c76ebc523187e0ed75c9fe24ed9
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66015549"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67874744"
 ---
 # <a name="tutorial-use-azure-key-vault-with-an-azure-web-app-in-net"></a>Kurz: Azure Key Vault používat s webovou aplikaci Azure v .NET
 
@@ -40,7 +40,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte [bezplatný účet](https://
 ## <a name="prerequisites"></a>Požadavky
 
 * Pro Windows: [sady SDK .NET Core 2.1 nebo novější](https://www.microsoft.com/net/download/windows)
-* Pro Mac: [Visual Studio pro Mac](https://visualstudio.microsoft.com/vs/mac/)
+* Pro Mac: [Visual Studio for Mac](https://visualstudio.microsoft.com/vs/mac/)
 * Pro Windows, Mac a Linux:
   * [Git](https://git-scm.com/downloads)
   * Tento kurz vyžaduje, abyste spustili Azure CLI místně. Musíte mít Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade rozhraní příkazového řádku, přečtěte si téma [Instalace Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli).

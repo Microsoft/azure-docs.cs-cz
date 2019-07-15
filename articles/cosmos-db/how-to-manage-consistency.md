@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 07/08/2019
 ms.author: mjbrown
-ms.openlocfilehash: 9b26948709b6101fab1143c9d49c82cc0205abca
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 511a12cd7f1e88a95342cf5129142791c6d50b31
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657545"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68000888"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Správa úrovní konzistence ve službě Azure Cosmos DB
 
@@ -69,7 +69,7 @@ Pokud chcete zobrazit nebo upravit výchozí úroveň konzistence, přihlaste se
 
 Klienti můžou přepsat výchozí úroveň konzistence nastavenou službou. Úroveň konzistence můžete nastavit na každý požadavek, který přepíše výchozí úroveň konzistence nastavenou na úrovni účtu.
 
-### <a id="override-default-consistency-dotnet"></a>.NET SDK
+### <a id="override-default-consistency-dotnet"></a>.NET SDK V2
 
 ```csharp
 // Override consistency at the client level
@@ -79,6 +79,19 @@ documentClient = new DocumentClient(new Uri(endpoint), authKey, connectionPolicy
 RequestOptions requestOptions = new RequestOptions { ConsistencyLevel = ConsistencyLevel.Eventual };
 
 var response = await client.CreateDocumentAsync(collectionUri, document, requestOptions);
+```
+
+### <a id="override-default-consistency-dotnet-v3"></a>.NET SDK V3
+
+```csharp
+// Override consistency at the request level via request options
+ItemRequestOptions requestOptions = new ItemRequestOptions { ConsistencyLevel = ConsistencyLevel.Strong };
+
+var response = await client.GetContainer(databaseName, containerName)
+    .CreateItemAsync(
+        item, 
+        new PartitionKey(itemPartitionKey), 
+        requestOptions);
 ```
 
 ### <a id="override-default-consistency-java-async"></a>Java Async SDK
@@ -130,7 +143,7 @@ Jednou z úrovní konzistence ve službě Azure Cosmos DB je *relace* konzistenc
 
 Tokeny relace spravovat ručně, získání tokenu relace z odpovědi a nastavit každý požadavek. Pokud není nutné ručně spravovat tokeny relace, není nutné používat tyto ukázky. Sada SDK uchovává informace o relaci tokeny automaticky. Pokud nenastavíte tokenu relace ručně, ve výchozím nastavení, sada SDK používá nejnovější tokenu relace.
 
-### <a id="utilize-session-tokens-dotnet"></a>.NET SDK
+### <a id="utilize-session-tokens-dotnet"></a>.NET SDK V2
 
 ```csharp
 var response = await client.ReadDocumentAsync(
@@ -141,6 +154,18 @@ RequestOptions options = new RequestOptions();
 options.SessionToken = sessionToken;
 var response = await client.ReadDocumentAsync(
                 UriFactory.CreateDocumentUri(databaseName, collectionName, "SalesOrder1"), options);
+```
+
+### <a id="utilize-session-tokens-dotnet-v3"></a>.NET SDK V3
+
+```csharp
+Container container = client.GetContainer(databaseName, collectionName);
+ItemResponse<SalesOrder> response = await container.CreateItemAsync<SalesOrder>(salesOrder);
+string sessionToken = response.Headers.Session;
+
+ItemRequestOptions options = new ItemRequestOptions();
+options.SessionToken = sessionToken;
+ItemResponse<SalesOrder> response = await container.ReadItemAsync<SalesOrder>(salesOrder.Id, new PartitionKey(salesOrder.PartitionKey), options);
 ```
 
 ### <a id="utilize-session-tokens-java-async"></a>Java Async SDK
@@ -210,7 +235,7 @@ Jak konečný výsledek je konečné konzistence? Průměrná případech může
 ![Graf PBS na webu Azure Portal](./media/how-to-manage-consistency/pbs-metric.png)
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o tom, jak spravovat konfliktů v datech, nebo přejít k další klíčovým konceptem ve službě Azure Cosmos DB. Viz následující články:
 

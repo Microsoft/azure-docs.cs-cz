@@ -7,14 +7,14 @@ manager: rajvijan
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 09/05/2018
-ms.author: pryerram
+ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 985380fd24e0db697f9dc9b1c5b2e5b8af2e6cbf
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: cdc540f2f6fa834a97c4c405276414f29672e5c7
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65228089"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876674"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-python"></a>Kurz: Virtuální počítač s Windows v Pythonu pomocí služby Azure Key Vault
 
@@ -100,7 +100,7 @@ az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --va
 
 Tento tajný kód ukládá hodnotu **MySecret**.
 
-## <a name="create-a-virtual-machine"></a>Vytvořit virtuální počítač
+## <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
 Vytvoření virtuálního počítače pomocí jedné z následujících metod:
 
 * [Azure CLI](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-cli)
@@ -179,7 +179,7 @@ Předchozí kód ukazuje, jak provádět operace se službou Azure Key Vault do 
 
 Pokud už je nepotřebujete, odstraňte virtuální počítač a trezor klíčů.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Rozhraní REST API služby Azure Key Vault](https://docs.microsoft.com/rest/api/keyvault/)

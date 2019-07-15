@@ -4,15 +4,15 @@ description: Zjistěte, jak nastavit globální distribuci služby Azure Cosmos 
 author: rimman
 ms.service: cosmos-db
 ms.topic: tutorial
-ms.date: 05/10/2019
+ms.date: 07/15/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 4f97d1f052cd8684674eecf479133051f2cfb76e
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: c4ce60e3532179efe3ac68c21b32850e73f92a69
+ms.sourcegitcommit: 1b7b0e1c915f586a906c33d7315a5dc7050a2f34
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480549"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67881227"
 ---
 # <a name="set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>Nastavení globální distribuce služby Azure Cosmos DB pomocí rozhraní SQL API
 
@@ -47,7 +47,7 @@ Pokud vlastnost PreferredLocations není nastavená, všechny požadavky se budo
 ## <a name="net-sdk"></a>.NET SDK
 Sadu SDK můžete využívat bez jakýchkoli změn kódu. V tomto případě sada SDK automaticky směruje operace čtení i zápisu do aktuální oblasti pro zápis.
 
-V sadě .NET SDK verze 1.8 a novější má parametr ConnectionPolicy pro konstruktor DocumentClient vlastnost Microsoft.Azure.Documents.ConnectionPolicy.PreferredLocations. Tato vlastnost je typu Kolekce `<string>` a měla by obsahovat seznam názvů oblastí. Řetězcové hodnoty se formátují podle sloupce Název oblasti na stránce [Oblasti Azure][regions] a před prvním ani za posledním znakem nejsou žádné mezery.
+V sadě .NET SDK verze 1.8 a novější má parametr ConnectionPolicy pro konstruktor DocumentClient vlastnost Microsoft.Azure.Documents.ConnectionPolicy.PreferredLocations. Tato vlastnost je typu Kolekce `<string>` a měla by obsahovat seznam názvů oblastí. Řetězcové hodnoty se formátují podle sloupce název oblasti na [oblastí Azure][regions] stránky, bez mezer před nebo po prvním a posledním znakem.
 
 Aktuální koncové body pro čtení a zápis jsou k dispozici ve vlastnostech DocumentClient.WriteEndpoint a DocumentClient.ReadEndpoint.
 
@@ -78,10 +78,10 @@ DocumentClient docClient = new DocumentClient(
 await docClient.OpenAsync().ConfigureAwait(false);
 ```
 
-## <a name="nodejs-javascript-and-python-sdks"></a>Sady SDK pro Node.js, JavaScript a Python
+## <a name="nodejs-javascript-and-python-sdks"></a>Node.js, JavaScript a Python SDK
 Sadu SDK můžete využívat bez jakýchkoli změn kódu. V tomto případě bude sada SDK automaticky směrovat operace čtení i zápisu do aktuální oblasti pro zápis.
 
-V jednotlivých sadách SDK verze 1.8 a novější má parametr ConnectionPolicy pro konstruktor DocumentClient novou vlastnost DocumentClient.ConnectionPolicy.PreferredLocations. Tento parametr je pole řetězců, které přebírá seznam názvů oblastí. Názvy se formátují podle sloupce Název oblasti na stránce [Oblasti Azure][regions]. Můžete použít také předdefinované konstanty v pomocném objektu AzureDocuments.Regions.
+V jednotlivých sadách SDK verze 1.8 a novější má parametr ConnectionPolicy pro konstruktor DocumentClient novou vlastnost DocumentClient.ConnectionPolicy.PreferredLocations. Tento parametr je pole řetězců, které přebírá seznam názvů oblastí. Názvy se formátují podle sloupce název oblasti [oblastí Azure][regions] stránky. Můžete použít také předdefinované konstanty v pomocném objektu AzureDocuments.Regions.
 
 Aktuální koncové body pro čtení a zápis jsou k dispozici ve vlastnostech DocumentClient.getWriteEndpoint a DocumentClient.getReadEndpoint.
 
@@ -90,7 +90,7 @@ Aktuální koncové body pro čtení a zápis jsou k dispozici ve vlastnostech D
 >
 >
 
-Níže je příklad kódu pro Node.js nebo JavaScript. U Pythonu a Javy bude postup podobný.
+Níže je příklad kódu pro Node.js/Javascript. U Pythonu a Javy bude postup podobný.
 
 ```JavaScript
 // Creating a ConnectionPolicy object
