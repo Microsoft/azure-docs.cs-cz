@@ -14,13 +14,30 @@ metadata:
   ms.date: 11/22/2017
   ms.author: raynew
 abstract:
-  description: Azure Migrate pomáhá zkoumat a posuzovat vhodnost místních počítačů pro migraci do Azure a odhaduje velikost a náklady na provoz virtuálních počítačů Azure.
+  description: 'Azure Migrate pomáhá při migraci do cloudu Azure. Azure Migrate je centrem pro sledování zjišťování, hodnocení a migrace místních úloh a cloudových virtuálních počítačů. Toto centrum poskytuje nástroje Azure Migrate pro hodnocení a migraci a také integrované nástroj od nezávislých výrobců softwaru (ISV).'
 sections:
   - title: Podrobné kurzy
     items:
       - type: paragraph
-        text: Informace o posouzení virtuálních počítačů VMware pro migraci do Azure
+        text: Informace o posouzení a migraci virtuálních počítačů VMware do Azure
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="tutorial-prepare-vmware">Příprava virtuálních počítačů VMware na vyhodnocení a migraci do Azure</a>
+          - html: <a href="tutorial-assess-vmware">Posouzení virtuálních počítačů VMware pro migraci do Azure</a>
+          - html: <a href="tutorial-migrate-vmware">Migrace virtuálních počítačů VMware do Azure bez agentů</a>
+          - html: <a href="tutorial-migrate-vmware-agent">Migrace virtuálních počítačů VMware do Azure založená na agentech</a>
+      - type: paragraph
+        text: Informace o posouzení a migraci virtuálních počítačů Hyper-V do Azure
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="tutorial-prepare-hyper-v">Příprava virtuálních počítačů Hyper-V na vyhodnocení a migraci do Azure</a>
+          - html: <a href="tutorial-assess-hyper-v">Posouzení virtuálních počítačů Hyper-V pro migraci do Azure</a>
+          - html: <a href="tutorial-migrate-hyper-v">Migrace virtuálních počítačů Hyper-V do Azure</a>
+      - type: paragraph
+        text: 'Zjistěte si víc o migraci fyzických serverů, virtualizovaných počítačů a cloudových virtuálních počítačů do Azure.'
       - type: list
         style: unordered
         items:
-          - html: <a href="tutorial-assessment-vmware">Zkoumání a posouzení místních virtuálních počítačů VMware</a>
+          - html: <a href="tutorial-migrate-physical-virtual-machines">Migrace fyzických nebo virtualizovaných serverů do Azure</a>

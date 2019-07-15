@@ -29,6 +29,8 @@
   items:
     - name: Povolení dynamické konfigurace v ASP.NET Core
       href: enable-dynamic-configuration-aspnet-core.md
+    - name: Povolení dynamické konfigurace v aplikaci .NET Core
+      href: enable-dynamic-configuration-dotnet-core.md
     - name: Použití příznaků funkcí v aplikaci .NET Core
       href: use-feature-flags-dotnet-core.md
     - name: Správa příznaků funkcí

@@ -45,8 +45,10 @@
       href: azure-netapp-files-set-up-capacity-pool.md
     - name: Delegování podsítě do Azure NetApp Files
       href: azure-netapp-files-delegate-subnet.md
-    - name: Vytvoření svazku pro Azure NetApp Files
+    - name: Vytvoření svazku NFS pro Azure NetApp Files
       href: azure-netapp-files-create-volumes.md
+    - name: Vytvoření svazku SMB pro Azure NetApp Files
+      href: azure-netapp-files-create-volumes-smb.md
     - name: Konfigurace zásad exportu pro svazek NFS
       href: azure-netapp-files-configure-export-policy.md
     - name: Správa svazků

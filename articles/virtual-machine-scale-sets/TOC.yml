@@ -66,10 +66,17 @@
     - name: Azure Resource Manager
       href: ../azure-resource-manager/resource-group-overview.md
       maintainContext: true
-    - name: Oblasti a dostupnost
-      href: ../virtual-machines/windows/regions-and-availability.md
+    - name: Oblasti
+      href: ../virtual-machines/windows/regions.md
+    - name: Dostupnost a výkon
       maintainContext: true
       items:
+        - name: Dostupnost
+          href: availability.md
+        - name: Společné umístění
+          href: co-location.md
+        - name: Výkon sítě
+          href: ../virtual-network/virtual-network-optimize-network-bandwidth.md?toc=%2fazure%2fvirtual-machine-scale-sets%2fwindows%2ftoc.json
         - name: Správa domén selhání ve škálovacích sadách
           href: virtual-machine-scale-sets-manage-fault-domains.md
     - name: Velikosti a typy virtuálních počítačů
@@ -245,6 +252,8 @@
               href: share-images-across-tenants.md
             - name: Řešení potíží se sdílenými imagemi
               href: troubleshooting-shared-images.md
+        - name: Vytvoření skupiny umístění bezkontaktní komunikace
+          href: proximity-placement-groups.md
         - name: Vertikální škálování ve škálovací sadě
           href: virtual-machine-scale-sets-vertical-scale-reprovision.md
         - name: Použití DSC a škálovacích sad

@@ -16,8 +16,6 @@
       href: tutorial-sspr-pilot.md
     - name: Povolení místní integrace SSPR
       href: tutorial-enable-writeback.md
-    - name: Povolení resetování hesel ve Windows 10
-      href: tutorial-sspr-windows.md
     - name: Integrace ochrany identit Azure
       href: tutorial-risk-based-sspr-mfa.md
 - name: Koncepty
@@ -73,8 +71,8 @@
           href: howto-sspr-authenticationdata.md
         - name: Povolení zpětného zápisu hesel
           href: howto-sspr-writeback.md
-        - name: 'SSPR pro Windows 7, 8 a 8.1'
-          href: howto-sspr-windows-7-8.md
+        - name: Klienti SSPR pro Windows
+          href: howto-sspr-windows.md
     - name: Cloudové ověřování MFA
       items:
         - name: Nasazení cloudového ověřování MFA

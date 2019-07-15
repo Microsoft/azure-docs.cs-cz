@@ -61,8 +61,16 @@
   items:
     - name: Azure Resource Manager
       href: ../../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-    - name: Oblasti a dostupnost
-      href: regions-and-availability.md
+    - name: Oblasti
+      href: regions.md
+    - name: Dostupnost a výkon
+      items:
+        - name: Dostupnost
+          href: availability.md
+        - name: Společné umístění
+          href: co-location.md
+        - name: Výkon sítě
+          href: ../..//virtual-network/virtual-network-optimize-network-bandwidth.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
     - name: Velikosti a typy virtuálních počítačů
       href: sizes.md
       items:
@@ -322,6 +330,8 @@
           href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: Vysoká dostupnost
           href: manage-availability.md
+        - name: Vytvoření skupiny umístění bezkontaktní komunikace
+          href: proximity-placement-groups.md
         - name: Vertikální škálování
           href: vertical-scaling-automation.md
         - name: Vytvoření virtuálního počítače v zóně dostupnosti

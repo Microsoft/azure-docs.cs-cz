@@ -131,6 +131,8 @@
           href: search-what-is-an-index.md
         - name: Vytvoření indexu (portál)
           href: search-create-index-portal.md
+        - name: Vytvoření vícejazyčného indexu
+          href: search-language-support.md
         - name: Analyzátory
           items:
             - name: Přidávání analyzátorů
@@ -360,6 +362,8 @@
       href: 'https://azure.microsoft.com/support/community/?product=search'
     - name: Aktualizace Azure
       href: 'https://azure.microsoft.com/updates/?product=search'
+    - name: Fórum pro názory (UserVoice)
+      href: 'https://feedback.azure.com/forums/263029-azure-search'
     - name: Ukázkové weby
       items:
         - name: Ukázka finančních souborů

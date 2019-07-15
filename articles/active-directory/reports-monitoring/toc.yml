@@ -58,7 +58,7 @@
           href: howto-power-bi-content-pack.md
         - name: Konfigurace požadavků pro rozhraní API pro generování sestav
           href: howto-configure-prerequisites-for-reporting-api.md
-        - name: Jak používat sešity Azure Monitoru
+        - name: Jak používat sešity Azure AD
           href: howto-use-azure-monitor-workbooks.md
     - name: Monitorování
       items:
@@ -87,6 +87,8 @@
 - name: Referenční informace
   expanded: true
   items:
+    - name: Rutiny Azure AD PowerShellu pro vytváření sestav
+      href: reference-powershell-reporting.md
     - name: Referenční informace k rozhraní API protokolů auditu
       href: 'https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit'
     - name: Referenční informace k rozhraní API protokolů přihlašování
