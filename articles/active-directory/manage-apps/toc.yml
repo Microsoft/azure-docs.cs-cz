@@ -61,7 +61,7 @@
           href: plan-sso-deployment.md
     - name: Jednotné přihlašování jedním kliknutím
       items:
-        - name: Co je jednotné přihlašování jedním kliknutím
+        - name: Konfigurace jednotného přihlašování jedním kliknutím
           href: one-click-sso-tutorial.md
     - name: Zřizování uživatelů a skupin
       items:
