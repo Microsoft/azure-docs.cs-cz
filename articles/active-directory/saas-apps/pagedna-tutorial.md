@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54c3ae22b9cc2e447960b9e3527bbbb0afae3e54
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3c7f8c8efcad0a07a3d3a56925866b10d94f82ed
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67095098"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227468"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pagedna"></a>Kurz: Integrace Azure Active Directory s PageDNA
 
@@ -136,7 +136,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s PageDNA, proveďte následu
 1. V **nastavení PageDNA** tématu, zkopírujte adresu URL nebo adresy URL, které budete potřebovat:
 
    * **Adresa URL pro přihlášení**
-   * **Azure AD Identifier**
+   * **Identifikátor služby Azure AD**
    * **Odhlašovací adresa URL**
 
     ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
@@ -171,7 +171,7 @@ V této části vytvoříte testovacího uživatele na webu Azure Portal s názv
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části je povolit Britta Simon používat jednotné přihlašování Azure tím, že udělíte přístup k PageDNA.
+V této části povolit uživatele Britta Simon používat jednotné přihlašování Azure tím, že uděluje přístup uživatelů k PageDNA.
 
 1. Na webu Azure Portal, vyberte **podnikové aplikace** > **všechny aplikace** > **PageDNA**.
 
@@ -205,10 +205,11 @@ V této části Testování služby Azure AD jednotné přihlašování – konf
 
 Když vyberete **PageDNA** na portálu Moje aplikace vám by měl být automaticky přihlášeni k PageDNA předplatného, u kterého nastavíte jednotné přihlašování. Další informace o portálu Moje aplikace najdete v tématu [přístup a používání aplikací na portálu Moje aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
 * [Seznam kurzů integrace aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 * [Jednotné přihlašování k aplikacím v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 * [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+

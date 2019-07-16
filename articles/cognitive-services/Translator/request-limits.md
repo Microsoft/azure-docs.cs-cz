@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: a7621cc80a38d9a07872a94d8e5221dc04023b86
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f9620cc5f135dd7b10da5528e5dec0f5baa70350
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67435035"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68226254"
 ---
 # <a name="request-limits-for-translator-text"></a>Omezení počtu požadavků pro Translator Text
 
@@ -29,8 +29,8 @@ Následující tabulky zobrazí pole elementu a znak omezení pro každou operac
 
 | Operace | Maximální velikost prvku pole |   Maximální počet elementů pole |  Maximální velikost žádostí (ve znacích) |
 |:----|:----|:----|:----|
-| Translate | 5 000 | 100   | 5 000 |
-| Transliterace | 5 000 | 10    | 5 000 |
+| Translate | 5,000 | 100   | 5,000 |
+| Transliterace | 5,000 | 10    | 5,000 |
 | Detect | 10,000 | 100 |   50,000 |
 | BreakSentence | 10,000    | 100 | 5,0000 |
 | Slovníkové vyhledávání| 100 |  10  | 1 000 |
@@ -54,7 +54,7 @@ Pokud jste nebo překročí limity nebo pošlete příliš velké části kvóta
 
 Omezení [víc služeb předplatná](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication) jsou stejné jako pro úroveň S1.
 
-Tato omezení jsou omezeny na standardní překladové modely od Microsoftu. Vlastní překladové modely, které používají vlastní Translator jsou omezené na 1 800 znak za sekundu.
+Tato omezení jsou omezeny na standardní překladové modely od Microsoftu. Vlastní překladové modely, které používají vlastní Translator jsou omezené na 1 800 znaků za sekundu.
 
 ## <a name="latency"></a>Latence
 

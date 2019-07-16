@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 21c7e996cfe2f07d9a5b056d8cbc22f238bb48fd
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.openlocfilehash: e787366694b55d3dcd61eec2c5a5b42dd187ec55
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66357607"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68226837"
 ---
 # <a name="search-nearby-points-of-interest-using-azure-maps"></a>Hledání okolních bodů zájmu s využitím Azure Maps
 
@@ -239,9 +239,9 @@ Mapa, kterou jsme vytvořili, zatím z výsledků hledání používá pouze dat
     map.events.add('mouseover', resultLayer, showPopup);
     ```
 
-    Rozhraní API `sup` informacemi ukotvené okno na požadované pozici na mapě. 
+    Rozhraní API `*atlas.Popup` informacemi ukotvené okno na požadované pozici na mapě. 
 
-2. V *skript* po označení `GetMap` funkci, přidejte následující kód k zobrazení moused v informace o výsledcích v místní nabídce.
+2. Přidejte následující kód v rámci `GetMap` funkce k zobrazení moused v informace o výsledcích v místní nabídce.
 
     ```JavaScript
     function showPopup(e) {
@@ -270,7 +270,7 @@ Mapa, kterou jsme vytvořili, zatím z výsledků hledání používá pouze dat
 
     ![Ovládací prvek Mapa a Search Service v Azure](./media/tutorial-search-location/popup-map.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 

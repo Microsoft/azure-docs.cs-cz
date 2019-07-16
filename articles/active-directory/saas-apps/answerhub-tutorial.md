@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e51c37f983162b82747760b05e2ec5e4e6553c0b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ccf3894daf71be0defe4271a08ec5e8d963e0d34
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67106946"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227482"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>Kurz: Integrace Azure Active Directory s AnswerHub
 
@@ -193,7 +193,7 @@ V této části vytvoříte testovacího uživatele s názvem Britta Simon na we
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části nastavíte Britta Simon používat Azure AD jednotného přihlašování tak, že udělíte přístup k AnswerHub.
+V této části nastavíte uživatele Britta Simon používat Azure AD jednotného přihlašování tak, že udělíte přístup uživatelů k AnswerHub.
 
 **Přiřadit uživatele Azure AD:**
 
@@ -248,7 +248,7 @@ V této části Testování služby Azure AD jednotné přihlašování – konf
 
 Při výběru dlaždice AnswerHub na přístupovém panelu, můžete by měl být automaticky přihlášeni k AnswerHub, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
 - [Kurzy integrace aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

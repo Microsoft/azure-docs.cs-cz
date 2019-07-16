@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: rhurey
-ms.openlocfilehash: 158819d481c0ce245539d783f194b159b2b9edb6
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: d73a63a8f58e14149121d0860268fc23930001bf
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606525"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68226351"
 ---
 # <a name="phrase-lists-for-speech-to-text"></a>Fráze seznamy pro převod řeči na text
 
@@ -24,6 +24,9 @@ Poskytování hlasové služby se seznamem frázi, můžete zlepšit přesnost r
 Například pokud máte příkaz "Přejít na" a je to možné cíl "Pře", který může být používán, můžete přidat položku "Přesunout na dál". Přidání frázi zvýší pravděpodobnost, když zvuk rozpozná, že bude rozpoznán "Přesunout na dál" místo "Přesun směrem k".
 
 Jednotlivá slova nebo fráze kompletní lze přidat do seznamu frázi. Při rozpoznávání položky v seznamu frázi slouží přesná shoda je zahrnuta ve zvukovém souboru. Stavíme na předchozí příklad, pokud seznam frázi obsahuje "Přesunout na dál" a frází zachycené je "Přesunout pomalu směrem k", pak bude výsledek rozpoznání "Přejděte dál pomalu".
+
+>[!Note]
+> V současné době obsahuje frázi podporuje jenom v angličtině pro převod řeči na text.
 
 ## <a name="how-to-use-phrase-lists"></a>Jak používat seznamy fráze
 

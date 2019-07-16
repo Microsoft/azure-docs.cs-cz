@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/22/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 28eac814364b56f59b8edc6f59209a6d742ff403
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 590ba4b7a61fa437767d99ac6b9ae3e0fa94edc3
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175253"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227776"
 ---
 ## <a name="create-the-webapi-project"></a>Vytvoření projektu WebAPI
 
@@ -158,7 +158,7 @@ V této části přidáte do back-endu WebAPI nový kontroler, který bude zprac
 
 3. V seznamu výsledků vyberte **Microsoft Azure Notification Hubs** a pak vyberte **Nainstalovat**. Dokončete instalaci a pak zavřete okno Správce balíčků NuGet.
 
-    Tato akce přidá referenci na sadu SDK služby Azure Notification Hubs pomocí [balíčku NuGet Microsoft.Azure.Notification Hubs](http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
+    Tato akce přidá referenci na sadu SDK služby Azure Notification Hubs pomocí [balíčku NuGet Microsoft.Azure.Notification Hubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
 
 4. Vytvořte nový soubor třídy, která představuje propojení s centrem událostí sloužícím k odesílání oznámení. V Průzkumníku řešení klikněte pravým tlačítkem na složku **Modely**, vyberte **Přidat** a pak vyberte **Třída**. Pojmenujte novou třídu **Notifications.cs** a pak ji výběrem **Přidat** vygenerujte.
 
@@ -170,7 +170,7 @@ V této části přidáte do back-endu WebAPI nový kontroler, který bude zprac
     using Microsoft.Azure.NotificationHubs;
     ```
 
-6. Nahraďte definici třídy `Notifications` následujícím kódem a nahraďte dva zástupné symboly připojovacím řetězcem (pro úplný přístup) vašeho centra událostí a názvem centra (najdete ho na webu [Azure Portal](http://portal.azure.com)):
+6. Nahraďte definici třídy `Notifications` následujícím kódem a nahraďte dva zástupné symboly připojovacím řetězcem (pro úplný přístup) vašeho centra událostí a názvem centra (najdete ho na webu [Azure Portal](https://portal.azure.com)):
 
     ```csharp
     public class Notifications
