@@ -102,6 +102,8 @@
           href: manage-database-permissions.md
         - name: Kontrola stavu clusteru
           href: check-cluster-health.md
+        - name: Výběr SKU clusterového virtuálního počítače
+          href: manage-cluster-choose-sku.md
         - name: Správa horizontálního škálování clusteru
           href: manage-cluster-horizontal-scaling.md
         - name: Správa vertikálního škálování clusteru

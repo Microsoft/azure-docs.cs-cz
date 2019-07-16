@@ -280,8 +280,10 @@
               href: platform/custom-fields.md
         - name: Konfigurace aplikací
           items:
-            - name: Aplikace Azure
+            - name: Aplikace hostované v Azure
               items:
+                - name: Virtuální počítač Azure a škálovací sada virtuálních počítačů Azure
+                  href: app/azure-vm-vmss-apps.md
                 - name: Azure App Service
                   href: app/azure-web-apps.md
                 - name: Azure Cloud Services
@@ -709,8 +711,8 @@
               href: platform/metrics-getting-started.md
             - name: Pokročilé funkce Průzkumníku metrik
               href: platform/metrics-charts.md
-            - name: Příklady grafů metrik
-              href: platform/metric-chart-samples.md
+            - name: Metriky založené na protokolech
+              href: platform/app-insights-metrics.md
             - name: Řešení potíží s grafy metrik
               href: platform/metrics-troubleshoot.md
         - name: Protokoly

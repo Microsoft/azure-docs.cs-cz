@@ -25,10 +25,18 @@
       href: how-to-configure-mapping.md
     - name: Řešení potíží
       href: data-share-troubleshoot.md
+    - name: Přidání datových sad
+      href: how-to-add-datasets.md
+    - name: Přidání příjemců
+      href: how-to-add-recipients.md
+    - name: Odstranění pozvánky
+      href: how-to-delete-invitation.md
+    - name: Odvolání předplatného sdílené složky
+      href: how-to-revoke-share-subscription.md
 - name: Zdroje a prostředky
   items:
     - name: Blog
-      href: 'https://azure.microsoft.com/blog/tag/data-share'
+      href: 'https://azure.microsoft.com/blog/announcing-preview-of-azure-data-share/'
     - name: Technická komunita Microsoftu
       href: 'https://techcommunity.microsoft.com/'
     - name: Zpětná vazba k produktu

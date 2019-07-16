@@ -79,7 +79,7 @@ Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro
 | type |Vlastnost type by měla být nastavená na: **OnPremisesSqlServer**. |Ano |
 | connectionString |Zadejte připojovací řetězec informace potřebné pro připojení k místní databázi SQL serveru pomocí ověřování SQL nebo ověřování Windows. |Ano |
 | gatewayName |Název brány, který služba Data Factory měla použít pro připojení k místní databázi SQL serveru. |Ano |
-| username |Pokud používáte ověřování Windows, zadejte uživatelské jméno. Příklad: **domainname\\uživatelské jméno**. |Ne |
+| username |Pokud používáte ověřování Windows, zadejte uživatelské jméno. Příklad: **domainname\\username**. |Ne |
 | password |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |Ne |
 
 Můžete k šifrování přihlašovacích údajů a **New-AzDataFactoryEncryptValue** rutiny a jejich použití v připojovacím řetězci, jak je znázorněno v následujícím příkladu (**EncryptedCredential** vlastnost):
