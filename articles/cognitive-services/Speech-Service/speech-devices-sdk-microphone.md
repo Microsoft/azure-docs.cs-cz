@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 07/16/2019
 ms.author: erhopf
-ms.openlocfilehash: 121e94228ca85684b20f2ee43c0f7fa3af82fc73
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: cb30b476471e140f96fa1d159e9a16898f529607
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606336"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277496"
 ---
 # <a name="speech-devices-sdk-microphone-array-recommendations"></a>Doporučení pole zařízení SDK mikrofon řeči
 
@@ -43,34 +43,34 @@ Při výběru mikrofonů doporučené vlastnosti patří:
 
 | Parametr                         | Doporučené                       |
 |-----------------------------------|-----------------------------------|
-| SNR                               | \> 65 dB (dBSPL signál 94 1 kHz, akustického)   |
+| SNR                               | \>= 65 dB (dBSPL signál 94 1 kHz, akustického)   |
 | Odpovídající amplitudě                | rozmezí 1 dB @ 1 kHz                     |
 | Fáze porovnávání                    | 2 ° @ 1 kHz                       |
-| Bod akustických přetížení (CHOP)     | \> 120 dBSPL (nepodporuje = 10 %)          |
+| Bod akustických přetížení (CHOP)     | \>= 120 dBSPL (nepodporuje = 10 %)          |
 | Přenosová rychlost                          | Minimální 24-bit                    |
 | Vzorkovací frekvence                     | Minimální kHz 16\*                   |
-| Directivity                       | Ve všech směrech                   |
 | Frekvence odpovědi                | rozmezí 3 dB, maska Hz 200 8000 s plovoucí desetinnou čárkou\*|
 | Spolehlivost                       | Rozsah velikosti služby Storage teploty ° C-40 až 70 ° C<br />Provozní rozsah teploty ° C-20 55 ° c  |
 
-*\*Vyšší míra vzorkování nebo "širší" frekvence rozsahy může být nutné pro vysoce kvalitní komunikace (VoIP) aplikace*
+*\* Vyšší míra vzorkování nebo "širší" frekvence rozsahy může být nutné pro vysoce kvalitní komunikace (VoIP) aplikace*
 
 Výběr vhodné součásti musí být párována s dobrým elektroakustická integrace předejdete tak zhoršení výkonu komponenty používané. Jedinečnými případy použití mohou také vyžadovat další požadavky (například: provoz teploty rozsahy).
 
 ## <a name="microphone-array-integration"></a>Pole integrace mikrofonu
 
-Výkon pole při integraci do zařízení a po pevné zisk nebo EQ by měl splňovat následující doporučení:
+Výkon mikrofon pole při integraci do zařízení se bude lišit od specifikace komponenty. Je důležité zajistit, že mikrofon odpovídají i po integraci. Proto měří výkon zařízení po žádné pevné získat nebo EQ by měl splňovat následující doporučení:
 
 |  Parametr        |    Doporučené |
 |--------------------|----------------------------------------------------|
-|  SNR                 | \> 65 dB (dBSPL signál 94 1 kHz, akustického) |
+|  SNR                 | \> 63 dB (dBSPL signál 94 1 kHz, akustického) |
 |  Výstup citlivosti  | -26 dBFS/Pa @ 1 kHz (doporučeno) |
 |  Odpovídající amplitudě  | rozmezí 2 dB Hz 200 8000 |
-|  Fáze porovnávání      | 5 ° Hz 200 8000 |
-| % NEPODPORUJE                 | ≤ % 1, 200-8000 Hz, 94 dBSPL, 5. pořadí |
-|  Frekvence odpovědi  | rozmezí 6 dB, maska Hz 200 8000 s plovoucí desetinnou čárkou\* |
+| % NEPODPORUJE\*                 | ≤ % 1, 200-8000 Hz, 94 dBSPL, 5. pořadí |
+|  Frekvence odpovědi  | rozmezí 6 dB, maska Hz 200 8000 s plovoucí desetinnou čárkou\*\* |
 
-*\*"Širší" rozsahy frekvencí může být nutné pro vysoce kvalitní komunikace (VoIP) aplikace*
+*\*\* Nízká narušení mluvčího se vyžaduje k měření nepodporuje (např. Neumannova KH120)*
+
+*\*\* "Širší" rozsahy frekvencí může být nutné pro vysoce kvalitní komunikace (VoIP) aplikace*
 
 ## <a name="speaker-integration-recommendations"></a>Doporučení pro integraci mluvčího
 

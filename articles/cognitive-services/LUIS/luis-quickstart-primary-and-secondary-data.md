@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 04/01/2019
+ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: ea9a2df1f06ba6836ef88bc57dc3f95fd31e1ee9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a03a1224451411617f38c8cecafbef008aa08916
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66124154"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68276222"
 ---
 # <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>Kurz: Extrahovat názvy s jednoduchou entitu a seznam fráze
 
@@ -31,7 +31,7 @@ Jednoduchá entita rozpozná jeden koncept dat obsažený ve slovech nebo fráz�
 > * Importovat ukázková aplikace
 > * Přidat jednoduchou entitu 
 > * Přidat seznam frázi a zvýšit tak signál slova
-> * Trénovat 
+> * Trénování 
 > * Publikování 
 > * Zjistit záměry a entity z koncového bodu
 
@@ -229,7 +229,7 @@ Otevřít [úlohy. frázi list.csv](https://github.com/Azure-Samples/cognitive-s
 
 1. Vyberte **Create new phrase list** (Vytvořit nový seznam frází). 
 
-1. Nový seznam frází pojmenujte `JobNames` a zkopírujte seznam ze souboru jobs-phrase-list.csv do textového pole **Values** (Hodnoty). Stiskněte klávesu ENTER. 
+1. Nový seznam frází pojmenujte `JobNames` a zkopírujte seznam ze souboru jobs-phrase-list.csv do textového pole **Values** (Hodnoty).
 
     [![Snímek obrazovky vytvořit dialogové okno Nový seznam frázi rozbalovací](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png "snímek obrazovky vytvořit dialogové okno Nový seznam frázi místní")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png#lightbox)
 
@@ -237,7 +237,7 @@ Otevřít [úlohy. frázi list.csv](https://github.com/Azure-Samples/cognitive-s
 
     Ujistěte se, aby **tyto hodnoty jsou zaměnitelné** kontrolovat, protože tyto hodnoty by měly být zacházeno jako s synonyma pro úlohy. Další informace o zaměnitelné a noninterchangeable [frázi seznamu koncepty](luis-concept-feature.md#how-to-use-phrase-lists).
 
-1. Výběrem tlačítka **Save** (Uložit) seznam frází aktivujte.
+1. Vyberte **provádí** aktivovat seznamu frázi.
 
     [![Snímek obrazovky vytvořit dialogové okno Nový seznam frázi místní s slova v seznamu hodnot frázi](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png "snímek obrazovky s novou frázi seznamu dialogové okno Vytvořit místní obsahující slova v seznamu hodnot fráze")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png#lightbox)
 
@@ -294,7 +294,7 @@ Otevřít [úlohy. frázi list.csv](https://github.com/Azure-Samples/cognitive-s
 * [Testování v portálu služby LUIS](luis-interactive-test.md)
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu aplikace Human Resources používá strojově naučenou jednoduchou entitu k vyhledání názvů pracovních pozic v promluvách. Vzhledem k tomu, že názvy pracovních pozic mohou obsahovat celou škálu slov a frází, potřebovala aplikace seznam frází, pomocí nichž lépe rozpozná slova názvu pracovní pozice. 
 

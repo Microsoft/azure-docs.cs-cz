@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/11/2019
+ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42b7e59e39adbb485738ca66b7ad8e5ba8293ddc
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: ff2089e8abdde8e6a99de1be2be070fb457fa632
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65784995"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68276643"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>Volání rozhraní Microsoft Graph API z aplikace pro univerzální platformu Windows (XAML)
 
@@ -60,8 +60,8 @@ Tento průvodce vytvoří aplikaci, která se zobrazí tlačítko tohoto dotazy 
 ### <a name="create-your-application"></a>Vytvoření aplikace
 
 1. V sadě Visual Studio, vyberte **souboru** > **nový** > **projektu**.
-2. V části **šablony**vyberte **Visual C#**.
-3. Vyberte **Prázdná aplikace (univerzální pro Windows)**.
+2. V části **šablony**vyberte **Visual C#** .
+3. Vyberte **Prázdná aplikace (univerzální pro Windows)** .
 4. Název aplikace a vyberte **OK**.
 5. Pokud se zobrazí výzva, vyberte všechny verze pro **cílové** a **minimální** verze a vyberte **OK**.
 
@@ -147,7 +147,7 @@ Tato část ukazuje použití MSAL k získání tokenu pro rozhraní Microsoft G
         }
 
         /// <summary>
-        /// Call AcquireTokenAsync - to acquire a token requiring user to sign-in
+        /// Call AcquireTokenInteractive - to acquire a token requiring user to sign-in
         /// </summary>
         private async void CallGraphButton_Click(object sender, RoutedEventArgs e)
         {
@@ -320,7 +320,7 @@ V této ukázce podporuje jenom jednoho konkrétního uživatele. Ale MSAL podpo
 
 Tokeny typu ID opatřené **OpenID Connect** také obsahovat malou část informace, které jsou relevantní pro uživatele. `DisplayBasicTokenInfo` Zobrazí základních informací obsažených v tokenu. Příklady jsou zobrazované jméno a ID, datum vypršení platnosti tokenu a řetězec, který představuje přístupový token, samotného. Pokud vyberete **volat Microsoft Graph API** tlačítko několikrát, uvidíte, že stejný token byl znovu použít pro následné požadavky. Zobrazí se také datum vypršení platnosti při MSAL rozhodne, že je čas k obnovení tokenu.
 
-## <a name="register-your-application"></a>Zaregistrujte svoji aplikaci.
+## <a name="register-your-application"></a>Registrace vaší aplikace
 
 Teď budete muset zaregistrovat aplikaci v portálu pro registraci aplikace Microsoftu:
 
@@ -329,12 +329,12 @@ Teď budete muset zaregistrovat aplikaci v portálu pro registraci aplikace Micr
 1. Přejděte na Microsoft identity platform pro vývojáře [registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) stránky.
 1. Vyberte **registrace nové**.
    - V části **Název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, například `UWP-App-calling-MSGraph`.
-   - V **podporovaných typů účtu** vyberte **účty v jakékoli organizaci adresáři a osobní účty Microsoft (třeba Skype, Xbox, Outlook.com)**.
+   - V **podporovaných typů účtu** vyberte **účty v jakékoli organizaci adresáři a osobní účty Microsoft (třeba Skype, Xbox, Outlook.com)** .
    - Výběrem možnosti **Registrovat** aplikaci vytvořte.
 1. V aplikaci **přehled** stránky, vyhledejte **ID aplikace (klient)** hodnotu a uložte ho pro pozdější. Vraťte se zpět do sady Visual Studio, otevřete **MainPage.xaml.cs**a nahraďte hodnoty ClientId ID aplikace, který jste právě zaregistrovali:
 1. V seznamu stránek pro aplikaci vyberte **Ověřování**.
    1. V **identifikátory URI přesměrování** části, v seznamu identifikátorů URI pro přesměrování:
-   1. V **typ** vybrat sloupec **veřejným klientem (mobilních a desktopových)**.
+   1. V **typ** vybrat sloupec **veřejným klientem (mobilních a desktopových)** .
    1. Zadejte `urn:ietf:wg:oauth:2.0:oob` v **identifikátor URI pro PŘESMĚROVÁNÍ** sloupce.
 1. Vyberte **Uložit**.
 1. V seznamu stránek pro aplikace, vyberte **oprávnění k rozhraní API**
@@ -368,7 +368,7 @@ Jakmile budete připraveni k testování, vyberte **volat Microsoft Graph API**.
 
 ![Přihlašovací stránka](./media/tutorial-v2-windows-uwp/sign-in-page.png)
 
-### <a name="consent"></a>Souhlas
+### <a name="consent"></a>Vyjádření souhlasu
 
 Při prvním přihlášení do aplikace, zobrazí se obrazovka pro vyjádření souhlasu podobný následujícímu. Vyberte **Ano** výslovně souhlas pro přístup:
 
@@ -385,7 +385,7 @@ Také si zobrazili základní informace o tokenu opatřené `AcquireTokenInterac
 |Vlastnost  |Formát  |Popis |
 |---------|---------|---------|
 |**Uživatelské jméno** |<span>user@domain.com</span> |Uživatelské jméno, který identifikuje uživatele.|
-|**Platnost tokenu vyprší** |DateTime |Čas, kdy vyprší platnost tokenu. Knihovna MSAL je rozšířením datum vypršení platnosti obnovuje se token podle potřeby.|
+|**Platnost tokenu vyprší** |Datetime |Čas, kdy vyprší platnost tokenu. Knihovna MSAL je rozšířením datum vypršení platnosti obnovuje se token podle potřeby.|
 
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>Další informace o oborech a delegovaná oprávnění
 

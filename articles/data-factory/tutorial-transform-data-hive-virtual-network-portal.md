@@ -11,12 +11,12 @@ ms.date: 01/04/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 9cea3e7494ee81638923cbcaff9f1b82d08a1ad1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b6e57500da0ca863f0c5810f625d6a4b0c56d1bf
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66164836"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277477"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Transformace dat ve službě Azure Virtual Network pomocí aktivity Hivu v Azure Data Factory
 V tomto kurzu pomocí webu Azure Portal vytvoříte kanál Data Factory, který transformuje data pomocí aktivity Hivu v clusteru HDInsight ve službě Azure Virtual Network. V tomto kurzu provedete následující kroky:
@@ -201,7 +201,7 @@ V tomto kroku pomocí aktivity Hivu vytvoříte nový kanál. Tato aktivity spu
 Je třeba počítat s následujícím:
 
 - Parametr **scriptPath** odkazuje na cestu ke skriptu Hivu v účtu Azure Storage, který jste použili pro MyStorageLinkedService. V této cestě se rozlišují velká a malá písmena.
-- **Output** je argument použitý ve skriptu Hivu. Při zadávání odkazu na existující složku ve službě Azure Storage použijte formát `wasb://<Container>@<StorageAccount>.blob.core.windows.net/outputfolder/`. V této cestě se rozlišují velká a malá písmena. 
+- **Output** je argument použitý ve skriptu Hivu. Při zadávání odkazu na existující složku ve službě Azure Storage použijte formát `wasbs://<Container>@<StorageAccount>.blob.core.windows.net/outputfolder/`. V této cestě se rozlišují velká a malá písmena. 
 
 1. V uživatelském rozhraní služby Data Factory klikněte na symbol **+ (plus)** v levém podokně a pak klikněte na **Kanál**. 
 
@@ -226,16 +226,16 @@ Je třeba počítat s následujícím:
         ![Nastavení skriptu](./media/tutorial-transform-data-using-hive-in-vnet-portal/confirm-hive-script-settings.png)
     5. Na kartě **Skript** rozbalte část **Upřesnit**. 
     6. V části **Parametry** klikněte na **Automaticky vyplnit ze skriptu**. 
-    7. Zadejte hodnotu parametru **Output** (Výstup) v následujícím formátu: `wasb://<Blob Container>@<StorageAccount>.blob.core.windows.net/outputfolder/`. Například: `wasb://adftutorial@mystorageaccount.blob.core.windows.net/outputfolder/`.
+    7. Zadejte hodnotu parametru **Output** (Výstup) v následujícím formátu: `wasbs://<Blob Container>@<StorageAccount>.blob.core.windows.net/outputfolder/`. Například: `wasbs://adftutorial@mystorageaccount.blob.core.windows.net/outputfolder/`.
  
         ![Argumenty skriptu](./media/tutorial-transform-data-using-hive-in-vnet-portal/script-arguments.png)
 1. Pokud chcete publikovat artefakty do služby Data Factory, klikněte na **Publikovat**.
 
-    ![Publikovat](./media/tutorial-transform-data-using-hive-in-vnet-portal/publish.png)
+    ![Publikování](./media/tutorial-transform-data-using-hive-in-vnet-portal/publish.png)
 
 ## <a name="trigger-a-pipeline-run"></a>Aktivace spuštění kanálu
 
-1. Nejprve kanál ověřte kliknutím na tlačítko **Ověřit** na panelu nástrojů. Zavřete okno **Výstup ověření kanálu** kliknutím na **šipky doprava (>>)**. 
+1. Nejprve kanál ověřte kliknutím na tlačítko **Ověřit** na panelu nástrojů. Zavřete okno **Výstup ověření kanálu** kliknutím na **šipky doprava (>>)** . 
 
     ![Ověření kanálu](./media/tutorial-transform-data-using-hive-in-vnet-portal/validate-pipeline.png) 
 2. Pokud chcete aktivovat spuštění kanálu, klikněte na Aktivační událost na panelu nástrojů a pak klikněte na Aktivovat. 

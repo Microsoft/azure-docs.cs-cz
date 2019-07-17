@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: V tomto kurzu se dozvíte, jak vytvořit interní load balanceru úrovně Basic pomocí webu Azure portal.
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 manager: twooley
 Customer intent: As an IT administrator, I want to create a load balancer that load balances incoming internal traffic to virtual machines within a specific zone in a region.
 ms.service: load-balancer
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/27/2019
-ms.author: kumud
+ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 56568cfb8fc659308475e581955e5acbdfd32b44
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 09a73b5d97e46797dd880f64383fdf03fd591f3d
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61318454"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68273495"
 ---
 # <a name="tutorial-balance-internal-traffic-load-with-a-basic-load-balancer-in-the-azure-portal"></a>Kurz: Vyrovnávání zatížení interního provozu load balanceru úrovně Basic na webu Azure Portal
 
@@ -91,12 +91,12 @@ Vytvoření interní load balanceru úrovně Basic prostřednictvím portálu. N
 
     | Nastavení                 | Hodnota                                              |
     | ---                     | ---                                                |
-    | Předplatné               | Vyberte své předplatné.    |    
-    | Skupina prostředků         | Vyberte **vytvořit nový** a typ *MyResourceGroupLB* v textovém poli.|
-    | Název                   | *myLoadBalancer*                                   |
+    | Subscription               | Vyberte své předplatné.    |    
+    | Resource group         | Vyberte **vytvořit nový** a typ *MyResourceGroupLB* v textovém poli.|
+    | Name                   | *myLoadBalancer*                                   |
     | Oblast         | Vyberte **Západní Evropa**.                                        |
-    | Type          | Vyberte **interní**.                                        |
-    | Skladová jednotka (SKU)           | Vyberte **Basic**.                          |
+    | type          | Vyberte **interní**.                                        |
+    | SKU           | Vyberte **Basic**.                          |
     | Virtuální síť           | Vyberte *MyVNet*.                          |    
     | Přiřazení IP adresy              | Vyberte **statické**.   |
     | Privátní IP adresa|Zadejte adresu, která je v adresním prostoru virtuální sítě a podsítě, například *10.3.0.7*.  |

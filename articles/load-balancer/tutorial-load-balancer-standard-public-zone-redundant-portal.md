@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: Tento kurz ukazuje, jak na webu Azure Portal vytvořit Load Balancer úrovně Standard se zónově redundantním front-endem, který bude vyrovnávat zatížení virtuálních počítačů napříč zónami dostupnosti.
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 manager: twooley
 Customer intent: As an IT administrator, I want to create a load balancer that load balances incoming internet traffic to virtual machines across availability zones in a region, so that the customers can still access the web service if a datacenter is unavailable.
 ms.service: load-balancer
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/27/2019
-ms.author: kumud
+ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 912307e6509ea66be887838e875076b7a895ca94
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5b024321a18c6dec4f56a7cbc12c5a8fa748f903
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61100027"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68273481"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Kurz: Nástroj pro vyrovnávání zatížení virtuálních počítačů napříč zónami dostupnosti s Standard pro vyrovnávání zatížení pomocí webu Azure portal
 
@@ -41,7 +41,7 @@ Pokud chcete, můžete tento kurz absolvovat s použitím [Azure CLI](load-balan
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
 
-## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
@@ -54,12 +54,12 @@ Load Balancer úrovně Standard podporuje pouze standardní veřejnou IP adresu.
 
     | Nastavení                 | Hodnota                                              |
     | ---                     | ---                                                |
-    | Předplatné               | Vyberte své předplatné.    |    
-    | Skupina prostředků         | Vyberte **vytvořit nový** a typ *MyResourceGroupLBAZ* v textovém poli.|
-    | Název                   | *myLoadBalancer*                                   |
+    | Subscription               | Vyberte své předplatné.    |    
+    | Resource group         | Vyberte **vytvořit nový** a typ *MyResourceGroupLBAZ* v textovém poli.|
+    | Name                   | *myLoadBalancer*                                   |
     | Oblast         | Vyberte **Západní Evropa**.                                        |
-    | Type          | Vyberte **veřejné**.                                        |
-    | Skladová jednotka (SKU)           | Vyberte **standardní**.                          |
+    | type          | Vyberte **veřejné**.                                        |
+    | SKU           | Vyberte **standardní**.                          |
     | Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu. |
     | Název veřejné IP adresy              | Typ *myPublicIP* v textovém poli.   |
     |Zóna dostupnosti| Vyberte **Zónově redundantní**.    |
@@ -179,7 +179,7 @@ Za účelem distribuce provozu do virtuálních počítačů obsahuje fond back-
     - Pro možnost **Virtuální počítač** v rozevírací nabídce klikněte na **myVM1**.
     - Pro možnost **IP adresa** v rozevírací nabídce klikněte na IP adresu myVM1.
 4. Kliknutím na **Přidat nový back-endový prostředek** přidejte jednotlivé virtuální počítače (*myVM2* a *myVM3*), které chcete přidat do back-endového fondu nástroje pro vyrovnávání zatížení.
-5. Klikněte na tlačítko **Add** (Přidat).
+5. Klikněte na **Přidat**.
 
     ![Přidání do back-endového fondu adres –](./media/load-balancer-standard-public-availability-zones-portal/add-backend-pool.png)
 

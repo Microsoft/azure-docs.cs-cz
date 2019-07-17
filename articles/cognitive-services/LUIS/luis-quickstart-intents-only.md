@@ -3,20 +3,20 @@ title: Předpověď záměry
 titleSuffix: Azure Cognitive Services
 description: V tomto kurzu vytvořte vlastní aplikaci, který bude předpovídat záměru uživatele. Tato aplikace představuje nejjednodušší typ aplikace LUIS, protože neextrahuje různé datové prvky z textu promluvy, jako jsou e-mailové adresy nebo kalendářní data.
 services: cognitive-services
-author: lingliw
-manager: digimobile
+author: diberry
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 04/19/19
-ms.author: v-lingwu
-ms.openlocfilehash: 067829a1d9425ede1320242e364eca7c30bb7053
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 07/16/2019
+ms.author: diberry
+ms.openlocfilehash: 534aa678df69a4ef71296005922fa59bbe7bbcfa
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66123954"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277576"
 ---
 # <a name="tutorial-build-luis-app-to-determine-user-intentions"></a>Kurz: Sestavení aplikace LUIS k určení záměry uživatele
 
@@ -49,7 +49,7 @@ Tato aplikace má několik záměrů.
 |--|--|
 |ApplyForJob|Určete, pokud uživatel žádá o úlohu.|
 |GetJobInformation|Určete, pokud uživatel hledající informace o úlohy v obecné nebo konkrétní úlohy.|
-|Žádný|Určit, pokud uživatel požaduje něco aplikace by neměl odpovědět. Pokud záměru poskytnutého jako součást vytváření aplikací a nelze ji odstranit. |
+|Žádné|Určit, pokud uživatel požaduje něco aplikace by neměl odpovědět. Pokud záměru poskytnutého jako součást vytváření aplikací a nelze ji odstranit. |
 
 ## <a name="create-a-new-app"></a>Vytvoření nové aplikace
 
@@ -131,7 +131,7 @@ Tato aplikace má několik záměrů.
 
     `verbose=true` Parametr querystring znamená, že zahrnují **všechny záměry** ve výsledcích dotazu aplikaci. Pole entit je prázdné, protože tato aplikace momentálně nemá žádné entity. 
 
-    Výsledek JSON identifikuje záměr s nejvyšším skóre jako vlastnost **`topScoringIntent`**. Všechna skóre jsou v rozmezí 1 až 0, přičemž čím blíže je skóre hodnotě 1, tím je lepší. 
+    Výsledek JSON identifikuje záměr s nejvyšším skóre jako vlastnost **`topScoringIntent`** . Všechna skóre jsou v rozmezí 1 až 0, přičemž čím blíže je skóre hodnotě 1, tím je lepší. 
 
 ## <a name="create-intent-for-job-applications"></a>Vytvořit záměr pro úlohy aplikací
 
@@ -239,7 +239,3 @@ Pokračovat v této aplikaci [přidání jednoduchý seznam entit a frází](lui
 
 > [!div class="nextstepaction"]
 > [Přidání předem připravených záměrů a entit do této aplikace](luis-tutorial-prebuilt-intents-entities.md)
-
-
-
-

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 03/11/2019
+ms.date: 07/15/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 844d2ca9c2aa0e6a79eb7abebbec986f0fd5c5bc
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: a28dd94f32eac3cba3443761671b3c846e52798c
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604263"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277632"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-php"></a>Rychlý start: Extrahovat tištěný text (OCR) pomocí REST API pro počítačové zpracování obrazu a PHP
 
@@ -219,7 +219,7 @@ catch (HttpException $ex)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už tuto ukázku nepotřebujete, odstraňte soubor a pak odinstalujte balíček PHP5 `HTTP_Request2`. Odinstalaci balíčku proveďte takto:
+Pokud jste už pomocí aplikace project, stejný soubor odstranit také a odinstalujte PHP5 `HTTP_Request2` balíčku. Odinstalaci balíčku proveďte takto:
 
 1. Otevřete okno příkazového řádku jako správce.
 2. Spusťte následující příkaz:
@@ -230,7 +230,7 @@ Pokud už tuto ukázku nepotřebujete, odstraňte soubor a pak odinstalujte bal�
 
 3. Po úspěšné odinstalaci balíčku zavřete okno příkazového řádku.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Prozkoumejte rozhraní API pro počítačové zpracování obrazu k analýze bitovou kopii, zjišťování celebrit a památek, vytvořit miniaturu a extrahovat tištěné a rukou psaný text. Pokud chcete rychle vyzkoušet rozhraní API pro počítačové zpracování obrazu, vyzkoušejte [testovací konzolu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 

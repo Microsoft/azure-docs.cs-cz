@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s Citrix Netscaler | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Citrix Netscaler.
+title: 'Kurz: Integrace Azure Active Directory s Citrix NetScaler | Dokumentace Microsoftu'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Citrix NetScaler.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,20 +15,20 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: cc32f464044149e263db60fc2de237b473da5ab2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 64dd67680626857db7f39fa7fd721b28a02d1561
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67105494"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68276887"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-citrix-netscaler"></a>Kurz: Integrace Azure Active Directory s Citrix Netscaler
+# <a name="tutorial-azure-active-directory-integration-with-citrix-netscaler"></a>Kurz: Integrace Azure Active Directory s Citrix NetScaler
 
-V tomto kurzu se dozvíte, jak integrace Citrix Netscaler s Azure Active Directory (Azure AD).
-Integrace Citrix Netscaler s Azure AD poskytuje následující výhody:
+V tomto kurzu se dozvíte, jak integrace Citrix NetScaler s Azure Active Directory (Azure AD).
+Integrace Citrix NetScaler s Azure AD poskytuje následující výhody:
 
-* Můžete řídit ve službě Azure AD, který má přístup k Citrix Netscaler.
-* Uživatelům se automaticky přihlášeni k Citrix Netscaler (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD.
+* Můžete řídit ve službě Azure AD, který má přístup k Citrix NetScaler.
+* Uživatelům se automaticky přihlášeni k Citrix NetScaler (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD.
 * Můžete spravovat své účty na jediném místě – na webu Azure portal.
 
 Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
@@ -36,24 +36,24 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s Citrix Netscaler, potřebujete následující položky:
+Konfigurace integrace Azure AD s Citrix NetScaler, potřebujete následující položky:
 
 * Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verze [zde](https://azure.microsoft.com/pricing/free-trial/)
-* Citrix Netscaler jednotného přihlašování povolená předplatného
+* Citrix NetScaler jednotného přihlašování povolená předplatného
 
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
 
-* Citrix Netscaler podporuje **SP** jednotné přihlašování zahájené pomocí
+* Citrix NetScaler podporuje **SP** jednotné přihlašování zahájené pomocí
 
-* Citrix Netscaler podporuje **JIT** zřizování uživatelů
+* Citrix NetScaler podporuje **JIT** zřizování uživatelů
 
-## <a name="adding-citrix-netscaler-from-the-gallery"></a>Přidání Citrix Netscaler z Galerie
+## <a name="adding-citrix-netscaler-from-the-gallery"></a>Přidání Citrix NetScaler z Galerie
 
-Konfigurace integrace Citrix Netscaler do služby Azure AD, budete muset přidat Citrix Netscaler z Galerie na váš seznam spravovaných aplikací SaaS.
+Konfigurace integrace Citrix NetScaler do služby Azure AD, budete muset přidat Citrix NetScaler z Galerie na váš seznam spravovaných aplikací SaaS.
 
-**Chcete-li přidat Citrix Netscaler z galerie, postupujte následovně:**
+**Chcete-li přidat Citrix NetScaler z galerie, postupujte následovně:**
 
 1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
@@ -67,31 +67,31 @@ Konfigurace integrace Citrix Netscaler do služby Azure AD, budete muset přidat
 
     ![Tlačítko nové aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Citrix Netscaler**vyberte **Citrix Netscaler** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+4. Do vyhledávacího pole zadejte **Citrix NetScaler**vyberte **Citrix NetScaler** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
-     ![Citrix Netscaler v seznamu výsledků](common/search-new-app.png)
+     ![Citrix NetScaler v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části nakonfigurujete a test Azure AD jednotné přihlašování s Citrix Netscaler podle testovacího uživatele volá **Britta Simon**.
-Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v Citrix Netscaler.
+V této části nakonfigurujete a test Azure AD jednotné přihlašování s Citrix NetScaler podle testovacího uživatele volá **Britta Simon**.
+Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v Citrix NetScaler.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Citrix Netscaler, které potřebujete k dokončení následujících stavebních bloků:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Citrix NetScaler, které potřebujete k dokončení následujících stavebních bloků:
 
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace Citrix Netscaler Single Sign-On](#configure-citrix-netscaler-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+2. **[Konfigurace Citrix NetScaler Single Sign-On](#configure-citrix-netscaler-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
 3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
 4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvořit testovacího uživatele Citrix Netscaler](#create-citrix-netscaler-test-user)**  – Pokud chcete mít protějšek Britta Simon Citrix Netscaler, který je propojený s Azure AD reprezentace uživatele.
+5. **[Vytvořit testovacího uživatele Citrix NetScaler](#create-citrix-netscaler-test-user)**  – Pokud chcete mít protějšek Britta Simon Citrix NetScaler, který je propojený s Azure AD reprezentace uživatele.
 6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
 V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
 
-Ke konfiguraci Azure AD jednotné přihlašování s Citrix Netscaler, proveďte následující kroky:
+Ke konfiguraci Azure AD jednotné přihlašování s Citrix NetScaler, proveďte následující kroky:
 
-1. V [webu Azure portal](https://portal.azure.com/)na **Citrix Netscaler** integrace stránce aplikace vyberte **jednotného přihlašování**.
+1. V [webu Azure portal](https://portal.azure.com/)na **Citrix NetScaler** integrace stránce aplikace vyberte **jednotného přihlašování**.
 
     ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
 
@@ -105,7 +105,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Citrix Netscaler, proveďte
 
 4. Na **základní konfiguraci SAML** části, proveďte následující kroky:
 
-    ![Citrix Netscaler domény a adresy URL jednotného přihlašování – informace](common/sp-identifier-reply.png)
+    ![Citrix NetScaler domény a adresy URL jednotného přihlašování – informace](common/sp-identifier-reply.png)
 
     a. V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<<Your FQDN>>/CitrixAuthService/AuthService.asmx`
     
@@ -114,7 +114,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Citrix Netscaler, proveďte
     c. V **adresy URL odpovědi (adresa URL služby příjemce kontrolního výrazu)** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<<Your FQDN>>/CitrixAuthService/AuthService.asmx`
     
     > [!NOTE]
-    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty skutečné přihlašovací adresu URL a identifikátor. Kontakt [tým podpory Citrix Netscaler klienta](https://www.citrix.com/contact/technical-support.html) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty skutečné přihlašovací adresu URL a identifikátor. Kontakt [tým podpory Citrix NetScaler klienta](https://www.citrix.com/contact/technical-support.html) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
 
     > [!NOTE]
     > Pokud chcete začít pracovat jednotného přihlašování, tyto adresy URL musí být přístupný z veřejných webech. Je potřeba povolit bránu firewall nebo jiná nastavení zabezpečení na straně Netscaler enble Azure AD a odeslání tokenu nakonfigurovaná adresa URL služby ACS.
@@ -123,7 +123,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Citrix Netscaler, proveďte
 
     ![Odkaz ke stažení certifikátu](common/metadataxml.png)
 
-6. Na **nastavení Citrix Netscaler** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+6. Na **nastavení Citrix NetScaler** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
 
     ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
 
@@ -133,9 +133,9 @@ Ke konfiguraci Azure AD jednotné přihlašování s Citrix Netscaler, proveďte
 
     c. Adresa URL – odhlášení
 
-### <a name="configure-citrix-netscaler-single-sign-on"></a>Konfigurace Citrix Netscaler jednotného přihlašování
+### <a name="configure-citrix-netscaler-single-sign-on"></a>Konfigurace Citrix NetScaler jednotného přihlašování
 
-1. V okně prohlížeče jiných webových přihlašování k vašemu tenantovi Citrix Netscaler jako správce.
+1. V okně prohlížeče jiných webových přihlašování k vašemu tenantovi Citrix NetScaler jako správce.
 
 2. Ujistěte se, že **verze firmwaru NetScaler = NS12.1: Sestavení 48.13.nc**.
 
@@ -344,15 +344,15 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k Citrix Netscaler.
+V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k Citrix NetScaler.
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **Citrix Netscaler**.
+1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **Citrix NetScaler**.
 
     ![Okno aplikace organizace](common/enterprise-applications.png)
 
-2. V seznamu aplikací vyberte **Citrix Netscaler**.
+2. V seznamu aplikací vyberte **Citrix NetScaler**.
 
-    ![Citrix Netscaler odkaz v seznamu aplikací](common/all-applications.png)
+    ![Citrix NetScaler odkaz v seznamu aplikací](common/all-applications.png)
 
 3. V nabídce na levé straně vyberte **uživatelů a skupin**.
 
@@ -368,18 +368,18 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
 
-### <a name="create-citrix-netscaler-test-user"></a>Vytvořit testovacího uživatele Citrix Netscaler
+### <a name="create-citrix-netscaler-test-user"></a>Vytvořit testovacího uživatele Citrix NetScaler
 
-V této části se vytvoří uživateli Britta Simon v Citrix Netscaler. Citrix Netscaler podporuje zřizování uživatelů v čase, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel již neexistuje mezi Citrix Netscaler, vytvoří se nový po ověření.
+V této části se vytvoří uživateli Britta Simon v Citrix NetScaler. Citrix NetScaler podporuje zřizování uživatelů v čase, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel již neexistuje mezi Citrix NetScaler, vytvoří se nový po ověření.
 
 >[!NOTE]
->Pokud je potřeba ručně vytvořit uživatele, budete muset požádat [tým podpory Citrix Netscaler klienta](https://www.citrix.com/contact/technical-support.html).
+>Pokud je potřeba ručně vytvořit uživatele, budete muset požádat [tým podpory Citrix NetScaler klienta](https://www.citrix.com/contact/technical-support.html).
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Po kliknutí na dlaždici Citrix Netscaler na přístupovém panelu, vám by měl být automaticky přihlášeni na Citrix Netscaler, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici Citrix NetScaler na přístupovém panelu, vám by měl být automaticky přihlášeni na Citrix NetScaler, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Další prostředky
 

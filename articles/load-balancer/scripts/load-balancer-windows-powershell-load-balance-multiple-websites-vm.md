@@ -3,7 +3,7 @@ title: Ukázka PowerShellu – vyrovnávání zatížení několika webů pomoc�
 description: Tento ukázkový skript Azure PowerShellu provádí vyrovnávání zatížení několika webů na stejném virtuálním počítači.
 services: load-balancer
 documentationcenter: load-balancer
-author: KumudD
+author: asudbring
 manager: jeconnoc
 editor: tysonn
 tags: ''
@@ -14,13 +14,13 @@ ms.topic: sample
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 04/20/2018
-ms.author: kumud
-ms.openlocfilehash: 6bedba2c68c05ee7ed6518996e54d007f3e83dc1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: allensu
+ms.openlocfilehash: 098d300efc0b151d07b087959750a209c392872f
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66170679"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68273616"
 ---
 # <a name="azure-powershell-script-example-load-balance-multiple-websites"></a>Ukázkový skript Azure Powershellu: Vyvažovat zatížení u více webů
 

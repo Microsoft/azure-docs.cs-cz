@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 02/19/2019
+ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 118ac858103776e880e7304199279a7d50ad71b1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2994f7b19d5a104b129dc4d7aff29dabbc89f0f4
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60599605"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68276030"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Kurz: Oprava jisti predikcí kontrolou projevy koncového bodu
 V tomto kurzu vylepšíte predikce aplikace ověřením nebo opravou promluv získaných prostřednictvím koncového bodu HTTPS služby LUIS, které nemusí mít tato služba správně naučené. U některých promluv může být potřeba zkontrolovat záměr, zatímco u jiných entitu. Promluvy koncového bodu byste měli pravidelně kontrolovat v rámci plánované údržby služby LUIS. 
@@ -74,31 +74,22 @@ Použijte k tomu následující postup:
     
     [![Snímek obrazovky revize projevy koncový bod s entitami Zobrazit přepínací tlačítko zvýrazněnou](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png#lightbox)
 
+
+    Tato utterance `I'm looking for a job with Natural Language Processing`, není ve správném záměr. 
+
+    Důvodem byla mispredicted utterance je, že **ApplyForJob** záměr má 21 projevy ve srovnání s 7 projevy v **GetJobInformation**. Záměr s další projevů budou mít vyšší předpovědi. Je důležité, že jsou rovnoměrně množství a kvalitu projevy mezi záměry.
+
+1.  Zarovnat tento utterance, vyberte správné záměr a označí entitu úlohy v něm. Přidání změněné utterance do aplikace tak, že vyberete zelené zaškrtávací políčko. 
+
     |Promluva|Správný záměr|Chybějící entity|
     |:--|:--|:--|
-    |I'm looking for a job with Natural Language Processing|GetJobInfo|Job – "Natural Language Process"|
+    |`I'm looking for a job with Natural Language Processing`|GetJobInfo|Job – "Natural Language Process"|
 
-    Tato promluva není ve správném záměru a má skóre menší než 50 %. Záměr **ApplyForJob** má 21 promluv, zatímco záměr **GetJobInformation** má sedm promluv. Současně se správným zařazením promluv koncového bodu by se do záměru **GetJobInformation** měly přidat další promluvy. To necháme na vás jako cvičení, které si můžete provést sami. Každý záměr s výjimkou záměru **None** by měl mít přibližně stejný počet ukázkových promluv. Záměr **None** by měl mít 10 % z celkového počtu promluv v aplikaci. 
+    Přidávání utterance přesune utterance z **zkontrolujte projevy koncový bod** k **GetJobInformation** záměr. Promluva koncového bodu je teď příkladem promluvy pro tento záměr. 
 
-1. Pro promluvu `I'm looking for a job with Natual Language Processing` vyberte správný záměr **GetJobInformation** ve sloupci **Aligned intent** (Nastavený záměr). 
-
-    [![Zarovnání utterance na záměr projevů koncový bod přezkoumání snímku obrazovky](./media/luis-tutorial-review-endpoint-utterances/align-intent-1.png)](./media/luis-tutorial-review-endpoint-utterances/align-intent-1.png#lightbox)
-
-1. Entitou pro `Natural Language Processing` ve stejné promluvě je keyPhrase. Místo toho by to měla být entita **Job**. Vyberte `Natural Language Processing` a potom ze seznamu vyberte entitu **Job**.
-
-    [![Snímek obrazovky revize koncový bod projevy označování entit v utterance](./media/luis-tutorial-review-endpoint-utterances/label-entity.png)](./media/luis-tutorial-review-endpoint-utterances/label-entity.png#lightbox)
-
-1. Na stejném řádku vyberte značku zaškrtnutí v kroužku ve sloupci **Add to aligned intent** (Přidat do nastaveného záměru). 
-
-    [![Snímek obrazovky dokončování utterance zarovnání v záměr](./media/luis-tutorial-review-endpoint-utterances/align-utterance.png)](./media/luis-tutorial-review-endpoint-utterances/align-utterance.png#lightbox)
-
-    Tato akce přesune promluvu ze seznamu **Review endpoint utterances** (Kontrola promluv koncového bodu) do záměru **GetJobInformation**. Promluva koncového bodu je teď příkladem promluvy pro tento záměr. 
+    Spolu se tento utterance zarovnání správně, by se měl přidat další projevy na **GetJobInformation** záměr. To necháme na vás jako cvičení, které si můžete provést sami. Každý záměr s výjimkou záměru **None** by měl mít přibližně stejný počet ukázkových promluv. Záměr **None** by měl mít 10 % z celkového počtu promluv v aplikaci. 
 
 1. Zkontrolujte zbývající promluvy v tomto záměru, označte je a opravte nastavený záměr (**Aligned intent**), pokud je nesprávný.
-
-1. Jakmile jsou všechny promluvy správné, vyberte zaškrtávací políčko na každém řádku a potom výběrem **Add selected** (Přidat vybrané) nastavte jejich správné zařazení. 
-
-    [![Snímek obrazovky dokončení zbývajících projevy na zarovnaný záměr](./media/luis-tutorial-review-endpoint-utterances/finalize-utterance-alignment.png)](./media/luis-tutorial-review-endpoint-utterances/finalize-utterance-alignment.png#lightbox)
 
 1. Seznam už by toto promluvy neměl obsahovat. Pokud se zobrazí další promluvy, pokračujte v práci s tímto seznamem a opravujte záměry a označujte všechny chybějící entity, dokud tento seznam nebude prázdný. 
 

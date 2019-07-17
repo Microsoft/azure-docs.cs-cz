@@ -8,14 +8,14 @@ ms.service: cognitive-services
 services: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 02/14/2019
+ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 086f55094474d4c06e52001d77630932cd04213c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: af20d555a83e8d229ed5d83d3b1d3f242de1e4a8
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60557422"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68275811"
 ---
 # <a name="quickstart-query-prediction-endpoint-with-c-net-sdk"></a>Rychlý start: Dotazy předpovědi koncový bod s C# sady .NET SDK
 
@@ -57,8 +57,8 @@ az cognitiveservices account create \
 
 Vytvořte projekt konzoly .NET Core v sadě Visual Studio Community 2017.
 
-1. Open Visual Studio Community 2017.
-1. Vytvoření nového projektu z **Visual C#**  zvolte **Konzolová aplikace (.NET Core)**.
+1. Otevřít Visual Studio Community 2017.
+1. Vytvoření nového projektu z **Visual C#**  zvolte **Konzolová aplikace (.NET Core)** .
 1. Zadejte název projektu `QueryPrediction`, ponechejte zbývající výchozí hodnoty a vyberte **OK**.
     Tím se vytvoří jednoduchý projekt s primární kód soubor s názvem **Program.cs**.
 

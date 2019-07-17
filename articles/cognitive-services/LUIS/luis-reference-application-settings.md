@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 05/29/2019
+ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: a8a1f6fe9372d013d310c557161ceb813b8a478b
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 3682b9e0c38344be1522440290b46f8c10bd5607
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67163639"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68275910"
 ---
 # <a name="application-settings"></a>Nastavení aplikace
 
@@ -24,8 +24,8 @@ Tato nastavení aplikace jsou uložené v [exportovat](https://westus.dev.cognit
 
 |Nastavení|Výchozí hodnota|Poznámky|
 |--|--|--|
-|NormalizePunctuation|True|Odebere interpunkce.|
-|NormalizeDiacritics|True|Odebere znaky s diakritikou.|
+|NormalizePunctuation|Pravda|Odebere interpunkce.|
+|NormalizeDiacritics|Pravda|Odebere znaky s diakritikou.|
 
 ## <a name="diacritics-normalization"></a>Normalizace diakritiku 
 
@@ -48,7 +48,7 @@ Následující projevy ukazují, jak diakritiku normalizace ovlivňuje projevy:
 
 #### <a name="brazilian-portuguese-pt-br-diacritics"></a>Brazilská portugalština `pt-br` diakritiku
 
-|Znaky s diakritikou nastavena na hodnotu false|Znaky s diakritikou nastavena na hodnotu false|
+|Znaky s diakritikou nastavena na hodnotu false|Znaky s diakritikou nastavenou na hodnotu true|
 |-|-|
 |`á`|`a`|
 |`â`|`a`|
@@ -66,7 +66,7 @@ Následující projevy ukazují, jak diakritiku normalizace ovlivňuje projevy:
 
 #### <a name="dutch-nl-nl-diacritics"></a>Holandština `nl-nl` diakritiku
 
-|Znaky s diakritikou nastavena na hodnotu false|Znaky s diakritikou nastavena na hodnotu false|
+|Znaky s diakritikou nastavena na hodnotu false|Znaky s diakritikou nastavenou na hodnotu true|
 |-|-|
 |`á`|`a`|
 |`à`|`a`|
@@ -85,7 +85,7 @@ Následující projevy ukazují, jak diakritiku normalizace ovlivňuje projevy:
 
 To zahrnuje francouzština a Kanadské subkultury.
 
-|Znaky s diakritikou nastavena na hodnotu false|Znaky s diakritikou nastavena na hodnotu false|
+|Znaky s diakritikou nastavena na hodnotu false|Znaky s diakritikou nastavenou na hodnotu true|
 |--|--|
 |`é`|`e`|
 |`à`|`a`|
@@ -104,7 +104,7 @@ To zahrnuje francouzština a Kanadské subkultury.
 
 #### <a name="german-de-de-diacritics"></a>Němčina `de-de` diakritiku
 
-|Znaky s diakritikou nastavena na hodnotu false|Znaky s diakritikou nastavena na hodnotu false|
+|Znaky s diakritikou nastavena na hodnotu false|Znaky s diakritikou nastavenou na hodnotu true|
 |--|--|
 |`ä`|`a`|
 |`ö`|`o`| 
@@ -112,7 +112,7 @@ To zahrnuje francouzština a Kanadské subkultury.
 
 #### <a name="italian-it-it-diacritics"></a>Italština `it-it` diakritiku
 
-|Znaky s diakritikou nastavena na hodnotu false|Znaky s diakritikou nastavena na hodnotu false|
+|Znaky s diakritikou nastavena na hodnotu false|Znaky s diakritikou nastavenou na hodnotu true|
 |--|--|
 |`à`|`a`|
 |`è`|`e`|
@@ -129,7 +129,7 @@ To zahrnuje francouzština a Kanadské subkultury.
 
 To zahrnuje španělština a Kanadské mexických.
 
-|Znaky s diakritikou nastavena na hodnotu false|Znaky s diakritikou nastavena na hodnotu false|
+|Znaky s diakritikou nastavena na hodnotu false|Znaky s diakritikou nastavenou na hodnotu true|
 |-|-|
 |`á`|`a`|
 |`é`|`e`|

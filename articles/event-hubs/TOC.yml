@@ -59,6 +59,8 @@
   items:
     - name: Terminologie Event Hubs
       href: event-hubs-features.md
+    - name: EventProcessorHost
+      href: event-hubs-event-processor-host.md
     - name: Dostupnost a konzistence
       href: event-hubs-availability-and-consistency.md
     - name: Škálovatelnost
@@ -90,8 +92,6 @@
           href: event-hubs-exchange-events-different-protocols.md
         - name: Průvodce programováním
           href: event-hubs-programming-guide.md
-        - name: Příjem událostí pomocí třídy EventProcessorHost
-          href: event-hubs-event-processor-host.md
     - name: Zpracování dat
       items:
         - name: Zpracování dat s využitím Azure Stream Analytics

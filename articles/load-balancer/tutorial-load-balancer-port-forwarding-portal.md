@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: Tento kurz ukazuje, jak nakonfigurovat přesměrování portu pomocí nástroje pro vyrovnávání zatížení Azure vytvořit připojení k virtuálním počítačům ve virtuální síti Azure.
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 manager: twooley
 Customer intent: As an IT administrator, I want to configure port forwarding in Azure Load Balancer to remotely connect to VMs in an Azure virtual network.
 ms.service: load-balancer
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
-ms.author: kumud
+ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: db94f1d241223a9c54a6e3d516840dd17fd0c576
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ee4ed818364d04f03caedc8b876ea29c41cb59b7
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61322483"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68273447"
 ---
 # <a name="tutorial-configure-port-forwarding-in-azure-load-balancer-using-the-portal"></a>Kurz: Konfigurace přesměrování portu ve službě Azure Load Balancer pomocí portálu
 
@@ -49,12 +49,12 @@ Nejprve vytvořte veřejný load balancer úrovně Standard, která můžou vyro
 
     | Nastavení                 | Hodnota                                              |
     | ---                     | ---                                                |
-    | Předplatné               | Vyberte své předplatné.    |    
-    | Skupina prostředků         | Vyberte **vytvořit nový** a typ *MyResourceGroupLB* v textovém poli.|
-    | Název                   | *myLoadBalancer*                                   |
+    | Subscription               | Vyberte své předplatné.    |    
+    | Resource group         | Vyberte **vytvořit nový** a typ *MyResourceGroupLB* v textovém poli.|
+    | Name                   | *myLoadBalancer*                                   |
     | Oblast         | Vyberte **Západní Evropa**.                                        |
-    | Type          | Vyberte **veřejné**.                                        |
-    | Skladová jednotka (SKU)           | Vyberte **standardní**.                          |
+    | type          | Vyberte **veřejné**.                                        |
+    | SKU           | Vyberte **standardní**.                          |
     | Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu. |
     | Název veřejné IP adresy              | Typ *myPublicIP* v textovém poli.   |
     |Zóna dostupnosti| Vyberte **Zónově redundantní**.    |

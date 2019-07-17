@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 03/11/2019
+ms.date: 07/15/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 71fc32fb34ae67f6d3a4de556da8b107574cc920
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 7c9385078b1f9b42847cf627cf49ac16158d6b52
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603531"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68276419"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-ruby"></a>Rychlý start: Extrahovat tištěný text (OCR) pomocí REST API pro počítačové zpracování obrazu a Ruby
 
@@ -33,8 +33,8 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Pokud chcete vytvořit a spustit ukázku, postupujte takto:
 
-1. Zkopírujte do textového editoru následující kód.
-1. Proveďte v kódu na příslušných místech následující změny:
+1. Zkopírujte následující kód do textového editoru.
+1. Proveďte následující změny kódu:
     1. Místo `<Subscription Key>` použijte váš klíč předplatného.
     1. Adresu URL `https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/ocr` nahraďte adresou URL koncového bodu metody [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) v oblasti Azure, kde jste získali klíče předplatného, pokud je to potřeba.
     1. Volitelně můžete adresu URL `https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Atomist_quote_from_Democritus.png/338px-Atomist_quote_from_Democritus.png\` nahradit adresou URL jiného obrázku, ze kterého chcete extrahovat tištěný text.

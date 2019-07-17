@@ -1,5 +1,5 @@
 ---
-title: Použití spravované identity přiřazené systémem na virtuálním počítači s Windows pro přístup k Azure Storage
+title: Přístup k Azure Storage pomocí spravované identity přiřazené systému Windows virtuální počítač | Dokumentace Microsoftu
 description: Tento kurz vás postupně provede používáním spravované identity přiřazené systémem na virtuálním počítači s Windows pro přístup k Azure Storage.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/12/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bb1370b2d828aaddae61c32a663bd032b18e7b1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e7d7200dd89d51817a5d146ff4d33e2501ed2826
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60297517"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68278017"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage"></a>Kurz: Použití spravované identity přiřazené systémem na virtuálním počítači s Windows pro přístup k Azure Storage
 
@@ -47,7 +47,7 @@ V této části vytvoříte účet úložiště.
 1. Na webu Azure Portal klikněte v levém horním rohu na tlačítko **+ Vytvořit prostředek**.
 2. Klikněte na **Úložiště** a pak vyberte **Účet úložiště – objekt blob, soubor, tabulka, fronta**.
 3. V části **Název** zadejte název účtu úložiště.
-4. V polích **Model nasazení** a **Druh účtu** nastavte **Resource manager** a **Úložiště (v1 pro obecné účely)**.
+4. V polích **Model nasazení** a **Druh účtu** nastavte **Resource manager** a **Úložiště (v1 pro obecné účely)** .
 5. Ověřte, že pole **Předplatné** a **Skupina prostředků** se shodují s údaji zadanými při vytvoření virtuálního počítače v předchozím kroku.
 6. Klikněte na možnost **Vytvořit**.
 
@@ -74,7 +74,7 @@ Soubory vyžadují úložiště objektů blob. Proto potřebujete vytvořit kont
 Spravovanou identitu přiřazenou systémem na virtuálním počítači můžete použít k načtení dat, která jsou v úložišti Azure Storage Blob.
 
 1. Přejděte zpět k nově vytvořenému účtu úložiště.
-2. Na panelu vlevo klikněte na odkaz **Řízení přístupu (IAM)**.
+2. Na panelu vlevo klikněte na odkaz **Řízení přístupu (IAM)** .
 3. Klikněte na tlačítko **+ přidat přiřazení role** nad stránky a přidat nové přiřazení role pro váš virtuální počítač.
 4. V části **Role**, z rozevíracího seznamu vyberte **čtecí modul dat pro úložiště objektů Blob**.
 5. V dalším rozevíracím seznamu **Přiřadit přístup k** vyberte **Virtuální počítač**.

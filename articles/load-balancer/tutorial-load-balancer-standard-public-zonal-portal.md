@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: V tomto kurzu si ukážeme, jak vytvořit Standard Load Balancer se zónovým front-endem, který bude vyrovnávat zatížení virtuálních počítačů v rámci zóny dostupnosti pomocí webu Azure Portal.
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 manager: twooley
 Customer intent: As an IT administrator, I want to create a load balancer that load balances incoming internet traffic to virtual machines within a specific zone in a region.
 ms.service: load-balancer
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/27/2019
-ms.author: kumud
+ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 563b54fe9b4ab65cd8d3008e9d3955618194031f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0ec9fae1ce4ef976d5f50e1d8d8412354706c5f8
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61095929"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68273385"
 ---
 # <a name="tutorial-load-balance-vms-within-an-availability-zone-with-standard-load-balancer-by-using-the-azure-portal"></a>Kurz: Nástroj pro vyrovnávání zatížení virtuálních počítačů v zóně dostupnosti s využitím Load balanceru úrovně Standard s využitím webu Azure portal
 
@@ -39,7 +39,7 @@ Další informace o používání zón dostupnosti se Standard Load Balancerem n
 
 K tomuto kurzu také můžete použít [Azure CLI](load-balancer-standard-public-zonal-cli.md).
 
-## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
@@ -52,12 +52,12 @@ Standard Load Balancer podporuje jenom standardní veřejnou IP adresu. Když p�
 
     | Nastavení                 | Hodnota                                              |
     | ---                     | ---                                                |
-    | Předplatné               | Vyberte své předplatné.    |    
-    | Skupina prostředků         | Vyberte **vytvořit nový** a typ *MyResourceGroupZLB* v textovém poli.|
-    | Název                   | *myLoadBalancer*                                   |
+    | Subscription               | Vyberte své předplatné.    |    
+    | Resource group         | Vyberte **vytvořit nový** a typ *MyResourceGroupZLB* v textovém poli.|
+    | Name                   | *myLoadBalancer*                                   |
     | Oblast         | Vyberte **Západní Evropa**.                                        |
-    | Type          | Vyberte **veřejné**.                                        |
-    | Skladová jednotka (SKU)           | Vyberte **standardní**.                          |
+    | type          | Vyberte **veřejné**.                                        |
+    | SKU           | Vyberte **standardní**.                          |
     | Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu. |
     | Název veřejné IP adresy              | Typ *myPublicIP* v textovém poli.   |
     |Zóna dostupnosti| Vyberte **1**.    |

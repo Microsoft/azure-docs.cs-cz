@@ -1,5 +1,5 @@
 ---
-title: Kurz hromadného pozvání uživatelů spolupráce B2B – Azure Active Directory | Microsoft Docs
+title: Kurz pro hromadné pozvání uživatele spolupráce B2B – Azure Active Directory | Dokumentace Microsoftu
 description: V tomto kurzu se dozvíte, jak použít PowerShell a soubor CSV k hromadnému rozeslání pozvánek externím uživatelům spolupráce B2B služby Azure AD.
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f91d51bda4c41a314c7cc1c2cc895e36bde0500
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: d3bd02afa1fe1aaba6602201f839468a58673c29
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65768209"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277999"
 ---
 # <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users"></a>Kurz: Hromadné pozvat uživatele spolupráce B2B ve službě Azure AD
 
