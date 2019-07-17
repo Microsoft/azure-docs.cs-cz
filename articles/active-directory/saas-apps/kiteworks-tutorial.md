@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 853e23d4dd2c9192c15ab477571ca5cd0059e965
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 52b113d92fa83795e94d5179ea47ed5d9d9e9a26
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68225465"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68248904"
 ---
 # <a name="tutorial-integrate-kiteworks-with-azure-active-directory"></a>Kurz: Kiteworks integrovat s Azure Active Directory
 
@@ -104,7 +104,7 @@ Použijte následující postup povolení jednotného přihlašování Azure AD 
 
 1. Na panelu nástrojů v horní části klikněte na tlačítko **nastavení**.
 
-    ![Konfigurace jednotného přihlašování](./media/kiteworks-tutorial/tutorial_kiteworks_06.png) 
+    ![Konfigurace jednotného přihlašování](./media/kiteworks-tutorial/tutorial_kiteworks_06.png)
 
 1. V **ověřování a autorizace** klikněte na tlačítko **nastavení jednotného přihlašování**.
 
@@ -118,7 +118,7 @@ Použijte následující postup povolení jednotného přihlašování Azure AD 
 
     b. Vyberte **zahájit AuthnRequest**.
 
-    c. V **IDP Entity ID** textového pole vložte hodnotu **Azure AD identifikátor**, který jste zkopírovali z portálu Azure portal. 
+    c. V **IDP Entity ID** textového pole vložte hodnotu **Azure AD identifikátor**, který jste zkopírovali z portálu Azure portal.
 
     d. V **jednotné přihlašování – adresa URL služby** textového pole vložte hodnotu **přihlašovací adresa URL**, který jste zkopírovali z portálu Azure portal.
 
@@ -135,7 +135,7 @@ V této části vytvoříte testovacího uživatele na webu Azure Portal volá B
 1. V levém podokně webu Azure Portal vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
 1. Vyberte **nového uživatele** v horní části obrazovky.
 1. V **uživatele** vlastností, postupujte podle těchto kroků:
-   1. Do pole **Název** zadejte `B.Simon`.  
+   1. Do pole **Název** zadejte `B.Simon`.
    1. V **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
    1. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
    1. Klikněte na možnost **Vytvořit**.
@@ -162,7 +162,7 @@ V této části povolíte B.Simon k udělení přístupu k Kiteworks použití A
 
 Cílem této části je vytvořte uživatele Britta Simon v Kiteworks.
 
-Kiteworks podporuje just-in-time zřizování, který je ve výchozím nastavení povolená. Neexistuje žádná položka akce pro vás v této části. Nový uživatel se vytvoří během pokusu o přístup k Kitewors, pokud ještě neexistuje.
+Kiteworks podporuje just-in-time zřizování, který je ve výchozím nastavení povolená. Neexistuje žádná položka akce pro vás v této části. Nový uživatel se vytvoří během pokusu o přístup k Kiteworks, pokud ještě neexistuje.
 
 > [!NOTE]
 > Pokud je potřeba ručně vytvořit uživatele, budete muset požádat [tým podpory Kiteworks](https://accellion.com/support).
@@ -175,8 +175,8 @@ Po kliknutí na dlaždici Kiteworks na přístupovém panelu, můžete by měl b
 
 ## <a name="additional-resources"></a>Další prostředky
 
-- [ Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

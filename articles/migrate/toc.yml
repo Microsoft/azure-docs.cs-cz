@@ -54,34 +54,32 @@
       href: migrate-replication-appliance.md
     - name: Osvědčené postupy pro vyhodnocení
       href: best-practices-assessment.md
-    - name: Výpočty hodnocení
+    - name: Přehled hodnocení
       href: concepts-assessment-calculation.md
     - name: Vizualizace závislostí
       href: concepts-dependency-visualization.md
 - name: Návody
   items:
-    - name: Příklady migrace – série Contoso
-      href: contoso-migration-overview.md
-    - name: Nasazení zařízení pro vyhodnocení/migraci VMware (bez agentů)
+    - name: Práce s předchozí verzí
+      href: migrate-v1.md
+    - name: Nasazení zařízení VMware
       href: how-to-set-up-appliance-vmware.md
-    - name: Nasazení zařízení pro vyhodnocení/migraci Hyper-V
+    - name: Nasazení zařízení Hyper-V
       href: how-to-set-up-appliance-hyper-v.md
-    - name: První přidání nástroje pro vyhodnocení/migraci
+    - name: První přidání nástroje
       href: how-to-add-tool-first-time.md
     - name: Přidání nástrojů pro vyhodnocení
       href: how-to-assess.md
-    - name: Přidání nástrojů pro migraci
-      href: how-to-migrate.md
     - name: Seskupení počítačů pro vyhodnocení
-      items:
-        - name: Vytvoření skupiny
-          href: how-to-create-a-group.md
-        - name: Seskupení počítačů s využitím závislostí počítačů
-          href: how-to-create-group-machine-dependencies.md
-        - name: Upřesnění skupiny s využitím závislostí skupin
-          href: how-to-create-group-dependencies.md
+      href: how-to-create-a-group.md
+    - name: Seskupení počítačů s využitím vizualizace závislostí
+      href: how-to-create-group-machine-dependencies.md
+    - name: Vytvoření posouzení
+      href: how-to-create-assessment.md
     - name: Přizpůsobení posouzení
       href: how-to-modify-assessment.md
+    - name: Přidání nástrojů pro migraci
+      href: how-to-migrate.md
     - name: Vyhodnocení a migrace ve velkém měřítku
       items:
         - name: Přístup k velkému počtu virtuálních počítačů VMware
@@ -90,6 +88,10 @@
           href: scale-hyper-v-assessment.md
         - name: Automatizace migrace velkého počtu virtuálních počítačů
           href: how-to-migrate-at-scale.md
+    - name: Příklady migrace – série Contoso
+      href: contoso-migration-overview.md
+- name: Řešení potíží
+  items:
     - name: Řešení problémů s Azure Migrate
       href: troubleshooting-general.md
 - name: Zdroje a prostředky

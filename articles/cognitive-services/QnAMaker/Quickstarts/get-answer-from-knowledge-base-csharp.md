@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 02/28/2019
+ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 614d7c0b58ee318461cf3c97e934a77c84221ef7
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 020403268665633bf3d71cf43258ced87b4f837d
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65827591"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249717"
 ---
 # <a name="get-answers-to-a-question-from-a-knowledge-base-with-c"></a>Získejte odpovědi na dotaz zadaný ze znalostní báze sC#
 
@@ -36,7 +36,7 @@ Kód v tomto rychlém startu se [ https://github.com/Azure-Samples/cognitive-ser
 
 ## <a name="create-a-knowledge-base-project"></a>Vytvoření projektu znalostní báze
 
-1. Open Visual Studio 2019 Community edition.
+1. Otevřít Visual Studio. 2019 Community edition.
 1. Vytvoření nového projektu aplikace konzoly (.NET Core) a název projektu QnaMakerQuickstart. U zbývajících nastavení přijměte výchozí hodnoty.
 
 ## <a name="add-the-required-dependencies"></a>Přidání požadovaných závislostí
@@ -69,7 +69,7 @@ Sestavte a spusťte program ze sady Visual Studio. Automaticky se odešle požad
 
 [!INCLUDE [Clean up files and knowledge base](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)] 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Reference k rozhraní REST API služby QnA Maker (V4)](https://go.microsoft.com/fwlink/?linkid=2092179)

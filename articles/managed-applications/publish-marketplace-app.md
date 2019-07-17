@@ -8,14 +8,14 @@ ms.service: managed-applications
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
-ms.date: 07/10/2018
+ms.date: 07/15/2019
 ms.author: tomfitz
-ms.openlocfilehash: 61cac49c34eb193d641a94c9a7839282289dd9c7
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 16b653d1018c0c9c090f027ebcd01468af0eefd8
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64572576"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234716"
 ---
 # <a name="azure-managed-applications-in-the-marketplace"></a>Spravované aplikace Azure v Marketplace
 
@@ -42,7 +42,7 @@ Kromě toho existuje několik obchodních předpokladů. Jsou to tyto:
 Pokud se chcete stát vydavatelem v Azure Marketplace, musíte splnit následující:
 
 1. Vytvořit Microsoft ID: Vytvořte si účet Microsoft pomocí e-mailové adresy, která patří do domény vaší společnosti, ale nepatří konkrétnímu uživateli. Tato e-mailová adresa se používá pro Centrum pro vývojáře Microsoft i pro portál partnerů cloudu. Další informace viz [Příručka pro vydavatele Azure Marketplace](https://aka.ms/sellerguide).
-1. Odeslat [nominační formulář Azure Marketplace](https://aka.ms/ampnomination): Pro **řešení, které chcete publikovat**, vyberte **spravovanou aplikaci**. Po odeslání formuláře tým registrace Marketplace aplikace zkontroluje a ověří žádost. Schvalovací proces může trvat jeden až tři dny. Pokud bude vaše nominace schválena, získáte propagační kód umožňující zproštění od poplatku za registraci do centra pro vývojáře. Pokud nominační formulář pro Marketplace **neodešlete**, činí registrační poplatek 99 USD.
+1. Odeslat [Nominační formulář Azure Marketplace](https://aka.ms/ampnomination) – **řešení, které máte v úmyslu publikovat?** vyberte **spravované aplikace**. Po odeslání formuláře tým registrace Marketplace aplikace zkontroluje a ověří žádost. Schvalovací proces může trvat jeden až tři dny. Pokud bude vaše nominace schválena, získáte propagační kód umožňující zproštění od poplatku za registraci do centra pro vývojáře. Pokud nominační formulář pro Marketplace **neodešlete**, činí registrační poplatek 99 USD.
 1. Registrace v [středisko pro vývojáře](https://dev.windows.com/registration?accountprogram=azure) – Microsoft ověřuje, že vaše organizace má platné právní subjekt s platnou DAŇOVÉ identifikační pro zemi nebo oblast, ve které je zaregistrovaný. Schvalovací proces může trvat 5 až 10 dnů. Pokud nechcete platit registrační poplatek, použijte propagační kód, který jste obdrželi e-mailem v rámci nominačního procesu. Další informace viz [Příručka pro vydavatele Azure Marketplace](https://aka.ms/sellerguide).
 1. Přihlásit se na [portál partnerů cloudu](https://cloudpartner.azure.com): V profilu vydavatele propojte svůj účet centra pro vývojáře s profilem vydavatele Marketplace. Další informace viz [Příručka pro vydavatele Azure Marketplace](https://aka.ms/sellerguide).
 
@@ -102,7 +102,13 @@ Skladová položka se na marketplace zobrazí pod příslušnou nadřazenou nab�
    Vyplňte následující pole:
 
    * **Verze**: Zadejte verzi balíčku, které nahrajete. Měla by mít formát `{number}.{number}.{number}{number}`.
-   * **Soubor balíčku (.zip)**: Tento balíček obsahuje dvě požadované soubory zkomprimovány do balíčku .zip. Jedním z těchto souborů je šablona, která definuje prostředky k nasazení pro spravovanou aplikaci. Druhý soubor definuje [uživatelské rozhraní](create-uidefinition-overview.md) pro uživatele nasazující tuto spravovanou aplikaci prostřednictvím portálu. V uživatelském rozhraní zadáváte elementy, které uživatelům umožňují zadávat hodnoty parametrů.
+   * **Soubor balíčku (.zip)** : Tento balíček obsahuje dvě požadované soubory zkomprimovány do balíčku .zip. Jedním z těchto souborů je šablona, která definuje prostředky k nasazení pro spravovanou aplikaci. Druhý soubor definuje [uživatelské rozhraní](create-uidefinition-overview.md) pro uživatele nasazující tuto spravovanou aplikaci prostřednictvím portálu. V uživatelském rozhraní zadáváte elementy, které uživatelům umožňují zadávat hodnoty parametrů.
+   * **ID tenanta**: ID tenanta pro účet získat přístup.
+   * **Povolit přístup JIT**: Vyberte **Ano** umožňující [řízení přístupu just-in-time](request-just-in-time-access.md) pro účet. Při povolení požádáte o přístup k účtu příjemce pro zadané časové období. Pokud chcete vyžadovat, že příjemci vaše spravovaná aplikace udělit trvalý přístup vašeho účtu, vyberte **ne**.
+   * **Přizpůsobit akce povolených zákazníků?** : Vyberte **Ano** k určení akce, které můžete provádět spotřebitelů na spravované prostředky.
+   * **Povolené akce zákazníků**: Pokud vyberete **Ano** pro předchozí nastavení, můžete zadat akce, které jsou povolené pro uživatele s použitím [zamítnout přiřazení pro prostředky Azure](../role-based-access-control/deny-assignments.md).
+
+     Dostupné akce, naleznete v tématu [operace poskytovatele prostředků Azure Resource Manageru](../role-based-access-control/resource-provider-operations.md). Například tak, aby povolovala uživatele k restartování virtuálních počítačů, přidejte `Microsoft.Compute/virtualMachines/restart/action` povolených akcí. `*/read` Akce je automaticky povolené, takže není nutné zahrnout nastavení.
    * **PrincipalId**: Tato vlastnost je Azure Active Directory (Azure AD) identifikátor uživatele, skupiny uživatelů nebo aplikací, které je udělen přístup k prostředkům v rámci předplatného tohoto zákazníka. Definice role popisuje tato oprávnění.
    * **Definice role**: Tato vlastnost je seznam všech předdefinované role řízení přístupu na základě Role (RBAC) poskytuje Azure AD. Můžete vybrat roli, která je nejvhodnější pro správu prostředků v zastoupení uživatele.
    * **Nastavení zásad**: Použití [Azure Policy](../governance/policy/overview.md) spravované aplikace k určení požadavků na dodržování předpisů u nasazeného řešení. Z dostupných možností vyberte požadované zásady. V části **Parametry zásad** zadejte řetězec JSON s hodnotami parametrů. Definice zásad a formátování hodnot parametrů najdete v tématu [Ukázky Azure Policy](../governance/policy/samples/index.md).
@@ -117,7 +123,7 @@ Formulář Marketplace vyzývá k zadání polí, která se zobrazují na [Azure
 
 ### <a name="preview-subscription-ids"></a>Zobrazení náhledu ID předplatných
 
-Zadejte seznam ID předplatných Azure, která mohou přistupovat k nabídce po jejím publikování. Tato povolená předplatná můžete využít k otestování nabídky před jejím zprovozněním. Můžete sestavit seznam až 100 povolených předplatných na partnerském portálu.
+Zadejte seznam ID předplatných Azure, která mohou přistupovat k nabídce po jejím publikování. Tato povolená předplatná můžete využít k otestování nabídky před jejím zprovozněním. Seznam povolených z až 100 předplatných na portálu pro partnery můžete zkompilovat.
 
 ### <a name="suggested-categories"></a>Navrhované kategorie
 

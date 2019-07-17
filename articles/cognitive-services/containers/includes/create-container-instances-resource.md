@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 7/3/2019
 ms.author: dapine
-ms.openlocfilehash: 38addf4651373ba0f4df411325218a255c835508
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 05284d434e6bd22fd50957f7cc5ec966f88a4fd4
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67717193"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68229308"
 ---
 ## <a name="create-an-azure-container-instance-resource"></a>Vytvoří prostředek služby Azure Container Instance
 
@@ -39,12 +39,12 @@ ms.locfileid: "67717193"
     |--|--|
     |Porty|Nastavte TCP port na `5000`. Poskytuje kontejner na portu 5000.|
 
-4. Na **Upřesnit** kartu, zadejte požadované **proměnné prostředí** kontejneru [fakturace nastavení](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-install-containers#billing-arguments) ACI prostředku:
+4. Na **Upřesnit** kartu, zadejte požadované **proměnné prostředí** kontejneru fakturace nastavení ACI prostředku:
 
-    | Klíč | Value |
+    | Klíč | Hodnota |
     |--|--|
-    |`apikey`|Zkopírovány z **klíče** stránce prostředků pro analýzu textu. Jedná se o 32 alfanumerický znak řetězec bez mezery, pomlčky, `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.|
-    |`billing`|Zkopírovány z **přehled** stránce prostředků pro analýzu textu. Příklad: `https://northeurope.api.cognitive.microsoft.com/text/analytics/v2.0`|
+    |`apikey`|Zkopírovány z **klíče** stránky prostředku. Jedná se o 32 alfanumerický znak řetězec bez mezery, pomlčky, `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.|
+    |`billing`|Zkopírovány z **přehled** stránky prostředku.|
     |`eula`|`accept`|
 
 1. Klikněte na tlačítko **zkontrolovat a vytvořit**

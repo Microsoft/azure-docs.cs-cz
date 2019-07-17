@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: edjez
-ms.openlocfilehash: 94eaeb6e34e74e1a0f1a3958c23cf33b86c4adcd
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: c317cbec02b82743c233bf36f743cea808c30c69
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620284"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68253588"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>Funkce jsou informace o akce a kontextu
 
@@ -56,7 +56,7 @@ Personalizer přijímá funkce, které jsou uspořádány do oborů názvů. Mů
 Následují příklady funkce obory názvů používané aplikacemi:
 
 * User_Profile_from_CRM
-* Čas
+* Time
 * Mobile_Device_Info
 * http_user_agent
 * VideoResolution
@@ -66,9 +66,10 @@ Následují příklady funkce obory názvů používané aplikacemi:
 * current_time
 * NewsArticle_TextAnalytics
 
-Funkce obory názvů vlastních konvencemi jako jsou platný klíčů JSON můžete pojmenovat.
+Funkce obory názvů vlastních konvencemi jako jsou platný klíčů JSON můžete pojmenovat. Obory názvů slouží k uspořádání funkce v různých skupinách a k rozlišení funkce s podobnými názvy. Si můžete představit obory názvů jako předponu"", který je přidán do názvů funkcí. Obory názvů nemůže být vnořený.
 
-V následujícím kódu JSON `user`, `state`, a `device` jsou funkce obory názvů.
+
+V následujícím kódu JSON `user`, `state`, a `device` jsou funkce obory názvů. Poznámka: ve verzi Public Preview: Aktuálně důrazně doporučujeme použití názvů pro funkce obory názvů, které jsou na základě kódování UTF-8 a začněte s různá písmena. Například `user`, `state`, a `device` začínat `u`, `s`, a `d`. Momentálně se vyskytl oborů názvů se stejným první znaky by mohlo způsobit kolizí v indexy použité pro machine learning.
 
 Objekty JSON může obsahovat vnořené objekty JSON a jednoduché vlastnosti a hodnoty. Pole může obsahovat pouze v případě, že jsou položky pole čísel. 
 
@@ -77,7 +78,7 @@ Objekty JSON může obsahovat vnořené objekty JSON a jednoduché vlastnosti a 
     "contextFeatures": [
         { 
             "user": {
-                "name":"Doug",
+                "profileType":"AnonymousUser",
                 "latlong": [47.6, -122.1]
             }
         },
@@ -167,7 +168,7 @@ Akce, které odesíláte do rozhraní API pořadí bude záviset na co se pokou�
 
 Následuje několik příkladů:
 
-|Účel|Akce|
+|Účel|Action|
 |--|--|
 |Přizpůsobení, něž je zvýrazněn na webu zpráv.|Každá akce je potenciální zpravodajskému článku.|
 |Optimalizujte umístění ad na webu.|Každá akce bude rozložení nebo pravidla pro vytváření rozložení pro reklamu (například v horní části na správné, malé obrázky, velké obrázky).|

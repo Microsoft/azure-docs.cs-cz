@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 006f7270570eba17fb44421b1c181d9ad68ad2ee
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 2554501ecf6d4ef115e3283fa635c24510b8c797
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854182"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249593"
 ---
 # <a name="migrate-physical-or-virtualized-servers-to-azure"></a>Migrujte fyzické nebo virtualizované servery do Azure 
 
@@ -104,7 +104,7 @@ Tenanta nebo globální správce může udělit oprávnění následujícím zp�
 
 #### <a name="assign-application-developer-role"></a>Přiřazení role aplikace pro vývojáře 
 
-Tenanta nebo globální správce může přiřadit roli vývojář aplikace k účtu. [Další informace](https://docs.microsoft.comazure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal).
+Tenanta nebo globální správce může přiřadit roli vývojář aplikace k účtu. [Další informace](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
 
 ## <a name="assign-permissions-to-create-key-vault"></a>Přidělování oprávnění k vytvoření služby Key Vault
 

@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 05/07/2019
 ms.author: edjez
-ms.openlocfilehash: e5781af44732782936e1e1a87bf70bd4a9d4804d
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 286a19207236392367b924bea7e26e90fd0db8d5
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722291"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68253451"
 ---
 # <a name="what-is-personalizer"></a>Co je služba Personalizace?
 
@@ -29,14 +29,14 @@ Azure Personalizace je cloudová služba rozhraní API umožňující zvolit nej
 
 ## <a name="how-does-personalizer-work"></a>Jak funguje Personalizer?
 
-Personalizer používá modely machine learningu Pokud chcete zjistit, jaká akce má být pořadí nejvyšší v kontextu. Obsahuje seznam možných akcí, s informacemi o nich; klientské aplikace a informace o kontextu, které mohou zahrnovat informace o uživateli, zařízení atd. Personalizer určuje akce má být provedena. Jakmile vaše klientská aplikace používá zvolené akci, poskytuje zpětnou vazbu k Personalizer ve formě reward skóre. Po dokončení smyčku zpětné vazby Personalizer automaticky aktualizuje svůj vlastní model použít pro budoucí rozměry.
+Personalizer používá modely machine learningu Pokud chcete zjistit, jaká akce má být pořadí nejvyšší v kontextu. Obsahuje seznam možných akcí, s informacemi o nich; klientské aplikace a informace o kontextu, které mohou zahrnovat informace o uživateli, zařízení atd. Personalizer určuje akce má být provedena. Jakmile vaše klientská aplikace používá zvolené akci, poskytuje zpětnou vazbu k Personalizer ve formě reward skóre. Po přijetí zpětné vazby Personalizer automaticky aktualizuje svůj vlastní model použít pro budoucí rozměry.
 
 ## <a name="how-do-i-use-the-personalizer"></a>Použití Personalizer
 
 ![Pomocí Personalizer zvolit video, chcete-li zobrazit uživateli](media/what-is-personalizer/personalizer-example-highlevel.png)
 
 1. Zvolte prostředí ve vaší aplikaci můžete přizpůsobit.
-1. Vytvoření a konfigurace služby pro přizpůsobení na webu Azure Portal
+1. Vytvořte a nakonfigurujte instanci služby pro přizpůsobení na webu Azure Portal. Každá instance je Personalizer smyčky.
 1. Použití sady SDK pro volání Personalizer s informacemi (_funkce_) o vašich uživatelích a obsah (_akce_). Není nutné poskytovat čištění, před použitím Personalizer označené jako data. 
 1. V klientské aplikaci zobrazí uživateli zvolila Personalizer akce.
 1. Pomocí sady SDK pro poskytnutí zpětné vazby Personalizer označující, pokud uživatel vybral na Personalizer akce. Jedná se _oceňujte skóre_, obvykle mezi -1 a 1.

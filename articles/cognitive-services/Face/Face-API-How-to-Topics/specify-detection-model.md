@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: yluiu
-ms.openlocfilehash: fbefbea171a8559466117c55703a14268b4c4c99
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 26ab3cb247309aa21791ca5a984f39ef40ce9a78
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592928"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249632"
 ---
 # <a name="specify-a-face-detection-model"></a>Určení modelu detekce obličeje
 
@@ -45,8 +45,7 @@ Při použití [Rozpoznávání tváře – zjišťování] rozhraní API, můž
 
 Žádost o adresu URL [Rozpoznávání tváře – zjišťování] rozhraní REST API bude vypadat například takto:
 
-`https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&returnFaceLandmarks][&returnFaceAttributes][&recognitionModel][&returnRecognitionModel][&detectionModel]
-&subscription-key=<Subscription key>`
+`https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&returnFaceLandmarks][&returnFaceAttributes][&recognitionModel][&returnRecognitionModel][&detectionModel]&subscription-key=<Subscription key>`
 
 Pokud používáte klientskou knihovnu, můžete přiřadit hodnotu `detectionModel` předáním odpovídající řetězec. Pokud je necháte nepřiřazené, rozhraní API bude používat výchozí verze modelu (`detection_01`). Podívejte se na následující příklad kódu klientské knihovny .NET.
 
@@ -106,7 +105,7 @@ Modely detekce různých tváře jsou optimalizovány pro různé úlohy. V nás
 
 Nejlepší způsob, jak porovnat výkonů `detection_01` a `detection_02` modely jsou jejich použití v ukázkové datové sadě. Doporučujeme volání [Rozpoznávání tváře – zjišťování] rozhraní API na celou řadu imagí, hlavně obrázky tváří nebo tváří, které se nezobrazují, pomocí každý model zjišťování. Věnujte pozornost počet tváří, které vrací každý model.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto článku jste zjistili, jak pro určení modelu detekce pomocí různých rozhraní API pro rozpoznávání tváře. V dalším kroku postup rychlého spuštění abyste mohli začít používat rozpoznávání tváře.
 

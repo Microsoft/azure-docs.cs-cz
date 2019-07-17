@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: raynew
-ms.openlocfilehash: 8e7e5d871fa1bb557de4e6fce22658115bf0fe94
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 2957e784540f7c6450235d26da43121db2458dd1
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67806981"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249528"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Informace o zálohování SQL Serverů ve virtuálních počítačích Azure
 
@@ -46,7 +46,7 @@ Než začnete, ověřte, níže:
 **Podpora** | **Podrobnosti**
 --- | ---
 **Podporované nasazení** | Virtuální počítače Azure Marketplace SQL a mimo Marketplace (ručně nainstalovat SQL Server) se podporují virtuální počítače.
-**Podporované zeměpisných oblastech** | Austrálie – jihovýchod (ASE), Východní Austrálie (AE) <br> Brazílie – jih (BRS)<br> Kanada – střed (CNC), Kanada – východ (CE)<br> Jihovýchodní Asie (SEA), východní Asie (EA) <br> USA – východ (EUS), východní USA 2 (EUS2), střed USA – západ (WCUS), USA – západ (WUS); Západní USA 2 (WUS 2) – sever (NCUS) střed USA střed USA (CUS) střed USA – Jih (SCUS) <br> India Central (INC), India South (INS) <br> Japonsko – východ (JPE), Japonsko – západ (JPW) <br> Korea – střed (KRC), Korea – Jih (KRS) <br> Severní Evropa (NE), západní Evropa <br> Velká Británie – Jih (UKS), Velká Británie – západ (UKW)
+**Podporované zeměpisných oblastech** | Austrálie – jihovýchod (ASE), Východní Austrálie (AE) <br> Brazílie – jih (BRS)<br> Kanada – střed (CNC), Kanada – východ (CE)<br> Jihovýchodní Asie (SEA), východní Asie (EA) <br> USA – východ (EUS), východní USA 2 (EUS2), střed USA – západ (WCUS), USA – západ (WUS); Západní USA 2 (WUS 2) – sever (NCUS) střed USA střed USA (CUS) střed USA – Jih (SCUS) <br> Indie – střed (INC), Indie – Jih (INS) <br> Japonsko – východ (JPE), Japonsko – západ (JPW) <br> Korea – střed (KRC), Korea – Jih (KRS) <br> Severní Evropa (NE), západní Evropa <br> Velká Británie – Jih (UKS), Velká Británie – západ (UKW)
 **Podporované operační systémy** | Windows Server 2016, Windows Server 2012 R2, Windows Server 2012<br/><br/> Linux se momentálně nepodporuje.
 **Podporované verze systému SQL Server** | SQL Server 2017 jako podrobné [tady](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017), SQL Server 2016 a aktualizace Service packu, jak je uvedeno [tady](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack), SQL Server 2014, SQL Server 2012.<br/><br/> Enterprise, Standard, Web, Developer, Express.
 **Podporované verze rozhraní .NET** | Rozhraní .NET framework 4.5.2 a vyšších nainstalovala do virtuálního počítače
@@ -76,7 +76,7 @@ Uživatelé se budou účtovat pro tuto funkci do okamžiku je obecně dostupná
 - Můžete zálohovat až **~ 2000** databáze systému SQL Server v trezoru. V případě, že máte větší počet databází, které můžete vytvořit více trezorů.
 - Zálohování můžete nakonfigurovat až **50** databáze v jednom patří; toto omezení pomáhá optimalizovat zálohování zátěží.
 - Podporujeme až databází **2TB** velikost; pro větší než, který může objevovat další problémy s výkonem.
-- Pokud chcete, aby představu o tom, kolik databází je možné chránit jeden server, musíme vezměte v úvahu faktory, jako je například šířky pásma, velikost virtuálního počítače, frekvenci zálohování, velikost databáze, atd. Pracujeme na Plánovač, který by vám vypočítat že vlastní tato čísla na vás. Jsme budete publikovat to za chvíli.
+- Pokud chcete, aby představu o tom, kolik databází je možné chránit jeden server, musíme vezměte v úvahu faktory, jako je například šířky pásma, velikost virtuálního počítače, frekvenci zálohování, velikost databáze, atd. [Stáhněte si](http://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx) plánovač prostředků, která poskytuje přibližný počet databází, které vám může mít jeden server založené na prostředky virtuálních počítačů a zásady zálohování.
 - V případě skupiny dostupnosti zálohy jsou prováděny z různých uzlech založené na několika faktorech. Zálohování chování pro skupinu dostupnosti je uveden níže.
 
 ### <a name="back-up-behavior-in-case-of-always-on-availability-groups"></a>Zálohování chování v případě vždy o skupinách dostupnosti

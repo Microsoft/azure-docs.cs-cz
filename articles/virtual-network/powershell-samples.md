@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
-ms.date: 04/17/2019
+ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: e10f7ad4ae8995d9efffec97a37dc64b28fa37b0
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 418a72eb9a8f98bca24c863b2f953bfe720979e6
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64688027"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249049"
 ---
 # <a name="azure-powershell-samples-for-virtual-network"></a>Ukázky Azure PowerShellu pro virtuální síť
 
@@ -32,4 +32,5 @@ Následující tabulka obsahuje odkazy na skripty Azure PowerShellu:
 | [Vytvoření partnerského vztahu mezi dvěma virtuálními sítěmi](./scripts/virtual-network-powershell-sample-peer-two-virtual-networks.md) | Vytvoří a propojí dvě virtuální sítě ve stejné oblasti. |
 | [Směrování provozu přes síťové virtuální zařízení](./scripts/virtual-network-powershell-sample-route-traffic-through-nva.md) | Vytvoří virtuální síť s front-endovou a back-endovou podsítí a virtuální počítač, který je schopný směrovat provoz mezi těmito dvěma podsítěmi. |
 | [Filtrování příchozího a odchozího síťového provozu virtuálního počítače](./scripts/virtual-network-powershell-sample-filter-network-traffic.md) | Vytvoří virtuální síť s front-endovou a back-endovou podsítí. Příchozí síťový provoz do front-endové podsítě je omezený na HTTP a HTTPS. Odchozí provoz do internetu z back-endové podsítě není povolený. |
-|[Konfigurace protokolu IPv4 + IPv6 duální zásobník virtuální sítě](./scripts/virtual-network-powershell-sample-ipv6-dual-stack.md)|Nasadí virtuální síť duální sadou protokolů (IPv4 + IPv6) s dva virtuální počítače a Azure Load balancer úrovně Basic s protokoly IPv4 a IPv6 veřejné IP adresy. |
+|[Konfigurace protokolu IPv4 + IPv6 duální zásobník virtuální sítě s Load balancer úrovně Basic](./scripts/virtual-network-powershell-sample-ipv6-dual-stack.md)|Nasadí virtuální síť duální sadou protokolů (IPv4 + IPv6) s dva virtuální počítače a Azure Load balancer úrovně Basic s protokoly IPv4 a IPv6 veřejné IP adresy. |
+|[Konfigurace protokolu IPv4 + IPv6 duální zásobník virtuální sítě s Load balanceru úrovně Standard](./scripts/virtual-network-powershell-sample-ipv6-dual-stack-standard-load-balancer.md)|Nasadí virtuální síť duální sadou protokolů (IPv4 + IPv6) s dva virtuální počítače a Azure Load balancer úrovně Standard s protokoly IPv4 a IPv6 veřejné IP adresy. |

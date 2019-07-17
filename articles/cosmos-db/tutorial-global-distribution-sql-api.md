@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 07/15/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: c4ce60e3532179efe3ac68c21b32850e73f92a69
-ms.sourcegitcommit: 1b7b0e1c915f586a906c33d7315a5dc7050a2f34
+ms.openlocfilehash: a566094f88ba9ffd25eadd046ae7254e26b9c2cf
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67881227"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234600"
 ---
 # <a name="set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>Nastavení globální distribuce služby Azure Cosmos DB pomocí rozhraní SQL API
 
@@ -78,7 +78,8 @@ DocumentClient docClient = new DocumentClient(
 await docClient.OpenAsync().ConfigureAwait(false);
 ```
 
-## <a name="nodejs-javascript-and-python-sdks"></a>Node.js, JavaScript a Python SDK
+## <a name="nodejsjavascript"></a>Node.js/JavaScript
+
 Sadu SDK můžete využívat bez jakýchkoli změn kódu. V tomto případě bude sada SDK automaticky směrovat operace čtení i zápisu do aktuální oblasti pro zápis.
 
 V jednotlivých sadách SDK verze 1.8 a novější má parametr ConnectionPolicy pro konstruktor DocumentClient novou vlastnost DocumentClient.ConnectionPolicy.PreferredLocations. Tento parametr je pole řetězců, které přebírá seznam názvů oblastí. Názvy se formátují podle sloupce název oblasti [oblastí Azure][regions] stránky. Můžete použít také předdefinované konstanty v pomocném objektu AzureDocuments.Regions.
@@ -90,7 +91,7 @@ Aktuální koncové body pro čtení a zápis jsou k dispozici ve vlastnostech D
 >
 >
 
-Níže je příklad kódu pro Node.js/Javascript. U Pythonu a Javy bude postup podobný.
+Níže je příklad kódu pro Node.js/Javascript.
 
 ```JavaScript
 // Creating a ConnectionPolicy object
@@ -104,6 +105,34 @@ connectionPolicy.PreferredLocations = ['West US', 'East US', 'North Europe'];
 
 // initialize the connection
 var client = new DocumentDBClient(host, { masterKey: masterKey }, connectionPolicy);
+```
+
+## <a name="python-sdk"></a>Python SDK
+
+Následující kód ukazuje, jak nastavit upřednostňované umístění pomocí sady Python SDK:
+
+```python
+
+connectionPolicy = documents.ConnectionPolicy()
+connectionPolicy.PreferredLocations = ['West US', 'East US', 'North Europe']
+client = cosmos_client.CosmosClient(ENDPOINT, {'masterKey': MASTER_KEY}, connectionPolicy)
+
+```
+
+## <a name="java-v2-sdk"></a>Java V2 SDK
+
+Následující kód ukazuje, jak nastavit upřednostňované umístění pomocí sady Java SDK:
+
+```java
+ConnectionPolicy policy = new ConnectionPolicy();
+policy.setUsingMultipleWriteLocations(true);
+policy.setPreferredLocations(Arrays.asList("East US", "West US", "Canada Central"));
+AsyncDocumentClient client =
+        new AsyncDocumentClient.Builder()
+                .withMasterKeyOrResourceToken(this.accountKey)
+                .withServiceEndpoint(this.accountEndpoint)
+                .withConnectionPolicy(policy)
+                .build();
 ```
 
 ## <a name="rest"></a>REST

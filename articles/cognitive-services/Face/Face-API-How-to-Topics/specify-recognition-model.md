@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: longl
-ms.openlocfilehash: 0f1069c4a3d0a841b792cedf5a5a90aec80a4cc9
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: fd60923351970dfe5aa5705a0508dbd39941ef58
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592968"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68254348"
 ---
 # <a name="specify-a-face-recognition-model"></a>Určení modelu rozpoznávání obličeje
 
@@ -45,8 +45,7 @@ Při použití [Rozpoznávání tváře – zjišťování] rozhraní API, při�
 
 Volitelně můžete zadat _returnRecognitionModel_ parametr (výchozí **false**) k označení, zda _recognitionModel_ by měla vrátit v odpovědi. Tak žádost o adresu URL [Rozpoznávání tváře – zjišťování] rozhraní REST API bude vypadat například takto:
 
-`https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&returnFaceLandmarks][&returnFaceAttributes][&recognitionModel][&returnRecognitionModel]
-&subscription-key=<Subscription key>`
+`https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&returnFaceLandmarks][&returnFaceAttributes][&recognitionModel][&returnRecognitionModel]&subscription-key=<Subscription key>`
 
 Pokud používáte klientskou knihovnu, můžete přiřadit hodnotu `recognitionModel` tím, že předáte řetězec představující verze.
 Pokud je necháte nepřiřazené, výchozí verze modelu (_recognition_01_) se použije. Podívejte se na následující příklad kódu klientské knihovny .NET.

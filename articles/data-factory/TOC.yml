@@ -564,6 +564,8 @@
           href: solution-template-copy-files-multiple-containers.md
         - name: Kopírování nových souborů na základě LastModifiedDate
           href: solution-template-copy-new-files-lastmodifieddate.md
+        - name: Přesunutí souborů
+          href: solution-template-move-files.md
         - name: Hromadné kopírování s kontrolní tabulkou
           href: solution-template-bulk-copy-with-control-table.md
         - name: Rozdílové kopírování s kontrolní tabulkou
@@ -574,6 +576,8 @@
       items:
         - name: Řešení potíží s aktivitami
           href: data-factory-troubleshoot-guide.md
+        - name: Řešení potíží se správou Azure-SSIS IR
+          href: ssis-integration-runtime-management-troubleshoot.md
         - name: Řešení potíží se spuštěním balíčku v prostředí Azure-SSIS IR
           href: ssis-integration-runtime-ssis-activity-faq.md
 - name: Referenční informace

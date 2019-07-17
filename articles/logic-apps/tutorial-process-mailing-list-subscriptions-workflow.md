@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/12/2018
-ms.openlocfilehash: b48ecce1c87c0a29996e437d621c3ce396a84856
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2b28c38d2444f227d26df1f9ca2d70876ff41064
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60503275"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68260594"
 ---
 # <a name="manage-mailing-list-requests-with-azure-logic-apps"></a>Správa požadavků na seznam adresátů pomocí Azure Logic Apps
 
@@ -62,9 +62,9 @@ Přihlaste se k webu <a href="https://portal.azure.com" target="_blank">Azure Po
    | Nastavení | Hodnota | Popis | 
    | ------- | ----- | ----------- | 
    | **Název** | LA-MailingList | Název vaší aplikace logiky | 
-   | **Předplatné** | <*název_vašeho_předplatného_Azure*> | Název vašeho předplatného Azure | 
+   | **Předplatné** | <*your-Azure-subscription-name*> | Název vašeho předplatného Azure | 
    | **Skupina prostředků** | LA-MailingList-RG | Název [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md) sloužící k uspořádání souvisejících prostředků | 
-   | **Umístění** | Východní USA 2 | Oblast, kam se mají ukládat informace o vaší aplikaci logiky | 
+   | **Location** | Východní USA 2 | Oblast, kam se mají ukládat informace o vaší aplikaci logiky | 
    | **Log Analytics** | Vypnuto | Pokud chcete zapnout protokolování diagnostiky, ponechte nastavení **Vypnuto**. | 
    |||| 
 
@@ -126,9 +126,9 @@ Teď, když máte trigger, přidejte [akci](../logic-apps/logic-apps-overview.md
 
    | Nastavení | Hodnota | Popis | 
    | ------- | ----- | ----------- | 
-   | **Komu** | <*e-mailová_adresa_schvalovatele*> | E-mailová adresa schvalovatele. Pro účely testování můžete použít svou vlastní adresu. | 
+   | **To** | <*approver-email-address*> | E-mailová adresa schvalovatele. Pro účely testování můžete použít svou vlastní adresu. | 
    | **Možnosti uživatele** | Approve (Schválit), Reject (Zamítnout) | Možné odpovědi, které může schvalovatel zvolit. Ve výchozím nastavení může schvalovatel jako odpověď zvolit Approve (Schválit) nebo Reject (Zamítnout). | 
-   | **Předmět** | Schválit žádost o členství v seznamu test-members-ML | Popisný předmět e-mailu | 
+   | **Subject** | Schválit žádost o členství v seznamu test-members-ML | Popisný předmět e-mailu | 
    |  |  |  | 
 
    Prozatím ignorujte seznam dynamického obsahu, případně seznam vložených parametrů, který se zobrazí po kliknutí do konkrétních textových polí. 
@@ -147,7 +147,7 @@ Dále přidejte podmínku, která kontroluje zvolenou odpověď schvalovatele.
 
 2. Přejmenujte podmínku tak, aby její popis lépe vystihoval účel.
 
-   1. V záhlaví podmínky zvolte tlačítko **s třemi tečkami** (**…**) > **Přejmenovat**.
+   1. V záhlaví podmínky zvolte tlačítko **s třemi tečkami** ( **…** ) > **Přejmenovat**.
 
       Příklad s úzkým zobrazením prohlížeče:
 
@@ -206,7 +206,7 @@ Dále přidejte podmínku, abyste mohli kontrolovat, jestli se nový člen úsp�
 
 ## <a name="check-for-success-or-failure"></a>Kontrola úspěchu nebo selhání
 
-1. Ve větvi **Pokud je true** pod akcí **Přidat člena do seznamu** zvolte **Další...** > **Přidat podmínku**.
+1. Ve větvi **Pokud je true** pod akcí **Přidat člena do seznamu** zvolte **Další...**  > **Přidat podmínku**.
 
 2. Přejmenujte podmínku s použitím tohoto popisu: ```If add member succeeded```
 
@@ -247,9 +247,9 @@ Dále nastavte e-maily, které se odešlou po úspěšném nebo neúspěšném p
 
    | Nastavení | Hodnota | Popis | 
    | ------- | ----- | ----------- | 
-   | **Komu** | <*vaše_e-mailová_adresa*> | E-mailová adresa, na kterou se má odeslat e-mail s informací o úspěchu. Pro účely testování můžete použít svou vlastní e-mailovou adresu. | 
-   | **Předmět** | <*předmět_e-mailu_s_informací_o_úspěchu*> | Předmět e-mailu s informací o úspěchu. Pro účely tohoto kurzu zadejte následující text a vyberte uvedené pole ze seznamu parametrů nebo dynamického obsahu v části **Přidat člena do seznamu**: <p>Úspěch! Člen byl přidán do seznamu "test-members-ML": **E-mailová adresa**" | 
-   | **Text** | <*text_e-mailu_s_informací_o_úspěchu*> | Obsah textu e-mailu s informací o úspěchu. Pro účely tohoto kurzu zadejte následující text a vyberte uvedená pole ze seznamu parametrů nebo dynamického obsahu v části **Přidat člena do seznamu**:  <p>"Nový člen se připojil do"test-members-ML": **E-mailová adresa**"</br>"Stav přihlášení člena: **Stav**" | 
+   | **To** | <*vaše_e-mailová_adresa*> | E-mailová adresa, na kterou se má odeslat e-mail s informací o úspěchu. Pro účely testování můžete použít svou vlastní e-mailovou adresu. | 
+   | **Subject** | <*subject-for-success-email*> | Předmět e-mailu s informací o úspěchu. Pro účely tohoto kurzu zadejte následující text a vyberte uvedené pole ze seznamu parametrů nebo dynamického obsahu v části **Přidat člena do seznamu**: <p>Úspěch! Člen byl přidán do seznamu "test-members-ML": **E-mailová adresa**" | 
+   | **Text** | <*body-for-success-email*> | Obsah textu e-mailu s informací o úspěchu. Pro účely tohoto kurzu zadejte následující text a vyberte uvedená pole ze seznamu parametrů nebo dynamického obsahu v části **Přidat člena do seznamu**:  <p>"Nový člen se připojil do"test-members-ML": **E-mailová adresa**"</br>"Stav přihlášení člena: **Stav**" | 
    | | | | 
 
 5. Uložte svou aplikaci logiky.
@@ -272,8 +272,8 @@ Dále nastavte e-maily, které se odešlou po úspěšném nebo neúspěšném p
 
    | Nastavení | Hodnota | Popis | 
    | ------- | ----- | ----------- | 
-   | **Komu** | <*vaše_e-mailová_adresa*> | E-mailová adresa, na kterou se má odeslat e-mail s informací o neúspěchu. Pro účely testování můžete použít svou vlastní e-mailovou adresu. | 
-   | **Předmět** | <*předmět_e-mailu_s_informací_o_neúspěchu*> | Předmět e-mailu s informací o neúspěchu. Pro účely tohoto kurzu zadejte následující text a vyberte uvedené pole ze seznamu parametrů nebo dynamického obsahu v části **Přidat člena do seznamu**: <p>"Se nezdařilo, člen nebyl přidán do seznamu"test-members-ML": **E-mailová adresa**" | 
+   | **To** | <*vaše_e-mailová_adresa*> | E-mailová adresa, na kterou se má odeslat e-mail s informací o neúspěchu. Pro účely testování můžete použít svou vlastní e-mailovou adresu. | 
+   | **Subject** | <*subject-for-failure-email*> | Předmět e-mailu s informací o neúspěchu. Pro účely tohoto kurzu zadejte následující text a vyberte uvedené pole ze seznamu parametrů nebo dynamického obsahu v části **Přidat člena do seznamu**: <p>"Se nezdařilo, člen nebyl přidán do seznamu"test-members-ML": **E-mailová adresa**" | 
    | **Text** | <*text_e-mailu_s_informací_o_neúspěchu*> | Obsah textu e-mailu s informací o neúspěchu. Pro účely tohoto kurzu zadejte tento text: <p>Člen možná již existuje. Zkontrolujte svůj účet MailChimp. | 
    | | | | 
 

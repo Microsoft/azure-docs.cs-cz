@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 06/26/2019
 ms.author: alinast
 ms.openlocfilehash: 15a152d6941a8c77cae2ef7771be93db4ddceae4
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
+ms.lasthandoff: 07/16/2019
 ms.locfileid: "67484688"
 ---
 # <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>Kurz: Nasazení Azure digitální dvojče Preview a konfigurace prostorový graf
@@ -151,7 +151,7 @@ Další informace o prostorové grafy a objektové modely, najdete v článku [m
 
 - **prostředky**: `resources` Uzel vytvoří prostředek služby Azure IoT Hub ke komunikaci se zařízeními ve vašem nastavení. Služby IoT hub v kořenovém uzlu grafu může komunikovat s všech zařízení a senzorů v grafu.  
 
-- **spaces**: V objektovém modelu digitální dvojče `spaces` představují fyzické umístění. Má každý prostor `Type` &mdash;například oblasti, místa nebo zákazník&mdash;a popisný `Name`. Mezery může patřit do jiné prostory vytváření hierarchickou strukturu. Soubor provisionSample.yaml obsahuje prostorový graf imaginární budovy. Poznámka: logické vnoření prostory typu `Floor` v rámci `Venue`, `Area` v dolní mez, a `Room` uzly do oblasti. 
+- **mezery**: V objektovém modelu digitální dvojče `spaces` představují fyzické umístění. Má každý prostor `Type` &mdash;například oblasti, místa nebo zákazník&mdash;a popisný `Name`. Mezery může patřit do jiné prostory vytváření hierarchickou strukturu. Soubor provisionSample.yaml obsahuje prostorový graf imaginární budovy. Poznámka: logické vnoření prostory typu `Floor` v rámci `Venue`, `Area` v dolní mez, a `Room` uzly do oblasti. 
 
 - **zařízení**: Může obsahovat mezery `devices`, které jsou fyzické nebo virtuální entity, které spravují počtu senzorů. Zařízení může být například telefonu uživatele, pod senzor Raspberry Pi nebo brány. V imaginární budově v naší ukázce si všimněte, že místnost **Focus Room** obsahuje zařízení **Raspberry Pi 3 A1**. Jednotlivé uzly zařízení jsou identifikované jedinečnou hodnotou `hardwareId` (ID hardwaru), která je v této ukázce pevně zakódovaná. Pokud chcete tuto ukázku nakonfigurovat pro skutečný provoz v produkčním prostředí, nahraďte tyto hodnoty odpovídajícími hodnotami z vašeho systému.  
 
