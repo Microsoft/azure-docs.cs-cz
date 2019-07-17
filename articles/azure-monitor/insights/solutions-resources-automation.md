@@ -242,8 +242,8 @@ Vlastnosti pro plány úloh jsou popsány v následující tabulce.
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| schedule name |Jeden **název** entitě s názvem podle plánu. |
-| runbook name  |Jeden **název** entitě s názvem sady runbook.  |
+| schedule name |Jeden **name** entitě s názvem podle plánu. |
+| runbook name  |Jeden **name** entitě s názvem sady runbook.  |
 
 
 
@@ -270,7 +270,7 @@ Vlastnosti pro proměnné prostředky jsou popsány v následující tabulce.
 | Vlastnost | Popis |
 |:--- |:--- |
 | description | Volitelný popis pro proměnnou. |
-| IsEncrypted | Určuje, jestli by měl být šifrovaná proměnná. |
+| isEncrypted | Určuje, jestli by měl být šifrovaná proměnná. |
 | type | Tato vlastnost aktuálně nemá žádný vliv.  Datový typ proměnné určí počáteční hodnota. |
 | value | Hodnota proměnné. |
 
