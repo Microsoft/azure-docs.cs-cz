@@ -229,7 +229,7 @@ Vyberte **Ověřit**.
 
 **Přidat vlastní doménu** stránka je zobrazena.
 
-Ujistěte se, že **Typ záznamu názvu hostitele** je nastavený na **Záznam A (www.example.com)** .
+Ujistěte se, že **Typ záznamu názvu hostitele** je nastavený na **Záznam A (example.com)** .
 
 Vyberte **Přidat vlastní doménu**.
 
