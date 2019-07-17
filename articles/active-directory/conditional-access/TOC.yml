@@ -68,6 +68,10 @@
       href: howto-conditional-access-session-lifetime.md
     - name: Migrace klasických zásad
       href: policy-migration.md
+    - name: Řešení potíží
+      items:
+        - name: Řešení potíží pomocí nástroje What If
+          href: troubleshoot-conditional-access-what-if.md
 - name: Referenční informace
   items:
     - name: Technické referenční informace

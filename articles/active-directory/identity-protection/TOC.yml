@@ -17,6 +17,8 @@
       href: notifications.md
     - name: Jaké je vaše přihlašovací prostředí?
       href: flows.md
+    - name: Ochrana identit a uživatelé B2B
+      href: concept-identity-protection-b2b.md
 - name: Návody
   expanded: true
   items:

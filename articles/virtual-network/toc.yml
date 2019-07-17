@@ -91,7 +91,7 @@
           href: virtual-network-tcpip-performance-tuning.md
     - name: Nasazení
       items:
-        - name: Protokol IPv6 pro virtuální síť Azure
+        - name: Protokol IPv6 pro virtuální síť – Load Balancer úrovně Basic
           items:
             - name: Azure PowerShell
               href: virtual-network-ipv4-ipv6-dual-stack-powershell.md
@@ -99,6 +99,14 @@
               href: virtual-network-ipv4-ipv6-dual-stack-cli.md
             - name: Šablona Resource Manageru
               href: ipv6-configure-template-json.md
+        - name: Protokol IPv6 pro virtuální síť – Standard Load Balancer
+          items:
+            - name: Azure PowerShell
+              href: virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md
+            - name: Azure CLI
+              href: virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli.md
+            - name: Šablona Resource Manageru
+              href: ipv6-configure-standard-load-balancer-template-json.md
         - name: Skupiny zabezpečení sítě
           items:
             - name: Azure PowerShell

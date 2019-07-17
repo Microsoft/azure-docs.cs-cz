@@ -292,6 +292,8 @@
       displayName: 'module, import'
 - name: Scénáře napříč komponentami
   items:
+    - name: Odeslání e-mailu z runbooku pomocí SendGridu
+      href: automation-send-email.md
     - name: Galerie runbooků
       href: automation-runbook-gallery.md
     - name: Monitorování runbooků s upozorněními metrik

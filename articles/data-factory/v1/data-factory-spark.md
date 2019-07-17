@@ -351,7 +351,7 @@ Vytvořte následující strukturu složky v úložišti objektů blob odkazuje 
 | ---- | ----------- | -------- | ---- |
 | . | Kořenová cesta úlohy Sparku na propojenou službu storage. | Ano | Složka |
 | &lt;definováno uživatelem &gt; | Cesta, která odkazuje na vstupní soubor úlohy Spark. | Ano | File |
-| . / jars | Všechny soubory v této složce jsou odeslat a umístí na cesta třídy Java clusteru. | Ne | Složka |
+| ./jars | Všechny soubory v této složce jsou odeslat a umístí na cesta třídy Java clusteru. | Ne | Složka |
 | ./pyFiles | Všechny soubory v této složce jsou nahraje a umístí na PYTHONPATH clusteru. | Ne | Složka |
 | ./files | Všechny soubory v této složce jsou odeslány a umístit do pracovního adresáře prováděcího modulu. | Ne | Složka |
 | ./archives | Všechny soubory v této složce nekomprimované. | Ne | Složka |
