@@ -10,14 +10,14 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 3fc14b821064719f39eb877aa2253f8084496a66
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a88d7de69158a54995106d45683094c9b976896b
+ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65523501"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68302529"
 ---
-# <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Glosář Principy jazyka common slovník a koncepty
+# <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Jazyk porozumění běžným slovníkům a konceptům
 Language Understanding (LUIS) Glosář vysvětluje podmínky, které můžete narazit při práci se službou LUIS rozhraní API.
 
 ## <a name="active-version"></a>Aktivní verze
@@ -96,11 +96,11 @@ Příkladem koncového bodu vypadá takto:
 
 V [batch testování](luis-interactive-test.md#batch-testing), míru testu přesnosti.
 
-## <a name="false-negative"></a>Záporné hodnoty false (TN)
+## <a name="false-negative"></a>Falešně negativní (FN)
 
 V [batch testování](luis-interactive-test.md#batch-testing), datových bodů představují projevy, ve kterých aplikace správně předpovědět neexistence cílové záměr na entitu.
 
-## <a name="false-positive"></a>Falešně pozitivní (TP)
+## <a name="false-positive"></a>Falešně pozitivní (FP)
 
 V [batch testování](luis-interactive-test.md#batch-testing), datových bodů představují projevy, ve kterých vaše aplikace správně předpovědět existenci cílové záměr na entitu.
 

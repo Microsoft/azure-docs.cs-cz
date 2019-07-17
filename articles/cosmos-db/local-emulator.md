@@ -1,92 +1,92 @@
 ---
-title: Místní vývoj s využitím emulátor služby Azure Cosmos
-description: Emulátor služby Azure Cosmos můžete vyvíjet a testovat aplikace místně pro zdarma, bez vytváření předplatného Azure.
+title: Vývoj místně pomocí emulátoru Azure Cosmos
+description: Pomocí emulátoru Azure Cosmos můžete svou aplikaci místně vyvíjet a testovat bez vytváření předplatného Azure.
 ms.service: cosmos-db
 ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
-ms.date: 07/09/2019
-ms.openlocfilehash: 9649c53f9fc11795449afd78b12fda691239bb18
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.date: 07/16/2019
+ms.openlocfilehash: 3a03829c39deb954a8baa908de63b9ff6f31238e
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67797327"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297851"
 ---
-# <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Pro místní vývoj a testování používat emulátor služby Azure Cosmos
+# <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Použití emulátoru Azure Cosmos pro místní vývoj a testování
 
-Emulátor služby Azure Cosmos nabízí místní prostředí, které emuluje služby Azure Cosmos DB pro účely vývoje. Emulátor služby Azure Cosmos můžete vyvíjet a testovat aplikace místně bez vytváření předplatného Azure a bez jakýchkoli nákladů. Jakmile budete spokojeni s fungováním aplikace v emulátoru služby Azure Cosmos, můžete přejít na účet Azure Cosmos v cloudu.
+Emulátor Azure Cosmos poskytuje místní prostředí, které emuluje službu Azure Cosmos DB pro účely vývoje. Pomocí emulátoru Azure Cosmos můžete svou aplikaci vyvíjet a testovat místně, aniž byste museli vytvářet předplatné Azure nebo náklady. Až budete spokojeni s tím, jak vaše aplikace funguje v emulátoru Azure Cosmos, můžete přejít na používání účtu Azure Cosmos v cloudu.
 
-Můžete vyvíjet pomocí emulátoru služby Azure Cosmos pomocí [SQL](local-emulator.md#sql-api), [Cassandra](local-emulator.md#cassandra-api), [MongoDB](local-emulator.md#azure-cosmos-dbs-api-for-mongodb), [Gremlin](local-emulator.md#gremlin-api), a [tabulky](local-emulator.md#table-api) Účty rozhraní API. Ale v tuto chvíli zobrazení Průzkumníku dat se spustila v emulátoru plně podporuje klienty pro rozhraní SQL API pouze. 
+Můžete vyvíjet pomocí emulátoru Azure Cosmos s využitím účtů [SQL](local-emulator.md#sql-api), [Cassandra](local-emulator.md#cassandra-api), [MongoDB](local-emulator.md#azure-cosmos-dbs-api-for-mongodb), [Gremlin](local-emulator.md#gremlin-api)a [Table](local-emulator.md#table-api) API. V současnosti ale zobrazení Průzkumník dat v emulátoru plně podporuje klienty pouze pro rozhraní SQL API. 
 
 ## <a name="how-the-emulator-works"></a>Jak emulátor funguje
 
-Emulátor služby Azure Cosmos nabízí vysokou věrností emulace služby Azure Cosmos DB. Podporuje stejné funkce jako Azure Cosmos DB, včetně podpory pro vytvoření a dotazování na data, zřizování a škálování kontejnerů a spouštění uložených procedur a aktivačních událostí. Vývoj a testování aplikací s využitím emulátor služby Azure Cosmos a jejich nasazení do Azure v globálním měřítku tak, že pouze jediné konfiguraci změnit na koncový bod připojení pro službu Azure Cosmos DB.
+Emulátor Azure Cosmos zajišťuje emulaci Azure Cosmos DB služby s vysokou přesností. Podporuje stejné funkce jako Azure Cosmos DB, včetně podpory pro vytváření a dotazování dat, zřizování a škálování kontejnerů a spouštění uložených procedur a triggerů. Můžete vyvíjet a testovat aplikace pomocí emulátoru Azure Cosmos a nasazovat je do Azure v globálním měřítku jenom tak, že se na koncový bod připojení pro Azure Cosmos DB nasadí jedna změna konfigurace.
 
-Přestože je emulace služby Azure Cosmos DB věrná, implementace emulátoru se od služby liší. Emulátor například používá standardní součásti operačního systému, jako je místní systém souborů pro trvalost a sada protokolů HTTPS pro připojení. Funkce, která závisí na infrastrukturu Azure, jako je globální replikaci, latence v řádu milisekund pro čtení/zápisu a přizpůsobitelných úrovní konzistence se nedají použít.
+Přestože je emulace služby Azure Cosmos DB věrná, implementace emulátoru se od služby liší. Emulátor například používá standardní součásti operačního systému, jako je místní systém souborů pro trvalost a sada protokolů HTTPS pro připojení. Funkce, které se spoléhají na infrastrukturu Azure, jako je globální replikace, latence milisekund pro čtení a zápis a přizpůsobitelné úrovně konzistence se nevztahují.
 
-Můžete migrovat data mezi emulátor služby Azure Cosmos a služby Azure Cosmos DB s použitím [nástroj pro migraci dat Azure Cosmos DB](https://github.com/azure/azure-documentdb-datamigrationtool).
+Data mezi emulátorem Azure Cosmos a službou Azure Cosmos DB můžete migrovat pomocí [nástroje Azure Cosmos DB Data Migration Tool](https://github.com/azure/azure-documentdb-datamigrationtool).
 
-Můžete spustit emulátor služby Azure Cosmos v kontejneru Windows Docker, najdete v článku [Docker Hubu](https://hub.docker.com/r/microsoft/azure-cosmosdb-emulator/) příkazu docker pull a [Githubu](https://github.com/Azure/azure-cosmos-db-emulator-docker) pro zdrojový kód emulátoru.
+Emulátor Azure Cosmos můžete spustit v kontejneru Docker systému Windows. Další informace najdete v [Docker Hub](https://hub.docker.com/r/microsoft/azure-cosmosdb-emulator/) pro příkaz Docker Pull a na [GitHubu](https://github.com/Azure/azure-cosmos-db-emulator-docker) pro zdrojový kód emulátoru.
 
 ## <a name="differences-between-the-emulator-and-the-service"></a>Rozdíly mezi emulátorem a službou
 
-Protože emulátor služby Azure Cosmos nabízí prostředí emulované běžící na místních vývojářskou pracovní stanici, existují určité rozdíly ve funkcích mezi emulátorem a účet Azure Cosmos v cloudu:
+Vzhledem k tomu, že emulátor Azure Cosmos poskytuje emulované prostředí běžící na místní pracovní stanici pro vývojáře, je mezi emulátorem a účtem Azure Cosmos v cloudu několik rozdílů:
 
-* Průzkumník dat se spustila v emulátoru teď podporuje klienty pro rozhraní SQL API. Zobrazení Průzkumníka dat a operací pro Azure Cosmos DB API, například MongoDB, tabulka, graf a rozhraní Cassandra API nejsou plně podporované.
-* Emulátor služby Azure Cosmos podporuje pouze jeden účet pevné a dobře známé hlavní klíč. Obnovování klíčů se nedá v emulátor služby Azure Cosmos, ale výchozí klíč lze změnit pomocí parametru příkazového řádku.
-* Emulátor služby Azure Cosmos není škálovatelné služby a nebude podporovat velký počet kontejnerů.
-* Emulátor služby Azure Cosmos se nebude poskytovat různé [úrovně konzistence služby Azure Cosmos DB](consistency-levels.md).
-* Emulátor služby Azure Cosmos se nebude poskytovat [replikace ve více oblastech](distribute-data-globally.md).
-* Jak si kopii emulátor služby Azure Cosmos nemusí být vždy aktuální pomocí nejnovější změny ve službě Azure Cosmos DB, by měla odkazovat na [Plánovač kapacity služby Azure Cosmos DB](https://www.documentdb.com/capacityplanner) pro přesný odhad produkční propustnost (ru) potřebám vaší aplikace.
-* Pokud používáte emulátor služby Azure Cosmos, ve výchozím nastavení, můžete vytvořit až 25 pevné velikosti kontejnerů (podporovány pouze při použití sady SDK služby Azure Cosmos DB) nebo 5 neomezené kontejnery pomocí emulátoru služby Azure Cosmos. Další informace o změně této hodnoty najdete v části [Nastavení hodnoty PartitionCount](#set-partitioncount).
+* Aktuálně Průzkumník dat v emulátoru podporuje klienty pro rozhraní SQL API. Zobrazení a operace Průzkumník dat pro rozhraní API Azure Cosmos DB, jako jsou MongoDB, Table, Graph a Cassandra API, nejsou plně podporované.
+* Emulátor Azure Cosmos podporuje jenom jeden pevný účet a dobře známý hlavní klíč. Vygenerování klíče není možné v emulátoru Azure Cosmos, ale výchozí klíč se dá změnit pomocí možnosti příkazového řádku.
+* Emulátor Azure Cosmos není škálovatelná služba a nebude podporovat velký počet kontejnerů.
+* Emulátor Azure Cosmos nenabízí různé [Azure Cosmos dB úrovně konzistence](consistency-levels.md).
+* Emulátor Azure Cosmos nenabízí replikaci ve [více oblastech](distribute-data-globally.md).
+* Protože vaše kopie emulátoru Azure Cosmos nemusí být vždycky aktuální s nejnovějšími změnami ve službě Azure Cosmos DB, měli byste se podívat na [Azure Cosmos DB Capacity Planneru](https://www.documentdb.com/capacityplanner) a přesně odhadnout potřeby produkční propustnosti (ru). použití.
+* Při použití emulátoru Azure Cosmos ve výchozím nastavení můžete vytvořit až 25 kontejnerů s pevnou velikostí (podporované jenom pomocí sad SDK pro Azure Cosmos DB) nebo 5 neomezených kontejnerů pomocí emulátoru Azure Cosmos. Další informace o změně této hodnoty najdete v části [Nastavení hodnoty PartitionCount](#set-partitioncount).
 
 ## <a name="system-requirements"></a>Požadavky na systém
 
-Emulátor služby Azure Cosmos má následující požadavky na hardware a software:
+Emulátor Azure Cosmos má následující požadavky na hardware a software:
 
 * Požadavky na software
   * Windows Server 2012 R2, Windows Server 2016 nebo Windows 10
-  * 64bitová verze operačního systému
+  * 64 – bitový operační systém
 * Minimální požadavky na hardware
   * 2 GB RAM
   * 10 GB volného místa na disku
 
 ## <a name="installation"></a>Instalace
 
-Můžete stáhnout a nainstalovat emulátor služby Azure Cosmos z [Microsoft Download Center](https://aka.ms/cosmosdb-emulator) nebo můžete spustit emulátor v Dockeru pro Windows. Pokyny týkající se použití emulátoru v aplikaci Docker for Windows najdete v části [Spuštění v Dockeru](#running-on-docker).
+Emulátor Azure Cosmos můžete stáhnout a nainstalovat z webu [Microsoft Download Center](https://aka.ms/cosmosdb-emulator) nebo můžete spustit emulátor na Docker for Windows. Pokyny týkající se použití emulátoru v aplikaci Docker for Windows najdete v části [Spuštění v Dockeru](#running-on-docker).
 
 > [!NOTE]
-> Pokud chcete nainstalovat, nakonfigurovat a spustit emulátor služby Azure Cosmos, musí mít oprávnění správce v počítači. Emulátor se vytvořit nebo přidat certifikát a také nastavit pravidla brány firewall Chcete-li spustit jejích služeb; Proto je nezbytné pro emulátor, abyste mohli provádět tyto operace.
+> Pokud chcete nainstalovat, nakonfigurovat a spustit emulátor Azure Cosmos, musíte mít v počítači oprávnění správce. Emulátor vytvoří nebo přidá certifikát a také nastaví pravidla brány firewall, aby bylo možné provozovat jeho služby. Proto je nutné, aby emulátor mohl provádět tyto operace.
 
 ## <a name="running-on-windows"></a>Spuštění v systému Windows
 
-Pokud chcete spustit emulátor služby Azure Cosmos, vybrat tlačítko Start nebo stisknutím klávesy Windows. Začněte psát **emulátor služby Azure Cosmos**a vyberte emulátor ze seznamu aplikací.
+Emulátor Azure Cosmos spustíte tak, že vyberete tlačítko Start nebo stisknete klávesu Windows. Začněte psát **emulátor Azure Cosmos**a vyberte ze seznamu aplikací emulátor.
 
-![Vybrat tlačítko Start nebo stiskněte klávesu Windows, začněte psát ** Azure Cosmos emulátor ** a vyberte emulátor ze seznamu aplikací](./media/local-emulator/database-local-emulator-start.png)
+![Vyberte tlačítko Start nebo stiskněte klávesu Windows, začněte psát * * emulátor Azure Cosmos * * a vyberte emulátor ze seznamu aplikací.](./media/local-emulator/database-local-emulator-start.png)
 
-Po spuštění emulátoru se v oznamovací oblasti hlavního panelu Windows zobrazí jeho ikona. ![Azure Cosmos DB místní emulátor panel oznámení o úlohy](./media/local-emulator/database-local-emulator-taskbar.png)
+Po spuštění emulátoru se v oznamovací oblasti hlavního panelu Windows zobrazí jeho ikona. ![Oznámení o Azure Cosmos DB hlavním emulátoru hlavního emulátoru](./media/local-emulator/database-local-emulator-taskbar.png)
 
-Emulátor služby Azure Cosmos ve výchozím nastavení se spustí v místním počítači ("localhost") naslouchá na portu 8081.
+Emulátor Azure Cosmos ve výchozím nastavení běží na místním počítači (localhost), který naslouchá na portu 8081.
 
-Emulátor služby Azure Cosmos je nainstalován do `C:\Program Files\Azure Cosmos DB Emulator` ve výchozím nastavení. Emulátor můžete také spustit a zastavit z příkazového řádku. Další informace najdete v [referenčních informacích k nástroji příkazového řádku](#command-line).
+Emulátor Azure Cosmos je `C:\Program Files\Azure Cosmos DB Emulator` ve výchozím nastavení nainstalovaný. Emulátor můžete také spustit a zastavit z příkazového řádku. Další informace najdete v [referenčních informacích k nástroji příkazového řádku](#command-line).
 
 ## <a name="start-data-explorer"></a>Spuštění Průzkumníka dat
 
-Když spustí se emulátor služby Azure Cosmos, automaticky se otevře Průzkumník dat Azure Cosmos v prohlížeči. Adresa se zobrazí jako `https://localhost:8081/_explorer/index.html`. Pokud ho zavřete Průzkumníka a chcete ho později znovu otevřete, můžete otevřít adresu URL v prohlížeči nebo spouštět z emulátoru služby Azure Cosmos v ikonu na hlavním panelu Windows, jak je znázorněno níže.
+Když se emulátor Azure Cosmos spustí, automaticky se v prohlížeči otevře Průzkumník dat Azure Cosmos. Adresa se zobrazí jako `https://localhost:8081/_explorer/index.html`. Pokud zavřete Průzkumníka a chcete ho znovu otevřít později, můžete buď otevřít adresu URL v prohlížeči, nebo ji spustit z emulátoru Azure Cosmos v ikoně na hlavním panelu Windows, jak je znázorněno níže.
 
-![Azure Cosmos místní emulátor data Průzkumníka Spouštěče](./media/local-emulator/database-local-emulator-data-explorer-launcher.png)
+![Spouštěč Průzkumníka dat místního emulátoru Azure Cosmos](./media/local-emulator/database-local-emulator-data-explorer-launcher.png)
 
 ## <a name="checking-for-updates"></a>Kontrola aktualizací
 
 Průzkumník dat zjistí, zda je k dispozici nová aktualizace ke stažení.
 
 > [!NOTE]
-> Data vytvořená v jedné verzi emulátor služby Azure Cosmos (viz %LOCALAPPDATA%\CosmosDBEmulator nebo data volitelné nastavení cesty) nemusí být dostupné při používání jiné verze. Pokud je potřeba pro dlouhodobé uchovávání dat, doporučujeme ukládat data v účtu služby Azure Cosmos, nikoli emulátor služby Azure Cosmos.
+> Data vytvořená v jedné verzi emulátoru Azure Cosmos (viz%LOCALAPPDATA%\CosmosDBEmulator nebo volitelná nastavení cesty k datům) nejsou zaručená, že budou přístupná, pokud používáte jinou verzi. Pokud potřebujete zachovat data po dlouhou dobu, doporučujeme, abyste tato data ukládali v účtu Azure Cosmos, nikoli v emulátoru Azure Cosmos.
 
 ## <a name="authenticating-requests"></a>Ověřování požadavků
 
-Jako pomocí služby Azure Cosmos DB v cloudu, musí být ověřeny všechny požadavky, které vytváříte, proti emulátor služby Azure Cosmos. Emulátor služby Azure Cosmos podporuje jeden účet pevné a dobře známý ověřovací klíč pro ověřování hlavní klíč. Tento účet a klíče jsou pouze pověření pro použití s emulátor služby Azure Cosmos. Jsou to tyto:
+Stejně jako u Azure Cosmos DB v cloudu musí být ověřeny všechny požadavky, které provedete v emulátoru Azure Cosmos. Emulátor Azure Cosmos podporuje jeden pevný účet a známý ověřovací klíč pro ověřování pomocí hlavního klíče. Tento účet a klíč jsou jediné přihlašovací údaje povolené pro použití s emulátorem Azure Cosmos. Jsou to tyto:
 
 ```bash
 Account name: localhost:<port>
@@ -94,24 +94,24 @@ Account key: C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZ
 ```
 
 > [!NOTE]
-> Hlavní klíč nepodporuje emulátor služby Azure Cosmos je určena pouze pro použití s emulátorem. Váš účet Azure Cosmos DB v produkčním prostředí a klíč nelze použít s emulátor služby Azure Cosmos.
+> Hlavní klíč podporovaný emulátorem Azure Cosmos je určený jenom pro použití s emulátorem. V emulátoru Azure Cosmos nemůžete použít svůj účet a klíč produkčního Azure Cosmos DB.
 
 > [!NOTE]
-> Pokud jste spustili v emulátoru s možností uveden, použijte vygenerovaný klíč, místo `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`. Další informace o možnosti uveden v tématu [odkaz na nástroj příkazového řádku.](#command-line-syntax)
+> Pokud jste spustili emulátor s možností/Key, pak použijte vygenerovaný klíč místo `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`. Další informace o možnosti/Key naleznete v tématu [Reference k nástroji příkazového řádku.](#command-line-syntax)
 
-Jako službou Azure Cosmos DB, emulátor služby Azure Cosmos podporuje pouze zabezpečenou komunikaci protokolem SSL.
+Jako u Azure Cosmos DB emulátor Azure Cosmos podporuje jenom zabezpečenou komunikaci přes SSL.
 
 ## <a name="running-on-a-local-network"></a>Spuštění v místní síti
 
-Emulátor můžete spustit v místní síti. Chcete-li povolit přístup k síti, zadejte `/AllowNetworkAccess` možnost na [příkazového řádku](#command-line-syntax), což také vyžaduje, že zadáte `/Key=key_string` nebo `/KeyFile=file_name`. Můžete použít `/GenKeyFile=file_name` vygenerovat soubor s předem náhodný klíč. Pak můžete předat ho do `/KeyFile=file_name` nebo `/Key=contents_of_file`.
+Emulátor můžete spustit v místní síti. Pokud chcete povolit přístup k síti, `/AllowNetworkAccess` zadejte na [příkazovém řádku](#command-line-syntax)možnost, která také vyžaduje, abyste zadali `/Key=key_string` nebo. `/KeyFile=file_name` Můžete použít `/GenKeyFile=file_name` k vygenerování souboru s náhodným klíčem. Pak můžete předat to `/KeyFile=file_name` nebo. `/Key=contents_of_file`
 
-Povolení přístupu k síti pro první by měl uživatel vypněte emulátor a odstraňte adresář data v emulátoru (% LOCALAPPDATA%\CosmosDBEmulator).
+Pro povolení přístupu k síti uživateli při prvním spuštění emulátoru a odstranění datového adresáře emulátoru (%LOCALAPPDATA%\CosmosDBEmulator).
 
 ## <a name="developing-with-the-emulator"></a>Vývoj v emulátoru
 
 ### <a name="sql-api"></a>SQL API
 
-Jakmile budete mít emulátor služby Azure Cosmos spuštěná na ploše, lze použít podporované [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) nebo [REST API služby Azure Cosmos DB](/rest/api/cosmos-db/) k interakci s emulátorem. Emulátor služby Azure Cosmos zahrnuje také integrované Průzkumník dat, který vám umožní vytvořit kontejnery pro rozhraní SQL API nebo Cosmos DB pro rozhraní Mongodb API a zobrazit a upravit položky bez psaní kódu.
+Jakmile na ploše spustíte emulátor Azure Cosmos, můžete k interakci s emulátorem použít libovolnou podporovanou [sadu Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) nebo [Azure Cosmos DB REST API](/rest/api/cosmos-db/) . Emulátor Azure Cosmos obsahuje taky integrovaný Průzkumník dat, který umožňuje vytvářet kontejnery pro rozhraní SQL API nebo Cosmos DB pro rozhraní API Mongo DB a zobrazovat a upravovat položky bez psaní kódu.
 
 ```csharp
 // Connect to the Azure Cosmos Emulator running locally
@@ -122,7 +122,7 @@ DocumentClient client = new DocumentClient(
 
 ### <a name="azure-cosmos-dbs-api-for-mongodb"></a>Rozhraní API služby Azure Cosmos DB pro MongoDB
 
-Pokud používáte [rozhraní API služby Azure Cosmos DB pro MongoDB](mongodb-introduction.md), použijte následující připojovací řetězec:
+Pokud [pro MongoDB používáte rozhraní API Azure Cosmos DB](mongodb-introduction.md), použijte následující připojovací řetězec:
 
 ```bash
 mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==@localhost:10255/admin?ssl=true
@@ -130,7 +130,7 @@ mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mG
 
 ### <a name="table-api"></a>Rozhraní Table API
 
-Jakmile budete mít emulátor služby Azure Cosmos spuštěná v počítači, můžete použít [Azure Cosmos DB Table API SDK](table-storage-how-to-use-dotnet.md) k interakci s emulátorem. Spusťte emulátor z příkazového řádku jako správce pomocí "/ EnableTableEndpoint". Následně spusťte následující kód k připojení k účtu rozhraní API tabulky:
+Jakmile na ploše spustíte emulátor Azure Cosmos, můžete k interakci s emulátorem použít [sadu SDK pro rozhraní API pro tabulky Azure Cosmos DB](table-storage-how-to-use-dotnet.md) . Spusťte emulátor z příkazového řádku jako správce s názvem "/EnableTableEndpoint". V dalším kroku spusťte následující kód pro připojení k účtu rozhraní Table API:
 
 ```csharp
 using Microsoft.WindowsAzure.Storage;
@@ -149,13 +149,13 @@ table.Execute(TableOperation.Insert(new DynamicTableEntity("partitionKey", "rowK
 
 ### <a name="cassandra-api"></a>Rozhraní Cassandra API
 
-Spusťte emulátor z příkazového řádku správce pomocí "/ EnableCassandraEndpoint". Případně můžete také nastavit proměnnou prostředí `AZURE_COSMOS_EMULATOR_CASSANDRA_ENDPOINT=true`.
+Spusťte emulátor z příkazového řádku správce s názvem "/EnableCassandraEndpoint". Případně můžete také nastavit proměnnou `AZURE_COSMOS_EMULATOR_CASSANDRA_ENDPOINT=true`prostředí.
 
-* [Nainstalujte Python 2.7](https://www.python.org/downloads/release/python-2716/)
+* [Instalace Pythonu 2,7](https://www.python.org/downloads/release/python-2716/)
 
-* [Install Cassandra CLI/CQLSH](https://cassandra.apache.org/download/)
+* [Instalace rozhraní příkazového řádku Cassandra/CQLSH](https://cassandra.apache.org/download/)
 
-* V okně regulární příkazového řádku spusťte následující příkazy:
+* V běžném okně příkazového řádku spusťte následující příkazy:
 
   ```bash
   set Path=c:\Python27;%Path%
@@ -165,7 +165,7 @@ Spusťte emulátor z příkazového řádku správce pomocí "/ EnableCassandraE
   cqlsh localhost 10350 -u localhost -p C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw== --ssl
   ```
 
-* V prostředí CQLSH spusťte následující příkazy pro připojení na koncový bod Cassandra:
+* V prostředí CQLSH spusťte následující příkazy pro připojení ke koncovému bodu Cassandra:
 
   ```bash
   CREATE KEYSPACE MyKeySpace WITH replication = {'class':'MyClass', 'replication_factor': 1};
@@ -179,13 +179,13 @@ Spusťte emulátor z příkazového řádku správce pomocí "/ EnableCassandraE
 
 ### <a name="gremlin-api"></a>Rozhraní Gremlin API
 
-Spusťte emulátor z příkazového řádku správce pomocí "/ EnableGremlinEndpoint". Případně můžete také nastavit proměnné prostředí `AZURE_COSMOS_EMULATOR_GREMLIN_ENDPOINT=true`
+Spusťte emulátor z příkazového řádku správce s názvem "/EnableGremlinEndpoint". Případně můžete také nastavit proměnnou prostředí.`AZURE_COSMOS_EMULATOR_GREMLIN_ENDPOINT=true`
 
-* [Instalace apache tinkerpop-gremlin konzoly-3.3.4](https://tinkerpop.apache.org/downloads.html)
+* [Instalace Apache-tinkerpop-Gremlin-Console-3.3.4](https://tinkerpop.apache.org/downloads.html)
 
-* V Průzkumníku dat na emulátor vytvořte databázi "db1" a kolekce "coll1"; pro klíč oddílu zvolte možnost "/ name"
+* V Průzkumník dat emulátoru vytvořte databázi "DB1" a kolekci "coll1"; pro klíč oddílu vyberte "/Name".
 
-* V okně regulární příkazového řádku spusťte následující příkazy:
+* V běžném okně příkazového řádku spusťte následující příkazy:
 
   ```bash
   cd /d C:\sdk\apache-tinkerpop-gremlin-console-3.3.4-bin\apache-tinkerpop-gremlin-console-3.3.4
@@ -204,7 +204,7 @@ Spusťte emulátor z příkazového řádku správce pomocí "/ EnableGremlinEnd
   bin\gremlin.bat
   ```
 
-* V prostředí Gremlin spusťte následující příkazy pro připojení na koncový bod Gremlin:
+* V prostředí Gremlin spusťte následující příkazy pro připojení ke koncovému bodu Gremlin:
 
   ```bash
   :remote connect tinkerpop.server conf/remote-localcompute.yaml
@@ -219,16 +219,16 @@ Spusťte emulátor z příkazového řádku správce pomocí "/ EnableGremlinEnd
 
 Jazyky a moduly runtime rozhraní .NET používají k bezpečnému připojení k místnímu emulátoru služby Azure Cosmos DB úložiště certifikátů systému Windows. Další jazyky mají vlastní metody správy a použití certifikátů. Java používá vlastní [úložiště certifikátů](https://docs.oracle.com/cd/E19830-01/819-4712/ablqw/index.html), zatímco Python používá [obálky soketu](https://docs.python.org/2/library/ssl.html).
 
-Pokud chcete získat certifikát pro použití s jazyky a moduly runtime, které se neintegrují s úložištěm certifikátů systému Windows, budete ho muset exportovat pomocí Správce certifikátů systému Windows. Můžete spustit spuštěním certlm.msc nebo pokyny krok za krokem v [Export certifikátů emulátoru Azure Cosmos](./local-emulator-export-ssl-certificates.md). Jakmile je správce certifikátů spuštěn, otevřete osobní certifikáty, jak je zobrazeno níže, a exportujte certifikát s popisným názvem „DocumentDBEmulatorCertificate“ jako soubor X.509 (.cer) s kódováním BASE-64.
+Pokud chcete získat certifikát pro použití s jazyky a moduly runtime, které se neintegrují s úložištěm certifikátů systému Windows, budete ho muset exportovat pomocí Správce certifikátů systému Windows. Můžete ji spustit spuštěním Certlm. msc nebo podle podrobných pokynů v tématu [export certifikátů emulátoru Azure Cosmos](./local-emulator-export-ssl-certificates.md). Jakmile je správce certifikátů spuštěn, otevřete osobní certifikáty, jak je zobrazeno níže, a exportujte certifikát s popisným názvem „DocumentDBEmulatorCertificate“ jako soubor X.509 (.cer) s kódováním BASE-64.
 
 ![Certifikát SSL místního emulátoru služby Azure Cosmos DB](./media/local-emulator/database-local-emulator-ssl_certificate.png)
 
-Certifikát X.509 lze importovat do úložiště certifikátů Javy podle pokynů v tématu o [přidání certifikátu do úložiště certifikátů certifikační autority Javy](https://docs.microsoft.com/azure/java-add-certificate-ca-store). Jakmile je certifikát importován do úložiště certifikátů, klienti SQL a Azure Cosmos DB: rozhraní API pro MongoDB bude moct připojit k emulátoru služby Azure Cosmos.
+Certifikát X.509 lze importovat do úložiště certifikátů Javy podle pokynů v tématu o [přidání certifikátu do úložiště certifikátů certifikační autority Javy](https://docs.microsoft.com/azure/java-add-certificate-ca-store). Až se certifikát naimportuje do úložiště certifikátů, klienti pro SQL a Azure Cosmos DB API pro MongoDB se budou moct připojit k emulátoru Azure Cosmos.
 
 Při připojování k emulátoru ze sad SDK Pythonu a Node.js je zakázáno ověřování SSL.
 
 ## <a id="command-line"></a>Reference nástroje příkazového řádku
-Z umístění instalace můžete příkazový řádek pro spuštění a zastavení emulátor, nakonfigurujte možnosti a provádět jiné operace.
+Z umístění instalace můžete pomocí příkazového řádku spustit a zastavit emulátor, nakonfigurovat možnosti a provést jiné operace.
 
 ### <a name="command-line-syntax"></a>Syntaxe příkazového řádku
 
@@ -238,68 +238,68 @@ Pokud chcete zobrazit seznam možností, na příkazovém řádku zadejte `Cosmo
 
 |**Možnost** | **Popis** | **Příkaz**| **Argumenty**|
 |---|---|---|---|
-|[Žádné argumenty] | Spustí se emulátor služby Azure Cosmos pomocí výchozích nastavení. |CosmosDB.Emulator.exe| |
+|[Žádné argumenty] | Spustí emulátor Azure Cosmos s výchozími nastaveními. |CosmosDB.Emulator.exe| |
 |[Nápověda] |Zobrazí seznam podporovaných argumentů příkazového řádku.|CosmosDB.Emulator.exe /? | |
-| GetStatus |Získá stav emulátor služby Azure Cosmos. Stav je indikován ukončovací kód: 1 = od, 2 = spuštěný, 3 = zastavena. Záporný ukončovací kód označuje, že došlo k chybě. Žádný jiný výstup neexistuje. | CosmosDB.Emulator.exe /GetStatus| |
-| Shutdown| Vypne emulátor služby Azure Cosmos.| CosmosDB.Emulator.exe /Shutdown | |
-|DataPath | Určuje cestu, do které chcete uložit datové soubory. Výchozí hodnota je % LocalAppdata%\CosmosDBEmulator. | CosmosDB.Emulator.exe /DataPath=\<datapath\> | \<DataPath\>: Přístupná cesta |
-|Port | Určuje číslo portu pro emulátor. Výchozí hodnota je 8081. |CosmosDB.Emulator.exe /Port=\<port\> | \<Port\>: Jeden port číslo |
-| ComputePort | Zadané číslo portu pro službu Compute brány zprostředkovatele komunikace s objekty. Port testu Koncový bod brány HTTP se počítá jako ComputePort + 79. Proto ComputePort a ComputePort + 79 musí být otevřený a dostupný. Výchozí hodnoty jsou 8900, 8979. | CosmosDB.Emulator.exe /ComputePort = \<computeport\> | \<computeport\>: Jeden port číslo |
-| EnableMongoDbEndpoint | Umožňuje rozhraní MongoDB API | CosmosDB.Emulator.exe /EnableMongoDbEndpoint | |
-| MongoPort | Určuje číslo portu, který chcete použít pro rozhraní API kompatibility MongoDB. Výchozí hodnota je 10255. |CosmosDB.Emulator.exe /MongoPort= \<mongoport\>|\<mongoport\>: Jeden port číslo|
-| EnableCassandraEndpoint | Umožňuje rozhraní Cassandra API | CosmosDB.Emulator.exe /EnableCassandraEndpoint | |
-| CassandraPort | Udává číslo portu pro koncový bod Cassandra. Výchozí hodnota je 10350. | CosmosDB.Emulator.exe /CassandraPort = \<cassandraport\> | \<cassandraport\>: Jeden port číslo |
-| EnableGremlinEndpoint | Umožňuje Gremlin API | CosmosDB.Emulator.exe /EnableGremlinEndpoint | |
-| GremlinPort | Číslo portu pro koncový bod Gremlin. Výchozí hodnota je 8901. | CosmosDB.Emulator.exe /GremlinPort=\<port\> | \<Port\>: Jeden port číslo |
-|EnableTableEndpoint | Umožňuje rozhraní API tabulky Azure | CosmosDB.Emulator.exe /EnableTableEndpoint | |
-|TablePort | Číslo portu pro koncový bod tabulky Azure. Výchozí hodnota je 8902. | CosmosDB.Emulator.exe /TablePort=\<port\> | \<Port\>: Jeden port číslo|
-| KeyFile | Přečíst autorizační klíč ze zadaného souboru. Pomocí možnosti /GenKeyFile generovat keyfile | CosmosDB.Emulator.exe /KeyFile=\<file_name\> | \<název_souboru\>: Cesta k souboru |
-| ResetDataPath | Rekurzivně odstraní všechny soubory v zadané cestě. Pokud cestu nezadáte, použije se výchozí %LOCALAPPDATA%\CosmosDbEmulator | CosmosDB.Emulator.exe /ResetDataPath[=\<path>] | \<Cesta\>: Cesta k souboru  |
-| StartTraces  |  Bylo zahájeno shromažďování protokolů trasování ladění. | CosmosDB.Emulator.exe /StartTraces | |
-| StopTraces     | Zastavte shromažďování protokolů trasování ladění. | CosmosDB.Emulator.exe /StopTraces  | |
-|FailOnSslCertificateNameMismatch | Ve výchozím nastavení emulátoru obnoví jeho certifikátu SSL podepsaného držitelem, pokud tento certifikát SAN neobsahuje hostitele emulátor název domény, místní IPv4 adresu, "localhost" a "127.0.0.1". Pomocí této možnosti emulátoru se místo toho nezdaří při spuštění. Pomocí možnosti /GenCert byste pak vytvořte a nainstalujte nový certifikát SSL podepsaný svým držitelem. | CosmosDB.Emulator.exe /FailOnSslCertificateNameMismatch  | |
-| GenCert | Vygenerujte a nainstalujte nový certifikát SSL podepsaný svým držitelem. Volitelně včetně čárkou oddělený seznam dalších názvy DNS pro přístup k emulátoru přes síť. | CosmosDB.Emulator.exe /GenCert [ \<čárkami oddělený seznam dalších názvů dns\>] | |
-| DirectPorts |Určuje porty, které chcete použít pro přímé připojení. Výchozí hodnoty jsou 10251,10252,10253,10254. | CosmosDB.Emulator.exe /DirectPorts:\<přímé porty\> | \<directports\>: Čárkami oddělený seznam portů 4 |
-| Klíč |Autorizační klíč pro emulátor. Klíč musí být 64bajtový vektor s kódováním base-64. | CosmosDB.Emulator.exe /Key:\<klíč\> | \<Klíč\>: Klíč musí být v kódování base-64 vektoru 64 bajtů|
+| GetStatus |Získá stav emulátoru Azure Cosmos. Stav je označen ukončovacím kódem: 1 = začíná, 2 = spuštěno, 3 = zastaveno. Záporný ukončovací kód označuje, že došlo k chybě. Žádný jiný výstup neexistuje. | CosmosDB.Emulator.exe /GetStatus| |
+| Shutdown| Ukončí emulátor Azure Cosmos.| CosmosDB.Emulator.exe /Shutdown | |
+|DataPath | Určuje cestu, do které chcete uložit datové soubory. Výchozí hodnota je%LocalAppdata%\CosmosDBEmulator. | CosmosDB.Emulator.exe /DataPath=\<datapath\> | \<Cesta k\>DataPath: Přístupná cesta |
+|Port | Určuje číslo portu pro emulátor. Výchozí hodnota je 8081. |CosmosDB.Emulator.exe /Port=\<port\> | \<port\>: Jedno číslo portu |
+| ComputePort | Určuje číslo portu, které se má použít pro službu COMPUTE Interop Gateway. Port testu koncového bodu HTTP brány se počítá jako ComputePort + 79. Proto musí být ComputePort a ComputePort + 79 otevřené a dostupné. Výchozí hodnoty jsou 8900, 8979. | CosmosDB. emulátor. exe/ComputePort = \<ComputePort\> | \<computeport\>: Jedno číslo portu |
+| EnableMongoDbEndpoint | Povolí rozhraní MongoDB API. | CosmosDB.Emulator.exe /EnableMongoDbEndpoint | |
+| MongoPort | Určuje číslo portu, který chcete použít pro rozhraní API kompatibility MongoDB. Výchozí hodnota je 10255. |CosmosDB.Emulator.exe /MongoPort= \<mongoport\>|\<mongoport\>: Jedno číslo portu|
+| EnableCassandraEndpoint | Povolí rozhraní API Cassandra | CosmosDB. emulátor. exe/EnableCassandraEndpoint | |
+| CassandraPort | Určuje číslo portu, který se má použít pro koncový bod Cassandra. Výchozí hodnota je 10350. | CosmosDB. emulátor. exe/CassandraPort = \<CassandraPort\> | \<cassandraport\>: Jedno číslo portu |
+| EnableGremlinEndpoint | Povolí rozhraní Gremlin API. | CosmosDB.Emulator.exe /EnableGremlinEndpoint | |
+| GremlinPort | Číslo portu, které se má použít pro koncový bod Gremlin Výchozí hodnota je 8901. | CosmosDB.Emulator.exe /GremlinPort=\<port\> | \<port\>: Jedno číslo portu |
+|EnableTableEndpoint | Povolí Azure rozhraní API pro tabulky | CosmosDB. emulátor. exe/EnableTableEndpoint | |
+|TablePort | Číslo portu, které se má použít pro koncový bod tabulky Azure Výchozí hodnota je 8902. | CosmosDB. emulátor. exe/TablePort =\<port\> | \<port\>: Jedno číslo portu|
+| KeyFile | Načte autorizační klíč ze zadaného souboru. Pro vytvoření souboru klíče použijte možnost/GenKeyFile | CosmosDB. emulátor. exe/keyfile =\<název_souboru\> | \<název_souboru\>: Cesta k souboru |
+| ResetDataPath | Rekurzivně odstraní všechny soubory v zadané cestě. Pokud cestu nezadáte, použije se výchozí hodnota%LOCALAPPDATA%\CosmosDbEmulator. | CosmosDB. emulátor. exe/ResetDataPath [=\<cesta >] | \<cesta\>: Cesta k souboru  |
+| StartTraces  |  Spusťte shromažďování protokolů trasování ladění. | CosmosDB. emulátor. exe/StartTraces | |
+| StopTraces     | Zastavte shromažďování protokolů trasování ladění. | CosmosDB. emulátor. exe/StopTraces  | |
+|FailOnSslCertificateNameMismatch | Ve výchozím nastavení emulátor znovu vygeneruje svůj certifikát SSL podepsaný svým držitelem, pokud síť SAN s certifikátem nezahrnuje název domény hostitele emulátoru, místní adresu IPv4, localhost a adresu 127.0.0.1. Tato možnost způsobí, že emulátor při spuštění selže. Pak použijte možnost/GenCert a vytvořte a nainstalujte nový certifikát SSL podepsaný svým držitelem. | CosmosDB.Emulator.exe /FailOnSslCertificateNameMismatch  | |
+| GenCert | Vygenerujte a nainstalujte nový certifikát SSL podepsaný svým držitelem. Volitelně můžete zahrnout čárkami oddělený seznam dalších názvů DNS pro přístup k emulátoru přes síť. | CosmosDB. emulátor. exe/GenCert [ \<čárkami oddělený seznam dalších názvů\>DNS] | |
+| DirectPorts |Určuje porty, které chcete použít pro přímé připojení. Výchozí hodnoty jsou 10251,10252,10253,10254. | CosmosDB.Emulator.exe /DirectPorts:\<přímé porty\> | \<directports\>: Seznam 4 portů oddělených čárkami |
+| Klíč |Autorizační klíč pro emulátor. Klíč musí být 64bajtový vektor s kódováním base-64. | CosmosDB.Emulator.exe /Key:\<klíč\> | \<klíč\>: Klíč musí být kódování Base-64 pro vektor 64-byte.|
 | EnableRateLimiting | Určuje, že je povoleno chování omezující četnost požadavků. |CosmosDB.Emulator.exe /EnableRateLimiting | |
 | DisableRateLimiting |Určuje, že je zakázáno chování omezující četnost požadavků. |CosmosDB.Emulator.exe /DisableRateLimiting | |
 | NoUI | Nezobrazuje uživatelské rozhraní emulátoru. | CosmosDB.Emulator.exe /NoUI | |
 | NoExplorer | Nezobrazuje Průzkumníka dat při spuštění. |CosmosDB.Emulator.exe /NoExplorer | | 
-| PartitionCount | Určuje maximální počet oddílů kontejnerů. Zobrazit [změnit počet kontejnerů](#set-partitioncount) Další informace. | CosmosDB.Emulator.exe /PartitionCount=\<počet oddílů\> | \<partitioncount\>: Maximální počet povolených jednoho oddílu kontejnerů. Výchozí hodnota je 25. Maximální povolený počet je 250.|
-| DefaultPartitionCount| Určuje výchozí počet oddílů pro dělený kontejner. | CosmosDB.Emulator.exe /DefaultPartitionCount=\<defaultpartitioncount\> | \<defaultpartitioncount\> výchozí hodnota je 25.|
-| AllowNetworkAccess | Povolí přístup k emulátoru přes síť. Pokud chcete povolit přístup k síti, je nutné předat taky možnosti /Key =\<řetězec_klíče\> nebo/KeyFile =\<název_souboru\>. | CosmosDB.Emulator.exe AllowNetworkAccess uveden =\<key_string\> nebo/keyfile /AllowNetworkAccess CosmosDB.Emulator.exe =\<název_souboru\>| |
-| NoFirewall | Neupravujte pravidla brány firewall, pokud není použita možnost /AllowNetworkAccess. |CosmosDB.Emulator.exe /NoFirewall | |
-| GenKeyFile | Vygeneruje nový autorizační klíč a uloží ho do zadaného souboru. Generovaný klíč lze použít s možností /Key nebo/KeyFile. | CosmosDB.Emulator.exe /GenKeyFile =\<cestu k souboru klíče\> | |
-| Konzistence | Nastaví výchozí úroveň konzistence pro účet. | CosmosDB.Emulator.exe /Consistency=\<konzistence\> | \<Konzistence\>: Hodnota musí být jedna z následujících [úrovně konzistence](consistency-levels.md): Relace, silné, konečný výsledek, nebo BoundedStaleness. Výchozí hodnota je Session. |
+| PartitionCount | Určuje maximální počet kontejnerů rozdělený na oddíly. Další informace najdete v tématu [Změna počtu kontejnerů](#set-partitioncount) . | CosmosDB.Emulator.exe /PartitionCount=\<počet oddílů\> | \<partitionCount\>: Maximální počet povolených kontejnerů s jedním oddílem. Výchozí hodnota je 25. Maximální povolený počet je 250.|
+| DefaultPartitionCount| Určuje výchozí počet oddílů pro kontejner rozdělený na oddíly. | CosmosDB.Emulator.exe /DefaultPartitionCount=\<defaultpartitioncount\> | \<výchozí\> hodnota defaultpartitioncount je 25.|
+| AllowNetworkAccess | Povolí přístup k emulátoru přes síť. Pokud chcete povolit přístup k síti, je nutné předat taky možnosti /Key =\<řetězec_klíče\> nebo/KeyFile =\<název_souboru\>. | CosmosDB. emulátor. exe/AllowNetworkAccess/Key =\<key_string\> nebo CosmosDB. emulátor. exe/AllowNetworkAccess/keyfile =\<název_souboru\>| |
+| NoFirewall | Neupravujte pravidla brány firewall, pokud se používá možnost/AllowNetworkAccess. |CosmosDB.Emulator.exe /NoFirewall | |
+| GenKeyFile | Vygeneruje nový autorizační klíč a uloží ho do zadaného souboru. Generovaný klíč lze použít s možností /Key nebo/KeyFile. | CosmosDB. emulátor. exe/GenKeyFile =\<cesta k souboru klíče\> | |
+| Konzistence | Nastaví výchozí úroveň konzistence pro účet. | CosmosDB.Emulator.exe /Consistency=\<konzistence\> | \<konzistence\>: Hodnota musí být jedna z následujících [úrovní konzistence](consistency-levels.md): Relace, silná, případná nebo BoundedStaleness. Výchozí hodnota je Session. |
 | ? | Zobrazí zprávu nápovědy.| | |
 
-## <a id="set-partitioncount"></a>Změňte počet kontejnerů
+## <a id="set-partitioncount"></a>Změna počtu kontejnerů
 
-Ve výchozím nastavení můžete vytvořit až 25 pevné velikosti kontejnerů (podporovány pouze při použití sady SDK služby Azure Cosmos DB) nebo 5 neomezené kontejnery pomocí emulátoru služby Azure Cosmos. Úpravou **PartitionCount** hodnotu, můžete vytvořit až 250 pevné velikosti kontejnerů nebo 50 neomezené kontejnery nebo libovolnou kombinaci obou, které není delší než 250 pevné velikosti kontejnerů (kde jedna neomezený kontejner = 5 pevné velikosti kontejnery). Ale ne doporučujeme nastavte emulátor pomocí více než 200 pevné velikosti kontejnerů. Z důvodu režie, která se přidá na v/v operace disku, který způsobit neočekávané vypršení časového limitu při použití koncového bodu rozhraní API.
+Ve výchozím nastavení můžete vytvořit až 25 kontejnerů s pevnou velikostí (podporované jenom pomocí sad Azure Cosmos DB SDK) nebo 5 neomezených kontejnerů pomocí emulátoru Azure Cosmos. Změnou hodnoty **PartitionCount** můžete vytvořit až 250 kontejnerů pevné velikosti nebo 50 neomezených kontejnerů, případně jakoukoli kombinaci dvou, která nepřekračuje 250 kontejnerů pevné velikosti (kde jeden neomezený kontejner = 5 kontejnerů pevné velikosti). Nedoporučuje se však nastavit emulátor pro spuštění s více než 200 kontejnery s pevnou velikostí. Z důvodu režie, kterou přidává k diskovým operacím v/v, což vede k nepředvídatelným časovým limitům při použití rozhraní API koncových bodů.
 
-Pokud se pokusíte vytvořit kontejner po překročil aktuální počet oddílů, emulátor výjimku ServiceUnavailable, s následující zprávou.
+Pokud se pokusíte vytvořit kontejner po překročení aktuálního počtu oddílů, emulátor vyvolá výjimku ServiceUnavailable s následující zprávou.
 
-"Je nám líto, ale jsou aktuálně dochází k vysokému zatížení v této oblasti jsme v tuto chvíli se nedá splnit vaše žádost. Jsme neustále pracovat zpřístupnit víc a víc kapacity online a můžete to zkusit znovu.
-Prosím neváhejte k e-mailu askcosmosdb@microsoft.com kdykoli nebo z jakéhokoli důvodu.
-ID aktivity: 12345678-1234-1234-1234-123456789abc"
+Omlouváme se, ale v tuto chvíli máme vysokou poptávku a v tuto chvíli nemůže váš požadavek splnit. Průběžně pracujeme na zajištění více a větší kapacity online a pomůžeme vám to zkusit znovu.
+Váhají se na e-mail askcosmosdb@microsoft.com kdykoliv nebo z jakéhokoli důvodu.
+ActivityId 12345678-1234-1234-1234-123456789abc"
 
-Chcete-li změnit počet kontejnerů, které jsou k dispozici v emulátoru služby Azure Cosmos, proveďte následující kroky:
+Pokud chcete změnit počet kontejnerů dostupných v emulátoru Azure Cosmos, spusťte následující postup:
 
-1. Odstranit všechna data místní emulátor služby Azure Cosmos kliknutím pravým tlačítkem myši **emulátor služby Azure Cosmos DB** ikonu na hlavním panelu a následným kliknutím na položku **obnovit Data...** .
-2. Odstranit všechna data emulátor v této složce `%LOCALAPPDATA%\CosmosDBEmulator`.
+1. Kliknutím pravým tlačítkem na ikonu **emulátoru Azure Cosmos DB** na hlavním panelu a kliknutím na **resetovat data**odstraňte všechna místní data emulátoru Azure Cosmos.
+2. Odstraní všechna data emulátoru v této `%LOCALAPPDATA%\CosmosDBEmulator`složce.
 3. Ukončete všechny otevřené instance tak, že kliknete pravým tlačítkem myši na ikonu **emulátoru služby Azure Cosmos DB** na hlavním panelu systému a potom kliknete na **Exit** (Konec). Ukončení všech instancí může chvíli trvat.
-4. Nainstalujte nejnovější verzi [emulátor služby Azure Cosmos](https://aka.ms/cosmosdb-emulator).
+4. Nainstalujte nejnovější verzi [emulátoru Azure Cosmos](https://aka.ms/cosmosdb-emulator).
 5. Spusťte emulátor s příznakem PartitionCount nastaveným na hodnotu < = 250. Například: `C:\Program Files\Azure Cosmos DB Emulator> CosmosDB.Emulator.exe /PartitionCount=100`.
 
 ## <a name="controlling-the-emulator"></a>Řízení emulátoru
 
-Emulátor se instaluje spolu s modul PowerShell pro spuštění, zastavení, odinstalace a načíst stav služby. Spusťte následující rutiny můžete použít modul prostředí PowerShell:
+Emulátor se dodává s modulem PowerShellu pro spuštění, zastavení, odinstalaci a načtení stavu služby. Spuštěním následující rutiny použijte modul prostředí PowerShell:
 
 ```powershell
 Import-Module "$env:ProgramFiles\Azure Cosmos DB Emulator\PSModules\Microsoft.Azure.CosmosDB.Emulator"
 ```
 
-nebo umístit `PSModules` ve vaší `PSModulesPath` a naimportujete, jak je znázorněno v následujícím příkazu:
+nebo umístěte `PSModules` adresář na svůj `PSModulesPath` a naimportujte ho, jak je znázorněno v následujícím příkazu:
 
 ```powershell
 $env:PSModulesPath += "$env:ProgramFiles\Azure Cosmos DB Emulator\PSModules"
@@ -316,7 +316,7 @@ Zde je uveden seznam příkazů pro řízení emulátoru z PowerShellu:
 
 **Poznámky**
 
-Vrátí jednu z těchto hodnot ServiceControllerStatus: ServiceControllerStatus.StartPending ServiceControllerStatus.Running či ServiceControllerStatus.Stopped.
+Vrátí jednu z těchto hodnot ServiceControllerStatus: ServiceControllerStatus. StartPending, ServiceControllerStatus. Running nebo ServiceControllerStatus. Stopped.
 
 ### `Start-CosmosDbEmulator`
 
@@ -351,14 +351,14 @@ Rutina zajišťuje zastavení emulátoru před jeho odinstalací.
 
 ## <a name="running-on-docker"></a>Spuštění v Dockeru
 
-Emulátor služby Azure Cosmos můžete spustit na Docker pro Windows. Emulátor nefunguje v aplikaci Docker for Oracle Linux.
+Emulátor Azure Cosmos můžete spustit na Docker for Windows. Emulátor nefunguje v aplikaci Docker for Oracle Linux.
 
 Jakmile [Docker for Windows](https://www.docker.com/docker-windows) nainstalujete, přepněte na kontejnery Windows tak, že kliknete pravým tlačítkem myši na ikonu Dockeru na panelu nástrojů a vyberete **Switch to Windows containers** (Přepnout na kontejnery Windows).
 
 Potom si spuštěním následujícího příkazu z vašeho oblíbeného prostředí stáhněte image emulátoru z Centra Dockeru.
 
 ```bash
-docker pull microsoft/azure-cosmosdb-emulator
+docker pull mcr.microsoft.com/cosmosdb/windows/azure-cosmos-emulator
 ```
 Pokud chcete image spustit, spusťte následující příkazy.
 
@@ -367,15 +367,18 @@ Z příkazového řádku:
 
 md %LOCALAPPDATA%\CosmosDBEmulator\bind-mount
 
-docker run --name azure-cosmosdb-emulator --memory 2GB --mount "type=bind,source=%LOCALAPPDATA%\CosmosDBEmulator\bind-mount,destination=C:\CosmosDB.Emulator\bind-mount" --interactive --tty -p 8081:8081 -p 8900:8900 -p 8901:8901 -p 8902:8902 -p 10250:10250 -p 10251:10251 -p 10252:10252 -p 10253:10253 -p 10254:10254 -p 10255:10255 -p 10256:10256 -p 10350:10350 microsoft/azure-cosmosdb-emulator
+docker run --name azure-cosmosdb-emulator --memory 2GB --mount "type=bind,source=%LOCALAPPDATA%\CosmosDBEmulator\bind-mount,destination=C:\CosmosDB.Emulator\bind-mount" --interactive --tty -p 8081:8081 -p 8900:8900 -p 8901:8901 -p 8902:8902 -p 10250:10250 -p 10251:10251 -p 10252:10252 -p 10253:10253 -p 10254:10254 -p 10255:10255 -p 10256:10256 -p 10350:10350 mcr.microsoft.com/cosmosdb/windows/azure-cosmos-emulator --rm
 ```
+
+> [!NOTE]
+> Pokud se zobrazí chyba konfliktu portů (zadaný port se už používá) při spuštění příkazu Docker Run, můžete předat vlastní port změnou čísel portů. Můžete například změnit "-p 8081:8081" na "-p 443:8081"
 
 Z PowerShellu:
 ```powershell
 
 md $env:LOCALAPPDATA\CosmosDBEmulator\bind-mount 2>null
 
-docker run --name azure-cosmosdb-emulator --memory 2GB --mount "type=bind,source=$env:LOCALAPPDATA\CosmosDBEmulator\bind-mount,destination=C:\CosmosDB.Emulator\bind-mount" --interactive --tty -p 8081:8081 -p 8900:8900 -p 8901:8901 -p 8902:8902 -p 10250:10250 -p 10251:10251 -p 10252:10252 -p 10253:10253 -p 10254:10254 -p 10255:10255 -p 10256:10256 -p 10350:10350 microsoft/azure-cosmosdb-emulator
+docker run --name azure-cosmosdb-emulator --memory 2GB --mount "type=bind,source=$env:LOCALAPPDATA\CosmosDBEmulator\bind-mount,destination=C:\CosmosDB.Emulator\bind-mount" --interactive --tty -p 8081:8081 -p 8900:8900 -p 8901:8901 -p 8902:8902 -p 10250:10250 -p 10251:10251 -p 10252:10252 -p 10253:10253 -p 10254:10254 -p 10255:10255 -p 10256:10256 -p 10350:10350 mcr.microsoft.com/cosmosdb/windows/azure-cosmos-emulator
 
 ```
 
@@ -414,19 +417,19 @@ Pokud chcete otevřít Průzkumníka dat, přejděte v prohlížeči na následu
 
     https://<emulator endpoint provided in response>/_explorer/index.html
 
-## Se systémem Mac nebo Linux<a id="mac"></a>
+## Spuštění v systému Mac nebo Linux<a id="mac"></a>
 
-Aktuálně můžete emulátor Cosmos spustit jenom na Windows. Uživatele, které spuštěné Mac nebo Linux ve virtuálním počítači Windows můžete spustit emulátor hostované hypervisoru, jako jsou Parallels nebo VirtualBox. Dále jsou uvedené kroky, aby to bylo.
+V současné době se emulátor Cosmos dá spustit jenom ve Windows. Uživatelé se systémem Mac nebo Linux můžou spustit emulátor na virtuálním počítači s Windows, který hostuje hypervisor, jako je Parallel nebo VirtualBox. Tady je postup, jak to povolit.
 
-V rámci virtuálního počítače Windows spusťte následující příkaz a poznamenejte si IPv4 adresu.
+Ve virtuálním počítači s Windows spusťte níže uvedený příkaz a poznamenejte si adresu IPv4.
 
 ```cmd
 ipconfig.exe
 ```
 
-V rámci vaší aplikace budete muset změnit identifikátor URI objektu DocumentClient IPv4 adresu vrácenou `ipconfig.exe`. Dalším krokem je obejít ověření certifikační Autority při vytváření objektu DocumentClient. K tomu budete muset zadat HttpClientHandler pro konstruktor DocumentClient, který má vlastní implementace ServerCertificateCustomValidationCallback.
+V rámci aplikace potřebujete změnit identifikátor URI pro objekt DocumentClient, aby používal adresu IPv4, kterou vrátí `ipconfig.exe`. Dalším krokem je obejít ověřování CA při vytváření objektu DocumentClient. Za tímto účelem bude nutné poskytnout HttpClientHandler konstruktoru DocumentClient, který má vlastní implementaci pro ServerCertificateCustomValidationCallback.
 
-Níže je příklad kódu by měla vypadat.
+Níže je uveden příklad toho, jak by měl kód vypadat jako.
 
 ```csharp
 using System;
@@ -460,7 +463,7 @@ namespace emulator
 }
 ```
 
-Nakonec z na virtuálním počítači Windows spusťte emulátor Cosmos z příkazového řádku pomocí následujících možností.
+Nakonec z virtuálního počítače s Windows spusťte emulátor Cosmos z příkazového řádku pomocí následujících možností.
 
 ```cmd
 Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
@@ -468,13 +471,13 @@ Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Použijte následující tipy k řešení potíží, se kterými se emulátor služby Azure Cosmos:
+Následující tipy vám pomůžou při řešení problémů, ke kterým dochází v emulátoru Azure Cosmos:
 
-- Pokud jste nainstalovali novou verzi emulátoru a dochází k chybám, proveďte obnovení dat. Pravým tlačítkem myši na ikonu emulátoru služby Azure Cosmos na hlavním panelu systému a potom kliknutím na Obnovit Data můžete obnovit data... Pokud se tím nevyřeší chyby, můžete odinstalovat emulátor a všechny starší verze emulátoru-li nalezeno, odebrat adresář "C:\Program files\Azure emulátor služby Cosmos DB" a znovu nainstalujte emulátor. Pokyny najdete v části [Odinstalace místního emulátoru](#uninstall).
+- Pokud jste nainstalovali novou verzi emulátoru a dochází k chybám, proveďte obnovení dat. Data můžete obnovit kliknutím pravým tlačítkem na ikonu emulátoru Azure Cosmos na hlavním panelu systému a kliknutím na resetovat data.... Pokud to neopraví chyby, můžete emulátor a všechny starší verze emulátoru odinstalovat, odebrat adresář "C:\Program files\Azure Cosmos DB emulátor" a přeinstalovat emulátor. Pokyny najdete v části [Odinstalace místního emulátoru](#uninstall).
 
-- Pokud dojde k chybě emulátor služby Azure Cosmos, shromažďování výpisu stavu systému souborů ze složky "% LOCALAPPDATA%\CrashDumps", zkomprimovat a připojte je k e-mailu [ askcosmosdb@microsoft.com ](mailto:askcosmosdb@microsoft.com).
+- Pokud dojde k selhání emulátoru Azure Cosmos, shromážděte soubory s výpisem paměti ze složky '%LOCALAPPDATA%\CrashDumps ', Zkomprimujte je a připojte je [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com)k e-mailu.
 
-- Pokud dochází k selhání v `Microsoft.Azure.Cosmos.ComputeServiceStartupEntryPoint.exe`, to může být příznakem kde čítače výkonu jsou v poškozeném stavu. Obvykle spustíte tento příkaz z příkazového řádku správce řeší problém:
+- Pokud dojde k chybě `Microsoft.Azure.Cosmos.ComputeServiceStartupEntryPoint.exe`, může to být příznak, ve kterém jsou čítače výkonu v poškozeném stavu. Obvykle se při spuštění následujícího příkazu z příkazového řádku správce vyřeší problém:
 
   ```cmd
   lodctr /R
@@ -482,16 +485,16 @@ Použijte následující tipy k řešení potíží, se kterými se emulátor sl
 
 - Pokud dojde k potížím s připojením, [shromážděte trasovací soubory](#trace-files), zkomprimujte je a připojte je k e-mailu, který odešlete na adresu [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com).
 
-- Pokud se zobrazí zpráva **Služba není dostupná**, pravděpodobně se emulátoru nedaří inicializovat sadu síťových protokolů. Zkontrolujte, zda máte nainstalovaného klienta Pulse Secure nebo klienta Juniper Networks, protože potíže mohou způsobovat jejich ovladače síťových filtrů. Odinstalace ovladačů síťových filtrů třetích stran obvykle potíže vyřeší. Alternativně spusťte emulátor s /DisableRIO, který přepne na regulární Winsock emulátor síťové komunikace. 
+- Pokud se zobrazí zpráva **Služba není dostupná**, pravděpodobně se emulátoru nedaří inicializovat sadu síťových protokolů. Zkontrolujte, zda máte nainstalovaného klienta Pulse Secure nebo klienta Juniper Networks, protože potíže mohou způsobovat jejich ovladače síťových filtrů. Odinstalace ovladačů síťových filtrů třetích stran obvykle potíže vyřeší. Případně můžete spustit emulátor pomocí/DisableRIO, který přepne síťovou komunikaci emulátoru na normální rozhraní Winsock. 
 
-- Pokud emulátor běží, když počítač přechází do režimu spánku nebo instaluje nějaké aktualizace operačního systému, může se zobrazit zpráva, že **služba momentálně není dostupná**. Obnovit data v emulátoru, kliknutím pravým tlačítkem na ikonu, která se zobrazí v oznamovací oblasti systému windows a vyberte **obnovit Data**.
+- Pokud emulátor běží, když počítač přechází do režimu spánku nebo instaluje nějaké aktualizace operačního systému, může se zobrazit zpráva, že **služba momentálně není dostupná**. Obnovte data emulátoru tak, že kliknete pravým tlačítkem na ikonu, která se zobrazuje v oznamovacím panelu Windows, a vyberete **resetovat data**.
 
 ### <a id="trace-files"></a>Shromažďování trasovacích souborů
 
 Pokud chcete shromažďovat trasovací soubory pro ladění, spusťte z příkazového řádku pro správu následující příkazy:
 
 1. `cd /d "%ProgramFiles%\Azure Cosmos DB Emulator"`
-2. `CosmosDB.Emulator.exe /shutdown`. Sledujte hlavní panel systému a ujistěte se, že program je vypnutý. Může to chvíli trvat. Můžete také stačí kliknout na **ukončovací** v uživatelském rozhraní emulátor služby Azure Cosmos.
+2. `CosmosDB.Emulator.exe /shutdown`. Sledujte hlavní panel systému a ujistěte se, že program je vypnutý. Může to chvíli trvat. V uživatelském rozhraní emulátoru Azure Cosmos můžete taky jenom kliknout na **konec** .
 3. `CosmosDB.Emulator.exe /starttraces`
 4. `CosmosDB.Emulator.exe`
 5. Reprodukujte problém. Pokud Průzkumník dat nefunguje, stačí několik sekund čekat na otevření prohlížeče a zachytit chybu.
@@ -501,7 +504,7 @@ Pokud chcete shromažďovat trasovací soubory pro ladění, spusťte z příkaz
 
 ### <a id="uninstall"></a>Odinstalace místního emulátoru
 
-1. Ukončete všechny otevřené instance místní emulátor kliknutím pravým tlačítkem na emulátor služby Azure Cosmos ikonu na hlavním panelu systému a potom klepněte na tlačítko. Ukončení všech instancí může chvíli trvat.
+1. Zavřete všechny otevřené instance místního emulátoru tak, že kliknete pravým tlačítkem na ikonu emulátoru Azure Cosmos na hlavním panelu a pak kliknete na Zavřít. Ukončení všech instancí může chvíli trvat.
 2. Do vyhledávacího pole ve Windows zadejte **Programy a funkce** a klikněte na výsledek **Programy a funkce (nastavení systému)** .
 3. V seznamu aplikací se posuňte na položku **Azure Cosmos DB Emulator**, vyberte ji, klikněte na **Odinstalovat**, potvrďte a znovu klikněte na **Odinstalovat**.
 4. Když je aplikace odinstalovaná, přejděte do složky `%LOCALAPPDATA%\CosmosDBEmulator` a odstraňte ji.
@@ -511,4 +514,4 @@ Pokud chcete shromažďovat trasovací soubory pro ladění, spusťte z příkaz
 V tomto kurzu jste zjistili, jak používat místní emulátor pro bezplatný místní vývoj. Teď můžete pokračovat k dalšímu kurzu, kde se dozvíte, jak exportovat certifikáty SSL emulátoru.
 
 > [!div class="nextstepaction"]
-> [Export certifikátů emulátoru služby Azure Cosmos](local-emulator-export-ssl-certificates.md)
+> [Export certifikátů emulátoru Azure Cosmos](local-emulator-export-ssl-certificates.md)

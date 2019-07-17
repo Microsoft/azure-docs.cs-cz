@@ -4,21 +4,21 @@ ms.author: dapine
 ms.date: 06/25/2019
 ms.service: cognitive-services
 ms.topic: include
-ms.openlocfilehash: 9911b1c92bdca6c0cdf064ea484cfb603e659467
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 664cea26f910fa5b3354e2879a33de50eb13a7f3
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67712484"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68286318"
 ---
-Pokud je potřeba nakonfigurovat proxy server HTTP pro provedení odchozích požadavků, použijte tyto dva argumenty:
+Pokud potřebujete nakonfigurovat proxy server HTTP pro vytváření odchozích požadavků, použijte tyto dva argumenty:
 
 | Name | Typ dat | Popis |
 |--|--|--|
-|HTTP_PROXY|řetězec|Tento proxy server používat, například `http://proxy:8888`<br>< adresa url proxy serveru >|
-|HTTP_PROXY_CREDS|řetězec|žádné přihlašovací údaje potřebné k ověření vůči proxy serveru, například uživatelské_jméno.|
-|`<proxy-user>`|řetězec|Uživatel pro proxy server.|
-|`proxy-password`|řetězec|Heslo přidružené k `<proxy-user>` pro proxy server.|
+|HTTP_PROXY|řetězec|proxy, který se má použít, například`http://proxy:8888`<br>`<proxy-url>`|
+|HTTP_PROXY_CREDS|řetězec|jakékoli přihlašovací údaje potřebné k ověření vůči proxy serveru, například uživatelské jméno: heslo.|
+|`<proxy-user>`|řetězec|Uživatel pro proxy|
+|`proxy-password`|řetězec|Heslo spojené s `<proxy-user>` pro proxy server.|
 ||||
 
 

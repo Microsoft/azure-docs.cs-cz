@@ -1,7 +1,7 @@
 ---
-title: Známé problémy s modulem plug-in Akustika projektu
+title: Známé problémy s modulem plug-in s akustickými projekty
 titlesuffix: Azure Cognitive Services
-description: Při použití návrháře ve verzi Preview pro projekt Akustika se můžete setkat s následující známé problémy.
+description: Při použití náhledu návrháře pro akustické navýšení projektu může dojít k následujícím známým potížím.
 services: cognitive-services
 author: kylestorck
 manager: nitinme
@@ -9,40 +9,40 @@ ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.author: kylesto
-ms.openlocfilehash: e425575c6529ac4638fc963915362e0ec03f1117
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.author: kylsto
+ms.openlocfilehash: 53df981564eb177da66b86022ecfc80b25f1c763
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849917"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68296537"
 ---
-# <a name="project-acoustics-known-issues"></a>Projekt Akustika známé problémy
-Při použití návrháře ve verzi Preview pro projekt Akustika se můžete setkat s následující známé problémy.
+# <a name="project-acoustics-known-issues"></a>Známé problémy v projektu
+Při použití náhledu návrháře pro akustické navýšení projektu může dojít k následujícím známým potížím.
 
-## <a name="acoustic-parameters-are-lost-when-you-rename-a-scene"></a>Akustický parametry jsou ztraceny při přejmenování scény
+## <a name="acoustic-parameters-are-lost-when-you-rename-a-scene"></a>Při přejmenování scény se ztratí akustické parametry.
 
-Pokud přejmenujete scény, vše, co akustický parametry, které patří do tohoto scény nebude automaticky převést na novou scénu. Budete stále existují v původní soubor prostředku ale. Hledat **SceneName_AcousticParameters.asset** soubor uvnitř **Editor** adresáře vedle souboru scény. Přejmenujte soubor tak, aby odrážely nový název scény.
+Pokud přejmenujete scénu, všechny akustické parametry, které patří do této scény, se automaticky nepřesunou do nové scény. Stále existují v původním souboru prostředků. Vyhledejte soubor **SceneName_AcousticParameters. Asset** v adresáři **editoru** vedle souboru scény. Přejmenujte soubor tak, aby odrážel název nové scény.
 
-## <a name="unity-crashes-when-closing-project"></a>Unity, dojde k chybě při zavření projektu
+## <a name="unity-crashes-when-closing-project"></a>Chyby Unity při zavírání projektu
 
-Na nejnovějších verzích Unity (2018.2 +) se o známý problém, kdy Unity dojde k chybě při zavření projektu. To je sledován pomocí funkce [potíže Unity](https://issuetracker.unity3d.com/issues/crash-on-assetdatabase-getassetimporterversions-when-closing-a-specific-unity-project).
+V nejnovějších verzích Unity (2018.2 +) existuje známá chyba, kde při zavření projektu dojde k chybě Unity. Toto je sledováno tímto [problémem Unity](https://issuetracker.unity3d.com/issues/crash-on-assetdatabase-getassetimporterversions-when-closing-a-specific-unity-project).
 
-## <a name="deploying-to-android-from-some-unity-versions"></a>Nasazení do systému Android z některé verze Unity
+## <a name="deploying-to-android-from-some-unity-versions"></a>Nasazení na Android z některých verzí Unity
 
-Některé verze Unity mají chybu s nasazením zvuku modulů plug-in do systému Android. Ujistěte se, že nepoužíváte verzi ovlivněny [tuto chybu](https://issuetracker.unity3d.com/issues/android-ios-audiosource-playing-through-google-resonance-audio-sdk-with-spatializer-enabled-does-not-play-on-built-player).
+Některé verze Unity mají chybu s nasazením zvukových modulů plug-in do Androidu. Ujistěte se, že nepoužíváte verzi ovlivněnou [touto chybou](https://issuetracker.unity3d.com/issues/android-ios-audiosource-playing-through-google-resonance-audio-sdk-with-spatializer-enabled-does-not-play-on-built-player).
 
-## <a name="i-get-an-error-that-could-not-find-metadata-file-systemsecuritydll"></a>Dojde k chybě tento "nelze najít soubor metadat System.Security.dll.
+## <a name="i-get-an-error-that-could-not-find-metadata-file-systemsecuritydll"></a>Zobrazila se chyba, že se nepodařilo najít soubor metadat System. Security. dll.
 
-Zkontrolujte verze modulu Runtime skriptování v nastavení Player je nastavená na **.NET 4.x ekvivalent**a restartujte Unity.
+Ujistěte se, že verze skriptovacího modulu runtime v nastavení přehrávače je nastavená na hodnotu **ekvivalent .NET 4. x**a restartuje Unity.
 
-## <a name="im-having-authentication-problems-when-connecting-to-azure"></a>Mám potíže s ověřování při připojení k Azure
+## <a name="im-having-authentication-problems-when-connecting-to-azure"></a>Mám problémy s ověřováním při připojování k Azure
 
-Zkontrolujte používáte správné přihlašovací údaje k účtu Azure, že váš účet podporuje typ uzlu, která má označení vytvoření požadované a že systémové hodiny je přesné.
+Přečtěte si, že jste pro svůj účet Azure použili správné přihlašovací údaje, že váš účet podporuje typ uzlu požadovaný v zanesli a že vaše systémové hodiny jsou přesné.
 
-## <a name="canceling-a-bake-leaves-the-bake-tab-in-deleting-state"></a>Zrušení která má označení vytvoření opustí, která má označení vytvoření karty ve stavu "odstraňování"
-Projekt Akustika vyčistí všechny prostředky Azure pro úlohy na úspěšném dokončení nebo zrušení. To může trvat až 5 minut.
+## <a name="canceling-a-bake-leaves-the-bake-tab-in-deleting-state"></a>Zrušení zanesli opustí kartu zanesli ve stavu "odstranění".
+Akustické projekty budou vyčistit všechny prostředky Azure pro úlohu po úspěšném dokončení nebo zrušení. Tato možnost může trvat až 5 minut.
 
-## <a name="next-steps"></a>Další postup
-* Zkuste [Unity](unity-quickstart.md) nebo [Unreal](unreal-quickstart.md) ukázkový obsah
+## <a name="next-steps"></a>Další kroky
+* Vyzkoušejte si vzorový obsah [Unity](unity-quickstart.md) nebo [Unreal](unreal-quickstart.md)
 

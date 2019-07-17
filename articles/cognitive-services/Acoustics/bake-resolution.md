@@ -1,7 +1,7 @@
 ---
-title: Projekt Akustika která má označení vytvoření řešení
+title: Řešení zanesli, které je v projektu akustické
 titlesuffix: Azure Cognitive Services
-description: Tento přehled popisuje rozdíl mezi hrubý a bez problémů řešení při pečení Akustika.
+description: Tento koncepční přehled popisuje rozdíl mezi hrubými a jemnými řešeními v případě akustického a pečení.
 services: cognitive-services
 author: KyleStorck
 manager: nitinme
@@ -9,32 +9,32 @@ ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 04/05/2019
-ms.author: kylesto
-ms.openlocfilehash: c4f4581beb26eb63392644b40b1e5f16dae0481d
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.author: kylsto
+ms.openlocfilehash: ba7c71c666ae8f90d499bfe52303537aeb112a77
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849961"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68296705"
 ---
-# <a name="project-acoustics-bake-resolution"></a>Projekt Akustika která má označení vytvoření řešení
-Tento přehled popisuje rozdíl mezi hrubý a bez problémů řešení při pečení Akustika. Toto nastavení během kroku sondy pečení pracovního postupu, vyberte.
+# <a name="project-acoustics-bake-resolution"></a>Řešení zanesli, které je v projektu akustické
+Tento koncepční přehled popisuje rozdíl mezi hrubými a jemnými řešeními v případě akustického a pečení. Toto nastavení si můžete vybrat během kroku sondy pracovního postupu pečení.
 
-## <a name="Coarse-vs-Fine-Resolution"></a>Hrubý vs jemné řešení
+## <a name="Coarse-vs-Fine-Resolution"></a>Hrubá přesnost vs – jemné rozlišení
 
-Jediným rozdílem mezi nastavení pro nalezení hrubý a bez problémů je frekvenci, s jakou se provádí simulace. Používá jemné frekvenci dvakrát tak vysoké jako hrubý. To má několik dopadů na akustický simulace:
+Jediným rozdílem mezi hrubou a jemným nastavením rozlišení je frekvence, s jakou se simulace provádí. Jemné použití frekvence dvakrát tak, jak je hrubý. To má řadu dopadů na akustickou simulaci:
 
-* Vlnové pro hrubý je dvakrát až pořádku, a proto je voxels dvakrát velké.
-* Čas simulace přímo souvisí s velikostí voxel, a proto hrubý která má označení vytvoření asi 16krát rychleji než jemné která má označení vytvoření.
-* Portály (například dveře nebo windows) menší než velikost voxel nemůže být Simulovaná. Hrubý nastavení může způsobit, že některé z těchto menších portály, které nebudou simulované; Proto že nebudou předávat zvukové prostřednictvím za běhu. Můžete zobrazit, pokud dochází k tomu zobrazením voxels.
-* Nižší četností simulace za následek méně diffraction kolem a rohy.
-* Zvukové zdroje nemůže být umístěné uvnitř voxels "plného" (to znamená voxels obsahující geometrie). Výsledkem žádný zvukový signál. Je obtížnější umístit zdrojů zvuku, nejsou uvnitř větší voxels z hrubé než při použití nastavení v pořádku.
-* Větší voxels bude více pronikat do portálů, jak je znázorněno níže. První image byla vytvořena pomocí hrubý, druhá je stejný vaší bránou pomocí jemné řešení. Označené červenou označení, je mnohem méně neoprávněného vniknutí do vaší bránou pomocí nastavení v pořádku. Modrá čára je vaší bránou dle geometrie, zatímco červená čára je efektivní akustický portál definován velikostí voxel. Jak tento neoprávněného vniknutí hraje v dané situaci závisí zcela jak voxels zarovnejte s geometrie na portálu, který je určena velikost a umístění objektů na scéně.
+* Vlnová délka pro hrubou hodnotu je dvojnásobná, pokud je to jemný, a proto je voxels dvakrát tak velké.
+* Doba simulace je přímo v souvislosti se Voxel velikostí, což vede k hrubému zanesli přibližně 16 krát rychleji než jemný zanesli.
+* Portály (například dveře nebo okna) menší než velikost Voxel se nedají simulovat. Toto hrubé nastavení může způsobit, že některé z těchto menších portálů nebudou simulované. proto za běhu nebudou dodávat zvuk. Můžete zjistit, jestli se děje, zobrazením voxels.
+* Dolní frekvence simulace má za následek méně Diffraction kolem rohů a hran.
+* Zdroje zvuku nejde umístit do vyplněné voxels (tj. voxels, které obsahují geometrii). Výsledkem není žádný zvuk. Je obtížnější umístit zdroje zvuku, aby nebyly uvnitř většího voxelsu hrubého, než je v případě použití nastavení jemné.
+* Větší voxels bude intrude víc na portály, jak vidíte níže. První obrázek byl vytvořen pomocí hrubých, zatímco druhý je stejný snímek s použitím jemného rozlišení. Jak ukazují červené označení, je k dispozici mnohem méně neoprávněných vniknutí do této dveře pomocí nastavení jemného příznaku. Modrá čára je dveře, jak je definována v geometrii, zatímco červená čára představuje účinný akustický portál definovaný velikostí voxel. Způsob, jakým se tento průnik v dané situaci zaznamená, zcela závisí na tom, jak se voxels řádek s geometrií portálu, která je určená velikostí a umístěním objektů ve scéně.
 
-![Snímek obrazovky s hrubým voxels vyplnění vaší bránou v Unreal](media/unreal-coarse-bake.png)
+![Snímek obrazovky s hrubou voxelsou vyplňování dveří v Unreal](media/unreal-coarse-bake.png)
 
-![Snímek obrazovky jemné voxels ve vaší bránou v Unreal](media/unreal-fine-bake.png)
+![Snímek obrazovky s jemnou voxels v Unreal](media/unreal-fine-bake.png)
 
 ## <a name="next-steps"></a>Další postup
 
-Vyzkoušejte si nastavení pro nalezení hrubý a bez problémů sami pomocí našich [Unreal](unreal-baking.md) nebo [Unity](unity-baking.md) moduly plug-in.
+Vyzkoušejte si nastavení hrubých a jemných řešení sami pomocí našich [Unreal](unreal-baking.md) nebo modulů plug-in [Unity](unity-baking.md) .

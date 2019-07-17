@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s abstraktní | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Abstract současně.
+title: 'Kurz: Integrace Azure Active Directory s abstraktním | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a abstrakcí.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,158 +16,158 @@ ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8038784c9da30a42541688536169576cd9a92e9
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 81886fa9165269d89bde8306c5829be41952c190
+ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68235008"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68302591"
 ---
-# <a name="tutorial-integrate-abstract-with-azure-active-directory"></a>Kurz: Integrace s Azure Active Directory abstraktní
+# <a name="tutorial-integrate-abstract-with-azure-active-directory"></a>Kurz: Integrace abstrakce s Azure Active Directory
 
-V tomto kurzu se dozvíte, jak zajistit integraci s Azure Active Directory (Azure AD) abstraktní. Když abstraktní můžete integrovat s Azure AD, můžete:
+V tomto kurzu se dozvíte, jak integrovat abstrakci s Azure Active Directory (Azure AD). Když integruje abstrakci s Azure AD, můžete:
 
-* Ovládací prvek ve službě Azure AD, který má přístup k abstraktní.
-* Aby uživatelé mohli být automaticky přihlášeni k abstraktní pomocí jejich účtů služby Azure AD.
-* Správa účtů v jednom centrálním místě – na webu Azure portal.
+* Řízení ve službě Azure AD, která má přístup k abstraktnímu.
+* Umožněte uživatelům, aby se automaticky přihlásili k abstrakci pomocí svých účtů Azure AD.
+* Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS v Azure AD, najdete v článku [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli začít, potřebujete následující položky:
+Chcete-li začít, potřebujete následující položky:
 
 * Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
-* Abstraktní jednotné přihlašování (SSO) povolené předplatné.
+* Odběr aktivovaného jednotného přihlašování (SSO).
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu nakonfigurovat a otestovat jednotné přihlašování služby Azure AD v testovacím prostředí.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Abstraktní podporuje **SP a zprostředkovatele identity** jednotné přihlašování zahájené pomocí
+* Abstraktní podporuje **aktualizace SP a IDP, které** iniciovaly jednotné přihlašování
 
 ## <a name="adding-abstract-from-the-gallery"></a>Přidání abstraktu z Galerie
 
-Konfigurace integrace abstraktní do služby Azure AD, budete muset přidat abstraktní z Galerie na váš seznam spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat integraci abstraktu do Azure AD, musíte do seznamu spravovaných aplikací SaaS přidat abstrakt z galerie.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
-1. V levém navigačním podokně, vyberte **Azure Active Directory** služby.
-1. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace**.
-1. Chcete-li přidat novou aplikaci, **novou aplikaci**.
-1. V **přidat z Galerie** části, zadejte **abstraktní** do vyhledávacího pole.
-1. Vyberte **abstraktní** z výsledků panelu a pak přidat aplikaci. Počkejte několik sekund, zatímco aplikace se přidá do vašeho tenanta.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. V části **Přidat z Galerie** zadejte do vyhledávacího pole **abstract** .
+1. Z panelu výsledků vyberte **abstract** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-Nakonfigurovat a otestovat jednotné přihlašování služby Azure AD s pomocí testovacího uživatele volat abstraktní **B.Simon**. Pro jednotné přihlašování pro práci budete muset vytvořit vztah odkazu mezi uživatele služby Azure AD a souvisejících uživatelem v abstraktní.
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD s využitím testů pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v abstraktním.
 
-Nakonfigurovat a otestovat jednotné přihlašování služby Azure AD s Abstract, proveďte následující stavebních bloků:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD s abstraktním, dokončete následující stavební bloky:
 
-1. **[Konfigurace jednotného přihlašování k Azure AD](#configure-azure-ad-sso)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace jednotného přihlašování k abstraktní](#configure-abstract-sso)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
+2. **[Konfigurace abstraktního jednotného přihlašování](#configure-abstract-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace
 3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
 4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvořit abstraktní testovacího uživatele](#create-abstract-test-user)**  – Pokud chcete mít protějšek Britta Simon v abstraktní, který je propojený s Azure AD reprezentace uživatele.
-6. **[Otestovat jednotné přihlašování](#test-sso)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+5. **[Vytvořte abstraktního testovacího uživatele](#create-abstract-test-user)** , který bude mít protějšek Britta Simon v abstraktním, který je propojený s reprezentací uživatele v Azure AD.
+6. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování k Azure AD
+### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
 
-Použijte následující postup povolení jednotného přihlašování Azure AD na webu Azure Portal.
+Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V [webu Azure portal](https://portal.azure.com/)na **abstraktní** stránky integrace aplikací, najdete **spravovat** a vyberte **jednotného přihlašování**.
-1. Na **vybrat jedinou metodu přihlašování** stránce **SAML**.
-1. Na **nastavte si jednotné přihlašování pomocí SAML** stránky, klikněte na ikonu úprav/pera **základní konfiguraci SAML** můžete upravit nastavení.
+1. V [Azure Portal](https://portal.azure.com/)na stránce **abstraktní** integrace aplikací najděte část **Správa** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
-   ![Upravit konfiguraci základní SAML](common/edit-urls.png)
+   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-1. Na **základní konfiguraci SAML** aplikace je nakonfigurovaná v části **IDP** iniciované režimu a potřebné adresy URL se už předem vyplněné s Azure. Uživatel musí uložte konfiguraci kliknutím **Uložit** tlačítko.
+1. V **základním oddílu konfigurace SAML** je aplikace předem nakonfigurovaná v režimu iniciované **IDP** a nezbytné adresy URL už jsou předem naplněné pomocí Azure. Uživatel musí konfiguraci uložit kliknutím na tlačítko **Uložit** .
 
-1. Klikněte na tlačítko **nastavit další adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
+1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    V **přihlašovací adresa URL** textové pole, zadejte adresu URL:  `https://app.abstract.com/signin`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL:`https://app.abstract.com/signin`
 
-4. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko Kopírovat zkopírujte **adresa Url federačních metadat aplikace** a uložte ji na vaše počítač.
+4. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** kliknutím na tlačítko Kopírovat zkopírujte **adresu URL federačních metadat aplikace** a uložte ji do svého počítače.
 
     ![Odkaz ke stažení certifikátu](common/copy-metadataurl.png)
 
-### <a name="configure-abstract-sso"></a>Konfigurace jednotného přihlašování k abstraktní
+### <a name="configure-abstract-sso"></a>Konfigurace abstraktního jednotného přihlašování
 
-Ujistěte se, že se načíst vaše `App Federation Metadata Url` a `Azure AD Identifier` z portálu Azure portal, jako je bude nutné do konfigurace jednotného přihlašování na abstraktní.
+Ujistěte se, že jste `App Federation Metadata Url` načetli své `Azure AD Identifier` a z Azure Portal, jak je budete potřebovat ke konfiguraci jednotného přihlašování pro abstrakt.
 
-Tyto informace najdete v **nastavte si jednotné přihlašování pomocí SAML** stránky:
+Tyto informace najdete na stránce **nastavit jednotné přihlašování pomocí SAML** :
 
-* `App Federation Metadata Url` Se nachází v **podpisový certifikát SAML** oddílu.
-* `Azure AD Identifier` Se nachází v **nastavení abstraktní** oddílu.
+* Je umístěn v části **podpisový certifikát SAML.** `App Federation Metadata Url`
+* Je umístěn v části **set abstract.** `Azure AD Identifier`
 
 
-Nyní jste připraveni ke konfiguraci jednotného přihlašování na abstraktní:
+Nyní jste připraveni nakonfigurovat jednotné přihlašování pro abstraktní:
 
 >[!Note]
->Budete potřebovat k ověření pomocí účtu správce pro přístup k nastavení jednotného přihlašování na abstraktní organizace.
+>Pro přístup k nastavení jednotného přihlašování na abstraktu se budete muset ověřit pomocí účtu správce organizace.
 
-1. Otevřít [abstraktní webové aplikace](https://app.abstract.com/).
-2. Přejděte **oprávnění** stránky v levém bočním panelu.
-3. V **nakonfigurovat jednotné přihlašování** části, zadejte vaše **adresa URL metadat** a **Entity ID**.
-4. Zadejte, může být ruční výjimky. E-mailů uvedených v části Ruční výjimky budou obejít jednotného přihlašování a nebudou moct připojovat se pomocí e-mailu a hesla. 
+1. Otevřete [abstraktní webovou aplikaci](https://app.abstract.com/).
+2. Přejít na stránku **oprávnění** na levém panelu.
+3. V části **Konfigurace jednotného přihlašování** zadejte **adresu URL metadat** a **ID entity**.
+4. Zadejte jakékoli ruční výjimky, které byste mohli mít. E-maily uvedené v části Ruční výjimky budou obcházet SSO a budou se moct přihlásit pomocí e-mailu a hesla. 
 5. Klikněte na tlačítko **uložit změny**.
 
 >[!Note] 
->Budete muset použít primární e-mailové adresy v seznamu výjimek ruční. Aktivace jednotného přihlašování se nezdaří, pokud je e-mail, který uvedete sekundárního e-mailu uživatele. Pokud k tomu dojde, zobrazí se vám chybová zpráva s primární e-mailu pro účet selhání. Po ověření, že víte, že uživatel, přidejte do seznamu výjimek ruční primární e-mailovou.
+>V seznamu ručních výjimek budete muset použít primární e-mailové adresy. Aktivace jednotného přihlašování se nezdaří, pokud je e-mailem, který si vypíšete, sekundární e-mail uživatele. V takovém případě se zobrazí chybová zpráva s primárním e-mailem pro účet, u kterého došlo k selhání. Tento primární e-mail přidejte do seznamu ručních výjimek, až ověříte, že znáte uživatele.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
-V této části vytvoříte testovacího uživatele na webu Azure Portal volá B.Simon.
+V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně webu Azure Portal vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
 1. Vyberte **nového uživatele** v horní části obrazovky.
-1. V **uživatele** vlastností, postupujte podle těchto kroků:
+1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. V **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
-   1. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části povolíte B.Simon používat jednotné přihlašování Azure tím, že udělíte přístup k abstraktní.
+V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k abstraktnímu.
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
-1. V seznamu aplikací vyberte **abstraktní**.
-1. Na stránce Přehled aplikace najít **spravovat** a vyberte **uživatelů a skupin**.
+1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte možnost **abstract**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
 
-1. Vyberte **přidat uživatele**a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
-1. V **uživatelů a skupin** dialogového okna, vyberte **B.Simon** ze seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
-1. Pokud očekáváte libovolná hodnota role v kontrolní výraz SAML v **vybrat roli** dialogového okna, vyberte vhodnou roli pro uživatele ze seznamu a klikněte **vyberte** tlačítko v dolní části obrazovky.
-1. V **přidat přiřazení** dialogového okna, klikněte na tlačítko **přiřadit** tlačítko.
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-### <a name="create-abstract-test-user"></a>Vytvořit abstraktní testovacího uživatele
+### <a name="create-abstract-test-user"></a>Vytvořit abstraktního testovacího uživatele
 
-Otestovat jednotné přihlašování na abstraktní:
+Postup při testování jednotného přihlašování na abstraktních počítačích:
 
-1. Otevřít [abstraktní webové aplikace](https://app.abstract.com/).
-2. Přejděte **oprávnění** stránky v levém bočním panelu.
-3. Klikněte na tlačítko **testů s účtem**. Pokud se test nezdaří, zkontrolujte [obraťte se na náš tým podpory](https://www.abstract.com/help/contact/).
+1. Otevřete [abstraktní webovou aplikaci](https://app.abstract.com/).
+2. Přejít na stránku **oprávnění** na levém panelu.
+3. Klikněte na **test s mým účtem**. Pokud se test nezdařil, [obraťte se na náš tým podpory](https://www.abstract.com/help/contact/).
 
 >[!Note]
->Budete potřebovat k ověření pomocí účtu správce pro přístup k nastavení jednotného přihlašování na abstraktní organizace.
-Tento účet správce organizace muset abstraktní přiřadit na portálu Azure portal.
+>Pro přístup k nastavení jednotného přihlašování na abstraktu se budete muset ověřit pomocí účtu správce organizace.
+Tento účet správce organizace bude muset být přiřazený k abstraktnímu na Azure Portal.
 
 ### <a name="test-sso"></a>Test SSO 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Když kliknete na abstraktní dlaždici na přístupovém panelu, vám by měl být automaticky přihlášeni k abstraktní, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici abstraktu na přístupovém panelu byste měli být automaticky přihlášeni k abstrakci, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Další prostředky
 
-- [ Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

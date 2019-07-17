@@ -8,12 +8,12 @@ ms.date: 01/31/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 30544a49f49714eeefbf54d70e54275d2cf9a7ef
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 252dc48fd35318f9cd8407007187b81a8674fab0
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66243548"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68296916"
 ---
 # <a name="back-up-azure-file-shares"></a>Zálohování sdílených složek Azure
 Tento článek vysvětluje, jak pomocí webu Azure Portal zálohovat a obnovovat [sdílené složky Azure](../storage/files/storage-files-introduction.md).
@@ -31,16 +31,17 @@ V této příručce se naučíte:
 Než budete moct zálohovat sdílenou složku Azure, ujistěte se, že se nachází v jednom z [podporovaných typů účtu úložiště](backup-azure-files.md#limitations-for-azure-file-share-backup-during-preview). Po ověření můžete chránit své sdílené složky.
 
 ## <a name="limitations-for-azure-file-share-backup-during-preview"></a>Omezení zálohování sdílených složek Azure během období Preview
-Zálohování sdílených složek Azure je ve verzi Preview. Sdílených složek Azure v obou pro obecné účely v1 a účty úložiště pro obecné účely v2 jsou podporovány. Následující scénáře zálohování se nepodporují u sdílených složek Azure:
+Zálohování sdílených složek Azure je ve verzi Preview. Podporují se sdílené složky Azure v účtech úložiště pro obecné účely v1 i pro obecné účely v2. Následující scénáře zálohování se nepodporují u sdílených složek Azure:
+- Podpora pro zálohování sdílených složek Azure v účtech úložiště s replikací [zóny redundantního úložiště](../storage/common/storage-redundancy-zrs.md) (ZRS) je v současné době omezená na [tyto oblasti](backup-azure-files-faq.md#in-which-geos-can-i-back-up-azure-file-shares-).
 - Nemůžete chránit sdílené složky Azure v účtech úložiště s povolenými virtuálními sítěmi nebo bránou firewall.
-- Není k dispozici pro ochranu souborů Azure pomocí služby Azure Backup žádné rozhraní příkazového řádku.
+- K ochraně souborů Azure pomocí Azure Backup není k dispozici žádné rozhraní příkazového řádku.
 - Maximální počet plánovaných záloh je jedna za den.
 - Maximální počet záloh na vyžádání jsou čtyři za den.
 - Používejte v účtu úložiště [zámky prostředků](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest), abyste zabránili nechtěnému odstranění záloh v trezoru služby Recovery Services.
 - Neodstraňujte snímky vytvořené službou Azure Backup. Odstranění snímků může způsobit ztrátu bodů obnovení nebo selhání obnovení.
-- Odstranění sdílené složky, které jsou chráněné službou Azure Backup. Aktuální řešení se odstraní přístup ke všem snímkům pořízeným službou Azure Backup po odstranění sdílené složky a proto dojít ke ztrátě všech bodů obnovení
+- Neodstraňujte sdílené složky, které jsou chráněné pomocí Azure Backup. Aktuální řešení odstraní všechny snímky vybrané Azure Backup, když se odstraní sdílená složka, a tím se ztratí všechny body obnovení.
 
-Zálohování sdílených složek Azure v účtech úložiště s [zónově redundantního úložiště](../storage/common/storage-redundancy-zrs.md) replikace (ZRS) je teď dostupná jenom v centrální USA (CUS), východní USA (EUS), východní USA 2 (EUS2), Severní Evropa (NE), jihovýchodní Asie (SEA), západní Evropa (WE) a USA – západ 2 (WUS2).
+
 
 ## <a name="configuring-backup-for-an-azure-file-share"></a>Konfigurace zálohování sdílené složky Azure
 Tento kurz předpokládá, že už máte vytvořenou sdílenou složku Azure. Zálohování sdílené složky Azure:
@@ -49,7 +50,7 @@ Tento kurz předpokládá, že už máte vytvořenou sdílenou složku Azure. Z�
 
     ![Volba sdílené složky Azure jako cíle zálohování](./media/backup-file-shares/overview-backup-page.png)
 
-2. V **cíle zálohování** nabídky, z **co chcete zálohovat?** , volba sdílené složky Azure.
+2. V nabídce **cíl zálohování** z nabídky **co chcete zálohovat?** vyberte sdílená složka Azure.
 
     ![Volba sdílené složky Azure jako cíle zálohování](./media/backup-file-shares/choose-azure-fileshare-from-backup-goal.png)
 
@@ -74,7 +75,7 @@ Tento kurz předpokládá, že už máte vytvořenou sdílenou složku Azure. Z�
     Po vytvoření zásady zálohování se v naplánovaném čase pořídí snímek sdílených složek a po zvolenou dobu se bude uchovávat bod obnovení.
 
 ## <a name="create-an-on-demand-backup"></a>Vytvoření zálohy na vyžádání
-Příležitostně můžete chtít vygenerovat snímek zálohy nebo bod obnovení mimo dobu naplánovanou v zásadě zálohování. Obvyklá doba pro vygenerování zálohy na vyžádání je ihned po konfiguraci zásady zálohování. V závislosti na plánu v zásadě zálohování může pořízení snímku trvat hodiny nebo dny. Pokud chcete svá data chránit před zapojením zásady zálohování, vyvolejte zálohování na vyžádání. Vytvořit zálohu na vyžádání se často vyžaduje před provedením plánovaných změn sdílených složek.
+Příležitostně můžete chtít vygenerovat snímek zálohy nebo bod obnovení mimo dobu naplánovanou v zásadě zálohování. Obvyklá doba pro vygenerování zálohy na vyžádání je ihned po konfiguraci zásady zálohování. V závislosti na plánu v zásadě zálohování může pořízení snímku trvat hodiny nebo dny. Pokud chcete svá data chránit před zapojením zásady zálohování, vyvolejte zálohování na vyžádání. Vytvoření zálohy na vyžádání se často vyžaduje předtím, než provedete plánované změny sdílených složek.
 
 ### <a name="to-create-an-on-demand-backup"></a>Vytvoření zálohy na vyžádání
 
