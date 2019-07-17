@@ -116,7 +116,7 @@ Ovládací prvky [vzorkování funkcí ve službě Application Insights](./funct
 
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------| 
-|isEnabled|true (pravda)|Povolí nebo zakáže vzorkování.| 
+|isEnabled|true|Povolí nebo zakáže vzorkování.| 
 |maxTelemetryItemsPerSecond|5|Prahová hodnota, na které vzorkování začíná.| 
 
 ## <a name="cosmosdb"></a>cosmosDb
@@ -173,7 +173,7 @@ Nastavení konfigurace pro [monitorování stavu hostitelů](https://github.com/
 
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------| 
-|enabled|true (pravda)|Určuje, zda je povolena funkce. | 
+|enabled|true|Určuje, zda je povolena funkce. | 
 |healthCheckInterval|10 sekund|Časový interval mezi stavu na pozadí pravidelně kontroluje. | 
 |healthCheckWindow|2 minut|Použít ve spojení s klouzavého časového období `healthCheckThreshold` nastavení.| 
 |healthCheckThreshold|6|Maximální počet pokusů o kontrolu stavu může selhat, předtím, než je zahájeno recyklace hostitele.| 
@@ -209,7 +209,7 @@ Konfigurace nastavení se dají najít v [http triggerů a vazeb](functions-bind
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|Definuje, jaké úroveň protokolování do souboru je povolená.  Možnosti jsou `never`, `always`, `debugOnly`. |
 |logLevel|neuvedeno|Objekt, který definuje kategorie protokolu filtrování pro funkce v aplikaci. Verze 2.x následuje rozložení ASP.NET Core pro filtrování kategorie protokolu. To vám umožní filtrovat protokolování pro konkrétní funkce. Další informace najdete v tématu [filtrování protokolu](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) v dokumentaci k ASP.NET Core. |
-|console|neuvedeno| [Konzoly](#console) nastavení protokolování. |
+|console|neuvedeno| [console](#console) nastavení protokolování. |
 |applicationInsights|neuvedeno| [ApplicationInsights](#applicationinsights) nastavení. |
 
 ## <a name="console"></a>console
@@ -230,7 +230,7 @@ Toto nastavení je podřízeným prvkem [protokolování](#logging). Určuje kon
 
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------| 
-|isEnabled|false (nepravda)|Povolí nebo zakáže protokolování konzoly.| 
+|isEnabled|false|Povolí nebo zakáže protokolování konzoly.| 
 
 ## <a name="queues"></a>fronty
 
