@@ -275,9 +275,9 @@ Umožňuje zapisovat do protokolů streamování funkce na výchozí úrovni tra
 
 | Metoda                 | Popis                                |
 | ---------------------- | ------------------------------------------ |
-| **Chyba (_zpráva_)**   | Zapíše chyba úroveň protokolování nebo nižší.   |
-| **upozornění (_zpráva_)**    | Zapíše do protokolování nebo nižší úroveň pro upozornění. |
-| **informace o (_zpráva_)**    | Zapíše informace o úroveň protokolování nebo nižší.    |
+| **error(_message_)**   | Zapíše chyba úroveň protokolování nebo nižší.   |
+| **warn(_message_)**    | Zapíše do protokolování nebo nižší úroveň pro upozornění. |
+| **info(_message_)**    | Zapíše informace o úroveň protokolování nebo nižší.    |
 | **verbose(_message_)** | Zápisy na podrobné úrovni protokolování.           |
 
 Následující příklad zapíše protokolu na úroveň trasování varování:
