@@ -24,7 +24,7 @@
       href: provision-geo-ai-dsvm.md
 - name: Koncepty
   items:
-    - name: Seznámení s virtuálním počítačem pro datové vědy
+    - name: Zjišťování DSVM
       href: dsvm-tools-overview.md
     - name: Architektura AI a hloubkového učení
       href: dsvm-deep-learning-ai-frameworks.md
@@ -66,8 +66,6 @@
   items:
     - name: Příručka pro vývojáře v R
       href: /azure/architecture/data-guide/technology-choices/r-developers-guide?context=azure/machine-learning/data-science-virtual-machine/context/ml-context
-    - name: Blog
-      href: 'https://blogs.technet.microsoft.com/machinelearning/tag/dsvm/'
     - name: Fórum MSDN
       href: 'https://social.microsoft.com/Forums/en-US/home?forum=dsvm'
     - name: Stack Overflow

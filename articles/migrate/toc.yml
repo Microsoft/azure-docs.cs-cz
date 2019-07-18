@@ -8,7 +8,7 @@
       href: whats-new.md
 - name: Kurzy
   items:
-    - name: Vyhodnocení a migrace virtuální počítačů VMware
+    - name: Vyhodnocení a migrace virtuálních počítačů VMware
       items:
         - name: Příprava virtuálních počítačů VMware na vyhodnocení a migraci
           href: tutorial-prepare-vmware.md
@@ -22,7 +22,7 @@
               href: tutorial-migrate-vmware.md
             - name: Migrace virtuálních počítačů VMware založená na agentech
               href: tutorial-migrate-vmware-agent.md
-    - name: Vyhodnocení a migrace Hyper-V
+    - name: Vyhodnocení a migrace virtuálních počítačů Hyper-V
       items:
         - name: Příprava Hyper-V na vyhodnocení a migraci
           href: tutorial-prepare-hyper-v.md

@@ -569,6 +569,8 @@
           href: ../blobs/data-lake-storage-tutorial-extract-transform-load-hive.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Koncepty
       items:
+        - name: Přístup s více protokoly
+          href: ../blobs/data-lake-storage-multi-protocol-access.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Ovladač systému souborů Azure Blob pro Hadoop
           href: ../blobs/data-lake-storage-abfs-driver.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Identifikátor URI systému souborů Azure Blob
@@ -577,12 +579,24 @@
           href: ../blobs/data-lake-storage-namespace.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Osvědčené postupy
           href: data-lake-storage-best-practices.md
+        - name: Úrovně přístupu
+          items:
+            - name: Úrovně přístupu
+              href: storage-blob-storage-tiers.md
+            - name: Správa životního cyklu Azure Blob Storage
+              href: storage-lifecycle-management-concepts.md
         - name: Zabezpečení
           items:
             - name: Přehled zabezpečení úložiště
               href: ../common/storage-security-guide.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Řízení přístupu
               href: data-lake-storage-access-control.md
+        - name: Protokolování
+          items:
+            - name: Analýzy úložiště
+              href: ../common/storage-analytics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Protokoly analýzy úložiště
+              href: ../common/storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Zpracování událostí
           href: storage-blob-event-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Postup

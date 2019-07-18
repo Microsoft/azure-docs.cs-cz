@@ -388,18 +388,26 @@
               items:
                 - name: Webové aplikace
                   href: app/java-get-started.md
+                - name: Webové aplikace (2.5.0-BETA)
+                  href: app/java-get-started-25-beta.md
                 - name: Aplikace v Dockeru
                   href: app/docker.md
                 - name: Trasování protokolů
                   href: app/java-trace-logs.md
+                - name: Trasování protokolů (2.5.0-BETA)
+                  href: app/java-trace-logs-25-beta.md
                 - name: Unixové metriky
                   href: app/java-collectd.md
                 - name: Závislosti
                   href: app/java-agent.md
+                - name: Závislosti (2.5.0-BETA)
+                  href: app/java-agent-25-beta.md
                 - name: Filtrování telemetrie
                   href: app/java-filter-telemetry.md
                 - name: Metriky v mikrometrech
                   href: app/micrometer-java.md
+                - name: Metriky v mikrometrech (2.5.0-BETA)
+                  href: app/micrometer-java-25-beta.md
                 - name: Konfigurace aplikace Spring Boot Initializer
                   href: /java/azure/spring-framework/configure-spring-boot-java-applicationinsights
             - name: Aplikace v Node.js

@@ -55,6 +55,8 @@
       items:
         - name: Řešení potíží s aktuálními počítači s Windows připojenými k hybridní službě Azure AD
           href: troubleshoot-hybrid-join-windows-current.md
+        - name: Řešení potíží s využitím dsregcmd
+          href: troubleshoot-device-dsregcmd.md
         - name: Řešení potíží s počítači starší verze s Windows připojenými k hybridní službě Azure AD
           href: troubleshoot-hybrid-join-windows-legacy.md
         - name: Řešení potíží se službou Enterprise State Roaming

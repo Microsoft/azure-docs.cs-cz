@@ -564,12 +564,12 @@
           href: solution-template-copy-files-multiple-containers.md
         - name: Kopírování nových souborů na základě LastModifiedDate
           href: solution-template-copy-new-files-lastmodifieddate.md
+        - name: Hromadná kopie z databáze
+          href: solution-template-bulk-copy-with-control-table.md
+        - name: Rozdílová kopie z databáze
+          href: solution-template-delta-copy-with-control-table.md
         - name: Přesunutí souborů
           href: solution-template-move-files.md
-        - name: Hromadné kopírování s kontrolní tabulkou
-          href: solution-template-bulk-copy-with-control-table.md
-        - name: Rozdílové kopírování s kontrolní tabulkou
-          href: solution-template-delta-copy-with-control-table.md
         - name: Transformace dat s využitím Databricks
           href: solution-template-databricks-notebook.md
     - name: Průvodce odstraňováním potíží
