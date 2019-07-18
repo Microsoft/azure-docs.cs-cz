@@ -42,10 +42,10 @@ Ve své nejjednodušší struktury šablony obsahuje následující prvky:
 | contentVersion |Ano |Verze šablony (jako je například 1.0.0.0). Tento prvek můžete zadat libovolnou hodnotu. Tato hodnota zdokumentovat významné změny v šabloně používejte. Při nasazování prostředků pomocí šablony, tato hodnota je možné, aby se zajistilo, že používá správnou šablonu. |
 | apiProfile |Ne | Verze rozhraní API, která slouží jako kolekce verze rozhraní API pro typy prostředků. Tuto hodnotu použijte, abyste ho nemuseli znovu k určení verze rozhraní API pro každý prostředek v šabloně. Když zadáte profilu verze rozhraní API a nezadávejte verze rozhraní API pro typ prostředku, používá Resource Manageru verze rozhraní API pro příslušný typ prostředku, který je definován v profilu.<br><br>Vlastnost profilu rozhraní API je zvláště užitečné při nasazování šablony do různých prostředí, jako je Azure Stack a globální Azure. Ujistěte se, že vaše šablona automaticky používá verze, které jsou podporovány v obou prostředích pomocí profilu verze rozhraní API. Seznam aktuální profilu verze rozhraní API a prostředků verze rozhraní API, které jsou definovány v profilu najdete v tématu [profil API](https://github.com/Azure/azure-rest-api-specs/tree/master/profile).<br><br>Další informace najdete v tématu [sledování verzí pomocí profilů rozhraní API](templates-cloud-consistency.md#track-versions-using-api-profiles). |
 | [parameters](#parameters) |Ne |Hodnoty, které jsou k dispozici při spuštění nasazení přizpůsobení nasazení prostředků. |
-| [Proměnné](#variables) |Ne |Hodnoty, které se používají jako fragmentů JSON v šabloně pro zjednodušení výrazy jazyka šablony. |
-| [Funkce](#functions) |Ne |Uživatelem definované funkce, které jsou k dispozici v rámci šablony. |
-| [Prostředky](#resources) |Ano |Typy prostředků, které jsou nasazené nebo aktualizovat skupinu prostředků nebo předplatného. |
-| [výstupy](#outputs) |Ne |Hodnoty, které se vrátí po nasazení. |
+| [variables](#variables) |Ne |Hodnoty, které se používají jako fragmentů JSON v šabloně pro zjednodušení výrazy jazyka šablony. |
+| [functions](#functions) |Ne |Uživatelem definované funkce, které jsou k dispozici v rámci šablony. |
+| [resources](#resources) |Ano |Typy prostředků, které jsou nasazené nebo aktualizovat skupinu prostředků nebo předplatného. |
+| [outputs](#outputs) |Ne |Hodnoty, které se vrátí po nasazení. |
 
 Každý prvek má vlastnosti, které můžete nastavit. Tento článek popisuje části šablony podrobněji.
 
