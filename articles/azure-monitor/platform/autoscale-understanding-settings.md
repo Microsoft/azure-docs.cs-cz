@@ -100,8 +100,8 @@ Pro ilustraci schématu nastavení automatického škálování, je použít ná
 | profile | Capacity.maximum | Maximální kapacita povolené. Zajišťuje, že automatické škálování, při provádění tohoto profilu není škálovat prostředek vyšší než toto číslo. |
 | profile | Capacity.minimum | Minimální kapacitu povolené. Zajišťuje, že automatické škálování, při provádění tohoto profilu není škálovat prostředek pod tuto hodnotu. |
 | profile | Capacity.default | Pokud dojde k nějakému problému čtení metrik prostředku (v tomto případě procesoru "vmss1") a aktuální kapacita bude pod výchozí, automatického škálování horizontálně navýší kapacitu na výchozí hodnotu. Toto je zajištění dostupnosti prostředků. Pokud už je aktuální kapacita vyšší než výchozí kapacita pro dotazy, automatické škálování v škálování. |
-| profile | pravidla | Automatické škálování se automaticky škáluje mezi minimální a maximální kapacity, pomocí pravidel v profilu. Můžete mít víc pravidel v profilu. Obvykle existují dvě pravidla: jednu k určení toho, kdy pro horizontální navýšení kapacity a druhým k určení toho, kdy škálovat v. |
-| rule | metricTrigger | Definuje podmínku metriky pravidla. |
+| profile | rules | Automatické škálování se automaticky škáluje mezi minimální a maximální kapacity, pomocí pravidel v profilu. Můžete mít víc pravidel v profilu. Obvykle existují dvě pravidla: jednu k určení toho, kdy pro horizontální navýšení kapacity a druhým k určení toho, kdy škálovat v. |
+| rules | metricTrigger | Definuje podmínku metriky pravidla. |
 | metricTrigger | metricName | Název metriky. |
 | metricTrigger |  metricResourceUri | ID prostředku prostředku, který vysílá metriky. Ve většině případů je stejný jako prostředek nastavuje. V některých případech může být jiný. Například je možné škálovat škálovací sadu virtuálních počítačů, na základě počtu zpráv ve frontě úložiště. |
 | metricTrigger | timeGrain | Doba trvání vzorkování metriky. Například **TimeGrain = "PT1M"** znamená, že metrika má agregovat každou 1 minutu pomocí způsobu agregace určeném v elementu statistiky. |
