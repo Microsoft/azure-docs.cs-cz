@@ -64,7 +64,7 @@ Ve výchozím nastavení, sada SDK používá [DefaultEndpointRouter](https://gi
 
 2. Směrování zpráv serveru
 
-    Když * odeslání zprávy na konkrétní ** připojení *** a cílové připojení se směruje na aktuálním serveru, dostane zprávu přímo do tohoto koncového bodu připojení. V opačném případě jsou vysílali zprávy pro každý koncový bod Azure SignalR.
+    Když *odeslání zprávy na konkrétní **připojení*** a cílové připojení se směruje na aktuálním serveru, dostane zprávu přímo do tohoto koncového bodu připojení. V opačném případě jsou vysílali zprávy pro každý koncový bod Azure SignalR.
 
 #### <a name="customize-routing-algorithm"></a>Přizpůsobení algoritmus směrování
 Pokud máte zvláštní znalost k identifikaci jaké koncové body se měli zúčastnit zprávy, můžete vytvořit vlastní směrovače.

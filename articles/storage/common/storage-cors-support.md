@@ -83,7 +83,7 @@ Pravidla CORS se vztahují následující omezení:
 * Délka povolené hlavičky, zveřejněné hlavičky nebo povolený původ by neměl být delší než 256 znaků.
 * Povolené hlavičky může být buď zveřejněné hlavičky:
   * Záhlaví literálu, kde je přesné záhlaví je zadat název, například **x-ms-meta zpracovat**. V požadavku je možné zadat maximálně 64 záhlaví literálu.
-  * Předponu záhlaví, kterých předponu hlavičky je k dispozici, jako například ** x-ms-meta-data ***. Určení předponu tímto způsobem umožňuje případně zpřístupňuje libovolné záhlaví, který začíná danou předponu. V požadavku je možné zadat maximálně dvě záhlaví označená prefixem.
+  * Předponu záhlaví, kterých předponu hlavičky je k dispozici, jako například **x-ms-meta-data***. Určení předponu tímto způsobem umožňuje případně zpřístupňuje libovolné záhlaví, který začíná danou předponu. V požadavku je možné zadat maximálně dvě záhlaví označená prefixem.
 * Metody (nebo příkazy HTTP), podle **hodnota AllowedMethods** elementu musí odpovídat na metody podporované rozhraní API služby Azure storage. Podporované metody jsou DELETE, GET, HEAD, MERGE, POST, možnosti a PUT.
 
 ## <a name="understanding-cors-rule-evaluation-logic"></a>Principy logika vyhodnocení pravidla CORS

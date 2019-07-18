@@ -79,7 +79,7 @@ Instalace sady SDK, klikněte pravým tlačítkem na projekt serveru v sadě Vis
 
 ### <a name="server-project-setup"></a> Inicializuje serverový projekt
 Projekt .NET back-end serveru je inicializován podobně jako jiné projekty ASP.NET, včetně třídy pro spuštění OWIN. Ujistěte se, že máte odkazuje balíček NuGet `Microsoft.Owin.Host.SystemWeb`. Postup přidání této třídy v sadě Visual Studio, klikněte pravým tlačítkem na svůj serverový projekt a vyberte **přidat** >
-**nová položka**, pak **webové**  >  ** Obecné** > **třída OWIN Startup**.  Třídy generuje s použitím následující atribut:
+**nová položka**, pak **webové** > **Obecné** > **třída OWIN Startup**.  Třídy generuje s použitím následující atribut:
 
     [assembly: OwinStartup(typeof(YourServiceName.YourStartupClassName))]
 
