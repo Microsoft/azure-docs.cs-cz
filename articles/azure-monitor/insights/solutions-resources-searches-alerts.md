@@ -187,8 +187,8 @@ Tento oddíl je povinný. Definuje vlastnosti prahové hodnoty pro výstrahu.
 
 | Název elementu | Požaduje se | description |
 |:--|:--|:--|
-| Operátor | Ano | Operátor porovnání z následujících hodnot:<br><br>**gt = je větší než<br>lt = menší než** |
-| Hodnota | Ano | Hodnota určená k porovnání výsledků. |
+| Operator | Ano | Operátor porovnání z následujících hodnot:<br><br>**gt = je větší než<br>lt = menší než** |
+| Value | Ano | Hodnota určená k porovnání výsledků. |
 
 ##### <a name="metricstrigger"></a>MetricsTrigger
 Tato část je nepovinná. Zahrňte pro oznámení na základě měření metriky.
