@@ -30,6 +30,6 @@ sections:
         style: unordered
         items:
           - html: <a href="/azure/bastion/bastion-create-host-portal">Vytvoření a úpravy hostitele Azure Bastionu</a>
-          - html: <a href="/azure/bastion/bastion-connect-vm-ssh">Připojení k virtuálnímu počítači s Windows</a>
-          - html: <a href="/azure/bastion/bastion-connect-vm-rdp">Připojení k virtuálnímu počítači s Linuxem</a>
+          - html: <a href="/azure/bastion/bastion-connect-vm-rdp">Připojení k virtuálnímu počítači s Windows</a>
+          - html: <a href="/azure/bastion/bastion-connect-vm-ssh">Připojení k virtuálnímu počítači s Linuxem</a>
           - html: <a href="/azure/bastion/bastion-faq">Nejčastější dotazy k Azure Bastionu</a>

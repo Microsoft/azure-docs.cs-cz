@@ -8,14 +8,14 @@ ms.service: managed-applications
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
-ms.date: 07/15/2019
+ms.date: 07/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: 16b653d1018c0c9c090f027ebcd01468af0eefd8
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 0e2e161c22ee87d11156c4818bd689c316799e87
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234716"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305612"
 ---
 # <a name="azure-managed-applications-in-the-marketplace"></a>Spravované aplikace Azure v Marketplace
 
@@ -27,9 +27,9 @@ Tento článek vysvětluje, jak můžete publikovat aplikaci na Marketplace a t�
 
 K dokončení tohoto článku musíte mít připravený soubor .zip s definicí vaší spravované aplikaci. Další informace najdete v článku [Vytvoření aplikace katalogu služeb](publish-service-catalog-app.md).
 
-Kromě toho existuje několik obchodních předpokladů. Jsou to tyto:
+Existuje několik obchodních požadavků. Jsou to tyto:
 
-* Vaše společnost nebo její dceřiné společnosti se musí nacházet v zemi nebo oblast, ve kterém jsou web marketplace podporuje prodej.
+* Vaše společnost nebo její dceřiná společnost se musí nacházet v zemi nebo oblasti, kde prodej podporuje Marketplace.
 * Váš produkt musí mít licenci kompatibilní s modely fakturace, které marketplace podporuje.
 * Zákazníkům je třeba zpřístupnit z obchodního hlediska přiměřenou technickou podporu. Podpora může být bezplatná, placená nebo komunitní.
 * Licence musí pokrývat váš software a všechny závislé komponenty třetích stran.
@@ -37,14 +37,7 @@ Kromě toho existuje několik obchodních předpokladů. Jsou to tyto:
 * Vyjádřete souhlas s podmínkami Zásad účasti v programu Azure Marketplace a Ujednání s vydavatelem.
 * Vyjádřete souhlas s dodržováním Podmínek použití, Prohlášení o zásadách ochrany osobních údajů a Smlouvy k programu Microsoft Azure Certified.
 
-## <a name="become-a-publisher"></a>Staňte se vydavatelem
-
-Pokud se chcete stát vydavatelem v Azure Marketplace, musíte splnit následující:
-
-1. Vytvořit Microsoft ID: Vytvořte si účet Microsoft pomocí e-mailové adresy, která patří do domény vaší společnosti, ale nepatří konkrétnímu uživateli. Tato e-mailová adresa se používá pro Centrum pro vývojáře Microsoft i pro portál partnerů cloudu. Další informace viz [Příručka pro vydavatele Azure Marketplace](https://aka.ms/sellerguide).
-1. Odeslat [Nominační formulář Azure Marketplace](https://aka.ms/ampnomination) – **řešení, které máte v úmyslu publikovat?** vyberte **spravované aplikace**. Po odeslání formuláře tým registrace Marketplace aplikace zkontroluje a ověří žádost. Schvalovací proces může trvat jeden až tři dny. Pokud bude vaše nominace schválena, získáte propagační kód umožňující zproštění od poplatku za registraci do centra pro vývojáře. Pokud nominační formulář pro Marketplace **neodešlete**, činí registrační poplatek 99 USD.
-1. Registrace v [středisko pro vývojáře](https://dev.windows.com/registration?accountprogram=azure) – Microsoft ověřuje, že vaše organizace má platné právní subjekt s platnou DAŇOVÉ identifikační pro zemi nebo oblast, ve které je zaregistrovaný. Schvalovací proces může trvat 5 až 10 dnů. Pokud nechcete platit registrační poplatek, použijte propagační kód, který jste obdrželi e-mailem v rámci nominačního procesu. Další informace viz [Příručka pro vydavatele Azure Marketplace](https://aka.ms/sellerguide).
-1. Přihlásit se na [portál partnerů cloudu](https://cloudpartner.azure.com): V profilu vydavatele propojte svůj účet centra pro vývojáře s profilem vydavatele Marketplace. Další informace viz [Příručka pro vydavatele Azure Marketplace](https://aka.ms/sellerguide).
+Musíte mít také účet Marketplace. Pokud chcete vytvořit účet, přečtěte si téma [Vytvoření účtu komerčního tržiště v partnerském centru](..//marketplace/partner-center-portal/create-account.md).
 
 ## <a name="create-a-new-azure-application-offer"></a>Vytvoření nové nabídky aplikace Azure
 
@@ -64,9 +57,9 @@ Nabídka pro spravované aplikace odpovídá třídě nabídky produktů od vyda
 
 Formulář **Nastavení nabídky** obsahuje tato pole:
 
-* **ID nabídky**: Tento jedinečný identifikátor identifikuje nabídky v rámci profilu vydavatele. Tento identifikátor se zobrazuje na adresách URL produktu, v šablonách Resource Manageru a ve fakturačních sestavách. Může se skládat jenom z malých alfanumerických znaků nebo pomlček (-). Nemůže končit pomlčkou. Jeho délka je omezená na maximálně 50 znaků. Po publikování nabídky je toto pole zamčené.
-* **ID vydavatele**: Pomocí tohoto rozevíracího seznamu zvolte profil vydavatele, který chcete publikovat v rámci této nabídky v části. Po publikování nabídky je toto pole zamčené.
-* **Název**: Tento název zobrazení pro nabídky se zobrazí na webu Marketplace a na portálu. Může mít maximálně 50 znaků. Do názvu zahrňte rozpoznatelný název značky pro váš produkt. Naopak název vaší společnosti zahrňte jenom v případě, že se tímto způsobem propaguje. Pokud tuto nabídku propagujete na vlastních webových stránkách, zkontrolujte, že název je přesně stejný jako na vašem webu.
+* **ID nabídky**: Tento jedinečný identifikátor identifikuje nabídku v rámci profilu vydavatele. Tento identifikátor se zobrazuje na adresách URL produktu, v šablonách Resource Manageru a ve fakturačních sestavách. Může se skládat jenom z malých alfanumerických znaků nebo pomlček (-). Nemůže končit pomlčkou. Jeho délka je omezená na maximálně 50 znaků. Po publikování nabídky je toto pole zamčené.
+* **ID vydavatele**: Pomocí tohoto rozevíracího seznamu vyberte profil vydavatele, pod kterým chcete tuto nabídku publikovat. Po publikování nabídky je toto pole zamčené.
+* **Název**: Tento zobrazovaný název vaší nabídky se zobrazí na webu Marketplace a na portálu. Může mít maximálně 50 znaků. Do názvu zahrňte rozpoznatelný název značky pro váš produkt. Naopak název vaší společnosti zahrňte jenom v případě, že se tímto způsobem propaguje. Pokud tuto nabídku propagujete na vlastních webových stránkách, zkontrolujte, že název je přesně stejný jako na vašem webu.
 
 Až budete hotoví, rozdělanou práci uložte volbou **Uložit**.
 
@@ -90,28 +83,28 @@ Skladová položka se na marketplace zobrazí pod příslušnou nadřazenou nab�
 
    Vyplňte následující pole:
 
-   * **Název**: Zadejte název pro tuto SKU. Pod tímto názvem bude tato položka zobrazená v galerii.
-   * **Souhrn**: Zadejte krátký popis pro tuto SKU. Tento text se zobrazí pod názvem.
-   * **Popis**: Zadejte podrobný popis, o které skladová jednotka Potřebuje.
+   * **Název**: Zadejte název této SKU. Pod tímto názvem bude tato položka zobrazená v galerii.
+   * **Souhrn**: Zadejte krátký souhrn této SKU. Tento text se zobrazí pod názvem.
+   * **Popis**: Zadejte podrobný popis SKU.
    * **Typ SKU**: Povolené hodnoty jsou *spravované aplikace* a *šablony řešení*. V tomto případě vyberte *Spravovaná aplikace*.
-   * **Země/oblast dostupnosti**: Vyberte země nebo oblasti, kde je k dispozici spravované aplikace.
-   * **Ceny**: Zadejte cenu pro správu aplikace. Před nastavením cena vyberte dostupné zemích nebo oblastech.
+   * **Dostupnost země/oblasti**: Vyberte země nebo oblasti, ve kterých je spravovaná aplikace k dispozici.
+   * **Ceny**: Zadejte cenu za správu aplikace. Před nastavením ceny vyberte dostupné země/oblasti.
 
 1. Přidejte nový balíček. V následujícím formuláři vyplňte část s **podrobnými informacemi o balíčku**:
 
    Vyplňte následující pole:
 
-   * **Verze**: Zadejte verzi balíčku, které nahrajete. Měla by mít formát `{number}.{number}.{number}{number}`.
-   * **Soubor balíčku (.zip)** : Tento balíček obsahuje dvě požadované soubory zkomprimovány do balíčku .zip. Jedním z těchto souborů je šablona, která definuje prostředky k nasazení pro spravovanou aplikaci. Druhý soubor definuje [uživatelské rozhraní](create-uidefinition-overview.md) pro uživatele nasazující tuto spravovanou aplikaci prostřednictvím portálu. V uživatelském rozhraní zadáváte elementy, které uživatelům umožňují zadávat hodnoty parametrů.
-   * **ID tenanta**: ID tenanta pro účet získat přístup.
-   * **Povolit přístup JIT**: Vyberte **Ano** umožňující [řízení přístupu just-in-time](request-just-in-time-access.md) pro účet. Při povolení požádáte o přístup k účtu příjemce pro zadané časové období. Pokud chcete vyžadovat, že příjemci vaše spravovaná aplikace udělit trvalý přístup vašeho účtu, vyberte **ne**.
-   * **Přizpůsobit akce povolených zákazníků?** : Vyberte **Ano** k určení akce, které můžete provádět spotřebitelů na spravované prostředky.
-   * **Povolené akce zákazníků**: Pokud vyberete **Ano** pro předchozí nastavení, můžete zadat akce, které jsou povolené pro uživatele s použitím [zamítnout přiřazení pro prostředky Azure](../role-based-access-control/deny-assignments.md).
+   * **Verze**: Zadejte verzi balíčku, který nahráváte. Měla by mít formát `{number}.{number}.{number}{number}`.
+   * **Soubor balíčku (. zip)** : Tento balíček obsahuje dva požadované soubory zkomprimované do balíčku. zip. Jedním z těchto souborů je šablona, která definuje prostředky k nasazení pro spravovanou aplikaci. Druhý soubor definuje [uživatelské rozhraní](create-uidefinition-overview.md) pro uživatele nasazující tuto spravovanou aplikaci prostřednictvím portálu. V uživatelském rozhraní zadáváte elementy, které uživatelům umožňují zadávat hodnoty parametrů.
+   * **ID tenanta**: ID tenanta pro účet, který má získat přístup.
+   * **Povolit přístup JIT**: Vyberte **Ano** , pokud chcete pro účet povolit [řízení přístupu za běhu](request-just-in-time-access.md) . Pokud je tato možnost povolená, vyžádáte si k účtu příjemce přístup za zadané časové období. Pokud chcete vyžadovat, aby příjemci spravované aplikace udělili trvalému přístupu k vašemu účtu, vyberte **ne**.
+   * **Přizpůsobit povolené akce zákazníků?** : Vyberte **Ano** a určete akce, které můžou příjemci provádět na spravovaných prostředcích.
+   * **Povolené akce zákazníka**: Pokud pro předchozí nastavení vyberete **Ano** , můžete určit, které akce mají uživatelé povoleni pomocí [přiřazení Odepřít pro prostředky Azure](../role-based-access-control/deny-assignments.md).
 
-     Dostupné akce, naleznete v tématu [operace poskytovatele prostředků Azure Resource Manageru](../role-based-access-control/resource-provider-operations.md). Například tak, aby povolovala uživatele k restartování virtuálních počítačů, přidejte `Microsoft.Compute/virtualMachines/restart/action` povolených akcí. `*/read` Akce je automaticky povolené, takže není nutné zahrnout nastavení.
-   * **PrincipalId**: Tato vlastnost je Azure Active Directory (Azure AD) identifikátor uživatele, skupiny uživatelů nebo aplikací, které je udělen přístup k prostředkům v rámci předplatného tohoto zákazníka. Definice role popisuje tato oprávnění.
-   * **Definice role**: Tato vlastnost je seznam všech předdefinované role řízení přístupu na základě Role (RBAC) poskytuje Azure AD. Můžete vybrat roli, která je nejvhodnější pro správu prostředků v zastoupení uživatele.
-   * **Nastavení zásad**: Použití [Azure Policy](../governance/policy/overview.md) spravované aplikace k určení požadavků na dodržování předpisů u nasazeného řešení. Z dostupných možností vyberte požadované zásady. V části **Parametry zásad** zadejte řetězec JSON s hodnotami parametrů. Definice zásad a formátování hodnot parametrů najdete v tématu [Ukázky Azure Policy](../governance/policy/samples/index.md).
+     Dostupné akce najdete v tématu [Azure Resource Manager operací poskytovatele prostředků](../role-based-access-control/resource-provider-operations.md). Například pokud chcete, aby uživatelé mohli restartovat virtuální počítače, přidejte `Microsoft.Compute/virtualMachines/restart/action` do povolených akcí. `*/read` Akce je povolena automaticky, takže nemusíte toto nastavení zahrnovat.
+   * **PrincipalId**: Tato vlastnost je identifikátorem Azure Active Directory (Azure AD) uživatele, skupiny uživatelů nebo aplikace, kterým byl udělen přístup k prostředkům v rámci předplatného zákazníka. Definice role popisuje tato oprávnění.
+   * **Definice role**: Tato vlastnost je seznam všech předdefinovaných rolí Access Control na základě rolí (RBAC) poskytovaných službou Azure AD. Můžete vybrat roli, která je nejvhodnější pro správu prostředků v zastoupení uživatele.
+   * **Nastavení zásad**: Použijte [Azure Policy](../governance/policy/overview.md) pro spravovanou aplikaci, abyste určili požadavky na dodržování předpisů pro nasazená řešení. Z dostupných možností vyberte požadované zásady. V části **Parametry zásad** zadejte řetězec JSON s hodnotami parametrů. Definice zásad a formátování hodnot parametrů najdete v tématu [Ukázky Azure Policy](../governance/policy/samples/index.md).
 
 Autorizací můžete přidat několik. Doporučujeme, abyste vytvořili skupinu uživatelů AD a její ID zadali do **PrincipalId**. Budete tak mít možnost přidávat do této skupiny uživatelů další uživatele, aniž by bylo nutné aktualizovat SKU.
 
@@ -123,7 +116,7 @@ Formulář Marketplace vyzývá k zadání polí, která se zobrazují na [Azure
 
 ### <a name="preview-subscription-ids"></a>Zobrazení náhledu ID předplatných
 
-Zadejte seznam ID předplatných Azure, která mohou přistupovat k nabídce po jejím publikování. Tato povolená předplatná můžete využít k otestování nabídky před jejím zprovozněním. Seznam povolených z až 100 předplatných na portálu pro partnery můžete zkompilovat.
+Zadejte seznam ID předplatných Azure, která mohou přistupovat k nabídce po jejím publikování. Tato povolená předplatná můžete využít k otestování nabídky před jejím zprovozněním. Na portálu pro partnery můžete zkompilovat seznam povolených až 100 předplatných.
 
 ### <a name="suggested-categories"></a>Navrhované kategorie
 
@@ -182,7 +175,7 @@ Ve formuláři **Podpora** vyplňte kontakty na podporu ve vaší společnosti. 
 
 Po vyplnění všech částí vyberte **Publish** (Publikovat). Zahájíte tak proces zpřístupnění vaší nabídky zákazníkům.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Úvod ke spravovaným aplikacím najdete v [přehledu spravovaných aplikací](overview.md).
 * Informace o publikování spravované aplikace katalogu služeb najdete v tématu věnovaném [vytvoření a publikování spravované aplikace katalogu služeb](publish-service-catalog-app.md).
