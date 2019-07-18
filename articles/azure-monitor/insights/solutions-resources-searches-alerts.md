@@ -199,8 +199,8 @@ Tato část je nepovinná. Zahrňte pro oznámení na základě měření metrik
 | Název elementu | Požaduje se | description |
 |:--|:--|:--|
 | TriggerCondition | Ano | Určuje, zda je prahová hodnota pro celkový počet porušení nebo po sobě jdoucí porušení z následujících hodnot:<br><br>**Celkový počet<br>po sobě jdoucích** |
-| Operátor | Ano | Operátor porovnání z následujících hodnot:<br><br>**gt = je větší než<br>lt = menší než** |
-| Hodnota | Ano | Počet pokusů, které musí být splněna kritéria pro aktivaci upozornění. |
+| Operator | Ano | Operátor porovnání z následujících hodnot:<br><br>**gt = je větší než<br>lt = menší než** |
+| Value | Ano | Počet pokusů, které musí být splněna kritéria pro aktivaci upozornění. |
 
 
 #### <a name="throttling"></a>Throttling

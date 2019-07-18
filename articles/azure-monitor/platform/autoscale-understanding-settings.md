@@ -108,7 +108,7 @@ Pro ilustraci schématu nastavení automatického škálování, je použít ná
 | metricTrigger | statistic | Způsob agregace v období timeGrain. Například **statistiky = "Average"** a **timeGrain = "PT1M"** znamená, že metrika má agregovat každou 1 minutu zprůměrováním. Tato vlastnost určuje, jak se definuje tak metriku. |
 | metricTrigger | timeWindow | Množství času do minulosti pro metriky. Například **timeWindow = "PT10M"** znamená, že pokaždé, když se spustí automatické škálování, dotáže metriky za posledních 10 minut. Časový interval umožňuje metriky budou normalizovány a přitom vylučuje reakcím na přechodné špičky. |
 | metricTrigger | timeAggregation | Agregace metodu používanou k agregaci vzorkovaných metrik. Například **TimeAggregation = "Average"** by měl agregaci vzorkovaných metrik zprůměrováním. V předchozím případě vzorky deseti 1 minutu a průměrné je. |
-| rule | scaleAction | Akce, který se má provést při aktivaci metricTrigger pravidla. |
+| rules | scaleAction | Akce, který se má provést při aktivaci metricTrigger pravidla. |
 | scaleAction | direction | "Zvýšit" pro horizontální navýšení kapacity, nebo "Snížení" pro horizontální snížení kapacity.|
 | scaleAction | value | Kolik zvýšení nebo snížení kapacity prostředku. |
 | scaleAction | cooldown | Množství času po operaci škálování než škálování provedete znovu. Například pokud **která = "PT10M"** , automatické škálování nebude pokoušet o škálování pro jiné 10 minut. Která se má povolit metriky stabilizovat po přidání nebo odebrání instance. |

@@ -7,13 +7,13 @@ manager: vijayts
 ms.service: backup
 ms.topic: conceptual
 ms.date: 06/18/2019
-ms.author: sachdevaswati
-ms.openlocfilehash: 28577bfc755d80cd479a40b9e2b653af6ddec319
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.author: vijayts
+ms.openlocfilehash: 422f4b6bf7f22cf7653ad75836c613e4c1ea01b9
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204464"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704955"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Zálohování databází SQL Serveru ve virtuálních počítačích Azure
 
@@ -289,7 +289,7 @@ Pokud je potřeba zakázat automatickou ochranu, vyberte název instance v rámc
 ![Zakažte automatickou ochranu pro tuto instanci](./media/backup-azure-sql-database/disable-auto-protection.png)
 
  
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Naučte se:
 
