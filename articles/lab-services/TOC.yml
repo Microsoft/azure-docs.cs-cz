@@ -104,29 +104,149 @@
               href: classroom-labs/how-to-set-virtual-machine-passwords.md
     - name: DevTest Labs
       items:
-        - name: Určení skupiny prostředků pro virtuální počítače testovacího prostředí
-          href: resource-group-control.md
-        - name: Nastavení zásad pro testovací prostředí
-          href: devtest-lab-get-started-with-lab-policies.md
-        - name: Uložení tajných kódů ve službě Azure Key Vault
-          href: devtest-lab-store-secrets-in-key-vault.md
-        - name: Testování aplikace v Azure
-          href: test-app-azure.md
-        - name: Export nebo odstranění osobních údajů
-          href: personal-data-delete-export.md
-        - name: Import virtuálních počítačů z jiného testovacího prostředí
-          href: import-virtual-machines-from-another-lab.md
-        - name: Konfigurace testovacího prostředí pro použití brány vzdálené plochy
-          href: configure-lab-remote-desktop-gateway.md
-        - name: Vytvoření objektu pro vytváření imagí
-          href: image-factory-create.md
+        - name: Konfigurace testovacího prostředí
           items:
-            - name: Spuštění objektu pro vytváření imagí z Azure DevOps
-              href: image-factory-set-up-devops-lab.md
-            - name: Uložení vlastních imagí a jejich distribuce do několika testovacích prostředí
-              href: image-factory-save-distribute-custom-images.md
-            - name: Nastavení zásad uchovávání informací a spuštění čisticích skriptů
-              href: image-factory-set-retention-policy-cleanup.md
+            - name: Vytvoření testovacího prostředí
+              href: devtest-lab-create-lab.md
+            - name: Vytvoření nebo úprava testovacích prostředí pomocí šablony Resource Manageru
+              href: devtest-lab-use-arm-and-powershell-for-lab-resources.md
+            - name: Určení skupiny prostředků pro virtuální počítače testovacího prostředí
+              href: resource-group-control.md
+            - name: Přidání informací o podpoře do testovacího prostředí
+              href: devtest-lab-internal-support-message.md
+            - name: Nastavení zásad a plánů
+              href: devtest-lab-set-lab-policy.md
+            - name: Konfigurace testovacího prostředí pro použití brány vzdálené plochy
+              href: configure-lab-remote-desktop-gateway.md
+            - name: Zveřejnění oznámení v testovacím prostředí
+              href: devtest-lab-announcements.md
+            - name: Konfigurace správy nákladů
+              href: devtest-lab-configure-cost-management.md
+            - name: Odesílání oznámení automatického vypínání
+              href: devtest-lab-auto-shutdown.md
+            - name: Škálování testovacího prostředí
+              href: devtest-lab-scale-lab.md
+            - name: Správa základů virtuálních počítačů
+              items:
+                - name: Konfigurace imagí na Azure Marketplace
+                  href: devtest-lab-configure-marketplace-images.md
+                - name: Povolení licencované image
+                  href: devtest-lab-enable-licensed-images.md
+                - name: Konfigurace galerie sdílených imagí
+                  href: configure-shared-image-gallery.md
+            - name: Konfigurace značek
+              href: devtest-lab-add-tag.md
+            - name: Konfigurace řízení přístupu
+              items:
+                - name: Přidání uživatelů a vlastníků testovacího prostředí
+                  href: devtest-lab-add-devtest-user.md
+                - name: Přizpůsobení oprávnění s vlastními rolemi
+                  href: devtest-lab-grant-user-permissions-to-specific-lab-policies.md
+                - name: Automatizace přidání uživatele testovacího prostředí
+                  href: automate-add-lab-user.md
+            - name: Správa virtuálních sítí
+              items:
+                - name: Konfigurace virtuálních sítí
+                  href: devtest-lab-configure-vnet.md
+                - name: Výběr možnosti konfigurace IP
+                  href: devtest-lab-shared-ip.md
+            - name: Odstranění testovacího prostředí nebo virtuálního počítače v testovacím prostředí
+              href: devtest-lab-delete-lab-vm.md
+            - name: Export nebo odstranění osobních údajů
+              href: personal-data-delete-export.md
+        - name: Použití virtuálních počítačů v testovacím prostředí
+          items:
+            - name: Vytvoření virtuálního počítače – Azure Portal
+              href: devtest-lab-add-vm.md
+            - name: Vytvoření virtuálního počítače pomocí Azure PowerShellu
+              href: devtest-lab-vm-powershell.md
+            - name: Vytvoření a správa virtuálních počítačů s využitím rozhraní příkazového řádku Azure
+              href: devtest-lab-vmcli.md
+            - name: Vytvoření virtuálního počítače pomocí šablony Resource Manageru
+              href: devtest-lab-use-resource-manager-template.md
+            - name: Spuštění nebo zastavení virtuálního počítače s použitím PowerShellu nebo CLI
+              href: use-command-line-start-stop-virtual-machines.md
+            - name: Restartování virtuálního počítače
+              href: devtest-lab-restart-vm.md
+            - name: Změna velikosti virtuálního počítače
+              href: devtest-lab-resize-vm.md
+            - name: Znovunasazení virtuálního počítače
+              href: devtest-lab-redeploy-vm.md
+            - name: Vytvoření a správa nárokovatelných virtuálních počítačů
+              href: devtest-lab-add-claimable-vm.md
+            - name: Konfigurace tajných kódů
+              href: devtest-lab-store-secrets-in-key-vault.md
+            - name: Připojení a odpojení datových disků
+              href: devtest-lab-attach-detach-data-disk.md
+            - name: Spuštění virtuálních počítačů s použitím runbooků Automation
+              href: start-machines-use-automation-runbooks.md
+            - name: Import virtuálních počítačů z jiného testovacího prostředí
+              href: import-virtual-machines-from-another-lab.md
+        - name: Použití prostředí v testovacím prostředí
+          items:
+            - name: Vytvoření prostředí
+              href: devtest-lab-create-environment-from-arm.md
+            - name: Použití služeb PaaS (Platform-as-a-Service)
+              href: use-paas-services.md
+            - name: Veřejná prostředí
+              items:
+                - name: Konfigurace a použití veřejných prostředí
+                  href: devtest-lab-configure-use-public-environments.md
+                - name: Vytvoření prostředí s clusterem Service Fabric
+                  href: create-environment-service-fabric-cluster.md
+            - name: Připojení prostřední k virtuální síti testovacího prostředí
+              href: connect-environment-lab-virtual-network.md
+            - name: Konfigurace testovacích prostředí s vnořenými šablonami
+              href: deploy-nested-template-environments.md
+        - name: Správa opětovně využitelných šablon
+          items:
+            - name: Vlastní image versus vzorce
+              href: devtest-lab-comparing-vm-base-image-types.md
+            - name: Správa šablon prostředí
+              items:
+                - name: Přidání úložiště Git pro artefakty a šablony
+                  href: devtest-lab-add-artifact-repo.md
+            - name: Správa vlastních imagí
+              items:
+                - name: Vytvoření vlastní image z virtuálního počítače
+                  href: devtest-lab-create-custom-image-from-vm-using-portal.md
+                - name: Vytvoření vlastní image z VHD pomocí webu Azure Portal
+                  href: devtest-lab-create-template.md
+                - name: Vytvoření vlastní image z VHD pomocí PowerShellu
+                  href: devtest-lab-create-custom-image-from-vhd-using-powershell.md
+                - name: Nahrání souboru VHD pomocí AzCopy
+                  href: devtest-lab-upload-vhd-using-azcopy.md
+                - name: Nahrání souboru VHD pomocí PowerShellu
+                  href: devtest-lab-upload-vhd-using-powershell.md
+                - name: Nahrání souboru VHD pomocí Průzkumníka služby Storage
+                  href: devtest-lab-upload-vhd-using-storage-explorer.md
+            - name: Správa vzorců
+              href: devtest-lab-manage-formulas.md
+            - name: Vytvoření objektu pro vytváření imagí
+              href: image-factory-create.md
+              items:
+                - name: Spuštění objektu pro vytváření imagí z Azure DevOps
+                  href: image-factory-set-up-devops-lab.md
+                - name: Uložení vlastních imagí a jejich distribuce do několika testovacích prostředí
+                  href: image-factory-save-distribute-custom-images.md
+                - name: Nastavení zásad uchovávání informací a spuštění čisticích skriptů
+                  href: image-factory-set-retention-policy-cleanup.md
+        - name: Správa artefaktů
+          items:
+            - name: Přidání artefaktů do virtuálního počítače
+              href: add-artifact-vm.md
+            - name: Přidání vlastních artefaktů
+              href: devtest-lab-artifact-author.md
+            - name: Přidání úložiště artefaktů do testovacího prostředí
+              href: add-artifact-repository.md
+            - name: Určení povinných artefaktů
+              href: devtest-lab-mandatory-artifacts.md
+        - name: Integrace s CI/CD
+          items:
+            - name: Integrace testovacího prostředí do kanálu CI/CD Azure DevOps
+              href: devtest-lab-integrate-ci-cd-vsts.md
+            - name: Integrace prostředí do kanálu CI/CD Azure DevOps
+              href: integrate-environments-devops-pipeline.md
         - name: DevTest Labs v podniku
           items:
             - name: DevTest Labs v podnikovém měřítku
@@ -147,128 +267,8 @@
                   href: devtest-lab-guidance-governance-policy-compliance.md
                 - name: Migrace a integrace aplikací
                   href: devtest-lab-guidance-governance-application-migration-integration.md
-        - name: Použití virtuálních počítačů v testovacím prostředí
-          items:
-            - name: Vytvoření testovacího prostředí
-              href: devtest-lab-create-lab.md
-            - name: Odstranění testovacího prostředí nebo virtuálního počítače v testovacím prostředí
-              href: devtest-lab-delete-lab-vm.md
-            - name: Vytvoření virtuálních počítačů
-              href: devtest-lab-add-vm.md
-            - name: Vytvoření a správa nárokovatelných virtuálních počítačů
-              href: devtest-lab-add-claimable-vm.md
-            - name: Vytvoření a správa virtuálních počítačů s využitím rozhraní příkazového řádku Azure
-              href: devtest-lab-vmcli.md
-            - name: Vytvoření virtuálního počítače pomocí Azure PowerShellu
-              href: devtest-lab-vm-powershell.md
-            - name: Vytvoření virtuálního počítače pomocí šablony Resource Manageru
-              href: devtest-lab-use-resource-manager-template.md
-            - name: Restartování virtuálního počítače
-              href: devtest-lab-restart-vm.md
-            - name: Změna velikosti virtuálního počítače
-              href: devtest-lab-resize-vm.md
-            - name: Znovunasazení virtuálního počítače
-              href: devtest-lab-redeploy-vm.md
-            - name: Import virtuálního počítače
-              href: devtest-lab-import-vm.md
-            - name: Spuštění nebo zastavení virtuálního počítače s použitím PowerShellu nebo CLI
-              href: use-command-line-start-stop-virtual-machines.md
-            - name: Spuštění virtuálních počítačů s použitím runbooků Automation
-              href: start-machines-use-automation-runbooks.md
-        - name: Použití prostředí v testovacím prostředí
-          items:
-            - name: Vytvoření prostředí
-              href: devtest-lab-create-environment-from-arm.md
-            - name: Konfigurace a použití veřejných prostředí
-              href: devtest-lab-configure-use-public-environments.md
-            - name: Vytvoření prostředí s clusterem Service Fabric
-              href: create-environment-service-fabric-cluster.md
-            - name: Připojení prostřední k virtuální síti testovacího prostředí
-              href: connect-environment-lab-virtual-network.md
-            - name: Integrace prostředí do kanálu CI/CD Azure DevOps
-              href: integrate-environments-devops-pipeline.md
-            - name: Použití služeb PaaS (Platform-as-a-Service)
-              href: use-paas-services.md
-            - name: Nasazení vnořených šablon
-              href: deploy-nested-template-environments.md
-        - name: Zabezpečený přístup k testovacím prostředím
-          items:
-            - name: Přidání uživatelů a vlastníků testovacího prostředí
-              href: devtest-lab-add-devtest-user.md
-            - name: Přizpůsobení oprávnění s vlastními rolemi
-              href: devtest-lab-grant-user-permissions-to-specific-lab-policies.md
-            - name: Automatizace přidání uživatele testovacího prostředí
-              href: automate-add-lab-user.md
-        - name: Konfigurace testovacího prostředí
-          items:
-            - name: Nastavení zásad a plánů
-              href: devtest-lab-set-lab-policy.md
-            - name: Odesílání oznámení automatického vypínání
-              href: devtest-lab-auto-shutdown.md
-            - name: Konfigurace správy nákladů
-              href: devtest-lab-configure-cost-management.md
-            - name: Konfigurace imagí na Azure Marketplace
-              href: devtest-lab-configure-marketplace-images.md
-            - name: Povolení licencované image
-              href: devtest-lab-enable-licensed-images.md
-            - name: Přidání značek do testovacího prostředí
-              href: devtest-lab-add-tag.md
-            - name: Zveřejnění oznámení v testovacím prostředí
-              href: devtest-lab-announcements.md
-            - name: Přidání informací o podpoře do testovacího prostředí
-              href: devtest-lab-internal-support-message.md
-            - name: Konfigurace galerie sdílených imagí v Azure DevTest Labs
-              href: configure-shared-image-gallery.md
-        - name: Výběr vlastní image nebo vzorce
-          href: devtest-lab-comparing-vm-base-image-types.md
-        - name: Správa vlastních imagí
-          items:
-            - name: Vytvoření vlastní image z virtuálního počítače
-              href: devtest-lab-create-custom-image-from-vm-using-portal.md
-            - name: Vytvoření vlastní image z VHD pomocí webu Azure Portal
-              href: devtest-lab-create-template.md
-            - name: Vytvoření vlastní image z VHD pomocí PowerShellu
-              href: devtest-lab-create-custom-image-from-vhd-using-powershell.md
-            - name: Nahrání souboru VHD pomocí AzCopy
-              href: devtest-lab-upload-vhd-using-azcopy.md
-            - name: Nahrání souboru VHD pomocí PowerShellu
-              href: devtest-lab-upload-vhd-using-powershell.md
-            - name: Nahrání souboru VHD pomocí Průzkumníka služby Storage
-              href: devtest-lab-upload-vhd-using-storage-explorer.md
-        - name: Správa opětovně využitelných šablon
-          items:
-            - name: Přidání úložiště Git pro artefakty a šablony
-              href: devtest-lab-add-artifact-repo.md
-            - name: Správa vzorců
-              href: devtest-lab-manage-formulas.md
-        - name: Správa artefaktů
-          items:
-            - name: Přidání artefaktů do virtuálního počítače
-              href: add-artifact-vm.md
-            - name: Přidání vlastních artefaktů
-              href: devtest-lab-artifact-author.md
-            - name: Přidání úložiště artefaktů do testovacího prostředí
-              href: add-artifact-repository.md
-            - name: Určení povinných artefaktů
-              href: devtest-lab-mandatory-artifacts.md
-        - name: Správa virtuálních sítí
-          items:
-            - name: Konfigurace virtuálních sítí
-              href: devtest-lab-configure-vnet.md
-            - name: Výběr možnosti konfigurace IP
-              href: devtest-lab-shared-ip.md
-        - name: Správa datových disků
-          items:
-            - name: Připojení a odpojení datových disků
-              href: devtest-lab-attach-detach-data-disk.md
-        - name: Škálování testovacího prostředí
-          href: devtest-lab-scale-lab.md
-        - name: Integrace s CI/CD
-          items:
-            - name: Integrace testovacího prostředí do kanálu CI/CD Azure DevOps
-              href: devtest-lab-integrate-ci-cd-vsts.md
-        - name: Vytvoření nebo úprava testovacích prostředí pomocí šablony Resource Manageru
-          href: devtest-lab-use-arm-and-powershell-for-lab-resources.md
+        - name: Testování aplikace v Azure
+          href: test-app-azure.md
         - name: Řešení potíží
           items:
             - name: Řešení potíží se selháním při vytváření prostředí a virtuálních počítačů

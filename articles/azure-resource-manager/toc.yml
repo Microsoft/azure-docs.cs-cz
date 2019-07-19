@@ -152,6 +152,12 @@
               href: ./move-limitations/virtual-machines-move-limitations.md
             - name: Virtuální sítě
               href: ./move-limitations/virtual-network-move-limitations.md
+    - name: Značky
+      items:
+        - name: Označení prostředků
+          href: resource-group-using-tags.md
+        - name: Podpora značek
+          href: tag-support.md
     - name: Spravovat
       items:
         - name: Správa skupin prostředků
@@ -176,9 +182,6 @@
             - name: Použití Azure Powershell
               displayName: 'open,delete,deploy,move,lock,tag'
               href: manage-resources-powershell.md
-        - name: Uspořádání prostředků
-          displayName: tags
-          href: resource-group-using-tags.md
         - name: Uzamčení prostředků
           href: resource-group-lock-resources.md
         - name: Ověřovací rozhraní API pro přístup k předplatným
@@ -251,12 +254,8 @@
           href: resource-group-template-functions-resource.md
         - name: Funkce řetězců
           href: resource-group-template-functions-string.md
-    - name: Možnosti prostředků
-      items:
-        - name: Úplné odstranění režimu
-          href: complete-mode-deletion.md
-        - name: Podpora značek
-          href: tag-support.md
+    - name: Úplné odstranění režimu
+      href: complete-mode-deletion.md
     - name: Poskytovatelé prostředků podle služeb
       href: azure-services-resource-providers.md
     - name: REST – Resource Manager

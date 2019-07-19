@@ -93,12 +93,13 @@
           href: streaming-policy-concept.md
         - name: Kódy chyb koncových bodů streamování
           href: streaming-endpoint-error-codes.md
-    - name: Dynamické šifrování a doručování klíčů
+    - name: Ochrana obsahu
       items:
-        - name: Typy šifrování a protokoly streamování
-          displayName: 'dynamic, encryption, content protection, PlayReady, Widevine, FairPlay'
+        - name: Dynamické šifrování a doručování klíčů
+          displayName: 'content protection, streaming protocols, encryption types, content protection, PlayReady, Widevine, FairPlay'
           href: content-protection-overview.md
-        - name: Systém s více variantami DRM s řízením přístupu
+        - name: Návrh systému s více variantami DRM
+          displayName: 'drm, access control'
           href: design-multi-drm-system-with-access-control.md
         - name: Licence DRM
           items:
