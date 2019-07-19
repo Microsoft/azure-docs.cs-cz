@@ -1,105 +1,105 @@
 ---
-title: Služba Azure Container Instances – nejčastější dotazy
-description: Odpovědi na nejčastější dotazy týkající se ke službě Azure Container Instances
+title: Azure Container Instances – často kladené otázky
+description: Odpovědi na nejčastější dotazy týkající se služby Azure Container Instances
 services: container-instances
 author: dkkapur
-manager: jeconnoc
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: dekapur
-ms.openlocfilehash: 99882bd23d7b94afc550247172e5b70deb23bec9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 29d31e2076e0ff5ddf4f84df13ac2eede482c052
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65791402"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325994"
 ---
-# <a name="frequently-asked-questions-about-azure-container-instances"></a>Nejčastější dotazy k Azure Container Instances
+# <a name="frequently-asked-questions-about-azure-container-instances"></a>Nejčastější dotazy týkající se Azure Container Instances
 
-Tento článek se zabývá nejčastější dotazy týkající se Azure Container Instances.
+Tento článek se zabývá nejčastějšími dotazy týkajícími se Azure Container Instances.
 
 ## <a name="deployment"></a>Nasazení
 
-### <a name="how-large-can-my-container-image-be"></a>Jak velká může Moje image kontejneru být?
+### <a name="how-large-can-my-container-image-be"></a>Jak velký je můj obrázek kontejneru?
 
-Maximální velikost pro bitovou kopii kontejneru nasadit v Azure Container Instances je 15 GB. Je možné nasadit větší obrázky v závislosti na přesné dostupnosti v tuto chvíli můžete nasadit, ale to není zaručeno.
+Maximální velikost nasadíelné image kontejneru na Azure Container Instances je 15 GB. Je možné, že budete moci nasadit větší obrázky v závislosti na přesné dostupnosti v době, kdy jste nasadili, ale to není zaručeno.
 
-Velikost vaší image kontejneru má vliv na dobu potřebnou k nasazení, takže obecně že je žádoucí uchovat imagí kontejnerů v co nejmenší.
+Velikost Image kontejneru má vliv na dobu potřebnou k nasazení, takže obecně chcete uchovávat image kontejnerů co nejmenším možným způsobem.
 
-### <a name="how-can-i-speed-up-the-deployment-of-my-container"></a>Jak můžu zrychlit nasazení Můj kontejner?
+### <a name="how-can-i-speed-up-the-deployment-of-my-container"></a>Jak můžu zrychlit nasazení mého kontejneru?
 
-Protože jednou z hlavní faktory doba nasazení je velikost bitové kopie, podívejte se jak zmenšit velikost. Odstraňte vrstvy nebo zmenšete velikost vrstvy na obrázku (výběrem světlejší základní image operačního systému). Například pokud používáte kontejnery Linuxu, zvažte použití Alpine jako základní image, spíše než úplné Ubuntu Server. Podobně pro kontejnery Windows, pokud je to možné použijte základní image Nano serveru. 
+Vzhledem k tomu, že jedním z hlavních determinantů časů nasazení je velikost obrázku, hledejte způsob, jak velikost zmenšit. Odeberte vrstvy, které nepotřebujete, nebo zmenšete velikost vrstev v imagi (tím, že vybíráte světlejší základní bitovou kopii operačního systému). Pokud například používáte kontejnery Linux, zvažte použití Alpine jako základní image, nikoli úplného serveru Ubuntu. Podobně pro kontejnery Windows použijte základní image nano serveru, pokud je to možné. 
 
-Také byste měli zkontrolovat seznam z mezipaměti imagí v Image kontejneru v Azure prostřednictvím [bitové kopie v mezipaměti seznamu](/rest/api/container-instances/listcachedimages) rozhraní API. Je možné přepnout na vrstvu bitové kopie pro některé z imagí z mezipaměti. 
+Měli byste také kontrolovat seznam imagí předem uložených v mezipaměti ve službě Azure Container images, které jsou k dispozici prostřednictvím rozhraní API pro vypsání [imagí v mezipaměti](/rest/api/container-instances/listcachedimages) . Může být možné přepnout vrstvu obrázku pro jednu z imagí z mezipaměti před uložením na více systémů. 
 
-Další informace naleznete v [podrobné pokyny](container-instances-troubleshooting.md#container-takes-a-long-time-to-start) na zkrácení doby spuštění kontejneru.
+Přečtěte si podrobnější [pokyny](container-instances-troubleshooting.md#container-takes-a-long-time-to-start) k omezení času spuštění kontejneru.
 
-### <a name="what-windows-base-os-images-are-supported"></a>Jaké Windows základní bitové kopie operačního systému jsou podporovány?
+### <a name="what-windows-base-os-images-are-supported"></a>Jaké základní image operačního systému Windows jsou podporované?
 
-#### <a name="windows-server-2016-base-images"></a>Základní Image Windows serveru 2016
+#### <a name="windows-server-2016-base-images"></a>Základní image Windows serveru 2016
 
-* [Nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver): `10.0.14393.x`, `sac2016`
-* [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2016`,  `10.0.14393.x`
+* [Nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver): `10.0.14393.x`,`sac2016`
+* [Jádro Windows serveru](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2016`,`10.0.14393.x`
 
 > [!NOTE]
-> Windows imagí založených na půlroční kanál verze 1709 nebo 1803 nejsou podporovány.
+> Image Windows na základě pololetního kanálu verze 1709 nebo 1803 se nepodporují.
 
-#### <a name="windows-server-2019-and-client-base-images-preview"></a>2019 systému Windows Server a klienta základní Image (preview)
+#### <a name="windows-server-2019-and-client-base-images-preview"></a>Windows Server 2019 a základní image klienta (Preview)
 
-* [Nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver): `1809`, `10.0.17763.x`
-* [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2019`, `1809`, `10.0.17763.x`
-* [Windows](https://hub.docker.com/_/microsoft-windows): `1809`, `10.0.17763.x` 
+* [Nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver): `1809`,`10.0.17763.x`
+* [Jádro Windows serveru](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2019`, `1809`,`10.0.17763.x`
+* [Windows](https://hub.docker.com/_/microsoft-windows): `1809`,`10.0.17763.x` 
 
-### <a name="what-net-or-net-core-image-layer-should-i-use-in-my-container"></a>Obrázek vrstvu .NET nebo .NET Core používat v Můj kontejner? 
+### <a name="what-net-or-net-core-image-layer-should-i-use-in-my-container"></a>Jakou vrstvu imagí .NET nebo .NET Core mám použít v kontejneru? 
 
-Použijte nejmenší bitovou kopii, která splňuje vaše požadavky. Pro Linux, můžete použít *runtime alpine* image .NET Core, která se podporuje od verze rozhraní .NET Core 2.1. Pro Windows, pokud používáte úplné rozhraní .NET Framework, pak budete muset použít bitovou kopii systému Windows Server Core (jen pro modul runtime image, jako například *4.7.2-windowsservercore-ltsc2016*). Pouze modul runtime bitové kopie jsou menší, ale nepodporují úlohy, které vyžadují sady .NET SDK.
+Použijte nejmenší obrázek, který splňuje vaše požadavky. Pro Linux byste mohli použít bitovou kopii .NET Core pro *modul runtime* , která byla od vydání .net Core 2,1 podporovaná. V případě systému Windows, pokud používáte úplný .NET Framework, je nutné použít základní bitovou kopii systému Windows Server (bitovou kopii pouze za běhu, například *4.7.2-windowsservercore-ltsc2016*). Bitové kopie, které jsou jen za běhu, jsou menší, ale nepodporují úlohy, které vyžadují sadu .NET SDK.
 
 ## <a name="availability-and-quotas"></a>Dostupnost a kvóty
 
 ### <a name="how-many-cores-and-memory-should-i-allocate-for-my-containers-or-the-container-group"></a>Kolik jader a paměti mám přidělit pro moje kontejnery nebo skupinu kontejnerů?
 
-To opravdu závisí na velikosti pracovní zátěže. Začněte v malém a testování výkonu naleznete v tématu Jak kontejnery. [Monitorovat využití prostředků procesoru a paměti](container-instances-monitor.md)a pak přidejte jader, paměť, v závislosti na charakteru procesy, které nasadíte v kontejneru. 
+Tato skutečnosti závisí na vašich úlohách. Začněte s malým a testovacím výkonem, abyste viděli, jak vaše kontejnery dělají. [Monitorujte využití prostředků procesoru a paměti](container-instances-monitor.md)a pak přidejte jádra nebo paměť na základě typu procesů, které nasadíte do kontejneru. 
 
-Nezapomeňte také zkontrolovat [dostupnost prostředků](container-instances-region-availability.md#availability---general) pro oblast nasazujete v pro horní mez na jader procesoru a paměti, které jsou k dispozici pro skupinu kontejnerů. 
+Nezapomeňte také zkontrolovat [dostupnost prostředků](container-instances-region-availability.md#availability---general) pro oblast, do které nasazujete, v horních mezích jader procesoru a paměti dostupných na jednu skupinu kontejnerů. 
 
-### <a name="what-underlying-infrastructure-does-aci-run-on"></a>Jaké základní infrastruktury ACI ke spuštění?
+### <a name="what-underlying-infrastructure-does-aci-run-on"></a>Jakou základní infrastrukturu ACI spustit?
 
-Služba Azure Container Instances, zaměřuje jako služba bez serveru kontejnerů na vyžádání, takže budeme rádi, když se zaměřuje na vývoj kontejnerů a bez starostí o infrastrukturu. Pro ty, které jsou zvědaví nebo požadavek provést porovnání na výkon, ACI běží na sadu virtuálních počítačů Azure z různých SKU, především z F a D series. Očekáváme, že toto v budoucnu změnit, protože k vývoji a optimalizace služby. 
+Azure Container Instances se zaměřuje na službu bez serveru, která je na vyžádání, takže chceme mít fokus na vývoji vašich kontejnerů a nemusíte si dělat starosti s infrastrukturou. Pro ty, které se zajímá nebo chtějí porovnávat výkon, ACI běží na sadách virtuálních počítačů Azure různých SKU, hlavně z řad F a D. Očekáváme, že toto se v budoucnu změní, protože dál vyvíjíme a optimalizujete službu. 
 
-### <a name="i-want-to-deploy-thousand-of-cores-on-aci---can-i-get-my-quota-increased"></a>Chci nasadit tisíc jader ve službě ACI – získat Můj o zvýšení kvóty?
+### <a name="i-want-to-deploy-thousand-of-cores-on-aci---can-i-get-my-quota-increased"></a>Chci nasadit tisíce jader na ACI – můžu zvýšit svou kvótu?
  
-Ano (někdy). Zobrazit [kvóty a omezení](container-instances-quotas.md) článku pro aktuální kvóty a omezení, které je možné zvýšit požadavkem.
+Ano (někdy). Prohlédněte si článek [kvóty a omezení](container-instances-quotas.md) pro aktuální kvóty a omezení lze zvýšit podle požadavků.
 
-### <a name="can-i-deploy-with-more-than-4-cores-and-16-gb-of-ram"></a>Je možné nasadit s více než 4 jádry a 16 GB paměti RAM?
+### <a name="can-i-deploy-with-more-than-4-cores-and-16-gb-of-ram"></a>Můžu nasazovat s více než 4 jádry a 16 GB paměti RAM?
 
-Zatím ne. V současné době jedná se o maximální hodnoty pro skupinu kontejnerů. Obraťte se na podporu Azure se zvláštní požadavky nebo požadavky. 
+Zatím ne. V současné době jsou to maxima pro skupinu kontejnerů. Kontaktujte podporu Azure o konkrétní požadavky nebo požadavky. 
 
-### <a name="when-will-aci-be-in-a-specific-region"></a>Kdy bude ACI v určité oblasti?
+### <a name="when-will-aci-be-in-a-specific-region"></a>Kdy bude ACI v konkrétní oblasti?
 
-Aktuální dostupnosti oblast je publikována [tady](container-instances-region-availability.md#availability---general). Pokud máte požadavek na konkrétní oblasti, obraťte se na podporu Azure.
+[Tady](container-instances-region-availability.md#availability---general)se zveřejňuje aktuální dostupnost oblasti. Pokud máte požadavek na konkrétní oblast, obraťte se na podporu Azure.
 
 ## <a name="features-and-scenarios"></a>Funkce a scénáře
 
-### <a name="how-do-i-scale-a-container-group"></a>Jak se škáluje skupinu kontejnerů?
+### <a name="how-do-i-scale-a-container-group"></a>Návody škálovat skupinu kontejnerů?
 
-V současné době škálování není k dispozici pro kontejnery nebo skupiny kontejnerů. Pokud je potřeba spustit více instancí, použijte naše rozhraní API pro automatizaci a vytvořit další požadavky pro vytvoření skupiny kontejnerů ve službě. 
+V současné době není pro kontejnery nebo skupiny kontejnerů k dispozici škálování. Pokud potřebujete spustit více instancí, použijte naše rozhraní API k automatizaci a vytvoření dalších žádostí o vytvoření skupiny kontejnerů do této služby. 
 
-### <a name="what-features-are-available-to-instances-running-in-a-custom-vnet"></a>Jaké funkce jsou dostupné pro instance s ovladači ve vlastní virtuální síti?
+### <a name="what-features-are-available-to-instances-running-in-a-custom-vnet"></a>Jaké funkce jsou k dispozici pro instance spuštěné ve vlastní virtuální síti?
 
-Můžete nasadit skupiny kontejnerů ve službě Azure virtual network podle vašeho výběru a delegovat privátních IP adres do kontejneru skupiny pro směrování provozu virtuální sítě napříč vašimi prostředky Azure. Nasazení skupiny kontejnerů do virtuální sítě je aktuálně ve verzi preview a některé aspekty této funkce mohou změnit před obecné dostupnosti (GA). Zobrazit [omezení verze Preview](container-instances-vnet.md#preview-limitations) aktualizované informace.
+Skupiny kontejnerů můžete nasadit ve virtuální síti Azure podle svého výběru a delegovat privátní IP adresy na skupiny kontejnerů, abyste mohli směrovat provoz v rámci virtuální sítě napříč prostředky Azure. Nasazení skupiny kontejnerů do virtuální sítě je v tuto chvíli ve verzi Preview a některé aspekty této funkce se můžou změnit před všeobecnou dostupností (GA). Aktualizované informace najdete v tématu [omezení verze Preview](container-instances-vnet.md#preview-limitations) .
 
 ## <a name="pricing"></a>Ceny
 
-### <a name="when-does-the-meter-start-running"></a>Když měřič začít spouštět?
+### <a name="when-does-the-meter-start-running"></a>Kdy se měřič spouští?
 
-Doba přidělení skupiny kontejnerů se počítá od okamžiku začneme stáhněte si svůj první kontejner image (pro nové nasazení) nebo vaší skupině kontejnerů restartování (pokud už nasadili), dokud nebude zastaven skupiny kontejnerů. Podrobnosti najdete na [Container Instances ceny](https://azure.microsoft.com/pricing/details/container-instances/).
+Doba trvání skupiny kontejnerů se počítá od okamžiku, kdy začneme načítat image prvního kontejneru (pro nové nasazení) nebo když se skupina kontejnerů restartuje (Pokud je už nasazená), až do zastavení skupiny kontejnerů. Podrobnosti najdete v tématu [Container Instances Price](https://azure.microsoft.com/pricing/details/container-instances/).
 
-### <a name="do-i-stop-being-charged-when-my-containers-are-stopped"></a>Zastavit se účtují poplatky, když se zastaví Moje kontejnery?
+### <a name="do-i-stop-being-charged-when-my-containers-are-stopped"></a>Při zastavení mých kontejnerů se mi účtují?
 
-Měřiče zastaví po ukončení vaší skupiny celého kontejneru. Za předpokladu, kontejner ve vaší skupině kontejnerů běží, jsme se uloží prostředky v případě, že chcete znovu spouštění kontejnerů. 
+Až se zastaví celá skupina kontejnerů, měřiče se nespustí. Pokud je v kontejneru ve skupině kontejnerů spuštěný kontejner, uchovávají se prostředky pro případ, že budete chtít znovu spustit kontejnery. 
 
 ## <a name="next-steps"></a>Další postup
 
-* [Další informace](container-instances-overview.md) o službě Azure Container Instances.
-* [Řešení běžných problémů s](container-instances-troubleshooting.md) ve službě Azure Container Instances.
+* [Přečtěte si další informace](container-instances-overview.md) o Azure Container Instances.
+* [Řešení běžných problémů](container-instances-troubleshooting.md) v Azure Container Instances.

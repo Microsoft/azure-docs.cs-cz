@@ -9,21 +9,21 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: f6422bf2ccc42c12d8f2d20a5a7ece8d37e8b48e
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
-ms.translationtype: MT
+ms.openlocfilehash: 398b2236caa77e4aef5b471079407a5edeeeee2d
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449733"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326933"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurace virtuálních sítí a bran firewall Azure Storage
 
 Azure Storage poskytuje vrstvený model zabezpečení. Tento model umožňuje zabezpečit vaše účty úložiště s konkrétní sadou podporované sítí. Když jsou nakonfigurovaná pravidla sítě, pouze aplikace vyžadující data z více než zadaných sítí můžou k účtu úložiště.
 
-Aplikace, který přistupuje k účtu úložiště, když pravidla sítě jsou aktivní, vyžaduje řádné autorizace v požadavku. Autorizace je podporováno pomocí přihlašovacích údajů Azure Active Directory (Azure AD) pro objekty BLOB a fronty, platným účtem přístupový klíč nebo SAS token.
+Aplikace, který přistupuje k účtu úložiště, když pravidla sítě jsou aktivní, vyžaduje řádné autorizace v požadavku. Autorizace se podporuje s přihlašovacími údaji služby Azure Active Directory (Azure AD) pro objekty BLOB a front, s platným klíčem pro přístup k účtu nebo s tokenem SAS.
 
 > [!IMPORTANT]
-> Azure File Sync zatím nepodporuje virtuální sítí a bran firewall. Pokud používáte Azure File Sync v účtu úložiště a tyto povolíte, nebude synchronizace Azure File Sync.
+> Azure File Sync ještě nepodporují brány firewall a virtuální sítě. Pokud používáte Azure File Sync v účtu úložiště a povolíte je, Azure File Sync se nesynchronizují.
 >
 > Ve výchozím nastavení, zapnutí pravidla brány firewall pro váš účet úložiště blokuje příchozí požadavky na data, není-li, požadavky pocházejí z služba, která je zpracovávána v rámci služby Azure Virtual Network (VNet). Požadavky, které jsou blokovány mezi patří zařízení se od ostatních služeb Azure z webu Azure portal, protokolování a metrik služby a tak dále.
 >
@@ -244,7 +244,7 @@ Každý účet úložiště podporuje až 100 IP sítě pravidla, která mohou b
 
 Pokud chcete udělit přístup z vaší místní sítě k vašemu účtu úložiště s pravidlem síť IP, je nutné určit internetové IP adresy používané ve vaší síti. Požádejte o pomoc svého správce sítě.
 
-Pokud používáte [ExpressRoute](/azure/expressroute/expressroute-introduction) z místního pro veřejný partnerský vztah a partnerský vztah Microsoftu, budete muset identifikovat překladu adres IP adresy, které se používají. Ve veřejných partnerských vztazích každý okruh ExpressRoute automaticky využívá dvě IP adresy pro překlad adres (NAT), které se používají k provozu služeb Azure při vstupu do páteřní sítě Microsoft Azure. IP adresy pro překlad adres (NAT) používané v partnerských vztazích s Microsoftem poskytuje zákazník nebo poskytovatel služby. Pokud chcete povolit přístup k prostředkům služby, musíte tyto veřejné IP adresy povolit v nastavení IP adresy brány firewall prostředku. Pokud chcete zjistit IP adresy veřejného partnerského okruhu ExpressRoute, [otevřete lístek podpory pro ExpressRoute](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) na webu Azure Portal. Další informace o [překladu adres (NAT) pro veřejné partnerské vztahy a partnerské vztahy s Microsoftem v ExpressRoute.](/azure/expressroute/expressroute-nat#nat-requirements-for-azure-public-peering)
+Pokud používáte [ExpressRoute](/azure/expressroute/expressroute-introduction) z vašich místních partnerských vztahů nebo partnerských vztahů Microsoftu, budete muset určit IP adresy NAT, které se používají. Ve veřejných partnerských vztazích každý okruh ExpressRoute automaticky využívá dvě IP adresy pro překlad adres (NAT), které se používají k provozu služeb Azure při vstupu do páteřní sítě Microsoft Azure. IP adresy pro překlad adres (NAT) používané v partnerských vztazích s Microsoftem poskytuje zákazník nebo poskytovatel služby. Pokud chcete povolit přístup k prostředkům služby, musíte tyto veřejné IP adresy povolit v nastavení IP adresy brány firewall prostředku. Pokud chcete zjistit IP adresy veřejného partnerského okruhu ExpressRoute, [otevřete lístek podpory pro ExpressRoute](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) na webu Azure Portal. Další informace o [překladu adres (NAT) pro veřejné partnerské vztahy a partnerské vztahy s Microsoftem v ExpressRoute.](/azure/expressroute/expressroute-nat#nat-requirements-for-azure-public-peering)
 
 ### <a name="managing-ip-network-rules"></a>Správa pravidel sítě IP
 
@@ -353,15 +353,16 @@ Pokud povolíte **Povolit důvěryhodné služby Microsoftu...**  výjimky, tyto
 |Služba|Název poskytovatele prostředků|Účel|
 |:------|:---------------------|:------|
 |Azure Backup|Microsoft.RecoveryServices|Spuštění zálohování a obnovení nespravované disky ve virtuálních počítačích IAAS. (není vyžadované pro spravované disky). [Další informace](/azure/backup/backup-introduction-to-azure-backup).|
-|Azure Data Box|Microsoft.DataBox|Umožňuje importovat data do Azure s využitím zařízení Data Box. [Další informace](/azure/databox/data-box-overview).|
+|Azure Data Box|Microsoft.DataBox|Umožňuje importovat data do Azure pomocí Data Box. [Další informace](/azure/databox/data-box-overview).|
 |Azure DevTest Labs|Microsoft.DevTestLab|Vytváření a artefaktů instalace vlastní image. [Další informace](/azure/devtest-lab/devtest-lab-overview).|
 |Azure Event Grid|Microsoft.EventGrid|Povolit publikování událostí v úložišti objektů Blob a umožňují Event Grid k publikování do fronty úložiště. Další informace o [události služby blob storage](/azure/event-grid/event-sources) a [publikování do front](/azure/event-grid/event-handlers).|
 |Azure Event Hubs|Microsoft.EventHub|Archivace dat s Event Hubs Capture. [Další informace](/azure/event-hubs/event-hubs-capture-overview).|
-|Azure HDInsight|Microsoft.HDInsight|Zřízení počáteční obsah výchozího systému souborů pro nový cluster HDInsight. [Další informace](https://azure.microsoft.com/blog/enhance-hdinsight-security-with-service-endpoints/).|
+| Synchronizace souborů Azure| Microsoft.StorageSync| Umožňuje transformovat souborový server Prem na mezipaměť pro sdílené složky Azure. Povoluje se synchronizace více webů, rychlé zotavení po havárii a zálohování na straně cloudu. [Víc se uč](../files/storage-sync-files-planning.md)|
+|Azure HDInsight|Microsoft.HDInsight|Zřídí počáteční obsah výchozího systému souborů pro nový cluster HDInsight. [Další informace](https://azure.microsoft.com/blog/enhance-hdinsight-security-with-service-endpoints/).|
 |Azure Monitor|Microsoft.Insights|Umožňuje zápis dat do účtu úložiště zabezpečené monitorování [Další](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security).|
 |Sítě Azure|Microsoft.Network|Store a analyzovat protokoly přenosů sítě. [Další informace](/azure/network-watcher/network-watcher-packet-capture-overview).|
 |Azure Site Recovery|Microsoft.SiteRecovery |Konfigurace zotavení po havárii tím, že replikace pro virtuální počítače Azure IaaS. Toto je nezbytné, pokud používáte účet úložiště povolenou bránu firewall mezipaměti nebo zdrojový účet úložiště nebo cílový účet úložiště.  [Další informace](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication).|
-|Azure SQL Data Warehouse|Microsoft.Sql|Umožňuje importovat a exportovat scénáře z konkrétní instance databáze SQL při použití technologie PolyBase. [Další informace](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview).|
+|Azure SQL Data Warehouse|Microsoft.Sql|Umožňuje scénáře importu a exportu z konkrétních instancí databází SQL pomocí základu. [Další informace](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview).|
 
 ### <a name="storage-analytics-data-access"></a>Přístup k datům Storage analytics
 

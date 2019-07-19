@@ -1,13 +1,14 @@
 ---
-title: Přidat víceklientské aplikaci do Galerie aplikací Azure AD | Dokumentace Microsoftu
-description: Vysvětluje, jak můžete vytvořit seznam vyvinuté víceklientské aplikace v galerii aplikací Azure AD.
+title: Přidání víceklientské aplikace do Galerie aplikací Azure AD | Microsoft Docs
+description: Vysvětluje, jak můžete v galerii aplikací Azure AD vytvořit vlastní víceklientské aplikace.
 services: active-directory
 documentationCenter: na
 author: rwike77
 manager: CelesteDG
 ms.assetid: 92c1651a-675d-42c8-b337-f78e7dbcc40d
 ms.service: active-directory
-ms.subservice: app-mgmt
+ms.subservice: develop
+ms.custom: aaddev
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,38 +17,38 @@ ms.date: 09/11/2018
 ms.author: ryanwi
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0434ec889a791079e2019bcb1d04f5ce0fceb731
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8024130b986d111abe3b470d6b06e86ed6419dc4
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65545558"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68320920"
 ---
-# <a name="add-a-multitenant-application-to-the-azure-ad-application-gallery"></a>Přidat víceklientské aplikaci do Galerie aplikací Azure AD
+# <a name="add-a-multitenant-application-to-the-azure-ad-application-gallery"></a>Přidání víceklientské aplikace do Galerie aplikací Azure AD
 
-## <a name="what-is-the-azure-ad-application-gallery"></a>Co je Galerie aplikací Azure AD?
+## <a name="what-is-the-azure-ad-application-gallery"></a>Co je galerie aplikací Azure AD?
 
-Azure Active Directory (Azure AD) je služba identit v cloudu. [Galerie aplikací Azure AD](https://azure.microsoft.com/marketplace/active-directory/all/) je v obchodě Azure Marketplace, kde jsou všechny konektory aplikace publikována pro jednotné přihlašování a zřizování uživatelů. Zákazníci, kteří používají Azure AD jako zprostředkovatele identity najít různých konektorů aplikací SaaS publikované. Správci IT přidat konektory v galerii aplikací a potom nakonfigurujte a konektory slouží pro jednotné přihlašování a zřizování. Azure AD podporuje všechny hlavní federační protokolů, jako jsou třeba SAML 2.0, OpenID Connect, OAuth a WS-Fed pro jednotné přihlašování. 
+Azure Active Directory (Azure AD) je cloudová služba identit. [Galerie aplikací Azure AD](https://azure.microsoft.com/marketplace/active-directory/all/) je ve službě Azure Marketplace App Store, kde jsou všechny konektory aplikací publikované pro jednotné přihlašování a zřizování uživatelů. Zákazníci, kteří používají Azure AD jako zprostředkovatele identity, vyhledají různé konektory aplikací SaaS, které jsou tady publikované. Správci IT přidávají konektory z Galerie aplikací a pak tyto konektory nakonfigurují a používají pro jednotné přihlašování a zřizování. Azure AD podporuje všechny hlavní federační protokoly, včetně SAML 2,0, OpenID Connect, OAuth a WS-dodávání pro jednotné přihlašování. 
 
 ## <a name="if-your-application-supports-saml-or-openidconnect"></a>Pokud vaše aplikace podporuje SAML nebo OpenIDConnect
-Pokud máte víceklientské aplikaci, která chcete, aby uvedená v galerii aplikací Azure AD, je nejprve třeba zkontrolovat, že vaše aplikace podporuje jednu z následujících jednotné přihlašování technologií:
+Pokud máte víceklientské aplikace, kterou chcete uvést v galerii aplikací Azure AD, musíte nejdřív zajistit, aby vaše aplikace podporovala jednu z následujících technologií jednotného přihlašování:
 
-- **OpenID Connect**: Pokud chcete, aby vaši aplikaci, vytvořte víceklientskou aplikaci ve službě Azure AD a implementaci [rozhraní Azure AD pro udělování souhlasu](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications) pro vaši aplikaci. Odesílejte žádost o přihlášení na společný koncový bod tak, aby každý zákazník se může poskytnout souhlas pro aplikaci. Můžete řídit přístup uživatelů na základě ID tenanta a hlavním názvem uživatele přijata v tokenu. Odešlete aplikaci pomocí procesu uvedených v [výpis vaší aplikace v galerii aplikací Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing).
+- **OpenID Connect**: Pokud chcete svou aplikaci zobrazit, vytvořte víceklientské aplikace v Azure AD a implementujte rozhraní pro [vyjádření souhlasu Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications) pro vaši aplikaci. Odešle žádost o přihlášení ke společnému koncovému bodu, aby mohl každý zákazník poskytnout souhlas aplikaci. Přístup uživatele můžete řídit na základě ID tenanta a hlavního názvu uživatele (UPN) přijatého v tokenu. Odešlete aplikaci pomocí procesu popsanýho v [části výpis vaší aplikace v galerii aplikací Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing).
 
-- **SAML**: Pokud vaše aplikace podporuje SAML 2.0, můžete aplikace uvedená v galerii. Postupujte podle pokynů v [výpis vaší aplikace v galerii aplikací Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing).
+- **SAML**: Pokud vaše aplikace podporuje SAML 2,0, může být aplikace uvedená v galerii. Postupujte podle pokynů v [části výpis vaší aplikace v galerii aplikací Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing).
 
-## <a name="if-your-application-does-not-support-saml-or-openidconnect"></a>Pokud aplikace nepodporuje SAML nebo OpenIDConnect
-Aplikace, které nepodporují SAML nebo OpenIDConnect stále možné integrovat do Galerie aplikací prostřednictvím heslo jednotné přihlašování – technologie.
+## <a name="if-your-application-does-not-support-saml-or-openidconnect"></a>Pokud vaše aplikace nepodporuje SAML ani OpenIDConnect
+Aplikace, které nepodporují SAML nebo OpenIDConnect, můžou být i nadále integrované do Galerie aplikací prostřednictvím technologie jednotného přihlašování k heslům.
 
-Heslo jednotného přihlašování, taky jako ukládání hesel do trezoru, můžete ke správě přístupu uživatelů a hesel do webové aplikace, které nepodporují federace identit. Je také užitečné pro scénáře, ve kterých několik uživatelé potřebují sdílet jeden účet, jako například účtům sociálních médií aplikace vaší organizace. 
+Jednotné přihlašování k heslům, označované taky jako trezor hesel, umožňuje spravovat přístup uživatelů a hesla k webovým aplikacím, které nepodporují federaci identit. Je to také užitečné ve scénářích, ve kterých si několik uživatelů potřebuje sdílet jeden účet, jako jsou například účty aplikací sociálních médií vaší organizace. 
 
-Pokud chcete zařaďte svoji aplikaci s touto technologií:
-1. Vytvoření webové aplikace, který má přihlašovací stránku HTML konfigurace [heslem jednotného přihlašování](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis). 
-2. Odeslat požadavek, jak je popsáno v [výpis vaší aplikace v galerii aplikací Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing).
+Pokud chcete zobrazit seznam aplikací pomocí této technologie:
+1. Vytvořte webovou aplikaci, která má přihlašovací stránku HTML pro konfiguraci [jednotného přihlašování pomocí hesla](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis). 
+2. Odešlete žádost, jak je popsáno v [části výpis vaší aplikace v galerii aplikací Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing).
 
-## <a name="escalations"></a>Eskalaci
+## <a name="escalations"></a>Eskalací zákazníka
 
-Žádné eskalaci, pošlete e-mail na adresu [týmu Integrace jednotného přihlašování k Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>) a ozveme se vám co nejdříve.
+Pro všechny eskalace odešlete e-mail do [týmového týmu jednotného přihlašování služby Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>) a my se vám pošle zpět na co možná nejdříve.
 
 ## <a name="next-steps"></a>Další postup
-Zjistěte, jak [uvedení aplikace v galerii aplikací Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing).
+Naučte se, jak [Zobrazit seznam aplikací v galerii aplikací Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing).

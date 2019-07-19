@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Extrahujte rukou psaný text - REST,C#'
+title: 'Rychlý start: Extrakce vytištěného a rukopisného textu,C#'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu extrahujete rukou psaný text z obrázku pomocí rozhraní API pro počítačové zpracování obrazu a C#.
+description: V tomto rychlém startu extrahujete vytištěný a rukou psaný text z obrázku pomocí rozhraní API pro počítačové zpracování obrazu C#.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,26 +11,26 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 04c3c255e4218ef2fcd0bbd1d33da1abe3fc0c7f
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 7646a079d9cbc2f6362a38c5ac12371d3f32d4e5
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604480"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68312023"
 ---
-# <a name="quickstart-extract-handwritten-text-using-the-computer-vision-rest-api-and-c"></a>Rychlý start: Extrahujte rukou psaný text pomocí rozhraní API pro počítačové zpracování obrazu REST aC#
+# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-c"></a>Rychlý start: Extrakce vytištěného textu a ručního textu pomocí Počítačové zpracování obrazu REST API aC#
 
-V tomto rychlém startu se extrahovat rukou psaný text z image pomocí rozhraní REST API pro počítačové zpracování obrazu. S [čtení dávky](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) rozhraní API a [výsledek operace čtení](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) rozhraní API, můžete zjistit rukou psaný text v obrázku a extrahovat rozpoznané znaky do datového proudu Strojově čitelný znaků.
+V tomto rychlém startu budete z obrázku extrahováni vytištěné a/nebo ručně psaný text pomocí REST API Počítačové zpracování obrazu. Pomocí metod [čtení](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) a čtení dávkových [operací](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) Batch můžete detekovat text v obrázku a extrahovat rozpoznané znaky do datového proudu znaků, který je strojově čitelný. Rozhraní API určí, který model rozpoznávání se má použít pro každý řádek textu, takže podporuje obrázky s tištěným i psaným textem.
 
 > [!IMPORTANT]
-> Na rozdíl od [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) metody [čtení dávky](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) metoda běží asynchronně. Tato metoda nevrací žádné informace v textu úspěšné odpovědi. Místo toho vrátí metoda čtení identifikátoru URI v `Operation-Location` pole hlavičky odpovědi. Potom můžete zavolat tento identifikátor URI, který představuje [výsledek operace čtení](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) metodu, pokud chcete zkontrolovat stav a vrátí výsledky volání metody pro čtení služby Batch.
+> Metoda [čtení dávky](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) se spouští asynchronně. Tato metoda nevrací žádné informace v textu úspěšné odpovědi. Místo toho metoda Read vrátí identifikátor URI v `Operation-Location` poli hlavička odpovědi. Pak můžete použít tento identifikátor URI, který reprezentuje metodu [výsledku operace čtení](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) , aby zkontroloval stav a vrátil výsledky volání metody čtení dávky.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Musíte mít [Visual Studio 2015 nebo novější](https://visualstudio.microsoft.com/downloads/).
-- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Můžete získat bezplatné zkušební verze klíče z [zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Nebo, postupujte podle pokynů v [vytvoření účtu služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) k přihlášení pro počítačové zpracování obrazu a získejte klíč.
+- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Bezplatný zkušební klíč si můžete [vyzkoušet Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Případně postupujte podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přihlášení k odběru počítačové zpracování obrazu a získání klíče.
 
 ## <a name="create-and-run-the-sample-application"></a>Vytvoření a spuštění ukázkové aplikace
 
@@ -43,7 +43,7 @@ Když chcete vytvořit ukázku v sadě Visual Studio, postupujte takto:
     1. Když se zobrazí, vyberte **Newtonsoft.Json**. Pak klikněte na zaškrtávací políčko vedle názvu vašeho projektu a na **Nainstalovat**.
 1. Nahraďte kód v `Program.cs` kódem zobrazeným níže a tam, kde je to potřeba, proveďte následující změny v kódu:
     1. Hodnotu `subscriptionKey` nahraďte klíčem předplatného.
-    1. Nahraďte hodnotu `uriBase` vyplněná adresa URL koncového bodu [čtení dávky](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) metoda z oblasti Azure, kde jste získali klíče předplatného, v případě potřeby.
+    1. V případě potřeby nahraďte hodnotu `uriBase` adresou URL koncového bodu pro metodu [čtení dávky](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) z oblasti Azure, kde jste v případě potřeby získali klíče předplatného.
 1. Spusťte program.
 1. Do příkazového řádku zadejte cestu k místnímu obrázku.
 
@@ -77,16 +77,16 @@ namespace CSHttpClientSample
         static void Main()
         {
             // Get the path and filename to process from the user.
-            Console.WriteLine("Handwriting Recognition:");
+            Console.WriteLine("Text Recognition:");
             Console.Write(
-                "Enter the path to an image with handwritten text you wish to read: ");
+                "Enter the path to an image with text you wish to read: ");
             string imageFilePath = Console.ReadLine();
 
             if (File.Exists(imageFilePath))
             {
                 // Call the REST API method.
                 Console.WriteLine("\nWait a moment for the results to appear.\n");
-                ReadHandwrittenText(imageFilePath).Wait();
+                ReadText(imageFilePath).Wait();
             }
             else
             {
@@ -97,11 +97,11 @@ namespace CSHttpClientSample
         }
 
         /// <summary>
-        /// Gets the handwritten text from the specified image file by using
+        /// Gets the text from the specified image file by using
         /// the Computer Vision REST API.
         /// </summary>
-        /// <param name="imageFilePath">The image file with handwritten text.</param>
-        static async Task ReadHandwrittenText(string imageFilePath)
+        /// <param name="imageFilePath">The image file with text.</param>
+        static async Task ReadText(string imageFilePath)
         {
             try
             {
@@ -116,7 +116,7 @@ namespace CSHttpClientSample
 
                 HttpResponseMessage response;
 
-                // Two REST API methods are required to extract handwritten text.
+                // Two REST API methods are required to extract text.
                 // One method to submit the image for processing, the other method
                 // to retrieve the text found in the image.
 
@@ -161,9 +161,9 @@ namespace CSHttpClientSample
                 // If the first REST API method completes successfully, the second 
                 // REST API method retrieves the text written in the image.
                 //
-                // Note: The response may not be immediately available. Handwriting
+                // Note: The response may not be immediately available. Text
                 // recognition is an asynchronous operation that can take a variable
-                // amount of time depending on the length of the handwritten text.
+                // amount of time depending on the length of the text.
                 // You may need to wait or retry this operation.
                 //
                 // This example checks once per second for ten seconds.
@@ -324,7 +324,7 @@ Pokud už řešení sady Visual Studio nepotřebujete, odstraňte je. Uděláte 
 
 ## <a name="next-steps"></a>Další postup
 
-Prozkoumejte základní aplikace Windows, který se používá pro počítačové zpracování obrazu k provedení optické rozpoznávání znaků (OCR). Vytváření miniatur výtisky oříznout smart; a zjistit, kategorií, značky a popisují funkce visual, včetně tváří, v obraze.
+Prozkoumejte základní aplikaci pro Windows, která používá Počítačové zpracování obrazu k provedení optického rozpoznávání znaků (OCR). Vytvořit miniatury s inteligentním oříznutím; Navíc ke zjištění, kategorizaci, označení a popisu vizuálních funkcí, včetně obličeje, v obrázku.
 
 > [!div class="nextstepaction"]
-> [Computer Vision API na C# kurz](../Tutorials/CSharpTutorial.md)
+> [Kurz C# rozhraní API pro počítačové zpracování obrazu](../Tutorials/CSharpTutorial.md)

@@ -1,50 +1,50 @@
 ---
-title: Jak vytvořit více nezávislých Azure Cosmos DB aktivačních událostí
-description: Zjistěte, jak nakonfigurovat více nezávislých Azure Cosmos DB aktivačních událostí k vytvoření architektury řízené událostmi Azure Functions.
+title: Postup vytvoření více nezávislých triggerů Azure Functions pro Cosmos DB
+description: Naučte se konfigurovat více nezávislých Azure Functions triggerů, které Cosmos DB k vytváření architektur řízených událostmi.
 author: ealsur
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 05/23/2019
+ms.date: 07/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 722da9f0112d63af52be8c9c3a746f6da9638bac
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 315ac1025a2b05ec7b16f7f0b14b66f224905d92
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66241953"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335674"
 ---
-# <a name="create-multiple-azure-cosmos-db-triggers"></a>Vytvoření více Azure Cosmos DB aktivačních událostí
+# <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>Vytvoření více triggerů Azure Functions pro Cosmos DB
 
-Tento článek popisuje, jak lze nakonfigurovat více aktivačních událostí Cosmos DB fungovat souběžně a nezávisle na sobě reagovat na změny.
+Tento článek popisuje, jak můžete nakonfigurovat více triggerů Azure Functions, aby Cosmos DB pracovaly paralelně a nezávisle reagují na změny.
 
-![Funkce bez serveru založené na události ve spolupráci s aktivační událost Azure Cosmos DB a sdílení zapůjčení kontejneru](./media/change-feed-functions/multi-trigger.png)
+![Funkce založené na událostech bez serveru, které pracují s triggerem Azure Functions pro Cosmos DB a sdílení kontejneru zapůjčení](./media/change-feed-functions/multi-trigger.png)
 
-## <a name="event-based-architecture-requirements"></a>Požadavky na architekturu založený na událostech
+## <a name="event-based-architecture-requirements"></a>Požadavky na architekturu založené na událostech
 
-Při vytváření architektur bez serveru s [Azure Functions](../azure-functions/functions-overview.md), má [doporučuje](../azure-functions/functions-best-practices.md#avoid-long-running-functions) k vytvoření sady malé funkce, které spolupracují namísto velkých dlouho běžící funkce.
+Při sestavování architektur bez serveru pomocí [Azure Functions](../azure-functions/functions-overview.md) [doporučujeme](../azure-functions/functions-best-practices.md#avoid-long-running-functions) vytvořit malé sady funkcí, které budou společně fungovat místo velkých dlouho běžících funkcí.
 
-Během vytváření založený na událostech bez serveru toky s využitím [aktivační událost Azure Cosmos DB](./change-feed-functions.md), je potřeba spustit do scénáře kde chcete udělat několik věcí, vždycky, když je vytvoření nové události v konkrétním [kontejneru Azure Cosmos](./databases-containers-items.md#azure-cosmos-containers). Pokud se akce, které chcete aktivovat, jsou navzájem nezávislé, by bylo ideální řešení **vytvořit jeden Trigger Cosmos DB každou akci** chcete udělat, všechny naslouchání pro změny stejného kontejneru Azure Cosmos.
+Při sestavování toků bez serveru založeného na událostech pomocí [Azure Functions triggeru pro Cosmos DB](./change-feed-functions.md)spustíte ve scénáři, ve kterém chcete provést několik akcí, když dojde k nové události v konkrétním [kontejneru Azure Cosmos](./databases-containers-items.md#azure-cosmos-containers). Pokud akce, které chcete spustit, jsou nezávisle na sobě, ideální řešení by mělo **vytvořit jednu Azure Functions triggery pro Cosmos DB na akci** , kterou chcete provést, a to vše, které naslouchá změnám ve stejném kontejneru Azure Cosmos.
 
-## <a name="optimizing-containers-for-multiple-triggers"></a>Optimalizace kontejnery pro více aktivačních událostí
+## <a name="optimizing-containers-for-multiple-triggers"></a>Optimalizace kontejnerů pro vícenásobné triggery
 
-Zadaný *požadavky* triggeru Cosmos DB, potřebujeme druhý kontejner k uložení stavu také volat *zapůjčení kontejneru*. To znamená, že potřebujete samostatné zapůjčení kontejneru pro každou funkci Azure?
+Vzhledem k *požadavkům* Azure Functions triggeru pro Cosmos DB potřebujeme druhý kontejner pro uložení stavu, který se také označuje jako *kontejner zapůjčení*. Znamená to, že pro každou funkci Azure potřebujete samostatný kontejner zapůjčení?
 
 Tady máte dvě možnosti:
 
-* Vytvoření **jeden zapůjčení kontejneru pro každou funkci**: Tento přístup může znamenat další náklady, pokud používáte [sdílené propustnosti databáze](./set-throughput.md#set-throughput-on-a-database). Mějte na paměti, že minimální propustnost na úrovni kontejneru je 400 [jednotek žádostí](./request-units.md), a v případě kontejneru zapůjčení je pouze se používá k kontrolních bodů průběhu a Udržovat stav.
-* Mít **jeden zapůjčit kontejner a sdílejte ji** pro všechny funkce: Tato druhá možnost je lepší využití zřízené jednotky žádostí ke kontejneru, protože umožňuje více funkcí Azure ke sdílení a použít stejné zřízenou propustnost.
+* Vytvoření **jednoho kontejneru zapůjčení na funkci**: Tento přístup se může překládat na další náklady, pokud nepoužíváte [sdílenou databázi propustnosti](./set-throughput.md#set-throughput-on-a-database). Pamatujte na to, že minimální propustnost na úrovni kontejneru je 400 [jednotek žádostí](./request-units.md)a v případě kontejneru zapůjčení se používá jenom k vytvoření kontrolního bodu a stavu jeho údržby.
+* Mít **jeden kontejner zapůjčení a sdílet ho** pro všechny vaše funkce: Tato druhá možnost zajišťuje lepší využití jednotek zřízené žádosti na kontejneru, protože umožňuje sdílení a používání stejné zřízené propustnosti více Azure Functions.
 
-Cílem tohoto článku je a provede vás k provedení druhou možnost.
+Cílem tohoto článku je provést druhou možnost.
 
-## <a name="configuring-a-shared-leases-container"></a>Konfigurace sdílené zapůjčení kontejneru
+## <a name="configuring-a-shared-leases-container"></a>Konfigurace kontejneru sdílených zapůjčení
 
-Konfigurace sdílené zapůjčení kontejneru, je přidání pouze další konfigurace je třeba provést na vašich aktivační události `LeaseCollectionPrefix` [atribut](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---c-attributes) používáte C# nebo `leaseCollectionPrefix` [atribut](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---javascript-example)Pokud používáte jazyk JavaScript. Hodnota atributu by měla být logické popisovač jaké konkrétní události.
+Chcete-li nakonfigurovat kontejner sdílených zapůjčených adres, je nutné, abyste v aktivačních událostech provedli jedinou `LeaseCollectionPrefix` dodatečnou konfiguraci, kterou C# je `leaseCollectionPrefix` třeba přidat [, pokud používáte](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---c-attributes) [atribut](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---javascript-example) nebo, pokud používáte jazyk JavaScript. Hodnota atributu by měla být logickým popisovačem toho, co konkrétní Trigger spouští.
 
-Například, pokud máte tři aktivační události: ten, který se odešle e-mailů, jednu, která provádí agregaci vytvoření materializovaného zobrazení a ten, který odešle změny do jiného úložiště, pro pozdější analýzu, můžete přiřadit `LeaseCollectionPrefix` "e-mailů s" té předchozí, " materializovaného"na druhý a třetí příkaz" analytics".
+Například pokud máte tři triggery: jednu, která odesílá e-maily, jeden, který je agregací pro vytvoření materializované zobrazení, a druhý, který odesílá změny do jiného úložiště, pro pozdější analýzu můžete přiřadit `LeaseCollectionPrefix` "e-maily" prvnímu z nich "," promaterializované "na druhý" a "analytická" třetí druhá.
 
-Důležitou součástí je, že všechny tři aktivuje **můžete použít stejnou konfiguraci kontejneru zapůjčení** (název účtu, databáze a kontejneru).
+Důležitou součástí je, že všechny tři triggery **můžou používat stejnou konfiguraci kontejneru zapůjčení** (účet, databáze a název kontejneru).
 
-Velmi jednoduché ukázky použití `LeaseCollectionPrefix` atribut C#, bude vypadat takto:
+Velmi jednoduché ukázky kódu používající `LeaseCollectionPrefix` atribut v C#, by vypadaly takto:
 
 ```cs
 using Microsoft.Azure.Documents;
@@ -78,7 +78,7 @@ public static void MaterializedViews([CosmosDBTrigger(
 }
 ```
 
-Pro jazyk JavaScript, můžete použít konfiguraci na `function.json` souboru, se `leaseCollectionPrefix` atribut:
+A pro JavaScript můžete použít konfiguraci `function.json` souboru `leaseCollectionPrefix` s atributem:
 
 ```json
 {
@@ -104,10 +104,10 @@ Pro jazyk JavaScript, můžete použít konfiguraci na `function.json` souboru, 
 ```
 
 > [!NOTE]
-> Vždy sledování v jednotkách žádostí zřízený v kontejnerech sdílené zapůjčení. Každá aktivační událost, která sdílí, zvýší průměrné využití propustnosti, takže možná budete muset zvýšit zřízená propustnost zvýšit počet Azure Functions, která ho používají.
+> Vždy monitorujte jednotky žádostí zřízené na vašem kontejneru vašich sdílených zapůjčení. Každá aktivační událost, která ji sdílí, zvýší průměrnou spotřebu propustnosti, takže možná bude potřeba zvýšit zajištěnou propustnost při zvýšení počtu Azure Functions, které ji používají.
 
 ## <a name="next-steps"></a>Další postup
 
-* Zobrazit úplné konfigurace [aktivační událost Azure Cosmos DB](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration)
-* Zkontrolujte, rozšířené [seznamu ukázek](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---example) pro všechny jazyky.
-* Navštivte web bez serveru recepty pomocí služby Azure Cosmos DB a Azure Functions [úložiště GitHub](https://github.com/ealsur/serverless-recipes/tree/master/cosmosdbtriggerscenarios) pro další ukázky.
+* Zobrazit úplnou konfiguraci [aktivační události Azure Functions pro Cosmos DB](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration)
+* Podívejte se na rozšířený [seznam ukázek](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---example) pro všechny jazyky.
+* Další ukázky najdete v části recepty bez serveru s Azure Cosmos DB a Azure Functions [úložiště GitHubu](https://github.com/ealsur/serverless-recipes/tree/master/cosmosdbtriggerscenarios) .

@@ -1,7 +1,7 @@
 ---
-title: Přístup k datům v úložišť / objektů blob pro školení
+title: Přístup k datům v datastoreech/objektech blob pro školení
 titleSuffix: Azure Machine Learning service
-description: Zjistěte, jak používat úložiště pro přístup k úložišti objektů blob data během cvičení se službou Azure Machine Learning
+description: Naučte se používat úložiště dat pro přístup k úložišti dat objektů BLOB během školení pomocí služby Azure Machine Learning Service.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,22 +11,22 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 05/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 638d7bfb0e396874415c1055c4b707a65caffa4e
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 97a4bc20394553b97211763cedaa76c3711306f2
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67269299"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68319314"
 ---
-# <a name="access-data-from-your-datastores"></a>Přístup k datům z vašich úložišť
+# <a name="access-data-from-your-datastores"></a>Přístup k datům z úložišť dat
 
- Ve službě Azure Machine Learning jsou úložišť výpočetní mechanismů, bez ohledu na umístění úložiště s přístupem nevyžaduje změny zdrojového kódu. Zda zapisovat školení kódu bude fungovat jako parametr cestu nebo zadejte úložiště dat přímo do odhaduje, zkontrolujte pracovní postupy Azure Machine Learning umístění úložiště dat jsou k dispozici a k dispozici výpočetní kontext.
+ Ve službě Azure Machine Learning služba úložiště dat jsou výpočetní mechanismy nezávislé na poloze pro přístup k úložišti bez nutnosti změny zdrojového kódu. Bez ohledu na to, jestli napíšete školicí kód pro podobu jako parametr, nebo poskytněte úložiště dat přímo k Estimator, Azure Machine Learning pracovní postupy zajistí přístup k umístěním úložiště dat a zpřístupní se pro výpočetní kontext.
 
-Tento návod ukazuje příklady z následujících úloh:
-* [Vyberte úložiště dat](#access)
+Tento postup ukazuje příklady následujících úloh:
+* [Zvolit úložiště dat](#access)
 * [Získání dat](#get)
-* [Nahrávání a stahování dat do úložišť](#up-and-down)
-* [Přístup k úložišti dat během cvičení](#train)
+* [Nahrávat a stahovat data do úložišť dat](#up-and-down)
+* [Přístup k úložišti dat během školení](#train)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -43,13 +43,13 @@ ws = Workspace.from_config()
 
 <a name="access"></a>
 
-## <a name="choose-a-datastore"></a>Vyberte úložiště dat
+## <a name="choose-a-datastore"></a>Zvolit úložiště dat
 
-Můžete použít výchozí úložiště dat nebo funkce přineste si vlastní.
+Můžete použít výchozí úložiště dat nebo použít vlastní.
 
-### <a name="use-the-default-datastore-in-your-workspace"></a>Použít výchozí úložiště dat ve vašem pracovním prostoru
+### <a name="use-the-default-datastore-in-your-workspace"></a>Použití výchozího úložiště dat ve vašem pracovním prostoru
 
- Každý pracovní prostor má registrovaný, výchozí úložiště dat, které můžete okamžitě použít.
+ Každý pracovní prostor má registrované výchozí úložiště dat, které můžete použít hned.
 
 Chcete-li získat výchozí pracovním prostoru úložiště dat:
 
@@ -57,25 +57,25 @@ Chcete-li získat výchozí pracovním prostoru úložiště dat:
 ds = ws.get_default_datastore()
 ```
 
-### <a name="register-your-own-datastore-with-the-workspace"></a>Zaregistrujte své vlastní úložiště dat s pracovním prostorem
+### <a name="register-your-own-datastore-with-the-workspace"></a>Registrace vlastního úložiště dat v pracovním prostoru
 
 Pokud máte existující služby Azure Storage, můžete ho zaregistrovat jako úložiště dat ve svém pracovním prostoru. 
 
 <a name="store"></a>
 
-####  <a name="storage-guidance"></a>Pokynů pro Storage
+####  <a name="storage-guidance"></a>Pokyny k ukládání
 
-Doporučujeme, abyste úložiště objektů blob storage a blob. Storage úrovně standard a premium jsou k dispozici pro objekty BLOB. I když dražší, doporučujeme storage úrovně premium z důvodu rychlejší propustnost, které mohou zlepšit rychlost trénování spuštění particlularly trénování proti velké datové sady. Zobrazit [cenovou kalkulačku Azure](https://azure.microsoft.com/pricing/calculator/?service=machine-learning-service) pro účet úložiště, informace o nákladech.
+Doporučujeme úložiště objektů BLOB a úložiště dat objektů BLOB. Úložiště úrovně Standard a Premium jsou k dispozici pro objekty blob. I když je výhodnější, doporučujeme Premium Storage z důvodu rychlejších přenosů propustnosti, které můžou zlepšit rychlost vašich školicích běhů, zejména pokud budete vlakem s velkou datovou sadou. Informace o nákladech na účet úložiště najdete v [cenové kalkulačkě Azure](https://azure.microsoft.com/pricing/calculator/?service=machine-learning-service) .
 
 >[!NOTE]
-> Služba Azure Machine Learning podporuje jiné typy úložišť, které mohou být užitečné pro konkrétní scénáře. Například pokud potřebujete k trénování pomocí dat uložených v databázi, můžete použít AzureSQLDatabaseDatastore nebo AzurePostgreSqlDatastore. Zobrazit [Tato tabulka](#matrix) pro dostupné úložiště dat typů.
+> Služba Azure Machine Learning podporuje jiné typy úložišť dat, což může být užitečné pro konkrétní scénáře. Pokud například potřebujete vytvořit výuku pomocí dat uložených v databázi, můžete použít AzureSQLDatabaseDatastore nebo AzurePostgreSqlDatastore. V [této tabulce](#matrix) najdete dostupné typy úložiště dat.
 
-#### <a name="register-your-datastore"></a>Zaregistrovat vaše úložiště dat
-Všechny metody registrace jsou na [ `Datastore` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) třídy a mít formulář register_azure_ *.
+#### <a name="register-your-datastore"></a>Registrace úložiště dat
+Všechny metody registru jsou ve [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) třídě a mají tvar register_azure_ *.
 
-Následující příklady ukazují registraci kontejneru objektů Blob v Azure nebo sdílené složky Azure jako datového úložiště.
+Následující příklady ukazují, jak zaregistrovat kontejner objektů blob Azure nebo sdílenou složku Azure jako úložiště dat.
 
-+ Pro **úložiště kontejner objektů Blob v Azure**, použijte [`register_azure_blob-container()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py)
++ Pro **úložiště dat kontejneru objektů BLOB v Azure**použijte[`register_azure_blob-container()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py)
 
   ```Python
   ds = Datastore.register_azure_blob_container(workspace=ws, 
@@ -86,7 +86,7 @@ Následující příklady ukazují registraci kontejneru objektů Blob v Azure n
                                                create_if_not_exists=True)
   ```
 
-+ Pro **úložiště dat sdílené složky Azure File**, použijte [ `register_azure_file_share()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-file-share-workspace--datastore-name--file-share-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false-). Příklad: 
++ Pro **úložiště dat sdílené složky Azure**použijte [`register_azure_file_share()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-file-share-workspace--datastore-name--file-share-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false-). Příklad: 
   ```Python
   ds = Datastore.register_azure_file_share(workspace=ws, 
                                            datastore_name='your datastore name', 
@@ -98,16 +98,16 @@ Následující příklady ukazují registraci kontejneru objektů Blob v Azure n
 
 <a name="get"></a>
 
-## <a name="find--define-datastores"></a>Najít & definovat úložišť
+## <a name="find--define-datastores"></a>Najít & definování úložiště dat
 
-Zadané úložiště dat zaregistrovaný do aktuálního pracovního prostoru získáte pomocí [ `get()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#get-workspace--datastore-name-) :
+Pokud chcete v aktuálním pracovním prostoru zaregistrovat zadané úložiště dat, použijte [`get()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#get-workspace--datastore-name-) :
 
 ```Python
 #get named datastore from current workspace
 ds = Datastore.get(ws, datastore_name='your datastore name')
 ```
 
-Pokud chcete získat seznam všech úložišť v daném pracovním prostoru, použijte tento kód:
+Pokud chcete získat seznam všech úložišť dat v daném pracovním prostoru, použijte tento kód:
 
 ```Python
 #list all datastores registered in current workspace
@@ -116,7 +116,7 @@ for name, ds in datastores.items():
     print(name, ds.datastore_type)
 ```
 
-Chcete-li definovat různé výchozí úložiště pro aktuálního pracovního prostoru, použijte [ `set_default_datastore()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#set-default-datastore-name-):
+Pro definování jiného výchozího úložiště dat pro aktuální pracovní prostor použijte [`set_default_datastore()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#set-default-datastore-name-):
 
 ```Python
 #define default datastore for current workspace
@@ -124,10 +124,10 @@ ws.set_default_datastore('your datastore name')
 ```
 
 <a name="up-and-down"></a>
-## <a name="upload--download-data"></a>Nahrávání a stahování dat
-[ `upload()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py#download-target-path--prefix-none--overwrite-false--show-progress-true-) a [ `download()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py#download-target-path--prefix-none--overwrite-false--show-progress-true-) metod popsaných v následujících příkladech jsou specifické pro a pracovat stejně jako u [AzureBlobDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py) a [AzureFileDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azurefiledatastore?view=azure-ml-py) třídy.
+## <a name="upload--download-data"></a>Nahrání & stažení dat
+Metody [`upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py#download-target-path--prefix-none--overwrite-false--show-progress-true-) a [`download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py#download-target-path--prefix-none--overwrite-false--show-progress-true-) popsané v následujících příkladech jsou specifické pro a pracují stejně jako třídy [AzureBlobDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py) a [AzureFileDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azurefiledatastore?view=azure-ml-py) .
 
-### <a name="upload"></a>Nahrávání
+### <a name="upload"></a>Odeslat
 
  Nahrajte do adresáře nebo jednotlivé soubory do úložiště dat pomocí sady Python SDK.
 
@@ -159,17 +159,17 @@ ds.download(target_path='your target path',
 `target_path` je umístění pro stahování dat do místního adresáře. Chcete-li zadat cestu ke složce ve sdílené složky (nebo kontejneru objektů blob) ke stažení, zadejte cestu tak, `prefix`. Pokud `prefix` je `None`, se stáhne veškerý obsah sdílené složky (nebo kontejneru objektů blob).
 
 <a name="train"></a>
-## <a name="access-datastores-during-training"></a>Úložišť přístup během cvičení
+## <a name="access-datastores-during-training"></a>Přístup k úložišti dat během školení
 
-Po provedení vaše úložiště k dispozici na cílové výpočetní prostředí na školení, můžete k nim přístup během tréninkových spuštění (například školení nebo ověřovací data) jednoduše předá cestu k němu jako parametr ve skriptu školení.
+Jakmile zpřístupníte úložiště dat na cílovém výpočetním cíli, můžete k němu přistupovat během školicích běhů (například školení nebo ověřovací data) pouhým předáním cesty jako parametru ve školicím skriptu.
 
-Následující tabulce jsou uvedeny [ `DataReference` ](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py) metody, které informují cílové výpočetní prostředí, jak používat úložiště během spuštění.
+Následující tabulka uvádí [`DataReference`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py) metody, které oznamují výpočetnímu cíli použití úložiště dat během spuštění.
 
-způsob, jak|Metoda|Popis|
+Podobně|Metoda|Popis|
 ----|-----|--------
-Připojení| [`as_mount()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-mount--)| Slouží k připojení úložiště v cílové výpočetní prostředí.
-Ke stažení|[`as_download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-)|Použijte ke stažení obsahu z vašeho úložiště dat do umístění určeného proměnnou `path_on_compute`. <br> Pro kontext školení, spusťte tento soubor ke stažení se provede před spuštění.
-Nahrávání|[`as_upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)| Slouží k nahrávání souboru z umístění, které určuje `path_on_compute` do vašeho úložiště. <br> Pro kontext spuštění školení odesílání dochází po spuštění.
+Připojení| [`as_mount()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-mount--)| Slouží k připojení úložiště dat na cílovém výpočetním cíli.
+Ke stažení|[`as_download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-)|Použijte ke stažení obsahu úložiště dat do umístění určeného parametrem `path_on_compute`. <br> Pro kontext výukového běhu k tomuto stažení dojde před spuštěním.
+Odeslat|[`as_upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)| Slouží k nahrání souboru z umístění určeného `path_on_compute` do úložiště dat. <br> Pro kontext výukového běhu se toto nahrání stane po spuštění.
 
  ```Python
 import azureml.data
@@ -180,7 +180,7 @@ ds.as_download(path_on_compute='your path on compute')
 ds.as_upload(path_on_compute='yourfilename')
 ```  
 
-Chcete-li odkazovat na konkrétní složky nebo souboru v vaše úložiště dat a zpřístupnit ji na cílové výpočetní prostředí, použijte úložiště dat [ `path()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#path-path-none--data-reference-name-none-) funkce.
+Pokud chcete odkazovat na konkrétní složku nebo soubor v úložišti dat a zpřístupnit ho v cílovém výpočetním prostředí, použijte [`path()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#path-path-none--data-reference-name-none-) funkci úložiště dat.
 
 ```Python
 #download the contents of the `./bar` directory in ds to the compute target
@@ -188,32 +188,32 @@ ds.path('./bar').as_download()
 ```
 
 > [!NOTE]
-> Žádné `ds` nebo `ds.path` objektu se překládá na název proměnné prostředí ve formátu `"$AZUREML_DATAREFERENCE_XXXX"` jehož hodnota představuje cestu k připojení a stahování na cílové výpočetní prostředky. Cesta úložiště dat na cílové výpočetní nemusí být stejný jako cesta provedení pro cvičný skript.
+> Libovolný `ds` objekt `ds.path` nebo se přeloží na název proměnné prostředí ve formátu `"$AZUREML_DATAREFERENCE_XXXX"` , jehož hodnota představuje cestu pro připojení nebo stažení cílového Compute. Cesta úložiště dat na cílovém výpočetním prostředí nemusí být stejná jako cesta spuštění pro skript školení.
 
 <a name="matrix"></a>
-### <a name="training-compute-and-datastore-matrix"></a>Matice školení výpočetní výkon a úložiště dat
+### <a name="training-compute-and-datastore-matrix"></a>Školení COMPUTE a matice úložiště dat
 
-Následující matice zobrazí funkce technologie přístup dostupných dat pro různé školení cílových výpočetních prostředí a úložiště dat scénáře. Další informace o [školení pro Azure Machine Learning compute cíle](how-to-set-up-training-targets.md#compute-targets-for-training).
+Následující matice zobrazuje dostupné funkce přístupu k datům pro různé výpočetní cíle a scénáře úložiště dat. Přečtěte si další informace o [školicích cílech výpočtů pro Azure Machine Learning](how-to-set-up-training-targets.md#compute-targets-for-training).
 
 |Compute|[AzureBlobDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py)                                       |[AzureFileDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azurefiledatastore?view=azure-ml-py)                                      |[AzureDataLakeDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_data_lake_datastore.azuredatalakedatastore?view=azure-ml-py) |[AzureDataLakeGen2Datastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_data_lake_datastore.azuredatalakegen2datastore?view=azure-ml-py) [AzurePostgreSqlDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_postgre_sql_datastore.azurepostgresqldatastore?view=azure-ml-py) [AzureSqlDatabaseDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_sql_database_datastore.azuresqldatabasedatastore?view=azure-ml-py) |
 |--------------------------------|----------------------------------------------------------|----------------------------------------------------------|------------------------|----------------------------------------------------------------------------------------|
-| Místní|[as_download()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-), [as_upload()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)|[as_download()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-), [as_upload()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)|neuvedeno         |neuvedeno                                                                         |
-| Azure Machine Learning Compute |[as_mount()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-mount--), [as_download()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-), [as_upload()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-), [ML&nbsp;pipelines](concept-ml-pipelines.md)|[as_mount()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-mount--), [as_download()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-), [as_upload()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-), [ML&nbsp;pipelines](concept-ml-pipelines.md)|neuvedeno         |neuvedeno                                                                         |
-| Virtuální počítače               |[as_download()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-), [as_upload()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)                           | [as_download()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-) [as_upload()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)                            |neuvedeno         |neuvedeno                                                                         |
-| HDInsight                      |[as_download()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-) [as_upload()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)                            | [as_download()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-) [as_upload()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)                            |neuvedeno         |neuvedeno                                                                         |
-| Přenos dat                  |[ML&nbsp;kanály](concept-ml-pipelines.md)                                               |neuvedeno                                           |[ML&nbsp;kanály](concept-ml-pipelines.md)            |[ML&nbsp;kanály](concept-ml-pipelines.md)                                                                            |
-| Databricks                     |[ML&nbsp;kanály](concept-ml-pipelines.md)                                              |neuvedeno                                           |[ML&nbsp;kanály](concept-ml-pipelines.md)             |neuvedeno                                                                         |
-| Azure Batch                    |[ML&nbsp;kanály](concept-ml-pipelines.md)                                               |neuvedeno                                           |neuvedeno         |neuvedeno                                                                         |
-| Azure DataLake Analytics       |neuvedeno                                           |neuvedeno                                           |[ML&nbsp;kanály](concept-ml-pipelines.md)             |neuvedeno                                                                         |
+| Místní|[as_download()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-), [as_upload()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)|[as_download()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-), [as_upload()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)|Není k dispozici         |Není k dispozici                                                                         |
+| Azure Machine Learning Compute |[as_mount()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-mount--), [as_download()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-), [as_upload()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-), [ML&nbsp;pipelines](concept-ml-pipelines.md)|[as_mount()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-mount--), [as_download()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-), [as_upload()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-), [ML&nbsp;pipelines](concept-ml-pipelines.md)|Není k dispozici         |Není k dispozici                                                                         |
+| Virtuální počítače               |[as_download()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-), [as_upload()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)                           | [as_download()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-) [as_upload()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)                            |Není k dispozici         |Není k dispozici                                                                         |
+| HDInsight                      |[as_download()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-) [as_upload()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)                            | [as_download()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-) [as_upload()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)                            |Není k dispozici         |Není k dispozici                                                                         |
+| Přenos dat                  |[Kanály&nbsp;ml](concept-ml-pipelines.md)                                               |Není k dispozici                                           |[Kanály&nbsp;ml](concept-ml-pipelines.md)            |[Kanály&nbsp;ml](concept-ml-pipelines.md)                                                                            |
+| Databricks                     |[Kanály&nbsp;ml](concept-ml-pipelines.md)                                              |Není k dispozici                                           |[Kanály&nbsp;ml](concept-ml-pipelines.md)             |Není k dispozici                                                                         |
+| Azure Batch                    |[Kanály&nbsp;ml](concept-ml-pipelines.md)                                               |Není k dispozici                                           |Není k dispozici         |Není k dispozici                                                                         |
+| Azure DataLake Analytics       |Není k dispozici                                           |Není k dispozici                                           |[Kanály&nbsp;ml](concept-ml-pipelines.md)             |Není k dispozici                                                                         |
 
 > [!NOTE]
-> Můžou existovat scénáře, ve kterých vysoce iterativní velkých objemů dat procesy jsou spuštěny rychleji pomocí `as_download()` místo `as_mount()`; to může být ověřen experimentálně.
+> Můžou nastat scénáře, ve kterých se vysoce iterační procesy s velkými objemy dat `as_download()` spouští rychleji `as_mount()`pomocí místo toho, aby je bylo možné ověřit experimentálně.
 
 ### <a name="examples"></a>Příklady 
 
-Následující příklady kódu, které jsou specifické pro [ `Estimator` ](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) třídy pro přístup k vaší úložiště dat během cvičení.
+Následující příklady kódu jsou specifické [`Estimator`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) pro třídu pro přístup k úložišti dat během školení.
 
-Tento kód vytvoří odhadu pomocí skriptu školení `train.py`, z uvedených zdrojový adresář pomocí parametrů definovaných v `script_params`, všechny na zadané školení cílové výpočetní prostředí.
+Tento kód vytvoří Estimator pomocí školicího skriptu `train.py`, ze zadaného zdrojového adresáře s použitím parametrů definovaných v `script_params`, a to vše v zadaném výpočetním cíli pro školení.
 
 ```Python
 from azureml.train.estimator import Estimator
@@ -229,10 +229,10 @@ est = Estimator(source_directory='your code directory',
                 )
 ```
 
-Můžete také předat seznam úložišť do konstruktoru Estimator `inputs` parametr připojování nebo zkopírovat do a z vašeho úložiště dat. Tento příklad kódu:
-* Stáhne veškerý obsah v úložišti dat `ds1` do cílového výpočetního prostředí před cvičný skript `train.py` spuštění
-* Soubory ke stažení složce `'./foo'` v úložišti dat `ds2` do cílového výpočetního prostředí před `train.py` spuštění
-* Nahraje soubor `'./bar.pkl'` z cílového výpočetního prostředí až po úložiště `ds3` po spuštění skriptu
+Můžete také předat seznam úložišť dat do parametru konstruktoru `inputs` Estimator pro připojení nebo kopírování do nebo do úložiště dat. Tento příklad kódu:
+* Před spuštěním školicího skriptu `ds1` `train.py` stáhne veškerý obsah v úložišti dat do cílového výpočetní služby.
+* Před `ds2` `'./foo'` spuštěnímstáhne`train.py` složku v úložišti dat do cílového výpočetního prostředí.
+* Po spuštění skriptu nahraje `'./bar.pkl'` soubor z cíle služby COMPUTE až do úložiště dat. `ds3`
 
 ```Python
 est = Estimator(source_directory='your code directory',
@@ -240,6 +240,18 @@ est = Estimator(source_directory='your code directory',
                 entry_script='train.py',
                 inputs=[ds1.as_download(), ds2.path('./foo').as_download(), ds3.as_upload(path_on_compute='./bar.pkl')])
 ```
+
+## <a name="access-datastores-during-for-scoring"></a>Přístup k úložišti dat během bodování
+
+Služba Azure Machine Learning poskytuje několik způsobů, jak používat vaše modely pro bodování. Některé z těchto metod neposkytují přístup k úložišti dat. Následující tabulka vám pomůže pochopit, které metody umožňují přístup k úložišti dat během bodování:
+
+| Metoda | Přístup k úložišti dat | Popis |
+| ----- | :-----: | ----- |
+| [Předpověď dávky](how-to-run-batch-predictions.md) | ✔ | Provádějte asynchronní předpovědi velké množství dat. |
+| [Webová služba](how-to-deploy-and-where.md) | &nbsp; | Nasadit modely jako webovou službu. |
+| [Modul IoT Edge](how-to-deploy-and-where.md) | &nbsp; | Nasaďte modely do IoT Edgech zařízení. |
+
+V situacích, kdy sada SDK neposkytuje přístup k úložiště dat, může být možné vytvořit vlastní kód pomocí příslušné sady Azure SDK pro přístup k datům. Například použití [sady SDK Azure Storage pro Python](https://github.com/Azure/azure-storage-python) pro přístup k datům uloženým v objektech blob.
 
 ## <a name="next-steps"></a>Další postup
 

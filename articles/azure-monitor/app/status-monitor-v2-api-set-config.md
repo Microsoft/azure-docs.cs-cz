@@ -1,6 +1,6 @@
 ---
-title: 'Azure Monitor stavu v2 reference k rozhraní API: Nastavení konfigurace | Dokumentace Microsoftu'
-description: Odkaz na stav monitorování v2 API. Set-ApplicationInsightsMonitoringConfig. Sledování výkonu webu bez opětovného nasazení webu. Funguje s webové aplikace ASP.NET hostované místně, na virtuálních počítačích nebo v Azure.
+title: 'Reference k rozhraní API služby Azure Monitorování stavu v2: Nastavení konfigurace | Microsoft Docs'
+description: Reference k rozhraní API pro Monitorování stavu v2 Set-ApplicationInsightsMonitoringConfig. Monitorujte výkon webu bez nutnosti opětovného nasazení webu. Funguje s ASP.NET webovými aplikacemi hostovanými místně, na virtuálních počítačích nebo v Azure.
 services: application-insights
 documentationcenter: .net
 author: MS-TimothyMothra
@@ -12,35 +12,30 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: e63d935b3c11766c4981ffb035dd45ad4019797c
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: f3a55caba13b3b96884d446e0750d9fb67a343df
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807069"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326298"
 ---
-# <a name="status-monitor-v2-api-set-applicationinsightsmonitoringconfig-v040-alpha"></a>Rozhraní API v2 monitorování stavu: Set-ApplicationInsightsMonitoringConfig (v0.4.0-alpha)
+# <a name="status-monitor-v2-api-set-applicationinsightsmonitoringconfig"></a>Rozhraní API pro Monitorování stavu v2: Set-ApplicationInsightsMonitoringConfig
 
-Tento dokument popisuje rutiny, která je členem skupiny [modulu Az.ApplicationMonitor PowerShell](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
-
-> [!IMPORTANT]
-> Stav monitorování v2 je aktuálně ve verzi public preview.
-> Tato verze preview je k dispozici bez smlouvu o úrovni služeb, a to nedoporučujeme pro produkční úlohy. Některé funkce nemusí být podporované a některé můžou mít omezené možnosti.
-> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Tento dokument popisuje rutinu, která je členem [modulu PowerShellu AZ. ApplicationMonitor](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
 
 ## <a name="description"></a>Popis
 
-Nastaví konfigurační soubor bez způsobem úplná přeinstalace.
-Restartujte službu IIS pro vaše změny se projeví.
+Nastaví konfigurační soubor bez provedení úplné přeinstalace.
+Restartujte službu IIS, aby se provedené změny projevily.
 
 > [!IMPORTANT] 
-> Tato rutina vyžaduje relaci Powershellu s oprávněními správce.
+> Tato rutina vyžaduje relaci PowerShellu s oprávněními správce.
 
 
 ## <a name="examples"></a>Příklady
 
-### <a name="example-with-a-single-instrumentation-key"></a>Příklad s jeden Instrumentační klíč
-V tomto příkladu se všechny aplikace v aktuálním počítači přiřadí jeden Instrumentační klíč.
+### <a name="example-with-a-single-instrumentation-key"></a>Příklad s jedním klíčem instrumentace
+V tomto příkladu se všem aplikacím v aktuálním počítači přiřadí jeden klíč instrumentace.
 
 ```powershell
 PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
@@ -48,12 +43,12 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-x
 
 ### <a name="example-with-an-instrumentation-key-map"></a>Příklad s mapou klíče instrumentace
 V tomto příkladu:
-- `MachineFilter` odpovídá aktuální počítač s použitím `'.*'` zástupný znak.
-- `AppFilter='WebAppExclude'` poskytuje `null` Instrumentační klíč. Zadaná aplikace nebude instrumentován.
-- `AppFilter='WebAppOne'` konkrétní aplikaci přiřadí jedinečný Instrumentační klíč.
-- `AppFilter='WebAppTwo'` konkrétní aplikaci přiřadí jedinečný Instrumentační klíč.
-- Nakonec `AppFilter` také používá `'.*'` zástupným znakem, který odpovídá všem webovým aplikacím, které nejsou spárované s starší pravidla a přiřadit výchozí Instrumentační klíč.
-- Mezery jsou přidány pro čitelnost.
+- `MachineFilter`odpovídá aktuálnímu počítači pomocí `'.*'` zástupného znaku.
+- `AppFilter='WebAppExclude'`poskytuje klíč `null` instrumentace. Zadaná aplikace nebude instrumentovaná.
+- `AppFilter='WebAppOne'`přiřadí zadané aplikaci jedinečný klíč instrumentace.
+- `AppFilter='WebAppTwo'`přiřadí zadané aplikaci jedinečný klíč instrumentace.
+- `AppFilter` Nakonec taky`'.*'` používá zástupný znak ke spárování se všemi webovými aplikacemi, které se neshodují s předchozími pravidly a přiřazují výchozí klíč instrumentace.
+- Jsou přidány mezery pro čitelnost.
 
 ```powershell
 PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap 
@@ -67,38 +62,38 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap
 
 ## <a name="parameters"></a>Parametry
 
-### <a name="-instrumentationkey"></a>-InstrumentationKey
-**Povinné.** Tento parametr slouží k poskytování jeden Instrumentační klíč pro použití všemi aplikacemi v cílovém počítači.
+### <a name="-instrumentationkey"></a>– InstrumentationKey
+**Požadovanou.** Pomocí tohoto parametru můžete zadat jeden klíč instrumentace pro použití všemi aplikacemi v cílovém počítači.
 
 ### <a name="-instrumentationkeymap"></a>-InstrumentationKeyMap
-**Povinné.** Tento parametr slouží k poskytování více klíčů instrumentace a mapování klíčů instrumentace používají každou aplikaci.
-Můžete vytvořit jeden instalační skript pro několik počítačů tak, že nastavíte `MachineFilter`.
+**Požadovanou.** Tento parametr použijte k zadání více klíčů instrumentace a mapování klíčů instrumentace používaných jednotlivými aplikacemi.
+Jeden instalační skript pro několik počítačů můžete vytvořit nastavením `MachineFilter`.
 
 > [!IMPORTANT]
-> Aplikace bude hledána shoda s pravidly v pořadí, ve kterém jsou k dispozici pravidla. Proto je třeba zadat nejspecifičtější pravidla první a poslední nejvíce obecná pravidla.
+> Aplikace budou odpovídat pravidlům v pořadí, v jakém jsou tato pravidla k dispozici. Proto byste měli nejdřív zadat nejvíce specifická pravidla a nejobecnější pravidla.
 
 #### <a name="schema"></a>Schéma
 `@(@{MachineFilter='.*';AppFilter='.*';InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'})`
 
-- **MachineFilter** je požadované C# regulární výraz počítače nebo název virtuálního počítače.
-    - ". *" bude odpovídat vše
-    - "Název" bude odpovídat jen počítače se zadaným názvem.
-- **AppFilter** je požadované C# regulární výraz počítače nebo název virtuálního počítače.
-    - ". *" bude odpovídat vše
-    - "ApplicationName" bude odpovídat pouze aplikace služby IIS se zadaným názvem.
-- **InstrumentationKey** je nutné k povolení monitorování aplikací, které odpovídají předchozí dva filtry.
-    - Ponechte tuto hodnotu null, pokud chcete definovat pravidla pro vyloučení monitorování.
+- **MachineFilter** je požadovaný C# regulární výraz počítače nebo názvu virtuálního počítače.
+    - '. * ' bude odpovídat všem
+    - Hodnota ComputerName bude odpovídat jenom počítačům se zadaným názvem.
+- **AppFilter** je požadovaný C# regulární výraz počítače nebo názvu virtuálního počítače.
+    - '. * ' bude odpovídat všem
+    - ' ApplicationName ' bude odpovídat pouze aplikacím služby IIS se zadaným názvem.
+- **InstrumentationKey** se vyžaduje k tomu, aby bylo možné monitorovat aplikace, které odpovídají předchozím dvěma filtrům.
+    - Pokud chcete definovat pravidla pro vyloučení monitorování, ponechte tuto hodnotu null.
 
 
-### <a name="-verbose"></a>-Verbose
-**Společný parametr.** Chcete-li zobrazit podrobné protokoly použijte tento přepínač.
+### <a name="-verbose"></a>– Verbose
+**Společný parametr** Pomocí tohoto přepínače zobrazíte podrobné protokoly.
 
 
 ## <a name="output"></a>Výstup
 
-Ve výchozím nastavení, žádný výstup.
+Ve výchozím nastavení není k dispozici žádný výstup.
 
-#### <a name="example-verbose-output-from-setting-the-config-file-via--instrumentationkey"></a>Podrobný příklad výstupu z nastavení souboru config prostřednictvím - InstrumentationKey
+#### <a name="example-verbose-output-from-setting-the-config-file-via--instrumentationkey"></a>Příklad podrobného výstupu z nastavení konfiguračního souboru prostřednictvím-InstrumentationKey
 
 ```
 VERBOSE: Operation: InstallWithIkey
@@ -110,7 +105,7 @@ VERBOSE: Config File Path:
 C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\applicationInsights.ikey.config
 ```
 
-#### <a name="example-verbose-output-from-setting-the-config-file-via--instrumentationkeymap"></a>Podrobný příklad výstupu z nastavení souboru config prostřednictvím - InstrumentationKeyMap
+#### <a name="example-verbose-output-from-setting-the-config-file-via--instrumentationkeymap"></a>Příklad podrobného výstupu z nastavení konfiguračního souboru prostřednictvím-InstrumentationKeyMap
 
 ```
 VERBOSE: Operation: InstallWithIkeyMap
@@ -124,20 +119,20 @@ VERBOSE: Config File Path:
 C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\applicationInsights.ikey.config
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
   Zobrazení telemetrických dat:
- - [Zkoumání metrik](../../azure-monitor/app/metrics-explorer.md) pro monitorování výkonu a využití.
-- [Prohledávejte události a protokoly](../../azure-monitor/app/diagnostic-search.md) k diagnostice problémů.
-- [Použití analýzy](../../azure-monitor/app/analytics.md) pro pokročilejší dotazy.
+ - [Prozkoumejte metriky](../../azure-monitor/app/metrics-explorer.md) pro monitorování výkonu a využití.
+- [Prohledejte události a protokoly](../../azure-monitor/app/diagnostic-search.md) a Diagnostikujte problémy.
+- K pokročilejším dotazům [použijte Analytics](../../azure-monitor/app/analytics.md) .
 - [Vytváření řídicích panelů](../../azure-monitor/app/overview-dashboard.md).
  
  Přidání další telemetrie:
- - [Vytvářejte webové testy](monitor-web-app-availability.md) k Ujistěte se, že web zůstává živý.
-- [Přidání telemetrie webového klienta](../../azure-monitor/app/javascript.md) pro zobrazení výjimek z kódu webové stránky a povolit trasování volání.
-- [Přidejte Application Insights SDK do kódu](../../azure-monitor/app/asp-net.md) abyste mohli vložit trasování a protokolování volání
+ - [Vytvářejte webové testy](monitor-web-app-availability.md) , abyste se ujistili, že vaše lokalita zůstane v provozu.
+- [Přidejte telemetrii webového klienta](../../azure-monitor/app/javascript.md) pro zobrazení výjimek z kódu webové stránky a umožnění volání trasování.
+- [Přidejte sadu Application Insights SDK do kódu](../../azure-monitor/app/asp-net.md) , abyste mohli vložit trasování a protokolování volání.
  
- Lepší využití v2 monitorování stavu:
- - Pomocí naší příručce ke [Poradce při potížích s](status-monitor-v2-troubleshoot.md) v2 monitorování stavu.
- - [Získání konfigurace](status-monitor-v2-api-get-config.md) potvrďte, že nastavení byly zaznamenány správně.
- - [Načíst stav](status-monitor-v2-api-get-status.md) ke kontrole monitorování.
+ Další informace najdete v Monitorování stavu v2:
+ - Použijte náš průvodce k [řešení potíží s](status-monitor-v2-troubleshoot.md) monitorování stavu v2.
+ - [Získáním konfigurace](status-monitor-v2-api-get-config.md) potvrďte, že vaše nastavení se správně nahrálo.
+ - [Získejte stav](status-monitor-v2-api-get-status.md) pro kontrolu monitorování.

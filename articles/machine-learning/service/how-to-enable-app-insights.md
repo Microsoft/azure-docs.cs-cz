@@ -1,7 +1,7 @@
 ---
-title: Nastavení Azure Application Insights pro monitorování modelů ML
+title: Nastavení Application Insights Azure pro monitorování modelů ML
 titleSuffix: Azure Machine Learning service
-description: Sledování webové služby nasazené pomocí služby Azure Machine Learning pomocí Azure Application Insights
+description: Monitorování webových služeb nasazených pomocí služby Azure Machine Learning pomocí Azure Application Insights
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: marthalc
 author: marthalc
-ms.date: 04/02/2019
+ms.date: 07/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 2e481a388d8cbd6baf66b95c74449396b2e70f7d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1c12f55228d77656ef57598da0fb002fdea29bd4
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60820112"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67871785"
 ---
 # <a name="monitor-your-azure-machine-learning-models-with-application-insights"></a>Monitorování vašich modelů Azure Machine Learning s využitím Application Insights
 
@@ -30,7 +30,7 @@ V tomto článku se dozvíte, jak nastavit Azure Application Insights pro vaši 
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Pokud nemáte předplatné Azure, vytvořte si bezplatný účet, před zahájením. Zkuste [bezplatné nebo placené verzi aplikace služby Azure Machine Learning](https://aka.ms/AMLFree) ještě dnes.
+* Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze služby Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
 * Pracovnímu prostoru Azure Machine Learning, místní adresář, který obsahuje skripty a sady SDK Azure Machine Learning pro Python nainstalován. Další informace o získání těchto nezbytných podmínkách, najdete v článku [jak nakonfigurovat prostředí pro vývoj](how-to-configure-environment.md).
 * Model trénovaného strojového učení nasadit do Azure Kubernetes Service (AKS) nebo Azure Container Instance (ACI). Pokud ho nemáte, přečtěte si článek [Train model klasifikace obrázků](tutorial-train-models-with-aml.md) kurzu.
@@ -77,7 +77,7 @@ Pokud chcete zakázat Application Insights, použijte následující kód:
 <service_name>.update(enable_app_insights=False)
 ```
     
-## <a name="use-portal-to-configure"></a>Použití portálu ke konfiguraci
+## <a name="use-portal-to-configure"></a>Konfigurace portálu pomocí portálu
 
 Můžete povolit nebo zakázat Application Insights na webu Azure Portal.
 
@@ -131,11 +131,11 @@ Další informace o tom, jak pomocí Application Insights najdete v tématu [co 
 
 ## <a name="example-notebook"></a>Příklad poznámkového bloku
 
-[How-to-use-azureml/deployment/enable-app-insights-in-production-service/enable-app-insights-in-production-service.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/enable-app-insights-in-production-service/enable-app-insights-in-production-service.ipynb) Poznámkový blok ukazuje koncepty v tomto článku. 
+Poznámkový blok [Enable-App-Insights-in-produkční-Service. ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/enable-app-insights-in-production-service/enable-app-insights-in-production-service.ipynb) ukazuje koncepty v tomto článku. 
  
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
 ## <a name="next-steps"></a>Další postup
 Může také shromažďovat data o vašich modelů v produkčním prostředí. Přečtěte si článek [shromažďování dat modelů v produkčním prostředí](how-to-enable-data-collection.md). 
 
-Také číst [monitorování Azure pro kontejnery](https://docs.microsoft.com/azure/monitoring/monitoring-container-insights-overview?toc=%2fazure%2fmonitoring%2ftoc.json).
+Přečtěte si také [Azure monitor pro kontejnery](https://docs.microsoft.com/azure/monitoring/monitoring-container-insights-overview?toc=%2fazure%2fmonitoring%2ftoc.json).

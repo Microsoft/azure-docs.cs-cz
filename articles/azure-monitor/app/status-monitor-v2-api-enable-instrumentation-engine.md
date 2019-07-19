@@ -1,6 +1,6 @@
 ---
-title: 'Azure Monitor stavu v2 reference k rozhraní API: Povolit instrumentaci modulu | Dokumentace Microsoftu'
-description: Odkaz na stav monitorování v2 API. Enable-InstrumentationEngine. Sledování výkonu webu bez opětovného nasazení webu. Funguje s webové aplikace ASP.NET hostované místně, na virtuálních počítačích nebo v Azure.
+title: 'Reference k rozhraní API služby Azure Monitorování stavu v2: Povolit modul instrumentace | Microsoft Docs'
+description: Reference k rozhraní API pro Monitorování stavu v2 Enable-InstrumentationEngine. Monitorujte výkon webu bez nutnosti opětovného nasazení webu. Funguje s ASP.NET webovými aplikacemi hostovanými místně, na virtuálních počítačích nebo v Azure.
 services: application-insights
 documentationcenter: .net
 author: MS-TimothyMothra
@@ -12,40 +12,35 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 79446e6676a35a1b51e5e0839eb539d730b499da
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: d4683a1cad5172f7104e745433bd141bcf36d56f
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807116"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326377"
 ---
-# <a name="status-monitor-v2-api-enable-instrumentationengine-v040-alpha"></a>Rozhraní API v2 monitorování stavu: Enable-InstrumentationEngine (v0.4.0 alfa)
+# <a name="status-monitor-v2-api-enable-instrumentationengine"></a>Rozhraní API pro Monitorování stavu v2: Enable – InstrumentationEngine
 
-Tento článek popisuje rutiny, která je členem skupiny [modulu Az.ApplicationMonitor PowerShell](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
-
-> [!IMPORTANT]
-> Stav monitorování v2 je aktuálně ve verzi public preview.
-> Tato verze preview je k dispozici bez smlouvu o úrovni služeb, a to nedoporučujeme pro produkční úlohy. Některé funkce nemusí být podporované a některé můžou mít omezené možnosti.
-> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Tento článek popisuje rutinu, která je členem [modulu PowerShellu AZ. ApplicationMonitor](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
 
 ## <a name="description"></a>Popis
 
-Umožňuje modulu instrumentace nastavením některé klíče registru.
-Restartujte službu IIS se změny projevily.
+Povolí modul instrumentace nastavením některých klíčů registru.
+Restartujte službu IIS, aby se změny projevily.
 
-Modul instrumentace můžete doplnit data shromážděná pomocí sady .NET SDK.
-Shromažďuje události a zprávy, které popisují spuštění spravovaného procesu. Tyto události a zprávy zahrnují kódy výsledků závislostí, příkazy HTTP a text příkazu SQL.
+Modul instrumentace může doplnit data shromažďovaná sadami .NET SDK.
+Shromažďuje události a zprávy, které popisují spuštění spravovaného procesu. Mezi tyto události a zprávy patří kódy výsledků závislosti, příkazy HTTP a [text příkazu SQL](asp-net-dependencies.md#advanced-sql-tracking-to-get-full-sql-query).
 
-Povolte modul instrumentace, pokud:
-- Už jsme povolili monitorování pomocí rutiny Enable ale nepovolili modul instrumentace.
-- Ručně instrumentovali vaší aplikace spolu se sadami SDK pro .NET a chcete shromažďovat další telemetrické údaje.
+Modul instrumentace povolte, pokud:
+- Již jste povolili monitorování pomocí rutiny Enable, ale nepovolili jste modul instrumentace.
+- Aplikaci jste ručně nastavili pomocí sady .NET SDK a chtěli byste shromažďovat další telemetrii.
 
 > [!IMPORTANT] 
-> Tato rutina vyžaduje relaci Powershellu s oprávněními správce.
+> Tato rutina vyžaduje relaci PowerShellu s oprávněními správce.
 
 > [!NOTE] 
-> - Tato rutina vyžaduje, přečtěte si a přijměte naše prohlášení licence a ochrana osobních údajů.
-> - Instrumentace stroj přidá další režii a je vypnuto ve výchozím nastavení.
+> - Tato rutina vyžaduje, abyste zkontrolovali a přijali naše licence a prohlášení o zásadách ochrany osobních údajů.
+> - Modul instrumentace přidává další režii a je ve výchozím nastavení vypnutý.
 
 ## <a name="examples"></a>Příklady
 
@@ -56,15 +51,15 @@ PS C:\> Enable-InstrumentationEngine
 ## <a name="parameters"></a>Parametry
 
 ### <a name="-acceptlicense"></a>-AcceptLicense
-**Volitelné.** Použijte tento přepínač tak, aby přijímal příkaz licence a ochrana osobních údajů v bezobslužné instalace.
+**Volitelné.** Pomocí tohoto přepínače přijměte licence a prohlášení o zásadách ochrany osobních údajů v bezobslužné instalaci.
 
-### <a name="-verbose"></a>-Verbose
-**Společný parametr.** Tento přepínač použijte na výstup podrobných protokolů.
+### <a name="-verbose"></a>– Verbose
+**Společný parametr** Pomocí tohoto přepínače můžete vyvýstupovat podrobné protokoly.
 
 ## <a name="output"></a>Výstup
 
 
-#### <a name="example-output-from-successfully-enabling-the-instrumentation-engine"></a>Příklad výstupu z úspěšném povolení modul instrumentace
+#### <a name="example-output-from-successfully-enabling-the-instrumentation-engine"></a>Příklad výstupu úspěšného povolení modulu instrumentace
 
 ```
 Configuring IIS Environment for instrumentation engine...
@@ -74,17 +69,17 @@ Configuring registry for instrumentation engine...
 ## <a name="next-steps"></a>Další kroky
 
   Zobrazení telemetrických dat:
- - [Zkoumání metrik](../../azure-monitor/app/metrics-explorer.md) pro monitorování výkonu a využití.
-- [Prohledávejte události a protokoly](../../azure-monitor/app/diagnostic-search.md) k diagnostice problémů.
-- Použití [analytics](../../azure-monitor/app/analytics.md) pro pokročilejší dotazy.
+ - [Prozkoumejte metriky](../../azure-monitor/app/metrics-explorer.md) pro monitorování výkonu a využití.
+- [Prohledejte události a protokoly](../../azure-monitor/app/diagnostic-search.md) a Diagnostikujte problémy.
+- K pokročilejším dotazům použijte [Analytics](../../azure-monitor/app/analytics.md) .
 - [Vytváření řídicích panelů](../../azure-monitor/app/overview-dashboard.md).
  
  Přidání další telemetrie:
- - [Vytvářejte webové testy](monitor-web-app-availability.md) k Ujistěte se, že web zůstává živý.
-- [Přidání telemetrie webového klienta](../../azure-monitor/app/javascript.md) pro zobrazení výjimek z kódu webové stránky a povolit trasování volání.
-- [Přidejte Application Insights SDK do kódu](../../azure-monitor/app/asp-net.md) abyste mohli vložit trasování a protokolování volání.
+ - [Vytvářejte webové testy](monitor-web-app-availability.md) , abyste se ujistili, že vaše lokalita zůstane v provozu.
+- [Přidejte telemetrii webového klienta](../../azure-monitor/app/javascript.md) pro zobrazení výjimek z kódu webové stránky a umožnění volání trasování.
+- [Přidejte sadu Application Insights SDK do kódu](../../azure-monitor/app/asp-net.md) , abyste mohli vložit trasování a protokolování volání.
  
- Lepší využití v2 monitorování stavu:
- - Pomocí naší příručce ke [Poradce při potížích s](status-monitor-v2-troubleshoot.md) v2 monitorování stavu.
- - [Získání konfigurace](status-monitor-v2-api-get-config.md) potvrďte, že nastavení byly zaznamenány správně.
- - [Načíst stav](status-monitor-v2-api-get-status.md) ke kontrole monitorování.
+ Další informace najdete v Monitorování stavu v2:
+ - Použijte náš průvodce k [řešení potíží s](status-monitor-v2-troubleshoot.md) monitorování stavu v2.
+ - [Získáním konfigurace](status-monitor-v2-api-get-config.md) potvrďte, že vaše nastavení se správně nahrálo.
+ - [Získejte stav](status-monitor-v2-api-get-status.md) pro kontrolu monitorování.

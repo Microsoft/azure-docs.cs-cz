@@ -1,6 +1,6 @@
 ---
-title: Definice zásady Azure monitorovat ve službě Azure Security Center | Dokumentace Microsoftu
-description: Definice zásady Azure ve službě Azure Security Center monitoruje.
+title: Azure Policy definitions monitorované v Azure Security Center | Microsoft Docs
+description: Definice zásad Azure se monitorují v Azure Security Center.
 services: security-center
 documentationcenter: na
 author: monhaber
@@ -13,86 +13,86 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/19/2019
-ms.author: monhaber
-ms.openlocfilehash: 25ed9cb624474d5da56d385f4e9c155918ec8eab
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: v-mohabe
+ms.openlocfilehash: db7811a925846337487801a63e0f0c4584179c06
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66428332"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68295520"
 ---
-# <a name="azure-security-policies-monitored-by-security-center"></a>Služba Security Center monitorovat zásady zabezpečení Azure
-Tento článek obsahuje seznam definic zásad Azure, které můžete sledovat ve službě Azure Security Center. Další informace o zásadách zabezpečení najdete v tématu [práce se zásadami zabezpečení](tutorial-security-policy.md).
+# <a name="azure-security-policies-monitored-by-security-center"></a>Zásady zabezpečení Azure monitorované pomocí Security Center
+Tento článek poskytuje seznam definic Azure Policy, které můžete monitorovat v Azure Security Center. Další informace o zásadách zabezpečení najdete v tématu [práce se zásadami zabezpečení](tutorial-security-policy.md).
 
 ## <a name="available-security-policies"></a>Dostupné zásady zabezpečení
 
-Další informace o předdefinovaných zásadách, které jsou monitorovány pomocí služby Security Center, najdete v následující tabulce:
+Další informace o předdefinovaných zásadách sledovaných nástrojem Security Center naleznete v následující tabulce:
 
 | Zásada | Co zásada dělá |
 | --- | --- |
-|Protokoly diagnostiky ve Virtual Machine Scale Sets by měla být povolená.|Doporučujeme, abyste povolili protokoly tak, aby byla k dispozici pro zkoumání po incidentu nebo ohrožení protokolu aktivit.|
-|Všechna autorizační pravidla s výjimkou RootManageSharedAccessKey by měl být odebrány obor názvů centra událostí|Azure Event Hubs klienti neměli používat zásady přístupu na úrovni oboru názvů, který poskytuje přístup ke všem fronty a témata v oboru názvů. Aby bylo v souladu s modelem nejnižších možných oprávnění zabezpečení, měli byste vytvořit zásady přístupu na úrovni entity pro fronty a témata, které poskytují přístup k jenom na konkrétní entitu.|
-|Autorizační pravidla centra událostí entity musí být definován.|Auditovat existenci autorizační pravidla s entitami služby Event Hubs pro udělení přístupu s minimálními oprávněními.|
-|Přístup k účtům úložišť pomocí brány firewall a konfigurací virtuální sítě by mělo být omezeno|Audit neomezený přístup k síti v nastavení brány firewall na účtu úložiště. Konfigurace pravidel tak, aby účtu úložiště můžou přistupovat jenom aplikace z povolených sítí. Povolit připojení z konkrétní Internetu nebo místních klientů, udělení přístupu rozsahů IP adres provoz z konkrétní virtuálním sítím Azure nebo do veřejného Internetu.|
-|Audit využití vlastních pravidel RBAC|Auditovat předdefinované role, jako je například "vlastník, Přispěvatel, čtenář, namísto vlastní přístup na základě rolí (RBAC) ovládací prvek role, které jsou náchylné k chybám. Použití vlastních rolí je považován za výjimku a vyžaduje důkladné přezkoumání a modelování hrozeb.|
-|By měly být povolené diagnostické protokoly v Azure Stream Analytics|Povolení protokolů auditu a je pro zajištění aktuálnosti ročně. Tím se vytvoří záznamy aktivit pro pomoc při dojde k incidentu zabezpečení nebo dojde k ohrožení vaší sítě.|
-|Měla by se povolit zabezpečený přenos pro účty úložiště|Auditovat požadavky bezpečným přenosem ve vašem účtu úložiště. Zabezpečený přenos je možnost, která vynutí účtu úložiště tak, aby přijímal požadavky jenom ze zabezpečeného připojení (HTTPS). Použití protokolu HTTPS zajišťuje ověřování mezi serverem a služby. Také chrání přenášená data vrstvy před útoky ze sítě, jako je například man-in-the-middle, odposlouchávání a napadení relace.|
-|By mělo proběhnout zřízení správce Azure AD pro SQL server|Auditovat zřízení správce Azure Active Directory (Azure AD) pro SQL Server, pokud chcete povolit ověřování Azure AD. Ověřování Azure AD podporuje správu oprávnění zjednodušené a centralizované identity management uživatelů databáze a dalším službám společnosti Microsoft.|
-|Všechna autorizační pravidla s výjimkou RootManageSharedAccessKey by měly odebrat z oboru názvů služby Service Bus|Azure Service Bus klienti neměli používat zásady přístupu na úrovni oboru názvů, který poskytuje přístup ke všem fronty a témata v oboru názvů. Aby bylo v souladu s minimálními oprávněními zabezpečení modelem, vytvořte zásady přístupu na úrovni entity pro fronty a témata, které poskytují přístup k jenom na konkrétní entitu.|
-|Protokoly diagnostiky v Service Bus by měla být povolená.|Povolení protokolů auditu a zajistěte jejich registrace do roku. Tím se vytvoří záznamy aktivit pro pomoc při dojde k incidentu zabezpečení nebo dojde k ohrožení vaší sítě.|
-|Vlastnost ClusterProtectionLevel k EncryptAndSign v Service Fabric musí být nastavena|Service Fabric nabízí tři úrovně ochrany pro komunikaci mezi uzly, který používá certifikát primární clusteru: NONE, přihlašování a EncryptAndSign. Nastavte úroveň ochrany, k zajištění, že všechny zprávy – uzly jsou zašifrované a digitálně podepsané.|
-|Ověření klienta by měl používat Azure Active Directory|Auditovat použití klienta ověřování jenom prostřednictvím Azure AD v Service Fabric.|
-|Diagnostické protokoly v hledání služby by měla být povolená.|Povolení protokolů auditu a je pro zajištění aktuálnosti ročně. Tím se vytvoří záznamy aktivit pro pomoc při dojde k incidentu zabezpečení nebo dojde k ohrožení vaší sítě.|
-|By měla být povolená pouze zabezpečená připojení k mezipaměti Redis|Auditovat povolení pouze připojení přes protokol SSL pro mezipaměť Azure Redis. Použití zabezpečeného připojení zajišťuje ověřování mezi serverem a služby. Také chrání přenášená data vrstvy před útoky ze sítě, jako je například man-in-the-middle, odposlouchávání a napadení relace.|
-|By měly být povolené diagnostické protokoly v Logic Apps|Povolení protokolů auditu a je pro zajištění aktuálnosti ročně. Tím se vytvoří záznamy aktivit pro pomoc při dojde k incidentu zabezpečení nebo dojde k ohrožení vaší sítě.|
-|By měly být povolené diagnostické protokoly ve službě Key Vault|Povolení protokolů auditu a je pro zajištění aktuálnosti ročně. Tím se vytvoří záznamy aktivit pro pomoc při dojde k incidentu zabezpečení nebo dojde k ohrožení vaší sítě.|
-|By měly být povolené diagnostické protokoly v Centru událostí|Povolení protokolů auditu a je pro zajištění aktuálnosti ročně. Tím se vytvoří záznamy aktivit pro pomoc při dojde k incidentu zabezpečení nebo dojde k ohrožení vaší sítě.|
-|Protokoly diagnostiky v Azure Data Lake Store by měly být povolené.|Povolení protokolů auditu a aktuálnosti ročně. Tím se vytvoří záznamy aktivit pro pomoc při dojde k incidentu zabezpečení nebo dojde k ohrožení vaší sítě.|
-|By měly být povolené diagnostické protokoly v Data Lake Analytics|Povolení protokolů auditu a je pro zajištění aktuálnosti ročně. Tím se vytvoří záznamy aktivit pro pomoc při dojde k incidentu zabezpečení nebo dojde k ohrožení vaší sítě.|
-|Účty úložiště by se měly migrovat na nové prostředky AzureRM|Kvůli vylepšení zabezpečení pomocí Azure Resource Manageru pro vaše účty úložiště. Mezi ně patří: <br>-Silnější řízení přístupu (RBAC)<br>-Lépe auditování<br>– Nasazení azure využívající Resource Manager a zásady správného řízení<br>– Přístup ke spravované identity<br>– Přístup k Azure Key Vault pro tajné klíče<br>-Ověřování založené na AD azure<br>– Podpora pro skupiny prostředků pro snadnější správu zabezpečení a značky|
-|Virtuální počítače by se měly migrovat na nové prostředky AzureRM|Kvůli vylepšení zabezpečení pomocí Azure Resource Manageru pro vaše virtuální počítače.  Mezi ně patří: <br>-Silnější řízení přístupu (RBAC)<br>-Lépe auditování<br>– Nasazení azure využívající Resource Manager a zásady správného řízení<br>– Přístup ke spravované identity<br>– Přístup k Azure Key Vault pro tajné klíče<br>-Ověřování založené na AD azure<br>– Podpora pro skupiny prostředků pro snadnější správu zabezpečení a značky|
-|Pravidla upozornění metrik by měla být nakonfigurovaná na účty Batch|Auditovat konfigurace pravidla upozornění na metriky na účtů služby Azure Batch umožňuje požadované metriky.|
-|Diagnostické protokoly v účtů služby Batch by měla být povolená.|Povolení protokolů auditu a je pro zajištění aktuálnosti ročně. Tím se vytvoří záznamy aktivit pro pomoc při dojde k incidentu zabezpečení nebo dojde k ohrožení vaší sítě.|
-|By měl být povolené šifrování proměnných účtu Automation|Je důležité k povolení šifrování proměnných assetů účet Azure Automation při ukládat citlivá data.|
-|Diagnostické protokoly v App Services by měla být povolená.|Auditovat povolení diagnostických protokolů v aplikaci. Tím se vytvoří záznamy aktivit pro pomoc při dojde k incidentu zabezpečení nebo dojde k ohrožení vaší sítě.|
-|Měla by se povolit transparentní šifrování dat v databázích SQL|Auditování stavu transparentního šifrování dat pro databáze SQL.|
-|Auditování služby SQL server by měla být povolená|Auditovat existenci auditování na úrovni serveru SQL.|
-|\[[Preview]: Monitorovat nešifrovanou databázi SQL ve službě Azure Security Center|Azure Security Center monitoruje nešifrované servery nebo databáze SQL jako doporučená.|
-|\[[Preview]: Monitorovat neauditovanou databázi SQL ve službě Azure Security Center|Azure Security Center monitoruje servery SQL Server a databáze, které nemají podle doporučení zapnutého auditování SQL.|
-|\[[Preview]: Aktualizace systému musí být nainstalován na vašich počítačích.|Azure Security Center monitoruje chybějící aktualizace systému zabezpečení na vašich serverech, podle doporučení.|
-|\[[Preview]: Auditovat chybějící šifrování objektů blob pro účty úložiště|Auditovat účty úložiště, které nepoužívají šifrování objektů blob. To platí jenom pro typy prostředků Microsoft úložiště, ne úložiště od jiných poskytovatelů služeb. Azure Security Center monitoruje možný sítě just-in-time přístup podle doporučení.|
-|\[[Preview]: Řízení přístupu k síti Just-In-Time bude použito na virtuálních počítačích|Azure Security Center monitoruje možný sítě just-in-time přístup podle doporučení.|
-|\[[Preview]: Na virtuálních počítačích musí být aktivována adaptivní řízení aplikací|Azure Security Center monitoruje konfiguraci seznamu povolených IP adres je to možné aplikace.|
-|\[[Preview]: Chybějící skupiny zabezpečení sítě pro virtuální počítače by měl být nakonfigurovaný|Azure Security Center monitoruje síťové skupiny zabezpečení, které mají příliš benevolentními pravidly, podle doporučení.|
-|\[[Preview]: Měli napravit ohrožení zabezpečení v konfiguraci zabezpečení na vašich počítačích.|Azure Security Center monitoruje servery, které není splňují nakonfigurovaným standardním hodnotám, podle doporučení.| 
-|\[[Preview]: Aplikace Endpoint protection musí být nainstalován na virtuálních počítačích|Azure Security Center monitoruje servery, které nemají nainstalovaného agenta Microsoft System Center Endpoint Protection, podle doporučení.|
-|\[[Preview]: Šifrování disků bude použito na virtuálních počítačích|Azure Security Center monitoruje virtuálních počítačů, které nemají povolené podle doporučení šifrování disku.|
-|\[[Preview]: Ohrožení zabezpečení by měl být nápravu řešení posouzení ohrožení zabezpečení|Monitorování ohrožení zabezpečení, které jsou zjištěny tak, že řešení posouzení ohrožení zabezpečení a virtuální počítače, které nemají řešení posouzení ohrožení zabezpečení v Azure Security Center, podle doporučení.|
-|\[[Preview]: Monitorovat nechráněné webové aplikace ve službě Azure Security Center|Azure Security Center monitoruje webové aplikace, které nemají ochrany pomocí brány firewall webových aplikací podle doporučení.|
-|\[[Preview]: Řešení ochrany koncových bodů musí být nainstalován na virtuálních počítačích|Azure Security Center monitoruje síťové koncové body, které nemají další ochranu pomocí brány firewall generování podle doporučení.|
-|\[[Preview]: Měli napravit ohrožení zabezpečení na vašich databází SQL|Posouzení ohrožení zabezpečení monitorování výsledky kontroly a doporučujeme jak náprava ohrožení zabezpečení databáze.|
-|\[[Preview]: Maximální počet vlastníků 3 by měla být určena pro vaše předplatné|Doporučujeme vám, že určíte až tři vlastníkům předplatného umožňuje snížit riziko porušení zabezpečení ohroženým uživatelem.|
-|\[[Preview]: Měla by existovat více než jednoho vlastníka, které jsou přiřazené k vašemu předplatnému|Je vhodné, můžete určit více než jednoho vlastníka předplatného pro zajištění přístupu správce redundance.|
-|\[[Preview]: MFA povolena na účty s oprávněními vlastníka v rámci předplatného |Vícefaktorové ověřování (MFA) byste měli povolit pro všechny účty předplatných s oprávněními vlastníka k nedošlo k porušení zabezpečení účtů nebo prostředků.|
-|\[[Preview]: Na vaše předplatné účty s oprávněním pro zápis musí být aktivována MFA|Ověřování službou Multi-Factor Authentication musí být aktivována pro všechny účty předplatných, které mají oprávnění k zápisu do zabránit porušení zabezpečení účtů nebo prostředků.|
-|\[[Preview]: U vašeho předplatného účty s oprávněním pro čtení by měl zapnuté MFA.|Ověřování službou Multi-Factor Authentication musí být aktivována pro všechny účty předplatných, které mají oprávnění ke čtení pro zabránit porušení zabezpečení účtů nebo prostředků.|
-|\[[Preview]: By měla být z předplatného odebrat zastaralé účty s oprávněními vlastníka|Z předplatného by měla odebrat zastaralé účty, které mají oprávnění vlastníka. Zastaralé účty byla zablokována přihlašování.|
-|\[[Preview]: By měla být z předplatného odebrat zastaralé účty|Zastaralé účty by měly odebrat z vašich předplatných. Zastaralé účty byla zablokována přihlašování.|
-|\[[Preview]: By měla být z předplatného odebrat externí účty s oprávněními vlastníka|Ze svého předplatného, aby se zabránilo přístupu oprávnění by měl odebrat externí účty, které máte oprávnění vlastníka.|
-|\[[Preview]: Externí účty s zápisu, že by měla být z předplatného odebrat oprávnění|Externí účty, které mají zápisu oprávnění by měl být odebrána ze svého předplatného, aby nedocházelo k nemonitorovanému přístupu.|
-|\[[Preview]: By měla být z předplatného odebrat externí účty s oprávněním pro čtení|Z vašeho předplatného, aby nedocházelo k nemonitorovanému přístupu by měla odebrat externí účty, které máte oprávnění ke čtení.|
+|Měly by být povolené diagnostické protokoly v Virtual Machine Scale Sets.|Doporučujeme povolit protokoly, aby byl záznam aktivity k dispozici pro šetření po incidentu nebo ohrožení.|
+|Všechna autorizační pravidla s výjimkou RootManageSharedAccessKey by měla být odebrána z oboru názvů centra událostí.|Klienti Azure Event Hubs neměli používat zásady přístupu na úrovni oboru názvů, které poskytují přístup ke všem frontám a tématům v oboru názvů. Pro zajištění souladu s modelem zabezpečení s minimálním oprávněním byste měli vytvořit zásady přístupu na úrovni entity pro fronty a témata, abyste měli přístup jenom ke konkrétní entitě.|
+|Měla by být definovaná autorizační pravidla pro entitu centra událostí.|Auditujte existenci autorizačních pravidel Event Hubs entit a udělte přístup k minimálnímu oprávnění.|
+|Přístup k účtům úložiště pomocí brány firewall a konfigurací virtuální sítě by měl být omezený.|Auditujte neomezený přístup k síti v nastavení brány firewall účtu úložiště. Nakonfigurujte Síťová pravidla tak, aby k účtu úložiště měly přístup jenom aplikace z povolených sítí. Pokud chcete povolit připojení z určitých internetových nebo místních klientů, udělte přístup k provozu z konkrétních virtuálních sítí Azure nebo do rozsahů veřejných IP adres sítě.|
+|Auditovat využití vlastních pravidel RBAC|Místo vlastních rolí řízení přístupu na základě rolí (RBAC), které jsou náchylné k chybám, proveďte audit předdefinovaných rolí, jako je vlastník, přispěvatel, čtenář. Použití vlastních rolí se považuje za výjimku a vyžaduje přísné kontroly a modelování hrozeb.|
+|Měly by být povolené diagnostické protokoly v Azure Stream Analytics.|Auditujte povolování protokolů a udržujte je po dobu až do roku. Tím se vytvoří stopa aktivity pro účely šetření, pokud dojde k ohrožení zabezpečení nebo dojde k ohrožení vaší sítě.|
+|Zabezpečený přenos do účtů úložiště by měl být povolený.|Požadavky na audit zabezpečeného přenosu v účtu úložiště. Zabezpečený přenos je možnost, která vynutí, aby váš účet úložiště přijímal požadavky jenom od zabezpečených připojení (HTTPS). Použití protokolu HTTPS zajišťuje ověřování mezi serverem a službou. Chrání také data při přenosu z útoků síťové vrstvy, jako jsou například útoky prostředníkem, odposlouchávání a zneužití relace.|
+|Je potřeba zřídit správce Azure AD pro SQL Server.|Audit zřizování správce Azure Active Directory (Azure AD) pro SQL Server povolení ověřování Azure AD. Ověřování Azure AD podporuje zjednodušenou správu oprávnění a centralizovanou správu identit uživatelů databáze a dalších služeb Microsoftu.|
+|Všechna autorizační pravidla s výjimkou RootManageSharedAccessKey by měla být odebrána z oboru názvů Service Bus|Klienti Azure Service Bus nepoužívají zásady přístupu na úrovni oboru názvů, které poskytují přístup ke všem frontám a tématům v oboru názvů. Pokud chcete zajistit, aby se model zabezpečení s nejnižšími oprávněními rovnal, vytvořte zásady přístupu na úrovni entity pro fronty a témata a poskytněte přístup jenom konkrétní entitě.|
+|Měly by být povolené diagnostické protokoly v Service Bus.|Auditujte povolování protokolů a udržujte je po dobu až do roku. Tím se vytvoří stopa aktivity pro účely šetření, pokud dojde k ohrožení zabezpečení nebo dojde k ohrožení vaší sítě.|
+|Vlastnost ClusterProtectionLevel pro EncryptAndSign v Service Fabric měla být nastavena.|Service Fabric poskytuje tři úrovně ochrany pro komunikaci mezi uzly, které používají primární certifikát clusteru: Žádná, podepsat a EncryptAndSign. Nastavte úroveň ochrany, k zajištění, že všechny zprávy – uzly jsou zašifrované a digitálně podepsané.|
+|Ověřování klienta by mělo používat Azure Active Directory|Auditujte pomocí ověřování klientů jenom přes Azure AD v Service Fabric.|
+|Měly by být povolené diagnostické protokoly ve službě Search Services.|Auditujte povolování protokolů a udržujte je po dobu až do roku. Tím se vytvoří stopa aktivity pro účely šetření, pokud dojde k ohrožení zabezpečení nebo dojde k ohrožení vaší sítě.|
+|Měla by být povolená jenom zabezpečená připojení k vašemu Redis Cache.|Auditovat povolení jenom připojení přes SSL do Azure cache pro Redis. Použití zabezpečených připojení zajišťuje ověřování mezi serverem a službou. Chrání také data při přenosu z útoků síťové vrstvy, jako jsou například útoky prostředníkem, odposlouchávání a zneužití relace.|
+|Měly by být povolené diagnostické protokoly v Logic Apps.|Auditujte povolování protokolů a udržujte je po dobu až do roku. Tím se vytvoří stopa aktivity pro účely šetření, pokud dojde k ohrožení zabezpečení nebo dojde k ohrožení vaší sítě.|
+|Měly by být povolené diagnostické protokoly v Key Vault.|Auditujte povolování protokolů a udržujte je po dobu až do roku. Tím se vytvoří stopa aktivity pro účely šetření, pokud dojde k ohrožení zabezpečení nebo dojde k ohrožení vaší sítě.|
+|Měly by být povolené diagnostické protokoly v centru událostí.|Auditujte povolování protokolů a udržujte je po dobu až do roku. Tím se vytvoří stopa aktivity pro účely šetření, pokud dojde k ohrožení zabezpečení nebo dojde k ohrožení vaší sítě.|
+|Měly by být povolené diagnostické protokoly v Azure Data Lake Store.|Auditujte povolování protokolů a udržujte je až do roku. Tím se vytvoří stopa aktivity pro účely šetření, pokud dojde k ohrožení zabezpečení nebo dojde k ohrožení vaší sítě.|
+|Měly by být povolené diagnostické protokoly v Data Lake Analytics.|Auditujte povolování protokolů a udržujte je po dobu až do roku. Tím se vytvoří stopa aktivity pro účely šetření, pokud dojde k ohrožení zabezpečení nebo dojde k ohrožení vaší sítě.|
+|Účty úložiště by se měly migrovat do nových prostředků AzureRM.|K zajištění vylepšení zabezpečení použijte Azure Resource Manager pro účty úložiště. Mezi ně patří: <br>– Silnější řízení přístupu (RBAC)<br>– Lepší auditování<br>– Nasazení a zásady správného řízení na základě Azure Resource Manager<br>-Přístup ke spravovaným identitám<br>– Přístup k Azure Key Vault tajných kódů<br>– Ověřování pomocí Azure AD<br>– Podpora značek a skupin prostředků pro snadnější správu zabezpečení|
+|Virtuální počítače by měly být migrovány do nových prostředků AzureRM|K zajištění vylepšení zabezpečení použijte Azure Resource Manager pro vaše virtuální počítače.  Mezi ně patří: <br>– Silnější řízení přístupu (RBAC)<br>– Lepší auditování<br>– Nasazení a zásady správného řízení na základě Azure Resource Manager<br>-Přístup ke spravovaným identitám<br>– Přístup k Azure Key Vault tajných kódů<br>– Ověřování pomocí Azure AD<br>– Podpora značek a skupin prostředků pro snadnější správu zabezpečení|
+|Pravidla upozornění na metriky by měly být nakonfigurovaná na účtech Batch.|Audituje konfiguraci pravidel upozornění metrik na účtech Azure Batch, aby se aktivovala požadovaná metrika.|
+|V účtech Batch by měly být povolené diagnostické protokoly.|Auditujte povolování protokolů a udržujte je po dobu až do roku. Tím se vytvoří stopa aktivity pro účely šetření, pokud dojde k ohrožení zabezpečení nebo dojde k ohrožení vaší sítě.|
+|Šifrování by mělo být povolené u proměnných účtu Automation.|Pokud ukládáte citlivá data, je důležité povolit šifrování prostředků s proměnnými Azure Automation účtu.|
+|Měly by být povolené diagnostické protokoly v App Services.|Audituje povolení diagnostických protokolů v aplikaci. Tím se vytvoří stopa aktivity pro účely šetření, pokud dojde k ohrožení zabezpečení nebo dojde k ohrožení vaší sítě.|
+|Je třeba povolit transparentní šifrování dat databází SQL.|Auditování stavu transparentního šifrování dat pro databáze SQL.|
+|Auditování SQL serveru by mělo být povolené.|Auditujte existenci auditování SQL na úrovni serveru.|
+|\[Preview]: Monitorování nešifrované databáze SQL v Azure Security Center|Azure Security Center monitoruje nešifrované servery nebo databáze SQL podle doporučení.|
+|\[Preview]: Monitorování neauditované databáze SQL v Azure Security Center|Azure Security Center monitorovat servery a databáze SQL, které nemají zapnuté auditování SQL, podle doporučení.|
+|\[Preview]: Do vašich počítačů by se měly nainstalovat aktualizace systému|Azure Security Center monitorovat chybějící aktualizace systému zabezpečení na serverech podle doporučení.|
+|\[Preview]: Auditovat chybějící šifrování objektů BLOB pro účty úložiště|Auditujte účty úložiště, které nepoužívají šifrování objektů BLOB. To platí jenom pro typy prostředků úložiště Microsoft, nikoli pro úložiště od jiných zprostředkovatelů. Azure Security Center monitorovat možný přístup za běhu sítě podle doporučení.|
+|\[Preview]: Na virtuálních počítačích by se mělo použít řízení přístupu k síti za běhu|Azure Security Center monitorovat možný přístup za běhu sítě podle doporučení.|
+|\[Preview]: Na virtuálních počítačích by měly být povolené Adaptivní řízení aplikací.|Azure Security Center monitoruje možnou konfiguraci seznamu povolených aplikací.|
+|\[Preview]: Chybějící skupiny zabezpečení sítě pro virtuální počítače by měly být nakonfigurované.|Azure Security Center monitoruje skupiny zabezpečení sítě, které mají příliš opravňující pravidla, podle doporučení.|
+|\[Preview]: Ohrožení zabezpečení v konfiguraci zabezpečení na vašich počítačích by mělo být opraveno|Azure Security Center monitoruje servery, které nevyhovují nakonfigurovanému směrnému plánu, podle doporučení.| 
+|\[Preview]: Na virtuálních počítačích by měla být nainstalovaná služba Endpoint Protection.|Azure Security Center monitoruje servery, které nemají nainstalovaného agenta Microsoft System Center Endpoint Protection.|
+|\[Preview]: Na virtuálních počítačích by se mělo použít šifrování disku|Azure Security Center monitoruje virtuální počítače, které nemají povolené šifrování disků, jako doporučené.|
+|\[Preview]: Ohrožení zabezpečení by se mělo opravit řešením posouzení ohrožení zabezpečení.|Sledujte ohrožení zabezpečení zjištěná řešením posouzení ohrožení zabezpečení a virtuální počítače, které nemají řešení posouzení ohrožení zabezpečení v Azure Security Center doporučené.|
+|\[Preview]: Monitorování nechráněné webové aplikace v Azure Security Center|Azure Security Center monitoruje webové aplikace, u kterých chybí ochrana firewallu webových aplikací, podle doporučení.|
+|\[Preview]: Řešení ochrany koncových bodů by se mělo nainstalovat na virtuální počítače.|Azure Security Center monitoruje koncové body sítě, které nemají ochranu bránou firewall nové generace (doporučeno).|
+|\[Preview]: Ohrožení zabezpečení vašich databází SQL by mělo být opraveno|Sledujte výsledky kontroly vyhodnocování ohrožení zabezpečení a doporučte, jak napravit chyby zabezpečení databáze.|
+|\[Preview]: Pro vaše předplatné by se mělo určit maximálně 3 vlastníci.|Doporučujeme, abyste určili až tři vlastníky předplatného, abyste omezili případné porušení zabezpečení napadeného vlastníka.|
+|\[Preview]: K vašemu předplatnému by měl být přiřazený víc než jeden vlastník.|Pro zajištění redundance přístupu správce doporučujeme určit více než jednoho vlastníka předplatného.|
+|\[Preview]: Pro účty s oprávněním vlastníka pro vaše předplatné by se měla povolit vícefaktorové ověřování. |Vícefaktorové ověřování (MFA) by mělo být povolené u všech účtů předplatného, které mají oprávnění vlastníka, aby se zabránilo narušení účtů nebo prostředků.|
+|\[Preview]: Vícefaktorové ověřování by mělo být povolené u účtů předplatného s oprávněním k zápisu.|U všech účtů předplatného, které mají oprávnění k zápisu, by mělo být povoleno Multi-Factor Authentication, aby nedošlo k porušení účtů nebo prostředků.|
+|\[Preview]: Vícefaktorové ověřování by mělo být povolené u účtů předplatného s oprávněním ke čtení|U všech účtů předplatného, které mají oprávnění ke čtení, by mělo být povoleno Multi-Factor Authentication, aby nedošlo k porušení účtů nebo prostředků.|
+|\[Preview]: Zastaralé účty s oprávněním vlastníka by se měly odebrat z vašeho předplatného.|Zastaralé účty, které mají oprávnění vlastníka, by měly být odebrány z vašeho předplatného. U zastaralých účtů bylo zablokováno přihlášení.|
+|\[Preview]: Zastaralé účty by se měly odebírat z předplatného.|Zastaralé účty by se měly odebírat z vašich předplatných. U zastaralých účtů bylo zablokováno přihlášení.|
+|\[Preview]: Z vašeho předplatného byste měli odebrat externí účty s oprávněním vlastníka.|Externí účty, které mají oprávnění vlastníka, by měly být odebrány z vašeho předplatného, aby nedocházelo k oprávněním.|
+|\[Preview]: Z předplatného by se měly odebrat externí účty s oprávněními pro zápis|Externí účty, které mají oprávnění k zápisu, by měly být odebrány z vašeho předplatného, aby nedocházelo k nemonitorovanému přístupu.|
+|\[Preview]: Z vašeho předplatného by se měly odebrat externí účty s oprávněním ke čtení.|Externí účty, které mají oprávnění ke čtení, by se měly z vašeho předplatného odebrat, aby nedocházelo k nemonitorovanému přístupu.|
 
 
 
 
-## <a name="next-steps"></a>Další postup
-V tomto článku jste zjistili, jak ve službě Security Center konfigurovat zásady zabezpečení. Další informace o službě Security Center, najdete v následujících článcích.
+## <a name="next-steps"></a>Další kroky
+V tomto článku jste zjistili, jak ve službě Security Center konfigurovat zásady zabezpečení. Další informace o Security Center najdete v následujících článcích.
 
-* [Průvodce Azure Security Center plánováním a provozem](security-center-planning-and-operations-guide.md): Zjistěte, jak naplánovat a pochopit aspekty návrhu ve službě Azure Security Center.
+* [Průvodce plánováním a provozem Azure Security Center](security-center-planning-and-operations-guide.md): Naučte se plánovat a pochopit důležité informace o návrhu v Azure Security Center.
 * [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md): Zjistěte, jak monitorovat stav svých prostředků Azure.
-* [Správa a reakce na výstrahy zabezpečení ve službě Azure Security Center](security-center-managing-and-responding-alerts.md): Zjistěte, jak spravovat a zpracovávat výstrahy zabezpečení.
+* [Správa a reakce na výstrahy zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md): Zjistěte, jak spravovat a zpracovávat výstrahy zabezpečení.
 * [Monitorování partnerských řešení pomocí Azure Security Center](security-center-partner-solutions.md): Zjistěte, jak monitorovat stav partnerských řešení.
 * [Nejčastější dotazy k Azure Security Center](security-center-faq.md): Získejte odpovědi na nejčastější dotazy k používání této služby.
 * [Blog o zabezpečení Azure](https://blogs.msdn.com/b/azuresecurity/): Přečtěte si příspěvky o zabezpečení Azure a dodržování předpisů.
 
-Další informace o službě Azure Policy najdete v tématu [co je Azure Policy?](../governance/policy/overview.md).
+Další informace o Azure Policy najdete v tématu [co je Azure Policy?](../governance/policy/overview.md).

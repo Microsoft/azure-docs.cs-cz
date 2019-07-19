@@ -1,39 +1,36 @@
 ---
-title: Nasazení brány Firewall na Azure s víc veřejných IP adres pomocí Azure Powershellu
-description: V tomto článku se dozvíte, jak nasadit bránu Firewall Azure s víc veřejných IP adres pomocí Azure Powershellu.
+title: Nasazení Azure Firewall s více veřejnými IP adresami pomocí Azure PowerShell
+description: V tomto článku se dozvíte, jak nasadit Azure Firewall s více veřejnými IP adresami pomocí Azure PowerShell.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 7/10/2019
+ms.date: 07/19/2019
 ms.author: victorh
-ms.openlocfilehash: ce47612f18ee64caa3a053001deb5448f7c27bfd
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: ba2736ae69d0bf7feff5f852da2446bfa7a722a6
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67703988"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325230"
 ---
-# <a name="deploy-an-azure-firewall-with-multiple-public-ip-addresses-using-azure-powershell"></a>Nasazení brány Firewall Azure s víc veřejných IP adres pomocí Azure Powershellu
-
-> [!IMPORTANT]
-> Brány Azure s víc veřejných IP adres je k dispozici prostřednictvím Azure Powershellu, rozhraní příkazového řádku Azure, rozhraní REST a šablony. Portálu uživatelského rozhraní je přidáte do oblastí postupně a budou k dispozici ve všech oblastech po dokončení tohoto uvedení.
-
-Můžete nasadit bránu Firewall Azure s až 100 veřejné IP adresy.
+# <a name="deploy-an-azure-firewall-with-multiple-public-ip-addresses-using-azure-powershell"></a>Nasazení Azure Firewall s více veřejnými IP adresami pomocí Azure PowerShell
 
 Tato funkce umožňuje následující scénáře:
 
-- **DNAT** -více instancí standardní port lze přeložit do back-end serverů. Například pokud máte dvě veřejné IP adresy, může překládat TCP port 3389 (RDP) pro obě IP adresy.
-- **SNAT** – další porty jsou k dispozici pro odchozí připojení SNAT, snižuje riziko vyčerpání portů SNAT. Brána Firewall služby Azure v tuto chvíli náhodně vybere zdroj veřejnou IP adresu pro připojení. Pokud máte jakékoli podřízené filtrování ve vaší síti, budete muset povolit všechny veřejné IP adresy přidružené k vaší brány firewall.
+- **DNAT** – můžete přeložit několik standardních instancí portů na servery back-end. Pokud máte například dvě veřejné IP adresy, můžete přeložit TCP port 3389 (RDP) na obě IP adresy.
+- **SNAT** – pro odchozí připojení SNAT jsou k dispozici další porty, což snižuje potenciál vyčerpání portů SNAT. V tuto chvíli Azure Firewall náhodně vybere zdrojovou veřejnou IP adresu, která se má použít pro připojení. Pokud máte v síti filtrování pro příjem dat, je potřeba, abyste povolili všechny veřejné IP adresy přidružené k bráně firewall.
+ 
+Azure Firewall s více veřejnými IP adresami jsou k dispozici prostřednictvím Azure Portal, Azure PowerShell, Azure CLI, REST a šablon. Azure Firewall můžete nasadit s až 100 veřejnými IP adresami.
 
-Následující příklady Azure Powershellu ukazují, jak můžete konfigurovat, přidávat a odebírat veřejné IP adresy pro bránu Firewall Azure.
+Následující příklady Azure PowerShell ukazují, jak můžete nakonfigurovat, přidat a odebrat veřejné IP adresy pro Azure Firewall.
 
 > [!NOTE]
-> První konfigurace ipConfiguration nelze odebrat ze Brána Firewall služby Azure veřejné IP adresy konfigurace stránky. Pokud chcete upravit IP adresu, můžete pomocí Azure Powershellu.
+> První ipConfiguration nelze odebrat ze stránky Azure Firewall konfigurace veřejné IP adresy. Pokud chcete změnit IP adresu, můžete použít Azure PowerShell.
 
-## <a name="create-a-firewall-with-two-or-more-public-ip-addresses"></a>Vytvoření brány firewall se dvěma nebo více veřejných IP adres
+## <a name="create-a-firewall-with-two-or-more-public-ip-addresses"></a>Vytvoření brány firewall se dvěma nebo více veřejnými IP adresami
 
-Tento příklad vytvoří bránu firewall, připojený k virtuální síti *vnet* s dvě veřejné IP adresy.
+Tento příklad vytvoří bránu firewall připojenou k virtuální síti *VNet* se dvěma veřejnými IP adresami.
 
 ```azurepowershell
 $rgName = "resourceGroupName"
@@ -64,9 +61,9 @@ New-AzFirewall `
   -PublicIpAddress @($pip1, $pip2)
 ```
 
-## <a name="add-a-public-ip-address-to-an-existing-firewall"></a>Přidejte veřejnou IP adresu pro existující bránu firewall
+## <a name="add-a-public-ip-address-to-an-existing-firewall"></a>Přidání veřejné IP adresy do existující brány firewall
 
-V tomto příkladu, veřejnou IP adresu *azFwPublicIp1* je připojen k bráně firewall.
+V tomto příkladu je veřejná IP adresa *azFwPublicIp1* připojená k bráně firewall.
 
 ```azurepowershell
 $pip = New-AzPublicIpAddress `
@@ -85,9 +82,9 @@ $azFw.AddPublicIpAddress($pip)
 $azFw | Set-AzFirewall
 ```
 
-## <a name="remove-a-public-ip-address-from-an-existing-firewall"></a>Odebrat veřejnou IP adresu z existující brány firewall
+## <a name="remove-a-public-ip-address-from-an-existing-firewall"></a>Odebrání veřejné IP adresy z existující brány firewall
 
-V tomto příkladu, veřejnou IP adresu *azFwPublicIp1* je odpojená od brány.
+V tomto příkladu je veřejná IP adresa *azFwPublicIp1* odpojená od brány firewall.
 
 ```azurepowershell
 $pip = Get-AzPublicIpAddress `
@@ -105,4 +102,4 @@ $azFw | Set-AzFirewall
 
 ## <a name="next-steps"></a>Další postup
 
-* [Kurz: Monitorujte protokoly brány Firewall na Azure](./tutorial-diagnostics.md)
+* [Kurz: Monitorování protokolů Azure Firewall](./tutorial-diagnostics.md)

@@ -1,6 +1,6 @@
 ---
-title: Nástroj pro modelování hrozeb uvolní – modelování nástroj Microsoft Threat – Azure | Dokumentace Microsoftu
-description: Dokumentace v poznámkách k verzi nástroje Modelování ohrožení
+title: Verze Threat Modeling Tool – Microsoft Threat Modeling Tool – Azure | Microsoft Docs
+description: Dokumentující poznámky k verzi pro nástroj pro modelování hrozeb
 services: security
 documentationcenter: na
 author: jegeib
@@ -14,33 +14,34 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2019
 ms.author: jegeib
-ms.openlocfilehash: c2ef02fd4c057dbdb15632752521ae314571560b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9cf9ecca59b60f93749133c98cc23c6d6815c41e
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60586063"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849761"
 ---
-# <a name="threat-modeling-tool-releases"></a>Verze nástroje pro modelování hrozeb
+# <a name="threat-modeling-tool-releases"></a>Verze Threat Modeling Tool
 
-Nástroj pro modelování hrozeb Microsoft aktuálně všeobecně dostupné jako bezplatná [klikněte na tlačítko Stáhnout](https://aka.ms/threatmodelingtool) aplikace pro Windows. Tento mechanismus doručení umožňuje nabízet nejnovější vylepšení a opravy chyb pro zákazníky pokaždé, když otevřou nástroj.
+Microsoft Threat Modeling Tool je aktuálně vydaný jako bezplatná aplikace [na stažení, kterou lze stáhnout](https://aka.ms/threatmodelingtool) pro Windows. Tento mechanismus doručování nám umožňuje nabídnout zákazníkům při každém otevření nástroje nejnovější vylepšení a opravy chyb.
 
-## <a name="system-requirements"></a>Systémové požadavky
+## <a name="system-requirements"></a>Požadavky na systém
 
 - Podporované operační systémy
-  - Microsoft Windows 10 Anniversary Update nebo novější
-- Požadovaná verze rozhraní .NET
+  - Microsoft Windows 10 – aktualizace pro výročí nebo novější
+- Vyžaduje se verze .NET.
   - .NET 4.7.1 nebo novější
 - Další požadavky
-  - Připojení k Internetu je potřebný k přijetí aktualizací do nástroje a šablony.
+  - K přijímání aktualizací nástroje a šablon je vyžadováno připojení k Internetu.
 
 ## <a name="release-notes"></a>Poznámky k verzi
 
-- [Verze sady Microsoft Threat modelování nástroj GA 7.1.60408.1](./azure-security-threat-modeling-tool-releases-71604081.md) – 2019 9. dubna
-- [Verze sady Microsoft Threat modelování nástroj GA 7.1.60126.1](./azure-security-threat-modeling-tool-releases-71601261.md) – 2019 29. ledna
-- [Verze sady Microsoft Threat modelování nástroj GA 7.1.51023.1](./azure-security-threat-modeling-tool-releases-71510231.md) – 1. listopadu 2018
-- [Verze sady Microsoft Threat modelování nástroj GA 7.1.50911.2](./azure-security-threat-modeling-tool-releases-71509112.md) – 12. září 2018
+- [Verze Microsoft Threat MODELING Tool GA verze 7.1.60702.1](./azure-security-threat-modeling-tool-releases-71607021.md) – Červenec 2 2019
+- [Verze Microsoft Threat MODELING Tool GA verze 7.1.60408.1](./azure-security-threat-modeling-tool-releases-71604081.md) – duben 9 2019
+- [Microsoft Threat Modeling Tool verze 7.1.60126.1](./azure-security-threat-modeling-tool-releases-71601261.md) pro verzi GA – Leden 29 2019
+- [Verze Microsoft Threat MODELING Tool GA verze 7.1.51023.1](./azure-security-threat-modeling-tool-releases-71510231.md) – listopad 1 2018
+- [Microsoft Threat Modeling Tool verze GA verze 7.1.50911.2](./azure-security-threat-modeling-tool-releases-71509112.md) – září 12 2018
 
 ## <a name="next-steps"></a>Další postup
 
-Stáhněte si nejnovější verzi [nástroj pro modelování hrozeb Microsoftu](https://aka.ms/threatmodelingtool).
+Stáhněte si nejnovější verzi [Microsoft Threat Modeling Tool](https://aka.ms/threatmodelingtool).

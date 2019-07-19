@@ -1,29 +1,29 @@
 ---
-title: Zásady připojení služby Azure Cosmos DB triggeru
-description: Další informace o konfiguraci zásad připojení používá aktivační událost Azure Cosmos DB
+title: Azure Functions Trigger pro zásady připojení Cosmos DB
+description: Zjistěte, jak nakonfigurovat zásady připojení používané Azure Functions triggerem pro Cosmos DB
 author: ealsur
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 06/05/2019
+ms.date: 07/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 584d59884b70d2ee8243216e6f907fc9ec2d8ad4
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 359b6a905e64046aad62b70ae53b993c86884ad2
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66755329"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335623"
 ---
-# <a name="how-to-configure-the-connection-policy-used-by-azure-cosmos-db-trigger"></a>Jak nakonfigurovat zásady připojení používá aktivační událost Azure Cosmos DB
+# <a name="how-to-configure-the-connection-policy-used-by-azure-functions-trigger-for-cosmos-db"></a>Postup konfigurace zásad připojení používaných Azure Functions triggerem pro Cosmos DB
 
-Tento článek popisuje, jak nakonfigurovat zásady připojení při použití aktivační událost Azure Cosmos DB k připojení k vašemu účtu Azure Cosmos.
+Tento článek popisuje, jak můžete nakonfigurovat zásady připojení při použití triggeru Azure Functions pro připojení k účtu Azure Cosmos Cosmos DB.
 
-## <a name="why-is-the-connection-policy-important"></a>Proč je důležité zásady připojení?
+## <a name="why-is-the-connection-policy-important"></a>Proč jsou zásady připojení důležité?
 
-Existují dva režimy připojení – přímý režim a režim brány. Další informace o těchto režimech připojení, najdete v článku [tipy ke zvýšení výkonu](./performance-tips.md#networking) článku. Ve výchozím nastavení **brány** se používá k navázání všechna připojení na aktivační událost Azure Cosmos DB. Však nemusí být nejvhodnější pro scénáře výkon řízená.
+Existují dva režimy připojení – přímý režim a režim brány. Další informace o těchto režimech připojení najdete v článku [tipy pro výkon](./performance-tips.md#networking) . Ve výchozím nastavení se **Brána** používá k navázání všech připojení na Azure Functions triggeru Cosmos DB. Nemusí se ale jednat o nejlepší možnost pro scénáře řízené výkonem.
 
-## <a name="changing-the-connection-mode-and-protocol"></a>Změna režimu připojení a protokol
+## <a name="changing-the-connection-mode-and-protocol"></a>Změna režimu připojení a protokolu
 
-Existují dvě klíčové konfigurace nastavení k dispozici ke konfiguraci zásad připojení klienta – **režim připojení** a **připojení protokolu**. Můžete změnit výchozí režim připojení a protokol používá aktivační událost Azure Cosmos DB a všechny [vazby Azure Cosmos DB](../azure-functions/functions-bindings-cosmosdb-v2.md#output)). Chcete-li změnit výchozí nastavení, je potřeba najít `host.json` souboru v projektu Azure Functions nebo aplikace funkcí Azure a přidejte následující [dalších nastavení](../azure-functions/functions-bindings-cosmosdb-v2.md#hostjson-settings):
+Ke konfiguraci zásad připojení klienta – **režimu připojení** a **protokolu připojení**jsou k dispozici dvě klíčová nastavení konfigurace. Můžete změnit výchozí režim připojení a protokol používaný triggerem Azure Functions pro Cosmos DB a všechny [vazby Azure Cosmos DB](../azure-functions/functions-bindings-cosmosdb-v2.md#output)). Chcete-li změnit výchozí nastavení, je třeba vyhledat `host.json` soubor v projektu Azure Functions nebo v aplikaci Azure functions a přidat následující [Další nastavení](../azure-functions/functions-bindings-cosmosdb-v2.md#hostjson-settings):
 
 ```js
 {
@@ -34,9 +34,9 @@ Existují dvě klíčové konfigurace nastavení k dispozici ke konfiguraci zás
 }
 ```
 
-Kde `connectionMode` musí mít režim požadované připojení (přímo nebo brány) a `protocol` požadované připojení protokolu (Tcp nebo Https). 
+Kde `connectionMode` musí být požadovaný režim připojení (Direct nebo Gateway) a `protocol` požadovaný protokol připojení (TCP nebo https). 
 
-Pokud váš projekt Azure Functions pracuje s modulem runtime Azure Functions V1, konfigurace má název mírné rozdíl, měli byste použít `documentDB` místo `cosmosDB`:
+Pokud váš Azure Functions projekt pracuje s modulem runtime Azure Functions V1, má konfigurace mírné rozdíly v nesprávném názvu, `documentDB` měli byste `cosmosDB`použít místo:
 
 ```js
 {
@@ -48,10 +48,10 @@ Pokud váš projekt Azure Functions pracuje s modulem runtime Azure Functions V1
 ```
 
 > [!NOTE]
-> Při práci s plánem Azure Functions spotřeby plán hostování, každá instance má limit množství připojení soketu, která můžete spravovat. Při práci s přímým / TCP režimu návrhu, se vytvoří další připojení a může přístupů [plánu Consumption limit](../azure-functions/manage-connections.md#connection-limit), v takovém případě můžete použít režim brány nebo spouštění Azure Functions [režim aplikací služby](../azure-functions/functions-scale.md#app-service-plan).
+> Při práci s plánem hostování Azure Functions spotřeby má každá instance omezení množství připojení soketu, která může udržovat. Při práci s režimem Direct/TCP se vytvoří návrh většího [počtu](../azure-functions/manage-connections.md#connection-limit)připojení. v takovém případě můžete buď použít režim brány, nebo spustit Azure Functions v [režimu App Service](../azure-functions/functions-scale.md#app-service-plan).
 
 ## <a name="next-steps"></a>Další postup
 
-* [Omezení počtu připojení ve službě Azure Functions](../azure-functions/manage-connections.md#connection-limit)
-* [Tipy ke zvýšení výkonu Azure Cosmos DB](./performance-tips.md)
+* [Omezení připojení v Azure Functions](../azure-functions/manage-connections.md#connection-limit)
+* [Tipy k výkonu Azure Cosmos DB](./performance-tips.md)
 * [Ukázky kódu](https://github.com/ealsur/serverless-recipes/tree/master/connectionmode)

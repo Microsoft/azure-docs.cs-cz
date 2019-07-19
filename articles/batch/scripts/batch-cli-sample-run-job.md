@@ -4,7 +4,7 @@ description: Ukázkový skript Azure CLI – Spuštění úlohy pomocí služby 
 services: batch
 documentationcenter: ''
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 ms.assetid: ''
 ms.service: batch
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: lahugh
-ms.openlocfilehash: 4ddcc2541bd31c887c17e549209270c60d735351
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a5e81393014dd70ae83f66e2a1d41f4de3c14205
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66127374"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68321855"
 ---
-# <a name="cli-example-run-a-job-and-tasks-with-azure-batch"></a>Příklad rozhraní příkazového řádku: Spuštění úlohy a úkolů pomocí služby Azure Batch
+# <a name="cli-example-run-a-job-and-tasks-with-azure-batch"></a>Příklad rozhraní příkazového řádku: Spuštění úlohy a úkolů pomocí Azure Batch
 
 Tento skript vytvoří úlohu Batch a přidá do ní řadu úkolů. Ukazuje také, jak monitorovat úlohu a její úkoly. 
 
@@ -58,6 +58,6 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [az batch task show](https://docs.microsoft.com/cli/azure/batch/task#az-batch-task-show) | Načte podrobnosti o úkolu ze zadané úlohy Batch.  |
 | [az group delete](/cli/azure/group#az-group-delete) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](/cli/azure).

@@ -3,20 +3,20 @@ title: Vykreslení scény v cloudu – Azure Batch
 description: Kurz – Vykreslení scény Autodesk 3ds Max s využitím Arnoldu, služby Batch Rendering a rozhraní příkazového řádku Azure
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.service: batch
 ms.topic: tutorial
 ms.date: 12/11/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 5abc2e673438a1ffa22e8d010bf2ee395cd521ae
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0c87a6968e5c6fd0e587c240b0a5df0a73f9909b
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66127300"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68321659"
 ---
-# <a name="tutorial-render-a-scene-with-azure-batch"></a>Kurz: Vykreslení scény pomocí služby Azure Batch 
+# <a name="tutorial-render-a-scene-with-azure-batch"></a>Kurz: Vykreslení scény pomocí Azure Batch 
 
 Azure Batch nabízí možnosti vykreslování v cloudovém měřítku a s platbami za použití. Azure Batch podporuje vykreslovací aplikace, včetně aplikací Autodesk Maya, 3ds Max, Arnold a V-Ray. V tomto kurzu najdete kroky pro vykreslení malé scény s využitím služby Batch a rozhraní příkazového řádku Azure. Získáte informace o těchto tématech:
 
@@ -186,7 +186,7 @@ se=2018-11-15&sp=rw&sv=2017-04-17&ss=b&srt=co&sig=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 ## <a name="render-a-single-frame-scene"></a>Vykreslení scény s jedním snímkem
 
-### <a name="create-a-job"></a>Vytvoří úlohu
+### <a name="create-a-job"></a>Vytvoření úlohy
 
 Pomocí příkazu [az batch job create](/cli/azure/batch/job#az-batch-job-create) vytvořte úlohu vykreslování, která se spustí ve fondu. Na začátku úloha neobsahuje žádné úkoly.
 
@@ -338,7 +338,7 @@ Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, účtu 
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili tyto postupy:
 

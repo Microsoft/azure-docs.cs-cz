@@ -1,5 +1,5 @@
 ---
-title: 'Načítání: Python SDK pro přípravu dat'
+title: 'Load: Příprava dat Python SDK'
 titleSuffix: Azure Machine Learning service
 description: Další informace o načítání dat pomocí sady SDK služby Azure Machine Learning Data Prep. Můžete načíst různé typy vstupních dat, určit typy souborů dat a parametry nebo použít funkci inteligentního čtení sady SDK automaticky rozpoznat typ souboru.
 services: machine-learning
@@ -10,40 +10,40 @@ ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: jmartens
-ms.date: 02/22/2019
+ms.date: 07/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: fef3281f1f4e727b58878439e3f6456fee3b6241
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0fa60198af66154e0ddc703f90224adf5be89447
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66752928"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876409"
 ---
-# <a name="load-and-read-data-with-the-azure-machine-learning-data-prep-sdk"></a>Načtení a čtení dat pomocí sady SDK pro Azure Machine Learning Data Prep
-V tomto článku se naučíte různými způsoby načítání dat pomocí sady SDK pro Azure Machine Learning Data Prep.  Sada SDK podporuje různé funkce příjem dat, včetně:
+# <a name="load-and-read-data-with-the-azure-machine-learning-data-prep-sdk"></a>Načtení a čtení dat pomocí sady Azure Machine Learning SDK pro přípravu dat
+V tomto článku se seznámíte s různými metodami načítání dat pomocí sady Azure Machine Learning SDK pro přípravu dat.  Sada SDK podporuje různé funkce příjem dat, včetně:
 
 * Načtení z mnoha typů souborů s analýzy odvozování parametrů (kódování, oddělovač, hlavičky)
 * Převod typu pomocí odvození během načítání souboru
 * Podpora připojení pro MS SQL Server a úložiště Azure Data Lake
 
 > [!Important]
-> Pokud vytváříte nové řešení, zkuste [datové sady Azure Machine Learning](how-to-explore-prepare-data.md) (preview) pro zkoumání dat a přípravy. Datové sady je další verze přípravy dat SDK nabízí rozšířené funkce pro správu datových sad v řešení AI.
-> Pokud používáte `azureml-dataprep` balíček pro vytváření toku dat s namísto použití transformace `azureml-datasets` balíček k vytvoření datové sady, nebudete moct později použít snímky nebo systémovou správou verzí datové sady.
+> Pokud vytváříte nové řešení, zkuste pro zkoumání a přípravu dat použít [sadu Azure Machine Learning DataSets](how-to-explore-prepare-data.md) (Preview). Datové sady jsou další verzí sady SDK pro přípravu dat, která nabízí rozšířené funkce pro správu datových sad v řešení AI.
 
-V následující tabulce jsou uvedeny výběru sady funkcí pro načítání dat z běžných typů souborů.
 
-| Typ souboru | Funkce | Referenční odkaz |
+Následující tabulka ukazuje výběr funkcí používaných pro načítání dat z běžných typů souborů.
+
+| Typ souboru | Funkce | Odkaz na odkaz |
 |-------|-------|-------|
-|Jakýkoli|`auto_read_file()`|[Referenční dokumentace](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep?view=azure-dataprep-py#auto-read-file-path--filepath--include-path--bool---false-----azureml-dataprep-api-dataflow-dataflow)|
+|Any|`auto_read_file()`|[Referenční dokumentace](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep?view=azure-dataprep-py#auto-read-file-path--filepath--include-path--bool---false-----azureml-dataprep-api-dataflow-dataflow)|
 |Text|`read_lines()`|[Referenční dokumentace](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep#read-lines-path--filepath--header--azureml-dataprep-api-dataflow-promoteheadersmode----promoteheadersmode-none--0---encoding--azureml-dataprep-api-engineapi-typedefinitions-fileencoding----fileencoding-utf8--0---skip-rows--int---0--skip-mode--azureml-dataprep-api-dataflow-skipmode----skipmode-none--0---comment--str---none--include-path--bool---false--verify-exists--bool---true-----azureml-dataprep-api-dataflow-dataflow)|
 |SDÍLENÝ SVAZEK CLUSTERU|`read_csv()`|[Referenční dokumentace](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep#read-csv-path--filepath--separator--str--------header--azureml-dataprep-api-dataflow-promoteheadersmode----promoteheadersmode-constantgrouped--3---encoding--azureml-dataprep-api-engineapi-typedefinitions-fileencoding----fileencoding-utf8--0---quoting--bool---false--inference-arguments--azureml-dataprep-api-builders-inferencearguments---none--skip-rows--int---0--skip-mode--azureml-dataprep-api-dataflow-skipmode----skipmode-none--0---comment--str---none--include-path--bool---false--archive-options--azureml-dataprep-api--archiveoption-archiveoptions---none--infer-column-types--bool---false--verify-exists--bool---true-----azureml-dataprep-api-dataflow-dataflow)|
 |Excel|`read_excel()`|[Referenční dokumentace](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep#read-excel-path--filepath--sheet-name--str---none--use-column-headers--bool---false--inference-arguments--azureml-dataprep-api-builders-inferencearguments---none--skip-rows--int---0--include-path--bool---false--infer-column-types--bool---false--verify-exists--bool---true-----azureml-dataprep-api-dataflow-dataflow)|
 |Fixed-width|`read_fwf()`|[Referenční dokumentace](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep#read-fwf-path--filepath--offsets--typing-list-int---header--azureml-dataprep-api-dataflow-promoteheadersmode----promoteheadersmode-constantgrouped--3---encoding--azureml-dataprep-api-engineapi-typedefinitions-fileencoding----fileencoding-utf8--0---inference-arguments--azureml-dataprep-api-builders-inferencearguments---none--skip-rows--int---0--skip-mode--azureml-dataprep-api-dataflow-skipmode----skipmode-none--0---include-path--bool---false--infer-column-types--bool---false--verify-exists--bool---true-----azureml-dataprep-api-dataflow-dataflow)|
 |JSON|`read_json()`|[Referenční dokumentace](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep?view=azure-dataprep-py#read-json-path--filepath--encoding--azureml-dataprep-api-engineapi-typedefinitions-fileencoding----fileencoding-utf8--0---flatten-nested-arrays--bool---false--include-path--bool---false-----azureml-dataprep-api-dataflow-dataflow)|
 
-## <a name="load-data-automatically"></a>Načtení dat automaticky
+## <a name="load-data-automatically"></a>Načíst data automaticky
 
-Chcete-li automaticky načíst data bez zadání typu souboru, použijte `auto_read_file()` funkce. Automaticky se odvodit typ souboru a argumenty potřebné k jeho čtení.
+Chcete-li načíst data automaticky bez zadání typu souboru, použijte `auto_read_file()` funkci. Typ souboru a argumenty, které jsou vyžadovány pro čtení, jsou odvozeny automaticky.
 
 ```python
 import azureml.dataprep as dprep
@@ -51,13 +51,13 @@ import azureml.dataprep as dprep
 dflow = dprep.auto_read_file(path='./data/any-file.txt')
 ```
 
-Tato funkce je užitečná pro automatické zjišťování typu souboru, kódování a ostatních parsování argumentů vše z jednoho pohodlný vstupní bod. Funkce také automaticky provede následující kroky běžně provádějí při načítání s oddělovači dat:
+Tato funkce je užitečná pro automatické zjištění typu souboru, kódování a další argumenty analýzy z jednoho pohodlného vstupního bodu. Funkce také automaticky provádí následující kroky běžně prováděné při načítání oddělených dat:
 
-* Odvození a nastavení oddělovač
-* Přeskakuje se prázdné záznamy v horní části souboru
-* Odvození a nastavení záhlaví řádku
+* Odvození a nastavení oddělovače
+* Vynechávání prázdných záznamů v horní části souboru
+* Odvození a nastavení řádku záhlaví
 
-Případně pokud znáte souboru zadejte předem domluvili a chcete explicitně kontrolovat způsob, jakým je analyzován, použijte funkce konkrétního souboru.
+Případně, pokud znáte typ souboru před časem a chcete explicitně řídit způsob, jakým se analyzuje, použijte funkce specifické pro soubor.
 
 ## <a name="load-text-line-data"></a>Načtení dat řádku textu
 
@@ -128,7 +128,7 @@ Výstup:
 
 Ve výchozím nastavení sady SDK pro Azure Machine Learning Data Prep nemění datový typ. Zdroj dat, které právě čtete z je textový soubor, takže sady SDK čte všechny hodnoty jako řetězce. V tomto příkladu by měl být číselné sloupce analyzovat jako čísla. Nastavte `inference_arguments` parametr `InferenceArguments.current_culture()` automaticky odvodit a převést typy sloupců při čtení souboru.
 
-```
+```python
 dflow = dprep.read_csv(path='https://dpreptestfiles.blob.core.windows.net/testfiles/read_csv_duplicate_headers.csv',
                           skip_rows=1,
                           inference_arguments=dprep.InferenceArguments.current_culture())
@@ -178,7 +178,7 @@ dflow = dprep.read_excel(path='./data/excel.xlsx', sheet_name='Sheet2', use_colu
 
 ## <a name="load-fixed-width-data-files"></a>Načíst soubory s pevnou šířkou dat
 
-Načíst soubory s pevnou šířkou, zadáte seznam znaků posunutí. První sloupec je vždy považován za začínají nulové posunutí.
+Chcete-li načíst soubory s pevnou šířkou, zadejte seznam posunů znaků. První sloupec je vždy považován za začínají nulové posunutí.
 
 ```python
 dflow = dprep.read_fwf('./data/fixed_width_file.txt', offsets=[7, 13, 43, 46, 52, 58, 65, 73])
@@ -207,7 +207,7 @@ dflow = dprep.read_fwf('./data/fixed_width_file.txt',
 
 ## <a name="load-sql-data"></a>Načtení dat SQL
 
-Sady SDK můžete také načíst data ze zdroje SQL. V současné době se podporuje jenom Microsoft SQL Server. Chcete-li čtení dat z SQL serveru, vytvořte [ `MSSQLDataSource` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.mssqldatasource?view=azure-dataprep-py) objekt, který obsahuje parametry připojení. Parametr hesla `MSSQLDataSource` přijímá [ `Secret` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep?view=azure-dataprep-py#register-secret-value--str--id--str---none-----azureml-dataprep-api-engineapi-typedefinitions-secret) objektu. Můžete vytvořit objekt tajných kódů dvěma způsoby:
+Sady SDK můžete také načíst data ze zdroje SQL. V současné době se podporuje jenom Microsoft SQL Server. Chcete-li číst data z SQL serveru, vytvořte [`MSSQLDataSource`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.mssqldatasource?view=azure-dataprep-py) objekt, který obsahuje parametry připojení. Parametr hesla pro `MSSQLDataSource` [`Secret`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep?view=azure-dataprep-py#register-secret-value--str--id--str---none-----azureml-dataprep-api-engineapi-typedefinitions-secret) akceptuje objekt. Můžete vytvořit objekt tajných kódů dvěma způsoby:
 
 * Prováděcí modul zaregistrujte tajný kód a její hodnotu.
 * Vytvoření tajného kódu s pouze `id` (Pokud hodnota tajného klíče už je zaregistrovaný v prostředí pro spouštění) pomocí `dprep.create_secret("[SECRET-ID]")`.
@@ -294,7 +294,7 @@ servicePrincipalAppId = "8dd38f34-1fcb-4ff9-accd-7cd60b757174"
 
 ### <a name="acquire-an-oauth-access-token"></a>Získání přístupového tokenu OAuth
 
-Použití `adal` balíčku (`pip install adal`) vytvořit kontext ověřování na MSFT na úrovni tenanta a získání přístupového tokenu OAuth. ADLS, musí být prostředek v žádosti o token pro ' https:\//datalake.azure.net ", která se liší od nejvíce dalších prostředků Azure.
+Použití `adal` balíčku (`pip install adal`) vytvořit kontext ověřování na MSFT na úrovni tenanta a získání přístupového tokenu OAuth. Pro adls musí být prostředek v žádosti o token pro https:\//datalake.Azure.NET, který se liší od většiny ostatních prostředků Azure.
 
 ```python
 import adal
@@ -316,4 +316,4 @@ dflow.to_pandas_dataframe().head()
 
 ## <a name="next-steps"></a>Další postup
 
-* Zobrazit sadu SDK pro Azure Machine Learning Data Prep [kurzu](tutorial-data-prep.md) příklad řešení konkrétní scénář
+* Příklad řešení konkrétního scénáře najdete v [kurzu](tutorial-data-prep.md) Azure Machine Learning data PREP SDK.

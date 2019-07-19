@@ -1,6 +1,6 @@
 ---
-title: Konfigurace chování relace – Azure Active Directory B2C | Dokumentace Microsoftu
-description: Konfigurace chování relace v Azure Active Directory B2C.
+title: Konfigurace chování relace – Azure Active Directory B2C | Microsoft Docs
+description: Nakonfigurujte chování relace v Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,55 +10,52 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3167a63be46e0d777fbec0c6a3301684fb7636bd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b18a7d98654422951773c0a5497f69db93782f51
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66512550"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849450"
 ---
 # <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Konfigurace chování relace v Azure Active Directory B2C
 
-Tato funkce umožňuje přesné řízení, na [tok jednotlivých uživatelů](active-directory-b2c-reference-policies.md), sady:
+Tato funkce poskytuje jemně odstupňovaný ovládací prvek na [základě toku pro jednotlivé uživatele](active-directory-b2c-reference-policies.md):
 
-- Doby života relace webové aplikace spravované službou Azure AD B2C.
-- Jednotné přihlašování (SSO) chování napříč více aplikacemi a toky uživatelů ve vašem tenantovi Azure AD B2C.
+- Životnost relací webových aplikací, které jsou spravovány Azure AD B2C.
+- Chování jednotného přihlašování (SSO) napříč několika aplikacemi a toky uživatelů ve vašem Azure AD B2C tenantovi.
 
-Tato nastavení nejsou k dispozici pro toky uživatelů pro resetování hesla.
+Tato nastavení nejsou k dispozici pro uživatelské toky resetování hesla.
 
-Azure AD B2C podporuje [ověřovacího protokolu OpenID Connect](active-directory-b2c-reference-oidc.md) pro povolení zabezpečené přihlašování k webovým aplikacím. Chcete-li spravovat relace webové aplikace můžete použít následující vlastnosti:
+Azure AD B2C podporuje [ověřovací protokol OpenID Connect](active-directory-b2c-reference-oidc.md) pro povolení zabezpečeného přihlašování k webovým aplikacím. Pomocí následujících vlastností můžete spravovat relace webových aplikací:
 
-## <a name="session-behavior-properties"></a>Chování vlastnosti relace
+## <a name="session-behavior-properties"></a>Vlastnosti chování relace
 
-- **Webová aplikace životnost relace (minuty)** – dobu života souboru cookie relace Azure AD B2C uloženého v prohlížeči uživatele po úspěšném ověření.
-    - Výchozí = 1 440 minut.
+- **Doba života relace webové aplikace (minuty)** – doba života souboru cookie relace Azure AD B2C's, která se po úspěšném ověření uloží v prohlížeči uživatele.
+    - Výchozí hodnota = 1440 minut.
     - Minimální (včetně) = 15 minut.
-    - Maximální (včetně) = 1 440 minut.
-- **Časový limit relace webové aplikace** – Pokud je tento přepínač nastavený **absolutní**, že uživatel musí k ověření znovu po době určené **webové aplikace životnost relace (minuty)** uplyne. Pokud tento přepínač nastavený **Hromadná** (výchozí nastavení), uživatel zůstane přihlášený, za předpokladu, uživatel je neustále aktivní ve webové aplikaci.
-- **Konfigurace jednotného přihlašování** Pokud máte více aplikacemi a toky uživatelů ve vašem tenantovi B2C, můžete spravovat uživatelské interakce mezi nimi pomocí **Konfigurace jednotného přihlašování** vlastnost. Vlastnost můžete nastavit na jedno z následujících nastavení:
-    - **Tenant** – toto nastavení je výchozí nastavení. Použití toto nastavení umožňuje více aplikací a uživatel toků ve vašem tenantovi B2C sdílet stejné uživatelské relaci. Například Jakmile se uživatel přihlásí do aplikace, uživatel může také bezproblémově přihlášení do jiného jeden, farmacie Contoso při přístupu k jeho.
-    - **Aplikace** – toto nastavení umožňuje udržovat relaci uživatele výhradně pro aplikaci, nezávisle na jiných aplikací. Například pokud chcete uživateli umožní přihlásit k farmacie Contoso (pomocí stejných přihlašovacích údajů), i když už je uživatel přihlášený do nákupního Contoso, jiná aplikace na stejném B2C tenanta. 
-    - **Zásady** – toto nastavení umožňuje udržovat relaci uživatele výhradně pro tok uživatele, nezávisle na aplikace, které ji používají. Například pokud má uživatel již přihlášení a dokončení kroku více faktoru ověřování (MFA), uživatel může dostat přístup k různým částem vyšší zabezpečení více aplikací tak dlouho, dokud platnost pasu nevyprší relace vázané na tok uživatele.
-    - **Zakázané** – toto nastavení přinutí spustit prostřednictvím toku celé uživatelské na každé provedení zásad.
+    - Maximum (včetně) = 1440 minut.
+- **Časový limit relace webové aplikace** – Pokud je tento přepínač nastavený na **absolutní**, uživatel se po uplynutí časového intervalu zadaného v době **Trvání relace webové aplikace (minuty)** bude muset znovu ověřit. Pokud je tento přepínač nastavený na **vracení** (výchozí nastavení), zůstane uživatel přihlášený, dokud bude uživatel ve vaší webové aplikaci neustále aktivní.
+- **Konfigurace jednotného přihlašování** Pokud máte ve svém tenantovi B2C více aplikací a toků uživatelů, můžete pomocí vlastnosti **Konfigurace jednotného přihlašování** spravovat interakce uživatelů napříč nimi. Vlastnost můžete nastavit na jedno z následujících nastavení:
+    - **Tenant** – toto nastavení je výchozí. Pomocí tohoto nastavení může více aplikací a uživatelských toků v tenantovi B2C sdílet stejnou relaci uživatele. Když se například uživatel přihlásí do aplikace, může se při přístupu uživatele bez problémů přihlásit k jiné společnosti Contoso farmacie.
+    - **Aplikace** – toto nastavení umožňuje udržovat uživatelskou relaci exkluzivně pro aplikaci, nezávisle na jiných aplikacích. Například pokud chcete, aby se uživatel přihlásil do společnosti Contoso Farmaci (se stejnými přihlašovacími údaji), i když je uživatel již přihlášen k nákupu společnosti Contoso, jiná aplikace ve stejném tenantovi B2C.
+    - **Zásady** – toto nastavení umožňuje udržovat relaci uživatele výhradně pro uživatelský tok, a to nezávisle na aplikacích, které ji používají. Pokud se například uživatel už přihlásil a dokončil krok vícefaktorového ověřování (MFA), může se uživateli udělit přístup k několika částem aplikace s vyšším zabezpečením, pokud relace vázaná na tok uživatele nevyprší.
+    - **Disabled** – toto nastavení vynutí, aby uživatel při každém spuštění zásady spouštěl celý tok uživatele.
 
-Tyto případy použití jsou povolené použití těchto vlastností:
+Následující případy použití jsou povolené pomocí těchto vlastností:
 
-- Splnění požadavků na váš obor zabezpečení a dodržování předpisů tím, že nastavíte relace webové aplikace životnosti.
-- Vynutit ověřování po stanovené časové období, během interakce uživatele s vysokou úrovní zabezpečení součást webové aplikace. 
+- Splnění požadavků na zabezpečení a dodržování předpisů v oboru nastavením příslušných životností relací webových aplikací.
+- Vynutí ověřování po nastaveném časovém období během interakce uživatele s vysokou zabezpečením části vaší webové aplikace.
 
-## <a name="configure-the-properties"></a>Konfigurovat vlastnosti
+## <a name="configure-the-properties"></a>Konfigurace vlastností
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Ujistěte se, že používáte adresáře, který obsahuje vašeho tenanta Azure AD B2C kliknutím **filtr adresářů a předplatných** v horní nabídce a výběrem adresáře, který obsahuje vašeho tenanta Azure AD B2C.
-3. Zvolte **všechny služby** v horním levém horním rohu webu Azure portal a poté vyhledejte a vyberte **Azure AD B2C**.
+2. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD B2C kliknutím na **Filtr adresář a odběr** v horní nabídce a výběrem adresáře, který obsahuje klienta Azure AD B2C.
+3. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
 4. Vyberte **toky uživatelů (zásady)** .
-5. Otevřete tok uživatele, který jste předtím vytvořili. 
+5. Otevřete uživatelský tok, který jste vytvořili dříve.
 6. Vyberte **vlastnosti**.
-7. Konfigurace **webové aplikace životnost relace (minuty)** , **časový limit relace webové aplikace**, **Konfigurace jednotného přihlašování**, a **vyžadovat Token ID v požadavcích na odhlášení**  podle potřeby.
+7. Nakonfigurujte **dobu života relace webové aplikace (minuty)** , **časový limit relace webové aplikace**, **konfiguraci jednotného přihlašování**a **v případě potřeby vyžadovat token ID v žádostech o odhlášení** .
 
-    ![Konfigurace chování relace](./media/session-behavior/session-behavior.png)
-    
+    ![Nastavení vlastností chování relace v Azure Portal](./media/session-behavior/session-behavior.png)
+
 8. Klikněte na **Uložit**.
-
-
-

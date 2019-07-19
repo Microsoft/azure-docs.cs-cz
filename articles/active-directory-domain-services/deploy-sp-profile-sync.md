@@ -1,6 +1,6 @@
 ---
-title: 'Azure Active Directory Domain Services: Povolení podpory pro službu SharePoint uživatelský profil | Dokumentace Microsoftu'
-description: Konfigurace spravovaných domén Azure Active Directory Domain Services pro podporu synchronizace profil pro SharePoint Server
+title: 'Azure Active Directory Domain Services: Povolit službu profilů uživatelů služby SharePoint | Microsoft Docs'
+description: Konfigurace Azure Active Directory Domain Services spravovaných domén pro podporu synchronizace profilů pro SharePointový Server
 services: active-directory-ds
 documentationcenter: ''
 author: iainfoulds
@@ -15,40 +15,40 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: iainfou
-ms.openlocfilehash: 4293052f19ad883c9df7f177456d55c0997072e1
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 4a9ee05b37a69927d70269dccef2b74a2c251722
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67473495"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234101"
 ---
-# <a name="configure-a-managed-domain-to-support-profile-synchronization-for-sharepoint-server"></a>Nakonfigurujte spravované domény pro podporu synchronizace profil pro SharePoint Server
-Server služby SharePoint obsahuje služba profilu uživatele, který je používán k synchronizaci profilu uživatele. Nastavení služby profilů uživatelů, příslušná oprávnění muset být udělen v doméně služby Active Directory. Další informace najdete v tématu [Active Directory Domain Services oprávnění k synchronizaci profilu v SharePoint serveru 2013](https://technet.microsoft.com/library/hh296982.aspx).
+# <a name="configure-a-managed-domain-to-support-profile-synchronization-for-sharepoint-server"></a>Konfigurace spravované domény pro podporu synchronizace profilů pro SharePoint Server
+SharePoint Server obsahuje službu profilů uživatelů, která se používá pro synchronizaci profilů uživatelů. Chcete-li nastavit službu profilů uživatelů, je nutné udělit příslušná oprávnění v doméně služby Active Directory. Další informace najdete v tématu [udělení oprávnění Active Directory Domain Services pro synchronizaci profilů v sharepointovém serveru 2013](https://technet.microsoft.com/library/hh296982.aspx).
 
-Tento článek vysvětluje, jak nakonfigurovat spravované domény služby Azure AD Domain Services pro nasazení služby synchronizace profilu uživatele serveru SharePoint.
+Tento článek vysvětluje, jak můžete nakonfigurovat Azure AD Domain Services spravované domény pro nasazení služby synchronizace profilů uživatelů serveru SharePoint Server.
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
-## <a name="the-aad-dc-service-accounts-group"></a>Skupina účty AAD DC služby
-Skupina zabezpečení s názvem "**účty služby AAD DC**" je k dispozici v rámci 'Uživatele' organizační jednotky ve vaší spravované doméně. Zobrazí se v této skupině **Active Directory Users and Computers** modul snap-in konzoly MMC ve vaší spravované doméně.
+## <a name="the-aad-dc-service-accounts-group"></a>Skupina účty služby AAD DC
+Skupina zabezpečení s názvem**účty služby AAD DC**je k dispozici v rámci organizační jednotky uživatelů ve spravované doméně. Tuto skupinu můžete zobrazit ve spravované doméně v modulu snap-in **Uživatelé služby Active Directory a počítače** MMC.
 
-![Skupiny zabezpečení účtů služby AAD DC](./media/active-directory-domain-services-admin-guide/aad-dc-service-accounts.png)
+![Skupina zabezpečení účty služby AAD DC](./media/active-directory-domain-services-admin-guide/aad-dc-service-accounts.png)
 
-Členové této skupiny zabezpečení jsou delegovanými oprávněními následující:
-- Replikace změn adresáře oprávnění na kořenovým položkám DSE spravované domény.
-- Replikace změn adresáře oprávnění v názvovém kontextu konfigurace (cn = configuration kontejneru) spravované domény.
+Členové této skupiny zabezpečení mají delegovaná tato oprávnění:
+- Oprávnění replikovat změny adresáře u kořenového DSE spravované domény.
+- Oprávnění replikovat změny adresáře pro názvový kontext konfigurace (CN = Container Configuration) spravované domény.
 
-Tato skupina zabezpečení je také členem předdefinované skupiny **Pre-Windows 2000 Compatible Access**.
+Tato skupina zabezpečení je zároveň členem předdefinované skupiny **Pre-Windows 2000 Compatible Access**.
 
-![Skupiny zabezpečení účtů služby AAD DC](./media/active-directory-domain-services-admin-guide/aad-dc-service-accounts-properties.png)
+![Skupina zabezpečení účty služby AAD DC](./media/active-directory-domain-services-admin-guide/aad-dc-service-accounts-properties.png)
 
 
-## <a name="enable-your-managed-domain-to-support-sharepoint-server-user-profile-sync"></a>Povolit spravované domény pro podporu synchronizace profilu uživatele serveru SharePoint
-Můžete přidat účet služby použitý k synchronizaci profilu uživatele Sharepointu k **účty služby AAD DC** skupiny. V důsledku toho synchronizační účet získá odpovídající oprávnění k replikaci změn do adresáře. Tento krok konfigurace umožňuje serveru SharePoint Server uživatelského profilu synchronizace fungovat správně.
+## <a name="enable-your-managed-domain-to-support-sharepoint-server-user-profile-sync"></a>Povolení, aby vaše spravovaná doména podporovala synchronizaci profilů uživatelů serveru SharePoint
+Účet služby, který se používá pro synchronizaci profilů uživatelů služby SharePoint, můžete přidat do skupiny **účty služby AAD DC** . V důsledku toho účet synchronizace získá odpovídající oprávnění k replikaci změn do adresáře. Tento krok konfigurace umožňuje správné fungování synchronizace profilů uživatelů serveru SharePoint.
 
 ![Účty služby AAD DC – přidání členů](./media/active-directory-domain-services-admin-guide/aad-dc-service-accounts-add-member.png)
 
 ![Účty služby AAD DC – přidání členů](./media/active-directory-domain-services-admin-guide/aad-dc-service-accounts-add-member2.png)
 
 ## <a name="related-content"></a>Související obsah
-* [Technické Reference - udělení Active Directory Domain Services oprávnění k synchronizaci profilu v SharePoint serveru 2013](https://technet.microsoft.com/library/hh296982.aspx)
+* [Technické reference – udělení oprávnění Active Directory Domain Services pro synchronizaci profilů v SharePointovém serveru 2013](https://technet.microsoft.com/library/hh296982.aspx)

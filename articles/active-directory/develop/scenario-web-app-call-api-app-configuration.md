@@ -1,6 +1,6 @@
 ---
-title: Webové aplikace, že volání webových rozhraní API (kód konfigurace) – platforma identit Microsoft
-description: Zjistěte, jak sestavit webovou aplikaci, že volání webových rozhraní API (konfigurace kódu aplikace)
+title: Webová aplikace, která volá webová rozhraní API (konfigurace kódu) – Microsoft Identity Platform
+description: Naučte se, jak vytvořit webovou aplikaci, která volá webová rozhraní API (konfigurace kódu aplikace).
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -11,40 +11,40 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c78a951258e3c279f96f44ceac469e4c38cf22c
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 15c12aebccf34957db8442034ebbcd6ac7c107e1
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67785560"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68276719"
 ---
-# <a name="web-app-that-calls-web-apis---code-configuration"></a>Webové aplikace, že volání webových rozhraní API – konfigurace kódu
+# <a name="web-app-that-calls-web-apis---code-configuration"></a>Webová aplikace, která volá konfiguraci rozhraní Web API – Code
 
-Jak je vidět [scénář webové aplikace přihlásí uživatele](scenario-web-app-sign-user-overview.md), že přihlášení uživatele se deleguje na Open ID connect (OIDC) middleware, který chcete hook nahoru v procesu OIDC. Způsob, jak na to se liší v závislosti na rozhraní jste použili (sem technologie ASP.NET a ASP.NET Core), ale nakonec vám budete přihlášení k odběru událostí OIDC middlewaru. Princip je, že:
+Jak je vidět ve [scénáři přihlášení k webové aplikaci](scenario-web-app-sign-user-overview.md), vzhledem k tom, že podepisování uživatele je delegováno na middleware Open ID Connect (OIDC), chcete se zapojit do procesu OIDC. Způsob, jak to udělat, se liší v závislosti na použitém rozhraní (tady ASP.NET a ASP.NET Core), ale na konci se přihlásíte k odběru událostí middleware OIDC. Princip je následující:
 
-- Dáme vám technologie ASP.NET nebo ASP.NET core požádat o autorizační kód. Prováděním tímto ASP.NET/ASP.NET core se mohl uživatel přihlásit a vyjádření souhlasu,
-- Budete se přihlásit k přijetí autorizační kód webové aplikace.
-- Při přijetí kódu ověřování budete používat knihovny MSAL k uplatnění kódu a použitím výsledných tokenů přístupu a aktualizovat úložiště tokeny v mezipaměti tokenů. Odtud mezipaměti umožňuje v ostatních částech aplikace tiše získávat další tokeny.
+- ASP.NET nebo ASP.NET Core si umožníte, aby si vyžádal autorizační kód. Tímto ASP.NET/ASP.NET Core umožní uživateli přihlásit se a vyjádřit souhlas,
+- Přihlásíte se k odběru žádosti o autorizační kód webovou aplikací.
+- Po přijetí kódu ověření použijete knihovny MSAL k uplatnění kódu a výsledných přístupových tokenů a k aktualizaci úložiště tokenů v mezipaměti tokenů. Odtud můžete mezipaměť použít v jiných částech aplikace k tichému získání dalších tokenů.
 
-## <a name="libraries-supporting-web-app-scenarios"></a>Knihovny podporuje scénáře pro webové aplikace
+## <a name="libraries-supporting-web-app-scenarios"></a>Knihovny podporující scénáře webových aplikací
 
-Knihovny podpůrné tok autorizačního kódu pro Web Apps jsou:
+Knihovny podporující tok autorizačního kódu pro Web Apps jsou:
 
 | Knihovna MSAL | Popis |
 |--------------|-------------|
-| ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Podporované platformy jsou platformy .NET Framework a .NET Core (UPW Ne, Xamarin.iOS a Xamarin.Android jako těchto platforem se používají k vytváření veřejné klientských aplikací) |
-| ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL.Python | Vývoj v průběhu – ve verzi public preview |
-| ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL.Java | Vývoj v průběhu – ve verzi public preview |
+| ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Podporované platformy jsou .NET Framework a .NET Core Platforms (ne UWP, Xamarin. iOS a Xamarin. Android, protože tyto platformy slouží k vytváření veřejných klientských aplikací). |
+| ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL.Python | Vývoj v průběhu verze Public Preview |
+| ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL. Kompilátor | Vývoj v průběhu verze Public Preview |
 
 ## <a name="aspnet-core-configuration"></a>Konfigurace ASP.NET Core
 
-V ASP.NET Core, stane věcí `Startup.cs` souboru. Budete chtít přihlásit k odběru `OnAuthorizationCodeReceived` otevřít ID připojení událostí a z této události, zavolejte MSAL. Metoda společnosti NET `AcquireTokenFromAuthorizationCode` které má vliv na ukládání v mezipaměti tokenů, přístupový token pro požadované obory a obnovovací token, který se použije na obnovení přístupového tokenu, když se nachází blízko vypršení platnosti nebo získat token jménem stejného uživatele , ale pro jiný prostředek.
+V ASP.NET Core věci se v `Startup.cs` souboru vyskytují. Budete chtít přihlašovat se k odběru `OnAuthorizationCodeReceived` události Open ID Connect a z této události volat MSAL. Metoda `AcquireTokenFromAuthorizationCode` netto, která má vliv na ukládání do mezipaměti tokenů, přístupového tokenu pro požadované obory a obnovovací token, který se použije k aktualizaci přístupového tokenu, když se blíží vypršení platnosti, nebo když se má získat token jménem stejného uživatele , ale pro jiný prostředek.
 
-Komentáře v kódu níže vám pomůže pochopit některé aspekty složité tkaní MSAL.NET a ASP.NET Core. Úplné podrobnosti jsou uvedeny v [přírůstkové výukový program, kapitoly webové aplikace ASP.NET Core aplikace 2](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-1-Call-MSGraph)
+Komentáře v následujícím kódu vám pomůžou pochopit některé z štychů tkaní MSAL.NET a ASP.NET Core. V [přírůstkovém kurzu ASP.NET Core webové aplikace](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-1-Call-MSGraph) jsou k dispozici úplné podrobnosti, kapitola 2
 
 ```CSharp
   services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme, options =>
@@ -88,7 +88,7 @@ Komentáře v kódu níže vám pomůže pochopit některé aspekty složité tk
    };
 ```
 
-V ASP.NET Core sestavení aplikace důvěrnému klientovi používá informace, které jsou v objektu HttpContext. Tato HttpContext ví o adresu URL pro webovou aplikaci a přihlášeného uživatele (v `ClaimsPrincipal`). Využívá také konfigurace ASP.NET Core, který má oddíl "Azure AD", a který je vázán na `_applicationOptions` datové struktury. A konečně aplikace musí udržovat token mezipamětí.
+V ASP.NET Core vytváření důvěrných klientských aplikací používá informace, které jsou v objektu HttpContext. Tato vlastnost HttpContext zná informace o adrese URL webové aplikace a přihlášeném uživateli (v `ClaimsPrincipal`nástroji). Používá také konfiguraci ASP.NET Core, která má oddíl "AzureAD" a který je svázán s `_applicationOptions` datovou strukturou. Nakonec aplikace potřebuje udržovat mezipaměti tokenů.
 
 ```CSharp
 /// <summary>
@@ -128,11 +128,11 @@ private IConfidentialClientApplication BuildConfidentialClientApplication(HttpCo
 }
 ```
 
-`AcquireTokenByAuthorizationCode` ve skutečnosti uplatňuje autorizační kód požadavku ASP.NET a získá tokeny, které jsou přidány do MSAL.NET mezipaměť tokenu uživatele. Odtud, jsou pak použita v kontrolery ASP.NET Core.
+`AcquireTokenByAuthorizationCode`skutečně uplatňuje autorizační kód požadovaný službou ASP.NET a získává tokeny, které se přidají do mezipaměti uživatelských tokenů MSAL.NET. Odtud jsou pak použiti v ASP.NET Core řadičích.
 
-## <a name="aspnet-configuration"></a>ASP.NET Configuration
+## <a name="aspnet-configuration"></a>Konfigurace ASP.NET
 
-Způsob, jak ASP.NET zpracovává věci se podobá, s tím rozdílem, že konfigurace OpenIdConnect a předplatné, které chcete `OnAuthorizationCodeReceived` události dojde v `App_Start\Startup.Auth.cs` souboru. Zjistíte, podobně jako koncepty, s tím rozdílem, že tady bude potřeba zadat v konfiguračním souboru, což je o něco menší RedirectUri robustní:
+Způsob, jakým ASP.NET zpracovává věci, je podobný, s tím rozdílem, že konfigurace OpenIdConnect `OnAuthorizationCodeReceived` a předplatného `App_Start\Startup.Auth.cs` události se v souboru nachází. Najdete tu podobné koncepty, s tím rozdílem, že budete muset zadat RedirectUri v konfiguračním souboru, což je trochu méně robustní:
 
 ```CSharp
 private void ConfigureAuth(IAppBuilder app)
@@ -180,18 +180,21 @@ private async Task OnAuthorizationCodeReceived(AuthorizationCodeReceivedNotifica
 }
 ```
 
-### <a name="msalnet-token-cache-for-a-aspnet-core-web-app"></a>MSAL.NET Token mezipaměti pro aplikace technologie ASP.NET (jader)
+Místo toho, aby klientská aplikace tajných kódů klienta mohla také prokázat svoji identitu pomocí klientského certifikátu nebo kontrolního výrazu klienta.
+Použití kontrolních výrazů klienta je pokročilý scénář, podrobně popisuje [kontrolní výrazy klienta](msal-net-client-assertions.md) .
 
-Webové aplikace (nebo webové rozhraní API jak fakt), mezipaměť tokenu implementaci se liší od implementace mezipaměť tokenu aplikací klasické pracovní plochy (které jsou často [souborovému](scenario-desktop-acquire-token.md#file-based-token-cache). Může použít ASP.NET/ASP.NET základní relace nebo mezipaměti redis cache, nebo databáze nebo dokonce i úložiště objektů Blob v Azure. V kódu je fragment kódu nad touto objekt `EnablePersistence(HttpContext, clientApp.UserTokenCache, clientApp.AppTokenCache);` volání metody, která vytvoří vazbu služby cache service. Podrobnosti o co se stane, zde je mimo rámec této příručky scénář, ale odkazy jsou uvedeny níže.
+### <a name="msalnet-token-cache-for-a-aspnet-core-web-app"></a>Mezipaměť tokenu MSAL.NET pro webovou aplikaci ASP.NET (jádro)
+
+V části Web Apps (nebo webová rozhraní API ve skutečnosti) se implementace mezipaměti tokenů liší od implementace mezipaměti tokenů desktopových aplikací (které jsou často [založené na souborech](scenario-desktop-acquire-token.md#file-based-token-cache)). Může používat relaci ASP.NET/ASP.NET Core, mezipaměť Redis, databázi nebo úložiště objektů BLOB v Azure. Ve fragmentu kódu výše se jedná o objekt `EnablePersistence(HttpContext, clientApp.UserTokenCache, clientApp.AppTokenCache);` volání metody, které váže službu cache Service. Podrobnosti o tom, co se stane, je nad rámec této příručky scénáře, ale odkazy jsou uvedené níže.
 
 > [!IMPORTANT]
-> Velmi důležité si uvědomit, je, že pro webové aplikace a webová rozhraní API, měla by existovat jeden token mezipaměti na uživatele (v rámci účtu). Potřebujete k serializaci mezipamětí tokenů pro jednotlivé účty.
+> Velmi důležitou věcí k realizaci je to, že pro webové aplikace a webová rozhraní API by měla existovat jedna mezipaměť tokenů na uživatele (za každý účet). Je nutné serializovat mezipaměť tokenů pro každý účet.
 
-Příklady toho, jak použít token mezipaměti pro webové aplikace a webová rozhraní API jsou k dispozici v [kurz aplikací ASP.NET Core Web](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial) ve fázi [mezipaměť tokenu 2-2](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-2-TokenCache). Implementace máte najdete v následující složce [TokenCacheProviders](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Web/TokenCacheProviders) v [microsoft ověřování extensions pro dotnet](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet) knihovny (v [ Microsoft.Identity.Client.Extensions.Web](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Web) složky.
+Příklady použití mezipamětí tokenů pro webové aplikace a webová rozhraní API jsou k dispozici v [kurzu ASP.NET Core webové aplikace](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial) v [mezipaměti tokenu fáze 2-2](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-2-TokenCache). U implementací se podívejte na následující složku [TokenCacheProviders](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Web/TokenCacheProviders) v knihovně [Microsoft-Authentication-for-dotnet](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet) (ve složce [Microsoft. identity. Client. Extensions. Web](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Web) .
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto okamžiku Jakmile se uživatel přihlásí token je uložen v tokenu mezipaměti. Podívejme se, jak se pak používají v jiných částech webové aplikace.
+V tomto okamžiku, když se uživatel přihlásí k tokenu, je uložen v mezipaměti tokenů. Pojďme se podívat, jak se pak používá v jiných částech webové aplikace.
 
 > [!div class="nextstepaction"]
-> [Přihlaste se do webové aplikace](scenario-web-app-call-api-sign-in.md)
+> [Přihlaste se k webové aplikaci.](scenario-web-app-call-api-sign-in.md)

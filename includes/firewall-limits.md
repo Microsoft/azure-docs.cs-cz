@@ -5,22 +5,23 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: include
-ms.date: 5/3/2019
+ms.date: 7/16/2019
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: 8709d4d903bd31ff94d04ec61e226857e4190407
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: a42284765a46f4a000dc5b7fcf2867ef17d69570
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175382"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68229328"
 ---
 | Resource | Výchozí omezení |
 | --- | --- |
-| Propustnost dat |30 Gbps<sup>1</sup> |
-|Pravidla|10 000, všechna pravidla kombinovat typy.|
+| Propustnost dat |30 GB/s<sup>1</sup> |
+|Pravidla|10 000 všechny typy pravidel jsou kombinované.|
 |Minimální velikost AzureFirewallSubnet |/26|
-|Rozsah portů v pravidlech sítě a aplikace|0-64,000. Práce se toto omezení zmírnit.|
-|Směrovací tabulky|Ve výchozím nastavení, má AzureFirewallSubnet trasy 0.0.0.0/0 nastavená na hodnotu NextHopType **Internet**.<br><br>Azure brány Firewall musí mít přímé připojení k Internetu. Pokud vaše AzureFirewallSubnet učí výchozí trasu k vaší místní síti přes protokol BGP, je nutné to přepsat s UDR 0.0.0.0/0 s **NextHopType** hodnota nastavená na **Internet** udržovat s přímým přístupem Připojení k Internetu. Ve výchozím nastavení brána Firewall služby Azure nepodporuje vynuceného tunelování k místní síti.<br><br>Však vyžaduje-li vaše konfigurace vynuceného tunelování k místní síti, Microsoft bude podporovat v případ od případu. Takže si můžete přečíst váš případ, obraťte se na podporu. Pokud přijat, vytvoříme seznamu povolených IP adres vaše předplatné a ujistěte se, že se zachová připojení k Internetu vyžaduje bránu firewall.|
+|Rozsah portů v pravidlech sítě a aplikace|0 – 64000. Práce probíhá s cílem zmírnit toto omezení.|
+|Veřejné IP adresy|100 maximum|
+|Směrovací tabulka|Ve výchozím nastavení má AzureFirewallSubnet trasu 0.0.0.0/0 s hodnotou typem nastavenou na **Internet**.<br><br>Azure Firewall musí mít přímé připojení k Internetu. Pokud vaše AzureFirewallSubnet zjišťuje výchozí trasu k místní síti přes protokol BGP, musíte přepsat to s hodnotou 0.0.0.0/0 UDR s hodnotou **typem** nastavenou jako **Internet** pro zachování přímého připojení k Internetu. Ve výchozím nastavení Azure Firewall nepodporuje vynucené tunelování v místní síti.<br><br>Pokud však vaše konfigurace vyžaduje vynucené tunelování v místní síti, společnost Microsoft je bude podporovat na základě případu. Obraťte se na podporu, abychom mohli zkontrolovat váš případ. V případě přijetí umožníme vašemu předplatnému a zajistíte, aby bylo zachováno požadované připojení k Internetu z brány firewall.|
 
-<sup>1</sup>Pokud potřebujete tyto limity zvýšit, obraťte se na podporu Azure.
+<sup>1</sup> Pokud potřebujete tato omezení zvýšit, obraťte se na podporu Azure.

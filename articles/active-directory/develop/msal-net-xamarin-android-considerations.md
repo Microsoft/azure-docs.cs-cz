@@ -1,6 +1,6 @@
 ---
-title: Důležité informace o Xamarin Android (knihovna Microsoft Authentication Library pro .NET) | Azure
-description: Další informace o konkrétní aspekty při používání Xamarin Android s Microsoft Authentication Library pro .NET (MSAL.NET).
+title: Předpoklady pro Xamarin Android (Microsoft Authentication Library pro .NET) | Azure
+description: Přečtěte si o konkrétních doporučeních pro použití Xamarin Androidu s knihovnou Microsoft Authentication Library pro .NET (MSAL.NET).
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
@@ -17,30 +17,48 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 357c83cfd0ae3fed8b13419e72f50fcb90c04186
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: ff55853c859008690548b161451a24941a597d3a
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67550656"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277900"
 ---
-# <a name="xamarin-android-specific-considerations-with-msalnet"></a>Důležité informace specifické pro Xamarin Android pomocí MSAL.NET
-Tento článek popisuje konkrétní aspekty při používání Xamarin Android s Microsoft Authentication Library pro .NET (MSAL.NET).
+# <a name="xamarin-android-specific-considerations-with-msalnet"></a>Doporučení pro Xamarin Android týkající se MSAL.NET
+Tento článek popisuje konkrétní informace týkající se použití Xamarin Androidu s knihovnou Microsoft Authentication Library pro .NET (MSAL.NET).
 
-Tento článek je určený pro MSAL.NET 3.x. Pokud vás zajímají MSAL.NET 2.x, naleznete v tématu [specifika Xamarin Android v MSAL.NET 2.x](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Xamarin-Android-specifics-2x).
+## <a name="set-the-parent-activity"></a>Nastavení nadřazené aktivity
 
-## <a name="set-the-parent-activity"></a>Nastavte Nadřazená aktivita
-
-V Xamarin.Android je nutné nastavit Nadřazená aktivita tak, že token, který získá zpět po interakce se stalo.
+V Xamarin. Android je nutné nastavit nadřazenou aktivitu tak, aby se token znovu vrátil, jakmile k interakci dojde.
 
 ```csharp
 var authResult = AcquireTokenInteractive(scopes)
  .WithParentActivityOrWindow(parentActivity)
  .ExecuteAsync();
 ```
+Můžete ji také nastavit na úrovni PublicClientApplication (v MSAL 4.2 +) prostřednictvím zpětného volání.
 
-## <a name="ensuring-control-goes-back-to-msal-once-the-interactive-portion-of-the-authentication-flow-ends"></a>Zajištění ovládací prvek se vrátí do MSAL jednou interaktivní spotřebovanou část končí tok ověřování
-V systému Android, je nutné přepsat `OnActivityResult` metodu `Activity` a volání metody SetAuthenticationContinuationEventArgs AuthenticationContinuationHelper MSAL třídy.
+```CSharp
+// Requires MSAL.NET 4.2 or above
+var pca = PublicClientApplicationBuilder
+  .Create("<your-client-id-here>")
+  .WithParentActivityOrWindow(() => parentActivity)
+  .Build();
+```
+
+Doporučením je [použít CurrentActivityPlugin.](https://github.com/jamesmontemagno/CurrentActivityPlugin)  Váš kód tvůrce PublicClientApplication by pak vypadal takto:
+
+```CSharp
+// Requires MSAL.NET 4.2 or above
+var pca = PublicClientApplicationBuilder
+  .Create("<your-client-id-here>")
+  .WithParentActivityOrWindow(() => CrossCurrentActivity.Current)
+  .Build();
+```
+
+
+## <a name="ensuring-control-goes-back-to-msal-once-the-interactive-portion-of-the-authentication-flow-ends"></a>Zajistěte, aby se řízení vrátilo zpátky na MSAL, jakmile skončí interaktivní část toku ověřování.
+V systému Android je nutné přepsat `OnActivityResult` metodu `Activity` a voláním metody SetAuthenticationContinuationEventArgs třídy MSAL AuthenticationContinuationHelper.
 
 ```csharp
 protected override void OnActivityResult(int requestCode, 
@@ -53,10 +71,10 @@ protected override void OnActivityResult(int requestCode,
 }
 
 ```
-Tento řádek se zajistí, že ovládací prvek se vrátí do MSAL po interaktivní spotřebovanou část tok ověřování skončila.
+Tento řádek zajistí, že se ovládací prvek vrátí zpět na MSAL, jakmile se dokončí interaktivní část toku ověřování.
 
-## <a name="update-the-android-manifest"></a>Aktualizace manifestu Androidu
-`AndroidManifest.xml` By měl obsahovat následující hodnoty:
+## <a name="update-the-android-manifest"></a>Aktualizace manifestu pro Android
+`AndroidManifest.xml` Měl by obsahovat následující hodnoty:
 ```csharp
 <activity android:name="microsoft.identity.client.BrowserTabActivity">
     <intent-filter>
@@ -68,9 +86,9 @@ Tento řádek se zajistí, že ovládací prvek se vrátí do MSAL po interaktiv
 </activity>
 ```
 
-## <a name="use-the-embedded-web-view-optional"></a>Pomocí integrovaného webového zobrazení (volitelné)
+## <a name="use-the-embedded-web-view-optional"></a>Použít vložené webové zobrazení (volitelné)
 
-Ve výchozím nastavení používá MSAL.NET webový prohlížeč systému, který umožňuje získat jednotné přihlašování u webových aplikací a jinými aplikacemi. V některých výjimečných případech můžete chtít určit, že chcete použít vložený webové zobrazení. Další informace najdete v tématu [MSAL.NET používá webový prohlížeč](msal-net-web-browsers.md) a [prohlížeč systému Android](msal-net-system-browser-android-considerations.md).
+Ve výchozím nastavení MSAL.NET používá webový prohlížeč systému, který umožňuje získat jednotné přihlašování s webovými aplikacemi a dalšími aplikacemi. V některých vzácných případech může být vhodné určit, že chcete použít vložené webové zobrazení. Další informace najdete v tématu [MSAL.NET používá webový prohlížeč](msal-net-web-browsers.md) a [prohlížeč systému Android](msal-net-system-browser-android-considerations.md).
 
 ```csharp
 bool useEmbeddedWebView = !app.IsSystemWebViewAvailable;
@@ -82,22 +100,22 @@ var authResult = AcquireTokenInteractive(scopes)
 ```
 
 ## <a name="troubleshooting"></a>Řešení potíží
-Pokud vytvoříte novou aplikaci pro Xamarin.Forms a přidejte odkaz na balíček MSAL.Net NuGet, to budou prostě fungovat.
-Pokud chcete provést upgrade existující aplikaci Xamarin.Forms MSAL.NET 1.1.2 ve verzi preview nebo novější můžete setkat s problémy se sestavením.
+Pokud vytvoříte novou aplikaci Xamarin. Forms a přidáte do ní odkaz na balíček NuGet MSAL.Net, bude to jenom fungovat.
+Nicméně pokud chcete upgradovat existující aplikaci Xamarin. Forms na MSAL.NET Preview 1.1.2 nebo novější, může dojít k problémům se sestavením.
 
-Při řešení těchto problémů, měli byste provést tyto akce:
-- Aktualizovat existující balíček MSAL.NET NuGet MSAL.NET ve verzi Preview 1.1.2 nebo novější
-- Zkontrolujte, že Xamarin.Forms automaticky aktualizuje na verzi 2.5.0.122203 (Pokud ne, aktualizujte tuto verzi)
-- Zkontrolujte, že Xamarin.Android.Support.v4 automaticky aktualizuje na verzi 25.4.0.2 (Pokud ne, aktualizujte tuto verzi)
-- Všechny balíčky Xamarin.Android.Support by měl být cílení na verzi 25.4.0.2
-- Vyčistit/opětovné sestavení
-- Zkuste nastavení maximální počet paralelních projektu sestavení na hodnotu 1 v sadě Visual Studio (Možnosti -> projekty a řešení -> sestavení a spuštění -> maximální počet paralelních projekty sestavení)
-- Případně Pokud sestavujete z příkazového řádku, zkuste /m ze svých rukou pokud ho používáte.
+Chcete-li tyto problémy vyřešit, měli byste:
+- Aktualizace existujícího balíčku NuGet MSAL.NET na verzi MSAL.NET verze 1.1.2 nebo novější
+- Ověřte, že se Xamarin. Forms automaticky aktualizovala na verzi 2.5.0.122203 (Pokud ne, aktualizujte na tuto verzi).
+- Ověřte, jestli se Xamarin. Android. support. v4 automaticky aktualizoval na verzi 25.4.0.2 (Pokud ne, aktualizujte na tuto verzi).
+- Všechny balíčky Xamarin. Android. support by měly být cíleny na verzi 25.4.0.2
+- Vyčistit/znovu sestavit
+- Zkuste nastavit maximální paralelní projekt sestavení na 1 v aplikaci Visual Studio (Možnosti-> projekty a řešení – > sestavování a spouštění-> maximální počet paralelně sestavovaných projektů)
+- Případně, pokud vytváříte z příkazového řádku, zkuste z příkazu odebrat/m, pokud ho používáte.
 
 
-### <a name="error-the-name-authenticationcontinuationhelper-does-not-exist-in-the-current-context"></a>Chyba: Název 'AuthenticationContinuationHelper' v aktuálním kontextu neexistuje.
+### <a name="error-the-name-authenticationcontinuationhelper-does-not-exist-in-the-current-context"></a>Chyba: Název ' AuthenticationContinuationHelper ' v aktuálním kontextu neexistuje.
 
-To je pravděpodobně protože Visual Studio neaktualizovala správně soubor Android.csproj*. Někdy  **\<cestu k nápovědě >** filepath obsahuje nesprávně netstandard13 místo **monoandroid90**.
+To je pravděpodobně proto, že Visual Studio neaktualizovalo správně soubor Android. csproj *. **V\<některých případech cestu >** FilePath nesprávně obsahuje netstandard13 namísto **monoandroid90**.
 
 ```xml
 <Reference Include="Microsoft.Identity.Client, Version=3.0.4.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae,
@@ -108,8 +126,8 @@ To je pravděpodobně protože Visual Studio neaktualizovala správně soubor An
 
 ## <a name="next-steps"></a>Další postup
 
-Další podrobnosti a ukázky jsou k dispozici v [Android konkrétní aspekty](https://github.com/azure-samples/active-directory-xamarin-native-v2#android-specific-considerations) odstavec souboru readme.md v následující ukázce:
+Další podrobnosti a ukázky najdete v článku o [specifických informacích pro Android](https://github.com/azure-samples/active-directory-xamarin-native-v2#android-specific-considerations) v následujícím souboru Readme.MD ukázky:
 
 | Ukázka | Platforma | Popis |
 | ------ | -------- | ----------- |
-|[https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) | Xamarin iOS, Android, UWP | Jednoduchá aplikace Xamarin Forms která ukazuje použití MSAL k ověřování MSA a Azure AD prostřednictvím koncového bodu v2.0 AADD a přístup k Microsoft Graphu pomocí výsledný token. <br>![Topologie](media/msal-net-xamarin-android-considerations/topology.png) |
+|[https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) | Xamarin iOS, Android, UWP | Jednoduchá aplikace Xamarin Forms předvádí, jak pomocí MSAL ověřovat MSA a Azure AD prostřednictvím koncového bodu AADD v 2.0 a přistupovat k Microsoft Graph s výsledným tokenem. <br>![Topologie](media/msal-net-xamarin-android-considerations/topology.png) |

@@ -3,19 +3,19 @@ title: Rychlý start Azure – spuštění úlohy služby Batch – Python
 description: Úlohu a úkoly služby Batch lze rychle spustit pomocí klientské knihovny Batch Python.
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.service: batch
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/27/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 5788f6e699833c606b1bdeaf63a9aac13da2a0e9
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: f7170fbb4a258e9d8290ad9d207028087b22003a
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67513274"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68322320"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>Rychlý start: Spuštění první úlohy služby Batch pomocí rozhraní Python API
 
@@ -33,7 +33,7 @@ V rámci tohoto rychlého startu spustíte úlohu služby Azure Batch z aplikace
 
 * Účet Azure Batch a propojený účet Azure Storage. Informace o vytvoření těchto účtů prostřednictvím [webu Azure Portal](quick-create-portal.md) nebo [rozhraní Azure CLI](quick-create-cli.md) najdete v rychlém startu služby Batch. 
 
-## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
@@ -108,7 +108,7 @@ Když aplikaci spouštíte v její výchozí konfiguraci, je obvyklá doba prov�
 Aplikace Python v tomto rychlém startu provádí tyto kroky:
 
 * Odešle tři malé textové soubory do kontejneru objektů blob ve vašem účtu služby Azure Storage. Tyto soubory představují vstup pro zpracování úlohami služby Batch.
-* Vytvoří fond dvou výpočetních uzlů se systémem Ubuntu 18.04 LTS.
+* Vytvoří fond dvou výpočetních uzlů se systémem Ubuntu 18,04 LTS.
 * Vytvoří úlohu a tři úkoly ke spuštění v uzlech. Každý úkol zpracovává pomocí příkazového řádku prostředí Bash jeden vstupní soubor.
 * Zobrazí soubory vrácené úkoly.
 
@@ -149,7 +149,7 @@ batch_client = batch.BatchServiceClient(
 
 ### <a name="create-a-pool-of-compute-nodes"></a>Vytvoření fondu výpočetních uzlů
 
-K vytvoření fondu služby Batch aplikace používá třídu [PoolAddParameter](/python/api/azure.batch.models.pooladdparameter), která nastavuje počet uzlů, velikost virtuálních počítačů a konfiguraci fondu. Tady [VirtualMachineConfiguration](/python/api/azure.batch.models.virtualmachineconfiguration) určuje objekt [ImageReference](/python/api/azure.batch.models.imagereference) do image Ubuntu Server 18.04 LTS publikovaných na webu Azure Marketplace. Batch podporuje široké spektrum imagí Linuxu a Windows Serveru v Azure Marketplace, ale i vlastní image virtuálních počítačů.
+K vytvoření fondu služby Batch aplikace používá třídu [PoolAddParameter](/python/api/azure.batch.models.pooladdparameter), která nastavuje počet uzlů, velikost virtuálních počítačů a konfiguraci fondu. Zde je objekt [VirtualMachineConfiguration](/python/api/azure.batch.models.virtualmachineconfiguration) určující [element imagereference](/python/api/azure.batch.models.imagereference) pro obrázek Ubuntu serveru 18,04 LTS publikovaný v Azure Marketplace. Batch podporuje široké spektrum imagí Linuxu a Windows Serveru v Azure Marketplace, ale i vlastní image virtuálních počítačů.
 
 Počet uzlů (`_POOL_NODE_COUNT`) a velikost virtuálního počítače (`_POOL_VM_SIZE`) jsou definované konstanty. Ukázka ve výchozím nastavení vytvoří fond se 2 uzly velikosti *Standard_A1_v2*. Navržená velikost nabízí pro tento rychlý příklad dobrou rovnováhu mezi výkonem a náklady.
 

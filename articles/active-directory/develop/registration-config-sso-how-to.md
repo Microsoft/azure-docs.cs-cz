@@ -1,49 +1,50 @@
 ---
-title: Jak nakonfigurovat jednotné přihlašování | Dokumentace Microsoftu
-description: Jak nakonfigurovat jednotné přihlašování pro vlastní aplikace, vývoji a registraci v Azure AD.
+title: Konfigurace jednotného přihlašování aplikace | Microsoft Docs
+description: Jak nakonfigurovat jednotné přihlašování pro vlastní aplikaci, kterou vyvíjíte a zaregistrujete ve službě Azure AD.
 services: active-directory
 documentationcenter: ''
 author: rwike77
 manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
-ms.subservice: app-mgmt
+ms.subservice: develop
+ms.custom: aaddev
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/11/2018
+ms.date: 07/15/2019
 ms.author: ryanwi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d151d4d7f32c479f2cfb4d71a8ed667f42e03b49
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: fbc9f20903d65fbde161d26ed3e194e63d341ccb
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67465674"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68320954"
 ---
 # <a name="how-to-configure-single-sign-on-for-an-application"></a>Jak nakonfigurovat jednotné přihlašování pro aplikaci
 
-Povolení federovaného jednotného přihlašování (SSO) v aplikaci je automaticky povolen při federaci pro OpenID Connect, SAML 2.0 nebo WS-Fed prostřednictvím služby Azure AD. Pokud vaši koncoví uživatelé se museli přihlásit bez ohledu na již má existující relaci s Azure AD, je pravděpodobné, že vaše aplikace může být chybně nakonfigurovaná.
+Povolení federovaného jednotného přihlašování (SSO) ve vaší aplikaci se automaticky povolí při federování prostřednictvím služby Azure AD pro OpenID Connect, SAML 2,0 nebo WS. Pokud se koncoví uživatelé musí přihlašovat, i když už mají existující relaci se službou Azure AD, je možné, že vaše aplikace bude možná nesprávně nakonfigurovaná.
 
-* Pokud používáte knihovnu ADAL/MSAL, ujistěte se, že máte **PromptBehavior** nastavena na **automaticky** spíše než **vždy**.
+* Pokud používáte ADAL/MSAL, ujistěte se, že máte **PromptBehavior** nastavenou na **Automatické** místo **vždy**.
 
-* Pokud vytváříte mobilní aplikace, budete potřebovat další konfigurace, které umožňují zprostředkované nebo zprostředkované jednotné přihlašování.
+* Pokud vytváříte mobilní aplikaci, možná budete potřebovat další konfigurace, aby bylo možné povolit zprostředkované nebo nezprostředkované jednotné přihlašování.
 
-Pro Android, najdete v článku [povolení pro různé aplikace jednotné přihlašování v Androidu](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-android).<br>
+Informace pro Android najdete v tématu [povolení jednotného přihlašování mezi aplikacemi v Androidu](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-android).<br>
 
-Pro iOS, najdete v článku [povolení pro různé aplikace jednotné přihlašování v iOS](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-ios).
+Informace o iOS najdete [v tématu povolení jednotného přihlašování mezi aplikacemi v iOS](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-ios).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[Azure AD SSO](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)<br>
+[Jednotné přihlašování Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)<br>
 
-[Povolení křížové jednotného přihlašování aplikace v Androidu](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-android)<br>
+[Povolení jednotného přihlašování mezi aplikacemi v Androidu](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-android)<br>
 
-[Povolení pro různé aplikace jednotné přihlašování v iOS](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-ios)<br>
+[Povolení jednotného přihlašování mezi aplikacemi v iOS](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-ios)<br>
 
-[Integrace aplikací do Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)<br>
+[Integrace aplikací do AzureAD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)<br>
 
-[Videí k Azure AD v2.0 a vyjádření souhlasu konvergované aplikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)<br>
+[Souhlas a oprávnění pro sblížené aplikace AzureAD v 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)<br>
 
-[StackOverflow pro Azure AD](https://stackoverflow.com/questions/tagged/azure-active-directory)
+[AzureAD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

@@ -1,6 +1,6 @@
 ---
-title: Rychlý start pro konfiguraci aplikací Azure pomocí .NET Core | Dokumentace Microsoftu
-description: Rychlý start pro konfiguraci aplikací Azure pomocí aplikace .NET Core
+title: Rychlý Start pro konfiguraci aplikací Azure s .NET Core | Microsoft Docs
+description: Rychlý Start pro použití konfigurace aplikací Azure s aplikacemi .NET Core
 services: azure-app-configuration
 documentationcenter: ''
 author: yegu-ms
@@ -14,67 +14,62 @@ ms.tgt_pltfrm: .NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: c42066b3ac02264ee357bac7ed3fdd360e9d5d4a
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 99a42102b30c91b7f1bba06cfaae7662b408b784
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798419"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326570"
 ---
-# <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>Rychlý start: Vytvoření .NET Core aplikace s konfigurací aplikace
+# <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>Rychlý start: Vytvoření aplikace .NET Core s konfigurací aplikace
 
-Konfigurace aplikace pro Azure je služba spravované konfigurace v Azure. Můžete ho snadno ukládat a spravovat nastavení aplikace na jednom místě, který je oddělen od kódu. V tomto rychlém startu se dozvíte, jak tuto službu začlenit do aplikace konzoly .NET Core.
-
-Provést kroky v tomto rychlém startu můžete použít libovolný editor kódu. [Visual Studio Code](https://code.visualstudio.com/) skvělou možnost je k dispozici ve Windows, macOS a Linux platformy.
-
-![Běh aplikace rychlý start](./media/quickstarts/dotnet-core-app-run.png)
+V tomto rychlém startu zařadíte konfiguraci aplikací Azure do konzolové aplikace .NET Core, která umožňuje centralizaci úložiště a správy nastavení aplikace odděleně od vašeho kódu.
 
 ## <a name="prerequisites"></a>Požadavky
 
-To provedete v tomto rychlém startu, nainstalujete [.NET Core SDK](https://dotnet.microsoft.com/download).
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+- Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
+- [Sada .NET Core SDK](https://dotnet.microsoft.com/download)
 
 ## <a name="create-an-app-configuration-store"></a>Vytvoření úložiště konfigurace aplikace
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Vyberte **Průzkumník konfigurací** >  **+ vytvořit** přidáte následující páry klíč hodnota:
+6. Vyberte **Průzkumník** > konfigurace **+ vytvořit** a přidejte následující páry klíč-hodnota:
 
-    | Klíč | Hodnota |
+    | Klíč | Value |
     |---|---|
-    | TestApp:Settings:Message | Data z konfigurace aplikace Azure |
+    | TestApp: nastavení: zpráva | Data z konfigurace aplikace Azure |
 
-    Ponechte **popisek** a **typ obsahu** zatím prázdný.
+    V tuto chvíli ponechat **popisek** a **typ obsahu** prázdné.
 
 ## <a name="create-a-net-core-console-app"></a>Vytvoření konzolové aplikace .NET Core
 
-Můžete použít [rozhraní příkazového řádku .NET Core (CLI)](https://docs.microsoft.com/dotnet/core/tools/) k vytvoření nového projektu aplikace konzoly .NET Core. Výhodou použití rozhraní příkazového řádku .NET Core v sadě Visual Studio je, že je k dispozici ve Windows, macOS a Linux platformy.
+K vytvoření nového projektu konzolové aplikace .NET Core použijete [rozhraní příkazového řádku .NET Core (CLI)](https://docs.microsoft.com/dotnet/core/tools/) . Výhodou použití .NET Core CLI přes Visual Studio je to, že je k dispozici na platformách Windows, macOS a Linux.
 
 1. Vytvořte novou složku pro váš projekt.
 
-2. V nové složce spuštěním následujícího příkazu vytvořte nový projekt konzolové aplikace ASP.NET Core:
+2. V nové složce spusťte následující příkaz, který vytvoří nový projekt ASP.NET Core konzolové aplikace:
 
         dotnet new console
 
-## <a name="connect-to-an-app-configuration-store"></a>Připojit k úložišti konfigurace aplikace
+## <a name="connect-to-an-app-configuration-store"></a>Připojení k úložišti konfigurace aplikace
 
 1. Přidejte odkaz na `Microsoft.Azure.AppConfiguration.AspNetCore` balíček NuGet spuštěním následujícího příkazu:
 
         dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-009200001-7
 
-2. Spusťte následující příkaz k obnovení balíčků pro váš projekt:
+2. Spusťte následující příkaz pro obnovení balíčků pro váš projekt:
 
         dotnet restore
 
-3. Otevřít *Program.cs*a přidejte odkaz na poskytovatele konfigurace pro aplikace .NET Core.
+3. Otevřete *program.cs*a přidejte odkaz na poskytovatele konfigurace aplikace .NET Core.
 
     ```csharp
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     ```
 
-4. Aktualizace `Main` používat konfiguraci aplikací pomocí volání metody `builder.AddAzureAppConfiguration()` metody.
+4. Aktualizujte `builder.AddAzureAppConfiguration()` metodu pro použití konfigurace aplikace voláním metody. `Main`
 
     ```csharp
     static void Main(string[] args)
@@ -87,25 +82,25 @@ Můžete použít [rozhraní příkazového řádku .NET Core (CLI)](https://doc
     }
     ```
 
-## <a name="build-and-run-the-app-locally"></a>Sestavte a spusťte aplikaci místně
+## <a name="build-and-run-the-app-locally"></a>Místní sestavení a spuštění aplikace
 
-1. Nastavte proměnnou prostředí s názvem **ConnectionString**a nastavte ho na přístupový klíč k úložišti konfigurace aplikace. Pokud používáte Windows příkazového řádku, spusťte následující příkaz a restartujte příkazového řádku umožňující změna se projeví:
+1. Nastavte proměnnou prostředí s názvem **ConnectionString**a nastavte ji na přístupový klíč na úložiště konfigurace aplikace. Použijete-li příkazový řádek systému Windows, spusťte následující příkaz a restartujte příkazový řádek, aby se změna projevila:
 
         setx ConnectionString "connection-string-of-your-app-configuration-store"
 
-    Pokud používáte prostředí Windows PowerShell, spusťte následující příkaz:
+    Pokud používáte Windows PowerShell, spusťte následující příkaz:
 
         $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
 
-    Pokud používáte systému macOS nebo Linux, spusťte následující příkaz:
+    Pokud používáte macOS nebo Linux, spusťte následující příkaz:
 
         export ConnectionString='connection-string-of-your-app-configuration-store'
 
-2. Spusťte následující příkaz k sestavení aplikace konzoly:
+2. Spusťte následující příkaz, který sestaví konzolovou aplikaci:
 
         dotnet build
 
-3. Po úspěšném dokončení sestavení spusťte následující příkaz a spusťte aplikaci místně:
+3. Po úspěšném dokončení sestavení spusťte následující příkaz pro místní spuštění aplikace:
 
         dotnet run
 
@@ -115,7 +110,7 @@ Můžete použít [rozhraní příkazového řádku .NET Core (CLI)](https://doc
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili novým úložištěm konfigurace aplikace a použít s konzolovou aplikaci .NET Core prostřednictvím [poskytovatele konfigurace aplikace](https://go.microsoft.com/fwlink/?linkid=2074664). Další informace o tom, jak používat konfiguraci aplikací, pokračujte k dalšímu kurzu, který ukazuje ověření.
+V tomto rychlém startu jste vytvořili nové úložiště konfigurace aplikace a použili ho s konzolovou aplikací .NET Core přes [poskytovatele konfigurace aplikace](https://go.microsoft.com/fwlink/?linkid=2074664). Další informace o tom, jak používat konfiguraci aplikací, najdete v dalším kurzu, který předvádí ověřování.
 
 > [!div class="nextstepaction"]
-> [Integrace spravovaných identit](./howto-integrate-azure-managed-service-identity.md)
+> [Spravovaná integrace identit](./howto-integrate-azure-managed-service-identity.md)

@@ -1,116 +1,116 @@
 ---
-title: Aktualizovat pomocí funkce Logic Apps pro modely služby Azure Analysis Services | Dokumentace Microsoftu
-description: Zjistěte, jak kód asynchronní aktualizace s využitím Azure Logic Apps.
+title: Aktualizace pomocí Logic Apps pro Azure Analysis Services modely | Microsoft Docs
+description: Naučte se, jak kódovat asynchronní aktualizace pomocí Azure Logic Apps.
 author: chrislound
 manager: kfile
 ms.service: analysis-services
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: chlound
-ms.openlocfilehash: 6ffce339fe7b1a434c8f007b417ee81a42529dfc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2234a2c6cd42be45a2b2e7784c1dd5aec8839cb9
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66142519"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311740"
 ---
 # <a name="refresh-with-logic-apps"></a>Aktualizace pomocí Logic Apps
 
-Pomocí Logic Apps a volání REST, můžete provádět operace aktualizace automatizované data v tabulkové modely vaší analýzy Azure, včetně synchronizace repliky jen pro čtení pro horizontální navýšení kapacity dotazu.
+Pomocí Logic Apps a volání REST můžete provádět automatizované operace aktualizace dat ve vašich tabelárních modelech Azure Analysis, včetně synchronizace replik jen pro čtení pro škálování dotazů.
 
-Další informace o použití rozhraní REST API služby Azure Analysis Services najdete v tématu [asynchronní aktualizace pomocí REST API](analysis-services-async-refresh.md).
+Další informace o použití rozhraní REST API s Azure Analysis Services najdete v tématu [asynchronní aktualizace s REST API](analysis-services-async-refresh.md).
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Ověřování
 
-Všechna volání musí být ověřené na platný token Azure Active Directory (OAuth 2).  V příkladech v tomto článku budete používat k ověřování do služby Azure Analysis Services hlavní služby (SPN). Další informace najdete v tématu [vytvoření instančního objektu pomocí webu Azure portal](../active-directory/develop/howto-create-service-principal-portal.md).
+Všechna volání musí být ověřena pomocí platného tokenu Azure Active Directory (OAuth 2).  Příklady v tomto článku budou k ověření Azure Analysis Services použít instanční objekt (SPN). Další informace najdete v tématu [Vytvoření instančního objektu pomocí služby Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md).
 
 ## <a name="design-the-logic-app"></a>Návrh aplikace logiky
 
 > [!IMPORTANT]
-> Následující příklady předpokládají, že brána firewall služby Azure Analysis Services je zakázaná.  Pokud je povolená brána firewall, musí být veřejnou IP adresu iniciátoru žádost o seznam povolených adres v bráně firewall služby Azure Analysis Services. Další informace o IP aplikace logiky rozsahy v jedné oblasti, naleznete v tématu [omezení a konfigurační informace pro Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#firewall-configuration-ip-addresses).
+> V následujících příkladech se předpokládá, že je brána firewall Azure Analysis Services zakázaná.  Pokud je brána firewall povolená, musí být v bráně Azure Analysis Services firewall povolená veřejná IP adresa iniciátoru žádosti. Další informace o rozsahu IP adres aplikace logiky na oblast najdete v tématu [omezení a informace o konfiguraci pro Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#firewall-configuration-ip-addresses).
 
 ### <a name="prerequisites"></a>Požadavky
 
-#### <a name="create-a-service-principal-spn"></a>Vytvoření hlavního názvu služby (SPN)
+#### <a name="create-a-service-principal-spn"></a>Vytvoření instančního objektu (SPN)
 
-Další informace o vytvoření instančního objektu najdete v tématu [vytvoření instančního objektu pomocí webu Azure portal](../active-directory/develop/howto-create-service-principal-portal.md).
+Další informace o vytváření instančního objektu najdete v tématu [Vytvoření instančního objektu pomocí Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md).
 
-#### <a name="configure-permissions-in-azure-analysis-services"></a>Konfigurace oprávnění ve službě Azure Analysis Services
+#### <a name="configure-permissions-in-azure-analysis-services"></a>Konfigurace oprávnění v Azure Analysis Services
  
-Instanční objekt služby, které vytvoříte, musí mít oprávnění správce serveru na serveru. Další informace najdete v tématu [přidání hlavního názvu služby k roli správce serveru](analysis-services-addservprinc-admins.md).
+Objekt služby, který vytvoříte, musí mít na serveru oprávnění správce serveru. Další informace najdete v tématu [Přidání instančního objektu k roli správce serveru](analysis-services-addservprinc-admins.md).
 
 ### <a name="configure-the-logic-app"></a>Konfigurace aplikace logiky
 
-V tomto příkladu aplikace logiky slouží k aktivaci při přijetí požadavku HTTP. To vám umožní použít nástroj pro orchestraci, jako je například Azure Data Factory pro aktivaci modelu aktualizace služby Azure Analysis Services.
+V tomto příkladu je aplikace logiky navržena tak, aby se aktivovala při přijetí požadavku HTTP. Tím se povolí použití nástroje orchestrace, jako je například Azure Data Factory, k aktivaci Azure Analysis Services aktualizace modelu.
 
-Po vytvoření aplikace logiky:
+Jakmile vytvoříte aplikaci logiky:
 
-1. V návrháři aplikace logiky zvolte první akci jako **přijetí požadavku HTTP když**.
+1. V návrháři aplikace logiky vyberte první akci, jako **když se přijme požadavek HTTP**.
 
-   ![Přidat aktivitu protokolu HTTP přijatých](./media/analysis-services-async-refresh-logic-app/1.png)
+   ![Přidání aktivity přijaté protokolem HTTP](./media/analysis-services-async-refresh-logic-app/1.png)
 
-Po uložení aplikace logiky se tento krok naplní s adresou URL protokolu HTTP POST.
+Po uložení aplikace logiky se tento krok naplní adresou URL POST protokolu HTTP.
 
-2. Přidání nového kroku a vyhledejte **HTTP**.  
+2. Přidejte nový krok a vyhledejte **http**.  
 
-   ![Přidat aktivitu protokolu HTTP](./media/analysis-services-async-refresh-logic-app/9.png)
+   ![Přidat aktivitu HTTP](./media/analysis-services-async-refresh-logic-app/9.png)
 
-   ![Přidat aktivitu protokolu HTTP](./media/analysis-services-async-refresh-logic-app/10.png)
+   ![Přidat aktivitu HTTP](./media/analysis-services-async-refresh-logic-app/10.png)
 
-3. Vyberte **HTTP** přidáte tuto akci.
+3. Vyberte **http** a přidejte tuto akci.
 
-   ![Přidat aktivitu protokolu HTTP](./media/analysis-services-async-refresh-logic-app/2.png)
+   ![Přidat aktivitu HTTP](./media/analysis-services-async-refresh-logic-app/2.png)
 
-Nakonfigurujte aktivitu protokolu HTTP následujícím způsobem:
+Aktivitu HTTP nakonfigurujte následujícím způsobem:
 
-|Vlastnost  |Hodnota  |
+|Vlastnost  |Value  |
 |---------|---------|
 |**– Metoda**     |POST         |
-|**URI**     | https://*vaší oblasti server*/servers/*jako název serveru*/models/*název databáze*/ <br /> <br /> Například: https:\//westus.asazure.windows.net/servers/myserver/models/AdventureWorks/|
-|**Hlavičky**     |   Typ obsahu, application/json <br /> <br />  ![Hlavičky](./media/analysis-services-async-refresh-logic-app/6.png)    |
-|**Text**     |   Další informace o tvořící tělo požadavku najdete v tématu [asynchronní aktualizace pomocí REST API – příspěvek /refreshes](analysis-services-async-refresh.md#post-refreshes). |
-|**Ověřování**     |Služby Active Directory OAuth         |
-|**tenanta**     |Zadejte vaše ID Tenanta služby Azure Active Directory         |
-|**Cílová skupina**     |https://*.asazure.windows.net         |
-|**ID klienta**     |Zadejte vaše ClientID název instančního objektu         |
+|**IDENTIFIKÁTOR URI**     | https://*na server region*/Servers/*AAS název serveru*/Models/*název vaší databáze*/refreshes <br /> <br /> Příklad: https:\//westus.asazure.Windows.NET/Servers/MyServer/Models/AdventureWorks/refreshes|
+|**Záhlaví**     |   Content-Type, Application/JSON <br /> <br />  ![Hlavičky](./media/analysis-services-async-refresh-logic-app/6.png)    |
+|**Text**     |   Další informace o vytváření textu žádosti najdete v tématu [asynchronní aktualizace pomocí REST API-post/refreshes](analysis-services-async-refresh.md#post-refreshes). |
+|**Ověřování**     |Protokol OAuth pro Active Directory         |
+|**Tenant**     |Vyplňte Azure Active Directory TenantId         |
+|**Osoby**     |https://*.asazure.windows.net         |
+|**ID klienta**     |Zadejte své hlavní název služby ClientID.         |
 |**Typ přihlašovacích údajů**     |Secret         |
-|**Tajný kód**     |Zadejte název tajný klíč instančního objektu         |
+|**Tajný kód**     |Zadejte tajný klíč hlavního názvu služby.         |
 
 Příklad:
 
-![Dokončené aktivity protokolu HTTP](./media/analysis-services-async-refresh-logic-app/7.png)
+![Dokončená aktivita HTTP](./media/analysis-services-async-refresh-logic-app/7.png)
 
-Teď otestujte aplikaci logiky.  V návrháři aplikace logiky, klikněte na tlačítko **spustit**.
+Nyní otestujte aplikaci logiky.  V návrháři aplikace logiky klikněte na **Spustit**.
 
-![Otestujte aplikaci logiky](./media/analysis-services-async-refresh-logic-app/8.png)
+![Testování aplikace logiky](./media/analysis-services-async-refresh-logic-app/8.png)
 
-## <a name="consume-the-logic-app-with-azure-data-factory"></a>Využití aplikace logiky pomocí služby Azure Data Factory
+## <a name="consume-the-logic-app-with-azure-data-factory"></a>Využití aplikace logiky s Azure Data Factory
 
-Po uložení aplikace logiky, přečtěte si **přijetí požadavku HTTP když** aktivit a pak nakopírujte **adresa URL operace HTTP POST** , který je nyní generována.  Toto je adresa URL, která je možné pomocí služby Azure Data Factory pro asynchronní volání triggeru aplikace logiky.
+Po uložení aplikace logiky zkontrolujte, jestli **je přijatá žádost http** , a pak zkopírujte **adresu URL post protokolu HTTP** , který je teď vygenerovaný.  Toto je adresa URL, kterou může Azure Data Factory použít k tomu, aby asynchronní volání aktivovalo aplikaci logiky.
 
-Tady je příklad Azure Data Factory webová aktivita, která provádí tuto akci.
+Tady je příklad Azure Data Factory aktivity webu, která provádí tuto akci.
 
-![Aktivita webu objekt pro vytváření dat](./media/analysis-services-async-refresh-logic-app/11.png)
+![Data Factory aktivity webu](./media/analysis-services-async-refresh-logic-app/11.png)
 
-## <a name="use-a-self-contained-logic-app"></a>Použití samostatné aplikace logiky
+## <a name="use-a-self-contained-logic-app"></a>Použití samostatně obsažené aplikace logiky
 
-Když se nechystáte v pomocí nástroje Orchestration například Data Factory pro aktivaci modelu obnovení, můžete nastavit aplikaci logiky pro aktivaci obnovení na základě plánu.
+Pokud neplánujete použití nástroje Orchestration, jako je například Data Factory, aby se aktivovala aktualizace modelu, můžete nastavit aplikaci logiky tak, aby na základě plánu aktivovala aktualizaci.
 
-Použití výše uvedeného příkladu odstraňte první aktivitu a nahraďte ho hodnotou **plán** aktivity.
+Pomocí výše uvedeného příkladu odstraňte první aktivitu a nahraďte ji aktivitou **plánu** .
 
-![Naplánovat aktivitu](./media/analysis-services-async-refresh-logic-app/12.png)
+![Aktivita plánu](./media/analysis-services-async-refresh-logic-app/12.png)
 
-![Naplánovat aktivitu](./media/analysis-services-async-refresh-logic-app/13.png)
+![Aktivita plánu](./media/analysis-services-async-refresh-logic-app/13.png)
 
-Tento příklad použije **opakování**.
+V tomto příkladu se použije **opakování**.
 
-Po přidání aktivity nakonfigurovat Interval a frekvenci, pak přidá nový parametr a zvolte **v těchto hodinách**.
+Po přidání aktivity nakonfigurujte interval a četnost a pak přidejte nový parametr a zvolte **v těchto hodinách**.
 
-![Naplánovat aktivitu](./media/analysis-services-async-refresh-logic-app/16.png)
+![Aktivita plánu](./media/analysis-services-async-refresh-logic-app/16.png)
 
 Vyberte požadované hodiny.
 
-![Naplánovat aktivitu](./media/analysis-services-async-refresh-logic-app/15.png)
+![Aktivita plánu](./media/analysis-services-async-refresh-logic-app/15.png)
 
 Uložte aplikaci logiky.
 

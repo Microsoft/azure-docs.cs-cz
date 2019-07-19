@@ -1,10 +1,10 @@
 ---
-title: Metriky, výstrahy a diagnostické protokoly – Azure Batch | Dokumentace Microsoftu
+title: Metriky, výstrahy a diagnostické protokoly – Azure Batch | Microsoft Docs
 description: Zaznamenávat a analyzovat události diagnostických protokolů pro účet prostředky služby Azure Batch, jako jsou fondy a úlohy.
 services: batch
 documentationcenter: ''
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: batch
@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 12/05/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: e1fc405951789305b0df86fd0f7b91890fb45c06
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 63d0196609e432b081e91a49b5b1410431223632
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66242619"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68323628"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch metriky, výstrahy a protokoly pro diagnostické hodnocení a monitorování
 
@@ -29,7 +29,7 @@ Tento článek vysvětluje, jak monitorovat pomocí funkce účtu Batch [Azure M
 
 ## <a name="batch-metrics"></a>Metriky služby batch
 
-Metriky jsou Azure telemetrická data (také nazývané čítače výkonu), protože ho vygeneroval vašich prostředků Azure, které se spotřebovávají služby Azure Monitor. Příklad metriky v účtu Batch patří: Vytvoření fondu událostí, počet uzlů s nízkou prioritou a úlohy dokončení události. 
+Metriky jsou Azure telemetrická data (také nazývané čítače výkonu), protože ho vygeneroval vašich prostředků Azure, které se spotřebovávají služby Azure Monitor. Mezi příklady metrik v účtu Batch patří: Události vytvoření fondu, počet uzlů s nízkou prioritou a události dokončení úlohy. 
 
 Zobrazit [seznam podporovaných metrik služby Batch](../azure-monitor/platform/metrics-supported.md#microsoftbatchbatchaccounts).
 
@@ -37,7 +37,7 @@ Metriky jsou:
 
 * Povolené ve výchozím nastavení v každém účtu Batch bez další konfigurace
 * Vygeneruje každou 1 minutu
-* Není trvalý automaticky, ale historie se zajištěním provozu na 30 dnů. Je možné zachovat metriky aktivity jako součást protokolování diagnostiky.
+* Není trvalý automaticky, ale historie se zajištěním provozu na 30 dnů. Metriky aktivity můžete zachovat jako součást protokolování diagnostiky.
 
 ### <a name="view-metrics"></a>Zobrazit metriky
 
@@ -91,7 +91,7 @@ Ostatní volitelné cíle pro diagnostické protokoly:
 
 * Stream Batch diagnostický protokol událostí do [Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md). Event Hubs můžete ingestovat miliony událostí za sekundu, které pak můžete transformovat a uložit pomocí libovolného zprostředkovatele datové analýzy v reálném čase. 
 
-* Poslat protokoly pro diagnostiku [protokoly Azure monitoru](../log-analytics/log-analytics-overview.md), kde můžete analyzovat nebo exportovat pro analýzy v Power BI nebo Excelu.
+* Odešlete diagnostické protokoly do [protokolů Azure monitor](../log-analytics/log-analytics-overview.md), kde je můžete analyzovat nebo exportovat pro účely analýzy v Power BI nebo Excelu.
 
 > [!NOTE]
 > Vám může účtovat další poplatky za uložení nebo zpracování protokol diagnostiky dat pomocí služby Azure. 
@@ -101,7 +101,7 @@ Ostatní volitelné cíle pro diagnostické protokoly:
 
 1. Na portálu klikněte na tlačítko **všechny služby** > **účty Batch**a pak klikněte na název vašeho účtu Batch.
 2. V části **monitorování**, klikněte na tlačítko **diagnostické protokoly** > **zapnout diagnostiku**.
-3. V **nastavení diagnostiky**, zadejte název pro nastavení a vyberte cíl protokolu (existující účet úložiště, Centrum událostí nebo protokoly Azure monitoru). Vyberte jednu nebo obě **ServiceLog** a **AllMetrics**.
+3. V okně **nastavení diagnostiky**zadejte název nastavení a vyberte cíl protokolu (existující účet úložiště, centrum událostí nebo protokoly Azure monitor). Vyberte jednu nebo obě **ServiceLog** a **AllMetrics**.
 
     Když vyberete účet úložiště, volitelně nastavte zásady uchovávání informací. Pokud nechcete zadat počet dní pro uchovávání dat, data se uchovávají po dobu trvání účtu úložiště.
 

@@ -1,6 +1,6 @@
 ---
-title: Skupiny počítačů ve službě Azure Monitor protokolu dotazy | Dokumentace Microsoftu
-description: Skupiny počítačů ve službě Azure Monitor vám umožní protokolu dotazy na obor konkrétní sadě počítačů.  Tento článek popisuje různé metody, které lze použít k vytvoření skupiny počítačů a jejich použití v dotazu protokolu.
+title: Skupiny počítačů v Azure Monitor dotazy protokolu | Microsoft Docs
+description: Skupiny počítačů v Azure Monitor umožňují oborovat dotazy protokolu na konkrétní sadu počítačů.  Tento článek popisuje různé metody, které můžete použít k vytvoření skupin počítačů a jejich použití v dotazu protokolu.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,93 +13,93 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/05/2019
 ms.author: bwren
-ms.openlocfilehash: c2babb5a86d69881b6a76c6dceae80a24a891f6c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ae423b6fb141cab4038e65ba85c6067f1c23aee0
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60740912"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68320674"
 ---
-# <a name="computer-groups-in-azure-monitor-log-queries"></a>Skupiny počítačů v dotazů na protokoly Azure monitoru
-Skupiny počítačů ve službě Azure Monitor vám umožní oboru [protokolu dotazy](../log-query/log-query-overview.md) konkrétní sadě počítačů.  Každá skupina se zaplní, buď dotaz, který definujete pomocí počítače nebo importováním skupiny z různých zdrojů.  Skupiny je obsažen v protokolu dotazu, výsledky jsou omezené na záznamy, které odpovídají počítačů ve skupině.
+# <a name="computer-groups-in-azure-monitor-log-queries"></a>Skupiny počítačů v Azure Monitor dotazy protokolu
+Skupiny počítačů v Azure Monitor umožňují oborovat [dotazy protokolu](../log-query/log-query-overview.md) na konkrétní sadu počítačů.  Každá skupina se zaplní, buď dotaz, který definujete pomocí počítače nebo importováním skupiny z různých zdrojů.  Pokud je skupina zahrnutá v dotazu protokolu, výsledky jsou omezené na záznamy, které odpovídají počítačům ve skupině.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="creating-a-computer-group"></a>Vytvořit skupinu počítačů
-Vytvořit skupinu počítačů ve službě Azure Monitor, pomocí některé z metod v následující tabulce.  Podrobnosti o každé metody jsou k dispozici v následujících částech. 
+Skupinu počítačů můžete v Azure Monitor vytvořit pomocí kterékoli z metod v následující tabulce.  Podrobnosti o každé metody jsou k dispozici v následujících částech. 
 
 | Metoda | Popis |
 |:--- |:--- |
 | Dotaz protokolu |Vytvořte dotaz protokolu, který vrátí seznam počítačů. |
-| Rozhraní API pro prohledávání protokolů |Pomocí rozhraní API pro vyhledávání protokolu prostřednictvím kódu programu vytvořit skupinu počítačů na základě výsledků dotazu protokolu. |
-| Active Directory |Automaticky vyhledávat členství ve skupině všechny počítače agenta, které jsou členy domény služby Active Directory a vytvoření skupiny pro každou skupinu zabezpečení ve službě Azure Monitor. (Pouze Windows počítače)|
-| Configuration Manager | Importovat kolekce z nástroje System Center Configuration Manager a vytvořte pro každou skupinu ve službě Azure Monitor. |
-| Windows Server Update Services |Automaticky vyhledat cílí na skupiny služby WSUS servery nebo klienty a vytvořte pro každou skupinu ve službě Azure Monitor. |
+| Rozhraní API pro prohledávání protokolů |Pomocí rozhraní API pro prohledání protokolu můžete programově vytvořit skupinu počítačů na základě výsledků dotazu protokolu. |
+| Active Directory |Automaticky zkontroluje členství všech počítačů s agenty, které jsou členy domény služby Active Directory, a vytvořte skupinu v Azure Monitor pro každou skupinu zabezpečení. (Jenom počítače s Windows)|
+| Configuration Manager | Importujte kolekce z System Center Configuration Manager a vytvořte v Azure Monitor skupinu. |
+| Windows Server Update Services |Automaticky prohledejte servery nebo klienty WSUS pro cílení skupin a vytvořte skupinu v Azure Monitor pro každou z nich. |
 
 ### <a name="log-query"></a>Dotaz protokolu
-Skupiny počítačů, které jsou vytvořené z protokolu dotazu obsahovat všechny počítače vrácené dotazem, který určíte.  Tento dotaz je spustit pokaždé, když se skupina počítačů se používá tak, aby se projeví všechny změny, protože byla skupina vytvořena.  
+Skupiny počítačů vytvořené z dotazu protokolu obsahují všechny počítače, které jsou vráceny vámi definovaným dotazem.  Tento dotaz je spustit pokaždé, když se skupina počítačů se používá tak, aby se projeví všechny změny, protože byla skupina vytvořena.  
 
-Můžete použít jakýkoli dotaz pro skupinu počítačů, ale musí vracet různé sady počítačů pomocí `distinct Computer`.  Toto je typický příklad dotazu, který můžete použít jako skupinu počítačů.
+Můžete použít jakýkoli dotaz pro skupinu počítačů, ale musí vracet různé sady počítačů pomocí `distinct Computer`.  Následuje typický příklad dotazu, který můžete použít jako skupinu počítačů.
 
     Heartbeat | where Computer contains "srv" | distinct Computer
 
 Pomocí následujícího postupu můžete vytvořit skupinu počítačů z prohledávání protokolů na webu Azure Portal.
 
-1. Klikněte na tlačítko **protokoly** v **Azure Monitor** nabídky na webu Azure Portal.
+1. V Azure Portal v nabídce **Azure monitor** klikněte na **protokoly** .
 1. Vytvořte a spusťte dotaz, který vrátí počítače, které chcete ve skupině.
-1. Klikněte na tlačítko **Uložit** v horní části obrazovky.
-1. Změna **uložit jako** k **funkce** a vyberte **uložit tento dotaz jako skupinu počítačů**.
-1. Zadejte hodnoty pro každou vlastnost pro skupinu počítačů je popsáno v tabulce a klikněte na tlačítko **Uložit**.
+1. V horní části obrazovky klikněte na **Uložit** .
+1. Změňte možnost **Uložit jako** do **funkce** a vyberte **Uložit tento dotaz jako skupinu počítačů**.
+1. Zadejte hodnoty pro každou vlastnost skupiny počítačů popsané v tabulce a klikněte na **Uložit**.
 
 Následující tabulka popisuje vlastnosti, které definují skupinu počítačů.
 
-| Vlastnost | Popis |
+| Vlastnost | Description |
 |:---|:---|
-| Název   | Název dotazu na portálu zobrazovat. |
+| Name   | Název dotazu, který se má zobrazit na portálu |
 | Alias funkce | Jedinečný alias používaný k identifikaci skupinu počítačů v dotazu. |
-| Category       | Kategorie uspořádat dotazy na portálu. |
+| Kategorie       | Kategorie pro uspořádání dotazů na portálu |
 
 
 ### <a name="active-directory"></a>Active Directory
-Při konfiguraci monitorování Azure pro import členství skupin Active Directory, analyzuje členství ve skupině všechny počítače připojené k doméně Windows pomocí agenta Log Analytics.  Skupina počítačů se vytvoří ve službě Azure Monitor pro každou skupinu zabezpečení ve službě Active Directory a každý počítač Windows je přidán do skupiny počítačů, které jsou členy skupiny zabezpečení odpovídající.  Toto členství se průběžně aktualizuje každé 4 hodiny.  
+Když konfigurujete Azure Monitor pro import členství ve skupinách služby Active Directory, analyzuje členství ve skupině všech počítačů připojených k doméně Windows pomocí agenta Log Analytics.  Skupina počítačů se vytvoří v Azure Monitor pro každou skupinu zabezpečení ve službě Active Directory a každý počítač se systémem Windows se přidá do skupin počítačů, které odpovídají skupinám zabezpečení, které jsou členy.  Toto členství se průběžně aktualizuje každé 4 hodiny.  
 
 > [!NOTE]
-> Importované skupiny služby Active Directory obsahují pouze počítače s Windows.
+> Importované skupiny služby Active Directory obsahují pouze počítače se systémem Windows.
 
-Konfigurace Azure Monitor k importu skupin zabezpečení služby Active Directory z **upřesňující nastavení** ve vašem pracovním prostoru Log Analytics na portálu Azure portal.  Vyberte **skupiny počítačů**, **služby Active Directory**a potom **členství ve skupině služby Active Directory Import z počítačů**.  Není nutná žádná další konfigurace.
+Nakonfigurujete Azure Monitor pro import skupin zabezpečení služby Active Directory z **rozšířeného nastavení** v pracovním prostoru Log Analytics v Azure Portal.  Vyberte **skupiny počítačů**, **služby Active Directory**a potom **členství ve skupině služby Active Directory Import z počítačů**.  Není nutná žádná další konfigurace.
 
 ![Skupiny počítačů ze služby Active Directory](media/computer-groups/configure-activedirectory.png)
 
 Importu skupin v nabídce uvádí počet počítačů s členstvím skupiny zjistila a číslem skupiny importovat.  Kliknutím na některý z těchto odkazů se vraťte **ComputerGroup** záznamy s těmito informacemi.
 
 ### <a name="windows-server-update-service"></a>Windows Server Update Service
-Při konfiguraci monitorování Azure pro import členství ve skupině WSUS analyzuje cílení členství ve skupině všechny počítače pomocí agenta Log Analytics.  Pokud používáte na straně klienta cílí na skupiny cílí na jakýkoli počítač, který je připojený k Azure Monitor a je součástí libovolné služby WSUS má jeho členství ve skupině importu do Azure monitoru. Pokud používáte server-side cílení, Log Analytics by měl být agent nainstalovaný na serveru WSUS, aby se informace o členství ve skupinách pro import do Azure monitoru.  Toto členství se průběžně aktualizuje každé 4 hodiny. 
+Když nakonfigurujete Azure Monitor pro import členství ve skupině WSUS, analyzuje členství v cílových skupinách u všech počítačů s agentem Log Analytics.  Pokud používáte cílení na klientské straně, každý počítač, který je připojený k Azure Monitor a je součástí všech skupin cílené na službu WSUS, má členství ve skupině importované do Azure Monitor. Pokud používáte cílení na straně serveru, měl by být agent Log Analytics nainstalován na server WSUS, aby bylo možné do Azure Monitor importovat informace o členství ve skupině.  Toto členství se průběžně aktualizuje každé 4 hodiny. 
 
-Konfigurace Azure Monitor k importu skupin WSUS z **upřesňující nastavení** ve vašem pracovním prostoru Log Analytics na portálu Azure portal.  Vyberte **skupiny počítačů**, **WSUS**a potom **služby WSUS pro Import členství ve skupinách**.  Není nutná žádná další konfigurace.
+Nakonfigurujete Azure Monitor pro import skupin WSUS z **rozšířeného nastavení** v pracovním prostoru Log Analytics v Azure Portal.  Vyberte **skupiny počítačů**, **WSUS**a potom **služby WSUS pro Import členství ve skupinách**.  Není nutná žádná další konfigurace.
 
 ![Skupiny počítačů služby WSUS](media/computer-groups/configure-wsus.png)
 
 Importu skupin v nabídce uvádí počet počítačů s členstvím skupiny zjistila a číslem skupiny importovat.  Kliknutím na některý z těchto odkazů se vraťte **ComputerGroup** záznamy s těmito informacemi.
 
 ### <a name="system-center-configuration-manager"></a>System Center Configuration Manager
-Při konfiguraci monitorování Azure pro import členství v kolekcích Configuration Manageru se vytvoří skupina počítačů pro každou kolekci.  Informace o členství v kolekci se načte každé tři hodiny zachovat aktuální skupiny počítačů. 
+Když nakonfigurujete Azure Monitor pro import Configuration Manager členství v kolekcích, vytvoří se skupina počítačů pro každou kolekci.  Informace o členství v kolekci se načte každé tři hodiny zachovat aktuální skupiny počítačů. 
 
-Před importem kolekcí nástroje Configuration Manager, je nutné [propojení Configuration Manageru do Azure monitoru](collect-sccm.md).  Potom můžete nakonfigurovat importovat z **upřesňující nastavení** ve vašem pracovním prostoru Log Analytics na portálu Azure portal.  Vyberte **skupiny počítačů**, **SCCM**a potom **členství v kolekcích Configuration Manageru Import**.  Není nutná žádná další konfigurace.
+Než budete moct importovat kolekce Configuration Manager, musíte [Configuration Manager připojit k Azure monitor](collect-sccm.md).  
 
 ![Skupiny počítačů z SCCM](media/computer-groups/configure-sccm.png)
 
 Importu kolekce v nabídce uvádí počet počítačů s členstvím skupiny zjistila a číslem skupiny importovat.  Kliknutím na některý z těchto odkazů se vraťte **ComputerGroup** záznamy s těmito informacemi.
 
 ## <a name="managing-computer-groups"></a>Správa skupin počítačů
-Můžete zobrazit skupiny počítačů, které byly vytvořeny z dotazu protokolu nebo rozhraní API pro vyhledávání protokolu z **upřesňující nastavení** ve vašem pracovním prostoru Log Analytics na portálu Azure portal.  Vyberte **skupiny počítačů** a potom **uložit skupiny**.  
+Můžete zobrazit skupiny počítačů, které byly vytvořeny z dotazu protokolu nebo rozhraní API pro prohledávání protokolu, z **rozšířených nastavení** v pracovním prostoru Log Analytics v Azure Portal.  Vyberte **skupiny počítačů** a potom **uložit skupiny**.  
 
 Klikněte na tlačítko **x** v **odebrat** sloupec, který chcete odstranit skupinu počítačů.  Klikněte na tlačítko **zobrazit členy** ikonu skupiny ke spuštění hledání v protokolu skupiny, která vrací jejích členů.  Nelze upravit skupinu počítačů, ale místo toho musíte odstranit a znovu ji vytvořte s upravená nastavení.
 
 ![Uložené skupiny počítačů](media/computer-groups/configure-saved.png)
 
 
-## <a name="using-a-computer-group-in-a-log-query"></a>Použití skupiny počítačů v protokolu dotazu
-Můžete použít skupinu počítačů vytvořeny z protokolu dotazu v dotazu úpravou jeho alias jako funkce, obvykle s následující syntaxí:
+## <a name="using-a-computer-group-in-a-log-query"></a>Použití skupiny počítačů v dotazu protokolu
+Můžete použít skupinu počítačů vytvořenou z dotazu protokolu v dotazu, a to tak, že se její alias považuje za funkci, obvykle s následující syntaxí:
 
   `Table | where Computer in (ComputerGroup)`
 
@@ -123,7 +123,7 @@ Následující dotaz vrátí záznamy UpdateSummary pro jenom pro počítače v 
 
 
 ## <a name="computer-group-records"></a>Počítač seskupení záznamů
-V pracovním prostoru Log Analytics pro každého členství ve skupině počítačů vytvořené ze služby Active Directory nebo služby WSUS se vytvoří záznam.  Tyto záznamy mají typ **ComputerGroup** a mít vlastnosti v následující tabulce.  Pro skupiny počítačů, které jsou založené na dotazech protokolu nejsou vytvářeny záznamy.
+V pracovním prostoru Log Analytics pro každého členství ve skupině počítačů vytvořené ze služby Active Directory nebo služby WSUS se vytvoří záznam.  Tyto záznamy mají typ **ComputerGroup** a mít vlastnosti v následující tabulce.  Pro skupiny počítačů na základě dotazů protokolu nejsou vytvořeny záznamy.
 
 | Vlastnost | Popis |
 |:--- |:--- |

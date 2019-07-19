@@ -1,6 +1,6 @@
 ---
-title: Vytvoření virtuální sítě pro Azure SQL Database Managed Instance | Dokumentace Microsoftu
-description: Tento článek popisuje, jak vytvořit virtuální síť, kde můžete nasadit Azure SQL Database Managed Instance.
+title: Vytvoření virtuální sítě pro Azure SQL Database spravovanou instanci | Microsoft Docs
+description: Tento článek popisuje, jak vytvořit virtuální síť, ve které můžete nasadit Azure SQL Database spravovanou instanci.
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -12,54 +12,57 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 manager: craigg
 ms.date: 01/15/2019
-ms.openlocfilehash: 5e8b385d018482d281153f1cf80f9953cb8c7f06
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d6e205c23545eb4a01ce58a8bc2b63c58200e32a
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60700490"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68228294"
 ---
-# <a name="create-a-virtual-network-for-azure-sql-database-managed-instance"></a>Vytvoření virtuální sítě pro Azure SQL Database Managed Instance
+# <a name="create-a-virtual-network-for-azure-sql-database-managed-instance"></a>Vytvoření virtuální sítě pro Azure SQL Database spravovanou instanci
 
-Tento článek vysvětluje, jak vytvořit platnou virtuální síť a podsíť, kde můžete nasadit Azure SQL Database Managed Instance.
+Tento článek vysvětluje, jak vytvořit platnou virtuální síť a podsíť, kde můžete nasadit Azure SQL Database spravovanou instanci.
 
-Azure SQL Database Managed Instance musí být nasazen v rámci Azure [virtuální sítě](../virtual-network/virtual-networks-overview.md). Toto nasazení umožňuje následující scénáře:
+Azure SQL Database spravovaná instance musí být nasazená v rámci [virtuální sítě](../virtual-network/virtual-networks-overview.md)Azure. Toto nasazení umožňuje následující scénáře:
 
-- Zabezpečené privátní IP adresy
-- Připojení k Managed Instance přímo z místní sítě
-- Připojení Managed Instance pro odkazovaný server nebo další místní úložiště dat
-- Připojování k prostředkům Azure Managed Instance  
+- Zabezpečená privátní IP adresa
+- Připojení ke spravované instanci přímo z místní sítě
+- Připojení spravované instance k odkazovanému serveru nebo jinému místnímu úložišti dat
+- Připojení spravované instance k prostředkům Azure  
 
 > [!Note]
-> Měli byste [určit velikost podsítě pro Managed Instance](sql-database-managed-instance-determine-size-vnet-subnet.md) před nasazením první instance. Po stačí vložit prostředky uvnitř nejde jeho velikost změnit podsíť.
+> Před nasazením první instance byste měli [určit velikost podsítě pro spravovanou instanci](sql-database-managed-instance-determine-size-vnet-subnet.md) . Po umístění prostředků do se nedá změnit velikost podsítě.
 >
-> Pokud plánujete použití existující virtuální sítě, budete muset upravit tuto konfiguraci sítě tak, aby vyhovovaly Managed Instance. Další informace najdete v tématu [upravit existující virtuální sítě pro Managed Instance](sql-database-managed-instance-configure-vnet-subnet.md).
+> Pokud plánujete použít stávající virtuální síť, musíte tuto konfiguraci sítě upravit tak, aby vyhovovala vaší spravované instanci. Další informace najdete v tématu [Úprava existující virtuální sítě pro spravovanou instanci](sql-database-managed-instance-configure-vnet-subnet.md).
+>
+> Po vytvoření spravované instance se nepodporují přesunutí spravované instance nebo virtuální sítě do jiné skupiny prostředků nebo předplatného.
+
 
 ## <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 
-Nejjednodušší způsob, jak vytvořit a konfigurovat virtuální síť se má použít nasazení šablony Azure Resource Manageru.
+Nejjednodušší způsob, jak vytvořit a nakonfigurovat virtuální síť, je použít šablonu nasazení Azure Resource Manager.
 
 1. Přihlaste se k portálu Azure.
 
-2. Vyberte **nasadit do Azure** tlačítka:
+2. Vyberte tlačítko **nasadit do Azure** :
 
    <a target="_blank" href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-sql-managed-instance-azure-environment%2Fazuredeploy.json" rel="noopener" data-linktype="external"> <img src="https://azuredeploy.net/deploybutton.png" data-linktype="external"> </a>
 
-   Toto tlačítko otevře formulář, který můžete použít ke konfiguraci síťového prostředí kde můžete nasadit Managed Instance.
+   Toto tlačítko otevře formulář, který můžete použít ke konfiguraci síťového prostředí, ve kterém můžete nasadit spravovanou instanci.
 
    > [!Note]
-   > Tuto šablonu Azure Resource Manageru se nasazení virtuální sítě se dvěma podsítěmi. Jedna podsíť s názvem **ManagedInstances**, je vyhrazený pro Managed Instance a má předem směrovací tabulku. Další podsítě, volá **výchozí**, se používá pro jiné prostředky, které by měl přístup k Managed Instance (například virtuální počítače Azure).
+   > Tato šablona Azure Resource Manager nasadí virtuální síť se dvěma podsítěmi. Jedna podsíť s názvem **ManagedInstances**je vyhrazena pro spravovanou instanci a má předem nakonfigurovanou směrovací tabulku. Druhá podsíť, která se označuje jako **výchozí**, se používá pro další prostředky, které by měly přistupovat ke spravované instanci (například Azure Virtual Machines).
 
-3. Konfigurace síťového prostředí. Na následující formulář můžete nakonfigurovat parametry vaše síťové prostředí:
+3. Nakonfigurujte síťové prostředí. V následujícím formuláři můžete nakonfigurovat parametry síťového prostředí:
 
-   ![Šablony Resource Manageru pro konfiguraci sítě Azure](./media/sql-database-managed-instance-vnet-configuration/create-mi-network-arm.png)
+   ![Šablona Správce prostředků pro konfiguraci sítě Azure](./media/sql-database-managed-instance-vnet-configuration/create-mi-network-arm.png)
 
-   Můžete změnit názvy virtuální sítě a podsítě a upravit rozsahy IP adres přidružené síťové prostředky. Po výběru **nákupní** tlačítko, vytvoří tento formulář a konfiguraci prostředí. Pokud už nebudete potřebovat dvě podsítě, můžete odstranit výchozí hodnotu.
+   Můžete změnit názvy virtuální sítě a podsítí a upravit rozsahy IP adres přidružené k síťovým prostředkům. Po výběru tlačítka **koupit** se v tomto formuláři vytvoří a nakonfiguruje vaše prostředí. Pokud nepotřebujete dvě podsítě, můžete odstranit výchozí.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Přehled najdete v tématu [co je Managed Instance?](sql-database-managed-instance.md).
-- Další informace o [architektura připojení ve spravované instanci](sql-database-managed-instance-connectivity-architecture.md).
-- Zjistěte, jak [upravit existující virtuální sítě pro Managed Instance](sql-database-managed-instance-configure-vnet-subnet.md).
-- Kurz ukazuje, jak vytvořit virtuální síť, vytvoříte Managed Instance a obnovit databázi ze zálohy databáze, najdete v tématu [vytvořit Azure SQL Database Managed Instance](sql-database-managed-instance-get-started.md).
-- Problémy s DNS, najdete v části [konfigurace vlastního DNS](sql-database-managed-instance-custom-dns.md).
+- Přehled najdete v tématu [co je spravovaná instance?](sql-database-managed-instance.md).
+- Přečtěte si o [architektuře připojení ve spravované instanci](sql-database-managed-instance-connectivity-architecture.md).
+- Naučte se, jak [Upravit existující virtuální síť pro spravovanou instanci](sql-database-managed-instance-configure-vnet-subnet.md).
+- Kurz, ve kterém se dozvíte, jak vytvořit virtuální síť, vytvořit spravovanou instanci a obnovit databázi ze zálohy databáze, najdete v tématu [Vytvoření spravované instance Azure SQL Database](sql-database-managed-instance-get-started.md).
+- Problémy se službou DNS najdete v tématu [Konfigurace vlastního serveru DNS](sql-database-managed-instance-custom-dns.md).

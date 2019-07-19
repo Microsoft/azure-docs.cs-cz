@@ -4,7 +4,7 @@ description: Rychlý úvod k příkazům Batch v rozhraní příkazového řádk
 services: batch
 documentationcenter: ''
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: fcd76587-1827-4bc8-a84d-bba1cd980d85
 ms.service: batch
@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 07/24/2018
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e2bd67ebb977a37c75631f16fbbf4c7dbd6bf250
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6e541ef82b7fe63042adf84733dd86fdd3eabdf1
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60782557"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68323718"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Správa prostředků služby Batch pomocí Azure CLI
 
@@ -76,7 +76,7 @@ Příkaz `az login` vrátí token, který můžete použít k ověření, jak je
 
 ![Přihlášení k Azure](./media/batch-cli-get-started/az-login.png)
 
-Příklady uvedené v části ukázkové skripty prostředí také ukazují, jak spustit relaci rozhraní příkazového řádku Azure pomocí interaktivního přihlášení k Azure. Jakmile se přihlásíte, můžete volat příkazy pro práci s prostředky služby Batch Management včetně účtů Batch, klíčů, balíčků aplikací a kvót.  
+Příklady uvedené v části ukázkové skripty prostředí také ukazují, jak spustit relaci Azure CLI pomocí interaktivního přihlášení do Azure. Jakmile se přihlásíte, můžete volat příkazy pro práci s prostředky služby Batch Management včetně účtů Batch, klíčů, balíčků aplikací a kvót.  
 
 ### <a name="log-in-to-your-batch-account"></a>Přihlášení k účtu Batch
 
@@ -110,7 +110,7 @@ Máte dvě možnosti ověření proti účtu Batch:
     az batch account login -g myresourcegroup -n mybatchaccount --shared-key-auth
     ```
 
-Příklady uvedené v části ukázkové skripty prostředí ukazují, jak přihlásit ke svému účtu Batch pomocí rozhraní příkazového řádku Azure pomocí Azure AD a sdílený klíč.
+Příklady uvedené v části ukázkové skripty prostředí ukazují, jak se přihlásit k účtu Batch pomocí Azure CLI pomocí Azure AD a sdíleného klíče.
 
 ## <a name="use-azure-batch-cli-extension-commands"></a>Použití příkazů rozšíření rozhraní příkazového řádku služby Azure Batch
 
@@ -130,7 +130,7 @@ az batch pool create my_batch_pool.json
 
 Ačkoli mnoho prostředků služby Batch můžete vytvářet pouze prostřednictvím parametrů příkazového řádku, některé funkce vyžadují, abyste určili soubor ve formátu JSON obsahující podrobnosti o prostředku. Soubor JSON je například třeba použít, pokud chcete určit soubory prostředků pro úkol při spuštění.
 
-Pokud si chcete prohlédnout syntaxi souboru JSON vyžadovanou k vytvoření prostředku, prostudujte si dokumentaci [Reference k rozhraní REST API služby Batch][rest_api]. Každé z témat Přidání *typ prostředku* v dokumentaci Reference k rozhraní REST API obsahuje ukázkové skripty JSON pro vytvoření příslušného prostředku. Tyto ukázkové skripty JSON můžete použít jako šablony pro soubory JSON a používat je v rozhraní příkazového řádku Azure CLI. Pokud si například chcete prohlédnout syntaxi skriptu JSON pro vytvoření fondu, podívejte se na téma [Přidání fondu k účtu][rest_add_pool].
+Chcete-li zobrazit syntaxi JSON nutnou k vytvoření prostředku, přečtěte si referenční dokumentaci ke službě [Batch REST API][rest_api] . Každé z témat Přidání *typ prostředku* v dokumentaci Reference k rozhraní REST API obsahuje ukázkové skripty JSON pro vytvoření příslušného prostředku. Tyto ukázkové skripty JSON můžete použít jako šablony pro soubory JSON a používat je v rozhraní příkazového řádku Azure CLI. Pokud například chcete zobrazit syntaxi JSON pro vytvoření fondu, přečtěte si téma [Přidání fondu k účtu][rest_add_pool].
 
 Ukázkový skript, který určuje soubor JSON, najdete v článku [Spuštění úlohy a úkolů pomocí služby Batch](./scripts/batch-cli-sample-run-job.md).
 
@@ -168,7 +168,7 @@ Následující tipy mohou pomoci při řešení potíží s rozhraním příkazo
 
 * Použijte parametr `-h` k získání **textu nápovědy** pro kterýkoli příkaz rozhraní příkazového řádku CLI.
 * Pomocí parametrů `-v` a `-vv` zobrazíte **podrobný** výstup příkazu. Pokud zahrnete příznak `-vv`, zobrazí rozhraní příkazového řádku Azure CLI příslušné požadavky a odpovědi služby REST. Tyto přepínače jsou užitečné pro zobrazení úplného chybového výstupu.
-* Pomocí parametru `--json` můžete zobrazit **výstup příkazu ve formátu JSON**. Příkaz `az batch pool show pool001 --json` například zobrazí vlastnosti fondu pool001 ve formátu JSON. Pak můžete zkopírovat a upravit tento výstup pro použití v `--json-file` (viz soubory JSON dříve v tomto článku).
+* Pomocí parametru `--json` můžete zobrazit **výstup příkazu ve formátu JSON**. Příkaz `az batch pool show pool001 --json` například zobrazí vlastnosti fondu pool001 ve formátu JSON. Tento výstup pak můžete zkopírovat a upravit pro použití v a `--json-file` (viz soubory JSON dříve v tomto článku).
 <!---Loc Comment: Please, check link [JSON files] since it's not redirecting to any location.--->
 
 ## <a name="next-steps"></a>Další postup

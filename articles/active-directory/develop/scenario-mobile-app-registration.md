@@ -1,9 +1,9 @@
 ---
-title: Mobilní aplikace, že volání webových rozhraní API – konfigurace kódu aplikace | Platforma identit Microsoft
-description: Další informace o vytváření mobilních aplikací, že volání webových rozhraní API (konfigurace kódu aplikace)
+title: Mobilní aplikace, která volá webové rozhraní API – konfigurace kódu aplikace | Platforma Microsoft identity
+description: Zjistěte, jak vytvořit mobilní aplikaci, která volá webová rozhraní API (konfigurace kódu aplikace).
 services: active-directory
 documentationcenter: dev-center-name
-author: danieldobalian
+author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -16,38 +16,38 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b6ebab0eeca6895e1c7a0f6008972030d81da42
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f43ae9da51f68c9765a36d27c993d1c9935d61fa
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65962406"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326126"
 ---
-# <a name="mobile-app-that-calls-web-apis---app-registration"></a>Mobilní aplikace, že volání webového rozhraní API – registrace aplikace
+# <a name="mobile-app-that-calls-web-apis---app-registration"></a>Mobilní aplikace, která volá webová rozhraní API – registrace aplikace
 
-Tento článek obsahuje pokyny registrace aplikace pro vytváření mobilních aplikací.
+Tento článek obsahuje pokyny k registraci aplikace pro vytvoření mobilní aplikace.
 
 ## <a name="supported-account-types"></a>Podporované typy účtu
 
-Typy účtů, které jsou podporovány v mobilních aplikacích závisí na prostředí, které chcete povolit a uživatele, které cílí vaše aplikace.
+Typy účtů podporované v mobilních aplikacích závisí na zkušenostech, které chcete povolit, a na uživatele, na které vaše aplikace cílí.
 
 ## <a name="platform-configuration-and-redirect-uris"></a>Konfigurace platformy a identifikátory URI pro přesměrování  
 
-Při vytváření mobilních aplikací, je nejdůležitější krok registrace identifikátor URI pro přesměrování. To lze nastavit až [konfiguraci platformy tak v okně ověřování](https://aka.ms/MobileAppReg).
+Při vytváření mobilní aplikace je nejnejdůležitějším krokem registrace identifikátor URI přesměrování. To lze nastavit pomocí [konfigurace platformy v okně ověřování](https://aka.ms/MobileAppReg).
 
-Toto prostředí vám umožní získat jednotné přihlašování (SSO) prostřednictvím Microsoft Authenticator (a portál společnosti Intune v Androidu) a také podpora zásad správy zařízení v aplikaci.
+Toto prostředí umožní vaší aplikaci získat jednotné přihlašování (SSO) prostřednictvím Microsoft Authenticator (a Portál společnosti Intune na Androidu) a taky podporovat zásady správy zařízení.
 
-Pokud chcete ručně konfigurovat identifikátor URI pro přesměrování, udělat prostřednictvím Manifest aplikace. Doporučený formát je následující:
+Pokud upřednostňujete ruční konfiguraci identifikátoru URI přesměrování, můžete to provést prostřednictvím manifestu aplikace. Doporučený formát je následující:
 
 - ***iOS***: `msauth.<BUNDLE_ID>://auth`
 - ***Android***: `msauth://<PACKAGE_NAME>/<SIGNATURE_HASH>`
-  - Hodnota hash podpisu s Androidem můžete vygenerovat pomocí klíče vydání nebo ladícího do příkazu KeyTool.
+  - Hodnota hash podpisu Androidu se dá vygenerovat pomocí vydaných nebo ladicích kláves pomocí příkazu nástroje.
 
-## <a name="api-permissions"></a>Oprávnění k rozhraní API
+## <a name="api-permissions"></a>Oprávnění API
 
-Mobilní aplikace volat rozhraní API jménem přihlášeného uživatele. Vaše aplikace potřebuje požadovat delegovaná oprávnění, také označuje jako obory. V závislosti na požadované prostředí to můžete udělat staticky prostřednictvím webu Azure portal nebo dynamicky za běhu. Staticky registrace oprávnění umožňuje správcům snadno schválení vaší aplikace a doporučuje se.
+Mobilní aplikace volají rozhraní API jménem přihlášeného uživatele. Vaše aplikace potřebuje požádat o delegovaná oprávnění, označovaná také jako obory. V závislosti na požadovaném prostředí lze to provést staticky prostřednictvím Azure Portal nebo dynamicky v době běhu. Statická registrace oprávnění umožňuje správcům snadno schválit vaši aplikaci a doporučuje se.
 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Získávání tokenu](scenario-mobile-acquire-token.md)
+> [Získání tokenu](scenario-mobile-acquire-token.md)

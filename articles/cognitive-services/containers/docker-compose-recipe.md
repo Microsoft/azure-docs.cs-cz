@@ -1,7 +1,7 @@
 ---
-title: Docker compose recepty kontejneru
+title: Použití Docker Compose k nasazení více kontejnerů
 titleSuffix: Azure Cognitive Services
-description: Zjistěte, jak nasadit několik služeb Cognitive Services kontejnerů. Tento postup ukazuje, jak orchestrovat více imagí kontejnerů Dockeru pomocí Docker Compose.
+description: Přečtěte si, jak nasadit více kontejnerů Cognitive Services. V tomto článku se dozvíte, jak orchestrovat více imagí kontejnerů Docker pomocí Docker Compose.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,43 +10,43 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 06/26/2019
 ms.author: dapine
-ms.openlocfilehash: 8afb7e866bc2a5fefe28a71653c4a2a87fdc7a5b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 95ec80af88e0b89f61bebed08f4b96a09947f401
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67445794"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311558"
 ---
-# <a name="use-multiple-containers-in-a-private-network-with-docker-compose"></a>Použití více kontejnerů v privátní síti pomocí Docker Compose
+# <a name="use-docker-compose-to-deploy-multiple-containers"></a>Použití Docker Compose k nasazení více kontejnerů
 
-Zjistěte, jak nasadit několik služeb Cognitive Services kontejnerů. Tento postup ukazuje, jak orchestrovat více imagí kontejnerů Dockeru pomocí Docker Compose.
+V tomto článku se dozvíte, jak nasadit více kontejnerů Azure Cognitive Services. Konkrétně se naučíte, jak používat Docker Compose k orchestraci více imagí kontejneru Docker.
 
-> [Docker Compose](https://docs.docker.com/compose/) je nástroj pro definování a spouštění více kontejnerů aplikací Dockeru. S Compose použijte soubor YAML konfigurace služby pro vaše aplikace. Pak pomocí jediného příkazu, vytvoření a spuštění všech služeb z vaší konfigurace.
+> [Docker Compose](https://docs.docker.com/compose/) je nástroj pro definování a spouštění aplikací Docker pro více kontejnerů. V sestavách pomocí souboru YAML nakonfigurujete služby vaší aplikace. Pak můžete vytvořit a spustit všechny služby z konfigurace spuštěním jediného příkazu.
 
-V případě potřeby a Orchestrace několik imagí kontejneru na jeden hostitelský počítač může být zajímavé. V tomto článku jsme vám sjednotí rozpoznat Text služba a Služba rozpoznávání formuláře.
+Může být užitečné pro orchestraci více imagí kontejneru v jednom hostitelském počítači. V tomto článku budeme vyžádat kontejnery pro Rozpoznávání textu a vyžádané formuláře.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tento postup vyžaduje několik nástrojů, které musí být nainstalován a spuštěn místně.
+Tento postup vyžaduje několik nástrojů, které je třeba nainstalovat a spustit místně:
 
-* Použijte předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
-* [Modul docker](https://www.docker.com/products/docker-engine) a ověřte, že rozhraní příkazového řádku Dockeru funguje v okně konzoly.
-* Prostředek Azure s správné cenovou úroveň. Ne všechny cenové úrovně pracovat s tímto kontejnerem:
-  * **Počítačové zpracování obrazu** pouze úrovní prostředků, které F0 nebo standardní ceny.
-  * **Formulář pro rozpoznávání** pouze úrovní prostředků, které F0 nebo standardní ceny.
-  * **Služby cognitive Services** cenová úroveň prostředku s S0.
+* Předplatné Azure. Pokud ho nemáte, než začnete, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).
+* [Modul Docker](https://www.docker.com/products/docker-engine). Potvrďte, že rozhraní příkazového řádku Docker funguje v okně konzoly.
+* Prostředek Azure se správnou cenovou úrovní. S tímto kontejnerem fungují jenom následující cenové úrovně:
+  * **Počítačové zpracování obrazu** prostředek s pouze cenovou úrovní F0 nebo Standard.
+  * Prostředek **pro rozpoznávání formulářů** s cenovou úrovní F0 nebo Standard.
+  * **Cognitive Services** prostředku pomocí cenové úrovně S0
 
 ## <a name="request-access-to-the-container-registry"></a>Požádat o přístup k registru kontejneru
 
-Vyplňte a odešlete [formulář žádosti o kontejnerech řeči Cognitive Services](https://aka.ms/speechcontainerspreview/) chcete požádat o přístup ke kontejneru. 
+Dokončete a odešlete [formulář žádosti o Cognitive Services kontejnerech řeči](https://aka.ms/speechcontainerspreview/). 
 
 [!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
 
 [!INCLUDE [Authenticate to the container registry](../../../includes/cognitive-services-containers-access-registry.md)]
 
-## <a name="docker-compose-file"></a>Docker compose souboru
+## <a name="docker-compose-file"></a>Soubor Docker Compose
 
-Soubor YAML definuje všechny služby pro nasazení. Tyto služby využívají buď `DockerFile` nebo existující image kontejneru, v tomto případě použijeme dvě Image ve verzi preview. Zkopírujte a vložte následující soubor YAML a uložte ho jako *docker compose.yaml*. Zadejte odpovídající _apikey_, _fakturační_, a _identifikátor URI koncového bodu_ hodnoty v _docker-compose.yml_ souboru níže.
+Soubor YAML definuje všechny služby, které mají být nasazeny. Tyto služby spoléhají na buď `DockerFile` nebo existující image kontejneru. V tomto případě použijeme dvě image ve verzi Preview. Zkopírujte a vložte následující soubor YAML a uložte ho jako Docker *-tváře. yaml*. Zadejte v souboru příslušné hodnoty **apikey**, **fakturace**a **hodnot endpointuri** .
 
 ```yaml
 version: '3.7'
@@ -61,10 +61,10 @@ services:
        FormRecognizer__ComputerVisionEndpointUri: # < Your form recognizer URI >
     volumes:
        - type: bind
-         source: e:\publicpreview\output
+         source: E:\publicpreview\output
          target: /output
        - type: bind
-         source: e:\publicpreview\input
+         source: E:\publicpreview\input
          target: /input
     ports:
       - "5010:5000"
@@ -80,22 +80,22 @@ services:
 ```
 
 > [!IMPORTANT]
-> Vytvoření adresáře na hostitelském počítači, které jsou uvedené v části `volumes` uzlu. To je požadována, protože adresářů, musí existovat před pokusem o připojení bitové kopie s vazbami svazku.
+> Vytvořte adresáře na hostitelském počítači, které jsou zadány pod uzlem **svazky** . Tento přístup je nutný, protože adresáře musí existovat předtím, než se pokusíte připojit bitovou kopii pomocí vazeb svazků.
 
-## <a name="start-the-configured-docker-compose-services"></a>Spuštění nakonfigurované docker compose služby
+## <a name="start-the-configured-docker-compose-services"></a>Spusťte nakonfigurované služby Docker Compose.
 
-Docker compose souboru umožňuje správu všech definovaných služby životního cyklu; spuštění/zastavení a opětovné vytvoření služby, zobrazení stavu služby a streamování protokolů. Otevřete rozhraní příkazového řádku z adresáře projektu (kde *docker compose.yaml* nachází soubor).
+Soubor Docker Compose umožňuje správu všech fází v životním cyklu definované služby: spouštění, zastavování a obnovování služeb; zobrazení stavu služby; a streamování protokolů. Otevřete rozhraní příkazového řádku z adresáře projektu (kde se nachází soubor Docker-tváře. yaml).
 
 > [!NOTE]
-> Aby nedocházelo k chybám, ujistěte se, že hostitelský počítač se správně sdílení jednotek s **modul Docker**. Například pokud *e:\publicpreview* slouží jako adresář v *docker compose.yaml* sdílet *E jednotka* s dockerem.
+> Aby se předešlo chybám, ujistěte se, že hostitelský počítač správně sdílí jednotky s modulem Docker. Například pokud se E:\publicpreview používá jako adresář v souboru Docker-tváře. yaml, sdílejte jednotku E s Docker.
 
-Z rozhraní příkazového řádku spusťte následující příkaz ke spuštění (nebo restartování) všechny služby, které jsou definovány v *docker compose.yaml*:
+V rozhraní příkazového řádku spusťte následující příkaz, který spustí (nebo restartuje) všechny služby definované v souboru Docker-tváře. yaml:
 
 ```console
 docker-compose up
 ```
 
-První čas spuštění `docker-compose up` příkazu s touto konfigurací **Docker** přetáhne Image nakonfigurovaná pod daným `services` uzlu – stažení/připojení je:
+První Docker spustí příkaz Docker **-sestavit** pomocí této konfigurace, načte image nakonfigurované v uzlu **služby** a pak je stáhne a připojí:
 
 ```console
 Pulling forms (containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer:)...
@@ -126,7 +126,7 @@ c56511552241: Waiting
 e91d2aa0f1ad: Downloading [==============================================>    ]  162.2MB/176.1MB
 ```
 
-Stažení Image a image služby jsou spuštěny.
+Po stažení imagí se služby image Services spustí:
 
 ```console
 Starting docker_ocr_1   ... done
@@ -158,7 +158,7 @@ ocr_1    | Now listening on: http://0.0.0.0:5000
 ocr_1    | Application started. Press Ctrl+C to shut down.
 ```
 
-## <a name="verify-the-service-availability"></a>Ověřit dostupnost služby
+## <a name="verify-the-service-availability"></a>Ověření dostupnosti služby
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
@@ -170,19 +170,19 @@ IMAGE ID            REPOSITORY                                                  
 4be104c126c5        containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text    latest
 ```
 
-### <a name="test-the-recognize-text-container"></a>Test kontejneru rozpoznání textu
+### <a name="test-the-recognize-text-container"></a>Testování kontejneru Rozpoznávání textu
 
-Otevřete na hostitelském počítači prohlížeč a přejděte do `localhost` s zadaný port z *docker compose.yaml*, například `http://localhost:5021/swagger/index.html`. Zkuste jej funkce můžete použít rozhraní API k otestování koncový bod rozpoznání textu.
+Otevřete na hostitelském počítači prohlížeč a v souboru Docker-YAML, který používá zadaný port, http://localhost:5021/swagger/index.html přejít na **localhost** . K otestování Rozpoznávání textuho koncového bodu můžete použít funkci vyzkoušet ho v rozhraní API.
 
-![Rozpoznávání textu Swagger](media/recognize-text-swagger-page.png)
+![Rozpoznávání textu kontejner](media/recognize-text-swagger-page.png)
 
-### <a name="test-the-form-recognizer-container"></a>Test kontejneru rozlišovač formuláře
+### <a name="test-the-form-recognizer-container"></a>Testování kontejneru pro rozpoznávání formulářů
 
-Otevřete na hostitelském počítači prohlížeč a přejděte do `localhost` s zadaný port z *docker compose.yaml*, například `http://localhost:5010/swagger/index.html`. Zkuste jej funkce můžete použít rozhraní API pro testování koncového bodu modulu pro rozpoznávání formuláře.
+Otevřete na hostitelském počítači prohlížeč a v souboru Docker-YAML, který používá zadaný port, http://localhost:5010/swagger/index.html přejít na **localhost** . Pomocí funkce try it v rozhraní API můžete testovat koncový bod pro rozpoznávání formuláře.
 
-![Formulář pro rozpoznávání Swagger](media/form-recognizer-swagger-page.png)
+![Kontejner pro rozpoznávání formulářů](media/form-recognizer-swagger-page.png)
 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Kontejnery služby cognitive Services](../cognitive-services-container-support.md)
+> [Kontejnery Cognitive Services](../cognitive-services-container-support.md)

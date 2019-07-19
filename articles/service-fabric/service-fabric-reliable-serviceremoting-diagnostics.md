@@ -1,6 +1,6 @@
 ---
-title: Azure ServiceFabric Diagnostika a monitorování | Dokumentace Microsoftu
-description: Tento článek popisuje funkce monitorování výkonu v modulu runtime Service Fabric Reliable ServiceRemoting, jako jsou čítače výkonu, protože ho vygeneroval ho.
+title: Diagnostika a monitorování Azure ServiceFabric | Microsoft Docs
+description: Tento článek popisuje funkce monitorování výkonu v Service Fabric Reliable ServiceRemoting runtime, jako jsou čítače výkonu emitované.
 services: service-fabric
 documentationcenter: .net
 author: suchiagicha
@@ -13,92 +13,92 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2017
-ms.author: suchiagicha
-ms.openlocfilehash: 01430c40ec9fcf1af3a463f8f86d646d15b6dd49
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: chackdan
+ms.openlocfilehash: 4e9aa2bbb99cac2ffc2b57ccb9299bf4ee7a729e
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64925939"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876261"
 ---
-# <a name="diagnostics-and-performance-monitoring-for-reliable-service-remoting"></a>Diagnostika a sledování výkonu pro vzdálenou komunikaci Reliable Service
-Generuje runtime spolehlivé ServiceRemoting [čítače výkonu](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx). Tyto poskytují přehled o tom, jak funguje ServiceRemoting a pomoci při řešení potíží a monitorování výkonu.
+# <a name="diagnostics-and-performance-monitoring-for-reliable-service-remoting"></a>Monitorování diagnostiky a výkonu pro vzdálenou komunikaci spolehlivé služby
+ServiceRemoting runtime Reliable vygeneruje [čítače výkonu](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx). Poskytují přehled o tom, jak ServiceRemoting pracuje a umožňuje řešení potíží a monitorování výkonu.
 
 
 ## <a name="performance-counters"></a>Čítače výkonu
-Spolehlivé ServiceRemoting runtime definuje následující kategorie čítačů výkonu:
+Reliable ServiceRemoting Runtime definuje následující kategorie čítače výkonu:
 
-| Category | Popis |
+| Kategorie | Popis |
 | --- | --- |
-| Služba Service Fabric |Čítače specifické pro Azure Service Fabric vzdálené komunikace služby, například průměrná doba zpracování žádosti |
-| Metoda služby Service Fabric |Čítače specifické pro metody implementované vzdálené komunikace služby Service Fabric, například jak často je vyvolána metoda služby |
+| Služba Service Fabric |Čítače specifické pro vzdálenou komunikaci služby Azure Service Fabric, například průměrná doba potřebná pro zpracování požadavku |
+| Metoda služby Service Fabric |Čítače specifické pro metody implementované Service Fabric služby vzdálené komunikace, například jak často se vyvolala metoda služby |
 
-Každý z výše uvedených skupin má jeden nebo více čítačů.
+Každá z předchozích kategorií má jeden nebo více čítačů.
 
-[Windows Performance Monitor](https://technet.microsoft.com/library/cc749249.aspx) aplikace, která je k dispozici ve výchozím nastavení v operačním systému Windows umožňuje shromažďovat a zobrazovat data čítače výkonu. [Diagnostika Azure](../cloud-services/cloud-services-dotnet-diagnostics.md) je další možností pro shromažďování dat čítače výkonu a pak ho nahrát do tabulky Azure.
+Aplikace [sledování výkonu systému Windows](https://technet.microsoft.com/library/cc749249.aspx) , která je k dispozici ve výchozím nastavení v operačním systému Windows, se dá použít ke shromažďování a zobrazování dat čítače výkonu. [Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md) je další možnost pro shromažďování dat čítače výkonu a jejich nahrání do tabulek Azure.
 
-### <a name="performance-counter-instance-names"></a>Názvy instancí čítačů výkonu
-Cluster, který má velký počet ServiceRemoting služby nebo oddíly mají velký počet instancí čítače výkonu. Názvy instancí čítačů výkonu může pomoci při identifikaci konkrétní oddíl a metodu služby (Pokud je k dispozici), že instance čítače výkonu je přidružené.
+### <a name="performance-counter-instance-names"></a>Názvy instancí čítače výkonu
+Cluster, který má velký počet ServiceRemoting služeb nebo oddílů, má velký počet instancí čítače výkonu. Názvy instancí čítače výkonu vám pomůžou identifikovat konkrétní oddíl a metodu služby (Pokud je k dispozici), ke které je přidružená instance čítače výkonu.
 
 #### <a name="service-fabric-service-category"></a>Kategorie služby Service Fabric
-Kategorie `Service Fabric Service`, názvy instancí čítačů jsou v následujícím formátu:
+Pro kategorii `Service Fabric Service`jsou názvy instancí čítače v následujícím formátu:
 
 `ServiceFabricPartitionID_ServiceReplicaOrInstanceId_ServiceRuntimeInternalID`
 
-*ServiceFabricPartitionID* je řetězcové vyjádření ID oddílu Service Fabric, který je přidružen instance čítače výkonu. ID oddílu je identifikátor GUID a jeho řetězcovou reprezentaci je generován prostřednictvím [ `Guid.ToString` ](https://msdn.microsoft.com/library/97af8hh4.aspx) metoda se specifikátorem formátu "D".
+*ServiceFabricPartitionID* je řetězcová reprezentace ID oddílu Service Fabric, ke které je instance čítače výkonu přidružena. Identifikátor oddílu je identifikátor GUID a řetězcová reprezentace je generována prostřednictvím [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) metody s specifikátorem formátu "D".
 
-*ServiceReplicaOrInstanceId* je řetězcové vyjádření ID repliky a Instance prostředků infrastruktury služby, který je přidružen instance čítače výkonu.
+*ServiceReplicaOrInstanceId* je řetězcová reprezentace ID repliky nebo instance Service Fabric, ke které je instance čítače výkonu přidružená.
 
-*ServiceRuntimeInternalID* je řetězcové vyjádření 64bitové celé číslo, který generuje modul runtime Fabric Service pro interní použití. To je součástí název instance čítače výkonu a zajistí jeho jedinečnost nedošlo ke konfliktu s další názvy instancí čítačů výkonu. Uživatelé by se neměl pokoušet interpretovat tuto část název instance čítače výkonu.
+*ServiceRuntimeInternalID* je řetězcová reprezentace 64ého celého čísla generovaného modulem runtime služby Fabric pro jeho interní použití. Tato hodnota je obsažena v názvu instance čítače výkonu k zajištění jeho jedinečnosti a zabránění konfliktu s jinými názvy instancí čítače výkonu. Uživatelé by se neměli pokoušet interpretovat tuto část názvu instance čítače výkonu.
 
-Následuje příklad název instance čítač pro čítač, který patří `Service Fabric Service` kategorie:
+Následuje příklad názvu instance čítače pro čítač, který patří do `Service Fabric Service` kategorie:
 
 `2740af29-78aa-44bc-a20b-7e60fb783264_635650083799324046_5008379932`
 
-V předchozím příkladu `2740af29-78aa-44bc-a20b-7e60fb783264` je řetězcové vyjádření ID oddílu Service Fabric `635650083799324046` je řetězcové vyjádření repliky/InstanceId a `5008379932` je ID 64-bit, který je generován pro vnitřní modul runtime používat.
+V předchozím příkladu `2740af29-78aa-44bc-a20b-7e60fb783264` je řetězcová reprezentace ID oddílu Service Fabric, `635650083799324046` je řetězcové vyjádření repliky/InstanceId a `5008379932` je 64 ID, které je generováno pro interní použití modulu runtime.
 
-#### <a name="service-fabric-service-method-category"></a>Metoda služby Service Fabric kategorie
-Kategorie `Service Fabric Service Method`, názvy instancí čítačů jsou v následujícím formátu:
+#### <a name="service-fabric-service-method-category"></a>Kategorie metody služby Service Fabric
+Pro kategorii `Service Fabric Service Method`jsou názvy instancí čítače v následujícím formátu:
 
 `MethodName_ServiceRuntimeMethodId_ServiceFabricPartitionID_ServiceReplicaOrInstanceId_ServiceRuntimeInternalID`
 
-*MethodName* je název metody služby, který je přidružen instance čítače výkonu. Formát názvu metody je určen na základě nějaké logiky v modulu runtime Fabric Service, který vyrovnává čitelnost k názvu omezení na maximální délce názvy instancí čítačů výkonu Windows.
+*MethodName* je název metody služby, ke které je přidružena instance čítače výkonu. Formát názvu metody se určí na základě některé logiky v modulu runtime služby Fabric, který vyrovnává čitelnost názvu s omezeními pro maximální délku názvů instancí čítače výkonu ve Windows.
 
-*ServiceRuntimeMethodId* je řetězcové vyjádření 32bitové celé číslo, který generuje modul runtime Fabric Service pro interní použití. To je součástí název instance čítače výkonu a zajistí jeho jedinečnost nedošlo ke konfliktu s další názvy instancí čítačů výkonu. Uživatelé by se neměl pokoušet interpretovat tuto část název instance čítače výkonu.
+*ServiceRuntimeMethodId* je řetězcová reprezentace 32ého celého čísla generovaného modulem runtime služby Fabric pro jeho interní použití. Tato hodnota je obsažena v názvu instance čítače výkonu k zajištění jeho jedinečnosti a zabránění konfliktu s jinými názvy instancí čítače výkonu. Uživatelé by se neměli pokoušet interpretovat tuto část názvu instance čítače výkonu.
 
-*ServiceFabricPartitionID* je řetězcové vyjádření ID oddílu Service Fabric, který je přidružen instance čítače výkonu. ID oddílu je identifikátor GUID a jeho řetězcovou reprezentaci je generován prostřednictvím [ `Guid.ToString` ](https://msdn.microsoft.com/library/97af8hh4.aspx) metoda se specifikátorem formátu "D".
+*ServiceFabricPartitionID* je řetězcová reprezentace ID oddílu Service Fabric, ke které je instance čítače výkonu přidružena. Identifikátor oddílu je identifikátor GUID a řetězcová reprezentace je generována prostřednictvím [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) metody s specifikátorem formátu "D".
 
-*ServiceReplicaOrInstanceId* je řetězcové vyjádření ID repliky a Instance prostředků infrastruktury služby, který je přidružen instance čítače výkonu.
+*ServiceReplicaOrInstanceId* je řetězcová reprezentace ID repliky nebo instance Service Fabric, ke které je instance čítače výkonu přidružená.
 
-*ServiceRuntimeInternalID* je řetězcové vyjádření 64bitové celé číslo, který generuje modul runtime Fabric Service pro interní použití. To je součástí název instance čítače výkonu a zajistí jeho jedinečnost nedošlo ke konfliktu s další názvy instancí čítačů výkonu. Uživatelé by se neměl pokoušet interpretovat tuto část název instance čítače výkonu.
+*ServiceRuntimeInternalID* je řetězcová reprezentace 64ého celého čísla generovaného modulem runtime služby Fabric pro jeho interní použití. Tato hodnota je obsažena v názvu instance čítače výkonu k zajištění jeho jedinečnosti a zabránění konfliktu s jinými názvy instancí čítače výkonu. Uživatelé by se neměli pokoušet interpretovat tuto část názvu instance čítače výkonu.
 
-Následuje příklad název instance čítač pro čítač, který patří `Service Fabric Service Method` kategorie:
+Následuje příklad názvu instance čítače pro čítač, který patří do `Service Fabric Service Method` kategorie:
 
 `ivoicemailboxservice.leavemessageasync_2_89383d32-e57e-4a9b-a6ad-57c6792aa521_635650083804480486_5008380`
 
-V předchozím příkladu `ivoicemailboxservice.leavemessageasync` je název metody `2` je 32-bit ID vygenerované pro interní použití modulu runtime, `89383d32-e57e-4a9b-a6ad-57c6792aa521` je řetězcové vyjádření ID oddílu Service Fabric`635650083804480486` je řetězcové vyjádření ID služby technologie Fabric repliky nebo Instance a `5008380` je použít 64-bit ID vygenerované pro vnitřní modul runtime.
+V předchozím příkladu `ivoicemailboxservice.leavemessageasync` je název metody, `2` je identifikátor 32 generovaný pro interní použití modulu runtime, `89383d32-e57e-4a9b-a6ad-57c6792aa521` je řetězcové vyjádření ID oddílu Service Fabric,`635650083804480486` je řetězcové vyjádření. Service Fabric repliky/ID instance a `5008380` je identifikátor 64 generovaný pro interní použití modulu runtime.
 
 ## <a name="list-of-performance-counters"></a>Seznam čítačů výkonu
-### <a name="service-method-performance-counters"></a>Čítače výkonu služby – metoda
+### <a name="service-method-performance-counters"></a>Čítače výkonu metody služby
 
-Modul runtime spolehlivé služby zveřejňuje následující čítače výkonu související s provedením metody služby.
+Služba Reliable Service runtime zveřejňuje následující čítače výkonu související s prováděním metod služeb.
 
 | Název kategorie | Název čítače | Popis |
 | --- | --- | --- |
-| Metoda služby Service Fabric |Volání za sekundu |Kolikrát vyvolala metoda služby za sekundu |
+| Metoda služby Service Fabric |Volání za sekundu |Počet, kolikrát se metoda služby vyvolala za sekundu |
 | Metoda služby Service Fabric |Průměrný počet milisekund na vyvolání |Čas potřebný k provedení metody služby v milisekundách |
-| Metoda služby Service Fabric |Vyvolané výjimky/s |Počet pokusů, že metoda služby došlo k výjimce za sekundu |
+| Metoda služby Service Fabric |Vyvolané výjimky za sekundu |Počet, kolikrát metoda služby vyvolala výjimku za sekundu |
 
-### <a name="service-request-processing-performance-counters"></a>Čítače výkonu zpracování žádosti o službu
-Když klient volá metodu prostřednictvím objektu proxy služby, výsledkem zprávu požadavku, odeslání přes síť do vzdálené komunikace služby. Služba zpracovává zprávy s požadavkem a odešle odpověď zpět klientovi. Modul runtime spolehlivé ServiceRemoting publikuje následující čítače výkonu související s zpracování žádosti o služby.
+### <a name="service-request-processing-performance-counters"></a>Čítače výkonu zpracování žádostí o služby
+Když klient vyvolá metodu prostřednictvím objektu proxy služby, má za následek odeslání zprávy požadavku prostřednictvím sítě do služby vzdálené komunikace. Služba zpracuje zprávu požadavku a pošle odpověď zpět klientovi. Reliable ServiceRemoting runtime zveřejňuje následující čítače výkonu související se zpracováním žádostí o služby.
 
 | Název kategorie | Název čítače | Popis |
 | --- | --- | --- |
-| Služba Service Fabric |Počet zbývajících požadavků |Počet požadavků zpracovávaných ve službě |
-| Služba Service Fabric |Průměrný počet milisekund na požadavek |Doba trvání (v milisekundách) ve službě pro zpracování požadavku |
-| Služba Service Fabric |Průměrný počet milisekund deserializace požadavků |Doba trvání (v milisekundách) k deserializaci zprávy požadavku služby při přijetí na službu |
-| Služba Service Fabric |Průměrný počet milisekund serializace odpovědí |Doba trvání (v milisekundách) k serializaci zprávy s odpovědí služby na službu, před odesláním odpovědi klientovi |
+| Služba Service Fabric |počet nezpracovaných žádostí |Počet požadavků zpracovávaných ve službě |
+| Služba Service Fabric |Průměrný počet milisekund na požadavek |Doba trvání (v milisekundách), po kterou služba zpracovává požadavek |
+| Služba Service Fabric |Průměrný počet milisekund pro deserializaci žádosti |Doba trvání (v milisekundách) k deserializaci zprávy žádosti o službu, když se přijme ve službě |
+| Služba Service Fabric |Průměrný počet milisekund serializace odpovědi |Doba trvání (v milisekundách) k serializaci zprávy s odpovědí služby ve službě před odesláním odpovědi klientovi |
 
 ## <a name="next-steps"></a>Další postup
 * [Ukázka kódu](https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0)
-* [Poskytovatelé EventSource v PerfView](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)
+* [Zprostředkovatelé EventSource v PerfView](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)

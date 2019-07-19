@@ -179,7 +179,7 @@
                   displayname: 'ASP.NET, c#, csharp, .NET, NET, dotnet'
                   href: app/asp-net.md
                 - name: Konzola .NET
-                  displayname: 'console, .NET, dotnet console, dotenet, c#, csharp, NET'
+                  displayname: 'console, .NET, dotnet console, dotnet, c#, csharp, NET'
                   href: app/console.md
                 - name: ILogger
                   displayname: 'ilogger, logging, log'
@@ -295,7 +295,7 @@
                 - name: Testování výkonu
                   href: app/performance-testing.md
                 - name: Řešení potíží
-                  displayname: 'availability, troublshoot, troubleshoot availability'
+                  displayname: 'availability, troubleshoot, troubleshoot availability'
                   href: app/troubleshoot-availability.md
             - name: Distribuované trasování
               items:
@@ -497,6 +497,8 @@
                   href: insights/container-insights-alerts.md
                 - name: Správa agentů
                   href: insights/container-insights-manage-agent.md
+                - name: Konfigurace nastavení kolekce agentů
+                  href: insights/container-insights-agent-config.md
                 - name: Aktualizace pro zapnutí metrik
                   href: insights/container-insights-update-metrics.md
                 - name: Řešení potíží
@@ -612,8 +614,6 @@
                   href: insights/vminsights-workbooks.md
                 - name: Analýza dat s využitím dotazů na protokoly
                   href: insights/vminsights-log-search.md
-                - name: Konfigurace nastavení kolekce agentů
-                  href: insights/container-insights-agent-config.md
                 - name: Zákaz monitorování
                   href: insights/vminsights-optout.md
             - name: Řešení kapacity a výkonu

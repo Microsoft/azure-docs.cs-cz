@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start Azure: Vytvoření objektu blob v úložišti objektů pomocí Javy Storage SDK V10 | Dokumentace Microsoftu'
+title: 'Rychlý Start Azure: Vytvoření objektu BLOB v úložišti objektů pomocí sady Java Storage SDK v10 za účelem | Microsoft Docs'
 description: V tomto rychlém startu vytvoříte kontejner v úložišti objektů (Azure Blob), nahrajete soubor a vypíšete a stáhnete objekty pomocí sady Java Storage SDK.
 services: storage
 author: mhopkins-msft
@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.date: 11/14/2018
 ms.author: mhopkins
 ms.reviewer: seguler
-ms.openlocfilehash: f023f3fdbc82960f3994f8e5763310dc95ca1c2f
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 2aa004ffa98730341c8de105f16feea6e3931a86
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65152866"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326689"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-by-using-the-java-storage-sdk-v10"></a>Rychlý start: Nahrávání, stahování a výpis objektů BLOB pomocí V10 Java úložiště sady SDK
+# <a name="quickstart-upload-download-and-list-blobs-by-using-the-java-storage-sdk-v10"></a>Rychlý start: Nahrávání, stahování a výpis objektů BLOB pomocí sady Java Storage SDK v10 za účelem
 
 V tomto rychlém startu zjistíte, jak pomocí nové sady Java Storage SDK nahrávat, stahovat a vypisovat objekty blob bloku v kontejneru v úložišti objektů blob v Azure. Nová sada Java SDK používá reaktivní programovací model s implementací RxJava, který umožňuje asynchronní operace. Přečtěte si další informace o [reaktivních rozšířeních pro virtuální počítače s Javou](https://github.com/ReactiveX/RxJava) RxJava. 
 
@@ -26,7 +26,7 @@ V tomto rychlém startu zjistíte, jak pomocí nové sady Java Storage SDK nahr�
 
 Ujistěte se, že máte nainstalované následující další požadavky:
 
-* [Maven](https://maven.apache.org/download.cgi) pro práci z příkazového řádku nebo libovolné integrované vývojové prostředí Java, které dáváte přednost.
+* [Maven](https://maven.apache.org/download.cgi) pracovat z příkazového řádku nebo libovolné Java Integrated Development Environment, které dáváte přednost.
 * [JDK](https://aka.ms/azure-jdks)
 
 ## <a name="download-the-sample-application"></a>Stažení ukázkové aplikace
@@ -50,14 +50,14 @@ Toto řešení vyžaduje bezpečné uložení názvu a klíče vašeho účtu ú
 
 ### <a name="linux-example"></a>Příklad pro Linux
 
-```
+```bash
 export AZURE_STORAGE_ACCOUNT="<youraccountname>"
 export AZURE_STORAGE_ACCESS_KEY="<youraccountkey>"
 ```
 
 ### <a name="windows-example"></a>Příklad pro Windows
 
-```
+```CMD
 setx AZURE_STORAGE_ACCOUNT "<youraccountname>"
 setx AZURE_STORAGE_ACCESS_KEY "<youraccountkey>"
 ```
@@ -74,7 +74,7 @@ Pokud chcete ukázku spustit pomocí Mavenu na příkazovém řádku, otevřete 
 
 Tento příklad ukazuje výstup při spuštění aplikace ve Windows.
 
-```
+```Output
 Created quickstart container
 Enter a command
 (P)utBlob | (L)istBlobs | (G)etBlob | (D)eleteBlobs | (E)xitSample

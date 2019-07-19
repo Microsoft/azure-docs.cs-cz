@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor stavu v2 podrobné pokyny | Dokumentace Microsoftu
-description: Podrobné pokyny pro zahájení práce s v2 monitorování stavu. Sledování výkonu webu bez opětovného nasazení webu. Funguje s webové aplikace ASP.NET hostované místně, na virtuálních počítačích nebo v Azure.
+title: Podrobné pokyny k Azure Monitorování stavu v2 | Microsoft Docs
+description: Podrobné pokyny pro zahájení práce s Monitorování stavu v2 Monitorujte výkon webu bez nutnosti opětovného nasazení webu. Funguje s ASP.NET webovými aplikacemi hostovanými místně, na virtuálních počítačích nebo v Azure.
 services: application-insights
 documentationcenter: .net
 author: MS-TimothyMothra
@@ -12,37 +12,31 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: c8199c960229f9cc53cf57f9da3e1f17ebd9f5c7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 02f4fa45cbfa619825478520961b6411459973e4
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67074160"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326277"
 ---
-# <a name="status-monitor-v2-detailed-instructions"></a>Stav monitorování v2: Podrobné pokyny
+# <a name="status-monitor-v2-detailed-instructions"></a>Monitorování stavu v2: Podrobné pokyny
 
-Tento článek popisuje, jak se zapojit do Galerie prostředí PowerShell a stáhnout modul ApplicationMonitor.
-Popisuje nejběžnější parametry, které je potřeba, abyste mohli začít.
-Zahrnuje také pokyny k ručnímu provedení v případě, že nemáte přístup k Internetu.
+Tento článek popisuje, jak se připojit k Galerie prostředí PowerShell a stáhnout modul ApplicationMonitor.
+K dispozici jsou nejběžnější parametry, které budete muset začít.
+Pro případ, že nemáte přístup k Internetu, jsme také uvedli ruční pokyny ke stažení.
 
-> [!IMPORTANT]
-> Stav monitorování v2 je aktuálně ve verzi public preview.
-> Tato verze preview je k dispozici bez smlouvu o úrovni služeb, a to nedoporučujeme pro produkční úlohy. Některé funkce nemusí být podporované a některé můžou mít omezené možnosti.
-> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+## <a name="get-an-instrumentation-key"></a>Získat klíč instrumentace
 
-## <a name="get-an-instrumentation-key"></a>Získání klíče instrumentace
+Abyste mohli začít, budete potřebovat klíč instrumentace. Další informace najdete v tématu [vytvoření prostředku Application Insights](create-new-resource.md#copy-the-instrumentation-key).
 
-Abyste mohli začít, budete potřebovat Instrumentační klíč. Další informace najdete v tématu [vytvořte prostředek Application Insights](create-new-resource.md#copy-the-instrumentation-key).
+## <a name="run-powershell-as-admin-with-an-elevated-execution-policy"></a>Spusťte PowerShell jako správce se zvýšenými zásadami spouštění.
 
-## <a name="run-powershell-as-admin-with-an-elevated-execution-policy"></a>Spusťte PowerShell jako správce pomocí zásad provádění se zvýšenými oprávněními
+### <a name="run-as-admin"></a>Spustit jako správce
 
-**Spustit jako správce.**
-
-Prostředí PowerShell vyžaduje oprávnění na úrovni správce provést změny v počítači.
-
-**Zásady spouštění aplikace**
-- Popis: Spouštění skriptů prostředí PowerShell je ve výchozím nastavení zakázána. Doporučujeme vám umožní RemoteSigned skripty jenom v aktuálním oboru.
-- Další informace: [O zásady spouštění](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6) a [Set-ExecutionPolicy](
+K provedení změn v počítači vyžaduje prostředí PowerShell oprávnění na úrovni správce.
+### <a name="execution-policy"></a>Zásady spouštění aplikace
+- Popis: Ve výchozím nastavení jsou spuštěné skripty PowerShellu zakázané. Doporučujeme povolit skripty RemoteSigned jenom pro aktuální obor.
+- Další informace: [O zásadách spouštění](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6) a [Set-ExecutionPolicy](
 https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6
 ).
 - Příkaz: `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process`.
@@ -61,9 +55,9 @@ https:/go.microsoft.com/fwlink/?LinkID=135170.
 ```
 
 
-## <a name="prerequisites-for-powershell"></a>Požadavky na prostředí PowerShell
+## <a name="prerequisites-for-powershell"></a>Předpoklady pro PowerShell
 
-Auditovat powershellu spuštěním `$PSVersionTable` příkazu.
+Pomocí `$PSVersionTable` příkazu proveďte audit své instance prostředí PowerShell.
 Tento příkaz vytvoří následující výstup:
 
 
@@ -80,27 +74,27 @@ PSRemotingProtocolVersion      2.3
 SerializationVersion           1.1.0.1
 ```
 
-Tyto pokyny se vytvoření a otestování v počítači se systémem Windows 10 a verze uvedené výše.
+Tyto pokyny byly napsány a testovány v počítači se systémem Windows 10 a výše uvedenými verzemi.
 
-## <a name="prerequisites-for-powershell-gallery"></a>Předpoklady pro galerii prostředí PowerShell
+## <a name="prerequisites-for-powershell-gallery"></a>Předpoklady pro Galerie prostředí PowerShell
 
-Tyto kroky připraví váš server můžete stáhnout moduly z Galerie prostředí PowerShell.
+Pomocí těchto kroků připravíte server tak, aby stahoval moduly z Galerie prostředí PowerShell.
 
 > [!NOTE] 
-> Galerie prostředí PowerShell se podporuje na Windows 10, Windows Server 2016 a Powershellu 6.
-> Informace o předchozích verzích najdete v tématu [instalace Správce balíčků PowerShellGet](https://docs.microsoft.com/powershell/gallery/installing-psget).
+> Galerie prostředí PowerShell podporuje Windows 10, Windows Server 2016 a PowerShell 6.
+> Informace o dřívějších verzích najdete v tématu [instalace PowerShellGet](https://docs.microsoft.com/powershell/gallery/installing-psget).
 
 
-1. Spusťte PowerShell jako správce pomocí zásad provádění se zvýšenými oprávněními.
-2. Nainstalujte poskytovatele balíčku NuGet.
-    - Popis: Je třeba tohoto zprostředkovatele k interakci s úložišť založená na Nugetu jako galerie prostředí PowerShell.
+1. Spusťte PowerShell jako správce se zvýšenými zásadami spouštění.
+2. Nainstalujte zprostředkovatele balíčku NuGet.
+    - Popis: Tento poskytovatel budete potřebovat k interakci s úložištěmi založenými na NuGet, jako je Galerie prostředí PowerShell.
     - Další informace: [Install-PackageProvider](https://docs.microsoft.com/powershell/module/packagemanagement/install-packageprovider?view=powershell-6).
     - Příkaz: `Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201`.
     - Volitelné parametry:
         - `-Proxy`. Určuje proxy server pro požadavek.
         - `-Force`. Obchází výzvu k potvrzení.
     
-    Pokud není nastavený NuGet obdržíte této výzvy:
+    Tato výzva se zobrazí, pokud není nastavená sada NuGet:
         
         NuGet provider is required to continue
         PowerShellGet requires NuGet provider version '2.8.5.201' or newer to interact with NuGet-based repositories. The NuGet
@@ -110,14 +104,14 @@ Tyto kroky připraví váš server můžete stáhnout moduly z Galerie prostřed
          the NuGet provider now?
         [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"):
     
-3. Nakonfigurujte galerii prostředí PowerShell jako důvěryhodné úložiště.
-    - Popis: Ve výchozím nastavení je Galerie prostředí PowerShell nedůvěryhodného úložiště.
+3. Nakonfigurujte Galerie prostředí PowerShell jako důvěryhodné úložiště.
+    - Popis: Ve výchozím nastavení je Galerie prostředí PowerShell nedůvěryhodné úložiště.
     - Další informace: [Set-PSRepository](https://docs.microsoft.com/powershell/module/powershellget/set-psrepository?view=powershell-6).
     - Příkaz: `Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted`.
     - Volitelný parametr:
         - `-Proxy`. Určuje proxy server pro požadavek.
 
-    Obdržíte tuto výzvu Galerie prostředí PowerShell není důvěryhodné:
+    Tato výzva se zobrazí, pokud Galerie prostředí PowerShell není důvěryhodná:
 
         Untrusted repository
         You are installing the modules from an untrusted repository. If you trust this repository, change its
@@ -125,17 +119,17 @@ Tyto kroky připraví váš server můžete stáhnout moduly z Galerie prostřed
         'PSGallery'?
         [Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "N"):
 
-    Můžete tuto změnu potvrdit a auditovat všechny PSRepositories spuštěním `Get-PSRepository` příkazu.
+    Tuto změnu můžete potvrdit a auditovat všechny PSRepositories spuštěním `Get-PSRepository` příkazu.
 
-4. Nainstalujte nejnovější verzi správce balíčků PowerShellGet.
-    - Popis: Tento modul obsahuje nástroje použít k získání ostatní moduly z Galerie prostředí PowerShell. Verze 1.0.0.1 se dodává s Windows 10 a Windows Server. Verze 1.6.0 se vyžaduje nebo vyšší. Chcete-li zjistit, která verze je nainstalovaná, spusťte `Get-Command -Module PowerShellGet` příkazu.
-    - Další informace: [Instalace Správce balíčků PowerShellGet](https://docs.microsoft.com/powershell/gallery/installing-psget).
+4. Nainstalujte nejnovější verzi PowerShellGet.
+    - Popis: Tento modul obsahuje nástroje, které slouží k získání dalších modulů z Galerie prostředí PowerShell. Verze 1.0.0.1 je dodávána se systémy Windows 10 a Windows Server. Je vyžadována verze 1.6.0 nebo vyšší. Pokud chcete zjistit, která verze je nainstalovaná `Get-Command -Module PowerShellGet` , spusťte příkaz.
+    - Další informace: [Instaluje se PowerShellGet](https://docs.microsoft.com/powershell/gallery/installing-psget).
     - Příkaz: `Install-Module -Name PowerShellGet`.
     - Volitelné parametry:
         - `-Proxy`. Určuje proxy server pro požadavek.
-        - `-Force`. Obchází upozornění "již nainstalováno" a nainstaluje nejnovější verzi.
+        - `-Force`. Obchází upozornění "už nainstalovaného" a nainstaluje nejnovější verzi.
 
-    Pokud nepoužíváte nejnovější verzi modulu PowerShellGet, zobrazí se tato chyba:
+    Tato chyba se zobrazí, pokud nepoužíváte nejnovější verzi PowerShellGet:
     
         Install-Module : A parameter cannot be found that matches parameter name 'AllowPrerelease'.
         At line:1 char:20
@@ -144,43 +138,43 @@ Tyto kroky připraví váš server můžete stáhnout moduly z Galerie prostřed
             CategoryInfo          : InvalidArgument: (:) [Install-Module], ParameterBindingException
             FullyQualifiedErrorId : NamedParameterNotFound,Install-Module
     
-5. Restartujte prostředí PowerShell. Nová verze nelze načíst v aktuální relaci. Nová relace Powershellu se načte nejnovější verzi modulu PowerShellGet.
+5. Restartujte PowerShell. V aktuální relaci nelze načíst novou verzi. Nové relace PowerShellu budou načítat nejnovější verzi PowerShellGet.
 
-## <a name="download-and-install-the-module-via-powershell-gallery"></a>Stáhněte a nainstalujte modul prostřednictvím Galerie prostředí PowerShell
+## <a name="download-and-install-the-module-via-powershell-gallery"></a>Stáhněte a nainstalujte modul pomocí Galerie prostředí PowerShell
 
-Tyto kroky budou stahovat modulu Az.ApplicationMonitor z Galerie prostředí PowerShell.
+Pomocí těchto kroků se stáhne modul AZ. ApplicationMonitor z Galerie prostředí PowerShell.
 
-1. Ujistěte se, že jsou splněné všechny požadavky pro galerii prostředí PowerShell.
-2. Spusťte PowerShell jako správce pomocí zásad provádění se zvýšenými oprávněními.
-3. Instalace modulu Az.ApplicationMonitor.
+1. Ujistěte se, že jsou splněné všechny požadavky pro Galerie prostředí PowerShell.
+2. Spusťte PowerShell jako správce se zvýšenými zásadami spouštění.
+3. Nainstalujte modul AZ. ApplicationMonitor.
     - Další informace: [Install-Module](https://docs.microsoft.com/powershell/module/powershellget/install-module?view=powershell-6).
     - Příkaz: `Install-Module -Name Az.ApplicationMonitor`.
     - Volitelné parametry:
         - `-Proxy`. Určuje proxy server pro požadavek.
-        - `-AllowPrerelease`. Umožňuje instalaci alfa a beta verze.
-        - `-AcceptLicense`. Obchází řádku "Přijměte licenci"
-        - `-Force`. Obchází upozornění "Nedůvěryhodného úložiště".
+        - `-AllowPrerelease`. Umožňuje instalaci verzí Alpha a beta.
+        - `-AcceptLicense`. Obchází výzvu "Accept License".
+        - `-Force`. Obchází upozornění "nedůvěryhodné úložiště".
 
-## <a name="download-and-install-the-module-manually-offline-option"></a>Stáhněte si a nainstalujte modul ručně (offline možnost)
+## <a name="download-and-install-the-module-manually-offline-option"></a>Ruční stažení a instalace modulu (možnost offline)
 
-Pokud z nějakého důvodu se nelze připojit k modulu prostředí PowerShell, můžete ručně stáhnout a nainstalovat modul Az.ApplicationMonitor.
+Pokud z nějakého důvodu nemůžete připojit modul PowerShellu, můžete ručně stáhnout a nainstalovat modul AZ. ApplicationMonitor.
 
-### <a name="manually-download-the-latest-nupkg-file"></a>Ručně stáhněte si nejnovější soubor nupkg
+### <a name="manually-download-the-latest-nupkg-file"></a>Ruční stažení nejnovějšího souboru nupkg
 
 1. Přejděte do části https://www.powershellgallery.com/packages/Az.ApplicationMonitor (Soubor > Nový > Jiné).
-2. Vyberte nejnovější verzi souboru v **historie verzí** tabulky.
-3. V části **možnosti instalace**vyberte **ruční stažení**.
+2. V tabulce **Historie verzí** vyberte nejnovější verzi souboru.
+3. V části **Možnosti instalace**vyberte **Ruční stažení**.
 
-### <a name="option-1-install-into-a-powershell-modules-directory"></a>Option 1: Instalace do adresáře modulů Powershellu
-Nainstalujte ručně stažené modul prostředí PowerShell do adresáře PowerShell tak bude zjistitelné relacemi Powershellu.
-Další informace najdete v tématu [instaluje se modul PowerShell](https://docs.microsoft.com/powershell/developer/module/installing-a-powershell-module).
+### <a name="option-1-install-into-a-powershell-modules-directory"></a>Možnost 1: Instalace do adresáře modulů PowerShellu
+Nainstalujte ručně stažený modul PowerShellu do adresáře PowerShellu, aby byl zjistitelný pomocí relací PowerShellu.
+Další informace najdete v tématu [Instalace modulu PowerShellu](https://docs.microsoft.com/powershell/developer/module/installing-a-powershell-module).
 
 
-#### <a name="unzip-nupkg-as-a-zip-file-by-using-expand-archive-v1010"></a>Rozbalte nupkg jako soubor zip s použitím Expand-archivu (v1.0.1.0)
+#### <a name="unzip-nupkg-as-a-zip-file-by-using-expand-archive-v1010"></a>Rozbalí nupkg jako soubor ZIP pomocí expand-Archive (v 1.0.1.0).
 
-- Popis: Základní verze Microsoft.PowerShell.Archive (v1.0.1.0) nelze rozbalit nupkg soubory. Přejmenujte soubor s příponou .zip.
-- Další informace: [Rozbalte archiv](https://docs.microsoft.com/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6).
-- Příkaz:
+- Popis: Základní verze Microsoft. PowerShell. Archive (v 1.0.1.0) nemůže dekomprimovat soubory nupkg. Přejmenujte soubor s příponou. zip.
+- Další informace: [Rozbalte položku archiv](https://docs.microsoft.com/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6).
+- Systému
 
     ```
     $pathToNupkg = "C:\az.applicationmonitor.0.3.0-alpha.nupkg"
@@ -190,11 +184,11 @@ Další informace najdete v tématu [instaluje se modul PowerShell](https://docs
     Expand-Archive -LiteralPath $pathToZip -DestinationPath $pathInstalledModule
     ```
 
-#### <a name="unzip-nupkg-by-using-expand-archive-v1100"></a>Rozbalte nupkg pomocí Expand-archivu (v1.1.0.0)
+#### <a name="unzip-nupkg-by-using-expand-archive-v1100"></a>Rozbalení nupkg pomocí expand-Archive (v 1.1.0.0)
 
-- Popis: Použijte aktuální verzi rozbalte archiv k rozbalení nupkg soubory beze změny rozšíření.
-- Další informace: [Rozbalte archiv](https://docs.microsoft.com/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6) a [Microsoft.PowerShell.Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive/1.1.0.0).
-- Příkaz:
+- Popis: K rozbalení souborů nupkg bez změny rozšíření použijte aktuální verzi nástroje expand-Archive.
+- Další informace: [Rozbalte položku-Archive](https://docs.microsoft.com/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6) a [Microsoft. PowerShell. Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive/1.1.0.0).
+- Systému
 
     ```
     $pathToNupkg = "C:\az.applicationmonitor.0.2.1-alpha.nupkg"
@@ -202,37 +196,37 @@ Další informace najdete v tématu [instaluje se modul PowerShell](https://docs
     Expand-Archive -LiteralPath $pathToNupkg -DestinationPath $pathInstalledModule
     ```
 
-### <a name="option-2-unzip-and-import-nupkg-manually"></a>Option 2: Rozbalte a importovat nupkg ručně
-Nainstalujte ručně stažené modul prostředí PowerShell do adresáře PowerShell tak bude zjistitelné relacemi Powershellu.
-Další informace najdete v tématu [instaluje se modul PowerShell](https://docs.microsoft.com/powershell/developer/module/installing-a-powershell-module).
+### <a name="option-2-unzip-and-import-nupkg-manually"></a>Možnost 2: Ruční extrahování a import nupkg
+Nainstalujte ručně stažený modul PowerShellu do adresáře PowerShellu, aby byl zjistitelný pomocí relací PowerShellu.
+Další informace najdete v tématu [Instalace modulu PowerShellu](https://docs.microsoft.com/powershell/developer/module/installing-a-powershell-module).
 
-Pokud instalujete modulu do žádného jiného adresáře, modul naimportovat ručně pomocí [Import-Module](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/import-module?view=powershell-6).
+Pokud instalujete modul do libovolného jiného adresáře, importujte modul ručně pomocí [Import-Module](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/import-module?view=powershell-6).
 
 > [!IMPORTANT] 
-> Knihovny DLL se nainstaluje prostřednictvím relativní cesty.
-> Store obsah balíčku v adresáři odpovídající modul runtime a potvrďte, že umožňují přístupová oprávnění pro čtení, ale ne zápisu.
+> Knihovny DLL se budou instalovat prostřednictvím relativních cest.
+> Uložte obsah balíčku do svého zamýšleného běhového adresáře a potvrďte, že přístupová oprávnění povolují čtení, ale nikoli zápis.
 
-1. Změňte příponu na ".zip" a extrahovat obsah balíčku do určené instalační adresář.
-2. Najdete cestu k souboru Az.ApplicationMonitor.psd1.
-3. Spusťte PowerShell jako správce pomocí zásad provádění se zvýšenými oprávněními.
-4. Načtení modulu s použitím `Import-Module Az.ApplicationMonitor.psd1` příkazu.
+1. Změňte rozšíření na. zip a extrahujte obsah balíčku do svého zamýšleného instalačního adresáře.
+2. Vyhledejte cestu k souboru AZ. ApplicationMonitor. psd1.
+3. Spusťte PowerShell jako správce se zvýšenými zásadami spouštění.
+4. Načtěte modul pomocí `Import-Module Az.ApplicationMonitor.psd1` příkazu.
     
 
-## <a name="route-traffic-through-a-proxy"></a>Směrování provozu přes proxy server
+## <a name="route-traffic-through-a-proxy"></a>Směrování provozu prostřednictvím proxy serveru
 
-Monitorovat počítač v privátním intranetu, bude nutné směrovat provoz protokolu HTTP prostřednictvím proxy serveru.
+Když monitorete počítač v privátním intranetu, budete muset směrovat přenos HTTP prostřednictvím proxy serveru.
 
-Podpora Powershellové příkazy, které stáhne a nainstaluje Az.ApplicationMonitor z Galerie prostředí PowerShell `-Proxy` parametru.
-Při psaní skriptů instalace, projděte si podle předchozích pokynů.
+Příkazy prostředí PowerShell ke stažení a instalaci AZ. ApplicationMonitor z Galerie prostředí PowerShell podporují `-Proxy` parametr.
+Při psaní instalačních skriptů si Projděte předchozí pokyny.
 
-Application Insights SDK potřebovat k odesílání telemetrie vaší aplikace společnosti Microsoft. Doporučujeme nakonfigurovat nastavení proxy serveru pro vaši aplikaci ve vašem souboru web.config. Další informace najdete v tématu [nejčastější dotazy k Application Insights: Průchod proxy](https://docs.microsoft.com/azure/azure-monitor/app/troubleshoot-faq#proxy-passthrough).
+Sada Application Insights SDK bude muset poslat telemetrii vaší aplikace Microsoftu. Doporučujeme nakonfigurovat nastavení proxy serveru pro vaši aplikaci v souboru Web. config. Další informace najdete v tématu [Application Insights Nejčastější dotazy: Passthrough](https://docs.microsoft.com/azure/azure-monitor/app/troubleshoot-faq#proxy-passthrough)proxy serveru.
 
 
 ## <a name="enable-monitoring"></a>Povolení monitorování
 
-Použití `Enable-ApplicationInsightsMonitoring` příkaz, který povolí monitorování.
+K povolení monitorování použijte příkaz.`Enable-ApplicationInsightsMonitoring`
 
-Zobrazit [reference k rozhraní API](status-monitor-v2-api-enable-monitoring.md) podrobný popis toho, jak použít tuto rutinu.
+Podrobný popis způsobu použití této rutiny najdete v referenčních informacích k [rozhraní API](status-monitor-v2-api-enable-monitoring.md) .
 
 
 
@@ -240,17 +234,17 @@ Zobrazit [reference k rozhraní API](status-monitor-v2-api-enable-monitoring.md)
 
  Zobrazení telemetrických dat:
 
-- [Zkoumání metrik](../../azure-monitor/app/metrics-explorer.md) pro monitorování výkonu a využití.
-- [Prohledávejte události a protokoly](../../azure-monitor/app/diagnostic-search.md) k diagnostice problémů.
-- [Použití analýzy](../../azure-monitor/app/analytics.md) pro pokročilejší dotazy.
+- [Prozkoumejte metriky](../../azure-monitor/app/metrics-explorer.md) pro monitorování výkonu a využití.
+- [Prohledejte události a protokoly](../../azure-monitor/app/diagnostic-search.md) a Diagnostikujte problémy.
+- K pokročilejším dotazům [použijte Analytics](../../azure-monitor/app/analytics.md) .
 - [Vytváření řídicích panelů](../../azure-monitor/app/overview-dashboard.md).
 
  Přidání další telemetrie:
 
-- [Vytvářejte webové testy](monitor-web-app-availability.md) k Ujistěte se, že web zůstává živý.
-- [Přidání telemetrie webového klienta](../../azure-monitor/app/javascript.md) pro zobrazení výjimek z kódu webové stránky a povolit trasování volání.
-- [Přidejte Application Insights SDK do kódu](../../azure-monitor/app/asp-net.md) abyste mohli vložit trasování a protokolování volání.
+- [Vytvářejte webové testy](monitor-web-app-availability.md) , abyste se ujistili, že vaše lokalita zůstane v provozu.
+- [Přidejte telemetrii webového klienta](../../azure-monitor/app/javascript.md) pro zobrazení výjimek z kódu webové stránky a umožnění volání trasování.
+- [Přidejte sadu Application Insights SDK do kódu](../../azure-monitor/app/asp-net.md) , abyste mohli vložit trasování a protokolování volání.
 
-Lepší využití v2 monitorování stavu:
+Další informace najdete v Monitorování stavu v2:
 
-- Pomocí naší příručce ke [Poradce při potížích s](status-monitor-v2-troubleshoot.md) v2 monitorování stavu.
+- Použijte náš průvodce k [řešení potíží s](status-monitor-v2-troubleshoot.md) monitorování stavu v2.

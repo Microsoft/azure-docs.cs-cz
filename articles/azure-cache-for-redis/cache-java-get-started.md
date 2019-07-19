@@ -1,6 +1,6 @@
 ---
-title: Rychlý start pro další informace o použití mezipaměti Azure pro Redis s Javou | Dokumentace Microsoftu
-description: V tomto rychlém startu vytvoříte novou aplikaci Java, která používá mezipaměť Azure Redis
+title: Rychlý Start, kde se dozvíte, jak používat Azure cache pro Redis s Java | Microsoft Docs
+description: V tomto rychlém startu vytvoříte novou aplikaci Java, která bude používat Azure cache pro Redis.
 services: cache
 documentationcenter: ''
 author: yegu-ms
@@ -15,32 +15,21 @@ ms.workload: tbd
 ms.date: 05/23/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 047350fa957d9ca1fdec50f97a590ba90a42e1b2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 01fb6f66ce71599a70a127a2b73eba6f848bf365
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60830477"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68324132"
 ---
-# <a name="quickstart-how-to-use-azure-cache-for-redis-with-java"></a>Rychlý start: Použití mezipaměti Azure pro Redis s Javou
+# <a name="quickstart-use-azure-cache-for-redis-with-java"></a>Rychlý start: Použití Azure cache pro Redis s Java
 
-
-Mezipaměti Redis Azure nabízí přístup do vyhrazené mezipaměti Azure Redis, spravovanou microsoftem. Vaše mezipaměť je přístupná ze všech aplikací v rámci Microsoft Azure.
-
-V tomto článku se dozvíte, jak začít pracovat s mezipamětí Azure Redis používání [Jedis](https://github.com/xetorthio/jedis) klienta Redis pro Javu.
-
-![Dokončená aplikace v mezipaměti](./media/cache-java-get-started/cache-app-complete.png)
-
-K dokončení kroků v tomto rychlém startu můžete použít jakýkoli editor kódu. Skvělou volbou je však editor [Visual Studio Code](https://code.visualstudio.com/), který je dostupný pro platformy Windows, macOS a Linux.
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
+V tomto rychlém startu zabezpečíte mezipaměť Azure pro Redis do aplikace Java pomocí klienta [Jedis](https://github.com/xetorthio/jedis) Redis, abyste měli přístup k zabezpečené vyhrazené mezipaměti, která je přístupná z libovolné aplikace v Azure.
 
 ## <a name="prerequisites"></a>Požadavky
 
-[Apache Maven](https://maven.apache.org/)
-
-
+- Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
+- [Apache Maven](https://maven.apache.org/download.cgi)
 
 ## <a name="create-an-azure-cache-for-redis"></a>Vytvoření Azure Cache pro Redis
 
@@ -50,7 +39,7 @@ K dokončení kroků v tomto rychlém startu můžete použít jakýkoli editor 
 
 Přidejte proměnné prostředí pro **NÁZEV HOSTITELE** a **primární** přístupový klíč. Tyto proměnné z kódu použijete místo citlivých informací, které byste zahrnuli přímo do kódu.
 
-```
+```CMD 
 set REDISCACHEHOSTNAME=contosoCache.redis.cache.windows.net
 set REDISCACHEKEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
@@ -59,7 +48,7 @@ set REDISCACHEKEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 Pomocí Mavenu vygenerujte novou aplikaci rychlého startu:
 
-```
+```CMD
 mvn archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.3 -DgroupId=example.demo -DartifactId=redistest -Dversion=1.0
 ```
 
@@ -131,7 +120,7 @@ public class App
 }
 ```
 
-Tento kód ukazuje, jak se připojit k Azure Cache pro instanci Redis pomocí mezipaměti název hostitele a proměnných prostředí klíče. Kód také ukládá a načítá hodnotu řetězce v mezipaměti. Spouští se také příkazy `PING` a `CLIENT LIST`. 
+Tento kód ukazuje, jak se připojit k instanci služby Azure cache for Redis pomocí názvu hostitele mezipaměti a proměnných prostředí klíče. Kód také ukládá a načítá hodnotu řetězce v mezipaměti. Spouští se také příkazy `PING` a `CLIENT LIST`. 
 
 Uložte *App.java*.
 
@@ -139,7 +128,7 @@ Uložte *App.java*.
 
 Spusťte následující příkaz Maven k sestavení a spuštění aplikace:
 
-```
+```CMD
 mvn compile
 mvn exec:java -D exec.mainClass=example.demo.App
 ```
@@ -147,7 +136,6 @@ mvn exec:java -D exec.mainClass=example.demo.App
 V níže uvedeném příkladu můžete vidět, že klíč `Message` měl předtím hodnotu z mezipaměti, která byla nastavena pomocí konzoly Redis na webu Azure Portal. Aplikace tuto hodnotu z mezipaměti aktualizovala. Aplikace rovněž spustila příkazy `PING` a `CLIENT LIST`.
 
 ![Dokončená aplikace v mezipaměti](./media/cache-java-get-started/cache-app-complete.png)
-
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -169,14 +157,9 @@ Zobrazí se výzva k potvrzení odstranění skupiny prostředků. Potvrďte ods
 
 Po chvíli bude skupina prostředků včetně všech obsažených prostředků odstraněná.
 
+## <a name="next-steps"></a>Další kroky
 
-
-## <a name="next-steps"></a>Další postup
-
-V tomto rychlém startu jste zjistili, jak používat Azure Cache pro Redis z aplikace v Javě. Pokračujte k dalšímu rychlému startu pro účely Azure mezipaměti Redis s webovou aplikaci ASP.NET.
+V tomto rychlém startu jste zjistili, jak používat Azure cache pro Redis z aplikace Java. Přejděte k dalšímu rychlému startu a použijte Azure cache pro Redis s webovou aplikací ASP.NET.
 
 > [!div class="nextstepaction"]
-> [Vytvoření webové aplikace ASP.NET využívající Azure Cache pro Redis.](./cache-web-app-howto.md)
-
-
-
+> [Vytvořte webovou aplikaci ASP.NET, která používá Azure cache pro Redis.](./cache-web-app-howto.md)

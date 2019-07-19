@@ -1,6 +1,6 @@
 ---
-title: 'Azure Monitor stavu v2 reference k rozhraní API: Zakázat modul instrumentace | Dokumentace Microsoftu'
-description: Odkaz na stav monitorování v2 API. Disable-InstrumentationEngine. Sledování výkonu webu bez opětovného nasazení webu. Funguje s webové aplikace ASP.NET hostované místně, na virtuálních počítačích nebo v Azure.
+title: 'Reference k rozhraní API služby Azure Monitorování stavu v2: Zakázat modul instrumentace | Microsoft Docs'
+description: Reference k rozhraní API pro Monitorování stavu v2 Disable-InstrumentationEngine. Monitorujte výkon webu bez nutnosti opětovného nasazení webu. Funguje s ASP.NET webovými aplikacemi hostovanými místně, na virtuálních počítačích nebo v Azure.
 services: application-insights
 documentationcenter: .net
 author: MS-TimothyMothra
@@ -12,28 +12,23 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: cd35af6ead2d734fa68b85b199aac219daf8dcd9
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 827f8555718a22979617c9b0794dce3bd92207f4
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807159"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326393"
 ---
-# <a name="status-monitor-v2-api-disable-instrumentationengine-v040-alpha"></a>Rozhraní API v2 monitorování stavu: Disable-InstrumentationEngine (v0.4.0 alfa)
+# <a name="status-monitor-v2-api-disable-instrumentationengine"></a>Rozhraní API pro Monitorování stavu v2: Disable-InstrumentationEngine
 
-Tento článek popisuje rutiny, která je členem skupiny [modulu Az.ApplicationMonitor PowerShell](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
-
-> [!IMPORTANT]
-> Stav monitorování v2 je aktuálně ve verzi public preview.
-> Tato verze preview je k dispozici bez smlouvu o úrovni služeb, a to nedoporučujeme pro produkční úlohy. Některé funkce nemusí být podporované a některé můžou mít omezené možnosti.
-> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Tento článek popisuje rutinu, která je členem [modulu PowerShellu AZ. ApplicationMonitor](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
 
 ## <a name="description"></a>Popis
-Zakáže stroj instrumentace odebráním některé klíče registru.
-Restartujte službu IIS se změny projevily.
+Zakáže modul instrumentace odebráním některých klíčů registru.
+Restartujte službu IIS, aby se změny projevily.
 
 > [!IMPORTANT] 
-> Tato rutina vyžaduje relaci Powershellu s oprávněními správce.
+> Tato rutina vyžaduje relaci PowerShellu s oprávněními správce.
 
 ## <a name="examples"></a>Příklady
 
@@ -43,13 +38,13 @@ PS C:\> Disable-InstrumentationEngine
 
 ## <a name="parameters"></a>Parametry 
 
-### <a name="-verbose"></a>-Verbose
-**Společný parametr.** Tento přepínač použijte na výstup podrobných protokolů.
+### <a name="-verbose"></a>– Verbose
+**Společný parametr** Pomocí tohoto přepínače můžete vyvýstupovat podrobné protokoly.
 
 ## <a name="output"></a>Výstup
 
 
-#### <a name="example-output-from-successfully-disabling-the-instrumentation-engine"></a>Příklad výstupu z úspěšně zakázání modul instrumentace
+#### <a name="example-output-from-successfully-disabling-the-instrumentation-engine"></a>Příklad výstupu z úspěšného zakázání modulu instrumentace
 
 ```
 Configuring IIS Environment for instrumentation engine...
@@ -60,7 +55,7 @@ Configuring registry for instrumentation engine...
 ```
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
- Lepší využití v2 monitorování stavu:
- - Pomocí naší příručce ke [Poradce při potížích s](status-monitor-v2-troubleshoot.md) v2 monitorování stavu.
+ Další informace najdete v Monitorování stavu v2:
+ - Použijte náš průvodce k [řešení potíží s](status-monitor-v2-troubleshoot.md) monitorování stavu v2.

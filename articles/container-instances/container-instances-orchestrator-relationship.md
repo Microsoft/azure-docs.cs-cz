@@ -1,72 +1,73 @@
 ---
-title: Služba Azure Container Instances a Orchestrace kontejnerů
-description: Seznamte se s Azure container instance interakci s orchestrátorů kontejnerů.
+title: Azure Container Instances a orchestrace kontejnerů
+description: Pochopte, jak služby Azure Container Instances komunikují s orchestrací kontejnerů.
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: df9c3ecbec6dccd9ba8db2b375cfab3276005098
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c83648124f616670423b2ef459530c191d7e17e4
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65072985"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325767"
 ---
-# <a name="azure-container-instances-and-container-orchestrators"></a>Služba Azure Container Instances a orchestrátorů kontejnerů
+# <a name="azure-container-instances-and-container-orchestrators"></a>Azure Container Instances a orchestrace kontejnerů
 
-Vzhledem k jejich malou velikost a orientace aplikace kontejnery jsou vhodná pro prostředí agile doručování a architektur založených na mikroslužbách. Úlohy automatizace a Správa velkého počtu kontejnerů a jejich vzájemné interakce se označuje jako *Orchestrace*. Oblíbených orchestrátorů kontejnerů zahrnují Kubernetes, DC/OS a Docker Swarm.
+Z důvodu jejich malé velikosti a orientace aplikace jsou kontejnery vhodné pro prostředí agilního doručování a architektury založené na mikroslužbách. Úkol automatizace a správy velkého počtu kontejnerů a jejich interakce se označují jako *orchestrace*. Populární orchestrace kontejnerů zahrnují Kubernetes, DC/OS a Docker Swarm.
 
-Služba Azure Container Instances nabízí některé základní schopnosti plánování Orchestrace platforem. A přestože nepokrývá služby vyšší hodnota, které poskytují tyto platformy, Azure Container Instances může být doplňkové k nim. Tento článek popisuje obor co zpracovává Azure Container Instances a jak orchestrátorů kontejnerů může pracovat s ním.
+Azure Container Instances poskytuje některé základní možnosti plánování platforem Orchestration. A i když nepokrývá služby s vyšší hodnotou, které tyto platformy poskytují, Azure Container Instances je lze doplňovat. Tento článek popisuje rozsah toho, co Azure Container Instances Handles a jak se s ním můžou používat úplné orchestrace kontejnerů.
 
-## <a name="traditional-orchestration"></a>Tradiční Orchestrace
+## <a name="traditional-orchestration"></a>Tradiční orchestrace
 
-Standardní definice Orchestrace zahrnuje následující úlohy:
+Standardní definice orchestrace zahrnuje následující úlohy:
 
-- **Plánování**: Vzhledem k imagi kontejneru a požadavkem na prostředky, najdete vhodnou počítači, ve kterém pro spuštění kontejneru.
-- **Spřažení/proti-affinity**: Určení, sadu kontejnerů by měl být spuštěny okolních druhou (pro výkonu) nebo dostatečně daleko od sebe (dostupnosti).
-- **Monitorování stavu**: Sledování selhání kontejneru a automaticky znovu naplánovat.
-- **Převzetí služeb při selhání**: Mějte přehled o co běží na každém počítači a plánovanou zkoušku přeplánovat kontejnerů z neúspěšné počítače pro uzly v dobrém stavu.
-- **Škálování**: Přidání nebo odebrání instance kontejneru tak, aby odpovídaly poptávky, ručně nebo automaticky.
-- **Sítě**: Zadejte překryvné sítě pro koordinační kontejnery pro komunikaci mezi více hostitelských počítačů.
-- **Zjišťování služby**: Umožňují používání kontejnerů k sobě navzájem i při přesunu mezi hostitelské počítače a změnit IP adres automaticky, vyhledejte.
-- **Koordinovaných upgradů aplikací**: Správa kontejnerů upgrady výpadky aplikací a povolit možnost vrácení zpět, pokud se něco nepovede.
+- **Plánování**: V případě image kontejneru a žádosti o prostředky Najděte vhodný počítač, na kterém se má kontejner spustit.
+- **Spřažení/proti spřažení**: Určete, že by se měla sada kontejnerů běžet vedle sebe (pro výkon) nebo dostatečně daleko od sebe (k dispozici).
+- **Sledování stavu**: Sledujte selhání kontejneru a automaticky je znovu naplánujte.
+- **Převzetí služeb při selhání**: Sledujte, co na každém počítači běží, a znovu Naplánujte kontejnery z neúspěšných počítačů do funkčních uzlů.
+- **Škálování:** Přidejte nebo odeberte instance kontejnerů, které odpovídají požadavkům, a to buď ručně, nebo automaticky.
+- **Síťové služby**: Poskytněte překryvnou síť pro koordinaci kontejnerů pro komunikaci mezi několika hostitelskými počítači.
+- **Zjišťování služby**: Umožněte, aby se kontejnery navzájem vyhledaly automaticky, i když se přesunují mezi hostitelskými počítači a změnily IP adresy.
+- **Koordinované upgrady aplikací**: Spravujte upgrady kontejnerů, aby nedocházelo k výpadkům aplikací, a pokud se něco nepovede, povolte vrácení zpět
 
-## <a name="orchestration-with-azure-container-instances-a-layered-approach"></a>Orchestrace s Azure Container Instances: Vrstveného přístupu
+## <a name="orchestration-with-azure-container-instances-a-layered-approach"></a>Orchestrace pomocí Azure Container Instances: Vrstvený přístup
 
-Azure Container Instances umožňuje vrstveného přístupu k orchestraci, poskytuje všechny možnosti plánování a správu potřebné ke spuštění jednoho kontejneru, přičemž platformy orchestrator ke správě více kontejnerů úloh dojde k jeho zvýraznění.
+Azure Container Instances umožňuje vrstvený přístup k orchestraci a poskytuje všechny možnosti plánování a správy potřebné ke spuštění jednoho kontejneru a zároveň umožňuje platformám Orchestrator spravovat úlohy s více kontejnery nad ním.
 
-Protože základní infrastruktury pro container instances je spravuje Azure, není potřeba zabývat se hledání počítače s vhodného hostitele, ve kterém se spustí jedním kontejnerem platformě nástroje orchestrator. Flexibilitu cloudu zajišťuje, že jeden je vždy k dispozici. Místo toho orchestrator můžete zaměřit na úkoly, které zjednodušují vývoj architektury více kontejnerů, včetně škálování a koordinovaných upgradů.
+Vzhledem k tomu, že základní infrastruktura pro instance kontejnerů je spravována Azure, platforma Orchestrator nemusí se zabývat tím, že najde příslušný hostitelský počítač, na kterém se spouští jeden kontejner. Flexibilita v cloudu zajišťuje, že jedna je vždy k dispozici. Místo toho se může Orchestrator soustředit na úlohy, které zjednodušují vývoj architektur s více kontejnery, včetně škálování a koordinovaných upgradů.
 
 ## <a name="scenarios"></a>Scénáře
 
-Zatímco se stále vznikajícím orchestrator integrace se službou Azure Container Instances, Očekáváme, že budou vznikat několik různých prostředích:
+I když je integrace nástroje Orchestrator s Azure Container Instances stále nascent, předpokládáme, že se v několika různých prostředích ukáže:
 
-### <a name="orchestration-of-container-instances-exclusively"></a>Orchestrace kontejnerů instance výhradně
+### <a name="orchestration-of-container-instances-exclusively"></a>Pouze orchestrace kontejnerových instancí
 
-Protože rychle začít a fakturaci po sekundách, prostředí založen výhradně na Azure Container Instances nabízí nejrychlejší způsob, jak začít a řešit velmi proměnlivé úlohy.
+Vzhledem k tomu, že začínají rychle a účtují druhé, prostředí založené výhradně na Azure Container Instances nabízí nejrychlejší způsob, jak začít a řešit vysoce proměnlivé úlohy.
 
-### <a name="combination-of-container-instances-and-containers-in-virtual-machines"></a>Kombinace container instances a kontejnerů ve službě Virtual Machines
+### <a name="combination-of-container-instances-and-containers-in-virtual-machines"></a>Kombinace instancí kontejnerů a kontejnerů v Virtual Machines
 
-Pro úlohy dlouhotrvající, stabilní a Orchestrace kontejnerů v clusteru vyhrazených virtuálních počítačů je obvykle levnější než systémem stejné kontejnery pomocí služby Azure Container Instances. Instance kontejneru však nabízí vynikající řešení pro rychlé rozšiřování a smluvní vaše celková kapacita se neočekávaný nebo krátkodobou špičky využití.
+Pro dlouhotrvající a stabilní úlohy jsou orchestrace kontejnerů v clusteru vyhrazených virtuálních počítačů obvykle levnější než spuštění stejných kontejnerů s Azure Container Instances. Nicméně instance kontejnerů nabízí skvělé řešení pro rychlé rozšiřování a zadávání celkové kapacity k tomu, abyste se mohli vypořádat s neočekávanými nebo krátkodobými špičkami v používání.
 
-Místo horizontální navýšení kapacity počtu virtuálních počítačů v clusteru, pak nasazení dalších kontejnerů na těchto počítačích, orchestrator můžete jednoduše naplánovat dalších kontejnerů ve službě Azure Container Instances a je odstranit, když už budou potřeba.
+Místo horizontálního navýšení kapacity virtuálních počítačů v clusteru a následné nasazení dalších kontejnerů na tyto počítače může Orchestrator jednoduše naplánovat další kontejnery v Azure Container Instances a odstranit je, když už nejsou vyžadována.
 
-## <a name="sample-implementation-virtual-nodes-for-azure-kubernetes-service-aks"></a>Ukázková implementace: virtuální uzly pro Azure Kubernetes Service (AKS)
+## <a name="sample-implementation-virtual-nodes-for-azure-kubernetes-service-aks"></a>Ukázková implementace: virtuální uzly pro službu Azure Kubernetes (AKS)
 
-Rychle škálovat úlohy aplikací do [Azure Kubernetes Service](../aks/intro-kubernetes.md) clusteru (AKS), můžete použít *virtuální uzly* dynamicky vytvořené ve službě Azure Container Instances. Virtuální uzly povolit síťovou komunikaci mezi pody spuštěné v ACI a AKS clusteru. 
+Pokud chcete rychle škálovat úlohy aplikace v clusteru AKS ( [Azure Kubernetes Service](../aks/intro-kubernetes.md) ), můžete použít *virtuální uzly* vytvořené dynamicky v Azure Container Instances. Virtuální uzly umožňují síťovou komunikaci mezi lusky, které běží v ACI a v clusteru AKS. 
 
-Virtuální uzly aktuálně podporují instance kontejnerů Linuxu. Začínáme s virtuálními uzly pomocí [rozhraní příkazového řádku Azure](https://go.microsoft.com/fwlink/?linkid=2047538) nebo [webu Azure portal](https://go.microsoft.com/fwlink/?linkid=2047545).
+Virtuální uzly aktuálně podporují instance kontejnerů Linux. Začněte s virtuálními uzly pomocí [Azure CLI](https://go.microsoft.com/fwlink/?linkid=2047538) nebo [Azure Portal](https://go.microsoft.com/fwlink/?linkid=2047545).
 
-Virtuální uzly pomocí open source [Virtual Kubelet] [ aci-connector-k8s] tak, aby napodoboval Kubernetes [kubelet] [ kubelet-doc] tak, že zaregistrujete jako uzel s využitím neomezeného počtu kapacita. Vytváření odešle Virtual Kubelet [podů] [ pod-doc] jako skupiny kontejnerů ve službě Azure Container Instances.
+Virtuální uzly používají open source [Virtual Kubelet][aci-connector-k8s] to mimic the Kubernetes [kubelet][kubelet-doc] registrací jako uzel s neomezenou kapacitou. Virtual Kubelet vymění vytváření [lusků][pod doc] jako skupiny kontejnerů v Azure Container Instances.
 
-Zobrazit [Virtual Kubelet](https://github.com/virtual-kubelet/virtual-kubelet) projekt pro rozšíření rozhraní Kubernetes API do platformy bez serveru kontejneru Další příklady.
+Další příklady rozšíření rozhraní Kubernetes API na platformy kontejnerů bez serveru najdete v projektu [Virtual Kubelet](https://github.com/virtual-kubelet/virtual-kubelet) .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Vytvoření prvního kontejneru služby s využitím Azure Container Instances [příručky rychlý Start](container-instances-quickstart.md).
+Vytvořte svůj první kontejner pomocí Azure Container Instances [Průvodce rychlým startem](container-instances-quickstart.md).
 
 <!-- IMAGES -->
 

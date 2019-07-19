@@ -1,6 +1,6 @@
 ---
-title: Vytvoření identity pro aplikace Azure na portálu | Dokumentace Microsoftu
-description: Popisuje, jak vytvořit novou aplikaci Azure Active Directory a instančního objektu, který lze použít s řízením přístupu na základě role v Azure Resource Manageru pro správu přístupu k prostředkům.
+title: Vytvořit identitu pro aplikaci Azure na portálu | Microsoft Docs
+description: V této části najdete popis postupu vytvoření nové aplikace Azure Active Directory a instančního objektu, který se dá použít s řízením přístupu na základě role v Azure Resource Manager ke správě přístupu k prostředkům.
 services: active-directory
 documentationcenter: na
 author: rwike77
@@ -14,142 +14,142 @@ ms.workload: na
 ms.date: 05/17/2019
 ms.author: ryanwi
 ms.reviewer: tomfitz
-ms.custom: seoapril2019
+ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5bd1534b3f966051104a3f3ee389fb047ab258fc
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 825966fbb0db537aad8de39e69e17418e6432b44
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482808"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68324678"
 ---
-# <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Postup: Použití portálu k vytvoření aplikace Azure AD a instanční objekt, který má přístup k prostředkům
+# <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Postup: Použití portálu k vytvoření aplikace a instančního objektu služby Azure AD, který má přístup k prostředkům
 
-V tomto článku se dozvíte, jak vytvořit novou aplikaci Azure Active Directory (Azure AD) a instanční objekt, který je možné s řízením přístupu na základě rolí. Když máte kód, který je potřeba přistupovat nebo změnit prostředky, můžete vytvořit identitu pro aplikace. Tato identita se označuje jako instanční objekt. Pak můžete přiřadit požadovaná oprávnění pro instanční objekt. Tento článek ukazuje, jak používat portál k vytvoření instančního objektu služby. Zaměřuje se na jednoho tenanta aplikaci, kde je aplikace určena pro spuštění v rámci organizace jenom jeden. Obvykle používají aplikace s jedním tenantem pro řádek podnikovým aplikacím, které běží v rámci vaší organizace.
+V tomto článku se dozvíte, jak vytvořit novou aplikaci Azure Active Directory (Azure AD) a instančního objektu, který se dá použít s řízením přístupu na základě role. Pokud máte kód, který potřebuje přístup k prostředkům nebo jejich úpravu, můžete pro aplikaci vytvořit identitu. Tato identita se označuje jako instanční objekt. Pak můžete objektům služby přiřadit požadovaná oprávnění. V tomto článku se dozvíte, jak použít portál k vytvoření instančního objektu. Zaměřuje se na aplikaci s jedním tenantů, kde má aplikace běžet jenom v jedné organizaci. Pro obchodní aplikace, které běží v rámci vaší organizace, obvykle používáte aplikace pro jednoho tenanta.
 
 > [!IMPORTANT]
-> Místo vytvoření instančního objektu, zvažte použití spravované identity pro prostředky Azure pro vaši identitu aplikace. Pokud váš kód běží na službu, která podporuje spravované identity a přístupy prostředky, které podporují ověřování Azure AD, spravované identity jsou vhodnější pro vás. Další informace o spravovaných identit pro prostředky Azure, včetně služby, které aktuálně podporují, najdete v článku [co je spravované identity pro prostředky Azure?](../managed-identities-azure-resources/overview.md).
+> Místo Vytvoření instančního objektu zvažte použití spravovaných identit pro prostředky Azure pro vaši identitu aplikace. Pokud váš kód běží na službě, která podporuje spravované identity a přistupuje k prostředkům, které podporují ověřování Azure AD, jsou spravované identity lepší volbou pro vás. Další informace o spravovaných identitách pro prostředky Azure, včetně toho, které služby v současnosti podporují, najdete v tématu [co jsou spravované identity pro prostředky Azure?](../managed-identities-azure-resources/overview.md).
 
 ## <a name="create-an-azure-active-directory-application"></a>Vytvoření aplikace Azure Active Directory
 
-Přejděme rovnou k vytvoření identity. Pokud narazíte na problém, zkontrolujte, [požadovaná oprávnění](#required-permissions) k Ujistěte se, že váš účet můžete vytvořit identitu.
+Pojďme přejít přímo na vytvoření identity. Pokud narazíte na problém, zkontrolujte [požadovaná oprávnění](#required-permissions) a ujistěte se, že váš účet může vytvořit identitu.
 
-1. Přihlaste se ke svému účtu Azure prostřednictvím [webu Azure portal](https://portal.azure.com).
+1. Přihlaste se ke svému účtu Azure prostřednictvím [Azure Portal](https://portal.azure.com).
 1. Vyberte **Azure Active Directory**.
 1. Vyberte **Registrace aplikací**.
-1. Vyberte **registrace nové**.
-1. Název aplikace. Vyberte účet podporovaný typ, který určuje, kdo může používat aplikace. V části **identifikátor URI pro přesměrování**vyberte **webové** pro typ aplikace, kterou chcete vytvořit. Zadejte identifikátor URI, kde bude zaslána přístupový token. Nelze vytvořit přihlašovací údaje [nativní aplikace](../manage-apps/application-proxy-configure-native-client-application.md). Tento typ nelze použít pro automatické aplikaci. Po nastavení hodnot, vyberte **zaregistrovat**.
+1. Vyberte **Nová registrace**.
+1. Pojmenujte aplikaci. Vyberte podporovaný typ účtu, který určuje, kdo může aplikaci používat. V části **identifikátor URI pro přesměrování**vyberte **Web** pro typ aplikace, kterou chcete vytvořit. Zadejte identifikátor URI, na který se přístupový token pošle. Nemůžete vytvořit pověření pro [nativní aplikaci](../manage-apps/application-proxy-configure-native-client-application.md). Tento typ nelze použít pro automatizovanou aplikaci. Po nastavení hodnot vyberte **Registrovat**.
 
-   ![Zadejte název pro vaši aplikaci](./media/howto-create-service-principal-portal/create-app.png)
+   ![Zadejte název vaší aplikace.](./media/howto-create-service-principal-portal/create-app.png)
 
-Vytvořili jste aplikaci Azure AD a instanční objekt služby.
+Vytvořili jste aplikaci a instanční objekt služby Azure AD.
 
 ## <a name="assign-the-application-to-a-role"></a>Přiřazení aplikace k roli
 
-Pro přístup k prostředkům ve vašem předplatném, musíte přiřadit aplikace k roli. Rozhodněte, jakou roli nabízí správná oprávnění pro aplikaci. Další informace o dostupných rolí, najdete v článku [RBAC: Vestavěné role](../../role-based-access-control/built-in-roles.md).
+Pokud chcete získat přístup k prostředkům ve vašem předplatném, musíte aplikaci přiřadit k roli. Rozhodněte, která role nabízí správná oprávnění pro aplikaci. Další informace o dostupných rolích najdete v [tématu RBAC: Předdefinované role](../../role-based-access-control/built-in-roles.md).
 
-Nastavit obor na úrovni předplatného, skupinu prostředků nebo prostředek. Oprávnění se dědí do oboru na nižších úrovních. Například přidáním aplikace k roli Čtenář pro skupinu prostředků znamená, že můžete přečíst, skupinu prostředků a všechny prostředky, které obsahuje.
+Rozsah můžete nastavit na úrovni předplatného, skupiny prostředků nebo prostředku. Oprávnění se dědí do oboru na nižších úrovních. Například přidání aplikace do role čtenář pro skupinu prostředků znamená, že může číst skupinu prostředků a všechny prostředky, které obsahuje.
 
-1. Přejděte na úrovni oboru, který chcete přiřadit aplikaci. Například vyberte přiřazení role v oboru předplatného, **všechny služby** a **předplatná**.
+1. Přejděte na úroveň rozsahu, ke kterému chcete aplikaci přiřadit. Pokud například chcete přiřadit roli v oboru předplatného, vyberte **všechny služby** a **odběry**.
 
-   ![Například přiřadíte role v oboru předplatného](./media/howto-create-service-principal-portal/select-subscription.png)
+   ![Přiřaďte například roli v oboru předplatného.](./media/howto-create-service-principal-portal/select-subscription.png)
 
-1. Vyberte konkrétní předplatné, které chcete přiřadit aplikaci.
+1. Vyberte konkrétní předplatné, ke kterému chcete aplikaci přiřadit.
 
-   ![Vyberte předplatné pro přiřazení](./media/howto-create-service-principal-portal/select-one-subscription.png)
+   ![Výběr předplatného pro přiřazení](./media/howto-create-service-principal-portal/select-one-subscription.png)
 
-   Pokud nevidíte předplatné, které hledáte, vyberte **filtr globálních předplatných**. Ujistěte se, že předplatné, které chcete, aby je vybrán pro portál.
+   Pokud nevidíte předplatné, které hledáte, vyberte **globální filtr**předplatných. Ujistěte se, že je vybráno požadované předplatné portálu.
 
 1. Vyberte **řízení přístupu (IAM)** .
 1. Vyberte **přidat přiřazení role**.
-1. Vyberte roli, kterou chcete přiřadit k aplikaci. Aby aplikace mohla provést akce, jako je **restartovat**, **start** a **Zastavit** instance, vyberte **Přispěvatel** role. Ve výchozím nastavení nejsou zobrazeny aplikacím služby Azure AD v dostupných možnostech. Najít aplikace, vyhledejte název a vyberte ji.
+1. Vyberte roli, kterou chcete aplikaci přiřadit. Pokud chcete aplikaci dovolit, aby prováděla akce, jako je **restartování**, **spuštění** a **zastavení** instancí, vyberte roli **Přispěvatel** . Ve výchozím nastavení se aplikace Azure AD nezobrazí v dostupných možnostech. Chcete-li najít aplikaci, vyhledejte její název a vyberte ji.
 
-   ![Vyberte roli, kterou chcete přiřadit k aplikaci](./media/howto-create-service-principal-portal/select-role.png)
+   ![Vyberte roli, kterou chcete přiřadit k aplikaci.](./media/howto-create-service-principal-portal/select-role.png)
 
-1. Vyberte **Uložit** k dokončení přiřazení role. Zobrazí se vaše aplikace v seznamu Uživatelé přiřazení k roli pro tento obor.
+1. Vyberte **Uložit** k dokončení přiřazení role. Vaše aplikace se zobrazí v seznamu uživatelů přiřazených k roli pro tento obor.
 
-Je nastavený instančního objektu služby. Chcete-li začít, používat ke spouštění skriptů nebo aplikací. V další části ukazuje, jak získat hodnoty, které jsou potřeba při přihlašování prostřednictvím kódu programu.
+Vaše instanční objekt je nastavený. Můžete ji začít používat ke spouštění skriptů nebo aplikací. V další části se dozvíte, jak získat hodnoty, které jsou potřeba při přihlašování prostřednictvím kódu programu.
 
-## <a name="get-values-for-signing-in"></a>Získání hodnot pro přihlášení
+## <a name="get-values-for-signing-in"></a>Získat hodnoty pro přihlášení
 
-Při programově přihlášení, je potřeba předat ID tenanta žádosti o ověření. Taky potřebujete ID aplikace a ověřovacího klíče. K získání těchto hodnot použijte následující postup:
+Při programovém přihlášení musíte předat ID tenanta s vaší žádostí o ověření. Také potřebujete ID aplikace a ověřovací klíč. K získání těchto hodnot použijte následující postup:
 
 1. Vyberte **Azure Active Directory**.
-1. Z **registrace aplikací** ve službě Azure AD, vyberte svou aplikaci.
-1. Zkopírujte ID adresáře (tenant) a uložte ho v kódu aplikace.
+1. V **Registrace aplikací** ve službě Azure AD vyberte svou aplikaci.
+1. Zkopírujte ID adresáře (tenant) a uložte ho do kódu aplikace.
 
-    ![Kopírování adresáře (ID tenanta) a uloží je v kódu vaší aplikace](./media/howto-create-service-principal-portal/copy-tenant-id.png)
+    ![Zkopírujte adresář (ID tenanta) a uložte ho do kódu vaší aplikace.](./media/howto-create-service-principal-portal/copy-tenant-id.png)
 
 1. Zkopírujte **ID aplikace** a uložte ho v kódu aplikace.
 
-   ![Zkopírujte ID aplikace (klient)](./media/howto-create-service-principal-portal/copy-app-id.png)
+   ![Kopírovat ID aplikace (klienta)](./media/howto-create-service-principal-portal/copy-app-id.png)
 
-## <a name="certificates-and-secrets"></a>Certifikáty a tajné kódy
-Démon procesu aplikace můžete použít dvě formy přihlašovacích údajů pro ověření ve službě Azure AD: certifikátů a tajných klíčů aplikací.  Doporučujeme používat certifikát, ale můžete také vytvořit nový tajný klíč aplikace.
+## <a name="certificates-and-secrets"></a>Certifikáty a tajné klíče
+Aplikace démona můžou pomocí dvou forem přihlašovacích údajů ověřit pomocí Azure AD: certifikáty a tajné klíče aplikace.  Doporučujeme použít certifikát, ale můžete také vytvořit nový tajný klíč aplikace.
 
-### <a name="upload-a-certificate"></a>Nahrání certifikátu
+### <a name="upload-a-certificate"></a>Odeslat certifikát
 
-Pokud nemáte, můžete použít existující certifikát.  Volitelně můžete vytvořit certifikát podepsaný svým držitelem pro testovací účely. Otevřete PowerShell a spuštěním [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) s následujícími parametry k vytvoření certifikátu podepsaného svým držitelem do úložiště certifikátů uživatele ve vašem počítači: `$cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocation "Cert:\CurrentUser\My"  -KeyExportPolicy Exportable -KeySpec Signature`.  Export tohoto certifikátu pomocí [spravovat uživatelský certifikát](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) modul snap-in konzoly MMC přístupné z ovládacího panelu Windows.
+Pokud nějaký máte, můžete použít existující certifikát.  Volitelně můžete pro účely testování vytvořit certifikát podepsaný svým držitelem. Otevřete PowerShell a spusťte rutinu [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) s následujícími parametry k vytvoření certifikátu podepsaného svým držitelem v úložišti certifikátů uživatele v počítači: `$cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocation "Cert:\CurrentUser\My"  -KeyExportPolicy Exportable -KeySpec Signature`.  Exportujte tento certifikát pomocí modulu snap-in [Správa uživatelských certifikátů](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) konzoly MMC přístupný z ovládacích panelů systému Windows.
 
-Nahrání certifikátu:
+Postup nahrání certifikátu:
 
-1. Vyberte **certifikáty a tajné kódy**.
-1. Vyberte **nahrát certifikát** a vyberte certifikát (existující certifikát nebo certifikát podepsaný svým držitelem certifikáty můžete exportovat).
+1. Vyberte **certifikáty & tajných**kódů.
+1. Vyberte **nahrát certifikát** a vyberte certifikát (existující certifikát nebo certifikát podepsaný svým držitelem).
 
-    ![Vyberte certifikát, nahrávání a vyberte ten, který chcete přidat](./media/howto-create-service-principal-portal/upload-cert.png)
+    ![Vyberte nahrát certifikát a vyberte ten, který chcete přidat.](./media/howto-create-service-principal-portal/upload-cert.png)
 
 1. Vyberte **Přidat**.
 
-Po registraci certifikátu s vaší aplikací v portálu pro registraci aplikace, je potřeba povolit kódem klientské aplikace pro použití certifikátu.
+Po registraci certifikátu ve vaší aplikaci na portálu pro registraci aplikací je nutné povolit klientský kód aplikace pro použití certifikátu.
 
 ### <a name="create-a-new-application-secret"></a>Vytvořit nový tajný klíč aplikace
 
-Pokud se rozhodnete použít certifikát, můžete vytvořit nový tajný klíč aplikace.
+Pokud se rozhodnete nepoužívat certifikát, můžete vytvořit nový tajný klíč aplikace.
 
-1. Vyberte **certifikáty a tajné kódy**.
-1. Vyberte **tajné klíče klienta -> Nový tajný kód klienta**.
-1. Zadejte popis tajný klíč a hodnotu duration. Až budete hotovi, vyberte **přidat**.
+1. Vyberte **certifikáty & tajných**kódů.
+1. Vyberte **Client tajných klíčů – > nový tajný klíč klienta**.
+1. Zadejte popis tajného kódu a dobu trvání. Až budete hotovi, vyberte **Přidat**.
 
-   Po uložení tajný kód klienta, se zobrazí hodnota tajného kódu klienta. Zkopírujte tuto hodnotu, protože nejste schopni načíst klíč později. Hodnotu klíče uveďte s ID aplikace se přihlásit jako aplikace. Hodnotu klíče uložte na místo, odkud ji aplikace může načíst.
+   Po uložení tajného klíče klienta se zobrazí hodnota tajného klíče klienta. Zkopírujte tuto hodnotu, protože nemůžete získat klíč později. Zadejte hodnotu klíče s ID aplikace, abyste se mohli přihlásit jako aplikace. Hodnotu klíče uložte na místo, odkud ji aplikace může načíst.
 
-   ![Zkopírujte hodnota tajného klíče, protože nelze načíst to později](./media/howto-create-service-principal-portal/copy-secret.png)
+   ![Zkopírujte tajnou hodnotu, protože ji nemůžete později načíst.](./media/howto-create-service-principal-portal/copy-secret.png)
 
 ## <a name="required-permissions"></a>Požadovaná oprávnění
 
-Musíte mít dostatečná oprávnění k registraci aplikace v tenantu Azure AD a přiřazení aplikace k roli v předplatném Azure.
+Musíte mít dostatečná oprávnění k registraci aplikace ve vašem tenantovi Azure AD a přiřazení aplikace k roli v předplatném Azure.
 
-### <a name="check-azure-ad-permissions"></a>Zkontrolujte oprávnění Azure AD
+### <a name="check-azure-ad-permissions"></a>Ověřit oprávnění služby Azure AD
 
 1. Vyberte **Azure Active Directory**.
-1. Všimněte si vaši roli. Pokud máte **uživatele** role, ujistěte se, že nejsou správci, můžou registrovat aplikace.
+1. Poznamenejte si svoji roli. Máte-li roli **uživatele** , je nutné zajistit, aby aplikace bez oprávnění správce mohli registrovat aplikace.
 
-   ![Najdete vaši roli. Pokud jste uživatelem, ujistěte se, že bez oprávnění správce můžou registrovat aplikace](./media/howto-create-service-principal-portal/view-user-info.png)
+   ![Najděte svoji roli. Pokud jste uživatel, ujistěte se, že nesprávci můžou registrovat aplikace.](./media/howto-create-service-principal-portal/view-user-info.png)
 
-1. Vyberte **uživatelská nastavení**.
-1. Zkontrolujte, **registrace aplikací** nastavení. Tuto hodnotu lze nastavit pouze správce. Pokud hodnotu **Ano**, každý uživatel v tenantovi Azure AD můžete zaregistrovat aplikaci.
+1. Vyberte **nastavení uživatele**.
+1. Ověřte nastavení **Registrace aplikací** . Tuto hodnotu může nastavit jenom správce. Pokud je nastaveno na **Ano**, každý uživatel v TENANTOVI Azure AD může zaregistrovat aplikaci.
 
-Pokud je nastavení registrace aplikací nastaveno **ne**, pouze uživatelé s rolí správce může registrovat tyto typy aplikací. Zobrazit [dostupných rolí](../users-groups-roles/directory-assign-admin-roles.md#available-roles) a [oprávnění role](../users-groups-roles/directory-assign-admin-roles.md#role-permissions) Další informace o rolích správce a zvláštní oprávnění ve službě Azure AD, kterým jsou přiřazena k jednotlivým rolím. Pokud je váš účet přiřazenou roli uživatele, ale registrace nastavení aplikace, které je omezená na uživatele správce, požádejte svého správce, aby buď můžete přiřadit do jedné z rolí správce, které můžete vytvářet a spravovat všechny aspekty registrací aplikací nebo uživatelům umožnit Registrace aplikací.
+Pokud je nastavení registrace aplikací nastaveno na **ne**, můžou tyto typy aplikací registrovat jenom uživatelé s rolí správce. Další informace o dostupných rolích správců a konkrétních oprávněních v Azure AD, která jsou udělena jednotlivým rolím, najdete v tématu [dostupné role](../users-groups-roles/directory-assign-admin-roles.md#available-roles) a [oprávnění role](../users-groups-roles/directory-assign-admin-roles.md#role-permissions) . Pokud je váš účet přiřazený k roli uživatele, ale nastavení registrace aplikace je omezené na uživatele s právy pro správu, požádejte správce, aby vám přidělil jednu z rolí správce, která může vytvářet a spravovat všechny aspekty registrací aplikací, nebo umožnit uživatelům registrovat aplikace.
 
-### <a name="check-azure-subscription-permissions"></a>Zkontrolujte oprávnění předplatného Azure
+### <a name="check-azure-subscription-permissions"></a>Ověřit oprávnění pro předplatné Azure
 
-Ve vašem předplatném Azure, musí mít váš účet `Microsoft.Authorization/*/Write` přístup k aplikaci AD přiřadit k roli. Tato akce se povoluje prostřednictvím role [vlastníka](../../role-based-access-control/built-in-roles.md#owner) nebo [správce uživatelských přístupů](../../role-based-access-control/built-in-roles.md#user-access-administrator). Pokud váš účet je přiřazena k **Přispěvatel** role, nemáte dostatečná oprávnění. Zobrazí chybová zpráva při pokusu o přiřazení instančního objektu k roli.
+Ve vašem předplatném Azure musí mít `Microsoft.Authorization/*/Write` váš účet přístup k roli a k přiřazení aplikace AD. Tato akce se povoluje prostřednictvím role [vlastníka](../../role-based-access-control/built-in-roles.md#owner) nebo [správce uživatelských přístupů](../../role-based-access-control/built-in-roles.md#user-access-administrator). Pokud je váš účet přiřazen k roli **Přispěvatel** , nemáte příslušná oprávnění. Při pokusu o přiřazení instančního objektu k roli se zobrazí chyba.
 
-Ke kontrole oprávnění pro předplatné:
+Ověření oprávnění k předplatnému:
 
-1. V pravém horním rohu vyberte svůj účet a vyberte **... -> Moje oprávnění**.
+1. V pravém horním rohu vyberte svůj účet a vyberte **...-> moje oprávnění**.
 
-   ![Vyberte svůj účet a uživatelských oprávnění](./media/howto-create-service-principal-portal/select-my-permissions.png)
+   ![Vyberte svůj účet a oprávnění uživatele.](./media/howto-create-service-principal-portal/select-my-permissions.png)
 
-1. V rozevíracím seznamu vyberte předplatné, které chcete vytvořit instanční objekt ve službě. Vyberte **kliknutím zde zobrazíte úplný přístup podrobnosti pro toto předplatné**.
+1. V rozevíracím seznamu vyberte předplatné, ve kterém chcete vytvořit instanční objekt. Pak vyberte **kliknutím sem zobrazíte informace o úplných přístupech k tomuto**předplatnému.
 
-   ![Vyberte předplatné, které chcete vytvořit instanční objekt ve službě](./media/howto-create-service-principal-portal/view-details.png)
+   ![Vyberte předplatné, ve kterém chcete vytvořit instanční objekt.](./media/howto-create-service-principal-portal/view-details.png)
 
-1. Vyberte **přiřazení rolí** zobrazení přiřazených rolí a zjistit, pokud máte odpovídající oprávnění k přiřazení AD aplikace k roli. Pokud ne, požádejte správce předplatného, aby vás přidal do role správce přístupu uživatelů. Na následujícím obrázku že uživatel přiřazený k roli vlastník, což znamená, že má uživatel dostatečná oprávnění.
+1. Výběrem **přiřazení rolí** zobrazíte přiřazené role a určíte, jestli máte adekvátní oprávnění k přiřazení aplikace AD k roli. Pokud ne, požádejte správce předplatného, aby vás přidal do role správce přístupu uživatele. Na následujícím obrázku je uživatel přiřazen k roli vlastníka, což znamená, že uživatel má odpovídající oprávnění.
 
-   ![Tento příklad ukazuje, že uživatel je přiřazena role vlastníka](./media/howto-create-service-principal-portal/view-user-role.png)
+   ![Tento příklad ukazuje, že uživatel je přiřazen k roli vlastníka.](./media/howto-create-service-principal-portal/view-user-role.png)
 
 ## <a name="next-steps"></a>Další postup
 
-* Pokud chcete nastavit aplikaci s více tenanty, přečtěte si [Příručka pro vývojáře k ověřování pomocí rozhraní API Azure Resource Manageru](../../azure-resource-manager/resource-manager-api-authentication.md).
-* Další informace o určení zásad pro zabezpečení najdete v tématu [řízení přístupu na základě Role v Azure](../../role-based-access-control/role-assignments-portal.md).  
-* Seznam dostupných akcí, které může být povolen nebo odepřen pro uživatele najdete v tématu [operace poskytovatele prostředků Azure Resource Manageru](../../role-based-access-control/resource-provider-operations.md).
+* Pokud chcete nastavit víceklientské aplikace, přečtěte si téma [Příručka pro vývojáře k autorizaci pomocí rozhraní Azure Resource Manager API](../../azure-resource-manager/resource-manager-api-authentication.md).
+* Další informace o zadávání zásad zabezpečení najdete v tématu [Access Control na základě rolí v Azure](../../role-based-access-control/role-assignments-portal.md).  
+* Seznam dostupných akcí, které mohou uživatelé udělit nebo odepřít, najdete v tématu [Azure Resource Manager operací poskytovatele prostředků](../../role-based-access-control/resource-provider-operations.md).

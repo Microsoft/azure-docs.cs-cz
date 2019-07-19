@@ -10,15 +10,13 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 01c153f2f8836b7d99de57af60b8623e54c6d6fe
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
-ms.translationtype: HT
+ms.openlocfilehash: bb0e44f83e2101a7b21e7b7ec6fdc75974c6d6d8
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311929"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68333606"
 ---
-[!code-python[import declarations](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=imports)]
-
 # <a name="quickstart-analyze-text-content-for-objectionable-material-in-python"></a>Rychlý start: Analýza obsahu textu pro nevhodný materiál v Pythonu
 
 Tento článek obsahuje informace a ukázky kódu, které vám pomůžou začít používat Content Moderator SDK pro Python. Dozvíte se, jak provádět filtrování založené na termínech a klasifikaci obsahu textu za účelem moderování potenciálně problematického materiálu.
@@ -47,7 +45,7 @@ Vytvořit nový skript Pythonu s názvem _ContentModeratorQS.py_ a přidejte ná
 
 ## <a name="initialize-variables"></a>Inicializace proměnných
 
-V dalším kroku přidejte proměnné pro vaše Content Moderator předplatné key a koncového bodu adresy URL. Do proměnných prostředí budete muset přidat název `CONTENT_MODERATOR_SUBSCRIPTION_KEY` a jako jeho hodnotu přidat klíč předplatného. V případě adresy URL základního koncového `CONTENT_MODERATOR_ENDPOINT` bodu přidejte do proměnných prostředí s adresou URL konkrétní oblasti jako jeho hodnotu, `https://westus.api.cognitive.microsoft.com`například. Bezplatné předplatné zkušební verze klíče jsou generovány v **westus** oblasti.
+V dalším kroku přidejte proměnné pro vaše Content Moderator předplatné key a koncového bodu adresy URL. Přidejte název `CONTENT_MODERATOR_SUBSCRIPTION_KEY` do proměnných prostředí s vaším klíčem předplatného jako jeho hodnota. V případě adresy URL základního koncového `CONTENT_MODERATOR_ENDPOINT` bodu přidejte do proměnných prostředí s adresou URL konkrétní oblasti jako jeho hodnotu, `https://westus.api.cognitive.microsoft.com`například. Bezplatné předplatné zkušební verze klíče jsou generovány v **westus** oblasti.
 
 [!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/content_moderator_quickstart.py?name=authentication)]
 
@@ -67,9 +65,7 @@ Pak použijte svého klienta s jeho členskou instancí **TextModerationOperatio
 
 ## <a name="check-the-printed-response"></a>Zkontroluje vytištěnou odpověď.
 
-Spusťte ukázku a potvrďte odpověď. Mělo by být úspěšně dokončeno a vrácena instance **obrazovky** . Níže je vytištěn úspěšný výsledek:
-
-Ukázkový text používaných pro tento rychlý start za následek následující výstup:
+Spusťte ukázku a potvrďte odpověď. Po úspěšném dokončení se vrátí instance **obrazovky** . Úspěšný výsledek je uveden níže:
 
 ```console
 {'auto_corrected_text': '" Is this a garbage email abide@ abed. com, phone: '

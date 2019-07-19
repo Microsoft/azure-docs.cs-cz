@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Rozhraní Cassandra API s využitím Javy – Azure Cosmos DB'
+title: 'Rychlý start: rozhraní API Cassandra pomocí jazyka Java Azure Cosmos DB'
 description: Tento rychlý start ukazuje, jak použít rozhraní Apache Cassandra API služby Azure Cosmos DB k vytvoření aplikace profilu pomocí webu Azure Portal a Javy.
 ms.service: cosmos-db
 author: SnehaGunda
@@ -8,14 +8,14 @@ ms.subservice: cosmosdb-cassandra
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: c3bfcffacee7df8a5abf59676a1c47fa283dee7b
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.openlocfilehash: 968c43ed78c59e5c1f147aaaa5bb33484d95c7a9
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65519022"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325477"
 ---
-# <a name="quickstart-build-a-cassandra-app-with-java-sdk-and-azure-cosmos-db"></a>Rychlý start: Sestavení aplikace Cassandra pomocí Java SDK a Azure Cosmos DB
+# <a name="quickstart-build-a-cassandra-app-with-java-sdk-and-azure-cosmos-db"></a>Rychlý start: Vytvoření aplikace Cassandra pomocí sady Java SDK a Azure Cosmos DB
 
 > [!div class="op_single_selector"]
 > * [.NET](create-cassandra-dotnet.md)
@@ -71,7 +71,7 @@ Teď přejděme k práci s kódem. Teď naklonujeme aplikaci Cassandra z GitHub
 
 ## <a name="review-the-code"></a>Kontrola kódu
 
-Tento krok je volitelný. Pokud vás zajímá, jak se pomocí kódu vytvoří prostředky databáze, můžete si prohlédnout následující fragmenty kódu. Jinak můžete přeskočit přímo k části [Aktualizace informací o připojení](#update-your-connection-string). Všechny tyto fragmenty kódu pocházejí ze souboru `src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java`.  
+Tento krok je volitelný. Pokud vás zajímá, jak se pomocí kódu vytvoří prostředky databáze, můžete si prohlédnout následující fragmenty kódu. Jinak můžete přeskočit přímo k části [Aktualizace informací o připojení](#update-your-connection-string). Všechny tyto fragmenty kódu jsou pořízeny ze souboru *Src/Main/Java/com/Azure/cosmosdb/Cassandra/util/CassandraUtils. Java* .  
 
 * Jsou nastavené hostitel Cassandra, port, uživatelské jméno, heslo a možnosti SSL. Informace o připojovacím řetězci pocházejí ze stránky připojovacího řetězce na webu Azure Portal.
 
@@ -85,7 +85,7 @@ Tento krok je volitelný. Pokud vás zajímá, jak se pomocí kódu vytvoří pr
     return cluster.connect();
     ```
 
-Následující fragmenty kódu pocházejí ze souboru `src/main/java/com/azure/cosmosdb/cassandra/repository/UserRepository.java`.
+Následující fragmenty kódu jsou ze souboru *Src/Main/Java/com/Azure/cosmosdb/Cassandra/úložiště/UserRepository. Java* .
 
 * Vytvořte nový prostor klíčů.
 
