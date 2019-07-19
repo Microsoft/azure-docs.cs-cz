@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus – nejčastější dotazy (FAQ) | Dokumentace Microsoftu
-description: Odpovědi na některé nejčastější dotazy o Azure Service Bus.
+title: Nejčastější dotazy k Azure Service Bus | Microsoft Docs
+description: Odpovědi na některé nejčastější dotazy týkající se Azure Service Bus.
 services: service-bus-messaging
 author: axisc
 manager: timlt
@@ -9,145 +9,145 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 26609e7b21af8804a4b43039c84c04597035721c
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 80809afc9f2a8e8da2f6adecfe916141c4cd3e45
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706213"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68278344"
 ---
 # <a name="service-bus-faq"></a>Nejčastější dotazy k Service Bus
 
-Tento článek popisuje některé nejčastější dotazy o Microsoft Azure Service Bus. Můžete také navštívit [Azure nejčastějších dotazech k podpoře](https://azure.microsoft.com/support/faq/) obecné informace o Azure ceny a podporu.
+Tento článek popisuje některé časté otázky týkající se Microsoft Azure Service Bus. [Nejčastější dotazy k podpoře Azure](https://azure.microsoft.com/support/faq/) můžete také navštívit pro obecné ceny a informace o podpoře Azure.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="general-questions-about-azure-service-bus"></a>Obecné dotazy týkající se služby Azure Service Bus
+## <a name="general-questions-about-azure-service-bus"></a>Obecné otázky týkající se Azure Service Bus
 ### <a name="what-is-azure-service-bus"></a>Co je Azure Service Bus?
-[Azure Service Bus](service-bus-messaging-overview.md) je asynchronní zasílání zpráv Cloudová platforma, která vám umožní odesílat data mezi systémy oddělení. Společnost Microsoft nabízí jako služba, což znamená, že není potřeba hostovat svůj vlastní hardware pro použití této funkce.
+[Azure Service Bus](service-bus-messaging-overview.md) je asynchronní cloudová platforma pro zasílání zpráv, která umožňuje odesílat data mezi oddělenými systémy. Microsoft tuto funkci nabízí jako službu, což znamená, že nemusíte hostovat svůj vlastní hardware, abyste ho mohli používat.
 
-### <a name="what-is-a-service-bus-namespace"></a>Co je obor názvů služby Service Bus?
-A [obor názvů](service-bus-create-namespace-portal.md) poskytuje kontejner oboru pro adresování prostředků služby Service Bus v rámci vaší aplikace. Vytvoření oboru názvů, je potřeba pomocí služby Service Bus a je jedním z prvních kroků v části Začínáme.
+### <a name="what-is-a-service-bus-namespace"></a>Co je obor názvů Service Bus?
+[Obor názvů](service-bus-create-namespace-portal.md) poskytuje kontejner oboru pro adresování Service Bus prostředků v rámci aplikace. Vytvoření oboru názvů je nezbytné pro použití Service Bus a je jedním z prvních kroků v části Začínáme.
 
-### <a name="what-is-an-azure-service-bus-queue"></a>Co je fronty služby Azure Service Bus?
-A [frontu služby Service Bus](service-bus-queues-topics-subscriptions.md) je entita, ve kterém jsou zprávy uloženy. Fronty jsou užitečné, pokud máte více aplikací nebo více částí distribuované aplikace, které potřebují komunikovat mezi sebou. Fronta je podobný Centrum distribuce více produktů (zprávy) jsou přijata a potom je odešlete z tohoto umístění.
+### <a name="what-is-an-azure-service-bus-queue"></a>Co je Azure Service Bus fronta?
+[Service Bus fronta](service-bus-queues-topics-subscriptions.md) je entita, ve které jsou uložené zprávy. Fronty jsou užitečné v případě, že máte více aplikací nebo více částí distribuované aplikace, které potřebují vzájemně komunikovat. Fronta je podobná distribučnímu centru v tom, že je přijímáno více produktů (zpráv) a následně odesláno z tohoto umístění.
 
-### <a name="what-are-azure-service-bus-topics-and-subscriptions"></a>Co jsou Azure Service Bus, témat a odběrů?
-Téma lze vizualizovat jako fronty a při použití více předplatných, stane se modelu; bohatší zasílání zpráv v podstatě jeden mnoho komunikační nástroj. Tento model publikování a přihlášení k odběru (nebo *pub/sub*) umožňuje aplikaci, která odesílá zprávy do tématu, s několika předplatnými, aby tuto zprávu obdrží několik aplikací.
+### <a name="what-are-azure-service-bus-topics-and-subscriptions"></a>Co jsou Azure Service Bus témata a předplatná?
+Téma se dá vizuálně rozvažovat za frontu a když se používá víc předplatných, bude se jednat o model bohatšího zasílání zpráv. Nástroj pro komunikaci typu 1: n v podstatě. Tento model publikování/předplatného (nebo *Pub/sub*) umožňuje aplikaci, která pošle zprávu do tématu s více předplatnými, aby tuto zprávu přijímalo více aplikacemi.
 
-### <a name="what-is-a-partitioned-entity"></a>Co je rozdělené entity?
-Konvenční fronty nebo tématu je zpracovat zprostředkovatele a uložená do jednoho úložiště pro přenos zpráv. Podporováno pouze v základní a standardní úrovní, zasílání zpráv [dělená fronta nebo téma](service-bus-partitioning.md) se ukládají do více úložišť pro přenos zpráv a zpracovat více zprostředkovatele zpráv. Tato funkce znamená, že celkovou propustnost dělená fronta nebo téma je už omezený výkon zprostředkovatele nebo úložiště zpráv. Kromě toho dočasnému výpadku úložiště nevykresluje dělené fronty nebo tématu není k dispozici.
+### <a name="what-is-a-partitioned-entity"></a>Co je dělená entita?
+Konvenční frontu nebo téma zpracovává jeden zprostředkovatel zpráv a ukládá se do jednoho úložiště pro zasílání zpráv. Podporováno pouze ve vrstvách Basic a standard pro zasílání zpráv, které jsou rozdělené do [dělené fronty nebo tématu](service-bus-partitioning.md) , jsou zpracovávány pomocí více zprostředkovatelů zpráv a uloženy v několika úložištích zasílání zpráv. Tato funkce znamená, že celková propustnost dělené fronty nebo tématu již není omezena výkonem jediného zprostředkovatele zpráv nebo úložiště pro zasílání zpráv. Kromě toho dočasný výpadek úložiště pro zasílání zpráv nezobrazuje dělenou frontu nebo téma není k dispozici.
 
-Řazení není zajištěno, že při použití segmentované entity. V případě, že oddíl je k dispozici, můžete stále odesílání a příjem zpráv z ostatních oddílů.
+Řazení není při použití dělených entit zajištěno. V případě, že je oddíl nedostupný, můžete i nadále odesílat a přijímat zprávy z dalších oddílů.
 
- Dělené entity v již nejsou podporovány [SKU úrovně Premium](service-bus-premium-messaging.md). 
+ Dělené entity už nejsou v [SKU úrovně Premium](service-bus-premium-messaging.md)podporované. 
 
-### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Které porty je potřeba otevřít v bráně firewall? 
-Následující protokoly s Azure Service Bus můžete použít k odesílání a příjem zpráv:
+### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Jaké porty potřebuji v bráně firewall otevřít? 
+K posílání a přijímání zpráv můžete použít následující protokoly s Azure Service Bus:
 
-- Pokročilé řízení front zpráv (AMQP) protokolu
-- Service Bus Messaging Protocol (SBMP)
+- Rozšířený protokol řízení front zpráv (AMQP) (AMQP)
+- Protokol SBMP (Service Bus Messaging Protocol)
 - HTTP
 
-V následující tabulce pro odchozí porty, které je potřeba otevřít na použití těchto protokolů ke komunikaci s Azure Event Hubs. 
+V následující tabulce najdete Odchozí porty, které musíte otevřít, abyste mohli tyto protokoly používat ke komunikaci s Azure Event Hubs. 
 
 | Protocol | Porty | Podrobnosti | 
 | -------- | ----- | ------- | 
-| AMQP | 5671 a 5672 | Zobrazit [Průvodce protokolem AMQP](service-bus-amqp-protocol-guide.md) | 
-| SBMP | 9350-9354 | Zobrazit [režim připojení](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet) |
+| AMQP | 5671 a 5672 | Viz [Průvodce protokolem AMQP](service-bus-amqp-protocol-guide.md) . | 
+| SBMP | 9350 až 9354 | Zobrazit [režim připojení](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet) |
 | HTTP, HTTPS | 80, 443 | 
 
-### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>Jaké IP adresy musí do seznamu povolených IP adres?
-Najít správné IP adresy na seznamu povolených pro vaše připojení, postupujte podle těchto kroků:
+### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>Jaké IP adresy potřebuji pro seznam povolených?
+Chcete-li najít správné IP adresy pro připojení k seznamu, postupujte podle následujících kroků:
 
-1. Spusťte následující příkaz z příkazového řádku: 
+1. Z příkazového řádku spusťte následující příkaz: 
 
     ```
     nslookup <YourNamespaceName>.servicebus.windows.net
     ```
-2. Poznamenejte si IP adresu vrácenou v `Non-authoritative answer`. Tato IP adresa je statická. Pouze bodu v čase, že by došlo ke změně je-li obnovit obor názvů do jiného clusteru.
+2. Poznamenejte si IP adresu vrácenou `Non-authoritative answer`v. Tato IP adresa je statická. Jediným bodem v čase, který by měl být změněn, je, že obor názvů obnovíte na jiný cluster.
 
-Pokud používáte redundanci zón pro váš obor názvů, je třeba provést několik dalších kroků: 
+Pokud používáte redundanci zóny pro svůj obor názvů, musíte provést několik dalších kroků: 
 
-1. Nejprve spusťte příkaz nslookup v oboru názvů.
+1. Nejprve spustíte nástroj nslookup v oboru názvů.
 
     ```
     nslookup <yournamespace>.servicebus.windows.net
     ```
-2. Poznamenejte si název v **neautoritativní odpovědí** oddíl, což je v jednom z následujících formátů: 
+2. Poznamenejte si název v části **nesměrodatná odpověď** , která je v jednom z následujících formátů: 
 
     ```
     <name>-s1.servicebus.windows.net
     <name>-s2.servicebus.windows.net
     <name>-s3.servicebus.windows.net
     ```
-3. Spusťte nslookup pro každé z nich s příponami s1, s2 a s3 získat IP adresy všech tří instancí spuštěná ve třech zónách dostupnosti 
+3. Spusťte nástroj nslookup pro každý z nich s příponami S1, S2 a S3 k získání IP adres všech tří instancí spuštěných ve třech zónách dostupnosti. 
 
 
 ## <a name="best-practices"></a>Osvědčené postupy
-### <a name="what-are-some-azure-service-bus-best-practices"></a>Jaké jsou některé osvědčené postupy Azure Service Bus?
-Zobrazit [osvědčené postupy pro zlepšení výkonu pomocí služby Service Bus][Best practices for performance improvements using Service Bus] – Tento článek popisuje, jak optimalizovat výkon při výměně zpráv.
+### <a name="what-are-some-azure-service-bus-best-practices"></a>Co jsou některé Azure Service Bus osvědčené postupy?
+Projděte si [osvědčené postupy pro zlepšení výkonu pomocí Service Bus][Best practices for performance improvements using Service Bus] – Tento článek popisuje, jak optimalizovat výkon při výměně zpráv.
 
-### <a name="what-should-i-know-before-creating-entities"></a>Co bych měl vědět před vytvořením entity?
-Následující vlastnosti frontu a téma jsou neměnné. Při zřizování entity, jak tyto vlastnosti nelze změnit bez vytvoření nové entity nahrazení, zvažte toto omezení.
+### <a name="what-should-i-know-before-creating-entities"></a>Co mám vědět před vytvořením entit?
+Následující vlastnosti fronty a tématu jsou neměnné. Při zřizování entit Vezměte v úvahu toto omezení, protože tyto vlastnosti nelze upravovat bez nutnosti vytvořit novou náhradní entitu.
 
 * Dělení
 * Relace
 * Vyhledávání duplicit
-* Expresní entity
+* Entita Express
 
 ## <a name="pricing"></a>Ceny
-Tato část odpovídá na některé časté otázky ke správě služby Service Bus Cenová struktura.
+Tato část obsahuje odpovědi na některé nejčastější dotazy týkající se Service Bus cenové struktury.
 
-[Služby Service Bus, ceny a fakturace](https://azure.microsoft.com/pricing/details/service-bus/) článku vysvětluje měřiče ve službě Service Bus. Konkrétní informace o možnostech cen Service Bus najdete v tématu [podrobnosti o cenách služby Service Bus](https://azure.microsoft.com/pricing/details/service-bus/).
+V článku [Service Bus ceny a fakturace](https://azure.microsoft.com/pricing/details/service-bus/) se vysvětlují měřiče fakturace v Service Bus. Konkrétní informace o možnostech cenového Service Bus najdete v článku [Podrobnosti o cenách Service Bus](https://azure.microsoft.com/pricing/details/service-bus/).
 
-Můžete také navštívit [nejčastější dotazy k podpoře Azure](https://azure.microsoft.com/support/faq/) obecné informace o cenách Azure. 
+Pro obecné informace o cenách Azure můžete také navštívit [Nejčastější dotazy k podpoře Azure](https://azure.microsoft.com/support/faq/) . 
 
-### <a name="how-do-you-charge-for-service-bus"></a>Jak se vám účtovat za služby Service Bus?
-Podrobnější informace o cenách služby Service Bus, najdete v článku [podrobnosti o cenách služby Service Bus][Pricing overview]. Kromě ceny uvedené bude vám účtována přidružené datové přenosy pro výchozí přenos dat mimo datové centrum, ve které je zřízená vaší aplikace.
+### <a name="how-do-you-charge-for-service-bus"></a>Jak se účtují poplatky za Service Bus?
+Úplné informace o Service Bus cenách najdete v článku [o cenách Service Bus][Pricing overview]. Kromě uvedených cen se vám budou účtovat přenosy dat pro výstup mimo datové centrum, ve kterém se vaše aplikace zřídí.
 
-### <a name="what-usage-of-service-bus-is-subject-to-data-transfer-what-is-not"></a>Jaké použití služby Service Bus je v souladu s přenosy dat? Co je?
-Bez poplatků, stejně jako přenosy příchozích dat je k dispozici přenosů dat v rámci dané oblasti Azure. Přenos dat mimo oblast se vztahují poplatky za výchozí přenos dat, které najdete [tady](https://azure.microsoft.com/pricing/details/bandwidth/).
+### <a name="what-usage-of-service-bus-is-subject-to-data-transfer-what-is-not"></a>Jaké využití Service Bus podléhá přenosu dat? Co není?
+Jakýkoli přenos dat v rámci dané oblasti Azure se poskytuje zdarma, stejně jako všechny příchozí přenosy dat. Přenos dat mimo oblast podléhá poplatkům za výstup, který najdete [tady](https://azure.microsoft.com/pricing/details/bandwidth/).
 
-### <a name="does-service-bus-charge-for-storage"></a>Služby Service Bus účtovat úložiště?
-Ne, Service Bus neúčtují úložiště. Je však kvótu omezení maximální množství dat, které můžete nastavit jako trvalý, za fronty nebo tématu. Zobrazit další nejčastější dotazy.
+### <a name="does-service-bus-charge-for-storage"></a>Účtuje se Service Bus za úložiště?
+Ne, Service Bus neúčtuje za úložiště. Existuje však kvóta, která omezuje maximální množství dat, která lze uchovávat pro jednotlivé fronty nebo témata. Podívejte se na další Nejčastější dotazy.
 
 ## <a name="quotas"></a>Kvóty
 
-Seznam a kvótám služby Service Bus, najdete v článku [přehled kvóty služby Service Bus][Quotas overview].
+Seznam limitů a kvót Service Bus najdete v tématu [Přehled kvót Service Bus][Quotas overview].
 
-### <a name="does-service-bus-have-any-usage-quotas"></a>Má služby Service Bus jakékoli využití kvóty?
-Ve výchozím nastavení pro každý cloud a nastaví služba Microsoft agregační měsíční využití kvóty, vypočtené ve všech předplatných zákazníka. Pokud budete potřebovat vyšší limity, můžete kontaktovat zákaznickou podporu o vašich potřebách a tyto limity odpovídajícím způsobem nastavit kdykoli. Agregované využití kvóty pro služby Service Bus, je 5 miliard zpráv za měsíc.
+### <a name="does-service-bus-have-any-usage-quotas"></a>Má Service Bus nějaké kvóty využití?
+Ve výchozím nastavení pro každou cloudovou službu Microsoft nastavuje agregovanou kvótu měsíčního využití, která se počítá napříč předplatnými zákazníka. Pokud potřebujete víc než tato omezení, můžete se kdykoli obrátit na službu zákazníkům, abychom porozuměli vašim potřebám a patřičně upravili tato omezení. Pro Service Bus je agregovaná kvóta využití 5 000 000 000 zpráv měsíčně.
 
-I když společnost Microsoft si vyhrazuje právo zakázat účet zákazníka, který překročil jeho využití kvót v daném měsíci, e-mailová oznámení se odesílají a více pokusům ke kontaktování zákazníka před provedením jakékoli akce. Zákazníci překročení kvóty dál zodpovídají za poplatky na rámec kvót.
+Společnost Microsoft si vyhrazuje právo zakázat účet zákazníka, který překročil kvóty využití v daném měsíci, ale e-mailová oznámení se odešlou a před provedením jakékoli akce provedou několik pokusů o kontaktování zákazníka. Zákazníci překračující tyto kvóty stále zodpovídají za poplatky, které překračují tyto kvóty.
 
-Stejně jako u jiných služeb v Azure Service Bus vynucuje sadu konkrétní kvót, aby se zajistilo, že veletrh využití prostředků. Další podrobnosti o těchto kvót v můžete najít [přehled kvóty služby Service Bus][Quotas overview].
+Stejně jako u ostatních služeb v Azure Service Bus vynutila sadu konkrétních kvót, aby bylo zajištěno, že bude k dispozici korektní využití prostředků. Další podrobnosti o těchto kvótách najdete v článku [Přehled kvót Service Bus][Quotas overview].
 
-### <a name="how-to-handle-messages-of-size--1-mb"></a>Jak pro zpracování velikost zprávy > 1 MB?
-Zasílání zpráv služby Service Bus (fronty a témata nebo předplatná), aby aplikace odesílat zprávy o velikosti až 256 KB (úrovně standard) nebo 1 MB (úroveň premium). Pokud pracujete se zprávami o velikosti větší než 1 MB, použijte vzor kontrola deklarací identity je popsáno v [tento příspěvek na blogu](https://www.serverless360.com/blog/deal-with-large-service-bus-messages-using-claim-check-pattern).
+### <a name="how-to-handle-messages-of-size--1-mb"></a>Jak zpracovávat zprávy o velikosti > 1 MB?
+Služba Service Bus Messaging Services (fronty a témata/odběry) umožňuje aplikaci posílat zprávy o velikosti až 256 KB (úroveň Standard) nebo 1 MB (úroveň Premium). Pokud pracujete se zprávami o velikosti větší než 1 MB, použijte vzor kontroly deklarací identity popsaný v [tomto blogovém příspěvku](https://www.serverless360.com/blog/deal-with-large-service-bus-messages-using-claim-check-pattern).
 
 ## <a name="troubleshooting"></a>Řešení potíží
-### <a name="why-am-i-not-able-to-create-a-namespace-after-deleting-it-from-another-subscription"></a>Proč mi nejde vytvořit obor názvů po odstranění z jiného předplatného? 
-Při odstranění oboru názvů z předplatného čeká na 4 hodiny, než se nutnosti znovu vytvářet adresářovou se stejným názvem v jiném předplatném. V opačném případě může zobrazit následující chybová zpráva: `Namespace already exists`. 
+### <a name="why-am-i-not-able-to-create-a-namespace-after-deleting-it-from-another-subscription"></a>Proč nemůžu vytvořit obor názvů po jeho odstranění z jiného předplatného? 
+Když odstraníte obor názvů z předplatného, počkejte 4 hodiny, než ho znovu vytvoříte se stejným názvem v jiném předplatném. V opačném případě se může zobrazit následující chybová zpráva `Namespace already exists`:. 
 
-### <a name="what-are-some-of-the-exceptions-generated-by-azure-service-bus-apis-and-their-suggested-actions"></a>Jaké jsou některé výjimky generované API služby Azure Service Bus a jejich doporučené akce?
-Seznam možných výjimkách služby Service Bus najdete v tématu [výjimky přehled][Exceptions overview].
+### <a name="what-are-some-of-the-exceptions-generated-by-azure-service-bus-apis-and-their-suggested-actions"></a>Jaké jsou některé výjimky generované rozhraními API Azure Service Bus a jejich navrhovanými akcemi?
+Seznam možných výjimek Service Bus naleznete v tématu [Exception Overview][Exceptions overview].
 
-### <a name="what-is-a-shared-access-signature-and-which-languages-support-generating-a-signature"></a>Co je sdílený přístupový podpis a jazyky, které podporují generování podpis?
-Sdílené přístupové podpisy jsou mechanismus ověřování na základě zabezpečené hodnoty hash SHA-256 nebo identifikátory URI. Informace o tom, jak generovat vlastní podpisy v Node.js, PHP, Java a C\#, najdete v článku [sdílené přístupové podpisy][Shared Access Signatures] článku.
+### <a name="what-is-a-shared-access-signature-and-which-languages-support-generating-a-signature"></a>Co je sdílený přístupový podpis a které jazyky podporují generování podpisu?
+Signatury sdíleného přístupu jsou mechanismy ověřování založené na zabezpečených hodnotách hash nebo identifikátorech URI SHA-256. Informace o tom, jak generovat vlastní signatury v Node. js, PHP, Java, Pythonu a C#, najdete v článku věnovaném [sdíleným přístupovým podpisům][Shared Access Signatures] .
 
-## <a name="subscription-and-namespace-management"></a>Správa předplatného a obor názvů
-### <a name="how-do-i-migrate-a-namespace-to-another-azure-subscription"></a>Jak migrovat obor názvů do jiného předplatného Azure?
+## <a name="subscription-and-namespace-management"></a>Správa předplatného a oboru názvů
+### <a name="how-do-i-migrate-a-namespace-to-another-azure-subscription"></a>Návody migrovat obor názvů do jiného předplatného Azure?
 
-Můžete přesunout oboru názvů z jednoho předplatného Azure na jiný, buď pomocí [webu Azure portal](https://portal.azure.com) nebo příkazů Powershellu. Aby bylo možné provést operaci, musí být obor názvů už aktivní. Uživatelské příkazy spustíte, musíte být správcem na zdrojovém i cílovém předplatná.
+Obor názvů můžete přesunout z jednoho předplatného Azure do jiného, a to pomocí [Azure Portal](https://portal.azure.com) nebo příkazů PowerShellu. Aby bylo možné provést operaci, obor názvů již musí být aktivní. Uživatel, který spouští příkazy, musí být správce na zdrojových i cílových předplatných.
 
 #### <a name="portal"></a>Portál
 
-Chcete-li migrovat obory názvů služby Service Bus do jiného předplatného pomocí webu Azure portal, postupujte podle pokynů [tady](../azure-resource-manager/resource-group-move-resources.md#use-the-portal). 
+Pokud chcete použít Azure Portal k migraci Service Bus oborů názvů do jiného předplatného, postupujte podle pokynů [zde](../azure-resource-manager/resource-group-move-resources.md#use-the-portal). 
 
 #### <a name="powershell"></a>PowerShell
 
-Následující sekvence příkazů Powershellu přesune oboru názvů z jednoho předplatného Azure do jiného. K provedení této operace, obor názvů, musí již být aktivní a uživatel, který spouští příkazy Powershellu, musíte být správcem na zdrojovém i cílovém předplatná.
+Následující pořadí příkazů PowerShellu přesune obor názvů z jednoho předplatného Azure do jiného. Aby bylo možné provést tuto operaci, musí být obor názvů již aktivní a uživatel, který spouští příkazy prostředí PowerShell, musí být správcem na zdrojovém i cílovém předplatném.
 
 ```powershell
 # Create a new resource group in target subscription
@@ -161,11 +161,11 @@ Move-AzResource -DestinationResourceGroupName 'targetRG' -DestinationSubscriptio
 ```
 
 ## <a name="next-steps"></a>Další postup
-Další informace o Service Bus, najdete v následujících článcích:
+Další informace o Service Bus najdete v následujících článcích:
 
-* [Úvod do Azure Service Bus Premium (příspěvek na blogu)](https://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
-* [Úvod do Azure Service Bus úrovně Premium (Channel9)](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging)
-* [Přehled služby Service Bus](service-bus-messaging-overview.md)
+* [Představujeme Azure Service Bus Premium (příspěvek na blogu)](https://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
+* [Představujeme Azure Service Bus Premium (channel9)](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging)
+* [Přehled Service Bus](service-bus-messaging-overview.md)
 * [Začínáme s frontami služby Service Bus](service-bus-dotnet-get-started-with-queues.md)
 
 [Best practices for performance improvements using Service Bus]: service-bus-performance-improvements.md

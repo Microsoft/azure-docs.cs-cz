@@ -1,37 +1,47 @@
 ---
-title: Školení metriky přesnosti v automatizovaných ML
+title: Metrika přesnosti školení v automatizovaném ML
 titleSuffix: Azure Machine Learning service
-description: Další informace o automatické strojového učení přesnost metriky pro každé spuštění.
+description: Přečtěte si o automatizované metriky přesnosti Machine Learning pro každé z vašich běhů.
 author: j-martens
 ms.author: jmartens
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 06/20/2019
-ms.openlocfilehash: 44dfa387b289afe4dc5f030cca0b13325c04e811
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.date: 07/16/2019
+ms.openlocfilehash: dc147fd0252b2b5ec4ce334d6c1c464d9cde8ef5
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67313277"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297901"
 ---
-# <a name="evaluate-training-accuracy-in-automated-ml-with-metrics"></a>Vyzkoušejte přesnost školení v automatizovaných ML s metrikami
+# <a name="evaluate-training-accuracy-in-automated-ml-with-metrics"></a>Vyhodnotit přesnost školení v automatizovaných ML s metrikami
 
-Pokud chcete zobrazit metriky přesnosti školení pro každou iteraci spuštění několika způsoby.
+V tomto článku se seznámíte s různými metrikami, které jsou k dispozici pro automatizované modely ml v Azure Machine Learning. 
 
-* Použití [Jupyter widget](how-to-track-experiments.md#view-run-details)
-* Použití [ `get_metrics()` funkce](how-to-track-experiments.md#query-run-metrics) na žádném `Run` objektu
-* Zobrazení [experiment metrik na webu Azure Portal](how-to-track-experiments.md#view-the-experiment-in-the-azure-portal)
+Existuje několik způsobů, jak zobrazit metriky přesnosti školení pro každou iteraci spuštění.
+* Použití [widgetu Jupyter](how-to-track-experiments.md#view-run-details)
+* Použití funkce u libovolného `Run` objektu [ `get_metrics()` ](how-to-track-experiments.md#query-run-metrics)
+* Zobrazit [metriky experimentu v Azure Portal](how-to-track-experiments.md#view-the-experiment-in-the-azure-portal)
+
+## <a name="prerequisites"></a>Požadavky
+ 
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze služby Azure Machine Learning](https://aka.ms/AMLFree) dnes
+ 
+* Pomocí sady SDK nebo Azure Portal můžete vytvořit automatický experiment Machine Learning.
+ 
+    * Použití sady SDK k sestavení [modelu klasifikace](how-to-auto-train-remote.md) nebo [regresního modelu](tutorial-auto-train-models.md)
+    * Pomocí [Azure Portal](how-to-create-portal-experiments.md) můžete vytvořit model klasifikace nebo regrese tím, že nahrajete příslušná data.
 
 ## <a name="classification-metrics"></a>Klasifikace metriky
 
-Tyto metriky jsou uloženy v každé iteraci spuštění úlohy klasifikace.
+Následující metriky jsou uloženy v každé iteraci spuštění pro úlohu klasifikace.
 
 |Metrika|Popis|Výpočet|Další parametry
 --|--|--|--|
 AUC_Macro| AUC je oblasti pod křivkou charakteristiku provozní příjemce. Makro je aritmetický průměr AUC pro každou třídu.  | [Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | Průměrná = "makro"|
-AUC_Micro| AUC je oblasti pod křivkou charakteristiku provozní příjemce. Micro je vypočítán globálně kombinací pravdivě pozitivní i falešně pozitivních výsledků z každé třídě| [Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | Průměrná = "micro"|
+AUC_Micro| AUC je oblasti pod křivkou charakteristiku provozní příjemce. Hodnota mikro je vypočítána globálně kombinací skutečných kladných hodnot a falešně pozitivních hodnot z každé třídy.| [Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | Průměrná = "micro"|
 AUC_Weighted  | AUC je oblasti pod křivkou charakteristiku provozní příjemce. Váha je aritmetický průměr skóre pro každou třídu váženo podle počtu true instancí každé třídy| [Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html)|Průměrná = "váha"
 accuracy|Přesnost je procento předpokládané popisky, které přesně odpovídají true popisky. |[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html) |Žádný|
 average_precision_score_macro|Průměrná přesnost shrnuje křivky přesnosti a úplnosti jako vážený průměr přesnosti dosáhnout při každé prahové hodnotě, zvýšení spojené s vracením z předchozí prahové hodnoty použít jako váhu. Aritmetický průměr přesnost skóre každé třídy je – makro|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|Průměrná = "makro"|
@@ -53,7 +63,7 @@ weighted_accuracy|Vážený přesnost je přesnost, kde je rovna podíl true ins
 
 ## <a name="regression-and-forecasting-metrics"></a>Regrese a Prognózování metriky
 
-Tyto metriky jsou uloženy v každé iteraci spuštění pro regresní nebo Prognózování úloh.
+Následující metriky jsou uloženy v každé iteraci spuštění pro úlohu regrese nebo předpovědi.
 
 |Metrika|Popis|Výpočet|Další parametry
 --|--|--|--|
@@ -67,4 +77,8 @@ normalized_median_absolute_error|Normalizovaná střední absolutní chyba je st
 root_mean_squared_error|Kořenové bude kvadratická chyba odmocninu očekávané kvadratickému rozdílu mezi cílem a do predikce.|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|Žádný|
 normalized_root_mean_squared_error|Normalizovaná kořenové bude kvadratická chyba kořenové střední kvadratické chyby rozdělené podle rozsahu dat|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|Rozdělit podle rozsahu dat|
 root_mean_squared_log_error|Kořenové znamenat protokolu kvadratických chyb je odmocninu očekávané kvadratická chyba logaritmické|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|Žádný|
-normalized_root_mean_squared_log_error|Normalizované kořenové mean ve čtverci protokolu chyba je chyba mean ve čtverci protokolu kořenové rozdělené podle rozsahu dat|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|Rozdělit podle rozsahu dat|
+normalized_root_mean_squared_log_error|Normalizovaná chyba na čtvercovém středním významu protokolu je chyba v kořenovém středním významu protokolu dělená rozsahem dat|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|Rozdělit podle rozsahu dat|
+
+## <a name="next-steps"></a>Další postup
+
+Přečtěte si další informace o [automatizovaném ml](concept-automated-ml.md) v Azure Machine Learning.

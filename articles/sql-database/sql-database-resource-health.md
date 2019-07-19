@@ -12,18 +12,18 @@ ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 02/26/2019
-ms.openlocfilehash: c3b9fecd3ad404385732e55a9cf3aa65a6e388b8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4757236d179e4d6ceb626f58f12cfe48799eed7a
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61483024"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67854367"
 ---
 # <a name="use-resource-health-to-troubleshoot-connectivity-for-azure-sql-database"></a>Řešení potíží s připojením pro službu Azure SQL Database pomocí Resource Health
 
 ## <a name="overview"></a>Přehled
 
-[Služba Resource Health](../service-health/resource-health-overview.md#getting-started) pro SQL Database pomáhá při diagnostice a získání podpory v případě, že problém Azure ovlivňuje vaše prostředky SQL. Informuje o aktuálním a dřívějším stavu prostředků a pomáhá zmírnit problémy. Resource Health poskytuje technickou podporu, když potřebujete pomoc při potížích se službami Azure.
+[Služba Resource Health](../service-health/resource-health-overview.md#get-started) pro SQL Database pomáhá při diagnostice a získání podpory v případě, že problém Azure ovlivňuje vaše prostředky SQL. Informuje o aktuálním a dřívějším stavu prostředků a pomáhá zmírnit problémy. Resource Health poskytuje technickou podporu, když potřebujete pomoc při potížích se službami Azure.
 
 ![Přehled](./media/sql-database-resource-health/sql-resource-health-overview.jpg)
 

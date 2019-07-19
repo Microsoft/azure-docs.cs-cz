@@ -1,22 +1,53 @@
 ---
-title: 'Optimalizace směrování - okruhy ExpressRoute: Azure | Dokumentace Microsoftu'
+title: 'Optimalizace směrování – ExpressRoute okruhy: Azure | Microsoft Docs'
 description: Tato stránka obsahuje podrobné informace o tom, jak optimalizovat směrování, pokud máte více než jeden okruh ExpressRoute, který poskytuje připojení mezi Microsoftem a vaší podnikovou sítí.
 services: expressroute
 author: charwen
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 07/11/2019
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: 65c23b05cfcb623f8e2870df813f5516b3039d5c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0bd8c0417b32e93a4f52b545c4d7fc532992a0b1
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60883488"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67854327"
 ---
 # <a name="optimize-expressroute-routing"></a>Optimalizace směrování ExpressRoute
 Pokud máte víc okruhů ExpressRoute, máte více než jednu cestu, jak se připojit k Microsoftu. V důsledku toho může dojít k neoptimálnímu směrování, to znamená, že přenosy dat mezi vaší sítí a Microsoftem mohou použít delší cestu. Čím delší je síťová cesta, tím větší je latence. Latence má přímý vliv na výkon aplikací a činnost koncového uživatele. Tento článek popíše tento problém a vysvětlí možnosti optimalizace směrování pomocí standardních technologií směrování.
+
+## <a name="path-selection-on-microsoft-and-public-peerings"></a>Výběr cesty na Microsoftu a veřejných partnerských vztahů
+Je důležité zajistit, aby při použití partnerského vztahu Microsoftu nebo veřejného partnera, který provoz přetéká přes požadovanou cestu, pokud máte jeden nebo více okruhů ExpressRoute, a také cesty k Internetu prostřednictvím internetového Exchange (IX) nebo poskytovatele internetových služeb (ISP). Protokol BGP využívá nejlepší algoritmus výběru cest založený na několika faktorech, včetně nejdelší shody předpony (základní). Aby se zajistilo, že provoz určený pro Azure prostřednictvím Microsoft nebo veřejného partnerského vztahu prochází cestou ExpressRoute, musí implementovat atribut *místní předvolby* , aby se zajistilo, že je tato cesta vždy upřednostňovaná v ExpressRoute. 
+
+> [!NOTE]
+> Výchozí místní preference je obvykle 100. Vyšší místní předvolby jsou vhodnější. 
+>
+>
+
+Vezměte v úvahu následující vzorový scénář:
+
+![Případ 1 ExpressRoute – Problém: Neoptimální směrování od zákazníka do Microsoftu](./media/expressroute-optimize-routing/expressroute-localPreference.png)
+
+Ve výše uvedeném příkladu dáváte přednost ExpressRoute cestám konfigurace místní předvolby následujícím způsobem. 
+
+**Konfigurace Cisco IOS-XE z perspektivy R1:**
+
+    R1(config)#route-map prefer-ExR permit 10
+    R1(config-route-map)#set local-preference 150
+
+    R1(config)#router BGP 345
+    R1(config-router)#neighbor 1.1.1.2 remote-as 12076
+    R1(config-router)#neighbor 1.1.1.2 activate
+    R1(config-router)#neighbor 1.1.1.2 route-map prefer-ExR in
+
+**Konfigurace Junos z hlediska R1:**
+
+    user@R1# set protocols bgp group ibgp type internal
+    user@R1# set protocols bgp group ibgp local-preference 150
+
+
 
 ## <a name="suboptimal-routing-from-customer-to-microsoft"></a>Neoptimální směrování od zákazníka do Microsoftu
 Podívejme se zblízka na problém směrování na příkladu. Představte si, že máte dvě pobočky v USA, jednu v Los Angeles a jednu v New Yorku. Vaše pobočky jsou připojené k síti WAN, což může být buď vaše páteřní síti, nebo virtuální privátní síť IP poskytovatele služeb. Máte dva okruhy ExpressRoute, jeden v oblasti USA – západ a druhý v oblasti USA – východ, které jsou také připojené k síti WAN. Zjevně máte dvě cesty, jak se připojit k síti Microsoftu. Nyní si představte, že máte nasazení Azure (například Azure App Service) v oblasti USA – západ i USA – východ. Vaším záměrem je připojit vaše uživatele z Los Angeles k Azure USA – západ a uživatele z New Yorku k Azure USA – východ, protože správce služby inzeruje, že uživatelé v každé pobočce přistupují k blízkým službám Azure, aby byla činnost optimální. Tento plán funguje dobře pro uživatele na východním pobřeží, ale bohužel ne pro uživatele na západním pobřeží. Příčina problému je následující. V každém okruhu ExpressRoute vám inzerujeme jak předponu v Azure USA – východ (23.100.0.0/16), tak i předponu v Azure USA – západ (13.100.0.0/16). Pokud nevíte, která předpona je ze které oblasti, nejste schopni s nimi zacházet odlišným způsobem. Vaše síť WAN si může myslet, že obě předpony jsou blíž oblasti USA – východ než USA – západ, a proto směruje uživatele z obou poboček přes okruh ExpressRoute v oblasti USA – východ. Díky tomu budete mít v pobočce v Los Angeles mnoho nespokojených uživatelů.

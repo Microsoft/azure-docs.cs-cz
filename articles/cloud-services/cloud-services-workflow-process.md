@@ -1,6 +1,6 @@
 ---
-title: Pracovní postup architektury virtuálních počítačích Azure s Windows | Dokumentace Microsoftu
-description: Tento článek obsahuje přehled procesů pracovního postupu při nasazení služby.
+title: Pracovní postup architektury Windows Azure VM | Microsoft Docs
+description: Tento článek poskytuje přehled procesů pracovního postupu při nasazení služby.
 services: cloud-services
 documentationcenter: ''
 author: genlin
@@ -15,114 +15,114 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 04/08/2019
 ms.author: kwill
-ms.openlocfilehash: 7c8459a6694663a49203b6ec21a760d3e6bd60c3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e7b3146ffa0f4b828f1a28d3bc51b26db194244c
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60480739"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249504"
 ---
-#    <a name="workflow-of-windows-azure-classic-vm-architecture"></a>Pracovní postup architektura klasického virtuálního počítače Windows Azure 
-Tento článek obsahuje přehled procesů pracovních postupů, ke kterým dochází při nasazení nebo aktualizovat prostředek Azure, jako je například virtuální počítač. 
+#    <a name="workflow-of-windows-azure-classic-vm-architecture"></a>Pracovní postup architektury klasického virtuálního počítače Windows Azure 
+Tento článek poskytuje přehled procesů pracovních postupů, ke kterým dochází při nasazování nebo aktualizaci prostředku Azure, jako je třeba virtuální počítač. 
 
 > [!NOTE]
->Azure má dva různé modely nasazení pro vytváření a práci s prostředky: Resource Manager a classic. Tento článek se věnuje použití klasického modelu nasazení.
+>Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: Správce prostředků a klasický. Tento článek se věnuje použití klasického modelu nasazení.
 
-V níže uvedeném diagramu architektury prostředků Azure.
+Následující diagram znázorňuje architekturu prostředků Azure.
 
-![Azure pracovního postupu](./media/cloud-services-workflow-process/workflow.jpg)
+![Pracovní postup Azure](./media/cloud-services-workflow-process/workflow.jpg)
 
-## <a name="workflow-basics"></a>Základní informace o pracovním postupu
+## <a name="workflow-basics"></a>Základy pracovního postupu
    
-**A**. RDFE / FFE je komunikační trasa od uživatele do prostředků infrastruktury. RDFE (RedDog Front End) je veřejně vystavené rozhraní API, která je front-endu na portálu Management Portal a rozhraní API pro správu služby jako je Visual Studio, Azure konzoly MMC a tak dále.  Všechny žádosti od uživatele, projděte si RDFE. FFE (Fabric front-endu) je vrstva, která se překládá požadavky z RDFE příkazy prostředků infrastruktury. Všechny žádosti od RDFE projít FFE k dosažení kontrolery prostředcích infrastruktury.
+**A**. RDFE/FFE je komunikační cesta od uživatele k prostředkům infrastruktury. RDFE (RedDog Front End) je veřejně vystavené rozhraní API, které je front-end pro Portál pro správu a rozhraní API pro správu služeb, jako je například Visual Studio, Azure MMC a tak dále.  Všechny žádosti od uživatele procházejí přes RDFE. FFE (Fabric front end) je vrstva, která překládá požadavky z RDFE do příkazů prostředků infrastruktury. Všechny požadavky z RDFE procházejí přes FFE a dosáhnou řadičů infrastruktury.
 
-**B**. Kontroler prostředků infrastruktury je zodpovědná za údržbu a monitorování všech prostředků v datovém centru. Komunikuje s agenty hostitele prostředků infrastruktury v prostředcích infrastruktury odeslání informací operačního systému, jako je například verze hostovaného operačního systému, balíček služby, konfigurace služby a stav služby.
+**B**. Kontroler prostředků infrastruktury zodpovídá za údržbu a monitorování všech prostředků v datovém centru. Komunikuje s agenty hostitele prostředků infrastruktury v operačním systému prostředků infrastruktury odesílající informace, jako je verze operačního systému hosta, balíček služby, konfigurace služby a stav služby.
 
-**C**. Agent hostitele může fungovat OSsystem hostitele a je zodpovědný za nastavení hostovaného operačního systému a komunikaci s agentem hosta (WindowsAzureGuestAgent), aby bylo možné aktualizovat roli směrem k určené cílový stav a proveďte prezenčního signálu zkontroluje agenta hosta. Pokud Agent hostitele neobdrží odpověď prezenčního signálu po dobu 10 minut, Agent hostitele restartuje hostovaného operačního systému.
+**C**. Hostitelský Agent se nachází na hostiteli OSsystem a zodpovídá za nastavení hostovaného operačního systému a komunikaci s agentem hosta (WindowsAzureGuestAgent), aby se role aktualizovala směrem k zamýšlenému stavu cíle a pomocí agenta hosta byly zkontrolovány prezenční signály. Pokud agent hostitele neobdrží odpověď prezenčního signálu po dobu 10 minut, Agent hosta restartuje hostovaný operační systém.
 
-**C2**. WaAppAgent zodpovídá za instalaci, konfiguraci a aktualizaci WindowsAzureGuestAgent.exe.
+**C2**. WaAppAgent zodpovídá za instalaci, konfiguraci a aktualizaci WindowsAzureGuestAgent. exe.
 
 **D**.  WindowsAzureGuestAgent zodpovídá za následující:
 
-1. Konfigurace hostovaného operačního systému, včetně brány firewall, seznamy ACL, LocalStorage prostředky, balíček služby a konfigurace a certifikáty. Nastavení SID pro uživatelský účet, pod kterými poběží role.
-2. Stav role komunikaci do prostředků infrastruktury.
-3. Spuštění WaHostBootstrapper a monitorování tak, že role je ve stavu cíle.
+1. Konfigurace hostovaného operačního systému včetně brány firewall, seznamů ACL, prostředků LocalStorage, balíčku služby a konfigurace a certifikátů. Nastavení identifikátoru SID pro uživatelský účet, pod kterým bude role běžet.
+2. Komunikace se stavem role do prostředků infrastruktury.
+3. Spouští se WaHostBootstrapper a monitoruje se, aby se zajistilo, že role je ve stavu cíle.
 
-**E**. WaHostBootstrapper je zodpovědný za:
+**E**. WaHostBootstrapper zodpovídá za:
 
-1. Čte se konfigurace role, a spouští všechny příslušné úlohy a procesy pro konfiguraci a spuštění role.
-2. Monitorování všech jeho podřízených procesů.
-3. Vyvolání události StatusCheck na hostitelský proces role.
+1. Načetli jste konfiguraci rolí a spustíte všechny příslušné úlohy a procesy pro konfiguraci a spuštění role.
+2. Monitorování všech podřízených procesů.
+3. Vyvolává se událost StatusCheck v procesu hostitele role.
 
-**F**. IISConfigurator spustí v případě, že role je nakonfigurovaný jako webová role úplnou službu IIS (nebude fungovat u sady SDK 1.2 HWC rolí). Je zodpovědná za:
+**F**. IISConfigurator se spustí, pokud je role nakonfigurovaná jako plná webová role služby IIS (nespustí se pro role SDK 1,2 umožní). Zodpovídá za:
 
-1. Spouští se standardní služby IIS
-2. Konfigurace modulu revize v konfiguraci webové
-3. Nastavení fondu aplikací pro roli nakonfigurované v modelu služby
-4. Nastavení protokolování služby IIS tak, aby odkazoval na složku DiagnosticStore LocalStorage
-5. Konfiguraci oprávnění a seznamy ACL
-6. Na webu se nachází v % roleroot%:\sitesroot\0 a body fondu aplikací do tohoto umístění, aby spustil službu IIS. 
+1. Spuštění standardních služeb IIS
+2. Konfigurace modulu pro přepis ve webové konfiguraci
+3. Nastavení fondu aplikací pro konfigurovanou roli v modelu služby
+4. Nastavení protokolování služby IIS tak, aby odkazovalo na složku DiagnosticStore LocalStorage
+5. Konfigurace oprávnění a seznamů ACL
+6. Web se nachází ve službě% roleroot%: \sitesroot\0 a fond aplikací odkazuje na toto umístění, aby spouštěl službu IIS. 
 
-**G**. Úlohy po spuštění jsou určené role modelu a tím, že WaHostBootstrapper. Úlohy po spuštění může být nakonfigurován pro spouštění na pozadí asynchronně a spustí úlohy po spuštění a pokračujte k další úlohy po spuštění hostitele zaváděcí nástroj. Úlohy po spuštění můžete nakonfigurovat také pro spuštění v režimu jednoduchého (výchozí), ve kterém hostitele zaváděcí nástroj bude čekat na skončí a vrátit ukončovací kód úspěchu (0) před pokračováním k dalšímu úkolu po spuštění úlohy po spuštění.
+**G**. Úlohy po spuštění jsou definovány modelem role a spouštěny pomocí WaHostBootstrapper. Úlohy po spuštění je možné nakonfigurovat tak, aby se spouštěly na pozadí asynchronně, a zaváděcí nástroj hostitele spustí úlohu po spuštění a pak bude pokračovat na další úlohy při spuštění. Úlohy po spuštění je také možné nakonfigurovat tak, aby běžely v jednoduchém (výchozím) režimu, ve kterém bude zaváděcí nástroj hostitele čekat na dokončení spouštěcí úlohy, a před pokračováním na další úlohu po spuštění vrátit ukončovací kód o úspěšnosti (0).
 
-**H**. Tyto úlohy jsou součástí sady SDK a jsou definované jako moduly plug-in v definici role služby (.csdef). Při rozbalení do úlohy po spuštění **DiagnosticsAgent** a **RemoteAccessAgent** jsou jedinečné tím, každá definovat dvě úlohy po spuštění, jeden běžný a ten, který má **/blockStartup** parametru. Normální spuštění úkolu je definován jako úlohu na pozadí při spuštění tak, aby ho může běžet na pozadí je spuštěna role samotný. **/BlockStartup** úloha po spuštění je definován jako úloha po spuštění jednoduché tak, aby WaHostBootstrapper čeká na jeho před pokračováním ukončete. **/BlockStartup** úloha čeká na dokončení inicializace pravidelné úlohy, a poté ukončí a povolit zaváděcí nástroj hostitele pokračujte. To se provádí tak, aby Diagnostika a přístup protokolu RDP, je možné nakonfigurovat před začátkem procesy role (to se provádí prostřednictvím úkolu /blockStartup). To také umožňuje přístup protokolu RDP, aby kontinuálně běžely, po dokončení úlohy po spuštění (to se provádí prostřednictvím normální úlohy) zaváděcí nástroj hostitele a Diagnostika.
+**H**. Tyto úlohy jsou součástí sady SDK a jsou definovány jako moduly plug-in v definici služby role (. csdef). Při rozšíření na úlohy po spuštění jsou **DiagnosticsAgent** a **RemoteAccessAgent** jedinečné v tom, že každý definuje dvě úlohy po spuštění, jednu regulární a jednu, která má parametr **/blockStartup** . Běžný spouštěcí úkol je definován jako spouštěcí úkol na pozadí, aby mohl běžet na pozadí, zatímco je spuštěná role sama. Úloha po spuštění **/blockStartup** je definována jako jednoduchý spouštěcí úkol, aby WaHostBootstrapper čekal na ukončení před pokračováním. Úloha **/blockStartup** čeká na dokončení inicializace pravidelného úkolu a potom ukončí a povolí zaváděcímu nástroji hostitele pokračovat. To se provádí tak, aby bylo možné nakonfigurovat přístup k diagnostice a protokolu RDP předtím, než se spustí procesy role (provádí se pomocí úlohy/blockStartup). To také umožňuje, aby Diagnostika a přístup protokolu RDP běžely i poté, co nástroj Host dokončil úlohy po spuštění (provádí se pomocí normální úlohy).
 
-**I**. WaWorkerHost je standardní hostitelský proces pro normální pracovních rolí. Knihovny DLL a vstupní bod kódu, jako je operace OnStart a spustit všechny role je hostitelem tohoto hostitelského procesu.
+**I**. WaWorkerHost je standardní hostitelský proces pro normální role pracovního procesu. Tento hostitelský proces je hostitelem všech knihoven DLL role a kódu vstupního bodu, jako je například OnStart a Run.
 
-**J**. WaWebHost je standardní hostitelský proces pro webové role, pokud jsou nakonfigurovány pro použití sadu SDK 1.2 kompatibilní s možnostmi hostitele webové jádro (HWC). Role můžete povolit režim HWC odebráním element z definice služby (.csdef). V tomto režimu spusťte kód všechny služby a knihovny DLL z procesu WaWebHost. Služba IIS (w3wp) se nepoužívá a neexistují žádné fondu aplikací nakonfigurovat ve Správci služby IIS, protože je uvnitř WaWebHost.exe, hostovaná IIS.
+**J**. WaWebHost je standardní hostitelský proces pro webové role, pokud jsou nakonfigurované pro použití hostitele umožní (Web Core) kompatibilního s SDK 1,2. Role mohou povolit režim umožní odebráním elementu z definice služby (. csdef). V tomto režimu se veškerý kód a knihovny DLL služby spouští z procesu WaWebHost. Služba IIS (W3wp) se nepoužívá a ve Správci služby IIS nejsou nakonfigurované žádné služby fondů, protože služba IIS je hostovaná v WaWebHost. exe.
 
-**K**. WaIISHost je hostitelský proces pro role vstupní bod kódu pro webové role, které používají úplnou službu IIS. Tento proces načte první knihovnu DLL, která se nachází, který používá **RoleEntryPoint** třídy a spustí kód z této třídy (při spuštění, spuštění, OnStop). Žádné **RoleEnvironment** událostí (například StatusCheck a změna), které jsou vytvořeny ve třídě RoleEntryPoint jsou vyvolány v tomto procesu.
+**K**. WaIISHost je hostitelský proces pro kód vstupního bodu role pro webové role, které používají plnou službu IIS. Tento proces načte první nalezenou knihovnu DLL, která používá třídu **RoleEntryPoint** , a spustí kód z této třídy (OnStart, Run, OnStart). V tomto procesu jsou vyvolány jakékoli události **RoleEnvironment** (například StatusCheck a změněné), které jsou vytvořeny ve třídě RoleEntryPoint.
 
-**L**. W3wp je standardní pracovní proces služby IIS, který se používá v případě, že role je nakonfigurován na použití úplnou službu IIS. Toto řešení běží z IISConfigurator fondu aplikací, který je nakonfigurovaný. V tomto procesu jsou vyvolány žádné RoleEnvironment události (jako je například StatusCheck a změna), které jsou vytvořené v tomto poli. Všimněte si, že RoleEnvironment události se aktivují v obou umístěních (WaIISHost a w3wp.exe), pokud jste přihlášení k odběru událostí v oba tyto procesy.
+**L**. W3WP je standardní pracovní proces služby IIS, který se používá, pokud je role nakonfigurovaná tak, aby používala plnou službu IIS. Tím se spustí fond, který je nakonfigurovaný z IISConfigurator. V tomto procesu jsou vyvolány jakékoli události RoleEnvironment (například StatusCheck a změněné), které jsou vytvořeny zde. Všimněte si, že události RoleEnvironment se aktivují v obou umístěních (WaIISHost a W3wp. exe), pokud se přihlásíte k odběru událostí v obou procesech.
 
 ## <a name="workflow-processes"></a>Pracovní postupy
 
-1. Uživatel odešle požadavek, jako jsou nahrávání souborů .cspkg a .cscfg, sděluje zdroje stop, nebo provedením změny konfigurace, a tak dále. To lze provést prostřednictvím webu Azure portal nebo nástroj, který používá rozhraní API pro správu služby, jako je například funkci Publikovat Visual Studio. Tento požadavek přejde na RDFE provedete všechny týkajících se předplatného práci a pak požadavek na FFE komunikovat. Zbývající část těchto kroků pracovního postupu se nový balíček pro nasazení, spusťte ji.
-2. FFE nalezne správné počítače fondu (na základě vstupu zákazníka, jako skupina vztahů nebo zeměpisné umístění a vstup z prostředků infrastruktury, jako je například dostupnost počítače) a komunikuje s kontrolerem hlavní prostředků infrastruktury v tomto fondu počítače.
-3. Kontroler prostředků infrastruktury zjistí, která je dostupná jádra procesoru hostitele (nebo přede nahoru nového hostitele). Balíček služby a konfiguraci se zkopíruje do hostitele a kontroler prostředků infrastruktury komunikuje s agentem hostitele na hostitelském operačním systému pro nasazení balíčku (konfigurace vyhrazené IP adresy, portů, hostovaný operační systém a tak dále).
-4. Agent hostitele spustí hostovaného operačního systému a komunikuje s agentem hosta (WindowsAzureGuestAgent). Hostitel odešle prezenční signály hosta, abyste měli jistotu, že role funguje směrem k jeho cílový stav.
-5. WindowsAzureGuestAgent nastaví hostovaného operačního systému (brány firewall, seznamy ACL, LocalStorage a tak dále), zkopíruje nový soubor XML konfigurace c:\Config a pak spustí proces WaHostBootstrapper.
-6. Pro úplnou službu IIS webové role WaHostBootstrapper spustí IISConfigurator a že má-li odstranit všechny existující fondu aplikací pro webovou roli služby IIS.
-7. Přečte WaHostBootstrapper **spuštění** úkoly z E:\RoleModel.xml a zahájí provádění úloh po spuštění. WaHostBootstrapper počká, až všechny úkoly po spuštění jednoduché bylo dokončeno a vrátil zprávu "ÚSPĚCH".
-8. Pro úplnou službu IIS webové role WaHostBootstrapper říká IISConfigurator ke konfiguraci fondu aplikací služby IIS a bodů lokality tak, aby `E:\Sitesroot\<index>`, kde `<index>` je 0 na základě indexu do počtu <Sites> prvky definované pro službu.
+1. Uživatel vytvoří požadavek, jako je nahrání souborů. cspkg a. cscfg, informuje prostředek o zastavení nebo provedení změny konfigurace atd. To lze provést prostřednictvím Azure Portal nebo pomocí nástroje, který používá rozhraní API pro správu služeb, jako je například funkce publikování aplikace Visual Studio. Tento požadavek směřuje na RDFE, aby provede celou práci související s předplatným, a pak sdělí požadavek FFE. Zbývajících z těchto kroků pracovního postupu je nasazení nového balíčku a jeho spuštění.
+2. FFE vyhledá správný fond počítačů (na základě zákaznického vstupu, jako je skupina vztahů nebo geografické umístění a vstup z prostředků infrastruktury, jako je třeba dostupnost počítače) a komunikuje s hlavním řadičem prostředků infrastruktury v daném fondu počítačů.
+3. Kontroler prostředků infrastruktury vyhledá hostitele, který má dostupné jádra procesoru (nebo roztočí nového hostitele). Balíček služby a konfigurace se zkopírují na hostitele a kontrolér Fabric komunikuje s agentem hostitele na hostitelském operačním systému, aby nasadil balíček (konfigurace DIP, portů, hostovaného operačního systému atd.).
+4. Agent hostitele spustí hostovaný operační systém a komunikuje s agentem hosta (WindowsAzureGuestAgent). Hostitel pošle prezenční signály hostovi, aby se ujistil, že role pracuje směrem k jejímu cílovému stavu.
+5. WindowsAzureGuestAgent nastaví hostovaný operační systém (bránu firewall, seznamy ACL, LocalStorage atd.), zkopíruje nový konfigurační soubor XML do c:\Config a potom spustí proces WaHostBootstrapper.
+6. U úplných webových rolí služby IIS WaHostBootstrapper spustí IISConfigurator a oznámí IT, aby odstranil všechny existující služby fondů pro webovou roli z IIS.
+7. WaHostBootstrapper přečte úlohy **po spuštění** z E:\RoleModel.XML a začne spouštět úlohy po spuštění. WaHostBootstrapper počká, dokud nebudou dokončeny všechny jednoduché úvodní úlohy a vrátila zprávu "úspěch".
+8. U úplných webových rolí služby IIS WaHostBootstrapper oznamuje IISConfigurator `E:\Sitesroot\<index>`, že má nakonfigurovat službu IIS AppPool a odkazuje na lokalitu, kde `<index>` je `<Sites>` index založený na nule na počet prvků definovaných pro danou službu.
 9. WaHostBootstrapper spustí proces hostitele v závislosti na typu role:
-    1. **Role pracovního procesu**: WaWorkerHost.exe je spuštěn. WaHostBootstrapper provede metodu operace OnStart(). Po jeho vrácení, WaHostBootstrapper spuštění metodu Run() současně označí jako připravené role a vloží je do oběhu nástroje pro vyrovnávání zatížení (je-li definována InputEndpoints). WaHostBootsrapper pak přejde do smyčku kontroluje se stav role.
-    1. **Sada SDK 1.2 HWC webová Role**: WaWebHost je spuštěn. WaHostBootstrapper provede metodu operace OnStart(). Po jeho vrácení, WaHostBootstrapper spuštění metodu Run() a současně označí jako připravené role a vloží je do oběhu nástroje pro vyrovnávání zatížení. WaWebHost vydá požadavek na zahřívání (GET /do.rd_runtime_init). Všechny webové požadavky se posílají WaWebHost.exe. WaHostBootsrapper pak přejde do smyčku kontroluje se stav role.
-    1. **Úplné služby IIS webová Role**: aIISHost je spuštěná. WaHostBootstrapper provede metodu operace OnStart(). Po jeho vrácení, spustí se vykonat metodu Run() a současně označí jako připravené role a vloží je do oběhu nástroje pro vyrovnávání zatížení. WaHostBootsrapper pak přejde do smyčku kontroluje se stav role.
-10. Příchozích webových požadavků pro úplnou službu IIS webové role aktivace služby IIS obsluhovat žádosti, stejně jako by tomu bylo v IIS v místním prostředí a zahájit proces W3WP.
+    1. **Role pracovního procesu**: Je spuštěný WaWorkerHost. exe. WaHostBootstrapper spustí metodu OnStart (). Jakmile se vrátí, WaHostBootstrapper spustí metodu Run () a pak ji současně označí jako připravenou a umístí ji do rotace nástroje pro vyrovnávání zatížení (pokud jsou definovány InputEndpoints). WaHostBootsrapper pak přejde do smyčky kontroly stavu role.
+    1. **Webová role umožní sady SDK 1,2**: WaWebHost je spuštěn. WaHostBootstrapper spustí metodu OnStart (). Po návratu WaHostBootstrapper spustí metodu Run () a pak ji současně označí jako připravenou a umístí ji do rotace nástroje pro vyrovnávání zatížení. WaWebHost vydá požadavek zahřívání (GET/do.rd_runtime_init). Všechny webové požadavky se odesílají do WaWebHost. exe. WaHostBootsrapper pak přejde do smyčky kontroly stavu role.
+    1. **Plná webová role služby IIS**: aIISHost je spuštěná. WaHostBootstrapper spustí metodu OnStart (). Po návratu začne spustit metodu Run () a pak zároveň označí roli jako připravenou a umístí ji do rotace nástroje pro vyrovnávání zatížení. WaHostBootsrapper pak přejde do smyčky kontroly stavu role.
+10. Příchozí webové požadavky na úplnou webovou roli služby IIS spustí službu IIS, aby spouštěla proces W3WP a obsluhují požadavek stejným způsobem jako v místním prostředí služby IIS.
 
-## <a name="log-file-locations"></a>Umístění souboru protokolu
+## <a name="log-file-locations"></a>Umístění souborů protokolu
 
 **WindowsAzureGuestAgent**
 
 - C:\Logs\AppAgentRuntime.Log.  
-Tento protokol obsahuje změny ve službě, včetně spuštění, zastavení a nové konfigurace. Pokud služba nezmění, které můžete očekávat velké mezery čas v tomto souboru protokolu.
+Tento protokol obsahuje změny služby, včetně spuštění, zastavení a nových konfigurací. Pokud se služba nezměnila, můžete očekávat, že se v tomto souboru protokolu zobrazí velké časové prodlevy.
 - C:\Logs\WaAppAgent.Log.  
-Tento protokol obsahuje aktualizace stavu a upozornění prezenčního signálu a je aktualizována každé 2-3 sekundy.  Tento protokol obsahuje Historický pohled na stav instance a dozvíte se, když instance nebyla ve stavu Připraveno.
+Tento protokol obsahuje aktualizace stavu a oznámení prezenčního signálu a aktualizuje se každých 2-3 sekund.  Tento protokol obsahuje historický pohled na stav instance a upozorní vás, když instance nebyla připravena.
  
 **WaHostBootstrapper**
 
-C:\Resources\Directory\<deploymentID>.<role>.DiagnosticStore\WaHostBootstrapper.log
+`C:\Resources\Directory\<deploymentID>.<role>.DiagnosticStore\WaHostBootstrapper.log`
  
 **WaWebHost**
 
-C:\Resources\Directory\<guid >.<role> \WaWebHost.log
+`C:\Resources\Directory\<guid>.<role>\WaWebHost.log`
  
 **WaIISHost**
 
-C:\Resources\Directory\<deploymentID >.<role> \WaIISHost.log
+`C:\Resources\Directory\<deploymentID>.<role>\WaIISHost.log`
  
 **IISConfigurator**
 
-C:\Resources\Directory\<deploymentID>.<role>\IISConfigurator.log
+`C:\Resources\Directory\<deploymentID>.<role>\IISConfigurator.log`
  
 **Protokoly IIS**
 
-C:\Resources\Directory\<guid>.<role>.DiagnosticStore\LogFiles\W3SVC1
+`C:\Resources\Directory\<guid>.<role>.DiagnosticStore\LogFiles\W3SVC1`
  
-**Protokoly událostí Windows**
+**Protokoly událostí systému Windows**
 
-D:\Windows\System32\Winevt\Logs
+`D:\Windows\System32\Winevt\Logs`
  
 
 

@@ -1,48 +1,48 @@
 ---
-title: Vytváření mostu zařízení Azure IoT Central | Dokumentace Microsoftu
-description: Vytvoření IoT Central most zařízení pro připojení jiných cloudech IoT (Sigfox, částice, The věci sítě atd.) do vaší aplikace IoT Central.
+title: Vytvoření mostu zařízení v Azure IoT Central | Microsoft Docs
+description: Sestavte most IoT Central zařízení pro propojení dalších cloudů IoT (Sigfox, částic, sítě atd.) do aplikace IoT Central.
 services: iot-central
 ms.service: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 03/26/2019
+ms.date: 07/09/2019
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: 246c9ad8ab3083c1b847c1c25230a7193a8192e3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c98574bc3447482429d7a028c6b47197e08e2e38
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60886862"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67850237"
 ---
-# <a name="build-the-iot-central-device-bridge-to-connect-other-iot-clouds-to-iot-central"></a>Vytvoření IoT Central most zařízení pro připojení jiných cloudech IoT k IoT Central
+# <a name="build-the-iot-central-device-bridge-to-connect-other-iot-clouds-to-iot-central"></a>Sestavení mostu IoT Central zařízení pro připojení dalších cloudů IoT k IoT Central
 
-*Toto téma se vztahuje na správce.*
+*Toto téma se týká správců.*
 
-Most zařízení IoT Central je řešení typu open source, který se připojuje vaše Sigfox, částice, sítě věcí a další cloudy do vaší aplikace IoT Central. Ať už používáte sledování zařízení připojená k vaší Sigfox s nízkou-Power-Wide Area Network prostředků, nebo pomocí air kvality monitorování zařízení na Cloud částice zařízení nebo pomocí monitorování zařízení na TTN vlhkosti bomby, můžete přímo využijte výkon IoT Centrální pomocí bridge zařízení IoT Central. Most zařízení připojení jiných cloudech IoT pomocí IoT Central předávání dat, která vaše zařízení odesílají do jiných cloudech prostřednictvím aplikace IoT Central. V aplikaci pro IoT Central můžete pravidla sestavení a spouštět analýzy na těchto datech, vytváření pracovních postupů v Microsoft Flow a Azure Logic apps, exportovat data a spoustu dalších věcí. Získejte [most zařízení IoT Central](https://aka.ms/iotcentralgithubdevicebridge) z Githubu
+Most IoT Central zařízení je open source řešení, které spojuje vaše Sigfox, částice, síť a další cloudy do vaší IoT Central aplikace. Bez ohledu na to, jestli používáte zařízení pro sledování prostředků, která jsou připojená k síti s nízkou spotřebou (Sigfox), nebo pomocí zařízení pro monitorování kvality ovzduší v cloudu zařízení (částic), nebo pomocí zařízení pro monitorování vlhkosti v půdě TTN, můžete přímo využít sílu IoT Central pomocí mostu IoT Central zařízení. Most zařízení spojuje další cloudy IoT s IoT Central tím, že předává data, která vaše zařízení odesílají do ostatních cloudů, prostřednictvím aplikace IoT Central. Ve vaší aplikaci IoT Central můžete vytvářet pravidla a spouštět analýzy těchto dat, vytvářet pracovní postupy v Microsoft Flow a Azure Logic Apps, exportovat tato data a spoustu dalšího. Získání [mostu IoT Central zařízení](https://aka.ms/iotcentralgithubdevicebridge) z GitHubu
 
-## <a name="what-is-it-and-how-does-it-work"></a>Co je a jak to funguje?
-Most zařízení IoT Central je řešení typu open source na Githubu. Je připravené s tlačítkem "Nasazení do Azure", která nasadí vlastní šablony Azure Resource Manageru s několika prostředků Azure do vašeho předplatného Azure. Prostředky patří:
--   Aplikace Azure Function app
+## <a name="what-is-it-and-how-does-it-work"></a>Co to je a jak to funguje?
+Most zařízení IoT Central je open source řešení na GitHubu. Můžete přejít pomocí tlačítka "nasadit do Azure", které nasadí vlastní šablonu Azure Resource Manager s několika prostředky Azure do vašeho předplatného Azure. Mezi prostředky patří:
+-   Aplikace funkcí Azure
 -   Azure Storage Account
 -   Plán Consumption
 -   Azure Key Vault
 
-Aplikace function app je důležitých most zařízení. Začne přijímat požadavky HTTP POST z jiné platformy IoT nebo všechny vlastní platformy prostřednictvím integrace jednoduché webhooku. Uvádíme příklady, které ukazují, jak se připojit k Sigfox, částice a TTN cloudy. Můžete jednoduše rozšířit toto řešení pro připojení k vaší vlastní cloudu IoT, pokud vaši platformu zasílat požadavky HTTP POST na aplikaci function App.
-Aplikace Function app transformuje data do formátu přijal IoT Central a předá jej podél prostřednictvím rozhraní API a distribučních bodů.
+Aplikace Function App je kritická část mostu zařízení. Přijímá požadavky HTTP POST z jiných platforem IoT nebo jakýchkoli vlastních platforem prostřednictvím jednoduché integrace Webhooku. Poskytli jsme příklady, které ukazují, jak se připojit k cloudům Sigfox, Částicům a TTN. Toto řešení můžete snadno roztáhnout, abyste se připojili k vlastnímu cloudu IoT, pokud vaše platforma může odesílat žádosti HTTP POST do vaší aplikace Function App.
+Aplikace Function App transformuje data do formátu přijatého IoT Central a předá je spolu přes rozhraní API DPS.
 
-![Snímek obrazovky funkcí Azure](media/howto-build-iotc-device-bridge/azfunctions.png)
+![Snímek obrazovky Azure Functions](media/howto-build-iotc-device-bridge/azfunctions.png)
 
-Pokud vaše aplikace IoT Central rozpoznává ID zařízení v přesměrovaná zpráva nového měření se zobrazí pro toto zařízení. Pokud ID zařízení nikdy ukázala aplikací pro IoT Central, aplikace function app se pokusí zaregistrovat nová zařízení s tímto Identifikátorem zařízení, se zobrazí jako "nepřidružené zařízení" v aplikaci pro IoT Central. 
+Pokud vaše aplikace IoT Central rozpoznala zařízení podle ID zařízení v předané zprávě, zobrazí se pro toto zařízení nové měření. Pokud vaše aplikace IoT Central vaše ID zařízení nikdy neviděla, vaše aplikace Function App se pokusí zaregistrovat nové zařízení s ID tohoto zařízení a v aplikaci IoT Central se zobrazí jako "nepřidružené zařízení". 
 
-## <a name="how-do-i-set-it-up"></a>Jak můžu nastavit ho?
-Podle pokynů uvedených v podrobně v souboru README v úložišti na Githubu. 
+## <a name="how-do-i-set-it-up"></a>Návody nastavit?
+Pokyny jsou podrobně uvedené v souboru READme v úložišti GitHub. 
 
 ## <a name="pricing"></a>Ceny
-Prostředky Azure se hostovat ve vašem předplatném Azure. Další informace o cenách v [souboru README](https://aka.ms/iotcentralgithubdevicebridge).
+Prostředky Azure se budou hostovat v rámci vašeho předplatného Azure. Další informace o cenách najdete v [souboru Readme](https://aka.ms/iotcentralgithubdevicebridge).
 
-## <a name="next-steps"></a>Další postup
-Teď, když jste zjistili, jak vytvářet most zařízení IoT Central, tady je navrhované další krok:
+## <a name="next-steps"></a>Další kroky
+Teď, když jste se naučili, jak vytvořit most IoT Central zařízení, je tady doporučený další krok:
 
 > [!div class="nextstepaction"]
 > [Správa zařízení](howto-manage-devices.md)

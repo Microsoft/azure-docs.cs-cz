@@ -1,6 +1,6 @@
 ---
-title: Úloha předvolby pro Azure Media Indexer
-description: Toto téma obsahuje základní informace o úkolu předvolby pro Azure Media Indexer.
+title: Předvolba úlohy pro Azure Media Indexer
+description: Toto téma poskytuje přehled přednastavených úloh pro Azure Media Indexer.
 services: media-services
 documentationcenter: ''
 author: Asolanki
@@ -12,32 +12,31 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/14/2019
-ms.author: adsolank
-ms.reviewer: juliako
-ms.openlocfilehash: 129694edacb390aa62c061941810b8c98be7e96c
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.author: juliako
+ms.openlocfilehash: a9a47f970f0f934e0953bd5e2d6e5575758a9c1c
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67619168"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67873504"
 ---
-# <a name="task-preset-for-azure-media-indexer"></a>Úloha předvolby pro Azure Media Indexer 
+# <a name="task-preset-for-azure-media-indexer"></a>Předvolba úlohy pro Azure Media Indexer 
 
-Azure Media Indexer je procesor multimédií, který používáte k provádění následujících úloh: daly prohledávat mediální soubory a obsah, generovat uzavřené stopy titulků a klíčová slova, indexování souborů prostředků, které jsou součástí vašeho prostředku.
+Azure Media Indexer je multimediální procesor, který používáte k provádění následujících úloh: zpřístupnění mediálních souborů a obsahu, generování skrytých titulků a klíčových slov, indexových souborů assetů, které jsou součástí vašeho assetu.
 
-Toto téma popisuje úlohy přednastavení, že je potřeba předat indexovací úlohou. Kompletní příklad naleznete v tématu [indexováním mediálních souborů pomocí Azure Media Indexer](media-services-index-content.md).
+Toto téma popisuje předdefinované úlohy, které je třeba předat úloze indexování. Úplný příklad najdete v tématu [indexování mediálních souborů pomocí Azure Media Indexer](media-services-index-content.md).
 
-## <a name="azure-media-indexer-configuration-xml"></a>Azure Media Indexer konfiguračním souboru XML.
+## <a name="azure-media-indexer-configuration-xml"></a>XML konfigurace Azure Media Indexer
 
-Následující tabulka popisuje elementy a atributy konfigurace XML.
+Následující tabulka vysvětluje prvky a atributy konfiguračního XML.
 
 |Name|Vyžadovat|Popis|
 |---|---|---|
-|Vstup|true (pravda)|Soubory prostředků, kterou chcete indexu.<br/>Azure Media Indexer podporuje následující formáty souborů médií: MP4, MOV, WMV, MP3, M4A, WMA, AAC, WAV. <br/><br/>Můžete zadat název souboru (s) v **název** nebo **seznamu** atribut **vstupní** – element (jak je vidět níže). Pokud nezadáte soubor, který prostředek se index, vyberou se primární soubor. Pokud není nastaven žádný soubor primární prostředek, je prvním souboru v vstupní asset indexovat.<br/><br/>Chcete-li explicitně zadat název souboru prostředku, proveďte:<br/>```<input name="TestFile.wmv" />```<br/><br/>Můžete také indexu více souborů prostředků najednou (až 10 soubory). Použijte následující postup:<br/>-Vytvořit textový soubor (soubor manifestu) a nastavte ho .lst příponu.<br/>-Přidáte seznam všech názvů souborů prostředků v vstupní asset pro tento soubor manifestu.<br/>-Přidáte soubor manifestu (nahrát) k assetu.<br/>-Zadejte název souboru manifestu v atributu seznamu vstupu.<br/>```<input list="input.lst">```<br/><br/>**Poznámka:** Pokud chcete přidat více než 10 souborů do souboru manifestu, úloha indexování selže s kódem chyby 2006.|
-|zprostředkovatele identity|false|Metadata pro soubory zadaný prostředek.<br/>```<metadata key="..." value="..." />```<br/><br/>Můžete zadat hodnoty pro předdefinované klíče. <br/><br/>V současné době jsou podporovány následující klíče:<br/><br/>**název** a **popis** – používá se aktualizovat jazykový model zlepšit přesnost rozpoznávání řeči.<br/>```<metadata key="title" value="[Title of the media file]" /><metadata key="description" value="[Description of the media file]" />```<br/><br/>**uživatelské jméno** a **heslo** – slouží k ověřování při stahování souborů Internetu přes protokol http nebo https.<br/>```<metadata key="username" value="[UserName]" /><metadata key="password" value="[Password]" />```<br/>Uživatelské jméno a heslo hodnoty platí pro všechny adresy URL médií ve vstupu manifestu.|
-|Database<br/><br/>Byly přidány ve verzi 1.2. V současné době je jedinou podporovanou funkcí rozpoznávání řeči ("ASR").|false|Rozpoznávání řeči funkce má následující nastavení klíče:<br/><br/>Language:<br/>-Přirozeného jazyka pro rozpoznat v multimediálním souboru.<br/>-Angličtina, španělština<br/><br/>CaptionFormats:<br/>-středníkem oddělený seznam titulek požadovaný výstupní formáty (pokud existuje)<br/>-ttml; sami; webvtt<br/><br/><br/>GenerateAIB:<br/>-Příznak typu boolean určující, zda soubor AIB vyžádáním (pro použití s SQL serverem a Indexer IFilter zákazníka). Další informace najdete v tématu pomocí AIB souborů pomocí Azure Media Indexer a systému SQL Server.<br/>-True; False<br/><br/>GenerateKeywords:<br/>-Logický příznak určující, zda soubor XML klíčových slov je povinný.<br/>-True; False.|
+|Vstup|true|Soubory prostředků, které chcete indexovat.<br/>Azure Media Indexer podporuje následující formáty mediálních souborů: MP4, MOV, WMV, MP3, M4A, WMA, AAC, WAV. <br/><br/>Můžete zadat název souboru (y) v atributu **název** nebo **seznam** **vstupního** elementu (jak je vidět níže). Pokud neurčíte, který soubor prostředků se má indexovat, je primární soubor vybrán. Pokud není nastaven žádný soubor primárního majetku, bude indexován první soubor ve vstupním prostředku.<br/><br/>Chcete-li explicitně zadat název souboru assetu, udělejte toto:<br/>```<input name="TestFile.wmv" />```<br/><br/>Můžete také indexovat více souborů prostředků najednou (až 10 souborů). Použijte následující postup:<br/>-Vytvořte textový soubor (soubor manifestu) a sdělte mu příponu. lst.<br/>– Do tohoto souboru manifestu přidejte seznam všech názvů souborů assetů ve vstupním prostředku.<br/>– Přidejte (nahrajte) soubor manifestu do assetu.<br/>-Zadejte název souboru manifestu v atributu seznamu vstupu.<br/>```<input list="input.lst">```<br/><br/>**Poznámka:** Pokud do souboru manifestu přidáte více než 10 souborů, úloha indexování se nezdaří a zobrazí se kód chyby 2006.|
+|zprostředkovatele identity|false|Metadata pro zadaný soubor prostředků.<br/>```<metadata key="..." value="..." />```<br/><br/>Můžete zadávat hodnoty pro předdefinované klíče. <br/><br/>V současné době jsou podporovány následující klíče:<br/><br/>**název** a **Popis** – používá se k aktualizaci jazykového modelu za účelem zlepšení přesnosti rozpoznávání řeči.<br/>```<metadata key="title" value="[Title of the media file]" /><metadata key="description" value="[Description of the media file]" />```<br/><br/>**uživatelské jméno** a **heslo** – používá se k ověřování při stahování internetových souborů přes HTTP nebo HTTPS.<br/>```<metadata key="username" value="[UserName]" /><metadata key="password" value="[Password]" />```<br/>Hodnoty uživatelského jména a hesla se vztahují na všechny adresy URL médií ve vstupním manifestu.|
+|Database<br/><br/>Přidáno ve verzi 1,2. V současné době je jedinou podporovanou funkcí rozpoznávání řeči (ASR).|false|Funkce rozpoznávání řeči má následující klíče nastavení:<br/><br/>Language:<br/>– Přirozený jazyk, který se má rozpoznat v multimediálním souboru.<br/>– Angličtina, španělština<br/><br/>CaptionFormats:<br/>– středníkem oddělený seznam požadovaných formátů titulků pro výstup (pokud existují)<br/>-ttml; sámština; WebVTT<br/><br/><br/>GenerateAIB:<br/>-Logický příznak určující, zda je vyžadován soubor AIB (pro použití s SQL Server a filtrem IFilter indexeru zákazníka). Další informace najdete v tématu použití souborů AIB s Azure Media Indexer a SQL Server.<br/>Podmínka Chybné<br/><br/>GenerateKeywords:<br/>-Logický příznak určující, zda je požadován soubor XML s klíčovým slovem.<br/>Podmínka Chybné.|
 
-## <a name="azure-media-indexer-configuration-xml-example"></a>Ukázkový kód XML konfigurace služby Azure Media Indexer
+## <a name="azure-media-indexer-configuration-xml-example"></a>Příklad XML konfigurace Azure Media Indexer
 
 ``` 
 <?xml version="1.0" encoding="utf-8"?>  
@@ -65,5 +64,5 @@ Následující tabulka popisuje elementy a atributy konfigurace XML.
   
 ## <a name="next-steps"></a>Další postup
 
-Zobrazit [indexováním mediálních souborů pomocí Azure Media Indexer](media-services-index-content.md).
+Viz [indexování mediálních souborů pomocí Azure Media Indexer](media-services-index-content.md).
 

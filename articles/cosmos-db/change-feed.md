@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 51a554586c67842ead40cd4a1bfaaa51bbdd8a18
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e450c0682a22a6e667a2bca153ce5d706a5bea96
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65954395"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67986239"
 ---
-# <a name="change-feed-in-azure-cosmos-db---overview"></a>Změna informačního kanálu ve službě Azure Cosmos DB – přehled
+# <a name="change-feed-in-azure-cosmos-db---overview"></a>Změnit informační kanál v Azure Cosmos DB – přehled
 
 Podpora ve službě Azure Cosmos DB funguje kanálu změn prostřednictvím naslouchání kontejneru Azure Cosmos DB k nějakým změnám. Potom vypíše seřazený seznam dokumentů, které byly změněny v pořadí, ve kterém byly změněny. Změny jsou trvalé, dají se zpracovat asynchronně a přírůstkově a výstup se dá distribuovat jednomu nebo více příjemcům k paralelnímu zpracování. 
 
@@ -33,7 +33,7 @@ Změna informačního kanálu ve službě Azure Cosmos DB umožňuje vytvářet 
 
 Tato funkce je aktuálně podporuje následující klientské sady SDK a rozhraní API služby Azure Cosmos DB.
 
-| **Ovladače klienta** | **Azure CLI** | **ROZHRANÍ SQL API** | **Rozhraní Cassandra API** | **Rozhraní API služby Azure Cosmos DB pro MongoDB** | **Gremlin API**|**Rozhraní Table API** |
+| **Ovladače klienta** | **Azure CLI** | **ROZHRANÍ SQL API** | **Rozhraní Cassandra API** | **Rozhraní API pro MongoDB Azure Cosmos DB** | **Gremlin API**|**Rozhraní Table API** |
 | --- | --- | --- | --- | --- | --- | --- |
 | .NET | Není k dispozici | Ano | Ne | Ne | Ano | Ne |
 |Java|Není k dispozici|Ano|Ne|Ne|Ano|Ne|
@@ -58,7 +58,7 @@ Pokud hodnota TTL (Time to Live) vlastnost nastavena na položku na hodnotu -1, 
 
 ### <a name="change-feed-and-etag-lsn-or-ts"></a>Kanál změn a _etag, _lsn nebo _ts
 
-Formát _etag je interní a neměla by mít závislost, protože se sice dají kdykoli měnit. _ts je úprava nebo časové razítko vytvoření. Můžete použít _ts chronologickém porovnání. _lsn je ID batch přidaný pro pouze; kanálu změn představuje ID transakce. Stejné _lsn může mít mnoho položek. Značka ETag na FeedResponse se liší od _etag, který se zobrazí v položce. _etag je interní identifikátor a používá se pro souběžnost ovládací prvek informuje o verzi položek, že značka ETag se používá pro pořadí úloh informačního kanálu.
+Formát _etag je interní a neměla by mít závislost, protože se sice dají kdykoli měnit. _ts je úprava nebo časové razítko vytvoření. Můžete použít _ts chronologickém porovnání. _lsn je ID dávky, které je přidáno pouze pro změnu kanálu. představuje ID transakce. Stejné _lsn může mít mnoho položek. Značka ETag na FeedResponse se liší od _etag, který se zobrazí v položce. _etag je interní identifikátor a používá se pro souběžnost ovládací prvek informuje o verzi položek, že značka ETag se používá pro pořadí úloh informačního kanálu.
 
 ## <a name="change-feed-use-cases-and-scenarios"></a>Scénáře a případy použití kanálu změn
 
@@ -94,7 +94,7 @@ Tady jsou některé scénáře, které je možné snadno implementovat pomocí k
 Můžete pracovat pomocí kanálu změn pomocí následujících možností:
 
 * [Změna kanálu s využitím Azure Functions](change-feed-functions.md)
-* [Změna kanálu s knihovnou change feed processor](change-feed-processor.md) 
+* [Použití Change feed s procesorem Change feed](change-feed-processor.md) 
 
 Kanál změn je k dispozici pro každý logický oddíl klíč v kontejneru a jeho mohou být distribuovány na jeden nebo více příjemců pro paralelní zpracování, jak je znázorněno na následujícím obrázku.
 
@@ -108,7 +108,7 @@ Kanál změn je k dispozici pro každý logický oddíl klíč v kontejneru a je
 
 * Kanál změn zahrnuje vložení a operace aktualizace provedené u položek v rámci kontejneru. Můžete zaznamenat odstraní nastavením příznaku "obnovitelného odstranění" v rámci vašich položek (například dokumenty) místo odstraní. Alternativně můžete nastavit určité omezené vypršení platnosti pro vaše položky s [interval TTL, ZÍSKÁ možnost](time-to-live.md). Například 24 hodin a použití odstraní hodnota dané vlastnosti pro zachycení. Pomocí tohoto řešení je nutné zpracovat změny v časovém intervalu kratší než interval TTL, ZÍSKÁ dobu vypršení platnosti. 
 
-* Každé změně položky se zobrazí přesně jednou v kanálu změn a klienti musí spravovat logiky vytváření kontrolních bodů. Pokud chcete se vyhnout složitosti správy kontrolních bodů, knihovnou change feed processor poskytuje automatické vytváření kontrolních bodů a "alespoň jednou" sémantiku. Zobrazit [změn pomocí kanálu s knihovnou processor kanálu změn](change-feed-processor.md).
+* Každé změně položky se zobrazí přesně jednou v kanálu změn a klienti musí spravovat logiky vytváření kontrolních bodů. Pokud se chcete vyhnout složitosti správy kontrolních bodů, poskytuje procesor Change feed automatické vytváření kontrolních bodů a alespoň jednou sémantiku. Viz [použití kanálu změn s procesorem Change feed](change-feed-processor.md).
 
 * Protokol změn je součástí pouze posledních změn pro danou položku. Přechodných změn nemusí být k dispozici.
 
@@ -118,7 +118,7 @@ Kanál změn je k dispozici pro každý logický oddíl klíč v kontejneru a je
 
 * Změny jsou k dispozici současně pro všechny klíče logický oddíl kontejneru Azure Cosmos. Tato funkce umožňuje, aby změny z velkých kontejnerů ke zpracování paralelní několik příjemců.
 
-* Aplikace můžou požádat souběžně více kanálů změnit na stejný kontejner. ChangeFeedOptions.StartTime slouží k poskytování počátečního bodu. Chcete-li například najít odpovídající dané čas token pro pokračování. Token ContinuationToken, je-li zadána, wins přes hodnoty StartTime a StartFromBeginning. Přesnost ChangeFeedOptions.StartTime je přibližně 5 sekund. 
+* Aplikace mohou současně požadovat více kanálů změn ve stejném kontejneru. ChangeFeedOptions.StartTime slouží k poskytování počátečního bodu. Chcete-li například najít odpovídající dané čas token pro pokračování. Token ContinuationToken, je-li zadána, wins přes hodnoty StartTime a StartFromBeginning. Přesnost ChangeFeedOptions.StartTime je přibližně 5 sekund. 
 
 ## <a name="next-steps"></a>Další postup
 
@@ -126,4 +126,4 @@ Teď můžete přejít k další informace o změně v následujících článc�
 
 * [Možnosti ke čtení kanálu změn](read-change-feed.md)
 * [Změna kanálu s využitím Azure Functions](change-feed-functions.md)
-* [Změna kanálu knihovny procesoru](change-feed-processor.md)
+* [Použití procesoru Change feed](change-feed-processor.md)

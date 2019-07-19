@@ -11,40 +11,45 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/25/2019
+ms.date: 07/12/2019
 ms.author: magoedte
-ms.openlocfilehash: d6321564672097fbf901d1d33afac9f606fcb63a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7d8fb7bc0e837ba78d86a39524d869c9bb01895d
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65521837"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67867565"
 ---
 # <a name="azure-monitor-for-containers-overview"></a>Azure Monitor pro kontejnery – přehled
 
 Azure Monitor pro kontejnery je funkce určené k monitorování výkonu úlohy kontejneru nasadit do Azure Container Instances nebo spravované clustery Kubernetes hostované ve službě Azure Kubernetes Service (AKS). Monitorování kontejnerů je důležité, zejména v případě, že spouštíte produkční cluster ve velkém měřítku, s několika aplikacemi.
 
-Azure Monitor pro kontejnery vám poskytne přehled o výkonu shromažďováním paměti a procesoru metriky z řadiče, uzly a kontejnerů, které jsou k dispozici v Kubernetes prostřednictvím rozhraní API metrik. Shromažďují se také protokoly kontejnerů.  Když povolíte monitorování z clusterů Kubernetes, metriky a protokoly se automaticky shromažďují, můžete prostřednictvím kontejnerizovaných verzi agenta Log Analytics pro Linux. Metriky se zapisují do úložiště metriky a data protokolu se zapíšou do protokolů úložiště přidružené k vaší [Log Analytics](../log-query/log-query-overview.md) pracovního prostoru. 
+Azure Monitor pro kontejnery vám poskytne přehled o výkonu shromažďováním paměti a procesoru metriky z řadiče, uzly a kontejnerů, které jsou k dispozici v Kubernetes prostřednictvím rozhraní API metrik. Shromažďují se také protokoly kontejnerů.  Po povolení monitorování z clusterů Kubernetes se metriky a protokoly automaticky shromažďují pomocí kontejnerové verze Log Analytics agenta pro Linux. Metriky se zapisují do úložiště metrik a data protokolu se zapisují do úložiště logs přidruženého k vašemu pracovnímu prostoru [Log Analytics](../log-query/log-query-overview.md) . 
 
-![Azure Monitor pro architekturu kontejnery](./media/container-insights-overview/azmon-containers-architecture-01.png)
+![Architektura Azure Monitor for Containers](./media/container-insights-overview/azmon-containers-architecture-01.png)
  
 ## <a name="what-does-azure-monitor-for-containers-provide"></a>Co dělá monitorování Azure pro kontejnery poskytují?
 
-Azure Monitor pro kontejnery zajišťuje komplexní monitorování zkušenosti s používáním různých funkcí služby Azure Monitor umožňuje pochopit výkon a stav clusteru Kubernetes a úlohy kontejneru. Azure Monitor pro kontejnery můžete:
+Azure Monitor pro kontejnery nabízí ucelené monitorování pomocí různých funkcí Azure Monitor, které vám umožní pochopit výkon a stav clusteru Kubernetes a zatížení kontejnerů. Pomocí Azure Monitor pro kontejnery můžete:
 
 * Identifikujte AKS kontejnery, které běží na uzlu a jejich průměrné využití procesoru a paměti. Tyto znalosti můžete identifikovat kritické body prostředků.
 * Identifikujte využití procesoru a paměti skupiny kontejnerů a jejich kontejnerů hostované ve službě Azure Container Instances.  
-* Určete, kde se nachází kontejneru v kontroleru nebo pod. Tyto znalosti můžete zobrazit kontroleru nebo pod na celkový výkon.
+* Identifikujte, kde se kontejner nachází v řadiči nebo pod. Tyto znalosti můžete zobrazit kontroleru nebo pod na celkový výkon.
 * Zkontrolujte využití prostředků úlohy běžící na hostiteli, které nesouvisí s standardních procesů, které podporují pod.
 * Pochopte chování clusteru ve skupinovém rámečku průměrných a rozděluje zatížení. Tyto znalosti můžete určit, potřeb kapacity a určení maximálního zatížení, který může cluster tolerovat. 
-* Konfigurace výstrahy a proaktivně vás upozorní nebo poznamenejte si ho využití procesoru a paměti na uzlech nebo kontejnery překročení prahových hodnot.  
+* Konfigurace výstrah k proaktivnímu upozorňování nebo zaznamenání, když využití procesoru a paměti na uzlech nebo kontejnerech překročí vaše prahové hodnoty.
+* Integrací s [Prometheus](https://prometheus.io/docs/introduction/overview/) můžete zobrazit metriky aplikací a úloh, které shromažďuje z uzlů a Kubernetes pomocí [dotazů](container-insights-log-search.md) pro vytváření vlastních výstrah, řídicích panelů a podrobných podrobných analýz.
+
+>[!NOTE]
+>Podpora pro Prometheus je ve verzi Public Preview v současnosti funkce.
+>
 
 ## <a name="how-do-i-access-this-feature"></a>Jak získám přístup do této funkce?
-Azure Monitor lze použít pro kontejnery dva způsoby, ze služby Azure Monitor nebo přímo z vybraných clusteru AKS. Ze služby Azure Monitor, budete mít všechny kontejnery nasazení, které jsou monitorovány a které nejsou, umožňuje vyhledávat a filtrovat napříč vaší skupiny prostředků a předplatná a pak přejdete do služby Azure Monitor pro kontejnery z globální perspektivy Vybraný kontejner.  V opačném případě funkci dostanete přímo z vybraného kontejneru AKS ze stránky s AKS.  
+Azure Monitor lze použít pro kontejnery dva způsoby, ze služby Azure Monitor nebo přímo z vybraných clusteru AKS. Z Azure Monitor máte globální perspektivu všech nasazených kontejnerů, které jsou monitorované a které nejsou, což vám umožní vyhledávat a filtrovat v rámci předplatných a skupin prostředků a pak přejít na Azure Monitor pro kontejnery z vybraný kontejner.  V opačném případě můžete k této funkci přistupovat přímo z vybraného kontejneru AKS ze stránky AKS.  
 
 ![Přehled metod pro přístup k Azure Monitor pro kontejnery](./media/container-insights-overview/azmon-containers-experience.png)
 
 Pokud vás zajímá monitorování a správu Docker a Windows najdete v hostitelích kontejnerů na zobrazení konfigurace, auditování a využití prostředků [řešení pro monitorování kontejnerů](../../azure-monitor/insights/containers.md).
 
 ## <a name="next-steps"></a>Další postup
-Chcete-li zahájit monitorování clusteru AKS, zkontrolovat [povolení monitorování Azure pro kontejnery](container-insights-onboard.md) vám pomohou pochopit požadavky a dostupné metody, které chcete povolit monitorování.  
+Pokud chcete začít monitorovat cluster AKS, přečtěte si, [Jak povolit Azure monitor kontejnerů](container-insights-onboard.md) pro pochopení požadavků a dostupných metod, které umožňují monitorování.  

@@ -1,104 +1,105 @@
 ---
-title: Automatizace vytváření a používání dílčích oprav Image kontejneru se službou Azure Container Registry (ACR úloh)
-description: Úvod do služby ACR úkoly, sadu funkcí ve službě Azure Container Registry poskytující sestavení image kontejneru zabezpečené, automatizované, správu a opravy chyb v cloudu.
+title: Automatizace sestavování a opravování imagí kontejneru pomocí Azure Container Registrych úloh (úlohy ACR)
+description: Úvod k ACR úlohám, sadě funkcí v Azure Container Registry, která poskytuje zabezpečené, automatizované vytváření imagí kontejnerů, správu a opravy v cloudu.
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
 ms.date: 06/12/2019
 ms.author: danlep
-ms.openlocfilehash: 5089650996693b81e548bba8d89c0de29a8afd93
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 65debc8c65752150651d00d84eeff469cefbc268
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147988"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311867"
 ---
-# <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>Automatizace sestavování imagí kontejneru a údržba s úlohami služby ACR
+# <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>Automatizace sestavení a údržby imagí kontejneru pomocí úloh ACR
 
-Kontejnery poskytují nové úrovni, virtualizaci, izolaci závislostí aplikace a pro vývojáře z infrastruktury a provozních požadavků. Co je ještě, ale je potřeba vyřešit způsob správy a opravit přes životní cyklus kontejneru této platformy application virtualization.
+Kontejnery poskytují nové úrovně virtualizace a izolují závislosti aplikací a vývojářů od infrastruktury a provozních požadavků. Co zůstává, ale je potřeba řešit, jak se tato virtualizace aplikace spravuje, a jak se je opravovat v životním cyklu kontejneru.
 
-## <a name="what-is-acr-tasks"></a>Co je ACR úlohy?
+## <a name="what-is-acr-tasks"></a>Co jsou ACR úkoly?
 
-**Úlohy služby ACR** je sada funkcí v rámci Azure Container Registry. Poskytuje vytváření bitové kopie založené na cloudu kontejner pro Linux, Windows a ARM a můžete automatizovat [operačního systému a používání dílčích oprav framework](#automate-os-and-framework-patching) pro kontejnery Dockeru. Úlohy služby ACR nejen rozšiřuje cyklu vývoje "vnitřní smyčky" do cloudu s využitím sestavování imagí kontejneru na vyžádání, ale taky umožňuje automatizované buildy na potvrzení zdrojového kódu nebo při aktualizaci základní image kontejneru. Pomocí aktivační události update základní image, můžete automatizovat vašeho operačního systému a architektura aplikace na opravy chyb pracovního postupu, zachování zabezpečení prostředí při týkajícími se objekty zabezpečení neměnné kontejnerů.
+**ACR úkoly** jsou sadou funkcí v rámci Azure Container Registry. Poskytuje cloudové vytváření imagí kontejnerů pro Linux, Windows a ARM a umožňuje automatizovat [opravy operačních systémů a platforem](#automate-os-and-framework-patching) pro vaše kontejnery Docker. ACR úkoly nedosahují pouze vývoje vývojového cyklu vnitřních smyček do cloudu pomocí sestavení imagí kontejneru na vyžádání, ale také umožňuje automatizované sestavení při potvrzení zdrojového kódu nebo při aktualizaci základní image kontejneru. Pomocí aktivačních událostí základní aktualizace image můžete automatizovat pracovní postupy pro opravy operačního systému a aplikačního rozhraní, které udržují zabezpečená prostředí a přitom dodržují objekty zabezpečení neměnných kontejnerů.
 
-Vytváření a testování imagí kontejnerů s ACR úkoly čtyři způsoby:
+Sestavování a testování imagí kontejneru s ACR úkoly čtyřmi způsoby:
 
-* [Rychlých úloh](#quick-task): Vytváření a nasdílení změn kontejneru obrázků na vyžádání, v Azure, bez nutnosti místní instalace modul Docker. Myslíte `docker build`, `docker push` v cloudu. Sestavení z místního zdrojového kódu nebo úložiště Git.
-* [Sestavení na zdrojový kód potvrzení](#automatic-build-on-source-code-commit): Automaticky aktivujte sestavení image kontejneru, když je kód potvrzen do úložiště Git.
-* [Sestavení na aktualizací základních imagí](#automate-os-and-framework-patching): Aktivujte sestavení image kontejneru, když byl aktualizován této bitové kopie základní image.
-* [Vícekrokové úlohy](#multi-step-tasks): Definujte vícekrokových úkolů, které sestavování imagí, spouštění kontejnerů jako příkazy a nahrávání imagí do registru. Tato funkce z provedení úlohy na vyžádání podporuje ACR úkoly a paralelní bitové kopie sestavení, testování a operací push.
+* [Rychlý úkol](#quick-task): Vytváření a vkládání imagí kontejnerů na vyžádání v Azure, aniž by bylo nutné instalovat místní modul Docker. V cloudu si myslíte `docker build`. `docker push` Sestavte z místního zdrojového kódu nebo z úložiště Git.
+* [Sestavit při potvrzení zdrojového kódu](#automatic-build-on-source-code-commit): Umožňuje automaticky spustit sestavení image kontejneru, když je kód uložen do úložiště Git.
+* [Sestavit při aktualizaci základní image](#automate-os-and-framework-patching): Spustí sestavení image kontejneru, když se aktualizuje základní image obrázku.
+* [Úlohy s více kroky](#multi-step-tasks): Definujte úlohy s více kroky, které sestavují image, spouštějí kontejnery jako příkazy a nahrajte image do registru. Tato funkce ACR úloh podporuje provádění úloh na vyžádání a paralelní sestavení imagí, testování a nabízené operace.
 
-## <a name="quick-task"></a>Rychlých úloh
+## <a name="quick-task"></a>Rychlý úkol
 
-Začátek správy životního cyklu kontejneru je ve skutečnosti cyklu vývoje vnitřní smyčky, iterativní proces psaní kódu, vytváření a testování vaší aplikace před zakoupením do správy zdrojového kódu.
+Cyklus vývoje vnitřních smyček, iterativní proces psaní kódu, sestavování a testování vaší aplikace před potvrzením řízení zdrojového kódu, je ve skutečnosti začátek správy životního cyklu kontejnerů.
 
-Předtím, než potvrdíte svůj první řádek kódu, ACR úlohy [rychlých úloh](container-registry-tutorial-quick-task.md) funkce může poskytnout sestavení integrované vývojové prostředí přesměrováním svou image kontejneru do Azure. S rychlé úkoly můžete ověřit vaše automatizované definice sestavení a zachycení potenciálních problémů před potvrzením kódu.
+Než začnete s prvním řádkem kódu, funkce [Rychlé úlohy](container-registry-tutorial-quick-task.md) ACR úkoly může poskytovat integrované vývojové prostředí tím, že převede přesměrování sestavení imagí kontejneru do Azure. Pomocí rychlých úloh můžete ověřit své automatizované definice sestavení a zachytit potenciální problémy před potvrzením kódu.
 
-Pomocí známé `docker build` formátu, [az acr sestavení] [ az-acr-build] příkaz v rozhraní příkazového řádku Azure má *kontextu* (sadu souborů pro sestavení), odešle ACR úlohy a ve výchozím nastavení, Posune sestavenou image po dokončení jeho registru.
+Pomocí známého `docker build` formátu převezme příkaz [AZ ACR Build][az-acr-build] v Azure CLI *kontext* (sadu souborů k sestavení), odešle IT úlohy ACR a ve výchozím nastavení po dokončení vloží do svého registru vytvořenou image.
 
-Úvodní informace najdete v tématu rychlý start k [sestavení a spuštění image kontejneru](container-registry-quickstart-task-cli.md) ve službě Azure Container Registry.  
+Úvod najdete v tématu rychlý Start k [sestavení a spuštění image kontejneru](container-registry-quickstart-task-cli.md) v Azure Container Registry.  
 
-Následující tabulka ukazuje několik příkladů kontextu podporovaná umístění pro úlohy ACR:
+Následující tabulka ukazuje několik příkladů podporovaných umístění kontextu pro úlohy ACR:
 
-| Místní umístění | Popis | Příklad: |
+| Umístění kontextu | Popis | Příklad |
 | ---------------- | ----------- | ------- |
 | Místní systém souborů | Soubory v adresáři v místním systému souborů. | `/home/user/projects/myapp` |
-| Hlavní větve na Githubu | Soubory v předloze (nebo jiné výchozí) větev úložiště GitHub.  | `https://github.com/gituser/myapp-repo.git` |
-| Větve na Githubu | Konkrétní větvi z úložiště GitHub.| `https://github.com/gituser/myapp-repo.git#mybranch` |
-| Podsložky Githubu | Soubory podsložky v úložišti na Githubu. Příklad ukazuje kombinací specifikace větve a podsložky. | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
-| Vzdálené tarballu | Soubory v komprimovaný archiv na vzdáleném webovém serveru. | `http://remoteserver/myapp.tar.gz` |
+| Větev hlavní větve GitHubu | Soubory v hlavní větvi úložiště GitHub (nebo jiné výchozí).  | `https://github.com/gituser/myapp-repo.git` |
+| Větev GitHubu | Konkrétní větev úložiště GitHubu.| `https://github.com/gituser/myapp-repo.git#mybranch` |
+| Podsložka GitHubu | Soubory v podsložce v úložišti GitHubu. Příklad zobrazuje kombinaci specifikace větve a podsložky. | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
+| Vzdálená tarballu | Soubory v komprimovaném archivu na vzdáleném serveru webserver. | `http://remoteserver/myapp.tar.gz` |
 
-Úlohy služby ACR je navržena jako primitivní životní cyklus kontejneru. Například integrate úlohy služby ACR do vašeho řešení CI/CD. Spuštěním [az login] [ az-login] s [instanční objekt služby][az-login-service-principal], pak vaše řešení CI/CD setkat [az acr buildu] [ az-acr-build] příkazy a podívejte se na obrázku sestavení.
+ACR úkoly jsou navržené jako primitivní životní cyklus kontejneru. Například Integrujte úlohy ACR do řešení CI/CD. Spuštěním příkazu [AZ Login][az-login] with a [service principal][az-login-service-principal]může vaše řešení CI/CD vystavit příkaz [AZ ACR Build][AZ-ACR-Build] Commands, aby se vypnuly sestavení imagí.
 
-Další informace o použití rychlé úkoly v prvním kurzu ACR úlohy [sestavování imagí kontejneru v cloudu pomocí služby Azure Container Registry úlohy](container-registry-tutorial-quick-task.md).
+Naučte se používat rychlé úlohy v prvním kurzu ACR Tasks, [sestavovat image kontejnerů v cloudu s Azure Container Registry úkoly](container-registry-tutorial-quick-task.md).
 
-## <a name="automatic-build-on-source-code-commit"></a>Automatické sestavení na potvrzení zdrojového kódu
+## <a name="automatic-build-on-source-code-commit"></a>Automatické sestavení při potvrzení zdrojového kódu
 
-Použití služby ACR úkoly pro automatickou aktivaci image kontejneru sestavení, když je kód potvrzen do úložiště Git. Vytvoření úlohy, konfigurovat pomocí příkazového řádku Azure [az acr úloh][az-acr-task], umožňují zadat úložiště Git a volitelně větve a souboru Dockerfile. Pokud váš tým potvrzení kódu do úložiště, webhook služby ACR úkoly vytvořeny aktivuje sestavení Image kontejneru, který je definován v úložišti.
+Použijte úlohy ACR k automatickému spuštění sestavení image kontejneru, když se kód potvrdí do úložiště Git. Úlohy sestavení lze konfigurovat pomocí příkazu Azure CLI [AZ ACR Task][az-acr-task], umožňují zadat úložiště Git a volitelně také větev a souboru Dockerfile. Když váš tým potvrdí kód do úložiště, ACR úkoly – vytvořené webhookem spustí sestavení image kontejneru definované v úložišti.
 
 > [!IMPORTANT]
-> Pokud jste už dříve vytvořili úlohy ve verzi Preview pomocí příkazu `az acr build-task`, tyto úlohy bude potřeba vytvořit znovu pomocí příkazu [az acr task][az-acr-task].
+> Pokud jste dříve vytvořili úkoly ve verzi Preview pomocí `az acr build-task` příkazu, je nutné tyto úlohy znovu vytvořit pomocí příkazu [AZ ACR Task][az-acr-task] .
 
-Zjistěte, jak aktivovat sestavení na potvrzení kódu zdroje v druhé kurzu ACR úlohy [image kontejneru automatizace sestavení s Azure Container Registry úkoly](container-registry-tutorial-build-task.md).
+Naučte se, jak aktivovat sestavení v potvrzení zdrojového kódu v druhém kurzu ACR úlohy, [Automatizujte sestavení imagí kontejneru pomocí úloh Azure Container Registry](container-registry-tutorial-build-task.md).
 
-## <a name="automate-os-and-framework-patching"></a>Automatizace operačního systému a používání dílčích oprav framework
+## <a name="automate-os-and-framework-patching"></a>Automatizace oprav operačního systému a rozhraní
 
-Výkon úloh ACR skutečně vylepšit vaše pracovní postup sestavení kontejneru pochází z jeho schopnost zjišťovat aktualizace základní Image. Při aktualizace základní image je nahrány do vašeho registru nebo základní image se aktualizuje v veřejné úložiště, jako v Docker Hubu, můžete úlohy ACR automaticky sestavení žádné Image aplikací na jejím základě.
+Výkon úloh ACR, které mají skutečně vylepšit pracovní postup sestavení kontejneru, pochází z jeho schopnosti detekovat aktualizaci základní image. Po vložení aktualizované základní image do registru nebo obnovení základní image ve veřejném úložišti, jako je například Docker Hub, můžou úlohy ACR automaticky vytvářet na základě této aplikace bitové kopie aplikací.
 
-Image kontejnerů může být široce rozdělena do *základní* bitové kopie a *aplikace* bitové kopie. Základní Image obvykle zahrnují operačního systému a aplikačních architektur, podle kterých je aplikace sestavená, společně s další vlastní nastavení. Tyto základní Image představují samy o sobě obvykle založené na veřejné Image upstream, například: [Nástroj Alpine Linux][base-alpine], [Windows][base-windows], [.NET][base-dotnet], nebo [Node.js ][base-node]. Několik imagí aplikace může sdílet společný základní image.
+Image kontejnerů se dají široce rozdělit do *základních* imagí a imagí *aplikací* . Základní image typicky obsahují operační systém a aplikační architektury, na kterých je vaše aplikace sestavená, spolu s dalšími úpravami. Tyto základní image jsou obvykle založeny na veřejných nadřazených obrázcích, například: [Alpine Linux][base-alpine], [Windows][base-windows], [.NET][Base-dotnet]nebo [Node. js][base-node]. Několik imagí vaší aplikace může sdílet společný základní obrázek.
 
-Když framework image operačního systému nebo aplikace se aktualizuje pomocí nadřazeného funkce maintainer, například s důležité opravy zabezpečení operačního systému, budete muset taky aktualizovat základní Image zahrnout důležité opravy. Každá image aplikace musíte pak také znovu sestavit, aby zahrnují tyto nadřazeného opravy nyní součástí základní image.
+Pokud je v případě, že je nadřazeným nástrojem pro správu a údržbu image architektury operačního systému nebo aplikace, třeba s kritickou opravou zabezpečení operačního systému, je potřeba aktualizovat také základní image, aby zahrnovaly kritickou opravu. Každý obrázek aplikace musí být pak znovu sestaven, aby zahrnoval tyto opravy pro odesílání dat, které jsou nyní součástí základní image.
 
-Protože ACR úlohy dynamicky zjišťuje základní image závislostí při sestavení image kontejneru, může zjistit, když dojde k aktualizaci image aplikace základní image. S jednou předem [úloha sestavení](container-registry-tutorial-base-image-update.md#create-a-task), pak úlohy ACR **automaticky znovu sestaví všechny image aplikace** za vás. S tuto automatické zjišťování a znovu sestavit, úlohy ACR šetří čas a úsilí obvykle potřebnou k ruční sledování a aktualizaci každého aplikace bitové kopie odkazující na aktualizované základní image.
+Vzhledem k tomu, že úlohy ACR dynamicky zjišťují základní závislosti obrázků při vytváření image kontejneru, může rozpoznat, kdy se aktualizuje základní obrázek image aplikace. S jedním předkonfigurovaným [úkolem sestavení](container-registry-tutorial-base-image-update.md#create-a-task)ACR úkoly **automaticky znovu sestaví každou image aplikace** . Díky této automatické detekci a novému sestavování vám ACR úlohy šetří čas a úsilí obvykle potřebné k ručnímu sledování a aktualizaci jednotlivých imagí a všech imagí aplikace, které odkazují na aktualizovanou základní image.
 
-Další informace o operačním systému a rozhraní framework opravy chyb ve třetím kurzu ACR úlohy [automatizace image založena na aktualizací základních imagí s Azure Container Registry úkoly](container-registry-tutorial-base-image-update.md).
+Přečtěte si o opravách operačních systémů a platforem v rámci třetího kurzu ACR úlohy, [Automatizace sestavení imagí na základě aktualizace základního obrázku pomocí úloh Azure Container Registry](container-registry-tutorial-base-image-update.md).
 
 > [!NOTE]
-> V současné době základní image aktualizuje aktivační události sestavení pouze v případě imagí základní a aplikace jsou umístěny ve stejné Azure container registry i základní třídy se nachází ve veřejném úložišti Docker Hubu nebo služby společnosti Microsoft Container Registry.
+> V současné době se aktualizace základních imagí spustí jenom v případě, že se základní a aplikační image nacházejí ve stejném registru Azure Container, nebo se nachází ve veřejném úložišti Docker nebo v úložišti Microsoft Container Registry.
 
 ## <a name="multi-step-tasks"></a>Úlohy s více kroky
 
-Vícekrokové úlohy poskytují definice založené na krok úlohy a spuštění sestavení, testování a opravami imagí kontejnerů v cloudu. Kroky úlohy definují jednotlivá sestavení image kontejneru a operací nabízených oznámení. Mohou také definovat spuštění jednoho nebo více kontejnerů, u každého kroku pomocí kontejneru jako prostředí pro spuštění.
+Úlohy s více kroky poskytují definice úloh založené na kroku a provádění pro vytváření, testování a opravy imagí kontejnerů v cloudu. Kroky úlohy definují jednotlivá sestavení image kontejneru a operací nabízených oznámení. Mohou také definovat spuštění jednoho nebo více kontejnerů, u každého kroku pomocí kontejneru jako prostředí pro spuštění.
 
-Můžete například vytvořit vícekrokové úlohy, která automatizuje následující:
+Můžete například vytvořit úlohu s více kroky, která automatizuje následující:
 
-1. Sestavíte image webové aplikace
+1. Sestavení image webové aplikace
 1. Spuštění kontejneru webové aplikace
-1. Sestavíte image test webové aplikace
-1. Spuštění kontejneru test webové aplikace, který provádí testy pro spuštěné aplikace kontejneru
-1. Pokud jsou testy úspěšné, vytvořit balíček archivu grafu helmu
-1. Provést `helm upgrade` pomocí nového balíčku archivu grafu helmu
+1. Sestavení image testu webové aplikace
+1. Spusťte test kontejneru webové aplikace, který provádí testy proti běžícímu kontejneru aplikace.
+1. Pokud testy projde, sestavte balíček pro archivaci grafu Helm.
+1. `helm upgrade` Provedení použití nového balíčku pro archivaci grafu Helm
 
-Vícekrokové úlohy umožňují rozdělit sestavování, spouštění a testování bitovou kopii do více možností složení kroků s podporou závislost mezi kroku. Pomocí vícekrokových úkolů do úlohy služby ACR budete mít podrobnější kontrolu nad bitové kopie sestavení, testování a operační systém a framework opravy chyb pracovních postupů.
+Úlohy s více kroky umožňují rozdělit sestavování, spouštění a testování obrázku do více sestavených kroků s podporou mezikrokových závislostí. Díky úlohám s více kroky v ACR úlohám máte podrobnější kontrolu nad vytvářením, testováním a pracovními postupy při opravách imagí.
 
-Další informace o vícekrokových úkolů v [spuštění několika kroky sestavení, testování a opravu úkoly v úlohách ACR](container-registry-tasks-multi-step.md).
+Přečtěte si o úlohách s více kroky při [spouštění více kroků sestavení, testování a oprav úloh v ACR úlohách](container-registry-tasks-multi-step.md).
 
 ## <a name="view-task-logs"></a>Zobrazit protokoly úloh
 
-Každé spuštění úkolu vygeneruje výstup protokolu, který si můžete prohlédnout k určení, zda kroky úlohy proběhla úspěšně. Pokud používáte [az acr sestavení](/cli/azure/acr#az-acr-build), [az acr spustit](/cli/azure/acr#az-acr-run), nebo [az acr úlohy](/cli/azure/acr/task#az-acr-task-run) příkaz k aktivaci úlohy, výstup protokolu pro úlohu spustit se streamují do konzole také ukládají a později načítání. Zobrazit protokoly pro úlohu spustit na portálu Azure portal, nebo použijte [protokoly úlohy az acr](/cli/azure/acr/task#az-acr-task-logs) příkazu.
+Každý běh úlohy generuje výstup protokolu, který můžete zkontrolovat, abyste zjistili, jestli se kroky úlohy úspěšně spustily. Pokud k aktivaci úlohy použijete příkaz [AZ ACR Build](/cli/azure/acr#az-acr-build), [AZ ACR Run](/cli/azure/acr#az-acr-run)nebo [AZ ACR Task Run](/cli/azure/acr/task#az-acr-task-run) , výstup protokolu pro spuštění úlohy se streamuje do konzoly a také se uloží pro pozdější načtení. Zobrazte protokoly spuštění úlohy ve Azure Portal nebo použijte příkaz [AZ ACR Task logs](/cli/azure/acr/task#az-acr-task-logs) .
 
-Od července 2019 se data pro spuštění úloh v registru a bude zachován ve výchozím nastavení po dobu 30 dnů a pak automaticky odstraněna. Pokud chcete archivovat data pro úlohu spustit, povolte archivaci pomocí [az acr úlohy aktualizace spuštění](/cli/azure/acr/task#az-acr-task-update-run) příkazu. Následující příklad povolí archivace pro úlohu spustit *cf11* v registru *myregistry*.
+Od července 2019 budou data a protokoly pro úlohy spuštěné v registru standardně uchovány po dobu 30 dnů a pak automaticky vymazány. Pokud chcete archivovat data pro spuštění úlohy, povolte archivaci pomocí příkazu [AZ ACR Task Update-Run](/cli/azure/acr/task#az-acr-task-update-run) . Následující příklad umožňuje archivaci úlohy spustit *CF11* v registru *myregistry*.
 
 ```azurecli
 az acr task update-run --registry myregistry --run-id cf11 --no-archive false
@@ -106,9 +107,9 @@ az acr task update-run --registry myregistry --run-id cf11 --no-archive false
 
 ## <a name="next-steps"></a>Další postup
 
-Až budete připraveni k automatizaci operačního systému a rozhraní framework opravy chyb ve vytváření imagí kontejnerů v cloudu, přečtěte si třemi částmi [sérii úkolů ACR](container-registry-tutorial-quick-task.md).
+Až budete připraveni k automatizaci automatických oprav operačního systému a architektury sestavením imagí kontejneru v cloudu, podívejte se na [řadu kurzů ACR úloh](container-registry-tutorial-quick-task.md)tři části.
 
-Volitelně můžete nainstalovat [rozšíření Dockeru pro Visual Studio Code](https://code.visualstudio.com/docs/azure/docker) a [účet Azure](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account) rozšíření pro práci s vaší registry kontejnerů Azure. O přijetí změn a nahrávání imagí do služby Azure container registry nebo spuštění úlohy služby ACR, vše v rámci Visual Studio Code.
+Volitelně můžete nainstalovat [rozšíření Docker pro Visual Studio Code](https://code.visualstudio.com/docs/azure/docker) a rozšíření [účtu Azure](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account) pro práci se službou Azure Container Registry. Vyhrajte a nahrajte image do služby Azure Container registry nebo spouštějte ACR úlohy, a to všechno v rámci Visual Studio Code.
 
 <!-- LINKS - External -->
 [base-alpine]: https://hub.docker.com/_/alpine/

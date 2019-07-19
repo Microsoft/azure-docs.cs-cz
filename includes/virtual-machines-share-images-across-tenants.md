@@ -8,57 +8,57 @@ ms.topic: include
 ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 499aeccdf00980eeb66ac6ee06e45267fd515143
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: cf05468af17a4fafa7c81c7ad8bc89b3306a54af
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67174971"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68286231"
 ---
-Sdílené Galerie obrázků vám umožní sdílení obrázků s využitím RBAC. RBAC můžete použít ke sdílení imagí v rámci vašeho tenanta a dokonce i jednotlivci mimo vašeho tenanta. Ale pokud ho chcete sdílet imagí mimo vašeho tenanta Azure ve velkém měřítku, měli byste vytvořit registrace aplikace k usnadnění sdílení.  Registrace aplikace s využitím můžete povolit složitější scénáře sdílení, jako jsou: 
+Galerie sdílených imagí vám umožňují sdílet Image pomocí RBAC. Ke sdílení imagí v rámci tenanta a dokonce i jednotlivcům mimo vašeho tenanta můžete použít RBAC. Pokud ale chcete sdílet image mimo vašeho tenanta Azure, měli byste při škálování vytvořit registraci aplikace, která usnadňuje sdílení.  Použití registrace aplikace může umožnit složitější scénáře sdílení, třeba: 
 
-* Správa sdílených bitových kopií, když jedna společnost získá jinou a infrastrukturu Azure se pak rozdělí mezi samostatné tenanty. 
-* Partneři Azure ke správě infrastruktury Azure zastoupení svých zákazníků. Přizpůsobení imagí se provádí v rámci tenanta partnery, ale nasazení infrastruktury se stane v tenantovi zákazníka. 
+* Správa sdílených imagí, když jedna společnost získá jiný a infrastruktura Azure se rozprostře mezi samostatné klienty. 
+* Partneři Azure spravují jménem svých zákazníků infrastrukturu Azure. Přizpůsobení imagí se provádí v tenantovi partnerů, ale k nasazení infrastruktury dojde v tenantovi zákazníka. 
 
 
 ## <a name="create-the-app-registration"></a>Vytvoření registrace aplikace
 
-Vytvoření registrace aplikace, který se použije ke sdílení prostředků Galerie obrázků obě klienty.
-1. Otevřít [registrace aplikací (preview) na webu Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType//sourceType/).    
-1. Vyberte **registrace nové** v nabídce v horní části stránky.
-1. V **název**, typ *myGalleryApp*.
-1. V **podporovaných typů účtu**vyberte **účty v jakékoli organizaci adresáři a osobní účty Microsoft**.
-1. V **identifikátor URI pro přesměrování**, typ *https://www.microsoft.com* a pak vyberte **zaregistrovat**. Po registraci aplikace se vytvořila, otevře se stránka s přehledem.
-1. Na stránce s přehledem, zkopírujte **ID aplikace (klient)** a uložit pro použití později.   
-1. Vyberte **certifikáty a tajné kódy**a pak vyberte **nový tajný kód klienta**.
-1. V **popis**, typ *sdílený tajný klíč aplikace mezi tenanty Galerie obrázků*.
-1. V **Expires**, ponechte výchozí hodnotu **v 1 rok** a pak vyberte **přidat**.
-1. Hodnota tajného kódu zkopírujte a uložte ho na bezpečném místě. Nejde ho načíst opustíte na stránce.
+Vytvořte registraci aplikace, kterou budou používat oba klienti ke sdílení prostředků Galerie imagí.
+1. Otevřete [Registrace aplikací (Preview) v Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType//sourceType/).    
+1. V nabídce v horní části stránky vyberte **Nová registrace** .
+1. Do **název**zadejte *myGalleryApp*.
+1. V **podporovaných typech účtů**vyberte **účty v libovolném organizačním adresáři a osobní účty Microsoft**.
+1. V seznamu **identifikátor URI**pro *https://www.microsoft.com* přesměrování zadejte a pak vyberte **Registrovat**. Po vytvoření registrace aplikace se otevře stránka s přehledem.
+1. Na stránce Přehled zkopírujte **ID aplikace (klienta)** a uložte se pro použití později.   
+1. Vyberte **certifikáty & tajných**kódů a pak vyberte **nový tajný klíč klienta**.
+1. V **popisu**zadejte do *Galerie sdílených imagí cloudový klíč aplikace pro více tenantů*.
+1. V poli **konec platnosti**ponechte výchozí hodnotu **v intervalu 1 roku** a pak vyberte **Přidat**.
+1. Zkopírujte hodnotu tajného klíče a uložte ji na bezpečné místo. Po opuštění stránky ji nelze načíst.
 
 
-Udělit oprávnění registrace aplikací k použití Galerie sdílené bitové kopie.
-1. Na webu Azure Portal vyberte galerii sdílené bitové kopie, kterou chcete sdílet s jiným tenantem.
-1. Vyberte **vyberte řízení přístupu (IAM)** a v části **přidat přiřazení role** vyberte *přidat*. 
-1. V části **Role**vyberte **čtečky**.
-1. V části **přiřadit přístup:** , nechte pole jako **uživatele, skupinu nebo instanční objekt služby Azure AD**.
-1. V části **vyberte**, typ *myGalleryApp* a vyberte ji, když se zobrazí v seznamu. Jakmile budete hotovi, vyberte **Uložit**.
+Udělte registraci aplikace oprávnění používat galerii sdílených imagí.
+1. V Azure Portal vyberte galerii sdílených imagí, kterou chcete sdílet s jiným klientem.
+1. Vyberte **Vybrat řízení přístupu (IAM)** a v části **Přidat přiřazení role** vyberte *Přidat*. 
+1. V části **role**vyberte **Čtenář**.
+1. V části **přiřadit přístup k:** ponechte toto jako **uživatel, skupina nebo INSTANČNÍ objekt Azure AD**.
+1. V části **Vybrat**zadejte *myGalleryApp* a při zobrazení v seznamu ho vyberte. Po dokončení vyberte **Uložit**.
 
 
-## <a name="give-tenant-2-access"></a>Poskytnout přístup Tenanta 2
+## <a name="give-tenant-2-access"></a>Udělit Tenantovi 2 přístup
 
-Poskytnout 2 Tenanta přístup k aplikaci pomocí žádosti přihlášení v prohlížeči. Nahraďte *<Tenant2 ID>* s ID tenanta pro tenanta, který chcete sdílet vaše Galerie imagí s. Nahraďte *< ID aplikace (klient) >* s ID aplikace pro registraci aplikace, které jste vytvořili. Až budete hotovi, provedení nahrazení, vložte adresu URL do prohlížeče a postupujte podle pokynů přihlášení pro přihlášení do Tenanta 2.
+Udělte Tenantovi 2 přístup k aplikaci tím, že požádá o přihlášení pomocí prohlížeče. Nahraďte  *\<Tenant2 ID >* ID tenanta pro tenanta, se kterým chcete galerii imagí sdílet. Nahraďte  *\<ID aplikace (klienta) >* ID aplikace, kterou jste vytvořili pro registraci aplikace. Až změny dokončíte, vložte adresu URL do prohlížeče a postupujte podle výzev k přihlášení a přihlaste se ke klientovi 2.
 
 ```
 https://login.microsoftonline.com/<Tenant 2 ID>/oauth2/authorize?client_id=<Application (client) ID>&response_type=code&redirect_uri=https%3A%2F%2Fwww.microsoft.com%2F 
 ```
 
-V [webu Azure portal](https://portal.azure.com) přihlaste jako Tenant 2 a umožněte přístup registraci aplikace do skupiny prostředků, ve kterém chcete vytvořit virtuální počítač.
+V [Azure Portal](https://portal.azure.com) Přihlaste se jako tenant 2 a udělte registraci aplikace přístup ke skupině prostředků, ve které chcete vytvořit virtuální počítač.
 
-1. Vyberte skupinu prostředků a potom vyberte **řízení přístupu (IAM)** . V části **přidat přiřazení role** vyberte **přidat**. 
-1. V části **Role**, typ **Přispěvatel**.
-1. V části **přiřadit přístup:** , nechte pole jako **uživatele, skupinu nebo instanční objekt služby Azure AD**.
-1. V části **vyberte** typ *myGalleryApp* poté jej vyberte, když se zobrazí v seznamu. Jakmile budete hotovi, vyberte **Uložit**.
+1. Vyberte skupinu prostředků a pak vyberte **řízení přístupu (IAM)** . V části **Přidat přiřazení role** vyberte **Přidat**. 
+1. V části **role**zadejte **Přispěvatel**.
+1. V části **přiřadit přístup k:** ponechte toto jako **uživatel, skupina nebo INSTANČNÍ objekt Azure AD**.
+1. V části **Vybrat** typ *myGalleryApp* vyberte, když se zobrazí v seznamu. Po dokončení vyberte **Uložit**.
 
 > [!NOTE]
-> Budete muset počkat na verzi image, aby zcela dokončit právě vytvořené a replikované před stejné spravované image můžete vytvořit jinou verzi image.
+> Aby bylo možné použít stejnou spravovanou bitovou kopii k vytvoření jiné verze bitové kopie, je třeba počkat na dokončení sestavení a repliky verze image.
 

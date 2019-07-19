@@ -12,12 +12,12 @@ ms.date: 02/08/2019
 ms.author: lizross
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f59cae87af5f29d900159639798f9cd031f3d765
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 7f695d9f0240f8c27ea0bedba7e532d37a177752
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67302388"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68304740"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Plány nasazení Azure Active Directory
 Hledáte kompletní pokyny pro nasazení některých funkcí Azure Active Directory (Azure AD)? Následující plány nasazení popisují obchodní hodnotu, důležité informace o plánování, návrh a provozní postupy potřebné k úspěšnému zavedení několika běžnějších funkcí Azure AD. 
@@ -26,30 +26,30 @@ V dokumentech najdete šablony e-mailů, diagramy architektur systémů, běžn�
 
 Velmi bychom uvítali váš názor na tyto dokumenty. Vyplňte tento krátký [dotazník](https://aka.ms/deploymentplanfeedback) o vašich zkušenostech s dokumenty. 
 
-## <a name="include-the-right-stakeholders"></a>Dokážete zapojit zúčastněné pravé strany
+## <a name="include-the-right-stakeholders"></a>Zahrnutí správných zúčastněných stran
 
-Při zahájení nové funkce pro plánování vašeho nasazení, je potřeba zahrnout klíčové účastníky napříč vaší organizací. Doporučujeme vám identifikovat a zdokumentujte osobou nebo lidmi, kteří splnění všech následujících rolí a pracovat s nimi určit jejich zapojení do projektu.  
+Při zahájení plánování nasazení nové funkce je důležité zahrnout klíčové účastníky v rámci vaší organizace. Doporučujeme identifikovat a zdokumentovat osobu nebo lidi, kteří splňují jednotlivé role, a pracovat s nimi k určení jejich zapojení do projektu.  
 
-Role může zahrnovat následující 
+Role můžou zahrnovat následující: 
 
 |Role |Popis |
 |-|-|
-|Koncový uživatel|Reprezentativní skupinu uživatelů, pro které budou implementovány funkce. Často se zobrazí náhled změn v pilotní program.
-|Správce podpory IT|IT podpory organizace zástupce, který může poskytnout vstup na možnosti podpory této změny z hlediska technickou podporu.  
-|Architekt identity nebo v Azure globálním správcem|Zástupce týmu správy identity starosti definování, jak je tuto změnu v souladu s základní infrastruktury správy identit ve vaší organizaci.|
-|Majitel firmy |Majitel firmy celkové ovlivněné aplikací, které můžou zahrnovat řízení přístupu.  Může taky poskytnout vstup na uživatelské prostředí a užitečnost této změny z hlediska koncového uživatele společnosti.
-|Vlastník zabezpečení|Zástupce od bezpečnostního týmu, který může PM, plán budou splňovat požadavky na zabezpečení vaší organizace.|
-|Správce dodržování předpisů|Uživatel v organizaci za zajištění dodržování předpisů s podnikovým, oboru nebo vládní požadavky.|
+|Koncový uživatel|Zástupce skupiny uživatelů, pro které bude tato funkce implementována. Aplikace často zobrazuje náhled změn v pilotním programu.
+|Správce podpory IT|Podporuje zástupce organizace, který poskytuje vstup o podpoře této změny z perspektivy technické podpory.  
+|Architekt identity nebo globální správce Azure|Zástupce týmu správy identit se účtuje podle toho, jak se tato změna rovná s infrastrukturou správy základní identity ve vaší organizaci.|
+|Vlastník firemních aplikací |Celkový obchodní vlastník ovlivněných aplikací, které můžou zahrnovat správu přístupu.  Může také poskytnout vstup na uživatelské prostředí a užitečnost této změny z perspektivy koncového uživatele.
+|Vlastník zabezpečení|Zástupce z bezpečnostního týmu, který se může odhlásit, že plán bude splňovat požadavky na zabezpečení vaší organizace.|
+|Správce dodržování předpisů|Osoba v rámci vaší organizace odpovědná za zajištění souladu s podnikovými, průmyslovými nebo vládními požadavky.|
 
-**Úrovně zapojení mohou zahrnovat:**
+**Úrovně zapojení můžou zahrnovat:**
 
-- **R**esponsible prováděcí plán projektu a výsledek 
+- Esponsible **R**pro implementaci plánu a výsledku projektu 
 
-- **A**pproval plán projektu a výsledky 
+- **Pproval plánu**a výsledku projektu 
 
-- **C**ontributor plán projektu a výsledek 
+- Ontributor plánování a výsledek projektu **C** 
 
-- **Můžu**nformed plán projektu a výsledky
+- **Nformed plán**a výsledek projektu
  
 ## <a name="deployment-plans"></a>Plány nasazení
 
@@ -58,10 +58,10 @@ Role může zahrnovat následující
 |Scénář |Popis |
 |-|-|
 |[Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)|Azure Multi-Factor Authentication (MFA) je řešení dvoustupňového ověřování od Microsoftu. Použitím metod ověřování schválených správcem pomáhá Azure MFA chránit přístup k datům a aplikacím a současně splňuje požadavky na jednoduchý proces přihlašování.|
-|[Podmíněný přístup](https://aka.ms/deploymentplans/ca)|S podmíněným přístupem můžete implementovat rozhodovat o automatizovaného přístupu pro vaše cloudové aplikace na základě podmínek, kdo má přístup.|
-|[Samoobslužné resetování hesla](https://aka.ms/SSPRDPDownload)|Samoobslužné resetování hesla pomáhá uživatelům tím, že si kdykoli a kdekoli můžou v případě potřeby resetovat heslo bez zásahu správce.|
-|[Privileged Identity Management](https://aka.ms/deploymentplans/pim)|Azure AD Privileged Identity Management (PIM) pomáhá spravovat privilegované role správců ve službě Azure AD se prostředky Azure a dalších Microsoft Online Services. PIM poskytuje řešení, jako jsou just-in-time, pracovní postupy schválení žádostí a plně integrované přístup kontroly, abyste mohli identifikovat odkrýt a zabránit škodlivých aktivit privilegovaných rolí v reálném čase.|
-|[Jednotné přihlašování](https://aka.ms/SSODPDownload)|Jednotné přihlašování pomáhá získat přístup ke všem aplikacím a prostředkům, které potřebujete ke své obchodní činnosti, prostřednictvím jediného přihlášení s použitím jednoho uživatelského účtu. Po přihlášení můžete přecházet například mezi Microsoft Office, SalesForce a Boxem, aniž by se po vás vyžadovalo další ověření (například zadáním hesla).|
+|[Podmíněný přístup](https://aka.ms/deploymentplans/ca)|Pomocí podmíněného přístupu můžete implementovat automatizované rozhodnutí řízení přístupu, která budou mít přístup k vašim cloudovým aplikacím, a to na základě podmínek.|
+|[Samoobslužné resetování hesla](https://aka.ms/deploymentplans/sspr)|Samoobslužné resetování hesla pomáhá uživatelům tím, že si kdykoli a kdekoli můžou v případě potřeby resetovat heslo bez zásahu správce.|
+|[Privileged Identity Management](https://aka.ms/deploymentplans/pim)|Azure AD Privileged Identity Management (PIM) pomáhá spravovat privilegované administrativní role napříč službami Azure AD, prostředky Azure a dalšími online službami Microsoftu. PIM poskytuje řešení, jako je přístup za běhu, pracovní postupy schvalování žádostí a plně integrované recenze přístupu, abyste mohli identifikovat, odhalit a zabránit škodlivým aktivitám privilegovaných rolí v reálném čase.|
+|[Jednotné přihlašování](https://aka.ms/deploymentplans/sso)|Jednotné přihlašování pomáhá získat přístup ke všem aplikacím a prostředkům, které potřebujete ke své obchodní činnosti, prostřednictvím jediného přihlášení s použitím jednoho uživatelského účtu. Po přihlášení můžete přecházet například mezi Microsoft Office, SalesForce a Boxem, aniž by se po vás vyžadovalo další ověření (například zadáním hesla).|
 |[Bezproblémové jednotné přihlašování](https://aka.ms/SeamlessSSODPDownload)|Bezproblémové jednotné přihlašování Azure Active Directory (bezproblémové jednotné přihlašování Azure AD) automaticky přihlašuje uživatele, kteří zrovna používají svá podniková zařízení připojená k vaší podnikové síti. Po zapnutí této funkce uživatelé nebudou muset kvůli přihlášení do Azure AD zadávat heslo a obvykle nebudou muset zadávat ani své uživatelské jméno. Tato funkce poskytuje uživatelům snadný přístup k vašim cloudovým aplikacím bez potřeby dalších místních komponent.|
 |[Přístupový panel](https://aka.ms/AccessPanelDPDownload)|Nabízejí uživatelům jednoduchý hub ke zjištění a přístupu k aplikacím. Mohly být produktivnější díky samoobslužné funkce, jako je například umožňuje žádat o přístup k nové aplikace a skupiny, nebo spravovat přístup k těmto prostředkům jménem jiných uživatelů.|
 |[ADFS pro synchronizaci hodnot hash hesel](https://aka.ms/deploymentplans/adfs2phs)|Synchronizace hodnot hash hesel zajišťuje synchronizaci hodnot hash hesel uživatelů z místní služby Active Directory do Azure AD a umožňuje službě Azure AD ověřovat uživatele bez jakékoli interakce s místní službou Active Directory.|

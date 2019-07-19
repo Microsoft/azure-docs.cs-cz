@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 07/07/2017
-ms.author: jdial
-ms.openlocfilehash: f077080793ef595019667028188a2a98dcbd2c0c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: timlt
+ms.openlocfilehash: f2ba4d919cc17d1c454a39490377477e99aa17e2
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60624454"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875516"
 ---
 # <a name="route-traffic-through-a-network-virtual-appliance"></a>Směrování provozu přes síťové virtuální zařízení
 
@@ -59,7 +59,7 @@ Tento skript k vytvoření skupiny prostředků, virtuální sítě a skupin zab
 | [az network nsg rule create](/cli/azure/network/nsg/rule) | Vytvoří pravidla NSG, která povolí příchozí provoz na portech HTTP a HTTPS do virtuálního počítače. |
 | [az network vnet subnet update](/cli/azure/network/vnet/subnet)| Přidruží k podsítím skupiny zabezpečení sítě a směrovací tabulky. |
 | [az network route-table create](/cli/azure/network/route-table#az-network-route-table-create)| Vytvoří směrovací tabulku pro všechny trasy. |
-| [az network route-table route create](/cli/azure/network/route-table/route#az-network-route-table-route-create)| Vytvoří trasy pro směrování provozu mezi podsítěmi a Internetem přes virtuální počítač. |
+| [az network route-table route create](/cli/azure/network/route-table/route#az-network-route-table-route-create)| Vytvoří trasy pro směrování provozu mezi podsítěmi a internetem přes virtuální počítač. |
 | [az vm create](/cli/azure/vm) | Vytvoří virtuální počítač a připojí k němu síťovou kartu. Tento příkaz také určuje image virtuálního počítače, která se má použít, a přihlašovací údaje pro správu. |
 | [az group delete](/cli/azure/group) | Odstraní skupinu prostředků a všechny prostředky, které obsahuje. |
 
@@ -67,4 +67,4 @@ Tento skript k vytvoření skupiny prostředků, virtuální sítě a skupin zab
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](/cli/azure).
 
-Další sítě ukázkové skripty rozhraní příkazového řádku najdete v [dokumentaci přehled sítě Azure](../cli-samples.md)
+Další informace o ukázkových skriptech rozhraní příkazového řádku najdete v [dokumentaci Přehled sítí Azure](../cli-samples.md) .

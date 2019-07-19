@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/27/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 68b7db2664890f3175fcfb14e6970d79b68f693f
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: fcb83b18267c1b4072ea02bdd4d30356f7f360ed
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67719013"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849638"
 ---
 # <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-powershell"></a>Vytvoření virtuálního počítače s Windows v zóně dostupnosti pomocí PowerShellu
 
@@ -42,7 +42,7 @@ Connect-AzAccount
 ## <a name="check-vm-sku-availability"></a>Kontrola dostupnosti skladových položek virtuálních počítačů
 Dostupnost velikostí virtuálních počítačů (neboli skladových položek) se může lišit podle oblasti a zóny. Jako pomůcku při plánování použití zón dostupnosti můžete zobrazit seznam dostupných SKU virtuálních počítačů podle zóny a oblasti Azure. Díky tomu se zajistí, že vyberete odpovídající velikost virtuálního počítače a získáte požadovanou odolnost napříč zónami. Další informace o různých velikostech a typech virtuálních počítačů najdete v [přehledu velikostí virtuálních počítačů](sizes.md).
 
-Můžete zobrazit dostupné skladové položky virtuálních počítačů s [Get-AzComputeResourceSku](https://docs.microsoft.com/powershell/module/az.compute/get-azcomputeresourcesku) příkazu. Následující příklad zobrazí seznam dostupných skladových položek virtuálních počítačů v oblasti *eastus2*:
+Dostupné skladové položky virtuálních počítačů můžete zobrazit pomocí příkazu [Get-AzComputeResourceSku](https://docs.microsoft.com/powershell/module/az.compute/get-azcomputeresourcesku) . Následující příklad zobrazí seznam dostupných skladových položek virtuálních počítačů v oblasti *eastus2*:
 
 ```powershell
 Get-AzComputeResourceSku | where {$_.Locations.Contains("eastus2")};
@@ -113,7 +113,7 @@ $nsg = New-AzNetworkSecurityGroup -ResourceGroupName myResourceGroup -Location e
 ```
 
 ### <a name="create-a-network-card-for-the-virtual-machine"></a>Vytvoření síťové karty pro virtuální počítač 
-Vytvoření síťové karty s [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) pro virtuální počítač. Síťová karta připojuje virtuální počítač k podsíti, skupině zabezpečení sítě a veřejné IP adrese.
+Vytvořte pro virtuální počítač síťovou kartu s [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) . Síťová karta připojuje virtuální počítač k podsíti, skupině zabezpečení sítě a veřejné IP adrese.
 
 ```powershell
 # Create a virtual network card and associate with public IP address and NSG
@@ -136,7 +136,7 @@ $vmConfig = New-AzVMConfig -VMName myVM -VMSize Standard_DS1_v2 -Zone 2 | `
     -Skus 2016-Datacenter -Version latest | Add-AzVMNetworkInterface -Id $nic.Id
 ```
 
-Vytvoření virtuálního počítače s [rutiny New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm).
+Vytvořte virtuální počítač pomocí [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm).
 
 ```powershell
 New-AzVM -ResourceGroupName myResourceGroup -Location eastus2 -VM $vmConfig
@@ -144,7 +144,7 @@ New-AzVM -ResourceGroupName myResourceGroup -Location eastus2 -VM $vmConfig
 
 ## <a name="confirm-zone-for-managed-disk"></a>Potvrzení zóny pro spravovaný disk
 
-Vytvořili jste prostředek IP adresy virtuálního počítače ve stejné zóně dostupnosti jako virtuální počítač. Prostředek spravovaného disku pro virtuální počítač se vytvoří ve stejné zóně dostupnosti. To lze ověřit pomocí [Get-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk):
+Vytvořili jste prostředek IP adresy virtuálního počítače ve stejné zóně dostupnosti jako virtuální počítač. Prostředek spravovaného disku pro virtuální počítač se vytvoří ve stejné zóně dostupnosti. Můžete to ověřit pomocí [Get-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk):
 
 ```powershell
 Get-AzDisk -ResourceGroupName myResourceGroup
@@ -178,4 +178,4 @@ Tags               : {}
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto článku jste zjistili, jak vytvořit virtuální počítač v zóně dostupnosti. Přečtěte si další informace o [oblastech a dostupnosti](regions-and-availability.md) pro virtuální počítače Azure.
+V tomto článku jste zjistili, jak vytvořit virtuální počítač v zóně dostupnosti. Přečtěte si další informace o [dostupnosti](availability.md) pro virtuální počítače Azure.

@@ -1,6 +1,6 @@
 ---
-title: Instalace a konfigurace Terraformu pro použití s Azure | Dokumentace Microsoftu
-description: Zjistěte, jak instalace a konfigurace Terraformu k vytvoření prostředků Azure
+title: Instalace a konfigurace Terraformu pro použití s Azure | Microsoft Docs
+description: Naučte se instalovat a konfigurovat Terraformu k vytváření prostředků Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: echuvyrov
@@ -14,62 +14,62 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/19/2018
-ms.author: echuvyrov
-ms.openlocfilehash: 30593bc874e2cd666c0af89336b26a15c944a424
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.author: gwallace
+ms.openlocfilehash: 14bbbb6581d3e6d00db532e343f8362fc44d0044
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708661"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876337"
 ---
-# <a name="install-and-configure-terraform-to-provision-vms-and-other-infrastructure-into-azure"></a>Instalace a konfigurace Terraformu ke zřízení virtuálních počítačů a další infrastruktury do Azure
+# <a name="install-and-configure-terraform-to-provision-vms-and-other-infrastructure-into-azure"></a>Instalace a konfigurace Terraformu pro zřizování virtuálních počítačů a jiné infrastruktury do Azure
  
-Poskytuje snadný způsob, jak definovat, ve verzi preview a nasadit cloudovou infrastrukturu s využitím Terraformu [jednoduchých šablon jazyka](https://www.terraform.io/docs/configuration/syntax.html). Tento článek popisuje nezbytné kroky k Terraformu zřizovat prostředky v Azure.
+Terraformu poskytuje snadný způsob, jak definovat, zobrazovat náhled a nasazovat cloudovou infrastrukturu pomocí [jednoduchého jazyka šablonování](https://www.terraform.io/docs/configuration/syntax.html). Tento článek popisuje nezbytné kroky pro použití Terraformu ke zřízení prostředků v Azure.
 
-Další informace o tom, jak pomocí Terraformu v Azure, najdete [Terraformu centra](/azure/terraform).
+Další informace o tom, jak používat Terraformu s Azure, najdete v [centru terraformu](/azure/terraform).
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Terraform je nainstalovaný ve výchozím nastavení [Cloud Shell](/azure/terraform/terraform-cloud-shell). Pokud se rozhodnete nainstalovat Terraformu místně, dokončení dalšího kroku, v opačném případě pokračujte [nastavit přístup Terraformu pro Azure](#set-up-terraform-access-to-azure).
+Terraformu se ve výchozím nastavení instaluje v [Cloud Shell](/azure/terraform/terraform-cloud-shell). Pokud se rozhodnete nainstalovat Terraformu místně, dokončete další krok, jinak pokračujte v [Nastavení terraformu přístupu k Azure](#set-up-terraform-access-to-azure).
 
-## <a name="install-terraform"></a>Nainstalujte Terraformu
+## <a name="install-terraform"></a>Nainstalovat Terraformu
 
-Chcete-li nainstalovat Terraformu, [Stáhnout](https://www.terraform.io/downloads.html) odpovídající balíček pro váš operační systém do samostatné instalační adresář. Položka ke stažení obsahuje jeden spustitelný soubor, pro kterou byste měli definovat také globální cesta. Pokyny k nastavení cesty na Linuxu a Macu, přejděte na [tuto webovou stránku](https://stackoverflow.com/questions/14637979/how-to-permanently-set-path-on-linux). Pokyny k nastavení cesty ve Windows, přejděte na [tuto webovou stránku](https://stackoverflow.com/questions/1618280/where-can-i-set-path-to-make-exe-on-windows).
+Pro instalaci Terraformu [Stáhněte](https://www.terraform.io/downloads.html) příslušný balíček pro váš operační systém do samostatného instalačního adresáře. Stažení obsahuje jeden spustitelný soubor, pro který byste také měli definovat globální cestu. Pokyny, jak nastavit cestu pro Linux a Mac, najdete na [této webové stránce](https://stackoverflow.com/questions/14637979/how-to-permanently-set-path-on-linux). Pokyny, jak nastavit cestu ve Windows, najdete na [této webové stránce](https://stackoverflow.com/questions/1618280/where-can-i-set-path-to-make-exe-on-windows).
 
-Zkontrolujte konfiguraci cesty s `terraform` příkazu. Seznam dostupných možností Terraform je zobrazen jako následující příklad výstupu:
+Ověřte konfiguraci cesty pomocí `terraform` příkazu. Zobrazí se seznam dostupných možností Terraformu, jako v následujícím příkladu výstupu:
 
 ```bash
 azureuser@Azure:~$ terraform
 Usage: terraform [--version] [--help] <command> [args]
 ```
 
-## <a name="set-up-terraform-access-to-azure"></a>Nastavení přístupu k Terraformu pro Azure
+## <a name="set-up-terraform-access-to-azure"></a>Nastavení přístupu k Terraformu do Azure
 
-Pokud chcete povolit Terraformu pro zřízení prostředků do Azure, vytvořte [instanční objekt služby Azure AD](/cli/azure/create-an-azure-service-principal-azure-cli). Instanční objekt uděluje skripty Terraformu ke zřízení prostředků ve vašem předplatném Azure.
+Pokud chcete povolit Terraformu k zřizování prostředků do Azure, vytvořte [instanční objekt služby Azure AD](/cli/azure/create-an-azure-service-principal-azure-cli). Instanční objekt uděluje vašim skriptům Terraformu možnost zřídit prostředky v předplatném Azure.
 
-Pokud máte více předplatných Azure, nejprve dotaz vašeho účtu pomocí [zobrazit účet az](/cli/azure/account#az-account-show) k získání ID a tenanta hodnoty ID seznamu předplatného:
+Pokud máte několik předplatných Azure, nejdřív Dotazujte svůj účet pomocí příkazu [AZ Account show](/cli/azure/account#az-account-show) , který získá seznam ID předplatného a ID tenanta:
 
 ```azurecli-interactive
 az account show --query "{subscriptionId:id, tenantId:tenantId}"
 ```
 
-Použít vybrané předplatné, nastavte předplatné pro tuto relaci s [az účet sady](/cli/azure/account#az-account-set). Nastavte `SUBSCRIPTION_ID` prostředí proměnnou pro uchování hodnoty vrácené `id` pole z předplatného, které chcete použít:
+Chcete-li použít vybrané předplatné, nastavte odběr této relace pomocí [AZ Account set](/cli/azure/account#az-account-set). Nastavte proměnnou `id` prostředí tak, aby obsahovala hodnotu vráceného pole z předplatného, které chcete použít: `SUBSCRIPTION_ID`
 
 ```azurecli-interactive
 az account set --subscription="${SUBSCRIPTION_ID}"
 ```
 
-Nyní můžete vytvořit instanční objekt pro použití s využitím Terraformu. Použití [az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac)a nastavte *oboru* do vašeho předplatného následujícím způsobem:
+Nyní můžete vytvořit instanční objekt pro použití s Terraformu. Použijte příkaz [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp#az-ad-sp-create-for-rbac)a nastavte *obor* na vaše předplatné následujícím způsobem:
 
 ```azurecli-interactive
 az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/${SUBSCRIPTION_ID}"
 ```
 
-Vaše `appId`, `password`, `sp_name`, a `tenant` jsou vráceny. Poznamenejte si, `appId` a `password`.
+Vrátí `appId`se `password`vaše ,`sp_name`, a`tenant` . Poznamenejte `appId` si a `password`.
 
 ## <a name="configure-terraform-environment-variables"></a>Konfigurace proměnných prostředí Terraformu
 
-Nakonfigurujte Terraform, který pomocí instančního objektu služby Azure AD, nastavte následující proměnné prostředí, které jsou pak používány [moduly Terraformu pro Azure](https://registry.terraform.io/modules/Azure). Můžete také nastavit prostředí práci s cloudu Azure jiné než Azure public.
+Pokud chcete nakonfigurovat Terraformu pro použití instančního objektu služby Azure AD, nastavte následující proměnné prostředí, které jsou pak používány [moduly Azure terraformu](https://registry.terraform.io/modules/Azure). Prostředí můžete také nastavit, pokud pracujete s jiným cloudem Azure, než je Azure Public.
 
 - `ARM_SUBSCRIPTION_ID`
 - `ARM_CLIENT_ID`
@@ -77,7 +77,7 @@ Nakonfigurujte Terraform, který pomocí instančního objektu služby Azure AD,
 - `ARM_TENANT_ID`
 - `ARM_ENVIRONMENT`
 
-Následující ukázkový skript prostředí můžete použít k nastavení těchto proměnných:
+K nastavení těchto proměnných můžete použít následující vzorový skript prostředí:
 
 ```bash
 #!/bin/sh
@@ -91,9 +91,9 @@ export ARM_TENANT_ID=your_tenant_id
 export ARM_ENVIRONMENT=public
 ```
 
-## <a name="run-a-sample-script"></a>Spustit ukázkový skript
+## <a name="run-a-sample-script"></a>Spuštění ukázkového skriptu
 
-Vytvořte soubor `test.tf` prázdný adresář a vložte následující skript.
+Vytvořte soubor v `test.tf` prázdném adresáři a vložte ho do následujícího skriptu.
 
 ```tf
 provider "azurerm" {
@@ -104,7 +104,7 @@ resource "azurerm_resource_group" "rg" {
 }
 ```
 
-Uložení souboru, kterou následně inicializujete Terraformu nasazení. Tento krok stáhne moduly Azure, který je potřebný k vytvoření skupiny prostředků Azure.
+Uložte soubor a pak inicializujte nasazení Terraformu. Tento krok stáhne moduly Azure vyžadované k vytvoření skupiny prostředků Azure.
 
 ```bash
 terraform init
@@ -118,7 +118,7 @@ Výstup se podobá následujícímu příkladu:
 Terraform has been successfully initialized!
 ```
 
-Můžete zobrazit náhled akce provést skript Terraform s `terraform plan`. Až budete připraveni vytvořit skupinu prostředků, použije plán Terraformu takto:
+Můžete zobrazit náhled akcí, které má skript Terraformu provést, pomocí `terraform plan`. Až budete připraveni vytvořit skupinu prostředků, použijte plán Terraformu následujícím způsobem:
 
 ```bash
 terraform apply
@@ -146,9 +146,9 @@ azurerm_resource_group.rg: Creating...
 azurerm_resource_group.rg: Creation complete after 1s
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-V tomto článku jste nainstalovali Terraformu nebo službě Cloud Shell umožňuje nakonfigurovat přihlašovací údaje Azure a začněte vytvářet prostředky v předplatném Azure. Vytvoření kompletní nasazení Terraformu v Azure, najdete v následujícím článku:
+V tomto článku jste nainstalovali Terraformu nebo použili Cloud Shell ke konfiguraci přihlašovacích údajů Azure a zahájení vytváření prostředků ve vašem předplatném Azure. Pokud chcete vytvořit úplnější Terraformu nasazení v Azure, přečtěte si následující článek:
 
 > [!div class="nextstepaction"]
-> [Vytvoření virtuálního počítače Azure s využitím Terraformu](terraform-create-complete-vm.md)
+> [Vytvoření virtuálního počítače Azure pomocí Terraformu](terraform-create-complete-vm.md)

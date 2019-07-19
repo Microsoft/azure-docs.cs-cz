@@ -1,7 +1,7 @@
 ---
-title: Ukázkový skript Azure Powershellu – koncové body IPv6 konfigurace virtuální sítě (preview)
+title: Ukázka skriptu Azure PowerShell – konfigurace koncových bodů virtuální sítě IPv6 (Preview)
 titlesuffix: Azure Virtual Network
-description: Povolit koncové body IPv6 pomocí prostředí Powershell v Azure Virtual Network
+description: Povolení koncových bodů IPv6 pomocí prostředí PowerShell v Azure Virtual Network
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -10,35 +10,37 @@ ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 04/22/2019
+ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: 627ff40361b562630f05c70823e9ad2c7ef711e0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4f07aae0e8baae44ade152cf3fe20facc7fe6770
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66002235"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68248812"
 ---
-# <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-preview"></a>Konfigurace koncových bodů protokolu IPv6 v ukázkový skript virtuální sítě (preview)
+# <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-preview"></a>Ukázka konfigurace koncových bodů IPv6 v ukázce skriptu virtuální sítě (Preview)
 
-V tomto článku se dozvíte, jak nasadit aplikaci duálním zásobníkem (IPv4 + IPv6) v Azure, která zahrnuje virtuální síť duálním zásobníkem s duálním zásobníkem podsítí, nástroj pro vyrovnávání zatížení s front-endové konfigurace dvou (IPv4 + IPv6), virtuální počítače se síťovými kartami, které mají duální konfigurace protokolu IP pravidla skupiny zabezpečení sítě duální a duální veřejné IP adresy.
+V tomto článku se dozvíte, jak nasadit aplikaci duálního zásobníku (IPv4 + IPv6) v Azure, která zahrnuje virtuální síť s duálním zásobníkem s podsítí duálního zásobníku, nástroj pro vyrovnávání zatížení s duálními konfiguracemi (IPv4 + IPv6), virtuální počítače se síťovými kartami, které mají konfiguraci s duálními IP adresami. pravidla skupiny zabezpečení duální sítě a duální veřejné IP adresy.
 
-Skript můžete spustit ve službě Azure [Cloud Shell](https://shell.azure.com/powershell) nebo v místně nainstalovaném PowerShellu. Pokud používáte PowerShell místně, vyžaduje tento skript Az modul Azure PowerShell verze 1.0.0 nebo novějším. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
+Skript můžete spustit ve službě Azure [Cloud Shell](https://shell.azure.com/powershell) nebo v místně nainstalovaném PowerShellu. Pokud používáte PowerShell místně, vyžaduje tento skript Azure AZ PowerShell Module verze 1.0.0 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Požadavky
-Před nasazením duálním zásobníkem aplikace v Azure, je nutné nakonfigurovat předplatné pouze jednou pro tuto funkci verze preview pomocí Azure Powershellu následující:
+Před nasazením duální aplikace stacku do Azure musíte nakonfigurovat předplatné jenom jednou pro tuto funkci verze Preview pomocí následujících Azure PowerShell:
 
-Zaregistrujte následujícím způsobem:
+Zaregistrujte se následujícím způsobem:
 ```azurepowershell
 Register-AzProviderFeature -FeatureName AllowIPv6VirtualNetwork -ProviderNamespace Microsoft.Network
+Register-AzProviderFeature -FeatureName AllowIPv6CAOnStandardLB -ProviderNamespace Microsoft.Network
 ```
-Trvá až 30 minut, než funkce registraci dokončit. Spuštěním následujícího příkazu prostředí Azure PowerShell, můžete zkontrolovat stav registrace: Kontrola registrace následujícím způsobem:
+Dokončení registrace funkce trvá až 30 minut. Stav registrace můžete zjistit spuštěním následujícího příkazu Azure PowerShell: Ověřte registraci následujícím způsobem:
 ```azurepowershell
 Get-AzProviderFeature -FeatureName AllowIPv6VirtualNetwork -ProviderNamespace Microsoft.Network
+Get-AzProviderFeature -FeatureName AllowIPv6CAOnStandardLB -ProviderNamespace Microsoft.Network
 ```
-Po dokončení registrace, spusťte následující příkaz:
+Po dokončení registrace spusťte následující příkaz:
 
 ```azurepowershell
 Register-AzResourceProvider -ProviderNamespace Microsoft.Network
@@ -260,12 +262,12 @@ Tento skript k vytvoření skupiny prostředků, virtuálního počítače, skup
 | [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) | Vytvoří skupinu zabezpečení sítě (NSG), což je hranice zabezpečení mezi internetem a virtuálním počítačem. |
 | [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) | Vytvoří pravidlo NSG, které povolí příchozí provoz. V této ukázce se otevře port 22 pro provoz SSH. |
 | [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) | Vytvoří virtuální síťovou kartu a připojí ji k virtuální síti, podsíti a skupině NSG. |
-| [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) | Vytvoří skupinu dostupnosti. Skupiny dostupnosti zajišťují dostupnost aplikace rozmístěním virtuálních počítačů napříč fyzickými prostředky tak, že pokud dojde k selhání, nemá vliv celá sada. |
+| [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) | Vytvoří skupinu dostupnosti. Skupiny dostupnosti zajišťují, aby byla aplikace v době provozu rozložená mezi fyzické počítače mezi fyzickými prostředky tak, aby v případě selhání nebyla ovlivněná celá sada. |
 | [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig) | Vytvoří konfiguraci virtuálního počítače. Tato konfigurace zahrnuje informace, jako je název virtuálního počítače, operační systém a přihlašovací údaje pro správu. Tato konfigurace se použije při vytváření virtuálního počítače. |
 | [New-AzVM](/powershell/module/az.compute/new-azvm)  | Vytvoří virtuální počítač a připojí ho k síťové kartě, virtuální síti, podsíti a skupině NSG. Tento příkaz také určuje image virtuálního počítače, která se má použít, a přihlašovací údaje pro správu.  |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/azure/overview).
 

@@ -1,6 +1,6 @@
 ---
-title: Získání tokenu tiše (knihovna Microsoft Authentication Library pro .NET) | Azure
-description: Zjistěte, jak získat přístupový token tiše (z mezipaměti. token) pomocí knihovna Microsoft Authentication Library pro .NET (MSAL.NET).
+title: Získání tokenu v tichém režimu (Microsoft Authentication Library pro .NET) | Azure
+description: Přečtěte si, jak získat přístupový token v tichém režimu (z mezipaměti tokenu) pomocí knihovny Microsoft Authentication Library pro .NET (MSAL.NET).
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
@@ -12,25 +12,25 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/30/2019
+ms.date: 07/16/2019
 ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6331407067a39550d866d7c293a92fac9184b54e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 309e912f2adf5249770b40a631ed62f7cb3113e5
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65544241"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277946"
 ---
-# <a name="get-a-token-from-the-token-cache-using-msalnet"></a>Získání tokenu z mezipaměti token pomocí MSAL.NET
+# <a name="get-a-token-from-the-token-cache-using-msalnet"></a>Získání tokenu z mezipaměti tokenů pomocí MSAL.NET
 
-Při získání přístupového tokenu pomocí knihovny Microsoft Authentication Library pro .NET (MSAL.NET) token, který je do mezipaměti. Pokud aplikace potřebuje token, byste nejprve zavolat `AcquireTokenSilent` metodu k ověření, pokud je přijatelné token v mezipaměti. V mnoha případech je možné získat nový token s více obory na základě tokenu v mezipaměti. Je také možné aktualizovat token, pokud je to stále blízko vypršení platnosti (jako mezipaměť tokenu obsahuje také obnovovací token).
+Při získání přístupového tokenu pomocí knihovny Microsoft Authentication Library pro .NET (MSAL.NET) se token uloží do mezipaměti. Když aplikace potřebuje token, měla by nejdřív zavolat `AcquireTokenSilent` metodu pro ověření, jestli je přijatelný token v mezipaměti. V mnoha případech je možné získat další token s více rozsahy na základě tokenu v mezipaměti. Je také možné aktualizovat token, když se blíží vypršení platnosti (protože mezipaměť tokenů obsahuje také obnovovací token).
 
-Doporučený model je zavolat `AcquireTokenSilent` metoda první.  Pokud `AcquireTokenSilent` selže, pak získání tokenu pomocí jiných metod.
+Doporučeným vzorem je nejprve zavolat `AcquireTokenSilent` metodu.  Pokud `AcquireTokenSilent` dojde k chybě, Získejte token pomocí jiných metod.
 
-V následujícím příkladu se aplikace pokusí nejprve k získání tokenu z mezipaměti tokenů.  Pokud `MsalUiRequiredException` je vyvolána výjimka, aplikace získá token interaktivně. 
+V následujícím příkladu se aplikace poprvé pokusí získat token z mezipaměti tokenu.  Pokud je vyvolána výjimka, aplikace získá token interaktivně. `MsalUiRequiredException` 
 
 ```csharp
 AuthenticationResult result = null;
@@ -43,8 +43,8 @@ try
 }
 catch (MsalUiRequiredException ex)
 {
- // A MsalUiRequiredException happened on AcquireTokenSilentAsync.
- // This indicates you need to call AcquireTokenAsync to acquire a token
+ // A MsalUiRequiredException happened on AcquireTokenSilent.
+ // This indicates you need to call AcquireTokenInteractive to acquire a token
  System.Diagnostics.Debug.WriteLine($"MsalUiRequiredException: {ex.Message}");
 
  try

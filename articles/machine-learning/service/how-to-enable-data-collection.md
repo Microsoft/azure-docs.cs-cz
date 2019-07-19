@@ -1,5 +1,5 @@
 ---
-title: Shromažďovat data o vašich modelů v produkčním prostředí
+title: Shromažďování dat v produkčních modelech
 titleSuffix: Azure Machine Learning service
 description: Zjistěte, jak shromažďovat data o vstupním modelu Azure Machine Learning v Azure Blob storage.
 services: machine-learning
@@ -9,21 +9,21 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: marthalc
 author: marthalc
-ms.date: 12/03/2018
+ms.date: 07/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: f596fb3a066017f0236de5b79586891dd21efb11
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 81ffe8618e07f2e49e4439ea57e254e5d37974f9
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443981"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227947"
 ---
 # <a name="collect-data-for-models-in-production"></a>Shromažďování dat modelů v produkčním prostředí
 
 V tomto článku se dozvíte, jak ke shromažďování dat vstupním modelu ze služby Azure Machine Learning, které jste nasadili do služby Azure Kubernetes Cluster (AKS) do služby Azure Blob storage. 
 
 Po povolení tohoto data o vám pomůže:
-* [Sledování dat drifts](how-to-monitor-data-drift.md) produkčních dat v modelu
+* [Monitorování posunu dat](how-to-monitor-data-drift.md) jako provozních dat do modelu
 
 * Lepší rozhodování na tom, kdy přeučování nebo optimalizace modelu
 
@@ -50,7 +50,7 @@ Cesta k výstupní data v objektu blob odpovídá této syntaxi:
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Pokud nemáte předplatné Azure, vytvořte si bezplatný účet, před zahájením. Zkuste [bezplatné nebo placené verzi aplikace služby Azure Machine Learning](https://aka.ms/AMLFree) ještě dnes.
+- Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze služby Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
 - Azure service pracovního prostoru Machine Learning, místní adresář obsahující skripty a sady SDK Azure Machine Learning pro Python nainstalován. Další informace o získání těchto nezbytných podmínkách používání [jak nakonfigurovat prostředí pro vývoj](how-to-configure-environment.md) dokumentu.
 
@@ -81,7 +81,7 @@ Ho Pokud chcete povolit, je potřeba:
     prediction_dc = ModelDataCollector("best_model", identifier="predictions", feature_names=["prediction1", "prediction2"])
     ```
 
-    *ID korelace* je volitelný parametr, není potřeba ho nastavit, pokud váš model nevyžaduje. S ID korelace v místě vám pomůže snadněji mapování s jinými daty. (Příklady: LoanNumber CustomerId, atd.)
+    *ID korelace* je volitelný parametr, není potřeba ho nastavit, pokud váš model nevyžaduje. S ID korelace v místě vám pomůže snadněji mapování s jinými daty. (Příklady zahrnují: LoanNumber, KódZákazníka atd.)
     
     *Identifikátor* je později použit k sestavení strukturu složek v objektu Blob služby, můžete se používá k rozdělení data "neupravené" a "zpracované".
 

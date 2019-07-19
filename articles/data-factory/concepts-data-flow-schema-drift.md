@@ -1,75 +1,80 @@
 ---
-title: Azure Data Factory mapování odchylek schématu toku dat
-description: Vytváření odolných toky dat ve službě Azure Data Factory pomocí schématu odchylek
+title: Azure Data Factory – posun schématu toku dat
+description: Vytváření odolných toků dat v Azure Data Factory s využitím posunu schématu
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: 6fd610afc0a21a97a8544b9e4b173f207f5fb50f
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 562daa024985a546ffb49c4da11eace3bc81a659
+ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722879"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68314810"
 ---
-# <a name="mapping-data-flow-schema-drift"></a>Mapování datového toku schématu odchylek
+# <a name="mapping-data-flow-schema-drift"></a>Mapování posunu schématu toku dat
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Koncept odchylek schématu je případ, kde vaše zdroje často mění metadat. Pole, sloupce, typy, atd. lze přidat, odebrat nebo změnit v reálném čase. Bez zpracování pro schéma odchylek toku dat stane citlivé na změny změny nadřazeného datového zdroje. Při změně příchozí sloupců a polí, typické vzorech ETL se nezdaří, protože mají tendenci svázány s těmito názvy zdroje.
+Koncept posunu schématu je případ, kdy zdroje často mění metadata. Pole, sloupce, typy atd. lze v průběhu práce přidat, odebrat nebo změnit. Bez manipulace se započetím schématu se váš tok dat bude zranitelný vůči změnám v nadřazených zdrojích dat. Když se změní příchozí sloupce a pole, typické vzory ETL se nezdaří, protože by mohly být vázané na tyto názvy zdrojů.
 
-Pokud chcete chránit proti schématu odchylek, je důležité mít zařízení v nástroji toku dat, aby jako datových inženýrů na:
+Aby bylo možné chránit proti posunu schématu, je důležité mít zařízení v nástroji pro tok dat, který vám jako datovou inženýry umožní:
 
-* Definovat zdroje, které mají proměnlivé pole názvy, typy dat, hodnoty a velikosti
-* Definování parametrů transformace, které budou fungovat s modely dat namísto pevně zakódované pole a hodnoty
-* Definování výrazů, které porozumění vzorcům tak, aby odpovídaly příchozí pole namísto použití pole s názvem
+* Definování zdrojů, které mají proměnlivé názvy polí, datové typy, hodnoty a velikosti
+* Definování parametrů transformace, které mohou pracovat se vzorci dat místo pevně zakódovaných polí a hodnot
+* Definujte výrazy, které porozumět vzorům, aby se shodovaly se vstupními poli namísto použití pojmenovaných polí
 
-## <a name="how-to-implement-schema-drift"></a>Jak implementovat schématu odchylek
+## <a name="how-to-implement-schema-drift-in-adf-mapping-data-flows"></a>Postup implementace posunu schématu v Tokůch dat mapování ADF
+ADF nativně podporuje flexibilní schémata, která se mění z provádění na spouštění, takže můžete vytvořit obecnou logiku transformace dat bez nutnosti překompilovat toky dat.
 
-* Zvolte možnost "Povolit odchylek schématu" ve vaší zdrojové transformace
+* Volba "povolení posunu schématu" ve zdrojové transformaci
 
 <img src="media/data-flow/schemadrift001.png" width="400">
 
-* Když vyberete tuto možnost, všechny příchozí pole se načtou ze zdroje na každého spuštění toku dat a bude celý tok má předat do jímky.
+* Pokud jste vybrali tuto možnost, všechna příchozí pole budou načtena ze zdroje při každém spuštění toku dat a budou předána celým tokem do jímky.
 
-* Nezapomeňte použít "Auto-Map" tak, aby všechna nová pole získat výběru nahoru a dostali se do vaší cílové mapovat všechna nová pole v transformaci jímky.
+* Všechny nově zjištěné sloupce (sloupce ve sloupci) budou ve výchozím nastavení doručeny jako datový typ String. Ve zdrojové transformaci vyberte možnost "odvoditelné typy sloupců", pokud chcete, aby ADF automaticky odvodit datové typy ze zdroje.
+
+* Nezapomeňte použít "automatické mapování" pro mapování všech nových polí v transformaci jímky, aby se všechna nová pole vybrala a vyložila ve vašem cíli a v jímky také nastavila možnost "povolení posunu schématu".
 
 <img src="media/data-flow/automap.png" width="400">
 
-* Všechno, co bude fungovat při zavedení nových polí v tomto scénáři s jednoduchou zdroj -> jímky (neboli zkopírujte) mapování.
+* Vše bude fungovat, když jsou v tomto scénáři zavedena nová pole s jednoduchým mapováním > jímka na zdrojovém kódu.
 
-* Přidat transformace pracovního postupu, který zpracovává odchylek schématu, vám pomůže porovnávání vzorů odpovídají sloupcům podle názvu, typ a hodnotu.
+* Chcete-li do tohoto pracovního postupu přidat transformace, které zpracovávají posun schématu, můžete použít porovnávání vzorů pro porovnávání sloupců podle názvu, typu a hodnoty.
 
-* Pokud chcete k vytvoření transformace, která analyzuje "Odchylek schéma", klikněte na "Přidat sloupec vzor" v odvozené sloupce nebo agregace transformace.
+* Pokud chcete vytvořit transformaci, která pochopení "posunu schématu", klikněte na tlačítko "přidat vzor sloupce" v odvozeném sloupci nebo v agregační transformaci.
 
 <img src="media/data-flow/columnpattern.png" width="400">
 
 > [!NOTE]
-> Potřebujete provést rozhodnutí o architektuře ve svém toku dat tak, aby přijímal odchylek schématu v rámci toku. Když toto provedete, můžete chránit proti změny schématu ze zdroje. Časná vazba sloupce a typy však budou ztraceny v celém datový tok. Azure Data Factory považuje za schématu odchylek toky toky pozdní vazbu, takže při sestavování transformace názvy sloupců, nebudou k dispozici v zobrazení schématu během celého toku.
+> V toku dat musíte učinit rozhodnutí o architektuře, abyste mohli přijímat v celém toku posun schématu. Když to uděláte, můžete se chránit proti změnám schématu ze zdrojů. Ztratíte ale počáteční vazbu sloupců a typů v rámci toku dat. Azure Data Factory považuje v průběhu toku k dispozici špičky schématu jako proudy s pozdní vazbou, takže při sestavování transformací nebudou mít názvy sloupců k dispozici v zobrazeních schématu v průběhu toku.
 
 <img src="media/data-flow/taxidrift1.png" width="400">
 
-V ukázce ukázka taxislužby toku dat je ukázka odchylek schématu v dolní části toku dat se zdrojem TripFare. V agregované transformaci Všimněte si, že používáme návrhu "sloupce vzor" pro agregaci pole. Namísto názvů konkrétní sloupce, nebo pokud chcete najít sloupce podle pozice, předpokládáme, že data můžete změnit a nemusí ve stejném pořadí mezi spuštění.
+V toku ukázkových dat ukázky taxislužby se v dolním toku dat se zdrojem TripFare posune vzorové schéma. V agregační transformaci si všimněte, že pro pole agregace používáme návrh "vzor sloupců". Místo pro pojmenování určitých sloupců nebo hledání sloupců podle pozice předpokládáme, že se data můžou změnit a nemusí se zobrazovat ve stejném pořadí mezi běhy.
 
-V tomto příkladu schématu odchylek toku dat objekt pro vytváření dat Azure zpracování jsme vytvořili a agregace, který kontroluje pro sloupce typu double, vědomím, že data doména obsahuje ceny pro každou cestu. Výpočtu agregační matematické jsme pak můžete provádět přes všechny dvojitá pole ve zdroji, bez ohledu na to, kde jsou sloupci a bez ohledu na to, názvy sloupce.
+V tomto příkladu Azure Data Factory zpracování posunu schématu toku dat jsme sestavili a agregaci, která vyhledává sloupce typu "Double" s vědomím, že datová doména obsahuje ceny za každou cestu. Pak můžeme provádět agregační matematický výpočet ve všech dvojitých polích ve zdroji bez ohledu na to, kde sloupec je, a bez ohledu na pojmenování sloupce.
 
-Syntaxe toku dat objekt pro vytváření dat Azure používá k reprezentaci jednotlivých odpovídající sloupec z odpovídající vzor $$. Můžete také hledat shody na použití funkcí regulárních výrazů a složité řetězec hledání názvy sloupců. V takovém případě budeme vytvářet nový název pole agregované podle jednotlivých shod 'double' typu sloupce a přidat text ```_total``` všechny odpovídající názvy: 
+Syntaxe toku dat Azure Data Factory používá $ $ k vyjádření každého odpovídajícího sloupce z odpovídajícího vzoru. Můžete se také shodovat s názvy sloupců pomocí funkcí vyhledávání složitých řetězců a regulárních výrazů. V tomto případě vytvoříme nový agregovaný název pole založený na každé shodě typu "Double" (sloupec) a připojíte text ```_total``` ke každému z těchto odpovídajících názvů: 
 
 ```concat($$, '_total')```
 
-Pak jsme bude zaokrouhlení a součet hodnot pro každou z těchto odpovídající sloupce:
+Potom budeme zaokrouhlovat a sčítat hodnoty pro každý z těchto odpovídajících sloupců:
 
 ```round(sum ($$))```
 
-To všechno s ukázkou toku dat objekt pro vytváření dat Azure "Taxislužby ukázku" můžete otestovat. Přepněte na relaci ladění pomocí ladění přepnout v horní části návrhové plochy toku dat, takže můžete interaktivně zobrazit výsledky:
+Tuto možnost můžete otestovat pomocí Azure Data Factory ukázka toku dat "taxislužby demo". Přepněte se na relaci ladění pomocí přepínače ladění v horní části návrhové plochy toku dat, abyste viděli výsledky interaktivně:
 
 <img src="media/data-flow/taxidrift2.png" width="800">
 
-## <a name="access-new-columns-downstream"></a>Přístup k nové sloupce směru server-klient
+## <a name="access-new-columns-downstream"></a>Přístup k novým sloupcům pro příjem dat
+Když generujete nové sloupce se vzorci sloupců, budete mít k těmto novým sloupcům později přístup v rámci transformace toku dat pomocí těchto metod:
 
-Při generování nového sloupce s sloupec vzory dostanete později v transformace toku dat pomocí funkce výraz "byName" tyto nové sloupce.
+* Pomocí příkazu "byPosition" Identifikujte nové sloupce podle čísla pozice.
+* Pomocí příkazu "byName" Identifikujte nové sloupce podle jejich názvu.
+* V vzorcích sloupců použijte "název", "Stream", "Position" nebo "Type" nebo libovolnou kombinaci těchto hodnot, aby odpovídaly novým sloupcům.
 
 ## <a name="next-steps"></a>Další postup
-
-V [jazyk výrazů tok dat](data-flow-expression-functions.md) najdete další zařízení pro sloupec vzory a schéma odchylek včetně "byName" a "byPosition".
+V [jazyce výrazu toku dat](data-flow-expression-functions.md) najdete další možnosti pro vzorce sloupců a posun schématu, včetně "byName" a "byPosition".

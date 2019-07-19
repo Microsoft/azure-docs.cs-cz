@@ -1,7 +1,7 @@
 ---
-title: Vytvoření webové aplikace Java na Windows – služby Azure App Service
-description: V tomto rychlém startu nasadíte svou první Java Hello World ve službě Azure App Service na Windows během několika minut.
-keywords: Azure, služby app service, web Apps, windows, java, maven, rychlý start
+title: Vytvoření webové aplikace v jazyce Java ve Windows – Azure App Service
+description: V tomto rychlém startu nasadíte první Hello World Java v Azure App Service v systému Windows během několika minut.
+keywords: Azure, App Service, Web App, Windows, Java, Maven, rychlý Start
 services: app-service\web
 documentationcenter: ''
 author: msangapu-msft
@@ -16,23 +16,23 @@ ms.topic: quickstart
 ms.date: 05/29/2019
 ms.author: jafreebe
 ms.custom: mvc
-ms.openlocfilehash: 0ca50bae0748570932c7a4cc3bb10cde17c940f5
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 1e25f65cf7ec52b4a58386843a1d2f5796c66e65
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67617712"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297362"
 ---
-# <a name="quickstart-create-a-java-app-in-app-service"></a>Rychlý start: Vytvoření aplikace v Javě ve službě App Service
+# <a name="quickstart-create-a-java-app-in-app-service"></a>Rychlý start: Vytvoření aplikace Java v App Service
 
 > [!NOTE]
-> Tento článek nasadí aplikaci do služby App Service ve Windows. Nasazení do služby App Service v _Linux_, naleznete v tématu [Java vytvoření webové aplikace v Linuxu](./containers/quickstart-java.md).
+> Tento článek nasadí aplikaci do služby App Service ve Windows. Pokud chcete nasadit nástroj na App Service v systému _Linux_, přečtěte si téma [Vytvoření webové aplikace Java v systému Linux](./containers/quickstart-java.md).
 >
 
-[Azure App Service ](overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů.  Tento rychlý start ukazuje, jak používat [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) s [modul plug-in Maven pro Azure App Service](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) k nasazení souboru webového archivu (WAR) Java.
+[Azure App Service ](overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů.  V tomto rychlém startu se dozvíte, jak používat [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) s [modulem plug-in Maven pro Azure App Service](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) k nasazení souboru webového archivu Java (War).
 
 > [!NOTE]
-> Je možné provést totéž používat oblíbená prostředí IDE, jako je IntelliJ a Eclipse. Podívejte se na naše dokumenty podobně jako na [sady Azure Toolkit pro IntelliJ Quickstart](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app) nebo [sady Azure Toolkit pro Eclipse Quickstart](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app).
+> Stejné věci je taky možné udělat pomocí oblíbených prostředí, jako je IntelliJ a zatmění. Podívejte se na naše podobné dokumenty při [Azure Toolkit for IntelliJ rychlý Start](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app) nebo v rychlém startu [Azure Toolkit for Eclipse](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app).
 >
 ![Ukázková aplikace spuštěná ve službě Azure](./media/app-service-web-get-started-java/java-hello-world-in-browser.png)
 
@@ -42,7 +42,7 @@ ms.locfileid: "67617712"
 
 ## <a name="create-a-java-app"></a>Vytvoření aplikace v Javě
 
-Ve službě Cloud Shell výzvu k vytvoření nové aplikace s názvem spustíte následující příkaz Mavenu `helloworld`:
+Spusťte následující příkaz Maven na příkazovém řádku Cloud Shell k vytvoření nové aplikace s názvem `helloworld`:
 
 ```bash
 mvn archetype:generate -DgroupId=example.demo -DartifactId=helloworld -DarchetypeArtifactId=maven-archetype-webapp
@@ -66,7 +66,7 @@ Pak do elementu `<build>` souboru `pom.xml` přidejte následující definici mo
     <plugin>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>azure-webapp-maven-plugin</artifactId>
-        <version>1.6.0</version>
+        <version>1.7.0</version>
         <configuration>
             <!-- Specify v2 schema -->
             <schemaVersion>v2</schemaVersion>
@@ -104,10 +104,10 @@ V konfiguraci modulu plug-in aktualizujte následující zástupné symboly:
 
 | Zástupný symbol | Popis |
 | ----------- | ----------- |
-| `SUBSCRIPTION_ID` | Jedinečné ID předplatného, kterou chcete nasadit aplikaci. ID výchozího předplatného najdete na službě Cloud Shell nebo rozhraní příkazového řádku pomocí `az account show` příkazu. Pro všechna dostupná předplatná, použijte `az account list` příkazu.|
-| `RESOURCEGROUP_NAME` | Název pro novou skupinu prostředků, ve kterém chcete vytvořit aplikaci. Když umístíte všechny prostředky pro aplikaci do skupiny, můžete je spravovat společně. Odstraněním příslušné skupiny prostředků by se například odstranily všechny prostředky, které jsou přidružené k dané aplikaci. Aktualizujte tuto hodnotu jedinečný nový název skupiny prostředků, například *myResourceGroup*. Tento název skupiny prostředků použijete v pozdější fázi k vyčištění všech prostředků Azure. |
-| `WEBAPP_NAME` | Název aplikace bude součástí názvu hostitele pro aplikace nasazené do Azure (WEBAPP_NAME.azurewebsites.net). Aktualizujte tuto hodnotu jedinečný název pro novou aplikaci služby App Service, který bude hostovat aplikaci v Javě, například *contoso*. |
-| `REGION` | Určitá oblast Azure, ve kterém je aplikace hostovaná, například *westus2*. Seznam oblastí můžete získat z Cloud Shellu nebo rozhraní příkazového řádku pomocí příkazu `az account list-locations`. |
+| `SUBSCRIPTION_ID` | Jedinečné ID předplatného, na které chcete aplikaci nasadit. ID výchozího předplatného najdete v Cloud Shell nebo CLI pomocí `az account show` příkazu. Pro všechna dostupná předplatná použijte `az account list` příkaz.|
+| `RESOURCEGROUP_NAME` | Název nové skupiny prostředků, ve které se má vytvořit aplikace Když umístíte všechny prostředky pro aplikaci do skupiny, můžete je spravovat společně. Odstraněním příslušné skupiny prostředků by se například odstranily všechny prostředky, které jsou přidružené k dané aplikaci. Aktualizujte tuto hodnotu jedinečným názvem nové skupiny prostředků, například *myResourceGroup*. Tento název skupiny prostředků použijete v pozdější fázi k vyčištění všech prostředků Azure. |
+| `WEBAPP_NAME` | Název aplikace bude součástí názvu hostitele aplikace při nasazení do Azure (WEBAPP_NAME. azurewebsites. NET). Aktualizujte tuto hodnotu jedinečným názvem pro novou aplikaci App Service, která bude hostovat aplikaci Java, třeba *Contoso*. |
+| `REGION` | Oblast Azure, ve které je aplikace hostovaná, například *westus2*. Seznam oblastí můžete získat z Cloud Shellu nebo rozhraní příkazového řádku pomocí příkazu `az account list-locations`. |
 
 ## <a name="deploy-the-app"></a>Nasazení aplikace
 
@@ -121,14 +121,14 @@ Po dokončení nasazení přejděte ve webovém prohlížeči pomocí následuj�
 
 ![Ukázková aplikace spuštěná ve službě Azure](./media/app-service-web-get-started-java/java-hello-world-in-browser.png)
 
-**Blahopřejeme!** Nasadili jste svou první aplikaci v Javě do služby App Service ve Windows.
+**Blahopřejeme!** Nasadili jste svoji první aplikaci Java, abyste App Service ve Windows.
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Azure pro prostředky vývojářům v Javě](/java/azure/)
+> [Azure pro vývojáře v jazyce Java – prostředky](/java/azure/)
 
 > [!div class="nextstepaction"]
 > [Mapování vlastní domény](app-service-web-tutorial-custom-domain.md)

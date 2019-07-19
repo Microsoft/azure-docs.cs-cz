@@ -5,23 +5,23 @@ services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 10/29/2018
+ms.date: 07/15/2019
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: ece51892522721f7be3cdcadbb3b79705c9f83e4
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 9845329d30da40243751c00f7c0fa62fdcfe5a0d
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66384093"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67990097"
 ---
 # <a name="start-monitoring-your-website"></a>Zahájení monitorování webu
 
 Azure Monitor Application Insights umožňuje snadné monitorování webu z hlediska dostupnosti, výkonu a využití. Můžete také rychle identifikovat a diagnostikovat chyby ve vaší aplikaci a nečekat na to, až je nahlásí uživatelé. Application Insights nabízí monitorování na straně serveru i možnosti monitorování na straně klienta nebo prohlížeče.
 
-Tento rychlý start vás provede přidáním [projektu open source sadu Application Insights JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS) tomu porozumět prostředí a prohlížeči klientů pro návštěvníky na váš web.
+Tento rychlý Start vás provede přidáním [Open source Application Insights JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS) , který vám umožní pochopit prostředí klienta nebo prohlížeče pro návštěvníky webu.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -41,14 +41,16 @@ Application Insights může shromažďovat telemetrická data ze všech aplikac�
 
 1. Vyberte **Vytvořit prostředek** > **Nástroje pro správu** > **Application Insights**.
 
+   > [!NOTE]
+   >Pokud vytvoříte prostředek Application Insightse poprvé, můžete se dozvědět víc v článku [vytvoření prostředku Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) .
+
    Zobrazí se konfigurační pole. K vyplnění vstupních polí použijte následující tabulku.
 
-    | Nastavení        | Hodnota           | Popis  |
+    | Nastavení        | Value           | Popis  |
    | ------------- |:-------------|:-----|
    | **Název**      | Globálně jedinečná hodnota | Název identifikující aplikaci, kterou monitorujete |
-   | **Typ aplikace** | Obecná aplikace | Typ aplikace, kterou monitorujete |
    | **Skupina prostředků**     | myResourceGroup      | Název pro novou skupinu prostředků, která bude hostovat data App Insights |
-   | **Umístění** | USA – východ | Vyberte umístění ve vaší blízkosti nebo v blízkosti místa, kde se vaše aplikace hostuje. |
+   | **Location** | East US | Vyberte umístění ve vaší blízkosti nebo v blízkosti místa, kde se vaše aplikace hostuje. |
 
 2. Klikněte na možnost **Vytvořit**.
 
@@ -138,7 +140,7 @@ Pokud chcete pokračovat v práci s dalšími rychlými starty nebo kurzy, nevy�
 1. Na webu Azure Portal v nabídce vlevo klikněte na **Skupiny prostředků** a pak na **myResourceGroup**.
 2. Na stránce skupiny prostředků klikněte na **Odstranit**, do textového pole zadejte **myResourceGroup** a pak klikněte na **Odstranit**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Vyhledání a diagnostika potíží s výkonem](https://docs.microsoft.com/azure/application-insights/app-insights-analytics)

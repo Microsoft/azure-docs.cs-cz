@@ -1,118 +1,118 @@
 ---
-title: Migrace úloh Hive ke službě Azure HDInsight 3.6 do HDInsight 4.0
-description: Zjistěte, jak migrovat úlohy Apache Hive v HDInsight 3.6 do HDInsight 4.0.
+title: Migrace úloh podregistru Azure HDInsight 3,6 do HDInsight 4,0
+description: Naučte se migrovat Apache Hive úlohy ve službě HDInsight 3,6 do HDInsight 4,0.
 ms.service: hdinsight
 author: msft-tacox
 ms.author: tacox
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.openlocfilehash: c1809885c930c4d22dff3f30d6e874aacf0b540e
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: b9bf3b41bcd0a79027c5dd9a4f3df979fb0bd9f0
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672557"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68250154"
 ---
-# <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Migrace úloh Hive ke službě Azure HDInsight 3.6 do HDInsight 4.0
+# <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Migrace úloh podregistru Azure HDInsight 3,6 do HDInsight 4,0
 
-Tento dokument ukazuje, jak migrovat úlohy Apache Hive a LLAP na HDInsight 3.6 do HDInsight 4.0. HDInsight 4.0 poskytuje novější funkce Hive a LLAP, jako je materializované zobrazení a ukládání do mezipaměti výsledek dotazu. Při migraci vašich úloh do HDInsight 4.0, můžete použít mnoho novější funkce Hive 3, které nejsou k dispozici na HDInsight 3.6.
+V tomto dokumentu se dozvíte, jak migrovat úlohy Apache Hive a LLAP v HDInsight 3,6 do HDInsight 4,0. HDInsight 4,0 poskytuje novější podregistr a LLAP funkce, jako například materializovaná zobrazení a ukládání výsledků dotazu do mezipaměti. Při migraci úloh do HDInsight 4,0 můžete použít spoustu nových funkcí podregistru 3, které nejsou k dispozici ve službě HDInsight 3,6.
 
 Tento článek se zabývá následujícími tématy:
 
-* Migrace metadat Hive do HDInsight 4.0
-* Bezpečné migraci kyseliny a jiných kyseliny tabulky
-* Zachování zabezpečení zásad Hivu ve verzích HDInsight
-* Provádění dotazů a ladění z HDInsight 3.6 do HDInsight 4.0
+* Migrace metadat podregistru do HDInsight 4,0
+* Bezpečná migrace tabulek kyselin a non-KYSELých
+* Zachování zásad zabezpečení podregistru napříč verzemi HDInsight
+* Provádění dotazů a ladění z HDInsight 3,6 na HDInsight 4,0
 
-## <a name="migrate-apache-hive-metadata-to-hdinsight-40"></a>Migrace Apache Hive metadata do HDInsight 4.0
+## <a name="migrate-apache-hive-metadata-to-hdinsight-40"></a>Migrace metadat Apache Hive do HDInsight 4,0
 
-Jednou z výhod Hive je možnost exportu metadat k externí databázi (označované jako Hive Metastore). **Hive Metastore** zodpovídá za ukládání statistiky tabulky, včetně umístění úložiště tabulky, názvy sloupců a informace o tabulce indexu. Schéma databáze pro metastore se liší mezi verzemi Hive. Následujícím postupem upgradujte Metastore Hive HDInsight 3.6, aby byl kompatibilní s HDInsight 4.0.
+Jednou z výhod podregistru je schopnost exportovat metadata do externí databáze (označované jako metastore podregistru). **Podregistr metastore** zodpovídá za ukládání statistik tabulky, včetně umístění úložiště tabulky, názvů sloupců a informací o indexu tabulky. Schéma databáze metastore se mezi verzemi podregistru liší. Proveďte následující postup k upgradu metastore podregistru HDInsight 3,6 tak, aby byl kompatibilní se službou HDInsight 4,0.
 
-1. Vytvořte novou kopii externí metaúložiště. HDInsight 3.6 a HDInsight 4.0 vyžadují různé metastore schémata a nemůžete sdílet jeden metastore. Zobrazit [použití externích úložišť metadat v Azure HDInsight](../hdinsight-use-external-metadata-stores.md) Další informace o připojení ke clusteru služby HDInsight externí metaúložiště. 
-2. Spusťte akci skriptu pro váš cluster HDI 3.6, s "Hlavní uzly" jako typ uzlu pro provádění. Vložte následující identifikátor URI do textového pole označená "URI skriptu Bash": https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/launch-schema-upgrade.sh. Do textového pole označená "Argumenty", zadejte servername, databáze, uživatelské jméno a heslo **zkopírovat** Hive metastore, oddělené mezerami. Nezahrnují ". database.windows.net" při zadávání servername.
+1. Vytvořte novou kopii vašich externích metastore. HDInsight 3,6 a HDInsight 4,0 vyžadují různá schémata metastore a nemůžou sdílet jeden metastore. Další informace o připojení externích metastore ke clusteru HDInsight najdete v tématu [použití externích úložišť metadat ve službě Azure HDInsight](../hdinsight-use-external-metadata-stores.md) . 
+2. Spusťte akci skriptu pro cluster HDI 3,6 s "hlavními uzly" jako typ uzlu pro provedení. Vložte následující identifikátor URI do textového pole označeného "bash skriptu URI" https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/launch-schema-upgrade.sh:. Do textového pole označeného "arguments" zadejte servername, databázi, uživatelské jméno a heslo pro **zkopírované** metastore Hive, oddělené mezerami. Při zadávání servername nezahrnujte ". database.windows.net".
 
 > [!Warning]
-> Upgrade, který převede metadata schématu HDInsight 3.6 na schéma HDInsight 4.0, je nevratná.
+> Upgrade, který převede schéma metadat HDInsight 3,6 na schéma HDInsight 4,0, nejde vrátit zpět.
 
-## <a name="migrate-hive-tables-to-hdinsight-40"></a>Migrace na HDInsight 4.0 tabulek Hive
+## <a name="migrate-hive-tables-to-hdinsight-40"></a>Migrace tabulek podregistru do HDInsight 4,0
 
-Po dokončení předchozí sadu kroků migrace Hive Metastore HDInsight 4.0, tabulek a databází zaznamenávají do metastore budou viditelné z v rámci clusteru HDInsight 4.0 spuštěním `show tables` nebo `show databases` z v rámci clusteru . Zobrazit [provádění dotazu napříč verzemi HDInsight](#query-execution-across-hdinsight-versions) informace o provádění dotazů v clusterech HDInsight 4.0.
+Po dokončení předchozí sady kroků pro migraci metastore do prostředí HDInsight 4,0 budou tabulky a databáze zaznamenané v metastore viditelné z clusteru HDInsight 4,0 spuštěním `show tables` nebo `show databases` z clusteru. . Informace o spuštění dotazů v clusterech HDInsight 4,0 najdete v tématu [provádění dotazů napříč verzemi HDInsight](#query-execution-across-hdinsight-versions) .
 
-Skutečná data z tabulek, ale není dostupná, dokud clusteru má přístup k účtům úložiště nezbytné. Pokud chcete mít jistotu, že váš cluster HDInsight 4.0, můžete přístup ke stejným datům jako starý cluster HDInsight 3.6, proveďte následující kroky:
+Skutečná data z tabulek však nejsou přístupná, dokud cluster nemá přístup k potřebným účtům úložiště. Abyste se ujistili, že cluster HDInsight 4,0 má přístup ke stejným datům jako starý cluster HDInsight 3,6, proveďte následující kroky:
 
-1. Určení účtu úložiště Azure, tabulky nebo databáze pomocí popisují ve formátu.
-2. Pokud váš cluster HDInsight 4.0 je již spuštěna, připojte ke clusteru prostřednictvím Ambari účtu úložiště Azure. Pokud jste ještě nevytvořili clusteru HDInsight 4.0, ujistěte se, že jako primární nebo sekundární clusteru účet úložiště se zadal účet úložiště Azure. Další informace o přidání účtů úložiště do clusterů HDInsight, naleznete v tématu [přidání dalších účtů úložiště pro HDInsight](../hdinsight-hadoop-add-storage.md).
+1. Určete účet úložiště Azure pro tabulku nebo databázi pomocí popisně formátovaného.
+2. Pokud je už cluster HDInsight 4,0 spuštěný, připojte účet Azure Storage ke clusteru přes Ambari. Pokud jste ještě nevytvořili cluster HDInsight 4,0, ujistěte se, že je účet úložiště Azure zadaný jako primární nebo sekundární účet úložiště clusteru. Další informace o přidávání účtů úložiště do clusterů HDInsight najdete v tématu [Přidání dalších účtů úložiště do služby HDInsight](../hdinsight-hadoop-add-storage.md).
 
 > [!Note]
-> Tabulky jsou v HDInsight 3.6 a HDInsight 4.0 zpracovávat odděleně. Z tohoto důvodu nelze sdílet stejné tabulky pro clustery s různými verzemi. Pokud chcete použít HDInsight 3.6 ve stejnou dobu jako HDInsight 4.0, musí mít samostatnou kopii dat pro každou verzi.
+> Tabulky jsou v HDInsight 3,6 a HDInsight 4,0 zpracovávané jinak. Z tohoto důvodu nemůžete sdílet stejné tabulky pro clustery s různými verzemi. Pokud chcete použít HDInsight 3,6 ve stejnou dobu jako HDInsight 4,0, musíte mít samostatné kopie dat pro každou verzi.
 
-Vaší úlohy Hive může obsahovat kombinaci kyseliny a jiných kyseliny tabulky. Jedním klíčovým rozdílem mezi Hive v HDInsight 3.6 (Hive 2) a Hive v HDInsight 4.0 (Hive 3) je kyseliny dodržování předpisů pro tabulky. V HDInsight 3.6 povolení kyseliny předpisů Hive vyžaduje další konfiguraci, ale v HDInsight 4.0 tabulky jsou kompatibilní s kyseliny ve výchozím nastavení. Před migrace je ke spuštění hlavní komprimace tabulce v modelu ACID 3.6 clusteru musí být jedinou akcí. Od zobrazení Hive nebo Beeline spusťte následující dotaz:
+Zatížení vašeho podregistru může zahrnovat kombinaci KYSELých a nekyselých tabulek. Jeden klíčový rozdíl mezi podregistrem v HDInsight 3,6 (podregistr 2) a podregistr v HDInsight 4,0 (podregistr 3) je dodržování předpisů pro tabulky v KYSELINě. Ve službě HDInsight 3,6, povolení dodržování předpisů v podregistru vyžaduje další konfiguraci, ale ve výchozím nastavení jsou v tabulkách HDInsight 4,0 kompatibilní s KYSELINou. Jediná akce nutná před migrací je spuštění hlavní komprimace proti tabulce kyselin v clusteru 3,6. V zobrazení podregistru nebo v Beeline spusťte následující dotaz:
 
 ```bash
 alter table myacidtable compact 'major';
 ```
 
-Tato komprimace totiž HDInsight 3.6 a HDInsight 4.0 kyseliny tabulky porozumět rozdílům v modelu ACID odlišně. Komprimace vynucuje čisté kontejner, který záruky konzistence. Oddíl 4 [Hive dokumentace k migraci](https://docs.hortonworks.com/HDPDocuments/Ambari-2.7.3.0/bk_ambari-upgrade-major/content/prepare_hive_for_upgrade.html) obsahuje pokyny pro hromadné komprimační tabulky kyseliny HDInsight 3.6.
+Tato komprimace je povinná, protože tabulky v HDInsight 3,6 a HDInsight 4,0 porozumět rozdílům v KYSELosti odlišně. Při komprimaci se vynutila čistá břidlica, která zaručuje konzistenci. Část 4 [dokumentace k migraci podregistru](https://docs.hortonworks.com/HDPDocuments/Ambari-2.7.3.0/bk_ambari-upgrade-major/content/prepare_hive_for_upgrade.html) obsahuje pokyny pro hromadné komprimaci tabulek pro kyselinu HDInsight 3,6.
 
-Po dokončení kroků migrace a komprimace metastore můžete migrovat skutečný datový sklad. Po dokončení migrace sklad Hive, datový sklad HDInsight 4.0 bude mít následující vlastnosti:
+Po dokončení kroků migrace a komprimace metastore můžete aktuální datový sklad migrovat. Po dokončení migrace datového skladu pro podregistr bude mít datový sklad HDInsight 4,0 následující vlastnosti:
 
-* Externí tabulky v HDInsight 3.6 bude externích tabulek v HDInsight 4.0
-* Non transakční spravované tabulek v HDInsight 3.6 bude externích tabulek v HDInsight 4.0
-* Transakční spravované tabulek v HDInsight 3.6 bude spravované tabulek v HDInsight 4.0
+* Externí tabulky v HDInsight 3,6 budou externí tabulky ve službě HDInsight 4,0.
+* Netransakční spravované tabulky v HDInsight 3,6 budou externími tabulkami ve službě HDInsight 4,0.
+* Transakční spravované tabulky v HDInsight 3,6 budou spravované tabulky ve službě HDInsight 4,0.
 
-Budete muset upravit vlastnosti služby warehouse před provedením migrace. Například pokud očekáváte, že některé tabulky budou mít přístup třetích stran (jako je cluster HDInsight 3.6), tabulky musí být externím po dokončení migrace. Všechny spravované tabulek v HDInsight 4.0, je transakční. Proto spravované tabulek v HDInsight 4.0 by měl k měla přístup pouze clustery HDInsight 4.0.
+Před provedením migrace možná budete muset upravit vlastnosti datového skladu. Například pokud očekáváte, že k některé tabulce budou mít přistup třetí strana (například cluster HDInsight 3,6), musí být tato tabulka po dokončení migrace externě externí. Ve službě HDInsight 4,0 jsou všechny spravované tabulky transakční. Proto jsou spravované tabulky v HDInsight 4,0 k dispozici pouze clusterům HDInsight 4,0.
 
-Jakmile jsou správně nastaveny vlastnosti vaší tabulky, spusťte nástroj pro migraci sklad Hive z jednoho z hlavním uzlům clusteru pomocí SSH prostředí:
+Po správném nastavení vlastností tabulky spusťte nástroj pro migraci datového skladu z jednoho z hlavních clusteru pomocí prostředí SSH:
 
-1. Připojte se k vaší hlavního uzlu clusteru pomocí SSH. Pokyny najdete v tématu [připojení k HDInsight pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md)
-1. Otevřete prostředí přihlášení jako uživatel Hive spuštěním `sudo su - hive`
-1. Určení verze zásobníku datovou platformou Hortonworks spuštěním `ls /usr/hdp`. Bude se zobrazovat verze řetězec, který byste měli použít následující příkaz.
-1. Spusťte následující příkaz z prostředí. Nahraďte `${{STACK_VERSION}}` s řetězce verze z předchozího kroku:
+1. Připojte se ke clusteru hlavnímu uzlu pomocí SSH. Pokyny najdete v tématu [připojení ke službě HDInsight pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md) .
+1. Spusťte prostředí přihlášení jako uživatel podregistru spuštěním`sudo su - hive`
+1. Pomocí příkazu `ls /usr/hdp`určete verzi zásobníku datové platformy Hortonworks. Tím se zobrazí řetězec verze, který byste měli použít v příkazu Next.
+1. Z prostředí spusťte následující příkaz. Nahraďte `${{STACK_VERSION}}` řetězcem verze z předchozího kroku:
 
 ```bash
 /usr/hdp/${{STACK_VERSION}}/hive/bin/hive --config /etc/hive/conf --service  strictmanagedmigration --hiveconf hive.strict.managed.tables=true  -m automatic  automatic  --modifyManagedTables --oldWarehouseRoot /apps/hive/warehouse
 ```
 
-Po dokončení nástroj pro migraci, bude váš sklad Hive připraven pro HDInsight 4.0. 
+Po dokončení nástroje pro migraci bude váš sklad podregistru připravený pro HDInsight 4,0. 
 
 > [!Important]
-> Spravované tabulek v HDInsight 4.0 (včetně tabulek se migroval z 3.6) by neměl přistupují jiné služby nebo aplikace, včetně clusterů HDInsight 3.6.
+> Spravované tabulky v HDInsight 4,0 (včetně tabulek migrovaných z 3,6) nemají být dostupné pro jiné služby nebo aplikace, včetně clusterů HDInsight 3,6.
 
-## <a name="secure-hive-across-hdinsight-versions"></a>Zabezpečte Hive v HDInsight verze
+## <a name="secure-hive-across-hdinsight-versions"></a>Zabezpečení podregistru napříč verzemi HDInsight
 
-Od verze HDInsight 3.6 HDInsight se integruje s Azure Active Directory pomocí HDInsight Enterprise Security Package (ESP). ESP používá ke správě oprávnění konkrétních prostředků v rámci clusteru pomocí protokolu Kerberos a Apache Ranger. Zásady ranger nasazené proti Hivu ve službě HDInsight 3.6 se dají migrovat do HDInsight 4.0 pomocí následujících kroků:
+Od HDInsight 3,6 se HDInsight integruje s Azure Active Directory pomocí HDInsight Balíček zabezpečení podniku (ESP). ESP používá protokol Kerberos a Apache Ranger ke správě oprávnění konkrétních prostředků v rámci clusteru. Zásady Ranger nasazené pro podregistr v HDInsight 3,6 se dají migrovat do HDInsight 4,0 pomocí následujících kroků:
 
-1. Přejděte na panelu portálu Service Manager Ranger ve vašem clusteru HDInsight 3.6.
-2. Přejděte na zásady s názvem **HIVE** a exportovat zásady do souboru json.
-3. Ujistěte se, že všichni uživatelé uvedené ve formátu json exportované zásad existují v novém clusteru. Pokud uživatel je uvedené ve formátu json zásady, ale neexistuje v novém clusteru, přidejte uživatele do nového clusteru nebo odeberte odkaz ze zásad.
-4. Přejděte **Ranger Service Manageru** panelu ve vašem clusteru HDInsight 4.0.
-5. Přejděte na zásady s názvem **HIVE** a importujte json zásad ranger z kroku 2.
+1. V clusteru HDInsight 3,6 přejděte na panel Service Manager Ranger.
+2. Přejděte do zásady s názvem **podregistr** a exportujte zásadu do souboru JSON.
+3. Zajistěte, aby všichni uživatelé uvedení v seznamu JSON exportovaných zásad existovali v novém clusteru. Pokud se na uživatele odkazuje v zásadách JSON, ale v novém clusteru neexistuje, přidejte ho do nového clusteru nebo odeberte odkaz ze zásady.
+4. V clusteru HDInsight 4,0 přejděte na panel **Service Manager Ranger** .
+5. Přejděte do části s názvem **podregistr** a importujte JSON zásad Ranger z kroku 2.
 
-## <a name="query-execution-across-hdinsight-versions"></a>Provádění dotazu napříč verzemi HDInsight
+## <a name="query-execution-across-hdinsight-versions"></a>Provádění dotazů v rámci verzí HDInsight
 
-Existují dva způsoby, jak spustit a ladit dotazy Hive a LLAP v clusteru služby HDInsight 3.6. HiveCLI poskytuje prostředí příkazového řádku a zobrazení zobrazení/Hive Tez poskytuje pracovní postupy využívající grafické rozhraní.
+Existují dva způsoby, jak spustit a ladit dotazy na podregistry/LLAP v clusteru HDInsight 3,6. HiveCLI poskytuje prostředí příkazového řádku a zobrazení tez/zobrazení podregistru nabízí pracovní postup založený na grafickém uživatelském rozhraní.
 
-V HDInsight 4.0 bylo nahrazeno tématem Beeline HiveCLI. HiveCLI klienta thriftu Hiveserver 1 a Beeline je klient JDBC, který poskytuje přístup k Hiveserver 2. Beeline je také možné se připojit k jakékoli jiné JDBC databáze koncového bodu kompatibilního s. Beeline je k dispozici out-of-box na HDInsight 4.0 bez jakékoli instalaci potřeba.
+V HDInsight 4,0 byl HiveCLI nahrazen Beeline. HiveCLI je klient Thrift pro Hiveserver 1 a Beeline je JDBC klient, který poskytuje přístup k Hiveserver 2. Beeline je možné použít také pro připojení k jakémukoli jinému koncovému bodu databáze kompatibilního s JDBC. Beeline je k dispozici předem v HDInsight 4,0 bez nutnosti instalace.
 
-Klient grafického uživatelského rozhraní pro interakci s serveru Hive v HDInsight 3.6 je zobrazení Ambari Hive. HDInsight 4.0 nahradí zobrazení Hive s Hortonworks Data Analytics Studio (DAS). DAS není dodávají spolu s HDInsight clustery out-of-box a není oficiálně podporovaných balíčků. Ale DAS můžete nainstalovat na clusteru takto:
+V HDInsight 3,6 je klient grafického uživatelského rozhraní pro interakci se serverem podregistru Ambari zobrazením podregistru. HDInsight 4,0 nahrazuje zobrazení podregistru pomocí nástroje Hortonworks data Analytics Studio (DAS). DAS se nedodává s předem připravenými clustery HDInsight a nejedná se o oficiálně podporovaný balíček. DAS se ale v clusteru dá nainstalovat takto:
 
-Spusťte skript akce u vašeho clusteru, s "Hlavní uzly" jako typ uzlu pro provádění. Vložte následující identifikátor URI do textového pole označená "URI skriptu Bash": https://hdiconfigactions.blob.core.windows.net/dasinstaller/LaunchDASInstaller.sh
+Spustí pro svůj cluster akci skriptu s "hlavními uzly" jako typem uzlu pro provedení. Do textového pole označeného "bash Script URI" vložte následující identifikátor URI: https://hdiconfigactions.blob.core.windows.net/dasinstaller/LaunchDASInstaller.sh
 
-Studio analýzy dat může být spuštěn s adresou URL: https://<clustername>.azurehdinsight.net/das/
+Data Analytics Studio se dá spustit s adresou URL:\<https://název_clusteru >. azurehdinsight. NET/Das/
 
 
 
-Po nainstalování DAS dotazy, které jste spustili v prohlížeči dotazy nevidíte, proveďte následující kroky:
+Pokud se po instalaci DAS nezobrazí dotazy, které jste spustili v prohlížeči dotazů, proveďte následující kroky:
 
-1. Jak je popsáno v nastavení konfigurace pro Hive Tez a DAS [Tato příručka pro řešení potíží s instalací DAS](https://docs.hortonworks.com/HDPDocuments/DAS/DAS-1.2.0/troubleshooting/content/das_queries_not_appearing.html).
-2. Ujistěte se, že následující konfigurace adresáře služby Azure storage jsou objekty BLOB stránky a že jsou uvedeny v části `fs.azure.page.blob.dirs`:
+1. Nastavte konfigurace pro podregistr, tez a DAS, jak je popsáno v [této příručce pro řešení potíží s instalací Das](https://docs.hortonworks.com/HDPDocuments/DAS/DAS-1.2.0/troubleshooting/content/das_queries_not_appearing.html).
+2. Ujistěte se, že následující konfigurace adresáře úložiště Azure jsou objekty blob stránky a že jsou uvedené v části `fs.azure.page.blob.dirs`:
     * `hive.hook.proto.base-directory`
     * `tez.history.logging.proto-base-dir`
-3. Restartujte HDFS, Hive, Tez a DAS na oba hlavní uzly.
+3. V obou hlavních restartujte HDFS, podregistr, tez a DAS.
 
 ## <a name="next-steps"></a>Další postup
 
-* [HDInsight 4.0 oznámení](../hdinsight-version-release.md)
-* [Podrobné informace o HDInsight 4.0](https://azure.microsoft.com/blog/deep-dive-into-azure-hdinsight-4-0/)
-* [3 odpovídající zásadám ACID tabulky Hive](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.1.0/using-hiveql/content/hive_3_internals.html)
+* [Oznámení HDInsight 4,0](../hdinsight-version-release.md)
+* [Podrobně HDInsight 4,0 s hloubkou](https://azure.microsoft.com/blog/deep-dive-into-azure-hdinsight-4-0/)
+* [Tabulky s KYSELINou v podregistru 3](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.1.0/using-hiveql/content/hive_3_internals.html)

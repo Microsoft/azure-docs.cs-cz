@@ -1,20 +1,20 @@
 ---
-author: wesmc7777
+author: yegu-ms
 ms.service: redis-cache
 ms.topic: include
 ms.date: 11/09/2018
-ms.author: wesmc
-ms.openlocfilehash: 8ebf5ddfa118e0aeadeab0c00a981871a4b5708e
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.author: yegu
+ms.openlocfilehash: 61e93e3700b9a396d2ac4fdcbb51fc5c874cf9cb
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175578"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68286192"
 ---
 Aplikace .NET mohou použít klienta mezipaměti **StackExchange.Redis**, kterého lze nakonfigurovat v aplikaci Visual Studio pomocí balíčku NuGet, který zjednodušuje konfiguraci aplikací klientů mezipaměti. 
 
 > [!NOTE]
-> Další informace najdete v tématu [StackExchange.Redis](http://github.com/StackExchange/StackExchange.Redis) stránku na Githubu a [StackExchange.Azure mezipaměti Redis dokumentaci ke klientu](http://github.com/StackExchange/StackExchange.Redis#documentation).
+> Další informace najdete na stránce GitHubu [stackexchange. Redis](https://github.com/StackExchange/StackExchange.Redis) a v [mezipaměti stackexchange. Azure pro Redis klienta dokumentace](https://github.com/StackExchange/StackExchange.Redis#documentation).
 >
 >
 

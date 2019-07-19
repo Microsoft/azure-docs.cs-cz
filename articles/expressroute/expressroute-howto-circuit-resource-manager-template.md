@@ -1,20 +1,21 @@
 ---
-title: 'Vytvoření okruhu ExpressRoute – šablona Resource Manageru: Azure | Dokumentace Microsoftu'
-description: Vytvoření, zřízení, odstranit a zrušit zřízení okruhu ExpressRoute.
+title: 'Vytvoření ExpressRouteho okruhu – šablona Správce prostředků: Azure | Microsoft Docs'
+description: Vytvoření, zřízení, odstranění a zrušení zřízení okruhu ExpressRoute.
 services: expressroute;azure-resource-manager
 author: cherylmc
 ms.service: expressroute
 ms.topic: article
 ms.date: 07/05/2019
-ms.author: cherylmc;ganesr
-ms.openlocfilehash: bf56145d0a8cd3b01d0d74fcaf3348c1916cee5a
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.author: cherylmc
+ms.reviewer: ganesr
+ms.openlocfilehash: 103c61b6ad244bf4b140f897c070ce5bfd54cded
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67659681"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849221"
 ---
-# <a name="create-an-expressroute-circuit-by-using-azure-resource-manager-template"></a>Vytvoření okruhu ExpressRoute pomocí šablony Azure Resource Manageru
+# <a name="create-an-expressroute-circuit-by-using-azure-resource-manager-template"></a>Vytvoření okruhu ExpressRoute pomocí šablony Azure Resource Manager
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
@@ -25,7 +26,7 @@ ms.locfileid: "67659681"
 > * [PowerShell (Classic)](expressroute-howto-circuit-classic.md)
 >
 
-Zjistěte, jak vytvořit okruh ExpressRoute pomocí nasazení šablony Azure Resource Manageru pomocí prostředí Azure PowerShell. Další informace o vývoji šablon Resource Manageru najdete v tématu [dokumentace ke službě Správce prostředků](/azure/azure-resource-manager/) a [referenčními informacemi k šablonám](/azure/templates/microsoft.network/expressroutecircuits).
+Naučte se vytvořit okruh ExpressRoute nasazením šablony Azure Resource Manager pomocí Azure PowerShell. Další informace o vývoji šablon Správce prostředků naleznete v [dokumentaci správce prostředků](/azure/azure-resource-manager/) a odkazu na [šablonu](/azure/templates/microsoft.network/expressroutecircuits).
 
 ## <a name="before-you-begin"></a>Před zahájením
 
@@ -35,15 +36,15 @@ Zjistěte, jak vytvořit okruh ExpressRoute pomocí nasazení šablony Azure Res
 
 ## <a name="create"></a>Vytvoření a zřízení okruhu ExpressRoute
 
-[Šablony Azure Quickstart](https://azure.microsoft.com/resources/templates/) má dobré kolekci šablony Resource Manageru. Použijte jednu z [existujících šablon](https://azure.microsoft.com/resources/templates/101-expressroute-circuit-create/) vytvořit okruh ExpressRoute.
+[Šablony pro rychlý Start Azure](https://azure.microsoft.com/resources/templates/) mají dobrou kolekci správce prostředků šablon. Pomocí jedné z [existujících šablon](https://azure.microsoft.com/resources/templates/101-expressroute-circuit-create/) vytvoříte okruh ExpressRoute.
 
 [!code-json[create-azure-expressroute-circuit](~/quickstart-templates/101-expressroute-circuit-create/azuredeploy.json)]
 
-Pokud chcete zobrazit informace týkající se šablony, vyberte [tady](https://azure.microsoft.com/resources/templates/?term=expressroute).
+Pokud chcete zobrazit další související šablony, vyberte [sem](https://azure.microsoft.com/resources/templates/?term=expressroute).
 
-Pokud chcete vytvořit okruh ExpressRoute nasazením šablony:
+Vytvoření okruhu ExpressRoute nasazením šablony:
 
-1. Vyberte **vyzkoušet** z následující blok kódu a pak postupujte podle pokynů pro přihlášení ke službě Azure Cloud shell.
+1. Vyberte **vyzkoušet** z následujícího bloku kódu a pak podle pokynů se přihlaste ke službě Azure Cloud Shell.
 
     ```azurepowershell-interactive
     $circuitName = Read-Host -Prompt "Enter a circuit name"
@@ -70,18 +71,18 @@ Pokud chcete vytvořit okruh ExpressRoute nasazením šablony:
      > [!IMPORTANT]
      > Určuje umístění partnerského vztahu [fyzické umístění](expressroute-locations.md) kde jste partnerského vztahu se společností Microsoft. Toto je **není** propojené s "Umístění" vlastnost, která odkazuje na zeměpisné oblasti, kde se nachází poskytovatel síťových prostředků Azure. Zatímco nesouvisí, je vhodné zvolit poskytovatel síťových prostředků geograficky v blízkosti umístění partnerského vztahu okruhu.
 
-    Název skupiny prostředků je název oboru názvů služby Service bus s **rg** připojí.
+    Název skupiny prostředků je název oboru názvů Service Bus s připojeným **RG** .
 
 2. Vyberte **kopírování** zkopírujte skript prostředí PowerShell.
-3. Klikněte pravým tlačítkem na konzolu prostředí a pak vyberte **vložit**.
+3. Klikněte pravým tlačítkem na konzolu prostředí a pak vyberte **Vložit**.
 
-Trvá několik minut pro vytvoření centra událostí.
+Vytvoření centra událostí chvíli trvá.
 
-Prostředí Azure PowerShell slouží k nasazení šablony v tomto kurzu. Další způsoby nasazení šablony najdete v tématu:
+Azure PowerShell slouží k nasazení šablony v tomto kurzu. Další metody nasazení šablony naleznete zde:
 
-* [Pomocí webu Azure portal](../azure-resource-manager/resource-group-template-deploy-portal.md).
+* [Pomocí Azure Portal](../azure-resource-manager/resource-group-template-deploy-portal.md).
 * [Pomocí Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md).
-* [Pomocí rozhraní REST API](../azure-resource-manager/resource-group-template-deploy-rest.md).
+* [Pomocí REST API](../azure-resource-manager/resource-group-template-deploy-rest.md).
 
 ## <a name="delete"></a>Zrušení zřízení a odstranění okruhu ExpressRoute
 
@@ -91,7 +92,7 @@ Váš okruh ExpressRoute můžete odstranit tak, že vyberete **odstranit** ikon
 * Pokud je stav zřizování poskytovatele služeb okruh ExpressRoute **zřizování** nebo **zřízená** , musíte pracovat se svým poskytovatelem služeb zrušit zřízení okruhu na své straně. Pokračujeme v rezervovat prostředky a účtovat až do dokončení zrušení zřízení okruhu a informuje nás poskytovatelem služeb.
 * Pokud poskytovatel služeb okruh zruší (poskytovatel služeb Stav zřizování je nastavena na **nezřízeno**), můžete odstranit okruh. Tím se zastaví účtování okruhu.
 
-Váš okruh ExpressRoute můžete odstranit spuštěním následujícího příkazu Powershellu:
+Okruh ExpressRoute můžete odstranit spuštěním následujícího příkazu PowerShellu:
 
 ```azurepowershell-interactive
 $circuitName = Read-Host -Prompt "Enter the same circuit name that you used earlier"
