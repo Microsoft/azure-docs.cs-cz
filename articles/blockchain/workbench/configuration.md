@@ -58,7 +58,7 @@ Obchodní logiku aplikace může modelovat jako stavový stroj kde provádění 
 | Name | Název pracovního postupu jedinečný. Odpovídající inteligentní smlouvě musíte použít stejné **název** pro třídu příslušné smlouvy. | Ano | 50 |
 | DisplayName | Uživatelsky přívětivý název zobrazení pracovního postupu. | Ano | 255 |
 | Description | Popis pracovního postupu. | Ne | 255 |
-| Iniciátory | Kolekce [ApplicationRoles](#application-roles). Role, které jsou přiřazené uživatelům, kteří mají oprávnění k vytvoření kontraktů v pracovním postupu. | Ano | |
+| Initiators | Kolekce [ApplicationRoles](#application-roles). Role, které jsou přiřazené uživatelům, kteří mají oprávnění k vytvoření kontraktů v pracovním postupu. | Ano | |
 | StartState | Název počátečního stavu pracovního postupu. | Ano | |
 | Vlastnosti | Kolekce [identifikátory](#identifiers). Představuje data, které může číst mimo řetězec nebo s vizualizačního v uživatelském prostředí nástroje. | Ano | |
 | Konstruktor | Definuje vstupní parametry pro vytvoření instance pracovního postupu. | Ano | |
