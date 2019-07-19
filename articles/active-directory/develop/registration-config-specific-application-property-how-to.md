@@ -1,13 +1,14 @@
 ---
-title: Jak vyplnit konkrétní pole pro vlastní vyvinuté aplikaci | Dokumentace Microsoftu
-description: Pokyny o tom, jak vyplnit konkrétní pole při registraci vlastní vyvinuté aplikaci s využitím Azure AD
+title: Postup vyplnění konkrétních polí pro aplikaci s vlastním vývojem | Microsoft Docs
+description: Pokyny, jak vyplnit konkrétní pole při registraci vlastní vyvíjené aplikace pomocí Azure AD
 services: active-directory
 documentationcenter: ''
 author: rwike77
 manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
-ms.subservice: app-mgmt
+ms.subservice: develop
+ms.custom: aaddev
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,64 +16,64 @@ ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: ryanwi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b01ff1e2d0c9bc926d54bd54716e0579ef395ec0
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 46bc6d2ebbb22ffc37ca73a3fff3b7b5a3a534b8
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67655997"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325337"
 ---
-# <a name="how-to-fill-out-specific-fields-for-a-custom-developed-application"></a>Jak vyplnit konkrétní pole pro vlastní vyvinuté aplikaci
+# <a name="how-to-fill-out-specific-fields-for-a-custom-developed-application"></a>Postup vyplnění konkrétních polí pro aplikaci vytvořenou pro vlastní nastavení
 
-Tento článek obsahuje stručný popis všechna dostupná pole ve formuláři pro registraci aplikace v [webu Azure portal](https://portal.azure.com).
+Tento článek poskytuje stručný popis všech dostupných polí ve formuláři pro registraci aplikace v [Azure Portal](https://portal.azure.com).
 
 ## <a name="register-a-new-application"></a>Registrace nové aplikace
 
--   Registrace nové aplikace, přejděte [webu Azure portal](https://portal.azure.com).
+-   Pokud chcete zaregistrovat novou aplikaci, přejděte na [Azure Portal](https://portal.azure.com).
 
--   V levém navigačním podokně klikněte na tlačítko **Azure Active Directory.**
+-   V levém navigačním podokně klikněte na **Azure Active Directory.**
 
--   Zvolte **registrace aplikací** a klikněte na tlačítko **přidat**.
+-   Vyberte **Registrace aplikací** a klikněte na **Přidat**.
 
--   Otevřete tento registrační formulář aplikace.
+-   Tím otevřete formulář pro registraci aplikace.
 
 ## <a name="fields-in-the-application-registration-form"></a>Pole ve formuláři pro registraci aplikace
 
 
 | Pole            | Popis                                                                              |
 |------------------|------------------------------------------------------------------------------------------|
-| Name             | Název aplikace. Musí mít minimálně 4 znaky.                |
-| Podporované typy účtu| Vyberte účty, které chcete aplikaci pro podporu: účty v tomto adresáři organizace jenom účty v libovolném adresáři organizace nebo účty v libovolném adresáři organizace a osobní účty Microsoft.  |
-| (Volitelné) identifikátor URI pro přesměrování | Vyberte typ aplikace, které sestavujete, **webové** nebo **veřejným klientem (mobilních a desktopových)** a pak zadejte identifikátor URI pro přesměrování (nebo adresy URL odpovědi) pro vaši aplikaci. V případě webových aplikací zadejte základní adresu URL vaší aplikace. Například http://localhost:31544 může být adresa URL pro webovou aplikaci spuštěnou na místním počítači. Uživatelé by se pomocí této adresy URL přihlašovali k webové klientské aplikaci. V případě veřejných klientských aplikací zadejte identifikátor URI, který Azure AD použije k vrácení odpovědí týkajících se tokenu. Zadejte hodnotu specifickou pro vaši aplikaci, jako je například myapp://auth. Konkrétní příklady webových nebo nativních aplikací najdete v našich [rychlých startech](https://docs.microsoft.com/azure/active-directory/develop).|
+| Name             | Název aplikace Musí mít minimálně čtyři znaky.                |
+| Podporované typy účtu| Vyberte účty, které chcete, aby vaše aplikace podporovala: účty v tomto adresáři organizace, účty v libovolném organizačním adresáři nebo účty v libovolném organizačním adresáři a v osobních účtech Microsoft.  |
+| Identifikátor URI přesměrování (volitelné) | Vyberte typ aplikace, kterou vytváříte, **webový** nebo **veřejný klient (mobilní & Desktop)** a pak zadejte identifikátor URI přesměrování (nebo adresu URL odpovědi) pro vaši aplikaci. V případě webových aplikací zadejte základní adresu URL vaší aplikace. Například http://localhost:31544 může být adresa URL pro webovou aplikaci spuštěnou na místním počítači. Uživatelé by se pomocí této adresy URL přihlašovali k webové klientské aplikaci. V případě veřejných klientských aplikací zadejte identifikátor URI, který Azure AD použije k vrácení odpovědí týkajících se tokenu. Zadejte hodnotu specifickou pro vaši aplikaci, například myapp://auth. Konkrétní příklady webových nebo nativních aplikací najdete v našich [rychlých startech](https://docs.microsoft.com/azure/active-directory/develop).|
 
-Jakmile jste vyplnili pole výše, aplikace je zaregistrovaný na webu Azure Portal a budete přesměrováni na stránku přehled aplikace. Nastavení stránky v levém podokně v části **spravovat** mají více polí můžete přizpůsobit aplikaci. Následující tabulky popisují všechna pole. Uvidíte pouze podmnožinu těchto polí, v závislosti na tom, jestli jste vytvořili webovou aplikaci nebo veřejné klientské aplikace.
+Jakmile vyplníte výše uvedená pole, aplikace je zaregistrována v Azure Portal a budete přesměrováni na stránku s přehledem aplikace. Stránky nastavení v levém podokně v části **Spravovat** mají více polí pro přizpůsobení aplikace. V následujících tabulkách jsou popsána všechna pole. V závislosti na tom, zda jste vytvořili webovou aplikaci nebo veřejnou klientskou aplikaci, se zobrazí pouze podmnožina těchto polí.
 
 ### <a name="overview"></a>Přehled
 | Pole           | Popis        |
 |-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ID aplikace  | Při registraci aplikace Azure AD přiřadí vaší aplikace ID aplikace. Aplikace, ID se dá použít k jednoznačné identifikaci aplikace v žádosti o ověření do služby Azure AD, jakož i přístup k prostředkům, jako jsou rozhraní Graph API.                                                          |
-| Identifikátor URI ID aplikace      | To by měl být jedinečný identifikátor URI, obvykle ve formátu **https://&lt;tenanta\_název&gt;/&lt;aplikace\_název&gt;.** Během toku udělení autorizace, slouží jako jedinečný identifikátor pro zadejte prostředek, který by měl být token vydán pro. Bude také "aud" deklarace identity v vydaný přístupový token. |
+| ID aplikace  | Když zaregistrujete aplikaci, Azure AD přiřadí vaší aplikaci ID aplikace. ID aplikace se dá použít k jednoznačné identifikaci vaší aplikace v požadavcích na ověření ve službě Azure AD a také k přístupu k prostředkům, jako je Graph API.                                                          |
+| Identifikátor URI ID aplikace      | Mělo by se jednat o jedinečný identifikátor URI, většinou ve **tvaru&lt;název aplikace&gt;\_\_/&lt;&gt;název klienta https://.** Tento postup se používá během autorizačního toku autorizace jako jedinečný identifikátor k určení prostředku, pro který má být token vydán. Také se z vydaného přístupového tokenu stala deklarací ' AUD '. |
 
 ### <a name="branding"></a>Branding
 
 | Pole           | Popis        |
 |-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Nahrát nové logo | Může být využit k nahrání loga pro vaši aplikaci. Logo musí být ve formátu .bmp, .jpg nebo .png a velikost souboru by měla být menší než 100 KB. Rozměry obrázku by měl být 215 × 215 pixelů a středové rozměry obrázku 94 x 94 pixelů.|
+| Nahrát nové logo | Tuto možnost můžete použít k nahrání loga aplikace. Logo musí být ve formátu. bmp,. jpg nebo. png a velikost souboru by měla být menší než 100 KB. Rozměry obrázku by měly být 215x215 pixely s rozměry centrálního obrazu 94x94 pixelů.|
 | Adresa URL domovské stránky   | Toto je přihlašovací adresa URL zadaná při registraci aplikace.|
 
 ### <a name="authentication"></a>Ověřování
 
 | Pole           | Popis        |
 |-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Adresa URL – odhlášení      | Toto je adresa URL jednotného odhlašování odhlašování. Azure AD odešle žádost o odhlášení na tuto adresu URL Pokud uživatel vymaže jejich relace s Azure AD pomocí jiných registrované aplikaci.|
-| Podporované typy účtu  | Tento přepínač určuje, jestli aplikace můžou využívat více tenantů. Obvykle to znamená, že externími organizacemi moci používat vaši aplikaci prostřednictvím registrace v rámci jejich tenanta a udělení přístupu k datům organizace.|
-| Adresy URL pro přesměrování      | Přesměrování nebo odpověď, jsou adresy URL koncové body, kam Azure AD vrací všechny tokeny, které vaše aplikace požaduje. Pro nativní aplikace to je, kde je uživatel přesměrován po úspěšném ověření. Azure AD ověří, že vaše aplikace poskytuje v požadavku OAuth 2.0 URI přesměrování odpovídá jednomu z registrovaných hodnoty na portálu.|
+| Adresa URL – odhlášení      | Toto je adresa URL pro odhlášení jednotného odhlášení. Pokud uživatel vymaže svou relaci s Azure AD pomocí jakékoli jiné registrované aplikace, odešle Azure AD na tuto adresu URL žádost o odhlášení.|
+| Podporované typy účtu  | Tento přepínač určuje, zda lze aplikaci použít ve více klientech. Obvykle to znamená, že externí organizace můžou aplikaci používat tak, že ji zaregistruje ve svém tenantovi a udělí přístup k datům organizace.|
+| Adresy URL pro přesměrování      | Adresa URL přesměrování nebo odpověď jsou koncové body, kde Azure AD vrací jakékoli tokeny, které vaše aplikace požaduje. Pro nativní aplikace se uživateli pošle po úspěšné autorizaci. Azure AD kontroluje, že identifikátor URI pro přesměrování, který vaše aplikace dodá v žádosti OAuth 2,0, odpovídá jedné z registrovaných hodnot na portálu.|
 
-### <a name="certificates-and-secrets"></a>Certifikáty a tajné kódy
+### <a name="certificates-and-secrets"></a>Certifikáty a tajné klíče
 
 | Pole           | Popis        |
 |-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Tajné klíče klienta            | Klienta můžete vytvořit tajné kódy nebo klávesy se šipkami, programově přístup k webové rozhraní API zabezpečené pomocí Azure AD bez nutnosti zásahu uživatele. Z **nový tajný kód klienta** stránky, zadejte popis klíče a datum vypršení platnosti a uložit ke generování klíče. Ujistěte se, uložte ho někam zabezpečené, nebudou mít přístup k později.             |
+| Tajné klíče klienta            | Můžete vytvářet klientské tajné klíče nebo klíče pro programové přístup k webovým rozhraním API zabezpečeným službou Azure AD bez zásahu uživatele. Na stránce **nový tajný klíč klienta** zadejte popis klíče a datum vypršení platnosti a klikněte na Uložit, aby se klíč vygeneroval. Ujistěte se, že je uložíte někam v bezpečí, protože k němu nebudete mít přístup později.             |
 
 ## <a name="next-steps"></a>Další postup
 [Správa aplikací pomocí Azure Active Directory](../manage-apps/what-is-application-management.md)

@@ -4,7 +4,7 @@ description: Další informace o používání služby Azure Batch pro rozsáhl�
 services: batch
 documentationcenter: ''
 author: mscurrell
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: batch
@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 01/19/2018
 ms.author: markscu
 ms.custom: mvc
-ms.openlocfilehash: 1dbd31b3c666857765b8b20a11d4d0c7ea8ea37b
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: c55b831903ed8dad124156013c8379536f676efa
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67704769"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68322784"
 ---
 # <a name="what-is-azure-batch"></a>Co je Azure Batch?
 
@@ -30,7 +30,7 @@ Vývojáři můžou službu Batch používat jako službu platformy k sestavová
 
 Za používání služby Batch se neúčtují žádné další poplatky. Platíte jenom za spotřebované základní prostředky, jako jsou virtuální počítače, úložiště a sítě.
 
-Porovnání mezi službou Batch a dalšími možnostmi řešení prostředí HPC v Azure najdete v tématu [vysoký výkon výpočetního prostředí (HPC) v Azure](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/).
+Porovnání mezi službou Batch a dalšími možnostmi řešení HPC v Azure najdete v tématu [vysoce výkonné výpočty (HPC) v Azure](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/).
 
 ## <a name="run-parallel-workloads"></a>Spouštění paralelních úloh
 Služba Batch pracuje s vnitřně paralelními aplikacemi úlohami (také známé jako „jednoduše paralelně zpracovatelné“). Vnitřně paralelní úlohy jsou ty, u kterých můžou aplikace pracovat odděleně a každá instance odvede určitou část práce. Při provádění můžou aplikace získávat přístup k některým společným datům, ale nekomunikují s jinými instancemi aplikace. Vnitřně paralelní úlohy proto můžou běžet ve velkém měřítku, které závisí na množství výpočetních prostředků dostupných pro souběžné spouštění aplikací.

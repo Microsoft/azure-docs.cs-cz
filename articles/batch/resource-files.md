@@ -1,48 +1,48 @@
 ---
-title: Vytvoření a použití souborů prostředků – Azure Batch | Dokumentace Microsoftu
-description: Zjistěte, jak vytvořit soubor prostředků služby Azure Batch z různých zdrojů.
+title: Vytváření a používání souborů prostředků – Azure Batch | Microsoft Docs
+description: Naučte se vytvářet soubory prostředků Azure Batch z různých vstupních zdrojů.
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.service: batch
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: lahugh
-ms.openlocfilehash: 113faffb0ebac50a67c96ce21e0ee2c1564bb4fc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9c55b22d1cb85fb645087cf48b54f9d5ac12d58f
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65405638"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68322174"
 ---
-# <a name="creating-and-using-resource-files"></a>Vytvoření a použití souborů prostředků
+# <a name="creating-and-using-resource-files"></a>Vytváření a používání souborů prostředků
 
-Úlohu služby Azure Batch často vyžaduje určitou formu data ke zpracování. Soubory prostředků jsou prostředky k poskytování těchto dat do služby Batch virtuálního počítače (VM) prostřednictvím úkolu. Soubory prostředků podporují všechny typy úloh: úlohy, spuštění úloh, úkolů přípravy úloh, uvolnění úloh atd. Tento článek popisuje několik běžných metod o tom, jak vytvořit soubor prostředků a umístit je na virtuálním počítači.  
+Úkol Azure Batch často vyžaduje určitou formu zpracování dat. Soubory prostředků představují prostředky k tomu, aby tato data mohla být prostřednictvím úlohy zajištěna na virtuálním počítači Batch (VM). Všechny typy úloh podporují soubory prostředků: úkoly, spouštěcí úkoly, úkoly přípravy úlohy, úkoly uvolnění úloh atd. Tento článek obsahuje několik běžných metod, jak vytvořit soubory prostředků a umístit je na virtuální počítač.  
 
-Soubory prostředků slouží jako mechanismus pro dávat data do virtuálního počítače ve službě Batch, ale typ dat a způsobu jejich použití je flexibilní. Existují však některé běžné příklady využití:
+Soubory prostředků představují mechanismus pro vložení dat do virtuálního počítače ve službě Batch, ale typ dat a způsob jejich použití je flexibilní. Existují však některé běžné případy použití:
 
-1. Zřízení společné soubory na každém virtuálním počítači použití souborů prostředků na spouštěcí úkol
-1. Zřízení vstupní data pro zpracování úloh
+1. Zřizování běžných souborů na každém virtuálním počítači pomocí souborů prostředků u spouštěcího úkolu
+1. Zřizování vstupních dat pro zpracování úlohami
 
-Společné soubory může být například soubory na spouštěcím úkolem použitý k instalaci aplikace, které vaše úkoly spouštět. Vstupní data mohou být nezpracovaná obrázek nebo video data nebo žádné informace pro dávkové zpracování.
+Mezi běžné soubory může být například soubor v spouštěcím úkolu, který slouží k instalaci aplikací spouštěných vašimi úkoly. Vstupní data mohou být nezpracovaná data obrázku nebo videa nebo jakékoli informace, které mají být zpracovány službou Batch.
 
-## <a name="types-of-resource-files"></a>Typy zdrojových souborů
+## <a name="types-of-resource-files"></a>Typy souborů prostředků
 
-Existuje několik různých možností se vygenerovat soubory prostředku. Vytvoření procesu pro soubory prostředků se liší v závislosti na tom, kde původní data uložená.
+K dispozici je několik různých možností pro generování souborů prostředků. Proces vytváření souborů prostředků se liší v závislosti na tom, kde jsou uložena původní data.
 
 Možnosti pro vytvoření souboru prostředků:
 
-- [Adresa URL kontejneru úložiště](#storage-container-url): Generuje soubor prostředků z jakékoli kontejneru úložiště v Azure
-- [Název kontejneru úložiště](#storage-container-name): Generuje soubor prostředků z názvu kontejneru v účtu služby Azure storage, propojené služby batch
-- [Webový koncový bod](#web-endpoint): Generuje soubor prostředků z jakákoliv platná adresa URL protokolu HTTP
+- [Adresa URL kontejneru úložiště](#storage-container-url): Vygeneruje soubor prostředků z libovolného kontejneru úložiště v Azure.
+- [Název kontejneru úložiště](#storage-container-name): Vygeneruje soubor prostředků z názvu kontejneru v účtu úložiště Azure propojeném s Batch.
+- [Webový koncový bod](#web-endpoint): Vygeneruje soubor prostředků z jakékoli platné adresy URL protokolu HTTP.
 
 ### <a name="storage-container-url"></a>Adresa URL kontejneru úložiště
 
-Pomocí adresy URL kontejneru úložiště znamená, že může přístup k souborům v kontejneru úložiště v Azure se správnými oprávněními.
+Použití adresy URL kontejneru úložiště znamená, že máte přístup k souborům v jakémkoli kontejneru úložiště v Azure se správnými oprávněními.
 
-V tomto C# například souborů už se nahrály do kontejneru služby Azure storage jako úložiště objektů blob. Pro přístup k data potřebná k vytvoření souboru prostředků, musíme nejprve získat přístup ke kontejneru úložiště.
+V tomto C# příkladu se soubory už nahrály do kontejneru úložiště Azure jako úložiště objektů BLOB. Aby bylo možné získat přístup k datům potřebným k vytvoření souboru prostředků, musíme nejprve získat přístup k kontejneru úložiště.
 
-Vytvořte sdílený přístupový podpis (SAS) identifikátor URI se správnými oprávněními pro přístup ke kontejneru úložiště. Nastavte čas vypršení platnosti a oprávnění pro SAS. V takovém případě není zadán žádný čas spuštění, takže SAS začne platit okamžitě a jeho platnost vyprší dvě hodiny po jeho vygenerování.
+Vytvořte identifikátor URI sdíleného přístupového podpisu (SAS) se správnými oprávněními pro přístup k kontejneru úložiště. Nastavte čas vypršení platnosti a oprávnění pro SAS. V takovém případě není zadána žádná počáteční doba, takže SAS bude platný okamžitě a po vygenerování skončí dvě hodiny.
 
 ```csharp
 SharedAccessBlobPolicy sasConstraints = new SharedAccessBlobPolicy
@@ -53,9 +53,9 @@ SharedAccessBlobPolicy sasConstraints = new SharedAccessBlobPolicy
 ```
 
 > [!NOTE]
-> Pro přístup k kontejneru, musí mít obě `Read` a `List` oprávnění, že se přístup k objektu blob, potřebujete jenom `Read` oprávnění.
+> Pro přístup k kontejneru musíte mít obojí `Read` i `List` oprávnění, zatímco s přístupem k objektu BLOB budete potřebovat `Read` jenom oprávnění.
 
-Po nakonfigurování oprávnění vytvořit SAS token a formát adresy URL SAS pro přístup ke kontejneru úložiště. Pomocí formátované adresy URL SAS pro kontejner úložiště, vygenerujte soubor prostředků s [ `FromStorageContainerUrl` ](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.resourcefile.fromstoragecontainerurl?view=azure-dotnet).
+Po nakonfigurování oprávnění vytvořte token SAS a naformátujte adresu URL SAS pro přístup k kontejneru úložiště. Pomocí formátované adresy URL SAS kontejneru úložiště vygenerujte soubor prostředků s [`FromStorageContainerUrl`](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.resourcefile.fromstoragecontainerurl?view=azure-dotnet).
 
 ```csharp
 CloudBlobContainer container = blobClient.GetContainerReference(containerName);
@@ -66,15 +66,15 @@ string containerSasUrl = String.Format("{0}{1}", container.Uri, sasToken);
 ResourceFile inputFile = ResourceFile.FromStorageContainerUrl(containerSasUrl);
 ```
 
-Alternativu ke generování adresy URL SAS, je povolení anonymní, veřejné oprávnění ke čtení pro kontejner a jeho objekty BLOB v úložišti objektů Blob v Azure. Díky tomu můžete udělit přístup jen pro čtení k těmto prostředkům bez sdílení klíč účtu a bez nutnosti SAS. Veřejné oprávnění ke čtení se obvykle používá pro scénáře, ve kterém chcete určité přes bloby až po mít vždycky k dispozici pro anonymní přístup pro čtení. Pokud tento scénář vyhovuje řešení, najdete v článku [anonymní přístup k objektům blob](../storage/blobs/storage-manage-access-to-resources.md) článku se dozvíte informace o správě přístupu k datům objektu blob.
+Alternativou k vygenerování adresy URL SAS je povolit anonymní veřejný přístup pro čtení kontejneru a jeho objektů BLOB v úložišti objektů BLOB v Azure. Díky tomu můžete k těmto prostředkům udělit přístup jen pro čtení bez sdílení klíče účtu a bez vyžadování SAS. Veřejný přístup pro čtení se obvykle používá ve scénářích, kde chcete, aby některé objekty blob byly vždycky dostupné pro anonymní přístup pro čtení. Pokud tento scénář vyhovuje vašemu řešení, přečtěte si článek [anonymní přístup k](../storage/blobs/storage-manage-access-to-resources.md) objektům blob, kde se dozvíte víc o správě přístupu k datům objektů BLOB.
 
 ### <a name="storage-container-name"></a>Název kontejneru úložiště
 
-Namísto konfigurace a vytvoření adresy URL SAS, můžete použít název kontejneru úložiště Azure pro přístup k datům objektu blob. Kontejner úložiště, který používá musí v účtu úložiště Azure, který je propojený s vaším účtem Batch, označované jako autostorage účtu. Pomocí názvu kontejneru úložiště účtu autostorage lze jednorázově přeskočit přihlašování, konfigurace a vytvoření adresy URL SAS pro přístup ke kontejneru úložiště.
+Místo konfigurace a vytvoření adresy URL SAS můžete použít název kontejneru úložiště Azure pro přístup k datům objektu BLOB. Použitý kontejner úložiště musí být v účtu služby Azure Storage, který je propojený s vaším účtem Batch, označovaný jako účet autostorage. Použití názvu kontejneru úložiště účtu autostorage vám umožní obejít konfiguraci a vytvoření adresy URL SAS pro přístup k kontejneru úložiště.
 
-V tomto příkladu předpokládáme, že data, která má být použit pro vytvoření souboru prostředků je již v účtu služby Azure Storage, který je propojený s vaším účtem Batch. Pokud nemáte účet autostorage, podívejte se na postup v [vytvoření účtu Batch](batch-account-create-portal.md) podrobnosti o tom, jak vytvořit a propojit účet.
+V tomto příkladu předpokládáme, že data, která se mají použít pro vytvoření souboru prostředků, už jsou v účtu Azure Storage, který je propojený s vaším účtem Batch. Pokud nemáte účet úložiště, přečtěte si postup vytvoření [účtu Batch](batch-account-create-portal.md) , kde najdete podrobnosti o tom, jak vytvořit a propojit účet.
 
-S použitím propojený účet úložiště, není nutné vytvořit a nakonfigurovat adresy URL SAS pro kontejner úložiště. Místo toho zadejte název kontejneru úložiště ve vašem připojeném účtu úložiště.
+Pomocí propojeného účtu úložiště nemusíte vytvářet a konfigurovat adresu URL SAS kontejneru úložiště. Místo toho zadejte název kontejneru úložiště v propojeném účtu úložiště.
 
 ```csharp
 ResourceFile inputFile = ResourceFile.FromAutoStorageContainer(containerName);
@@ -82,9 +82,9 @@ ResourceFile inputFile = ResourceFile.FromAutoStorageContainer(containerName);
 
 ### <a name="web-endpoint"></a>Webový koncový bod
 
-Data, která se nahraje do služby Azure Storage je stále možné k vytvoření souborů prostředků. Můžete zadat libovolnou platnou adresu URL HTTP obsahující vstupní data. Zadaná adresa URL k rozhraní API služby Batch, a pak data slouží k vytvoření souboru prostředků.
+Data, která nejsou nahraná do Azure Storage, se dají i nadále používat k vytváření souborů prostředků. Můžete zadat libovolnou platnou adresu URL protokolu HTTP, která obsahuje vstupní data. Adresa URL se poskytne rozhraní API pro dávkování a potom se data použijí k vytvoření souboru prostředků.
 
-V následujícím C# příkladu se vstupní data hostována na koncovém bodu fiktivní Githubu. Rozhraní API načte soubor z platný webový koncový bod a vygeneruje soubor prostředků pro vaše úlohy. V tomto scénáři nejsou potřeba žádné přihlašovací údaje.
+V následujícím C# příkladu jsou vstupní data hostována fiktivního koncového bodu GitHubu. Rozhraní API načte soubor z platného webového koncového bodu a vygeneruje soubor prostředků, který má vaše úloha spotřebovat. Pro tento scénář nejsou potřeba žádné přihlašovací údaje.
 
 ```csharp
 ResourceFile inputFile = ResourceFile.FromUrl("https://github.com/foo/file.txt", filePath);
@@ -92,23 +92,23 @@ ResourceFile inputFile = ResourceFile.FromUrl("https://github.com/foo/file.txt",
 
 ## <a name="tips-and-suggestions"></a>Tipy a návrhy
 
-Každého úkolu služby Azure Batch používá soubory odlišně, což je důvod, proč Batch má dostupné možnosti pro správu souborů na úkolech. Následující scénáře nejsou určeny k být vyčerpávající, ale místo toho zahrnují několik běžné situace a poskytnout doporučení.
+Každý Azure Batch úlohy používá soubory odlišně, což je důvod, proč má Batch k dispozici možnosti pro správu souborů v úlohách. Následující scénáře nejsou určeny k komplexnímu, ale budou zahrnovat několik běžných situací a poskytnou doporučení.
 
 ### <a name="many-resource-files"></a>Mnoho souborů prostředků
 
-Dávkové úlohy může obsahovat několik úloh, že všechny používat stejné, běžné soubory. Pokud běžné úlohy soubory jsou sdíleny mezi mnoho úloh, pomocí balíčku aplikace obsahoval soubory, namísto použití souborů prostředků může být vhodnější. Balíčky aplikací poskytují možnost optimalizace pro rychlost stahování. Navíc se data v balíčky aplikací uložené v mezipaměti mezi úkoly, takže pokud se soubory úkolů nemění často, balíčky aplikací může být vhodné pro vaše řešení. Pomocí balíčků aplikací není nutné ručně spravovat několik souborů prostředků nebo generování adresy URL SAS pro přístup k souborům ve službě Azure Storage. Služba batch pracuje s Azure Storage k ukládání a nasadit balíčky aplikací do výpočetních uzlů na pozadí.
+Úloha služby Batch může obsahovat několik úloh, které všechny používají stejné běžné soubory. Pokud jsou společné soubory úloh sdíleny mezi mnoha úlohami, použití balíčku aplikace k zahrnutí souborů namísto použití souborů prostředků může být lepší volbou. Balíčky aplikací poskytují optimalizaci pro rychlost stahování. Data v balíčcích aplikací se také ukládají do mezipaměti mezi úkoly, takže pokud se soubory úloh často nemění, můžou být balíčky aplikací vhodné pro vaše řešení. Pomocí balíčků aplikací nemusíte ručně spravovat několik souborů prostředků nebo generovat adresy URL SAS pro přístup k souborům v Azure Storage. Batch funguje na pozadí s Azure Storage pro ukládání a nasazování balíčků aplikací do výpočetních uzlů.
 
-Pokud každý úkol má mnoho souborů, které jsou jedinečné pro tuto úlohu, soubory prostředků jsou většinou pravděpodobně nejlepší možností. Úlohy, které používají soubory jedinečné často potřeba aktualizovat nebo nahradit, což není snadné s balíčky obsahu aplikace. Soubory prostředků poskytují vyšší flexibilitu pro aktualizaci, přidání nebo úpravu jednotlivé soubory.
+Pokud každý úkol obsahuje pro daný úkol mnoho jedinečných souborů, obvykle nejlepší možnost jsou soubory prostředků. Úlohy, které používají jedinečné soubory, často musí být aktualizovány nebo nahrazeny, což není tak snadné dělat obsah balíčků aplikací. Soubory prostředků poskytují další flexibilitu pro aktualizaci, přidávání nebo úpravu jednotlivých souborů.
 
-### <a name="number-of-resource-files-per-task"></a>Počet souborů prostředků na úkolu
+### <a name="number-of-resource-files-per-task"></a>Počet souborů prostředků na úlohu
 
-Pokud existuje několik stovek prostředků soubory zadané na úlohu, Batch by mohla zamítat úkol, je příliš velký. Doporučujeme zachovat vaše úkoly malé minimalizací počet souborů prostředků na vlastní úloha.
+Pokud je v úloze několik stovek souborů prostředků, může dávka odmítnout úkol, který je příliš velký. Je nejlepší zajistit, aby vaše úkoly byly malé tím, že minimalizují počet souborů prostředků na samotném úkolu.
 
-Pokud neexistuje žádný způsob, chcete-li minimalizovat počet souborů, které vaše úloha potřebuje, úlohu můžete optimalizovat tak, že vytvoříte soubor jeden prostředek, který odkazuje na kontejner úložiště souborů prostředků. Umístěte svoje soubory prostředků do kontejneru služby Azure Storage a použít různé režimy "Kontejneru" soubory prostředků. Pomocí možností předponu objektu blob k zadání kolekce souborů ke stažení pro své úkoly.
+Pokud neexistuje žádný způsob, jak minimalizovat počet souborů, které váš úkol potřebuje, můžete optimalizovat úlohu vytvořením jednoho souboru prostředků, který odkazuje na kontejner úložiště souborů prostředků. Provedete to tak, že zadáte soubory prostředků do kontejneru Azure Storage a použijete různé režimy "kontejner" souborů prostředků. Pomocí možností předpony objektů BLOB určete kolekce souborů, které se mají stáhnout pro vaše úkoly.
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o [balíčky aplikací](batch-application-packages.md) jako alternativa k soubory prostředků.
-- Další informace o používání kontejnerů pro zdrojové soubory, naleznete v tématu [úlohy kontejneru](batch-docker-container-workloads.md).
-- Zjistěte, jak shromažďovat a ukládat výstupní data z vašich úkolů, najdete v článku [trvalý výstup úloh a úkolů](batch-task-output.md).
+- Seznamte se s [balíčky aplikací](batch-application-packages.md) jako s alternativou k souborům prostředků.
+- Další informace o použití kontejnerů pro soubory prostředků najdete v tématu [úlohy kontejneru](batch-docker-container-workloads.md).
+- Informace o tom, jak shromažďovat a ukládat výstupní data z úkolů, najdete v tématu [trvalé zpracování úloh a úkolů](batch-task-output.md).
 - Další informace o dostupných [rozhraních API a nástrojích služby Batch](batch-apis-tools.md) pro sestavování řešení Batch.

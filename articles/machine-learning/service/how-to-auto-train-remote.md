@@ -1,7 +1,7 @@
 ---
-title: Automatizované cíle vzdálený výpočetní ML
+title: Automatizované vzdálené výpočetní cíle pro automatizované na ML
 titleSuffix: Azure Machine Learning service
-description: Další informace o vytváření modelů pomocí automatizovaných machine learningu v Azure Machine Learning cíli vzdálený Výpočetní službě Azure Machine Learning
+description: Naučte se vytvářet modely pomocí automatizovaného strojového učení na Azure Machine Learning vzdálených výpočetních cílů pomocí služby Azure Machine Learning
 services: machine-learning
 author: nacharya1
 ms.author: nilesha
@@ -10,28 +10,27 @@ ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/04/2018
-ms.custom: seodec18
-ms.openlocfilehash: 6a18bdf3a2a1ccd60ff20d21ebd99f4f6e15e38f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 7/12/2019
+ms.openlocfilehash: 00e4e9d5a1fc63dd73fe5a4dba7e1f1416cd08bc
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65551342"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67868886"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Trénování modelů pomocí automatizovaných strojového učení v cloudu
 
-Ve službě Azure Machine Learning vyzkoušejte svůj model pro různé typy výpočetní prostředky, které spravujete. Cílové výpočetní prostředí může být místní počítač nebo počítač v cloudu.
+Ve službě Azure Machine Learning vyzkoušejte svůj model pro různé typy výpočetní prostředky, které spravujete. Cílem výpočtů může být místní počítač nebo prostředek v cloudu.
 
-Můžete snadno vertikálně navýšit kapacitu nebo horizontální navýšení kapacity experimentu s Machine learningem tak, že přidáte další výpočetní cíle, jako je Azure Machine Learning Compute (AmlCompute). AmlCompute je spravované výpočetní infrastruktura, která vám umožní snadno vytvořit jeden nebo více uzly výpočetní.
+Experimenty ve strojovém učení můžete snadno škálovat nebo škálovat přidáním dalších výpočetních cílů, například Azure Machine Learning COMPUTE (AmlCompute). AmlCompute je spravovaná výpočetní infrastruktura, která umožňuje snadno vytvořit výpočetní prostředí s jedním uzlem nebo několika uzly.
 
-V tomto článku se naučíte sestavit model využívající automatizované ML s AmlCompute.
+V tomto článku se dozvíte, jak vytvořit model pomocí automatizovaného ML s AmlCompute.
 
 ## <a name="how-does-remote-differ-from-local"></a>Jak se liší vzdálené a místní?
 
-Tento kurz "[Vyškolíme model klasifikace pomocí automatizovaných strojového učení](tutorial-auto-train-models.md)" vás naučí, jak použijete k natrénování modelu pomocí automatizovaných ML místního počítače.  Pracovní postup, když místně školení platí také pro i vzdálených cílů. Však s vzdálený výpočetní automatizované iterací experimentů v ML jsou spouštěny asynchronně. Tato funkce umožňuje zrušit konkrétní iteraci, podívejte se na stav provádění nebo pokračovat v práci na ostatní buňky v poznámkovém bloku Jupyter. K trénování vzdáleně, je nejprve vytvořit cílové vzdálené výpočetní prostředí jako je například AmlCompute. Potom nakonfigurujte vzdáleného prostředku a odeslání kódu existuje.
+V tomto kurzu se naučíte[model klasifikace pomocí automatizovaného strojového učení](tutorial-auto-train-models.md)a naučíte se používat místní počítač k výuce modelu pomocí automatizovaného ml. Pracovní postup, když místně školení platí také pro i vzdálených cílů. Však s vzdálený výpočetní automatizované iterací experimentů v ML jsou spouštěny asynchronně. Tato funkce umožňuje zrušit konkrétní iteraci, podívejte se na stav provádění nebo pokračovat v práci na ostatní buňky v poznámkovém bloku Jupyter. Chcete-li se naučit vzdáleně, vytvořte nejprve vzdálené výpočetní cíle, jako je AmlCompute. Potom nakonfigurujte vzdáleného prostředku a odeslání kódu existuje.
 
-Tento článek popisuje další kroky potřebné ke spuštění automatizovaných experimentu ML na vzdálené cílové AmlCompute. Objekt workspace `ws`, v tomto kurzu se používá v rámci sem kód.
+V tomto článku se dozvíte o dalších krocích potřebných ke spuštění automatizovaného experimentu ML na vzdáleném AmlCompute cíli. Objekt workspace `ws`, v tomto kurzu se používá v rámci sem kód.
 
 ```python
 ws = Workspace.from_config()
@@ -39,7 +38,7 @@ ws = Workspace.from_config()
 
 ## <a name="create-resource"></a>Vytvořit prostředek
 
-Vytvořte cílovou službu AmlCompute ve vašem pracovním prostoru (`ws`) Pokud ještě neexistuje.  
+Vytvořte cíl AmlCompute v pracovním prostoru (`ws`), pokud ještě neexistuje.
 
 **Časový odhad**: Vytvoření cíle AmlCompute trvá přibližně 5 minut.
 
@@ -48,13 +47,13 @@ from azureml.core.compute import AmlCompute
 from azureml.core.compute import ComputeTarget
 
 amlcompute_cluster_name = "automlcl" #Name your cluster
-provisioning_config = AmlCompute.provisioning_configuration(vm_size = "STANDARD_D2_V2", 
+provisioning_config = AmlCompute.provisioning_configuration(vm_size = "STANDARD_D2_V2",
                                                             # for GPU, use "STANDARD_NC6"
                                                             #vm_priority = 'lowpriority', # optional
                                                             max_nodes = 6)
 
 compute_target = ComputeTarget.create(ws, amlcompute_cluster_name, provisioning_config)
-    
+
 # Can poll for a minimum number of nodes and for a specific timeout.
 # If no min_node_count is provided, it will use the scale settings for the cluster.
 compute_target.wait_for_completion(show_output = True, min_node_count = None, timeout_in_minutes = 20)
@@ -62,23 +61,19 @@ compute_target.wait_for_completion(show_output = True, min_node_count = None, ti
 
 Teď můžete použít `compute_target` jako vzdálený výpočetní cílový objekt.
 
-Omezení názvu clusteru, patří:
-+ Musí být kratší než 64 znaků.  
+Mezi omezení názvu clusteru patří:
++ Musí být kratší než 64 znaků.
 + Nesmí obsahovat žádný z následujících znaků: `\` ~! @ # $ % ^ & * () = + _ [] {} \\ \\ |;: \' \\", < > /?. `
 
-## <a name="access-data-using-getdata-file"></a>Přístup k datům pomocí souboru get_data
+## <a name="access-data-using-getdata-function"></a>Přístup k datům pomocí funkce get_data ()
 
-Poskytnutí přístupu vzdálený prostředek na trénovací data. Pro automatizované strojovým učením běžící na vzdálené výpočetní prostředky, data, musí být načtena pomocí `get_data()` funkce.  
+Poskytnutí přístupu vzdálený prostředek na trénovací data. Pro automatizované strojovým učením běžící na vzdálené výpočetní prostředky, data, musí být načtena pomocí `get_data()` funkce.
 
 Pokud chcete poskytnout přístup, musíte mít:
-+ Vytvořit soubor obsahující get_data.py `get_data()` – funkce 
-+ Umístit tento soubor v adresáři dostupné jako absolutní cestu 
++ Vytvořit soubor obsahující get_data.py `get_data()` – funkce
++ Umístit tento soubor v adresáři dostupné jako absolutní cestu
 
 Kód pro čtení dat z úložiště objektů blob nebo místní disk v souboru get_data.py může zapouzdřit. V následující ukázce kódu data pocházejí z balíčku skriptu sklearn.
-
->[!Warning]
->Pokud používáte vzdálený výpočetní, pak je nutné použít `get_data()` kde se provádí transformaci dat. Pokud je potřeba nainstalovat další knihovny pro transformace dat v rámci get_data(), existují další kroky, kterými se můžete řídit. Odkazovat [auto-ml přípravy ukázkový poznámkový blok](https://aka.ms/aml-auto-ml-data-prep ) podrobnosti.
-
 
 ```python
 # Create a project_folder if it doesn't exist
@@ -93,7 +88,7 @@ from scipy import sparse
 import numpy as np
 
 def get_data():
-    
+
     digits = datasets.load_digits()
     X_digits = digits.data[10:,:]
     y_digits = digits.target[10:]
@@ -101,11 +96,28 @@ def get_data():
     return { "X" : X_digits, "y" : y_digits }
 ```
 
+## <a name="create-run-configuration"></a>Vytvořit konfiguraci spuštění
+
+Aby byly k dispozici závislosti pro skript get_data. py, definujte `RunConfiguration` objekt, který `CondaDependencies`je definován. Použijte tento objekt pro `run_configuration` parametr v. `AutoMLConfig`
+
+```python
+from azureml.core.runconfig import RunConfiguration
+from azureml.core.conda_dependencies import CondaDependencies
+
+run_config = RunConfiguration(framework="python")
+run_config.target = compute_target
+run_config.environment.docker.enabled = True
+run_config.environment.docker.base_image = azureml.core.runconfig.DEFAULT_CPU_IMAGE
+
+dependencies = CondaDependencies.create(pip_packages=["scikit-learn", "scipy", "numpy"])
+run_config.environment.python.conda_dependencies = dependencies
+```
+
+Další příklad tohoto návrhového vzoru najdete v tomto ukázkovém poznámkovém [bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/remote-amlcompute/auto-ml-remote-amlcompute.ipynb) .
+
 ## <a name="configure-experiment"></a>Konfigurace testu
 
 Zadejte nastavení pro `AutoMLConfig`.  (Viz [úplný seznam parametrů](how-to-configure-auto-train.md#configure-experiment) a jejich možných hodnot.)
-
-V nastavení `run_configuration` nastavena `run_config` objektu, který obsahuje nastavení a konfigurace pro datové VĚDY.  
 
 ```python
 from azureml.train.automl import AutoMLConfig
@@ -126,7 +138,8 @@ automl_settings = {
 automl_config = AutoMLConfig(task='classification',
                              debug_log='automl_errors.log',
                              path=project_folder,
-                             compute_target = compute_target,
+                             compute_target=compute_target,
+                             run_configuration=run_config,
                              data_script=project_folder + "/get_data.py",
                              **automl_settings,
                             )
@@ -141,6 +154,7 @@ automl_config = AutoMLConfig(task='classification',
                              debug_log='automl_errors.log',
                              path=project_folder,
                              compute_target = compute_target,
+                             run_configuration=run_config,
                              data_script=project_folder + "/get_data.py",
                              **automl_settings,
                              model_explainability=True,
@@ -154,7 +168,7 @@ Teď odešlete konfigurace k automatickému výběru algoritmus, hyper parametry
 
 ```python
 from azureml.core.experiment import Experiment
-experiment=Experiment(ws, 'automl_remote')
+experiment = Experiment(ws, 'automl_remote')
 remote_run = experiment.submit(automl_config, show_output=True)
 ```
 
@@ -168,7 +182,7 @@ Zobrazí se výstup podobný následujícímu příkladu:
     METRIC: The result of computing score on the fitted pipeline.
     BEST: The best observed score thus far.
     ***********************************************************************************************
-    
+
      ITERATION     PIPELINE                               DURATION                METRIC      BEST
              2      Standardize SGD classifier            0:02:36                  0.954     0.954
              7      Normalizer DT                         0:02:22                  0.161     0.954
@@ -206,7 +220,7 @@ Tady je statický obrázek pomůcky.  V poznámkovém bloku můžete kliknutím 
 ![diagram pomůcky](./media/how-to-auto-train-remote/plot.png)
 
 Ve widgetu zobrazí adresu URL můžete zobrazit a prozkoumat podrobnosti o spuštění jednotlivých.
- 
+
 ### <a name="view-logs"></a>Zobrazení protokolů
 
 Najít protokoly na datové VĚDY v rámci `/tmp/azureml_run/{iterationid}/azureml-logs`.
@@ -215,12 +229,12 @@ Najít protokoly na datové VĚDY v rámci `/tmp/azureml_run/{iterationid}/azure
 
 Načítání modelu vysvětlení dat umožňuje zobrazit podrobné informace o modelech pro zvýšení transparentnosti do co běží na back endu. V tomto příkladu spustíte modelu vysvětlení pouze pro nejlepší přizpůsobení modelu. Při spuštění pro všechny modely v kanálu, způsobí spoustu času spuštění. Obsahuje informace o modelu vysvětlení:
 
-* shap_values: Vysvětlení informace generované okno lib.
-* expected_values: Očekávaná hodnota použitý k nastavení X_train dat modelu.
-* overall_summary: Na úrovni funkce význam hodnoty modelu seřazeny v sestupném pořadí.
-* overall: Názvy funkcí seřazeny ve stejném pořadí jako overall_summary.
-* per_class_summary: Na úrovni funkce význam hodnoty třídy seřazeny v sestupném pořadí. Dostupné jenom pro případ klasifikace.
-* per_class_imp: Názvy funkcí seřazeny ve stejném pořadí jako per_class_summary. Dostupné jenom pro případ klasifikace.
+* shap_values: Vysvětlení informací vygenerovaných Shap lib.
+* expected_values: Očekávaná hodnota modelu použitá pro sadu X_train dat.
+* overall_summary: Hodnoty důležitosti funkce na úrovni modelu seřazené v sestupném pořadí.
+* overall_imp: Názvy funkcí seřazené ve stejném pořadí jako v overall_summary.
+* per_class_summary: Hodnoty důležitosti funkcí na úrovni třídy jsou seřazené v sestupném pořadí. K dispozici pouze pro případ klasifikace.
+* per_class_imp: Názvy funkcí seřazené ve stejném pořadí jako v per_class_summary. K dispozici pouze pro případ klasifikace.
 
 Chcete-li vybrat nejlepší kanál ze své iterace použijte následující kód. `get_output` Metoda vrátí nejlepší spuštění a vybavené model pro poslední přizpůsobit vyvolání.
 
@@ -254,12 +268,12 @@ Funkce význam prostřednictvím widgetu uživatelského rozhraní, jakož i ve 
 
 ![Model explainability uživatelského rozhraní](./media/how-to-auto-train-remote/model-exp.png)
 
-## <a name="example"></a>Příklad:
+## <a name="example"></a>Příklad
 
-[How-to-use-azureml/automated-machine-learning/remote-amlcompute/auto-ml-remote-amlcompute.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/remote-amlcompute/auto-ml-remote-amlcompute.ipynb) Poznámkový blok ukazuje koncepty v tomto článku. 
+Poznámkový blok [How-to-use-AzureML/Automated-Machine-Learning/Remote-amlcompute/auto-ml-Remote-amlcompute. ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/remote-amlcompute/auto-ml-remote-amlcompute.ipynb) ukazuje koncepty v tomto článku.
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Přečtěte si [jak nakonfigurovat nastavení pro automatické školení](how-to-configure-auto-train.md).

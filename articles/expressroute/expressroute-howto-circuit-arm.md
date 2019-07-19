@@ -1,19 +1,20 @@
 ---
-title: 'Vytvoření a úprava okruhu ExpressRoute – prostředí PowerShell: Azure | Dokumentace Microsoftu'
+title: 'Vytvoření a úprava okruhu ExpressRoute – PowerShell: Azure | Microsoft Docs'
 description: Vytvoření, zřízení, ověřte, aktualizovat, odstranit a zrušit zřízení okruhu ExpressRoute.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: article
 ms.date: 02/20/2019
-ms.author: ganesr;cherylmc
+ms.author: cherylmc
+ms.reviewer: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 06f49dc00b83ee2190f6361ebb8e6f052384402a
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 2ff22a3c0087ff7e24517f792ba9abacbae76e3a
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657309"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67846641"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-powershell"></a>Vytvoření a úprava okruhu ExpressRoute pomocí prostředí PowerShell
 > [!div class="op_single_selector"]
@@ -45,7 +46,7 @@ Než začnete, projděte si [požadavky](expressroute-prerequisites.md) a [praco
 ### <a name="2-get-the-list-of-supported-providers-locations-and-bandwidths"></a>2. Získání seznamu podporovaných zprostředkovatelů, umístění a šířky pásma
 Než začnete vytvářet okruhu ExpressRoute, budete potřebovat seznam poskytovatelů podporovaných připojení, umístění a možnosti šířky pásma.
 
-Rutiny Powershellu **Get-AzExpressRouteServiceProvider** vrátí tyto informace, které budete používat v dalších krocích:
+Rutina PowerShellu **Get-AzExpressRouteServiceProvider** vrátí tyto informace, které použijete v pozdějších krocích:
 
 ```azurepowershell-interactive
 Get-AzExpressRouteServiceProvider
@@ -90,7 +91,7 @@ get-help New-AzExpressRouteCircuit -detailed
 
 
 ### <a name="4-list-all-expressroute-circuits"></a>4. Vypsat všechny okruhy ExpressRoute
-Pokud chcete získat seznam všechny okruhy ExpressRoute, které jste vytvořili, spusťte **Get-AzExpressRouteCircuit** příkaz:
+Pokud chcete získat seznam všech okruhů ExpressRoute, které jste vytvořili, spusťte příkaz **Get-AzExpressRouteCircuit** :
 
 ```azurepowershell-interactive
 Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
@@ -216,7 +217,7 @@ Podrobné pokyny najdete v tématu [konfigurace směrování pro okruh ExpressRo
 V dalším kroku propojení virtuální sítě pro váš okruh ExpressRoute. Použití [propojení virtuálních sítí s okruhy ExpressRoute](expressroute-howto-linkvnet-arm.md) článek při práci s modelem nasazení Resource Manager.
 
 ## <a name="getting-the-status-of-an-expressroute-circuit"></a>Při získávání stavu okruhu ExpressRoute
-Tyto informace kdykoli můžete načíst pomocí **Get-AzExpressRouteCircuit** rutiny. Volání bez parametrů jsou uvedeny všechny okruhy.
+Tyto informace můžete získat kdykoli pomocí rutiny **Get-AzExpressRouteCircuit** . Volání bez parametrů jsou uvedeny všechny okruhy.
 
 ```azurepowershell-interactive
 Get-AzExpressRouteCircuit

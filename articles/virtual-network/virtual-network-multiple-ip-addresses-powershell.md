@@ -1,6 +1,6 @@
 ---
-title: Několik IP adres pro Azure virtual machines – PowerShell | Dokumentace Microsoftu
-description: Zjistěte, jak přiřadit několik IP adres k virtuálnímu počítači pomocí Powershellu. | Resource Manager
+title: Několik IP adres pro virtuální počítače Azure – PowerShell | Microsoft Docs
+description: Naučte se, jak přiřadit virtuálnímu počítači víc IP adres pomocí PowerShellu. | Správce prostředků
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -14,31 +14,32 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/24/2017
-ms.author: kumud;annahar
-ms.openlocfilehash: f4ecc9a0b41cf3b287f7601101de3aa9d077b0d5
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.author: kumud
+ms.reviewer: annahar
+ms.openlocfilehash: e9bad6ad614855c543ee6d75d4e6f4dc8e2255aa
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "64730419"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876226"
 ---
-# <a name="assign-multiple-ip-addresses-to-virtual-machines-using-powershell"></a>Přiřadit několik IP adres virtuálních počítačů pomocí Powershellu
+# <a name="assign-multiple-ip-addresses-to-virtual-machines-using-powershell"></a>Přiřazení více IP adres k virtuálním počítačům pomocí PowerShellu
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-intro.md](../../includes/virtual-network-multiple-ip-addresses-intro.md)]
 
-Tento článek vysvětluje, jak vytvořit virtuální počítač (VM) prostřednictvím modelu nasazení Azure Resource Manageru pomocí Powershellu. Několik IP adres nelze přiřadit k prostředkům vytvořeným prostřednictvím modelu nasazení classic. Další informace o modelech nasazení Azure najdete v článku [vysvětlení modelů nasazení](../resource-manager-deployment-model.md) článku.
+Tento článek vysvětluje, jak pomocí PowerShellu vytvořit virtuální počítač (VM) pomocí modelu nasazení Azure Resource Manager. K prostředkům vytvořeným prostřednictvím modelu nasazení Classic nelze přiřadit více IP adres. Další informace o modelech nasazení Azure najdete v článku [Principy modelů nasazení](../resource-manager-deployment-model.md) .
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-scenario.md](../../includes/virtual-network-multiple-ip-addresses-scenario.md)]
 
 ## <a name = "create"></a>Vytvoření virtuálního počítače s několika IP adresami
 
-Následující kroky popisují, jak vytvořit příklad virtuálního počítače s několika IP adresami, jak je popsáno ve scénáři. Změna hodnot proměnných, jak je vyžadováno pro vaši implementaci.
+Následující postup vysvětluje, jak vytvořit ukázkový virtuální počítač s více IP adresami, jak je popsáno ve scénáři. Změňte hodnoty proměnných podle požadavků vaší implementace.
 
-1. Otevřete příkazový řádek Powershellu a dokončete zbývající kroky v této části v rámci jedné relace Powershellu. Pokud ještě nemáte Powershellu nainstalovanou a nakonfigurovanou, dokončete kroky [instalace a konfigurace Azure Powershellu](/powershell/azure/overview) článku.
-2. Přihlášení k účtu se `Connect-AzAccount` příkazu.
-3. Nahraďte *myResourceGroup* a *westus* se název a umístění podle vašeho výběru. Vytvořte skupinu prostředků. Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
+1. Otevřete příkazový řádek PowerShellu a dokončete zbývající kroky v této části v rámci jedné relace PowerShellu. Pokud ještě nemáte nainstalované a nakonfigurované prostředí PowerShell, proveďte kroky popsané v článku [Postup instalace a konfigurace Azure PowerShell](/powershell/azure/overview) .
+2. Pomocí `Connect-AzAccount` příkazu se přihlaste ke svému účtu.
+3. Položky *myResourceGroup* a *westus* nahraďte názvem a umístěním, které zvolíte. Vytvořte skupinu prostředků. Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
 
    ```powershell
    $RgName   = "MyResourceGroup"
@@ -49,7 +50,7 @@ Následující kroky popisují, jak vytvořit příklad virtuálního počítač
    -Location $Location
    ```
 
-4. Vytvoření virtuální sítě (VNet) a podsíti ve stejném umístění jako skupina prostředků:
+4. Vytvořte virtuální síť (VNet) a podsíť ve stejném umístění jako skupina prostředků:
 
    ```powershell
 
@@ -70,7 +71,7 @@ Následující kroky popisují, jak vytvořit příklad virtuálního počítač
    $Subnet = Get-AzVirtualNetworkSubnetConfig -Name $SubnetConfig.Name -VirtualNetwork $VNet
    ```
 
-5. Vytvořte skupinu zabezpečení sítě (NSG) a pravidla. Skupiny zabezpečení sítě zabezpečuje virtuální počítač pomocí příchozích a odchozích pravidel. V tomto případě se vytvoří příchozí pravidlo pro port 3389, které umožní příchozí připojení ke vzdálené ploše.
+5. Vytvořte skupinu zabezpečení sítě (NSG) a pravidlo. NSG zabezpečuje virtuální počítač pomocí příchozích a odchozích pravidel. V tomto případě se vytvoří příchozí pravidlo pro port 3389, které umožní příchozí připojení ke vzdálené ploše.
 
     ```powershell
     
@@ -94,9 +95,9 @@ Následující kroky popisují, jak vytvořit příklad virtuálního počítač
     -SecurityRules $NSGRule
     ```
 
-6. Definovat primární konfigurace protokolu IP pro síťové rozhraní Pokud jste nepoužili hodnotu, dříve definovanou, změňte na platnou adresou v podsíti, ve které jste vytvořili, 10.0.0.4. Před přiřazením statické IP adresy, doporučujeme nejdřív ověřit, že není již používáno. Zadejte příkaz `Test-AzPrivateIPAddressAvailability -IPAddress 10.0.0.4 -VirtualNetwork $VNet`. Pokud je k dispozici na adresu, na výstupu vrátí *True*. Pokud není k dispozici, na výstupu vrátí *False* a seznam adres, které jsou k dispozici. 
+6. Definujte primární konfiguraci IP pro síťovou kartu. Pokud jste nepoužili dříve definovanou hodnotu, změňte 10.0.0.4 na platnou adresu v podsíti, kterou jste vytvořili. Před přiřazením statické IP adresy doporučujeme, abyste nejdřív zkontrolovali, že se už nepoužívá. Zadejte příkaz `Test-AzPrivateIPAddressAvailability -IPAddress 10.0.0.4 -VirtualNetwork $VNet`. Pokud je adresa k dispozici, vrátí výstup *hodnotu true*. Pokud není k dispozici, vrátí výstup *hodnotu false* a seznam adres, které jsou k dispozici. 
 
-    V následujících příkazech **nahradit \<nahradit s your jedinečný název > s jedinečným názvem služby DNS k použití.** Název musí být jedinečný mezi všechny veřejné IP adresy v rámci oblasti Azure. Toto je volitelný parametr. Je možné odebrat, pokud se chcete připojit k virtuálnímu počítači pomocí veřejné IP adresy.
+    V následujících příkazech **nahraďte \<text Replace-with-Unique-Name > jedinečným názvem DNS, který chcete použít.** Název musí být jedinečný napříč všemi veřejnými IP adresami v oblasti Azure. Toto je volitelný parametr. Pokud se chcete k virtuálnímu počítači připojit jenom pomocí veřejné IP adresy, můžete ho odebrat.
 
     ```powershell
     
@@ -118,12 +119,12 @@ Následující kroky popisují, jak vytvořit příklad virtuálního počítač
     -Primary
     ```
 
-    Pokud přiřadíte více konfigurací protokolu IP k síťové KARTĚ, jedna konfigurace musí být přiřazena jako *– primární*.
+    Pokud přiřadíte více konfigurací protokolu IP k síťovému rozhraní, musí být jedna konfigurace přiřazena jako *primární*.
 
     > [!NOTE]
-    > Veřejné IP adresy mají nominální poplatek. Další informace o cenách IP adres, [ceny IP adres](https://azure.microsoft.com/pricing/details/ip-addresses) stránky. Platí omezení na počet veřejné IP adresy, které je možné v rámci předplatného. Další informace o omezeních najdete v článku o [omezeních Azure](../azure-subscription-service-limits.md#networking-limits).
+    > Veřejné IP adresy mají nominální poplatek. Pokud se chcete dozvědět víc o cenách IP adres, přečtěte si stránku [ceny IP adres](https://azure.microsoft.com/pricing/details/ip-addresses) . Počet veřejných IP adres, které se dají použít v předplatném, je omezený. Další informace o omezeních najdete v článku o [omezeních Azure](../azure-subscription-service-limits.md#networking-limits).
 
-7. Definovat sekundární konfigurace IP pro síťové rozhraní Můžete přidat nebo odebrat konfigurace podle potřeby. Každou konfiguraci IP adresy musí mít přiřazenou privátní IP adresu. Každá konfigurace můžou mít přiřazenou jednu veřejnou IP adresu.
+7. Definujte sekundární konfiguraci protokolu IP pro síťovou kartu. Konfigurace můžete podle potřeby přidávat nebo odebírat. Každá konfigurace protokolu IP musí mít přiřazenou privátní IP adresu. Každé konfiguraci může volitelně mít přiřazenou jednu veřejnou IP adresu.
 
     ```powershell
     
@@ -149,7 +150,7 @@ Následující kroky popisují, jak vytvořit příklad virtuálního počítač
     -PrivateIpAddress 10.0.0.6
     ```
 
-8. Vytvořte síťové rozhraní a přidružte tří konfigurací protokolu IP k ní:
+8. Vytvořte síťovou kartu a přidružte k ní tři konfigurace protokolu IP:
 
    ```powershell
    $NIC = New-AzNetworkInterface `
@@ -161,9 +162,9 @@ Následující kroky popisují, jak vytvořit příklad virtuálního počítač
    ```
 
    >[!NOTE]
-   >I když jsou přiřazeny všech konfigurací s jedním síťovým rozhraním v tomto článku, můžete přiřadit více konfigurací protokolu IP pro každé síťové rozhraní připojené k virtuálnímu počítači. Zjistěte, jak vytvořit virtuální počítač s několika síťovými kartami, přečtěte si [vytvoření virtuálního počítače s několika síťovými kartami](../virtual-machines/windows/multiple-nics.md) článku.
+   >I když jsou všechny konfigurace přiřazené k jedné síťové kartě v tomto článku, můžete pro každou síťovou kartu připojenou k virtuálnímu počítači přiřadit několik konfigurací IP. Pokud chcete zjistit, jak vytvořit virtuální počítač s více síťovými rozhraními, přečtěte si článek [Vytvoření virtuálního počítače s několika síťovými](../virtual-machines/windows/multiple-nics.md) kartami.
 
-9. Vytvoření virtuálního počítače tak, že zadáte následující příkazy:
+9. Vytvořte virtuální počítač zadáním následujících příkazů:
 
     ```powershell
     
@@ -192,14 +193,14 @@ Následující kroky popisují, jak vytvořit příklad virtuálního počítač
     -VM $VmConfig
     ```
 
-10. Přidat privátních IP adres do operačního systému virtuálního počítače pomocí kroků pro váš operační systém v [přidat IP adresy na operační systém virtuálního počítače](#os-config) části tohoto článku. Nepřidávejte veřejných IP adres do operačního systému.
+10. Dokončete kroky pro operační systém v části [Přidání IP adres do operačního systému](#os-config) virtuálního počítače v tomto článku přidáním privátních IP adres do operačního systému virtuálního počítače. Nepřidávat veřejné IP adresy do operačního systému.
 
-## <a name="add"></a>Přidejte IP adresy virtuálního počítače
+## <a name="add"></a>Přidání IP adres k virtuálnímu počítači
 
-Privátní a veřejné IP adresy Azure síťovému rozhraní můžete přidat provedením následujících kroků. Příklady v následujících částech Předpokládejme, že máte již virtuální počítač s tři konfigurace protokolu IP je popsáno v [scénář](#scenario) v tomto článku, ale není nutné, abyste udělali.
+K síťovému rozhraní Azure můžete přidat privátní a veřejné IP adresy provedením následujících kroků. V příkladech v následujících oddílech se předpokládá, že už máte virtuální počítač se třemi konfiguracemi protokolu IP, které jsou popsané ve [scénáři](#scenario) tohoto článku, ale nemusíte to dělat.
 
-1. Otevřete příkazový řádek Powershellu a dokončete zbývající kroky v této části v rámci jedné relace Powershellu. Pokud ještě nemáte Powershellu nainstalovanou a nakonfigurovanou, dokončete kroky [instalace a konfigurace Azure Powershellu](/powershell/azure/overview) článku.
-2. Změňte název síťového rozhraní, které chcete přidat IP adresu, která a skupinu prostředků a umístění, které se síťové rozhraní existuje v "hodnoty" $Variables následující:
+1. Otevřete příkazový řádek PowerShellu a dokončete zbývající kroky v této části v rámci jedné relace PowerShellu. Pokud ještě nemáte nainstalované a nakonfigurované prostředí PowerShell, proveďte kroky popsané v článku [Postup instalace a konfigurace Azure PowerShell](/powershell/azure/overview) .
+2. Změňte hodnoty z následujících $Variables na název síťové karty, do které chcete přidat IP adresu, a do skupiny prostředků a umístění, ve kterém síťová karta existuje:
 
    ```powershell
    $NicName  = "MyNIC"
@@ -207,65 +208,65 @@ Privátní a veřejné IP adresy Azure síťovému rozhraní můžete přidat pr
    $Location = "westus"
    ```
 
-   Pokud si nejste jisti názvem síťového adaptéru, kterou chcete změnit, zadejte následující příkazy, změňte hodnoty proměnných předchozí:
+   Pokud neznáte název síťového adaptéru, který chcete změnit, zadejte následující příkazy a pak změňte hodnoty předchozích proměnných:
 
    ```powershell
    Get-AzNetworkInterface | Format-Table Name, ResourceGroupName, Location
    ```
 
-3. Vytvořte proměnnou a nastavte ho na existující síťovou kartu tak, že zadáte následující příkaz:
+3. Vytvořte proměnnou a nastavte ji na stávající síťové rozhraní zadáním následujícího příkazu:
 
    ```powershell
    $MyNIC = Get-AzNetworkInterface -Name $NicName -ResourceGroupName $RgName
    ```
 
-4. V následujících příkazech změnit *MyVNet* a *MySubnet* názvy virtuální sítě a podsítě, síťová karta je připojená k. Zadejte virtuální síť a podsíť objekty, které je síťové rozhraní připojené k načtení příkazy:
+4. V následujících příkazech změňte *MyVNet* a *MySubnet* na názvy virtuální sítě a podsíť, ke které je síťová karta připojena. Zadejte příkazy pro načtení virtuální sítě a objektů podsítě, ke kterým je síťová karta připojená:
 
    ```powershell
    $MyVNet = Get-AzVirtualnetwork -Name MyVNet -ResourceGroupName $RgName
    $Subnet = $MyVnet.Subnets | Where-Object { $_.Name -eq "MySubnet" }
    ```
 
-   Pokud si nejste jisti, které je síťové rozhraní připojené k název virtuální sítě nebo podsítě, zadejte následující příkaz:
+   Pokud neznáte virtuální síť nebo název podsítě, ke které je síťová karta připojena, zadejte následující příkaz:
 
    ```powershell
    $MyNIC.IpConfigurations
    ```
 
-   Ve výstupu vyhledejte text podobně jako následující příklad výstupu:
+   Ve výstupu vyhledejte text podobný následujícímu příkladu výstupu:
 
    ```
    "Id": "/subscriptions/[Id]/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/MyVNet/subnets/MySubnet"
    ```
 
-    Tento výstup *MyVnet* je virtuální síť a *MySubnet* je síťová karta je připojená k podsíti.
+    V tomto výstupu je *MyVnet* virtuální síť a *MySubnet* je podsíť, ke které je síťová karta připojená.
 
-5. Proveďte kroky v jednom z následujících částí, na základě vašich požadavků:
+5. V závislosti na vašich požadavcích proveďte kroky v jedné z následujících částí:
 
-   **Přidejte privátní IP adresy**
+   **Přidat privátní IP adresu**
 
-   Chcete-li přidat privátní IP adresu k síťové KARTĚ, musíte vytvořit konfiguraci IP. Následující příkaz vytvoří konfiguraci se statickou IP adresou 10.0.0.7. Při zadávání statickou IP adresu, musí být nepoužívaná adresa podsítě. Doporučuje se nejdřív otestovat adresu zajistit, je k dispozici tak, že zadáte `Test-AzPrivateIPAddressAvailability -IPAddress 10.0.0.7 -VirtualNetwork $myVnet` příkazu. Pokud je k dispozici IP adresu, na výstupu vrátí *True*. Pokud není k dispozici, na výstupu vrátí *False*a seznam adres, které jsou k dispozici.
+   Chcete-li přidat privátní IP adresu do síťového rozhraní, je nutné vytvořit konfiguraci protokolu IP. Následující příkaz vytvoří konfiguraci se statickou IP adresou 10.0.0.7. Když zadáte statickou IP adresu, musí se jednat o nepoužitou adresu podsítě. Doporučuje se nejdřív otestovat adresu, abyste měli jistotu, že je k dispozici, zadáním `Test-AzPrivateIPAddressAvailability -IPAddress 10.0.0.7 -VirtualNetwork $myVnet` příkazu. Pokud je IP adresa dostupná, vrátí výstup *hodnotu true*. Pokud není k dispozici, vrátí výstup *hodnotu false*a zobrazí seznam adres, které jsou k dispozici.
 
    ```powershell
    Add-AzNetworkInterfaceIpConfig -Name IPConfig-4 -NetworkInterface `
    $MyNIC -Subnet $Subnet -PrivateIpAddress 10.0.0.7
    ```
 
-   Vytvořte tolik konfigurace podle potřeby, pomocí jedinečnou konfiguraci názvy a privátní IP adresy (pro konfigurace se statickými IP adresami).
+   Pomocí jedinečných názvů konfigurací a privátních IP adres (pro konfigurace se statickými IP adresami) vytvořte tolik konfigurací, kolik jich vyžadujete.
 
-   Přidejte privátní IP adresu v operačním systému virtuálního počítače pomocí kroků pro váš operační systém v [přidat IP adresy na operační systém virtuálního počítače](#os-config) části tohoto článku.
+   Dokončete kroky pro operační systém v části [Přidání IP adres do operačního systému](#os-config) virtuálního počítače v tomto článku a přidejte tak privátní IP adresu do operačního systému virtuálního počítače.
 
-   **Přidání veřejné IP adresy**
+   **Přidat veřejnou IP adresu**
 
-   Veřejná IP adresa se přidá tím, že přidružíte prostředek veřejné IP adresy pro novou konfiguraci protokolu IP nebo existující konfigurace protokolu IP. Proveďte kroky v jednom z částí, které následují, podle potřeby.
+   Veřejná IP adresa se přidá pomocí přidružení prostředku veřejné IP adresy k nové konfiguraci protokolu IP nebo existující konfiguraci protokolu IP. Proveďte kroky v jedné z částí, které následují, jak budete potřebovat.
 
    > [!NOTE]
-   > Veřejné IP adresy mají nominální poplatek. Další informace o cenách IP adres, [ceny IP adres](https://azure.microsoft.com/pricing/details/ip-addresses) stránky. Platí omezení na počet veřejné IP adresy, které je možné v rámci předplatného. Další informace o omezeních najdete v článku o [omezeních Azure](../azure-subscription-service-limits.md#networking-limits).
+   > Veřejné IP adresy mají nominální poplatek. Pokud se chcete dozvědět víc o cenách IP adres, přečtěte si stránku [ceny IP adres](https://azure.microsoft.com/pricing/details/ip-addresses) . Počet veřejných IP adres, které se dají použít v předplatném, je omezený. Další informace o omezeních najdete v článku o [omezeních Azure](../azure-subscription-service-limits.md#networking-limits).
    >
 
-   **Přidružte prostředek veřejné IP adresy na novou konfiguraci protokolu IP**
+   **Přidružte prostředek veřejné IP adresy k nové konfiguraci protokolu IP.**
 
-   Pokaždé, když přidáte novou konfiguraci IP veřejnou IP adresu, musíte také přidat privátní IP adresu, protože všechny konfigurace protokolu IP, musí mít privátní IP adresu. Můžete přidat existující prostředek veřejné IP adresy, nebo vytvořte novou. Chcete-li vytvořit nový, zadejte následující příkaz:
+   Kdykoli přidáte veřejnou IP adresu v nové konfiguraci protokolu IP, musíte taky přidat privátní IP adresu, protože všechny konfigurace IP adres musí mít privátní IP adresu. Můžete buď přidat existující prostředek veřejné IP adresy, nebo vytvořit nový. Pokud chcete vytvořit nový, zadejte následující příkaz:
 
    ```powershell
    $myPublicIp3 = New-AzPublicIpAddress `
@@ -275,7 +276,7 @@ Privátní a veřejné IP adresy Azure síťovému rozhraní můžete přidat pr
    -AllocationMethod Static
    ```
 
-   Chcete-li vytvořit novou konfiguraci IP adresy se statickou privátní IP adresou a přidružené *myPublicIp3* veřejné IP adresy prostředků, zadejte následující příkaz:
+   Pokud chcete vytvořit novou konfiguraci protokolu IP se statickou privátní IP adresou a přiřazeným prostředkem veřejné IP adresy *myPublicIp3* , zadejte následující příkaz:
 
    ```powershell
    Add-AzNetworkInterfaceIpConfig `
@@ -286,15 +287,15 @@ Privátní a veřejné IP adresy Azure síťovému rozhraní můžete přidat pr
    -PublicIpAddress $myPublicIp3
    ```
 
-   **Přidružte prostředek veřejné IP adresy do existující konfigurace IP**
+   **Přidružte prostředek veřejné IP adresy k existující konfiguraci protokolu IP.**
 
-   Prostředek veřejné IP adresy lze přidružit pouze ke konfiguraci IP, která ještě neexistuje spojené. Můžete určit, zda má konfiguraci IP přidružených veřejnou IP adresu tak, že zadáte následující příkaz:
+   Prostředek veřejné IP adresy se dá přidružit jenom ke konfiguraci protokolu IP, která ještě nemá přidruženou žádnou přidruženou adresu. Zadáním následujícího příkazu můžete určit, jestli má konfigurace protokolu IP přidruženou veřejnou IP adresu:
 
    ```powershell
    $MyNIC.IpConfigurations | Format-Table Name, PrivateIPAddress, PublicIPAddress, Primary
    ```
 
-   Zobrazí výstup podobný následujícímu:
+   Zobrazí se výstup podobný následujícímu:
 
    ```
    Name       PrivateIpAddress PublicIpAddress                                           Primary
@@ -304,7 +305,7 @@ Privátní a veřejné IP adresy Azure síťovému rozhraní můžete přidat pr
    IpConfig-3 10.0.0.6                                                                     False
    ```
 
-   Protože **PublicIpAddress** sloupec pro *IpConfig 3* je prázdný, žádný prostředek veřejné IP adresy je aktuálně k ní přidružena. Můžete přidat existující prostředek veřejné IP adresy na IpConfig 3, nebo zadejte následující příkaz k jejímu vytvoření:
+   Vzhledem k tomu, že sloupec **PublicIpAddress** pro *příkaz ipconfig-3* je prázdný, není k němu aktuálně PŘIDRUŽEN žádný prostředek veřejné IP adresy. Existující prostředek veřejné IP adresy můžete přidat do příkazu IpConfig-3 nebo můžete zadat následující příkaz a vytvořit ho:
 
    ```powershell
    $MyPublicIp3 = New-AzPublicIpAddress `
@@ -313,7 +314,7 @@ Privátní a veřejné IP adresy Azure síťovému rozhraní můžete přidat pr
    -Location $Location -AllocationMethod Static
    ```
 
-   Zadejte následující příkaz, který přidružte prostředek veřejné IP adresy ke stávající konfiguraci IP adresy s názvem *IpConfig 3*:
+   Zadejte následující příkaz pro přidružení prostředku veřejné IP adresy k existující konfiguraci protokolu IP s názvem *ipconfig-3*:
 
    ```powershell
    Set-AzNetworkInterfaceIpConfig `
@@ -323,18 +324,18 @@ Privátní a veřejné IP adresy Azure síťovému rozhraní můžete přidat pr
    -PublicIpAddress $myPublicIp3
    ```
 
-6. Nastavte síťové karty s novou konfigurací protokolu IP tak, že zadáte následující příkaz:
+6. Zadáním následujícího příkazu nastavte síťovou kartu s novou konfigurací IP adresy:
 
    ```powershell
    Set-AzNetworkInterface -NetworkInterface $MyNIC
    ```
 
-7. Zobrazte soukromé IP adresy a prostředky veřejné adresy IP adresy přiřazené k síťovému rozhraní tak, že zadáte následující příkaz:
+7. Zadáním následujícího příkazu Zobrazte soukromé IP adresy a prostředky veřejné IP adresy přiřazené k síťovému rozhraní:
 
    ```powershell
    $MyNIC.IpConfigurations | Format-Table Name, PrivateIPAddress, PublicIPAddress, Primary
    ```
 
-8. Přidejte privátní IP adresu v operačním systému virtuálního počítače pomocí kroků pro váš operační systém v [přidat IP adresy na operační systém virtuálního počítače](#os-config) části tohoto článku. Nepřidávejte veřejnou IP adresu do operačního systému.
+8. Dokončete kroky pro operační systém v části [Přidání IP adres do operačního systému](#os-config) virtuálního počítače v tomto článku a přidejte tak privátní IP adresu do operačního systému virtuálního počítače. Nepřidejte veřejnou IP adresu k operačnímu systému.
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-os-config.md](../../includes/virtual-network-multiple-ip-addresses-os-config.md)]

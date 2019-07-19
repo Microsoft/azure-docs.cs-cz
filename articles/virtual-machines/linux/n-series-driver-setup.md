@@ -1,6 +1,6 @@
 ---
-title: Azure instalace ovladačů v instancích N-series GPU pro Linux | Dokumentace Microsoftu
-description: Jak nastavit ovladače NVIDIA GPU pro virtuální počítače řady N-series s Linuxem v Azure
+title: Nastavení ovladače grafického procesoru Azure N-Series pro Linux | Microsoft Docs
+description: Postup nastavení ovladačů NVIDIA GPU pro virtuální počítače řady N-Series se systémem Linux v Azure
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -16,44 +16,44 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d6c8bdb27e9e976a7a490c2a824e994242378641
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 7e798b4316b8ccdc2f76512d4651365f5bb151ce
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671211"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68278298"
 ---
-# <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Instalace ovladačů NVIDIA GPU na virtuálních počítačích řady N-series s Linuxem
+# <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Instalace ovladačů NVIDIA GPU pro virtuální počítače řady N-Series se systémem Linux
 
-Abyste mohli využívat výhod GPU virtuální počítače Azure řady N-series s Linuxem, musí být nainstalována ovladačů NVIDIA GPU. [Rozšíření ovladače GPU NVIDIA](../extensions/hpccompute-gpu-linux.md) nainstaluje vhodných ovladačů NVIDIA CUDA nebo mřížky na virtuální počítač řady N-series. Instalovat ani spravovat rozšíření pomocí webu Azure portal nebo nástrojů, jako jsou šablony Azure Resource Manageru nebo rozhraní příkazového řádku Azure. Zobrazit [dokumentaci rozšíření ovladače GPU NVIDIA](../extensions/hpccompute-gpu-linux.md) podporovaných distribucích a kroky nasazení.
+Aby bylo možné využívat možnosti GPU pro virtuální počítače řady Azure N-Series se systémem Linux, je nutné nainstalovat ovladače GPU NVIDIA. [Rozšíření ovladače NVIDIA GPU](../extensions/hpccompute-gpu-linux.md) nainstaluje vhodné ovladače NVIDIA CUDA nebo Grid na virtuální počítač řady N-Series. Nainstalujte nebo spravujte rozšíření pomocí Azure Portal nebo nástrojů, jako je Azure CLI nebo šablony Azure Resource Manager. Podporované distribuce a kroky nasazení najdete v [dokumentaci k rozšíření ovladače GPU NVIDIA](../extensions/hpccompute-gpu-linux.md) .
 
-Pokud se rozhodnete pro instalaci ovladače GPU ručně, tento článek obsahuje podporované distribuce, ovladačů a postup instalace a ověření. Informace o nastavení ruční ovladač je také k dispozici pro [virtuální počítače s Windows](../windows/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Pokud se rozhodnete nainstalovat ovladače GPU ručně, najdete v tomto článku Podporované distribuce, ovladače a postup instalace a ověření. Pro [virtuální počítače s Windows](../windows/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)jsou k dispozici také informace o ruční instalaci ovladače.
 
-Specifikace, kapacity úložiště a podrobných informací o discích virtuálních počítačů řady N-series najdete v části [velikosti virtuálního počítače s Linuxem GPU](sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
+Informace o specifikacích virtuálních počítačů řady N-Series, kapacitách úložiště a podrobnostech o disku najdete v tématu [velikosti virtuálních počítačů se systémem GPU Linux](sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
 
 [!INCLUDE [virtual-machines-n-series-linux-support](../../../includes/virtual-machines-n-series-linux-support.md)]
 
-## <a name="install-cuda-drivers-on-n-series-vms"></a>Instalace ovladačů CUDA na virtuální počítače řady N-series
+## <a name="install-cuda-drivers-on-n-series-vms"></a>Nainstalovat ovladače CUDA pro virtuální počítače řady N-Series
 
-Tady jsou kroky pro instalaci ovladače CUDA z Toolkit NVIDIA CUDA na virtuálních počítačích řady N-series. 
+Tady jsou kroky pro instalaci ovladačů CUDA ze sady NVIDIA CUDA Toolkit na virtuálních počítačích řady N-Series. 
 
 
-Vývojáře v C a C++ můžete volitelně nainstalovat úplnou sadu nástrojů k vytváření aplikací – hardwarově akcelerovanou. Další informace najdete v tématu [Průvodce instalací CUDA](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html).
+C a C++ vývojáři mohou volitelně nainstalovat úplnou sadu nástrojů pro vytváření aplikací akcelerovaných GPU. Další informace najdete v příručce pro [instalaci CUDA](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html).
 
-Instalace ovladačů CUDA, vytvořte připojení SSH ke všem virtuálním počítačům. Pokud chcete ověřit, zda má systém podporující CUDA GPU, spusťte následující příkaz:
+Chcete-li nainstalovat ovladače CUDA, vytvořte připojení SSH ke každému virtuálnímu počítači. Pokud chcete ověřit, že systém má grafický procesor s podporou CUDA, spusťte následující příkaz:
 
 ```bash
 lspci | grep -i NVIDIA
 ```
-Zobrazí se výstup jako v následujícím příkladu (zobrazuje se karty, která se NVIDIA Tesla K80):
+Zobrazí se výstup podobný následujícímu příkladu (zobrazuje se karta NVIDIA Tesla K80):
 
 ![výstup příkazu lspci](./media/n-series-driver-setup/lspci.png)
 
-Potom spusťte instalaci příkazů specifických pro vaši distribuci.
+Pak spusťte instalační příkazy specifické pro vaši distribuci.
 
 ### <a name="ubuntu"></a>Ubuntu 
 
-1. Stáhnout a nainstalovat z webu NVIDIA CUDA ovladače. Například pro Ubuntu 16.04 LTS:
+1. Stáhněte si a nainstalujte ovladače CUDA z webu NVIDIA. Například pro Ubuntu 16,04 LTS:
    ```bash
    CUDA_REPO_PKG=cuda-repo-ubuntu1604_10.0.130-1_amd64.deb
 
@@ -73,17 +73,17 @@ Potom spusťte instalaci příkazů specifických pro vaši distribuci.
 
    Instalace může trvat několik minut.
 
-2. Pokud chcete volitelně nainstalovat úplnou sadu nástrojů CUDA, zadejte:
+2. Pokud chcete volitelně nainstalovat úplnou CUDA sadu nástrojů, zadejte:
 
    ```bash
    sudo apt-get install cuda
    ```
 
-3. Restartujte virtuální počítač a přejděte k ověření instalace.
+3. Restartujte virtuální počítač a pokračujte v instalaci ověření.
 
 #### <a name="cuda-driver-updates"></a>Aktualizace ovladačů CUDA
 
-Doporučujeme pravidelně aktualizovat CUDA ovladače po nasazení.
+Doporučujeme, abyste po nasazení pravidelně aktualizovali CUDA ovladače.
 
 ```bash
 sudo apt-get update
@@ -99,7 +99,7 @@ sudo reboot
 
 ### <a name="centos-or-red-hat-enterprise-linux"></a>CentOS nebo Red Hat Enterprise Linux
 
-1. Aktualizujte jádra (doporučeno). Pokud se rozhodnete neaktualizovat jádra, ujistěte se, že verze `kernel-devel` a `dkms` jsou vhodné pro vaše jádra.
+1. Aktualizujte jádro (doporučeno). Pokud se rozhodnete neaktualizovat jádro, ujistěte se, že verze `kernel-devel` nástroje a `dkms` jsou vhodné pro vaše jádro.
 
    ```
    sudo yum install kernel kernel-tools kernel-headers kernel-devel
@@ -120,7 +120,7 @@ sudo reboot
    sudo reboot
    ```
  
-3. Znovu připojit k virtuálnímu počítači a pokračovat v instalaci pomocí následujících příkazů:
+3. Znovu se připojte k virtuálnímu počítači a pokračujte v instalaci pomocí následujících příkazů:
 
    ```bash
    sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
@@ -140,43 +140,43 @@ sudo reboot
 
    Instalace může trvat několik minut. 
 
-4. Pokud chcete volitelně nainstalovat úplnou sadu nástrojů CUDA, zadejte:
+4. Pokud chcete volitelně nainstalovat úplnou CUDA sadu nástrojů, zadejte:
 
    ```bash
    sudo yum install cuda
    ```
 
-5. Restartujte virtuální počítač a přejděte k ověření instalace.
+5. Restartujte virtuální počítač a pokračujte v instalaci ověření.
 
-### <a name="verify-driver-installation"></a>Ověření instalace ovladače
+### <a name="verify-driver-installation"></a>Ověřit instalaci ovladače
 
-K dotazování stavu zařízení GPU SSH k virtuálnímu počítači a spusťte [nvidia smi](https://developer.nvidia.com/nvidia-system-management-interface) s ovladačem nainstalovaný nástroj příkazového řádku. 
+Pokud chcete zadat dotaz na stav zařízení GPU, SSH k virtuálnímu počítači a spustit nástroj příkazového řádku [NVIDIA-SMI](https://developer.nvidia.com/nvidia-system-management-interface) , který je nainstalovaný s ovladačem. 
 
-Pokud je nainstalovaný ovladač, zobrazí se výstup podobný následujícímu. Všimněte si, že **využití GPU** ukazuje 0 %, pokud máte právě spuštěnou úlohu GPU na virtuálním počítači. Podrobnosti o GPU a verze ovladače se může lišit od těch, které jsou zobrazeny.
+Pokud je ovladač nainstalovaný, zobrazí se výstup podobný následujícímu. Všimněte si, že **GPU-util** zobrazuje 0%, pokud momentálně na virtuálním počítači nespouštíte úlohu GPU. Podrobnosti o verzi ovladače a GPU se mohou lišit od zobrazených.
 
 ![Stav zařízení NVIDIA](./media/n-series-driver-setup/smi.png)
 
-## <a name="rdma-network-connectivity"></a>Připojení k síti přístup RDMA
+## <a name="rdma-network-connectivity"></a>Připojení k síti RDMA
 
-Připojení k síti přístup RDMA dá nastavit pro virtuální počítače řady N-series s podporou RDMA, jako je NC24r nasazené ve stejné skupině dostupnosti nebo v jediné skupiny umístění ve škálovací sadě virtuálních počítačů. Sítě RDMA podporuje rozhraní MPI (Message Passing Interface) provozu pro aplikace s technologií Intel MPI 5.x nebo novější. Následují další požadavky:
+Připojení k síti RDMA můžete povolit na virtuálních počítačích řady N-Series s podporou RDMA, jako je NC24r nasazené ve stejné skupině dostupnosti nebo v jedné skupině umístění v sadě VM scaleing. Síť RDMA podporuje provoz rozhraní MPI (Message Passing Interface) pro aplikace běžící s Intel MPI 5. x nebo novější verzí. Další požadavky jsou následující:
 
 ### <a name="distributions"></a>Distribuce
 
-Nasazení podporující RDMA virtuálních počítačů řady N-series z některou k imagí v Tržišti Azure Marketplace, který podporuje připojení RDMA na virtuálních počítačích řady N-series:
+Nasaďte virtuální počítače s podporou RDMA řady N-Series z jedné bitové kopie v Azure Marketplace, která podporuje připojení RDMA na virtuálních počítačích řady N-series:
   
-* **Ubuntu 16.04 LTS** – konfigurace ovladače RDMA na virtuálním počítači a registrace s technologií Intel stáhnout Intel MPI:
+* **Ubuntu 16,04 LTS** – NAKONFIGURUJTE na virtuálním počítači ovladače RDMA a zaregistrujte se pomocí Intel pro stažení Intel MPI:
 
   [!INCLUDE [virtual-machines-common-ubuntu-rdma](../../../includes/virtual-machines-common-ubuntu-rdma.md)]
 
-* **Založené na centOS 7.4 HPC** -ovladače RDMA a Intel MPI 5.1 jsou nainstalovány ve virtuálním počítači.
+* Na virtuálním počítači jsou nainstalované ovladače **HPC-based 7,4 CentOS HPC** -RDMA a Intel MPI 5,1.
 
-## <a name="install-grid-drivers-on-nv-or-nvv2-series-vms"></a>Instalace ovladačů mřížky na NV nebo virtuálních počítačích řady NVv2
+## <a name="install-grid-drivers-on-nv-or-nvv3-series-vms"></a>Instalace ovladačů mřížky na virtuálních počítačích NV nebo NVv3-Series
 
-Instalace ovladačů NVIDIA GRID na NV nebo virtuálních počítačích řady NVv2, vytvořte připojení SSH ke všem virtuálním počítačům a postupujte podle kroků pro vaši Linuxovou distribuci. 
+Chcete-li nainstalovat ovladače pro rozhraní NVIDIA GRID na virtuální počítače NV nebo NVv3-Series, vytvořte připojení SSH ke každému virtuálnímu počítači a postupujte podle kroků pro distribuci systému Linux. 
 
 ### <a name="ubuntu"></a>Ubuntu 
 
-1. Spusťte příkaz `lspci`. Ověřte, že karty NVIDIA M60 nebo karty se zobrazují jako PCI zařízení.
+1. Spusťte příkaz `lspci`. Ověřte, že karta nebo karty NVIDIA M60 jsou viditelné jako zařízení PCI.
 
 2. Nainstalujte aktualizace.
 
@@ -188,8 +188,10 @@ Instalace ovladačů NVIDIA GRID na NV nebo virtuálních počítačích řady N
    sudo apt-get dist-upgrade -y
 
    sudo apt-get install build-essential ubuntu-desktop -y
+   
+   sudo apt-get install linux-azure -y
    ```
-3. Zakážete Nouveau ovladač jádra, která není kompatibilní s ovladač NVIDIA. (Použijte pouze ovladač NVIDIA na NV nebo NVv2 virtuální počítače.) Chcete-li to provést, vytvořte soubor v `/etc/modprobe.d` s názvem `nouveau.conf` s následujícím obsahem:
+3. Zakažte ovladač jádra Nouveau, který je nekompatibilní s ovladačem NVIDIA. (Použijte pouze ovladač NVIDIA na virtuálních počítačích NV nebo NVv2.) Chcete-li to provést, vytvořte soubor `/etc/modprobe.d` s `nouveau.conf` názvem s následujícím obsahem:
 
    ```
    blacklist nouveau
@@ -198,13 +200,13 @@ Instalace ovladačů NVIDIA GRID na NV nebo virtuálních počítačích řady N
    ```
 
 
-4. Restartujte virtuální počítač a znovu připojit. Konec X serveru:
+4. Restartujte virtuální počítač a znovu se připojte. Konec X serveru:
 
    ```bash
    sudo systemctl stop lightdm.service
    ```
 
-5. Stáhněte a nainstalujte ovladač mřížky:
+5. Stažení a instalace ovladače mřížky:
 
    ```bash
    wget -O NVIDIA-Linux-x86_64-grid.run https://go.microsoft.com/fwlink/?linkid=874272  
@@ -214,25 +216,32 @@ Instalace ovladačů NVIDIA GRID na NV nebo virtuálních počítačích řady N
    sudo ./NVIDIA-Linux-x86_64-grid.run
    ``` 
 
-6. Pokud se dotaz, zda chcete spustit nástroj nvidia xconfig a aktualizovat vaše konfigurační soubor X, vyberte **Ano**.
+6. Když se zobrazí dotaz, zda chcete spustit nástroj NVIDIA-xconfig pro aktualizaci konfiguračního souboru X, vyberte **Ano**.
 
-7. Po dokončení instalace, zkopírujte do nové gridd.conf souboru v umístění/etc/nvidia//etc/nvidia/gridd.conf.template
+7. Po dokončení instalace zkopírujte/etc/NVIDIA/GRIDD.conf.template do nového souboru grided. conf v umístění/etc/NVIDIA/
 
    ```bash
    sudo cp /etc/nvidia/gridd.conf.template /etc/nvidia/gridd.conf
    ```
 
-8. Přidejte následující text do `/etc/nvidia/gridd.conf`:
+8. Přidejte následující `/etc/nvidia/gridd.conf`:
  
    ```
    IgnoreSP=FALSE
+   EnableUI=FALSE
    ```
-9. Restartujte virtuální počítač a přejděte k ověření instalace.
+   
+9. Z tohoto pole odeberte `/etc/nvidia/gridd.conf` následující z, pokud je k dispozici:
+ 
+   ```
+   FeatureType=0
+   ```
+10. Restartujte virtuální počítač a pokračujte v instalaci ověření.
 
 
 ### <a name="centos-or-red-hat-enterprise-linux"></a>CentOS nebo Red Hat Enterprise Linux 
 
-1. Aktualizace jádra a DKMS (doporučeno). Pokud se rozhodnete neaktualizovat jádra, ujistěte se, že verze `kernel-devel` a `dkms` jsou vhodné pro vaše jádra.
+1. Aktualizujte jádro a DKMS (doporučeno). Pokud se rozhodnete neaktualizovat jádro, ujistěte se, že verze `kernel-devel` nástroje a `dkms` jsou vhodné pro vaše jádro.
  
    ```bash  
    sudo yum update
@@ -242,9 +251,11 @@ Instalace ovladačů NVIDIA GRID na NV nebo virtuálních počítačích řady N
    sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
  
    sudo yum install dkms
+   
+   sudo yum install hyperv-daemons
    ```
 
-2. Zakážete Nouveau ovladač jádra, která není kompatibilní s ovladač NVIDIA. (Použijte pouze ovladač NVIDIA na NV nebo NV2 virtuální počítače.) Chcete-li to provést, vytvořte soubor v `/etc/modprobe.d` s názvem `nouveau.conf` s následujícím obsahem:
+2. Zakažte ovladač jádra Nouveau, který je nekompatibilní s ovladačem NVIDIA. (Použijte pouze ovladač NVIDIA na virtuálních počítačích NV nebo NV2.) Chcete-li to provést, vytvořte soubor `/etc/modprobe.d` s `nouveau.conf` názvem s následujícím obsahem:
 
    ```
    blacklist nouveau
@@ -252,7 +263,7 @@ Instalace ovladačů NVIDIA GRID na NV nebo virtuálních počítačích řady N
    blacklist lbm-nouveau
    ```
  
-3. Restartujte virtuální počítač, opětovné připojení a nainstalujte nejnovější [integrační služby Linuxu pro Hyper-V a Azure](https://www.microsoft.com/download/details.aspx?id=55106).
+3. Restartujte virtuální počítač, znovu se připojte a nainstalujte nejnovější [integrační služby Linux pro Hyper-V a Azure](https://www.microsoft.com/download/details.aspx?id=55106).
  
    ```bash
    wget https://aka.ms/lis
@@ -267,9 +278,9 @@ Instalace ovladačů NVIDIA GRID na NV nebo virtuálních počítačích řady N
 
    ```
  
-4. Znovu připojit k virtuálnímu počítači a spusťte `lspci` příkazu. Ověřte, že karty NVIDIA M60 nebo karty se zobrazují jako PCI zařízení.
+4. Znovu se připojte k virtuálnímu počítači a `lspci` spusťte příkaz. Ověřte, že karta nebo karty NVIDIA M60 jsou viditelné jako zařízení PCI.
  
-5. Stáhněte a nainstalujte ovladač mřížky:
+5. Stažení a instalace ovladače mřížky:
 
    ```bash
    wget -O NVIDIA-Linux-x86_64-grid.run https://go.microsoft.com/fwlink/?linkid=874272  
@@ -278,33 +289,40 @@ Instalace ovladačů NVIDIA GRID na NV nebo virtuálních počítačích řady N
 
    sudo ./NVIDIA-Linux-x86_64-grid.run
    ``` 
-6. Pokud se dotaz, zda chcete spustit nástroj nvidia xconfig a aktualizovat vaše konfigurační soubor X, vyberte **Ano**.
+6. Když se zobrazí dotaz, zda chcete spustit nástroj NVIDIA-xconfig pro aktualizaci konfiguračního souboru X, vyberte **Ano**.
 
-7. Po dokončení instalace, zkopírujte do nové gridd.conf souboru v umístění/etc/nvidia//etc/nvidia/gridd.conf.template
+7. Po dokončení instalace zkopírujte/etc/NVIDIA/GRIDD.conf.template do nového souboru grided. conf v umístění/etc/NVIDIA/
   
    ```bash
    sudo cp /etc/nvidia/gridd.conf.template /etc/nvidia/gridd.conf
    ```
   
-8. Přidejte následující text do `/etc/nvidia/gridd.conf`:
+8. Přidejte následující `/etc/nvidia/gridd.conf`:
  
    ```
    IgnoreSP=FALSE
+   EnableUI=FALSE 
    ```
-9. Restartujte virtuální počítač a přejděte k ověření instalace.
+9. Z tohoto pole odeberte `/etc/nvidia/gridd.conf` následující z, pokud je k dispozici:
+ 
+   ```
+   FeatureType=0
+   ```
+10. Restartujte virtuální počítač a pokračujte v instalaci ověření.
 
-### <a name="verify-driver-installation"></a>Ověření instalace ovladače
+
+### <a name="verify-driver-installation"></a>Ověřit instalaci ovladače
 
 
-K dotazování stavu zařízení GPU SSH k virtuálnímu počítači a spusťte [nvidia smi](https://developer.nvidia.com/nvidia-system-management-interface) s ovladačem nainstalovaný nástroj příkazového řádku. 
+Pokud chcete zadat dotaz na stav zařízení GPU, SSH k virtuálnímu počítači a spustit nástroj příkazového řádku [NVIDIA-SMI](https://developer.nvidia.com/nvidia-system-management-interface) , který je nainstalovaný s ovladačem. 
 
-Pokud je nainstalovaný ovladač, zobrazí se výstup podobný následujícímu. Všimněte si, že **využití GPU** ukazuje 0 %, pokud máte právě spuštěnou úlohu GPU na virtuálním počítači. Podrobnosti o GPU a verze ovladače se může lišit od těch, které jsou zobrazeny.
+Pokud je ovladač nainstalovaný, zobrazí se výstup podobný následujícímu. Všimněte si, že **GPU-util** zobrazuje 0%, pokud momentálně na virtuálním počítači nespouštíte úlohu GPU. Podrobnosti o verzi ovladače a GPU se mohou lišit od zobrazených.
 
 ![Stav zařízení NVIDIA](./media/n-series-driver-setup/smi-nv.png)
  
 
-### <a name="x11-server"></a>X11 serveru
-Pokud budete potřebovat X11 server pro vzdálená připojení na NV nebo NVv2 VM [x11vnc](http://www.karlrunge.com/x11vnc/) se doporučuje, protože umožňuje hardwarovou akceleraci grafiky. BusID M60 zařízení je nutné ručně přidat do X11 konfigurační soubor (obvykle `etc/X11/xorg.conf`). Přidat `"Device"` části podobný následujícímu:
+### <a name="x11-server"></a>Server X11
+Pokud potřebujete server X11 pro vzdálené připojení k virtuálnímu počítači NV nebo NVv2, doporučuje se [x11vnc](http://www.karlrunge.com/x11vnc/) , protože umožňuje hardwarovou akceleraci grafiky. BusID zařízení M60 musí být ručně přidáno do konfiguračního souboru X11 (obvykle `etc/X11/xorg.conf`). `"Device"` Přidejte oddíl podobný následujícímu:
  
 ```
 Section "Device"
@@ -316,15 +334,15 @@ Section "Device"
 EndSection
 ```
  
-Kromě toho aktualizovat váš `"Screen"` části k použití tohoto zařízení.
+Dále aktualizujte `"Screen"` oddíl, aby používal toto zařízení.
  
-Desetinné BusID můžete najít spuštěním
+Desítkové BusID lze najít spuštěním
 
 ```bash
 nvidia-xconfig --query-gpu-info | awk '/PCI BusID/{print $4}'
 ```
  
-BusID lze změnit získá nevyčerpané nebo restartovat virtuální počítač. Proto můžete chtít vytvořit skript pro aktualizaci BusID v X11 konfigurace po restartování virtuálního počítače. Například vytvořit skript s názvem `busidupdate.sh` (nebo jiný název, který zvolíte) s obsahem podobný následujícímu:
+BusID se může změnit, když se virtuální počítač znovu přidělí nebo restartuje. Proto možná budete chtít vytvořit skript, který aktualizuje BusID v konfiguraci X11 při restartování virtuálního počítače. Například vytvořte skript s názvem `busidupdate.sh` (nebo jiný název, který zvolíte) s obsahem podobným následujícímu:
 
 ```bash 
 #!/bin/bash
@@ -340,12 +358,12 @@ else
 fi
 ```
 
-Vytvořte položku pro váš skript pro aktualizaci v `/etc/rc.d/rc3.d` tak skript je vyvolána jako uživatel root při spuštění.
+Pak vytvořte záznam pro skript pro aktualizaci v `/etc/rc.d/rc3.d` nástroji, aby se skript vyvolal jako kořenový při spuštění.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-* Můžete nastavit pomocí režimu trvalosti `nvidia-smi` tak, že výstup příkazu je rychlejší, když budete chtít karty dotazu. Nastavení režimu trvalosti, spusťte `nvidia-smi -pm 1`. Všimněte si, že pokud virtuální počítač nerestartuje, nastavení režimu zmizí. Můžete používat vždy skripty pro nastavení režimu provést při spuštění.
+* Můžete nastavit režim trvalosti pomocí `nvidia-smi` , takže výstup příkazu je rychlejší, když potřebujete zadat dotaz na karty. Chcete-li nastavit režim trvalosti, spusťte `nvidia-smi -pm 1`příkaz. Všimněte si, že pokud se virtuální počítač restartuje, nastavení režimu zmizí. Vždy můžete skriptovat nastavení režimu, které se spustí při spuštění.
 
 ## <a name="next-steps"></a>Další postup
 
-* Zachycení image virtuálního počítače s Linuxem pomocí nainstalovaných ovladačů NVIDIA, najdete v článku [jak zachytit virtuální počítač s Linuxem a generalizace](capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* Pokud chcete zachytit image virtuálního počítače se systémem Linux pomocí nainstalovaných ovladačů NVIDIA, přečtěte si téma [postup generalizace a zachycení virtuálního počítače se systémem Linux](capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

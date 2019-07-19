@@ -4,34 +4,34 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 03/18/2019
 ms.author: rogarana
-ms.openlocfilehash: 2936fd318f08c74675f7e8b382c861f4a28319fc
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: ef9c46c0b55f97b8931f16d751f1b1e6099e6c9d
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67174997"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68328597"
 ---
-Počet datových disků můžete připojit k virtuálnímu počítači Azure. Založené na škálovatelnost a výkonnostní cíle pro datové disky Virtuálního počítače, můžete určit počet a typ disku, který je potřeba splnit vaše požadavky na kapacitu a výkon.
+K virtuálnímu počítači Azure můžete připojit několik datových disků. Na základě škálovatelnosti a výkonu pro datové disky virtuálního počítače můžete určit počet a typ disku, který budete potřebovat pro splnění požadavků na výkon a kapacitu.
 
 > [!IMPORTANT]
-> Pro optimální výkon omezte počet vysoce využívaných disků připojených k virtuálnímu počítači, abyste zabránili možnému omezení. Pokud všech připojených discích nejsou využívá vysoce ve stejnou dobu, virtuální počítač může podporovat větší počet disků.
+> Pro zajištění optimálního výkonu omezte počet vysoce využívaných disků připojených k virtuálnímu počítači, abyste zabránili možnému omezení. Pokud se všechny připojené disky vysoce nevyužívají současně, může virtuální počítač podporovat větší počet disků.
 
-**Azure managed disks:**
+**Pro Azure Managed disks:**
 
-Následující tabulka ukazuje výchozí a maximální počet prostředků na oblast a předplatné
+Následující tabulka ukazuje výchozí a maximální počet prostředků na oblast v rámci předplatného.
 
 > | Resource | Výchozí omezení  | Maximální omezení |
 > | --- | --- | --- |
-> | Spravované disky úrovně Standard | 25,000 | 50,000 |
-> | SSD na úrovni Standard managed disks | 25,000 | 50,000 |
-> | Spravované disky úrovně Premium | 25,000 | 50,000 |
-> | Standard_LRS snímky | 25,000 | 50,000 |
-> | Standard_ZRS snímky | 25,000 | 50,000 |
-> | Spravované image | 25,000 | 50,000 |
+> | Managed disks úrovně Standard | 50,000 | 50,000 |
+> | SSD úrovně Standard spravované disky | 50,000 | 50,000 |
+> | Managed disks úrovně Premium | 50,000 | 50,000 |
+> | Standard_LRS snímky | 50,000 | 50,000 |
+> | Standard_ZRS snímky | 50,000 | 50,000 |
+> | Spravovaná image | 50,000 | 50,000 |
 
-* **Pro účty úložiště úrovně Standard:** Účet úložiště úrovně Standard se maximální celkovou frekvenci požadavků 20 000 IOPS. Celkový počet IOPS na všech disků virtuálního počítače v účtu úložiště úrovně Standard by neměl překročit toto omezení.
+* **Pro účty úložiště úrovně Standard:** Účet úložiště úrovně Standard má maximální počet požadavků 20 000 IOPS. Celkový počet IOPS na všech discích virtuálního počítače v účtu úložiště úrovně Standard by neměl překročit tento limit.
   
-    Si můžete přibližně spočítat počet vysoce využívaných disků podporuje jeden standardní účet úložiště podle omezení frekvence požadavků. Například pro základní úroveň virtuálního počítače, maximální počet vysoce využívaných disků je asi 66, což je 20 000/300 IOPS na disk. Maximální počet vysoce využívaných disků pro virtuální počítač úrovně Standard je přibližně 40, což je 20 000/500 IOPS na disk. 
+    V závislosti na limitu četnosti požadavků můžete zhruba vypočítat počet vysoce využívaných disků podporovaných jediným účtem úložiště Standard. Například pro virtuální počítač úrovně Basic je maximální počet vysoce využitých disků přibližně 66, což je 20000/300 IOPS na disk. Maximální počet vysoce využívaných disků pro virtuální počítač úrovně Standard je přibližně 40, což je 20000/500 IOPS na disk. 
 
-* **Pro účty služby Premium storage:** Účet Premium storage má maximální celkovou propustnost 50 GB/s. Celková propustnost všech disků virtuálních počítačů by neměla překročit toto omezení.
+* **Pro účty Premium Storage:** Účet Premium Storage má maximální míru propustnosti 50 GB/s. Celková propustnost všech disků virtuálních počítačů by neměla překročit toto omezení.
 

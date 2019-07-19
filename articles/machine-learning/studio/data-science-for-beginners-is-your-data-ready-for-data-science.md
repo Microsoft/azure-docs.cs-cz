@@ -7,18 +7,18 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: sdgilley
-ms.author: sgilleye
+ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: d38a5066304a11ff2cd53a0168e51a0d74fda555
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1d9475b49b3ef8a2e672e1ce505a7d94d19cb14f
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60751446"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875329"
 ---
 # <a name="is-your-data-ready-for-data-science"></a>Jsou data připravená pro vědecké zkoumání?
-## <a name="video-2-data-science-for-beginners-series"></a>Video 2: Datová věda pro začátečníky řady
+## <a name="video-2-data-science-for-beginners-series"></a>Video 2: Řady pro datové vědy pro začátečníky
 Zjistěte, jak k vyhodnocení vašich dat, abyste měli jistotu, že splňují základní kritéria, až bude připravená pro datové vědy.
 
 Využijte naplno řady, můžete sledujte všechny. [Přejít na seznam videí](#other-videos-in-this-series)
@@ -31,13 +31,13 @@ Využijte naplno řady, můžete sledujte všechny. [Přejít na seznam videí](
 ## <a name="other-videos-in-this-series"></a>Další videa v této sérii
 *Datová věda pro začátečníky* článek obsahuje rychlý úvod do datových věd v pěti krátkých videích.
 
-* Video 1: [5 otázky, které odpovídá vědecké zkoumání dat](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 min 14 sek)*
+* Video 1: [5 otázek pro datové vědy](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 min. 14 sec)*
 * Video 2: Jsou data připravená pro vědecké zkoumání?
-* Video 3: [Položit dotaz lze odpovědět pomocí dat](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 min 17 sek)*
-* Video 4: [Předpovídání odpovědi pomocí jednoduchého modelu](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 min 42 sek)*
-* Video 5: [Kopírování práce jiných lidí pro vědecké zkoumání dat](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 min 18 sek)*
+* Video 3: [Položte otázku, na kterou můžete odpovědět pomocí dat](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) . *(4 minuty 17 sec)*
+* Video 4: [Předpověď odpovědi pomocí jednoduchého modelu](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 min. 42 s)*
+* Video 5: [Kopírování práce jiných lidí pro účely zpracování dat](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 min. 18 sec)*
 
-## <a name="transcript-is-your-data-ready-for-data-science"></a>Přepisu: Jsou data připravená pro vědecké zkoumání?
+## <a name="transcript-is-your-data-ready-for-data-science"></a>Záznamy Jsou data připravená pro vědecké zkoumání?
 Vítá vás "Jsou vaše data připravená pro vědecké zpracování dat?" druhý videa v této sérii *datová věda pro začátečníky*.  
 
 Před odpovědi, které chcete, aby vám může poskytnout pro datové vědy, musíte jí suroviny některé vysoce kvalitní pro práci s. Stejně jako provedení pizza, tím lepší složek, které můžete začít s tím lepší konečného produktu. 
@@ -100,7 +100,7 @@ Při přidávání více dat, obrázek bude srozumitelnější a je možné prov
 
 Data, která jsou relevantní, připojené, přesné a dostatečně, zobrazí všechny složky potřebovali udělat některé vysoce kvalitní datové vědy.
 
-Nezapomeňte se podívat na čtyři videa v *datová věda pro začátečníky* z Microsoft Azure Machine Learning Studio.
+Nezapomeňte se podívat na další čtyři videa v *oblasti datové vědy pro začátečníky* z Microsoft Azure Machine Learning Studio.
 
 ## <a name="next-steps"></a>Další postup
 * [Zkuste prvního experimentu vědy data s Machine Learning Studio](create-experiment.md)

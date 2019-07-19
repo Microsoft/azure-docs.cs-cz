@@ -1,7 +1,8 @@
 ---
 title: Začínáme s Azure AD v projektech Visual Studio .NET MVC
-description: Jak začít používat Azure Active Directory v projektech .NET MVC po připojení k nebo vytváření Azure AD pomocí sady Visual Studio připojené služby
+description: Jak začít používat Azure Active Directory v projektech .NET MVC po připojení k nebo vytvoření Azure AD pomocí připojených služeb sady Visual Studio
 services: active-directory
+ms.subservice: develop
 author: ghogen
 manager: douge
 ms.assetid: 1c8b6a58-5144-4965-a905-625b9ee7b22b
@@ -13,30 +14,30 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6bbbef3f48eb55c863fdd286113297d79f9b9e02
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ab641aa93d926f64216694c689d8d28e407195d0
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60296839"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326080"
 ---
-# <a name="getting-started-with-azure-active-directory-aspnet-mvc-projects"></a>Začínáme se službou Azure Active Directory (projekty ASP.NET MVC)
+# <a name="getting-started-with-azure-active-directory-aspnet-mvc-projects"></a>Začínáme s Azure Active Directory (projekty ASP.NET MVC)
 
 > [!div class="op_single_selector"]
 > - [Začínáme](vs-active-directory-dotnet-getting-started.md)
 > - [Co se přihodilo](vs-active-directory-dotnet-what-happened.md)
 
-Tento článek obsahuje další doprovodné materiály po přidání do projektu aplikace ASP.NET MVC prostřednictvím služby Active Directory **Projekt > připojené služby** příkazů sady Visual Studio. Pokud ještě není přidáte službu do projektu, provést kdykoli.
+Tento článek poskytuje další doprovodné materiály po přidání služby Active Directory do projektu ASP.NET MVC prostřednictvím příkazu **project > Connected Services** sady Visual Studio. Pokud jste ještě nepřidali službu do projektu, můžete to udělat kdykoli.
 
-Zobrazit [co se stalo s mým projektem MVC?](vs-active-directory-dotnet-what-happened.md) pro změny do svého projektu při přidání připojené služby.
+Podívejte se, [co se stalo s mým projektem MVC?](vs-active-directory-dotnet-what-happened.md) pro změny provedené v projektu při přidávání připojené služby.
 
-## <a name="requiring-authentication-to-access-controllers"></a>Vyžádání ověření pro přístup k řadiči
+## <a name="requiring-authentication-to-access-controllers"></a>Vyžadování ověřování pro přístup k řadičům
 
-Všechny řadiče ve vašem projektu byly opatřený s `[Authorize]` atribut. Tento atribut vyžaduje, aby uživatel ověřený před použitím těchto řadičů. Povolit kontroleru se dá přistupovat anonymně, odeberte tento atribut z kontroleru. Pokud chcete nastavit oprávnění na podrobnější úrovni, použijte atribut pro každou metodu, která vyžaduje ověření místo použití třídy kontroleru.
+Všechny řadiče v projektu se napracovaly s `[Authorize]` atributem. Tento atribut vyžaduje, aby byl uživatel ověřen před přístupem k těmto řadičům. K povolení anonymního přístup k řadiči odeberte tento atribut z kontroleru. Chcete-li nastavit oprávnění na podrobnější úrovni, použijte atribut pro každou metodu, která vyžaduje autorizaci namísto použití pro třídu kontroleru.
 
-## <a name="adding-signin--signout-controls"></a>Přidání SignIn nebo SignOut ovládací prvky
+## <a name="adding-signin--signout-controls"></a>Přidávání ovládacích prvků pro přihlášení a odhlášení
 
-Přidání přihlášení/odhlášení ovládacích prvků do zobrazení, můžete použít `_LoginPartial.cshtml` částečné zobrazení přidat funkce do jednoho zobrazení. Tady je příklad funkce přidat do standardních `_Layout.cshtml` zobrazení. (Poznámka: po posledním prvku v div s třída navbar sbalit):
+Chcete-li přidat ovládací prvky pro přihlášení a odhlášení do zobrazení, můžete použít `_LoginPartial.cshtml` částečné zobrazení k přidání funkce do některého z vašich zobrazení. Tady je příklad funkcí přidaných do standardního `_Layout.cshtml` zobrazení. (Poznamenejte si poslední prvek ve třídě div s navigačním panelem třídy – sbalení):
 
 ```html
 <!DOCTYPE html>
@@ -83,7 +84,7 @@ Přidání přihlášení/odhlášení ovládacích prvků do zobrazení, může
 </html>
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Scénáře ověřování pro Azure Active Directory](authentication-scenarios.md)
-- [Přidání přihlašování s Microsoftem do webové aplikace ASP.NET](quickstart-v1-aspnet-webapp.md)
+- [Přidání přihlašování do webové aplikace ASP.NET pomocí Microsoftu](quickstart-v1-aspnet-webapp.md)

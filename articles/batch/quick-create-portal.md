@@ -3,27 +3,27 @@ title: Rychlý start Azure – spuštění úlohy služby Batch – portál
 description: Můžete se rychle naučit, jak na webu Azure Portal spustit úlohu služby Batch.
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.service: batch
 ms.devlang: na
 ms.topic: quickstart
 ms.date: 07/03/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: d478307ff4393d84a854fcd3b2ea0efd77de7135
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 33455a95dff946676e3dfffbd2737ed36be59c64
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60619843"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68322368"
 ---
-# <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Rychlý start: Spuštění první úlohy služby Batch na webu Azure Portal
+# <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Rychlý start: Spuštění první úlohy služby Batch v Azure Portal
 
 Tento rychlý start ukazuje, jak na webu Azure Portal vytvořit účet Batch, *fond* výpočetních uzlů (virtuálních počítačů) a *úlohu*, která bude ve fondu spouštět základní *úkoly*. Po dokončení tohoto rychlého startu budete rozumět klíčovým konceptům služby Batch a budete moct službu Batch vyzkoušet ve větším měřítku s úlohami, které víc odpovídají realitě.
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="sign-in-to-azure"></a>Přihlásit se k Azure 
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure 
 
 Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
@@ -57,7 +57,7 @@ Teď máte účet Batch a můžete pro testovací účely vytvořit ukázkový f
 
 3. V části **Operační systém** vyberte následující nastavení (můžete prozkoumat i jiné možnosti).
   
-   |Nastavení  |Hodnota  |
+   |Nastavení  |Value  |
    |---------|---------|
    |**Typ image**|Marketplace (Linux/Windows)|
    |**Publisher**     |MicrosoftWindowsServer|

@@ -1,6 +1,6 @@
 ---
 title: IBM DB2 pureScale v Azure
-description: V tomto článku ukážeme architekturu pro spuštění prostředí pureScale IBM DB2 v Azure.
+description: V tomto článku se zobrazuje architektura pro spuštění prostředí IBM DB2 pureScale v Azure.
 services: virtual-machines-linux
 documentationcenter: ''
 author: njray
@@ -14,101 +14,101 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2018
-ms.author: njray
-ms.openlocfilehash: 1622de0cccdbc8fee0681e209e756b30da292d3c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: edprice
+ms.openlocfilehash: f893e417420b26dcb56e0d84551fbad3577b8fdb
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60543002"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67874879"
 ---
 # <a name="ibm-db2-purescale-on-azure"></a>IBM DB2 pureScale v Azure
 
-Prostředí pureScale IBM DB2 poskytuje cluster databáze pro Azure s vysokou dostupností a škálovatelností v operačních systémech Linux. Tento článek popisuje architekturu pro spuštění DB2 pureScale v Azure.
+Prostředí IBM DB2 pureScale poskytuje databázový cluster pro Azure s vysokou dostupností a škálovatelností operačních systémů Linux. Tento článek ukazuje architekturu pro spouštění DB2 pureScale v Azure.
 
 ## <a name="overview"></a>Přehled
 
-Podniky využívají dlouho systém (RDBMS) platformami pro správu relačních databází pro jejich zpracování (OLTP) potřebám online transakcí. V dnešních dnech mnoho provádějí migraci jejich prostředí na základě mainframových databáze do Azure jako způsob, jak rozšířit kapacitu, snížit náklady a udržovat strukturu stabilní provozní náklady.
+Podniky mají dlouho používané platformy pro správu relačních databází (RDBMS) pro potřeby svých online zpracování transakcí (OLTP). Tyto dny, mnoho z nich migruje svá Sálová databázová prostředí do Azure jako způsob, jak rozšířit kapacitu, snížit náklady a udržovat konstantní provozní nákladovou strukturu.
 
-Migrace je často prvním krokem při modernizaci starší platformu. Například jeden z podnikových zákazníků nedávno rehosted IBM DB2 prostředí používají z/OS a pureScale IBM DB2 v Azure. I když není stejný jako původní prostředí, IBM DB2 pureScale v Linuxu nabízí podobné vysoké dostupnosti a škálovatelnosti jako IBM DB2 pro spuštění v paralelní Sysplex konfigurace v hlavním z/OS.
+Migrace je často prvním krokem v modernizaci starší platformě. Například jeden podnikový zákazník nedávno znovu hostoval své prostředí IBM DB2 běžící na z/OS do IBM DB2 pureScale v Azure. I když se neshoduje s původním prostředím, IBM DB2 pureScale on Linux přináší podobné funkce s vysokou dostupností a škálovatelností jako IBM DB2 pro z/OS běžící v konfiguraci paralelního Sysplex na sálovém počítači.
 
-Tento článek popisuje architekturu pro tuto migraci do Azure. Kdy zákazník využil Red Hat Linux 7.4 k testování této konfigurace. Tato verze je k dispozici na webu Azure Marketplace. Než se rozhodnete Linuxová distribuce vytvořená, nezapomeňte ověřit aktuálně podporované verze. Podrobnosti najdete v tématu v dokumentaci k [IBM DB2 pureScale](https://www.ibm.com/support/knowledgecenter/SSEPGG) a [GlusterFS](https://docs.gluster.org/en/latest/).
+Tento článek popisuje architekturu, která se používá pro tuto migraci Azure. Zákazník použil pro otestování konfigurace systém Red Hat Linux 7,4. Tato verze je k dispozici z Azure Marketplace. Před výběrem distribuce systému Linux ověřte, zda jsou aktuálně podporované verze ověřeny. Podrobnosti najdete v dokumentaci k [IBM DB2 pureScale](https://www.ibm.com/support/knowledgecenter/SSEPGG) a [GlusterFS](https://docs.gluster.org/en/latest/).
 
-Tento článek je výchozím bodem pro váš plán implementace DB2. Vaše obchodní požadavky se budou lišit, ale platí stejné základní vzor. Tento vzor architektury můžete použít také pro online analytického zpracování (OLAP) aplikace v Azure.
+Tento článek je výchozím bodem pro váš plán implementace DB2. Vaše obchodní požadavky se budou lišit, ale platí stejný základní vzor. Tento model architektury můžete použít také pro aplikace OLAP (Online Analytical Processing) v Azure.
 
-Tento článek nepopisuje rozdíly a možné-migrační úkoly pro přesun IBM DB2 z/OS databáze IBM DB2 pureScale běžící na Linuxu. A neposkytuje odhady velikosti a analýzy úloh pro přechod do DB2 pureScale DB2 z/OS. 
+Tento článek nepokrývá rozdíly a možné úlohy migrace pro přesun databáze IBM DB2 pro databázi z/OS do IBM DB2 pureScale běžící na systému Linux. A neposkytuje odhady velikosti a analýzy úloh pro přechod z DB2 z/OS na DB2 pureScale. 
 
-Vám pomohou rozhodnout na nejvhodnější architektura pureScale DB2 pro vaše prostředí, doporučujeme, abyste plně odhadu velikosti a ujistěte se, hypotézu. Ve zdrojovém systému, ujistěte se, že do DB2 z/OS paralelní zvažte Sysplex s architekturou sdílení dat, konfigurace párování zařízení a statistiky o využití zařízení (DDF) distribuovaných datech.
+Abychom vám pomohli při rozhodování o nejlepší architektuře pureScale pro vaše prostředí, doporučujeme vám plně odhadnout velikost a vytvořit hypotézu. Ve zdrojovém systému nezapomeňte zvážit možnost DB2 z/OS Parallel Sysplex s architekturou sdílení dat, konfigurací spojovacího zařízení a statistikou využití distribuovaného datového zařízení (DDF).
 
 > [!NOTE]
-> Tento článek popisuje jeden ze způsobů migrace DB2, ale existují i další. PureScale DB2. můžete také spustit ve virtualizované v místních prostředích. IBM podporuje DB2 na Microsoft Hyper-V v různých konfiguracích. Další informace najdete v tématu [architektura virtualizace pureScale DB2](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/r0061462.html) v centru IBM znalostní báze.
+> Tento článek popisuje jeden přístup k migraci DB2, ale existují další. Například DB2 pureScale lze také spustit v virtualizovaných místních prostředích. IBM podporuje DB2 v systému Microsoft Hyper-V v různých konfiguracích. Další informace najdete v tématu [Architektura virtualizace DB2 pureScale](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/r0061462.html) ve znalostní bázi IBM Knowledge Center.
 
 ## <a name="architecture"></a>Architektura
 
-Pro podporu vysoké dostupnosti a škálovatelnosti v Azure, můžete použít škálování na víc systémů, sdílené datové architektury pro DB2 pureScale. Migrace zákazníků používá následující příklad architektury.
+Pro zajištění vysoké dostupnosti a škálovatelnosti v Azure můžete použít architekturu sdílené dat pro škálování na více instancí pro DB2 pureScale. Migrace zákazníka používala následující příklad architektury.
 
-![PureScale DB2 na Azure virtual machines zobrazení úložiště a sítě](media/db2-purescale-on-azure/pureScaleArchitecture.png "pureScale DB2 na Azure virtual machines zobrazení úložiště a sítě")
+![DB2 pureScale na virtuálních počítačích Azure, které zobrazují úložiště a sítě](media/db2-purescale-on-azure/pureScaleArchitecture.png "DB2 pureScale na virtuálních počítačích Azure, které zobrazují úložiště a sítě")
 
 
-Diagram znázorňuje logické vrstvy, třeba do DB2 pureScale clusteru. Patří mezi ně virtuální počítače pro klienta pro správu, pro ukládání do mezipaměti, pro databázový stroj a sdílené úložiště. 
+Diagram znázorňuje logické vrstvy potřebné pro cluster DB2 pureScale. Mezi ně patří virtuální počítače pro klienta nástroje pro správu, ukládání do mezipaměti, pro databázový stroj a pro sdílené úložiště. 
 
-Kromě databázové stroje uzly diagram obsahuje dva uzly, které se používají pro clustery ukládání do mezipaměti zařízení (CFs). Alespoň dva uzly se používají pro databázový stroj, samotného. DB2 server, který patří do clusteru pureScale se nazývá člena. 
+Kromě uzlů databázového stroje obsahuje diagram dva uzly, které se používají pro funkce ukládání do mezipaměti clusteru (CFs). Pro samotný databázový stroj jsou používány alespoň dva uzly. Server DB2, který patří do clusteru pureScale, se nazývá člen. 
 
-Cluster je připojené přes iSCSI na cluster tříuzlový GlusterFS sdílené úložiště, který poskytuje horizontální navýšení kapacity úložiště a vysokou dostupnost. DB2 pureScale je nainstalován na virtuálních počítačích Azure s Linuxem.
+Cluster je připojený přes iSCSI k GlusterFS sdíleného úložiště se třemi uzly, který poskytuje úložiště se škálováním na více instancí a vysokou dostupnost. Na virtuálních počítačích Azure se systémem Linux je nainstalovaná pureScale DB2.
 
-Tento přístup je šablonu, která můžete změnit pro dimenzování a škálování vaší organizace. Je založen na následující:
+Tento přístup je šablona, kterou můžete upravit pro velikost a škálování vaší organizace. Vychází z následujících možností:
 
--   Dva nebo více členů databáze spolu s alespoň dva uzly CF. Uzly Správa fondu s globální vyrovnávací paměti (GBP) pro sdílené paměti a služby uzamknout globální správce (GLM) k řízení sdíleného přístupu a zámek kolize z aktivních členů. Jeden uzel CF funguje jako primární a druhý jako sekundární uzel CF převzetí služeb při selhání. Aby se zabránilo jediný bod selhání v prostředí, do DB2 pureScale clusteru vyžaduje minimálně čtyři uzly.
+-   Dva nebo více databázových členů je sloučeno s alespoň dvěma uzly CF. Uzly spravují Globální fond vyrovnávacích pamětí (GBP) pro sdílenou paměť a služby globálního správce zámků (GLM) pro řízení sdíleného přístupu a zamykání kolizí od aktivních členů. Jeden uzel CF funguje jako primární a druhý jako sekundární uzel převzetí služeb při selhání CF. Aby nedocházelo k jedinému bodu selhání v prostředí, cluster DB2 pureScale vyžaduje aspoň čtyři uzly.
 
--   Vysoce výkonné sdílené úložiště (viz P30 velikost v diagramu). Každý z uzlů Gluster FS využívá toto úložiště.
+-   Vysoce výkonné sdílené úložiště (zobrazené v P30 velikosti v diagramu). Každý uzel služby Gluster FS používá toto úložiště.
 
 -   Vysoce výkonné sítě pro datové členy a sdílené úložiště.
 
-### <a name="compute-considerations"></a>Důležité informace o COMPUTE
+### <a name="compute-considerations"></a>Požadavky na výpočetní prostředky
 
-Tato architektura spouští aplikace, úložiště a data úrovní, na virtuálních počítačích Azure. [Instalačních skriptů nasazení](https://aka.ms/db2onazure) vytvořte následující:
+Tato architektura spouští aplikaci, úložiště a datovou vrstvu na virtuálních počítačích Azure. [Skripty pro instalaci nasazení](https://aka.ms/db2onazure) vytvoří následující:
 
--   DB2 pureScale clusteru. Typ výpočetní prostředky, které budete potřebovat v Azure závisí na nastavení. Obecně platí můžete použít dvě metody:
+-   Cluster DB2 pureScale Typ výpočetních prostředků, které v Azure potřebujete, závisí na nastavení. Obecně platí, že můžete použít dva přístupy:
 
-    -   Použít několika uzly, vysoce výkonné výpočetní prostředí (HPC) – styl sítě, pokud malá až středně velké instance přístup ke sdílenému úložišti. Pro tento typ HPC konfigurace Azure paměťově optimalizované řady E nebo L-series optimalizovaným úložištěm [virtuálních počítačů](https://docs.microsoft.com/azure/virtual-machines/windows/sizes) poskytují potřebné výpočetní výkon.
+    -   Použijte síť s více uzly a vysoce výkonným výpočetním prostředím (HPC), ve které se v malých až středně velkých instancích přistupuje ke sdílenému úložišti. Pro tento typ HPC konfigurace Azure paměťově optimalizované E-series nebo úložiště s podporou [úložišť řady L](https://docs.microsoft.com/azure/virtual-machines/windows/sizes) -Series poskytují potřebný výpočetní výkon.
 
-    -   Použijte méně instancí velký virtuální počítač pro datových modulů. Pro velké instance největší paměťově optimalizované [řady M-series](https://azure.microsoft.com/pricing/details/virtual-machines/series/) virtuální počítače jsou ideální pro náročné úlohy v paměti. Může být nutné vyhrazenou instanci, v závislosti na velikost logického oddílu (LPAR), která se používá ke spouštění DB2.
+    -   Pro datové moduly použijte méně velkých instancí virtuálních počítačů. U velkých instancí jsou největší virtuální počítače optimalizované pro paměť [řady M-Series](https://azure.microsoft.com/pricing/details/virtual-machines/series/) ideální pro náročné úlohy v paměti. V závislosti na velikosti logického oddílu (LPAR), který se používá ke spuštění DB2, budete možná potřebovat vyhrazenou instanci.
 
--   DB2 CF používá paměťově optimalizované virtuálních počítačů, jako je například E-series nebo L-series.
+-   DB2 CF používá paměťově optimalizované virtuální počítače, například E-series nebo L-series.
 
--   GlusterFS úložiště používá standardní\_DS4\_v2 virtuální počítače s Linuxem.
+-   GlusterFS Storage používá virtuální\_počítače\_Standard DS4 v2 se systémem Linux.
 
--   GlusterFS jumpbox je Standard\_DS2\_v2 virtuálního počítače s Linuxem.
+-   GlusterFS JumpBox je standardní\_virtuální počítač DS2\_v2 se systémem Linux.
 
--   Klient je Standard\_DS3\_v2 virtuálního počítače se systémem Windows (používá se pro účely testování).
+-   Klient je standardní\_virtuální počítač DS3\_v2 s Windows (používaný pro testování).
 
--   Monitorovací server je Standard\_DS3\_v2 virtuálního počítače s Linuxem (používá se pro DB2 pureScale).
+-   Server s kopií clusteru je standardní\_virtuální\_počítač DS3 v2 se systémem Linux (používá se pro DB2 pureScale).
 
 > [!NOTE]
-> Do DB2 pureScale clusteru vyžaduje aspoň dvě instance DB2. Také vyžaduje instance mezipaměti a Uzamknout instanci správce.
+> Cluster DB2 pureScale vyžaduje aspoň dvě instance DB2. Vyžaduje také instanci mezipaměti a instanci Správce zámků.
 
 ### <a name="storage-considerations"></a>Aspekty úložišť
 
-Podobně jako Oracle RAC je DB2 pureScale vysoce výkonné bloku vstupně-výstupních operací, horizontální navýšení kapacity databáze. Doporučujeme použít největší [Azure premium SSD](disks-types.md) možnost, která vyhovuje vašim potřebám. Menší možnosti úložiště může být vhodný pro vývojová a testovací prostředí, zatímco produkční prostředí často potřebujete víc kapacity úložiště. Architektura příklad používá [P30](https://azure.microsoft.com/pricing/details/managed-disks/) z důvodu jeho poměru vstupně-výstupních operací na velikosti a ceny. Bez ohledu na velikost použijte Premium Storage pro zajištění nejlepšího výkonu.
+Podobně jako Oracle RAC je DB2 pureScale a vysoce výkonná databáze s horizontálním škálováním I/O. Doporučujeme použít největší možnost [Azure Premium SSD](disks-types.md) , která vyhovuje vašim potřebám. Menší možnosti úložiště můžou být vhodné pro vývojová a testovací prostředí, zatímco produkční prostředí často potřebují větší kapacitu úložiště. Ukázková architektura používá [P30](https://azure.microsoft.com/pricing/details/managed-disks/) kvůli jejich poměru IOPS k velikosti a ceně. Bez ohledu na velikost použijte Premium Storage pro nejlepší výkon.
 
-Používá sdílený DB2 pureScale – všechno, co architektura, ve kterém všechna data jsou přístupná ze všech uzlů clusteru. Storage úrovně Premium musí být sdíleny napříč instance, zda na vyžádání nebo na vyhrazených instancích.
+DB2 pureScale využívá architekturu Shared-All, kde jsou všechna data dostupná ze všech uzlů clusteru. Služba Premium Storage musí být sdílená mezi instancemi, ať už na vyžádání, nebo na vyhrazených instancích.
 
-Velký cluster pureScale DB2 můžou vyžadovat, aby 200 terabajtů (TB) nebo z úrovně premium sdílené úložiště, s 100 000 IOPS. DB2 pureScale podporuje bloku rozhraní iSCSI, které můžete použít v Azure. Rozhraní iSCSI vyžaduje sdílené úložiště clusteru, který je možné implementovat pomocí GlusterFS, S2D nebo jiný nástroj. Zařízení virtuálního úložiště oblasti sítě (vSAN) tohoto typu řešení vytvoří v Azure. Pomocí sítě vSAN do DB2 pureScale nainstaluje clusterového souborového systému, který se používá ke sdílení dat mezi virtuálními počítači.
+Velký cluster pureScale DB2 může vyžadovat 200 terabajtů (TB) nebo více sdílených úložišť úrovně Premium a s IOPS 100 000. DB2 pureScale podporuje rozhraní blokování iSCSI, které můžete používat v Azure. Rozhraní iSCSI vyžaduje cluster sdíleného úložiště, který můžete implementovat pomocí GlusterFS, S2D nebo jiného nástroje. Tento typ řešení vytvoří virtuální zařízení sítě SAN (síti vSAN) v Azure. DB2 pureScale používá síti vSAN k instalaci clusterovaného souborového systému, který se používá ke sdílení dat mezi virtuálními počítači.
 
-Architektura příklad používá GlusterFS, bezplatný, škálovatelné a open source distribuovaný systém souborů, která je optimalizovaná pro cloudové úložiště.
+Ukázková architektura používá GlusterFS, bezplatný, škálovatelný a open source distribuovaný systém souborů, který je optimalizovaný pro cloudové úložiště.
 
 ### <a name="networking-considerations"></a>Aspekty sítí
 
-IBM doporučuje síťovými možnostmi InfiniBand pro všechny členy do DB2 pureScale clusteru. DB2 pureScale také používá vzdálený přímý přístup do paměti (RDMA), pokud je k dispozici, pro CFs.
+Společnost IBM doporučuje InfiniBand sítě pro všechny členy v clusteru DB2 pureScale. DB2 pureScale také používá přímý přístup do paměti vzdáleného počítače (RDMA), pokud je k dispozici pro CFs.
 
-Během instalace, vytvoříte Azure [skupiny prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) tak, aby obsahovala všechny virtuální počítače. Obecně platí skupiny prostředků na základě jejich životního cyklu a který bude je spravovat. Virtuální počítače v této architektuře vyžadují [akcelerované síťové služby](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/). To je funkce služby Azure, která zajišťuje síťové konzistentní vzhledem k aplikacím, mimořádně nízkou latenci prostřednictvím single-root I/O virtualization (rozhraní SR-IOV) k virtuálnímu počítači.
+Během instalace vytvoříte [skupinu prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) Azure, která bude obsahovat všechny virtuální počítače. Obecně platí, že se prostředky seskupují na základě jejich životnosti a kteří je spravují. Virtuální počítače v této architektuře vyžadují [urychlené síťové služby](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/). Jedná se o funkci Azure, která poskytuje konzistentní a extrémně nízkou latenci sítě prostřednictvím rozhraní SR-IOV (single-root I/O Virtualization) k virtuálnímu počítači.
 
-Každý virtuální počítač Azure je nasazený do virtuální sítě s podsítí: hlavní, Gluster FS front-endu (gfsfe), Gluster FS back-endu (bfsbe), DB2 pureScale (db2be) a DB2 pureScale front end (db2fe). Instalační skript také vytvoří primární [síťových adaptérů](https://docs.microsoft.com/azure/virtual-machines/linux/multiple-nics) na virtuálních počítačích v hlavní podsítě.
+Každý virtuální počítač Azure je nasazený do virtuální sítě, která má podsítě: Main, front-end Gluster FS (gfsfe), Gluster FS back-end (bfsbe), DB2 pureScale (db2be) a DB2 pureScale front-end (db2fe). Instalační skript také vytvoří primární [síťové adaptéry](https://docs.microsoft.com/azure/virtual-machines/linux/multiple-nics) na virtuálních počítačích v hlavní podsíti.
 
-Použití [skupiny zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) možné omezit síťový provoz ve virtuální síti a k izolování podsítí.
+[Skupiny zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) použijte k omezení síťového provozu v rámci virtuální sítě a k izolaci podsítí.
 
-V Azure musí používat protokol TCP/IP jako připojení k síti pro úložiště DB2 pureScale.
+V Azure pureScale potřebuje jako síťové připojení pro úložiště používat protokol TCP/IP.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
--   [Nasazení této architektury v Azure](deploy-ibm-db2-purescale-azure.md)
+-   [Nasadit tuto architekturu v Azure](deploy-ibm-db2-purescale-azure.md)

@@ -1,25 +1,26 @@
 ---
-title: Rychlý start – nasazení kontejneru Dockeru do služby Azure Container Instances – PowerShell
-description: V tomto rychlém startu použijete Azure PowerShell k rychlému nasazení kontejnerizované webové aplikace, která běží v instanci izolovaného kontejneru Azure
+title: Rychlý Start – nasazení kontejneru Docker do Azure Container Instances – PowerShell
+description: V tomto rychlém startu použijete Azure PowerShell k rychlému nasazení kontejnerové webové aplikace, která běží v izolované instanci kontejneru Azure.
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: quickstart
 ms.date: 03/21/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: c6baf10308f04d5f08ba651bd70ac2b48dfc013c
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 7fe199d2ac228ddb0ccfd1e5bc980e680e160acf
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729452"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325825"
 ---
-# <a name="quickstart-deploy-a-container-instance-in-azure-using-azure-powershell"></a>Rychlý start: Nasadit instanci kontejneru v Azure pomocí Azure Powershellu
+# <a name="quickstart-deploy-a-container-instance-in-azure-using-azure-powershell"></a>Rychlý start: Nasazení instance kontejneru v Azure pomocí Azure PowerShell
 
-Pro spouštění kontejnerů bez serveru Docker v Azure se rychle a snadno pomocí Azure Container Instances. Pokud není zapotřebí platformu pro orchestraci úplné kontejneru, jako je Azure Kubernetes Service Nasaďte aplikaci do kontejneru instance na vyžádání.
+Použijte Azure Container Instances ke spouštění kontejnerů Docker bez serveru v Azure s využitím jednoduchosti a rychlosti. Pokud nepotřebujete úplnou platformu orchestrace kontejnerů, jako je třeba služba Azure Kubernetes, nasaďte aplikaci na vyžádání do instance kontejneru na vyžádání.
 
-V tomto rychlém startu použijete Azure PowerShell k nasazení izolovaného kontejneru Windows a zpřístupnit svou aplikaci s použitím plně kvalifikovaného názvu domény (FQDN). Několik sekund, po spuštění příkazu jedno nasazení, můžete přejít k aplikaci spuštěné v kontejneru:
+V tomto rychlém startu použijete Azure PowerShell k nasazení izolovaného kontejneru Windows a jeho aplikaci zpřístupníte pomocí plně kvalifikovaného názvu domény (FQDN). Několik sekund po provedení jednoho příkazu pro nasazení můžete procházet do aplikace spuštěné v kontejneru:
 
 ![Aplikace nasazená do služby Azure Container Instances zobrazená v prohlížeči][qs-powershell-01]
 
@@ -29,13 +30,13 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat PowerShell místně, tento kurz vyžaduje modul Azure PowerShell. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
+Pokud se rozhodnete nainstalovat a používat PowerShell místně, vyžaduje tento kurz modul Azure PowerShell. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
 Instance kontejnerů Azure, stejně jako všechny prostředky Azure, se musí nasadit do skupiny prostředků. Skupiny prostředků vám umožňují organizaci a správu souvisejících prostředků Azure.
 
-Nejprve vytvořte skupinu prostředků s názvem *myResourceGroup* v *eastus* umístění následujícím [New-AzResourceGroup] [ New-AzResourceGroup] příkaz:
+Nejprve vytvořte skupinu prostředků s názvem *myResourceGroup* v umístění *eastus* pomocí následujícího příkazu [New-AzResourceGroup][New-AzResourceGroup] :
 
  ```azurepowershell-interactive
 New-AzResourceGroup -Name myResourceGroup -Location EastUS
@@ -43,17 +44,17 @@ New-AzResourceGroup -Name myResourceGroup -Location EastUS
 
 ## <a name="create-a-container"></a>Vytvoření kontejneru
 
-Teď máte skupinu prostředků a můžete spustit kontejner v Azure. Pokud chcete vytvořit instanci kontejneru s využitím Azure Powershellu, zadejte název skupiny prostředků, název instance kontejneru a image kontejneru Dockeru pro [AzContainerGroup nový] [ New-AzContainerGroup] rutiny. V tomto rychlém startu použijete veřejnosti `mcr.microsoft.com/windows/servercore/iis:nanoserver` bitové kopie. Tento obrázek balíčky Microsoft Internet informační služby (IIS) pro spuštění na Nano serveru.
+Teď máte skupinu prostředků a můžete spustit kontejner v Azure. Pokud chcete vytvořit instanci kontejneru s Azure PowerShell, zadejte název skupiny prostředků, název instance kontejneru a image kontejneru Docker do rutiny [New-AzContainerGroup][New-AzContainerGroup] . V tomto rychlém startu použijete veřejnou `mcr.microsoft.com/windows/servercore/iis:nanoserver` image. Balíčky imagí, které Microsoft Internetová informační služba (IIS) spustí na nano serveru.
 
-Kontejnery můžete zveřejnit na internetu tak, že zadáte jeden nebo více otevíraných portů, popisek názvu DNS nebo oboje. V tomto rychlém startu nasadíte kontejner s použitím popisku názvu DNS tak, aby služba IIS je veřejně dostupný.
+Kontejnery můžete zveřejnit na internetu tak, že zadáte jeden nebo více otevíraných portů, popisek názvu DNS nebo oboje. V tomto rychlém startu nasadíte kontejner s označením názvu DNS, aby byla služba IIS veřejně dosažitelná.
 
-Spusťte příkaz podobný následujícímu spusťte instanci kontejneru. Nastavte `-DnsNameLabel` hodnotu, která je jedinečný v rámci oblasti Azure, kde můžete vytvořit instanci. Pokud se zobrazí chybová zpráva „Popisek názvu DNS není dostupný“, zkuste jiný popisek názvu DNS.
+Spusťte příkaz podobný následujícímu jako při spuštění instance kontejneru. Nastavte jedinečnou `-DnsNameLabel` hodnotu v rámci oblasti Azure, ve které jste instanci vytvořili. Pokud se zobrazí chybová zpráva „Popisek názvu DNS není dostupný“, zkuste jiný popisek názvu DNS.
 
  ```azurepowershell-interactive
 New-AzContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer -Image mcr.microsoft.com/windows/servercore/iis:nanoserver -OsType Windows -DnsNameLabel aci-demo-win
 ```
 
-Během několika sekund by se měla zobrazit odezva z Azure. Stav `ProvisioningState` kontejneru má nejdřív hodnotu **Vytváření**, ale během jedné nebo dvou minut by se měla zobrazit hodnota **Úspěšné**. Zkontrolujte stav nasazení se [Get-AzContainerGroup] [ Get-AzContainerGroup] rutiny:
+Během několika sekund by se měla zobrazit odezva z Azure. Stav `ProvisioningState` kontejneru má nejdřív hodnotu **Vytváření**, ale během jedné nebo dvou minut by se měla zobrazit hodnota **Úspěšné**. Pomocí rutiny [Get-AzContainerGroup][Get-AzContainerGroup] ověřte stav nasazení:
 
  ```azurepowershell-interactive
 Get-AzContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer
@@ -91,7 +92,7 @@ Jakmile má kontejner u stavu `ProvisioningState` hodnotu **Úspěšné**, přej
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Jakmile budete hotovi s kontejnerem, odeberte ji [odebrat AzContainerGroup] [ Remove-AzContainerGroup] rutiny:
+Až budete s kontejnerem hotovi, odeberte ho pomocí rutiny [Remove-AzContainerGroup][Remove-AzContainerGroup] :
 
  ```azurepowershell-interactive
 Remove-AzContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer

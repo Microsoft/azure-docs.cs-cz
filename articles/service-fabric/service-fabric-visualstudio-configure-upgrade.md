@@ -1,6 +1,6 @@
 ---
-title: Konfigurace upgradu aplikace Service Fabric | Dokumentace Microsoftu
-description: Zjistěte, jak nakonfigurovat nastavení pro upgrade aplikace Service Fabric pomocí sady Microsoft Visual Studio.
+title: Konfigurace upgradu aplikace Service Fabric | Microsoft Docs
+description: Naučte se konfigurovat nastavení pro upgrade Service Fabric aplikace pomocí Microsoft Visual Studio.
 services: service-fabric
 documentationcenter: na
 author: mikkelhegn
@@ -13,46 +13,46 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/29/2017
-ms.author: mikkelhegn
-ms.openlocfilehash: 79120371ca2a62e5ef9f2bf38476635db12e9fcc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mikhegn
+ms.openlocfilehash: 5979541146b7cd7b854f35c5bf204e71208f066b
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61082833"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876762"
 ---
-# <a name="configure-the-upgrade-of-a-service-fabric-application-in-visual-studio"></a>Konfigurace upgradu aplikace Service Fabric v sadě Visual Studio
-Visual Studio tools pro Azure Service Fabric poskytuje podporu upgradu pro publikování do místního nebo vzdáleného clusteru. Existují tři scénáře, ve kterých chcete provést upgrade na novější verzi místo abyste jím nahrazovali aplikace v průběhu testování a ladění aplikace:
+# <a name="configure-the-upgrade-of-a-service-fabric-application-in-visual-studio"></a>Konfigurace upgradu aplikace Service Fabric v aplikaci Visual Studio
+Nástroje Visual Studio Tools for Azure Service Fabric poskytují podporu upgradu pro publikování do místních nebo vzdálených clusterů. Existují tři scénáře, ve kterých chcete aplikaci upgradovat na novější verzi místo toho, aby se aplikace nahradila při testování a ladění:
 
-* Aplikace data nebudou ztracena během upgradu.
-* Dostupnost zůstane vysoké a nesmí být žádné přerušení služby během upgradu, pokud jsou že dostatek instancí služby rozloženy upgradovacích domén.
-* Testy můžete spustit pro aplikaci, zatímco se upgraduje.
+* Data aplikace nebudou během upgradu ztracena.
+* Dostupnost může být vysoká, takže během upgradu nedojde k žádnému přerušení služby, pokud jsou v rámci upgradovacích domén rozdělené dostatečné instance služby.
+* Testy lze spustit proti aplikaci během upgradu.
 
 ## <a name="parameters-needed-to-upgrade"></a>Parametry potřebné k upgradu
-Můžete vybrat ze dvou typů nasazení: normální nebo upgradu. Pravidelné nasazení vymaže všechny předchozí informace o nasazení a data v clusteru během nasazení upgradu zachová jej. Při upgradu aplikace Service Fabric v sadě Visual Studio, je třeba zadat, že parametry upgradu aplikace a stavu se podívejte na zásady. Parametry upgradu aplikace pomáhají řídit upgradu, zatímco zásady kontroly stavu určit, zda upgrade proběhl úspěšně. Zobrazit [upgrade aplikace Service Fabric: parametry upgradu](service-fabric-application-upgrade-parameters.md) další podrobnosti.
+Můžete si vybrat ze dvou typů nasazení: pravidelný nebo upgrade. Při běžném nasazení se vymažou všechny předchozí informace o nasazení a data v clusteru, ale nasazení upgradu ho zachová. Při upgradu aplikace Service Fabric v aplikaci Visual Studio je nutné zadat parametry upgradu aplikace a zásady kontroly stavu. Parametry upgradu aplikace vám pomůžou řídit upgrade, ale zásady kontroly stavu určují, jestli se upgrade úspěšně provedl. Další podrobnosti najdete v tématu [Service Fabric upgrade aplikace: parametry upgradu](service-fabric-application-upgrade-parameters.md) .
 
-Existují tři režimy upgradu: *Monitorované*, *UnmonitoredAuto*, a *UnmonitoredManual*.
+Existují tři režimy upgradu: *Monitored*, *UnmonitoredAuto*a *UnmonitoredManual*.
 
-* Upgrade monitorované automatizuje inovace a kontrola stavu aplikace.
-* UnmonitoredAuto upgrade automatizuje upgrade, ale přeskočí kontrolu stavu aplikací.
-* Když provedete UnmonitoredManual upgrade, budete muset ručně upgradovat každou upgradovací doména.
+* Monitorovaný upgrade automatizuje upgrade a kontrolu stavu aplikací.
+* Upgrade UnmonitoredAuto automatizuje upgrade, ale přeskočí kontrolu stavu aplikace.
+* Když provedete upgrade UnmonitoredManual, je třeba ručně upgradovat každou upgradovací doménu.
 
-Každý režim upgradu vyžaduje jinou sadu parametrů. Zobrazit [parametry upgradu aplikace](service-fabric-application-upgrade-parameters.md) Další informace o dostupných možnostech upgradu.
+Každý režim upgradu vyžaduje jiné sady parametrů. Další informace o dostupných možnostech upgradu najdete v tématu věnovaném [parametrům upgradu aplikace](service-fabric-application-upgrade-parameters.md) .
 
-## <a name="upgrade-a-service-fabric-application-in-visual-studio"></a>Upgrade aplikace Service Fabric v sadě Visual Studio
-Pokud používáte nástroje Visual Studio Service Fabric k upgradu aplikace Service Fabric, můžete publikovat procesu upgradu spíše než regulární nasazení tak, že zkontrolujete **upgradovat aplikaci** zaškrtávací políčko.
+## <a name="upgrade-a-service-fabric-application-in-visual-studio"></a>Upgrade aplikace Service Fabric v aplikaci Visual Studio
+Pokud používáte nástroje sady Visual Studio Service Fabric k upgradu aplikace Service Fabric, můžete místo pravidelného nasazení určit proces publikování, který bude upgradován, a to zaškrtnutím políčka **Upgrade aplikace** .
 
-### <a name="to-configure-the-upgrade-parameters"></a>Konfigurovat parametry upgradu
-1. Klikněte na tlačítko **nastavení** tlačítko vedle zaškrtnutí políčka. **Upravit parametry upgradu** zobrazí se dialogové okno. **Upravit parametry upgradu** dialogové okno podporuje monitorované UnmonitoredAuto a UnmonitoredManual upgradu režimy.
-2. Vyberte režim upgradu, který chcete použít a pak vyplňte mříži parametrů.
+### <a name="to-configure-the-upgrade-parameters"></a>Konfigurace parametrů upgradu
+1. Klikněte na tlačítko **Nastavení** vedle zaškrtávacího políčka. Zobrazí se dialogové okno **Upravit parametry upgradu** . Dialogové okno **Upravit parametry upgradu** podporuje režimy upgradu monitorované, UnmonitoredAuto a UnmonitoredManual.
+2. Vyberte režim upgradu, který chcete použít, a potom vyplňte parametr Grid.
 
-    Každý parametr má výchozí hodnoty. Volitelný parametr *DefaultServiceTypeHealthPolicy* přijímá vstup tabulku hash. Tady je příklad formát vstupu tabulku hash pro *DefaultServiceTypeHealthPolicy*:
+    Každý parametr má výchozí hodnoty. Nepovinný parametr *DefaultServiceTypeHealthPolicy* přebírá vstupní zatřiďovací tabulku. Tady je příklad vstupního formátu tabulky hash pro *DefaultServiceTypeHealthPolicy*:
 
     ```
     @{ ConsiderWarningAsError = "false"; MaxPercentUnhealthyDeployedApplications = 0; MaxPercentUnhealthyServices = 0; MaxPercentUnhealthyPartitionsPerService = 0; MaxPercentUnhealthyReplicasPerPartition = 0 }
     ```
 
-    *ServiceTypeHealthPolicyMap* je jiný volitelný parametr, který přijímá vstup tabulky hash v následujícím formátu:
+    *ServiceTypeHealthPolicyMap* je další volitelný parametr, který přebírá vstupní zatřiďovací tabulku v následujícím formátu:
 
     ```    
     @ {"ServiceTypeName" : "MaxPercentUnhealthyPartitionsPerService,MaxPercentUnhealthyReplicasPerPartition,MaxPercentUnhealthyServices"}
@@ -63,15 +63,15 @@ Pokud používáte nástroje Visual Studio Service Fabric k upgradu aplikace Ser
     ```
     @{ "ServiceTypeName01" = "5,10,5"; "ServiceTypeName02" = "5,5,5" }
     ```
-3. Pokud vyberete režim upgradu UnmonitoredManual, musíte ručně spusťte konzolu Powershellu pokračovat a dokončit proces upgradu. Odkazovat na [upgrade aplikace Service Fabric: Pokročilá témata](service-fabric-application-upgrade-advanced.md) další jak ruční upgrade funguje.
+3. Pokud vyberete režim upgradu UnmonitoredManual, musíte ručně spustit konzolu PowerShellu a pokračovat a dokončit proces upgradu. Informace o tom, jak ruční upgrade funguje, najdete v [tématu Service Fabric upgrade aplikace: Pokročilá témata](service-fabric-application-upgrade-advanced.md) .
 
-## <a name="upgrade-an-application-by-using-powershell"></a>Upgrade aplikace pomocí Powershellu
-Rutiny prostředí PowerShell můžete použít k upgradu aplikace Service Fabric. Zobrazit [kurz upgradu aplikace Service Fabric](service-fabric-application-upgrade-tutorial.md) a [Start-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricapplicationupgrade) podrobné informace.
+## <a name="upgrade-an-application-by-using-powershell"></a>Upgrade aplikace pomocí PowerShellu
+K upgradu Service Fabric aplikace můžete použít rutiny prostředí PowerShell. Podrobné informace najdete v článku [Service Fabric kurzu upgradu aplikací](service-fabric-application-upgrade-tutorial.md) a [Start-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricapplicationupgrade) .
 
-## <a name="specify-a-health-check-policy-in-the-application-manifest-file"></a>Zadejte zásady kontroly stavu v souboru manifestu aplikace
-Každá služba v aplikaci Service Fabric může mít vlastní parametry zásad stavu, které přepíší výchozí hodnoty. Můžete zadat tyto hodnoty parametrů v souboru manifestu aplikace.
+## <a name="specify-a-health-check-policy-in-the-application-manifest-file"></a>Zadejte zásady kontroly stavu v souboru manifestu aplikace.
+Každá služba ve Service Fabric aplikaci může mít své vlastní parametry zásad stavu, které přepisují výchozí hodnoty. Tyto hodnoty parametrů můžete zadat v souboru manifestu aplikace.
 
-Následující příklad ukazuje, jak použít zásadu vrácení jedinečný stav pro každou službu v manifestu aplikace.
+Následující příklad ukazuje, jak použít jedinečnou zásadu kontroly stavu pro každou službu v manifestu aplikace.
 
 ```xml
 <Policies>
@@ -87,4 +87,4 @@ Následující příklad ukazuje, jak použít zásadu vrácení jedinečný sta
 </Policies>
 ```
 ## <a name="next-steps"></a>Další postup
-Další informace o upgradu aplikace najdete v tématu [Upgrade aplikace pomocí sady Visual Studio](service-fabric-application-upgrade-tutorial.md).
+Další informace o upgradu aplikace naleznete v tématu [Upgrade aplikace pomocí sady Visual Studio](service-fabric-application-upgrade-tutorial.md).

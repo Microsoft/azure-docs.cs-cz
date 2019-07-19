@@ -1,6 +1,6 @@
 ---
-title: Konfigurace P2S – Azure SQL Database Managed Instance | Dokumentace Microsoftu
-description: Připojte se k Azure SQL Database Managed Instance pomocí SQL Server Management Studio pomocí připojení point-to-site z místní klientských počítačů.
+title: Konfigurace spravované instance P2S-Azure SQL Database | Microsoft Docs
+description: Připojte se k Azure SQL Database spravované instanci pomocí SQL Server Management Studio pomocí připojení typu Point-to-Site z místního klientského počítače.
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -12,35 +12,35 @@ ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova, jovanpop
 manager: craigg
 ms.date: 03/13/2019
-ms.openlocfilehash: 33e1287edbca6b603d103f11636959b6fe13e578
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 5fee129e24d38da350589d5bed90123733f148c0
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798083"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68296063"
 ---
-# <a name="quickstart-configure-a-point-to-site-connection-to-an-azure-sql-database-managed-instance-from-on-premises"></a>Rychlý start: Konfigurace připojení typu point-to-site k Azure SQL Database Managed Instance z místní
+# <a name="quickstart-configure-a-point-to-site-connection-to-an-azure-sql-database-managed-instance-from-on-premises"></a>Rychlý start: Konfigurace připojení typu Point-to-site k Azure SQL Database spravované instanci z místního prostředí
 
-Tento rychlý start ukazuje, jak se připojit k Azure SQL Database Managed Instance pomocí [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) z místních klientských počítačů prostřednictvím připojení point-to-site. Informace o připojení point-to-site najdete v tématu [o Point-to-Site VPN](../vpn-gateway/point-to-site-about.md)
+Tento rychlý Start ukazuje, jak se připojit k Azure SQL Database spravované instanci pomocí [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) z místního klientského počítače přes připojení typu Point-to-site. Informace o připojení typu Point-to-site najdete v tématu [informace o síti VPN typu Point-to-](../vpn-gateway/point-to-site-about.md) site.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Tento rychlý start:
 
-- Využívá prostředky vytvořené [vytvoříte Managed Instance](sql-database-managed-instance-get-started.md) jako výchozí bod.
-- Vyžaduje prostředí PowerShell 5.1 a AZ Powershellu 1.4.0 nebo později v místním klientském počítači. V případě potřeby, přečtěte si pokyny pro [instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps#install-the-azure-powershell-module).
+- Používá vytvořené prostředky [Vytvoření spravované instance](sql-database-managed-instance-get-started.md) jako počátečního bodu.
+- Vyžaduje PowerShell 5,1 a AZ PowerShell 1.4.0 nebo novější na místním klientském počítači. V případě potřeby si přečtěte pokyny k [instalaci modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps#install-the-azure-powershell-module).
 - Vyžaduje nejnovější verzi [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) na místním klientském počítači.
 
-## <a name="attach-a-vpn-gateway-to-your-managed-instance-virtual-network"></a>Připojit bránu VPN k virtuální síti spravované Instance
+## <a name="attach-a-vpn-gateway-to-your-managed-instance-virtual-network"></a>Připojení brány VPN k virtuální síti spravované instance
 
-1. Otevřete prostředí PowerShell v klientském počítači místní.
+1. Otevřete PowerShell na místním klientském počítači.
 
-2. Zkopírujte tento skript Powershellu. Tento skript připojí bránu sítě VPN do virtuální sítě Managed Instance, které jste vytvořili [vytvoříte Managed Instance](sql-database-managed-instance-get-started.md) rychlý start. Skript provede následující akce:
+2. Zkopírujte tento skript PowerShellu. Tento skript připojí VPN Gateway k virtuální síti spravované instance, kterou jste vytvořili v rychlém startu [Vytvoření spravované instance](sql-database-managed-instance-get-started.md) . Tento skript používá Azure PowerShell AZ Module a provede následující pro hostitele založené na systému Windows nebo Linux:
 
-   - Vytvoří a instalace certifikátů v klientském počítači
-   - Vypočítá budoucí rozsah IP podsítě brány sítě VPN
-   - Vytvoří podsítě GatewaySubnet
-   - Nasazení šablony Azure Resource Manageru, který se připojí k podsíti VPN brány sítě VPN
+   - Vytvoří a nainstaluje certifikáty na klientském počítači.
+   - Vypočítá budoucí VPN Gateway rozsah IP adres podsítě.
+   - Vytvoří GatewaySubnet.
+   - Nasadí šablonu Azure Resource Manager, která připojuje VPN Gateway k podsíti VPN.
 
      ```powershell
      $scriptUrlBase = 'https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/manage/azure-sql-db-managed-instance/attach-vpn-gateway'
@@ -55,59 +55,56 @@ Tento rychlý start:
      Invoke-Command -ScriptBlock ([Scriptblock]::Create((iwr ($scriptUrlBase+'/attachVPNGateway.ps1?t='+ [DateTime]::Now.Ticks)).Content)) -ArgumentList $parameters, $scriptUrlBase
      ```
 
-     > [!IMPORTANT]
-     > Pokud chcete použít modul Azure PowerShell – Resource Manager místo modulu Az, použijte následující rutinu: `attachVPNGateway.ps1` místo `attachVPNGatewayAz.ps1` rutiny.
-
-3. Vložte skript do okna prostředí PowerShell a zadejte požadované parametry. Hodnoty pro `<subscriptionId>`, `<resourceGroup>`, a `<virtualNetworkName>` by měl odpovídat těch, které jste použili pro [vytvoření Managed Instance](sql-database-managed-instance-get-started.md) rychlý start. Hodnota pro `<certificateNamePrefix>` může jednat o řetězec podle vašeho výběru.
+3. Vložte skript do okna PowerShellu a zadejte požadované parametry. Hodnoty pro `<subscriptionId>` `<resourceGroup>`, a `<virtualNetworkName>` by měly odpovídat těm, které jste použili v rychlém startu [Vytvoření spravované instance](sql-database-managed-instance-get-started.md) . Hodnota pro `<certificateNamePrefix>` může být zvoleným řetězcem.
 
 4. Spusťte skript prostředí PowerShell.
 
 > [!IMPORTANT]
-> Nepokračujte, dokud se nedokončí skript prostředí PowerShell.
+> Nepokračujte, dokud se PowerShellový skript nedokončí.
 
-## <a name="create-a-vpn-connection-to-your-managed-instance"></a>Vytvoření připojení VPN k Managed Instance
+## <a name="create-a-vpn-connection-to-your-managed-instance"></a>Vytvoření připojení VPN ke spravované instanci
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-2. Otevřete skupinu prostředků, ve které jste vytvořili bránu virtuální sítě a pak otevřete prostředku brány virtuální sítě.
-3. Vyberte **KonfiguracePoint-to-site** a pak vyberte **stáhnout klienta VPN**.
+2. Otevřete skupinu prostředků, ve které jste vytvořili bránu virtuální sítě, a pak otevřete prostředek brány virtuální sítě.
+3. Vyberte **Konfigurace Point-to-site** a pak vyberte **stáhnout klienta VPN**.
 
     ![Stáhnout klienta VPN](./media/sql-database-managed-instance-configure-p2s/download-vpn-client.png)  
-4. Na místním klientském počítači extrahujte soubory ze souboru zip a potom tuto složku otevřete extrahované soubory.
-5. Otevřít "**WindowsAmd64** složky a otevřete **VpnClientSetupAmd64.exe** souboru.
-6. Pokud se zobrazí **Windows chráněný počítač** zprávy, klikněte na tlačítko **informace** a potom klikněte na **přesto spustit**.
+4. V místním klientském počítači rozbalte soubory ze souboru zip a pak otevřete složku s extrahované soubory.
+5. Otevřete složku**WindowsAmd64** a otevřete soubor **VpnClientSetupAmd64. exe** .
+6. Pokud se zobrazí zpráva o **počítači chráněná systémem Windows** , klikněte na tlačítko **Další informace** a pak klikněte na tlačítko **Spustit**.
 
-    ![Instalace klienta VPN](./media/sql-database-managed-instance-configure-p2s/vpn-client-defender.png)\
-7. V dialogovém okně Řízení uživatelských účtů klikněte na tlačítko **Ano** pokračujte.
-8. V dialogovém okně odkazující na virtuální síť, vyberte **Ano** k instalaci klienta VPN pro vaši virtuální síť.
+    ![Nainstalovat klienta VPN](./media/sql-database-managed-instance-configure-p2s/vpn-client-defender.png)\
+7. V dialogovém okně Řízení uživatelských účtů pokračujte kliknutím na tlačítko **Ano** .
+8. V dialogovém okně odkazujícím na virtuální síť vyberte **Ano** pro instalaci klienta VPN pro virtuální síť.
 
-## <a name="connect-to-the-vpn-connection"></a>Připojte se k připojení k síti VPN
+## <a name="connect-to-the-vpn-connection"></a>Připojení k síti VPN
 
-1. Přejděte na **VPN** v **síť a Internet** na místním klientském počítači a vyberte virtuální síť Managed Instance pro navázání připojení k této virtuální síti. Na následujícím obrázku je síť VNet s názvem **MyNewVNet**.
+1. Pokud chcete navázat připojení k této virtuální síti, klikněte na síť **VPN** v **síti & Internetu** na místním klientském počítači a vyberte svou virtuální síť spravované instance. Na následujícím obrázku je virtuální síť s názvem **MyNewVNet**.
 
     ![Připojení VPN](./media/sql-database-managed-instance-configure-p2s/vpn-connection.png)  
 2. Vyberte **Connect** (Připojit).
 3. V dialogovém okně vyberte **připojit**.
 
     ![Připojení VPN](./media/sql-database-managed-instance-configure-p2s/vpn-connection2.png)  
-4. Po zobrazení výzvy, že Správce připojení vyžaduje zvýšená oprávnění k aktualizaci směrovací tabulky, zvolte **pokračovat**.
-5. Vyberte **Ano** v dialogovém okně Řízení uživatelských účtů, abyste mohli pokračovat.
+4. Po zobrazení výzvy, že správce připojení potřebuje zvýšené oprávnění pro aktualizaci směrovací tabulky, vyberte **pokračovat**.
+5. Chcete-li pokračovat, vyberte v dialogovém okně Řízení uživatelských účtů možnost **Ano** .
 
-   Když jste vytvořili připojení k síti VPN k virtuální síti spravované Instance.
+   Navázali jste připojení VPN k virtuální síti spravované instance.
 
     ![Připojení VPN](./media/sql-database-managed-instance-configure-p2s/vpn-connection-succeeded.png)  
 
 ## <a name="use-ssms-to-connect-to-the-managed-instance"></a>Použití SSMS k připojení k Managed Instance
 
-1. V místním klientském počítači otevřete SQL Server Management Studio (SSMS).
+1. Na místním klientském počítači otevřete SQL Server Management Studio (SSMS).
 2. V **připojit k serveru** dialogového okna zadejte plně kvalifikovaný **název hostitele** pro Managed Instance v **název serveru** pole.
 3. Vyberte **ověřování systému SQL Server**, zadejte své uživatelské jméno a heslo a pak vyberte **připojit**.
 
     ![Připojení přes SSMS](./media/sql-database-managed-instance-configure-vm/ssms-connect.png)  
 
-Po připojení, můžete zobrazit systémové a uživatelské databáze v uzlu databáze. Můžete také zobrazit různé objekty v uzlech zabezpečení, objekty serveru, replikace, správa, Agent systému SQL Server a Profiler XEvent.
+Po připojení můžete zobrazit systémové a uživatelské databáze v uzlu databáze. Můžete také zobrazit různé objekty v uzlech zabezpečení, objekty serveru, replikace, Správa, Agent SQL Server a XEvent Profiler.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Rychlý start ukazuje, jak připojit z virtuálního počítače Azure, najdete v části [konfigurace připojení typu point-to-site](sql-database-managed-instance-configure-p2s.md).
+- Rychlý Start ukazující, jak se připojit z virtuálního počítače Azure, najdete v tématu [Konfigurace připojení typu Point-to-site](sql-database-managed-instance-configure-p2s.md).
 - Přehled možností připojení aplikací najdete v článku o [připojení aplikací ke spravované instanci](sql-database-managed-instance-connect-app.md).
-- Obnovit existující databáze SQL serveru v místním do Managed Instance, můžete použít [Azure Database Migration Service (DMS) pro migraci](../dms/tutorial-sql-server-to-managed-instance.md) nebo [příkaz T-SQL RESTORE](sql-database-managed-instance-get-started-restore.md) obnovit z záložní soubor databáze.
+- Pokud chcete obnovit stávající databázi SQL Server z místního prostředí do spravované instance, můžete k obnovení ze záložního souboru databáze použít [Azure Database Migration Service (DMS) pro migraci](../dms/tutorial-sql-server-to-managed-instance.md) nebo [příkaz T-SQL Restore](sql-database-managed-instance-get-started-restore.md) .

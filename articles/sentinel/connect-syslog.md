@@ -1,6 +1,6 @@
 ---
-title: Připojení k Azure Preview ověřovací data Syslogu | Dokumentace Microsoftu
-description: Zjistěte, jak se připojit k Azure Sentinelu data Syslogu.
+title: Připojit data protokolu syslog do Azure Sentinel Preview | Microsoft Docs
+description: Přečtěte si, jak připojit data protokolu syslog ke službě Azure Sentinel.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -13,47 +13,58 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2019
+ms.date: 07/10/2019
 ms.author: rkarlin
-ms.openlocfilehash: ee7b31a57bc9627776b9ca5445132a4662506134
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: fef9fa128d2ebb84fb82579f254735fdb9aa7ee2
+ms.sourcegitcommit: 1b7b0e1c915f586a906c33d7315a5dc7050a2f34
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67611330"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67881072"
 ---
-# <a name="connect-your-external-solution-using-syslog"></a>Připojení externích řešení pomocí protokolu Syslog
+# <a name="connect-your-external-solution-using-syslog"></a>Připojení externího řešení pomocí protokolu syslog
 
 > [!IMPORTANT]
-> Azure Sentinel je aktuálně ve verzi public preview.
+> Služba Azure Sentinel je aktuálně ve verzi Public Preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Všechny místní zařízení, která podporuje Syslog Sentinelu Azure se můžete připojit. To se provádí pomocí agenta založené na počítači s Linuxem mezi zařízením a Sentinelu Azure. Pokud je počítač s Linuxem v Azure, můžete Streamovat protokoly ze zařízení nebo aplikaci k vyhrazený pracovní prostor vytváření v Azure a jejím připojení. Pokud není počítač s Linuxem v Azure, můžete Streamovat protokoly z vašeho zařízení do vyhrazené místní virtuální počítač nebo počítač, na který nainstalujete agenta pro Linux. 
+Můžete připojit libovolné místní zařízení, které podporuje syslog, do Azure Sentinel. K tomu je potřeba použít agenta založeného na počítači se systémem Linux mezi zařízením a službou Sentinel Azure. Pokud je váš počítač se systémem Linux v Azure, můžete streamovat protokoly z vašeho zařízení nebo aplikace do vyhrazeného pracovního prostoru vytvořeného v Azure a připojit ho. Pokud Váš počítač se systémem Linux není v Azure, můžete streamovat protokoly ze zařízení na vyhrazený místní virtuální počítač nebo počítač, na který instalujete agenta pro Linux. 
 
 > [!NOTE]
-> Pokud vaše zařízení podporuje formát CEF Syslog, připojení je kompletní a měli byste tuto možnost zvolte a postupujte podle pokynů v [připojení dat z formátu CEF](connect-common-event-format.md).
+> Pokud vaše zařízení podporuje syslog CEF, připojení je více dokončeno a měli byste zvolit tuto možnost a postupovat podle pokynů v tématu [připojení dat z CEF](connect-common-event-format.md).
 
 ## <a name="how-it-works"></a>Jak to funguje
 
-Syslog připojení se provádí pomocí agenta pro Linux. Ve výchozím nastavení agenta pro Linux přijímá události z démona Syslog přes protokol UDP, ale v případech, kde se počítače s Linuxem očekává shromažďovat k velkému počtu události procesu Syslog, jako když agenta pro Linux je přijímáte události z jiných zařízení, konfigurace je upravit tak, aby pomocí přenosu protokolu TCP mezi démona Syslogu a agenta.
+Syslog je protokol protokolování událostí, které jsou společné pro Linux. Aplikace odešle zprávy, které mohou být uložené na místním počítači nebo doručí do kolekcí Syslog. Pokud je nainstalován agent Log Analytics pro Linux, nakonfiguruje místní démon syslog, aby předal zprávy agentovi. Agent potom zprávu pošle Azure Monitor, kde se vytvoří odpovídající záznam.
 
-## <a name="connect-your-syslog-appliance"></a>Připojit zařízení Syslog
+Další informace najdete [v tématu zdroje dat syslog v Azure monitor](../azure-monitor/platform/data-sources-syslog.md).
 
-1. Na portálu Azure Sentinelu vyberte **datové konektory** a zvolte **Syslog** dlaždici.
-2. Pokud není počítač s Linuxem v Azure, stáhněte a nainstalujte Azure Sentinelu **agenta pro Linux** na vaše zařízení. 
-1. Pokud pracujete v Azure, vyberte nebo vytvořte virtuální počítač, který v rámci pracovního prostoru Sentinelu Azure, který je vyhrazen pro příjem zprávy Syslog. Vyberte virtuální počítač v Azure ověřovacích pracovních prostorech a klikněte na tlačítko **připojit** v horní části levého podokna.
-3. Klikněte na tlačítko **konfigurace protokolů připojený k Internetu** zpět v nastavení konektoru Syslog. 
-4. Klikněte na tlačítko **stiskněte sem a otevřete tak okno Konfigurace**.
-1. Vyberte **Data** a potom **Syslog**.
-   - Zajistěte, aby každé zařízení, které e-mail posíláte podle Syslog je v tabulce. Pro každé zařízení chcete monitorovat, nastavit závažnost. Klikněte na tlačítko **Použít**.
-1. Ve vašem počítači Syslog Ujistěte se, že posíláte těchto zařízení. 
+> [!NOTE]
+> Agent může shromažďovat protokoly z více zdrojů, ale musí být nainstalovaný na vyhrazeném proxy počítači.
 
-3. Použít příslušné schéma v Log Analytics pro protokoly Syslog, vyhledejte **Syslog**.
+## <a name="connect-your-syslog-appliance"></a>Připojení zařízení syslog
+
+1. Na portálu Sentinel Azure vyberte **datové konektory** a v tabulce klikněte na řádek **syslog** a v podokně syslog napravo klikněte na **otevřít stránku konektoru**.
+2. Pokud je váš počítač se systémem Linux v rámci Azure, vyberte **Stáhnout a nainstalovat agenta na virtuálním počítači Azure Linux**. V okně virtuální počítače vyberte počítače, na které chcete agenta nainstalovat, a klikněte na **připojit** v horní části.
+1. Pokud počítač se systémem Linux v rámci Azure není, vyberte **Stáhnout a nainstalovat agenta na počítač se systémem Linux mimo Azure**. V okně **Direct agent** zkopírujte příkaz v části stáhnout a začlenit **agenta pro Linux** a spusťte ho na svém počítači. 
+1. V části **Konfigurovat protokoly, které se mají připojit** v okně Nastavení konektoru syslog, postupujte podle pokynů:
+    1. Kliknutím na odkaz **Otevřete konfiguraci rozšířeného nastavení pracovního prostoru**. 
+    1. Vyberte **data**a potom **syslog**.
+    1. Potom v tabulce nastavte, která zařízení mají shromažďovat zprávy syslog. Měli byste buď přidat nebo vybrat zařízení, která vaše zařízení syslog zahrnuje do hlaviček protokolu. Tuto konfiguraci můžete zobrazit v zařízení syslog ve složce syslog-d ve složce:/etc/rsyslog.d/Security-config-omsagent.conf a v r-syslogu v/etc/syslog-ng/Security-config-omsagent.conf. 
+       > [!NOTE]
+       > Pokud zaškrtnete políčko, které se má u **počítačů použít**, bude tato konfigurace platit pro všechny počítače se systémem Linux připojené k tomuto pracovnímu prostoru. Tuto konfiguraci můžete zobrazit v počítači syslog pod 
+1. Kliknutím **sem otevřete okno Konfigurace**.
+1. Vyberte **data** a pak **syslog**.
+   - Ujistěte se, že všechny zařízení, které odesíláte pomocí protokolu syslog, jsou v tabulce. Pro každé zařízení, které budete monitorovat, nastavte závažnost. Klikněte na tlačítko **Použít**.
+1. V počítači syslog se ujistěte, že posíláte tato zařízení. 
+
+1. Chcete-li použít příslušné schéma v Log Analytics pro protokoly syslog, vyhledejte protokol **SYSLOG**.
+1. Pomocí funkce Kusto popsané v tématu [použití funkcí v Azure Monitorch dotazech protokolu](../azure-monitor/log-query/functions.md) můžete analyzovat zprávy syslog a pak je uložit jako novou funkci Log Analytics a pak funkci použít jako nový datový typ.
 
 
 
 
 ## <a name="next-steps"></a>Další postup
-V tomto dokumentu jste zjistili, jak se připojit Syslog na místní zařízení k Azure Sentinelu. Další informace o Azure Sentinelu, naleznete v následujících článcích:
-- Zjistěte, jak [umožňuje získat přehled vaše data a potenciální hrozby](quickstart-get-visibility.md).
-- Začínáme [detekuje hrozby s využitím Azure Sentinelu](tutorial-detect-threats.md).
+V tomto dokumentu jste zjistili, jak připojit místní zařízení syslog ke službě Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
+- Naučte se [, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
+- Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](tutorial-detect-threats.md).

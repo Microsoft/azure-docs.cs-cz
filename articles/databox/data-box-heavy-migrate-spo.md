@@ -1,95 +1,95 @@
 ---
-title: Použití Azure Data Box náročné migraci obsah sdílené složky souboru na Sharepointu Online | Dokumentace Microsoftu
-description: Pomocí tohoto kurzu se dozvíte, jak migrovat obsah sdílené složky souboru do sdílené složky bodu Online pomocí váš Azure Data Box náročné
+title: Použití Azure Data Box Heavy k migraci obsahu sdílení souborů do SharePointu Online | Microsoft Docs
+description: V tomto kurzu se dozvíte, jak migrovat obsah sdílené složky do sdílení bodu online pomocí Azure Data Box Heavy
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: tutorial
-ms.date: 07/03/2019
+ms.date: 07/18/2019
 ms.author: alkohli
-ms.openlocfilehash: d74539ec1de8f503b0d0e423adf6273d1422fed5
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 4955b28dff3193a95950912562cc3b6ec789479d
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592334"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325277"
 ---
-# <a name="use-the-azure-data-box-heavy-to-migrate-your-file-share-content-to-sharepoint-online"></a>Použijte silná Azure Data Box k migraci obsahu sdílené složky souboru na Sharepointu Online
+# <a name="use-the-azure-data-box-heavy-to-migrate-your-file-share-content-to-sharepoint-online"></a>Použití Azure Data Box Heavy k migraci obsahu sdílené složky do SharePointu Online
 
-Použijte váš Azure Data Box zátěži a nástroj pro migraci SharePoint (SPMT) snadno přeneste obsah sdílené složky souboru na Sharepointu Online a OneDrive. S použitím dat pole náročné, můžete odebrat závislost na odkaz na vaši síť (WAN) WAN k přenosu dat.
+Pomocí Azure Data Box Heavy a nástroje pro migraci služby SharePoint (SPMT) můžete snadno migrovat obsah sdílené složky do SharePointu Online a OneDrive. Pomocí Data Box Heavy můžete odebrat závislost na připojení WAN (Wide Area Network) a přenést data.
 
-Microsoft Azure Data Box je služba, která umožňuje uspořádat zařízení z portálu Microsoft Azure. Pak můžete zkopírovat terabajty dat z vašich serverů do zařízení. Po jeho dodání zpět společnosti Microsoft, vaše data zkopírována do Azure. V závislosti na velikosti dat, kterou chcete převést můžete vybrat z:
+Data Box Microsoft Azure je služba, která umožňuje objednat zařízení od portál Microsoft Azure. Potom můžete zkopírovat terabajty dat ze serverů do zařízení. Po odeslání zpátky do Microsoftu se vaše data zkopírují do Azure. V závislosti na velikosti dat, která chcete přenést, si můžete vybrat z těchto míst:
 
-- [Data Box Disk](https://docs.microsoft.com/azure/databox/data-box-disk-overview) s 35 TB využitelné kapacity na objednávky pro malé až střední datové sady.
-- [Data Box](https://docs.microsoft.com/azure/databox/data-box-overview) s 80 TB využitelné kapacity podle zařízení pro střední a velkých datových sad.
-- [Data Box náročné](https://docs.microsoft.com/azure/databox/data-box-heavy-overview) s 770 TB využitelné kapacity podle zařízení pro velké datové sady.
+- [Data box disk](https://docs.microsoft.com/azure/databox/data-box-disk-overview) s využitím kapacity 35 TB pro malé až střední datové sady na objednávku.
+- Pro středně velké datové sady je [data box](https://docs.microsoft.com/azure/databox/data-box-overview) s využitím kapacity 80 TB na zařízení.
+- [Data box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-overview) s využitím kapacity 770 TB na zařízení pro velké datové sady.
 
-Tento článek konkrétně mluví o tom, jak používat silná pole dat k migraci obsahu sdílené složky souboru na Sharepointu Online.
+Tento článek se týká zejména používání Data Box Heavy k migraci obsahu sdílené složky do SharePointu Online.
 
 ## <a name="requirements-and-costs"></a>Požadavky a náklady
 
-### <a name="for-data-box-heavy"></a>Pro Data Box náročná na výkon
+### <a name="for-data-box-heavy"></a>Pro Data Box Heavy
 
-- Data Box náročné je k dispozici pouze pro Enterprise Agreement (EA), poskytovatele Cloud solution provider (CSP), nebo nabídek Azure sponsorship. Pokud vaše předplatné nespadá do některé z výše uvedených typů, obraťte se na Microsoft Support upgradovat vaše předplatné nebo naleznete v tématu [ceny za předplatné Azure](https://azure.microsoft.com/pricing/).
-- Je poplatek za použití dat pole náročné. Přečtěte si [Data Box náročné ceny](https://azure.microsoft.com/pricing/details/databox/heavy/).
+- Data Box Heavy je k dispozici pouze pro smlouva Enterprise (EA), poskytovatele Cloud Solution Provider (CSP) nebo nabídky sponzorství Azure. Pokud vaše předplatné nepatří do žádného z výše uvedených typů, kontaktujte podpora Microsoftu k upgradu vašeho předplatného nebo si prohlédněte [ceny předplatného Azure](https://azure.microsoft.com/pricing/).
+- Použití Data Box Heavy je zpoplatněné. Nezapomeňte si prohlédnout [ceny data box Heavy](https://azure.microsoft.com/pricing/details/databox/heavy/).
 
 
 ### <a name="for-sharepoint-online"></a>Pro SharePoint Online
 
-- Zkontrolujte [minimální požadavky pro migraci nástroje SharePoint (SPMT)](https://docs.microsoft.com/sharepointmigration/how-to-use-the-sharepoint-migration-tool).
+- Projděte si [minimální požadavky na nástroj pro migraci SharePoint (SPMT)](https://docs.microsoft.com/sharepointmigration/how-to-use-the-sharepoint-migration-tool).
 
 ## <a name="workflow-overview"></a>Přehled pracovního postupu
 
-Tento pracovní postup vyžaduje, abyste proveďte kroky v Azure Data Box náročné i na Sharepointového online.
-Následující kroky se vztahují na váš Azure Data Box náročné.
+Tento pracovní postup vyžaduje, abyste provedli kroky Azure Data Box Heavy a také na SharePointu Online.
+Následující kroky se vztahují k vašemu Azure Data Box Heavy.
 
-1. Pořadí Azure Data Box velmi náročné.
-2. Příjem a nastavit vaše zařízení.
-3. Kopírování dat ze souboru místní sdílené složky do složky pro soubory Azure na vašem zařízení.
-4. Jakmile se kopírování dokončí, odešlete zařízení zpět podle pokynů.
-5. Počkejte, data se kompletně nahrát do Azure.
+1. Pořadí Azure Data Box Heavy.
+2. Přijmout a nastavit zařízení.
+3. Zkopírujte data z místní sdílené složky do složky pro soubory Azure na vašem zařízení.
+4. Až se kopie dokončí, pošlete zařízení zpátky podle pokynů.
+5. Počkejte na dokončení nahrávání dat do Azure.
 
-Následující kroky se týkají Sharepointového online.
+Následující postup se týká SharePointu Online.
 
-6. Vytvoření virtuálního počítače na webu Azure Portal a připojit sdílenou složku Azure.
-7. Nainstalujte nástroj SPMT na virtuálním počítači Azure.
-8. Spusťte nástroj SPMT pomocí sdílené složky Azure jako *zdroj*.
-9. Dokončení závěrečné kroky tohoto nástroje.
-10. Zkontrolujte a potvrďte své údaje.
+6. Vytvořte virtuální počítač v Azure Portal a připojte sdílenou složku Azure.
+7. Nainstalujte nástroj SPMT na virtuální počítač Azure.
+8. Spusťte nástroj SPMT pomocí sdílené složky Azure jako *zdroje*.
+9. Proveďte poslední kroky tohoto nástroje.
+10. Ověřte a potvrďte svá data.
 
-## <a name="use-data-box-heavy-to-copy-data"></a>Použití dat pole náročné ke kopírování dat
+## <a name="use-data-box-heavy-to-copy-data"></a>Použití Data Box Heavy ke kopírování dat
 
-Proveďte následující kroky ke zkopírování dat do vašich dat pole náročné.
+Při kopírování dat do Data Box Heavy proveďte následující kroky.
 
-1. [Uspořádat pole těžkých vaše Data](data-box-heavy-deploy-ordered.md).
-2. Jakmile se zobrazí vaše Data Box vysoké, [Data Box náročné nastavit](data-box-heavy-deploy-set-up.md). Budete zapojení a konfigurace obou uzlů ve vašem zařízení.
-3. [Kopírování dat do služby Azure Data Box náročné](data-box-heavy-deploy-copy-data.md). Při kopírování, ujistěte se, že na:
+1. [Seřazení data box Heavy](data-box-heavy-deploy-ordered.md).
+2. Po přijetí Data Box Heavy [nastavte data box Heavy](data-box-heavy-deploy-set-up.md). Můžete na svém zařízení kabelovat a konfigurovat oba uzly.
+3. [Zkopírujte data do Azure Data box Heavy](data-box-heavy-deploy-copy-data.md). Při kopírování nezapomeňte:
 
-    - Použít pouze *AzureFile* složky na Data pole náročné kopírovat data. Je to proto, že chcete data ukládaly do sdílené složky Azure, ne v objekty BLOB bloku nebo objekty BLOB stránky.
-    - Zkopírujte soubory do složky v rámci *AzureFile* složky. Podsložku v rámci *AzureFile* vytvoří sdílenou složku. Soubory zkopírován přímo do *AzureFile* složky selhání a jsou odeslány jako objekty BLOB bloku. Toto je sdílené složce, která se připojit na virtuálním počítači v dalším kroku.
-    - Kopírování dat do obou uzlech vaše Data Box náročné.
-3. Spustit [přípravu k odeslání](data-box-heavy-deploy-picked-up.md#prepare-to-ship) na vašem zařízení. Úspěšného přípravu k odeslání zajišťuje úspěšném nahrání souborů do Azure.
-4. [Vrácení zařízení](data-box-heavy-deploy-picked-up.md#ship-data-box-heavy-back).
-5. [Ověřte nahrání dat do Azure](data-box-heavy-deploy-picked-up.md#verify-data-upload-to-azure).
+    - Ke zkopírování dat použijte pouze složku *StorageAccountName_AzFile* v data box Heavy. Důvodem je to, že chcete, aby data byla ukončena ve sdílené složce Azure, nikoli v objektech blob bloku nebo objektech blob stránky.
+    - Zkopírujte soubory do složky ve složce *StorageAccountName_AzFile* . Sdílená složka v rámci složky *StorageAccountName_AzFile* vytvoří sdílenou složku. Soubory zkopírované přímo do složky *StorageAccountName_AzFile* selžou a nahrají se jako objekty blob bloku. Toto je sdílená složka, kterou budete na VIRTUÁLNÍm počítači připojeni v dalším kroku.
+    - Zkopírujte data do obou uzlů Data Box Heavy.
+3. Na svém zařízení spusťte [Příprava k odeslání](data-box-heavy-deploy-picked-up.md#prepare-to-ship) . Úspěšná Příprava na dodávání zajišťuje úspěšné nahrání souborů do Azure.
+4. [Vrátí zařízení](data-box-heavy-deploy-picked-up.md#ship-data-box-heavy-back).
+5. [Ověřte, že se data nahrávají do Azure](data-box-heavy-deploy-picked-up.md#verify-data-upload-to-azure).
 
-## <a name="use-spmt-to-migrate-data"></a>Použít SPMT pro migraci dat
+## <a name="use-spmt-to-migrate-data"></a>Použití SPMT k migraci dat
 
-Jakmile dostanete potvrzení od týmu Azure dat, který vaše kopie dat byla dokončena, můžete teď můžete přejít k migraci dat do Sharepointu Online.
+Po obdržení potvrzení od týmu Azure data po dokončení vaší kopie dat přejděte k migraci dat do SharePointu Online.
 
-Pro nejlepší výkon a připojení doporučujeme vytvořit virtuální počítač Azure (VM).
+Pro zajištění nejlepšího výkonu a konektivity doporučujeme vytvořit virtuální počítač Azure (VM).
 
-1. Přihlaste se k webu Azure portal a potom [vytvoření virtuálního počítače](../virtual-machines/windows/quick-create-portal.md).
-2. [Připojení sdílené složky Azure do virtuálního počítače](../storage/files/storage-how-to-use-files-windows.md#mount-the-azure-file-share-with-file-explorer).
-3. [Stáhněte si nástroj pro migraci SharePoint](https://spmtreleasescus.blob.core.windows.net/install/default.htm) a nainstalujte na svém virtuálním počítači Azure.
-4. Spusťte nástroj pro migraci služby SharePoint. Klikněte na tlačítko **přihlášení** a zadejte Office 365 uživatelské jméno a heslo.
-5. Po zobrazení výzvy **kde jsou vaše data?** vyberte **sdílené**. Zadejte cestu ke sdílené složky Azure, kde se nachází vaše data.
-6. Postupujte podle zbývajících výzev jako za normálních okolností, včetně cílového umístění. Další informace najdete v části [jak používat nástroj pro migraci SharePoint](https://docs.microsoft.com/sharepointmigration/how-to-use-the-sharepoint-migration-tool).
+1. Přihlaste se k Azure Portal a pak [vytvořte virtuální počítač](../virtual-machines/windows/quick-create-portal.md).
+2. [Připojte sdílenou složku Azure do virtuálního počítače](../storage/files/storage-how-to-use-files-windows.md#mount-the-azure-file-share-with-file-explorer).
+3. [Stáhněte si nástroj pro migraci SharePointu](https://spmtreleasescus.blob.core.windows.net/install/default.htm) a nainstalujte ho na virtuální počítač Azure.
+4. Spusťte nástroj pro migraci služby SharePoint. Klikněte na **Přihlásit** a zadejte uživatelské jméno a heslo pro Office 365.
+5. Když se zobrazí výzva, **kde jsou vaše data?** vyberte **sdílet soubor**. Zadejte cestu ke sdílené složce Azure, kde se nacházejí vaše data.
+6. Sledujte zbývající výzvy jako normální, včetně vašeho cílového umístění. Další informace najdete [v tématu Jak používat nástroj pro migraci služby SharePoint](https://docs.microsoft.com/sharepointmigration/how-to-use-the-sharepoint-migration-tool).
 
 > [!IMPORTANT]
-> - Rychlost, jakou se data ingestují do Sharepointu Online je ovlivňován několika faktory, bez ohledu na to pokud již máte data v Azure. Pochopení těchto faktorů vám pomůže při plánování a maximalizovat efektivitu migrace.  Další informace najdete v části [migrace Sharepointu Online a Onedrivu rychlost](/sharepointmigration/sharepoint-online-and-onedrive-migration-speed).
-> - Existuje riziko ztráty stávajících oprávnění u souborů při migraci dat do Sharepointu Online. Také může ztratit určitá metadata, jako například *vytvořil* a *datum změny podle*.
+> - Rychlost, s jakou se data ingestují do SharePointu Online, ovlivňují několik faktorů bez ohledu na to, jestli data v Azure už máte. Porozumění těmto faktorům vám pomůže naplánovat a maximalizovat efektivitu migrace.  Další informace najdete na [webu SharePoint Online a na rychlost migrace na OneDrive](/sharepointmigration/sharepoint-online-and-onedrive-migration-speed).
+> - Při migraci dat do SharePointu Online existuje riziko ztráty stávajících oprávnění k souborům. Můžete také ztratit určitá metadata, jako je například *Vytvořeno pomocí* a *Datum změny*.
 
 ## <a name="next-steps"></a>Další postup
 
-[Uspořádat pole těžkých vaše Data](./data-box-heavy-deploy-ordered.md)
+[Seřazení Data Box Heavy](./data-box-heavy-deploy-ordered.md)

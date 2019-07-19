@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB: Sestavení aplikace v jazyce Python a rozhraní SQL API'
+title: 'Azure Cosmos DB: Sestavení aplikace pomocí Pythonu a rozhraní SQL API'
 description: Tento článek představuje ukázku kódu Python, který můžete použít k připojení a dotazování služby Azure Cosmos DB přes rozhraní SQL API.
 author: SnehaGunda
 ms.service: cosmos-db
@@ -8,33 +8,32 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 05/21/2019
 ms.author: sngun
-ms.openlocfilehash: cb1cdbbd525d60342a6b0f1f7dfbfc9f81bc33ce
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: d85b156e9c6d213b6f65fe738f5d22c8cce022ee
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514599"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68001180"
 ---
-# <a name="azure-cosmos-db-build-a-python-application-using-azure-cosmos-db-sql-api-account"></a>Azure Cosmos DB: Sestavení aplikace v Pythonu pomocí účtu rozhraní SQL API služby Azure Cosmos DB
+# <a name="azure-cosmos-db-build-a-python-application-using-azure-cosmos-db-sql-api-account"></a>Azure Cosmos DB: Vytvoření aplikace v Pythonu pomocí Azure Cosmos DB účtu rozhraní SQL API
 
 > [!div class="op_single_selector"]
 > * [.NET](create-sql-api-dotnet.md)
-> * [.NET (preview)](create-sql-api-dotnet-preview.md)
 > * [Java](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 >  
 
-Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Můžete rychle vytvořit a dotazovat dokumenty, klíč/hodnota, graf databáze a široké sloupce. Všechny tyto operace těžit z rozdělení a škálování služby Azure Cosmos DB.
+Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Můžete rychle vytvořit a zadat dotaz na databáze, klíč/hodnota, šířku sloupců a grafů. Všechny tyto operace využívají distribuci a škálování Azure Cosmos DB.
 
-V tomto rychlém startu se dozvíte, jak vytvořit účet rozhraní [SQL API](sql-api-introduction.md) služby Azure Cosmos DB, databázi dokumentů a kontejner pomocí webu Azure Portal. Pak vytvoříte a spustíte aplikaci konzoly, která byla vytvořena pomocí sady Python SDK pro rozhraní [SQL API](sql-api-sdk-python.md). Tento rychlý start využívá verzi 3.0 [Python SDK](https://pypi.org/project/azure-cosmos).
+V tomto rychlém startu se dozvíte, jak vytvořit účet rozhraní [SQL API](sql-api-introduction.md) služby Azure Cosmos DB, databázi dokumentů a kontejner pomocí webu Azure Portal. Pak vytvoříte a spustíte aplikaci konzoly, která byla vytvořena pomocí sady Python SDK pro rozhraní [SQL API](sql-api-sdk-python.md). V tomto rychlém startu se používá verze 3,0 [sady Python SDK](https://pypi.org/project/azure-cosmos).
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)][!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Python 3.6](https://www.python.org/downloads/), se `python` spustitelný soubor k dispozici ve vašich `PATH`.
+* [Python 3,6](https://www.python.org/downloads/), ve kterém `python` je k dispozici `PATH`spustitelný soubor.
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [Rozšíření Python pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python#overview)
 
@@ -42,7 +41,7 @@ V tomto rychlém startu se dozvíte, jak vytvořit účet rozhraní [SQL API](sq
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-## <a name="add-a-container"></a>Přidání kontejneru
+## <a name="add-a-container"></a>Přidat kontejner
 
 [!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-create-collection.md)]
 
@@ -63,7 +62,7 @@ Teď naklonujeme aplikaci SQL API z GitHubu, nastavíme připojovací řetězec
     ```cmd
     md "git-samples"
     ```
-   Pokud používáte příkazový řádek bash, by měl místo toho použijte následující příkaz:
+   Pokud používáte příkazový řádek bash, měli byste místo toho použít následující příkaz:
 
    ```bash
    mkdir "git-samples"
@@ -85,11 +84,11 @@ Teď naklonujeme aplikaci SQL API z GitHubu, nastavíme připojovací řetězec
 
 Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připojovacím řetězci, a zkopírujte je do aplikace.
 
-1. V [webu Azure portal](https://portal.azure.com/), ve vašem účtu Azure Cosmos v levém navigačním panelu klikněte na tlačítko **klíče**. V dalším kroku zkopírujete pomocí tlačítek kopírování na pravé straně obrazovky identifikátor **URI** a **primární klíč** do souboru `CosmosGetStarted.py`.
+1. V [Azure Portal](https://portal.azure.com/)klikněte v účtu Azure Cosmos v levém navigačním panelu na **klíče**. V dalším kroku zkopírujete pomocí tlačítek kopírování na pravé straně obrazovky identifikátor **URI** a **primární klíč** do souboru `CosmosGetStarted.py`.
 
     ![Zobrazení a zkopírování přístupového klíče na webu Azure Portal v okně Klíče](./media/create-sql-api-dotnet/keys.png)
 
-2. Otevřít `CosmosGetStarted.py` souboru v \git-samples\azure-cosmos-db-python-getting-started ve Visual Studio Code.
+2. `CosmosGetStarted.py` Otevřete soubor v \git-samples\azure-Cosmos-DB-Python-Getting-Started v Visual Studio Code.
 
 3. Z portálu zkopírujte hodnotu identifikátoru **URI** (pomocí tlačítka kopírování) a nastavte ji jako hodnotu klíče **endpoint** v souboru ``CosmosGetStarted.py``. 
 
@@ -103,13 +102,13 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
 
 ## <a name="review-the-code"></a>Kontrola kódu
 
-Tento krok je volitelný. Další informace o databázi prostředků vytvořených v kódu a přeskočte k části [aktualizovat připojovací řetězec](#update-your-connection-string).
+Tento krok je volitelný. Přečtěte si informace o databázových prostředcích vytvořených v kódu nebo přeskočit k části [aktualizace připojovacího řetězce](#update-your-connection-string).
 
 Poznámka: Pokud znáte předchozí verzi sady Python SDK, možná jste zvyklí na používání termínů „kolekce“ a „dokument“. Vzhledem k tomu, že Azure Cosmos DB podporuje více modelů rozhraní API, ve verzi 3.0 sady Python SDK a novějších se používají obecné termíny „kontejner“, což může být kolekce, graf nebo tabulka, a „položka“ popisující obsah kontejneru.
 
 Všechny následující fragmenty kódu pocházejí ze souboru `CosmosGetStarted.py`.
 
-* Inicializuje se CosmosClient. Nezapomeňte aktualizovat hodnoty "Koncového bodu" a "hlavní klíč", jak je popsáno v [aktualizovat připojovací řetězec](#update-your-connection-string) oddílu. 
+* Inicializuje se CosmosClient. Nezapomeňte aktualizovat hodnoty "koncový bod" a "hlavní klíč", jak je popsáno v části [aktualizace připojovacího řetězce](#update-your-connection-string) . 
 
     ```python
     # Initialize the Cosmos client
@@ -176,7 +175,7 @@ Všechny následující fragmenty kódu pocházejí ze souboru `CosmosGetStarted
 
 1. V aplikaci Visual Studio Code vyberte **Zobrazení**>**Paleta příkazů**. 
 
-2. Na příkazovém řádku zadejte **Pythonu: Vyberte interpret** a pak vyberte verzi jazyka Python k použití.
+2. Na příkazovém řádku zadejte **Python: Vyberte Interpret** a pak vyberte verzi Pythonu, která se má použít.
 
     Zápatí v aplikaci Visual Studio Code se aktualizuje a bude označovat, že je vybraný interpret. 
 
@@ -216,7 +215,7 @@ Všechny následující fragmenty kódu pocházejí ze souboru `CosmosGetStarted
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto rychlém startu jste zjistili, jak vytvořit účet Azure Cosmos, vytvoření kontejneru pomocí Průzkumníku dat a spuštění aplikace. Teď můžete do účtu Cosmos DB importovat další data. 
+V tomto rychlém startu jste se seznámili s postupem vytvoření účtu Azure Cosmos, vytvoření kontejneru pomocí Průzkumník dat a spuštění aplikace. Teď můžete do účtu Cosmos DB importovat další data. 
 
 > [!div class="nextstepaction"]
 > [Import dat do databáze Azure Cosmos DB pro rozhraní SQL API](import-data.md)

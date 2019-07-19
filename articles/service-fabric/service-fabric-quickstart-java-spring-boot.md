@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 01/29/2019
 ms.author: suhuruli
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 2c98b069e042f9cbd07ccee643028ac84b3471c6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f7cf3f4cc0ceba89c031f5c36e90bbd6ef3dd20a
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60728498"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68327162"
 ---
-# <a name="quickstart-deploy-a-java-spring-boot-application-to-service-fabric"></a>Rychlý start: Nasazení aplikace Java Spring Boot do Service Fabric
+# <a name="quickstart-deploy-a-java-spring-boot-application-to-service-fabric"></a>Rychlý start: Nasazení aplikace s pružinou spuštění z Java do Service Fabric
 
 Azure Service Fabric je platforma distribuovaných systémů pro nasazování a správu mikroslužeb a kontejnerů.
 
@@ -90,7 +90,7 @@ git clone https://github.com/spring-guides/gs-spring-boot.git
     java -jar gs-spring-boot-0.1.0.jar
     ```
 
-1. Do souboru `gs-spring-boot/SpringServiceFabric/SpringServiceFabric/SpringGettingStartedPkg/ServiceManifest.xml` přidejte prostředek **Endpoints**.
+1. Přidat prostředek **koncových bodů** do souboru *GS-Spring-Boot/SpringServiceFabric/SpringServiceFabric/SpringGettingStartedPkg/ServiceManifest. XML*
 
     ```xml 
         <Resources>
@@ -145,7 +145,7 @@ V této fázi jste vytvořili aplikaci Service Fabric pro ukázku Spring Boot Ge
     docker run --name sftestcluster -d -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 -p 8080:8080 mysfcluster
     ```
 
-    Spuštění místního clusteru nějakou dobu trvá. Pokud chcete potvrdit, že je cluster plně funkční, přejděte do Service Fabric Exploreru na adrese **http://localhost:19080**. Pět uzlů v pořádku značí, že je místní cluster zprovozněný. 
+    Spuštění místního clusteru nějakou dobu trvá. Pokud chcete potvrdit, že je cluster plně funkční, přejděte do Service Fabric Exploreru na adrese **http://localhost:19080** . Pět uzlů v pořádku značí, že je místní cluster zprovozněný. 
     
     ![Místní cluster v pořádku](./media/service-fabric-quickstart-java-spring-boot/sfxlocalhost.png)
 
@@ -161,7 +161,7 @@ V této fázi jste vytvořili aplikaci Service Fabric pro ukázku Spring Boot Ge
     ./install.sh
     ```
 
-1. Otevřete oblíbený webový prohlížeč a přejděte aplikace `http://localhost:8080`.
+1. Otevřete oblíbený webový prohlížeč a přejděte do aplikace pomocí přístupu `http://localhost:8080`.
 
     ![Front-end aplikace – místní prostředí](./media/service-fabric-quickstart-java-spring-boot/springbootsflocalhost.png)
 

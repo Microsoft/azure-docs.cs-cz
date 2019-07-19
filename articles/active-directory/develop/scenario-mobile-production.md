@@ -1,9 +1,9 @@
 ---
-title: Mobilní aplikace, že volání webových rozhraní API (Přesun do produkčního prostředí) – platforma identit Microsoft
-description: Další informace o vytváření mobilních aplikací, že volání webových rozhraní API (Přesun do produkčního prostředí)
+title: Mobilní aplikace, která volá webová rozhraní API (přesunout do produkčního prostředí) – Microsoft Identity Platform
+description: Zjistěte, jak vytvořit mobilní aplikaci, která volá webová rozhraní API (přesunout do produkčního prostředí).
 services: active-directory
 documentationcenter: dev-center-name
-author: danieldobalian
+author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -13,37 +13,37 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
-ms.reviwer: brandwe
+ms.reviwer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d8b6a5c2a29228de806088ea93e197d42bf1ab47
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4e778e55bd87e325b3dcf14a8c9f1616157a420b
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65962349"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68320894"
 ---
-# <a name="mobile-app-that-calls-web-apis---move-to-production"></a>Mobilní aplikace, která volá webové rozhraní API – Přesun do produkčního prostředí
+# <a name="mobile-app-that-calls-web-apis---move-to-production"></a>Mobilní aplikace, která volá webová rozhraní API – přesun do produkčního prostředí
 
-Tento článek obsahuje podrobnosti o tom, jak zlepšit kvalitu a spolehlivost vaší aplikace před přesunutím do produkčního prostředí.
+Tento článek poskytuje podrobné informace o tom, jak zlepšit kvalitu a spolehlivost vaší aplikace před jejich přesunutím do produkčního prostředí.
 
-## <a name="handling-errors-in-mobile-applications"></a>Zpracování chyb v mobilních aplikacích.
+## <a name="handling-errors-in-mobile-applications"></a>Zpracování chyb v mobilních aplikacích
 
-Počet chybové stavy můžete ve vaší aplikaci vyskytnout v tomto okamžiku. Hlavní scénáře pro zpracování jsou tiché selhání a náhrad na interakci ze strany. Další podmínky, které byste měli zvážit pro produkční prostředí patří situace žádné sítě, výpadky služeb, požadavky pro vyjádření souhlasu správce a ostatních případech specifické pro scénář.
+V této chvíli může v aplikaci dojít k několika chybovým podmínkám. Hlavními scénáři, které je potřeba zpracovat, jsou tiché selhání a záložní interakce. Další podmínky, které byste měli zvážit v produkčním prostředí, zahrnují situace bez sítě, výpadky služeb, požadavky na souhlas správce a další případy specifické pro konkrétní scénář.
 
-Každý knihovna MSAL obsahuje ukázkový kód a wiki obsah, který popisuje způsob zpracování těchto podmínek:
+Každá knihovna MSAL má vzorový kód a obsah wiki, který popisuje, jak tyto podmínky zpracovat:
 
-- [MSAL Android Wiki](https://github.com/AzureAD/microsoft-authentication-library-for-android)
-- [Knihovna MSAL iOS Wiki](https://github.com/AzureAD/microsoft-authentication-library-for-objc/wiki)
+- [MSAL wiki pro Android](https://github.com/AzureAD/microsoft-authentication-library-for-android)
+- [MSAL wiki pro iOS](https://github.com/AzureAD/microsoft-authentication-library-for-objc/wiki)
 - [MSAL.NET Wiki](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki)
 
 ## <a name="mitigating-and-investigating-issues"></a>Zmírnění a zkoumání problémů
 
-Chcete-li diagnostikovat problémy ve vaší aplikaci, pomáhá shromažďovat data. Informace o typech dat můžete shromažďovat, najdete v článku wikiwebů platforma MSAL.
+Chcete-li diagnostikovat problémy ve vaší aplikaci, pomůže shromažďovat data. Informace o druzích dat, která můžete shromažďovat, najdete v tématu MSAL Platform wiki.
 
-- Uživatelé můžou požádat o pomoc, když narazí na problémy. Osvědčeným postupem je zachytit a dočasně ukládat protokoly a zadejte umístění, kde uživatelé můžou nahrávat. Knihovna MSAL poskytuje protokolování rozšíření budou zachyceny podrobné informace o ověřování.
-- Pokud je k dispozici, povolte telemetrická data prostřednictvím MSAL pro shromažďování dat o jak jsou uživatelé přihlášení do vaší aplikace.
+- Uživatelé můžou požádat o pomoc, když nastanou problémy. Osvědčeným postupem je zachytit a dočasně ukládat protokoly a zadat umístění, kam je uživatelé můžou odeslat. MSAL poskytuje rozšíření protokolování pro zachycení podrobných informací o ověřování.
+- Pokud je k dispozici, povolte telemetrii prostřednictvím MSAL ke shromáždění dat o tom, jak se uživatelé přihlásí k vaší aplikaci.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]

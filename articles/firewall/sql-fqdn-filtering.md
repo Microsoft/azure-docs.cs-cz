@@ -1,51 +1,52 @@
 ---
-title: Konfigurace pravidel aplikace Brána Firewall služby Azure s SQL plně kvalifikovaných názvů domén
-description: V tomto článku se dozvíte, jak nakonfigurovat SQL plně kvalifikovaných názvů domén v pravidlech brány Firewall Azure aplikace.
+title: Konfigurace Azure Firewall pravidel aplikací s plně kvalifikovanými názvy domén SQL
+description: V tomto článku se dozvíte, jak nakonfigurovat plně kvalifikované názvy domény SQL v Azure Firewall pravidlech aplikací.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 7/11/2019
+ms.date: 07/19/2019
 ms.author: victorh
-ms.openlocfilehash: e188a5dda8f936ad369aa2b9222bc726bb0d6a5e
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 239998f29ac9a578174c5dba547bb24ba0755505
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67786585"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68318184"
 ---
-# <a name="configure-azure-firewall-application-rules-with-sql-fqdns"></a>Konfigurace pravidel aplikace Brána Firewall služby Azure s SQL plně kvalifikovaných názvů domén
+# <a name="configure-azure-firewall-application-rules-with-sql-fqdns"></a>Konfigurace Azure Firewall pravidel aplikací s plně kvalifikovanými názvy domén SQL
 
 > [!IMPORTANT]
-> Azure application pravidla brány Firewall pomocí plně kvalifikovaných názvů domén SQL je aktuálně ve verzi public preview.
+> Azure Firewall pravidla aplikací s plně kvalifikovanými názvy domén SQL je aktuálně ve verzi Public Preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Teď můžete nakonfigurovat pravidla brány Firewall Azure aplikace s SQL plně kvalifikovaných názvů domény. To umožňuje omezit přístup z vašich virtuálních sítí na pouze Zadaná instance systému SQL server.
+Teď můžete nakonfigurovat Azure Firewall pravidla aplikací s plně kvalifikovanými názvy domén SQL. To umožňuje omezit přístup z virtuálních sítí pouze na zadané instance systému SQL Server.
 
-S SQL plně kvalifikované názvy domény můžete filtrovat provoz:
+Pomocí plně kvalifikovaných názvů domén SQL můžete filtrovat provoz:
 
-- Z vaší virtuální sítě k Azure SQL Database nebo službu Azure SQL Data Warehouse. Příklad: Povolit jenom přístup k *sql server1.database.windows.net*.
-- Z místních do spravované instance SQL Azure nebo SQL IaaS spuštěná ve virtuálních sítích.
-- Z paprsku k paprsek do spravované instance SQL Azure nebo SQL IaaS spuštěná ve virtuálních sítích.
+- Z vaší virtuální sítě na Azure SQL Database nebo Azure SQL Data Warehouse. Příklad: Povolte přístup jenom k *SQL-Server1.Database.Windows.NET*.
+- Z místního prostředí do Azure SQL Managed Instances nebo SQL IaaS spuštěné v virtuální sítě.
+- Od paprsku po paprsky až po Azure SQL Managed Instances nebo SQL IaaS spuštěné v virtuální sítě.
 
-Ve verzi public preview, je podporován SQL, plně kvalifikovaný název domény filtrování [režim proxy](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-architecture#connection-policy) jenom (port 1433). Pokud používáte SQL ve výchozím režimu přesměrování, můžete filtrovat přístupu pomocí značka služby SQL jako součást [pravidla síťových](overview.md#network-traffic-filtering-rules).
-Pokud používáte jiné než výchozí čísla portů pro provoz SQL IaaS, můžete nakonfigurovat tyto porty v pravidlech brány firewall aplikací.
+V rámci verze Public Preview se filtrování plně kvalifikovaného názvu domény SQL podporuje jenom v [režimu proxy serveru](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-architecture#connection-policy) (port 1433). Pokud používáte SQL ve výchozím režimu přesměrování, můžete přístup filtrovat pomocí značky služby SQL jako součást [pravidel sítě](overview.md#network-traffic-filtering-rules).
+Pokud používáte jiné než výchozí porty pro přenos SQL IaaS, můžete tyto porty nakonfigurovat v pravidlech aplikací brány firewall.
 
-> [!NOTE]
-> Pravidla aplikací s plně kvalifikované názvy domény SQL je teď dostupná v všech oblastech prostřednictvím rozhraní příkazového řádku Azure, rozhraní REST a šablony. Portálu uživatelského rozhraní je přidáte do oblastí postupně a budou k dispozici ve všech oblastech po dokončení tohoto uvedení.
+Pravidla aplikací s plně kvalifikovanými názvy domén SQL jsou v tuto chvíli k dispozici ve všech oblastech prostřednictvím Azure Portal, Azure CLI, REST a šablon.
 
-## <a name="configure-using-azure-cli"></a>Konfigurace pomocí rozhraní příkazového řádku Azure
+## <a name="configure-using-azure-cli"></a>Konfigurace pomocí Azure CLI
 
-1. Nasazení [Brána Firewall služby Azure pomocí Azure CLI](deploy-cli.md).
-2. Pokud můžete filtrovat provoz do Azure SQL Database, SQL Data Warehouse nebo spravované Instance SQL, zkontrolujte režim připojení SQL je nastavená na **Proxy**. Zjistěte, jak přepnout režim připojení SQL, najdete v článku [architektura připojení SQL Azure](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-architecture#change-azure-sql-database-connection-policy). 
+1. Nasaďte [Azure firewall pomocí Azure CLI](deploy-cli.md).
+2. Pokud filtrujete provoz na Azure SQL Database, SQL Data Warehouse nebo spravované instance SQL, ujistěte se, že je režim připojení SQL nastavený na **proxy**. Informace o přepínání režimu připojení SQL najdete v tématu [Architektura připojení k Azure SQL](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-architecture#change-azure-sql-database-connection-policy). 
 
    > [!NOTE]
-   > SQL *proxy* režimu může způsobit další latenci v porovnání s *přesměrování*. Pokud chcete dál používat režim přesměrování, což je výchozí nastavení pro klienty připojující se v rámci Azure, můžete filtrovat přístupu pomocí SQL [značka služby](service-tags.md) v bráně firewall [pravidla síťových](tutorial-firewall-deploy-portal.md#configure-a-network-rule).
+   > Režim *proxy serveru* SQL může mít za následek větší latenci v porovnání s *přesměrování*. Pokud chcete pokračovat v používání režimu přesměrování, který je ve výchozím nastavení pro klienty připojující se v rámci Azure, můžete přístup filtrovat pomocí [značky služby](service-tags.md) SQL v [síťových pravidlech](tutorial-firewall-deploy-portal.md#configure-a-network-rule)brány firewall.
 
-3. Konfigurace pravidla aplikace s SQL plně kvalifikovaný název domény chcete povolit přístup k systému SQL server:
+3. Konfigurace pravidla aplikace s plně kvalifikovaným názvem domény SQL pro povolení přístupu k SQL serveru:
 
    ```azurecli
+   az extension add -n azure-firewall
+
    az network firewall application-rule create \
    -g FWRG \
    -f azfirewall \
@@ -56,17 +57,17 @@ Pokud používáte jiné než výchozí čísla portů pro provoz SQL IaaS, mů�
    --target-fqdns sql-serv1.database.windows.net
    ```
 
-## <a name="configure-using-the-azure-portal"></a>Konfigurovat pomocí webu Azure portal
-1. Nasazení [Brána Firewall služby Azure pomocí Azure CLI](deploy-cli.md).
-2. Pokud můžete filtrovat provoz do Azure SQL Database, SQL Data Warehouse nebo spravované Instance SQL, zkontrolujte režim připojení SQL je nastavená na **Proxy**. Zjistěte, jak přepnout režim připojení SQL, najdete v článku [architektura připojení SQL Azure](../sql-database/sql-database-connectivity-architecture.md#change-azure-sql-database-connection-policy). 
+## <a name="configure-using-the-azure-portal"></a>Konfigurace pomocí Azure Portal
+1. Nasaďte [Azure firewall pomocí Azure CLI](deploy-cli.md).
+2. Pokud filtrujete provoz na Azure SQL Database, SQL Data Warehouse nebo spravované instance SQL, ujistěte se, že je režim připojení SQL nastavený na **proxy**. Informace o přepínání režimu připojení SQL najdete v tématu [Architektura připojení k Azure SQL](../sql-database/sql-database-connectivity-architecture.md#change-azure-sql-database-connection-policy). 
 
    > [!NOTE]
-   > SQL *proxy* režimu může způsobit další latenci v porovnání s *přesměrování*. Pokud chcete dál používat režim přesměrování, což je výchozí nastavení pro klienty připojující se v rámci Azure, můžete filtrovat přístupu pomocí SQL [značka služby](service-tags.md) v bráně firewall [pravidla síťových](tutorial-firewall-deploy-portal.md#configure-a-network-rule).
-3. Přidejte pravidlo brány application s odpovídající protokol, port a plně kvalifikovaný název domény SQL a potom vyberte **Uložit**.
-   ![pravidlo brány Application s plně kvalifikovaný název domény SQL](media/sql-fqdn-filtering/application-rule-sql.png)
-4. Přístup SQL z virtuálního počítače ve virtuální síti, která filtruje provoz přes bránu firewall. 
-5. Ověřit, zda [protokoly brány Firewall Azure](log-analytics-samples.md) Zobrazit provoz je povolený.
+   > Režim *proxy serveru* SQL může mít za následek větší latenci v porovnání s *přesměrování*. Pokud chcete pokračovat v používání režimu přesměrování, který je ve výchozím nastavení pro klienty připojující se v rámci Azure, můžete přístup filtrovat pomocí [značky služby](service-tags.md) SQL v [síťových pravidlech](tutorial-firewall-deploy-portal.md#configure-a-network-rule)brány firewall.
+3. Přidejte pravidlo aplikace s příslušným protokolem, portem a plně kvalifikovaným názvem domény SQL a pak vyberte **Uložit**.
+   ![pravidlo aplikace s plně kvalifikovaným názvem domény SQL](media/sql-fqdn-filtering/application-rule-sql.png)
+4. Přístup k SQL z virtuálního počítače ve virtuální síti, která filtruje přenos přes bránu firewall. 
+5. Ověřte, že je povolený provoz [Azure firewall protokoly](log-analytics-samples.md) .
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o proxy serveru SQL a přesměrovat režimech najdete v tématu [architektura připojení k databázi Azure SQL](../sql-database/sql-database-connectivity-architecture.md).
+Další informace o proxy serveru SQL a režimech přesměrování najdete v tématu [Architektura připojení Azure SQL Database](../sql-database/sql-database-connectivity-architecture.md).

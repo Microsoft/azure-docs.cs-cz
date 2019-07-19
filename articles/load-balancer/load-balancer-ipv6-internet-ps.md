@@ -1,10 +1,10 @@
 ---
-title: Vytvoření nástroje pro vyrovnávání zatížení přístupem k Internetu s protokolem IPv6 – PowerShell
+title: Vytvoření internetového nástroje pro vyrovnávání zatížení s využitím IPv6-PowerShellu
 titlesuffix: Azure Load Balancer
-description: Zjistěte, jak vytvořit internetový nástroj pro vyrovnávání zatížení s IPv6 pomocí prostředí PowerShell pro Resource Manager
+description: Zjistěte, jak vytvořit internetový nástroj pro vyrovnávání zatížení s protokolem IPv6 pomocí prostředí PowerShell pro Správce prostředků
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 keywords: protokol IPv6, nástroje pro vyrovnávání zatížení azure, duálním zásobníkem, veřejné IP adresy, nativní protokol ipv6, mobilní zařízení, iot
 ms.service: load-balancer
 ms.custom: seodec18
@@ -13,15 +13,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
-ms.author: kumud
-ms.openlocfilehash: e4bc889df008283f05be5f820b66415cd38c1595
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: allensu
+ms.openlocfilehash: 12f9b8d3031d3b64e2f39f07763f7a75164aad25
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66149274"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274989"
 ---
-# <a name="get-started-creating-an-internet-facing-load-balancer-with-ipv6-using-powershell-for-resource-manager"></a>Začínáme vytvářet internetový nástroj pro vyrovnávání zatížení s IPv6 pomocí prostředí PowerShell pro Resource Manager
+# <a name="get-started-creating-an-internet-facing-load-balancer-with-ipv6-using-powershell-for-resource-manager"></a>Začínáme vytvářet internetový nástroj pro vyrovnávání zatížení s protokolem IPv6 pomocí prostředí PowerShell pro Správce prostředků
 
 > [!div class="op_single_selector"]
 > * [PowerShell](load-balancer-ipv6-internet-ps.md)
@@ -35,23 +35,23 @@ Azure Load Balancer je nástroj pro vyrovnávání zatížení úrovně 4 (TCP, 
 
 ## <a name="example-deployment-scenario"></a>Příklad scénáře nasazení
 
-Následující diagram znázorňuje řešení se nasazuje v tomto článku pro vyrovnávání zatížení.
+Následující diagram znázorňuje řešení vyrovnávání zatížení, které je nasazené v tomto článku.
 
 ![Scénář nástroje pro vyrovnávání zatížení](./media/load-balancer-ipv6-internet-ps/lb-ipv6-scenario.png)
 
 V tomto scénáři vytvoříte následující prostředky Azure:
 
-* Vyrovnávání zatížení přístupem k Internetu s IPv4 a IPv6 veřejnou IP adresu
-* Dvě pravidla vyrovnávání přiřadit privátní koncových bodů veřejných virtuálních IP adres zatížení
-* Skupinu dostupnosti, který obsahuje dva virtuální počítače
-* Dva virtuální počítače (VM)
-* Rozhraní virtuální sítě pro každý virtuální počítač s protokoly IPv4 a IPv6 adresy přiřazené
+* Internetový Load Balancer s IPv4 a veřejnou IP adresou IPv6
+* Dvě pravidla vyrovnávání zatížení pro mapování veřejných virtuálních IP adres na privátní koncové body
+* Skupina dostupnosti, která obsahuje dva virtuální počítače
+* Dva virtuální počítače
+* Virtuální síťové rozhraní pro každý virtuální počítač s přiřazenými adresami IPv4 i IPv6
 
-## <a name="deploying-the-solution-using-the-azure-powershell"></a>Nasazení řešení pomocí Azure Powershellu
+## <a name="deploying-the-solution-using-the-azure-powershell"></a>Nasazení řešení pomocí Azure PowerShell
 
-Následující kroky ukazují, jak vytvořit internetový nástroj pro vyrovnávání zatížení pomocí Azure Resource Manageru pomocí Powershellu. S Azure Resource Managerem se jednotlivé prostředky se vytvoří a nakonfigurují zvlášť, následně se spojí dohromady a vytvoří prostředek.
+Následující kroky ukazují, jak vytvořit internetový nástroj pro vyrovnávání zatížení pomocí Azure Resource Manager pomocí prostředí PowerShell. Při Azure Resource Manager se každý prostředek vytvoří a nakonfiguruje jednotlivě a pak se spojí dohromady a vytvoří prostředek.
 
-Pokud chcete nasadit nástroj pro vyrovnávání zatížení, vytvořte a nakonfigurujte následující objekty:
+Pro nasazení nástroje pro vyrovnávání zatížení vytvoříte a nakonfigurujete následující objekty:
 
 * Konfigurace front-endových IP adres – obsahuje veřejné IP adresy pro příchozí síťový provoz.
 * Back-endový fond adres – obsahuje síťová rozhraní, pomocí kterých virtuální počítače přijímají síťový provoz z nástroje pro vyrovnávání zatížení.
@@ -63,9 +63,9 @@ Další informace najdete v tématu [Podpora služby Load Balancer v Azure Resou
 
 ## <a name="set-up-powershell-to-use-resource-manager"></a>Nastavení prostředí PowerShell pro použití Resource Manageru
 
-Ujistěte se, že máte nejnovější produkční verzi modulu Azure Resource Manageru pro prostředí PowerShell.
+Ujistěte se, že máte nejnovější produkční verzi modulu Azure Resource Manager pro prostředí PowerShell.
 
-1. Přihlaste se k Azure
+1. Přihlášení k Azure
 
     ```azurepowershell-interactive
     Connect-AzAccount
@@ -85,7 +85,7 @@ Ujistěte se, že máte nejnovější produkční verzi modulu Azure Resource Ma
     Select-AzSubscription -SubscriptionId 'GUID of subscription'
     ```
 
-4. Vytvořte skupinu prostředků (Pokud se používá existující skupina prostředků Tenhle krok přeskočit)
+4. Vytvořit skupinu prostředků (Tento krok přeskočte, pokud se používá existující skupina prostředků)
 
     ```azurepowershell-interactive
     New-AzResourceGroup -Name NRP-RG -location "West US"
@@ -93,14 +93,14 @@ Ujistěte se, že máte nejnovější produkční verzi modulu Azure Resource Ma
 
 ## <a name="create-a-virtual-network-and-a-public-ip-address-for-the-front-end-ip-pool"></a>Vytvoření virtuální sítě a veřejné IP adresy pro front-endový fond IP adres
 
-1. Vytvoření virtuální sítě k podsíti.
+1. Vytvořte virtuální síť s podsítí.
 
     ```azurepowershell-interactive
     $backendSubnet = New-AzVirtualNetworkSubnetConfig -Name LB-Subnet-BE -AddressPrefix 10.0.2.0/24
     $vnet = New-AzvirtualNetwork -Name VNet -ResourceGroupName NRP-RG -Location 'West US' -AddressPrefix 10.0.0.0/16 -Subnet $backendSubnet
     ```
 
-2. Vytvořte Azure veřejná IP adresa (PIP) prostředky pro front-endový fond IP adres. Nezapomeňte změnit hodnotu pro `-DomainNameLabel` před spuštěním následujících příkazů. Hodnota musí být jedinečný v rámci oblasti Azure.
+2. Vytvořte prostředky služby Azure Public IP adresa (PIP) pro fond front-end IP adres. `-DomainNameLabel` Před spuštěním následujících příkazů nezapomeňte změnit hodnotu. Hodnota musí být jedinečná v rámci oblasti Azure.
 
     ```azurepowershell-interactive
     $publicIPv4 = New-AzPublicIpAddress -Name 'pub-ipv4' -ResourceGroupName NRP-RG -Location 'West US' -AllocationMethod Static -IpAddressVersion IPv4 -DomainNameLabel lbnrpipv4
@@ -108,32 +108,32 @@ Ujistěte se, že máte nejnovější produkční verzi modulu Azure Resource Ma
     ```
 
     > [!IMPORTANT]
-    > Nástroje pro vyrovnávání zatížení používá název domény veřejné IP adresy jako předponu jeho plně kvalifikovaného názvu domény. V tomto příkladu jsou plně kvalifikované názvy *lbnrpipv4.westus.cloudapp.azure.com* a *lbnrpipv6.westus.cloudapp.azure.com*.
+    > Nástroj pro vyrovnávání zatížení používá označení domény veřejné IP adresy jako předponu svého plně kvalifikovaného názvu domény. V tomto příkladu jsou plně kvalifikované názvy domény *lbnrpipv4.westus.cloudapp.Azure.com* a *lbnrpipv6.westus.cloudapp.Azure.com*.
 
-## <a name="create-a-front-end-ip-configurations-and-a-back-end-address-pool"></a>Vytvoření konfigurace protokolu IP front-endový a Back-Endového fondu adres
+## <a name="create-a-front-end-ip-configurations-and-a-back-end-address-pool"></a>Vytvoření konfigurace front-endové IP adresy a fondu back-endu adres
 
-1. Vytvořte konfiguraci front-endu adresy používá veřejné IP adresy, kterou jste vytvořili.
+1. Vytvořte konfiguraci front-endu adres, která používá veřejné IP adresy, které jste vytvořili.
 
     ```azurepowershell-interactive
     $FEIPConfigv4 = New-AzLoadBalancerFrontendIpConfig -Name "LB-Frontendv4" -PublicIpAddress $publicIPv4
     $FEIPConfigv6 = New-AzLoadBalancerFrontendIpConfig -Name "LB-Frontendv6" -PublicIpAddress $publicIPv6
     ```
 
-2. Vytvořte fondy adres back endu.
+2. Vytvořte fondy back-endové adresy.
 
     ```azurepowershell-interactive
     $backendpoolipv4 = New-AzLoadBalancerBackendAddressPoolConfig -Name "BackendPoolIPv4"
     $backendpoolipv6 = New-AzLoadBalancerBackendAddressPoolConfig -Name "BackendPoolIPv6"
     ```
 
-## <a name="create-lb-rules-nat-rules-a-probe-and-a-load-balancer"></a>Vytvoření pravidel LB, pravidla NAT, testu a nástroje pro vyrovnávání zatížení
+## <a name="create-lb-rules-nat-rules-a-probe-and-a-load-balancer"></a>Vytvoření pravidel pro uvolnění, pravidel NAT, sondy a nástroje pro vyrovnávání zatížení
 
 Tento příklad vytvoří následující položky:
 
-* pravidlo NAT pro převod veškerý příchozí provoz na portu 443 na port 4443
+* pravidlo překladu adres (NAT) pro překlad veškerého příchozího provozu na portu 443 na port 4443
 * Pravidlo nástroje pro vyrovnávání zatížení, které vyrovnává zatížení veškerého příchozího provozu na portu 80 na port 80 na adresách v back-endovém fondu.
-* pravidlo nástroje pro vyrovnávání zatížení, které povolit připojení RDP k virtuálním počítačům na port 3389.
-* pravidlo testu, které kontroluje stav na stránce s názvem *HealthProbe.aspx* nebo službu na portu 8080
+* pravidlo nástroje pro vyrovnávání zatížení, které umožňuje připojení RDP k virtuálním počítačům na portu 3389.
+* pravidlo testu pro kontrolu stavu na stránce s názvem *HealthProbe. aspx* nebo ve službě na portu 8080
 * Nástroj pro vyrovnávání zatížení, který používá všechny tyto objekty
 
 1. Vytvořte pravidla překladu adres (NAT).
@@ -151,14 +151,14 @@ Tento příklad vytvoří následující položky:
     $healthProbe = New-AzLoadBalancerProbeConfig -Name 'HealthProbe-v4v6' -RequestPath 'HealthProbe.aspx' -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2
     ```
 
-    nebo test protokolu TCP
+    nebo test TCP
 
     ```azurepowershell-interactive
     $healthProbe = New-AzLoadBalancerProbeConfig -Name 'HealthProbe-v4v6' -Protocol Tcp -Port 8080 -IntervalInSeconds 15 -ProbeCount 2
     $RDPprobe = New-AzLoadBalancerProbeConfig -Name 'RDPprobe' -Protocol Tcp -Port 3389 -IntervalInSeconds 15 -ProbeCount 2
     ```
 
-    V tomto příkladu budeme používat sondy protokolu TCP.
+    V tomto příkladu budeme používat sondy TCP.
 
 3. Vytvořte pravidlo nástroje pro vyrovnávání zatížení.
 
@@ -168,22 +168,22 @@ Tento příklad vytvoří následující položky:
     $RDPrule = New-AzLoadBalancerRuleConfig -Name "RDPrule" -FrontendIpConfiguration $FEIPConfigv4 -BackendAddressPool $backendpoolipv4 -Probe $RDPprobe -Protocol Tcp -FrontendPort 3389 -BackendPort 3389
     ```
 
-4. Vytvoření nástroje pro vyrovnávání zatížení pomocí dříve vytvořeného objektů.
+4. Vytvořte Nástroj pro vyrovnávání zatížení pomocí dříve vytvořených objektů.
 
     ```azurepowershell-interactive
     $NRPLB = New-AzLoadBalancer -ResourceGroupName NRP-RG -Name 'myNrpIPv6LB' -Location 'West US' -FrontendIpConfiguration $FEIPConfigv4,$FEIPConfigv6 -InboundNatRule $inboundNATRule1v6,$inboundNATRule1v4 -BackendAddressPool $backendpoolipv4,$backendpoolipv6 -Probe $healthProbe,$RDPprobe -LoadBalancingRule $lbrule1v4,$lbrule1v6,$RDPrule
     ```
 
-## <a name="create-nics-for-the-back-end-vms"></a>Vytvoření síťových rozhraní pro virtuální počítače back-end
+## <a name="create-nics-for-the-back-end-vms"></a>Vytvoření síťových karet pro back-endové virtuální počítače
 
-1. Získejte virtuální síť a virtuální síť podsíť, ve kterém je potřeba vytvořit síťová rozhraní.
+1. Získejte Virtual Network a Virtual Network podsíť, kde je potřeba vytvořit síťové karty.
 
     ```azurepowershell-interactive
     $vnet = Get-AzVirtualNetwork -Name VNet -ResourceGroupName NRP-RG
     $backendSubnet = Get-AzVirtualNetworkSubnetConfig -Name LB-Subnet-BE -VirtualNetwork $vnet
     ```
 
-2. Vytvoření konfigurace IP adresy a síťové adaptéry pro virtuální počítače.
+2. Vytvořte konfigurace protokolu IP a síťové adaptéry pro virtuální počítače.
 
     ```azurepowershell-interactive
     $nic1IPv4 = New-AzNetworkInterfaceIpConfig -Name "IPv4IPConfig" -PrivateIpAddressVersion "IPv4" -Subnet $backendSubnet -LoadBalancerBackendAddressPool $backendpoolipv4 -LoadBalancerInboundNatRule $inboundNATRule1v4
@@ -195,11 +195,11 @@ Tento příklad vytvoří následující položky:
     $nic2 = New-AzNetworkInterface -Name 'myNrpIPv6Nic1' -IpConfiguration $nic2IPv4,$nic2IPv6 -ResourceGroupName NRP-RG -Location 'West US'
     ```
 
-## <a name="create-virtual-machines-and-assign-the-newly-created-nics"></a>Vytvoření virtuálních počítačů a přiřaďte nově vytvořené síťové karty
+## <a name="create-virtual-machines-and-assign-the-newly-created-nics"></a>Vytvoření virtuálních počítačů a přiřazení nově vytvořených síťových karet
 
-Další informace o vytvoření virtuálního počítače najdete v tématu [vytvoření a předkonfigurace virtuálního počítače Windows pomocí Resource Manageru a Azure Powershellu](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json)
+Další informace o vytvoření virtuálního počítače najdete v tématu [Vytvoření a Předkonfigurace virtuálního počítače s Windows pomocí Správce prostředků a Azure PowerShell](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json)
 
-1. Vytvoření skupiny dostupnosti a úložiště účtu
+1. Vytvoření skupiny dostupnosti a účtu úložiště
 
     ```azurepowershell-interactive
     New-AzAvailabilitySet -Name 'myNrpIPv6AvSet' -ResourceGroupName NRP-RG -location 'West US'
@@ -208,7 +208,7 @@ Další informace o vytvoření virtuálního počítače najdete v tématu [vyt
     $CreatedStorageAccount = Get-AzStorageAccount -ResourceGroupName NRP-RG -Name 'mynrpipv6stacct'
     ```
 
-2. Každý virtuální počítač vytvořit a přiřadit předchozí vytvořené síťové karty
+2. Vytvořte každý virtuální počítač a přiřaďte předchozí vytvořené síťové karty.
 
     ```azurepowershell-interactive
     $mySecureCredentials= Get-Credential -Message "Type the username and password of the local administrator account."
@@ -230,7 +230,7 @@ Další informace o vytvoření virtuálního počítače najdete v tématu [vyt
     New-AzVM -ResourceGroupName NRP-RG -Location 'West US' -VM $vm2
     ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Začínáme s konfigurací interního nástroje pro vyrovnávání zatížení](load-balancer-get-started-ilb-arm-ps.md)
 

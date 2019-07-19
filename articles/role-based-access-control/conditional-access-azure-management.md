@@ -1,6 +1,6 @@
 ---
-title: Spravovat přístup pro správu Azure pomocí podmíněného přístupu v Azure Active Directory
-description: Další informace o použití podmíněného přístupu ve službě Azure AD můžete spravovat přístup pro správu Azure.
+title: Správa přístupu ke správě Azure pomocí podmíněného přístupu v Azure Active Directory
+description: Přečtěte si o použití podmíněného přístupu ve službě Azure AD ke správě přístupu ke správě Azure.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -12,29 +12,38 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/15/2019
+ms.date: 07/15/2019
 ms.author: rolyon
 ms.reviewer: skwan
-ms.openlocfilehash: 4ee58835a5055f5382cefa3a049424ffe97a01c4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3aa24fdfc156c0197d724fd57729f5b11fa908ee
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67122943"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68278148"
 ---
-# <a name="manage-access-to-azure-management-with-conditional-access"></a>Správa přístupu ke správě Azure s podmíněným přístupem
+# <a name="manage-access-to-azure-management-with-conditional-access"></a>Správa přístupu ke správě Azure pomocí podmíněného přístupu
 
-Podmíněný přístup ve službě Azure Active Directory (Azure AD) řídí přístup ke cloudovým aplikacím na základě určitých podmínek, které zadáte. Pokud chcete povolit přístup, můžete vytvořit zásady podmíněného přístupu, které povolí nebo zablokuje přístup založený na tom, zda jsou splněny požadavky v zásadách. 
+Podmíněný přístup v Azure Active Directory (Azure AD) řídí přístup ke cloudovým aplikacím na základě konkrétních podmínek, které zadáte. Pokud chcete přístup udělit, vytvořte zásady podmíněného přístupu, které povolí nebo zablokují přístup na základě toho, jestli jsou požadavky v zásadě splněné nebo ne. 
 
-Podmíněný přístup se obvykle používají k řízení přístupu k vašim cloudovým aplikacím. Můžete také nastavit zásady pro řízení přístupu pro správu Azure na základě určitých podmínek (třeba rizika přihlášení, umístění nebo zařízení) a vynucují požadavky, jako je ověřování službou Multi-Factor Authentication.
+Obvykle používáte podmíněný přístup k řízení přístupu k vašim cloudovým aplikacím. Můžete také nastavit zásady pro řízení přístupu ke správě Azure na základě určitých podmínek (například rizika přihlašování, umístění nebo zařízení) a vynutilit požadavky, jako je Multi-Factor Authentication.
 
-Vytvoření zásad pro správu Azure, vyberte **Microsoft Azure Management** pod **cloudové aplikace** při výběru aplikace, pro kterou chcete zásadu použít.
+Pokud chcete vytvořit zásadu pro správu Azure, při výběru aplikace, pro kterou chcete zásadu použít, vyberte v části **cloudové aplikace** **Microsoft Azure Správa** .
 
 ![Podmíněný přístup pro správu Azure](./media/conditional-access-azure-management/conditional-access-azure-mgmt.png)
 
-Zásady, které vytvoříte platí pro všechny koncové body správy Azure, včetně webu Azure portal, Azure Resource Manageru zprostředkovatele, classic služby API Management, Azure PowerShell a sady Visual Studio portálu správce předplatných. Všimněte si, že se zásady vztahují k Azure Powershellu, která volá rozhraní API Azure Resource Manageru. Nevztahuje se na [Azure AD PowerShell](/powershell/azure/active-directory/install-adv2), která volá Microsoft Graphu.
+Zásada, kterou vytvoříte, se vztahuje na všechny koncové body správy Azure, včetně následujících:
+
+- portál Azure
+- Poskytovatel Azure Resource Manager
+- Rozhraní API pro správu klasických služeb
+- Azure PowerShell
+- Portál pro správu předplatných sady Visual Studio
+- Azure DevOps
+
+Všimněte si, že zásada platí pro Azure PowerShell, která volá rozhraní API Azure Resource Manager. Nevztahuje se na [Azure AD PowerShell](/powershell/azure/active-directory/install-adv2), který volá Microsoft Graph.
 
 > [!CAUTION]
-> Ujistěte se, že chápete, jak podmíněný přístup funguje, před nastavením zásad pro správu přístupu pro správu Azure. Ujistěte se, že nevytvoříte podmínky, které by mohly blokovat vlastní přístup k portálu.
+> Ujistěte se, že rozumíte tomu, jak podmíněný přístup funguje, než nastavíte zásadu pro správu přístupu ke správě Azure. Ujistěte se, že nevytváříte podmínky, které by mohly blokovat váš vlastní přístup k portálu.
 
-Další informace o tom, jak nastavit a začít používat podmíněný přístup, najdete v části [podmíněného přístupu v Azure Active Directory](../active-directory/active-directory-conditional-access-azure-portal.md).
+Další informace o nastavení a použití podmíněného přístupu najdete [v tématu podmíněný přístup v Azure Active Directory](../active-directory/active-directory-conditional-access-azure-portal.md).

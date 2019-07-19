@@ -1,6 +1,6 @@
 ---
-title: Přehled šablon pro Azure Data Factory | Dokumentace Microsoftu
-description: Další informace o použití předem definované šablony, abyste mohli rychle začít s Azure Data Factory.
+title: Přehled šablon pro Azure Data Factory | Microsoft Docs
+description: Naučte se používat předem definovanou šablonu, abyste mohli rychle začít pracovat s Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -11,80 +11,82 @@ ms.date: 01/04/2019
 author: gauravmalhot
 ms.author: gamal
 manager: craigg
-ms.openlocfilehash: 4bd38991b2452bdda65a7647f844dcc17fdfb125
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d239e44364c3a4879f2f131717511385a4bd7037
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60786934"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234448"
 ---
 # <a name="templates"></a>Šablony
 
-Šablony jsou předdefinované kanálů Azure Data Factory, které umožňují rychle začít s Data Factory. Šablony jsou užitečné, pokud jste do služby Data Factory začínáte a chcete rychle začít. Tyto šablony tím zkrátit dobu vývoje pro vytváření projekty integrace dat a vylepšení produktivity při vývoji.
+Šablony jsou předdefinované Azure Data Factory kanály, které vám umožní rychle začít pracovat s Data Factory. Šablony jsou užitečné v případě, že jste Data Factory a chcete rychle začít. Tyto šablony omezují dobu vývoje pro vytváření projektů pro integraci dat, což zlepšuje produktivitu vývojářů.
 
-## <a name="create-data-factory-pipelines-from-templates"></a>Vytváření kanálů Data Factory ze šablon
+## <a name="create-data-factory-pipelines-from-templates"></a>Vytváření kanálů Data Factory z šablon
 
-Můžete začít vytváření kanálu služby Data Factory ze šablony těmito dvěma způsoby:
+Můžete začít vytvářet Data Factory kanál ze šablony následujícími dvěma způsoby:
 
-1.  Vyberte **vytvořit kanál ze šablony** na stránce Přehled otevřete Galerii šablon.
+1.  Vyberte **vytvořit kanál z šablony** na stránce Přehled a otevřete galerii šablon.
 
-    ![Otevřít galerii šablon z stránka s přehledem](media/solution-templates-introduction/templates-intro-image1.png)
+    ![Otevřít galerii šablon ze stránky přehled](media/solution-templates-introduction/templates-intro-image1.png)
 
-1.  Na kartě Autor v Průzkumníku prostředků, vyberte **+** , pak **kanál ze šablony** otevřete Galerii šablon.
+1.  Na kartě autor v Průzkumník prostředků vyberte možnost **+** , potom **kanál ze šablony** a otevřete galerii šablon.
 
-    ![Otevřít galerii šablon z karty autora](media/solution-templates-introduction/templates-intro-image2.png)
+    ![Otevřete galerii šablon z karty autor.](media/solution-templates-introduction/templates-intro-image2.png)
 
 ## <a name="template-gallery"></a>Galerie šablon
 
 ![Galerie šablon](media/solution-templates-introduction/templates-intro-image3.png)
 
-### <a name="out-of-the-box-data-factory-templates"></a>Z šablony služby Data Factory pole
+### <a name="out-of-the-box-data-factory-templates"></a>Data Factory šablon
 
-Data Factory používá pro ukládání šablon kanálu data factory šablon Azure Resource Manageru. Zobrazí se všechny šablon Resource Manageru, spolu s používat pro šablony služby Data Factory pole, v souboru manifestu [oficiální úložiště Azure Data Factory na Githubu](https://github.com/Azure/Azure-DataFactory/tree/master/templates). Předdefinované šablony, které poskytuje Microsoft zahrnout, avšak nejsou omezeny na následující položky:
+Data Factory používá šablony Azure Resource Manager pro ukládání šablon kanálu služby Data Factory. V [oficiálním úložišti Azure Data Factory GitHubu](https://github.com/Azure/Azure-DataFactory/tree/master/templates)můžete zobrazit všechny šablony Správce prostředků společně se souborem manifestu použitým pro Data Factory šablony. Předdefinované šablony poskytované společností Microsoft zahrnují, ale nejsou omezeny na následující položky:
 
--   Kopírování šablony:
+-   Kopírovat šablony:
 
     -   [Hromadné kopírování z databáze](solution-template-bulk-copy-with-control-table.md)
     
-    -   [Kopírování nových souborů ve LastModifiedDate](solution-template-copy-new-files-lastmodifieddate.md)
+    -   [Kopírovat nové soubory podle LastModifiedDate](solution-template-copy-new-files-lastmodifieddate.md)
 
-    -   [Kopírování více kontejnerů souborů mezi souborové úložiště](solution-template-copy-files-multiple-containers.md)
+    -   [Kopírovat více kontejnerů souborů mezi úložišti na základě souborů](solution-template-copy-files-multiple-containers.md)
 
-    -   [Rozdílové kopírování z databáze](solution-template-delta-copy-with-control-table.md)
+    -   [Přesunout soubory](solution-template-move-files.md)
 
-    -   Zkopírujte z \<zdroj\> k \<cíl\>
+    -   [Rozdílová kopie z databáze](solution-template-delta-copy-with-control-table.md)
 
-        -   Z Amazonu S3 do Azure Data Lake Store Gen 2
+    -   Kopírovat ze \<zdroje\> do \<cíle\>
 
-        -   Z Google Big dotazu do Azure Data Lake Store Gen 2
+        -   Z Amazon S3 do Azure Data Lake Store Gen 2
 
-        -   Z HDF do Azure Data Lake Store Gen 2
+        -   Od Google Big Query až po Azure Data Lake Store Gen 2
 
-        -   Z Netezza do 1. generace Azure Data Lake Store
+        -   Od HDF po Azure Data Lake Store Gen 2
 
-        -   Z SQL serveru v místním prostředí do Azure SQL Database
+        -   Od Netezza po Azure Data Lake Store Gen 1
 
-        -   Z SQL serveru v místním prostředí do Azure SQL Data Warehouse
+        -   Z SQL Server místně do Azure SQL Database
 
-        -   Od Oraclu v místním prostředí do Azure SQL Data Warehouse
+        -   Z SQL Server místně do Azure SQL Data Warehouse
 
--   Šablony služby SSIS
+        -   Od Oracle místně po Azure SQL Data Warehouse
 
-    -   Plánování prostředí Azure-SSIS IR pro spouštění balíčků služby SSIS
+-   Šablony SSIS
+
+    -   Plánování spouštění balíčků SSIS v Azure-SSIS Integration Runtime
 
 -   Transformace šablon
 
-    -   [ETL pomocí Azure Databricks](solution-template-databricks-notebook.md)
+    -   [ETL s Azure Databricks](solution-template-databricks-notebook.md)
 
 ### <a name="my-templates"></a>Moje šablony
 
-Kanál můžete také uložit jako šablonu tak, že vyberete **uložit jako šablonu** na kartu kanálu.
+Kanál můžete uložit také jako šablonu, a to tak, že na kartě kanálu vyberete **Uložit jako šablonu** .
 
-![Uložit jako šablonu kanálu](media/solution-templates-introduction/templates-intro-image4.png)
+![Uložení kanálu jako šablony](media/solution-templates-introduction/templates-intro-image4.png)
 
-Můžete zobrazit kanály uložena jako šablony v **šablony** oddíl Galerie šablon. Můžete také zobrazit, je **šablony** části v Průzkumníku prostředků.
+Kanály uložené jako šablony můžete zobrazit v části **Moje šablony** v galerii šablon. Můžete je také zobrazit v části **šablony** v Průzkumník prostředků.
 
 ![Moje šablony](media/solution-templates-introduction/templates-intro-image5.png)
 
 > [!NOTE]
-> Jak používat funkci šablony, budete muset povolit integrace GITU. Azure DevOps GIT a Githubu se podporují.
+> Chcete-li použít funkci Moje šablony, je nutné povolit integraci GIT. Podporují se Azure DevOps GIT i GitHub.

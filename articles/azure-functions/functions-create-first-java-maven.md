@@ -13,27 +13,27 @@ ms.date: 08/10/2018
 ms.author: routlaw
 ms.reviewer: glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: fcbf181601230493dc52bde06e4f35db062f9a32
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 20327e64080182518fd28b1d367ffe37be5ce9a4
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807174"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68323966"
 ---
-# <a name="create-your-first-function-with-java-and-maven"></a>Vytvoření první funkce pomocí Javy a Mavenu
+# <a name="create-your-first-function-with-java-and-maven"></a>Vytvoření první funkce pomocí Java a Maven
 
-Tento článek vás provede pomocí nástroje příkazového řádku Maven k sestavení a publikování funkce Java do služby Azure Functions. Až budete hotovi, kód vaší funkce poběží [plánu Consumption](functions-scale.md#consumption-plan) v Azure a můžete aktivovat pomocí požadavku HTTP.
+Tento článek vás provede použitím nástroje příkazového řádku Maven k vytvoření a publikování funkce jazyka Java pro Azure Functions. Jakmile budete hotovi, váš kód funkce se spustí v [plánu spotřeby](functions-scale.md#consumption-plan) v Azure a může se aktivovat pomocí požadavku HTTP.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
-K vývoji funkcí pomocí Javy, musíte mít nainstalované tyto položky:
+Aby bylo možné vyvíjet funkce pomocí jazyka Java, je nutné mít nainstalované následující:
 
 - [Java Developer Kit](https://aka.ms/azure-jdks), verze 8
-- [Nástroje Apache Maven](https://maven.apache.org), verze 3.0 nebo vyšší
+- [Apache Maven](https://maven.apache.org), verze 3,0 nebo novější
 - [Azure CLI](https://docs.microsoft.com/cli/azure)
-- [Nástroje Azure Functions Core](./functions-run-local.md#v2) verze 2.6.666 nebo novější
+- [Azure Functions Core Tools](./functions-run-local.md#v2) verze 2.6.666 nebo vyšší
 
 > [!IMPORTANT]
 > Pro dokončení tohoto rychlého startu musí být proměnná prostředí JAVA_HOME nastavená na umístění instalace sady JDK.
@@ -51,7 +51,7 @@ mvn archetype:generate \
 ```
 
 > [!NOTE]
-> Pokud je máte problémy se spuštěním příkazu, podívejte se na co `maven-archetype-plugin` je použita verze. Vzhledem k tomu, že spustíte příkaz v prázdném adresáři bez `.pom` souboru, to se může pokoušet o použití modulu plug-in starší verze z `~/.m2/repository/org/apache/maven/plugins/maven-archetype-plugin` Pokud jste upgradovali ze starší verze Maven. Pokud ano, zkuste odstranit `maven-archetype-plugin` adresáře a opětovné spuštění příkazu.
+> Pokud máte problémy se spuštěním příkazu, Prohlédněte si, jaká `maven-archetype-plugin` verze se používá. Vzhledem k tomu, že příkaz spouštíte v prázdném adresáři `.pom` bez souboru, může se pokusit použít modul plug-in starší verze z `~/.m2/repository/org/apache/maven/plugins/maven-archetype-plugin` , pokud jste Maven upgradovali ze starší verze. Pokud ano, zkuste odstranit `maven-archetype-plugin` adresář a znovu spustit příkaz.
 
 ### <a name="windows"></a>Windows
 
@@ -82,7 +82,7 @@ Define value for property 'resourceGroup' java-functions-group: :
 Confirm properties configuration: Y
 ```
 
-Maven vytvoří soubory projektu, v tomto příkladu `fabrikam-functions`, v nové složce _artifactId_. Je připravený k použití generovaného kódu v projektu [aktivovanou protokolem HTTP](/azure/azure-functions/functions-bindings-http-webhook) funkce, která vypisuje text žádosti. Nahraďte *src/main/java/com/fabrikam/functions/Function.java* následujícím kódem: 
+Maven vytvoří soubory projektu, v tomto příkladu `fabrikam-functions`, v nové složce _artifactId_. Připravený ke spuštění vygenerovaného kódu v projektu je funkce [aktivovaná protokolem HTTP](/azure/azure-functions/functions-bindings-http-webhook) , která vypisuje tělo žádosti. Nahraďte *Src/Main/Java/com/Fabrikam/Functions/Function. Java* následujícím kódem: 
 
 ```java
 package com.fabrikam.functions;
@@ -117,7 +117,7 @@ public class Function {
 
 ```
 
-## <a name="enable-extension-bundles"></a>Povolení rozšíření sady
+## <a name="enable-extension-bundles"></a>Povolit sady rozšíření
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
@@ -125,7 +125,7 @@ public class Function {
 
 Změňte adresář na složku nově vytvořeného projektu a sestavte a spusťte funkci pomocí Mavenu:
 
-```
+```CMD
 cd fabrikam-function
 mvn clean package 
 mvn azure-functions:run
@@ -147,7 +147,7 @@ Http Functions:
 
 V novém okně terminálu aktivujte funkci z příkazového řádku pomocí příkazu curl:
 
-```
+```CMD
 curl -w "\n" http://localhost:7071/api/hello -d LocalFunction
 ```
 
@@ -159,18 +159,18 @@ Pomocí klávesové zkratky `Ctrl-C` v terminálu zastavte kód aplikace.
 
 ## <a name="deploy-the-function-to-azure"></a>Nasazení funkce do Azure
 
-V procesu nasazení do služby Azure Functions se používají přihlašovací údaje účtu z Azure CLI. [Přihlaste se pomocí Azure CLI](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) než budete pokračovat.
+V procesu nasazení do služby Azure Functions se používají přihlašovací údaje účtu z Azure CLI. Než budete pokračovat, přihlaste [se pomocí Azure CLI](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) .
 
 ```azurecli
 az login
 ```
 
-Nasaďte svůj kód do nové aplikace funkcí s použitím cíle Maven `azure-functions:deploy`. Provede [Zip nasazení s využitím spustit z balíčku](functions-deployment-technologies.md#zip-deploy) režimu povolené.
+Nasaďte svůj kód do nové aplikace funkcí s použitím cíle Maven `azure-functions:deploy`. Tím se provede nasazení souboru zip s povoleným režimem [Spustit z balíčku](functions-deployment-technologies.md#zip-deploy) .
 
 > [!NOTE]
-> Pokud chcete nasadit aplikaci Function app používáte Visual Studio Code, nezapomeňte si zvolte placené předplatné nebo se zobrazí chyba. Podívejte se na vaše předplatné na levé straně rozhraní IDE.
+> Když použijete Visual Studio Code k nasazení aplikace Function App, nezapomeňte zvolit předplatné bez bezplatného předplatného nebo se zobrazí chyba. Své předplatné můžete sledovat na levé straně rozhraní IDE.
 
-```
+```azurecli
 mvn azure-functions:deploy
 ```
 
@@ -187,9 +187,9 @@ Po dokončení nasazení se zobrazí adresa URL, pomocí které můžete přistu
 Otestujte aplikaci funkcí spuštěnou v Azure pomocí `cURL`. V níže uvedené ukázce budete muset změnit adresu URL, aby odpovídala adrese URL nasazené vlastní aplikace funkcí z předchozího kroku.
 
 > [!NOTE]
-> Ujistěte se, že nastavíte **přístupová práva** k `Anonymous`. Při výběru výchozí úrovně `Function`, je potřeba k dispozici [klíč funkce](../azure-functions/functions-bindings-http-webhook.md#authorization-keys) v žádosti o přístup ke koncovému bodu funkce.
+> Ujistěte se, že jste nastavili `Anonymous` **přístupová práva** na. Když zvolíte výchozí úroveň `Function`, budete muset [klíč funkce](../azure-functions/functions-bindings-http-webhook.md#authorization-keys) prezentovat v žádosti o přístup ke koncovému bodu funkce.
 
-```
+```azurecli
 curl -w "\n" https://fabrikam-function-20170920120101928.azurewebsites.net/api/hello -d AzureFunctions
 ```
 
@@ -211,7 +211,7 @@ Na následující:
 return request.createResponse(200, "Hi, " + name);
 ```
 
-Uložte změny. Spuštění mvn vyčištění balíčků a opětovné nasazení spuštěním `azure-functions:deploy` z terminálu stejně jako předtím. Aplikace funkcí se aktualizuje a tento požadavek:
+Uložte změny. Spusťte MVN vyčistit balíček a znovu ho nasaďte `azure-functions:deploy` spuštěním z terminálu jako dřív. Aplikace funkcí se aktualizuje a tento požadavek:
 
 ```bash
 curl -w '\n' -d AzureFunctionsTest https://fabrikam-functions-20170920120101928.azurewebsites.net/api/hello
@@ -223,7 +223,7 @@ Bude mít aktualizovaný výstup:
 Hi, AzureFunctionsTest
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Vytvořili jste aplikaci funkcí v Javě s jednoduchým triggerem HTTP a nasadili jste ji do služby Azure Functions.
 

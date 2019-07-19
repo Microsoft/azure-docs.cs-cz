@@ -1,6 +1,6 @@
 ---
-title: Zařízení připojená k tom, jak spravovat místní skupiny administrators na Azure AD | Dokumentace Microsoftu
-description: Zjistěte, jak přiřadit role Azure do místní skupiny administrators na zařízení Windows.
+title: Jak spravovat místní skupinu Administrators na zařízeních připojených k Azure AD | Microsoft Docs
+description: Přečtěte si, jak přiřadit role Azure do místní skupiny Správci zařízení s Windows.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,86 +11,86 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11b71b4656181da328cf630cefa4d25cb4f4efda
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 35cb6cba02a1bdcf9f19c7f02b7e2ca4d01e0d3f
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482118"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67983669"
 ---
-# <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>Zařízení připojená k tom, jak spravovat místní skupiny administrators na Azure AD
+# <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>Jak spravovat místní skupinu Administrators na zařízeních připojených k Azure AD
 
-Pokud chcete spravovat zařízení s Windows, musíte být členem místní skupiny administrators. Jako součást procesu připojení k Azure Active Directory (Azure AD) Azure AD aktualizuje členství této skupiny na zařízení. Aktualizace členství splnit požadavky vaší společnosti můžete přizpůsobit. Členství je aktualizace součástí, například užitečné, pokud chcete povolit pracovníky helpdesku úlohy byla nutná oprávnění správce v zařízení.
+Abyste mohli spravovat zařízení s Windows, musíte být členem místní skupiny Administrators. V rámci procesu připojení Azure Active Directory (Azure AD) aktualizuje Azure AD členství této skupiny na zařízení. Aktualizaci členství můžete přizpůsobit tak, aby vyhovovala vašim obchodním požadavkům. Aktualizace členství je například užitečná, pokud chcete pracovníkům technické podpory povolit úkoly vyžadující práva správce na zařízení.
 
-Tento článek vysvětluje, jak funguje aktualizace členství a jak ho můžete přizpůsobit během Azure AD Join. Obsah tohoto článku se nevztahuje **hybridní** připojení ke službě Azure AD.
+Tento článek vysvětluje, jak funguje aktualizace členství a jak je můžete přizpůsobit během připojení k Azure AD. Obsah tohoto článku se nevztahuje k **hybridní** službě Azure AD JOIN.
 
 ## <a name="how-it-works"></a>Jak to funguje
 
-Při připojení zařízení s Windows s Azure AD pomocí Azure AD join, Azure AD následující bezpečnostní Principy přidá do místní skupiny administrators na zařízení:
+Když připojíte zařízení s Windows ke službě Azure AD pomocí služby Azure AD JOIN, Azure AD přidá do místní skupiny Administrators v zařízení následující zásady zabezpečení:
 
-- Role Globální správce Azure AD
-- Roli správce Azure AD 
-- Uživatel provádějící připojení k Azure AD   
+- Role globálního správce služby Azure AD
+- Role Správce zařízení Azure AD 
+- Uživatel, který provádí službu Azure AD JOIN   
 
-Přidáním role Azure AD do místní skupiny administrators, můžete aktualizovat uživatele, které můžete spravovat zařízení ve službě Azure AD můžete kdykoli beze změny v zařízení. V současné době nelze přiřadit skupiny k roli správce.
-Azure AD také přidá roli správce Azure AD do místní skupiny administrators pro podporu principu nejnižších možných oprávnění (PoLP). Kromě globálního správce, můžete také povolit uživatelům, které byly *pouze* přiřazenou roli Správce zařízení pro správu zařízení. 
+Když do místní skupiny Administrators přidáte role Azure AD, můžete aktualizovat uživatele, kteří můžou spravovat zařízení kdykoli ve službě Azure AD, aniž by to mělo na zařízení žádné změny. V současné době nemůžete přiřadit skupiny k roli správce.
+Azure AD taky přidá roli Správce zařízení Azure AD do místní skupiny Administrators, aby podporovala princip nejnižších oprávnění (PoLP). Kromě globálních správců můžete také povolit uživatelům, kterým byla přiřazena *pouze* role Správce zařízení ke správě zařízení. 
 
-## <a name="manage-the-global-administrators-role"></a>Správa rolí globální správce
+## <a name="manage-the-global-administrators-role"></a>Správa role globální správci
 
 Chcete-li zobrazit a aktualizovat členství v roli globálního správce, přečtěte si téma:
 
-- [Zobrazit všechny členy s rolí správce v Azure Active Directory](../users-groups-roles/directory-manage-roles-portal.md)
-- [Přiřazení uživatele k rolí správce ve službě Azure Active Directory](../fundamentals/active-directory-users-assign-role-azure-portal.md)
+- [Zobrazit všechny členy role správce v Azure Active Directory](../users-groups-roles/directory-manage-roles-portal.md)
+- [Přiřazení uživatele k rolím Správce v Azure Active Directory](../fundamentals/active-directory-users-assign-role-azure-portal.md)
 
 
-## <a name="manage-the-device-administrator-role"></a>Správa rolí Správce zařízení 
+## <a name="manage-the-device-administrator-role"></a>Správa role Správce zařízení 
 
-Na webu Azure Portal, můžete spravovat roli Správce zařízení na **zařízení** stránky. Chcete-li otevřít **zařízení** stránky:
+V Azure Portal můžete spravovat roli Správce zařízení na stránce **zařízení** . Otevření stránky **zařízení** :
 
-1. Přihlaste se k vaší [webu Azure portal](https://portal.azure.com) jako globální správce nebo Správce zařízení.
-1. Na levém navigačním panelu klikněte na tlačítko **Azure Active Directory**. 
-1. V **spravovat** klikněte na tlačítko **zařízení**.
-1. Na **zařízení** klikněte na **nastavení zařízení**.
+1. Přihlaste se ke svému [Azure Portal](https://portal.azure.com) jako globální správce nebo Správce zařízení.
+1. V levém navigačním panelu klikněte na **Azure Active Directory**. 
+1. V části **Spravovat** klikněte na **zařízení**.
+1. Na stránce **zařízení** klikněte na **nastavení zařízení**.
 
-Chcete-li upravit roli Správce zařízení, nakonfigurovat **zařízení připojená k další místní správci na Azure AD**.  
+Pokud chcete upravit roli Správce zařízení, nakonfigurujte **Další místní správce na zařízeních připojených k Azure AD**.  
 
 ![Další místní správci](./media/assign-local-admin/10.png)
 
 >[!NOTE]
-> Tato možnost vyžaduje tenanta služby Azure AD Premium. 
+> Tato možnost vyžaduje klienta Azure AD Premium. 
 
-Správci zařízení přiřazených k zařízení připojených k všechny Azure AD. Nelze určit obor Správci zařízení na konkrétní sadu zařízení. Aktualizuje se role Správce zařízení nemá nutně bezprostřední dopad na ovlivněných uživatelů. Pro zařízení uživatel je již přihlášení, Probíhá aktualizace oprávnění:
+Správci zařízení mají přiřazená všechna zařízení připojená k Azure AD. Nemůžete nastavit rozsah správců zařízení na určitou sadu zařízení. Aktualizace role Správce zařízení nutně nemá bezprostřední dopad na ovlivněné uživatele. Pro zařízení je už uživatel přihlášený k, probíhá aktualizace oprávnění:
 
-- Když se uživatel přihlásí.
-- Po 4 hodinách když je nový primární aktualizovat Token vystaven. 
+- Když se uživatel odhlásí.
+- Při vydání nového primárního obnovovacího tokenu po 4 hodinách. 
 
-## <a name="manage-regular-users"></a>Správa běžní uživatelé
+## <a name="manage-regular-users"></a>Správa běžných uživatelů
 
-Azure AD ve výchozím nastavení, přidá uživatel provádějící připojení k Azure AD do skupiny správců na zařízení. Pokud chcete zabránit běžní uživatelé stávají místními správci, máte následující možnosti:
+Ve výchozím nastavení Azure AD přidá uživatele, který provádí službu Azure AD JOIN, do skupiny správců v zařízení. Pokud chcete běžným uživatelům zabránit v tom, aby se stali místními správci, máte následující možnosti:
 
-- [Windows Autopilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) – Windows Autopilot vám poskytuje možnost zakázat primární uživatel provádějící spojení, nestala oprávnění místního správce. Toho lze dosáhnout pomocí [vytváří se profil Autopilot](https://docs.microsoft.com/intune/enrollment-autopilot#create-an-autopilot-deployment-profile).
-- [Hromadná registrace](https://docs.microsoft.com/intune/windows-bulk-enroll) – Azure AD join, který se provádí v rámci hromadné registrace probíhá v kontextu uživatele automaticky vytvořený. Uživatelé přihlášení po připojil zařízení nejsou přidány do skupiny administrators.   
+- Automatický [pilot pro Windows](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) – Windows autopilot vám nabízí možnost zabránit primárnímu uživateli, aby se mohl připojit od místního správce. To můžete provést vytvořením [profilu](https://docs.microsoft.com/intune/enrollment-autopilot#create-an-autopilot-deployment-profile)autopilotu.
+- [Hromadná registrace](https://docs.microsoft.com/intune/windows-bulk-enroll) – připojení k Azure AD, které se provádí v kontextu hromadné registrace, probíhá v kontextu automaticky vytvořeného uživatele. Uživatelé, kteří se přihlašují po přihlášení k zařízení, se do skupiny Administrators nepřipojí.   
 
-## <a name="manually-elevate-a-user-on-a-device"></a>Ručně zvýšit oprávnění uživatele v zařízení 
+## <a name="manually-elevate-a-user-on-a-device"></a>Ruční zvýšení oprávnění uživatele na zařízení 
 
-Kromě použití proces připojení k Azure AD, můžete také ručně zvýšit běžného uživatele jako místní správce na jednu konkrétní zařízení. Tento krok vyžaduje, abyste už být členem místní skupiny administrators. 
+Kromě použití procesu připojení ke službě Azure AD můžete také ručně zvýšit normálního uživatele tak, aby se stal místním správcem na jednom konkrétním zařízení. Tento krok vyžaduje, abyste již byli členem místní skupiny Administrators. 
 
-Počínaje **Windows 10 1709** vydání, můžete tuto úlohu lze provést z **Nastavení -> účty -> ostatní uživatelé**. Vyberte **přidat pracovní nebo školní uživatele**, zadejte uživatele (UPN) v části **uživatelský účet** a vyberte *správce* pod **typ účtu**  
+Od verze **Windows 10 1709** můžete tuto úlohu provést z **Nastavení-> účty – > dalších uživatelů**. Vyberte **Přidat pracovního nebo školního uživatele**, do pole **uživatelský účet** zadejte hlavní název uživatele (UPN) a v části **typ účtu** vyberte *správce* .  
  
-Kromě toho můžete také přidat uživatele pomocí příkazového řádku:
+Kromě toho můžete přidat uživatele také pomocí příkazového řádku:
 
-- Pokud váš tenant uživatelé používají synchronizaci z místní služby Active Directory, použijte `net localgroup administrators /add "Contoso\username"`.
-- Pokud vaši uživatelé tenanta se vytvoří v Azure AD, použijte `net localgroup administrators /add "AzureAD\UserUpn"`
+- Pokud jsou vaši uživatelé klienta synchronizováni z místní služby Active Directory, použijte `net localgroup administrators /add "Contoso\username"`.
+- Pokud jsou vaši uživatelé tenanta vytvořeni ve službě Azure AD, použijte`net localgroup administrators /add "AzureAD\UserUpn"`
 
 ## <a name="considerations"></a>Požadavky 
 
-Nelze přiřadit skupiny k roli Správce zařízení, jsou povoleny pouze jednotlivé uživatele.
+Nelze přiřadit skupiny k roli Správce zařízení, pouze jednotliví uživatelé jsou povoleni.
 
-Správci zařízení jsou přiřazené do všech zařízení připojeno k Azure AD. Nemůže být obor na konkrétní sadu zařízení.
+Správci zařízení mají přiřazená všechna zařízení připojená k Azure AD. Nemůžou být vymezené na konkrétní sadu zařízení.
 
-Při odebrání uživatele z role Správce zařízení stále mají oprávnění místního správce v zařízení tak dlouho, dokud jsou přihlášení k němu. Při dalším přihlášení nebo po 4 hodinách, po vydání nové primární obnovovací token je odvolán oprávnění.
+Když odeberete uživatele z role Správce zařízení, pořád mají oprávnění místního správce na zařízení, pokud se k němu přihlásí. Oprávnění se odvolá při příštím přihlášení nebo po 4 hodinách, kdy se vystaví nový primární obnovovací token.
 
 ## <a name="next-steps"></a>Další postup
 
 - Přehled správy zařízení na webu Azure Portal najdete v tématu věnovaném [správě zařízení pomocí webu Azure Portal](device-management-azure-portal.md).
-- Další informace o podmíněném přístupu na základě zařízení, najdete v článku [nakonfigurovat zásady podmíněného přístupu na základě zařízení Azure Active Directory](../conditional-access/require-managed-devices.md).
+- Další informace o podmíněném přístupu na základě zařízení najdete v tématu [Konfigurace zásad podmíněného přístupu na základě zařízení Azure Active Directory](../conditional-access/require-managed-devices.md).

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 211cb32298b17bb9e4023bf8bc74233c3916f58d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 276e691351d852d6dcb0075d47bf33af6767fc10
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60879102"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68226101"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Řízení přístupu v Azure Data Lake Storage Gen1
 
@@ -27,9 +27,9 @@ Azure Data Lake Storage Gen1 implementuje model řízení přístupu, který je 
 
 Existují dva druhy seznamů řízení přístupu (ACL) – **přístupové seznamy ACL** a **výchozí seznamy ACL**.
 
-* **Přístupové seznamy ACL**: Řídí přístup k objektu. Přístupové seznamy ACL jsou definovány pro soubory i složky.
+* **Přístupové seznamy ACL**: Tyto ovládací prvky mají přístup k objektu. Přístupové seznamy ACL jsou definovány pro soubory i složky.
 
-* **Výchozí seznamy ACL**: "Šablona" seznamů ACL přidružených ke složce, které určují přístupové seznamy ACL pro všechny podřízené položky, které jsou vytvořeny v rámci příslušné složky. Výchozí seznamy ACL nejsou definovány pro soubory.
+* **Výchozí seznamy ACL**: "Šablona" seznamů ACL přidružených ke složce, které určují přístupové seznamy ACL pro všechny podřízené položky, které jsou vytvořeny v této složce. Výchozí seznamy ACL nejsou definovány pro soubory.
 
 
 Přístupové seznamy ACL i výchozí seznamy ACL mají stejnou strukturu.
@@ -133,7 +133,7 @@ Protože neexistuje žádná "primární skupina" přidružené k uživateli v D
 **Přiřazuje se vlastnící skupina pro nový soubor nebo složku**
 
 * **Případ 1**: Kořenová složka "/". Tato složka se vytvoří při vytvoření účtu Data Lake Storage Gen1. V takovém případě je vlastnící skupina nastavena na identifikátor GUID pro všemi nulovými.  Tato hodnota neumožňuje přístup.  Do té doby, které je skupina přiřazena je zástupný symbol.
-* **Případ 2** (všechny ostatní případy): Když je vytvořena nová položka, vlastnící skupina zkopíruje z nadřazené složky.
+* **Případ 2** (Všechny ostatní případy): Při vytvoření nové položky se vlastnící skupina zkopíruje z nadřazené složky.
 
 **Mění se vlastnící skupina**
 
@@ -166,7 +166,7 @@ def access_check( user, desired_perms, path ) :
   # Handle the owning user. Note that mask IS NOT used.
   entry = get_acl_entry( path, OWNER )
   if (user == entry.identity)
-      return ( (desired_perms & e.permissions) == desired_perms )
+      return ( (desired_perms & entry.permissions) == desired_perms )
 
   # Handle the named users. Note that mask IS used.
   entries = get_acl_entries( path, NAMED_USER )
@@ -216,9 +216,9 @@ Při vytvoření nového souboru nebo složky v rámci existující složky se p
 
 ### <a name="umask"></a>Vlastnost umask
 
-Při vytváření souboru nebo složky, vlastnost umask se používá k úpravě nastavení výchozí seznamy ACL na podřízené položky. Vlastnost umask je 9 bit 9bitové hodnoty na nadřazené složky, které obsahuje hodnota RWX pro **vlastnícího uživatele**, **vlastnící skupinu**, a **jiných**.
+Při vytváření souboru nebo složky, vlastnost umask se používá k úpravě nastavení výchozí seznamy ACL na podřízené položky. umask je 9 bitová hodnota u nadřazených složek, které obsahují hodnotu RWX pro **vlastnícího uživatele**, **vlastnící skupinu**a **Další**.
 
-Vlastnost umask pro Azure Data Lake Storage Gen1 konstantní hodnoty, který je nastaven na 007. Tato hodnota se přeloží na
+Umask pro Azure Data Lake Storage Gen1 je konstantní hodnota nastavená na 007. Tato hodnota se přeloží na
 
 | Vlastnost umask komponenty     | Číselný tvar | Krátký tvar | Význam |
 |---------------------|--------------|------------|---------|

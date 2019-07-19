@@ -1,6 +1,6 @@
 ---
-title: Nejčastější dotazy pro Azure Kubernetes Service (AKS)
-description: Najděte odpovědi na některé běžné otázky o Azure Kubernetes Service (AKS).
+title: Nejčastější dotazy ke službě Azure Kubernetes (AKS)
+description: Vyhledejte odpovědi na některé běžné dotazy ke službě Azure Kubernetes Service (AKS).
 services: container-service
 author: mlearned
 manager: jeconnoc
@@ -8,86 +8,86 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: mlearned
-ms.openlocfilehash: 495f182ed450d0fac69b31ea2996bacc60863fea
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 554eba87efc56e2dadb3fb2d0cb78cd8b7ea7237
+ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672782"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68302727"
 ---
-# <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Nejčastější dotazy o Azure Kubernetes Service (AKS)
+# <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Nejčastější dotazy týkající se služby Azure Kubernetes (AKS)
 
-Tento článek adresy časté otázky o Azure Kubernetes Service (AKS).
+Tento článek popisuje časté otázky ke službě Azure Kubernetes Service (AKS).
 
-## <a name="which-azure-regions-currently-provide-aks"></a>Které oblasti Azure aktuálně poskytuje AKS?
+## <a name="which-azure-regions-currently-provide-aks"></a>Které oblasti Azure aktuálně poskytují AKS?
 
 Úplný seznam dostupných oblastí najdete v tématu [AKS oblasti a dostupnost][aks-regions].
 
-## <a name="does-aks-support-node-autoscaling"></a>AKS podporuje automatické škálování uzlů?
+## <a name="does-aks-support-node-autoscaling"></a>Podporuje AKS automatické škálování uzlu?
 
-Ano, možnost automatického škálování uzlů agentů vodorovně ve službě AKS je aktuálně dostupná ve verzi preview. Zobrazit [automatické škálování clusteru, které splňují požadavky aplikace ve službě AKS][aks-cluster-autoscaler] for instructions. AKS autoscaling is based on the [Kubernetes autoscaler][auto-scaler].
+Ano, schopnost automaticky škálovat uzly agentů vodorovně v AKS je v současnosti dostupná ve verzi Preview. Přečtěte si téma [Automatické škálování clusteru pro splnění požadavků aplikace v AKS][aks-cluster-autoscaler] for instructions. AKS autoscaling is based on the [Kubernetes autoscaler][auto-scaler].
 
-## <a name="can-i-deploy-aks-into-my-existing-virtual-network"></a>Můžete nasadit AKS do existující virtuální síť?
+## <a name="can-i-deploy-aks-into-my-existing-virtual-network"></a>Můžu AKS nasadit do existující virtuální sítě?
 
-Ano, můžete nasadit cluster AKS do existující virtuální sítě pomocí [rozšířeného sítě funkce][aks-advanced-networking].
+Ano, cluster AKS můžete nasadit do existující virtuální sítě pomocí [funkce pokročilé sítě][aks-advanced-networking].
 
-## <a name="can-i-limit-who-has-access-to-the-kubernetes-api-server"></a>Můžete omezit, kdo má přístup k serveru Kubernetes API?
+## <a name="can-i-limit-who-has-access-to-the-kubernetes-api-server"></a>Můžu omezit, kdo má přístup k serveru rozhraní Kubernetes API?
 
-Ano, můžete omezit přístup k serveru pomocí rozhraní Kubernetes API [rozhraní API serveru oprávnění rozsahy IP adres][api-server-authorized-ip-ranges], která je aktuálně ve verzi preview.
+Ano, můžete omezit přístup k serveru rozhraní Kubernetes API pomocí [rozsahů IP adres autorizovaných serverem API][api-server-authorized-ip-ranges], které jsou v současnosti ve verzi Preview.
 
-## <a name="can-i-make-the-kubernetes-api-server-accessible-only-within-my-virtual-network"></a>Můžete vytvořit na serveru Kubernetes API přístupné pouze v rámci virtuální sítě?
+## <a name="can-i-make-the-kubernetes-api-server-accessible-only-within-my-virtual-network"></a>Můžu Server Kubernetes API zpřístupnit jenom v rámci své virtuální sítě?
 
-Není v tuto chvíli to je naplánovaná, ale. Průběh můžete sledovat na [úložiště AKS GitHub][private-clusters-github-issue].
+V tuto chvíli se ale plánuje. Průběh můžete sledovat v [úložišti GitHub AKS][private-clusters-github-issue].
 
-## <a name="can-i-have-different-vm-sizes-in-a-single-cluster"></a>Může mít různé velikosti virtuálních počítačů v jednom clusteru?
+## <a name="can-i-have-different-vm-sizes-in-a-single-cluster"></a>Můžu v jednom clusteru mít různé velikosti virtuálních počítačů?
 
-Ano, můžete pomocí různých velikostí virtuálních počítačů ve vašem clusteru AKS tak, že vytvoříte [více fondy uzlů][multi-node-pools], která je aktuálně ve verzi preview.
+Ano, v clusteru AKS můžete pomocí různých velikostí virtuálních počítačů vytvořit [víc fondů uzlů][multi-node-pools], které jsou v tuto chvíli ve verzi Preview.
 
-## <a name="are-security-updates-applied-to-aks-agent-nodes"></a>Jsou aktualizace zabezpečení použít pro uzly AKS agenta?
+## <a name="are-security-updates-applied-to-aks-agent-nodes"></a>Jsou aktualizace zabezpečení aplikovány na uzly agenta AKS?
 
-Azure automaticky aplikuje na uzly s Linuxem v clusteru na noční plán oprav zabezpečení. Ale budete muset zajistit, že tyto Linux uzly se restartují jako povinné. Máte několik možností pro restartování uzlů:
+Azure automaticky aplikuje opravy zabezpečení na uzly Linux v clusteru v nočním plánu. Zodpovídáte však za zajištění, že se tyto uzly Linux restartují podle potřeby. Pro restartování uzlů máte několik možností:
 
-- Ručně pomocí webu Azure portal nebo rozhraní příkazového řádku Azure.
-- Díky upgradu clusteru AKS. Inovace clusteru [kordon a výpusť uzly][cordon-drain] automatically and then bring a new node online with the latest Ubuntu image and a new patch version or a minor Kubernetes version. For more information, see [Upgrade an AKS cluster][aks-upgrade].
-- S použitím [Kured](https://github.com/weaveworks/kured), open source restartování démona pro Kubernetes. Kured pracuje jako [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) a sleduje každý uzel na přítomnost souboru, který označuje, že je vyžadován restart. Napříč clusterem, restartování operačního systému spravuje stejný [kordon a výpusť procesu][cordon-drain] jako upgradu clusteru.
+- Ručně prostřednictvím Azure Portal nebo rozhraní příkazového řádku Azure CLI.
+- Upgradem clusteru AKS. Cluster automatically and then bring a new node online with the latest Ubuntu image and a new patch version or a minor Kubernetes version. For more information, see [Upgrade an AKS cluster][aks-upgrade]upgraduje [uzly Cordon a vyprazdňuje][cordon-drain] .
+- Pomocí [Kured](https://github.com/weaveworks/kured)je open-source démon pro Kubernetes. Kured běží jako [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) a monitoruje každý uzel pro přítomnost souboru, který indikuje, že je potřeba restartovat počítač. V rámci clusteru se restartování operačního systému spravují stejným [cordonm a vyprázdněným procesem][cordon-drain] jako upgrade clusteru.
 
-Další informace o používání kured najdete v tématu [použití aktualizací zabezpečení a jádra pro uzly ve službě AKS][node-updates-kured].
+Další informace o použití kured najdete v tématu [použití zabezpečení a aktualizací jádra na uzlech v AKS][node-updates-kured].
 
 ### <a name="windows-server-nodes"></a>Uzly Windows serveru
 
-Pro uzly Windows serveru (aktuálně ve verzi preview ve službě AKS) Windows Update automaticky spustit a použijte nejnovější aktualizace. V pravidelných intervalech kolem cyklu vydávání verzí Windows Update a procesu ověřování měli byste provést upgrade na fondy uzlů Windows Server ve vašem clusteru AKS. Pomocí tohoto procesu vytvoří uzly, na kterých běží nejnovější image Windows serveru a oprav a pak odstraní starší uzly. Další informace o tomto procesu najdete v tématu [fond uzlů ve službě AKS Upgrade][nodepool-upgrade].
+V případě uzlů Windows serveru (aktuálně ve verzi Preview v AKS) web Windows Update nespustí automaticky a použije nejnovější aktualizace. V pravidelných intervalech kolem cyklu vydávání web Windows Update a vlastního procesu ověřování byste měli provést upgrade ve fondech uzlů Windows serveru v clusteru AKS. Tento proces upgradu vytvoří uzly, na kterých běží nejnovější image a opravy Windows serveru, a pak odebere starší uzly. Další informace o tomto procesu najdete v tématu [upgrade fondu uzlů v AKS][nodepool-upgrade].
 
-## <a name="why-are-two-resource-groups-created-with-aks"></a>Proč jsou dvě skupiny prostředků vytvořené službou AKS?
+## <a name="why-are-two-resource-groups-created-with-aks"></a>Proč jsou dvě skupiny prostředků vytvořené pomocí AKS?
 
-Každé nasazení služby AKS zahrnuje dvě skupiny prostředků:
+Každé nasazení AKS zahrnuje dvě skupiny prostředků:
 
-1. Můžete vytvořit první skupinu prostředků. Tato skupina obsahuje pouze příslušný prostředek služby Kubernetes. Poskytovatel prostředků pro AKS automaticky vytvoří druhé skupině prostředků během nasazování. Příkladem druhého skupina prostředků je *MC_myResourceGroup_myAKSCluster_eastus*. Informace o tom, jak zadat název této druhé skupině prostředků najdete v další části.
-1. Druhá skupiny prostředků, označované jako *uzlu skupiny prostředků*, obsahuje všechny prostředky infrastruktury přidružené ke clusteru. Tyto prostředky zahrnují virtuální počítače uzlu Kubernetes, virtuální sítě a úložiště. Ve výchozím nastavení, uzlu skupiny prostředků má název, například *MC_myResourceGroup_myAKSCluster_eastus*. AKS automaticky odstraní uzlu prostředku pokaždé, když se při odstranění clusteru, takže by měl používat pouze pro prostředky, které sdílejí životní cyklus clusteru.
+1. Vytvoříte první skupinu prostředků. Tato skupina obsahuje pouze prostředek služby Kubernetes. Poskytovatel prostředků AKS během nasazování automaticky vytvoří druhou skupinu prostředků. Příkladem druhé skupiny prostředků je *MC_myResourceGroup_myAKSCluster_eastus*. Informace o tom, jak zadat název této druhé skupiny prostředků, najdete v další části.
+1. Druhá skupina prostředků, označovaná jako *Skupina prostředků uzlu*, obsahuje všechny prostředky infrastruktury přidružené ke clusteru. Mezi tyto prostředky patří virtuální počítače uzlu Kubernetes, virtuální síť a úložiště. Ve výchozím nastavení má skupina prostředků uzlu název, jako je *MC_myResourceGroup_myAKSCluster_eastus*. AKS automaticky odstraní prostředek uzlu, když se cluster odstraní, takže by se měl používat jenom pro prostředky, které sdílejí životní cyklus clusteru.
 
-## <a name="can-i-provide-my-own-name-for-the-aks-node-resource-group"></a>Můžete zadat vlastní název pro skupinu prostředků uzlů AKS?
+## <a name="can-i-provide-my-own-name-for-the-aks-node-resource-group"></a>Můžu pro skupinu prostředků uzlu AKS zadat vlastní název?
 
-Ano. Ve výchozím nastavení, bude AKS nazvěte skupinu prostředků v uzlu *MC_clustername_resourcegroupname_location*, ale můžete taky zadat vlastní název.
+Ano. Ve výchozím nastavení pojmenuje AKS skupinu prostředků uzlu *MC_clustername_resourcegroupname_location*, ale můžete také zadat vlastní název.
 
-Chcete-li zadat vlastní název skupiny prostředků, nainstalujte [aks ve verzi preview][aks-preview-cli] verze rozšíření Azure CLI *0.3.2* nebo novější. Při vytváření clusteru AKS pomocí [az aks vytvořit][az-aks-create] příkazu, použijte *– node-resource-group* parametr a zadejte název pro skupinu prostředků. Pokud jste [pomocí šablony Azure Resource Manageru][aks-rm-template] Pokud chcete nasadit AKS cluster, můžete definovat pomocí názvu skupiny prostředků *nodeResourceGroup* vlastnost.
+Pokud chcete zadat vlastní název skupiny prostředků, nainstalujte rozšíření Azure CLI [AKS-Preview][aks-preview-cli] verze *0.3.2* nebo novější. Při vytváření clusteru AKS pomocí příkazu [AZ AKS Create][az-aks-create] použijte parametr *--Node-Resource-Group* a zadejte název skupiny prostředků. Pokud k nasazení clusteru AKS [použijete šablonu Azure Resource Manager][aks-rm-template] , můžete definovat název skupiny prostředků pomocí vlastnosti *nodeResourceGroup* .
 
-* Poskytovatel prostředků Azure ve svém vlastním předplatném automaticky vytvoří skupinu sekundární prostředků.
-* Název skupiny prostředků vlastní můžete zadat jenom při vytváření clusteru.
+* Sekundární skupinu prostředků automaticky vytvoří poskytovatel prostředků Azure ve vlastním předplatném.
+* Vlastní název skupiny prostředků můžete zadat jenom při vytváření clusteru.
 
-Při práci s vybranou skupinou prostředků uzlu, mějte na paměti, která není možné:
+Při práci s skupinou prostředků uzlu Pamatujte na to, že nemůžete:
 
 * Zadejte existující skupinu prostředků pro skupinu prostředků uzlu.
 * Zadejte jiné předplatné pro skupinu prostředků uzlu.
-* Změňte název skupiny prostředků uzlu po vytvoření clusteru.
-* Zadejte názvy pro spravované prostředky v rámci uzlu skupiny prostředků.
-* Úpravy nebo odstranění značky spravované prostředky v rámci uzlu skupiny prostředků. (Viz další informace v následující části.)
+* Po vytvoření clusteru změňte název skupiny prostředků uzlu.
+* Zadejte názvy spravovaných prostředků v rámci skupiny prostředků uzlu.
+* Upravte nebo odstraňte značky spravovaných prostředků v rámci skupiny prostředků uzlu. (Další informace najdete v další části.)
 
-## <a name="can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-node-resource-group"></a>Můžete upravit značky a dalších vlastností AKS prostředky ve skupině prostředků uzel?
+## <a name="can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-node-resource-group"></a>Můžu změnit značky a další vlastnosti prostředků AKS ve skupině prostředků uzlu?
 
-Pokud upravíte nebo odstraníte Azure vytvořené značky a dalších vlastností prostředků ve skupině prostředků uzel, může získat neočekávané výsledky, jako je například škálování a upgradu chyby. AKS umožňuje vytvářet a upravovat vlastní značky. Můžete vytvořit nebo upravit vlastní značky, například, přiřadit obchodní jednotky nebo nákladů centra. Změnou prostředky ve skupině prostředků uzlu v clusteru AKS přerušit cíle úrovně služeb (SLO). Další informace najdete v tématu [nemá AKS nabízí smlouvu o úrovni služeb?](#does-aks-offer-a-service-level-agreement)
+Pokud upravíte nebo odstraníte značky vytvořené v Azure a další vlastnosti prostředku v rámci skupiny prostředků uzlu, můžete získat neočekávané výsledky, jako je například škálování a upgrade chyb. AKS umožňuje vytvářet a upravovat vlastní značky. Můžete chtít vytvořit nebo upravit vlastní značky, například pro přiřazení obchodní jednotky nebo nákladového centra. Změnou prostředků v rámci skupiny prostředků uzlu v clusteru AKS zrušíte cíl na úrovni služby (SLO). Další informace najdete v tématu [AKS nabízí smlouvu o úrovni služeb?](#does-aks-offer-a-service-level-agreement)
 
-## <a name="what-kubernetes-admission-controllers-does-aks-support-can-admission-controllers-be-added-or-removed"></a>Jaké řadiče jejich příchodu Kubernetes AKS podporuje? Můžete jejich příchodu řadiče přidat nebo odebrat?
+## <a name="what-kubernetes-admission-controllers-does-aks-support-can-admission-controllers-be-added-or-removed"></a>Jaké řadiče pro přijímání Kubernetes podporuje AKS? Je možné přidat nebo odebrat řadiče pro přístup?
 
-AKS podporuje následující [jejich příchodu řadiče][admission-controllers]:
+AKS podporuje následující [řadiče pro přístup][admission-controllers]:
 
 - *NamespaceLifecycle*
 - *LimitRanger*
@@ -100,38 +100,46 @@ AKS podporuje následující [jejich příchodu řadiče][admission-controllers]
 - *DenyEscalatingExec*
 - *AlwaysPullImages*
 
-V současné době nelze upravit seznam jejich příchodu řadiče ve službě AKS.
+V současné době nemůžete upravit seznam řadičů pro příjem v AKS.
 
-## <a name="is-azure-key-vault-integrated-with-aks"></a>Azure Key Vault integrovaná AKS?
+## <a name="is-azure-key-vault-integrated-with-aks"></a>Je Azure Key Vault integrována s AKS?
 
-AKS není aktuálně nativně integrovaná s Azure Key Vault. Ale [Azure Key Vault FlexVolume pro projekt Kubernetes][keyvault-flexvolume] umožňuje přímou integraci od podů Kubernetes k tajným kódům v trezoru klíčů.
+AKS není aktuálně nativně integrována s Azure Key Vault. [Azure Key Vault FlexVolume for Kubernetes Project][keyvault-flexvolume] však umožňuje přímé začlenění z Kubernetes do Key Vault tajných kódů.
 
-## <a name="can-i-run-windows-server-containers-on-aks"></a>Můžete spustit kontejnery Windows serveru v AKS
+## <a name="can-i-run-windows-server-containers-on-aks"></a>Můžu na AKS spouštět kontejnery Windows serveru?
 
-Ano, kontejnery Windows serveru jsou dostupné ve verzi preview. Pro spouštění kontejnerů Windows serveru ve službě AKS, můžete vytvořit fond uzlů, na kterém běží Windows Server jako hostovaný operační systém. Kontejnery Windows serveru můžete použít pouze systém Windows Server 2019. Abyste mohli začít, najdete v článku [vytvoření clusteru AKS pomocí fond uzlů Windows Server][aks-windows-cli].
+Ano, kontejnery Windows serveru jsou dostupné ve verzi Preview. Pokud chcete spouštět kontejnery Windows serveru v AKS, vytvořte fond uzlů, na kterém běží Windows Server, jako hostovaný operační systém. Kontejnery Windows serveru můžou používat jenom Windows Server 2019. Informace o tom, jak začít, najdete v tématu [Vytvoření clusteru AKS s fondem uzlů Windows serveru][aks-windows-cli].
 
-Podpora serveru okno pro fond uzlů obsahuje některá omezení, která jsou součástí Windows serveru pro odesílání dat v projektu Kubernetes. Další informace o těchto omezeních najdete v tématu [kontejnery Windows serveru v AKS omezení][aks-windows-limitations].
+Podpora Windows serveru pro fond uzlů obsahuje některá omezení, která jsou součástí nadřazeného Windows serveru v projektu Kubernetes. Další informace o těchto omezeních najdete v tématu věnovaném [omezením AKS v kontejnerech Windows serveru][aks-windows-limitations].
 
 ## <a name="does-aks-offer-a-service-level-agreement"></a>Nabízí AKS smlouvu o úrovni služeb?
 
-Smlouvu o úrovni služeb (SLA) zprostředkovatele souhlasí uhradit zákazníkovi ceny za službu, pokud není splněná úroveň publikované služby. Protože AKS je zdarma, bez nákladů je k dispozici uhradit, tak AKS nemá žádné formální smlouvu SLA. Ale AKS se snaží zachovat dostupnost aspoň 99,5 % serveru Kubernetes API.
+V rámci smlouvy o úrovni služeb (SLA) poskytovatel souhlasí s tím, že zákazníkovi vrátí náklady na službu, pokud není splněna publikovaná úroveň služby. Vzhledem k tomu, že AKS je zdarma, nedají se uhradit žádné náklady, takže AKS nemá žádnou oficiální smlouvu SLA. AKS se ale snaží zachovat dostupnost minimálně 99,5% pro server Kubernetes API.
 
-## <a name="why-cant-i-set-maxpods-below-30"></a>Proč nelze nastavit maxPods pod 30?
+## <a name="why-cant-i-set-maxpods-below-30"></a>Proč nemohu nastavit maxPods nižší než 30?
 
-Ve službě AKS, můžete nastavit `maxPods` hodnotu při vytváření clusteru pomocí šablony Azure Resource Manageru a Azure CLI. Ale vyžadují Kubenet i Azure CNI *minimální hodnota* (ověřit v okamžiku vytvoření):
+V AKS můžete nastavit `maxPods` hodnotu při vytváření clusteru pomocí Azure CLI a Azure Resource Manager šablon. Kubenet i Azure CNI ale vyžadují *minimální hodnotu* (v době vytváření ověřený čas):
 
 | Sítě | Minimální | Maximum |
 | -- | :--: | :--: |
 | Azure CNI | 30 | 250 |
 | Kubenet | 30 | 110 |
 
-Protože AKS je spravovaná služba, můžeme nasadit a spravovat doplňky a podů jako součást clusteru. V minulosti, můžou uživatelé definovat `maxPods` hodnotu nižší než hodnota, která spravované podů potřebné ke spuštění (například 30). AKS nyní vypočítá minimální počet podů pomocí tohoto vzorce: ((maxPods nebo (maxPods * vm_count)) > minimální podů spravovaného doplňku.
+Vzhledem k tomu, že AKS je spravovaná služba, nasadíme a spravujeme doplňky a lusky jako součást clusteru. V minulosti mohli uživatelé definovat `maxPods` hodnotu nižší, než je hodnota, kterou spravované lusky vyžadují ke spuštění (například 30). AKS nyní vypočítá minimální počet lusků pomocí tohoto vzorce: ((maxPods nebo (maxPods * vm_count)) > minimálního spravovaného doplňku.
 
 Uživatelé nemohou přepsat minimální `maxPods` ověření.
 
-## <a name="can-i-apply-azure-reservation-discounts-to-my-aks-agent-nodes"></a>Můžete použít Azure rezervace slevy na své uzly AKS agenta?
+## <a name="can-i-apply-azure-reservation-discounts-to-my-aks-agent-nodes"></a>Můžu u svých uzlů agentů AKS uplatnit slevy na rezervované platformy Azure?
 
-AKS agentské uzly se účtují jako standardní virtuální počítače Azure, takže pokud jste si koupili [Azure rezervace][reservation-discounts] pro velikost virtuálního počítače, který používáte ve službě AKS, se automaticky provedou tyto slevy.
+Uzly agenta AKS se účtují jako standardní virtuální počítače Azure, takže pokud jste zakoupili [rezervace Azure][reservation-discounts] pro velikost virtuálního počítače, kterou používáte v AKS, budou se tyto slevy používat automaticky.
+
+## <a name="can-i-movemigrate-my-cluster-between-azure-tenants"></a>Můžu svůj cluster přesunout nebo migrovat mezi klienty Azure?
+
+`az aks update-credentials` Příkaz se dá použít k přesunutí clusteru AKS mezi klienty Azure. Postupujte podle pokynů v části [Zvolte možnost aktualizovat nebo vytvořit instanční objekt](https://docs.microsoft.com/azure/aks/update-credentials) a pak [aktualizujte cluster AKS pomocí nových přihlašovacích údajů](https://docs.microsoft.com/azure/aks/update-credentials#update-aks-cluster-with-new-credentials).
+
+## <a name="can-i-movemigrate-my-cluster-between-subscriptions"></a>Můžu cluster přesunout/migrovat mezi předplatnými?
+
+Přesun clusterů mezi předplatnými není aktuálně podporován.
 
 <!-- LINKS - internal -->
 

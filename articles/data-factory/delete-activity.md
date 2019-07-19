@@ -1,6 +1,6 @@
 ---
-title: Odstranit aktivitu ve službě Azure Data Factory | Dokumentace Microsoftu
-description: Zjistěte, jak odstranit soubory v různých úložištích souboru pomocí aktivity Odstranit ve službě Azure Data Factory.
+title: Odstranit aktivitu v Azure Data Factory | Microsoft Docs
+description: Naučte se odstraňovat soubory v různých úložištích souborů s aktivitou odstranění v Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: dearandyxu
@@ -13,33 +13,33 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/25/2019
-ms.openlocfilehash: 00658b650cdc0b1752bb9f2f205420018c1d6edd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.openlocfilehash: 606cab09debf760d1b101390b2a19a1a090bb4c3
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61346339"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234565"
 ---
-# <a name="delete-activity-in-azure-data-factory"></a>Odstranit aktivitu ve službě Azure Data Factory
+# <a name="delete-activity-in-azure-data-factory"></a>Odstranit aktivitu v Azure Data Factory
 
-Aktivita odstranění ve službě Azure Data Factory můžete použít k odstranění souborů nebo složky z místního úložiště ukládá nebo cloudových úložišť úložiště. Tuto aktivitu použijte pro vyčištění nebo archivaci souborů, když už nejsou potřeba.
+Pomocí aktivity odstranit v Azure Data Factory můžete odstraňovat soubory nebo složky z místních úložišť úložiště nebo úložišť cloudových úložišť. Tuto aktivitu použijte, chcete-li vyčistit nebo archivovat soubory, pokud již nepotřebujete.
 
 > [!WARNING]
-> Není možné obnovit odstraněné soubory nebo složky. Buďte opatrní při použití aktivity Odstranit pro odstranění souborů nebo složek.
+> Odstraněné soubory nebo složky nelze obnovit. Buďte opatrní při použití aktivity odstranit k odstranění souborů nebo složek.
 
 ## <a name="best-practices"></a>Osvědčené postupy
 
-Zde je několik doporučení pro použití aktivity odstranit:
+Tady je několik doporučení pro použití aktivity odstranit:
 
--   Zálohujte své soubory před jejich odstraněním s aktivitou Delete v případě, že budete muset v budoucnu obnovit.
+-   Před odstraněním souborů s aktivitou odstranění v případě, že je budete potřebovat obnovit v budoucnu, zálohujte své soubory.
 
--   Ujistěte se, že Data Factory má oprávnění k zápisu do odstranění složek nebo souborů z úložiště úložiště.
+-   Ujistěte se, že Data Factory má oprávnění k zápisu pro odstraňování složek nebo souborů z úložiště úložiště.
 
--   Ujistěte se, že nejsou mazání souborů, které jsou zapisovány ve stejnou dobu. 
+-   Ujistěte se, že neodstraňujete soubory, které jsou zapsané ve stejnou dobu. 
 
--   Pokud chcete odstranění souboru nebo složky z místního systému, ujistěte se, že používáte místní prostředí integration runtime verze větší než 3.14.
+-   Pokud chcete odstranit soubory nebo složku z místního systému, ujistěte se, že používáte místní prostředí Integration runtime s verzí vyšší než 3,14.
 
-## <a name="supported-data-stores"></a>Úložiště dat podporovaných
+## <a name="supported-data-stores"></a>Podporovaná úložiště dat
 
 -   [Azure Blob Storage](connector-azure-blob-storage.md)
 -   [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)
@@ -77,25 +77,25 @@ Zde je několik doporučení pro použití aktivity odstranit:
 }
 ```
 
-## <a name="type-properties"></a>Typ vlastnosti
+## <a name="type-properties"></a>Vlastnosti typu
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 | --- | --- | --- |
-| Datové sady | Poskytuje referenční datové sady k určení, které soubory nebo složky, která se má odstranit | Ano |
-| recursive | Určuje, zda soubory jsou odstraněné rekurzivně z podsložky nebo pouze z určené složky.  | Ne. Výchozí formát je `false`. |
-| maxConcurrentConnections | Počet připojení pro připojení k úložišti úložiště současně pro odstranění složky nebo soubory.   |  Ne. Výchozí formát je `1`. |
-| EnableLogging | Určuje, zda je potřeba zaznamenat názvy souboru nebo složky, které se odstranily. Pokud je hodnota true, budete muset dál zadejte účet úložiště k ukládání souboru protokolu tak, aby mohl sledovat chování aktivity odstranit soubor protokolu pro čtení. | Ne |
-| logStorageSettings | Platí jenom v případě enablelogging = true.<br/><br/>Skupina vlastností úložiště, které mohou být zadat, kam chcete uložit soubor protokolu obsahující názvy souboru nebo složky, které se odstranily aktivitou odstranit. | Ne |
-| linkedServiceName | Platí jenom v případě enablelogging = true.<br/><br/>Propojené služby [služby Azure Storage](connector-azure-blob-storage.md#linked-service-properties), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#linked-service-properties), nebo [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) uložení souboru protokolu, který obsahuje složku nebo názvy souborů byla odstraněna aktivita odstranit. | Ne |
-| path | Platí jenom v případě enablelogging = true.<br/><br/>Cesta pro uložení souboru protokolu v účtu úložiště. Pokud nezadáte cestu, služby kontejneru vytvoří za vás. | Ne |
+| integrován | Poskytuje odkaz na datovou sadu pro určení souborů nebo složky, které chcete odstranit. | Ano |
+| recursive | Určuje, zda se mají rekurzivně odstranit soubory z podsložek nebo pouze ze zadané složky.  | Ne. Výchozí hodnota je `false`. |
+| maxConcurrentConnections | Počet připojení, která se mají souběžně připojit k úložišti úložiště, pro odstraňování složek nebo souborů.   |  Ne. Výchozí hodnota je `1`. |
+| enablelogging | Určuje, zda je třeba zaznamenat název složky nebo souboru, které byly odstraněny. Je-li nastavena hodnota true, je třeba zadat účet úložiště pro uložení souboru protokolu, aby bylo možné sledovat chování aktivity odstranit pomocí čtení souboru protokolu. | Ne |
+| logStorageSettings | Platí pouze v případě, že EnableLogging = true.<br/><br/>Skupina vlastností úložiště, které se dají zadat, kam chcete uložit soubor protokolu obsahující název složky nebo souboru, který odstranila aktivita odstranit. | Ne |
+| linkedServiceName | Platí pouze v případě, že EnableLogging = true.<br/><br/>Propojená služba [Azure Storage](connector-azure-blob-storage.md#linked-service-properties), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#linked-service-properties)nebo [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) pro uložení souboru protokolu, který obsahuje název složky nebo souboru, který odstranila aktivita odstranit. | Ne |
+| path | Platí pouze v případě, že EnableLogging = true.<br/><br/>Cesta k uložení souboru protokolu v účtu úložiště. Pokud cestu nezadáte, služba vytvoří kontejner. | Ne |
 
 ## <a name="monitoring"></a>Monitorování
 
-Existují dvě místa, kde můžete zobrazit a monitorovat výsledky aktivity odstranit: 
--   Z výstupu aktivity odstranit.
+Existují dvě místa, kde můžete zobrazit a monitorovat výsledky aktivity odstranění: 
+-   Z výstupu aktivity odstranění.
 -   Ze souboru protokolu.
 
-### <a name="sample-output-of-the-delete-activity"></a>Ukázkový výstup aktivity Delete
+### <a name="sample-output-of-the-delete-activity"></a>Ukázkový výstup aktivity odstranění
 
 ```json
 { 
@@ -113,37 +113,37 @@ Existují dvě místa, kde můžete zobrazit a monitorovat výsledky aktivity od
 }
 ```
 
-### <a name="sample-log-file-of-the-delete-activity"></a>Ukázkový soubor protokolu aktivit Delete
+### <a name="sample-log-file-of-the-delete-activity"></a>Ukázkový soubor protokolu aktivity odstranění
 
-| Name | Category | Status | Chyba |
+| Name | Kategorie | Stav | Chyba |
 |:--- |:--- |:--- |:--- |
 | test1/yyy.json | File | Odstranění |  |
 | test2/hello789.txt | File | Odstranění |  |
-| test2/test3/hello000.txt | File | Odstranění |  |
+| test2/test3/hello000. txt | File | Odstranění |  |
 | test2/test3/zzz.json | File | Odstranění |  |
 
-## <a name="examples-of-using-the-delete-activity"></a>Příklady použití aktivit Delete
+## <a name="examples-of-using-the-delete-activity"></a>Příklady použití aktivity odstranit
 
-### <a name="delete-specific-folders-or-files"></a>Odstranění specifických složek nebo souborů
+### <a name="delete-specific-folders-or-files"></a>Odstranit konkrétní složky nebo soubory
 
-Ve storu má následující strukturu složek:
+Úložiště má následující strukturu složek:
 
-Kořenový /<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_1 /<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_2 /<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8.txt
+Zobrazuje<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8. txt
 
-Teď používáte odstranit aktivity Odstranit složku nebo soubory kombinací jinou vlastnost hodnotu z datové sady a aktivity odstranit:
+Nyní používáte aktivitu odstranit k odstranění složky nebo souborů kombinací jiné hodnoty vlastnosti z datové sady a aktivity odstranění:
 
-| folderPath (z datové sady) | Název souboru (z datové sady) | rekurzivní (z aktivity odstranění) | Výstup |
+| folderPath (z datové sady) | Název souboru (z datové sady) | rekurzivní (z aktivity odstranit) | Výstup |
 |:--- |:--- |:--- |:--- |
-| Kořenový / Folder_A_2 | NULL | False | Kořenový /<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>5.csv</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_1 /<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_2 /<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8.txt |
-| Kořenový / Folder_A_2 | NULL | True | Kořenový /<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_A_2/</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>5.csv</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_B_1 /</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>6.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>7.csv</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_B_2 /</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>8.txt</strike> |
-| Kořenový / Folder_A_2 | *.txt | False | Kořenový /<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_1 /<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_2 /<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8.txt |
-| Kořenový / Folder_A_2 | *.txt | True | Kořenový /<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_1 /<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>6.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_2 /<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>8.txt</strike> |
+| Root/Folder_A_2 | NULL | False | Zobrazuje<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4. txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>5.csv</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8. txt |
+| Root/Folder_A_2 | NULL | Pravda | Zobrazuje<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_A_2/</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4. txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>5.csv</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_B_1/</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>6.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>7.csv</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_B_2/</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>8.txt</strike> |
+| Root/Folder_A_2 | *.txt | False | Zobrazuje<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4. txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8. txt |
+| Root/Folder_A_2 | *.txt | Pravda | Zobrazuje<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4. txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>6.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>8.txt</strike> |
 
-### <a name="periodically-clean-up-the-time-partitioned-folder-or-files"></a>Pravidelně vyčištění oddílů času složku nebo soubory
+### <a name="periodically-clean-up-the-time-partitioned-folder-or-files"></a>Pravidelné vyčištění složky nebo souborů s děleným časem
 
-Můžete vytvořit kanál tak, aby pravidelně čas dělené složky nebo soubory.  Příklad je podobné jako strukturu složek: `/mycontainer/2018/12/14/*.csv`.  Můžete využít ADF systémové proměnné z aktivační události plánovače identifikovat, které složky nebo soubory by se měla odstranit během každé spuštění kanálu. 
+Můžete vytvořit kanál pro pravidelné vyčištění složky nebo souborů rozdělené do oddílů.  Například struktura složky je podobná: `/mycontainer/2018/12/14/*.csv`.  Systémovou proměnnou ADF můžete využít z triggeru Schedule k určení, které složky nebo soubory by se měly odstranit při každém spuštění kanálu. 
 
-#### <a name="sample-pipeline"></a>Ukázkový kanál
+#### <a name="sample-pipeline"></a>Vzorový kanál
 
 ```json
 {
@@ -193,7 +193,7 @@ Můžete vytvořit kanál tak, aby pravidelně čas dělené složky nebo soubor
 }
 ```
 
-#### <a name="sample-dataset"></a>Ukázkové datové sadě
+#### <a name="sample-dataset"></a>Ukázková datová sada
 
 ```json
 {
@@ -220,7 +220,7 @@ Můžete vytvořit kanál tak, aby pravidelně čas dělené složky nebo soubor
 }
 ```
 
-#### <a name="sample-trigger"></a>Aktivační událost vzorku
+#### <a name="sample-trigger"></a>Ukázka triggeru
 
 ```json
 {
@@ -259,11 +259,11 @@ Můžete vytvořit kanál tak, aby pravidelně čas dělené složky nebo soubor
 }
 ```
 
-### <a name="clean-up-the-expired-files-that-were-last-modified-before-201811"></a>Vyčištění, které bylo naposledy změněno před 2018.1.1 soubory s ukončenou platností
+### <a name="clean-up-the-expired-files-that-were-last-modified-before-201811"></a>Vyčistit soubory s vypršenou platností, které byly naposledy změněny před 2018.1.1
 
-Můžete vytvořit kanál Vyčistit stará nebo vypršela její platnost souborů s využitím filtr atributu souboru: "LastModified" v datové sadě.  
+Pomocí filtru atributu souboru můžete vytvořit kanál, který vyčistí staré soubory nebo soubory s vypršenou platností: "LastModified" v datové sadě.  
 
-#### <a name="sample-pipeline"></a>Ukázkový kanál
+#### <a name="sample-pipeline"></a>Vzorový kanál
 
 ```json
 {
@@ -301,7 +301,7 @@ Můžete vytvořit kanál Vyčistit stará nebo vypršela její platnost soubor�
 }
 ```
 
-#### <a name="sample-dataset"></a>Ukázkové datové sadě
+#### <a name="sample-dataset"></a>Ukázková datová sada
 
 ```json
 {
@@ -321,14 +321,14 @@ Můžete vytvořit kanál Vyčistit stará nebo vypršela její platnost soubor�
 }
 ```
 
-### <a name="move-files-by-chaining-the-copy-activity-and-the-delete-activity"></a>Přesunout soubory řetězení aktivitu kopírování a aktivitu Delete
+### <a name="move-files-by-chaining-the-copy-activity-and-the-delete-activity"></a>Přesunutí souborů zřetězením aktivity kopírování a aktivity odstranit
 
-Přesunutí souboru pomocí aktivity kopírování zkopírovat soubor a pak aktivitou odstranit pro odstranění souboru v kanálu.  Pokud chcete přesunout více souborů, vám dá se použít aktivitě GetMetadata + aktivita filtru + aktivita Foreach + aktivitu kopírování a aktivitu jako v následující ukázce odstranit:
+Soubor můžete přesunout pomocí aktivity kopírování a potom aktivitu odstranit a odstranit soubor v kanálu.  Pokud chcete přesunout více souborů, můžete použít aktivitu aktivita GetMetadata + aktivita filtru + foreach aktivita + aktivita kopírování + odstranit jako v následující ukázce:
 
 > [!NOTE]
-> Pokud chcete přesunout celou složku definováním obsahující cestu ke složce pouze datovou sadu a pak pomocí aktivit kopírování a aktivitu odstranit tak, aby odkazovaly na stejné datové sady představující složku, budete muset buďte velmi opatrní. Je to proto, že máte, abyste měli jistotu, že není bude nové soubory, které dorazily do složky mezi operace kopírování a odstraňování operace.  Pokud existují nové soubory ve složce přicházející v tuto chvíli při aktivitě kopírování právě dokončili úlohu kopírování, ale nebyl byla stared aktivity odstranit, je možné, že aktivita Delete Odstraní tento nový soubor opravovány, který není byl zkopírován do destinati na odstraněním ještě celou složku. 
+> Pokud chcete přesunout celou složku tak, že definujete datovou sadu obsahující jenom cestu ke složce, a pak pomocí aktivity kopírování a aktivity odstranit odkaz na stejnou datovou sadu, která představuje složku, musíte být velmi opatrní. Je to proto, že je nutné zajistit, aby do složky mezi operacemi kopírování a odstraňování nedocházelo nové soubory.  Pokud se ve složce v okamžiku, kdy vaše aktivita kopírování právě dokončila úloha kopírování, přirazily nové soubory, ale aktivita odstranění nebyla postará, je možné, že aktivita odstranění odstraní tento nový doručený soubor, který se nezkopíroval do destinati. Tím se ještě odstraní celá složka. 
 
-#### <a name="sample-pipeline"></a>Ukázkový kanál
+#### <a name="sample-pipeline"></a>Vzorový kanál
 
 ```json
 {
@@ -485,7 +485,7 @@ Přesunutí souboru pomocí aktivity kopírování zkopírovat soubor a pak akti
 
 #### <a name="sample-datasets"></a>Ukázkové datové sady
 
-Datové sady používané aktivitě GetMetadata výčet seznamu souborů.
+Datová sada, kterou používá aktivita GetMetadata k zobrazení výčtu seznamu souborů.
 
 ```json
 {
@@ -504,7 +504,7 @@ Datové sady používané aktivitě GetMetadata výčet seznamu souborů.
 }
 ```
 
-Datová sada pro zdroj dat používá aktivitu kopírování a aktivitu odstranění.
+Datová sada pro zdroj dat používaná aktivitou kopírování a aktivitou odstranění
 
 ```json
 {
@@ -537,7 +537,7 @@ Datová sada pro zdroj dat používá aktivitu kopírování a aktivitu odstran�
 }
 ```
 
-Datová sada pro cíl dat používá aktivitu kopírování.
+Datová sada pro cíl dat používaný aktivitou kopírování
 
 ```json
 {
@@ -563,14 +563,17 @@ Datová sada pro cíl dat používá aktivitu kopírování.
     }
 }
 ```
-## <a name="known-limitation"></a>Známá omezení
 
--   Odstranit aktivita nepodporuje odstranění seznamu složek popsal zástupný znak.
+Můžete také získat šablonu pro přesun [souborů.](solution-template-move-files.md)
 
--   Při použití atributu filtr souborů: modifiedDatetimeStart a modifiedDatetimeEnd a vyberte soubory, která se má odstranit, ujistěte se, že nastavení "název_souboru": "*" v datové sadě.
+## <a name="known-limitation"></a>Známé omezení
+
+-   Aktivita Delete nepodporuje odstranění seznamu složek popsaných pomocí zástupného znaku.
+
+-   Při použití filtru atributu souboru: modifiedDatetimeStart a modifiedDatetimeEnd vyberte soubory, které chcete odstranit, nezapomeňte nastavit "fileName": "*" v datové sadě.
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o přesunutí souborů ve službě Azure Data Factory.
+Přečtěte si další informace o přesouvání souborů v Azure Data Factory.
 
 -   [Nástroj Kopírování dat ve službě Azure Data Factory](copy-data-tool.md)

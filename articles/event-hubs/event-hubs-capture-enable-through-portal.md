@@ -15,20 +15,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: shvija
-ms.openlocfilehash: 9108c52529319288fba48dbad3c6f8aa6cb5f725
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 18dea8e8e4cfcabec63e35dd302f6a5259721a8a
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60822546"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68320312"
 ---
-# <a name="enable-capturing-of-events-streaming-through-azure-event-hubs"></a>Povolit sběr událostí pomocí Azure Event Hubs
+# <a name="enable-capturing-of-events-streaming-through-azure-event-hubs"></a>Povolení zachycení událostí streamování prostřednictvím Azure Event Hubs
 
-Azure [Event Hubs Capture][capture-overview] umožňuje automatické doručování streamovaných dat ve službě Event Hubs do služby [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) nebo do účtu [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/) podle vašeho výběru.
+Služba Azure [Event Hubs Capture][capture-overview] vám umožní automaticky doručovat streamovaná data v Event Hubs do [úložiště objektů BLOB v Azure](https://azure.microsoft.com/services/storage/blobs/) nebo v účtu, který si vyberete, [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/) .
 
 Ke konfiguraci funkce Capture v době vytvoření centra událostí můžete použít [Azure Portal](https://portal.azure.com). Data můžete zachytávat do kontejneru služby Azure [Blob Storage](https://azure.microsoft.com/services/storage/blobs/) nebo do účtu [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/).
 
-Další informace najdete v tématu [Přehled funkce Event Hubs Capture][capture-overview].
+Další informace najdete v tématu [přehled Event Hubsho zachycení][capture-overview].
 
 ## <a name="capture-data-to-an-azure-storage-account"></a>Zachytávání dat do účtu služby Azure Storage  
 
@@ -39,7 +39,7 @@ Výchozí časový interval je 5 minut. Minimální hodnota je 1, maximální ho
 ![Časový interval pro zaznamenání][1]
 
 > [!NOTE]
-> Můžete povolit nebo zakázat generování prázdných souborů dojde během časového intervalu pro zachycení žádné události. 
+> Můžete povolit nebo zakázat vygenerování prázdných souborů, pokud během okna sběru nedojde k událostem. 
 
 ## <a name="capture-data-to-an-azure-data-lake-store-account"></a>Zachytávání dat do účtu Azure Data Lake Store
 
@@ -47,10 +47,8 @@ Pro zachytávání dat do služby Azure Data Lake Store vytvoříte účet Data 
 
 ### <a name="create-an-azure-data-lake-store-account-and-folders"></a>Vytvoření účtu Azure Data Lake Store a složek
 
-> [!NOTE]
-> Funkce Event Hubs Capture v současné době podporuje pouze Gen 1 z Azure Data Lake Store, ne 2. generace. 
 
-1. Vytvoření účtu Data Lake Store 1. generace, postupujte podle pokynů v [Začínáme s Azure Data Lake Store pomocí webu Azure portal](../data-lake-store/data-lake-store-get-started-portal.md).
+1. Vytvořte účet Data Lake Store podle pokynů v tématu [Začínáme s Azure Data Lake Store s použitím webu Azure Portal](../data-lake-store/data-lake-store-get-started-portal.md).
 2. Postupujte podle pokynů v části [Přiřazení oprávnění ke službě Event Hubs](../data-lake-store/data-lake-store-archive-eventhub-capture.md#assign-permissions-to-event-hubs) a v rámci účtu Data Lake Store vytvořte složku, do které chcete zachytávat data ze služby Event Hubs, a službě Event Hubs přiřaďte oprávnění k zápisu dat do vašeho účtu Data Lake Store.  
 
 
@@ -81,7 +79,7 @@ Funkci Capture můžete nakonfigurovat v existujících centrech událostí, kte
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o funkci Event Hubs Capture najdete v tématu [Přehled funkce Event Hubs Capture][capture-overview].
+- Přečtěte si další informace o Event Hubs Capture pomocí [přehledu Event Hubs Capture][capture-overview].
 - Ke konfiguraci funkce Event Hubs Capture můžete také použít šablony Azure Resource Manageru. Další informace najdete v tématu věnovaném [povolení funkce Capture pomocí šablony Azure Resource Manageru](event-hubs-resource-manager-namespace-event-hub-enable-capture.md).
 - [Zjistěte, jak vytvořit předplatné služby Azure Event Grid s oborem názvů služby Event Hubs jako zdrojem](store-captured-data-data-warehouse.md).
 - [Začínáme s Azure Data Lake Store pomocí webu Azure Portal](../data-lake-store/data-lake-store-get-started-portal.md)

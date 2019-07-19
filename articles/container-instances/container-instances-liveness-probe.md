@@ -1,29 +1,29 @@
 ---
-title: Konfigurace sond aktivity ve službě Azure Container Instances
-description: Další informace o konfiguraci sondy aktivity restartovat není v pořádku, kontejnery ve službě Azure Container Instances
+title: Konfigurace sond živého provozu v Azure Container Instances
+description: Naučte se konfigurovat sondy živého provozu pro restartování poškozených kontejnerů v Azure Container Instances
 services: container-instances
 author: dlepow
-manager: jeconnoc
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
 ms.date: 06/08/2018
 ms.author: danlep
-ms.openlocfilehash: 89b76fc68c113b7931894c0cf003ffd846c646ab
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 28205d6db85d7a5051f283445d95dd2375e174c8
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60583795"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325870"
 ---
 # <a name="configure-liveness-probes"></a>Konfigurace testů aktivity
 
-Kontejnerizované aplikace může spustit dlouhou dobu, což vede k porušení stavy, které může být zapotřebí opravit restartováním kontejneru. Služba Azure Container Instances podporuje aktivity testy zahrnují konfigurace tak, aby kontejneru můžete restartovat, pokud důležité funkce nefunguje.
+Kontejnerové aplikace mohou běžet po delší dobu, což vede k nefunkčním stavům, které mohou být potřeba opravit restartováním kontejneru. Azure Container Instances podporuje testy živého provozu pro zahrnutí konfigurací, aby se Váš kontejner mohl restartovat, pokud nefungují kritické funkce.
 
-Tento článek vysvětluje, jak nasadit skupiny kontejnerů, která obsahuje test aktivity, předvede automatické restartování kontejneru s Simulovaná není v pořádku.
+Tento článek vysvětluje, jak nasadit skupinu kontejnerů, která zahrnuje test živého provozu, který demonstruje automatické restartování simulovaného kontejneru, který není v pořádku.
 
 ## <a name="yaml-deployment"></a>Nasazení YAML
 
-Vytvoření `liveness-probe.yaml` souboru následujícím fragmentem kódu. Tento soubor definuje skupinu kontejnerů, který se skládá z NGNIX kontejneru, který nakonec nebude v pořádku.
+`liveness-probe.yaml` Vytvořte soubor s následujícím fragmentem kódu. Tento soubor definuje skupinu kontejnerů, která se skládá z kontejneru NGNIX, který se nakonec stává stavem není v pořádku.
 
 ```yaml
 apiVersion: 2018-06-01
@@ -55,53 +55,53 @@ tags: null
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-Spuštěním následujícího příkazu nasaďte tuto skupinu kontejnerů s konfiguraci uvedené výš YAML:
+Spuštěním následujícího příkazu Nasaďte tuto skupinu kontejnerů s výše uvedenou konfigurací YAML:
 
 ```azurecli-interactive
 az container create --resource-group myResourceGroup --name livenesstest -f liveness-probe.yaml
 ```
 
-### <a name="start-command"></a>Spustit – příkaz
+### <a name="start-command"></a>Spustit příkaz
 
-Definuje počáteční příkaz ke spuštění, při prvním spuštění kontejneru spuštěná, definované nasazení `command` vlastnost, která přijímá pole řetězců. V tomto příkladu se spustit relaci prostředí bash a vytvořte soubor s názvem `healthy` v rámci `/tmp` adresáře předáním tohoto příkazu:
+Nasazení definuje spouštěcí příkaz, který má být spuštěn při prvním spuštění kontejneru definovaného `command` vlastností, která přijímá pole řetězců. V tomto příkladu spustí relaci bash a v `healthy` `/tmp` adresáři vytvoří soubor s názvem, který projdete tímto příkazem:
 
 ```bash
 /bin/sh -c "touch /tmp/healthy; sleep 30; rm -rf /tmp/healthy; sleep 600"
 ```
 
- Potom se přejít do režimu spánku po dobu 30 sekund před odstraněním souboru a pak přejde do režimu spánku 10 minut.
+ Po 30 sekundách se pak tento soubor před odstraněním dokončí a pak vstoupí do režimu spánku až 10 minut.
 
-### <a name="liveness-command"></a>Příkaz aktivity
+### <a name="liveness-command"></a>Živý příkaz
 
-Definuje toto nasazení `livenessProbe` která podporuje `exec` aktivity příkaz, který funguje jako kontrola aktivity. Pokud tento příkaz se ukončí s nenulovou hodnotu, kontejneru budou ukončeny a restartování, signalizace `healthy` soubor nebyl nalezen. Pokud se příkaz úspěšně ukončí s ukončovacím kódem 0, bude provedena žádná akce.
+Toto nasazení definuje `livenessProbe` , které `exec` podporuje příkaz živého provozu, který funguje jako aktivní kontrolu. Pokud se tento příkaz ukončí s nenulovou hodnotou, kontejner se ukončí a restartuje, protože se nepovedlo `healthy` najít signál souboru. Pokud se tento příkaz ukončí úspěšně s ukončovacím kódem 0, nebude provedena žádná akce.
 
-`periodSeconds` Vlastnost určuje, aktivity příkazu by se měl spustit každých 5 sekund.
+`periodSeconds` Vlastnost určuje, že se má příkaz ' živý ' spustit každých 5 sekund.
 
-## <a name="verify-liveness-output"></a>Ověření výstupu aktivity
+## <a name="verify-liveness-output"></a>Ověřit výstup živého provozu
 
-Během prvních 30 sekund `healthy` existuje soubor vytvořený pomocí příkazu start. Když příkaz aktivity vyhledá `healthy` souboru existenci stavový kód vrátí nulu na začátku, signalizace úspěch, tak žádné restartování dochází.
+Během prvních 30 sekund `healthy` soubor vytvořený pomocí spouštěcího příkazu existuje. Když příkaz živá funkce kontroluje `healthy` existenci souboru, vrátí stavový kód nulu, signalizaci úspěch, takže nedojde k restartování.
 
-Po 30 sekundách `cat /tmp/healthy` se začnou být neúspěšné, způsobí není v pořádku a utracení k událostem.
+Po 30 sekundách se začne `cat /tmp/healthy` zdařit selhání, což způsobí, že dojde k chybám a ukončování událostí.
 
-Tyto události můžete zobrazit z webu Azure portal nebo rozhraní příkazového řádku Azure.
+Tyto události se dají zobrazit z Azure Portal nebo pomocí Azure CLI.
 
-![Událost portálu není v pořádku][portal-unhealthy]
+![Událost chybného portálu][portal-unhealthy]
 
-Zobrazením událostí na webu Azure Portal, události typu `Unhealthy` aktivuje se při selhání příkazu aktivity. Následné event bude typu `Killing`, značící odstranění kontejneru mohli začít restartování. Počet restartování pro kontejner se zvýší pokaždé, když k tomu dochází.
+Zobrazením událostí v Azure Portal se události typu `Unhealthy` aktivují při selhání příkazu pro živý provoz. Následná událost bude typu `Killing`a označuje odstranění kontejneru, aby bylo možné spustit restart. Počet restartování kontejneru se zvýší pokaždé, když k tomuto dojde.
 
-Po dokončení se restartuje místní tak zdroje, jako jsou veřejné IP adresy a zachová obsah daného uzlu.
+Restarty jsou dokončeny na místě, takže se zachovají prostředky jako veřejné IP adresy a obsah specifický pro uzel.
 
-![Restartování portálu čítače][portal-restart]
+![Čítač restartování portálu][portal-restart]
 
-Pokud test aktivity průběžně se nezdaří a aktivuje příliš mnoho restartování, zadá svůj kontejner exponenciální regrese zpoždění.
+Pokud se test živého provozu nepřetržitě nezdaří a aktivuje se příliš mnoho restartování, váš kontejner vstoupí v případě exponenciálního zpoždění zpět.
 
-## <a name="liveness-probes-and-restart-policies"></a>Aktivity sondy a zásady restartování
+## <a name="liveness-probes-and-restart-policies"></a>Provozní sondy a zásady restartování
 
-Zásady restartování mají přednost před chování při restartování aktivuje sondy aktivity. Pokud nastavíte například `restartPolicy = Never` *a* test aktivity, skupina kontejnerů restartování v případě zaškrtnutí neúspěšné aktivity. Skupina kontejnerů bude místo toho dodržovat zásady restartování skupiny kontejnerů `Never`.
+Zásady restartování nahrazují chování při restartování aktivované sondami živého provozu. Pokud jste například nastavili `restartPolicy = Never` *a a* živý test, skupina kontejnerů se v případě neúspěšné kontroly živého chodu restartuje. Skupina kontejnerů místo toho bude vyhovovat zásadám `Never`restartování skupiny kontejnerů.
 
 ## <a name="next-steps"></a>Další postup
 
-Scénáře založené na úlohách můžou vyžadovat test aktivity, která aktivuje automatické restartování v případě, že předběžné funkce nepracuje správně. Další informace o spuštěné kontejnery založené na úlohách najdete v tématu [spouštění kontejnerizovaných úloh ve službě Azure Container Instances](container-instances-restart-policy.md).
+Scénáře založené na úlohách můžou vyžadovat test živého provozu, aby se povolilo automatické restartování, pokud funkce bez problémů nefunguje správně. Další informace o spuštění kontejnerů založených na úlohách najdete v tématu [spuštění kontejnerových úloh v Azure Container Instances](container-instances-restart-policy.md).
 
 <!-- IMAGES -->
 [portal-unhealthy]: ./media/container-instances-liveness-probe/unhealthy-killing.png

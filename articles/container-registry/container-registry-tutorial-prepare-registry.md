@@ -1,19 +1,20 @@
 ---
-title: Kurz – vytvoření geograficky replikovaného registru Dockeru v Azure
+title: Kurz – vytvoření geograficky replikovaného registru Docker v Azure
 description: Vytvořte registr kontejnerů Azure, nakonfigurujte geografickou replikaci, připravte image Dockeru a nasaďte ji do registru. První část třídílné série.
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: tutorial
 ms.date: 04/30/2017
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 7aec257335e3380fa99669c1191ee89857ec975d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 87746bd39e624699612bf5221258ad757cd462b3
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60870387"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68309574"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Kurz: Příprava geograficky replikovaného registru kontejnerů Azure
 
@@ -49,7 +50,7 @@ Vyberte **Vytvořit prostředek** > **Kontejnery** > **Azure Container Registry*
 
 Nakonfiguruje nový registr pomocí následujících nastavení:
 
-* **Název registru**: Vytvořte název registru, který je v rámci Azure globálně jedinečný a obsahuje 5 až 50 alfanumerických znaků
+* **Název registru**: Vytvoří název registru, který je globálně jedinečný v rámci Azure, a obsahuje 5-50 alfanumerických znaků.
 * **Skupina prostředků**: **Vytvořit nový** > `myResourceGroup`
 * **Umístění:** `West US`
 * **Uživatel s rolí správce:** `Enable` (vyžadováno službou Web App for Containers ke stahování imagí)
@@ -110,13 +111,13 @@ git clone https://github.com/Azure-Samples/acr-helloworld.git
 cd acr-helloworld
 ```
 
-Pokud nemáte nainstalovaný `git`, můžete si [stáhnout archiv ZIP][acr-helloworld-zip] přímo z GitHubu.
+Pokud nemáte nainstalované, můžete [stáhnout archiv zip][acr-helloworld-zip] přímo z GitHubu. `git`
 
 ## <a name="update-dockerfile"></a>Aktualizace souboru Dockerfile
 
-Soubor Dockerfile, který je součástí ukázky, ukazuje postup sestavení kontejneru. Spustí se z oficiální image [aspnetcore][dockerhub-aspnetcore], zkopíruje soubory aplikace do kontejneru, nainstaluje závislosti, zkompiluje výstup pomocí oficiální image [aspnetcore-build][dockerhub-aspnetcore-build] a nakonec sestaví optimalizovanou image aspnetcore.
+Soubor Dockerfile, který je součástí ukázky, ukazuje postup sestavení kontejneru. Začíná od oficiální image [aspnetcore][dockerhub-aspnetcore] image, copies the application files into the container, installs dependencies, compiles the output using the official [aspnetcore-build][dockerhub-aspnetcore-build] a nakonec vytvoří optimalizovanou image aspnetcore.
 
-Soubor [Dockerfile][dockerfile] se v naklonovaném zdroji nachází v umístění `./AcrHelloworld/Dockerfile`.
+[Souboru Dockerfile][dockerfile] se nachází `./AcrHelloworld/Dockerfile` v naklonovaném zdroji.
 
 ```Dockerfile
 FROM microsoft/aspnetcore:2.0 AS base

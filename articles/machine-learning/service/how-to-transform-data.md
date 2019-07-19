@@ -1,5 +1,5 @@
 ---
-title: 'Transformace: Python SDK pro přípravu dat'
+title: 'Transformace: prostředí pro přípravu dat Python SDK'
 titleSuffix: Azure Machine Learning service
 description: Další informace o transformaci a čištění dat pomocí sady SDK služby Azure Machine Learning Data Prep. Pomocí metody transformace přidat sloupce odfiltrovat nežádoucí řádků nebo sloupců a dává chybějící hodnoty.
 services: machine-learning
@@ -10,23 +10,23 @@ ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: jmartens
-ms.date: 05/02/2019
+ms.date: 07/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: db23c8af7eaa4a86691ccb0bb831ce2cc28d635c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6c5d60bb51a96725f766c6b49d61ac20fb2a1b58
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65471837"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297911"
 ---
 # <a name="transform-data-with-the-azure-machine-learning-data-prep-sdk"></a>Transformace dat pomocí sady SDK pro Azure Machine Learning Data Prep
 
-V tomto článku se dozvíte, transformuje data pomocí různých metod `azureml-dataprep` balíčku. Balíček nabízí funkce, které se dají jednoduše přidat sloupce odfiltrovat nežádoucí řádků nebo sloupců a dává chybějící hodnoty. Zobrazit úplnou referenční dokumentaci pro [azureml přípravy balíčku](https://aka.ms/data-prep-sdk).
+V tomto článku se seznámíte s různými metodami transformace dat pomocí `azureml-dataprep` balíčku. Balíček nabízí funkce, které zjednodušují přidávání sloupců, filtrování nechtěných řádků nebo sloupců a imputace chybějících hodnot. Prohlédněte si úplnou referenční dokumentaci [balíčku AzureML-dataprep](https://aka.ms/data-prep-sdk).
 
 > [!Important]
-> Pokud vytváříte nové řešení, zkuste [datové sady Azure Machine Learning](how-to-explore-prepare-data.md) (preview) můžete transformovat data, data snímku a uložit definice verzí datové sady. Datové sady je další verze přípravy dat SDK nabízí rozšířené funkce pro správu datových sad v řešení AI. Pokud používáte `azureml-dataprep` balíček pro vytváření toku dat s namísto použití transformace `azureml-datasets` balíček k vytvoření datové sady, nebudete moct později použít snímky nebo systémovou správou verzí datové sady.
+> Pokud vytváříte nové řešení, vyzkoušejte [Azure Machine Learning datové sady](how-to-explore-prepare-data.md) (Preview), abyste mohli transformovat data, data snímků a ukládat definice datových sad s verzemi. Datové sady jsou další verzí sady SDK pro přípravu dat, která nabízí rozšířené funkce pro správu datových sad v řešeních AI. Použijete `azureml-dataprep` -li balíček k vytvoření datového toku s transformacemi namísto `azureml-datasets` použití balíčku k vytvoření datové sady, nebudete moci později použít snímky nebo datové sady s verzemi.
 
-Tento návod ukazuje příklady pro následující úlohy:
+Tento postup ukazuje příklady pro následující úlohy:
 
 - Přidání sloupce pomocí výrazu
 - [Dává chybějící hodnoty](#impute-missing-values)
@@ -100,9 +100,9 @@ dflow.head(3)
 |1|10139776|false (nepravda)|42.008124|-87.659550|
 |2|10140270|false (nepravda)|NaN|NaN|
 
-Třetí záznamu chybí hodnoty zeměpisné šířky a délky. Dává tyto chybějící hodnoty, použijte [ `ImputeMissingValuesBuilder` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.api.builders.imputemissingvaluesbuilder?view=azure-dataprep-py) další výraz pevné. To dává sloupce s buď výpočtová `MIN`, `MAX`, `MEAN` hodnotu, nebo `CUSTOM` hodnotu. Když `group_by_columns` není zadána, chybějící hodnoty budou uložené ve skupině s `MIN`, `MAX`, a `MEAN` počítá na skupinu.
+Třetí záznamu chybí hodnoty zeměpisné šířky a délky. Pro imputace těchto chybějících hodnot použijete [`ImputeMissingValuesBuilder`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.api.builders.imputemissingvaluesbuilder?view=azure-dataprep-py) k učení s pevným výrazem. To dává sloupce s buď výpočtová `MIN`, `MAX`, `MEAN` hodnotu, nebo `CUSTOM` hodnotu. Když `group_by_columns` není zadána, chybějící hodnoty budou uložené ve skupině s `MIN`, `MAX`, a `MEAN` počítá na skupinu.
 
-Zkontrolujte `MEAN` hodnotu pomocí zeměpisné šířky sloupce [ `summarize()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#summarize-summary-columns--typing-union-typing-list-azureml-dataprep-api-dataflow-summarycolumnsvalue---nonetype----none--group-by-columns--typing-union-typing-list-str---nonetype----none--join-back--bool---false--join-back-columns-prefix--typing-union-str--nonetype----none-----azureml-dataprep-api-dataflow-dataflow) funkce. Tato funkce přijímá pole sloupců `group_by_columns` parametr k určení úrovně agregace. `summary_columns` Parametr přijímá `SummaryColumnsValue` volání. Toto volání funkce určuje aktuální název sloupce, nový název počítaného pole a `SummaryFunction` provádět.
+Pomocí funkce ověřte `MEAN` hodnotu sloupce Zeměpisná šířka. [`summarize()`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#summarize-summary-columns--typing-union-typing-list-azureml-dataprep-api-dataflow-summarycolumnsvalue---nonetype----none--group-by-columns--typing-union-typing-list-str---nonetype----none--join-back--bool---false--join-back-columns-prefix--typing-union-str--nonetype----none-----azureml-dataprep-api-dataflow-dataflow) Tato funkce přijímá pole sloupců `group_by_columns` parametr k určení úrovně agregace. `summary_columns` Parametr přijímá `SummaryColumnsValue` volání. Toto volání funkce určuje aktuální název sloupce, nový název počítaného pole a `SummaryFunction` provádět.
 
 ```python
 dflow_mean = dflow.summarize(group_by_columns=['Arrest'],
@@ -190,7 +190,7 @@ Nakonec proveďte volání `builder.preview(skip=30, count=5)` a lze zobrazit od
 Nyní, předejte počet řádků, které chcete `skip` z horní části zobrazte řádků níže.
 
 > [!NOTE]
-> Funkce preview() přeskočí řádky, ale není znovu číslo indexu výstup. V následujícím příkladu odpovídá index 0 v tabulce indexu 30 datového toku.
+> Funkce Preview () přeskočí řádky, ale nepřečísluje výstupní index. V následujícím příkladu index 0 v tabulce odpovídá indexu 30 v toku dat.
 
 ```python
 builder.preview(skip=30, count=5)
@@ -204,7 +204,7 @@ builder.preview(skip=30, count=5)
 |3|1/2/2015 0:54|1\. února 2015 12 AM - 2 AM|
 |4|1/2/2015 1:00|1\. února 2015 12 AM - 2 AM|
 
-Tady najdete v článku o problém s generovaného programu. Založené výhradně na jeden příklad, který jste zadali výše, program odvodit zvolili analyzovat datum jako "Den/měsíc/rok", což je nechcete v tomto případě. Chcete-li vyřešit tento problém, cílit na konkrétní záznam indexu a zadejte jiný příklad použití `add_example()` na fungovat `builder` proměnné.
+Tady najdete v článku o problém s generovaného programu. Založené výhradně na jeden příklad, který jste zadali výše, program odvodit zvolili analyzovat datum jako "Den/měsíc/rok", což je nechcete v tomto případě. Chcete-li tento problém vyřešit, zaměřte se na konkrétní index záznamu a poskytněte `add_example()` další příklad pomocí `builder` funkce na proměnné.
 
 ```python
 builder.add_example(source_data=dflow.iloc[3], example_value='Jan 2, 2015 12AM-2AM')
@@ -219,7 +219,7 @@ builder.preview(skip=30, count=5)
 |3|1/2/2015 0:54|2\. ledna 2015 12 AM - 2 AM|
 |4|1/2/2015 1:00|2\. ledna 2015 12 AM - 2 AM|
 
-Nyní správně ošetřit řádků "1/2/2015' jako"2 ledna 2015", ale když se podíváte nad rámec indexu 76 odvozených sloupců, uvidíte, že hodnoty na konci nesouvisí v odvozených sloupců.
+Řádky nyní správně zpracovávají "1/2/2015" jako "LED 2, 2015", ale pokud zjistíte, že se pro odvozený sloupec nachází mimo index 76, vidíte, že hodnoty na konci nemají žádný z odvozeného sloupce.
 
 ```python
 builder.preview(skip=75, count=5)
@@ -228,11 +228,11 @@ builder.preview(skip=75, count=5)
 
 ||DATE|date_timerange|
 |-----|-----|-----|
-|0|1/3/2015 7:00|3\. ledna 2015 6: 00 - 8: 00|
-|1|1/3/2015 7:54|3\. ledna 2015 6: 00 - 8: 00|
+|0|1/3/2015 7:00|3\. ledna 2015 6:00-8:00|
+|1|1/3/2015 7:54|3\. ledna 2015 6:00-8:00|
 |2|1/29/2015 6:54|Žádný|
-|3|1/29/2015 7:00|Žádný|
-|4|1/29/2015 7:54|Žádný|
+|3|1/29/2015 7:00|Žádné|
+|4|1/29/2015 7:54|Žádné|
 
 ```python
 builder.add_example(source_data=dflow.iloc[77], example_value='Jan 29, 2015 6AM-8AM')
@@ -241,13 +241,13 @@ builder.preview(skip=75, count=5)
 
 ||DATE|date_timerange|
 |-----|-----|-----|
-|0|1/3/2015 7:00|3\. ledna 2015 6: 00 - 8: 00|
-|1|1/3/2015 7:54|3\. ledna 2015 6: 00 - 8: 00|
-|2|1/29/2015 6:54|29\. ledna 2015 6: 00 - 8: 00|
-|3|1/29/2015 7:00|29\. ledna 2015 6: 00 - 8: 00|
-|4|1/29/2015 7:54|29\. ledna 2015 6: 00 - 8: 00|
+|0|1/3/2015 7:00|3\. ledna 2015 6:00-8:00|
+|1|1/3/2015 7:54|3\. ledna 2015 6:00-8:00|
+|2|1/29/2015 6:54|29. ledna 2015 6:00-8:00|
+|3|1/29/2015 7:00|29. ledna 2015 6:00-8:00|
+|4|1/29/2015 7:54|29. ledna 2015 6:00-8:00|
 
- Chcete zobrazit seznam aktuální odvození příkladu volání `list_examples()` tvůrce objektu.
+ Chcete-li zobrazit seznam aktuálního příkladu odvození volání `list_examples()` na objektu Tvůrce.
 
 ```python
 examples = builder.list_examples()
@@ -257,24 +257,29 @@ examples = builder.list_examples()
 | -------- | -------- | -------- | -------- |
 |0|1/1/2015 1:00|1\. ledna 2015 12 AM - 2 AM|-1|
 |1|1/2/2015 0:54|2\. ledna 2015 12 AM - 2 AM|-2|
-|2|29/1/2015 20:54|29\. ledna 2015 20: 00 – 22: 00|-3|
+|2|29/1/2015 20:54|29. ledna 2015 20: 00 – 22: 00|-3|
 
 
-V některých případech, pokud chcete odstranit příklady, které jsou nesprávné, můžete předat buď `example_row` z pandas DataFrame, nebo `example_id` hodnotu. Například pokud spustíte `builder.delete_example(example_id=-1)`, odstraní se v prvním příkladu transformace.
+V některých případech, pokud chcete odstranit příklady, které jsou nesprávné, můžete předat buď `example_row` z PANDAS dataframe, nebo `example_id` z hodnoty. Například pokud spustíte `builder.delete_example(example_id=-1)`, odstraní první transformační příklad.
 
 
-Volání `to_dataflow()` na tvůrce, který vrátí toku dat s požadovanou odvozených sloupců, které jsou přidány.
+Zavolejte `to_dataflow()` na tvůrce, který vrátí tok dat s přidanými požadovanými odvozenými sloupci.
 
 ```python
 dflow = builder.to_dataflow()
 df = dflow.to_pandas_dataframe()
 ```
 
-## <a name="filtering"></a>Filtering
+## <a name="filtering"></a>Filtrování
 
-Sada SDK zahrnuje metody [ `drop_columns()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#drop-columns-columns--multicolumnselection-----azureml-dataprep-api-dataflow-dataflow) a [ `filter()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py) umožňuje odfiltrovat sloupců nebo řádků.
+Sada SDK obsahuje metody [`drop_columns()`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#drop-columns-columns--multicolumnselection-----azureml-dataprep-api-dataflow-dataflow) a [`filter()`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py) umožňuje vyfiltrovat sloupce nebo řádky.
 
 ### <a name="initial-setup"></a>Počáteční nastavení
+
+> [!Note]
+> Adresa URL v tomto stejném příkladu není úplná adresa URL. Místo toho odkazuje na ukázkovou složku v objektu BLOB. Úplná adresa URL pro data je https://dprepdata.blob.core.windows.net/demo/green-small/green_tripdata_2013-08.csv
+
+V tomto kurzu se načítají všechny soubory ve složce a agreguje výsledek do green_df_raw a yellow_df_raw.
 
 ```python
 import azureml.dataprep as dprep
@@ -293,7 +298,7 @@ dflow.head(5)
 
 ### <a name="filtering-columns"></a>Filtrování sloupce
 
-Chcete-li filtrovat sloupce, použijte `drop_columns()`. Tato metoda přebírá seznam sloupců, vyřaďte nebo ji volat složitější argument [ `ColumnSelector` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.columnselector?view=azure-dataprep-py).
+Chcete-li filtrovat sloupce, použijte `drop_columns()`. Tato metoda přebírá seznam sloupců k vyřazení nebo složitější argument s názvem [`ColumnSelector`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.columnselector?view=azure-dataprep-py).
 
 #### <a name="filtering-columns-with-list-of-strings"></a>Filtrování sloupce s seznamu řetězců
 
@@ -416,7 +421,7 @@ dflow.head(2)
 |0|ALABAMA|1|101710|Hale kraj|10171002158| |
 |1|ALABAMA|1|101710|Hale kraj|10171002162| |
 
-Trim dolů datové sady a provádět některé základní transformací, včetně odebrání sloupců, nahraďte hodnoty a převod typů.
+Ořízne datovou sadu a provede některé základní transformace, včetně odebírání sloupců, nahrazování hodnot a převodů typů.
 
 ```python
 dflow = dflow.keep_columns(['stnam', 'leanm10', 'ncessch', 'MAM_MTH00numvalid_1011'])
@@ -443,7 +448,7 @@ dflow.filter(col('MAM_MTH00numvalid_1011').is_null()).head(2)
 
 ### <a name="transform-partition"></a>Transformace oddílu
 
-Použití [ `transform_partition()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#transform-partition-script--str-----azureml-dataprep-api-dataflow-dataflow) nahradit všechny hodnoty null na 0. Tento kód se spustí oddílu není na najednou celou datovou sadu. To znamená, že na velkých sadách dat, tento kód může spouštět paralelně jak modul runtime zpracovává data, oddílu pomocí oddílů.
+Použijte [`transform_partition()`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#transform-partition-script--str-----azureml-dataprep-api-dataflow-dataflow) k nahrazení všech hodnot NULL hodnotou 0. Tento kód se spustí oddílu není na najednou celou datovou sadu. To znamená, že na velkých sadách dat, tento kód může spouštět paralelně jak modul runtime zpracovává data, oddílu pomocí oddílů.
 
 Skript v jazyce Python musí definovat funkci s názvem `transform()` , který přebírá dva argumenty, `df` a `index`. `df` Argument bude pandas dataframe, obsahující data pro oddíl a `index` argument je jedinečný identifikátor oddílu. Funkce transformace může plně upravit předané datového rámce, ale musí vracet datový rámec. Všechny knihovny, které importuje skript v jazyce Python musí existovat v prostředí, ve kterém se spouští toku.
 
@@ -463,7 +468,7 @@ df.head(2)
 
 ### <a name="new-script-column"></a>Nový sloupec skriptu
 
-Vytvoří nový sloupec, který má název kraje a název stavu a také velké první písmeno názvu stavu, můžete použít skript Pythonu. Chcete-li to provést, použijte [ `new_script_column()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#new-script-column-new-column-name--str--insert-after--str--script--str-----azureml-dataprep-api-dataflow-dataflow) metodu na datový tok.
+Pomocí skriptu Pythonu můžete vytvořit nový sloupec, který má název okresu a název stavu, a také velká písmena názvu stavu. K tomu použijte [`new_script_column()`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#new-script-column-new-column-name--str--insert-after--str--script--str-----azureml-dataprep-api-dataflow-dataflow) metodu toku dat.
 
 Skript v jazyce Python musí definovat funkci s názvem `newvalue()` , která přijímá jeden argument `row`. `row` Argument je dict (`key`: název sloupce `val`: aktuální hodnota) a předá pro tuto funkci pro každý řádek v datové sadě. Tato funkce musí vracet hodnotu pro použití v tomto novém sloupci. Všechny knihovny, které importuje skript v jazyce Python musí existovat v prostředí, ve kterém se spouští toku.
 
@@ -482,7 +487,7 @@ dflow.head(2)
 
 ### <a name="new-script-filter"></a>Nový filtr skriptu
 
-Sestavit výraz Pythonu pomocí [ `new_script_filter()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#new-script-filter-script--str-----azureml-dataprep-api-dataflow-dataflow) k filtrování sady dat pro pouze řádky, kde "Hale" není na novém `county_state` sloupce. Výraz vrací `True` Pokud my chceme zajistit řádku a `False` vyřadit řádku.
+Sestavte výraz Pythonu pomocí příkazu [`new_script_filter()`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#new-script-filter-script--str-----azureml-dataprep-api-dataflow-dataflow) pro filtrování datové sady na řádky, kde ' hale ' není v novém `county_state` sloupci. Výraz vrací `True` Pokud my chceme zajistit řádku a `False` vyřadit řádku.
 
 ```python
 dflow = dflow.new_script_filter("""
@@ -500,4 +505,4 @@ dflow.head(2)
 
 ## <a name="next-steps"></a>Další postup
 
-* Zobrazit sadu SDK pro Azure Machine Learning Data Prep [kurzu](tutorial-data-prep.md) příklad řešení konkrétní scénář
+* Příklad řešení konkrétního scénáře najdete v [kurzu](tutorial-data-prep.md) Azure Machine Learning data PREP SDK.

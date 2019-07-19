@@ -1,64 +1,64 @@
 ---
-title: Referenční architektury Azure vykreslování – Azure Batch
-description: Architektury pro používání služby Azure Batch a dalšími službami Azure, rozšířit místní vykreslení farmy pomocí shlukování cloudu
+title: Referenční architektury vykreslování Azure – Azure Batch
+description: Architektury pro používání Azure Batch a dalších služeb Azure k rozšíření místní farmy vykreslování s využitím shlukování do cloudu
 services: batch
 ms.service: batch
 author: davefellows
-manager: jeconnoc
+manager: gwallace
 ms.author: lahugh
 ms.date: 02/07/2019
 ms.topic: conceptual
 ms.custom: seodec18
-ms.openlocfilehash: ae4680c948ce8e1efd32207dc37821d61182f2d8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fa2d59b2a6d2dea72276ab38a5cb1ca7bfb579a4
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60774140"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68323112"
 ---
-# <a name="reference-architectures-for-azure-rendering"></a>Referenční architektury pro vykreslování v Azure
+# <a name="reference-architectures-for-azure-rendering"></a>Referenční architektury pro vykreslování Azure
 
-Tento článek popisuje, diagramy architektury vysoké úrovně pro scénáře, které rozšiřují, nebo "sáhnout", místní vykreslení farmy do Azure. V příkladech jsou různé možnosti pro služby Azure compute, sítě a úložiště.
+Tento článek ukazuje diagramy architektury vysoké úrovně pro scénáře pro rozšíření nebo "shluky", místní farmu vykreslování do Azure. V příkladech se zobrazují různé možnosti pro výpočetní, síťové a úložné služby Azure.
 
-## <a name="hybrid-with-nfs-or-cfs"></a>Hybridní řešení se systém souborů NFS nebo CFS
+## <a name="hybrid-with-nfs-or-cfs"></a>Hybrid se systémem souborů NFS nebo CFS
 
-Následující diagram znázorňuje hybridní scénář, který zahrnuje následující služby Azure:
+Následující diagram znázorňuje hybridní scénář, který obsahuje následující služby Azure:
 
-* **COMPUTE** -fondu Azure Batch nebo Škálovací sady virtuálních počítačů.
+* **COMPUTE** -Azure Batch fond nebo sada škálování virtuálních počítačů.
 
-* **Síť** -On-premises: Azure ExpressRoute nebo VPN. Azure: Virtuální síť Azure.
+* Místní **síť** : Azure ExpressRoute nebo VPN. Azure: Virtuální síť Azure.
 
-* **Úložiště** – vstupní a výstupní soubory: Systém souborů NFS nebo používání virtuálních počítačů Azure a synchronizované s místní úložiště pomocí Azure File Sync nebo RSync CFS. Další možností: Avere vFXT ke vstupní nebo výstupní soubory z různých zařízení NAS pomocí systému souborů NFS.
+* Vstupní a výstupní soubory **úložiště** : NFS nebo CFS pomocí virtuálních počítačů Azure, které se synchronizují s místním úložištěm prostřednictvím Azure File Sync nebo RSync. Další možností: Avere vFXT na vstupní nebo výstupní soubory z místních zařízení NAS pomocí systému souborů NFS.
 
-  ![Cloud bursting – hybridní řešení se systém souborů NFS nebo CFS](./media/batch-rendering-architectures/hybrid-nfs-cfs-avere.png)
+  ![Shlukování cloudu – Hybrid se systémem souborů NFS nebo CFS](./media/batch-rendering-architectures/hybrid-nfs-cfs-avere.png)
 
-## <a name="hybrid-with-blobfuse"></a>Hybridní řešení se Blobfuse
+## <a name="hybrid-with-blobfuse"></a>Hybridní s Blobfuse
 
-Následující diagram znázorňuje hybridní scénář, který zahrnuje následující služby Azure:
+Následující diagram znázorňuje hybridní scénář, který obsahuje následující služby Azure:
 
-* **COMPUTE** -fondu Azure Batch nebo Škálovací sady virtuálních počítačů.
+* **COMPUTE** -Azure Batch fond nebo sada škálování virtuálních počítačů.
 
-* **Síť** -On-premises: Azure ExpressRoute nebo VPN. Azure: Virtuální síť Azure.
+* Místní **síť** : Azure ExpressRoute nebo VPN. Azure: Virtuální síť Azure.
 
-* **Úložiště** – vstupní a výstupní soubory: Úložiště objektů BLOB, připojených k výpočetním prostředkům prostřednictvím Azure Blobfuse.
+* Vstupní a výstupní soubory **úložiště** : Služba BLOB Storage, která je připojená k výpočetním prostředkům prostřednictvím Azure Blobfuse.
 
-  ![Cloud bursting – hybridní řešení se Blobfuse](./media/batch-rendering-architectures/hybrid-blob-fuse.png)
+  ![Shlukování cloudu – hybridní pomocí Blobfuse](./media/batch-rendering-architectures/hybrid-blob-fuse.png)
 
-## <a name="hybrid-compute-and-storage"></a>Hybridní compute a storage
+## <a name="hybrid-compute-and-storage"></a>Hybridní výpočetní prostředky a úložiště
 
-Následující diagram ukazuje plně propojené hybridní scénář pro výpočetní prostředky a úložiště a obsahuje následující služby Azure:
+Následující diagram znázorňuje plně připojený hybridní scénář pro výpočetní prostředky i úložiště a zahrnuje tyto služby Azure:
 
-* **COMPUTE** -fondu Azure Batch nebo Škálovací sady virtuálních počítačů.
+* **COMPUTE** -Azure Batch fond nebo sada škálování virtuálních počítačů.
 
-* **Síť** -On-premises: Azure ExpressRoute nebo VPN. Azure: Virtuální síť Azure.
+* Místní **síť** : Azure ExpressRoute nebo VPN. Azure: Virtuální síť Azure.
 
-* **Úložiště** – mezi různými místy: Avere vFXT. Volitelné archivaci místních souborů do úložiště objektů Blob pomocí Azure Data Box, nebo on-premises Avere FXT pro zrychlení NAS.
+* **Úložiště** – mezi místy: Avere vFXT. Volitelná archivace místních souborů prostřednictvím Azure Data Box do úložiště objektů BLOB nebo místní avere FXT pro akceleraci NAS.
 
-  ![Cloud bursting – hybridní compute a storage](./media/batch-rendering-architectures/hybrid-compute-storage-avere.png)
+  ![Shlukování cloudu – hybridní výpočetní prostředky a úložiště](./media/batch-rendering-architectures/hybrid-compute-storage-avere.png)
 
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o používání [vykreslení správci](batch-rendering-render-managers.md) pomocí služby Azure Batch.
+* Další informace o používání [správců vykreslování](batch-rendering-render-managers.md) pomocí Azure Batch.
 
-* Další informace o možnostech [vykreslování v Azure](batch-rendering-service.md).
+* Přečtěte si další informace o možnostech [vykreslování v Azure](batch-rendering-service.md).

@@ -1,7 +1,7 @@
 ---
-title: Ukázkový skript Azure CLI – koncové body IPv6 konfigurace virtuální sítě (preview)
+title: Ukázkový skript Azure CLI – konfigurace koncových bodů virtuální sítě IPv6 (Preview)
 titlesuffix: Azure Virtual Network
-description: Povolit koncové body IPv6 pomocí rozhraní příkazového řádku Azure v Azure Virtual Network
+description: Povolení koncových bodů IPv6 pomocí rozhraní příkazového řádku Azure v Azure Virtual Network
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -12,33 +12,35 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 04/23/2019
 ms.author: kumud
-ms.openlocfilehash: a1c8f151a4c6459064d92ff2efb44fa8b74f8fc1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3df475ce89a3b1f5a1acfb20dc427fdb7a9b7d16
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "63761464"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68248890"
 ---
-# <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-preview"></a>Konfigurace koncových bodů protokolu IPv6 v ukázkový skript virtuální sítě (preview)
+# <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-preview"></a>Ukázka konfigurace koncových bodů IPv6 v ukázce skriptu virtuální sítě (Preview)
 
-V tomto článku se dozvíte, jak nasadit aplikaci duálním zásobníkem (IPv4 + IPv6) v Azure, která zahrnuje virtuální síť duálním zásobníkem s duálním zásobníkem podsítí, nástroj pro vyrovnávání zatížení s front-endové konfigurace dvou (IPv4 + IPv6), virtuální počítače se síťovými kartami, které mají duální konfigurace protokolu IP pravidla skupiny zabezpečení sítě duální a duální veřejné IP adresy.
+V tomto článku se dozvíte, jak nasadit aplikaci duálního zásobníku (IPv4 + IPv6) v Azure, která zahrnuje virtuální síť s duálním zásobníkem s podsítí duálního zásobníku, nástroj pro vyrovnávání zatížení s duálními konfiguracemi (IPv4 + IPv6), virtuální počítače se síťovými kartami, které mají konfiguraci s duálními IP adresami. pravidla skupiny zabezpečení duální sítě a duální veřejné IP adresy.
 
 Skript můžete spustit ve službě Azure [Cloud Shell](https://shell.azure.com/bash) nebo v místně nainstalovaném Azure CLI. Pokud používáte rozhraní příkazového řádku místně, musíte použít verzi 2.0.28 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli). Pokud používáte rozhraní příkazového řádku místně, je také potřeba spustit příkaz `az login` pro vytvoření připojení k Azure.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Požadavky
-Použití protokolu IPv6 pro funkci virtuální síť Azure, musíte nakonfigurovat jen jednou předplatného následujícím způsobem:
+Pokud chcete použít funkci IPv6 pro virtuální síť Azure, musíte si nakonfigurovat předplatné jenom jednou, a to takto:
 
 ```azurecli
 az feature register --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
+az feature register --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
 ```
-Trvá až 30 minut, než funkce registraci dokončit. Spuštěním následujícího příkazu rozhraní příkazového řádku Azure, můžete zkontrolovat stav registrace:
+Dokončení registrace funkce trvá až 30 minut. Stav registrace můžete zjistit spuštěním následujícího příkazu rozhraní příkazového řádku Azure:
 
 ```azurelci
 az feature show --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
+az feature show --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
 ```
-Po dokončení registrace, spusťte následující příkaz:
+Po dokončení registrace spusťte následující příkaz:
 
 ```azurelci
 az provider register --namespace Microsoft.Network
@@ -287,7 +289,7 @@ Tento skript k vytvoření skupiny prostředků, virtuálního počítače, skup
 | [az vm create](/cli/azure/vm#az-vm-create) | Vytvoří virtuální počítač a připojí ho k síťové kartě, virtuální síti, podsíti a skupině NSG. Tento příkaz také určuje image virtuálního počítače, která se má použít, a přihlašovací údaje pro správu.  |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
 

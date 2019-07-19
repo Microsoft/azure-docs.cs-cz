@@ -1,10 +1,10 @@
 ---
-title: Více virtuálních IP adres pro cloudové služby
+title: Více VIP pro cloudovou službu
 titlesuffix: Azure Load Balancer
-description: Přehled víc virtuálními IP adresami a jak nastavit více virtuálních IP adres v cloudové službě
+description: Přehled nevyužívá a postup nastavení více virtuálních IP adres v cloudové službě
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -12,78 +12,78 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
-ms.author: kumud
-ms.openlocfilehash: bf5721e206316a4ce576253743e9ac65de47094a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: allensu
+ms.openlocfilehash: 3e97bea85d4d97b159168b21b4a6e932e655ccfb
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60591765"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274695"
 ---
-# <a name="configure-multiple-vips-for-a-cloud-service"></a>Konfigurace více virtuálních IP adres pro cloudové služby
+# <a name="configure-multiple-vips-for-a-cloud-service"></a>Konfigurace více virtuálních IP adres pro cloudovou službu
 
 [!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
-Cloudové služby Azure prostřednictvím veřejného Internetu přístupná pomocí IP adresy poskytovaný platformou Azure. Tato veřejná IP adresa se označuje jako virtuální IP adresy (virtuální IP adresu) vzhledem k tomu, že je propojený s Azure load balancer, a ne virtuální počítač (VM) instancí v rámci cloudové služby. Všechny instance virtuálních počítačů v rámci cloudové služby můžete přistupovat pomocí jedné virtuální IP adresu.
+K cloudovým službám Azure můžete přistupovat přes veřejný Internet pomocí IP adresy poskytované Azure. Tato veřejná IP adresa se označuje jako virtuální IP adresa (VIP), protože je propojená s nástrojem pro vyrovnávání zatížení Azure, a ne s instancemi virtuálních počítačů v rámci cloudové služby. K libovolné instanci virtuálního počítače můžete přistupovat v rámci cloudové služby pomocí jediné virtuální IP adresy.
 
-Existují ale scénáře, ve kterých budete potřebovat více než jednu virtuální IP adresy jako položku přejděte na stejné cloudové službě. Cloudové služby může například hostování několika webů, vyžadovat připojení SSL pomocí výchozí port 443, jako je každá lokalita je hostovaný pro různé zákazníky nebo tenanta. V tomto scénáři budete muset mít různých veřejná IP adresa pro každý web. Následující diagram znázorňuje typický víceklientské webhosting věcí a potřebovali pro více certifikátů SSL na stejný veřejný port.
+Existují však scénáře, ve kterých budete možná potřebovat více než jednu virtuální IP adresu jako vstupní bod ke stejné cloudové službě. Cloudová služba může například hostovat více webů, které vyžadují připojení SSL, s použitím výchozího portu 443, protože každá lokalita je hostovaná pro jiného zákazníka nebo tenanta. V tomto scénáři musíte mít pro každý web jinou veřejnou IP adresu. Následující diagram znázorňuje typické víceklientské hostování webů s několika certifikáty SSL na jednom veřejném portu.
 
-![Scénář s více virtuálních IP adres protokolu SSL](./media/load-balancer-multivip/Figure1.png)
+![Scénář SSL s více VIP](./media/load-balancer-multivip/Figure1.png)
 
-V předchozím příkladu všechny virtuální IP adresy používají stejný veřejný port (443) a provoz se přesměruje na jeden nebo více vyrovnaným virtuálních počítačů na jedinečný privátní port pro interní IP adresa cloudové služby hostování webů.
-
-> [!NOTE]
-> Další situace vyžadovat použití více virtuálních IP adres je hostitelem více SQL AlwaysOn naslouchacích procesů skupin dostupnosti ve stejné sadě virtuálních počítačů.
-
-Virtuální IP adresy je dynamická ve výchozím nastavení, což znamená, že v průběhu času mohou měnit vlastní IP adresu přiřazenou ke cloudové službě. Chcete-li zabránit, který, si můžete rezervovat virtuální IP adresy pro vaši službu. Další informace o rezervovaných virtuálních IP adres najdete v tématu [vyhrazenou IP adresu veřejné](../virtual-network/virtual-networks-reserved-public-ip.md).
+V příkladu výše všechny VIP používají stejný veřejný port (443) a přenos se přesměruje na jeden nebo více virtuálních počítačů vyrovnaných s vyrovnáváním zatížení na jedinečném privátním portu pro interní IP adresu cloudové služby, která je hostitelem všech webů.
 
 > [!NOTE]
-> Podrobnosti najdete na [ceny IP adres](https://azure.microsoft.com/pricing/details/ip-addresses/) informace o cenách virtuálních IP adres a vyhrazené IP adresy.
+> Další situací, která vyžaduje použití více virtuálních IP adres, je hostování více posluchačů skupiny dostupnosti SQL AlwaysOn na stejné sadě Virtual Machines.
 
-Můžete ověřit virtuální IP adresy používá své cloudové služby pomocí prostředí PowerShell také přidat a odebrat virtuální IP adresy, přiřadit virtuální IP adresu pro koncový bod a konfigurace na konkrétní virtuální IP adresy služby Vyrovnávání zatížení.
+Virtuální IP adresy jsou ve výchozím nastavení dynamické, což znamená, že se skutečná IP adresa přiřazená ke cloudové službě může v průběhu času měnit. Aby k tomu nedocházelo, můžete si vyhradit virtuální IP adresu pro vaši službu. Další informace o rezervovaných virtuálních IP adresách najdete v tématu [vyhrazená veřejná IP adresa](../virtual-network/virtual-networks-reserved-public-ip.md).
+
+> [!NOTE]
+> Informace o cenách pro VIP a vyhrazené IP adresy najdete v článku o [cenách IP adres](https://azure.microsoft.com/pricing/details/ip-addresses/) .
+
+Pomocí prostředí PowerShell můžete ověřit virtuální IP adresy používané v cloudových službách a také přidávat a odebírat VIP, přidružit k koncovému bodu virtuální IP adresu a nakonfigurovat vyrovnávání zatížení pro konkrétní VIP.
 
 ## <a name="limitations"></a>Omezení
 
-V současné době funkce s více virtuálních IP adres je omezena některý z následujících scénářů:
+V současné době jsou funkce více VIP omezené na následující scénáře:
 
-* **IaaS pouze**. Více virtuálních IP adres můžete povolit jenom pro cloudové služby, které obsahují virtuální počítače. Více virtuálních IP adres nelze použít ve scénářích PaaS s instancí rolí.
-* **Prostředí PowerShell pouze**. Více virtuálních IP adres může spravovat jenom pomocí prostředí PowerShell.
+* **Pouze IaaS**. Pro cloudové služby, které obsahují virtuální počítače, můžete povolit jenom víc VIP. Ve scénářích PaaS s instancemi role nemůžete použít Multi-VIP.
+* **Pouze PowerShell**. Víc virtuálních IP adres můžete spravovat jenom pomocí PowerShellu.
 
-Tato omezení jsou dočasné a může kdykoli změnit. Ujistěte se, že návštěvě této stránky můžete ověřit budoucí změny.
+Tato omezení jsou dočasná a můžou se kdykoli změnit. Nezapomeňte znovu navštívit tuto stránku a ověřit budoucí změny.
 
-## <a name="how-to-add-a-vip-to-a-cloud-service"></a>Přidání virtuální IP adresu do cloudové služby
-Pokud chcete přidat virtuální IP adresy k vaší službě, spusťte následující příkaz Powershellu:
+## <a name="how-to-add-a-vip-to-a-cloud-service"></a>Postup přidání virtuální IP adresy do cloudové služby
+Pokud chcete do služby přidat virtuální IP adresu, spusťte následující příkaz PowerShellu:
 
 ```powershell
 Add-AzureVirtualIP -VirtualIPName Vip3 -ServiceName myService
 ```
 
-Tento příkaz zobrazí výsledek podobný následujícím příkladu:
+Tento příkaz zobrazí výsledek podobný následujícímu příkladu:
 
     OperationDescription OperationId                          OperationStatus
     -------------------- -----------                          ---------------
     Add-AzureVirtualIP   4bd7b638-d2e7-216f-ba38-5221233d70ce Succeeded
 
-## <a name="how-to-remove-a-vip-from-a-cloud-service"></a>Jak odebrat virtuální IP adresu z cloudové služby
-Odebrat virtuální IP adresu přidat do vaší služby v předchozím příkladu, spusťte následující příkaz Powershellu:
+## <a name="how-to-remove-a-vip-from-a-cloud-service"></a>Jak odebrat VIP z cloudové služby
+Pokud chcete odebrat VIP přidané do vaší služby v předchozím příkladu, spusťte následující příkaz PowerShellu:
 
 ```powershell
 Remove-AzureVirtualIP -VirtualIPName Vip3 -ServiceName myService
 ```
 
 > [!IMPORTANT]
-> Virtuální IP adresy lze odebrat pouze, pokud nemá žádné koncové body přidružené k němu.
+> Virtuální IP adresu můžete odebrat jenom v případě, že k ní nejsou přidružené žádné koncové body.
 
 
-## <a name="how-to-retrieve-vip-information-from-a-cloud-service"></a>Jak načíst informace o virtuálních IP adres z cloudové služby
-Pokud chcete načíst virtuální IP adresy spojené s cloudovou službou, spusťte následující skript prostředí PowerShell:
+## <a name="how-to-retrieve-vip-information-from-a-cloud-service"></a>Jak načíst informace VIP z cloudové služby
+Pokud chcete načíst virtuální IP adresy přidružené ke cloudové službě, spusťte následující skript prostředí PowerShell:
 
 ```powershell
 $deployment = Get-AzureDeployment -ServiceName myService
 $deployment.VirtualIPs
 ```
 
-Tento skript zobrazí výsledek podobný následujícím příkladu:
+Skript zobrazí výsledek podobný následující ukázce:
 
     Address         : 191.238.74.148
     IsDnsProgrammed : True
@@ -103,17 +103,17 @@ Tento skript zobrazí výsledek podobný následujícím příkladu:
     ReservedIPName  :
     ExtensionData   :
 
-V tomto příkladu je Cloudová služba 3 virtuálních IP adres:
+V tomto příkladu má cloudová služba 3 VIP:
 
-* **Vip1** je výchozí virtuální IP adresy, víte, že vzhledem k tomu, že je hodnota pro IsDnsProgrammedName nastavena na hodnotu true.
-* **Vip2** a **Vip3** nejsou použity jako nemají žádné IP adresy. Pouze používají-li přidružit koncový bod pro virtuální IP adresy.
+* **Vip1** je výchozí VIP, ale víte, že hodnota pro IsDnsProgrammedName je nastavená na true.
+* **Vip2** a **Vip3** se nepoužívají, protože nemají žádné IP adresy. Budou se používat jenom v případě, že k virtuální IP adrese přiřadíte koncový bod.
 
 > [!NOTE]
-> Vaše předplatné naúčtujeme vám jenom pro další virtuální IP adresy poté, co jsou související s koncovým bodem. Další informace o cenách najdete v tématu [ceny IP adres](https://azure.microsoft.com/pricing/details/ip-addresses/).
+> Po přiřazení k koncovému bodu se vašemu předplatnému účtují jenom dodatečné virtuální IP adresy. Další informace o cenách najdete v tématu [ceny IP adres](https://azure.microsoft.com/pricing/details/ip-addresses/).
 
-## <a name="how-to-associate-a-vip-to-an-endpoint"></a>Přidružení virtuální IP adresu pro koncový bod
+## <a name="how-to-associate-a-vip-to-an-endpoint"></a>Postup přidružení virtuální IP adresy ke koncovému bodu
 
-Pro přiřazení virtuální IP adresy v cloudové službě pro koncový bod, spusťte následující příkaz Powershellu:
+K přidružení virtuální IP adresy pro cloudovou službu ke koncovému bodu spusťte následující příkaz prostředí PowerShell:
 
 ```powershell
 Get-AzureVM -ServiceName myService -Name myVM1 |
@@ -121,16 +121,16 @@ Get-AzureVM -ServiceName myService -Name myVM1 |
     Update-AzureVM
 ```
 
-Příkaz vytvoří koncový bod spojený s virtuální IP adresy volá *Vip2* na portu *80*a odkazů na virtuální počítač s názvem *myVM1* v cloudové službě s názvem *Moje_služba* pomocí *TCP* na portu *8080*.
+Příkaz vytvoří koncový bod propojený s virtuální IP adresou s názvem *Vip2* na portu *80*a připojí ho k virtuálnímu počítači s názvem *myVM1* v cloudové službě s názvem *mojesluzba* pomocí *TCP* na portu *8080*.
 
-Pokud chcete ověřit konfiguraci, spusťte následující příkaz Powershellu:
+Chcete-li ověřit konfiguraci, spusťte následující příkaz prostředí PowerShell:
 
 ```powershell
 $deployment = Get-AzureDeployment -ServiceName myService
 $deployment.VirtualIPs
 ```
 
-Výstup vypadá podobně jako v následujícím příkladu:
+Výstup bude vypadat podobně jako v následujícím příkladu:
 
     Address         : 191.238.74.148
     IsDnsProgrammed : True
@@ -150,9 +150,9 @@ Výstup vypadá podobně jako v následujícím příkladu:
     ReservedIPName  :
     ExtensionData   :
 
-## <a name="how-to-enable-load-balancing-on-a-specific-vip"></a>Jak povolit na konkrétní virtuální IP adresy služby Vyrovnávání zatížení
+## <a name="how-to-enable-load-balancing-on-a-specific-vip"></a>Jak povolit vyrovnávání zatížení pro konkrétní VIP
 
-Jednu virtuální IP adresu můžete přidružit několik virtuálních počítačů pro účely služby Vyrovnávání zatížení. Například máte cloudové služby s názvem *Moje_služba*a dva virtuální počítače s názvem *myVM1* a *myVM2*. A cloudové služby má více virtuálních IP adres, jeden z nich s názvem *Vip2*. Pokud chcete mít jistotu, že všechny provoz na portu *81* na *Vip2* jsou rovnoměrně mezi *myVM1* a *myVM2* na portu *8181* , spusťte následující skript prostředí PowerShell:
+K vyrovnávání zatížení můžete přidružit jednu virtuální IP adresu s několika virtuálními počítači. Máte třeba cloudovou službu s názvem *mojesluzba*a dva virtuální počítače s názvem *myVM1* a *myVM2*. A vaše cloudová služba má více virtuálních IP adres, jednu z nich s názvem *Vip2*. Pokud chcete zajistit, aby veškerý provoz na portu *81* na *Vip2* byl vyvážen mezi *myVM1* a *myVM2* na portu *8181*, spusťte následující skript prostředí PowerShell:
 
 ```powershell
 Get-AzureVM -ServiceName myService -Name myVM1 |
@@ -164,7 +164,7 @@ Get-AzureVM -ServiceName myService -Name myVM2 |
     Update-AzureVM
 ```
 
-Můžete také aktualizovat nástroj pro vyrovnávání zatížení různých virtuálních IP adres používat. Například pokud spustíte následující příkaz prostředí PowerShell, se změní sadu používat virtuální IP adresy s názvem Vip1 Vyrovnávání zatížení:
+Nástroj pro vyrovnávání zatížení můžete také aktualizovat tak, aby používal jinou virtuální IP adresu. Pokud třeba spustíte příkaz PowerShellu níže, změníte sadu vyrovnávání zatížení tak, aby používala VIP s názvem Vip1:
 
 ```powershell
 Set-AzureLoadBalancedEndpoint -ServiceName myService -LBSetName myLBSet -VirtualIPName Vip1
@@ -172,12 +172,12 @@ Set-AzureLoadBalancedEndpoint -ServiceName myService -LBSetName myLBSet -Virtual
 
 ## <a name="next-steps"></a>Další kroky
 
-[Azure Monitor protokoly pro nástroj pro vyrovnávání zatížení Azure](load-balancer-monitor-log.md)
+[Protokoly Azure Monitor pro vyrovnávání zatížení Azure](load-balancer-monitor-log.md)
 
-[Internet protilehlé load balancer – přehled](load-balancer-internet-overview.md)
+[Přehled internetového nástroje pro vyrovnávání zatížení](load-balancer-internet-overview.md)
 
-[Začínáme s internetového nástroje pro vyrovnávání zatížení](load-balancer-get-started-internet-arm-ps.md)
+[Začínáme s internetovým nástrojem pro vyrovnávání zatížení](load-balancer-get-started-internet-arm-ps.md)
 
 [Přehled služby Virtual Network](../virtual-network/virtual-networks-overview.md)
 
-[Vyhrazenou IP adresu REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx)
+[Rozhraní REST API pro Vyhrazená IP adresa](https://msdn.microsoft.com/library/azure/dn722420.aspx)
