@@ -17,23 +17,23 @@ ms.locfileid: "67206378"
 
 Resource Manager poskytuje několik funkcí pro práci s poli a objekty.
 
-* [Pole](#array)
-* [sloučení](#coalesce)
+* [array](#array)
+* [coalesce](#coalesce)
 * [concat](#concat)
-* [Obsahuje](#contains)
+* [contains](#contains)
 * [createArray](#createarray)
-* [prázdný](#empty)
-* [první](#first)
+* [empty](#empty)
+* [first](#first)
 * [intersection](#intersection)
 * [json](#json)
 * [last](#last)
-* [Délka](#length)
+* [length](#length)
 * [max](#max)
 * [min](#min)
-* [rozsah](#range)
+* [range](#range)
 * [skip](#skip)
-* [Take](#take)
-* [sjednocení](#union)
+* [take](#take)
+* [union](#union)
 
 K získání řetězcové hodnoty oddělené hodnotu pole, naleznete v tématu [rozdělit](resource-group-template-functions-string.md#split).
 
