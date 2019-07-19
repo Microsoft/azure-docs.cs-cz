@@ -218,7 +218,7 @@ Požadavek vyžaduje následující pole:
 | **Název**                 | **Popis**                                                                                                           |
 |--------------------------|---------------------------------------------------------------------------------------------------------------------------|
 | requestId                | Klientem poskytnutý identifikátor GUID |
-| UserChainIdentifier      | Adresa uživatele, který byl vytvořen v síti blockchain. V Etherea, tato adresa je uživatele **v řetězu** adresu. |
+| userChainIdentifier      | Adresa uživatele, který byl vytvořen v síti blockchain. V Etherea, tato adresa je uživatele **v řetězu** adresu. |
 | contractLedgerIdentifier | Adresa kontraktu na hlavní knihy |
 | version                  | Verze aplikace Povinné, pokud máte více verzí aplikace povolena. V opačném případě verze je volitelné. Další informace o správy verzí aplikací, najdete v části [správy verzí aplikací Azure Blockchain Workbench](version-app.md). |
 | workflowFunctionName     | Název funkce pracovního postupu |

@@ -81,6 +81,8 @@
       href: sample-v2-code.md
     - name: Koncepty
       items:
+        - name: Základy ověřování
+          href: authentication-scenarios.md
         - name: Toky ověřování a scénáře aplikací
           href: authentication-flows-app-scenarios.md
         - name: Scénáře aplikací
@@ -271,8 +273,6 @@
                       href: msal-js-known-issues-safari-browser.md
         - name: Protokol ověřování
           items:
-            - name: Základy ověřování
-              href: authentication-scenarios.md
             - name: Typy aplikací a OAuth2.0
               href: v2-app-types.md
             - name: Protokoly OAuth 2.0 a OpenID Connect

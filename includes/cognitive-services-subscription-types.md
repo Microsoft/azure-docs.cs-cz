@@ -4,27 +4,29 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/24/2019
 ms.author: aahi
-ms.openlocfilehash: ad1527a5e7f1cb2ff1beb9ddace5460f41bb8a87
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 674dd30ff3e493ec4c4036f032f82624a6ca5749
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67461520"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68334259"
 ---
-## <a name="azure-cognitive-service-subscription-types"></a>Typy předplatného Azure služby Cognitive Services
+## <a name="azure-cognitive-service-resource-types"></a>Typy prostředků služby pro rozpoznávání Azure
 
 > [!NOTE]
-> Vlastníci předplatného můžete zakázat vytváření účtů služeb Cognitive Services pro skupiny prostředků a předplatná použitím [Azure policy](https://docs.microsoft.com/azure/governance/policy/overview#policy-definition)přiřazení definice zásady "není povolené typy prostředků" a určení **Microsoft.CognitiveServices/accounts** jako typ cílového prostředku.
+> Vlastníci předplatného můžou zakázat vytváření prostředků Cognitive Services pro skupiny prostředků a předplatná pomocí [zásad Azure](https://docs.microsoft.com/azure/governance/policy/overview#policy-definition), přiřazení nepovolených typů prostředků a zadáním **. Microsoft. Cognitiveservices Account/Accounts** jako cílový typ prostředku.
 
-Azure Cognitive Services můžete přistupovat prostřednictvím dvou různých předplatných: Víc služeb předplatného, nebo jedné služby, jeden. Tato předplatná umožňují připojit se k jedné službě nebo víc služeb najednou.
+K Azure Cognitive Services můžete přistupovat prostřednictvím dvou různých prostředků: Prostředek s více službami nebo jeden pro jednu službu. Tato předplatná vám umožní připojit se k jedné službě nebo k několika službám najednou.
 
-### <a name="multi-service-subscription"></a>Víc služeb předplatného
+### <a name="multi-service-resource"></a>Prostředek s více službami
 
 >[!WARNING]
-> V tuto chvíli tyto služby **není** podporovat víc služeb klíče: Nástroj QnA Maker, hlasových služeb, Custom Vision a detekce anomálií.
+> V tuto chvíli **tyto služby** nepodporují klíče s více službami: QnA Maker, služba Speech Services, Custom Vision a detektor anomálií.
 
-Víc služeb předplatného pro Azure Cognitive Services vám umožní používat jedno předplatné a prostředků Azure pro většinu služeb Azure Cognitive Services a konsoliduje fakturace ze služeb, které používáte. Zobrazit [ceny služeb Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) pro další informace.
+Přihlášení k odběru prostředku Cognitive Services více službami:
+* Umožňuje použít jeden prostředek Azure pro většinu Cognitive Services Azure.
+* Konsoliduje fakturaci ze služeb, které používáte. Další informace najdete v tématu [Cognitive Services ceny](https://azure.microsoft.com/pricing/details/cognitive-services/) .
 
-### <a name="single-service-subscription"></a>Jednoúčelovou předplatného
+### <a name="single-service-resource"></a>Prostředek s jednou službou
 
-Předplatné do jediné služby, jako je například pro počítačové zpracování obrazu nebo hlasových služeb. Předplatné jednoúčelovou je omezen na tento prostředek. 
+Prostředky s jednou službou (například Počítačové zpracování obrazu nebo hlasové služby) jsou omezené na jejich konkrétní služby.

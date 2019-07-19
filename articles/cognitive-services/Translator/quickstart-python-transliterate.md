@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Transkripce text, Python – Translator Text API'
+title: 'Rychlý start: Přepis textu, Python-Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu se dozvíte, jak pomocí Pythonu a rozhraní REST API služby Translator Text provést transkripci (převod) textu z jednoho skriptu do druhého. V této ukázce se provádí transkripce z japonštiny do latinky.
 services: cognitive-services
@@ -10,21 +10,21 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: c6c6bb526c78ce87b9ee2acca05f478fee0ae5ff
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: cafaf67cfaa07d27bf4569efbc7f76196222cc2a
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67704358"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348730"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-transliterate-text-using-python"></a>Rychlý start: Transkripce textu s použitím Pythonu pomocí rozhraní Translator Text API
+# <a name="quickstart-use-the-translator-text-api-to-transliterate-text-using-python"></a>Rychlý start: Použití Translator Text API k přepisování textu pomocí Pythonu
 
 V tomto rychlém startu se dozvíte, jak pomocí Pythonu a rozhraní REST API služby Translator Text provést transkripci (převod) textu z jednoho skriptu do druhého. V uvedené ukázce se provádí transkripce z japonštiny do latinky.
 
 K tomuto rychlému startu potřebujete [účet služby Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s prostředkem služby Translator Text. Pokud účet nemáte, můžete k získání klíče předplatného použít [bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/).
 
 >[!TIP]
-> Pokud chcete zobrazit veškerý kód najednou, zdrojový kód pro tuto ukázku je k dispozici na [Githubu]().
+> Pokud byste chtěli zobrazit všechen kód najednou, je zdrojový kód pro tuto ukázku dostupný na [GitHubu](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Python).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -35,7 +35,7 @@ K tomuto rychlému startu potřebujete:
 
 ## <a name="create-a-project-and-import-required-modules"></a>Vytvoření projektu a import požadovaných modulů
 
-Vytvoření nového projektu pomocí oblíbeného prostředí IDE nebo editoru nebo novou složku se souborem s názvem `transliterate-text.py` na ploše. Soubor projektu a zkopírujte tento fragment kódu:
+Vytvořte nový projekt pomocí oblíbeného integrovaného vývojového prostředí (IDE) nebo nové složky se souborem `transliterate-text.py` s názvem na vašem počítači. Potom tento fragment kódu zkopírujte do svého projektu nebo souboru:
 
 ```python
 # -*- coding: utf-8 -*-
@@ -75,7 +75,7 @@ Translator Text globální koncový bod je nastaven jako `base_url`. `path` nast
 `params` slouží k nastavení jazyka vstupu a vstupního a výstupního skriptu. V této ukázce provádíme transkripci z japonštiny do latinky.
 
 >[!NOTE]
-> Další informace o koncových bodech, cesty a parametry požadavku najdete v tématu [Translator Text API 3.0: Transkripce](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-transliterate).
+> Další informace o koncových bodech, trasách a parametrech požadavků [najdete v článku Translator text API 3,0: Přepis](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-transliterate).
 
 ```python
 base_url = 'https://api.cognitive.microsofttranslator.com'
@@ -98,7 +98,7 @@ headers = {
 }
 ```
 
-Pokud používáte víc služeb předplatného služeb Cognitive Services, musíte taky zahrnout `Ocp-Apim-Subscription-Region` v parametry požadavku. [Další informace o dvojúrovňovém víc služeb předplatného](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+Pokud používáte Cognitive Services předplatné s více službami, musíte taky zahrnout `Ocp-Apim-Subscription-Region` do parametrů žádosti. [Přečtěte si další informace o ověřování pomocí předplatného s více službami](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
 ## <a name="create-a-request-to-transliterate-text"></a>Vytvoření požadavku na transkripci textu
 
@@ -155,14 +155,14 @@ Pokud jste do svého programu pevně zakódovali klíč předplatného, nezapome
 
 ## <a name="next-steps"></a>Další postup
 
-Podívejte se na referenční dokumentace rozhraní API o všechno, co můžete dělat s rozhraním Translator Text API.
+Podívejte se na reference k rozhraní API, abyste porozuměli všem, co můžete s Translator Text API dělat.
 
 > [!div class="nextstepaction"]
 > [Referenční materiály k rozhraní API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
-Další informace o použití rozhraní Translator Text API na:
+Naučte se používat Translator Text API k těmto akcím:
 
 * [Překlad textu](quickstart-python-translate.md)
 * [Identifikace jazyka podle vstupu](quickstart-python-detect.md)

@@ -1,53 +1,56 @@
 ---
-title: Vytvoření účtu služeb Cognitive Services pomocí rozhraní příkazového řádku Azure
+title: Vytvoření prostředku Cognitive Services pomocí Azure CLI
 titlesuffix: Azure Cognitive Services
-description: Postup vytvoření účtu služby Azure API služeb Cognitive Services pomocí rozhraní příkazového řádku Azure.
+description: Začněte s Azure Cognitive Services vytvořením a přihlášením k odběru prostředku pomocí rozhraní příkazového řádku Azure.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 06/26/2019
+ms.date: 07/17/2019
 ms.author: aahi
-ms.openlocfilehash: acafc2c42c2946632496b646d001c58d6b48c2a6
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 05b679fd969dc766d697070979416312c3bad622
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657714"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68334264"
 ---
-# <a name="create-a-cognitive-services-account-using-the-azure-command-line-interfacecli"></a>Vytvoření účtu služeb Cognitive Services pomocí Interface(CLI) příkazového řádku Azure
+# <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Vytvoření prostředku Cognitive Services pomocí rozhraní příkazového řádku Azure (CLI)
 
-V tomto rychlém startu se dozvíte o postupu zaregistrovat do služby Azure Cognitive Services a vytvoření účtu, který má předplatné služby jednoho nebo víc služeb, použije [Interface(CLI) příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Tyto služby jsou reprezentované prostřednictvím Azure [prostředky](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal), které umožňují připojení k jednomu nebo více rozhraní API kognitivních služeb Azure.
+V tomto rychlém startu můžete začít s Azure Cognitive Services pomocí [rozhraní příkazového řádku Azure (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Cognitive Services jsou reprezentovány [prostředky](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal) Azure, které vytvoříte ve svém předplatném Azure. Po vytvoření prostředku použijte k ověření vašich aplikací klíče a koncový bod, který jste vygenerovali. 
+
+
+V tomto rychlém startu se dozvíte, jak se zaregistrovat k Azure Cognitive Services a vytvořit účet, který má předplatné s jednou nebo více službami, pomocí [rozhraní příkazového řádku Azure (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Tyto služby jsou reprezentovány [prostředky](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal)Azure, které vám umožňují připojit se k jednomu nebo více rozhraní API služeb Cognitive Services Azure.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Platné předplatné Azure. [Vytvoření účtu](https://azure.microsoft.com/free/) zdarma.
-* [Interface(CLI) rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+* Platné předplatné Azure – [Vytvořte si ho](https://azure.microsoft.com/free/) zdarma.
+* [Rozhraní příkazového řádku Azure (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 
 [!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
 
 ## <a name="install-the-azure-cli-and-sign-in"></a>Instalace rozhraní příkazového řádku Azure a přihlášení 
 
-Nainstalujte [rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Chcete-li přihlásit k místní instalaci rozhraní příkazového řádku, spusťte [az login](https://docs.microsoft.com/cli/azure/reference-index#az-login) příkaz:
+Nainstalujte [rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). K místní instalaci rozhraní příkazového řádku se přihlaste spuštěním příkazu [AZ Login](https://docs.microsoft.com/cli/azure/reference-index#az-login) :
 
 ```console
 az login
 ```
 
-Můžete také použít zelený **vyzkoušet** tlačítko pro spuštění těchto příkazů v prohlížeči.
+Můžete také použít zelené tlačítko **vyzkoušet** ke spuštění těchto příkazů v prohlížeči.
  
-## <a name="create-a-new-azure-cognitive-services-resource-group"></a>Vytvořit novou skupinu prostředků Azure Cognitive Services
+## <a name="create-a-new-azure-cognitive-services-resource-group"></a>Vytvoří novou skupinu prostředků Azure Cognitive Services.
 
-Vaše předplatné služeb Cognitive Services jsou reprezentovány prostředků Azure. Každý účet služeb Cognitive Services (a jeho přidružený prostředek Azure), musí patřit do skupiny prostředků Azure.
+Před vytvořením prostředku Cognitive Services musíte mít skupinu prostředků Azure, která má prostředek obsahovat. Při vytváření nového prostředku máte možnost vytvořit novou skupinu prostředků, nebo použít existující. V tomto článku se dozvíte, jak vytvořit novou skupinu prostředků.
 
-### <a name="choose-your-resource-group-location"></a>Zvolte umístění skupiny prostředků
+### <a name="choose-your-resource-group-location"></a>Zvolit umístění skupiny prostředků
 
-Vytvoření prostředku, budete potřebovat jeden z umístění Azure, které je k dispozici pro vaše předplatné. Můžete načíst seznam dostupných umístění s [az účet list-locations](/cli/azure/account#az-account-list-locations) příkazu. Většina služeb Cognitive Services je možný z několika míst. Vyberte si ten, který je nejblíže k vám nebo zjistit, která umístění jsou dostupné pro službu.
+K vytvoření prostředku budete potřebovat jedno z umístění Azure dostupného pro vaše předplatné. Seznam dostupných umístění můžete načíst pomocí příkazu [AZ Account list-Locations](/cli/azure/account#az-account-list-locations) . K většině Cognitive Services se dá dostat z několika míst. Vyberte tu, která je pro vás nejblíže, nebo zjistěte, která umístění jsou pro tuto službu k dispozici.
 
 > [!IMPORTANT]
-> * Pamatovat si vaše oblast Azure, protože ji budete potřebovat při volání služeb Azure Cognitive Services.
-> * Dostupnost některých služeb Cognitive Services se může lišit podle oblasti. Další informace najdete v tématu [produkty Azure podle oblastí](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services).  
+> * Zapamatujte si umístění Azure, jak ho budete potřebovat při volání Azure Cognitive Services.
+> * Dostupnost některých Cognitive Services se může v jednotlivých oblastech lišit. Další informace najdete v tématu [produkty Azure podle oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services).  
 
 ```azurecli-interactive
 az account list-locations \
@@ -55,9 +58,9 @@ az account list-locations \
     --out table
 ```
 
-Až budete mít vaše umístění azure, vytvořte novou skupinu prostředků pomocí Azure CLI [vytvořit skupiny az](/cli/azure/group#az-group-create) příkazu.
+Po umístění Azure vytvořte novou skupinu prostředků v rozhraní příkazového řádku Azure pomocí příkazu [AZ Group Create](/cli/azure/group#az-group-create) .
 
-V následujícím příkladu nahraďte umístění azure `westus2` s jedním z umístění Azure, které je k dispozici pro vaše předplatné.
+V následujícím příkladu nahraďte umístění `westus2` Azure jedním z umístění Azure dostupných pro vaše předplatné.
 
 ```azurecli-interactive
 az group create \
@@ -67,25 +70,25 @@ az group create \
 
 ## <a name="create-a-cognitive-services-resource"></a>Vytvoření prostředku služeb Cognitive Services
 
-### <a name="choose-a-cognitive-service-and-pricing-tier"></a>Zvolte cenovou úroveň a služby cognitive Services
+### <a name="choose-a-cognitive-service-and-pricing-tier"></a>Výběr služby pro rozpoznávání a cenové úrovně
 
-Při vytváření nového prostředku, musíte znát "typ" služby, kterou chcete použít spolu s [cenovou úroveň](https://azure.microsoft.com/pricing/details/cognitive-services/) (nebo skladové položky) chcete. Tato a další informace bude používat jako parametry při vytváření prostředku.
+Při vytváření nového prostředku budete muset znát "druh" služby, kterou chcete použít, spolu s [cenovou úrovní](https://azure.microsoft.com/pricing/details/cognitive-services/) (nebo SKU), kterou chcete. Při vytváření prostředku budete používat tuto a další informace jako parametry.
 
 > [!NOTE]
-> Mnoho služeb Cognitive services mít úroveň free, která vám pomůže službu si můžete vyzkoušet. Pokud chcete použít na úrovni free, použijte `F0` jako sku pro prostředek.
+> Řada poruchových služeb má bezplatnou úroveň, kterou můžete použít k vyzkoušení služby. Pokud chcete používat úroveň Free, použijte `F0` jako SKU pro váš prostředek.
 
 ### <a name="vision"></a>Obraz
 
 | Služba                    | Typ                      |
 |----------------------------|---------------------------|
 | Počítačové zpracování obrazu            | `ComputerVision`          |
-| Custom Vision – predikce | `CustomVision.Prediction` |
+| Custom Vision – předpověď | `CustomVision.Prediction` |
 | Custom Vision – školení   | `CustomVision.Training`   |
 | Rozhraní API pro rozpoznávání tváře                   | `Face`                    |
 | Rozpoznávání formulářů            | `FormRecognizer`          |
 | Rozpoznávání rukopisu             | `InkRecognizer`           |
 
-### <a name="search"></a>Search
+### <a name="search"></a>Hledat
 
 | Služba            | Typ                  |
 |--------------------|-----------------------|
@@ -106,7 +109,7 @@ Při vytváření nového prostředku, musíte znát "typ" služby, kterou chcet
 
 | Služba            | Typ                |
 |--------------------|---------------------|
-| Principy formuláře | `FormUnderstanding` |
+| Porozumění formuláři | `FormUnderstanding` |
 | LUIS               | `LUIS`              |
 | QnA Maker          | `QnAMaker`          |
 | Analýza textu     | `TextAnalytics`     |
@@ -120,17 +123,17 @@ Při vytváření nového prostředku, musíte znát "typ" služby, kterou chcet
 | Content Moderator | `ContentModerator` |
 | Personalizace      | `Personalizer`     |
 
-Můžete najít seznam dostupných služby Cognitive Services "typy" s [az cognitiveservices account list typy](https://docs.microsoft.com/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-list-kinds) příkaz:
+Seznam dostupných druhů rozpoznávání získáte pomocí příkazu [AZ cognitiveservices Account Account list-druhu](https://docs.microsoft.com/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-list-kinds) :
 
 ```azurecli-interactive
 az cognitiveservices account list-kinds
 ```
 
-### <a name="add-a-new-resource-to-your-resource-group"></a>Přidat nový prostředek do vaší skupiny prostředků
+### <a name="add-a-new-resource-to-your-resource-group"></a>Přidání nového prostředku do skupiny prostředků
 
-Chcete-li vytvořit a odběru na nový prostředek služeb Cognitive Services, použijte [vytvoření účtu cognitiveservices az](https://docs.microsoft.com/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-create) příkazu. Tento příkaz přidá nový prostředek fakturovatelné ke skupině prostředků vytvořili dříve. Při vytváření nového prostředku, budete muset znát "druh" service, kterou chcete použít společně s jeho cenovou úroveň (nebo skladové položky) a umístění služby Azure:
+Pokud chcete vytvořit nový prostředek Cognitive Services a přihlásit se k jeho odběru, použijte příkaz [AZ cognitiveservices Account Account Create](https://docs.microsoft.com/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-create) . Tento příkaz přidá nový fakturovatelný prostředek do skupiny prostředků vytvořené dříve. Při vytváření nového prostředku budete potřebovat znát "druh" služby, kterou chcete použít, spolu s její cenovou úrovní (nebo SKU) a umístěním Azure:
 
-Prostředek F0 (zdarma) můžete vytvořit pro detekce anomálií, s názvem `anomaly-detector-resource` pomocí následujícího příkazu.
+Můžete vytvořit F0 (Free) prostředek pro detektor anomálií s názvem `anomaly-detector-resource` pomocí příkazu níže.
 
 ```azurecli-interactive
 az cognitiveservices account create \
@@ -142,15 +145,15 @@ az cognitiveservices account create \
     --yes
 ```
 
-## <a name="get-the-keys-for-your-subscription"></a>Získání klíčů předplatného
+## <a name="get-the-keys-for-your-resource"></a>Získat klíče pro svůj prostředek
 
-Přihlaste se k místní instalaci Interface(CLI) příkazového řádku, použijte [az login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) příkazu.
+Pokud se chcete přihlásit k místní instalaci rozhraní příkazového řádku (CLI), použijte příkaz [AZ Login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) .
 
 ```console
 az login
 ```
 
-Použití [az cognitiveservices account kláves seznamu](https://docs.microsoft.com/cli/azure/cognitiveservices/account/keys?view=azure-cli-latest#az-cognitiveservices-account-keys-list) příkazu získat klíče pro váš prostředek služby Cognitive Services.
+Pomocí příkazu [AZ cognitiveservices Account Account Keys list](https://docs.microsoft.com/cli/azure/cognitiveservices/account/keys?view=azure-cli-latest#az-cognitiveservices-account-keys-list) získáte klíče pro prostředek služby vnímání.
 
 ```azurecli-interactive
     az cognitiveservices account keys list \
@@ -162,17 +165,17 @@ Použití [az cognitiveservices account kláves seznamu](https://docs.microsoft.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud chcete vyčistit a odebrat předplatné služeb Cognitive Services, můžete odstranit prostředek nebo skupinu prostředků. Odstraněním skupiny prostředků se odstraní také všechny další prostředky spojené s vybranou skupinou prostředků.
+Pokud chcete vyčistit a odebrat prostředek Cognitive Services, můžete ho odstranit nebo skupinu prostředků. Odstraněním skupiny prostředků dojde také k odstranění všech dalších prostředků obsažených ve skupině.
 
-Chcete-li odebrat skupinu prostředků a její přidružené prostředky, včetně nového účtu úložiště, použijte příkaz az group delete.
+Pokud chcete odebrat skupinu prostředků a její přidružené prostředky, použijte příkaz AZ Group DELETE.
 
 ```azurecli-interactive
 az group delete --name storage-resource-group
 ```
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
-* [Ověření požadavků ve službě Azure Cognitive Services](authentication.md)
+* [Ověřování požadavků do Azure Cognitive Services](authentication.md)
 * [Co je Azure Cognitive Services?](Welcome.md)
 * [Podpora přirozeného jazyka](language-support.md)
-* [Podpora kontejnerů dockeru](cognitive-services-container-support.md)
+* [Podpora kontejneru Docker](cognitive-services-container-support.md)

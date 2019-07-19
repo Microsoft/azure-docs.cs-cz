@@ -11,14 +11,14 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 01fd5b06a2e534a85c88d5c1a706713f07f40106
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: d44877e35687745ddba51d4d015729e62106c9ca
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277554"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348449"
 ---
-# <a name="quickstart-change-model-using-c"></a>Rychlý start: Změnit model použitíC#
+# <a name="quickstart-change-model-using-c"></a>Rychlý start: Změna modelu pomocíC#
 
 [!INCLUDE [Quickstart introduction for change model](../../../includes/cognitive-services-luis-qs-change-model-intro-para.md)]
 
@@ -37,19 +37,19 @@ ms.locfileid: "68277554"
 
 ## <a name="create-quickstart-code"></a>Vytvoření kódu rychlého startu 
 
-V sadě Visual Studio vytvořte nový **klasické konzoly plochy Windows** aplikace pomocí rozhraní .NET Framework. Pojmenujte projekt `ConsoleApp1`.
+V aplikaci Visual Studio vytvořte novou konzolovou aplikaci **klasické pracovní plochy Windows** pomocí .NET Framework. Pojmenujte `ConsoleApp1`projekt.
 
 ![Typ projektu v sadě Visual Studio](./media/luis-quickstart-cs-add-utterance/vs-project-type.png)
 
 ### <a name="add-the-systemweb-dependency"></a>Přidání závislosti System.Web
 
-Projekt sady Visual Studio potřebuje **System.Web**. V Průzkumníku řešení klikněte pravým tlačítkem myši na **odkazy** a vyberte **přidat odkaz** z části sestavení.
+Projekt sady Visual Studio potřebuje **System.Web**. V Průzkumník řešení klikněte pravým tlačítkem na **odkazy** a vyberte **Přidat odkaz** z části sestavení.
 
 ![Přidání odkazu na System.Web](./media/luis-quickstart-cs-add-utterance/system.web.png)
 
 ### <a name="add-other-dependencies"></a>Přidání dalších závislostí
 
-Projekt sady Visual Studio potřebuje **JsonFormatterPlus** a **CommandLineParser**. V Průzkumníku řešení klikněte pravým tlačítkem na **Odkazy** a vyberte **Spravovat balíčky NuGet**. Vyhledejte a přidejte tyto dva balíčky. 
+Projekt sady Visual Studio potřebuje **JsonFormatterPlus** a **CommandLineParser**. V Průzkumníku řešení klikněte pravým tlačítkem na **Odkazy** a vyberte **Spravovat balíčky NuGet**. Vyhledejte a přidejte každý ze dvou balíčků. 
 
 ![Přidání závislostí třetích stran](./media/luis-quickstart-cs-add-utterance/add-dependencies.png)
 
@@ -57,7 +57,7 @@ Projekt sady Visual Studio potřebuje **JsonFormatterPlus** a **CommandLineParse
 ### <a name="write-the-c-code"></a>Psaní kódu jazyka C#
 Soubor **Program.cs** by měl vypadat takto:
 
-```C#
+```csharp
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -75,7 +75,7 @@ namespace ConsoleApp1
 }
 ```
 
-Aktualizujte závislosti, které jsou:
+Aktualizujte závislosti tak, aby byly:
 
    [!code-csharp[Add the dependencies](~/samples-luis/documentation-samples/quickstarts/change-model/csharp/ConsoleApp1/Program.cs?range=1-11 "Add the dependencies")]
 
@@ -115,7 +115,7 @@ Pokud chcete spravovat argumenty příkazového řádku, přidejte hlavní kód.
 
 ### <a name="copy-utterancesjson-to-output-directory"></a>Zkopírování souboru utterances.json do výstupního adresáře
 
-V Průzkumníku řešení, přidejte `utterances.json` kliknutím pravým tlačítkem myši v Průzkumníku řešení název projektu, pak vyberete **přidat**, pak vyberete **existující položky**. Vyberte `utterances.json` souboru. To přidá soubor do projektu. Potom musí být přidán do výstupní směr. Klikněte pravým tlačítkem myši `utterances.json` a vyberte **vlastnosti**. V okně Vlastnosti označte položku **Akce sestavení** jako `Content` a položku **Kopírovat do výstupního adresáře** jako `Copy Always`.  
+V Průzkumník řešení přidejte `utterances.json` kliknutím pravým tlačítkem myši do názvu projektu Průzkumník řešení a pak výběrem možnosti **Přidat**a vybráním **položky existující položka**. `utterances.json` Vyberte soubor. Tím se soubor přidá do projektu. Pak je nutné přidat do směru výstupu. Klikněte pravým tlačítkem `utterances.json` na a vyberte **vlastnosti**. V okně Vlastnosti označte položku **Akce sestavení** jako `Content` a položku **Kopírovat do výstupního adresáře** jako `Copy Always`.  
 
 ![Označení souboru JSON jako obsahu](./media/luis-quickstart-cs-add-utterance/content-properties.png)
 
